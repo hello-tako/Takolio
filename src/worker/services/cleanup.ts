@@ -29,7 +29,7 @@ export interface CleanupReport {
   tasks: CleanupTaskResult[];
 }
 
-const MAX_ERROR_LENGTH = 300;
+const CLEANUP_TASK_FAILURE = 'CLEANUP_TASK_FAILED';
 
 function changesOf(result: { success: boolean; meta: Record<string, unknown> }): number {
   return typeof result.meta?.changes === 'number' ? result.meta.changes : 0;
@@ -125,11 +125,6 @@ export async function cleanupStaleScanReservations(
   return reconcileStaleScanReservations(db, staleMinutes);
 }
 
-function sanitizeError(err: unknown): string {
-  const message = err instanceof Error ? err.message : String(err);
-  return message.slice(0, MAX_ERROR_LENGTH);
-}
-
 export async function runScheduledCleanup(env: Env): Promise<CleanupReport> {
   const environment = env.ENVIRONMENT || 'development';
   const tasks: CleanupTaskResult[] = [];
@@ -166,22 +161,22 @@ export async function runScheduledCleanup(env: Env): Promise<CleanupReport> {
   try {
     const deleted = await cleanupExpiredOtps(db, retention.otpDays);
     tasks.push({ task: 'expired-otps', status: 'ok', deleted });
-  } catch (err) {
-    tasks.push({ task: 'expired-otps', status: 'error', deleted: 0, error: sanitizeError(err) });
+  } catch {
+    tasks.push({ task: 'expired-otps', status: 'error', deleted: 0, error: CLEANUP_TASK_FAILURE });
   }
 
   try {
     const deleted = await cleanupStrictOtps(db, retention.otpDays);
     tasks.push({ task: 'strict-otp-receipts', status: 'ok', deleted });
-  } catch (err) {
-    tasks.push({ task: 'strict-otp-receipts', status: 'error', deleted: 0, error: sanitizeError(err) });
+  } catch {
+    tasks.push({ task: 'strict-otp-receipts', status: 'error', deleted: 0, error: CLEANUP_TASK_FAILURE });
   }
 
   try {
     const deleted = await cleanupExpiredSessions(db, retention.sessionDays);
     tasks.push({ task: 'expired-sessions', status: 'ok', deleted });
-  } catch (err) {
-    tasks.push({ task: 'expired-sessions', status: 'error', deleted: 0, error: sanitizeError(err) });
+  } catch {
+    tasks.push({ task: 'expired-sessions', status: 'error', deleted: 0, error: CLEANUP_TASK_FAILURE });
   }
 
   try {
@@ -191,16 +186,16 @@ export async function runScheduledCleanup(env: Env): Promise<CleanupReport> {
       status: 'ok',
       deleted: result.released,
     });
-  } catch (err) {
-    tasks.push({ task: 'stale-scan-reservations', status: 'error', deleted: 0, error: sanitizeError(err) });
+  } catch {
+    tasks.push({ task: 'stale-scan-reservations', status: 'error', deleted: 0, error: CLEANUP_TASK_FAILURE });
   }
 
   try {
     const { readyDeleted, failedDeleted } = await cleanupTerminalScanJobs(db, retention);
     tasks.push({ task: 'terminal-ready-jobs', status: 'ok', deleted: readyDeleted });
     tasks.push({ task: 'terminal-failed-jobs', status: 'ok', deleted: failedDeleted });
-  } catch (err) {
-    tasks.push({ task: 'terminal-scan-jobs', status: 'error', deleted: 0, error: sanitizeError(err) });
+  } catch {
+    tasks.push({ task: 'terminal-scan-jobs', status: 'error', deleted: 0, error: CLEANUP_TASK_FAILURE });
   }
 
   return { ranAt: new Date().toISOString(), environment, tasks };

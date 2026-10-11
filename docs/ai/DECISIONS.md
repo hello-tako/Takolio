@@ -1,3 +1,25 @@
+# B08 business log privacy in progress - 2026-10-12 JST
+
+**Task/status:** LOCAL_LOG_PRIVACY_FINAL_GATES_IN_PROGRESS.
+Active packet: docs/backend-upgrade/b08-log-privacy/PLAN.md.
+Branch codex/backend-b08-log-privacy; immutable base receipt efffb4f84b52eb42979c69547b6bd7263963099a.
+
+**Work:** final review of the request-only telemetry boundary found41 raw exception
+log arguments, cleanup raw messages, mutable shadow error names and unconfirmed
+public media path IDs. Minimal local diagnostic corrections retain HTTP/data/
+cleanup/catalog behavior. Independent producer provenance review and representative
+adversarial tests are in progress. No whole-platform privacy/security certificate.
+
+**Checks:** focused9files/132tests PASS after emitter own-data snapshots. Lint PASS;
+first typecheck FAIL TS7006 in a new test callback, narrow unknown annotation fixed;
+recovery and clean committed-source full gates follow. Inherited B08 implementation remains309files/7463tests verified separately.
+All prior receipt documents remain immutable. Package/lock/workflows/40migrations,
+Worker entrypoint/config/payment/auth logic/data/provider authority unchanged.
+No remote write/deploy/mail/paid AI/push/PR/merge. External production gates remain
+listed in the immutable B08 NEXT_ACTIONS; final aggregate receipt follows.
+
+---
+
 # B08 local compatibility and security decisions - 2026-10-12 JST
 
 ADR-B08-LOCAL-001 accepted locally. Direct supported owner upgrades, scoped

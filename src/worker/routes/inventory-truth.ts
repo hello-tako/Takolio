@@ -53,7 +53,7 @@ function readFailure(c: any, error: unknown) {
       case 'INVALID_READ_QUERY':
         return c.json({ error: 'Tham số truy vấn không hợp lệ', code: 'VALIDATION_ERROR' }, 400);
       default:
-        console.error('T13 inventory truth read failed:', error);
+        console.error('T13 inventory truth read failed:');
         return c.json({ error: 'Không thể đọc kho theo lô', code: 'DATABASE_ERROR' }, 500);
     }
   }
@@ -61,7 +61,7 @@ function readFailure(c: any, error: unknown) {
     const failure = inventoryAuthorityFailure(error);
     return c.json({ error: error.message, code: failure.code }, failure.status);
   }
-  console.error('T13 inventory truth read failed:', error);
+  console.error('T13 inventory truth read failed:');
   return c.json({ error: 'Không thể đọc kho theo lô', code: 'DATABASE_ERROR' }, 500);
 }
 
@@ -84,7 +84,7 @@ function observationFailure(c: any, error: unknown) {
   if (error instanceof ObservationError) {
     const mapped = OBSERVATION_FAILURES[error.code];
     if (mapped) return c.json({ error: error.message, code: mapped.code }, mapped.status);
-    console.error('T13 reconciliation failed:', error);
+    console.error('T13 reconciliation failed:');
     return c.json({ error: 'Không thể xử lý đối chiếu kho', code: 'DATABASE_ERROR' }, 500);
   }
   return readFailure(c, error);

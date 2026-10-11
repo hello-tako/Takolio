@@ -48,7 +48,7 @@ preferencesRoutes.get('/preferences', async (c) => {
         });
       }
     } catch (err) {
-      console.error('Failed querying user_preferences from D1:', err);
+      console.error('Failed querying user_preferences from D1:');
     }
   }
 
@@ -123,7 +123,7 @@ preferencesRoutes.patch('/preferences', async (c) => {
       onboardingCompleted: patch.completeOnboarding ? true : undefined,
     });
   } catch (err) {
-    console.error('Failed saving user_preferences to D1:', err);
+    console.error('Failed saving user_preferences to D1:');
     return c.json({ error: 'Lỗi cập nhật tùy chọn người dùng', code: 'DATABASE_ERROR' }, 500);
   }
 });

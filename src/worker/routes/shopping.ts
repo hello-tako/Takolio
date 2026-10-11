@@ -70,7 +70,7 @@ shoppingRoutes.get('/shopping-list', async (c) => {
 
     return c.json({ items });
   } catch (err) {
-    console.error('D1 GET shopping list failed:', err);
+    console.error('D1 GET shopping list failed:');
     return c.json({ error: 'Database service unavailable', code: 'DATABASE_UNAVAILABLE' }, 503);
   }
 });
@@ -165,7 +165,7 @@ shoppingRoutes.post('/shopping-list/items', async (c) => {
 
     return c.json({ success: true, item: newItem }, 201);
   } catch (err: any) {
-    console.error('D1 INSERT_SHOPPING_ITEM failed:', err);
+    console.error('D1 INSERT_SHOPPING_ITEM failed:');
     return c.json({ error: 'Không thể thêm mặt hàng vào danh sách đi chợ', code: 'DATABASE_ERROR' }, 500);
   }
 });
@@ -237,7 +237,7 @@ shoppingRoutes.patch('/shopping-list/items/:id', async (c) => {
 
     return c.json({ success: true, item: updatedItem });
   } catch (err: any) {
-    console.error('D1 PATCH shopping item failed:', err);
+    console.error('D1 PATCH shopping item failed:');
     return c.json({ error: 'Lỗi cập nhật mặt hàng', code: 'DATABASE_ERROR' }, 500);
   }
 });
@@ -275,7 +275,7 @@ shoppingRoutes.delete('/shopping-list/items/:id', async (c) => {
 
     return c.json({ success: true, message: 'Đã xóa mặt hàng thành công' });
   } catch (err: any) {
-    console.error('D1 DELETE_SHOPPING_ITEM failed:', err);
+    console.error('D1 DELETE_SHOPPING_ITEM failed:');
     return c.json({ error: 'Lỗi xóa mặt hàng', code: 'DATABASE_ERROR' }, 500);
   }
 });

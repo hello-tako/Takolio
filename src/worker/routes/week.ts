@@ -759,7 +759,7 @@ weekRoutes.post('/week/plans', async (c) => {
   try {
     inventory = await fetchWeekInventory(c.env.DB, householdId, c.env.CACHE, auth?.userId);
   } catch (err) {
-    console.error('Failed loading inventory for weekly plan:', err);
+    console.error('Failed loading inventory for weekly plan:');
     return c.json({ error: 'Database service unavailable', code: 'DATABASE_UNAVAILABLE' }, 503);
   }
 
@@ -771,7 +771,7 @@ weekRoutes.post('/week/plans', async (c) => {
   try {
     await commitPlan(c, plan, householdId, auth.userId);
   } catch (err) {
-    console.error('Failed creating weekly meal plan:', err);
+    console.error('Failed creating weekly meal plan:');
     if (err instanceof WeekPlanConflictError) {
       return c.json({ error: 'Mã thực đơn đã thuộc hộ gia đình khác', code: 'CONFLICT' }, 409);
     }
@@ -814,7 +814,7 @@ weekRoutes.post('/week/plans/:id/generate', async (c) => {
   try {
     inventory = await fetchWeekInventory(c.env.DB, auth.householdId, c.env.CACHE, auth.userId);
   } catch (err) {
-    console.error('Failed loading inventory for weekly regeneration:', err);
+    console.error('Failed loading inventory for weekly regeneration:');
     return c.json({ error: 'Database service unavailable', code: 'DATABASE_UNAVAILABLE' }, 503);
   }
 
@@ -835,7 +835,7 @@ weekRoutes.post('/week/plans/:id/generate', async (c) => {
   try {
     await commitPlan(c, newPlan, auth.householdId, auth.userId);
   } catch (err) {
-    console.error('Failed regenerating weekly meal plan:', err);
+    console.error('Failed regenerating weekly meal plan:');
     return c.json({ error: 'Không thể lưu thực đơn tuần mới', code: 'DATABASE_ERROR' }, 503);
   }
 
@@ -884,7 +884,7 @@ weekRoutes.post('/week/plans/:id/meals/:mealId/swap', async (c) => {
     try {
       inventory = await fetchWeekInventory(c.env.DB, auth.householdId, c.env.CACHE, auth.userId);
     } catch (err) {
-      console.error('Failed loading inventory for meal alternatives:', err);
+      console.error('Failed loading inventory for meal alternatives:');
       return c.json({ error: 'Database service unavailable', code: 'DATABASE_UNAVAILABLE' }, 503);
     }
     const alternatives = getSwapAlternatives(targetSlot, inventory, (await authority).list());
@@ -901,7 +901,7 @@ weekRoutes.post('/week/plans/:id/meals/:mealId/swap', async (c) => {
   try {
     inventory = await fetchWeekInventory(c.env.DB, auth.householdId, c.env.CACHE, auth.userId);
   } catch (err) {
-    console.error('Failed loading inventory for meal swap:', err);
+    console.error('Failed loading inventory for meal swap:');
     return c.json({ error: 'Database service unavailable', code: 'DATABASE_UNAVAILABLE' }, 503);
   }
   const updatedPlan = swapMealInPlan(plan, mealId, newRecipe, inventory);
@@ -909,7 +909,7 @@ weekRoutes.post('/week/plans/:id/meals/:mealId/swap', async (c) => {
   try {
     await commitPlan(c, updatedPlan, auth.householdId, auth.userId);
   } catch (err) {
-    console.error('Failed swapping weekly meal:', err);
+    console.error('Failed swapping weekly meal:');
     return c.json({ error: 'Không thể lưu thay đổi món ăn', code: 'DATABASE_ERROR' }, 503);
   }
 
@@ -952,7 +952,7 @@ weekRoutes.patch('/week/plans/:id/meals/:mealId', async (c) => {
   try {
     await commitPlan(c, plan, auth.householdId, auth.userId);
   } catch (err) {
-    console.error('Failed updating weekly meal:', err);
+    console.error('Failed updating weekly meal:');
     return c.json({ error: 'Không thể lưu thay đổi bữa ăn', code: 'DATABASE_ERROR' }, 503);
   }
 
@@ -1010,7 +1010,7 @@ weekRoutes.patch('/week/plans/:id/shopping/items/:itemId', async (c) => {
   try {
     await commitPlan(c, plan, auth.householdId, auth.userId);
   } catch (err) {
-    console.error('Failed updating weekly shopping item:', err);
+    console.error('Failed updating weekly shopping item:');
     return c.json({ error: 'Không thể lưu danh sách mua hàng', code: 'DATABASE_ERROR' }, 503);
   }
 
@@ -1081,7 +1081,7 @@ weekRoutes.post('/week/plans/:id/shopping/complete', async (c) => {
       requestFingerprint
     );
   } catch (err) {
-    console.error('Failed claiming shopping import command:', err);
+    console.error('Failed claiming shopping import command:');
     return c.json({ error: 'Database service unavailable', code: 'DATABASE_UNAVAILABLE' }, 503);
   }
 
@@ -1429,7 +1429,7 @@ weekRoutes.post('/week/plans/:id/shopping/complete', async (c) => {
     if (err instanceof InventoryWriterAuthorityError || err instanceof InventoryWriterSnapshotError) {
       return c.json({ error: err.message, code: err.code }, 409);
     }
-    console.error('Failed saving shopping import to DB:', err);
+    console.error('Failed saving shopping import to DB:');
     if (err instanceof ShoppingImportUnitError) {
       return c.json(
         { error: 'Đơn vị mặt hàng không tương thích với nguyên liệu hiện có', code: 'UNIT_MISMATCH' },
@@ -1472,7 +1472,7 @@ weekRoutes.get('/week/preferences', async (c) => {
       });
     }
   } catch (err) {
-    console.error('Failed querying weekly preferences:', err);
+    console.error('Failed querying weekly preferences:');
     return c.json({ error: 'Database service unavailable', code: 'DATABASE_UNAVAILABLE' }, 503);
   }
 
@@ -1544,7 +1544,7 @@ weekRoutes.patch('/week/preferences', async (c) => {
     if (result && result.success === false) throw new Error('D1 preference update failed');
     return c.json({ success: true, preferences: merged });
   } catch (err) {
-    console.error('Failed saving weekly preferences to D1:', err);
+    console.error('Failed saving weekly preferences to D1:');
     return c.json({ error: 'Database service unavailable', code: 'DATABASE_UNAVAILABLE' }, 503);
   }
 });
@@ -1695,7 +1695,7 @@ async function completeAdoptedShoppingImport(c: any, db: any, kv: any, auth: Aut
       const failure = inventoryAuthorityFailure(error);
       return c.json({ error: error.message, code: failure.code }, failure.status);
     }
-    console.error('Adopted shopping import failed:', error);
+    console.error('Adopted shopping import failed:');
     return c.json({ error: 'Không thể nhập hàng vào tủ lạnh', code: 'DATABASE_ERROR' }, 500);
   }
 }

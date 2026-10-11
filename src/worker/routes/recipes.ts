@@ -704,7 +704,7 @@ recipeRoutes.post('/recipes/:id/cook/complete', tenancyGuard, async (c) => {
       }
     }
     if (err instanceof InventoryWriterAuthorityError) return c.json({ error: err.message, code: err.code }, 409);
-    console.error('D1 complete cooking transaction failed:', err);
+    console.error('D1 complete cooking transaction failed:');
     return c.json({ error: 'Lỗi hoàn tất nấu món trong cơ sở dữ liệu', code: 'DATABASE_ERROR' }, 500);
   }
 });
@@ -864,7 +864,7 @@ async function completeAdoptedCooking(c: any, db: any, kv: any, auth: AuthContex
       const failure = inventoryAuthorityFailure(error);
       return c.json({ error: error.message, code: failure.code }, failure.status);
     }
-    console.error('Adopted cooking failed:', error);
+    console.error('Adopted cooking failed:');
     return c.json({ error: 'Lỗi hoàn tất nấu món trong cơ sở dữ liệu', code: 'DATABASE_ERROR' }, 500);
   }
 }

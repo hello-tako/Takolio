@@ -240,7 +240,7 @@ async function confirmAdoptedScan(c: Context<{ Bindings: Env; Variables: { auth:
       // stock command commits; the whole confirmation fails closed instead.
       return c.json({ error: 'Không thể ghi nhận bằng chứng từ bản quét', code: 'INVALID_OBSERVATION' }, 422);
     }
-    console.error('Adopted scan confirmation failed:', error);
+    console.error('Adopted scan confirmation failed:');
     return c.json({ error: 'Lỗi xác nhận đưa nguyên liệu vào tủ lạnh', code: 'DATABASE_ERROR' }, 500);
   }
 }
@@ -1069,7 +1069,7 @@ scanRoutes.post('/scans/fridge', async (c) => {
     const batchResults = await db.batch(statements);
     assertBatchSucceeded(batchResults);
   } catch (err) {
-    console.error('D1 CREATE_SCAN batch failed:', err);
+    console.error('D1 CREATE_SCAN batch failed:');
     await persistScanFailure(db, scanId, auth, 'DATABASE_ERROR');
     await finalizeScanQuota(db, reservationId, 'released');
     return c.json({ error: 'Không thể lưu kết quả quét', code: 'DATABASE_ERROR' }, 500);
@@ -1309,7 +1309,7 @@ scanRoutes.post('/scans/receipt', async (c) => {
     const batchResults = await db.batch(statements);
     assertBatchSucceeded(batchResults);
   } catch (err) {
-    console.error('D1 receipt scan batch save failed:', err);
+    console.error('D1 receipt scan batch save failed:');
     await persistScanFailure(db, scanId, auth, 'DATABASE_ERROR');
     await finalizeScanQuota(db, reservationId, 'released');
     return c.json({ error: 'Không thể lưu kết quả hóa đơn', code: 'DATABASE_ERROR' }, 500);
@@ -1375,7 +1375,7 @@ scanRoutes.get('/scans/:id', async (c) => {
       },
     });
   } catch (err) {
-    console.error('D1 GET_SCAN failed:', err);
+    console.error('D1 GET_SCAN failed:');
     return c.json({ error: 'Lỗi truy vấn bản quét', code: 'DATABASE_ERROR' }, 500);
   }
 });
@@ -1923,7 +1923,7 @@ scanRoutes.post('/scans/:id/confirm', async (c) => {
     if (err instanceof InventoryWriterAuthorityError || err instanceof InventoryWriterSnapshotError) {
       return c.json({ error: err.message, code: err.code }, 409);
     }
-    console.error('D1 confirmScan items insert failed:', err);
+    console.error('D1 confirmScan items insert failed:');
     return c.json({ error: 'Lỗi xác nhận đưa nguyên liệu vào tủ lạnh', code: 'DATABASE_ERROR' }, 500);
   }
 });
