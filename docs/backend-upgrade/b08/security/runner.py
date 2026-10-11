@@ -10,6 +10,7 @@ from pathlib import Path
 import re
 import subprocess
 import sys
+import tempfile
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[3]
@@ -257,9 +258,35 @@ def snapshot(target):
             'installedNodeModulesScanned': False}
 
 
+def private_snapshot_directory(output, temporary_root=None):
+    # Test runners discover files below the repository, including ignored artifacts.
+    # Retain source bytes outside that tree; keep only a private pointer beside receipts.
+    temporary_root = Path(tempfile.gettempdir() if temporary_root is None else temporary_root).resolve()
+    if temporary_root.is_relative_to(ROOT):
+        raise ValueError('private snapshot temp directory must be outside repository')
+    storage = Path(tempfile.mkdtemp(prefix='takosan-b08-private-snapshot-', dir=temporary_root))
+    storage.chmod(0o700)
+    target = storage / 'source-snapshot-private'
+    target.mkdir(mode=0o700)
+    pointer = output / 'source-snapshot-pointer-private.json'
+    write_private(pointer, {'schemaVersion': 1, 'snapshotDirectory': str(target),
+                           'retention': 'RETAINED_FOR_PRIVATE_LOCAL_REVIEW',
+                           'storageBoundary': 'OUTSIDE_REPOSITORY_TEST_DISCOVERY_TREE'})
+    return target, sha(pointer)
+
+
 def selftest(scanners):
     fixtures = HERE / 'fixtures'
     cases = []
+    isolated, pointer_sha = private_snapshot_directory(scanners.output)
+    (isolated / 'discovery-isolation.test.ts').write_text('export const syntheticFixture = true;\n')
+    cases.append({'case': 'private-snapshot-outside-test-discovery-tree', 'status': 'PASS' if not isolated.resolve().is_relative_to(ROOT) and len(pointer_sha) == 64 else 'FAILED'})
+    try:
+        private_snapshot_directory(scanners.output, ROOT)
+        rejected = False
+    except ValueError:
+        rejected = True
+    cases.append({'case': 'repository-local-temp-root-rejected', 'status': 'PASS' if rejected else 'FAILED'})
     for name in ['semgrep', 'gitleaks', 'zizmor', 'syft']:
         for polarity in ['positive', 'negative']:
             result = scanners.scan(name, fixtures / name / polarity, f'selftest-{polarity}')
@@ -331,9 +358,10 @@ def main():
             metadata.update(selftest(scanners))
         else:
             # Freeze source bytes once, then run every scanner against the same tree.
-            target = output / 'source-snapshot-private'
-            target.mkdir()
+            target, pointer_sha = private_snapshot_directory(output)
             metadata['source'] = snapshot(target)
+            metadata['source'].update({'privateSnapshotStorage': 'OS_PRIVATE_TEMP_OUTSIDE_REPOSITORY',
+                                       'privateSnapshotPointerSha256': pointer_sha})
             results = []
             for name in ['semgrep', 'gitleaks', 'zizmor', 'syft']:
                 scope = target / '.github/workflows' if name == 'zizmor' else target

@@ -67,9 +67,13 @@ zizmor receives current `.github/workflows` files; the candidate workflow needs
 its own targeted review. No real provider request, email, deployment, or remote
 D1/R2 operation is part of this candidate.
 
-Outputs stay in ignored `.artifacts` directories with private permissions. Raw
-Semgrep/zizmor outputs and snapshots contain source text; SBOMs contain paths and
-package metadata. Gitleaks masks detected secrets, but raw reports still contain
+Scanner outputs stay in ignored `.artifacts` directories with private permissions.
+Source snapshots are retained in OS private temporary directories outside the
+repository, preventing copied test filenames from entering Vitest discovery.
+`source-snapshot-pointer-private.json` records the retained location privately;
+public receipts publish only its SHA256 and the copied tree content hash. A temp
+root inside the repository is rejected. Raw Semgrep/zizmor outputs and snapshots
+contain source text; SBOMs contain paths and package metadata. Gitleaks masks detected secrets, but raw reports still contain
 context and must remain private. Never print, attach, commit, or upload raw
 reports/logs/snapshots. Only `receipt.json` has public metadata: bounded statuses,
 versions, counts, known rule IDs (unknown IDs are hashed), and content/report
@@ -81,7 +85,8 @@ Real engine selftests cover positive/negative fixtures, known Semgrep rules,
 synthetic secret detection/redaction, unsafe/safe workflows, known SBOM package,
 empty SBOM, malformed workflow/output, unavailable tools, receipt integrity drift,
 revalidation after a prior success, partial SAST coverage, exit disagreement, and
-unredacted report rejection. Fixtures never contain a real credential.
+unredacted report rejection, and snapshot isolation from repository test discovery.
+Fixtures never contain a real credential.
 
 The actual local repository scan preserves these unresolved results:
 

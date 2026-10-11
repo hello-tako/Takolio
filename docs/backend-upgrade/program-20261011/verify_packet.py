@@ -60,8 +60,8 @@ for record in validation['rootCommandReceipts']:
 for record in validation['attachments']:
     raw = (ROOT / record['path']).read_bytes()
     assert len(raw) == record['bytes'] and sha(raw) == record['sha256'], record['path']
-required = ['program-full-tests-committed', 'program-build-committed', 'program-lint-committed',
-            'program-typecheck-committed', 'program-migrations-committed']
+required = ['program-full-tests-final-committed', 'program-build-final-committed', 'program-lint-final-committed',
+            'program-typecheck-final-committed', 'program-migrations-final-committed']
 for name in required:
     record = next(item for item in validation['rootCommandReceipts'] if item['name'] == name)
     assert record['exitCode'] == 0
@@ -69,6 +69,8 @@ for name in required:
     assert record['sourceBefore']['status'] == record['sourceAfter']['status'] == ''
 failed_full = next(item for item in validation['rootCommandReceipts'] if item['name'] == 'program-full-tests-frozen')
 assert failed_full['exitCode'] == 1
+interrupted = next(item for item in validation['rootCommandReceipts'] if item['name'] == 'program-full-tests-committed')
+assert interrupted['exitCode'] == 130
 assert validation['productionCertified'] is False and validation['securityCertified'] is False
 for record in validation['historicalSuffixes']:
     assert (ROOT / record['path']).read_bytes().endswith(blob(implementation, record['path']))
