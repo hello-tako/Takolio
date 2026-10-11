@@ -1,0 +1,274 @@
+{
+  "status": "VERIFIED_IMPLEMENTATION_AND_STAGED_RECEIPTS",
+  "recordedAtUtc": "2026-10-11T03:31:56.753606+00:00",
+  "implementationSha": "31d5fd860ef9b65fc38ccdc664074bda348b0a8c",
+  "baseSha": "98471e10d4b874219b069ec8b38a26fdd719db81",
+  "implementationFiles": [
+    {
+      "path": "docs/ai/DECISIONS.md",
+      "gitBlob": "3449e4dc20cf4b400e6adf611dfa81ae44e6a4bb",
+      "bytes": 164235,
+      "sha256": "bffd3e8e477d7452c3f90196020592c9aedd9633755107a7f524138a5eb5659a"
+    },
+    {
+      "path": "docs/backend-upgrade/b01b/B01a_PREIMPLEMENTATION_REVIEW.md",
+      "gitBlob": "92c3f4631c29d1d2834ff813941600e116ae3810",
+      "bytes": 10388,
+      "sha256": "7a145210f4313ca3e395a44e9faa294958bfa140ea83dc8be817339cb7ff2631"
+    },
+    {
+      "path": "docs/backend-upgrade/b01b/INBOX_CERTIFICATION_RUNBOOK.md",
+      "gitBlob": "9829f1609038003b5acab060c5b9473529c37d6c",
+      "bytes": 4061,
+      "sha256": "73950644c8a227380a6d29e579e846aeb4efe17263cecf2512ce9f12903b8922"
+    },
+    {
+      "path": "docs/backend-upgrade/b01b/review-record.json",
+      "gitBlob": "dde7954c178ac605d93d45439843d721b82eed41",
+      "bytes": 1626,
+      "sha256": "043c26e8f06409bd09d328377cae1390209a49792c2a94bd90445bf319db98b8"
+    },
+    {
+      "path": "docs/backend-upgrade/tasks/B01a-strict-otp.md",
+      "gitBlob": "52100c1007f55e25a3d98fc35fa0ae026e612e3c",
+      "bytes": 28940,
+      "sha256": "3114d7b798f093a950d3df0b0cfc27c156e5fd8d5ad1995a7bd4900e86efb4ba"
+    },
+    {
+      "path": "docs/backend-upgrade/tasks/B01b-email-adapter.md",
+      "gitBlob": "f11337f3062248f1093270de2891c358a74a0bfb",
+      "bytes": 4630,
+      "sha256": "8a5a22f0cf5b91ddf579d47ccfd000a0fea89626bf910692fd5e06c8e25e42e5"
+    },
+    {
+      "path": "src/worker/services/email.ts",
+      "gitBlob": "c5e749af92e5a2f26418df06ab9bd785f3217913",
+      "bytes": 13165,
+      "sha256": "7721143d005fc039dc6d3c2206ddd194bf9bd42791681249894d5c850bdddc2a"
+    },
+    {
+      "path": "tests/integration/auth-hardening.test.ts",
+      "gitBlob": "a936af77a9212fc015615429898bb1797a973f80",
+      "bytes": 65746,
+      "sha256": "78715be212c3af5eaab61e9996fc8edca1416168d82bd14a28051875cf1774e3"
+    },
+    {
+      "path": "tests/unit/email-lifecycle.test.ts",
+      "gitBlob": "23c369bbee26ffc2944b2bfc7daff948110b5474",
+      "bytes": 15122,
+      "sha256": "e4d70d43ccf4f86fc63cad000adc3d176cee0b7e724c338acd0dab503f8314c7"
+    },
+    {
+      "path": "tests/unit/email-privacy.test.ts",
+      "gitBlob": "f2a1d8caf0a6a2893be24fcbfce9848368ab3c43",
+      "bytes": 9213,
+      "sha256": "dd6b3b7230e77494298fd372e14f6c6fb30c41f1f99e3ba16714f760f998f6e1"
+    }
+  ],
+  "receiptPayloads": [
+    {
+      "path": "docs/ai/CURRENT_STATE.md",
+      "gitBlob": "8060afde31e3564841b64cfe22fe126c8f4b0134",
+      "bytes": 531756,
+      "sha256": "7d2c86aa3fe965010a74fbd30506f6cabc9b72c5294351e212415520cbad9cf0"
+    },
+    {
+      "path": "docs/ai/HANDOFF.md",
+      "gitBlob": "f991edd11a8a91996f0ab7af19b8ba42de5bdc40",
+      "bytes": 547720,
+      "sha256": "e4681074f17457407f2b7dc247644718aab9974e132e0ea8e597c7c0692d3152"
+    },
+    {
+      "path": "docs/ai/TASK_BOARD.md",
+      "gitBlob": "c69b3f38b72c08252ebfb88cb4b603684037b540",
+      "bytes": 395136,
+      "sha256": "07f21da8fa39e73596ddfe1c99761f705723d48fc589cb4be25b5f7a5fa10428"
+    },
+    {
+      "path": "docs/backend-upgrade/GAP_REGISTER.md",
+      "gitBlob": "786c3ac633a7520b07ebce18727870a3104dea36",
+      "bytes": 8303,
+      "sha256": "ef8477eab4c06a5c696414c9a29ea00ecb6d87eac3f438a705c1ecfe529adb78"
+    },
+    {
+      "path": "docs/backend-upgrade/README.md",
+      "gitBlob": "a3c6a5d929a63a1edbf94564865d3cf41a2da330",
+      "bytes": 6191,
+      "sha256": "5d4353476fcdc12f52fedc96fd9eaacb63ca56aedfdc7e9a725bee03d7926cb1"
+    },
+    {
+      "path": "docs/backend-upgrade/b01b/LOCAL_VALIDATION.md",
+      "gitBlob": "6b32aa7f79facbdab809c83f8542e43369472eb5",
+      "bytes": 4894,
+      "sha256": "2ae7ecaa4d98f2edf60f3152fc2b5723e3262d4d3ed7ab8bfacbb6c8cd14b6af"
+    },
+    {
+      "path": "docs/backend-upgrade/b01b/RESULT.md",
+      "gitBlob": "3cf7ded1962ab3f3a4963f9574dcfc19352ca784",
+      "bytes": 5469,
+      "sha256": "9e2536a502c4ccea61d2407489f0f0c8563cb3774a81448103b204141a6b155e"
+    },
+    {
+      "path": "docs/backend-upgrade/b01b/hung-subprocess.json",
+      "gitBlob": "72c7dfdca19be405388cbdebcde4136d0fd21a48",
+      "bytes": 1247,
+      "sha256": "7b5f77962af9868285b534c9f5b6b87e244cfe1468bfc93d204058fd2838a91a"
+    },
+    {
+      "path": "docs/backend-upgrade/b01b/logs/audit-full.log.gz",
+      "gitBlob": "565f3a456506ebe8b5222a32042e8f37d5687adc",
+      "bytes": 28931,
+      "sha256": "e43e1d9111efd94c60d63f94270effec913225233fdb842906c16cd27e678862"
+    },
+    {
+      "path": "docs/backend-upgrade/b01b/logs/audit-prod.log.gz",
+      "gitBlob": "db8dd7943f3677db3ccc63564cd13b8eb8fd2a10",
+      "bytes": 1361,
+      "sha256": "3489b6edbe1b906b173b7ac0da4c30412b6b1dbe5e8189dbe12169790df5db1c"
+    },
+    {
+      "path": "docs/backend-upgrade/b01b/logs/build.log.gz",
+      "gitBlob": "0676ddacadc81da43b47ea5204ee5cf07715e2a0",
+      "bytes": 2111,
+      "sha256": "c6a2c56629cfc47b71866acb525a2163dc3977b5d1b91c04ef312a2181169ac8"
+    },
+    {
+      "path": "docs/backend-upgrade/b01b/logs/catalog-focused.log.gz",
+      "gitBlob": "8ef0a1bd9fcdabd1882847d427eb6b0ce82b0d96",
+      "bytes": 1291,
+      "sha256": "ec696ed518e920b9c721b4dad7305456b2e02dbc3477b78748523a7f940c9257"
+    },
+    {
+      "path": "docs/backend-upgrade/b01b/logs/final-focused.log.gz",
+      "gitBlob": "e3f11b7443bed550700894738a50652bbc3ff0d1",
+      "bytes": 1453,
+      "sha256": "010d7499b9e84a4eefa67971f6683af3ac39986a4d4f1a033e2ac97277be3a7a"
+    },
+    {
+      "path": "docs/backend-upgrade/b01b/logs/final-lint.log.gz",
+      "gitBlob": "8661bf1c4d162ff6944eab22fde2bcbcc02d5a28",
+      "bytes": 102,
+      "sha256": "f30fa7ed9c927b041d14636d94e56f553561e7419673bedd310ae4d410bfedda"
+    },
+    {
+      "path": "docs/backend-upgrade/b01b/logs/final-typecheck.log.gz",
+      "gitBlob": "2f87630062d5c5f9f133cdb982cbd73a76d900de",
+      "bytes": 136,
+      "sha256": "790d24d163b15490f0225e2d5273a3a3ca033f1c15072f1ab806901aa06cb4bc"
+    },
+    {
+      "path": "docs/backend-upgrade/b01b/logs/first-regression.log.gz",
+      "gitBlob": "39f02e35ecf83925d6362effc7dc86fe3f5eb4c4",
+      "bytes": 239,
+      "sha256": "c3448e2aac55db7e3c7ec98b09cfc4b26ac954c1adb7792bfe547251fd1f39bf"
+    },
+    {
+      "path": "docs/backend-upgrade/b01b/logs/first-typecheck.log.gz",
+      "gitBlob": "5d446412d55291fd7255e8ecfda5cc2b5da4343a",
+      "bytes": 510,
+      "sha256": "05d357271e8e5ca651cbe04f8932ecb927e50a5e827b68fbc8599416b19dd90c"
+    },
+    {
+      "path": "docs/backend-upgrade/b01b/logs/focused-email-auth.log.gz",
+      "gitBlob": "333f036c3c6cc85a187a173892de7062ee1641d4",
+      "bytes": 1395,
+      "sha256": "5bb77c23fccc04cce0ff9639085ad4e4c84472dbb839afae6d2e9cc8c944d30c"
+    },
+    {
+      "path": "docs/backend-upgrade/b01b/logs/focused-email.log.gz",
+      "gitBlob": "3366b23670120ca37dad6e416b90272cc79a376e",
+      "bytes": 663,
+      "sha256": "4a9c28ede9257faddb13552e2a69b5605a5b6d7ed802c82dbb90e771861b1278"
+    },
+    {
+      "path": "docs/backend-upgrade/b01b/logs/frozen-install.log.gz",
+      "gitBlob": "80c3eee4aab2161dedae1831ff0a1d90a7a18141",
+      "bytes": 291,
+      "sha256": "ac898fed03cf5025b488cce635e996f0fcc47dde8712c10f37a5aa172fefbc22"
+    },
+    {
+      "path": "docs/backend-upgrade/b01b/logs/full-tests-rerun.log.gz",
+      "gitBlob": "9aac36ad0f7e2d424684c576e34738857f7ff7fd",
+      "bytes": 50567,
+      "sha256": "c1a50a0ad84bf7ac255d9b5237a4fa1ffc145bfcba52fddeca5d5eda3c1651fc"
+    },
+    {
+      "path": "docs/backend-upgrade/b01b/logs/full-tests.log.gz",
+      "gitBlob": "ddab4760c577235a5abc23b7d401b9dc2e0364e2",
+      "bytes": 53581,
+      "sha256": "59af2c4e78b2b0ca6172ade1d197a13e5fce6bb662d1d5129d78af33eb8ba72c"
+    },
+    {
+      "path": "docs/backend-upgrade/b01b/logs/hung-python-sample.log.gz",
+      "gitBlob": "5781b0d89910885d665fb38a82a70d6819f81954",
+      "bytes": 20632,
+      "sha256": "11f0b9ae8ace2e5790433b76dd0545eb3a6604700d663cb56cb5d4a52b1ca464"
+    },
+    {
+      "path": "docs/backend-upgrade/b01b/logs/hung-worker-sample.log.gz",
+      "gitBlob": "8ae03389f998a5fc13caa05d2bd61064df5fd601",
+      "bytes": 24154,
+      "sha256": "07a4e468a551789ccf8b6adc771ed531c02ae5a74c7141d20b171950edcc5993"
+    },
+    {
+      "path": "docs/backend-upgrade/b01b/logs/lint.log.gz",
+      "gitBlob": "8661bf1c4d162ff6944eab22fde2bcbcc02d5a28",
+      "bytes": 102,
+      "sha256": "f30fa7ed9c927b041d14636d94e56f553561e7419673bedd310ae4d410bfedda"
+    },
+    {
+      "path": "docs/backend-upgrade/b01b/logs/migrations.log.gz",
+      "gitBlob": "a3e057d02486e262aa17df8a6a0479a6cae5f3e6",
+      "bytes": 132,
+      "sha256": "d45694e01d3c87e54e90c9a8b218e9260181b666a7550df4151578acca503d20"
+    },
+    {
+      "path": "docs/backend-upgrade/b01b/logs/reproduce-duplicate-fallback.log.gz",
+      "gitBlob": "2486f00b4ca522a1a3e35790127d1ab945c7ee11",
+      "bytes": 715,
+      "sha256": "b197f9db6364bed51c66ac530a786af71af11c311a3ccc8416cd7ddcd579b57f"
+    },
+    {
+      "path": "docs/backend-upgrade/b01b/logs/scope-freeze.log.gz",
+      "gitBlob": "04149c5ee3acfb42409c76bb72cd31a596d09c07",
+      "bytes": 206,
+      "sha256": "b2936c1f8238ed71235ca742f515af6172a8420f7543b83dce483c3a35cfff0d"
+    },
+    {
+      "path": "docs/backend-upgrade/b01b/logs/typecheck.log.gz",
+      "gitBlob": "2f87630062d5c5f9f133cdb982cbd73a76d900de",
+      "bytes": 136,
+      "sha256": "790d24d163b15490f0225e2d5273a3a3ca033f1c15072f1ab806901aa06cb4bc"
+    },
+    {
+      "path": "docs/backend-upgrade/b01b/review-record.json",
+      "gitBlob": "f405cf034fdfab4b51cb46f32602aa8ab07bc95a",
+      "bytes": 2236,
+      "sha256": "7e1a795728550431b6233742c9de00a6e61e1384e667f5a3289eb6041ffa2fdb"
+    },
+    {
+      "path": "docs/backend-upgrade/b01b/validation.json",
+      "gitBlob": "9f93a6bdbe5df51724a27129051080bfa02a28c3",
+      "bytes": 22249,
+      "sha256": "6d66e972e01f335a77070abbc0aaf34951df4a0866996d89d7d3f58903fd50fc"
+    },
+    {
+      "path": "docs/backend-upgrade/tasks/B01b-email-adapter.md",
+      "gitBlob": "77b53313da590513969d3c186ef2beb401006589",
+      "bytes": 5012,
+      "sha256": "39feca8e592b66595abee738e8f435dee00550b357b0b61a2609d024a13550a6"
+    },
+    {
+      "path": "docs/backend-upgrade/tasks/INDEX.md",
+      "gitBlob": "e34253b5fff58c437ea873ea32566b4934d39864",
+      "bytes": 3643,
+      "sha256": "a6a012faf8a8fe743572bac1a6e7a12b12bdbd7a51426711961f118506800da3"
+    }
+  ],
+  "verifiedRawCommandLogs": 19,
+  "verifiedStackSamples": 2,
+  "sourceFilesFrozen": 4,
+  "historyPreserved": true,
+  "runtimeProtectedDiffEmptyAfterImplementation": true,
+  "selfReferencePolicy": "Receipt manifest and GIT_VERIFICATION.md exclude their own hashes; no own commit hash claimed."
+}

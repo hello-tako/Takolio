@@ -1,12 +1,12 @@
 # Backend upgrade - Task index
 
-Base `652e0d7632745e9b77cda4b5b3caac83a3ec1015`, repository ID `1385308553`. Status của packet là khả năng bắt đầu work, không completion. Runtime code của các backend packets chưa được triển khai trong B00.
+Base `652e0d7632745e9b77cda4b5b3caac83a3ec1015`, repository ID `1385308553`. Status của packet là khả năng bắt đầu work, không completion. B00 là docs-only baseline; email adapter B01b A1 đã được triển khai và kiểm chứng local riêng, các packets khác chưa triển khai runtime.
 
 | Packet | Status / dependency | Artifact / owner |
 | --- | --- | --- |
 | B00 | BASELINE_CHECKPOINT; actual checks trong manifest | [Baseline](../README.md), coordinator |
 | B01a | READY_OFFLINE; policy ADR draft trước integration | [Strict OTP](B01a-strict-otp.md), Security |
-| B01b | A1 READY_OFFLINE trước B01a wiring; inbox E2E sau B01a/operator inputs | [Supporting packets](BACKLOG_PACKETS.md#b01b---email-lifecycle), Backend/QA |
+| B01b | A1_LOCAL_VERIFIED; strict issuance/inbox E2E sau B01a/operator inputs | [Email adapter A1](B01b-email-adapter.md), Backend/QA |
 | B01c | READY_OFFLINE; current route policy, reproduce trước fixes | [Supporting packets](BACKLOG_PACKETS.md#b01c---authtenant-adversarial-matrix), Security/QA |
 | B02a/b | DESIGN_ONLY / protected billing scope; refund optional | [Supporting packets](BACKLOG_PACKETS.md#b02---billing-design-and-reconciliation), Billing |
 | B03a | A1 READY_OFFLINE; A2/A3 licensed data/labels/budget pending | [Dataset/evaluator](B03a-golden-dataset.md), AI QA |

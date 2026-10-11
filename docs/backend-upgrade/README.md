@@ -1,3 +1,14 @@
+# Backend upgrade - Current local checkpoint
+
+B01b email adapter A1 is locally verified on `31d5fd860ef9b65fc38ccdc664074bda348b0a8c`.
+Final focused 174 tests and full 289 files / 6798 tests PASS; required local
+lint/typecheck/migration/build/install gates PASS. Initial full-suite interruption
+and audit findings are retained, with limits and next B01a slice in
+[b01b/RESULT.md](b01b/RESULT.md). Provider acceptance is not inbox delivery; strict
+issuance/client integration and hosted certification remain pending.
+
+---
+
 # B00 - Canonical backend baseline
 
 Ngày: 2026-10-11 JST. Trạng thái và local gates được ghi trong `b00/baseline.json` và `b00/LOCAL_VALIDATION.md`.

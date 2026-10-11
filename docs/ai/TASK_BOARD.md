@@ -1,3 +1,43 @@
+# B01b email adapter A1 local checkpoint - 2026-10-11 JST
+
+**Task/status:** `B01b_A1_LOCAL_VERIFIED`; mocked provider-acceptance adapter only.
+Active packet docs/backend-upgrade/tasks/B01b-email-adapter.md.
+
+**Repository/source:** Canonical vn-tak/Tako-san, ID1385308553; worktree
+/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo, branch
+codex/backend-b01b-email. Base `98471e10d4b874219b069ec8b38a26fdd719db81`; implementation `31d5fd860ef9b65fc38ccdc664074bda348b0a8c`.
+Main reverified unchanged at 652e0d7632745e9b77cda4b5b3caac83a3ec1015.
+Documentation receipt records the implementation, not its own commit hash.
+
+**Actual changes:** email.ts bounded states/evidence, conservative ambiguity/no
+blind fallback, 8000ms/provider deadline and late-outcome fences, bounded metadata
+and private ID hashes. Only exact sender rejections permit fallback; policy/quota
+rejections terminate. 54 new lifecycle cases; 16 privacy cases updated; one typed auth
+mock changed without assertion changes. No auth route/schema/frontend/config edits.
+
+**Executed checks:** final focused 4 files / 174 tests PASS; fresh complete
+289 files / 6798 tests PASS. Full lint/typecheck/frozen install/local migrations/
+build/scope freeze PASS. Initial full interrupted/failed: 288 files / 6797 tests PASS,
+1 file/test FAIL plus 1 RPC error; task-owned Python child blocked on stdin, terminated.
+Unchanged catalog-only 163/163 PASS; final full rerun separate. Exact environment,
+commands/timing/exits/hashes/raw gzip in b01b/validation.json and LOCAL_VALIDATION.md.
+Fresh audit exit 1: full 2 critical / 16 high / 19 moderate / 4 low, prod 2 moderate, 0 high/critical;
+unchanged lockfile, B08 triage pending. No timeout/source/assertion waiver.
+
+**Operational limits:** accepted is not delivered; no inbox/bounce/provider proof.
+Legacy auth still invalidates on false and clears resend KV cooldown; across-request
+strict issuance/generation safety remains B01a. Only synthetic local tests; no real
+mail/paid AI/remote D1/R2/push/PR/merge/deploy. No production certification.
+
+**Next action:** B01a reviewed ADR + additive schema/typed commands/dormant real
+comparison kernel, concurrency/CAS0/required-write rollback tests, then all issue/
+verify/reset/client integration. Settle unknown-generation recovery, all-state
+forgot parity, reset-proof replay expiry and non-cascading abuse history. Hosted
+D1 proof/hardened rollback and B01b inbox certification remain separate gates.
+See docs/backend-upgrade/b01b/RESULT.md and B01a_PREIMPLEMENTATION_REVIEW.md.
+
+---
+
 # B00 backend baseline checkpoint - 2026-10-11 JST
 
 **Task/status:** B00_BASELINE_COMPLETE_WITH_RECORDED_FINDINGS; docs/source/local baseline, backend runtime waves not implemented. Active packet `docs/backend-upgrade/tasks/B00-baseline.md`.

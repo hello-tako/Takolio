@@ -1,3 +1,15 @@
+# B01b A1 gap progress - 2026-10-11 JST
+
+MAIL-01 partially addressed locally by `31d5fd860ef9b65fc38ccdc664074bda348b0a8c`: bounded acceptance/unknown
+states, deadlines and conservative same-call fallback. Across-request cooldown/
+generation, delivered/bounced evidence and inbox certification remain open.
+SEC-01/02/03 remain pending B01a. B08 additionally tracks the unchanged catalog
+execFileSync stdin hang: initial suite interrupted/failed, catalog-only 163 PASS
+and fresh complete 289 files / 6798 tests PASS preserved separately.
+Audit findings remain unchanged; no release-readiness promotion.
+
+---
+
 # B00 - Gap register
 
 Source pin `652e0d7632745e9b77cda4b5b3caac83a3ec1015`. `SOURCE_VERIFIED` là quan sát code/candidate, không chứng minh exploitation hay production corruption. TARGET là điều kiện triển khai, không số đo đã đạt.

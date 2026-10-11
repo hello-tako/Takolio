@@ -40,5 +40,22 @@
     "legacy auth invalidation and resend cooldown remain pending B01a",
     "no real inbox/bounce/provider certification",
     "source review does not certify hosted D1 or production"
-  ]
+  ],
+  "evidenceReview": {
+    "reviewer": "email_contract_review",
+    "recordedAtUtc": "2026-10-11T03:31:54.152982+00:00",
+    "implementationSha": "31d5fd860ef9b65fc38ccdc664074bda348b0a8c",
+    "verifiedCommandLogs": 19,
+    "verifiedStackSamples": 2,
+    "verifiedFrozenSourceFiles": 4,
+    "gzipAndRawHashesMatch": true,
+    "sourceMatchesImplementation": true,
+    "terminalSummariesMatch": true,
+    "initialFullClassification": "INTERRUPTED_FAILED",
+    "remainingConcreteFindings": [],
+    "limits": [
+      "agent review is not human PR approval",
+      "no inbox or production certification"
+    ]
+  }
 }

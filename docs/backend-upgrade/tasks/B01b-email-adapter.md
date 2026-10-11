@@ -75,3 +75,10 @@ send or production rollout in A1. B01b E2E follows B01a and operator inbox input
 Rollback uses a reviewed adapter retaining conservative unknown handling; never
 restore unconditional fallback after an ambiguous native send. No durable schema
 or data rollback is introduced by this checkpoint.
+
+## Local checkpoint receipt
+
+A1_LOCAL_VERIFIED; implementation `31d5fd860ef9b65fc38ccdc664074bda348b0a8c`. Final focused 4 files / 174 tests and
+full 289 files / 6798 tests PASS; lint/typecheck/migration/build/frozen-install PASS.
+Initial interrupted full run and dependency findings remain recorded.
+See [RESULT.md](../b01b/RESULT.md) and validation.json for actual gates/limits.
