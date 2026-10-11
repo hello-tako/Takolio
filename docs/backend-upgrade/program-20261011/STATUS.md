@@ -1,6 +1,6 @@
 # Backend program - aggregate checkpoint
 
-Client date: 2026-10-12 JST. Status: LOCAL_IMPLEMENTATION_COMPLETE_FINAL_GATES_IN_PROGRESS.
+Client date: 2026-10-12 JST. Status: LOCAL_IMPLEMENTATION_VERIFIED_WITH_BLOCKING_SECURITY_AND_EXTERNAL_GATES.
 Canonical repository vn-tak/Tako-san, ID1385308553. Worktree:
 /Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo.
 Branch codex/backend-program-20261011. Base receipt:
@@ -26,13 +26,15 @@ B01b A1 receipts remain immutable. Local changes do not certify the whole master
 | B06a/b |15 whole-week +69 closed-loop tests across legacy/native and Week compatibility; minimal cannotBuy/response-loss/repeated-line allocation fixes | Hosted browser/load/real-world journeys; new partial-quantity/substitution UX is separate product scope |
 | B07a/b | Typed Week read extraction with exact SQL/query/cache/body parity; four-route deterministic OpenAPI/consumer proposal;5 new contract tests | Structural OpenAPI does not encode all refinements/transforms or certify generated clients; broader route extraction remains incremental |
 | B08a | Bounded server-generated correlation, trusted route templates/status/duration/error class;59 focused tests and privacy capture | Repository-wide log privacy and hosted collectors/alerts; seven-day observed SLO and thresholds unavailable |
-| B08b | Fresh audit41 full findings/2 prod moderate; triage and least-privilege scanner/SBOM policy; concrete local candidate being verified | Remediation/independent workflow review/hosted checks; no vulnerability exception or clean pipeline claimed |
+| B08b | Fresh audit41 full findings/2 prod moderate; triage and least-privilege scanner/SBOM policy; pinned4-engine executable candidate;24 actual selftests PASS; repository scan FAILED | Audit remediation,16 unreviewed secret matches,72 workflow findings and1 SAST parsing error; hosted checks; no exception or clean pipeline |
 | B08c | Read-only Wrangler4/Node/Vitest/Workers-types feasibility with exact version evidence | Separate upgrade and compatibility-date packets after remediation; staging CLI/bindings/release certificate |
 | R01+ | Exact-SHA approval/migration/rollback/canary/post-smoke checklist retained | Explicit operator release task; no remote write/deploy/push/PR/merge performed |
 
+Implementation commit: `7ef2f8407d3a6a958c78146db3b5c9a9f0990b78`.
+
 Current local evidence:209 combined regression tests PASS; required frozen install,
-lint/typecheck/migration smoke PASS; isolated D1 exact40/reapply0/pending0/schema[]/
-FK[]/quick_checkok; two sequential builds match all387 client assets. The first
+lint/typecheck/migration smoke PASS; isolated D1 exact 40 / reapply 0 / pending 0 / schema[]/
+FK[]/quick_check ok; two sequential builds match all387 client assets. The first
 parity attempt failed on Python3.9 tar API; the second showed only dependency source
 paths in sourcemaps because node_modules was symlinked. Independent frozen offline
 installs resolved the build-input mismatch; no application source change was needed.
@@ -42,7 +44,15 @@ are retained: first auth/evaluator/test fixtures/type narrowing, cancellation fi
 Week historical defaults, OpenAPI basename/module resolution, mutable-byte proof
 reproduction, consumer aliases without tsconfig, and freeze Unicode Git quoting.
 Corrections preserve existing contracts and strengthen actual regression coverage.
-Full final tests, committed-source gates and final immutable receipt are in progress.
+Final committed-source 309 files / 7463 tests PASS on `7ef2f8407d3a6a958c78146db3b5c9a9f0990b78`;
+lint/typecheck/migrations and sequential build PASS with clean tree before/after.
+First full run failed 62 payment tests because its session fixture omitted current
+household membership. Adding only 6 fixture lines restored 126 auth/payment tests;
+all existing assertions and payment runtime are independently byte-protected.
+Pinned security selftests 24 PASS; actual repository findings/errors remain blocked.
+Final freeze: 50 source / 30 candidate inputs / 1847 protected; independent actual Git
+blob and executable-bit proof PASS. Immutable receipts/raw public logs and review
+records are in validation.json, source-freeze-final.json and attachments/.
 
 External and later isolated gates remain explicit dependencies, not synthetic passes.
 No DATA_CERTIFIED, QUALITY_CERTIFIED, STAGING_CERTIFIED or PRODUCTION_APPROVED state

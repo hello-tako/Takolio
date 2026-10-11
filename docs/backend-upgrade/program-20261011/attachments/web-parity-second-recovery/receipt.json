@@ -1,0 +1,53 @@
+{
+  "status": "LOCAL_ASSET_PARITY_VERIFIED",
+  "baseSha": "1963c469e2e3bd4819cda6bb9ef8162101ad523a",
+  "candidateSha": "1963c469e2e3bd4819cda6bb9ef8162101ad523a",
+  "candidateStatus": " M docs/ai/CURRENT_STATE.md\n M docs/ai/DECISIONS.md\n M docs/ai/HANDOFF.md\n M docs/ai/TASK_BOARD.md\n M packages/ai/src/providers/qwen.ts\n M packages/ai/src/router.ts\n M packages/ai/src/task-runtime.ts\n M packages/ai/src/types.ts\n M src/worker/index.ts\n M src/worker/middleware/auth.ts\n M src/worker/middleware/tenancy.ts\n M src/worker/routes/notifications.ts\n M src/worker/routes/recipes.ts\n M src/worker/routes/scans.ts\n M src/worker/routes/week.ts\n M src/worker/services/scan-queue.ts\n M src/worker/utils/week-shopping.ts\n?? docs/backend-upgrade/b01c/\n?? docs/backend-upgrade/b02/\n?? docs/backend-upgrade/b03a/\n?? docs/backend-upgrade/b03b/\n?? docs/backend-upgrade/b04a/\n?? docs/backend-upgrade/b04b/\n?? docs/backend-upgrade/b05a/\n?? docs/backend-upgrade/b06/\n?? docs/backend-upgrade/b07/\n?? docs/backend-upgrade/b08/\n?? docs/backend-upgrade/program-20261011/\n?? packages/ai/src/scan-compatibility-v3.ts\n?? packages/ai/src/scan-contract-v3.ts\n?? packages/ai/src/scan-envelope.ts\n?? packages/ai/src/task-provider.ts\n?? packages/db/src/scan-ai-budget.ts\n?? packages/db/src/week-read-repository.ts\n?? packages/recipes/src/ingredient-review-manifest.ts\n?? qa/ocr/v3/\n?? scripts/planner-contract.mjs\n?? scripts/planner-openapi.ts\n?? scripts/scan-v3-eval.mjs\n?? scripts/scan-v3-scoring.ts\n?? src/worker/observability/\n?? src/worker/services/week-read.ts\n?? tests/fixtures/scan-v3/\n?? tests/integration/auth-tenant-adversarial.test.ts\n?? tests/integration/backend-request-telemetry.test.mjs\n?? tests/integration/backend-shopping-cooking.test.ts\n?? tests/integration/backend-week-read-contract.test.ts\n?? tests/integration/backend-whole-week.test.ts\n?? tests/integration/scan-ai-budget.test.ts\n?? tests/integration/scan-cancellation.test.ts\n?? tests/unit/ai-task-provider.test.ts\n?? tests/unit/backend-planner-openapi.test.ts\n?? tests/unit/ingredient-review-manifest.test.ts\n?? tests/unit/ingredient-review-source-buffer.test.ts\n?? tests/unit/request-telemetry.test.ts\n?? tests/unit/scan-compatibility-v3.test.ts\n?? tests/unit/scan-contract-v3.test.ts\n?? tests/unit/scan-v3-dataset.test.ts\n?? tests/unit/scan-v3-evaluator.test.ts\n",
+  "buildInputs": {
+    "GIT_COMMIT": "1963c469e2e3bd4819cda6bb9ef8162101ad523a",
+    "BUILD_TIMESTAMP": "2026-10-11T00:00:00.000Z",
+    "npm_package_version": "0.1.0",
+    "VITE_MEAL_COMPOSITION_V2_ENABLED": "true",
+    "VITE_MEAL_PLANNER_ENABLED": "true"
+  },
+  "sourceArchiveSha256": "b78c5ceffdbe780a0210ffff91ac869e47bb50f2032b95fde020d798d8633376",
+  "lockfileSha256": "b9f5c384b33f25a1ccfb05bb10258ea95182a32434678d5087b2f62be8d26867",
+  "clientAssetCount": 387,
+  "commands": [
+    {
+      "name": "base-install",
+      "command": [
+        "pnpm",
+        "install",
+        "--frozen-lockfile",
+        "--offline"
+      ],
+      "cwd": "/private/tmp/takosan-program-web-base-yi5jpmqi",
+      "exitCode": 0,
+      "logSha256": "1f3161858a58ec32d526cd8b4f68e3f78c49b7c894d66723168e7ab9e2dcce87"
+    },
+    {
+      "name": "base",
+      "command": [
+        "pnpm",
+        "build"
+      ],
+      "cwd": "/private/tmp/takosan-program-web-base-yi5jpmqi",
+      "exitCode": 0,
+      "logSha256": "c219acfa6cb0f702e28b30c87a0b48299dbf04401fab6177142e0977ec30781c"
+    },
+    {
+      "name": "candidate",
+      "command": [
+        "pnpm",
+        "build"
+      ],
+      "cwd": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+      "exitCode": 0,
+      "logSha256": "3df0634afd003cb1feede90bd6266f6b47c0dbf182d7d449716861792de10146"
+    }
+  ],
+  "sameClientAssetBytes": true,
+  "temporaryBaselineDirectory": "/private/tmp/takosan-program-web-base-yi5jpmqi",
+  "productionCertified": false
+}

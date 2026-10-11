@@ -1,0 +1,88 @@
+{
+  "packet": "B04a",
+  "classification": "CODE_COMPLETE_RUNTIME_ADAPTER_CANDIDATE_PENDING_INDEPENDENT_REVIEW",
+  "branch": "codex/backend-program-20261011",
+  "head": "1963c469e2e3bd4819cda6bb9ef8162101ad523a",
+  "node": "v25.9.0",
+  "pnpm": "10.33.2",
+  "checks": {
+    "focusedTests": {
+      "exit": 0,
+      "files": 3,
+      "tests": 67,
+      "newTests": 32,
+      "legacyTests": 35
+    },
+    "scopedLint": {
+      "exit": 0
+    },
+    "scopedTypes": {
+      "exit": 0,
+      "config": ".artifacts/backend-program-20261011/b04a-runtime/tsconfig.scoped.json"
+    },
+    "diffCheck": {
+      "exit": 0
+    }
+  },
+  "ownedFilesSha256": {
+    "packages/ai/src/types.ts": "3958dcc9346b71fb1d0dcf5ed3908ac09d13de70173b8a8799f0b52809636e0f",
+    "packages/ai/src/task-provider.ts": "998a98247d279a18d40108717ba2667de3d908458648f4010f12e6e2030ab19f",
+    "packages/ai/src/task-runtime.ts": "95ef732e4fd510042d278310a80c7a38c122f3c1b524fdfc90d562bc4e162424",
+    "packages/ai/src/providers/qwen.ts": "f9fc0314f42e7037b28b0a7c8c3cf231897c69b1a57740a62043d40de1fd8355",
+    "tests/unit/ai-task-provider.test.ts": "4ab98560a9ad6c91868b5928997a51ca8489e415be9196af70080f51c29d2bd3",
+    "docs/backend-upgrade/b04a/ADR-B04a-001.md": "c6db8498ea55cc46a655453a9f387d012481b09b3c0cfb55c48814b9fa0edfd1"
+  },
+  "protectedFilesUnchanged": {
+    "packages/ai/src/router.ts": {
+      "sha256": "3b2c95f371f6a3e35fc25119a14105b17af65167283bc7e5144ce76ee5f80803",
+      "unchangedFromHead": true
+    },
+    "packages/ai/src/schemas.ts": {
+      "sha256": "49b309e373e573b121ad5ad42a0cdcd53cf647a5944d6169f655553deecb0747",
+      "unchangedFromHead": true
+    },
+    "packages/ai/src/quality-gate.ts": {
+      "sha256": "0be0a9fcd1b3226622ffbd905c894be2c9d1bd71d28cca7d764a520b42faa6c1",
+      "unchangedFromHead": true
+    },
+    "packages/ai/src/index.ts": {
+      "sha256": "69fcc601c1eae57b1f676b4589adc73bc2f939fe92542fe6985cd8c9c1405902",
+      "unchangedFromHead": true
+    },
+    "src/worker/routes/scans.ts": {
+      "sha256": "1291a3c1f8c53501bcd4f1f8f63420bfcb4d881c480748872e9a4adbc51eefeb",
+      "unchangedFromHead": true
+    },
+    "src/worker/services/scan-queue.ts": {
+      "sha256": "e40b5c5ecd757f5ac86db8727f84b30553593646c0dc6bdeca41bb9863f22aaa",
+      "unchangedFromHead": true
+    },
+    "wrangler.jsonc": {
+      "sha256": "c91126d5d08d39d2f86018226249bafef1a916f7c5783619535cfe139a156598",
+      "unchangedFromHead": true
+    },
+    "package.json": {
+      "sha256": "8255751d5a8f61bdc218b21e7822073afcaa509f62a097a97858ff8896da610b",
+      "unchangedFromHead": true
+    },
+    "pnpm-lock.yaml": {
+      "sha256": "b9f5c384b33f25a1ccfb05bb10258ea95182a32434678d5087b2f62be8d26867",
+      "unchangedFromHead": true
+    }
+  },
+  "limitations": [
+    "No full tests/build/migration/network/provider call or production mutation",
+    "No queue/route/config/index wiring or candidate-provider enablement",
+    "No durable per-job reservation/settlement/cancellation CAS",
+    "inputTokenBound:null; estimates do not certify paid spend ceilings",
+    "No dataset/provider/staging/production certificate"
+  ],
+  "evaluatorIndependentReview": {
+    "originalFindings": [
+      "UNKNOWN hallucination erased by changed occurrence IDs",
+      "Missing job cost evidence incorrectly computable",
+      "Custom usable definition differed from contract"
+    ],
+    "resolution": "Rechecked in memory: renamed IDs keep assertedKnown=1; unassessed slots=38 and INCONCLUSIVE_MISSING_FIELDS; missingCostJobs=1 and normalized cost=null; usability derives assessScanV3"
+  }
+}

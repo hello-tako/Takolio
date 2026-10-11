@@ -1,0 +1,35 @@
+{
+  "command": [
+    "node",
+    "scripts/scan-v3-eval.mjs",
+    "--dry-run",
+    "--output",
+    ".artifacts/backend-program-20261011/scan-v3-report-lock.json"
+  ],
+  "exitCode": 0,
+  "deterministicBytes": true,
+  "reportPath": ".artifacts/backend-program-20261011/scan-v3-report-lock.json",
+  "reportSha256": "4761fbe03c5cd491bc3f30ddb2e9f0cbfc8d4530cce64230e37f7082f795c6ec",
+  "sourceHashes": [
+    {
+      "path": "scripts/scan-v3-eval.mjs",
+      "sha256": "e33c850db96c157095d02c2866c9233c87ef779c4362030d6a8e87c8c8084382"
+    },
+    {
+      "path": "scripts/scan-v3-scoring.ts",
+      "sha256": "4c86dab662d7c45a67483180d57915a2910bc71e47529cf2a933f4c1b1af5ea7"
+    },
+    {
+      "path": "packages/ai/src/scan-contract-v3.ts",
+      "sha256": "97fcee5ad7ef16b0c32a6eadeea8c4f8ed19586a0729feae343acb472fa75c93"
+    },
+    {
+      "path": "packages/ai/src/schemas.ts",
+      "sha256": "49b309e373e573b121ad5ad42a0cdcd53cf647a5944d6169f655553deecb0747"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "sha256": "b9f5c384b33f25a1ccfb05bb10258ea95182a32434678d5087b2f62be8d26867"
+    }
+  ]
+}

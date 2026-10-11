@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "classification": "ACTUAL_LOCAL_REVIEW_DISCOVERY_RECOVERY_ADDENDUM",
+  "status": "PASS",
+  "reviewer": "a2_transaction",
+  "baseSha": "1963c469e2e3bd4819cda6bb9ef8162101ad523a",
+  "previousImplementationSha": "d16d935877992406901a3afcaceaae612344ad73",
+  "implementationSha": "7ef2f8407d3a6a958c78146db3b5c9a9f0990b78",
+  "attachments": [
+    {
+      "path": ".artifacts/backend-program-20261011/a2-transaction-review-record.json",
+      "bytes": 6730,
+      "sha256": "bdbbafa2c03ff31a94efc2940a6e631b2de1e9e9f11dcb790ff6b0a146439e50",
+      "safeMetadata": true
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/security-agent-isolation/receipt.json",
+      "bytes": 896,
+      "sha256": "9da3bc1b2d885debe93f21a252d0873c2fe9c791daf83a7c414cc8edcb762731",
+      "safeMetadata": true
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/security-agent-isolation/symlink-relocation-receipt.json",
+      "bytes": 1884,
+      "sha256": "c3335e858383a671c93717b0335410af43d082239666182bab26c4c5a04eb1ae",
+      "safeMetadata": true
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/scope-agent-release-review.json",
+      "bytes": 678194,
+      "sha256": "67869d0d465be01cf9d675ed09cf7a5ffddf840e21d27c42fa1665d15966359c",
+      "safeMetadata": true
+    }
+  ],
+  "checks": [
+    "Private scanner snapshots are allocated outside the repository with storage/target0700 and private pointer0600",
+    "Repository/nested-artifact/symlink-to-root/default-temp-inside-root allocations are rejected",
+    "Cloned test-named source bytes are preserved outside discovery tree",
+    "Independent helper symlink fixture accidentally increased root test discovery; moved outside repository preserving target/mode without deletion",
+    "Current artifact files and symlink targets contain zero test/spec-named files",
+    "All50application source bytes match original d16 Git blobs; recovery changes only README/runner/verify_packet",
+    "All50source+30candidate records match recovery Git blobs and1847protected records match1963 baseline blobs; frozen hashes/modes verified"
+  ],
+  "reviewMistakeAndCorrection": {
+    "mistake": "Read-only isolation helper fixture created repository-targeting symlink under ignored .artifacts; Vitest followed it",
+    "detectedBy": "Root final test-discovery check before full rerun",
+    "correctedBy": "Reviewer moved own symlink into OS private temporary storage, preserving link metadata",
+    "remainingArtifactTestNamedInputs": 0
+  },
+  "originalChecksAttribution": "Prior review record remains immutable; its runtime/SAST/decoder checks are bound to d16 runner. Recovery snapshot-isolation and exact byte proofs are separately bound to7ef2.",
+  "boundary": {
+    "trackedSourceChangedByReviewer": false,
+    "newTestNamedFilesOrRepositorySymlinksUnderRepository": false,
+    "fullTestsOrBuildRunByReviewer": false,
+    "rawScannerOrSecretValuesPublished": false,
+    "remoteActions": false
+  },
+  "findings": [],
+  "repositorySecurityGate": "FAILED_UNRESOLVED_EXISTING_FINDINGS",
+  "productionCertified": false,
+  "securityCertified": false
+}

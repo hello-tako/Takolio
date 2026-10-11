@@ -1,0 +1,44 @@
+{
+  "classification": "OWN_REVIEW_FIXTURE_SYMLINK_DISCOVERY_RECOVERY",
+  "status": "PASS",
+  "movedPath": ".artifacts/backend-program-20261011/security-agent-isolation/repo-root-alias",
+  "movedOutsideRepository": true,
+  "symlinkTargetAndModePreserved": true,
+  "deleted": false,
+  "artifactTestNamedFilesAndSymlinkTargets": [],
+  "remainingArtifactSymlinks": [
+    {
+      "path": ".artifacts/backend-program-20261011/b08-security/selftest-final/altered-receipt-tools/gitleaks",
+      "targetHasTestNamedFiles": false
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/b08-security/selftest-isolation-freeze/altered-receipt-tools/gitleaks",
+      "targetHasTestNamedFiles": false
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/b08-security/selftest-freeze/altered-receipt-tools/gitleaks",
+      "targetHasTestNamedFiles": false
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/b08-security/selftest-3/altered-receipt-tools/gitleaks",
+      "targetHasTestNamedFiles": false
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/b08-security-downloads/semgrep-venv/bin/python3",
+      "targetHasTestNamedFiles": false
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/b08-security-downloads/semgrep-venv/bin/python",
+      "targetHasTestNamedFiles": false
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/b08-security-downloads/semgrep-venv/bin/python3.12",
+      "targetHasTestNamedFiles": false
+    }
+  ],
+  "privatePointerSha256": "cfd235f9059c6439a67fc8d68aa28b40f454e222f33e08b8ee32b9513f3611b2",
+  "retainedLocationPublished": false,
+  "trackedSourceMutated": false,
+  "rootCause": "Independent isolation guard test left repository-targeting symlink inside ignored artifacts; test discovery followed it",
+  "correction": "Preserved symlink in OS private temporary storage outside repository"
+}

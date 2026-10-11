@@ -1,3 +1,28 @@
+# Backend program decisions - aggregate checkpoint 2026-10-12 JST
+
+Implementation `7ef2f8407d3a6a958c78146db3b5c9a9f0990b78` is locally verified. Packet ADRs in backend-upgrade record
+B01c live membership; B03a truthful offline scoring; B03b strict V3 contracts/version
+fences; B04a provider admission and shared cancellation/deadline; B04b cancellation
+and dormant exact durable budgets; B05a evidence-bound review/pilot; B06 minimal
+closed-loop fixes; B07 parity-preserving read extraction/OpenAPI; B08a bounded logs.
+
+B02 remains design-only under the protected billing rule. Its auth regression
+fixture gets only 6 membership seed lines; all payment assertions/runtime remain
+unchanged by independent byte comparison. Candidate AI budget SQL is outside the
+40-migration chain; no durable cost-ceiling claim until complete trusted token,
+output-limit, pricing and retention providers exist. ScanV3 writes/clients and new
+models remain disabled. Symbolic corpus/pilot output does not grant data authority.
+
+The pinned security candidate is executable and independently reviewed locally,
+with 24 actual engine selftests. Repository findings/errors and dependency audits
+remain blocking; no suppression, exception, workflow enablement or security/
+license/SLO certificate. Source/staging/data/quality/security/release are separate
+states. The complete masterplan remains open at those explicit dependency gates.
+Preserve implementation/receipt hashes and historical source documents; see
+backend-upgrade/program-20261011/STATUS.md and NEXT_ACTIONS.md.
+
+---
+
 # Backend program decisions - 2026-10-12 JST
 
 Accepted for the declared local implementation only. Hosted/data/provider/release

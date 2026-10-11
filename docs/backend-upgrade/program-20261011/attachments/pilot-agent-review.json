@@ -1,0 +1,69 @@
+{
+  "status": "INDEPENDENT_READ_ONLY_REVIEW_PASS",
+  "findings": [],
+  "inputHashes": [
+    {
+      "path": "docs/backend-upgrade/b05a/generate-pilot.mjs",
+      "sha256": "bda26c81a60108bda814e0f2eab4c3d8f585654daea8d94664e956ef8527f917"
+    },
+    {
+      "path": "docs/backend-upgrade/b05a/pilot.sample.json",
+      "sha256": "f5c9356277e4a511bf1797f74ad46e85308b768409ccc00e5a8e739c0ffed92f"
+    },
+    {
+      "path": "data/recipe-refresh/v2/manifest.json",
+      "sha256": "adf1784bb32b5b4fac7e9942dcc85d63339674282565b1dfa8e20c099ad7ea22"
+    },
+    {
+      "path": "artifacts/runtime-ingredient-v2/ingredient-authority-queue.json",
+      "sha256": "ef9b57abe91704bc300bc022d341f4591d7dace4feb756fb7a67c063dbd9f0e4"
+    },
+    {
+      "path": "artifacts/runtime-ingredient-v2/transformation-audit.json",
+      "sha256": "13201a7870dacf561e1214b0f87be1a474416546f28c181af4aa2864f6de0cb5"
+    },
+    {
+      "path": "artifacts/runtime-ingredient-v2/source-verification-queue.json",
+      "sha256": "a6935729f387978069beb824c17f5fb00a2f65b72f0a9dac6f0ae21033adda31"
+    }
+  ],
+  "counts": {
+    "distinctConcepts": 40,
+    "distinctTransformationRows": 60,
+    "distinctUrls": 20,
+    "sourceOccurrences": 20,
+    "ambiguousIdentities": 19
+  },
+  "strata": {
+    "count": 10,
+    "package": 8,
+    "culturalProjected": 8,
+    "culturalExcluded": 12,
+    "qualitative": 6,
+    "provisionalId": 10,
+    "process": 8
+  },
+  "sampleSha256": "e0fc3602912966acda882c919afeb61fa80f0f6b0ffa64f9c4136876d3fe87a1",
+  "explicitProcessCases": [
+    "vn-hap-01:1",
+    "vn-chien-01:5"
+  ],
+  "verification": {
+    "exactQueueSubjectFields": true,
+    "sourceIngredientHashes": true,
+    "nutritionHashes": true,
+    "sourceOccurrenceHashes": true,
+    "pendingDecisionFields": true,
+    "authorityFalse": true,
+    "inputsUnchanged": true
+  },
+  "limitations": [
+    "Real human reviewers and evidence remain pending",
+    "Sampling includes overlapping strata and is not a population accuracy estimate",
+    "Full canonical source coverage remains incomplete",
+    "No runtime promotion or source URL fetch performed"
+  ],
+  "runtimeAuthority": false,
+  "humanReviewComplete": false,
+  "fullSourceCoverageComplete": false
+}

@@ -1,0 +1,26 @@
+{
+  "classification": "INDEPENDENT_SECURITY_SNAPSHOT_ISOLATION_REVIEW",
+  "status": "PASS",
+  "runnerSha256": "97f3c206b1e0489914655ffa663736292bb89a5c761704615105f7313b68979f",
+  "checks": {
+    "snapshotOutsideRepository": true,
+    "storageAndSnapshotMode0700": true,
+    "privatePointerMode0600": true,
+    "pointerHashMatchesPrivateLocationRecord": true,
+    "retainedSnapshotBytesUnchanged": true,
+    "testNamedFixtureNotUnderRepository": true,
+    "rejectedTempRoots": [
+      "root",
+      "nested-artifact",
+      "symlink-to-root",
+      "default-env-temp-inside-root"
+    ],
+    "publicReceiptContainsOnlyPointerHash": true
+  },
+  "findings": [],
+  "privateSnapshotPointerSha256": "4bf9a5ccedbed3ccbed5840c6432282c4da0ccfbe2acbda8c53be4d238b811f3",
+  "snapshotPathPublished": false,
+  "fullTestsOrBuildRun": false,
+  "actualSourceMutated": false,
+  "hostedExecutionVerified": false
+}

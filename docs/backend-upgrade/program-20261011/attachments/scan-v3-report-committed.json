@@ -1,0 +1,770 @@
+{
+  "evaluatorVersion": "scan-v3-offline-1",
+  "datasetId": "synthetic-scan-v3-v1",
+  "datasetContentSha256": "2e475c0c29aac10c4a6aaa0d5759703953cdfcac5aecb31251a339eb1c0a149d",
+  "predictionsContentSha256": "040073bb35e32dd6d4a60c2a6d56c516cd48a87a73817756471f0559ec5455e4",
+  "mode": "OFFLINE",
+  "certification": "NOT_CERTIFIED",
+  "blockers": [
+    "ASSET_EVIDENCE_INCOMPLETE",
+    "HUMAN_LABELS_INCOMPLETE",
+    "PILOT_SIZE_AND_THRESHOLDS_NOT_CERTIFIED",
+    "PROVIDER_QUALITY_NOT_CERTIFIED",
+    "SYNTHETIC_TEST_ONLY"
+  ],
+  "total": {
+    "submissions": 9,
+    "documents": 9,
+    "firstSchemaPass": 5,
+    "finalSchemaPass": 6,
+    "usableSuccesses": 5,
+    "fieldPrecision": 0.9333333333333333,
+    "fieldRecall": 0.5833333333333334,
+    "canonicalAccepted": 0,
+    "canonicalExpected": 0,
+    "canonicalPrecision": null,
+    "canonicalCoverage": 0,
+    "canonicalKnownRecall": null,
+    "moneyExact": {
+      "correct": 3,
+      "expected": 5,
+      "recall": 0.6
+    },
+    "abstainedKnown": 19,
+    "failureRate": 0.3333333333333333,
+    "failureCounts": {
+      "timeout": 1,
+      "missing": 1,
+      "malformed": 1,
+      "provider_error": 0
+    },
+    "occurrencePrecision": 1,
+    "occurrenceRecall": 0.6,
+    "quantityExactOccurrences": 5,
+    "quantityOccurrences": 10,
+    "nameCharacterErrorRate": 0.5,
+    "unknown": {
+      "slots": 102,
+      "assertedKnown": 1,
+      "unassessedSlots": 38,
+      "assessment": "INCONCLUSIVE_MISSING_FIELDS",
+      "rate": 0.00980392156862745,
+      "slotWilson95": [
+        0.0017327343974216647,
+        0.053457914765777534
+      ],
+      "slotIntervalInterpretation": "DESCRIPTIVE_CORRELATED_FIELDS",
+      "documents": 9,
+      "hallucinatingDocuments": 1,
+      "documentWilson95": [
+        0.019890887638544907,
+        0.434999705576656
+      ]
+    }
+  },
+  "slices": [
+    {
+      "key": "fridge_image_analysis/en/blur",
+      "submissions": 1,
+      "documents": 1,
+      "firstSchemaPass": 1,
+      "finalSchemaPass": 1,
+      "usableSuccesses": 0,
+      "fieldPrecision": null,
+      "fieldRecall": 0,
+      "canonicalAccepted": 0,
+      "canonicalExpected": 0,
+      "canonicalPrecision": null,
+      "canonicalCoverage": 0,
+      "canonicalKnownRecall": null,
+      "moneyExact": {
+        "correct": 0,
+        "expected": 0,
+        "recall": null
+      },
+      "abstainedKnown": 1,
+      "failureRate": 0,
+      "failureCounts": {
+        "timeout": 0,
+        "missing": 0,
+        "malformed": 0,
+        "provider_error": 0
+      },
+      "occurrencePrecision": 1,
+      "occurrenceRecall": 1,
+      "quantityExactOccurrences": 1,
+      "quantityOccurrences": 1,
+      "nameCharacterErrorRate": 1,
+      "unknown": {
+        "slots": 8,
+        "assertedKnown": 0,
+        "unassessedSlots": 0,
+        "assessment": "FULLY_ASSESSED",
+        "rate": 0,
+        "slotWilson95": [
+          0,
+          0.32440756488388023
+        ],
+        "slotIntervalInterpretation": "DESCRIPTIVE_CORRELATED_FIELDS",
+        "documents": 1,
+        "hallucinatingDocuments": 0,
+        "documentWilson95": [
+          0,
+          0.7934506856227626
+        ]
+      }
+    },
+    {
+      "key": "fridge_image_analysis/en/damaged",
+      "submissions": 1,
+      "documents": 1,
+      "firstSchemaPass": 0,
+      "finalSchemaPass": 0,
+      "usableSuccesses": 0,
+      "fieldPrecision": null,
+      "fieldRecall": 0,
+      "canonicalAccepted": 0,
+      "canonicalExpected": 0,
+      "canonicalPrecision": null,
+      "canonicalCoverage": 0,
+      "canonicalKnownRecall": null,
+      "moneyExact": {
+        "correct": 0,
+        "expected": 0,
+        "recall": null
+      },
+      "abstainedKnown": 1,
+      "failureRate": 1,
+      "failureCounts": {
+        "timeout": 1,
+        "missing": 0,
+        "malformed": 0,
+        "provider_error": 0
+      },
+      "occurrencePrecision": null,
+      "occurrenceRecall": 0,
+      "quantityExactOccurrences": 0,
+      "quantityOccurrences": 1,
+      "nameCharacterErrorRate": 1,
+      "unknown": {
+        "slots": 8,
+        "assertedKnown": 0,
+        "unassessedSlots": 8,
+        "assessment": "INCONCLUSIVE_MISSING_FIELDS",
+        "rate": 0,
+        "slotWilson95": [
+          0,
+          0.32440756488388023
+        ],
+        "slotIntervalInterpretation": "DESCRIPTIVE_CORRELATED_FIELDS",
+        "documents": 1,
+        "hallucinatingDocuments": 0,
+        "documentWilson95": [
+          0,
+          0.7934506856227626
+        ]
+      }
+    },
+    {
+      "key": "fridge_image_analysis/en/missing_field",
+      "submissions": 1,
+      "documents": 1,
+      "firstSchemaPass": 1,
+      "finalSchemaPass": 1,
+      "usableSuccesses": 1,
+      "fieldPrecision": 0.5,
+      "fieldRecall": 1,
+      "canonicalAccepted": 0,
+      "canonicalExpected": 0,
+      "canonicalPrecision": null,
+      "canonicalCoverage": 0,
+      "canonicalKnownRecall": null,
+      "moneyExact": {
+        "correct": 0,
+        "expected": 0,
+        "recall": null
+      },
+      "abstainedKnown": 0,
+      "failureRate": 0,
+      "failureCounts": {
+        "timeout": 0,
+        "missing": 0,
+        "malformed": 0,
+        "provider_error": 0
+      },
+      "occurrencePrecision": 1,
+      "occurrenceRecall": 1,
+      "quantityExactOccurrences": 0,
+      "quantityOccurrences": 1,
+      "nameCharacterErrorRate": 0,
+      "unknown": {
+        "slots": 8,
+        "assertedKnown": 1,
+        "unassessedSlots": 0,
+        "assessment": "FULLY_ASSESSED",
+        "rate": 0.125,
+        "slotWilson95": [
+          0.02241749145005667,
+          0.4708881822128535
+        ],
+        "slotIntervalInterpretation": "DESCRIPTIVE_CORRELATED_FIELDS",
+        "documents": 1,
+        "hallucinatingDocuments": 1,
+        "documentWilson95": [
+          0.20654931437723745,
+          1
+        ]
+      }
+    },
+    {
+      "key": "label_ocr/en/missing_field",
+      "submissions": 1,
+      "documents": 1,
+      "firstSchemaPass": 0,
+      "finalSchemaPass": 0,
+      "usableSuccesses": 0,
+      "fieldPrecision": null,
+      "fieldRecall": 0,
+      "canonicalAccepted": 0,
+      "canonicalExpected": 0,
+      "canonicalPrecision": null,
+      "canonicalCoverage": 0,
+      "canonicalKnownRecall": null,
+      "moneyExact": {
+        "correct": 0,
+        "expected": 0,
+        "recall": null
+      },
+      "abstainedKnown": 5,
+      "failureRate": 1,
+      "failureCounts": {
+        "timeout": 0,
+        "missing": 0,
+        "malformed": 1,
+        "provider_error": 0
+      },
+      "occurrencePrecision": null,
+      "occurrenceRecall": 0,
+      "quantityExactOccurrences": 0,
+      "quantityOccurrences": 1,
+      "nameCharacterErrorRate": 1,
+      "unknown": {
+        "slots": 10,
+        "assertedKnown": 0,
+        "unassessedSlots": 10,
+        "assessment": "INCONCLUSIVE_MISSING_FIELDS",
+        "rate": 0,
+        "slotWilson95": [
+          0,
+          0.2775327998628892
+        ],
+        "slotIntervalInterpretation": "DESCRIPTIVE_CORRELATED_FIELDS",
+        "documents": 1,
+        "hallucinatingDocuments": 0,
+        "documentWilson95": [
+          0,
+          0.7934506856227626
+        ]
+      }
+    },
+    {
+      "key": "receipt_ocr/ja/clean",
+      "submissions": 2,
+      "documents": 2,
+      "firstSchemaPass": 2,
+      "finalSchemaPass": 2,
+      "usableSuccesses": 2,
+      "fieldPrecision": 0.9285714285714286,
+      "fieldRecall": 0.6842105263157895,
+      "canonicalAccepted": 0,
+      "canonicalExpected": 0,
+      "canonicalPrecision": null,
+      "canonicalCoverage": 0,
+      "canonicalKnownRecall": null,
+      "moneyExact": {
+        "correct": 1,
+        "expected": 2,
+        "recall": 0.5
+      },
+      "abstainedKnown": 5,
+      "failureRate": 0,
+      "failureCounts": {
+        "timeout": 0,
+        "missing": 0,
+        "malformed": 0,
+        "provider_error": 0
+      },
+      "occurrencePrecision": 1,
+      "occurrenceRecall": 0.6666666666666666,
+      "quantityExactOccurrences": 2,
+      "quantityOccurrences": 3,
+      "nameCharacterErrorRate": 0.3333333333333333,
+      "unknown": {
+        "slots": 32,
+        "assertedKnown": 0,
+        "unassessedSlots": 8,
+        "assessment": "INCONCLUSIVE_MISSING_FIELDS",
+        "rate": 0,
+        "slotWilson95": [
+          0,
+          0.1071791982550706
+        ],
+        "slotIntervalInterpretation": "DESCRIPTIVE_CORRELATED_FIELDS",
+        "documents": 2,
+        "hallucinatingDocuments": 0,
+        "documentWilson95": [
+          0,
+          0.6576197724933469
+        ]
+      }
+    },
+    {
+      "key": "receipt_ocr/vi/clean",
+      "submissions": 2,
+      "documents": 2,
+      "firstSchemaPass": 1,
+      "finalSchemaPass": 2,
+      "usableSuccesses": 2,
+      "fieldPrecision": 1,
+      "fieldRecall": 1,
+      "canonicalAccepted": 0,
+      "canonicalExpected": 0,
+      "canonicalPrecision": null,
+      "canonicalCoverage": 0,
+      "canonicalKnownRecall": null,
+      "moneyExact": {
+        "correct": 2,
+        "expected": 2,
+        "recall": 1
+      },
+      "abstainedKnown": 0,
+      "failureRate": 0,
+      "failureCounts": {
+        "timeout": 0,
+        "missing": 0,
+        "malformed": 0,
+        "provider_error": 0
+      },
+      "occurrencePrecision": 1,
+      "occurrenceRecall": 1,
+      "quantityExactOccurrences": 2,
+      "quantityOccurrences": 2,
+      "nameCharacterErrorRate": 0,
+      "unknown": {
+        "slots": 24,
+        "assertedKnown": 0,
+        "unassessedSlots": 0,
+        "assessment": "FULLY_ASSESSED",
+        "rate": 0,
+        "slotWilson95": [
+          1.3877787807814457e-17,
+          0.13797620467498017
+        ],
+        "slotIntervalInterpretation": "DESCRIPTIVE_CORRELATED_FIELDS",
+        "documents": 2,
+        "hallucinatingDocuments": 0,
+        "documentWilson95": [
+          0,
+          0.6576197724933469
+        ]
+      }
+    },
+    {
+      "key": "receipt_ocr/vi/missing_field",
+      "submissions": 1,
+      "documents": 1,
+      "firstSchemaPass": 0,
+      "finalSchemaPass": 0,
+      "usableSuccesses": 0,
+      "fieldPrecision": null,
+      "fieldRecall": 0,
+      "canonicalAccepted": 0,
+      "canonicalExpected": 0,
+      "canonicalPrecision": null,
+      "canonicalCoverage": 0,
+      "canonicalKnownRecall": null,
+      "moneyExact": {
+        "correct": 0,
+        "expected": 1,
+        "recall": 0
+      },
+      "abstainedKnown": 7,
+      "failureRate": 1,
+      "failureCounts": {
+        "timeout": 0,
+        "missing": 1,
+        "malformed": 0,
+        "provider_error": 0
+      },
+      "occurrencePrecision": null,
+      "occurrenceRecall": 0,
+      "quantityExactOccurrences": 0,
+      "quantityOccurrences": 1,
+      "nameCharacterErrorRate": 1,
+      "unknown": {
+        "slots": 12,
+        "assertedKnown": 0,
+        "unassessedSlots": 12,
+        "assessment": "INCONCLUSIVE_MISSING_FIELDS",
+        "rate": 0,
+        "slotWilson95": [
+          2.7755575615628914e-17,
+          0.24249400665524085
+        ],
+        "slotIntervalInterpretation": "DESCRIPTIVE_CORRELATED_FIELDS",
+        "documents": 1,
+        "hallucinatingDocuments": 0,
+        "documentWilson95": [
+          0,
+          0.7934506856227626
+        ]
+      }
+    }
+  ],
+  "cost": {
+    "attempts": 10,
+    "knownCostUsdMicros": 925,
+    "unknownCostAttempts": 0,
+    "missingCostJobs": 1,
+    "costUsdMicrosPer100Successes": null,
+    "status": "NOT_COMPUTABLE",
+    "bases": [
+      "ESTIMATED"
+    ],
+    "pricingVersions": [
+      "synthetic-price-v1"
+    ]
+  },
+  "latency": {
+    "queueWait": {
+      "samples": 8,
+      "p50": 5,
+      "p95": 5
+    },
+    "provider": {
+      "samples": 10,
+      "p50": 10,
+      "p95": 20
+    },
+    "endToEnd": {
+      "samples": 8,
+      "p50": 50,
+      "p95": 50
+    }
+  },
+  "outcomes": [
+    {
+      "caseId": "blur-abstain",
+      "documentId": "blur-abstain",
+      "task": "fridge_image_analysis",
+      "locale": "en",
+      "quality": "blur",
+      "firstSchemaPass": true,
+      "finalSchemaPass": true,
+      "usable": false,
+      "outcome": "schema_valid",
+      "knownExpected": 1,
+      "knownPredicted": 0,
+      "correct": 0,
+      "unknownSlots": 8,
+      "hallucinations": 0,
+      "unassessedUnknown": 0,
+      "canonicalExpected": 0,
+      "canonicalAccepted": 0,
+      "canonicalCorrect": 0,
+      "canonicalSlots": 1,
+      "textEdits": 14,
+      "textChars": 14,
+      "moneyExpected": 0,
+      "moneyCorrect": 0,
+      "abstainedKnown": 1,
+      "expectedOccurrences": 1,
+      "predictedOccurrences": 1,
+      "matchedOccurrences": 1,
+      "quantityExact": 1,
+      "quantityOccurrences": 1
+    },
+    {
+      "caseId": "damaged-timeout",
+      "documentId": "damaged-timeout",
+      "task": "fridge_image_analysis",
+      "locale": "en",
+      "quality": "damaged",
+      "firstSchemaPass": false,
+      "finalSchemaPass": false,
+      "usable": false,
+      "outcome": "timeout",
+      "knownExpected": 1,
+      "knownPredicted": 0,
+      "correct": 0,
+      "unknownSlots": 8,
+      "hallucinations": 0,
+      "unassessedUnknown": 8,
+      "canonicalExpected": 0,
+      "canonicalAccepted": 0,
+      "canonicalCorrect": 0,
+      "canonicalSlots": 1,
+      "textEdits": 14,
+      "textChars": 14,
+      "moneyExpected": 0,
+      "moneyCorrect": 0,
+      "abstainedKnown": 1,
+      "expectedOccurrences": 1,
+      "predictedOccurrences": 0,
+      "matchedOccurrences": 0,
+      "quantityExact": 0,
+      "quantityOccurrences": 1
+    },
+    {
+      "caseId": "duplicate-lines",
+      "documentId": "duplicate-lines",
+      "task": "receipt_ocr",
+      "locale": "ja",
+      "quality": "clean",
+      "firstSchemaPass": true,
+      "finalSchemaPass": true,
+      "usable": true,
+      "outcome": "schema_valid",
+      "knownExpected": 12,
+      "knownPredicted": 7,
+      "correct": 7,
+      "unknownSlots": 20,
+      "hallucinations": 0,
+      "unassessedUnknown": 8,
+      "canonicalExpected": 0,
+      "canonicalAccepted": 0,
+      "canonicalCorrect": 0,
+      "canonicalSlots": 2,
+      "textEdits": 14,
+      "textChars": 28,
+      "moneyExpected": 1,
+      "moneyCorrect": 1,
+      "abstainedKnown": 5,
+      "expectedOccurrences": 2,
+      "predictedOccurrences": 1,
+      "matchedOccurrences": 1,
+      "quantityExact": 1,
+      "quantityOccurrences": 2
+    },
+    {
+      "caseId": "fridge-unknown",
+      "documentId": "fridge-unknown",
+      "task": "fridge_image_analysis",
+      "locale": "en",
+      "quality": "missing_field",
+      "firstSchemaPass": true,
+      "finalSchemaPass": true,
+      "usable": true,
+      "outcome": "schema_valid",
+      "knownExpected": 1,
+      "knownPredicted": 2,
+      "correct": 1,
+      "unknownSlots": 8,
+      "hallucinations": 1,
+      "unassessedUnknown": 0,
+      "canonicalExpected": 0,
+      "canonicalAccepted": 0,
+      "canonicalCorrect": 0,
+      "canonicalSlots": 1,
+      "textEdits": 0,
+      "textChars": 14,
+      "moneyExpected": 0,
+      "moneyCorrect": 0,
+      "abstainedKnown": 0,
+      "expectedOccurrences": 1,
+      "predictedOccurrences": 1,
+      "matchedOccurrences": 1,
+      "quantityExact": 0,
+      "quantityOccurrences": 1
+    },
+    {
+      "caseId": "label-invalid",
+      "documentId": "label-invalid",
+      "task": "label_ocr",
+      "locale": "en",
+      "quality": "missing_field",
+      "firstSchemaPass": false,
+      "finalSchemaPass": false,
+      "usable": false,
+      "outcome": "malformed",
+      "knownExpected": 5,
+      "knownPredicted": 0,
+      "correct": 0,
+      "unknownSlots": 10,
+      "hallucinations": 0,
+      "unassessedUnknown": 10,
+      "canonicalExpected": 0,
+      "canonicalAccepted": 0,
+      "canonicalCorrect": 0,
+      "canonicalSlots": 1,
+      "textEdits": 14,
+      "textChars": 14,
+      "moneyExpected": 0,
+      "moneyCorrect": 0,
+      "abstainedKnown": 5,
+      "expectedOccurrences": 1,
+      "predictedOccurrences": 0,
+      "matchedOccurrences": 0,
+      "quantityExact": 0,
+      "quantityOccurrences": 1
+    },
+    {
+      "caseId": "missing-output",
+      "documentId": "missing-output",
+      "task": "receipt_ocr",
+      "locale": "vi",
+      "quality": "missing_field",
+      "firstSchemaPass": false,
+      "finalSchemaPass": false,
+      "usable": false,
+      "outcome": "missing",
+      "knownExpected": 7,
+      "knownPredicted": 0,
+      "correct": 0,
+      "unknownSlots": 12,
+      "hallucinations": 0,
+      "unassessedUnknown": 12,
+      "canonicalExpected": 0,
+      "canonicalAccepted": 0,
+      "canonicalCorrect": 0,
+      "canonicalSlots": 1,
+      "textEdits": 14,
+      "textChars": 14,
+      "moneyExpected": 1,
+      "moneyCorrect": 0,
+      "abstainedKnown": 7,
+      "expectedOccurrences": 1,
+      "predictedOccurrences": 0,
+      "matchedOccurrences": 0,
+      "quantityExact": 0,
+      "quantityOccurrences": 1
+    },
+    {
+      "caseId": "receipt-jpy",
+      "documentId": "receipt-jpy",
+      "task": "receipt_ocr",
+      "locale": "ja",
+      "quality": "clean",
+      "firstSchemaPass": true,
+      "finalSchemaPass": true,
+      "usable": true,
+      "outcome": "schema_valid",
+      "knownExpected": 7,
+      "knownPredicted": 7,
+      "correct": 6,
+      "unknownSlots": 12,
+      "hallucinations": 0,
+      "unassessedUnknown": 0,
+      "canonicalExpected": 0,
+      "canonicalAccepted": 0,
+      "canonicalCorrect": 0,
+      "canonicalSlots": 1,
+      "textEdits": 0,
+      "textChars": 14,
+      "moneyExpected": 1,
+      "moneyCorrect": 0,
+      "abstainedKnown": 0,
+      "expectedOccurrences": 1,
+      "predictedOccurrences": 1,
+      "matchedOccurrences": 1,
+      "quantityExact": 1,
+      "quantityOccurrences": 1
+    },
+    {
+      "caseId": "receipt-repaired",
+      "documentId": "receipt-repaired",
+      "task": "receipt_ocr",
+      "locale": "vi",
+      "quality": "clean",
+      "firstSchemaPass": false,
+      "finalSchemaPass": true,
+      "usable": true,
+      "outcome": "schema_valid",
+      "knownExpected": 7,
+      "knownPredicted": 7,
+      "correct": 7,
+      "unknownSlots": 12,
+      "hallucinations": 0,
+      "unassessedUnknown": 0,
+      "canonicalExpected": 0,
+      "canonicalAccepted": 0,
+      "canonicalCorrect": 0,
+      "canonicalSlots": 1,
+      "textEdits": 0,
+      "textChars": 14,
+      "moneyExpected": 1,
+      "moneyCorrect": 1,
+      "abstainedKnown": 0,
+      "expectedOccurrences": 1,
+      "predictedOccurrences": 1,
+      "matchedOccurrences": 1,
+      "quantityExact": 1,
+      "quantityOccurrences": 1
+    },
+    {
+      "caseId": "receipt-vnd",
+      "documentId": "receipt-vnd",
+      "task": "receipt_ocr",
+      "locale": "vi",
+      "quality": "clean",
+      "firstSchemaPass": true,
+      "finalSchemaPass": true,
+      "usable": true,
+      "outcome": "schema_valid",
+      "knownExpected": 7,
+      "knownPredicted": 7,
+      "correct": 7,
+      "unknownSlots": 12,
+      "hallucinations": 0,
+      "unassessedUnknown": 0,
+      "canonicalExpected": 0,
+      "canonicalAccepted": 0,
+      "canonicalCorrect": 0,
+      "canonicalSlots": 1,
+      "textEdits": 0,
+      "textChars": 14,
+      "moneyExpected": 1,
+      "moneyCorrect": 1,
+      "abstainedKnown": 0,
+      "expectedOccurrences": 1,
+      "predictedOccurrences": 1,
+      "matchedOccurrences": 1,
+      "quantityExact": 1,
+      "quantityOccurrences": 1
+    }
+  ],
+  "receipt": {
+    "datasetFileSha256": "629d8ce716114dbd9ac5b79f60e512f1bab16d5f97fb4a9e7fc01e2abc1b151e",
+    "predictionsFileSha256": "f7d806a08c868cce865101d2488b2af2248f520530fc24223241efe1b746d43c",
+    "evaluatorSourceSha256": "d77cc824dd33eeba94c1e0dcd6c35d840779bbccb1dbf361ec56c4015914de86",
+    "sourceHashes": [
+      {
+        "path": "scripts/scan-v3-eval.mjs",
+        "sha256": "e33c850db96c157095d02c2866c9233c87ef779c4362030d6a8e87c8c8084382"
+      },
+      {
+        "path": "scripts/scan-v3-scoring.ts",
+        "sha256": "4c86dab662d7c45a67483180d57915a2910bc71e47529cf2a933f4c1b1af5ea7"
+      },
+      {
+        "path": "packages/ai/src/scan-contract-v3.ts",
+        "sha256": "97fcee5ad7ef16b0c32a6eadeea8c4f8ed19586a0729feae343acb472fa75c93"
+      },
+      {
+        "path": "packages/ai/src/schemas.ts",
+        "sha256": "49b309e373e573b121ad5ad42a0cdcd53cf647a5944d6169f655553deecb0747"
+      },
+      {
+        "path": "pnpm-lock.yaml",
+        "sha256": "b9f5c384b33f25a1ccfb05bb10258ea95182a32434678d5087b2f62be8d26867"
+      }
+    ],
+    "command": [
+      "node",
+      "scripts/scan-v3-eval.mjs",
+      "--dry-run",
+      "--output",
+      ".artifacts/backend-program-20261011/scan-v3-report-committed.json"
+    ]
+  }
+}

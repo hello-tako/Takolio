@@ -1,0 +1,41 @@
+{
+  "manifestSha256": "094840c1ec0ce518f82325528a8cb83b1eafe7af65a44669cad6dbc09e3a45c2",
+  "provenance": "Official archive SHA256; Python packages require-hashes/only-binary. No independent signature attestation.",
+  "schemaVersion": 1,
+  "tools": [
+    {
+      "archiveSha256": "b40ab0ae55c505963e365f271a8d3846efbc170aa17f2607f13df610a9aeb6a5",
+      "executable": "gitleaks/gitleaks",
+      "executableSha256": "ba52fb1bfabbcde42f032afad3d6e0b19dff8ed105229a16e7caa338bbc0e84f",
+      "name": "gitleaks",
+      "platform": "darwin-arm64",
+      "version": "8.30.1"
+    },
+    {
+      "archiveSha256": "b4319c3abaa87a0170ab76ee83ea2260ca34b53aecfa3ab0dd5428d2319d744f",
+      "executable": "syft/syft",
+      "executableSha256": "bc08d98ac3ca9cf475952b8eab22dfda70f3ab475ceb4e0113b9f77b24b75e26",
+      "name": "syft",
+      "platform": "darwin-arm64",
+      "version": "1.54.1"
+    },
+    {
+      "archiveSha256": "e28d22b087f9ebb8d99da6e740d348c930f559961c7c3f12badda54f882195a2",
+      "executable": "zizmor/zizmor",
+      "executableSha256": "0cd1e69b329cdbc2ded5cd3b5161f21ffd89652eab6563153e4af5a69344c64d",
+      "name": "zizmor",
+      "platform": "darwin-arm64",
+      "version": "1.30.1"
+    },
+    {
+      "executable": "semgrep-venv/bin/semgrep",
+      "executableSha256": "90ad1f33376a85d33bd8c6f08f662ac9ffdff1ba1a4a572cf6b6d2d99c26f68d",
+      "name": "semgrep",
+      "platform": "darwin-arm64",
+      "pythonExecutableSha256": "1ce7aea77992ab97bb6225339a1d72a79925d5641e461cdfc2584916119a7edb",
+      "requirementLockSha256": "0698a91a7d8455a177cbbfc6161338745cbda5dc47799e9f5242cd510be63423",
+      "runtimeTreeSha256": "946dbb518ead1a91f3ea87632850116a24611db152e18eeeef0c322b5d9acf8f",
+      "version": "1.180.0"
+    }
+  ]
+}

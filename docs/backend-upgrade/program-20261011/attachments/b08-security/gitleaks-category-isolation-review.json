@@ -1,0 +1,13 @@
+{
+  "categories": {
+    "DOCUMENTATION_TREE_CANDIDATE_UNREVIEWED": 9,
+    "OTHER_TREE_CANDIDATE_UNREVIEWED": 2,
+    "TEST_TREE_CANDIDATE_UNREVIEWED": 5
+  },
+  "classification": "FILE_CATEGORY_ONLY_NOT_SECRET_ADJUDICATION",
+  "disposition": "All findings remain unreviewed; path category alone cannot prove synthetic or actual credentials.",
+  "findingCount": 16,
+  "matchedValuesPublished": false,
+  "rawReportSha256": "c9f818e1431f1c8724ce347144f00802be40956a6f48c2db743c91b0ee40e717",
+  "schemaVersion": 1
+}

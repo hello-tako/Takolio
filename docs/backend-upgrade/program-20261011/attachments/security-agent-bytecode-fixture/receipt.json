@@ -1,0 +1,9 @@
+{
+  "classification": "INDEPENDENT_SYNTHETIC_BYTECODE_INTEGRITY_REVIEW",
+  "runnerSha256": "0c149d27c5697fb4f7aa2b908898d537cd7d972f25989ebada8bcbb7a9669630",
+  "runtimeTreeHashUnchangedAfterPycAlteration": true,
+  "executedValueAltered": true,
+  "actualScannerRuntimeMutated": false,
+  "sourceRuntimeMutated": false,
+  "finding": "Excluded Python bytecode can alter execution without changing runtimeTreeSha256"
+}

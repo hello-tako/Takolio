@@ -1,0 +1,131 @@
+{
+  "attachments": [
+    {
+      "path": ".artifacts/backend-program-20261011/client-review-b07-parity.json",
+      "sha256": "d994043517b5c399b4471e171954aa86365915b92518e08756cc705bf76842d4"
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/client-review-b04b-probe.json",
+      "sha256": "07081d20fc878326e5766731f8d086412b248e93c57b2a1508f3437296a2935d"
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/client-review-probe.mjs",
+      "sha256": "acd7234f400cf868c2488942271df2eb9fff8416d7e851dc1097689264ab116e"
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/client-review-probe.log",
+      "sha256": "525ebf09a0e168eaac0f3ff095319b90b097896dc2fad7f07b6dc5e54aaf8281"
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/b08-security/freeze-packet.json",
+      "sha256": "5e078fab5709c3f903cae240b583d4533b18018320165d8364bc7353c0a883bf"
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/b08-security/selftest-freeze/receipt.json",
+      "sha256": "776f37f382f2667d02af23e1770306b0966294d4b24a742315414c131c927c39"
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/b08-security/repository-freeze/receipt.json",
+      "sha256": "0896710ead53a6e4f3020a60acd11d8b5085b1c713515b36d1238a7158fc4984"
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/b08-security/gitleaks-category-review.json",
+      "sha256": "12f859fbe45c6e97b23986d482f3688649aaf662b3073d548484050209980440"
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/b08-security-downloads/toolchain-receipt.json",
+      "sha256": "320384abf1128747b8873e33902628b524445cc1fbdba74adeebe4fe70166c82"
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/security-agent-final/receipt.json",
+      "sha256": "efb12d0acb84b140c98b9cbdd8804b32f550620fda8801ddeeedd9e865458712"
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/candidate-workflow-agent/receipt.json",
+      "sha256": "d607134054089e1fbfe36cdba85da39dde691e894b28eddc15f91ae4b81ec899"
+    }
+  ],
+  "attribution": {
+    "B04b": "Fresh bounded real in-memory SQLite probe plus independent source/schema/ADR review; synthetic evidence only.",
+    "B07": "Fresh in-memory execution comparing extracted immutable HEAD1963 helper with committed current repository/service; six cases plus ten normalization inputs and latest SQL/bindings.",
+    "B08Independent": "a2_transaction independently verified fail-closed/privacy/cache/bytecode behavior; its receipt is attached with separate attribution.",
+    "B08b": "a2_client authored pinned installer/runner/rules/fixtures and executed real external scanner selftests and repository scan.",
+    "author": "a2_client",
+    "originalSessionOnlyChecks": "Earlier equivalent B07/B04b independent executions had no saved receipts. Attached receipts record fresh executions and do not fabricate historical artifacts."
+  },
+  "baseSha": "1963c469e2e3bd4819cda6bb9ef8162101ad523a",
+  "captureTimeSource": "mtime of the fresh persisted probe receipts; no reconstructed historical timestamp",
+  "capturedAtUtc": "2026-10-11T18:27:06.265829+00:00",
+  "classification": "SAFE_INDEPENDENT_CLIENT_REVIEW_AGGREGATE",
+  "freshProbeReceiptCaptureTimesUtc": {
+    "client-review-b04b-probe.json": "2026-10-11T18:25:16.430479+00:00",
+    "client-review-b07-parity.json": "2026-10-11T18:25:16.274660+00:00"
+  },
+  "knownRedSecurity": {
+    "gitleaks": {
+      "categories": {
+        "documentation": 9,
+        "other": 2,
+        "tests": 5
+      },
+      "realSecretCountNotAdjudicated": true,
+      "status": "FINDINGS",
+      "unreviewedCandidates": 16
+    },
+    "semgrep": {
+      "localASTRules": 3,
+      "noSuppression": true,
+      "parserDiagnostics": 1,
+      "sourceFilesObserved": 841,
+      "status": "ERROR"
+    },
+    "syft": {
+      "libraryComponents": 786,
+      "status": "PASS_INVENTORY_ONLY",
+      "vulnerabilityOrLicenseAttestation": false
+    },
+    "zizmor": {
+      "count": 72,
+      "rules": {
+        "artipacked": 1,
+        "cache-poisoning": 2,
+        "template-injection": 2,
+        "unpinned-uses": 67
+      },
+      "status": "FINDINGS"
+    }
+  },
+  "privacy": {
+    "attachmentsContainOnlySafeMetadataPublicLogAndSyntheticProbeCode": true,
+    "rawReportsSnapshotsAndBinariesExcludedFromAttachments": true,
+    "secretValuesOrSourceMatchesPublished": false
+  },
+  "reviewedHead": "d16d935877992406901a3afcaceaae612344ad73",
+  "runtimeAndRolloutLimitations": [
+    "B04b trusted complete input/output bounds and complete pricing providers do not yet exist.",
+    "B04b remains dormant: no provider boundary wiring or applied migration; cancellation/network interval and fenced publication require integration.",
+    "B04b retention RESTRICT and immutable reservations conflict with existing cleanup until reviewed.",
+    "B08 Darwin arm64 tools were executed; Linux amd64 archive digests are pinned candidates and remain unexecuted.",
+    "B08 scans current tracked/nonignored worktree snapshots; no Git history or installed node_modules inventory claim.",
+    "Production SLO, licenses, hosted CI, and dependency audit remediation remain separate requirements."
+  ],
+  "schemaVersion": 1,
+  "scopeVerification": {
+    "candidateInputFilesRehashed": 30,
+    "fullTestsOrBuildRunByThisReview": false,
+    "match": true,
+    "persistentDatabaseChanged": false,
+    "realProviderCalls": 0,
+    "runtimeFilesRehashed": 50,
+    "sourceFreezeSha256": "1d668076ea1075251c553a769bd98bb3af93e0dd3ad7cbc97e9f714722119c97",
+    "sourceMutationsDuringThisReview": 0
+  },
+  "status": {
+    "B04bSyntheticDormantKernelProbe": "PASS",
+    "B07BaselineParity": "PASS_6_READ_ERROR_CACHE_CASES_10_NORMALIZATION_INPUTS_AND_LATEST_QUERY",
+    "B08RepositorySecurityGate": "FAILED",
+    "B08ScannerSelftests": "PASS_22_CASES",
+    "independentLocalCodeReview": "NO_UNRESOLVED_CONCRETE_BLOCKER_IN_REVIEWED_SCOPE",
+    "productionCertified": false
+  }
+}

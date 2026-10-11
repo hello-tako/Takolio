@@ -1,0 +1,71 @@
+{
+  "packet": "B03b B1",
+  "classification": "CODE_COMPLETE_CONTRACT_CANDIDATE_PENDING_COORDINATOR_REVIEW",
+  "branch": "codex/backend-program-20261011",
+  "head": "1963c469e2e3bd4819cda6bb9ef8162101ad523a",
+  "node": "v25.9.0",
+  "pnpm": "10.33.2",
+  "checks": {
+    "focusedTests": {
+      "exit": 0,
+      "files": 2,
+      "tests": 65
+    },
+    "scopedLint": {
+      "exit": 0
+    },
+    "scopedTypes": {
+      "exit": 0
+    },
+    "diffCheck": {
+      "exit": 0
+    }
+  },
+  "ownedFilesSha256": {
+    "packages/ai/src/scan-contract-v3.ts": "97fcee5ad7ef16b0c32a6eadeea8c4f8ed19586a0729feae343acb472fa75c93",
+    "packages/ai/src/scan-compatibility-v3.ts": "ed4f988d5cbaf9a5e0beffa6cedb7b4e3b85bab560fbcdf6aea30ae8d6435617",
+    "tests/unit/scan-contract-v3.test.ts": "b5d8399984770318c3afa88635c6dc4c72b07ad4380f86226a33bfbc95a18ec5",
+    "tests/unit/scan-compatibility-v3.test.ts": "2733cfb51e0dec733d897debe7625513e81f4d42405df279474306c2d817e147",
+    "docs/backend-upgrade/b03b/ADR-B03b-001.md": "96f245afc0f3bb66fd03a9d0fd2091d949c50a347128b34be2cefb30318f0a53"
+  },
+  "v1ProtectedFiles": {
+    "packages/ai/src/schemas.ts": {
+      "sha256": "49b309e373e573b121ad5ad42a0cdcd53cf647a5944d6169f655553deecb0747",
+      "unchangedFromHead": true
+    },
+    "packages/ai/src/router.ts": {
+      "sha256": "3b2c95f371f6a3e35fc25119a14105b17af65167283bc7e5144ce76ee5f80803",
+      "unchangedFromHead": true
+    },
+    "packages/ai/src/task-runtime.ts": {
+      "sha256": "6b866a7775e1d2eaf3edad636b5ebcefc4d61b3cecbac0e845dffc98991c22a6",
+      "unchangedFromHead": true
+    },
+    "packages/ai/src/providers/qwen.ts": {
+      "sha256": "97922e69f57d7ea58f98027e1a9d46f891e99c52270af12e3119b407302ec3c3",
+      "unchangedFromHead": true
+    },
+    "packages/ai/src/quality-gate.ts": {
+      "sha256": "0be0a9fcd1b3226622ffbd905c894be2c9d1bd71d28cca7d764a520b42faa6c1",
+      "unchangedFromHead": true
+    },
+    "packages/ai/src/index.ts": {
+      "sha256": "69fcc601c1eae57b1f676b4589adc73bc2f939fe92542fe6985cd8c9c1405902",
+      "unchangedFromHead": true
+    },
+    "src/worker/routes/scans.ts": {
+      "sha256": "1291a3c1f8c53501bcd4f1f8f63420bfcb4d881c480748872e9a4adbc51eefeb",
+      "unchangedFromHead": true
+    },
+    "src/worker/services/scan-queue.ts": {
+      "sha256": "e40b5c5ecd757f5ac86db8727f84b30553593646c0dc6bdeca41bb9863f22aaa",
+      "unchangedFromHead": true
+    }
+  },
+  "limitations": [
+    "Pure candidate only; shared index not wired",
+    "No full tests/build/migrations/network/provider or production writes",
+    "CONFIRMABLE is pure field readiness, never runtime inventory authorization",
+    "Dataset/provider/staging/production certification not granted"
+  ]
+}

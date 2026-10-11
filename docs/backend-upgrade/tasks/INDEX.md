@@ -1,3 +1,16 @@
+# Current backend program checkpoint - 2026-10-12 JST
+
+Implementation `7ef2f8407d3a6a958c78146db3b5c9a9f0990b78` is locally verified: full 309 files / 7463 tests,
+lint/typecheck/migrations/build PASS. B01c, offline ScanV3/scorer, provider control/
+cancellation, dormant budgets, ingredient pilot, closed-loop fixes, Week extraction/
+OpenAPI and telemetry/security candidate are delivered within their recorded scope.
+The masterplan is not release-complete: security findings/errors, real data/human
+reviews, inbox/staging/SLO/token/pricing/retention and protected billing gates remain.
+See [aggregate result](../program-20261011/RESULT.md) and its next-action sequence. Historical plans and
+checkpoint evidence follow unchanged; current status takes precedence.
+
+---
+
 # Current B01a A2 local checkpoint - 2026-10-11 JST
 
 All OTP route/client/cleanup integration is locally verified on `dcc0e1a74d2f5e3b67e13ecbb241bc04c8fafdde`.

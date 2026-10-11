@@ -1,5 +1,43 @@
 # Backend program aggregate checkpoint - 2026-10-12 JST
 
+**Task/status:** LOCAL_IMPLEMENTATION_VERIFIED_WITH_BLOCKING_SECURITY_AND_EXTERNAL_GATES.
+Canonical worktree /Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo;
+branch codex/backend-program-20261011. Implementation `7ef2f8407d3a6a958c78146db3b5c9a9f0990b78`;
+base 1963c469e2e3bd4819cda6bb9ef8162101ad523a. Main read-only reverified
+652e0d7632745e9b77cda4b5b3caac83a3ec1015. Receipt is a separate docs checkpoint.
+
+**Changes:** B01c current cookie/membership authority; offline ScanV3 contracts,
+scorer and version fences; provider control and durable cancellation; dormant AI
+budget kernel; evidence-bound ingredient review and prepared pilot; whole-week/
+shopping/cooking fixes; Week service extraction and OpenAPI candidate; bounded
+request telemetry and executable pinned security scanner candidate under docs.
+Payment runtime is unchanged; its existing auth test fixture adds household/
+membership only, with every assertion independently proven unchanged.
+
+**Checks:** committed-source full 309 files / 7463 tests PASS; lint/typecheck/
+migration smoke/sequential build PASS, clean tree before/after each required gate.
+Focused 209 and auth/payment 126 PASS; isolated local D1 exact 40 / reapply 0 / pending 0 /
+schema [] / FK [] / quick_check ok; 387 client assets byte-identical under matching inputs.
+Security scanner 24 selftests PASS; independent decoder/cache/bytecode/protected
+Gitblob review PASS. Fifty application/test/evaluation sources and 30 candidate
+inputs frozen; 1847 protected files and 40 migrations unchanged. Exact commands,
+failures, log hashes and review receipts: docs/backend-upgrade/program-20261011.
+
+**Limits/next:** security is BLOCKED: audit 41 full (2 critical / 16 high / 19 moderate / 4 low),
+2 production moderate; Gitleaks 16 unreviewed candidates, zizmor 72 findings, Semgrep 1 parser
+error. Syft 786 declared components does not certify installed binaries or licenses.
+No workflow is enabled; no suppressions/exceptions or clean-security claim.
+Next local work is isolated dependency/workflow/parser remediation plus private
+secret triage. Real OCR corpus/human ingredient review, provider token/pricing/
+retention evidence, inbox/staging/SLO and protected billing/release tasks remain
+required. V3 writer/client, new providers, candidate budget SQL/runtime and V2 data
+cutover remain off/unapplied. No remote mutation/deploy/paid provider/real mail/
+push/PR/merge or production certificate. Historical checkpoints follow unchanged.
+
+---
+
+# Backend program aggregate checkpoint - 2026-10-12 JST
+
 **Task/status:** LOCAL_IMPLEMENTATION_COMPLETE_FINAL_GATES_IN_PROGRESS.
 Canonical worktree /Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo,
 branch codex/backend-program-20261011; base1963c469e2e3bd4819cda6bb9ef8162101ad523a.
