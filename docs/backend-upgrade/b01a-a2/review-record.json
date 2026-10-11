@@ -1,6 +1,6 @@
 {
   "type": "a2_agent_source_review_snapshot",
-  "status": "LOCAL_A2_DESIGN_ACCEPTED_REVIEWED_SNAPSHOT_GLOBAL_GATES_PENDING",
+  "status": "LOCAL_A2_SOURCE_REVIEW_NO_BLOCKING_FINDINGS",
   "recordedAtUtc": "2026-10-11T10:12:14.593151+00:00",
   "reviewer": "a2_transaction",
   "checkout": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
@@ -90,8 +90,8 @@
   ],
   "adr": {
     "path": "docs/backend-upgrade/b01a-a2/ADR-B01a-002.md",
-    "sha256": "8835766d2043a1d54d90eef0b9d22fd8f9c01966e3d8f974588fc154a824ca78",
-    "bytes": 15200
+    "sha256": "09bd494f6f99432d7d09a18c3393e4a25d8100ce367d0efea1849baf8c281d1e",
+    "bytes": 15583
   },
   "findingsResolved": [
     {
@@ -210,6 +210,14 @@
   "reviewerChecks": [
     {
       "command": "git diff --check -- tests/integration/auth-hardening.test.ts docs/backend-upgrade/b01a-a2/ADR-B01a-002.md",
+      "exitCode": 0
+    },
+    {
+      "command": "python3 -m json.tool docs/backend-upgrade/b01a-a2/review-record.json",
+      "exitCode": 0
+    },
+    {
+      "command": "git diff --check -- tests/integration/auth-hardening.test.ts docs/backend-upgrade/b01a-a2/ADR-B01a-002.md docs/backend-upgrade/b01a-a2/review-record.json",
       "exitCode": 0
     }
   ],

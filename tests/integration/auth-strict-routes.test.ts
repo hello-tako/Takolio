@@ -179,7 +179,10 @@ describe('strict email lifecycle, reset and cleanup', () => {
     try {
       const known = await request('/auth/forgot-password', { email: EMAIL }, key());
       const unknown = await request('/auth/forgot-password', { email: 'unknown@example.test' }, key());
-      expect(known.json).toEqual(unknown.json); expect(known.status).toBe(200); expect(known.json.otpDelivered).toBe(false);
+      const publicFields = ({ otpKeyIssuedAtMs: _clock, otpExpiresAtMs: _expiry, ...rest }: any) => rest;
+      expect(publicFields(known.json)).toEqual(publicFields(unknown.json));
+      for (const result of [known, unknown]) expect(result.json.otpExpiresAtMs - result.json.otpKeyIssuedAtMs).toBe(600000);
+      expect(known.status).toBe(200); expect(known.json.otpDelivered).toBe(false);
       const compare = vi.spyOn(digests, 'verifyOtpDigest'); const blocked = await verify(code(), key(), 'forgot_password');
       expect(blocked.status).toBe(400); expect(blocked.json.code).toBe('OTP_INVALID'); expect(compare).not.toHaveBeenCalled();
     } finally { release(); }
@@ -254,9 +257,13 @@ describe('strict recovery and retained authority regressions', () => {
 
   function sameGeneric(known: any, unknown: any) {
     expect(known.status).toBe(200); expect(unknown.status).toBe(200);
-    const withoutClock = ({ otpKeyIssuedAtMs: _clock, otpExpiresAtMs: _expiry, ...rest }: any) => rest;
+    const withoutClock = ({ otpKeyIssuedAtMs: _clock, otpExpiresAtMs: _expiry, retryAfterSeconds: _cooldown, ...rest }: any) => rest;
     expect(withoutClock(known.json)).toEqual(withoutClock(unknown.json));
     expect(Object.keys(known.json).sort()).toEqual(Object.keys(unknown.json).sort());
+    for (const result of [known, unknown]) {
+      const { otpKeyIssuedAtMs, otpExpiresAtMs, retryAfterSeconds } = result.json;
+      expect(retryAfterSeconds).toBe(Math.max(0, (otpExpiresAtMs - otpKeyIssuedAtMs) / 1000 - 540));
+    }
     expect(known.json).toMatchObject({ success: true, otpDelivered: false, deliveryState: 'pending' });
     expect(Number.isSafeInteger(known.json.otpExpiresAtMs)).toBe(true);
     expect(Number.isSafeInteger(unknown.json.otpExpiresAtMs)).toBe(true);

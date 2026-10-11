@@ -75,7 +75,7 @@ describe('scheduled cleanup against migrated hardening schema', () => {
     } finally { db.close(); }
   });
 
-  it('expires sessions/OTPs and terminal jobs without deleting active claims or quota history', async () => {
+  it('prunes zero-failure expired OTPs but retains abuse evidence, active claims and quota history', async () => {
     const db = new SqliteD1();
     try {
       db.seed(`INSERT INTO users (id,email) VALUES ('cleanup-user','cleanup@example.com');
@@ -85,12 +85,15 @@ describe('scheduled cleanup against migrated hardening schema', () => {
           ('active','cleanup-user','cleanup-house','active-hash',datetime('now','+1 day'),NULL),
           ('revoked-recent','cleanup-user','cleanup-house','revoked-hash',datetime('now','+1 day'),datetime('now'));
         INSERT INTO auth_otps (id,email,code_digest,purpose,expires_at,used,attempt_count,used_at) VALUES
-          ('expired','cleanup@example.com','digest','register',datetime('now','-90 days'),0,5,NULL),
+          ('expired-failed','cleanup@example.com','digest','register',datetime('now','-90 days'),0,5,NULL),
+          ('expired-clean','cleanup@example.com','digest','register',datetime('now','-90 days'),0,0,NULL),
           ('used-old','cleanup@example.com','digest','register',datetime('now','-90 days'),1,0,datetime('now','-90 days')),
           ('active','cleanup@example.com','digest','register',datetime('now','+10 minutes'),0,0,NULL),
           ('used-recent','cleanup@example.com','digest','register',datetime('now','+10 minutes'),1,0,datetime('now'));
         INSERT INTO scan_quota_periods (user_id,household_id,period_start,used_count,max_scans)
-          VALUES ('cleanup-user','cleanup-house','2020-01-01',2,5);`);
+          VALUES ('cleanup-user','cleanup-house','2020-01-01',2,5);
+        INSERT INTO auth_otps(id,email,code_digest,purpose,expires_at,attempt_count,locked_until)
+          VALUES ('expired-locked','cleanup@example.com','digest','register',datetime('now','-90 days'),0,datetime('now','-89 days'));`);
       for (const status of ['pending', 'processing', 'ready', 'failed']) {
         db.seed(`INSERT INTO scans (id,user_id,household_id,status,scan_type)
           VALUES ('scan-${status}','cleanup-user','cleanup-house','${status}','fridge');
@@ -104,10 +107,15 @@ describe('scheduled cleanup against migrated hardening schema', () => {
             CASE WHEN '${status}' = 'reserved' THEN datetime('now') ELSE datetime('now','-90 days') END);`);
       }
       const env = { DB: db, ENVIRONMENT: 'test' } as Env;
+      const abuseBefore = db.query("SELECT * FROM auth_otps WHERE id IN ('expired-failed','expired-locked') ORDER BY id");
       const report = await runScheduledCleanup(env);
       expect(report.tasks.every((task) => task.status === 'ok')).toBe(true);
       expect(db.query('SELECT id FROM sessions_v2 ORDER BY id')).toEqual([{ id: 'active' }, { id: 'revoked-recent' }]);
-      expect(db.query('SELECT id FROM auth_otps ORDER BY id')).toEqual([{ id: 'active' }, { id: 'used-recent' }]);
+      expect(report.tasks.find((task) => task.task === 'expired-otps')).toMatchObject({ status: 'ok', deleted: 2 });
+      expect(db.query('SELECT id FROM auth_otps ORDER BY id')).toEqual([
+        { id: 'active' }, { id: 'expired-failed' }, { id: 'expired-locked' }, { id: 'used-recent' },
+      ]);
+      expect(db.query("SELECT * FROM auth_otps WHERE id IN ('expired-failed','expired-locked') ORDER BY id")).toEqual(abuseBefore);
       expect(db.query('SELECT id,claim_token FROM scan_queue_jobs ORDER BY id')).toEqual([
         { id: 'job-pending', claim_token: 'claim-pending' }, { id: 'job-processing', claim_token: 'claim-processing' },
       ]);
