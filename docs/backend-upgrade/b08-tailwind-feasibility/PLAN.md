@@ -1,6 +1,6 @@
 # B08 remaining dependency: bounded Tailwind 4 feasibility
 
-Status: IN_PROGRESS. Date: 2026-10-12 JST.
+Status: LOCAL_MITIGATION_VERIFIED_WITH_BLOCKING_RELEASE_GATES. Date: 2026-10-12 JST.
 Base: b9612d199bbad57efbe71a423ab97b41fab8f3af.
 Branch: codex/backend-b08-tailwind-feasibility.
 
@@ -71,3 +71,9 @@ apply and verify a fixed nesting guard as a local mitigation, retain the full
 high advisory and reject the incompatible major candidate. The final result must
 separate mitigation verification, major-migration rejection and release blockers.
 The original freeze remains in force outside those exact new paths.
+
+Completed: registry/candidate/final26browser pairs, fixed-depth mitigation/59new
+tests/756differential vectors, clean committed full7582tests/local gates, exact
+CSS/fresh install/protected4564files and failed pinned security scan reconciled.
+Final docs receipt verification/current-SHA scan follow separately; external
+production acceptance remains open. See RESULT.md and LOCAL_VALIDATION.md.

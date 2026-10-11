@@ -1,0 +1,1627 @@
+{
+  "classification": "LOCAL_BOUNDED_MITIGATION_NOT_RELEASE_CERTIFICATION",
+  "baseSha": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+  "implementationSha": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+  "source": [
+    {
+      "path": "docs/ai/CURRENT_STATE.md",
+      "sha256": "41ba14c71355da11dc18929cd08e0615123b913b3ec49884f51d8527e140b3ad"
+    },
+    {
+      "path": "docs/ai/DECISIONS.md",
+      "sha256": "6d6988fb7cb639d268e0c5955f3ffc255f55cee9b955cf2fb2ed132faeb5014b"
+    },
+    {
+      "path": "docs/ai/HANDOFF.md",
+      "sha256": "3c9e447c3a8a901b55058e876b77923fda3f114d9810be01800e48fec0df1d4c"
+    },
+    {
+      "path": "docs/ai/TASK_BOARD.md",
+      "sha256": "22c35da4a0aa38d5f916d34632ef0b16c20e3e428c18902ebf9d1d0a233c6c20"
+    },
+    {
+      "path": "docs/backend-upgrade/IMPLEMENTATION_PLAN.md",
+      "sha256": "c2f056de43066a70b5d988ffad38b53764c65dd3981855aba7b832a4c27b9023"
+    },
+    {
+      "path": "docs/backend-upgrade/b08-tailwind-feasibility/ADR-B08-BRACES-001.md",
+      "sha256": "306cd3d0cb1afa63c26324809618a0137b343dbf55c4a72f24cac60484f06683"
+    },
+    {
+      "path": "docs/backend-upgrade/b08-tailwind-feasibility/ADR-B08-TW-001.md",
+      "sha256": "ebab7959805e32b4af7336d40c7bb64306fe77c2e8158e331631611558a86dac"
+    },
+    {
+      "path": "docs/backend-upgrade/b08-tailwind-feasibility/MIGRATION_PLAN.md",
+      "sha256": "2ed91ceb17fd1a53b7c1e1f36b396fdbab5fec82f1f608d4a0d10f29813c01a7"
+    },
+    {
+      "path": "docs/backend-upgrade/b08-tailwind-feasibility/NEXT_ACTIONS.md",
+      "sha256": "285a5f52f39a1c6ec81db50627a1200fc4ffcfa9c5c212e641b327fea5f80dad"
+    },
+    {
+      "path": "docs/backend-upgrade/b08-tailwind-feasibility/PLAN.md",
+      "sha256": "dc2f0321024620ee3b38b907fdbf951f25ca0729ce88df4656f64ee39173fb16"
+    },
+    {
+      "path": "docs/backend-upgrade/b08-tailwind-feasibility/REVIEW.md",
+      "sha256": "36f8f45b775e1b9f1efefeac6d735252ba3cc0d8c1341cb4e8572e6bbdeda775"
+    },
+    {
+      "path": "docs/backend-upgrade/b08-tailwind-feasibility/analyze_candidate.mjs",
+      "sha256": "9855ab429e928eb677a79a5fe2c6712add01019b292858fd24f781588a32c618"
+    },
+    {
+      "path": "docs/backend-upgrade/b08-tailwind-feasibility/browser_probe.mjs",
+      "sha256": "25575a73aba4abca23e96adab73f2a15b2a8f7a335d87f7e36ea42ebf0446a97"
+    },
+    {
+      "path": "docs/backend-upgrade/b08-tailwind-feasibility/compare_braces.mjs",
+      "sha256": "788e61e94dab6dfadfc95ccd7be4fa1c51cff52401df7176bc44f37b0d527ee4"
+    },
+    {
+      "path": "docs/backend-upgrade/b08-tailwind-feasibility/export_packet.py",
+      "sha256": "0420f2ee546ee1d7e5f38fa8577a4cba974e87ed60186bc12f97397069f62c4e"
+    },
+    {
+      "path": "docs/backend-upgrade/b08-tailwind-feasibility/prepare_candidate.py",
+      "sha256": "0f0537b62756705a312a31941c94c0ec14cfce225908d0ef27bec2ccc38f4168"
+    },
+    {
+      "path": "docs/backend-upgrade/b08-tailwind-feasibility/receipt_runner.py",
+      "sha256": "b1be40b233d81f7042c995ac96333d461635a5eb348f727bf133d98b05d12531"
+    },
+    {
+      "path": "docs/backend-upgrade/b08-tailwind-feasibility/upstream_control.py",
+      "sha256": "5b36f5905095bd7fd3906c2833c4874f119ffbab166606440fe2275b8f660dd0"
+    },
+    {
+      "path": "docs/backend-upgrade/b08-tailwind-feasibility/verify_packet.py",
+      "sha256": "f370d87b01062c4b2de7f7baa4b1b9fd74075ee97a31d8410c218aab2c3929b3"
+    },
+    {
+      "path": "package.json",
+      "sha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295"
+    },
+    {
+      "path": "patches/braces@3.0.3.patch",
+      "sha256": "3f11ec1cd189913f4389e48eb8614f5f7d38b6e14b4b8aa37a46a85dcdfc9751"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "sha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+    },
+    {
+      "path": "tests/unit/braces-depth-guard.test.ts",
+      "sha256": "09931a9226e0b2ffd3f4aaf9bcde01a35e847436a9a082f01328d8e77b2ab8de"
+    }
+  ],
+  "commands": [
+    {
+      "name": "braces-final-audit-prod",
+      "mode": "canonical",
+      "command": [
+        "pnpm",
+        "audit",
+        "--prod",
+        "--json"
+      ],
+      "startedAtUtc": "2026-10-11T23:40:23.899750+00:00",
+      "durationSeconds": 0.677,
+      "exitCode": 0,
+      "before": {
+        "head": "0f52b1963c1b2075ba2d47f4cd05b3c4b3d6a495",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "after": {
+        "head": "0f52b1963c1b2075ba2d47f4cd05b3c4b3d6a495",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "logSha256": "89afa98eb2f105e15a07f3557cf2dccadd21175473f32e8671ba497c17d98c22",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "GIT_COMMIT": "0f52b1963c1b2075ba2d47f4cd05b3c4b3d6a495",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "braces-final-audit",
+      "mode": "canonical",
+      "command": [
+        "pnpm",
+        "audit",
+        "--json"
+      ],
+      "startedAtUtc": "2026-10-11T23:40:23.899850+00:00",
+      "durationSeconds": 0.725,
+      "exitCode": 1,
+      "before": {
+        "head": "0f52b1963c1b2075ba2d47f4cd05b3c4b3d6a495",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "after": {
+        "head": "0f52b1963c1b2075ba2d47f4cd05b3c4b3d6a495",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "logSha256": "c18fedca4f85bab360b319edb18a74f3bd4cbd5796b39874d7d66fd31a06065a",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "GIT_COMMIT": "0f52b1963c1b2075ba2d47f4cd05b3c4b3d6a495",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "braces-final-clean-audit-prod",
+      "mode": "canonical",
+      "command": [
+        "pnpm",
+        "audit",
+        "--prod",
+        "--json"
+      ],
+      "startedAtUtc": "2026-10-11T23:46:30.992755+00:00",
+      "durationSeconds": 0.732,
+      "exitCode": 0,
+      "before": {
+        "head": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "after": {
+        "head": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "logSha256": "89afa98eb2f105e15a07f3557cf2dccadd21175473f32e8671ba497c17d98c22",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "braces-final-clean-audit",
+      "mode": "canonical",
+      "command": [
+        "pnpm",
+        "audit",
+        "--json"
+      ],
+      "startedAtUtc": "2026-10-11T23:46:30.972651+00:00",
+      "durationSeconds": 0.91,
+      "exitCode": 1,
+      "before": {
+        "head": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "after": {
+        "head": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "logSha256": "c18fedca4f85bab360b319edb18a74f3bd4cbd5796b39874d7d66fd31a06065a",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "braces-final-clean-build",
+      "mode": "canonical",
+      "command": [
+        "pnpm",
+        "build"
+      ],
+      "startedAtUtc": "2026-10-11T23:49:04.568765+00:00",
+      "durationSeconds": 7.68,
+      "exitCode": 0,
+      "before": {
+        "head": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "after": {
+        "head": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "logSha256": "35ed1f98f6845515c827cb05baf82430d59d7f6499d82180e650c59f8c86fd89",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "braces-final-clean-focused",
+      "mode": "canonical",
+      "command": [
+        "pnpm",
+        "test",
+        "tests/unit/braces-depth-guard.test.ts",
+        "tests/unit/t21rc2-production-capture.test.mjs",
+        "tests/unit/t21rc2t-production-capture.test.mjs"
+      ],
+      "startedAtUtc": "2026-10-11T23:46:22.213574+00:00",
+      "durationSeconds": 4.818,
+      "exitCode": 0,
+      "before": {
+        "head": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "after": {
+        "head": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "logSha256": "4d1fb25a5e46baa6c8b357c905207ca00ee45194cb603b0ed8b62b1d0e410c1b",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "braces-final-clean-frozen",
+      "mode": "canonical",
+      "command": [
+        "pnpm",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "startedAtUtc": "2026-10-11T23:46:01.241075+00:00",
+      "durationSeconds": 0.436,
+      "exitCode": 0,
+      "before": {
+        "head": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "after": {
+        "head": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "logSha256": "e21ea6f720f035fff199a1fdab40fd83abfa79d6953b9541d9c5ad8bd1d03571",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "braces-final-clean-full-tests",
+      "mode": "canonical",
+      "command": [
+        "pnpm",
+        "test"
+      ],
+      "startedAtUtc": "2026-10-11T23:46:27.168502+00:00",
+      "durationSeconds": 156.645,
+      "exitCode": 0,
+      "before": {
+        "head": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "after": {
+        "head": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "logSha256": "aabcf3b63fb3b3ba046e8283e4524585b410bdf3e9a3b610c1f28aac87550330",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "braces-final-clean-lint",
+      "mode": "canonical",
+      "command": [
+        "pnpm",
+        "lint"
+      ],
+      "startedAtUtc": "2026-10-11T23:46:01.818522+00:00",
+      "durationSeconds": 6.359,
+      "exitCode": 0,
+      "before": {
+        "head": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "after": {
+        "head": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "logSha256": "25cc1f9634027c24c62f4029a44f00fc3a7e082ac28576c6fc5a3db3e0961f73",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "braces-final-clean-migrations",
+      "mode": "canonical",
+      "command": [
+        "pnpm",
+        "check:migrations"
+      ],
+      "startedAtUtc": "2026-10-11T23:49:03.968792+00:00",
+      "durationSeconds": 0.458,
+      "exitCode": 0,
+      "before": {
+        "head": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "after": {
+        "head": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "logSha256": "965811c75cef6d8d7db8527ffaf3ec59c52869fe5cb575a1261bc3b793191de5",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "braces-final-clean-scanner",
+      "mode": "canonical",
+      "command": [
+        "/opt/homebrew/bin/python3.12",
+        "-B",
+        "docs/backend-upgrade/b08/security/runner.py",
+        "scan",
+        "--tools-dir",
+        ".artifacts/backend-program-20261011/b08-security-downloads",
+        "--output-dir",
+        ".artifacts/backend-b08-tailwind-feasibility/scanner-clean-implementation"
+      ],
+      "startedAtUtc": "2026-10-11T23:46:43.646489+00:00",
+      "durationSeconds": 158.689,
+      "exitCode": 1,
+      "before": {
+        "head": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "after": {
+        "head": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "logSha256": "5f85adccf6c3f7ca741c1a80535fe491de02e719e7d04209a1303552d5b918d4",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "braces-final-clean-types",
+      "mode": "canonical",
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "startedAtUtc": "2026-10-11T23:46:08.317348+00:00",
+      "durationSeconds": 13.757,
+      "exitCode": 0,
+      "before": {
+        "head": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "after": {
+        "head": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "logSha256": "a3a28a25c9246fe7e8bbf5999692dc60347e343a2415f8cefcb7e767e0e6a0d6",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "braces-final-focused",
+      "mode": "canonical",
+      "command": [
+        "pnpm",
+        "test",
+        "tests/unit/braces-depth-guard.test.ts"
+      ],
+      "startedAtUtc": "2026-10-11T23:41:15.916222+00:00",
+      "durationSeconds": 1.404,
+      "exitCode": 0,
+      "before": {
+        "head": "0f52b1963c1b2075ba2d47f4cd05b3c4b3d6a495",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "after": {
+        "head": "0f52b1963c1b2075ba2d47f4cd05b3c4b3d6a495",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "logSha256": "806aeaecdb9bc5d3efb97e360797ee0841c008c253c052c84f77c10c65ea9c87",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "GIT_COMMIT": "0f52b1963c1b2075ba2d47f4cd05b3c4b3d6a495",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "braces-final-frozen",
+      "mode": "canonical",
+      "command": [
+        "pnpm",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "startedAtUtc": "2026-10-11T23:40:23.257778+00:00",
+      "durationSeconds": 0.45,
+      "exitCode": 0,
+      "before": {
+        "head": "0f52b1963c1b2075ba2d47f4cd05b3c4b3d6a495",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "after": {
+        "head": "0f52b1963c1b2075ba2d47f4cd05b3c4b3d6a495",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "logSha256": "98209927a8a06ff253beb188ea1ad27d48ffeef1fd451c2a19e197a8159fe06b",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "GIT_COMMIT": "0f52b1963c1b2075ba2d47f4cd05b3c4b3d6a495",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "braces-final-full-tests",
+      "mode": "canonical",
+      "command": [
+        "pnpm",
+        "test"
+      ],
+      "startedAtUtc": "2026-10-11T23:41:17.458488+00:00",
+      "durationSeconds": 175.625,
+      "exitCode": 1,
+      "before": {
+        "head": "0f52b1963c1b2075ba2d47f4cd05b3c4b3d6a495",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "after": {
+        "head": "0f52b1963c1b2075ba2d47f4cd05b3c4b3d6a495",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/NEXT_ACTIONS.md\n?? docs/backend-upgrade/b08-tailwind-feasibility/export_packet.py\n",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "logSha256": "8163bbb223e7054f094a27ff2981e2e1fcbd2882b5e77b42d53d9a5479e82d87",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "GIT_COMMIT": "0f52b1963c1b2075ba2d47f4cd05b3c4b3d6a495",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "braces-final-lint",
+      "mode": "canonical",
+      "command": [
+        "pnpm",
+        "lint"
+      ],
+      "startedAtUtc": "2026-10-11T23:40:54.771073+00:00",
+      "durationSeconds": 6.719,
+      "exitCode": 0,
+      "before": {
+        "head": "0f52b1963c1b2075ba2d47f4cd05b3c4b3d6a495",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "after": {
+        "head": "0f52b1963c1b2075ba2d47f4cd05b3c4b3d6a495",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "logSha256": "25cc1f9634027c24c62f4029a44f00fc3a7e082ac28576c6fc5a3db3e0961f73",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "GIT_COMMIT": "0f52b1963c1b2075ba2d47f4cd05b3c4b3d6a495",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "braces-final-types",
+      "mode": "canonical",
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "startedAtUtc": "2026-10-11T23:41:01.624115+00:00",
+      "durationSeconds": 14.136,
+      "exitCode": 0,
+      "before": {
+        "head": "0f52b1963c1b2075ba2d47f4cd05b3c4b3d6a495",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "after": {
+        "head": "0f52b1963c1b2075ba2d47f4cd05b3c4b3d6a495",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "logSha256": "a3a28a25c9246fe7e8bbf5999692dc60347e343a2415f8cefcb7e767e0e6a0d6",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "GIT_COMMIT": "0f52b1963c1b2075ba2d47f4cd05b3c4b3d6a495",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "braces-focused",
+      "mode": "canonical",
+      "command": [
+        "pnpm",
+        "test",
+        "tests/unit/braces-depth-guard.test.ts"
+      ],
+      "startedAtUtc": "2026-10-11T23:35:12.006512+00:00",
+      "durationSeconds": 1.588,
+      "exitCode": 0,
+      "before": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": " M package.json\n M pnpm-lock.yaml\n?? docs/backend-upgrade/b08-tailwind-feasibility/\n?? patches/\n?? tests/unit/braces-depth-guard.test.ts\n",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "after": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": " M package.json\n M pnpm-lock.yaml\n?? docs/backend-upgrade/b08-tailwind-feasibility/\n?? patches/\n?? tests/unit/braces-depth-guard.test.ts\n",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "logSha256": "fd44eb7863983cecfb2dcd8bc5a530ba429f8b17dd9e17a1bb2aca76ee0272b0",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "GIT_COMMIT": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "braces-fresh-offline-install",
+      "mode": "canonical",
+      "command": [
+        "python3",
+        ".artifacts/backend-b08-tailwind-feasibility/fresh_install.py"
+      ],
+      "startedAtUtc": "2026-10-11T23:47:14.643646+00:00",
+      "durationSeconds": 3.756,
+      "exitCode": 0,
+      "before": {
+        "head": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "after": {
+        "head": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "logSha256": "b826f440609dba2f891f90adcf624981ce6c16990071a47e7baaa5ace944b808",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "braces-implementation-scanner",
+      "mode": "canonical",
+      "command": [
+        "/opt/homebrew/bin/python3.12",
+        "-B",
+        "docs/backend-upgrade/b08/security/runner.py",
+        "scan",
+        "--tools-dir",
+        ".artifacts/backend-program-20261011/b08-security-downloads",
+        "--output-dir",
+        ".artifacts/backend-b08-tailwind-feasibility/scanner-implementation"
+      ],
+      "startedAtUtc": "2026-10-11T23:41:30.561293+00:00",
+      "durationSeconds": 168.982,
+      "exitCode": 1,
+      "before": {
+        "head": "0f52b1963c1b2075ba2d47f4cd05b3c4b3d6a495",
+        "status": "",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "after": {
+        "head": "0f52b1963c1b2075ba2d47f4cd05b3c4b3d6a495",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/NEXT_ACTIONS.md\n?? docs/backend-upgrade/b08-tailwind-feasibility/export_packet.py\n",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "logSha256": "3b0f319336f9fea4b2b4ae50c1aeed58ea7e75354d0ed1662c32fcfbc96ba2c4",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "GIT_COMMIT": "0f52b1963c1b2075ba2d47f4cd05b3c4b3d6a495",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "braces-precommit-types",
+      "mode": "canonical",
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "startedAtUtc": "2026-10-11T23:37:01.341334+00:00",
+      "durationSeconds": 14.301,
+      "exitCode": 0,
+      "before": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": " M package.json\n M pnpm-lock.yaml\n?? docs/backend-upgrade/b08-tailwind-feasibility/\n?? patches/\n?? tests/unit/braces-depth-guard.test.ts\n",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "after": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": " M package.json\n M pnpm-lock.yaml\n?? docs/backend-upgrade/b08-tailwind-feasibility/\n?? patches/\n?? tests/unit/braces-depth-guard.test.ts\n",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "logSha256": "a3a28a25c9246fe7e8bbf5999692dc60347e343a2415f8cefcb7e767e0e6a0d6",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "GIT_COMMIT": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "braces-temp-path-recovery",
+      "mode": "canonical",
+      "command": [
+        "pnpm",
+        "test",
+        "tests/unit/t21rc2-production-capture.test.mjs",
+        "tests/unit/t21rc2t-production-capture.test.mjs"
+      ],
+      "startedAtUtc": "2026-10-11T23:45:27.950420+00:00",
+      "durationSeconds": 4.33,
+      "exitCode": 0,
+      "before": {
+        "head": "0f52b1963c1b2075ba2d47f4cd05b3c4b3d6a495",
+        "status": " M docs/backend-upgrade/b08-tailwind-feasibility/REVIEW.md\n M docs/backend-upgrade/b08-tailwind-feasibility/prepare_candidate.py\n M docs/backend-upgrade/b08-tailwind-feasibility/receipt_runner.py\n?? docs/backend-upgrade/b08-tailwind-feasibility/NEXT_ACTIONS.md\n?? docs/backend-upgrade/b08-tailwind-feasibility/export_packet.py\n?? docs/backend-upgrade/b08-tailwind-feasibility/verify_packet.py\n",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "after": {
+        "head": "0f52b1963c1b2075ba2d47f4cd05b3c4b3d6a495",
+        "status": " M docs/backend-upgrade/b08-tailwind-feasibility/REVIEW.md\n M docs/backend-upgrade/b08-tailwind-feasibility/prepare_candidate.py\n M docs/backend-upgrade/b08-tailwind-feasibility/receipt_runner.py\n?? docs/backend-upgrade/b08-tailwind-feasibility/NEXT_ACTIONS.md\n?? docs/backend-upgrade/b08-tailwind-feasibility/export_packet.py\n?? docs/backend-upgrade/b08-tailwind-feasibility/verify_packet.py\n",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "logSha256": "717da8e3aead726737ec7e2aa1c23192e9b9a4737ca83ba2c105d1184c1389a4",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "0f52b1963c1b2075ba2d47f4cd05b3c4b3d6a495",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "braces-upstream-comparison-recovery",
+      "mode": "canonical",
+      "command": [
+        "node",
+        "docs/backend-upgrade/b08-tailwind-feasibility/compare_braces.mjs"
+      ],
+      "startedAtUtc": "2026-10-11T23:37:58.741432+00:00",
+      "durationSeconds": 2.236,
+      "exitCode": 0,
+      "before": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": " M package.json\n M pnpm-lock.yaml\n?? docs/backend-upgrade/b08-tailwind-feasibility/\n?? patches/\n?? tests/unit/braces-depth-guard.test.ts\n",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "after": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": " M package.json\n M pnpm-lock.yaml\n?? docs/backend-upgrade/b08-tailwind-feasibility/\n?? patches/\n?? tests/unit/braces-depth-guard.test.ts\n",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "logSha256": "5a6400b12486d782c028e46b9029066f3d8df62a5da53f15b099893926beedc0",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "GIT_COMMIT": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "braces-upstream-comparison",
+      "mode": "canonical",
+      "command": [
+        "node",
+        "docs/backend-upgrade/b08-tailwind-feasibility/compare_braces.mjs"
+      ],
+      "startedAtUtc": "2026-10-11T23:36:36.195728+00:00",
+      "durationSeconds": 1.174,
+      "exitCode": 1,
+      "before": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": " M package.json\n M pnpm-lock.yaml\n?? docs/backend-upgrade/b08-tailwind-feasibility/\n?? patches/\n?? tests/unit/braces-depth-guard.test.ts\n",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "after": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": " M package.json\n M pnpm-lock.yaml\n?? docs/backend-upgrade/b08-tailwind-feasibility/\n?? patches/\n?? tests/unit/braces-depth-guard.test.ts\n",
+        "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+        "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779"
+      },
+      "logSha256": "1b7906b06ac639e671797d590429dc5a5dec33a382eca5ac9b93ecce17044135",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "GIT_COMMIT": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "tw4-baseline-audit",
+      "mode": "canonical",
+      "command": [
+        "pnpm",
+        "audit",
+        "--json"
+      ],
+      "startedAtUtc": "2026-10-11T23:24:45.481250+00:00",
+      "durationSeconds": 0.672,
+      "exitCode": 1,
+      "before": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/\n",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c"
+      },
+      "after": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/\n",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c"
+      },
+      "logSha256": "c18fedca4f85bab360b319edb18a74f3bd4cbd5796b39874d7d66fd31a06065a",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "GIT_COMMIT": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "tw4-baseline-build",
+      "mode": "canonical",
+      "command": [
+        "pnpm",
+        "build"
+      ],
+      "startedAtUtc": "2026-10-11T23:24:45.481265+00:00",
+      "durationSeconds": 7.541,
+      "exitCode": 0,
+      "before": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/\n",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c"
+      },
+      "after": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/\n",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c"
+      },
+      "logSha256": "c2c1b3046b3bed73f4cb8a7311983c06ce4a6d5c6162716526f9342545c60e2d",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "GIT_COMMIT": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "tw4-browser-focus-hover",
+      "mode": "canonical",
+      "command": [
+        "node",
+        "docs/backend-upgrade/b08-tailwind-feasibility/browser_probe.mjs",
+        "browser-focus-hover",
+        "states"
+      ],
+      "startedAtUtc": "2026-10-11T23:31:29.284216+00:00",
+      "durationSeconds": 7.934,
+      "exitCode": 0,
+      "before": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/\n",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c"
+      },
+      "after": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/\n",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c"
+      },
+      "logSha256": "1aba8784dce0c2e267ba1d891f2839891b2b46b96415e2a48e5dcfe9b35790b8",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "GIT_COMMIT": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "tw4-browser-import-recovery",
+      "mode": "canonical",
+      "command": [
+        "node",
+        "docs/backend-upgrade/b08-tailwind-feasibility/browser_probe.mjs",
+        "browser-import-recovery"
+      ],
+      "startedAtUtc": "2026-10-11T23:28:34.860148+00:00",
+      "durationSeconds": 31.239,
+      "exitCode": 0,
+      "before": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/\n",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c"
+      },
+      "after": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/\n",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c"
+      },
+      "logSha256": "41682f2b3f506d1ad3ceb5a2a857d64eb97ede4b97bfaa2f03c1cac05657d516",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "GIT_COMMIT": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "tw4-browser-pairs",
+      "mode": "canonical",
+      "command": [
+        "node",
+        "docs/backend-upgrade/b08-tailwind-feasibility/browser_probe.mjs"
+      ],
+      "startedAtUtc": "2026-10-11T23:26:33.941510+00:00",
+      "durationSeconds": 24.375,
+      "exitCode": 1,
+      "before": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/\n",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c"
+      },
+      "after": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/\n",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c"
+      },
+      "logSha256": "3c2ac085f87a15dd239580fcc06ebbb218ccfe71885739b538eb3403cf93d9bf",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "GIT_COMMIT": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "tw4-browser-route-recovery",
+      "mode": "canonical",
+      "command": [
+        "node",
+        "docs/backend-upgrade/b08-tailwind-feasibility/browser_probe.mjs",
+        "browser-route-recovery"
+      ],
+      "startedAtUtc": "2026-10-11T23:29:57.505517+00:00",
+      "durationSeconds": 30.776,
+      "exitCode": 0,
+      "before": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/\n",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c"
+      },
+      "after": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/\n",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c"
+      },
+      "logSha256": "41682f2b3f506d1ad3ceb5a2a857d64eb97ede4b97bfaa2f03c1cac05657d516",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "GIT_COMMIT": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "tw4-candidate-analysis-recovery",
+      "mode": "canonical",
+      "command": [
+        "node",
+        "docs/backend-upgrade/b08-tailwind-feasibility/analyze_candidate.mjs"
+      ],
+      "startedAtUtc": "2026-10-11T23:28:55.033113+00:00",
+      "durationSeconds": 0.526,
+      "exitCode": 0,
+      "before": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/\n",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c"
+      },
+      "after": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/\n",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c"
+      },
+      "logSha256": "3ade7f9a50cccdba93069c75ebee2f2d42bf8da722618c3893312624e6ec1d84",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "GIT_COMMIT": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "tw4-candidate-analysis",
+      "mode": "canonical",
+      "command": [
+        "node",
+        "docs/backend-upgrade/b08-tailwind-feasibility/analyze_candidate.mjs"
+      ],
+      "startedAtUtc": "2026-10-11T23:28:35.963871+00:00",
+      "durationSeconds": 0.303,
+      "exitCode": 1,
+      "before": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/\n",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c"
+      },
+      "after": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/\n",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c"
+      },
+      "logSha256": "9cb9eb76ddae0e0e4427ac222232d9e784ce431aafa4bbe46c175a54effba0bc",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "GIT_COMMIT": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "tw4-candidate-audit-prod",
+      "mode": "candidate",
+      "command": [
+        "pnpm",
+        "audit",
+        "--prod",
+        "--json"
+      ],
+      "startedAtUtc": "2026-10-11T23:24:57.751807+00:00",
+      "durationSeconds": 0.535,
+      "exitCode": 0,
+      "before": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/\n",
+        "packageSha256": "2b4e3e5f000bf12ef38c05deb42229a8ef7bc8f8deb538d03042d593b6bb5cc1",
+        "lockSha256": "4998dc372e0beb023700b754b9fce55901caffb211dd2c4e2280ac623d9ce69d"
+      },
+      "after": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/\n",
+        "packageSha256": "2b4e3e5f000bf12ef38c05deb42229a8ef7bc8f8deb538d03042d593b6bb5cc1",
+        "lockSha256": "4998dc372e0beb023700b754b9fce55901caffb211dd2c4e2280ac623d9ce69d"
+      },
+      "logSha256": "89afa98eb2f105e15a07f3557cf2dccadd21175473f32e8671ba497c17d98c22",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "GIT_COMMIT": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "tw4-candidate-audit",
+      "mode": "candidate",
+      "command": [
+        "pnpm",
+        "audit",
+        "--json"
+      ],
+      "startedAtUtc": "2026-10-11T23:24:57.752542+00:00",
+      "durationSeconds": 0.679,
+      "exitCode": 0,
+      "before": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/\n",
+        "packageSha256": "2b4e3e5f000bf12ef38c05deb42229a8ef7bc8f8deb538d03042d593b6bb5cc1",
+        "lockSha256": "4998dc372e0beb023700b754b9fce55901caffb211dd2c4e2280ac623d9ce69d"
+      },
+      "after": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/\n",
+        "packageSha256": "2b4e3e5f000bf12ef38c05deb42229a8ef7bc8f8deb538d03042d593b6bb5cc1",
+        "lockSha256": "4998dc372e0beb023700b754b9fce55901caffb211dd2c4e2280ac623d9ce69d"
+      },
+      "logSha256": "27e025e56175b1d62b2c12094c431e2aa91c7290e5d4393e7f07df6364fc352f",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "GIT_COMMIT": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "tw4-candidate-build-import-recovery",
+      "mode": "candidate",
+      "command": [
+        "pnpm",
+        "build"
+      ],
+      "startedAtUtc": "2026-10-11T23:27:16.637113+00:00",
+      "durationSeconds": 6.98,
+      "exitCode": 0,
+      "before": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/\n",
+        "packageSha256": "2b4e3e5f000bf12ef38c05deb42229a8ef7bc8f8deb538d03042d593b6bb5cc1",
+        "lockSha256": "4998dc372e0beb023700b754b9fce55901caffb211dd2c4e2280ac623d9ce69d"
+      },
+      "after": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/\n",
+        "packageSha256": "2b4e3e5f000bf12ef38c05deb42229a8ef7bc8f8deb538d03042d593b6bb5cc1",
+        "lockSha256": "4998dc372e0beb023700b754b9fce55901caffb211dd2c4e2280ac623d9ce69d"
+      },
+      "logSha256": "b08d27500183ce24b186ba35a4e2b329ea5a42b43411149ce6640017117fa99f",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "GIT_COMMIT": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "tw4-candidate-build",
+      "mode": "candidate",
+      "command": [
+        "pnpm",
+        "build"
+      ],
+      "startedAtUtc": "2026-10-11T23:24:56.575113+00:00",
+      "durationSeconds": 8.749,
+      "exitCode": 0,
+      "before": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/\n",
+        "packageSha256": "2b4e3e5f000bf12ef38c05deb42229a8ef7bc8f8deb538d03042d593b6bb5cc1",
+        "lockSha256": "4998dc372e0beb023700b754b9fce55901caffb211dd2c4e2280ac623d9ce69d"
+      },
+      "after": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/\n",
+        "packageSha256": "2b4e3e5f000bf12ef38c05deb42229a8ef7bc8f8deb538d03042d593b6bb5cc1",
+        "lockSha256": "4998dc372e0beb023700b754b9fce55901caffb211dd2c4e2280ac623d9ce69d"
+      },
+      "logSha256": "124b98d2fcedaa7a9f77c83babad35832cecb7dc37539e07797f4b363f6a253f",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "GIT_COMMIT": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "tw4-candidate-frozen",
+      "mode": "candidate",
+      "command": [
+        "pnpm",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "startedAtUtc": "2026-10-11T23:26:52.894617+00:00",
+      "durationSeconds": 0.467,
+      "exitCode": 0,
+      "before": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/\n",
+        "packageSha256": "2b4e3e5f000bf12ef38c05deb42229a8ef7bc8f8deb538d03042d593b6bb5cc1",
+        "lockSha256": "4998dc372e0beb023700b754b9fce55901caffb211dd2c4e2280ac623d9ce69d"
+      },
+      "after": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/\n",
+        "packageSha256": "2b4e3e5f000bf12ef38c05deb42229a8ef7bc8f8deb538d03042d593b6bb5cc1",
+        "lockSha256": "4998dc372e0beb023700b754b9fce55901caffb211dd2c4e2280ac623d9ce69d"
+      },
+      "logSha256": "8ac4ef0ae203ba94725019a266ca2cfc88aef758b1a530f01876bc734bc9acbb",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "GIT_COMMIT": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "tw4-candidate-install",
+      "mode": "candidate",
+      "command": [
+        "pnpm",
+        "install",
+        "--no-frozen-lockfile"
+      ],
+      "startedAtUtc": "2026-10-11T23:24:23.304717+00:00",
+      "durationSeconds": 3.983,
+      "exitCode": 0,
+      "before": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/\n",
+        "packageSha256": "2b4e3e5f000bf12ef38c05deb42229a8ef7bc8f8deb538d03042d593b6bb5cc1",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c"
+      },
+      "after": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/\n",
+        "packageSha256": "2b4e3e5f000bf12ef38c05deb42229a8ef7bc8f8deb538d03042d593b6bb5cc1",
+        "lockSha256": "4998dc372e0beb023700b754b9fce55901caffb211dd2c4e2280ac623d9ce69d"
+      },
+      "logSha256": "e7dcf6247d441ac0a67d54ff9b726c3d4b154d3a5c6d8bbbea25ee4a08dcd3f1",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "GIT_COMMIT": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    },
+    {
+      "name": "tw4-canonical-lint",
+      "mode": "canonical",
+      "command": [
+        "pnpm",
+        "lint"
+      ],
+      "startedAtUtc": "2026-10-11T23:31:53.728222+00:00",
+      "durationSeconds": 6.102,
+      "exitCode": 0,
+      "before": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/\n",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c"
+      },
+      "after": {
+        "head": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "status": "?? docs/backend-upgrade/b08-tailwind-feasibility/\n",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c"
+      },
+      "logSha256": "25cc1f9634027c24c62f4029a44f00fc3a7e082ac28576c6fc5a3db3e0961f73",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "GIT_COMMIT": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset",
+      "runtimeCandidateApplied": false
+    }
+  ],
+  "inputManifest": {
+    "count": 1131,
+    "sha256": "ffdf6c5127205ed0313111d3db78a5523da5b328c801f61a96172a8600a1c72a"
+  },
+  "attachments": [
+    {
+      "path": "docs/backend-upgrade/b08-tailwind-feasibility/attachments/registry.json",
+      "sha256": "b5a69da9b44f86943757a793178a85c10287c4c1e901d47023e993997067c847"
+    },
+    {
+      "path": "docs/backend-upgrade/b08-tailwind-feasibility/attachments/candidate-analysis.json",
+      "sha256": "8ffd4f08ec7c15180d02269269364fd915361dc4b6fe10876d71ff18cbe6d713"
+    },
+    {
+      "path": "docs/backend-upgrade/b08-tailwind-feasibility/attachments/browser-comparison.json",
+      "sha256": "491eafacee9dee9891e6a017d0104e427a563360bc8c633904da6812f833f8fd"
+    },
+    {
+      "path": "docs/backend-upgrade/b08-tailwind-feasibility/attachments/browser-states.json",
+      "sha256": "14294ccfcddf953f6061dda34a5e6409e674bc059cbb8cfa15bcf40f906ae669"
+    },
+    {
+      "path": "docs/backend-upgrade/b08-tailwind-feasibility/attachments/braces-comparison.json",
+      "sha256": "9c1c237259d0fad6092ed1975a16b3b6213ba007979d3b244fb13dd8161d92ba"
+    },
+    {
+      "path": "docs/backend-upgrade/b08-tailwind-feasibility/attachments/upstream-control.json",
+      "sha256": "64e02ed3680bd5b087d0362a9d5889b6cf7c040413d68607e7d753b2e49749cb"
+    },
+    {
+      "path": "docs/backend-upgrade/b08-tailwind-feasibility/attachments/protected-surface.json",
+      "sha256": "06a18a6576952092177c9120407554c8b41bc8890f84c93cf49438c0b383e03c"
+    },
+    {
+      "path": "docs/backend-upgrade/b08-tailwind-feasibility/attachments/scanner-implementation.json",
+      "sha256": "bf16d8e6e33d7f32671d01c96a2378a0697346a3f7a416959380dce43758ac46"
+    },
+    {
+      "path": "docs/backend-upgrade/b08-tailwind-feasibility/attachments/scanner-reconciliation.json",
+      "sha256": "c46dde4b83fd3a6b5136788749bf8da2ab017de42ed77d19b29c0875b67568fe"
+    }
+  ],
+  "securityGate": "FAILED",
+  "advisorySuppressed": false,
+  "upstreamPatchedVersionClaimed": false,
+  "privacyExport": {
+    "type": "Reviewed bounded metadata only",
+    "rawCommandLogsExported": false,
+    "rawScannerReportsOrPointersExported": false,
+    "privateCandidateSourceExported": false
+  },
+  "limits": [
+    "No hosted/Linux/device/browser-floor/release acceptance.",
+    "No real OCR/provider/human data/inbox/SLO/billing certification.",
+    "Local depth guard addresses the defined string/AST recursion paths only."
+  ],
+  "cssParity": {
+    "head": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+    "cssBytes": 134861,
+    "cssSha256": "796ca21e25b5dbfbf13ea2b3f70faed3f388d7c231d3cb00c056c77341cf4fef",
+    "baselineCssExact": true,
+    "swActualCommitToken": true,
+    "noRuntimeOrPublicChanges": true
+  },
+  "freshInstall": {
+    "status": "PASS",
+    "freshDirectoryOutsideRepository": true,
+    "offline": true,
+    "frozenLockfile": true,
+    "installedBracesJsFilesExact": [
+      {
+        "path": "index.js",
+        "sha256": "332ea07c7b006361aad12aa994ca75dc1db8e8382b884909e2f38f10b85c88a4"
+      },
+      {
+        "path": "lib/compile.js",
+        "sha256": "fc16add9cae9eea8ae903d81e8b73ae8e8ec1d87c02c57d2461afec0aa07af08"
+      },
+      {
+        "path": "lib/constants.js",
+        "sha256": "fc3db282b8a5b8b8a55cda2e85ba05f0c49da138edc76227454d3f3cbc76d5fb"
+      },
+      {
+        "path": "lib/expand.js",
+        "sha256": "c0481d34aa808e8eb5e3a08c48ef52c3ca124e636b43293d20875edd80a6d4ef"
+      },
+      {
+        "path": "lib/parse.js",
+        "sha256": "c9098f739ed2cd4ffdc8e247370c060c7614b399a44c7d76590277f66faa6b81"
+      },
+      {
+        "path": "lib/stringify.js",
+        "sha256": "1fa2879dfdad977da659a35b6f82d5a1c14f8839e78e557bcfc4a651a8f518d4"
+      },
+      {
+        "path": "lib/utils.js",
+        "sha256": "b5a7596aa67730412b3c029ef09e84e6b67b8e445cffd35d1d295549c89066c7"
+      }
+    ],
+    "patchSha256": "3f11ec1cd189913f4389e48eb8614f5f7d38b6e14b4b8aa37a46a85dcdfc9751",
+    "packageSha256": "4b88ff7b702f81c98a42f2d2d54d976a81c076f55282fda7a53697dc86f21295",
+    "lockSha256": "3e92e0a400d273f9ad64d280885878585713f8d9ac4cfc3e1cd2a14d65890779",
+    "installLogSha256": "f410313b1a0a0fed2beb7a71323abf65fa773b2916209d7c227c822d9afaa39c",
+    "nativeHostedAcceptance": false
+  },
+  "finalTestCount": {
+    "files": 313,
+    "tests": 7582,
+    "newDepthGuardTests": 59,
+    "focusedFiles": 3,
+    "focusedTests": 152
+  }
+}

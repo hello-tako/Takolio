@@ -1,0 +1,159 @@
+{
+  "missingClasses": [
+    "!container",
+    "ring"
+  ],
+  "graph": {
+    "declaredBefore": 460,
+    "declaredAfter": 437,
+    "removed": [
+      "@nodelib/fs.scandir@2.1.5",
+      "@nodelib/fs.stat@2.0.5",
+      "@nodelib/fs.walk@1.2.8",
+      "any-promise@1.3.0",
+      "anymatch@3.1.3",
+      "arg@5.0.2",
+      "binary-extensions@2.3.0",
+      "braces@3.0.3",
+      "camelcase-css@2.0.1",
+      "chokidar@3.6.0",
+      "commander@4.1.1",
+      "cssesc@3.0.0",
+      "didyoumean@1.2.2",
+      "dlv@1.1.3",
+      "es-errors@1.3.0",
+      "fast-glob@3.3.3",
+      "fastq@1.20.3",
+      "fill-range@7.1.1",
+      "function-bind@1.1.2",
+      "glob-parent@5.1.2",
+      "hasown@2.0.4",
+      "is-binary-path@2.1.0",
+      "is-core-module@2.16.2",
+      "is-number@7.0.0",
+      "jiti@1.21.7",
+      "lilconfig@3.1.3",
+      "lines-and-columns@1.2.4",
+      "merge2@1.4.1",
+      "micromatch@4.0.8",
+      "mz@2.7.0",
+      "normalize-path@3.0.0",
+      "object-assign@4.1.1",
+      "object-hash@3.0.0",
+      "path-parse@1.0.7",
+      "picomatch@2.3.2",
+      "pirates@4.0.7",
+      "postcss-import@15.1.0",
+      "postcss-js@4.1.0",
+      "postcss-load-config@6.0.1",
+      "postcss-nested@6.2.0",
+      "postcss-selector-parser@7.1.6",
+      "queue-microtask@1.2.3",
+      "read-cache@1.0.2",
+      "readdirp@3.6.0",
+      "resolve@1.22.12",
+      "reusify@1.1.0",
+      "run-parallel@1.2.0",
+      "sucrase@3.35.1",
+      "supports-preserve-symlinks-flag@1.0.0",
+      "tailwindcss@3.4.19",
+      "thenify-all@1.6.0",
+      "thenify@3.3.1",
+      "to-regex-range@5.0.1",
+      "ts-interface-checker@0.1.13",
+      "util-deprecate@1.0.2"
+    ],
+    "added": [
+      "@tailwindcss/node@4.3.3",
+      "@tailwindcss/oxide-android-arm64@4.3.3",
+      "@tailwindcss/oxide-darwin-arm64@4.3.3",
+      "@tailwindcss/oxide-darwin-x64@4.3.3",
+      "@tailwindcss/oxide-freebsd-x64@4.3.3",
+      "@tailwindcss/oxide-linux-arm-gnueabihf@4.3.3",
+      "@tailwindcss/oxide-linux-arm64-gnu@4.3.3",
+      "@tailwindcss/oxide-linux-arm64-musl@4.3.3",
+      "@tailwindcss/oxide-linux-x64-gnu@4.3.3",
+      "@tailwindcss/oxide-linux-x64-musl@4.3.3",
+      "@tailwindcss/oxide-wasm32-wasi@4.3.3",
+      "@tailwindcss/oxide-win32-arm64-msvc@4.3.3",
+      "@tailwindcss/oxide-win32-x64-msvc@4.3.3",
+      "@tailwindcss/oxide@4.3.3",
+      "@tailwindcss/postcss@4.3.3",
+      "enhanced-resolve@5.26.0",
+      "graceful-fs@4.2.11",
+      "jiti@2.7.0",
+      "lightningcss-android-arm64@1.32.0",
+      "lightningcss-darwin-arm64@1.32.0",
+      "lightningcss-darwin-x64@1.32.0",
+      "lightningcss-freebsd-x64@1.32.0",
+      "lightningcss-linux-arm-gnueabihf@1.32.0",
+      "lightningcss-linux-arm64-gnu@1.32.0",
+      "lightningcss-linux-arm64-musl@1.32.0",
+      "lightningcss-linux-x64-gnu@1.32.0",
+      "lightningcss-linux-x64-musl@1.32.0",
+      "lightningcss-win32-arm64-msvc@1.32.0",
+      "lightningcss-win32-x64-msvc@1.32.0",
+      "lightningcss@1.32.0",
+      "tailwindcss@4.3.3",
+      "tapable@2.3.3"
+    ],
+    "candidateHasBraces": false,
+    "canonicalHasBraces": true
+  },
+  "unchangedInputCount": 1127,
+  "browserSupport": {
+    "source": "https://github.com/tailwindlabs/tailwindcss.com/blob/main/src/docs/upgrade-guide.mdx",
+    "officialSourceSha256": "da4f0e6cbdb27e871460b4df9739a33eb18b2fd3246d274883c13aa6fe74d137",
+    "minimum": {
+      "Safari": "16.4",
+      "Chrome": "111",
+      "Firefox": "128"
+    },
+    "acceptance": "NOT_ESTABLISHED"
+  },
+  "limits": [
+    "Generated selector inventory; lexical source locations are candidates, not dynamic class execution proof.",
+    "Resolved manifest/lock graph; not an installed native binary/Linux/license attestation."
+  ],
+  "baseline": {
+    "cssBytes": 134861,
+    "cssSha256": "796ca21e25b5dbfbf13ea2b3f70faed3f388d7c231d3cb00c056c77341cf4fef",
+    "rules": 1551,
+    "declarations": 3727,
+    "layers": 0,
+    "registeredProperties": 0,
+    "hoverQueries": 0
+  },
+  "candidate": {
+    "cssBytes": 147930,
+    "cssSha256": "c73b86f6b639846eb475ba6534f252347bb902eb04dd498badac2661911b6433",
+    "rules": 1589,
+    "declarations": 3830,
+    "layers": 5,
+    "registeredProperties": 70,
+    "hoverQueries": 1
+  },
+  "changedInputs": [
+    {
+      "path": "package.json",
+      "sha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+      "candidateSha256": "2b4e3e5f000bf12ef38c05deb42229a8ef7bc8f8deb538d03042d593b6bb5cc1"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "sha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+      "candidateSha256": "4998dc372e0beb023700b754b9fce55901caffb211dd2c4e2280ac623d9ce69d"
+    },
+    {
+      "path": "postcss.config.js",
+      "sha256": "190c877db466995bf1482f4a16abd06e04a89ede3119341e2a86ff96e1737b27",
+      "candidateSha256": "e32ff902ddc4a8e8b7202fd0721c827b3c692d0ec4182a9350c4c0f3ca2c11cb"
+    },
+    {
+      "path": "src/web/styles/index.css",
+      "sha256": "328862e9fd197391e51a4fdb6b76ba8c29a60276fc82589c335e284813dc45ba",
+      "candidateSha256": "906405aa4d921cac9208a479a80c9cfafa5f1326ac34eee668125e98adccd412"
+    }
+  ],
+  "usedMissingInterpretation": "The two lexical classes !container/ring occur in identifiers/comments; no missing rendered utility is certified."
+}

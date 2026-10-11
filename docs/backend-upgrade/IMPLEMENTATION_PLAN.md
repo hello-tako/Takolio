@@ -1,3 +1,44 @@
+# B08 dependency mitigation final checkpoint - 2026-10-12 JST
+
+**Task/status:** LOCAL_MITIGATION_VERIFIED_WITH_BLOCKING_RELEASE_GATES.
+Implementation30f1630b63c782de9e6fd37d8726cdadae0fffea; patch0f52b1963c1b2075ba2d47f4cd05b3c4b3d6a495;
+base receipt b9612d199bbad57efbe71a423ab97b41fab8f3af; branch codex/backend-b08-tailwind-feasibility.
+Canonical worktree /Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo.
+
+**Delivered:** owned pnpm braces3.0.3 fixed128-depth parser/walker patch; original
+versions/overrides/glob behavior retained.59new tests,756upstream differential
+vectors0mismatches; fresh offline frozen install7JSfiles exact. Unpatched default
+Node24 does not crash on4000-container strings here; explicit512KiB children
+reproduce6stack failures, patched12/12controlled rejections. No all-DoS claim.
+Private official Tailwind4.3.3 removes advisory but fails compatibility:20actual-route
+style pairs/15pixel pairs and6state pairs differ, all baseline controls exact.
+Major candidate stays unapplied; specific migration/browser/native plan recorded.
+
+**Checks:** clean committed313files/7582tests PASS156.645s; focused3files/152tests
+PASS; frozen install/lint/both TS/40migrations/sequential build PASS. CSS134861bytes
+exact, actual SW commit token.4564protected base files exact; product sources,
+config/public/workflows/40migrations/payment/auth/data/provider authority unchanged.
+Pinned4557-file scan:853/853Semgrep0errors/findings;17unchanged captured secret
+candidates0unresolved;2HIGHzizmor;518declaredSyft components. Full audit1HIGH,
+production0; securitygateFAILED. No suppression/waiver/hosted certificate.
+
+**Failures/evidence:** firstfull2files/11fail from omittedTMPDIR /var-vs-/private/var;
+prior canonical /private/tmp fixes assertions unchanged. Import-order warnings,
+pixel-control drift, nominal-route fallback, YAML helper/default-stack assumption
+and generatedpatchcontext whitespace warnings retained.39command metadata/log
+hashes and9bounded attachments; rawlogs/scans/pointers/candidate stay private.
+Final docs-only receipt/current-SHA scan/verifier follow in ignored artifacts.
+
+**Limits/next:** upstream patched owner or certified Tailwind4 compatibility,
+independent/hosted review, permitted realOCR/labels/provider facts/paid budget,
+human ingredient/fourdata blockers, explicitly protectedbilling/inbox/staging/
+edge/load/chaos/SLO/alerts/retention/access/rollback/release remain required.
+Original checkout unchanged; no remote write/deploy/mail/paidAI/push/PR/merge.
+See docs/backend-upgrade/b08-tailwind-feasibility/RESULT.md, LOCAL_VALIDATION.md,
+MIGRATION_PLAN.md and NEXT_ACTIONS.md. Historical suffixes remain immutable.
+
+---
+
 # B08 remaining dependency mitigation - 2026-10-12 JST
 
 **Task/status:** LOCAL_FIXED_DEPTH_MITIGATION_IMPLEMENTED_FINAL_GATES_PENDING.
