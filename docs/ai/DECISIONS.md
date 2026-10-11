@@ -1,3 +1,36 @@
+# B08 remaining dependency mitigation - 2026-10-12 JST
+
+**Task/status:** LOCAL_FIXED_DEPTH_MITIGATION_IMPLEMENTED_FINAL_GATES_PENDING.
+Active packet docs/backend-upgrade/b08-tailwind-feasibility/PLAN.md; branch
+codex/backend-b08-tailwind-feasibility; base receipt b9612d199bbad57efbe71a423ab97b41fab8f3af.
+Canonical worktree /Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo.
+
+**Changes:** official Tailwind4.3.3 candidate is private and rejected:20 actual-route
+pairs differ in computed styles,15 differ visibly;6 focus/hover/forced-color pairs
+also differ with exact baseline recovery. Corrected candidate build/frozen install/
+full and production audits pass;437 declared graph removes braces. No product
+migration applied. MIGRATION_PLAN.md records specific cascade/default/browser/
+native-toolchain acceptance. Fixed-depth pnpm patch of braces3.0.3 bounds parser
+and compile/expand/stringify walkers to128; all package versions/overrides unchanged.
+
+**Executed checks:**59 focused tests and types PASS;756 upstream differential
+vectors0 mismatches. Default Node24 unpatched control does not crash here; explicit
+512KiB children reproduce6 stack failures, patched12/12 bounded rejections. First
+import-order warnings, pixel-control drift, incorrect nominal-route probes, YAML
+helper resolution and default-stack control assumption are retained and corrected.
+Full committed-source gates and final scanner/receipt follow; no release claim.
+
+**Limits/next:** product src/config/public/Worker/payment/auth/data/provider authority,
+workflows and40 migrations protected. High published advisory remains blocking;
+local patch is not a suppression/upstream release/all-resource-exhaustion fix.
+No independent agent/hosted/native-device/release certification is claimed.
+No remote write/deploy/mail/paid AI/push/PR/merge; original checkout unchanged.
+Complete local gates, protected-byte review and final source-bound receipt; then
+published compatible patch/certified major migration and existing external gates.
+Historical receipts and checkpoint suffixes follow unchanged.
+
+---
+
 # Backend program final local aggregate - 2026-10-12 JST
 
 **Task/status:** LOCAL_IMPLEMENTATION_VERIFIED_WITH_BLOCKING_RELEASE_GATES.
