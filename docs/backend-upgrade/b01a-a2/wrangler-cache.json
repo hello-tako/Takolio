@@ -1,0 +1,11 @@
+{
+  "fetchedAtUtc": "2026-10-11T10:07:32.873156+00:00",
+  "url": "https://registry.npmjs.org/wrangler/latest",
+  "latest": "4.149.0",
+  "lastUpdate": 1791713252873,
+  "rawPath": ".artifacts/backend-b01a-a2/wrangler-registry.json",
+  "rawSha256": "38ab740887c8d83da394f9d8afca5cd558dbe4c3f579fe6d4b37c511f3ac9ac9",
+  "taskTmpdir": "/private/tmp/takosan-b01a-a2-wrangler-hxwkwdt3",
+  "installedWrangler": "3.114.17",
+  "effect": "Actual registry task cache; no dependency upgrade"
+}

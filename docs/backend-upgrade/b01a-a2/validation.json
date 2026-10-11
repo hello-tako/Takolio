@@ -1,0 +1,1816 @@
+{
+  "status": "B01a_A2_ROUTE_CLIENT_LOCAL_VERIFIED",
+  "recordedAtUtc": "2026-10-11T10:36:02.206908+00:00",
+  "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+  "baseSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+  "initialImplementationSha": "15ee1c5ca8bbaa792f7a3fe3936c5c8c0ae1dcc7",
+  "implementationSha": "dcc0e1a74d2f5e3b67e13ecbb241bc04c8fafdde",
+  "rootCommandReceipts": [
+    {
+      "name": "audit-full",
+      "command": [
+        "pnpm",
+        "audit"
+      ],
+      "startedAtUtc": "2026-10-11T10:06:05.347112+00:00",
+      "durationSeconds": 3.077,
+      "exitCode": 1,
+      "status": "FAIL",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/audit-full.log",
+      "logSha256": "e0f1c506d8fbddcbd370fa1aca83e5151a7310fb610a398e3a394c5570aebea3",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "audit-prod",
+      "command": [
+        "pnpm",
+        "audit",
+        "--prod"
+      ],
+      "startedAtUtc": "2026-10-11T10:06:05.345212+00:00",
+      "durationSeconds": 2.004,
+      "exitCode": 1,
+      "status": "FAIL",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/audit-prod.log",
+      "logSha256": "56e060b051fd3f53d16a9adb2f544595a9d53345de70852abbb042ff9af4effa",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "build-sequential",
+      "command": [
+        "pnpm",
+        "run",
+        "build"
+      ],
+      "startedAtUtc": "2026-10-11T10:35:26.313411+00:00",
+      "durationSeconds": 10.663,
+      "exitCode": 0,
+      "status": "PASS",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "dcc0e1a74d2f5e3b67e13ecbb241bc04c8fafdde",
+        "status": ""
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "dcc0e1a74d2f5e3b67e13ecbb241bc04c8fafdde",
+        "status": ""
+      },
+      "logPath": ".artifacts/backend-b01a-a2/build-sequential.log",
+      "logSha256": "71fd9862a34ccd69f9f20e7f817cfd3a7e5126315b6d60644b9f16bf05e09689",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp/takosan-b01a-a2-wrangler-hxwkwdt3"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "cleanup-first",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/unit/cleanup.test.ts",
+        "--maxWorkers=1"
+      ],
+      "startedAtUtc": "2026-10-11T09:46:33.009213+00:00",
+      "durationSeconds": 1.481,
+      "exitCode": 1,
+      "status": "FAIL",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-verify-route.test.tsx\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-verify-route.test.tsx\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/cleanup-first.log",
+      "logSha256": "6d90667971c978bb1a3b2f230f18fcd30d6d94c6c90e4442cfb3009053bdb6d8",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "focused-final",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/integration/auth-otp-coordinator.test.ts",
+        "tests/integration/auth-hardening.test.ts",
+        "tests/integration/auth-strict-routes.test.ts",
+        "tests/integration/d1-schema-gate.test.ts",
+        "tests/unit/auth.test.ts",
+        "tests/unit/auth-otp-client.test.ts",
+        "tests/unit/auth-verify-route.test.tsx",
+        "tests/unit/auth-funnel-ui.test.tsx",
+        "tests/unit/auth-google-credential.test.tsx",
+        "tests/unit/auth-guest-transfer-deferred.test.tsx",
+        "tests/unit/auth-resend-turnstile.test.tsx",
+        "tests/unit/cleanup.test.ts",
+        "tests/unit/otp-policy.test.ts",
+        "--maxWorkers=1"
+      ],
+      "startedAtUtc": "2026-10-11T10:11:21.969837+00:00",
+      "durationSeconds": 39.024,
+      "exitCode": 0,
+      "status": "PASS",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/auth.test.ts\n M tests/unit/cleanup.test.ts\n?? docs/backend-upgrade/b01a-a2/\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/auth.test.ts\n M tests/unit/cleanup.test.ts\n?? docs/backend-upgrade/b01a-a2/\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/focused-final.log",
+      "logSha256": "d36eed03eb6e2d6ae780c424e8f1935f53b6f16846fb9f555a7bd59135edc7e1",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "focused-frozen",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/integration/auth-otp-coordinator.test.ts",
+        "tests/integration/auth-hardening.test.ts",
+        "tests/integration/auth-strict-routes.test.ts",
+        "tests/integration/d1-schema-gate.test.ts",
+        "tests/unit/auth.test.ts",
+        "tests/unit/auth-otp-client.test.ts",
+        "tests/unit/auth-verify-route.test.tsx",
+        "tests/unit/auth-funnel-ui.test.tsx",
+        "tests/unit/auth-google-credential.test.tsx",
+        "tests/unit/auth-guest-transfer-deferred.test.tsx",
+        "tests/unit/auth-resend-turnstile.test.tsx",
+        "tests/unit/cleanup.test.ts",
+        "tests/unit/otp-policy.test.ts",
+        "tests/unit/otp.test.ts",
+        "--maxWorkers=1"
+      ],
+      "startedAtUtc": "2026-10-11T10:06:33.094529+00:00",
+      "durationSeconds": 39.466,
+      "exitCode": 1,
+      "status": "FAIL",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/focused-frozen.log",
+      "logSha256": "5a241a2e2ceaa4da2c30581fca0214943b35564e8bcdbf94996df69c35f67992",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "focused-recovery",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/integration/auth-otp-coordinator.test.ts",
+        "tests/integration/auth-hardening.test.ts",
+        "tests/integration/auth-strict-routes.test.ts",
+        "tests/integration/d1-schema-gate.test.ts",
+        "tests/integration/inventory-guest-transfer.test.ts",
+        "tests/integration/cleanup-schema.test.ts",
+        "tests/unit/auth.test.ts",
+        "tests/unit/auth-otp-client.test.ts",
+        "tests/unit/auth-verify-route.test.tsx",
+        "tests/unit/auth-funnel-ui.test.tsx",
+        "tests/unit/auth-google-credential.test.tsx",
+        "tests/unit/auth-guest-transfer-deferred.test.tsx",
+        "tests/unit/auth-resend-turnstile.test.tsx",
+        "tests/unit/cleanup.test.ts",
+        "tests/unit/otp-policy.test.ts",
+        "--maxWorkers=2"
+      ],
+      "startedAtUtc": "2026-10-11T10:26:09.742323+00:00",
+      "durationSeconds": 24.631,
+      "exitCode": 0,
+      "status": "PASS",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "15ee1c5ca8bbaa792f7a3fe3936c5c8c0ae1dcc7",
+        "status": " M docs/backend-upgrade/b01a-a2/ADR-B01a-002.md\n M docs/backend-upgrade/b01a-a2/review-record.json\n M tests/integration/auth-strict-routes.test.ts\n M tests/integration/cleanup-schema.test.ts\n M tests/integration/inventory-guest-transfer.test.ts\n M tests/unit/auth-resend-turnstile.test.tsx\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "15ee1c5ca8bbaa792f7a3fe3936c5c8c0ae1dcc7",
+        "status": " M docs/backend-upgrade/b01a-a2/ADR-B01a-002.md\n M docs/backend-upgrade/b01a-a2/review-record.json\n M tests/integration/auth-strict-routes.test.ts\n M tests/integration/cleanup-schema.test.ts\n M tests/integration/inventory-guest-transfer.test.ts\n M tests/unit/auth-resend-turnstile.test.tsx\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/focused-recovery.log",
+      "logSha256": "e6bf5a7005a75e45759f819265d217bc92f3f4f69366f4c7a6d0e2ad593c27ee",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "frozen-install",
+      "command": [
+        "pnpm",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "startedAtUtc": "2026-10-11T10:08:30.400694+00:00",
+      "durationSeconds": 0.498,
+      "exitCode": 0,
+      "status": "PASS",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/auth.test.ts\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/auth.test.ts\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/frozen-install.log",
+      "logSha256": "eab83207c58fc93cdb13fb36097ce0c92a3e21b4318318f4eb6e176b6de41b3c",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "full-tests-committed",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run"
+      ],
+      "startedAtUtc": "2026-10-11T10:13:34.423999+00:00",
+      "durationSeconds": 138.94,
+      "exitCode": 1,
+      "status": "FAIL",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "15ee1c5ca8bbaa792f7a3fe3936c5c8c0ae1dcc7",
+        "status": " M docs/backend-upgrade/b01a-a2/ADR-B01a-002.md\n M docs/backend-upgrade/b01a-a2/review-record.json\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "15ee1c5ca8bbaa792f7a3fe3936c5c8c0ae1dcc7",
+        "status": " M docs/backend-upgrade/b01a-a2/ADR-B01a-002.md\n M docs/backend-upgrade/b01a-a2/review-record.json\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/full-tests-committed.log",
+      "logSha256": "4bce1cbb2a6d21a0d4c6a7e43719d42408236dcad6f64240b09226db6fa26e02",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp/takosan-b01a-a2-wrangler-hxwkwdt3"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "full-tests-final",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "--maxWorkers=2"
+      ],
+      "startedAtUtc": "2026-10-11T10:28:31.084186+00:00",
+      "durationSeconds": 348.603,
+      "exitCode": 0,
+      "status": "PASS",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "dcc0e1a74d2f5e3b67e13ecbb241bc04c8fafdde",
+        "status": ""
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "dcc0e1a74d2f5e3b67e13ecbb241bc04c8fafdde",
+        "status": ""
+      },
+      "logPath": ".artifacts/backend-b01a-a2/full-tests-final.log",
+      "logSha256": "26c98f2a048c01ec3a1367aeba9a10c5c821fbd2cda95dae83e3eacd81da2692",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp/takosan-b01a-a2-wrangler-hxwkwdt3"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "isolated-local-d1",
+      "command": [
+        "python3",
+        "/tmp/takosan-b01a-a2-local-replay.py"
+      ],
+      "startedAtUtc": "2026-10-11T10:06:04.209032+00:00",
+      "durationSeconds": 81.545,
+      "exitCode": 0,
+      "status": "PASS",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/isolated-local-d1.log",
+      "logSha256": "c53ca89d36faf08f233e20498fc81f06654424fd688d5133449499eeba8bf8f5",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "lint-committable",
+      "command": [
+        "pnpm",
+        "run",
+        "lint"
+      ],
+      "startedAtUtc": "2026-10-11T10:12:58.245597+00:00",
+      "durationSeconds": 5.304,
+      "exitCode": 0,
+      "status": "PASS",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/auth.test.ts\n M tests/unit/cleanup.test.ts\n?? docs/backend-upgrade/b01a-a2/\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/auth.test.ts\n M tests/unit/cleanup.test.ts\n?? docs/backend-upgrade/b01a-a2/\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/lint-committable.log",
+      "logSha256": "25cc1f9634027c24c62f4029a44f00fc3a7e082ac28576c6fc5a3db3e0961f73",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "lint-final",
+      "command": [
+        "pnpm",
+        "run",
+        "lint"
+      ],
+      "startedAtUtc": "2026-10-11T10:08:55.724117+00:00",
+      "durationSeconds": 5.683,
+      "exitCode": 0,
+      "status": "PASS",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/auth.test.ts\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/auth.test.ts\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/lint-final.log",
+      "logSha256": "25cc1f9634027c24c62f4029a44f00fc3a7e082ac28576c6fc5a3db3e0961f73",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "lint-first",
+      "command": [
+        "pnpm",
+        "run",
+        "lint"
+      ],
+      "startedAtUtc": "2026-10-11T10:04:19.195357+00:00",
+      "durationSeconds": 5.818,
+      "exitCode": 0,
+      "status": "PASS",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/lint-first.log",
+      "logSha256": "25cc1f9634027c24c62f4029a44f00fc3a7e082ac28576c6fc5a3db3e0961f73",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "lint-frozen",
+      "command": [
+        "pnpm",
+        "run",
+        "lint"
+      ],
+      "startedAtUtc": "2026-10-11T10:06:34.251570+00:00",
+      "durationSeconds": 5.592,
+      "exitCode": 0,
+      "status": "PASS",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/lint-frozen.log",
+      "logSha256": "25cc1f9634027c24c62f4029a44f00fc3a7e082ac28576c6fc5a3db3e0961f73",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "lint-recovery-final",
+      "command": [
+        "pnpm",
+        "run",
+        "lint"
+      ],
+      "startedAtUtc": "2026-10-11T10:27:20.079102+00:00",
+      "durationSeconds": 5.744,
+      "exitCode": 0,
+      "status": "PASS",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "15ee1c5ca8bbaa792f7a3fe3936c5c8c0ae1dcc7",
+        "status": " M docs/backend-upgrade/b01a-a2/ADR-B01a-002.md\n M docs/backend-upgrade/b01a-a2/review-record.json\n M tests/integration/auth-strict-routes.test.ts\n M tests/integration/cleanup-schema.test.ts\n M tests/integration/inventory-guest-transfer.test.ts\n M tests/unit/auth-resend-turnstile.test.tsx\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "15ee1c5ca8bbaa792f7a3fe3936c5c8c0ae1dcc7",
+        "status": " M docs/backend-upgrade/b01a-a2/ADR-B01a-002.md\n M docs/backend-upgrade/b01a-a2/review-record.json\n M tests/integration/auth-strict-routes.test.ts\n M tests/integration/cleanup-schema.test.ts\n M tests/integration/inventory-guest-transfer.test.ts\n M tests/unit/auth-resend-turnstile.test.tsx\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/lint-recovery-final.log",
+      "logSha256": "25cc1f9634027c24c62f4029a44f00fc3a7e082ac28576c6fc5a3db3e0961f73",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "lint-recovery",
+      "command": [
+        "pnpm",
+        "run",
+        "lint"
+      ],
+      "startedAtUtc": "2026-10-11T10:26:09.742160+00:00",
+      "durationSeconds": 6.636,
+      "exitCode": 0,
+      "status": "PASS",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "15ee1c5ca8bbaa792f7a3fe3936c5c8c0ae1dcc7",
+        "status": " M docs/backend-upgrade/b01a-a2/ADR-B01a-002.md\n M docs/backend-upgrade/b01a-a2/review-record.json\n M tests/integration/auth-strict-routes.test.ts\n M tests/integration/cleanup-schema.test.ts\n M tests/integration/inventory-guest-transfer.test.ts\n M tests/unit/auth-resend-turnstile.test.tsx\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "15ee1c5ca8bbaa792f7a3fe3936c5c8c0ae1dcc7",
+        "status": " M docs/backend-upgrade/b01a-a2/ADR-B01a-002.md\n M docs/backend-upgrade/b01a-a2/review-record.json\n M tests/integration/auth-strict-routes.test.ts\n M tests/integration/cleanup-schema.test.ts\n M tests/integration/inventory-guest-transfer.test.ts\n M tests/unit/auth-resend-turnstile.test.tsx\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/lint-recovery.log",
+      "logSha256": "25cc1f9634027c24c62f4029a44f00fc3a7e082ac28576c6fc5a3db3e0961f73",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "main-reverify",
+      "command": [
+        "gh",
+        "api",
+        "repos/vn-tak/Tako-san/commits/main",
+        "--jq",
+        ".sha"
+      ],
+      "startedAtUtc": "2026-10-11T10:09:39.589720+00:00",
+      "durationSeconds": 2.86,
+      "exitCode": 0,
+      "status": "PASS",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/auth.test.ts\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/auth.test.ts\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/main-reverify.log",
+      "logSha256": "8e092495b392224ddb809d9d8435616879c52d664e6f007b40f1ec4489f31cb2",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "migrations",
+      "command": [
+        "pnpm",
+        "run",
+        "check:migrations"
+      ],
+      "startedAtUtc": "2026-10-11T10:06:05.345175+00:00",
+      "durationSeconds": 0.442,
+      "exitCode": 0,
+      "status": "PASS",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/migrations.log",
+      "logSha256": "965811c75cef6d8d7db8527ffaf3ec59c52869fe5cb575a1261bc3b793191de5",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "route-clock-final",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/integration/auth-strict-routes.test.ts",
+        "--maxWorkers=2"
+      ],
+      "startedAtUtc": "2026-10-11T10:17:15.062449+00:00",
+      "durationSeconds": 6.844,
+      "exitCode": 0,
+      "status": "PASS",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "15ee1c5ca8bbaa792f7a3fe3936c5c8c0ae1dcc7",
+        "status": " M docs/backend-upgrade/b01a-a2/ADR-B01a-002.md\n M docs/backend-upgrade/b01a-a2/review-record.json\n M tests/integration/auth-strict-routes.test.ts\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "15ee1c5ca8bbaa792f7a3fe3936c5c8c0ae1dcc7",
+        "status": " M docs/backend-upgrade/b01a-a2/ADR-B01a-002.md\n M docs/backend-upgrade/b01a-a2/review-record.json\n M tests/integration/auth-strict-routes.test.ts\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/route-clock-final.log",
+      "logSha256": "e6ae94f19f1cd9bd75a811d7cdcdc6b0687cd8760b33e84695a6161292613e72",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "routes-final",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/integration/auth-strict-routes.test.ts",
+        "tests/unit/cleanup.test.ts",
+        "--maxWorkers=1"
+      ],
+      "startedAtUtc": "2026-10-11T10:05:38.456109+00:00",
+      "durationSeconds": 6.656,
+      "exitCode": 0,
+      "status": "PASS",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/routes-final.log",
+      "logSha256": "b91dd586926b12e16e7ac7cc83415686be9b986a900111fd377a7673c0f0e905",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "routes-first",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/integration/auth-strict-routes.test.ts",
+        "tests/unit/cleanup.test.ts",
+        "--maxWorkers=1"
+      ],
+      "startedAtUtc": "2026-10-11T09:50:30.669641+00:00",
+      "durationSeconds": 5.015,
+      "exitCode": 1,
+      "status": "FAIL",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/routes-first.log",
+      "logSha256": "8efe25e00f43ad1c5b5e769b54dddf2725b841ce7b3629a99f88ccd723a83ff4",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "routes-parity-final",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/integration/auth-strict-routes.test.ts",
+        "tests/unit/cleanup.test.ts",
+        "--maxWorkers=1"
+      ],
+      "startedAtUtc": "2026-10-11T10:04:18.164156+00:00",
+      "durationSeconds": 7.447,
+      "exitCode": 1,
+      "status": "FAIL",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/routes-parity-final.log",
+      "logSha256": "e4fbf5b5e8c794551941dcba526ab5440054ebc531f00b732afc43c95870808d",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "routes-parity-first",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/integration/auth-strict-routes.test.ts",
+        "tests/unit/cleanup.test.ts",
+        "--maxWorkers=1"
+      ],
+      "startedAtUtc": "2026-10-11T10:01:47.961072+00:00",
+      "durationSeconds": 7.421,
+      "exitCode": 1,
+      "status": "FAIL",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/routes-parity-first.log",
+      "logSha256": "049f9e8094dfd42fbdf0e67e4ac5ecc4ad3b0ac4653799ca03ca56ad8fd4e149",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "routes-parity-second",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/integration/auth-strict-routes.test.ts",
+        "tests/unit/cleanup.test.ts",
+        "--maxWorkers=1"
+      ],
+      "startedAtUtc": "2026-10-11T10:03:32.683516+00:00",
+      "durationSeconds": 6.514,
+      "exitCode": 1,
+      "status": "FAIL",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/routes-parity-second.log",
+      "logSha256": "76c0390cdace07ee2dd3b1450c865109ff78cfb9446c1b57c3c6cebc08998187",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "routes-password-second",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/integration/auth-strict-routes.test.ts",
+        "tests/unit/cleanup.test.ts",
+        "--maxWorkers=1"
+      ],
+      "startedAtUtc": "2026-10-11T09:58:49.447312+00:00",
+      "durationSeconds": 5.152,
+      "exitCode": 0,
+      "status": "PASS",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/routes-password-second.log",
+      "logSha256": "a38ed37f27ffe2f045b9dcc0c5bc3b2a6807295ddb76dea8449f0cf57d03c8c6",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "schema-final",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/unit/auth.test.ts",
+        "--maxWorkers=1"
+      ],
+      "startedAtUtc": "2026-10-11T10:08:29.327902+00:00",
+      "durationSeconds": 1.176,
+      "exitCode": 0,
+      "status": "PASS",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/auth.test.ts\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/auth.test.ts\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/schema-final.log",
+      "logSha256": "d2f6bb7f4453a96d7b36dde00f25d820517ba4018f5a0a1522b958477c0d03c9",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "scope-freeze-final",
+      "command": [
+        "python3",
+        "/tmp/takosan-b01a-a2-freeze-final.py"
+      ],
+      "startedAtUtc": "2026-10-11T10:11:23.101545+00:00",
+      "durationSeconds": 5.767,
+      "exitCode": 0,
+      "status": "PASS",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/auth.test.ts\n M tests/unit/cleanup.test.ts\n?? docs/backend-upgrade/b01a-a2/\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/auth.test.ts\n M tests/unit/cleanup.test.ts\n?? docs/backend-upgrade/b01a-a2/\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/scope-freeze-final.log",
+      "logSha256": "ab8772d66260e23620c559ef0742e9a253f19d494db564cbcc480a8f7d5f84dc",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "scope-freeze-recovery",
+      "command": [
+        "python3",
+        "/tmp/takosan-b01a-a2-freeze-recovery.py"
+      ],
+      "startedAtUtc": "2026-10-11T10:28:10.292470+00:00",
+      "durationSeconds": 5.719,
+      "exitCode": 0,
+      "status": "PASS",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "15ee1c5ca8bbaa792f7a3fe3936c5c8c0ae1dcc7",
+        "status": " M docs/backend-upgrade/b01a-a2/ADR-B01a-002.md\n M docs/backend-upgrade/b01a-a2/review-record.json\n M tests/integration/auth-strict-routes.test.ts\n M tests/integration/cleanup-schema.test.ts\n M tests/integration/inventory-guest-transfer.test.ts\n M tests/unit/auth-resend-turnstile.test.tsx\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "15ee1c5ca8bbaa792f7a3fe3936c5c8c0ae1dcc7",
+        "status": " M docs/backend-upgrade/b01a-a2/ADR-B01a-002.md\n M docs/backend-upgrade/b01a-a2/review-record.json\n M tests/integration/auth-strict-routes.test.ts\n M tests/integration/cleanup-schema.test.ts\n M tests/integration/inventory-guest-transfer.test.ts\n M tests/unit/auth-resend-turnstile.test.tsx\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/scope-freeze-recovery.log",
+      "logSha256": "04520a1a0d7a434920c31bd51e2a9367867ef9464e40d30e0a8c0930449d1c93",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "scope-freeze",
+      "command": [
+        "python3",
+        "/tmp/takosan-b01a-a2-freeze.py"
+      ],
+      "startedAtUtc": "2026-10-11T10:07:26.377328+00:00",
+      "durationSeconds": 6.539,
+      "exitCode": 0,
+      "status": "PASS",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/scope-freeze.log",
+      "logSha256": "6bf1685194c5ba0618b5a9bdf01389fbd21e607a4bffcb55a808afd39c842419",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "typecheck-final",
+      "command": [
+        "pnpm",
+        "run",
+        "typecheck"
+      ],
+      "startedAtUtc": "2026-10-11T10:10:44.578785+00:00",
+      "durationSeconds": 15.338,
+      "exitCode": 0,
+      "status": "PASS",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/auth.test.ts\n M tests/unit/cleanup.test.ts\n?? docs/backend-upgrade/b01a-a2/\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/auth.test.ts\n M tests/unit/cleanup.test.ts\n?? docs/backend-upgrade/b01a-a2/\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/typecheck-final.log",
+      "logSha256": "a3a28a25c9246fe7e8bbf5999692dc60347e343a2415f8cefcb7e767e0e6a0d6",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "typecheck-first",
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "startedAtUtc": "2026-10-11T09:44:07.233732+00:00",
+      "durationSeconds": 12.875,
+      "exitCode": 0,
+      "status": "PASS",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/index.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/index.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/typecheck-first.log",
+      "logSha256": "a3a28a25c9246fe7e8bbf5999692dc60347e343a2415f8cefcb7e767e0e6a0d6",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "typecheck-frozen",
+      "command": [
+        "pnpm",
+        "run",
+        "typecheck"
+      ],
+      "startedAtUtc": "2026-10-11T10:06:34.251402+00:00",
+      "durationSeconds": 12.628,
+      "exitCode": 0,
+      "status": "PASS",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/typecheck-frozen.log",
+      "logSha256": "a3a28a25c9246fe7e8bbf5999692dc60347e343a2415f8cefcb7e767e0e6a0d6",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "typecheck-password",
+      "command": [
+        "pnpm",
+        "run",
+        "typecheck"
+      ],
+      "startedAtUtc": "2026-10-11T10:04:19.195412+00:00",
+      "durationSeconds": 12.539,
+      "exitCode": 0,
+      "status": "PASS",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+        "status": " M packages/db/src/auth-otp.ts\n M src/web/features/auth/ForgotPasswordMode.tsx\n M src/web/features/auth/OtpMode.tsx\n M src/web/features/auth/auth-shared.ts\n M src/web/pages/AuthPage.tsx\n M src/web/services/auth.ts\n M src/worker/routes/auth.ts\n M src/worker/services/auth-otp.ts\n M src/worker/services/cleanup.ts\n M src/worker/validation/schemas.ts\n M tests/integration/auth-hardening.test.ts\n M tests/integration/auth-otp-coordinator.test.ts\n M tests/unit/auth-guest-transfer-deferred.test.tsx\n M tests/unit/auth-verify-route.test.tsx\n M tests/unit/cleanup.test.ts\n?? src/web/services/auth-otp-retry.ts\n?? src/worker/services/auth-otp-http.ts\n?? tests/integration/auth-strict-routes.test.ts\n?? tests/unit/auth-otp-client.test.ts\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/typecheck-password.log",
+      "logSha256": "a3a28a25c9246fe7e8bbf5999692dc60347e343a2415f8cefcb7e767e0e6a0d6",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "typecheck-recovery-final",
+      "command": [
+        "pnpm",
+        "run",
+        "typecheck"
+      ],
+      "startedAtUtc": "2026-10-11T10:27:20.079108+00:00",
+      "durationSeconds": 13.013,
+      "exitCode": 0,
+      "status": "PASS",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "15ee1c5ca8bbaa792f7a3fe3936c5c8c0ae1dcc7",
+        "status": " M docs/backend-upgrade/b01a-a2/ADR-B01a-002.md\n M docs/backend-upgrade/b01a-a2/review-record.json\n M tests/integration/auth-strict-routes.test.ts\n M tests/integration/cleanup-schema.test.ts\n M tests/integration/inventory-guest-transfer.test.ts\n M tests/unit/auth-resend-turnstile.test.tsx\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "15ee1c5ca8bbaa792f7a3fe3936c5c8c0ae1dcc7",
+        "status": " M docs/backend-upgrade/b01a-a2/ADR-B01a-002.md\n M docs/backend-upgrade/b01a-a2/review-record.json\n M tests/integration/auth-strict-routes.test.ts\n M tests/integration/cleanup-schema.test.ts\n M tests/integration/inventory-guest-transfer.test.ts\n M tests/unit/auth-resend-turnstile.test.tsx\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/typecheck-recovery-final.log",
+      "logSha256": "a3a28a25c9246fe7e8bbf5999692dc60347e343a2415f8cefcb7e767e0e6a0d6",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "typecheck-recovery",
+      "command": [
+        "pnpm",
+        "run",
+        "typecheck"
+      ],
+      "startedAtUtc": "2026-10-11T10:26:09.742185+00:00",
+      "durationSeconds": 11.127,
+      "exitCode": 2,
+      "status": "FAIL",
+      "sourceBefore": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "15ee1c5ca8bbaa792f7a3fe3936c5c8c0ae1dcc7",
+        "status": " M docs/backend-upgrade/b01a-a2/ADR-B01a-002.md\n M docs/backend-upgrade/b01a-a2/review-record.json\n M tests/integration/auth-strict-routes.test.ts\n M tests/integration/cleanup-schema.test.ts\n M tests/integration/inventory-guest-transfer.test.ts\n M tests/unit/auth-resend-turnstile.test.tsx\n"
+      },
+      "sourceAfter": {
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+        "headSha": "15ee1c5ca8bbaa792f7a3fe3936c5c8c0ae1dcc7",
+        "status": " M docs/backend-upgrade/b01a-a2/ADR-B01a-002.md\n M docs/backend-upgrade/b01a-a2/review-record.json\n M tests/integration/auth-strict-routes.test.ts\n M tests/integration/cleanup-schema.test.ts\n M tests/integration/inventory-guest-transfer.test.ts\n M tests/unit/auth-resend-turnstile.test.tsx\n"
+      },
+      "logPath": ".artifacts/backend-b01a-a2/typecheck-recovery.log",
+      "logSha256": "ef8a398a980556243994822eda42dd6c6408963821a7653fccde9ac326b3ad3b",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp"
+      },
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset"
+    }
+  ],
+  "rawLogs": [
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/audit-full.log",
+      "rawSha256": "e0f1c506d8fbddcbd370fa1aca83e5151a7310fb610a398e3a394c5570aebea3",
+      "rawBytes": 95345,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/audit-full.log.gz",
+      "gzipSha256": "2a97efffe6ef08f72abe02a819ed46bc372ba8b7a374c8b221bc02ab6e3bf942",
+      "gzipBytes": 3962
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/audit-prod.log",
+      "rawSha256": "56e060b051fd3f53d16a9adb2f544595a9d53345de70852abbb042ff9af4effa",
+      "rawBytes": 4637,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/audit-prod.log.gz",
+      "gzipSha256": "955dea35ed9be88105a4efef7e8d5372414021dbe91e36dc77bca7a1bd78a3f5",
+      "gzipBytes": 463
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/build-sequential.log",
+      "rawSha256": "71fd9862a34ccd69f9f20e7f817cfd3a7e5126315b6d60644b9f16bf05e09689",
+      "rawBytes": 7491,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/build-sequential.log.gz",
+      "gzipSha256": "b84b5600ab30395c9ff29f7796eb4ffb8510796441cb504535354de3c17d7638",
+      "gzipBytes": 2100
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/cleanup-first.log",
+      "rawSha256": "6d90667971c978bb1a3b2f230f18fcd30d6d94c6c90e4442cfb3009053bdb6d8",
+      "rawBytes": 1962,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/cleanup-first.log.gz",
+      "gzipSha256": "60d9846e862b0800e3b94ca51ec756f6a589aa0d3cac53859aa721e4ba1d40c8",
+      "gzipBytes": 884
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/client-focused-expanded.log",
+      "rawSha256": "932317bdd9ab24f46811163c62e0faee05f5a626f3b8dceed5d9cdd4fd8646a4",
+      "rawBytes": 3528,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/client-focused-expanded.log.gz",
+      "gzipSha256": "58f45967db955eb4e6afc700473b7c65802b5cd3f4eebb20a7901ee8c92425da",
+      "gzipBytes": 1108
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/client-focused-final.log",
+      "rawSha256": "b0928157d59dd29dc6038e4c5e3f339f0f56ba0c536cf465ef01046b6c2fa18d",
+      "rawBytes": 3528,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/client-focused-final.log.gz",
+      "gzipSha256": "303115027ed8a6965fdd31f47d6bce0ff6871cca25463d02248ece3b67850d89",
+      "gzipBytes": 1107
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/client-focused-first.log",
+      "rawSha256": "6a410e3c2ed0cdb7760a1fd7d9525a0245ba6f1d94fe5357dec4a5f82b5f2d42",
+      "rawBytes": 3528,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/client-focused-first.log.gz",
+      "gzipSha256": "c7972f944d90a41bfc9e4355878733df275c2d91056e02024979841ec1d17506",
+      "gzipBytes": 1107
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/client-focused-pending.log",
+      "rawSha256": "ec4e17bf770ba80bb759d914335012f03b194abe13027dc9113cc4fbb723d631",
+      "rawBytes": 3528,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/client-focused-pending.log.gz",
+      "gzipSha256": "fb8d744fc4505879c91e34fb72efac6be764ba9876f4f358cef4bf05aa75b04c",
+      "gzipBytes": 1110
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/client-register-password-final.log",
+      "rawSha256": "cf13ff11a9cc6c31d8909fc5a221ed4db84d2f8b09dcca9a662ffd60124e37cb",
+      "rawBytes": 3528,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/client-register-password-final.log.gz",
+      "gzipSha256": "1c72bc8810159418d4493a93ba71c647884d32f6f5f015ad23384988cc0cee09",
+      "gzipBytes": 1107
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/client-register-password-first.log",
+      "rawSha256": "b6175ea73bc29503d5df9d388f7b358360e0f3cb9b8abfee76d992ebd73d33e8",
+      "rawBytes": 16716,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/client-register-password-first.log.gz",
+      "gzipSha256": "6c550d97fa8948339cf447d98932a4b26491aac7fdd7b35d69780f28a8d847fe",
+      "gzipBytes": 4118
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/client-register-password-lint.log",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rawBytes": 0,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/client-register-password-lint.log.gz",
+      "gzipSha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "gzipBytes": 20
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/client-register-password-second.log",
+      "rawSha256": "593894fa21da549d31a4d97be259f9a25f1aa439c9ef23d15b72ebe4fe6fe4ca",
+      "rawBytes": 6653,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/client-register-password-second.log.gz",
+      "gzipSha256": "a559ea3bb92a828aa31de9cd45aef5e4a8a2985245f24d9458c4f91b648add83",
+      "gzipBytes": 1907
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/client-resend-await-20261011T101919Z.log",
+      "rawSha256": "7fef430275abd418cb172c141fee2e73685156f3f5aede6172ee7f5ecd6eaa28",
+      "rawBytes": 1037,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/client-resend-await-20261011T101919Z.log.gz",
+      "gzipSha256": "2781d242e713b315fce526b8bb8803636eac36dc3944fa49cc8cae18c043a0bc",
+      "gzipBytes": 546
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/client-resend-lint-20261011T101954Z.log",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rawBytes": 0,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/client-resend-lint-20261011T101954Z.log.gz",
+      "gzipSha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "gzipBytes": 20
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/coordinator-terminal-reset.log",
+      "rawSha256": "62f7bdef74e117ed7ad0cc964b68ef80f60295887a4be085b075714cc9c2ec56",
+      "rawBytes": 330,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/coordinator-terminal-reset.log.gz",
+      "gzipSha256": "1438cf2fd8fde604cf016d4b30de4ea4d2de702ba06b65427b3f59e1ff22772e",
+      "gzipBytes": 258
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/d1-apply.raw",
+      "rawSha256": "ac94dbe02a3b017ea095ad35e42d23c0f3734c4ee19d7d24599db0bb098ab591",
+      "rawBytes": 432160,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/d1-apply.raw.gz",
+      "gzipSha256": "450ad166dfd077f2365cd4e5aecbb979ce9cea6d62a0c0240e3342e0e79682e7",
+      "gzipBytes": 4479
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/d1-gate.raw",
+      "rawSha256": "87807bd3f3c3aad610f42b6b1612bfb01e486c08175126f3ff57ff9313c74b48",
+      "rawBytes": 92,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/d1-gate.raw.gz",
+      "gzipSha256": "6bfab9afe0e827d22cc438816632264c41133bef05b615844bd4c3f6b3fa374d",
+      "gzipBytes": 86
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/d1-integrity.raw",
+      "rawSha256": "4f4ecf8ac080d57fcfbbef62062a8d2a7e4bfb83e6969654265872b0a6d48f7e",
+      "rawBytes": 3410,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/d1-integrity.raw.gz",
+      "gzipSha256": "5062bbea2c0ee76568b1bc9c559488ccf828422b9cc09f38f513a0b039719aed",
+      "gzipBytes": 721
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/d1-pending.raw",
+      "rawSha256": "9a81dd8dc2341060207fdd15a55efd80b7a102b3497e6c6ac8e8e4ab60d35407",
+      "rawBytes": 445,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/d1-pending.raw.gz",
+      "gzipSha256": "f219836b4d2930870ebdb69e813f64e8963d1ba75ecc27f1bee57c69380a6ca1",
+      "gzipBytes": 294
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/d1-reapply.raw",
+      "rawSha256": "9a81dd8dc2341060207fdd15a55efd80b7a102b3497e6c6ac8e8e4ab60d35407",
+      "rawBytes": 445,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/d1-reapply.raw.gz",
+      "gzipSha256": "f219836b4d2930870ebdb69e813f64e8963d1ba75ecc27f1bee57c69380a6ca1",
+      "gzipBytes": 294
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/focused-final.log",
+      "rawSha256": "d36eed03eb6e2d6ae780c424e8f1935f53b6f16846fb9f555a7bd59135edc7e1",
+      "rawBytes": 5183,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/focused-final.log.gz",
+      "gzipSha256": "7d095e01f096a758ca5e8d09a11a23d170f2982b8e5b0d46f8fcefb565c47666",
+      "gzipBytes": 1564
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/focused-frozen.log",
+      "rawSha256": "5a241a2e2ceaa4da2c30581fca0214943b35564e8bcdbf94996df69c35f67992",
+      "rawBytes": 26310,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/focused-frozen.log.gz",
+      "gzipSha256": "b68632050634e44646de209aee4ee74d0758831a5f0b3ded3413b25b85b10284",
+      "gzipBytes": 5610
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/focused-recovery.log",
+      "rawSha256": "e6bf5a7005a75e45759f819265d217bc92f3f4f69366f4c7a6d0e2ad593c27ee",
+      "rawBytes": 5450,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/focused-recovery.log.gz",
+      "gzipSha256": "a54bdcdf21a1b4721e0627179c5e64de4f38c50107b7fffe41060309868f2c2b",
+      "gzipBytes": 1663
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/frozen-install.log",
+      "rawSha256": "eab83207c58fc93cdb13fb36097ce0c92a3e21b4318318f4eb6e176b6de41b3c",
+      "rawBytes": 1079,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/frozen-install.log.gz",
+      "gzipSha256": "7eece33072e2d847e7d5512391f0c08bf2476bd292e67bd1b91915538873869f",
+      "gzipBytes": 291
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/full-tests-committed.log",
+      "rawSha256": "4bce1cbb2a6d21a0d4c6a7e43719d42408236dcad6f64240b09226db6fa26e02",
+      "rawBytes": 524982,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/full-tests-committed.log.gz",
+      "gzipSha256": "a21e2a338ee7cb56d0accd6a4303921d8c41c43e0a7cd4b52a28782a53a378d2",
+      "gzipBytes": 56724
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/full-tests-final.log",
+      "rawSha256": "26c98f2a048c01ec3a1367aeba9a10c5c821fbd2cda95dae83e3eacd81da2692",
+      "rawBytes": 481355,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/full-tests-final.log.gz",
+      "gzipSha256": "baf1e754902be6b5fcef7f63ccd705bfa697ae3dcc072ff24becd27e45afa14e",
+      "gzipBytes": 47141
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/guest-cleanup-adaptation-first.log",
+      "rawSha256": "e8bb352c06c79eae5efadf3a2115cd01ff58d3d5269c9b66eb7bc3bd9a0db2f8",
+      "rawBytes": 12655,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/guest-cleanup-adaptation-first.log.gz",
+      "gzipSha256": "7122d1866fabcebee8f6cace6559d60a8593f6d5a3cb28146f555cee4aa9559c",
+      "gzipBytes": 1470
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/guest-cleanup-adaptation-lint.log",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rawBytes": 0,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/guest-cleanup-adaptation-lint.log.gz",
+      "gzipSha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "gzipBytes": 20
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/guest-cleanup-adaptation-second.log",
+      "rawSha256": "90ed49d0b60a6bad244d52d13c64b3e0f725ccc0a1d61cc595e531b60d872d7b",
+      "rawBytes": 399,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/guest-cleanup-adaptation-second.log.gz",
+      "gzipSha256": "7c36146eaa504ed9090a528ecad6d9fc89e64d035c2fd819a30d195a59a96b90",
+      "gzipBytes": 284
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/hardening-cooldown-final.log",
+      "rawSha256": "ebfef1d9751a1b51cbbe67b65e4dbd1c2fc6ff76fc2f53f2134c5f9749b76352",
+      "rawBytes": 1254,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/hardening-cooldown-final.log.gz",
+      "gzipSha256": "d9b8993ade208840f4cbd83be0abbd9337f185be01c631d1ce0dd7eaf7a74a9b",
+      "gzipBytes": 563
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/isolated-local-d1.log",
+      "rawSha256": "c53ca89d36faf08f233e20498fc81f06654424fd688d5133449499eeba8bf8f5",
+      "rawBytes": 12760,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/isolated-local-d1.log.gz",
+      "gzipSha256": "033fdd7b450115d712544f631e02a8b6cfe7f44228fc6e23c0d30763582a0197",
+      "gzipBytes": 1843
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/lint-committable.log",
+      "rawSha256": "25cc1f9634027c24c62f4029a44f00fc3a7e082ac28576c6fc5a3db3e0961f73",
+      "rawBytes": 92,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/lint-committable.log.gz",
+      "gzipSha256": "f30fa7ed9c927b041d14636d94e56f553561e7419673bedd310ae4d410bfedda",
+      "gzipBytes": 102
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/lint-final.log",
+      "rawSha256": "25cc1f9634027c24c62f4029a44f00fc3a7e082ac28576c6fc5a3db3e0961f73",
+      "rawBytes": 92,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/lint-final.log.gz",
+      "gzipSha256": "f30fa7ed9c927b041d14636d94e56f553561e7419673bedd310ae4d410bfedda",
+      "gzipBytes": 102
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/lint-first.log",
+      "rawSha256": "25cc1f9634027c24c62f4029a44f00fc3a7e082ac28576c6fc5a3db3e0961f73",
+      "rawBytes": 92,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/lint-first.log.gz",
+      "gzipSha256": "f30fa7ed9c927b041d14636d94e56f553561e7419673bedd310ae4d410bfedda",
+      "gzipBytes": 102
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/lint-frozen.log",
+      "rawSha256": "25cc1f9634027c24c62f4029a44f00fc3a7e082ac28576c6fc5a3db3e0961f73",
+      "rawBytes": 92,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/lint-frozen.log.gz",
+      "gzipSha256": "f30fa7ed9c927b041d14636d94e56f553561e7419673bedd310ae4d410bfedda",
+      "gzipBytes": 102
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/lint-recovery-final.log",
+      "rawSha256": "25cc1f9634027c24c62f4029a44f00fc3a7e082ac28576c6fc5a3db3e0961f73",
+      "rawBytes": 92,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/lint-recovery-final.log.gz",
+      "gzipSha256": "f30fa7ed9c927b041d14636d94e56f553561e7419673bedd310ae4d410bfedda",
+      "gzipBytes": 102
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/lint-recovery.log",
+      "rawSha256": "25cc1f9634027c24c62f4029a44f00fc3a7e082ac28576c6fc5a3db3e0961f73",
+      "rawBytes": 92,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/lint-recovery.log.gz",
+      "gzipSha256": "f30fa7ed9c927b041d14636d94e56f553561e7419673bedd310ae4d410bfedda",
+      "gzipBytes": 102
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/main-reverify.log",
+      "rawSha256": "8e092495b392224ddb809d9d8435616879c52d664e6f007b40f1ec4489f31cb2",
+      "rawBytes": 41,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/main-reverify.log.gz",
+      "gzipSha256": "aa18f5d3a5918032d2389d9d26c58b344da12af014f1f238c46db464520fbd39",
+      "gzipBytes": 58
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/migrations.log",
+      "rawSha256": "965811c75cef6d8d7db8527ffaf3ec59c52869fe5cb575a1261bc3b793191de5",
+      "rawBytes": 146,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/migrations.log.gz",
+      "gzipSha256": "d45694e01d3c87e54e90c9a8b218e9260181b666a7550df4151578acca503d20",
+      "gzipBytes": 132
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/route-clock-final.log",
+      "rawSha256": "e6ae94f19f1cd9bd75a811d7cdcdc6b0687cd8760b33e84695a6161292613e72",
+      "rawBytes": 869,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/route-clock-final.log.gz",
+      "gzipSha256": "c07c801f175114bc41fecb283d65cbef7ad1067820a008d472c3f6ba254a5d7b",
+      "gzipBytes": 529
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/routes-final.log",
+      "rawSha256": "b91dd586926b12e16e7ac7cc83415686be9b986a900111fd377a7673c0f0e905",
+      "rawBytes": 915,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/routes-final.log.gz",
+      "gzipSha256": "97f2986125ab9526642ed8fa6cf7a0fc827b9b4c36fc44be8bf8674175361860",
+      "gzipBytes": 542
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/routes-first.log",
+      "rawSha256": "8efe25e00f43ad1c5b5e769b54dddf2725b841ce7b3629a99f88ccd723a83ff4",
+      "rawBytes": 6221,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/routes-first.log.gz",
+      "gzipSha256": "355e0cd41dc7e8fee1a044ed81500e10168e6e5c9210b6c732d9bd064507927d",
+      "gzipBytes": 2053
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/routes-parity-final.log",
+      "rawSha256": "e4fbf5b5e8c794551941dcba526ab5440054ebc531f00b732afc43c95870808d",
+      "rawBytes": 7816,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/routes-parity-final.log.gz",
+      "gzipSha256": "bcb5b4f80b9064896815d1cf8459d2bd3f9c41a1079cfafaee3d4b2bfe4bb370",
+      "gzipBytes": 2194
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/routes-parity-first.log",
+      "rawSha256": "049f9e8094dfd42fbdf0e67e4ac5ecc4ad3b0ac4653799ca03ca56ad8fd4e149",
+      "rawBytes": 7672,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/routes-parity-first.log.gz",
+      "gzipSha256": "fc0e09fa0ddf9ec707b317d12741c00d850ce3f85f8bf607521c9edc1d3430d2",
+      "gzipBytes": 2144
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/routes-parity-second.log",
+      "rawSha256": "76c0390cdace07ee2dd3b1450c865109ff78cfb9446c1b57c3c6cebc08998187",
+      "rawBytes": 7456,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/routes-parity-second.log.gz",
+      "gzipSha256": "bffc5d23ba24aabfa67bf3af9b770c49f7472c97cf1a0ee5612bfadb1a64a906",
+      "gzipBytes": 2098
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/routes-password-second.log",
+      "rawSha256": "a38ed37f27ffe2f045b9dcc0c5bc3b2a6807295ddb76dea8449f0cf57d03c8c6",
+      "rawBytes": 690,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/routes-password-second.log.gz",
+      "gzipSha256": "1b01160a6ef7fcba5486061c943c30621de4aea7b088f210efae2a10f409ba16",
+      "gzipBytes": 452
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/schema-final.log",
+      "rawSha256": "d2f6bb7f4453a96d7b36dde00f25d820517ba4018f5a0a1522b958477c0d03c9",
+      "rawBytes": 303,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/schema-final.log.gz",
+      "gzipSha256": "187419c21151dfe2c0a270ff53e95dab66eeed968a6c5024b94b75f100f71693",
+      "gzipBytes": 240
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/scope-freeze-final.log",
+      "rawSha256": "ab8772d66260e23620c559ef0742e9a253f19d494db564cbcc480a8f7d5f84dc",
+      "rawBytes": 109,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/scope-freeze-final.log.gz",
+      "gzipSha256": "d579ae0ddef8e1b3e05489aba0d2a2163835d9d7322d9b78cbf9ea26b45a2361",
+      "gzipBytes": 104
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/scope-freeze-recovery.log",
+      "rawSha256": "04520a1a0d7a434920c31bd51e2a9367867ef9464e40d30e0a8c0930449d1c93",
+      "rawBytes": 109,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/scope-freeze-recovery.log.gz",
+      "gzipSha256": "0841275c70bc56b5c4e4867707243695f9e76b94c066c26230bb6d7f7df1c564",
+      "gzipBytes": 104
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/scope-freeze.log",
+      "rawSha256": "6bf1685194c5ba0618b5a9bdf01389fbd21e607a4bffcb55a808afd39c842419",
+      "rawBytes": 178,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/scope-freeze.log.gz",
+      "gzipSha256": "be384b9ba652a4640ee76612eaf72b451f8a0c5f29f18e2c6af65bcddfaa4b84",
+      "gzipBytes": 154
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/transaction-focused-final.log",
+      "rawSha256": "b1698b4d852b5fdb245a041e70d0f0df5015fe46589c682b15d5f05594189edd",
+      "rawBytes": 1326,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/transaction-focused-final.log.gz",
+      "gzipSha256": "a67e6ca6bf78dcbc8a67d55eb54669420f59a411b9c95d6584043ac54c0db78b",
+      "gzipBytes": 592
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/transaction-focused-first.log",
+      "rawSha256": "375d335fc1aa40ab45e16552d0ccf3fded240545b9207c038191f97e33e3f113",
+      "rawBytes": 14516,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/transaction-focused-first.log.gz",
+      "gzipSha256": "d8ba482ffdfcbef61e53587ccadcc45a4ba89fd6d396a812704b5750b46b99d2",
+      "gzipBytes": 3373
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/transaction-parity-final.log",
+      "rawSha256": "ed1002e844562f022b1003bbfb91e0a875e8c543918d46150d377e484062679e",
+      "rawBytes": 1328,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/transaction-parity-final.log.gz",
+      "gzipSha256": "0189fd430a2dba34f2fb4c87b39ec5b40a2cec59ae1cea1b9011fce0a6340d51",
+      "gzipBytes": 591
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/transaction-password-final.log",
+      "rawSha256": "b79466cecccf186dbaea05fcd14c6969fe27c34535d64c4c83a21fc73c66fbd4",
+      "rawBytes": 56389,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/transaction-password-final.log.gz",
+      "gzipSha256": "dac140ddc91b29b2f639cac7bc33fe240f41535d7513c13a4137062830902233",
+      "gzipBytes": 5800
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/typecheck-final.log",
+      "rawSha256": "a3a28a25c9246fe7e8bbf5999692dc60347e343a2415f8cefcb7e767e0e6a0d6",
+      "rawBytes": 158,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/typecheck-final.log.gz",
+      "gzipSha256": "790d24d163b15490f0225e2d5273a3a3ca033f1c15072f1ab806901aa06cb4bc",
+      "gzipBytes": 136
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/typecheck-first.log",
+      "rawSha256": "a3a28a25c9246fe7e8bbf5999692dc60347e343a2415f8cefcb7e767e0e6a0d6",
+      "rawBytes": 158,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/typecheck-first.log.gz",
+      "gzipSha256": "790d24d163b15490f0225e2d5273a3a3ca033f1c15072f1ab806901aa06cb4bc",
+      "gzipBytes": 136
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/typecheck-frozen.log",
+      "rawSha256": "a3a28a25c9246fe7e8bbf5999692dc60347e343a2415f8cefcb7e767e0e6a0d6",
+      "rawBytes": 158,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/typecheck-frozen.log.gz",
+      "gzipSha256": "790d24d163b15490f0225e2d5273a3a3ca033f1c15072f1ab806901aa06cb4bc",
+      "gzipBytes": 136
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/typecheck-password.log",
+      "rawSha256": "a3a28a25c9246fe7e8bbf5999692dc60347e343a2415f8cefcb7e767e0e6a0d6",
+      "rawBytes": 158,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/typecheck-password.log.gz",
+      "gzipSha256": "790d24d163b15490f0225e2d5273a3a3ca033f1c15072f1ab806901aa06cb4bc",
+      "gzipBytes": 136
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/typecheck-recovery-final.log",
+      "rawSha256": "a3a28a25c9246fe7e8bbf5999692dc60347e343a2415f8cefcb7e767e0e6a0d6",
+      "rawBytes": 158,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/typecheck-recovery-final.log.gz",
+      "gzipSha256": "790d24d163b15490f0225e2d5273a3a3ca033f1c15072f1ab806901aa06cb4bc",
+      "gzipBytes": 136
+    },
+    {
+      "rawPath": ".artifacts/backend-b01a-a2/typecheck-recovery.log",
+      "rawSha256": "ef8a398a980556243994822eda42dd6c6408963821a7653fccde9ac326b3ad3b",
+      "rawBytes": 362,
+      "gzipPath": "docs/backend-upgrade/b01a-a2/logs/typecheck-recovery.log.gz",
+      "gzipSha256": "6e6615f30646b1bae22e86348fff9172df4dee73609ef6bd44122d85e8f9909e",
+      "gzipBytes": 297
+    }
+  ],
+  "attachments": [
+    {
+      "path": "docs/backend-upgrade/b01a-a2/client-http-review.json",
+      "sha256": "5674cb99a630bca26709e56804bbd48ce8b4a1ba799c03e9ccc2b66fc8992f83"
+    },
+    {
+      "path": "docs/backend-upgrade/b01a-a2/client-receipt.json",
+      "sha256": "764de140bd7235fac21e4b5a8231dde8b2f59a42bfd92b2d0dc954b6be401d30"
+    },
+    {
+      "path": "docs/backend-upgrade/b01a-a2/client-register-password-receipt.json",
+      "sha256": "38c74330b27efd79d6e29de3253c4126037c694a513259b5194dd85e44443354"
+    },
+    {
+      "path": "docs/backend-upgrade/b01a-a2/historical-status.json",
+      "sha256": "a87078b607c83e100c5f99f64b6abf862a3b7a0ec35c5645fcc5fd7e5e395c59"
+    },
+    {
+      "path": "docs/backend-upgrade/b01a-a2/independent-db-coordinator-review.json",
+      "sha256": "078a2c7a3fb6a53a3a0563b41122d39fa67fb58ed503d4ae83f3c30ca50fb9a0"
+    },
+    {
+      "path": "docs/backend-upgrade/b01a-a2/local-d1.json",
+      "sha256": "8d9db4cf36c649f9721ec638e998fc96eee06609e5f46cc19d90249c8b8df5e8"
+    },
+    {
+      "path": "docs/backend-upgrade/b01a-a2/protected-freeze-final.json",
+      "sha256": "b64d1755cd23810a0f6bc59809bcee019a1fb728dad4ee56ed5abd2ca95a1d5c"
+    },
+    {
+      "path": "docs/backend-upgrade/b01a-a2/protected-freeze-recovery.json",
+      "sha256": "b64d1755cd23810a0f6bc59809bcee019a1fb728dad4ee56ed5abd2ca95a1d5c"
+    },
+    {
+      "path": "docs/backend-upgrade/b01a-a2/protected-freeze.json",
+      "sha256": "b64d1755cd23810a0f6bc59809bcee019a1fb728dad4ee56ed5abd2ca95a1d5c"
+    },
+    {
+      "path": "docs/backend-upgrade/b01a-a2/recovery-review.json",
+      "sha256": "3131d697fcda6c199596ddf9657175478f34db1b6b1b348a3c60e1be982ba53d"
+    },
+    {
+      "path": "docs/backend-upgrade/b01a-a2/source-freeze-final.json",
+      "sha256": "16bb1149f1e99dbd66b3ca9ec113ee4783568af0a77690504cfd248f1a968237"
+    },
+    {
+      "path": "docs/backend-upgrade/b01a-a2/source-freeze-recovery.json",
+      "sha256": "42e5254a6d8dc7b241f51a1044616667a5abb4d427db074d9b9bd4937512211d"
+    },
+    {
+      "path": "docs/backend-upgrade/b01a-a2/source-freeze.json",
+      "sha256": "8a20add4375cec2adffb1cbcbc7d51f3548f449614fc96a2b633106b0a6267c5"
+    },
+    {
+      "path": "docs/backend-upgrade/b01a-a2/wrangler-cache.json",
+      "sha256": "00e5f3ffa82616742bf6c05b19ae5f963b88926645574bac12943a75133f0983"
+    },
+    {
+      "path": "docs/backend-upgrade/b01a-a2/wrangler-registry.json",
+      "sha256": "38ab740887c8d83da394f9d8afca5cd558dbe4c3f579fe6d4b37c511f3ac9ac9"
+    }
+  ],
+  "fullSuite": {
+    "files": 293,
+    "tests": 7037,
+    "exitCode": 0,
+    "startEndHeadRecorded": true,
+    "cleanCommittedTree": true
+  },
+  "focused": {
+    "files": 15,
+    "tests": 454,
+    "exitCode": 0,
+    "receipt": "focused-recovery",
+    "sourceTimingLimit": "Ran on recovery tree at 15ee before only the final MockInstance type annotation fix; committed full-suite covers the final 23-source snapshot."
+  },
+  "unrecordedDevelopmentObservation": {
+    "retainedRawLog": false,
+    "testsPassed": 39,
+    "testsFailed": 8,
+    "filesPassed": 2,
+    "filesFailed": 1,
+    "reason": "Legacy delivery assertions expected true without otpDelivered metadata; updated fixtures explicitly confirm delivery where relevant."
+  },
+  "limits": [
+    "Agent focused logs preserve only captured/reported execution metadata; missing UTC process metadata is not invented.",
+    "Mutable-tree focused/lint/typecheck runs are development evidence; source freeze plus clean committed full/build identify accepted source.",
+    "The failed first full run on 15ee had two known modified documentation snapshots; all production/source bytes matched that commit. It remains FAIL.",
+    "Build is sequential after complete tests because Vite SSR tests share dist/client/sw.js.",
+    "Fresh audits exit1: full2critical/16high/19moderate/4low; production2moderate; no audit PASS.",
+    "No hosted D1, browser E2E, inbox/provider, remote D1/R2, deployment, push/PR/merge certificate."
+  ]
+}

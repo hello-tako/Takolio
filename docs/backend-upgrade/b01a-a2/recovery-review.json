@@ -1,0 +1,110 @@
+{
+  "status": "NO_BLOCKING_FINDINGS",
+  "recordedByRootAtUtc": "2026-10-11T10:30:41.082865+00:00",
+  "recordingMethod": "Root transcribed agent messages and verified reported hashes; reviewers did not emit a separate timestamped process receipt.",
+  "implementationSha": "dcc0e1a74d2f5e3b67e13ecbb241bc04c8fafdde",
+  "reviewedSource": [
+    {
+      "path": "tests/integration/auth-strict-routes.test.ts",
+      "bytes": 32441,
+      "sha256": "b611bfbea346b91ea997987b0ad2c70e84f5933b46a7e3b1e2d479d2f4d08895"
+    },
+    {
+      "path": "tests/integration/inventory-guest-transfer.test.ts",
+      "bytes": 22492,
+      "sha256": "5861f5cfc348e1c8e6876628361f95ef9a740a08a80d58652762e315ef9ba458"
+    },
+    {
+      "path": "tests/integration/cleanup-schema.test.ts",
+      "bytes": 8967,
+      "sha256": "45662b96def607ffec388f936fdd13abc6309041730b4872bb0cec12d24f2e02"
+    },
+    {
+      "path": "tests/unit/auth-resend-turnstile.test.tsx",
+      "bytes": 5248,
+      "sha256": "ab223b731109ac8b518eb8911423ccb76134c3d9088bf659d4adb3f879e67d97"
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "a2_client",
+      "kind": "independent_agent_read_only_review",
+      "paths": [
+        "tests/integration/auth-strict-routes.test.ts",
+        "tests/integration/inventory-guest-transfer.test.ts",
+        "tests/integration/cleanup-schema.test.ts"
+      ],
+      "findings": [],
+      "observations": [
+        "Clock-relative fields are independently checked against immutable expiry/current D1 epoch; stable status/key/message parity remains.",
+        "Deferred guest transfer retains strict and legacy snapshots, total_changes, no batch/comparison/cache invalidation. Accepted strict delivery, chosen-password replacement and cookie hash/private principal are asserted.",
+        "Cleanup retains complete failed/past-locked evidence while deleting exactly two clean old rows; scan/claim/quota assertions remain."
+      ],
+      "testsExecutedByReviewer": false
+    },
+    {
+      "reviewer": "a2_transaction",
+      "kind": "independent_agent_read_only_review",
+      "paths": [
+        "tests/unit/auth-resend-turnstile.test.tsx"
+      ],
+      "findings": [],
+      "observations": [
+        "Bounded1.5s polling yields5ms within act and throws the assertion on timeout.",
+        "Waits widget mount, terminal registration error/resend enabled and request-count plus terminal resend-success state.",
+        "Preserves registration token, no resend token, one widget and no widgets on login/forgot; no test/config timeout increase."
+      ],
+      "testsExecutedByReviewer": false
+    },
+    {
+      "reviewer": "a2_client",
+      "kind": "implementer_self_review",
+      "paths": [
+        "tests/unit/auth-resend-turnstile.test.tsx"
+      ],
+      "findings": [],
+      "testsExecutedByReviewer": false
+    }
+  ],
+  "agentReportedRuns": [
+    {
+      "name": "guest-cleanup-adaptation-second",
+      "filesPassed": 2,
+      "testsPassed": 37,
+      "exitCode": 0,
+      "log": {
+        "path": ".artifacts/backend-b01a-a2/guest-cleanup-adaptation-second.log",
+        "bytes": 399,
+        "sha256": "90ed49d0b60a6bad244d52d13c64b3e0f725ccc0a1d61cc595e531b60d872d7b"
+      },
+      "scopeLimit": "Pre root type-only MockInstance annotation correction."
+    },
+    {
+      "name": "client-resend-await",
+      "filesPassed": 1,
+      "testsPassed": 2,
+      "exitCode": 0,
+      "log": {
+        "path": ".artifacts/backend-b01a-a2/client-resend-await-20261011T101919Z.log",
+        "bytes": 1037,
+        "sha256": "7fef430275abd418cb172c141fee2e73685156f3f5aede6172ee7f5ecd6eaa28"
+      }
+    }
+  ],
+  "historicalFailuresRetained": [
+    {
+      "path": ".artifacts/backend-b01a-a2/guest-cleanup-adaptation-first.log",
+      "bytes": 12655,
+      "sha256": "e8bb352c06c79eae5efadf3a2115cd01ff58d3d5269c9b66eb7bc3bd9a0db2f8"
+    },
+    {
+      "path": ".artifacts/backend-b01a-a2/typecheck-recovery.log",
+      "bytes": 362,
+      "sha256": "ef8a398a980556243994822eda42dd6c6408963821a7653fccde9ac326b3ad3b"
+    }
+  ],
+  "limits": [
+    "Read-only fixture reviews do not certify hosted D1, real email, timing indistinguishability or browser E2E.",
+    "Agent outcomes retain only metadata reported/captured; no reconstructed UTC start/end, HEAD or duration."
+  ]
+}

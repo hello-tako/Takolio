@@ -1,0 +1,80 @@
+{
+  "recordedAtUtc": "2026-10-11T10:36:02.303217+00:00",
+  "implementationSha": "dcc0e1a74d2f5e3b67e13ecbb241bc04c8fafdde",
+  "status": "B01a_A2_ROUTE_CLIENT_LOCAL_VERIFIED",
+  "canonicalHistoricalSuffixes": [
+    {
+      "path": "docs/ai/CURRENT_STATE.md",
+      "sha256": "8623be4a546e94302b4cc2879daac0c70a1a6272f5b7862120ce08020687ca1f",
+      "bytes": 534268,
+      "afterSha256": "95a17ddda57692384631fd1b6b0d06beff8727fead056f0e486d514db7eed17f",
+      "historicalSuffixPreserved": true
+    },
+    {
+      "path": "docs/ai/TASK_BOARD.md",
+      "sha256": "9c3eb292f35a26c77794a12fac429698654f4d8112e4be79eed0038069f3486b",
+      "bytes": 397648,
+      "afterSha256": "c39a032e88769c78a8b2b5460c86227257d4028520414d9c6a30e190bf0ac220",
+      "historicalSuffixPreserved": true
+    },
+    {
+      "path": "docs/ai/HANDOFF.md",
+      "sha256": "c7128b71ee8bacddeefcab69fd8b3421601e7f9518376b911c65bf3890045a90",
+      "bytes": 550232,
+      "afterSha256": "869b82e2ba944025cf28eeb618baad35207609827662703e35bc70101830108f",
+      "historicalSuffixPreserved": true
+    },
+    {
+      "path": "docs/backend-upgrade/README.md",
+      "sha256": "b9a726c529d3909eae01119252393a23babf05d9db5e1dc4b2e8298b6823176b",
+      "bytes": 6804,
+      "afterSha256": "95d8e1e7aa8e1da6db168897d70d06019fe5b7f3d6d4d22d0730171102737849",
+      "historicalSuffixPreserved": true
+    },
+    {
+      "path": "docs/backend-upgrade/IMPLEMENTATION_PLAN.md",
+      "sha256": "164baafb9fbc72aca58b428913663f84db63f6931c7a9f566b410cbd730962ec",
+      "bytes": 50766,
+      "afterSha256": "ca670a6d0345320efac63adc1760df3bb68af7b92884391dc41e1c2ed2f4f90f",
+      "historicalSuffixPreserved": true
+    },
+    {
+      "path": "docs/backend-upgrade/tasks/B01a-strict-otp.md",
+      "sha256": "091c079df71711f567746e87743e8c700720560c862244bbbb979082f4d94e78",
+      "bytes": 29991,
+      "afterSha256": "238b062a63ccd77ea3dd42401734f3925894cdda28a726e2f9826bfaf6eb7412",
+      "historicalSuffixPreserved": true
+    },
+    {
+      "path": "docs/backend-upgrade/tasks/INDEX.md",
+      "sha256": "f9e64429b462dc5cbf0fa702d594787020c1894f11446e1f8af47a3b4a48d016",
+      "bytes": 4134,
+      "afterSha256": "6f4928a74bf279dda0115fca77daa49fb00b636b5a598400ac6773e9f01abcae",
+      "historicalSuffixPreserved": true
+    },
+    {
+      "path": "docs/backend-upgrade/GAP_REGISTER.md",
+      "sha256": "5e4a2c84f0022e5b2400a0525e923bad99229ef3971144e171da7089af69acb7",
+      "bytes": 8947,
+      "afterSha256": "21301cabc2fe84d6ae3145181b5d8ab8b8218cff4fa8f95962543a9f3275ede0",
+      "historicalSuffixPreserved": true
+    }
+  ],
+  "originalPlanPath": "/Users/tunbee27/Documents/frigo/docs/TAKOSAN_BACKEND_IMPLEMENTATION_PLAN_2026-10-11.md",
+  "originalPlanBeforeSha256": "a67f839e74137fbafc5ef3bd9ef401c9fdb8e1fe57700bebea31879ab8c69759",
+  "originalPlanAfterSha256": "d21612ad439f4409e6bbce5869b3412c0129c045148e01b01fbd811fbe1645ff",
+  "originalPlanHistoricalBytesPreserved": 55507,
+  "masterplanPath": "/Users/tunbee27/Downloads/TAKOSAN_BACKEND_MASTERPLAN_2026-10-11.md",
+  "masterplanSha256": "13809f0874ae357707fc6a37a16f5e8b3164674eeb194dff0adc3ae7f530b44b",
+  "masterplanUnchanged": true,
+  "fullSuite": {
+    "files": 293,
+    "tests": 7037,
+    "exitCode": 0,
+    "startEndHeadRecorded": true,
+    "cleanCommittedTree": true
+  },
+  "limits": [
+    "Original plan lives in untracked legacy workspace; canonical receipt does not commit it."
+  ]
+}

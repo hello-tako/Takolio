@@ -1,0 +1,42 @@
+[
+  {
+    "path": "docs/ai/CURRENT_STATE.md",
+    "sha256": "8623be4a546e94302b4cc2879daac0c70a1a6272f5b7862120ce08020687ca1f",
+    "bytes": 534268
+  },
+  {
+    "path": "docs/ai/TASK_BOARD.md",
+    "sha256": "9c3eb292f35a26c77794a12fac429698654f4d8112e4be79eed0038069f3486b",
+    "bytes": 397648
+  },
+  {
+    "path": "docs/ai/HANDOFF.md",
+    "sha256": "c7128b71ee8bacddeefcab69fd8b3421601e7f9518376b911c65bf3890045a90",
+    "bytes": 550232
+  },
+  {
+    "path": "docs/backend-upgrade/README.md",
+    "sha256": "b9a726c529d3909eae01119252393a23babf05d9db5e1dc4b2e8298b6823176b",
+    "bytes": 6804
+  },
+  {
+    "path": "docs/backend-upgrade/IMPLEMENTATION_PLAN.md",
+    "sha256": "164baafb9fbc72aca58b428913663f84db63f6931c7a9f566b410cbd730962ec",
+    "bytes": 50766
+  },
+  {
+    "path": "docs/backend-upgrade/tasks/B01a-strict-otp.md",
+    "sha256": "091c079df71711f567746e87743e8c700720560c862244bbbb979082f4d94e78",
+    "bytes": 29991
+  },
+  {
+    "path": "docs/backend-upgrade/tasks/INDEX.md",
+    "sha256": "f9e64429b462dc5cbf0fa702d594787020c1894f11446e1f8af47a3b4a48d016",
+    "bytes": 4134
+  },
+  {
+    "path": "docs/backend-upgrade/GAP_REGISTER.md",
+    "sha256": "5e4a2c84f0022e5b2400a0525e923bad99229ef3971144e171da7089af69acb7",
+    "bytes": 8947
+  }
+]

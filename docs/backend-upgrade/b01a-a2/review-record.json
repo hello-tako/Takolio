@@ -354,5 +354,20 @@
     "Source snapshot and focused tests do not prove final full-suite/build or hosted D1 correctness.",
     "No real email/provider calls, remote D1, deployment, push, billing/authority/dependency/config/workflow edits were performed by this reviewer.",
     "Root owns remaining documentation/status/manifests and checkpoint commits."
-  ]
+  ],
+  "snapshotNotice": "Source-review snapshot retained with its original pendingVerification list. Post-snapshot local gates are resolved by the linked final acceptance receipt; hosted gates remain open.",
+  "postSnapshotAcceptance": {
+    "implementationSha": "dcc0e1a74d2f5e3b67e13ecbb241bc04c8fafdde",
+    "validationPath": "docs/backend-upgrade/b01a-a2/validation.json",
+    "resultPath": "docs/backend-upgrade/b01a-a2/RESULT.md",
+    "independentDbCoordinatorReviewPath": "docs/backend-upgrade/b01a-a2/independent-db-coordinator-review.json",
+    "recoveryReviewPath": "docs/backend-upgrade/b01a-a2/recovery-review.json",
+    "fullSuite": {
+      "filesPassed": 293,
+      "testsPassed": 7037,
+      "exitCode": 0,
+      "cleanCommittedTree": true
+    },
+    "remainingHostedGates": true
+  }
 }

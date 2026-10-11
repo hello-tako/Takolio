@@ -1,0 +1,89 @@
+{
+  "status": "NO_REMAINING_BLOCKING_LOCAL_EVIDENCE_FINDINGS",
+  "reviewer": "a2_client",
+  "kind": "independent_agent_read_only_evidence_review",
+  "recordedByRootAtUtc": "2026-10-11T10:42:30.838170+00:00",
+  "recordingMethod": "Root transcribed reviewer completion messages and verified reported stable snapshot hashes.",
+  "implementationSha": "dcc0e1a74d2f5e3b67e13ecbb241bc04c8fafdde",
+  "reviewedSnapshot": [
+    {
+      "path": "docs/backend-upgrade/b01a-a2/validation.json",
+      "bytes": 112365,
+      "sha256": "802793cca56ecd9404e8e580ecb64ae8f0bfb77ea0b3a6954f28412e0ffe997a"
+    },
+    {
+      "path": "docs/backend-upgrade/b01a-a2/git-verification.json",
+      "bytes": 90447,
+      "sha256": "a8eddb5eb541f15b5721e87a0a2af5caa8a065bd33991a388bf4f2aae3a27ad1"
+    },
+    {
+      "path": "docs/backend-upgrade/b01a-a2/verify_packet.py",
+      "bytes": 4165,
+      "sha256": "02f1f63946c61f954ce81f24eb0f19e106b7c293db4d6306ba4e26485728d9c1"
+    },
+    {
+      "path": "docs/backend-upgrade/b01a-a2/plan-sync.json",
+      "bytes": 3419,
+      "sha256": "bf38785c5fb8142cc7fa62708a30528b32a8077e934f1e490dbaec76436a7801"
+    },
+    {
+      "path": "docs/backend-upgrade/b01a-a2/LOCAL_VALIDATION.md",
+      "bytes": 7524,
+      "sha256": "d1878da11e634065148dee325a55af55de4fb4310820709540062624a57686dc"
+    },
+    {
+      "path": "docs/backend-upgrade/b01a-a2/RESULT.md",
+      "bytes": 4230,
+      "sha256": "4cbb61b6fd1b41785bd8cf9fa6e3edbbb7e8ba4a9b94c952b15cf88d65899d13"
+    },
+    {
+      "path": "docs/backend-upgrade/b01a-a2/ADR-B01a-002.md",
+      "bytes": 16069,
+      "sha256": "04bc87e06aa78e46091e2d7ab4d41d2350d060ccba992e8f0679d0c26e2aa2a6"
+    },
+    {
+      "path": "docs/backend-upgrade/b01a-a2/review-record.json",
+      "bytes": 17963,
+      "sha256": "1f9b1d6164926698117212c5c83d1ff37e09df681689a451afca1c51ea224f7f"
+    }
+  ],
+  "checks": [
+    {
+      "command": "python3 /tmp/takosan-b01a-a2-verify-packet.py",
+      "exitCode": 0,
+      "reportedOutput": "packet=PASS: source23/protected369; gzip60/commands36; histories/masterplan/sourceblobs/hashlinks valid",
+      "rawLogRetained": false
+    },
+    {
+      "kind": "additional_independent_read_only_checks",
+      "observations": [
+        "85 packet payload hashes match the reviewed manifest.",
+        "Receipt statuses match actual exits; known failures and both audit FAIL records remain.",
+        "One final raw full summary records293files7037tests; full/build begin/end at clean dcc0e1a7, with sequential UTC timing.",
+        "All40 applied migrations match A1 Git;8 historical suffixes match implementation blobs; original55507 historical bytes and masterplan checksum remain.",
+        "Exported gzip drives evidence independently of ignored raw logs; temporary and exported verifier bytes match."
+      ]
+    }
+  ],
+  "resolvedDocumentationFinding": {
+    "finding": "Recovery typecheck/focus started concurrently; original draft said subsequent.",
+    "resolution": "LOCAL_VALIDATION now records the concurrent recovery typecheck failure."
+  },
+  "historicalReviewerRun": {
+    "command": "python3 /tmp/takosan-b01a-a2-verify-packet.py",
+    "exitCode": 1,
+    "reason": "Known root plan-sync/doc mutation occurred during review; the manifest was regenerated and the final stable rerun passed.",
+    "rawLogRetained": false,
+    "sourceChanged": false
+  },
+  "remainingBlockingFindings": [],
+  "pendingAtReview": [
+    "Documentation receipt commit and final committed-blob/clean-tree check."
+  ],
+  "limits": [
+    "Reviewer tool exits/output are preserved as reported; absent UTC process timing and saved raw logs are not invented.",
+    "The reviewed manifest precedes insertion of this review. Root regenerates the manifest/note only to include this new file, then validates all payload hashes.",
+    "No edits, mutation scripts, tests/build or remote operations were performed by the evidence reviewer.",
+    "Local evidence/source review does not certify hosted D1, inbox delivery, production rollout or hardened rollback."
+  ]
+}

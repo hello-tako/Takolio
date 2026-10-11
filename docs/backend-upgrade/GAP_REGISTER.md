@@ -1,3 +1,14 @@
+# Current B01a A2 local checkpoint - 2026-10-11 JST
+
+All OTP route/client/cleanup integration is locally verified on `dcc0e1a74d2f5e3b67e13ecbb241bc04c8fafdde`.
+Final full 293 files/7037 tests and focused 454 PASS; required local gates
+PASS except dependency audit findings retained for B08. Guest transfer stays 409 deferred.
+Hosted 0040 release/preflight, hardened rollback, staging D1 and inbox proof remain open;
+next local scope is B01c. See [b01a-a2/RESULT.md](b01a-a2/RESULT.md).
+Historical plan/source risks/checkpoints follow unchanged.
+
+---
+
 # B01a A1 gap progress - 2026-10-11 JST
 
 SEC-01/02/03 now have dormant local kernel/schema proof on `0649324a729b57019df61da6bceec40cd9ba1135`:

@@ -1,3 +1,38 @@
+# B01a A2 local checkpoint - 2026-10-11 JST
+
+**Task/status:** B01a_A2_ROUTE_CLIENT_LOCAL_VERIFIED. OTP route/client/cleanup
+integration is locally verified; hosted release certification remains separate.
+Active packet: docs/backend-upgrade/tasks/B01a-strict-otp.md; ADR-B01a-002 accepted locally.
+
+**Repository/source:** vn-tak/Tako-san, ID 1385308553; canonical worktree
+/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo, branch
+codex/backend-b01a-integration. Base 8f55a745e08c800898555be829b93c8f1a7a5d18;
+final implementation `dcc0e1a74d2f5e3b67e13ecbb241bc04c8fafdde`. Main read-only reverified 652e0d7632745e9b77cda4b5b3caac83a3ec1015.
+Receipt records implementation and executed checks, not its own commit hash.
+
+**Changes:** all OTP paths use strict D1 admission/replay, guarded registration,
+chosen activation password, atomic reset/activation/revocation/session and pinned
+cookie authority. Client tab-memory retry keys and honest cooldown/delivery/replay UI.
+Forgot known/unknown delivery/stale parity; legacy reissue and receipt-aware cleanup.
+Scopes/imports and failed/locked legacy evidence retained; guest transfer 409 deferred.
+
+**Checks:** final committed-source full 293 files/7037 tests PASS;
+recovery focused 15 files/454 tests PASS; lint/typecheck/install/migration smoke/
+sequential build/freeze PASS. Isolated local D1 exact 40 ledger/reapply none/gate[]/
+FK[]/quick_check ok PASS. 23 source and 369 protected records; all 40 migrations unchanged.
+Independent agent source review no blocking findings. First full 4 files / 25 tests FAIL,
+first combined 8 FAIL and development fixture failures retained separately.
+Audit FAIL: full 2 critical / 16 high / 19 moderate / 4 low; production 2 moderate / 0 high or critical; B08 pending.
+
+**Limits/next:** guest inventory transfer remains deferred; no hosted D1/inbox/
+production proof, browser E2E, hardened rollback or rotation proof. No remote DB/R2,
+real mail/paid AI/push/PR/merge/deploy. Next local scope B01c auth/tenant hardening;
+separate 0040 release/preflight/hardened rollback and controlled staging/inbox gates.
+Full backend masterplan remains in progress. See docs/backend-upgrade/b01a-a2/RESULT.md
+and LOCAL_VALIDATION.md. Historical checkpoints follow unchanged.
+
+---
+
 # B01a strict OTP A1 local checkpoint - 2026-10-11 JST
 
 **Task/status:** `B01a_A1_DORMANT_LOCAL_VERIFIED`; kernel/schema foundation only.
