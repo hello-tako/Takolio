@@ -1,3 +1,45 @@
+# ADR-B01b-001 - Bounded provider acceptance and conservative email fallback
+
+Status: accepted for local B01b A1 implementation, 2026-10-11 JST.
+Packet: `../backend-upgrade/tasks/B01b-email-adapter.md`.
+Independent source/contract and test-matrix reviews completed before integration.
+Extends ADR-028 only in email adapter routing/evidence; production certification
+and B01a strict issuance integration remain separate.
+
+A native send may be accepted before its caller receives an exception. Existing
+unconditional native-to-Resend fallthrough can therefore send the same OTP twice.
+Add sanitized state/evidence while retaining `sent` as provider-acceptance bridge.
+Native fulfillment/Resend2xx prove accepted, never delivered. Structured native
+policy codes and HTTP4xx except408 prove rejected; arbitrary errors, timeouts,
+408/5xx and unexpected statuses are delivery_unknown. Absence of providers is
+not_configured. Delivered/bounced require later authenticated lifecycle evidence.
+
+Only exact string E_SENDER_NOT_VERIFIED / E_SENDER_DOMAIN_NOT_AVAILABLE permit
+native-to-Resend fallback. Recipient suppression/policy/quota codes terminate;
+message-text matches can classify an error but cannot authorize fallback. No
+retry after unknown, and no automatic HTTP redirect/retry. Provider dispatch and
+metadata share an8000ms deadline per attempt, max16000ms sequential fallback plus
+local scheduling overhead. Timeout publishes once, aborts HTTP best effort and
+fences late outcomes. Native cannot promise cancellation. These are chosen local
+policy bounds, not measured production SLOs or exactly-once send guarantees.
+
+Retain/parse at most4096metadata bytes and make at most64stream read calls.
+Discard the chunk crossing the byte limit; transport-byte ingress is not bounded
+by this parser. Omit invalid optional IDs and preserve HTTP acceptance/rejection
+if metadata is unavailable. Replace unused raw messageId with optional SHA256 messageIdHash of bounded
+opaque tokens (8-128ASCII letters/digits/underscore/hyphen, at least one letter);
+omit malformed/contact/numeric/control-bearing values. No current caller reads IDs. Neither raw IDs nor hashes enter logs. Log only stable provider/category/purpose/environment
+and state/evidence, never raw provider payloads/errors/recipient/OTP/credentials.
+No callback, new authority, dependencies, migration, bindings or flags.
+
+Compatibility: auth still reads sent/provider/error. Unknown returns false, so
+legacy production invalidation and KV cooldown clearing remain until B01a. A1
+prevents duplicate fallback within one invocation; it does not certify safe
+resends across requests or real inbox delivery. Rollback must keep conservative
+ambiguity handling. B01b E2E/inbox/bounce/retention follows B01a separately.
+
+---
+
 # B00 backend decision register - 2026-10-11 JST
 
 ADR-B00-001 accepted for source/evidence/documentation scope only; implementation policy drafts B01-B08 at `../backend-upgrade/b00/DECISIONS.md`. No accepted runtime ADR is silently superseded by B00. Runtime OTP/email/key/legacy cutover/ScanV3/billing decisions require their own reviewed ADR before integration. Historical decisions follow unchanged.

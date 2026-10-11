@@ -1,16 +1,9 @@
 /**
- * Email delivery service for Frigo Workers.
- *
- * Primary: Cloudflare Email Service (send_email binding, Paid plan) — no API
- *          key or third party. The sending domain must be onboarded before
- *          arbitrary recipients are accepted.
- * Fallback: Resend HTTP API (if RESEND_API_KEY secret is configured)
- *
- * Provider details are deliberately reduced to stable categories. Never retain
- * recipients, subjects, message bodies, OTPs, or provider exception text.
+ * Provider acceptance adapter. A successful send is not inbox delivery proof.
+ * Native ambiguity must never trigger a second send through Resend.
  */
 
-import { Env } from '../types';
+import type { Env } from '../types';
 
 export interface SendEmailParams {
   to: string;
@@ -21,126 +14,236 @@ export interface SendEmailParams {
   purpose?: 'register' | 'forgot_password' | 'login';
 }
 
-export interface EmailResult {
-  sent: boolean;
-  provider: 'workers-email' | 'resend' | 'none';
-  messageId?: string;
-  error?: 'sender_not_verified' | 'recipient_not_allowed' | 'rate_limited' | 'daily_limit' | 'provider_unavailable' | 'not_configured';
-}
+type EmailProvider = 'workers-email' | 'resend' | 'none';
+type EmailError = 'sender_not_verified' | 'recipient_not_allowed' | 'rate_limited' | 'daily_limit' | 'provider_unavailable' | 'not_configured';
+type EmailEvidence = 'native_resolved' | 'native_rejection_code' | 'http_response' | 'provider_exception' | 'deadline' | 'configuration';
+
+export type EmailResult = {
+  provider: EmailProvider;
+} & (
+  | { sent: true; state: 'accepted'; evidence: 'native_resolved' | 'http_response'; messageIdHash?: string; error?: never }
+  | { sent: false; state: 'rejected' | 'delivery_unknown' | 'not_configured'; evidence: EmailEvidence; error: EmailError }
+);
 
 const FROM_NAME = 'Takosan';
-// This apex domain is the sending domain currently onboarded in Cloudflare
-// Email Service. A subdomain must be onboarded separately before it can send.
+// Cloudflare onboards the apex sending domain; subdomains need separate onboarding.
 const FROM_EMAIL = 'no-reply@tungjpstore.net';
+const PROVIDER_TIMEOUT_MS = 8000;
+const MAX_RESPONSE_BYTES = 4096;
+const MAX_RESPONSE_CHUNKS = 64;
 
-function classifyWorkersEmailError(error: unknown): EmailResult['error'] {
-  const code = typeof error === 'object' && error && 'code' in error ? String(error.code) : '';
-  const message = error instanceof Error ? error.message.toLowerCase() : '';
-  if (code === 'E_SENDER_NOT_VERIFIED' || code === 'E_SENDER_DOMAIN_NOT_AVAILABLE') return 'sender_not_verified';
-  if (message.includes('email sending not authorized for subdomain')) return 'sender_not_verified';
-  if (code === 'E_RECIPIENT_NOT_ALLOWED' || code === 'E_RECIPIENT_SUPPRESSED') return 'recipient_not_allowed';
-  if (code === 'E_RATE_LIMIT_EXCEEDED') return 'rate_limited';
-  if (code === 'E_DAILY_LIMIT_EXCEEDED') return 'daily_limit';
-  return 'provider_unavailable';
+type Attempt<T> = { kind: 'resolved'; value: T } | { kind: 'exception'; error: unknown } | { kind: 'deadline' };
+
+function providerDeadline(onTimeout?: () => void) {
+  let expired = false;
+  let timer: ReturnType<typeof setTimeout>;
+  const timeout = new Promise<{ kind: 'deadline' }>((resolve) => {
+    timer = setTimeout(() => {
+      expired = true;
+      resolve({ kind: 'deadline' });
+      onTimeout?.();
+    }, PROVIDER_TIMEOUT_MS);
+  });
+  return {
+    get expired() { return expired; },
+    async wait<T>(operation: () => Promise<T>): Promise<Attempt<T>> {
+      if (expired) return { kind: 'deadline' };
+      try {
+        // Both handlers remain attached after timeout, including for unabortable sends.
+        const pending = operation().then<Attempt<T>, Attempt<T>>(
+          (value) => ({ kind: 'resolved', value }),
+          (error: unknown) => ({ kind: 'exception', error }),
+        );
+        return await Promise.race([pending, timeout]);
+      } catch (error) {
+        return { kind: 'exception', error };
+      }
+    },
+    close() { clearTimeout(timer); },
+  };
 }
 
-async function classifyResendError(response: Response): Promise<EmailResult['error']> {
-  const body = await response.json().catch(() => null) as { name?: unknown; message?: unknown } | null;
-  const name = typeof body?.name === 'string' ? body.name.toLowerCase() : '';
-  const message = typeof body?.message === 'string' ? body.message.toLowerCase() : '';
-
-  if (response.status === 429) {
-    return name === 'daily_quota_exceeded' || name === 'monthly_quota_exceeded'
-      ? 'daily_limit'
-      : 'rate_limited';
+function field(value: unknown, key: string): unknown {
+  try {
+    return typeof value === 'object' && value !== null
+      ? (value as Record<string, unknown>)[key]
+      : undefined;
+  } catch {
+    return undefined;
   }
-  if (response.status === 403 && name === 'validation_error') {
+}
+
+function workersFailure(error: unknown): { category: EmailError; rejected: boolean; fallback: boolean } {
+  const code = field(error, 'code');
+  const message = field(error, 'message');
+  switch (code) {
+    case 'E_SENDER_NOT_VERIFIED':
+    case 'E_SENDER_DOMAIN_NOT_AVAILABLE':
+      return { category: 'sender_not_verified', rejected: true, fallback: true };
+    case 'E_RECIPIENT_NOT_ALLOWED':
+    case 'E_RECIPIENT_SUPPRESSED':
+      return { category: 'recipient_not_allowed', rejected: true, fallback: false };
+    case 'E_RATE_LIMIT_EXCEEDED':
+      return { category: 'rate_limited', rejected: true, fallback: false };
+    case 'E_DAILY_LIMIT_EXCEEDED':
+      return { category: 'daily_limit', rejected: true, fallback: false };
+    default:
+      return {
+        category: typeof message === 'string' && message.length <= MAX_RESPONSE_BYTES && message.toLowerCase().includes('email sending not authorized for subdomain')
+          ? 'sender_not_verified' : 'provider_unavailable',
+        rejected: false,
+        fallback: false,
+      };
+  }
+}
+
+async function messageIdMetadata(value: unknown): Promise<{ messageIdHash?: string }> {
+  // Hash bounded IDs: provider-controlled metadata must not echo contact/OTP text.
+  if (typeof value !== 'string' || !/^[A-Za-z0-9][A-Za-z0-9_-]{7,127}$/.test(value) || !/[A-Za-z]/.test(value)) return {};
+  try {
+    const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value));
+    return { messageIdHash: Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join('') };
+  } catch {
+    return {};
+  }
+}
+
+function cancelBody(response: Response): void {
+  try { void response.body?.cancel().catch(() => {}); } catch { /* Cancellation is best effort. */ }
+}
+
+async function readMetadata(response: Response, deadline: ReturnType<typeof providerDeadline>): Promise<unknown> {
+  let reader: ReadableStreamDefaultReader<Uint8Array> | undefined;
+  try { reader = response.body?.getReader(); } catch { return null; }
+  if (!reader) return null;
+  let complete = false;
+  try {
+    const chunks: Uint8Array[] = [];
+    let size = 0;
+    for (let reads = 0; ; reads++) {
+      if (reads >= MAX_RESPONSE_CHUNKS) return null;
+      const result = await deadline.wait(() => reader.read());
+      if (result.kind !== 'resolved') return null;
+      if (result.value.done) { complete = true; break; }
+      size += result.value.value.byteLength;
+      if (size > MAX_RESPONSE_BYTES) return null;
+      chunks.push(result.value.value);
+    }
+    const bytes = new Uint8Array(size);
+    let offset = 0;
+    for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.byteLength; }
+    return JSON.parse(new TextDecoder().decode(bytes));
+  } catch {
+    return null;
+  } finally {
+    if (!complete) {
+      try { void reader.cancel().catch(() => {}); } catch { /* Do not await a stalled provider cancellation. */ }
+    }
+    try { reader.releaseLock(); } catch { /* A late pending read is already fenced. */ }
+  }
+}
+
+function classifyResendError(status: number, body: unknown): EmailError {
+  const rawName = field(body, 'name');
+  const rawMessage = field(body, 'message');
+  const name = typeof rawName === 'string' ? rawName.toLowerCase() : '';
+  const message = typeof rawMessage === 'string' ? rawMessage.toLowerCase() : '';
+  if (status === 429) {
+    return name === 'daily_quota_exceeded' || name === 'monthly_quota_exceeded' ? 'daily_limit' : 'rate_limited';
+  }
+  if (status === 403 && name === 'validation_error') {
     if (message.includes('only send testing emails')) return 'recipient_not_allowed';
     if (message.includes('domain is not verified') || message.includes('verify a domain')) return 'sender_not_verified';
   }
   return 'provider_unavailable';
 }
 
-function logDeliveryFailure(
-  env: Env,
-  params: SendEmailParams,
-  provider: EmailResult['provider'],
-  category: EmailResult['error'],
-): void {
+function logDeliveryFailure(env: Env, params: SendEmailParams, result: EmailResult): void {
   console.error(JSON.stringify({
     event: 'email_delivery_failed',
-    provider,
-    category,
+    provider: result.provider,
+    category: result.error,
+    state: result.state,
+    evidence: result.evidence,
     ...(params.purpose ? { purpose: params.purpose } : {}),
     ...(env.ENVIRONMENT ? { environment: env.ENVIRONMENT } : {}),
   }));
 }
 
-export async function sendEmail(
-  env: Env,
-  params: SendEmailParams
-): Promise<EmailResult> {
-  let workersFailure: EmailResult['error'];
+async function sendResend(env: Env, params: SendEmailParams): Promise<EmailResult> {
+  const controller = new AbortController();
+  const deadline = providerDeadline(() => controller.abort());
+  try {
+    const attempt = await deadline.wait(() => fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      redirect: 'error',
+      headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        from: `${params.fromName || FROM_NAME} <${FROM_EMAIL}>`,
+        to: [params.to], subject: params.subject, html: params.html, text: params.text,
+      }),
+      signal: controller.signal,
+    }).then((response) => {
+      if (deadline.expired) cancelBody(response);
+      return response;
+    }));
+    if (attempt.kind !== 'resolved') {
+      return { sent: false, provider: 'resend', state: 'delivery_unknown', evidence: attempt.kind === 'deadline' ? 'deadline' : 'provider_exception', error: 'provider_unavailable' };
+    }
+    const response = attempt.value;
+    const body = await readMetadata(response, deadline);
+    // Headers remain acceptance evidence even when optional metadata is unavailable.
+    if (response.ok) {
+      const metadata = await deadline.wait(() => messageIdMetadata(field(body, 'id')));
+      return { sent: true, provider: 'resend', state: 'accepted', evidence: 'http_response', ...(metadata.kind === 'resolved' ? metadata.value : {}) };
+    }
+    return {
+      sent: false, provider: 'resend',
+      state: response.status >= 400 && response.status < 500 && response.status !== 408 ? 'rejected' : 'delivery_unknown',
+      evidence: 'http_response', error: classifyResendError(response.status, body),
+    };
+  } finally {
+    deadline.close();
+  }
+}
 
-  // Cloudflare Email Service structured API supports arbitrary recipients once
-  // the sending domain has completed Email Service onboarding.
+export async function sendEmail(env: Env, params: SendEmailParams): Promise<EmailResult> {
   if (env.SEND_EMAIL) {
+    const deadline = providerDeadline();
+    let attempt;
+    let metadata: { messageIdHash?: string } = {};
     try {
-      const result = await env.SEND_EMAIL.send({
+      attempt = await deadline.wait(() => env.SEND_EMAIL!.send({
         to: params.to,
         from: { email: FROM_EMAIL, name: params.fromName || FROM_NAME },
-        subject: params.subject,
-        html: params.html,
+        subject: params.subject, html: params.html,
         text: params.text || params.html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim(),
         headers: { 'X-Frigo-Kind': 'transactional' },
-      });
-      return { sent: true, provider: 'workers-email', messageId: result.messageId };
-    } catch (error) {
-      workersFailure = classifyWorkersEmailError(error);
-      logDeliveryFailure(env, params, 'workers-email', workersFailure);
-      // fall through to HTTP providers
-    }
-  }
-
-  const from = `${params.fromName || FROM_NAME} <${FROM_EMAIL}>`;
-
-  // 1. Resend (preferred — deliverability, bounce handling, logs)
-  if (env.RESEND_API_KEY) {
-    try {
-      const res = await fetch('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${env.RESEND_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          from,
-          to: [params.to],
-          subject: params.subject,
-          html: params.html,
-          text: params.text,
-        }),
-        // Email send must not hang the request path
-        signal: AbortSignal.timeout(8000),
-      });
-      if (res.ok) {
-        const body = await res.json().catch(() => ({})) as { id?: string };
-        return { sent: true, provider: 'resend', ...(body.id ? { messageId: body.id } : {}) };
+      }));
+      if (attempt.kind === 'resolved') {
+        const value = attempt.value;
+        const result = await deadline.wait(() => messageIdMetadata(field(value, 'messageId')));
+        if (result.kind === 'resolved') metadata = result.value;
       }
-      const error = await classifyResendError(res);
-      logDeliveryFailure(env, params, 'resend', error);
-      return { sent: false, provider: 'resend', error };
-    } catch {
-      const error = 'provider_unavailable';
-      logDeliveryFailure(env, params, 'resend', error);
-      return { sent: false, provider: 'resend', error };
+    } finally {
+      deadline.close();
     }
+    if (attempt.kind === 'resolved') {
+      return { sent: true, provider: 'workers-email', state: 'accepted', evidence: 'native_resolved', ...metadata };
+    }
+    const failure = workersFailure(attempt.kind === 'exception' ? attempt.error : undefined);
+    const result: EmailResult = {
+      sent: false, provider: 'workers-email', state: failure.rejected ? 'rejected' : 'delivery_unknown',
+      evidence: attempt.kind === 'deadline' ? 'deadline' : failure.rejected ? 'native_rejection_code' : 'provider_exception',
+      error: failure.category,
+    };
+    logDeliveryFailure(env, params, result);
+    if (!failure.fallback || !env.RESEND_API_KEY) return result;
   }
-
-  const result: EmailResult = env.SEND_EMAIL
-    ? { sent: false, provider: 'workers-email', error: workersFailure || 'provider_unavailable' }
-    : { sent: false, provider: 'none', error: 'not_configured' };
-  if (!env.SEND_EMAIL) logDeliveryFailure(env, params, result.provider, result.error);
+  const result: EmailResult = env.RESEND_API_KEY
+    ? await sendResend(env, params)
+    : { sent: false, provider: 'none', state: 'not_configured', evidence: 'configuration', error: 'not_configured' };
+  if (!result.sent) logDeliveryFailure(env, params, result);
   return result;
 }
 

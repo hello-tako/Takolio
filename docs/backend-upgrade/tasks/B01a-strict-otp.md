@@ -237,3 +237,31 @@ B01a không kéo dài ticket deadline bằng retry, không clear lock sau một 
 Policy mới đổi từ failed-only sang total admissions: bình thường preliminary + final reset dùng 2 admissions. Năm lần preliminary mới có thể khóa final request thứ 6, dù cả năm đúng. UI phải dùng cùng key cho transport retry để không lãng phí budget; không silently gọi preliminary verify nhiều lần. Ghi thay đổi này trong ADR và UX fixture trước merge.
 
 Các con số bổ sung (ticket 30 giây, key 30 phút/future skew 30 giây, receipt 24 giờ) là đề xuất có lý do về crash/replay/retention, chưa có SLO measurement. Review có thể đổi chúng trước integration; phải cập nhật packet và assertions đồng bộ, không đổi runtime âm thầm.
+
+## 15. Pre-Implementation Review Sau B01b A1
+
+Source review bổ sung: [B01a preflight](../b01b/B01a_PREIMPLEMENTATION_REVIEW.md).
+B01a vẫn ADR_DRAFT, chưa có schema/runtime/client changes. Trước implementation
+phải chốt account-wide request registry: UNIQUE(scope,key) không đủ để bảo đảm
+cùng key đổi purpose/operation trả409. Abuse budget vẫn account+purpose; registry
+unique opaque account HMAC+key chung issuance/verify/reset và purposes.
+
+ADR phải chốt conservative legacy aggregate cả used/superseded retained rows
+(no exact per-failure time), một DB time captured trong winning claim, cleanup
+không cascade xóa budget/outcomes, first-request server epoch bootstrap, context
+version/parser, Retry-After/body metadata, Turnstile receipt replay, guest-deferred
+new payload/key và cookie-loss sessionRequired recovery. Normal reset UI hiện đi
+trực tiếp final reset; không thêm preliminary call để tiêu thêm admission.
+
+Các review inputs là đề xuất cần quyết định/test trong B01a, không thay thế policy
+đã deploy hoặc khẳng định full strict OTP đã triển khai.
+
+### Additional first-ADR gate after independent preflight
+
+The linked B01a pre-implementation review additionally requires an explicit
+unknown-generation recovery rule, known/unknown forgot budget parity during every
+delivery state, non-renewable preliminary-reset proof replay, and non-cascading
+abuse history across cleanup/account recreation. First slice includes a dormant
+real coordinator comparison boundary; repository-only conditional loops are not
+proof that runtime compares only admitted candidates. No B01a runtime is added by
+this packet update.

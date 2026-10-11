@@ -1142,7 +1142,7 @@ describe('final auth hardening adversarial regressions', () => {
     let deliver!: () => void;
     const pending = new Promise<void>((resolve) => { deliver = resolve; });
     vi.mocked(sendEmail).mockClear();
-    vi.mocked(sendEmail).mockImplementationOnce(async () => { await pending; return { sent: true, provider: 'resend' }; });
+    vi.mocked(sendEmail).mockImplementationOnce(async () => { await pending; return { sent: true, provider: 'resend', state: 'accepted', evidence: 'http_response' }; });
     const knownRequest = request('/auth/forgot-password', { body: { email: EMAIL } });
     const unknown = await request('/auth/forgot-password', { body: { email: 'unknown@example.com' } });
     try {
