@@ -167,6 +167,7 @@ describe('Zero-Trust Security & Cryptography Unit Tests', () => {
         email: 'test@example.com',
         code: '123456',
         purpose: 'register',
+        newPassword: 'chosen-password',
       });
       expect(valid.success).toBe(true);
 
@@ -174,6 +175,7 @@ describe('Zero-Trust Security & Cryptography Unit Tests', () => {
         email: 'test@example.com',
         code: '12345', // only 5 digits
         purpose: 'register',
+        newPassword: 'chosen-password',
       });
       expect(invalidCode.success).toBe(false);
 
@@ -181,8 +183,23 @@ describe('Zero-Trust Security & Cryptography Unit Tests', () => {
         email: 'test@example.com',
         code: '12A456',
         purpose: 'register',
+        newPassword: 'chosen-password',
       });
       expect(letterCode.success).toBe(false);
+    });
+
+    it('requires a bounded chosen password for register activation, preserving preliminary reset and transfer fencing', () => {
+      const body = { email: 'test@example.com', code: '123456', purpose: 'register' };
+      expect(VerifyOtpSchema.safeParse(body).success).toBe(false);
+      for (const newPassword of ['short', 'a'.repeat(101)]) {
+        expect(VerifyOtpSchema.safeParse({ ...body, newPassword }).success).toBe(false);
+      }
+      for (const newPassword of ['123456', 'a'.repeat(100)]) {
+        expect(VerifyOtpSchema.safeParse({ ...body, newPassword }).success).toBe(true);
+      }
+      expect(VerifyOtpSchema.safeParse({ ...body, purpose: 'forgot_password' }).success).toBe(true);
+      expect(VerifyOtpSchema.safeParse({ ...body, purpose: 'login' }).success).toBe(true);
+      expect(VerifyOtpSchema.safeParse({ ...body, migrateFromHouseholdId: 'hh_guest_example' }).success).toBe(true);
     });
 
     it('should reject invalid inventory inputs (e.g. negative quantities or empty names)', () => {

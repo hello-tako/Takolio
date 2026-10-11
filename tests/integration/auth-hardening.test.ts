@@ -10,11 +10,12 @@ import { signJwt } from '../../src/worker/utils/jwt';
 import { verifyPassword } from '../../src/worker/utils/password';
 import { hmacSha256Hex, SESSION_COOKIE, sha256Hex } from '../../src/worker/utils/session';
 import { createOtpDigest } from '../../src/worker/utils/otp-digest';
+import * as digests from '../../src/worker/utils/otp-digest';
 import { createBarrier, SqliteD1 } from '../helpers/sqlite-d1';
 
 // The Workers-only cloudflare:email module cannot load in Node; no network mail is sent.
 vi.mock('../../src/worker/services/email', () => ({
-  sendEmail: vi.fn(async () => ({ sent: true, provider: 'test' })),
+  sendEmail: vi.fn(async () => ({ sent: true, provider: 'resend', state: 'accepted', evidence: 'http_response' })),
   buildOtpEmail: (code: string) => ({ subject: 'Test OTP', html: `<p>${code}</p>`, text: code }),
 }));
 
@@ -47,9 +48,9 @@ interface OtpRow {
   digest_version: number;
   expires_at: string;
   used: number;
-  used_at: string | null;
   attempt_count: number;
   locked_until: string | null;
+  state: string;
 }
 
 let fixtureNumber = 0;
@@ -88,18 +89,30 @@ function cookieFrom(response: Response): string {
 }
 
 function otp(purpose = 'register'): OtpRow {
-  return db.query<OtpRow>(
-    'SELECT * FROM auth_otps WHERE email = ? AND purpose = ? ORDER BY rowid DESC LIMIT 1',
-    EMAIL,
-    purpose,
-  )[0];
+  return db.query<OtpRow>(`SELECT i.id, i.expected_digest AS code_digest, i.digest_version,
+      datetime(i.expires_at, 'unixepoch') AS expires_at, i.used,
+      (SELECT COALESCE(SUM(t.weight), 0) FROM auth_otp_tickets t WHERE t.scope_hash = i.scope_hash) AS attempt_count,
+      CASE WHEN s.locked_until > 0 THEN datetime(s.locked_until, 'unixepoch') END AS locked_until, i.state
+    FROM auth_otp_issuances i JOIN auth_otp_scopes s ON s.scope_hash = i.scope_hash
+    JOIN auth_accounts a ON a.id = i.account_id AND a.user_id = i.user_id
+    WHERE a.email = ? AND s.purpose = ? ORDER BY i.generation DESC LIMIT 1`, EMAIL, purpose)[0];
+}
+
+function releaseCooldown(purpose = 'register') {
+  db.execute(`UPDATE auth_otp_scopes SET cooldown_until = unixepoch() WHERE purpose = ?`, [purpose]);
 }
 
 function expectOtpTtl(expiresInMinutes: number, startedAt: number, purpose = 'register') {
-  const expiresAt = Date.parse(otp(purpose).expires_at);
+  const expiresAt = Date.parse(otp(purpose).expires_at.replace(' ', 'T') + 'Z');
   const durationMs = expiresInMinutes * 60 * 1000;
-  expect(expiresAt).toBeGreaterThanOrEqual(startedAt + durationMs);
+  expect(expiresAt).toBeGreaterThanOrEqual(Math.floor(startedAt / 1000) * 1000 + durationMs);
   expect(expiresAt).toBeLessThanOrEqual(Date.now() + durationMs);
+}
+
+function resetPublicBody(value: Record<string, unknown>) {
+  expect(value.otpKeyIssuedAtMs).toEqual(expect.any(Number));
+  expect(value.otpExpiresAtMs).toEqual(expect.any(Number));
+  return Object.fromEntries(Object.entries(value).filter(([key]) => key !== 'otpKeyIssuedAtMs' && key !== 'otpExpiresAtMs'));
 }
 
 function resendCache() {
@@ -137,7 +150,7 @@ async function register() {
 }
 
 async function verify(code: string, purpose = 'register') {
-  return request('/auth/verify-otp', { body: { email: EMAIL, code, purpose } });
+  return request('/auth/verify-otp', { body: { email: EMAIL, code, purpose, ...(purpose === 'register' ? { newPassword: PASSWORD } : {}) } });
 }
 
 async function signup() {
@@ -151,6 +164,7 @@ async function forgotPassword() {
   const result = await request('/auth/forgot-password', { body: { email: EMAIL } });
   expect(result.status, JSON.stringify(result.json)).toBe(200);
   expect(result.json).not.toHaveProperty('devOtp');
+  await Promise.all(scheduled);
   return deliveredCode();
 }
 
@@ -179,8 +193,10 @@ afterEach(async () => {
 });
 
 describe('real SQLite D1 integration harness', () => {
-  it('applies all migrations through 0018 with real constraints and no plaintext OTP column', () => {
+  it('applies the full migration ledger including strict OTP with real constraints and no plaintext OTP column', () => {
     expect(db.migrations).toContain('0018_payments.sql');
+    expect(db.migrations).toHaveLength(40);
+    expect(db.migrations.at(-1)).toBe('0040_strict_otp_foundation.sql');
     const columns = db.query<{ name: string }>('PRAGMA table_info(auth_otps)').map((column) => column.name);
     expect(columns).toEqual(expect.arrayContaining(['code_digest', 'attempt_count', 'used_at', 'locked_until']));
     expect(columns).not.toContain('code');
@@ -333,7 +349,7 @@ describe('cookie authentication and production CSRF', () => {
   it('does not exempt public authentication or logout from production origin checks, even without a cookie', async () => {
     const { cookie } = await signup();
     const initialSessions = sessionCount();
-    const initialOtps = db.query('SELECT * FROM auth_otps');
+    const initialOtps = db.query('SELECT * FROM auth_otp_issuances');
     for (const route of ['login', 'register', 'verify-otp', 'resend-otp', 'forgot-password', 'reset-password', 'google', 'guest', 'logout']) {
       for (const currentCookie of [undefined, cookie]) {
         for (const origin of [null, `${ORIGIN}.attacker.com`, 'https://[broken']) {
@@ -345,7 +361,7 @@ describe('cookie authentication and production CSRF', () => {
       }
     }
     expect(sessionCount()).toBe(initialSessions);
-    expect(db.query('SELECT * FROM auth_otps')).toEqual(initialOtps);
+    expect(db.query('SELECT * FROM auth_otp_issuances')).toEqual(initialOtps);
     expect((await request('/private', { method: 'GET', cookie })).status).toBe(200);
   });
 
@@ -409,11 +425,11 @@ describe('cookie authentication and production CSRF', () => {
       env: stagingEnv,
     });
     expect(registration.status, JSON.stringify(registration.json)).toBe(200);
-    expect(registration.json.devOtp).toMatch(/^\d{6}$/);
+    expect(registration.json).not.toHaveProperty('devOtp');
     const [, init] = outbound.mock.calls[0] as unknown as [string, RequestInit];
     expect((init.body as FormData).get('secret')).toBe('1x0000000000000000000000000000000AA');
     const verified = await request('/auth/verify-otp', {
-      body: { email: EMAIL, code: registration.json.devOtp, purpose: 'register' },
+      body: { email: EMAIL, code: deliveredCode(), purpose: 'register', newPassword: PASSWORD },
       env: stagingEnv,
     });
     expect(verified.status, JSON.stringify(verified.json)).toBe(200);
@@ -423,11 +439,12 @@ describe('cookie authentication and production CSRF', () => {
 
   it('does not require another Turnstile challenge for login, password recovery, or OTP resend', async () => {
     const registration = await register();
+    releaseCooldown();
     vi.mocked(fetch).mockClear();
 
     const resend = await request('/auth/resend-otp', {
       withoutTurnstile: true,
-      body: { email: EMAIL, purpose: 'register' },
+      body: { email: EMAIL, purpose: 'register', newPassword: PASSWORD },
     });
     expect(resend.status).toBe(200);
 
@@ -620,24 +637,46 @@ describe('D1-authoritative OTP verification', () => {
     });
     expect(result.status).toBe(200);
     expect(result.json.expiresInMinutes).toBe(10);
-    expect(Object.keys(result.json).sort()).toEqual(['email', 'expiresInMinutes', 'message', 'success']);
+    expect(result.json.retryAfterSeconds).toBe(60);
+    expect(Object.keys(result.json).sort()).toEqual(['accountCreated', 'deliveryState', 'email', 'expiresInMinutes', 'message', 'otpDelivered', 'otpExpiresAtMs', 'otpKeyIssuedAtMs', 'replayed', 'retryAfterSeconds', 'success']);
     expectOtpTtl(result.json.expiresInMinutes, startedAt);
+  });
+
+  it('reports the remaining cooldown on same-key issuance replay without resending', async () => {
+    const requestKey = `${Date.now()}:${crypto.randomUUID().replace(/-/g, '')}`;
+    const body = { name: 'Auth Test', email: EMAIL, password: PASSWORD };
+    const initial = await request('/auth/register', { body, headers: { 'Idempotency-Key': requestKey } });
+    expect(initial.status).toBe(200);
+    expect(initial.json.retryAfterSeconds).toBe(60);
+    const issuanceId = otp().id;
+    db.execute('UPDATE auth_otp_issuances SET created_at = created_at - 20, expires_at = expires_at - 20 WHERE id = ?', [issuanceId]);
+    db.execute('UPDATE auth_otp_requests SET created_at = created_at - 20 WHERE issuance_id = ?', [issuanceId]);
+    db.execute('UPDATE auth_otp_scopes SET cooldown_until = cooldown_until - 20 WHERE current_issuance_id = ?', [issuanceId]);
+    const replay = await request('/auth/register', { body, headers: { 'Idempotency-Key': requestKey } });
+    expect(replay.status).toBe(200);
+    expect(replay.json).toMatchObject({ replayed: true, otpDelivered: true, deliveryState: 'accepted' });
+    expect(replay.json.otpExpiresAtMs).toBe(initial.json.otpExpiresAtMs - 20_000);
+    expect(replay.json.retryAfterSeconds).toBeGreaterThanOrEqual(39);
+    expect(replay.json.retryAfterSeconds).toBeLessThanOrEqual(40);
+    expect(sendEmail).toHaveBeenCalledTimes(1);
+    expect(db.query('SELECT COUNT(*) AS count FROM auth_otp_issuances')).toEqual([{ count: 1 }]);
   });
 
   it('returns authoritative expiry for register resend and preserves replacement semantics', async () => {
     const initial = await register();
     const oldOtpId = otp().id;
+    releaseCooldown();
     nextOtpDiffersFrom(initial.code);
     const startedAt = Date.now();
     const resend = await request('/auth/resend-otp', {
       body: { email: EMAIL, purpose: 'register', expiresInMinutes: 1 },
     });
     expect(resend.status).toBe(200);
-    expect(resend.json).toMatchObject({ success: true, expiresInMinutes: 10 });
-    expect(Object.keys(resend.json).sort()).toEqual(['expiresInMinutes', 'message', 'success']);
+    expect(resend.json).toMatchObject({ success: true, expiresInMinutes: 10, retryAfterSeconds: 60 });
+    expect(Object.keys(resend.json).sort()).toEqual(['deliveryState', 'email', 'expiresInMinutes', 'message', 'otpDelivered', 'otpExpiresAtMs', 'otpKeyIssuedAtMs', 'replayed', 'retryAfterSeconds', 'success']);
     expectOtpTtl(resend.json.expiresInMinutes, startedAt);
     expect(otp().id).not.toBe(oldOtpId);
-    expect(db.query<{ used: number }>('SELECT used FROM auth_otps WHERE id = ?', oldOtpId)[0].used).toBe(1);
+    expect(db.query<{ state: string }>('SELECT state FROM auth_otp_issuances WHERE id = ?', oldOtpId)[0].state).toBe('superseded');
     expect(otp().used).toBe(0);
 
     expect((await verify(initial.code)).status).toBe(400);
@@ -652,8 +691,8 @@ describe('D1-authoritative OTP verification', () => {
       body: { email: EMAIL, purpose: 'login', expiresInMinutes: 1 },
     });
     expect(resend.status).toBe(200);
-    expect(resend.json).toMatchObject({ success: true, expiresInMinutes: 10 });
-    expect(Object.keys(resend.json).sort()).toEqual(['expiresInMinutes', 'message', 'success']);
+    expect(resend.json).toMatchObject({ success: true, expiresInMinutes: 10, retryAfterSeconds: 60 });
+    expect(Object.keys(resend.json).sort()).toEqual(['deliveryState', 'email', 'expiresInMinutes', 'message', 'otpDelivered', 'otpExpiresAtMs', 'otpKeyIssuedAtMs', 'replayed', 'retryAfterSeconds', 'success']);
     expectOtpTtl(resend.json.expiresInMinutes, startedAt, 'login');
     const loginCode = deliveredCode();
     expect((await verify(loginCode, 'login')).status).toBe(200);
@@ -669,6 +708,8 @@ describe('D1-authoritative OTP verification', () => {
     expectOtpTtl(initial.json.expiresInMinutes, initialStartedAt, 'forgot_password');
     const oldCode = deliveredCode();
     const oldOtpId = otp('forgot_password').id;
+    await Promise.all(scheduled);
+    releaseCooldown('forgot_password');
     nextOtpDiffersFrom(oldCode);
 
     const resendStartedAt = Date.now();
@@ -679,7 +720,8 @@ describe('D1-authoritative OTP verification', () => {
     expect(resend.json).toMatchObject({ success: true, expiresInMinutes: 10 });
     expectOtpTtl(resend.json.expiresInMinutes, resendStartedAt, 'forgot_password');
     expect(otp('forgot_password').id).not.toBe(oldOtpId);
-    expect(db.query<{ used: number }>('SELECT used FROM auth_otps WHERE id = ?', oldOtpId)[0].used).toBe(1);
+    expect(db.query<{ state: string }>('SELECT state FROM auth_otp_issuances WHERE id = ?', oldOtpId)[0].state).toBe('superseded');
+    await Promise.all(scheduled);
     const replacement = deliveredCode();
     expect((await verify(oldCode, 'forgot_password')).status).toBe(400);
     expect((await verify(replacement, 'forgot_password')).status).toBe(200);
@@ -709,13 +751,13 @@ describe('D1-authoritative OTP verification', () => {
 
     const verified = await request('/auth/verify-otp', {
       env: { ENVIRONMENT: 'development' },
-      body: { email: EMAIL, code: result.json.devOtp, purpose: 'register' },
+      body: { email: EMAIL, code: result.json.devOtp, purpose: 'register', newPassword: PASSWORD },
     });
     expect(verified.status).toBe(200);
   });
 
   it('fails registration honestly and invalidates the challenge when no provider accepts the OTP', async () => {
-    vi.mocked(sendEmail).mockResolvedValueOnce({ sent: false, provider: 'workers-email', error: 'sender_not_verified' } as any);
+    vi.mocked(sendEmail).mockResolvedValueOnce({ sent: false, provider: 'workers-email', state: 'rejected', evidence: 'native_rejection_code', error: 'sender_not_verified' } as any);
     const result = await request('/auth/register', {
       body: { name: 'Auth Test', email: EMAIL, password: PASSWORD },
     });
@@ -726,16 +768,17 @@ describe('D1-authoritative OTP verification', () => {
       accountCreated: true,
       email: EMAIL,
     });
-    expect(result.json.message).not.toContain('đã gửi');
+    expect(result.json.error).not.toContain('đã gửi');
     expect(result.json).not.toHaveProperty('devOtp');
     expect(result.response.headers.get('Set-Cookie')).toBeNull();
-    expect(otp().used).toBe(1);
+    expect(otp().state).toBe('rejected');
+    expect(otp().used).toBe(0);
     expect(db.query('SELECT is_verified FROM auth_accounts WHERE email = ?', EMAIL)[0].is_verified).toBe(0);
-    expect((await verify(deliveredCode())).status).toBe(400);
+    expect((await verify(deliveredCode())).status).toBe(503);
   });
 
   it('keeps a registration OTP usable when the secondary provider accepts delivery', async () => {
-    vi.mocked(sendEmail).mockResolvedValueOnce({ sent: true, provider: 'resend', messageId: 'fallback-message' } as any);
+    vi.mocked(sendEmail).mockResolvedValueOnce({ sent: true, provider: 'resend', state: 'accepted', evidence: 'http_response' } as any);
     const registration = await request('/auth/register', {
       body: { name: 'Auth Test', email: EMAIL, password: PASSWORD },
     });
@@ -751,17 +794,18 @@ describe('D1-authoritative OTP verification', () => {
   });
 
   it('recovers from initial registration delivery failure through a secured resend', async () => {
-    vi.mocked(sendEmail).mockResolvedValueOnce({ sent: false, provider: 'workers-email', error: 'provider_unavailable' } as any);
+    vi.mocked(sendEmail).mockResolvedValueOnce({ sent: false, provider: 'workers-email', state: 'rejected', evidence: 'native_rejection_code', error: 'provider_unavailable' } as any);
     const initial = await request('/auth/register', {
       body: { name: 'Auth Test', email: EMAIL, password: PASSWORD },
     });
     expect(initial.status).toBe(503);
     const failedCode = deliveredCode();
-    expect(otp().used).toBe(1);
+    expect(otp().state).toBe('rejected');
+    releaseCooldown();
 
     nextOtpDiffersFrom(failedCode);
     const resend = await request('/auth/resend-otp', {
-      body: { email: EMAIL, purpose: 'register' },
+      body: { email: EMAIL, purpose: 'register', newPassword: PASSWORD },
     });
     expect(resend.status).toBe(200);
     expect(resend.json).toMatchObject({ success: true, expiresInMinutes: 10 });
@@ -775,15 +819,20 @@ describe('D1-authoritative OTP verification', () => {
     await register();
     const cache = resendCache();
     env.CACHE = cache as unknown as Env['CACHE'];
-    vi.mocked(sendEmail).mockResolvedValueOnce({ sent: false, provider: 'workers-email', error: 'provider_unavailable' } as any);
-    const result = await request('/auth/resend-otp', { body: { email: EMAIL, purpose: 'register' } });
+    releaseCooldown();
+    vi.mocked(sendEmail).mockResolvedValueOnce({ sent: false, provider: 'workers-email', state: 'rejected', evidence: 'native_rejection_code', error: 'provider_unavailable' } as any);
+    const result = await request('/auth/resend-otp', { body: { email: EMAIL, purpose: 'register', newPassword: PASSWORD } });
     expect(result.status).toBe(503);
     expect(result.json).toMatchObject({ success: false, code: 'OTP_DELIVERY_UNAVAILABLE' });
-    expect(result.json.message).not.toContain('Đã gửi');
-    expect(result.json).not.toHaveProperty('expiresInMinutes');
-    expect(otp().used).toBe(1);
-    expect(cache.delete).toHaveBeenCalledWith(`otp_resend_${EMAIL}_register`);
-    const retry = await request('/auth/resend-otp', { body: { email: EMAIL, purpose: 'register' } });
+    expect(result.json.error).not.toContain('Đã gửi');
+    expect(result.json.expiresInMinutes).toBe(10);
+    expect(otp().state).toBe('rejected');
+    expect(otp().used).toBe(0);
+    expect(cache.delete).not.toHaveBeenCalled();
+    const blockedRetry = await request('/auth/resend-otp', { body: { email: EMAIL, purpose: 'register', newPassword: PASSWORD } });
+    expect(blockedRetry.status).toBe(429);
+    releaseCooldown();
+    const retry = await request('/auth/resend-otp', { body: { email: EMAIL, purpose: 'register', newPassword: PASSWORD } });
     expect(retry.status).toBe(200);
     expect(retry.json.expiresInMinutes).toBe(10);
   });
@@ -792,17 +841,18 @@ describe('D1-authoritative OTP verification', () => {
     await register();
     const cache = resendCache();
     env.CACHE = cache as unknown as Env['CACHE'];
+    releaseCooldown();
     const body = { email: `  ${EMAIL.toUpperCase()}  `, purpose };
     expect((await request('/auth/resend-otp', { body })).status).toBe(200);
-    const before = db.query('SELECT * FROM auth_otps');
+    const before = db.query('SELECT * FROM auth_otp_issuances');
     const mailCount = vi.mocked(sendEmail).mock.calls.length;
     const blocked = await request('/auth/resend-otp', { body });
     expect(blocked.status).toBe(429);
-    expect(blocked.response.headers.get('Retry-After')).toBe('60');
-    expect(blocked.json.retryAfterSeconds).toBe(60);
+    expect(Number(blocked.response.headers.get('Retry-After'))).toBeGreaterThan(0);
+    expect(blocked.json.retryAfterSeconds).toBe(Number(blocked.response.headers.get('Retry-After')));
     expect(blocked.json).not.toHaveProperty('expiresInMinutes');
-    expect(cache.put).toHaveBeenCalledWith(`otp_resend_${EMAIL}_${purpose}`, '1', { expirationTtl: 60 });
-    expect(db.query('SELECT * FROM auth_otps')).toEqual(before);
+    expect(cache.put.mock.calls.some(([key]) => key.startsWith('otp_resend_'))).toBe(false);
+    expect(db.query('SELECT * FROM auth_otp_issuances')).toEqual(before);
     expect(sendEmail).toHaveBeenCalledTimes(mailCount);
   });
 
@@ -813,29 +863,31 @@ describe('D1-authoritative OTP verification', () => {
       count: 15, resetTime: Math.floor(Date.now() / 1000) + 60,
     }));
     env.CACHE = cache as unknown as Env['CACHE'];
-    const before = db.query('SELECT * FROM auth_otps');
-    const blocked = await request('/auth/resend-otp', { body: { email: EMAIL, purpose: 'register' } });
+    const before = db.query('SELECT * FROM auth_otp_issuances');
+    const blocked = await request('/auth/resend-otp', { body: { email: EMAIL, purpose: 'register', newPassword: PASSWORD } });
     expect(blocked.status).toBe(429);
     expect(blocked.json.code).toBe('RATE_LIMIT_EXCEEDED');
     expect(Number(blocked.response.headers.get('Retry-After'))).toBeGreaterThan(0);
     expect(blocked.json).not.toHaveProperty('expiresInMinutes');
-    expect(db.query('SELECT * FROM auth_otps')).toEqual(before);
+    expect(db.query('SELECT * FROM auth_otp_issuances')).toEqual(before);
     expect(sendEmail).toHaveBeenCalledTimes(1);
   });
 
   it.each(['register', 'forgot_password'])('replaces a %s OTP without another Turnstile challenge', async (purpose) => {
     await register();
-    const before = db.query('SELECT * FROM auth_otps');
+    releaseCooldown();
+    const before = db.query('SELECT * FROM auth_otp_issuances');
     const result = await request('/auth/resend-otp', {
       body: { email: EMAIL, purpose }, withoutTurnstile: true,
     });
     expect(result.status).toBe(200);
     expect(result.json.expiresInMinutes).toBe(10);
-    expect(db.query('SELECT * FROM auth_otps')).not.toEqual(before);
+    expect(db.query('SELECT * FROM auth_otp_issuances')).not.toEqual(before);
+    await Promise.all(scheduled);
     expect(sendEmail).toHaveBeenCalledTimes(2);
   });
 
-  it.each(['register', 'login'])('does not issue or email a %s OTP for an unknown account', async (purpose) => {
+  it.each(['register', 'login'])('reserves synthetic %s authority without emailing an unknown account', async (purpose) => {
     vi.mocked(sendEmail).mockClear();
     const result = await request('/auth/resend-otp', {
       withoutTurnstile: true,
@@ -843,9 +895,8 @@ describe('D1-authoritative OTP verification', () => {
     });
     expect(result.status).toBe(200);
     expect(result.json).toEqual({
-      success: true,
-      message: 'Nếu tài khoản đang chờ xác thực, mã OTP mới sẽ được gửi.',
-      expiresInMinutes: 10,
+      success: true, message: 'Nếu tài khoản đang chờ xác thực, mã OTP mới sẽ được gửi.', expiresInMinutes: 10,
+      otpDelivered: false, deliveryState: 'pending', otpKeyIssuedAtMs: expect.any(Number), otpExpiresAtMs: expect.any(Number), retryAfterSeconds: 60,
     });
     expect(sendEmail).not.toHaveBeenCalled();
     expect(db.query('SELECT * FROM auth_otps WHERE email = ?', 'unknown@example.com')).toEqual([]);
@@ -853,16 +904,21 @@ describe('D1-authoritative OTP verification', () => {
 
   it('keeps resend available when the optional KV cooldown store is unavailable', async () => {
     await register();
-    const log = vi.spyOn(console, 'error').mockImplementation(() => {});
+    vi.spyOn(console, 'warn').mockImplementation(() => {});
     env.CACHE = {
       get: vi.fn(async () => { throw new Error('KV unavailable'); }),
       put: vi.fn(),
       delete: vi.fn(),
     } as unknown as Env['CACHE'];
-    const result = await request('/auth/resend-otp', { body: { email: EMAIL, purpose: 'register' } });
+    releaseCooldown();
+    const result = await request('/auth/resend-otp', { body: { email: EMAIL, purpose: 'register', newPassword: PASSWORD } });
     expect(result.status).toBe(200);
     expect(result.json.success).toBe(true);
-    expect(log).toHaveBeenCalledWith(JSON.stringify({ event: 'otp_resend_cooldown_unavailable' }));
+    expect(env.CACHE?.get).toHaveBeenCalled();
+    expect(db.query("SELECT cooldown_until > unixepoch() AS protected FROM auth_otp_scopes WHERE purpose='register'")).toEqual([{ protected: 1 }]);
+    const blocked = await request('/auth/resend-otp', { body: { email: EMAIL, purpose: 'register', newPassword: PASSWORD } });
+    expect(blocked.status).toBe(429);
+    expect(sendEmail).toHaveBeenCalledTimes(2);
   });
 
   it('stores contextual v2 HMAC only and consumes a correct registration OTP exactly once', async () => {
@@ -875,7 +931,7 @@ describe('D1-authoritative OTP verification', () => {
     expect(first.status).toBe(200);
     cookieFrom(first.response);
     expect(otp().used).toBe(1);
-    expect(otp().used_at).not.toBeNull();
+    expect(db.query("SELECT status FROM auth_otp_requests WHERE operation='register_verify'")[0].status).toBe('completed');
     expect(db.query('SELECT is_verified FROM auth_accounts WHERE email = ?', EMAIL)[0].is_verified).toBe(1);
     const second = await verify(code);
     expect(second.status).toBe(400);
@@ -915,8 +971,8 @@ describe('D1-authoritative OTP verification', () => {
   it('allows one concurrent registration consume even when both requests read the unused challenge', async () => {
     const { code } = await register();
     const readers = createBarrier(2);
-    db.hooks.afterStatement = (event) => {
-      if (event.method === 'first' && /FROM auth_otps\s+WHERE email/.test(event.sql)) return readers.wait();
+    db.hooks.beforeBatch = (statements) => {
+      if (statements[0].sql.includes("'reserve'")) return readers.wait();
     };
     const results = await Promise.all([verify(code), verify(code)]);
     expect(readers.arrivals).toBe(2);
@@ -933,10 +989,10 @@ describe('D1-authoritative OTP verification', () => {
     const wrong = code === '111111' ? '222222' : '111111';
     for (let attempt = 1; attempt <= 6; attempt += 1) {
       const result = await request('/auth/verify-otp', {
-        body: { email: EMAIL, code: wrong, purpose: 'register' },
+        body: { email: EMAIL, code: wrong, purpose: 'register', newPassword: PASSWORD },
         headers: { 'CF-Connecting-IP': `203.0.${fixtureNumber}.${attempt}` },
       });
-      expect(result.status).toBe(attempt < 5 ? 400 : 429);
+      expect(result.status).toBe(attempt <= 5 ? 400 : 429);
       expect(result.response.headers.get('Set-Cookie')).toBeNull();
       expect(otp().attempt_count).toBe(Math.min(attempt, 5));
     }
@@ -947,44 +1003,43 @@ describe('D1-authoritative OTP verification', () => {
     expect(sessionCount()).toBe(0);
   });
 
-  it('caps concurrent wrong attempts in D1 after every request read the same initial count', async () => {
+  it('caps concurrent admissions and actual comparisons before any contender can spend a sixth candidate', async () => {
     const { code } = await register();
     const readers = createBarrier(6);
-    db.hooks.afterStatement = (event) => {
-      if (event.method === 'first' && /FROM auth_otps\s+WHERE email/.test(event.sql)) return readers.wait();
+    const compared = vi.spyOn(digests, 'verifyOtpDigest');
+    db.hooks.beforeBatch = (statements) => {
+      if (statements[0].sql.includes("'reserve'")) return readers.wait();
     };
     const results = await Promise.all(Array.from({ length: 6 }, () => verify(code === '111111' ? '222222' : '111111')));
     expect(readers.arrivals).toBe(6);
     expect(results.every((result) => [400, 429].includes(result.status))).toBe(true);
     expect(otp().attempt_count).toBe(5);
+    expect(compared).toHaveBeenCalledTimes(5);
     expect(otp().locked_until).not.toBeNull();
     expect(sessionCount()).toBe(0);
   });
 
   it.each([
-    ['expiry', "expires_at = datetime('now')"],
-    ['attempt exhaustion', 'attempt_count = 5'],
-    ['active lock', "locked_until = datetime('now', '+15 minutes')"],
+    ['expiry', "UPDATE auth_otp_issuances SET created_at = unixepoch()-600, expires_at = unixepoch()"],
+    ['superseded generation', 'UPDATE auth_otp_scopes SET generation = generation + 1'],
+    ['consumed challenge', 'UPDATE auth_otp_issuances SET used = 1'],
   ])('rechecks %s atomically at consume rather than trusting the earlier read', async (_name, update) => {
     const { code } = await register();
     const consume = vi.fn();
-    db.hooks.beforeStatement = (event) => {
-      if (event.method === 'run' && /UPDATE auth_otps SET used = 1/.test(event.sql)) {
-        consume();
-        db.seed(`UPDATE auth_otps SET ${update}`);
-      }
+    db.hooks.beforeBatch = (statements) => {
+      if (statements[0].sql.includes("'finalize'")) { consume(); db.seed(update); }
     };
     const result = await verify(code);
     expect(consume).toHaveBeenCalledOnce();
     expect(result.status).toBe(400);
-    expect(otp().used).toBe(0);
+    expect(otp().used).toBe(_name === 'consumed challenge' ? 1 : 0);
     expect(sessionCount()).toBe(0);
     expect(db.query('SELECT is_verified FROM auth_accounts WHERE email = ?', EMAIL)[0].is_verified).toBe(0);
   });
 
-  it('rejects an expired ISO timestamp challenge without issuing a session', async () => {
+  it('rejects an expired database-epoch challenge without issuing a session', async () => {
     const { code } = await register();
-    await db.prepare('UPDATE auth_otps SET expires_at = ?').bind(new Date(Date.now() - 60_000).toISOString()).run();
+    await db.prepare('UPDATE auth_otp_issuances SET created_at = ?, expires_at = ?').bind(Math.floor(Date.now() / 1000) - 660, Math.floor(Date.now() / 1000) - 60).run();
     expect((await verify(code)).status).toBe(400);
     expect(otp().used).toBe(0);
     expect(sessionCount()).toBe(0);
@@ -993,7 +1048,7 @@ describe('D1-authoritative OTP verification', () => {
   it('fails closed if OTP protection is not configured instead of accepting plaintext or bypassing verification', async () => {
     const { code } = await register();
     const result = await request('/auth/verify-otp', {
-      body: { email: EMAIL, code, purpose: 'register' }, env: { OTP_HASH_SECRET: undefined },
+      body: { email: EMAIL, code, purpose: 'register', newPassword: PASSWORD }, env: { OTP_HASH_SECRET: undefined },
     });
     expect(result.status).toBe(503);
     expect(result.json.code).toBe('OTP_PROTECTION_UNAVAILABLE');
@@ -1017,8 +1072,8 @@ describe('D1-authoritative OTP verification', () => {
       expect(access.json.code).toBe('TOKEN_TYPE_INVALID');
     }
     const readers = createBarrier(2);
-    db.hooks.afterStatement = (event) => {
-      if (event.method === 'first' && /FROM auth_otps\s+WHERE email/.test(event.sql)) return readers.wait();
+    db.hooks.beforeBatch = (statements) => {
+      if (statements[0].sql.includes("'reserve'")) return readers.wait();
     };
     const passwords = ['reset-winner-or-loser-A', 'reset-winner-or-loser-B'];
     const results = await Promise.all(passwords.map((newPassword) => request('/auth/reset-password', {
@@ -1031,7 +1086,7 @@ describe('D1-authoritative OTP verification', () => {
     expect(await verifyPassword(passwords[winner], account.salt, account.password_hash)).toBe(true);
     expect(await verifyPassword(passwords[1 - winner], account.salt, account.password_hash)).toBe(false);
     expect(otp('forgot_password').used).toBe(1);
-    expect(otp('forgot_password').used_at).not.toBeNull();
+    expect(db.query("SELECT status FROM auth_otp_requests WHERE operation='reset_final' AND status='completed'")).toHaveLength(1);
     expect(sessionCount()).toBe(2);
     expect(db.query('SELECT * FROM sessions_v2 WHERE revoked_at IS NULL')).toHaveLength(1);
     expect((await request('/private', { method: 'GET', cookie: original.cookie })).status).toBe(401);
@@ -1044,25 +1099,25 @@ describe('D1-authoritative OTP verification', () => {
   });
 
   it.each([
-    ['expiry', "expires_at = datetime('now')"],
-    ['attempt exhaustion', 'attempt_count = 5'],
-    ['active lock', "locked_until = datetime('now', '+15 minutes')"],
+    ['expiry', "UPDATE auth_otp_issuances SET created_at = unixepoch()-600, expires_at = unixepoch()"],
+    ['superseded generation', 'UPDATE auth_otp_scopes SET generation = generation + 1'],
+    ['consumed challenge', 'UPDATE auth_otp_issuances SET used = 1'],
   ])('rejects a final reset that loses the %s race without changing the password or revoking sessions', async (_name, update) => {
     const original = await signup();
     const code = await forgotPassword();
     const accountBefore = db.query('SELECT password_hash, salt FROM auth_accounts WHERE email = ?', EMAIL);
     const invalidate = vi.fn(() => {
-      db.seed(`UPDATE auth_otps SET ${update} WHERE purpose = 'forgot_password'`);
+      db.seed(update);
     });
-    db.hooks.beforeStatement = (event) => {
-      if (event.method === 'run' && /UPDATE auth_otps SET used = 1/.test(event.sql)) invalidate();
+    db.hooks.beforeBatch = (statements) => {
+      if (statements[0].sql.includes("'finalize'")) invalidate();
     };
     const result = await request('/auth/reset-password', { body: { email: EMAIL, code, newPassword: 'must-not-be-applied' } });
     expect(invalidate).toHaveBeenCalledOnce();
     expect(result.status).toBe(400);
     expect(result.response.headers.get('Set-Cookie')).toBeNull();
     expect(db.query('SELECT password_hash, salt FROM auth_accounts WHERE email = ?', EMAIL)).toEqual(accountBefore);
-    expect(otp('forgot_password').used).toBe(0);
+    expect(otp('forgot_password').used).toBe(_name === 'consumed challenge' ? 1 : 0);
     expect(sessionCount()).toBe(1);
     expect((await request('/private', { method: 'GET', cookie: original.cookie })).status).toBe(200);
   });
@@ -1082,7 +1137,7 @@ describe('D1-authoritative OTP verification', () => {
         },
         headers: { 'CF-Connecting-IP': `203.0.${fixtureNumber}.${attempt}` },
       });
-      expect(result.status).toBe(attempt < 5 ? 400 : 429);
+      expect(result.status).toBe(attempt <= 5 ? 400 : 429);
       expect(otp('forgot_password').attempt_count).toBe(attempt);
       expect(result.response.headers.get('Set-Cookie')).toBeNull();
     }
@@ -1091,7 +1146,7 @@ describe('D1-authoritative OTP verification', () => {
       body: { email: EMAIL, code, newPassword: 'must-not-be-applied' },
     });
     expect(blocked.status).toBe(429);
-    expect(blocked.response.headers.get('Retry-After')).toBe('900');
+    expect(Number(blocked.response.headers.get('Retry-After'))).toBeGreaterThanOrEqual(899);
     expect(blocked.response.headers.get('Set-Cookie')).toBeNull();
     expect(otp('forgot_password').used).toBe(0);
     expect(otp('forgot_password').locked_until).not.toBeNull();
@@ -1109,7 +1164,7 @@ describe('D1-authoritative OTP verification', () => {
     const result = await request('/auth/reset-password', {
       body: { email: EMAIL, code, newPassword: 'must-not-be-applied' },
     });
-    expect(result.status).toBe(500);
+    expect(result.status).toBe(503);
     expect(result.json.success).not.toBe(true);
     expect(result.response.headers.get('Set-Cookie')).toBeNull();
     expect(db.query('SELECT password_hash, salt FROM auth_accounts WHERE email = ?', EMAIL)).toEqual(accountBefore);
@@ -1126,11 +1181,13 @@ describe('final auth hardening adversarial regressions', () => {
       .mockImplementationOnce((array: any) => { array.fill(1); return array; })
       .mockImplementationOnce((array: any) => { array.fill(2); return array; });
     const codeA = await forgotPassword();
+    releaseCooldown('forgot_password');
     const resend = await request('/auth/resend-otp', { body: { email: EMAIL, purpose: 'forgot_password' } });
     expect(resend.status).toBe(200);
+    await Promise.all(scheduled);
     const codeB = deliveredCode();
     expect(codeB).not.toBe(codeA);
-    expect(db.query("SELECT * FROM auth_otps WHERE email = ? AND purpose = 'forgot_password' AND used = 0", EMAIL)).toHaveLength(1);
+    expect(db.query("SELECT i.id FROM auth_otp_issuances i JOIN auth_otp_scopes s ON s.current_issuance_id=i.id WHERE s.purpose='forgot_password' AND i.used=0 AND i.state='accepted'")).toHaveLength(1);
     expect((await verify(codeA, 'forgot_password')).status).toBe(400);
     const reset = (code: string) => request('/auth/reset-password', { body: { email: EMAIL, code, newPassword: 'replacement-password-strong' } });
     expect((await reset(codeB)).status).toBe(200);
@@ -1149,9 +1206,9 @@ describe('final auth hardening adversarial regressions', () => {
       const known = await Promise.race([knownRequest, new Promise<null>((resolve) => setTimeout(() => resolve(null), 100))]);
       expect(known, 'response must not await the email provider').not.toBeNull();
       expect(known!.status).toBe(unknown.status);
-      expect(known!.json).toEqual(unknown.json);
+      expect(resetPublicBody(known!.json)).toEqual(resetPublicBody(unknown.json));
       expect(sendEmail).toHaveBeenCalledTimes(1);
-      expect(scheduled).toHaveLength(1);
+      expect(scheduled).toHaveLength(2);
     } finally { deliver(); await knownRequest; }
   });
 
@@ -1164,11 +1221,10 @@ describe('final auth hardening adversarial regressions', () => {
     const unknown = await request(route, { body: { email: 'nobody@example.com', purpose: 'forgot_password' } });
     expect(known.status).toBe(200);
     expect(unknown.status).toBe(known.status);
-    expect(unknown.json).toEqual(known.json);
+    expect(resetPublicBody(unknown.json)).toEqual(resetPublicBody(known.json));
     expect(known.json).toEqual({
-      success: true,
-      message: expect.stringContaining('Nếu email này có tài khoản Frigo'),
-      expiresInMinutes: 10,
+      success: true, message: expect.stringContaining('Nếu email này có tài khoản Frigo'), expiresInMinutes: 10,
+      otpDelivered: false, deliveryState: 'pending', otpKeyIssuedAtMs: expect.any(Number), otpExpiresAtMs: expect.any(Number), retryAfterSeconds: 60,
     });
     expect(sendEmail).toHaveBeenCalledTimes(1);
     expect(db.query('SELECT * FROM auth_otps WHERE email = ?', 'nobody@example.com')).toEqual([]);
@@ -1183,15 +1239,16 @@ describe('final auth hardening adversarial regressions', () => {
     const unknown = await request('/auth/forgot-password', { body: { email: 'nobody@example.com' } });
     await Promise.all(scheduled);
     expect(known.status).toBe(200);
-    expect(known.json).toEqual(unknown.json);
-    expect(otp('forgot_password').used).toBe(1);
+    expect(resetPublicBody(known.json)).toEqual(resetPublicBody(unknown.json));
+    expect(otp('forgot_password').state).toBe('delivery_unknown');
+    expect(otp('forgot_password').used).toBe(0);
     expect(JSON.stringify(log.mock.calls)).not.toContain(sensitive);
     expect(JSON.stringify(log.mock.calls)).not.toContain(EMAIL);
   });
 
-  it('still verifies outstanding v1 challenges without issuing new v1 digests', async () => {
+  it('still verifies accepted strict v1 challenge digests without issuing new v1 digests', async () => {
     const { code } = await register();
-    await db.prepare('UPDATE auth_otps SET code_digest = ?, digest_version = 1 WHERE id = ?').bind(await hmacSha256Hex(code, OTP_SECRET), otp().id).run();
+    await db.prepare('UPDATE auth_otp_issuances SET expected_digest = ?, digest_version = 1 WHERE id = ?').bind(await hmacSha256Hex(code, OTP_SECRET), otp().id).run();
     expect((await verify(code)).status).toBe(200);
     expect((await verify(code)).status).toBe(400);
   });
@@ -1200,7 +1257,8 @@ describe('final auth hardening adversarial regressions', () => {
     const { code } = await register();
     const digest = await createOtpDigest(context === 'email' ? 'other@example.com' : EMAIL,
       context === 'purpose' ? 'forgot_password' : 'register', code, OTP_SECRET);
-    await db.prepare('UPDATE auth_otps SET code_digest = ?, digest_version = ? WHERE id = ?').bind(digest, context === 'version' ? 99 : 2, otp().id).run();
+    await db.prepare('UPDATE auth_otp_issuances SET expected_digest = ?, digest_version = ? WHERE id = ?').bind(digest, 2, otp().id).run();
+    if (context === 'version') db.seed("UPDATE auth_otp_issuances SET digest_version=1;");
     const result = await verify(code);
     expect(result.status).toBe(400);
     expect(otp().attempt_count).toBe(1);

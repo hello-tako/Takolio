@@ -1,5 +1,5 @@
 import React, { useEffect, useId, useState } from 'react';
-import { AlertCircle, CheckCircle2, RefreshCw } from 'lucide-react';
+import { AlertCircle, CheckCircle2, Eye, EyeOff, RefreshCw } from 'lucide-react';
 import { Button } from '../../components/common/Button';
 
 interface OtpModeProps {
@@ -10,6 +10,10 @@ interface OtpModeProps {
   onOtpPaste: (e: React.ClipboardEvent<HTMLInputElement>) => void;
   transferDeferred: boolean;
   otpPurpose: 'register' | 'forgot_password';
+  activationPassword: string;
+  onActivationPasswordChange: (value: string) => void;
+  showPassword: boolean;
+  onToggleShowPassword: () => void;
   onContinueWithoutTransfer: () => void;
   onSubmitVerify: (e: React.FormEvent) => void;
   isLoading: boolean;
@@ -32,6 +36,10 @@ export const OtpMode: React.FC<OtpModeProps> = ({
   onOtpPaste,
   transferDeferred,
   otpPurpose,
+  activationPassword,
+  onActivationPasswordChange,
+  showPassword,
+  onToggleShowPassword,
   onContinueWithoutTransfer,
   onSubmitVerify,
   isLoading,
@@ -44,6 +52,8 @@ export const OtpMode: React.FC<OtpModeProps> = ({
   successMessage,
 }) => {
   const otpGroupId = useId();
+  const activationPasswordId = useId();
+  const activationPasswordHelpId = useId();
   const [expired, setExpired] = useState(() => expiresAt !== null && expiresAt <= Date.now());
 
   useEffect(() => {
@@ -118,6 +128,43 @@ export const OtpMode: React.FC<OtpModeProps> = ({
             </>
           )}
         </p>
+
+        {otpPurpose === 'register' && (
+          <div>
+            <label htmlFor={activationPasswordId} className="block text-xs font-semibold text-semantic-text-secondary mb-1">
+              Mật khẩu cho tài khoản sau khi xác thực
+            </label>
+            <div className="relative">
+              <input
+                id={activationPasswordId}
+                name="activationPassword"
+                type={showPassword ? 'text' : 'password'}
+                required
+                minLength={6}
+                maxLength={100}
+                autoComplete="new-password"
+                aria-describedby={activationPasswordHelpId}
+                value={activationPassword}
+                onChange={(e) => onActivationPasswordChange(e.target.value)}
+                placeholder="Chọn mật khẩu của bạn"
+                className="w-full h-11 px-4 pr-11 bg-white border border-semantic-border focus:border-takosan-green rounded-xl focus:outline-none focus:ring-2 focus:ring-takosan-green/20 text-sm font-medium text-semantic-text-primary shadow-xs"
+              />
+              <button
+                type="button"
+                onClick={onToggleShowPassword}
+                aria-label={showPassword ? 'Ẩn mật khẩu' : 'Hiện mật khẩu'}
+                aria-pressed={showPassword}
+                className="absolute right-3 top-3 text-semantic-text-muted hover:text-semantic-text-secondary p-1 tap-target"
+              >
+                {showPassword ? <EyeOff className="w-4 h-4" aria-hidden="true" /> : <Eye className="w-4 h-4" aria-hidden="true" />}
+              </button>
+            </div>
+            <p id={activationPasswordHelpId} className="mt-1 text-xs text-semantic-text-muted">
+              Chọn mật khẩu từ 6 đến 100 ký tự. Mã email xác nhận bạn có quyền đặt mật khẩu này;
+              mật khẩu của yêu cầu đăng ký trước sẽ được thay thế.
+            </p>
+          </div>
+        )}
 
         {transferDeferred && otpPurpose === 'register' ? (
           <div

@@ -17,11 +17,15 @@ export const VerifyOtpSchema = z.object({
   email: z.string().trim().email('Địa chỉ email không hợp lệ'),
   code: z.string().trim().regex(/^\d{6}$/, 'Mã OTP phải gồm đúng 6 chữ số'),
   purpose: z.enum(['register', 'forgot_password', 'login']),
+  newPassword: z.string().min(6, 'Mật khẩu phải có ít nhất 6 ký tự').max(100).optional(),
   // Retained request contract; inventory transfers are explicitly deferred.
   migrateFromHouseholdId: z
     .string()
     .regex(/^hh_guest_[a-z0-9]+$/i, 'ID household guest không hợp lệ')
     .optional(),
+}).refine((data) => data.purpose !== 'register' || data.newPassword !== undefined || data.migrateFromHouseholdId !== undefined, {
+  message: 'Vui lòng chọn mật khẩu để hoàn tất xác thực tài khoản.',
+  path: ['newPassword'],
 });
 
 export const ForgotPasswordSchema = z.object({

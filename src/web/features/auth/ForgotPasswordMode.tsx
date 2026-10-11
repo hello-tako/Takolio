@@ -18,6 +18,9 @@ interface ForgotPasswordModeProps {
   onToggleShowPassword: () => void;
   onResetPassword: (e: React.FormEvent) => void;
   isLoading: boolean;
+  isResending: boolean;
+  resendCountdown: number;
+  onResend: () => void;
   onBackToLogin: () => void;
 }
 
@@ -37,6 +40,9 @@ export const ForgotPasswordMode: React.FC<ForgotPasswordModeProps> = ({
   onToggleShowPassword,
   onResetPassword,
   isLoading,
+  isResending,
+  resendCountdown,
+  onResend,
   onBackToLogin,
 }) => {
   const emailId = useId();
@@ -123,9 +129,20 @@ export const ForgotPasswordMode: React.FC<ForgotPasswordModeProps> = ({
           </div>
         </div>
 
-        <Button fullWidth size="lg" type="submit" isLoading={isLoading} className="mt-2">
+        <Button fullWidth size="lg" type="submit" isLoading={isLoading} disabled={isResending} className="mt-2">
           Lưu mật khẩu mới & Đăng nhập
         </Button>
+        <div className="text-center">
+          <button
+            type="button"
+            disabled={resendCountdown > 0 || isLoading || isResending}
+            onClick={onResend}
+            className="text-xs font-semibold text-takosan-green disabled:opacity-40 hover:underline tap-target"
+          >
+            {isResending ? 'Đang gửi lại mã…' : resendCountdown > 0
+              ? `Gửi lại sau (${resendCountdown}s)` : 'Gửi lại mã OTP'}
+          </button>
+        </div>
       </form>
     )}
 

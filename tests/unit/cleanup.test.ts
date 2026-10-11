@@ -6,7 +6,7 @@ import {
   runScheduledCleanup,
 } from '../../src/worker/services/cleanup';
 import { getRetentionConfig, DEFAULT_RETENTION_DAYS } from '../../src/worker/config/retention';
-import type { D1DatabaseBinding } from '@frigo/db';
+import type { D1DatabaseBinding, D1PreparedStatement } from '@frigo/db';
 import type { Env } from '../../src/worker/types';
 
 interface RecordedStatement {
@@ -37,8 +37,8 @@ class FakeCleanupDb implements D1DatabaseBinding {
     };
   }
 
-  async batch<T = unknown>(): Promise<{ results: T[]; success: boolean; meta: Record<string, unknown> }[]> {
-    return [];
+  async batch<T = unknown>(statements: D1PreparedStatement[]): Promise<{ results: T[]; success: boolean; meta: Record<string, unknown> }[]> {
+    return Promise.all(statements.map(async (statement) => ({ results: [] as T[], ...await statement.run() })));
   }
 
   async exec(): Promise<{ count: number; duration: number }> {
@@ -112,6 +112,7 @@ describe('scheduled cleanup', () => {
     expect(report.tasks.every((task) => task.status === 'ok')).toBe(true);
     expect(report.tasks.map((task) => task.task)).toEqual([
       'expired-otps',
+      'strict-otp-receipts',
       'expired-sessions',
       'stale-scan-reservations',
       'terminal-ready-jobs',

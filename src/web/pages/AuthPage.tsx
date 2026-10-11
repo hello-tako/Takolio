@@ -6,7 +6,7 @@ import { isInventoryTransferDeferred } from '../services/auth';
 import { isOffline } from '../services/http';
 import { capturePrivateSession } from '../lib/private-session';
 import { Slide } from '../design-system/motion';
-import { apiErrorMessage, type AuthMode } from '../features/auth/auth-shared';
+import { apiErrorMessage, otpPresentation, type AuthMode } from '../features/auth/auth-shared';
 import { AuthShell } from '../features/auth/AuthShell';
 import { LoginMode } from '../features/auth/LoginMode';
 import { RegisterMode } from '../features/auth/RegisterMode';
@@ -22,7 +22,6 @@ import {
 
 export const AUTH_VERIFY_PATH = '/auth/verify';
 const EMPTY_OTP = ['', '', '', '', '', ''];
-const MAX_OTP_LIFETIME_MINUTES = 24 * 60;
 
 /**
  * Auth state machine (screen 02). Presentation lives in `features/auth/*`;
@@ -65,6 +64,7 @@ export const AuthPage: React.FC = () => {
   );
   const [email, setEmail] = useState(() => verifyContext?.email ?? '');
   const [password, setPassword] = useState('');
+  const [activationPassword, setActivationPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
   // Forgot password new password
@@ -306,36 +306,34 @@ export const AuthPage: React.FC = () => {
 
   /** Enter screen 03 for `email` (registration purpose). Delivery stays
    *  unknown unless the response can prove whether email was sent. */
-  const enterVerification = (
-    verificationEmail: string,
-    delivered: boolean | null,
-    expiresInMinutes?: unknown,
-  ) => {
-    const now = Date.now();
-    const codeAvailable = delivered !== false;
-    const cooldown = codeAvailable ? 60 : 0;
-    const duration =
-      typeof expiresInMinutes === 'number' &&
-      Number.isFinite(expiresInMinutes) &&
-      expiresInMinutes > 0 &&
-      expiresInMinutes <= MAX_OTP_LIFETIME_MINUTES
-        ? expiresInMinutes * 60_000
-        : null;
-    const expiresAt =
-      codeAvailable && duration !== null && Number.isFinite(now + duration)
-        ? now + duration
-        : null;
+  const enterVerification = (verificationEmail: string, metadata: unknown, verifierPassword?: string) => {
+    if (verifierPassword !== undefined) setActivationPassword(verifierPassword);
+    const presentation = otpPresentation(metadata);
     const context = writeVerifyContext({
       email: verificationEmail,
-      resendAvailableAt: cooldown ? now + cooldown * 1000 : 0,
-      expiresAt,
-      delivered,
+      resendAvailableAt: presentation.cooldown ? Date.now() + presentation.cooldown * 1000 : 0,
+      expiresAt: presentation.expiresAt,
+      delivered: presentation.delivered,
     });
     setVerifyContext(context);
     setOtpPurpose('register');
     setTransferDeferred(false);
-    setResendCountdown(cooldown);
+    setResendCountdown(presentation.cooldown);
     if (!isVerifyRoute) navigate(AUTH_VERIFY_PATH);
+  };
+
+  const requireLoginAfterCompletion = () => {
+    clearVerifyContext();
+    setVerifyContext(null);
+    setTransferDeferred(false);
+    setDevOtp(null);
+    setOtpDigits(EMPTY_OTP);
+    setForgotOtpRequested(false);
+    setNewPassword('');
+    setActivationPassword('');
+    setBaseMode('login');
+    setSuccessMessage('Thao tác đã hoàn tất. Hãy đăng nhập để xác nhận phiên tài khoản.');
+    navigate('/auth', { replace: true });
   };
 
   const beginAuthRequest = () => {
@@ -356,6 +354,7 @@ export const AuthPage: React.FC = () => {
   const invalidateAuthRequests = () => {
     authRequestGenerationRef.current += 1;
     setIsLoading(false);
+    setIsResending(false);
     setTurnstileToken(null);
     setTurnstileGeneration((value) => value + 1);
   };
@@ -378,6 +377,12 @@ export const AuthPage: React.FC = () => {
     try {
       const res = await api.login(submittedEmail, submittedPassword);
       if (!request.canApply()) return;
+      if (res.requireOtp) {
+        if (typeof res.devOtp === 'string') setDevOtp(res.devOtp);
+        enterVerification(submittedEmail, res, '');
+        setSuccessMessage('Yêu cầu xác thực email đang được xử lý. Hãy chọn mật khẩu để hoàn tất tài khoản.');
+        return;
+      }
       if (res.success && res.user) {
         setAuthSession({
           id: res.user.id,
@@ -393,9 +398,11 @@ export const AuthPage: React.FC = () => {
       if (err?.payload?.requireOtp === true) {
         if (typeof err.payload.devOtp === 'string') setDevOtp(err.payload.devOtp);
         const delivered = err.payload.otpDelivered === true;
-        enterVerification(submittedEmail, delivered);
+        enterVerification(submittedEmail, err.payload, '');
         if (delivered) {
           setSuccessMessage('Mã OTP mới đã được gửi đến email của bạn.');
+        } else if (err.payload.deliveryState === 'pending' || err.payload.deliveryState === 'delivery_unknown') {
+          setErrorMessage(apiErrorMessage(err, 'Máy chủ chưa xác nhận trạng thái gửi email. Hãy chờ rồi thử lại.'));
         } else {
           setErrorMessage(
             'Tài khoản chưa xác thực và email OTP chưa gửi được. Hãy bấm gửi lại mã.',
@@ -443,15 +450,17 @@ export const AuthPage: React.FC = () => {
       if (!request.canApply()) return;
       if (res.success) {
         if (res.devOtp) setDevOtp(res.devOtp);
-        enterVerification(submittedEmail, res.devOtp ? null : true, res.expiresInMinutes);
+        enterVerification(submittedEmail, res, submittedPassword);
         setSuccessMessage(res.message);
       }
     } catch (err: any) {
       if (!request.canApply()) return;
-      if (err?.code === 'OTP_DELIVERY_UNAVAILABLE') {
-        enterVerification(submittedEmail, false, err?.payload?.expiresInMinutes);
+      if (err?.code === 'OTP_DELIVERY_UNAVAILABLE' || err?.code === 'OTP_DELIVERY_UNKNOWN') {
+        enterVerification(submittedEmail, { ...err.payload, otpDelivered: false }, submittedPassword);
         setSuccessMessage(null);
-        setErrorMessage('Tài khoản đã được lưu nhưng email OTP chưa gửi được. Hãy bấm gửi lại mã.');
+        setErrorMessage(err?.code === 'OTP_DELIVERY_UNKNOWN'
+          ? 'Tài khoản đã được lưu. Máy chủ chưa xác nhận trạng thái gửi email; hãy chờ trước khi yêu cầu mã mới.'
+          : 'Tài khoản đã được lưu nhưng email OTP chưa gửi được. Hãy bấm gửi lại mã.');
       } else {
         setErrorMessage(apiErrorMessage(err, 'Đăng ký thất bại. Email có thể đã tồn tại.'));
       }
@@ -510,6 +519,10 @@ export const AuthPage: React.FC = () => {
       setErrorMessage('Vui lòng nhập đủ 6 chữ số mã OTP');
       return;
     }
+    if (otpPurpose === 'register' && (activationPassword.length < 6 || activationPassword.length > 100)) {
+      setErrorMessage('Hãy chọn mật khẩu từ 6 đến 100 ký tự để hoàn tất xác thực tài khoản.');
+      return;
+    }
     const routeGeneration = routeGenerationRef.current;
     const canApply = () =>
       isCurrent() && verifyRouteActiveRef.current && routeGenerationRef.current === routeGeneration;
@@ -528,9 +541,18 @@ export const AuthPage: React.FC = () => {
         authState.householdId.startsWith('hh_guest_')
           ? authState.householdId
           : null;
-      const res = await api.verifyOtp(email, code, otpPurpose, guestHouseholdId);
+      const res = await api.verifyOtp(email, code, otpPurpose, guestHouseholdId,
+        otpPurpose === 'register' ? activationPassword : undefined);
       if (!canApply()) return;
+      if (!res.success) {
+        setErrorMessage(res.error || 'Yêu cầu đang được xử lý. Hãy thử lại với cùng mã OTP.');
+        return;
+      }
       if (res.success) {
+        if (res.sessionRequired || (otpPurpose === 'register' && !res.user)) {
+          requireLoginAfterCompletion();
+          return;
+        }
         setTransferDeferred(false);
         if (otpPurpose === 'register') {
           verificationCompletedRef.current = true;
@@ -562,6 +584,17 @@ export const AuthPage: React.FC = () => {
         return;
       }
       if (canApply()) {
+        const retry = err?.payload?.retryAfterSeconds;
+        if (typeof retry === 'number' && Number.isFinite(retry) && retry >= 0 && retry <= 86_400) {
+          const context = writeVerifyContext({
+            email,
+            delivered: verifyContext?.delivered ?? null,
+            expiresAt: verifyContext?.expiresAt ?? null,
+            resendAvailableAt: retry ? Date.now() + retry * 1000 : 0,
+          });
+          setVerifyContext(context);
+          setResendCountdown(resendSecondsRemaining(context));
+        }
         setErrorMessage(
           isOffline(err)
             ? 'Không thể kết nối máy chủ. Mã OTP chưa được xác nhận; hãy kiểm tra kết nối và thử lại.'
@@ -588,10 +621,8 @@ export const AuthPage: React.FC = () => {
   // Resend OTP
   const handleResendOtp = async () => {
     if (resendCountdown > 0 || isResending) return;
-    const isCurrent = capturePrivateSession();
-    const routeGeneration = routeGenerationRef.current;
-    const canApply = () =>
-      isCurrent() && verifyRouteActiveRef.current && routeGenerationRef.current === routeGeneration;
+    const request = beginAuthRequest();
+    const canApply = request.canApply;
     setIsResending(true);
     setErrorMessage(null);
     setSuccessMessage(null);
@@ -599,26 +630,37 @@ export const AuthPage: React.FC = () => {
       const res = await api.resendOtp(email, otpPurpose);
       if (res.success && canApply()) {
         setDevOtp(res.devOtp || null);
-        setResendCountdown(60);
+        setResendCountdown(otpPresentation(res).cooldown);
         setTransferDeferred(false);
         if (otpPurpose === 'register') {
-          enterVerification(email, res.devOtp ? null : true, res.expiresInMinutes);
+          enterVerification(email, res);
         }
         setSuccessMessage(res.message);
       }
     } catch (err: any) {
       if (canApply()) {
-        if (otpPurpose === 'register' && (isOffline(err) || err?.status >= 500)) {
+        const retry = err?.payload?.retryAfterSeconds;
+        if (typeof retry === 'number' && Number.isFinite(retry) && retry >= 0 && retry <= 86_400) {
+          setResendCountdown(Math.ceil(retry));
+        }
+        if (otpPurpose === 'register' && (isOffline(err) || err?.status >= 500 || err?.status === 429)) {
+          const terminalDelivery = err?.code === 'OTP_DELIVERY_UNAVAILABLE' || err?.code === 'OTP_DELIVERY_UNKNOWN';
+          const cooldown = err?.payload?.retryAfterSeconds;
+          const preserveChallenge = err?.status === 429;
           const context = writeVerifyContext({
             email,
-            resendAvailableAt: 0,
-            expiresAt: null,
-            delivered: err?.code === 'OTP_DELIVERY_UNAVAILABLE' ? false : null,
+            resendAvailableAt: typeof cooldown === 'number' && Number.isFinite(cooldown) && cooldown > 0
+              ? Date.now() + cooldown * 1000 : 0,
+            expiresAt: preserveChallenge ? verifyContext?.expiresAt ?? null : null,
+            delivered: preserveChallenge ? verifyContext?.delivered ?? null
+              : terminalDelivery ? otpPresentation({ ...err.payload, otpDelivered: false }).delivered : null,
           });
           setVerifyContext(context);
-          setResendCountdown(0);
-          setDevOtp(null);
-          setOtpDigits(EMPTY_OTP);
+          setResendCountdown(resendSecondsRemaining(context));
+          if (!preserveChallenge) {
+            setDevOtp(null);
+            setOtpDigits(EMPTY_OTP);
+          }
         }
         setErrorMessage(
           isOffline(err)
@@ -640,30 +682,34 @@ export const AuthPage: React.FC = () => {
       setErrorMessage('Vui lòng nhập email của bạn');
       return;
     }
+    const submittedEmail = email;
+    const request = beginAuthRequest();
     setIsLoading(true);
     setErrorMessage(null);
     setDevOtp(null);
     setForgotOtpRequested(false);
-    setOtpDigits(['', '', '', '', '', '']);
+    setOtpDigits(EMPTY_OTP);
     try {
-      const res = await api.forgotPassword(email);
+      const res = await api.forgotPassword(submittedEmail);
+      if (!request.canApply()) return;
       if (res.success) {
         if (res.devOtp) setDevOtp(res.devOtp);
         setForgotOtpRequested(true);
         setOtpPurpose('forgot_password');
-        setResendCountdown(60);
+        setResendCountdown(otpPresentation(res).cooldown);
         setSuccessMessage(res.message);
       }
     } catch (err: any) {
-      setErrorMessage(apiErrorMessage(err, 'Không thể tạo yêu cầu đặt lại mật khẩu lúc này'));
+      if (request.canApply()) {
+        setErrorMessage(apiErrorMessage(err, 'Không thể tạo yêu cầu đặt lại mật khẩu lúc này'));
+      }
     } finally {
-      setIsLoading(false);
+      if (request.isLatest()) setIsLoading(false);
     }
   };
 
-  // Handle Reset Password with OTP + New Password
+  // The final endpoint admits and consumes once; no preliminary request is needed.
   const handleResetPassword = async (e: React.FormEvent) => {
-    const isCurrent = capturePrivateSession();
     e.preventDefault();
     const code = otpDigits.join('');
     if (code.length < 6) {
@@ -674,32 +720,43 @@ export const AuthPage: React.FC = () => {
       setErrorMessage('Mật khẩu mới phải có tối thiểu 6 ký tự');
       return;
     }
-
+    const submittedEmail = email;
+    const submittedPassword = newPassword;
+    const request = beginAuthRequest();
     setIsLoading(true);
     setErrorMessage(null);
     try {
-      const res = await api.resetPassword(email, code, newPassword);
-      if (!isCurrent()) return;
+      const res = await api.resetPassword(submittedEmail, code, submittedPassword);
+      if (!request.canApply()) return;
+      if (!res.success) {
+        setErrorMessage(res.error || 'Yêu cầu đang được xử lý. Hãy thử lại với cùng mã OTP và mật khẩu mới.');
+        return;
+      }
       if (res.success) {
+        if (res.sessionRequired) {
+          requireLoginAfterCompletion();
+          return;
+        }
         if (res.user) {
           setAuthSession(res.user);
           navigate(res.user.onboardingCompleted ? '/' : '/onboarding', { replace: true });
           return;
         }
         setSuccessMessage('Đặt lại mật khẩu thành công! Hãy đăng nhập với mật khẩu mới.');
-        setPassword(newPassword);
+        setPassword(submittedPassword);
         setDevOtp(null);
         setForgotOtpRequested(false);
         setOtpDigits(EMPTY_OTP);
         setTimeout(() => {
+          if (!request.canApply()) return;
           setBaseMode('login');
           setSuccessMessage(null);
         }, 1500);
       }
     } catch (err: any) {
-      setErrorMessage(apiErrorMessage(err, 'Lỗi đặt lại mật khẩu'));
+      if (request.canApply()) setErrorMessage(apiErrorMessage(err, 'Lỗi đặt lại mật khẩu'));
     } finally {
-      setIsLoading(false);
+      if (request.isLatest()) setIsLoading(false);
     }
   };
 
@@ -726,6 +783,7 @@ export const AuthPage: React.FC = () => {
   };
 
   const backOutOfVerification = () => {
+    invalidateAuthRequests();
     if (mode === 'otp_verify') {
       // Abandoning verification: the tab-scoped context goes with it so the
       // route cannot later imply a code is pending.
@@ -739,6 +797,7 @@ export const AuthPage: React.FC = () => {
       setDevOtp(null);
       setTransferDeferred(false);
       setOtpDigits(EMPTY_OTP);
+      setActivationPassword('');
       navigate('/auth', { replace: true });
     } else if (mode === 'forgot_password') {
       setBaseMode('login');
@@ -764,6 +823,11 @@ export const AuthPage: React.FC = () => {
 
   const backToLogin = () => {
     invalidateAuthRequests();
+    setForgotOtpRequested(false);
+    setDevOtp(null);
+    setOtpDigits(EMPTY_OTP);
+    setNewPassword('');
+    setActivationPassword('');
     setBaseMode('login');
     setErrorMessage(null);
     setSuccessMessage(null);
@@ -836,6 +900,10 @@ export const AuthPage: React.FC = () => {
             onOtpPaste={handleOtpPaste}
             transferDeferred={transferDeferred}
             otpPurpose={otpPurpose}
+            activationPassword={activationPassword}
+            onActivationPasswordChange={setActivationPassword}
+            showPassword={showPassword}
+            onToggleShowPassword={() => setShowPassword(!showPassword)}
             onContinueWithoutTransfer={() => void handleContinueWithoutTransfer()}
             onSubmitVerify={handleVerifyOtp}
             isLoading={isLoading}
@@ -865,6 +933,9 @@ export const AuthPage: React.FC = () => {
             onToggleShowPassword={() => setShowPassword(!showPassword)}
             onResetPassword={handleResetPassword}
             isLoading={isLoading}
+            isResending={isResending}
+            resendCountdown={resendCountdown}
+            onResend={() => void handleResendOtp()}
             onBackToLogin={backToLogin}
           />
         )}
