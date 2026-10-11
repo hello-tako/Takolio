@@ -1,3 +1,21 @@
+# B01a - A1 implemented, A2 integration next
+
+Current status: `B01a_A1_DORMANT_LOCAL_VERIFIED`, 2026-10-11 JST.
+Implementation `0649324a729b57019df61da6bceec40cd9ba1135`; base 8a9b386f46f245c727b9ac2f885bab842d5796b5.
+[Accepted dormant A1 ADR](../b01a/ADR-B01a-001.md), [result/A2sequence](../b01a/RESULT.md),
+[actual local checks](../b01a/LOCAL_VALIDATION.md). Final committed full
+291 files / 6908 tests PASS; six additive 0040 tables and typed coordinator verified.
+
+The target/draft packet below is historical design input. A1 does not supersede
+legacy challenges or wire any auth/client/send path. Full CODE_COMPLETE remains
+open. A2 must finish guarded registration, route-wide issuance/verify/reset,
+authorized guest handling, context/error/Turnstile/cookie-loss/terminal delivery
+contracts and compatible cutover/cleanup. Hosted D1 proof / hardened rollback / inbox
+and separately authorized release remain distinct gates. Current release/recovery
+scripts stay pinned 0039; do not use them to certify 0040 without a new reviewed packet.
+
+---
+
 # B01a - D1 Strict OTP: Admission, Issuance Và Finalization
 
 Ngày lập: 2026-10-11 JST. Trạng thái: `PACKET_READY_ADR_DRAFT`.

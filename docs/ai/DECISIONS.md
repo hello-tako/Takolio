@@ -1,3 +1,22 @@
+# ADR-B01a-001 - Dormant strict OTP transaction foundation
+
+Status: ACCEPTED_FOR_DORMANT_A1_LOCAL_IMPLEMENTATION, 2026-10-11 JST.
+Packet: ../backend-upgrade/tasks/B01a-strict-otp.md.
+Full decision: ../backend-upgrade/b01a/ADR-B01a-001.md.
+Implementation 0649324a729b57019df61da6bceec40cd9ba1135; local checks in b01a/validation.json.
+
+Dedicated raw D1 claims/assertions reserve total admissions before actual digest
+comparison, preserve account-wide replay identity, budget/cooldown/generation and
+same-transaction business effects. Migration 0040 additive and non-cascading. Keys
+use DB time; legacy counts import conservatively once; session replay never mints
+a new credential. Local adversarial comparison/required-zero faults and isolated
+D1 schema replay pass. This accepts the dormant A1 policy/code only; legacy routes
+remain active and A2 route/client/registration/guest/cleanup/release contract is
+not accepted by implication. No production protection or hosted D1 certificate.
+
+
+---
+
 # ADR-B01b-001 - Bounded provider acceptance and conservative email fallback
 
 Status: accepted for local B01b A1 implementation, 2026-10-11 JST.

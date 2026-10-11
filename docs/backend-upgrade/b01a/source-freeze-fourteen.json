@@ -1,0 +1,77 @@
+{
+  "capturedAtUtc": "2026-10-11T05:16:00.691256+00:00",
+  "baseSha": "8a9b386f46f245c727b9ac2f885bab842d5796b5",
+  "files": [
+    {
+      "path": "migrations/0040_strict_otp_foundation.sql",
+      "sha256": "8ad04aaf528b2811b693d80f83704bd3d7578f7ffb3cc3698326487e4beb6ae0",
+      "bytes": 6046
+    },
+    {
+      "path": "packages/db/src/auth-otp.ts",
+      "sha256": "41092db2aa772db206754e84bb5f6c40ad77e00faded9a452b486d651ef9f673",
+      "bytes": 26032
+    },
+    {
+      "path": "src/worker/config/otp-policy.ts",
+      "sha256": "b7d4202f0ca0de60fd2da3bf39543284dafcb7a7bfc71bc91a55e77170d31f30",
+      "bytes": 1995
+    },
+    {
+      "path": "src/worker/services/auth-otp.ts",
+      "sha256": "7f5cc3a943ca12130e205191f2c0dbed1a1295fe3f72eb67ca366025e4d6e4d5",
+      "bytes": 9764
+    },
+    {
+      "path": "tests/unit/otp-policy.test.ts",
+      "sha256": "2166b82eb8b7b60377abb570d14c58797bac8c1b13ef60a0eecc82136ba2425e",
+      "bytes": 5389
+    },
+    {
+      "path": "tests/integration/auth-otp-coordinator.test.ts",
+      "sha256": "86705a270be6eb1dad0aedc0f5126270e49a2b4d8a388aa84edd397f3848bb45",
+      "bytes": 28858
+    },
+    {
+      "path": "scripts/d1-schema-gate.sql",
+      "sha256": "8fef693f77e9b12976481d95dc0e7e442593c5d26e1af13ee90405a7d52a0e88",
+      "bytes": 12914
+    },
+    {
+      "path": "scripts/migration-smoke.sh",
+      "sha256": "3821cbed804bb1644d742dfae22bd08fb4438c7ba87e420e169c71daa81c5221",
+      "bytes": 47875
+    },
+    {
+      "path": "tests/helpers/sqlite-d1.ts",
+      "sha256": "d503476a003b7333e7a24e6f6a2ae70d4e3d93101b9429258bc32c9f89923941",
+      "bytes": 7314
+    },
+    {
+      "path": "tests/integration/d1-schema-gate.test.ts",
+      "sha256": "8e81138c2e1a39767333910063d1fe7f8f92ddfeb432f208d73e187b08ac6510",
+      "bytes": 7079
+    },
+    {
+      "path": "tests/unit/production-catalog-lineage.test.mjs",
+      "bytes": 9654,
+      "sha256": "79f0c51910d9a3ff43d105bf90d1c3264aff5b84a7382d2113d5a2ce10e12e4b"
+    },
+    {
+      "path": "tests/unit/t21rb-v1-production.test.mjs",
+      "bytes": 7655,
+      "sha256": "42b2fdc6a4d686a74780c73a13bddfa541c274e8f0b65e14cdca9d639fcff51b"
+    },
+    {
+      "path": "tests/unit/production-migration-preflight.test.mjs",
+      "bytes": 11911,
+      "sha256": "904a48b9e549d438b5a4f6602caee49567c6e073bb15fef90f9113cd7ece134c"
+    },
+    {
+      "path": "tests/unit/production-certify-workflow.test.mjs",
+      "bytes": 17074,
+      "sha256": "3eebcbddd1af3f1c1ff133c9d29fa7ac32e8e052cb61c4979f75d6e93e1a3c42"
+    }
+  ],
+  "historicalFixtureReason": "Preserve reviewed0039candidate/0038observations after current ledger grows; no scripts/workflows guard broadened."
+}

@@ -1,3 +1,15 @@
+# B01a A1 gap progress - 2026-10-11 JST
+
+SEC-01/02/03 now have dormant local kernel/schema proof on `0649324a729b57019df61da6bceec40cd9ba1135`:
+actual comparison budget under 20/100 racers, immutable replay, cooldown/generation,
+claim/assertion rollback and principal fences. Final 291 files / 6908 tests PASS.
+These gaps remain OPEN_FOR_A2_INTEGRATION because legacy auth routes still run.
+No production mitigation/certification claim. MAIL-01 inbox and across-request
+adapter wiring remain open; B08 also tracks SW artifact race and unchanged audit
+findings. Recovery/release scripts keep 0039 scope; 0040 needs its own release packet.
+
+---
+
 # B01b A1 gap progress - 2026-10-11 JST
 
 MAIL-01 partially addressed locally by `31d5fd860ef9b65fc38ccdc664074bda348b0a8c`: bounded acceptance/unknown

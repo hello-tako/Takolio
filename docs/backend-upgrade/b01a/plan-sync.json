@@ -1,0 +1,20 @@
+{
+  "recordedAtUtc": "2026-10-11T05:34:01.262416+00:00",
+  "status": "B01a_A1_DORMANT_LOCAL_VERIFIED",
+  "implementationSha": "0649324a729b57019df61da6bceec40cd9ba1135",
+  "planPath": "/Users/tunbee27/Documents/frigo/docs/TAKOSAN_BACKEND_IMPLEMENTATION_PLAN_2026-10-11.md",
+  "beforeSha256": "6598368e11a10cc0dc34c5fff16ecf1d6ac0387ebf0d4df0e4c10a44651eb2af",
+  "afterSha256": "a67f839e74137fbafc5ef3bd9ef401c9fdb8e1fe57700bebea31879ab8c69759",
+  "historicalBytesRetained": 53327,
+  "masterplanPath": "/Users/tunbee27/Downloads/TAKOSAN_BACKEND_MASTERPLAN_2026-10-11.md",
+  "masterplanSha256": "13809f0874ae357707fc6a37a16f5e8b3164674eeb194dff0adc3ae7f530b44b",
+  "masterplanUnchanged": true,
+  "fullSuite": {
+    "files": 291,
+    "tests": 6908
+  },
+  "limits": [
+    "plan is in original legacy workspace, untracked and not committed by this canonical receipt",
+    "historical plan suffix is preserved; current checkpoint is prepended"
+  ]
+}

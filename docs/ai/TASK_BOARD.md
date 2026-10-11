@@ -1,3 +1,41 @@
+# B01a strict OTP A1 local checkpoint - 2026-10-11 JST
+
+**Task/status:** `B01a_A1_DORMANT_LOCAL_VERIFIED`; kernel/schema foundation only.
+Active packet: docs/backend-upgrade/tasks/B01a-strict-otp.md; ADR-B01a-001 accepted
+for dormant local A1. Full strict route/client integration remains A2.
+
+**Repository/source:** vn-tak/Tako-san, ID 1385308553; canonical worktree
+/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo, branch
+codex/backend-b01a-foundation. Base 8a9b386f46f245c727b9ac2f885bab842d5796b5;
+implementation `0649324a729b57019df61da6bceec40cd9ba1135`. Main reverified 652e0d7632745e9b77cda4b5b3caac83a3ec1015.
+Receipt checkpoint records the implementation, not its own commit hash.
+
+**Actual changes:** migration 0040, six non-cascading tables; typed D1 claim/assertion
+commands; key/time policy and real comparison coordinator; 55 kernel / 49 policy tests.
+Account-wide keyed registry, budget 5/rolling 900s, generation/cooldown and atomic
+consume/account/password/revoke/session/outcome; stale/crash never refunds.
+Legacy accounting imported once; legacy OTP/session bytes untouched. Eleven tests
+preserve historical 0039/0038 source after current tip 0040. 21 source and 319 protected
+records frozen; routes/providers/client/config/workflow/lock and all 39 applied migrations unchanged.
+
+**Executed checks:** focused 8 files / 287 tests PASS; historical recovery 331 / staging 37 PASS;
+final complete committed-HEAD 291 files / 6908 tests PASS. Install/lint/typecheck/
+migration smoke / sequential build / freeze PASS; isolated local D1, exact 40 entries,
+reapply none/gate []/FK []/quick_check ok. Initial full 4 failed files / 7 failed tests plus
+failed suite, intermediate full SIGINT exit 130, SW race build FAIL and audit-selector FAIL
+retained separately. Fresh audit exit 1: full 2 critical / 16 high / 19 moderate / 4 low;
+prod 2 moderate, 0 high / 0 critical. Earlier fixture 41 failures / test-spy type error fixed.
+Exact commands/environment/time/exit/hash/raw gzip in b01a/validation.json.
+
+**Limits/next:** coordinator dormant; live auth retains existing paths. A2 owns
+all issue/verify/reset/client integration, guarded registration/guest transfer,
+terminal issuance receipts, legacy cutover/cleanup and retention compatibility.
+Hosted D1 proof / hardened rollback / inbox certification separate. No production proof,
+real mail/paid AI/remote DB/R2/push/PR/merge/deploy. Full plan backend not complete.
+See docs/backend-upgrade/b01a/RESULT.md and LOCAL_VALIDATION.md.
+
+---
+
 # B01b email adapter A1 local checkpoint - 2026-10-11 JST
 
 **Task/status:** `B01b_A1_LOCAL_VERIFIED`; mocked provider-acceptance adapter only.

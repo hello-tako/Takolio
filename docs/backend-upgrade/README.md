@@ -1,3 +1,15 @@
+# Backend upgrade - B01a A1 current checkpoint
+
+B01a dormant strict OTP foundation is locally verified on `0649324a729b57019df61da6bceec40cd9ba1135`.
+Final committed-HEAD **291 files / 6908 tests PASS**, focused 287 PASS; local
+lint/typecheck/install/migration/build/freeze and isolated D1 exact 40 ledger gates PASS.
+ADR/kernel/schema, failure history, audit findings and next A2 sequence:
+[b01a/RESULT.md](b01a/RESULT.md). Routes and client still use existing auth paths;
+SEC-01/02/03 remain open until full integration and separate hosted certification.
+Historical B01b/B00 checkpoints follow unchanged.
+
+---
+
 # Backend upgrade - Current local checkpoint
 
 B01b email adapter A1 is locally verified on `31d5fd860ef9b65fc38ccdc664074bda348b0a8c`.

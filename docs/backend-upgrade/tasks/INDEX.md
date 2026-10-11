@@ -1,3 +1,13 @@
+# Backend upgrade - Current packet status
+
+B01a: `A1_DORMANT_LOCAL_VERIFIED` on `0649324a729b57019df61da6bceec40cd9ba1135`; A2 ready for bounded route/client
+integration after final contract/ownership review. B01b A1 local verification retained;
+strict issuance/inbox certification remains dependent. B00baseline unchanged.
+Result: [B01a A1](../b01a/RESULT.md). Final local full 291 files / 6908 tests PASS.
+All other packet statuses remain as recorded. Historical task table follows.
+
+---
+
 # Backend upgrade - Task index
 
 Base `652e0d7632745e9b77cda4b5b3caac83a3ec1015`, repository ID `1385308553`. Status của packet là khả năng bắt đầu work, không completion. B00 là docs-only baseline; email adapter B01b A1 đã được triển khai và kiểm chứng local riêng, các packets khác chưa triển khai runtime.
