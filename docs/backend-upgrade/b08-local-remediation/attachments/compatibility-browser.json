@@ -1,0 +1,293 @@
+{
+  "schemaVersion": 1,
+  "classification": "BOUNDED_LOCAL_DEPENDENCY_COMPATIBILITY_PROBE",
+  "mode": "browser",
+  "nodeVersion": "v24.16.0",
+  "platform": "darwin",
+  "architecture": "arm64",
+  "startedAtUtc": "2026-10-11T19:26:47.434Z",
+  "sourceHashes": {
+    "package.json": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+    "pnpm-lock.yaml": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+    "docs/backend-upgrade/b08-local-remediation/local_compatibility_probe.mjs": "363304e8f77191ff836a30539323ab7baff27891b2406e8e7a68638a3fbfaacf"
+  },
+  "sourceValuesOrCredentialsPublished": false,
+  "externalCredentialValidation": false,
+  "result": {
+    "checks": [
+      {
+        "case": "actual_app_onboarding_splat_fallback",
+        "status": "PASS",
+        "path": "/onboarding/household"
+      },
+      {
+        "case": "actual_app_useNavigate_and_browser_back_forward",
+        "status": "PASS"
+      },
+      {
+        "case": "actual_app_onboarding_deeplink_and_reload",
+        "status": "PASS"
+      },
+      {
+        "case": "actual_app_week_alias",
+        "source": "/week",
+        "destination": "/planner",
+        "status": "PASS"
+      },
+      {
+        "case": "actual_app_week_alias",
+        "source": "/week/setup",
+        "destination": "/planner/new",
+        "status": "PASS"
+      },
+      {
+        "case": "actual_app_week_alias",
+        "source": "/week/generating",
+        "destination": "/planner",
+        "status": "PASS"
+      },
+      {
+        "case": "actual_app_week_alias",
+        "source": "/week/plan-a",
+        "destination": "/planner/plan-a",
+        "status": "PASS"
+      },
+      {
+        "case": "actual_app_week_alias",
+        "source": "/week/plan-a/meal/meal-a",
+        "destination": "/planner/plan-a/meal/meal-a",
+        "status": "PASS"
+      },
+      {
+        "case": "actual_app_week_alias",
+        "source": "/week/plan-a/shopping",
+        "destination": "/planner/plan-a/shopping",
+        "status": "PASS"
+      },
+      {
+        "case": "actual_app_week_alias",
+        "source": "/week/plan-a/settings",
+        "destination": "/settings/planning",
+        "status": "PASS"
+      },
+      {
+        "case": "actual_app_Link_and_back_to_deeplink",
+        "status": "PASS"
+      },
+      {
+        "case": "actual_app_public_verify_deeplink_reload_and_back",
+        "status": "PASS",
+        "registrationOrOtpSent": false
+      },
+      {
+        "case": "actual_development_app_auth_verify_transition_no_extra_synthetic_Turnstile_render",
+        "status": "PASS",
+        "initialStrictModeWidgetRenderCount": 2,
+        "addedRendersAcrossVerifyAndResend": 0,
+        "interceptedAuthRequestShapes": [
+          {
+            "endpoint": "register",
+            "hasTurnstileToken": true
+          },
+          {
+            "endpoint": "resend-otp",
+            "hasTurnstileToken": false
+          }
+        ],
+        "actualMailOrRegistrationRequestCount": 0
+      },
+      {
+        "case": "installed_router_real_browser_fixture",
+        "router": "BrowserRouter",
+        "status": "PASS",
+        "trustedLinkAndNavigate": true,
+        "backAndForward": true,
+        "rejectedUntrustedNavigateCount": 4,
+        "rejectedObjectLink": true,
+        "scriptExecuted": false,
+        "explicitExternalLinkAllowedButNotClicked": true
+      },
+      {
+        "case": "installed_router_real_browser_fixture",
+        "router": "MemoryRouter",
+        "status": "PASS",
+        "trustedLinkAndNavigate": true,
+        "backAndForward": true,
+        "rejectedUntrustedNavigateCount": 4,
+        "rejectedObjectLink": true,
+        "scriptExecuted": false,
+        "explicitExternalLinkAllowedButNotClicked": true
+      },
+      {
+        "case": "built_custom_SW_token_substitution",
+        "status": "PASS",
+        "observedBuildId": "local",
+        "immutableReleaseShaQualified": false
+      },
+      {
+        "case": "missing_actual_build_flag_rejected_by_release_guard",
+        "status": "PASS",
+        "buildRecord": {
+          "VITE_MEAL_COMPOSITION_V2_ENABLED": null,
+          "VITE_MEAL_PLANNER_ENABLED": null
+        },
+        "releaseReadiness": "REJECTED"
+      },
+      {
+        "case": "actual_built_custom_SW_install_and_precache",
+        "status": "PASS",
+        "cacheName": "takosan-pwa-local",
+        "requiredPrecacheCount": 13,
+        "allPrecachePresent": true,
+        "controllerActive": true
+      },
+      {
+        "case": "actual_built_app_auth_verify_transition_single_synthetic_Turnstile_render",
+        "status": "PASS",
+        "providerWidgetRenderCount": 1,
+        "syntheticAuthRequestShapes": [
+          {
+            "endpoint": "register",
+            "hasTurnstileToken": true
+          },
+          {
+            "endpoint": "resend-otp",
+            "hasTurnstileToken": false
+          }
+        ],
+        "actualMailOrRegistrationRequestCount": 0
+      },
+      {
+        "case": "actual_built_offline_shell_reload_deeplink_and_precached_assets",
+        "status": "PASS",
+        "offlinePath": "/auth",
+        "observedServerRequestsWhileOffline": 0,
+        "staticServerStoppedBeforeOfflineNavigation": true,
+        "metadata": {
+          "controlled": true,
+          "online": false,
+          "faviconStatus": 200,
+          "faviconContainsSvg": true,
+          "manifestStatus": 200,
+          "manifestContainsIcons": true
+        },
+        "cachedEntryAssetCount": 2
+      }
+    ],
+    "builtPwa": {
+      "checks": [
+        {
+          "case": "built_custom_SW_token_substitution",
+          "status": "PASS",
+          "observedBuildId": "local",
+          "immutableReleaseShaQualified": false
+        },
+        {
+          "case": "missing_actual_build_flag_rejected_by_release_guard",
+          "status": "PASS",
+          "buildRecord": {
+            "VITE_MEAL_COMPOSITION_V2_ENABLED": null,
+            "VITE_MEAL_PLANNER_ENABLED": null
+          },
+          "releaseReadiness": "REJECTED"
+        },
+        {
+          "case": "actual_built_custom_SW_install_and_precache",
+          "status": "PASS",
+          "cacheName": "takosan-pwa-local",
+          "requiredPrecacheCount": 13,
+          "allPrecachePresent": true,
+          "controllerActive": true
+        },
+        {
+          "case": "actual_built_app_auth_verify_transition_single_synthetic_Turnstile_render",
+          "status": "PASS",
+          "providerWidgetRenderCount": 1,
+          "syntheticAuthRequestShapes": [
+            {
+              "endpoint": "register",
+              "hasTurnstileToken": true
+            },
+            {
+              "endpoint": "resend-otp",
+              "hasTurnstileToken": false
+            }
+          ],
+          "actualMailOrRegistrationRequestCount": 0
+        },
+        {
+          "case": "actual_built_offline_shell_reload_deeplink_and_precached_assets",
+          "status": "PASS",
+          "offlinePath": "/auth",
+          "observedServerRequestsWhileOffline": 0,
+          "staticServerStoppedBeforeOfflineNavigation": true,
+          "metadata": {
+            "controlled": true,
+            "online": false,
+            "faviconStatus": 200,
+            "faviconContainsSvg": true,
+            "manifestStatus": 200,
+            "manifestContainsIcons": true
+          },
+          "cachedEntryAssetCount": 2
+        }
+      ],
+      "buildRecord": {
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": null,
+        "VITE_MEAL_PLANNER_ENABLED": null
+      },
+      "observedBuildId": "local",
+      "precachePaths": [
+        "/",
+        "/index.html",
+        "/manifest.json",
+        "/takosan/rebuild/app-icons/favicon.svg",
+        "/takosan/rebuild/app-icons/icon-192.png",
+        "/takosan/rebuild/app-icons/icon-512.png",
+        "/takosan/rebuild/lockup.svg",
+        "/takosan/rebuild/symbol.svg",
+        "/takosan/app-icons/icon-192.png",
+        "/takosan/app-icons/icon-512.png",
+        "/takosan/brand/takosan-logo-horizontal-primary.svg",
+        "/takosan/brand/takosan-symbol.svg",
+        "/takosan/mascot/takosan-neutral.svg"
+      ],
+      "externalOriginRequestsAborted": 10,
+      "sourceHashes": {
+        "public/sw.js": "b7613458f313de8da654284fdc923f5c93344f2f3856787ae8b8c52e2c298fd4",
+        "src/web/main.tsx": "64b1c7613d6f327917c2825dca6b0ab3c1e0cd179e02abeae0c560067abb51cd",
+        "dist/client/sw.js": "1be5852af3a802eed77df42c54d1b36c32211e0a3aba9d753321b04cae388fc7",
+        "dist/client/index.html": "858be7246809a02705159a315266e9b0ef97029fc56854b9f1648f126bc8f49e",
+        "dist/composition-flags.json": "2e0fb0926db7d89c9f53383dde3381eceb3fd9efbf4fc1eeee61d3bc4fd2d1bb",
+        "scripts/composition-flags.mjs": "7fe16d58c88be15ed8523f99a8a16c7d98defc125dc5519d2805ac92fd77887f"
+      },
+      "limits": [
+        "Local built app only; a local build ID and missing build flags remain rejected for release.",
+        "Auth API and Turnstile responses are synthetic local fixtures; no real registration or email. Offline authenticated data and queued writes are separate scope.",
+        "Built HTML external font/script references are blocked by the loopback browser policy."
+      ]
+    },
+    "reactRouterDomVersion": "7.18.3",
+    "playwrightVersion": "1.63.0",
+    "browserVersion": "154.0.8037.99",
+    "actualAppTransitionMode": "useTransitions=false; prior Router 6 urgent navigation behavior",
+    "networkPolicy": "Loopback only; external origins aborted and required attempted external request count zero",
+    "sourceHashes": {
+      "src/web/App.tsx": "abc2b48d2f00a20db054c38082280a2b56059078b488cdbc87ee70120284ebb4",
+      "src/web/pages/OnboardingPage.tsx": "d4d48ce8f4fa397c42ca935e412e5d8452ae6336b965a948560523edc7089863",
+      "scripts/security-preview.mjs": "a94681507089253650fc6e5371e9188edf459b6a5fcd69e085ca179cc659b528",
+      "scripts/ui10-planner-alias-check.mjs": "5c23f9134b653df92945c6443107af50a8a8536a27924618489fc751f58a70ad",
+      "docs/backend-upgrade/b08-local-remediation/local_router_probe_client.mjs": "ecca5d44618d41eca6e337fc189ff4a1e5628544415dc3a3e0e13c6c19bbbb0f",
+      "docs/backend-upgrade/b08-local-remediation/local_router_browser_probe.mjs": "ae2f582aea99bc52277a6f6d3e169145ae89f8db22ab997ac8e3583d6a0fbba8",
+      "docs/backend-upgrade/b08-local-remediation/local_pwa_browser_probe.mjs": "348a6a2f8010b8336dc9df85e4a9379ce2b741635331dd23d59d219d6361eea0"
+    },
+    "limits": [
+      "Actual App routes exercised on the existing development security preview, not on production or the built static bundle.",
+      "MemoryRouter/adversarial targets are a separate installed-library fixture; not an application-wide redirect-input certificate.",
+      "Explicit external Link strings remain allowed by React Router; they are not clicked.",
+      "No real registration, OTP, Turnstile provider, mail, payment, or external credential validation."
+    ]
+  },
+  "status": "PASS",
+  "finishedAtUtc": "2026-10-11T19:26:54.813Z"
+}

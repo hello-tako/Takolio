@@ -37,6 +37,9 @@ for group, ref in [('changedSource', implementation), ('candidateSource', implem
         mode = subprocess.check_output(['git', 'ls-tree', ref, '--', record['path']]).decode().split()[0]
         assert mode == record['mode'], record['path']
         assert bool((ROOT / record['path']).stat().st_mode & 0o111) == (mode == '100755'), record['path']
+for record in freeze['receiptTools']:
+    raw = (ROOT / record['path']).read_bytes()
+    assert len(raw) == record['bytes'] and sha(raw) == record['sha256'], record['path']
 assert freeze['migrationCount'] == 40
 assert freeze['publicAssetDeltaCount'] == freeze['paymentRuntimeDeltaCount'] == 0
 assert freeze['workerRuntimeDeltaCount'] == freeze['productionConfigDeltaCount'] == 0
@@ -92,6 +95,8 @@ subprocess.run(['git', 'diff', '--check'], check=True)
 if '--committed' in sys.argv:
     head = subprocess.check_output(['git', 'rev-parse', 'HEAD']).decode().strip()
     assert subprocess.check_output(['git', 'status', '--porcelain']) == b''
+    for record in freeze['receiptTools']:
+        assert (ROOT / record['path']).read_bytes() == blob(head, record['path']), record['path']
     changed = subprocess.check_output(['git', 'diff', '--name-only', implementation, head]).decode().splitlines()
     assert changed and all(path.startswith('docs/') for path in changed)
     for path in changed:

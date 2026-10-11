@@ -1,3 +1,18 @@
+# Current backend and B08 implementation checkpoint - 2026-10-12 JST
+
+Implementation d3cce9560593a263e70f85646e061291e8829b56 is locally verified:
+309 files/7463 tests, install/lint/types/migrations/build PASS. Core backend waves
+and local B08 dependency/workflow/parser/private triage work are delivered within
+their explicit activation limits. Full audit remains1high braces; production audit0;
+Semgrep846/846/0errors, Gitleaks17 adjudicated but retained, zizmor2 retained findings.
+The masterplan is not production-complete: real corpus/human data/provider evidence,
+protected billing, inbox/staging/edge/SLO and hosted release gates remain. Provider
+budget proofs precede paid benchmark runs; dataset acquisition can proceed earlier.
+See [aggregate result](b08-local-remediation/RESULT.md) and
+[ordered next gates](b08-local-remediation/NEXT_ACTIONS.md). Historical evidence follows.
+
+---
+
 # Current backend program checkpoint - 2026-10-12 JST
 
 Implementation `7ef2f8407d3a6a958c78146db3b5c9a9f0990b78` is locally verified: full 309 files / 7463 tests,

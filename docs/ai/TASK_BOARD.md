@@ -1,3 +1,46 @@
+# Backend program and B08 aggregate checkpoint - 2026-10-12 JST
+
+**Task/status:** LOCAL_IMPLEMENTATION_VERIFIED_WITH_BLOCKING_RELEASE_GATES.
+Implementation `d3cce9560593a263e70f85646e061291e8829b56`; branch
+codex/backend-b08-local-remediation; parent immutable receipt
+2c42984b2839d1b03c3b0ccfb89998d3535a48d8. Canonical isolated worktree:
+/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo. User checkout unchanged.
+
+**Delivered:** strict OTP/session/membership and bounded email; offline ScanV3/
+evaluation, governed providers/cancellation and dormant budget; ingredient pilot;
+whole-week/shopping/cooking and Week extraction/OpenAPI; bounded telemetry.
+B08 patches direct dependency owners and compatibility harnesses, hardens67 action
+refs and SHA/credentials/cache contracts across10 workflows, repairs the TSX parser
+and adjudicates17 captured secret matches without suppressions.
+
+**Checks:** clean committed309 files/7463 tests PASS; frozen install/lint/types/
+40-migration smoke/sequential build PASS. Local D1 exact40/reapply0/pending0/schema[]/
+FK[]/quick_checkok; durable restart/directory isolation PASS. CLI10 help contracts,
+fixed2024-11-01 types generation and Worker compilation, isolated dry-run PASS.
+CSS134861 bytes identical;36 native exports exact vectors/PNG pixels;20 initial
+browser checks and5 final built SW/auth/offline checks PASS. Final build token binds
+implementation; missing release UI flags correctly remain REJECTED.
+
+**Security:** full audit41 to1high (unpatched braces); production2moderate to0.
+Pinned scanner24 selftests PASS; Semgrep846/846 sources/0errors/0findings, Gitleaks17
+retained matches (0 unresolved in reviewed captured locations), zizmor72 to2 actual
+v4-cache-model findings, Syft518 declared components. Security gate remains FAILED;
+no history/installed binary/license/production certificate. All58 actual command
+logs and bounded attachments are privacy-reviewed, hashed and retained.
+
+**Failures/limits/next:** initial full4 files/8 tests FAIL and corrected installs/
+types/parser/native/browser probe failures retained. Receipt export Unicode filename
+handling failed once, then NUL traversal corrected; runtime source unchanged.
+Applied migrations, Worker/payment/PayOS/catalog/provider activation and runtime
+identities/date remain protected. Real OCR/human ingredient review/provider token/
+output/pricing/privacy/retention, paid benchmark budget, protected billing scope,
+controlled inbox/staging/edge/load/SLO/rollback/hosted release gates remain required.
+No remote D1/R2 write/deploy/paid AI/real email/push/PR/merge. Final docs are a separate
+receipt; current release SHA requires fresh scanner/hosted acceptance. See
+`docs/backend-upgrade/b08-local-remediation/RESULT.md` and `NEXT_ACTIONS.md`.
+
+---
+
 # B08 local remediation in progress - 2026-10-12 JST
 
 **Task/status:** B08_LOCAL_REMEDIATION_IN_PROGRESS.

@@ -22,8 +22,10 @@ quality, provider pricing/retention, inbox delivery, hosted workflow compatibili
 or production authority. Use the existing release checklist for external actions.
 
 Raw scanner findings stay private and are never exported as logs or suppressions.
-Gitleaks16 matches are privately adjudicated by source provenance; the engine
-still reports them. The pinned scan does not inspect Git history. zizmor retains
+The implementation scan reports17 Gitleaks matches:16 historical candidates plus
+1 documentation prose occurrence. All17 are privately adjudicated by source
+provenance; the engine still reports them. A release must scan its actual current
+SHA, including subsequent receipt/documentation changes. The pinned scan does not inspect Git history. zizmor retains
 two actual cache findings even though the reviewed pinned setup-nodev4 source
 shows caching disabled; hosted acceptance and scanner version correction remain
 open. The security gate stays blocked by the remaining audit/scanner conditions.

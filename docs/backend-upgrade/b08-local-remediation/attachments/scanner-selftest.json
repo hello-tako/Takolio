@@ -1,0 +1,218 @@
+{
+  "cases": [
+    {
+      "case": "private-snapshot-outside-test-discovery-tree",
+      "status": "PASS"
+    },
+    {
+      "case": "repository-local-temp-root-rejected",
+      "status": "PASS"
+    },
+    {
+      "case": "semgrep-positive",
+      "expected": "FINDINGS",
+      "observed": {
+        "findingCount": 3,
+        "rawLogSha256": "68a058ec02d43d72b42e7dfeed1cd36a9e15a744f81a008bd975abc325243d21",
+        "rawReportSha256": "c6712ac98f04fe13e9bfcfcdd13bb4772249ec4aba7060c26e6403790d11dac8",
+        "rules": {
+          "takosan.dynamic-eval": 1,
+          "takosan.dynamic-function": 1,
+          "takosan.tls-verification-disabled": 1
+        },
+        "severities": {
+          "ERROR": 3
+        },
+        "status": "FINDINGS",
+        "tool": "semgrep",
+        "version": "1.180.0"
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "semgrep-negative",
+      "expected": "PASS",
+      "observed": {
+        "findingCount": 0,
+        "rawLogSha256": "798ec119f0672d781fc68da2b8a13e0f397715eb140211d92f1410ae3a23c30d",
+        "rawReportSha256": "1f1eb777aea8c6c89889adb8c9acacdaec740dcebfd9f49d4211c0b3fa8e0e3e",
+        "rules": {},
+        "severities": {},
+        "status": "PASS",
+        "tool": "semgrep",
+        "version": "1.180.0"
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "gitleaks-positive",
+      "expected": "FINDINGS",
+      "observed": {
+        "findingCount": 2,
+        "rawLogSha256": "93cb57cc015ac4b8f3df4979fc903c770cf8a21ca9dad7cd0abe73ba47b41801",
+        "rawReportSha256": "73461c8c74fe7c1d01ba3886d577dae61e4d2799c7e5b4e61064dee0cf9bd717",
+        "rules": {
+          "generic-api-key": 1,
+          "github-pat": 1
+        },
+        "severities": {
+          "SECRET_REVIEW_REQUIRED": 2
+        },
+        "status": "FINDINGS",
+        "tool": "gitleaks",
+        "version": "8.30.1"
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "gitleaks-negative",
+      "expected": "PASS",
+      "observed": {
+        "findingCount": 0,
+        "rawLogSha256": "dbd4fd38f83953c2693178157ffe7dfd31ae7ad0845178a3608e0f1ab8735934",
+        "rawReportSha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "rules": {},
+        "severities": {},
+        "status": "PASS",
+        "tool": "gitleaks",
+        "version": "8.30.1"
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "zizmor-positive",
+      "expected": "FINDINGS",
+      "observed": {
+        "findingCount": 2,
+        "rawLogSha256": "d46b5e633454893d42fc687688d7ab42d6a921d61da3d433154fe20926931747",
+        "rawReportSha256": "b867def1ebc9d414a2b783047c9cc5b0e770372b50b1eef2985fdbe93ec2a803",
+        "rules": {
+          "dangerous-triggers": 1,
+          "template-injection": 1
+        },
+        "severities": {
+          "HIGH": 2
+        },
+        "status": "FINDINGS",
+        "tool": "zizmor",
+        "version": "1.30.1"
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "zizmor-negative",
+      "expected": "PASS",
+      "observed": {
+        "findingCount": 0,
+        "rawLogSha256": "f139779fca9d6e462165dff77e55e32ab8b9583a3887cf79fa5786595a8ca6d6",
+        "rawReportSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "rules": {},
+        "severities": {},
+        "status": "PASS",
+        "tool": "zizmor",
+        "version": "1.30.1"
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "syft-positive",
+      "expected": "PASS",
+      "observed": {
+        "packageCount": 2,
+        "rawLogSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "rawReportSha256": "39653208f748533bbdd0f6933a0d602eb248d2d767aa647345350a8e8c385a21",
+        "sbomSha256": "39653208f748533bbdd0f6933a0d602eb248d2d767aa647345350a8e8c385a21",
+        "scope": "DECLARED_MANIFEST_AND_LOCK_GRAPH_NOT_VULNERABILITY_SCAN",
+        "status": "PASS",
+        "tool": "syft",
+        "version": "1.54.1"
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "syft-negative",
+      "expected": "ERROR",
+      "observed": {
+        "rawLogSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "rawReportSha256": "95c32ec9add5a17fb822f79f1b31845995dad9a2756c5b8feeea11cd497983e3",
+        "reason": "MALFORMED_SCANNER_OUTPUT",
+        "status": "ERROR",
+        "tool": "syft",
+        "version": "1.54.1"
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "zizmor-real-malformed-input",
+      "observed": {
+        "rawLogSha256": "559339cb2121eacc29507b34d69cdd8a0c924913d76cb2f27540ea61392e26d5",
+        "rawReportSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "reason": "MALFORMED_SCANNER_OUTPUT",
+        "status": "ERROR",
+        "tool": "zizmor",
+        "version": "1.30.1"
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "gitleaks-malformed-output",
+      "status": "PASS"
+    },
+    {
+      "case": "gitleaks-unavailable",
+      "status": "PASS"
+    },
+    {
+      "case": "syft-malformed-output",
+      "status": "PASS"
+    },
+    {
+      "case": "syft-unavailable",
+      "status": "PASS"
+    },
+    {
+      "case": "zizmor-malformed-output",
+      "status": "PASS"
+    },
+    {
+      "case": "zizmor-unavailable",
+      "status": "PASS"
+    },
+    {
+      "case": "semgrep-malformed-output",
+      "status": "PASS"
+    },
+    {
+      "case": "semgrep-unavailable",
+      "status": "PASS"
+    },
+    {
+      "case": "altered-tool-integrity-rejected",
+      "status": "PASS"
+    },
+    {
+      "case": "cached-tool-integrity-bypass-rejected",
+      "status": "PASS"
+    },
+    {
+      "case": "partial-sast-coverage-rejected",
+      "status": "PASS"
+    },
+    {
+      "case": "nonzero-exit-with-empty-findings",
+      "status": "PASS"
+    },
+    {
+      "case": "unredacted-output-rejected",
+      "status": "PASS"
+    }
+  ],
+  "checkedAtUtc": "2026-10-11T19:30:47.677244+00:00",
+  "classification": "LOCAL_SECURITY_CANDIDATE_NOT_RELEASE_CERTIFICATION",
+  "manifestSha256": "094840c1ec0ce518f82325528a8cb83b1eafe7af65a44669cad6dbc09e3a45c2",
+  "runnerSha256": "97f3c206b1e0489914655ffa663736292bb89a5c761704615105f7313b68979f",
+  "schemaVersion": 1,
+  "secretValuesAndSourceTextPublished": false,
+  "semgrepRulesSha256": "65a3fbd1e62829ba845f4e2dc3396bf1ac4211660ae4f6b582b117e551c9da99",
+  "status": "PASS"
+}

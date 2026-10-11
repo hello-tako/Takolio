@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "classification": "BOUNDED_LOCAL_DEPENDENCY_COMPATIBILITY_PROBE",
+  "mode": "native",
+  "nodeVersion": "v24.16.0",
+  "platform": "darwin",
+  "architecture": "arm64",
+  "startedAtUtc": "2026-10-11T19:36:53.926Z",
+  "sourceHashes": {
+    "package.json": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+    "pnpm-lock.yaml": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+    "docs/backend-upgrade/b08-local-remediation/local_compatibility_probe.mjs": "363304e8f77191ff836a30539323ab7baff27891b2406e8e7a68638a3fbfaacf"
+  },
+  "sourceValuesOrCredentialsPublished": false,
+  "externalCredentialValidation": false,
+  "result": {
+    "checks": [
+      {
+        "inputFormat": "png",
+        "fixtureSha256": "ce9d5edf0c2c66b2177471a485aa9d96e1f48d9511ab1bfbd233f0e55db354d6",
+        "decodedPixelSha256": "a5f08c66cc48ffd345807261a416cde3a2f26c8c82c050a6531a856b2b4ce8d8",
+        "inputDimensions": [
+          32,
+          18
+        ],
+        "resizedDimensions": [
+          13,
+          9
+        ],
+        "allExpectedPixelsMatched": true,
+        "outputSha256": "c92baf30d75317ab6d81a1875dd8f0345e2191e7d1a703278ea8144d62548f98"
+      },
+      {
+        "inputFormat": "svg",
+        "fixtureSha256": "eaeb154a9dd067c757f98d21a32a350740af7ac9e63afa0a7476dbd4be1c71f4",
+        "decodedPixelSha256": "a5f08c66cc48ffd345807261a416cde3a2f26c8c82c050a6531a856b2b4ce8d8",
+        "inputDimensions": [
+          32,
+          18
+        ],
+        "resizedDimensions": [
+          13,
+          9
+        ],
+        "allExpectedPixelsMatched": true,
+        "outputSha256": "48def10daba20c8158eca8b43c255b09f86c6873133c0547c986c471e3038b94"
+      }
+    ],
+    "sharpVersion": "0.35.5",
+    "nativeLibraryVersions": {
+      "aom": "3.15.1",
+      "archive": "3.8.9",
+      "cairo": "1.18.6",
+      "cgif": "0.5.4",
+      "exif": "0.6.26",
+      "expat": "2.8.5",
+      "ffi": "3.8.0",
+      "fontconfig": "2.18.3",
+      "freetype": "2.14.3",
+      "fribidi": "1.0.17",
+      "glib": "2.90.0",
+      "harfbuzz": "14.5.0",
+      "heif": "1.23.5",
+      "highway": "1.4.0",
+      "imagequant": "2.4.1",
+      "lcms": "2.19.1",
+      "mozjpeg": "0826579",
+      "pango": "1.58.2",
+      "pixman": "0.46.4",
+      "png": "1.6.58",
+      "proxy-libintl": "0.5",
+      "rsvg": "2.63.2",
+      "tiff": "4.7.2",
+      "uhdr": "2.0.2",
+      "vips": "8.18.7",
+      "webp": "1.6.0",
+      "xml2": "2.15.4",
+      "zlib-ng": "2.3.3",
+      "sharp": "0.35.5"
+    },
+    "limits": [
+      "Two self-contained trusted synthetic fixtures; not an untrusted-image decoder security certificate.",
+      "No provider calls or external source bytes."
+    ]
+  },
+  "status": "PASS",
+  "finishedAtUtc": "2026-10-11T19:36:54.108Z"
+}

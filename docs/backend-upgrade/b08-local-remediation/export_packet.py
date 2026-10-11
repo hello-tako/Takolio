@@ -79,7 +79,9 @@ appendable = {'docs/ai/CURRENT_STATE.md', 'docs/ai/HANDOFF.md', 'docs/ai/TASK_BO
               'docs/ai/DECISIONS.md', 'docs/backend-upgrade/IMPLEMENTATION_PLAN.md'}
 for name in changed_names:
     if name.startswith('docs/'):
-        if name.startswith('docs/backend-upgrade/b08-local-remediation/') and Path(name).suffix in {'.json', '.py', '.mjs', '.html'}:
+        if (name.startswith('docs/backend-upgrade/b08-local-remediation/')
+                and Path(name).suffix in {'.json', '.py', '.mjs', '.html'}
+                and Path(name).name not in {'export_packet.py', 'verify_packet.py'}):
             entry = record(ROOT / name)
             entry['mode'] = subprocess.check_output(['git', 'ls-tree', IMPLEMENTATION, '--', name]).decode().split()[0]
             candidates.append(entry)
@@ -89,7 +91,9 @@ for name in changed_names:
     entry['mode'] = subprocess.check_output(['git', 'ls-tree', IMPLEMENTATION, '--', name]).decode().split()[0]
     changed.append(entry)
 protected = []
-for line in subprocess.check_output(['git', 'ls-tree', '-r', BASE]).decode().splitlines():
+for line in subprocess.check_output(['git', 'ls-tree', '-rz', BASE]).decode().split('\0'):
+    if not line:
+        continue
     metadata, name = line.split('\t', 1)
     if name in changed_names or name in appendable:
         continue
@@ -99,6 +103,7 @@ for line in subprocess.check_output(['git', 'ls-tree', '-r', BASE]).decode().spl
 freeze = {
     'baseSha': BASE, 'implementationSha': IMPLEMENTATION,
     'changedSource': changed, 'candidateSource': candidates, 'protected': protected,
+    'receiptTools': [record(PACKET / name) for name in ['export_packet.py', 'verify_packet.py']],
     'migrationCount': sum(item['path'].startswith('migrations/') and item['path'].endswith('.sql') for item in protected),
     'paymentRuntimeDeltaCount': sum(name.startswith(('src/worker/routes/billing', 'src/worker/services/payment')) for name in changed_names),
     'workerRuntimeDeltaCount': sum(name.startswith('src/worker/') for name in changed_names),

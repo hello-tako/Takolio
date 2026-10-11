@@ -1,3 +1,19 @@
+# B08 local compatibility and security decisions - 2026-10-12 JST
+
+ADR-B08-LOCAL-001 accepted locally. Direct supported owner upgrades, scoped
+selector-parser overrides with exact CSS proof, unused PWA dependency removal,
+Router urgent-navigation compatibility and native PNG pixel/metadata parity are
+verified on d3cce9560593a263e70f85646e061291e8829b56. All public assets, Worker/payment/
+migrations/config/date/resource/provider authority remain unchanged.
+Existing action pins/quoted env SHA/credential/cache edits preserve every release
+and migration gate. The docs security pipeline candidate remains disabled.
+Actual audits/scanners and privately adjudicated17 matches do not certify security.
+The unpatched braces advisory and hosted/real-data/provider/inbox/SLO/billing gates
+remain open. Receipt-tool NUL Git traversal fixes are docs-only; final receipt tools
+bind to their own documentation commit. See b08-local-remediation RESULT/NEXT_ACTIONS.
+
+---
+
 # Backend program decisions - aggregate checkpoint 2026-10-12 JST
 
 Implementation `7ef2f8407d3a6a958c78146db3b5c9a9f0990b78` is locally verified. Packet ADRs in backend-upgrade record

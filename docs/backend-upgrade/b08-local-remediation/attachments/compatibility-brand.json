@@ -1,0 +1,1656 @@
+{
+  "schemaVersion": 1,
+  "classification": "BOUNDED_LOCAL_DEPENDENCY_COMPATIBILITY_PROBE",
+  "mode": "brand",
+  "nodeVersion": "v24.16.0",
+  "platform": "darwin",
+  "architecture": "arm64",
+  "startedAtUtc": "2026-10-11T19:36:54.325Z",
+  "sourceHashes": {
+    "package.json": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+    "pnpm-lock.yaml": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+    "docs/backend-upgrade/b08-local-remediation/local_compatibility_probe.mjs": "363304e8f77191ff836a30539323ab7baff27891b2406e8e7a68638a3fbfaacf"
+  },
+  "sourceValuesOrCredentialsPublished": false,
+  "externalCredentialValidation": false,
+  "result": {
+    "checks": [
+      {
+        "name": "symbol.svg",
+        "committedSha256": "3542fde9816dbf6626005f784318d3df3e24703fc5336d7ca316e1f47ef1125a",
+        "generatedSha256": "3542fde9816dbf6626005f784318d3df3e24703fc5336d7ca316e1f47ef1125a",
+        "bytesEqual": true
+      },
+      {
+        "name": "symbol-micro.svg",
+        "committedSha256": "a511e345a4c64dbb2ab051ee396c8f791662874338e39d71dd027bca11c4931c",
+        "generatedSha256": "a511e345a4c64dbb2ab051ee396c8f791662874338e39d71dd027bca11c4931c",
+        "bytesEqual": true
+      },
+      {
+        "name": "wordmark.svg",
+        "committedSha256": "12231a5d9abc4b336f3f06e34a93766d282aeb3769ac64b744726946da2eb732",
+        "generatedSha256": "12231a5d9abc4b336f3f06e34a93766d282aeb3769ac64b744726946da2eb732",
+        "bytesEqual": true
+      },
+      {
+        "name": "lockup.svg",
+        "committedSha256": "069d6444f3d6a1da6a9fb6461f829ca5c7559ec74b8d8fed32f46315a986ee4c",
+        "generatedSha256": "069d6444f3d6a1da6a9fb6461f829ca5c7559ec74b8d8fed32f46315a986ee4c",
+        "bytesEqual": true
+      },
+      {
+        "name": "stacked.svg",
+        "committedSha256": "7dd9da977a3eaaf30103240c0aadd13143aa24a512c83ed1e02c5e8f09cc0f76",
+        "generatedSha256": "7dd9da977a3eaaf30103240c0aadd13143aa24a512c83ed1e02c5e8f09cc0f76",
+        "bytesEqual": true
+      },
+      {
+        "name": "symbol-reverse.svg",
+        "committedSha256": "3542fde9816dbf6626005f784318d3df3e24703fc5336d7ca316e1f47ef1125a",
+        "generatedSha256": "3542fde9816dbf6626005f784318d3df3e24703fc5336d7ca316e1f47ef1125a",
+        "bytesEqual": true
+      },
+      {
+        "name": "symbol-micro-reverse.svg",
+        "committedSha256": "a511e345a4c64dbb2ab051ee396c8f791662874338e39d71dd027bca11c4931c",
+        "generatedSha256": "a511e345a4c64dbb2ab051ee396c8f791662874338e39d71dd027bca11c4931c",
+        "bytesEqual": true
+      },
+      {
+        "name": "wordmark-reverse.svg",
+        "committedSha256": "71f550bbbcf2987e765693839489933df17878ee3d054bcddff0bf8375b1b2e8",
+        "generatedSha256": "71f550bbbcf2987e765693839489933df17878ee3d054bcddff0bf8375b1b2e8",
+        "bytesEqual": true
+      },
+      {
+        "name": "lockup-reverse.svg",
+        "committedSha256": "72ff05076bea48bfa721c47494405ac4ed5b4cf8a91d182d83f91faf3b5a29b9",
+        "generatedSha256": "72ff05076bea48bfa721c47494405ac4ed5b4cf8a91d182d83f91faf3b5a29b9",
+        "bytesEqual": true
+      },
+      {
+        "name": "stacked-reverse.svg",
+        "committedSha256": "ed17ee5b5a66a536d09bdb61739293f5cef7e28c830458e5f78343f2d9c16940",
+        "generatedSha256": "ed17ee5b5a66a536d09bdb61739293f5cef7e28c830458e5f78343f2d9c16940",
+        "bytesEqual": true
+      },
+      {
+        "name": "symbol-mono.svg",
+        "committedSha256": "86284d4edd0eedd12844ed014cfe6597e8ebeb149adf05f28c3a6fa8422467cc",
+        "generatedSha256": "86284d4edd0eedd12844ed014cfe6597e8ebeb149adf05f28c3a6fa8422467cc",
+        "bytesEqual": true
+      },
+      {
+        "name": "symbol-micro-mono.svg",
+        "committedSha256": "739a81adc5152447f3cf5b07235c7bf001799c76238c6d57b1c7967a334645fc",
+        "generatedSha256": "739a81adc5152447f3cf5b07235c7bf001799c76238c6d57b1c7967a334645fc",
+        "bytesEqual": true
+      },
+      {
+        "name": "wordmark-mono.svg",
+        "committedSha256": "be3e553dc8887a6f64b0a6590578c9b1827e6974d51af6127cf605a9b315a2d0",
+        "generatedSha256": "be3e553dc8887a6f64b0a6590578c9b1827e6974d51af6127cf605a9b315a2d0",
+        "bytesEqual": true
+      },
+      {
+        "name": "lockup-mono.svg",
+        "committedSha256": "ebfb0effffb04894e7f26267b1278b6533e5462191607c751888111844db7e94",
+        "generatedSha256": "ebfb0effffb04894e7f26267b1278b6533e5462191607c751888111844db7e94",
+        "bytesEqual": true
+      },
+      {
+        "name": "stacked-mono.svg",
+        "committedSha256": "03305ee2d78e687ab2a988a3cfc862edfd10ecd449e56c105cbb9f533a87a6c0",
+        "generatedSha256": "03305ee2d78e687ab2a988a3cfc862edfd10ecd449e56c105cbb9f533a87a6c0",
+        "bytesEqual": true
+      },
+      {
+        "name": "symbol-mono-reverse.svg",
+        "committedSha256": "17cd1cd70607d7f469abbccb5556f828a5557e11afac3751b3d75039695eb276",
+        "generatedSha256": "17cd1cd70607d7f469abbccb5556f828a5557e11afac3751b3d75039695eb276",
+        "bytesEqual": true
+      },
+      {
+        "name": "symbol-micro-mono-reverse.svg",
+        "committedSha256": "570ecd1fa95ccb4c0de23fe63cfb35e701c664ecc4a114c80241e8928b0cdf3c",
+        "generatedSha256": "570ecd1fa95ccb4c0de23fe63cfb35e701c664ecc4a114c80241e8928b0cdf3c",
+        "bytesEqual": true
+      },
+      {
+        "name": "wordmark-mono-reverse.svg",
+        "committedSha256": "71f550bbbcf2987e765693839489933df17878ee3d054bcddff0bf8375b1b2e8",
+        "generatedSha256": "71f550bbbcf2987e765693839489933df17878ee3d054bcddff0bf8375b1b2e8",
+        "bytesEqual": true
+      },
+      {
+        "name": "lockup-mono-reverse.svg",
+        "committedSha256": "2c9c0983c25416cb91636cedc6a13b745af75c344031b91570509882ab930378",
+        "generatedSha256": "2c9c0983c25416cb91636cedc6a13b745af75c344031b91570509882ab930378",
+        "bytesEqual": true
+      },
+      {
+        "name": "stacked-mono-reverse.svg",
+        "committedSha256": "30a67293fe3ac3b340dc3e11ffc66f6caa74f2fc0e1d51532a7625eaae3470ba",
+        "generatedSha256": "30a67293fe3ac3b340dc3e11ffc66f6caa74f2fc0e1d51532a7625eaae3470ba",
+        "bytesEqual": true
+      },
+      {
+        "name": "app-icons/favicon.svg",
+        "committedSha256": "a511e345a4c64dbb2ab051ee396c8f791662874338e39d71dd027bca11c4931c",
+        "generatedSha256": "a511e345a4c64dbb2ab051ee396c8f791662874338e39d71dd027bca11c4931c",
+        "bytesEqual": true
+      },
+      {
+        "name": "app-icons/icon-master.svg",
+        "committedSha256": "e070158527d5a745428246c6cbb9d6840e0c2c45db9c321ab0d9dd94b2e58f09",
+        "generatedSha256": "e070158527d5a745428246c6cbb9d6840e0c2c45db9c321ab0d9dd94b2e58f09",
+        "bytesEqual": true
+      },
+      {
+        "name": "app-icons/maskable-master.svg",
+        "committedSha256": "a675c913fbd94c3aeaa13d28b6de5aaf226fee801c9853c5bb254b1af87a3f1e",
+        "generatedSha256": "a675c913fbd94c3aeaa13d28b6de5aaf226fee801c9853c5bb254b1af87a3f1e",
+        "bytesEqual": true
+      },
+      {
+        "name": "og.svg",
+        "committedSha256": "6e91eaa8fd3230923f913541b897cba841e5f4baa84028974aeab6cadb802215",
+        "generatedSha256": "6e91eaa8fd3230923f913541b897cba841e5f4baa84028974aeab6cadb802215",
+        "bytesEqual": true
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "committedSha256": "c68e5926a770d805402b63c5d601437582ea467a324ad5b578484d356f87bb5b",
+        "generatedSha256": "51bcd2900fb1b371aa62270cbdf163d5d5f1ee4619d58a1e4445cf0eae9372c5",
+        "bytesEqual": false,
+        "metadataEqual": true,
+        "generatedMetadata": {
+          "format": "png",
+          "width": 16,
+          "height": 16,
+          "channels": 3,
+          "space": "srgb",
+          "depth": "uchar",
+          "hasAlpha": false
+        },
+        "dimensions": [
+          16,
+          16,
+          3
+        ],
+        "generatedDimensions": [
+          16,
+          16,
+          3
+        ],
+        "decodedPixelsEqual": true,
+        "committedPixelSha256": "d5f892405416ff63e56997baa14a1300c8fab13a9f30880fd1114cb164668439",
+        "generatedPixelSha256": "d5f892405416ff63e56997baa14a1300c8fab13a9f30880fd1114cb164668439",
+        "pngChunks": {
+          "committed": [
+            {
+              "type": "IHDR",
+              "length": 13
+            },
+            {
+              "type": "pHYs",
+              "length": 9
+            },
+            {
+              "type": "IDAT",
+              "length": 235
+            },
+            {
+              "type": "IEND",
+              "length": 0
+            }
+          ],
+          "generated": [
+            {
+              "type": "IHDR",
+              "length": 13
+            },
+            {
+              "type": "pHYs",
+              "length": 9
+            },
+            {
+              "type": "IDAT",
+              "length": 234
+            },
+            {
+              "type": "IEND",
+              "length": 0
+            }
+          ]
+        },
+        "idatHeaders": {
+          "committed": "78da",
+          "generated": "28cf"
+        },
+        "filteredScanlineBytesEqual": true
+      },
+      {
+        "name": "app-icons/icon-24.png",
+        "committedSha256": "d058502945ba029a4156f64b519e5ffbe47f2d2fd8c4e1de547bbfe970fcd6a8",
+        "generatedSha256": "85d693b43ad93608853ff9dafba327b493a6b8363469a3fe71328440410708f2",
+        "bytesEqual": false,
+        "metadataEqual": true,
+        "generatedMetadata": {
+          "format": "png",
+          "width": 24,
+          "height": 24,
+          "channels": 3,
+          "space": "srgb",
+          "depth": "uchar",
+          "hasAlpha": false
+        },
+        "dimensions": [
+          24,
+          24,
+          3
+        ],
+        "generatedDimensions": [
+          24,
+          24,
+          3
+        ],
+        "decodedPixelsEqual": true,
+        "committedPixelSha256": "0fc45bdbd6a984ef83616a6880fe1721e56ba727762d253f91a8d4a322c66948",
+        "generatedPixelSha256": "0fc45bdbd6a984ef83616a6880fe1721e56ba727762d253f91a8d4a322c66948",
+        "pngChunks": {
+          "committed": [
+            {
+              "type": "IHDR",
+              "length": 13
+            },
+            {
+              "type": "pHYs",
+              "length": 9
+            },
+            {
+              "type": "IDAT",
+              "length": 365
+            },
+            {
+              "type": "IEND",
+              "length": 0
+            }
+          ],
+          "generated": [
+            {
+              "type": "IHDR",
+              "length": 13
+            },
+            {
+              "type": "pHYs",
+              "length": 9
+            },
+            {
+              "type": "IDAT",
+              "length": 365
+            },
+            {
+              "type": "IEND",
+              "length": 0
+            }
+          ]
+        },
+        "idatHeaders": {
+          "committed": "78da",
+          "generated": "38cb"
+        },
+        "filteredScanlineBytesEqual": true
+      },
+      {
+        "name": "app-icons/icon-32.png",
+        "committedSha256": "8947392a309e994bdbc3b6625e0fdc4793208e80f8f47754b404fdca9b1bfdc3",
+        "generatedSha256": "f57b472b3c154bc02457737d4f54f6d3b9ed33495cf025c504016f01aaba6b23",
+        "bytesEqual": false,
+        "metadataEqual": true,
+        "generatedMetadata": {
+          "format": "png",
+          "width": 32,
+          "height": 32,
+          "channels": 3,
+          "space": "srgb",
+          "depth": "uchar",
+          "hasAlpha": false
+        },
+        "dimensions": [
+          32,
+          32,
+          3
+        ],
+        "generatedDimensions": [
+          32,
+          32,
+          3
+        ],
+        "decodedPixelsEqual": true,
+        "committedPixelSha256": "fb8c9d8b919366d35d73a8c06090779f0005dcae608e4d3c4c7c559892d7c154",
+        "generatedPixelSha256": "fb8c9d8b919366d35d73a8c06090779f0005dcae608e4d3c4c7c559892d7c154",
+        "pngChunks": {
+          "committed": [
+            {
+              "type": "IHDR",
+              "length": 13
+            },
+            {
+              "type": "pHYs",
+              "length": 9
+            },
+            {
+              "type": "IDAT",
+              "length": 534
+            },
+            {
+              "type": "IEND",
+              "length": 0
+            }
+          ],
+          "generated": [
+            {
+              "type": "IHDR",
+              "length": 13
+            },
+            {
+              "type": "pHYs",
+              "length": 9
+            },
+            {
+              "type": "IDAT",
+              "length": 534
+            },
+            {
+              "type": "IEND",
+              "length": 0
+            }
+          ]
+        },
+        "idatHeaders": {
+          "committed": "78da",
+          "generated": "48c7"
+        },
+        "filteredScanlineBytesEqual": true
+      },
+      {
+        "name": "app-icons/icon-48.png",
+        "committedSha256": "07525fc54e472c3746660e9b01b23b8d3ada40c28b5baef548a1efb3b92d2c55",
+        "generatedSha256": "14f73b903feab19abaa1e0e3457113f38198976ca840bba08bc0b700b19491bc",
+        "bytesEqual": false,
+        "metadataEqual": true,
+        "generatedMetadata": {
+          "format": "png",
+          "width": 48,
+          "height": 48,
+          "channels": 3,
+          "space": "srgb",
+          "depth": "uchar",
+          "hasAlpha": false
+        },
+        "dimensions": [
+          48,
+          48,
+          3
+        ],
+        "generatedDimensions": [
+          48,
+          48,
+          3
+        ],
+        "decodedPixelsEqual": true,
+        "committedPixelSha256": "ad21a66a617dbb8e3d8979594d197e532b95aed9905cecac3ce75b53a870c936",
+        "generatedPixelSha256": "ad21a66a617dbb8e3d8979594d197e532b95aed9905cecac3ce75b53a870c936",
+        "pngChunks": {
+          "committed": [
+            {
+              "type": "IHDR",
+              "length": 13
+            },
+            {
+              "type": "pHYs",
+              "length": 9
+            },
+            {
+              "type": "IDAT",
+              "length": 811
+            },
+            {
+              "type": "IEND",
+              "length": 0
+            }
+          ],
+          "generated": [
+            {
+              "type": "IHDR",
+              "length": 13
+            },
+            {
+              "type": "pHYs",
+              "length": 9
+            },
+            {
+              "type": "IDAT",
+              "length": 810
+            },
+            {
+              "type": "IEND",
+              "length": 0
+            }
+          ]
+        },
+        "idatHeaders": {
+          "committed": "78da",
+          "generated": "58c3"
+        },
+        "filteredScanlineBytesEqual": true
+      },
+      {
+        "name": "app-icons/icon-64.png",
+        "committedSha256": "96bc767559d3e7e67ef7aa56d5a4cdb5e009d65a47b6a6e06f0ac0559e5ca0b0",
+        "generatedSha256": "994fd87fa44d0864643999db892a992c82c10d5637a355a7a95388c13eba0289",
+        "bytesEqual": false,
+        "metadataEqual": true,
+        "generatedMetadata": {
+          "format": "png",
+          "width": 64,
+          "height": 64,
+          "channels": 3,
+          "space": "srgb",
+          "depth": "uchar",
+          "hasAlpha": false
+        },
+        "dimensions": [
+          64,
+          64,
+          3
+        ],
+        "generatedDimensions": [
+          64,
+          64,
+          3
+        ],
+        "decodedPixelsEqual": true,
+        "committedPixelSha256": "9033966087d93e7e8b0f5197aa5388c3aa07bfed89dca0cfc404c1b80837001c",
+        "generatedPixelSha256": "9033966087d93e7e8b0f5197aa5388c3aa07bfed89dca0cfc404c1b80837001c",
+        "pngChunks": {
+          "committed": [
+            {
+              "type": "IHDR",
+              "length": 13
+            },
+            {
+              "type": "pHYs",
+              "length": 9
+            },
+            {
+              "type": "IDAT",
+              "length": 1107
+            },
+            {
+              "type": "IEND",
+              "length": 0
+            }
+          ],
+          "generated": [
+            {
+              "type": "IHDR",
+              "length": 13
+            },
+            {
+              "type": "pHYs",
+              "length": 9
+            },
+            {
+              "type": "IDAT",
+              "length": 1107
+            },
+            {
+              "type": "IEND",
+              "length": 0
+            }
+          ]
+        },
+        "idatHeaders": {
+          "committed": "78da",
+          "generated": "68de"
+        },
+        "filteredScanlineBytesEqual": true
+      },
+      {
+        "name": "app-icons/icon-128.png",
+        "committedSha256": "d8989eb4a45bfa106460114cf056530102420280b0fffa91993e0cc6e17d6ad3",
+        "generatedSha256": "d500e94713c8323d19f70205a759ead113926a8bb43af5d3af65e77fefd8dc35",
+        "bytesEqual": false,
+        "metadataEqual": true,
+        "generatedMetadata": {
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "channels": 3,
+          "space": "srgb",
+          "depth": "uchar",
+          "hasAlpha": false
+        },
+        "dimensions": [
+          128,
+          128,
+          3
+        ],
+        "generatedDimensions": [
+          128,
+          128,
+          3
+        ],
+        "decodedPixelsEqual": true,
+        "committedPixelSha256": "4abe2da52ba76270555029c3d2b2da1d0e539f406ab732621f13a6e2ba8a5cab",
+        "generatedPixelSha256": "4abe2da52ba76270555029c3d2b2da1d0e539f406ab732621f13a6e2ba8a5cab",
+        "pngChunks": {
+          "committed": [
+            {
+              "type": "IHDR",
+              "length": 13
+            },
+            {
+              "type": "pHYs",
+              "length": 9
+            },
+            {
+              "type": "IDAT",
+              "length": 2252
+            },
+            {
+              "type": "IEND",
+              "length": 0
+            }
+          ],
+          "generated": [
+            {
+              "type": "IHDR",
+              "length": 13
+            },
+            {
+              "type": "pHYs",
+              "length": 9
+            },
+            {
+              "type": "IDAT",
+              "length": 2252
+            },
+            {
+              "type": "IEND",
+              "length": 0
+            }
+          ]
+        },
+        "idatHeaders": {
+          "committed": "78da",
+          "generated": "78da"
+        },
+        "filteredScanlineBytesEqual": true
+      },
+      {
+        "name": "app-icons/icon-180.png",
+        "committedSha256": "2922faef7b791863350d41738cf247a8965ca01c4f62609e4f2517e3a4823ec3",
+        "generatedSha256": "2922faef7b791863350d41738cf247a8965ca01c4f62609e4f2517e3a4823ec3",
+        "bytesEqual": true,
+        "metadataEqual": true,
+        "generatedMetadata": {
+          "format": "png",
+          "width": 180,
+          "height": 180,
+          "channels": 3,
+          "space": "srgb",
+          "depth": "uchar",
+          "hasAlpha": false
+        },
+        "dimensions": [
+          180,
+          180,
+          3
+        ],
+        "generatedDimensions": [
+          180,
+          180,
+          3
+        ],
+        "decodedPixelsEqual": true,
+        "committedPixelSha256": "953790aff82f695f98f426933297b78f77d74a4b6854a89ee774e9ad084b190a",
+        "generatedPixelSha256": "953790aff82f695f98f426933297b78f77d74a4b6854a89ee774e9ad084b190a",
+        "pngChunks": {
+          "committed": [
+            {
+              "type": "IHDR",
+              "length": 13
+            },
+            {
+              "type": "pHYs",
+              "length": 9
+            },
+            {
+              "type": "IDAT",
+              "length": 3314
+            },
+            {
+              "type": "IEND",
+              "length": 0
+            }
+          ],
+          "generated": [
+            {
+              "type": "IHDR",
+              "length": 13
+            },
+            {
+              "type": "pHYs",
+              "length": 9
+            },
+            {
+              "type": "IDAT",
+              "length": 3314
+            },
+            {
+              "type": "IEND",
+              "length": 0
+            }
+          ]
+        },
+        "idatHeaders": {
+          "committed": "78da",
+          "generated": "78da"
+        },
+        "filteredScanlineBytesEqual": true
+      },
+      {
+        "name": "app-icons/icon-192.png",
+        "committedSha256": "11b008b59538de18a979a10893a1dbe5e1f3231615777d627939dd83d81fea3d",
+        "generatedSha256": "11b008b59538de18a979a10893a1dbe5e1f3231615777d627939dd83d81fea3d",
+        "bytesEqual": true,
+        "metadataEqual": true,
+        "generatedMetadata": {
+          "format": "png",
+          "width": 192,
+          "height": 192,
+          "channels": 3,
+          "space": "srgb",
+          "depth": "uchar",
+          "hasAlpha": false
+        },
+        "dimensions": [
+          192,
+          192,
+          3
+        ],
+        "generatedDimensions": [
+          192,
+          192,
+          3
+        ],
+        "decodedPixelsEqual": true,
+        "committedPixelSha256": "9383a7ed9b6cdb1c6798c18fa8b1baf56eb5e3377df73ff70bece4cff34892b4",
+        "generatedPixelSha256": "9383a7ed9b6cdb1c6798c18fa8b1baf56eb5e3377df73ff70bece4cff34892b4",
+        "pngChunks": {
+          "committed": [
+            {
+              "type": "IHDR",
+              "length": 13
+            },
+            {
+              "type": "pHYs",
+              "length": 9
+            },
+            {
+              "type": "IDAT",
+              "length": 3561
+            },
+            {
+              "type": "IEND",
+              "length": 0
+            }
+          ],
+          "generated": [
+            {
+              "type": "IHDR",
+              "length": 13
+            },
+            {
+              "type": "pHYs",
+              "length": 9
+            },
+            {
+              "type": "IDAT",
+              "length": 3561
+            },
+            {
+              "type": "IEND",
+              "length": 0
+            }
+          ]
+        },
+        "idatHeaders": {
+          "committed": "78da",
+          "generated": "78da"
+        },
+        "filteredScanlineBytesEqual": true
+      },
+      {
+        "name": "app-icons/icon-256.png",
+        "committedSha256": "912d2132737d01ec8e690eebc02accb754c1b1d4222b4b111b6d512cb96e0d34",
+        "generatedSha256": "912d2132737d01ec8e690eebc02accb754c1b1d4222b4b111b6d512cb96e0d34",
+        "bytesEqual": true,
+        "metadataEqual": true,
+        "generatedMetadata": {
+          "format": "png",
+          "width": 256,
+          "height": 256,
+          "channels": 3,
+          "space": "srgb",
+          "depth": "uchar",
+          "hasAlpha": false
+        },
+        "dimensions": [
+          256,
+          256,
+          3
+        ],
+        "generatedDimensions": [
+          256,
+          256,
+          3
+        ],
+        "decodedPixelsEqual": true,
+        "committedPixelSha256": "3832baf21f53aa4d14d569ef85e6d53ea6805086bea9807416effb85fdd752d4",
+        "generatedPixelSha256": "3832baf21f53aa4d14d569ef85e6d53ea6805086bea9807416effb85fdd752d4",
+        "pngChunks": {
+          "committed": [
+            {
+              "type": "IHDR",
+              "length": 13
+            },
+            {
+              "type": "pHYs",
+              "length": 9
+            },
+            {
+              "type": "IDAT",
+              "length": 4950
+            },
+            {
+              "type": "IEND",
+              "length": 0
+            }
+          ],
+          "generated": [
+            {
+              "type": "IHDR",
+              "length": 13
+            },
+            {
+              "type": "pHYs",
+              "length": 9
+            },
+            {
+              "type": "IDAT",
+              "length": 4950
+            },
+            {
+              "type": "IEND",
+              "length": 0
+            }
+          ]
+        },
+        "idatHeaders": {
+          "committed": "78da",
+          "generated": "78da"
+        },
+        "filteredScanlineBytesEqual": true
+      },
+      {
+        "name": "app-icons/icon-512.png",
+        "committedSha256": "88c971380b59199ef4f8ec5825d254a34403b638668d4f2c3167b1faf7dc0cdd",
+        "generatedSha256": "88c971380b59199ef4f8ec5825d254a34403b638668d4f2c3167b1faf7dc0cdd",
+        "bytesEqual": true,
+        "metadataEqual": true,
+        "generatedMetadata": {
+          "format": "png",
+          "width": 512,
+          "height": 512,
+          "channels": 3,
+          "space": "srgb",
+          "depth": "uchar",
+          "hasAlpha": false
+        },
+        "dimensions": [
+          512,
+          512,
+          3
+        ],
+        "generatedDimensions": [
+          512,
+          512,
+          3
+        ],
+        "decodedPixelsEqual": true,
+        "committedPixelSha256": "33476fc1135b054cda8953c973a2878a764336c9d96e65b8f60454f891a33f61",
+        "generatedPixelSha256": "33476fc1135b054cda8953c973a2878a764336c9d96e65b8f60454f891a33f61",
+        "pngChunks": {
+          "committed": [
+            {
+              "type": "IHDR",
+              "length": 13
+            },
+            {
+              "type": "pHYs",
+              "length": 9
+            },
+            {
+              "type": "IDAT",
+              "length": 8192
+            },
+            {
+              "type": "IDAT",
+              "length": 2435
+            },
+            {
+              "type": "IEND",
+              "length": 0
+            }
+          ],
+          "generated": [
+            {
+              "type": "IHDR",
+              "length": 13
+            },
+            {
+              "type": "pHYs",
+              "length": 9
+            },
+            {
+              "type": "IDAT",
+              "length": 8192
+            },
+            {
+              "type": "IDAT",
+              "length": 2435
+            },
+            {
+              "type": "IEND",
+              "length": 0
+            }
+          ]
+        },
+        "idatHeaders": {
+          "committed": "78da",
+          "generated": "78da"
+        },
+        "filteredScanlineBytesEqual": true
+      },
+      {
+        "name": "app-icons/icon-maskable-512.png",
+        "committedSha256": "c06c65c876b5f48322dcae5cb65b85902d278e18080499e3d6ea0bdc1f19e1f0",
+        "generatedSha256": "c06c65c876b5f48322dcae5cb65b85902d278e18080499e3d6ea0bdc1f19e1f0",
+        "bytesEqual": true,
+        "metadataEqual": true,
+        "generatedMetadata": {
+          "format": "png",
+          "width": 512,
+          "height": 512,
+          "channels": 3,
+          "space": "srgb",
+          "depth": "uchar",
+          "hasAlpha": false
+        },
+        "dimensions": [
+          512,
+          512,
+          3
+        ],
+        "generatedDimensions": [
+          512,
+          512,
+          3
+        ],
+        "decodedPixelsEqual": true,
+        "committedPixelSha256": "35cccb306bce1a089097c08ba55f69c358cd10b93761cd3075f248d1a4d66a93",
+        "generatedPixelSha256": "35cccb306bce1a089097c08ba55f69c358cd10b93761cd3075f248d1a4d66a93",
+        "pngChunks": {
+          "committed": [
+            {
+              "type": "IHDR",
+              "length": 13
+            },
+            {
+              "type": "pHYs",
+              "length": 9
+            },
+            {
+              "type": "IDAT",
+              "length": 8192
+            },
+            {
+              "type": "IDAT",
+              "length": 1600
+            },
+            {
+              "type": "IEND",
+              "length": 0
+            }
+          ],
+          "generated": [
+            {
+              "type": "IHDR",
+              "length": 13
+            },
+            {
+              "type": "pHYs",
+              "length": 9
+            },
+            {
+              "type": "IDAT",
+              "length": 8192
+            },
+            {
+              "type": "IDAT",
+              "length": 1600
+            },
+            {
+              "type": "IEND",
+              "length": 0
+            }
+          ]
+        },
+        "idatHeaders": {
+          "committed": "78da",
+          "generated": "78da"
+        },
+        "filteredScanlineBytesEqual": true
+      },
+      {
+        "name": "og.png",
+        "committedSha256": "45a1ab4c033ec2a730c551736fda2d3bb369a52aac31acde42b2429aab8f7701",
+        "generatedSha256": "45a1ab4c033ec2a730c551736fda2d3bb369a52aac31acde42b2429aab8f7701",
+        "bytesEqual": true,
+        "metadataEqual": true,
+        "generatedMetadata": {
+          "format": "png",
+          "width": 1200,
+          "height": 630,
+          "channels": 3,
+          "space": "srgb",
+          "depth": "uchar",
+          "hasAlpha": false
+        },
+        "dimensions": [
+          1200,
+          630,
+          3
+        ],
+        "generatedDimensions": [
+          1200,
+          630,
+          3
+        ],
+        "decodedPixelsEqual": true,
+        "committedPixelSha256": "fa5d513ccc8f9a244b5b960d123460002203209b746373be91086e1a9816f67e",
+        "generatedPixelSha256": "fa5d513ccc8f9a244b5b960d123460002203209b746373be91086e1a9816f67e",
+        "pngChunks": {
+          "committed": [
+            {
+              "type": "IHDR",
+              "length": 13
+            },
+            {
+              "type": "pHYs",
+              "length": 9
+            },
+            {
+              "type": "IDAT",
+              "length": 8192
+            },
+            {
+              "type": "IDAT",
+              "length": 8192
+            },
+            {
+              "type": "IDAT",
+              "length": 8192
+            },
+            {
+              "type": "IDAT",
+              "length": 8192
+            },
+            {
+              "type": "IDAT",
+              "length": 3479
+            },
+            {
+              "type": "IEND",
+              "length": 0
+            }
+          ],
+          "generated": [
+            {
+              "type": "IHDR",
+              "length": 13
+            },
+            {
+              "type": "pHYs",
+              "length": 9
+            },
+            {
+              "type": "IDAT",
+              "length": 8192
+            },
+            {
+              "type": "IDAT",
+              "length": 8192
+            },
+            {
+              "type": "IDAT",
+              "length": 8192
+            },
+            {
+              "type": "IDAT",
+              "length": 8192
+            },
+            {
+              "type": "IDAT",
+              "length": 3479
+            },
+            {
+              "type": "IEND",
+              "length": 0
+            }
+          ]
+        },
+        "idatHeaders": {
+          "committed": "78da",
+          "generated": "78da"
+        },
+        "filteredScanlineBytesEqual": true
+      }
+    ],
+    "encoderCandidates": [
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 0,
+        "strategy": 0,
+        "windowBits": 15,
+        "idatLength": 795,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 0,
+        "strategy": 1,
+        "windowBits": 15,
+        "idatLength": 795,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 0,
+        "strategy": 2,
+        "windowBits": 15,
+        "idatLength": 795,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 0,
+        "strategy": 3,
+        "windowBits": 15,
+        "idatLength": 795,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 0,
+        "strategy": 4,
+        "windowBits": 15,
+        "idatLength": 795,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 1,
+        "strategy": 0,
+        "windowBits": 15,
+        "idatLength": 260,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 1,
+        "strategy": 1,
+        "windowBits": 15,
+        "idatLength": 260,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 1,
+        "strategy": 2,
+        "windowBits": 15,
+        "idatLength": 463,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 1,
+        "strategy": 3,
+        "windowBits": 15,
+        "idatLength": 463,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 1,
+        "strategy": 4,
+        "windowBits": 15,
+        "idatLength": 260,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 2,
+        "strategy": 0,
+        "windowBits": 15,
+        "idatLength": 259,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 2,
+        "strategy": 1,
+        "windowBits": 15,
+        "idatLength": 259,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 2,
+        "strategy": 2,
+        "windowBits": 15,
+        "idatLength": 463,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 2,
+        "strategy": 3,
+        "windowBits": 15,
+        "idatLength": 463,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 2,
+        "strategy": 4,
+        "windowBits": 15,
+        "idatLength": 259,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 3,
+        "strategy": 0,
+        "windowBits": 15,
+        "idatLength": 252,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 3,
+        "strategy": 1,
+        "windowBits": 15,
+        "idatLength": 252,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 3,
+        "strategy": 2,
+        "windowBits": 15,
+        "idatLength": 463,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 3,
+        "strategy": 3,
+        "windowBits": 15,
+        "idatLength": 463,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 3,
+        "strategy": 4,
+        "windowBits": 15,
+        "idatLength": 253,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 4,
+        "strategy": 0,
+        "windowBits": 15,
+        "idatLength": 241,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 4,
+        "strategy": 1,
+        "windowBits": 15,
+        "idatLength": 272,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 4,
+        "strategy": 2,
+        "windowBits": 15,
+        "idatLength": 463,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 4,
+        "strategy": 3,
+        "windowBits": 15,
+        "idatLength": 463,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 4,
+        "strategy": 4,
+        "windowBits": 15,
+        "idatLength": 241,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 5,
+        "strategy": 0,
+        "windowBits": 15,
+        "idatLength": 240,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 5,
+        "strategy": 1,
+        "windowBits": 15,
+        "idatLength": 272,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 5,
+        "strategy": 2,
+        "windowBits": 15,
+        "idatLength": 463,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 5,
+        "strategy": 3,
+        "windowBits": 15,
+        "idatLength": 463,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 5,
+        "strategy": 4,
+        "windowBits": 15,
+        "idatLength": 241,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 6,
+        "strategy": 0,
+        "windowBits": 15,
+        "idatLength": 234,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 6,
+        "strategy": 1,
+        "windowBits": 15,
+        "idatLength": 268,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 6,
+        "strategy": 2,
+        "windowBits": 15,
+        "idatLength": 463,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 6,
+        "strategy": 3,
+        "windowBits": 15,
+        "idatLength": 463,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 6,
+        "strategy": 4,
+        "windowBits": 15,
+        "idatLength": 234,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 7,
+        "strategy": 0,
+        "windowBits": 15,
+        "idatLength": 234,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 7,
+        "strategy": 1,
+        "windowBits": 15,
+        "idatLength": 268,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 7,
+        "strategy": 2,
+        "windowBits": 15,
+        "idatLength": 463,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 7,
+        "strategy": 3,
+        "windowBits": 15,
+        "idatLength": 463,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 7,
+        "strategy": 4,
+        "windowBits": 15,
+        "idatLength": 234,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 8,
+        "strategy": 0,
+        "windowBits": 15,
+        "idatLength": 234,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 8,
+        "strategy": 1,
+        "windowBits": 15,
+        "idatLength": 268,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 8,
+        "strategy": 2,
+        "windowBits": 15,
+        "idatLength": 463,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 8,
+        "strategy": 3,
+        "windowBits": 15,
+        "idatLength": 463,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 8,
+        "strategy": 4,
+        "windowBits": 15,
+        "idatLength": 234,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 9,
+        "strategy": 0,
+        "windowBits": 15,
+        "idatLength": 234,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 9,
+        "strategy": 1,
+        "windowBits": 15,
+        "idatLength": 268,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 9,
+        "strategy": 2,
+        "windowBits": 15,
+        "idatLength": 463,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 9,
+        "strategy": 3,
+        "windowBits": 15,
+        "idatLength": 463,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "node:zlib",
+        "level": 9,
+        "strategy": 4,
+        "windowBits": 15,
+        "idatLength": 234,
+        "idatBytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "sharp",
+        "compressionLevel": 0,
+        "adaptiveFiltering": false,
+        "palette": false,
+        "bytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "sharp",
+        "compressionLevel": 1,
+        "adaptiveFiltering": false,
+        "palette": false,
+        "bytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "sharp",
+        "compressionLevel": 2,
+        "adaptiveFiltering": false,
+        "palette": false,
+        "bytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "sharp",
+        "compressionLevel": 3,
+        "adaptiveFiltering": false,
+        "palette": false,
+        "bytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "sharp",
+        "compressionLevel": 4,
+        "adaptiveFiltering": false,
+        "palette": false,
+        "bytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "sharp",
+        "compressionLevel": 5,
+        "adaptiveFiltering": false,
+        "palette": false,
+        "bytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "sharp",
+        "compressionLevel": 6,
+        "adaptiveFiltering": false,
+        "palette": false,
+        "bytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "sharp",
+        "compressionLevel": 7,
+        "adaptiveFiltering": false,
+        "palette": false,
+        "bytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "sharp",
+        "compressionLevel": 8,
+        "adaptiveFiltering": false,
+        "palette": false,
+        "bytesEqual": false
+      },
+      {
+        "name": "app-icons/icon-16.png",
+        "encoder": "sharp",
+        "compressionLevel": 9,
+        "adaptiveFiltering": false,
+        "palette": false,
+        "bytesEqual": false
+      }
+    ],
+    "generatedChecksumManifestSha256": "cf182710d49e5679663b4df9f5e9cd11de196843a25c1e7627d5dae3eeaa3c67",
+    "byteEqualCount": 30,
+    "pngCount": 12,
+    "pngPixelEqualCount": 12,
+    "pngScanlineEqualCount": 12,
+    "allCommittedFilesPreserved": true,
+    "sharpVersion": "0.35.5",
+    "nativeLibraryVersions": {
+      "aom": "3.15.1",
+      "archive": "3.8.9",
+      "cairo": "1.18.6",
+      "cgif": "0.5.4",
+      "exif": "0.6.26",
+      "expat": "2.8.5",
+      "ffi": "3.8.0",
+      "fontconfig": "2.18.3",
+      "freetype": "2.14.3",
+      "fribidi": "1.0.17",
+      "glib": "2.90.0",
+      "harfbuzz": "14.5.0",
+      "heif": "1.23.5",
+      "highway": "1.4.0",
+      "imagequant": "2.4.1",
+      "lcms": "2.19.1",
+      "mozjpeg": "0826579",
+      "pango": "1.58.2",
+      "pixman": "0.46.4",
+      "png": "1.6.58",
+      "proxy-libintl": "0.5",
+      "rsvg": "2.63.2",
+      "tiff": "4.7.2",
+      "uhdr": "2.0.2",
+      "vips": "8.18.7",
+      "webp": "1.6.0",
+      "xml2": "2.15.4",
+      "zlib-ng": "2.3.3",
+      "sharp": "0.35.5"
+    },
+    "sourceHashes": {
+      "scripts/generate-takosan-brand.mjs": "fa05c2ccdbfd0c2fecbf056f1221965c480acaed3e45ab89d5eae57085f45aac",
+      "tests/unit/ui07-brand-exports.test.mjs": "515d26080c9e9ef105314bba519c45ec555ea98b35219f75a1505e14d8e1039f"
+    },
+    "limits": [
+      "Reports compatibility evidence; does not replace the existing byte-identity gate.",
+      "No generator source or public asset changed."
+    ]
+  },
+  "status": "PASS",
+  "finishedAtUtc": "2026-10-11T19:36:54.492Z"
+}

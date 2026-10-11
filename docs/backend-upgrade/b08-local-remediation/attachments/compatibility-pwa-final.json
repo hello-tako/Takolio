@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "classification": "BOUNDED_LOCAL_DEPENDENCY_COMPATIBILITY_PROBE",
+  "mode": "pwa",
+  "nodeVersion": "v24.16.0",
+  "platform": "darwin",
+  "architecture": "arm64",
+  "startedAtUtc": "2026-10-11T19:36:56.666Z",
+  "sourceHashes": {
+    "package.json": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+    "pnpm-lock.yaml": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+    "docs/backend-upgrade/b08-local-remediation/local_compatibility_probe.mjs": "363304e8f77191ff836a30539323ab7baff27891b2406e8e7a68638a3fbfaacf"
+  },
+  "sourceValuesOrCredentialsPublished": false,
+  "externalCredentialValidation": false,
+  "result": {
+    "checks": [
+      {
+        "case": "built_custom_SW_token_substitution",
+        "status": "PASS",
+        "observedBuildId": "d3cce9560593a263e70f85646e061291e8829b56",
+        "immutableReleaseShaQualified": true
+      },
+      {
+        "case": "missing_actual_build_flag_rejected_by_release_guard",
+        "status": "PASS",
+        "buildRecord": {
+          "VITE_MEAL_COMPOSITION_V2_ENABLED": null,
+          "VITE_MEAL_PLANNER_ENABLED": null
+        },
+        "releaseReadiness": "REJECTED"
+      },
+      {
+        "case": "actual_built_custom_SW_install_and_precache",
+        "status": "PASS",
+        "cacheName": "takosan-pwa-d3cce9560593a263e70f85646e061291e8829b56",
+        "requiredPrecacheCount": 13,
+        "allPrecachePresent": true,
+        "controllerActive": true
+      },
+      {
+        "case": "actual_built_app_auth_verify_transition_single_synthetic_Turnstile_render",
+        "status": "PASS",
+        "providerWidgetRenderCount": 1,
+        "syntheticAuthRequestShapes": [
+          {
+            "endpoint": "register",
+            "hasTurnstileToken": true
+          },
+          {
+            "endpoint": "resend-otp",
+            "hasTurnstileToken": false
+          }
+        ],
+        "actualMailOrRegistrationRequestCount": 0
+      },
+      {
+        "case": "actual_built_offline_shell_reload_deeplink_and_precached_assets",
+        "status": "PASS",
+        "offlinePath": "/auth",
+        "observedServerRequestsWhileOffline": 0,
+        "staticServerStoppedBeforeOfflineNavigation": true,
+        "metadata": {
+          "controlled": true,
+          "online": false,
+          "faviconStatus": 200,
+          "faviconContainsSvg": true,
+          "manifestStatus": 200,
+          "manifestContainsIcons": true
+        },
+        "cachedEntryAssetCount": 2
+      }
+    ],
+    "buildRecord": {
+      "VITE_MEAL_COMPOSITION_V2_ENABLED": null,
+      "VITE_MEAL_PLANNER_ENABLED": null
+    },
+    "observedBuildId": "d3cce9560593a263e70f85646e061291e8829b56",
+    "precachePaths": [
+      "/",
+      "/index.html",
+      "/manifest.json",
+      "/takosan/rebuild/app-icons/favicon.svg",
+      "/takosan/rebuild/app-icons/icon-192.png",
+      "/takosan/rebuild/app-icons/icon-512.png",
+      "/takosan/rebuild/lockup.svg",
+      "/takosan/rebuild/symbol.svg",
+      "/takosan/app-icons/icon-192.png",
+      "/takosan/app-icons/icon-512.png",
+      "/takosan/brand/takosan-logo-horizontal-primary.svg",
+      "/takosan/brand/takosan-symbol.svg",
+      "/takosan/mascot/takosan-neutral.svg"
+    ],
+    "externalOriginRequestsAborted": 10,
+    "sourceHashes": {
+      "public/sw.js": "b7613458f313de8da654284fdc923f5c93344f2f3856787ae8b8c52e2c298fd4",
+      "src/web/main.tsx": "64b1c7613d6f327917c2825dca6b0ab3c1e0cd179e02abeae0c560067abb51cd",
+      "dist/client/sw.js": "081d28037b363e4ae76db0b0772cd6b6855c5ebfd6dc9011b6744aab79114816",
+      "dist/client/index.html": "e35ba7f500c712f48f6fcfa64550f96e3f67632d3586d1d5e7de4f632a3e7185",
+      "dist/composition-flags.json": "2e0fb0926db7d89c9f53383dde3381eceb3fd9efbf4fc1eeee61d3bc4fd2d1bb",
+      "scripts/composition-flags.mjs": "7fe16d58c88be15ed8523f99a8a16c7d98defc125dc5519d2805ac92fd77887f"
+    },
+    "limits": [
+      "Local built app only; a local build ID and missing build flags remain rejected for release.",
+      "Auth API and Turnstile responses are synthetic local fixtures; no real registration or email. Offline authenticated data and queued writes are separate scope.",
+      "Built HTML external font/script references are blocked by the loopback browser policy."
+    ]
+  },
+  "status": "PASS",
+  "finishedAtUtc": "2026-10-11T19:36:59.528Z"
+}
