@@ -37,3 +37,17 @@ Baseline recovery controls distinguish source-compiler changes from unsettled
 DOM/image/hover effects; original failed control and route-fallback probe remain
 retained with their limitations. Corrected final26pairs use actual routes and
 report zero page errors, forbidden API writes and baseline control drift.
+
+The first full run fails2files/11 assertions because this new receipt helper did
+not pin TMPDIR: Node returned /var/folders, while production receipt helpers
+correctly canonicalized to /private/var/folders. Retain the11 failures and use the
+same explicit TMPDIR=/private/tmp as the prior verified program. No test assertion
+or production path/security logic changes. Recovery/final runs follow separately.
+Evidence documentation was prepared during that first run; its tree was not clean
+at completion. Later final-clean checks certify their actual committed source.
+
+The generated .patch contains standard one-space diff context for blank lines.
+Git diff --check treats those artifact lines as trailing whitespace, although
+applied source has no new whitespace-only lines. The raw warning is retained;
+check the applied library bytes/diff and other tracked changes separately rather
+than alter a correct pnpm-generated patch or suppress global lint/audit.

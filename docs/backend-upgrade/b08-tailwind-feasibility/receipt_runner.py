@@ -36,7 +36,7 @@ def snapshot():
 env = os.environ.copy()
 env.update({'PATH': '/opt/homebrew/opt/node@24/bin:' + env['PATH'],
             'NODE_OPTIONS': '--no-experimental-webstorage', 'CI': 'true',
-            'WRANGLER_SEND_METRICS': 'false',
+            'WRANGLER_SEND_METRICS': 'false', 'TMPDIR': '/private/tmp',
             'GIT_COMMIT': os.environ.get('GIT_COMMIT', subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root).decode().strip()),
             'BUILD_TIMESTAMP': '2026-10-12T00:00:00Z',
             'VITE_MEAL_PLANNER_ENABLED': 'true', 'VITE_MEAL_COMPOSITION_V2_ENABLED': 'false'})
@@ -52,7 +52,7 @@ receipt = {'name': name, 'mode': mode, 'command': command,
            'exitCode': result.returncode, 'before': before, 'after': snapshot(),
            'logSha256': hashlib.sha256(result.stdout).hexdigest(),
            'environment': {k: env[k] for k in ['NODE_OPTIONS', 'CI', 'WRANGLER_SEND_METRICS',
-                                            'GIT_COMMIT', 'BUILD_TIMESTAMP', 'VITE_MEAL_PLANNER_ENABLED',
+                                            'TMPDIR', 'GIT_COMMIT', 'BUILD_TIMESTAMP', 'VITE_MEAL_PLANNER_ENABLED',
                                             'VITE_MEAL_COMPOSITION_V2_ENABLED']},
            'remoteFlags': 'unset', 'runtimeCandidateApplied': False}
 write(out / (name + '.json'), (json.dumps(receipt, indent=2) + '\n').encode())

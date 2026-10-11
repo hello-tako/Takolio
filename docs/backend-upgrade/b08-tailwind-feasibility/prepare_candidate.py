@@ -13,8 +13,8 @@ out = root / '.artifacts/backend-b08-tailwind-feasibility'
 out.mkdir(parents=True, exist_ok=True)
 out.chmod(0o700)
 assert not (out / 'candidate-private.json').exists(), 'Use a fresh evidence directory'
-base = subprocess.check_output(['git', 'rev-parse', 'HEAD']).decode().strip()
-assert base == 'b9612d199bbad57efbe71a423ab97b41fab8f3af'
+base = 'b9612d199bbad57efbe71a423ab97b41fab8f3af'
+subprocess.run(['git', 'cat-file', '-e', base], check=True)
 candidate = Path(tempfile.mkdtemp(prefix='takosan-tailwind4-', dir='/private/tmp'))
 candidate.chmod(0o700)
 
@@ -24,7 +24,7 @@ def write(path, raw):
     subprocess.run(['sh', '-c', 'cat > "$1"', 'write', str(path)], input=raw, check=True)
 
 
-tracked = subprocess.check_output(['git', 'ls-files', '-z']).split(b'\0')
+tracked = subprocess.check_output(['git', 'ls-tree', '-r', '--name-only', '-z', base]).split(b'\0')
 inputs = []
 for name in tracked:
     if not name:
@@ -35,9 +35,7 @@ for name in tracked:
                                 'vite.config.ts', 'tailwind.config.js', 'postcss.config.js',
                                 'tsconfig.json', 'tsconfig.worker.json', 'eslint.config.js'}):
         continue
-    source = root / rel
-    assert source.is_file() and not source.is_symlink(), rel
-    raw = source.read_bytes()
+    raw = subprocess.check_output(['git', 'show', base + ':' + str(rel)])
     write(candidate / rel, raw)
     inputs.append({'path': str(rel), 'sha256': hashlib.sha256(raw).hexdigest()})
 
