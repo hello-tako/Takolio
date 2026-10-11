@@ -1,4 +1,5 @@
 import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
@@ -24,7 +25,12 @@ const workflow = load(readFileSync('.github/workflows/production-d1-migrate.yml'
 const tip = '0038_auth_onboarding_completion.sql';
 const migration = '0039_meal_composition_v2.sql';
 const sha = 'a'.repeat(40);
-const schema = migrationManifest(process.cwd(), execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim());
+// This fixture certifies the historical 0039 release, even after later migrations exist.
+const currentSchema = migrationManifest(process.cwd(), execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim());
+const historicalMigrations = currentSchema.migrations.slice(0, currentSchema.migrations.findIndex(({ name }) => name === migration) + 1);
+if (historicalMigrations.length !== 39 || historicalMigrations.at(-1)?.name !== migration) throw new Error('Historical 0039 fixture is incomplete');
+const schema = { ...currentSchema, version: migration, count: historicalMigrations.length,
+  sha256: createHash('sha256').update(JSON.stringify(historicalMigrations)).digest('hex'), migrations: historicalMigrations };
 const ok = (results) => ({ success: true, results });
 const ledger = (names) => [ok(names.map((name) => ({ name })))];
 const pipeline = { mapRecipeContentRead, hydrateRuntimeRecipes, fingerprintRecipes, mapRecipeMediaRow, auditReadyRecipeMediaRecord, isCanonicalRecipeIdShape, isRecipeMediaMimeType, isSha256Hex, isTrustedRecipeMediaStorageKey };
@@ -110,10 +116,17 @@ describe('production 0039 migration preflight', () => {
 
   it('also certifies a complete 0039 ledger without authorizing another apply', async () => {
     db.close();
-    db = new SqliteD1();
+    db = new SqliteD1({ through: migration });
     manifest.preLedger = classifyPreLedger(manifest, ledger(db.migrations));
     expect(manifest.preLedger.mode).toBe('certify');
     expect(await verifyProductionMigrationPreflight(await evidence())).toMatchObject({ status: 'PASS', tip: migration });
+  });
+
+  it('rejects a later repository ledger for the historical 0039 certification', async () => {
+    db.close(); db = new SqliteD1();
+    expect(db.migrations).toContain('0040_strict_otp_foundation.sql');
+    expect(() => classifyPreLedger(manifest, ledger(db.migrations))).toThrow(/Migration ledger/);
+    await expect(verifyProductionMigrationPreflight(await evidence())).rejects.toThrow(/Migration ledger/);
   });
 
   it.each([

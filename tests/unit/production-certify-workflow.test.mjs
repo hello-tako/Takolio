@@ -32,7 +32,8 @@ const reviewedSchemaGate = {
   'scripts/d1-readonly-query.mjs': '9d43f62c25561423c6b4c00d611a262a82387dce724c6756274d1db9cfc4deb3',
   'scripts/d1-schema-gate.sh': 'e48596c6001f7fc20bb0d03213553f0bfe7575585bc02144d432f0a11cccb625',
   'scripts/d1-schema-gate.mjs': 'e443766807873c458581c82049cef1b0967dff2493b61804e1ae7f6bb6e7128a',
-  'scripts/d1-schema-gate.sql': 'c6d7da1c5f5cb9b16e7738242723cf571cbf426f8aeb7c68ba01e37b2ba2888c',
+  // Reviewed 0040 expansion: six strict OTP tables, their columns and two indexes.
+  'scripts/d1-schema-gate.sql': '8fef693f77e9b12976481d95dc0e7e442593c5d26e1af13ee90405a7d52a0e88',
 };
 const step = (name) => workflow().jobs.certify.steps.find((s) => s.name === name);
 const inline = (script) => script.split("<<'JS'\n")[1].split('\nJS')[0];

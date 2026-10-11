@@ -6,7 +6,10 @@ import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { replayHistoricalIngredientSource, summarizeCatalogLineage } from '../../scripts/production-catalog-lineage.mjs';
 
-const names = readdirSync('migrations').filter((name) => /^\d+.*\.sql$/.test(name)).sort();
+const currentMigrations = readdirSync('migrations').filter((name) => /^\d+.*\.sql$/.test(name)).sort();
+// This diagnostic is pinned to the historical 0039 candidate and replays only its 0038 prefix.
+const historicalCandidateTip = '0039_meal_composition_v2.sql';
+const names = currentMigrations.slice(0, currentMigrations.indexOf(historicalCandidateTip) + 1);
 const sha = 'a'.repeat(40);
 const manifest = {
   sha, mainSha: sha, environment: 'production',
@@ -65,6 +68,19 @@ describe('production catalog lineage read-only diagnosis', () => {
     const tampered = structuredClone(manifest);
     tampered.schema.migrations[33].sha256 = '0'.repeat(64);
     expect(() => replayHistoricalIngredientSource(tampered)).toThrow(/hash drift/);
+  });
+
+  it('rejects later migrations in the historical candidate manifest or observed 0038 ledger', () => {
+    expect(names).toHaveLength(39);
+    expect(names.at(-1)).toBe(historicalCandidateTip);
+    expect(currentMigrations).toContain('0040_strict_otp_foundation.sql');
+    const currentManifest = structuredClone(manifest);
+    currentManifest.schema.migrations = currentMigrations.map((name) => ({
+      name, sha256: createHash('sha256').update(readFileSync(`migrations/${name}`)).digest('hex'),
+    }));
+    expect(() => replayHistoricalIngredientSource(currentManifest)).toThrow(/reviewed 0038 prefix/);
+    const laterLedger = [result(names.map((name) => ({ name })))];
+    expect(() => summarize({ before: laterLedger, after: laterLedger })).toThrow(/ledger/);
   });
 
   it('recognizes exact historical line content and positions but never certifies a release', () => {

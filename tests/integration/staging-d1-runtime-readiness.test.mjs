@@ -1,4 +1,3 @@
-import { execFileSync } from 'node:child_process';
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
@@ -88,11 +87,12 @@ describe('staging D1 runtime readiness catalog contract', () => {
   let pipeline;
 
   beforeAll(async () => {
-    db = new SqliteD1();
+    db = new SqliteD1({ through: '0039_meal_composition_v2.sql' });
     snapshot = await readRecipeContent(db);
     provenance = result(db.query(provenanceQuery()));
     catalog = splitSqlStatements(catalogReadQuery()).map((sql) => ({ success: true, results: db.query(sql) }));
-    schema = migrationManifest(process.cwd(), execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim());
+// This test certifies the historical 0039 readiness contract, not a later release.
+    schema = migrationManifest(process.cwd(), '652e0d7632745e9b77cda4b5b3caac83a3ec1015');
     ledger = result(schema.migrations.map((migration) => ({ name: migration.name })));
     pipeline = {
       hydrateRuntimeRecipes,

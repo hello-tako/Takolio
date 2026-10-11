@@ -3,7 +3,10 @@ import { describe, expect, it } from 'vitest';
 import { buildT21RBProductionReceipt } from '../../scripts/t21rb-v1-production.mjs';
 
 const sha = 'a'.repeat(40);
-const migrations = readdirSync('migrations').filter((name) => /^\d{4}_.+\.sql$/.test(name)).sort();
+const currentMigrations = readdirSync('migrations').filter((name) => /^\d{4}_.+\.sql$/.test(name)).sort();
+// T21R-B binds the reviewed historical 0039 candidate, independent of later repository migrations.
+const historicalCandidateTip = '0039_meal_composition_v2.sql';
+const migrations = currentMigrations.slice(0, currentMigrations.indexOf(historicalCandidateTip) + 1);
 const manifest = {
   sha, mainSha: sha, environment: 'production',
   cloudflare: { databaseName: 'frigo-db', databaseId: 'f975ec39-b2c8-4a2a-80e1-0366054599d3' },
@@ -66,6 +69,20 @@ describe('T21R-B protected V1 receipt', () => {
     expect(receipt.capture.statementRowCounts).toEqual([1, 1, 0, 0, 0]);
     expect(receipt.capture.statementSha256).toBeUndefined();
     expect(JSON.stringify(receipt)).not.toMatch(/private|PRIVATE_INGREDIENT/);
+  });
+
+  it('rejects later migrations in the historical candidate or the observed 0038 ledger', () => {
+    expect(migrations).toHaveLength(39);
+    expect(migrations.at(-1)).toBe(historicalCandidateTip);
+    expect(currentMigrations).toContain('0040_strict_otp_foundation.sql');
+    const currentManifest = { ...manifest, schema: {
+      migrations: currentMigrations.map((name) => ({ name })),
+    } };
+    expect(() => buildT21RBProductionReceipt(evidence({ manifest: currentManifest }))).toThrow(/identity or candidate proof/);
+    const laterLedger = [result(migrations.map((name) => ({ name })))];
+    expect(() => buildT21RBProductionReceipt(evidence({
+      before: laterLedger, after: laterLedger, afterRepeat: laterLedger,
+    }))).toThrow(/reviewed 0038 prefix/);
   });
 
   it('rejects a changing ingredient or trailing result without emitting a receipt', () => {

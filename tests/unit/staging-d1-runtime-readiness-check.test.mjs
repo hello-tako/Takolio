@@ -1,4 +1,3 @@
-import { execFileSync } from 'node:child_process';
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { tmpdir } from 'node:os';
@@ -45,9 +44,10 @@ const write = (dir, name, data) => {
   return file;
 };
 const result = (rows) => [{ success: true, results: rows }];
+// Historical readiness remains pinned to the reviewed 0039 source.
 const schema = migrationManifest(
   process.cwd(),
-  execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
+  '652e0d7632745e9b77cda4b5b3caac83a3ec1015',
 );
 const ledger = result(schema.migrations.map((migration) => ({ name: migration.name })));
 

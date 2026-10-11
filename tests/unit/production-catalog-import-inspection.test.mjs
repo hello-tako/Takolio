@@ -8,7 +8,8 @@ import { compileOriginalCatalogImportInspection, compileRecipeCatalogRecovery, l
 import { inspectCatalogImport, inspectFixedV2Import37536969564, inspectLatestCatalogImport, inspectRecoveryPreflight,
   FIXED_V2_IMPORT_INCIDENT_37536969564, LATEST_V2_IMPORT_INCIDENT, ORIGINAL_IMPORT_REPAIR_ID } from '../../scripts/production-catalog-import-inspection.mjs';
 
-const sha = execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
+// Historical 0039 candidate retains its reviewed 0038 replay prefix after later migrations.
+const sha = '652e0d7632745e9b77cda4b5b3caac83a3ec1015';
 const prefix = `catalog_recovery_${ORIGINAL_IMPORT_REPAIR_ID}`;
 const privateText = 'private fixture O\'Brien receipt 927';
 const preflightLabels = ['approved_internal_inventory', 'known_schema_and_references', 'exact_0038_ledger',

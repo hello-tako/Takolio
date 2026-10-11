@@ -533,5 +533,18 @@ INSERT INTO assert_zero SELECT COUNT(*) FROM generated_meal_plan_components;
 INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_integrity_check WHERE integrity_check <> 'ok';
 INSERT INTO assert_one SELECT COUNT(*) = 500 FROM recipes;
 
+-- B01a A1 expands authority without rewriting legacy challenges or sessions.
+CREATE TEMP TABLE smoke_pre_strict_otps AS SELECT * FROM auth_otps;
+CREATE TEMP TABLE smoke_pre_strict_sessions AS SELECT * FROM sessions_v2;
+.read migrations/0040_strict_otp_foundation.sql
+INSERT INTO assert_zero SELECT COUNT(*) FROM (SELECT * FROM smoke_pre_strict_otps EXCEPT SELECT * FROM auth_otps);
+INSERT INTO assert_zero SELECT COUNT(*) FROM (SELECT * FROM auth_otps EXCEPT SELECT * FROM smoke_pre_strict_otps);
+INSERT INTO assert_zero SELECT COUNT(*) FROM (SELECT * FROM smoke_pre_strict_sessions EXCEPT SELECT * FROM sessions_v2);
+INSERT INTO assert_zero SELECT COUNT(*) FROM (SELECT * FROM sessions_v2 EXCEPT SELECT * FROM smoke_pre_strict_sessions);
+INSERT INTO assert_one SELECT COUNT(*) = 6 FROM sqlite_master WHERE type = 'table' AND name IN
+ ('auth_otp_scopes','auth_otp_requests','auth_otp_issuances','auth_otp_tickets','auth_otp_claims','auth_otp_assertions');
+INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_foreign_key_check;
+INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_integrity_check WHERE integrity_check <> 'ok';
+
 SELECT 'migration-smoke=ok';
 SQL

@@ -1,4 +1,3 @@
-import { execFileSync } from 'node:child_process';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { SqliteD1 } from '../helpers/sqlite-d1';
 import { mapRecipeContentRead, prepareRecipeContentRead } from '../../packages/db/src/recipe-content';
@@ -9,7 +8,8 @@ import { migrationManifest } from '../../scripts/release-check.mjs';
 import { inspectProductionCatalogPreflight } from '../../scripts/production-catalog-preflight-diagnostics.mjs';
 
 const tip = '0038_auth_onboarding_completion.sql';
-const sha = execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
+// Historical 0039 candidate retains its reviewed 0038 replay prefix after later migrations.
+const sha = '652e0d7632745e9b77cda4b5b3caac83a3ec1015';
 const schema = migrationManifest(process.cwd(), sha);
 const fingerprint = 'f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37';
 const orderedIdsSha256 = '0ebfb0cc764fedc65509a391f2f3d23f49b306ceff27901dd504145dfb925d45';
