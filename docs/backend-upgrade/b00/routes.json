@@ -1,0 +1,3382 @@
+{
+  "sourceSha": "652e0d7632745e9b77cda4b5b3caac83a3ec1015",
+  "classification": "SOURCE_VERIFIED",
+  "mountPrefix": "/api/v1",
+  "extraction": "explicit HTTP registrations; OPTIONS middleware and SPA wildcard excluded",
+  "groupCounts": {
+    "auth": 11,
+    "billing": 4,
+    "health": 4,
+    "inventory-truth": 4,
+    "inventory": 5,
+    "meal-planning": 21,
+    "notifications": 1,
+    "preferences": 2,
+    "recipe-media": 2,
+    "recipes": 6,
+    "scans": 4,
+    "shopping": 4,
+    "week": 11
+  },
+  "routeCount": 79,
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/v1/me",
+      "group": "auth",
+      "source": "src/worker/routes/auth.ts",
+      "line": 213,
+      "auth": "cookie session",
+      "csrf": "not required for read",
+      "householdRolePolicy": "not applicable/see scope",
+      "owner": "Security",
+      "scope": "account; public auth bootstrap except /me and Plus compatibility",
+      "tenant": "session household; registration/guest transfer commands",
+      "tables": [
+        "users",
+        "profiles",
+        "households",
+        "household_members",
+        "sessions_v2",
+        "auth_otps",
+        "subscriptions",
+        "user_preferences",
+        "shopping_lists"
+      ],
+      "flags": [
+        "ENVIRONMENT",
+        "APP_URL"
+      ],
+      "idempotency": "none; one-time OTP consume, session revoke; strict admission is B01a target",
+      "callers": [
+        "src/web/services/auth.ts"
+      ],
+      "tests": [
+        "tests/integration/auth-hardening.test.ts",
+        "tests/unit/auth.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB",
+        "ENVIRONMENT",
+        "GOOGLE_CLIENT_ID",
+        "OTP_HASH_SECRET"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "OTP email dispatch; forgot uses waitUntil; sessions and guest household transfer; soft KV limiter/cooldown; /me quota read. No queue. Google signed credential token-verification network dependency.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "group": "auth",
+      "source": "src/worker/routes/auth.ts",
+      "line": 267,
+      "auth": "public",
+      "csrf": "production bootstrap trusted Origin",
+      "householdRolePolicy": "not applicable/see scope",
+      "owner": "Security",
+      "scope": "account; public auth bootstrap except /me and Plus compatibility",
+      "tenant": "session household; registration/guest transfer commands",
+      "tables": [
+        "users",
+        "profiles",
+        "households",
+        "household_members",
+        "sessions_v2",
+        "auth_otps",
+        "subscriptions",
+        "user_preferences",
+        "shopping_lists"
+      ],
+      "flags": [
+        "ENVIRONMENT",
+        "APP_URL"
+      ],
+      "idempotency": "none; one-time OTP consume, session revoke; strict admission is B01a target",
+      "callers": [
+        "src/web/services/auth.ts"
+      ],
+      "tests": [
+        "tests/integration/auth-hardening.test.ts",
+        "tests/unit/auth.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB",
+        "ENVIRONMENT",
+        "GOOGLE_CLIENT_ID",
+        "OTP_HASH_SECRET"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "OTP email dispatch; forgot uses waitUntil; sessions and guest household transfer; soft KV limiter/cooldown; /me quota read. No queue. Google signed credential token-verification network dependency.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/verify-otp",
+      "group": "auth",
+      "source": "src/worker/routes/auth.ts",
+      "line": 406,
+      "auth": "public",
+      "csrf": "production bootstrap trusted Origin",
+      "householdRolePolicy": "not applicable/see scope",
+      "owner": "Security",
+      "scope": "account; public auth bootstrap except /me and Plus compatibility",
+      "tenant": "session household; registration/guest transfer commands",
+      "tables": [
+        "users",
+        "profiles",
+        "households",
+        "household_members",
+        "sessions_v2",
+        "auth_otps",
+        "subscriptions",
+        "user_preferences",
+        "shopping_lists"
+      ],
+      "flags": [
+        "ENVIRONMENT",
+        "APP_URL"
+      ],
+      "idempotency": "none; one-time OTP consume, session revoke; strict admission is B01a target",
+      "callers": [
+        "src/web/services/auth.ts"
+      ],
+      "tests": [
+        "tests/integration/auth-hardening.test.ts",
+        "tests/unit/auth.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB",
+        "ENVIRONMENT",
+        "GOOGLE_CLIENT_ID",
+        "OTP_HASH_SECRET"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "OTP email dispatch; forgot uses waitUntil; sessions and guest household transfer; soft KV limiter/cooldown; /me quota read. No queue. Google signed credential token-verification network dependency.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/resend-otp",
+      "group": "auth",
+      "source": "src/worker/routes/auth.ts",
+      "line": 541,
+      "auth": "public",
+      "csrf": "production bootstrap trusted Origin",
+      "householdRolePolicy": "not applicable/see scope",
+      "owner": "Security",
+      "scope": "account; public auth bootstrap except /me and Plus compatibility",
+      "tenant": "session household; registration/guest transfer commands",
+      "tables": [
+        "users",
+        "profiles",
+        "households",
+        "household_members",
+        "sessions_v2",
+        "auth_otps",
+        "subscriptions",
+        "user_preferences",
+        "shopping_lists"
+      ],
+      "flags": [
+        "ENVIRONMENT",
+        "APP_URL"
+      ],
+      "idempotency": "none; one-time OTP consume, session revoke; strict admission is B01a target",
+      "callers": [
+        "src/web/services/auth.ts"
+      ],
+      "tests": [
+        "tests/integration/auth-hardening.test.ts",
+        "tests/unit/auth.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB",
+        "ENVIRONMENT",
+        "GOOGLE_CLIENT_ID",
+        "OTP_HASH_SECRET"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "OTP email dispatch; forgot uses waitUntil; sessions and guest household transfer; soft KV limiter/cooldown; /me quota read. No queue. Google signed credential token-verification network dependency.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "group": "auth",
+      "source": "src/worker/routes/auth.ts",
+      "line": 636,
+      "auth": "public",
+      "csrf": "production bootstrap trusted Origin",
+      "householdRolePolicy": "not applicable/see scope",
+      "owner": "Security",
+      "scope": "account; public auth bootstrap except /me and Plus compatibility",
+      "tenant": "session household; registration/guest transfer commands",
+      "tables": [
+        "users",
+        "profiles",
+        "households",
+        "household_members",
+        "sessions_v2",
+        "auth_otps",
+        "subscriptions",
+        "user_preferences",
+        "shopping_lists"
+      ],
+      "flags": [
+        "ENVIRONMENT",
+        "APP_URL"
+      ],
+      "idempotency": "none; one-time OTP consume, session revoke; strict admission is B01a target",
+      "callers": [
+        "src/web/services/auth.ts"
+      ],
+      "tests": [
+        "tests/integration/auth-hardening.test.ts",
+        "tests/unit/auth.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB",
+        "ENVIRONMENT",
+        "GOOGLE_CLIENT_ID",
+        "OTP_HASH_SECRET"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "OTP email dispatch; forgot uses waitUntil; sessions and guest household transfer; soft KV limiter/cooldown; /me quota read. No queue. Google signed credential token-verification network dependency.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/forgot-password",
+      "group": "auth",
+      "source": "src/worker/routes/auth.ts",
+      "line": 751,
+      "auth": "public",
+      "csrf": "production bootstrap trusted Origin",
+      "householdRolePolicy": "not applicable/see scope",
+      "owner": "Security",
+      "scope": "account; public auth bootstrap except /me and Plus compatibility",
+      "tenant": "session household; registration/guest transfer commands",
+      "tables": [
+        "users",
+        "profiles",
+        "households",
+        "household_members",
+        "sessions_v2",
+        "auth_otps",
+        "subscriptions",
+        "user_preferences",
+        "shopping_lists"
+      ],
+      "flags": [
+        "ENVIRONMENT",
+        "APP_URL"
+      ],
+      "idempotency": "none; one-time OTP consume, session revoke; strict admission is B01a target",
+      "callers": [
+        "src/web/services/auth.ts"
+      ],
+      "tests": [
+        "tests/integration/auth-hardening.test.ts",
+        "tests/unit/auth.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB",
+        "ENVIRONMENT",
+        "GOOGLE_CLIENT_ID",
+        "OTP_HASH_SECRET"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "OTP email dispatch; forgot uses waitUntil; sessions and guest household transfer; soft KV limiter/cooldown; /me quota read. No queue. Google signed credential token-verification network dependency.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/reset-password",
+      "group": "auth",
+      "source": "src/worker/routes/auth.ts",
+      "line": 775,
+      "auth": "public",
+      "csrf": "production bootstrap trusted Origin",
+      "householdRolePolicy": "not applicable/see scope",
+      "owner": "Security",
+      "scope": "account; public auth bootstrap except /me and Plus compatibility",
+      "tenant": "session household; registration/guest transfer commands",
+      "tables": [
+        "users",
+        "profiles",
+        "households",
+        "household_members",
+        "sessions_v2",
+        "auth_otps",
+        "subscriptions",
+        "user_preferences",
+        "shopping_lists"
+      ],
+      "flags": [
+        "ENVIRONMENT",
+        "APP_URL"
+      ],
+      "idempotency": "none; one-time OTP consume, session revoke; strict admission is B01a target",
+      "callers": [
+        "src/web/services/auth.ts"
+      ],
+      "tests": [
+        "tests/integration/auth-hardening.test.ts",
+        "tests/unit/auth.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB",
+        "ENVIRONMENT",
+        "GOOGLE_CLIENT_ID",
+        "OTP_HASH_SECRET"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "OTP email dispatch; forgot uses waitUntil; sessions and guest household transfer; soft KV limiter/cooldown; /me quota read. No queue. Google signed credential token-verification network dependency.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/google",
+      "group": "auth",
+      "source": "src/worker/routes/auth.ts",
+      "line": 887,
+      "auth": "public",
+      "csrf": "production bootstrap trusted Origin",
+      "householdRolePolicy": "not applicable/see scope",
+      "owner": "Security",
+      "scope": "account; public auth bootstrap except /me and Plus compatibility",
+      "tenant": "session household; registration/guest transfer commands",
+      "tables": [
+        "users",
+        "profiles",
+        "households",
+        "household_members",
+        "sessions_v2",
+        "auth_otps",
+        "subscriptions",
+        "user_preferences",
+        "shopping_lists"
+      ],
+      "flags": [
+        "ENVIRONMENT",
+        "APP_URL"
+      ],
+      "idempotency": "none; one-time OTP consume, session revoke; strict admission is B01a target",
+      "callers": [
+        "src/web/services/auth.ts"
+      ],
+      "tests": [
+        "tests/integration/auth-hardening.test.ts",
+        "tests/unit/auth.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB",
+        "ENVIRONMENT",
+        "GOOGLE_CLIENT_ID",
+        "OTP_HASH_SECRET"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "OTP email dispatch; forgot uses waitUntil; sessions and guest household transfer; soft KV limiter/cooldown; /me quota read. No queue. Google signed credential token-verification network dependency.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/guest",
+      "group": "auth",
+      "source": "src/worker/routes/auth.ts",
+      "line": 1050,
+      "auth": "public",
+      "csrf": "production bootstrap trusted Origin",
+      "householdRolePolicy": "not applicable/see scope",
+      "owner": "Security",
+      "scope": "account; public auth bootstrap except /me and Plus compatibility",
+      "tenant": "session household; registration/guest transfer commands",
+      "tables": [
+        "users",
+        "profiles",
+        "households",
+        "household_members",
+        "sessions_v2",
+        "auth_otps",
+        "subscriptions",
+        "user_preferences",
+        "shopping_lists"
+      ],
+      "flags": [
+        "ENVIRONMENT",
+        "APP_URL"
+      ],
+      "idempotency": "none; one-time OTP consume, session revoke; strict admission is B01a target",
+      "callers": [
+        "src/web/services/auth.ts"
+      ],
+      "tests": [
+        "tests/integration/auth-hardening.test.ts",
+        "tests/unit/auth.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB",
+        "ENVIRONMENT",
+        "GOOGLE_CLIENT_ID",
+        "OTP_HASH_SECRET"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "OTP email dispatch; forgot uses waitUntil; sessions and guest household transfer; soft KV limiter/cooldown; /me quota read. No queue. Google signed credential token-verification network dependency.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/logout",
+      "group": "auth",
+      "source": "src/worker/routes/auth.ts",
+      "line": 1131,
+      "auth": "public",
+      "csrf": "production bootstrap trusted Origin",
+      "householdRolePolicy": "not applicable/see scope",
+      "owner": "Security",
+      "scope": "account; public auth bootstrap except /me and Plus compatibility",
+      "tenant": "session household; registration/guest transfer commands",
+      "tables": [
+        "users",
+        "profiles",
+        "households",
+        "household_members",
+        "sessions_v2",
+        "auth_otps",
+        "subscriptions",
+        "user_preferences",
+        "shopping_lists"
+      ],
+      "flags": [
+        "ENVIRONMENT",
+        "APP_URL"
+      ],
+      "idempotency": "none; one-time OTP consume, session revoke; strict admission is B01a target",
+      "callers": [
+        "src/web/services/auth.ts"
+      ],
+      "tests": [
+        "tests/integration/auth-hardening.test.ts",
+        "tests/unit/auth.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB",
+        "ENVIRONMENT",
+        "GOOGLE_CLIENT_ID",
+        "OTP_HASH_SECRET"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "OTP email dispatch; forgot uses waitUntil; sessions and guest household transfer; soft KV limiter/cooldown; /me quota read. No queue. Google signed credential token-verification network dependency.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/plus/activate",
+      "group": "auth",
+      "source": "src/worker/routes/auth.ts",
+      "line": 1150,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "not applicable/see scope",
+      "owner": "Security",
+      "scope": "account; public auth bootstrap except /me and Plus compatibility",
+      "tenant": "session household; registration/guest transfer commands",
+      "tables": [
+        "users",
+        "profiles",
+        "households",
+        "household_members",
+        "sessions_v2",
+        "auth_otps",
+        "subscriptions",
+        "user_preferences",
+        "shopping_lists"
+      ],
+      "flags": [
+        "ENVIRONMENT",
+        "APP_URL"
+      ],
+      "idempotency": "none; one-time OTP consume, session revoke; strict admission is B01a target",
+      "callers": [
+        "src/web/services/auth.ts"
+      ],
+      "tests": [
+        "tests/integration/auth-hardening.test.ts",
+        "tests/unit/auth.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB",
+        "ENVIRONMENT",
+        "GOOGLE_CLIENT_ID",
+        "OTP_HASH_SECRET"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "OTP email dispatch; forgot uses waitUntil; sessions and guest household transfer; soft KV limiter/cooldown; /me quota read. No queue. Google signed credential token-verification network dependency.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/billing/plans",
+      "group": "billing",
+      "source": "src/worker/routes/billing.ts",
+      "line": 31,
+      "auth": "cookie session",
+      "csrf": "not required for read",
+      "householdRolePolicy": "not applicable/see scope",
+      "owner": "Billing (protected)",
+      "scope": "registered user; webhook is HMAC service callback",
+      "tenant": "user_id payment ownership; household RBAC not applicable",
+      "tables": [
+        "users",
+        "payment_intents",
+        "subscriptions"
+      ],
+      "flags": [
+        "ENVIRONMENT",
+        "APP_URL"
+      ],
+      "idempotency": "webhook reference + intent transition/grant transaction; creation has no server key",
+      "callers": [
+        "src/web/services/billing.ts"
+      ],
+      "tests": [
+        "tests/integration/payment-authority.test.ts",
+        "tests/unit/billing-service.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB",
+        "PAYOS_CHECKSUM_KEY"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "PayOS network create/reconcile callback; transactional payment intent and Plus grants. Protected; B00 only source mapping.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/billing/payment-intents",
+      "group": "billing",
+      "source": "src/worker/routes/billing.ts",
+      "line": 33,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "not applicable/see scope",
+      "owner": "Billing (protected)",
+      "scope": "registered user; webhook is HMAC service callback",
+      "tenant": "user_id payment ownership; household RBAC not applicable",
+      "tables": [
+        "users",
+        "payment_intents",
+        "subscriptions"
+      ],
+      "flags": [
+        "ENVIRONMENT",
+        "APP_URL"
+      ],
+      "idempotency": "webhook reference + intent transition/grant transaction; creation has no server key",
+      "callers": [
+        "src/web/services/billing.ts"
+      ],
+      "tests": [
+        "tests/integration/payment-authority.test.ts",
+        "tests/unit/billing-service.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB",
+        "PAYOS_CHECKSUM_KEY"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "PayOS network create/reconcile callback; transactional payment intent and Plus grants. Protected; B00 only source mapping.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/billing/payment-intents/:id",
+      "group": "billing",
+      "source": "src/worker/routes/billing.ts",
+      "line": 66,
+      "auth": "cookie session",
+      "csrf": "not required for read",
+      "householdRolePolicy": "not applicable/see scope",
+      "owner": "Billing (protected)",
+      "scope": "registered user; webhook is HMAC service callback",
+      "tenant": "user_id payment ownership; household RBAC not applicable",
+      "tables": [
+        "users",
+        "payment_intents",
+        "subscriptions"
+      ],
+      "flags": [
+        "ENVIRONMENT",
+        "APP_URL"
+      ],
+      "idempotency": "webhook reference + intent transition/grant transaction; creation has no server key",
+      "callers": [
+        "src/web/services/billing.ts"
+      ],
+      "tests": [
+        "tests/integration/payment-authority.test.ts",
+        "tests/unit/billing-service.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB",
+        "PAYOS_CHECKSUM_KEY"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "PayOS network create/reconcile callback; transactional payment intent and Plus grants. Protected; B00 only source mapping.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/billing/payos/webhook",
+      "group": "billing",
+      "source": "src/worker/routes/billing.ts",
+      "line": 74,
+      "auth": "public route + PayOS HMAC",
+      "csrf": "service signature; no browser Origin",
+      "householdRolePolicy": "not applicable/see scope",
+      "owner": "Billing (protected)",
+      "scope": "registered user; webhook is HMAC service callback",
+      "tenant": "user_id payment ownership; household RBAC not applicable",
+      "tables": [
+        "users",
+        "payment_intents",
+        "subscriptions"
+      ],
+      "flags": [
+        "ENVIRONMENT",
+        "APP_URL"
+      ],
+      "idempotency": "webhook reference + intent transition/grant transaction; creation has no server key",
+      "callers": [
+        "src/web/services/billing.ts"
+      ],
+      "tests": [
+        "tests/integration/payment-authority.test.ts",
+        "tests/unit/billing-service.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB",
+        "PAYOS_CHECKSUM_KEY"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "PayOS network create/reconcile callback; transactional payment intent and Plus grants. Protected; B00 only source mapping.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/health",
+      "group": "health",
+      "source": "src/worker/routes/health.ts",
+      "line": 21,
+      "auth": "public",
+      "csrf": "not required for read",
+      "householdRolePolicy": "not applicable/see scope",
+      "owner": "Platform",
+      "scope": "public readiness/liveness/config; authority endpoint release-token-only",
+      "tenant": "no household data",
+      "tables": [
+        "D1 readiness and catalog metadata"
+      ],
+      "flags": [
+        "ENVIRONMENT",
+        "GIT_COMMIT",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "read-only",
+      "callers": [],
+      "tests": [
+        "tests/unit/health.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB",
+        "ENVIRONMENT",
+        "GIT_COMMIT",
+        "GOOGLE_CLIENT_ID",
+        "RATE_LIMIT_ENFORCEMENT",
+        "RELEASE_VERIFY_TOKEN",
+        "RESEND_API_KEY",
+        "SCAN_QUEUE",
+        "SCAN_QUEUE_MODE",
+        "SEND_EMAIL",
+        "TURNSTILE_SITE_KEY"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Public config and dependency readiness probes; release-token authority fingerprint checks. No user-domain command.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/health/ready",
+      "group": "health",
+      "source": "src/worker/routes/health.ts",
+      "line": 32,
+      "auth": "public",
+      "csrf": "not required for read",
+      "householdRolePolicy": "not applicable/see scope",
+      "owner": "Platform",
+      "scope": "public readiness/liveness/config; authority endpoint release-token-only",
+      "tenant": "no household data",
+      "tables": [
+        "D1 readiness and catalog metadata"
+      ],
+      "flags": [
+        "ENVIRONMENT",
+        "GIT_COMMIT",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "read-only",
+      "callers": [],
+      "tests": [
+        "tests/unit/health.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB",
+        "ENVIRONMENT",
+        "GIT_COMMIT",
+        "GOOGLE_CLIENT_ID",
+        "RATE_LIMIT_ENFORCEMENT",
+        "RELEASE_VERIFY_TOKEN",
+        "RESEND_API_KEY",
+        "SCAN_QUEUE",
+        "SCAN_QUEUE_MODE",
+        "SEND_EMAIL",
+        "TURNSTILE_SITE_KEY"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Public config and dependency readiness probes; release-token authority fingerprint checks. No user-domain command.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/health/recipe-authority",
+      "group": "health",
+      "source": "src/worker/routes/health.ts",
+      "line": 103,
+      "auth": "RELEASE_VERIFY_TOKEN bearer",
+      "csrf": "not required for read",
+      "householdRolePolicy": "not applicable/see scope",
+      "owner": "Platform",
+      "scope": "public readiness/liveness/config; authority endpoint release-token-only",
+      "tenant": "no household data",
+      "tables": [
+        "D1 readiness and catalog metadata"
+      ],
+      "flags": [
+        "ENVIRONMENT",
+        "GIT_COMMIT",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "read-only",
+      "callers": [],
+      "tests": [
+        "tests/unit/health.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB",
+        "ENVIRONMENT",
+        "GIT_COMMIT",
+        "GOOGLE_CLIENT_ID",
+        "RATE_LIMIT_ENFORCEMENT",
+        "RELEASE_VERIFY_TOKEN",
+        "RESEND_API_KEY",
+        "SCAN_QUEUE",
+        "SCAN_QUEUE_MODE",
+        "SEND_EMAIL",
+        "TURNSTILE_SITE_KEY"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Public config and dependency readiness probes; release-token authority fingerprint checks. No user-domain command.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/config",
+      "group": "health",
+      "source": "src/worker/routes/health.ts",
+      "line": 115,
+      "auth": "public",
+      "csrf": "not required for read",
+      "householdRolePolicy": "not applicable/see scope",
+      "owner": "Platform",
+      "scope": "public readiness/liveness/config; authority endpoint release-token-only",
+      "tenant": "no household data",
+      "tables": [
+        "D1 readiness and catalog metadata"
+      ],
+      "flags": [
+        "ENVIRONMENT",
+        "GIT_COMMIT",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "read-only",
+      "callers": [],
+      "tests": [
+        "tests/unit/health.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB",
+        "ENVIRONMENT",
+        "GIT_COMMIT",
+        "GOOGLE_CLIENT_ID",
+        "RATE_LIMIT_ENFORCEMENT",
+        "RELEASE_VERIFY_TOKEN",
+        "RESEND_API_KEY",
+        "SCAN_QUEUE",
+        "SCAN_QUEUE_MODE",
+        "SEND_EMAIL",
+        "TURNSTILE_SITE_KEY"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Public config and dependency readiness probes; release-token authority fingerprint checks. No user-domain command.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/inventory/summary",
+      "group": "inventory-truth",
+      "source": "src/worker/routes/inventory-truth.ts",
+      "line": 151,
+      "auth": "cookie session",
+      "csrf": "not required for read",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Inventory",
+      "scope": "household",
+      "tenant": "tenancyGuard and actor membership",
+      "tables": [
+        "inventory_lots",
+        "inventory_observations",
+        "inventory_reconciliation_decisions",
+        "inventory_adoption_receipts"
+      ],
+      "flags": [],
+      "idempotency": "decisionKey + observation version; other routes read-only",
+      "callers": [
+        "src/web/services/inventory-truth.ts"
+      ],
+      "tests": [
+        "tests/integration/inventory-observation-concurrency.test.ts",
+        "tests/integration/inventory-reconciliation-fence.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Observation/reconciliation decisions with version/fence; native membership check. No provider call.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/inventory/lots/:lotId",
+      "group": "inventory-truth",
+      "source": "src/worker/routes/inventory-truth.ts",
+      "line": 178,
+      "auth": "cookie session",
+      "csrf": "not required for read",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Inventory",
+      "scope": "household",
+      "tenant": "tenancyGuard and actor membership",
+      "tables": [
+        "inventory_lots",
+        "inventory_observations",
+        "inventory_reconciliation_decisions",
+        "inventory_adoption_receipts"
+      ],
+      "flags": [],
+      "idempotency": "decisionKey + observation version; other routes read-only",
+      "callers": [
+        "src/web/services/inventory-truth.ts"
+      ],
+      "tests": [
+        "tests/integration/inventory-observation-concurrency.test.ts",
+        "tests/integration/inventory-reconciliation-fence.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Observation/reconciliation decisions with version/fence; native membership check. No provider call.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/inventory/observations",
+      "group": "inventory-truth",
+      "source": "src/worker/routes/inventory-truth.ts",
+      "line": 214,
+      "auth": "cookie session",
+      "csrf": "not required for read",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Inventory",
+      "scope": "household",
+      "tenant": "tenancyGuard and actor membership",
+      "tables": [
+        "inventory_lots",
+        "inventory_observations",
+        "inventory_reconciliation_decisions",
+        "inventory_adoption_receipts"
+      ],
+      "flags": [],
+      "idempotency": "decisionKey + observation version; other routes read-only",
+      "callers": [
+        "src/web/services/inventory-truth.ts"
+      ],
+      "tests": [
+        "tests/integration/inventory-observation-concurrency.test.ts",
+        "tests/integration/inventory-reconciliation-fence.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Observation/reconciliation decisions with version/fence; native membership check. No provider call.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/inventory/observations/:observationId/decision",
+      "group": "inventory-truth",
+      "source": "src/worker/routes/inventory-truth.ts",
+      "line": 273,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Inventory",
+      "scope": "household",
+      "tenant": "tenancyGuard and actor membership",
+      "tables": [
+        "inventory_lots",
+        "inventory_observations",
+        "inventory_reconciliation_decisions",
+        "inventory_adoption_receipts"
+      ],
+      "flags": [],
+      "idempotency": "decisionKey + observation version; other routes read-only",
+      "callers": [
+        "src/web/services/inventory-truth.ts"
+      ],
+      "tests": [
+        "tests/integration/inventory-observation-concurrency.test.ts",
+        "tests/integration/inventory-reconciliation-fence.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Observation/reconciliation decisions with version/fence; native membership check. No provider call.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/inventory",
+      "group": "inventory",
+      "source": "src/worker/routes/inventory.ts",
+      "line": 546,
+      "auth": "cookie session",
+      "csrf": "not required for read",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Inventory",
+      "scope": "household members and guest-owned household",
+      "tenant": "tenancyGuard + actor membership for native lot commands",
+      "tables": [
+        "households",
+        "household_members",
+        "inventory_items",
+        "inventory_lots",
+        "inventory_commands",
+        "inventory_events",
+        "storage_locations",
+        "inventory_adoption_receipts"
+      ],
+      "flags": [],
+      "idempotency": "create client ID/fingerprint; PATCH version; DELETE If-Match; optional command key; adoption receipt",
+      "callers": [
+        "src/web/services/inventory.ts"
+      ],
+      "tests": [
+        "tests/integration/inventory-concurrency.test.ts",
+        "tests/unit/inventory-idempotency.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Lot/item commands, events and compatibility projection; authority/adoption receipt reads; legacy KV compatibility. No AI.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/inventory",
+      "group": "inventory",
+      "source": "src/worker/routes/inventory.ts",
+      "line": 561,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Inventory",
+      "scope": "household members and guest-owned household",
+      "tenant": "tenancyGuard + actor membership for native lot commands",
+      "tables": [
+        "households",
+        "household_members",
+        "inventory_items",
+        "inventory_lots",
+        "inventory_commands",
+        "inventory_events",
+        "storage_locations",
+        "inventory_adoption_receipts"
+      ],
+      "flags": [],
+      "idempotency": "create client ID/fingerprint; PATCH version; DELETE If-Match; optional command key; adoption receipt",
+      "callers": [
+        "src/web/services/inventory.ts"
+      ],
+      "tests": [
+        "tests/integration/inventory-concurrency.test.ts",
+        "tests/unit/inventory-idempotency.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Lot/item commands, events and compatibility projection; authority/adoption receipt reads; legacy KV compatibility. No AI.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/inventory/:id",
+      "group": "inventory",
+      "source": "src/worker/routes/inventory.ts",
+      "line": 721,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Inventory",
+      "scope": "household members and guest-owned household",
+      "tenant": "tenancyGuard + actor membership for native lot commands",
+      "tables": [
+        "households",
+        "household_members",
+        "inventory_items",
+        "inventory_lots",
+        "inventory_commands",
+        "inventory_events",
+        "storage_locations",
+        "inventory_adoption_receipts"
+      ],
+      "flags": [],
+      "idempotency": "create client ID/fingerprint; PATCH version; DELETE If-Match; optional command key; adoption receipt",
+      "callers": [
+        "src/web/services/inventory.ts"
+      ],
+      "tests": [
+        "tests/integration/inventory-concurrency.test.ts",
+        "tests/unit/inventory-idempotency.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Lot/item commands, events and compatibility projection; authority/adoption receipt reads; legacy KV compatibility. No AI.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/inventory/:id",
+      "group": "inventory",
+      "source": "src/worker/routes/inventory.ts",
+      "line": 965,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Inventory",
+      "scope": "household members and guest-owned household",
+      "tenant": "tenancyGuard + actor membership for native lot commands",
+      "tables": [
+        "households",
+        "household_members",
+        "inventory_items",
+        "inventory_lots",
+        "inventory_commands",
+        "inventory_events",
+        "storage_locations",
+        "inventory_adoption_receipts"
+      ],
+      "flags": [],
+      "idempotency": "create client ID/fingerprint; PATCH version; DELETE If-Match; optional command key; adoption receipt",
+      "callers": [
+        "src/web/services/inventory.ts"
+      ],
+      "tests": [
+        "tests/integration/inventory-concurrency.test.ts",
+        "tests/unit/inventory-idempotency.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Lot/item commands, events and compatibility projection; authority/adoption receipt reads; legacy KV compatibility. No AI.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/inventory/adopt",
+      "group": "inventory",
+      "source": "src/worker/routes/inventory.ts",
+      "line": 1125,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Inventory",
+      "scope": "household members and guest-owned household",
+      "tenant": "tenancyGuard + actor membership for native lot commands",
+      "tables": [
+        "households",
+        "household_members",
+        "inventory_items",
+        "inventory_lots",
+        "inventory_commands",
+        "inventory_events",
+        "storage_locations",
+        "inventory_adoption_receipts"
+      ],
+      "flags": [],
+      "idempotency": "create client ID/fingerprint; PATCH version; DELETE If-Match; optional command key; adoption receipt",
+      "callers": [
+        "src/web/services/inventory.ts"
+      ],
+      "tests": [
+        "tests/integration/inventory-concurrency.test.ts",
+        "tests/unit/inventory-idempotency.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Lot/item commands, events and compatibility projection; authority/adoption receipt reads; legacy KV compatibility. No AI.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/meal-planning/plans",
+      "group": "meal-planning",
+      "source": "src/worker/routes/meal-planning.ts",
+      "line": 93,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner",
+      "scope": "registered household/current creator; shared stock input",
+      "tenant": "tenancyGuard + household and creator user repository scope; no family RBAC",
+      "tables": [
+        "generated_meal_plans",
+        "generated_meal_plan_compositions",
+        "generated_meal_plan_components",
+        "generated_meal_plan_annotations",
+        "recipe_feedback_events",
+        "recipe_role_assignments",
+        "inventory_lots",
+        "household_members"
+      ],
+      "flags": [
+        "MEAL_PLANNER_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "generate/feedback key required; mutations expected revision; assist/auto proposal apply fenced",
+      "callers": [
+        "src/web/services/meal-planning.ts",
+        "src/web/services/meal-composition.ts"
+      ],
+      "tests": [
+        "tests/integration/meal-planning-http.test.ts",
+        "tests/integration/meal-planning-persistence.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_PLANNER_ENABLED"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Application service generate/compose/revise/feedback; optional governed AI assistance; plan revisions/snapshots. No actual stock consumption during generate.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/meal-planning/plans/current",
+      "group": "meal-planning",
+      "source": "src/worker/routes/meal-planning.ts",
+      "line": 95,
+      "auth": "cookie session",
+      "csrf": "not required for read",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner",
+      "scope": "registered household/current creator; shared stock input",
+      "tenant": "tenancyGuard + household and creator user repository scope; no family RBAC",
+      "tables": [
+        "generated_meal_plans",
+        "generated_meal_plan_compositions",
+        "generated_meal_plan_components",
+        "generated_meal_plan_annotations",
+        "recipe_feedback_events",
+        "recipe_role_assignments",
+        "inventory_lots",
+        "household_members"
+      ],
+      "flags": [
+        "MEAL_PLANNER_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "generate/feedback key required; mutations expected revision; assist/auto proposal apply fenced",
+      "callers": [
+        "src/web/services/meal-planning.ts",
+        "src/web/services/meal-composition.ts"
+      ],
+      "tests": [
+        "tests/integration/meal-planning-http.test.ts",
+        "tests/integration/meal-planning-persistence.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_PLANNER_ENABLED"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Application service generate/compose/revise/feedback; optional governed AI assistance; plan revisions/snapshots. No actual stock consumption during generate.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/meal-planning/plans/:id",
+      "group": "meal-planning",
+      "source": "src/worker/routes/meal-planning.ts",
+      "line": 96,
+      "auth": "cookie session",
+      "csrf": "not required for read",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner",
+      "scope": "registered household/current creator; shared stock input",
+      "tenant": "tenancyGuard + household and creator user repository scope; no family RBAC",
+      "tables": [
+        "generated_meal_plans",
+        "generated_meal_plan_compositions",
+        "generated_meal_plan_components",
+        "generated_meal_plan_annotations",
+        "recipe_feedback_events",
+        "recipe_role_assignments",
+        "inventory_lots",
+        "household_members"
+      ],
+      "flags": [
+        "MEAL_PLANNER_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "generate/feedback key required; mutations expected revision; assist/auto proposal apply fenced",
+      "callers": [
+        "src/web/services/meal-planning.ts",
+        "src/web/services/meal-composition.ts"
+      ],
+      "tests": [
+        "tests/integration/meal-planning-http.test.ts",
+        "tests/integration/meal-planning-persistence.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_PLANNER_ENABLED"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Application service generate/compose/revise/feedback; optional governed AI assistance; plan revisions/snapshots. No actual stock consumption during generate.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/meal-planning/plans/:id/alternatives",
+      "group": "meal-planning",
+      "source": "src/worker/routes/meal-planning.ts",
+      "line": 97,
+      "auth": "cookie session",
+      "csrf": "not required for read",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner",
+      "scope": "registered household/current creator; shared stock input",
+      "tenant": "tenancyGuard + household and creator user repository scope; no family RBAC",
+      "tables": [
+        "generated_meal_plans",
+        "generated_meal_plan_compositions",
+        "generated_meal_plan_components",
+        "generated_meal_plan_annotations",
+        "recipe_feedback_events",
+        "recipe_role_assignments",
+        "inventory_lots",
+        "household_members"
+      ],
+      "flags": [
+        "MEAL_PLANNER_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "generate/feedback key required; mutations expected revision; assist/auto proposal apply fenced",
+      "callers": [
+        "src/web/services/meal-planning.ts",
+        "src/web/services/meal-composition.ts"
+      ],
+      "tests": [
+        "tests/integration/meal-planning-http.test.ts",
+        "tests/integration/meal-planning-persistence.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_PLANNER_ENABLED"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Application service generate/compose/revise/feedback; optional governed AI assistance; plan revisions/snapshots. No actual stock consumption during generate.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/meal-planning/plans/:id/explanation",
+      "group": "meal-planning",
+      "source": "src/worker/routes/meal-planning.ts",
+      "line": 104,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner",
+      "scope": "registered household/current creator; shared stock input",
+      "tenant": "tenancyGuard + household and creator user repository scope; no family RBAC",
+      "tables": [
+        "generated_meal_plans",
+        "generated_meal_plan_compositions",
+        "generated_meal_plan_components",
+        "generated_meal_plan_annotations",
+        "recipe_feedback_events",
+        "recipe_role_assignments",
+        "inventory_lots",
+        "household_members"
+      ],
+      "flags": [
+        "MEAL_PLANNER_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "generate/feedback key required; mutations expected revision; assist/auto proposal apply fenced",
+      "callers": [
+        "src/web/services/meal-planning.ts",
+        "src/web/services/meal-composition.ts"
+      ],
+      "tests": [
+        "tests/integration/meal-planning-http.test.ts",
+        "tests/integration/meal-planning-persistence.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_PLANNER_ENABLED"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Application service generate/compose/revise/feedback; optional governed AI assistance; plan revisions/snapshots. No actual stock consumption during generate.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/meal-planning/plans/:id/regenerate",
+      "group": "meal-planning",
+      "source": "src/worker/routes/meal-planning.ts",
+      "line": 106,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner",
+      "scope": "registered household/current creator; shared stock input",
+      "tenant": "tenancyGuard + household and creator user repository scope; no family RBAC",
+      "tables": [
+        "generated_meal_plans",
+        "generated_meal_plan_compositions",
+        "generated_meal_plan_components",
+        "generated_meal_plan_annotations",
+        "recipe_feedback_events",
+        "recipe_role_assignments",
+        "inventory_lots",
+        "household_members"
+      ],
+      "flags": [
+        "MEAL_PLANNER_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "generate/feedback key required; mutations expected revision; assist/auto proposal apply fenced",
+      "callers": [
+        "src/web/services/meal-planning.ts",
+        "src/web/services/meal-composition.ts"
+      ],
+      "tests": [
+        "tests/integration/meal-planning-http.test.ts",
+        "tests/integration/meal-planning-persistence.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_PLANNER_ENABLED"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Application service generate/compose/revise/feedback; optional governed AI assistance; plan revisions/snapshots. No actual stock consumption during generate.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/meal-planning/plans/:id/swap",
+      "group": "meal-planning",
+      "source": "src/worker/routes/meal-planning.ts",
+      "line": 108,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner",
+      "scope": "registered household/current creator; shared stock input",
+      "tenant": "tenancyGuard + household and creator user repository scope; no family RBAC",
+      "tables": [
+        "generated_meal_plans",
+        "generated_meal_plan_compositions",
+        "generated_meal_plan_components",
+        "generated_meal_plan_annotations",
+        "recipe_feedback_events",
+        "recipe_role_assignments",
+        "inventory_lots",
+        "household_members"
+      ],
+      "flags": [
+        "MEAL_PLANNER_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "generate/feedback key required; mutations expected revision; assist/auto proposal apply fenced",
+      "callers": [
+        "src/web/services/meal-planning.ts",
+        "src/web/services/meal-composition.ts"
+      ],
+      "tests": [
+        "tests/integration/meal-planning-http.test.ts",
+        "tests/integration/meal-planning-persistence.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_PLANNER_ENABLED"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Application service generate/compose/revise/feedback; optional governed AI assistance; plan revisions/snapshots. No actual stock consumption during generate.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/meal-planning/plans/:id/shopping",
+      "group": "meal-planning",
+      "source": "src/worker/routes/meal-planning.ts",
+      "line": 110,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner",
+      "scope": "registered household/current creator; shared stock input",
+      "tenant": "tenancyGuard + household and creator user repository scope; no family RBAC",
+      "tables": [
+        "generated_meal_plans",
+        "generated_meal_plan_compositions",
+        "generated_meal_plan_components",
+        "generated_meal_plan_annotations",
+        "recipe_feedback_events",
+        "recipe_role_assignments",
+        "inventory_lots",
+        "household_members"
+      ],
+      "flags": [
+        "MEAL_PLANNER_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "generate/feedback key required; mutations expected revision; assist/auto proposal apply fenced",
+      "callers": [
+        "src/web/services/meal-planning.ts",
+        "src/web/services/meal-composition.ts"
+      ],
+      "tests": [
+        "tests/integration/meal-planning-http.test.ts",
+        "tests/integration/meal-planning-persistence.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_PLANNER_ENABLED"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Application service generate/compose/revise/feedback; optional governed AI assistance; plan revisions/snapshots. No actual stock consumption during generate.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/meal-planning/plans/:id/compositions",
+      "group": "meal-planning",
+      "source": "src/worker/routes/meal-planning.ts",
+      "line": 135,
+      "auth": "cookie session",
+      "csrf": "not required for read",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner",
+      "scope": "registered household/current creator; shared stock input",
+      "tenant": "tenancyGuard + household and creator user repository scope; no family RBAC",
+      "tables": [
+        "generated_meal_plans",
+        "generated_meal_plan_compositions",
+        "generated_meal_plan_components",
+        "generated_meal_plan_annotations",
+        "recipe_feedback_events",
+        "recipe_role_assignments",
+        "inventory_lots",
+        "household_members"
+      ],
+      "flags": [
+        "MEAL_PLANNER_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "generate/feedback key required; mutations expected revision; assist/auto proposal apply fenced",
+      "callers": [
+        "src/web/services/meal-planning.ts",
+        "src/web/services/meal-composition.ts"
+      ],
+      "tests": [
+        "tests/integration/meal-planning-http.test.ts",
+        "tests/integration/meal-planning-persistence.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_PLANNER_ENABLED"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Application service generate/compose/revise/feedback; optional governed AI assistance; plan revisions/snapshots. No actual stock consumption during generate.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/meal-planning/plans/:id/slots/:slotId/composition",
+      "group": "meal-planning",
+      "source": "src/worker/routes/meal-planning.ts",
+      "line": 137,
+      "auth": "cookie session",
+      "csrf": "not required for read",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner",
+      "scope": "registered household/current creator; shared stock input",
+      "tenant": "tenancyGuard + household and creator user repository scope; no family RBAC",
+      "tables": [
+        "generated_meal_plans",
+        "generated_meal_plan_compositions",
+        "generated_meal_plan_components",
+        "generated_meal_plan_annotations",
+        "recipe_feedback_events",
+        "recipe_role_assignments",
+        "inventory_lots",
+        "household_members"
+      ],
+      "flags": [
+        "MEAL_PLANNER_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "generate/feedback key required; mutations expected revision; assist/auto proposal apply fenced",
+      "callers": [
+        "src/web/services/meal-planning.ts",
+        "src/web/services/meal-composition.ts"
+      ],
+      "tests": [
+        "tests/integration/meal-planning-http.test.ts",
+        "tests/integration/meal-planning-persistence.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_PLANNER_ENABLED"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Application service generate/compose/revise/feedback; optional governed AI assistance; plan revisions/snapshots. No actual stock consumption during generate.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/meal-planning/plans/:id/slots/:slotId/composition",
+      "group": "meal-planning",
+      "source": "src/worker/routes/meal-planning.ts",
+      "line": 139,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner",
+      "scope": "registered household/current creator; shared stock input",
+      "tenant": "tenancyGuard + household and creator user repository scope; no family RBAC",
+      "tables": [
+        "generated_meal_plans",
+        "generated_meal_plan_compositions",
+        "generated_meal_plan_components",
+        "generated_meal_plan_annotations",
+        "recipe_feedback_events",
+        "recipe_role_assignments",
+        "inventory_lots",
+        "household_members"
+      ],
+      "flags": [
+        "MEAL_PLANNER_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "generate/feedback key required; mutations expected revision; assist/auto proposal apply fenced",
+      "callers": [
+        "src/web/services/meal-planning.ts",
+        "src/web/services/meal-composition.ts"
+      ],
+      "tests": [
+        "tests/integration/meal-planning-http.test.ts",
+        "tests/integration/meal-planning-persistence.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_PLANNER_ENABLED"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Application service generate/compose/revise/feedback; optional governed AI assistance; plan revisions/snapshots. No actual stock consumption during generate.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/meal-planning/plans/:id/slots/:slotId/components",
+      "group": "meal-planning",
+      "source": "src/worker/routes/meal-planning.ts",
+      "line": 141,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner",
+      "scope": "registered household/current creator; shared stock input",
+      "tenant": "tenancyGuard + household and creator user repository scope; no family RBAC",
+      "tables": [
+        "generated_meal_plans",
+        "generated_meal_plan_compositions",
+        "generated_meal_plan_components",
+        "generated_meal_plan_annotations",
+        "recipe_feedback_events",
+        "recipe_role_assignments",
+        "inventory_lots",
+        "household_members"
+      ],
+      "flags": [
+        "MEAL_PLANNER_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "generate/feedback key required; mutations expected revision; assist/auto proposal apply fenced",
+      "callers": [
+        "src/web/services/meal-planning.ts",
+        "src/web/services/meal-composition.ts"
+      ],
+      "tests": [
+        "tests/integration/meal-planning-http.test.ts",
+        "tests/integration/meal-planning-persistence.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_PLANNER_ENABLED"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Application service generate/compose/revise/feedback; optional governed AI assistance; plan revisions/snapshots. No actual stock consumption during generate.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/meal-planning/plans/:id/slots/:slotId/components/:componentId/swap",
+      "group": "meal-planning",
+      "source": "src/worker/routes/meal-planning.ts",
+      "line": 143,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner",
+      "scope": "registered household/current creator; shared stock input",
+      "tenant": "tenancyGuard + household and creator user repository scope; no family RBAC",
+      "tables": [
+        "generated_meal_plans",
+        "generated_meal_plan_compositions",
+        "generated_meal_plan_components",
+        "generated_meal_plan_annotations",
+        "recipe_feedback_events",
+        "recipe_role_assignments",
+        "inventory_lots",
+        "household_members"
+      ],
+      "flags": [
+        "MEAL_PLANNER_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "generate/feedback key required; mutations expected revision; assist/auto proposal apply fenced",
+      "callers": [
+        "src/web/services/meal-planning.ts",
+        "src/web/services/meal-composition.ts"
+      ],
+      "tests": [
+        "tests/integration/meal-planning-http.test.ts",
+        "tests/integration/meal-planning-persistence.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_PLANNER_ENABLED"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Application service generate/compose/revise/feedback; optional governed AI assistance; plan revisions/snapshots. No actual stock consumption during generate.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/meal-planning/plans/:id/slots/:slotId/components/:componentId",
+      "group": "meal-planning",
+      "source": "src/worker/routes/meal-planning.ts",
+      "line": 145,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner",
+      "scope": "registered household/current creator; shared stock input",
+      "tenant": "tenancyGuard + household and creator user repository scope; no family RBAC",
+      "tables": [
+        "generated_meal_plans",
+        "generated_meal_plan_compositions",
+        "generated_meal_plan_components",
+        "generated_meal_plan_annotations",
+        "recipe_feedback_events",
+        "recipe_role_assignments",
+        "inventory_lots",
+        "household_members"
+      ],
+      "flags": [
+        "MEAL_PLANNER_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "generate/feedback key required; mutations expected revision; assist/auto proposal apply fenced",
+      "callers": [
+        "src/web/services/meal-planning.ts",
+        "src/web/services/meal-composition.ts"
+      ],
+      "tests": [
+        "tests/integration/meal-planning-http.test.ts",
+        "tests/integration/meal-planning-persistence.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_PLANNER_ENABLED"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Application service generate/compose/revise/feedback; optional governed AI assistance; plan revisions/snapshots. No actual stock consumption during generate.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/meal-planning/plans/:id/slots/:slotId/components/:componentId",
+      "group": "meal-planning",
+      "source": "src/worker/routes/meal-planning.ts",
+      "line": 147,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner",
+      "scope": "registered household/current creator; shared stock input",
+      "tenant": "tenancyGuard + household and creator user repository scope; no family RBAC",
+      "tables": [
+        "generated_meal_plans",
+        "generated_meal_plan_compositions",
+        "generated_meal_plan_components",
+        "generated_meal_plan_annotations",
+        "recipe_feedback_events",
+        "recipe_role_assignments",
+        "inventory_lots",
+        "household_members"
+      ],
+      "flags": [
+        "MEAL_PLANNER_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "generate/feedback key required; mutations expected revision; assist/auto proposal apply fenced",
+      "callers": [
+        "src/web/services/meal-planning.ts",
+        "src/web/services/meal-composition.ts"
+      ],
+      "tests": [
+        "tests/integration/meal-planning-http.test.ts",
+        "tests/integration/meal-planning-persistence.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_PLANNER_ENABLED"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Application service generate/compose/revise/feedback; optional governed AI assistance; plan revisions/snapshots. No actual stock consumption during generate.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/meal-planning/plans/:id/slots/:slotId/assist",
+      "group": "meal-planning",
+      "source": "src/worker/routes/meal-planning.ts",
+      "line": 154,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner",
+      "scope": "registered household/current creator; shared stock input",
+      "tenant": "tenancyGuard + household and creator user repository scope; no family RBAC",
+      "tables": [
+        "generated_meal_plans",
+        "generated_meal_plan_compositions",
+        "generated_meal_plan_components",
+        "generated_meal_plan_annotations",
+        "recipe_feedback_events",
+        "recipe_role_assignments",
+        "inventory_lots",
+        "household_members"
+      ],
+      "flags": [
+        "MEAL_PLANNER_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "generate/feedback key required; mutations expected revision; assist/auto proposal apply fenced",
+      "callers": [
+        "src/web/services/meal-planning.ts",
+        "src/web/services/meal-composition.ts"
+      ],
+      "tests": [
+        "tests/integration/meal-planning-http.test.ts",
+        "tests/integration/meal-planning-persistence.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_PLANNER_ENABLED"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Application service generate/compose/revise/feedback; optional governed AI assistance; plan revisions/snapshots. No actual stock consumption during generate.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/meal-planning/plans/:id/slots/:slotId/assist/apply",
+      "group": "meal-planning",
+      "source": "src/worker/routes/meal-planning.ts",
+      "line": 156,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner",
+      "scope": "registered household/current creator; shared stock input",
+      "tenant": "tenancyGuard + household and creator user repository scope; no family RBAC",
+      "tables": [
+        "generated_meal_plans",
+        "generated_meal_plan_compositions",
+        "generated_meal_plan_components",
+        "generated_meal_plan_annotations",
+        "recipe_feedback_events",
+        "recipe_role_assignments",
+        "inventory_lots",
+        "household_members"
+      ],
+      "flags": [
+        "MEAL_PLANNER_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "generate/feedback key required; mutations expected revision; assist/auto proposal apply fenced",
+      "callers": [
+        "src/web/services/meal-planning.ts",
+        "src/web/services/meal-composition.ts"
+      ],
+      "tests": [
+        "tests/integration/meal-planning-http.test.ts",
+        "tests/integration/meal-planning-persistence.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_PLANNER_ENABLED"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Application service generate/compose/revise/feedback; optional governed AI assistance; plan revisions/snapshots. No actual stock consumption during generate.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/meal-planning/plans/:id/slots/:slotId/auto",
+      "group": "meal-planning",
+      "source": "src/worker/routes/meal-planning.ts",
+      "line": 158,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner",
+      "scope": "registered household/current creator; shared stock input",
+      "tenant": "tenancyGuard + household and creator user repository scope; no family RBAC",
+      "tables": [
+        "generated_meal_plans",
+        "generated_meal_plan_compositions",
+        "generated_meal_plan_components",
+        "generated_meal_plan_annotations",
+        "recipe_feedback_events",
+        "recipe_role_assignments",
+        "inventory_lots",
+        "household_members"
+      ],
+      "flags": [
+        "MEAL_PLANNER_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "generate/feedback key required; mutations expected revision; assist/auto proposal apply fenced",
+      "callers": [
+        "src/web/services/meal-planning.ts",
+        "src/web/services/meal-composition.ts"
+      ],
+      "tests": [
+        "tests/integration/meal-planning-http.test.ts",
+        "tests/integration/meal-planning-persistence.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_PLANNER_ENABLED"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Application service generate/compose/revise/feedback; optional governed AI assistance; plan revisions/snapshots. No actual stock consumption during generate.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/meal-planning/plans/:id/slots/:slotId/auto/apply",
+      "group": "meal-planning",
+      "source": "src/worker/routes/meal-planning.ts",
+      "line": 160,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner",
+      "scope": "registered household/current creator; shared stock input",
+      "tenant": "tenancyGuard + household and creator user repository scope; no family RBAC",
+      "tables": [
+        "generated_meal_plans",
+        "generated_meal_plan_compositions",
+        "generated_meal_plan_components",
+        "generated_meal_plan_annotations",
+        "recipe_feedback_events",
+        "recipe_role_assignments",
+        "inventory_lots",
+        "household_members"
+      ],
+      "flags": [
+        "MEAL_PLANNER_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "generate/feedback key required; mutations expected revision; assist/auto proposal apply fenced",
+      "callers": [
+        "src/web/services/meal-planning.ts",
+        "src/web/services/meal-composition.ts"
+      ],
+      "tests": [
+        "tests/integration/meal-planning-http.test.ts",
+        "tests/integration/meal-planning-persistence.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_PLANNER_ENABLED"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Application service generate/compose/revise/feedback; optional governed AI assistance; plan revisions/snapshots. No actual stock consumption during generate.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/meal-planning/compositions/picker",
+      "group": "meal-planning",
+      "source": "src/worker/routes/meal-planning.ts",
+      "line": 162,
+      "auth": "cookie session",
+      "csrf": "not required for read",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner",
+      "scope": "registered household/current creator; shared stock input",
+      "tenant": "tenancyGuard + household and creator user repository scope; no family RBAC",
+      "tables": [
+        "generated_meal_plans",
+        "generated_meal_plan_compositions",
+        "generated_meal_plan_components",
+        "generated_meal_plan_annotations",
+        "recipe_feedback_events",
+        "recipe_role_assignments",
+        "inventory_lots",
+        "household_members"
+      ],
+      "flags": [
+        "MEAL_PLANNER_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "generate/feedback key required; mutations expected revision; assist/auto proposal apply fenced",
+      "callers": [
+        "src/web/services/meal-planning.ts",
+        "src/web/services/meal-composition.ts"
+      ],
+      "tests": [
+        "tests/integration/meal-planning-http.test.ts",
+        "tests/integration/meal-planning-persistence.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_PLANNER_ENABLED"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Application service generate/compose/revise/feedback; optional governed AI assistance; plan revisions/snapshots. No actual stock consumption during generate.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/meal-planning/plans/:id/feedback",
+      "group": "meal-planning",
+      "source": "src/worker/routes/meal-planning.ts",
+      "line": 170,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner",
+      "scope": "registered household/current creator; shared stock input",
+      "tenant": "tenancyGuard + household and creator user repository scope; no family RBAC",
+      "tables": [
+        "generated_meal_plans",
+        "generated_meal_plan_compositions",
+        "generated_meal_plan_components",
+        "generated_meal_plan_annotations",
+        "recipe_feedback_events",
+        "recipe_role_assignments",
+        "inventory_lots",
+        "household_members"
+      ],
+      "flags": [
+        "MEAL_PLANNER_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "generate/feedback key required; mutations expected revision; assist/auto proposal apply fenced",
+      "callers": [
+        "src/web/services/meal-planning.ts",
+        "src/web/services/meal-composition.ts"
+      ],
+      "tests": [
+        "tests/integration/meal-planning-http.test.ts",
+        "tests/integration/meal-planning-persistence.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB",
+        "MEAL_COMPOSITION_V2_ENABLED",
+        "MEAL_PLANNER_AI_ENABLED",
+        "MEAL_PLANNER_ENABLED"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Application service generate/compose/revise/feedback; optional governed AI assistance; plan revisions/snapshots. No actual stock consumption during generate.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/notifications",
+      "group": "notifications",
+      "source": "src/worker/routes/notifications.ts",
+      "line": 8,
+      "auth": "cookie session",
+      "csrf": "not required for read",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Notifications",
+      "scope": "session household",
+      "tenant": "no route tenancyGuard; legacy membership revoke test target",
+      "tables": [
+        "inventory_items",
+        "inventory_lots",
+        "shopping_lists",
+        "shopping_items"
+      ],
+      "flags": [],
+      "idempotency": "read-only synthesized notifications",
+      "callers": [
+        "src/web/services/notifications.ts"
+      ],
+      "tests": [
+        "tests/integration/frontend-ui-integration.test.tsx"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Synthesized stock/shopping reads, not actual scheduled notification delivery.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/preferences",
+      "group": "preferences",
+      "source": "src/worker/routes/preferences.ts",
+      "line": 26,
+      "auth": "cookie session",
+      "csrf": "not required for read",
+      "householdRolePolicy": "not applicable/see scope",
+      "owner": "Identity/Planner",
+      "scope": "current user",
+      "tenant": "user_id predicates; no route tenancyGuard",
+      "tables": [
+        "user_preferences",
+        "profiles"
+      ],
+      "flags": [],
+      "idempotency": "PATCH replacement/upsert; no key/revision",
+      "callers": [
+        "src/web/services/auth.ts"
+      ],
+      "tests": [
+        "tests/unit/onboarding-contract.test.tsx"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Current-user preferences/profile upserts; no family RBAC or catalog mutation.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/preferences",
+      "group": "preferences",
+      "source": "src/worker/routes/preferences.ts",
+      "line": 59,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "not applicable/see scope",
+      "owner": "Identity/Planner",
+      "scope": "current user",
+      "tenant": "user_id predicates; no route tenancyGuard",
+      "tables": [
+        "user_preferences",
+        "profiles"
+      ],
+      "flags": [],
+      "idempotency": "PATCH replacement/upsert; no key/revision",
+      "callers": [
+        "src/web/services/auth.ts"
+      ],
+      "tests": [
+        "tests/unit/onboarding-contract.test.tsx"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Current-user preferences/profile upserts; no family RBAC or catalog mutation.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/recipe-media/:recipeId/:role/:version",
+      "group": "recipe-media",
+      "source": "src/worker/routes/recipe-media.ts",
+      "line": 122,
+      "auth": "public",
+      "csrf": "not required for read",
+      "householdRolePolicy": "not applicable/see scope",
+      "owner": "Media",
+      "scope": "public GET/HEAD canonical media",
+      "tenant": "global catalog only; trusted D1-derived R2 key",
+      "tables": [
+        "recipe_media"
+      ],
+      "flags": [],
+      "idempotency": "read-only immutable version/cache",
+      "callers": [
+        "src/web/services/recipes.ts"
+      ],
+      "tests": [
+        "tests/unit/recipe-media-presentation.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB",
+        "IMAGES"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "R2 GET/HEAD on D1-trusted canonical storage key, allowlisted MIME/cache; no write.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "HEAD",
+      "path": "/api/v1/recipe-media/:recipeId/:role/:version",
+      "group": "recipe-media",
+      "source": "src/worker/routes/recipe-media.ts",
+      "line": 123,
+      "auth": "public",
+      "csrf": "not required for read",
+      "householdRolePolicy": "not applicable/see scope",
+      "owner": "Media",
+      "scope": "public GET/HEAD canonical media",
+      "tenant": "global catalog only; trusted D1-derived R2 key",
+      "tables": [
+        "recipe_media"
+      ],
+      "flags": [],
+      "idempotency": "read-only immutable version/cache",
+      "callers": [
+        "src/web/services/recipes.ts"
+      ],
+      "tests": [
+        "tests/unit/recipe-media-presentation.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB",
+        "IMAGES"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "R2 GET/HEAD on D1-trusted canonical storage key, allowlisted MIME/cache; no write.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/recipe-discovery",
+      "group": "recipes",
+      "source": "src/worker/routes/recipes.ts",
+      "line": 198,
+      "auth": "cookie session",
+      "csrf": "not required for read",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Catalog/Planner/Inventory",
+      "scope": "public recipes; authenticated discovery/recommendations and cooking",
+      "tenant": "discovery/cooking tenancyGuard; detail/recommendations legacy membership test target",
+      "tables": [
+        "recipes",
+        "recipe_ingredients",
+        "recipe_steps",
+        "recipe_media",
+        "inventory_items",
+        "inventory_lots",
+        "inventory_events",
+        "inventory_commands",
+        "cooked_meals",
+        "user_preferences"
+      ],
+      "flags": [
+        "RECIPE_CATALOG_MODE",
+        "RECIPE_CATALOG_CUTOVER_ENABLED",
+        "RECIPE_CATALOG_D1_CANARY_PERCENT"
+      ],
+      "idempotency": "cook-complete optional command ID/key and fingerprint; reads no mutations",
+      "callers": [
+        "src/web/services/recipes.ts"
+      ],
+      "tests": [
+        "tests/integration/recipe-authority-routing.test.ts",
+        "tests/unit/cooking-route-allocation.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Catalog static/D1 resolver; inventory/recommendation reads; cook-complete ledger/lot command; cook-start advisory read.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/recipes",
+      "group": "recipes",
+      "source": "src/worker/routes/recipes.ts",
+      "line": 221,
+      "auth": "anonymous GET allowed; cookie context when present",
+      "csrf": "not required for read",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Catalog/Planner/Inventory",
+      "scope": "public recipes; authenticated discovery/recommendations and cooking",
+      "tenant": "discovery/cooking tenancyGuard; detail/recommendations legacy membership test target",
+      "tables": [
+        "recipes",
+        "recipe_ingredients",
+        "recipe_steps",
+        "recipe_media",
+        "inventory_items",
+        "inventory_lots",
+        "inventory_events",
+        "inventory_commands",
+        "cooked_meals",
+        "user_preferences"
+      ],
+      "flags": [
+        "RECIPE_CATALOG_MODE",
+        "RECIPE_CATALOG_CUTOVER_ENABLED",
+        "RECIPE_CATALOG_D1_CANARY_PERCENT"
+      ],
+      "idempotency": "cook-complete optional command ID/key and fingerprint; reads no mutations",
+      "callers": [
+        "src/web/services/recipes.ts"
+      ],
+      "tests": [
+        "tests/integration/recipe-authority-routing.test.ts",
+        "tests/unit/cooking-route-allocation.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Catalog static/D1 resolver; inventory/recommendation reads; cook-complete ledger/lot command; cook-start advisory read.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/recipes/:id",
+      "group": "recipes",
+      "source": "src/worker/routes/recipes.ts",
+      "line": 253,
+      "auth": "anonymous GET allowed; cookie context when present",
+      "csrf": "not required for read",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Catalog/Planner/Inventory",
+      "scope": "public recipes; authenticated discovery/recommendations and cooking",
+      "tenant": "discovery/cooking tenancyGuard; detail/recommendations legacy membership test target",
+      "tables": [
+        "recipes",
+        "recipe_ingredients",
+        "recipe_steps",
+        "recipe_media",
+        "inventory_items",
+        "inventory_lots",
+        "inventory_events",
+        "inventory_commands",
+        "cooked_meals",
+        "user_preferences"
+      ],
+      "flags": [
+        "RECIPE_CATALOG_MODE",
+        "RECIPE_CATALOG_CUTOVER_ENABLED",
+        "RECIPE_CATALOG_D1_CANARY_PERCENT"
+      ],
+      "idempotency": "cook-complete optional command ID/key and fingerprint; reads no mutations",
+      "callers": [
+        "src/web/services/recipes.ts"
+      ],
+      "tests": [
+        "tests/integration/recipe-authority-routing.test.ts",
+        "tests/unit/cooking-route-allocation.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Catalog static/D1 resolver; inventory/recommendation reads; cook-complete ledger/lot command; cook-start advisory read.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/recommendations",
+      "group": "recipes",
+      "source": "src/worker/routes/recipes.ts",
+      "line": 274,
+      "auth": "cookie session",
+      "csrf": "not required for read",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Catalog/Planner/Inventory",
+      "scope": "public recipes; authenticated discovery/recommendations and cooking",
+      "tenant": "discovery/cooking tenancyGuard; detail/recommendations legacy membership test target",
+      "tables": [
+        "recipes",
+        "recipe_ingredients",
+        "recipe_steps",
+        "recipe_media",
+        "inventory_items",
+        "inventory_lots",
+        "inventory_events",
+        "inventory_commands",
+        "cooked_meals",
+        "user_preferences"
+      ],
+      "flags": [
+        "RECIPE_CATALOG_MODE",
+        "RECIPE_CATALOG_CUTOVER_ENABLED",
+        "RECIPE_CATALOG_D1_CANARY_PERCENT"
+      ],
+      "idempotency": "cook-complete optional command ID/key and fingerprint; reads no mutations",
+      "callers": [
+        "src/web/services/recipes.ts"
+      ],
+      "tests": [
+        "tests/integration/recipe-authority-routing.test.ts",
+        "tests/unit/cooking-route-allocation.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Catalog static/D1 resolver; inventory/recommendation reads; cook-complete ledger/lot command; cook-start advisory read.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/recipes/:id/cook/start",
+      "group": "recipes",
+      "source": "src/worker/routes/recipes.ts",
+      "line": 317,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Catalog/Planner/Inventory",
+      "scope": "public recipes; authenticated discovery/recommendations and cooking",
+      "tenant": "discovery/cooking tenancyGuard; detail/recommendations legacy membership test target",
+      "tables": [
+        "recipes",
+        "recipe_ingredients",
+        "recipe_steps",
+        "recipe_media",
+        "inventory_items",
+        "inventory_lots",
+        "inventory_events",
+        "inventory_commands",
+        "cooked_meals",
+        "user_preferences"
+      ],
+      "flags": [
+        "RECIPE_CATALOG_MODE",
+        "RECIPE_CATALOG_CUTOVER_ENABLED",
+        "RECIPE_CATALOG_D1_CANARY_PERCENT"
+      ],
+      "idempotency": "cook-complete optional command ID/key and fingerprint; reads no mutations",
+      "callers": [
+        "src/web/services/recipes.ts"
+      ],
+      "tests": [
+        "tests/integration/recipe-authority-routing.test.ts",
+        "tests/unit/cooking-route-allocation.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Catalog static/D1 resolver; inventory/recommendation reads; cook-complete ledger/lot command; cook-start advisory read.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/recipes/:id/cook/complete",
+      "group": "recipes",
+      "source": "src/worker/routes/recipes.ts",
+      "line": 358,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Catalog/Planner/Inventory",
+      "scope": "public recipes; authenticated discovery/recommendations and cooking",
+      "tenant": "discovery/cooking tenancyGuard; detail/recommendations legacy membership test target",
+      "tables": [
+        "recipes",
+        "recipe_ingredients",
+        "recipe_steps",
+        "recipe_media",
+        "inventory_items",
+        "inventory_lots",
+        "inventory_events",
+        "inventory_commands",
+        "cooked_meals",
+        "user_preferences"
+      ],
+      "flags": [
+        "RECIPE_CATALOG_MODE",
+        "RECIPE_CATALOG_CUTOVER_ENABLED",
+        "RECIPE_CATALOG_D1_CANARY_PERCENT"
+      ],
+      "idempotency": "cook-complete optional command ID/key and fingerprint; reads no mutations",
+      "callers": [
+        "src/web/services/recipes.ts"
+      ],
+      "tests": [
+        "tests/integration/recipe-authority-routing.test.ts",
+        "tests/unit/cooking-route-allocation.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Catalog static/D1 resolver; inventory/recommendation reads; cook-complete ledger/lot command; cook-start advisory read.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/scans/fridge",
+      "group": "scans",
+      "source": "src/worker/routes/scans.ts",
+      "line": 844,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "AI/Inventory",
+      "scope": "upload/replay user+household; read/confirm household-shared",
+      "tenant": "tenancyGuard and scan household predicates",
+      "tables": [
+        "scans",
+        "scan_items",
+        "scan_queue_jobs",
+        "scan_quota_ledger",
+        "scan_quota_periods",
+        "inventory_items",
+        "inventory_lots",
+        "inventory_commands",
+        "inventory_events"
+      ],
+      "flags": [
+        "SCAN_QUEUE_MODE",
+        "AI_QWEN_ONLY",
+        "AI_MODEL_OCR",
+        "AI_MAX_CALLS_PER_OPERATION",
+        "AI_MAX_TOTAL_TOKENS",
+        "AI_SHADOW_CANARY_PERCENT"
+      ],
+      "idempotency": "optional key scoped to user/household/image fingerprint; fenced lease; confirm CAS/receipt",
+      "callers": [
+        "src/web/services/scans.ts"
+      ],
+      "tests": [
+        "tests/unit/scans.test.ts",
+        "tests/unit/scan-queue.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "AI_MAX_IMAGE_BYTES",
+        "AI_MAX_OCR_IMAGE_BYTES",
+        "CACHE",
+        "DB",
+        "IMAGES",
+        "SCAN_QUEUE",
+        "SCAN_QUEUE_MODE"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Upload to R2; sync governed AI or SCAN_QUEUE enqueue after durable quota/job reservation; replay restores ambiguous enqueue; confirm is explicit transactional inventory command. Queue shadow/cancel new features not present.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/scans/receipt",
+      "group": "scans",
+      "source": "src/worker/routes/scans.ts",
+      "line": 1077,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "AI/Inventory",
+      "scope": "upload/replay user+household; read/confirm household-shared",
+      "tenant": "tenancyGuard and scan household predicates",
+      "tables": [
+        "scans",
+        "scan_items",
+        "scan_queue_jobs",
+        "scan_quota_ledger",
+        "scan_quota_periods",
+        "inventory_items",
+        "inventory_lots",
+        "inventory_commands",
+        "inventory_events"
+      ],
+      "flags": [
+        "SCAN_QUEUE_MODE",
+        "AI_QWEN_ONLY",
+        "AI_MODEL_OCR",
+        "AI_MAX_CALLS_PER_OPERATION",
+        "AI_MAX_TOTAL_TOKENS",
+        "AI_SHADOW_CANARY_PERCENT"
+      ],
+      "idempotency": "optional key scoped to user/household/image fingerprint; fenced lease; confirm CAS/receipt",
+      "callers": [
+        "src/web/services/scans.ts"
+      ],
+      "tests": [
+        "tests/unit/scans.test.ts",
+        "tests/unit/scan-queue.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "AI_MAX_IMAGE_BYTES",
+        "AI_MAX_OCR_IMAGE_BYTES",
+        "CACHE",
+        "DB",
+        "IMAGES",
+        "SCAN_QUEUE",
+        "SCAN_QUEUE_MODE"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Upload to R2; sync governed AI or SCAN_QUEUE enqueue after durable quota/job reservation; replay restores ambiguous enqueue; confirm is explicit transactional inventory command. Queue shadow/cancel new features not present.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/scans/:id",
+      "group": "scans",
+      "source": "src/worker/routes/scans.ts",
+      "line": 1317,
+      "auth": "cookie session",
+      "csrf": "not required for read",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "AI/Inventory",
+      "scope": "upload/replay user+household; read/confirm household-shared",
+      "tenant": "tenancyGuard and scan household predicates",
+      "tables": [
+        "scans",
+        "scan_items",
+        "scan_queue_jobs",
+        "scan_quota_ledger",
+        "scan_quota_periods",
+        "inventory_items",
+        "inventory_lots",
+        "inventory_commands",
+        "inventory_events"
+      ],
+      "flags": [
+        "SCAN_QUEUE_MODE",
+        "AI_QWEN_ONLY",
+        "AI_MODEL_OCR",
+        "AI_MAX_CALLS_PER_OPERATION",
+        "AI_MAX_TOTAL_TOKENS",
+        "AI_SHADOW_CANARY_PERCENT"
+      ],
+      "idempotency": "optional key scoped to user/household/image fingerprint; fenced lease; confirm CAS/receipt",
+      "callers": [
+        "src/web/services/scans.ts"
+      ],
+      "tests": [
+        "tests/unit/scans.test.ts",
+        "tests/unit/scan-queue.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "AI_MAX_IMAGE_BYTES",
+        "AI_MAX_OCR_IMAGE_BYTES",
+        "CACHE",
+        "DB",
+        "IMAGES",
+        "SCAN_QUEUE",
+        "SCAN_QUEUE_MODE"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Upload to R2; sync governed AI or SCAN_QUEUE enqueue after durable quota/job reservation; replay restores ambiguous enqueue; confirm is explicit transactional inventory command. Queue shadow/cancel new features not present.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/scans/:id/confirm",
+      "group": "scans",
+      "source": "src/worker/routes/scans.ts",
+      "line": 1374,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "AI/Inventory",
+      "scope": "upload/replay user+household; read/confirm household-shared",
+      "tenant": "tenancyGuard and scan household predicates",
+      "tables": [
+        "scans",
+        "scan_items",
+        "scan_queue_jobs",
+        "scan_quota_ledger",
+        "scan_quota_periods",
+        "inventory_items",
+        "inventory_lots",
+        "inventory_commands",
+        "inventory_events"
+      ],
+      "flags": [
+        "SCAN_QUEUE_MODE",
+        "AI_QWEN_ONLY",
+        "AI_MODEL_OCR",
+        "AI_MAX_CALLS_PER_OPERATION",
+        "AI_MAX_TOTAL_TOKENS",
+        "AI_SHADOW_CANARY_PERCENT"
+      ],
+      "idempotency": "optional key scoped to user/household/image fingerprint; fenced lease; confirm CAS/receipt",
+      "callers": [
+        "src/web/services/scans.ts"
+      ],
+      "tests": [
+        "tests/unit/scans.test.ts",
+        "tests/unit/scan-queue.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "AI_MAX_IMAGE_BYTES",
+        "AI_MAX_OCR_IMAGE_BYTES",
+        "CACHE",
+        "DB",
+        "IMAGES",
+        "SCAN_QUEUE",
+        "SCAN_QUEUE_MODE"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Upload to R2; sync governed AI or SCAN_QUEUE enqueue after durable quota/job reservation; replay restores ambiguous enqueue; confirm is explicit transactional inventory command. Queue shadow/cancel new features not present.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/shopping-list",
+      "group": "shopping",
+      "source": "src/worker/routes/shopping.ts",
+      "line": 41,
+      "auth": "cookie session",
+      "csrf": "not required for read",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Shopping",
+      "scope": "shared household",
+      "tenant": "tenancyGuard + shopping list joins",
+      "tables": [
+        "shopping_lists",
+        "shopping_items"
+      ],
+      "flags": [
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "create client ID replay; PATCH/DELETE no explicit revision/command key",
+      "callers": [
+        "src/web/services/shopping.ts"
+      ],
+      "tests": [
+        "tests/unit/shopping-hardening.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Household list/item mutations; recipe expansion/quantity normalization; no actual inventory import in standalone shopping routes.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/shopping-list/items",
+      "group": "shopping",
+      "source": "src/worker/routes/shopping.ts",
+      "line": 79,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Shopping",
+      "scope": "shared household",
+      "tenant": "tenancyGuard + shopping list joins",
+      "tables": [
+        "shopping_lists",
+        "shopping_items"
+      ],
+      "flags": [
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "create client ID replay; PATCH/DELETE no explicit revision/command key",
+      "callers": [
+        "src/web/services/shopping.ts"
+      ],
+      "tests": [
+        "tests/unit/shopping-hardening.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Household list/item mutations; recipe expansion/quantity normalization; no actual inventory import in standalone shopping routes.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/shopping-list/items/:id",
+      "group": "shopping",
+      "source": "src/worker/routes/shopping.ts",
+      "line": 174,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Shopping",
+      "scope": "shared household",
+      "tenant": "tenancyGuard + shopping list joins",
+      "tables": [
+        "shopping_lists",
+        "shopping_items"
+      ],
+      "flags": [
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "create client ID replay; PATCH/DELETE no explicit revision/command key",
+      "callers": [
+        "src/web/services/shopping.ts"
+      ],
+      "tests": [
+        "tests/unit/shopping-hardening.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Household list/item mutations; recipe expansion/quantity normalization; no actual inventory import in standalone shopping routes.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/shopping-list/items/:id",
+      "group": "shopping",
+      "source": "src/worker/routes/shopping.ts",
+      "line": 246,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Shopping",
+      "scope": "shared household",
+      "tenant": "tenancyGuard + shopping list joins",
+      "tables": [
+        "shopping_lists",
+        "shopping_items"
+      ],
+      "flags": [
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "create client ID replay; PATCH/DELETE no explicit revision/command key",
+      "callers": [
+        "src/web/services/shopping.ts"
+      ],
+      "tests": [
+        "tests/unit/shopping-hardening.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "DB"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Household list/item mutations; recipe expansion/quantity normalization; no actual inventory import in standalone shopping routes.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/week/current",
+      "group": "week",
+      "source": "src/worker/routes/week.ts",
+      "line": 955,
+      "auth": "cookie session",
+      "csrf": "not required for read",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner/Shopping",
+      "scope": "shared household",
+      "tenant": "tenancyGuard + household plan joins",
+      "tables": [
+        "meal_plans",
+        "meal_plan_days",
+        "meal_plan_slots",
+        "meal_plan_shopping_items",
+        "meal_plan_days_v2",
+        "meal_plan_slots_v2",
+        "meal_plan_shopping_items_v2",
+        "weekly_planner_preferences",
+        "shopping_import_commands",
+        "shopping_runs",
+        "shopping_run_items",
+        "inventory_events"
+      ],
+      "flags": [
+        "WEEK_SCHEMA_MODE",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "optional create command key/plan ID; shopping-complete durable key/fingerprint/lease; revision semantics differ from modern planner",
+      "callers": [
+        "src/web/services/week.ts"
+      ],
+      "tests": [
+        "tests/integration/week-core-flow.test.ts",
+        "tests/unit/week-reconciliation.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB",
+        "WEEK_SCHEMA_MODE"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Legacy/dual schema planning and shopping projection; KV compatibility, shopping-complete durable import/lot events. Separate from modern meal-planning revisions.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/week/plans",
+      "group": "week",
+      "source": "src/worker/routes/week.ts",
+      "line": 987,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner/Shopping",
+      "scope": "shared household",
+      "tenant": "tenancyGuard + household plan joins",
+      "tables": [
+        "meal_plans",
+        "meal_plan_days",
+        "meal_plan_slots",
+        "meal_plan_shopping_items",
+        "meal_plan_days_v2",
+        "meal_plan_slots_v2",
+        "meal_plan_shopping_items_v2",
+        "weekly_planner_preferences",
+        "shopping_import_commands",
+        "shopping_runs",
+        "shopping_run_items",
+        "inventory_events"
+      ],
+      "flags": [
+        "WEEK_SCHEMA_MODE",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "optional create command key/plan ID; shopping-complete durable key/fingerprint/lease; revision semantics differ from modern planner",
+      "callers": [
+        "src/web/services/week.ts"
+      ],
+      "tests": [
+        "tests/integration/week-core-flow.test.ts",
+        "tests/unit/week-reconciliation.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB",
+        "WEEK_SCHEMA_MODE"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Legacy/dual schema planning and shopping projection; KV compatibility, shopping-complete durable import/lot events. Separate from modern meal-planning revisions.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/week/plans/:id",
+      "group": "week",
+      "source": "src/worker/routes/week.ts",
+      "line": 1056,
+      "auth": "cookie session",
+      "csrf": "not required for read",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner/Shopping",
+      "scope": "shared household",
+      "tenant": "tenancyGuard + household plan joins",
+      "tables": [
+        "meal_plans",
+        "meal_plan_days",
+        "meal_plan_slots",
+        "meal_plan_shopping_items",
+        "meal_plan_days_v2",
+        "meal_plan_slots_v2",
+        "meal_plan_shopping_items_v2",
+        "weekly_planner_preferences",
+        "shopping_import_commands",
+        "shopping_runs",
+        "shopping_run_items",
+        "inventory_events"
+      ],
+      "flags": [
+        "WEEK_SCHEMA_MODE",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "optional create command key/plan ID; shopping-complete durable key/fingerprint/lease; revision semantics differ from modern planner",
+      "callers": [
+        "src/web/services/week.ts"
+      ],
+      "tests": [
+        "tests/integration/week-core-flow.test.ts",
+        "tests/unit/week-reconciliation.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB",
+        "WEEK_SCHEMA_MODE"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Legacy/dual schema planning and shopping projection; KV compatibility, shopping-complete durable import/lot events. Separate from modern meal-planning revisions.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/week/plans/:id/generate",
+      "group": "week",
+      "source": "src/worker/routes/week.ts",
+      "line": 1074,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner/Shopping",
+      "scope": "shared household",
+      "tenant": "tenancyGuard + household plan joins",
+      "tables": [
+        "meal_plans",
+        "meal_plan_days",
+        "meal_plan_slots",
+        "meal_plan_shopping_items",
+        "meal_plan_days_v2",
+        "meal_plan_slots_v2",
+        "meal_plan_shopping_items_v2",
+        "weekly_planner_preferences",
+        "shopping_import_commands",
+        "shopping_runs",
+        "shopping_run_items",
+        "inventory_events"
+      ],
+      "flags": [
+        "WEEK_SCHEMA_MODE",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "optional create command key/plan ID; shopping-complete durable key/fingerprint/lease; revision semantics differ from modern planner",
+      "callers": [
+        "src/web/services/week.ts"
+      ],
+      "tests": [
+        "tests/integration/week-core-flow.test.ts",
+        "tests/unit/week-reconciliation.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB",
+        "WEEK_SCHEMA_MODE"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Legacy/dual schema planning and shopping projection; KV compatibility, shopping-complete durable import/lot events. Separate from modern meal-planning revisions.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/week/plans/:id/meals/:mealId/swap",
+      "group": "week",
+      "source": "src/worker/routes/week.ts",
+      "line": 1117,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner/Shopping",
+      "scope": "shared household",
+      "tenant": "tenancyGuard + household plan joins",
+      "tables": [
+        "meal_plans",
+        "meal_plan_days",
+        "meal_plan_slots",
+        "meal_plan_shopping_items",
+        "meal_plan_days_v2",
+        "meal_plan_slots_v2",
+        "meal_plan_shopping_items_v2",
+        "weekly_planner_preferences",
+        "shopping_import_commands",
+        "shopping_runs",
+        "shopping_run_items",
+        "inventory_events"
+      ],
+      "flags": [
+        "WEEK_SCHEMA_MODE",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "optional create command key/plan ID; shopping-complete durable key/fingerprint/lease; revision semantics differ from modern planner",
+      "callers": [
+        "src/web/services/week.ts"
+      ],
+      "tests": [
+        "tests/integration/week-core-flow.test.ts",
+        "tests/unit/week-reconciliation.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB",
+        "WEEK_SCHEMA_MODE"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Legacy/dual schema planning and shopping projection; KV compatibility, shopping-complete durable import/lot events. Separate from modern meal-planning revisions.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/week/plans/:id/meals/:mealId",
+      "group": "week",
+      "source": "src/worker/routes/week.ts",
+      "line": 1191,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner/Shopping",
+      "scope": "shared household",
+      "tenant": "tenancyGuard + household plan joins",
+      "tables": [
+        "meal_plans",
+        "meal_plan_days",
+        "meal_plan_slots",
+        "meal_plan_shopping_items",
+        "meal_plan_days_v2",
+        "meal_plan_slots_v2",
+        "meal_plan_shopping_items_v2",
+        "weekly_planner_preferences",
+        "shopping_import_commands",
+        "shopping_runs",
+        "shopping_run_items",
+        "inventory_events"
+      ],
+      "flags": [
+        "WEEK_SCHEMA_MODE",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "optional create command key/plan ID; shopping-complete durable key/fingerprint/lease; revision semantics differ from modern planner",
+      "callers": [
+        "src/web/services/week.ts"
+      ],
+      "tests": [
+        "tests/integration/week-core-flow.test.ts",
+        "tests/unit/week-reconciliation.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB",
+        "WEEK_SCHEMA_MODE"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Legacy/dual schema planning and shopping projection; KV compatibility, shopping-complete durable import/lot events. Separate from modern meal-planning revisions.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/week/plans/:id/shopping",
+      "group": "week",
+      "source": "src/worker/routes/week.ts",
+      "line": 1234,
+      "auth": "cookie session",
+      "csrf": "not required for read",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner/Shopping",
+      "scope": "shared household",
+      "tenant": "tenancyGuard + household plan joins",
+      "tables": [
+        "meal_plans",
+        "meal_plan_days",
+        "meal_plan_slots",
+        "meal_plan_shopping_items",
+        "meal_plan_days_v2",
+        "meal_plan_slots_v2",
+        "meal_plan_shopping_items_v2",
+        "weekly_planner_preferences",
+        "shopping_import_commands",
+        "shopping_runs",
+        "shopping_run_items",
+        "inventory_events"
+      ],
+      "flags": [
+        "WEEK_SCHEMA_MODE",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "optional create command key/plan ID; shopping-complete durable key/fingerprint/lease; revision semantics differ from modern planner",
+      "callers": [
+        "src/web/services/week.ts"
+      ],
+      "tests": [
+        "tests/integration/week-core-flow.test.ts",
+        "tests/unit/week-reconciliation.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB",
+        "WEEK_SCHEMA_MODE"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Legacy/dual schema planning and shopping projection; KV compatibility, shopping-complete durable import/lot events. Separate from modern meal-planning revisions.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/week/plans/:id/shopping/items/:itemId",
+      "group": "week",
+      "source": "src/worker/routes/week.ts",
+      "line": 1253,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner/Shopping",
+      "scope": "shared household",
+      "tenant": "tenancyGuard + household plan joins",
+      "tables": [
+        "meal_plans",
+        "meal_plan_days",
+        "meal_plan_slots",
+        "meal_plan_shopping_items",
+        "meal_plan_days_v2",
+        "meal_plan_slots_v2",
+        "meal_plan_shopping_items_v2",
+        "weekly_planner_preferences",
+        "shopping_import_commands",
+        "shopping_runs",
+        "shopping_run_items",
+        "inventory_events"
+      ],
+      "flags": [
+        "WEEK_SCHEMA_MODE",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "optional create command key/plan ID; shopping-complete durable key/fingerprint/lease; revision semantics differ from modern planner",
+      "callers": [
+        "src/web/services/week.ts"
+      ],
+      "tests": [
+        "tests/integration/week-core-flow.test.ts",
+        "tests/unit/week-reconciliation.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB",
+        "WEEK_SCHEMA_MODE"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Legacy/dual schema planning and shopping projection; KV compatibility, shopping-complete durable import/lot events. Separate from modern meal-planning revisions.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/week/plans/:id/shopping/complete",
+      "group": "week",
+      "source": "src/worker/routes/week.ts",
+      "line": 1292,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner/Shopping",
+      "scope": "shared household",
+      "tenant": "tenancyGuard + household plan joins",
+      "tables": [
+        "meal_plans",
+        "meal_plan_days",
+        "meal_plan_slots",
+        "meal_plan_shopping_items",
+        "meal_plan_days_v2",
+        "meal_plan_slots_v2",
+        "meal_plan_shopping_items_v2",
+        "weekly_planner_preferences",
+        "shopping_import_commands",
+        "shopping_runs",
+        "shopping_run_items",
+        "inventory_events"
+      ],
+      "flags": [
+        "WEEK_SCHEMA_MODE",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "optional create command key/plan ID; shopping-complete durable key/fingerprint/lease; revision semantics differ from modern planner",
+      "callers": [
+        "src/web/services/week.ts"
+      ],
+      "tests": [
+        "tests/integration/week-core-flow.test.ts",
+        "tests/unit/week-reconciliation.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB",
+        "WEEK_SCHEMA_MODE"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Legacy/dual schema planning and shopping projection; KV compatibility, shopping-complete durable import/lot events. Separate from modern meal-planning revisions.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/week/preferences",
+      "group": "week",
+      "source": "src/worker/routes/week.ts",
+      "line": 1712,
+      "auth": "cookie session",
+      "csrf": "not required for read",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner/Shopping",
+      "scope": "shared household",
+      "tenant": "tenancyGuard + household plan joins",
+      "tables": [
+        "meal_plans",
+        "meal_plan_days",
+        "meal_plan_slots",
+        "meal_plan_shopping_items",
+        "meal_plan_days_v2",
+        "meal_plan_slots_v2",
+        "meal_plan_shopping_items_v2",
+        "weekly_planner_preferences",
+        "shopping_import_commands",
+        "shopping_runs",
+        "shopping_run_items",
+        "inventory_events"
+      ],
+      "flags": [
+        "WEEK_SCHEMA_MODE",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "optional create command key/plan ID; shopping-complete durable key/fingerprint/lease; revision semantics differ from modern planner",
+      "callers": [
+        "src/web/services/week.ts"
+      ],
+      "tests": [
+        "tests/integration/week-core-flow.test.ts",
+        "tests/unit/week-reconciliation.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB",
+        "WEEK_SCHEMA_MODE"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Legacy/dual schema planning and shopping projection; KV compatibility, shopping-complete durable import/lot events. Separate from modern meal-planning revisions.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/week/preferences",
+      "group": "week",
+      "source": "src/worker/routes/week.ts",
+      "line": 1759,
+      "auth": "cookie session",
+      "csrf": "trusted Origin/Referer with cookie",
+      "householdRolePolicy": "membership, no owner/editor enforcement",
+      "owner": "Planner/Shopping",
+      "scope": "shared household",
+      "tenant": "tenancyGuard + household plan joins",
+      "tables": [
+        "meal_plans",
+        "meal_plan_days",
+        "meal_plan_slots",
+        "meal_plan_shopping_items",
+        "meal_plan_days_v2",
+        "meal_plan_slots_v2",
+        "meal_plan_shopping_items_v2",
+        "weekly_planner_preferences",
+        "shopping_import_commands",
+        "shopping_runs",
+        "shopping_run_items",
+        "inventory_events"
+      ],
+      "flags": [
+        "WEEK_SCHEMA_MODE",
+        "RECIPE_CATALOG_MODE"
+      ],
+      "idempotency": "optional create command key/plan ID; shopping-complete durable key/fingerprint/lease; revision semantics differ from modern planner",
+      "callers": [
+        "src/web/services/week.ts"
+      ],
+      "tests": [
+        "tests/integration/week-core-flow.test.ts",
+        "tests/unit/week-reconciliation.test.ts"
+      ],
+      "directEnvNamesAtGroupSource": [
+        "CACHE",
+        "DB",
+        "WEEK_SCHEMA_MODE"
+      ],
+      "backgroundAndExternalEffectsAtGroup": "Legacy/dual schema planning and shopping projection; KV compatibility, shopping-complete durable import/lot events. Separate from modern meal-planning revisions.",
+      "flagsCoverage": "Representative policy dependencies including called services; directEnvNames includes bindings/secret names without values, source only"
+    }
+  ],
+  "scopeNotes": [
+    "Group tables/effects/flags are conservative shared dependencies, not exact SQL call graph per route. Native guards and middleware may write last_seen/default-household links on authenticated read requests.",
+    "Options/CORS preflight and SPA wildcard excluded; explicit HEAD recipe media included. Non-production signed bearer test compatibility is not production cookie authorization.",
+    "Flag and secret names do not imply configured runtime values; see baseline hosted receipt and runtime gaps."
+  ]
+}

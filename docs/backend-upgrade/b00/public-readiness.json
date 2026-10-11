@@ -1,0 +1,43 @@
+{
+  "url": "https://frigo.tungjpstore.net/api/v1/health/ready",
+  "observedAtUtc": "2026-10-11T02:34:05.175244+00:00",
+  "httpStatus": 200,
+  "response": {
+    "status": "degraded",
+    "app": "Frigo",
+    "version": "0.1.0",
+    "commit": "652e0d7632745e9b77cda4b5b3caac83a3ec1015",
+    "timestamp": "2026-10-11T02:34:04.954Z",
+    "environment": "production",
+    "recipeAuthority": {
+      "configuredMode": "d1",
+      "cutoverEnabled": true,
+      "canaryPercent": 0,
+      "globalSource": "d1",
+      "fallbackReason": null,
+      "releaseId": "rel-bd00a4f53fcaeee4",
+      "expectedRecipeCount": 500
+    },
+    "services": {
+      "database": "ok",
+      "queue": "ok",
+      "ai": "configured",
+      "email": {
+        "providerConfigured": true,
+        "deliveryVerified": false
+      },
+      "rateLimiting": "kv-best-effort"
+    },
+    "config": {
+      "ok": true,
+      "issues": [
+        {
+          "code": "CONFIG_RECIPE_CATALOG_D1_AUTHORITY",
+          "severity": "warning"
+        }
+      ]
+    }
+  },
+  "classification": "PUBLIC_RUNTIME_OBSERVED",
+  "collectionNote": "Python urllib initially returned403; curl GET succeeded200; no auth credentials used."
+}

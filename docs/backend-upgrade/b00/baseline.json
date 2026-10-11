@@ -1,0 +1,1455 @@
+{
+  "schemaVersion": 1,
+  "task": "B00",
+  "status": "B00_BASELINE_COMPLETE_WITH_RECORDED_FINDINGS",
+  "capturedAtUtc": "2026-10-11T02:30:19.073625+00:00",
+  "repository": {
+    "fullName": "vn-tak/Tako-san",
+    "id": 1385308553,
+    "baseSha": "652e0d7632745e9b77cda4b5b3caac83a3ec1015",
+    "headAtCapture": "652e0d7632745e9b77cda4b5b3caac83a3ec1015",
+    "branch": "codex/backend-b00-baseline",
+    "tree": "f7d830ef12b4e4853d2bb34376e9ee4ff031d050"
+  },
+  "workingTree": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+  "lockfile": {
+    "path": "pnpm-lock.yaml",
+    "sha256": "b9f5c384b33f25a1ccfb05bb10258ea95182a32434678d5087b2f62be8d26867"
+  },
+  "migrationSource": {
+    "count": 39,
+    "tip": "0039_meal_composition_v2.sql",
+    "migrations": [
+      {
+        "name": "0001_initial_schema.sql",
+        "sha256": "eb97de6170cc73b12c7b83eec3be8082b4434c5f8952616bd4cb64be3f2a3328"
+      },
+      {
+        "name": "0002_seed_data.sql",
+        "sha256": "13a75fc802205e0654a4dcba59cf2f8573363d9abcf4cdaf66b24b5aee3ddade"
+      },
+      {
+        "name": "0003_weekly_planner.sql",
+        "sha256": "f6c23b3e288c7da14a4a7adc9da0ab4cfb8f7fdfc36cb2dac1c3a7abf533be9f"
+      },
+      {
+        "name": "0004_auth_system.sql",
+        "sha256": "39b72e8856dc87ef71b5b95db18497d710f068d4aca2dbe7aec51e82b023f003"
+      },
+      {
+        "name": "0005_meal_plans_relational.sql",
+        "sha256": "c20cb5e229eaed04e543c46e28e01a6f9db9ab1ad0f58885551c2394b6a3fb95"
+      },
+      {
+        "name": "0006_vietnamese_recipe_bank.sql",
+        "sha256": "7868539d44fea5aac99a091912629521a3cae79e1648f0a774490fedbb2e048f"
+      },
+      {
+        "name": "0007_week_integrity.sql",
+        "sha256": "da3d90a1ad95af11e6c58b03a68759fb7f25866434cd800c19f2b242d3181386"
+      },
+      {
+        "name": "0008_week_snapshot_metadata.sql",
+        "sha256": "5873119f56efb3c310d040220a9c7544d060adab88642f4a5c804121c38918f8"
+      },
+      {
+        "name": "0009_inventory_optimistic_version.sql",
+        "sha256": "e184538af8cff16465def06be1c37f4ba23e836ed0f4c3543c02f35fa3a5d2c4"
+      },
+      {
+        "name": "0010_week_schema_shadow_canonical.sql",
+        "sha256": "92eccbd3b6b0b8249b8ae1afdb625652cc906d4d4b5c08a7587964df5529dc0e"
+      },
+      {
+        "name": "0011_meal_plan_tenant_ownership.sql",
+        "sha256": "049412f7762ed69b2b8ed9977cd3e0e7b015a693f785305b160871f070232951"
+      },
+      {
+        "name": "0012_scan_queue_jobs.sql",
+        "sha256": "d52d716dc7d1329e5dafb3afc0acd4eab8bc24db1026cbbad0b9c453baf6ad54"
+      },
+      {
+        "name": "0013_scan_receipt_metadata.sql",
+        "sha256": "d889edf409a35ca7d5e0ca0d68029644a158ad53fd0ed9754702972a14ae85b5"
+      },
+      {
+        "name": "0014_scan_queue_fencing.sql",
+        "sha256": "d9fb9786fa4091c8877b91904f74dee899b8f6fc20143c1ca7dcb468432720cc"
+      },
+      {
+        "name": "0015_auth_session_otp_hardening.sql",
+        "sha256": "81ed99c797faeed1b80149057084d42474b594f0859d46049922541a038b1b6f"
+      },
+      {
+        "name": "0016_scan_quota_ledger.sql",
+        "sha256": "f0d8a9c2e4b4810c1c27874f09f212e7f6dd548ae9be055bade004e3609b7b8d"
+      },
+      {
+        "name": "0017_auth_otps_remove_plaintext.sql",
+        "sha256": "73ab0857cc7d20ef15b6dd0726fe2142cc39dd45745cfa7f021c3d362e3c33e6"
+      },
+      {
+        "name": "0018_payments.sql",
+        "sha256": "8668f84a4e378227d63cbee591e6feb9ee37ef7b6fc84fd127af7511dddd406b"
+      },
+      {
+        "name": "0019_recipe_domain_foundation.sql",
+        "sha256": "5b6fbe9ec441271a49b5116a118af6424e25ceda716ece01d2448e56e84ed005"
+      },
+      {
+        "name": "0020_t01_foundation_hardening.sql",
+        "sha256": "d46ad482f793d31bdc3c4bbbd3bee9198497f3b5cf02ebef0383871bab001472"
+      },
+      {
+        "name": "0021_recipe_personalization.sql",
+        "sha256": "149b32b2d7d731ffbd6fdf0bd5b8a4c60068cb02d708dee5b74ac5b92f933f22"
+      },
+      {
+        "name": "0022_generated_meal_plans.sql",
+        "sha256": "41f7a15c15d8de861489607b87bb03f853348193c4214cd71aaac5a8d1556a51"
+      },
+      {
+        "name": "0023_scan_request_fingerprint.sql",
+        "sha256": "e4681b61c57f7560b878b3cd34805e6657025ff3e27643ecca98eb6de057dddd"
+      },
+      {
+        "name": "0024_inventory_truth_foundation.sql",
+        "sha256": "5e32cb457457ad9286d1f23d172b166ae1e73e8c84f10cb428ea44649f7061d4"
+      },
+      {
+        "name": "0025_inventory_lot_commands.sql",
+        "sha256": "434565634f0c8ca2f5721ab66b451c55fc30310425deec0a7f08ea98aba97194"
+      },
+      {
+        "name": "0026_inventory_event_authority.sql",
+        "sha256": "d35163d8f25bf66a43afe0232023ea3950769d2ade86153062816a010de0312e"
+      },
+      {
+        "name": "0027_inventory_event_poststate.sql",
+        "sha256": "f30541dc33927526007d18a2b5ea3d50a7a356f931502d561f7334e16dfc16a7"
+      },
+      {
+        "name": "0028_inventory_fefo_authority.sql",
+        "sha256": "c162e5c9a8ea93169fa044159e23b2088d7181f54b7456a8506e53cac4a80c8c"
+      },
+      {
+        "name": "0029_inventory_adoption_authority.sql",
+        "sha256": "564950baf0506bff02582b4e0d8aae60b3dfeb1dfd0ad83279b85cd1f9ddd83a"
+      },
+      {
+        "name": "0030_inventory_fefo_backfill_compatibility.sql",
+        "sha256": "eb5e6fc959ad96f3127540578b0d40972fb4b40f450bfdccb5bf7afda3662316"
+      },
+      {
+        "name": "0031_inventory_observation_reconciliation.sql",
+        "sha256": "c4f6c8e0a26c4063164157e38ec55d39522f666cfdafaedacbbd919f55d4eb25"
+      },
+      {
+        "name": "0032_scan_evidence_retention.sql",
+        "sha256": "fae72602ac7f3128155329a8abc60184609dd589e264cfec9bae1e3c961bc206"
+      },
+      {
+        "name": "0033_scan_evidence_completeness.sql",
+        "sha256": "18ed8d75d5bcaeb4e9a12b96535f603401bf42b1492201864f81e312cdef1975"
+      },
+      {
+        "name": "0034_global_recipe_catalog_parity.sql",
+        "sha256": "23f356458a294b240e683fec14012bc932a8b7e57ad0c932e4fc184329bada4d"
+      },
+      {
+        "name": "0035_recipe_media_layer.sql",
+        "sha256": "a2c017245eec5916db9c24b050c966654b6e1321c8c32025bea64d931feed8aa"
+      },
+      {
+        "name": "0036_recipe_catalog_pilot.sql",
+        "sha256": "04228788e60d59a2427d70956d4d8a108d0a6c1c4a643c47641402f658120ba9"
+      },
+      {
+        "name": "0037_recipe_catalog_scale.sql",
+        "sha256": "68e52e6d8b9d44054f609a3d405c9fa329d093521ffc8c97009c76fbf7317ad6"
+      },
+      {
+        "name": "0038_auth_onboarding_completion.sql",
+        "sha256": "3c9bfeca972b4d1179625ed3e6aa2b3056202442e225d205a4191d9d52505ad8"
+      },
+      {
+        "name": "0039_meal_composition_v2.sql",
+        "sha256": "24407e61f1aac2b3430bc5cef7a6d1c76d57a39f6314915c4915fc7209e777d5"
+      }
+    ],
+    "classification": "SOURCE_VERIFIED",
+    "chainSha256": "321e59c716a6eb16b2375ae878b81c23fe0917ac1b25c53499b65afb8231f52b"
+  },
+  "catalogRelease": {
+    "path": "packages/recipes/src/import/catalog-release.current.json",
+    "sha256": "fa47d31f344736d338dc0ba50654e4604f793089fe97e44857e7dd5dd0134ac0",
+    "manifest": {
+      "schemaVersion": 1,
+      "releaseId": "rel-bd00a4f53fcaeee4",
+      "legacyBaselineCount": 71,
+      "legacyBaselineFingerprint": "9ae153e64d34b30d72bb985d4070d8e210201219c0e8f8998ce8f99057fc7c3f",
+      "expectedRecipeCount": 500,
+      "orderedRecipeIds": [
+        "vn-canh-01",
+        "vn-canh-02",
+        "vn-canh-03",
+        "vn-canh-04",
+        "vn-canh-05",
+        "vn-canh-06",
+        "vn-kho-01",
+        "vn-kho-02",
+        "vn-kho-03",
+        "vn-kho-04",
+        "vn-kho-05",
+        "vn-kho-06",
+        "vn-xao-01",
+        "vn-xao-02",
+        "vn-xao-03",
+        "vn-xao-04",
+        "vn-xao-05",
+        "vn-xao-06",
+        "vn-chien-01",
+        "vn-chien-02",
+        "vn-chien-03",
+        "vn-chien-04",
+        "vn-chien-05",
+        "vn-chien-06",
+        "vn-hap-01",
+        "vn-hap-02",
+        "vn-hap-03",
+        "vn-hap-04",
+        "vn-hap-05",
+        "vn-hap-06",
+        "vn-cuon-01",
+        "vn-cuon-02",
+        "vn-cuon-03",
+        "vn-cuon-04",
+        "vn-cuon-05",
+        "vn-cuon-06",
+        "vn-bun-01",
+        "vn-bun-02",
+        "vn-bun-03",
+        "vn-bun-04",
+        "vn-bun-05",
+        "vn-bun-06",
+        "vn-chay-01",
+        "vn-chay-02",
+        "vn-chay-03",
+        "vn-chay-04",
+        "vn-chay-05",
+        "vn-chay-06",
+        "vn-sang-01",
+        "vn-sang-02",
+        "vn-sang-03",
+        "vn-sang-04",
+        "vn-sang-05",
+        "vn-sang-06",
+        "vn-lau-01",
+        "vn-lau-02",
+        "vn-lau-03",
+        "vn-lau-04",
+        "vn-lau-05",
+        "gl-01",
+        "gl-02",
+        "gl-03",
+        "gl-04",
+        "gl-05",
+        "gl-06",
+        "gl-07",
+        "gl-08",
+        "gl-09",
+        "gl-10",
+        "gl-11",
+        "gl-12",
+        "imp-199ff78d3d8c8ab3",
+        "imp-ab36e38b07f3a57b",
+        "imp-26a36c69306143bc",
+        "imp-b87b71d57128cc07",
+        "imp-511a92d180408e0a",
+        "imp-d02c9b83214f81be",
+        "imp-9ae951bec7fbf21b",
+        "imp-5ab5c1053b7371f0",
+        "imp-67054d03e5a5b011",
+        "imp-e375595daced53af",
+        "imp-9b4ea97916a44e67",
+        "imp-6d7fc503ade5df6e",
+        "imp-364497296cfcf033",
+        "imp-806780abda4b5205",
+        "imp-a48b19224e397cea",
+        "imp-79819e1b0c75f4da",
+        "imp-ac255bcc36d1324e",
+        "imp-bb07db73fb381724",
+        "imp-a9398d96945ba6f7",
+        "imp-af8a9cdb17d5e9fd",
+        "imp-d3d0c59e0cfa845d",
+        "imp-262caf09e6f38c59",
+        "imp-352999f711c710d9",
+        "imp-b3f99919ea9f17f8",
+        "imp-b6dae711698259d6",
+        "imp-f729957329cd75f5",
+        "imp-04d0b94d17ce080c",
+        "imp-b01569fd0df22f66",
+        "imp-d463228be1e6e7c0",
+        "imp-9d575ec5c01896f0",
+        "imp-810c132a4d2cd4e0",
+        "imp-59015074541ba061",
+        "imp-9c678f92a5cb0812",
+        "imp-80ce5736becc08da",
+        "imp-9473faeacd64d970",
+        "imp-9ab5767266722397",
+        "imp-61eac17e8f3042a9",
+        "imp-ad2b55ed85f0d109",
+        "imp-7cfc6a2e9d8bf8a3",
+        "imp-24cdd0b61f9ed162",
+        "imp-15155ec6cc7b7713",
+        "imp-363ca9ee2c5f7738",
+        "imp-3ec27a2b8f5e4345",
+        "imp-323aae415415eb28",
+        "imp-3f1ad35e1f1ec87f",
+        "imp-64e505d497388f4a",
+        "imp-6e4c264764981b8b",
+        "imp-53760c13ec1e452b",
+        "imp-a47ef9289f5d0136",
+        "imp-abdcd797955a6d6a",
+        "imp-97f26ff4abe44f9b",
+        "imp-03cb4c492e643034",
+        "imp-c4a65718d5cd4b3c",
+        "imp-f3c2431be267b74d",
+        "imp-6118e8aa010584af",
+        "imp-4ced29ad30507f2c",
+        "imp-3a06ac78b572f3ae",
+        "imp-21f32dccd464c605",
+        "imp-ba737c5583985a50",
+        "imp-37a39eaa1edcd2e4",
+        "imp-0efa407066cdc8dd",
+        "imp-b6aeb931b882e8a3",
+        "imp-f0039d3d3f6299b3",
+        "imp-e771ef1a49b2aeed",
+        "imp-43e806b28c7b8bb5",
+        "imp-f92a1c569c245541",
+        "imp-f4665d594d941e4a",
+        "imp-35164fb31de89c5f",
+        "imp-368d91563cb1879b",
+        "imp-c52c790faf9281da",
+        "imp-e9678cfa1bc90074",
+        "imp-387c41fb3a0c2297",
+        "imp-f5abd36e99d48d94",
+        "imp-242fd73cebd63651",
+        "imp-34f3eb2438125614",
+        "imp-2d508cd359edb61c",
+        "imp-6eaf6ed6d417c52c",
+        "imp-d90dc5bbe2891a12",
+        "imp-b23ab24915e52866",
+        "imp-e83f58ebb9b02fbd",
+        "imp-04d477399e49fe8e",
+        "imp-a22f9257b0fd7a46",
+        "imp-5f8d0890bd6d0a76",
+        "imp-ece7da4660b63e9d",
+        "imp-b9d222a8c523b8e4",
+        "imp-51f6c12eefee914d",
+        "imp-6d3fa354c64cf8b1",
+        "imp-03577e7fa7667ab8",
+        "imp-62ebe8dd18b15b5e",
+        "imp-d283a9225d6ece09",
+        "imp-7ed24282981e96f6",
+        "imp-c6e706b483805e44",
+        "imp-324e0ea2e2f068bf",
+        "imp-5507103398040565",
+        "imp-710fd476f2dddd56",
+        "imp-14c8ef999fe47b8f",
+        "imp-0841a517e823e3b6",
+        "imp-6ae7feae7ec0d517",
+        "imp-7facaaeafc40dac2",
+        "imp-70379b3f30b48438",
+        "imp-49262ac40836045a",
+        "imp-e26d04bf95bcede8",
+        "imp-b808fb03d1e8ede6",
+        "imp-46c2a1c4cc7a8bb5",
+        "imp-38fb8569664d1f3b",
+        "imp-eae128801c2c7f96",
+        "imp-56ec9eae817af509",
+        "imp-44b1338a7a49098d",
+        "imp-a24a701c584d3ef3",
+        "imp-52b5963c6cecfb96",
+        "imp-51b6559bf09bc980",
+        "imp-81a203668e5e4c1a",
+        "imp-6c20dba60d77bdfd",
+        "imp-734cc9acf8620c69",
+        "imp-095cff5e61d32fd9",
+        "imp-a4822c0a1187e4d7",
+        "imp-04514fa34052d242",
+        "imp-695f59248dbf4895",
+        "imp-208386f834b8da43",
+        "imp-d1f8ab89051a6336",
+        "imp-03c5e6e31e01088d",
+        "imp-2862e7aa0ae0d8fe",
+        "imp-aa94e2f8bdf3985f",
+        "imp-b55451e6e46a4c13",
+        "imp-500644420438efd3",
+        "imp-47cbfe72125b811d",
+        "imp-403a1693ea9b3cf8",
+        "imp-c039dac37b31acdb",
+        "imp-875e99916a13d031",
+        "imp-389f525ea854b373",
+        "imp-8301ed8c884fb619",
+        "imp-327ffa644fbe1a7d",
+        "imp-9aed26098f07c061",
+        "imp-24e75cbb2ba569f4",
+        "imp-0bd4954058454e92",
+        "imp-7fa36d5f0187a86e",
+        "imp-fcf23c737f51ef13",
+        "imp-a5148e527a9ce9cf",
+        "imp-b3d9ecb751b0a043",
+        "imp-835a527c81a79e9c",
+        "imp-1dc0835c31b06d5e",
+        "imp-57b4406be05661c7",
+        "imp-3774a1f0fda5cce1",
+        "imp-49ca1819d60ffec8",
+        "imp-2b5b79ba1b622db1",
+        "imp-ee5bc076d722f397",
+        "imp-aac2c265c3845ec4",
+        "imp-55201e4225342ca3",
+        "imp-6771c725aa163703",
+        "imp-5eb2769876646aae",
+        "imp-87adca15ad4c1369",
+        "imp-62d95da722597187",
+        "imp-d2ab8a9e07388289",
+        "imp-81ff926a5557c059",
+        "imp-8c6abf9194ba8c45",
+        "imp-b33750551f6ea7fe",
+        "imp-e9562581c7d79169",
+        "imp-ee7ca138c67f4f24",
+        "imp-57a8ece15d731efb",
+        "imp-23a82881883d70fb",
+        "imp-85a3d8b84fc0bc05",
+        "imp-9d28abab0b8e5619",
+        "imp-2842fe1b767de23d",
+        "imp-412960b58d00d211",
+        "imp-80976e834de46c34",
+        "imp-8608afb7fee8ebc3",
+        "imp-97ba5787e2d4113b",
+        "imp-96d226a7f4d12156",
+        "imp-ba1871f088d9a522",
+        "imp-24fc3ac5cd3ff445",
+        "imp-46962ad0d6f6e63b",
+        "imp-f8fc539b7aa359ac",
+        "imp-e28e249efceacac7",
+        "imp-90fc2e140739a7d7",
+        "imp-8ebb3021c30c48f8",
+        "imp-8e2f2113f406a7d8",
+        "imp-574963de4a60d466",
+        "imp-295e7045e644d2ca",
+        "imp-5e0a488541baee5e",
+        "imp-bcc430e4b54c1e65",
+        "imp-103ea67cd56c9c96",
+        "imp-34505f9722b38fc1",
+        "imp-266d7af134d7286a",
+        "imp-8b2c852ba59f2143",
+        "imp-de5ce12092f4f0aa",
+        "imp-b8d2cb0b37dbdb81",
+        "imp-a4d02f2246e0e115",
+        "imp-a60814a4aca4143b",
+        "imp-5504378372dc989b",
+        "imp-b6496331f7aa0ee9",
+        "imp-d6f7b2ef8f347338",
+        "imp-5e0564249085d9c1",
+        "imp-9daae727e7894587",
+        "imp-20123919cd3164a8",
+        "imp-d500b08871587628",
+        "imp-c7e40140f9ee9591",
+        "imp-ebbd704089d9c62a",
+        "imp-b7ae5824ff7e6a74",
+        "imp-30c2038c8737538c",
+        "imp-019bbf517408a529",
+        "imp-d7836b7d1a4d90b3",
+        "imp-9d527dacd46efc67",
+        "imp-236e3b84d403909e",
+        "imp-df7571988423623f",
+        "imp-2b88b3e83b941e80",
+        "imp-0b34a73de8ccab71",
+        "imp-0ea0e53318af9de9",
+        "imp-1fa2a5a65ec5a26d",
+        "imp-ff6d8fe6659e4976",
+        "imp-675a6c1cea0b604e",
+        "imp-4dbcf05ec1f88763",
+        "imp-b88c09328fa3f33a",
+        "imp-66711b78b6c12643",
+        "imp-6a3a83f38e6d3f9c",
+        "imp-b1dcb812f8671a49",
+        "imp-8f24a253602fc9be",
+        "imp-cd86ce166f002f60",
+        "imp-3e8e08fb584de7f3",
+        "imp-abcc9b72400680cf",
+        "imp-26359a897d4be366",
+        "imp-00e0b1417e11b291",
+        "imp-45274582db71eb9f",
+        "imp-3d2e5735cbfe9654",
+        "imp-73568e9a99d0ccdf",
+        "imp-a17f5a86a1bc891c",
+        "imp-fbbe89a1039604fc",
+        "imp-3ee45f761eb0b78d",
+        "imp-cbb5635bfe848a49",
+        "imp-7bf9327b2c48f2d4",
+        "imp-bbfdcf2e3b277fed",
+        "imp-f2334219f33e48d0",
+        "imp-8f6eeb8b34b7cd65",
+        "imp-9e4ad3e4074d2a1c",
+        "imp-4023e971948407f6",
+        "imp-76ddca35768468fe",
+        "imp-1bbb2341036dd966",
+        "imp-5ed977305ac677b6",
+        "imp-57294c4da3e61e24",
+        "imp-ea9ba867b7d2c6ad",
+        "imp-7d764feba948bce3",
+        "imp-a24e0f07380bfdc2",
+        "imp-706c3678abea88b4",
+        "imp-d88e008b28a31151",
+        "imp-3ec4d8a534fc8861",
+        "imp-750cef719bf5f2f6",
+        "imp-28d20ebe44b82a22",
+        "imp-922028bd2fb07eb8",
+        "imp-b575db6fcd68a387",
+        "imp-53933600fa3853f3",
+        "imp-81fc284c0bafa826",
+        "imp-15e4185437e9198c",
+        "imp-cc62ea4de6a7436b",
+        "imp-3d7573766352454e",
+        "imp-88fc351665d5e9fc",
+        "imp-4ec49419e966f676",
+        "imp-e47b2f01ee81031a",
+        "imp-192973f6e1b702b5",
+        "imp-2a705e2ff35573b1",
+        "imp-f050984a2c4deb91",
+        "imp-8b874d97e90e00f0",
+        "imp-b95544e75512c4e8",
+        "imp-5ae4665cc17ff036",
+        "imp-9c48616208fff232",
+        "imp-b5571547ad5d2cec",
+        "imp-7b5f0d33681ea7d2",
+        "imp-e3df53f1154592bc",
+        "imp-a0ed6c762f7dceba",
+        "imp-2865ee57783628d7",
+        "imp-f9481ae10c0cc62a",
+        "imp-e39ba043b6d1f19d",
+        "imp-f50c115d909f97f2",
+        "imp-ae5b053b8361f807",
+        "imp-ac77ed3af015efd7",
+        "imp-4ec35a6c12daa33d",
+        "imp-01121ea953ffed76",
+        "imp-296b724137581830",
+        "imp-54c8037962551d6b",
+        "imp-e75e90d847daa628",
+        "imp-1e6d5d1750d3aa51",
+        "imp-ce3c9df133ba1cd4",
+        "imp-1d4d9422e7f81e97",
+        "imp-d3972d88e860aba9",
+        "imp-68184b07a3c61cff",
+        "imp-ed9f34ecd475d031",
+        "imp-a744a977e7e4b165",
+        "imp-c67f536bef1c38d6",
+        "imp-35deaaa123c7470d",
+        "imp-94b6bce7403fedc6",
+        "imp-4f7a2cd919912ac9",
+        "imp-edac077a60dfa8b5",
+        "imp-0efe9204d9dbdb3e",
+        "imp-0a1f8e0bd042cbfd",
+        "imp-ae6d3af49ade8384",
+        "imp-122b920eba3f2e50",
+        "imp-01ae566db4a7feab",
+        "imp-296dbce4d9098a2e",
+        "imp-0a43bfa1d02fa497",
+        "imp-329f0579ddc26919",
+        "imp-59f5760d6349d284",
+        "imp-d8001a64eeaa9150",
+        "imp-e420d7a0eed8a0d6",
+        "imp-2138056075abd874",
+        "imp-ff9fd0fdcdd85b79",
+        "imp-d6e35b3fa19080de",
+        "imp-cc88c6bd94df496e",
+        "imp-df7a6429150724b1",
+        "imp-9157234945e6ff01",
+        "imp-aedcf1c5c1d05d04",
+        "imp-e39a1be406f9e1ea",
+        "imp-da5a134e2654eeb5",
+        "imp-8cd9bb1abdd63a9e",
+        "imp-a631650d667191b4",
+        "imp-2a958e709ba9cb7c",
+        "imp-1f3a7df71f4cbc77",
+        "imp-328b6c9769e256eb",
+        "imp-5dbb6aa38dae701d",
+        "imp-b7f8a716b25a7072",
+        "imp-7d38862afc164a8d",
+        "imp-c78c4d4ca35484d3",
+        "imp-97c4b38c79bf9f39",
+        "imp-b855b6ba4a9a3be8",
+        "imp-2b514b564c702ff1",
+        "imp-119da2ec6738c17e",
+        "imp-2fb85e79ab43b8bc",
+        "imp-3f14cf8e63967712",
+        "imp-244640181aff1fb6",
+        "imp-f494a9f384ce66a4",
+        "imp-0ec0d1db60dbdc1e",
+        "imp-4316659025be0f91",
+        "imp-0e30c82a4c77802e",
+        "imp-d005aca18d138bfe",
+        "imp-a9710414682c8521",
+        "imp-c64c83ef34771b5a",
+        "imp-a71f6ef791b463ea",
+        "imp-9236740e2b55e8a1",
+        "imp-a1904f60d9f4f10e",
+        "imp-cc5f58548e934d9e",
+        "imp-8fdcddab058d5f65",
+        "imp-d4d1de72f13e8f30",
+        "imp-3fd9eb5a7c40c3c0",
+        "imp-4c5955ef4919d61a",
+        "imp-c398c169dc196c4e",
+        "imp-8fcc592ab7250a38",
+        "imp-da0c2dea539000e5",
+        "imp-e427b91ce9f574c3",
+        "imp-f3eb85959cb62d3e",
+        "imp-f4c5afa7ccc2a9ed",
+        "imp-0d54a1288223d8ac",
+        "imp-70e5e19dd4073b76",
+        "imp-500ffbf4fd05f9da",
+        "imp-ebc8bf739393ac91",
+        "imp-3446b3924b05eb7b",
+        "imp-6e3eb737c7d88a2c",
+        "imp-6251f57b97918111",
+        "imp-977a3409383d743f",
+        "imp-a4ff266c02427746",
+        "imp-f9f08651bc712e93",
+        "imp-0d6c454ae1073ef6",
+        "imp-4d81607829384874",
+        "imp-1b518ba2f068f3ab",
+        "imp-0f336e8735d9ce75",
+        "imp-f93013fb234d39d0",
+        "imp-6af3e18fdac79061",
+        "imp-2e39be75d8f72249",
+        "imp-11b65c6b18266849",
+        "imp-2ae4c4cdd97c5d02",
+        "imp-9a2994a529126adb",
+        "imp-990934aa20b70964",
+        "imp-d0569e8ec34b2bfc",
+        "imp-531f59c246a56bcb",
+        "imp-3767b2e36f535b7b",
+        "imp-08b08cad387c7c9f",
+        "imp-cbbfa59518b7d47d",
+        "imp-266587069d92cb79",
+        "imp-b02fdf7cecfae119",
+        "imp-4693d6520fbd9d49",
+        "imp-dd48c08a9b9ed207",
+        "imp-b4924a7d33d5acff",
+        "imp-4a712c9f5f9913be",
+        "imp-a27445c786a3fd67",
+        "imp-aba623dc468a9569",
+        "imp-4f398ac575200416",
+        "imp-b8731e057182331b",
+        "imp-f04b28987d7cd34a",
+        "imp-bf6c9c4d92b2e04c",
+        "imp-92aabff659e3c551",
+        "imp-4b592ae31a81a527",
+        "imp-72e70eb4e8fba4db",
+        "imp-88b58c0233dec53e",
+        "imp-e5d49dd8dc1449d1",
+        "imp-daec3b038c4f43af",
+        "imp-4ca7d6f55d5b7937",
+        "imp-09e07baa201acf28",
+        "imp-9c2f22829fd3d3f1",
+        "imp-d7b9a40e678c0e29",
+        "imp-2b289d9040d46110",
+        "imp-7cb7368109956ad5",
+        "imp-a3e676be13c4c51c",
+        "imp-1b54108818405e6a",
+        "imp-9328a098d7bd1f6f",
+        "imp-cc203adb1d5aa11b",
+        "imp-7bd81a7e8fb33958",
+        "imp-0abadc2e606770a7",
+        "imp-cc6a0ca585b502d4",
+        "imp-6e4967b3145dee09",
+        "imp-4d9fae75b597d2c5",
+        "imp-a97820d3080e47eb",
+        "imp-a9d8b4d783b986d1",
+        "imp-4095c816782acd82",
+        "imp-0e9c9740a6232263",
+        "imp-b6d6788784da6342",
+        "imp-71cac2085659d819",
+        "imp-b398545ca76325f1",
+        "imp-9f9a3f24b4141acb",
+        "imp-8fecebfe6dc0f0a2",
+        "imp-20d3992a65cb17fd",
+        "imp-38137393c32d70d7",
+        "imp-e61010e240534690",
+        "imp-452ef6d0f8ec0de9",
+        "imp-f44be7e8c88c20d3",
+        "imp-e748a717f7250188",
+        "imp-957396bc647d3798",
+        "imp-c98aa0f1ffe2f469",
+        "imp-a286f8724d79a504",
+        "imp-83ed31fc537569a6",
+        "imp-a92103c19952bcf0",
+        "imp-afdcd866c1f92192",
+        "imp-6d26ce6b0af4fb79",
+        "imp-bd34e8ea2eaa1cd4"
+      ],
+      "expectedRuntimeFingerprint": "f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37",
+      "approvedImportBatches": [
+        {
+          "batchId": "t14f-pilot-30-v1",
+          "batchHash": "4d13915c075cd1b418d2454f7f03968349b779766cdb96b92df90f4138bc8cce",
+          "recipeCount": 30,
+          "releaseBaseCount": 71,
+          "sourceNamespace": "frigo.t14f.original.v1",
+          "sourceReference": "T14F project-original recipe generation batch t14f-pilot-30-v1"
+        },
+        {
+          "batchId": "t14f-scale-399-v1",
+          "batchHash": "1bdf29bde821b5183f0f41d920c7b747a5290f7772e6adc1a51de60ba3adda35",
+          "recipeCount": 399,
+          "releaseBaseCount": 101,
+          "sourceNamespace": "frigo.t14f.original.v1",
+          "sourceReference": "T14F project-original recipe generation batch t14f-scale-399-v1"
+        }
+      ]
+    },
+    "classification": "SOURCE_VERIFIED"
+  },
+  "ingredientV2": {
+    "path": "data/recipe-refresh/v2/manifest.json",
+    "sha256": "adf1784bb32b5b4fac7e9942dcc85d63339674282565b1dfa8e20c099ad7ea22",
+    "auditSummary": {
+      "recipes": 500,
+      "steps": 4938,
+      "ingredients": 6766,
+      "quantifiedIngredients": 6743,
+      "qualitativeIngredients": 23,
+      "processOnlyIngredients": 166,
+      "mixedProcessIngredients": 7,
+      "unresolvedIngredients": 0,
+      "runtimeProjectedIngredients": 3770,
+      "runtimeExcludedIngredients": 2996,
+      "runtimeProjectionCoverage": {
+        "canonicalIngredientCount": 6766,
+        "projectedIngredientCount": 3770,
+        "excludedIngredientCount": 2996,
+        "requiredTransformationCount": 2860,
+        "coverageRatio": 0.557198,
+        "exclusionsByReason": {
+          "unsupported_unit": 2243,
+          "qualitative_quantity": 18,
+          "process_only": 4,
+          "estimated_process": 139,
+          "no_runtime_quantity": 4,
+          "non_shopping": 588,
+          "other": 0
+        }
+      },
+      "ingredientConcepts": 1438,
+      "sourceExceptions": 1,
+      "recipesWithTwoDeclaredSources": 499,
+      "sources": {
+        "declaredUrls": 1101,
+        "structurallyValidUrls": 1102,
+        "contentVerifiedUrls": 0,
+        "supportingUrls": 1,
+        "invalidUrls": 0,
+        "exceptions": 1
+      },
+      "nutritionPublishable": 1,
+      "nutritionBlocked": 288,
+      "nutritionNull": 211,
+      "nutritionOriginalProfiles": 289,
+      "nutritionRecomputedCandidates": 353,
+      "schemaRepairs": 64,
+      "encodingRepairs": 0,
+      "ingredientReconciliationRows": 2515,
+      "ingredientReconciliation": {
+        "existing_canonical_id": 505,
+        "reviewed_new_canonical_id": 0,
+        "provisional_new_canonical_id": 1642,
+        "duplicate_alias": 368,
+        "ambiguous": 0,
+        "invalid": 0
+      },
+      "rawQuantityShapes": {
+        "numeric": 6714,
+        "quantityText": 30,
+        "nullWithUnit": 16,
+        "whollyQualitative": 6
+      },
+      "rawStepShapes": {
+        "objects": 4904,
+        "strings": 34,
+        "titleDescription": 27,
+        "titleDescriptionRecipes": 3
+      },
+      "sourceReferences": 1102,
+      "uniqueSourceUrls": 1072,
+      "schemaVariants": 15
+    },
+    "releaseEligibility": {
+      "canonicalSourceReady": true,
+      "runtimeProjectionReady": false,
+      "productionReleaseReady": false,
+      "nutritionCanonicalized": true,
+      "nutritionReleaseCoverageIncomplete": true,
+      "blockers": [
+        "RUNTIME_PROJECTION_LOSS",
+        "INGREDIENT_RECONCILIATION_INCOMPLETE",
+        "SOURCE_CONTENT_VERIFICATION_INCOMPLETE",
+        "NUTRITION_EVIDENCE_INCOMPLETE"
+      ],
+      "finalRuntimeFingerprint": null
+    },
+    "classification": "SOURCE_VERIFIED_CANDIDATE_ONLY"
+  },
+  "sourceCounts": {
+    "src/worker/": 58,
+    "packages/domain/": 26,
+    "packages/db/": 19,
+    "packages/recipes/": 76,
+    "packages/ai/": 18,
+    "migrations/": 39,
+    "tests/": 346
+  },
+  "routeCount": 79,
+  "runtime": {
+    "currentWorkerVersion": "UNVERIFIED_DIRECTLY; see timestamped hosted receipt",
+    "providerFlags": "UNVERIFIED_DIRECTLY; configured status only from public health",
+    "inventoryAuthorityMode": "UNVERIFIED_DIRECTLY",
+    "emailDelivery": "UNVERIFIED",
+    "privacyRetention": "UNVERIFIED",
+    "sloMetrics": "UNMEASURED",
+    "schemaLedger": "HOSTED_RELEASE_RECEIPT_VERIFIED_AT_RECORDED_TIME; no direct current query",
+    "recipeAuthority": "PUBLIC_RUNTIME_OBSERVED; full fingerprint only from timestamped hosted receipt",
+    "uiBuildFlags": "HOSTED_RECEIPT_PAIRED_T20_TRUE; default local build not runtime observation"
+  },
+  "localChecks": [
+    {
+      "name": "install",
+      "command": [
+        "pnpm",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "startedAtUtc": "2026-10-11T02:30:32.964903+00:00",
+      "durationSeconds": 3.598,
+      "exitCode": 0,
+      "status": "PASS",
+      "logPath": ".artifacts/backend-b00/install.log",
+      "logSha256": "a6296bcde9a450a553e99f45f6a28bdf0d8fcdf6d6e28c3f80d9f398edb75479",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      }
+    },
+    {
+      "name": "lint",
+      "command": [
+        "pnpm",
+        "lint"
+      ],
+      "startedAtUtc": "2026-10-11T02:31:07.849011+00:00",
+      "durationSeconds": 8.193,
+      "exitCode": 0,
+      "status": "PASS",
+      "logPath": ".artifacts/backend-b00/lint.log",
+      "logSha256": "25cc1f9634027c24c62f4029a44f00fc3a7e082ac28576c6fc5a3db3e0961f73",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      }
+    },
+    {
+      "name": "typecheck",
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "startedAtUtc": "2026-10-11T02:31:07.848991+00:00",
+      "durationSeconds": 17.109,
+      "exitCode": 0,
+      "status": "PASS",
+      "logPath": ".artifacts/backend-b00/typecheck.log",
+      "logSha256": "a3a28a25c9246fe7e8bbf5999692dc60347e343a2415f8cefcb7e767e0e6a0d6",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      }
+    },
+    {
+      "name": "tests",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "--maxWorkers=2"
+      ],
+      "startedAtUtc": "2026-10-11T02:31:07.848980+00:00",
+      "durationSeconds": 407.736,
+      "exitCode": 1,
+      "status": "FAIL",
+      "logPath": ".artifacts/backend-b00/tests.log",
+      "logSha256": "e96f8301687ab46c0a1d47ea34c3d67478c283f0e0b9165a3c864142f526ede0",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      },
+      "vitestSummary": "Test Files  1 failed | 287 passed (288)\nTests  1 failed | 6743 passed (6744)\nDuration  402.04s (transform 4.88s, setup 1.30s, collect 38.48s, tests 690.87s, environment 10.50s, prepare 11.54s)"
+    },
+    {
+      "name": "migrations",
+      "command": [
+        "pnpm",
+        "check:migrations"
+      ],
+      "startedAtUtc": "2026-10-11T02:31:18.427344+00:00",
+      "durationSeconds": 0.532,
+      "exitCode": 0,
+      "status": "PASS",
+      "logPath": ".artifacts/backend-b00/migrations.log",
+      "logSha256": "965811c75cef6d8d7db8527ffaf3ec59c52869fe5cb575a1261bc3b793191de5",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      }
+    },
+    {
+      "name": "build",
+      "command": [
+        "pnpm",
+        "build"
+      ],
+      "startedAtUtc": "2026-10-11T02:31:42.630141+00:00",
+      "durationSeconds": 8.602,
+      "exitCode": 0,
+      "status": "PASS",
+      "logPath": ".artifacts/backend-b00/build.log",
+      "logSha256": "8a850a604321f096b45ad6d523ba3e92e48ddcf3637b49ecb1eb7a43811fe60f",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      }
+    },
+    {
+      "name": "seed",
+      "command": [
+        "pnpm",
+        "recipe:seed:check"
+      ],
+      "startedAtUtc": "2026-10-11T02:31:42.626566+00:00",
+      "durationSeconds": 0.99,
+      "exitCode": 0,
+      "status": "PASS",
+      "logPath": ".artifacts/backend-b00/seed.log",
+      "logSha256": "66bb2c715fd603349756f1987a62b854f048971c6ea32ec89b0ee142958b9c01",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      }
+    },
+    {
+      "name": "ingredient-audit",
+      "command": [
+        "pnpm",
+        "recipe:ingredient-v2:audit"
+      ],
+      "startedAtUtc": "2026-10-11T02:31:42.628203+00:00",
+      "durationSeconds": 1.228,
+      "exitCode": 0,
+      "status": "PASS",
+      "logPath": ".artifacts/backend-b00/ingredient-audit.log",
+      "logSha256": "afd1bb4c9f0cc05d7872cfcae57d2971364eb541924c9a4de1ce5d98e1b6382a",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      }
+    },
+    {
+      "name": "refresh-check",
+      "command": [
+        "pnpm",
+        "recipe:refresh:check"
+      ],
+      "startedAtUtc": "2026-10-11T02:32:16.703909+00:00",
+      "durationSeconds": 2.277,
+      "exitCode": 0,
+      "status": "PASS",
+      "logPath": ".artifacts/backend-b00/refresh-check.log",
+      "logSha256": "4f34f15e08dae99900d791285e74ab35efa5e45968512d550c19c8d3825e0f2d",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      }
+    },
+    {
+      "name": "release-check",
+      "command": [
+        "pnpm",
+        "recipe:refresh:release-check"
+      ],
+      "startedAtUtc": "2026-10-11T02:32:16.703907+00:00",
+      "durationSeconds": 2.339,
+      "exitCode": 1,
+      "status": "EXPECTED_BLOCKED",
+      "logPath": ".artifacts/backend-b00/release-check.log",
+      "logSha256": "f9702be111b057264cd8b379091b87998a8cd3ca2e69147916b7e904191a7f50",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      }
+    },
+    {
+      "name": "dependency-audit",
+      "command": [
+        "pnpm",
+        "audit",
+        "--json"
+      ],
+      "startedAtUtc": "2026-10-11T02:31:18.426071+00:00",
+      "durationSeconds": 2.012,
+      "exitCode": 1,
+      "status": "FINDINGS_PRESENT",
+      "logPath": ".artifacts/backend-b00/dependency-audit.log",
+      "logSha256": "c302bfc15f4054f45358366dc59293e488497a7a7474eb7b357b1b12fe3f18a6",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      }
+    },
+    {
+      "name": "production-audit",
+      "command": [
+        "pnpm",
+        "audit",
+        "--prod",
+        "--json"
+      ],
+      "startedAtUtc": "2026-10-11T02:31:18.432193+00:00",
+      "durationSeconds": 0.911,
+      "exitCode": 1,
+      "status": "FINDINGS_PRESENT",
+      "logPath": ".artifacts/backend-b00/production-audit.log",
+      "logSha256": "bdc7313d26f196c5427205c3ce28110ce5fc9a52ca765c4df3b7456eb7c85c62",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      }
+    },
+    {
+      "name": "staging-catchup-focused",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/unit/staging-d1-catchup-check.test.mjs",
+        "--maxWorkers=1"
+      ],
+      "startedAtUtc": "2026-10-11T02:38:54.791761+00:00",
+      "durationSeconds": 61.208,
+      "exitCode": 1,
+      "status": "FAIL",
+      "logPath": ".artifacts/backend-b00/staging-catchup-focused.log",
+      "logSha256": "437d81d33f26cd1fc95b80b14b1d97fd1d4eebeb8f2fce1b64baa6bf74a0d24f",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      },
+      "vitestSummary": "Test Files  1 failed (1)\nTests  1 failed | 31 passed (32)\nDuration  60.01s (transform 77ms, setup 14ms, collect 351ms, tests 59.39s, environment 0ms, prepare 60ms)"
+    },
+    {
+      "name": "staging-catchup-ci",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/unit/staging-d1-catchup-check.test.mjs",
+        "--maxWorkers=1"
+      ],
+      "startedAtUtc": "2026-10-11T02:40:28.687491+00:00",
+      "durationSeconds": 60.834,
+      "exitCode": 1,
+      "status": "FAIL",
+      "logPath": ".artifacts/backend-b00/staging-catchup-ci.log",
+      "logSha256": "484d3ec1ecf62e4ce23d5293bcfcf10673769f326faa6d171ae26466177beb57",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false"
+      },
+      "vitestSummary": "Test Files  1 failed (1)\nTests  1 failed | 31 passed (32)\nDuration  59.82s (transform 65ms, setup 12ms, collect 335ms, tests 59.24s, environment 0ms, prepare 50ms)"
+    },
+    {
+      "name": "wrangler-diagnostic-cached",
+      "command": [
+        "node",
+        "/tmp/takosan-b00-wrangler-diagnostic.mjs",
+        "--cached"
+      ],
+      "startedAtUtc": "2026-10-11T02:41:46.241826+00:00",
+      "durationSeconds": 4.299,
+      "exitCode": 0,
+      "status": "PASS",
+      "logPath": ".artifacts/backend-b00/wrangler-diagnostic-cached.log",
+      "logSha256": "bc0098530f923abc12a2b6d16234fad437098ccbb272436626355ee2eedd2e07",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      },
+      "note": "Direct actual local D1 CLI; wrapper inherited env differs from spawned child, see diagnostic log/REPRODUCE.md"
+    },
+    {
+      "name": "staging-catchup-cached",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/unit/staging-d1-catchup-check.test.mjs",
+        "--maxWorkers=1"
+      ],
+      "startedAtUtc": "2026-10-11T02:42:11.715975+00:00",
+      "durationSeconds": 4.721,
+      "exitCode": 0,
+      "status": "PASS",
+      "logPath": ".artifacts/backend-b00/staging-catchup-cached.log",
+      "logSha256": "68d321c2121635eb8bae9b45afc405bbd44f2102a5a10fd25a366a3f9eabffb4",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp/takosan-b00-wrangler-bCRyB0/canonical-temp",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      },
+      "vitestSummary": "Test Files  1 passed (1)\nTests  32 passed (32)\nDuration  3.61s (transform 76ms, setup 13ms, collect 355ms, tests 2.95s, environment 0ms, prepare 58ms)"
+    },
+    {
+      "name": "wrangler-diagnostic-uncached",
+      "command": [
+        "node",
+        "/tmp/takosan-b00-wrangler-diagnostic.mjs"
+      ],
+      "startedAtUtc": "2026-10-11T02:42:34.664776+00:00",
+      "durationSeconds": 59.512,
+      "exitCode": 0,
+      "status": "PASS",
+      "logPath": ".artifacts/backend-b00/wrangler-diagnostic-uncached.log",
+      "logSha256": "e5b84b0e24220b66b3709e0f728aa1ad0500bb05aba1ab871eebe0187bf87d0e",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "CI": null,
+        "WRANGLER_SEND_METRICS": null,
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      },
+      "note": "Direct actual local D1 CLI; wrapper inherited env differs from spawned child, see diagnostic log/REPRODUCE.md"
+    },
+    {
+      "name": "tests-cached",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "--maxWorkers=2"
+      ],
+      "startedAtUtc": "2026-10-11T02:42:33.518868+00:00",
+      "durationSeconds": 372.821,
+      "exitCode": 0,
+      "status": "PASS",
+      "logPath": ".artifacts/backend-b00/tests-cached.log",
+      "logSha256": "85ec35f8ecea1fa8e2a0af359c1254b158186fe332e112dc785218989cfb4f76",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp/takosan-b00-wrangler-bCRyB0/canonical-temp",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      },
+      "vitestSummary": "Test Files  288 passed (288)\nTests  6744 passed (6744)\nDuration  372.06s (transform 4.95s, setup 1.29s, collect 38.75s, tests 629.50s, environment 10.44s, prepare 11.85s)"
+    }
+  ],
+  "hostedEvidence": {
+    "checkedAtUtc": "2026-10-11T02:32:43.703819+00:00",
+    "repository": {
+      "id": 1385308553,
+      "fullName": "vn-tak/Tako-san"
+    },
+    "mainSha": "652e0d7632745e9b77cda4b5b3caac83a3ec1015",
+    "ci": {
+      "id": 38098775083,
+      "head_sha": "652e0d7632745e9b77cda4b5b3caac83a3ec1015",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-10-11T00:32:27Z",
+      "updated_at": "2026-10-11T00:37:30Z",
+      "html_url": "https://github.com/vn-tak/Tako-san/actions/runs/38098775083"
+    },
+    "deploy": {
+      "id": 38103079308,
+      "head_sha": "652e0d7632745e9b77cda4b5b3caac83a3ec1015",
+      "event": "workflow_dispatch",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-10-11T01:48:45Z",
+      "updated_at": "2026-10-11T02:00:14Z",
+      "html_url": "https://github.com/vn-tak/Tako-san/actions/runs/38103079308"
+    },
+    "artifact": {
+      "id": 11688468304,
+      "name": "release-production-38103079308-1",
+      "digest": "sha256:6629461766b13f6f2cf36fc5a0fd7ebcc91e30f9fa4fd38ee0023bb92d9ac804",
+      "expired": false,
+      "created_at": "2026-10-11T02:00:12Z",
+      "updated_at": "2026-10-11T02:00:12Z",
+      "size_in_bytes": 4478
+    },
+    "branchProtection": {
+      "strict": true,
+      "contexts": [
+        "validate"
+      ],
+      "adminEnforced": true,
+      "requiredApprovingReviewCount": 0,
+      "requireCodeOwnerReviews": false,
+      "requireLastPushApproval": false,
+      "allowForcePushes": false,
+      "allowDeletions": false
+    },
+    "productionEnvironment": {
+      "requiredReviewerCount": 1,
+      "preventSelfReview": [
+        false
+      ],
+      "canAdminsBypass": true,
+      "deploymentBranchPolicy": null
+    },
+    "pullRequests": [
+      {
+        "number": 20,
+        "state": "open",
+        "merged": false,
+        "mergeable": true,
+        "mergeableState": "behind",
+        "head": "bc19c3aed3fb9310aa4fc0e90cf4c2ae101189cd",
+        "base": "baf9a069f89f9544407c827448671ecea4c56b5a",
+        "changedFiles": 5,
+        "additions": 194,
+        "deletions": 0,
+        "url": "https://github.com/vn-tak/Tako-san/pull/20"
+      },
+      {
+        "number": 29,
+        "state": "open",
+        "merged": false,
+        "mergeable": false,
+        "mergeableState": "dirty",
+        "head": "a434e6f5a1b3a0b96d7872d3d07e40335bcbb017",
+        "base": "518818458a354c5e180da52ae9bb73c9d3c1af78",
+        "changedFiles": 5,
+        "additions": 191,
+        "deletions": 1,
+        "url": "https://github.com/vn-tak/Tako-san/pull/29"
+      },
+      {
+        "number": 63,
+        "state": "open",
+        "merged": false,
+        "mergeable": false,
+        "mergeableState": "dirty",
+        "head": "71e9a1327ea7bb34bfee978aeeea65788b07e413",
+        "base": "27d47b056455a57df811199cd7e9c32a84cbffe5",
+        "changedFiles": 8,
+        "additions": 1107,
+        "deletions": 0,
+        "url": "https://github.com/vn-tak/Tako-san/pull/63"
+      }
+    ]
+  },
+  "releaseReceipt": {
+    "path": "docs/backend-upgrade/b00/release-manifest-38103079308.json",
+    "manifestSha256": "e8d0938a01754e44b1c4a2f74b4541e52e6a8f7960047c395728ef848616aaa8",
+    "zipSha256": "6629461766b13f6f2cf36fc5a0fd7ebcc91e30f9fa4fd38ee0023bb92d9ac804",
+    "artifactId": 11688468304,
+    "artifactApiDigest": "sha256:6629461766b13f6f2cf36fc5a0fd7ebcc91e30f9fa4fd38ee0023bb92d9ac804",
+    "classification": "HOSTED_RELEASE_RECEIPT_VERIFIED",
+    "observedWorkerAtRelease": {
+      "versionId": "eee43e96-53ff-40f3-9779-e10fe256e0d8",
+      "deploymentId": "dad1e770-1207-4101-931d-1703209c292b",
+      "capturedAt": "2026-10-11T02:00:09.628Z",
+      "binding": {
+        "versionId": "eee43e96-53ff-40f3-9779-e10fe256e0d8",
+        "bindingName": "DB",
+        "databaseId": "f975ec39-b2c8-4a2a-80e1-0366054599d3",
+        "checkedAt": "2026-10-11T02:00:09.628Z"
+      }
+    },
+    "recordedSchemaDigest": "321e59c716a6eb16b2375ae878b81c23fe0917ac1b25c53499b65afb8231f52b",
+    "sourceMigrationsMatchReceipt": true,
+    "recordedRecipeAuthority": {
+      "configuredMode": "d1",
+      "cutoverEnabled": true,
+      "canaryPercent": 0,
+      "actualSource": "d1",
+      "globalSource": "d1",
+      "servedRecipeCount": 500,
+      "servedFingerprint": "f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37",
+      "releaseId": "rel-bd00a4f53fcaeee4",
+      "d1Readiness": "ready",
+      "fallbackReason": null,
+      "checkedAt": "2026-10-11T02:00:11.439Z"
+    },
+    "recordedFlags": {
+      "recipeCatalogMode": "d1",
+      "recipeCatalogCanaryPercent": 0,
+      "recipeCatalogCutoverEnabled": true,
+      "mealCompositionV2Enabled": true
+    },
+    "extractedBytesExact": true
+  },
+  "publicReadiness": {
+    "path": "docs/backend-upgrade/b00/public-readiness.json",
+    "response": {
+      "status": "degraded",
+      "app": "Frigo",
+      "version": "0.1.0",
+      "commit": "652e0d7632745e9b77cda4b5b3caac83a3ec1015",
+      "timestamp": "2026-10-11T02:34:04.954Z",
+      "environment": "production",
+      "recipeAuthority": {
+        "configuredMode": "d1",
+        "cutoverEnabled": true,
+        "canaryPercent": 0,
+        "globalSource": "d1",
+        "fallbackReason": null,
+        "releaseId": "rel-bd00a4f53fcaeee4",
+        "expectedRecipeCount": 500
+      },
+      "services": {
+        "database": "ok",
+        "queue": "ok",
+        "ai": "configured",
+        "email": {
+          "providerConfigured": true,
+          "deliveryVerified": false
+        },
+        "rateLimiting": "kv-best-effort"
+      },
+      "config": {
+        "ok": true,
+        "issues": [
+          {
+            "code": "CONFIG_RECIPE_CATALOG_D1_AUTHORITY",
+            "severity": "warning"
+          }
+        ]
+      }
+    },
+    "httpStatus": 200,
+    "classification": "PUBLIC_RUNTIME_OBSERVED"
+  },
+  "completedAtUtc": "2026-10-11T02:48:54.399516+00:00",
+  "localValidation": {
+    "finalSuite": "PASS_WITH_DOCUMENTED_WRANGLER_UPDATE_CACHE_ENVIRONMENT",
+    "initialFullSuite": "FAIL_1_WRANGLER_TIMEOUT_6743_PASSED",
+    "finalSuiteSummary": "Test Files  288 passed (288)\nTests  6744 passed (6744)\nDuration  372.06s (transform 4.95s, setup 1.29s, collect 38.75s, tests 629.50s, environment 10.44s, prepare 11.85s)",
+    "auditFull": {
+      "critical": 2,
+      "high": 16,
+      "moderate": 19,
+      "low": 4
+    },
+    "auditProduction": {
+      "critical": 0,
+      "high": 0,
+      "moderate": 2,
+      "low": 0
+    },
+    "v2ReleaseEligibility": "EXPECTED_BLOCKED_4_BLOCKERS",
+    "runtimeSourceDiff": "EMPTY_BEFORE_DOCS_COMMIT",
+    "remoteChecks": "NOT_EXECUTED",
+    "browserCertification": "NOT_EXECUTED",
+    "paidProviders": "NOT_EXECUTED"
+  },
+  "documentationValidation": {
+    "command": "python3 /tmp/takosan-b00-doc-check.py",
+    "exitCode": 0,
+    "status": "PASS",
+    "files": 23,
+    "jsonFiles": 7,
+    "markdownFiles": 16,
+    "routeRegistrations": 79,
+    "migrationHashes": 39,
+    "checks": [
+      "JSON parse",
+      "Markdown fences/relative file links/whitespace",
+      "source registration line/methods/callers/test paths",
+      "migration and lock hashes",
+      "runtime/protected diff empty"
+    ]
+  },
+  "routeMap": {
+    "path": "docs/backend-upgrade/b00/routes.json",
+    "sha256": "3e4dca16bf8b8809e887d2187a5e7938565fbbd790baee7a0f3c691e245ce18c",
+    "routeCount": 79,
+    "classification": "SOURCE_VERIFIED",
+    "dependencyGranularity": "group superset; source registrations exact"
+  }
+}

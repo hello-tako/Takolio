@@ -1,3 +1,9 @@
+# B00 backend decision register - 2026-10-11 JST
+
+ADR-B00-001 accepted for source/evidence/documentation scope only; implementation policy drafts B01-B08 at `../backend-upgrade/b00/DECISIONS.md`. No accepted runtime ADR is silently superseded by B00. Runtime OTP/email/key/legacy cutover/ScanV3/billing decisions require their own reviewed ADR before integration. Historical decisions follow unchanged.
+
+---
+
 # ADR-052 - Scoped stock detail and system-state presentation (UI09)
 
 Status: accepted and locally verified for UI09, 2026-10-10 JST.
