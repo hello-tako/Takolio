@@ -70,14 +70,14 @@ function assertReviewedWorkflow(candidate) {
   }
   expect(commands).toEqual(reviewedCommands);
   expect(actionNames).toEqual([
-    'gate: actions/checkout@v4', 'gate: actions/setup-node@v4', 'gate: actions/upload-artifact@v4',
-    'diagnose: actions/checkout@v4', 'diagnose: actions/download-artifact@v4',
-    'diagnose: actions/setup-node@v4', 'diagnose: pnpm/action-setup@v4',
-    'diagnose: actions/upload-artifact@v4',
-    'diagnose: actions/upload-artifact@v4',
-    'diagnose: actions/upload-artifact@v4',
-    'diagnose: actions/upload-artifact@v4',
-    'diagnose: actions/upload-artifact@v4',
+    'gate: actions/checkout@11d5960a326750d5838078e36cf38b85af677262', 'gate: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020', 'gate: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02',
+    'diagnose: actions/checkout@11d5960a326750d5838078e36cf38b85af677262', 'diagnose: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093',
+    'diagnose: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020', 'diagnose: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1',
+    'diagnose: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02',
+    'diagnose: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02',
+    'diagnose: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02',
+    'diagnose: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02',
+    'diagnose: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02',
   ]);
   expect(candidate.jobs.gate.steps[0].with).toMatchObject({ ref: 'main', 'persist-credentials': false });
   expect(candidate.jobs.diagnose.steps[0].with).toMatchObject({ ref: '${{ needs.gate.outputs.candidate_sha }}', 'persist-credentials': false });
@@ -107,7 +107,7 @@ function assertReviewedWorkflow(candidate) {
     .toBeLessThan(names.indexOf('Compare stable production snapshot with certified V1'));
   expect(names.indexOf('Compare stable production snapshot with certified V1'))
     .toBeLessThan(names.indexOf('Reject main change during diagnosis'));
-  const uploads = Object.values(candidate.jobs).flatMap((job) => job.steps.filter((step) => step.uses === 'actions/upload-artifact@v4'));
+  const uploads = Object.values(candidate.jobs).flatMap((job) => job.steps.filter((step) => step.uses === 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02'));
   expect(uploads.map((step) => step.with.path)).toEqual([
     'release-manifest.json', 'production-catalog-preflight-diagnostics.json',
     'production-t21rb-v1.json', 'production-catalog-v2-lineage.json',

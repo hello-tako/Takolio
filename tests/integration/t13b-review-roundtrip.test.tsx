@@ -145,7 +145,7 @@ async function mount(scanId: string, type: ScanType) {
   root = createRoot(container);
   await act(async () => {
     root!.render(
-      <MemoryRouter initialEntries={[url]} future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+      <MemoryRouter initialEntries={[url]} useTransitions={true}>
         <Routes>
           <Route path="/receipt-review" element={<ReceiptReviewPage />} />
           <Route path="/scan/:id/review" element={<ScanResultPage />} />

@@ -157,8 +157,8 @@ describe('hosted CI Git history for T21R-C2 validation', () => {
       job.steps.filter((step) => String(step.uses ?? '').startsWith('actions/checkout@'))
     ));
     expect(checkouts).toHaveLength(1);
-    expect(checkouts[0].uses).toBe('actions/checkout@v4');
-    expect(checkouts[0].with).toEqual({ 'fetch-depth': 0 });
+    expect(checkouts[0].uses).toBe('actions/checkout@11d5960a326750d5838078e36cf38b85af677262');
+    expect(checkouts[0].with).toEqual({ 'fetch-depth': 0, 'persist-credentials': false });
     expect(ciText).not.toMatch(/fetch-depth:\s*[1-9]/);
   });
 });

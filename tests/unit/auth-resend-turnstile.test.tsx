@@ -80,7 +80,7 @@ describe('registration-only Turnstile lifecycle', () => {
   it('challenges once during registration and resends OTP without another widget', async () => {
     await act(async () => {
       root = createRoot(host);
-      root.render(<MemoryRouter initialEntries={['/auth?mode=register']}><AuthPage /></MemoryRouter>);
+      root.render(<MemoryRouter useTransitions={false} initialEntries={['/auth?mode=register']}><AuthPage /></MemoryRouter>);
     });
     await until(() => { expect(window.turnstile?.render).toHaveBeenCalledTimes(1); });
 
@@ -113,7 +113,7 @@ describe('registration-only Turnstile lifecycle', () => {
   it('does not mount Turnstile on login or forgot-password screens', async () => {
     await act(async () => {
       root = createRoot(host);
-      root.render(<MemoryRouter initialEntries={['/auth']}><AuthPage /></MemoryRouter>);
+      root.render(<MemoryRouter useTransitions={false} initialEntries={['/auth']}><AuthPage /></MemoryRouter>);
       await Promise.resolve();
       await Promise.resolve();
     });

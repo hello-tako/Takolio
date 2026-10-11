@@ -7,7 +7,7 @@ type Loaded = { LegacyNavIndicator: React.FC<{ indicatorId: string }> };
 let host: HTMLDivElement, root: Root;
 let resolveModule: (module: Loaded) => void;
 let rejectModule: (reason: Error) => void;
-let request: ReturnType<typeof vi.fn>;
+let request: ReturnType<typeof vi.fn<() => Promise<Loaded>>>;
 const Animated: Loaded['LegacyNavIndicator'] = ({ indicatorId }) => (
   <span aria-hidden="true" data-loaded-indicator={indicatorId} />
 );

@@ -88,7 +88,7 @@ async function mount(initialEntry: string) {
     root!.render(
       <MemoryRouter
         initialEntries={[initialEntry]}
-        future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+        useTransitions={true}
       >
         <LocationProbe />
         <VerifyRouteLifecycle />

@@ -25,7 +25,7 @@ export async function startLocalD1Worker({ name, databaseName, databaseId, token
 
   const start = async () => {
     worker = await unstable_dev(path.resolve(script), {
-      config, ip: '127.0.0.1', port: 0, inspectorPort: 0, local: true, persist,
+      config, ip: '127.0.0.1', port: 0, inspectorPort: 0, local: true, persist: true, persistTo: persist.path,
       logLevel: 'error', vars: { TEST_TOKEN: token },
       experimental: {
         disableExperimentalWarning: true, disableDevRegistry: true, forceLocal: true, watch: false,

@@ -1,3 +1,26 @@
+# B08 local remediation in progress - 2026-10-12 JST
+
+**Task/status:** B08_LOCAL_REMEDIATION_IN_PROGRESS.
+Active packet: docs/backend-upgrade/b08-local-remediation/PLAN.md.
+Branch codex/backend-b08-local-remediation; base receipt
+2c42984b2839d1b03c3b0ccfb89998d3535a48d8. Parent program implementation
+7ef2f8407d3a6a958c78146db3b5c9a9f0990b78 is verified: 309 files / 7463 tests,
+lint/typecheck/migrations/build PASS; immutable evidence retained on parent branch.
+
+**Work:** continue privately evidenced secret candidate adjudication, minimal TSX
+parser compatibility, direct owner dependency remediation and appropriate local
+compatibility checks. Source freeze records prior bytes; it does not prohibit
+reversible local work authorized by the user. No new green security claim yet.
+
+**Checks/limits:** prior aggregate packet verifier PASS on clean receipt commit:
+50 source / 30 candidate / 1847 protected, 86 commands / 150 public logs / 41 attachments.
+Current full/production audits and repository scanner still retain their failures.
+Preserve applied migrations, catalog authority, protected payment runtime and
+release infrastructure. External data/review/provider/inbox/staging/release gates
+remain separate. Final aggregate report follows all executable authorized local work.
+
+---
+
 # Backend program aggregate checkpoint - 2026-10-12 JST
 
 **Task/status:** LOCAL_IMPLEMENTATION_VERIFIED_WITH_BLOCKING_SECURITY_AND_EXTERNAL_GATES.

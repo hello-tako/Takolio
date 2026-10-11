@@ -263,7 +263,7 @@ describe('manual staging-only D1 runtime readiness workflow', () => {
     expect(workflowText).not.toMatch(/wrangler\.jsonc --/);
     expect(workflowText).not.toMatch(/--file\b/);
     expect(workflowText).not.toMatch(/\b(INSERT|UPDATE|DELETE|CREATE|DROP|ALTER)\b/);
-    const artifact = workflow.jobs.certify.steps.find((step) => step.uses === 'actions/upload-artifact@v4');
+    const artifact = workflow.jobs.certify.steps.find((step) => step.uses === 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02');
     expect(artifact.with).toMatchObject({
       path: 'staging-d1-runtime-readiness-receipt.json',
       'if-no-files-found': 'error',

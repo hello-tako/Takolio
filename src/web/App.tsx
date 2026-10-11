@@ -150,7 +150,7 @@ export const App: React.FC = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
+      <BrowserRouter useTransitions={false}>
         <MotionProvider>
           <AppErrorBoundary key={`${userId}:${householdId}`}>
             <SessionBoundary>

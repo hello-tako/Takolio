@@ -1,0 +1,53 @@
+{
+  "actualPinnedV4CacheRestoreDisabledBySupportedInput": true,
+  "classification": "PINNED_ACTION_IMPLEMENTATION_VS_SCANNER_CONTROL_MODEL_REVIEW",
+  "hostedRunPerformed": false,
+  "scannerSuppressionAdded": false,
+  "setupNodeCommit": "49933ea5288caeca8642d1e84afbd3f7d6820020",
+  "setupNodeMajor": 4,
+  "sources": [
+    {
+      "sha256": "8aee59063ebc272d850507febb30930de2684be1b1240cf5f3dff13179fcff0b",
+      "supportsCache": true,
+      "supportsPackageManagerCache": false,
+      "url": "https://raw.githubusercontent.com/actions/setup-node/49933ea5288caeca8642d1e84afbd3f7d6820020/action.yml"
+    },
+    {
+      "readCache": "const cache = core.getInput('cache');",
+      "readCacheLine1Based": 22,
+      "restoreCondition": "if (cache && isCacheFeatureAvailable())",
+      "restoreConditionLine1Based": 66,
+      "sha256": "e0349b933b1a9979e97101245894d41401d4d16429cd63bf93019f4210f3bc1c",
+      "supportsPackageManagerCache": false,
+      "url": "https://raw.githubusercontent.com/actions/setup-node/49933ea5288caeca8642d1e84afbd3f7d6820020/src/main.ts"
+    },
+    {
+      "comment": "NOTE: Added with setup-node@v5.",
+      "genericDefaultEnabledModelAppliedToPinnedV4": true,
+      "packageManagerCacheLine1Based": 131,
+      "sha256": "ce6e7ca55a965d8f1ee6b9b3a662fcb5215e138ec7f32ddc2400ba9998bb5550",
+      "url": "https://raw.githubusercontent.com/zizmorcore/zizmor/v1.30.1/crates/zizmor/src/audit/cache_poisoning.rs"
+    },
+    {
+      "cacheInputRead": "const cache = core.getInput('cache');",
+      "cacheRestoreGuard": "if (cache && (0, cache_utils_1.isCacheFeatureAvailable)())",
+      "entrypointDeclaredInActionYaml": true,
+      "packageManagerCacheInputPresent": false,
+      "sha256": "1aa014a3691d373745d38a1380aaea96148f4f6c33ea3d7e5fc8b2d305e328c2",
+      "url": "https://raw.githubusercontent.com/actions/setup-node/49933ea5288caeca8642d1e84afbd3f7d6820020/dist/setup/index.js"
+    },
+    {
+      "cacheSaveGuard": "const cacheLock = core.getState(constants_1.State.CachePackageManager); if (cacheLock) yield cachePackages(cacheLock);",
+      "cacheStateOnlySetByGuardedRestore": true,
+      "packageManagerCacheInputPresent": false,
+      "postEntrypointDeclaredInActionYaml": true,
+      "sha256": "81f20db56a0d37f2d1d012a3ac63934ba7f76591057d233c71e810e87152ec80",
+      "url": "https://raw.githubusercontent.com/actions/setup-node/49933ea5288caeca8642d1e84afbd3f7d6820020/dist/cache-save/index.js"
+    }
+  ],
+  "unsupportedInputAdded": false,
+  "wholeWorkflowScannerGatePassed": false,
+  "workflowDeploymentCacheInput": "",
+  "zizmorExitCode": 14,
+  "zizmorFindingsRetained": 2
+}

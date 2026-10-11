@@ -91,7 +91,7 @@ async function mount(route = '/ingredients/projection-chicken') {
   root = createRoot(container);
   await act(async () => root.render(
     <QueryClientProvider client={client}>
-      <MemoryRouter initialEntries={[route]} future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+      <MemoryRouter initialEntries={[route]} useTransitions={true}>
         <Navigation />
         <Routes>
           <Route path="/ingredients/:id" element={<IngredientDetailPage />} />

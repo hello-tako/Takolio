@@ -90,9 +90,6 @@ export default defineConfig({
   },
   test: {
     setupFiles: ['tests/helpers/vitest-event-loop-yield.ts'],
-    poolOptions: {
-      threads: { execArgv: testExecArgv },
-      forks: { execArgv: testExecArgv },
-    },
+    execArgv: testExecArgv,
   },
 });

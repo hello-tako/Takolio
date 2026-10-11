@@ -1,0 +1,21 @@
+{
+  "afterSha256": "fd65957cad2bbd94559a7d956cd84f53ce40c2a8034fd2f36f8d8cb0095b4176",
+  "baselineDocsCheckpoint": "2c42984b",
+  "beforeSha256": "62cb0c1498a9ff707dfff28e7f5ce8689f43ad8ce7fa3a26a846559f2e0055f6",
+  "classification": "ACTUAL_INSTALLED_PINNED_WRANGLER_BUNDLE_VM_CONTRACT_NOT_REMOTE_PROVIDER_EXECUTION",
+  "originalAssertionLinesCount": 27,
+  "originalAssertionsPreservedExceptExactOwnerVersion": true,
+  "providerCallsMade": false,
+  "remoteCommandsExecuted": false,
+  "sourceParserChanged": false,
+  "sourcePath": "tests/unit/production-catalog-import-output.test.mjs",
+  "stubbedBoundaries": [
+    "provider D1 responses",
+    "signed-upload transport",
+    "file stat/stream",
+    "auth/config"
+  ],
+  "vendorBundleSha256": "31866b9a3686777254819158e60ebe4920d1d91141cde68846c62b52f75d7a66",
+  "vendorHandlerImportRendererVerbatimSlices": true,
+  "vendorVersion": "4.149.0"
+}

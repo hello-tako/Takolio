@@ -40,7 +40,7 @@ async function mount(items: ScanDraftItem[] = [prediction()]) {
     root!.render(
       <MemoryRouter
         initialEntries={[`/scan/${SCAN_ID}/review`]}
-        future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+        useTransitions={true}
       >
         <Routes>
           <Route path="/scan/:id/review" element={<ScanResultPage />} />

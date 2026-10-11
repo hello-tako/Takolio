@@ -1,0 +1,60 @@
+{
+  "assertionLineCount": 80,
+  "assertionLinesSha256": "0cda61013a17fbf9eff3322dcaabc54e43b22f64fcff7f737e9b3b1f6188120e",
+  "assertionLinesUnchanged": true,
+  "changedRegion": "single async react-router-dom vi.mock factory",
+  "classification": "BOUNDED_TARGETED_PARSER_REMEDIATION_NOT_WHOLE_REPOSITORY_CLEARANCE",
+  "focusedTest": {
+    "fileCount": 1,
+    "nodeMajor": 24,
+    "status": "PASS",
+    "testCount": 34,
+    "vitestVersion": "4.1.11"
+  },
+  "originalGitBlob": "be24c52dc68c1fe987ac9b06d2360b1f1ec0eb36",
+  "originalSourceSha256": "4ae9d1b3f6681e667fdf7eadf7a68c8044a2a4a81459e48048739c1c7f4b2fa2",
+  "outsideMockRegionBytesUnchanged": true,
+  "outsideMockRegionSha256": "4f8cf2d6f445fa82c547471afcfd11325085ca238eb6a624475cd05a621ed7e0",
+  "parserRemediation": "Await the original module without a generic call and apply the same typeof import module type using an assertion before returning the unchanged mocks.",
+  "pinnedSemgrep": {
+    "findingCount": 0,
+    "parserErrorCount": 0,
+    "runnerSha256": "97f3c206b1e0489914655ffa663736292bb89a5c761704615105f7313b68979f",
+    "sourceCoverageCount": 1,
+    "status": "PASS",
+    "toolManifestSha256": "094840c1ec0ce518f82325528a8cb83b1eafe7af65a44669cad6dbc09e3a45c2",
+    "version": "1.180.0"
+  },
+  "privateReportValuesPublished": false,
+  "receipts": {
+    "finalTargetedCommand": {
+      "path": ".artifacts/backend-b08-local-remediation/b08-parser-pinned-targeted-final.json",
+      "sha256": "06d1cac2e27eda898b7bb2769296147d689d104a83acbfbc6fce9f12abb26900"
+    },
+    "finalTargetedEngine": {
+      "path": ".artifacts/backend-b08-local-remediation/parser-targeted-recovery-final/receipt.json",
+      "sha256": "a6e22b0d01e333de28e8d540a245da5ba6fc37ccde13e9706fe196af6906ddc4"
+    },
+    "firstGenericCallParserFailure": {
+      "path": ".artifacts/backend-program-20261011/b08-parser-pinned-targeted.json",
+      "sha256": "f8a71282c81ade3d00c5b50376dd112727b19f83258b2bf61defdce4ad9164e7"
+    },
+    "focusedVitest": {
+      "path": ".artifacts/backend-b08-local-remediation/b08-parser-focused-final.json",
+      "sha256": "0f908683b4847af985ec5a4e51ee2b26df32ea22e3196e083e48239c5ac9ba46"
+    },
+    "wrapperFilenameRecoveryFailure": {
+      "path": ".artifacts/backend-b08-local-remediation/b08-parser-pinned-targeted-recovery.json",
+      "sha256": "c26c07016674af37611fea9ab5b8ba53418719edb0a5f32ab123f48e12d73f25"
+    }
+  },
+  "remediatedSourceSha256": "b800b0a51a591da8fe44b1d7ae34ee03d64bb1ba5ddad80c16feeec4853596d3",
+  "retainedAttemptInterpretations": {
+    "firstGenericCallParserFailure": "Real pinned engine reported PartialParsing after awaited import was moved to a local variable while the generic typeof import call remained.",
+    "wrapperFilenameRecoveryFailure": "Targeted wrapper failed while reading a mismatched raw-report filename. It is not a scanner-result receipt; no PASS inferred from that attempt."
+  },
+  "reviewedHead": "2c42984b2839d1b03c3b0ccfb89998d3535a48d8",
+  "schemaVersion": 1,
+  "sourcePath": "tests/integration/frontend-ui-integration.test.tsx",
+  "wholeRepositoryParserConclusion": "Requires the parent-owned fresh whole-repository scanner gate."
+}

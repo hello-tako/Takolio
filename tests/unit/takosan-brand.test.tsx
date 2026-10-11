@@ -1,7 +1,7 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { StaticRouter } from 'react-router-dom/server';
+import { StaticRouter } from 'react-router-dom';
 import { describe, expect, it, vi } from 'vitest';
 
 vi.mock('../../src/web/stores/useAuthStore', () => ({
@@ -288,7 +288,7 @@ describe('Palette hardening (P2-BRAND-1)', () => {
 describe('Brand generator (P2-BRAND-2)', () => {
   it('sharp is a direct, exactly pinned devDependency and the generator imports it directly', () => {
     const pkg = JSON.parse(readFileSync(resolve(root, 'package.json'), 'utf8'));
-    expect(pkg.devDependencies.sharp).toBe('0.33.5');
+    expect(pkg.devDependencies.sharp).toBe('0.35.5');
     expect(pkg.scripts['brand:icons']).toBe('node scripts/generate-takosan-icons.mjs');
     const script = readFileSync(resolve(root, 'scripts/generate-takosan-icons.mjs'), 'utf8');
     expect(script).toContain("import sharp from 'sharp'");

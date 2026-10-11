@@ -90,7 +90,7 @@ async function mount(node: ReactNode, path: string) {
       <QueryClientProvider client={client}>
         <MemoryRouter
           initialEntries={[path]}
-          future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+          useTransitions={true}
         >
           <Routes>
             <Route path="/recipes/:slug" element={node} />

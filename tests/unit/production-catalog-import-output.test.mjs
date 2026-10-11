@@ -25,11 +25,24 @@ function vendorSlice(start, end) {
 }
 
 async function vendorStdout(kind, colored = false) {
+  // Execute the pinned bundle's handler, import state machine and non-TTY renderer.
+  // Only provider/filesystem boundaries are stubbed; no live Wrangler command runs.
+  const command = vendorSlice('    d1ExecuteCommand = createCommand({',
+    '    __name(executeSql, "executeSql");');
+  const handlerStart = command.indexOf('      async handler(args, { config: config2 }) {');
+  const handlerEnd = command.lastIndexOf('\n    });');
+  if (handlerStart < 0 || handlerEnd <= handlerStart) throw new Error('Pinned vendor handler changed');
+  const handler = command.slice(handlerStart, handlerEnd)
+    .replace('async handler(', 'async function Handler4(');
   const code = [
-    vendorSlice('var logRaw = ', 'var format6 = '),
-    vendorSlice('var spinnerFrames = ', '// src/is-ci.ts'),
-    vendorSlice('var Handler4 = ', 'async function executeLocally('),
+    vendorSlice('function setLogLevel(level) {', 'var shapes, status, space'),
+    vendorSlice('    LOGGER_LEVELS2 = {', '    format6 = '),
+    vendorSlice('function isInteractive2() {', 'var logUpdate2, grayBar'),
+    vendorSlice('    spinnerFrames = {', '    __name(isInteractive2,'),
+    vendorSlice('function normalizeSqlLineEndings(sql) {', 'function splitSqlIntoStatements('),
+    vendorSlice('async function executeSql({', 'async function executeLocally('),
     vendorSlice('async function executeRemotely(', 'async function d1ApiPost('),
+    handler,
   ].join('\n');
   let stdout = '';
   const stages = [];
@@ -45,7 +58,7 @@ async function vendorStdout(kind, colored = false) {
     __name: value => value,
     stdout: { write(value) { stdout += value; } },
     process: { stdin: { isTTY: false }, stdout: { isTTY: false } },
-    logger, dim: value => value, gray, white: value => value, brandColor: value => value,
+    logger2: logger, dim2: value => value, gray, white2: value => value, brandColor2: value => value,
     leftT: gray('\u251c'), grayBar: gray('\u2502'), shapes: { bar: '\u2502' },
     setInterval, clearTimeout, logUpdate2: () => {},
     source_default: { gray, dim: value => value },
@@ -55,12 +68,12 @@ async function vendorStdout(kind, colored = false) {
     getDatabaseByNameOrBinding: async () => ({ uuid: '12345678-abcd-4567-8901-123456789abc' }),
     readableRelative: value => value, configFileName: () => 'offline-config',
     import_md5_file: { default: async () => etag },
-    import_fs9: { promises: { stat: async () => ({ size: 9 }) }, createReadStream: () => 'mock-stream' },
-    import_undici9: { fetch: async () => {
+    fs14: { promises: { stat: async () => ({ size: 9 }) }, createReadStream: () => 'mock-stream' },
+    import_undici23: { fetch: async () => {
       stages.push('SIGNED_UPLOAD_PUT');
       return { status: 200, headers: { get: () => etag } };
     } },
-    d1ApiPost: async (_account, _db, action, body) => {
+    d1ApiPost: async (_config, _account, _db, action, body) => {
       stages.push(action === 'query' ? 'QUERY_POST' : body.action.toUpperCase());
       if (action === 'query') return [{ success: true, results: [{ ok: 1 }] }];
       if (body.action === 'init') return kind === 'cached' ? terminal : {
@@ -71,12 +84,12 @@ async function vendorStdout(kind, colored = false) {
       throw new Error('Unexpected offline vendor request');
     },
     logResult: () => {}, UserError: Error, APIError: Error, JsonFriendlyFatalError: Error,
-    createFatalError: message => new Error(message), confirm: async () => true,
+    createFatalError: message => new Error(message), confirm2: async () => true,
   });
   runInContext(code, context);
   context.fixtureArgs = { remote: true, database: 'fixture', yes: true, json: true,
     ...(kind === 'query' ? { command: 'SELECT 1 AS ok' } : { file: '/offline/fixture.sql' }) };
-  await runInContext('Handler4(fixtureArgs)', context);
+  await runInContext('Handler4(fixtureArgs, { config: {} })', context);
   return { stdout, stages };
 }
 
@@ -92,7 +105,7 @@ function assertRejected(stdout) {
 
 describe('pinned Wrangler file-import stdout contract', () => {
   it.each([false, true])('accepts verbatim vendor upload progress with color=%s', async (colored) => {
-    expect(require('wrangler/package.json').version).toBe('3.114.17');
+    expect(require('wrangler/package.json').version).toBe('4.149.0');
     const result = await vendorStdout('upload', colored);
     expect(result.stages).toEqual(['INIT', 'SIGNED_UPLOAD_PUT', 'INGEST', 'POLL']);
     expect(() => JSON.parse(result.stdout)).toThrow();

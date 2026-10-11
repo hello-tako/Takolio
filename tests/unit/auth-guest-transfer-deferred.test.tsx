@@ -53,7 +53,7 @@ async function until(assertion: () => void) {
 async function mount() {
   root ??= createRoot(container);
   await act(async () => {
-    root!.render(<MemoryRouter initialEntries={['/auth?mode=register']} future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+    root!.render(<MemoryRouter initialEntries={['/auth?mode=register']} useTransitions={true}>
       <LocationProbe />
       <Routes>
         <Route path="/auth" element={<AuthPage />} />

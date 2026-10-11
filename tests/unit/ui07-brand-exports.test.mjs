@@ -10,12 +10,32 @@ const committed = resolve(root, 'public/takosan/rebuild');
 const publicFile = (path) => resolve(root, 'public', path.replace(/^\//, ''));
 
 describe('UI07 reproducible digital brand', () => {
-  it('regenerates every committed export byte-identically without external kit/fonts', async () => {
+  it('regenerates all 36 exports with identical vector bytes and PNG pixels without external kit/fonts', async () => {
     const out = await mkdtemp(resolve(tmpdir(), 'takosan-ui07-'));
     const names = await generateBrand(out);
     expect(names.length).toBe(36);
     for (const name of names) {
-      expect(await readFile(resolve(out, name)), name).toEqual(await readFile(resolve(committed, name)));
+      const generatedBytes = await readFile(resolve(out, name));
+      const protectedBytes = await readFile(resolve(committed, name));
+      if (!name.endsWith('.png')) {
+        expect(generatedBytes, name).toEqual(protectedBytes);
+        continue;
+      }
+      // Native PNG compression changes across pinned sharp versions; decoded pixels stay exact.
+      const [generatedMetadata, protectedMetadata] = await Promise.all([
+        sharp(generatedBytes).metadata(), sharp(protectedBytes).metadata(),
+      ]);
+      const identity = ({ format, width, height, channels, space, depth, hasAlpha }) =>
+        ({ format, width, height, channels, space, depth, hasAlpha });
+      expect(identity(generatedMetadata), name).toEqual(identity(protectedMetadata));
+      expect([generatedMetadata.format, generatedMetadata.hasAlpha], name).toEqual(['png', false]);
+      const [generatedPixels, protectedPixels] = await Promise.all([
+        sharp(generatedBytes).raw().toBuffer({ resolveWithObject: true }),
+        sharp(protectedBytes).raw().toBuffer({ resolveWithObject: true }),
+      ]);
+      expect([generatedPixels.info.width, generatedPixels.info.height, generatedPixels.info.channels], name)
+        .toEqual([protectedPixels.info.width, protectedPixels.info.height, protectedPixels.info.channels]);
+      expect(generatedPixels.data.equals(protectedPixels.data), name).toBe(true);
     }
   });
 

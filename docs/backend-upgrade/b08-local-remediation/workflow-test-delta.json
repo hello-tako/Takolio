@@ -1,0 +1,59 @@
+{
+  "baselineDocsCheckpoint": "2c42984b",
+  "classification": "LOCAL_WORKFLOW_EXPECTED_PIN_AND_QUOTED_ENV_CONTRACT_UPDATE",
+  "existingNegativeMutationAndAuthorityAssertionsPreserved": true,
+  "newSecurityAssertions": [
+    "DEPLOY_SHA binding retains exact release output",
+    "Wrangler action uses exact immutable commit",
+    "Wrangler CLI exact4.149.0 input",
+    "setup-nodev4 cache explicit empty"
+  ],
+  "testFiles": [
+    {
+      "afterExpectCallCount": 42,
+      "afterSha256": "946fb0bcc57138fe7580060972c3c9433ef3ce9b612d3a0c7a2d8d6b8e7a5a88",
+      "assertionMeaningPreserved": true,
+      "beforeExpectCallCount": 42,
+      "beforeSha256": "3eebcbddd1af3f1c1ff133c9d29fa7ac32e8e052cb61c4979f75d6e93e1a3c42",
+      "controlledReversalMatchesBaseline": true,
+      "path": "tests/unit/production-certify-workflow.test.mjs"
+    },
+    {
+      "afterExpectCallCount": 72,
+      "afterSha256": "da1171094ee72a7290ecf6e4480b1107f7efbb8f938bc19f718f44961e8c9094",
+      "assertionMeaningPreserved": true,
+      "beforeExpectCallCount": 72,
+      "beforeSha256": "d984e47d8c49d75a883bf4cc9dbf08bc7ba6d8b373d04ba0ca00d14e4eaa09cd",
+      "controlledReversalMatchesBaseline": true,
+      "path": "tests/unit/production-d1-diagnostics.test.mjs"
+    },
+    {
+      "afterExpectCallCount": 45,
+      "afterSha256": "98d7cd3024c931fc7b5bd33cd550d06f07257fda455fdcac4473d995fcf6a1e1",
+      "assertionMeaningPreserved": true,
+      "beforeExpectCallCount": 45,
+      "beforeSha256": "8dab91700b251ece9b82ee6365c62a6b38a781353971b9e1171e336722d3487e",
+      "controlledReversalMatchesBaseline": true,
+      "path": "tests/unit/t21rc2-workflow.test.mjs"
+    },
+    {
+      "afterExpectCallCount": 50,
+      "afterSha256": "729b4c0d5e722368e7ec5d120fa7ac2549e0f8ad0c4b1fe402ae813519260846",
+      "assertionMeaningPreserved": true,
+      "beforeExpectCallCount": 50,
+      "beforeSha256": "908ed271023d0af9c7c7d6aae82f2bbd946cf3f203a1dd762bead9b9a37fa27e",
+      "controlledReversalMatchesBaseline": true,
+      "path": "tests/unit/staging-d1-runtime-readiness-check.test.mjs"
+    },
+    {
+      "afterExpectCallCount": 300,
+      "afterSha256": "bf261d811c7fed4ddda85a6e8e417f120cfbd8dbcb4bfb2d9adf0d62aaee4f4b",
+      "assertionMeaningPreserved": true,
+      "beforeExpectCallCount": 296,
+      "beforeSha256": "290f708413377d60a281a39d9454c71082d3fc7acf3d64842b504dd0acbac163",
+      "controlledReversalMatchesBaseline": true,
+      "path": "tests/unit/release-check.test.mjs"
+    }
+  ],
+  "testsExecutedByThisWrite": false
+}
