@@ -1,0 +1,20 @@
+rules:
+  - id: takosan.dynamic-eval
+    languages: [javascript, typescript]
+    severity: ERROR
+    message: Review dynamic eval; untrusted strings can execute code.
+    patterns:
+      - pattern: eval($INPUT)
+      - pattern-not: eval("...")
+  - id: takosan.dynamic-function
+    languages: [javascript, typescript]
+    severity: ERROR
+    message: Review dynamic Function construction; untrusted strings can execute code.
+    pattern-either:
+      - pattern: new Function(...)
+      - pattern: Function(...)
+  - id: takosan.tls-verification-disabled
+    languages: [javascript, typescript]
+    severity: ERROR
+    message: TLS certificate verification must remain enabled.
+    pattern: "{..., rejectUnauthorized: false, ...}"

@@ -2,7 +2,7 @@ import { AggregatedShoppingItem } from '@frigo/domain';
 
 export type ShoppingImportSelection =
   | { ok: true; items: AggregatedShoppingItem[] }
-  | { ok: false; reason: 'invalid_shape' | 'unknown_item' | 'invalid_plan' };
+  | { ok: false; reason: 'invalid_shape' | 'unknown_item' | 'invalid_plan' | 'cannot_buy' };
 
 const STANDARD_UNITS = new Set(['g', 'kg', 'ml', 'l', 'piece', 'pack', 'bunch', 'slice']);
 
@@ -29,7 +29,7 @@ export function selectPlanShoppingItems(
     return { ok: false, reason: 'invalid_plan' };
   }
 
-  const requested = requestedItems ?? planItems.filter((item) => item.checked);
+  const requested = requestedItems ?? planItems.filter((item) => item.checked && !item.cannotBuy);
   if (!Array.isArray(requested)) return { ok: false, reason: 'invalid_shape' };
 
   const planItemsByIngredient = new Map(
@@ -47,6 +47,7 @@ export function selectPlanShoppingItems(
     }
     const canonical = planItemsByIngredient.get(candidate.ingredientId.trim().toUpperCase());
     if (!canonical) return { ok: false, reason: 'unknown_item' };
+    if (canonical.cannotBuy) return { ok: false, reason: 'cannot_buy' };
     selected.set(canonical.ingredientId, canonical);
   }
 

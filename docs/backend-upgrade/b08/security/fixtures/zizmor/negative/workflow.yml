@@ -1,0 +1,11 @@
+name: Safe synthetic fixture
+on:
+  push:
+permissions:
+  contents: read
+jobs:
+  safe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print fixed value
+        run: echo "fixture"

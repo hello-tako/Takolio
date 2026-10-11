@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Scan V3 offline annotation metadata v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "status",
+    "reviewer",
+    "adjudicator",
+    "transcriptSha256",
+    "providerOutputIndependent",
+    "groundTruth"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "status": {
+      "enum": [
+        "TEST_ONLY",
+        "MISSING",
+        "INDEPENDENT_REVIEWED",
+        "ADJUDICATED"
+      ]
+    },
+    "reviewer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "adjudicator": {
+      "type": "string",
+      "minLength": 1
+    },
+    "transcriptSha256": {
+      "type": "string",
+      "pattern": "^(MISSING|[a-f0-9]{64})$"
+    },
+    "providerOutputIndependent": {
+      "type": "boolean"
+    },
+    "groundTruth": {
+      "type": "object",
+      "description": "Validated with strict ScanV3Schema in packages/ai/src/scan-contract-v3.ts, including evidence and task refinements. This metadata JSON schema alone cannot certify labels.",
+      "required": [
+        "schemaVersion",
+        "task",
+        "document",
+        "items"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": 3
+        },
+        "task": {
+          "enum": [
+            "receipt_ocr",
+            "label_ocr",
+            "fridge_image_analysis"
+          ]
+        },
+        "document": {
+          "type": "object"
+        },
+        "items": {
+          "type": "array"
+        }
+      }
+    }
+  }
+}

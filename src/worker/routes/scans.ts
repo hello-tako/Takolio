@@ -12,6 +12,7 @@ import { buildInventoryObservation, guardedObservationInsertStatement } from '..
 import { ObservationError } from '../../../packages/domain/src/inventory-observations';
 import { Env, AuthContext } from '../types';
 import { AIRouter } from '@frigo/ai';
+import type { AICallControl } from '../../../packages/ai/src/types';
 import { SQL } from '@frigo/db';
 import {
   areUnitsCompatible,
@@ -26,7 +27,8 @@ import { rateLimiter } from '../middleware/rate-limit';
 import { ScanConfirmSchema } from '../validation/schemas';
 import { fetchHouseholdInventoryFromDb } from './inventory';
 import { getScanQuota, reserveScanQuota, finalizeScanQuota, type ScanReservationSpec } from '../services/scan-quota';
-import { ensureScanQueueIntent } from '../services/scan-queue';
+import { ensureScanQueueIntent, cancelQueuedScan } from '../services/scan-queue';
+import { negotiateScanContract } from '../../../packages/ai/src/scan-envelope';
 import { sha256Hex } from '../utils/session';
 import { aiConfigFromEnv, logAIUsage } from '../config/ai';
 
@@ -396,14 +398,17 @@ function scanFailureStatus(code: string): 400 | 413 | 422 | 429 | 500 | 503 | 50
   return 500;
 }
 
-function withScanTimeout<T>(operation: Promise<T>, timeoutMs: number, timeoutMessage: string): Promise<T> {
+function withScanTimeout<T>(operation: (control: AICallControl) => Promise<T>, timeoutMs: number, timeoutMessage: string): Promise<T> {
+  const controller = new AbortController();
   let timer: ReturnType<typeof setTimeout> | undefined;
-  return Promise.race([
-    operation,
-    new Promise<never>((_, reject) => {
-      timer = setTimeout(() => reject(new Error(`REQUEST_TIMEOUT: ${timeoutMessage}`)), timeoutMs);
-    }),
-  ]).finally(() => {
+  const deadlineAt = Date.now() + timeoutMs;
+  const stopped = new Promise<never>((_, reject) => {
+    timer = setTimeout(() => {
+      reject(new Error(`REQUEST_TIMEOUT: ${timeoutMessage}`));
+      controller.abort();
+    }, timeoutMs);
+  });
+  return Promise.race([operation({ signal: controller.signal, deadlineAt }), stopped]).finally(() => {
     if (timer !== undefined) clearTimeout(timer);
   });
 }
@@ -576,6 +581,11 @@ export function scanItemDto(row: any, scanId: string) {
 
 // Enforce multi-tenancy on all scan routes
 scanRoutes.use('/scans*', tenancyGuard);
+scanRoutes.use('/scans*', async (c, next) => {
+  const contract = negotiateScanContract(c.req.header('X-Scan-Contract-Version'));
+  if (!contract.ok) return c.json({ error: 'Scan contract unavailable', code: contract.code }, contract.status);
+  await next();
+});
 
 // Rate limit AI vision operations (max 12 per minute)
 scanRoutes.use('/scans/fridge', rateLimiter({ maxRequests: 12, windowSeconds: 60, prefix: 'rl_scan' }));
@@ -969,7 +979,7 @@ scanRoutes.post('/scans/fridge', async (c) => {
   try {
     const aiRouter = getAIRouter(c.env, (promise) => c.executionCtx.waitUntil(promise));
     visionResult = await withScanTimeout(
-      aiRouter.vision({ imageBase64OrUrl: image.dataUrl, mimeType: image.mimeType }),
+      (control) => aiRouter.vision({ imageBase64OrUrl: image.dataUrl, mimeType: image.mimeType }, control),
       75_000,
       'Phân tích ảnh quá lâu. Vui lòng thử lại.',
     );
@@ -1197,7 +1207,7 @@ scanRoutes.post('/scans/receipt', async (c) => {
   try {
     const aiRouter = getAIRouter(c.env, (promise) => c.executionCtx.waitUntil(promise));
     receiptResult = await withScanTimeout(
-      aiRouter.receiptScan({ imageBase64OrUrl: image.dataUrl, mimeType: image.mimeType }),
+      (control) => aiRouter.receiptScan({ imageBase64OrUrl: image.dataUrl, mimeType: image.mimeType }, control),
       75_000,
       'Đọc hóa đơn quá lâu. Vui lòng thử lại.',
     );
@@ -1367,6 +1377,21 @@ scanRoutes.get('/scans/:id', async (c) => {
   } catch (err) {
     console.error('D1 GET_SCAN failed:', err);
     return c.json({ error: 'Lỗi truy vấn bản quét', code: 'DATABASE_ERROR' }, 500);
+  }
+});
+
+// POST /api/v1/scans/:id/cancel
+scanRoutes.post('/scans/:id/cancel', async (c) => {
+  const auth = c.get('auth');
+  if (!c.env.DB) return c.json({ error: 'Database service unavailable', code: 'DATABASE_UNAVAILABLE' }, 503);
+  try {
+    const outcome = await cancelQueuedScan(c.env, c.req.param('id'), auth.householdId);
+    if (outcome === 'missing') return c.json({ error: 'Scan not found', code: 'NOT_FOUND' }, 404);
+    if (outcome === 'conflict') return c.json({ error: 'Scan cannot be cancelled', code: 'SCAN_CANCEL_CONFLICT' }, 409);
+    return c.json({ success: true, cancelled: true, status: 'failed', code: 'SCAN_CANCELLED' });
+  } catch {
+    console.error(JSON.stringify({ event: 'scan_cancel_failed' }));
+    return c.json({ error: 'Database service unavailable', code: 'DATABASE_UNAVAILABLE' }, 503);
   }
 });
 

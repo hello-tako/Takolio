@@ -1,11 +1,12 @@
 import { Hono } from 'hono';
 import { Env, AuthContext } from '../types';
+import { tenancyGuard } from '../middleware/tenancy';
 import { readInventoryAuthorityMode } from '../../../packages/db/src/inventory-writer-fence';
 import { readInventoryAuthority } from '../../../packages/db/src/inventory-read-authority';
 
 export const notificationRoutes = new Hono<{ Bindings: Env; Variables: { auth: AuthContext } }>();
 
-notificationRoutes.get('/notifications', async (c) => {
+notificationRoutes.get('/notifications', tenancyGuard, async (c) => {
   const auth = c.get('auth');
   const db = c.env.DB;
   const list: any[] = [];
@@ -58,8 +59,8 @@ notificationRoutes.get('/notifications', async (c) => {
           createdAt: new Date(Date.now() - 1800000).toISOString(),
         });
       }
-    } catch (err) {
-      console.warn('Failed querying notifications from D1:', err);
+    } catch {
+      console.warn(JSON.stringify({ event: 'notifications_query_failed' }));
     }
   }
 

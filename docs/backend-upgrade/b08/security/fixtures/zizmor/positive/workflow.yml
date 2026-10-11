@@ -1,0 +1,10 @@
+name: Deliberately unsafe synthetic fixture
+on:
+  pull_request_target:
+permissions: write-all
+jobs:
+  unsafe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Untrusted interpolation fixture
+        run: echo "${{ github.event.pull_request.title }}"

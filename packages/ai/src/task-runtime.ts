@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import type { AIConfig, VisionScanParams } from './types';
+import type { AIConfig, AICallControl, VisionScanParams } from './types';
 import type { AIUsageLog, ReceiptScanResult, VisionScanResult } from './schemas';
 import {
   AIBudgetExceededError,
@@ -24,11 +24,13 @@ import {
   type AITask,
 } from './model-governance';
 import { buildPrompt } from './prompts';
-import { QwenProvider, type QwenCallOptions } from './providers/qwen';
+import { QwenProvider } from './providers/qwen';
+import { createTaskCallControl, type TaskCallControl, type TaskProviderCallOptions,
+  type RuntimeTaskProvider, type TaskRuntimeOptions, type TaskCallAdmission } from './task-provider';
 import { applyReceiptScanQualityGate, applyVisionScanQualityGate } from './quality-gate';
 import { failureDiagnostics } from './failure-diagnostics';
 
-export interface AIRuntimeRequest<T = unknown> {
+export interface AIRuntimeRequest<T = unknown> extends AICallControl {
   task: AITask;
   input: unknown;
   context?: unknown;
@@ -133,30 +135,41 @@ function textInput(input: unknown, context: unknown, task: AITask, repairInput?:
 }
 
 /**
- * Qwen-only task runtime. It owns model-role selection, bounded attempts,
+ * Governed task runtime with a Qwen default. It owns model-role selection, bounded attempts,
  * structured parsing, budget checks and usage telemetry; feature services only
  * need to provide a logical task and input.
  */
 export class QwenTaskRuntime {
   private readonly governance: AIGovernanceConfig;
-  private readonly providers = new Map<AIModelRole, QwenProvider>();
+  private readonly providers = new Map<AIModelRole, RuntimeTaskProvider>();
+  private readonly runtimeOptions: TaskRuntimeOptions;
   private readonly onUsageLogged?: (log: AIUsageLog) => void;
   private readonly backgroundExecutor?: (promise: Promise<unknown>) => void;
 
-  constructor(config: AIConfig, onUsageLogged?: (log: AIUsageLog) => void) {
+  constructor(config: AIConfig, onUsageLogged?: (log: AIUsageLog) => void, options: TaskRuntimeOptions = {}) {
     this.governance = governanceFromAIConfig(config);
+    this.runtimeOptions = options;
     this.onUsageLogged = onUsageLogged;
     this.backgroundExecutor = config.backgroundExecutor;
-    if (config.qwenApiKey?.trim()) {
+    if (options.providerFactory || config.qwenApiKey?.trim()) {
       for (const role of Object.keys(this.governance.models) as AIModelRole[]) {
         const alias = getModelAlias(this.governance, role);
-        this.providers.set(role, new QwenProvider(
-          config.qwenApiKey,
-          config.qwenBaseUrl,
-          alias.physicalModel,
-          config.qwenRequestTimeoutMs,
-          alias.capabilities || capabilitiesForPhysicalModel(alias.physicalModel),
-        ));
+        const capabilities = alias.capabilities || capabilitiesForPhysicalModel(alias.physicalModel);
+        if (options.providerFactory) {
+          const provider = options.providerFactory({ role, physicalModel: alias.physicalModel,
+            capabilities, requestTimeoutMs: config.qwenRequestTimeoutMs });
+          if (provider) this.providers.set(role, provider);
+        } else {
+          const provider = new QwenProvider(config.qwenApiKey!, config.qwenBaseUrl, alias.physicalModel,
+            config.qwenRequestTimeoutMs, capabilities);
+          this.providers.set(role, {
+            providerId: 'qwen',
+            vision: (params, callOptions) => provider.vision(params, callOptions),
+            receiptScan: (params, callOptions) => provider.receiptScan(params, callOptions),
+            chat: (prompt, context, callOptions) => provider.chat(prompt, context, callOptions),
+            getLastUsage: () => provider.getLastUsage(),
+          });
+        }
       }
     }
   }
@@ -166,6 +179,16 @@ export class QwenTaskRuntime {
   }
 
   async generate<T = unknown>(request: AIRuntimeRequest<T>): Promise<AIRuntimeResult<T>> {
+    const control = createTaskCallControl(request);
+    try {
+      return await this.generateControlled(request, control);
+    } finally {
+      control.dispose();
+    }
+  }
+
+  private async generateControlled<T>(request: AIRuntimeRequest<T>, control: TaskCallControl): Promise<AIRuntimeResult<T>> {
+    control.check();
     if (!this.governance.aiEnabled) throw new Error('AI_DISABLED: AI runtime is disabled by policy');
     const policy = getTaskPolicy(this.governance, request.task);
     const maxOutputTokens = Math.min(policy.maxOutputTokens, this.governance.maxOutputTokens);
@@ -179,6 +202,7 @@ export class QwenTaskRuntime {
     let repairInput = request.repairInput;
 
     for (let index = 0; index < Math.min(policy.maxAttempts, this.governance.maxCallsPerOperation, roles.length); index += 1) {
+      control.check();
       const role = roles[index];
       if (!canUseRole(this.governance, role)) {
         lastError ??= new AIEscalationExhaustedError(`AI_ESCALATION_DISABLED: ${role} is disabled by policy`, request.task);
@@ -203,13 +227,28 @@ export class QwenTaskRuntime {
       const alias = getModelAlias(this.governance, role);
       const startedAt = Date.now();
       reservedCalls += 1;
-      const callOptions: QwenCallOptions = {
+      let callStarted = false;
+      const callOptions: TaskProviderCallOptions = {
+        signal: control.signal,
+        deadlineAt: request.deadlineAt,
         maxTokens: maxOutputTokens,
         temperature: policy.structured ? 0.1 : 0.2,
         jsonMode: policy.structured,
       };
       try {
-        const value = await this.callProvider(provider, { ...request, repairInput }, index, callOptions);
+        const value = await control.run(async () => {
+          await this.admitCall({ task: request.task, role, physicalModel: alias.physicalModel,
+            kind: index === 0 ? 'primary' : role !== policy.role ? 'escalation'
+              : isAIProviderError(lastError) && ['SCHEMA_VALIDATION', 'INVALID_RESPONSE', 'AI_SCAN_NO_USABLE_ITEMS'].includes(lastError.code)
+                ? 'repair' : 'retry', attempt: index + 1,
+            opaqueScope: this.runtimeOptions.callScope, signal: control.signal, deadlineAt: request.deadlineAt,
+            inputBudget: { estimatedInputTokens: inputBudget.inputTokens, inputTokenBound: null,
+              imageBytesBound: visionInput ? estimateDecodedImageBytes(visionInput.imageBase64OrUrl) ?? null : null },
+            maxOutputTokens }, control);
+          control.check();
+          callStarted = true;
+          return this.callProvider(provider, { ...request, repairInput }, index, callOptions);
+        });
         const gated = request.task === 'receipt_ocr' || request.task === 'label_ocr'
           ? applyReceiptScanQualityGate(value)
           : request.task === 'fridge_image_analysis' ? applyVisionScanQualityGate(value) : value;
@@ -259,8 +298,10 @@ export class QwenTaskRuntime {
         const log = this.makeLog(request.task, role, alias.physicalModel, measuredInput,
           measuredOutput, cachedInputTokens, Date.now() - startedAt, estimatedCostUsd, index + 1,
           escalationReason, role === policy.role ? 'success' : 'fallback', provider);
+        control.check();
         usage.push(log);
         this.onUsageLogged?.(log);
+        control.check();
         const shadowInputTokens = Math.max(inputBudget.inputTokens, measuredInput);
         const shadowReservation = shadowInputTokens + maxOutputTokens;
         if (index === 0 && role === 'QWEN_FAST' && reservedCalls < this.governance.maxCallsPerOperation
@@ -278,13 +319,14 @@ export class QwenTaskRuntime {
             // response into a retry or user-visible AI error.
           }
         }
+        control.check();
         return { value: parsed as T, usage, attempts: index + 1, logicalModel: role, physicalModel: alias.physicalModel };
       } catch (error) {
         lastError = error;
         const code = providerCode(error);
         const diagnostics = isVisionTask(request.task) ? failureDiagnostics(error) : {};
-        const providerUsage = provider.getLastUsage();
-        const measuredInput = providerUsage?.inputTokens ?? inputBudget.inputTokens;
+        const providerUsage = callStarted ? provider.getLastUsage() : undefined;
+        const measuredInput = providerUsage?.inputTokens ?? (callStarted ? inputBudget.inputTokens : 0);
         const measuredOutput = providerUsage?.outputTokens ?? 0;
         const estimatedCostUsd = calculateEstimatedCost(this.governance, alias.physicalModel, measuredInput, measuredOutput, providerUsage?.cachedInputTokens ?? 0);
         const escalationReason = index === 0
@@ -298,6 +340,7 @@ export class QwenTaskRuntime {
         Object.assign(log, diagnostics);
         usage.push(log);
         this.onUsageLogged?.(log);
+        control.check();
         if (!(isAIProviderError(error) && error.code === 'AI_BUDGET_EXCEEDED')) {
           totalTokens += measuredInput + measuredOutput;
         }
@@ -366,11 +409,24 @@ export class QwenTaskRuntime {
     if (!provider) return;
     const alias = getModelAlias(this.governance, role);
     const startedAt = Date.now();
+    const control = createTaskCallControl(request);
+    let callStarted = false;
     try {
-      const value = await this.callProvider(provider, { ...request, repairInput: undefined }, 0, {
-        maxTokens: maxOutputTokens,
-        temperature: getTaskPolicy(this.governance, request.task).structured ? 0.1 : 0.2,
-        jsonMode: getTaskPolicy(this.governance, request.task).structured,
+      const value = await control.run(async () => {
+        await this.admitCall({ task: request.task, role, physicalModel: alias.physicalModel, kind: 'shadow', attempt: 1,
+          opaqueScope: this.runtimeOptions.callScope, signal: control.signal, deadlineAt: request.deadlineAt,
+          inputBudget: { estimatedInputTokens: inputTokens, inputTokenBound: null,
+            imageBytesBound: isVisionTask(request.task) ? estimateDecodedImageBytes(asVisionInput(request.input).imageBase64OrUrl) ?? null : null },
+          maxOutputTokens }, control);
+        control.check();
+        callStarted = true;
+        return this.callProvider(provider, { ...request, repairInput: undefined }, 0, {
+          signal: control.signal,
+          deadlineAt: request.deadlineAt,
+          maxTokens: maxOutputTokens,
+          temperature: getTaskPolicy(this.governance, request.task).structured ? 0.1 : 0.2,
+          jsonMode: getTaskPolicy(this.governance, request.task).structured,
+        });
       });
       const parsedValue = getTaskPolicy(this.governance, request.task).structured
         ? parseStructuredValue(value)
@@ -380,6 +436,7 @@ export class QwenTaskRuntime {
         throw createAIResponseError('Qwen', 'Qwen shadow response was not structured', alias.physicalModel);
       }
       const parsed = request.schema ? request.schema.parse(parsedValue) : parsedValue;
+      control.check();
       const providerUsage = provider.getLastUsage();
       const measuredInput = providerUsage?.inputTokens ?? inputTokens;
       const measuredOutput = providerUsage?.outputTokens ?? outputTokens(parsed, maxOutputTokens);
@@ -418,8 +475,8 @@ export class QwenTaskRuntime {
       );
       this.onUsageLogged?.(log);
     } catch (error) {
-      const providerUsage = provider.getLastUsage();
-      const measuredInput = providerUsage?.inputTokens ?? inputTokens;
+      const providerUsage = callStarted ? provider.getLastUsage() : undefined;
+      const measuredInput = providerUsage?.inputTokens ?? (callStarted ? inputTokens : 0);
       const measuredOutput = providerUsage?.outputTokens ?? 0;
       const log = this.makeLog(
         request.task,
@@ -437,14 +494,28 @@ export class QwenTaskRuntime {
         providerCode(error),
       );
       this.onUsageLogged?.(log);
+    } finally {
+      control.dispose();
+    }
+  }
+
+  private async admitCall(admission: TaskCallAdmission, control: TaskCallControl): Promise<void> {
+    if (!this.runtimeOptions.beforeCall) return;
+    try {
+      await control.run(() => this.runtimeOptions.beforeCall!(admission));
+    } catch (error) {
+      control.check();
+      throw new AIProviderError('AI_ADMISSION_DENIED: provider call not admitted', {
+        code: 'AI_ADMISSION_DENIED', retryable: false, provider: 'governance',
+      });
     }
   }
 
   private async callProvider(
-    provider: QwenProvider,
+    provider: RuntimeTaskProvider,
     request: AIRuntimeRequest,
     attempt: number,
-    options: QwenCallOptions,
+    options: TaskProviderCallOptions,
   ): Promise<QwenOperationResult> {
     if (isVisionTask(request.task)) {
       const image = asVisionInput(request.input);
@@ -476,7 +547,7 @@ export class QwenTaskRuntime {
     attempt: number,
     escalationReason: string | undefined,
     status: 'success' | 'error' | 'fallback',
-    _provider: QwenProvider,
+    provider: RuntimeTaskProvider,
     failureCode?: string,
   ): AIUsageLog {
     const policy = getTaskPolicy(this.governance, task);
@@ -484,7 +555,7 @@ export class QwenTaskRuntime {
       // New task runtime logs retain semantic task names. Legacy AIRouter
       // wrappers continue to emit fridge_scan/receipt_scan/chat aliases.
       task,
-      provider: 'qwen',
+      provider: provider.providerId,
       model: physicalModel,
       logicalModel: role,
       physicalModel,

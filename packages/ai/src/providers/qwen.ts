@@ -1,4 +1,5 @@
 import { AIProvider, AIProviderUsage, VisionScanParams } from '../types';
+import { createTaskCallControl, validateTaskCallDeadline, type TaskProviderCallOptions } from '../task-provider';
 import {
   ReceiptScanResult,
   ReceiptScanResultSchema,
@@ -34,12 +35,7 @@ type QwenProviderOptions = {
   capabilities?: ModelCapabilities;
 };
 
-export interface QwenCallOptions {
-  maxTokens?: number;
-  temperature?: number;
-  jsonMode?: boolean;
-  visionRepairInstructions?: string;
-}
+export type QwenCallOptions = TaskProviderCallOptions;
 
 function recordValue(record: Record<string, unknown>, aliases: readonly string[]): unknown {
   for (const alias of aliases) {
@@ -312,7 +308,7 @@ Chỉ trả về JSON thuần, không thêm markdown code block thừa.`;
     const prompt = options.visionRepairInstructions
       ? `${basePrompt}\nRepair only these validation failures: ${options.visionRepairInstructions}`
       : basePrompt;
-    const parsed = await this.completeVision(prompt, params, options.maxTokens ?? 1024, options.temperature);
+    const parsed = await this.completeVision(prompt, params, { ...options, maxTokens: options.maxTokens ?? 1024 });
     let validated: VisionScanResult;
     try {
       validated = VisionScanResultSchema.parse(normalizeVisionPayload(parsed));
@@ -360,7 +356,7 @@ Bỏ qua dòng không phải thực phẩm và không tự bịa sản phẩm kh
     const prompt = options.visionRepairInstructions
       ? `${basePrompt}\nRepair only these validation failures: ${options.visionRepairInstructions}`
       : basePrompt;
-    const parsed = await this.completeVision(prompt, params, options.maxTokens ?? 1_500, options.temperature);
+    const parsed = await this.completeVision(prompt, params, { ...options, maxTokens: options.maxTokens ?? 1_500 });
     let validated: ReceiptScanResult;
     try {
       validated = ReceiptScanResultSchema.parse(normalizeReceiptPayload(parsed));
@@ -386,89 +382,108 @@ Bỏ qua dòng không phải thực phẩm và không tự bịa sản phẩm kh
 
   private async complete(
     messages: Array<{ role: 'system' | 'user' | 'assistant'; content: ChatMessageContent }>,
-    options: { maxTokens?: number; jsonMode?: boolean; temperature?: number } = {},
+    options: TaskProviderCallOptions = {},
   ): Promise<unknown> {
     this.lastUsage = undefined;
+    validateTaskCallDeadline(options.deadlineAt, 'qwen', this.model);
+    const providerDeadlineAt = Date.now() + this.requestTimeoutMs;
+    const control = createTaskCallControl({ ...options,
+      deadlineAt: Math.min(options.deadlineAt ?? providerDeadlineAt, providerDeadlineAt) }, 'qwen', this.model);
     const controller = new AbortController();
+    const onCallerAbort = () => controller.abort();
+    control.signal.addEventListener('abort', onCallerAbort, { once: true });
     let timedOut = false;
     const timeout = setTimeout(() => {
       timedOut = true;
       controller.abort();
     }, this.requestTimeoutMs);
     try {
-      const res = await fetch(`${this.baseUrl}/chat/completions`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${this.apiKey}`,
-        },
-        signal: controller.signal,
-        body: JSON.stringify({
-          model: this.model,
-          messages,
-          temperature: options.temperature ?? 0.1,
-          ...(this.capabilities.supportsThinkingControl ? { enable_thinking: false } : {}),
-          ...(options.jsonMode && this.capabilities.supportsJsonResponseFormat
-            ? { response_format: { type: 'json_object' } }
-            : {}),
-          ...(options.maxTokens === undefined ? {} : { max_tokens: options.maxTokens }),
-        }),
-      });
-      if (!res.ok) throw createAIHttpError('Qwen', res.status, await res.text(), this.model);
+      return await control.run(async () => {
+        const res = await fetch(`${this.baseUrl}/chat/completions`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${this.apiKey}`,
+          },
+          signal: controller.signal,
+          body: JSON.stringify({
+            model: this.model,
+            messages,
+            temperature: options.temperature ?? 0.1,
+            ...(this.capabilities.supportsThinkingControl ? { enable_thinking: false } : {}),
+            ...(options.jsonMode && this.capabilities.supportsJsonResponseFormat
+              ? { response_format: { type: 'json_object' } }
+              : {}),
+            ...(options.maxTokens === undefined ? {} : { max_tokens: options.maxTokens }),
+          }),
+        });
+        if (!res.ok) throw createAIHttpError('Qwen', res.status, await res.text(), this.model);
 
-      let data: {
-        choices?: Array<{
-          text?: unknown;
-          message?: { content?: unknown; reasoning_content?: unknown; reasoning?: unknown };
-        }>;
-        output_text?: unknown;
-        output?: unknown;
-        usage?: {
-          prompt_tokens?: unknown;
-          completion_tokens?: unknown;
-          input_tokens?: unknown;
-          output_tokens?: unknown;
-          prompt_tokens_details?: { cached_tokens?: unknown };
-          input_tokens_details?: { cached_tokens?: unknown };
+        let data: {
+          choices?: Array<{
+            text?: unknown;
+            message?: { content?: unknown; reasoning_content?: unknown; reasoning?: unknown };
+          }>;
+          output_text?: unknown;
+          output?: unknown;
+          usage?: {
+            prompt_tokens?: unknown;
+            completion_tokens?: unknown;
+            input_tokens?: unknown;
+            output_tokens?: unknown;
+            prompt_tokens_details?: { cached_tokens?: unknown };
+            input_tokens_details?: { cached_tokens?: unknown };
+          };
         };
-      };
-      try {
-        data = await res.json() as typeof data;
-      } catch (error) {
-        throw createAIResponseError('Qwen', 'Qwen returned an invalid JSON envelope', this.model, error, 'invalid_envelope');
-      }
-      const usage = data.usage;
-      if (usage) {
-        const inputTokens = Number(usage.input_tokens ?? usage.prompt_tokens);
-        const outputTokens = Number(usage.output_tokens ?? usage.completion_tokens);
-        const cachedInputTokens = Number(
-          usage.input_tokens_details?.cached_tokens ?? usage.prompt_tokens_details?.cached_tokens,
-        );
-        this.lastUsage = {
-          inputTokens: Number.isFinite(inputTokens) && inputTokens >= 0 ? inputTokens : 0,
-          outputTokens: Number.isFinite(outputTokens) && outputTokens >= 0 ? outputTokens : 0,
-          ...(Number.isFinite(cachedInputTokens) && cachedInputTokens >= 0 ? { cachedInputTokens } : {}),
-        };
-      }
-      const choice = data.choices?.[0];
-      const message = choice?.message;
-      const candidates = [
-        message?.content,
-        message?.reasoning_content,
-        message?.reasoning,
-        choice?.text,
-        data.output_text,
-        data.output,
-      ];
-      const rawContent = candidates.find((candidate) => {
-        if (candidate === undefined || candidate === null) return false;
-        return typeof candidate !== 'string' || candidate.trim().length > 0;
+        try {
+          data = await res.json() as typeof data;
+        } catch (error) {
+          throw createAIResponseError('Qwen', 'Qwen returned an invalid JSON envelope', this.model, error, 'invalid_envelope');
+        }
+        control.check();
+        const usage = data.usage;
+        if (usage) {
+          const inputTokens = Number(usage.input_tokens ?? usage.prompt_tokens);
+          const outputTokens = Number(usage.output_tokens ?? usage.completion_tokens);
+          const cachedInputTokens = Number(
+            usage.input_tokens_details?.cached_tokens ?? usage.prompt_tokens_details?.cached_tokens,
+          );
+          this.lastUsage = {
+            inputTokens: Number.isFinite(inputTokens) && inputTokens >= 0 ? inputTokens : 0,
+            outputTokens: Number.isFinite(outputTokens) && outputTokens >= 0 ? outputTokens : 0,
+            ...(Number.isFinite(cachedInputTokens) && cachedInputTokens >= 0 ? { cachedInputTokens } : {}),
+          };
+        }
+        const choice = data.choices?.[0];
+        const message = choice?.message;
+        const candidates = [
+          message?.content,
+          message?.reasoning_content,
+          message?.reasoning,
+          choice?.text,
+          data.output_text,
+          data.output,
+        ];
+        const rawContent = candidates.find((candidate) => {
+          if (candidate === undefined || candidate === null) return false;
+          return typeof candidate !== 'string' || candidate.trim().length > 0;
+        });
+        if (rawContent === undefined) {
+          throw createAIResponseError('Qwen', 'Qwen returned empty response', this.model, undefined, 'empty_content');
+        }
+        control.check();
+        return rawContent;
       });
-      if (rawContent === undefined) {
-        throw createAIResponseError('Qwen', 'Qwen returned empty response', this.model, undefined, 'empty_content');
-      }
-      return rawContent;
     } catch (error) {
+      try {
+        control.check();
+      } catch (stopped) {
+        if (!options.signal?.aborted && Date.now() >= providerDeadlineAt
+            && (options.deadlineAt === undefined || providerDeadlineAt < options.deadlineAt)) {
+          throw createAITimeoutError('Qwen', this.requestTimeoutMs, this.model);
+        }
+        throw stopped;
+      }
       if (error instanceof Error && error.name === 'AbortError') {
         throw createAITimeoutError('Qwen', this.requestTimeoutMs, this.model, error);
       }
@@ -477,10 +492,12 @@ Bỏ qua dòng không phải thực phẩm và không tự bịa sản phẩm kh
       throw createAINetworkError('Qwen', error, this.model);
     } finally {
       clearTimeout(timeout);
+      control.signal.removeEventListener('abort', onCallerAbort);
+      control.dispose();
     }
   }
 
-  private async completeVision(prompt: string, params: VisionScanParams, maxTokens: number, temperature?: number): Promise<unknown> {
+  private async completeVision(prompt: string, params: VisionScanParams, options: TaskProviderCallOptions): Promise<unknown> {
     const rawContent = await this.complete([
       {
         role: 'user',
@@ -489,7 +506,7 @@ Bỏ qua dòng không phải thực phẩm và không tự bịa sản phẩm kh
           { type: 'image_url', image_url: { url: imageUrl(params) } },
         ],
       },
-    ], { maxTokens, jsonMode: true, temperature: temperature ?? 0.1 });
+    ], { ...options, jsonMode: true, temperature: options.temperature ?? 0.1 });
     const parsed = parseJsonValue(contentText(rawContent) || rawContent);
     if (parsed === null || parsed === undefined) {
       throw createAIResponseError('Qwen', 'Qwen returned empty or non-JSON response', this.model, undefined, 'unparseable_content');
@@ -518,7 +535,7 @@ Trả về JSON object duy nhất: {"ranked_titles":["Tên món 1","Tên món 2"
 
     const rawContent = await this.complete([
       { role: 'user', content: prompt },
-    ], { maxTokens: options.maxTokens ?? 1_024, jsonMode: true, temperature: options.temperature ?? 0.2 });
+    ], { ...options, maxTokens: options.maxTokens ?? 1_024, jsonMode: true, temperature: options.temperature ?? 0.2 });
     const parsed = parseJsonValue(contentText(rawContent) || rawContent);
     const candidates = Array.isArray(parsed)
       ? parsed
@@ -556,6 +573,7 @@ Trả về JSON object duy nhất: {"ranked_titles":["Tên món 1","Tên món 2"
       },
       { role: 'user', content: userContent },
     ], {
+      ...options,
       maxTokens: options.maxTokens ?? 2_048,
       temperature: options.temperature ?? 0.2,
       jsonMode: options.jsonMode ?? false,

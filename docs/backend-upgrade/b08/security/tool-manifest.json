@@ -1,0 +1,110 @@
+{
+  "classification": "PINNED_TOOL_CANDIDATE",
+  "digestAuthority": "Official GitHub release asset SHA256 API and PyPI release SHA256 metadata; no independent signature validation claimed",
+  "schemaVersion": 1,
+  "tools": [
+    {
+      "archives": {
+        "darwin-arm64": {
+          "filename": "gitleaks_8.30.1_darwin_arm64.tar.gz",
+          "officialReleaseApi": "https://api.github.com/repos/gitleaks/gitleaks/releases/tags/v8.30.1",
+          "sha256": "b40ab0ae55c505963e365f271a8d3846efbc170aa17f2607f13df610a9aeb6a5",
+          "url": "https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_darwin_arm64.tar.gz"
+        },
+        "linux-amd64": {
+          "filename": "gitleaks_8.30.1_linux_x64.tar.gz",
+          "officialReleaseApi": "https://api.github.com/repos/gitleaks/gitleaks/releases/tags/v8.30.1",
+          "sha256": "551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb",
+          "url": "https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz"
+        }
+      },
+      "name": "gitleaks",
+      "version": "8.30.1"
+    },
+    {
+      "archives": {
+        "darwin-arm64": {
+          "filename": "syft_1.54.1_darwin_arm64.tar.gz",
+          "officialReleaseApi": "https://api.github.com/repos/anchore/syft/releases/tags/v1.54.1",
+          "sha256": "b4319c3abaa87a0170ab76ee83ea2260ca34b53aecfa3ab0dd5428d2319d744f",
+          "url": "https://github.com/anchore/syft/releases/download/v1.54.1/syft_1.54.1_darwin_arm64.tar.gz"
+        },
+        "linux-amd64": {
+          "filename": "syft_1.54.1_linux_amd64.tar.gz",
+          "officialReleaseApi": "https://api.github.com/repos/anchore/syft/releases/tags/v1.54.1",
+          "sha256": "c069905b391cc4c20a5ba65ad5c10be2a7ba074f8ea6ad203e24d14e303dad47",
+          "url": "https://github.com/anchore/syft/releases/download/v1.54.1/syft_1.54.1_linux_amd64.tar.gz"
+        }
+      },
+      "name": "syft",
+      "version": "1.54.1"
+    },
+    {
+      "archives": {
+        "darwin-arm64": {
+          "filename": "zizmor-aarch64-apple-darwin.tar.gz",
+          "officialReleaseApi": "https://api.github.com/repos/zizmorcore/zizmor/releases/tags/v1.30.1",
+          "sha256": "e28d22b087f9ebb8d99da6e740d348c930f559961c7c3f12badda54f882195a2",
+          "url": "https://github.com/zizmorcore/zizmor/releases/download/v1.30.1/zizmor-aarch64-apple-darwin.tar.gz"
+        },
+        "linux-amd64": {
+          "filename": "zizmor-x86_64-unknown-linux-gnu.tar.gz",
+          "officialReleaseApi": "https://api.github.com/repos/zizmorcore/zizmor/releases/tags/v1.30.1",
+          "sha256": "e65324f4430c2717591937edcec90ccbefaf14c174f8ec9415e03ca875b46e1a",
+          "url": "https://github.com/zizmorcore/zizmor/releases/download/v1.30.1/zizmor-x86_64-unknown-linux-gnu.tar.gz"
+        }
+      },
+      "name": "zizmor",
+      "version": "1.30.1"
+    },
+    {
+      "name": "semgrep",
+      "officialMetadata": "https://pypi.org/pypi/semgrep/1.180.0/json",
+      "releaseFiles": [
+        {
+          "filename": "semgrep-1.180.0-cp310.cp311.cp312.cp313.cp314.py310.py311.py312.py313.py314-none-macosx_10_14_x86_64.whl",
+          "sha256": "f074dcfd6a56095fde32c354af27ef0cce6d15607bef42fa50964dd7042b667d",
+          "url": "https://files.pythonhosted.org/packages/6e/94/8ca81606f09f2c33630409f7e1f2ad89c5841f5da062eec8452cee6d51d7/semgrep-1.180.0-cp310.cp311.cp312.cp313.cp314.py310.py311.py312.py313.py314-none-macosx_10_14_x86_64.whl"
+        },
+        {
+          "filename": "semgrep-1.180.0-cp310.cp311.cp312.cp313.cp314.py310.py311.py312.py313.py314-none-macosx_11_0_arm64.whl",
+          "sha256": "9c61070eaa7de785a8318e1d00de6c9151efa660cc3e58c3e2ffd6f5e6180af7",
+          "url": "https://files.pythonhosted.org/packages/c1/a1/e29003080506e7666ba8225df63632f1ac6417764d4ee991e5dae04f2c0c/semgrep-1.180.0-cp310.cp311.cp312.cp313.cp314.py310.py311.py312.py313.py314-none-macosx_11_0_arm64.whl"
+        },
+        {
+          "filename": "semgrep-1.180.0-cp310.cp311.cp312.cp313.cp314.py310.py311.py312.py313.py314-none-manylinux_2_34_aarch64.whl",
+          "sha256": "cba06f64b10e5ec86a0b3a9757cfdfdf3ce6c2bbdb5e98762aa2a4b0a296f8ca",
+          "url": "https://files.pythonhosted.org/packages/38/60/66135de6020e792491b0973d95efc89ef729a38c58106394b2798bf58dda/semgrep-1.180.0-cp310.cp311.cp312.cp313.cp314.py310.py311.py312.py313.py314-none-manylinux_2_34_aarch64.whl"
+        },
+        {
+          "filename": "semgrep-1.180.0-cp310.cp311.cp312.cp313.cp314.py310.py311.py312.py313.py314-none-manylinux_2_34_x86_64.whl",
+          "sha256": "16db2e2706ab814a975eeec25debfad49abba846b7c513d88e041447152f8447",
+          "url": "https://files.pythonhosted.org/packages/7c/1f/f4af9cc92651f04ab973eac214a62ed23260da9e0696c105b4b9734da453/semgrep-1.180.0-cp310.cp311.cp312.cp313.cp314.py310.py311.py312.py313.py314-none-manylinux_2_34_x86_64.whl"
+        },
+        {
+          "filename": "semgrep-1.180.0-cp310.cp311.cp312.cp313.cp314.py310.py311.py312.py313.py314-none-musllinux_1_2_aarch64.whl",
+          "sha256": "1bab359e562f0af00217f9f827531c2e1375499b8559c90bed9690007e82565d",
+          "url": "https://files.pythonhosted.org/packages/37/c5/e712830b05b596fee47c4c8e5382c0439c2ac3aa46272f27818479216f38/semgrep-1.180.0-cp310.cp311.cp312.cp313.cp314.py310.py311.py312.py313.py314-none-musllinux_1_2_aarch64.whl"
+        },
+        {
+          "filename": "semgrep-1.180.0-cp310.cp311.cp312.cp313.cp314.py310.py311.py312.py313.py314-none-musllinux_1_2_x86_64.whl",
+          "sha256": "d19b447b5d49c435dda099fd5f9d96ec7822e98a8ea6df16630f4f0596ed27ed",
+          "url": "https://files.pythonhosted.org/packages/a1/40/21fefcbf9fe3d9670e98504f71a0974805812bbb308ddee5a31a7c5ba12b/semgrep-1.180.0-cp310.cp311.cp312.cp313.cp314.py310.py311.py312.py313.py314-none-musllinux_1_2_x86_64.whl"
+        },
+        {
+          "filename": "semgrep-1.180.0-cp310.cp311.cp312.cp313.cp314.py310.py311.py312.py313.py314-none-win_amd64.whl",
+          "sha256": "b403865e64f5ba0691630adf9bc13592cc38830726d4a114960d7e2d3fb21fc6",
+          "url": "https://files.pythonhosted.org/packages/82/75/3e3a75297e8f181e0a32b5691ee55c78a214d4a72a0370841f9c7674a5da/semgrep-1.180.0-cp310.cp311.cp312.cp313.cp314.py310.py311.py312.py313.py314-none-win_amd64.whl"
+        },
+        {
+          "filename": "semgrep-1.180.0.tar.gz",
+          "sha256": "14aee785d0bc9656027a33fca7f97e88e089dbc6c7ed3df47f454b0584b0a3d0",
+          "url": "https://files.pythonhosted.org/packages/76/aa/34eac121a4b1859aae125aa8c997bbec1f00b05d3225ba4becff6d3685a1/semgrep-1.180.0.tar.gz"
+        }
+      ],
+      "requirementLock": "semgrep-requirements.lock",
+      "version": "1.180.0"
+    }
+  ],
+  "verifiedAtUtc": "2026-10-11T11:53:48.766750+00:00"
+}

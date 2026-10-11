@@ -1,6 +1,12 @@
 import { VisionScanResult, ReceiptScanResult } from './schemas';
 import type { AIGovernanceConfig } from './model-governance';
 
+export interface AICallControl {
+  signal?: AbortSignal;
+  /** Absolute epoch milliseconds; the entire operation shares this deadline. */
+  deadlineAt?: number;
+}
+
 export interface VisionScanParams {
   imageBase64OrUrl: string;
   mimeType?: string;

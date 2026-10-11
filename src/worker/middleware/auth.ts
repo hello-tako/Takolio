@@ -54,9 +54,10 @@ export async function authMiddleware(
   const cookieHeader = c.req.header('cookie') || '';
   const cookieToken = cookieHeader.split(';').map((v) => v.trim()).find((v) => v.startsWith(`${SESSION_COOKIE}=`))?.slice(SESSION_COOKIE.length + 1);
   const authHeader = c.req.header('authorization');
+  const hasSessionCookie = cookieToken !== undefined;
 
   const isPublic = PUBLIC_PATHS.some((p) => path.endsWith(p));
-  if (cookieToken && (!isPublic || path.includes('/auth/')) && ['POST', 'PUT', 'PATCH', 'DELETE'].includes(c.req.method)) {
+  if (hasSessionCookie && (!isPublic || path.includes('/auth/')) && ['POST', 'PUT', 'PATCH', 'DELETE'].includes(c.req.method)) {
     if (!hasTrustedOrigin(c)) {
       return c.json({ error: 'Cross-site request blocked', code: 'CSRF_ORIGIN_DENIED' }, 403);
     }
@@ -66,20 +67,30 @@ export async function authMiddleware(
 
   // Cookie-only sessions are authoritative. Bearer JWTs are retained only for
   // guest migration/reset compatibility and are never accepted for normal API access.
-  if (cookieToken && c.env.DB) {
+  if (hasSessionCookie) {
+    c.header('Cache-Control', 'no-store');
+    if (!c.env.DB) return c.json({ error: 'Authentication service unavailable', code: 'AUTH_UNAVAILABLE' }, 503);
     try {
       let tokenValue = '';
-      try { tokenValue = decodeURIComponent(cookieToken); } catch { tokenValue = ''; }
+      try { tokenValue = decodeURIComponent(cookieToken ?? ''); } catch { tokenValue = ''; }
+      if (!tokenValue) return c.json({ error: 'Unauthorized: Missing or invalid authorization token', code: 'UNAUTHORIZED' }, 401);
       const tokenHash = await sha256Hex(tokenValue);
-      const row: any = await c.env.DB.prepare(
-        `SELECT s.id, s.user_id, s.household_id, COALESCE(s.last_seen_at, s.created_at) AS last_seen_at, u.email, u.is_guest, p.display_name
+      const row = await c.env.DB.prepare(
+        `SELECT s.id, s.user_id, s.household_id, COALESCE(s.last_seen_at, s.created_at) AS last_seen_at, u.email, u.is_guest, p.display_name,
+                EXISTS (SELECT 1 FROM household_members hm JOIN households h ON h.id = hm.household_id
+                         WHERE hm.household_id = s.household_id AND hm.user_id = s.user_id
+                           AND (u.is_guest = 0 OR h.created_by = s.user_id)) AS household_authorized
            FROM sessions_v2 s JOIN users u ON u.id = s.user_id
            LEFT JOIN profiles p ON p.user_id = s.user_id
           WHERE s.token_hash = ? AND s.revoked_at IS NULL AND datetime(s.expires_at) > datetime('now') LIMIT 1`
-      ).bind(tokenHash).first();
+      ).bind(tokenHash).first<{ id: string; user_id: string; household_id: string; last_seen_at: string | null;
+        email: string | undefined; is_guest: number; household_authorized: number }>();
       if (row) {
         if (!hasExpectedOwner(c, { userId: row.user_id, householdId: row.household_id })) {
           return c.json({ error: 'Request owner does not match authenticated session', code: 'SESSION_OWNER_MISMATCH' }, 403);
+        }
+        if (row.household_authorized !== 1) {
+          return c.json({ error: 'Forbidden: You do not have permission to access this household data', code: 'TENANCY_VIOLATION' }, 403);
         }
         c.set('auth', { userId: row.user_id, householdId: row.household_id, email: row.email, isGuest: Boolean(row.is_guest), sessionId: row.id });
         const lastSeen = Date.parse(row.last_seen_at?.replace(' ', 'T') + (row.last_seen_at?.endsWith('Z') ? '' : 'Z'));
@@ -90,6 +101,7 @@ export async function authMiddleware(
         }
         return await next();
       }
+      return c.json({ error: 'Unauthorized: Missing or invalid authorization token', code: 'UNAUTHORIZED' }, 401);
     } catch {
       return c.json({ error: 'Authentication service unavailable', code: 'AUTH_UNAVAILABLE' }, 503);
     }
@@ -100,6 +112,9 @@ export async function authMiddleware(
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
     // If public recipe reading, allow guest browsing
     if (c.req.method === 'GET' && path.includes('/recipes')) {
+      if (!hasExpectedOwner(c, { userId: 'guest_anonymous', householdId: 'hh_guest_anonymous' })) {
+        return c.json({ error: 'Request owner does not match authenticated session', code: 'SESSION_OWNER_MISMATCH' }, 403);
+      }
       c.set('auth', {
         userId: 'guest_anonymous',
         householdId: 'hh_guest_anonymous',

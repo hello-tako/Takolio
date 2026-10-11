@@ -1,3 +1,30 @@
+# Backend program aggregate checkpoint - 2026-10-12 JST
+
+**Task/status:** LOCAL_IMPLEMENTATION_COMPLETE_FINAL_GATES_IN_PROGRESS.
+Canonical worktree /Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo,
+branch codex/backend-program-20261011; base1963c469e2e3bd4819cda6bb9ef8162101ad523a.
+Current main read-only rechecked652e0d7632745e9b77cda4b5b3caac83a3ec1015.
+
+**Changes:** B01c current membership/cookie authority; offline ScanV3 contracts,
+scorer/reader fences; provider controls and cancellation; dormant durable AI budget;
+evidence-bound ingredient review/pilot sample; whole-week/closed-loop bug fixes;
+Week typed read extraction/OpenAPI candidate; bounded telemetry/security triage.
+Billing remains design-only; candidate provider/V3 writers/budget/data cutover OFF.
+
+**Checks:** focused209 PASS; frozen install/lint/typecheck/migration smoke PASS;
+isolated D1 exact40/reapply0/pending0/schema[]/FK[]/quick_checkok;
+387 web assets byte-identical under matching independent frozen builds.
+Full frozen tests and committed-source receipt are in progress. Failures and their
+corrections are retained in docs/backend-upgrade/program-20261011/STATUS.md.
+
+**Limits/next:** finish complete local gates and immutable aggregate receipt.
+Real OCR corpus/human data review/inbox/staging/SLO/provider cost/retention evidence
+and protected billing/release tasks remain required. No remote mutation/deploy/
+paid provider/real mail/push/PR/merge or production certificate. Historical source
+checkpoints follow unchanged; the current aggregate status takes precedence.
+
+---
+
 # B01a A2 local checkpoint - 2026-10-11 JST
 
 **Task/status:** B01a_A2_ROUTE_CLIENT_LOCAL_VERIFIED. OTP route/client/cleanup

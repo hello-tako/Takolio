@@ -1,3 +1,25 @@
+# Backend program decisions - 2026-10-12 JST
+
+Accepted for the declared local implementation only. Hosted/data/provider/release
+certification remains separate. Packet ADRs define compatibility and rollback.
+
+- B01c live current membership/cookie authority: [ADR](../backend-upgrade/b01c/ADR-B01c-001.md).
+- B03a offline evaluator and truthful statistical/cost denominators: [ADR](../backend-upgrade/b03a/ADR-B03a-001.md).
+- B03b pure V3/evidence compatibility and disabled writer/readers: [contract](../backend-upgrade/b03b/ADR-B03b-001.md), [reader fence](../backend-upgrade/b03b/ADR-B03b-002.md).
+- B04a governed injected provider, shared deadline/abort/admission hooks: [ADR](../backend-upgrade/b04a/ADR-B04a-001.md).
+- B04b dormant conservative durable budget and terminal cancellation: [budget](../backend-upgrade/b04b/ADR-B04b-001.md), [cancellation](../backend-upgrade/b04b/ADR-B04b-002.md).
+- B05a independent source/evidence proof and no runtime promotion: [ADR](../backend-upgrade/b05a/ADR-B05a-001.md).
+- B06 reproduced cannotBuy/receipt recovery/repeated-line allocation corrections: [ADR](../backend-upgrade/b06/ADR-B06-001.md).
+- B07 exact-compatible Week reads and bounded structural contract: [reads](../backend-upgrade/b07/ADR-B07-001.md), [OpenAPI](../backend-upgrade/b07/ADR-B07-002.md).
+- B08 bounded trusted request telemetry: [ADR](../backend-upgrade/b08/ADR-B08a-001.md).
+
+B02 retention/refund design, real provider bounds/pricing, V3 writer/storage/client,
+IngredientV2 data authority, scanner workflow/toolchain upgrade and numerical SLO
+remain separate reviewed decisions. No existing PayOS/release rule is superseded.
+Historical accepted ADRs follow unchanged.
+
+---
+
 # ADR-B01a-001 - Dormant strict OTP transaction foundation
 
 Status: ACCEPTED_FOR_DORMANT_A1_LOCAL_IMPLEMENTATION, 2026-10-11 JST.

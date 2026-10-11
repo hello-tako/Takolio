@@ -10,6 +10,8 @@ import { GroqProvider, GROQ_DEFAULT_VISION_MODEL } from './providers/groq';
 import { CANONICAL_INGREDIENTS, findCanonicalIngredient, findCanonicalIngredientById } from '@frigo/domain';
 import { AIProviderError, isAIProviderError } from './errors';
 import { applyReceiptScanQualityGate, applyVisionScanQualityGate } from './quality-gate';
+import type { TaskRuntimeOptions } from './task-provider';
+import type { AICallControl } from './types';
 import { QwenTaskRuntime, type AIRuntimeRequest, type AIRuntimeResult } from './task-runtime';
 import { AIUsageLedger, type AIUsageSnapshot } from './telemetry';
 
@@ -68,7 +70,7 @@ export class AIRouter {
   private taskRuntime?: QwenTaskRuntime;
   private readonly usageLedger = new AIUsageLedger();
 
-  constructor(config: AIConfig, onUsageLogged?: (log: AIUsageLog) => void) {
+  constructor(config: AIConfig, onUsageLogged?: (log: AIUsageLog) => void, private readonly runtimeOptions: TaskRuntimeOptions = {}) {
     this.config = config;
     this.onUsageLogged = onUsageLogged;
     this.mockProvider = new MockAIProvider();
@@ -79,7 +81,7 @@ export class AIRouter {
     // migrations, but are never constructed on the Qwen-only path.
     const qwenOnly = config.qwenOnly === true || config.governance?.qwenOnly === true;
     if (!config.aiMockMode && qwenOnly) {
-      this.taskRuntime = new QwenTaskRuntime({ ...config, qwenOnly: true }, (log) => this.logUsage(log));
+      this.taskRuntime = new QwenTaskRuntime({ ...config, qwenOnly: true }, (log) => this.logUsage(log), this.runtimeOptions);
       return;
     }
 
@@ -138,7 +140,7 @@ export class AIRouter {
   /** Task-based entry point. Feature code can use this without selecting a model. */
   async generate<T = unknown>(request: AIRuntimeRequest<T>): Promise<AIRuntimeResult<T>> {
     if (!this.config.aiMockMode) {
-      this.taskRuntime ??= new QwenTaskRuntime({ ...this.config, qwenOnly: true }, (log) => this.logUsage(log));
+      this.taskRuntime ??= new QwenTaskRuntime({ ...this.config, qwenOnly: true }, (log) => this.logUsage(log), this.runtimeOptions);
       return this.taskRuntime.generate(request);
     }
     const startedAt = Date.now();
@@ -166,10 +168,10 @@ export class AIRouter {
     return { value: parsed as T, usage: [log], attempts: 1, logicalModel: 'QWEN_FAST', physicalModel: 'mock' };
   }
 
-  async vision(params: VisionScanParams): Promise<VisionScanResult> {
+  async vision(params: VisionScanParams, control: AICallControl = {}): Promise<VisionScanResult> {
     if (this.taskRuntime) {
       try {
-        const result = await this.taskRuntime.generate<VisionScanResult>({ task: 'fridge_image_analysis', input: params });
+        const result = await this.taskRuntime.generate<VisionScanResult>({ task: 'fridge_image_analysis', input: params, ...control });
         return result.value;
       } catch (error) {
         throw this.normalizeQwenTaskFailure('vision', error);
@@ -275,10 +277,10 @@ export class AIRouter {
     throw aggregateScanFailure('vision', providerFailures);
   }
 
-  async receiptScan(params: VisionScanParams): Promise<import('./schemas').ReceiptScanResult> {
+  async receiptScan(params: VisionScanParams, control: AICallControl = {}): Promise<import('./schemas').ReceiptScanResult> {
     if (this.taskRuntime) {
       try {
-        const result = await this.taskRuntime.generate<import('./schemas').ReceiptScanResult>({ task: 'receipt_ocr', input: params });
+        const result = await this.taskRuntime.generate<import('./schemas').ReceiptScanResult>({ task: 'receipt_ocr', input: params, ...control });
         return result.value;
       } catch (error) {
         throw this.normalizeQwenTaskFailure('receipt', error);

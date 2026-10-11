@@ -1,4 +1,7 @@
 import { AIRouter } from '@frigo/ai';
+import type { AICallControl } from '../../../packages/ai/src/types';
+import type { D1DatabaseBinding } from '../../../packages/db/src';
+import { readScanJobEnvelope } from '../../../packages/ai/src/scan-envelope';
 import { findCanonicalIngredient, findCanonicalIngredientById, StandardUnit } from '@frigo/domain';
 import { Env } from '../types';
 import { sha256Hex } from '../utils/session';
@@ -111,7 +114,7 @@ type ProviderFailureShape = {
 const PERMANENT_SCAN_CODES = new Set([
   'MODEL_NOT_FOUND', 'AUTHENTICATION_FAILED', 'PERMISSION_DENIED', 'LICENSE_REQUIRED',
   'UNSUPPORTED_REQUEST_OPTION', 'INVALID_RESPONSE', 'SCHEMA_VALIDATION',
-  'AI_SCAN_NO_USABLE_ITEMS', 'AI_IMAGE_TOO_LARGE', 'AI_BUDGET_EXCEEDED',
+  'AI_SCAN_NO_USABLE_ITEMS', 'AI_IMAGE_TOO_LARGE', 'AI_BUDGET_EXCEEDED', 'AI_CALL_ABORTED', 'AI_ADMISSION_DENIED', 'SCAN_CANCELLED',
 ]);
 const TRANSIENT_SCAN_CODES = new Set([
   'REQUEST_TIMEOUT', 'AI_SCAN_TIMEOUT', 'NETWORK_ERROR', 'RATE_LIMITED', 'UPSTREAM_ERROR', 'UPSTREAM_BUSY',
@@ -125,6 +128,8 @@ export type ScanFailureClassification = {
 /** Keep provider/database details out of durable queue records and logs. */
 export function sanitizedScanErrorMessage(code: string): string {
   switch (code) {
+    case 'SCAN_CANCELLED':
+      return 'Scan cancelled.';
     case 'AI_SCAN_NO_USABLE_ITEMS':
     case 'INVALID_RESPONSE':
     case 'SCHEMA_VALIDATION':
@@ -171,20 +176,74 @@ function isProviderFailureShape(error: unknown): error is ProviderFailureShape {
   return typeof value.code === 'string' && typeof value.retryable === 'boolean';
 }
 
-async function runScanAI<T>(operation: Promise<T>, timeoutMs = SCAN_AI_TIMEOUT_MS): Promise<T> {
+const activeScanControllers = new WeakMap<D1DatabaseBinding, Map<string, Set<AbortController>>>();
+function registerScanController(db: D1DatabaseBinding, scanId: string, controller: AbortController): () => void {
+  let jobs = activeScanControllers.get(db);
+  if (!jobs) { jobs = new Map(); activeScanControllers.set(db, jobs); }
+  let controllers = jobs.get(scanId);
+  if (!controllers) { controllers = new Set(); jobs.set(scanId, controllers); }
+  controllers.add(controller);
+  return () => { controllers.delete(controller); if (controllers.size === 0) jobs.delete(scanId); };
+}
+
+async function runScanAI<T>(env: Env, message: ScanQueueMessage, operation: (control: AICallControl) => Promise<T>, timeoutMs = SCAN_AI_TIMEOUT_MS): Promise<T> {
+  const controller = new AbortController();
+  const unregister = registerScanController(env.DB, message.scanId, controller);
   let timer: ReturnType<typeof setTimeout> | undefined;
+  let onAbort: () => void = () => undefined;
   try {
-    return await Promise.race([
-      operation,
-      new Promise<never>((_, reject) => {
-        timer = setTimeout(() => {
-          reject(new ScanQueueError(`AI scan timed out after ${timeoutMs}ms`, 'REQUEST_TIMEOUT', true));
-        }, timeoutMs);
-      }),
-    ]);
+    const stopped = new Promise<never>((_, reject) => {
+      onAbort = () => reject(new ScanQueueError('Scan processing stopped', 'AI_CALL_ABORTED', false));
+      controller.signal.addEventListener('abort', onAbort, { once: true });
+      timer = setTimeout(() => {
+        reject(new ScanQueueError('Scan deadline exceeded', 'REQUEST_TIMEOUT', true));
+        controller.abort();
+      }, timeoutMs);
+    });
+    return await Promise.race([operation({ signal: controller.signal, deadlineAt: Date.now() + timeoutMs }), stopped]);
   } finally {
     if (timer !== undefined) clearTimeout(timer);
+    controller.signal.removeEventListener('abort', onAbort);
+    unregister();
   }
+}
+
+/** Terminal cancellation is one atomic fenced update, with no stock writes. */
+export async function cancelQueuedScan(env: Env, scanId: string, householdId: string): Promise<'cancelled' | 'missing' | 'conflict'> {
+  const db = env.DB;
+  const scan = await db.prepare('SELECT id, user_id, status FROM scans WHERE id = ? AND household_id = ?')
+    .bind(scanId, householdId).first<{ id: string; user_id: string; status: string }>();
+  if (!scan) return 'missing';
+  const cancelled = async () => {
+    const row = await db.prepare(`SELECT id FROM scan_queue_jobs WHERE scan_id = ? AND household_id = ?
+      AND status = 'failed' AND error_code = 'SCAN_CANCELLED'`).bind(scanId, householdId).first();
+    return Boolean(row);
+  };
+  if (scan.status === 'failed' && await cancelled()) return 'cancelled';
+  if (!['pending', 'processing'].includes(scan.status)) return 'conflict';
+  const token = newClaimToken();
+  const guard = `EXISTS (SELECT 1 FROM scan_queue_jobs WHERE scan_id = ? AND household_id = ?
+    AND status = 'failed' AND claim_token = ? AND error_code = 'SCAN_CANCELLED')`;
+  try {
+    const results = await db.batch([
+      db.prepare(`UPDATE scan_queue_jobs SET status = 'failed', claim_token = ?, error_code = 'SCAN_CANCELLED',
+        error_message = 'Scan cancelled.', completed_at = datetime('now'), updated_at = datetime('now')
+        WHERE scan_id = ? AND household_id = ? AND user_id = ? AND status IN ('pending', 'processing')
+        AND EXISTS (SELECT 1 FROM scans WHERE id = ? AND household_id = ? AND status IN ('pending', 'processing'))`)
+        .bind(token, scanId, householdId, scan.user_id, scanId, householdId),
+      db.prepare(`UPDATE scans SET status = 'failed', updated_at = datetime('now')
+        WHERE id = ? AND household_id = ? AND status IN ('pending', 'processing') AND ${guard}`)
+        .bind(scanId, householdId, scanId, householdId, token),
+      ...queueQuotaSettlementStatements(db, scanId, scan.user_id, householdId, guard, [scanId, householdId, token], 'released'),
+    ]);
+    if (results.some((result) => !result.success)) throw new Error('SCAN_CANCEL_UNAVAILABLE');
+  } catch (error) {
+    // D1 may have committed before the response disappeared; inspect the tombstone.
+    if (!(await cancelled())) throw error;
+  }
+  if (!(await cancelled())) return 'conflict';
+  for (const controller of activeScanControllers.get(db)?.get(scanId) ?? []) controller.abort();
+  return 'cancelled';
 }
 
 /**
@@ -243,7 +302,11 @@ function parseMessage(body: unknown): ScanQueueMessage {
   if (value.scanType && value.scanType !== 'fridge' && value.scanType !== 'food' && value.scanType !== 'receipt') {
     throw new ScanQueueError('Unsupported scan type', 'INVALID_MESSAGE', false);
   }
-  return value as ScanQueueMessage;
+  const read = readScanJobEnvelope(body);
+  if (!read.ok || read.envelope.version !== 1) {
+    throw new ScanQueueError('Queue contract is unsupported or invalid', read.ok ? 'UNSUPPORTED_MESSAGE' : read.code, false);
+  }
+  return read.envelope.message as ScanQueueMessage;
 }
 
 function toBase64(bytes: Uint8Array): string {
@@ -278,8 +341,18 @@ async function verifyScanRequestIdentity(
   }
 }
 
-function getRouter(env: Env): AIRouter {
-  return new AIRouter(aiConfigFromEnv(env), logAIUsage);
+async function assertScanClaim(env: Env, message: ScanQueueMessage, jobId: string, claimToken: string): Promise<void> {
+  const current = await env.DB.prepare(`SELECT id FROM scan_queue_jobs WHERE id = ? AND scan_id = ?
+    AND user_id = ? AND household_id = ? AND status = 'processing' AND claim_token = ?
+    AND datetime(locked_at) > datetime('now', '-10 minutes')
+    AND EXISTS (SELECT 1 FROM scans WHERE id = ? AND status = 'processing')`)
+    .bind(jobId, message.scanId, message.userId, message.householdId, claimToken, message.scanId).first();
+  if (!current) throw new ScanQueueError('Scan lease is no longer owned', 'CLAIM_LOST', false);
+}
+function getRouter(env: Env, message: ScanQueueMessage, jobId: string, claimToken: string): AIRouter {
+  return new AIRouter(aiConfigFromEnv(env), logAIUsage, {
+    beforeCall: () => assertScanClaim(env, message, jobId, claimToken),
+  });
 }
 
 async function loadImage(env: Env, message: ScanQueueMessage): Promise<{ data: string; mimeType: string }> {
@@ -452,11 +525,12 @@ export async function processScanJob(env: Env, messageBody: unknown): Promise<vo
   try {
     const image = await loadImage(env, message);
     await verifyScanRequestIdentity(env, message, image);
-    const router = getRouter(env);
+    await assertScanClaim(env, message, jobId, claimToken);
+    const router = getRouter(env, message, jobId, claimToken);
     const scanType = message.scanType || 'fridge';
     const fence = commitFence(env, message, jobId, claimToken);
     if (scanType === 'receipt') {
-      const receipt = await runScanAI(router.receiptScan({ imageBase64OrUrl: image.data, mimeType: image.mimeType }));
+      const receipt = await runScanAI(env, message, (control) => router.receiptScan({ imageBase64OrUrl: image.data, mimeType: image.mimeType }, control));
       const statements = receipt.items.map((item, index) => {
         const canonical = findCanonicalIngredient(item.raw_name);
         const providerCanonical = item.canonical_id ? findCanonicalIngredientById(item.canonical_id) : null;
@@ -511,10 +585,10 @@ export async function processScanJob(env: Env, messageBody: unknown): Promise<vo
       const commitResults = await env.DB.batch(commitStatements);
       assertFencedCommit(commitResults);
     } else {
-      const result = await runScanAI(router.vision({
+      const result = await runScanAI(env, message, (control) => router.vision({
         imageBase64OrUrl: image.data,
         mimeType: image.mimeType,
-      }));
+      }, control));
       const statements = result.items.map((item, index) => {
         const canonical = findCanonicalIngredient(item.raw_name);
         const providerCanonical = item.canonical_id
@@ -571,7 +645,14 @@ export async function processScanJob(env: Env, messageBody: unknown): Promise<vo
     const attemptsRow = await env.DB.prepare(
       `SELECT attempts, max_attempts FROM scan_queue_jobs WHERE id = ? AND status = 'processing' AND claim_token = ?`,
     ).bind(jobId, claimToken).first<{ attempts: number; max_attempts: number }>();
-    if (!attemptsRow) throw new ScanQueueError('Scan job claim is no longer owned', 'CLAIM_LOST', true);
+    if (!attemptsRow) {
+      const terminal = await env.DB.prepare(`SELECT id FROM scan_queue_jobs WHERE id = ? AND scan_id = ?
+        AND household_id = ? AND user_id = ? AND status = 'failed' AND error_code = 'SCAN_CANCELLED'
+        AND EXISTS (SELECT 1 FROM scans WHERE id = ? AND status = 'failed')`)
+        .bind(jobId, message.scanId, message.householdId, message.userId, message.scanId).first();
+      if (terminal) return;
+      throw new ScanQueueError('Scan job claim is no longer owned', 'CLAIM_LOST', true);
+    }
     const retryable = requestedRetry && attemptsRow.attempts < attemptsRow.max_attempts;
     const fence = commitFence(env, message, jobId, claimToken);
     const failureResults = await env.DB.batch([
