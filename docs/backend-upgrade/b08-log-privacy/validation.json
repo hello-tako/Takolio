@@ -1,0 +1,940 @@
+{
+  "attachments": [
+    {
+      "bytes": 56595,
+      "path": "docs/backend-upgrade/b08-log-privacy/attachments/independent-producer-inventory.json",
+      "sha256": "108da7053e15aaec1d003e245702facb40cd3e2c61b8cc0f61b2f64678b2cdd1"
+    },
+    {
+      "bytes": 2683,
+      "path": "docs/backend-upgrade/b08-log-privacy/attachments/scanner-implementation-receipt.json",
+      "sha256": "b54b77e6bfa9e765541d0818762d0a2f9f231c747b45c75fd331dfd144103269"
+    },
+    {
+      "bytes": 6732,
+      "path": "docs/backend-upgrade/b08-log-privacy/attachments/scanner-implementation-reconciliation.json",
+      "sha256": "1bcd3130ba71a460515b6710cfa770d3ac0fc75d8b24ac30cbc8b025fce1bec8"
+    },
+    {
+      "bytes": 645,
+      "path": "docs/backend-upgrade/b08-log-privacy/attachments/reconciliation-attempt-1.json",
+      "sha256": "cd18318a05566f5bb0d15d9b20abe8bea8aa75eb21329a693ad6c793238f3520"
+    },
+    {
+      "bytes": 698,
+      "path": "docs/backend-upgrade/b08-log-privacy/attachments/parent-committed-packet-verification.json",
+      "sha256": "c8de3b5ba463437db7fa6bf22a092e4726da764778403a58ff0d1a29e3fdcbc0"
+    },
+    {
+      "bytes": 12197,
+      "path": "docs/backend-upgrade/b08-log-privacy/attachments/parent-documentation-scan-reconciliation.json",
+      "sha256": "9db132452b79befd48183ff20e15b9fc69ae0cb9edb77afbb7510f6a82d8466f"
+    },
+    {
+      "bytes": 1308,
+      "path": "docs/backend-upgrade/b08-log-privacy/attachments/source-review-binding.json",
+      "sha256": "8b8eb24f296168ac69c7c93b949722133dca7329c6a3514800233091e568e91c"
+    },
+    {
+      "bytes": 423,
+      "path": "docs/backend-upgrade/b08-log-privacy/attachments/css-protected-surface.json",
+      "sha256": "249df7ced8dbeff61a7b42ccd1bf08990ff08ab88776966027786aedce36de9a"
+    },
+    {
+      "bytes": 9211,
+      "path": "docs/backend-upgrade/b08-log-privacy/attachments/privacy-export-final.json",
+      "sha256": "3932c0099968a1ce0d68a50e6debf71d2ea4bb9bb84899db4f686da0f6288645"
+    }
+  ],
+  "audit": {
+    "full": {
+      "critical": 0,
+      "high": 1,
+      "info": 0,
+      "low": 0,
+      "moderate": 0
+    },
+    "production": {
+      "critical": 0,
+      "high": 0,
+      "info": 0,
+      "low": 0,
+      "moderate": 0
+    }
+  },
+  "baseSha": "efffb4f84b52eb42979c69547b6bd7263963099a",
+  "branch": "codex/backend-b08-log-privacy",
+  "commands": [
+    {
+      "buildCommit": null,
+      "command": [
+        "pnpm",
+        "audit",
+        "--json"
+      ],
+      "durationSeconds": 0.757,
+      "environment": {
+        "CI": "true",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "TMPDIR": "/private/tmp",
+        "WRANGLER_SEND_METRICS": "false"
+      },
+      "exitCode": 1,
+      "logPath": ".artifacts/backend-b08-log-privacy/b08-log-final-audit-full.log",
+      "logSha256": "c18fedca4f85bab360b319edb18a74f3bd4cbd5796b39874d7d66fd31a06065a",
+      "name": "b08-log-final-audit-full",
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset",
+      "sourceAfter": {
+        "headSha": "41da180a941b348c6385895628b2bdd61b666763",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "status": "",
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo"
+      },
+      "sourceBefore": {
+        "headSha": "41da180a941b348c6385895628b2bdd61b666763",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "status": "",
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo"
+      },
+      "startedAtUtc": "2026-10-11T23:07:26.875920+00:00",
+      "status": "FAIL"
+    },
+    {
+      "buildCommit": null,
+      "command": [
+        "pnpm",
+        "audit",
+        "--prod",
+        "--json"
+      ],
+      "durationSeconds": 0.564,
+      "environment": {
+        "CI": "true",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "TMPDIR": "/private/tmp",
+        "WRANGLER_SEND_METRICS": "false"
+      },
+      "exitCode": 0,
+      "logPath": ".artifacts/backend-b08-log-privacy/b08-log-final-audit-prod.log",
+      "logSha256": "89afa98eb2f105e15a07f3557cf2dccadd21175473f32e8671ba497c17d98c22",
+      "name": "b08-log-final-audit-prod",
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset",
+      "sourceAfter": {
+        "headSha": "41da180a941b348c6385895628b2bdd61b666763",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "status": "",
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo"
+      },
+      "sourceBefore": {
+        "headSha": "41da180a941b348c6385895628b2bdd61b666763",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "status": "",
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo"
+      },
+      "startedAtUtc": "2026-10-11T23:07:27.790933+00:00",
+      "status": "PASS"
+    },
+    {
+      "buildCommit": "41da180a941b348c6385895628b2bdd61b666763",
+      "command": [
+        "pnpm",
+        "build"
+      ],
+      "durationSeconds": 7.953,
+      "environment": {
+        "CI": "true",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "TMPDIR": "/private/tmp",
+        "WRANGLER_SEND_METRICS": "false"
+      },
+      "exitCode": 0,
+      "logPath": ".artifacts/backend-b08-log-privacy/b08-log-final-build.log",
+      "logSha256": "ecf9132ec8c1354899b95be3f749ec39c7b0839c7c47f851753208e8e6613c43",
+      "name": "b08-log-final-build",
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset",
+      "sourceAfter": {
+        "headSha": "41da180a941b348c6385895628b2bdd61b666763",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "status": "",
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo"
+      },
+      "sourceBefore": {
+        "headSha": "41da180a941b348c6385895628b2bdd61b666763",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "status": "",
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo"
+      },
+      "startedAtUtc": "2026-10-11T23:07:24.972328+00:00",
+      "status": "PASS"
+    },
+    {
+      "buildCommit": null,
+      "command": [
+        "pnpm",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "durationSeconds": 0.623,
+      "environment": {
+        "CI": "true",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "TMPDIR": "/private/tmp",
+        "WRANGLER_SEND_METRICS": "false"
+      },
+      "exitCode": 0,
+      "logPath": ".artifacts/backend-b08-log-privacy/b08-log-final-frozen-install.log",
+      "logSha256": "ae7de9f5b029ed01d2e47366e45ada90b84dc85e81db4758cee6a5939c86e56b",
+      "name": "b08-log-final-frozen-install",
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset",
+      "sourceAfter": {
+        "headSha": "41da180a941b348c6385895628b2bdd61b666763",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "status": "",
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo"
+      },
+      "sourceBefore": {
+        "headSha": "41da180a941b348c6385895628b2bdd61b666763",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "status": "",
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo"
+      },
+      "startedAtUtc": "2026-10-11T23:07:01.795435+00:00",
+      "status": "PASS"
+    },
+    {
+      "buildCommit": null,
+      "command": [
+        "pnpm",
+        "test"
+      ],
+      "durationSeconds": 134.956,
+      "environment": {
+        "CI": "true",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "TMPDIR": "/private/tmp",
+        "WRANGLER_SEND_METRICS": "false"
+      },
+      "exitCode": 0,
+      "logPath": ".artifacts/backend-b08-log-privacy/b08-log-final-full-tests.log",
+      "logSha256": "98f1a80d793cc70ccd0f7f404753a7aad4949ee584e8c6bd8956e08a26cc9d26",
+      "name": "b08-log-final-full-tests",
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset",
+      "sourceAfter": {
+        "headSha": "41da180a941b348c6385895628b2bdd61b666763",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "status": "",
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo"
+      },
+      "sourceBefore": {
+        "headSha": "41da180a941b348c6385895628b2bdd61b666763",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "status": "",
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo"
+      },
+      "startedAtUtc": "2026-10-11T20:04:45.297297+00:00",
+      "status": "PASS"
+    },
+    {
+      "buildCommit": null,
+      "command": [
+        "pnpm",
+        "lint"
+      ],
+      "durationSeconds": 6.877,
+      "environment": {
+        "CI": "true",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "TMPDIR": "/private/tmp",
+        "WRANGLER_SEND_METRICS": "false"
+      },
+      "exitCode": 0,
+      "logPath": ".artifacts/backend-b08-log-privacy/b08-log-final-lint.log",
+      "logSha256": "25cc1f9634027c24c62f4029a44f00fc3a7e082ac28576c6fc5a3db3e0961f73",
+      "name": "b08-log-final-lint",
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset",
+      "sourceAfter": {
+        "headSha": "41da180a941b348c6385895628b2bdd61b666763",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "status": "",
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo"
+      },
+      "sourceBefore": {
+        "headSha": "41da180a941b348c6385895628b2bdd61b666763",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "status": "",
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo"
+      },
+      "startedAtUtc": "2026-10-11T23:07:02.553723+00:00",
+      "status": "PASS"
+    },
+    {
+      "buildCommit": null,
+      "command": [
+        "pnpm",
+        "check:migrations"
+      ],
+      "durationSeconds": 0.464,
+      "environment": {
+        "CI": "true",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "TMPDIR": "/private/tmp",
+        "WRANGLER_SEND_METRICS": "false"
+      },
+      "exitCode": 0,
+      "logPath": ".artifacts/backend-b08-log-privacy/b08-log-final-migrations.log",
+      "logSha256": "965811c75cef6d8d7db8527ffaf3ec59c52869fe5cb575a1261bc3b793191de5",
+      "name": "b08-log-final-migrations",
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset",
+      "sourceAfter": {
+        "headSha": "41da180a941b348c6385895628b2bdd61b666763",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "status": "",
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo"
+      },
+      "sourceBefore": {
+        "headSha": "41da180a941b348c6385895628b2bdd61b666763",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "status": "",
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo"
+      },
+      "startedAtUtc": "2026-10-11T23:07:24.377230+00:00",
+      "status": "PASS"
+    },
+    {
+      "buildCommit": null,
+      "command": [
+        "/opt/homebrew/bin/python3.12",
+        "-B",
+        "docs/backend-upgrade/b08/security/runner.py",
+        "scan",
+        "--tools-dir",
+        ".artifacts/backend-program-20261011/b08-security-downloads",
+        "--output-dir",
+        ".artifacts/backend-b08-log-privacy/scanner-implementation"
+      ],
+      "durationSeconds": 115.802,
+      "environment": {
+        "CI": "true",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "TMPDIR": "/private/tmp",
+        "WRANGLER_SEND_METRICS": "false"
+      },
+      "exitCode": 1,
+      "logPath": ".artifacts/backend-b08-log-privacy/b08-log-final-scanner.log",
+      "logSha256": "6dab8ae90307876f0d5d991a3338375803444244aa76044c8a27196af8c1c7fc",
+      "name": "b08-log-final-scanner",
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset",
+      "sourceAfter": {
+        "headSha": "41da180a941b348c6385895628b2bdd61b666763",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "status": "",
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo"
+      },
+      "sourceBefore": {
+        "headSha": "41da180a941b348c6385895628b2bdd61b666763",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "status": "",
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo"
+      },
+      "startedAtUtc": "2026-10-11T23:06:37.056136+00:00",
+      "status": "FAIL"
+    },
+    {
+      "buildCommit": null,
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "durationSeconds": 14.653,
+      "environment": {
+        "CI": "true",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "TMPDIR": "/private/tmp",
+        "WRANGLER_SEND_METRICS": "false"
+      },
+      "exitCode": 0,
+      "logPath": ".artifacts/backend-b08-log-privacy/b08-log-final-typecheck.log",
+      "logSha256": "a3a28a25c9246fe7e8bbf5999692dc60347e343a2415f8cefcb7e767e0e6a0d6",
+      "name": "b08-log-final-typecheck",
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset",
+      "sourceAfter": {
+        "headSha": "41da180a941b348c6385895628b2bdd61b666763",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "status": "",
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo"
+      },
+      "sourceBefore": {
+        "headSha": "41da180a941b348c6385895628b2bdd61b666763",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "status": "",
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo"
+      },
+      "startedAtUtc": "2026-10-11T23:07:09.568696+00:00",
+      "status": "PASS"
+    },
+    {
+      "buildCommit": null,
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/unit/backend-business-log-privacy.test.ts",
+        "tests/unit/backend-media-log-privacy.test.ts",
+        "tests/unit/cleanup.test.ts",
+        "tests/unit/recipe-catalog-shadow-privacy.test.ts",
+        "tests/unit/recipe-catalog-authority.test.ts",
+        "tests/integration/cleanup-schema.test.ts",
+        "tests/integration/recipe-d1-runtime-parity.test.ts",
+        "tests/integration/recipe-catalog-growth-authority.test.ts",
+        "tests/integration/recipe-media-route.test.ts"
+      ],
+      "durationSeconds": 4.598,
+      "environment": {
+        "CI": "true",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "TMPDIR": "/private/tmp",
+        "WRANGLER_SEND_METRICS": "false"
+      },
+      "exitCode": 0,
+      "logPath": ".artifacts/backend-b08-log-privacy/b08-log-focused-recovery.log",
+      "logSha256": "347dea230572328906a84d94154e82537071054364a4ee451e98ab5d5c962e09",
+      "name": "b08-log-focused-recovery",
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset",
+      "sourceAfter": {
+        "headSha": "efffb4f84b52eb42979c69547b6bd7263963099a",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "status": " M packages/ai/src/providers/cloudflare.ts\n M src/worker/routes/inventory-truth.ts\n M src/worker/routes/inventory.ts\n M src/worker/routes/preferences.ts\n M src/worker/routes/recipes.ts\n M src/worker/routes/scans.ts\n M src/worker/routes/shopping.ts\n M src/worker/routes/week.ts\n M src/worker/services/cleanup.ts\n M src/worker/services/recipe-catalog-shadow.ts\n M src/worker/services/recipe-media.ts\n M tests/unit/cleanup.test.ts\n?? docs/backend-upgrade/b08-log-privacy/\n?? tests/unit/backend-business-log-privacy.test.ts\n?? tests/unit/backend-media-log-privacy.test.ts\n?? tests/unit/recipe-catalog-shadow-privacy.test.ts\n",
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo"
+      },
+      "sourceBefore": {
+        "headSha": "efffb4f84b52eb42979c69547b6bd7263963099a",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "status": " M packages/ai/src/providers/cloudflare.ts\n M src/worker/routes/inventory-truth.ts\n M src/worker/routes/inventory.ts\n M src/worker/routes/preferences.ts\n M src/worker/routes/recipes.ts\n M src/worker/routes/scans.ts\n M src/worker/routes/shopping.ts\n M src/worker/routes/week.ts\n M src/worker/services/cleanup.ts\n M src/worker/services/recipe-catalog-shadow.ts\n M src/worker/services/recipe-media.ts\n M tests/unit/cleanup.test.ts\n?? docs/backend-upgrade/b08-log-privacy/\n?? tests/unit/backend-business-log-privacy.test.ts\n?? tests/unit/backend-media-log-privacy.test.ts\n?? tests/unit/recipe-catalog-shadow-privacy.test.ts\n",
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo"
+      },
+      "startedAtUtc": "2026-10-11T20:02:48.243582+00:00",
+      "status": "PASS"
+    },
+    {
+      "buildCommit": null,
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/unit/backend-business-log-privacy.test.ts",
+        "tests/unit/backend-media-log-privacy.test.ts",
+        "tests/unit/cleanup.test.ts",
+        "tests/unit/recipe-catalog-shadow-privacy.test.ts",
+        "tests/unit/recipe-catalog-authority.test.ts",
+        "tests/integration/cleanup-schema.test.ts",
+        "tests/integration/recipe-d1-runtime-parity.test.ts",
+        "tests/integration/recipe-catalog-growth-authority.test.ts",
+        "tests/integration/recipe-media-route.test.ts"
+      ],
+      "durationSeconds": 5.353,
+      "environment": {
+        "CI": "true",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "TMPDIR": "/private/tmp",
+        "WRANGLER_SEND_METRICS": "false"
+      },
+      "exitCode": 0,
+      "logPath": ".artifacts/backend-b08-log-privacy/b08-log-focused.log",
+      "logSha256": "40453059415927e3c979765363aa50adb29c3bc6ae3d41ff0700eb3080eb093e",
+      "name": "b08-log-focused",
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset",
+      "sourceAfter": {
+        "headSha": "efffb4f84b52eb42979c69547b6bd7263963099a",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "status": " M packages/ai/src/providers/cloudflare.ts\n M src/worker/routes/inventory-truth.ts\n M src/worker/routes/inventory.ts\n M src/worker/routes/preferences.ts\n M src/worker/routes/recipes.ts\n M src/worker/routes/scans.ts\n M src/worker/routes/shopping.ts\n M src/worker/routes/week.ts\n M src/worker/services/cleanup.ts\n M src/worker/services/recipe-catalog-shadow.ts\n M src/worker/services/recipe-media.ts\n M tests/unit/cleanup.test.ts\n?? docs/backend-upgrade/b08-log-privacy/\n?? tests/unit/backend-business-log-privacy.test.ts\n?? tests/unit/backend-media-log-privacy.test.ts\n?? tests/unit/recipe-catalog-shadow-privacy.test.ts\n",
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo"
+      },
+      "sourceBefore": {
+        "headSha": "efffb4f84b52eb42979c69547b6bd7263963099a",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "status": " M packages/ai/src/providers/cloudflare.ts\n M src/worker/routes/inventory-truth.ts\n M src/worker/routes/inventory.ts\n M src/worker/routes/preferences.ts\n M src/worker/routes/recipes.ts\n M src/worker/routes/scans.ts\n M src/worker/routes/shopping.ts\n M src/worker/routes/week.ts\n M src/worker/services/cleanup.ts\n M src/worker/services/recipe-catalog-shadow.ts\n M src/worker/services/recipe-media.ts\n M tests/unit/cleanup.test.ts\n?? docs/backend-upgrade/b08-log-privacy/\n?? tests/unit/backend-business-log-privacy.test.ts\n?? tests/unit/backend-media-log-privacy.test.ts\n?? tests/unit/recipe-catalog-shadow-privacy.test.ts\n",
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo"
+      },
+      "startedAtUtc": "2026-10-11T20:01:29.474030+00:00",
+      "status": "PASS"
+    },
+    {
+      "buildCommit": null,
+      "command": [
+        "pnpm",
+        "lint"
+      ],
+      "durationSeconds": 6.54,
+      "environment": {
+        "CI": "true",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "TMPDIR": "/private/tmp",
+        "WRANGLER_SEND_METRICS": "false"
+      },
+      "exitCode": 0,
+      "logPath": ".artifacts/backend-b08-log-privacy/b08-log-precommit-lint.log",
+      "logSha256": "25cc1f9634027c24c62f4029a44f00fc3a7e082ac28576c6fc5a3db3e0961f73",
+      "name": "b08-log-precommit-lint",
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset",
+      "sourceAfter": {
+        "headSha": "efffb4f84b52eb42979c69547b6bd7263963099a",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "status": " M packages/ai/src/providers/cloudflare.ts\n M src/worker/routes/inventory-truth.ts\n M src/worker/routes/inventory.ts\n M src/worker/routes/preferences.ts\n M src/worker/routes/recipes.ts\n M src/worker/routes/scans.ts\n M src/worker/routes/shopping.ts\n M src/worker/routes/week.ts\n M src/worker/services/cleanup.ts\n M src/worker/services/recipe-catalog-shadow.ts\n M src/worker/services/recipe-media.ts\n M tests/unit/cleanup.test.ts\n?? docs/backend-upgrade/b08-log-privacy/\n?? tests/unit/backend-business-log-privacy.test.ts\n?? tests/unit/backend-media-log-privacy.test.ts\n?? tests/unit/recipe-catalog-shadow-privacy.test.ts\n",
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo"
+      },
+      "sourceBefore": {
+        "headSha": "efffb4f84b52eb42979c69547b6bd7263963099a",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "status": " M packages/ai/src/providers/cloudflare.ts\n M src/worker/routes/inventory-truth.ts\n M src/worker/routes/inventory.ts\n M src/worker/routes/preferences.ts\n M src/worker/routes/recipes.ts\n M src/worker/routes/scans.ts\n M src/worker/routes/shopping.ts\n M src/worker/routes/week.ts\n M src/worker/services/cleanup.ts\n M src/worker/services/recipe-catalog-shadow.ts\n M src/worker/services/recipe-media.ts\n M tests/unit/cleanup.test.ts\n?? docs/backend-upgrade/b08-log-privacy/\n?? tests/unit/backend-business-log-privacy.test.ts\n?? tests/unit/backend-media-log-privacy.test.ts\n?? tests/unit/recipe-catalog-shadow-privacy.test.ts\n",
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo"
+      },
+      "startedAtUtc": "2026-10-11T20:01:51.397680+00:00",
+      "status": "PASS"
+    },
+    {
+      "buildCommit": null,
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "durationSeconds": 10.32,
+      "environment": {
+        "CI": "true",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "TMPDIR": "/private/tmp",
+        "WRANGLER_SEND_METRICS": "false"
+      },
+      "exitCode": 2,
+      "logPath": ".artifacts/backend-b08-log-privacy/b08-log-precommit-typecheck.log",
+      "logSha256": "3deb58a0b8f658b10a4126ae8c08aa8831232c54c78f45298ba355caf2648343",
+      "name": "b08-log-precommit-typecheck",
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset",
+      "sourceAfter": {
+        "headSha": "efffb4f84b52eb42979c69547b6bd7263963099a",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "status": " M packages/ai/src/providers/cloudflare.ts\n M src/worker/routes/inventory-truth.ts\n M src/worker/routes/inventory.ts\n M src/worker/routes/preferences.ts\n M src/worker/routes/recipes.ts\n M src/worker/routes/scans.ts\n M src/worker/routes/shopping.ts\n M src/worker/routes/week.ts\n M src/worker/services/cleanup.ts\n M src/worker/services/recipe-catalog-shadow.ts\n M src/worker/services/recipe-media.ts\n M tests/unit/cleanup.test.ts\n?? docs/backend-upgrade/b08-log-privacy/\n?? tests/unit/backend-business-log-privacy.test.ts\n?? tests/unit/backend-media-log-privacy.test.ts\n?? tests/unit/recipe-catalog-shadow-privacy.test.ts\n",
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo"
+      },
+      "sourceBefore": {
+        "headSha": "efffb4f84b52eb42979c69547b6bd7263963099a",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "status": " M packages/ai/src/providers/cloudflare.ts\n M src/worker/routes/inventory-truth.ts\n M src/worker/routes/inventory.ts\n M src/worker/routes/preferences.ts\n M src/worker/routes/recipes.ts\n M src/worker/routes/scans.ts\n M src/worker/routes/shopping.ts\n M src/worker/routes/week.ts\n M src/worker/services/cleanup.ts\n M src/worker/services/recipe-catalog-shadow.ts\n M src/worker/services/recipe-media.ts\n M tests/unit/cleanup.test.ts\n?? docs/backend-upgrade/b08-log-privacy/\n?? tests/unit/backend-business-log-privacy.test.ts\n?? tests/unit/backend-media-log-privacy.test.ts\n?? tests/unit/recipe-catalog-shadow-privacy.test.ts\n",
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo"
+      },
+      "startedAtUtc": "2026-10-11T20:01:52.538900+00:00",
+      "status": "FAIL"
+    },
+    {
+      "buildCommit": null,
+      "command": [
+        "python3",
+        ".artifacts/backend-b08-log-privacy/reconcile_scan.py",
+        ".artifacts/backend-b08-log-privacy/scanner-implementation",
+        "scanner-implementation-reconciliation.json"
+      ],
+      "durationSeconds": 1.761,
+      "environment": {
+        "CI": "true",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "TMPDIR": "/private/tmp",
+        "WRANGLER_SEND_METRICS": "false"
+      },
+      "exitCode": 0,
+      "logPath": ".artifacts/backend-b08-log-privacy/b08-log-scanner-reconciliation.log",
+      "logSha256": "10d6c459ad17de0fa523016d54c4990ace8248521040d50d447a3eb39090a697",
+      "name": "b08-log-scanner-reconciliation",
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset",
+      "sourceAfter": {
+        "headSha": "41da180a941b348c6385895628b2bdd61b666763",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "status": "",
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo"
+      },
+      "sourceBefore": {
+        "headSha": "41da180a941b348c6385895628b2bdd61b666763",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "status": "",
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo"
+      },
+      "startedAtUtc": "2026-10-11T23:09:45.377352+00:00",
+      "status": "PASS"
+    },
+    {
+      "buildCommit": null,
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "durationSeconds": 13.066,
+      "environment": {
+        "CI": "true",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "TMPDIR": "/private/tmp",
+        "WRANGLER_SEND_METRICS": "false"
+      },
+      "exitCode": 0,
+      "logPath": ".artifacts/backend-b08-log-privacy/b08-log-typecheck-recovery.log",
+      "logSha256": "a3a28a25c9246fe7e8bbf5999692dc60347e343a2415f8cefcb7e767e0e6a0d6",
+      "name": "b08-log-typecheck-recovery",
+      "nodePath": "/opt/homebrew/opt/node@24/bin",
+      "remoteFlags": "unset",
+      "sourceAfter": {
+        "headSha": "efffb4f84b52eb42979c69547b6bd7263963099a",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "status": " M packages/ai/src/providers/cloudflare.ts\n M src/worker/routes/inventory-truth.ts\n M src/worker/routes/inventory.ts\n M src/worker/routes/preferences.ts\n M src/worker/routes/recipes.ts\n M src/worker/routes/scans.ts\n M src/worker/routes/shopping.ts\n M src/worker/routes/week.ts\n M src/worker/services/cleanup.ts\n M src/worker/services/recipe-catalog-shadow.ts\n M src/worker/services/recipe-media.ts\n M tests/unit/cleanup.test.ts\n?? docs/backend-upgrade/b08-log-privacy/\n?? tests/unit/backend-business-log-privacy.test.ts\n?? tests/unit/backend-media-log-privacy.test.ts\n?? tests/unit/recipe-catalog-shadow-privacy.test.ts\n",
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo"
+      },
+      "sourceBefore": {
+        "headSha": "efffb4f84b52eb42979c69547b6bd7263963099a",
+        "lockSha256": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+        "packageSha256": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+        "status": " M packages/ai/src/providers/cloudflare.ts\n M src/worker/routes/inventory-truth.ts\n M src/worker/routes/inventory.ts\n M src/worker/routes/preferences.ts\n M src/worker/routes/recipes.ts\n M src/worker/routes/scans.ts\n M src/worker/routes/shopping.ts\n M src/worker/routes/week.ts\n M src/worker/services/cleanup.ts\n M src/worker/services/recipe-catalog-shadow.ts\n M src/worker/services/recipe-media.ts\n M tests/unit/cleanup.test.ts\n?? docs/backend-upgrade/b08-log-privacy/\n?? tests/unit/backend-business-log-privacy.test.ts\n?? tests/unit/backend-media-log-privacy.test.ts\n?? tests/unit/recipe-catalog-shadow-privacy.test.ts\n",
+        "workingDirectory": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo"
+      },
+      "startedAtUtc": "2026-10-11T20:03:46.905868+00:00",
+      "status": "PASS"
+    }
+  ],
+  "databaseState": "40 immutable migrations; local smoke PASS; no remote apply or schema change",
+  "focusedTests": {
+    "files": 9,
+    "status": "PASS",
+    "tests": 132
+  },
+  "fullTests": {
+    "files": 312,
+    "status": "PASS",
+    "tests": 7523
+  },
+  "historicalReceipts": [
+    "efffb4f84b52eb42979c69547b6bd7263963099a",
+    "2c42984b2839d1b03c3b0ccfb89998d3535a48d8"
+  ],
+  "implementationChangedPaths": [
+    "docs/ai/CURRENT_STATE.md",
+    "docs/ai/DECISIONS.md",
+    "docs/ai/HANDOFF.md",
+    "docs/ai/TASK_BOARD.md",
+    "docs/backend-upgrade/IMPLEMENTATION_PLAN.md",
+    "docs/backend-upgrade/b08-log-privacy/ADR-B08-LOG-001.md",
+    "docs/backend-upgrade/b08-log-privacy/PLAN.md",
+    "docs/backend-upgrade/b08-log-privacy/receipt_runner.py",
+    "packages/ai/src/providers/cloudflare.ts",
+    "src/worker/routes/inventory-truth.ts",
+    "src/worker/routes/inventory.ts",
+    "src/worker/routes/preferences.ts",
+    "src/worker/routes/recipes.ts",
+    "src/worker/routes/scans.ts",
+    "src/worker/routes/shopping.ts",
+    "src/worker/routes/week.ts",
+    "src/worker/services/cleanup.ts",
+    "src/worker/services/recipe-catalog-shadow.ts",
+    "src/worker/services/recipe-media.ts",
+    "tests/unit/backend-business-log-privacy.test.ts",
+    "tests/unit/backend-media-log-privacy.test.ts",
+    "tests/unit/cleanup.test.ts",
+    "tests/unit/recipe-catalog-shadow-privacy.test.ts"
+  ],
+  "implementationSha": "41da180a941b348c6385895628b2bdd61b666763",
+  "implementationTree": "9130ab8213aea7d6a244eb910bc5a041444d0c76",
+  "limits": [
+    "Audit/scanner gate failures remain retained.",
+    "Independent source review binds the reviewed source bytes; the final export byte review is executed by root.",
+    "15 receipt-runner command logs preserved; first reconciliation assertion has a separate bounded actual-failure receipt.",
+    "Final documentation SHA scan and postcommit packet check are retained separately in ignored artifacts to avoid recursive receipt mutation."
+  ],
+  "logs": [
+    {
+      "bytes": 931,
+      "path": "docs/backend-upgrade/b08-log-privacy/logs/b08-log-final-audit-full.log.gz",
+      "rawBytes": 2154,
+      "rawPath": ".artifacts/backend-b08-log-privacy/b08-log-final-audit-full.log",
+      "rawSha256": "c18fedca4f85bab360b319edb18a74f3bd4cbd5796b39874d7d66fd31a06065a",
+      "sha256": "fafbc7b70cbc8d3d61801c0434a8e4b040082ef30ec4481ca6abff6fbab34f7e"
+    },
+    {
+      "bytes": 169,
+      "path": "docs/backend-upgrade/b08-log-privacy/logs/b08-log-final-audit-prod.log.gz",
+      "rawBytes": 308,
+      "rawPath": ".artifacts/backend-b08-log-privacy/b08-log-final-audit-prod.log",
+      "rawSha256": "89afa98eb2f105e15a07f3557cf2dccadd21175473f32e8671ba497c17d98c22",
+      "sha256": "19074f855887aadda11e1258d7395611428718dfff4c16fd92b698e962dc2356"
+    },
+    {
+      "bytes": 2102,
+      "path": "docs/backend-upgrade/b08-log-privacy/logs/b08-log-final-build.log.gz",
+      "rawBytes": 7491,
+      "rawPath": ".artifacts/backend-b08-log-privacy/b08-log-final-build.log",
+      "rawSha256": "ecf9132ec8c1354899b95be3f749ec39c7b0839c7c47f851753208e8e6613c43",
+      "sha256": "4da463f93c6eab08cc40c40a7da7e607f3ca286a57cdbffc6c4d551513da7f63"
+    },
+    {
+      "bytes": 111,
+      "path": "docs/backend-upgrade/b08-log-privacy/logs/b08-log-final-frozen-install.log.gz",
+      "rawBytes": 105,
+      "rawPath": ".artifacts/backend-b08-log-privacy/b08-log-final-frozen-install.log",
+      "rawSha256": "ae7de9f5b029ed01d2e47366e45ada90b84dc85e81db4758cee6a5939c86e56b",
+      "sha256": "5c45b77f2c8698afedd822c57e09285be63b1d8add0d1c62b4291599a0333e1d"
+    },
+    {
+      "bytes": 240,
+      "path": "docs/backend-upgrade/b08-log-privacy/logs/b08-log-final-full-tests.log.gz",
+      "rawBytes": 359,
+      "rawPath": ".artifacts/backend-b08-log-privacy/b08-log-final-full-tests.log",
+      "rawSha256": "98f1a80d793cc70ccd0f7f404753a7aad4949ee584e8c6bd8956e08a26cc9d26",
+      "sha256": "211c3487e9509bb7977c2773ec45c1cd45f2d48b7fc3fe31599ff912310ee29e"
+    },
+    {
+      "bytes": 102,
+      "path": "docs/backend-upgrade/b08-log-privacy/logs/b08-log-final-lint.log.gz",
+      "rawBytes": 92,
+      "rawPath": ".artifacts/backend-b08-log-privacy/b08-log-final-lint.log",
+      "rawSha256": "25cc1f9634027c24c62f4029a44f00fc3a7e082ac28576c6fc5a3db3e0961f73",
+      "sha256": "f30fa7ed9c927b041d14636d94e56f553561e7419673bedd310ae4d410bfedda"
+    },
+    {
+      "bytes": 132,
+      "path": "docs/backend-upgrade/b08-log-privacy/logs/b08-log-final-migrations.log.gz",
+      "rawBytes": 146,
+      "rawPath": ".artifacts/backend-b08-log-privacy/b08-log-final-migrations.log",
+      "rawSha256": "965811c75cef6d8d7db8527ffaf3ec59c52869fe5cb575a1261bc3b793191de5",
+      "sha256": "d45694e01d3c87e54e90c9a8b218e9260181b666a7550df4151578acca503d20"
+    },
+    {
+      "bytes": 1259,
+      "path": "docs/backend-upgrade/b08-log-privacy/logs/b08-log-final-scanner.log.gz",
+      "rawBytes": 2307,
+      "rawPath": ".artifacts/backend-b08-log-privacy/b08-log-final-scanner.log",
+      "rawSha256": "6dab8ae90307876f0d5d991a3338375803444244aa76044c8a27196af8c1c7fc",
+      "sha256": "088caf1a5944db6ef4455964c63b8a65dcf2c9d8cdd1b940100181f31c424f82"
+    },
+    {
+      "bytes": 136,
+      "path": "docs/backend-upgrade/b08-log-privacy/logs/b08-log-final-typecheck.log.gz",
+      "rawBytes": 158,
+      "rawPath": ".artifacts/backend-b08-log-privacy/b08-log-final-typecheck.log",
+      "rawSha256": "a3a28a25c9246fe7e8bbf5999692dc60347e343a2415f8cefcb7e767e0e6a0d6",
+      "sha256": "790d24d163b15490f0225e2d5273a3a3ca033f1c15072f1ab806901aa06cb4bc"
+    },
+    {
+      "bytes": 208,
+      "path": "docs/backend-upgrade/b08-log-privacy/logs/b08-log-focused-recovery.log.gz",
+      "rawBytes": 250,
+      "rawPath": ".artifacts/backend-b08-log-privacy/b08-log-focused-recovery.log",
+      "rawSha256": "347dea230572328906a84d94154e82537071054364a4ee451e98ab5d5c962e09",
+      "sha256": "32c0addc587781e4ecb459bfa5011ceb7201f783a7f38e63b096e96b4a527951"
+    },
+    {
+      "bytes": 208,
+      "path": "docs/backend-upgrade/b08-log-privacy/logs/b08-log-focused.log.gz",
+      "rawBytes": 250,
+      "rawPath": ".artifacts/backend-b08-log-privacy/b08-log-focused.log",
+      "rawSha256": "40453059415927e3c979765363aa50adb29c3bc6ae3d41ff0700eb3080eb093e",
+      "sha256": "f9b564a8ac074ee13eb5f12eea4ec212264c7d451d652fd91458d4ccc1ee4b1d"
+    },
+    {
+      "bytes": 102,
+      "path": "docs/backend-upgrade/b08-log-privacy/logs/b08-log-precommit-lint.log.gz",
+      "rawBytes": 92,
+      "rawPath": ".artifacts/backend-b08-log-privacy/b08-log-precommit-lint.log",
+      "rawSha256": "25cc1f9634027c24c62f4029a44f00fc3a7e082ac28576c6fc5a3db3e0961f73",
+      "sha256": "f30fa7ed9c927b041d14636d94e56f553561e7419673bedd310ae4d410bfedda"
+    },
+    {
+      "bytes": 261,
+      "path": "docs/backend-upgrade/b08-log-privacy/logs/b08-log-precommit-typecheck.log.gz",
+      "rawBytes": 324,
+      "rawPath": ".artifacts/backend-b08-log-privacy/b08-log-precommit-typecheck.log",
+      "rawSha256": "3deb58a0b8f658b10a4126ae8c08aa8831232c54c78f45298ba355caf2648343",
+      "sha256": "edfc6a8d8a6d7638a1e11fba6282f7a1a99fff1f4471fc98ccf36d487a41854c"
+    },
+    {
+      "bytes": 236,
+      "path": "docs/backend-upgrade/b08-log-privacy/logs/b08-log-scanner-reconciliation.log.gz",
+      "rawBytes": 292,
+      "rawPath": ".artifacts/backend-b08-log-privacy/b08-log-scanner-reconciliation.log",
+      "rawSha256": "10d6c459ad17de0fa523016d54c4990ace8248521040d50d447a3eb39090a697",
+      "sha256": "fed3481455f338fc24083aba29a23a63283c686fb27a1c1a617b089e21f64def"
+    },
+    {
+      "bytes": 136,
+      "path": "docs/backend-upgrade/b08-log-privacy/logs/b08-log-typecheck-recovery.log.gz",
+      "rawBytes": 158,
+      "rawPath": ".artifacts/backend-b08-log-privacy/b08-log-typecheck-recovery.log",
+      "rawSha256": "a3a28a25c9246fe7e8bbf5999692dc60347e343a2415f8cefcb7e767e0e6a0d6",
+      "sha256": "790d24d163b15490f0225e2d5273a3a3ca033f1c15072f1ab806901aa06cb4bc"
+    }
+  ],
+  "productionCertified": false,
+  "protectedBaseFileCount": 4518,
+  "schemaVersion": 1,
+  "securityCertified": false,
+  "sourceChanges": [
+    {
+      "baseGitBlob": "c6008e4065e2d0c2b3584e3669d6b88330816a13",
+      "bytes": 12095,
+      "gitBlob": "41650b22b6b53f2577709da924e08c7d64618ad6",
+      "mode": "100644",
+      "path": "packages/ai/src/providers/cloudflare.ts",
+      "sha256": "a610335337d4884c5b665b6cdd0f6acafb2ddf495767a2c340fa0d69887941b1"
+    },
+    {
+      "baseGitBlob": "b1f814c0599ff81d8623fa07a83328fa85179c60",
+      "bytes": 14424,
+      "gitBlob": "1d4486d3d2adba5534af51979a6cb2bab82df9e0",
+      "mode": "100644",
+      "path": "src/worker/routes/inventory-truth.ts",
+      "sha256": "7ca91330f8e24a3f0f689d76749e21296c5e4f385c49027e2741885b0de65bcf"
+    },
+    {
+      "baseGitBlob": "2287e7e5c365b613fa85eb73f1689bcc2936432f",
+      "bytes": 49067,
+      "gitBlob": "b8786096de353ecbb3805d8ea7f7196a91829282",
+      "mode": "100644",
+      "path": "src/worker/routes/inventory.ts",
+      "sha256": "674600788b9abcc79d2fa16da4d7bf67344311c2e2a8ad6f9df15b38bd03303c"
+    },
+    {
+      "baseGitBlob": "59c2dc6ac1e1f4090360098c1002f2420abb7774",
+      "bytes": 4704,
+      "gitBlob": "87cbde24b420d5c73deaaf3faf59798cdeca59c7",
+      "mode": "100644",
+      "path": "src/worker/routes/preferences.ts",
+      "sha256": "cbcf9893567892aa96346b0bf47fd09bf84c4bf9e9c2f55c36c6d0781653ca0f"
+    },
+    {
+      "baseGitBlob": "10963e3bff534ee4e1f42314c84cb2e5cfd72559",
+      "bytes": 36464,
+      "gitBlob": "29b6b0714e8cb4004bae47874075bef9c092d377",
+      "mode": "100644",
+      "path": "src/worker/routes/recipes.ts",
+      "sha256": "93943032e78f851a671d99d3017d542ced0929c43a1b1964a6fb07bd1a619fdc"
+    },
+    {
+      "baseGitBlob": "3f549cc06bcc0b3490d1094e0d958cfa5fe15dc2",
+      "bytes": 83106,
+      "gitBlob": "51b1525460aefbf757768ec08c0c2fd28d71c430",
+      "mode": "100644",
+      "path": "src/worker/routes/scans.ts",
+      "sha256": "b8318a4d7a79ccd341a5298f6494dd939a46e9b501bdb5b09f90e2bbf35aa3c8"
+    },
+    {
+      "baseGitBlob": "8b7dbd84c46e2a743267581840491b5d86c77345",
+      "bytes": 9859,
+      "gitBlob": "65c4a0b7e63c692d515bd38e31430dedc0a4eb7f",
+      "mode": "100644",
+      "path": "src/worker/routes/shopping.ts",
+      "sha256": "02c8749217ba58ec0e3318371046a49f583764af2a24a89e91c7f9907e65a9ff"
+    },
+    {
+      "baseGitBlob": "c1b080522c74cfb13d0c2b116b3fff6127609e8f",
+      "bytes": 68455,
+      "gitBlob": "898a457f3723a31d8616ed2f0f074f50415579d1",
+      "mode": "100644",
+      "path": "src/worker/routes/week.ts",
+      "sha256": "de5f42e2f0f3795012618ff66b06a231e9db7f4ff3b3da8ef96b0a4b9794973c"
+    },
+    {
+      "baseGitBlob": "6fe9adc00dd010c3f776ed85f2cff3fbba3d80a6",
+      "bytes": 8378,
+      "gitBlob": "5bdc20e32055730788c8ffc1245453f3bdd470d4",
+      "mode": "100644",
+      "path": "src/worker/services/cleanup.ts",
+      "sha256": "d162c106168284d3484e949cc76313ff6aea5ca62cca3a2bff8a4c51184eab71"
+    },
+    {
+      "baseGitBlob": "7a0b0780d5584279f6d86228d6493ff36d2f7ade",
+      "bytes": 13109,
+      "gitBlob": "c1b4c3b5f81e1499cb98843a6fd0a8e4c807ce18",
+      "mode": "100644",
+      "path": "src/worker/services/recipe-catalog-shadow.ts",
+      "sha256": "f92f9f70aa90be3c84abd5cf41758105da22bd9b904dea847a41048d81cd3385"
+    },
+    {
+      "baseGitBlob": "e35af310d36236816e667fe0d86673fc1def8655",
+      "bytes": 4666,
+      "gitBlob": "4718f49e56937bcea2db3a2a59f04f98a993fa5a",
+      "mode": "100644",
+      "path": "src/worker/services/recipe-media.ts",
+      "sha256": "2e5ce9df618b19e3b6c2d7c30ff0d504e3a1e47295ddc1906ec6058bbf0fa046"
+    },
+    {
+      "baseGitBlob": null,
+      "bytes": 7441,
+      "gitBlob": "288b657b65e13230aacdd260aaae2586d7c68b0e",
+      "mode": "100644",
+      "path": "tests/unit/backend-business-log-privacy.test.ts",
+      "sha256": "2453273a0521e0d18fab2176e8b4ba74b4a0097e088e33006c849d0732dfc212"
+    },
+    {
+      "baseGitBlob": null,
+      "bytes": 4529,
+      "gitBlob": "6cc786fa569d834ece9de41e55bca6261375738d",
+      "mode": "100644",
+      "path": "tests/unit/backend-media-log-privacy.test.ts",
+      "sha256": "6651462cbb3f57c877b3e30ad408d56218cf4dfb10149a5b37472905344fe51c"
+    },
+    {
+      "baseGitBlob": "ec3bcb50bac44d14855dc8d6ec560061a86e1b79",
+      "bytes": 10773,
+      "gitBlob": "52622967a6ae3327fce14cea5125fa7efa75f0ea",
+      "mode": "100644",
+      "path": "tests/unit/cleanup.test.ts",
+      "sha256": "aa6954132b506cdc27e047b3b12841e7d6372b5f0bb0a430bb37817af6fc73aa"
+    },
+    {
+      "baseGitBlob": null,
+      "bytes": 7128,
+      "gitBlob": "7b89c2a45446d7b3aa898ca7b4dbc90bcb0fd227",
+      "mode": "100644",
+      "path": "tests/unit/recipe-catalog-shadow-privacy.test.ts",
+      "sha256": "e666f242b2fda230b1c1c233689e7c4ec4a053fb28d7b6fab8b8d67a4d96e535"
+    }
+  ],
+  "status": "LOCAL_IMPLEMENTATION_VERIFIED_WITH_BLOCKING_RELEASE_GATES"
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "implementationSha": "41da180a941b348c6385895628b2bdd61b666763",
+  "cssBytes": 134861,
+  "cssSha256": "796ca21e25b5dbfbf13ea2b3f70faed3f388d7c231d3cb00c056c77341cf4fef",
+  "baselineExact": true,
+  "webSourcePublicAssetsPackageLockWorkflowsChanged": false,
+  "browserEvidence": "Inherited exact d3cce95620 initial/5built checks; no new browser run claimed for this Worker-only diagnostic patch."
+}

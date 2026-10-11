@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-10-11 19:52:59 UTC",
+  "receiptCommit": "efffb4f84b52eb42979c69547b6bd7263963099a",
+  "implementationCommit": "d3cce9560593a263e70f85646e061291e8829b56",
+  "command": "python3 docs/backend-upgrade/b08-local-remediation/verify_packet.py --committed",
+  "exitCode": 0,
+  "stdout": "receiptCommit=efffb4f84b52eb42979c69547b6bd7263963099a; tree=CLEAN; docsOnlyDelta=87\npacket=PASS; changed=45; protected=4379; logs=58; commands=58\n",
+  "sourceTreeStatus": "CLEAN",
+  "productionCertified": false,
+  "securityCertified": false,
+  "purpose": "Postcommit verifier receipt; immutable committed implementation and documentation packets remain unchanged."
+}

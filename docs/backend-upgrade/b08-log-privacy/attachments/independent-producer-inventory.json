@@ -1,0 +1,1047 @@
+{
+  "additionalActualFindings": [
+    {
+      "baseLine": 128,
+      "currentRemediation": "five task catches use static CLEANUP_TASK_FAILED; error getters/coercion not inspected; SQL/retention unchanged",
+      "path": "src/worker/services/cleanup.ts",
+      "reason": "Error.message/String(error) truncation retained arbitrary300bytes in report; index scheduled sink serialized report"
+    },
+    {
+      "baseLine": 151,
+      "currentRemediation": "static RECIPE_CATALOG_SHADOW_FAILED catch result and bounded own-value formatter",
+      "path": "src/worker/services/recipe-catalog-shadow.ts",
+      "reason": "Mutable caught Error.name serialized in shadow error outcome"
+    },
+    {
+      "baseLine": 31,
+      "currentRemediation": "drop recipeId and extras; own-value enum/number projection",
+      "path": "src/worker/services/recipe-media.ts",
+      "reason": "Spreads request-shaped recipeId supplied by missing/read-failed media paths; slug validation does not prove catalog identity"
+    }
+  ],
+  "base": "efffb4f84b52eb42979c69547b6bd7263963099a",
+  "branch": "codex/backend-b08-log-privacy",
+  "classification": "LOCAL_SOURCE_PRODUCER_INVENTORY_AND_EXACT_LOGGING_DELTA_NOT_PLATFORM_PRIVACY_CERTIFICATE",
+  "directRawExceptionArgumentFileCount": 8,
+  "directRawExceptionArgumentsAfter": 0,
+  "directRawExceptionArgumentsBefore": 41,
+  "directSinkCount": 87,
+  "directSinkFileCount": 28,
+  "directSinksInDbDomainRecipesPackages": 0,
+  "entries": [
+    {
+      "baseLine": 46,
+      "baseSha256": "15b9c80324e9d94d47a86d0909955555e723351e78a4e076fe75f3bb8fc81bfb",
+      "callerProvenance": "One raw base64 decoder error argument before remediation. Static message retained; invalid bytes remain rejected before provider invocation. Legacy adapter not selected by production Qwen-only routing.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "packages/ai/src/providers/cloudflare.ts"
+    },
+    {
+      "baseLine": 245,
+      "baseSha256": "cc7f96fe81202aa0ebea1b50d9e4295accf6acf11e4d7e1c0ada6829b61c6cc7",
+      "callerProvenance": "Provider fallback diagnostics project name/model/code/retryable; current runtime adapters classify provider HTTP/body/error into local fixed codes and configured model/name. Mock fallback and recipe-rank diagnostics fixed. Optional custom provider test injection could supply metadata; no actual Worker caller passes such untrusted provider.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "warn",
+      "path": "packages/ai/src/router.ts"
+    },
+    {
+      "baseLine": 260,
+      "baseSha256": "cc7f96fe81202aa0ebea1b50d9e4295accf6acf11e4d7e1c0ada6829b61c6cc7",
+      "callerProvenance": "Provider fallback diagnostics project name/model/code/retryable; current runtime adapters classify provider HTTP/body/error into local fixed codes and configured model/name. Mock fallback and recipe-rank diagnostics fixed. Optional custom provider test injection could supply metadata; no actual Worker caller passes such untrusted provider.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "warn",
+      "path": "packages/ai/src/router.ts"
+    },
+    {
+      "baseLine": 332,
+      "baseSha256": "cc7f96fe81202aa0ebea1b50d9e4295accf6acf11e4d7e1c0ada6829b61c6cc7",
+      "callerProvenance": "Provider fallback diagnostics project name/model/code/retryable; current runtime adapters classify provider HTTP/body/error into local fixed codes and configured model/name. Mock fallback and recipe-rank diagnostics fixed. Optional custom provider test injection could supply metadata; no actual Worker caller passes such untrusted provider.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "warn",
+      "path": "packages/ai/src/router.ts"
+    },
+    {
+      "baseLine": 418,
+      "baseSha256": "cc7f96fe81202aa0ebea1b50d9e4295accf6acf11e4d7e1c0ada6829b61c6cc7",
+      "callerProvenance": "Provider fallback diagnostics project name/model/code/retryable; current runtime adapters classify provider HTTP/body/error into local fixed codes and configured model/name. Mock fallback and recipe-rank diagnostics fixed. Optional custom provider test injection could supply metadata; no actual Worker caller passes such untrusted provider.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "warn",
+      "path": "packages/ai/src/router.ts"
+    },
+    {
+      "baseLine": 45,
+      "baseSha256": "79921f50502a68f6254e74e44f083e2e409eb66a8d0e5a7546e244f6162e9697",
+      "callerProvenance": "AIUsageLog projection omits userId/createdAt/raw provider value. Production QwenTaskRuntime derives task/role/prompts/pricing/model from committed policy/operator config, failureCode from local provider HTTP/schema/budget classifiers. sanitizeFailureDiagnostics permits fixed schema paths/issue codes only. Injected providerFactory is not enabled by Worker callers.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "log",
+      "path": "src/worker/config/ai.ts"
+    },
+    {
+      "baseLine": 111,
+      "baseSha256": "befb150c6303b5f7c6d07da70e93303bb430b55031bd5274d39c37cc0e877d5c",
+      "callerProvenance": "HTTP internal error uses server-generated requestId and static code. Queue batch count is numeric; retry/failure code originates parseEnvelope strict fixed codes or current production Qwen/runtime classification. Scheduled JSON CleanupReport includes only fixed task names/status/counts/config codes and environment plus current bounded cleanup failure category.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "error",
+      "path": "src/worker/index.ts"
+    },
+    {
+      "baseLine": 168,
+      "baseSha256": "befb150c6303b5f7c6d07da70e93303bb430b55031bd5274d39c37cc0e877d5c",
+      "callerProvenance": "HTTP internal error uses server-generated requestId and static code. Queue batch count is numeric; retry/failure code originates parseEnvelope strict fixed codes or current production Qwen/runtime classification. Scheduled JSON CleanupReport includes only fixed task names/status/counts/config codes and environment plus current bounded cleanup failure category.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "log",
+      "path": "src/worker/index.ts"
+    },
+    {
+      "baseLine": 176,
+      "baseSha256": "befb150c6303b5f7c6d07da70e93303bb430b55031bd5274d39c37cc0e877d5c",
+      "callerProvenance": "HTTP internal error uses server-generated requestId and static code. Queue batch count is numeric; retry/failure code originates parseEnvelope strict fixed codes or current production Qwen/runtime classification. Scheduled JSON CleanupReport includes only fixed task names/status/counts/config codes and environment plus current bounded cleanup failure category.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "warn",
+      "path": "src/worker/index.ts"
+    },
+    {
+      "baseLine": 181,
+      "baseSha256": "befb150c6303b5f7c6d07da70e93303bb430b55031bd5274d39c37cc0e877d5c",
+      "callerProvenance": "HTTP internal error uses server-generated requestId and static code. Queue batch count is numeric; retry/failure code originates parseEnvelope strict fixed codes or current production Qwen/runtime classification. Scheduled JSON CleanupReport includes only fixed task names/status/counts/config codes and environment plus current bounded cleanup failure category.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "error",
+      "path": "src/worker/index.ts"
+    },
+    {
+      "baseLine": 189,
+      "baseSha256": "befb150c6303b5f7c6d07da70e93303bb430b55031bd5274d39c37cc0e877d5c",
+      "callerProvenance": "HTTP internal error uses server-generated requestId and static code. Queue batch count is numeric; retry/failure code originates parseEnvelope strict fixed codes or current production Qwen/runtime classification. Scheduled JSON CleanupReport includes only fixed task names/status/counts/config codes and environment plus current bounded cleanup failure category.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "log",
+      "path": "src/worker/index.ts"
+    },
+    {
+      "baseLine": 20,
+      "baseSha256": "bd9de872ff63028caf8c1a849914f3092c70465dd54f739db2185cf6da35b626",
+      "callerProvenance": "Server-generated requestId; fixed CONFIG_INVALID plus validateEnvironment fatal codes. No secret values or binding identifiers.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "error",
+      "path": "src/worker/middleware/config-gate.ts"
+    },
+    {
+      "baseLine": 91,
+      "baseSha256": "9f8cd115ad06163faf10b3d1e5583f81bffdbd07622a89dac8d4e2c3ffb6fafe",
+      "callerProvenance": "All18 callsites use static limiter prefixes or the default. reason is fixed kv-error/kv-unbound; message static. Account/IP key is never logged.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "warn",
+      "path": "src/worker/middleware/rate-limit.ts"
+    },
+    {
+      "baseLine": 163,
+      "baseSha256": "9f8cd115ad06163faf10b3d1e5583f81bffdbd07622a89dac8d4e2c3ffb6fafe",
+      "callerProvenance": "All18 callsites use static limiter prefixes or the default. reason is fixed kv-error/kv-unbound; message static. Account/IP key is never logged.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "warn",
+      "path": "src/worker/middleware/rate-limit.ts"
+    },
+    {
+      "baseLine": 49,
+      "baseSha256": "5388457156253ee60615a7613367cc2580b0290293b8d77319ebc439561a1342",
+      "callerProvenance": "Static tenancy_check_failed only; no cookie/auth/account/membership data.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "error",
+      "path": "src/worker/middleware/tenancy.ts"
+    },
+    {
+      "baseLine": 66,
+      "baseSha256": "21628be945af7ab0c1e2629508e480a98f109e44724c2a0c12e1f4e4b9f68419",
+      "callerProvenance": "buildRequestTelemetry explicit bounded projection; server UUID, fixed method/environment/error enums, trusted registered route templates without wildcard, numeric status/duration. Sink exception contained.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "log",
+      "path": "src/worker/observability/request-telemetry.ts"
+    },
+    {
+      "baseLine": 64,
+      "baseSha256": "334283593f28b83f10a22a7f60f1ed27fe5337e6a2e4315230ec882de5aa9958",
+      "callerProvenance": "Nine static event-only failure records. No Error/body/account/password/cookie/OTP/address values.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "error",
+      "path": "src/worker/routes/auth.ts"
+    },
+    {
+      "baseLine": 121,
+      "baseSha256": "334283593f28b83f10a22a7f60f1ed27fe5337e6a2e4315230ec882de5aa9958",
+      "callerProvenance": "Nine static event-only failure records. No Error/body/account/password/cookie/OTP/address values.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "error",
+      "path": "src/worker/routes/auth.ts"
+    },
+    {
+      "baseLine": 163,
+      "baseSha256": "334283593f28b83f10a22a7f60f1ed27fe5337e6a2e4315230ec882de5aa9958",
+      "callerProvenance": "Nine static event-only failure records. No Error/body/account/password/cookie/OTP/address values.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "error",
+      "path": "src/worker/routes/auth.ts"
+    },
+    {
+      "baseLine": 196,
+      "baseSha256": "334283593f28b83f10a22a7f60f1ed27fe5337e6a2e4315230ec882de5aa9958",
+      "callerProvenance": "Nine static event-only failure records. No Error/body/account/password/cookie/OTP/address values.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "error",
+      "path": "src/worker/routes/auth.ts"
+    },
+    {
+      "baseLine": 223,
+      "baseSha256": "334283593f28b83f10a22a7f60f1ed27fe5337e6a2e4315230ec882de5aa9958",
+      "callerProvenance": "Nine static event-only failure records. No Error/body/account/password/cookie/OTP/address values.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "error",
+      "path": "src/worker/routes/auth.ts"
+    },
+    {
+      "baseLine": 325,
+      "baseSha256": "334283593f28b83f10a22a7f60f1ed27fe5337e6a2e4315230ec882de5aa9958",
+      "callerProvenance": "Nine static event-only failure records. No Error/body/account/password/cookie/OTP/address values.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "error",
+      "path": "src/worker/routes/auth.ts"
+    },
+    {
+      "baseLine": 381,
+      "baseSha256": "334283593f28b83f10a22a7f60f1ed27fe5337e6a2e4315230ec882de5aa9958",
+      "callerProvenance": "Nine static event-only failure records. No Error/body/account/password/cookie/OTP/address values.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "error",
+      "path": "src/worker/routes/auth.ts"
+    },
+    {
+      "baseLine": 544,
+      "baseSha256": "334283593f28b83f10a22a7f60f1ed27fe5337e6a2e4315230ec882de5aa9958",
+      "callerProvenance": "Nine static event-only failure records. No Error/body/account/password/cookie/OTP/address values.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "error",
+      "path": "src/worker/routes/auth.ts"
+    },
+    {
+      "baseLine": 597,
+      "baseSha256": "334283593f28b83f10a22a7f60f1ed27fe5337e6a2e4315230ec882de5aa9958",
+      "callerProvenance": "Nine static event-only failure records. No Error/body/account/password/cookie/OTP/address values.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "error",
+      "path": "src/worker/routes/auth.ts"
+    },
+    {
+      "baseLine": 56,
+      "baseSha256": "18072ffe3a1e1647f86038df1a7c1357d878858fa3d0efe417eb033b61904dae",
+      "callerProvenance": "Three raw caught error arguments before remediation; current exact static operation message retained, no extra arguments.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/inventory-truth.ts"
+    },
+    {
+      "baseLine": 64,
+      "baseSha256": "18072ffe3a1e1647f86038df1a7c1357d878858fa3d0efe417eb033b61904dae",
+      "callerProvenance": "Three raw caught error arguments before remediation; current exact static operation message retained, no extra arguments.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/inventory-truth.ts"
+    },
+    {
+      "baseLine": 87,
+      "baseSha256": "18072ffe3a1e1647f86038df1a7c1357d878858fa3d0efe417eb033b61904dae",
+      "callerProvenance": "Three raw caught error arguments before remediation; current exact static operation message retained, no extra arguments.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/inventory-truth.ts"
+    },
+    {
+      "baseLine": 263,
+      "baseSha256": "381e31aba88e10e907aef1b395caec9f1963e0a72628db7f6c2b7d8efc880e05",
+      "callerProvenance": "Ten raw caught error arguments before remediation; current exact static operation message retained, no extra arguments.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/inventory.ts"
+    },
+    {
+      "baseLine": 315,
+      "baseSha256": "381e31aba88e10e907aef1b395caec9f1963e0a72628db7f6c2b7d8efc880e05",
+      "callerProvenance": "Ten raw caught error arguments before remediation; current exact static operation message retained, no extra arguments.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/inventory.ts"
+    },
+    {
+      "baseLine": 347,
+      "baseSha256": "381e31aba88e10e907aef1b395caec9f1963e0a72628db7f6c2b7d8efc880e05",
+      "callerProvenance": "Ten raw caught error arguments before remediation; current exact static operation message retained, no extra arguments.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/inventory.ts"
+    },
+    {
+      "baseLine": 510,
+      "baseSha256": "381e31aba88e10e907aef1b395caec9f1963e0a72628db7f6c2b7d8efc880e05",
+      "callerProvenance": "Ten raw caught error arguments before remediation; current exact static operation message retained, no extra arguments.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/inventory.ts"
+    },
+    {
+      "baseLine": 526,
+      "baseSha256": "381e31aba88e10e907aef1b395caec9f1963e0a72628db7f6c2b7d8efc880e05",
+      "callerProvenance": "Ten raw caught error arguments before remediation; current exact static operation message retained, no extra arguments.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/inventory.ts"
+    },
+    {
+      "baseLine": 555,
+      "baseSha256": "381e31aba88e10e907aef1b395caec9f1963e0a72628db7f6c2b7d8efc880e05",
+      "callerProvenance": "Ten raw caught error arguments before remediation; current exact static operation message retained, no extra arguments.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/inventory.ts"
+    },
+    {
+      "baseLine": 715,
+      "baseSha256": "381e31aba88e10e907aef1b395caec9f1963e0a72628db7f6c2b7d8efc880e05",
+      "callerProvenance": "Ten raw caught error arguments before remediation; current exact static operation message retained, no extra arguments.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/inventory.ts"
+    },
+    {
+      "baseLine": 959,
+      "baseSha256": "381e31aba88e10e907aef1b395caec9f1963e0a72628db7f6c2b7d8efc880e05",
+      "callerProvenance": "Ten raw caught error arguments before remediation; current exact static operation message retained, no extra arguments.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/inventory.ts"
+    },
+    {
+      "baseLine": 1109,
+      "baseSha256": "381e31aba88e10e907aef1b395caec9f1963e0a72628db7f6c2b7d8efc880e05",
+      "callerProvenance": "Ten raw caught error arguments before remediation; current exact static operation message retained, no extra arguments.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/inventory.ts"
+    },
+    {
+      "baseLine": 1162,
+      "baseSha256": "381e31aba88e10e907aef1b395caec9f1963e0a72628db7f6c2b7d8efc880e05",
+      "callerProvenance": "Ten raw caught error arguments before remediation; current exact static operation message retained, no extra arguments.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/inventory.ts"
+    },
+    {
+      "baseLine": 52,
+      "baseSha256": "68090dfce701a02cc91328949c9f86806a759afbc07f60ef45f0f4375a761669",
+      "callerProvenance": "Static meal_planning_failure and MEAL_PLANNING_UNAVAILABLE; recognized application errors serialized only in authorized HTTP response, not logged.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "error",
+      "path": "src/worker/routes/meal-planning.ts"
+    },
+    {
+      "baseLine": 63,
+      "baseSha256": "78b03aaba389be849d6206056bcdf04034e63abb5a58e24da9b7c5e224acc315",
+      "callerProvenance": "Static notifications_query_failed only.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "warn",
+      "path": "src/worker/routes/notifications.ts"
+    },
+    {
+      "baseLine": 51,
+      "baseSha256": "f4fefcac51f5ac51415195b189be8d99c220150af74d23404219dc1d5d78cff0",
+      "callerProvenance": "Two raw caught error arguments before remediation; includes SyntaxError from parsing persisted dietary/favorite JSON. Current static messages retained.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/preferences.ts"
+    },
+    {
+      "baseLine": 126,
+      "baseSha256": "f4fefcac51f5ac51415195b189be8d99c220150af74d23404219dc1d5d78cff0",
+      "callerProvenance": "Two raw caught error arguments before remediation; includes SyntaxError from parsing persisted dietary/favorite JSON. Current static messages retained.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/preferences.ts"
+    },
+    {
+      "baseLine": 341,
+      "baseSha256": "4ffb05907ab27f294a91c61ba09bc8dd3829063a569e8331709d2166cc18a16c",
+      "callerProvenance": "Two raw error arguments before remediation. Three other cooking rejection records use resolved catalog recipe IDs and fixed HardRestrictionReason codes from evaluateHardRestrictions (ranking-eligibility), plus fixed RESTRICTION_CHECK_UNAVAILABLE. No allergen/dietary keys or household identity are logged.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "warn",
+      "path": "src/worker/routes/recipes.ts"
+    },
+    {
+      "baseLine": 480,
+      "baseSha256": "4ffb05907ab27f294a91c61ba09bc8dd3829063a569e8331709d2166cc18a16c",
+      "callerProvenance": "Two raw error arguments before remediation. Three other cooking rejection records use resolved catalog recipe IDs and fixed HardRestrictionReason codes from evaluateHardRestrictions (ranking-eligibility), plus fixed RESTRICTION_CHECK_UNAVAILABLE. No allergen/dietary keys or household identity are logged.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "warn",
+      "path": "src/worker/routes/recipes.ts"
+    },
+    {
+      "baseLine": 707,
+      "baseSha256": "4ffb05907ab27f294a91c61ba09bc8dd3829063a569e8331709d2166cc18a16c",
+      "callerProvenance": "Two raw error arguments before remediation. Three other cooking rejection records use resolved catalog recipe IDs and fixed HardRestrictionReason codes from evaluateHardRestrictions (ranking-eligibility), plus fixed RESTRICTION_CHECK_UNAVAILABLE. No allergen/dietary keys or household identity are logged.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/recipes.ts"
+    },
+    {
+      "baseLine": 750,
+      "baseSha256": "4ffb05907ab27f294a91c61ba09bc8dd3829063a569e8331709d2166cc18a16c",
+      "callerProvenance": "Two raw error arguments before remediation. Three other cooking rejection records use resolved catalog recipe IDs and fixed HardRestrictionReason codes from evaluateHardRestrictions (ranking-eligibility), plus fixed RESTRICTION_CHECK_UNAVAILABLE. No allergen/dietary keys or household identity are logged.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "warn",
+      "path": "src/worker/routes/recipes.ts"
+    },
+    {
+      "baseLine": 867,
+      "baseSha256": "4ffb05907ab27f294a91c61ba09bc8dd3829063a569e8331709d2166cc18a16c",
+      "callerProvenance": "Two raw error arguments before remediation. Three other cooking rejection records use resolved catalog recipe IDs and fixed HardRestrictionReason codes from evaluateHardRestrictions (ranking-eligibility), plus fixed RESTRICTION_CHECK_UNAVAILABLE. No allergen/dietary keys or household identity are logged.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/recipes.ts"
+    },
+    {
+      "baseLine": 243,
+      "baseSha256": "eae6824277832cfa4d18c14dc37713e6a1d84c9767cbbcc8698d0107b91c7a32",
+      "callerProvenance": "Five raw caught error arguments before remediation, removed. Four static upload/enqueue diagnostics and one fixed scan_cancel_failed record already omit image/receipt/provider/queue body.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/scans.ts"
+    },
+    {
+      "baseLine": 909,
+      "baseSha256": "eae6824277832cfa4d18c14dc37713e6a1d84c9767cbbcc8698d0107b91c7a32",
+      "callerProvenance": "Five raw caught error arguments before remediation, removed. Four static upload/enqueue diagnostics and one fixed scan_cancel_failed record already omit image/receipt/provider/queue body.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "warn",
+      "path": "src/worker/routes/scans.ts"
+    },
+    {
+      "baseLine": 970,
+      "baseSha256": "eae6824277832cfa4d18c14dc37713e6a1d84c9767cbbcc8698d0107b91c7a32",
+      "callerProvenance": "Five raw caught error arguments before remediation, removed. Four static upload/enqueue diagnostics and one fixed scan_cancel_failed record already omit image/receipt/provider/queue body.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "error",
+      "path": "src/worker/routes/scans.ts"
+    },
+    {
+      "baseLine": 1072,
+      "baseSha256": "eae6824277832cfa4d18c14dc37713e6a1d84c9767cbbcc8698d0107b91c7a32",
+      "callerProvenance": "Five raw caught error arguments before remediation, removed. Four static upload/enqueue diagnostics and one fixed scan_cancel_failed record already omit image/receipt/provider/queue body.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/scans.ts"
+    },
+    {
+      "baseLine": 1136,
+      "baseSha256": "eae6824277832cfa4d18c14dc37713e6a1d84c9767cbbcc8698d0107b91c7a32",
+      "callerProvenance": "Five raw caught error arguments before remediation, removed. Four static upload/enqueue diagnostics and one fixed scan_cancel_failed record already omit image/receipt/provider/queue body.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "warn",
+      "path": "src/worker/routes/scans.ts"
+    },
+    {
+      "baseLine": 1201,
+      "baseSha256": "eae6824277832cfa4d18c14dc37713e6a1d84c9767cbbcc8698d0107b91c7a32",
+      "callerProvenance": "Five raw caught error arguments before remediation, removed. Four static upload/enqueue diagnostics and one fixed scan_cancel_failed record already omit image/receipt/provider/queue body.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "error",
+      "path": "src/worker/routes/scans.ts"
+    },
+    {
+      "baseLine": 1312,
+      "baseSha256": "eae6824277832cfa4d18c14dc37713e6a1d84c9767cbbcc8698d0107b91c7a32",
+      "callerProvenance": "Five raw caught error arguments before remediation, removed. Four static upload/enqueue diagnostics and one fixed scan_cancel_failed record already omit image/receipt/provider/queue body.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/scans.ts"
+    },
+    {
+      "baseLine": 1378,
+      "baseSha256": "eae6824277832cfa4d18c14dc37713e6a1d84c9767cbbcc8698d0107b91c7a32",
+      "callerProvenance": "Five raw caught error arguments before remediation, removed. Four static upload/enqueue diagnostics and one fixed scan_cancel_failed record already omit image/receipt/provider/queue body.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/scans.ts"
+    },
+    {
+      "baseLine": 1393,
+      "baseSha256": "eae6824277832cfa4d18c14dc37713e6a1d84c9767cbbcc8698d0107b91c7a32",
+      "callerProvenance": "Five raw caught error arguments before remediation, removed. Four static upload/enqueue diagnostics and one fixed scan_cancel_failed record already omit image/receipt/provider/queue body.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "error",
+      "path": "src/worker/routes/scans.ts"
+    },
+    {
+      "baseLine": 1926,
+      "baseSha256": "eae6824277832cfa4d18c14dc37713e6a1d84c9767cbbcc8698d0107b91c7a32",
+      "callerProvenance": "Five raw caught error arguments before remediation, removed. Four static upload/enqueue diagnostics and one fixed scan_cancel_failed record already omit image/receipt/provider/queue body.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/scans.ts"
+    },
+    {
+      "baseLine": 73,
+      "baseSha256": "5060991843946124c76ee93efd0227558bb69de7d4a26effcf7f287fabf13721",
+      "callerProvenance": "Four raw caught error arguments before remediation; exact static operation messages retained.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/shopping.ts"
+    },
+    {
+      "baseLine": 168,
+      "baseSha256": "5060991843946124c76ee93efd0227558bb69de7d4a26effcf7f287fabf13721",
+      "callerProvenance": "Four raw caught error arguments before remediation; exact static operation messages retained.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/shopping.ts"
+    },
+    {
+      "baseLine": 240,
+      "baseSha256": "5060991843946124c76ee93efd0227558bb69de7d4a26effcf7f287fabf13721",
+      "callerProvenance": "Four raw caught error arguments before remediation; exact static operation messages retained.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/shopping.ts"
+    },
+    {
+      "baseLine": 278,
+      "baseSha256": "5060991843946124c76ee93efd0227558bb69de7d4a26effcf7f287fabf13721",
+      "callerProvenance": "Four raw caught error arguments before remediation; exact static operation messages retained.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/shopping.ts"
+    },
+    {
+      "baseLine": 707,
+      "baseSha256": "4adace03ba9e06b85c7dabd8fb0e1b6a526d2f51b436109a6b6722e831490c28",
+      "callerProvenance": "Fourteen raw caught error arguments before remediation, removed; one existing fixed week_current_read_failed event. HTTP/data/claim/revision/stock decisions unchanged.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "error",
+      "path": "src/worker/routes/week.ts"
+    },
+    {
+      "baseLine": 762,
+      "baseSha256": "4adace03ba9e06b85c7dabd8fb0e1b6a526d2f51b436109a6b6722e831490c28",
+      "callerProvenance": "Fourteen raw caught error arguments before remediation, removed; one existing fixed week_current_read_failed event. HTTP/data/claim/revision/stock decisions unchanged.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/week.ts"
+    },
+    {
+      "baseLine": 774,
+      "baseSha256": "4adace03ba9e06b85c7dabd8fb0e1b6a526d2f51b436109a6b6722e831490c28",
+      "callerProvenance": "Fourteen raw caught error arguments before remediation, removed; one existing fixed week_current_read_failed event. HTTP/data/claim/revision/stock decisions unchanged.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/week.ts"
+    },
+    {
+      "baseLine": 817,
+      "baseSha256": "4adace03ba9e06b85c7dabd8fb0e1b6a526d2f51b436109a6b6722e831490c28",
+      "callerProvenance": "Fourteen raw caught error arguments before remediation, removed; one existing fixed week_current_read_failed event. HTTP/data/claim/revision/stock decisions unchanged.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/week.ts"
+    },
+    {
+      "baseLine": 838,
+      "baseSha256": "4adace03ba9e06b85c7dabd8fb0e1b6a526d2f51b436109a6b6722e831490c28",
+      "callerProvenance": "Fourteen raw caught error arguments before remediation, removed; one existing fixed week_current_read_failed event. HTTP/data/claim/revision/stock decisions unchanged.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/week.ts"
+    },
+    {
+      "baseLine": 887,
+      "baseSha256": "4adace03ba9e06b85c7dabd8fb0e1b6a526d2f51b436109a6b6722e831490c28",
+      "callerProvenance": "Fourteen raw caught error arguments before remediation, removed; one existing fixed week_current_read_failed event. HTTP/data/claim/revision/stock decisions unchanged.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/week.ts"
+    },
+    {
+      "baseLine": 904,
+      "baseSha256": "4adace03ba9e06b85c7dabd8fb0e1b6a526d2f51b436109a6b6722e831490c28",
+      "callerProvenance": "Fourteen raw caught error arguments before remediation, removed; one existing fixed week_current_read_failed event. HTTP/data/claim/revision/stock decisions unchanged.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/week.ts"
+    },
+    {
+      "baseLine": 912,
+      "baseSha256": "4adace03ba9e06b85c7dabd8fb0e1b6a526d2f51b436109a6b6722e831490c28",
+      "callerProvenance": "Fourteen raw caught error arguments before remediation, removed; one existing fixed week_current_read_failed event. HTTP/data/claim/revision/stock decisions unchanged.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/week.ts"
+    },
+    {
+      "baseLine": 955,
+      "baseSha256": "4adace03ba9e06b85c7dabd8fb0e1b6a526d2f51b436109a6b6722e831490c28",
+      "callerProvenance": "Fourteen raw caught error arguments before remediation, removed; one existing fixed week_current_read_failed event. HTTP/data/claim/revision/stock decisions unchanged.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/week.ts"
+    },
+    {
+      "baseLine": 1013,
+      "baseSha256": "4adace03ba9e06b85c7dabd8fb0e1b6a526d2f51b436109a6b6722e831490c28",
+      "callerProvenance": "Fourteen raw caught error arguments before remediation, removed; one existing fixed week_current_read_failed event. HTTP/data/claim/revision/stock decisions unchanged.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/week.ts"
+    },
+    {
+      "baseLine": 1084,
+      "baseSha256": "4adace03ba9e06b85c7dabd8fb0e1b6a526d2f51b436109a6b6722e831490c28",
+      "callerProvenance": "Fourteen raw caught error arguments before remediation, removed; one existing fixed week_current_read_failed event. HTTP/data/claim/revision/stock decisions unchanged.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/week.ts"
+    },
+    {
+      "baseLine": 1432,
+      "baseSha256": "4adace03ba9e06b85c7dabd8fb0e1b6a526d2f51b436109a6b6722e831490c28",
+      "callerProvenance": "Fourteen raw caught error arguments before remediation, removed; one existing fixed week_current_read_failed event. HTTP/data/claim/revision/stock decisions unchanged.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/week.ts"
+    },
+    {
+      "baseLine": 1475,
+      "baseSha256": "4adace03ba9e06b85c7dabd8fb0e1b6a526d2f51b436109a6b6722e831490c28",
+      "callerProvenance": "Fourteen raw caught error arguments before remediation, removed; one existing fixed week_current_read_failed event. HTTP/data/claim/revision/stock decisions unchanged.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/week.ts"
+    },
+    {
+      "baseLine": 1547,
+      "baseSha256": "4adace03ba9e06b85c7dabd8fb0e1b6a526d2f51b436109a6b6722e831490c28",
+      "callerProvenance": "Fourteen raw caught error arguments before remediation, removed; one existing fixed week_current_read_failed event. HTTP/data/claim/revision/stock decisions unchanged.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/week.ts"
+    },
+    {
+      "baseLine": 1698,
+      "baseSha256": "4adace03ba9e06b85c7dabd8fb0e1b6a526d2f51b436109a6b6722e831490c28",
+      "callerProvenance": "Fourteen raw caught error arguments before remediation, removed; one existing fixed week_current_read_failed event. HTTP/data/claim/revision/stock decisions unchanged.",
+      "directRawCaughtArgumentBefore": true,
+      "method": "error",
+      "path": "src/worker/routes/week.ts"
+    },
+    {
+      "baseLine": 96,
+      "baseSha256": "7df979cdcec66f6118038d13cac655089e0428a268f918fb11f4c61c872af7f3",
+      "callerProvenance": "Fixed password_reset_delivery_record_failed event; delivery message/code/address not serialized.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "error",
+      "path": "src/worker/services/auth-otp-http.ts"
+    },
+    {
+      "baseLine": 162,
+      "baseSha256": "7721143d005fc039dc6d3c2206ddd194bf9bd42791681249894d5c850bdddc2a",
+      "callerProvenance": "Explicit provider/category/state/evidence/purpose projection. Values from closed EmailResult/sendEmail branches, purpose register/forgot_password/login; environment operator config. No raw resend/native response/address/message ID/email body.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "error",
+      "path": "src/worker/services/email.ts"
+    },
+    {
+      "baseLine": 95,
+      "baseSha256": "711eb0ccaad4c4c642eec6afa615e1b7f97da3d5c23ad5c9983a9aafadd800ff",
+      "callerProvenance": "Eight logEvent callers use static event/mode/source categories; count/duration numbers. Hard restriction reasons derive fixed enum; failure_code comes only internal MealPlanningError static/domain CompositionCommandError code. No component/slot/plan/household/policy payload.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "log",
+      "path": "src/worker/services/meal-composition.ts"
+    },
+    {
+      "baseLine": 318,
+      "baseSha256": "86912d3b4d78d8c783e7a466f76094fa664741e84f286c271098df27fe1f7e31",
+      "callerProvenance": "Generated planning status/conclusion/search counters and catalogStatus are domain enums/numeric counters; no plan/household/user/budget/ingredient values.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "log",
+      "path": "src/worker/services/meal-planning.ts"
+    },
+    {
+      "baseLine": 603,
+      "baseSha256": "86912d3b4d78d8c783e7a466f76094fa664741e84f286c271098df27fe1f7e31",
+      "callerProvenance": "Generated planning status/conclusion/search counters and catalogStatus are domain enums/numeric counters; no plan/household/user/budget/ingredient values.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "log",
+      "path": "src/worker/services/meal-planning.ts"
+    },
+    {
+      "baseLine": 214,
+      "baseSha256": "394bccb64ebe284adebfc4883bc77b4264ab738851b712a484a26259aa286f87",
+      "callerProvenance": "Diagnostic producers explicitly select fields. Mode/source/assignmentReason/readiness/config reason codes are fixed enums; fingerprintMatch is boolean, age/count numeric. Underlying readiness Error.name is not selected into console diagnostic.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "warn",
+      "path": "src/worker/services/recipe-authority.ts"
+    },
+    {
+      "baseLine": 210,
+      "baseSha256": "33e586aef0589f488ad8b87e70814972394df37297efb24226cd42e126f51580",
+      "callerProvenance": "Prior D1 catch forwarded mutable Error.name via shadow outcome; current fixed failure category and own-value formatter allowlist. Compared drift/order IDs are intersections with committed static catalog; hydration_failure_sample IDs derive global D1 catalog with no household/public write path, codes fixed RuntimeHydrationFailureCode. release_id from committed manifest; fields fixed runtime field comparison. Full recipe/row/reasons not logged.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "log",
+      "path": "src/worker/services/recipe-catalog-shadow.ts"
+    },
+    {
+      "baseLine": 31,
+      "baseSha256": "58b1f2d4759b3f416e88bec55063daa2095dc2e55e03bbea4a8f87e2f4eea71d",
+      "callerProvenance": "Prior spread allowed validated but unconfirmed request recipeId on missing/error route paths. Current emitter omits recipeId, projects own data properties only, closed event/role/code and integer version1..1000000. D1 mapRecipeMediaRow validates role/status/version; readiness code from finite issue union/fixed serving branches. Throttle remains20 per60s.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "warn",
+      "path": "src/worker/services/recipe-media.ts"
+    },
+    {
+      "baseLine": 506,
+      "baseSha256": "0303347a44568d45e05936d29d1ad3277fcae1d9f42c2b44f87797cadc4ac368",
+      "callerProvenance": "scan_terminal selects attempt/state/retry/model/latency and supportId SHA256(scanId) prefix. Upload scanId is server UUID or SHA256(user/household/idempotency key), queue parse strict envelope and scope/claim check precedes processing. Model operator config; errorCode production static Qwen/runtime/local classifiers. Raw scanId/message/image/provider output omitted. Supports opaque correlation, not data anonymization certification.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "log",
+      "path": "src/worker/services/scan-queue.ts"
+    },
+    {
+      "baseLine": 275,
+      "baseSha256": "278ba4266f54025a7bf574748db3559eb1c4f8fd74cd3278b32c87e88a361f12",
+      "callerProvenance": "Fixed week_plan_read_failed event only; raw D1 error dropped before wrapping.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "error",
+      "path": "src/worker/services/week-read.ts"
+    },
+    {
+      "baseLine": 39,
+      "baseSha256": "bec51bf3d5eb43f2c743ce54b2ef63de74e59eb51a1b3b59663c42698aaa75b4",
+      "callerProvenance": "Fixed turnstile_verification_failed only; token/provider response omitted.",
+      "directRawCaughtArgumentBefore": false,
+      "method": "error",
+      "path": "src/worker/utils/turnstile.ts"
+    }
+  ],
+  "exactRouteProviderByteProof": [
+    {
+      "baseSha256": "15b9c80324e9d94d47a86d0909955555e723351e78a4e076fe75f3bb8fc81bfb",
+      "currentSha256": "a610335337d4884c5b665b6cdd0f6acafb2ddf495767a2c340fa0d69887941b1",
+      "exactExceptRawArgumentRemoval": true,
+      "path": "packages/ai/src/providers/cloudflare.ts",
+      "removedRawArguments": 1
+    },
+    {
+      "baseSha256": "18072ffe3a1e1647f86038df1a7c1357d878858fa3d0efe417eb033b61904dae",
+      "currentSha256": "7ca91330f8e24a3f0f689d76749e21296c5e4f385c49027e2741885b0de65bcf",
+      "exactExceptRawArgumentRemoval": true,
+      "path": "src/worker/routes/inventory-truth.ts",
+      "removedRawArguments": 3
+    },
+    {
+      "baseSha256": "381e31aba88e10e907aef1b395caec9f1963e0a72628db7f6c2b7d8efc880e05",
+      "currentSha256": "674600788b9abcc79d2fa16da4d7bf67344311c2e2a8ad6f9df15b38bd03303c",
+      "exactExceptRawArgumentRemoval": true,
+      "path": "src/worker/routes/inventory.ts",
+      "removedRawArguments": 10
+    },
+    {
+      "baseSha256": "f4fefcac51f5ac51415195b189be8d99c220150af74d23404219dc1d5d78cff0",
+      "currentSha256": "cbcf9893567892aa96346b0bf47fd09bf84c4bf9e9c2f55c36c6d0781653ca0f",
+      "exactExceptRawArgumentRemoval": true,
+      "path": "src/worker/routes/preferences.ts",
+      "removedRawArguments": 2
+    },
+    {
+      "baseSha256": "4ffb05907ab27f294a91c61ba09bc8dd3829063a569e8331709d2166cc18a16c",
+      "currentSha256": "93943032e78f851a671d99d3017d542ced0929c43a1b1964a6fb07bd1a619fdc",
+      "exactExceptRawArgumentRemoval": true,
+      "path": "src/worker/routes/recipes.ts",
+      "removedRawArguments": 2
+    },
+    {
+      "baseSha256": "eae6824277832cfa4d18c14dc37713e6a1d84c9767cbbcc8698d0107b91c7a32",
+      "currentSha256": "b8318a4d7a79ccd341a5298f6494dd939a46e9b501bdb5b09f90e2bbf35aa3c8",
+      "exactExceptRawArgumentRemoval": true,
+      "path": "src/worker/routes/scans.ts",
+      "removedRawArguments": 5
+    },
+    {
+      "baseSha256": "5060991843946124c76ee93efd0227558bb69de7d4a26effcf7f287fabf13721",
+      "currentSha256": "02c8749217ba58ec0e3318371046a49f583764af2a24a89e91c7f9907e65a9ff",
+      "exactExceptRawArgumentRemoval": true,
+      "path": "src/worker/routes/shopping.ts",
+      "removedRawArguments": 4
+    },
+    {
+      "baseSha256": "4adace03ba9e06b85c7dabd8fb0e1b6a526d2f51b436109a6b6722e831490c28",
+      "currentSha256": "de5f42e2f0f3795012618ff66b06a231e9db7f4ff3b3da8ef96b0a4b9794973c",
+      "exactExceptRawArgumentRemoval": true,
+      "path": "src/worker/routes/week.ts",
+      "removedRawArguments": 14
+    }
+  ],
+  "limits": [
+    "Source producer inventory covers current application explicit console sinks and actual caller provenance, not Cloudflare/platform invocation capture, hosted access/retention, browser logs, installed native binaries or secret history.",
+    "Optional providerFactory and raw typed helper misuse are not claimed safe for arbitrary injected metadata; no production Worker caller enables such untrusted source.",
+    "Synthetic hostile-value tests verify representative failures; complete41removal additionally has independent exact byte proof.",
+    "Security remains blocked by braces advisory and retained scanner findings; no waiver or release certificate."
+  ],
+  "meaningfulOwnedTests": {
+    "description": "Real Hono+SQLite seven failure routes for Error/object payloads; exact response and no data writes; native persisted preference JSON SyntaxError; legacy image decoder rejection before provider call",
+    "independentLaneTestExecution": "not executed; root scheduled focused validation",
+    "path": "tests/unit/backend-business-log-privacy.test.ts",
+    "runtimeCases": 16
+  },
+  "producerProofInputs": [
+    {
+      "baseSha256": "5b174dbcf6512f85aea0f78300eb59117ce9198357d7713eaa380c056cc044a9",
+      "currentSha256": "5b174dbcf6512f85aea0f78300eb59117ce9198357d7713eaa380c056cc044a9",
+      "path": "packages/ai/src/errors.ts"
+    },
+    {
+      "baseSha256": "a6de5f053c0a0fb4eb947d6d45856a1528ce970360d9ff1c98989ec4331eb416",
+      "currentSha256": "a6de5f053c0a0fb4eb947d6d45856a1528ce970360d9ff1c98989ec4331eb416",
+      "path": "packages/ai/src/failure-diagnostics.ts"
+    },
+    {
+      "baseSha256": "15b9c80324e9d94d47a86d0909955555e723351e78a4e076fe75f3bb8fc81bfb",
+      "currentSha256": "a610335337d4884c5b665b6cdd0f6acafb2ddf495767a2c340fa0d69887941b1",
+      "path": "packages/ai/src/providers/cloudflare.ts"
+    },
+    {
+      "baseSha256": "f9fc0314f42e7037b28b0a7c8c3cf231897c69b1a57740a62043d40de1fd8355",
+      "currentSha256": "f9fc0314f42e7037b28b0a7c8c3cf231897c69b1a57740a62043d40de1fd8355",
+      "path": "packages/ai/src/providers/qwen.ts"
+    },
+    {
+      "baseSha256": "cc7f96fe81202aa0ebea1b50d9e4295accf6acf11e4d7e1c0ada6829b61c6cc7",
+      "currentSha256": "cc7f96fe81202aa0ebea1b50d9e4295accf6acf11e4d7e1c0ada6829b61c6cc7",
+      "path": "packages/ai/src/router.ts"
+    },
+    {
+      "baseSha256": "521a51055af3e88bd4d2e76b3bed85ec4728e8d161d0b91930025f53256c98bb",
+      "currentSha256": "521a51055af3e88bd4d2e76b3bed85ec4728e8d161d0b91930025f53256c98bb",
+      "path": "packages/ai/src/scan-envelope.ts"
+    },
+    {
+      "baseSha256": "95ef732e4fd510042d278310a80c7a38c122f3c1b524fdfc90d562bc4e162424",
+      "currentSha256": "95ef732e4fd510042d278310a80c7a38c122f3c1b524fdfc90d562bc4e162424",
+      "path": "packages/ai/src/task-runtime.ts"
+    },
+    {
+      "baseSha256": "07ee565800f079608fe2ba898d4dc1215b3a643114bc0d92f3bc63f838ed0e2e",
+      "currentSha256": "07ee565800f079608fe2ba898d4dc1215b3a643114bc0d92f3bc63f838ed0e2e",
+      "path": "packages/db/src/recipe-media.ts"
+    },
+    {
+      "baseSha256": "e5811e1ac530c88fecc0642b92ba3b637940644bfa28959ab841ada6b1a6ea5a",
+      "currentSha256": "e5811e1ac530c88fecc0642b92ba3b637940644bfa28959ab841ada6b1a6ea5a",
+      "path": "packages/recipes/src/composition/restrictions.ts"
+    },
+    {
+      "baseSha256": "068b8dd017a26f2b380ec525606baa3cc0630ae88aeeb34ddba7d44cf0a56cfa",
+      "currentSha256": "068b8dd017a26f2b380ec525606baa3cc0630ae88aeeb34ddba7d44cf0a56cfa",
+      "path": "packages/recipes/src/ranking-eligibility.ts"
+    },
+    {
+      "baseSha256": "500734d02671a5079f1d063c6f0a48d5a09b10fc3b5cf9fb23feaf3b0895de04",
+      "currentSha256": "500734d02671a5079f1d063c6f0a48d5a09b10fc3b5cf9fb23feaf3b0895de04",
+      "path": "packages/recipes/src/recipe-media.ts"
+    },
+    {
+      "baseSha256": "4c2d15526d62427ef262233a264be3b4f92175cd3ad9f808f51ee444699d06b3",
+      "currentSha256": "4c2d15526d62427ef262233a264be3b4f92175cd3ad9f808f51ee444699d06b3",
+      "path": "packages/recipes/src/runtime-catalog.ts"
+    },
+    {
+      "baseSha256": "82f2959086218bc48805cc9e9d6c8780733a39e3fe81f51be783cf1f0a119f0f",
+      "currentSha256": "82f2959086218bc48805cc9e9d6c8780733a39e3fe81f51be783cf1f0a119f0f",
+      "path": "packages/recipes/src/runtime-hydration.ts"
+    },
+    {
+      "baseSha256": "79921f50502a68f6254e74e44f083e2e409eb66a8d0e5a7546e244f6162e9697",
+      "currentSha256": "79921f50502a68f6254e74e44f083e2e409eb66a8d0e5a7546e244f6162e9697",
+      "path": "src/worker/config/ai.ts"
+    },
+    {
+      "baseSha256": "befb150c6303b5f7c6d07da70e93303bb430b55031bd5274d39c37cc0e877d5c",
+      "currentSha256": "befb150c6303b5f7c6d07da70e93303bb430b55031bd5274d39c37cc0e877d5c",
+      "path": "src/worker/index.ts"
+    },
+    {
+      "baseSha256": "bd9de872ff63028caf8c1a849914f3092c70465dd54f739db2185cf6da35b626",
+      "currentSha256": "bd9de872ff63028caf8c1a849914f3092c70465dd54f739db2185cf6da35b626",
+      "path": "src/worker/middleware/config-gate.ts"
+    },
+    {
+      "baseSha256": "9f8cd115ad06163faf10b3d1e5583f81bffdbd07622a89dac8d4e2c3ffb6fafe",
+      "currentSha256": "9f8cd115ad06163faf10b3d1e5583f81bffdbd07622a89dac8d4e2c3ffb6fafe",
+      "path": "src/worker/middleware/rate-limit.ts"
+    },
+    {
+      "baseSha256": "5388457156253ee60615a7613367cc2580b0290293b8d77319ebc439561a1342",
+      "currentSha256": "5388457156253ee60615a7613367cc2580b0290293b8d77319ebc439561a1342",
+      "path": "src/worker/middleware/tenancy.ts"
+    },
+    {
+      "baseSha256": "21628be945af7ab0c1e2629508e480a98f109e44724c2a0c12e1f4e4b9f68419",
+      "currentSha256": "21628be945af7ab0c1e2629508e480a98f109e44724c2a0c12e1f4e4b9f68419",
+      "path": "src/worker/observability/request-telemetry.ts"
+    },
+    {
+      "baseSha256": "334283593f28b83f10a22a7f60f1ed27fe5337e6a2e4315230ec882de5aa9958",
+      "currentSha256": "334283593f28b83f10a22a7f60f1ed27fe5337e6a2e4315230ec882de5aa9958",
+      "path": "src/worker/routes/auth.ts"
+    },
+    {
+      "baseSha256": "18072ffe3a1e1647f86038df1a7c1357d878858fa3d0efe417eb033b61904dae",
+      "currentSha256": "7ca91330f8e24a3f0f689d76749e21296c5e4f385c49027e2741885b0de65bcf",
+      "path": "src/worker/routes/inventory-truth.ts"
+    },
+    {
+      "baseSha256": "381e31aba88e10e907aef1b395caec9f1963e0a72628db7f6c2b7d8efc880e05",
+      "currentSha256": "674600788b9abcc79d2fa16da4d7bf67344311c2e2a8ad6f9df15b38bd03303c",
+      "path": "src/worker/routes/inventory.ts"
+    },
+    {
+      "baseSha256": "68090dfce701a02cc91328949c9f86806a759afbc07f60ef45f0f4375a761669",
+      "currentSha256": "68090dfce701a02cc91328949c9f86806a759afbc07f60ef45f0f4375a761669",
+      "path": "src/worker/routes/meal-planning.ts"
+    },
+    {
+      "baseSha256": "78b03aaba389be849d6206056bcdf04034e63abb5a58e24da9b7c5e224acc315",
+      "currentSha256": "78b03aaba389be849d6206056bcdf04034e63abb5a58e24da9b7c5e224acc315",
+      "path": "src/worker/routes/notifications.ts"
+    },
+    {
+      "baseSha256": "f4fefcac51f5ac51415195b189be8d99c220150af74d23404219dc1d5d78cff0",
+      "currentSha256": "cbcf9893567892aa96346b0bf47fd09bf84c4bf9e9c2f55c36c6d0781653ca0f",
+      "path": "src/worker/routes/preferences.ts"
+    },
+    {
+      "baseSha256": "3de9fbdfc951bfb830556bac89f68b5847744f742f30621294cf5acc1a22d892",
+      "currentSha256": "3de9fbdfc951bfb830556bac89f68b5847744f742f30621294cf5acc1a22d892",
+      "path": "src/worker/routes/recipe-media.ts"
+    },
+    {
+      "baseSha256": "4ffb05907ab27f294a91c61ba09bc8dd3829063a569e8331709d2166cc18a16c",
+      "currentSha256": "93943032e78f851a671d99d3017d542ced0929c43a1b1964a6fb07bd1a619fdc",
+      "path": "src/worker/routes/recipes.ts"
+    },
+    {
+      "baseSha256": "eae6824277832cfa4d18c14dc37713e6a1d84c9767cbbcc8698d0107b91c7a32",
+      "currentSha256": "b8318a4d7a79ccd341a5298f6494dd939a46e9b501bdb5b09f90e2bbf35aa3c8",
+      "path": "src/worker/routes/scans.ts"
+    },
+    {
+      "baseSha256": "5060991843946124c76ee93efd0227558bb69de7d4a26effcf7f287fabf13721",
+      "currentSha256": "02c8749217ba58ec0e3318371046a49f583764af2a24a89e91c7f9907e65a9ff",
+      "path": "src/worker/routes/shopping.ts"
+    },
+    {
+      "baseSha256": "4adace03ba9e06b85c7dabd8fb0e1b6a526d2f51b436109a6b6722e831490c28",
+      "currentSha256": "de5f42e2f0f3795012618ff66b06a231e9db7f4ff3b3da8ef96b0a4b9794973c",
+      "path": "src/worker/routes/week.ts"
+    },
+    {
+      "baseSha256": "7df979cdcec66f6118038d13cac655089e0428a268f918fb11f4c61c872af7f3",
+      "currentSha256": "7df979cdcec66f6118038d13cac655089e0428a268f918fb11f4c61c872af7f3",
+      "path": "src/worker/services/auth-otp-http.ts"
+    },
+    {
+      "baseSha256": "ce00c291fa93543d5880e010c0491713fc427a7d80b51a9ec9d5b6b9b648d79e",
+      "currentSha256": "d162c106168284d3484e949cc76313ff6aea5ca62cca3a2bff8a4c51184eab71",
+      "path": "src/worker/services/cleanup.ts"
+    },
+    {
+      "baseSha256": "5341394c9983423a92e87f34d728908706e9b40504e6b43375efcceaa2d57f73",
+      "currentSha256": "5341394c9983423a92e87f34d728908706e9b40504e6b43375efcceaa2d57f73",
+      "path": "src/worker/services/cooking-hard-restrictions.ts"
+    },
+    {
+      "baseSha256": "7721143d005fc039dc6d3c2206ddd194bf9bd42791681249894d5c850bdddc2a",
+      "currentSha256": "7721143d005fc039dc6d3c2206ddd194bf9bd42791681249894d5c850bdddc2a",
+      "path": "src/worker/services/email.ts"
+    },
+    {
+      "baseSha256": "711eb0ccaad4c4c642eec6afa615e1b7f97da3d5c23ad5c9983a9aafadd800ff",
+      "currentSha256": "711eb0ccaad4c4c642eec6afa615e1b7f97da3d5c23ad5c9983a9aafadd800ff",
+      "path": "src/worker/services/meal-composition.ts"
+    },
+    {
+      "baseSha256": "86912d3b4d78d8c783e7a466f76094fa664741e84f286c271098df27fe1f7e31",
+      "currentSha256": "86912d3b4d78d8c783e7a466f76094fa664741e84f286c271098df27fe1f7e31",
+      "path": "src/worker/services/meal-planning.ts"
+    },
+    {
+      "baseSha256": "394bccb64ebe284adebfc4883bc77b4264ab738851b712a484a26259aa286f87",
+      "currentSha256": "394bccb64ebe284adebfc4883bc77b4264ab738851b712a484a26259aa286f87",
+      "path": "src/worker/services/recipe-authority.ts"
+    },
+    {
+      "baseSha256": "33e586aef0589f488ad8b87e70814972394df37297efb24226cd42e126f51580",
+      "currentSha256": "f92f9f70aa90be3c84abd5cf41758105da22bd9b904dea847a41048d81cd3385",
+      "path": "src/worker/services/recipe-catalog-shadow.ts"
+    },
+    {
+      "baseSha256": "58b1f2d4759b3f416e88bec55063daa2095dc2e55e03bbea4a8f87e2f4eea71d",
+      "currentSha256": "2e5ce9df618b19e3b6c2d7c30ff0d504e3a1e47295ddc1906ec6058bbf0fa046",
+      "path": "src/worker/services/recipe-media.ts"
+    },
+    {
+      "baseSha256": "0303347a44568d45e05936d29d1ad3277fcae1d9f42c2b44f87797cadc4ac368",
+      "currentSha256": "0303347a44568d45e05936d29d1ad3277fcae1d9f42c2b44f87797cadc4ac368",
+      "path": "src/worker/services/scan-queue.ts"
+    },
+    {
+      "baseSha256": "278ba4266f54025a7bf574748db3559eb1c4f8fd74cd3278b32c87e88a361f12",
+      "currentSha256": "278ba4266f54025a7bf574748db3559eb1c4f8fd74cd3278b32c87e88a361f12",
+      "path": "src/worker/services/week-read.ts"
+    },
+    {
+      "baseSha256": "bec51bf3d5eb43f2c743ce54b2ef63de74e59eb51a1b3b59663c42698aaa75b4",
+      "currentSha256": "bec51bf3d5eb43f2c743ce54b2ef63de74e59eb51a1b3b59663c42698aaa75b4",
+      "path": "src/worker/utils/turnstile.ts"
+    }
+  ],
+  "protectedBaselineNonDocs": {
+    "allBytesAndExecutableModesUnchanged": true,
+    "count": 1885,
+    "excludedOwnedExistingTests": [
+      "tests/unit/cleanup.test.ts"
+    ],
+    "excludedOwnedSource": [
+      "packages/ai/src/providers/cloudflare.ts",
+      "src/worker/routes/inventory-truth.ts",
+      "src/worker/routes/inventory.ts",
+      "src/worker/routes/preferences.ts",
+      "src/worker/routes/recipes.ts",
+      "src/worker/routes/scans.ts",
+      "src/worker/routes/shopping.ts",
+      "src/worker/routes/week.ts",
+      "src/worker/services/cleanup.ts",
+      "src/worker/services/recipe-catalog-shadow.ts",
+      "src/worker/services/recipe-media.ts"
+    ],
+    "sha256": "9dd4845bac60a20434def37024cb46cf9b61476f9f56b69613b7214e323a0a9e"
+  },
+  "protectedBoundary": {
+    "PayOSPaymentBillingCheckoutWebhooks": "read-only source inventory; no direct console sinks found, no edits allowed",
+    "authBusinessLogic": "unchanged; fixed event sinks reviewed",
+    "migrationsPackageLockWorkflowsCatalogAuthorityProviderActivation": "unchanged",
+    "workerConfigBindingsDateResourceIds": "unchanged; reviewed structured metadata uses source/operator categories; platform invocation capture/access/retention requires hosted evidence"
+  },
+  "schemaVersion": 1,
+  "sourcePattern": "direct console.log/info/warn/error/debug in TypeScript under five Worker/runtime package roots; complete textual enumeration and caller-source review",
+  "sourceRoots": [
+    "src/worker/",
+    "packages/ai/src/",
+    "packages/db/src/",
+    "packages/domain/src/",
+    "packages/recipes/src/"
+  ]
+}
