@@ -2671,3 +2671,14 @@ Chromium preprocessing. SYNTHETIC_IMAGE remains TEST_ONLY / NOT_CERTIFIED.
 Unknown fields/duplicate occurrences/currency/split/source hashes are preserved;
 fridge object recognition and live Qwen quality are not measured. No runtime,
 provider activation, payment/auth/config/data authority or migration change.
+
+
+## ADR-B03-PREP-001 - Bounded lossless receipt preparation (2026-10-12)
+
+Accepted local implementation; see ../backend-upgrade/b03-preprocessing/ADR-B03-PREP-001.md.
+JPEG0.82 reproduces loss of VN diacritics/glyphs on generated images; higher JPEG
+quality still loses text. Receipt-only opt-in preserves supported originals below
+2000px/512KiB, tries bounded PNG for other receipts and retains the previous JPEG
+fallback. Default photo, camera, scan APIs/session/confirmation stay compatible.
+No real-image/provider/device/release certificate; raw metadata retention remains
+an explicit existing-fallback risk. No deployment or provider activation.

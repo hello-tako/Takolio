@@ -1,3 +1,28 @@
+# B03 receipt preprocessing implementation - 2026-10-12 JST
+
+**Task/status:** LOCAL_CANDIDATE_IMPLEMENTED_FINAL_GATES_PENDING.
+Active packet docs/backend-upgrade/b03-preprocessing/PLAN.md; base85c60054;
+branch codex/backend-b03-preprocessing. Canonical worktree
+/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo.
+
+**Changes:** receipt-only <=2000px/512KiB PNG/JPEG original preservation; otherwise
+bounded PNG derivative then compatible JPEG82. Gallery caller opts in; default
+photo/camera codecs unchanged. Session/cancel/encoder fallback guards covered.
+Four policies compared on120valid synthetic variants plus damaged input; actual
+Apple Vision candidate VI642/672 vs JPEG82control619/672, JA647/672 unchanged.
+60photo outputs byte-identical; native PNG derivative/fallback/noisy/3200px cases.
+Actual ScanPage file input/API interception/navigation and2cancellation races;
+no inventory/confirmation/provider calls. Synthetic quality is not certification.
+
+**Checks/limits:** focused3files/47tests and discovery lint/bothTS PASS. Two page
+harness failures (virtual JSX import transform, wrong fixture filename) retained
+and corrected. Final clean-source gates pending. Full advisory remains open;
+real/device/provider/privacy/security/data/hosted/release gates remain required.
+No paid calls/remote writes/deploy/mail/push/PR/merge; original checkout untouched.
+Next: commit candidate after review, run all local gates, record exact receipt.
+
+---
+
 # B03a synthetic image final checkpoint - 2026-10-12 JST
 
 **Task/status:** SYNTHETIC_LOCAL_TESTS_COMPLETE; PRODUCT_RELEASE_GATES_OPEN.

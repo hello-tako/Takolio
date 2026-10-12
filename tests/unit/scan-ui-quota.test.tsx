@@ -117,6 +117,20 @@ describe('scan quota UI', () => {
     expect(useScanStore.getState().imagePreviewUrl).toBe('');
   });
 
+  it.each([
+    ['Tủ lạnh', 'photo'], ['Nguyên liệu', 'photo'], ['Hóa đơn', 'receipt'],
+  ])('selects %s preprocessing purpose for a gallery upload', async (label, purpose) => {
+    readImage.mockReturnValue(vi.fn());
+    await render();
+    await click(host, label);
+    const input = host.querySelector<HTMLInputElement>('input[type=file]')!;
+    const file = new File(['synthetic'], 'scan.png', { type: 'image/png' });
+    Object.defineProperty(input, 'files', { configurable: true, value: [file] });
+    await act(async () => input.dispatchEvent(new Event('change', { bubbles: true })));
+    expect(readImage).toHaveBeenCalledExactlyOnceWith(file, expect.any(Function), purpose);
+    expect(scanFridge).not.toHaveBeenCalled();
+  });
+
   it('shows remaining Free scans from the server snapshot', async () => {
     await render();
     expect(host.querySelector('[data-testid="scan-quota"]')?.textContent).toContain('3/5');
