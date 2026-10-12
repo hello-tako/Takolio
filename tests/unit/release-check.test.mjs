@@ -1835,6 +1835,8 @@ describe('release workflow guardrails', () => {
       expect(job).toContain('uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd');
       expect(job).toContain("wranglerVersion: '4.149.0'");
       expect(job).toContain("cache: ''");
+      expect(job).toContain("package-manager-cache: false");
+      expect(job).toContain("actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38");
       expect(job).toContain('node scripts/wait-for-deployed-release.mjs release-manifest.json');
       expect(job).not.toMatch(/curl[^\n]*health\/ready[^\n]*> readiness\.json/);
       expect(job).not.toMatch(/release-check\.mjs deployed(?:\s|$)/);

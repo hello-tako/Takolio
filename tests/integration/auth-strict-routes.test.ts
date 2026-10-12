@@ -373,3 +373,17 @@ describe('strict recovery and retained authority regressions', () => {
     expect(db.query('SELECT * FROM auth_otp_tickets')).toEqual(before); expect(db.query('SELECT * FROM auth_otp_requests')).toHaveLength(2);
   });
 });
+
+
+describe('first strict-cutover fail-closed recovery', () => {
+  it.each(['register', 'verify-otp', 'resend-otp', 'forgot-password', 'reset-password'])('refuses %s before mail or database work', async (path) => {
+    const denied = new Hono<{ Bindings: Env }>();
+    denied.route('/', authRoutes);
+    const prepare = vi.fn(() => { throw new Error('Recovery must not access OTP state'); });
+    const environment = { ENVIRONMENT: 'development', STRICT_OTP_FAIL_CLOSED: 'true', DB: { prepare } } as unknown as Env;
+    const response = await denied.fetch(new Request(`http://localhost/auth/${path}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' }), environment);
+    expect(response.status).toBe(503);
+    expect(await response.json()).toMatchObject({ code: 'AUTH_OTP_MAINTENANCE' });
+    expect(prepare).not.toHaveBeenCalled();
+  });
+});

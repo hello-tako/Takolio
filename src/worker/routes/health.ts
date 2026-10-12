@@ -39,6 +39,8 @@ healthRoutes.get('/health/ready', async (c) => {
       // Candidate scan paths read these additive columns before any provider
       // call; fail readiness instead of accepting traffic against schema 0022.
       await env.DB.prepare('SELECT request_fingerprint, image_mime_type FROM scans LIMIT 0').all();
+      await env.DB.prepare('SELECT scope_hash, generation FROM auth_otp_scopes LIMIT 0').all();
+      await env.DB.prepare('SELECT request_id, state FROM auth_otp_tickets LIMIT 0').all();
     } catch {
       database = 'error';
     }

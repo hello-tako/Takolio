@@ -9,11 +9,21 @@ import { generateV3, V3_ICON_SIZES, V3_COLORS } from '../../scripts/generate-tak
 const root = resolve(import.meta.dirname, '../..');
 const runtime = resolve(root, 'public/takosan/v3');
 describe('V3 canonical production identity', () => {
-  it('reproduces all runtime exports byte-for-byte from committed masters', async () => {
+  it('reproduces vector bytes and raster pixels from committed masters on each native toolchain', async () => {
     const out = await mkdtemp(resolve(tmpdir(), 'takosan-v3-'));
     const files = await generateV3(out);
     expect(files.length).toBe(49);
-    for (const file of files) expect(await readFile(resolve(out, file)), file).toEqual(await readFile(resolve(runtime, file)));
+    for (const file of files) {
+      const generated = await readFile(resolve(out, file));
+      const committed = await readFile(resolve(runtime, file));
+      if (file.endsWith('.png')) {
+        // PNG encoders can use different zlib headers across OS builds.
+        const a = await sharp(generated).raw().toBuffer({ resolveWithObject: true });
+        const b = await sharp(committed).raw().toBuffer({ resolveWithObject: true });
+        expect(a.info, file).toEqual(b.info);
+        expect(a.data.equals(b.data), file + ': exact decoded pixels').toBe(true);
+      } else expect(generated, file).toEqual(committed);
+    }
   });
   it('keeps every maskable foreground pixel inside the launcher safe circle', async () => {
     const { data, info } = await sharp(resolve(runtime, 'app-icons/icon-maskable-512.png')).raw().toBuffer({ resolveWithObject: true });

@@ -2682,3 +2682,19 @@ quality still loses text. Receipt-only opt-in preserves supported originals belo
 fallback. Default photo, camera, scan APIs/session/confirmation stay compatible.
 No real-image/provider/device/release certificate; raw metadata retention remains
 an explicit existing-fallback risk. No deployment or provider activation.
+
+
+## ADR-FINAL-LOCAL-001 - Close remaining local security/compiler work (2026-10-12)
+
+Accepted local implementation under the user's autonomous completion request.
+See ../backend-upgrade/final-local-completion/ADR-FINAL-LOCAL-001.md.
+Use supported setup-node6cache disable inputs in the two deploy jobs, and complete
+a measured official Tailwind4migration removing braces. Preserve backend/payment/
+auth/data/release gates. Browser/device/hosted and real/provider acceptance remain
+explicitly independent; local findings are fixed without suppressions.
+
+## Integrated release - 2026-10-12
+
+User authorizes Brand PR66/backend merge and release. See
+[ADR-INTEGRATED-RELEASE-002](../backend-upgrade/final-local-completion/ADR-INTEGRATED-RELEASE-002.md)
+for exact-source first-strict-cutover recovery without legacy OTP rollback.

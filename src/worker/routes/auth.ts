@@ -33,6 +33,16 @@ for (const path of ['login', 'register', 'verify-otp', 'resend-otp', 'forgot-pas
   });
 }
 
+// First-cutover recovery retains strict accounting and denies OTP work before side effects.
+for (const path of ['register', 'verify-otp', 'resend-otp', 'forgot-password', 'reset-password']) {
+  authRoutes.use(`/auth/${path}`, async (c, next) => {
+    if (c.req.method === 'POST' && c.env.STRICT_OTP_FAIL_CLOSED === 'true') {
+      return c.json({ error: 'Xác minh mã tạm thời không khả dụng. Vui lòng thử lại sau.', code: 'AUTH_OTP_MAINTENANCE' }, 503);
+    }
+    return next();
+  });
+}
+
 // Apply rate limiting to all auth endpoints (max 15 requests per minute)
 authRoutes.use('/auth/*', rateLimiter({ maxRequests: 15, windowSeconds: 60, prefix: 'rl_auth' }));
 

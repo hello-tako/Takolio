@@ -1,3 +1,42 @@
+# Backend + Brand V3 integrated release - 2026-10-12 JST
+
+**Task/status:** INTEGRATED_VALIDATION_IN_PROGRESS. User authorizes integrating
+Brand PR66, protected merge to main, staging migration/deploy and production
+through existing Environment approval. Active packet:
+docs/backend-upgrade/final-local-completion/PLAN.md.
+
+**Source:** vn-tak/Tako-san (1385308553), main652e0d7632745e9b77cda4b5b3caac83a3ec1015.
+Full brand6114a43ee6c2798ecd9aebca959dd6496d1a2aea merged at c8c151eb;
+branch codex/backend-final-local-completion, isolated canonical worktree
+/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo.
+
+**Changes:** official Tailwind4.3.3 compiler removes vulnerable braces/chokidar
+owner graph; retain measured v3 geometry, alpha, focus, shadow and sRGB gradients.
+SVG exact bytes / PNG exact decoded pixels avoid OS compression variation.
+Deploy setup-node6 pinned with supported automatic cache disabled. Production
+E/H E2E instrumentation uses observable private-session state and scoped status.
+Add staging-only0040 certification including indexes and constraint SQL. Readiness
+requires strict OTP tables. First strict cutover prepares an exact-candidate,
+fail-closed OTP recovery version with unchanged D1/catalog/T20 authority; all
+approval/current-main/CI/binding/ledger fences retained. ADRs in active packet.
+
+**Executed checks:** targeted6files/323tests PASS, full dependency audit0,
+lint/types/migration40/build passed discovery. Final committed-source full gates,
+production E2E, paired appearance, native browser, fresh scanners and hosted gates
+remain in progress. Prior full suite1raw-palette failure corrected; parallel
+build/cache failure retained and validation now sequential. Synthetic samples
+remain TEST_ONLY and do not certify inbox/provider/real image accuracy.
+
+**Remote/limits/next:** no push/main merge/remote0040/deploy yet. Production and
+staging currently652e..., D1/catalog500/cutovertrue/canary0, T20pairedtrue. Preserve
+these flags. Environment reviewer vn-taphoanhatung is required for production;
+authenticated vn-tak cannot impersonate approval. Original user checkout untouched.
+Next: commit implementation, complete final local/hosted checks, merge normally,
+apply staging0040 then deploy and certify exactSHA, queue production0040 approval,
+then deploy same exact main with verified recovery and post-deploy receipts.
+
+---
+
 # B01a strict OTP A1 local checkpoint - 2026-10-11 JST
 
 **Task/status:** `B01a_A1_DORMANT_LOCAL_VERIFIED`; kernel/schema foundation only.

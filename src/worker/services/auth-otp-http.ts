@@ -50,6 +50,7 @@ function generateOtp(): string {
 
 export async function issueStrictOtp(c: OtpContext, email: string, purpose: OtpPurpose,
   options: { source: 'register' | 'login' | 'forgot' | 'resend'; registration?: Registration; password?: string }) {
+  if (c.env.STRICT_OTP_FAIL_CLOSED === 'true') return c.json({ error: 'Xác minh mã tạm thời không khả dụng. Vui lòng thử lại sau.', code: 'AUTH_OTP_MAINTENANCE' }, 503);
   if (!c.env.DB || !c.env.OTP_HASH_SECRET) return failure(c, { kind: 'unavailable' });
   const coordinator = new StrictOtpCoordinator(c.env.DB, c.env.OTP_HASH_SECRET);
   const code = generateOtp();
