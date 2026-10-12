@@ -28,7 +28,7 @@
   text-wrap: balance;
 }
 .planning-eyebrow {
-  color: var(--kitchen-pine);
+  color: var(--semantic-text-on-soft);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -162,7 +162,7 @@
   align-items: center;
   gap: 8px;
   min-height: 48px;
-  color: var(--kitchen-pine);
+  color: var(--semantic-text-on-soft);
   font-size: 14px;
   font-weight: 600;
   text-decoration: underline;
@@ -228,7 +228,7 @@
 }
 .planning-receipt {
   font-size: 14px;
-  color: var(--kitchen-pine);
+  color: var(--semantic-text-on-soft);
 }
 .planning-receipt:empty {
   display: none;
@@ -291,7 +291,7 @@
   font-size: 28px;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
-  color: var(--kitchen-pine);
+  color: var(--semantic-text-on-soft);
 }
 .planning-context-choice {
   font-weight: 600;
@@ -519,7 +519,7 @@
   font-size: 26px;
 }
 .shopping-list-heading h2 span {
-  color: var(--kitchen-pine);
+  color: var(--semantic-text-on-soft);
   font-variant-numeric: tabular-nums;
 }
 .shopping-list-heading > p {
@@ -606,7 +606,7 @@
   padding: 32px;
 }
 .shopping-empty > svg {
-  color: var(--kitchen-pine);
+  color: var(--semantic-text-on-soft);
   margin-bottom: 20px;
 }
 .shopping-empty h3 {

@@ -1,0 +1,33 @@
+{
+  "fonts": [
+    {
+      "file": "nunito-vietnamese-wght-normal.woff2",
+      "weightRange": [
+        [
+          200.0,
+          1000.0
+        ]
+      ]
+    },
+    {
+      "file": "nunito-latin-wght-normal.woff2",
+      "weightRange": [
+        [
+          200.0,
+          1000.0
+        ]
+      ]
+    },
+    {
+      "file": "nunito-latin-ext-wght-normal.woff2",
+      "weightRange": [
+        [
+          200.0,
+          1000.0
+        ]
+      ]
+    }
+  ],
+  "sample": "Bữa ngon, nhẹ đầu. Đăng nhập Tủ lạnh Nguyên liệu Dinh dưỡng Nguyễn Ánh Đỗ Ỹ ỳ ơ ư ấ ề ỗ ứ ự đ",
+  "missing": []
+}

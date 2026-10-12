@@ -1,18 +1,18 @@
-# Frigo 🥗
-> **"Mở tủ lạnh. Biết ngay hôm nay ăn gì."**  
-> Smarter food for a brighter tomorrow. Less food waste. More great meals.
+# Takosan
+> **"Bữa ngon, nhẹ đầu."**
+> Less planning. More living.
 
-[![CI Status](https://github.com/tungjpstore/frigo/actions/workflows/ci.yml/badge.svg)](https://github.com/tungjpstore/frigo/actions)
+[![CI Status](https://github.com/vn-tak/Tako-san/actions/workflows/ci.yml/badge.svg)](https://github.com/vn-tak/Tako-san/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Domain](https://img.shields.io/badge/Production-frigo.tungjpstore.net-22C55E)](https://frigo.tungjpstore.net)
 
 ---
 
-## 1. Giới thiệu Frigo
+## 1. Giới thiệu Takosan
 
-**Frigo** là ứng dụng AI thông minh giúp người dùng quản lý thực phẩm trong tủ lạnh, nhận diện nguyên liệu qua ảnh chụp camera, tự động theo dõi hạn dùng/độ tươi, và đưa ra gợi ý món ăn tối ưu từ thực phẩm sẵn có.
+**Takosan** là ứng dụng AI thông minh giúp người dùng quản lý thực phẩm trong tủ lạnh, nhận diện nguyên liệu qua ảnh chụp camera, tự động theo dõi hạn dùng/độ tươi, và đưa ra gợi ý món ăn tối ưu từ thực phẩm sẵn có.
 
-Frigo **KHÔNG** phải là một chatbot công thức chung chung (generic recipe bot). Frigo xây dựng xung quanh vòng lặp thực phẩm khép kín hoàn chỉnh (Closed Product Loop):
+Takosan **KHÔNG** phải là một chatbot công thức chung chung (generic recipe bot). Frigo xây dựng xung quanh vòng lặp thực phẩm khép kín hoàn chỉnh (Closed Product Loop):
 
 ```mermaid
 graph TD
@@ -39,15 +39,14 @@ graph TD
 
 ## 2. Nhận diện thương hiệu & Thiết kế
 
-Theo quy chuẩn Brand Identity của Frigo:
-* **Fresh Green (Chính):** `#22C55E` - Năng động, tươi mới, đại diện cho thực phẩm sạch.
-* **Deep Green (Chữ & Nền nhấn):** `#0F3D2E` - Chiều sâu, đáng tin cậy.
-* **Mint (Nền phụ & Card):** `#DDF7E3` - Nhẹ nhàng, dịu mắt.
-* **Cream (Nền chính):** `#FFFDF6` - Ấm cúng, tự nhiên như gian bếp gia đình.
-* **Tomato Red (Cảnh báo hết hạn):** `#EF4444`
-* **Sunny Yellow (Dùng sớm & Plus):** `#FACC15`
-* **Typography:** Tiêu đề dùng font bo tròn thân thiện (Poppins Rounded), nội dung dùng Inter.
-* **Giao diện:** Mobile-first (360px - 430px), bo góc tròn mềm mại `16–24px`, chiều cao nút bấm `48–56px`, vùng chạm `≥ 44px`.
+Nhận diện V3: canonical vector từ bộ Takosan Brand Identity V3.
+* **Tako Coral:** `#FF7B6B` - nhấn thương hiệu, không dùng chữ thường trên trắng.
+* **Leaf Green:** `#2E7D5B` - hành động chính với chữ trắng.
+* **Deep Ink:** `#202C28`; **Cream:** `#FFF8F3`; **Mint:** `#DFF4E6`; **Yellow:** `#FFC857`.
+* **Typography:** Nunito self-hosted, SIL OFL, subset Việt và variable weights 400-800.
+* **Authority:** `src/web/styles/takosan-tokens.css`, semantic utilities, V3 product scope.
+* **Runtime assets:** `public/takosan/v3/`; source, native handoff và báo cáo ở [`docs/brand/v3`](docs/brand/v3/TAKOSAN_BRAND_V3_IMPLEMENTATION.md).
+* **Giao diện:** responsive, visible focus, reduced motion, touch targets tối thiểu 44px.
 
 ---
 
@@ -123,8 +122,8 @@ frigo/
 
 ### Bước 1: Clone và Cài đặt
 ```bash
-git clone https://github.com/tungjpstore/frigo.git
-cd frigo
+git clone https://github.com/vn-tak/Tako-san.git
+cd Tako-san
 pnpm install
 ```
 
@@ -285,8 +284,8 @@ projection issues. Không bật `dual` nếu gate này chưa xanh.
 Frigo Week là hệ thống lập kế hoạch thực đơn tuần thông minh khép kín vòng lặp thực phẩm gia đình.
 
 ### Nguyên tắc kiến trúc cốt lõi:
-> **"AI KHÔNG BAO GIỜ làm phép tính toán học."**  
-> Toàn bộ tính toán định lượng (portion scaling), kiểm tra ngân sách, quy đổi kích cỡ đóng gói bán lẻ (package sizing), khấu trừ tồn kho tủ lạnh và phân bổ đồ thừa đều được thực thi **100% bằng TypeScript Domain Logic tất định** (`packages/domain/src/week/`).  
+> **"AI KHÔNG BAO GIỜ làm phép tính toán học."**
+> Toàn bộ tính toán định lượng (portion scaling), kiểm tra ngân sách, quy đổi kích cỡ đóng gói bán lẻ (package sizing), khấu trừ tồn kho tủ lạnh và phân bổ đồ thừa đều được thực thi **100% bằng TypeScript Domain Logic tất định** (`packages/domain/src/week/`).
 > Mô hình ngôn ngữ lớn (LLM qua `AIRouter`) chỉ đóng vai trò phân tích khẩu vị, giải thích lý do gợi ý hoặc xếp hạng văn phong.
 
 ### Các thành phần Domain Engine:

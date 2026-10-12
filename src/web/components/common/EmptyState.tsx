@@ -1,4 +1,5 @@
 import React from 'react';
+import { AlertTriangle } from 'lucide-react';
 import { TAKOSAN_BRAND, type TakosanMascotPose } from '../../lib/takosan-brand';
 import { Button } from './Button';
 
@@ -39,7 +40,7 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
   return (
     <div className="bg-white rounded-2xl p-6 text-center border border-takosan-cream-line shadow-xs my-4 animate-fade-in">
       <div className="w-32 h-32 mx-auto mb-3 overflow-hidden flex items-center justify-center">
-        <img src={imgSrc} alt="" aria-hidden="true" width={128} height={128} className="w-full h-full object-contain" data-mascot-pose={pose} />
+        {type === 'error' ? <AlertTriangle aria-hidden="true" className="w-12 h-12 text-semantic-danger-strong" /> : <img src={imgSrc} alt="" aria-hidden="true" width={128} height={128} className="w-full h-full object-contain" data-mascot-pose={pose} />}
       </div>
 
       <Heading className="font-heading font-bold text-base text-takosan-navy">
