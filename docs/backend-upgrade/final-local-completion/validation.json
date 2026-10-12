@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAtUtc": "2026-10-12T04:22:43.480378+00:00",
+  "checkedAtUtc": "2026-10-12T05:30:18.182683+00:00",
   "classification": "INTEGRATED_LOCAL_VALIDATION_NOT_DEPLOYMENT_CERTIFICATION",
   "repository": {
     "name": "hello-tako/Tako-san",
@@ -465,6 +465,194 @@
         "status": " M docs/backend-upgrade/final-local-completion/security-provenance.json\n M docs/backend-upgrade/final-local-completion/security-scanner.json\n"
       },
       "logSha256": "27e025e56175b1d62b2c12094c431e2aa91c7290e5d4393e7f07df6364fc352f"
+    },
+    {
+      "name": "continuity-targeted-1",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/unit/production-catalog-continuity.test.mjs",
+        "tests/unit/release-check.test.mjs",
+        "tests/unit/strict-otp-release.test.mjs"
+      ],
+      "startedAtUtc": "2026-10-12T05:23:52.066019+00:00",
+      "durationSeconds": 3.31,
+      "exitCode": 0,
+      "before": {
+        "head": "6bc1fe96527bf111958b870f66b47f4e0c5ea2fd",
+        "status": " M .github/workflows/deploy.yml\n M scripts/release-check.mjs\n?? docs/backend-upgrade/final-local-completion/ADR-CATALOG-CONTINUITY-003.md\n?? tests/unit/production-catalog-continuity.test.mjs\n"
+      },
+      "after": {
+        "head": "6bc1fe96527bf111958b870f66b47f4e0c5ea2fd",
+        "status": " M .github/workflows/deploy.yml\n M scripts/release-check.mjs\n?? docs/backend-upgrade/final-local-completion/ADR-CATALOG-CONTINUITY-003.md\n?? tests/unit/production-catalog-continuity.test.mjs\n"
+      },
+      "logSha256": "d639bafc6abbf1ba67c99803b4eecdc1cf23d59619de8413a769655cbe3a60b2",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "6bc1fe96527bf111958b870f66b47f4e0c5ea2fd",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "continuity-lint-1",
+      "command": [
+        "pnpm",
+        "lint"
+      ],
+      "startedAtUtc": "2026-10-12T05:25:00.979818+00:00",
+      "durationSeconds": 6.401,
+      "exitCode": 0,
+      "before": {
+        "head": "6bc1fe96527bf111958b870f66b47f4e0c5ea2fd",
+        "status": " M .github/workflows/deploy.yml\n M scripts/release-check.mjs\n?? docs/backend-upgrade/final-local-completion/ADR-CATALOG-CONTINUITY-003.md\n?? tests/unit/production-catalog-continuity.test.mjs\n"
+      },
+      "after": {
+        "head": "6bc1fe96527bf111958b870f66b47f4e0c5ea2fd",
+        "status": " M .github/workflows/deploy.yml\n M scripts/release-check.mjs\n?? docs/backend-upgrade/final-local-completion/ADR-CATALOG-CONTINUITY-003.md\n?? tests/unit/production-catalog-continuity.test.mjs\n"
+      },
+      "logSha256": "25cc1f9634027c24c62f4029a44f00fc3a7e082ac28576c6fc5a3db3e0961f73",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "6bc1fe96527bf111958b870f66b47f4e0c5ea2fd",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "continuity-types-1",
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "startedAtUtc": "2026-10-12T05:26:10.617583+00:00",
+      "durationSeconds": 13.919,
+      "exitCode": 0,
+      "before": {
+        "head": "6bc1fe96527bf111958b870f66b47f4e0c5ea2fd",
+        "status": " M .github/workflows/deploy.yml\n M HANDOFF.md\n M TASK_BOARD.md\n M docs/ai/CURRENT_STATE.md\n M docs/ai/HANDOFF.md\n M docs/ai/TASK_BOARD.md\n M docs/backend-upgrade/final-local-completion/RESULT.md\n M docs/backend-upgrade/final-local-completion/validation.json\n M scripts/release-check.mjs\n?? docs/backend-upgrade/final-local-completion/ADR-CATALOG-CONTINUITY-003.md\n?? tests/unit/production-catalog-continuity.test.mjs\n"
+      },
+      "after": {
+        "head": "6bc1fe96527bf111958b870f66b47f4e0c5ea2fd",
+        "status": " M .github/workflows/deploy.yml\n M HANDOFF.md\n M TASK_BOARD.md\n M docs/ai/CURRENT_STATE.md\n M docs/ai/HANDOFF.md\n M docs/ai/TASK_BOARD.md\n M docs/backend-upgrade/final-local-completion/RESULT.md\n M docs/backend-upgrade/final-local-completion/validation.json\n M scripts/release-check.mjs\n?? docs/backend-upgrade/final-local-completion/ADR-CATALOG-CONTINUITY-003.md\n?? tests/unit/production-catalog-continuity.test.mjs\n"
+      },
+      "logSha256": "a3a28a25c9246fe7e8bbf5999692dc60347e343a2415f8cefcb7e767e0e6a0d6",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "6bc1fe96527bf111958b870f66b47f4e0c5ea2fd",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "continuity-suite-1",
+      "command": [
+        "pnpm",
+        "test"
+      ],
+      "startedAtUtc": "2026-10-12T05:26:56.400558+00:00",
+      "durationSeconds": 149.936,
+      "exitCode": 0,
+      "before": {
+        "head": "6bc1fe96527bf111958b870f66b47f4e0c5ea2fd",
+        "status": " M .github/workflows/deploy.yml\n M HANDOFF.md\n M TASK_BOARD.md\n M docs/ai/CURRENT_STATE.md\n M docs/ai/DECISIONS.md\n M docs/ai/HANDOFF.md\n M docs/ai/TASK_BOARD.md\n M docs/backend-upgrade/final-local-completion/RESULT.md\n M docs/backend-upgrade/final-local-completion/validation.json\n M scripts/release-check.mjs\n?? docs/backend-upgrade/final-local-completion/ADR-CATALOG-CONTINUITY-003.md\n?? tests/unit/production-catalog-continuity.test.mjs\n"
+      },
+      "after": {
+        "head": "6bc1fe96527bf111958b870f66b47f4e0c5ea2fd",
+        "status": " M .github/workflows/deploy.yml\n M DEPLOYMENT.md\n M HANDOFF.md\n M TASK_BOARD.md\n M docs/ai/CURRENT_STATE.md\n M docs/ai/DECISIONS.md\n M docs/ai/HANDOFF.md\n M docs/ai/TASK_BOARD.md\n M docs/backend-upgrade/final-local-completion/PLAN.md\n M docs/backend-upgrade/final-local-completion/RESULT.md\n M docs/backend-upgrade/final-local-completion/validation.json\n M scripts/release-check.mjs\n?? docs/backend-upgrade/final-local-completion/ADR-CATALOG-CONTINUITY-003.md\n?? docs/backend-upgrade/final-local-completion/continuity-security.json\n?? tests/unit/production-catalog-continuity.test.mjs\n"
+      },
+      "logSha256": "f0b311c2032a1599dc26f0149e5e697c969896d59bbc3c94e937d240a639f0c6",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "6bc1fe96527bf111958b870f66b47f4e0c5ea2fd",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "continuity-migrations-1",
+      "command": [
+        "pnpm",
+        "check:migrations"
+      ],
+      "startedAtUtc": "2026-10-12T05:29:43.501702+00:00",
+      "durationSeconds": 0.452,
+      "exitCode": 0,
+      "before": {
+        "head": "6bc1fe96527bf111958b870f66b47f4e0c5ea2fd",
+        "status": " M .github/workflows/deploy.yml\n M DEPLOYMENT.md\n M HANDOFF.md\n M TASK_BOARD.md\n M docs/ai/CURRENT_STATE.md\n M docs/ai/DECISIONS.md\n M docs/ai/HANDOFF.md\n M docs/ai/TASK_BOARD.md\n M docs/backend-upgrade/final-local-completion/PLAN.md\n M docs/backend-upgrade/final-local-completion/RESULT.md\n M docs/backend-upgrade/final-local-completion/validation.json\n M scripts/release-check.mjs\n?? docs/backend-upgrade/final-local-completion/ADR-CATALOG-CONTINUITY-003.md\n?? docs/backend-upgrade/final-local-completion/continuity-security.json\n?? tests/unit/production-catalog-continuity.test.mjs\n"
+      },
+      "after": {
+        "head": "6bc1fe96527bf111958b870f66b47f4e0c5ea2fd",
+        "status": " M .github/workflows/deploy.yml\n M DEPLOYMENT.md\n M HANDOFF.md\n M TASK_BOARD.md\n M docs/ai/CURRENT_STATE.md\n M docs/ai/DECISIONS.md\n M docs/ai/HANDOFF.md\n M docs/ai/TASK_BOARD.md\n M docs/backend-upgrade/final-local-completion/PLAN.md\n M docs/backend-upgrade/final-local-completion/RESULT.md\n M docs/backend-upgrade/final-local-completion/validation.json\n M scripts/release-check.mjs\n?? docs/backend-upgrade/final-local-completion/ADR-CATALOG-CONTINUITY-003.md\n?? docs/backend-upgrade/final-local-completion/continuity-security.json\n?? tests/unit/production-catalog-continuity.test.mjs\n"
+      },
+      "logSha256": "965811c75cef6d8d7db8527ffaf3ec59c52869fe5cb575a1261bc3b793191de5",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "6bc1fe96527bf111958b870f66b47f4e0c5ea2fd",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "continuity-build-1",
+      "command": [
+        "env",
+        "VITE_MEAL_PLANNER_ENABLED=true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED=true",
+        "pnpm",
+        "build"
+      ],
+      "startedAtUtc": "2026-10-12T05:29:44.144875+00:00",
+      "durationSeconds": 8.418,
+      "exitCode": 0,
+      "before": {
+        "head": "6bc1fe96527bf111958b870f66b47f4e0c5ea2fd",
+        "status": " M .github/workflows/deploy.yml\n M DEPLOYMENT.md\n M HANDOFF.md\n M TASK_BOARD.md\n M docs/ai/CURRENT_STATE.md\n M docs/ai/DECISIONS.md\n M docs/ai/HANDOFF.md\n M docs/ai/TASK_BOARD.md\n M docs/backend-upgrade/final-local-completion/PLAN.md\n M docs/backend-upgrade/final-local-completion/RESULT.md\n M docs/backend-upgrade/final-local-completion/validation.json\n M scripts/release-check.mjs\n?? docs/backend-upgrade/final-local-completion/ADR-CATALOG-CONTINUITY-003.md\n?? docs/backend-upgrade/final-local-completion/continuity-security.json\n?? tests/unit/production-catalog-continuity.test.mjs\n"
+      },
+      "after": {
+        "head": "6bc1fe96527bf111958b870f66b47f4e0c5ea2fd",
+        "status": " M .github/workflows/deploy.yml\n M DEPLOYMENT.md\n M HANDOFF.md\n M TASK_BOARD.md\n M docs/ai/CURRENT_STATE.md\n M docs/ai/DECISIONS.md\n M docs/ai/HANDOFF.md\n M docs/ai/TASK_BOARD.md\n M docs/backend-upgrade/final-local-completion/PLAN.md\n M docs/backend-upgrade/final-local-completion/RESULT.md\n M docs/backend-upgrade/final-local-completion/validation.json\n M scripts/release-check.mjs\n?? docs/backend-upgrade/final-local-completion/ADR-CATALOG-CONTINUITY-003.md\n?? docs/backend-upgrade/final-local-completion/continuity-security.json\n?? tests/unit/production-catalog-continuity.test.mjs\n"
+      },
+      "logSha256": "7f7455171b4f112d9a90483770668c7f8999718b8bede9689b97a00da598965a",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "6bc1fe96527bf111958b870f66b47f4e0c5ea2fd",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
     }
   ],
   "retainedFailures": [
@@ -475,9 +663,10 @@
     "first E2E 86 pass and 8 fail",
     "first visual matrix transient fade contrast",
     "hosted Node22 SQLite client bundling failure",
-    "839bd hosted CI cancelled during account/repository transfer"
+    "839bd hosted CI cancelled during account/repository transfer",
+    "production deploy38206476316 new-SHA D1 continuity preflight rejection before Worker upload; migration0040 remains applied"
   ],
-  "releaseState": "PR67_DRAFT_FINAL_HOSTED_CI_AND_STAGING_PENDING",
+  "releaseState": "PR67_MERGED_STAGING_VERIFIED_PRODUCTION_PREFLIGHT_FAILED",
   "openEvidence": [
     "production Environment required reviewer vn-taphoanhatung",
     "actual deployed fail-closed recovery version certification",
@@ -488,5 +677,23 @@
     "protected payment/billing ownership and live transaction acceptance",
     "edge/load/chaos/SLO and independent operational acceptance"
   ],
-  "privateContentPublished": false
+  "privateContentPublished": false,
+  "mainMergedSha": "6bc1fe96527bf111958b870f66b47f4e0c5ea2fd",
+  "actualReleaseRuns": {
+    "mainCi": 38204233535,
+    "stagingMigration": 38204668457,
+    "stagingDeploy": 38204783756,
+    "productionMigration": 38205975841,
+    "failedProductionDeploy": 38206476316
+  },
+  "continuityFix": {
+    "localSuite": {
+      "files": 320,
+      "tests": 7650,
+      "status": "PASS"
+    },
+    "runtimeSourceDeltaFromMergedMain": 0,
+    "securityDeltaReceipt": "continuity-security.json",
+    "productionDeployPending": true
+  }
 }

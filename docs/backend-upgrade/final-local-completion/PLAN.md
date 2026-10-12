@@ -66,3 +66,12 @@ GitHub API confirms ID1385308553 now resolves to hello-tako/Tako-san. Active CLI
 hello-tako has push/admin. Release and staging dispatch bind the current repository;
 0040 staging additionally requires immutable ID. Historical packets retain old names.
 Existing production reviewer vn-taphoanhatung and environment gates remain enforced.
+
+## Continuity correction after actual production preflight failure
+
+PR67/main CI and staging0040/deploy/smoke completed. Production0040 is applied;
+approved production deploy38206476316 failed before any Worker upload/traffic
+change. ADR-CATALOG-CONTINUITY-003 and scoped checker/workflow fix preserve only
+an unchanged fully verified D1 catalog across new application SHAs. Normal PR/main
+CI and exact-SHA staging/deploy checks must be rerun before a new production review.
+No migration reapply or downgrade of existing catalog authority is needed.

@@ -1,0 +1,66 @@
+{
+  "classification": "RELEASE_CONTINUITY_CHANGED_SOURCE_SECURITY_SCAN",
+  "files": [
+    ".github/workflows/deploy.yml",
+    "HANDOFF.md",
+    "TASK_BOARD.md",
+    "docs/ai/CURRENT_STATE.md",
+    "docs/ai/DECISIONS.md",
+    "docs/ai/HANDOFF.md",
+    "docs/ai/TASK_BOARD.md",
+    "docs/backend-upgrade/final-local-completion/ADR-CATALOG-CONTINUITY-003.md",
+    "docs/backend-upgrade/final-local-completion/RESULT.md",
+    "docs/backend-upgrade/final-local-completion/validation.json",
+    "scripts/release-check.mjs",
+    "tests/unit/production-catalog-continuity.test.mjs"
+  ],
+  "results": [
+    {
+      "tool": "semgrep",
+      "status": "PASS",
+      "findingCount": 0,
+      "rules": {},
+      "severities": {},
+      "version": "1.180.0",
+      "rawReportSha256": "3dd22c6783e50e34759aee34eea4e4b8e435852d24430fc99fbad80c6fa751cd",
+      "rawLogSha256": "e0ebc572c8b48d7d60b56278c2bdf11e6ede9759c344f15732696c0a9681cf01"
+    },
+    {
+      "tool": "zizmor",
+      "status": "PASS",
+      "findingCount": 0,
+      "rules": {},
+      "severities": {},
+      "version": "1.30.1",
+      "rawReportSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "rawLogSha256": "2fdf6a61c3d7831190db9432eeb962fc877f8f199779daf4e8998f539072bb7c"
+    },
+    {
+      "tool": "gitleaks",
+      "status": "PASS",
+      "findingCount": 0,
+      "rules": {},
+      "severities": {},
+      "version": "8.30.1",
+      "rawReportSha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "rawLogSha256": "d00b8e4ffe0b0a446c033d1ed32a82f7fb50fbc3a846096208ddb1314ca5da22"
+    }
+  ],
+  "candidateValuesPublished": false,
+  "sourceBase": "6bc1fe96527bf111958b870f66b47f4e0c5ea2fd",
+  "scope": "CHANGED_SOURCE_DELTA_AFTER_FULL_PINNED_SCAN; all runtime/application/catalog/migrations/assets/packages unchanged from sourceBase",
+  "fileDigests": {
+    ".github/workflows/deploy.yml": "b6bbb53b5e9442a298a4b40092ee35777df6ea08478269c042376f077da9babe",
+    "HANDOFF.md": "c8400c70d69d4d532c4f88cd7854a27e189619252ebf7b9039a7b9e88d56a326",
+    "TASK_BOARD.md": "7ae3878067d1327638392b1675d0335b9d18876496d46a9980f9cced74b1a075",
+    "docs/ai/CURRENT_STATE.md": "8c9cde5ebc6558e1ca457f100c4631803ee84e559094e15a34b13ed5ed0670ae",
+    "docs/ai/DECISIONS.md": "7176b84372d4b98d9ea77bf6f5430cde608723067780e16b993408d6210b5adf",
+    "docs/ai/HANDOFF.md": "89b72e4a2ddf747b67fbae73ea6550c71cea1b1e551346a7f827b111810b0e6a",
+    "docs/ai/TASK_BOARD.md": "ab321d85d14738bb654dca3a098fbfb1e5f86141bfcf2a2e053f45fdf19e9b18",
+    "docs/backend-upgrade/final-local-completion/ADR-CATALOG-CONTINUITY-003.md": "58d61990dc01365d2597c9a7445d0390c12e28c3f55c5e68f40ca35758a40c4f",
+    "docs/backend-upgrade/final-local-completion/RESULT.md": "cba608e924ad05fb008566ac57e3fded729b4b248909461a44f52b14f0b5a317",
+    "docs/backend-upgrade/final-local-completion/validation.json": "743ee0b34592aef5d7661f6204837352c03b6971050267b6ce4720c6d766cad9",
+    "scripts/release-check.mjs": "f29d5ad4bbfa9762a859c1290cab246abcac44f90df779f6e19dbf30f8452820",
+    "tests/unit/production-catalog-continuity.test.mjs": "326fa114178acfd010f64bc815253a5893e7df614767c90c8a5026983b1fddb3"
+  }
+}

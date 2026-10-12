@@ -367,7 +367,7 @@ jobs:
           if [ "$legacy_authority" = true ]; then
             node scripts/release-check.mjs legacy-authority release-manifest.json previous-version.json previous-authority.json
           fi
-          node scripts/release-check.mjs transition release-manifest.json previous-authority.json
+          node scripts/release-check.mjs transition release-manifest.json previous-authority.json previous-version.json
 
       - name: Recheck live main and exact-SHA CI before preparing recovery
         env:

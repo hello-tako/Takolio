@@ -108,6 +108,80 @@ const FORWARD_RECIPE_CATALOG_TRANSITIONS = new Map([
   ['d1', []],
 ]);
 
+export const D1_CATALOG_CONTINUITY_PATHS = Object.freeze([
+  'src/worker/services/recipe-authority.ts',
+  'src/worker/services/recipe-authority-status.ts',
+  'packages/db/src/recipe-content.ts',
+  'packages/domain/src/foundation.ts',
+  'packages/recipes/src/recipe-authority.ts',
+  'packages/recipes/src/recipe-canary-cohort.ts',
+  'packages/recipes/src/runtime-catalog.ts',
+  'packages/recipes/src/runtime-hydration.ts',
+  'packages/recipes/src/runtime-recipe.ts',
+  'packages/recipes/src/catalog-drift.ts',
+  'packages/recipes/src/catalog-entry.ts',
+  'packages/recipes/src/catalog-fingerprint.ts',
+  'packages/recipes/src/foundation.ts',
+  'packages/recipes/src/types.ts',
+  'packages/recipes/src/data.ts',
+  'packages/recipes/src/vietnamese-bank.ts',
+  'packages/recipes/src/vietnamese-images.ts',
+  'packages/recipes/src/seed-render.ts',
+  'packages/recipes/src/import/release-manifest.ts',
+  'packages/recipes/src/import/identity.ts',
+  'packages/recipes/src/import/types.ts',
+  'packages/recipes/src/import/catalog-release.current.json',
+]);
+
+function catalogZodResolution(cwd, sha) {
+  const dependency = JSON.parse(git(cwd, 'show', `${sha}:package.json`)).dependencies?.zod;
+  const lock = git(cwd, 'show', `${sha}:pnpm-lock.yaml`);
+  const importer = lock.match(/(?:^|\n)  \.:\n([\s\S]*?)(?=\n  [^ ]|\npackages:|(?![\s\S]))/)?.[1];
+  const resolved = importer?.match(/^      zod:\n        specifier: ([^\n]+)\n        version: ([^\n]+)/m);
+  if (!dependency || resolved?.[1] !== dependency || !/^\d+\.\d+\.\d+$/.test(resolved?.[2] ?? ''))
+    throw new Error('Catalog Zod dependency resolution is unavailable or inconsistent');
+  const version = resolved[2];
+  const key = version.replaceAll('.', '\\.');
+  const integrity = lock.match(new RegExp(`^  zod@${key}:\\n    resolution: \{integrity: ([^}]+)\}`, 'm'))?.[1];
+  if (!integrity) throw new Error('Catalog Zod package integrity is unavailable');
+  return { dependency, version, integrity };
+}
+
+/** Only an unchanged, already complete D1 rollout can survive an unrelated application SHA. */
+export function verifyD1CatalogContinuity(manifest, evidence, release, version, options = {}) {
+  if (manifest.environment !== 'production' || manifest.recipeCatalogMode !== 'd1' ||
+      evidence?.configuredMode !== 'd1' || evidence.commit === manifest.sha)
+    throw new Error('Catalog continuity requires a new production SHA retaining complete D1');
+  const previous = verifyPreviousRecipeAuthority(manifest, evidence, options);
+  verifyRecipeAuthorityEvidence({ ...manifest, sha: evidence.commit }, evidence, release);
+  const binding = verifyRollbackTarget(manifest, version);
+  const plain = (name) => version.resources.bindings.find((b) => b.type === 'plain_text' && b.name === name)?.text;
+  const flags = {
+    GIT_COMMIT: evidence.commit, ENVIRONMENT: 'production', RECIPE_CATALOG_MODE: 'd1',
+    RECIPE_CATALOG_D1_CANARY_PERCENT: '0', RECIPE_CATALOG_CUTOVER_ENABLED: 'true',
+    MEAL_PLANNER_ENABLED: String(manifest.mealCompositionV2Enabled),
+    MEAL_COMPOSITION_V2_ENABLED: String(manifest.mealCompositionV2Enabled),
+  };
+  for (const [name, value] of Object.entries(flags))
+    if (plain(name) !== value) throw new Error(`Catalog continuity previous version mismatch: ${name}`);
+  const cwd = options.cwd ?? process.cwd();
+  const readBlob = options.readBlob ?? ((sha, path) => git(cwd, 'rev-parse', `${sha}:${path}`));
+  const sourceBlobs = {};
+  for (const path of D1_CATALOG_CONTINUITY_PATHS) {
+    const before = readBlob(evidence.commit, path);
+    if (!/^[a-f0-9]{40}$/.test(before ?? '') || before !== readBlob(manifest.sha, path))
+      throw new Error(`Catalog continuity source changed or unavailable: ${path}`);
+    sourceBlobs[path] = before;
+  }
+  const readDependency = options.readDependency ?? ((sha) => catalogZodResolution(cwd, sha));
+  const dependency = readDependency(evidence.commit);
+  if (!dependency?.dependency || !dependency.version || !dependency.integrity ||
+      JSON.stringify(dependency) !== JSON.stringify(readDependency(manifest.sha)))
+    throw new Error('Catalog continuity dependency changed or unavailable');
+  return { previousAuthorityProof: previous, binding, sourceBlobs, dependency,
+    kind: 'unchanged_d1_continuity', checkedAt: new Date().toISOString() };
+}
+
 /** Serial deployment preflight: stale jobs cannot skip or reverse an already deployed stage. */
 export function validateRecipeCatalogTransition(manifest, currentEvidence, release, options = {}) {
   if (!SHA.test(manifest?.sha || ''))
@@ -174,7 +248,10 @@ export function validateRecipeCatalogTransition(manifest, currentEvidence, relea
   };
   if (currentState === targetState) {
     if (USER_VISIBLE_D1_MODES.includes(target.mode) && currentEvidence.commit !== manifest.sha) {
-      throw new Error('A new release SHA must restart recipe authority rollout in shadow');
+      if (target.mode !== 'd1' || !options.previousVersion)
+        throw new Error('A new release SHA must restart recipe authority rollout in shadow');
+      const continuity = verifyD1CatalogContinuity(manifest, currentEvidence, release, options.previousVersion, options);
+      return { from: currentState, to: targetState, kind: 'unchanged_d1_continuity', continuity };
     }
     verifyRecipeAuthorityEvidence(currentManifest, currentEvidence, release);
     return {
@@ -1084,10 +1161,13 @@ async function main() {
     } else if (command === 'transition') {
       const current = JSON.parse(readFileSync(evidenceFile, 'utf8'));
       const release = JSON.parse(readFileSync(CATALOG_RELEASE_MANIFEST_PATH, 'utf8'));
-      manifest.recipeAuthorityTransition = {
-        ...validateRecipeCatalogTransition(manifest, current, release, { cwd: process.cwd() }),
-        checkedAt: new Date().toISOString(),
-      };
+      const previousVersion = extraEvidenceFile ? JSON.parse(readFileSync(extraEvidenceFile, 'utf8')) : undefined;
+      const transition = validateRecipeCatalogTransition(manifest, current, release, {
+        cwd: process.cwd(), previousVersion,
+      });
+      manifest.recipeAuthorityTransition = { ...transition, checkedAt: new Date().toISOString() };
+      if (transition.continuity)
+        manifest.previousRecipeAuthorityProof = transition.continuity.previousAuthorityProof;
       manifest.previousRecipeAuthority = current;
     } else if (command === 'deployment-snapshot') {
       manifest.previousDeployment = verifyStableWorkerDeployment(

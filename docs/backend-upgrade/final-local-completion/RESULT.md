@@ -1,6 +1,7 @@
 # Integrated backend and Takosan Brand V3 release candidate
 
-Status: LOCAL_VALIDATED; final hosted CI, staging and production receipts pending.
+Status: PR67_MERGED_STAGING_VERIFIED_PRODUCTION_PREFLIGHT_FAILED.
+See ADR-CATALOG-CONTINUITY-003.md for the scoped preflight fix; final release pending.
 Implementation b2fc564f3ff39bcd15dfb6bcb8f32912893b0506; full Brand V3 ancestor6114a43ee6c2798ecd9aebca959dd6496d1a2aea.
 Repository transferred to hello-tako/Tako-san with unchanged ID1385308553.
 PR https://github.com/hello-tako/Tako-san/pull/67.
@@ -57,3 +58,16 @@ No main merge, remote migration or production deploy is claimed in this checkpoi
 Synthetic fixtures remain TEST_ONLY. Real inbox/provider/data/human/device/payment/
 SLO acceptance is open; local or hosted success alone is not full masterplan completion.
 Raw scanner findings, private fixtures, provider content and credentials are not published.
+
+## Actual release progress and retained failure - 2026-10-12
+
+PR66/67 MERGED and main CI38204233535 PASS on6bc1fe96. Staging migration/deploy
+38204668457/38204783756 and final30public checks PASS. Production0040 run38205975841
+PASS after vn-taphoanhatung approval; ledger40/FK/quick_check/exact constraints PASS.
+Deploy38206476316 was also approved but FAILED before any Worker upload/traffic
+mutation: new-SHA d1->d1 was rejected by the per-SHA shadow-restart policy. Old
+Worker remains active; database0040 is applied. Do not infer success from approval.
+
+Scoped continuity fix and adversarial/real-Git tests are implemented. New normal
+PR/main CI, staging exact-SHA deploy/smoke and production approval are required.
+Earlier paragraphs describing no merge/migration are historical pre-release scope.

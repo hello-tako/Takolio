@@ -2698,3 +2698,16 @@ explicitly independent; local findings are fixed without suppressions.
 User authorizes Brand PR66/backend merge and release. See
 [ADR-INTEGRATED-RELEASE-002](../backend-upgrade/final-local-completion/ADR-INTEGRATED-RELEASE-002.md)
 for exact-source first-strict-cutover recovery without legacy OTP rollback.
+
+## ADR-CATALOG-CONTINUITY-003 - Unchanged complete D1 authority across application SHAs
+
+Accepted for the authorized integrated release, 2026-10-12. Production deploy
+38206476316 failed before any Worker upload because its per-SHA rollout guard would
+require replacing the established500-recipe D1 authority with the static baseline.
+The trusted workflow may preserve production d1->d1 only when protected complete
+runtime evidence, active100% previous version/commit/binding/flags, ancestor source,
+identical reviewed catalog kernel/dependency blobs and unchanged Zod resolution /
+integrity all match. Source/catalog/canary drift keeps existing shadow/promotion
+policy. No bypass input or protection change. Exact-main/CI/schema/Environment /
+strict OTP recovery proofs remain required. See
+../backend-upgrade/final-local-completion/ADR-CATALOG-CONTINUITY-003.md.
