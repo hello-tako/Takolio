@@ -1,3 +1,37 @@
+# Production catalog continuity preflight fix - 2026-10-12 JST
+
+**Task/status:** FIX_IMPLEMENTED_LOCAL_FULL_VALIDATED; normal PR/main CI and a new
+staging/production deployment remain required. PR66/67 are MERGED; merged main
+6bc1fe96527bf111958b870f66b47f4e0c5ea2fd CI38204233535 PASS.
+Staging0040/deploy38204668457/38204783756 PASS and 30 read-only smoke checks PASS.
+Production0040 run38205975841 PASS after actual vn-taphoanhatung approval: ledger40,
+exact strict schema, FK/quick_check PASS, aggregate drift none; bookmark retained.
+
+**Failure/source:** Approved deploy38206476316 FAILED during transition preflight
+before recovery upload/application upload/traffic change. Current production remains
+652e0d7632745e9b77cda4b5b3caac83a3ec1015; migration0040 remains applied. The guard
+requires new application SHAs to reset D1 rollout to shadow, despite unchanged fully
+verified catalog authority. Failed run/approval/receipt retained privately.
+
+**Change:** ADR-CATALOG-CONTINUITY-003 narrows production d1->d1 continuity to a
+complete healthy protected authority proof, active previous100% version, canonical
+binding/flags/commit, ancestor source, identical22catalog kernel/dependency blobs
+and unchanged Zod specifier/resolution/integrity. Trusted workflow supplies the
+version evidence; no input bypass. Canary/source/catalog drift remains rejected.
+Previous authority proof is retained only for bounded edge convergence retries;
+old-SHA responses are never final deployment evidence. Runtime/catalog/payment
+sources unchanged by this fix. Branch codex/production-catalog-continuity.
+
+**Checks/next:** Targeted3files/301tests and full320files/7650tests PASS. Lint,
+both TS,40migration replay and pairedT20 production build PASS. Pinned changed-source
+Semgrep/zizmor/Gitleaks0 findings; actual22Gitblob/Zodcomparison PASS (source-only,
+synthetic version/evidence input). Exact PR/main CI follows; then current-main staging deploy and30checks, new
+production Environment approval/deploy/recovery/read-only smoke and bounded monitor.
+Do not reapply0040. Real inbox/OCR/provider/data/device/payment/SLO acceptance remains
+open. Original checkout untouched. See final-local-completion packet.
+
+---
+
 # Integrated release candidate after repository transfer - 2026-10-12 JST
 
 **Task/status:** LOCAL_VALIDATED_FINAL_HOSTED_AND_DEPLOYMENT_PENDING.

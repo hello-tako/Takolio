@@ -14,7 +14,7 @@ CI (ci.yml: lint, typecheck, tests, migration smoke, build)
      ↓
 merge to main → CI runs again on main
      ↓
-staging deploy (deploy.yml, after CI succeeds on main)   [requires wrangler.staging.jsonc]
+staging: manual exact-main dispatch after CI/migrations [requires wrangler.staging.jsonc]
      ↓
 staging post-deploy smoke (read-only)
      ↓
@@ -61,7 +61,9 @@ Manual setup (operator, once):
 
 Behavior:
 
-- Deploys automatically after CI succeeds on a push to `main`.
+- Deploys through manual `workflow_dispatch` on main after successful exact-SHA CI.
+  Supply the immutable current-main SHA, approved hardening ancestor, catalog inputs
+  and explicit paired T20 decision. A main push alone does not deploy staging.
 - If `wrangler.staging.jsonc` does not exist, the job emits a notice and
   skips — staging is never half-configured, and it can never inherit
   production bindings from `wrangler.jsonc`.
@@ -114,8 +116,42 @@ cannot enable an already-built UI.
 - **Guard:** after the build and before deploy, `scripts/composition-flags.mjs verify`
   fails unless the server value, UI value, release manifest, and the value Vite actually
   compiled (`dist/composition-flags.json`) are all exactly `true` or all exactly `false`.
-- **Rollback:** redeploy with `meal_composition_v2_enabled: false` (the default). Automatic
-  staging deploys after CI always ship it off. T19 recipe catalog inputs are unaffected.
+- **Rollback:** redeploy with `meal_composition_v2_enabled: false` (the default). Manual
+  staging deploys use the explicit paired decision. T19 recipe catalog inputs are unaffected.
+
+### First strict OTP cutover and recovery
+
+Migration 0040 was applied from source
+`6bc1fe96527bf111958b870f66b47f4e0c5ea2fd`; check the actual application deployment in
+`docs/backend-upgrade/final-local-completion/RESULT.md` and its linked release receipts.
+For staging, apply only 0040 through `staging-otp-migrate.yml`; production uses
+`production-d1-migrate.yml` and its independent Environment approval. Both workflows
+recheck current main/CI, D1 identity, ledger and exact strict schema/constraints.
+
+A historical Worker using legacy OTP verification is not a safe rollback after
+strict challenges have been admitted. The first cutover uploads an inactive
+recovery version from the exact candidate with `STRICT_OTP_FAIL_CLOSED=true`,
+canonical D1 and unchanged catalog/T20 flags; metadata certification precedes
+traffic. The normal active version uses `STRICT_OTP_FAIL_CLOSED=false`. Recovery
+stops issuance/verification/reset with `503 AUTH_OTP_MAINTENANCE` before DB/provider
+work, while unrelated guarded routes retain their existing behavior.
+
+If deployment/proof fails, the workflow activates the named verified recovery
+version and verifies active 100% traffic, binding, exact SHA/catalog and OTP503.
+A successful release leaves that recovery version inactive; upload certification
+alone is not a live rollback rehearsal. Subsequent strict-compatible releases use
+the verified compatible previous version. Preserve scopes/tickets and the stable
+OTP secret; do not down-migrate, clear authority tables or reopen legacy verification.
+Follow `ADR-INTEGRATED-RELEASE-002.md` in the release packet for incident handling.
+
+### Unchanged established D1 authority
+
+A new application SHA can retain production d1 authority only when the trusted
+preflight certifies the same complete catalog release/fingerprint, canonical active
+previous Worker binding/commit/flags, Git ancestry, byte-identical catalog sources
+and unchanged Zod dependency/integrity. No bypass flag is accepted; changed source,
+catalog or canary state retains the reviewed shadow/canary progression. See
+`docs/backend-upgrade/final-local-completion/ADR-CATALOG-CONTINUITY-003.md`.
 
 ## Migrations
 
