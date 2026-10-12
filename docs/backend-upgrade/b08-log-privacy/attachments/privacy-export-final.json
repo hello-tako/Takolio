@@ -1,0 +1,234 @@
+{
+  "classification": "BOUNDED_B08_LOG_PRIVACY_SELECTED_EXPORT_INPUT_REVIEW",
+  "commandNames": [
+    "b08-log-final-audit-full",
+    "b08-log-final-audit-prod",
+    "b08-log-final-build",
+    "b08-log-final-frozen-install",
+    "b08-log-final-full-tests",
+    "b08-log-final-lint",
+    "b08-log-final-migrations",
+    "b08-log-final-scanner",
+    "b08-log-final-typecheck",
+    "b08-log-focused-recovery",
+    "b08-log-focused",
+    "b08-log-precommit-lint",
+    "b08-log-precommit-typecheck",
+    "b08-log-scanner-reconciliation",
+    "b08-log-typecheck-recovery"
+  ],
+  "commandReceiptAndLogPairCount": 15,
+  "credentialValidityChecked": false,
+  "currentSourceStatus": "",
+  "explicitSafeInputCount": 8,
+  "fileCount": 38,
+  "files": [
+    {
+      "bytes": 1363,
+      "path": ".artifacts/backend-b08-log-privacy/b08-log-final-audit-full.json",
+      "sha256": "f4d834f8a195538971b2b8871dd3114026a52486a2dfe13122f16c8d790bf9cf"
+    },
+    {
+      "bytes": 2154,
+      "path": ".artifacts/backend-b08-log-privacy/b08-log-final-audit-full.log",
+      "sha256": "c18fedca4f85bab360b319edb18a74f3bd4cbd5796b39874d7d66fd31a06065a"
+    },
+    {
+      "bytes": 1377,
+      "path": ".artifacts/backend-b08-log-privacy/b08-log-final-audit-prod.json",
+      "sha256": "135c486dcf25ffe5af0af5647e6dd5b1d897221379e2bb156a37bfaf13b40f5d"
+    },
+    {
+      "bytes": 308,
+      "path": ".artifacts/backend-b08-log-privacy/b08-log-final-audit-prod.log",
+      "sha256": "89afa98eb2f105e15a07f3557cf2dccadd21175473f32e8671ba497c17d98c22"
+    },
+    {
+      "bytes": 1377,
+      "path": ".artifacts/backend-b08-log-privacy/b08-log-final-build.json",
+      "sha256": "0d128d9e5fe14d12deeda4f74eda3ecfe4f70bf36d2ad4860fcb641ea4c2ba7e"
+    },
+    {
+      "bytes": 7491,
+      "path": ".artifacts/backend-b08-log-privacy/b08-log-final-build.log",
+      "sha256": "ecf9132ec8c1354899b95be3f749ec39c7b0839c7c47f851753208e8e6613c43"
+    },
+    {
+      "bytes": 1384,
+      "path": ".artifacts/backend-b08-log-privacy/b08-log-final-frozen-install.json",
+      "sha256": "69e88b368037e6bfd02d7fb03b6bb926c078973ba79acc6d413d4904df0dfeec"
+    },
+    {
+      "bytes": 105,
+      "path": ".artifacts/backend-b08-log-privacy/b08-log-final-frozen-install.log",
+      "sha256": "ae7de9f5b029ed01d2e47366e45ada90b84dc85e81db4758cee6a5939c86e56b"
+    },
+    {
+      "bytes": 1350,
+      "path": ".artifacts/backend-b08-log-privacy/b08-log-final-full-tests.json",
+      "sha256": "5c190c812d33ef02af85755d1d3af8bbeb25f7a115d4394f7daf8ff599d5e2a4"
+    },
+    {
+      "bytes": 359,
+      "path": ".artifacts/backend-b08-log-privacy/b08-log-final-full-tests.log",
+      "sha256": "98f1a80d793cc70ccd0f7f404753a7aad4949ee584e8c6bd8956e08a26cc9d26"
+    },
+    {
+      "bytes": 1336,
+      "path": ".artifacts/backend-b08-log-privacy/b08-log-final-lint.json",
+      "sha256": "6a814fa5d242fd7dd39035e4a43a4c5c2f0f63d2182cebbee60e7e30cd6d43c6"
+    },
+    {
+      "bytes": 92,
+      "path": ".artifacts/backend-b08-log-privacy/b08-log-final-lint.log",
+      "sha256": "25cc1f9634027c24c62f4029a44f00fc3a7e082ac28576c6fc5a3db3e0961f73"
+    },
+    {
+      "bytes": 1360,
+      "path": ".artifacts/backend-b08-log-privacy/b08-log-final-migrations.json",
+      "sha256": "11e95844eadee07b0d241843a591a6a1d37c01709936addae4fb1ef03b419e7d"
+    },
+    {
+      "bytes": 146,
+      "path": ".artifacts/backend-b08-log-privacy/b08-log-final-migrations.log",
+      "sha256": "965811c75cef6d8d7db8527ffaf3ec59c52869fe5cb575a1261bc3b793191de5"
+    },
+    {
+      "bytes": 1599,
+      "path": ".artifacts/backend-b08-log-privacy/b08-log-final-scanner.json",
+      "sha256": "511e909790616375c043e418d01218f06423152a824e557d8216040c7d2cc81a"
+    },
+    {
+      "bytes": 2307,
+      "path": ".artifacts/backend-b08-log-privacy/b08-log-final-scanner.log",
+      "sha256": "6dab8ae90307876f0d5d991a3338375803444244aa76044c8a27196af8c1c7fc"
+    },
+    {
+      "bytes": 1352,
+      "path": ".artifacts/backend-b08-log-privacy/b08-log-final-typecheck.json",
+      "sha256": "1daf1a0b3bd993a7987464a1cd81e052683bfe7762461a7c3bb9d29f75c066f4"
+    },
+    {
+      "bytes": 158,
+      "path": ".artifacts/backend-b08-log-privacy/b08-log-final-typecheck.log",
+      "sha256": "a3a28a25c9246fe7e8bbf5999692dc60347e343a2415f8cefcb7e767e0e6a0d6"
+    },
+    {
+      "bytes": 3116,
+      "path": ".artifacts/backend-b08-log-privacy/b08-log-focused-recovery.json",
+      "sha256": "49129856c7afbcf18136adbf549d9ddb0192ed69d4f2bacd1683bf5943db0535"
+    },
+    {
+      "bytes": 250,
+      "path": ".artifacts/backend-b08-log-privacy/b08-log-focused-recovery.log",
+      "sha256": "347dea230572328906a84d94154e82537071054364a4ee451e98ab5d5c962e09"
+    },
+    {
+      "bytes": 3098,
+      "path": ".artifacts/backend-b08-log-privacy/b08-log-focused.json",
+      "sha256": "a8841f161ac2063b7a28a992e41849ae6a6710df4a8e75fb68316dfa653242c0"
+    },
+    {
+      "bytes": 250,
+      "path": ".artifacts/backend-b08-log-privacy/b08-log-focused.log",
+      "sha256": "40453059415927e3c979765363aa50adb29c3bc6ae3d41ff0700eb3080eb093e"
+    },
+    {
+      "bytes": 2615,
+      "path": ".artifacts/backend-b08-log-privacy/b08-log-precommit-lint.json",
+      "sha256": "a612559251adfd2f18a3b30ed602b78293ab9ac48654b60532506167e9c498c1"
+    },
+    {
+      "bytes": 92,
+      "path": ".artifacts/backend-b08-log-privacy/b08-log-precommit-lint.log",
+      "sha256": "25cc1f9634027c24c62f4029a44f00fc3a7e082ac28576c6fc5a3db3e0961f73"
+    },
+    {
+      "bytes": 2631,
+      "path": ".artifacts/backend-b08-log-privacy/b08-log-precommit-typecheck.json",
+      "sha256": "0f02f161531c3a0ac1cf0d4198cd5dee1222dfd9954ed42103929732e1e3f610"
+    },
+    {
+      "bytes": 324,
+      "path": ".artifacts/backend-b08-log-privacy/b08-log-precommit-typecheck.log",
+      "sha256": "3deb58a0b8f658b10a4126ae8c08aa8831232c54c78f45298ba355caf2648343"
+    },
+    {
+      "bytes": 1526,
+      "path": ".artifacts/backend-b08-log-privacy/b08-log-scanner-reconciliation.json",
+      "sha256": "a96ab747a5a85b8bb8043b06c51575ac25315838991348424f4d9085009b8132"
+    },
+    {
+      "bytes": 292,
+      "path": ".artifacts/backend-b08-log-privacy/b08-log-scanner-reconciliation.log",
+      "sha256": "10d6c459ad17de0fa523016d54c4990ace8248521040d50d447a3eb39090a697"
+    },
+    {
+      "bytes": 2630,
+      "path": ".artifacts/backend-b08-log-privacy/b08-log-typecheck-recovery.json",
+      "sha256": "db1c0d2daba427fc0704f38bad3b333d12bb940fa5fce4a5a44f3d5ad815312b"
+    },
+    {
+      "bytes": 158,
+      "path": ".artifacts/backend-b08-log-privacy/b08-log-typecheck-recovery.log",
+      "sha256": "a3a28a25c9246fe7e8bbf5999692dc60347e343a2415f8cefcb7e767e0e6a0d6"
+    },
+    {
+      "bytes": 423,
+      "path": ".artifacts/backend-b08-log-privacy/css-protected-surface.json",
+      "sha256": "249df7ced8dbeff61a7b42ccd1bf08990ff08ab88776966027786aedce36de9a"
+    },
+    {
+      "bytes": 56595,
+      "path": ".artifacts/backend-b08-log-privacy/independent-producer-inventory.json",
+      "sha256": "108da7053e15aaec1d003e245702facb40cd3e2c61b8cc0f61b2f64678b2cdd1"
+    },
+    {
+      "bytes": 698,
+      "path": ".artifacts/backend-b08-log-privacy/parent-committed-packet-verification.json",
+      "sha256": "c8de3b5ba463437db7fa6bf22a092e4726da764778403a58ff0d1a29e3fdcbc0"
+    },
+    {
+      "bytes": 12197,
+      "path": ".artifacts/backend-b08-log-privacy/parent-documentation-scan-reconciliation.json",
+      "sha256": "9db132452b79befd48183ff20e15b9fc69ae0cb9edb77afbb7510f6a82d8466f"
+    },
+    {
+      "bytes": 645,
+      "path": ".artifacts/backend-b08-log-privacy/reconciliation-attempt-1.json",
+      "sha256": "cd18318a05566f5bb0d15d9b20abe8bea8aa75eb21329a693ad6c793238f3520"
+    },
+    {
+      "bytes": 2683,
+      "path": ".artifacts/backend-b08-log-privacy/scanner-implementation-receipt.json",
+      "sha256": "b54b77e6bfa9e765541d0818762d0a2f9f231c747b45c75fd331dfd144103269"
+    },
+    {
+      "bytes": 6732,
+      "path": ".artifacts/backend-b08-log-privacy/scanner-implementation-reconciliation.json",
+      "sha256": "1bcd3130ba71a460515b6710cfa770d3ac0fc75d8b24ac30cbc8b025fce1bec8"
+    },
+    {
+      "bytes": 1308,
+      "path": ".artifacts/backend-b08-log-privacy/source-review-binding.json",
+      "sha256": "8b8eb24f296168ac69c7c93b949722133dca7329c6a3514800233091e568e91c"
+    }
+  ],
+  "generatedReviewMetadataBoundedCheckedBeforeWriting": true,
+  "hostileSyntheticFixturePatternNamesChecked": [
+    "HOSTILE_SYNTHETIC_FIXTURE_CONTENT"
+  ],
+  "issues": [],
+  "limits": [
+    "Only the exact listed command receipts/logs and selected safe inputs are reviewed with bounded patterns and private retained-candidate byte comparisons.",
+    "Changed or new export inputs require a new review; this is not a complete absence-of-secrets certificate or hosted logging/retention proof."
+  ],
+  "overlaps": [],
+  "rawValuesSourceSnippetsOrPrivatePointersPublished": false,
+  "retainedCandidateCount": 17,
+  "retainedPrivateReportSha256": "61569ff81f0cec197bccf42cc7113992566559901f2846d53105bc3d023bac82",
+  "retainedTriageSha256": "b7b1d64223dc0d9d0bd9ad0f10b92879f861d1bcde6cc979d2444d1c1157ad09",
+  "reviewedHead": "41da180a941b348c6385895628b2bdd61b666763",
+  "schemaVersion": 1,
+  "status": "PASS"
+}

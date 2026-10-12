@@ -1,0 +1,195 @@
+{
+  "source": "curated subset of validated input kit",
+  "files": [
+    {
+      "path": "01_logo/svg/horizontal-mono-dark.svg",
+      "bytes": 4165,
+      "sha256": "81cde10b1494c02cc83a4d3cbf250444116b6afc91ba0c32652496a9c093a75a"
+    },
+    {
+      "path": "01_logo/svg/horizontal-mono-white.svg",
+      "bytes": 4165,
+      "sha256": "5724f490f4435bf5ad4bb0ab65fbad92c4ee0259326aa12e3fa0d07b95d712e4"
+    },
+    {
+      "path": "01_logo/svg/horizontal-primary.svg",
+      "bytes": 4165,
+      "sha256": "59abfb1fa26de1fcbfa3761e0c812de97db5a428d4e6d581b87dfc867aa87c1f"
+    },
+    {
+      "path": "01_logo/svg/stacked-mono-dark.svg",
+      "bytes": 4166,
+      "sha256": "fd0db70c5f5885f6e1e8222a3acf87209f482387aa0019910e85b652795ede05"
+    },
+    {
+      "path": "01_logo/svg/stacked-mono-white.svg",
+      "bytes": 4166,
+      "sha256": "fed9b8758a778db8e9751c76c7085857991f5a19ca065c3b0b9e3222e6444fad"
+    },
+    {
+      "path": "01_logo/svg/stacked-primary.svg",
+      "bytes": 4166,
+      "sha256": "b7e117b148ecfa991539a564b492facd0f5dba3ecb711b54c7963861db2bd5c5"
+    },
+    {
+      "path": "01_logo/svg/symbol-micro-dark.svg",
+      "bytes": 777,
+      "sha256": "9ef16a5b4df2f1a53aa7a5205eebb22e79a039881346cb834b8e4d80cdfba782"
+    },
+    {
+      "path": "01_logo/svg/symbol-micro.svg",
+      "bytes": 777,
+      "sha256": "a61acb0ebb15a7e0c77fd536cf7c2afc98d4d1effca0df8be6a11ff49b14ace6"
+    },
+    {
+      "path": "01_logo/svg/symbol-mono-dark.svg",
+      "bytes": 1623,
+      "sha256": "e7b5014719248d94bf3675bd039cf0869c80eccdcbaa45327befb44f0abd551a"
+    },
+    {
+      "path": "01_logo/svg/symbol-mono-white.svg",
+      "bytes": 1623,
+      "sha256": "58c9f85081c5811fc66ed09bdf9aecb81a73aa0d02d22c241541b15c2f1871dc"
+    },
+    {
+      "path": "01_logo/svg/symbol-primary.svg",
+      "bytes": 1623,
+      "sha256": "793400bd4602d6a80da87aa45c81820665912a1680154440a39f0ea5b4170b1b"
+    },
+    {
+      "path": "01_logo/svg/wordmark-mono-dark.svg",
+      "bytes": 2588,
+      "sha256": "1120e946caa17b2968a20d3aaddf2cf244eb8ddc3cbda3e028b1f5d373712d23"
+    },
+    {
+      "path": "01_logo/svg/wordmark-mono-white.svg",
+      "bytes": 2588,
+      "sha256": "5a5db74674f1071b351ddc4ba905ab1c6ea284bb261ff2686a48bd46059a33d7"
+    },
+    {
+      "path": "01_logo/svg/wordmark-primary.svg",
+      "bytes": 2588,
+      "sha256": "48a18853a8bfa919825a6547e4a64f50631da9c5f89874bcd843a7d053f57125"
+    },
+    {
+      "path": "02_app_icons/icon-master.svg",
+      "bytes": 1785,
+      "sha256": "afe2beafc165d868c9211ed93055554676b7c651aa16d49dc732e21699e5e642"
+    },
+    {
+      "path": "03_mascot/tako-celebrate.svg",
+      "bytes": 1339,
+      "sha256": "d10b8b8f7946714aa74d85f12bee9873150d17d7d08c036afe6786a8c0dbaf10"
+    },
+    {
+      "path": "03_mascot/tako-happy.svg",
+      "bytes": 1623,
+      "sha256": "793400bd4602d6a80da87aa45c81820665912a1680154440a39f0ea5b4170b1b"
+    },
+    {
+      "path": "03_mascot/tako-thinking.svg",
+      "bytes": 1360,
+      "sha256": "fdc66380df11e30361173ceb0022c8d8e8deb6c99167c8636963fa798453e1de"
+    },
+    {
+      "path": "03_mascot/tako-wink.svg",
+      "bytes": 1424,
+      "sha256": "6f3d3197bb9e6886a8b63da643ad1455467e94f0a28475fa941e1259e936c1b1"
+    },
+    {
+      "path": "05_ui_icons/budget.svg",
+      "bytes": 300,
+      "sha256": "65f296a2dcedd63cdf72b6d5bdebf906ed1610d99878e96302d3b5f761953993"
+    },
+    {
+      "path": "05_ui_icons/favorite.svg",
+      "bytes": 290,
+      "sha256": "47e60d0a701612d6eda6522f404bbc071fd53ea2e8a62f9d8cacda5ef00cda7c"
+    },
+    {
+      "path": "05_ui_icons/fridge.svg",
+      "bytes": 272,
+      "sha256": "8aa3afbb638a06df9f33ea1828d135c0f138ba46f3b029ec267e099925abaee7"
+    },
+    {
+      "path": "05_ui_icons/home.svg",
+      "bytes": 259,
+      "sha256": "e5493170d764536c7a7b9cd10102213ece7b0a153e5dfffbb8a2839b3459cbcf"
+    },
+    {
+      "path": "05_ui_icons/nutrition.svg",
+      "bytes": 298,
+      "sha256": "70d399ee2d534c32dcd0523ad869529fc6a7793113f2d3b7772d9fe3434b7bac"
+    },
+    {
+      "path": "05_ui_icons/planner.svg",
+      "bytes": 293,
+      "sha256": "6f5c20d553fe9d975b87521811c66e2edd34f0f25597116715d84a008a5f6fb8"
+    },
+    {
+      "path": "05_ui_icons/profile.svg",
+      "bytes": 265,
+      "sha256": "63ec99c4ef760e4f3dc308be3e2a6ff1c8462db8b378c2e319737e7c47a3e134"
+    },
+    {
+      "path": "05_ui_icons/recipe.svg",
+      "bytes": 280,
+      "sha256": "d9f768df81c060995d0988993cd5941b22288860e1086401e61f73fe6c5308f1"
+    },
+    {
+      "path": "05_ui_icons/scan.svg",
+      "bytes": 305,
+      "sha256": "cfaf8a9dd0f0aa871fe8921cf4714ea4279b6525747e546a5f6f7c355a59d327"
+    },
+    {
+      "path": "05_ui_icons/search.svg",
+      "bytes": 250,
+      "sha256": "942eda2be6235cfbcdaa6c964cd0339905e3c7889e77ee1185506c28a928fb5b"
+    },
+    {
+      "path": "05_ui_icons/settings.svg",
+      "bytes": 337,
+      "sha256": "8676adbc78fe6b33b54f9b902221b60b05493509becfb757764a4635a9d7f6c1"
+    },
+    {
+      "path": "05_ui_icons/shopping.svg",
+      "bytes": 264,
+      "sha256": "bcb891f6faace7591f79cf9d264f709bb529906c98451ea55c0f6424e0870c28"
+    },
+    {
+      "path": "06_design_tokens/accessibility-notes.md",
+      "bytes": 867,
+      "sha256": "676eb6c3260ac8ee06ea045b2a7986287cbadf171cfecfa610a2d57e89f950e9"
+    },
+    {
+      "path": "06_design_tokens/brand-tokens.css",
+      "bytes": 467,
+      "sha256": "1fdb5e34b96b6924f592bb6626c97cde8e206d4534e6e31fec09a34e5d17367a"
+    },
+    {
+      "path": "06_design_tokens/brand-tokens.json",
+      "bytes": 1185,
+      "sha256": "0b7020bdc239f01117a77dc8f4c7343474974333c841e12a19658767e142eb64"
+    },
+    {
+      "path": "06_design_tokens/brand-tokens.ts",
+      "bytes": 1224,
+      "sha256": "bc0e3f7664c66760a432790b7b07be9112b2619446cd7c269007b5866c48cb65"
+    },
+    {
+      "path": "09_copywriting/brand-messaging.md",
+      "bytes": 1317,
+      "sha256": "2feb8e97d912c2f1eb317a1ae67eb963a1a0a9a1abf7d25b4b73459953f4360f"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1289,
+      "sha256": "960924841c3757a3dfe5ac0abe3207f7ac7bfb0dc48027cf8ec95b1bf2e76517"
+    },
+    {
+      "path": "og-1200x630.png",
+      "bytes": 64124,
+      "sha256": "0e78763310c7d6b98cd750971605c4372c436acc1cbd8911f11ec9e751e2a02d"
+    }
+  ]
+}

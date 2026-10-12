@@ -1,0 +1,73 @@
+{
+  "localProductionBuild": true,
+  "offlineDataCertified": false,
+  "checks": [
+    {
+      "kind": "activation-cleans-old-release-and-precaches-V3",
+      "keys": [
+        "takosan-pwa-local"
+      ],
+      "paths": [
+        "/",
+        "/manifest.json",
+        "/takosan/v3/app-icons/favicon.svg",
+        "/takosan/v3/app-icons/icon-192.png",
+        "/takosan/v3/app-icons/icon-512.png",
+        "/takosan/v3/app-icons/icon-maskable-512.png",
+        "/takosan/v3/logo/horizontal-primary.svg",
+        "/takosan/v3/logo/symbol-primary.svg",
+        "/takosan/v3/logo/symbol-micro.svg",
+        "/takosan/v3/mascot/tako-happy.svg",
+        "/takosan/v3/fonts/nunito-latin-wght-normal.woff2",
+        "/takosan/v3/fonts/nunito-vietnamese-wght-normal.woff2",
+        "/index.html",
+        "/assets/vendor-query-D03hXVOl.js",
+        "/assets/vendor-icons-qMvDVLBO.js",
+        "/assets/vendor-react-B6oo3S7f.js",
+        "/assets/index-BEfWjGfS.js",
+        "/assets/index-B7QyK8H6.css",
+        "/assets/LandingPage-VTxHPGbi.js",
+        "/assets/Button-CISPqwo0.js",
+        "/takosan/v3/fonts/nunito-latin-ext-wght-normal.woff2"
+      ]
+    },
+    {
+      "kind": "manifest-and-icon-content-types",
+      "manifest": {
+        "name": "Takosan - Trợ lý bữa ăn gia đình",
+        "short_name": "Takosan",
+        "description": "Bữa ngon, nhẹ đầu. Lên thực đơn, quản lý nguyên liệu và mua sắm thông minh.",
+        "start_url": "/",
+        "display": "standalone",
+        "background_color": "#FFF8F3",
+        "theme_color": "#2E7D5B",
+        "orientation": "portrait",
+        "icons": [
+          {
+            "src": "/takosan/v3/app-icons/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+          },
+          {
+            "src": "/takosan/v3/app-icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+          },
+          {
+            "src": "/takosan/v3/app-icons/icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+          }
+        ],
+        "id": "/",
+        "scope": "/"
+      }
+    },
+    {
+      "kind": "offline-cached-public-shell-logo-and-font",
+      "route": "/landing"
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,18 @@
+{
+  "classification": "FIXED_DATE_GENERATED_WORKER_TYPES_COMPILE",
+  "runtimeDate": "2024-11-01",
+  "runtimeFlags": [
+    "nodejs_compat"
+  ],
+  "generatedTypesSha256": "24bb559335bae2dc05a5001c65079c25b6ef4178d7b5a4e753e6c79e4cbb529b",
+  "cliReceiptSha256": "ea5f0512cba5c9a448c8ad37f5743e940128ee7c82947303418d73fd983cb035",
+  "workerConfigSha256": "25eda5cabbb5cb0dd736b8de5691a6cad7139cfff657b4d65981ea26e68478d0",
+  "exitCode": 0,
+  "status": "PASS",
+  "projectSourceChanged": false,
+  "remote": false,
+  "limits": [
+    "Compilation validates source API surface; no edge execution or rollout is certified.",
+    "skipLibCheck stays as configured for the Worker project."
+  ]
+}

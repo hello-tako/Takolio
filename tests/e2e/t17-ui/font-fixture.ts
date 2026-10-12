@@ -3,7 +3,7 @@ import type { Page } from '@playwright/test';
 
 const fonts = [400, 500, 600, 700, 800].map((weight) => ({
   weight,
-  data: readFileSync(`tests/e2e/t17-ui/fonts/nunito-${weight}.ttf`).toString('base64'),
+  data: readFileSync(`tests/e2e/t17-ui/fonts/nunito-${weight}.ttf`, 'base64'),
 }));
 
 export async function installNunito(page: Page) {

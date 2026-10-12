@@ -1,0 +1,373 @@
+{
+  "type": "a2_agent_source_review_snapshot",
+  "status": "LOCAL_A2_SOURCE_REVIEW_NO_BLOCKING_FINDINGS",
+  "recordedAtUtc": "2026-10-11T10:12:14.593151+00:00",
+  "reviewer": "a2_transaction",
+  "checkout": "/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo",
+  "branch": "codex/backend-b01a-integration",
+  "baseReceiptHeadSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+  "snapshotLimit": "A2 source is uncommitted at capture. These hashes identify reviewed bytes, not a final committed source freeze, human PR approval or hosted certificate. Root must match final source and gates separately.",
+  "reviewedSource": [
+    {
+      "path": "migrations/0040_strict_otp_foundation.sql",
+      "sha256": "8ad04aaf528b2811b693d80f83704bd3d7578f7ffb3cc3698326487e4beb6ae0",
+      "bytes": 6046,
+      "reviewer": "a2_transaction",
+      "reviewKind": "independent_agent_read_only_review"
+    },
+    {
+      "path": "packages/db/src/auth-otp.ts",
+      "sha256": "b8a869f4f65c59e178385becbee43d706836a837f22738ff415994ebffe82c4b",
+      "bytes": 33804,
+      "reviewer": "a2_transaction",
+      "reviewKind": "implementer_self_review"
+    },
+    {
+      "path": "src/worker/services/auth-otp.ts",
+      "sha256": "151bd253d8d4b1e2ef482943d834d8750f00ac069a43f8c93642bbcbdb871178",
+      "bytes": 13572,
+      "reviewer": "a2_transaction",
+      "reviewKind": "implementer_self_review"
+    },
+    {
+      "path": "src/worker/services/auth-otp-http.ts",
+      "sha256": "7df979cdcec66f6118038d13cac655089e0428a268f918fb11f4c61c872af7f3",
+      "bytes": 12501,
+      "reviewer": "a2_transaction",
+      "reviewKind": "independent_agent_read_only_review"
+    },
+    {
+      "path": "src/worker/routes/auth.ts",
+      "sha256": "334283593f28b83f10a22a7f60f1ed27fe5337e6a2e4315230ec882de5aa9958",
+      "bytes": 25317,
+      "reviewer": "a2_transaction",
+      "reviewKind": "independent_agent_read_only_review"
+    },
+    {
+      "path": "src/worker/validation/schemas.ts",
+      "sha256": "fb905abfb9005be39502590e794a0c4e2e3a5cc2cf91ab272fd686fd348c8e78",
+      "bytes": 8601,
+      "reviewer": "a2_transaction",
+      "reviewKind": "independent_agent_read_only_review"
+    },
+    {
+      "path": "src/worker/services/cleanup.ts",
+      "sha256": "ce00c291fa93543d5880e010c0491713fc427a7d80b51a9ec9d5b6b9b648d79e",
+      "bytes": 8539,
+      "reviewer": "a2_transaction",
+      "reviewKind": "independent_agent_read_only_review"
+    },
+    {
+      "path": "tests/integration/auth-otp-coordinator.test.ts",
+      "sha256": "67ea01e9d4aef9fc302261f6eeee35d195425b89ef87497e5dc4dc187b36ffbe",
+      "bytes": 49207,
+      "reviewer": "a2_transaction",
+      "reviewKind": "implementer_self_review"
+    },
+    {
+      "path": "tests/integration/auth-hardening.test.ts",
+      "sha256": "d0984e52c8c9baffe5e33add1d9e2b1abf3f937a79ba7653ef40a6148cf795c8",
+      "bytes": 71468,
+      "reviewer": "a2_transaction",
+      "reviewKind": "implementer_self_review"
+    },
+    {
+      "path": "tests/integration/auth-strict-routes.test.ts",
+      "sha256": "df57751295dd21d2703cb7130b411b53e32c39ffbad834d3906630abf2866653",
+      "bytes": 31911,
+      "reviewer": "a2_transaction",
+      "reviewKind": "independent_agent_read_only_review",
+      "reviewLimit": "Inspected relevant test cases; reviewer did not execute these files."
+    },
+    {
+      "path": "tests/unit/cleanup.test.ts",
+      "sha256": "e9d543a84e6e05ddbb6545d6f54a279e96bca6822acf23634e04331050a7b663",
+      "bytes": 6881,
+      "reviewer": "a2_transaction",
+      "reviewKind": "independent_agent_read_only_review",
+      "reviewLimit": "Inspected relevant test cases; reviewer did not execute these files."
+    }
+  ],
+  "adr": {
+    "path": "docs/backend-upgrade/b01a-a2/ADR-B01a-002.md",
+    "sha256": "09bd494f6f99432d7d09a18c3393e4a25d8100ce367d0efea1849baf8c281d1e",
+    "bytes": 15583
+  },
+  "findingsResolved": [
+    {
+      "id": "A2-PRINCIPAL-COOKIE-FENCE",
+      "reviewer": "a2_transaction",
+      "paths": [
+        "src/worker/services/auth-otp-http.ts",
+        "tests/integration/auth-strict-routes.test.ts"
+      ],
+      "finding": "A profile lookup after committed finalization could publish a cookie after principal email/membership/session authority had changed.",
+      "resolution": "Profile query rechecks account ID, user ID, normalized email, verified state, target membership and the exact live token hash with non-revocation/expiry before Set-Cookie. Route cases inspect changed email, removed membership, revoked session and thrown lookup.",
+      "verification": "Read-only source inspection; root owns execution receipt for the route cases."
+    },
+    {
+      "id": "A2-FORGOT-EXTRA-PASSWORD",
+      "reviewer": "a2_transaction",
+      "paths": [
+        "src/worker/routes/auth.ts",
+        "tests/integration/auth-strict-routes.test.ts"
+      ],
+      "finding": "Forwarding an extra newPassword from forgot verify could promote the preliminary endpoint to final reset.",
+      "resolution": "The verify route forwards newPassword only for register. Final forgot reset remains on /auth/reset-password; the explicit extra-field regression asserts proof only and unchanged account/session/challenge."
+    },
+    {
+      "id": "A2-PREREGISTRATION-PASSWORD",
+      "reviewer": "a2_transaction",
+      "paths": [
+        "packages/db/src/auth-otp.ts",
+        "src/worker/services/auth-otp.ts",
+        "src/worker/validation/schemas.ts"
+      ],
+      "finding": "Preserving a pending preregistration password at activation would retain an attacker-known password when the mailbox owner verified.",
+      "resolution": "Registration verify requires verifier-chosen newPassword, fingerprints it, and installs password/salt atomically with activation, consume, session and completion. Missing password fails schema validation before admission.",
+      "verification": "Executed transaction/parity focused receipt includes takeover and ignored password-write rollback regressions."
+    },
+    {
+      "id": "A2-ISSUANCE-COOLDOWN-DTO",
+      "reviewer": "a2_client",
+      "paths": [
+        "src/worker/services/auth-otp-http.ts",
+        "tests/integration/auth-hardening.test.ts"
+      ],
+      "finding": "Issuance response lacked remaining cooldown metadata, so rejected delivery could drop the client cooldown.",
+      "resolution": "Adapter computes remaining retryAfterSeconds from D1 epoch and immutable issuance expiry. Exact DTO/parity assertions now include fresh 60 seconds; hardening replay regression proves remaining 39..40 seconds on an aged fixture without sending/creating another issuance.",
+      "verification": "a2_client independent helper review plus a2_transaction executed 93-test hardening rerun."
+    },
+    {
+      "id": "A2-LOGIN-PENDING-202",
+      "reviewer": "a2_client",
+      "paths": [
+        "src/web/pages/AuthPage.tsx",
+        "tests/unit/auth-verify-route.test.tsx"
+      ],
+      "finding": "A successful pending issuance 202 with requireOtp did not enter the verification UI.",
+      "resolution": "handleLogin checks requireOtp in successful responses, enters verification with an empty activation-password field and requires fresh password choice.",
+      "verification": "Resolved in the a2_client final 128-test receipt and independent HTTP review; not pending."
+    },
+    {
+      "id": "A2-REGISTER-MISSING-PASSWORD-CODE",
+      "reviewer": "a2_transaction",
+      "paths": [
+        "src/worker/validation/schemas.ts",
+        "src/worker/routes/auth.ts"
+      ],
+      "finding": "Initial review proposed a new REGISTRATION_PASSWORD_REQUIRED error for code-only registration compatibility.",
+      "resolution": "Coordinator explicitly accepted the existing schema VALIDATION_ERROR 400 contract; no new error is required. Missing chosen password rejects before admission/comparison. This is an accepted contract decision, not an unresolved security finding."
+    }
+  ],
+  "remainingBlockingSourceFindings": [],
+  "pendingVerification": [
+    "Root final committed-source freeze and full lint/typecheck/test/local migration/local D1/build receipts.",
+    "Controlled hosted staging D1 concurrency/fault/rollback proof.",
+    "Controlled inbox/provider acceptance/delivery evidence and 0040-compatible release/preflight readers.",
+    "Named hardened rollback and reviewed scope-HMAC rotation/history preservation policy before hosted operations."
+  ],
+  "acceptedLocalContract": [
+    "All issue/register/resend/unverified-login/verify/reset OTP paths use strict authority; verified password login keeps its existing path.",
+    "Register chosen activation password and reset final password are 6..100 characters; reset final also activates a pending account.",
+    "Forgot issue new/pending/terminal/stale replay stays generic200; persisted candidate readiness/invalid/stale/legacy states genericOTP_INVALID400; D1 uncertainty503 and durable429 parity remain.",
+    "Admissions are irreversible; terminal not-ready tickets never revive/refund. Explicit resend after60s creates a new generation; no automatic candidate-key rotation on OTP_INVALID.",
+    "First no-key request bootstraps from server D1 epoch; no-key retries are fresh operations. Later retry keys live only in tab memory and bind semantic payload/owner.",
+    "Completion replay never returns a raw token or sets another cookie/session; returns sessionRequired for login recovery.",
+    "Strict receipt pruning has24h minimum; scope/import rows and retained legacy failure/lock evidence remain indefinitely.",
+    "Guest transfer returns409INVENTORY_TRANSFER_DEFERRED before admission/effects; migration0040 remains unchanged."
+  ],
+  "testsRunByReviewer": [
+    {
+      "path": ".artifacts/backend-b01a-a2/transaction-parity-final.log",
+      "sha256": "ed1002e844562f022b1003bbfb91e0a875e8c543918d46150d377e484062679e",
+      "bytes": 1328,
+      "command": "pnpm exec vitest run tests/integration/auth-otp-coordinator.test.ts tests/integration/auth-hardening.test.ts --maxWorkers=2",
+      "exitCode": 0,
+      "filesPassed": 2,
+      "testsPassed": 188,
+      "fileCounts": {
+        "tests/integration/auth-otp-coordinator.test.ts": 96,
+        "tests/integration/auth-hardening.test.ts": 92
+      },
+      "startAtAsReported": "18:59:08",
+      "durationAsReported": "12.02s",
+      "sourceTimingLimit": "Executed before the later hardening DTO-fixture correction and added remaining-cooldown case. Original log retained; not a final-source aggregate certificate."
+    },
+    {
+      "path": ".artifacts/backend-b01a-a2/hardening-cooldown-final.log",
+      "sha256": "ebfef1d9751a1b51cbbe67b65e4dbd1c2fc6ff76fc2f53f2134c5f9749b76352",
+      "bytes": 1254,
+      "command": "pnpm exec vitest run tests/integration/auth-hardening.test.ts --maxWorkers=2",
+      "exitCode": 0,
+      "filesPassed": 1,
+      "testsPassed": 93,
+      "startAtAsReported": "19:08:55",
+      "durationAsReported": "11.84s",
+      "sourceTimingLimit": "Executed after DTO-fixture correction; included current hardening hash in reviewedSource."
+    }
+  ],
+  "reviewerChecks": [
+    {
+      "command": "git diff --check -- tests/integration/auth-hardening.test.ts docs/backend-upgrade/b01a-a2/ADR-B01a-002.md",
+      "exitCode": 0
+    },
+    {
+      "command": "python3 -m json.tool docs/backend-upgrade/b01a-a2/review-record.json",
+      "exitCode": 0
+    },
+    {
+      "command": "git diff --check -- tests/integration/auth-hardening.test.ts docs/backend-upgrade/b01a-a2/ADR-B01a-002.md docs/backend-upgrade/b01a-a2/review-record.json",
+      "exitCode": 0
+    }
+  ],
+  "clientAgentEvidence": {
+    "reviewer": "a2_client",
+    "clientSourceReviewKind": "implementer_self_review",
+    "httpAdapterReviewKind": "independent_agent_read_only_review",
+    "clientReceipt": {
+      "path": ".artifacts/backend-b01a-a2/client-register-password-receipt.json",
+      "sha256": "38c74330b27efd79d6e29de3253c4126037c694a513259b5194dd85e44443354",
+      "bytes": 4497
+    },
+    "clientHttpReview": {
+      "path": ".artifacts/backend-b01a-a2/client-http-review.json",
+      "sha256": "5674cb99a630bca26709e56804bbd48ce8b4a1ba799c03e9ccc2b66fc8992f83",
+      "bytes": 1674
+    },
+    "reviewedHttpSource": {
+      "path": "src/worker/services/auth-otp-http.ts",
+      "sha256": "7df979cdcec66f6118038d13cac655089e0428a268f918fb11f4c61c872af7f3",
+      "bytes": 12501,
+      "matchesReceipt": true
+    },
+    "currentClientSource": [
+      {
+        "path": "src/web/services/auth.ts",
+        "sha256": "e5c40a59820afb4bcebe4be491015112cd60e56d1330aa56579774ca808e34a4",
+        "bytes": 9102,
+        "receiptSha256": "e5c40a59820afb4bcebe4be491015112cd60e56d1330aa56579774ca808e34a4",
+        "matchesReceipt": true
+      },
+      {
+        "path": "src/web/services/auth-otp-retry.ts",
+        "sha256": "8a2a3e695caa9836099b2c8fa8891a2935b10733da7ee5642cb50b9947653ee2",
+        "bytes": 3911,
+        "receiptSha256": "8a2a3e695caa9836099b2c8fa8891a2935b10733da7ee5642cb50b9947653ee2",
+        "matchesReceipt": true
+      },
+      {
+        "path": "src/web/pages/AuthPage.tsx",
+        "sha256": "dcb93183b2eaf342c7db8a87d12b84caa9b8d32c3763748e0f7e3b34cf935555",
+        "bytes": 35735,
+        "receiptSha256": "dcb93183b2eaf342c7db8a87d12b84caa9b8d32c3763748e0f7e3b34cf935555",
+        "matchesReceipt": true
+      },
+      {
+        "path": "src/web/features/auth/auth-shared.ts",
+        "sha256": "bb3a23577859468719cb8c859a5fb510409ee2cbe57e56e521c4cb2dee7bc106",
+        "bytes": 1558,
+        "receiptSha256": "bb3a23577859468719cb8c859a5fb510409ee2cbe57e56e521c4cb2dee7bc106",
+        "matchesReceipt": true
+      },
+      {
+        "path": "src/web/features/auth/ForgotPasswordMode.tsx",
+        "sha256": "dbd3365503b1691f4020cb235df64629fa83f0b72845be3714ed41112ae3e67b",
+        "bytes": 6452,
+        "receiptSha256": "dbd3365503b1691f4020cb235df64629fa83f0b72845be3714ed41112ae3e67b",
+        "matchesReceipt": true
+      },
+      {
+        "path": "src/web/features/auth/OtpMode.tsx",
+        "sha256": "13a5c1204b67a0cf46cce3e327aca882b3bd463764585b73429e0fc1c7d5a1f3",
+        "bytes": 9636,
+        "receiptSha256": "13a5c1204b67a0cf46cce3e327aca882b3bd463764585b73429e0fc1c7d5a1f3",
+        "matchesReceipt": true
+      },
+      {
+        "path": "tests/unit/auth-otp-client.test.ts",
+        "sha256": "90ddfdbb12130196aaba7460c7c13c395495c47bce93a4a7294ab1f238829d05",
+        "bytes": 13645,
+        "receiptSha256": "90ddfdbb12130196aaba7460c7c13c395495c47bce93a4a7294ab1f238829d05",
+        "matchesReceipt": true
+      },
+      {
+        "path": "tests/unit/auth-verify-route.test.tsx",
+        "sha256": "291ae2a440c9992818eacc301d28ba192764713ba1d024d60ebbc14c7776ea84",
+        "bytes": 46711,
+        "receiptSha256": "291ae2a440c9992818eacc301d28ba192764713ba1d024d60ebbc14c7776ea84",
+        "matchesReceipt": true
+      },
+      {
+        "path": "tests/unit/auth-guest-transfer-deferred.test.tsx",
+        "sha256": "c3589c96a11bcd7d58eef0852011de76fa8fee88fcbbf89455106854f8d3be6b",
+        "bytes": 14242,
+        "receiptSha256": "c3589c96a11bcd7d58eef0852011de76fa8fee88fcbbf89455106854f8d3be6b",
+        "matchesReceipt": true
+      }
+    ],
+    "reportedExecutedFinalRun": {
+      "path": ".artifacts/backend-b01a-a2/client-register-password-final.log",
+      "sha256": "cf13ff11a9cc6c31d8909fc5a221ed4db84d2f8b09dcca9a662ffd60124e37cb",
+      "exitCode": 0,
+      "testsPassed": 128,
+      "testsFailed": 0,
+      "filesPassed": 7,
+      "filesFailed": 0
+    },
+    "failedRunsPreserved": [
+      {
+        "path": ".artifacts/backend-b01a-a2/client-register-password-first.log",
+        "sha256": "b6175ea73bc29503d5df9d388f7b358360e0f3cb9b8abfee76d992ebd73d33e8",
+        "exitCode": 1,
+        "testsPassed": 118,
+        "testsFailed": 5,
+        "filesPassed": 5,
+        "filesFailed": 2
+      },
+      {
+        "path": ".artifacts/backend-b01a-a2/client-register-password-second.log",
+        "sha256": "593894fa21da549d31a4d97be259f9a25f1aa439c9ef23d15b72ebe4fe6fe4ca",
+        "exitCode": 1,
+        "testsPassed": 125,
+        "testsFailed": 2,
+        "filesPassed": 6,
+        "filesFailed": 1
+      }
+    ],
+    "verificationLimit": "Reporter receipts were read and source hashes matched; a2_transaction did not rerun client tests."
+  },
+  "historicalReviewerFailureLogsPreserved": [
+    {
+      "path": ".artifacts/backend-b01a-a2/transaction-focused-first.log",
+      "sha256": "375d335fc1aa40ab45e16552d0ccf3fded240545b9207c038191f97e33e3f113",
+      "bytes": 14516
+    },
+    {
+      "path": ".artifacts/backend-b01a-a2/transaction-password-final.log",
+      "sha256": "b79466cecccf186dbaea05fcd14c6969fe27c34535d64c4c83a21fc73c66fbd4",
+      "bytes": 56389
+    }
+  ],
+  "limits": [
+    "Implementer self-review is distinguished from independent agent review for root-owned files.",
+    "Source snapshot and focused tests do not prove final full-suite/build or hosted D1 correctness.",
+    "No real email/provider calls, remote D1, deployment, push, billing/authority/dependency/config/workflow edits were performed by this reviewer.",
+    "Root owns remaining documentation/status/manifests and checkpoint commits."
+  ],
+  "snapshotNotice": "Source-review snapshot retained with its original pendingVerification list. Post-snapshot local gates are resolved by the linked final acceptance receipt; hosted gates remain open.",
+  "postSnapshotAcceptance": {
+    "implementationSha": "dcc0e1a74d2f5e3b67e13ecbb241bc04c8fafdde",
+    "validationPath": "docs/backend-upgrade/b01a-a2/validation.json",
+    "resultPath": "docs/backend-upgrade/b01a-a2/RESULT.md",
+    "independentDbCoordinatorReviewPath": "docs/backend-upgrade/b01a-a2/independent-db-coordinator-review.json",
+    "recoveryReviewPath": "docs/backend-upgrade/b01a-a2/recovery-review.json",
+    "fullSuite": {
+      "filesPassed": 293,
+      "testsPassed": 7037,
+      "exitCode": 0,
+      "cleanCommittedTree": true
+    },
+    "remainingHostedGates": true
+  }
+}

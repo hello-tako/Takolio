@@ -1,7 +1,7 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { StaticRouter } from 'react-router-dom/server';
+import { StaticRouter } from 'react-router-dom';
 import { describe, expect, it, vi } from 'vitest';
 
 vi.mock('../../src/web/stores/useAuthStore', () => ({
@@ -39,7 +39,7 @@ describe('Takosan brand contract', () => {
     expect(TAKOSAN_BRAND.colors).toEqual({
       coral: '#FF7B6B',
       green: '#2E7D5B',
-      navy: '#1F2937',
+      navy: '#202C28',
       cream: '#FFF8F3',
       mint: '#DFF4E6',
       yellow: '#FFC857',
@@ -57,7 +57,8 @@ describe('Takosan brand contract', () => {
     for (const logo of Object.values(TAKOSAN_BRAND.logos)) {
       const svg = readFileSync(publicFile(logo), 'utf8');
       expect(svg).toContain('<svg');
-      expect(svg).toContain('takosan-canonical-symbol');
+      expect(svg).toContain('M128 321');
+      expect(svg).not.toMatch(/<script|foreignObject|(?:href|src)=/i);
       expect(svg).not.toMatch(/<text/i);
     }
   });
@@ -100,8 +101,8 @@ describe('PWA metadata', () => {
     const manifest = JSON.parse(readFileSync(resolve(root, 'public/manifest.json'), 'utf8'));
     expect(manifest.short_name).toBe('Takosan');
     expect(manifest.name).toMatch(/^Takosan/);
-    expect(manifest.theme_color).toBe('#245D49');
-    expect(manifest.background_color).toBe('#F7F3EC');
+    expect(manifest.theme_color).toBe('#2E7D5B');
+    expect(manifest.background_color).toBe('#FFF8F3');
     const sizes = manifest.icons.map((i: { sizes: string; purpose?: string }) => `${i.sizes}${i.purpose ? `:${i.purpose}` : ''}`);
     expect(sizes).toEqual(expect.arrayContaining(['192x192', '512x512', '512x512:maskable']));
     for (const icon of manifest.icons) {
@@ -113,15 +114,16 @@ describe('PWA metadata', () => {
   it('index.html title, favicon, theme colour and OpenGraph are Takosan while the domain is unchanged', () => {
     const html = readFileSync(resolve(root, 'index.html'), 'utf8');
     expect(html).toMatch(/<title>Takosan/);
-    expect(html).toContain('href="/takosan/rebuild/app-icons/favicon.svg"');
-    expect(html).toContain('<meta name="theme-color" content="#245D49" />');
+    expect(html).toContain('href="/takosan/v3/app-icons/favicon.svg"');
+    expect(html).toContain('<meta name="theme-color" content="#2E7D5B" />');
     expect(html).toContain('property="og:title" content="Takosan');
     // og:image must be absolute for scrapers; the temporary domain stays until the maintainer picks one.
-    expect(html).toContain('property="og:image" content="https://frigo.tungjpstore.net/takosan/rebuild/og.png"');
+    expect(html).toContain('property="og:image" content="https://frigo.tungjpstore.net/takosan/v3/social/og-1200x630.png"');
     expect(html).toContain('property="og:url" content="https://frigo.tungjpstore.net"');
     expect(html).not.toMatch(/og:image" content="\//);
     expect(html).not.toMatch(/\/frigo\/(brand|app-icons)\//);
-    expect(html).toContain('family=Nunito');
+    expect(html).not.toContain('fonts.googleapis.com');
+    expect(readFileSync(resolve(root, 'src/web/styles/brand-v3-fonts.css'), 'utf8')).toContain("font-family: 'Nunito'");
   });
 
   it('favicon, apple-touch-icon and icon links in index.html point at existing Takosan files', () => {
@@ -129,7 +131,7 @@ describe('PWA metadata', () => {
     const iconHrefs = [...html.matchAll(/<link rel="(?:icon|apple-touch-icon)"[^>]*href="([^"]+)"/g)].map((m) => m[1]);
     expect(iconHrefs.length).toBeGreaterThanOrEqual(3);
     for (const href of iconHrefs) {
-      expect(href.startsWith('/takosan/rebuild/app-icons/')).toBe(true);
+      expect(href.startsWith('/takosan/v3/app-icons/')).toBe(true);
       expect(existsSync(publicFile(href))).toBe(true);
     }
     expect(existsSync(publicFile(TAKOSAN_BRAND.og))).toBe(true);
@@ -140,7 +142,7 @@ describe('PWA metadata', () => {
     expect(sw).not.toContain("'frigo-pwa-v1'");
     expect(sw).toContain("BUILD_ID = '__TAKOSAN_BUILD_ID__'");
     expect(sw).toContain('CACHE_NAME = `takosan-pwa-${BUILD_ID}`');
-    expect(sw).toContain('/takosan/app-icons/icon-192.png');
+    expect(sw).toContain('/takosan/v3/app-icons/icon-192.png');
     expect(sw).toContain("url.pathname.startsWith('/takosan/')");
     const crossOriginBypass = sw.indexOf('if (url.origin !== self.location.origin) return;');
     expect(crossOriginBypass).toBeGreaterThan(-1);
@@ -207,7 +209,9 @@ describe('Primary shell renders Takosan, not Frigo', () => {
     expect(render(<EmptyState type="empty-fridge" title="Trống" description="x" />)).toContain(TAKOSAN_BRAND.mascot.fridge);
     expect(render(<EmptyState type="no-recipes" title="Trống" description="x" />)).toContain(TAKOSAN_BRAND.mascot.recipe);
     expect(render(<EmptyState type="shopping-ready" title="Trống" description="x" />)).toContain(TAKOSAN_BRAND.mascot.shopping);
-    expect(render(<EmptyState type="error" title="Lỗi" description="x" />)).toContain(TAKOSAN_BRAND.mascot.thinking);
+    const error = render(<EmptyState type="error" title="Lỗi" description="x" />);
+    expect(error).not.toContain('/mascot/');
+    expect(error).toContain('aria-hidden="true"');
   });
 });
 
@@ -241,7 +245,10 @@ describe('Palette hardening (P2-BRAND-1)', () => {
     const value = (c: string | Record<string, string>) => (typeof c === 'string' ? c : c.DEFAULT);
     for (const [name, hex] of Object.entries(TAKOSAN_BRAND.colors)) {
       const actual = value(takosan[name]);
-      if (actual.startsWith('rgb(var(')) {
+      if (name === 'navy') {
+        expect(actual).toContain('--takosan-navy-color-rgb');
+        expect(readFileSync(resolve(root, 'src/web/styles/takosan-tokens.css'), 'utf8')).toContain('--takosan-navy-color-rgb: 32 44 40');
+      } else if (actual.startsWith('rgb(var(')) {
         const rgb = [1, 3, 5].map(index => Number.parseInt(hex.slice(index, index + 2), 16)).join(' ');
         expect(actual).toContain(`, ${rgb}) / <alpha-value>)`);
       } else expect(actual).toBe(hex);
@@ -288,7 +295,7 @@ describe('Palette hardening (P2-BRAND-1)', () => {
 describe('Brand generator (P2-BRAND-2)', () => {
   it('sharp is a direct, exactly pinned devDependency and the generator imports it directly', () => {
     const pkg = JSON.parse(readFileSync(resolve(root, 'package.json'), 'utf8'));
-    expect(pkg.devDependencies.sharp).toBe('0.33.5');
+    expect(pkg.devDependencies.sharp).toBe('0.35.5');
     expect(pkg.scripts['brand:icons']).toBe('node scripts/generate-takosan-icons.mjs');
     const script = readFileSync(resolve(root, 'scripts/generate-takosan-icons.mjs'), 'utf8');
     expect(script).toContain("import sharp from 'sharp'");

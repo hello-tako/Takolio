@@ -1,0 +1,27 @@
+{
+  "status": "NO_REMAINING_BLOCKING_HTTP_ADAPTER_FINDINGS",
+  "path": "src/worker/services/auth-otp-http.ts",
+  "sha256": "7df979cdcec66f6118038d13cac655089e0428a268f918fb11f4c61c872af7f3",
+  "correctionsVerified": [
+    {
+      "finding": "Missing issuance retryAfterSeconds made definitive delivery rejection lose the cooldown in UI.",
+      "resolution": "Root response DTO now computes remaining cooldown from captured DB epoch and immutable expiry."
+    },
+    {
+      "finding": "Unverified login in-progress202 resolved success:true requireOtp:true without entering OTP UI.",
+      "resolution": "Client handleLogin now handles requireOtp in successful responses with empty activation-password field; focused regression passes."
+    }
+  ],
+  "confirmedGuards": [
+    "Register purpose takes register_verify even with newPassword; forgot final only takes reset_final when password present.",
+    "Guest transfer rejects before coordinator admission/effects.",
+    "Completion replay returns sessionRequired without raw token,user,cookie.",
+    "Before first cookie response query rechecks normalizedemail,verifiedaccount,principal identity,householdmembership,exacttokenhash,revocation and sessionexpiry.",
+    "Known/unknown forgot error states remain generic; terminal pending-delivery OTP_INVALID requires explicit resend after cooldown as acknowledged design."
+  ],
+  "limits": [
+    "Read-only adapter review; no edits to worker/service/schema.",
+    "Reviewed source snapshot while root integration remains uncommitted; root must freeze actual committed source and run global/local gates.",
+    "No human PR approval or hosted D1/provider certification."
+  ]
+}

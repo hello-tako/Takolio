@@ -43,7 +43,7 @@ function base64ToByteArray(input: string): number[] {
     }
     return Array.from(bytes);
   } catch (err) {
-    console.error('Failed to parse base64 image into byte array:', err);
+    console.error('Failed to parse base64 image into byte array:');
     return [];
   }
 }

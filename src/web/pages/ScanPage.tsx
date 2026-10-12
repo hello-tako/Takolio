@@ -81,7 +81,7 @@ export const ScanPage: React.FC = () => {
     cancelRead.current = readPrivateImage(file, (base64) => {
       setImage(base64, base64);
       void startAIScan(base64);
-    });
+    }, activeTab === 'receipt' ? 'receipt' : 'photo');
   };
 
   const startAIScan = async (base64: string) => {

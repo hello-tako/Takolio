@@ -1,0 +1,89 @@
+{
+  "actualResults": {
+    "gitleaks": "FINDINGS_16_UNREVIEWED",
+    "repository": "FAILED",
+    "selftest": "PASS_22_CASES",
+    "semgrep": "ERROR_1_PARSER_DIAGNOSTIC",
+    "syft": "PASS_786_COMPONENTS",
+    "zizmor": "FINDINGS_72"
+  },
+  "bounds": {
+    "candidatePlatform": "linux-amd64",
+    "executedPlatform": "darwin-arm64",
+    "gitHistoryScanned": false,
+    "installedNodeModulesScanned": false,
+    "python": "3.12",
+    "semgrepRuleCount": 3,
+    "sourceAndSecretTextPublished": false
+  },
+  "classification": "FROZEN_LOCAL_CANDIDATE_WITH_UNRESOLVED_SECURITY_GATE",
+  "ownedFiles": {
+    "docs/backend-upgrade/b08/security/README.md": "8a04c4480d356142794bba00eb44581b59fe5c866779fbd551565aec78915355",
+    "docs/backend-upgrade/b08/security/fixtures/gitleaks/negative/config.txt": "2ff7ea324a54ecc084c4f58c76ea35ba657b8fee0853655cb49dade6235d180f",
+    "docs/backend-upgrade/b08/security/fixtures/gitleaks/positive/synthetic.txt": "84db9d8fd7f7ce525cbc123ff29af0d1f3fc10bed29f3a0afa511cf589c671cf",
+    "docs/backend-upgrade/b08/security/fixtures/semgrep/negative/sample.ts": "e372fb3cbd3130a9ded35ab2fea73c76e88191f54165ec82f22317ddb47bc430",
+    "docs/backend-upgrade/b08/security/fixtures/semgrep/positive/sample.ts": "d3be94efc95cfcdc0d5625a25c8354849e8e99171374869b7c66747d5762c3ba",
+    "docs/backend-upgrade/b08/security/fixtures/syft/negative/README.txt": "1168b3e51b54b50ad26981590ec8b6aeffd21562b93f6ace4a44c08681509bbf",
+    "docs/backend-upgrade/b08/security/fixtures/syft/positive/package-lock.json": "d995b9af88a56ab3f3f0fb62fbbd8cddd5d0288b72c04e028c00631f3e2e8747",
+    "docs/backend-upgrade/b08/security/fixtures/syft/positive/package.json": "b70c2fbbfca205e3d009dd5c9f7f66d5ed4a85cf788c4d078ca91960ba9bac8a",
+    "docs/backend-upgrade/b08/security/fixtures/zizmor/malformed/workflow.yml": "745a9a82274fdddbd7e4209ebce7a4a031c3c3afe2573f7bab882f4acf927d55",
+    "docs/backend-upgrade/b08/security/fixtures/zizmor/negative/workflow.yml": "d25eff2df7c6d4d710250b385aa0f0b1e48f75586b692ff34b5b36f92db0f897",
+    "docs/backend-upgrade/b08/security/fixtures/zizmor/positive/workflow.yml": "88a60982a87f936d3efebf50e8317fb7a61b791ed286737b4dafc3ebdd0e949e",
+    "docs/backend-upgrade/b08/security/install-tools.py": "d32b520222a4a2b243e57976bf0de21bc4c616b77bd99e093386bc5ef73ecf08",
+    "docs/backend-upgrade/b08/security/rules/gitleaks.toml": "7c1ed3d2163949172eb670c885aa0ab678594c59badf537372bf9aa86b192c31",
+    "docs/backend-upgrade/b08/security/rules/semgrep.yml": "65a3fbd1e62829ba845f4e2dc3396bf1ac4211660ae4f6b582b117e551c9da99",
+    "docs/backend-upgrade/b08/security/rules/syft.yml": "9aee3e875e9cafcb974a70517a522059598073e0f809dcd2dd9fab9bbb5eb5a5",
+    "docs/backend-upgrade/b08/security/runner.py": "fe1d5ae269caa23899fc899922b246aaa01e3b847a46e6facafc94a8adc82b92",
+    "docs/backend-upgrade/b08/security/semgrep-requirements.lock": "0698a91a7d8455a177cbbfc6161338745cbda5dc47799e9f5242cd510be63423",
+    "docs/backend-upgrade/b08/security/tool-manifest.json": "094840c1ec0ce518f82325528a8cb83b1eafe7af65a44669cad6dbc09e3a45c2"
+  },
+  "receipts": {
+    ".artifacts/backend-program-20261011/b08-security-downloads/toolchain-receipt.json": "320384abf1128747b8873e33902628b524445cc1fbdba74adeebe4fe70166c82",
+    ".artifacts/backend-program-20261011/b08-security/gitleaks-category-review.json": "12f859fbe45c6e97b23986d482f3688649aaf662b3073d548484050209980440",
+    ".artifacts/backend-program-20261011/b08-security/repository-freeze/receipt.json": "0896710ead53a6e4f3020a60acd11d8b5085b1c713515b36d1238a7158fc4984",
+    ".artifacts/backend-program-20261011/b08-security/selftest-freeze/receipt.json": "776f37f382f2667d02af23e1770306b0966294d4b24a742315414c131c927c39"
+  },
+  "schemaVersion": 1,
+  "toolchain": {
+    "manifestSha256": "094840c1ec0ce518f82325528a8cb83b1eafe7af65a44669cad6dbc09e3a45c2",
+    "provenance": "Official archive SHA256; Python packages require-hashes/only-binary. No independent signature attestation.",
+    "schemaVersion": 1,
+    "tools": [
+      {
+        "archiveSha256": "b40ab0ae55c505963e365f271a8d3846efbc170aa17f2607f13df610a9aeb6a5",
+        "executable": "gitleaks/gitleaks",
+        "executableSha256": "ba52fb1bfabbcde42f032afad3d6e0b19dff8ed105229a16e7caa338bbc0e84f",
+        "name": "gitleaks",
+        "platform": "darwin-arm64",
+        "version": "8.30.1"
+      },
+      {
+        "archiveSha256": "b4319c3abaa87a0170ab76ee83ea2260ca34b53aecfa3ab0dd5428d2319d744f",
+        "executable": "syft/syft",
+        "executableSha256": "bc08d98ac3ca9cf475952b8eab22dfda70f3ab475ceb4e0113b9f77b24b75e26",
+        "name": "syft",
+        "platform": "darwin-arm64",
+        "version": "1.54.1"
+      },
+      {
+        "archiveSha256": "e28d22b087f9ebb8d99da6e740d348c930f559961c7c3f12badda54f882195a2",
+        "executable": "zizmor/zizmor",
+        "executableSha256": "0cd1e69b329cdbc2ded5cd3b5161f21ffd89652eab6563153e4af5a69344c64d",
+        "name": "zizmor",
+        "platform": "darwin-arm64",
+        "version": "1.30.1"
+      },
+      {
+        "executable": "semgrep-venv/bin/semgrep",
+        "executableSha256": "90ad1f33376a85d33bd8c6f08f662ac9ffdff1ba1a4a572cf6b6d2d99c26f68d",
+        "name": "semgrep",
+        "platform": "darwin-arm64",
+        "pythonExecutableSha256": "1ce7aea77992ab97bb6225339a1d72a79925d5641e461cdfc2584916119a7edb",
+        "requirementLockSha256": "0698a91a7d8455a177cbbfc6161338745cbda5dc47799e9f5242cd510be63423",
+        "runtimeTreeSha256": "946dbb518ead1a91f3ea87632850116a24611db152e18eeeef0c322b5d9acf8f",
+        "version": "1.180.0"
+      }
+    ]
+  },
+  "trackedPrivateArtifacts": false
+}

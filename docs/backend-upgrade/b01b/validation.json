@@ -1,0 +1,618 @@
+{
+  "status": "B01b_A1_LOCAL_VERIFIED",
+  "recordedAtUtc": "2026-10-11T03:30:06.160240+00:00",
+  "repository": "vn-tak/Tako-san",
+  "repositoryId": 1385308553,
+  "baseSha": "98471e10d4b874219b069ec8b38a26fdd719db81",
+  "implementationSha": "31d5fd860ef9b65fc38ccdc664074bda348b0a8c",
+  "testedFrozenSource": {
+    "baseSha": "98471e10d4b874219b069ec8b38a26fdd719db81",
+    "frozenAtUtc": "2026-10-11T03:07:46.477293+00:00",
+    "files": [
+      {
+        "path": "src/worker/services/email.ts",
+        "sha256": "7721143d005fc039dc6d3c2206ddd194bf9bd42791681249894d5c850bdddc2a"
+      },
+      {
+        "path": "tests/unit/email-lifecycle.test.ts",
+        "sha256": "e4d70d43ccf4f86fc63cad000adc3d176cee0b7e724c338acd0dab503f8314c7"
+      },
+      {
+        "path": "tests/unit/email-privacy.test.ts",
+        "sha256": "dd6b3b7230e77494298fd372e14f6c6fb30c41f1f99e3ba16714f760f998f6e1"
+      },
+      {
+        "path": "tests/integration/auth-hardening.test.ts",
+        "sha256": "78715be212c3af5eaab61e9996fc8edca1416168d82bd14a28051875cf1774e3"
+      }
+    ]
+  },
+  "wranglerCache": {
+    "TMPDIR": "/private/tmp/takosan-b01b-wrangler-epj27_ad",
+    "actualPublicRegistryLatest": "4.149.0",
+    "fetchedAtUtc": "2026-10-11T03:07:47.242095+00:00",
+    "metadataSha256": "38ab740887c8d83da394f9d8afca5cd558dbe4c3f579fe6d4b37c511f3ac9ac9",
+    "cachePurpose": "skip ancillary Wrangler update lookup; installed tool unchanged"
+  },
+  "checks": [
+    {
+      "name": "audit-full",
+      "command": [
+        "pnpm",
+        "audit",
+        "--json"
+      ],
+      "startedAtUtc": "2026-10-11T03:08:06.289676+00:00",
+      "durationSeconds": 1.791,
+      "exitCode": 1,
+      "status": "FAIL",
+      "logPath": ".artifacts/backend-b01b/audit-full.log",
+      "logSha256": "c302bfc15f4054f45358366dc59293e488497a7a7474eb7b357b1b12fe3f18a6",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "CI": null,
+        "WRANGLER_SEND_METRICS": null,
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      },
+      "classification": "RECORDED_DEPENDENCY_FINDINGS",
+      "preservedLogPath": "docs/backend-upgrade/b01b/logs/audit-full.log.gz",
+      "preservedGzipSha256": "e43e1d9111efd94c60d63f94270effec913225233fdb842906c16cd27e678862"
+    },
+    {
+      "name": "audit-prod",
+      "command": [
+        "pnpm",
+        "audit",
+        "--prod",
+        "--json"
+      ],
+      "startedAtUtc": "2026-10-11T03:07:45.307684+00:00",
+      "durationSeconds": 0.96,
+      "exitCode": 1,
+      "status": "FAIL",
+      "logPath": ".artifacts/backend-b01b/audit-prod.log",
+      "logSha256": "bdc7313d26f196c5427205c3ce28110ce5fc9a52ca765c4df3b7456eb7c85c62",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "CI": null,
+        "WRANGLER_SEND_METRICS": null,
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      },
+      "classification": "RECORDED_DEPENDENCY_FINDINGS",
+      "preservedLogPath": "docs/backend-upgrade/b01b/logs/audit-prod.log.gz",
+      "preservedGzipSha256": "3489b6edbe1b906b173b7ac0da4c30412b6b1dbe5e8189dbe12169790df5db1c"
+    },
+    {
+      "name": "build",
+      "command": [
+        "pnpm",
+        "build"
+      ],
+      "startedAtUtc": "2026-10-11T03:07:45.307431+00:00",
+      "durationSeconds": 8.865,
+      "exitCode": 0,
+      "status": "PASS",
+      "logPath": ".artifacts/backend-b01b/build.log",
+      "logSha256": "0497f1f0c9dc1f9d2598af98d65051389c5f67488d99843bd82722a1bbe24a55",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "CI": null,
+        "WRANGLER_SEND_METRICS": null,
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      },
+      "preservedLogPath": "docs/backend-upgrade/b01b/logs/build.log.gz",
+      "preservedGzipSha256": "c6a2c56629cfc47b71866acb525a2163dc3977b5d1b91c04ef312a2181169ac8"
+    },
+    {
+      "name": "catalog-focused",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/unit/production-catalog-import-inspection.test.mjs",
+        "--maxWorkers=1"
+      ],
+      "startedAtUtc": "2026-10-11T03:20:46.814077+00:00",
+      "durationSeconds": 52.21,
+      "exitCode": 0,
+      "status": "PASS",
+      "logPath": ".artifacts/backend-b01b/catalog-focused.log",
+      "logSha256": "07834884f8b6dd71da7bea273e186e12c459dc83715756a9609108a87650fdd3",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp/takosan-b01b-wrangler-epj27_ad",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      },
+      "preservedLogPath": "docs/backend-upgrade/b01b/logs/catalog-focused.log.gz",
+      "preservedGzipSha256": "ec696ed518e920b9c721b4dad7305456b2e02dbc3477b78748523a7f940c9257"
+    },
+    {
+      "name": "final-focused",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/unit/email-lifecycle.test.ts",
+        "tests/unit/email-privacy.test.ts",
+        "tests/integration/auth-hardening.test.ts",
+        "tests/integration/browser-security.test.ts",
+        "--maxWorkers=2"
+      ],
+      "startedAtUtc": "2026-10-11T03:07:04.516198+00:00",
+      "durationSeconds": 13.745,
+      "exitCode": 0,
+      "status": "PASS",
+      "logPath": ".artifacts/backend-b01b/final-focused.log",
+      "logSha256": "95522cd3bfd79f5e9f51169e0f17567dbd2c69297b321e9b5788f8f65a1ba677",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "CI": null,
+        "WRANGLER_SEND_METRICS": null,
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      },
+      "preservedLogPath": "docs/backend-upgrade/b01b/logs/final-focused.log.gz",
+      "preservedGzipSha256": "010d7499b9e84a4eefa67971f6683af3ac39986a4d4f1a033e2ac97277be3a7a"
+    },
+    {
+      "name": "final-lint",
+      "command": [
+        "pnpm",
+        "lint"
+      ],
+      "startedAtUtc": "2026-10-11T03:07:45.307432+00:00",
+      "durationSeconds": 7.238,
+      "exitCode": 0,
+      "status": "PASS",
+      "logPath": ".artifacts/backend-b01b/final-lint.log",
+      "logSha256": "25cc1f9634027c24c62f4029a44f00fc3a7e082ac28576c6fc5a3db3e0961f73",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "CI": null,
+        "WRANGLER_SEND_METRICS": null,
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      },
+      "preservedLogPath": "docs/backend-upgrade/b01b/logs/final-lint.log.gz",
+      "preservedGzipSha256": "f30fa7ed9c927b041d14636d94e56f553561e7419673bedd310ae4d410bfedda"
+    },
+    {
+      "name": "final-typecheck",
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "startedAtUtc": "2026-10-11T03:07:03.408175+00:00",
+      "durationSeconds": 16.009,
+      "exitCode": 0,
+      "status": "PASS",
+      "logPath": ".artifacts/backend-b01b/final-typecheck.log",
+      "logSha256": "a3a28a25c9246fe7e8bbf5999692dc60347e343a2415f8cefcb7e767e0e6a0d6",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "CI": null,
+        "WRANGLER_SEND_METRICS": null,
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      },
+      "preservedLogPath": "docs/backend-upgrade/b01b/logs/final-typecheck.log.gz",
+      "preservedGzipSha256": "790d24d163b15490f0225e2d5273a3a3ca033f1c15072f1ab806901aa06cb4bc"
+    },
+    {
+      "name": "first-regression",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/unit/email-lifecycle.test.ts"
+      ],
+      "startedAtUtc": "2026-10-11T03:01:35.813148+00:00",
+      "durationSeconds": 1.632,
+      "exitCode": 0,
+      "status": "PASS",
+      "logPath": ".artifacts/backend-b01b/first-regression.log",
+      "logSha256": "a2fe53052c047fa6f5761cd83ca7d77577bd7962166a05f6ab8310d15d60ddf2",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "CI": null,
+        "WRANGLER_SEND_METRICS": null,
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      },
+      "preservedLogPath": "docs/backend-upgrade/b01b/logs/first-regression.log.gz",
+      "preservedGzipSha256": "c3448e2aac55db7e3c7ec98b09cfc4b26ac954c1adb7792bfe547251fd1f39bf"
+    },
+    {
+      "name": "first-typecheck",
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "startedAtUtc": "2026-10-11T03:01:03.077266+00:00",
+      "durationSeconds": 10.922,
+      "exitCode": 2,
+      "status": "FAIL",
+      "logPath": ".artifacts/backend-b01b/first-typecheck.log",
+      "logSha256": "772605a3140fc2d9f188be371b359ca9dc2299f8ae22747b6074d250cebc2aa3",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "CI": null,
+        "WRANGLER_SEND_METRICS": null,
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      },
+      "preservedLogPath": "docs/backend-upgrade/b01b/logs/first-typecheck.log.gz",
+      "preservedGzipSha256": "05d357271e8e5ca651cbe04f8932ecb927e50a5e827b68fbc8599416b19dd90c"
+    },
+    {
+      "name": "focused-email-auth",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/unit/email-lifecycle.test.ts",
+        "tests/unit/email-privacy.test.ts",
+        "tests/integration/auth-hardening.test.ts",
+        "tests/integration/browser-security.test.ts",
+        "--maxWorkers=2"
+      ],
+      "startedAtUtc": "2026-10-11T03:05:20.586353+00:00",
+      "durationSeconds": 11.681,
+      "exitCode": 0,
+      "status": "PASS",
+      "logPath": ".artifacts/backend-b01b/focused-email-auth.log",
+      "logSha256": "1a8296d278da905a887efdbf2eda063ba6f82dcaaf75fce6478645d2aaa97a15",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "CI": null,
+        "WRANGLER_SEND_METRICS": null,
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      },
+      "preservedLogPath": "docs/backend-upgrade/b01b/logs/focused-email-auth.log.gz",
+      "preservedGzipSha256": "5bb77c23fccc04cce0ff9639085ad4e4c84472dbb839afae6d2e9cc8c944d30c"
+    },
+    {
+      "name": "focused-email",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/unit/email-lifecycle.test.ts",
+        "tests/unit/email-privacy.test.ts"
+      ],
+      "startedAtUtc": "2026-10-11T03:04:27.674146+00:00",
+      "durationSeconds": 1.697,
+      "exitCode": 0,
+      "status": "PASS",
+      "logPath": ".artifacts/backend-b01b/focused-email.log",
+      "logSha256": "b34f31b61f9ac0ae89e869d3f3fbf7c3ba58e2eeb155ecf57628b0e5256ad616",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "CI": null,
+        "WRANGLER_SEND_METRICS": null,
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      },
+      "preservedLogPath": "docs/backend-upgrade/b01b/logs/focused-email.log.gz",
+      "preservedGzipSha256": "4a9c28ede9257faddb13552e2a69b5605a5b6d7ed802c82dbb90e771861b1278"
+    },
+    {
+      "name": "frozen-install",
+      "command": [
+        "pnpm",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "startedAtUtc": "2026-10-11T03:07:54.490590+00:00",
+      "durationSeconds": 0.517,
+      "exitCode": 0,
+      "status": "PASS",
+      "logPath": ".artifacts/backend-b01b/frozen-install.log",
+      "logSha256": "cd0cf9781f2f00b5f58b3270cb90bbbebffc8c8ec09473876c1c50185ead4c2c",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "CI": null,
+        "WRANGLER_SEND_METRICS": null,
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      },
+      "preservedLogPath": "docs/backend-upgrade/b01b/logs/frozen-install.log.gz",
+      "preservedGzipSha256": "ac898fed03cf5025b488cce635e996f0fcc47dde8712c10f37a5aa172fefbc22"
+    },
+    {
+      "name": "full-tests-rerun",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "--maxWorkers=2"
+      ],
+      "startedAtUtc": "2026-10-11T03:22:22.696367+00:00",
+      "durationSeconds": 381.808,
+      "exitCode": 0,
+      "status": "PASS",
+      "logPath": ".artifacts/backend-b01b/full-tests-rerun.log",
+      "logSha256": "6fb302566b8e86834754d0e0600b1e1672fb4a0264708330d780d9757730fe75",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp/takosan-b01b-wrangler-epj27_ad",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      },
+      "passedFiles": 289,
+      "passedTests": 6798,
+      "summary": "Test Files  289 passed (289)\nTests  6798 passed (6798)\nDuration  380.97s (transform 4.83s, setup 1.29s, collect 38.32s, tests 649.15s, environment 9.98s, prepare 11.80s)",
+      "preservedLogPath": "docs/backend-upgrade/b01b/logs/full-tests-rerun.log.gz",
+      "preservedGzipSha256": "c1a50a0ad84bf7ac255d9b5237a4fa1ffc145bfcba52fddeca5d5eda3c1651fc"
+    },
+    {
+      "name": "full-tests",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "--maxWorkers=2"
+      ],
+      "startedAtUtc": "2026-10-11T03:08:06.289685+00:00",
+      "durationSeconds": 743.452,
+      "exitCode": 1,
+      "status": "FAIL",
+      "logPath": ".artifacts/backend-b01b/full-tests.log",
+      "logSha256": "36b0230582431faab4270516571c71af6bdb4bdd46c5711e2145fd8e79ddb866",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp/takosan-b01b-wrangler-epj27_ad",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      },
+      "classification": "INTERRUPTED_FAILED",
+      "reason": "Task-owned blocked Python stdin child was terminated; initial suite remains failed, with one unhandled RPC error.",
+      "summary": "Test Files  1 failed | 288 passed (289)\nTests  1 failed | 6797 passed (6798)\nErrors  1 error\nDuration  741.59s (transform 4.98s, setup 1.20s, collect 40.24s, tests 1312.31s, environment 12.37s, prepare 12.05s)",
+      "preservedLogPath": "docs/backend-upgrade/b01b/logs/full-tests.log.gz",
+      "preservedGzipSha256": "59af2c4e78b2b0ca6172ade1d197a13e5fce6bb662d1d5129d78af33eb8ba72c"
+    },
+    {
+      "name": "lint",
+      "command": [
+        "pnpm",
+        "lint"
+      ],
+      "startedAtUtc": "2026-10-11T03:04:39.921799+00:00",
+      "durationSeconds": 6.94,
+      "exitCode": 0,
+      "status": "PASS",
+      "logPath": ".artifacts/backend-b01b/lint.log",
+      "logSha256": "25cc1f9634027c24c62f4029a44f00fc3a7e082ac28576c6fc5a3db3e0961f73",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "CI": null,
+        "WRANGLER_SEND_METRICS": null,
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      },
+      "preservedLogPath": "docs/backend-upgrade/b01b/logs/lint.log.gz",
+      "preservedGzipSha256": "f30fa7ed9c927b041d14636d94e56f553561e7419673bedd310ae4d410bfedda"
+    },
+    {
+      "name": "migrations",
+      "command": [
+        "pnpm",
+        "check:migrations"
+      ],
+      "startedAtUtc": "2026-10-11T03:07:45.307525+00:00",
+      "durationSeconds": 0.588,
+      "exitCode": 0,
+      "status": "PASS",
+      "logPath": ".artifacts/backend-b01b/migrations.log",
+      "logSha256": "965811c75cef6d8d7db8527ffaf3ec59c52869fe5cb575a1261bc3b793191de5",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "CI": null,
+        "WRANGLER_SEND_METRICS": null,
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      },
+      "preservedLogPath": "docs/backend-upgrade/b01b/logs/migrations.log.gz",
+      "preservedGzipSha256": "d45694e01d3c87e54e90c9a8b218e9260181b666a7550df4151578acca503d20"
+    },
+    {
+      "name": "reproduce-duplicate-fallback",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/unit/email-lifecycle.test.ts"
+      ],
+      "startedAtUtc": "2026-10-11T02:59:48.685737+00:00",
+      "durationSeconds": 1.714,
+      "exitCode": 1,
+      "status": "FAIL",
+      "logPath": ".artifacts/backend-b01b/reproduce-duplicate-fallback.log",
+      "logSha256": "f9b2428ed24cf76874d0156cc1cf0dab61908a07d250dd1f3c2d32752feb1d79",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "CI": null,
+        "WRANGLER_SEND_METRICS": null,
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      },
+      "classification": "EXPECTED_RED_REGRESSION_ON_BASE_SOURCE",
+      "preservedLogPath": "docs/backend-upgrade/b01b/logs/reproduce-duplicate-fallback.log.gz",
+      "preservedGzipSha256": "b197f9db6364bed51c66ac530a786af71af11c311a3ccc8416cd7ddcd579b57f"
+    },
+    {
+      "name": "scope-freeze",
+      "command": [
+        "python3",
+        "/tmp/takosan-b01b-scope.py"
+      ],
+      "startedAtUtc": "2026-10-11T03:27:31.000792+00:00",
+      "durationSeconds": 0.312,
+      "exitCode": 0,
+      "status": "PASS",
+      "logPath": ".artifacts/backend-b01b/scope-freeze.log",
+      "logSha256": "529e45dfb1c60a10772d2408667dfa3073c115f754ed768c77ff92574dfcb007",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "CI": null,
+        "WRANGLER_SEND_METRICS": null,
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      },
+      "preservedLogPath": "docs/backend-upgrade/b01b/logs/scope-freeze.log.gz",
+      "preservedGzipSha256": "b2936c1f8238ed71235ca742f515af6172a8420f7543b83dce483c3a35cfff0d"
+    },
+    {
+      "name": "typecheck",
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "startedAtUtc": "2026-10-11T03:04:39.924818+00:00",
+      "durationSeconds": 14.69,
+      "exitCode": 0,
+      "status": "PASS",
+      "logPath": ".artifacts/backend-b01b/typecheck.log",
+      "logSha256": "a3a28a25c9246fe7e8bbf5999692dc60347e343a2415f8cefcb7e767e0e6a0d6",
+      "environment": {
+        "node": "24.16.0",
+        "pnpm": "10.33.2",
+        "TMPDIR": "/private/tmp",
+        "CI": null,
+        "WRANGLER_SEND_METRICS": null,
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "remoteFlags": "unset"
+      },
+      "preservedLogPath": "docs/backend-upgrade/b01b/logs/typecheck.log.gz",
+      "preservedGzipSha256": "790d24d163b15490f0225e2d5273a3a3ca033f1c15072f1ab806901aa06cb4bc"
+    }
+  ],
+  "fullSuite": {
+    "name": "full-tests-rerun",
+    "command": [
+      "pnpm",
+      "exec",
+      "vitest",
+      "run",
+      "--maxWorkers=2"
+    ],
+    "startedAtUtc": "2026-10-11T03:22:22.696367+00:00",
+    "durationSeconds": 381.808,
+    "exitCode": 0,
+    "status": "PASS",
+    "logPath": ".artifacts/backend-b01b/full-tests-rerun.log",
+    "logSha256": "6fb302566b8e86834754d0e0600b1e1672fb4a0264708330d780d9757730fe75",
+    "environment": {
+      "node": "24.16.0",
+      "pnpm": "10.33.2",
+      "TMPDIR": "/private/tmp/takosan-b01b-wrangler-epj27_ad",
+      "CI": "true",
+      "WRANGLER_SEND_METRICS": "false",
+      "NODE_OPTIONS": "--no-experimental-webstorage",
+      "remoteFlags": "unset"
+    },
+    "passedFiles": 289,
+    "passedTests": 6798,
+    "summary": "Test Files  289 passed (289)\nTests  6798 passed (6798)\nDuration  380.97s (transform 4.83s, setup 1.29s, collect 38.32s, tests 649.15s, environment 9.98s, prepare 11.80s)",
+    "preservedLogPath": "docs/backend-upgrade/b01b/logs/full-tests-rerun.log.gz",
+    "preservedGzipSha256": "c1a50a0ad84bf7ac255d9b5237a4fa1ffc145bfcba52fddeca5d5eda3c1651fc"
+  },
+  "initialFullSuiteIncident": {
+    "observedAtUtc": "2026-10-11T03:20:21.811921+00:00",
+    "test": "tests/unit/production-catalog-import-inspection.test.mjs",
+    "function": "authorizedInspection",
+    "subprocessParentPid": 15851,
+    "subprocessPid": 16817,
+    "childElapsed": "11:33",
+    "sourceUnchanged": true,
+    "childStack": "Python json.load(sys.stdin) -> read waiting for stdin EOF",
+    "parentStack": "Node SyncProcessRunner/uv event loop waiting for subprocess",
+    "action": "SIGTERM task-owned hung Python child to unblock and retain initial full-suite failed result",
+    "samples": [
+      {
+        "path": ".artifacts/backend-b01b/hung-worker-sample.log",
+        "sha256": "8d1835c9f31682775e1c0e7b0fc9142143b46dd644768e4441df7f86d331c344",
+        "preservedLogPath": "docs/backend-upgrade/b01b/logs/hung-worker-sample.log.gz",
+        "preservedGzipSha256": "07a4e468a551789ccf8b6adc771ed531c02ae5a74c7141d20b171950edcc5993"
+      },
+      {
+        "path": ".artifacts/backend-b01b/hung-python-sample.log",
+        "sha256": "5a59574584ffe3fb4e2f0dee1c5f1abe0286fa84996ce6ca180ea8c46d15396b",
+        "preservedLogPath": "docs/backend-upgrade/b01b/logs/hung-python-sample.log.gz",
+        "preservedGzipSha256": "11f0b9ae8ace2e5790433b76dd0545eb3a6604700d663cb56cb5d4a52b1ca464"
+      }
+    ]
+  },
+  "certificationLimits": [
+    "mocked provider acceptance only",
+    "legacy auth strict issuance integration pending B01a",
+    "no inbox or bounce proof",
+    "no hosted D1 or production release certification"
+  ],
+  "dependencyAuditCounts": {
+    "full": {
+      "critical": 2,
+      "high": 16,
+      "moderate": 19,
+      "low": 4
+    },
+    "production": {
+      "critical": 0,
+      "high": 0,
+      "moderate": 2,
+      "low": 0
+    }
+  }
+}

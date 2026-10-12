@@ -117,6 +117,12 @@ async function seedSession(userId: string, isGuest = false): Promise<string> {
   const token = `${userId}-opaque-session-token`;
   await db.prepare('INSERT INTO users (id,email,is_guest) VALUES (?,?,?)')
     .bind(userId, `${userId}@example.com`, isGuest ? 1 : 0).run();
+  await db.batch([
+    db.prepare('INSERT INTO households (id,name,created_by) VALUES (?,?,?)')
+      .bind(`${userId}-household`, 'Auth fixture household', userId),
+    db.prepare('INSERT INTO household_members (id,household_id,user_id,role) VALUES (?,?,?,?)')
+      .bind(`${userId}-membership`, `${userId}-household`, userId, 'owner'),
+  ]);
   await db.prepare(
     `INSERT INTO sessions_v2 (id,user_id,household_id,token_hash,expires_at)
      VALUES (?,?,?,?,?)`,

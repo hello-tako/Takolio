@@ -1,0 +1,148 @@
+{
+  "candidateValuesSourceSnippetsOrPrivatePointersPublished": false,
+  "classification": "CURRENT_SOURCE_SCAN_RECONCILIATION_NOT_SECURITY_CERTIFICATION",
+  "gitHistoryScanned": false,
+  "gitleaks": {
+    "candidates": [
+      {
+        "classification": "DOCUMENTED_NON_SECRET_IDENTIFIER",
+        "locationSha256": "8f76d4136729145a613e18a294cf64e1722cba3b6bb492740a406672011795e3",
+        "sourceCandidateAndProvenanceUnchanged": true,
+        "sourceFileSha256": "db67959dc022ff350de54ddab28c8c16cea3b84f50082ed345e08a33aef86d80"
+      },
+      {
+        "classification": "DOCUMENTATION_PROSE",
+        "locationSha256": "d8245b8febc48734197bf465c472c395986856a56dd8d8121d2f0d5d8c7df42d",
+        "sourceCandidateAndProvenanceUnchanged": true,
+        "sourceFileSha256": "2d02a007cf60fa25ac3eeb5059d5cc671b2239ee14137a47a8da22dc7c306e19"
+      },
+      {
+        "classification": "DOCUMENTED_CHECKSUM",
+        "locationSha256": "927f8346128e7c66886c8fb1996aad3ed53358dd790632e15933cbb31b5b8826",
+        "sourceCandidateAndProvenanceUnchanged": true,
+        "sourceFileSha256": "a03d0c22c50d9c2d27f623221c53df99eba199523fc51b922055a0835dec65f1"
+      },
+      {
+        "classification": "DOCUMENTED_CHECKSUM",
+        "locationSha256": "30a6593a41d5bd239ac0be7a8e7e26a208c272aa879d85d420ba68c980ed4e62",
+        "sourceCandidateAndProvenanceUnchanged": true,
+        "sourceFileSha256": "a03d0c22c50d9c2d27f623221c53df99eba199523fc51b922055a0835dec65f1"
+      },
+      {
+        "classification": "DOCUMENTED_CHECKSUM",
+        "locationSha256": "99c01084f42deb62b2bf8bae16af6390fa242ef0d65d5961ffa1d6efb45a46bc",
+        "sourceCandidateAndProvenanceUnchanged": true,
+        "sourceFileSha256": "42a20e96cc476f24d20c37516c4c6e7e24feb08583881683dce2a4da78bbe8f2"
+      },
+      {
+        "classification": "DOCUMENTED_CHECKSUM",
+        "locationSha256": "df3a16746b6e5a0b1e482aedd08a8e2ac6157b4f95decb6a430f574180838357",
+        "sourceCandidateAndProvenanceUnchanged": true,
+        "sourceFileSha256": "42a20e96cc476f24d20c37516c4c6e7e24feb08583881683dce2a4da78bbe8f2"
+      },
+      {
+        "classification": "DOCUMENTED_CHECKSUM",
+        "locationSha256": "352a308f0527fe79e3057c65adb290d34be914819bd8805cdba45e96cea0ee50",
+        "sourceCandidateAndProvenanceUnchanged": true,
+        "sourceFileSha256": "9994d347889bcf682f885890ef8bb6536c8b5c5feeabaf3480e153f4b18a967b"
+      },
+      {
+        "classification": "DOCUMENTED_CHECKSUM",
+        "locationSha256": "ee1ea89882e81c0a61ec27c9442a9188863b1c27b7b53325c0cb578ab896d6cd",
+        "sourceCandidateAndProvenanceUnchanged": true,
+        "sourceFileSha256": "9994d347889bcf682f885890ef8bb6536c8b5c5feeabaf3480e153f4b18a967b"
+      },
+      {
+        "classification": "DOCUMENTED_CHECKSUM",
+        "locationSha256": "1a5ff79125a77e7154e90f0afb0e5764982c279fd49b7e5f081e81926dde8ece",
+        "sourceCandidateAndProvenanceUnchanged": true,
+        "sourceFileSha256": "dbf49b7d1c543c4846909dc49dd72c30a0c71c0792999a55444c42766cb6dbc9"
+      },
+      {
+        "classification": "DOCUMENTED_CHECKSUM",
+        "locationSha256": "c745057111eb415dddf2cfaade8a5745017d3d6160664453442c0a76290d5f18",
+        "sourceCandidateAndProvenanceUnchanged": true,
+        "sourceFileSha256": "dbf49b7d1c543c4846909dc49dd72c30a0c71c0792999a55444c42766cb6dbc9"
+      },
+      {
+        "classification": "STATIC_ERROR_CODE",
+        "locationSha256": "170177281c1d56955699d9ed52cf8c64d283f437ddfc6204cd83d0d9475468a6",
+        "sourceCandidateAndProvenanceUnchanged": true,
+        "sourceFileSha256": "6396e69b21f4dfad8c3591fd7def5b5aef063eb5858218a3980924948e4e94dc"
+      },
+      {
+        "classification": "STATIC_ERROR_CODE",
+        "locationSha256": "65c8b981b0f767521d95c32dba8c8b514697a36931b0f16a70302aed1f6c14ca",
+        "sourceCandidateAndProvenanceUnchanged": true,
+        "sourceFileSha256": "6396e69b21f4dfad8c3591fd7def5b5aef063eb5858218a3980924948e4e94dc"
+      },
+      {
+        "classification": "DOCUMENTED_CHECKSUM",
+        "locationSha256": "8a46dfbd8b1fbbc444d6217ddefb93c6208a3772de264406b2c4d5fbcdda6d64",
+        "sourceCandidateAndProvenanceUnchanged": true,
+        "sourceFileSha256": "a2cea8d1a9856c02bea111ffcc285ef3a28845732c989e5933f3a68dd9bba347"
+      },
+      {
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "locationSha256": "ea6840a0a3ff43978365c05f85315a104a52c91b8a125408e574ac172c6a7217",
+        "sourceCandidateAndProvenanceUnchanged": true,
+        "sourceFileSha256": "20d7754d3fc1068a469297c309d5fd738c63a14818be242a7d9a9e6ff1080243"
+      },
+      {
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "locationSha256": "2a7415d0f6a63add8b828d9c9cd563db85d1a8f53dac42f555ccbdd6a184b4b8",
+        "sourceCandidateAndProvenanceUnchanged": true,
+        "sourceFileSha256": "20d7754d3fc1068a469297c309d5fd738c63a14818be242a7d9a9e6ff1080243"
+      },
+      {
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "locationSha256": "7887fbbd28a666d8a8f38a96a4d53503c9382bb5e9fc52369b2676eb73109e48",
+        "sourceCandidateAndProvenanceUnchanged": true,
+        "sourceFileSha256": "adc16a6ed979d350cef2d27284322f490e20d259b8af459fff28bd1e7b6d5a46"
+      },
+      {
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "locationSha256": "b347115771db1fbd20b68497e1fbf9a68b6416e9e0ad30adcac6425975546ea9",
+        "sourceCandidateAndProvenanceUnchanged": true,
+        "sourceFileSha256": "adc16a6ed979d350cef2d27284322f490e20d259b8af459fff28bd1e7b6d5a46"
+      }
+    ],
+    "categoryCounts": {
+      "DOCUMENTATION_PROSE": 1,
+      "DOCUMENTED_CHECKSUM": 9,
+      "DOCUMENTED_NON_SECRET_IDENTIFIER": 1,
+      "STATIC_ERROR_CODE": 2,
+      "SYNTHETIC_TEST_FIXTURE": 4
+    },
+    "currentPrivateReportSha256": "4adcff81bd49897ddbbea37dac386e8c982cb81d97d19edd37cd2e51ba75ad20",
+    "findingCount": 17,
+    "newFindingCount": 0,
+    "oldPrivateReportSha256": "61569ff81f0cec197bccf42cc7113992566559901f2846d53105bc3d023bac82",
+    "unresolvedCount": 0
+  },
+  "installedNodeModulesScanned": false,
+  "rawSecurityCommandExitCode": 1,
+  "rawSecurityGate": "FAILED",
+  "reviewedHead": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+  "schemaVersion": 1,
+  "securityCertified": false,
+  "semgrep": {
+    "errors": 0,
+    "exactCoverage": true,
+    "findings": 0,
+    "sources": 853
+  },
+  "sourceFileCount": 4557,
+  "sourceSnapshotAndCurrentBytesExact": true,
+  "sourceTreeSha256": "87711341a49c339982f3046c22f85dc8cd454a0cb4d9cb398c50844e189a6c9f",
+  "status": "PASS",
+  "syft": {
+    "declaredComponentCount": 518,
+    "nameVersionPurlInventoryUnchanged": true
+  },
+  "zizmor": {
+    "findingCount": 2,
+    "rawStatus": "FINDINGS",
+    "reportsEqualAfterSnapshotRootNormalization": true
+  }
+}

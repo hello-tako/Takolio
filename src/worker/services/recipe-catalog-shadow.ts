@@ -100,6 +100,22 @@ export interface RecipeCatalogShadowLogRecord {
 }
 
 const SAMPLE_LIMIT = 10;
+const SHADOW_FAILURE_CATEGORY = 'RECIPE_CATALOG_SHADOW_FAILED';
+const TRUSTED_SHADOW_ERRORS = new Set([
+  SHADOW_FAILURE_CATEGORY,
+  'D1 binding unavailable',
+  'RecipeCatalogModeError',
+]);
+
+function shadowErrorCategory(outcome: RecipeCatalogShadowOutcome): string {
+  try {
+    // Caller-created outcomes must not execute an error accessor while formatting logs.
+    const error = Object.getOwnPropertyDescriptor(outcome, 'error')?.value;
+    return typeof error === 'string' && TRUSTED_SHADOW_ERRORS.has(error) ? error : SHADOW_FAILURE_CATEGORY;
+  } catch {
+    return SHADOW_FAILURE_CATEGORY;
+  }
+}
 
 /**
  * Cost bound: at most one full catalog read + comparison per isolate per interval. The catalog
@@ -147,8 +163,8 @@ export async function runRecipeCatalogShadow(
     };
     diagnostics.lookupMs = now() - started;
     return { status: 'compared', mode, diagnostics, release };
-  } catch (error) {
-    return { status: 'shadow_error', mode, error: error instanceof Error ? error.name : 'unknown', lookupMs: now() - started };
+  } catch {
+    return { status: 'shadow_error', mode, error: SHADOW_FAILURE_CATEGORY, lookupMs: now() - started };
   }
 }
 
@@ -184,7 +200,7 @@ export function toRecipeCatalogShadowLogRecord(outcome: RecipeCatalogShadowOutco
     catalog_hydration_failure_count: null, catalog_lookup_ms: outcome.status === 'shadow_error' ? outcome.lookupMs : 0,
     release_id: null, release_expected_count: null, release_readiness: null, release_readiness_code: null, release_reviewed_growth_count: null,
     drift_sample: [], order_drift_sample: [], hydration_failure_sample: [],
-    ...(outcome.status === 'shadow_error' ? { error: outcome.error } : {}),
+    ...(outcome.status === 'shadow_error' ? { error: shadowErrorCategory(outcome) } : {}),
   };
 }
 

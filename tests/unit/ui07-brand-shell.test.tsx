@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { StaticRouter } from 'react-router-dom/server';
+import { StaticRouter } from 'react-router-dom';
 vi.mock('../../src/web/stores/useAuthStore', () => ({ useAuthStore: () => ({ avatarUrl: null }) }));
 import { KitchenHeader } from '../../src/web/components/common/KitchenHeader';
 import { AppLayout } from '../../src/web/components/layout/AppLayout';
@@ -30,6 +30,6 @@ describe('UI07 shell ownership and accessible brand', () => {
   it.each(['/plus', '/settings', '/week-old'])('legacy %s retains the supplied shell contract', (route) => {
     const html = render(<AppLayout />, route);
     expect(html).not.toContain('data-kitchen-navigation="persistent"');
-    expect(html).toContain('/takosan/brand/takosan-logo-horizontal-primary.svg');
+    expect(html).toContain('/takosan/v3/logo/horizontal-primary.svg');
   });
 });

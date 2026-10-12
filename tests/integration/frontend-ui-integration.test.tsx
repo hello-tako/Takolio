@@ -9,12 +9,15 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 const route = vi.hoisted(() => ({ params: { slug: 'test-recipe' } as Record<string, string> }));
 
-vi.mock('react-router-dom', async (importOriginal) => ({
-  ...await importOriginal<typeof import('react-router-dom')>(),
-  useNavigate: () => vi.fn(),
-  useLocation: () => ({ pathname: '/recipes/test-recipe' }),
-  useParams: () => route.params,
-}));
+vi.mock('react-router-dom', async (importOriginal) => {
+  const original = await importOriginal() as typeof import('react-router-dom');
+  return {
+    ...original,
+    useNavigate: () => vi.fn(),
+    useLocation: () => ({ pathname: '/recipes/test-recipe' }),
+    useParams: () => route.params,
+  };
+});
 
 class MemoryStorage implements Storage {
   private values = new Map<string, string>();

@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "evidenceKind": "RERUN_EXECUTED_IN_MEMORY_BASELINE_COMPARISON",
+  "reviewedHead": "d16d935877992406901a3afcaceaae612344ad73",
+  "baseSha": "1963c469e2e3bd4819cda6bb9ef8162101ad523a",
+  "baselineFile": "src/worker/routes/week.ts",
+  "baselineContentSha256": "8ba4a4733c61fd897896ac6c272ab26a5a88cd4ef43df25f7537423c88e4d40b",
+  "comparedSource": {
+    "packages/db/src/week-read-repository.ts": "e94d89fbd78891d5eafe339f428cab4a98064f392b7f35138e4e09f4af4d77a5",
+    "src/worker/services/week-read.ts": "278ba4266f54025a7bf574748db3559eb1c4f8fd74cd3278b32c87e88a361f12"
+  },
+  "cases": [
+    {
+      "case": "missing",
+      "status": "PASS",
+      "readQueries": 1,
+      "lazyCatalogReads": 0
+    },
+    {
+      "case": "legacy-catalog",
+      "status": "PASS",
+      "readQueries": 4,
+      "lazyCatalogReads": 1
+    },
+    {
+      "case": "embedded-recipe",
+      "status": "PASS",
+      "readQueries": 4,
+      "lazyCatalogReads": 0
+    },
+    {
+      "case": "snapshot",
+      "status": "PASS",
+      "readQueries": 1,
+      "lazyCatalogReads": 0
+    },
+    {
+      "case": "cache-failure",
+      "status": "PASS",
+      "readQueries": 1,
+      "lazyCatalogReads": 0
+    },
+    {
+      "case": "d1-failure",
+      "status": "PASS",
+      "readQueries": 1,
+      "lazyCatalogReads": 0
+    }
+  ],
+  "normalizationInputsCompared": 10,
+  "latestQueryParity": true,
+  "checks": [
+    "exact-serialized-bodies",
+    "error-name-code-message",
+    "SQL-bindings-query-order",
+    "cache-key-payload-TTL",
+    "lazy-recipe-authority"
+  ],
+  "intentionalDifference": "Bounded error telemetry; raw diagnostic logs are excluded from response/SQL/cache parity.",
+  "earlierExecutionAttribution": "Earlier equivalent session-only comparison had no persisted receipt; this record is a fresh execution, not a reconstructed historical result."
+}

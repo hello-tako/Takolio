@@ -1,0 +1,73 @@
+{
+  "checkedAtUtc": "2026-10-11T23:06:37.207267+00:00",
+  "classification": "LOCAL_SECURITY_CANDIDATE_NOT_RELEASE_CERTIFICATION",
+  "manifestSha256": "094840c1ec0ce518f82325528a8cb83b1eafe7af65a44669cad6dbc09e3a45c2",
+  "runnerSha256": "97f3c206b1e0489914655ffa663736292bb89a5c761704615105f7313b68979f",
+  "schemaVersion": 1,
+  "secretValuesAndSourceTextPublished": false,
+  "semgrepRulesSha256": "65a3fbd1e62829ba845f4e2dc3396bf1ac4211660ae4f6b582b117e551c9da99",
+  "source": {
+    "fileCount": 4511,
+    "gitHistoryScanned": false,
+    "installedNodeModulesScanned": false,
+    "privateSnapshotPointerSha256": "2de04323e02db33ba7c07a9ec5a853d698dcdb574ef71da8d81d493dac1bb62f",
+    "privateSnapshotStorage": "OS_PRIVATE_TEMP_OUTSIDE_REPOSITORY",
+    "scope": "GIT_TRACKED_AND_NONIGNORED_WORKTREE_SNAPSHOT",
+    "skipped": {
+      "intentional-scanner-fixture": 10,
+      "operational-or-generated-artifact": 20
+    },
+    "treeContentSha256": "990bc69c329ca3a16f668df795fcd480ec927edf55ebea51bd656246a3bb2572"
+  },
+  "status": "FAILED",
+  "tools": [
+    {
+      "findingCount": 0,
+      "rawLogSha256": "0b5cf76b5459ce2db329998a39483b3bbaabb151c3ca65f390cf64409f04144d",
+      "rawReportSha256": "141b0568fa145c5c3360b30f2807c2059008632c5eaf593aff6acd0bcada4d2c",
+      "rules": {},
+      "severities": {},
+      "status": "PASS",
+      "tool": "semgrep",
+      "version": "1.180.0"
+    },
+    {
+      "findingCount": 17,
+      "rawLogSha256": "1509bc8451ad46f2d0889199584bc2a6b5c4602e3deaf28e7e52a53d77cf0ec4",
+      "rawReportSha256": "0cb6e0163604926e547fb838d96211d455843f39e935192caddfc44e3a6b819e",
+      "rules": {
+        "generic-api-key": 17
+      },
+      "severities": {
+        "SECRET_REVIEW_REQUIRED": 17
+      },
+      "status": "FINDINGS",
+      "tool": "gitleaks",
+      "version": "8.30.1"
+    },
+    {
+      "findingCount": 2,
+      "rawLogSha256": "9a1b214cac34f47cff74f52141d37d0306ea4092aa191c1061e54fd16ffe7519",
+      "rawReportSha256": "12b38d85f85be58a976b4ca81c2b494da41914573f96408e76f7174f87d618a6",
+      "rules": {
+        "cache-poisoning": 2
+      },
+      "severities": {
+        "HIGH": 2
+      },
+      "status": "FINDINGS",
+      "tool": "zizmor",
+      "version": "1.30.1"
+    },
+    {
+      "packageCount": 518,
+      "rawLogSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rawReportSha256": "9261377b635b7e43fb2ec9972f7c8a294ce12c96b29014c4d52b370f1e9aa016",
+      "sbomSha256": "9261377b635b7e43fb2ec9972f7c8a294ce12c96b29014c4d52b370f1e9aa016",
+      "scope": "DECLARED_MANIFEST_AND_LOCK_GRAPH_NOT_VULNERABILITY_SCAN",
+      "status": "PASS",
+      "tool": "syft",
+      "version": "1.54.1"
+    }
+  ]
+}

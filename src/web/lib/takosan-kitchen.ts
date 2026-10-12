@@ -1,23 +1,18 @@
-/** Scoped digital direction; the supplied kit remains available to legacy callers. */
-const BASE = '/takosan/rebuild';
+import { TAKOSAN_BRAND } from './takosan-brand';
+
+/** Compatibility facade: both shells read the same V3 identity. */
 export const TAKOSAN_KITCHEN = {
-  name: 'Takosan',
-  motto: 'Ăn đủ. Mua đủ. Dùng hết.',
-  logo: `${BASE}/lockup.svg`,
-  symbol: `${BASE}/symbol.svg`,
-  symbolMicro: `${BASE}/symbol-micro.svg`,
-  wordmark: `${BASE}/wordmark.svg`,
-  stacked: `${BASE}/stacked.svg`,
-  reverse: `${BASE}/lockup-reverse.svg`,
-  mono: `${BASE}/lockup-mono.svg`,
-  monoReverse: `${BASE}/lockup-mono-reverse.svg`,
-  og: `${BASE}/og.png`,
-  appIcons: {
-    favicon: `${BASE}/app-icons/favicon.svg`,
-    icon180: `${BASE}/app-icons/icon-180.png`,
-    icon192: `${BASE}/app-icons/icon-192.png`,
-    icon512: `${BASE}/app-icons/icon-512.png`,
-    maskable512: `${BASE}/app-icons/icon-maskable-512.png`,
-  },
-  colors: { coral: '#EE705E', pine: '#245D49', ink: '#202C28', canvas: '#F7F3EC' },
+  name: TAKOSAN_BRAND.name,
+  motto: TAKOSAN_BRAND.tagline,
+  logo: TAKOSAN_BRAND.logos.horizontal,
+  symbol: TAKOSAN_BRAND.symbol,
+  symbolMicro: TAKOSAN_BRAND.symbolMicro,
+  wordmark: TAKOSAN_BRAND.wordmark,
+  stacked: TAKOSAN_BRAND.logos.stacked,
+  reverse: `${TAKOSAN_BRAND.base}/logo/horizontal-reverse.svg`,
+  mono: `${TAKOSAN_BRAND.base}/logo/horizontal-mono-dark.svg`,
+  monoReverse: TAKOSAN_BRAND.logos.horizontalWhite,
+  og: TAKOSAN_BRAND.og,
+  appIcons: TAKOSAN_BRAND.appIcons,
+  colors: { coral: TAKOSAN_BRAND.colors.coral, pine: TAKOSAN_BRAND.colors.green, ink: TAKOSAN_BRAND.colors.navy, canvas: TAKOSAN_BRAND.colors.cream },
 } as const;

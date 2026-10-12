@@ -29,7 +29,7 @@ export interface CleanupReport {
   tasks: CleanupTaskResult[];
 }
 
-const MAX_ERROR_LENGTH = 300;
+const CLEANUP_TASK_FAILURE = 'CLEANUP_TASK_FAILED';
 
 function changesOf(result: { success: boolean; meta: Record<string, unknown> }): number {
   return typeof result.meta?.changes === 'number' ? result.meta.changes : 0;
@@ -53,7 +53,32 @@ async function deleteExpired(
 }
 
 export async function cleanupExpiredOtps(db: NonNullable<Env['DB']>, days: number): Promise<number> {
-  return deleteExpired(db, 'auth_otps', 'expires_at', days);
+  // Retain failure evidence until an explicit legacy-retention policy is implemented.
+  return deleteExpired(db, 'auth_otps', 'expires_at', days, ' AND COALESCE(attempt_count, 0) = 0 AND locked_until IS NULL');
+}
+
+/** Keep scope tombstones and legacy imports; prune only receipts beyond every active horizon. */
+export async function cleanupStrictOtps(db: NonNullable<Env['DB']>, days: number): Promise<number> {
+  const retentionSeconds = Math.max(86400, Math.floor(days) * 86400);
+  if (!Number.isSafeInteger(retentionSeconds)) throw new Error('OTP_RETENTION_INVALID');
+  const results = await db.batch([
+    db.prepare(`DELETE FROM auth_otp_tickets
+      WHERE request_id IS NOT NULL AND admitted_at <= unixepoch() - ? AND deadline <= unixepoch()
+        AND (proof_expires_at IS NULL OR proof_expires_at <= unixepoch())
+        AND EXISTS (SELECT 1 FROM auth_otp_requests r WHERE r.id = auth_otp_tickets.request_id AND r.retained_until <= unixepoch())
+        AND NOT EXISTS (SELECT 1 FROM auth_otp_issuances i WHERE i.id = auth_otp_tickets.issuance_id AND i.expires_at > unixepoch())`).bind(retentionSeconds),
+    db.prepare(`DELETE FROM auth_otp_requests
+      WHERE created_at <= unixepoch() - ? AND retained_until <= unixepoch()
+        AND (proof_expires_at IS NULL OR proof_expires_at <= unixepoch())
+        AND NOT EXISTS (SELECT 1 FROM auth_otp_tickets t WHERE t.request_id = auth_otp_requests.id)
+        AND NOT EXISTS (SELECT 1 FROM auth_otp_issuances i WHERE i.id = auth_otp_requests.issuance_id AND i.expires_at > unixepoch())`).bind(retentionSeconds),
+    db.prepare(`DELETE FROM auth_otp_issuances
+      WHERE created_at <= unixepoch() - ? AND expires_at <= unixepoch()
+        AND NOT EXISTS (SELECT 1 FROM auth_otp_requests r WHERE r.issuance_id = auth_otp_issuances.id)
+        AND NOT EXISTS (SELECT 1 FROM auth_otp_tickets t WHERE t.issuance_id = auth_otp_issuances.id)`).bind(retentionSeconds),
+  ]);
+  if (results.length !== 3 || results.some((result) => !result.success)) throw new Error('OTP_CLEANUP_UNAVAILABLE');
+  return results.reduce((count, result) => count + changesOf(result), 0);
 }
 
 /** Legacy sessions are not an authentication or cleanup source after cutover. */
@@ -100,11 +125,6 @@ export async function cleanupStaleScanReservations(
   return reconcileStaleScanReservations(db, staleMinutes);
 }
 
-function sanitizeError(err: unknown): string {
-  const message = err instanceof Error ? err.message : String(err);
-  return message.slice(0, MAX_ERROR_LENGTH);
-}
-
 export async function runScheduledCleanup(env: Env): Promise<CleanupReport> {
   const environment = env.ENVIRONMENT || 'development';
   const tasks: CleanupTaskResult[] = [];
@@ -141,15 +161,22 @@ export async function runScheduledCleanup(env: Env): Promise<CleanupReport> {
   try {
     const deleted = await cleanupExpiredOtps(db, retention.otpDays);
     tasks.push({ task: 'expired-otps', status: 'ok', deleted });
-  } catch (err) {
-    tasks.push({ task: 'expired-otps', status: 'error', deleted: 0, error: sanitizeError(err) });
+  } catch {
+    tasks.push({ task: 'expired-otps', status: 'error', deleted: 0, error: CLEANUP_TASK_FAILURE });
+  }
+
+  try {
+    const deleted = await cleanupStrictOtps(db, retention.otpDays);
+    tasks.push({ task: 'strict-otp-receipts', status: 'ok', deleted });
+  } catch {
+    tasks.push({ task: 'strict-otp-receipts', status: 'error', deleted: 0, error: CLEANUP_TASK_FAILURE });
   }
 
   try {
     const deleted = await cleanupExpiredSessions(db, retention.sessionDays);
     tasks.push({ task: 'expired-sessions', status: 'ok', deleted });
-  } catch (err) {
-    tasks.push({ task: 'expired-sessions', status: 'error', deleted: 0, error: sanitizeError(err) });
+  } catch {
+    tasks.push({ task: 'expired-sessions', status: 'error', deleted: 0, error: CLEANUP_TASK_FAILURE });
   }
 
   try {
@@ -159,16 +186,16 @@ export async function runScheduledCleanup(env: Env): Promise<CleanupReport> {
       status: 'ok',
       deleted: result.released,
     });
-  } catch (err) {
-    tasks.push({ task: 'stale-scan-reservations', status: 'error', deleted: 0, error: sanitizeError(err) });
+  } catch {
+    tasks.push({ task: 'stale-scan-reservations', status: 'error', deleted: 0, error: CLEANUP_TASK_FAILURE });
   }
 
   try {
     const { readyDeleted, failedDeleted } = await cleanupTerminalScanJobs(db, retention);
     tasks.push({ task: 'terminal-ready-jobs', status: 'ok', deleted: readyDeleted });
     tasks.push({ task: 'terminal-failed-jobs', status: 'ok', deleted: failedDeleted });
-  } catch (err) {
-    tasks.push({ task: 'terminal-scan-jobs', status: 'error', deleted: 0, error: sanitizeError(err) });
+  } catch {
+    tasks.push({ task: 'terminal-scan-jobs', status: 'error', deleted: 0, error: CLEANUP_TASK_FAILURE });
   }
 
   return { ranAt: new Date().toISOString(), environment, tasks };

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Default exports use committed kitchen SVG masters; explicit kit mode preserves
+// Default exports use committed V3 SVG masters; explicit kit mode preserves
 // supplied 1024px PNG derivation. sharp is a pinned direct devDependency (0.33.5).
 //
 // Usage: node scripts/generate-takosan-icons.mjs [takosan-brand-kit-dir]
@@ -11,9 +11,9 @@ import sharp from 'sharp';
 // pnpm forwards a literal `--` when invoked as `pnpm brand:icons -- <dir>`; ignore it.
 const kit = process.argv.slice(2).find((arg) => arg !== '--');
 if (!kit) {
-  const { generateBrand } = await import('./generate-takosan-brand.mjs');
-  const files = await generateBrand();
-  console.log(`Takosan kitchen exports generated: ${files.length} files`);
+  const { generateV3 } = await import('./generate-takosan-v3.mjs');
+  const files = await generateV3();
+  console.log(`Takosan V3 exports generated: ${files.length} files`);
   process.exit(0);
 }
 const out = resolve('public/takosan/app-icons');

@@ -53,7 +53,7 @@ async function until(assertion: () => void) {
 async function mount() {
   root ??= createRoot(container);
   await act(async () => {
-    root!.render(<MemoryRouter initialEntries={['/auth?mode=register']} future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+    root!.render(<MemoryRouter initialEntries={['/auth?mode=register']} useTransitions={true}>
       <LocationProbe />
       <Routes>
         <Route path="/auth" element={<AuthPage />} />
@@ -175,7 +175,7 @@ describe('D3 guest → email registration with deferred inventory transfer', () 
     await registerAndReachOtp();
     await click('Xác thực & Hoàn tất');
     await until(() => expect(container.textContent).toContain('Xác thực tài khoản thành công!'));
-    expect(verifyBodies).toEqual([{ email: EMAIL, code: OTP, purpose: 'register' }]);
+    expect(verifyBodies).toEqual([{ email: EMAIL, code: OTP, purpose: 'register', newPassword: 'strong-password-1' }]);
     expect(container.querySelector('[data-testid="transfer-deferred"]')).toBeNull();
     expect(localStorage.getItem('frigo_user_id')).toBe(ACCOUNT.id);
     expect(localStorage.getItem('frigo_is_guest')).toBe('false');
@@ -189,7 +189,7 @@ describe('D3 guest → email registration with deferred inventory transfer', () 
     await registerAndReachOtp();
     await click('Xác thực & Hoàn tất');
     await until(() => expect(container.querySelector('[data-testid="transfer-deferred"]')).toBeTruthy());
-    expect(verifyBodies).toEqual([{ email: EMAIL, code: OTP, purpose: 'register', migrateFromHouseholdId: GUEST_HOUSEHOLD }]);
+    expect(verifyBodies).toEqual([{ email: EMAIL, code: OTP, purpose: 'register', newPassword: 'strong-password-1', migrateFromHouseholdId: GUEST_HOUSEHOLD }]);
     const notice = container.querySelector('[data-testid="transfer-deferred"]')!.textContent ?? '';
     expect(notice).toContain('chưa thể chuyển dữ liệu');
     expect(notice).toContain('không bị xóa');
@@ -218,7 +218,7 @@ describe('D3 guest → email registration with deferred inventory transfer', () 
     await click('Tiếp tục không chuyển dữ liệu khách');
     await until(() => expect(container.textContent).toContain('Xác thực tài khoản thành công!'));
     expect(verifyBodies).toHaveLength(2);
-    expect(verifyBodies[1]).toEqual({ email: EMAIL, code: OTP, purpose: 'register' });
+    expect(verifyBodies[1]).toEqual({ email: EMAIL, code: OTP, purpose: 'register', newPassword: 'strong-password-1' });
     expect(verifyBodies[1]).not.toHaveProperty('migrateFromHouseholdId');
     expect(container.querySelector('[data-testid="transfer-deferred"]')).toBeNull();
     // Account session established only now; nothing claims the guest data moved.

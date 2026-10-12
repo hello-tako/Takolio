@@ -1,6 +1,9 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
-import { DatabaseSync, type SQLInputValue } from 'node:sqlite';
+import { createRequire } from 'node:module';
+import type { SQLInputValue } from 'node:sqlite';
+// Node 22 excludes experimental sqlite from builtinModules; bypass client bundling.
+const { DatabaseSync } = createRequire(import.meta.url)('node:sqlite') as typeof import('node:sqlite');
 import type { D1DatabaseBinding, D1PreparedStatement, D1Result } from '../../packages/db/src';
 
 export interface SqliteStatementEvent {
@@ -56,7 +59,7 @@ export const LEGACY_CATALOG_MIGRATION_TIP = '0035_recipe_media_layer.sql';
 export const MIGRATION_LEDGER = Object.freeze({
   legacyTip: LEGACY_CATALOG_MIGRATION_TIP,
   catalogGrowth: Object.freeze(['0036_recipe_catalog_pilot.sql', '0037_recipe_catalog_scale.sql']),
-  postCatalog: Object.freeze(['0038_auth_onboarding_completion.sql', '0039_meal_composition_v2.sql']),
+  postCatalog: Object.freeze(['0038_auth_onboarding_completion.sql', '0039_meal_composition_v2.sql', '0040_strict_otp_foundation.sql']),
   get count() { return 35 + this.catalogGrowth.length + this.postCatalog.length; },
   get tip(): string { return this.postCatalog.at(-1) ?? this.catalogGrowth.at(-1) ?? this.legacyTip; },
 });

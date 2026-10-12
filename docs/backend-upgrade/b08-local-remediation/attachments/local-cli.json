@@ -1,0 +1,201 @@
+{
+  "status": "LOCAL_CLI_COMPATIBILITY_PASS",
+  "wranglerVersion": "4.149.0",
+  "commands": [
+    {
+      "name": "version",
+      "command": [
+        "node",
+        "wrangler",
+        "--version"
+      ],
+      "exitCode": 0,
+      "rawPath": ".artifacts/backend-b08-local-remediation/local-cli/version.raw",
+      "rawSha256": "8964bacaf6956495fc94a3a30e0ea1488461a3bd2ef4be38efa6e74de9ca2c70"
+    },
+    {
+      "name": "help-secret-list",
+      "command": [
+        "node",
+        "wrangler",
+        "secret",
+        "list",
+        "--help"
+      ],
+      "exitCode": 0,
+      "rawPath": ".artifacts/backend-b08-local-remediation/local-cli/help-secret-list.raw",
+      "rawSha256": "94deca363a574bc8275589324db32e8299cd0e4842f21a572198343342b95988"
+    },
+    {
+      "name": "help-d1-list",
+      "command": [
+        "node",
+        "wrangler",
+        "d1",
+        "list",
+        "--help"
+      ],
+      "exitCode": 0,
+      "rawPath": ".artifacts/backend-b08-local-remediation/local-cli/help-d1-list.raw",
+      "rawSha256": "53c53114e8bb819b122731e236190f58dd5aa6b94de14403c9f53dfda0d252a4"
+    },
+    {
+      "name": "help-d1-info",
+      "command": [
+        "node",
+        "wrangler",
+        "d1",
+        "info",
+        "--help"
+      ],
+      "exitCode": 0,
+      "rawPath": ".artifacts/backend-b08-local-remediation/local-cli/help-d1-info.raw",
+      "rawSha256": "2d6c9cb6513501a01e54b0b79903d31a6b8bfec97362f1f585ef5b2d27f58287"
+    },
+    {
+      "name": "help-d1-execute",
+      "command": [
+        "node",
+        "wrangler",
+        "d1",
+        "execute",
+        "--help"
+      ],
+      "exitCode": 0,
+      "rawPath": ".artifacts/backend-b08-local-remediation/local-cli/help-d1-execute.raw",
+      "rawSha256": "874681499c889b0099e7ba28b40cdc883f6c80a85b5c6adaa40377b663578464"
+    },
+    {
+      "name": "help-d1-migrations-list",
+      "command": [
+        "node",
+        "wrangler",
+        "d1",
+        "migrations",
+        "list",
+        "--help"
+      ],
+      "exitCode": 0,
+      "rawPath": ".artifacts/backend-b08-local-remediation/local-cli/help-d1-migrations-list.raw",
+      "rawSha256": "899a455d52cd25482d5fade37484ec9a19f04e12ab76836a13fc1d5f8abae0fb"
+    },
+    {
+      "name": "help-d1-migrations-apply",
+      "command": [
+        "node",
+        "wrangler",
+        "d1",
+        "migrations",
+        "apply",
+        "--help"
+      ],
+      "exitCode": 0,
+      "rawPath": ".artifacts/backend-b08-local-remediation/local-cli/help-d1-migrations-apply.raw",
+      "rawSha256": "f3c2bd64de3f0f62ab11fd2b9e8a2156269c7ae2f6ee9efeb781ca70a044bfb8"
+    },
+    {
+      "name": "help-d1-time-travel-info",
+      "command": [
+        "node",
+        "wrangler",
+        "d1",
+        "time-travel",
+        "info",
+        "--help"
+      ],
+      "exitCode": 0,
+      "rawPath": ".artifacts/backend-b08-local-remediation/local-cli/help-d1-time-travel-info.raw",
+      "rawSha256": "8e2724ad0509575b2bf53da6a1e14997c77a6df89cca84500bcddb4382e263d7"
+    },
+    {
+      "name": "help-deploy",
+      "command": [
+        "node",
+        "wrangler",
+        "deploy",
+        "--help"
+      ],
+      "exitCode": 0,
+      "rawPath": ".artifacts/backend-b08-local-remediation/local-cli/help-deploy.raw",
+      "rawSha256": "c7bc9a75a5214517337abbfa5373a0db280f0c4cb01c4d662b43413ad4810b46"
+    },
+    {
+      "name": "help-deployments-status",
+      "command": [
+        "node",
+        "wrangler",
+        "deployments",
+        "status",
+        "--help"
+      ],
+      "exitCode": 0,
+      "rawPath": ".artifacts/backend-b08-local-remediation/local-cli/help-deployments-status.raw",
+      "rawSha256": "1776571a52e034c86389de933aaaaf5fd438b4f75e7e223757fab655a28e480c"
+    },
+    {
+      "name": "help-versions-view",
+      "command": [
+        "node",
+        "wrangler",
+        "versions",
+        "view",
+        "--help"
+      ],
+      "exitCode": 0,
+      "rawPath": ".artifacts/backend-b08-local-remediation/local-cli/help-versions-view.raw",
+      "rawSha256": "c0a372ba93236fc8d60c8f88092e44338ed249087155181691f613658642941b"
+    },
+    {
+      "name": "types-fixed-date",
+      "command": [
+        "node",
+        "wrangler",
+        "types",
+        "/private/tmp/takosan-b08-cli-8eocnes0/worker-configuration.d.ts",
+        "--config",
+        "/private/tmp/takosan-b08-cli-8eocnes0/wrangler.local.jsonc"
+      ],
+      "exitCode": 0,
+      "rawPath": ".artifacts/backend-b08-local-remediation/local-cli/types-fixed-date.raw",
+      "rawSha256": "022fd2721a92de422d031f4695d52730966ed393d67f0b15d42b7534121c82a6"
+    },
+    {
+      "name": "deploy-dry-run",
+      "command": [
+        "node",
+        "wrangler",
+        "deploy",
+        "--dry-run",
+        "--outdir",
+        "/private/tmp/takosan-b08-cli-8eocnes0/bundle",
+        "--config",
+        "/private/tmp/takosan-b08-cli-8eocnes0/wrangler.local.jsonc",
+        "--var",
+        "B08_LOCAL_PROBE:one",
+        "--var",
+        "B08_LOCAL_SECOND:two"
+      ],
+      "exitCode": 0,
+      "rawPath": ".artifacts/backend-b08-local-remediation/local-cli/deploy-dry-run.raw",
+      "rawSha256": "3ebd629f2500acbddf2a36b17ca1af45b3a24dbffd37693616b189c47b29234b"
+    }
+  ],
+  "helpContracts": 10,
+  "configSha256": "0787c7d61b9d4c0086ec4f7e7f5c485d2141dbb5c84a0a2ad89e838743035f13",
+  "generatedTypesSha256": "24bb559335bae2dc05a5001c65079c25b6ef4178d7b5a4e753e6c79e4cbb529b",
+  "generatedTypesBytes": 622494,
+  "bundleFileCount": 3,
+  "bundleContentSha256": "941449b5c66b003abccc3c14c7401be671db43ae8c62d8aad307fa4606446be4",
+  "runtimeDate": "2024-11-01",
+  "productionConfigChanged": false,
+  "credentialsInherited": false,
+  "projectDotenvLoaded": false,
+  "globalConfigIsolated": true,
+  "remote": false,
+  "deployed": false,
+  "limits": [
+    "Help proves flags only; remote output/result semantics require captured parser and hosted receipts",
+    "Generated types and dry-run bundle do not prove edge queue/email/AI/rollback behavior"
+  ],
+  "scriptSha256": "997a0a3009474b7c95a0327b1f4a3c93a481400bbb49140a5e8fb4dd3edb5b9f"
+}

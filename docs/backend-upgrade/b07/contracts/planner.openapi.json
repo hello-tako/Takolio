@@ -1,0 +1,2840 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Tako-san planner contract candidate",
+    "version": "1-candidate"
+  },
+  "servers": [
+    {
+      "url": "/api/v1"
+    }
+  ],
+  "x-classification": "LOCAL_CONTRACT_CANDIDATE",
+  "x-semantic-authority": "Existing executable Zod schemas and route guards; refinements and transforms require runtime validation",
+  "x-source-hashes": [
+    {
+      "path": "packages/domain/src/foundation.ts",
+      "sha256": "41ba74748b32540324ed3c71d813ab2363356c71cb73243d548f463cb13cc6d3"
+    },
+    {
+      "path": "packages/domain/src/meal-planning-api.ts",
+      "sha256": "a595c0ab825c30843ee99400dba09c80bf1649498b08c97837fcea9ea8297854"
+    },
+    {
+      "path": "packages/domain/src/meal-planning-presentation.ts",
+      "sha256": "f765891c3866a28e3e40e9766e0164c63bb42eb08a908be8500cb402a11a0b1a"
+    },
+    {
+      "path": "packages/domain/src/meal-shopping-api.ts",
+      "sha256": "b6226e5737113c15e55dd649716b8872c338414200993273a80740c95fd7e952"
+    },
+    {
+      "path": "scripts/planner-contract.mjs",
+      "sha256": "c7892cb95f1cf89504866f40d3d7d05391dbb204b292b48bf7e635ce41af1d9d"
+    },
+    {
+      "path": "scripts/planner-openapi.ts",
+      "sha256": "f9cfca53305b4e0ec6dfd09c2720a25e9279205ab88123d2cd15484787e34275"
+    },
+    {
+      "path": "src/worker/middleware/auth.ts",
+      "sha256": "d088f3362ab8f86cc0eb2f3150cf6e550fbd60e9dcd70659cc73c4841bed539b"
+    },
+    {
+      "path": "src/worker/middleware/tenancy.ts",
+      "sha256": "5388457156253ee60615a7613367cc2580b0290293b8d77319ebc439561a1342"
+    },
+    {
+      "path": "src/worker/routes/meal-planning.ts",
+      "sha256": "68090dfce701a02cc91328949c9f86806a759afbc07f60ef45f0f4375a761669"
+    },
+    {
+      "path": "src/worker/utils/session.ts",
+      "sha256": "a02af57fac674e822f4e93f87de8e042184ec5781360c7ecc1bf83462c5c57e2"
+    }
+  ],
+  "paths": {
+    "/meal-planning/plans": {
+      "post": {
+        "security": [
+          {
+            "CookieSession": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Existing successful response",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MealPlan"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "createPlannerPlan",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 100,
+              "pattern": "^[A-Za-z0-9_-]+$"
+            }
+          }
+        ],
+        "description": "Idempotent user/household-scoped creation; same key and changed normalized intent conflicts. Cookie mutations require allowed Origin and feature enabled.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MealPlanningIntent"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/meal-planning/plans/current": {
+      "get": {
+        "security": [
+          {
+            "CookieSession": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Existing successful response",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurrentMealPlan"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "getCurrentPlannerPlan",
+        "description": "Current plan or null; feature and registered membership required. No pagination."
+      }
+    },
+    "/meal-planning/plans/{id}": {
+      "get": {
+        "security": [
+          {
+            "CookieSession": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Existing successful response",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MealPlan"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "getPlannerPlan",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ]
+      }
+    },
+    "/meal-planning/plans/{id}/regenerate": {
+      "post": {
+        "security": [
+          {
+            "CookieSession": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Existing successful response",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MealPlan"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Bounded API error; actual code depends on the guard or state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error",
+                    "code"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "regeneratePlannerPlan",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "description": "Revision-fenced replacement; stale revision409. Cookie mutations require allowed Origin. Regeneration uses revision, no Idempotency-Key header.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegenerateMealPlan"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "CookieSession": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "__Host-frigo_session"
+      }
+    },
+    "schemas": {
+      "MealPlanningIntent": {
+        "type": "object",
+        "properties": {
+          "startDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "horizonDays": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 14,
+            "default": 7
+          },
+          "utcOffsetMinutes": {
+            "type": "integer",
+            "minimum": -840,
+            "maximum": 840,
+            "default": 0
+          },
+          "defaultServings": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "cook_now",
+              "shopping_allowed"
+            ],
+            "default": "cook_now"
+          },
+          "slots": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "date": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "mealType": {
+                  "type": "string",
+                  "enum": [
+                    "breakfast",
+                    "lunch",
+                    "dinner"
+                  ]
+                },
+                "sequence": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 42,
+                  "default": 0
+                },
+                "time": {
+                  "type": "string",
+                  "pattern": "^(?:[01]\\d|2[0-3]):[0-5]\\d$"
+                },
+                "servings": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 20
+                },
+                "preferredTimeMinutes": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 1440
+                },
+                "hardMaxTimeMinutes": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 1440
+                }
+              },
+              "required": [
+                "date",
+                "mealType"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "maxItems": 42
+          }
+        },
+        "required": [
+          "startDate",
+          "defaultServings",
+          "slots"
+        ],
+        "additionalProperties": false
+      },
+      "MealPlan": {
+        "type": "object",
+        "properties": {
+          "schemaVersion": {
+            "const": 1
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "householdId": {
+            "type": "string",
+            "x-runtime-transform": "trim",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]*$"
+          },
+          "revision": {
+            "type": "integer",
+            "exclusiveMinimum": 0,
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "x-runtime-validation": true
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "x-runtime-validation": true
+          },
+          "intent": {
+            "type": "object",
+            "properties": {
+              "startDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "horizonDays": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 14,
+                "default": 7
+              },
+              "utcOffsetMinutes": {
+                "type": "integer",
+                "minimum": -840,
+                "maximum": 840,
+                "default": 0
+              },
+              "defaultServings": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 20
+              },
+              "mode": {
+                "type": "string",
+                "enum": [
+                  "cook_now",
+                  "shopping_allowed"
+                ],
+                "default": "cook_now"
+              },
+              "slots": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "date": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "mealType": {
+                      "type": "string",
+                      "enum": [
+                        "breakfast",
+                        "lunch",
+                        "dinner"
+                      ]
+                    },
+                    "sequence": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 42,
+                      "default": 0
+                    },
+                    "time": {
+                      "type": "string",
+                      "pattern": "^(?:[01]\\d|2[0-3]):[0-5]\\d$"
+                    },
+                    "servings": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 20
+                    },
+                    "preferredTimeMinutes": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 1440
+                    },
+                    "hardMaxTimeMinutes": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 1440
+                    }
+                  },
+                  "required": [
+                    "date",
+                    "mealType"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 1,
+                "maxItems": 42
+              }
+            },
+            "required": [
+              "startDate",
+              "defaultServings",
+              "slots"
+            ],
+            "additionalProperties": false
+          },
+          "result": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "string",
+                "enum": [
+                  "feasible",
+                  "partial",
+                  "infeasible",
+                  "search_limited",
+                  "incomplete"
+                ]
+              },
+              "conclusion": {
+                "type": "string",
+                "enum": [
+                  "feasible",
+                  "proven_infeasible",
+                  "no_plan_found_without_proof"
+                ]
+              },
+              "planningReference": {
+                "type": "object",
+                "properties": {
+                  "instant": {
+                    "type": "string",
+                    "format": "date-time",
+                    "x-runtime-validation": true
+                  },
+                  "localDate": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "utcOffsetMinutes": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "instant",
+                  "localDate",
+                  "utcOffsetMinutes"
+                ],
+                "additionalProperties": false
+              },
+              "meals": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "slotId": {
+                      "type": "string",
+                      "maxLength": 64,
+                      "pattern": "^\\d{4}-\\d{2}-\\d{2}:(breakfast|lunch|dinner):\\d{1,2}$"
+                    },
+                    "date": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "mealType": {
+                      "type": "string",
+                      "enum": [
+                        "breakfast",
+                        "lunch",
+                        "dinner"
+                      ]
+                    },
+                    "time": {
+                      "type": "string"
+                    },
+                    "instant": {
+                      "type": "string",
+                      "format": "date-time",
+                      "x-runtime-validation": true
+                    },
+                    "servings": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 20
+                    },
+                    "candidateId": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 24000
+                    },
+                    "source": {
+                      "type": "object",
+                      "properties": {
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "recipe",
+                            "family"
+                          ]
+                        },
+                        "id": {
+                          "type": "string",
+                          "x-runtime-transform": "trim",
+                          "minLength": 1,
+                          "maxLength": 100,
+                          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]*$"
+                        },
+                        "version": {
+                          "type": "integer",
+                          "exclusiveMinimum": 0,
+                          "minimum": -9007199254740991,
+                          "maximum": 9007199254740991
+                        },
+                        "variantId": {
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "maxLength": 20000
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "kind",
+                        "id",
+                        "version",
+                        "variantId"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "cuisine": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "prepTimeMinutes": {
+                      "anyOf": [
+                        {
+                          "type": "number",
+                          "minimum": 0
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "cookTimeMinutes": {
+                      "anyOf": [
+                        {
+                          "type": "number",
+                          "minimum": 0
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "instructions": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "requirements": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "ingredientId": {
+                            "type": "string",
+                            "x-runtime-transform": "trim",
+                            "minLength": 1,
+                            "maxLength": 100,
+                            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]*$"
+                          },
+                          "optional": {
+                            "type": "boolean"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "satisfied",
+                              "partial",
+                              "missing",
+                              "unresolved"
+                            ]
+                          },
+                          "required": {
+                            "type": "object",
+                            "properties": {
+                              "value": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 100,
+                                "x-runtime-validation": true
+                              },
+                              "unit": {
+                                "type": "string",
+                                "enum": [
+                                  "g",
+                                  "kg",
+                                  "ml",
+                                  "l",
+                                  "piece",
+                                  "pack",
+                                  "bunch",
+                                  "slice"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "value",
+                              "unit"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "covered": {
+                            "type": "object",
+                            "properties": {
+                              "value": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 100,
+                                "x-runtime-validation": true
+                              },
+                              "unit": {
+                                "type": "string",
+                                "enum": [
+                                  "g",
+                                  "kg",
+                                  "ml",
+                                  "l",
+                                  "piece",
+                                  "pack",
+                                  "bunch",
+                                  "slice"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "value",
+                              "unit"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "missing": {
+                            "anyOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "value": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 100,
+                                    "x-runtime-validation": true
+                                  },
+                                  "unit": {
+                                    "type": "string",
+                                    "enum": [
+                                      "g",
+                                      "kg",
+                                      "ml",
+                                      "l",
+                                      "piece",
+                                      "pack",
+                                      "bunch",
+                                      "slice"
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "value",
+                                  "unit"
+                                ],
+                                "additionalProperties": false
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          },
+                          "reasons": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 200
+                            }
+                          }
+                        },
+                        "required": [
+                          "ingredientId",
+                          "optional",
+                          "status",
+                          "required",
+                          "covered",
+                          "missing",
+                          "reasons"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "reasons": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 200
+                      }
+                    },
+                    "safetyAssessment": {
+                      "type": "string",
+                      "enum": [
+                        "not_requested",
+                        "requested_constraints_only"
+                      ]
+                    },
+                    "projectedConsumption": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "lotId": {
+                            "type": "string"
+                          },
+                          "ingredientId": {
+                            "type": "string"
+                          },
+                          "consumed": {
+                            "type": "object",
+                            "properties": {
+                              "value": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 100,
+                                "x-runtime-validation": true
+                              },
+                              "unit": {
+                                "type": "string",
+                                "enum": [
+                                  "g",
+                                  "kg",
+                                  "ml",
+                                  "l",
+                                  "piece",
+                                  "pack",
+                                  "bunch",
+                                  "slice"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "value",
+                              "unit"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "remaining": {
+                            "type": "object",
+                            "properties": {
+                              "value": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 100,
+                                "x-runtime-validation": true
+                              },
+                              "unit": {
+                                "type": "string",
+                                "enum": [
+                                  "g",
+                                  "kg",
+                                  "ml",
+                                  "l",
+                                  "piece",
+                                  "pack",
+                                  "bunch",
+                                  "slice"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "value",
+                              "unit"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "required": [
+                          "lotId",
+                          "ingredientId",
+                          "consumed",
+                          "remaining"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "slotId",
+                    "date",
+                    "mealType",
+                    "time",
+                    "instant",
+                    "servings",
+                    "candidateId",
+                    "source",
+                    "title",
+                    "cuisine",
+                    "prepTimeMinutes",
+                    "cookTimeMinutes",
+                    "instructions",
+                    "requirements",
+                    "reasons",
+                    "safetyAssessment",
+                    "projectedConsumption"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "unplannedSlots": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "slotId": {
+                      "type": "string",
+                      "maxLength": 64,
+                      "pattern": "^\\d{4}-\\d{2}-\\d{2}:(breakfast|lunch|dinner):\\d{1,2}$"
+                    },
+                    "date": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "mealType": {
+                      "type": "string",
+                      "enum": [
+                        "breakfast",
+                        "lunch",
+                        "dinner"
+                      ]
+                    },
+                    "reasons": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 200
+                      }
+                    }
+                  },
+                  "required": [
+                    "slotId",
+                    "date",
+                    "mealType",
+                    "reasons"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "search": {
+                "type": "object",
+                "properties": {
+                  "exhaustive": {
+                    "type": "boolean"
+                  },
+                  "plannerExhaustive": {
+                    "type": "boolean"
+                  },
+                  "recipeExhaustive": {
+                    "type": "boolean"
+                  },
+                  "truncated": {
+                    "type": "boolean"
+                  },
+                  "limitReasons": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    }
+                  },
+                  "incompleteReasons": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "source": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 200
+                        },
+                        "code": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 200
+                        }
+                      },
+                      "required": [
+                        "source",
+                        "code"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "rejections": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "slotId": {
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "maxLength": 64,
+                              "pattern": "^\\d{4}-\\d{2}-\\d{2}:(breakfast|lunch|dinner):\\d{1,2}$"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "code": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 200
+                        },
+                        "count": {
+                          "type": "integer",
+                          "minimum": 0
+                        }
+                      },
+                      "required": [
+                        "slotId",
+                        "code",
+                        "count"
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "required": [
+                  "exhaustive",
+                  "plannerExhaustive",
+                  "recipeExhaustive",
+                  "truncated",
+                  "limitReasons",
+                  "incompleteReasons",
+                  "rejections"
+                ],
+                "additionalProperties": false
+              },
+              "diagnostics": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "slotId": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "maxLength": 64,
+                          "pattern": "^\\d{4}-\\d{2}-\\d{2}:(breakfast|lunch|dinner):\\d{1,2}$"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "code": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "count": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  },
+                  "required": [
+                    "slotId",
+                    "code",
+                    "count"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "status",
+              "conclusion",
+              "planningReference",
+              "meals",
+              "unplannedSlots",
+              "search",
+              "diagnostics"
+            ],
+            "additionalProperties": false
+          },
+          "freshness": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "string",
+                "enum": [
+                  "fresh",
+                  "requires_revalidation"
+                ]
+              },
+              "reasons": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "stale_inventory",
+                    "stale_preferences",
+                    "stale_catalog",
+                    "stale_history",
+                    "catalog_authority_changed",
+                    "planning_time_elapsed"
+                  ]
+                }
+              },
+              "checkedAt": {
+                "type": "string",
+                "format": "date-time",
+                "x-runtime-validation": true
+              },
+              "requiresRevalidationBeforeConsumption": {
+                "const": true
+              }
+            },
+            "required": [
+              "status",
+              "reasons",
+              "checkedAt",
+              "requiresRevalidationBeforeConsumption"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "schemaVersion",
+          "id",
+          "householdId",
+          "revision",
+          "createdAt",
+          "updatedAt",
+          "intent",
+          "result",
+          "freshness"
+        ],
+        "additionalProperties": false
+      },
+      "CurrentMealPlan": {
+        "type": "object",
+        "properties": {
+          "plan": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "schemaVersion": {
+                    "const": 1
+                  },
+                  "id": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "householdId": {
+                    "type": "string",
+                    "x-runtime-transform": "trim",
+                    "minLength": 1,
+                    "maxLength": 100,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]*$"
+                  },
+                  "revision": {
+                    "type": "integer",
+                    "exclusiveMinimum": 0,
+                    "minimum": -9007199254740991,
+                    "maximum": 9007199254740991
+                  },
+                  "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "x-runtime-validation": true
+                  },
+                  "updatedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "x-runtime-validation": true
+                  },
+                  "intent": {
+                    "type": "object",
+                    "properties": {
+                      "startDate": {
+                        "type": "string",
+                        "format": "date"
+                      },
+                      "horizonDays": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 14,
+                        "default": 7
+                      },
+                      "utcOffsetMinutes": {
+                        "type": "integer",
+                        "minimum": -840,
+                        "maximum": 840,
+                        "default": 0
+                      },
+                      "defaultServings": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 20
+                      },
+                      "mode": {
+                        "type": "string",
+                        "enum": [
+                          "cook_now",
+                          "shopping_allowed"
+                        ],
+                        "default": "cook_now"
+                      },
+                      "slots": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "date": {
+                              "type": "string",
+                              "format": "date"
+                            },
+                            "mealType": {
+                              "type": "string",
+                              "enum": [
+                                "breakfast",
+                                "lunch",
+                                "dinner"
+                              ]
+                            },
+                            "sequence": {
+                              "type": "integer",
+                              "minimum": 0,
+                              "maximum": 42,
+                              "default": 0
+                            },
+                            "time": {
+                              "type": "string",
+                              "pattern": "^(?:[01]\\d|2[0-3]):[0-5]\\d$"
+                            },
+                            "servings": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 20
+                            },
+                            "preferredTimeMinutes": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 1440
+                            },
+                            "hardMaxTimeMinutes": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 1440
+                            }
+                          },
+                          "required": [
+                            "date",
+                            "mealType"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "minItems": 1,
+                        "maxItems": 42
+                      }
+                    },
+                    "required": [
+                      "startDate",
+                      "defaultServings",
+                      "slots"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "result": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "feasible",
+                          "partial",
+                          "infeasible",
+                          "search_limited",
+                          "incomplete"
+                        ]
+                      },
+                      "conclusion": {
+                        "type": "string",
+                        "enum": [
+                          "feasible",
+                          "proven_infeasible",
+                          "no_plan_found_without_proof"
+                        ]
+                      },
+                      "planningReference": {
+                        "type": "object",
+                        "properties": {
+                          "instant": {
+                            "type": "string",
+                            "format": "date-time",
+                            "x-runtime-validation": true
+                          },
+                          "localDate": {
+                            "type": "string",
+                            "format": "date"
+                          },
+                          "utcOffsetMinutes": {
+                            "type": "integer"
+                          }
+                        },
+                        "required": [
+                          "instant",
+                          "localDate",
+                          "utcOffsetMinutes"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "meals": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "slotId": {
+                              "type": "string",
+                              "maxLength": 64,
+                              "pattern": "^\\d{4}-\\d{2}-\\d{2}:(breakfast|lunch|dinner):\\d{1,2}$"
+                            },
+                            "date": {
+                              "type": "string",
+                              "format": "date"
+                            },
+                            "mealType": {
+                              "type": "string",
+                              "enum": [
+                                "breakfast",
+                                "lunch",
+                                "dinner"
+                              ]
+                            },
+                            "time": {
+                              "type": "string"
+                            },
+                            "instant": {
+                              "type": "string",
+                              "format": "date-time",
+                              "x-runtime-validation": true
+                            },
+                            "servings": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 20
+                            },
+                            "candidateId": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 24000
+                            },
+                            "source": {
+                              "type": "object",
+                              "properties": {
+                                "kind": {
+                                  "type": "string",
+                                  "enum": [
+                                    "recipe",
+                                    "family"
+                                  ]
+                                },
+                                "id": {
+                                  "type": "string",
+                                  "x-runtime-transform": "trim",
+                                  "minLength": 1,
+                                  "maxLength": 100,
+                                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]*$"
+                                },
+                                "version": {
+                                  "type": "integer",
+                                  "exclusiveMinimum": 0,
+                                  "minimum": -9007199254740991,
+                                  "maximum": 9007199254740991
+                                },
+                                "variantId": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string",
+                                      "maxLength": 20000
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "kind",
+                                "id",
+                                "version",
+                                "variantId"
+                              ],
+                              "additionalProperties": false
+                            },
+                            "title": {
+                              "type": "string"
+                            },
+                            "cuisine": {
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "prepTimeMinutes": {
+                              "anyOf": [
+                                {
+                                  "type": "number",
+                                  "minimum": 0
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "cookTimeMinutes": {
+                              "anyOf": [
+                                {
+                                  "type": "number",
+                                  "minimum": 0
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "instructions": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "requirements": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "ingredientId": {
+                                    "type": "string",
+                                    "x-runtime-transform": "trim",
+                                    "minLength": 1,
+                                    "maxLength": 100,
+                                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]*$"
+                                  },
+                                  "optional": {
+                                    "type": "boolean"
+                                  },
+                                  "status": {
+                                    "type": "string",
+                                    "enum": [
+                                      "satisfied",
+                                      "partial",
+                                      "missing",
+                                      "unresolved"
+                                    ]
+                                  },
+                                  "required": {
+                                    "type": "object",
+                                    "properties": {
+                                      "value": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "maxLength": 100,
+                                        "x-runtime-validation": true
+                                      },
+                                      "unit": {
+                                        "type": "string",
+                                        "enum": [
+                                          "g",
+                                          "kg",
+                                          "ml",
+                                          "l",
+                                          "piece",
+                                          "pack",
+                                          "bunch",
+                                          "slice"
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "value",
+                                      "unit"
+                                    ],
+                                    "additionalProperties": false
+                                  },
+                                  "covered": {
+                                    "type": "object",
+                                    "properties": {
+                                      "value": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "maxLength": 100,
+                                        "x-runtime-validation": true
+                                      },
+                                      "unit": {
+                                        "type": "string",
+                                        "enum": [
+                                          "g",
+                                          "kg",
+                                          "ml",
+                                          "l",
+                                          "piece",
+                                          "pack",
+                                          "bunch",
+                                          "slice"
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "value",
+                                      "unit"
+                                    ],
+                                    "additionalProperties": false
+                                  },
+                                  "missing": {
+                                    "anyOf": [
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "value": {
+                                            "type": "string",
+                                            "minLength": 1,
+                                            "maxLength": 100,
+                                            "x-runtime-validation": true
+                                          },
+                                          "unit": {
+                                            "type": "string",
+                                            "enum": [
+                                              "g",
+                                              "kg",
+                                              "ml",
+                                              "l",
+                                              "piece",
+                                              "pack",
+                                              "bunch",
+                                              "slice"
+                                            ]
+                                          }
+                                        },
+                                        "required": [
+                                          "value",
+                                          "unit"
+                                        ],
+                                        "additionalProperties": false
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  },
+                                  "reasons": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string",
+                                      "minLength": 1,
+                                      "maxLength": 200
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "ingredientId",
+                                  "optional",
+                                  "status",
+                                  "required",
+                                  "covered",
+                                  "missing",
+                                  "reasons"
+                                ],
+                                "additionalProperties": false
+                              }
+                            },
+                            "reasons": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 200
+                              }
+                            },
+                            "safetyAssessment": {
+                              "type": "string",
+                              "enum": [
+                                "not_requested",
+                                "requested_constraints_only"
+                              ]
+                            },
+                            "projectedConsumption": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "lotId": {
+                                    "type": "string"
+                                  },
+                                  "ingredientId": {
+                                    "type": "string"
+                                  },
+                                  "consumed": {
+                                    "type": "object",
+                                    "properties": {
+                                      "value": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "maxLength": 100,
+                                        "x-runtime-validation": true
+                                      },
+                                      "unit": {
+                                        "type": "string",
+                                        "enum": [
+                                          "g",
+                                          "kg",
+                                          "ml",
+                                          "l",
+                                          "piece",
+                                          "pack",
+                                          "bunch",
+                                          "slice"
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "value",
+                                      "unit"
+                                    ],
+                                    "additionalProperties": false
+                                  },
+                                  "remaining": {
+                                    "type": "object",
+                                    "properties": {
+                                      "value": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "maxLength": 100,
+                                        "x-runtime-validation": true
+                                      },
+                                      "unit": {
+                                        "type": "string",
+                                        "enum": [
+                                          "g",
+                                          "kg",
+                                          "ml",
+                                          "l",
+                                          "piece",
+                                          "pack",
+                                          "bunch",
+                                          "slice"
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "value",
+                                      "unit"
+                                    ],
+                                    "additionalProperties": false
+                                  }
+                                },
+                                "required": [
+                                  "lotId",
+                                  "ingredientId",
+                                  "consumed",
+                                  "remaining"
+                                ],
+                                "additionalProperties": false
+                              }
+                            }
+                          },
+                          "required": [
+                            "slotId",
+                            "date",
+                            "mealType",
+                            "time",
+                            "instant",
+                            "servings",
+                            "candidateId",
+                            "source",
+                            "title",
+                            "cuisine",
+                            "prepTimeMinutes",
+                            "cookTimeMinutes",
+                            "instructions",
+                            "requirements",
+                            "reasons",
+                            "safetyAssessment",
+                            "projectedConsumption"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "unplannedSlots": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "slotId": {
+                              "type": "string",
+                              "maxLength": 64,
+                              "pattern": "^\\d{4}-\\d{2}-\\d{2}:(breakfast|lunch|dinner):\\d{1,2}$"
+                            },
+                            "date": {
+                              "type": "string",
+                              "format": "date"
+                            },
+                            "mealType": {
+                              "type": "string",
+                              "enum": [
+                                "breakfast",
+                                "lunch",
+                                "dinner"
+                              ]
+                            },
+                            "reasons": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 200
+                              }
+                            }
+                          },
+                          "required": [
+                            "slotId",
+                            "date",
+                            "mealType",
+                            "reasons"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "search": {
+                        "type": "object",
+                        "properties": {
+                          "exhaustive": {
+                            "type": "boolean"
+                          },
+                          "plannerExhaustive": {
+                            "type": "boolean"
+                          },
+                          "recipeExhaustive": {
+                            "type": "boolean"
+                          },
+                          "truncated": {
+                            "type": "boolean"
+                          },
+                          "limitReasons": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 200
+                            }
+                          },
+                          "incompleteReasons": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "source": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 200
+                                },
+                                "code": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 200
+                                }
+                              },
+                              "required": [
+                                "source",
+                                "code"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "rejections": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "slotId": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string",
+                                      "maxLength": 64,
+                                      "pattern": "^\\d{4}-\\d{2}-\\d{2}:(breakfast|lunch|dinner):\\d{1,2}$"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ]
+                                },
+                                "code": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 200
+                                },
+                                "count": {
+                                  "type": "integer",
+                                  "minimum": 0
+                                }
+                              },
+                              "required": [
+                                "slotId",
+                                "code",
+                                "count"
+                              ],
+                              "additionalProperties": false
+                            }
+                          }
+                        },
+                        "required": [
+                          "exhaustive",
+                          "plannerExhaustive",
+                          "recipeExhaustive",
+                          "truncated",
+                          "limitReasons",
+                          "incompleteReasons",
+                          "rejections"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "diagnostics": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "slotId": {
+                              "anyOf": [
+                                {
+                                  "type": "string",
+                                  "maxLength": 64,
+                                  "pattern": "^\\d{4}-\\d{2}-\\d{2}:(breakfast|lunch|dinner):\\d{1,2}$"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "code": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 200
+                            },
+                            "count": {
+                              "type": "integer",
+                              "minimum": 0
+                            }
+                          },
+                          "required": [
+                            "slotId",
+                            "code",
+                            "count"
+                          ],
+                          "additionalProperties": false
+                        }
+                      }
+                    },
+                    "required": [
+                      "status",
+                      "conclusion",
+                      "planningReference",
+                      "meals",
+                      "unplannedSlots",
+                      "search",
+                      "diagnostics"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "freshness": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "fresh",
+                          "requires_revalidation"
+                        ]
+                      },
+                      "reasons": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "enum": [
+                            "stale_inventory",
+                            "stale_preferences",
+                            "stale_catalog",
+                            "stale_history",
+                            "catalog_authority_changed",
+                            "planning_time_elapsed"
+                          ]
+                        }
+                      },
+                      "checkedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "x-runtime-validation": true
+                      },
+                      "requiresRevalidationBeforeConsumption": {
+                        "const": true
+                      }
+                    },
+                    "required": [
+                      "status",
+                      "reasons",
+                      "checkedAt",
+                      "requiresRevalidationBeforeConsumption"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "schemaVersion",
+                  "id",
+                  "householdId",
+                  "revision",
+                  "createdAt",
+                  "updatedAt",
+                  "intent",
+                  "result",
+                  "freshness"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "plan"
+        ],
+        "additionalProperties": false
+      },
+      "RegenerateMealPlan": {
+        "type": "object",
+        "properties": {
+          "revision": {
+            "type": "integer",
+            "exclusiveMinimum": 0,
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "intent": {
+            "type": "object",
+            "properties": {
+              "startDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "horizonDays": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 14,
+                "default": 7
+              },
+              "utcOffsetMinutes": {
+                "type": "integer",
+                "minimum": -840,
+                "maximum": 840,
+                "default": 0
+              },
+              "defaultServings": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 20
+              },
+              "mode": {
+                "type": "string",
+                "enum": [
+                  "cook_now",
+                  "shopping_allowed"
+                ],
+                "default": "cook_now"
+              },
+              "slots": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "date": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "mealType": {
+                      "type": "string",
+                      "enum": [
+                        "breakfast",
+                        "lunch",
+                        "dinner"
+                      ]
+                    },
+                    "sequence": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 42,
+                      "default": 0
+                    },
+                    "time": {
+                      "type": "string",
+                      "pattern": "^(?:[01]\\d|2[0-3]):[0-5]\\d$"
+                    },
+                    "servings": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 20
+                    },
+                    "preferredTimeMinutes": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 1440
+                    },
+                    "hardMaxTimeMinutes": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 1440
+                    }
+                  },
+                  "required": [
+                    "date",
+                    "mealType"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 1,
+                "maxItems": 42
+              }
+            },
+            "required": [
+              "startDate",
+              "defaultServings",
+              "slots"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "revision"
+        ],
+        "additionalProperties": false
+      }
+    }
+  }
+}

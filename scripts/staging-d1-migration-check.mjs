@@ -102,19 +102,24 @@ export function verifySchemaGate(statements) {
   return 'PASS';
 }
 
-export async function run(command, file, args = []) {
+export async function run(command, file, args = [], options = {}) {
+  const tip = options.tip ?? TIP;
+  const preTip = options.preTip ?? PRE_TIP;
+  const candidateGate = options.gate ?? gate;
+  const candidateSchema = options.verifySchema ?? verifySchema;
   if (command === 'query') {
     if (file === 'baseline') return baselineQuery();
+    if (file === 'schema' && options.schemaQuery) return options.schemaQuery();
     if (file === 'schema') {
       return `SELECT type, name, sql FROM sqlite_master WHERE name IN (${[...TABLES, ...INDEXES]
         .map((name) => `'${name}'`).join(', ')}) ORDER BY name`;
     }
     throw new Error('Unknown read-only query');
   }
-  if (command === 'gate') { const receipt = await gate(process.env.MIGRATION_REF); save(file, receipt); return receipt; }
+  if (command === 'gate') { const receipt = await candidateGate(process.env.MIGRATION_REF); save(file, receipt); return receipt; }
   const receipt = readJson(file);
   if (command === 'recheck') {
-    const current = await gate(receipt.sha);
+    const current = await candidateGate(receipt.sha);
     if (JSON.stringify(current.schema) !== JSON.stringify(receipt.schema) ||
         current.database.id !== receipt.database.id) throw new Error('Candidate changed after dispatch');
     receipt.ci = current.ci;
@@ -126,8 +131,8 @@ export async function run(command, file, args = []) {
   } else if (command === 'pre-ledger') {
     if (!receipt.cloudflare) throw new Error('Remote staging identity not certified');
     receipt.preLedger = classifyPreLedger({ schema: receipt.schema, chain: receipt.chain }, readJson(args[0]));
-    if (receipt.preLedger.tip !== (receipt.preLedger.mode === 'apply' ? PRE_TIP : TIP))
-      throw new Error('Staging ledger tip is not the expected 0038 or 0039');
+    if (receipt.preLedger.tip !== (receipt.preLedger.mode === 'apply' ? preTip : tip))
+      throw new Error(`Staging ledger tip is not the expected ${preTip} or ${tip}`);
   } else if (command === 'bookmark') {
     if (!receipt.preLedger) throw new Error('Staging ledger not certified');
     const bookmark = readJson(args[0])?.bookmark;
@@ -142,7 +147,7 @@ export async function run(command, file, args = []) {
   } else if (command === 'plan') {
     if (!receipt.preHealth) throw new Error('Pre-migration health missing');
     receipt.plan = verifyMigrationPlan(readFileSync(args[0], 'utf8'), {
-      migration: TIP, chain: receipt.chain, mode: receipt.preLedger.mode,
+      migration: tip, chain: receipt.chain, mode: receipt.preLedger.mode,
     });
   } else if (command === 'post') {
     if (!receipt.plan) throw new Error('Migration plan was not certified');
@@ -151,9 +156,9 @@ export async function run(command, file, args = []) {
     const postBaseline = readJson(args[3]);
     const preBaseline = [{ success: true, results: [receipt.preBaseline] }];
     receipt.aggregateDrift = verifyBaselinePreserved(preBaseline, postBaseline).drift;
-    receipt.schemaCheck = verifySchema(readJson(args[4]));
+    receipt.schemaCheck = candidateSchema(readJson(args[4]));
     receipt.schemaGate = verifySchemaGate(readJson(args[5]));
-    receipt.status = 'STAGING_0039_CERTIFIED';
+    receipt.status = options.status ?? 'STAGING_0039_CERTIFIED';
   } else throw new Error('Unknown staging migration check');
   save(file, receipt);
   return receipt;

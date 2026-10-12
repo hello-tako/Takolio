@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { StaticRouter } from 'react-router-dom/server';
+import { StaticRouter } from 'react-router-dom';
 vi.mock('../../src/web/stores/useAuthStore', () => ({ useAuthStore: () => ({ avatarUrl: null }) }));
 import { AppLayout, isKitchenSurface } from '../../src/web/components/layout/AppLayout';
 import { AccountPage } from '../../src/web/components/common/AccountPage';
@@ -10,7 +10,7 @@ describe('UI08 adoption boundary', () => {
   it.each(['/me', '/profile', '/me/preferences', '/me/household', '/notifications', '/settings/app', '/settings/privacy', '/settings/planning', '/settings/notifications'])('adopts the actual account route %s', (route) => {
     const html = renderToStaticMarkup(<StaticRouter location={route}><AppLayout /></StaticRouter>);
     expect(html).toContain('data-kitchen-navigation="persistent"');
-    expect(html).toContain('/takosan/rebuild/lockup.svg');
+    expect(html).toContain('/takosan/v3/logo/horizontal-primary.svg');
     expect(html).toContain('id="kitchen-main"');
   });
   it.each(['/plus', '/checkout', '/week-old', '/week/plan/other', '/settings', '/me/unrelated', '/settings/billing', '/fridge/item/other', '/inventory-reconciliation/other'])('keeps unmigrated/protected %s outside the new route scope', (route) => {
@@ -25,7 +25,7 @@ describe('UI08 adoption boundary', () => {
   it('keeps route loading as a real live status with the new decorative symbol', () => {
     const html = renderToStaticMarkup(<RouteFallback />);
     expect(html).toContain('role="status"');
-    expect(html).toContain('src="/takosan/rebuild/symbol.svg" alt="" width="64" height="64"');
+    expect(html).toContain('src="/takosan/v3/logo/symbol-primary.svg" alt="" width="64" height="64"');
     expect(html).toContain('motion-reduce:animate-none');
   });
 });

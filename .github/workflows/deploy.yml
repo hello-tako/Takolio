@@ -72,13 +72,13 @@ jobs:
       meal_composition_v2_enabled: ${{ steps.gate.outputs.meal_composition_v2_enabled }}
     steps:
       - name: Checkout trusted main release policy and full ancestry
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: main
           fetch-depth: 0
           persist-credentials: false
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: 22
 
@@ -96,7 +96,7 @@ jobs:
         run: node scripts/release-check.mjs gate
 
       - name: Save immutable candidate manifest
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: release-candidate-${{ github.run_id }}-${{ github.run_attempt }}
           path: release-manifest.json
@@ -109,21 +109,23 @@ jobs:
     runs-on: ubuntu-latest
     environment: staging
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: ${{ needs.release.outputs.deploy_sha }}
           fetch-depth: 0
           persist-credentials: false
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
           name: release-candidate-${{ github.run_id }}-${{ github.run_attempt }}
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
         with:
           node-version: 22
+          cache: ''
+          package-manager-cache: false
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1
         with:
           version: 10
 
@@ -197,8 +199,9 @@ jobs:
 
       - name: Deploy to Cloudflare staging
         if: env.STAGING_UNCONFIGURED != 'true'
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd
         with:
+          wranglerVersion: '4.149.0'
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: deploy --config wrangler.staging.jsonc --var GIT_COMMIT:${{ needs.release.outputs.deploy_sha }} --var RECIPE_CATALOG_MODE:${{ needs.release.outputs.recipe_catalog_mode }} --var RECIPE_CATALOG_D1_CANARY_PERCENT:${{ needs.release.outputs.recipe_catalog_d1_canary_percent }} --var RECIPE_CATALOG_CUTOVER_ENABLED:${{ needs.release.outputs.recipe_catalog_cutover_enabled }} --var MEAL_COMPOSITION_V2_ENABLED:${{ needs.release.outputs.meal_composition_v2_enabled }}
@@ -210,15 +213,16 @@ jobs:
         env:
           APP_SMOKE_URL: ${{ vars.STAGING_URL }}
           EXPECTED_RECIPE_CATALOG_MODE: ${{ needs.release.outputs.recipe_catalog_mode }}
+          DEPLOY_SHA: ${{ needs.release.outputs.deploy_sha }}
           RELEASE_VERIFY_TOKEN: ${{ secrets.STAGING_RELEASE_VERIFY_TOKEN }}
         run: |
           node scripts/wait-for-deployed-release.mjs release-manifest.json
-          bash scripts/post-deploy-smoke.sh "$APP_SMOKE_URL" "${{ needs.release.outputs.deploy_sha }}"
+          bash scripts/post-deploy-smoke.sh "$APP_SMOKE_URL" "$DEPLOY_SHA"
           node scripts/release-check.mjs authority release-manifest.json
 
       - name: Save staging receipt after exact-SHA proof
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: release-staging-${{ github.run_id }}-${{ github.run_attempt }}
           path: release-manifest.json
@@ -234,21 +238,23 @@ jobs:
     environment: production
     steps:
       - name: Checkout pinned approved release
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: ${{ needs.release.outputs.deploy_sha }}
           fetch-depth: 0
           persist-credentials: false
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
           name: release-candidate-${{ github.run_id }}-${{ github.run_attempt }}
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
         with:
           node-version: 22
+          cache: ''
+          package-manager-cache: false
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1
         with:
           version: 10
 
@@ -363,6 +369,30 @@ jobs:
           fi
           node scripts/release-check.mjs transition release-manifest.json previous-authority.json
 
+      - name: Recheck live main and exact-SHA CI before preparing recovery
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node scripts/release-check.mjs recheck
+
+      - name: Prepare verified fail-closed recovery for the first strict OTP cutover
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          DEPLOY_SHA: ${{ needs.release.outputs.deploy_sha }}
+          CATALOG_MODE: ${{ needs.release.outputs.recipe_catalog_mode }}
+          CATALOG_PERCENT: ${{ needs.release.outputs.recipe_catalog_d1_canary_percent }}
+          CATALOG_CUTOVER: ${{ needs.release.outputs.recipe_catalog_cutover_enabled }}
+          COMPOSITION_ENABLED: ${{ needs.release.outputs.meal_composition_v2_enabled }}
+          WRANGLER_OUTPUT_FILE_PATH: strict-otp-version-output.jsonl
+        run: |
+          needed="$(node scripts/strict-otp-release.mjs needed release-manifest.json previous-version.json)"
+          if [ "$needed" = true ]; then
+            pnpm wrangler versions upload --var GIT_COMMIT:"${DEPLOY_SHA}" --var STRICT_OTP_FAIL_CLOSED:true --var RECIPE_CATALOG_MODE:"${CATALOG_MODE}" --var RECIPE_CATALOG_D1_CANARY_PERCENT:"${CATALOG_PERCENT}" --var RECIPE_CATALOG_CUTOVER_ENABLED:"${CATALOG_CUTOVER}" --var MEAL_PLANNER_ENABLED:"${COMPOSITION_ENABLED}" --var MEAL_COMPOSITION_V2_ENABLED:"${COMPOSITION_ENABLED}"
+            recovery_version="$(node scripts/strict-otp-release.mjs version-id release-manifest.json strict-otp-version-output.jsonl)"
+            pnpm wrangler versions view "$recovery_version" --name frigo --json > strict-otp-recovery-version.json
+            node scripts/strict-otp-release.mjs certify release-manifest.json strict-otp-recovery-version.json
+          fi
+
       - name: Recheck live main and exact-SHA CI immediately before production upload
         env:
           GH_TOKEN: ${{ github.token }}
@@ -370,11 +400,12 @@ jobs:
 
       - name: Deploy to Cloudflare production
         id: deploy
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd
         with:
+          wranglerVersion: '4.149.0'
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: deploy --var GIT_COMMIT:${{ needs.release.outputs.deploy_sha }} --var RECIPE_CATALOG_MODE:${{ needs.release.outputs.recipe_catalog_mode }} --var RECIPE_CATALOG_D1_CANARY_PERCENT:${{ needs.release.outputs.recipe_catalog_d1_canary_percent }} --var RECIPE_CATALOG_CUTOVER_ENABLED:${{ needs.release.outputs.recipe_catalog_cutover_enabled }} --var MEAL_PLANNER_ENABLED:${{ needs.release.outputs.meal_composition_v2_enabled }} --var MEAL_COMPOSITION_V2_ENABLED:${{ needs.release.outputs.meal_composition_v2_enabled }}
+          command: deploy --var GIT_COMMIT:${{ needs.release.outputs.deploy_sha }} --var STRICT_OTP_FAIL_CLOSED:false --var RECIPE_CATALOG_MODE:${{ needs.release.outputs.recipe_catalog_mode }} --var RECIPE_CATALOG_D1_CANARY_PERCENT:${{ needs.release.outputs.recipe_catalog_d1_canary_percent }} --var RECIPE_CATALOG_CUTOVER_ENABLED:${{ needs.release.outputs.recipe_catalog_cutover_enabled }} --var MEAL_PLANNER_ENABLED:${{ needs.release.outputs.meal_composition_v2_enabled }} --var MEAL_COMPOSITION_V2_ENABLED:${{ needs.release.outputs.meal_composition_v2_enabled }}
 
       # T19D: the deployment is not successful until the Worker proves, through the protected
       # recipe-authority evidence, that it serves exactly the approved authority state (mode,
@@ -383,12 +414,13 @@ jobs:
         env:
           APP_SMOKE_URL: ${{ vars.PRODUCTION_URL }}
           EXPECTED_RECIPE_CATALOG_MODE: ${{ needs.release.outputs.recipe_catalog_mode }}
+          DEPLOY_SHA: ${{ needs.release.outputs.deploy_sha }}
           RELEASE_VERIFY_TOKEN: ${{ secrets.RELEASE_VERIFY_TOKEN }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
           node scripts/wait-for-deployed-release.mjs release-manifest.json
-          bash scripts/post-deploy-smoke.sh "$APP_SMOKE_URL" "${{ needs.release.outputs.deploy_sha }}"
+          bash scripts/post-deploy-smoke.sh "$APP_SMOKE_URL" "$DEPLOY_SHA"
           pnpm wrangler deployments status --name frigo --json > deployed-deployment.json
           deployed_version="$(node --input-type=module -e '
             import { readFileSync } from "node:fs";
@@ -408,6 +440,29 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
+          recovery_version="$(node -e "const m=require('./release-manifest.json'); process.stdout.write(m.strictOtpRecovery?.versionId ?? '')")"
+          if [ -n "$recovery_version" ]; then
+            node scripts/cloudflare-worker-rollback.mjs "$recovery_version" > rollback-mutation.json
+            deadline=$((SECONDS + 180))
+            restored=false
+            while [ "$SECONDS" -lt "$deadline" ]; do
+              if timeout 20s pnpm wrangler deployments status --name frigo --json > rollback-deployment.json && \
+                curl --fail --silent --show-error --max-time 10 --header "Authorization: Bearer ${RELEASE_VERIFY_TOKEN}" \
+                  "${APP_SMOKE_URL}/api/v1/health/recipe-authority" > rollback-authority.json && \
+                node scripts/strict-otp-release.mjs deployed release-manifest.json rollback-deployment.json strict-otp-recovery-version.json rollback-authority.json rollback-mutation.json; then
+                status="$(curl --silent --show-error --max-time 10 --output rollback-otp.json --write-out '%{http_code}' \
+                  --request POST --header 'Content-Type: application/json' --header "Origin: ${APP_SMOKE_URL}" \
+                  --data '{}' "${APP_SMOKE_URL}/api/v1/auth/verify-otp")"
+                if [ "$status" = 503 ] && node --input-type=module -e '
+                  import { readFileSync } from "node:fs";
+                  if (JSON.parse(readFileSync("rollback-otp.json", "utf8")).code !== "AUTH_OTP_MAINTENANCE") process.exit(1);
+                '; then restored=true; break; fi
+              fi
+              sleep 3
+            done
+            test "$restored" = true
+            exit 0
+          fi
           previous_version="$(node -e "const m=require('./release-manifest.json'); process.stdout.write(m.previousDeployment.versionId)")"
           legacy_previous="$(node -e "const m=require('./release-manifest.json'); process.stdout.write(m.previousRecipeAuthority?.legacyWorkerCommit ? 'true' : 'false')")"
           node scripts/cloudflare-worker-rollback.mjs "$previous_version" > rollback-mutation.json
@@ -440,7 +495,7 @@ jobs:
 
       - name: Save production receipt even on failure (inspect deployed field)
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: release-production-${{ github.run_id }}-${{ github.run_attempt }}
           path: release-manifest.json

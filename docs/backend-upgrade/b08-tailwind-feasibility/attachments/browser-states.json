@@ -1,0 +1,598 @@
+{
+  "probeSourceSha256": "25575a73aba4abca23e96adab73f2a15b2a8f7a335d87f7e36ea42ebf0446a97",
+  "classification": "PAIRED_REAL_APP_CSS_ONLY_ISOLATED_PREVIEW",
+  "node": "v24.16.0",
+  "browserVersion": "153.0.8010.12",
+  "baselineCssSha256": "796ca21e25b5dbfbf13ea2b3f70faed3f388d7c231d3cb00c056c77341cf4fef",
+  "candidateCssSha256": "c73b86f6b639846eb475ba6534f252347bb902eb04dd498badac2661911b6433",
+  "checks": [
+    {
+      "case": "390-auth-focus",
+      "requestedPath": "/auth",
+      "capturedPath": "/auth",
+      "width": 390,
+      "baselineElements": 51,
+      "candidateElements": 51,
+      "changes": 93,
+      "changeCounts": {
+        "border-top-color": 45,
+        "cursor": 10,
+        "box-shadow": 4,
+        "margin-bottom": 5,
+        "margin-top": 5,
+        "geometry": 21,
+        "line-height": 2,
+        "outline-color": 1
+      },
+      "pixels": {
+        "changedPixels": 23909,
+        "totalPixels": 329160
+      },
+      "baselineRecovery": "COMPUTED_EXACT",
+      "recoveryPixels": {
+        "changedPixels": 0,
+        "totalPixels": 329160
+      },
+      "baselinePngSha256": "c8c324fd9ce5d6d4710d94c19d3b244dce6f60ec8fa1ec6e9accd7034c203951",
+      "candidatePngSha256": "ee9192bff65e8da388caa8108e2d9e981b555fa7504436d758554d777f5212da",
+      "status": "INCOMPATIBLE",
+      "examples": [
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:0/BUTTON:0",
+          "classes": "p-2 -ml-2 rounded-xl hover:bg-semantic-border/60 active:scale-95 text-semantic-text-secondary tap-target flex items-center justify-center transition-colors",
+          "property": "cursor",
+          "before": "pointer",
+          "after": "default"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:0/BUTTON:0/svg:0",
+          "classes": "lucide lucide-arrow-left w-5 h-5",
+          "property": "cursor",
+          "before": "pointer",
+          "after": "default"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:0/BUTTON:0/svg:0/path:0",
+          "classes": "",
+          "property": "cursor",
+          "before": "pointer",
+          "after": "default"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:2/BUTTON:0",
+          "classes": "flex-1 py-2 rounded-lg font-heading font-semibold text-xs transition-tap tap-target bg-white text-semantic-text-primary shadow-xs",
+          "property": "box-shadow",
+          "before": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(15, 23, 42, 0.04) 0px 1px 2px 0px",
+          "after": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(15, 23, 42, 0.04) 0px 1px 2px 0px"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:2/BUTTON:0",
+          "classes": "flex-1 py-2 rounded-lg font-heading font-semibold text-xs transition-tap tap-target bg-white text-semantic-text-primary shadow-xs",
+          "property": "cursor",
+          "before": "pointer",
+          "after": "default"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:2/BUTTON:1",
+          "classes": "flex-1 py-2 rounded-lg font-heading font-semibold text-xs transition-tap tap-target text-semantic-text-secondary hover:text-semantic-text-primary",
+          "property": "cursor",
+          "before": "pointer",
+          "after": "default"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:3/DIV:0/DIV:0",
+          "classes": "space-y-2",
+          "property": "margin-bottom",
+          "before": "0px",
+          "after": "16px"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:3/DIV:0/DIV:0/DIV:0",
+          "classes": "w-full flex justify-center min-h-[44px]",
+          "property": "margin-bottom",
+          "before": "0px",
+          "after": "8px"
+        }
+      ]
+    },
+    {
+      "case": "390-auth-focus-forced-colors",
+      "requestedPath": "/auth",
+      "capturedPath": "/auth",
+      "width": 390,
+      "baselineElements": 51,
+      "candidateElements": 51,
+      "changes": 54,
+      "changeCounts": {
+        "cursor": 10,
+        "border-top-color": 11,
+        "margin-bottom": 5,
+        "margin-top": 5,
+        "geometry": 21,
+        "line-height": 2
+      },
+      "pixels": {
+        "changedPixels": 12009,
+        "totalPixels": 329160
+      },
+      "baselineRecovery": "COMPUTED_EXACT",
+      "recoveryPixels": {
+        "changedPixels": 0,
+        "totalPixels": 329160
+      },
+      "baselinePngSha256": "8ce19e0d45fa2fc64bf182dd4f5b3c1e19321f65da577e6e5e092e0f54e44008",
+      "candidatePngSha256": "39a868d3816306b8dd974aea165ea0c27d73b06348887d77b2707ccf1b08a327",
+      "status": "INCOMPATIBLE",
+      "examples": [
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:0/BUTTON:0",
+          "classes": "p-2 -ml-2 rounded-xl hover:bg-semantic-border/60 active:scale-95 text-semantic-text-secondary tap-target flex items-center justify-center transition-colors",
+          "property": "cursor",
+          "before": "pointer",
+          "after": "default"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:0/BUTTON:0/svg:0",
+          "classes": "lucide lucide-arrow-left w-5 h-5",
+          "property": "cursor",
+          "before": "pointer",
+          "after": "default"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:0/BUTTON:0/svg:0/path:0",
+          "classes": "",
+          "property": "cursor",
+          "before": "pointer",
+          "after": "default"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:2/BUTTON:0",
+          "classes": "flex-1 py-2 rounded-lg font-heading font-semibold text-xs transition-tap tap-target bg-white text-semantic-text-primary shadow-xs",
+          "property": "cursor",
+          "before": "pointer",
+          "after": "default"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:2/BUTTON:1",
+          "classes": "flex-1 py-2 rounded-lg font-heading font-semibold text-xs transition-tap tap-target text-semantic-text-secondary hover:text-semantic-text-primary",
+          "property": "cursor",
+          "before": "pointer",
+          "after": "default"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:3/DIV:0/DIV:0",
+          "classes": "space-y-2",
+          "property": "margin-bottom",
+          "before": "0px",
+          "after": "16px"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:3/DIV:0/DIV:0/DIV:0",
+          "classes": "w-full flex justify-center min-h-[44px]",
+          "property": "margin-bottom",
+          "before": "0px",
+          "after": "8px"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:3/DIV:0/DIV:0/DIV:1",
+          "classes": "rounded-xl border border-semantic-warning/30 bg-semantic-warning-soft px-3 py-2 text-center text-xs text-semantic-warning-strong",
+          "property": "margin-top",
+          "before": "8px",
+          "after": "0px"
+        }
+      ]
+    },
+    {
+      "case": "390-auth-hover",
+      "requestedPath": "/auth",
+      "capturedPath": "/auth",
+      "width": 390,
+      "baselineElements": 51,
+      "candidateElements": 51,
+      "changes": 93,
+      "changeCounts": {
+        "border-top-color": 45,
+        "background-color": 1,
+        "cursor": 10,
+        "box-shadow": 4,
+        "margin-bottom": 5,
+        "margin-top": 5,
+        "geometry": 21,
+        "line-height": 2
+      },
+      "pixels": {
+        "changedPixels": 22216,
+        "totalPixels": 329160
+      },
+      "baselineRecovery": "COMPUTED_EXACT",
+      "recoveryPixels": {
+        "changedPixels": 0,
+        "totalPixels": 329160
+      },
+      "baselinePngSha256": "8adefd2f00fcfe5752a7690833c989c037481512c52febb594cb563178d547dd",
+      "candidatePngSha256": "3766b0851b76e2a116e1f50f1d71437c424fcec450a4ec610b38db580f0bd9c9",
+      "status": "INCOMPATIBLE",
+      "examples": [
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:0/BUTTON:0",
+          "classes": "p-2 -ml-2 rounded-xl hover:bg-semantic-border/60 active:scale-95 text-semantic-text-secondary tap-target flex items-center justify-center transition-colors",
+          "property": "background-color",
+          "before": "rgba(221, 220, 211, 0.6)",
+          "after": "oklab(0.892759 -0.0023872 0.0119499 / 0.6)"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:0/BUTTON:0",
+          "classes": "p-2 -ml-2 rounded-xl hover:bg-semantic-border/60 active:scale-95 text-semantic-text-secondary tap-target flex items-center justify-center transition-colors",
+          "property": "cursor",
+          "before": "pointer",
+          "after": "default"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:0/BUTTON:0/svg:0",
+          "classes": "lucide lucide-arrow-left w-5 h-5",
+          "property": "cursor",
+          "before": "pointer",
+          "after": "default"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:0/BUTTON:0/svg:0/path:0",
+          "classes": "",
+          "property": "cursor",
+          "before": "pointer",
+          "after": "default"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:2/BUTTON:0",
+          "classes": "flex-1 py-2 rounded-lg font-heading font-semibold text-xs transition-tap tap-target bg-white text-semantic-text-primary shadow-xs",
+          "property": "box-shadow",
+          "before": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(15, 23, 42, 0.04) 0px 1px 2px 0px",
+          "after": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(15, 23, 42, 0.04) 0px 1px 2px 0px"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:2/BUTTON:0",
+          "classes": "flex-1 py-2 rounded-lg font-heading font-semibold text-xs transition-tap tap-target bg-white text-semantic-text-primary shadow-xs",
+          "property": "cursor",
+          "before": "pointer",
+          "after": "default"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:2/BUTTON:1",
+          "classes": "flex-1 py-2 rounded-lg font-heading font-semibold text-xs transition-tap tap-target text-semantic-text-secondary hover:text-semantic-text-primary",
+          "property": "cursor",
+          "before": "pointer",
+          "after": "default"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:3/DIV:0/DIV:0",
+          "classes": "space-y-2",
+          "property": "margin-bottom",
+          "before": "0px",
+          "after": "16px"
+        }
+      ]
+    },
+    {
+      "case": "1280-auth-focus",
+      "requestedPath": "/auth",
+      "capturedPath": "/auth",
+      "width": 1280,
+      "baselineElements": 48,
+      "candidateElements": 48,
+      "changes": 90,
+      "changeCounts": {
+        "border-top-color": 42,
+        "cursor": 10,
+        "box-shadow": 4,
+        "margin-bottom": 5,
+        "margin-top": 5,
+        "geometry": 21,
+        "line-height": 2,
+        "outline-color": 1
+      },
+      "pixels": {
+        "changedPixels": 20946,
+        "totalPixels": 1080320
+      },
+      "baselineRecovery": "COMPUTED_EXACT",
+      "recoveryPixels": {
+        "changedPixels": 0,
+        "totalPixels": 1080320
+      },
+      "baselinePngSha256": "8d365a46fde83c2a975531c1edfb7a197b40e50ccd26ead2e63819042405e44b",
+      "candidatePngSha256": "751b1d746b539cd2d342ce4928618acb255a949d1cc1ba5ad8b1960c09ca84fa",
+      "status": "INCOMPATIBLE",
+      "examples": [
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:0/BUTTON:0",
+          "classes": "p-2 -ml-2 rounded-xl hover:bg-semantic-border/60 active:scale-95 text-semantic-text-secondary tap-target flex items-center justify-center transition-colors",
+          "property": "cursor",
+          "before": "pointer",
+          "after": "default"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:0/BUTTON:0/svg:0",
+          "classes": "lucide lucide-arrow-left w-5 h-5",
+          "property": "cursor",
+          "before": "pointer",
+          "after": "default"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:0/BUTTON:0/svg:0/path:0",
+          "classes": "",
+          "property": "cursor",
+          "before": "pointer",
+          "after": "default"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:2/BUTTON:0",
+          "classes": "flex-1 py-2 rounded-lg font-heading font-semibold text-xs transition-tap tap-target bg-white text-semantic-text-primary shadow-xs",
+          "property": "box-shadow",
+          "before": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(15, 23, 42, 0.04) 0px 1px 2px 0px",
+          "after": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(15, 23, 42, 0.04) 0px 1px 2px 0px"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:2/BUTTON:0",
+          "classes": "flex-1 py-2 rounded-lg font-heading font-semibold text-xs transition-tap tap-target bg-white text-semantic-text-primary shadow-xs",
+          "property": "cursor",
+          "before": "pointer",
+          "after": "default"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:2/BUTTON:1",
+          "classes": "flex-1 py-2 rounded-lg font-heading font-semibold text-xs transition-tap tap-target text-semantic-text-secondary hover:text-semantic-text-primary",
+          "property": "cursor",
+          "before": "pointer",
+          "after": "default"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:3/DIV:0/DIV:0",
+          "classes": "space-y-2",
+          "property": "margin-bottom",
+          "before": "0px",
+          "after": "16px"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:3/DIV:0/DIV:0/DIV:0",
+          "classes": "w-full flex justify-center min-h-[44px]",
+          "property": "margin-bottom",
+          "before": "0px",
+          "after": "8px"
+        }
+      ]
+    },
+    {
+      "case": "1280-auth-focus-forced-colors",
+      "requestedPath": "/auth",
+      "capturedPath": "/auth",
+      "width": 1280,
+      "baselineElements": 48,
+      "candidateElements": 48,
+      "changes": 54,
+      "changeCounts": {
+        "cursor": 10,
+        "border-top-color": 11,
+        "margin-bottom": 5,
+        "margin-top": 5,
+        "geometry": 21,
+        "line-height": 2
+      },
+      "pixels": {
+        "changedPixels": 14057,
+        "totalPixels": 1080320
+      },
+      "baselineRecovery": "COMPUTED_EXACT",
+      "recoveryPixels": {
+        "changedPixels": 0,
+        "totalPixels": 1080320
+      },
+      "baselinePngSha256": "2c925bf931f5200c26acac3a9f093efe90285cf898fbd98ff2267b4f1b255619",
+      "candidatePngSha256": "c902ed5d06ebcfac681969e267db17bf3e1aea5ba84e411cc749a2669f59a2f6",
+      "status": "INCOMPATIBLE",
+      "examples": [
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:0/BUTTON:0",
+          "classes": "p-2 -ml-2 rounded-xl hover:bg-semantic-border/60 active:scale-95 text-semantic-text-secondary tap-target flex items-center justify-center transition-colors",
+          "property": "cursor",
+          "before": "pointer",
+          "after": "default"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:0/BUTTON:0/svg:0",
+          "classes": "lucide lucide-arrow-left w-5 h-5",
+          "property": "cursor",
+          "before": "pointer",
+          "after": "default"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:0/BUTTON:0/svg:0/path:0",
+          "classes": "",
+          "property": "cursor",
+          "before": "pointer",
+          "after": "default"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:2/BUTTON:0",
+          "classes": "flex-1 py-2 rounded-lg font-heading font-semibold text-xs transition-tap tap-target bg-white text-semantic-text-primary shadow-xs",
+          "property": "cursor",
+          "before": "pointer",
+          "after": "default"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:2/BUTTON:1",
+          "classes": "flex-1 py-2 rounded-lg font-heading font-semibold text-xs transition-tap tap-target text-semantic-text-secondary hover:text-semantic-text-primary",
+          "property": "cursor",
+          "before": "pointer",
+          "after": "default"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:3/DIV:0/DIV:0",
+          "classes": "space-y-2",
+          "property": "margin-bottom",
+          "before": "0px",
+          "after": "16px"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:3/DIV:0/DIV:0/DIV:0",
+          "classes": "w-full flex justify-center min-h-[44px]",
+          "property": "margin-bottom",
+          "before": "0px",
+          "after": "8px"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:3/DIV:0/DIV:0/DIV:1",
+          "classes": "rounded-xl border border-semantic-warning/30 bg-semantic-warning-soft px-3 py-2 text-center text-xs text-semantic-warning-strong",
+          "property": "margin-top",
+          "before": "8px",
+          "after": "0px"
+        }
+      ]
+    },
+    {
+      "case": "1280-auth-hover",
+      "requestedPath": "/auth",
+      "capturedPath": "/auth",
+      "width": 1280,
+      "baselineElements": 48,
+      "candidateElements": 48,
+      "changes": 90,
+      "changeCounts": {
+        "border-top-color": 42,
+        "background-color": 1,
+        "cursor": 10,
+        "box-shadow": 4,
+        "margin-bottom": 5,
+        "margin-top": 5,
+        "geometry": 21,
+        "line-height": 2
+      },
+      "pixels": {
+        "changedPixels": 16813,
+        "totalPixels": 1080320
+      },
+      "baselineRecovery": "COMPUTED_EXACT",
+      "recoveryPixels": {
+        "changedPixels": 0,
+        "totalPixels": 1080320
+      },
+      "baselinePngSha256": "32c603e16f95b49067d39441e8e62022c31941a165dd1c336be7f643d96db395",
+      "candidatePngSha256": "19050f34e893fa3c867bd7be8c0f2f44535dfff4a09c4ab5870b84a64f860667",
+      "status": "INCOMPATIBLE",
+      "examples": [
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:0/BUTTON:0",
+          "classes": "p-2 -ml-2 rounded-xl hover:bg-semantic-border/60 active:scale-95 text-semantic-text-secondary tap-target flex items-center justify-center transition-colors",
+          "property": "background-color",
+          "before": "rgba(221, 220, 211, 0.6)",
+          "after": "oklab(0.892759 -0.0023872 0.0119499 / 0.6)"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:0/BUTTON:0",
+          "classes": "p-2 -ml-2 rounded-xl hover:bg-semantic-border/60 active:scale-95 text-semantic-text-secondary tap-target flex items-center justify-center transition-colors",
+          "property": "cursor",
+          "before": "pointer",
+          "after": "default"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:0/BUTTON:0/svg:0",
+          "classes": "lucide lucide-arrow-left w-5 h-5",
+          "property": "cursor",
+          "before": "pointer",
+          "after": "default"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:0/BUTTON:0/svg:0/path:0",
+          "classes": "",
+          "property": "cursor",
+          "before": "pointer",
+          "after": "default"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:2/BUTTON:0",
+          "classes": "flex-1 py-2 rounded-lg font-heading font-semibold text-xs transition-tap tap-target bg-white text-semantic-text-primary shadow-xs",
+          "property": "box-shadow",
+          "before": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(15, 23, 42, 0.04) 0px 1px 2px 0px",
+          "after": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(15, 23, 42, 0.04) 0px 1px 2px 0px"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:2/BUTTON:0",
+          "classes": "flex-1 py-2 rounded-lg font-heading font-semibold text-xs transition-tap tap-target bg-white text-semantic-text-primary shadow-xs",
+          "property": "cursor",
+          "before": "pointer",
+          "after": "default"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:2/BUTTON:1",
+          "classes": "flex-1 py-2 rounded-lg font-heading font-semibold text-xs transition-tap tap-target text-semantic-text-secondary hover:text-semantic-text-primary",
+          "property": "cursor",
+          "before": "pointer",
+          "after": "default"
+        },
+        {
+          "kind": "style",
+          "domPath": "BODY/DIV:0/MAIN:0/DIV:0/DIV:3/DIV:0/DIV:0",
+          "classes": "space-y-2",
+          "property": "margin-bottom",
+          "before": "0px",
+          "after": "16px"
+        }
+      ]
+    }
+  ],
+  "pageErrors": 0,
+  "forbiddenApiWrites": 0,
+  "externalRequestsBlocked": 0,
+  "compatibleCases": 0,
+  "incompatibleCases": 6,
+  "limits": [
+    "Chromium local CSS replacement, not deployed build/browser/device certification.",
+    "Identical real application/fixture on each pair; animations neutralized equally.",
+    "Only viewport pixels and listed computed properties compared; no private user data or external writes."
+  ]
+}

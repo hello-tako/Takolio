@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "command": "python3 .artifacts/backend-b08-log-privacy/reconcile_scan.py .artifacts/backend-b08-log-privacy/scanner-implementation scanner-implementation-reconciliation.json",
+  "exitCode": 1,
+  "observedException": "AssertionError",
+  "observedFailureLine": 46,
+  "failedAssertion": "len(files) == receipt['source']['fileCount'] and digest.hexdigest() == receipt['source']['treeContentSha256']",
+  "cause": "Reconciliation hashed pathlib component ordering instead of the scanner's byte-sorted repository-relative names.",
+  "scope": "Ignored evidence reconciliation tooling; no runtime or tracked source mutation."
+}

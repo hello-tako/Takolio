@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "implementationSha": "41da180a941b348c6385895628b2bdd61b666763",
+  "inventorySha256": "108da7053e15aaec1d003e245702facb40cd3e2c61b8cc0f61b2f64678b2cdd1",
+  "sourceInputs": 42,
+  "sourceInputsHashesMatchCurrent": true,
+  "independentReviewSources": "a2_transaction producer inventory and cross-route test; a2_client byte review and emitter review; exact committed-source binding verified by root",
+  "reviewScope": "87 direct console producers across28files; actual caller fields plus minimal diagnostic delta",
+  "changedApplicationFiles": 11,
+  "changedAndNewTestFiles": 4,
+  "cleanupSqlAndHelpersUnchanged": true,
+  "catalogComparisonSchedulerThrottleUnchanged": true,
+  "fixedRawExceptionArguments": 41,
+  "unconfirmedMediaPathIdsRemoved": true,
+  "focusedTests": {
+    "files": 9,
+    "tests": 132,
+    "status": "PASS"
+  },
+  "fullTests": {
+    "files": 312,
+    "tests": 7523,
+    "status": "PASS"
+  },
+  "remainingConcreteReviewedSourceFindingCount": 0,
+  "limits": [
+    "Representative actual route failure coverage, not every41 catch permutation.",
+    "Source-defined/operator configuration metadata provenance is reviewed; hosted invocation capture/access/retention remains unproved.",
+    "Later provider injection must have its own metadata privacy acceptance."
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "actualDistinctScannedSourceCount": 846,
+  "classification": "EXACT_CAPTURED_SOURCE_SEMGREP_PARSER_COVERAGE_METADATA",
+  "expectedSourceCount": 846,
+  "findingCount": 0,
+  "limits": [
+    "Coverage is limited to the captured JavaScript and TypeScript files selected by the existing runner; it does not certify all security properties."
+  ],
+  "parserAndEngineErrorCount": 0,
+  "pathsSourceTextOrFindingsPublished": false,
+  "privateRedactedEngineReportSha256": "3fba6b1f025c1ca2cca16be37af4fd3ce1f795c0ede5457cc358f2322a4ae36f",
+  "reviewedHead": "d3cce9560593a263e70f85646e061291e8829b56",
+  "scannedPathsExactlyMatchExpected": true,
+  "schemaVersion": 1,
+  "sourceRepositoryReceiptSha256": "a981cb771c524d3db0fc5b6972a8bdba5604be9fada8bb556643694bbe5d98f9",
+  "sourceTreeContentSha256": "f8aa07824699900363fa89d30a7f839216a831cecf911b33b4d5956b07e18982",
+  "status": "PASS",
+  "toolVersion": "1.180.0"
+}

@@ -1,0 +1,789 @@
+{
+  "issues": [],
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 2292,
+      "sha256": "e20e30967f41259fc6cab267fe9cdaaed589366ac855b67b61ab4a755227aa88"
+    },
+    {
+      "path": "MANIFEST.json",
+      "bytes": 3408,
+      "sha256": "75f1a2092b747904b7f00eb9d955c07a4c33095abbe7b09326b919d704faf5f2"
+    },
+    {
+      "path": "06_design_tokens/accessibility-notes.md",
+      "bytes": 867,
+      "sha256": "676eb6c3260ac8ee06ea045b2a7986287cbadf171cfecfa610a2d57e89f950e9"
+    },
+    {
+      "path": "06_design_tokens/brand-tokens.css",
+      "bytes": 467,
+      "sha256": "1fdb5e34b96b6924f592bb6626c97cde8e206d4534e6e31fec09a34e5d17367a"
+    },
+    {
+      "path": "06_design_tokens/brand-tokens.json",
+      "bytes": 1185,
+      "sha256": "0b7020bdc239f01117a77dc8f4c7343474974333c841e12a19658767e142eb64"
+    },
+    {
+      "path": "06_design_tokens/brand-tokens.ts",
+      "bytes": 1224,
+      "sha256": "bc0e3f7664c66760a432790b7b07be9112b2619446cd7c269007b5866c48cb65"
+    },
+    {
+      "path": "05_ui_icons/search.svg",
+      "bytes": 250,
+      "sha256": "942eda2be6235cfbcdaa6c964cd0339905e3c7889e77ee1185506c28a928fb5b",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "path": "05_ui_icons/home.svg",
+      "bytes": 259,
+      "sha256": "e5493170d764536c7a7b9cd10102213ece7b0a153e5dfffbb8a2839b3459cbcf",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "path": "05_ui_icons/shopping.svg",
+      "bytes": 264,
+      "sha256": "bcb891f6faace7591f79cf9d264f709bb529906c98451ea55c0f6424e0870c28",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "path": "05_ui_icons/settings.svg",
+      "bytes": 337,
+      "sha256": "8676adbc78fe6b33b54f9b902221b60b05493509becfb757764a4635a9d7f6c1",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "path": "05_ui_icons/scan.svg",
+      "bytes": 305,
+      "sha256": "cfaf8a9dd0f0aa871fe8921cf4714ea4279b6525747e546a5f6f7c355a59d327",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "path": "05_ui_icons/favorite.svg",
+      "bytes": 290,
+      "sha256": "47e60d0a701612d6eda6522f404bbc071fd53ea2e8a62f9d8cacda5ef00cda7c",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "path": "05_ui_icons/recipe.svg",
+      "bytes": 280,
+      "sha256": "d9f768df81c060995d0988993cd5941b22288860e1086401e61f73fe6c5308f1",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "path": "05_ui_icons/budget.svg",
+      "bytes": 300,
+      "sha256": "65f296a2dcedd63cdf72b6d5bdebf906ed1610d99878e96302d3b5f761953993",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "path": "05_ui_icons/nutrition.svg",
+      "bytes": 298,
+      "sha256": "70d399ee2d534c32dcd0523ad869529fc6a7793113f2d3b7772d9fe3434b7bac",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "path": "05_ui_icons/profile.svg",
+      "bytes": 265,
+      "sha256": "63ec99c4ef760e4f3dc308be3e2a6ff1c8462db8b378c2e319737e7c47a3e134",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "path": "05_ui_icons/planner.svg",
+      "bytes": 293,
+      "sha256": "6f5c20d553fe9d975b87521811c66e2edd34f0f25597116715d84a008a5f6fb8",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "path": "05_ui_icons/fridge.svg",
+      "bytes": 272,
+      "sha256": "8aa3afbb638a06df9f33ea1828d135c0f138ba46f3b029ec267e099925abaee7",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "path": "08_preview/exploration-concept-ai.png",
+      "bytes": 2038282,
+      "sha256": "ea735a17fb2f361dbf207897f5a5e631a443f9d9c556c9ed1a342c8bfdfd0358",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null
+    },
+    {
+      "path": "04_social/avatar-1024.png",
+      "bytes": 72682,
+      "sha256": "53b494c5153c3423f04ba2df23944d0890fba388f8f6a6b8953c541254c552fe",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null
+    },
+    {
+      "path": "04_social/facebook-cover-1640x624.png",
+      "bytes": 78600,
+      "sha256": "ec73a4a0d626382bca6cb76e27677e79d09d3f2ae47fbc553f9c3544844b39b7",
+      "size": [
+        1640,
+        624
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null
+    },
+    {
+      "path": "04_social/og-1200x630.png",
+      "bytes": 64124,
+      "sha256": "0e78763310c7d6b98cd750971605c4372c436acc1cbd8911f11ec9e751e2a02d",
+      "size": [
+        1200,
+        630
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null
+    },
+    {
+      "path": "07_brand_guidelines/Takosan-Brand-Book-V3.pdf",
+      "bytes": 707101,
+      "sha256": "192ff21c9bb5672670a98f53f12843e74aa5b05249ccb9a31002cc326c15378f"
+    },
+    {
+      "path": "03_mascot/tako-celebrate.svg",
+      "bytes": 1339,
+      "sha256": "d10b8b8f7946714aa74d85f12bee9873150d17d7d08c036afe6786a8c0dbaf10",
+      "viewBox": "0 0 512 512"
+    },
+    {
+      "path": "03_mascot/tako-happy.png",
+      "bytes": 22231,
+      "sha256": "7d2b674265ad59aa0814aa1b2abb073d979407780d5c1edec615c2f60d54227a",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "03_mascot/tako-thinking.png",
+      "bytes": 21903,
+      "sha256": "b3a08f50c02078d2adcaa316039bec71b1c4ba4e626c4c5200472e3bb667bcf8",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "03_mascot/tako-thinking.svg",
+      "bytes": 1360,
+      "sha256": "fdc66380df11e30361173ceb0022c8d8e8deb6c99167c8636963fa798453e1de",
+      "viewBox": "0 0 512 512"
+    },
+    {
+      "path": "03_mascot/tako-happy.svg",
+      "bytes": 1623,
+      "sha256": "793400bd4602d6a80da87aa45c81820665912a1680154440a39f0ea5b4170b1b",
+      "viewBox": "0 0 512 512"
+    },
+    {
+      "path": "03_mascot/tako-celebrate.png",
+      "bytes": 21478,
+      "sha256": "91050384326e7090e62b7886b48ed26b1466dc27e982ae5fb81749932802da31",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "03_mascot/tako-wink.svg",
+      "bytes": 1424,
+      "sha256": "6f3d3197bb9e6886a8b63da643ad1455467e94f0a28475fa941e1259e936c1b1",
+      "viewBox": "0 0 512 512"
+    },
+    {
+      "path": "03_mascot/tako-wink.png",
+      "bytes": 22255,
+      "sha256": "38a11197224a06b7eff6ca0bd1f1253d8b6c5780335a0115bde6682f1205c50d",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "02_app_icons/icon-master.svg",
+      "bytes": 1785,
+      "sha256": "afe2beafc165d868c9211ed93055554676b7c651aa16d49dc732e21699e5e642",
+      "viewBox": "0 0 1024 1024"
+    },
+    {
+      "path": "09_copywriting/brand-messaging.md",
+      "bytes": 1317,
+      "sha256": "2feb8e97d912c2f1eb317a1ae67eb963a1a0a9a1abf7d25b4b73459953f4360f"
+    },
+    {
+      "path": "01_logo/svg/symbol-mono-dark.svg",
+      "bytes": 1623,
+      "sha256": "e7b5014719248d94bf3675bd039cf0869c80eccdcbaa45327befb44f0abd551a",
+      "viewBox": "0 0 512 512"
+    },
+    {
+      "path": "01_logo/svg/symbol-primary.svg",
+      "bytes": 1623,
+      "sha256": "793400bd4602d6a80da87aa45c81820665912a1680154440a39f0ea5b4170b1b",
+      "viewBox": "0 0 512 512"
+    },
+    {
+      "path": "01_logo/svg/horizontal-mono-dark.svg",
+      "bytes": 4165,
+      "sha256": "81cde10b1494c02cc83a4d3cbf250444116b6afc91ba0c32652496a9c093a75a",
+      "viewBox": "0 0 950 300"
+    },
+    {
+      "path": "01_logo/svg/stacked-mono-white.svg",
+      "bytes": 4166,
+      "sha256": "fed9b8758a778db8e9751c76c7085857991f5a19ca065c3b0b9e3222e6444fad",
+      "viewBox": "0 0 780 680"
+    },
+    {
+      "path": "01_logo/svg/symbol-micro.svg",
+      "bytes": 777,
+      "sha256": "a61acb0ebb15a7e0c77fd536cf7c2afc98d4d1effca0df8be6a11ff49b14ace6",
+      "viewBox": "0 0 512 512"
+    },
+    {
+      "path": "01_logo/svg/horizontal-primary.svg",
+      "bytes": 4165,
+      "sha256": "59abfb1fa26de1fcbfa3761e0c812de97db5a428d4e6d581b87dfc867aa87c1f",
+      "viewBox": "0 0 950 300"
+    },
+    {
+      "path": "01_logo/svg/symbol-micro-dark.svg",
+      "bytes": 777,
+      "sha256": "9ef16a5b4df2f1a53aa7a5205eebb22e79a039881346cb834b8e4d80cdfba782",
+      "viewBox": "0 0 512 512"
+    },
+    {
+      "path": "01_logo/svg/symbol-mono-white.svg",
+      "bytes": 1623,
+      "sha256": "58c9f85081c5811fc66ed09bdf9aecb81a73aa0d02d22c241541b15c2f1871dc",
+      "viewBox": "0 0 512 512"
+    },
+    {
+      "path": "01_logo/svg/horizontal-mono-white.svg",
+      "bytes": 4165,
+      "sha256": "5724f490f4435bf5ad4bb0ab65fbad92c4ee0259326aa12e3fa0d07b95d712e4",
+      "viewBox": "0 0 950 300"
+    },
+    {
+      "path": "01_logo/svg/wordmark-mono-white.svg",
+      "bytes": 2588,
+      "sha256": "5a5db74674f1071b351ddc4ba905ab1c6ea284bb261ff2686a48bd46059a33d7",
+      "viewBox": "0 0 780 200"
+    },
+    {
+      "path": "01_logo/svg/wordmark-primary.svg",
+      "bytes": 2588,
+      "sha256": "48a18853a8bfa919825a6547e4a64f50631da9c5f89874bcd843a7d053f57125",
+      "viewBox": "0 0 780 200"
+    },
+    {
+      "path": "01_logo/svg/stacked-primary.svg",
+      "bytes": 4166,
+      "sha256": "b7e117b148ecfa991539a564b492facd0f5dba3ecb711b54c7963861db2bd5c5",
+      "viewBox": "0 0 780 680"
+    },
+    {
+      "path": "01_logo/svg/wordmark-mono-dark.svg",
+      "bytes": 2588,
+      "sha256": "1120e946caa17b2968a20d3aaddf2cf244eb8ddc3cbda3e028b1f5d373712d23",
+      "viewBox": "0 0 780 200"
+    },
+    {
+      "path": "01_logo/svg/stacked-mono-dark.svg",
+      "bytes": 4166,
+      "sha256": "fd0db70c5f5885f6e1e8222a3acf87209f482387aa0019910e85b652795ede05",
+      "viewBox": "0 0 780 680"
+    },
+    {
+      "path": "01_logo/png/symbol-mono-white-512.png",
+      "bytes": 13160,
+      "sha256": "23e66247a99c09b78c36a782cdaaa04a5578024494c0a883724702d6be583939",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "01_logo/png/wordmark-primary-512.png",
+      "bytes": 9238,
+      "sha256": "ce8ae7c1057de483f1e439840c83a5b94bb4480db0bdc75afb3c47b769d8d1ac",
+      "size": [
+        512,
+        131
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "01_logo/png/wordmark-mono-white-512.png",
+      "bytes": 6796,
+      "sha256": "2aad39fc6e8636bed4cc0ecc950854c777ecd06093ed70195d865b35b3c7a699",
+      "size": [
+        512,
+        131
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "01_logo/png/symbol-mono-dark-512.png",
+      "bytes": 21571,
+      "sha256": "4202e6008a9f2763f1384e358a99f07026e750835a964e5ffc9db41fb7b22203",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "01_logo/png/symbol-primary-1024.png",
+      "bytes": 47942,
+      "sha256": "92c2aa8d6c623124000abf0bd8d83175a03cd89c8989161d6da4760a368ccf1a",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "01_logo/png/symbol-primary-512.png",
+      "bytes": 22231,
+      "sha256": "7d2b674265ad59aa0814aa1b2abb073d979407780d5c1edec615c2f60d54227a",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "01_logo/png/wordmark-primary-1024.png",
+      "bytes": 19434,
+      "sha256": "67d7e61d71c3bda6a59004e48cc3d3011d4f8a793448763bba4d42d241bae4b2",
+      "size": [
+        1024,
+        263
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "01_logo/png/symbol-primary-128.png",
+      "bytes": 4931,
+      "sha256": "2ed32af447864e50cc271bad2fa47d6bccfc9fa4a299f3b59863de6aef11442e",
+      "size": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "01_logo/png/symbol-micro-512.png",
+      "bytes": 12256,
+      "sha256": "1a192f26c6ddaefc15abedfb9d18106d1601734c294fec851091dcc950d0575e",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "01_logo/png/stacked-mono-white-512.png",
+      "bytes": 15138,
+      "sha256": "749d20e5d1133c0c30c7d9ccb988d2c4599a37db002ff7e1db922cf1d27d3247",
+      "size": [
+        512,
+        446
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "01_logo/png/wordmark-mono-dark-512.png",
+      "bytes": 8562,
+      "sha256": "6ba071558217e33ef260e15d292ba244c2b974ba1a18a14aa92959169e279685",
+      "size": [
+        512,
+        131
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "01_logo/png/stacked-primary-512.png",
+      "bytes": 23085,
+      "sha256": "5e5f776b4619308f35c857597a7cb0057dad62527db389496a246388703d5131",
+      "size": [
+        512,
+        446
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "01_logo/png/horizontal-mono-white-512.png",
+      "bytes": 7914,
+      "sha256": "873261cecdc8b38020d164ae2565daa185ea5ebd0f4432984941ca3c4e5d8466",
+      "size": [
+        512,
+        162
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "01_logo/png/symbol-primary-256.png",
+      "bytes": 10525,
+      "sha256": "9a090b2f89587554b3d3ff73515ece464df6fcc35e6df2959914a05d75c1506e",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "01_logo/png/horizontal-primary-1024.png",
+      "bytes": 25700,
+      "sha256": "7e24e9f0623edba3bf7e039a6ce5754c567d7ad6edc4720cd859c65eed9fb2e4",
+      "size": [
+        1024,
+        323
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "01_logo/png/horizontal-mono-dark-512.png",
+      "bytes": 10887,
+      "sha256": "1b397b29c2111531cf5510c46f8fe7eef358b3d26ca2419c909a8c7ffa6dbc77",
+      "size": [
+        512,
+        162
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "01_logo/png/horizontal-primary-512.png",
+      "bytes": 11950,
+      "sha256": "91e2c767d99c9e1ee1e81bb98a73c81cfa7e0705cb8124e56e4bb98c9738db12",
+      "size": [
+        512,
+        162
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "01_logo/png/stacked-primary-1024.png",
+      "bytes": 48789,
+      "sha256": "5ec16db6542b51e7350cdfcdd03591a8a6285070c4f02b2f74f38c1e23dfc225",
+      "size": [
+        1024,
+        893
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "01_logo/png/stacked-mono-dark-512.png",
+      "bytes": 21236,
+      "sha256": "fe8635a9916a27509b2b6a45b77d7fe487cfd0628b94c9cb8fb8ee6d1cbd1a54",
+      "size": [
+        512,
+        446
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "01_logo/png/symbol-micro-dark-512.png",
+      "bytes": 11663,
+      "sha256": "b247ce6b4afcc9ffbe86a7ba2695073dce5bec113de1f35534614879ed8bed70",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "02_app_icons/ios/AppIcon-1024.png",
+      "bytes": 52262,
+      "sha256": "921c0e0c98f62bb7c41d8abd8575f995c885ec4e30db84d299b6e21b6a35b1da",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null
+    },
+    {
+      "path": "02_app_icons/ios/AppIcon-1024.svg",
+      "bytes": 1776,
+      "sha256": "28dc7780a4946e81dc911057e65b1f4a10a2704f39f3cbcabb6e3a156e90f7c9",
+      "viewBox": "0 0 1024 1024"
+    },
+    {
+      "path": "02_app_icons/android/adaptive-background.svg",
+      "bytes": 119,
+      "sha256": "2cb460caab4e184f0ba15e6da52cb9527c40164748a33886acd41c413730c160",
+      "viewBox": "0 0 1024 1024"
+    },
+    {
+      "path": "02_app_icons/android/adaptive-foreground.svg",
+      "bytes": 1701,
+      "sha256": "45c393ec8c2e424bee8bd9dab0c6838bb52a59f6246686f96f948183d070397e",
+      "viewBox": "0 0 1024 1024"
+    },
+    {
+      "path": "02_app_icons/pwa/icon-16.png",
+      "bytes": 663,
+      "sha256": "3ee45aafd1b64ed3640a111689f336eeac32aae5be08cb919a3fce84595aba5e",
+      "size": [
+        16,
+        16
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "02_app_icons/pwa/icon-256.png",
+      "bytes": 15097,
+      "sha256": "496e580dd081cf4f9edcee991e3c7f1b90a785f258e4f39277e7491674286b40",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "02_app_icons/pwa/icon-192.png",
+      "bytes": 10828,
+      "sha256": "a987a86eb9fdb8a98b355548fdd9f753ffdd4f893545a02587d7a67682f1cbc0",
+      "size": [
+        192,
+        192
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "02_app_icons/pwa/icon-48.png",
+      "bytes": 2285,
+      "sha256": "aa13b2f1204b08ff3ffd47ec29972320883fa564d306d39491d19e7fc55391ec",
+      "size": [
+        48,
+        48
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "02_app_icons/pwa/icon-180.png",
+      "bytes": 10162,
+      "sha256": "311d6c369e40c33e481f250b0e68d0b6b6545c671f781d1a1cdf2059a16df5d9",
+      "size": [
+        180,
+        180
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "02_app_icons/pwa/icon-64.png",
+      "bytes": 3145,
+      "sha256": "d4faae39a8559a2838dffabe5a9ff56d73b088514776ef67dab7b726b492ec8f",
+      "size": [
+        64,
+        64
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "02_app_icons/pwa/icon-maskable-512.png",
+      "bytes": 19304,
+      "sha256": "5caa305db9ad39f7f3d2375ec2c20cfbfb398fb67b7f1101e5110ee8bdf725f2",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null
+    },
+    {
+      "path": "02_app_icons/pwa/icon-128.png",
+      "bytes": 6921,
+      "sha256": "c16ffc2f395ecb04acefc848ff4ba8ab5c910be7debc6db66587baa891b00bbb",
+      "size": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "02_app_icons/pwa/icon-32.png",
+      "bytes": 1448,
+      "sha256": "15e7c85fc2395b2ce188ab27a1a32c6d9e80a2df8dcebaf8c1782a52ff19ea77",
+      "size": [
+        32,
+        32
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "02_app_icons/pwa/icon-maskable.svg",
+      "bytes": 1777,
+      "sha256": "60847a14de27c2d26e89cbcb9b610a0158f8d5b834f465d139e21493c10b3c4a",
+      "viewBox": "0 0 1024 1024"
+    },
+    {
+      "path": "02_app_icons/pwa/favicon.svg",
+      "bytes": 777,
+      "sha256": "a61acb0ebb15a7e0c77fd536cf7c2afc98d4d1effca0df8be6a11ff49b14ace6",
+      "viewBox": "0 0 512 512"
+    },
+    {
+      "path": "02_app_icons/pwa/icon-512.png",
+      "bytes": 31961,
+      "sha256": "7917e1e1c12f64cfa90f831af3831f2e59394840aa47f4d3186d72c56d37b459",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    }
+  ]
+}

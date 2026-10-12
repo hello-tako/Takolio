@@ -1,5 +1,6 @@
 import { rebindPendingOps } from '../lib/sync';
-import { LOGOUT_PENDING_KEY, isOfflineGuestSession } from '../lib/private-session';
+import { LOGOUT_PENDING_KEY, isOfflineGuestSession, onPrivateSessionReset } from '../lib/private-session';
+import { OtpRequestRetryClient, type OtpResponseMetadata } from './auth-otp-retry';
 import {
   BASE_URL,
   ApiError,
@@ -27,6 +28,28 @@ interface AuthResponseUser {
 
 export function isInventoryTransferDeferred(err: unknown): boolean {
   return err instanceof ApiError && err.status === 409 && err.code === INVENTORY_TRANSFER_DEFERRED;
+}
+
+const otpRequestRetry = new OtpRequestRetryClient();
+onPrivateSessionReset(() => otpRequestRetry.reset());
+
+async function postOtp<T>(path: string, body: Record<string, unknown>, issuance: boolean): Promise<T> {
+  const assertCurrent = guardPrivateSession();
+  const scope = getCurrentScope();
+  const receipt = await otpRequestRetry.begin(path, body, JSON.stringify([scope.userId, scope.householdId]));
+  assertCurrent();
+  try {
+    const result = await fetchJson<T>(path, {
+      method: 'POST',
+      body: JSON.stringify(body),
+      ...(receipt.key ? { headers: { 'Idempotency-Key': receipt.key } } : {}),
+    });
+    otpRequestRetry.finish(receipt, result, issuance);
+    return result;
+  } catch (error) {
+    if (error instanceof ApiError) otpRequestRetry.finish(receipt, error.payload, issuance, error.status);
+    throw error;
+  }
 }
 
 export const authApi = {
@@ -131,19 +154,15 @@ export const authApi = {
     turnstileToken?: string | null,
   ) => {
     try {
-      return await fetchJson<{
+      return await postOtp<{
         success: boolean;
         message: string;
         email: string;
         expiresInMinutes: number;
         devOtp?: string;
-      }>('/auth/register', {
-        method: 'POST',
-        body: JSON.stringify({ name, email, password, turnstileToken }),
-      });
+      } & OtpResponseMetadata>('/auth/register', { name, email, password, turnstileToken }, true);
     } catch (err: any) {
       // SEC-04: never fake a successful registration — surface the real error.
-      console.warn('Backend register failed:', err);
       throw err;
     }
   },
@@ -153,23 +172,22 @@ export const authApi = {
     code: string,
     purpose: 'register' | 'forgot_password',
     migrateFromHouseholdId?: string | null,
+    newPassword?: string,
   ) => {
     const assertCurrent = guardPrivateSession();
     try {
-      const result = await fetchJson<{
+      const result = await postOtp<{
         success: boolean;
         user?: AuthResponseUser;
         resetToken?: string;
         migratedFromHouseholdId?: string;
-      }>('/auth/verify-otp', {
-        method: 'POST',
-        body: JSON.stringify({
-          email,
-          code,
-          purpose,
-          ...(purpose === 'register' && migrateFromHouseholdId ? { migrateFromHouseholdId } : {}),
-        }),
-      });
+      } & OtpResponseMetadata>('/auth/verify-otp', {
+        email,
+        code,
+        purpose,
+        ...(purpose === 'register' && newPassword !== undefined ? { newPassword } : {}),
+        ...(purpose === 'register' && migrateFromHouseholdId ? { migrateFromHouseholdId } : {}),
+      }, false);
       assertCurrent();
 
       // Preserve offline guest mutations when the same guest household is
@@ -194,73 +212,53 @@ export const authApi = {
       return result;
     } catch (err: any) {
       // SEC-04: never fake a verified session — surface the real error.
-      console.warn('Backend verify OTP failed:', err);
       throw err;
     }
   },
 
   resendOtp: async (email: string, purpose: string) => {
     try {
-      return await fetchJson<{
+      return await postOtp<{
         success: boolean;
         message: string;
         expiresInMinutes: number;
         devOtp?: string;
-      }>(
-        '/auth/resend-otp',
-        {
-          method: 'POST',
-          body: JSON.stringify({ email, purpose }),
-        },
-      );
+      } & OtpResponseMetadata>('/auth/resend-otp', { email, purpose }, true);
     } catch (err: any) {
       // SEC-04: surface the real error instead of a fake OTP.
-      console.warn('Backend resend OTP failed:', err);
       throw err;
     }
   },
 
   login: async (email: string, password: string) => {
     try {
-      return await fetchJson<{ success: boolean; user: AuthResponseUser }>('/auth/login', {
-        method: 'POST',
-        body: JSON.stringify({ email, password }),
-      });
+      return await postOtp<{ success: boolean; user: AuthResponseUser; requireOtp?: boolean; devOtp?: string } & OtpResponseMetadata>(
+        '/auth/login', { email, password }, true,
+      );
     } catch (err: any) {
       // SEC-04: never fake a login session — surface the real error.
-      console.warn('Backend login failed:', err);
       throw err;
     }
   },
 
   forgotPassword: async (email: string) => {
     try {
-      return await fetchJson<{ success: boolean; message: string; devOtp?: string }>(
-        '/auth/forgot-password',
-        {
-          method: 'POST',
-          body: JSON.stringify({ email }),
-        },
+      return await postOtp<{ success: boolean; message: string; devOtp?: string } & OtpResponseMetadata>(
+        '/auth/forgot-password', { email }, true,
       );
     } catch (err: any) {
       // SEC-04: surface the real error instead of a fake OTP.
-      console.warn('Backend forgot-password failed:', err);
       throw err;
     }
   },
 
   resetPassword: async (email: string, code: string, newPassword: string) => {
     try {
-      return await fetchJson<{ success: boolean; message: string; user?: AuthResponseUser }>(
-        '/auth/reset-password',
-        {
-          method: 'POST',
-          body: JSON.stringify({ email, code, newPassword }),
-        },
+      return await postOtp<{ success: boolean; message: string; user?: AuthResponseUser } & OtpResponseMetadata>(
+        '/auth/reset-password', { email, code, newPassword }, false,
       );
     } catch (err: any) {
       // SEC-04: surface the real error instead of faking success.
-      console.warn('Backend reset-password failed:', err);
       throw err;
     }
   },

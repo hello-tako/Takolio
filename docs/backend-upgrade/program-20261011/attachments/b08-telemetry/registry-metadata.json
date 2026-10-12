@@ -1,0 +1,146 @@
+{
+  "classification": "READ_ONLY_REGISTRY_METADATA_NOT_INSTALL_VALIDATION",
+  "packages": [
+    {
+      "dependencies": {
+        "@cloudflare/kv-asset-handler": "0.5.0",
+        "@cloudflare/unenv-preset": "2.16.2",
+        "blake3-wasm": "2.1.5",
+        "esbuild": "0.28.2",
+        "miniflare": "5.20261006.1-alpha",
+        "path-to-regexp": "6.3.0",
+        "unenv": "2.0.0-rc.24",
+        "workerd": "1.20261006.1"
+      },
+      "engines": {
+        "node": ">=22.0.0"
+      },
+      "package": "wrangler",
+      "peerDependencies": {
+        "@cloudflare/workers-types": "^5.20261006.1"
+      },
+      "requestedVersion": "4.149.0",
+      "version": "4.149.0"
+    },
+    {
+      "dependencies": {
+        "@cspotcode/source-map-support": "0.8.1",
+        "sharp": "0.35.5",
+        "undici": "7.29.1",
+        "workerd": "1.20261006.1",
+        "ws": "8.21.0",
+        "youch": "4.1.0-beta.10"
+      },
+      "engines": {
+        "node": ">=22.0.0"
+      },
+      "package": "miniflare",
+      "peerDependencies": null,
+      "requestedVersion": "5.20261006.1-alpha",
+      "version": "5.20261006.1-alpha"
+    },
+    {
+      "dependencies": {
+        "@vitest/expect": "4.1.11",
+        "@vitest/mocker": "4.1.11",
+        "@vitest/pretty-format": "4.1.11",
+        "@vitest/runner": "4.1.11",
+        "@vitest/snapshot": "4.1.11",
+        "@vitest/spy": "4.1.11",
+        "@vitest/utils": "4.1.11",
+        "es-module-lexer": "^2.0.0",
+        "expect-type": "^1.3.0",
+        "magic-string": "^0.30.21",
+        "obug": "^2.1.1",
+        "pathe": "^2.0.3",
+        "picomatch": "^4.0.3",
+        "std-env": "^4.0.0-rc.1",
+        "tinybench": "^2.9.0",
+        "tinyexec": "^1.0.2",
+        "tinyglobby": "^0.2.15",
+        "tinyrainbow": "^3.1.0",
+        "vite": "^6.0.0 || ^7.0.0 || ^8.0.0",
+        "why-is-node-running": "^2.3.0"
+      },
+      "engines": {
+        "node": "^20.0.0 || ^22.0.0 || >=24.0.0"
+      },
+      "package": "vitest",
+      "peerDependencies": {
+        "@edge-runtime/vm": "*",
+        "@opentelemetry/api": "^1.9.0",
+        "@types/node": "^20.0.0 || ^22.0.0 || >=24.0.0",
+        "@vitest/browser-playwright": "4.1.11",
+        "@vitest/browser-preview": "4.1.11",
+        "@vitest/browser-webdriverio": "4.1.11",
+        "@vitest/coverage-istanbul": "4.1.11",
+        "@vitest/coverage-v8": "4.1.11",
+        "@vitest/ui": "4.1.11",
+        "happy-dom": "*",
+        "jsdom": "*",
+        "vite": "^6.0.0 || ^7.0.0 || ^8.0.0"
+      },
+      "requestedVersion": "4.1.11",
+      "version": "4.1.11"
+    },
+    {
+      "dependencies": {
+        "esbuild": "^0.25.0",
+        "fdir": "^6.4.4",
+        "picomatch": "^4.0.2",
+        "postcss": "^8.5.3",
+        "rollup": "^4.34.9",
+        "tinyglobby": "^0.2.13"
+      },
+      "engines": {
+        "node": "^18.0.0 || ^20.0.0 || >=22.0.0"
+      },
+      "package": "vite",
+      "peerDependencies": {
+        "@types/node": "^18.0.0 || ^20.0.0 || >=22.0.0",
+        "jiti": ">=1.21.0",
+        "less": "*",
+        "lightningcss": "^1.21.0",
+        "sass": "*",
+        "sass-embedded": "*",
+        "stylus": "*",
+        "sugarss": "*",
+        "terser": "^5.16.0",
+        "tsx": "^4.8.1",
+        "yaml": "^2.4.2"
+      },
+      "requestedVersion": "6.4.3",
+      "version": "6.4.3"
+    },
+    {
+      "dependencies": {
+        "react-router": "7.18.0"
+      },
+      "engines": {
+        "node": ">=20.0.0"
+      },
+      "package": "react-router-dom",
+      "peerDependencies": {
+        "react": ">=18",
+        "react-dom": ">=18"
+      },
+      "requestedVersion": "7.18.0",
+      "version": "7.18.0"
+    },
+    {
+      "dependencies": {
+        "@img/colour": "^1.1.0",
+        "detect-libc": "^2.1.2",
+        "semver": "^7.8.5"
+      },
+      "engines": {
+        "node": ">=20.9.0"
+      },
+      "package": "sharp",
+      "peerDependencies": null,
+      "requestedVersion": "0.35.5",
+      "version": "0.35.5"
+    }
+  ],
+  "queriedAtUtc": "2026-10-11T11:34:01.751415+00:00"
+}

@@ -90,7 +90,7 @@
 }
 [data-kitchen-navigation='persistent'] .kitchen-nav-items a[aria-current='page'] {
   background: rgb(var(--semantic-success-soft-rgb));
-  color: var(--kitchen-pine);
+  color: var(--semantic-text-on-soft);
 }
 [data-kitchen-navigation='persistent'] a[aria-current='page'] .kitchen-nav-label {
   font-weight: 700;
@@ -122,7 +122,7 @@
 [data-kitchen-navigation='persistent'] .kitchen-nav-items a:hover,
 [data-kitchen-navigation='persistent'] .kitchen-sidebar-brand:hover {
   background: rgb(var(--semantic-success-soft-rgb));
-  color: var(--kitchen-pine);
+  color: var(--semantic-text-on-soft);
 }
 [data-kitchen-navigation='persistent']
   :is(.kitchen-nav-items a, .kitchen-scan-link, .kitchen-icon-link) {
@@ -147,7 +147,7 @@
     display: block;
     font-size: 14px;
     line-height: 1.5;
-    color: var(--kitchen-pine);
+    color: var(--semantic-text-on-soft);
   }
   [data-kitchen-navigation='persistent'] .kitchen-sidebar {
     position: fixed;
@@ -205,7 +205,7 @@
   }
   [data-kitchen-navigation='persistent'] .kitchen-sidebar-logo {
     display: block;
-    width: 150px;
+    width: 168px;
     height: auto;
   }
   [data-kitchen-navigation='persistent'] .kitchen-nav-items a {

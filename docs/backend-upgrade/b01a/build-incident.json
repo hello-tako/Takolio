@@ -1,0 +1,20 @@
+{
+  "name": "concurrent-build-sw-token-failure",
+  "buildReceipt": ".artifacts/backend-b01a/build.json",
+  "buildStartUtc": "2026-10-11T05:07:52.119211+00:00",
+  "buildFailureEndUtc": "2026-10-11T05:07:57.136+00:00",
+  "observedBuiltSwMtimeUtc": "2026-10-11T05:07:56.549623+00:00",
+  "publicSwSha256": "b7613458f313de8da654284fdc923f5c93344f2f3856787ae8b8c52e2c298fd4",
+  "builtSwSha256": "1be5852af3a802eed77df42c54d1b36c32211e0a3aba9d753321b04cae388fc7",
+  "builtEqualsPublicWithLocalToken": true,
+  "sourceEvidence": [
+    "vite.config.ts:14-24 closeBundle has no build-only apply restriction",
+    "scripts/d1-migration-check.mjs:526 creates actual Vite SSR server",
+    "scripts/t21r-v1-authority.mjs:21 creates actual Vite SSR server",
+    "full tests close SSR servers; development close invokes closeBundle",
+    "Vite dev close absorbs hook errors through Promise.allSettled"
+  ],
+  "interpretation": "source-confirmed shared artifact race path; timing is consistent; exact writer PID unproven",
+  "sourceChanged": false,
+  "recovery": "sequential build after full suite; keep first failure"
+}

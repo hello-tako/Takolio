@@ -2,108 +2,14 @@ import { Hono } from 'hono';
 import { Env, AuthContext } from '../types';
 import { SQL } from '@frigo/db';
 import { hashPassword, generateSalt, verifyPassword } from '../utils/password';
-import { signJwt } from '../utils/jwt';
 import { generateSessionToken, sha256Hex, SESSION_COOKIE } from '../utils/session';
-import { createOtpDigest, verifyOtpDigest, OTP_DIGEST_VERSION } from '../utils/otp-digest';
 import { SCAN_QUOTA_POLICY } from '../config/scan-quota-policy';
 import { verifyGoogleToken } from '../utils/oauth';
 import { verifyTurnstileToken } from '../utils/turnstile';
-import { getJwtSecret } from '../middleware/auth';
 import { hasTrustedOrigin } from '../middleware/csrf';
-import { sendEmail, buildOtpEmail } from '../services/email';
-import { shouldConsumeOtpOnVerify } from '../utils/otp';
+import { issueStrictOtp, verifyStrictOtp } from '../services/auth-otp-http';
 import { getScanQuota } from '../services/scan-quota';
 
-const OTP_TTL_MINUTES = 10;
-
-// Persist digests before delivery; reset email latency stays outside the response path.
-async function issueAndSendOtp(
-  db: any,
-  env: Env,
-  email: string,
-  purpose: 'register' | 'forgot_password' | 'login',
-  issue = true,
-  scheduleDelivery?: (task: Promise<void>) => void,
-): Promise<{ code: string; emailSent: boolean; provider: string; deliveryError?: string }> {
-  const otpCode = generateOtp();
-  const otpId = `otp_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`;
-  const expiresAt = new Date(Date.now() + OTP_TTL_MINUTES * 60 * 1000).toISOString();
-
-  const otpSecret = env.OTP_HASH_SECRET;
-  if (!otpSecret) throw new Error('OTP_HASH_SECRET is not configured');
-  const digest = await createOtpDigest(email, purpose, otpCode, otpSecret);
-  // Unknown reset accounts do equivalent random/HMAC work, without storing or mailing a challenge.
-  if (!issue) return { code: otpCode, emailSent: false, provider: 'none' };
-  const insert = db
-    .prepare('INSERT INTO auth_otps (id, email, code_digest, digest_version, purpose, expires_at, used, attempt_count) VALUES (?, ?, ?, ?, ?, ?, 0, 0)')
-    .bind(otpId, email, digest, OTP_DIGEST_VERSION, purpose, expiresAt);
-  if (purpose === 'forgot_password') {
-    const results = await db.batch([
-      db.prepare("UPDATE auth_otps SET used = 1, used_at = datetime('now') WHERE email = ? AND purpose = ? AND used = 0")
-        .bind(email, purpose),
-      insert,
-    ]);
-    if (results.some((result: { success: boolean }) => !result.success)) throw new Error('OTP_PERSIST_FAILED');
-  } else {
-    await insert.run();
-  }
-
-  const { subject, html, text } = buildOtpEmail(otpCode, purpose);
-  const deliver = async () => {
-    const result = await sendEmail(env, { to: email, subject, html, text, purpose }).catch(() => ({
-      sent: false as const,
-      provider: 'none' as const,
-      error: 'provider_unavailable' as const,
-    }));
-    if (!result.sent) {
-      if (env.ENVIRONMENT === 'production') {
-        await db.prepare("UPDATE auth_otps SET used = 1, used_at = datetime('now') WHERE id = ? AND used = 0")
-          .bind(otpId)
-          .run()
-          .catch(() => console.error(JSON.stringify({ event: 'otp_invalidation_failed' })));
-      }
-      console.error(JSON.stringify({
-        event: 'otp_delivery_failed',
-        provider: result.provider,
-        category: result.error,
-        purpose,
-        environment: env.ENVIRONMENT || 'development',
-      }));
-    }
-    return result;
-  };
-  if (scheduleDelivery) {
-    scheduleDelivery(deliver().then(() => {}).catch(() => {
-      console.error(JSON.stringify({
-        event: 'otp_delivery_failed',
-        category: 'provider_unavailable',
-        purpose,
-        environment: env.ENVIRONMENT || 'development',
-      }));
-    }));
-    return { code: otpCode, emailSent: false, provider: 'scheduled' };
-  }
-  const result = await deliver();
-  return { code: otpCode, emailSent: result.sent, provider: result.provider, deliveryError: result.error };
-}
-
-async function requestPasswordReset(db: Env['DB'], env: Env, email: string, scheduleDelivery: (task: Promise<void>) => void) {
-  const account = await db!.prepare('SELECT user_id FROM auth_accounts WHERE email = ?').bind(email).first();
-  let devOtp: string | undefined;
-  try {
-    const result = await issueAndSendOtp(db, env, email, 'forgot_password', Boolean(account), scheduleDelivery);
-    devOtp = result.code;
-  } catch {
-    // Delivery/storage failures must not become a membership oracle.
-    console.error(JSON.stringify({ event: 'password_reset_issue_failed' }));
-  }
-  return {
-    success: true,
-    message: 'Nếu email này có tài khoản Frigo, hướng dẫn đặt lại mật khẩu sẽ được gửi đến email của bạn.',
-    expiresInMinutes: OTP_TTL_MINUTES,
-    ...(env.ENVIRONMENT === 'development' ? { devOtp } : {}),
-  };
-}
 import { rateLimiter } from '../middleware/rate-limit';
 import {
   RegisterSchema,
@@ -127,57 +33,21 @@ for (const path of ['login', 'register', 'verify-otp', 'resend-otp', 'forgot-pas
   });
 }
 
+// First-cutover recovery retains strict accounting and denies OTP work before side effects.
+for (const path of ['register', 'verify-otp', 'resend-otp', 'forgot-password', 'reset-password']) {
+  authRoutes.use(`/auth/${path}`, async (c, next) => {
+    if (c.req.method === 'POST' && c.env.STRICT_OTP_FAIL_CLOSED === 'true') {
+      return c.json({ error: 'Xác minh mã tạm thời không khả dụng. Vui lòng thử lại sau.', code: 'AUTH_OTP_MAINTENANCE' }, 503);
+    }
+    return next();
+  });
+}
+
 // Apply rate limiting to all auth endpoints (max 15 requests per minute)
 authRoutes.use('/auth/*', rateLimiter({ maxRequests: 15, windowSeconds: 60, prefix: 'rl_auth' }));
 
-function generateOtp(): string {
-  const array = new Uint32Array(1);
-  crypto.getRandomValues(array);
-  return String(100000 + (array[0] % 900000));
-}
-
 function setSessionCookie(c: any, token: string): void {
   c.header('Set-Cookie', `${SESSION_COOKIE}=${encodeURIComponent(token)}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${7 * 86400}`);
-}
-
-const OTP_MAX_FAILURES = 5;
-const OTP_LOCK_SECONDS = 15 * 60;
-const OTP_RESEND_COOLDOWN_SECONDS = 60;
-
-async function getLatestOtp(
-  db: any,
-  email: string,
-  purpose: string
-): Promise<any | null> {
-  return db.prepare(
-    `SELECT id, expires_at, used, used_at, code_digest, digest_version, attempt_count, locked_until
-       FROM auth_otps
-      WHERE email = ? AND purpose = ? AND used = 0
-      ORDER BY created_at DESC LIMIT 1`
-  ).bind(email, purpose).first();
-}
-
-async function markOtpFailure(db: any, otp: any): Promise<number> {
-  const result: any = await db.prepare(
-    `UPDATE auth_otps
-        SET attempt_count = attempt_count + 1,
-            locked_until = CASE WHEN attempt_count + 1 >= ? THEN datetime('now', '+15 minutes') ELSE locked_until END
-      WHERE id = ? AND used = 0 AND attempt_count < 5
-        AND (locked_until IS NULL OR datetime(locked_until) <= datetime('now'))`
-  ).bind(OTP_MAX_FAILURES, otp.id).run();
-  if (result?.meta?.changes !== 1) return OTP_MAX_FAILURES;
-  const row: any = await db.prepare('SELECT attempt_count FROM auth_otps WHERE id = ?').bind(otp.id).first();
-  return Number(row?.attempt_count || 0);
-}
-
-async function consumeOtp(db: Env['DB'], id: string): Promise<boolean> {
-  const result = await db.prepare(
-    `UPDATE auth_otps SET used = 1, used_at = datetime('now')
-      WHERE id = ? AND used = 0 AND datetime(expires_at) > datetime('now')
-        AND attempt_count < ?
-        AND (locked_until IS NULL OR datetime(locked_until) <= datetime('now'))`
-  ).bind(id, OTP_MAX_FAILURES).run();
-  return result.meta?.changes === 1;
 }
 
 // Persist only the hash of the opaque cookie credential.
@@ -298,107 +168,10 @@ authRoutes.post('/auth/register', async (c) => {
   }
 
   try {
-    // Check if account already exists and is verified
-    const existing: any = await db
-      .prepare('SELECT id, user_id, is_verified FROM auth_accounts WHERE email = ?')
-      .bind(normalizedEmail)
-      .first();
-
-    if (existing && existing.is_verified === 1) {
-      return c.json({ error: 'Email này đã được đăng ký. Vui lòng đăng nhập.' }, 409);
-    }
-
-    // `auth_accounts.id` is not required to equal `user_id` in the schema;
-    // preserve the existing principal when retrying an unverified signup.
-    const userId = existing?.user_id || existing?.id || `usr_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
-    const salt = generateSalt();
-    const hash = await hashPassword(password, salt); // PBKDF2 100k rounds
-
-    // Create or update core user and profile atomically
-    await db.batch([
-      // Do not use INSERT OR REPLACE here: replacing a parent user row can
-      // cascade-delete sessions, inventory, and household data.
-      db.prepare(
-        `INSERT INTO users (id, email, is_guest) VALUES (?, ?, 0)
-         ON CONFLICT(id) DO UPDATE SET email = excluded.email, is_guest = 0, updated_at = datetime('now')`
-      ).bind(userId, normalizedEmail),
-      db.prepare(
-        `INSERT INTO profiles (id, user_id, display_name) VALUES (?, ?, ?)
-         ON CONFLICT(id) DO UPDATE SET display_name = excluded.display_name, updated_at = datetime('now')`
-      ).bind(
-        `prof_${userId}`,
-        userId,
-        name.trim()
-      ),
-      db.prepare(
-        `INSERT INTO households (id, name, created_by) VALUES (?, ?, ?)
-         ON CONFLICT(id) DO UPDATE SET name = excluded.name, updated_at = datetime('now')`
-      ).bind(
-        `hh_${userId}`,
-        `Tủ lạnh của ${name.trim()}`,
-        userId
-      ),
-      db.prepare(
-        `INSERT INTO household_members (id, household_id, user_id, role) VALUES (?, ?, ?, ?)
-         ON CONFLICT(household_id, user_id) DO UPDATE SET role = excluded.role`
-      ).bind(`hm_${userId}`, `hh_${userId}`, userId, 'owner'),
-      db.prepare(
-        `INSERT INTO auth_accounts (id, user_id, email, password_hash, salt, is_verified)
-         VALUES (?, ?, ?, ?, ?, 0)
-         ON CONFLICT(email) DO UPDATE SET
-           user_id = excluded.user_id,
-           password_hash = excluded.password_hash,
-           salt = excluded.salt,
-           is_verified = 0,
-           updated_at = datetime('now')`
-      ).bind(userId, userId, normalizedEmail, hash, salt),
-      db.prepare(
-        `INSERT OR IGNORE INTO user_preferences
-          (id, user_id, household_size, spicy_level, favorite_cuisines, dietary_restrictions)
-         VALUES (?, ?, 2, 'medium', '["vietnamese"]', '[]')`
-      ).bind(`pref_${userId}`, userId),
-      db.prepare(
-        `INSERT OR IGNORE INTO subscriptions
-          (id, user_id, plan, status, scan_count_current_month, max_scans_per_month)
-         VALUES (?, ?, 'free', 'active', 0, ?)`
-      ).bind(`sub_${userId}`, userId, SCAN_QUOTA_POLICY.free),
-      db.prepare(
-        'INSERT OR IGNORE INTO shopping_lists (id, household_id, name) VALUES (?, ?, ?)'
-      ).bind(`list_hh_${userId}`, `hh_${userId}`, 'Danh sách mua sắm'),
-    ]);
-
-    // Generate 6-digit OTP code and deliver via email.
-    const { code: otpCode, emailSent } = await issueAndSendOtp(db, c.env, normalizedEmail, 'register');
-
-    const isProduction = c.env.ENVIRONMENT === 'production';
-    const otpAvailable = emailSent || !isProduction;
-    const responseData: any = {
-      success: otpAvailable,
-      message: emailSent
-        ? 'Mã xác thực OTP đã được gửi đến email của bạn.'
-        : isProduction
-          ? 'Tài khoản đã được lưu nhưng email OTP chưa gửi được. Hãy bấm gửi lại mã.'
-          : 'Email chưa được cấu hình; dùng mã OTP thử nghiệm bên dưới.',
-      email: normalizedEmail,
-      expiresInMinutes: OTP_TTL_MINUTES,
-    };
-
-    // SEC-02 FIX: NEVER leak devOtp in production responses
-    if (!isProduction) {
-      responseData.devOtp = otpCode;
-    }
-
-    if (!otpAvailable) {
-      return c.json({
-        ...responseData,
-        code: 'OTP_DELIVERY_UNAVAILABLE',
-        accountCreated: true,
-      }, 503);
-    }
-    return c.json(responseData);
+    return await issueStrictOtp(c, normalizedEmail, 'register', { source: 'register', registration: { name: name.trim(), password } });
   } catch {
     console.error(JSON.stringify({ event: 'registration_failed' }));
-    return c.json({ error: 'Không thể tạo tài khoản' }, 500);
+    return c.json({ error: 'Không thể tạo tài khoản', code: 'OTP_PROTECTION_UNAVAILABLE' }, 503);
   }
 });
 
@@ -427,113 +200,11 @@ authRoutes.post('/auth/verify-otp', async (c) => {
   }
 
   try {
-    const otpRow: any = await getLatestOtp(db, normalizedEmail, purpose);
-    if (!otpRow) return c.json({ error: 'Mã OTP không chính xác hoặc đã được sử dụng' }, 400);
-    if (otpRow.attempt_count >= OTP_MAX_FAILURES || (otpRow.locked_until && new Date(otpRow.locked_until).getTime() > Date.now())) {
-      c.header('Retry-After', String(OTP_LOCK_SECONDS));
-      return c.json(
-        { error: 'Bạn đã nhập sai quá 5 lần. Vui lòng đợi 15 phút rồi thử lại.' },
-        429
-      );
-    }
-
-    const secret = c.env.OTP_HASH_SECRET;
-    if (!secret) return c.json({ error: 'Dịch vụ OTP chưa được cấu hình', code: 'OTP_PROTECTION_UNAVAILABLE' }, 503);
-    const valid = Boolean(secret && otpRow.code_digest && (await verifyOtpDigest(normalizedEmail, purpose, cleanCode, otpRow.code_digest, otpRow.digest_version, secret)));
-    if (!valid) {
-      const attempts = await markOtpFailure(db, otpRow);
-      if (attempts >= OTP_MAX_FAILURES) {
-        c.header('Retry-After', String(OTP_LOCK_SECONDS));
-        return c.json(
-          { error: 'Bạn đã nhập sai quá 5 lần. Vui lòng đợi 15 phút rồi thử lại.' },
-          429
-        );
-      }
-      return c.json({ error: 'Mã OTP không chính xác hoặc đã được sử dụng' }, 400);
-    }
-
-    if (new Date(otpRow.expires_at).getTime() < Date.now()) {
-      await markOtpFailure(db, otpRow);
-      return c.json({ error: 'Mã OTP đã hết hạn. Vui lòng bấm gửi lại mã mới.' }, 400);
-    }
-
-    // Defer every transfer until ownership, lots, events and receipts can move atomically.
-    if (purpose === 'register' && parseResult.data.migrateFromHouseholdId) {
-      return c.json({
-        error: 'Chưa hỗ trợ chuyển dữ liệu từ hộ khách một cách an toàn. Hàng tồn kho vẫn được giữ nguyên trong hộ khách; tài khoản chưa được kích hoạt và mã OTP chưa được sử dụng. Chỉ gửi lại yêu cầu không kèm migrateFromHouseholdId nếu bạn chọn giữ dữ liệu hộ khách và tài khoản mới riêng biệt.',
-        code: 'INVENTORY_TRANSFER_DEFERRED',
-      }, 409);
-    }
-
-    // Reset verification is preliminary; only the final reset consumes it.
-    if (shouldConsumeOtpOnVerify(purpose) && !await consumeOtp(db, otpRow.id)) {
-      return c.json({ error: 'Mã OTP không chính xác hoặc đã được sử dụng' }, 400);
-    }
-
-    if (purpose === 'register') {
-      // Activate account
-      await db.prepare('UPDATE auth_accounts SET is_verified = 1 WHERE email = ?').bind(normalizedEmail).run();
-
-      const userRow: any = await db
-        .prepare(
-          'SELECT u.id, u.email, p.display_name, p.avatar_url, p.onboarding_completed_at FROM users u LEFT JOIN profiles p ON p.user_id = u.id WHERE u.email = ?'
-        )
-        .bind(normalizedEmail)
-        .first();
-
-      const userId = userRow?.id;
-      const householdId = `hh_${userId}`;
-
-      // The reusable credential is returned only via the HttpOnly cookie.
-      const token = await createSessionAndToken(db, c.env, {
-        id: userId,
-        email: normalizedEmail,
-        householdId,
-        role: 'owner',
-      });
-      setSessionCookie(c, token);
-
-      return c.json({
-        success: true,
-        message: 'Xác thực tài khoản thành công!',
-        user: {
-          id: userId,
-          email: userRow?.email,
-          displayName: userRow?.display_name || 'Người dùng Frigo',
-          avatarUrl: userRow?.avatar_url || '/icons/favicon.svg',
-          householdId,
-          isGuest: false,
-          onboardingCompleted: Boolean(userRow?.onboarding_completed_at),
-        },
-      });
-    }
-
-    if (purpose === 'forgot_password') {
-      // Generate one-time reset token signed with HMAC
-      const jwtSecret = getJwtSecret(c.env);
-      const resetToken = await signJwt(
-        {
-          sub: normalizedEmail,
-          hid: 'reset_flow',
-          typ: 'reset',
-          purpose: 'password_reset',
-          exp: Math.floor(Date.now() / 1000) + 900, // 15 minutes
-        },
-        jwtSecret
-      );
-
-      return c.json({
-        success: true,
-        message: 'Mã OTP hợp lệ. Hãy nhập mật khẩu mới của bạn.',
-        resetToken,
-        email: normalizedEmail,
-      });
-    }
-
-    return c.json({ success: true });
+    return await verifyStrictOtp(c, { email: normalizedEmail, code: cleanCode, purpose, newPassword: purpose === 'register' ? parseResult.data.newPassword : undefined,
+      migrateFromHouseholdId: parseResult.data.migrateFromHouseholdId });
   } catch {
     console.error(JSON.stringify({ event: 'otp_verification_failed' }));
-    return c.json({ error: 'Lỗi kiểm tra OTP' }, 500);
+    return c.json({ error: 'Dịch vụ OTP tạm thời không khả dụng.', code: 'OTP_PROTECTION_UNAVAILABLE' }, 503);
   }
 });
 
@@ -551,84 +222,16 @@ authRoutes.post('/auth/resend-otp', async (c) => {
   const normalizedEmail = parsed.data.email.trim().toLowerCase();
   const purpose = parsed.data.purpose;
   const db = c.env.DB;
-  const cooldownKey = `otp_resend_${normalizedEmail}_${purpose}`;
 
   if (!db) {
     return c.json({ error: 'Database service unavailable', code: 'DATABASE_UNAVAILABLE' }, 503);
   }
 
   try {
-    if (c.env.CACHE) {
-      try {
-        if (await c.env.CACHE.get(cooldownKey)) {
-          c.header('Retry-After', String(OTP_RESEND_COOLDOWN_SECONDS));
-          return c.json(
-            {
-              error: 'Vui lòng đợi 60 giây trước khi gửi lại mã OTP.',
-              retryAfterSeconds: OTP_RESEND_COOLDOWN_SECONDS,
-            },
-            429
-          );
-        }
-        // Set before email delivery to prevent rapid sequential requests.
-        await c.env.CACHE.put(cooldownKey, '1', {
-          expirationTtl: OTP_RESEND_COOLDOWN_SECONDS,
-        });
-      } catch {
-        // The route-level auth limiter still applies. A transient KV outage
-        // must not make a legitimate OTP recovery path unavailable.
-        console.error(JSON.stringify({ event: 'otp_resend_cooldown_unavailable' }));
-      }
-    }
-
-    if (purpose === 'forgot_password') {
-      return c.json(await requestPasswordReset(db, c.env, normalizedEmail, (task) => c.executionCtx.waitUntil(task)));
-    }
-
-    const account: any = await db
-      .prepare('SELECT is_verified FROM auth_accounts WHERE email = ?')
-      .bind(normalizedEmail)
-      .first();
-    if (!account || account.is_verified === 1) {
-      return c.json({
-        success: true,
-        message: 'Nếu tài khoản đang chờ xác thực, mã OTP mới sẽ được gửi.',
-        expiresInMinutes: OTP_TTL_MINUTES,
-      });
-    }
-
-    // Only the newest code remains valid for this flow.
-    await db
-      .prepare('UPDATE auth_otps SET used = 1 WHERE email = ? AND purpose = ? AND used = 0')
-      .bind(normalizedEmail, purpose)
-      .run();
-
-    const { code: otpCode, emailSent } = await issueAndSendOtp(
-      db,
-      c.env,
-      normalizedEmail,
-      purpose
-    );
-
-    const isProduction = c.env.ENVIRONMENT === 'production';
-    const otpAvailable = emailSent || !isProduction;
-    const responseData: any = {
-      success: otpAvailable,
-      message: emailSent ? 'Đã gửi lại mã OTP mới.' : isProduction
-        ? 'Email OTP chưa gửi được. Vui lòng thử lại sau.'
-        : 'Email chưa được cấu hình; dùng mã OTP thử nghiệm bên dưới.',
-    };
-
-    if (!isProduction) responseData.devOtp = otpCode;
-    if (!otpAvailable) {
-      if (c.env.CACHE) await c.env.CACHE.delete(cooldownKey).catch(() => {});
-      return c.json({ ...responseData, code: 'OTP_DELIVERY_UNAVAILABLE' }, 503);
-    }
-    return c.json({ ...responseData, expiresInMinutes: OTP_TTL_MINUTES });
+    return await issueStrictOtp(c, normalizedEmail, purpose, { source: 'resend' });
   } catch {
-    if (c.env.CACHE) await c.env.CACHE.delete(cooldownKey).catch(() => {});
     console.error(JSON.stringify({ event: 'otp_resend_failed' }));
-    return c.json({ error: 'Không thể gửi lại OTP lúc này. Vui lòng thử lại.', code: 'OTP_RESEND_UNAVAILABLE' }, 503);
+    return c.json({ error: 'Không thể gửi lại OTP lúc này.', code: 'OTP_PROTECTION_UNAVAILABLE' }, 503);
   }
 });
 
@@ -697,25 +300,12 @@ authRoutes.post('/auth/login', async (c) => {
 
     // Check email verification status
     if (account.is_verified === 0) {
-      const { code: otpCode, emailSent } = await issueAndSendOtp(db, c.env, normalizedEmail, 'register');
-
-      const isProduction = c.env.ENVIRONMENT === 'production';
-      const otpAvailable = emailSent || !isProduction;
-      const responseData: any = {
-        error: emailSent
-          ? 'Tài khoản chưa hoàn tất xác thực OTP. Vui lòng xác thực mã gửi đến email.'
-          : 'Tài khoản chưa hoàn tất xác thực OTP. Không thể gửi email lúc này — vui lòng thử gửi lại mã.',
-        requireOtp: true,
-        email: normalizedEmail,
-        code: otpAvailable ? 'OTP_REQUIRED' : 'OTP_DELIVERY_UNAVAILABLE',
-        otpDelivered: emailSent,
-      };
-
-      if (!isProduction) {
-        responseData.devOtp = otpCode;
-      }
-
-      return c.json(responseData, 403);
+      const issued = await issueStrictOtp(c, normalizedEmail, 'register', { source: 'login', password });
+      const body = await issued.json() as Record<string, unknown>;
+      return c.json({ ...body, requireOtp: true, email: normalizedEmail,
+        error: 'Tài khoản chưa hoàn tất xác thực OTP.',
+        code: issued.status === 200 ? 'OTP_REQUIRED' : body.code,
+      }, issued.status === 200 ? 403 : issued.status as 202 | 400 | 409 | 410 | 429 | 503);
     }
 
     const householdId = `hh_${account.user_id}`;
@@ -765,7 +355,7 @@ authRoutes.post('/auth/forgot-password', async (c) => {
   }
 
   try {
-    return c.json(await requestPasswordReset(db, c.env, normalizedEmail, (task) => c.executionCtx.waitUntil(task)));
+    return await issueStrictOtp(c, normalizedEmail, 'forgot_password', { source: 'forgot' });
   } catch {
     return c.json({ error: 'Không thể tạo yêu cầu quên mật khẩu', code: 'RESET_REQUEST_UNAVAILABLE' }, 503);
   }
@@ -796,90 +386,10 @@ authRoutes.post('/auth/reset-password', async (c) => {
   }
 
   try {
-    const otpPurpose = 'forgot_password';
-    const otpRow: any = await getLatestOtp(db, normalizedEmail, otpPurpose);
-    if (!otpRow) return c.json({ error: 'Mã OTP không chính xác hoặc đã được sử dụng' }, 400);
-    if (otpRow.attempt_count >= OTP_MAX_FAILURES || (otpRow.locked_until && new Date(otpRow.locked_until).getTime() > Date.now())) {
-      c.header('Retry-After', String(OTP_LOCK_SECONDS));
-      return c.json(
-        { error: 'Bạn đã nhập sai quá 5 lần. Vui lòng đợi 15 phút rồi thử lại.' },
-        429
-      );
-    }
-
-    const secret = c.env.OTP_HASH_SECRET;
-    if (!secret) return c.json({ error: 'Dịch vụ OTP chưa được cấu hình', code: 'OTP_PROTECTION_UNAVAILABLE' }, 503);
-    const valid = Boolean(secret && otpRow.code_digest && (await verifyOtpDigest(normalizedEmail, 'forgot_password', cleanCode, otpRow.code_digest, otpRow.digest_version, secret)));
-    if (!valid) {
-      const attempts = await markOtpFailure(db, otpRow);
-      if (attempts >= OTP_MAX_FAILURES) {
-        c.header('Retry-After', String(OTP_LOCK_SECONDS));
-        return c.json(
-          { error: 'Bạn đã nhập sai quá 5 lần. Vui lòng đợi 15 phút rồi thử lại.' },
-          429
-        );
-      }
-      return c.json({ error: 'Mã OTP không chính xác hoặc đã được sử dụng' }, 400);
-    }
-
-    if (new Date(otpRow.expires_at).getTime() < Date.now()) {
-      await markOtpFailure(db, otpRow);
-      return c.json({ error: 'Mã OTP đã hết hạn. Vui lòng thử lại.' }, 400);
-    }
-
-    // Consume atomically so concurrent reset requests cannot both succeed.
-    if (!await consumeOtp(db, otpRow.id)) {
-      return c.json({ error: 'Mã OTP không chính xác hoặc đã được sử dụng' }, 400);
-    }
-
-    // Update password with PBKDF2 100k rounds
-    const salt = generateSalt();
-    const hash = await hashPassword(newPassword, salt);
-
-    await db.batch([
-      db.prepare("UPDATE auth_accounts SET password_hash = ?, salt = ?, updated_at = datetime('now') WHERE email = ?")
-        .bind(hash, salt, normalizedEmail),
-      db.prepare(`UPDATE sessions_v2 SET revoked_at = datetime('now')
-        WHERE user_id = (SELECT user_id FROM auth_accounts WHERE email = ?) AND revoked_at IS NULL`)
-        .bind(normalizedEmail),
-    ]);
-
-    // UX: auto-login after successful reset — issue a fresh session so the user
-    // lands straight in the app instead of re-typing the new password.
-    const account = await db
-      .prepare(`SELECT a.user_id, p.display_name, p.avatar_url, p.onboarding_completed_at
-        FROM auth_accounts a LEFT JOIN profiles p ON p.user_id = a.user_id WHERE a.email = ?`)
-      .bind(normalizedEmail)
-      .first<{ user_id: string; display_name?: string; avatar_url?: string; onboarding_completed_at?: string }>();
-
-    if (account) {
-      const token = await createSessionAndToken(db, c.env, {
-        id: account.user_id,
-        email: normalizedEmail,
-        householdId: `hh_${account.user_id}`,
-      });
-      setSessionCookie(c, token);
-      return c.json({
-        success: true,
-        user: {
-          id: account.user_id,
-          email: normalizedEmail,
-          displayName: account.display_name || normalizedEmail.split('@')[0],
-          avatarUrl: account.avatar_url || '/icons/favicon.svg',
-          householdId: `hh_${account.user_id}`,
-          onboardingCompleted: Boolean(account.onboarding_completed_at),
-        },
-        message: 'Đặt lại mật khẩu thành công!',
-      });
-    }
-
-    return c.json({
-      success: true,
-      message: 'Đặt lại mật khẩu thành công! Bạn có thể đăng nhập ngay.',
-    });
+    return await verifyStrictOtp(c, { email: normalizedEmail, code: cleanCode, purpose: 'forgot_password', newPassword });
   } catch {
     console.error(JSON.stringify({ event: 'password_reset_failed' }));
-    return c.json({ error: 'Lỗi đặt lại mật khẩu' }, 500);
+    return c.json({ error: 'Dịch vụ OTP tạm thời không khả dụng.', code: 'OTP_PROTECTION_UNAVAILABLE' }, 503);
   }
 });
 

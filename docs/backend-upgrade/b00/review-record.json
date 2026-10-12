@@ -1,0 +1,46 @@
+{
+  "sourceSha": "652e0d7632745e9b77cda4b5b3caac83a3ec1015",
+  "scope": "Documentation and source consistency only; no independent local/staging/runtime execution",
+  "reviewers": [
+    "b00_security_map",
+    "b00_data_ai_map"
+  ],
+  "resolvedFindings": [
+    {
+      "area": "OTP login-purpose",
+      "finding": "Packet proposed new session beyond current consume/success behavior",
+      "resolution": "Preserve login-purpose behavior; only registration/reset-final create session according to route contract"
+    },
+    {
+      "area": "Email unknown delivery",
+      "finding": "Native exception currently falls through fallback while B01b owns adapter",
+      "resolution": "B01b A1 adapter policy before B01a wiring; E2E later; explicit owner avoids cycle"
+    },
+    {
+      "area": "Legacy challenge cutover",
+      "finding": "Current source lacks acceptance receipts, so legacy adoption proof impossible",
+      "resolution": "Draft documented OTP_REISSUE_REQUIRED cutover, supersede unprovable challenge, preserve imported accounting/locks and explicit client/release gate"
+    },
+    {
+      "area": "Auth dependencies",
+      "finding": "shopping_lists and Google verification network missing",
+      "resolution": "Added Markdown and all11auth route JSON rows"
+    },
+    {
+      "area": "Scan idempotency",
+      "finding": "Task/contract version missing from fingerprint/receipt scope",
+      "resolution": "Persist task/schema version before enqueue; differentversion/task same key ->409 target"
+    },
+    {
+      "area": "Ingredient wording",
+      "finding": "V2->V1 candidate projection could be confused with current runtime V1",
+      "resolution": "Candidate-only blocked wording and separate current certifiedV1 evidence"
+    },
+    {
+      "area": "Doc paths and suite name",
+      "finding": "Wrong destination prefix and nonexistent ai-runtime-budget suite",
+      "resolution": "Normalize docs/backend-upgrade/tasks and ai-runtime-governance.test.ts"
+    }
+  ],
+  "finalReview": "No remaining P1 in revised packet paragraphs or baseline source assertions; execution/certification remain future gates"
+}

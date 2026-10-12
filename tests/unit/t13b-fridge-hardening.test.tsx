@@ -69,7 +69,7 @@ async function mount(route = '/scan/B/review') {
     root!.render(
       <MemoryRouter
         initialEntries={[route]}
-        future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+        useTransitions={true}
       >
         <Navigation />
         <Routes>

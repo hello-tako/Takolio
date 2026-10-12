@@ -1,3 +1,260 @@
+# B08 dependency mitigation final checkpoint - 2026-10-12 JST
+
+**Task/status:** LOCAL_MITIGATION_VERIFIED_WITH_BLOCKING_RELEASE_GATES.
+Implementation30f1630b63c782de9e6fd37d8726cdadae0fffea; patch0f52b1963c1b2075ba2d47f4cd05b3c4b3d6a495;
+base receipt b9612d199bbad57efbe71a423ab97b41fab8f3af; branch codex/backend-b08-tailwind-feasibility.
+Canonical worktree /Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo.
+
+**Delivered:** owned pnpm braces3.0.3 fixed128-depth parser/walker patch; original
+versions/overrides/glob behavior retained.59new tests,756upstream differential
+vectors0mismatches; fresh offline frozen install7JSfiles exact. Unpatched default
+Node24 does not crash on4000-container strings here; explicit512KiB children
+reproduce6stack failures, patched12/12controlled rejections. No all-DoS claim.
+Private official Tailwind4.3.3 removes advisory but fails compatibility:20actual-route
+style pairs/15pixel pairs and6state pairs differ, all baseline controls exact.
+Major candidate stays unapplied; specific migration/browser/native plan recorded.
+
+**Checks:** clean committed313files/7582tests PASS156.645s; focused3files/152tests
+PASS; frozen install/lint/both TS/40migrations/sequential build PASS. CSS134861bytes
+exact, actual SW commit token.4564protected base files exact; product sources,
+config/public/workflows/40migrations/payment/auth/data/provider authority unchanged.
+Pinned4557-file scan:853/853Semgrep0errors/findings;17unchanged captured secret
+candidates0unresolved;2HIGHzizmor;518declaredSyft components. Full audit1HIGH,
+production0; securitygateFAILED. No suppression/waiver/hosted certificate.
+
+**Failures/evidence:** firstfull2files/11fail from omittedTMPDIR /var-vs-/private/var;
+prior canonical /private/tmp fixes assertions unchanged. Import-order warnings,
+pixel-control drift, nominal-route fallback, YAML helper/default-stack assumption
+and generatedpatchcontext whitespace warnings retained.39command metadata/log
+hashes and9bounded attachments; rawlogs/scans/pointers/candidate stay private.
+Final docs-only receipt/current-SHA scan/verifier follow in ignored artifacts.
+
+**Limits/next:** upstream patched owner or certified Tailwind4 compatibility,
+independent/hosted review, permitted realOCR/labels/provider facts/paid budget,
+human ingredient/fourdata blockers, explicitly protectedbilling/inbox/staging/
+edge/load/chaos/SLO/alerts/retention/access/rollback/release remain required.
+Original checkout unchanged; no remote write/deploy/mail/paidAI/push/PR/merge.
+See docs/backend-upgrade/b08-tailwind-feasibility/RESULT.md, LOCAL_VALIDATION.md,
+MIGRATION_PLAN.md and NEXT_ACTIONS.md. Historical suffixes remain immutable.
+
+---
+
+# B08 remaining dependency mitigation - 2026-10-12 JST
+
+**Task/status:** LOCAL_FIXED_DEPTH_MITIGATION_IMPLEMENTED_FINAL_GATES_PENDING.
+Active packet docs/backend-upgrade/b08-tailwind-feasibility/PLAN.md; branch
+codex/backend-b08-tailwind-feasibility; base receipt b9612d199bbad57efbe71a423ab97b41fab8f3af.
+Canonical worktree /Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo.
+
+**Changes:** official Tailwind4.3.3 candidate is private and rejected:20 actual-route
+pairs differ in computed styles,15 differ visibly;6 focus/hover/forced-color pairs
+also differ with exact baseline recovery. Corrected candidate build/frozen install/
+full and production audits pass;437 declared graph removes braces. No product
+migration applied. MIGRATION_PLAN.md records specific cascade/default/browser/
+native-toolchain acceptance. Fixed-depth pnpm patch of braces3.0.3 bounds parser
+and compile/expand/stringify walkers to128; all package versions/overrides unchanged.
+
+**Executed checks:**59 focused tests and types PASS;756 upstream differential
+vectors0 mismatches. Default Node24 unpatched control does not crash here; explicit
+512KiB children reproduce6 stack failures, patched12/12 bounded rejections. First
+import-order warnings, pixel-control drift, incorrect nominal-route probes, YAML
+helper resolution and default-stack control assumption are retained and corrected.
+Full committed-source gates and final scanner/receipt follow; no release claim.
+
+**Limits/next:** product src/config/public/Worker/payment/auth/data/provider authority,
+workflows and40 migrations protected. High published advisory remains blocking;
+local patch is not a suppression/upstream release/all-resource-exhaustion fix.
+No independent agent/hosted/native-device/release certification is claimed.
+No remote write/deploy/mail/paid AI/push/PR/merge; original checkout unchanged.
+Complete local gates, protected-byte review and final source-bound receipt; then
+published compatible patch/certified major migration and existing external gates.
+Historical receipts and checkpoint suffixes follow unchanged.
+
+---
+
+# Backend program final local aggregate - 2026-10-12 JST
+
+**Task/status:** LOCAL_IMPLEMENTATION_VERIFIED_WITH_BLOCKING_RELEASE_GATES.
+Final implementation41da180a941b348c6385895628b2bdd61b666763; branch
+codex/backend-b08-log-privacy; immutable parent receipt efffb4f84b52eb42979c69547b6bd7263963099a.
+Canonical worktree /Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo.
+
+**Delivered:** prior strict auth/email/offline ScanV3/provider-cancellation/dormant
+budget/data-pilot/whole-week/shopping/cooking/API/telemetry/toolchain work remains
+verified in its exact receipts. Final87-producer/28file review removes41raw exception
+arguments and bounds cleanup/shadow errors and public media path diagnostics.
+Responses/commands/SQL/retention/catalog/modes/scheduler/throttle stay compatible.
+
+**Checks:** clean committed312files/7523tests PASS; focused9files/132tests PASS;
+frozen install/lint/both TS projects/40-migration smoke/sequential build PASS.
+CSS134861bytes identical. Fresh scan4511files/SG849complete0errors0findings;
+GL17 unchanged provenance0unresolved; zizmor2HIGH; Syft518 declared components.
+Full audit1high; production0. Security gateFAILED, no production certificate.
+15command logs/9attachments preserved after38-input privacy check0issues0overlaps.
+First TS7006 and reconciliation digest-order assertion failures retained and fixed.
+
+**Limits/next:** original checkout unchanged; protected payment/auth business logic/
+package/lock/workflows/config/Worker/migrations/assets/data/provider authority intact.
+Real OCR/human data/provider bounds/pricing/privacy/retention, paid benchmark budget,
+protected billing, inbox/hosted/staging/edge/load/chaos/SLO/alerts/retention/rollback/
+release gates remain open. No remote writes/deploy/mail/paid AI/push/PR/merge.
+Final docs are a separate receipt with postcommit verification/current-SHA scan in
+ignored artifacts. See docs/backend-upgrade/b08-log-privacy/RESULT.md and NEXT_ACTIONS.md.
+
+---
+
+# B08 business log privacy in progress - 2026-10-12 JST
+
+**Task/status:** LOCAL_LOG_PRIVACY_FINAL_GATES_IN_PROGRESS.
+Active packet: docs/backend-upgrade/b08-log-privacy/PLAN.md.
+Branch codex/backend-b08-log-privacy; immutable base receipt efffb4f84b52eb42979c69547b6bd7263963099a.
+
+**Work:** final review of the request-only telemetry boundary found41 raw exception
+log arguments, cleanup raw messages, mutable shadow error names and unconfirmed
+public media path IDs. Minimal local diagnostic corrections retain HTTP/data/
+cleanup/catalog behavior. Independent producer provenance review and representative
+adversarial tests are in progress. No whole-platform privacy/security certificate.
+
+**Checks:** focused9files/132tests PASS after emitter own-data snapshots. Lint PASS;
+first typecheck FAIL TS7006 in a new test callback, narrow unknown annotation fixed;
+recovery and clean committed-source full gates follow. Inherited B08 implementation remains309files/7463tests verified separately.
+All prior receipt documents remain immutable. Package/lock/workflows/40migrations,
+Worker entrypoint/config/payment/auth logic/data/provider authority unchanged.
+No remote write/deploy/mail/paid AI/push/PR/merge. External production gates remain
+listed in the immutable B08 NEXT_ACTIONS; final aggregate receipt follows.
+
+---
+
+# B08 local compatibility and security decisions - 2026-10-12 JST
+
+ADR-B08-LOCAL-001 accepted locally. Direct supported owner upgrades, scoped
+selector-parser overrides with exact CSS proof, unused PWA dependency removal,
+Router urgent-navigation compatibility and native PNG pixel/metadata parity are
+verified on d3cce9560593a263e70f85646e061291e8829b56. All public assets, Worker/payment/
+migrations/config/date/resource/provider authority remain unchanged.
+Existing action pins/quoted env SHA/credential/cache edits preserve every release
+and migration gate. The docs security pipeline candidate remains disabled.
+Actual audits/scanners and privately adjudicated17 matches do not certify security.
+The unpatched braces advisory and hosted/real-data/provider/inbox/SLO/billing gates
+remain open. Receipt-tool NUL Git traversal fixes are docs-only; final receipt tools
+bind to their own documentation commit. See b08-local-remediation RESULT/NEXT_ACTIONS.
+
+---
+
+# Backend program decisions - aggregate checkpoint 2026-10-12 JST
+
+Implementation `7ef2f8407d3a6a958c78146db3b5c9a9f0990b78` is locally verified. Packet ADRs in backend-upgrade record
+B01c live membership; B03a truthful offline scoring; B03b strict V3 contracts/version
+fences; B04a provider admission and shared cancellation/deadline; B04b cancellation
+and dormant exact durable budgets; B05a evidence-bound review/pilot; B06 minimal
+closed-loop fixes; B07 parity-preserving read extraction/OpenAPI; B08a bounded logs.
+
+B02 remains design-only under the protected billing rule. Its auth regression
+fixture gets only 6 membership seed lines; all payment assertions/runtime remain
+unchanged by independent byte comparison. Candidate AI budget SQL is outside the
+40-migration chain; no durable cost-ceiling claim until complete trusted token,
+output-limit, pricing and retention providers exist. ScanV3 writes/clients and new
+models remain disabled. Symbolic corpus/pilot output does not grant data authority.
+
+The pinned security candidate is executable and independently reviewed locally,
+with 24 actual engine selftests. Repository findings/errors and dependency audits
+remain blocking; no suppression, exception, workflow enablement or security/
+license/SLO certificate. Source/staging/data/quality/security/release are separate
+states. The complete masterplan remains open at those explicit dependency gates.
+Preserve implementation/receipt hashes and historical source documents; see
+backend-upgrade/program-20261011/STATUS.md and NEXT_ACTIONS.md.
+
+---
+
+# Backend program decisions - 2026-10-12 JST
+
+Accepted for the declared local implementation only. Hosted/data/provider/release
+certification remains separate. Packet ADRs define compatibility and rollback.
+
+- B01c live current membership/cookie authority: [ADR](../backend-upgrade/b01c/ADR-B01c-001.md).
+- B03a offline evaluator and truthful statistical/cost denominators: [ADR](../backend-upgrade/b03a/ADR-B03a-001.md).
+- B03b pure V3/evidence compatibility and disabled writer/readers: [contract](../backend-upgrade/b03b/ADR-B03b-001.md), [reader fence](../backend-upgrade/b03b/ADR-B03b-002.md).
+- B04a governed injected provider, shared deadline/abort/admission hooks: [ADR](../backend-upgrade/b04a/ADR-B04a-001.md).
+- B04b dormant conservative durable budget and terminal cancellation: [budget](../backend-upgrade/b04b/ADR-B04b-001.md), [cancellation](../backend-upgrade/b04b/ADR-B04b-002.md).
+- B05a independent source/evidence proof and no runtime promotion: [ADR](../backend-upgrade/b05a/ADR-B05a-001.md).
+- B06 reproduced cannotBuy/receipt recovery/repeated-line allocation corrections: [ADR](../backend-upgrade/b06/ADR-B06-001.md).
+- B07 exact-compatible Week reads and bounded structural contract: [reads](../backend-upgrade/b07/ADR-B07-001.md), [OpenAPI](../backend-upgrade/b07/ADR-B07-002.md).
+- B08 bounded trusted request telemetry: [ADR](../backend-upgrade/b08/ADR-B08a-001.md).
+
+B02 retention/refund design, real provider bounds/pricing, V3 writer/storage/client,
+IngredientV2 data authority, scanner workflow/toolchain upgrade and numerical SLO
+remain separate reviewed decisions. No existing PayOS/release rule is superseded.
+Historical accepted ADRs follow unchanged.
+
+---
+
+# ADR-B01a-001 - Dormant strict OTP transaction foundation
+
+Status: ACCEPTED_FOR_DORMANT_A1_LOCAL_IMPLEMENTATION, 2026-10-11 JST.
+Packet: ../backend-upgrade/tasks/B01a-strict-otp.md.
+Full decision: ../backend-upgrade/b01a/ADR-B01a-001.md.
+Implementation 0649324a729b57019df61da6bceec40cd9ba1135; local checks in b01a/validation.json.
+
+Dedicated raw D1 claims/assertions reserve total admissions before actual digest
+comparison, preserve account-wide replay identity, budget/cooldown/generation and
+same-transaction business effects. Migration 0040 additive and non-cascading. Keys
+use DB time; legacy counts import conservatively once; session replay never mints
+a new credential. Local adversarial comparison/required-zero faults and isolated
+D1 schema replay pass. This accepts the dormant A1 policy/code only; legacy routes
+remain active and A2 route/client/registration/guest/cleanup/release contract is
+not accepted by implication. No production protection or hosted D1 certificate.
+
+
+---
+
+# ADR-B01b-001 - Bounded provider acceptance and conservative email fallback
+
+Status: accepted for local B01b A1 implementation, 2026-10-11 JST.
+Packet: `../backend-upgrade/tasks/B01b-email-adapter.md`.
+Independent source/contract and test-matrix reviews completed before integration.
+Extends ADR-028 only in email adapter routing/evidence; production certification
+and B01a strict issuance integration remain separate.
+
+A native send may be accepted before its caller receives an exception. Existing
+unconditional native-to-Resend fallthrough can therefore send the same OTP twice.
+Add sanitized state/evidence while retaining `sent` as provider-acceptance bridge.
+Native fulfillment/Resend2xx prove accepted, never delivered. Structured native
+policy codes and HTTP4xx except408 prove rejected; arbitrary errors, timeouts,
+408/5xx and unexpected statuses are delivery_unknown. Absence of providers is
+not_configured. Delivered/bounced require later authenticated lifecycle evidence.
+
+Only exact string E_SENDER_NOT_VERIFIED / E_SENDER_DOMAIN_NOT_AVAILABLE permit
+native-to-Resend fallback. Recipient suppression/policy/quota codes terminate;
+message-text matches can classify an error but cannot authorize fallback. No
+retry after unknown, and no automatic HTTP redirect/retry. Provider dispatch and
+metadata share an8000ms deadline per attempt, max16000ms sequential fallback plus
+local scheduling overhead. Timeout publishes once, aborts HTTP best effort and
+fences late outcomes. Native cannot promise cancellation. These are chosen local
+policy bounds, not measured production SLOs or exactly-once send guarantees.
+
+Retain/parse at most4096metadata bytes and make at most64stream read calls.
+Discard the chunk crossing the byte limit; transport-byte ingress is not bounded
+by this parser. Omit invalid optional IDs and preserve HTTP acceptance/rejection
+if metadata is unavailable. Replace unused raw messageId with optional SHA256 messageIdHash of bounded
+opaque tokens (8-128ASCII letters/digits/underscore/hyphen, at least one letter);
+omit malformed/contact/numeric/control-bearing values. No current caller reads IDs. Neither raw IDs nor hashes enter logs. Log only stable provider/category/purpose/environment
+and state/evidence, never raw provider payloads/errors/recipient/OTP/credentials.
+No callback, new authority, dependencies, migration, bindings or flags.
+
+Compatibility: auth still reads sent/provider/error. Unknown returns false, so
+legacy production invalidation and KV cooldown clearing remain until B01a. A1
+prevents duplicate fallback within one invocation; it does not certify safe
+resends across requests or real inbox delivery. Rollback must keep conservative
+ambiguity handling. B01b E2E/inbox/bounce/retention follows B01a separately.
+
+---
+
+# B00 backend decision register - 2026-10-11 JST
+
+ADR-B00-001 accepted for source/evidence/documentation scope only; implementation policy drafts B01-B08 at `../backend-upgrade/b00/DECISIONS.md`. No accepted runtime ADR is silently superseded by B00. Runtime OTP/email/key/legacy cutover/ScanV3/billing decisions require their own reviewed ADR before integration. Historical decisions follow unchanged.
+
+---
+
 # ADR-052 - Scoped stock detail and system-state presentation (UI09)
 
 Status: accepted and locally verified for UI09, 2026-10-10 JST.
@@ -2403,3 +2660,41 @@ final stable snapshots clean. UI15 short-screen/readability next, not started.
 396source frozen,protected/App/helpers/public proofPASS;four previewports closed.
 Failures/helperUXFAIL/41dependency advisories archived. Implementation
 `7ee28bf48974e8faf52f78caa2b9a5b979953768`; Git-object receipt follows.
+
+
+## ADR-B03a-SYN-001 - Synthetic image test corpus (2026-10-12)
+
+Accepted offline scope: `../backend-upgrade/b03a-synthetic/ADR-B03a-SYN-001.md`.
+User-requested generated invoice/fridge samples supplement the original symbolic
+fixtures with actual raster bytes, local Apple Vision text recognition and real
+Chromium preprocessing. SYNTHETIC_IMAGE remains TEST_ONLY / NOT_CERTIFIED.
+Unknown fields/duplicate occurrences/currency/split/source hashes are preserved;
+fridge object recognition and live Qwen quality are not measured. No runtime,
+provider activation, payment/auth/config/data authority or migration change.
+
+
+## ADR-B03-PREP-001 - Bounded lossless receipt preparation (2026-10-12)
+
+Accepted local implementation; see ../backend-upgrade/b03-preprocessing/ADR-B03-PREP-001.md.
+JPEG0.82 reproduces loss of VN diacritics/glyphs on generated images; higher JPEG
+quality still loses text. Receipt-only opt-in preserves supported originals below
+2000px/512KiB, tries bounded PNG for other receipts and retains the previous JPEG
+fallback. Default photo, camera, scan APIs/session/confirmation stay compatible.
+No real-image/provider/device/release certificate; raw metadata retention remains
+an explicit existing-fallback risk. No deployment or provider activation.
+
+
+## ADR-FINAL-LOCAL-001 - Close remaining local security/compiler work (2026-10-12)
+
+Accepted local implementation under the user's autonomous completion request.
+See ../backend-upgrade/final-local-completion/ADR-FINAL-LOCAL-001.md.
+Use supported setup-node6cache disable inputs in the two deploy jobs, and complete
+a measured official Tailwind4migration removing braces. Preserve backend/payment/
+auth/data/release gates. Browser/device/hosted and real/provider acceptance remain
+explicitly independent; local findings are fixed without suppressions.
+
+## Integrated release - 2026-10-12
+
+User authorizes Brand PR66/backend merge and release. See
+[ADR-INTEGRATED-RELEASE-002](../backend-upgrade/final-local-completion/ADR-INTEGRATED-RELEASE-002.md)
+for exact-source first-strict-cutover recovery without legacy OTP rollback.

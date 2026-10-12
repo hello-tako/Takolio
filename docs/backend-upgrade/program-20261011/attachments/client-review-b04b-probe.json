@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "evidenceKind": "INDEPENDENT_IN_MEMORY_SQLITE_PROBE_AND_SOURCE_REVIEW",
+  "reviewedHead": "d16d935877992406901a3afcaceaae612344ad73",
+  "sourceSha256": "4ba88ffa6a7207f3921a2fc9dc8081f3a85c03730d8613a794b879b0398126bb",
+  "schemaSha256": "ef81f43561aec262dc27df5ff391bb278a3ef0f79f15ddbd150be44f590e0219",
+  "checks": [
+    "policy-and-proof-deep-snapshot-before-first-await",
+    "lease-and-call-key-snapshot-before-descriptor-await",
+    "independent-ceil-input-output-equals-two-microUSD",
+    "maxCalls-remains-one-after-source-mutation",
+    "same-key-replay-never-acquires-network-permission",
+    "second-key-denied-by-cumulative-budget",
+    "foreign-key-check-empty"
+  ],
+  "localCodeBlockers": [],
+  "productionBlockers": [
+    "trusted-complete-input-output-bounds-and-complete-pricing-providers-do-not-exist",
+    "not-wired-to-provider-boundary-or-applied-as-migration",
+    "cancellation-network-interval-and-fenced-publication-require-integration",
+    "retention-RESTRICT-immutability-conflicts-with-existing-cleanup-until-reviewed"
+  ],
+  "realProviderCalls": 0,
+  "persistentDatabaseChanged": false,
+  "earlierExecutionAttribution": "Earlier equivalent session-only rehearsal had no persisted receipt; this receipt records a fresh bounded rerun."
+}

@@ -1,0 +1,1 @@
+{"status":"FAIL","phase":"protected Git filename traversal","reason":"Non-ASCII Git filenames were quoted by line-oriented ls-tree output","correction":"Use NUL-delimited ls-tree -rz; bind two receipt tools separately to the documentation receipt","runtimeSourceChanged":false}

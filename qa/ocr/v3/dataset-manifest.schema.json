@@ -1,0 +1,163 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Scan V3 offline dataset manifest v1",
+  "description": "Cross-record split isolation, unique IDs and annotation bindings additionally enforced by ScanV3DatasetSchema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "datasetId",
+    "classification",
+    "cases"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "datasetId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "classification": {
+      "enum": [
+        "TEST_ONLY",
+        "REVIEW_CANDIDATE"
+      ]
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "caseId",
+          "assetId",
+          "documentId",
+          "sourceGroupId",
+          "task",
+          "locale",
+          "country",
+          "quality",
+          "split",
+          "assetSha256",
+          "preprocessingSha256",
+          "preprocessingVersion",
+          "assetKind",
+          "provenance",
+          "licenseReference",
+          "permissionReference",
+          "retentionPolicy",
+          "accessPolicy",
+          "redactionStatus",
+          "annotation"
+        ],
+        "properties": {
+          "caseId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "assetId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "documentId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sourceGroupId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "task": {
+            "enum": [
+              "receipt_ocr",
+              "label_ocr",
+              "fridge_image_analysis"
+            ]
+          },
+          "locale": {
+            "enum": [
+              "vi",
+              "ja",
+              "en"
+            ]
+          },
+          "country": {
+            "enum": [
+              "VN",
+              "JP",
+              "OTHER"
+            ]
+          },
+          "quality": {
+            "enum": [
+              "clean",
+              "blur",
+              "tilt",
+              "low_light",
+              "missing_field",
+              "damaged"
+            ]
+          },
+          "split": {
+            "enum": [
+              "calibration",
+              "heldout",
+              "adversarial"
+            ]
+          },
+          "assetSha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "preprocessingSha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "preprocessingVersion": {
+            "type": "string",
+            "minLength": 1
+          },
+          "assetKind": {
+            "enum": [
+              "SYNTHETIC_SYMBOLIC",
+              "SYNTHETIC_IMAGE",
+              "LICENSED_IMAGE"
+            ]
+          },
+          "provenance": {
+            "type": "string",
+            "minLength": 1
+          },
+          "licenseReference": {
+            "type": "string",
+            "minLength": 1
+          },
+          "permissionReference": {
+            "type": "string",
+            "minLength": 1
+          },
+          "retentionPolicy": {
+            "type": "string",
+            "minLength": 1
+          },
+          "accessPolicy": {
+            "type": "string",
+            "minLength": 1
+          },
+          "redactionStatus": {
+            "enum": [
+              "SYNTHETIC_NO_PII",
+              "VERIFIED_REDACTED",
+              "MISSING"
+            ]
+          },
+          "annotation": {
+            "$ref": "annotation.schema.json"
+          }
+        }
+      }
+    }
+  }
+}

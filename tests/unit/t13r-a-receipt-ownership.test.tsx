@@ -60,7 +60,7 @@ async function click(element: HTMLElement) {
 async function mount(route = '/scan/receipt-review?scanId=A') {
   root = createRoot(container);
   await act(async () => root.render(
-    <MemoryRouter initialEntries={[route]} future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+    <MemoryRouter initialEntries={[route]} useTransitions={true}>
       <Navigation />
       <Routes>
         <Route path="/scan/receipt-review" element={<ReceiptReviewPage />} />

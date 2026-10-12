@@ -1,0 +1,360 @@
+{
+  "kind": "actual production-build local evidence and exact logs",
+  "files": [
+    {
+      "path": "after/cooking-390.png",
+      "bytes": 117922,
+      "sha256": "6862930b52b98f55e7c39733d00d6eefabdde3030232d4986030de8775a04d27"
+    },
+    {
+      "path": "after/home-1024.png",
+      "bytes": 450917,
+      "sha256": "ae5839085d7205a7f5423bc5e050f66decd9eff47595fec6d30faf09a37425d6"
+    },
+    {
+      "path": "after/home-1440.png",
+      "bytes": 803179,
+      "sha256": "beffe06e0b72a63af357a3919015f4b6ab235087f506016475ebe6a963461d1a"
+    },
+    {
+      "path": "after/home-320.png",
+      "bytes": 392486,
+      "sha256": "0399265c3b7a61072b7ade00f8e5e46a8d6a3e1a3cfabf771527188a682dd2e0"
+    },
+    {
+      "path": "after/home-375.png",
+      "bytes": 480797,
+      "sha256": "5e0cdf535d25861e42f989e6ee016bb42eb20c6f2d7eabae103b930d09494264"
+    },
+    {
+      "path": "after/home-390.png",
+      "bytes": 505344,
+      "sha256": "c24d934be1c5418b4d2ff7b3b03a46461a41b9ed51dde8ec1698f07ce6c81119"
+    },
+    {
+      "path": "after/home-768.png",
+      "bytes": 1067724,
+      "sha256": "9c0880d70efc9e7ce2799a89cbe1de5260cce564298eb32c9306e52cffa65e4f"
+    },
+    {
+      "path": "after/landing-1440.png",
+      "bytes": 111924,
+      "sha256": "90a78b58ed4af049fd8d8e657f6f000c41277d7316dff5ef58c777ef6e6a02b0"
+    },
+    {
+      "path": "after/login-375.png",
+      "bytes": 51174,
+      "sha256": "79e759827ac0b4f427dcd9683e8b09334392005d924cb2c42a062f7997218948"
+    },
+    {
+      "path": "after/planned-meal-390.png",
+      "bytes": 254648,
+      "sha256": "f31b0c579773b587f06500eff0d856e6e4ef7f5d3057102d9ee399633445adbc"
+    },
+    {
+      "path": "after/saved-weekly-plan-1024.png",
+      "bytes": 343116,
+      "sha256": "a5cd901704d301c297e296cc85dce0d046dbb3a384a988aa1c123e4e661afda9"
+    },
+    {
+      "path": "after/scan-review-320.png",
+      "bytes": 180125,
+      "sha256": "732ffada3d3272775f0f5980f1380da74020215fbf84b8b27741550425c616e4"
+    },
+    {
+      "path": "after-observations.json",
+      "bytes": 132891,
+      "sha256": "e7b7395abe6ffc0edbecae5beeea85211157a1a9474309d270b7d50914c2741a"
+    },
+    {
+      "path": "asset-contact.png",
+      "bytes": 57175,
+      "sha256": "776a37aecd2c61dcd525f8db627f0d486257cdfb0fc2e953bd7c3c48937448ca"
+    },
+    {
+      "path": "asset-verification.json",
+      "bytes": 10620,
+      "sha256": "4f5479a6121102925f3e73388b675b00da4a3533434d0f129f3349ac585d5447"
+    },
+    {
+      "path": "before/cooking-390.png",
+      "bytes": 122431,
+      "sha256": "8df6b7b8fffe6f7a86679b10acff3e4744ae098c1e217b39274f42e56784b0f0"
+    },
+    {
+      "path": "before/home-1024.png",
+      "bytes": 462806,
+      "sha256": "1aabb982ecaba57757c103501ee4b1940bcbcc2b887c6dab1023d6d19c70a8f1"
+    },
+    {
+      "path": "before/home-1440.png",
+      "bytes": 815273,
+      "sha256": "8767296690450133f142da077e3ae45b2174f8c1e5027ad2d163e063e451da9c"
+    },
+    {
+      "path": "before/home-320.png",
+      "bytes": 402061,
+      "sha256": "b75117306888428536cbbdd08b8aece0cc7d310c3ee8efd9484d666e60fdc861"
+    },
+    {
+      "path": "before/home-375.png",
+      "bytes": 492226,
+      "sha256": "efcf09f45722e715d9e63dec186464d24be028a3936118447d49a095e7c400e6"
+    },
+    {
+      "path": "before/home-390.png",
+      "bytes": 518332,
+      "sha256": "12eb0adf76a379c26138c87e0f9ef8e5236fb3a86f1d5ad5af2e9e9bea7ee83c"
+    },
+    {
+      "path": "before/home-768.png",
+      "bytes": 1080214,
+      "sha256": "78c713ee9f571b25553bbe2525c8c5fbbf6028f18357040ca0d2b9cb4de44229"
+    },
+    {
+      "path": "before/landing-1440.png",
+      "bytes": 119123,
+      "sha256": "b67812d52297209ea597085734d3fa48e4cab0f8ecdde524d96ab0e520db818c"
+    },
+    {
+      "path": "before/login-375.png",
+      "bytes": 54451,
+      "sha256": "cacc56a8da3b2f323667bc240fa8dc3381c63805d0d4d205fc7bf90b08cd7856"
+    },
+    {
+      "path": "before/planned-meal-390.png",
+      "bytes": 268389,
+      "sha256": "f1f58d527a952a99267b55a3b13ceeb028fd842a8e5eaa680483f10cdb6c4d78"
+    },
+    {
+      "path": "before/saved-weekly-plan-1024.png",
+      "bytes": 326473,
+      "sha256": "027e627cc82809f416747666647bbf7ca3c1ef55353a52cb9473b5cc22eec356"
+    },
+    {
+      "path": "before/scan-review-320.png",
+      "bytes": 188062,
+      "sha256": "d0b750faacc992686852e2b8d1501fb824cd991128fa138581658df69fe8b91c"
+    },
+    {
+      "path": "before-observations.json",
+      "bytes": 129105,
+      "sha256": "c155f9d00b93a8fc715c32b9e3f5a9ac48eb2c076edf9d50db797ca0ec3f227f"
+    },
+    {
+      "path": "font-glyph-verification.json",
+      "bytes": 637,
+      "sha256": "455d85180293268345718cf54aea2816e5c220dd6433bf8e2950e8fd49369817"
+    },
+    {
+      "path": "logs/auth-e2e.log.gz",
+      "bytes": 601,
+      "sha256": "50bcec7b9380a2dfd48b2a959571ff19cee8cc5ed37347cd4ea32814f9c159de"
+    },
+    {
+      "path": "logs/baseline-build.log.gz",
+      "bytes": 2123,
+      "sha256": "157a3c7d159e6fa4b58f50968f78de675dfafd7abc0852af759d71da313c0c38"
+    },
+    {
+      "path": "logs/baseline-e2e-confirmation.log.gz",
+      "bytes": 1516,
+      "sha256": "d10dd3122620af8a706f8e960ce3102510e1344797edcbbc8a0f6f776b9a9a48"
+    },
+    {
+      "path": "logs/baseline-tests.log.gz",
+      "bytes": 57566,
+      "sha256": "ab7bc8fa926e7de3bf77940313754887e04fa6b056b7fd1e55c84875e080633a"
+    },
+    {
+      "path": "logs/before-final.log.gz",
+      "bytes": 883,
+      "sha256": "7ea98c4819db2350210944bd82f50ec917b156effcbb8fdd8c296cf8acdbdb56"
+    },
+    {
+      "path": "logs/current-types.log.gz",
+      "bytes": 160,
+      "sha256": "e8632f35b597f1f0f0ecbb0d02f569e9d5e8640424ff5d35be3ccc99d74d70ee"
+    },
+    {
+      "path": "logs/delivery-lint.log.gz",
+      "bytes": 131,
+      "sha256": "1f230800dc37323ad2ad58763c1cb24c0c70df131c737b774cb3e528d94eb26b"
+    },
+    {
+      "path": "logs/dependency-audit.json.gz",
+      "bytes": 12898,
+      "sha256": "2bab66005ad4f2b466a296783efa30628612981aad1af4397f7307c904bad1f4"
+    },
+    {
+      "path": "logs/environment-rerun.log.gz",
+      "bytes": 2314,
+      "sha256": "aa2f9f9104c3056af1887b66e72391273b47c6881aac80622408c3dcaa31100c"
+    },
+    {
+      "path": "logs/final-matrix.log.gz",
+      "bytes": 883,
+      "sha256": "fbd8cdf67dbb38c38cf2e6a86bbe18ce151a702a9be49d0d8a25f1094a0368ab"
+    },
+    {
+      "path": "logs/final-tests-canonical.log.gz",
+      "bytes": 53808,
+      "sha256": "57a65347a6f7f1310217053070daca6cece1fdef4c405ef5a3c2fe5476709ed3"
+    },
+    {
+      "path": "logs/final-true-build.log.gz",
+      "bytes": 2125,
+      "sha256": "7c48dc3086ad4b661a4286ef3590c983adfc15e38df5344fe290fcf8601e8bec"
+    },
+    {
+      "path": "logs/flag-off-build.log.gz",
+      "bytes": 2128,
+      "sha256": "8b8106fc3a5e71ccc3cf596f03b7fd469b421a1b723442030e843dbb752f56e3"
+    },
+    {
+      "path": "logs/focused-final.log.gz",
+      "bytes": 787,
+      "sha256": "dde5987e9fee01c16d2752cdfaf0fa0fb90619533750e5632e42263252646381"
+    },
+    {
+      "path": "logs/inventory-e2e.log.gz",
+      "bytes": 1012,
+      "sha256": "8faa2229486ea4dcc9dc0bcbdd8419136ea1fa2dd9febc93700affecbe4049ae"
+    },
+    {
+      "path": "logs/migrations.log.gz",
+      "bytes": 159,
+      "sha256": "7134c2566ecc7045c72252a3c4548c71e48abcc75d29a48f25707daa5cbeec80"
+    },
+    {
+      "path": "logs/perf-after-final.log.gz",
+      "bytes": 313,
+      "sha256": "a35e5bd73ad8bf9562bdfe56cc8200659453f117db53c248dae2094e496d656d"
+    },
+    {
+      "path": "logs/perf-before-final.log.gz",
+      "bytes": 312,
+      "sha256": "44ce793cf94d9270eb900cf145e12ebd8e71360213e6f1e90161cbbfaf51cace"
+    },
+    {
+      "path": "logs/planning-final-tests.log.gz",
+      "bytes": 585,
+      "sha256": "9466b53095f7c398247e3930a33cef12fe050e6386dea006540f62c1f2e502d1"
+    },
+    {
+      "path": "logs/production-e2e-final.log.gz",
+      "bytes": 4092,
+      "sha256": "54c7a2ba230b5e2dd44a2ed71f89671503383b436e4a7e07f2d49eb70dd17b00"
+    },
+    {
+      "path": "logs/pwa-verified.log.gz",
+      "bytes": 39,
+      "sha256": "621f12a36ac6ff543e3f2e8ea43d2f9ad9f2f991e2cd0b2d7a8b7ea9f7dd9aff"
+    },
+    {
+      "path": "logs/release-build.log.gz",
+      "bytes": 2133,
+      "sha256": "fc0d5790c02d301a2f5e5c5903cc14cbc92cd184c872bc10cc1d519c28aa9c0d"
+    },
+    {
+      "path": "logs/release-focused.log.gz",
+      "bytes": 355,
+      "sha256": "fbac9f937c0202f5b2f0c67f62f0d4c0e7655d23f5de2b1fa9f93ea0e9cbc774"
+    },
+    {
+      "path": "logs/release-lint.log.gz",
+      "bytes": 131,
+      "sha256": "1f230800dc37323ad2ad58763c1cb24c0c70df131c737b774cb3e528d94eb26b"
+    },
+    {
+      "path": "logs/release-types.log.gz",
+      "bytes": 160,
+      "sha256": "e8632f35b597f1f0f0ecbb0d02f569e9d5e8640424ff5d35be3ccc99d74d70ee"
+    },
+    {
+      "path": "logs/states-current.log.gz",
+      "bytes": 153,
+      "sha256": "c5ffa51f0fffff09a821c263a9d9acfc0f29eecd67a0021fef0111d718542afc"
+    },
+    {
+      "path": "logs/ux-audit.log.gz",
+      "bytes": 963,
+      "sha256": "4453e6be7e4cb4fcc199eef0509e317d2ed23e88e1cb4a279769b3c0710e3981"
+    },
+    {
+      "path": "logs/week-flag-off.log.gz",
+      "bytes": 93,
+      "sha256": "c3e26662f68dcf6b1492979f1908c0ef90a79d90925421f44bfce6517a9aa97e"
+    },
+    {
+      "path": "performance-after.json",
+      "bytes": 362482,
+      "sha256": "acfeeaa2d5643f1f679ade92b04b045cf47c7d9a7fa68c4481cfad40e09bfc8f"
+    },
+    {
+      "path": "performance-before.json",
+      "bytes": 436773,
+      "sha256": "63ab32eccecd250d705dcdbf47d293680a35b0f767bf250e4bca7b8d6692db21"
+    },
+    {
+      "path": "pwa-observations.json",
+      "bytes": 2298,
+      "sha256": "424352333b110105bcfc482fbd056bb82eb8002c9ef3f9c7065c7a6115612e2c"
+    },
+    {
+      "path": "screen-contact.png",
+      "bytes": 304686,
+      "sha256": "b3534fe4c7ac6e99fb5c9f33ed603207ea5822f20653e13a651ec128e1430bf9"
+    },
+    {
+      "path": "self-audit.json",
+      "bytes": 10771,
+      "sha256": "b57014a8b62720c14afb4f49feb1bd72954eb933e7b4c9e74acd2490ae72cdc7"
+    },
+    {
+      "path": "state-observations.json",
+      "bytes": 2708,
+      "sha256": "2909ba93d641c56f9eeb3d0a49f6c52b30864230ab5c5281086b162117ba7def"
+    },
+    {
+      "path": "states/cooking-review-320.png",
+      "bytes": 187937,
+      "sha256": "85dac20985165622008b3f26652f997abd94343cb12dfce8d0065d8834bc07f1"
+    },
+    {
+      "path": "states/cooking-success-320.png",
+      "bytes": 177525,
+      "sha256": "5e3c5cd07bd3a778e56c99b0519981703238c23acc51f72f204dbb349859960d"
+    },
+    {
+      "path": "states/home-320-844-text2.png",
+      "bytes": 557148,
+      "sha256": "97623cfb48f35e30026da87434ee4a60a48e2f4420af02f38f91116c27bee90c"
+    },
+    {
+      "path": "states/inventory-error-320.png",
+      "bytes": 51348,
+      "sha256": "ed97880c2dbe53d307900f8e63fa68b1f601ea522d0ee7b25b9d4804d46e0f4e"
+    },
+    {
+      "path": "states/inventory-loading-320.png",
+      "bytes": 46770,
+      "sha256": "8916449f760b884498c24d211ebeeeac9e3ec2dcc279f1f1aa8c41f9d7e50457"
+    },
+    {
+      "path": "states/offline-landing-390.png",
+      "bytes": 92029,
+      "sha256": "44d2e0338b505b5c5f87573a7b3e82e99cb7006e62c9ba758559523525d537f1"
+    },
+    {
+      "path": "states/recipes-390-420.png",
+      "bytes": 1367222,
+      "sha256": "fc7e4193888166047da078c171ad194afd24ebe6c410de710f7ab91120aa71d7"
+    },
+    {
+      "path": "week-off-observations.json",
+      "bytes": 2041,
+      "sha256": "8aa470e368d9858a09312eabc2fd8413dd1946a10014bf8e71653b75771a28dd"
+    }
+  ]
+}

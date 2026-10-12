@@ -1,0 +1,34 @@
+{
+  "verifiedAtUtc": "2026-10-11T18:12:04.906004+00:00",
+  "classification": "CANDIDATE_ACTION_PINS",
+  "actions": [
+    {
+      "repository": "actions/checkout",
+      "observedTag": "v4",
+      "pinnedCommit": "11d5960a326750d5838078e36cf38b85af677262",
+      "verificationApi": "https://api.github.com/repos/actions/checkout/commits/11d5960a326750d5838078e36cf38b85af677262",
+      "authority": "Official repository GitHub ref and commit APIs; signatures not independently verified"
+    },
+    {
+      "repository": "actions/setup-node",
+      "observedTag": "v4",
+      "pinnedCommit": "49933ea5288caeca8642d1e84afbd3f7d6820020",
+      "verificationApi": "https://api.github.com/repos/actions/setup-node/commits/49933ea5288caeca8642d1e84afbd3f7d6820020",
+      "authority": "Official repository GitHub ref and commit APIs; signatures not independently verified"
+    },
+    {
+      "repository": "actions/setup-python",
+      "observedTag": "v5",
+      "pinnedCommit": "a26af69be951a213d495a4c3e4e4022e16d87065",
+      "verificationApi": "https://api.github.com/repos/actions/setup-python/commits/a26af69be951a213d495a4c3e4e4022e16d87065",
+      "authority": "Official repository GitHub ref and commit APIs; signatures not independently verified"
+    },
+    {
+      "repository": "actions/upload-artifact",
+      "observedTag": "v4",
+      "pinnedCommit": "ea165f8d65b6e75b540449e92b4886f43607fa02",
+      "verificationApi": "https://api.github.com/repos/actions/upload-artifact/commits/ea165f8d65b6e75b540449e92b4886f43607fa02",
+      "authority": "Official repository GitHub ref and commit APIs; signatures not independently verified"
+    }
+  ]
+}

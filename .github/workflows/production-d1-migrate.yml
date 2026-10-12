@@ -39,13 +39,13 @@ jobs:
       candidate_sha: ${{ steps.gate.outputs.candidate_sha }}
     steps:
       - name: Checkout trusted main policy and full ancestry
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: main
           fetch-depth: 0
           persist-credentials: false
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: 22
 
@@ -65,7 +65,7 @@ jobs:
           MIGRATION: ${{ inputs.migration }}
         run: node scripts/d1-migration-check.mjs gate migration-manifest.json
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: d1-migration-candidate-${{ github.run_id }}-${{ github.run_attempt }}
           path: migration-manifest.json
@@ -78,21 +78,21 @@ jobs:
     environment: production
     steps:
       - name: Checkout pinned migration candidate
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: ${{ needs.gate.outputs.candidate_sha }}
           fetch-depth: 0
           persist-credentials: false
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
           name: d1-migration-candidate-${{ github.run_id }}-${{ github.run_attempt }}
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: 22
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1
         with:
           version: 10
 
@@ -120,7 +120,7 @@ jobs:
             import { readFileSync, writeFileSync } from "node:fs";
             const manifest = JSON.parse(readFileSync("migration-manifest.json", "utf8"));
             if (migrationManifest(process.cwd(), manifest.sha).sha256 !== manifest.schema.sha256) throw new Error("Migration manifest changed");
-            if (manifest.migration === "0039_meal_composition_v2.sql") {
+            if (["0039_meal_composition_v2.sql", "0040_strict_otp_foundation.sql"].includes(manifest.migration)) {
               if (manifest.repository !== process.env.GITHUB_REPOSITORY) throw new Error("Migration repository changed");
               manifest.ci = await hostedCi(manifest.sha, manifest.repository);
               manifest.liveMain = await requireCurrentHostedMain({ sha: manifest.sha, repository: manifest.repository });
@@ -201,8 +201,8 @@ jobs:
           pnpm wrangler d1 migrations list frigo-db --remote | tee migration-plan.txt
           node scripts/d1-migration-check.mjs plan migration-manifest.json migration-plan.txt
 
-      - name: Recheck current main and CI immediately before migration 0039
-        if: inputs.migration == '0039_meal_composition_v2.sql' && steps.pre_ledger.outputs.mode == 'apply'
+      - name: Recheck current main and CI immediately before migration
+        if: contains(fromJSON('["0039_meal_composition_v2.sql","0040_strict_otp_foundation.sql"]'), inputs.migration) && steps.pre_ledger.outputs.mode == 'apply'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -295,10 +295,26 @@ jobs:
           node scripts/d1-readonly-query.mjs media-schema
           node scripts/production-media-preservation.mjs verify migration-manifest.json catalog.json media.json media-schema.json
 
+      - name: Certify exact strict OTP tables, indexes and constraints after 0040
+        if: inputs.migration == '0040_strict_otp_foundation.sql'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          query="$(node scripts/staging-otp-migration-check.mjs query schema)"
+          pnpm wrangler d1 execute frigo-db --remote --yes --json --command "$query" > strict-otp-schema.json
+          node --input-type=module -e '
+            import { readFileSync, writeFileSync } from "node:fs";
+            import { verifyStrictOtpSchema } from "./scripts/staging-otp-migration-check.mjs";
+            const manifest = JSON.parse(readFileSync("migration-manifest.json", "utf8"));
+            manifest.strictOtpSchema = verifyStrictOtpSchema(JSON.parse(readFileSync("strict-otp-schema.json", "utf8")));
+            writeFileSync("migration-manifest.json", JSON.stringify(manifest, null, 2) + "\n");
+          '
+
       # Sanitized receipt only: SHAs, ledger names, bookmark, aggregate counts. Never rows or tokens.
       - name: Save sanitized migration receipt (even on failure)
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: d1-migration-receipt-${{ github.run_id }}-${{ github.run_attempt }}
           path: migration-manifest.json

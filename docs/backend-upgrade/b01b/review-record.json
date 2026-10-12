@@ -1,0 +1,61 @@
+{
+  "type": "agent_source_and_test_review",
+  "recordedAtUtc": "2026-10-11T03:17:37.888156+00:00",
+  "baseSha": "98471e10d4b874219b069ec8b38a26fdd719db81",
+  "frozenReviewedSource": [
+    {
+      "path": "src/worker/services/email.ts",
+      "sha256": "7721143d005fc039dc6d3c2206ddd194bf9bd42791681249894d5c850bdddc2a"
+    },
+    {
+      "path": "tests/unit/email-lifecycle.test.ts",
+      "sha256": "e4d70d43ccf4f86fc63cad000adc3d176cee0b7e724c338acd0dab503f8314c7"
+    },
+    {
+      "path": "tests/unit/email-privacy.test.ts",
+      "sha256": "dd6b3b7230e77494298fd372e14f6c6fb30c41f1f99e3ba16714f760f998f6e1"
+    },
+    {
+      "path": "tests/integration/auth-hardening.test.ts",
+      "sha256": "78715be212c3af5eaab61e9996fc8edca1416168d82bd14a28051875cf1774e3"
+    }
+  ],
+  "reviewers": [
+    "email_contract_review",
+    "email_test_matrix"
+  ],
+  "fixedFindings": [
+    {
+      "finding": "Locked HTTP body acquisition threw before guarded metadata parsing, losing observed acceptance/rejection",
+      "resolution": "Guard getReader acquisition; tests locked200/429 plus stream-read error preserve http_response evidence"
+    },
+    {
+      "finding": "4096 limit described as hard body ingress bound",
+      "resolution": "Document4096 retained/parsed metadata and64read-call cap; crossing chunk discarded"
+    }
+  ],
+  "remainingConcreteAdapterFindings": [],
+  "limitations": [
+    "agent reviews are not human PR approval",
+    "legacy auth invalidation and resend cooldown remain pending B01a",
+    "no real inbox/bounce/provider certification",
+    "source review does not certify hosted D1 or production"
+  ],
+  "evidenceReview": {
+    "reviewer": "email_contract_review",
+    "recordedAtUtc": "2026-10-11T03:31:54.152982+00:00",
+    "implementationSha": "31d5fd860ef9b65fc38ccdc664074bda348b0a8c",
+    "verifiedCommandLogs": 19,
+    "verifiedStackSamples": 2,
+    "verifiedFrozenSourceFiles": 4,
+    "gzipAndRawHashesMatch": true,
+    "sourceMatchesImplementation": true,
+    "terminalSummariesMatch": true,
+    "initialFullClassification": "INTERRUPTED_FAILED",
+    "remainingConcreteFindings": [],
+    "limits": [
+      "agent review is not human PR approval",
+      "no inbox or production certification"
+    ]
+  }
+}

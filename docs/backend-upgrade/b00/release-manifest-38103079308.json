@@ -1,0 +1,428 @@
+{
+  "requestedRef": "652e0d7632745e9b77cda4b5b3caac83a3ec1015",
+  "sha": "652e0d7632745e9b77cda4b5b3caac83a3ec1015",
+  "mainSha": "652e0d7632745e9b77cda4b5b3caac83a3ec1015",
+  "hardenedSha": "8b7b254ddcc9e0a36989a2c8c3add6ad3d776ee9",
+  "reviewedHardeningBase": "af661af467ba8620ba6b2919ee958195d179380c",
+  "repository": "vn-tak/Tako-san",
+  "liveMain": {
+    "headSha": "652e0d7632745e9b77cda4b5b3caac83a3ec1015",
+    "checkedAt": "2026-10-11T01:59:46.471Z"
+  },
+  "environment": "production",
+  "recipeCatalogMode": "d1",
+  "recipeCatalogCanaryPercent": 0,
+  "recipeCatalogCutoverEnabled": true,
+  "recipeCatalogRollbackConfirmed": false,
+  "mealCompositionV2Enabled": true,
+  "ci": {
+    "id": 38098775083,
+    "attempt": 1,
+    "url": "https://github.com/vn-tak/Tako-san/actions/runs/38098775083",
+    "headSha": "652e0d7632745e9b77cda4b5b3caac83a3ec1015",
+    "checkedAt": "2026-10-11T01:59:46.311Z"
+  },
+  "schema": {
+    "version": "0039_meal_composition_v2.sql",
+    "count": 39,
+    "sha256": "321e59c716a6eb16b2375ae878b81c23fe0917ac1b25c53499b65afb8231f52b",
+    "migrations": [
+      {
+        "name": "0001_initial_schema.sql",
+        "sha256": "eb97de6170cc73b12c7b83eec3be8082b4434c5f8952616bd4cb64be3f2a3328"
+      },
+      {
+        "name": "0002_seed_data.sql",
+        "sha256": "13a75fc802205e0654a4dcba59cf2f8573363d9abcf4cdaf66b24b5aee3ddade"
+      },
+      {
+        "name": "0003_weekly_planner.sql",
+        "sha256": "f6c23b3e288c7da14a4a7adc9da0ab4cfb8f7fdfc36cb2dac1c3a7abf533be9f"
+      },
+      {
+        "name": "0004_auth_system.sql",
+        "sha256": "39b72e8856dc87ef71b5b95db18497d710f068d4aca2dbe7aec51e82b023f003"
+      },
+      {
+        "name": "0005_meal_plans_relational.sql",
+        "sha256": "c20cb5e229eaed04e543c46e28e01a6f9db9ab1ad0f58885551c2394b6a3fb95"
+      },
+      {
+        "name": "0006_vietnamese_recipe_bank.sql",
+        "sha256": "7868539d44fea5aac99a091912629521a3cae79e1648f0a774490fedbb2e048f"
+      },
+      {
+        "name": "0007_week_integrity.sql",
+        "sha256": "da3d90a1ad95af11e6c58b03a68759fb7f25866434cd800c19f2b242d3181386"
+      },
+      {
+        "name": "0008_week_snapshot_metadata.sql",
+        "sha256": "5873119f56efb3c310d040220a9c7544d060adab88642f4a5c804121c38918f8"
+      },
+      {
+        "name": "0009_inventory_optimistic_version.sql",
+        "sha256": "e184538af8cff16465def06be1c37f4ba23e836ed0f4c3543c02f35fa3a5d2c4"
+      },
+      {
+        "name": "0010_week_schema_shadow_canonical.sql",
+        "sha256": "92eccbd3b6b0b8249b8ae1afdb625652cc906d4d4b5c08a7587964df5529dc0e"
+      },
+      {
+        "name": "0011_meal_plan_tenant_ownership.sql",
+        "sha256": "049412f7762ed69b2b8ed9977cd3e0e7b015a693f785305b160871f070232951"
+      },
+      {
+        "name": "0012_scan_queue_jobs.sql",
+        "sha256": "d52d716dc7d1329e5dafb3afc0acd4eab8bc24db1026cbbad0b9c453baf6ad54"
+      },
+      {
+        "name": "0013_scan_receipt_metadata.sql",
+        "sha256": "d889edf409a35ca7d5e0ca0d68029644a158ad53fd0ed9754702972a14ae85b5"
+      },
+      {
+        "name": "0014_scan_queue_fencing.sql",
+        "sha256": "d9fb9786fa4091c8877b91904f74dee899b8f6fc20143c1ca7dcb468432720cc"
+      },
+      {
+        "name": "0015_auth_session_otp_hardening.sql",
+        "sha256": "81ed99c797faeed1b80149057084d42474b594f0859d46049922541a038b1b6f"
+      },
+      {
+        "name": "0016_scan_quota_ledger.sql",
+        "sha256": "f0d8a9c2e4b4810c1c27874f09f212e7f6dd548ae9be055bade004e3609b7b8d"
+      },
+      {
+        "name": "0017_auth_otps_remove_plaintext.sql",
+        "sha256": "73ab0857cc7d20ef15b6dd0726fe2142cc39dd45745cfa7f021c3d362e3c33e6"
+      },
+      {
+        "name": "0018_payments.sql",
+        "sha256": "8668f84a4e378227d63cbee591e6feb9ee37ef7b6fc84fd127af7511dddd406b"
+      },
+      {
+        "name": "0019_recipe_domain_foundation.sql",
+        "sha256": "5b6fbe9ec441271a49b5116a118af6424e25ceda716ece01d2448e56e84ed005"
+      },
+      {
+        "name": "0020_t01_foundation_hardening.sql",
+        "sha256": "d46ad482f793d31bdc3c4bbbd3bee9198497f3b5cf02ebef0383871bab001472"
+      },
+      {
+        "name": "0021_recipe_personalization.sql",
+        "sha256": "149b32b2d7d731ffbd6fdf0bd5b8a4c60068cb02d708dee5b74ac5b92f933f22"
+      },
+      {
+        "name": "0022_generated_meal_plans.sql",
+        "sha256": "41f7a15c15d8de861489607b87bb03f853348193c4214cd71aaac5a8d1556a51"
+      },
+      {
+        "name": "0023_scan_request_fingerprint.sql",
+        "sha256": "e4681b61c57f7560b878b3cd34805e6657025ff3e27643ecca98eb6de057dddd"
+      },
+      {
+        "name": "0024_inventory_truth_foundation.sql",
+        "sha256": "5e32cb457457ad9286d1f23d172b166ae1e73e8c84f10cb428ea44649f7061d4"
+      },
+      {
+        "name": "0025_inventory_lot_commands.sql",
+        "sha256": "434565634f0c8ca2f5721ab66b451c55fc30310425deec0a7f08ea98aba97194"
+      },
+      {
+        "name": "0026_inventory_event_authority.sql",
+        "sha256": "d35163d8f25bf66a43afe0232023ea3950769d2ade86153062816a010de0312e"
+      },
+      {
+        "name": "0027_inventory_event_poststate.sql",
+        "sha256": "f30541dc33927526007d18a2b5ea3d50a7a356f931502d561f7334e16dfc16a7"
+      },
+      {
+        "name": "0028_inventory_fefo_authority.sql",
+        "sha256": "c162e5c9a8ea93169fa044159e23b2088d7181f54b7456a8506e53cac4a80c8c"
+      },
+      {
+        "name": "0029_inventory_adoption_authority.sql",
+        "sha256": "564950baf0506bff02582b4e0d8aae60b3dfeb1dfd0ad83279b85cd1f9ddd83a"
+      },
+      {
+        "name": "0030_inventory_fefo_backfill_compatibility.sql",
+        "sha256": "eb5e6fc959ad96f3127540578b0d40972fb4b40f450bfdccb5bf7afda3662316"
+      },
+      {
+        "name": "0031_inventory_observation_reconciliation.sql",
+        "sha256": "c4f6c8e0a26c4063164157e38ec55d39522f666cfdafaedacbbd919f55d4eb25"
+      },
+      {
+        "name": "0032_scan_evidence_retention.sql",
+        "sha256": "fae72602ac7f3128155329a8abc60184609dd589e264cfec9bae1e3c961bc206"
+      },
+      {
+        "name": "0033_scan_evidence_completeness.sql",
+        "sha256": "18ed8d75d5bcaeb4e9a12b96535f603401bf42b1492201864f81e312cdef1975"
+      },
+      {
+        "name": "0034_global_recipe_catalog_parity.sql",
+        "sha256": "23f356458a294b240e683fec14012bc932a8b7e57ad0c932e4fc184329bada4d"
+      },
+      {
+        "name": "0035_recipe_media_layer.sql",
+        "sha256": "a2c017245eec5916db9c24b050c966654b6e1321c8c32025bea64d931feed8aa"
+      },
+      {
+        "name": "0036_recipe_catalog_pilot.sql",
+        "sha256": "04228788e60d59a2427d70956d4d8a108d0a6c1c4a643c47641402f658120ba9"
+      },
+      {
+        "name": "0037_recipe_catalog_scale.sql",
+        "sha256": "68e52e6d8b9d44054f609a3d405c9fa329d093521ffc8c97009c76fbf7317ad6"
+      },
+      {
+        "name": "0038_auth_onboarding_completion.sql",
+        "sha256": "3c9bfeca972b4d1179625ed3e6aa2b3056202442e225d205a4191d9d52505ad8"
+      },
+      {
+        "name": "0039_meal_composition_v2.sql",
+        "sha256": "24407e61f1aac2b3430bc5cef7a6d1c76d57a39f6314915c4915fc7209e777d5"
+      }
+    ]
+  },
+  "workflowRunId": "38103079308",
+  "workflowRunAttempt": "1",
+  "createdAt": "2026-10-11T01:49:03.083Z",
+  "mainShaAtDeploymentGate": "652e0d7632745e9b77cda4b5b3caac83a3ec1015",
+  "cloudflare": {
+    "accountAuthenticated": true,
+    "databaseName": "frigo-db",
+    "databaseId": "f975ec39-b2c8-4a2a-80e1-0366054599d3",
+    "infoCrossCheck": "match"
+  },
+  "observedMigrationLedger": {
+    "version": "0039_meal_composition_v2.sql",
+    "names": [
+      "0001_initial_schema.sql",
+      "0002_seed_data.sql",
+      "0003_weekly_planner.sql",
+      "0004_auth_system.sql",
+      "0005_meal_plans_relational.sql",
+      "0006_vietnamese_recipe_bank.sql",
+      "0007_week_integrity.sql",
+      "0008_week_snapshot_metadata.sql",
+      "0009_inventory_optimistic_version.sql",
+      "0010_week_schema_shadow_canonical.sql",
+      "0011_meal_plan_tenant_ownership.sql",
+      "0012_scan_queue_jobs.sql",
+      "0013_scan_receipt_metadata.sql",
+      "0014_scan_queue_fencing.sql",
+      "0015_auth_session_otp_hardening.sql",
+      "0016_scan_quota_ledger.sql",
+      "0017_auth_otps_remove_plaintext.sql",
+      "0018_payments.sql",
+      "0019_recipe_domain_foundation.sql",
+      "0020_t01_foundation_hardening.sql",
+      "0021_recipe_personalization.sql",
+      "0022_generated_meal_plans.sql",
+      "0023_scan_request_fingerprint.sql",
+      "0024_inventory_truth_foundation.sql",
+      "0025_inventory_lot_commands.sql",
+      "0026_inventory_event_authority.sql",
+      "0027_inventory_event_poststate.sql",
+      "0028_inventory_fefo_authority.sql",
+      "0029_inventory_adoption_authority.sql",
+      "0030_inventory_fefo_backfill_compatibility.sql",
+      "0031_inventory_observation_reconciliation.sql",
+      "0032_scan_evidence_retention.sql",
+      "0033_scan_evidence_completeness.sql",
+      "0034_global_recipe_catalog_parity.sql",
+      "0035_recipe_media_layer.sql",
+      "0036_recipe_catalog_pilot.sql",
+      "0037_recipe_catalog_scale.sql",
+      "0038_auth_onboarding_completion.sql",
+      "0039_meal_composition_v2.sql"
+    ],
+    "checkedAt": "2026-10-11T01:59:25.007Z"
+  },
+  "runtimeCatalog": {
+    "releaseId": "rel-bd00a4f53fcaeee4",
+    "tip": "0039_meal_composition_v2.sql",
+    "recipes": 500,
+    "appliedBatches": 2,
+    "totalBatches": 2,
+    "releaseComplete": true,
+    "approvedBatches": [
+      {
+        "batchId": "t14f-pilot-30-v1",
+        "batchHash": "4d13915c075cd1b418d2454f7f03968349b779766cdb96b92df90f4138bc8cce",
+        "recipeCount": 30,
+        "releaseBaseCount": 71,
+        "sourceNamespace": "frigo.t14f.original.v1",
+        "sourceReference": "T14F project-original recipe generation batch t14f-pilot-30-v1",
+        "migration": "0036_recipe_catalog_pilot.sql"
+      },
+      {
+        "batchId": "t14f-scale-399-v1",
+        "batchHash": "1bdf29bde821b5183f0f41d920c7b747a5290f7772e6adc1a51de60ba3adda35",
+        "recipeCount": 399,
+        "releaseBaseCount": 101,
+        "sourceNamespace": "frigo.t14f.original.v1",
+        "sourceReference": "T14F project-original recipe generation batch t14f-scale-399-v1",
+        "migration": "0037_recipe_catalog_scale.sql"
+      }
+    ],
+    "approvedBatchIds": [
+      "t14f-pilot-30-v1",
+      "t14f-scale-399-v1"
+    ],
+    "approvedBatchHashes": [
+      "4d13915c075cd1b418d2454f7f03968349b779766cdb96b92df90f4138bc8cce",
+      "1bdf29bde821b5183f0f41d920c7b747a5290f7772e6adc1a51de60ba3adda35"
+    ],
+    "actualRecipes": 500,
+    "hydrationFailureCount": 0,
+    "runtimeFingerprint": "f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37",
+    "expectedRuntimeFingerprint": "f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37",
+    "contentReadStatementCount": 5,
+    "checkedAt": "2026-10-11T01:59:37.734Z"
+  },
+  "catalog": {
+    "releaseId": "rel-bd00a4f53fcaeee4",
+    "tip": "0039_meal_composition_v2.sql",
+    "recipes": 500,
+    "appliedBatches": 2,
+    "totalBatches": 2,
+    "releaseComplete": true,
+    "approvedBatches": [
+      {
+        "batchId": "t14f-pilot-30-v1",
+        "batchHash": "4d13915c075cd1b418d2454f7f03968349b779766cdb96b92df90f4138bc8cce",
+        "recipeCount": 30,
+        "releaseBaseCount": 71,
+        "sourceNamespace": "frigo.t14f.original.v1",
+        "sourceReference": "T14F project-original recipe generation batch t14f-pilot-30-v1",
+        "migration": "0036_recipe_catalog_pilot.sql"
+      },
+      {
+        "batchId": "t14f-scale-399-v1",
+        "batchHash": "1bdf29bde821b5183f0f41d920c7b747a5290f7772e6adc1a51de60ba3adda35",
+        "recipeCount": 399,
+        "releaseBaseCount": 101,
+        "sourceNamespace": "frigo.t14f.original.v1",
+        "sourceReference": "T14F project-original recipe generation batch t14f-scale-399-v1",
+        "migration": "0037_recipe_catalog_scale.sql"
+      }
+    ],
+    "approvedBatchIds": [
+      "t14f-pilot-30-v1",
+      "t14f-scale-399-v1"
+    ],
+    "approvedBatchHashes": [
+      "4d13915c075cd1b418d2454f7f03968349b779766cdb96b92df90f4138bc8cce",
+      "1bdf29bde821b5183f0f41d920c7b747a5290f7772e6adc1a51de60ba3adda35"
+    ],
+    "actualRecipes": 500,
+    "orderedRecipeIdsSha256": "0ebfb0cc764fedc65509a391f2f3d23f49b306ceff27901dd504145dfb925d45",
+    "expectedRuntimeFingerprint": "f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37",
+    "mediaReady": 500,
+    "recipeMedia": {
+      "policy": "OPERATIONAL_READY_OR_PENDING",
+      "rows": 500,
+      "ready": 500,
+      "recipesWithoutActiveHero": 0,
+      "orphanRows": 0,
+      "duplicateReadyRoles": 0,
+      "invalidMetadata": 0,
+      "invalidReadyMetadata": 0,
+      "storageKeyContract": "exact",
+      "r2Availability": "NOT_REVERIFIED"
+    },
+    "checkedAt": "2026-10-11T01:59:40.528Z"
+  },
+  "health": {
+    "foreignKeyCheck": "[]",
+    "quickCheck": "ok"
+  },
+  "previousDeployment": {
+    "versionId": "a61e01ca-dd2a-40e5-ba79-820d3cb2e9dd",
+    "deploymentId": "ac01d4a0-3c55-4407-939b-36d5274e2dc3",
+    "capturedAt": "2026-10-11T01:59:44.694Z",
+    "binding": {
+      "versionId": "a61e01ca-dd2a-40e5-ba79-820d3cb2e9dd",
+      "bindingName": "DB",
+      "databaseId": "f975ec39-b2c8-4a2a-80e1-0366054599d3",
+      "checkedAt": "2026-10-11T01:59:45.729Z"
+    }
+  },
+  "recipeAuthorityTransition": {
+    "from": "canary-25",
+    "to": "d1",
+    "kind": "promotion",
+    "checkedAt": "2026-10-11T01:59:45.763Z"
+  },
+  "previousRecipeAuthority": {
+    "schemaVersion": 1,
+    "environment": "production",
+    "commit": "652e0d7632745e9b77cda4b5b3caac83a3ec1015",
+    "checkedAt": "2026-10-11T01:59:43.453Z",
+    "configuredMode": "canary",
+    "cutoverEnabled": true,
+    "canaryPercent": 25,
+    "globalSource": "mixed",
+    "fallbackReason": null,
+    "releaseId": "rel-bd00a4f53fcaeee4",
+    "expectedRecipeCount": 500,
+    "actualSource": "d1",
+    "selectedSource": "d1",
+    "servedRecipeCount": 500,
+    "servedFingerprint": "f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37",
+    "expectedRuntimeFingerprint": "f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37",
+    "fingerprintMatchesRelease": true,
+    "d1Readiness": "ready",
+    "d1ReadinessCode": null,
+    "counters": {
+      "static": 0,
+      "d1": 1,
+      "canaryFallback": 0,
+      "d1Fallback": 0,
+      "staleServed": 0,
+      "notReady": 0,
+      "authorizedInclude": 0,
+      "authorizedExclude": 0
+    }
+  },
+  "deployed": {
+    "sha": "652e0d7632745e9b77cda4b5b3caac83a3ec1015",
+    "environment": "production",
+    "checkedAt": "2026-10-11T02:00:04.315Z",
+    "attempts": 3,
+    "waitedMs": 8563
+  },
+  "deployedAssets": {
+    "sha": "652e0d7632745e9b77cda4b5b3caac83a3ec1015",
+    "sha256": "64aebae80c9bd0ed91eb26d4d1cbf9edf35853ed5844363ea8a22bd5052e72e0",
+    "httpStatus": 200,
+    "cacheNoStore": true,
+    "consecutiveObservations": 3
+  },
+  "deployedWorker": {
+    "versionId": "eee43e96-53ff-40f3-9779-e10fe256e0d8",
+    "deploymentId": "dad1e770-1207-4101-931d-1703209c292b",
+    "capturedAt": "2026-10-11T02:00:09.628Z",
+    "binding": {
+      "versionId": "eee43e96-53ff-40f3-9779-e10fe256e0d8",
+      "bindingName": "DB",
+      "databaseId": "f975ec39-b2c8-4a2a-80e1-0366054599d3",
+      "checkedAt": "2026-10-11T02:00:09.628Z"
+    }
+  },
+  "recipeAuthority": {
+    "configuredMode": "d1",
+    "cutoverEnabled": true,
+    "canaryPercent": 0,
+    "actualSource": "d1",
+    "globalSource": "d1",
+    "servedRecipeCount": 500,
+    "servedFingerprint": "f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37",
+    "releaseId": "rel-bd00a4f53fcaeee4",
+    "d1Readiness": "ready",
+    "fallbackReason": null,
+    "checkedAt": "2026-10-11T02:00:11.439Z"
+  }
+}

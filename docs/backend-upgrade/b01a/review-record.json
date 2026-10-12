@@ -1,0 +1,148 @@
+{
+  "type": "independent_agent_source_review",
+  "recordedAtUtc": "2026-10-11T05:12:18.339434+00:00",
+  "baseSha": "8a9b386f46f245c727b9ac2f885bab842d5796b5",
+  "reviewer": "b01a_sql_review",
+  "frozenReviewedSource": [
+    {
+      "path": "migrations/0040_strict_otp_foundation.sql",
+      "sha256": "8ad04aaf528b2811b693d80f83704bd3d7578f7ffb3cc3698326487e4beb6ae0",
+      "bytes": 6046
+    },
+    {
+      "path": "packages/db/src/auth-otp.ts",
+      "sha256": "41092db2aa772db206754e84bb5f6c40ad77e00faded9a452b486d651ef9f673",
+      "bytes": 26032
+    },
+    {
+      "path": "src/worker/config/otp-policy.ts",
+      "sha256": "b7d4202f0ca0de60fd2da3bf39543284dafcb7a7bfc71bc91a55e77170d31f30",
+      "bytes": 1995
+    },
+    {
+      "path": "src/worker/services/auth-otp.ts",
+      "sha256": "7f5cc3a943ca12130e205191f2c0dbed1a1295fe3f72eb67ca366025e4d6e4d5",
+      "bytes": 9764
+    },
+    {
+      "path": "tests/unit/otp-policy.test.ts",
+      "sha256": "2166b82eb8b7b60377abb570d14c58797bac8c1b13ef60a0eecc82136ba2425e",
+      "bytes": 5389
+    },
+    {
+      "path": "tests/integration/auth-otp-coordinator.test.ts",
+      "sha256": "86705a270be6eb1dad0aedc0f5126270e49a2b4d8a388aa84edd397f3848bb45",
+      "bytes": 28858
+    },
+    {
+      "path": "scripts/d1-schema-gate.sql",
+      "sha256": "8fef693f77e9b12976481d95dc0e7e442593c5d26e1af13ee90405a7d52a0e88",
+      "bytes": 12914
+    },
+    {
+      "path": "scripts/migration-smoke.sh",
+      "sha256": "3821cbed804bb1644d742dfae22bd08fb4438c7ba87e420e169c71daa81c5221",
+      "bytes": 47875
+    },
+    {
+      "path": "tests/helpers/sqlite-d1.ts",
+      "sha256": "d503476a003b7333e7a24e6f6a2ae70d4e3d93101b9429258bc32c9f89923941",
+      "bytes": 7314
+    },
+    {
+      "path": "tests/integration/d1-schema-gate.test.ts",
+      "sha256": "8e81138c2e1a39767333910063d1fe7f8f92ddfeb432f208d73e187b08ac6510",
+      "bytes": 7079
+    },
+    {
+      "path": "tests/unit/production-catalog-lineage.test.mjs",
+      "bytes": 9654,
+      "sha256": "79f0c51910d9a3ff43d105bf90d1c3264aff5b84a7382d2113d5a2ce10e12e4b"
+    },
+    {
+      "path": "tests/unit/t21rb-v1-production.test.mjs",
+      "bytes": 7655,
+      "sha256": "42b2fdc6a4d686a74780c73a13bddfa541c274e8f0b65e14cdca9d639fcff51b"
+    },
+    {
+      "path": "tests/unit/production-migration-preflight.test.mjs",
+      "bytes": 11911,
+      "sha256": "904a48b9e549d438b5a4f6602caee49567c6e073bb15fef90f9113cd7ece134c"
+    },
+    {
+      "path": "tests/unit/production-certify-workflow.test.mjs",
+      "bytes": 17074,
+      "sha256": "3eebcbddd1af3f1c1ff133c9d29fa7ac32e8e052cb61c4979f75d6e93e1a3c42"
+    },
+    {
+      "path": "tests/unit/recipe-catalog-recovery.test.mjs",
+      "bytes": 28834,
+      "sha256": "25581ce068d9708fa74c016a46604e72b9d5312d67bc23a614e8eb3fec3f257b"
+    },
+    {
+      "path": "tests/unit/production-catalog-import-inspection.test.mjs",
+      "bytes": 62288,
+      "sha256": "cce57678b07db03037e6878ddfba856aaebc36f00684a6fb71e3e609298b51b6"
+    },
+    {
+      "path": "tests/unit/production-catalog-recovery-runner.test.mjs",
+      "bytes": 38052,
+      "sha256": "e0fc6b20666b578018a894f11afca26a409d95421a47bd22ba1575905807a595"
+    },
+    {
+      "path": "tests/unit/production-catalog-preflight-diagnostics.test.mjs",
+      "bytes": 20123,
+      "sha256": "82b87b1431813b9ea6fe6cfb2c782c413352c34342d112d71b0676ae948b4fbd"
+    },
+    {
+      "path": "tests/unit/staging-d1-migration-check.test.mjs",
+      "bytes": 9164,
+      "sha256": "93416eb52cf76d7dbf4a01bfefd71db9760edf6a0b2f184d46170a70b85a1e40"
+    },
+    {
+      "path": "tests/unit/staging-d1-runtime-readiness-check.test.mjs",
+      "bytes": 12128,
+      "sha256": "908ed271023d0af9c7c7d6aae82f2bbd946cf3f203a1dd762bead9b9a37fa27e"
+    },
+    {
+      "path": "tests/integration/staging-d1-runtime-readiness.test.mjs",
+      "bytes": 8638,
+      "sha256": "3b60fcedec63458d0b028c13971ba05f5f0380e55b86ea5094088eed2b558bde"
+    }
+  ],
+  "adrReviewedSha256": "69373ce16bb9cf7dfc4c1b216130d4c43b64671fb644bacefadd5f4dd4a4f8e3",
+  "fixedFindings": [
+    "reject unsupported guest transfer before compare/effects",
+    "recheck pinned principal before compare and invalid finalization",
+    "NULL-safe proof replay when issuance absent",
+    "same-batch legacy import accounting postcondition",
+    "paired expiration postconditions prevent split stale outcomes"
+  ],
+  "remainingBlockingFindings": [],
+  "integrationLimitations": [
+    "issuance replay currently returns in_progress even for terminal delivery; A2 receipt/UI contract required",
+    "routes and providers do not import dormant kernel",
+    "guarded registration creation and authorized guest transfer deferred",
+    "agent source review is not human PR approval or hosted D1 certificate"
+  ],
+  "testsRunByReviewer": false,
+  "implementationBlobReview": {
+    "reviewer": "b01a_sql_review",
+    "implementationSha": "0649324a729b57019df61da6bceec40cd9ba1135",
+    "verifiedSourceRecords": 21,
+    "mismatches": 0,
+    "protectedDiffEmpty": true,
+    "fixtureLimit": "Full Git history containing652e required; CI fetch-depth0."
+  },
+  "historicalPreservationReview": {
+    "reviewer": "b01a_sql_review",
+    "result": "no findings",
+    "reason": "eleven historical fixtures preserve0039/0038guards and immutable652e source; schemaSQLpin reviewed; scripts/workflows unchanged",
+    "adrClarifiedBeforeStatusSha256": "f2860126f44bda486ece26baf7e8ec15fa304b10eeb2600abbf79afb19f8bfce"
+  },
+  "adrReviewHistory": {
+    "initialReviewedSha256": "69373ce16bb9cf7dfc4c1b216130d4c43b64671fb644bacefadd5f4dd4a4f8e3",
+    "clarifiedBeforeAcceptanceSha256": "f2860126f44bda486ece26baf7e8ec15fa304b10eeb2600abbf79afb19f8bfce",
+    "acceptedStatusHashRecordedIn": "git-verification.json after status-only acceptance edit"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "classification": "MATCHING_INPUT_CSS_BYTE_PARITY",
+  "baselineImplementation": "7ef2f8407d3a6a958c78146db3b5c9a9f0990b78",
+  "baselineReceiptCommit": "2c42984b2839d1b03c3b0ccfb89998d3535a48d8",
+  "baselineBuildReceipt": "program-build-final-committed",
+  "newBuildReceipt": "b08-first-build",
+  "baselineBytes": 134861,
+  "currentBytes": 134861,
+  "baselineSha256": "796ca21e25b5dbfbf13ea2b3f70faed3f388d7c231d3cb00c056c77341cf4fef",
+  "currentSha256": "796ca21e25b5dbfbf13ea2b3f70faed3f388d7c231d3cb00c056c77341cf4fef",
+  "identical": true,
+  "currentAsset": "dist/client/assets/index-k6riNwl-.css",
+  "limits": [
+    "CSS only: Router JavaScript output intentionally changes",
+    "App source comparison alone does not certify browser navigation or offline behavior"
+  ],
+  "independentlyRecordedBaselineManifest": "docs/backend-upgrade/program-20261011/attachments/web-parity-second-recovery/candidate.manifest.json",
+  "independentlyRecordedBaselineAsset": {
+    "path": "assets/index-k6riNwl-.css",
+    "bytes": 134861,
+    "sha256": "796ca21e25b5dbfbf13ea2b3f70faed3f388d7c231d3cb00c056c77341cf4fef"
+  }
+}

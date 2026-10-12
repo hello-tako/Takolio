@@ -1,4 +1,3 @@
-import { execFileSync } from 'node:child_process';
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { tmpdir } from 'node:os';
@@ -45,9 +44,10 @@ const write = (dir, name, data) => {
   return file;
 };
 const result = (rows) => [{ success: true, results: rows }];
+// Historical readiness remains pinned to the reviewed 0039 source.
 const schema = migrationManifest(
   process.cwd(),
-  execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
+  '652e0d7632745e9b77cda4b5b3caac83a3ec1015',
 );
 const ledger = result(schema.migrations.map((migration) => ({ name: migration.name })));
 
@@ -263,7 +263,7 @@ describe('manual staging-only D1 runtime readiness workflow', () => {
     expect(workflowText).not.toMatch(/wrangler\.jsonc --/);
     expect(workflowText).not.toMatch(/--file\b/);
     expect(workflowText).not.toMatch(/\b(INSERT|UPDATE|DELETE|CREATE|DROP|ALTER)\b/);
-    const artifact = workflow.jobs.certify.steps.find((step) => step.uses === 'actions/upload-artifact@v4');
+    const artifact = workflow.jobs.certify.steps.find((step) => step.uses === 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02');
     expect(artifact.with).toMatchObject({
       path: 'staging-d1-runtime-readiness-receipt.json',
       'if-no-files-found': 'error',

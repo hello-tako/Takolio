@@ -19,7 +19,7 @@ let root: Root, host: HTMLDivElement, client: QueryClient;
 const food = { householdSize: 7, spicyLevel: 'hot', favoriteCuisines: ['italian'], dietaryRestrictions: ['vegetarian'] };
 const planning = { mealSlotsPreset: 'all', budgetTargetVnd: 1000000, shoppingFrequency: 'twice', priorities: ['variety'], autoWeeklyPlanEnabled: true };
 async function mount(node: ReactNode) {
-  await act(async () => root.render(<QueryClientProvider client={client}><MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>{node}</MemoryRouter></QueryClientProvider>));
+  await act(async () => root.render(<QueryClientProvider client={client}><MemoryRouter useTransitions={true}>{node}</MemoryRouter></QueryClientProvider>));
 }
 async function until(check: () => void) {
   const end = Date.now() + 1500;

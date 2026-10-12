@@ -1,0 +1,40 @@
+{
+  "classification": "OWNED_PRIVATE_SNAPSHOT_RELOCATION_AFTER_TEST_DISCOVERY",
+  "capturedAtUtc": "2026-10-11T18:34:01.982988+00:00",
+  "interruptedReceipt": "program-full-tests-committed.json",
+  "interruptedExit": 130,
+  "sourceChanged": false,
+  "snapshotsPreserved": true,
+  "rawSourcePublished": false,
+  "privateOriginalReceiptSha256": "d78b97d28fa4002ec7c00b4db177eb4163e48f62c4e3b1bafe1588fefd55578e",
+  "records": [
+    {
+      "originalPrivateDirectorySha256": "ba789ca9eada1f7f7dbe2eaa7ad8bed39e86c735cc0ebb31ccea33fbd552fc57",
+      "relocatedPrivateDirectorySha256": "160b922d92295dee2a2f776cc96d7c6a5b465421c9fb9539eefcfcb4330a7c01",
+      "files": 18,
+      "contentManifestSha256": "2377efdbebcf91b8056cda6172a0d11bf8be832198534357f0755f674ee76bae",
+      "bytesUnchanged": true
+    },
+    {
+      "originalPrivateDirectorySha256": "e9bccdc01ee65fd0a5f6566ab9b20cc9dbb903c90404888f371a55e3114405c7",
+      "relocatedPrivateDirectorySha256": "ea6651bab7c372f0639cb762087f6999c9dd31224fcb56a69f1bab3264d9d4c2",
+      "files": 4201,
+      "contentManifestSha256": "e3daa86a761734ab5f33439b7a634c4c18a0a5aeab235f028da5750ede115c19",
+      "bytesUnchanged": true
+    },
+    {
+      "originalPrivateDirectorySha256": "e54594a58e88f1cfc5f7b4a5d5747c8c730fa9fdaad004fa75db91a03bc511ad",
+      "relocatedPrivateDirectorySha256": "c5f67384f0b2973908affd1212075ff987176db8a974cdb252798dc28d2fc63f",
+      "files": 4202,
+      "contentManifestSha256": "ce63b6fb913cc91cf13e7fe16298447f698653e19483be8b3fe4149f721349cb",
+      "bytesUnchanged": true
+    },
+    {
+      "originalPrivateDirectorySha256": "d28025c4d25ce65acbe635097611a90a43a637dc57667cc10987484bfe8ea869",
+      "relocatedPrivateDirectorySha256": "e53c6a5f3ffe5bf167453a1f49ec284e1038db87835e8cdcac0b126e822387af",
+      "files": 4204,
+      "contentManifestSha256": "795d4714eeef8556618a22ff7e7e832815a3dcebbace37f24e72b1eaf8efa04a",
+      "bytesUnchanged": true
+    }
+  ]
+}

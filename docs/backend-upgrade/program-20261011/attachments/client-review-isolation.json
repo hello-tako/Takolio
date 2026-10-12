@@ -1,0 +1,71 @@
+{
+  "attachments": [
+    {
+      "path": ".artifacts/backend-program-20261011/b08-security/selftest-isolation-freeze/receipt.json",
+      "sha256": "ed92a6c4ea3336bd8bf3b70966d32638d58e5e3a97a3e9be560838c3f8a06db1"
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/b08-security/repository-isolation-freeze/receipt.json",
+      "sha256": "c32fbca5d20ed5e46dea266f16f17326b9b339e8cc3b5d9410358569542487d4"
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/security-agent-isolation/receipt.json",
+      "sha256": "9da3bc1b2d885debe93f21a252d0873c2fe9c791daf83a7c414cc8edcb762731"
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/b08-security/freeze-packet-isolation.json",
+      "sha256": "d658e95ea1b9afe6c21b8568367ee05ac435f1625ed41e2b6c4541be9b233d06"
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/b08-security/gitleaks-category-isolation-review.json",
+      "sha256": "69c68d48c068a133b8e8f63a15dd8c4dd982cf6b5e2f93dce1092d15420e286d"
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/b08-security-downloads/toolchain-receipt.json",
+      "sha256": "320384abf1128747b8873e33902628b524445cc1fbdba74adeebe4fe70166c82"
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/client-review-final.json",
+      "sha256": "ed979ffc993fb59799a24a6197892d87ba4a4fc2691ba345aab7ce67f4e4e5bd"
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/b08-security/freeze-packet.json",
+      "sha256": "5e078fab5709c3f903cae240b583d4533b18018320165d8364bc7353c0a883bf"
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/b08-security/selftest-freeze/receipt.json",
+      "sha256": "776f37f382f2667d02af23e1770306b0966294d4b24a742315414c131c927c39"
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/b08-security/repository-freeze/receipt.json",
+      "sha256": "0896710ead53a6e4f3020a60acd11d8b5085b1c713515b36d1238a7158fc4984"
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/security-agent-final/receipt.json",
+      "sha256": "efb12d0acb84b140c98b9cbdd8804b32f550620fda8801ddeeedd9e865458712"
+    }
+  ],
+  "capturedAtUtc": "2026-10-11T18:37:57.110485+00:00",
+  "classification": "SAFE_ISOLATION_FIX_REVIEW_AGGREGATE",
+  "fixReason": "Repository-local private snapshots duplicated test filenames into default Vitest discovery. Source copies now live in retained private OS temp outside repository; only private pointer and public content hashes remain under artifacts.",
+  "fullTestsOrBuildRun": false,
+  "independentReview": "a2_transaction proved external tree/private modes and rejects repository/nested/symlink/default-temp-inside-repository",
+  "knownRedSecurity": {
+    "gitleaks": "FINDINGS_16_UNREVIEWED",
+    "repository": "FAILED",
+    "selftest": "PASS_24_CASES_22_EXISTING_PLUS_2_ISOLATION_REGRESSIONS",
+    "semgrep": "ERROR_1_PARSER_DIAGNOSTIC",
+    "syft": "PASS_786_COMPONENTS",
+    "zizmor": "FINDINGS_72"
+  },
+  "originalReceiptsRemainImmutable": true,
+  "reviewedCommitBeforeFix": "d16d935877992406901a3afcaceaae612344ad73",
+  "schemaVersion": 1,
+  "selftests": 24,
+  "sourceHashes": {
+    "docs/backend-upgrade/b08/security/README.md": "75383624428d30ab04252224f67fa6d5208646c428f8d228eee6edf6ac77a5d8",
+    "docs/backend-upgrade/b08/security/runner.py": "97f3c206b1e0489914655ffa663736292bb89a5c761704615105f7313b68979f"
+  },
+  "sourceOrSecretTextPublished": false,
+  "status": "NO_UNRESOLVED_CONCRETE_ISOLATION_FIX_BLOCKER_SECURITY_GATE_STILL_FAILED"
+}

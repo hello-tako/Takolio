@@ -1,0 +1,30 @@
+{
+  "baseSha": "2c42984b2839d1b03c3b0ccfb89998d3535a48d8",
+  "before": [
+    {
+      "path": "package.json",
+      "bytes": 3023,
+      "sha256": "8255751d5a8f61bdc218b21e7822073afcaa509f62a097a97858ff8896da610b"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "bytes": 236266,
+      "sha256": "b9f5c384b33f25a1ccfb05bb10258ea95182a32434678d5087b2f62be8d26867"
+    },
+    {
+      "path": "vite.config.ts",
+      "bytes": 3388,
+      "sha256": "bf052546e17b32dffdf2619717f94df31ce19e26bf7ab6cfb15bdd8b5dbf19b1"
+    },
+    {
+      "path": "wrangler.jsonc",
+      "bytes": 3037,
+      "sha256": "c91126d5d08d39d2f86018226249bafef1a916f7c5783619535cfe139a156598"
+    },
+    {
+      "path": "wrangler.staging.jsonc",
+      "bytes": 1783,
+      "sha256": "a9c583f10d0fcce8bc38e04cbd2faa971cae4a12c7db9d65dd12670f194f6642"
+    }
+  ]
+}

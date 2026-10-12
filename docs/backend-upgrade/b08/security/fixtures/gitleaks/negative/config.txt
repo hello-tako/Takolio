@@ -1,0 +1,2 @@
+public_project_name = "takosan"
+credential_source = "runtime-secret-binding"

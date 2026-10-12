@@ -28,11 +28,11 @@ export const LandingPage: React.FC = () => {
     <main data-testid="landing-page" className="takosan-rebuild entry-page landing-page">
       <header className="entry-brand-header">
         <img src={TAKOSAN_KITCHEN.logo} alt="Takosan" translate="no" width={300} height={72} data-testid="landing-logo" />
-        <span>Bếp nhà, bớt lo.</span>
+        <span>{TAKOSAN_KITCHEN.motto}</span>
       </header>
       <div className="landing-intro">
         <p className="kitchen-eyebrow">Từ đồ ăn trong tủ đến bữa cơm trên bàn</p>
-        <h1>Ăn đủ.<br />Mua đủ.<br /><span>Dùng hết.</span></h1>
+        <h1>Bữa ngon, <br /><span>nhẹ đầu.</span></h1>
         <p className="landing-description">Bớt quên đồ trong tủ. Bớt băn khoăn hôm nay ăn gì. Takosan giúp bạn nhìn rõ nguyên liệu đang có và chuẩn bị bữa ăn tiếp theo.</p>
       </div>
       <div className="landing-actions">

@@ -260,7 +260,7 @@ async function adoptManualInventoryUpdate(c: any, db: any, kv: any, auth: AuthCo
       item: mapInventoryRow(receipt.manualPatch.projectionAfter) });
   } catch (error: any) {
     if (error instanceof LotCommandError) return lotFailureResponse(c, error);
-    console.error('Adopted manual update failed:', error);
+    console.error('Adopted manual update failed:');
     return c.json({ error: 'Lỗi cập nhật nguyên liệu trong cơ sở dữ liệu', code: 'DATABASE_ERROR' }, 500);
   }
 }
@@ -312,7 +312,7 @@ async function adoptManualInventoryDiscard(c: any, db: any, kv: any, auth: AuthC
     return c.json({ success: true, message: 'Đã xóa nguyên liệu thành công' });
   } catch (error: any) {
     if (error instanceof LotCommandError) return lotFailureResponse(c, error);
-    console.error('Adopted manual discard failed:', error);
+    console.error('Adopted manual discard failed:');
     return c.json({ error: 'Lỗi xóa nguyên liệu', code: 'DATABASE_ERROR' }, 500);
   }
 }
@@ -344,7 +344,7 @@ async function adoptManualInventoryCreate(c: any, db: any, kv: any, auth: AuthCo
     return adoptedItemResponse(c, db, kv, auth, item.id, false);
   } catch (error: any) {
     if (error instanceof LotCommandError) return lotFailureResponse(c, error);
-    console.error('Adopted manual create failed:', error);
+    console.error('Adopted manual create failed:');
     return c.json({ error: 'Không thể thêm nguyên liệu vào cơ sở dữ liệu', code: 'DATABASE_ERROR' }, 500);
   }
 }
@@ -507,7 +507,7 @@ export async function fetchHouseholdInventoryFromDb(
       const authority = await readInventoryAuthority(db, { householdId, actorId: options.actorId });
       return authority.items.map((item) => inventoryReadItemToApi(item, authority.inventoryVersion));
     } catch (err) {
-      console.error('T11 authority read failed:', err);
+      console.error('T11 authority read failed:');
       throw new InventoryReadError(err instanceof Error ? err.message : 'Authority read failed');
     }
   }
@@ -523,7 +523,7 @@ export async function fetchHouseholdInventoryFromDb(
 
     return items;
   } catch (err) {
-    console.error('Failed fetching inventory from D1:', err);
+    console.error('Failed fetching inventory from D1:');
     // A strict command must fail closed; returning stale/empty data here can
     // generate an incorrect plan or claim a mutation succeeded.
     if (options.strict) {
@@ -552,7 +552,7 @@ inventoryRoutes.get('/inventory', async (c) => {
     const items = await fetchHouseholdInventoryFromDb(db, auth.householdId, kv, { strict: true, actorId: auth.userId });
     return c.json({ items });
   } catch (err) {
-    console.error('GET inventory unavailable:', err);
+    console.error('GET inventory unavailable:');
     return c.json({ error: 'Database service unavailable', code: 'DATABASE_UNAVAILABLE' }, 503);
   }
 });
@@ -712,7 +712,7 @@ inventoryRoutes.post('/inventory', async (c) => {
     );
   } catch (err: any) {
     if (err instanceof InventoryWriterAuthorityError) return c.json({ error: err.message, code: err.code }, 409);
-    console.error('D1 INSERT_INVENTORY_ITEM error:', err);
+    console.error('D1 INSERT_INVENTORY_ITEM error:');
     return c.json({ error: 'Không thể thêm nguyên liệu vào cơ sở dữ liệu', code: 'DATABASE_ERROR' }, 500);
   }
 });
@@ -956,7 +956,7 @@ inventoryRoutes.patch('/inventory/:id', async (c) => {
       }
     }
     if (err instanceof InventoryWriterAuthorityError) return c.json({ error: err.message, code: err.code }, 409);
-    console.error('D1 UPDATE_INVENTORY_ITEM failed:', err);
+    console.error('D1 UPDATE_INVENTORY_ITEM failed:');
     return c.json({ error: 'Lỗi cập nhật nguyên liệu trong cơ sở dữ liệu', code: 'DATABASE_ERROR' }, 500);
   }
 });
@@ -1106,7 +1106,7 @@ inventoryRoutes.delete('/inventory/:id', async (c) => {
       }
     }
     if (err instanceof InventoryWriterAuthorityError) return c.json({ error: err.message, code: err.code }, 409);
-    console.error('D1 DELETE_INVENTORY_ITEM failed:', err);
+    console.error('D1 DELETE_INVENTORY_ITEM failed:');
     return c.json({ error: 'Lỗi xóa nguyên liệu', code: 'DATABASE_ERROR' }, 500);
   }
 });
@@ -1159,7 +1159,7 @@ inventoryRoutes.post('/inventory/adopt', async (c) => {
     }, execution.replayed ? 200 : 201);
   } catch (error: any) {
     if (error instanceof LotCommandError) return lotFailureResponse(c, error);
-    console.error('Inventory adoption failed:', error);
+    console.error('Inventory adoption failed:');
     return c.json({ error: 'Không thể nhận nạp kho vào lớp lot authority', code: 'DATABASE_ERROR' }, 500);
   }
 });

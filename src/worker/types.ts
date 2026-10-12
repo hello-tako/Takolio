@@ -105,6 +105,8 @@ export interface Env {
   GOOGLE_CLIENT_ID?: string;
   JWT_SECRET?: string;
   OTP_HASH_SECRET?: string;
+  // Reviewed first-cutover recovery: refuse OTP work without resetting durable authority.
+  STRICT_OTP_FAIL_CLOSED?: string;
   RESEND_API_KEY?: string;
   // Legacy deployment binding; no longer authorizes a subscription grant.
   PLUS_GRANT_SECRET?: string;

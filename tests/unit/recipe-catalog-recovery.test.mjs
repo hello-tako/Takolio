@@ -12,7 +12,8 @@ import {
   compileRecipeCatalogRecovery, compileOriginalCatalogImportInspection,
 } from '../../scripts/recipe-catalog-recovery.mjs';
 
-const sha = execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
+// Historical 0039 candidate retains its reviewed 0038 replay prefix after later migrations.
+const sha = '652e0d7632745e9b77cda4b5b3caac83a3ec1015';
 const tip = '0038_auth_onboarding_completion.sql';
 const repairId = 't21_v1_restore_rehearsal';
 const documentedInternalSql = `${RECOVERY_INTERNAL_TABLE_DDL}; INSERT INTO _cf_KV VALUES ('proof', X'0011FF')`;

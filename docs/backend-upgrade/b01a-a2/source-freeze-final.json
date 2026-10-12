@@ -1,0 +1,106 @@
+{
+  "capturedAtUtc": "2026-10-11T10:11:28.820776+00:00",
+  "baseSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+  "files": [
+    {
+      "path": "packages/db/src/auth-otp.ts",
+      "bytes": 33804,
+      "sha256": "b8a869f4f65c59e178385becbee43d706836a837f22738ff415994ebffe82c4b"
+    },
+    {
+      "path": "src/web/features/auth/ForgotPasswordMode.tsx",
+      "bytes": 6452,
+      "sha256": "dbd3365503b1691f4020cb235df64629fa83f0b72845be3714ed41112ae3e67b"
+    },
+    {
+      "path": "src/web/features/auth/OtpMode.tsx",
+      "bytes": 9636,
+      "sha256": "13a5c1204b67a0cf46cce3e327aca882b3bd463764585b73429e0fc1c7d5a1f3"
+    },
+    {
+      "path": "src/web/features/auth/auth-shared.ts",
+      "bytes": 1558,
+      "sha256": "bb3a23577859468719cb8c859a5fb510409ee2cbe57e56e521c4cb2dee7bc106"
+    },
+    {
+      "path": "src/web/pages/AuthPage.tsx",
+      "bytes": 35735,
+      "sha256": "dcb93183b2eaf342c7db8a87d12b84caa9b8d32c3763748e0f7e3b34cf935555"
+    },
+    {
+      "path": "src/web/services/auth-otp-retry.ts",
+      "bytes": 3911,
+      "sha256": "8a2a3e695caa9836099b2c8fa8891a2935b10733da7ee5642cb50b9947653ee2"
+    },
+    {
+      "path": "src/web/services/auth.ts",
+      "bytes": 9102,
+      "sha256": "e5c40a59820afb4bcebe4be491015112cd60e56d1330aa56579774ca808e34a4"
+    },
+    {
+      "path": "src/worker/routes/auth.ts",
+      "bytes": 25317,
+      "sha256": "334283593f28b83f10a22a7f60f1ed27fe5337e6a2e4315230ec882de5aa9958"
+    },
+    {
+      "path": "src/worker/services/auth-otp-http.ts",
+      "bytes": 12501,
+      "sha256": "7df979cdcec66f6118038d13cac655089e0428a268f918fb11f4c61c872af7f3"
+    },
+    {
+      "path": "src/worker/services/auth-otp.ts",
+      "bytes": 13572,
+      "sha256": "151bd253d8d4b1e2ef482943d834d8750f00ac069a43f8c93642bbcbdb871178"
+    },
+    {
+      "path": "src/worker/services/cleanup.ts",
+      "bytes": 8539,
+      "sha256": "ce00c291fa93543d5880e010c0491713fc427a7d80b51a9ec9d5b6b9b648d79e"
+    },
+    {
+      "path": "src/worker/validation/schemas.ts",
+      "bytes": 8601,
+      "sha256": "fb905abfb9005be39502590e794a0c4e2e3a5cc2cf91ab272fd686fd348c8e78"
+    },
+    {
+      "path": "tests/integration/auth-hardening.test.ts",
+      "bytes": 71468,
+      "sha256": "d0984e52c8c9baffe5e33add1d9e2b1abf3f937a79ba7653ef40a6148cf795c8"
+    },
+    {
+      "path": "tests/integration/auth-otp-coordinator.test.ts",
+      "bytes": 49207,
+      "sha256": "67ea01e9d4aef9fc302261f6eeee35d195425b89ef87497e5dc4dc187b36ffbe"
+    },
+    {
+      "path": "tests/integration/auth-strict-routes.test.ts",
+      "bytes": 31911,
+      "sha256": "df57751295dd21d2703cb7130b411b53e32c39ffbad834d3906630abf2866653"
+    },
+    {
+      "path": "tests/unit/auth-guest-transfer-deferred.test.tsx",
+      "bytes": 14242,
+      "sha256": "c3589c96a11bcd7d58eef0852011de76fa8fee88fcbbf89455106854f8d3be6b"
+    },
+    {
+      "path": "tests/unit/auth-otp-client.test.ts",
+      "bytes": 13645,
+      "sha256": "90ddfdbb12130196aaba7460c7c13c395495c47bce93a4a7294ab1f238829d05"
+    },
+    {
+      "path": "tests/unit/auth-verify-route.test.tsx",
+      "bytes": 46711,
+      "sha256": "291ae2a440c9992818eacc301d28ba192764713ba1d024d60ebbc14c7776ea84"
+    },
+    {
+      "path": "tests/unit/auth.test.ts",
+      "bytes": 12829,
+      "sha256": "37071f9794a445694a58ce67cc6ab5a050e5e36b3a4e74569204efb865b09ef7"
+    },
+    {
+      "path": "tests/unit/cleanup.test.ts",
+      "bytes": 6881,
+      "sha256": "e9d543a84e6e05ddbb6545d6f54a279e96bca6822acf23634e04331050a7b663"
+    }
+  ]
+}

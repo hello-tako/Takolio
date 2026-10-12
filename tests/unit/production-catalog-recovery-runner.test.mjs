@@ -1,4 +1,3 @@
-import { execFileSync } from 'node:child_process';
 import { existsSync, mkdtempSync, readFileSync, symlinkSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -12,7 +11,8 @@ import { compileOriginalCatalogImportInspection, loadCertifiedRecoverySource } f
 import { requirePinnedStaticWorker, runCatalogRecovery, verifyRecoveryLedger } from '../../scripts/production-catalog-recovery-runner.mjs';
 
 const cwd = process.cwd();
-const sha = execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
+// Historical 0039 candidate retains its reviewed 0038 replay prefix after later migrations.
+const sha = '652e0d7632745e9b77cda4b5b3caac83a3ec1015';
 const fingerprint = 'f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37';
 const capacityBytes = 8 * 1024 * 1024;
 let source;

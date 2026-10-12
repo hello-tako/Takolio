@@ -1,28 +1,30 @@
 {
-  "name": "Takosan - Quản lý tủ lạnh & Gợi ý món ăn",
+  "name": "Takosan - Trợ lý bữa ăn gia đình",
   "short_name": "Takosan",
-  "description": "Mở tủ lạnh. Biết ngay hôm nay ăn gì.",
+  "description": "Bữa ngon, nhẹ đầu. Lên thực đơn, quản lý nguyên liệu và mua sắm thông minh.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#F7F3EC",
-  "theme_color": "#245D49",
+  "background_color": "#FFF8F3",
+  "theme_color": "#2E7D5B",
   "orientation": "portrait",
   "icons": [
     {
-      "src": "/takosan/rebuild/app-icons/icon-192.png",
+      "src": "/takosan/v3/app-icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/takosan/rebuild/app-icons/icon-512.png",
+      "src": "/takosan/v3/app-icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "/takosan/rebuild/app-icons/icon-maskable-512.png",
+      "src": "/takosan/v3/app-icons/icon-maskable-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
     }
-  ]
+  ],
+  "id": "/",
+  "scope": "/"
 }

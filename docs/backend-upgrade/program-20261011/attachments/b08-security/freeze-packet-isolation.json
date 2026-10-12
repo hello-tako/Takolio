@@ -1,0 +1,57 @@
+{
+  "actualResults": {
+    "gitleaks": "FINDINGS_16_UNREVIEWED",
+    "repository": "FAILED",
+    "selftest": "PASS_24_CASES_22_EXISTING_PLUS_2_ISOLATION_REGRESSIONS",
+    "semgrep": "ERROR_1_PARSER_DIAGNOSTIC",
+    "syft": "PASS_786_COMPONENTS",
+    "zizmor": "FINDINGS_72"
+  },
+  "authorizedChangedSource": [
+    "docs/backend-upgrade/b08/security/runner.py",
+    "docs/backend-upgrade/b08/security/README.md"
+  ],
+  "capturedAtUtc": "2026-10-11T18:37:57.095598+00:00",
+  "classification": "ISOLATION_FIX_FROZEN_LOCAL_CANDIDATE_WITH_UNRESOLVED_SECURITY_GATE",
+  "isolation": {
+    "freshOutputDirectoriesContainCopiedTestFiles": false,
+    "oldReceiptsPreserved": true,
+    "privatePointerMode": "0600",
+    "privateSnapshotsRetained": true,
+    "publicSnapshotPathsPublished": false,
+    "repositoryLocalTempRejected": true,
+    "snapshotMode": "0700",
+    "sourceSnapshotsOutsideRepository": true
+  },
+  "ownedFiles": {
+    "docs/backend-upgrade/b08/security/README.md": "75383624428d30ab04252224f67fa6d5208646c428f8d228eee6edf6ac77a5d8",
+    "docs/backend-upgrade/b08/security/fixtures/gitleaks/negative/config.txt": "2ff7ea324a54ecc084c4f58c76ea35ba657b8fee0853655cb49dade6235d180f",
+    "docs/backend-upgrade/b08/security/fixtures/gitleaks/positive/synthetic.txt": "84db9d8fd7f7ce525cbc123ff29af0d1f3fc10bed29f3a0afa511cf589c671cf",
+    "docs/backend-upgrade/b08/security/fixtures/semgrep/negative/sample.ts": "e372fb3cbd3130a9ded35ab2fea73c76e88191f54165ec82f22317ddb47bc430",
+    "docs/backend-upgrade/b08/security/fixtures/semgrep/positive/sample.ts": "d3be94efc95cfcdc0d5625a25c8354849e8e99171374869b7c66747d5762c3ba",
+    "docs/backend-upgrade/b08/security/fixtures/syft/negative/README.txt": "1168b3e51b54b50ad26981590ec8b6aeffd21562b93f6ace4a44c08681509bbf",
+    "docs/backend-upgrade/b08/security/fixtures/syft/positive/package-lock.json": "d995b9af88a56ab3f3f0fb62fbbd8cddd5d0288b72c04e028c00631f3e2e8747",
+    "docs/backend-upgrade/b08/security/fixtures/syft/positive/package.json": "b70c2fbbfca205e3d009dd5c9f7f66d5ed4a85cf788c4d078ca91960ba9bac8a",
+    "docs/backend-upgrade/b08/security/fixtures/zizmor/malformed/workflow.yml": "745a9a82274fdddbd7e4209ebce7a4a031c3c3afe2573f7bab882f4acf927d55",
+    "docs/backend-upgrade/b08/security/fixtures/zizmor/negative/workflow.yml": "d25eff2df7c6d4d710250b385aa0f0b1e48f75586b692ff34b5b36f92db0f897",
+    "docs/backend-upgrade/b08/security/fixtures/zizmor/positive/workflow.yml": "88a60982a87f936d3efebf50e8317fb7a61b791ed286737b4dafc3ebdd0e949e",
+    "docs/backend-upgrade/b08/security/install-tools.py": "d32b520222a4a2b243e57976bf0de21bc4c616b77bd99e093386bc5ef73ecf08",
+    "docs/backend-upgrade/b08/security/rules/gitleaks.toml": "7c1ed3d2163949172eb670c885aa0ab678594c59badf537372bf9aa86b192c31",
+    "docs/backend-upgrade/b08/security/rules/semgrep.yml": "65a3fbd1e62829ba845f4e2dc3396bf1ac4211660ae4f6b582b117e551c9da99",
+    "docs/backend-upgrade/b08/security/rules/syft.yml": "9aee3e875e9cafcb974a70517a522059598073e0f809dcd2dd9fab9bbb5eb5a5",
+    "docs/backend-upgrade/b08/security/runner.py": "97f3c206b1e0489914655ffa663736292bb89a5c761704615105f7313b68979f",
+    "docs/backend-upgrade/b08/security/semgrep-requirements.lock": "0698a91a7d8455a177cbbfc6161338745cbda5dc47799e9f5242cd510be63423",
+    "docs/backend-upgrade/b08/security/tool-manifest.json": "094840c1ec0ce518f82325528a8cb83b1eafe7af65a44669cad6dbc09e3a45c2"
+  },
+  "productionCertified": false,
+  "receipts": {
+    ".artifacts/backend-program-20261011/b08-security-downloads/toolchain-receipt.json": "320384abf1128747b8873e33902628b524445cc1fbdba74adeebe4fe70166c82",
+    ".artifacts/backend-program-20261011/b08-security/gitleaks-category-isolation-review.json": "69c68d48c068a133b8e8f63a15dd8c4dd982cf6b5e2f93dce1092d15420e286d",
+    ".artifacts/backend-program-20261011/b08-security/repository-isolation-freeze/receipt.json": "c32fbca5d20ed5e46dea266f16f17326b9b339e8cc3b5d9410358569542487d4",
+    ".artifacts/backend-program-20261011/b08-security/selftest-isolation-freeze/receipt.json": "ed92a6c4ea3336bd8bf3b70966d32638d58e5e3a97a3e9be560838c3f8a06db1",
+    ".artifacts/backend-program-20261011/security-agent-isolation/receipt.json": "9da3bc1b2d885debe93f21a252d0873c2fe9c791daf83a7c414cc8edcb762731"
+  },
+  "reviewedCommitBeforeFix": "d16d935877992406901a3afcaceaae612344ad73",
+  "schemaVersion": 1,
+  "toolchainReceiptSha256": "320384abf1128747b8873e33902628b524445cc1fbdba74adeebe4fe70166c82"
+}

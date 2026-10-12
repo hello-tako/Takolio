@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "classification": "ACTUAL_LOCAL_REVIEW_AND_VALIDATION_RECORD",
+  "reviewer": "a2_transaction",
+  "baseSha": "1963c469e2e3bd4819cda6bb9ef8162101ad523a",
+  "implementationSha": "d16d935877992406901a3afcaceaae612344ad73",
+  "attachments": [
+    {
+      "path": ".artifacts/backend-b04b/candidate-schema-replay.log",
+      "bytes": 154,
+      "sha256": "93b73c2ba51ed9ba8ec284636565e17c084e4ef951f136662aec952aad125aed",
+      "safeMetadataOrNonSensitiveValidationLog": true
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/local-d1/local-d1.json",
+      "bytes": 13522,
+      "sha256": "a927476827380f3621df30166050394cff8d8cfc4e2572113829d5fefd0ac10d",
+      "safeMetadataOrNonSensitiveValidationLog": true
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/pilot-agent-review.json",
+      "bytes": 2216,
+      "sha256": "c661335c41be42fb7fd655ba7f34ecea57797610b9c89ed7697a1a2f1840bd2f",
+      "safeMetadataOrNonSensitiveValidationLog": true
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/candidate-workflow-agent/receipt.json",
+      "bytes": 915,
+      "sha256": "d607134054089e1fbfe36cdba85da39dde691e894b28eddc15f91ae4b81ec899",
+      "safeMetadataOrNonSensitiveValidationLog": true
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/candidate-audit-payment-agent/receipt.json",
+      "bytes": 1757,
+      "sha256": "8cf1655b9f3c3de03d51439567f7752050f7e3521da78009388586192f39d42c",
+      "safeMetadataOrNonSensitiveValidationLog": true
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/security-agent-final/receipt.json",
+      "bytes": 5228,
+      "sha256": "efb12d0acb84b140c98b9cbdd8804b32f550620fda8801ddeeedd9e865458712",
+      "safeMetadataOrNonSensitiveValidationLog": true
+    },
+    {
+      "path": ".artifacts/backend-program-20261011/scope-agent-final-review.json",
+      "bytes": 678026,
+      "sha256": "aafc14cf5181bb1b0e90e4c0a965a1e1b9b03824c0e7afbd5f17a5365ec89882",
+      "safeMetadataOrNonSensitiveValidationLog": true
+    }
+  ],
+  "checks": [
+    {
+      "scope": "B04b dormant durable budget candidate",
+      "performedByThisReviewer": [
+        "Implemented bounded capabilities, SQL policy/reservation candidate, and 57 new focused cases",
+        "Replayed candidate SQL in memory atop exact 40 migrations; quick_check ok and foreign_key_check empty",
+        "Rechecked frozen module/test/schema/ADR hashes unchanged at implementation commit"
+      ],
+      "independentSourceReviewByOtherAgent": "a2_client",
+      "candidateOnly": true,
+      "runtimeIntegrated": false
+    },
+    {
+      "scope": "B05b pilot preparation",
+      "performedByThisReviewer": [
+        "Executed deterministic generator --check under Node 24",
+        "Independently checked 40/60/20 unique subjects and overlapping risk strata",
+        "Verified exact queue subject fields, ingredient/nutrition/source occurrence digests",
+        "Verified all reviewer/evidence fields null, decisions PENDING, authority false"
+      ],
+      "findingCount": 0,
+      "humanReviewComplete": false
+    },
+    {
+      "scope": "Isolated local D1",
+      "performedByThisReviewer": [
+        "Authored isolated cwd/XDG/environment-allowlist validation script without changing HOME",
+        "Applied exact 40 migrations only to fresh local fake database",
+        "Confirmed second apply and pending list empty, schema gate empty, FK empty, quick_check ok, six OTP tables",
+        "Captured migration input hashes and raw command hashes; credentials and remote operations absent"
+      ],
+      "productionCertified": false
+    },
+    {
+      "scope": "Candidate security workflow and payment fixture",
+      "performedByThisReviewer": [
+        "Ran real pinned zizmor 1.30.1 with offline/strict/no-config/no-ignores against exact candidate workflow",
+        "Executed 11 independent synthetic audit validation cases; typed counts/exit disagreement/malformed output rejected",
+        "Verified payment fixture delta consists solely of household and owner membership seed; all 148 assertions and every other byte unchanged"
+      ],
+      "workflowEnabled": false,
+      "hostedExecuted": false
+    },
+    {
+      "scope": "B08b security runner",
+      "performedByThisReviewer": [
+        "Reviewed fail-closed parser, provenance, private artifacts, source snapshot and public metadata",
+        "Reproduced incomplete SAST coverage, validation-cache integrity bypass, and excluded-bytecode execution gap using own ignored fixtures",
+        "Confirmed final runner rejects changed fixture binary after earlier success and executes original source despite altered valid bytecode",
+        "Executed 16 final independent decoder cases; private markers absent from public metadata"
+      ],
+      "resolvedFindings": [
+        "Bind exact SAST source coverage",
+        "Bind installed Semgrep runtime/Python bytes",
+        "Hash unknown rule IDs before public reporting",
+        "Revalidate tool integrity for every child execution",
+        "Isolate bytecode cache for Python child execution",
+        "Validate audit JSON counts and exit agreement"
+      ],
+      "remainingConcreteRunnerFindings": [],
+      "repositorySecurityGate": "FAILED_UNRESOLVED_EXISTING_FINDINGS",
+      "releaseCertified": false
+    },
+    {
+      "scope": "Final source and protected files",
+      "performedByThisReviewer": [
+        "Compared all 50 source and 30 candidate records with implementation Git blob bytes and exact frozen hashes",
+        "Compared all 1847 protected records with actual baseline Git blob bytes, frozen hashes and executable modes",
+        "Confirmed exact non-document changed path set, no extra out-of-scope source paths",
+        "Confirmed planner-contract baseline bytes, payment-only fixture delta, 40 migrations and masterplan hash unchanged"
+      ],
+      "sourceCount": 50,
+      "candidateSourceCount": 30,
+      "protectedCount": 1847,
+      "scopeFreezeLimitation": "Future untracked source paths have broad prefix allowance; current exact sets independently verified"
+    }
+  ],
+  "B07HeadParityAttribution": "No separate six-case Week service HEAD comparison was executed by this reviewer; final protected planner-contract baseline equality was verified. Obtain original service parity receipt from its author.",
+  "boundaries": {
+    "actualScannerRuntimeMutated": false,
+    "mainCheckoutMutated": false,
+    "sharedDocsMutatedDuringReview": false,
+    "fullRepositoryTestsOrBuildRunDuringFinalReview": false,
+    "realSecretValuesUsedOrPublished": false,
+    "sourceUrlsFetched": false,
+    "remoteDatabaseOrProviderActions": false
+  },
+  "productionCertified": false,
+  "securityCertified": false
+}

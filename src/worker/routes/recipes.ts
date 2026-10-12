@@ -250,8 +250,9 @@ recipeRoutes.get('/recipes', async (c) => {
 });
 
 // GET /api/v1/recipes/:id
-recipeRoutes.get('/recipes/:id', async (c) => {
+recipeRoutes.get('/recipes/:id', tenancyGuard, async (c) => {
   const idOrSlug = c.req.param('id');
+  if (!idOrSlug) return c.json({ error: 'Recipe not found' }, 404);
   const auth = c.get('auth');
   const { snapshot } = await recipeAuthority(c);
   const recipe = snapshot.findByIdOrSlug(idOrSlug);
@@ -260,7 +261,9 @@ recipeRoutes.get('/recipes/:id', async (c) => {
     return c.json({ error: 'Recipe not found' }, 404);
   }
 
-  const inventory = await fetchHouseholdInventoryFromDb(c.env.DB, auth.householdId, c.env.CACHE, { actorId: auth.userId });
+  const inventory = auth.userId === 'guest_anonymous'
+    ? []
+    : await fetchHouseholdInventoryFromDb(c.env.DB, auth.householdId, c.env.CACHE, { actorId: auth.userId });
   const evaluation = evaluateRecipeMatch(recipe, { inventory });
   const [recipeWithMedia] = await enrichRecipesWithMedia(c.env, [recipe]);
 
@@ -271,7 +274,7 @@ recipeRoutes.get('/recipes/:id', async (c) => {
 });
 
 // GET /api/v1/recommendations
-recipeRoutes.get('/recommendations', async (c) => {
+recipeRoutes.get('/recommendations', tenancyGuard, async (c) => {
   const { snapshot } = await recipeAuthority(c);
   const auth = c.get('auth');
   const noBuy = c.req.query('noBuy') === 'true';
@@ -701,7 +704,7 @@ recipeRoutes.post('/recipes/:id/cook/complete', tenancyGuard, async (c) => {
       }
     }
     if (err instanceof InventoryWriterAuthorityError) return c.json({ error: err.message, code: err.code }, 409);
-    console.error('D1 complete cooking transaction failed:', err);
+    console.error('D1 complete cooking transaction failed:');
     return c.json({ error: 'Lỗi hoàn tất nấu món trong cơ sở dữ liệu', code: 'DATABASE_ERROR' }, 500);
   }
 });
@@ -779,10 +782,14 @@ async function completeAdoptedCooking(c: any, db: any, kv: any, auth: AuthContex
           code: 'INSUFFICIENT_INVENTORY', available: 0, requested: deduction.quantityDeducted, unit: deduction.unit,
         }, 409);
       }
+      const availableMilli = eligible.reduce((total, { lot }) =>
+        total + Math.max(0, lot.quantityMilli - (planned.get(lot.id)?.takeMilli ?? 0)), 0);
       for (const { lot } of eligible) {
         if (remainingMilli <= 0) break;
-        const takeMilli = Math.min(remainingMilli, lot.quantityMilli);
         const existing = planned.get(lot.id);
+        const unallocatedMilli = Math.max(0, lot.quantityMilli - (existing?.takeMilli ?? 0));
+        if (unallocatedMilli === 0) continue;
+        const takeMilli = Math.min(remainingMilli, unallocatedMilli);
         planned.set(lot.id, {
           lotId: lot.id, canonicalUnit: lot.canonicalUnit,
           takeMilli: (existing?.takeMilli ?? 0) + takeMilli,
@@ -790,10 +797,10 @@ async function completeAdoptedCooking(c: any, db: any, kv: any, auth: AuthContex
         remainingMilli -= takeMilli;
       }
       if (remainingMilli > 0) {
-        const available = eligible.reduce((total, { lot }) => total + lot.quantityMilli, 0);
+        const available = convertUnit(availableMilli / 1000, eligible[0].lot.canonicalUnit, deduction.unit);
         return c.json({
           error: `Số lượng ${lookupName} trong tủ không đủ để hoàn tất món ăn`,
-          code: 'INSUFFICIENT_INVENTORY', available: available / 1000,
+          code: 'INSUFFICIENT_INVENTORY', available,
           requested: deduction.quantityDeducted, unit: deduction.unit,
         }, 409);
       }
@@ -857,7 +864,7 @@ async function completeAdoptedCooking(c: any, db: any, kv: any, auth: AuthContex
       const failure = inventoryAuthorityFailure(error);
       return c.json({ error: error.message, code: failure.code }, failure.status);
     }
-    console.error('Adopted cooking failed:', error);
+    console.error('Adopted cooking failed:');
     return c.json({ error: 'Lỗi hoàn tất nấu món trong cơ sở dữ liệu', code: 'DATABASE_ERROR' }, 500);
   }
 }

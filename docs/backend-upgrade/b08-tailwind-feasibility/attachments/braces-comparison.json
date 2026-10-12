@@ -1,0 +1,203 @@
+{
+  "node": "v24.16.0",
+  "differentialVectors": 756,
+  "vectorSha256": "83405246b657ae01063a2eae5e98612d843dd090c687a36fc3aa42260df316a1",
+  "mismatches": 0,
+  "controls": [
+    {
+      "stackBudget": "default",
+      "method": "compile",
+      "kind": "braces",
+      "published": {
+        "outcome": "RETURNED"
+      },
+      "patched": {
+        "outcome": "BOUNDED_REJECTION",
+        "errorClass": "RangeError"
+      }
+    },
+    {
+      "stackBudget": "default",
+      "method": "compile",
+      "kind": "parentheses",
+      "published": {
+        "outcome": "RETURNED"
+      },
+      "patched": {
+        "outcome": "BOUNDED_REJECTION",
+        "errorClass": "RangeError"
+      }
+    },
+    {
+      "stackBudget": "default",
+      "method": "expand",
+      "kind": "braces",
+      "published": {
+        "outcome": "RETURNED"
+      },
+      "patched": {
+        "outcome": "BOUNDED_REJECTION",
+        "errorClass": "RangeError"
+      }
+    },
+    {
+      "stackBudget": "default",
+      "method": "expand",
+      "kind": "parentheses",
+      "published": {
+        "outcome": "RETURNED"
+      },
+      "patched": {
+        "outcome": "BOUNDED_REJECTION",
+        "errorClass": "RangeError"
+      }
+    },
+    {
+      "stackBudget": "default",
+      "method": "stringify",
+      "kind": "braces",
+      "published": {
+        "outcome": "RETURNED"
+      },
+      "patched": {
+        "outcome": "BOUNDED_REJECTION",
+        "errorClass": "RangeError"
+      }
+    },
+    {
+      "stackBudget": "default",
+      "method": "stringify",
+      "kind": "parentheses",
+      "published": {
+        "outcome": "RETURNED"
+      },
+      "patched": {
+        "outcome": "BOUNDED_REJECTION",
+        "errorClass": "RangeError"
+      }
+    },
+    {
+      "stackBudget": "512KiB",
+      "method": "compile",
+      "kind": "braces",
+      "published": {
+        "outcome": "HOST_STACK_EXHAUSTION",
+        "errorClass": "RangeError"
+      },
+      "patched": {
+        "outcome": "BOUNDED_REJECTION",
+        "errorClass": "RangeError"
+      }
+    },
+    {
+      "stackBudget": "512KiB",
+      "method": "compile",
+      "kind": "parentheses",
+      "published": {
+        "outcome": "HOST_STACK_EXHAUSTION",
+        "errorClass": "RangeError"
+      },
+      "patched": {
+        "outcome": "BOUNDED_REJECTION",
+        "errorClass": "RangeError"
+      }
+    },
+    {
+      "stackBudget": "512KiB",
+      "method": "expand",
+      "kind": "braces",
+      "published": {
+        "outcome": "HOST_STACK_EXHAUSTION",
+        "errorClass": "RangeError"
+      },
+      "patched": {
+        "outcome": "BOUNDED_REJECTION",
+        "errorClass": "RangeError"
+      }
+    },
+    {
+      "stackBudget": "512KiB",
+      "method": "expand",
+      "kind": "parentheses",
+      "published": {
+        "outcome": "HOST_STACK_EXHAUSTION",
+        "errorClass": "RangeError"
+      },
+      "patched": {
+        "outcome": "BOUNDED_REJECTION",
+        "errorClass": "RangeError"
+      }
+    },
+    {
+      "stackBudget": "512KiB",
+      "method": "stringify",
+      "kind": "braces",
+      "published": {
+        "outcome": "HOST_STACK_EXHAUSTION",
+        "errorClass": "RangeError"
+      },
+      "patched": {
+        "outcome": "BOUNDED_REJECTION",
+        "errorClass": "RangeError"
+      }
+    },
+    {
+      "stackBudget": "512KiB",
+      "method": "stringify",
+      "kind": "parentheses",
+      "published": {
+        "outcome": "HOST_STACK_EXHAUSTION",
+        "errorClass": "RangeError"
+      },
+      "patched": {
+        "outcome": "BOUNDED_REJECTION",
+        "errorClass": "RangeError"
+      }
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "lib/compile.js",
+      "upstreamSha256": "dc98f22eee3d511785d92a00758d5f0d48efed5f5813bdecc2de430c529b5c9f",
+      "installedSha256": "fc16add9cae9eea8ae903d81e8b73ae8e8ec1d87c02c57d2461afec0aa07af08",
+      "changed": true
+    },
+    {
+      "path": "lib/constants.js",
+      "upstreamSha256": "c18ac5adb57308f1ce42a28552da3a31f5d83709743ebd9a636336813a744d4b",
+      "installedSha256": "fc3db282b8a5b8b8a55cda2e85ba05f0c49da138edc76227454d3f3cbc76d5fb",
+      "changed": true
+    },
+    {
+      "path": "lib/expand.js",
+      "upstreamSha256": "41ccc196ebfa7b7781a634e721eb744e4e7bcb54cba427a7e3d6806a1b9e58f7",
+      "installedSha256": "c0481d34aa808e8eb5e3a08c48ef52c3ca124e636b43293d20875edd80a6d4ef",
+      "changed": true
+    },
+    {
+      "path": "lib/parse.js",
+      "upstreamSha256": "e572166565f15fa6ad9865ae49d678218e32aabfd1b3720f6d0d43d39800d310",
+      "installedSha256": "c9098f739ed2cd4ffdc8e247370c060c7614b399a44c7d76590277f66faa6b81",
+      "changed": true
+    },
+    {
+      "path": "lib/stringify.js",
+      "upstreamSha256": "379f22d77bfa1478341ccd49c5e4267464aabcbba03558bab332aac23fc6f23a",
+      "installedSha256": "1fa2879dfdad977da659a35b6f82d5a1c14f8839e78e557bcfc4a651a8f518d4",
+      "changed": true
+    },
+    {
+      "path": "lib/utils.js",
+      "upstreamSha256": "b5a7596aa67730412b3c029ef09e84e6b67b8e445cffd35d1d295549c89066c7",
+      "installedSha256": "b5a7596aa67730412b3c029ef09e84e6b67b8e445cffd35d1d295549c89066c7",
+      "changed": false
+    }
+  ],
+  "patchSha256": "3f11ec1cd189913f4389e48eb8614f5f7d38b6e14b4b8aa37a46a85dcdfc9751",
+  "limits": [
+    "Bounded nested strings/ordinary AST child recursion; not all resource exhaustion or hostile AST parent graphs.",
+    "Official unpatched source integrity verified; no production provider/data used.",
+    "Default Node 24 strings may not exhaust this host; 512KiB child stack is an explicit constrained-host test.",
+    "Audit advisory remains high; the local patch does not alter the upstream version."
+  ]
+}

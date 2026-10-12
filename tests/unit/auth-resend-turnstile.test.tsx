@@ -11,6 +11,19 @@ function setInput(input: HTMLInputElement, value: string) {
   input.dispatchEvent(new Event('input', { bubbles: true }));
 }
 
+async function until(assertion: () => void) {
+  const deadline = Date.now() + 1_500;
+  for (;;) {
+    await act(async () => { await new Promise((resolve) => setTimeout(resolve, 5)); });
+    try {
+      assertion();
+      return;
+    } catch (failure) {
+      if (Date.now() >= deadline) throw failure;
+    }
+  }
+}
+
 describe('registration-only Turnstile lifecycle', () => {
   let root: Root;
   let host: HTMLDivElement;
@@ -67,10 +80,9 @@ describe('registration-only Turnstile lifecycle', () => {
   it('challenges once during registration and resends OTP without another widget', async () => {
     await act(async () => {
       root = createRoot(host);
-      root.render(<MemoryRouter initialEntries={['/auth?mode=register']}><AuthPage /></MemoryRouter>);
-      await Promise.resolve();
-      await Promise.resolve();
+      root.render(<MemoryRouter useTransitions={false} initialEntries={['/auth?mode=register']}><AuthPage /></MemoryRouter>);
     });
+    await until(() => { expect(window.turnstile?.render).toHaveBeenCalledTimes(1); });
 
     const fields = host.querySelectorAll('input');
     await act(async () => {
@@ -78,32 +90,30 @@ describe('registration-only Turnstile lifecycle', () => {
       setInput(fields[1] as HTMLInputElement, 'otp@example.com');
       setInput(fields[2] as HTMLInputElement, 'strong-password');
       (host.querySelector('form') as HTMLFormElement).dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
-      await Promise.resolve();
-      await Promise.resolve();
+    });
+    await until(() => {
+      expect(host.textContent).toContain('Tài khoản đã được lưu nhưng email OTP chưa gửi được');
+      const pendingResend = [...host.querySelectorAll('button')].find((button) => button.textContent?.includes('Gửi lại mã OTP'));
+      expect(pendingResend).toBeDefined();
+      expect(pendingResend?.disabled).toBe(false);
     });
 
-    expect(host.textContent).toContain('Tài khoản đã được lưu nhưng email OTP chưa gửi được');
     const resend = [...host.querySelectorAll('button')].find((button) => button.textContent?.includes('Gửi lại mã OTP'));
-    expect(resend).toBeDefined();
-    expect(resend?.disabled).toBe(false);
-
-    await act(async () => {
-      resend?.click();
-      await Promise.resolve();
-      await Promise.resolve();
+    await act(async () => { resend?.click(); });
+    await until(() => {
+      expect(requestBodies).toHaveLength(2);
+      expect(host.textContent).toContain('Đã gửi lại mã OTP mới.');
     });
 
-    expect(requestBodies).toHaveLength(2);
     expect(requestBodies[0].turnstileToken).toMatch(/^turnstile-token-/);
     expect(requestBodies[1]).not.toHaveProperty('turnstileToken');
     expect(window.turnstile?.render).toHaveBeenCalledTimes(1);
-    expect(host.textContent).toContain('Đã gửi lại mã OTP mới.');
   });
 
   it('does not mount Turnstile on login or forgot-password screens', async () => {
     await act(async () => {
       root = createRoot(host);
-      root.render(<MemoryRouter initialEntries={['/auth']}><AuthPage /></MemoryRouter>);
+      root.render(<MemoryRouter useTransitions={false} initialEntries={['/auth']}><AuthPage /></MemoryRouter>);
       await Promise.resolve();
       await Promise.resolve();
     });

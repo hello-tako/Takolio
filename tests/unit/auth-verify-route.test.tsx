@@ -47,6 +47,9 @@ let verifyGate: Promise<Response> | null;
 let registerGate: Promise<Response> | null;
 let loginGate: Promise<Response> | null;
 let resendGate: Promise<Response> | null;
+let forgotGate: Promise<Response> | null;
+let resetGate: Promise<Response> | null;
+let resetResponse: { status: number; body: unknown };
 
 function response(body: unknown, status = 200) {
   return new Response(JSON.stringify(body), {
@@ -85,7 +88,7 @@ async function mount(initialEntry: string) {
     root!.render(
       <MemoryRouter
         initialEntries={[initialEntry]}
-        future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+        useTransitions={true}
       >
         <LocationProbe />
         <VerifyRouteLifecycle />
@@ -164,7 +167,11 @@ async function registerAndReachVerify() {
   await until(() => expect(otpBoxes()).toHaveLength(6));
 }
 
-async function typeOtp(code = OTP) {
+async function typeOtp(code = OTP, choosePassword = true) {
+  const activation = container.querySelector<HTMLInputElement>('input[name="activationPassword"]');
+  if (choosePassword && activation && !activation.value) {
+    await act(async () => setNative(activation, 'owner-chosen-password'));
+  }
   for (const [index, digit] of code.split('').entries()) {
     await act(async () => {
       setNative(otpBoxes()[index], digit);
@@ -192,6 +199,9 @@ beforeEach(() => {
   registerGate = null;
   loginGate = null;
   resendGate = null;
+  forgotGate = null;
+  resetGate = null;
+  resetResponse = { status: 200, body: { success: true, user: ACCOUNT } };
   registerResponse = {
     status: 200,
     body: {
@@ -203,7 +213,7 @@ beforeEach(() => {
   };
   resendResponse = {
     status: 200,
-    body: { success: true, message: 'Đã gửi lại mã OTP mới.', expiresInMinutes: 7 },
+    body: { success: true, message: 'Đã gửi lại mã OTP mới.', expiresInMinutes: 7, otpDelivered: true },
   };
   fetchMock.mockReset();
   fetchMock.mockImplementation(async (input, init) => {
@@ -218,6 +228,13 @@ beforeEach(() => {
     if (path.endsWith('/auth/login')) {
       if (loginGate) return loginGate;
       throw new Error('unexpected login request');
+    }
+    if (path.endsWith('/auth/forgot-password')) {
+      return forgotGate ?? response({ success: true, message: 'Nếu tài khoản tồn tại, hãy kiểm tra email.',
+        otpKeyIssuedAtMs: 1_792_000_000_000, otpDelivered: false, deliveryState: 'pending', retryAfterSeconds: 0 });
+    }
+    if (path.endsWith('/auth/reset-password')) {
+      return resetGate ?? response(resetResponse.body, resetResponse.status);
     }
     if (path.endsWith('/auth/verify-otp')) {
       if (verifyOffline) throw new TypeError('network unavailable');
@@ -397,7 +414,7 @@ describe('screen 03 — /auth/verify route', () => {
     await until(() => expect(container.textContent).toContain('Xác thực tài khoản thành công!'));
     expect(calls.at(-1)).toEqual({
       path: '/api/v1/auth/verify-otp',
-      body: { email: EMAIL, code: OTP, purpose: 'register' },
+      body: { email: EMAIL, code: OTP, purpose: 'register', newPassword: 'owner-chosen-password' },
     });
     // Verification consumed: the context is gone so a later visit is honest.
     expect(readVerifyContext()).toBeNull();
@@ -559,6 +576,7 @@ describe('screen 03 — /auth/verify route', () => {
       success: true,
       message: 'Đã gửi lại mã OTP mới.',
       expiresInMinutes: 3,
+      otpDelivered: development ? undefined : true,
       ...(development ? { devOtp: OTP } : {}),
       otp: OTP,
       code: OTP,
@@ -605,7 +623,7 @@ describe('screen 03 — /auth/verify route', () => {
       expiresAt: Date.now() + 10 * 60_000,
       delivered: true,
     });
-    resendResponse.body = { success: true, message: 'Đã gửi lại mã OTP mới.', expiresInMinutes };
+    resendResponse.body = { success: true, message: 'Đã gửi lại mã OTP mới.', expiresInMinutes, otpDelivered: true };
     await mount('/auth/verify');
     await click(/Gửi lại mã OTP/);
     expect(readVerifyContext()).toMatchObject({ email: EMAIL, delivered: true, expiresAt: null });
@@ -833,4 +851,207 @@ describe('screen 03 — /auth/verify route', () => {
     expect(readVerifyContext()).toBeNull();
     expect(sessionStorage.getItem(VERIFY_CONTEXT_KEY)).toBeNull();
   });
+  it('projects server expiry onto presentation without using the skewed client epoch for authority', async () => {
+    registerResponse.body = { success: true, message: 'Mã đã được gửi.', otpDelivered: true,
+      deliveryState: 'accepted', otpKeyIssuedAtMs: 1_792_000_000_000,
+      otpExpiresAtMs: 1_792_000_330_000, retryAfterSeconds: 23 };
+    const before = Date.now();
+    await registerAndReachVerify();
+    const context = readVerifyContext()!;
+    expect(context.expiresAt).toBeGreaterThanOrEqual(before + 330_000);
+    expect(context.expiresAt).toBeLessThanOrEqual(Date.now() + 330_000);
+    expect(context.delivered).toBe(true);
+    expect(resendSecondsRemaining(context)).toBeGreaterThan(20);
+    expect(resendSecondsRemaining(context)).toBeLessThanOrEqual(23);
+  });
+
+  it('a pending 202 receipt does not claim accepted email delivery', async () => {
+    registerResponse = { status: 202, body: { success: true, message: 'Đang xử lý yêu cầu.',
+      otpKeyIssuedAtMs: 1_792_000_000_000, otpDelivered: false, deliveryState: 'pending', retryAfterSeconds: 44 } };
+    await registerAndReachVerify();
+    expect(readVerifyContext()?.delivered).toBeNull();
+    expect(container.textContent).toContain('Máy chủ chưa xác nhận trạng thái gửi email');
+    expect(resendSecondsRemaining(readVerifyContext())).toBeGreaterThan(40);
+  });
+
+  it.each([
+    ['OTP_DELIVERY_UNAVAILABLE', 'rejected', false],
+    ['OTP_DELIVERY_UNKNOWN', 'delivery_unknown', null],
+  ] as const)('%s preserves server cooldown and honest delivery state', async (code, deliveryState, delivered) => {
+    registerResponse = { status: 503, body: { error: 'Máy chủ chưa xác nhận email.', code,
+      accountCreated: true, otpKeyIssuedAtMs: 1_792_000_000_000, otpDelivered: false,
+      deliveryState, retryAfterSeconds: 37 } };
+    await registerAndReachVerify();
+    expect(readVerifyContext()).toMatchObject({ delivered, expiresAt: null });
+    expect(resendSecondsRemaining(readVerifyContext())).toBeGreaterThan(33);
+    expect(button(/Gửi lại sau/).disabled).toBe(true);
+    expect(localStorage.getItem('frigo_user_id')).toBeNull();
+  });
+
+  it('completed verification replay offers login and keeps the current guest identity', async () => {
+    localStorage.setItem('frigo_user_id', 'guest-replay');
+    localStorage.setItem('frigo_household_id', 'hh_guest_replay');
+    useAuthStore.setState({ userId: 'guest-replay', householdId: 'hh_guest_replay', isGuest: true });
+    verifyResponses.push({ status: 200, body: { success: true, replayed: true, sessionRequired: true } });
+    await registerAndReachVerify();
+    await typeOtp();
+    await click('Xác thực & Hoàn tất');
+    await until(() => expect(location()).toBe('/auth'));
+    expect(container.textContent).toContain('Hãy đăng nhập để xác nhận phiên tài khoản');
+    expect(container.textContent).toContain('Đăng nhập vào Takosan');
+    expect(localStorage.getItem('frigo_user_id')).toBe('guest-replay');
+    expect(localStorage.getItem('frigo_household_id')).toBe('hh_guest_replay');
+    expect(readVerifyContext()).toBeNull();
+  });
+
+  it('in-progress verification reports retry status without claiming completion or losing context', async () => {
+    verifyResponses.push({ status: 202, body: { success: false, code: 'OTP_IN_PROGRESS',
+      error: 'Yêu cầu đang được xử lý. Vui lòng thử lại cùng yêu cầu.' } });
+    await registerAndReachVerify();
+    const context = readVerifyContext();
+    await typeOtp();
+    await click('Xác thực & Hoàn tất');
+    expect(container.querySelector('[role="alert"]')?.textContent).toContain('Vui lòng thử lại cùng yêu cầu');
+    expect(location()).toBe('/auth/verify');
+    expect(readVerifyContext()).toEqual(context);
+    expect(localStorage.getItem('frigo_user_id')).toBeNull();
+  });
+
+  it('verification budget denial preserves challenge metadata and applies Retry-After to resend', async () => {
+    verifyResponses.push({ status: 429, body: { error: 'Hãy chờ trước khi thử lại.',
+      code: 'OTP_BUDGET_EXHAUSTED', retryAfterSeconds: 83 } });
+    await registerAndReachVerify();
+    const original = readVerifyContext();
+    await typeOtp();
+    await click('Xác thực & Hoàn tất');
+    expect(readVerifyContext()?.expiresAt).toBe(original?.expiresAt);
+    expect(resendSecondsRemaining(readVerifyContext())).toBeGreaterThan(79);
+    expect(button(/Gửi lại sau/).disabled).toBe(true);
+  });
+
+  it('a delayed forgot-password reply cannot revive the reset form after returning to login', async () => {
+    let release!: (value: Response) => void;
+    forgotGate = new Promise<Response>((resolve) => { release = resolve; });
+    await mount('/auth');
+    await click('Quên mật khẩu?');
+    await act(async () => setNative(container.querySelector<HTMLInputElement>('form input[type="email"]')!, EMAIL));
+    await act(async () => button('Gửi mã OTP khôi phục').click());
+    await until(() => expect(calls.some(({ path }) => path.endsWith('/auth/forgot-password'))).toBe(true));
+    await click('← Quay lại màn hình đăng nhập');
+    release(response({ success: true, message: 'Nếu tài khoản tồn tại, hãy kiểm tra email.' }));
+    await flush();
+    expect(container.textContent).toContain('Đăng nhập vào Takosan');
+    expect(otpBoxes()).toHaveLength(0);
+    expect(container.textContent).not.toContain('Nếu tài khoản tồn tại');
+  });
+
+  it('forgot-password resend uses its purpose and does not add preliminary verification', async () => {
+    await mount('/auth');
+    await click('Quên mật khẩu?');
+    await act(async () => setNative(container.querySelector<HTMLInputElement>('form input[type="email"]')!, EMAIL));
+    await click('Gửi mã OTP khôi phục');
+    await click('Gửi lại mã OTP');
+    expect(calls.at(-1)).toMatchObject({ path: '/api/v1/auth/resend-otp', body: { email: EMAIL, purpose: 'forgot_password' } });
+    expect(calls.some(({ path }) => path.endsWith('/auth/verify-otp'))).toBe(false);
+    expect(container.textContent).toContain('Đã gửi lại mã OTP mới.');
+  });
+
+  it.each(['back-to-login', 'replacement-session'] as const)('a delayed final reset cannot establish a session after %s', async (transition) => {
+    let release!: (value: Response) => void;
+    resetGate = new Promise<Response>((resolve) => { release = resolve; });
+    await mount('/auth');
+    await click('Quên mật khẩu?');
+    await act(async () => setNative(container.querySelector<HTMLInputElement>('form input[type="email"]')!, EMAIL));
+    await click('Gửi mã OTP khôi phục');
+    await typeOtp();
+    await act(async () => setNative(container.querySelector<HTMLInputElement>('input[name="newPassword"]')!, 'new-password-1'));
+    await act(async () => button('Lưu mật khẩu mới & Đăng nhập').click());
+    await until(() => expect(calls.some(({ path }) => path.endsWith('/auth/reset-password'))).toBe(true));
+    if (transition === 'back-to-login') await click('← Quay lại màn hình đăng nhập');
+    else await act(async () => useAuthStore.getState().setAuthSession({ ...ACCOUNT, id: 'replacement-user', householdId: 'replacement-house' }));
+    release(response({ success: true, user: ACCOUNT }));
+    await flush();
+    expect(location()).toBe('/auth');
+    expect(localStorage.getItem('frigo_user_id')).toBe(transition === 'back-to-login' ? null : 'replacement-user');
+  });
+
+  it('final reset completion replay returns to login without claiming a new local session', async () => {
+    resetResponse = { status: 200, body: { success: true, replayed: true, sessionRequired: true } };
+    await mount('/auth');
+    await click('Quên mật khẩu?');
+    await act(async () => setNative(container.querySelector<HTMLInputElement>('form input[type="email"]')!, EMAIL));
+    await click('Gửi mã OTP khôi phục');
+    await typeOtp();
+    await act(async () => setNative(container.querySelector<HTMLInputElement>('input[name="newPassword"]')!, 'new-password-1'));
+    await click('Lưu mật khẩu mới & Đăng nhập');
+    expect(container.textContent).toContain('Đăng nhập vào Takosan');
+    expect(container.textContent).toContain('Hãy đăng nhập để xác nhận phiên tài khoản');
+    expect(localStorage.getItem('frigo_user_id')).toBeNull();
+    expect(calls.some(({ path }) => path.endsWith('/auth/verify-otp'))).toBe(false);
+  });
+
+  it('direct verification asks the mailbox owner to choose an activation password without restoring it from storage', async () => {
+    writeVerifyContext({ email: EMAIL, resendAvailableAt: 0, delivered: true });
+    await mount('/auth/verify');
+    const field = container.querySelector<HTMLInputElement>('input[name="activationPassword"]')!;
+    expect(field.value).toBe('');
+    expect(field.required).toBe(true);
+    expect(field.getAttribute('autocomplete')).toBe('new-password');
+    expect(container.textContent).toContain('mật khẩu của yêu cầu đăng ký trước sẽ được thay thế');
+    await typeOtp(OTP, false);
+    await act(async () => container.querySelector('form')!.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true })));
+    expect(container.querySelector('[role="alert"]')?.textContent).toContain('Hãy chọn mật khẩu từ 6 đến 100 ký tự');
+    expect(calls.some(({ path }) => path.endsWith('/auth/verify-otp'))).toBe(false);
+    verifyResponses.push({ status: 200, body: { success: true, user: ACCOUNT } });
+    await act(async () => setNative(field, 'mailbox-owner-password'));
+    await click('Xác thực & Hoàn tất');
+    expect(calls.at(-1)?.body).toMatchObject({ newPassword: 'mailbox-owner-password' });
+    expect(sessionStorage.getItem(VERIFY_CONTEXT_KEY)).toBeNull();
+    expect(localStorage.getItem('mailbox-owner-password')).toBeNull();
+  });
+
+  it('the verifier can replace the current registration password before account activation', async () => {
+    verifyResponses.push({ status: 200, body: { success: true, user: ACCOUNT } });
+    await registerAndReachVerify();
+    const field = container.querySelector<HTMLInputElement>('input[name="activationPassword"]')!;
+    expect(field.value).toBe('strong-password-1');
+    await act(async () => setNative(field, 'chosen-at-verification'));
+    await typeOtp();
+    await click('Xác thực & Hoàn tất');
+    expect(calls.at(-1)?.body).toMatchObject({ email: EMAIL, code: OTP, purpose: 'register', newPassword: 'chosen-at-verification' });
+    expect(calls.at(-1)?.body).not.toHaveProperty('password');
+  });
+
+  it('an unverified login opens verification with an empty activation password field', async () => {
+    loginGate = Promise.resolve(response({ error: 'Account verification required', requireOtp: true,
+      otpDelivered: true, deliveryState: 'accepted', expiresInMinutes: 10 }, 403));
+    await mount('/auth');
+    const fields = [...container.querySelectorAll<HTMLInputElement>('form input')];
+    await act(async () => {
+      setNative(fields.find((field) => field.placeholder === 'ban@example.com')!, EMAIL);
+      setNative(fields.find((field) => field.placeholder === '••••••••')!, 'password-from-login');
+    });
+    await act(async () => container.querySelector<HTMLButtonElement>('form button[type="submit"]')!.click());
+    await until(() => expect(location()).toBe('/auth/verify'));
+    expect(container.querySelector<HTMLInputElement>('input[name="activationPassword"]')!.value).toBe('');
+    expect(sessionStorage.getItem(VERIFY_CONTEXT_KEY)).not.toContain('password-from-login');
+  });
+
+  it('an in-progress unverified login reaches verification and asks for a chosen password', async () => {
+    loginGate = Promise.resolve(response({ success: true, code: 'OTP_IN_PROGRESS', requireOtp: true,
+      otpDelivered: false, deliveryState: 'pending', retryAfterSeconds: 60 }, 202));
+    await mount('/auth');
+    const fields = [...container.querySelectorAll<HTMLInputElement>('form input')];
+    await act(async () => {
+      setNative(fields.find((field) => field.placeholder === 'ban@example.com')!, EMAIL);
+      setNative(fields.find((field) => field.placeholder === '••••••••')!, 'password-from-login');
+    });
+    await act(async () => container.querySelector<HTMLButtonElement>('form button[type="submit"]')!.click());
+    await until(() => expect(location()).toBe('/auth/verify'));
+    expect(container.querySelector<HTMLInputElement>('input[name="activationPassword"]')!.value).toBe('');
+    expect(container.textContent).toContain('Hãy chọn mật khẩu để hoàn tất tài khoản');
+    expect(readVerifyContext()?.delivered).toBeNull();
+    expect(resendSecondsRemaining(readVerifyContext())).toBeGreaterThan(55);
+  });
+
 });

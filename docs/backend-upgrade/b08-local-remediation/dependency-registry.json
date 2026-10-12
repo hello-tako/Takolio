@@ -1,0 +1,1360 @@
+{
+  "appUrgentSchedulingCompatibility": {
+    "explicitProp": "useTransitions={false}",
+    "protocolOrAuthorityChanged": false,
+    "reason": "Restore prior unflagged Router6 urgent updates under Router7 transition default",
+    "source": "src/web/App.tsx"
+  },
+  "baselineDocsCheckpoint": "2c42984b",
+  "classification": "READ_ONLY_OFFICIAL_REGISTRY_NOT_INSTALL_OR_RUNTIME_CERTIFICATION",
+  "contracts": {
+    "reactRouter7React18Allowed": true,
+    "routerMemoryBrowserFutureRemoved": true,
+    "routerMemoryBrowserUseTransitionsPresent": true,
+    "selectorParser7TailwindDeepUnescPresent": true,
+    "vitestPoolOptionsRemoved": true,
+    "vitestTopLevelTestExecArgv": true,
+    "vitestVite6Allowed": true,
+    "workersTypes5DatedSubpaths": false,
+    "workersTypes5StructuredSendEmail": true,
+    "wranglerUnstableDevPersistBoolean": true,
+    "wranglerUnstableDevPersistToString": true,
+    "wranglerUnstableSplitSqlQueryExported": true
+  },
+  "currentSelectorParserExactOwnerOverrides": {
+    "postcss-nested@6.2.0>postcss-selector-parser": "7.1.6",
+    "tailwindcss@3.4.19>postcss-selector-parser": "7.1.6"
+  },
+  "installRunByResearchAgent": false,
+  "packages": [
+    {
+      "dependencies": {
+        "@cloudflare/kv-asset-handler": "0.5.0",
+        "@cloudflare/unenv-preset": "2.16.2",
+        "blake3-wasm": "2.1.5",
+        "esbuild": "0.28.2",
+        "miniflare": "5.20261006.1-alpha",
+        "path-to-regexp": "6.3.0",
+        "unenv": "2.0.0-rc.24",
+        "workerd": "1.20261006.1"
+      },
+      "dist": {
+        "integrity": "sha512-OzK7xmB5r5iLKb3cIT3783g13fe6T7xyeKu9LEdUyl+DKAM2KP/jkjnE0OUhyw+mB/XJM9ycjgF3MWm8PR9amg==",
+        "shasum": "2fdfd812faee929bc1a0045ae7830f174fcf7603",
+        "tarball": "https://registry.npmjs.org/wrangler/-/wrangler-4.149.0.tgz"
+      },
+      "engines": {
+        "node": ">=22.0.0"
+      },
+      "exports": {
+        ".": {
+          "default": "./wrangler-dist/cli.js",
+          "types": "./wrangler-dist/cli.d.ts"
+        },
+        "./experimental-config": {
+          "import": "./wrangler-dist/experimental-config.mjs",
+          "types": "./wrangler-dist/experimental-config.d.mts"
+        },
+        "./package.json": "./package.json"
+      },
+      "optionalDependencies": {
+        "fsevents": "2.3.3"
+      },
+      "package": "wrangler",
+      "peerDependencies": {
+        "@cloudflare/workers-types": "^5.20261006.1"
+      },
+      "peerDependenciesMeta": {
+        "@cloudflare/workers-types": {
+          "optional": true
+        }
+      },
+      "requestedVersion": "4.149.0",
+      "responseSha256": "38ab740887c8d83da394f9d8afca5cd558dbe4c3f579fe6d4b37c511f3ac9ac9",
+      "url": "https://registry.npmjs.org/wrangler/4.149.0",
+      "version": "4.149.0"
+    },
+    {
+      "dependencies": {
+        "@cloudflare/kv-asset-handler": "0.5.0",
+        "@cloudflare/unenv-preset": "2.16.1",
+        "blake3-wasm": "2.1.5",
+        "esbuild": "0.28.1",
+        "miniflare": "4.20260730.0",
+        "path-to-regexp": "6.3.0",
+        "unenv": "2.0.0-rc.24",
+        "workerd": "1.20260730.1"
+      },
+      "dist": {
+        "integrity": "sha512-wP1PXxH5KJajfGEjty0NNqyxAirTFvMZpGyB5CRqEIiY0fL/SiCKtIYAJB9HXq0MP0sMXB/i/YSls+WObahAhw==",
+        "shasum": "6bec02b58580d45fcaa84ea30a2e004c771dde84",
+        "tarball": "https://registry.npmjs.org/wrangler/-/wrangler-4.116.0.tgz"
+      },
+      "engines": {
+        "node": ">=22.0.0"
+      },
+      "exports": {
+        ".": {
+          "default": "./wrangler-dist/cli.js",
+          "types": "./wrangler-dist/cli.d.ts"
+        },
+        "./experimental-config": {
+          "import": "./wrangler-dist/experimental-config.mjs",
+          "types": "./wrangler-dist/experimental-config.d.mts"
+        },
+        "./package.json": "./package.json"
+      },
+      "optionalDependencies": {
+        "fsevents": "2.3.3"
+      },
+      "package": "wrangler",
+      "peerDependencies": {
+        "@cloudflare/workers-types": "^5.20260730.1"
+      },
+      "peerDependenciesMeta": {
+        "@cloudflare/workers-types": {
+          "optional": true
+        }
+      },
+      "requestedVersion": "4.116.0",
+      "responseSha256": "bf13df30407ff40f55b6fc67bf789ff7b3b1872ec8759ae37923a2bd6c13ca97",
+      "url": "https://registry.npmjs.org/wrangler/4.116.0",
+      "version": "4.116.0"
+    },
+    {
+      "dependencies": {
+        "@cspotcode/source-map-support": "0.8.1",
+        "sharp": "0.35.5",
+        "undici": "7.29.1",
+        "workerd": "1.20261006.1",
+        "ws": "8.21.0",
+        "youch": "4.1.0-beta.10"
+      },
+      "dist": {
+        "integrity": "sha512-6ylv8tamkrspDI2R/cAYfv+YWmfGNdXe76Pi9TauEUWsFVXn3LNF9Yk8oduzf1a+TYsSRYTqlOE7+nGGRsMHdw==",
+        "shasum": "88f259b55a6ff0750f19f38c8c1477bb3347a38f",
+        "tarball": "https://registry.npmjs.org/miniflare/-/miniflare-5.20261006.1-alpha.tgz"
+      },
+      "engines": {
+        "node": ">=22.0.0"
+      },
+      "exports": null,
+      "optionalDependencies": null,
+      "package": "miniflare",
+      "peerDependencies": null,
+      "peerDependenciesMeta": null,
+      "requestedVersion": "5.20261006.1-alpha",
+      "responseSha256": "354b4ca11c21a18a439a9b06c8eb4e6b356dc65a26096171128e7ad922c38be0",
+      "url": "https://registry.npmjs.org/miniflare/5.20261006.1-alpha",
+      "version": "5.20261006.1-alpha"
+    },
+    {
+      "dependencies": {
+        "@cspotcode/source-map-support": "0.8.1",
+        "sharp": "0.35.2",
+        "undici": "7.28.0",
+        "workerd": "1.20260730.1",
+        "ws": "8.21.0",
+        "youch": "4.1.0-beta.10"
+      },
+      "dist": {
+        "integrity": "sha512-1Z9SB9r/o//80UA02Re3QhtcecSHAyAjf5EcKBfQVlQrCg7Miy79hl2PvtkwFLIaJ5rcrOPdDcRr577okwZPsg==",
+        "shasum": "56c731a8f9e7f309d09eb26a892b95aad4e35537",
+        "tarball": "https://registry.npmjs.org/miniflare/-/miniflare-4.20260730.0.tgz"
+      },
+      "engines": {
+        "node": ">=22.0.0"
+      },
+      "exports": null,
+      "optionalDependencies": null,
+      "package": "miniflare",
+      "peerDependencies": null,
+      "peerDependenciesMeta": null,
+      "requestedVersion": "4.20260730.0",
+      "responseSha256": "0cc2baddd967efd18d33cba2b2cd1f05ca82803a81220d6094b738f44c86ae1c",
+      "url": "https://registry.npmjs.org/miniflare/4.20260730.0",
+      "version": "4.20260730.0"
+    },
+    {
+      "dependencies": null,
+      "dist": {
+        "integrity": "sha512-5OclwQK1d8f5LCPvOlyldC3ryKLUa4nLXegcgPZeUxAPudczQ9xujJDdpS2Tenp7JqbBLW3OgGciHJmuc7QShg==",
+        "shasum": "4679c0a37e127b75740d5f8a08ecb827ff5fc2fb",
+        "tarball": "https://registry.npmjs.org/@cloudflare/workers-types/-/workers-types-5.20261006.1.tgz"
+      },
+      "engines": null,
+      "exports": null,
+      "optionalDependencies": null,
+      "package": "@cloudflare/workers-types",
+      "peerDependencies": null,
+      "peerDependenciesMeta": null,
+      "requestedVersion": "5.20261006.1",
+      "responseSha256": "93ab0495ab41af99ce05b1efbac4bd6298d3aef2dd44418f9d4e81002e2ab2cf",
+      "url": "https://registry.npmjs.org/@cloudflare%2fworkers-types/5.20261006.1",
+      "version": "5.20261006.1"
+    },
+    {
+      "dependencies": {
+        "@vitest/expect": "4.1.11",
+        "@vitest/mocker": "4.1.11",
+        "@vitest/pretty-format": "4.1.11",
+        "@vitest/runner": "4.1.11",
+        "@vitest/snapshot": "4.1.11",
+        "@vitest/spy": "4.1.11",
+        "@vitest/utils": "4.1.11",
+        "es-module-lexer": "^2.0.0",
+        "expect-type": "^1.3.0",
+        "magic-string": "^0.30.21",
+        "obug": "^2.1.1",
+        "pathe": "^2.0.3",
+        "picomatch": "^4.0.3",
+        "std-env": "^4.0.0-rc.1",
+        "tinybench": "^2.9.0",
+        "tinyexec": "^1.0.2",
+        "tinyglobby": "^0.2.15",
+        "tinyrainbow": "^3.1.0",
+        "vite": "^6.0.0 || ^7.0.0 || ^8.0.0",
+        "why-is-node-running": "^2.3.0"
+      },
+      "dist": {
+        "integrity": "sha512-fhACrNXUidIbGSBr5FlbuBkO7VWC1ZyLl0DO4CU2DrQoAPxX84Ysxs+HeGQpii5lZWV1Q4gBZTTu49mF+A6Edw==",
+        "shasum": "1653c1521ae917f960d9b21877797c47dfd8bf21",
+        "tarball": "https://registry.npmjs.org/vitest/-/vitest-4.1.11.tgz"
+      },
+      "engines": {
+        "node": "^20.0.0 || ^22.0.0 || >=24.0.0"
+      },
+      "exports": {
+        ".": {
+          "import": {
+            "default": "./dist/index.js",
+            "types": "./dist/index.d.ts"
+          },
+          "require": {
+            "default": "./index.cjs",
+            "types": "./index.d.cts"
+          }
+        },
+        "./browser": {
+          "default": "./browser/context.js",
+          "types": "./browser/context.d.ts"
+        },
+        "./config": {
+          "default": "./dist/config.js",
+          "require": "./dist/config.cjs",
+          "types": "./config.d.ts"
+        },
+        "./coverage": {
+          "default": "./dist/coverage.js",
+          "types": "./coverage.d.ts"
+        },
+        "./environments": {
+          "default": "./dist/environments.js",
+          "types": "./dist/environments.d.ts"
+        },
+        "./globals": {
+          "types": "./globals.d.ts"
+        },
+        "./import-meta": {
+          "types": "./import-meta.d.ts"
+        },
+        "./importMeta": {
+          "types": "./importMeta.d.ts"
+        },
+        "./internal/browser": {
+          "default": "./dist/browser.js",
+          "types": "./dist/browser.d.ts"
+        },
+        "./jsdom": {
+          "types": "./jsdom.d.ts"
+        },
+        "./node": {
+          "default": "./dist/node.js",
+          "types": "./dist/node.d.ts"
+        },
+        "./optional-runtime-types.js": {
+          "types": "./optional-runtime-types.d.ts"
+        },
+        "./optional-types.js": {
+          "types": "./optional-types.d.ts"
+        },
+        "./package.json": "./package.json",
+        "./reporters": {
+          "default": "./dist/reporters.js",
+          "types": "./dist/reporters.d.ts"
+        },
+        "./runners": {
+          "default": "./dist/runners.js",
+          "types": "./dist/runners.d.ts"
+        },
+        "./runtime": {
+          "default": "./dist/runtime.js",
+          "types": "./dist/runtime.d.ts"
+        },
+        "./snapshot": {
+          "default": "./dist/snapshot.js",
+          "types": "./dist/snapshot.d.ts"
+        },
+        "./src/*": "./src/*",
+        "./suite": {
+          "default": "./dist/suite.js",
+          "types": "./dist/suite.d.ts"
+        },
+        "./worker": {
+          "default": "./dist/worker.js",
+          "types": "./worker.d.ts"
+        }
+      },
+      "optionalDependencies": null,
+      "package": "vitest",
+      "peerDependencies": {
+        "@edge-runtime/vm": "*",
+        "@opentelemetry/api": "^1.9.0",
+        "@types/node": "^20.0.0 || ^22.0.0 || >=24.0.0",
+        "@vitest/browser-playwright": "4.1.11",
+        "@vitest/browser-preview": "4.1.11",
+        "@vitest/browser-webdriverio": "4.1.11",
+        "@vitest/coverage-istanbul": "4.1.11",
+        "@vitest/coverage-v8": "4.1.11",
+        "@vitest/ui": "4.1.11",
+        "happy-dom": "*",
+        "jsdom": "*",
+        "vite": "^6.0.0 || ^7.0.0 || ^8.0.0"
+      },
+      "peerDependenciesMeta": {
+        "@edge-runtime/vm": {
+          "optional": true
+        },
+        "@opentelemetry/api": {
+          "optional": true
+        },
+        "@types/node": {
+          "optional": true
+        },
+        "@vitest/browser-playwright": {
+          "optional": true
+        },
+        "@vitest/browser-preview": {
+          "optional": true
+        },
+        "@vitest/browser-webdriverio": {
+          "optional": true
+        },
+        "@vitest/coverage-istanbul": {
+          "optional": true
+        },
+        "@vitest/coverage-v8": {
+          "optional": true
+        },
+        "@vitest/ui": {
+          "optional": true
+        },
+        "happy-dom": {
+          "optional": true
+        },
+        "jsdom": {
+          "optional": true
+        },
+        "vite": {
+          "optional": false
+        }
+      },
+      "requestedVersion": "4.1.11",
+      "responseSha256": "48432f161ab45f60344d096cb21f7022450d2707159234ce51e420ffdabe8068",
+      "url": "https://registry.npmjs.org/vitest/4.1.11",
+      "version": "4.1.11"
+    },
+    {
+      "dependencies": {
+        "react-router": "7.18.0"
+      },
+      "dist": {
+        "integrity": "sha512-Fi0yY6kgtKae/Th2xibdWK0KSdYZ4B53Gyf6wRtomOKWgpNm7H7+DyfDhncdz9FKbpS+1jmDhg3F4WoGJ+yFOA==",
+        "shasum": "71a657374610e00cebf2783804d7812facfdb1b5",
+        "tarball": "https://registry.npmjs.org/react-router-dom/-/react-router-dom-7.18.0.tgz"
+      },
+      "engines": {
+        "node": ">=20.0.0"
+      },
+      "exports": {
+        ".": {
+          "default": {
+            "default": "./dist/index.js",
+            "types": "./dist/index.d.ts"
+          },
+          "import": {
+            "default": "./dist/index.mjs",
+            "types": "./dist/index.d.mts"
+          },
+          "node": {
+            "default": "./dist/index.js",
+            "module-sync": "./dist/index.mjs",
+            "types": "./dist/index.d.ts"
+          }
+        },
+        "./package.json": "./package.json"
+      },
+      "optionalDependencies": null,
+      "package": "react-router-dom",
+      "peerDependencies": {
+        "react": ">=18",
+        "react-dom": ">=18"
+      },
+      "peerDependenciesMeta": null,
+      "requestedVersion": "7.18.0",
+      "responseSha256": "ac9782a70eeb95170c1b757bae99ff3571b8be9064721b65f7a1abdff9114ccd",
+      "url": "https://registry.npmjs.org/react-router-dom/7.18.0",
+      "version": "7.18.0"
+    },
+    {
+      "dependencies": {
+        "cookie": "^1.0.1",
+        "set-cookie-parser": "^2.6.0"
+      },
+      "dist": {
+        "integrity": "sha512-pTTGt8J+ji1NOmYnjzT+bAJy/1zD+Jp4ziO6cL7T3ZLvXKtusO7BpFqlRXitqpcPVqllsIXFHRMt+2/k3Xn6HQ==",
+        "shasum": "e7d94b54745277aabe3cf93fac938cbebc9c1c5e",
+        "tarball": "https://registry.npmjs.org/react-router/-/react-router-7.18.0.tgz"
+      },
+      "engines": {
+        "node": ">=20.0.0"
+      },
+      "exports": {
+        ".": {
+          "default": {
+            "default": "./dist/development/index.js",
+            "types": "./dist/development/index.d.ts"
+          },
+          "import": {
+            "default": "./dist/development/index.mjs",
+            "types": "./dist/development/index.d.mts"
+          },
+          "module": {
+            "default": "./dist/development/index.mjs",
+            "types": "./dist/development/index.d.mts"
+          },
+          "node": {
+            "default": "./dist/development/index.js",
+            "module": "./dist/development/index.mjs",
+            "module-sync": "./dist/development/index.mjs",
+            "types": "./dist/development/index.d.ts"
+          },
+          "react-server": {
+            "default": "./dist/development/index-react-server.js",
+            "module": "./dist/development/index-react-server.mjs"
+          }
+        },
+        "./dom": {
+          "default": {
+            "default": "./dist/development/dom-export.js",
+            "types": "./dist/development/dom-export.d.ts"
+          },
+          "import": {
+            "default": "./dist/development/dom-export.mjs",
+            "types": "./dist/development/dom-export.d.mts"
+          },
+          "module": {
+            "default": "./dist/development/dom-export.mjs",
+            "types": "./dist/development/dom-export.d.mts"
+          },
+          "node": {
+            "default": "./dist/development/dom-export.js",
+            "module": "./dist/development/dom-export.mjs",
+            "module-sync": "./dist/development/dom-export.mjs",
+            "types": "./dist/development/dom-export.d.ts"
+          }
+        },
+        "./internal": {
+          "default": {
+            "types": "./dist/development/lib/types/index.d.ts"
+          },
+          "import": {
+            "types": "./dist/development/lib/types/internal.d.mts"
+          },
+          "node": {
+            "types": "./dist/development/lib/types/internal.d.ts"
+          }
+        },
+        "./internal/react-server-client": {
+          "default": {
+            "default": "./dist/development/index.js",
+            "types": "./dist/development/index.d.ts"
+          },
+          "import": {
+            "default": "./dist/development/index.mjs",
+            "types": "./dist/development/index.d.mts"
+          },
+          "module": {
+            "default": "./dist/development/index.mjs",
+            "types": "./dist/development/index.d.mts"
+          },
+          "node": {
+            "default": "./dist/development/index.js",
+            "module": "./dist/development/index.mjs",
+            "module-sync": "./dist/development/index.mjs",
+            "types": "./dist/development/index.d.ts"
+          },
+          "react-server": {
+            "default": "./dist/development/index-react-server-client.js",
+            "module": "./dist/development/index-react-server-client.mjs"
+          }
+        },
+        "./package.json": "./package.json"
+      },
+      "optionalDependencies": null,
+      "package": "react-router",
+      "peerDependencies": {
+        "react": ">=18",
+        "react-dom": ">=18"
+      },
+      "peerDependenciesMeta": {
+        "react-dom": {
+          "optional": true
+        }
+      },
+      "requestedVersion": "7.18.0",
+      "responseSha256": "597ee33e4f1729b105994a3c60efbaeedcb7f647669931cf5045e7f429ae3c79",
+      "url": "https://registry.npmjs.org/react-router/7.18.0",
+      "version": "7.18.0"
+    },
+    {
+      "dependencies": {
+        "@img/colour": "^1.1.0",
+        "detect-libc": "^2.1.2",
+        "semver": "^7.8.5"
+      },
+      "dist": {
+        "integrity": "sha512-Ywn4OnzGukp7CDMrp08RQ50YKmuwG47brZgIVPTvBaaAfQlRlygrRqSrxdCiL9M+LlzLBiJ68IR1QqvzHyjC7g==",
+        "shasum": "43fb539872ec5f53cc7162eb850dbf6514692fbf",
+        "tarball": "https://registry.npmjs.org/sharp/-/sharp-0.35.5.tgz"
+      },
+      "engines": {
+        "node": ">=20.9.0"
+      },
+      "exports": {
+        ".": {
+          "import": {
+            "default": "./dist/index.mjs",
+            "types": "./dist/index.d.mts"
+          },
+          "require": {
+            "default": "./dist/index.cjs",
+            "types": "./dist/index.d.cts"
+          }
+        }
+      },
+      "optionalDependencies": {
+        "@img/sharp-darwin-arm64": "0.35.5",
+        "@img/sharp-darwin-x64": "0.35.5",
+        "@img/sharp-freebsd-wasm32": "0.35.5",
+        "@img/sharp-libvips-darwin-arm64": "1.3.4",
+        "@img/sharp-libvips-darwin-x64": "1.3.4",
+        "@img/sharp-libvips-linux-arm": "1.3.4",
+        "@img/sharp-libvips-linux-arm64": "1.3.4",
+        "@img/sharp-libvips-linux-ppc64": "1.3.4",
+        "@img/sharp-libvips-linux-riscv64": "1.3.4",
+        "@img/sharp-libvips-linux-s390x": "1.3.4",
+        "@img/sharp-libvips-linux-x64": "1.3.4",
+        "@img/sharp-libvips-linuxmusl-arm64": "1.3.4",
+        "@img/sharp-libvips-linuxmusl-x64": "1.3.4",
+        "@img/sharp-linux-arm": "0.35.5",
+        "@img/sharp-linux-arm64": "0.35.5",
+        "@img/sharp-linux-ppc64": "0.35.5",
+        "@img/sharp-linux-riscv64": "0.35.5",
+        "@img/sharp-linux-s390x": "0.35.5",
+        "@img/sharp-linux-x64": "0.35.5",
+        "@img/sharp-linuxmusl-arm64": "0.35.5",
+        "@img/sharp-linuxmusl-x64": "0.35.5",
+        "@img/sharp-webcontainers-wasm32": "0.35.5",
+        "@img/sharp-win32-arm64": "0.35.5",
+        "@img/sharp-win32-ia32": "0.35.5",
+        "@img/sharp-win32-x64": "0.35.5"
+      },
+      "package": "sharp",
+      "peerDependencies": null,
+      "peerDependenciesMeta": {
+        "@types/node": {
+          "optional": true
+        }
+      },
+      "requestedVersion": "0.35.5",
+      "responseSha256": "534cddc062d4b03df11e7558d28cb9f6c8d527f0979377c849b7e5ebb2a10612",
+      "url": "https://registry.npmjs.org/sharp/0.35.5",
+      "version": "0.35.5"
+    },
+    {
+      "dependencies": {
+        "cssstyle": "^4.2.1",
+        "data-urls": "^5.0.0",
+        "decimal.js": "^10.5.0",
+        "html-encoding-sniffer": "^4.0.0",
+        "http-proxy-agent": "^7.0.2",
+        "https-proxy-agent": "^7.0.6",
+        "is-potential-custom-element-name": "^1.0.1",
+        "nwsapi": "^2.2.16",
+        "parse5": "^7.2.1",
+        "rrweb-cssom": "^0.8.0",
+        "saxes": "^6.0.0",
+        "symbol-tree": "^3.2.4",
+        "tough-cookie": "^5.1.1",
+        "w3c-xmlserializer": "^5.0.0",
+        "webidl-conversions": "^7.0.0",
+        "whatwg-encoding": "^3.1.1",
+        "whatwg-mimetype": "^4.0.0",
+        "whatwg-url": "^14.1.1",
+        "ws": "^8.18.0",
+        "xml-name-validator": "^5.0.0"
+      },
+      "dist": {
+        "integrity": "sha512-Cvc9WUhxSMEo4McES3P7oK3QaXldCfNWp7pl2NNeiIFlCoLr3kfq9kb1fxftiwk1FLV7CvpvDfonxtzUDeSOPg==",
+        "shasum": "ab5f1c1cafc04bd878725490974ea5e8bf0c72b3",
+        "tarball": "https://registry.npmjs.org/jsdom/-/jsdom-26.1.0.tgz"
+      },
+      "engines": {
+        "node": ">=18"
+      },
+      "exports": null,
+      "optionalDependencies": null,
+      "package": "jsdom",
+      "peerDependencies": {
+        "canvas": "^3.0.0"
+      },
+      "peerDependenciesMeta": {
+        "canvas": {
+          "optional": true
+        }
+      },
+      "requestedVersion": "26.1.0",
+      "responseSha256": "61414078b5d23ff41ba115da4cc02d3fab00ec9aef843bde70823fdaa83b9ce3",
+      "url": "https://registry.npmjs.org/jsdom/26.1.0",
+      "version": "26.1.0"
+    },
+    {
+      "dependencies": null,
+      "dist": {
+        "integrity": "sha512-Vsp28b7DRcimFQvrqu2Wek3z1iYxDCWqHYB8Qsnk/S4RfaCQzPGPyBNuVjJV3cd6UiKtUtp6sNM77gWvzcCH+g==",
+        "shasum": "012e413fc07429945121b0c153158c4343086951",
+        "tarball": "https://registry.npmjs.org/ws/-/ws-8.21.0.tgz"
+      },
+      "engines": {
+        "node": ">=10.0.0"
+      },
+      "exports": {
+        ".": {
+          "browser": "./browser.js",
+          "import": "./wrapper.mjs",
+          "require": "./index.js"
+        },
+        "./package.json": "./package.json"
+      },
+      "optionalDependencies": null,
+      "package": "ws",
+      "peerDependencies": {
+        "bufferutil": "^4.0.1",
+        "utf-8-validate": ">=5.0.2"
+      },
+      "peerDependenciesMeta": {
+        "bufferutil": {
+          "optional": true
+        },
+        "utf-8-validate": {
+          "optional": true
+        }
+      },
+      "requestedVersion": "8.21.0",
+      "responseSha256": "93704f27b5aefb9970f720af5e59f1078d08585e1d6452b9fec3b26c6578bf17",
+      "url": "https://registry.npmjs.org/ws/8.21.0",
+      "version": "8.21.0"
+    },
+    {
+      "dependencies": {
+        "@eslint-community/eslint-utils": "^4.8.0",
+        "@eslint-community/regexpp": "^4.12.1",
+        "@eslint/config-array": "^0.21.2",
+        "@eslint/config-helpers": "^0.4.2",
+        "@eslint/core": "^0.17.0",
+        "@eslint/eslintrc": "^3.3.6",
+        "@eslint/js": "9.39.5",
+        "@eslint/plugin-kit": "^0.4.1",
+        "@humanfs/node": "^0.16.6",
+        "@humanwhocodes/module-importer": "^1.0.1",
+        "@humanwhocodes/retry": "^0.4.2",
+        "@types/estree": "^1.0.6",
+        "ajv": "^6.14.0",
+        "chalk": "^4.0.0",
+        "cross-spawn": "^7.0.6",
+        "debug": "^4.3.2",
+        "escape-string-regexp": "^4.0.0",
+        "eslint-scope": "^8.4.0",
+        "eslint-visitor-keys": "^4.2.1",
+        "espree": "^10.4.0",
+        "esquery": "^1.5.0",
+        "esutils": "^2.0.2",
+        "fast-deep-equal": "^3.1.3",
+        "file-entry-cache": "^8.0.0",
+        "find-up": "^5.0.0",
+        "glob-parent": "^6.0.2",
+        "ignore": "^5.2.0",
+        "imurmurhash": "^0.1.4",
+        "is-glob": "^4.0.0",
+        "json-stable-stringify-without-jsonify": "^1.0.1",
+        "lodash.merge": "^4.6.2",
+        "minimatch": "^3.1.5",
+        "natural-compare": "^1.4.0",
+        "optionator": "^0.9.3"
+      },
+      "dist": {
+        "integrity": "sha512-DgZS62aPLXKlnxILS/AYCoRvHaZeXceIzlXPkkGGzJWSow1aEk0lbTlxUSlyjC8jcaKxAdOnTDz+o1JFSBsyjw==",
+        "shasum": "2a4e3c8b0f753196efae943c8ffaa8730fc6a3fa",
+        "tarball": "https://registry.npmjs.org/eslint/-/eslint-9.39.5.tgz"
+      },
+      "engines": {
+        "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+      },
+      "exports": {
+        ".": {
+          "default": "./lib/api.js",
+          "types": "./lib/types/index.d.ts"
+        },
+        "./config": {
+          "default": "./lib/config-api.js",
+          "types": "./lib/types/config-api.d.ts"
+        },
+        "./package.json": "./package.json",
+        "./rules": {
+          "types": "./lib/types/rules.d.ts"
+        },
+        "./universal": {
+          "default": "./lib/universal.js",
+          "types": "./lib/types/universal.d.ts"
+        },
+        "./use-at-your-own-risk": {
+          "default": "./lib/unsupported-api.js",
+          "types": "./lib/types/use-at-your-own-risk.d.ts"
+        }
+      },
+      "optionalDependencies": null,
+      "package": "eslint",
+      "peerDependencies": {
+        "jiti": "*"
+      },
+      "peerDependenciesMeta": {
+        "jiti": {
+          "optional": true
+        }
+      },
+      "requestedVersion": "9.39.5",
+      "responseSha256": "5e0a09f5b9e4b5c6f35b69127ae0f8beeba9f80e5875d7225130a8c907efb86c",
+      "url": "https://registry.npmjs.org/eslint/9.39.5",
+      "version": "9.39.5"
+    },
+    {
+      "dependencies": {
+        "@eslint-community/regexpp": "^4.12.2",
+        "@typescript-eslint/scope-manager": "8.71.1",
+        "@typescript-eslint/type-utils": "8.71.1",
+        "@typescript-eslint/utils": "8.71.1",
+        "@typescript-eslint/visitor-keys": "8.71.1",
+        "ignore": "^7.0.5",
+        "natural-compare": "^1.4.0",
+        "ts-api-utils": "^2.5.0"
+      },
+      "dist": {
+        "integrity": "sha512-nNlBf6HuotqMgZvSkWD5hNdemiBIxQ2NmrlgfcUIeZRs+BbakjscCQRq/Hb74EFVnFiSWWdL12JruqwBy3ERDw==",
+        "shasum": "b37fe4f6b33c707b183ae93421be10d4fe86e275",
+        "tarball": "https://registry.npmjs.org/@typescript-eslint/eslint-plugin/-/eslint-plugin-8.71.1.tgz"
+      },
+      "engines": {
+        "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+      },
+      "exports": {
+        ".": {
+          "default": "./dist/index.js",
+          "types": "./index.d.ts"
+        },
+        "./package.json": "./package.json",
+        "./use-at-your-own-risk/raw-plugin": {
+          "default": "./dist/raw-plugin.js",
+          "types": "./raw-plugin.d.ts"
+        },
+        "./use-at-your-own-risk/rules": {
+          "default": "./dist/rules/index.js",
+          "types": "./rules.d.ts"
+        }
+      },
+      "optionalDependencies": null,
+      "package": "@typescript-eslint/eslint-plugin",
+      "peerDependencies": {
+        "@typescript-eslint/parser": "^8.71.1",
+        "eslint": "^8.57.0 || ^9.0.0 || ^10.0.0",
+        "typescript": ">=4.8.4 <6.1.0"
+      },
+      "peerDependenciesMeta": null,
+      "requestedVersion": "8.71.1",
+      "responseSha256": "626251ef0e903c05825961095fe3f96010af2cc0d3342678d4af1d678d8a3b2f",
+      "url": "https://registry.npmjs.org/@typescript-eslint%2feslint-plugin/8.71.1",
+      "version": "8.71.1"
+    },
+    {
+      "dependencies": {
+        "@typescript-eslint/scope-manager": "8.71.1",
+        "@typescript-eslint/types": "8.71.1",
+        "@typescript-eslint/typescript-estree": "8.71.1",
+        "@typescript-eslint/visitor-keys": "8.71.1",
+        "debug": "^4.4.3"
+      },
+      "dist": {
+        "integrity": "sha512-oM/5sAqz/l1v/zYK1qTOPrn2+JIrBGC1V6uNYucRO5gh6eT9vWJ/RhPbGE59byvZEUQ4VP6XkLBaS5Jti5jpvw==",
+        "shasum": "aad16e9813272b931caab52393449fa11cc4a269",
+        "tarball": "https://registry.npmjs.org/@typescript-eslint/parser/-/parser-8.71.1.tgz"
+      },
+      "engines": {
+        "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+      },
+      "exports": {
+        ".": {
+          "default": "./dist/index.js",
+          "types": "./dist/index.d.ts"
+        },
+        "./package.json": "./package.json"
+      },
+      "optionalDependencies": null,
+      "package": "@typescript-eslint/parser",
+      "peerDependencies": {
+        "eslint": "^8.57.0 || ^9.0.0 || ^10.0.0",
+        "typescript": ">=4.8.4 <6.1.0"
+      },
+      "peerDependenciesMeta": null,
+      "requestedVersion": "8.71.1",
+      "responseSha256": "b5e8df09ffb979dece0b12b87ab7a1a14a5bae575bf8d34fd7c6c158abe70783",
+      "url": "https://registry.npmjs.org/@typescript-eslint%2fparser/8.71.1",
+      "version": "8.71.1"
+    },
+    {
+      "dependencies": {
+        "@typescript-eslint/project-service": "8.71.1",
+        "@typescript-eslint/tsconfig-utils": "8.71.1",
+        "@typescript-eslint/types": "8.71.1",
+        "@typescript-eslint/visitor-keys": "8.71.1",
+        "debug": "^4.4.3",
+        "minimatch": "^10.2.2",
+        "semver": "^7.7.3",
+        "tinyglobby": "^0.2.15",
+        "ts-api-utils": "^2.5.0"
+      },
+      "dist": {
+        "integrity": "sha512-pSKSEK1JJpHs6KiKVtABCE4iJK5d7FLFzDXQNBQ2oRY7LEd3UwOt3TZemTgu9syTIf56dJWlTn/pdmrO9oKUXQ==",
+        "shasum": "3df5ec70a0d801cfb45cab59ce431f1b97f19a11",
+        "tarball": "https://registry.npmjs.org/@typescript-eslint/typescript-estree/-/typescript-estree-8.71.1.tgz"
+      },
+      "engines": {
+        "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+      },
+      "exports": {
+        ".": {
+          "default": "./dist/index.js",
+          "types": "./dist/index.d.ts"
+        },
+        "./package.json": "./package.json",
+        "./use-at-your-own-risk": {
+          "default": "./dist/use-at-your-own-risk.js",
+          "types": "./dist/use-at-your-own-risk.d.ts"
+        }
+      },
+      "optionalDependencies": null,
+      "package": "@typescript-eslint/typescript-estree",
+      "peerDependencies": {
+        "typescript": ">=4.8.4 <6.1.0"
+      },
+      "peerDependenciesMeta": null,
+      "requestedVersion": "8.71.1",
+      "responseSha256": "86a3b2024352cba37da14b7e2a4b10832d2be12c3ef3b0c4f702db91d55d3bfc",
+      "url": "https://registry.npmjs.org/@typescript-eslint%2ftypescript-estree/8.71.1",
+      "version": "8.71.1"
+    },
+    {
+      "dependencies": {
+        "debug": "^4.3.6",
+        "pretty-bytes": "^6.1.1",
+        "tinyglobby": "^0.2.10",
+        "workbox-build": "^7.3.0",
+        "workbox-window": "^7.3.0"
+      },
+      "dist": {
+        "integrity": "sha512-vFhH6Waw8itNu37hWUJxL50q+CBbNcMVzsKaYHQVrfxTt3ihk3PeLO22SbiP1UNWzcEPaTQv+YVxe4G0KOjAkg==",
+        "shasum": "5c6c37f52e96939ba899c5e571c12b7faccc6c49",
+        "tarball": "https://registry.npmjs.org/vite-plugin-pwa/-/vite-plugin-pwa-0.21.2.tgz"
+      },
+      "engines": {
+        "node": ">=16.0.0"
+      },
+      "exports": {
+        ".": {
+          "import": {
+            "default": "./dist/index.js",
+            "types": "./dist/index.d.ts"
+          },
+          "require": {
+            "default": "./dist/index.cjs",
+            "types": "./dist/index.d.cts"
+          }
+        },
+        "./*": "./*",
+        "./client": {
+          "types": "./client.d.ts"
+        },
+        "./info": {
+          "types": "./info.d.ts"
+        },
+        "./package.json": "./package.json",
+        "./preact": {
+          "types": "./preact.d.ts"
+        },
+        "./pwa-assets": {
+          "types": "./pwa-assets.d.ts"
+        },
+        "./react": {
+          "types": "./react.d.ts"
+        },
+        "./solid": {
+          "types": "./solid.d.ts"
+        },
+        "./svelte": {
+          "types": "./svelte.d.ts"
+        },
+        "./types": {
+          "types": "./types/index.d.ts"
+        },
+        "./vanillajs": {
+          "types": "./vanillajs.d.ts"
+        },
+        "./vue": {
+          "types": "./vue.d.ts"
+        }
+      },
+      "optionalDependencies": null,
+      "package": "vite-plugin-pwa",
+      "peerDependencies": {
+        "@vite-pwa/assets-generator": "^0.2.6",
+        "vite": "^3.1.0 || ^4.0.0 || ^5.0.0 || ^6.0.0",
+        "workbox-build": "^7.3.0",
+        "workbox-window": "^7.3.0"
+      },
+      "peerDependenciesMeta": {
+        "@vite-pwa/assets-generator": {
+          "optional": true
+        }
+      },
+      "requestedVersion": "0.21.2",
+      "responseSha256": "7ad4a02034f12ed903d26ac920ab39e9744c42924729568cc6c5f27b484acf12",
+      "url": "https://registry.npmjs.org/vite-plugin-pwa/0.21.2",
+      "version": "0.21.2"
+    },
+    {
+      "dependencies": {
+        "@apideck/better-ajv-errors": "^0.3.1",
+        "@babel/core": "^7.24.4",
+        "@babel/preset-env": "^7.11.0",
+        "@babel/runtime": "^7.11.2",
+        "@rollup/plugin-babel": "^6.1.0",
+        "@rollup/plugin-node-resolve": "^16.0.3",
+        "@rollup/plugin-replace": "^6.0.3",
+        "@rollup/plugin-terser": "^1.0.0",
+        "@trickfilm400/rollup-plugin-off-main-thread": "^3.0.0-pre1",
+        "ajv": "^8.6.0",
+        "common-tags": "^1.8.0",
+        "eta": "^4.5.1",
+        "fast-json-stable-stringify": "^2.1.0",
+        "fs-extra": "^9.0.1",
+        "glob": "^11.0.1",
+        "pretty-bytes": "^5.3.0",
+        "rollup": "^4.53.3",
+        "source-map": "^0.8.0-beta.0",
+        "stringify-object": "^3.3.0",
+        "strip-comments": "^2.0.1",
+        "tempy": "^0.6.0",
+        "upath": "^1.2.0",
+        "workbox-background-sync": "7.4.1",
+        "workbox-broadcast-update": "7.4.1",
+        "workbox-cacheable-response": "7.4.1",
+        "workbox-core": "7.4.1",
+        "workbox-expiration": "7.4.1",
+        "workbox-google-analytics": "7.4.1",
+        "workbox-navigation-preload": "7.4.1",
+        "workbox-precaching": "7.4.1",
+        "workbox-range-requests": "7.4.1",
+        "workbox-recipes": "7.4.1",
+        "workbox-routing": "7.4.1",
+        "workbox-strategies": "7.4.1",
+        "workbox-streams": "7.4.1",
+        "workbox-sw": "7.4.1",
+        "workbox-window": "7.4.1"
+      },
+      "dist": {
+        "integrity": "sha512-SDhxIvEAde9Gy/5w4Yo1Jh/M49Z0qE3q0oteyE8zGq0DScxFqVBcCtIXFuLtmtxRQZCMbf0prco4VyEu3KBQuw==",
+        "shasum": "b705d678dde0559d5e818cb6a9e9908668f792e1",
+        "tarball": "https://registry.npmjs.org/workbox-build/-/workbox-build-7.4.1.tgz"
+      },
+      "engines": {
+        "node": ">=20.0.0"
+      },
+      "exports": null,
+      "optionalDependencies": null,
+      "package": "workbox-build",
+      "peerDependencies": null,
+      "peerDependenciesMeta": null,
+      "requestedVersion": "7.4.1",
+      "responseSha256": "63a646b13e5523e7ccba80ab547bfd49bc22d4b376c1026825e9599d137509a4",
+      "url": "https://registry.npmjs.org/workbox-build/7.4.1",
+      "version": "7.4.1"
+    },
+    {
+      "dependencies": {
+        "@alloc/quick-lru": "^5.2.0",
+        "arg": "^5.0.2",
+        "chokidar": "^3.6.0",
+        "didyoumean": "^1.2.2",
+        "dlv": "^1.1.3",
+        "fast-glob": "^3.3.2",
+        "glob-parent": "^6.0.2",
+        "is-glob": "^4.0.3",
+        "jiti": "^1.21.7",
+        "lilconfig": "^3.1.3",
+        "micromatch": "^4.0.8",
+        "normalize-path": "^3.0.0",
+        "object-hash": "^3.0.0",
+        "picocolors": "^1.1.1",
+        "postcss": "^8.4.47",
+        "postcss-import": "^15.1.0",
+        "postcss-js": "^4.0.1",
+        "postcss-load-config": "^4.0.2 || ^5.0 || ^6.0",
+        "postcss-nested": "^6.2.0",
+        "postcss-selector-parser": "^6.1.2",
+        "resolve": "^1.22.8",
+        "sucrase": "^3.35.0"
+      },
+      "dist": {
+        "integrity": "sha512-3ofp+LL8E+pK/JuPLPggVAIaEuhvIz4qNcf3nA1Xn2o/7fb7s/TYpHhwGDv1ZU3PkBluUVaF8PyCHcm48cKLWQ==",
+        "shasum": "af2a0a4ae302d52ebe078b6775e799e132500ee2",
+        "tarball": "https://registry.npmjs.org/tailwindcss/-/tailwindcss-3.4.19.tgz"
+      },
+      "engines": {
+        "node": ">=14.0.0"
+      },
+      "exports": null,
+      "optionalDependencies": null,
+      "package": "tailwindcss",
+      "peerDependencies": null,
+      "peerDependenciesMeta": null,
+      "requestedVersion": "3.4.19",
+      "responseSha256": "80fafa132f0b60c00c4b43978ce3464cedadfccad993354af7cf5a86ea603777",
+      "url": "https://registry.npmjs.org/tailwindcss/3.4.19",
+      "version": "3.4.19"
+    },
+    {
+      "dependencies": {
+        "nanoid": "^3.3.19",
+        "picocolors": "^1.1.1",
+        "source-map-js": "^1.2.2"
+      },
+      "dist": {
+        "integrity": "sha512-49cGhUbXj8Qenv0iTMxA1cFBzxXoctpC9Ujd77t1WcbJIr6nF/eI7g/8MgxrYldFRuAXvja7xQRwavoW7kgrxQ==",
+        "shasum": "086a0ded2c0257c71efb8c68776b477774714b4a",
+        "tarball": "https://registry.npmjs.org/postcss/-/postcss-8.5.29.tgz"
+      },
+      "engines": {
+        "node": "^10 || ^12 || >=14"
+      },
+      "exports": {
+        ".": {
+          "import": "./lib/postcss.mjs",
+          "require": "./lib/postcss.js"
+        },
+        "./lib/at-rule": "./lib/at-rule.js",
+        "./lib/comment": "./lib/comment.js",
+        "./lib/container": "./lib/container.js",
+        "./lib/css-syntax-error": "./lib/css-syntax-error.js",
+        "./lib/declaration": "./lib/declaration.js",
+        "./lib/fromJSON": "./lib/fromJSON.js",
+        "./lib/input": "./lib/input.js",
+        "./lib/lazy-result": "./lib/lazy-result.js",
+        "./lib/list": "./lib/list.js",
+        "./lib/map-generator": "./lib/map-generator.js",
+        "./lib/no-work-result": "./lib/no-work-result.js",
+        "./lib/node": "./lib/node.js",
+        "./lib/parse": "./lib/parse.js",
+        "./lib/parser": "./lib/parser.js",
+        "./lib/postcss": "./lib/postcss.js",
+        "./lib/previous-map": "./lib/previous-map.js",
+        "./lib/processor": "./lib/processor.js",
+        "./lib/result": "./lib/result.js",
+        "./lib/root": "./lib/root.js",
+        "./lib/rule": "./lib/rule.js",
+        "./lib/stringifier": "./lib/stringifier.js",
+        "./lib/stringify": "./lib/stringify.js",
+        "./lib/symbols": "./lib/symbols.js",
+        "./lib/terminal-highlight": "./lib/terminal-highlight.js",
+        "./lib/tokenize": "./lib/tokenize.js",
+        "./lib/warn-once": "./lib/warn-once.js",
+        "./lib/warning": "./lib/warning.js",
+        "./package.json": "./package.json"
+      },
+      "optionalDependencies": null,
+      "package": "postcss",
+      "peerDependencies": null,
+      "peerDependenciesMeta": null,
+      "requestedVersion": "8.5.29",
+      "responseSha256": "b0c8085fc5c1a57e97e733d30b3146c3affe4858e31199d3f407947d808d2147",
+      "url": "https://registry.npmjs.org/postcss/8.5.29",
+      "version": "8.5.29"
+    },
+    {
+      "dependencies": {
+        "cssesc": "^3.0.0",
+        "util-deprecate": "^1.0.2"
+      },
+      "dist": {
+        "integrity": "sha512-7qASPzhKF2l2KLboRZux8CCTRMdGiV08vWmyKzPz22qZ7ZjQBOeY7rNzNoCLSUiftJ7HUq0GERHmxw/t0dCdMw==",
+        "shasum": "45e970f2d93d4547d6754167ed1132f43012c4bf",
+        "tarball": "https://registry.npmjs.org/postcss-selector-parser/-/postcss-selector-parser-7.1.6.tgz"
+      },
+      "engines": {
+        "node": ">=4"
+      },
+      "exports": null,
+      "optionalDependencies": null,
+      "package": "postcss-selector-parser",
+      "peerDependencies": null,
+      "peerDependenciesMeta": null,
+      "requestedVersion": "7.1.6",
+      "responseSha256": "554fd0e9526a4f17f2e0021b9e39d8f1e1f3caa8d50b78902022bdbfb2326e3c",
+      "url": "https://registry.npmjs.org/postcss-selector-parser/7.1.6",
+      "version": "7.1.6"
+    },
+    {
+      "dependencies": {
+        "fill-range": "^7.1.1"
+      },
+      "dist": {
+        "integrity": "sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==",
+        "shasum": "490332f40919452272d55a8480adc0c441358789",
+        "tarball": "https://registry.npmjs.org/braces/-/braces-3.0.3.tgz"
+      },
+      "engines": {
+        "node": ">=8"
+      },
+      "exports": null,
+      "optionalDependencies": null,
+      "package": "braces",
+      "peerDependencies": null,
+      "peerDependenciesMeta": null,
+      "requestedVersion": "3.0.3",
+      "responseSha256": "8fd4c1db771542ab5456bb4806408fea9cdb5bf77f6cb9d5d563a3bd0ebb0b13",
+      "url": "https://registry.npmjs.org/braces/3.0.3",
+      "version": "3.0.3"
+    },
+    {
+      "dependencies": {
+        "react-router": "7.18.3"
+      },
+      "dist": {
+        "integrity": "sha512-ytVbyBBM7vMfRCam25r0WMhSVSom909A8p+8m0/f1w853dz/xfFu6etAT2SEbVoSnI+ZoPRDqIsQXVT89gp7kg==",
+        "shasum": "0688c91b4b376c8b0dcaf0a0064975d52a32e0f7",
+        "tarball": "https://registry.npmjs.org/react-router-dom/-/react-router-dom-7.18.3.tgz"
+      },
+      "engines": {
+        "node": ">=20.0.0"
+      },
+      "exports": {
+        ".": {
+          "default": {
+            "default": "./dist/index.js",
+            "types": "./dist/index.d.ts"
+          },
+          "import": {
+            "default": "./dist/index.mjs",
+            "types": "./dist/index.d.mts"
+          },
+          "node": {
+            "default": "./dist/index.js",
+            "module-sync": "./dist/index.mjs",
+            "types": "./dist/index.d.ts"
+          }
+        },
+        "./package.json": "./package.json"
+      },
+      "package": "react-router-dom",
+      "peerDependencies": {
+        "react": ">=18",
+        "react-dom": ">=18"
+      },
+      "requestedVersion": "7.18.3",
+      "responseSha256": "760088ed2994aece6ce9b9a7d96b02952fe6291c1dcdcafa2aa8d30b85be397f",
+      "url": "https://registry.npmjs.org/react-router-dom/7.18.3",
+      "version": "7.18.3"
+    },
+    {
+      "dependencies": {
+        "cookie": "^1.0.1",
+        "set-cookie-parser": "^2.6.0"
+      },
+      "dist": {
+        "integrity": "sha512-gyXgtdr5uACJ5b1Q4udzjVV+tb/rlHIMJKuJ0e89R4Kzgz47z/rgP0dIKxktqIEUhDHluGTPJJH/wRha7CyqsA==",
+        "shasum": "2a3257aa7c5edd5a71f878063e4c7f3fcfc4b76a",
+        "tarball": "https://registry.npmjs.org/react-router/-/react-router-7.18.3.tgz"
+      },
+      "engines": {
+        "node": ">=20.0.0"
+      },
+      "exports": {
+        ".": {
+          "default": {
+            "default": "./dist/development/index.js",
+            "types": "./dist/development/index.d.ts"
+          },
+          "import": {
+            "default": "./dist/development/index.mjs",
+            "types": "./dist/development/index.d.mts"
+          },
+          "module": {
+            "default": "./dist/development/index.mjs",
+            "types": "./dist/development/index.d.mts"
+          },
+          "node": {
+            "default": "./dist/development/index.js",
+            "module": "./dist/development/index.mjs",
+            "module-sync": "./dist/development/index.mjs",
+            "types": "./dist/development/index.d.ts"
+          },
+          "react-server": {
+            "default": "./dist/development/index-react-server.js",
+            "module": "./dist/development/index-react-server.mjs"
+          }
+        },
+        "./dom": {
+          "default": {
+            "default": "./dist/development/dom-export.js",
+            "types": "./dist/development/dom-export.d.ts"
+          },
+          "import": {
+            "default": "./dist/development/dom-export.mjs",
+            "types": "./dist/development/dom-export.d.mts"
+          },
+          "module": {
+            "default": "./dist/development/dom-export.mjs",
+            "types": "./dist/development/dom-export.d.mts"
+          },
+          "node": {
+            "default": "./dist/development/dom-export.js",
+            "module": "./dist/development/dom-export.mjs",
+            "module-sync": "./dist/development/dom-export.mjs",
+            "types": "./dist/development/dom-export.d.ts"
+          }
+        },
+        "./internal": {
+          "default": {
+            "types": "./dist/development/lib/types/index.d.ts"
+          },
+          "import": {
+            "types": "./dist/development/lib/types/internal.d.mts"
+          },
+          "node": {
+            "types": "./dist/development/lib/types/internal.d.ts"
+          }
+        },
+        "./internal/react-server-client": {
+          "default": {
+            "default": "./dist/development/index.js",
+            "types": "./dist/development/index.d.ts"
+          },
+          "import": {
+            "default": "./dist/development/index.mjs",
+            "types": "./dist/development/index.d.mts"
+          },
+          "module": {
+            "default": "./dist/development/index.mjs",
+            "types": "./dist/development/index.d.mts"
+          },
+          "node": {
+            "default": "./dist/development/index.js",
+            "module": "./dist/development/index.mjs",
+            "module-sync": "./dist/development/index.mjs",
+            "types": "./dist/development/index.d.ts"
+          },
+          "react-server": {
+            "default": "./dist/development/index-react-server-client.js",
+            "module": "./dist/development/index-react-server-client.mjs"
+          }
+        },
+        "./package.json": "./package.json"
+      },
+      "package": "react-router",
+      "peerDependencies": {
+        "react": ">=18",
+        "react-dom": ">=18"
+      },
+      "requestedVersion": "7.18.3",
+      "responseSha256": "dc683a7741b62b8b0d81b2580ad11e59b242acbafc1e705d8cde3e6d95ca6553",
+      "url": "https://registry.npmjs.org/react-router/7.18.3",
+      "version": "7.18.3"
+    }
+  ],
+  "queriedAtUtc": "2026-10-11T18:57:55.396320+00:00",
+  "repositoryUsage": {
+    "customServiceWorker": "public/sw.js",
+    "onlyPwaDeclarationFound": true,
+    "unusedVitePwaSearch": "rg -n 'vite-plugin-pwa|workbox|VitePWA|virtual:pwa' vite.config.ts src scripts tests package.json public",
+    "viteBuildTokenInjectorPreserved": true
+  },
+  "residuals": [
+    "Wrangler selected owner has official alpha Miniflare transitive dependency; local emulator proof remains required.",
+    "Tailwind3 latest retains unpatched braces and selector-parser6.",
+    "Registry evidence is not an installed resolved dependency audit."
+  ],
+  "testsRunByResearchAgent": false,
+  "updatedRouterSelection": {
+    "affected": ">=7.12.0 <7.18.2",
+    "freshAdvisory": "GHSA-qwww-vcr4-c8h2",
+    "initialHistoricalFloor": "7.18.0",
+    "productionAuditConclusion": "Coordinator-owned fresh receipt required; no BrowserRouter applicability waiver.",
+    "selected": "7.18.3"
+  },
+  "verifiedTarballs": [
+    {
+      "package": "wrangler",
+      "registrySha512Verified": true,
+      "sha256": "08b38c62bcaad1c1722ca1b811a41daac0faffcbbe0ab5825f993da1d2920f3c",
+      "version": "4.149.0"
+    },
+    {
+      "package": "wrangler",
+      "registrySha512Verified": true,
+      "sha256": "90afa40f716bb2e02cc4cdb60cae2013b441cb1799a6b7b90aa48c74c209e572",
+      "version": "4.116.0"
+    },
+    {
+      "package": "@cloudflare/workers-types",
+      "registrySha512Verified": true,
+      "sha256": "b5ab619e6127cf0c97d6af39b271162fb37c812c98c425068cb56682186728cc",
+      "version": "5.20261006.1"
+    },
+    {
+      "package": "vitest",
+      "registrySha512Verified": true,
+      "sha256": "81875725211b8c43a30213579456954603d471d022587ce0e6842d44d9ed162b",
+      "version": "4.1.11"
+    },
+    {
+      "package": "react-router",
+      "registrySha512Verified": true,
+      "sha256": "812edbac26262f9d2e33b236de45e296978f068c4b917b4415c2f200ef882f01",
+      "version": "7.18.0"
+    },
+    {
+      "package": "postcss-selector-parser",
+      "registrySha512Verified": true,
+      "sha256": "48c903f98c5591d8d26f16f389d5cb3435459474c645209a79f6241bf4b657b6",
+      "version": "7.1.6"
+    }
+  ]
+}

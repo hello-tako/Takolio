@@ -7,9 +7,9 @@
 .entry-page :is(.text-xs, .text-\[10px\]) { font-size: 14px; line-height: 1.65; }
 .entry-page :is(h1, h2, h3, p, strong, span) { overflow-wrap: anywhere; }
 .entry-brand-header { display: flex; justify-content: space-between; flex-wrap: wrap; align-items: center; gap: 16px; }
-.entry-brand-header img { width: 150px; height: auto; }
+.entry-brand-header img { width: 168px; height: auto; }
 .entry-brand-header > span { font-size: 14px; color: var(--kitchen-pine); }
-.entry-logo { width: 150px; height: auto; object-fit: contain; }
+.entry-logo { width: 168px; height: auto; object-fit: contain; }
 .entry-footer { margin-top: 32px; padding-block: 20px; border-top: 1px solid rgb(var(--semantic-border-rgb)); font-size: 14px; color: rgb(var(--semantic-text-muted-rgb)); }
 .landing-page { max-width: 1400px; margin-inline: auto; }
 .landing-intro { padding-block: 48px 28px; }
@@ -19,7 +19,7 @@
 .landing-actions { max-width: 440px; display: grid; gap: 12px; }
 .landing-actions button { display: flex; justify-content: center; align-items: center; gap: 12px; }
 .landing-actions p { font-size: 14px; color: rgb(var(--semantic-text-muted-rgb)); }
-.landing-flow { margin-top: 40px; padding: 24px 20px; border-top: 3px solid var(--kitchen-coral); background: #fffdfa; border-radius: 4px 4px 16px 16px; }
+.landing-flow { margin-top: 40px; padding: 24px 20px; border-top: 3px solid var(--kitchen-coral); background: var(--semantic-surface); border-radius: 4px 4px 16px 16px; }
 .landing-flow h2 { font-size: 24px; line-height: 1.4; max-width: 20ch; margin-bottom: 28px; }
 .landing-flow li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 12px; padding-block: 20px; border-top: 1px solid rgb(var(--semantic-border-rgb)); }
 .landing-flow li > svg { color: var(--kitchen-pine); grid-row: 2; }
@@ -59,7 +59,7 @@
   .landing-actions { grid-column: 1; }
   .landing-flow { grid-column: 2; grid-row: 2 / 4; align-self: center; padding: 32px; margin-top: 0; }
   .landing-page .entry-footer { grid-column: 1 / -1; }
-  .auth-page { padding-top: 40px; background: radial-gradient(ellipse at 20% 10%, #e9f1ea, transparent 45%), var(--kitchen-canvas); }
+  .auth-page { padding-top: 40px; background: radial-gradient(ellipse at 20% 10%, var(--semantic-success-soft), transparent 45%), var(--kitchen-canvas); }
   .auth-workspace { padding: 32px; max-width: 544px; background: white; border: 1px solid rgb(var(--semantic-border-rgb)); border-top: 3px solid var(--kitchen-coral); border-radius: 4px 4px 16px 16px; }
 }
 @media (prefers-reduced-motion: reduce) {

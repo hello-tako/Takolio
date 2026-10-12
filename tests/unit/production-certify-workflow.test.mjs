@@ -32,7 +32,8 @@ const reviewedSchemaGate = {
   'scripts/d1-readonly-query.mjs': '9d43f62c25561423c6b4c00d611a262a82387dce724c6756274d1db9cfc4deb3',
   'scripts/d1-schema-gate.sh': 'e48596c6001f7fc20bb0d03213553f0bfe7575585bc02144d432f0a11cccb625',
   'scripts/d1-schema-gate.mjs': 'e443766807873c458581c82049cef1b0967dff2493b61804e1ae7f6bb6e7128a',
-  'scripts/d1-schema-gate.sql': 'c6d7da1c5f5cb9b16e7738242723cf571cbf426f8aeb7c68ba01e37b2ba2888c',
+  // Reviewed 0040 expansion: six strict OTP tables, their columns and two indexes.
+  'scripts/d1-schema-gate.sql': '8fef693f77e9b12976481d95dc0e7e442593c5d26e1af13ee90405a7d52a0e88',
 };
 const step = (name) => workflow().jobs.certify.steps.find((s) => s.name === name);
 const inline = (script) => script.split("<<'JS'\n")[1].split('\nJS')[0];
@@ -85,17 +86,17 @@ function assertReadOnlySurface(candidate) {
   }
   expect(commands).toEqual(reviewedCommands);
   expect(actions).toEqual([
-    { job: 'gate', uses: 'actions/checkout@v4', with: { ref: 'main', 'fetch-depth': 0, 'persist-credentials': false } },
-    { job: 'gate', uses: 'actions/setup-node@v4', with: { 'node-version': 22 } },
-    { job: 'gate', uses: 'actions/upload-artifact@v4', with: { name: 'production-certification-candidate-${{ github.run_id }}-${{ github.run_attempt }}', path: 'release-manifest.json', 'if-no-files-found': 'error', 'retention-days': 90 } },
-    { job: 'certify', uses: 'actions/checkout@v4', with: { ref: '${{ needs.gate.outputs.certify_sha }}', 'fetch-depth': 0, 'persist-credentials': false } },
-    { job: 'certify', uses: 'actions/download-artifact@v4', with: { name: 'production-certification-candidate-${{ github.run_id }}-${{ github.run_attempt }}' } },
-    { job: 'certify', uses: 'actions/setup-node@v4', with: { 'node-version': 22 } },
-    { job: 'certify', uses: 'pnpm/action-setup@v4', with: { version: 10 } },
-    { job: 'certify', name: 'Save sanitized receipt (PASS requires certification.result)', if: 'always()', uses: 'actions/upload-artifact@v4', with: { name: 'production-certification-${{ github.run_id }}-${{ github.run_attempt }}', path: 'release-manifest.json', 'if-no-files-found': 'error', 'retention-days': 90 } },
+    { job: 'gate', uses: 'actions/checkout@11d5960a326750d5838078e36cf38b85af677262', with: { ref: 'main', 'fetch-depth': 0, 'persist-credentials': false } },
+    { job: 'gate', uses: 'actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020', with: { 'node-version': 22 } },
+    { job: 'gate', uses: 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02', with: { name: 'production-certification-candidate-${{ github.run_id }}-${{ github.run_attempt }}', path: 'release-manifest.json', 'if-no-files-found': 'error', 'retention-days': 90 } },
+    { job: 'certify', uses: 'actions/checkout@11d5960a326750d5838078e36cf38b85af677262', with: { ref: '${{ needs.gate.outputs.certify_sha }}', 'fetch-depth': 0, 'persist-credentials': false } },
+    { job: 'certify', uses: 'actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093', with: { name: 'production-certification-candidate-${{ github.run_id }}-${{ github.run_attempt }}' } },
+    { job: 'certify', uses: 'actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020', with: { 'node-version': 22 } },
+    { job: 'certify', uses: 'pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1', with: { version: 10 } },
+    { job: 'certify', name: 'Save sanitized receipt (PASS requires certification.result)', if: 'always()', uses: 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02', with: { name: 'production-certification-${{ github.run_id }}-${{ github.run_attempt }}', path: 'release-manifest.json', 'if-no-files-found': 'error', 'retention-days': 90 } },
   ]);
   expect(certifySteps.map((s) => s.name || s.uses)).toEqual([
-    'actions/checkout@v4', 'actions/download-artifact@v4', 'actions/setup-node@v4', 'pnpm/action-setup@v4',
+    'actions/checkout@11d5960a326750d5838078e36cf38b85af677262', 'actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093', 'actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020', 'pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1',
     ...Object.keys(reviewedCommands).filter((k) => k.startsWith('certify: ')).map((k) => k.slice(9)),
     'Save sanitized receipt (PASS requires certification.result)',
   ]);

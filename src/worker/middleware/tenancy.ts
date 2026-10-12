@@ -1,10 +1,7 @@
 import { Context, Next } from 'hono';
 import { Env, AuthContext } from '../types';
 
-/**
- * Tenancy Guard: Enforces strict multi-tenancy isolation.
- * Verifies that the authenticated user actually belongs to the requested household in D1 household_members.
- */
+/** Verifies current household membership before a household handler runs. */
 export async function tenancyGuard(
   c: Context<{ Bindings: Env; Variables: { auth: AuthContext } }>,
   next: Next
@@ -16,8 +13,8 @@ export async function tenancyGuard(
     return c.json({ error: 'Unauthorized: Authentication required', code: 'UNAUTHORIZED' }, 401);
   }
 
-  // Guests are isolated to their own ephemeral household
-  if (auth.isGuest) {
+  // Anonymous catalog reads and development guest tokens have no persisted session.
+  if (auth.isGuest && !auth.sessionId) {
     return await next();
   }
 
@@ -25,44 +22,31 @@ export async function tenancyGuard(
     return c.json({ error: 'Unauthorized: Household context is missing', code: 'UNAUTHORIZED' }, 401);
   }
 
-  // A registered user's household membership is an authorization decision.
-  // Never fail open when D1 is unavailable or the membership query errors.
   if (!db) {
     return c.json({ error: 'Database service unavailable', code: 'DATABASE_UNAVAILABLE' }, 503);
   }
 
   try {
     const membership = await db
-      .prepare('SELECT role FROM household_members WHERE household_id = ? AND user_id = ? LIMIT 1')
-      .bind(auth.householdId, auth.userId)
+      .prepare(`SELECT hm.role
+        FROM household_members hm JOIN households h ON h.id = hm.household_id
+        WHERE hm.household_id = ? AND hm.user_id = ?
+          AND (? = 0 OR h.created_by = ?)
+        LIMIT 1`)
+      .bind(auth.householdId, auth.userId, auth.isGuest ? 1 : 0, auth.userId)
       .first<{ role: string }>();
 
     if (!membership) {
-      // Auto-link only the deterministic default household created for this
-      // account. Arbitrary household ids must have an explicit membership row.
-      if (auth.householdId === `hh_${auth.userId}`) {
-        await db.batch([
-          db.prepare('INSERT OR IGNORE INTO households (id, name, created_by) VALUES (?, ?, ?)').bind(
-            auth.householdId,
-            'Tủ lạnh của tôi',
-            auth.userId
-          ),
-          db.prepare(
-            'INSERT OR IGNORE INTO household_members (id, household_id, user_id, role) VALUES (?, ?, ?, ?)'
-          ).bind(`hm_${auth.userId}`, auth.householdId, auth.userId, 'owner'),
-        ]);
-      } else {
-        return c.json(
-          {
-            error: 'Forbidden: You do not have permission to access this household data',
-            code: 'TENANCY_VIOLATION',
-          },
-          403
-        );
-      }
+      return c.json(
+        {
+          error: 'Forbidden: You do not have permission to access this household data',
+          code: 'TENANCY_VIOLATION',
+        },
+        403
+      );
     }
-  } catch (err) {
-    console.error('Tenancy check database error:', err);
+  } catch {
+    console.error(JSON.stringify({ event: 'tenancy_check_failed' }));
     return c.json({ error: 'Database service unavailable', code: 'DATABASE_UNAVAILABLE' }, 503);
   }
 

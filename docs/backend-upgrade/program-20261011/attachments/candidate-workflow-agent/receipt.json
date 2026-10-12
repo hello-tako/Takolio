@@ -1,0 +1,25 @@
+{
+  "classification": "INDEPENDENT_OFFLINE_CANDIDATE_WORKFLOW_SCAN",
+  "checkedAtUtc": "2026-10-11T18:14:39.026284+00:00",
+  "candidateWorkflowSha256": "b18392aeb5c7d460e3b74a7847035bc5786b1550c5da36f13d76a4e3db21da9e",
+  "runnerSha256": "ff4c40882c44ae5b4d18fede33158f9bb2df0b242da00c5fe217c260bd7caeae",
+  "rawReportSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "rawLogSha256": "dac18c790337d6a67882c52711a9949e185e001cc9265d64e2764f3e77cd623d",
+  "exitCode": 0,
+  "toolValidation": {
+    "tool": "zizmor",
+    "status": "PASS",
+    "version": "1.30.1",
+    "executableSha256": "0cd1e69b329cdbc2ded5cd3b5161f21ffd89652eab6563153e4af5a69344c64d"
+  },
+  "result": {
+    "tool": "zizmor",
+    "status": "PASS",
+    "findingCount": 0,
+    "rules": {},
+    "severities": {}
+  },
+  "rawSourceOrSecretValuesPublished": false,
+  "workflowEnabled": false,
+  "productionCertified": false
+}

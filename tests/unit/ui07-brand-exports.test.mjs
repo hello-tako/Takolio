@@ -10,12 +10,32 @@ const committed = resolve(root, 'public/takosan/rebuild');
 const publicFile = (path) => resolve(root, 'public', path.replace(/^\//, ''));
 
 describe('UI07 reproducible digital brand', () => {
-  it('regenerates every committed export byte-identically without external kit/fonts', async () => {
+  it('regenerates all 36 exports with identical vector bytes and PNG pixels without external kit/fonts', async () => {
     const out = await mkdtemp(resolve(tmpdir(), 'takosan-ui07-'));
     const names = await generateBrand(out);
     expect(names.length).toBe(36);
     for (const name of names) {
-      expect(await readFile(resolve(out, name)), name).toEqual(await readFile(resolve(committed, name)));
+      const generatedBytes = await readFile(resolve(out, name));
+      const protectedBytes = await readFile(resolve(committed, name));
+      if (!name.endsWith('.png')) {
+        expect(generatedBytes, name).toEqual(protectedBytes);
+        continue;
+      }
+      // Native PNG compression changes across pinned sharp versions; decoded pixels stay exact.
+      const [generatedMetadata, protectedMetadata] = await Promise.all([
+        sharp(generatedBytes).metadata(), sharp(protectedBytes).metadata(),
+      ]);
+      const identity = ({ format, width, height, channels, space, depth, hasAlpha }) =>
+        ({ format, width, height, channels, space, depth, hasAlpha });
+      expect(identity(generatedMetadata), name).toEqual(identity(protectedMetadata));
+      expect([generatedMetadata.format, generatedMetadata.hasAlpha], name).toEqual(['png', false]);
+      const [generatedPixels, protectedPixels] = await Promise.all([
+        sharp(generatedBytes).raw().toBuffer({ resolveWithObject: true }),
+        sharp(protectedBytes).raw().toBuffer({ resolveWithObject: true }),
+      ]);
+      expect([generatedPixels.info.width, generatedPixels.info.height, generatedPixels.info.channels], name)
+        .toEqual([protectedPixels.info.width, protectedPixels.info.height, protectedPixels.info.channels]);
+      expect(generatedPixels.data.equals(protectedPixels.data), name).toBe(true);
     }
   });
 
@@ -69,16 +89,16 @@ describe('UI07 reproducible digital brand', () => {
   it('manifest, browser links and precache resolve while keeping legacy compatibility assets', async () => {
     const manifest = JSON.parse(await readFile(resolve(root, 'public/manifest.json'), 'utf8'));
     for (const icon of manifest.icons) {
-      expect(icon.src.startsWith('/takosan/rebuild/app-icons/')).toBe(true);
+      expect(icon.src.startsWith('/takosan/v3/app-icons/')).toBe(true);
       const meta = await sharp(publicFile(icon.src)).metadata();
       expect(icon.sizes).toBe(`${meta.width}x${meta.height}`);
     }
     const html = await readFile(resolve(root, 'index.html'), 'utf8');
-    expect(html).toContain('https://frigo.tungjpstore.net/takosan/rebuild/og.png');
+    expect(html).toContain('https://frigo.tungjpstore.net/takosan/v3/social/og-1200x630.png');
     expect(html).toContain('og:image:alt');
     const sw = await readFile(resolve(root, 'public/sw.js'), 'utf8');
-    for (const name of ['lockup.svg', 'symbol.svg', 'app-icons/favicon.svg', 'app-icons/icon-192.png', 'app-icons/icon-512.png']) {
-      expect(sw).toContain(`/takosan/rebuild/${name}`);
+    for (const name of ['logo/horizontal-primary.svg', 'logo/symbol-primary.svg', 'app-icons/favicon.svg', 'app-icons/icon-192.png', 'app-icons/icon-512.png']) {
+      expect(sw).toContain(`/takosan/v3/${name}`);
     }
     for (const path of ['/takosan/brand/takosan-logo-horizontal-primary.svg', '/takosan/brand/takosan-og.png', '/takosan/app-icons/icon-512.png', '/takosan/mascot/takosan-fridge.svg', '/frigo/brand/wordmark.png']) {
       expect((await readFile(publicFile(path))).length).toBeGreaterThan(0);

@@ -1,0 +1,26 @@
+{
+  "classification": "TEST_HARNESS_COMPATIBILITY_ONLY",
+  "routerFiles": [
+    "tests/unit/auth-verify-route.test.tsx",
+    "tests/unit/ui02-surfaces.test.tsx",
+    "tests/unit/ui08-account.test.tsx",
+    "tests/unit/planner-hook.test.tsx",
+    "tests/unit/ui-rebuild-surfaces.test.tsx",
+    "tests/unit/t13b-fridge-hardening.test.tsx",
+    "tests/unit/t13r-a-receipt-ownership.test.tsx",
+    "tests/unit/t07-planner-ui.test.tsx",
+    "tests/unit/auth-guest-transfer-deferred.test.tsx",
+    "tests/unit/t13r-a-lot-draft-ownership.test.tsx",
+    "tests/unit/t13b-fridge-review.test.tsx",
+    "tests/integration/t13b-review-roundtrip.test.tsx"
+  ],
+  "routerReplacement": {
+    "before": "future={{ v7_startTransition: true, v7_relativeSplatPath: true }}",
+    "after": "useTransitions={true}"
+  },
+  "d1Persist": {
+    "before": "persist:{path}",
+    "after": "persist:true,persistTo:persist.path"
+  },
+  "assertionsChanged": false
+}

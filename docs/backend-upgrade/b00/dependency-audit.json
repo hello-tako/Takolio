@@ -1,0 +1,737 @@
+{
+  "dependency-audit": {
+    "metadata": {
+      "vulnerabilities": {
+        "info": 0,
+        "low": 4,
+        "moderate": 19,
+        "high": 16,
+        "critical": 2
+      },
+      "dependencies": 728,
+      "devDependencies": 0,
+      "optionalDependencies": 0,
+      "totalDependencies": 728
+    },
+    "findings": [
+      {
+        "package": "esbuild",
+        "severity": "moderate",
+        "advisory": "GHSA-67mh-4wv8-2f99",
+        "title": "esbuild enables any website to send any requests to the development server and read the response",
+        "installedFindings": [
+          {
+            "version": "0.17.19",
+            "paths": [
+              ".>wrangler>esbuild"
+            ]
+          }
+        ],
+        "patchedVersions": ">=0.25.0",
+        "url": "https://github.com/advisories/GHSA-67mh-4wv8-2f99"
+      },
+      {
+        "package": "undici",
+        "severity": "moderate",
+        "advisory": "GHSA-g9mf-h72j-4rw9",
+        "title": "Undici has an unbounded decompression chain in HTTP responses on Node.js Fetch API via Content-Encoding leads to resource exhaustion",
+        "installedFindings": [
+          {
+            "version": "5.29.0",
+            "paths": [
+              ".>wrangler>miniflare>undici"
+            ]
+          }
+        ],
+        "patchedVersions": ">=6.23.0",
+        "url": "https://github.com/advisories/GHSA-g9mf-h72j-4rw9"
+      },
+      {
+        "package": "undici",
+        "severity": "moderate",
+        "advisory": "GHSA-2mjp-6q6p-2qxm",
+        "title": "Undici has an HTTP Request/Response Smuggling issue",
+        "installedFindings": [
+          {
+            "version": "5.29.0",
+            "paths": [
+              ".>wrangler>miniflare>undici"
+            ]
+          }
+        ],
+        "patchedVersions": ">=6.24.0",
+        "url": "https://github.com/advisories/GHSA-2mjp-6q6p-2qxm"
+      },
+      {
+        "package": "undici",
+        "severity": "high",
+        "advisory": "GHSA-vrm6-8vpv-qv8q",
+        "title": "Undici has Unbounded Memory Consumption in WebSocket permessage-deflate Decompression",
+        "installedFindings": [
+          {
+            "version": "5.29.0",
+            "paths": [
+              ".>wrangler>miniflare>undici"
+            ]
+          }
+        ],
+        "patchedVersions": ">=6.24.0",
+        "url": "https://github.com/advisories/GHSA-vrm6-8vpv-qv8q"
+      },
+      {
+        "package": "undici",
+        "severity": "high",
+        "advisory": "GHSA-v9p9-hfj2-hcw8",
+        "title": "Undici has Unhandled Exception in WebSocket Client Due to Invalid server_max_window_bits Validation",
+        "installedFindings": [
+          {
+            "version": "5.29.0",
+            "paths": [
+              ".>wrangler>miniflare>undici"
+            ]
+          }
+        ],
+        "patchedVersions": ">=6.24.0",
+        "url": "https://github.com/advisories/GHSA-v9p9-hfj2-hcw8"
+      },
+      {
+        "package": "undici",
+        "severity": "moderate",
+        "advisory": "GHSA-4992-7rv2-5pvq",
+        "title": "Undici has CRLF Injection in undici via `upgrade` option",
+        "installedFindings": [
+          {
+            "version": "5.29.0",
+            "paths": [
+              ".>wrangler>miniflare>undici"
+            ]
+          }
+        ],
+        "patchedVersions": ">=6.24.0",
+        "url": "https://github.com/advisories/GHSA-4992-7rv2-5pvq"
+      },
+      {
+        "package": "ws",
+        "severity": "moderate",
+        "advisory": "GHSA-58qx-3vcg-4xpx",
+        "title": "ws: Uninitialized memory disclosure",
+        "installedFindings": [
+          {
+            "version": "8.18.0",
+            "paths": [
+              ".>jsdom>ws"
+            ]
+          }
+        ],
+        "patchedVersions": ">=8.20.1",
+        "url": "https://github.com/advisories/GHSA-58qx-3vcg-4xpx"
+      },
+      {
+        "package": "undici",
+        "severity": "moderate",
+        "advisory": "GHSA-p88m-4jfj-68fv",
+        "title": "undici vulnerable to HTTP header injection via Set-Cookie percent-decoding",
+        "installedFindings": [
+          {
+            "version": "5.29.0",
+            "paths": [
+              ".>wrangler>miniflare>undici"
+            ]
+          }
+        ],
+        "patchedVersions": ">=6.27.0",
+        "url": "https://github.com/advisories/GHSA-p88m-4jfj-68fv"
+      },
+      {
+        "package": "undici",
+        "severity": "high",
+        "advisory": "GHSA-vxpw-j846-p89q",
+        "title": "undici WebSocket client vulnerable to denial of service via fragment count bypass",
+        "installedFindings": [
+          {
+            "version": "5.29.0",
+            "paths": [
+              ".>wrangler>miniflare>undici"
+            ]
+          }
+        ],
+        "patchedVersions": ">=6.27.0",
+        "url": "https://github.com/advisories/GHSA-vxpw-j846-p89q"
+      },
+      {
+        "package": "undici",
+        "severity": "low",
+        "advisory": "GHSA-g8m3-5g58-fq7m",
+        "title": "undici vulnerable to Set-Cookie SameSite attribute downgrade via permissive substring matching",
+        "installedFindings": [
+          {
+            "version": "5.29.0",
+            "paths": [
+              ".>wrangler>miniflare>undici"
+            ]
+          }
+        ],
+        "patchedVersions": ">=6.27.0",
+        "url": "https://github.com/advisories/GHSA-g8m3-5g58-fq7m"
+      },
+      {
+        "package": "ws",
+        "severity": "high",
+        "advisory": "GHSA-96hv-2xvq-fx4p",
+        "title": "ws: Memory exhaustion DoS from tiny fragments and data chunks",
+        "installedFindings": [
+          {
+            "version": "8.18.0",
+            "paths": [
+              ".>jsdom>ws"
+            ]
+          }
+        ],
+        "patchedVersions": ">=8.21.0",
+        "url": "https://github.com/advisories/GHSA-96hv-2xvq-fx4p"
+      },
+      {
+        "package": "sharp",
+        "severity": "high",
+        "advisory": "GHSA-f88m-g3jw-g9cj",
+        "title": "sharp inherited vulnerabilities in libvips: CVE-2026-33327, CVE-2026-33328, CVE-2026-35590, CVE-2026-35591",
+        "installedFindings": [
+          {
+            "version": "0.33.5",
+            "paths": [
+              ".>sharp"
+            ]
+          }
+        ],
+        "patchedVersions": ">=0.35.0",
+        "url": "https://github.com/advisories/GHSA-f88m-g3jw-g9cj"
+      },
+      {
+        "package": "react-router",
+        "severity": "moderate",
+        "advisory": "GHSA-wrjc-x8rr-h8h6",
+        "title": "React Router: Open redirect via backslash in <Link> and useNavigate (CVE-2025-68470 bypass)",
+        "installedFindings": [
+          {
+            "version": "6.30.6",
+            "paths": [
+              ".>react-router-dom>react-router"
+            ]
+          }
+        ],
+        "patchedVersions": ">=7.18.0",
+        "url": "https://github.com/advisories/GHSA-wrjc-x8rr-h8h6"
+      },
+      {
+        "package": "react-router",
+        "severity": "moderate",
+        "advisory": "GHSA-337j-9hxr-rhxg",
+        "title": "React Router: Arbitrary Constructor Injection via deserializeErrors() in React Router SSR Hydration",
+        "installedFindings": [
+          {
+            "version": "6.30.6",
+            "paths": [
+              ".>react-router-dom>react-router"
+            ]
+          }
+        ],
+        "patchedVersions": ">=7.18.0",
+        "url": "https://github.com/advisories/GHSA-337j-9hxr-rhxg"
+      },
+      {
+        "package": "undici",
+        "severity": "moderate",
+        "advisory": "GHSA-8xcm-r25x-g524",
+        "title": "undici vulnerable to downstream response desynchronization via retry interceptor",
+        "installedFindings": [
+          {
+            "version": "5.29.0",
+            "paths": [
+              ".>wrangler>miniflare>undici"
+            ]
+          }
+        ],
+        "patchedVersions": ">=6.28.0",
+        "url": "https://github.com/advisories/GHSA-8xcm-r25x-g524"
+      },
+      {
+        "package": "undici",
+        "severity": "moderate",
+        "advisory": "GHSA-m8rv-5g2x-5cg5",
+        "title": "undici vulnerable to CRLF Injection via blob-like body 'type' property",
+        "installedFindings": [
+          {
+            "version": "5.29.0",
+            "paths": [
+              ".>wrangler>miniflare>undici"
+            ]
+          }
+        ],
+        "patchedVersions": ">=6.28.0",
+        "url": "https://github.com/advisories/GHSA-m8rv-5g2x-5cg5"
+      },
+      {
+        "package": "undici",
+        "severity": "moderate",
+        "advisory": "GHSA-v3r7-h72x-cjcm",
+        "title": "undici vulnerable to cookie attribute injection via unsanitized domain and unparsed setCookie fields",
+        "installedFindings": [
+          {
+            "version": "5.29.0",
+            "paths": [
+              ".>wrangler>miniflare>undici"
+            ]
+          }
+        ],
+        "patchedVersions": ">=6.28.0",
+        "url": "https://github.com/advisories/GHSA-v3r7-h72x-cjcm"
+      },
+      {
+        "package": "undici",
+        "severity": "low",
+        "advisory": "GHSA-35p6-xmwp-9g52",
+        "title": "undici vulnerable to HTTP response queue poisoning via keep-alive socket reuse",
+        "installedFindings": [
+          {
+            "version": "5.29.0",
+            "paths": [
+              ".>wrangler>miniflare>undici"
+            ]
+          }
+        ],
+        "patchedVersions": ">=6.27.0",
+        "url": "https://github.com/advisories/GHSA-35p6-xmwp-9g52"
+      },
+      {
+        "package": "vitest",
+        "severity": "moderate",
+        "advisory": "GHSA-82fw-gwwq-j7x9",
+        "title": "Vitest: Path Traversal / Arbitrary File Read via @vitest/mocker Redirect Mock",
+        "installedFindings": [
+          {
+            "version": "3.2.7",
+            "paths": [
+              ".>vitest"
+            ]
+          }
+        ],
+        "patchedVersions": ">=4.1.11",
+        "url": "https://github.com/advisories/GHSA-82fw-gwwq-j7x9"
+      },
+      {
+        "package": "@vitest/mocker",
+        "severity": "moderate",
+        "advisory": "GHSA-82fw-gwwq-j7x9",
+        "title": "Vitest: Path Traversal / Arbitrary File Read via @vitest/mocker Redirect Mock",
+        "installedFindings": [
+          {
+            "version": "3.2.7",
+            "paths": [
+              ".>vitest>@vitest/mocker"
+            ]
+          }
+        ],
+        "patchedVersions": ">=4.1.11",
+        "url": "https://github.com/advisories/GHSA-82fw-gwwq-j7x9"
+      },
+      {
+        "package": "sharp",
+        "severity": "high",
+        "advisory": "GHSA-rgj7-g3m4-5g8c",
+        "title": "sharp: Vulnerabilities in libheif: GHSA-g89c-p67h-r497 and GHSA-2jg2-4ch7-h545",
+        "installedFindings": [
+          {
+            "version": "0.33.5",
+            "paths": [
+              ".>sharp"
+            ]
+          }
+        ],
+        "patchedVersions": ">=0.35.4",
+        "url": "https://github.com/advisories/GHSA-rgj7-g3m4-5g8c"
+      },
+      {
+        "package": "undici",
+        "severity": "low",
+        "advisory": "GHSA-r53p-7pc4-xj5r",
+        "title": "undici vulnerable to downstream response splitting via retry interceptor",
+        "installedFindings": [
+          {
+            "version": "5.29.0",
+            "paths": [
+              ".>wrangler>miniflare>undici"
+            ]
+          }
+        ],
+        "patchedVersions": ">=6.28.1",
+        "url": "https://github.com/advisories/GHSA-r53p-7pc4-xj5r"
+      },
+      {
+        "package": "fast-uri",
+        "severity": "moderate",
+        "advisory": "GHSA-hrr3-gc8f-f4qj",
+        "title": "fast-uri vulnerable to inconsistent host case normalization via percent-encoded octets",
+        "installedFindings": [
+          {
+            "version": "3.1.7",
+            "paths": [
+              ".>vite-plugin-pwa>workbox-build>ajv>fast-uri"
+            ]
+          }
+        ],
+        "patchedVersions": ">=3.1.8",
+        "url": "https://github.com/advisories/GHSA-hrr3-gc8f-f4qj"
+      },
+      {
+        "package": "brace-expansion",
+        "severity": "moderate",
+        "advisory": "GHSA-q2hr-2g5m-vwhr",
+        "title": "brace-expansion: Quadratic-time expansion of the `{a},b}` rewrite causes CPU denial of service",
+        "installedFindings": [
+          {
+            "version": "1.1.18",
+            "paths": [
+              ".>eslint>minimatch>brace-expansion"
+            ]
+          }
+        ],
+        "patchedVersions": ">=1.1.21",
+        "url": "https://github.com/advisories/GHSA-q2hr-2g5m-vwhr"
+      },
+      {
+        "package": "brace-expansion",
+        "severity": "moderate",
+        "advisory": "GHSA-q2hr-2g5m-vwhr",
+        "title": "brace-expansion: Quadratic-time expansion of the `{a},b}` rewrite causes CPU denial of service",
+        "installedFindings": [
+          {
+            "version": "2.1.4",
+            "paths": [
+              ".>vite-plugin-pwa>workbox-build>@trickfilm400/rollup-plugin-off-main-thread>ejs>jake>filelist>minimatch>brace-expansion"
+            ]
+          }
+        ],
+        "patchedVersions": ">=2.1.7",
+        "url": "https://github.com/advisories/GHSA-q2hr-2g5m-vwhr"
+      },
+      {
+        "package": "brace-expansion",
+        "severity": "moderate",
+        "advisory": "GHSA-q2hr-2g5m-vwhr",
+        "title": "brace-expansion: Quadratic-time expansion of the `{a},b}` rewrite causes CPU denial of service",
+        "installedFindings": [
+          {
+            "version": "5.0.9",
+            "paths": [
+              ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/typescript-estree>minimatch>brace-expansion"
+            ]
+          }
+        ],
+        "patchedVersions": ">=5.0.12",
+        "url": "https://github.com/advisories/GHSA-q2hr-2g5m-vwhr"
+      },
+      {
+        "package": "brace-expansion",
+        "severity": "high",
+        "advisory": "GHSA-qhr7-859c-m2p7",
+        "title": "brace-expansion: DoS via uncontrolled recursion on nested brace groups causing stack exhaustion",
+        "installedFindings": [
+          {
+            "version": "1.1.18",
+            "paths": [
+              ".>eslint>minimatch>brace-expansion"
+            ]
+          }
+        ],
+        "patchedVersions": ">=1.1.20",
+        "url": "https://github.com/advisories/GHSA-qhr7-859c-m2p7"
+      },
+      {
+        "package": "brace-expansion",
+        "severity": "high",
+        "advisory": "GHSA-qhr7-859c-m2p7",
+        "title": "brace-expansion: DoS via uncontrolled recursion on nested brace groups causing stack exhaustion",
+        "installedFindings": [
+          {
+            "version": "2.1.4",
+            "paths": [
+              ".>vite-plugin-pwa>workbox-build>@trickfilm400/rollup-plugin-off-main-thread>ejs>jake>filelist>minimatch>brace-expansion"
+            ]
+          }
+        ],
+        "patchedVersions": ">=2.1.6",
+        "url": "https://github.com/advisories/GHSA-qhr7-859c-m2p7"
+      },
+      {
+        "package": "brace-expansion",
+        "severity": "high",
+        "advisory": "GHSA-qhr7-859c-m2p7",
+        "title": "brace-expansion: DoS via uncontrolled recursion on nested brace groups causing stack exhaustion",
+        "installedFindings": [
+          {
+            "version": "5.0.9",
+            "paths": [
+              ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/typescript-estree>minimatch>brace-expansion"
+            ]
+          }
+        ],
+        "patchedVersions": ">=5.0.11",
+        "url": "https://github.com/advisories/GHSA-qhr7-859c-m2p7"
+      },
+      {
+        "package": "brace-expansion",
+        "severity": "high",
+        "advisory": "GHSA-6j4f-fj2g-mc7p",
+        "title": "brace-expansion: DoS via uncontrolled recursion in parseCommaParts causing stack exhaustion",
+        "installedFindings": [
+          {
+            "version": "1.1.18",
+            "paths": [
+              ".>eslint>minimatch>brace-expansion"
+            ]
+          }
+        ],
+        "patchedVersions": ">=1.1.19",
+        "url": "https://github.com/advisories/GHSA-6j4f-fj2g-mc7p"
+      },
+      {
+        "package": "brace-expansion",
+        "severity": "high",
+        "advisory": "GHSA-6j4f-fj2g-mc7p",
+        "title": "brace-expansion: DoS via uncontrolled recursion in parseCommaParts causing stack exhaustion",
+        "installedFindings": [
+          {
+            "version": "2.1.4",
+            "paths": [
+              ".>vite-plugin-pwa>workbox-build>@trickfilm400/rollup-plugin-off-main-thread>ejs>jake>filelist>minimatch>brace-expansion"
+            ]
+          }
+        ],
+        "patchedVersions": ">=2.1.5",
+        "url": "https://github.com/advisories/GHSA-6j4f-fj2g-mc7p"
+      },
+      {
+        "package": "brace-expansion",
+        "severity": "high",
+        "advisory": "GHSA-6j4f-fj2g-mc7p",
+        "title": "brace-expansion: DoS via uncontrolled recursion in parseCommaParts causing stack exhaustion",
+        "installedFindings": [
+          {
+            "version": "5.0.9",
+            "paths": [
+              ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/typescript-estree>minimatch>brace-expansion"
+            ]
+          }
+        ],
+        "patchedVersions": ">=5.0.10",
+        "url": "https://github.com/advisories/GHSA-6j4f-fj2g-mc7p"
+      },
+      {
+        "package": "serialize-javascript",
+        "severity": "low",
+        "advisory": "GHSA-gfhx-hw2g-v5hg",
+        "title": "Serialize JavaScript: Cross-site scripting (XSS) via unescaped </script> in serialized function bodies",
+        "installedFindings": [
+          {
+            "version": "7.1.1",
+            "paths": [
+              ".>vite-plugin-pwa>workbox-build>@rollup/plugin-terser>serialize-javascript"
+            ]
+          }
+        ],
+        "patchedVersions": ">=7.1.2",
+        "url": "https://github.com/advisories/GHSA-gfhx-hw2g-v5hg"
+      },
+      {
+        "package": "@fastify/busboy",
+        "severity": "high",
+        "advisory": "GHSA-x8mw-p69m-v3mx",
+        "title": "@fastify/busboy vulnerable to Denial of Service via prototype-named multipart part header",
+        "installedFindings": [
+          {
+            "version": "2.1.1",
+            "paths": [
+              ".>wrangler>miniflare>undici>@fastify/busboy"
+            ]
+          }
+        ],
+        "patchedVersions": ">=3.2.1",
+        "url": "https://github.com/advisories/GHSA-x8mw-p69m-v3mx"
+      },
+      {
+        "package": "braces",
+        "severity": "high",
+        "advisory": "GHSA-vfj7-8cjw-p6xm",
+        "title": "braces vulnerable to stack-exhaustion denial of service through deeply nested patterns",
+        "installedFindings": [
+          {
+            "version": "3.0.3",
+            "paths": [
+              ".>tailwindcss>chokidar>braces"
+            ]
+          }
+        ],
+        "patchedVersions": "<0.0.0",
+        "url": "https://github.com/advisories/GHSA-vfj7-8cjw-p6xm"
+      },
+      {
+        "package": "source-map-js",
+        "severity": "high",
+        "advisory": "GHSA-68fv-2mgg-jv7q",
+        "title": "source-map-js allows event-loop denial of service through indexed source-map section offsets",
+        "installedFindings": [
+          {
+            "version": "1.2.1",
+            "paths": [
+              ".>postcss>source-map-js"
+            ]
+          }
+        ],
+        "patchedVersions": ">=1.2.2",
+        "url": "https://github.com/advisories/GHSA-68fv-2mgg-jv7q"
+      },
+      {
+        "package": "postcss-selector-parser",
+        "severity": "moderate",
+        "advisory": "GHSA-rj75-hqrm-r3gf",
+        "title": "PostCSS: Quadratic complexity in flat selector parsing allows CPU exhaustion",
+        "installedFindings": [
+          {
+            "version": "6.1.4",
+            "paths": [
+              ".>tailwindcss>postcss-selector-parser"
+            ]
+          }
+        ],
+        "patchedVersions": ">=7.1.6",
+        "url": "https://github.com/advisories/GHSA-rj75-hqrm-r3gf"
+      },
+      {
+        "package": "tinypool",
+        "severity": "critical",
+        "advisory": "GHSA-5gmw-xhrv-c9v3",
+        "title": "Tinypool: Prototype Pollution gadget in worker options leads to Remote Code Execution",
+        "installedFindings": [
+          {
+            "version": "1.1.1",
+            "paths": [
+              ".>vitest>tinypool"
+            ]
+          }
+        ],
+        "patchedVersions": ">=2.1.1",
+        "url": "https://github.com/advisories/GHSA-5gmw-xhrv-c9v3"
+      },
+      {
+        "package": "tinypool",
+        "severity": "critical",
+        "advisory": "GHSA-85c8-ppgw-ccpr",
+        "title": "Tinypool: Prototype Pollution Gadget to RCE in run() options",
+        "installedFindings": [
+          {
+            "version": "1.1.1",
+            "paths": [
+              ".>vitest>tinypool"
+            ]
+          }
+        ],
+        "patchedVersions": ">=2.1.2",
+        "url": "https://github.com/advisories/GHSA-85c8-ppgw-ccpr"
+      },
+      {
+        "package": "@fastify/busboy",
+        "severity": "moderate",
+        "advisory": "GHSA-gxm5-99cw-xjw9",
+        "title": "@fastify/busboy vulnerable to CRLF injection via multipart Content-Disposition filename and name",
+        "installedFindings": [
+          {
+            "version": "2.1.1",
+            "paths": [
+              ".>wrangler>miniflare>undici>@fastify/busboy"
+            ]
+          }
+        ],
+        "patchedVersions": ">=3.2.2",
+        "url": "https://github.com/advisories/GHSA-gxm5-99cw-xjw9"
+      },
+      {
+        "package": "sharp",
+        "severity": "high",
+        "advisory": "GHSA-wq5f-xc86-pv6w",
+        "title": "sharp : Vulnerability in librsvg dependency CVE-2026-96889",
+        "installedFindings": [
+          {
+            "version": "0.33.5",
+            "paths": [
+              ".>sharp"
+            ]
+          }
+        ],
+        "patchedVersions": ">=0.35.5",
+        "url": "https://github.com/advisories/GHSA-wq5f-xc86-pv6w"
+      }
+    ],
+    "status": "FINDINGS_PRESENT",
+    "exitCode": 1,
+    "scope": "full dependency graph",
+    "triageStatus": "NOT_REMEDIATED; exposure assessment below is preliminary"
+  },
+  "production-audit": {
+    "metadata": {
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 2,
+        "high": 0,
+        "critical": 0
+      },
+      "dependencies": 25,
+      "devDependencies": 0,
+      "optionalDependencies": 0,
+      "totalDependencies": 25
+    },
+    "findings": [
+      {
+        "package": "react-router",
+        "severity": "moderate",
+        "advisory": "GHSA-wrjc-x8rr-h8h6",
+        "title": "React Router: Open redirect via backslash in <Link> and useNavigate (CVE-2025-68470 bypass)",
+        "installedFindings": [
+          {
+            "version": "6.30.6",
+            "paths": [
+              ".>react-router-dom>react-router"
+            ]
+          }
+        ],
+        "patchedVersions": ">=7.18.0",
+        "url": "https://github.com/advisories/GHSA-wrjc-x8rr-h8h6"
+      },
+      {
+        "package": "react-router",
+        "severity": "moderate",
+        "advisory": "GHSA-337j-9hxr-rhxg",
+        "title": "React Router: Arbitrary Constructor Injection via deserializeErrors() in React Router SSR Hydration",
+        "installedFindings": [
+          {
+            "version": "6.30.6",
+            "paths": [
+              ".>react-router-dom>react-router"
+            ]
+          }
+        ],
+        "patchedVersions": ">=7.18.0",
+        "url": "https://github.com/advisories/GHSA-337j-9hxr-rhxg"
+      }
+    ],
+    "status": "FINDINGS_PRESENT",
+    "exitCode": 1,
+    "scope": "production dependency graph",
+    "triageStatus": "NOT_REMEDIATED; exposure assessment below is preliminary"
+  },
+  "preliminaryExposure": {
+    "critical": "tinypool is dev/test tooling; no production-dependency critical finding, but CI/local untrusted input exposure still needs B08 review",
+    "high": "full-graph findings include Wrangler/Miniflare HTTP dependencies, image tooling and build utilities; not equivalent to a production Worker exploit certificate",
+    "productionModerate": "react-router6.30.6 has2moderate findings. App uses BrowserRouter declarative client mode and createRoot, no manual SSR/hydration observed; SSR advisory documents mode-specific preconditions. Open-redirect input paths still require complete caller assessment before exception/remediation. No audit suppression or upgrade in B00."
+  }
+}

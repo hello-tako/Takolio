@@ -1,0 +1,1852 @@
+{
+  "baseSha": "8f55a745e08c800898555be829b93c8f1a7a5d18",
+  "files": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "bytes": 1193,
+      "sha256": "fa41a987309347f8537bac30869462679e43446a2ff6593cebca6b220cf5b72f"
+    },
+    {
+      "path": ".github/workflows/deploy.yml",
+      "bytes": 23398,
+      "sha256": "a2ce0eb6e5f8d4b1584635d7893ba9a1c64a191f97b652d3a64ca85fb85e0fcf"
+    },
+    {
+      "path": ".github/workflows/production-catalog-recovery.yml",
+      "bytes": 4702,
+      "sha256": "17ec0241672ab7988b48a06307699cbed2257026fc700b4f50342c8a04d53d35"
+    },
+    {
+      "path": ".github/workflows/production-certify.yml",
+      "bytes": 11936,
+      "sha256": "9d177512dbe0c34bb06c3924558115ca63f67e5691f4457de2957e3f5a9b5dba"
+    },
+    {
+      "path": ".github/workflows/production-d1-diagnostics.yml",
+      "bytes": 9780,
+      "sha256": "d5a569b7794bbf34773cdded508394d5b18a1bda5dce6fc2b6cb482d26e60da4"
+    },
+    {
+      "path": ".github/workflows/production-d1-identity-diagnostic.yml",
+      "bytes": 3751,
+      "sha256": "6ddd673bf6c88653d77273b50f40cd4ba54d9e6c295049790f2feef200f2c2b1"
+    },
+    {
+      "path": ".github/workflows/production-d1-migrate.yml",
+      "bytes": 16308,
+      "sha256": "0ac7c0dd219a664307a4e9e6f4ed783a53a1aa889a5c382e7eba315b885f192e"
+    },
+    {
+      "path": ".github/workflows/production-d1-t21rc-row-reconciliation.yml",
+      "bytes": 4058,
+      "sha256": "3879b3fade7d5c65f62489531c117ee372febfb282e28ae50e1d9268332b54cd"
+    },
+    {
+      "path": ".github/workflows/production-d1-t21rc2t-identity-topology.yml",
+      "bytes": 4140,
+      "sha256": "6d434dd16e2bdd0590e1716a66a285feeacc123880816b1d44001bcc9c640ce9"
+    },
+    {
+      "path": ".github/workflows/production-d1-temporal-forensics.yml",
+      "bytes": 2893,
+      "sha256": "fdcf0bc67156d87b8e775fc3957017c5dfc56cade44a13966cc088b160afd49d"
+    },
+    {
+      "path": ".github/workflows/staging-d1-catchup.yml",
+      "bytes": 11207,
+      "sha256": "a0c4633df4cbe7558697fcd9f4984e1ebe2b34497308b2ae6dd670c8df9e1401"
+    },
+    {
+      "path": ".github/workflows/staging-d1-migrate.yml",
+      "bytes": 7557,
+      "sha256": "048fa1c6898ad0a166b5ff3a8053bbee8f039e0a355a12af0dd9579cfe2aecdb"
+    },
+    {
+      "path": ".github/workflows/staging-d1-runtime-readiness.yml",
+      "bytes": 6055,
+      "sha256": "f210b220d18982b673cf311e37368cb4da1ab6df825f686b2d390e0af0024ad0"
+    },
+    {
+      "path": ".github/workflows/t20-staging-fixture.yml",
+      "bytes": 2366,
+      "sha256": "2adf5fb074409935ecf387ab77235a1f44e918e662262f83645aa8c79b6c439f"
+    },
+    {
+      "path": "migrations/0001_initial_schema.sql",
+      "bytes": 10650,
+      "sha256": "eb97de6170cc73b12c7b83eec3be8082b4434c5f8952616bd4cb64be3f2a3328"
+    },
+    {
+      "path": "migrations/0002_seed_data.sql",
+      "bytes": 6437,
+      "sha256": "13a75fc802205e0654a4dcba59cf2f8573363d9abcf4cdaf66b24b5aee3ddade"
+    },
+    {
+      "path": "migrations/0003_weekly_planner.sql",
+      "bytes": 5614,
+      "sha256": "f6c23b3e288c7da14a4a7adc9da0ab4cfb8f7fdfc36cb2dac1c3a7abf533be9f"
+    },
+    {
+      "path": "migrations/0004_auth_system.sql",
+      "bytes": 1192,
+      "sha256": "39b72e8856dc87ef71b5b95db18497d710f068d4aca2dbe7aec51e82b023f003"
+    },
+    {
+      "path": "migrations/0005_meal_plans_relational.sql",
+      "bytes": 1994,
+      "sha256": "c20cb5e229eaed04e543c46e28e01a6f9db9ab1ad0f58885551c2394b6a3fb95"
+    },
+    {
+      "path": "migrations/0006_vietnamese_recipe_bank.sql",
+      "bytes": 109881,
+      "sha256": "7868539d44fea5aac99a091912629521a3cae79e1648f0a774490fedbb2e048f"
+    },
+    {
+      "path": "migrations/0007_week_integrity.sql",
+      "bytes": 4109,
+      "sha256": "da3d90a1ad95af11e6c58b03a68759fb7f25866434cd800c19f2b242d3181386"
+    },
+    {
+      "path": "migrations/0008_week_snapshot_metadata.sql",
+      "bytes": 594,
+      "sha256": "5873119f56efb3c310d040220a9c7544d060adab88642f4a5c804121c38918f8"
+    },
+    {
+      "path": "migrations/0009_inventory_optimistic_version.sql",
+      "bytes": 466,
+      "sha256": "e184538af8cff16465def06be1c37f4ba23e836ed0f4c3543c02f35fa3a5d2c4"
+    },
+    {
+      "path": "migrations/0010_week_schema_shadow_canonical.sql",
+      "bytes": 12455,
+      "sha256": "92eccbd3b6b0b8249b8ae1afdb625652cc906d4d4b5c08a7587964df5529dc0e"
+    },
+    {
+      "path": "migrations/0011_meal_plan_tenant_ownership.sql",
+      "bytes": 461,
+      "sha256": "049412f7762ed69b2b8ed9977cd3e0e7b015a693f785305b160871f070232951"
+    },
+    {
+      "path": "migrations/0012_scan_queue_jobs.sql",
+      "bytes": 1139,
+      "sha256": "d52d716dc7d1329e5dafb3afc0acd4eab8bc24db1026cbbad0b9c453baf6ad54"
+    },
+    {
+      "path": "migrations/0013_scan_receipt_metadata.sql",
+      "bytes": 469,
+      "sha256": "d889edf409a35ca7d5e0ca0d68029644a158ad53fd0ed9754702972a14ae85b5"
+    },
+    {
+      "path": "migrations/0014_scan_queue_fencing.sql",
+      "bytes": 314,
+      "sha256": "d9fb9786fa4091c8877b91904f74dee899b8f6fc20143c1ca7dcb468432720cc"
+    },
+    {
+      "path": "migrations/0015_auth_session_otp_hardening.sql",
+      "bytes": 1200,
+      "sha256": "81ed99c797faeed1b80149057084d42474b594f0859d46049922541a038b1b6f"
+    },
+    {
+      "path": "migrations/0016_scan_quota_ledger.sql",
+      "bytes": 1060,
+      "sha256": "f0d8a9c2e4b4810c1c27874f09f212e7f6dd548ae9be055bade004e3609b7b8d"
+    },
+    {
+      "path": "migrations/0017_auth_otps_remove_plaintext.sql",
+      "bytes": 1041,
+      "sha256": "73ab0857cc7d20ef15b6dd0726fe2142cc39dd45745cfa7f021c3d362e3c33e6"
+    },
+    {
+      "path": "migrations/0018_payments.sql",
+      "bytes": 809,
+      "sha256": "8668f84a4e378227d63cbee591e6feb9ee37ef7b6fc84fd127af7511dddd406b"
+    },
+    {
+      "path": "migrations/0019_recipe_domain_foundation.sql",
+      "bytes": 10548,
+      "sha256": "5b6fbe9ec441271a49b5116a118af6424e25ceda716ece01d2448e56e84ed005"
+    },
+    {
+      "path": "migrations/0020_t01_foundation_hardening.sql",
+      "bytes": 5650,
+      "sha256": "d46ad482f793d31bdc3c4bbbd3bee9198497f3b5cf02ebef0383871bab001472"
+    },
+    {
+      "path": "migrations/0021_recipe_personalization.sql",
+      "bytes": 3141,
+      "sha256": "149b32b2d7d731ffbd6fdf0bd5b8a4c60068cb02d708dee5b74ac5b92f933f22"
+    },
+    {
+      "path": "migrations/0022_generated_meal_plans.sql",
+      "bytes": 2894,
+      "sha256": "41f7a15c15d8de861489607b87bb03f853348193c4214cd71aaac5a8d1556a51"
+    },
+    {
+      "path": "migrations/0023_scan_request_fingerprint.sql",
+      "bytes": 449,
+      "sha256": "e4681b61c57f7560b878b3cd34805e6657025ff3e27643ecca98eb6de057dddd"
+    },
+    {
+      "path": "migrations/0024_inventory_truth_foundation.sql",
+      "bytes": 4207,
+      "sha256": "5e32cb457457ad9286d1f23d172b166ae1e73e8c84f10cb428ea44649f7061d4"
+    },
+    {
+      "path": "migrations/0025_inventory_lot_commands.sql",
+      "bytes": 8376,
+      "sha256": "434565634f0c8ca2f5721ab66b451c55fc30310425deec0a7f08ea98aba97194"
+    },
+    {
+      "path": "migrations/0026_inventory_event_authority.sql",
+      "bytes": 7866,
+      "sha256": "d35163d8f25bf66a43afe0232023ea3950769d2ade86153062816a010de0312e"
+    },
+    {
+      "path": "migrations/0027_inventory_event_poststate.sql",
+      "bytes": 3301,
+      "sha256": "f30541dc33927526007d18a2b5ea3d50a7a356f931502d561f7334e16dfc16a7"
+    },
+    {
+      "path": "migrations/0028_inventory_fefo_authority.sql",
+      "bytes": 38602,
+      "sha256": "c162e5c9a8ea93169fa044159e23b2088d7181f54b7456a8506e53cac4a80c8c"
+    },
+    {
+      "path": "migrations/0029_inventory_adoption_authority.sql",
+      "bytes": 1167,
+      "sha256": "564950baf0506bff02582b4e0d8aae60b3dfeb1dfd0ad83279b85cd1f9ddd83a"
+    },
+    {
+      "path": "migrations/0030_inventory_fefo_backfill_compatibility.sql",
+      "bytes": 31853,
+      "sha256": "eb5e6fc959ad96f3127540578b0d40972fb4b40f450bfdccb5bf7afda3662316"
+    },
+    {
+      "path": "migrations/0031_inventory_observation_reconciliation.sql",
+      "bytes": 9491,
+      "sha256": "c4f6c8e0a26c4063164157e38ec55d39522f666cfdafaedacbbd919f55d4eb25"
+    },
+    {
+      "path": "migrations/0032_scan_evidence_retention.sql",
+      "bytes": 4128,
+      "sha256": "fae72602ac7f3128155329a8abc60184609dd589e264cfec9bae1e3c961bc206"
+    },
+    {
+      "path": "migrations/0033_scan_evidence_completeness.sql",
+      "bytes": 4329,
+      "sha256": "18ed8d75d5bcaeb4e9a12b96535f603401bf42b1492201864f81e312cdef1975"
+    },
+    {
+      "path": "migrations/0034_global_recipe_catalog_parity.sql",
+      "bytes": 35966,
+      "sha256": "23f356458a294b240e683fec14012bc932a8b7e57ad0c932e4fc184329bada4d"
+    },
+    {
+      "path": "migrations/0035_recipe_media_layer.sql",
+      "bytes": 9385,
+      "sha256": "a2c017245eec5916db9c24b050c966654b6e1321c8c32025bea64d931feed8aa"
+    },
+    {
+      "path": "migrations/0036_recipe_catalog_pilot.sql",
+      "bytes": 76261,
+      "sha256": "04228788e60d59a2427d70956d4d8a108d0a6c1c4a643c47641402f658120ba9"
+    },
+    {
+      "path": "migrations/0037_recipe_catalog_scale.sql",
+      "bytes": 829895,
+      "sha256": "68e52e6d8b9d44054f609a3d405c9fa329d093521ffc8c97009c76fbf7317ad6"
+    },
+    {
+      "path": "migrations/0038_auth_onboarding_completion.sql",
+      "bytes": 365,
+      "sha256": "3c9bfeca972b4d1179625ed3e6aa2b3056202442e225d205a4191d9d52505ad8"
+    },
+    {
+      "path": "migrations/0039_meal_composition_v2.sql",
+      "bytes": 5127,
+      "sha256": "24407e61f1aac2b3430bc5cef7a6d1c76d57a39f6314915c4915fc7209e777d5"
+    },
+    {
+      "path": "migrations/0040_strict_otp_foundation.sql",
+      "bytes": 6046,
+      "sha256": "8ad04aaf528b2811b693d80f83704bd3d7578f7ffb3cc3698326487e4beb6ae0"
+    },
+    {
+      "path": "package.json",
+      "bytes": 3023,
+      "sha256": "8255751d5a8f61bdc218b21e7822073afcaa509f62a097a97858ff8896da610b"
+    },
+    {
+      "path": "packages/ai/src/errors.ts",
+      "bytes": 6309,
+      "sha256": "5b174dbcf6512f85aea0f78300eb59117ce9198357d7713eaa380c056cc044a9"
+    },
+    {
+      "path": "packages/ai/src/failure-diagnostics.ts",
+      "bytes": 2936,
+      "sha256": "a6de5f053c0a0fb4eb947d6d45856a1528ce970360d9ff1c98989ec4331eb416"
+    },
+    {
+      "path": "packages/ai/src/index.ts",
+      "bytes": 506,
+      "sha256": "69fcc601c1eae57b1f676b4589adc73bc2f939fe92542fe6985cd8c9c1405902"
+    },
+    {
+      "path": "packages/ai/src/model-governance.ts",
+      "bytes": 15530,
+      "sha256": "a66a44ef83a29beea0e1664b8f8b831fff25f782a267490b56e16b9f5324bd35"
+    },
+    {
+      "path": "packages/ai/src/normalization.ts",
+      "bytes": 3414,
+      "sha256": "44e30c2cc43a0eac755faf9ff81383560b14362489dc09c94b3caaf46aad80b3"
+    },
+    {
+      "path": "packages/ai/src/prompts.ts",
+      "bytes": 3976,
+      "sha256": "a65e4d7fa41056592f148fdeac8af80a1e5af3ff2c3aabec8fa5a8038504414b"
+    },
+    {
+      "path": "packages/ai/src/providers/cloudflare.ts",
+      "bytes": 12100,
+      "sha256": "15b9c80324e9d94d47a86d0909955555e723351e78a4e076fe75f3bb8fc81bfb"
+    },
+    {
+      "path": "packages/ai/src/providers/deepseek.ts",
+      "bytes": 5507,
+      "sha256": "f9c65dd6bd1e6c23d41277c47d560fabce8351e5692bc543a9909bc6cdf54079"
+    },
+    {
+      "path": "packages/ai/src/providers/glm.ts",
+      "bytes": 4129,
+      "sha256": "138941f6c1bc8293c97961bbf77901001393e8ad711682bf0e9992e0a6310a06"
+    },
+    {
+      "path": "packages/ai/src/providers/groq.ts",
+      "bytes": 14664,
+      "sha256": "712f7130a93ffe05962d69924310fa9c2398a6da5f836356b885ac8e0d44324d"
+    },
+    {
+      "path": "packages/ai/src/providers/mock.ts",
+      "bytes": 3530,
+      "sha256": "f0f96dc2acc8c2bcdd8bc5c713094b8ed9839d690f4ba34a2f1a341343711cc6"
+    },
+    {
+      "path": "packages/ai/src/providers/qwen.ts",
+      "bytes": 24702,
+      "sha256": "97922e69f57d7ea58f98027e1a9d46f891e99c52270af12e3119b407302ec3c3"
+    },
+    {
+      "path": "packages/ai/src/quality-gate.ts",
+      "bytes": 4806,
+      "sha256": "0be0a9fcd1b3226622ffbd905c894be2c9d1bd71d28cca7d764a520b42faa6c1"
+    },
+    {
+      "path": "packages/ai/src/router.ts",
+      "bytes": 19600,
+      "sha256": "3b2c95f371f6a3e35fc25119a14105b17af65167283bc7e5144ce76ee5f80803"
+    },
+    {
+      "path": "packages/ai/src/schemas.ts",
+      "bytes": 3200,
+      "sha256": "49b309e373e573b121ad5ad42a0cdcd53cf647a5944d6169f655553deecb0747"
+    },
+    {
+      "path": "packages/ai/src/task-runtime.ts",
+      "bytes": 21473,
+      "sha256": "6b866a7775e1d2eaf3edad636b5ebcefc4d61b3cecbac0e845dffc98991c22a6"
+    },
+    {
+      "path": "packages/ai/src/telemetry.ts",
+      "bytes": 3129,
+      "sha256": "2f8142a02ceb4f81398a106892d8a649ec5aaf2b33aae1957cfcec06ddc954eb"
+    },
+    {
+      "path": "packages/ai/src/types.ts",
+      "bytes": 2265,
+      "sha256": "5ee3b3aba94b8e8e130dbc75a573b5f399e6fec025186b4dde0e8a2d8ac9963f"
+    },
+    {
+      "path": "packages/db/src/catalog.ts",
+      "bytes": 4115,
+      "sha256": "4626fabe4fdc661fb33ea893a20505e5a87b95c9ff2f40ccac4d8bef7cad5115"
+    },
+    {
+      "path": "packages/db/src/index.ts",
+      "bytes": 970,
+      "sha256": "b23f01c104e29dd3a3e03dd6e149079d6ffb05fdefbecc74cdb537b3f996e6ac"
+    },
+    {
+      "path": "packages/db/src/inventory-adoption-executor.ts",
+      "bytes": 16557,
+      "sha256": "1ab6523ea3ef123cdfa6352d764adb93b78c0a65ecdb466ef98a1627bcdfedb8"
+    },
+    {
+      "path": "packages/db/src/inventory-lot-commands.ts",
+      "bytes": 62140,
+      "sha256": "3e521523675105648509cb0b8f675e4c7955085d83d70e2f456df4274fff65b6"
+    },
+    {
+      "path": "packages/db/src/inventory-observations.ts",
+      "bytes": 13634,
+      "sha256": "10340d7630f78cc547e9132f39bf19adb8314067a85ae7c631d67cd612bf531a"
+    },
+    {
+      "path": "packages/db/src/inventory-read-authority.ts",
+      "bytes": 12504,
+      "sha256": "11f33a8d59be66e0d85efa30e605b985a1e734865d42b4c449241c0bb2706df4"
+    },
+    {
+      "path": "packages/db/src/inventory-reconciliation.ts",
+      "bytes": 22948,
+      "sha256": "ea769c3cae2e0b2181ac05e2cc5c43540a62da82224b105ac37d4748c70f4e12"
+    },
+    {
+      "path": "packages/db/src/inventory-truth.ts",
+      "bytes": 7930,
+      "sha256": "844f01cd39995fe23838400de7c89b638605777384585875486087835e7a69dc"
+    },
+    {
+      "path": "packages/db/src/inventory-writer-fence.ts",
+      "bytes": 3772,
+      "sha256": "1c04a5b42a35485dd472224a9dffceb7348479485c0f292c10f2a8cffefa5d17"
+    },
+    {
+      "path": "packages/db/src/meal-composition.ts",
+      "bytes": 12250,
+      "sha256": "8a25aae1f0d85cf1d9c60723e0207568eb0a866c86aa04e96f8e6e52bc4d64e7"
+    },
+    {
+      "path": "packages/db/src/meal-planning-snapshot.ts",
+      "bytes": 10663,
+      "sha256": "013925b9fea8130af55824dcf0b2b7778db710e8c1ad770f956c789ef3536713"
+    },
+    {
+      "path": "packages/db/src/meal-planning.ts",
+      "bytes": 19005,
+      "sha256": "e03bcde867b004c25583f2c829da2633f6e50e982cc62f3e18a77366507772f8"
+    },
+    {
+      "path": "packages/db/src/personalization.ts",
+      "bytes": 18016,
+      "sha256": "57f44f55b08e115dc68258dce609a81765385c83b401ad7e2250625e50c66fce"
+    },
+    {
+      "path": "packages/db/src/planner-catalog-authority.ts",
+      "bytes": 8150,
+      "sha256": "7bab66ec3f4b34d9cb66b353003cf6fa8dbb6390799e207ef84e61406472dff8"
+    },
+    {
+      "path": "packages/db/src/queries.ts",
+      "bytes": 4140,
+      "sha256": "5913e70f7ba669d992088c483f04c30ace233e46417fcae1004d185357157030"
+    },
+    {
+      "path": "packages/db/src/ranking-nutrition.ts",
+      "bytes": 9582,
+      "sha256": "3976b94a59dca31ca41127b19fb76633a6c7b4266b37346f1b3a575f2f794660"
+    },
+    {
+      "path": "packages/db/src/recipe-catalog.ts",
+      "bytes": 14793,
+      "sha256": "fa76c9744583f2fce55b5c3dfeadf76c656331773b29a0a27c351f1cea8ea2b7"
+    },
+    {
+      "path": "packages/db/src/recipe-content.ts",
+      "bytes": 5765,
+      "sha256": "d812c98eb90146809d69acc8ffe21164425ee973bd1a40659e1c0c15932c9233"
+    },
+    {
+      "path": "packages/db/src/recipe-media.ts",
+      "bytes": 19556,
+      "sha256": "07ee565800f079608fe2ba898d4dc1215b3a643114bc0d92f3bc63f838ed0e2e"
+    },
+    {
+      "path": "packages/domain/src/availability.ts",
+      "bytes": 12339,
+      "sha256": "872736cdf3f54142fb31374da4839b4583bfa403988b7576f771848198c970e2"
+    },
+    {
+      "path": "packages/domain/src/foundation.ts",
+      "bytes": 5494,
+      "sha256": "41ba74748b32540324ed3c71d813ab2363356c71cb73243d548f463cb13cc6d3"
+    },
+    {
+      "path": "packages/domain/src/index.ts",
+      "bytes": 16063,
+      "sha256": "731b8a9710313eb9ae554670f2f941a213b8e4891ac5499218b795853647e558"
+    },
+    {
+      "path": "packages/domain/src/inventory-adoption.ts",
+      "bytes": 8229,
+      "sha256": "f137217c2f9bcd1e1afb212d73b17e6e4b14eac855dcc5341dcd072ab2f90e1c"
+    },
+    {
+      "path": "packages/domain/src/inventory-fefo.ts",
+      "bytes": 7787,
+      "sha256": "77ee2f6cf4e822631ff07dfe2de1b437a94f90a56219c8644bf422b7626148a4"
+    },
+    {
+      "path": "packages/domain/src/inventory-lot-commands.ts",
+      "bytes": 15125,
+      "sha256": "36f5c85ac486a3cbae8a52052e773e366e365ba49e5da6b5526ad194c80f38ae"
+    },
+    {
+      "path": "packages/domain/src/inventory-observations.ts",
+      "bytes": 8013,
+      "sha256": "75a850822a8ecd9c4db43dee6789be33222bf2f2d6bbbf8c1e792346bbf6f2f9"
+    },
+    {
+      "path": "packages/domain/src/inventory-read-authority.ts",
+      "bytes": 6460,
+      "sha256": "42b2d5ed1e0aa51b99bf762a41a2816c3f620c7bed34367b811ad16c0963bd3b"
+    },
+    {
+      "path": "packages/domain/src/inventory-reconciliation.ts",
+      "bytes": 17164,
+      "sha256": "f515d255f75637fc7b905c9dc9a5a3167c2221ac70f97d675e34a48b4428bada"
+    },
+    {
+      "path": "packages/domain/src/inventory-truth.ts",
+      "bytes": 18337,
+      "sha256": "ddf8cf003d92077db0312c5ffef938e23217813643cd26de3cc4a1a069521595"
+    },
+    {
+      "path": "packages/domain/src/meal-composition-api.ts",
+      "bytes": 10782,
+      "sha256": "42ec8d7ef7d1247ed75595742bc730ee07880373a1bcd8e43dd15b29f8e0c652"
+    },
+    {
+      "path": "packages/domain/src/meal-planning-api.ts",
+      "bytes": 6919,
+      "sha256": "a595c0ab825c30843ee99400dba09c80bf1649498b08c97837fcea9ea8297854"
+    },
+    {
+      "path": "packages/domain/src/meal-planning-presentation.ts",
+      "bytes": 2269,
+      "sha256": "f765891c3866a28e3e40e9766e0164c63bb42eb08a908be8500cb402a11a0b1a"
+    },
+    {
+      "path": "packages/domain/src/meal-shopping-api.ts",
+      "bytes": 7823,
+      "sha256": "b6226e5737113c15e55dd649716b8872c338414200993273a80740c95fd7e952"
+    },
+    {
+      "path": "packages/domain/src/quantity.ts",
+      "bytes": 2702,
+      "sha256": "818cef4a72c460bc01a255ee393e13bebd42e61ecf403a80e049e955367f2b7b"
+    },
+    {
+      "path": "packages/domain/src/units.ts",
+      "bytes": 2117,
+      "sha256": "dd213481502b95f20e86eb7d029bad76d714ec8be7cc290bcfc10f4a5a096d84"
+    },
+    {
+      "path": "packages/domain/src/week/index.ts",
+      "bytes": 246,
+      "sha256": "ed9690c4a007595b516daef71814abbef223c5e28d945db2c1e67a8d4707f024"
+    },
+    {
+      "path": "packages/domain/src/week/leftover.ts",
+      "bytes": 1836,
+      "sha256": "14f4d4f037f3a222c2e6ec6007bf4e21e6917e2204b4e799e1ad73ca467d2582"
+    },
+    {
+      "path": "packages/domain/src/week/packages.ts",
+      "bytes": 2752,
+      "sha256": "bdc4cda800c97eee39dddb936b9d9c0d14d568683a205d2b74ca6de744bf0350"
+    },
+    {
+      "path": "packages/domain/src/week/planner.ts",
+      "bytes": 16419,
+      "sha256": "0c1e3d76ea7d265be5c2a5b7da5b9363b9d0764315126c08ff4cd3b02dcb4e27"
+    },
+    {
+      "path": "packages/domain/src/week/portion.ts",
+      "bytes": 1986,
+      "sha256": "0ab977d6a1bac82856d74eab1cb9d66169a0680278bcca73fb8e053b4e1e1007"
+    },
+    {
+      "path": "packages/domain/src/week/pricing.ts",
+      "bytes": 9698,
+      "sha256": "90f10a6b82f9b7f5ebcf67b16f5fac8d087ed3852dbf195b17250d817f001f32"
+    },
+    {
+      "path": "packages/domain/src/week/score.ts",
+      "bytes": 8561,
+      "sha256": "a3a126e585aa76c8e076906b608b7bc2c16a5b954e4808f640fa59c9c68ab056"
+    },
+    {
+      "path": "packages/domain/src/week/shopping.ts",
+      "bytes": 6635,
+      "sha256": "d0a084da37c92f1a9e26d3af6065bf59bfd8a7290f4262564733d9bf62807ee5"
+    },
+    {
+      "path": "packages/domain/src/week/types.ts",
+      "bytes": 6145,
+      "sha256": "57bd4e736f85d9cf69746a8c81edc3f2c5b0810f5d7ed3fb988c2b2085629deb"
+    },
+    {
+      "path": "packages/domain/src/week/utilization.ts",
+      "bytes": 3657,
+      "sha256": "3703df7027f464f3dd981426db3659b5681e2dd4e2dd2a1c5bcdd0337e688c74"
+    },
+    {
+      "path": "packages/recipes/src/candidates.ts",
+      "bytes": 14843,
+      "sha256": "af629c3d2e7e1cb8e0aeb5fb98b28ea2f04288c3864c2cb42c3ea44b5c50f55b"
+    },
+    {
+      "path": "packages/recipes/src/catalog-drift.ts",
+      "bytes": 15576,
+      "sha256": "c758ec6d5458b1de05d5fa0c7aec9764e983eefb4639b3bf8edae4f316e1144a"
+    },
+    {
+      "path": "packages/recipes/src/catalog-entry.ts",
+      "bytes": 3882,
+      "sha256": "ee81ef25acb8c5bbb8f47518a773161dc150d403596bac49ebd78a3f41198425"
+    },
+    {
+      "path": "packages/recipes/src/catalog-fingerprint.ts",
+      "bytes": 1736,
+      "sha256": "dd03385a1162ac0ce8040bc6531fd70725c0034c724e4d82a0d078c92eb8afd6"
+    },
+    {
+      "path": "packages/recipes/src/catalog.ts",
+      "bytes": 16165,
+      "sha256": "c29303235a9b8722d7023898eac93d49d8488057184e1527fe9cf264622e52d1"
+    },
+    {
+      "path": "packages/recipes/src/composition/candidates.ts",
+      "bytes": 7822,
+      "sha256": "8c68f6c29dcbd879a3ffacf550b5ceb3d2db30c6db421b54d19cd1b91df443ef"
+    },
+    {
+      "path": "packages/recipes/src/composition/composer.ts",
+      "bytes": 12382,
+      "sha256": "84c9044575b20c33fd104db640438daa5981d8cd096c32641bdddda68b28be61"
+    },
+    {
+      "path": "packages/recipes/src/composition/model.ts",
+      "bytes": 10210,
+      "sha256": "6e3e86b138adf0e79d1bf37b9adbebc960407b23bc5dca921961d43dcc1e2caa"
+    },
+    {
+      "path": "packages/recipes/src/composition/profiles.ts",
+      "bytes": 3956,
+      "sha256": "4d24a4457f63863e8c8648d1372590c141b521035fb020c23bd04dffcc83e0c0"
+    },
+    {
+      "path": "packages/recipes/src/composition/projection.ts",
+      "bytes": 13376,
+      "sha256": "8e43865d1f2c63e3a55ced882b79956f8d172b8da1d3bb921134e8a8decd4ac1"
+    },
+    {
+      "path": "packages/recipes/src/composition/restrictions.ts",
+      "bytes": 6171,
+      "sha256": "e5811e1ac530c88fecc0642b92ba3b637940644bfa28959ab841ada6b1a6ea5a"
+    },
+    {
+      "path": "packages/recipes/src/composition/roles.ts",
+      "bytes": 12305,
+      "sha256": "4bb073d8cedc646c8e2b627ddffe9a0f258b08327dcbdde32b0f5a266410747a"
+    },
+    {
+      "path": "packages/recipes/src/composition/simple-foods.ts",
+      "bytes": 2639,
+      "sha256": "7137448902998c6aa9044516a1e5de990632ff0d2fff84eb74752fc8082cf22e"
+    },
+    {
+      "path": "packages/recipes/src/data.ts",
+      "bytes": 17692,
+      "sha256": "5db31a733a2b76b36c7fd8e9720d38445e06125af94e31b1f61a6c5246840b79"
+    },
+    {
+      "path": "packages/recipes/src/discovery-contract.ts",
+      "bytes": 4302,
+      "sha256": "7f06bb356dae0aa647a17de431e83e0ad66312973ee5b619abde92be153b1c45"
+    },
+    {
+      "path": "packages/recipes/src/discovery.ts",
+      "bytes": 4516,
+      "sha256": "9bcdaee1f01bb5dd97a89a4564937640ff70f4b34f11f48ee3fdba46f9d14e7f"
+    },
+    {
+      "path": "packages/recipes/src/engine.ts",
+      "bytes": 4559,
+      "sha256": "031cc0120a886482977e74c85ddb1ab8fb61bef037be84e2345c5be3ce7bc09d"
+    },
+    {
+      "path": "packages/recipes/src/families.ts",
+      "bytes": 7600,
+      "sha256": "4b4f6ef9684baf499326ba239f418b8230d8114a4319fa17f0c6e7fe75c33e2f"
+    },
+    {
+      "path": "packages/recipes/src/foundation.ts",
+      "bytes": 3972,
+      "sha256": "5ff724c40afda7dba275ec8fbf9a45bead06ab662f6d745b5bc74bb6d9d6e2be"
+    },
+    {
+      "path": "packages/recipes/src/import/catalog-release.current.json",
+      "bytes": 14260,
+      "sha256": "fa47d31f344736d338dc0ba50654e4604f793089fe97e44857e7dd5dd0134ac0"
+    },
+    {
+      "path": "packages/recipes/src/import/compiler.ts",
+      "bytes": 11979,
+      "sha256": "df9e2d2679a0b3dbcbdffb888a64a1dc71c574604e9a078b312f81e2f9dc6ffe"
+    },
+    {
+      "path": "packages/recipes/src/import/duplicates.ts",
+      "bytes": 8845,
+      "sha256": "6829da828a0f9c9d1c7d53e634f10921bbb1cb3f51088c5ac139e305e567bdac"
+    },
+    {
+      "path": "packages/recipes/src/import/identity.ts",
+      "bytes": 2628,
+      "sha256": "9d81fc686664488799a1c72ccec6ae4dc91b3565b3526824cf2efbaee96a58e6"
+    },
+    {
+      "path": "packages/recipes/src/import/index.ts",
+      "bytes": 288,
+      "sha256": "07883bcd73eed74521bd3978c72206fa1f8452f31231ae8dc0e3964ee17cd16e"
+    },
+    {
+      "path": "packages/recipes/src/import/ingredients.ts",
+      "bytes": 3569,
+      "sha256": "d8f0a74d8eaaa33fd040e25be2d10cdebdf2dd890c0cabafa2e1571fd4c34f90"
+    },
+    {
+      "path": "packages/recipes/src/import/normalize.ts",
+      "bytes": 10993,
+      "sha256": "d4c946661a05c1b6be1f59dde58f68bfe1ba01d4b065c03810f7396c4beea809"
+    },
+    {
+      "path": "packages/recipes/src/import/parse.ts",
+      "bytes": 6373,
+      "sha256": "74d5452e9905d4498d789b794f81206b4392649720bd954002c9d125744b4128"
+    },
+    {
+      "path": "packages/recipes/src/import/release-manifest.ts",
+      "bytes": 10543,
+      "sha256": "0741ad3cd996b0d24939ef11e26eae9131a04b30e75c94f0c1311a20ef0af281"
+    },
+    {
+      "path": "packages/recipes/src/import/schema.ts",
+      "bytes": 6004,
+      "sha256": "3dfb1bec3450063b345366104283a5e95effdddbcc2c6e03b9d276c0b4215a4b"
+    },
+    {
+      "path": "packages/recipes/src/import/sql-render.ts",
+      "bytes": 11216,
+      "sha256": "ce6c047851e15b4ca1ee7c34eda9281c45bdf4efc9693f92a9d66a704c424601"
+    },
+    {
+      "path": "packages/recipes/src/import/types.ts",
+      "bytes": 4382,
+      "sha256": "70b41584d3e9f8fb4b49bb14562224c6e471bb5d171c6bf2fdeaafaa22df95ed"
+    },
+    {
+      "path": "packages/recipes/src/index.ts",
+      "bytes": 1809,
+      "sha256": "f4bf1c8b9f6f79e54129c119e8cd49094fd762c6a0cc20ea6243851f1ccb68f8"
+    },
+    {
+      "path": "packages/recipes/src/ingredient-authority-v2.ts",
+      "bytes": 3735,
+      "sha256": "c36c15e8a0a480f69f29daae202ff2034925e6dd4fc16524648e2df4949f0af7"
+    },
+    {
+      "path": "packages/recipes/src/legacy-availability.ts",
+      "bytes": 1936,
+      "sha256": "9cff517ebb00d2b349d0a9f7122de5cfecf35bea258087e2e033705757b27a2d"
+    },
+    {
+      "path": "packages/recipes/src/legacy-media-policy.ts",
+      "bytes": 1060,
+      "sha256": "0e637ef33e0d8cf332672d4f252c70512a759dd8935e257577fd726e9a3dcfa2"
+    },
+    {
+      "path": "packages/recipes/src/personalization.ts",
+      "bytes": 4471,
+      "sha256": "7d3994da639f00dc578bdb9822d3dd86e5d0743c0407041ab8efb92b9ccdedc6"
+    },
+    {
+      "path": "packages/recipes/src/planner-context.ts",
+      "bytes": 7524,
+      "sha256": "3fe4b8a324bf2064fd690d648378186cd1a32bc295fe4ef97be9ea93d1607c01"
+    },
+    {
+      "path": "packages/recipes/src/planner-inventory.ts",
+      "bytes": 10983,
+      "sha256": "d15490d625f5826c555cb66b471cc3fe3ba2bc5373a7a654be7ff4d9887233b3"
+    },
+    {
+      "path": "packages/recipes/src/planner-nutrition.ts",
+      "bytes": 11143,
+      "sha256": "cba42ecb1de185fc8dcae7b17a78ac4a4d2f8056f801ae20c1df846a243a599c"
+    },
+    {
+      "path": "packages/recipes/src/planner-policy.ts",
+      "bytes": 1994,
+      "sha256": "4d9077295c09942c03803f566cf9a44dc159df43be640be91120f3b24a4f0c3d"
+    },
+    {
+      "path": "packages/recipes/src/planner-request.ts",
+      "bytes": 4099,
+      "sha256": "d689dbdc2f42a88d822a730aef3913d5abf0c73cb3095ce10e996811b819ba76"
+    },
+    {
+      "path": "packages/recipes/src/planner-types.ts",
+      "bytes": 4164,
+      "sha256": "1d1ed7d897e7308ec718a345143b119f6053cd5491616abbbd9f10f1370bf09c"
+    },
+    {
+      "path": "packages/recipes/src/planner-utility.ts",
+      "bytes": 4387,
+      "sha256": "79a479f729a5e547071911fcff4d37a1ce10c8acd89d361a7631ab9eed9e666d"
+    },
+    {
+      "path": "packages/recipes/src/ranking-eligibility.ts",
+      "bytes": 6068,
+      "sha256": "068b8dd017a26f2b380ec525606baa3cc0630ae88aeeb34ddba7d44cf0a56cfa"
+    },
+    {
+      "path": "packages/recipes/src/ranking-evidence.ts",
+      "bytes": 5112,
+      "sha256": "4a8a534b31ba4507d32025e5074c1af74e9d6119285cb36a74150e35f9c6ee5e"
+    },
+    {
+      "path": "packages/recipes/src/ranking-features.ts",
+      "bytes": 8298,
+      "sha256": "bf671691c896801f0fb1befc0a399c9fbb8fff75aba1d086226821e5a5740035"
+    },
+    {
+      "path": "packages/recipes/src/ranking-policy.ts",
+      "bytes": 2692,
+      "sha256": "3512d2d014593b604465317a665bb9c0b5e81bc1fb5b63cc9b0b6b8f18fbbaf3"
+    },
+    {
+      "path": "packages/recipes/src/ranking.ts",
+      "bytes": 7537,
+      "sha256": "3063382e9310dbe5c7efacaeaed1325ee2425bdf7363062b9fbf6e8d02fc2e23"
+    },
+    {
+      "path": "packages/recipes/src/recipe-authority.ts",
+      "bytes": 15439,
+      "sha256": "6aad0ccfadacd3c164d2ae6ab2aea8eb4df6c95119b16fe75b7f07128095599d"
+    },
+    {
+      "path": "packages/recipes/src/recipe-canary-cohort.ts",
+      "bytes": 6987,
+      "sha256": "f9595d369b1e1d9e852d2cd1a596b6c061f47f0bd845e64530ed7de66e2c40e2"
+    },
+    {
+      "path": "packages/recipes/src/recipe-media.ts",
+      "bytes": 16904,
+      "sha256": "500734d02671a5079f1d063c6f0a48d5a09b10fc3b5cf9fb23feaf3b0895de04"
+    },
+    {
+      "path": "packages/recipes/src/refresh/artifact.ts",
+      "bytes": 1297,
+      "sha256": "4e4ceafc4d963a4ecacd5797633d8f1b2699ab73ab4a77bf2f90370f63549fbb"
+    },
+    {
+      "path": "packages/recipes/src/refresh/compiler.ts",
+      "bytes": 7557,
+      "sha256": "8417d8fac980dcdec3268b5a8e2838e251ab0824fd1a3dd163d79266da49ab7e"
+    },
+    {
+      "path": "packages/recipes/src/refresh/index.ts",
+      "bytes": 138,
+      "sha256": "37489cefc1e0f64a5a4fd8aab0ac54e41a136726c14bac3a66c9d17ef2749551"
+    },
+    {
+      "path": "packages/recipes/src/refresh/normalize.ts",
+      "bytes": 10564,
+      "sha256": "8866f65d293bc8cf4662c68c69b979019666091eefb93c1aafd4d59063198cdf"
+    },
+    {
+      "path": "packages/recipes/src/refresh/release.ts",
+      "bytes": 8148,
+      "sha256": "a43c3d288b283e62bf9ac918ccf1e1237f7123ccc68affe07aa2464ec8d7a7ac"
+    },
+    {
+      "path": "packages/recipes/src/refresh/schema.ts",
+      "bytes": 6941,
+      "sha256": "5186af37942c4efc94b7e5fb3308597cc2ca6a6a70e413c72be66473036ff74b"
+    },
+    {
+      "path": "packages/recipes/src/requirements.ts",
+      "bytes": 2958,
+      "sha256": "c8a51258f79f3e23a656b0cb8f0448f50c1ac0e55adbc01f9ca875fed8e99f86"
+    },
+    {
+      "path": "packages/recipes/src/runtime-catalog.ts",
+      "bytes": 6985,
+      "sha256": "4c2d15526d62427ef262233a264be3b4f92175cd3ad9f808f51ee444699d06b3"
+    },
+    {
+      "path": "packages/recipes/src/runtime-hydration.ts",
+      "bytes": 13110,
+      "sha256": "82f2959086218bc48805cc9e9d6c8780733a39e3fe81f51be783cf1f0a119f0f"
+    },
+    {
+      "path": "packages/recipes/src/runtime-ingredient-audit.ts",
+      "bytes": 6201,
+      "sha256": "70d54d292299af85408df4e639c7d301e6cb9975399ac48fed90198893cd99df"
+    },
+    {
+      "path": "packages/recipes/src/runtime-ingredient-v2.ts",
+      "bytes": 9832,
+      "sha256": "d484fc7f6606dd276135195212a01b6cf43235220281a6f901c62743139c8c7e"
+    },
+    {
+      "path": "packages/recipes/src/runtime-recipe.ts",
+      "bytes": 4355,
+      "sha256": "57b48a7c5ea5089137ab167107841f22fa6fc4b7fe43d2845e832c57819b0a2c"
+    },
+    {
+      "path": "packages/recipes/src/seed-render.ts",
+      "bytes": 15987,
+      "sha256": "88cab24cc193bfdbbcf034b2de3ee95e584f3396dc09fc4314f9749d722ef84e"
+    },
+    {
+      "path": "packages/recipes/src/shopping-catalog.ts",
+      "bytes": 6678,
+      "sha256": "23653b18e22e8700b31dfd9be461ca70f2f647e45f6aa1ce9db70d562a6442d4"
+    },
+    {
+      "path": "packages/recipes/src/shopping-demand.ts",
+      "bytes": 4779,
+      "sha256": "c257972ce23552d467ff1a0796fcac9ac74976ff8d283eee85360cdb82efe9e8"
+    },
+    {
+      "path": "packages/recipes/src/shopping-optimizer.ts",
+      "bytes": 21524,
+      "sha256": "cf788754a4e9874d97e8c2a57b3a6e4f8685ce7b860bf453e9e50bcefac727fd"
+    },
+    {
+      "path": "packages/recipes/src/shopping-packages.ts",
+      "bytes": 9327,
+      "sha256": "513149040d9c5ac8b76e08daa8aea4736e4ec9f39ade18b1f0a3e9f896872664"
+    },
+    {
+      "path": "packages/recipes/src/shopping-plan-snapshot.ts",
+      "bytes": 9385,
+      "sha256": "90519da04f385edff13b5ea4d32443fe50d4b487c4a635c764bea53ee285b3ff"
+    },
+    {
+      "path": "packages/recipes/src/shopping-policy.ts",
+      "bytes": 1320,
+      "sha256": "317d9db2465f14282033032c0b1fc1fa8d8cb8fb6f6efadcab8e4e7c0a7874cc"
+    },
+    {
+      "path": "packages/recipes/src/shopping-waste.ts",
+      "bytes": 1789,
+      "sha256": "a8ad8af157b68126ee34de9f4b284e13362f5c5a88805934dec5548a16f77231"
+    },
+    {
+      "path": "packages/recipes/src/substitutions.ts",
+      "bytes": 6360,
+      "sha256": "73e466f836f3f98bd53d3cd2beecb5bb9eb3e63ac8aeaf7fb8a0c824c0839b86"
+    },
+    {
+      "path": "packages/recipes/src/types.ts",
+      "bytes": 2012,
+      "sha256": "b15c1e768e38e2d94a5dbc71787932bc5087d4a0af7558a5bcb6ac6a50dece31"
+    },
+    {
+      "path": "packages/recipes/src/vietnamese-bank.ts",
+      "bytes": 125290,
+      "sha256": "5170a2b6020993d9a69f17558d4ed624ac5f00541af7b5a91928f46705f243a0"
+    },
+    {
+      "path": "packages/recipes/src/vietnamese-images.ts",
+      "bytes": 7803,
+      "sha256": "c8899c1758d32cfcab1be4cb3303b7dcd25c29a5496bd21dee25a955dd31b30a"
+    },
+    {
+      "path": "packages/recipes/src/weekly-planner.ts",
+      "bytes": 18470,
+      "sha256": "f4307e5995db9f3333f621274a17c26eaf5d48d938aafbfddee9bc4da226d5cf"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "bytes": 236266,
+      "sha256": "b9f5c384b33f25a1ccfb05bb10258ea95182a32434678d5087b2f62be8d26867"
+    },
+    {
+      "path": "scripts/ai-eval.mjs",
+      "bytes": 1461,
+      "sha256": "75a08882f3546a4049c7525752a0cf00026286ba48999f962e64804daa86e013"
+    },
+    {
+      "path": "scripts/cloudflare-worker-rollback.mjs",
+      "bytes": 14831,
+      "sha256": "48acbb0c911fa758c1242a3cae1abfed0cbf03b5cf1e3be02c967fec34e9a70e"
+    },
+    {
+      "path": "scripts/composition-flags.mjs",
+      "bytes": 4031,
+      "sha256": "7fe16d58c88be15ed8523f99a8a16c7d98defc125dc5519d2805ac92fd77887f"
+    },
+    {
+      "path": "scripts/d1-migration-check.mjs",
+      "bytes": 51754,
+      "sha256": "763683f6a9ee70f4b25f2934aac94958cc95937229291c294be4d934b3ee9394"
+    },
+    {
+      "path": "scripts/d1-readonly-query.mjs",
+      "bytes": 2968,
+      "sha256": "9d43f62c25561423c6b4c00d611a262a82387dce724c6756274d1db9cfc4deb3"
+    },
+    {
+      "path": "scripts/d1-schema-gate.d.mts",
+      "bytes": 426,
+      "sha256": "b7275fa22adaaeb3562ab22e03d49d7b5d61d64eef2bba6ecca7c934d0a24a8a"
+    },
+    {
+      "path": "scripts/d1-schema-gate.mjs",
+      "bytes": 2497,
+      "sha256": "e443766807873c458581c82049cef1b0967dff2493b61804e1ae7f6bb6e7128a"
+    },
+    {
+      "path": "scripts/d1-schema-gate.sh",
+      "bytes": 2092,
+      "sha256": "e48596c6001f7fc20bb0d03213553f0bfe7575585bc02144d432f0a11cccb625"
+    },
+    {
+      "path": "scripts/d1-schema-gate.sql",
+      "bytes": 12914,
+      "sha256": "8fef693f77e9b12976481d95dc0e7e442593c5d26e1af13ee90405a7d52a0e88"
+    },
+    {
+      "path": "scripts/d1-temporal-forensics.mjs",
+      "bytes": 16453,
+      "sha256": "33ceadb31f29e0943350c272ecd6ea94e5b81a6c6a6c7a93feed8e4f436a2448"
+    },
+    {
+      "path": "scripts/d1-week-reconcile.sh",
+      "bytes": 1106,
+      "sha256": "37749645a392d8592690fb74b0567c5abd20e88523ad1ec1022ad5b5bb82217a"
+    },
+    {
+      "path": "scripts/d1-week-reconcile.sql",
+      "bytes": 3011,
+      "sha256": "87ec4e48f93eff5f416cc993cd718e5d75d75b7650586758e34a91d0391efcfa"
+    },
+    {
+      "path": "scripts/deploy-check.sh",
+      "bytes": 1206,
+      "sha256": "820bb80b3976d34889f2b8e340b4060674b42118efeb9e3311f30c394b3524c6"
+    },
+    {
+      "path": "scripts/generate-recipe-images.ts",
+      "bytes": 28190,
+      "sha256": "b3e69ffea0ad9a09c30c77c3db52539ddbeb841a95537da8bc4b91f4b6e366a4"
+    },
+    {
+      "path": "scripts/generate-synthetic-ocr.mjs",
+      "bytes": 7340,
+      "sha256": "ef0c1689750fb317d5c8aa96c4e6190e937b9cef57b4e8c055959d03762ba682"
+    },
+    {
+      "path": "scripts/generate-takosan-brand.mjs",
+      "bytes": 4853,
+      "sha256": "fa05c2ccdbfd0c2fecbf056f1221965c480acaed3e45ab89d5eae57085f45aac"
+    },
+    {
+      "path": "scripts/generate-takosan-icons.mjs",
+      "bytes": 3137,
+      "sha256": "89e3c6773a3e17122c0fe441a1ca70ce8cf74bb78d47109ab69daea3fe2609a4"
+    },
+    {
+      "path": "scripts/google-auth-responsive-check.mjs",
+      "bytes": 12738,
+      "sha256": "de9480c6f517be3c4568fb99af90cb18c7ef0b274c53e4612b0863b939998e7b"
+    },
+    {
+      "path": "scripts/inventory-adopt.mjs",
+      "bytes": 9682,
+      "sha256": "1aa275d6bc8404b52e7100419509b6a04d6e7a2dd89f95acd2f8cdada0191ea4"
+    },
+    {
+      "path": "scripts/isolated-preview-html.mjs",
+      "bytes": 360,
+      "sha256": "8ee1983cade84faf74ba7ea9b5add5a2796c4c497fabd77a037a5e2b019b6bf5"
+    },
+    {
+      "path": "scripts/migration-smoke.sh",
+      "bytes": 47875,
+      "sha256": "3821cbed804bb1644d742dfae22bd08fb4438c7ba87e420e169c71daa81c5221"
+    },
+    {
+      "path": "scripts/ocr-benchmark.mjs",
+      "bytes": 10161,
+      "sha256": "ea8e384d80269cec13bdcf0ecf1b8f26fe6916a4891fa928694768b9ce91da69"
+    },
+    {
+      "path": "scripts/ocr-synthetic-apple-vision.swift",
+      "bytes": 2335,
+      "sha256": "6d79071d06b4cc4e106c922da2880b1f7dc5509f5cf4c5550d666697a3cfced7"
+    },
+    {
+      "path": "scripts/planner-preview-fixtures.mjs",
+      "bytes": 11709,
+      "sha256": "6fbfbf0e34aa303fbe6b787fc53bc1371f6cc762e11a05b9a73ebfa6b7518634"
+    },
+    {
+      "path": "scripts/playwright-private-reporter.mjs",
+      "bytes": 2815,
+      "sha256": "ab2f935c77d1fa612c8c90873f11573f861cefd334f45d92037a043b78285a5f"
+    },
+    {
+      "path": "scripts/post-deploy-smoke.sh",
+      "bytes": 5797,
+      "sha256": "1797bc216ea100e009266e2d22dba9dac276ce0d9e2b13fc6bd48e181e698cf0"
+    },
+    {
+      "path": "scripts/production-catalog-import-inspection.mjs",
+      "bytes": 30257,
+      "sha256": "6ef172869a17a89070bf02bde5fafac909319332c52bd7ee3a0ff2e39ee8ed71"
+    },
+    {
+      "path": "scripts/production-catalog-import-output.mjs",
+      "bytes": 4750,
+      "sha256": "a3e7bab8d1cfff11edf79a2cc356f123517baf3d188149b8a743bae3580d29b9"
+    },
+    {
+      "path": "scripts/production-catalog-lineage.mjs",
+      "bytes": 12177,
+      "sha256": "5d9873fcb9c4c1eb0af693db25722ce3fee9a175080de1f181bf242b3d4da543"
+    },
+    {
+      "path": "scripts/production-catalog-preflight-diagnostics.mjs",
+      "bytes": 8684,
+      "sha256": "2936b369a373135e5f417defbaf91db5708b47c7b4460f82e415d33ce7a2573a"
+    },
+    {
+      "path": "scripts/production-catalog-recovery-approval.mjs",
+      "bytes": 6493,
+      "sha256": "f754423e69bf4d9dc66d6ddf1c03b30e1f01554f738a2ff0fdff5796ce28f34d"
+    },
+    {
+      "path": "scripts/production-catalog-recovery-runner.mjs",
+      "bytes": 20830,
+      "sha256": "03fc47b9f56ca32c3e7ab4dfad601ea9b199daf54d01c8ba9be67d6b6d9bc1b3"
+    },
+    {
+      "path": "scripts/production-catalog-static-pin.mjs",
+      "bytes": 34017,
+      "sha256": "768725eca818de745c506fc4fec099dc728d88dcff1a599c7507a81b51fb8af9"
+    },
+    {
+      "path": "scripts/production-catalog-v2-lineage.mjs",
+      "bytes": 31294,
+      "sha256": "0dc6b0296a264fdcbf82e60ecf601689b6587d5917fa59ec76d065246e1cf9c9"
+    },
+    {
+      "path": "scripts/production-cloudflare-credential-diagnostics.mjs",
+      "bytes": 12787,
+      "sha256": "8b887be4e566b17dc6a9eee3259723fececc114cc52a08ae6b48538eb5edf743"
+    },
+    {
+      "path": "scripts/production-d1-diagnostics.mjs",
+      "bytes": 7793,
+      "sha256": "c0e88e4d56c3aee9f87fbe1a4048bb7e570b7a20bb9fbcc50e88d2ad17b55025"
+    },
+    {
+      "path": "scripts/production-media-preservation.mjs",
+      "bytes": 8466,
+      "sha256": "8b95065cd3cf82d540018eb8c2a54d2e9ecf2da104c4deb09c9f8c90d074fd19"
+    },
+    {
+      "path": "scripts/production-migration-preflight.mjs",
+      "bytes": 3891,
+      "sha256": "88e457bf6fc14f184c7383798f99446b86eb6be6ce26f0a6a0628c89e846db15"
+    },
+    {
+      "path": "scripts/recipe-catalog-qa.mjs",
+      "bytes": 14177,
+      "sha256": "ea2204926fa75ba0abf58ac6bf1c5ff1159c60e970c18b2cec91933b5916514d"
+    },
+    {
+      "path": "scripts/recipe-catalog-recovery.mjs",
+      "bytes": 22289,
+      "sha256": "23f0fc8add9cd12ec087b113e318f82e433219947259dc87f73cfb214332f0be"
+    },
+    {
+      "path": "scripts/recipe-import-output-policy.mjs",
+      "bytes": 2947,
+      "sha256": "c6e33cb9261d69a7900ab40f902bc686f53d4521dea204dcfc14a222a48812dc"
+    },
+    {
+      "path": "scripts/recipe-import.mjs",
+      "bytes": 9908,
+      "sha256": "b224802c0bbbb7f3eeea52301f0d2920cc8f848f6123f2903b4e1b2e30998d6e"
+    },
+    {
+      "path": "scripts/recipe-refresh-v2.mjs",
+      "bytes": 54473,
+      "sha256": "6a15cc6a211166966a65b91702c31f659ac5ed9cc360dfe0a1f048097727728f"
+    },
+    {
+      "path": "scripts/recipe-seed-output-policy.mjs",
+      "bytes": 2886,
+      "sha256": "abe99dfe882990332465f85cb3c47e308e6836e50a5a5ab4ac99c86d40d25aa2"
+    },
+    {
+      "path": "scripts/release-check.d.mts",
+      "bytes": 1544,
+      "sha256": "828459842b73d95b2362432c9b2b77ffc4ea0cb2544588754315171d29aaa1c1"
+    },
+    {
+      "path": "scripts/release-check.mjs",
+      "bytes": 48826,
+      "sha256": "0a42bca040b182e7f81b46d225168e24b751ffb32e44852f77def02e1cf635cf"
+    },
+    {
+      "path": "scripts/render-recipe-seed.mjs",
+      "bytes": 4808,
+      "sha256": "b2b5b7bf81342bb18ee65bebf137a3a16ab4d3971ae7ed6557c8ef65f4c338d8"
+    },
+    {
+      "path": "scripts/runtime-ingredient-v2-audit.mjs",
+      "bytes": 7605,
+      "sha256": "25dfef35588535929dd53b54861ff602bbafe85e930c74f0be2f958c5764dc47"
+    },
+    {
+      "path": "scripts/score-synthetic-ocr.mjs",
+      "bytes": 10398,
+      "sha256": "b0797fd98312d6a4f51c859ebba728a684c2f4c695c23904d8057e76c3a10c42"
+    },
+    {
+      "path": "scripts/security-preview.mjs",
+      "bytes": 6466,
+      "sha256": "a94681507089253650fc6e5371e9188edf459b6a5fcd69e085ca179cc659b528"
+    },
+    {
+      "path": "scripts/staging-d1-catchup-check.mjs",
+      "bytes": 56871,
+      "sha256": "b13a6814d65a4a80e9f3991891e3319109ada5a00c29442adc51d8529132f41d"
+    },
+    {
+      "path": "scripts/staging-d1-migration-check.mjs",
+      "bytes": 9926,
+      "sha256": "62c86b2f7d7836142b9b3b7fa1bb817deae380f6183d78246a2c68d3b56c5f24"
+    },
+    {
+      "path": "scripts/staging-d1-runtime-readiness-check.mjs",
+      "bytes": 24519,
+      "sha256": "05e34f10da8bd73c5e4fde878be695e3fe4733a152e9f8dbd5f4f37c6e7148b0"
+    },
+    {
+      "path": "scripts/t07-query-plans.mjs",
+      "bytes": 6260,
+      "sha256": "697e4daf457b4222ab63224bdc5092a708d1cdb26c604516432c7c39b6d2fd3c"
+    },
+    {
+      "path": "scripts/t13-preview-fixtures.mjs",
+      "bytes": 8256,
+      "sha256": "f3435837bf2127cdacb032e6c879d4e847f4a286ed64bc5977934a34e1e82047"
+    },
+    {
+      "path": "scripts/t13-reconciliation-fixtures.mjs",
+      "bytes": 885,
+      "sha256": "c8ba137a2e0938a08114c6ae3a420867a483d1be3d612d798d503819c250506b"
+    },
+    {
+      "path": "scripts/t17/contrast-audit.mjs",
+      "bytes": 4853,
+      "sha256": "a7774e94193c4c4156bc0c48c81ec27341d45859d9f1db67c07d84da7e853b38"
+    },
+    {
+      "path": "scripts/t17/migrate-semantic-tokens.mjs",
+      "bytes": 6407,
+      "sha256": "f657769439a17df4f44ea1b0a8935aa01200b4d5a66efa3756017ccd4de61732"
+    },
+    {
+      "path": "scripts/t17/style-residuals.mjs",
+      "bytes": 3288,
+      "sha256": "1dd2ee556d57daac7fb437bf74741f0bca191df6d4cd526887cec563ee3393ff"
+    },
+    {
+      "path": "scripts/t18c/fetch-font-fixtures.mjs",
+      "bytes": 1383,
+      "sha256": "e9fb353bcab1c2aaac29f441e4d4e379068ce00555a5091faa9bead3c2f015cf"
+    },
+    {
+      "path": "scripts/t20-benchmark.mjs",
+      "bytes": 3200,
+      "sha256": "46a44afec47ce8e07006c16cf8330f62923c904d808037887dc58ca1805e0606"
+    },
+    {
+      "path": "scripts/t20-preview-fixtures.mjs",
+      "bytes": 1342,
+      "sha256": "499027017f7eb1feb92fbe3841ec89e809a5c011086bd0af84ff70e6736ee9ac"
+    },
+    {
+      "path": "scripts/t20-staging-fixtures.mjs",
+      "bytes": 7959,
+      "sha256": "d686e93782220ea2393b203fc8bf11d4728053123ebf6cecf507fa84638e422b"
+    },
+    {
+      "path": "scripts/t21r-v1-authority.mjs",
+      "bytes": 3861,
+      "sha256": "76109c82204beaac85b7b9167c62d5494f37a7a287902bf8be4c482c673d4a46"
+    },
+    {
+      "path": "scripts/t21rb-v1-offline.mjs",
+      "bytes": 1119,
+      "sha256": "ebe0491f3342cad54a909cd6223aca5fb564b0703f264be924b7d92d7648f61a"
+    },
+    {
+      "path": "scripts/t21rb-v1-production.mjs",
+      "bytes": 10508,
+      "sha256": "91f41a1cb39e579505265f11cbcd970281f0eb9aac326e7022353990b28e0704"
+    },
+    {
+      "path": "scripts/t21rb-v1-semantic.mjs",
+      "bytes": 11768,
+      "sha256": "09b2a6c0d754147fc3346529deaaf4f46c886e6df4c44d6681f47a976e8dd404"
+    },
+    {
+      "path": "scripts/t21rc-row-reconciliation.mjs",
+      "bytes": 29420,
+      "sha256": "e1f822d0e92806f35fb507993063ed3f813cbee43df4c6dd052e30e4cf2b38e9"
+    },
+    {
+      "path": "scripts/t21rc2-production-approval.mjs",
+      "bytes": 27044,
+      "sha256": "cf8bd97c85615ca747c81574504e4ec2f7332eb1c5db4effdcaa3e02778db5b7"
+    },
+    {
+      "path": "scripts/t21rc2-production-capture.mjs",
+      "bytes": 14562,
+      "sha256": "d59ab5c73393e12bc4ac636ee473bd7c21c33443bb9bd726211728c7a7d9d52a"
+    },
+    {
+      "path": "scripts/t21rc2-production-files.mjs",
+      "bytes": 14111,
+      "sha256": "475ef724dc4048261f41d3abf8f6de8133e825b9fb10d57dd6a34714549ca1bf"
+    },
+    {
+      "path": "scripts/t21rc2-production-receipt.mjs",
+      "bytes": 24474,
+      "sha256": "ddeb776b17626ba12446b6042b8536532ed21892a04486b3853a4105d63cc126"
+    },
+    {
+      "path": "scripts/t21rc2t-identity-topology.mjs",
+      "bytes": 30065,
+      "sha256": "f30e27f358bf98e502e155f901176a456e64cdb54b121c91bc7124f8ce27fd6f"
+    },
+    {
+      "path": "scripts/t21rc2t-production-approval.mjs",
+      "bytes": 31989,
+      "sha256": "6396e69b21f4dfad8c3591fd7def5b5aef063eb5858218a3980924948e4e94dc"
+    },
+    {
+      "path": "scripts/t21rc2t-production-capture.mjs",
+      "bytes": 10225,
+      "sha256": "9e59b2dd3c065d1d4ce41fe183732a26c16e43c1916df9924a030482d7afa326"
+    },
+    {
+      "path": "scripts/t21rc2t-production-files.mjs",
+      "bytes": 14114,
+      "sha256": "83ce20d88f62acc53e4b0cd6815bd1518d7ffcf8b554fe5a8218fb3ecef4bd20"
+    },
+    {
+      "path": "scripts/t21rc2t-production-receipt.mjs",
+      "bytes": 7935,
+      "sha256": "01ab9730419f0cfe447993fa1837715b80c17edd6d1fcc2c2b03fe0874555dca"
+    },
+    {
+      "path": "scripts/t21rc2t-source-authority.mjs",
+      "bytes": 4004,
+      "sha256": "c032a30b57edcf171a1678a785482e911fea1a69783f679e4933301e670cf110"
+    },
+    {
+      "path": "scripts/t21rc4-cloudflare-identity-diagnostic.mjs",
+      "bytes": 8401,
+      "sha256": "e7c123593440e75df5f6a1a5ba01fa74752b6692f4970ff4fd1372675505b85a"
+    },
+    {
+      "path": "scripts/t21rc4-identity-approval.mjs",
+      "bytes": 10140,
+      "sha256": "152315e693a2d7625808e3418d0fe11ea6ae049d653d4fd5269b2a0930603f17"
+    },
+    {
+      "path": "scripts/t21rc4-identity-gate.mjs",
+      "bytes": 9814,
+      "sha256": "384334b95457bad5836918b27a25f4eb762333c49fdd8bb422f6f2b6ed31823c"
+    },
+    {
+      "path": "scripts/ui-rebuild-browser-check.mjs",
+      "bytes": 6081,
+      "sha256": "fdf777f122d61a3f557e3aa76e5ecbe4b9c673b71c52a411357815da8c693069"
+    },
+    {
+      "path": "scripts/ui02-browser-check.mjs",
+      "bytes": 14486,
+      "sha256": "6ddae157b8187c1361eccdacc3a1d868f0289d7c72ac54dc7a50a99c66103c98"
+    },
+    {
+      "path": "scripts/ui03-browser-check.mjs",
+      "bytes": 13153,
+      "sha256": "6890cfe085ed901b2880732e43dc01c10b63db85704f1b379b28fda97bf8fb4e"
+    },
+    {
+      "path": "scripts/ui03-media-audit.mjs",
+      "bytes": 4413,
+      "sha256": "7b64d9524745b5f9f4d6158032e1b20906e808672e111ddc96c38dfa71b3934a"
+    },
+    {
+      "path": "scripts/ui04-browser-check.mjs",
+      "bytes": 17807,
+      "sha256": "48f4b4ce08bebe5714a39aa1ea8adf2752cdd6c655f6d4a2ff9a901263c6570b"
+    },
+    {
+      "path": "scripts/ui05-browser-check.mjs",
+      "bytes": 23073,
+      "sha256": "0dd88fbd50662557af42383467aef1b3b020ba34b8705c67017412ddd6f91e7a"
+    },
+    {
+      "path": "scripts/ui06-browser-check.mjs",
+      "bytes": 22273,
+      "sha256": "3b1f9b348bae96c55558dfca90115306002786825b0b47b04093d651378bd932"
+    },
+    {
+      "path": "scripts/ui07-browser-check.mjs",
+      "bytes": 10365,
+      "sha256": "94e15c063fa02ff8b175fc13892c2b9913a525bf0409bf2c24e2b19ca2f75495"
+    },
+    {
+      "path": "scripts/ui07-outline-masters.py",
+      "bytes": 1937,
+      "sha256": "b1d1f244d495e1f9d6e4139b6458389c8bec4395d6bf7a90042c341a8add6349"
+    },
+    {
+      "path": "scripts/ui08-browser-check.mjs",
+      "bytes": 19332,
+      "sha256": "e865a9ce6edcdcc533df6560148467699cf3b5d1338fed605f47099e7fb1fceb"
+    },
+    {
+      "path": "scripts/ui09-browser-check.mjs",
+      "bytes": 23126,
+      "sha256": "642b2ed702d48c23fc24005847bc5b68c8937f57ae0a0849d747e7b2ffa6a9e2"
+    },
+    {
+      "path": "scripts/ui09-week-audit.mjs",
+      "bytes": 7117,
+      "sha256": "a6b4fc1ac9c4cd2ac049d6f4a538b983feb912f3a1d1216c9cf880cf2bf77a25"
+    },
+    {
+      "path": "scripts/ui10-browser-check.mjs",
+      "bytes": 25517,
+      "sha256": "a18ba05060cffb29d07a33c215cffba9de69077ac12520c8c3ee571710c3cb22"
+    },
+    {
+      "path": "scripts/ui10-planner-alias-check.mjs",
+      "bytes": 2789,
+      "sha256": "5c23f9134b653df92945c6443107af50a8a8536a27924618489fc751f58a70ad"
+    },
+    {
+      "path": "scripts/ui11-browser-check.mjs",
+      "bytes": 17115,
+      "sha256": "11e8f5173d505874f828d11c2ffe46742d37af44a554dc516c32d207276b8c04"
+    },
+    {
+      "path": "scripts/ui11-shell-audit.mjs",
+      "bytes": 4151,
+      "sha256": "b00d1eab2f64009ac704140929a30503d96501f8e0e329ed4d9acf434aa84eab"
+    },
+    {
+      "path": "scripts/ui12-browser-check.mjs",
+      "bytes": 20175,
+      "sha256": "61743eec70d87c2a0bd60f6d2c32e6057437c4e926245b0867058aeb393e51a1"
+    },
+    {
+      "path": "scripts/ui12-state-check.mjs",
+      "bytes": 10692,
+      "sha256": "0fccf76d74142625e83273702b8933c32d6fb3e7ffd6346431ff78d049dce2af"
+    },
+    {
+      "path": "scripts/ui13-browser-check.mjs",
+      "bytes": 13049,
+      "sha256": "94b391f4b8e4bfe07aea02c7574bbd6df25c87c673cddbcdfee1545d43f7d0a9"
+    },
+    {
+      "path": "scripts/ui13-media-review.mjs",
+      "bytes": 9473,
+      "sha256": "591bd768ee3303c759652d9bd078eadc86739266b043e87ca99ebef0ca564f00"
+    },
+    {
+      "path": "scripts/ui13/board-client.mjs",
+      "bytes": 14213,
+      "sha256": "09fe3d5f364f420ba4c531e0b6840207baf763747535d4b5bc9e1920925955de"
+    },
+    {
+      "path": "scripts/ui13/board.html",
+      "bytes": 26116,
+      "sha256": "570525a9d2bef69fe4c9d17833d789292c82626e11b5332942862e99d2f0db7d"
+    },
+    {
+      "path": "scripts/ui13/review-contract.mjs",
+      "bytes": 7563,
+      "sha256": "a1390fc055f488c8184a3d8b340a43dae95ea10f0648595b1ab86fdd787d4e18"
+    },
+    {
+      "path": "scripts/ui14-browser-check.mjs",
+      "bytes": 17704,
+      "sha256": "39910311d7ce369c6d14009d402bf9065c681a0e457a7fa880eadcb877b6bd50"
+    },
+    {
+      "path": "scripts/ui14-legacy-check.mjs",
+      "bytes": 4683,
+      "sha256": "5343e57fe41f2512efb2899db642d405220e49e689bc9b4c47165fdaa40173dc"
+    },
+    {
+      "path": "scripts/ui14-legacy-preview.mjs",
+      "bytes": 1898,
+      "sha256": "687a6b521001e44078274b60f5d07042772011220f2cbb311fdb29be44792296"
+    },
+    {
+      "path": "scripts/ui14-local-preview.mjs",
+      "bytes": 6285,
+      "sha256": "57c1f3222aa29d76fab9fbd72db35fc75aea154cfdcf33184dc0f6a85b30e7a4"
+    },
+    {
+      "path": "scripts/ui14-motion-probe.mjs",
+      "bytes": 2470,
+      "sha256": "a083ab3763bc435577ace73908db4d7d4dc5f288d1d76c67055fd339d713f057"
+    },
+    {
+      "path": "scripts/ui14-performance-check.mjs",
+      "bytes": 12233,
+      "sha256": "af0eba35dae3b56bed790ad4e54f8f7be180611ce3532c95bc7b1026a9473377"
+    },
+    {
+      "path": "scripts/wait-for-deployed-release.mjs",
+      "bytes": 9600,
+      "sha256": "3418e904c7c63d53f7adc78575d4cb403e1b1a4631bdb923fb9ce6f640d0e93e"
+    },
+    {
+      "path": "scripts/week-reconciliation.d.mts",
+      "bytes": 819,
+      "sha256": "bc8701309fbaad18c91afc0e3d120235f720aea13b41c1b32e31674831a8de2d"
+    },
+    {
+      "path": "scripts/week-reconciliation.mjs",
+      "bytes": 13065,
+      "sha256": "a13981f0212e9294525019046dff6b7152688468e42cb99f06452012f604e93c"
+    },
+    {
+      "path": "scripts/week-repair-from-kv.mjs",
+      "bytes": 10552,
+      "sha256": "8f4dec4b5922d0fc4901c666198f5732fe702f92f9e9a8c3867d5820dc540acb"
+    },
+    {
+      "path": "src/worker/config/ai.ts",
+      "bytes": 2683,
+      "sha256": "79921f50502a68f6254e74e44f083e2e409eb66a8d0e5a7546e244f6162e9697"
+    },
+    {
+      "path": "src/worker/config/csp.ts",
+      "bytes": 1515,
+      "sha256": "d780b3b463b11d047db9fdad6fd74a8ca11badc199675368143f0e0ae04352bd"
+    },
+    {
+      "path": "src/worker/config/origins.ts",
+      "bytes": 1071,
+      "sha256": "7598e938eb25d45168e224fd30b5a58b31b4906aff7391758fef75f1e3d78314"
+    },
+    {
+      "path": "src/worker/config/otp-policy.ts",
+      "bytes": 1995,
+      "sha256": "b7d4202f0ca0de60fd2da3bf39543284dafcb7a7bfc71bc91a55e77170d31f30"
+    },
+    {
+      "path": "src/worker/config/retention.ts",
+      "bytes": 2054,
+      "sha256": "6c41bf0d59182a43ef92413864f89b865e8257a5b7fa3d6c8e11ce0abcebf8c1"
+    },
+    {
+      "path": "src/worker/config/scan-quota-policy.ts",
+      "bytes": 939,
+      "sha256": "34081cd27c4d82f91d14f8fe537fe2b429ae52a72cbddc50b16dd7c099224bf0"
+    },
+    {
+      "path": "src/worker/config/sessions.ts",
+      "bytes": 54,
+      "sha256": "bf820e2b92836bbf0f2fa17a3d8af0cd2a229e799886d013a29782fac3f38954"
+    },
+    {
+      "path": "src/worker/config/validation.ts",
+      "bytes": 11648,
+      "sha256": "dae6456281e21f85bd506b57466976dcc40a6e5281b6dcf1c2a1cb2ebfd8a89a"
+    },
+    {
+      "path": "src/worker/index.ts",
+      "bytes": 7749,
+      "sha256": "fc812e6af18d531ebf31d7458491b5e10a96224c000c93892749c30850064285"
+    },
+    {
+      "path": "src/worker/middleware/auth.ts",
+      "bytes": 6631,
+      "sha256": "d5a9eb146ee593fff976df1cad784a6d577e0a4afba3afaa77997e2d8862e173"
+    },
+    {
+      "path": "src/worker/middleware/config-gate.ts",
+      "bytes": 1283,
+      "sha256": "bd9de872ff63028caf8c1a849914f3092c70465dd54f739db2185cf6da35b626"
+    },
+    {
+      "path": "src/worker/middleware/csrf.ts",
+      "bytes": 710,
+      "sha256": "a49e1f74d89fe072feb3495a6e850c10da78468cff136293756d56b764e2ec55"
+    },
+    {
+      "path": "src/worker/middleware/rate-limit.ts",
+      "bytes": 6213,
+      "sha256": "9f8cd115ad06163faf10b3d1e5583f81bffdbd07622a89dac8d4e2c3ffb6fafe"
+    },
+    {
+      "path": "src/worker/middleware/tenancy.ts",
+      "bytes": 2412,
+      "sha256": "2e77b30a70dcdd0b236a9339a491f6fd8820e70eedfdcb788f8804bd2a26548c"
+    },
+    {
+      "path": "src/worker/payment/authority.ts",
+      "bytes": 1936,
+      "sha256": "45cfab0253ff23365eb879c9a55bea033104fc40725f80f5f72d1cbbe05a6a14"
+    },
+    {
+      "path": "src/worker/payment/payos.ts",
+      "bytes": 4446,
+      "sha256": "0bb1734c54e576810211ef51a75987adf1886acd00470fb1dec9aa3a9e727780"
+    },
+    {
+      "path": "src/worker/payment/prices.ts",
+      "bytes": 174,
+      "sha256": "ec1bd004b9dbfb88dda8bac54dc590bdbcecc6b427c7f3852fa467d80cf52dfa"
+    },
+    {
+      "path": "src/worker/routes/billing.ts",
+      "bytes": 7412,
+      "sha256": "7b2ee221d04e81940480b132061df4434fd7ee289c03a03f2b83ccb8e670cf22"
+    },
+    {
+      "path": "src/worker/routes/health.ts",
+      "bytes": 4619,
+      "sha256": "fa11fb99d19049ed457ffe5b8592542160da32f68fba1f2355a55716df987a98"
+    },
+    {
+      "path": "src/worker/routes/inventory-truth.ts",
+      "bytes": 14445,
+      "sha256": "18072ffe3a1e1647f86038df1a7c1357d878858fa3d0efe417eb033b61904dae"
+    },
+    {
+      "path": "src/worker/routes/inventory.ts",
+      "bytes": 49125,
+      "sha256": "381e31aba88e10e907aef1b395caec9f1963e0a72628db7f6c2b7d8efc880e05"
+    },
+    {
+      "path": "src/worker/routes/meal-planning.ts",
+      "bytes": 11783,
+      "sha256": "68090dfce701a02cc91328949c9f86806a759afbc07f60ef45f0f4375a761669"
+    },
+    {
+      "path": "src/worker/routes/notifications.ts",
+      "bytes": 3411,
+      "sha256": "58384fd6a96bb0d84053d64af7a0bb71b9d0ca2310cd83502685500d151dc118"
+    },
+    {
+      "path": "src/worker/routes/preferences.ts",
+      "bytes": 4714,
+      "sha256": "f4fefcac51f5ac51415195b189be8d99c220150af74d23404219dc1d5d78cff0"
+    },
+    {
+      "path": "src/worker/routes/recipe-media.ts",
+      "bytes": 6796,
+      "sha256": "3de9fbdfc951bfb830556bac89f68b5847744f742f30621294cf5acc1a22d892"
+    },
+    {
+      "path": "src/worker/routes/recipes.ts",
+      "bytes": 36037,
+      "sha256": "b96b18971a3c241b2654d80bbaf18b06ca41fbb252262b3d70e914c1d20e0573"
+    },
+    {
+      "path": "src/worker/routes/scans.ts",
+      "bytes": 81624,
+      "sha256": "1291a3c1f8c53501bcd4f1f8f63420bfcb4d881c480748872e9a4adbc51eefeb"
+    },
+    {
+      "path": "src/worker/routes/shopping.ts",
+      "bytes": 9879,
+      "sha256": "5060991843946124c76ee93efd0227558bb69de7d4a26effcf7f287fabf13721"
+    },
+    {
+      "path": "src/worker/routes/week.ts",
+      "bytes": 78227,
+      "sha256": "8ba4a4733c61fd897896ac6c272ab26a5a88cd4ef43df25f7537423c88e4d40b"
+    },
+    {
+      "path": "src/worker/services/cooking-hard-restrictions.ts",
+      "bytes": 5904,
+      "sha256": "5341394c9983423a92e87f34d728908706e9b40504e6b43375efcceaa2d57f73"
+    },
+    {
+      "path": "src/worker/services/email.ts",
+      "bytes": 13165,
+      "sha256": "7721143d005fc039dc6d3c2206ddd194bf9bd42791681249894d5c850bdddc2a"
+    },
+    {
+      "path": "src/worker/services/meal-composition.ts",
+      "bytes": 41258,
+      "sha256": "711eb0ccaad4c4c642eec6afa615e1b7f97da3d5c23ad5c9983a9aafadd800ff"
+    },
+    {
+      "path": "src/worker/services/meal-planning-dto.ts",
+      "bytes": 3070,
+      "sha256": "2c823ac3cd43c141c98ff644d66dacc3063d9c258d72af1d436cbcc48cb0c9dd"
+    },
+    {
+      "path": "src/worker/services/meal-planning-error.ts",
+      "bytes": 241,
+      "sha256": "88bb41e9e27115256cab91a1ef0221fe203d8c28d66590f50d411c0fd0ca4141"
+    },
+    {
+      "path": "src/worker/services/meal-planning-explanation.ts",
+      "bytes": 5796,
+      "sha256": "c0317d378113ccedae1ceac585aa4cbeac57c658473c76f3ee3203d21d315316"
+    },
+    {
+      "path": "src/worker/services/meal-planning-feedback.ts",
+      "bytes": 3058,
+      "sha256": "439e112071c5cf418054f43e2e4118cb40ecc0b355d52ab9caf2487a43d456c0"
+    },
+    {
+      "path": "src/worker/services/meal-planning.ts",
+      "bytes": 24599,
+      "sha256": "86912d3b4d78d8c783e7a466f76094fa664741e84f286c271098df27fe1f7e31"
+    },
+    {
+      "path": "src/worker/services/meal-shopping-dto.ts",
+      "bytes": 7114,
+      "sha256": "258fe0488b839bf04c0aac7bbc0473c89ca68177e49cb022763c216aed6fe671"
+    },
+    {
+      "path": "src/worker/services/recipe-authority-status.ts",
+      "bytes": 8565,
+      "sha256": "6383b34441cc9c03b5656af6f27a403a1c3bb0efebac16ea3fd1971e1fbb7199"
+    },
+    {
+      "path": "src/worker/services/recipe-authority.ts",
+      "bytes": 17025,
+      "sha256": "394bccb64ebe284adebfc4883bc77b4264ab738851b712a484a26259aa286f87"
+    },
+    {
+      "path": "src/worker/services/recipe-catalog-shadow.ts",
+      "bytes": 12523,
+      "sha256": "33e586aef0589f488ad8b87e70814972394df37297efb24226cd42e126f51580"
+    },
+    {
+      "path": "src/worker/services/recipe-discovery.ts",
+      "bytes": 1473,
+      "sha256": "be9158b68722c9ff244649edfb7b0c1cf1611ba76e7f56b52d9de64f2e6a6acf"
+    },
+    {
+      "path": "src/worker/services/recipe-media.ts",
+      "bytes": 3389,
+      "sha256": "58b1f2d4759b3f416e88bec55063daa2095dc2e55e03bbea4a8f87e2f4eea71d"
+    },
+    {
+      "path": "src/worker/services/scan-queue.ts",
+      "bytes": 30188,
+      "sha256": "e40b5c5ecd757f5ac86db8727f84b30553593646c0dc6bdeca41bb9863f22aaa"
+    },
+    {
+      "path": "src/worker/services/scan-quota.ts",
+      "bytes": 15568,
+      "sha256": "934804418a37cd7df0a7d0e61eaef24ca310c3add193e9d937d9fe100ea757a5"
+    },
+    {
+      "path": "src/worker/types.ts",
+      "bytes": 4536,
+      "sha256": "a5bdf2cdd618924d00e6835c3cd9946a21d0cd577db37600e7f43052b691d768"
+    },
+    {
+      "path": "src/worker/utils/inventory-authority.ts",
+      "bytes": 2959,
+      "sha256": "c4c48d94c66b7c3cbf37b139f8bb7860681c7a0d8f530312dd122cedd8c408e4"
+    },
+    {
+      "path": "src/worker/utils/jwt.ts",
+      "bytes": 4836,
+      "sha256": "9e1d9c073ffa9f830acedd84ad6afd4098073d54468e8e3e0ff4d5b167dd23fb"
+    },
+    {
+      "path": "src/worker/utils/oauth.ts",
+      "bytes": 2312,
+      "sha256": "d4e24d2fc8b6c4c2200d29a4618787016743371dc612c5cfdd78cfd2774ee3f9"
+    },
+    {
+      "path": "src/worker/utils/otp-digest.ts",
+      "bytes": 1147,
+      "sha256": "dbb9a8ac001f2f642ebd7f7c436e52ae33d6c6b96b05302d59f8151cdc5da3b1"
+    },
+    {
+      "path": "src/worker/utils/otp.ts",
+      "bytes": 551,
+      "sha256": "030812e02fb261a47d151f8f57ad8a315142bf8bc519f14ec4602ce06e8868bb"
+    },
+    {
+      "path": "src/worker/utils/password.ts",
+      "bytes": 1520,
+      "sha256": "4f322e79963b0d1df17f64ce50ee5146f1341ba799bd0551cb18b475fa99b2e7"
+    },
+    {
+      "path": "src/worker/utils/scan-evidence.ts",
+      "bytes": 9891,
+      "sha256": "1919f1a20182d47133def656a9ec134c3e1833f1bd424525e458541feb336ae2"
+    },
+    {
+      "path": "src/worker/utils/session.ts",
+      "bytes": 1135,
+      "sha256": "a02af57fac674e822f4e93f87de8e042184ec5781360c7ecc1bf83462c5c57e2"
+    },
+    {
+      "path": "src/worker/utils/turnstile.ts",
+      "bytes": 1811,
+      "sha256": "bec51bf3d5eb43f2c743ce54b2ef63de74e59eb51a1b3b59663c42698aaa75b4"
+    },
+    {
+      "path": "src/worker/utils/week-shopping.ts",
+      "bytes": 2045,
+      "sha256": "74bde5deb8eabe0272314ee4465241b427796f8853d3d92756608f61781c930d"
+    },
+    {
+      "path": "tsconfig.json",
+      "bytes": 947,
+      "sha256": "dfac3ae7e5f58b554744a3d08ad4a3e781807e2ad5475ef8240635c30a27e68e"
+    },
+    {
+      "path": "tsconfig.worker.json",
+      "bytes": 677,
+      "sha256": "25eda5cabbb5cb0dd736b8de5691a6cad7139cfff657b4d65981ea26e68478d0"
+    },
+    {
+      "path": "vite.config.ts",
+      "bytes": 3388,
+      "sha256": "bf052546e17b32dffdf2619717f94df31ce19e26bf7ab6cfb15bdd8b5dbf19b1"
+    },
+    {
+      "path": "wrangler.jsonc",
+      "bytes": 3037,
+      "sha256": "c91126d5d08d39d2f86018226249bafef1a916f7c5783619535cfe139a156598"
+    }
+  ],
+  "masterplanUnchanged": true,
+  "migrationCount": 40
+}

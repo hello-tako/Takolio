@@ -1,0 +1,2 @@
+# Deliberately synthetic fixture, never a real credential.
+github_token = "ghp_B08bSyntheticFixture7xK9m2N4p6Q8r1S3t5V7"

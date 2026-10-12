@@ -45,21 +45,20 @@ async function expectSameDocument(page: Page, marker: string) {
     .toBe(marker);
 }
 
-async function scanStoreState(page: Page) {
-  return page.evaluate(async () => {
-    const modulePath = '/src/web/stores/useScanStore.ts';
-    const { useScanStore } = await import(/* @vite-ignore */ modulePath);
-    const state = useScanStore.getState();
-    return {
-      scanId: state.scanId,
-      itemCount: state.items.length,
-      reviewStatus: state.reviewStatus,
-    };
-  });
+async function expectClearedPrivateSession(page: Page, destination: 'auth' | 'landing' = 'auth') {
+  await expect(page).toHaveURL(new RegExp(`/${destination}$`));
+  await expect.poll(() => page.evaluate(() => ({
+    user: localStorage.getItem('frigo_user_id'),
+    household: localStorage.getItem('frigo_household_id'),
+    outbox: localStorage.getItem('frigo_sync_outbox_v1'),
+    privateCaches: Object.keys(localStorage).filter((key) =>
+      key.startsWith('frigo_cache_v2:') || key.startsWith('frigo_inventory_')),
+  }))).toEqual({ user: null, household: null, outbox: null, privateCaches: [] });
+  await expect(page.getByRole('heading', { name: 'Cà chua OCR A' })).toHaveCount(0);
 }
 
 async function expectTerminalReview(page: Page, acceptedCount: number) {
-  await expect(page.getByRole('status')).toContainText(`Đã xác nhận ${acceptedCount} nguyên liệu`);
+  await expect(page.getByRole('status').filter({ hasText: `Đã xác nhận ${acceptedCount} nguyên liệu` })).toContainText(`Đã xác nhận ${acceptedCount} nguyên liệu`);
   await expect(page.getByText('Bản quét đã xác nhận · Chỉ xem')).toBeVisible();
   await expect(
     page.getByText(
@@ -178,13 +177,7 @@ test('E fences a delayed real GET when profile logout resets the private session
     await expect(dialog).toBeVisible();
     await dialog.getByRole('button', { name: 'Đăng xuất', exact: true }).click();
     await expect(page).toHaveURL(/\/auth$/);
-    await expect
-      .poll(() => scanStoreState(page))
-      .toEqual({
-        scanId: null,
-        itemCount: 0,
-        reviewStatus: null,
-      });
+    await expectClearedPrivateSession(page);
 
     releaseResponse();
     page.on('request', (request) => {
@@ -192,11 +185,12 @@ test('E fences a delayed real GET when profile logout resets the private session
     });
     await responseFinished;
     await expect(page).toHaveURL(/\/auth$/);
-    await expect(scanStoreState(page)).resolves.toEqual({
-      scanId: null,
-      itemCount: 0,
-      reviewStatus: null,
+    await expectClearedPrivateSession(page);
+    await page.evaluate(() => {
+      history.pushState({}, '', '/scan');
+      dispatchEvent(new PopStateEvent('popstate'));
     });
+    await expectClearedPrivateSession(page, 'landing');
     await expect(page.locator('body')).not.toContainText('Cà chua OCR A');
     expect(lateMutations).toEqual([]);
   } finally {
@@ -213,7 +207,11 @@ test('H confirms accepted and rejected reviews, preserves terminal A → B → A
   page.on('request', (request) => {
     const url = new URL(request.url());
     if (request.method() !== 'POST' || !url.pathname.startsWith('/api/')) return;
-    const body = request.postDataJSON() as { items?: Array<{ rawName?: string }> };
+    const body = request.postDataJSON() as { items?: Array<{ id: string; rawName?: string; rejected?: boolean }> };
+    if (url.pathname === `/api/v1/scans/${ids.receiptMissingHeader}/confirm`) {
+      expect(body.items).toEqual([expect.objectContaining({ id: expect.any(String), rejected: true })]);
+      expect(Object.keys(body.items![0]).sort()).toEqual(['id', 'rejected']);
+    }
     mutationPosts.push({
       path: url.pathname,
       names: body.items?.map((item) => item.rawName ?? '') ?? [],
@@ -280,7 +278,7 @@ test('H confirms accepted and rejected reviews, preserves terminal A → B → A
     },
     {
       path: `/api/v1/scans/${ids.receiptMissingHeader}/confirm`,
-      names: ['Thực phẩm bí ẩn B'],
+      names: [''],
     },
   ]);
 

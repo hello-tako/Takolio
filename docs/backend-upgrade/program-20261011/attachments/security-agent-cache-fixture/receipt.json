@@ -1,0 +1,21 @@
+{
+  "classification": "INDEPENDENT_SYNTHETIC_TOOL_PROVENANCE_CACHE_CHECK",
+  "runnerSha256": "ff4c40882c44ae5b4d18fede33158f9bb2df0b242da00c5fe217c260bd7caeae",
+  "initialValidation": {
+    "tool": "gitleaks",
+    "status": "PASS",
+    "version": "8.30.1",
+    "executableSha256": "9340faad6cedacb19204b4f5836fd6ee97aa4df74602321650fb9578d7d8099c"
+  },
+  "postMutationValidation": {
+    "tool": "gitleaks",
+    "status": "PASS",
+    "version": "8.30.1",
+    "executableSha256": "9340faad6cedacb19204b4f5836fd6ee97aa4df74602321650fb9578d7d8099c"
+  },
+  "sameRuntimeObject": true,
+  "fixtureToolChanged": true,
+  "actualInstalledToolsMutated": false,
+  "sourceMutated": false,
+  "finding": "Validation cache accepts changed executable"
+}

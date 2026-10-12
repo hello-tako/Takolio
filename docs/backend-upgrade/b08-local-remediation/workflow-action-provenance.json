@@ -1,0 +1,270 @@
+{
+  "actionRefs": [
+    {
+      "actionYamlSha256": "6188f6991491ed38977347cdaad0b0cd921a6d6232892363c91f433c22954f4f",
+      "actionYamlUrl": "https://raw.githubusercontent.com/actions/checkout/11d5960a326750d5838078e36cf38b85af677262/action.yml",
+      "apiChain": [
+        {
+          "object": {
+            "sha": "11d5960a326750d5838078e36cf38b85af677262",
+            "type": "commit",
+            "url": "https://api.github.com/repos/actions/checkout/git/commits/11d5960a326750d5838078e36cf38b85af677262"
+          },
+          "responseSha256": "b4be54231ed94c642aaca0da52e6aa598a58f041b39bb887da8efa6e9e9c5826",
+          "url": "https://api.github.com/repos/actions/checkout/git/ref/tags/v4"
+        }
+      ],
+      "repository": "actions/checkout",
+      "requestedTag": "v4",
+      "resolvedCommit": "11d5960a326750d5838078e36cf38b85af677262",
+      "supportsPackageManagerCache": null,
+      "supportsWranglerVersion": null
+    },
+    {
+      "actionYamlSha256": "8aee59063ebc272d850507febb30930de2684be1b1240cf5f3dff13179fcff0b",
+      "actionYamlUrl": "https://raw.githubusercontent.com/actions/setup-node/49933ea5288caeca8642d1e84afbd3f7d6820020/action.yml",
+      "apiChain": [
+        {
+          "object": {
+            "sha": "49933ea5288caeca8642d1e84afbd3f7d6820020",
+            "type": "commit",
+            "url": "https://api.github.com/repos/actions/setup-node/git/commits/49933ea5288caeca8642d1e84afbd3f7d6820020"
+          },
+          "responseSha256": "1df25dbbf6d38cec60df0c4bacebab32df2297df52139d661786ad46ddefc6f0",
+          "url": "https://api.github.com/repos/actions/setup-node/git/ref/tags/v4"
+        }
+      ],
+      "repository": "actions/setup-node",
+      "requestedTag": "v4",
+      "resolvedCommit": "49933ea5288caeca8642d1e84afbd3f7d6820020",
+      "supportsPackageManagerCache": false,
+      "supportsWranglerVersion": null
+    },
+    {
+      "actionYamlSha256": "5fb508882756b5d3f2a10531e09acd2006b2cd00e71c2e22361149a2105acec6",
+      "actionYamlUrl": "https://raw.githubusercontent.com/pnpm/action-setup/b906affcce14559ad1aafd4ab0e942779e9f58b1/action.yml",
+      "apiChain": [
+        {
+          "object": {
+            "sha": "f40ffcd9367d9f12939873eb1018b921a783ffaa",
+            "type": "tag",
+            "url": "https://api.github.com/repos/pnpm/action-setup/git/tags/f40ffcd9367d9f12939873eb1018b921a783ffaa"
+          },
+          "responseSha256": "f118d89aa2823e38afc11e55388bb2e2e751510abc50157914fcde0af20ddc4e",
+          "url": "https://api.github.com/repos/pnpm/action-setup/git/ref/tags/v4"
+        },
+        {
+          "object": {
+            "sha": "b906affcce14559ad1aafd4ab0e942779e9f58b1",
+            "type": "commit",
+            "url": "https://api.github.com/repos/pnpm/action-setup/git/commits/b906affcce14559ad1aafd4ab0e942779e9f58b1"
+          },
+          "responseSha256": "1a0da12666b37b26ac221c66acb795be6ac1363ce38fa5247ce98cf089f25972",
+          "url": "https://api.github.com/repos/pnpm/action-setup/git/tags/f40ffcd9367d9f12939873eb1018b921a783ffaa"
+        }
+      ],
+      "repository": "pnpm/action-setup",
+      "requestedTag": "v4",
+      "resolvedCommit": "b906affcce14559ad1aafd4ab0e942779e9f58b1",
+      "supportsPackageManagerCache": null,
+      "supportsWranglerVersion": null
+    },
+    {
+      "actionYamlSha256": "29b21270ff44638a165ea12abb4481796770c629e513217af7b4df1aa3821177",
+      "actionYamlUrl": "https://raw.githubusercontent.com/actions/upload-artifact/ea165f8d65b6e75b540449e92b4886f43607fa02/action.yml",
+      "apiChain": [
+        {
+          "object": {
+            "sha": "ea165f8d65b6e75b540449e92b4886f43607fa02",
+            "type": "commit",
+            "url": "https://api.github.com/repos/actions/upload-artifact/git/commits/ea165f8d65b6e75b540449e92b4886f43607fa02"
+          },
+          "responseSha256": "11d527e9dd398225cfa3ccd343842edafe56f865982da11ac358e77eb6a472cf",
+          "url": "https://api.github.com/repos/actions/upload-artifact/git/ref/tags/v4"
+        }
+      ],
+      "repository": "actions/upload-artifact",
+      "requestedTag": "v4",
+      "resolvedCommit": "ea165f8d65b6e75b540449e92b4886f43607fa02",
+      "supportsPackageManagerCache": null,
+      "supportsWranglerVersion": null
+    },
+    {
+      "actionYamlSha256": "f81d687a5bb7c2c9428a2cfc32fc099c823d56faf533e7d0e1f3cdc0e10f9cc7",
+      "actionYamlUrl": "https://raw.githubusercontent.com/actions/download-artifact/d3f86a106a0bac45b974a628896c90dbdf5c8093/action.yml",
+      "apiChain": [
+        {
+          "object": {
+            "sha": "d3f86a106a0bac45b974a628896c90dbdf5c8093",
+            "type": "commit",
+            "url": "https://api.github.com/repos/actions/download-artifact/git/commits/d3f86a106a0bac45b974a628896c90dbdf5c8093"
+          },
+          "responseSha256": "4e19d9a2895e922269b9d923688408e754a340aa13a1cc31cb76420184f2374f",
+          "url": "https://api.github.com/repos/actions/download-artifact/git/ref/tags/v4"
+        }
+      ],
+      "repository": "actions/download-artifact",
+      "requestedTag": "v4",
+      "resolvedCommit": "d3f86a106a0bac45b974a628896c90dbdf5c8093",
+      "supportsPackageManagerCache": null,
+      "supportsWranglerVersion": null
+    },
+    {
+      "actionYamlSha256": "6b8a7f059822b7ce052ddeb9baaf2967b5548a3ff399f57d9b96a2f6ba4480d8",
+      "actionYamlUrl": "https://raw.githubusercontent.com/cloudflare/wrangler-action/9acf94ace14e7dc412b076f2c5c20b8ce93c79cd/action.yml",
+      "apiChain": [
+        {
+          "object": {
+            "sha": "9acf94ace14e7dc412b076f2c5c20b8ce93c79cd",
+            "type": "commit",
+            "url": "https://api.github.com/repos/cloudflare/wrangler-action/git/commits/9acf94ace14e7dc412b076f2c5c20b8ce93c79cd"
+          },
+          "responseSha256": "b15ea80ea38e613aa93c3d40c26cb45f92befd55e90a43971bf3f164cb9f7e17",
+          "url": "https://api.github.com/repos/cloudflare/wrangler-action/git/ref/tags/v3"
+        }
+      ],
+      "repository": "cloudflare/wrangler-action",
+      "requestedTag": "v3",
+      "resolvedCommit": "9acf94ace14e7dc412b076f2c5c20b8ce93c79cd",
+      "supportsPackageManagerCache": null,
+      "supportsWranglerVersion": true
+    }
+  ],
+  "baselineDocsCheckpoint": "2c42984b",
+  "classification": "LOCAL_EXISTING_WORKFLOW_SECURITY_DELTA_NOT_HOSTED_RUN",
+  "credentialPersistenceDisabled": 1,
+  "hostedActionsExecuted": false,
+  "newWorkflowsEnabled": false,
+  "publishingNodeCacheExplicitEmpty": 2,
+  "recordedAtUtc": "2026-10-11T19:00:31.763249+00:00",
+  "releaseMigrationAuthorityAndOtherBytesPreserved": true,
+  "templateExpressionsMovedToQuotedEnvironment": 2,
+  "unpinnedUsesPinned": 67,
+  "unsupportedPackageManagerCacheInputAdded": false,
+  "workflowChanges": [
+    {
+      "actionPins": {
+        "actions/checkout@v4": 1,
+        "actions/setup-node@v4": 1,
+        "pnpm/action-setup@v4": 1
+      },
+      "afterSha256": "6008994825e3d70effaf9f538507539197daf625791f1ed1f3acfb0c8fee2e8b",
+      "beforeSha256": "fa41a987309347f8537bac30869462679e43446a2ff6593cebca6b220cf5b72f",
+      "controlledDeltaReversalMatchesBaseline": true,
+      "path": ".github/workflows/ci.yml"
+    },
+    {
+      "actionPins": {
+        "actions/checkout@v4": 3,
+        "actions/download-artifact@v4": 2,
+        "actions/setup-node@v4": 3,
+        "actions/upload-artifact@v4": 3,
+        "cloudflare/wrangler-action@v3": 2,
+        "pnpm/action-setup@v4": 2
+      },
+      "afterSha256": "02f2e8321731691321d9cc32cc57aa8dab5d6583ea07ea725c55bd8a462e391b",
+      "beforeSha256": "a2ce0eb6e5f8d4b1584635d7893ba9a1c64a191f97b652d3a64ca85fb85e0fcf",
+      "controlledDeltaReversalMatchesBaseline": true,
+      "path": ".github/workflows/deploy.yml"
+    },
+    {
+      "actionPins": {
+        "actions/checkout@v4": 2,
+        "actions/download-artifact@v4": 1,
+        "actions/setup-node@v4": 2,
+        "actions/upload-artifact@v4": 2,
+        "pnpm/action-setup@v4": 1
+      },
+      "afterSha256": "9a0c64d9b2bf43c3153c609e11b0f700023c178ec4fd46ec2834dbaf7fba01fb",
+      "beforeSha256": "9d177512dbe0c34bb06c3924558115ca63f67e5691f4457de2957e3f5a9b5dba",
+      "controlledDeltaReversalMatchesBaseline": true,
+      "path": ".github/workflows/production-certify.yml"
+    },
+    {
+      "actionPins": {
+        "actions/checkout@v4": 2,
+        "actions/download-artifact@v4": 1,
+        "actions/setup-node@v4": 2,
+        "actions/upload-artifact@v4": 6,
+        "pnpm/action-setup@v4": 1
+      },
+      "afterSha256": "9cfee33abba7f0b418bd18e6073db3128ab0cabaa20fab5205ecd4856e447031",
+      "beforeSha256": "d5a569b7794bbf34773cdded508394d5b18a1bda5dce6fc2b6cb482d26e60da4",
+      "controlledDeltaReversalMatchesBaseline": true,
+      "path": ".github/workflows/production-d1-diagnostics.yml"
+    },
+    {
+      "actionPins": {
+        "actions/checkout@v4": 2,
+        "actions/download-artifact@v4": 1,
+        "actions/setup-node@v4": 2,
+        "actions/upload-artifact@v4": 2,
+        "pnpm/action-setup@v4": 1
+      },
+      "afterSha256": "3d451d7082e83a346b575015dc4f3f267851176b0120a87fe73bf8154f3acd4f",
+      "beforeSha256": "0ac7c0dd219a664307a4e9e6f4ed783a53a1aa889a5c382e7eba315b885f192e",
+      "controlledDeltaReversalMatchesBaseline": true,
+      "path": ".github/workflows/production-d1-migrate.yml"
+    },
+    {
+      "actionPins": {
+        "actions/checkout@v4": 2,
+        "actions/setup-node@v4": 2,
+        "actions/upload-artifact@v4": 1
+      },
+      "afterSha256": "8f54a0feb559683b71a2c20d1c6250253ddc3befb60965c48139a82ca15ea538",
+      "beforeSha256": "fdcf0bc67156d87b8e775fc3957017c5dfc56cade44a13966cc088b160afd49d",
+      "controlledDeltaReversalMatchesBaseline": true,
+      "path": ".github/workflows/production-d1-temporal-forensics.yml"
+    },
+    {
+      "actionPins": {
+        "actions/checkout@v4": 1,
+        "actions/setup-node@v4": 1,
+        "actions/upload-artifact@v4": 1,
+        "pnpm/action-setup@v4": 1
+      },
+      "afterSha256": "095a256f73a7d0c2547296dbce3ef6c2e9a512b0ec5df4fd71e276d44157f11d",
+      "beforeSha256": "a0c4633df4cbe7558697fcd9f4984e1ebe2b34497308b2ae6dd670c8df9e1401",
+      "controlledDeltaReversalMatchesBaseline": true,
+      "path": ".github/workflows/staging-d1-catchup.yml"
+    },
+    {
+      "actionPins": {
+        "actions/checkout@v4": 1,
+        "actions/setup-node@v4": 1,
+        "actions/upload-artifact@v4": 1,
+        "pnpm/action-setup@v4": 1
+      },
+      "afterSha256": "828a107091d1cd64c39043f12e750b1c004790845946a418a4a342757efaa060",
+      "beforeSha256": "048fa1c6898ad0a166b5ff3a8053bbee8f039e0a355a12af0dd9579cfe2aecdb",
+      "controlledDeltaReversalMatchesBaseline": true,
+      "path": ".github/workflows/staging-d1-migrate.yml"
+    },
+    {
+      "actionPins": {
+        "actions/checkout@v4": 1,
+        "actions/setup-node@v4": 1,
+        "actions/upload-artifact@v4": 1,
+        "pnpm/action-setup@v4": 1
+      },
+      "afterSha256": "621c86cb6aba709eb54f731c757275d495e15715046a0ce14d4a03f2a01b8131",
+      "beforeSha256": "f210b220d18982b673cf311e37368cb4da1ab6df825f686b2d390e0af0024ad0",
+      "controlledDeltaReversalMatchesBaseline": true,
+      "path": ".github/workflows/staging-d1-runtime-readiness.yml"
+    },
+    {
+      "actionPins": {
+        "actions/checkout@v4": 1,
+        "actions/setup-node@v4": 1,
+        "actions/upload-artifact@v4": 1,
+        "pnpm/action-setup@v4": 1
+      },
+      "afterSha256": "2b422832c40ce34ef4bf263d9855e8acfe0d6d33424d486bccafeeece26ba214",
+      "beforeSha256": "2adf5fb074409935ecf387ab77235a1f44e918e662262f83645aa8c79b6c439f",
+      "controlledDeltaReversalMatchesBaseline": true,
+      "path": ".github/workflows/t20-staging-fixture.yml"
+    }
+  ],
+  "wranglerVersionPinned": "4.149.0"
+}

@@ -1,0 +1,46 @@
+{
+  "classification": "LOCAL_CODE_CANDIDATE",
+  "generatedAtUtc": "2026-10-11T11:38:01.546978+00:00",
+  "headSha": "1963c469e2e3bd4819cda6bb9ef8162101ad523a",
+  "limitations": [
+    "Full checks and commit receipts owned by coordinator",
+    "No dependency/config/workflow edits",
+    "Audits still FAIL; triage only",
+    "No provider/email/remoteresource/deploy calls",
+    "No staging/production certificate or real seven-day SLO evidence"
+  ],
+  "sourceDiffCheck": "PASS",
+  "sourceFileHashes": {
+    "docs/backend-upgrade/b08/ADR-B08a-001.md": "d9ae0971c17503594d5c2aafe0a6f9ea2ec39dc08fa44186ca8ab037599e3f1f",
+    "docs/backend-upgrade/b08/SECURITY-REMEDIATION.md": "e57220a1373f1c6b50df76ff3657fdc728317064be205ed6c335c85fd85e596f",
+    "docs/backend-upgrade/b08/WRANGLER4-FEASIBILITY.md": "bd6f9f9ec24c3b4d40fc1e6b89ea728f12a91cba96e52cd4a550343cb2b5eb86",
+    "src/worker/index.ts": "befb150c6303b5f7c6d07da70e93303bb430b55031bd5274d39c37cc0e877d5c",
+    "src/worker/observability/request-telemetry.ts": "21628be945af7ab0c1e2629508e480a98f109e44724c2a0c12e1f4e4b9f68419",
+    "tests/integration/backend-request-telemetry.test.mjs": "77539e9a1f907cd286dd7d59bbfa1040fffdd08c8b19fec9639cce6dd53d5ca4",
+    "tests/unit/request-telemetry.test.ts": "223012d154a3e617a7a06e76ab35a1af64ff19c6ee97c01edbc81b79a7e4da17"
+  },
+  "validation": {
+    "focused-tests.log": {
+      "exitCode": 0,
+      "files": 4,
+      "sha256": "5f01ea2e14e190f51c3e17b549513780ea2d115b0f59e3b5b08d32494076b60d",
+      "status": "PASS",
+      "tests": 59
+    },
+    "scoped-lint.log": {
+      "exitCode": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "PASS"
+    },
+    "scoped-unit-types.log": {
+      "exitCode": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "PASS"
+    },
+    "scoped-worker-types.log": {
+      "exitCode": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "PASS"
+    }
+  }
+}

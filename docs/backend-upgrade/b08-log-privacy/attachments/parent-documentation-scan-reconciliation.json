@@ -1,0 +1,236 @@
+{
+  "candidateValuesSourceSnippetsOrPrivatePointersPublished": false,
+  "changedDocumentCount": 87,
+  "classification": "FINAL_DOCUMENTATION_RECEIPT_SECURITY_RECHECK_NOT_CERTIFICATION",
+  "commandLogSha256": "6b9b8792b505979145a5ecf915a6337064d45db22432eaa7994170b79043b9dd",
+  "commandReceiptSha256": "76291e008d8770f7b63b3c8d033f6aef4d38d1080e7bda679f371c2df8027f52",
+  "comparisonStatus": "PASS",
+  "credentialValidityChecked": false,
+  "gitHistoryScanned": false,
+  "gitleaks": {
+    "allSourceAndCandidateBytesMatchImplementation": true,
+    "candidates": [
+      {
+        "candidateValueOrSnippetPublished": false,
+        "capturedSourceAndCandidateBytesMatchImplementation": true,
+        "classification": "STATIC_ERROR_CODE",
+        "currentSourceMatchesCapturedBytes": true,
+        "locationSha256": "170177281c1d56955699d9ed52cf8c64d283f437ddfc6204cd83d0d9475468a6",
+        "provenanceInputsMatchImplementationTriage": true,
+        "sourceFileSha256": "6396e69b21f4dfad8c3591fd7def5b5aef063eb5858218a3980924948e4e94dc"
+      },
+      {
+        "candidateValueOrSnippetPublished": false,
+        "capturedSourceAndCandidateBytesMatchImplementation": true,
+        "classification": "DOCUMENTED_CHECKSUM",
+        "currentSourceMatchesCapturedBytes": true,
+        "locationSha256": "1a5ff79125a77e7154e90f0afb0e5764982c279fd49b7e5f081e81926dde8ece",
+        "provenanceInputsMatchImplementationTriage": true,
+        "sourceFileSha256": "dbf49b7d1c543c4846909dc49dd72c30a0c71c0792999a55444c42766cb6dbc9"
+      },
+      {
+        "candidateValueOrSnippetPublished": false,
+        "capturedSourceAndCandidateBytesMatchImplementation": true,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "currentSourceMatchesCapturedBytes": true,
+        "locationSha256": "2a7415d0f6a63add8b828d9c9cd563db85d1a8f53dac42f555ccbdd6a184b4b8",
+        "provenanceInputsMatchImplementationTriage": true,
+        "sourceFileSha256": "20d7754d3fc1068a469297c309d5fd738c63a14818be242a7d9a9e6ff1080243"
+      },
+      {
+        "candidateValueOrSnippetPublished": false,
+        "capturedSourceAndCandidateBytesMatchImplementation": true,
+        "classification": "DOCUMENTED_CHECKSUM",
+        "currentSourceMatchesCapturedBytes": true,
+        "locationSha256": "30a6593a41d5bd239ac0be7a8e7e26a208c272aa879d85d420ba68c980ed4e62",
+        "provenanceInputsMatchImplementationTriage": true,
+        "sourceFileSha256": "a03d0c22c50d9c2d27f623221c53df99eba199523fc51b922055a0835dec65f1"
+      },
+      {
+        "candidateValueOrSnippetPublished": false,
+        "capturedSourceAndCandidateBytesMatchImplementation": true,
+        "classification": "DOCUMENTED_CHECKSUM",
+        "currentSourceMatchesCapturedBytes": true,
+        "locationSha256": "352a308f0527fe79e3057c65adb290d34be914819bd8805cdba45e96cea0ee50",
+        "provenanceInputsMatchImplementationTriage": true,
+        "sourceFileSha256": "9994d347889bcf682f885890ef8bb6536c8b5c5feeabaf3480e153f4b18a967b"
+      },
+      {
+        "candidateValueOrSnippetPublished": false,
+        "capturedSourceAndCandidateBytesMatchImplementation": true,
+        "classification": "STATIC_ERROR_CODE",
+        "currentSourceMatchesCapturedBytes": true,
+        "locationSha256": "65c8b981b0f767521d95c32dba8c8b514697a36931b0f16a70302aed1f6c14ca",
+        "provenanceInputsMatchImplementationTriage": true,
+        "sourceFileSha256": "6396e69b21f4dfad8c3591fd7def5b5aef063eb5858218a3980924948e4e94dc"
+      },
+      {
+        "candidateValueOrSnippetPublished": false,
+        "capturedSourceAndCandidateBytesMatchImplementation": true,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "currentSourceMatchesCapturedBytes": true,
+        "locationSha256": "7887fbbd28a666d8a8f38a96a4d53503c9382bb5e9fc52369b2676eb73109e48",
+        "provenanceInputsMatchImplementationTriage": true,
+        "sourceFileSha256": "adc16a6ed979d350cef2d27284322f490e20d259b8af459fff28bd1e7b6d5a46"
+      },
+      {
+        "candidateValueOrSnippetPublished": false,
+        "capturedSourceAndCandidateBytesMatchImplementation": true,
+        "classification": "DOCUMENTED_CHECKSUM",
+        "currentSourceMatchesCapturedBytes": true,
+        "locationSha256": "8a46dfbd8b1fbbc444d6217ddefb93c6208a3772de264406b2c4d5fbcdda6d64",
+        "provenanceInputsMatchImplementationTriage": true,
+        "sourceFileSha256": "a2cea8d1a9856c02bea111ffcc285ef3a28845732c989e5933f3a68dd9bba347"
+      },
+      {
+        "candidateValueOrSnippetPublished": false,
+        "capturedSourceAndCandidateBytesMatchImplementation": true,
+        "classification": "DOCUMENTED_NON_SECRET_IDENTIFIER",
+        "currentSourceMatchesCapturedBytes": true,
+        "locationSha256": "8f76d4136729145a613e18a294cf64e1722cba3b6bb492740a406672011795e3",
+        "provenanceInputsMatchImplementationTriage": true,
+        "sourceFileSha256": "db67959dc022ff350de54ddab28c8c16cea3b84f50082ed345e08a33aef86d80"
+      },
+      {
+        "candidateValueOrSnippetPublished": false,
+        "capturedSourceAndCandidateBytesMatchImplementation": true,
+        "classification": "DOCUMENTED_CHECKSUM",
+        "currentSourceMatchesCapturedBytes": true,
+        "locationSha256": "927f8346128e7c66886c8fb1996aad3ed53358dd790632e15933cbb31b5b8826",
+        "provenanceInputsMatchImplementationTriage": true,
+        "sourceFileSha256": "a03d0c22c50d9c2d27f623221c53df99eba199523fc51b922055a0835dec65f1"
+      },
+      {
+        "candidateValueOrSnippetPublished": false,
+        "capturedSourceAndCandidateBytesMatchImplementation": true,
+        "classification": "DOCUMENTED_CHECKSUM",
+        "currentSourceMatchesCapturedBytes": true,
+        "locationSha256": "99c01084f42deb62b2bf8bae16af6390fa242ef0d65d5961ffa1d6efb45a46bc",
+        "provenanceInputsMatchImplementationTriage": true,
+        "sourceFileSha256": "42a20e96cc476f24d20c37516c4c6e7e24feb08583881683dce2a4da78bbe8f2"
+      },
+      {
+        "candidateValueOrSnippetPublished": false,
+        "capturedSourceAndCandidateBytesMatchImplementation": true,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "currentSourceMatchesCapturedBytes": true,
+        "locationSha256": "b347115771db1fbd20b68497e1fbf9a68b6416e9e0ad30adcac6425975546ea9",
+        "provenanceInputsMatchImplementationTriage": true,
+        "sourceFileSha256": "adc16a6ed979d350cef2d27284322f490e20d259b8af459fff28bd1e7b6d5a46"
+      },
+      {
+        "candidateValueOrSnippetPublished": false,
+        "capturedSourceAndCandidateBytesMatchImplementation": true,
+        "classification": "DOCUMENTED_CHECKSUM",
+        "currentSourceMatchesCapturedBytes": true,
+        "locationSha256": "c745057111eb415dddf2cfaade8a5745017d3d6160664453442c0a76290d5f18",
+        "provenanceInputsMatchImplementationTriage": true,
+        "sourceFileSha256": "dbf49b7d1c543c4846909dc49dd72c30a0c71c0792999a55444c42766cb6dbc9"
+      },
+      {
+        "candidateValueOrSnippetPublished": false,
+        "capturedSourceAndCandidateBytesMatchImplementation": true,
+        "classification": "DOCUMENTATION_PROSE",
+        "currentSourceMatchesCapturedBytes": true,
+        "locationSha256": "d8245b8febc48734197bf465c472c395986856a56dd8d8121d2f0d5d8c7df42d",
+        "provenanceInputsMatchImplementationTriage": true,
+        "sourceFileSha256": "2d02a007cf60fa25ac3eeb5059d5cc671b2239ee14137a47a8da22dc7c306e19"
+      },
+      {
+        "candidateValueOrSnippetPublished": false,
+        "capturedSourceAndCandidateBytesMatchImplementation": true,
+        "classification": "DOCUMENTED_CHECKSUM",
+        "currentSourceMatchesCapturedBytes": true,
+        "locationSha256": "df3a16746b6e5a0b1e482aedd08a8e2ac6157b4f95decb6a430f574180838357",
+        "provenanceInputsMatchImplementationTriage": true,
+        "sourceFileSha256": "42a20e96cc476f24d20c37516c4c6e7e24feb08583881683dce2a4da78bbe8f2"
+      },
+      {
+        "candidateValueOrSnippetPublished": false,
+        "capturedSourceAndCandidateBytesMatchImplementation": true,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "currentSourceMatchesCapturedBytes": true,
+        "locationSha256": "ea6840a0a3ff43978365c05f85315a104a52c91b8a125408e574ac172c6a7217",
+        "provenanceInputsMatchImplementationTriage": true,
+        "sourceFileSha256": "20d7754d3fc1068a469297c309d5fd738c63a14818be242a7d9a9e6ff1080243"
+      },
+      {
+        "candidateValueOrSnippetPublished": false,
+        "capturedSourceAndCandidateBytesMatchImplementation": true,
+        "classification": "DOCUMENTED_CHECKSUM",
+        "currentSourceMatchesCapturedBytes": true,
+        "locationSha256": "ee1ea89882e81c0a61ec27c9442a9188863b1c27b7b53325c0cb578ab896d6cd",
+        "provenanceInputsMatchImplementationTriage": true,
+        "sourceFileSha256": "9994d347889bcf682f885890ef8bb6536c8b5c5feeabaf3480e153f4b18a967b"
+      }
+    ],
+    "categoryCounts": {
+      "DOCUMENTATION_PROSE": 1,
+      "DOCUMENTED_CHECKSUM": 9,
+      "DOCUMENTED_NON_SECRET_IDENTIFIER": 1,
+      "STATIC_ERROR_CODE": 2,
+      "SYNTHETIC_TEST_FIXTURE": 4,
+      "UNRESOLVED_POTENTIAL_SECRET": 0
+    },
+    "engineFindingCountStill17": true,
+    "findingCount": 17,
+    "implementationPrivateReportSha256": "b44d8d8a0a54ac78c61e032323365224de6fbadf9120765e48a3e8696723aa76",
+    "newDocumentationFindingCount": 0,
+    "privateReportSha256": "61569ff81f0cec197bccf42cc7113992566559901f2846d53105bc3d023bac82",
+    "rawStatus": "FINDINGS",
+    "sameUniqueLocationsAsImplementation": true,
+    "unresolvedPotentialSecretCount": 0,
+    "version": "8.30.1"
+  },
+  "implementationHead": "d3cce9560593a263e70f85646e061291e8829b56",
+  "implementationSafeScannerReceiptSha256": "a981cb771c524d3db0fc5b6972a8bdba5604be9fada8bb556643694bbe5d98f9",
+  "implementationTriageSha256": "b7b1d64223dc0d9d0bd9ad0f10b92879f861d1bcde6cc979d2444d1c1157ad09",
+  "installedNodeModulesScanned": false,
+  "limits": [
+    "Exact locally captured current documentation receipt source only; original security findings remain and release certification is not granted.",
+    "The 17 secret-scan candidates retain implementation context adjudication because source bytes, candidate bytes and provenance inputs match exactly.",
+    "The SBOM comparison covers declared library name/version/purl inventory; it is not an installed dependency, vulnerability or license assessment."
+  ],
+  "privateReportFilesMode600Verified": true,
+  "privateSourceSnapshotOutsideRepositoryAndMode700": true,
+  "rawSecurityCommandExitCode": 1,
+  "rawSecurityGateStatus": "FAILED",
+  "receiptCommitDocumentationOnlyDelta": true,
+  "reviewedHead": "efffb4f84b52eb42979c69547b6bd7263963099a",
+  "ruleOrBaselineSuppressionAdded": false,
+  "safeScannerReceiptSha256": "8f04234b7944af8a83b5e0b18689f6f64c2f325309a6d9b4fe7259af52798af8",
+  "schemaVersion": 1,
+  "semgrep": {
+    "actualDistinctScannedSourceCount": 846,
+    "expectedSourceCount": 846,
+    "findingCount": 0,
+    "parserAndEngineErrorCount": 0,
+    "privateReportSha256": "934788eb794334eddb81a2e543efe3c30d2570f3cf50a6b0ab0358268f69825f",
+    "scannedPathsExactlyMatchExpected": true,
+    "status": "PASS",
+    "version": "1.180.0"
+  },
+  "sourceBeforeAndAfterCleanAtReviewedHead": true,
+  "sourceFileCount": 4505,
+  "sourceSnapshotBytesExactlyMatchCurrentSource": true,
+  "sourceStillCleanAtComparison": true,
+  "sourceTreeContentSha256": "ed65e9f34d2dbc9ac186954bbb0e9743b35fe19070bf33834e075271fd3622c0",
+  "syft": {
+    "declaredLibraryComponentCount": 518,
+    "declaredNameVersionPurlInventoryMatchesImplementation": true,
+    "normalizedInventorySha256": "bce6b306e0be1979e2c1de0bf17c7cf41268856c8ff7249dd1fca69cba58cf52",
+    "privateReportSha256": "50002850dde2c2a7471ecc4f452d697428dda1de86f36ed32181b72861a0f9a0",
+    "scope": "DECLARED_MANIFEST_AND_LOCK_GRAPH_NOT_VULNERABILITY_SCAN",
+    "status": "PASS",
+    "version": "1.54.1"
+  },
+  "zizmor": {
+    "findingCount": 2,
+    "fullReportsEqualAfterSnapshotRootNormalization": true,
+    "highCachePoisoningCount": 2,
+    "normalizedReportSha256": "0e421d6dbd6b93f2e9ba7aae5cba615b2ab8f223b74d5ffe18c0508ad7a8482c",
+    "privateReportSha256": "ceae5cf4d2a3567357939bff8190092530614bb60358f4e018f83169dc20af22",
+    "rawStatus": "FINDINGS",
+    "version": "1.30.1"
+  }
+}

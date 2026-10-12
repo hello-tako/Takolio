@@ -1,0 +1,63 @@
+{
+  "classification": "PRELIMINARY_INDEPENDENT_SYNTHETIC_DECODER_REVIEW",
+  "runnerSha256": "c16dd02c4d72c98896332dfda67d438cabf7f24e91a375ebae8e73c81733ed32",
+  "cases": [
+    {
+      "case": "semgrep-partial-coverage",
+      "observed": {
+        "tool": "semgrep",
+        "status": "PASS",
+        "findingCount": 0,
+        "rules": {},
+        "severities": {}
+      }
+    },
+    {
+      "case": "gitleaks-unknown-id",
+      "observed": {
+        "tool": "gitleaks",
+        "status": "FINDINGS",
+        "findingCount": 1,
+        "rules": {
+          "synthetic-unapproved-marker-123456789": 1
+        },
+        "severities": {
+          "SECRET_REVIEW_REQUIRED": 1
+        }
+      }
+    },
+    {
+      "case": "zizmor-unknown-id",
+      "observed": {
+        "tool": "zizmor",
+        "status": "FINDINGS",
+        "findingCount": 1,
+        "rules": {
+          "synthetic-unapproved-marker-123456789": 1
+        },
+        "severities": {
+          "HIGH": 1
+        }
+      }
+    },
+    {
+      "case": "syft-no-packages",
+      "observed": {
+        "tool": "syft",
+        "status": "ERROR",
+        "reason": "EMPTY_PACKAGE_INVENTORY"
+      }
+    },
+    {
+      "case": "gitleaks-unredacted",
+      "observed": {
+        "tool": "gitleaks",
+        "status": "ERROR",
+        "reason": "SECRET_REPORT_NOT_FULLY_REDACTED"
+      }
+    }
+  ],
+  "realSecretsUsed": false,
+  "sourceMutated": false,
+  "fullScansRun": false
+}

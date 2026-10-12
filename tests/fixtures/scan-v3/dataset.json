@@ -1,0 +1,1467 @@
+{
+  "schemaVersion": 1,
+  "datasetId": "synthetic-scan-v3-v1",
+  "classification": "TEST_ONLY",
+  "cases": [
+    {
+      "caseId": "receipt-vnd",
+      "assetId": "asset-receipt-vnd",
+      "documentId": "receipt-vnd",
+      "sourceGroupId": "source-receipt-vnd",
+      "task": "receipt_ocr",
+      "locale": "vi",
+      "country": "VN",
+      "quality": "clean",
+      "split": "adversarial",
+      "assetSha256": "9209430d5427814cb596dbfb2cd8e449fdbc5bf9b88a11992ff0980747a595d3",
+      "preprocessingSha256": "37b37ec23406575e6a4a6d1ac6734611cb05ccf36bfff92667fc253c551899b1",
+      "preprocessingVersion": "symbolic-v1",
+      "assetKind": "SYNTHETIC_SYMBOLIC",
+      "provenance": "fixture://receipt-vnd",
+      "licenseReference": "MISSING",
+      "permissionReference": "MISSING",
+      "retentionPolicy": "TEST_ONLY_REPOSITORY",
+      "accessPolicy": "PUBLIC_SYNTHETIC_ONLY",
+      "redactionStatus": "SYNTHETIC_NO_PII",
+      "annotation": {
+        "schemaVersion": 1,
+        "status": "TEST_ONLY",
+        "reviewer": "MISSING",
+        "adjudicator": "MISSING",
+        "transcriptSha256": "MISSING",
+        "providerOutputIndependent": false,
+        "groundTruth": {
+          "schemaVersion": 3,
+          "task": "receipt_ocr",
+          "document": {
+            "documentId": "receipt-vnd",
+            "sourceId": "source-receipt-vnd"
+          },
+          "items": [
+            {
+              "occurrenceId": "line-0",
+              "sourcePosition": 0,
+              "rawName": {
+                "state": "known",
+                "value": "Synthetic milk",
+                "basis": "source_extraction",
+                "evidence": [
+                  {
+                    "kind": "source_text",
+                    "documentId": "receipt-vnd",
+                    "sourcePosition": 0,
+                    "text": "Synthetic milk"
+                  }
+                ]
+              },
+              "quantity": {
+                "amount": {
+                  "state": "known",
+                  "value": 2,
+                  "basis": "source_extraction",
+                  "evidence": [
+                    {
+                      "kind": "source_text",
+                      "documentId": "receipt-vnd",
+                      "sourcePosition": 0,
+                      "text": "2"
+                    }
+                  ]
+                },
+                "unit": {
+                  "state": "known",
+                  "value": "piece",
+                  "basis": "source_extraction",
+                  "evidence": [
+                    {
+                      "kind": "source_text",
+                      "documentId": "receipt-vnd",
+                      "sourcePosition": 0,
+                      "text": "piece"
+                    }
+                  ]
+                },
+                "basis": {
+                  "state": "known",
+                  "value": "purchase_count",
+                  "basis": "source_extraction",
+                  "evidence": [
+                    {
+                      "kind": "source_text",
+                      "documentId": "receipt-vnd",
+                      "sourcePosition": 0,
+                      "text": "purchase_count"
+                    }
+                  ]
+                },
+                "sourceText": {
+                  "state": "known",
+                  "value": "2 units",
+                  "basis": "source_extraction",
+                  "evidence": [
+                    {
+                      "kind": "source_text",
+                      "documentId": "receipt-vnd",
+                      "sourcePosition": 0,
+                      "text": "2 units"
+                    }
+                  ]
+                }
+              },
+              "canonicalId": {
+                "state": "unknown",
+                "reason": "unverified"
+              },
+              "confidence": {
+                "state": "unknown",
+                "reason": "not_reported"
+              },
+              "category": {
+                "state": "unknown",
+                "reason": "missing"
+              },
+              "storage": {
+                "state": "unknown",
+                "reason": "not_observable"
+              },
+              "unitPrice": {
+                "state": "unknown",
+                "reason": "missing"
+              },
+              "lineTotal": {
+                "state": "unknown",
+                "reason": "missing"
+              },
+              "tax": {
+                "state": "unknown",
+                "reason": "missing"
+              },
+              "discount": {
+                "state": "unknown",
+                "reason": "missing"
+              }
+            }
+          ],
+          "merchantName": {
+            "state": "known",
+            "value": "Synthetic store",
+            "basis": "source_extraction",
+            "evidence": [
+              {
+                "kind": "source_text",
+                "documentId": "receipt-vnd",
+                "sourcePosition": 0,
+                "text": "Synthetic store"
+              }
+            ]
+          },
+          "invoiceNumber": {
+            "state": "unknown",
+            "reason": "missing"
+          },
+          "purchaseDate": {
+            "state": "unknown",
+            "reason": "missing"
+          },
+          "totalAmount": {
+            "state": "known",
+            "value": {
+              "amountMinor": 1200,
+              "currency": "VND"
+            },
+            "basis": "source_extraction",
+            "evidence": [
+              {
+                "kind": "source_text",
+                "documentId": "receipt-vnd",
+                "sourcePosition": 0,
+                "text": "{'amountMinor': 1200, 'currency': 'VND'}"
+              }
+            ]
+          },
+          "tax": {
+            "state": "unknown",
+            "reason": "missing"
+          },
+          "discount": {
+            "state": "unknown",
+            "reason": "missing"
+          }
+        }
+      }
+    },
+    {
+      "caseId": "receipt-jpy",
+      "assetId": "asset-receipt-jpy",
+      "documentId": "receipt-jpy",
+      "sourceGroupId": "source-receipt-jpy",
+      "task": "receipt_ocr",
+      "locale": "ja",
+      "country": "JP",
+      "quality": "clean",
+      "split": "adversarial",
+      "assetSha256": "59a6d00082cd847a5d7e20abfb550b8a7bfc3270a15477792610d3cf7fd48b42",
+      "preprocessingSha256": "7f6200690a995f92029f8b54d543f52322acfad7591aca6bacf11bc9c91d0ece",
+      "preprocessingVersion": "symbolic-v1",
+      "assetKind": "SYNTHETIC_SYMBOLIC",
+      "provenance": "fixture://receipt-jpy",
+      "licenseReference": "MISSING",
+      "permissionReference": "MISSING",
+      "retentionPolicy": "TEST_ONLY_REPOSITORY",
+      "accessPolicy": "PUBLIC_SYNTHETIC_ONLY",
+      "redactionStatus": "SYNTHETIC_NO_PII",
+      "annotation": {
+        "schemaVersion": 1,
+        "status": "TEST_ONLY",
+        "reviewer": "MISSING",
+        "adjudicator": "MISSING",
+        "transcriptSha256": "MISSING",
+        "providerOutputIndependent": false,
+        "groundTruth": {
+          "schemaVersion": 3,
+          "task": "receipt_ocr",
+          "document": {
+            "documentId": "receipt-jpy",
+            "sourceId": "source-receipt-jpy"
+          },
+          "items": [
+            {
+              "occurrenceId": "line-0",
+              "sourcePosition": 0,
+              "rawName": {
+                "state": "known",
+                "value": "Synthetic milk",
+                "basis": "source_extraction",
+                "evidence": [
+                  {
+                    "kind": "source_text",
+                    "documentId": "receipt-jpy",
+                    "sourcePosition": 0,
+                    "text": "Synthetic milk"
+                  }
+                ]
+              },
+              "quantity": {
+                "amount": {
+                  "state": "known",
+                  "value": 2,
+                  "basis": "source_extraction",
+                  "evidence": [
+                    {
+                      "kind": "source_text",
+                      "documentId": "receipt-jpy",
+                      "sourcePosition": 0,
+                      "text": "2"
+                    }
+                  ]
+                },
+                "unit": {
+                  "state": "known",
+                  "value": "piece",
+                  "basis": "source_extraction",
+                  "evidence": [
+                    {
+                      "kind": "source_text",
+                      "documentId": "receipt-jpy",
+                      "sourcePosition": 0,
+                      "text": "piece"
+                    }
+                  ]
+                },
+                "basis": {
+                  "state": "known",
+                  "value": "purchase_count",
+                  "basis": "source_extraction",
+                  "evidence": [
+                    {
+                      "kind": "source_text",
+                      "documentId": "receipt-jpy",
+                      "sourcePosition": 0,
+                      "text": "purchase_count"
+                    }
+                  ]
+                },
+                "sourceText": {
+                  "state": "known",
+                  "value": "2 units",
+                  "basis": "source_extraction",
+                  "evidence": [
+                    {
+                      "kind": "source_text",
+                      "documentId": "receipt-jpy",
+                      "sourcePosition": 0,
+                      "text": "2 units"
+                    }
+                  ]
+                }
+              },
+              "canonicalId": {
+                "state": "unknown",
+                "reason": "unverified"
+              },
+              "confidence": {
+                "state": "unknown",
+                "reason": "not_reported"
+              },
+              "category": {
+                "state": "unknown",
+                "reason": "missing"
+              },
+              "storage": {
+                "state": "unknown",
+                "reason": "not_observable"
+              },
+              "unitPrice": {
+                "state": "unknown",
+                "reason": "missing"
+              },
+              "lineTotal": {
+                "state": "unknown",
+                "reason": "missing"
+              },
+              "tax": {
+                "state": "unknown",
+                "reason": "missing"
+              },
+              "discount": {
+                "state": "unknown",
+                "reason": "missing"
+              }
+            }
+          ],
+          "merchantName": {
+            "state": "known",
+            "value": "Synthetic store",
+            "basis": "source_extraction",
+            "evidence": [
+              {
+                "kind": "source_text",
+                "documentId": "receipt-jpy",
+                "sourcePosition": 0,
+                "text": "Synthetic store"
+              }
+            ]
+          },
+          "invoiceNumber": {
+            "state": "unknown",
+            "reason": "missing"
+          },
+          "purchaseDate": {
+            "state": "unknown",
+            "reason": "missing"
+          },
+          "totalAmount": {
+            "state": "known",
+            "value": {
+              "amountMinor": 1200,
+              "currency": "JPY"
+            },
+            "basis": "source_extraction",
+            "evidence": [
+              {
+                "kind": "source_text",
+                "documentId": "receipt-jpy",
+                "sourcePosition": 0,
+                "text": "{'amountMinor': 1200, 'currency': 'JPY'}"
+              }
+            ]
+          },
+          "tax": {
+            "state": "unknown",
+            "reason": "missing"
+          },
+          "discount": {
+            "state": "unknown",
+            "reason": "missing"
+          }
+        }
+      }
+    },
+    {
+      "caseId": "duplicate-lines",
+      "assetId": "asset-duplicate-lines",
+      "documentId": "duplicate-lines",
+      "sourceGroupId": "source-duplicate-lines",
+      "task": "receipt_ocr",
+      "locale": "ja",
+      "country": "JP",
+      "quality": "clean",
+      "split": "adversarial",
+      "assetSha256": "ed65663640b0aa64067291d9c09b7b02aad2d4fdd04b1f9881dc08f68afd3909",
+      "preprocessingSha256": "a74cafc4c193f796ea942aeac905aedfc9ca2bcd3561297c97537c876c64f36e",
+      "preprocessingVersion": "symbolic-v1",
+      "assetKind": "SYNTHETIC_SYMBOLIC",
+      "provenance": "fixture://duplicate-lines",
+      "licenseReference": "MISSING",
+      "permissionReference": "MISSING",
+      "retentionPolicy": "TEST_ONLY_REPOSITORY",
+      "accessPolicy": "PUBLIC_SYNTHETIC_ONLY",
+      "redactionStatus": "SYNTHETIC_NO_PII",
+      "annotation": {
+        "schemaVersion": 1,
+        "status": "TEST_ONLY",
+        "reviewer": "MISSING",
+        "adjudicator": "MISSING",
+        "transcriptSha256": "MISSING",
+        "providerOutputIndependent": false,
+        "groundTruth": {
+          "schemaVersion": 3,
+          "task": "receipt_ocr",
+          "document": {
+            "documentId": "duplicate-lines",
+            "sourceId": "source-duplicate-lines"
+          },
+          "items": [
+            {
+              "occurrenceId": "line-0",
+              "sourcePosition": 0,
+              "rawName": {
+                "state": "known",
+                "value": "Synthetic milk",
+                "basis": "source_extraction",
+                "evidence": [
+                  {
+                    "kind": "source_text",
+                    "documentId": "duplicate-lines",
+                    "sourcePosition": 0,
+                    "text": "Synthetic milk"
+                  }
+                ]
+              },
+              "quantity": {
+                "amount": {
+                  "state": "known",
+                  "value": 2,
+                  "basis": "source_extraction",
+                  "evidence": [
+                    {
+                      "kind": "source_text",
+                      "documentId": "duplicate-lines",
+                      "sourcePosition": 0,
+                      "text": "2"
+                    }
+                  ]
+                },
+                "unit": {
+                  "state": "known",
+                  "value": "piece",
+                  "basis": "source_extraction",
+                  "evidence": [
+                    {
+                      "kind": "source_text",
+                      "documentId": "duplicate-lines",
+                      "sourcePosition": 0,
+                      "text": "piece"
+                    }
+                  ]
+                },
+                "basis": {
+                  "state": "known",
+                  "value": "purchase_count",
+                  "basis": "source_extraction",
+                  "evidence": [
+                    {
+                      "kind": "source_text",
+                      "documentId": "duplicate-lines",
+                      "sourcePosition": 0,
+                      "text": "purchase_count"
+                    }
+                  ]
+                },
+                "sourceText": {
+                  "state": "known",
+                  "value": "2 units",
+                  "basis": "source_extraction",
+                  "evidence": [
+                    {
+                      "kind": "source_text",
+                      "documentId": "duplicate-lines",
+                      "sourcePosition": 0,
+                      "text": "2 units"
+                    }
+                  ]
+                }
+              },
+              "canonicalId": {
+                "state": "unknown",
+                "reason": "unverified"
+              },
+              "confidence": {
+                "state": "unknown",
+                "reason": "not_reported"
+              },
+              "category": {
+                "state": "unknown",
+                "reason": "missing"
+              },
+              "storage": {
+                "state": "unknown",
+                "reason": "not_observable"
+              },
+              "unitPrice": {
+                "state": "unknown",
+                "reason": "missing"
+              },
+              "lineTotal": {
+                "state": "unknown",
+                "reason": "missing"
+              },
+              "tax": {
+                "state": "unknown",
+                "reason": "missing"
+              },
+              "discount": {
+                "state": "unknown",
+                "reason": "missing"
+              }
+            },
+            {
+              "occurrenceId": "line-1",
+              "sourcePosition": 1,
+              "rawName": {
+                "state": "known",
+                "value": "Synthetic milk",
+                "basis": "source_extraction",
+                "evidence": [
+                  {
+                    "kind": "source_text",
+                    "documentId": "duplicate-lines",
+                    "sourcePosition": 1,
+                    "text": "Synthetic milk"
+                  }
+                ]
+              },
+              "quantity": {
+                "amount": {
+                  "state": "known",
+                  "value": 2,
+                  "basis": "source_extraction",
+                  "evidence": [
+                    {
+                      "kind": "source_text",
+                      "documentId": "duplicate-lines",
+                      "sourcePosition": 1,
+                      "text": "2"
+                    }
+                  ]
+                },
+                "unit": {
+                  "state": "known",
+                  "value": "piece",
+                  "basis": "source_extraction",
+                  "evidence": [
+                    {
+                      "kind": "source_text",
+                      "documentId": "duplicate-lines",
+                      "sourcePosition": 1,
+                      "text": "piece"
+                    }
+                  ]
+                },
+                "basis": {
+                  "state": "known",
+                  "value": "purchase_count",
+                  "basis": "source_extraction",
+                  "evidence": [
+                    {
+                      "kind": "source_text",
+                      "documentId": "duplicate-lines",
+                      "sourcePosition": 1,
+                      "text": "purchase_count"
+                    }
+                  ]
+                },
+                "sourceText": {
+                  "state": "known",
+                  "value": "2 units",
+                  "basis": "source_extraction",
+                  "evidence": [
+                    {
+                      "kind": "source_text",
+                      "documentId": "duplicate-lines",
+                      "sourcePosition": 1,
+                      "text": "2 units"
+                    }
+                  ]
+                }
+              },
+              "canonicalId": {
+                "state": "unknown",
+                "reason": "unverified"
+              },
+              "confidence": {
+                "state": "unknown",
+                "reason": "not_reported"
+              },
+              "category": {
+                "state": "unknown",
+                "reason": "missing"
+              },
+              "storage": {
+                "state": "unknown",
+                "reason": "not_observable"
+              },
+              "unitPrice": {
+                "state": "unknown",
+                "reason": "missing"
+              },
+              "lineTotal": {
+                "state": "unknown",
+                "reason": "missing"
+              },
+              "tax": {
+                "state": "unknown",
+                "reason": "missing"
+              },
+              "discount": {
+                "state": "unknown",
+                "reason": "missing"
+              }
+            }
+          ],
+          "merchantName": {
+            "state": "known",
+            "value": "Synthetic store",
+            "basis": "source_extraction",
+            "evidence": [
+              {
+                "kind": "source_text",
+                "documentId": "duplicate-lines",
+                "sourcePosition": 0,
+                "text": "Synthetic store"
+              }
+            ]
+          },
+          "invoiceNumber": {
+            "state": "unknown",
+            "reason": "missing"
+          },
+          "purchaseDate": {
+            "state": "unknown",
+            "reason": "missing"
+          },
+          "totalAmount": {
+            "state": "known",
+            "value": {
+              "amountMinor": 1200,
+              "currency": "JPY"
+            },
+            "basis": "source_extraction",
+            "evidence": [
+              {
+                "kind": "source_text",
+                "documentId": "duplicate-lines",
+                "sourcePosition": 0,
+                "text": "{'amountMinor': 1200, 'currency': 'JPY'}"
+              }
+            ]
+          },
+          "tax": {
+            "state": "unknown",
+            "reason": "missing"
+          },
+          "discount": {
+            "state": "unknown",
+            "reason": "missing"
+          }
+        }
+      }
+    },
+    {
+      "caseId": "fridge-unknown",
+      "assetId": "asset-fridge-unknown",
+      "documentId": "fridge-unknown",
+      "sourceGroupId": "source-fridge-unknown",
+      "task": "fridge_image_analysis",
+      "locale": "en",
+      "country": "OTHER",
+      "quality": "missing_field",
+      "split": "adversarial",
+      "assetSha256": "7814b1484fa0b46b289a3aa96143e497e1a073ed50fa88862b0ea4c87ae683e2",
+      "preprocessingSha256": "89bdc2f877ff718256fc7a53a0187747cfd9bca6c134142e43ebc35c3a7e8910",
+      "preprocessingVersion": "symbolic-v1",
+      "assetKind": "SYNTHETIC_SYMBOLIC",
+      "provenance": "fixture://fridge-unknown",
+      "licenseReference": "MISSING",
+      "permissionReference": "MISSING",
+      "retentionPolicy": "TEST_ONLY_REPOSITORY",
+      "accessPolicy": "PUBLIC_SYNTHETIC_ONLY",
+      "redactionStatus": "SYNTHETIC_NO_PII",
+      "annotation": {
+        "schemaVersion": 1,
+        "status": "TEST_ONLY",
+        "reviewer": "MISSING",
+        "adjudicator": "MISSING",
+        "transcriptSha256": "MISSING",
+        "providerOutputIndependent": false,
+        "groundTruth": {
+          "schemaVersion": 3,
+          "task": "fridge_image_analysis",
+          "document": {
+            "documentId": "fridge-unknown",
+            "sourceId": "source-fridge-unknown"
+          },
+          "items": [
+            {
+              "occurrenceId": "line-0",
+              "sourcePosition": 0,
+              "rawName": {
+                "state": "known",
+                "value": "Synthetic milk",
+                "basis": "source_extraction",
+                "evidence": [
+                  {
+                    "kind": "source_text",
+                    "documentId": "fridge-unknown",
+                    "sourcePosition": 0,
+                    "text": "Synthetic milk"
+                  }
+                ]
+              },
+              "quantity": {
+                "amount": {
+                  "state": "unknown",
+                  "reason": "not_observable"
+                },
+                "unit": {
+                  "state": "unknown",
+                  "reason": "not_observable"
+                },
+                "basis": {
+                  "state": "unknown",
+                  "reason": "not_observable"
+                },
+                "sourceText": {
+                  "state": "unknown",
+                  "reason": "not_observable"
+                }
+              },
+              "canonicalId": {
+                "state": "unknown",
+                "reason": "unverified"
+              },
+              "confidence": {
+                "state": "unknown",
+                "reason": "not_reported"
+              },
+              "category": {
+                "state": "unknown",
+                "reason": "missing"
+              },
+              "storage": {
+                "state": "unknown",
+                "reason": "not_observable"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caseId": "blur-abstain",
+      "assetId": "asset-blur-abstain",
+      "documentId": "blur-abstain",
+      "sourceGroupId": "source-blur-abstain",
+      "task": "fridge_image_analysis",
+      "locale": "en",
+      "country": "OTHER",
+      "quality": "blur",
+      "split": "adversarial",
+      "assetSha256": "6f6b34e48b775a5b5758478b6ab9578c7811101917a1cb1f4f76c81d751ba804",
+      "preprocessingSha256": "1bcc15c88dfdad8b8e7ed6d1e2f5c91845d3b27d6ef6b70c24e5de154d625a6f",
+      "preprocessingVersion": "symbolic-v1",
+      "assetKind": "SYNTHETIC_SYMBOLIC",
+      "provenance": "fixture://blur-abstain",
+      "licenseReference": "MISSING",
+      "permissionReference": "MISSING",
+      "retentionPolicy": "TEST_ONLY_REPOSITORY",
+      "accessPolicy": "PUBLIC_SYNTHETIC_ONLY",
+      "redactionStatus": "SYNTHETIC_NO_PII",
+      "annotation": {
+        "schemaVersion": 1,
+        "status": "TEST_ONLY",
+        "reviewer": "MISSING",
+        "adjudicator": "MISSING",
+        "transcriptSha256": "MISSING",
+        "providerOutputIndependent": false,
+        "groundTruth": {
+          "schemaVersion": 3,
+          "task": "fridge_image_analysis",
+          "document": {
+            "documentId": "blur-abstain",
+            "sourceId": "source-blur-abstain"
+          },
+          "items": [
+            {
+              "occurrenceId": "line-0",
+              "sourcePosition": 0,
+              "rawName": {
+                "state": "known",
+                "value": "Synthetic milk",
+                "basis": "source_extraction",
+                "evidence": [
+                  {
+                    "kind": "source_text",
+                    "documentId": "blur-abstain",
+                    "sourcePosition": 0,
+                    "text": "Synthetic milk"
+                  }
+                ]
+              },
+              "quantity": {
+                "amount": {
+                  "state": "unknown",
+                  "reason": "not_observable"
+                },
+                "unit": {
+                  "state": "unknown",
+                  "reason": "not_observable"
+                },
+                "basis": {
+                  "state": "unknown",
+                  "reason": "not_observable"
+                },
+                "sourceText": {
+                  "state": "unknown",
+                  "reason": "not_observable"
+                }
+              },
+              "canonicalId": {
+                "state": "unknown",
+                "reason": "unverified"
+              },
+              "confidence": {
+                "state": "unknown",
+                "reason": "not_reported"
+              },
+              "category": {
+                "state": "unknown",
+                "reason": "missing"
+              },
+              "storage": {
+                "state": "unknown",
+                "reason": "not_observable"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caseId": "damaged-timeout",
+      "assetId": "asset-damaged-timeout",
+      "documentId": "damaged-timeout",
+      "sourceGroupId": "source-damaged-timeout",
+      "task": "fridge_image_analysis",
+      "locale": "en",
+      "country": "OTHER",
+      "quality": "damaged",
+      "split": "adversarial",
+      "assetSha256": "0c3160b4ae16430156802fff5e66399fe91d174a87e532e7fb95a97ebcbe41b1",
+      "preprocessingSha256": "db994b072b5171b3b83a35b8028891ed806cbff5240e9a6f3ea5c4c4d5f2fb18",
+      "preprocessingVersion": "symbolic-v1",
+      "assetKind": "SYNTHETIC_SYMBOLIC",
+      "provenance": "fixture://damaged-timeout",
+      "licenseReference": "MISSING",
+      "permissionReference": "MISSING",
+      "retentionPolicy": "TEST_ONLY_REPOSITORY",
+      "accessPolicy": "PUBLIC_SYNTHETIC_ONLY",
+      "redactionStatus": "SYNTHETIC_NO_PII",
+      "annotation": {
+        "schemaVersion": 1,
+        "status": "TEST_ONLY",
+        "reviewer": "MISSING",
+        "adjudicator": "MISSING",
+        "transcriptSha256": "MISSING",
+        "providerOutputIndependent": false,
+        "groundTruth": {
+          "schemaVersion": 3,
+          "task": "fridge_image_analysis",
+          "document": {
+            "documentId": "damaged-timeout",
+            "sourceId": "source-damaged-timeout"
+          },
+          "items": [
+            {
+              "occurrenceId": "line-0",
+              "sourcePosition": 0,
+              "rawName": {
+                "state": "known",
+                "value": "Synthetic milk",
+                "basis": "source_extraction",
+                "evidence": [
+                  {
+                    "kind": "source_text",
+                    "documentId": "damaged-timeout",
+                    "sourcePosition": 0,
+                    "text": "Synthetic milk"
+                  }
+                ]
+              },
+              "quantity": {
+                "amount": {
+                  "state": "unknown",
+                  "reason": "not_observable"
+                },
+                "unit": {
+                  "state": "unknown",
+                  "reason": "not_observable"
+                },
+                "basis": {
+                  "state": "unknown",
+                  "reason": "not_observable"
+                },
+                "sourceText": {
+                  "state": "unknown",
+                  "reason": "not_observable"
+                }
+              },
+              "canonicalId": {
+                "state": "unknown",
+                "reason": "unverified"
+              },
+              "confidence": {
+                "state": "unknown",
+                "reason": "not_reported"
+              },
+              "category": {
+                "state": "unknown",
+                "reason": "missing"
+              },
+              "storage": {
+                "state": "unknown",
+                "reason": "not_observable"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caseId": "label-invalid",
+      "assetId": "asset-label-invalid",
+      "documentId": "label-invalid",
+      "sourceGroupId": "source-label-invalid",
+      "task": "label_ocr",
+      "locale": "en",
+      "country": "OTHER",
+      "quality": "missing_field",
+      "split": "adversarial",
+      "assetSha256": "01df529d7ee5a6729175edcf19e375599bb5d8def39be2d2e9b20b232ea2dead",
+      "preprocessingSha256": "d7872fcf07d31c3d173db133ebf6107fba289e0c3e7927aef96408884af1e20e",
+      "preprocessingVersion": "symbolic-v1",
+      "assetKind": "SYNTHETIC_SYMBOLIC",
+      "provenance": "fixture://label-invalid",
+      "licenseReference": "MISSING",
+      "permissionReference": "MISSING",
+      "retentionPolicy": "TEST_ONLY_REPOSITORY",
+      "accessPolicy": "PUBLIC_SYNTHETIC_ONLY",
+      "redactionStatus": "SYNTHETIC_NO_PII",
+      "annotation": {
+        "schemaVersion": 1,
+        "status": "TEST_ONLY",
+        "reviewer": "MISSING",
+        "adjudicator": "MISSING",
+        "transcriptSha256": "MISSING",
+        "providerOutputIndependent": false,
+        "groundTruth": {
+          "schemaVersion": 3,
+          "task": "label_ocr",
+          "document": {
+            "documentId": "label-invalid",
+            "sourceId": "source-label-invalid"
+          },
+          "items": [
+            {
+              "occurrenceId": "line-0",
+              "sourcePosition": 0,
+              "rawName": {
+                "state": "known",
+                "value": "Synthetic milk",
+                "basis": "source_extraction",
+                "evidence": [
+                  {
+                    "kind": "source_text",
+                    "documentId": "label-invalid",
+                    "sourcePosition": 0,
+                    "text": "Synthetic milk"
+                  }
+                ]
+              },
+              "quantity": {
+                "amount": {
+                  "state": "known",
+                  "value": 2,
+                  "basis": "source_extraction",
+                  "evidence": [
+                    {
+                      "kind": "source_text",
+                      "documentId": "label-invalid",
+                      "sourcePosition": 0,
+                      "text": "2"
+                    }
+                  ]
+                },
+                "unit": {
+                  "state": "known",
+                  "value": "piece",
+                  "basis": "source_extraction",
+                  "evidence": [
+                    {
+                      "kind": "source_text",
+                      "documentId": "label-invalid",
+                      "sourcePosition": 0,
+                      "text": "piece"
+                    }
+                  ]
+                },
+                "basis": {
+                  "state": "known",
+                  "value": "purchase_count",
+                  "basis": "source_extraction",
+                  "evidence": [
+                    {
+                      "kind": "source_text",
+                      "documentId": "label-invalid",
+                      "sourcePosition": 0,
+                      "text": "purchase_count"
+                    }
+                  ]
+                },
+                "sourceText": {
+                  "state": "known",
+                  "value": "2 units",
+                  "basis": "source_extraction",
+                  "evidence": [
+                    {
+                      "kind": "source_text",
+                      "documentId": "label-invalid",
+                      "sourcePosition": 0,
+                      "text": "2 units"
+                    }
+                  ]
+                }
+              },
+              "canonicalId": {
+                "state": "unknown",
+                "reason": "unverified"
+              },
+              "confidence": {
+                "state": "unknown",
+                "reason": "not_reported"
+              },
+              "category": {
+                "state": "unknown",
+                "reason": "missing"
+              },
+              "storage": {
+                "state": "unknown",
+                "reason": "not_observable"
+              }
+            }
+          ],
+          "productionDate": {
+            "state": "unknown",
+            "reason": "missing"
+          },
+          "expiryDate": {
+            "state": "unknown",
+            "reason": "missing"
+          },
+          "netQuantity": {
+            "amount": {
+              "state": "unknown",
+              "reason": "missing"
+            },
+            "unit": {
+              "state": "unknown",
+              "reason": "missing"
+            },
+            "basis": {
+              "state": "unknown",
+              "reason": "missing"
+            },
+            "sourceText": {
+              "state": "unknown",
+              "reason": "missing"
+            }
+          }
+        }
+      }
+    },
+    {
+      "caseId": "missing-output",
+      "assetId": "asset-missing-output",
+      "documentId": "missing-output",
+      "sourceGroupId": "source-missing-output",
+      "task": "receipt_ocr",
+      "locale": "vi",
+      "country": "VN",
+      "quality": "missing_field",
+      "split": "adversarial",
+      "assetSha256": "0003956019182373a84506b917103e757eb65e8f0b2e13e3119915e0f7e8b4f5",
+      "preprocessingSha256": "50a4648fa7e4220f81ff28510f200f5994b9782354aec79643272d1eb157b1e5",
+      "preprocessingVersion": "symbolic-v1",
+      "assetKind": "SYNTHETIC_SYMBOLIC",
+      "provenance": "fixture://missing-output",
+      "licenseReference": "MISSING",
+      "permissionReference": "MISSING",
+      "retentionPolicy": "TEST_ONLY_REPOSITORY",
+      "accessPolicy": "PUBLIC_SYNTHETIC_ONLY",
+      "redactionStatus": "SYNTHETIC_NO_PII",
+      "annotation": {
+        "schemaVersion": 1,
+        "status": "TEST_ONLY",
+        "reviewer": "MISSING",
+        "adjudicator": "MISSING",
+        "transcriptSha256": "MISSING",
+        "providerOutputIndependent": false,
+        "groundTruth": {
+          "schemaVersion": 3,
+          "task": "receipt_ocr",
+          "document": {
+            "documentId": "missing-output",
+            "sourceId": "source-missing-output"
+          },
+          "items": [
+            {
+              "occurrenceId": "line-0",
+              "sourcePosition": 0,
+              "rawName": {
+                "state": "known",
+                "value": "Synthetic milk",
+                "basis": "source_extraction",
+                "evidence": [
+                  {
+                    "kind": "source_text",
+                    "documentId": "missing-output",
+                    "sourcePosition": 0,
+                    "text": "Synthetic milk"
+                  }
+                ]
+              },
+              "quantity": {
+                "amount": {
+                  "state": "known",
+                  "value": 2,
+                  "basis": "source_extraction",
+                  "evidence": [
+                    {
+                      "kind": "source_text",
+                      "documentId": "missing-output",
+                      "sourcePosition": 0,
+                      "text": "2"
+                    }
+                  ]
+                },
+                "unit": {
+                  "state": "known",
+                  "value": "piece",
+                  "basis": "source_extraction",
+                  "evidence": [
+                    {
+                      "kind": "source_text",
+                      "documentId": "missing-output",
+                      "sourcePosition": 0,
+                      "text": "piece"
+                    }
+                  ]
+                },
+                "basis": {
+                  "state": "known",
+                  "value": "purchase_count",
+                  "basis": "source_extraction",
+                  "evidence": [
+                    {
+                      "kind": "source_text",
+                      "documentId": "missing-output",
+                      "sourcePosition": 0,
+                      "text": "purchase_count"
+                    }
+                  ]
+                },
+                "sourceText": {
+                  "state": "known",
+                  "value": "2 units",
+                  "basis": "source_extraction",
+                  "evidence": [
+                    {
+                      "kind": "source_text",
+                      "documentId": "missing-output",
+                      "sourcePosition": 0,
+                      "text": "2 units"
+                    }
+                  ]
+                }
+              },
+              "canonicalId": {
+                "state": "unknown",
+                "reason": "unverified"
+              },
+              "confidence": {
+                "state": "unknown",
+                "reason": "not_reported"
+              },
+              "category": {
+                "state": "unknown",
+                "reason": "missing"
+              },
+              "storage": {
+                "state": "unknown",
+                "reason": "not_observable"
+              },
+              "unitPrice": {
+                "state": "unknown",
+                "reason": "missing"
+              },
+              "lineTotal": {
+                "state": "unknown",
+                "reason": "missing"
+              },
+              "tax": {
+                "state": "unknown",
+                "reason": "missing"
+              },
+              "discount": {
+                "state": "unknown",
+                "reason": "missing"
+              }
+            }
+          ],
+          "merchantName": {
+            "state": "known",
+            "value": "Synthetic store",
+            "basis": "source_extraction",
+            "evidence": [
+              {
+                "kind": "source_text",
+                "documentId": "missing-output",
+                "sourcePosition": 0,
+                "text": "Synthetic store"
+              }
+            ]
+          },
+          "invoiceNumber": {
+            "state": "unknown",
+            "reason": "missing"
+          },
+          "purchaseDate": {
+            "state": "unknown",
+            "reason": "missing"
+          },
+          "totalAmount": {
+            "state": "known",
+            "value": {
+              "amountMinor": 1200,
+              "currency": "VND"
+            },
+            "basis": "source_extraction",
+            "evidence": [
+              {
+                "kind": "source_text",
+                "documentId": "missing-output",
+                "sourcePosition": 0,
+                "text": "{'amountMinor': 1200, 'currency': 'VND'}"
+              }
+            ]
+          },
+          "tax": {
+            "state": "unknown",
+            "reason": "missing"
+          },
+          "discount": {
+            "state": "unknown",
+            "reason": "missing"
+          }
+        }
+      }
+    },
+    {
+      "caseId": "receipt-repaired",
+      "assetId": "asset-receipt-repaired",
+      "documentId": "receipt-repaired",
+      "sourceGroupId": "source-receipt-repaired",
+      "task": "receipt_ocr",
+      "locale": "vi",
+      "country": "VN",
+      "quality": "clean",
+      "split": "adversarial",
+      "assetSha256": "491ce1093efed5eaa4b602e3c39b3d0b8a71ebc26efecea6309d0792a1cd5355",
+      "preprocessingSha256": "a5ab40a8a3f8702315facacccabe1daef8ad97dedee87aaf02e14240ae2b0c32",
+      "preprocessingVersion": "symbolic-v1",
+      "assetKind": "SYNTHETIC_SYMBOLIC",
+      "provenance": "fixture://receipt-repaired",
+      "licenseReference": "MISSING",
+      "permissionReference": "MISSING",
+      "retentionPolicy": "TEST_ONLY_REPOSITORY",
+      "accessPolicy": "PUBLIC_SYNTHETIC_ONLY",
+      "redactionStatus": "SYNTHETIC_NO_PII",
+      "annotation": {
+        "schemaVersion": 1,
+        "status": "TEST_ONLY",
+        "reviewer": "MISSING",
+        "adjudicator": "MISSING",
+        "transcriptSha256": "MISSING",
+        "providerOutputIndependent": false,
+        "groundTruth": {
+          "schemaVersion": 3,
+          "task": "receipt_ocr",
+          "document": {
+            "documentId": "receipt-repaired",
+            "sourceId": "source-receipt-repaired"
+          },
+          "items": [
+            {
+              "occurrenceId": "line-0",
+              "sourcePosition": 0,
+              "rawName": {
+                "state": "known",
+                "value": "Synthetic milk",
+                "basis": "source_extraction",
+                "evidence": [
+                  {
+                    "kind": "source_text",
+                    "documentId": "receipt-repaired",
+                    "sourcePosition": 0,
+                    "text": "Synthetic milk"
+                  }
+                ]
+              },
+              "quantity": {
+                "amount": {
+                  "state": "known",
+                  "value": 2,
+                  "basis": "source_extraction",
+                  "evidence": [
+                    {
+                      "kind": "source_text",
+                      "documentId": "receipt-repaired",
+                      "sourcePosition": 0,
+                      "text": "2"
+                    }
+                  ]
+                },
+                "unit": {
+                  "state": "known",
+                  "value": "piece",
+                  "basis": "source_extraction",
+                  "evidence": [
+                    {
+                      "kind": "source_text",
+                      "documentId": "receipt-repaired",
+                      "sourcePosition": 0,
+                      "text": "piece"
+                    }
+                  ]
+                },
+                "basis": {
+                  "state": "known",
+                  "value": "purchase_count",
+                  "basis": "source_extraction",
+                  "evidence": [
+                    {
+                      "kind": "source_text",
+                      "documentId": "receipt-repaired",
+                      "sourcePosition": 0,
+                      "text": "purchase_count"
+                    }
+                  ]
+                },
+                "sourceText": {
+                  "state": "known",
+                  "value": "2 units",
+                  "basis": "source_extraction",
+                  "evidence": [
+                    {
+                      "kind": "source_text",
+                      "documentId": "receipt-repaired",
+                      "sourcePosition": 0,
+                      "text": "2 units"
+                    }
+                  ]
+                }
+              },
+              "canonicalId": {
+                "state": "unknown",
+                "reason": "unverified"
+              },
+              "confidence": {
+                "state": "unknown",
+                "reason": "not_reported"
+              },
+              "category": {
+                "state": "unknown",
+                "reason": "missing"
+              },
+              "storage": {
+                "state": "unknown",
+                "reason": "not_observable"
+              },
+              "unitPrice": {
+                "state": "unknown",
+                "reason": "missing"
+              },
+              "lineTotal": {
+                "state": "unknown",
+                "reason": "missing"
+              },
+              "tax": {
+                "state": "unknown",
+                "reason": "missing"
+              },
+              "discount": {
+                "state": "unknown",
+                "reason": "missing"
+              }
+            }
+          ],
+          "merchantName": {
+            "state": "known",
+            "value": "Synthetic store",
+            "basis": "source_extraction",
+            "evidence": [
+              {
+                "kind": "source_text",
+                "documentId": "receipt-repaired",
+                "sourcePosition": 0,
+                "text": "Synthetic store"
+              }
+            ]
+          },
+          "invoiceNumber": {
+            "state": "unknown",
+            "reason": "missing"
+          },
+          "purchaseDate": {
+            "state": "unknown",
+            "reason": "missing"
+          },
+          "totalAmount": {
+            "state": "known",
+            "value": {
+              "amountMinor": 1200,
+              "currency": "VND"
+            },
+            "basis": "source_extraction",
+            "evidence": [
+              {
+                "kind": "source_text",
+                "documentId": "receipt-repaired",
+                "sourcePosition": 0,
+                "text": "{'amountMinor': 1200, 'currency': 'VND'}"
+              }
+            ]
+          },
+          "tax": {
+            "state": "unknown",
+            "reason": "missing"
+          },
+          "discount": {
+            "state": "unknown",
+            "reason": "missing"
+          }
+        }
+      }
+    }
+  ]
+}

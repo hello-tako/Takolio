@@ -1,0 +1,88 @@
+{
+  "status": "CLIENT_FOCUSED_LOCAL_PASS",
+  "files": [
+    {
+      "path": "src/web/services/auth.ts",
+      "sha256": "fab92ab6e17ecbfc4b3dda43477b408799fbee53a023c60a92450419abf49311"
+    },
+    {
+      "path": "src/web/services/auth-otp-retry.ts",
+      "sha256": "8a2a3e695caa9836099b2c8fa8891a2935b10733da7ee5642cb50b9947653ee2"
+    },
+    {
+      "path": "src/web/pages/AuthPage.tsx",
+      "sha256": "55eb30cc25899bc82d224d0fa7f436d93b2a8977745a083f5852055aecfadfa6"
+    },
+    {
+      "path": "src/web/features/auth/auth-shared.ts",
+      "sha256": "bb3a23577859468719cb8c859a5fb510409ee2cbe57e56e521c4cb2dee7bc106"
+    },
+    {
+      "path": "src/web/features/auth/ForgotPasswordMode.tsx",
+      "sha256": "dbd3365503b1691f4020cb235df64629fa83f0b72845be3714ed41112ae3e67b"
+    },
+    {
+      "path": "tests/unit/auth-otp-client.test.ts",
+      "sha256": "590d47d3d88d94a60278fb38bb62447032215177a8c311a4fb805f66c590fdbc"
+    },
+    {
+      "path": "tests/unit/auth-verify-route.test.tsx",
+      "sha256": "c9f0c7d2f238323a075ff3f9d3b28e8db1ba93e4e67720b9d51d7c77b676d122"
+    }
+  ],
+  "focusedRuns": [
+    {
+      "path": ".artifacts/backend-b01a-a2/client-focused-first.log",
+      "sha256": "6a410e3c2ed0cdb7760a1fd7d9525a0245ba6f1d94fe5357dec4a5f82b5f2d42",
+      "exitCode": 0,
+      "filesPassed": 7,
+      "testsPassed": 109
+    },
+    {
+      "path": ".artifacts/backend-b01a-a2/client-focused-expanded.log",
+      "sha256": "932317bdd9ab24f46811163c62e0faee05f5a626f3b8dceed5d9cdd4fd8646a4",
+      "exitCode": 0,
+      "filesPassed": 7,
+      "testsPassed": 120
+    },
+    {
+      "path": ".artifacts/backend-b01a-a2/client-focused-final.log",
+      "sha256": "b0928157d59dd29dc6038e4c5e3f339f0f56ba0c536cf465ef01046b6c2fa18d",
+      "exitCode": 0,
+      "filesPassed": 7,
+      "testsPassed": 122
+    },
+    {
+      "path": ".artifacts/backend-b01a-a2/client-focused-pending.log",
+      "sha256": "ec4e17bf770ba80bb759d914335012f03b194abe13027dc9113cc4fbb723d631",
+      "exitCode": 0,
+      "filesPassed": 7,
+      "testsPassed": 123
+    }
+  ],
+  "developmentObservation": {
+    "retainedRawLog": false,
+    "testsPassed": 39,
+    "testsFailed": 8,
+    "filesPassed": 2,
+    "filesFailed": 1,
+    "reason": "Legacy delivery assertions expected true without otpDelivered metadata; updated fixtures explicitly confirm delivery where relevant."
+  },
+  "additionalChecks": [
+    {
+      "command": "pnpm exec eslint src/web/services/auth.ts src/web/services/auth-otp-retry.ts src/web/pages/AuthPage.tsx src/web/features/auth/auth-shared.ts src/web/features/auth/ForgotPasswordMode.tsx tests/unit/auth-otp-client.test.ts tests/unit/auth-verify-route.test.tsx",
+      "exitCode": 0,
+      "scope": "Only seven client-owned paths"
+    },
+    {
+      "command": "git diff --check -- src/web/services/auth.ts src/web/services/auth-otp-retry.ts src/web/pages/AuthPage.tsx src/web/features/auth/auth-shared.ts src/web/features/auth/ForgotPasswordMode.tsx tests/unit/auth-otp-client.test.ts tests/unit/auth-verify-route.test.tsx",
+      "exitCode": 0
+    }
+  ],
+  "limits": [
+    "No full suite, build or global typecheck executed by client agent.",
+    "No browser/hosted D1/provider/deploy claim.",
+    "Verify-context storage remains the established five metadata keys.",
+    "Retries before trusted server epoch metadata remain new admissions."
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "classification": "BOUNDED_LOCAL_DEPENDENCY_COMPATIBILITY_PROBE",
+  "mode": "d1",
+  "nodeVersion": "v24.16.0",
+  "platform": "darwin",
+  "architecture": "arm64",
+  "startedAtUtc": "2026-10-11T19:36:54.714Z",
+  "sourceHashes": {
+    "package.json": "01deff03e4e186ff0aba0ae79d7e2cff14abfc7ac4492da94cd02f3b1326768c",
+    "pnpm-lock.yaml": "abeb9f1b597dff83f24ebf907653e109fe6b1e82126994e18504febc19d1b74c",
+    "docs/backend-upgrade/b08-local-remediation/local_compatibility_probe.mjs": "363304e8f77191ff836a30539323ab7baff27891b2406e8e7a68638a3fbfaacf"
+  },
+  "sourceValuesOrCredentialsPublished": false,
+  "externalCredentialValidation": false,
+  "result": {
+    "checks": [
+      {
+        "case": "same_database_id_different_persistTo_directories",
+        "status": "PASS",
+        "foreignTableCount": 0
+      },
+      {
+        "case": "persistTo_survives_two_workerd_restarts",
+        "status": "PASS",
+        "survivingRowCount": 2
+      },
+      {
+        "case": "actual_existing_local_D1_helper_with_tiny_synthetic_schema",
+        "status": "PASS",
+        "survivingRowCount": 1
+      }
+    ],
+    "wranglerVersion": "4.149.0",
+    "persistenceOutsideRepository": true,
+    "persistenceOptions": {
+      "local": true,
+      "persist": true,
+      "persistTo": "two distinct OS-private-temp directories",
+      "forceLocal": true,
+      "watch": false
+    },
+    "sourceHashes": {
+      "tests/helpers/local-d1-worker.mjs": "5539c327b5cab9f6bc4a13180b55668ac460b9f2237f5f4d48cde9b4f964c411"
+    },
+    "limits": [
+      "Tiny synthetic schema only; full 40-migration replay and remote D1 are separate gates.",
+      "Local durable restart proof does not certify production persistence or rollout."
+    ]
+  },
+  "status": "PASS",
+  "finishedAtUtc": "2026-10-11T19:36:56.435Z"
+}

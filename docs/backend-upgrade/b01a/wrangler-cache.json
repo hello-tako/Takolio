@@ -1,0 +1,12 @@
+{
+  "fetchedAtUtc": "2026-10-11T05:07:37.054536+00:00",
+  "url": "https://registry.npmjs.org/wrangler/latest",
+  "latest": "4.149.0",
+  "lastUpdate": 1791695257022,
+  "rawPath": ".artifacts/backend-b01a/wrangler-registry.json",
+  "rawSha256": "38ab740887c8d83da394f9d8afca5cd558dbe4c3f579fe6d4b37c511f3ac9ac9",
+  "taskTmpdir": "/private/tmp/takosan-b01a-wrangler-tac62j2a",
+  "cachePath": "/private/tmp/takosan-b01a-wrangler-tac62j2a/update-check/wrangler-latest.json",
+  "installedWrangler": "3.114.17",
+  "effect": "actual-registry task cache only; installed dependency unchanged"
+}

@@ -42,7 +42,7 @@ export const Header: React.FC<HeaderProps> = ({ showBack = false, title, subtitl
           </div>
         ) : (
           <Link to="/" className="tap-target flex items-center gap-2">
-            <img src={TAKOSAN_BRAND.logos.horizontal} alt="Takosan" className="h-8 w-auto" />
+            <img src={TAKOSAN_BRAND.logos.horizontal} alt="Takosan" width={300} height={72} className="h-10 w-auto" />
           </Link>
         )}
 

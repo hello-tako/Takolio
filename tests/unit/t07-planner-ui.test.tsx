@@ -62,7 +62,7 @@ async function mount(path: string) {
   root ??= createRoot(container);
   await act(async () => {
     root!.render(<QueryClientProvider client={queryClient}>
-      <MemoryRouter initialEntries={[path]} future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+      <MemoryRouter initialEntries={[path]} useTransitions={true}>
         <PlannerRoutes />
       </MemoryRouter>
     </QueryClientProvider>);

@@ -1,0 +1,26 @@
+{
+  "observedAtUtc": "2026-10-11T03:20:21.811921+00:00",
+  "test": "tests/unit/production-catalog-import-inspection.test.mjs",
+  "function": "authorizedInspection",
+  "subprocessParentPid": 15851,
+  "subprocessPid": 16817,
+  "childElapsed": "11:33",
+  "sourceUnchanged": true,
+  "childStack": "Python json.load(sys.stdin) -> read waiting for stdin EOF",
+  "parentStack": "Node SyncProcessRunner/uv event loop waiting for subprocess",
+  "action": "SIGTERM task-owned hung Python child to unblock and retain initial full-suite failed result",
+  "samples": [
+    {
+      "path": ".artifacts/backend-b01b/hung-worker-sample.log",
+      "sha256": "8d1835c9f31682775e1c0e7b0fc9142143b46dd644768e4441df7f86d331c344",
+      "preservedLogPath": "docs/backend-upgrade/b01b/logs/hung-worker-sample.log.gz",
+      "preservedGzipSha256": "07a4e468a551789ccf8b6adc771ed531c02ae5a74c7141d20b171950edcc5993"
+    },
+    {
+      "path": ".artifacts/backend-b01b/hung-python-sample.log",
+      "sha256": "5a59574584ffe3fb4e2f0dee1c5f1abe0286fa84996ce6ca180ea8c46d15396b",
+      "preservedLogPath": "docs/backend-upgrade/b01b/logs/hung-python-sample.log.gz",
+      "preservedGzipSha256": "11f0b9ae8ace2e5790433b76dd0545eb3a6604700d663cb56cb5d4a52b1ca464"
+    }
+  ]
+}

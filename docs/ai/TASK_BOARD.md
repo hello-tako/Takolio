@@ -1,3 +1,592 @@
+# Integrated release candidate after repository transfer - 2026-10-12 JST
+
+**Task/status:** LOCAL_VALIDATED_FINAL_HOSTED_AND_DEPLOYMENT_PENDING.
+Authorized: integrate Brand66, normal protected merge67, staging0040/deploy,
+production0040/deploy through existing Environment approval.
+
+**Source:** hello-tako/Tako-san, unchanged ID1385308553; implementationb2fc564f3ff39bcd15dfb6bcb8f32912893b0506;
+main652e0d7632745e9b77cda4b5b3caac83a3ec1015. PR67 draft. Full Brand6114a43e
+retained via c8c151eb. Worktree /Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo.
+
+**Changes/evidence:** Tailwind4.3.3 official compiler and measured compatibility;
+strict OTP recovery/certification and0040 exact-main/schema fences; transferred
+repository ID+name check; native Node22SQLite helper.319files/7610tests PASS on
+Node22, lint/types/40migrations/production-flagsbuild/audit0 PASS.94production-build
+E2E PASS,198responsive visual checks0issues,40paired+12state exact,18native checks,
+3PWA checks PASS. Earlier browser receipts preserve their actual SHA; runtime bytes
+unchanged since e869da7e. Pinned Semgrep/zizmor0, Syft500components; Gitleaks17
+context-reviewed/0unresolved, raw findings status retained. Commands/hash/source
+scope/failures and limits: docs/backend-upgrade/final-local-completion/validation.json
+and RESULT.md. First hosted Node22bundling failure fixed;839bdCIcancelled during
+account transfer, not PASS. Original checkout untouched.
+
+**Remote/next:** GitHubCLIhello-tako valid; transferred secrets/variables preserved.
+Production/staging still652e..., D1catalog500/cutovertrue/canary0/T20pairedtrue.
+No0040/merge/deploy yet. Require exact final PR CI, merge commit, exact main-push CI;
+staging0040 then same-SHAdeploy/authority/PWA verification; production0040 approval
+then same-SHAdeploy/recovery/monitoring. Environment reviewer vn-taphoanhatung
+remains required, cannot be bypassed by hello-tako admin rights. Real inbox/OCR/
+provider/human ingredient/device/protectedbilling/SLO evidence stays open.
+
+---
+
+# B03 receipt preprocessing final checkpoint - 2026-10-12 JST
+
+**Task/status:** LOCAL_IMPLEMENTATION_VERIFIED_WITH_BLOCKING_RELEASE_GATES.
+Implementation a0165c45f6d34c0a4c35c676613d6716f872c534; base 85c600542949778168527a4214960d553ce7a86a.
+Branch codex/backend-b03-preprocessing; canonical worktree
+/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo.
+
+**Delivered:** receipt-only <=2000px/512KiB original PNG/JPEG preservation, bounded
+PNG derivative then existing JPEG82fallback. Caller/gallery opt-in; camera/photo
+codec unchanged.29helper+3caller tests; native124valid cases+damaged fallback,
+3session/cancel fences,60photo outputs byte-identical. Actual running ScanPage
+5file-input submissions/2mode-change-unmount races,0stale requests/outbox/writes.
+4policy paired Apple Vision: VIcandidate642/672vs619/672control; JA647/672unchanged.
+Remaining errors retained; labels/fridge semantics not provider certification.
+
+**Checks:** clean committed316files/7642tests PASS138.65s; focused3files/47;
+frozen install/lint/bothTS/40migrations/build/browser/page/invariants PASS.
+4614protected base files exact; CSS134861bytes identical; SW actual commit token.
+Full audit1HIGHbraces remains, prod0; security release gateFAILED, no waiver.
+Two initial page harness failures and corrected token-scope/invariant assumptions
+retained; exact commands/source/evidence hashes in validation.json.
+
+**Limits/next:** original checkout untouched. No paidAI/provider activation/remote
+write/deploy/mail/push/PR/merge. Real240image/independent labels/device/EXIF/provider
+facts/budget/security/human ingredient/protectedbilling/inbox/hosted/SLO/release
+acceptance still open. See ../backend-upgrade/b03-preprocessing/RESULT.md and
+NEXT_ACTIONS.md. Final docs checkpoint references verified implementation and
+retains historical status suffixes; full masterplan is not release-complete.
+
+---
+
+# B03 receipt preprocessing implementation - 2026-10-12 JST
+
+**Task/status:** LOCAL_CANDIDATE_IMPLEMENTED_FINAL_GATES_PENDING.
+Active packet docs/backend-upgrade/b03-preprocessing/PLAN.md; base85c60054;
+branch codex/backend-b03-preprocessing. Canonical worktree
+/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo.
+
+**Changes:** receipt-only <=2000px/512KiB PNG/JPEG original preservation; otherwise
+bounded PNG derivative then compatible JPEG82. Gallery caller opts in; default
+photo/camera codecs unchanged. Session/cancel/encoder fallback guards covered.
+Four policies compared on120valid synthetic variants plus damaged input; actual
+Apple Vision candidate VI642/672 vs JPEG82control619/672, JA647/672 unchanged.
+60photo outputs byte-identical; native PNG derivative/fallback/noisy/3200px cases.
+Actual ScanPage file input/API interception/navigation and2cancellation races;
+no inventory/confirmation/provider calls. Synthetic quality is not certification.
+
+**Checks/limits:** focused3files/47tests and discovery lint/bothTS PASS. Two page
+harness failures (virtual JSX import transform, wrong fixture filename) retained
+and corrected. Final clean-source gates pending. Full advisory remains open;
+real/device/provider/privacy/security/data/hosted/release gates remain required.
+No paid calls/remote writes/deploy/mail/push/PR/merge; original checkout untouched.
+Next: commit candidate after review, run all local gates, record exact receipt.
+
+---
+
+# B03a synthetic image final checkpoint - 2026-10-12 JST
+
+**Task/status:** SYNTHETIC_LOCAL_TESTS_COMPLETE; PRODUCT_RELEASE_GATES_OPEN.
+Implementation7323a0e4dea33953c0bf966742766aa4847f8b1c; base receipt
+9e5860806c2d7be6a9daefbb99695885c5e72c4f; branch codex/backend-b03a-synthetic-images.
+Canonical worktree /Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo.
+
+**Delivered:** 24 source documents / 120 raster variants +1damagedJPEG; VI/JA
+invoices, labels and fridge illustrations; pinned OFL Japanese subset. Source-first
+TEST_ONLY labels, VND/JPY, duplicate positions, missing-field UNKNOWN, rotated
+visual evidence and split/hash binding. Real Apple Vision on121originals and121
+native-browser outputs; native input/bitmap/canvas/FileReader cap/MIME/decode and
+3session/cancel fences. Adapter fetch intercepted; V1 rejects null, V3 preserves
+UNKNOWN. New synthetic tests28; original four receipts/nine symbolic cases intact.
+
+**Checks:** clean committed315files/7610tests PASS184.536s; focused7files/49tests;
+frozen install/lint/bothTS/40migrations/build PASS.4593protected files exact;
+CSS134861bytes identical, SW exact implementationtoken. Full audit1HIGHbraces;
+production0, securitygateFAILED. Paired text: VI642/672->619/672exact; JA647/672
+unchanged; labelsVI37/39->39/39,JA35/39->38/39. Fridge object/mass recognition
+UNMEASURED. Missing submissions120/documents24/UNKNOWNslots4548 preserved.
+
+**Failures/evidence:**5initialfocused assumptions and3Buffer types corrected;
+Git filename quoting corrected with NUL records; upstream OFL one trailing space
+normalized only in docs receipt. Raw/log/asset evidence ignored; source-bound
+validation.json and verifier keep exact command/hashes and measured errors.
+
+**Limits/next:** local sample dependency solved, not real/provider certification.
+No product/auth/payment/config/package/lock/workflow/migration/public/catalog/
+provider activation or remote write/deploy/mail/paidAI/push/PR/merge. Use these
+fixtures for regression; compare preprocessing on permitted real VI images before
+runtime edits, then real labels/provider bounded benchmark and existing upstream
+security/human ingredient/protectedbilling/hosted/SLO/release gates. See
+../backend-upgrade/b03a-synthetic/RESULT.md and NEXT_ACTIONS.md. Original checkout
+untouched; historical checkpoint suffixes retained.
+
+---
+
+# B03a synthetic image extension in progress - 2026-10-12 JST
+
+**Task/status:** SYNTHETIC_IMAGES_IMPLEMENTED_FINAL_GATES_PENDING.
+Active packet docs/backend-upgrade/b03a-synthetic/PLAN.md; base receipt
+9e5860806c2d7be6a9daefbb99695885c5e72c4f; branch codex/backend-b03a-synthetic-images.
+Canonical worktree /Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo.
+
+**Changes:** 24 source documents / 120 real raster variants plus damaged JPEG;
+VN/JP invoices, labels and fridge illustrations. Source-first TEST_ONLY labels,
+VND/JPY, duplicate occurrences, missing-field UNKNOWN and rotated visual regions.
+Actual local Apple Vision and native Chromium preprocessing/paired OCR; adapter
+transport tests intercept fetch. V1 UNKNOWN remains rejected; V3 represents it.
+SYNTHETIC_IMAGE enum only extends offline metadata; historical fixtures preserved.
+
+**Checks:** focused7files/49tests, lint and both TS pass at discovery checkpoints.
+Full clean-source install/test/40migration/build gates remain pending. Initial
+5focused failures and3Buffer typing errors are retained then corrected. Paired
+local OCR preserves worse VN receipt text after browser JPEG; no threshold waiver.
+
+**Limits/next:** no runtime/provider/payment/auth/config/lock/migration/public or
+catalog change, no real-photo/independent-label/product-Qwen certificate. No remote
+write/deploy/mail/paidAI/push/PR/merge. Complete clean-source gates and aggregate
+receipt. Existing upstream security/human ingredient/hosted/release gates remain.
+
+---
+
+# B08 dependency mitigation final checkpoint - 2026-10-12 JST
+
+**Task/status:** LOCAL_MITIGATION_VERIFIED_WITH_BLOCKING_RELEASE_GATES.
+Implementation30f1630b63c782de9e6fd37d8726cdadae0fffea; patch0f52b1963c1b2075ba2d47f4cd05b3c4b3d6a495;
+base receipt b9612d199bbad57efbe71a423ab97b41fab8f3af; branch codex/backend-b08-tailwind-feasibility.
+Canonical worktree /Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo.
+
+**Delivered:** owned pnpm braces3.0.3 fixed128-depth parser/walker patch; original
+versions/overrides/glob behavior retained.59new tests,756upstream differential
+vectors0mismatches; fresh offline frozen install7JSfiles exact. Unpatched default
+Node24 does not crash on4000-container strings here; explicit512KiB children
+reproduce6stack failures, patched12/12controlled rejections. No all-DoS claim.
+Private official Tailwind4.3.3 removes advisory but fails compatibility:20actual-route
+style pairs/15pixel pairs and6state pairs differ, all baseline controls exact.
+Major candidate stays unapplied; specific migration/browser/native plan recorded.
+
+**Checks:** clean committed313files/7582tests PASS156.645s; focused3files/152tests
+PASS; frozen install/lint/both TS/40migrations/sequential build PASS. CSS134861bytes
+exact, actual SW commit token.4564protected base files exact; product sources,
+config/public/workflows/40migrations/payment/auth/data/provider authority unchanged.
+Pinned4557-file scan:853/853Semgrep0errors/findings;17unchanged captured secret
+candidates0unresolved;2HIGHzizmor;518declaredSyft components. Full audit1HIGH,
+production0; securitygateFAILED. No suppression/waiver/hosted certificate.
+
+**Failures/evidence:** firstfull2files/11fail from omittedTMPDIR /var-vs-/private/var;
+prior canonical /private/tmp fixes assertions unchanged. Import-order warnings,
+pixel-control drift, nominal-route fallback, YAML helper/default-stack assumption
+and generatedpatchcontext whitespace warnings retained.39command metadata/log
+hashes and9bounded attachments; rawlogs/scans/pointers/candidate stay private.
+Final docs-only receipt/current-SHA scan/verifier follow in ignored artifacts.
+
+**Limits/next:** upstream patched owner or certified Tailwind4 compatibility,
+independent/hosted review, permitted realOCR/labels/provider facts/paid budget,
+human ingredient/fourdata blockers, explicitly protectedbilling/inbox/staging/
+edge/load/chaos/SLO/alerts/retention/access/rollback/release remain required.
+Original checkout unchanged; no remote write/deploy/mail/paidAI/push/PR/merge.
+See docs/backend-upgrade/b08-tailwind-feasibility/RESULT.md, LOCAL_VALIDATION.md,
+MIGRATION_PLAN.md and NEXT_ACTIONS.md. Historical suffixes remain immutable.
+
+---
+
+# B08 remaining dependency mitigation - 2026-10-12 JST
+
+**Task/status:** LOCAL_FIXED_DEPTH_MITIGATION_IMPLEMENTED_FINAL_GATES_PENDING.
+Active packet docs/backend-upgrade/b08-tailwind-feasibility/PLAN.md; branch
+codex/backend-b08-tailwind-feasibility; base receipt b9612d199bbad57efbe71a423ab97b41fab8f3af.
+Canonical worktree /Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo.
+
+**Changes:** official Tailwind4.3.3 candidate is private and rejected:20 actual-route
+pairs differ in computed styles,15 differ visibly;6 focus/hover/forced-color pairs
+also differ with exact baseline recovery. Corrected candidate build/frozen install/
+full and production audits pass;437 declared graph removes braces. No product
+migration applied. MIGRATION_PLAN.md records specific cascade/default/browser/
+native-toolchain acceptance. Fixed-depth pnpm patch of braces3.0.3 bounds parser
+and compile/expand/stringify walkers to128; all package versions/overrides unchanged.
+
+**Executed checks:**59 focused tests and types PASS;756 upstream differential
+vectors0 mismatches. Default Node24 unpatched control does not crash here; explicit
+512KiB children reproduce6 stack failures, patched12/12 bounded rejections. First
+import-order warnings, pixel-control drift, incorrect nominal-route probes, YAML
+helper resolution and default-stack control assumption are retained and corrected.
+Full committed-source gates and final scanner/receipt follow; no release claim.
+
+**Limits/next:** product src/config/public/Worker/payment/auth/data/provider authority,
+workflows and40 migrations protected. High published advisory remains blocking;
+local patch is not a suppression/upstream release/all-resource-exhaustion fix.
+No independent agent/hosted/native-device/release certification is claimed.
+No remote write/deploy/mail/paid AI/push/PR/merge; original checkout unchanged.
+Complete local gates, protected-byte review and final source-bound receipt; then
+published compatible patch/certified major migration and existing external gates.
+Historical receipts and checkpoint suffixes follow unchanged.
+
+---
+
+# Backend program final local aggregate - 2026-10-12 JST
+
+**Task/status:** LOCAL_IMPLEMENTATION_VERIFIED_WITH_BLOCKING_RELEASE_GATES.
+Final implementation41da180a941b348c6385895628b2bdd61b666763; branch
+codex/backend-b08-log-privacy; immutable parent receipt efffb4f84b52eb42979c69547b6bd7263963099a.
+Canonical worktree /Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo.
+
+**Delivered:** prior strict auth/email/offline ScanV3/provider-cancellation/dormant
+budget/data-pilot/whole-week/shopping/cooking/API/telemetry/toolchain work remains
+verified in its exact receipts. Final87-producer/28file review removes41raw exception
+arguments and bounds cleanup/shadow errors and public media path diagnostics.
+Responses/commands/SQL/retention/catalog/modes/scheduler/throttle stay compatible.
+
+**Checks:** clean committed312files/7523tests PASS; focused9files/132tests PASS;
+frozen install/lint/both TS projects/40-migration smoke/sequential build PASS.
+CSS134861bytes identical. Fresh scan4511files/SG849complete0errors0findings;
+GL17 unchanged provenance0unresolved; zizmor2HIGH; Syft518 declared components.
+Full audit1high; production0. Security gateFAILED, no production certificate.
+15command logs/9attachments preserved after38-input privacy check0issues0overlaps.
+First TS7006 and reconciliation digest-order assertion failures retained and fixed.
+
+**Limits/next:** original checkout unchanged; protected payment/auth business logic/
+package/lock/workflows/config/Worker/migrations/assets/data/provider authority intact.
+Real OCR/human data/provider bounds/pricing/privacy/retention, paid benchmark budget,
+protected billing, inbox/hosted/staging/edge/load/chaos/SLO/alerts/retention/rollback/
+release gates remain open. No remote writes/deploy/mail/paid AI/push/PR/merge.
+Final docs are a separate receipt with postcommit verification/current-SHA scan in
+ignored artifacts. See docs/backend-upgrade/b08-log-privacy/RESULT.md and NEXT_ACTIONS.md.
+
+---
+
+# B08 business log privacy in progress - 2026-10-12 JST
+
+**Task/status:** LOCAL_LOG_PRIVACY_FINAL_GATES_IN_PROGRESS.
+Active packet: docs/backend-upgrade/b08-log-privacy/PLAN.md.
+Branch codex/backend-b08-log-privacy; immutable base receipt efffb4f84b52eb42979c69547b6bd7263963099a.
+
+**Work:** final review of the request-only telemetry boundary found41 raw exception
+log arguments, cleanup raw messages, mutable shadow error names and unconfirmed
+public media path IDs. Minimal local diagnostic corrections retain HTTP/data/
+cleanup/catalog behavior. Independent producer provenance review and representative
+adversarial tests are in progress. No whole-platform privacy/security certificate.
+
+**Checks:** focused9files/132tests PASS after emitter own-data snapshots. Lint PASS;
+first typecheck FAIL TS7006 in a new test callback, narrow unknown annotation fixed;
+recovery and clean committed-source full gates follow. Inherited B08 implementation remains309files/7463tests verified separately.
+All prior receipt documents remain immutable. Package/lock/workflows/40migrations,
+Worker entrypoint/config/payment/auth logic/data/provider authority unchanged.
+No remote write/deploy/mail/paid AI/push/PR/merge. External production gates remain
+listed in the immutable B08 NEXT_ACTIONS; final aggregate receipt follows.
+
+---
+
+# Backend program and B08 aggregate checkpoint - 2026-10-12 JST
+
+**Task/status:** LOCAL_IMPLEMENTATION_VERIFIED_WITH_BLOCKING_RELEASE_GATES.
+Implementation `d3cce9560593a263e70f85646e061291e8829b56`; branch
+codex/backend-b08-local-remediation; parent immutable receipt
+2c42984b2839d1b03c3b0ccfb89998d3535a48d8. Canonical isolated worktree:
+/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo. User checkout unchanged.
+
+**Delivered:** strict OTP/session/membership and bounded email; offline ScanV3/
+evaluation, governed providers/cancellation and dormant budget; ingredient pilot;
+whole-week/shopping/cooking and Week extraction/OpenAPI; bounded telemetry.
+B08 patches direct dependency owners and compatibility harnesses, hardens67 action
+refs and SHA/credentials/cache contracts across10 workflows, repairs the TSX parser
+and adjudicates17 captured secret matches without suppressions.
+
+**Checks:** clean committed309 files/7463 tests PASS; frozen install/lint/types/
+40-migration smoke/sequential build PASS. Local D1 exact40/reapply0/pending0/schema[]/
+FK[]/quick_checkok; durable restart/directory isolation PASS. CLI10 help contracts,
+fixed2024-11-01 types generation and Worker compilation, isolated dry-run PASS.
+CSS134861 bytes identical;36 native exports exact vectors/PNG pixels;20 initial
+browser checks and5 final built SW/auth/offline checks PASS. Final build token binds
+implementation; missing release UI flags correctly remain REJECTED.
+
+**Security:** full audit41 to1high (unpatched braces); production2moderate to0.
+Pinned scanner24 selftests PASS; Semgrep846/846 sources/0errors/0findings, Gitleaks17
+retained matches (0 unresolved in reviewed captured locations), zizmor72 to2 actual
+v4-cache-model findings, Syft518 declared components. Security gate remains FAILED;
+no history/installed binary/license/production certificate. All58 actual command
+logs and bounded attachments are privacy-reviewed, hashed and retained.
+
+**Failures/limits/next:** initial full4 files/8 tests FAIL and corrected installs/
+types/parser/native/browser probe failures retained. Receipt export Unicode filename
+handling failed once, then NUL traversal corrected; runtime source unchanged.
+Applied migrations, Worker/payment/PayOS/catalog/provider activation and runtime
+identities/date remain protected. Real OCR/human ingredient review/provider token/
+output/pricing/privacy/retention, paid benchmark budget, protected billing scope,
+controlled inbox/staging/edge/load/SLO/rollback/hosted release gates remain required.
+No remote D1/R2 write/deploy/paid AI/real email/push/PR/merge. Final docs are a separate
+receipt; current release SHA requires fresh scanner/hosted acceptance. See
+`docs/backend-upgrade/b08-local-remediation/RESULT.md` and `NEXT_ACTIONS.md`.
+
+---
+
+# B08 local remediation in progress - 2026-10-12 JST
+
+**Task/status:** B08_LOCAL_REMEDIATION_IN_PROGRESS.
+Active packet: docs/backend-upgrade/b08-local-remediation/PLAN.md.
+Branch codex/backend-b08-local-remediation; base receipt
+2c42984b2839d1b03c3b0ccfb89998d3535a48d8. Parent program implementation
+7ef2f8407d3a6a958c78146db3b5c9a9f0990b78 is verified: 309 files / 7463 tests,
+lint/typecheck/migrations/build PASS; immutable evidence retained on parent branch.
+
+**Work:** continue privately evidenced secret candidate adjudication, minimal TSX
+parser compatibility, direct owner dependency remediation and appropriate local
+compatibility checks. Source freeze records prior bytes; it does not prohibit
+reversible local work authorized by the user. No new green security claim yet.
+
+**Checks/limits:** prior aggregate packet verifier PASS on clean receipt commit:
+50 source / 30 candidate / 1847 protected, 86 commands / 150 public logs / 41 attachments.
+Current full/production audits and repository scanner still retain their failures.
+Preserve applied migrations, catalog authority, protected payment runtime and
+release infrastructure. External data/review/provider/inbox/staging/release gates
+remain separate. Final aggregate report follows all executable authorized local work.
+
+---
+
+# Backend program aggregate checkpoint - 2026-10-12 JST
+
+**Task/status:** LOCAL_IMPLEMENTATION_VERIFIED_WITH_BLOCKING_SECURITY_AND_EXTERNAL_GATES.
+Canonical worktree /Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo;
+branch codex/backend-program-20261011. Implementation `7ef2f8407d3a6a958c78146db3b5c9a9f0990b78`;
+base 1963c469e2e3bd4819cda6bb9ef8162101ad523a. Main read-only reverified
+652e0d7632745e9b77cda4b5b3caac83a3ec1015. Receipt is a separate docs checkpoint.
+
+**Changes:** B01c current cookie/membership authority; offline ScanV3 contracts,
+scorer and version fences; provider control and durable cancellation; dormant AI
+budget kernel; evidence-bound ingredient review and prepared pilot; whole-week/
+shopping/cooking fixes; Week service extraction and OpenAPI candidate; bounded
+request telemetry and executable pinned security scanner candidate under docs.
+Payment runtime is unchanged; its existing auth test fixture adds household/
+membership only, with every assertion independently proven unchanged.
+
+**Checks:** committed-source full 309 files / 7463 tests PASS; lint/typecheck/
+migration smoke/sequential build PASS, clean tree before/after each required gate.
+Focused 209 and auth/payment 126 PASS; isolated local D1 exact 40 / reapply 0 / pending 0 /
+schema [] / FK [] / quick_check ok; 387 client assets byte-identical under matching inputs.
+Security scanner 24 selftests PASS; independent decoder/cache/bytecode/protected
+Gitblob review PASS. Fifty application/test/evaluation sources and 30 candidate
+inputs frozen; 1847 protected files and 40 migrations unchanged. Exact commands,
+failures, log hashes and review receipts: docs/backend-upgrade/program-20261011.
+
+**Limits/next:** security is BLOCKED: audit 41 full (2 critical / 16 high / 19 moderate / 4 low),
+2 production moderate; Gitleaks 16 unreviewed candidates, zizmor 72 findings, Semgrep 1 parser
+error. Syft 786 declared components does not certify installed binaries or licenses.
+No workflow is enabled; no suppressions/exceptions or clean-security claim.
+Next local work is isolated dependency/workflow/parser remediation plus private
+secret triage. Real OCR corpus/human ingredient review, provider token/pricing/
+retention evidence, inbox/staging/SLO and protected billing/release tasks remain
+required. V3 writer/client, new providers, candidate budget SQL/runtime and V2 data
+cutover remain off/unapplied. No remote mutation/deploy/paid provider/real mail/
+push/PR/merge or production certificate. Historical checkpoints follow unchanged.
+
+---
+
+# Backend program aggregate checkpoint - 2026-10-12 JST
+
+**Task/status:** LOCAL_IMPLEMENTATION_COMPLETE_FINAL_GATES_IN_PROGRESS.
+Canonical worktree /Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo,
+branch codex/backend-program-20261011; base1963c469e2e3bd4819cda6bb9ef8162101ad523a.
+Current main read-only rechecked652e0d7632745e9b77cda4b5b3caac83a3ec1015.
+
+**Changes:** B01c current membership/cookie authority; offline ScanV3 contracts,
+scorer/reader fences; provider controls and cancellation; dormant durable AI budget;
+evidence-bound ingredient review/pilot sample; whole-week/closed-loop bug fixes;
+Week typed read extraction/OpenAPI candidate; bounded telemetry/security triage.
+Billing remains design-only; candidate provider/V3 writers/budget/data cutover OFF.
+
+**Checks:** focused209 PASS; frozen install/lint/typecheck/migration smoke PASS;
+isolated D1 exact40/reapply0/pending0/schema[]/FK[]/quick_checkok;
+387 web assets byte-identical under matching independent frozen builds.
+Full frozen tests and committed-source receipt are in progress. Failures and their
+corrections are retained in docs/backend-upgrade/program-20261011/STATUS.md.
+
+**Limits/next:** finish complete local gates and immutable aggregate receipt.
+Real OCR corpus/human data review/inbox/staging/SLO/provider cost/retention evidence
+and protected billing/release tasks remain required. No remote mutation/deploy/
+paid provider/real mail/push/PR/merge or production certificate. Historical source
+checkpoints follow unchanged; the current aggregate status takes precedence.
+
+---
+
+# B01a A2 local checkpoint - 2026-10-11 JST
+
+**Task/status:** B01a_A2_ROUTE_CLIENT_LOCAL_VERIFIED. OTP route/client/cleanup
+integration is locally verified; hosted release certification remains separate.
+Active packet: docs/backend-upgrade/tasks/B01a-strict-otp.md; ADR-B01a-002 accepted locally.
+
+**Repository/source:** vn-tak/Tako-san, ID 1385308553; canonical worktree
+/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo, branch
+codex/backend-b01a-integration. Base 8f55a745e08c800898555be829b93c8f1a7a5d18;
+final implementation `dcc0e1a74d2f5e3b67e13ecbb241bc04c8fafdde`. Main read-only reverified 652e0d7632745e9b77cda4b5b3caac83a3ec1015.
+Receipt records implementation and executed checks, not its own commit hash.
+
+**Changes:** all OTP paths use strict D1 admission/replay, guarded registration,
+chosen activation password, atomic reset/activation/revocation/session and pinned
+cookie authority. Client tab-memory retry keys and honest cooldown/delivery/replay UI.
+Forgot known/unknown delivery/stale parity; legacy reissue and receipt-aware cleanup.
+Scopes/imports and failed/locked legacy evidence retained; guest transfer 409 deferred.
+
+**Checks:** final committed-source full 293 files/7037 tests PASS;
+recovery focused 15 files/454 tests PASS; lint/typecheck/install/migration smoke/
+sequential build/freeze PASS. Isolated local D1 exact 40 ledger/reapply none/gate[]/
+FK[]/quick_check ok PASS. 23 source and 369 protected records; all 40 migrations unchanged.
+Independent agent source review no blocking findings. First full 4 files / 25 tests FAIL,
+first combined 8 FAIL and development fixture failures retained separately.
+Audit FAIL: full 2 critical / 16 high / 19 moderate / 4 low; production 2 moderate / 0 high or critical; B08 pending.
+
+**Limits/next:** guest inventory transfer remains deferred; no hosted D1/inbox/
+production proof, browser E2E, hardened rollback or rotation proof. No remote DB/R2,
+real mail/paid AI/push/PR/merge/deploy. Next local scope B01c auth/tenant hardening;
+separate 0040 release/preflight/hardened rollback and controlled staging/inbox gates.
+Full backend masterplan remains in progress. See docs/backend-upgrade/b01a-a2/RESULT.md
+and LOCAL_VALIDATION.md. Historical checkpoints follow unchanged.
+
+---
+
+# B01a strict OTP A1 local checkpoint - 2026-10-11 JST
+
+**Task/status:** `B01a_A1_DORMANT_LOCAL_VERIFIED`; kernel/schema foundation only.
+Active packet: docs/backend-upgrade/tasks/B01a-strict-otp.md; ADR-B01a-001 accepted
+for dormant local A1. Full strict route/client integration remains A2.
+
+**Repository/source:** vn-tak/Tako-san, ID 1385308553; canonical worktree
+/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo, branch
+codex/backend-b01a-foundation. Base 8a9b386f46f245c727b9ac2f885bab842d5796b5;
+implementation `0649324a729b57019df61da6bceec40cd9ba1135`. Main reverified 652e0d7632745e9b77cda4b5b3caac83a3ec1015.
+Receipt checkpoint records the implementation, not its own commit hash.
+
+**Actual changes:** migration 0040, six non-cascading tables; typed D1 claim/assertion
+commands; key/time policy and real comparison coordinator; 55 kernel / 49 policy tests.
+Account-wide keyed registry, budget 5/rolling 900s, generation/cooldown and atomic
+consume/account/password/revoke/session/outcome; stale/crash never refunds.
+Legacy accounting imported once; legacy OTP/session bytes untouched. Eleven tests
+preserve historical 0039/0038 source after current tip 0040. 21 source and 319 protected
+records frozen; routes/providers/client/config/workflow/lock and all 39 applied migrations unchanged.
+
+**Executed checks:** focused 8 files / 287 tests PASS; historical recovery 331 / staging 37 PASS;
+final complete committed-HEAD 291 files / 6908 tests PASS. Install/lint/typecheck/
+migration smoke / sequential build / freeze PASS; isolated local D1, exact 40 entries,
+reapply none/gate []/FK []/quick_check ok. Initial full 4 failed files / 7 failed tests plus
+failed suite, intermediate full SIGINT exit 130, SW race build FAIL and audit-selector FAIL
+retained separately. Fresh audit exit 1: full 2 critical / 16 high / 19 moderate / 4 low;
+prod 2 moderate, 0 high / 0 critical. Earlier fixture 41 failures / test-spy type error fixed.
+Exact commands/environment/time/exit/hash/raw gzip in b01a/validation.json.
+
+**Limits/next:** coordinator dormant; live auth retains existing paths. A2 owns
+all issue/verify/reset/client integration, guarded registration/guest transfer,
+terminal issuance receipts, legacy cutover/cleanup and retention compatibility.
+Hosted D1 proof / hardened rollback / inbox certification separate. No production proof,
+real mail/paid AI/remote DB/R2/push/PR/merge/deploy. Full plan backend not complete.
+See docs/backend-upgrade/b01a/RESULT.md and LOCAL_VALIDATION.md.
+
+---
+
+# B01b email adapter A1 local checkpoint - 2026-10-11 JST
+
+**Task/status:** `B01b_A1_LOCAL_VERIFIED`; mocked provider-acceptance adapter only.
+Active packet docs/backend-upgrade/tasks/B01b-email-adapter.md.
+
+**Repository/source:** Canonical vn-tak/Tako-san, ID1385308553; worktree
+/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo, branch
+codex/backend-b01b-email. Base `98471e10d4b874219b069ec8b38a26fdd719db81`; implementation `31d5fd860ef9b65fc38ccdc664074bda348b0a8c`.
+Main reverified unchanged at 652e0d7632745e9b77cda4b5b3caac83a3ec1015.
+Documentation receipt records the implementation, not its own commit hash.
+
+**Actual changes:** email.ts bounded states/evidence, conservative ambiguity/no
+blind fallback, 8000ms/provider deadline and late-outcome fences, bounded metadata
+and private ID hashes. Only exact sender rejections permit fallback; policy/quota
+rejections terminate. 54 new lifecycle cases; 16 privacy cases updated; one typed auth
+mock changed without assertion changes. No auth route/schema/frontend/config edits.
+
+**Executed checks:** final focused 4 files / 174 tests PASS; fresh complete
+289 files / 6798 tests PASS. Full lint/typecheck/frozen install/local migrations/
+build/scope freeze PASS. Initial full interrupted/failed: 288 files / 6797 tests PASS,
+1 file/test FAIL plus 1 RPC error; task-owned Python child blocked on stdin, terminated.
+Unchanged catalog-only 163/163 PASS; final full rerun separate. Exact environment,
+commands/timing/exits/hashes/raw gzip in b01b/validation.json and LOCAL_VALIDATION.md.
+Fresh audit exit 1: full 2 critical / 16 high / 19 moderate / 4 low, prod 2 moderate, 0 high/critical;
+unchanged lockfile, B08 triage pending. No timeout/source/assertion waiver.
+
+**Operational limits:** accepted is not delivered; no inbox/bounce/provider proof.
+Legacy auth still invalidates on false and clears resend KV cooldown; across-request
+strict issuance/generation safety remains B01a. Only synthetic local tests; no real
+mail/paid AI/remote D1/R2/push/PR/merge/deploy. No production certification.
+
+**Next action:** B01a reviewed ADR + additive schema/typed commands/dormant real
+comparison kernel, concurrency/CAS0/required-write rollback tests, then all issue/
+verify/reset/client integration. Settle unknown-generation recovery, all-state
+forgot parity, reset-proof replay expiry and non-cascading abuse history. Hosted
+D1 proof/hardened rollback and B01b inbox certification remain separate gates.
+See docs/backend-upgrade/b01b/RESULT.md and B01a_PREIMPLEMENTATION_REVIEW.md.
+
+---
+
+# B00 backend baseline checkpoint - 2026-10-11 JST
+
+**Task/status:** B00_BASELINE_COMPLETE_WITH_RECORDED_FINDINGS; docs/source/local baseline, backend runtime waves not implemented. Active packet `docs/backend-upgrade/tasks/B00-baseline.md`.
+
+**Repository/source:** Canonical vn-tak/Tako-san, ID1385308553; worktree `/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo`, branch `codex/backend-b00-baseline`, source base `652e0d7632745e9b77cda4b5b3caac83a3ec1015`. Documentation checkpoint prepared from this source; its own commit hash is intentionally not claimed here. Original Frigo legacy checkout/user untracked files retained. Old origin URL redirects to same repository ID.
+
+**Actual changes:** Docs only: baseline migration/lock/catalog/V2 hashes,79routes/13groups, ownership/background effects, fresh hosted/public evidence, audit/validation, gap/release/PR triage, four detailed packets and B01-B08 supporting scopes. B00 decisions register accepted for documentation; runtime policy/key/cutover/V3/review decisions remain ADR drafts. No runtime source/migration/lockfile/flag/workflow edit.
+
+**Executed checks:** Frozen install/lint/typecheck/local migration smoke/build/recipe-seed/ingredient-audit/refresh-check PASS. Initial full6743PASS/1Wrangler5s timeout; focused/CI-only also timeout. Actual registry update-cache diagnostic makes focused32/32PASS; final full rerun: Test Files  288 passed (288); Tests  6744 passed (6744); Duration  372.06s (transform 4.95s, setup 1.29s, collect 38.75s, tests 629.50s, environment 10.44s, prepare 11.85s). Full/production audit exit1:41findings(2critical,16high,19moderate,4low)/2moderate respectively. V2 release-check exit1 EXPECTED_BLOCKED4blockers. Exact commands/environment/exits/timing/logSHA256 in `docs/backend-upgrade/b00/LOCAL_VALIDATION.md` and baseline.json; no timeout waiver or source change.
+
+**Hosted/public evidence:** CI38098775083 success and latest deploy38103079308 success on sourceSHA. ZIP digest verified against artifact11688468304. Timestamped receipt Worker versioneee43e96-53ff-40f3-9779-e10fe256e0d8, schema39/0039/FK[]/quickcheckok/catalogrel-bd00a4f53fcaeee4/500/fingerprint exact; MealCompositionV2 true, D1/cutovertrue/canary0. Public ready at2026-10-11T02:34:04.954Z confirmsSHA/D1/configok; degraded is source-emitted D1-authority warning; emaildeliveryVerifiedfalse. Receipt does not equal direct current CF version/vars query.
+
+**Database/operational state:** Only local synthetic SQLite/Worker test state and migration replay. No remote D1/R2/schema mutation, mail send, paid AI, push/PR/merge/settings change or deploy. Direct current CFversion/vars/fullAIflags/inventoryadoption/R2bytes/inbox/SLO/retention/livejourneys unverified. V2 remains candidate; no release eligibility promotion.
+
+**Next action:** B01b adapterA1 before B01a issuance wiring; B01a reviewed ADR + typed admission/finalization commands and comparison-count tests; B03b pure candidate DTOs/cross-version-idempotency and B03a offline evaluator; B05a evidence-bound review schema. B08 tracks Wrangler ancillary-network harness and audit triage. Billing stays design/protected until explicit scope. Separate operator/data/budget/staging/release gates apply when dependent work reaches them. See `docs/backend-upgrade/tasks/INDEX.md`.
+
+---
+
+# Takosan Brand V3 - 2026-10-12 JST
+
+**Task/status:** `TAKOSAN_BRAND_V3_PR_READY`, local scope; PR #66/hosted
+CI tracked in `docs/brand/v3/CI_STATUS.md`. No merge or production deployment.
+
+**Repository/source:** `vn-tak/Tako-san`, ID `1385308553`, main baseline
+`652e0d7632745e9b77cda4b5b3caac83a3ec1015`, feature branch
+`feat/takosan-brand-v3-full-integration`. Isolated checkout in projectless work/repo.
+Implementation checkpoint `d35f4a68f4c2f6eb77f2a27742b5f1a3900075a7`.
+PR: https://github.com/vn-tak/Tako-san/pull/66.
+Hosted validate đang chạy; không tính pending thành PASS.
+
+**Actual change:** Canonical V3 contracts for legacy/kitchen; logo family, micro,
+4 mascot, safe opaque PWA icons/OG, licensed self-host Nunito. Semantic mapping
+scoped in one token authority with derived green text on soft surfaces; root legacy
+payment states retained. Entry/header/sidebar/metadata/SW cache use V3. Curated
+source/native/assets and five Vietnamese reports/evidence. No Worker/domain/auth
+logic/payment config/services/stores/migrations/dependency/CI/deploy changes.
+
+**Executed:** Input 83/83 digest/safety/dimensions; reproducible 49 exports; runtime 54
+files / 269090 bytes; glyph/weight/license hashes. Full Vitest 289 files / 6749 tests PASS
+with canonical local TMPDIR and 2 workers, no waiver. Types/full lint/local migration
+smoke and both paired-flags builds PASS; focused brand 6 files / 68 tests PASS.
+Production-build E2E 82 PASS / 4 failures: baseline ambiguous status selector H and
+source-import instrumentation E unsupported in production, both repeated on baseline.
+Auth resend/expiry 8 PASS. BEFORE 198 / AFTER 198 renders across 320..1440, zero final axe/
+overflow/broken images/navigation clipping; supplemental 15 states / 2 journeys, 12 Week-off,
+3 PWA checks PASS. Performance 3 cold/warm pairs / 3 routes, font transfer reduced, JS bundle
+near unchanged, CLS Home~0.01765, zero measured domain writes/inventory unchanged.
+
+**Failure disclosure:** Earlier full test run hit /var-vs-/private/var, missing
+historical Git blobs and existing Wrangler 5s timeout; environment repaired and full
+passed. Default dev preview bootstrap failed before app; production alternative
+used real local cookie/Worker. Dependency audit existing 16 high / 2 critical, no package
+changes; needs separate remediation. Heuristic UX script advisory FAIL; changed UI
+manually checked against guidelines and dynamic a11y evidence. Not field CWV/device/
+real Google login/email delivery/provider payment/native/screen-reader certification.
+
+**Database/deployment:** Only synthetic in-memory local fixture mutations. No
+remote credentials/secrets/migrations/deploy/production mutation or approval bypass.
+
+**Next:** Review PR with actual final hosted CI, resolve baseline test/dependency
+issues in scoped tasks, then owner-authorized staging/cache/device verification.
+Do not infer production release authorization from local checks. Preserve other
+open operational-doc PR histories when merging the prepend entries.
+
+---
+
 # Google Sign-In responsive follow-up - 2026-10-11 JST
 
 **Status:** `GOOGLE_AUTH_320_IMPLEMENTED_VALIDATION_PENDING`; not merged or deployed.

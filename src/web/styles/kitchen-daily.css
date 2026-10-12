@@ -17,7 +17,8 @@
   min-height: 44px;
 }
 .kitchen-brand-link img {
-  width: 128px;
+  width: 168px;
+  max-width: 100%;
   height: auto;
 }
 .kitchen-brand-motto {
@@ -29,7 +30,7 @@
   }
   [data-kitchen-navigation='persistent'] .kitchen-brand-motto {
     display: block;
-    color: var(--kitchen-pine);
+    color: var(--semantic-text-on-soft);
     font-size: 14px;
     font-weight: 600;
     line-height: 1.5;
@@ -47,7 +48,7 @@
   background: white;
 }
 .kitchen-icon-link:hover {
-  background: #efeee7;
+  background: var(--semantic-background-subtle);
 }
 .kitchen-page-body {
   padding: 24px 16px;
@@ -70,7 +71,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: var(--kitchen-pine);
+  color: var(--semantic-text-on-soft);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -112,7 +113,7 @@
   min-height: 44px;
   font-size: 14px;
   font-weight: 600;
-  color: var(--kitchen-pine);
+  color: var(--semantic-text-on-soft);
 }
 .kitchen-text-link:hover {
   text-decoration: underline;
@@ -192,7 +193,7 @@
   gap: 16px;
   min-height: 64px;
   padding: 16px;
-  color: var(--kitchen-pine);
+  color: var(--semantic-text-on-soft);
   font-size: 14px;
   font-weight: 600;
   background: #e9f1ea;
@@ -331,7 +332,7 @@
   z-index: 100;
   padding: 12px 16px;
   background: white;
-  color: var(--kitchen-pine);
+  color: var(--semantic-text-on-soft);
   transform: translateY(-200%);
 }
 .kitchen-skip-link:focus {
@@ -371,7 +372,7 @@
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  color: var(--kitchen-pine);
+  color: var(--semantic-text-on-soft);
   scroll-margin-block: 88px;
 }
 .discovery-filter-panel summary:hover {

@@ -1,0 +1,207 @@
+{
+  "classification": "INDEPENDENT_SECURITY_RUNNER_FINAL_REVIEW",
+  "status": "PASS",
+  "runnerSha256": "fe1d5ae269caa23899fc899922b246aaa01e3b847a46e6facafc94a8adc82b92",
+  "provenanceCache": {
+    "first": {
+      "tool": "gitleaks",
+      "status": "PASS",
+      "version": "8.30.1",
+      "executableSha256": "9340faad6cedacb19204b4f5836fd6ee97aa4df74602321650fb9578d7d8099c"
+    },
+    "afterOwnFixtureExecutableMutation": {
+      "tool": "gitleaks",
+      "status": "ERROR",
+      "reason": "TOOL_PROVENANCE_OR_EXECUTION_FAILURE"
+    },
+    "actualScannerRuntimeMutated": false
+  },
+  "bytecodeIsolation": {
+    "modifiedValidCacheUsed": false,
+    "originalSourceExecuted": true,
+    "cachePrefixIsFreshPrivateOutput": true,
+    "inheritedPythonConfigExcluded": true
+  },
+  "decoderCases": [
+    {
+      "case": "sast-partial-source-rejected",
+      "expected": "ERROR",
+      "observed": {
+        "tool": "semgrep",
+        "status": "ERROR",
+        "reason": "INCOMPLETE_SOURCE_COVERAGE"
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "sast-exact-source-clean",
+      "expected": "PASS",
+      "observed": {
+        "tool": "semgrep",
+        "status": "PASS",
+        "findingCount": 0,
+        "rules": {},
+        "severities": {}
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "sast-parser-error-rejected",
+      "expected": "ERROR",
+      "observed": {
+        "tool": "semgrep",
+        "status": "ERROR",
+        "reason": "SCANNER_REPORTED_ERRORS",
+        "scannerErrorCount": 1,
+        "findingCount": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "sast-unknown-rule-rejected",
+      "expected": "ERROR",
+      "observed": {
+        "tool": "semgrep",
+        "status": "ERROR",
+        "reason": "MALFORMED_SCANNER_OUTPUT"
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "secret-exit-disagreement",
+      "expected": "ERROR",
+      "observed": {
+        "tool": "gitleaks",
+        "status": "ERROR",
+        "reason": "SCANNER_EXIT_DISAGREEMENT"
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "secret-unredacted-rejected",
+      "expected": "ERROR",
+      "observed": {
+        "tool": "gitleaks",
+        "status": "ERROR",
+        "reason": "SECRET_REPORT_NOT_FULLY_REDACTED"
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "secret-unknown-id-hashed",
+      "expected": "FINDINGS",
+      "observed": {
+        "tool": "gitleaks",
+        "status": "FINDINGS",
+        "findingCount": 1,
+        "rules": {
+          "unknown-rule-sha256-ea4eb4e08ceb919ff3525411ddc9acf9ba0c0acca47167b2fe6af952c8ec8f59": 1
+        },
+        "severities": {
+          "SECRET_REVIEW_REQUIRED": 1
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "workflow-unknown-id-hashed",
+      "expected": "FINDINGS",
+      "observed": {
+        "tool": "zizmor",
+        "status": "FINDINGS",
+        "findingCount": 1,
+        "rules": {
+          "unknown-rule-sha256-ea4eb4e08ceb919ff3525411ddc9acf9ba0c0acca47167b2fe6af952c8ec8f59": 1
+        },
+        "severities": {
+          "HIGH": 1
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "workflow-exit-disagreement",
+      "expected": "ERROR",
+      "observed": {
+        "tool": "zizmor",
+        "status": "ERROR",
+        "reason": "SCANNER_EXIT_DISAGREEMENT"
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "workflow-ignored-finding-rejected",
+      "expected": "ERROR",
+      "observed": {
+        "tool": "zizmor",
+        "status": "ERROR",
+        "reason": "MALFORMED_SCANNER_OUTPUT"
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "sbom-empty-rejected",
+      "expected": "ERROR",
+      "observed": {
+        "tool": "syft",
+        "status": "ERROR",
+        "reason": "EMPTY_PACKAGE_INVENTORY"
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "sbom-nonempty-inventory",
+      "expected": "PASS",
+      "observed": {
+        "tool": "syft",
+        "status": "PASS",
+        "packageCount": 1,
+        "sbomSha256": "6d6943b88f67b511514e41dea4a59d168092730d472b50925bd6199a67a8440b",
+        "scope": "DECLARED_MANIFEST_AND_LOCK_GRAPH_NOT_VULNERABILITY_SCAN"
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "semgrep-malformed-json",
+      "status": "PASS",
+      "observed": {
+        "tool": "semgrep",
+        "status": "ERROR",
+        "reason": "MALFORMED_SCANNER_OUTPUT"
+      }
+    },
+    {
+      "case": "gitleaks-malformed-json",
+      "status": "PASS",
+      "observed": {
+        "tool": "gitleaks",
+        "status": "ERROR",
+        "reason": "MALFORMED_SCANNER_OUTPUT"
+      }
+    },
+    {
+      "case": "zizmor-malformed-json",
+      "status": "PASS",
+      "observed": {
+        "tool": "zizmor",
+        "status": "ERROR",
+        "reason": "MALFORMED_SCANNER_OUTPUT"
+      }
+    },
+    {
+      "case": "syft-malformed-json",
+      "status": "PASS",
+      "observed": {
+        "tool": "syft",
+        "status": "ERROR",
+        "reason": "MALFORMED_SCANNER_OUTPUT"
+      }
+    }
+  ],
+  "publicMetadataMarkerAbsence": true,
+  "findings": [],
+  "fullRepositoryScansRunByReviewer": false,
+  "hostedLinuxExecutionVerified": false,
+  "securityReleaseCertified": false,
+  "sourceMutated": false
+}

@@ -1,0 +1,17 @@
+{
+  "baseSha": "b9612d199bbad57efbe71a423ab97b41fab8f3af",
+  "implementationSha": "30f1630b63c782de9e6fd37d8726cdadae0fffea",
+  "protectedTrackedFiles": 4564,
+  "protectedManifestSha256": "e753047198488712ef3b8a2a593a9f93fb685899b3218e00be618473955f18f3",
+  "changedBasePaths": [
+    "docs/ai/CURRENT_STATE.md",
+    "docs/ai/DECISIONS.md",
+    "docs/ai/HANDOFF.md",
+    "docs/ai/TASK_BOARD.md",
+    "docs/backend-upgrade/IMPLEMENTATION_PLAN.md",
+    "package.json",
+    "pnpm-lock.yaml"
+  ],
+  "unexpectedChanges": 0,
+  "protectedScope": "Every base-tracked path outside seven explicit package/lock/state files; new patch/test/packet paths separately recorded."
+}

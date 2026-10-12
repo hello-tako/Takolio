@@ -3,6 +3,7 @@ import { test, expect } from '@playwright/test';
 const CONTEXT_KEY = 'frigo_auth_verify_context';
 
 test('T18A real Worker resend expiry survives refresh with safe presentation metadata', async ({ page }, info) => {
+  test.setTimeout(120000);
   await page.goto('/auth?mode=register');
   await page.getByLabel('Họ và tên', { exact: false }).fill('OTP Contract Test');
   await page.getByLabel('Email', { exact: true }).fill(`t18a-${info.project.name}@example.test`);
@@ -18,19 +19,32 @@ test('T18A real Worker resend expiry survives refresh with safe presentation met
   }, CONTEXT_KEY);
   await page.reload();
   await expect(page.getByTestId('otp-expiry')).toContainText('Máy chủ chưa cung cấp thời hạn cho mã này');
+  const cooldownResponse = page.waitForResponse('**/auth/resend-otp');
+  await page.getByRole('button', { name: 'Gửi lại mã OTP', exact: true }).click();
+  const blocked = await cooldownResponse;
+  expect(blocked.status()).toBe(429);
+  const cooldown = await blocked.json();
+  expect(cooldown.code).toBe('OTP_COOLDOWN');
+  expect(cooldown.retryAfterSeconds).toBeGreaterThan(0);
+  expect(cooldown.retryAfterSeconds).toBeLessThanOrEqual(60);
+  await expect(page.getByRole('button', { name: /Gửi lại sau/ })).toBeDisabled();
+  // Wait for the actual D1 cooldown; advancing client metadata cannot bypass it.
+  await expect(page.getByRole('button', { name: 'Gửi lại mã OTP', exact: true })).toBeEnabled({ timeout: 65000 });
   const startedAt = Date.now();
   const pendingResponse = page.waitForResponse('**/auth/resend-otp');
   await page.getByRole('button', { name: 'Gửi lại mã OTP', exact: true }).click();
   const response = await pendingResponse;
   expect(response.status()).toBe(200);
-  const { expiresInMinutes } = await response.json();
+  const { expiresInMinutes, otpExpiresAtMs, otpDelivered } = await response.json();
   expect(expiresInMinutes).toBe(10);
   await expect(page.getByTestId('otp-expiry')).toContainText('Mã hết hạn lúc');
   await expect(page.getByRole('button', { name: /Gửi lại sau/ })).toBeDisabled();
   const context = await page.evaluate((key) => JSON.parse(sessionStorage.getItem(key)!), CONTEXT_KEY);
-  expect(context.expiresAt).toBeGreaterThanOrEqual(startedAt + expiresInMinutes * 60_000);
+  expect(Math.abs(context.expiresAt - otpExpiresAtMs)).toBeLessThanOrEqual(1000);
+  expect(context.expiresAt).toBeGreaterThanOrEqual(startedAt - 1000 + expiresInMinutes * 60_000);
   expect(context.expiresAt).toBeLessThanOrEqual(Date.now() + expiresInMinutes * 60_000);
-  expect(context.delivered).toBeNull();
+  expect(context.delivered).toBe(otpDelivered);
+  expect(otpDelivered).toBe(true); // Isolated development delivery, not an inbox receipt.
   expect(Object.keys(context).sort()).toEqual(['delivered', 'email', 'expiresAt', 'owner', 'resendAvailableAt']);
 
   await page.reload();
@@ -71,7 +85,7 @@ for (const outcome of ['malformed', 'delivery-unavailable', 'offline'] as const)
       : 'Máy chủ chưa cung cấp thời hạn cho mã này');
     const context = await page.evaluate((key) => JSON.parse(sessionStorage.getItem(key)!), CONTEXT_KEY);
     expect(context.expiresAt).toBeNull();
-    expect(context.delivered).toBe(outcome === 'malformed' ? true : outcome === 'offline' ? null : false);
+    expect(context.delivered).toBe(outcome === 'delivery-unavailable' ? false : null);
     if (outcome !== 'malformed') {
       await expect(page.getByRole('button', { name: 'Gửi lại mã OTP', exact: true })).toBeEnabled();
       await expect(page.getByRole('alert')).toBeVisible();

@@ -1,0 +1,398 @@
+{
+  "candidateCount": 17,
+  "candidateValuesAndSourceSnippetsPublished": false,
+  "candidates": [
+    {
+      "candidateId": 1,
+      "candidateValueOrSnippetPublished": false,
+      "capturedCandidateBytesMatchHistorical": true,
+      "classification": "DOCUMENTED_NON_SECRET_IDENTIFIER",
+      "contextVerification": "Report lists the candidate alongside implementation commit references; actual Git object is a commit reachable from current HEAD.",
+      "currentSourceMatchesCapturedBytes": true,
+      "locationSha256": "8f76d4136729145a613e18a294cf64e1722cba3b6bb492740a406672011795e3",
+      "proof": {
+        "actualGitObjectAndAncestryVerified": true
+      },
+      "provenanceInputHashes": [],
+      "retainedHistoricalCandidate": true,
+      "ruleId": "generic-api-key",
+      "sourceFileSha256": "db67959dc022ff350de54ddab28c8c16cea3b84f50082ed345e08a33aef86d80"
+    },
+    {
+      "candidateId": 2,
+      "candidateValueOrSnippetPublished": false,
+      "capturedCandidateBytesMatchHistorical": true,
+      "classification": "DOCUMENTED_CHECKSUM",
+      "contextVerification": "Value occurs under overlayAssets indexed by an asset URL; reviewed producer computes SHA256 over local response bytes. Historical asset bytes were not refetched; classification follows verified dataflow, not token shape.",
+      "currentSourceMatchesCapturedBytes": true,
+      "locationSha256": "927f8346128e7c66886c8fb1996aad3ed53358dd790632e15933cbb31b5b8826",
+      "proof": {
+        "historicalAssetBytesRehashed": false,
+        "producerDataflowVerified": true
+      },
+      "provenanceInputHashes": [
+        {
+          "path": "scripts/google-auth-responsive-check.mjs",
+          "sha256": "de9480c6f517be3c4568fb99af90cb18c7ef0b274c53e4612b0863b939998e7b"
+        }
+      ],
+      "retainedHistoricalCandidate": true,
+      "ruleId": "generic-api-key",
+      "sourceFileSha256": "a03d0c22c50d9c2d27f623221c53df99eba199523fc51b922055a0835dec65f1"
+    },
+    {
+      "candidateId": 3,
+      "candidateValueOrSnippetPublished": false,
+      "capturedCandidateBytesMatchHistorical": true,
+      "classification": "DOCUMENTED_CHECKSUM",
+      "contextVerification": "Value occurs under overlayAssets indexed by an asset URL; reviewed producer computes SHA256 over local response bytes. Historical asset bytes were not refetched; classification follows verified dataflow, not token shape.",
+      "currentSourceMatchesCapturedBytes": true,
+      "locationSha256": "30a6593a41d5bd239ac0be7a8e7e26a208c272aa879d85d420ba68c980ed4e62",
+      "proof": {
+        "historicalAssetBytesRehashed": false,
+        "producerDataflowVerified": true
+      },
+      "provenanceInputHashes": [
+        {
+          "path": "scripts/google-auth-responsive-check.mjs",
+          "sha256": "de9480c6f517be3c4568fb99af90cb18c7ef0b274c53e4612b0863b939998e7b"
+        }
+      ],
+      "retainedHistoricalCandidate": true,
+      "ruleId": "generic-api-key",
+      "sourceFileSha256": "a03d0c22c50d9c2d27f623221c53df99eba199523fc51b922055a0835dec65f1"
+    },
+    {
+      "candidateId": 4,
+      "candidateValueOrSnippetPublished": false,
+      "capturedCandidateBytesMatchHistorical": true,
+      "classification": "DOCUMENTED_CHECKSUM",
+      "contextVerification": "Value occurs under overlayAssets indexed by an asset URL; reviewed producer computes SHA256 over local response bytes. Historical asset bytes were not refetched; classification follows verified dataflow, not token shape.",
+      "currentSourceMatchesCapturedBytes": true,
+      "locationSha256": "99c01084f42deb62b2bf8bae16af6390fa242ef0d65d5961ffa1d6efb45a46bc",
+      "proof": {
+        "historicalAssetBytesRehashed": false,
+        "producerDataflowVerified": true
+      },
+      "provenanceInputHashes": [
+        {
+          "path": "scripts/google-auth-responsive-check.mjs",
+          "sha256": "de9480c6f517be3c4568fb99af90cb18c7ef0b274c53e4612b0863b939998e7b"
+        }
+      ],
+      "retainedHistoricalCandidate": true,
+      "ruleId": "generic-api-key",
+      "sourceFileSha256": "42a20e96cc476f24d20c37516c4c6e7e24feb08583881683dce2a4da78bbe8f2"
+    },
+    {
+      "candidateId": 5,
+      "candidateValueOrSnippetPublished": false,
+      "capturedCandidateBytesMatchHistorical": true,
+      "classification": "DOCUMENTED_CHECKSUM",
+      "contextVerification": "Value occurs under overlayAssets indexed by an asset URL; reviewed producer computes SHA256 over local response bytes. Historical asset bytes were not refetched; classification follows verified dataflow, not token shape.",
+      "currentSourceMatchesCapturedBytes": true,
+      "locationSha256": "df3a16746b6e5a0b1e482aedd08a8e2ac6157b4f95decb6a430f574180838357",
+      "proof": {
+        "historicalAssetBytesRehashed": false,
+        "producerDataflowVerified": true
+      },
+      "provenanceInputHashes": [
+        {
+          "path": "scripts/google-auth-responsive-check.mjs",
+          "sha256": "de9480c6f517be3c4568fb99af90cb18c7ef0b274c53e4612b0863b939998e7b"
+        }
+      ],
+      "retainedHistoricalCandidate": true,
+      "ruleId": "generic-api-key",
+      "sourceFileSha256": "42a20e96cc476f24d20c37516c4c6e7e24feb08583881683dce2a4da78bbe8f2"
+    },
+    {
+      "candidateId": 6,
+      "candidateValueOrSnippetPublished": false,
+      "capturedCandidateBytesMatchHistorical": true,
+      "classification": "DOCUMENTED_CHECKSUM",
+      "contextVerification": "Value occurs under overlayAssets indexed by an asset URL; reviewed producer computes SHA256 over local response bytes. Historical asset bytes were not refetched; classification follows verified dataflow, not token shape.",
+      "currentSourceMatchesCapturedBytes": true,
+      "locationSha256": "352a308f0527fe79e3057c65adb290d34be914819bd8805cdba45e96cea0ee50",
+      "proof": {
+        "historicalAssetBytesRehashed": false,
+        "producerDataflowVerified": true
+      },
+      "provenanceInputHashes": [
+        {
+          "path": "scripts/google-auth-responsive-check.mjs",
+          "sha256": "de9480c6f517be3c4568fb99af90cb18c7ef0b274c53e4612b0863b939998e7b"
+        }
+      ],
+      "retainedHistoricalCandidate": true,
+      "ruleId": "generic-api-key",
+      "sourceFileSha256": "9994d347889bcf682f885890ef8bb6536c8b5c5feeabaf3480e153f4b18a967b"
+    },
+    {
+      "candidateId": 7,
+      "candidateValueOrSnippetPublished": false,
+      "capturedCandidateBytesMatchHistorical": true,
+      "classification": "DOCUMENTED_CHECKSUM",
+      "contextVerification": "Value occurs under overlayAssets indexed by an asset URL; reviewed producer computes SHA256 over local response bytes. Historical asset bytes were not refetched; classification follows verified dataflow, not token shape.",
+      "currentSourceMatchesCapturedBytes": true,
+      "locationSha256": "ee1ea89882e81c0a61ec27c9442a9188863b1c27b7b53325c0cb578ab896d6cd",
+      "proof": {
+        "historicalAssetBytesRehashed": false,
+        "producerDataflowVerified": true
+      },
+      "provenanceInputHashes": [
+        {
+          "path": "scripts/google-auth-responsive-check.mjs",
+          "sha256": "de9480c6f517be3c4568fb99af90cb18c7ef0b274c53e4612b0863b939998e7b"
+        }
+      ],
+      "retainedHistoricalCandidate": true,
+      "ruleId": "generic-api-key",
+      "sourceFileSha256": "9994d347889bcf682f885890ef8bb6536c8b5c5feeabaf3480e153f4b18a967b"
+    },
+    {
+      "candidateId": 8,
+      "candidateValueOrSnippetPublished": false,
+      "capturedCandidateBytesMatchHistorical": true,
+      "classification": "DOCUMENTED_CHECKSUM",
+      "contextVerification": "Value occurs under overlayAssets indexed by an asset URL; reviewed producer computes SHA256 over local response bytes. Historical asset bytes were not refetched; classification follows verified dataflow, not token shape.",
+      "currentSourceMatchesCapturedBytes": true,
+      "locationSha256": "1a5ff79125a77e7154e90f0afb0e5764982c279fd49b7e5f081e81926dde8ece",
+      "proof": {
+        "historicalAssetBytesRehashed": false,
+        "producerDataflowVerified": true
+      },
+      "provenanceInputHashes": [
+        {
+          "path": "scripts/google-auth-responsive-check.mjs",
+          "sha256": "de9480c6f517be3c4568fb99af90cb18c7ef0b274c53e4612b0863b939998e7b"
+        }
+      ],
+      "retainedHistoricalCandidate": true,
+      "ruleId": "generic-api-key",
+      "sourceFileSha256": "dbf49b7d1c543c4846909dc49dd72c30a0c71c0792999a55444c42766cb6dbc9"
+    },
+    {
+      "candidateId": 9,
+      "candidateValueOrSnippetPublished": false,
+      "capturedCandidateBytesMatchHistorical": true,
+      "classification": "DOCUMENTED_CHECKSUM",
+      "contextVerification": "Value occurs under overlayAssets indexed by an asset URL; reviewed producer computes SHA256 over local response bytes. Historical asset bytes were not refetched; classification follows verified dataflow, not token shape.",
+      "currentSourceMatchesCapturedBytes": true,
+      "locationSha256": "c745057111eb415dddf2cfaade8a5745017d3d6160664453442c0a76290d5f18",
+      "proof": {
+        "historicalAssetBytesRehashed": false,
+        "producerDataflowVerified": true
+      },
+      "provenanceInputHashes": [
+        {
+          "path": "scripts/google-auth-responsive-check.mjs",
+          "sha256": "de9480c6f517be3c4568fb99af90cb18c7ef0b274c53e4612b0863b939998e7b"
+        }
+      ],
+      "retainedHistoricalCandidate": true,
+      "ruleId": "generic-api-key",
+      "sourceFileSha256": "dbf49b7d1c543c4846909dc49dd72c30a0c71c0792999a55444c42766cb6dbc9"
+    },
+    {
+      "candidateId": 10,
+      "candidateValueOrSnippetPublished": false,
+      "capturedCandidateBytesMatchHistorical": true,
+      "classification": "STATIC_ERROR_CODE",
+      "contextVerification": "Literal is the fourth getGitHubJson argument. Function body uses it only as fail/reject diagnostic code; separate token parameter supplies Authorization.",
+      "currentSourceMatchesCapturedBytes": true,
+      "locationSha256": "170177281c1d56955699d9ed52cf8c64d283f437ddfc6204cd83d0d9475468a6",
+      "proof": {
+        "argumentDataflowVerified": true,
+        "credentialParameterIsSeparate": true
+      },
+      "provenanceInputHashes": [
+        {
+          "path": "scripts/t21rc2t-production-approval.mjs",
+          "sha256": "6396e69b21f4dfad8c3591fd7def5b5aef063eb5858218a3980924948e4e94dc"
+        }
+      ],
+      "retainedHistoricalCandidate": true,
+      "ruleId": "generic-api-key",
+      "sourceFileSha256": "6396e69b21f4dfad8c3591fd7def5b5aef063eb5858218a3980924948e4e94dc"
+    },
+    {
+      "candidateId": 11,
+      "candidateValueOrSnippetPublished": false,
+      "capturedCandidateBytesMatchHistorical": true,
+      "classification": "STATIC_ERROR_CODE",
+      "contextVerification": "Literal is the fourth getGitHubJson argument. Function body uses it only as fail/reject diagnostic code; separate token parameter supplies Authorization.",
+      "currentSourceMatchesCapturedBytes": true,
+      "locationSha256": "65c8b981b0f767521d95c32dba8c8b514697a36931b0f16a70302aed1f6c14ca",
+      "proof": {
+        "argumentDataflowVerified": true,
+        "credentialParameterIsSeparate": true
+      },
+      "provenanceInputHashes": [
+        {
+          "path": "scripts/t21rc2t-production-approval.mjs",
+          "sha256": "6396e69b21f4dfad8c3591fd7def5b5aef063eb5858218a3980924948e4e94dc"
+        }
+      ],
+      "retainedHistoricalCandidate": true,
+      "ruleId": "generic-api-key",
+      "sourceFileSha256": "6396e69b21f4dfad8c3591fd7def5b5aef063eb5858218a3980924948e4e94dc"
+    },
+    {
+      "candidateId": 12,
+      "candidateValueOrSnippetPublished": false,
+      "capturedCandidateBytesMatchHistorical": true,
+      "classification": "DOCUMENTED_CHECKSUM",
+      "contextVerification": "Migration checksum fixture entry equals SHA256 of the referenced local migration bytes.",
+      "currentSourceMatchesCapturedBytes": true,
+      "locationSha256": "8a46dfbd8b1fbbc444d6217ddefb93c6208a3772de264406b2c4d5fbcdda6d64",
+      "proof": {
+        "actualMigrationBytesRehashed": true
+      },
+      "provenanceInputHashes": [
+        {
+          "path": "migrations/0004_auth_system.sql",
+          "sha256": "39b72e8856dc87ef71b5b95db18497d710f068d4aca2dbe7aec51e82b023f003"
+        }
+      ],
+      "retainedHistoricalCandidate": true,
+      "ruleId": "generic-api-key",
+      "sourceFileSha256": "a2cea8d1a9856c02bea111ffcc285ef3a28845732c989e5933f3a68dd9bba347"
+    },
+    {
+      "candidateId": 13,
+      "candidateValueOrSnippetPublished": false,
+      "capturedCandidateBytesMatchHistorical": true,
+      "classification": "SYNTHETIC_TEST_FIXTURE",
+      "contextVerification": "Literal is an explicit fixture-only JWT or OTP binding inside beforeEach test setup using an in-memory SqliteD1 and local Hono app. No actual provider/service credential validation performed.",
+      "currentSourceMatchesCapturedBytes": true,
+      "locationSha256": "ea6840a0a3ff43978365c05f85315a104a52c91b8a125408e574ac172c6a7217",
+      "proof": {
+        "remoteCredentialValidationPerformed": false,
+        "testSetupAndInMemoryDBVerified": true
+      },
+      "provenanceInputHashes": [
+        {
+          "path": "tests/helpers/sqlite-d1.ts",
+          "sha256": "d503476a003b7333e7a24e6f6a2ae70d4e3d93101b9429258bc32c9f89923941"
+        }
+      ],
+      "retainedHistoricalCandidate": true,
+      "ruleId": "generic-api-key",
+      "sourceFileSha256": "20d7754d3fc1068a469297c309d5fd738c63a14818be242a7d9a9e6ff1080243"
+    },
+    {
+      "candidateId": 14,
+      "candidateValueOrSnippetPublished": false,
+      "capturedCandidateBytesMatchHistorical": true,
+      "classification": "SYNTHETIC_TEST_FIXTURE",
+      "contextVerification": "Literal is an explicit fixture-only JWT or OTP binding inside beforeEach test setup using an in-memory SqliteD1 and local Hono app. No actual provider/service credential validation performed.",
+      "currentSourceMatchesCapturedBytes": true,
+      "locationSha256": "2a7415d0f6a63add8b828d9c9cd563db85d1a8f53dac42f555ccbdd6a184b4b8",
+      "proof": {
+        "remoteCredentialValidationPerformed": false,
+        "testSetupAndInMemoryDBVerified": true
+      },
+      "provenanceInputHashes": [
+        {
+          "path": "tests/helpers/sqlite-d1.ts",
+          "sha256": "d503476a003b7333e7a24e6f6a2ae70d4e3d93101b9429258bc32c9f89923941"
+        }
+      ],
+      "retainedHistoricalCandidate": true,
+      "ruleId": "generic-api-key",
+      "sourceFileSha256": "20d7754d3fc1068a469297c309d5fd738c63a14818be242a7d9a9e6ff1080243"
+    },
+    {
+      "candidateId": 15,
+      "candidateValueOrSnippetPublished": false,
+      "capturedCandidateBytesMatchHistorical": true,
+      "classification": "SYNTHETIC_TEST_FIXTURE",
+      "contextVerification": "Literal is an explicit fixture-only JWT or OTP binding inside beforeEach test setup using an in-memory SqliteD1 and local Hono app. No actual provider/service credential validation performed.",
+      "currentSourceMatchesCapturedBytes": true,
+      "locationSha256": "7887fbbd28a666d8a8f38a96a4d53503c9382bb5e9fc52369b2676eb73109e48",
+      "proof": {
+        "remoteCredentialValidationPerformed": false,
+        "testSetupAndInMemoryDBVerified": true
+      },
+      "provenanceInputHashes": [
+        {
+          "path": "tests/helpers/sqlite-d1.ts",
+          "sha256": "d503476a003b7333e7a24e6f6a2ae70d4e3d93101b9429258bc32c9f89923941"
+        }
+      ],
+      "retainedHistoricalCandidate": true,
+      "ruleId": "generic-api-key",
+      "sourceFileSha256": "adc16a6ed979d350cef2d27284322f490e20d259b8af459fff28bd1e7b6d5a46"
+    },
+    {
+      "candidateId": 16,
+      "candidateValueOrSnippetPublished": false,
+      "capturedCandidateBytesMatchHistorical": true,
+      "classification": "SYNTHETIC_TEST_FIXTURE",
+      "contextVerification": "Literal is an explicit fixture-only JWT or OTP binding inside beforeEach test setup using an in-memory SqliteD1 and local Hono app. No actual provider/service credential validation performed.",
+      "currentSourceMatchesCapturedBytes": true,
+      "locationSha256": "b347115771db1fbd20b68497e1fbf9a68b6416e9e0ad30adcac6425975546ea9",
+      "proof": {
+        "remoteCredentialValidationPerformed": false,
+        "testSetupAndInMemoryDBVerified": true
+      },
+      "provenanceInputHashes": [
+        {
+          "path": "tests/helpers/sqlite-d1.ts",
+          "sha256": "d503476a003b7333e7a24e6f6a2ae70d4e3d93101b9429258bc32c9f89923941"
+        }
+      ],
+      "retainedHistoricalCandidate": true,
+      "ruleId": "generic-api-key",
+      "sourceFileSha256": "adc16a6ed979d350cef2d27284322f490e20d259b8af459fff28bd1e7b6d5a46"
+    },
+    {
+      "candidateId": 17,
+      "candidateValueOrSnippetPublished": false,
+      "classification": "DOCUMENTATION_PROSE",
+      "contextVerification": "The new finding is an ordinary grammatical phrase in a Markdown review paragraph describing unchanged authentication behavior. The privately reviewed occurrence is prose, contains no credential assignment or service authorization use, and is not adjudicated from credential format alone.",
+      "currentSourceMatchesCapturedBytes": true,
+      "locationSha256": "d8245b8febc48734197bf465c472c395986856a56dd8d8121d2f0d5d8c7df42d",
+      "proof": {
+        "actualCapturedParagraphReviewed": true,
+        "credentialOrChecksumAssignment": false,
+        "markdownProseOccurrenceVerified": true,
+        "remoteCredentialValidationPerformed": false,
+        "sourceIsNewImplementationReviewDocumentation": true
+      },
+      "provenanceInputHashes": [
+        {
+          "path": "docs/backend-upgrade/b08-local-remediation/INDEPENDENT_REVIEW.md",
+          "sha256": "2d02a007cf60fa25ac3eeb5059d5cc671b2239ee14137a47a8da22dc7c306e19"
+        }
+      ],
+      "retainedHistoricalCandidate": false,
+      "ruleId": "generic-api-key",
+      "sourceFileSha256": "2d02a007cf60fa25ac3eeb5059d5cc671b2239ee14137a47a8da22dc7c306e19"
+    }
+  ],
+  "categoryCounts": {
+    "DOCUMENTATION_PROSE": 1,
+    "DOCUMENTED_CHECKSUM": 9,
+    "DOCUMENTED_NON_SECRET_IDENTIFIER": 1,
+    "STATIC_ERROR_CODE": 2,
+    "SYNTHETIC_TEST_FIXTURE": 4,
+    "UNRESOLVED_POTENTIAL_SECRET": 0
+  },
+  "classification": "CONTEXT_PROVENANCE_ADJUDICATION_NOT_SCANNER_SUPPRESSION",
+  "conclusion": "No unresolved potential secret in these 17 reviewed captured locations. This does not certify absence of credentials in other files/history and does not change the raw scanner gate.",
+  "credentialValidityChecked": false,
+  "engineFindingCountStill17": true,
+  "gitHistoryScanned": false,
+  "locationHashDefinition": "SHA256 compact JSON [relativePath,startLine,startColumn,endLine,endColumn,ruleId]",
+  "newDocumentationProseCandidateCount": 1,
+  "privateRedactedEngineReportSha256": "b44d8d8a0a54ac78c61e032323365224de6fbadf9120765e48a3e8696723aa76",
+  "retainedHistoricalCandidateCount": 16,
+  "retainedPrivateRedactedEngineReportSha256": "c9f818e1431f1c8724ce347144f00802be40956a6f48c2db743c91b0ee40e717",
+  "retainedTriageSha256": "2004b5acadccd8f97492ff958f973de304ce3ce3a608b759f8f6ae68d84d1a5c",
+  "reviewedHead": "d3cce9560593a263e70f85646e061291e8829b56",
+  "ruleOrBaselineSuppressionAdded": false,
+  "schemaVersion": 1,
+  "sourceRepositoryReceiptSha256": "a981cb771c524d3db0fc5b6972a8bdba5604be9fada8bb556643694bbe5d98f9"
+}

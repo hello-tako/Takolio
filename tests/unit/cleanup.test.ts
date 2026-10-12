@@ -6,7 +6,7 @@ import {
   runScheduledCleanup,
 } from '../../src/worker/services/cleanup';
 import { getRetentionConfig, DEFAULT_RETENTION_DAYS } from '../../src/worker/config/retention';
-import type { D1DatabaseBinding } from '@frigo/db';
+import type { D1DatabaseBinding, D1PreparedStatement } from '@frigo/db';
 import type { Env } from '../../src/worker/types';
 
 interface RecordedStatement {
@@ -37,8 +37,8 @@ class FakeCleanupDb implements D1DatabaseBinding {
     };
   }
 
-  async batch<T = unknown>(): Promise<{ results: T[]; success: boolean; meta: Record<string, unknown> }[]> {
-    return [];
+  async batch<T = unknown>(statements: D1PreparedStatement[]): Promise<{ results: T[]; success: boolean; meta: Record<string, unknown> }[]> {
+    return Promise.all(statements.map(async (statement) => ({ results: [] as T[], ...await statement.run() })));
   }
 
   async exec(): Promise<{ count: number; duration: number }> {
@@ -112,6 +112,7 @@ describe('scheduled cleanup', () => {
     expect(report.tasks.every((task) => task.status === 'ok')).toBe(true);
     expect(report.tasks.map((task) => task.task)).toEqual([
       'expired-otps',
+      'strict-otp-receipts',
       'expired-sessions',
       'stale-scan-reservations',
       'terminal-ready-jobs',
@@ -128,7 +129,105 @@ describe('scheduled cleanup', () => {
     expect(db.statements).toHaveLength(0);
   });
 
-  it('reports a sanitized error when a task fails instead of throwing', async () => {
+  const failureCases = [
+    { task: 'expired-otps', sql: 'DELETE FROM auth_otps' },
+    { task: 'strict-otp-receipts', sql: 'DELETE FROM auth_otp_tickets' },
+    { task: 'expired-sessions', sql: 'DELETE FROM sessions_v2' },
+    { task: 'stale-scan-reservations', sql: 'UPDATE scan_quota_ledger AS q SET status' },
+    { task: 'terminal-scan-jobs', sql: 'DELETE FROM scan_queue_jobs' },
+  ];
+  const hostileFailures = [
+    {
+      label: 'mutable Error metadata',
+      create() {
+        const value = new Error('fixture-private-detail: message');
+        value.name = 'fixture-private-detail: name';
+        value.stack = 'fixture-private-detail: stack';
+        return { value, inspections: [] as string[] };
+      },
+    },
+    {
+      label: 'Error metadata accessors',
+      create() {
+        const value = new Error();
+        const inspections: string[] = [];
+        for (const field of ['message', 'name', 'stack']) {
+          Object.defineProperty(value, field, {
+            get() {
+              inspections.push(field);
+              throw new Error('fixture-private-detail: accessor');
+            },
+          });
+        }
+        return { value, inspections };
+      },
+    },
+    {
+      label: 'non-Error getters and coercion hooks',
+      create() {
+        const inspections: string[] = [];
+        const inspect = (field: string): never => {
+          inspections.push(field);
+          throw new Error('fixture-private-detail: coercion');
+        };
+        const value = {
+          get message() { return inspect('message'); },
+          get name() { return inspect('name'); },
+          get stack() { return inspect('stack'); },
+          toString() { return inspect('toString'); },
+          [Symbol.toPrimitive]() { return inspect('toPrimitive'); },
+        };
+        return { value, inspections };
+      },
+    },
+    {
+      label: 'primitive rejection',
+      create() {
+        return { value: 'fixture-private-detail: primitive', inspections: [] as string[] };
+      },
+    },
+  ];
+
+  it.each(failureCases.flatMap((failureCase) => hostileFailures.map((failure) => ({
+    ...failureCase, ...failure,
+  }))))('keeps $task private for $label and completes the remaining cleanup steps', async ({ task, sql, create }) => {
+    const db = new FakeCleanupDb();
+    db.changes = 2;
+    const failure = create();
+    const poisoned = {
+      prepare(statement: string) {
+        if (statement.includes(sql)) throw failure.value;
+        return db.prepare(statement);
+      },
+      batch: db.batch.bind(db),
+      exec: db.exec.bind(db),
+    };
+
+    const report = await runScheduledCleanup({ DB: poisoned, ENVIRONMENT: 'staging' } as Env);
+    const failed = { task, status: 'error', deleted: 0, error: 'CLEANUP_TASK_FAILED' };
+    const successful = [
+      { task: 'expired-otps', status: 'ok', deleted: 2 },
+      { task: 'strict-otp-receipts', status: 'ok', deleted: 6 },
+      { task: 'expired-sessions', status: 'ok', deleted: 2 },
+      { task: 'stale-scan-reservations', status: 'ok', deleted: 2 },
+      { task: 'terminal-ready-jobs', status: 'ok', deleted: 2 },
+      { task: 'terminal-failed-jobs', status: 'ok', deleted: 2 },
+    ];
+    expect(report.tasks).toEqual(task === 'terminal-scan-jobs'
+      ? [...successful.slice(0, 4), failed]
+      : successful.map((result) => result.task === task ? failed : result));
+    expect(failure.inspections).toEqual([]);
+    expect(JSON.stringify(report)).not.toContain('fixture-private-detail');
+  });
+
+  it('retains the static missing-database failure without starting cleanup', async () => {
+    const report = await runScheduledCleanup({ ENVIRONMENT: 'staging' } as Env);
+    expect(report.tasks).toEqual([{
+      task: 'database', status: 'error', deleted: 0, error: 'D1 binding DB is absent; cleanup skipped.',
+    }]);
+  });
+
+  it('reports a static failure category when a task fails instead of throwing', async () => {
     const db = new FakeCleanupDb();
     const poisoned = {
       prepare(sql: string) {
@@ -149,7 +248,8 @@ describe('scheduled cleanup', () => {
     const failedTask = report.tasks.find((task) => task.task === 'expired-sessions');
     expect(failedTask?.status).toBe('error');
     expect(failedTask?.deleted).toBe(0);
-    expect(failedTask?.error).toContain('D1 exploded');
+    expect(failedTask?.error).toBe('CLEANUP_TASK_FAILED');
+    expect(JSON.stringify(report)).not.toContain('D1 exploded');
   });
 });
 

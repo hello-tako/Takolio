@@ -1,0 +1,74 @@
+{
+  "classification": "INDEPENDENT_CANDIDATE_AUDIT_AND_PAYMENT_FIXTURE_REVIEW",
+  "status": "PASS",
+  "candidateWorkflowSha256": "b18392aeb5c7d460e3b74a7847035bc5786b1550c5da36f13d76a4e3db21da9e",
+  "auditValidationCases": [
+    {
+      "case": "clean",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "case": "findings",
+      "observed": 1,
+      "status": "PASS"
+    },
+    {
+      "case": "empty-object",
+      "observed": "blocked",
+      "status": "PASS"
+    },
+    {
+      "case": "empty-array",
+      "observed": "blocked",
+      "status": "PASS"
+    },
+    {
+      "case": "missing-count",
+      "observed": "blocked",
+      "status": "PASS"
+    },
+    {
+      "case": "negative-count",
+      "observed": "blocked",
+      "status": "PASS"
+    },
+    {
+      "case": "boolean-count",
+      "observed": "blocked",
+      "status": "PASS"
+    },
+    {
+      "case": "noninteger-count",
+      "observed": "blocked",
+      "status": "PASS"
+    },
+    {
+      "case": "network-exit",
+      "observed": "blocked",
+      "status": "PASS"
+    },
+    {
+      "case": "findings-exit-disagreement",
+      "observed": "blocked",
+      "status": "PASS"
+    },
+    {
+      "case": "empty-exit-disagreement",
+      "observed": "blocked",
+      "status": "PASS"
+    }
+  ],
+  "lockShaBound": true,
+  "paymentFixture": {
+    "baselineSha256": "175df6970396327384b86a5dd9014c38096122541a6ed1ec2fd87892b6bc2add",
+    "candidateSha256": "4047f5deb624c483374ef762f19579f82b28fdbaddc5610eac9f6debc3a7466a",
+    "onlyAddedHouseholdAndOwnerMembershipSeed": true,
+    "allAssertionsAndOtherBytesUnchanged": true,
+    "expectOccurrences": 148
+  },
+  "findings": [],
+  "hostedWorkflowCertified": false,
+  "sourceMutated": false,
+  "realAuditCommandsRun": false
+}
