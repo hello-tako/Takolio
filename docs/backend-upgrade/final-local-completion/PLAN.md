@@ -1,6 +1,6 @@
 # Final available local completion - 2026-10-12 JST
 
-Status: IN_PROGRESS; Brand V3 integration and release explicitly authorized. Base receipt503ae1ea, branch codex/backend-final-local-completion.
+Status: LOCAL_VALIDATED_HOSTED_AND_DEPLOYMENT_PENDING; Brand V3 integration and release explicitly authorized. Base receipt503ae1ea, branch codex/backend-final-local-completion.
 Canonical worktree /Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo.
 The user explicitly requests autonomous completion of the remaining plan.
 
@@ -59,3 +59,10 @@ Four state-document conflicts retain both histories. No code conflicts. New
 CSS baseline is integrated Brand V3 under Tailwind3, not the historical brand.
 Fix E/H E2E test instrumentation without product semantics change, then certify
 exact integrated HEAD. Keep D1/T20 live authority; no rollout reset.
+
+## Repository transfer - 2026-10-12
+
+GitHub API confirms ID1385308553 now resolves to hello-tako/Tako-san. Active CLI
+hello-tako has push/admin. Release and staging dispatch bind the current repository;
+0040 staging additionally requires immutable ID. Historical packets retain old names.
+Existing production reviewer vn-taphoanhatung and environment gates remain enforced.

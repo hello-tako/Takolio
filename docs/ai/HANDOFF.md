@@ -1,39 +1,32 @@
-# Backend + Brand V3 integrated release - 2026-10-12 JST
+# Integrated release candidate after repository transfer - 2026-10-12 JST
 
-**Task/status:** INTEGRATED_VALIDATION_IN_PROGRESS. User authorizes integrating
-Brand PR66, protected merge to main, staging migration/deploy and production
-through existing Environment approval. Active packet:
-docs/backend-upgrade/final-local-completion/PLAN.md.
+**Task/status:** LOCAL_VALIDATED_FINAL_HOSTED_AND_DEPLOYMENT_PENDING.
+Authorized: integrate Brand66, normal protected merge67, staging0040/deploy,
+production0040/deploy through existing Environment approval.
 
-**Source:** vn-tak/Tako-san (1385308553), main652e0d7632745e9b77cda4b5b3caac83a3ec1015.
-Full brand6114a43ee6c2798ecd9aebca959dd6496d1a2aea merged at c8c151eb;
-branch codex/backend-final-local-completion, isolated canonical worktree
-/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo.
+**Source:** hello-tako/Tako-san, unchanged ID1385308553; implementationb2fc564f3ff39bcd15dfb6bcb8f32912893b0506;
+main652e0d7632745e9b77cda4b5b3caac83a3ec1015. PR67 draft. Full Brand6114a43e
+retained via c8c151eb. Worktree /Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo.
 
-**Changes:** official Tailwind4.3.3 compiler removes vulnerable braces/chokidar
-owner graph; retain measured v3 geometry, alpha, focus, shadow and sRGB gradients.
-SVG exact bytes / PNG exact decoded pixels avoid OS compression variation.
-Deploy setup-node6 pinned with supported automatic cache disabled. Production
-E/H E2E instrumentation uses observable private-session state and scoped status.
-Add staging-only0040 certification including indexes and constraint SQL. Readiness
-requires strict OTP tables. First strict cutover prepares an exact-candidate,
-fail-closed OTP recovery version with unchanged D1/catalog/T20 authority; all
-approval/current-main/CI/binding/ledger fences retained. ADRs in active packet.
+**Changes/evidence:** Tailwind4.3.3 official compiler and measured compatibility;
+strict OTP recovery/certification and0040 exact-main/schema fences; transferred
+repository ID+name check; native Node22SQLite helper.319files/7610tests PASS on
+Node22, lint/types/40migrations/production-flagsbuild/audit0 PASS.94production-build
+E2E PASS,198responsive visual checks0issues,40paired+12state exact,18native checks,
+3PWA checks PASS. Earlier browser receipts preserve their actual SHA; runtime bytes
+unchanged since e869da7e. Pinned Semgrep/zizmor0, Syft500components; Gitleaks17
+context-reviewed/0unresolved, raw findings status retained. Commands/hash/source
+scope/failures and limits: docs/backend-upgrade/final-local-completion/validation.json
+and RESULT.md. First hosted Node22bundling failure fixed;839bdCIcancelled during
+account transfer, not PASS. Original checkout untouched.
 
-**Executed checks:** targeted6files/323tests PASS, full dependency audit0,
-lint/types/migration40/build passed discovery. Final committed-source full gates,
-production E2E, paired appearance, native browser, fresh scanners and hosted gates
-remain in progress. Prior full suite1raw-palette failure corrected; parallel
-build/cache failure retained and validation now sequential. Synthetic samples
-remain TEST_ONLY and do not certify inbox/provider/real image accuracy.
-
-**Remote/limits/next:** no push/main merge/remote0040/deploy yet. Production and
-staging currently652e..., D1/catalog500/cutovertrue/canary0, T20pairedtrue. Preserve
-these flags. Environment reviewer vn-taphoanhatung is required for production;
-authenticated vn-tak cannot impersonate approval. Original user checkout untouched.
-Next: commit implementation, complete final local/hosted checks, merge normally,
-apply staging0040 then deploy and certify exactSHA, queue production0040 approval,
-then deploy same exact main with verified recovery and post-deploy receipts.
+**Remote/next:** GitHubCLIhello-tako valid; transferred secrets/variables preserved.
+Production/staging still652e..., D1catalog500/cutovertrue/canary0/T20pairedtrue.
+No0040/merge/deploy yet. Require exact final PR CI, merge commit, exact main-push CI;
+staging0040 then same-SHAdeploy/authority/PWA verification; production0040 approval
+then same-SHAdeploy/recovery/monitoring. Environment reviewer vn-taphoanhatung
+remains required, cannot be bypassed by hello-tako admin rights. Real inbox/OCR/
+provider/human ingredient/device/protectedbilling/SLO evidence stays open.
 
 ---
 

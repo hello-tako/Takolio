@@ -1,0 +1,492 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-10-12T04:22:43.480378+00:00",
+  "classification": "INTEGRATED_LOCAL_VALIDATION_NOT_DEPLOYMENT_CERTIFICATION",
+  "repository": {
+    "name": "hello-tako/Tako-san",
+    "id": 1385308553,
+    "previousName": "vn-tak/Tako-san",
+    "identityVerifiedWithGitHubAPI": true
+  },
+  "implementationSha": "b2fc564f3ff39bcd15dfb6bcb8f32912893b0506",
+  "brandAncestor": "6114a43ee6c2798ecd9aebca959dd6496d1a2aea",
+  "runtimeEquivalence": {
+    "referenceSha": "e869da7ee75e7001b089a8de5c7a781a83395fff",
+    "candidateSha": "b2fc564f3ff39bcd15dfb6bcb8f32912893b0506",
+    "paths": [
+      "src",
+      "packages",
+      "public",
+      "index.html",
+      "package.json",
+      "pnpm-lock.yaml"
+    ],
+    "differenceCount": 0,
+    "limitations": "Earlier browser receipts certify their recorded build SHA. Exact final main deployment requires hosted CI and staging receipts."
+  },
+  "results": {
+    "node22Suite": {
+      "files": 319,
+      "tests": 7610,
+      "status": "PASS"
+    },
+    "productionBuildE2E": {
+      "tests": 94,
+      "status": "PASS",
+      "scope": "ISOLATED_SYNTHETIC_PRODUCTION_BUILD"
+    },
+    "visual": {
+      "screens": 198,
+      "violations": 0,
+      "overflow": 0,
+      "brokenImages": 0,
+      "status": "PASS"
+    },
+    "pairedAppearance": {
+      "cases": 40,
+      "stateCases": 12,
+      "computedAndPixels": "EXACT"
+    },
+    "nativeSmoke": {
+      "checks": 18,
+      "engines": [
+        "chromium",
+        "firefox",
+        "webkit"
+      ]
+    },
+    "pwa": {
+      "checks": 3,
+      "status": "PASS"
+    },
+    "migrations": 40,
+    "dependencyAudit": {
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0
+      },
+      "dependencies": 438,
+      "devDependencies": 0,
+      "optionalDependencies": 0,
+      "totalDependencies": 438
+    }
+  },
+  "security": {
+    "scannerReceiptSha256": "97c2ebe916ffc651202344d632b139b556bc03a358e6666abf4ce07dd4ae4127",
+    "provenanceReceiptSha256": "ce3eba819e94eb24c08ef4c892bf96b73257e3c248426cc19f4a09b4cd3c9d08",
+    "rawGitleaksStatus": "FAILED_REVIEW_REQUIRED",
+    "reviewedCandidates": 17,
+    "unresolved": 0,
+    "ruleSuppressionAdded": false
+  },
+  "receipts": [
+    {
+      "name": "final-install-2",
+      "command": [
+        "pnpm",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "startedAtUtc": "2026-10-12T03:40:11.526181+00:00",
+      "durationSeconds": 0.453,
+      "exitCode": 0,
+      "before": {
+        "head": "4291db5af75098e280584a0753ae40a8af8b1a23",
+        "status": ""
+      },
+      "after": {
+        "head": "4291db5af75098e280584a0753ae40a8af8b1a23",
+        "status": ""
+      },
+      "logSha256": "f50f17248c1344c888561258aa1b6ce770e8d5a60789dcfc96bbe0c9a6e44188"
+    },
+    {
+      "name": "final-targeted-1",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/unit/strict-otp-release.test.mjs",
+        "tests/unit/staging-otp-migration-check.test.mjs",
+        "tests/unit/braces-depth-guard.test.ts",
+        "tests/unit/brand-v3.test.mjs",
+        "tests/unit/release-check.test.mjs",
+        "tests/integration/auth-strict-routes.test.ts"
+      ],
+      "startedAtUtc": "2026-10-12T03:33:17.645376+00:00",
+      "durationSeconds": 8.626,
+      "exitCode": 0,
+      "before": {
+        "head": "c8c151eb7d9196f52a23f75b91e228ed8f2e3a22",
+        "status": " M .github/workflows/deploy.yml\n M docs/ai/DECISIONS.md\n M package.json\n M pnpm-lock.yaml\n M postcss.config.js\n M scripts/d1-migration-check.mjs\n M scripts/staging-d1-migration-check.mjs\n M src/web/styles/index.css\n M src/worker/routes/auth.ts\n M src/worker/routes/health.ts\n M src/worker/services/auth-otp-http.ts\n M src/worker/types.ts\n M tests/e2e/t13b-ownership.e2e.ts\n M tests/integration/auth-strict-routes.test.ts\n M tests/unit/braces-depth-guard.test.ts\n M tests/unit/brand-v3.test.mjs\n M tests/unit/d1-migration-check.test.mjs\n M tests/unit/release-check.test.mjs\n?? .github/workflows/staging-otp-migrate.yml\n?? docs/backend-upgrade/final-local-completion/\n?? scripts/staging-otp-migration-check.mjs\n?? scripts/strict-otp-release.mjs\n?? src/web/styles/tailwind-compat.css\n?? tests/unit/staging-otp-migration-check.test.mjs\n?? tests/unit/strict-otp-release.test.mjs\n"
+      },
+      "after": {
+        "head": "c8c151eb7d9196f52a23f75b91e228ed8f2e3a22",
+        "status": " M .github/workflows/deploy.yml\n M docs/ai/DECISIONS.md\n M package.json\n M pnpm-lock.yaml\n M postcss.config.js\n M scripts/d1-migration-check.mjs\n M scripts/staging-d1-migration-check.mjs\n M src/web/styles/index.css\n M src/worker/routes/auth.ts\n M src/worker/routes/health.ts\n M src/worker/services/auth-otp-http.ts\n M src/worker/types.ts\n M tests/e2e/t13b-ownership.e2e.ts\n M tests/integration/auth-strict-routes.test.ts\n M tests/unit/braces-depth-guard.test.ts\n M tests/unit/brand-v3.test.mjs\n M tests/unit/d1-migration-check.test.mjs\n M tests/unit/release-check.test.mjs\n?? .github/workflows/staging-otp-migrate.yml\n?? docs/backend-upgrade/final-local-completion/\n?? scripts/staging-otp-migration-check.mjs\n?? scripts/strict-otp-release.mjs\n?? src/web/styles/tailwind-compat.css\n?? tests/unit/staging-otp-migration-check.test.mjs\n?? tests/unit/strict-otp-release.test.mjs\n"
+      },
+      "logSha256": "bdf707c3614c439ae083bbfe2c6cc79bf2e5f78cae72dc6b15daa0dcb9cf48ce"
+    },
+    {
+      "name": "final-suite-2",
+      "command": [
+        "pnpm",
+        "test"
+      ],
+      "startedAtUtc": "2026-10-12T03:41:05.412059+00:00",
+      "durationSeconds": 143.848,
+      "exitCode": 0,
+      "before": {
+        "head": "e869da7ee75e7001b089a8de5c7a781a83395fff",
+        "status": ""
+      },
+      "after": {
+        "head": "e869da7ee75e7001b089a8de5c7a781a83395fff",
+        "status": "?? docs/backend-upgrade/final-local-completion/security-provenance.json\n?? docs/backend-upgrade/final-local-completion/security-scanner.json\n"
+      },
+      "logSha256": "f70a2f74a2e9f1ad5854eef5608119e1bf2a048d4f413f7cf54711b270f31f2c"
+    },
+    {
+      "name": "brand-paired-final-1",
+      "command": [
+        "node",
+        "docs/backend-upgrade/final-local-completion/browser_probe.mjs",
+        "brand-paired-final-1"
+      ],
+      "startedAtUtc": "2026-10-12T03:35:56.297778+00:00",
+      "durationSeconds": 82.106,
+      "exitCode": 0,
+      "before": {
+        "head": "c8c151eb7d9196f52a23f75b91e228ed8f2e3a22",
+        "status": " M .github/workflows/deploy.yml\n M docs/ai/DECISIONS.md\n M package.json\n M pnpm-lock.yaml\n M postcss.config.js\n M scripts/d1-migration-check.mjs\n M scripts/staging-d1-migration-check.mjs\n M src/web/styles/index.css\n M src/worker/routes/auth.ts\n M src/worker/routes/health.ts\n M src/worker/services/auth-otp-http.ts\n M src/worker/types.ts\n M tests/e2e/t13b-ownership.e2e.ts\n M tests/integration/auth-strict-routes.test.ts\n M tests/unit/braces-depth-guard.test.ts\n M tests/unit/brand-v3.test.mjs\n M tests/unit/d1-migration-check.test.mjs\n M tests/unit/release-check.test.mjs\n?? .github/workflows/staging-otp-migrate.yml\n?? docs/backend-upgrade/final-local-completion/\n?? scripts/staging-otp-migration-check.mjs\n?? scripts/strict-otp-release.mjs\n?? src/web/styles/tailwind-compat.css\n?? tests/unit/staging-otp-migration-check.test.mjs\n?? tests/unit/strict-otp-release.test.mjs\n"
+      },
+      "after": {
+        "head": "c8c151eb7d9196f52a23f75b91e228ed8f2e3a22",
+        "status": " M .github/workflows/deploy.yml\n M docs/ai/DECISIONS.md\n M package.json\n M pnpm-lock.yaml\n M postcss.config.js\n M scripts/d1-migration-check.mjs\n M scripts/staging-d1-migration-check.mjs\n M src/web/styles/index.css\n M src/worker/routes/auth.ts\n M src/worker/routes/health.ts\n M src/worker/services/auth-otp-http.ts\n M src/worker/types.ts\n M tests/e2e/t13b-ownership.e2e.ts\n M tests/integration/auth-strict-routes.test.ts\n M tests/unit/braces-depth-guard.test.ts\n M tests/unit/brand-v3.test.mjs\n M tests/unit/d1-migration-check.test.mjs\n M tests/unit/release-check.test.mjs\n?? .github/workflows/staging-otp-migrate.yml\n?? docs/backend-upgrade/final-local-completion/\n?? scripts/staging-otp-migration-check.mjs\n?? scripts/strict-otp-release.mjs\n?? src/web/styles/tailwind-compat.css\n?? tests/unit/staging-otp-migration-check.test.mjs\n?? tests/unit/strict-otp-release.test.mjs\n"
+      },
+      "logSha256": "8f12e14f3092708397f63a40efd0fcb9ca798393845748c31de8c4505e852dc6"
+    },
+    {
+      "name": "brand-paired-states-final-4",
+      "command": [
+        "node",
+        "docs/backend-upgrade/final-local-completion/browser_probe.mjs",
+        "brand-paired-states-final-4",
+        "states"
+      ],
+      "startedAtUtc": "2026-10-12T03:48:05.087930+00:00",
+      "durationSeconds": 22.228,
+      "exitCode": 0,
+      "before": {
+        "head": "e869da7ee75e7001b089a8de5c7a781a83395fff",
+        "status": "?? docs/backend-upgrade/final-local-completion/native_browser_probe.mjs\n?? docs/backend-upgrade/final-local-completion/security-provenance.json\n?? docs/backend-upgrade/final-local-completion/security-scanner.json\n"
+      },
+      "after": {
+        "head": "e869da7ee75e7001b089a8de5c7a781a83395fff",
+        "status": "?? docs/backend-upgrade/final-local-completion/native_browser_probe.mjs\n?? docs/backend-upgrade/final-local-completion/security-provenance.json\n?? docs/backend-upgrade/final-local-completion/security-scanner.json\n"
+      },
+      "logSha256": "529e1754094d9cdfbae515aaeee0882f55cbdc7d465f0984439a0247a64d649e"
+    },
+    {
+      "name": "native-production-browser-2",
+      "command": [
+        "node",
+        "docs/backend-upgrade/final-local-completion/native_browser_probe.mjs"
+      ],
+      "startedAtUtc": "2026-10-12T03:50:29.898319+00:00",
+      "durationSeconds": 11.751,
+      "exitCode": 0,
+      "before": {
+        "head": "e869da7ee75e7001b089a8de5c7a781a83395fff",
+        "status": " M tests/e2e/t13b-ownership.e2e.ts\n M tests/e2e/t17-ui/t18a-auth-expiry.e2e.ts\n?? docs/backend-upgrade/final-local-completion/native_browser_probe.mjs\n?? docs/backend-upgrade/final-local-completion/security-provenance.json\n?? docs/backend-upgrade/final-local-completion/security-scanner.json\n"
+      },
+      "after": {
+        "head": "e869da7ee75e7001b089a8de5c7a781a83395fff",
+        "status": " M tests/e2e/t13b-ownership.e2e.ts\n M tests/e2e/t17-ui/t18a-auth-expiry.e2e.ts\n?? docs/backend-upgrade/final-local-completion/native_browser_probe.mjs\n?? docs/backend-upgrade/final-local-completion/security-provenance.json\n?? docs/backend-upgrade/final-local-completion/security-scanner.json\n"
+      },
+      "logSha256": "b2910ed9e4e4f0e0f8d23dda391e7ca1e9162bbd1cada24f4887a1567fd5f574"
+    },
+    {
+      "name": "integrated-production-e2e-2",
+      "command": [
+        "pnpm",
+        "exec",
+        "playwright",
+        "test",
+        "--config",
+        "playwright.brand-v3.config.ts"
+      ],
+      "startedAtUtc": "2026-10-12T03:59:51.621036+00:00",
+      "durationSeconds": 304.524,
+      "exitCode": 0,
+      "before": {
+        "head": "9b6a891005a784d4735c1323ca305437445262eb",
+        "status": ""
+      },
+      "after": {
+        "head": "839bd367ddf4294a81849648d1be8dd6a4f5b711",
+        "status": ""
+      },
+      "logSha256": "9210ef557735a5f020585e3527f0d45a1f580a85f060910bafd866699ab252fd"
+    },
+    {
+      "name": "integrated-visual-matrix-2",
+      "command": [
+        "env",
+        "BRAND_URL=http://127.0.0.1:5248",
+        "BRAND_OUT=.artifacts/backend-final-local-completion/visual-matrix-2",
+        "node",
+        "scripts/brand-v3-browser-check.mjs"
+      ],
+      "startedAtUtc": "2026-10-12T03:54:44.002260+00:00",
+      "durationSeconds": 195.342,
+      "exitCode": 0,
+      "before": {
+        "head": "f9d1ae90ce7b6865ed296b004912a9b72133de2a",
+        "status": " M scripts/brand-v3-browser-check.mjs\n"
+      },
+      "after": {
+        "head": "9b6a891005a784d4735c1323ca305437445262eb",
+        "status": ""
+      },
+      "logSha256": "e0242ca162210eff26c9762f0a862273139dceb3db88aba9935fb7c166c9aa60"
+    },
+    {
+      "name": "integrated-brand-states-2",
+      "command": [
+        "env",
+        "BRAND_URL=http://127.0.0.1:5248",
+        "BRAND_OUT=.artifacts/backend-final-local-completion/brand-states-2",
+        "node",
+        "scripts/brand-v3-state-check.mjs"
+      ],
+      "startedAtUtc": "2026-10-12T03:58:12.997583+00:00",
+      "durationSeconds": 25.823,
+      "exitCode": 0,
+      "before": {
+        "head": "9b6a891005a784d4735c1323ca305437445262eb",
+        "status": ""
+      },
+      "after": {
+        "head": "9b6a891005a784d4735c1323ca305437445262eb",
+        "status": ""
+      },
+      "logSha256": "4d9ae4a651be5d1cd98589ec70022c48bfa9f6a32dfd677e0e117a8a675da031"
+    },
+    {
+      "name": "integrated-pwa-2",
+      "command": [
+        "env",
+        "BRAND_URL=http://127.0.0.1:5248",
+        "BRAND_OUT=.artifacts/backend-final-local-completion/pwa-2",
+        "node",
+        "scripts/brand-v3-pwa-check.mjs"
+      ],
+      "startedAtUtc": "2026-10-12T03:58:39.008406+00:00",
+      "durationSeconds": 0.907,
+      "exitCode": 0,
+      "before": {
+        "head": "9b6a891005a784d4735c1323ca305437445262eb",
+        "status": ""
+      },
+      "after": {
+        "head": "9b6a891005a784d4735c1323ca305437445262eb",
+        "status": ""
+      },
+      "logSha256": "f5042bbb911be67d75a00046dc238df729f857ab4e82560324238039f1125c08"
+    },
+    {
+      "name": "hosted-node22-sqlite-fixed",
+      "command": [
+        "pnpm",
+        "dlx",
+        "node@22",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/integration/t13b-review-roundtrip.test.tsx"
+      ],
+      "startedAtUtc": "2026-10-12T04:02:36.509398+00:00",
+      "durationSeconds": 6.381,
+      "exitCode": 0,
+      "before": {
+        "head": "9b6a891005a784d4735c1323ca305437445262eb",
+        "status": " M tests/helpers/sqlite-d1.ts\n"
+      },
+      "after": {
+        "head": "9b6a891005a784d4735c1323ca305437445262eb",
+        "status": " M tests/helpers/sqlite-d1.ts\n"
+      },
+      "logSha256": "ea312cd43e096b41a086b59869d6730bc67bbcc4925d1782d4a94b592114b047"
+    },
+    {
+      "name": "resumed-migration-tests",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/unit/staging-otp-migration-check.test.mjs",
+        "tests/unit/production-migration-preflight.test.mjs",
+        "tests/unit/strict-otp-release.test.mjs",
+        "tests/t13b-review-roundtrip.test.tsx"
+      ],
+      "startedAtUtc": "2026-10-12T04:16:32.949173+00:00",
+      "durationSeconds": 4.428,
+      "exitCode": 0,
+      "before": {
+        "head": "b2fc564f3ff39bcd15dfb6bcb8f32912893b0506",
+        "status": ""
+      },
+      "after": {
+        "head": "b2fc564f3ff39bcd15dfb6bcb8f32912893b0506",
+        "status": ""
+      },
+      "logSha256": "f40adbc7bc7d2c0ebd0455c0f7f2d8708b814d2b4020748d830c577724797769"
+    },
+    {
+      "name": "resumed-lint",
+      "command": [
+        "pnpm",
+        "lint"
+      ],
+      "startedAtUtc": "2026-10-12T04:16:37.535351+00:00",
+      "durationSeconds": 6.407,
+      "exitCode": 0,
+      "before": {
+        "head": "b2fc564f3ff39bcd15dfb6bcb8f32912893b0506",
+        "status": ""
+      },
+      "after": {
+        "head": "b2fc564f3ff39bcd15dfb6bcb8f32912893b0506",
+        "status": ""
+      },
+      "logSha256": "25cc1f9634027c24c62f4029a44f00fc3a7e082ac28576c6fc5a3db3e0961f73"
+    },
+    {
+      "name": "resumed-types",
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "startedAtUtc": "2026-10-12T04:16:44.101148+00:00",
+      "durationSeconds": 14.433,
+      "exitCode": 0,
+      "before": {
+        "head": "b2fc564f3ff39bcd15dfb6bcb8f32912893b0506",
+        "status": ""
+      },
+      "after": {
+        "head": "b2fc564f3ff39bcd15dfb6bcb8f32912893b0506",
+        "status": ""
+      },
+      "logSha256": "a3a28a25c9246fe7e8bbf5999692dc60347e343a2415f8cefcb7e767e0e6a0d6"
+    },
+    {
+      "name": "resumed-node22-suite",
+      "command": [
+        "pnpm",
+        "dlx",
+        "node@22",
+        "node_modules/vitest/vitest.mjs",
+        "run"
+      ],
+      "startedAtUtc": "2026-10-12T04:17:57.295523+00:00",
+      "durationSeconds": 138.43,
+      "exitCode": 0,
+      "before": {
+        "head": "b2fc564f3ff39bcd15dfb6bcb8f32912893b0506",
+        "status": ""
+      },
+      "after": {
+        "head": "b2fc564f3ff39bcd15dfb6bcb8f32912893b0506",
+        "status": " M docs/backend-upgrade/final-local-completion/security-provenance.json\n M docs/backend-upgrade/final-local-completion/security-scanner.json\n"
+      },
+      "logSha256": "77a2aeb15c5bc041fc71dd8c204d868ebe6315293a21f1078b326ea54aa92756"
+    },
+    {
+      "name": "resumed-migrations",
+      "command": [
+        "pnpm",
+        "check:migrations"
+      ],
+      "startedAtUtc": "2026-10-12T04:21:04.616837+00:00",
+      "durationSeconds": 0.459,
+      "exitCode": 0,
+      "before": {
+        "head": "b2fc564f3ff39bcd15dfb6bcb8f32912893b0506",
+        "status": " M docs/backend-upgrade/final-local-completion/security-provenance.json\n M docs/backend-upgrade/final-local-completion/security-scanner.json\n"
+      },
+      "after": {
+        "head": "b2fc564f3ff39bcd15dfb6bcb8f32912893b0506",
+        "status": " M docs/backend-upgrade/final-local-completion/security-provenance.json\n M docs/backend-upgrade/final-local-completion/security-scanner.json\n"
+      },
+      "logSha256": "965811c75cef6d8d7db8527ffaf3ec59c52869fe5cb575a1261bc3b793191de5"
+    },
+    {
+      "name": "resumed-production-build",
+      "command": [
+        "env",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED=true",
+        "pnpm",
+        "build"
+      ],
+      "startedAtUtc": "2026-10-12T04:21:05.214545+00:00",
+      "durationSeconds": 6.981,
+      "exitCode": 0,
+      "before": {
+        "head": "b2fc564f3ff39bcd15dfb6bcb8f32912893b0506",
+        "status": " M docs/backend-upgrade/final-local-completion/security-provenance.json\n M docs/backend-upgrade/final-local-completion/security-scanner.json\n"
+      },
+      "after": {
+        "head": "b2fc564f3ff39bcd15dfb6bcb8f32912893b0506",
+        "status": " M docs/backend-upgrade/final-local-completion/security-provenance.json\n M docs/backend-upgrade/final-local-completion/security-scanner.json\n"
+      },
+      "logSha256": "f3f56b323d88f9d824e4faedcae14cf3bc6aa35741c276b83d8b9fc5aa946fc7"
+    },
+    {
+      "name": "resumed-audit",
+      "command": [
+        "pnpm",
+        "audit",
+        "--json"
+      ],
+      "startedAtUtc": "2026-10-12T04:21:12.349396+00:00",
+      "durationSeconds": 0.595,
+      "exitCode": 0,
+      "before": {
+        "head": "b2fc564f3ff39bcd15dfb6bcb8f32912893b0506",
+        "status": " M docs/backend-upgrade/final-local-completion/security-provenance.json\n M docs/backend-upgrade/final-local-completion/security-scanner.json\n"
+      },
+      "after": {
+        "head": "b2fc564f3ff39bcd15dfb6bcb8f32912893b0506",
+        "status": " M docs/backend-upgrade/final-local-completion/security-provenance.json\n M docs/backend-upgrade/final-local-completion/security-scanner.json\n"
+      },
+      "logSha256": "27e025e56175b1d62b2c12094c431e2aa91c7290e5d4393e7f07df6364fc352f"
+    }
+  ],
+  "retainedFailures": [
+    "first integrated suite raw palette assertion",
+    "parallel build cache contamination",
+    "paired screenshot and caret control attempts",
+    "initial native Firefox unavailable",
+    "first E2E 86 pass and 8 fail",
+    "first visual matrix transient fade contrast",
+    "hosted Node22 SQLite client bundling failure",
+    "839bd hosted CI cancelled during account/repository transfer"
+  ],
+  "releaseState": "PR67_DRAFT_FINAL_HOSTED_CI_AND_STAGING_PENDING",
+  "openEvidence": [
+    "production Environment required reviewer vn-taphoanhatung",
+    "actual deployed fail-closed recovery version certification",
+    "real inbox delivery",
+    "live OCR/provider quality and budget",
+    "independent human ingredient/data acceptance",
+    "old physical devices and supported browser floor",
+    "protected payment/billing ownership and live transaction acceptance",
+    "edge/load/chaos/SLO and independent operational acceptance"
+  ],
+  "privateContentPublished": false
+}
