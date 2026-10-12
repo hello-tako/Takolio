@@ -91,7 +91,7 @@ async function installCss(page, text) {
     style.textContent = cssText;
     let neutral = document.getElementById('bounded-tw-neutral-motion');
     if (!neutral) { neutral = document.createElement('style'); neutral.id = 'bounded-tw-neutral-motion'; document.head.append(neutral); }
-    neutral.textContent = '*,*::before,*::after{animation:none!important;transition:none!important;caret-color:transparent!important}';
+    neutral.textContent = '*,*::before,*::after{animation:none!important;transition:none!important;caret-color:transparent!important;caret-animation:manual!important}';
   }, text);
   await page.evaluate(() => {
     const root = document.getElementById('root');
