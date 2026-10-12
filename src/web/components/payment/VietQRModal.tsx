@@ -13,6 +13,7 @@ interface VietQRModalProps {
   onSuccess: () => void;
   intent: CreatedPaymentIntent;
   returnFocus?: React.RefObject<HTMLElement>;
+  recoverable?: boolean;
 }
 
 function statusLabel(status: PaymentStatus): string {
@@ -42,7 +43,7 @@ function matchesIntent(payment: PaymentIntent, intent: CreatedPaymentIntent): bo
     payment.currency === intent.currency;
 }
 
-export const VietQRModal: React.FC<VietQRModalProps> = ({ isOpen, onClose, onSuccess, intent, returnFocus }) => {
+export const VietQRModal: React.FC<VietQRModalProps> = ({ isOpen, onClose, onSuccess, intent, returnFocus, recoverable = false }) => {
   const userId = useAuthStore((s) => s.userId);
   const householdId = useAuthStore((s) => s.householdId);
   const setPlusFromServer = useAuthStore((s) => s.setPlusFromServer);
@@ -224,6 +225,7 @@ export const VietQRModal: React.FC<VietQRModalProps> = ({ isOpen, onClose, onSuc
               <div className="bg-white p-3 rounded-xl border border-slate-200/80 shadow-xs flex flex-col items-center justify-center">
                 <img src={instructions.qrImageUrl} alt="Mã VietQR" className="w-52 h-52 object-contain rounded-lg" />
                 <p className="text-[11px] text-slate-500 mt-1 font-medium">Mở app ngân hàng để quét mã QR Napas 24/7</p>
+                {recoverable && <p className="mt-2 text-xs text-center text-slate-600">Có thể đóng màn hình. Mở lại QR còn hạn từ lịch sử giao dịch trên trang Plus.</p>}
               </div>
               <div className="space-y-2 bg-white p-3.5 rounded-xl border border-slate-200/80 shadow-xs text-xs">
                 <div className="flex items-center justify-between py-1 border-b border-slate-100"><span className="text-slate-500">Ngân hàng:</span><span className="font-semibold text-slate-900">{instructions.bankBin}</span></div>

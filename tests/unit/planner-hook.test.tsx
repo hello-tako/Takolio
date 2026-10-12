@@ -6,6 +6,7 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { MealPlanDto } from '../../packages/domain/src/meal-planning-api';
 import { usePlanner } from '../../src/web/features/planner/usePlanner';
+import { useAuthStore } from '../../src/web/stores/useAuthStore';
 import { PlannerPage } from '../../src/web/pages/PlannerPage';
 import { PlannerShopping } from '../../src/web/features/planner/PlannerShopping';
 import { PlannerError } from '../../src/web/features/planner/PlannerShell';
@@ -35,6 +36,7 @@ const response = (body: unknown, status = 200) => new Response(JSON.stringify(bo
 function setOwner(userId = 'user-a', householdId = 'house-a') {
   localStorage.setItem('frigo_user_id', userId);
   localStorage.setItem('frigo_household_id', householdId);
+  useAuthStore.setState({ userId, householdId, isGuest: false, logoutStatus: 'idle' });
 }
 
 function Probe({ shopping = false }: { shopping?: boolean }) {
@@ -112,6 +114,9 @@ function shoppingKey(revision = 1) {
 }
 
 beforeEach(() => {
+  // These fixtures exercise V1 meals; T20 composition tests own the enabled path.
+  vi.stubEnv('VITE_MEAL_PLANNER_ENABLED', 'true');
+  vi.stubEnv('VITE_MEAL_COMPOSITION_V2_ENABLED', 'false');
   // jsdom has no layout scrolling API; browser QA verifies visibility and focus.
   Object.defineProperty(Element.prototype, 'scrollIntoView', { configurable: true, value: vi.fn() });
   vi.stubGlobal('IS_REACT_ACT_ENVIRONMENT', true);
@@ -133,10 +138,70 @@ beforeEach(() => {
 afterEach(async () => {
   await act(async () => { root?.unmount(); });
   root = undefined; queryClient.clear(); container.remove();
+  vi.unstubAllEnvs();
   vi.unstubAllGlobals(); vi.restoreAllMocks();
 });
 
 describe('mounted planner restoration', () => {
+  it.each([
+    '/planner', '/planner/new', `/planner/${hookPlanId}`,
+    `/planner/${hookPlanId}/shopping?origin=home`,
+    `/planner/${hookPlanId}/meal/${encodeURIComponent(hookSlotId)}`,
+  ])('guest %s shows login before any planner read or generation action', async (path) => {
+    useAuthStore.setState({ isGuest: true });
+    queryClient.setQueryData(queryKeys.currentMealPlanningPlan(), hookPlan());
+    queryClient.setQueryData(queryKeys.mealPlanningPlan(hookPlanId), hookPlan());
+    fetchMock.mockResolvedValue(response({ code: 'REGISTERED_ACCOUNT_REQUIRED' }, 403));
+    await mountPage(path);
+    const link = container.querySelector<HTMLAnchorElement>('[data-testid="planner-login-cta"]');
+    expect(link).not.toBeNull();
+    expect(link!.getAttribute('href')).toBe(`/auth?mode=login&returnTo=${encodeURIComponent(path)}`);
+    expect(container.textContent).toContain('Sign in to use meal planning');
+    expect(container.textContent).not.toContain('Dinner revision 1');
+    expect(container.querySelector('[role="alert"]')).toBeNull();
+    expect(container.querySelector('form')).toBeNull();
+    expect(container.querySelector('button')).toBeNull();
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it('guest planner prompt follows the selected Vietnamese locale', async () => {
+    useAuthStore.setState({ isGuest: true });
+    localStorage.setItem('frigo_planner_locale', 'vi');
+    await mountPage('/planner/new');
+    expect(container.textContent).toContain('Đăng nhập để dùng kế hoạch bữa ăn');
+    expect(container.querySelector('[data-testid="planner-login-cta"]')?.textContent).toContain('Đăng nhập để tiếp tục');
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it.each(['guest', 'other owner'] as const)('a retained registered perform cannot request for a %s session', async (next) => {
+    await mount();
+    await until(() => expect(model.plan?.revision).toBe(1));
+    const earlierPerform = model.perform;
+    await act(async () => {
+      if (next === 'guest') useAuthStore.setState({ isGuest: true });
+      else { resetPrivateSession(); setOwner('user-b', 'house-b'); }
+    });
+    await flush();
+    fetchMock.mockClear();
+    const operation = vi.fn(() => mealPlanningApi.regenerate(hookPlanId, { revision: 1 }));
+    await act(async () => { await earlierPerform('regenerate', operation); });
+    expect(operation).not.toHaveBeenCalled();
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it('direct guest hook does not read, expose cached plan or invoke a mutation', async () => {
+    useAuthStore.setState({ isGuest: true });
+    queryClient.setQueryData(queryKeys.mealPlanningPlan(hookPlanId), hookPlan());
+    await mount();
+    expect(model.registeredAccountRequired).toBe(true);
+    expect(model.plan).toBeUndefined();
+    const operation = vi.fn(() => mealPlanningApi.regenerate(hookPlanId, { revision: 1 }));
+    await act(async () => { await model.perform('regenerate', operation); });
+    await act(async () => { await model.query.refetch(); });
+    expect(operation).not.toHaveBeenCalled();
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
   it('shows loading then the generation entry when no current private plan exists', async () => {
     const pending = deferred<Response>(); fetchMock.mockReturnValueOnce(pending.promise);
     await mountPage();
@@ -218,7 +283,7 @@ describe('mounted planner restoration', () => {
     await mountPage();
     await until(() => expect(container.textContent).toContain('Dinner revision 1'));
     await act(async () => { root!.unmount(); }); root = undefined;
-    await act(async () => { setOwner('user-b', 'house-b'); resetPrivateSession(); });
+    await act(async () => { resetPrivateSession(); setOwner('user-b', 'house-b'); });
     fetchMock.mockResolvedValueOnce(response({ plan: null }));
     await mountPage();
     await until(() => expect(container.textContent).toContain('No plan for this account yet'));
@@ -408,7 +473,7 @@ describe('mounted planner session fencing', () => {
     queryClient.setQueryData(queryKeys.mealPlanningPlan(hookPlanId), hookPlan());
     await mount();
     const nextGet = deferred<Response>(); fetchMock.mockReturnValueOnce(nextGet.promise);
-    await act(async () => { setOwner('user-b', 'house-b'); resetPrivateSession(); });
+    await act(async () => { resetPrivateSession(); setOwner('user-b', 'house-b'); });
     await mount();
     expect(model.plan).toBeUndefined();
     await act(async () => { oldGet.resolve(response(hookPlan())); });
@@ -425,7 +490,7 @@ describe('mounted planner session fencing', () => {
     await act(async () => { oldMutation = mutation(action); });
     expect(model.busy).toBe(action);
     storedPlan = hookPlan(3, 'house-b');
-    await act(async () => { setOwner('user-b', 'house-b'); resetPrivateSession(); });
+    await act(async () => { resetPrivateSession(); setOwner('user-b', 'house-b'); });
     await mount();
     await until(() => expect(model.plan?.householdId).toBe('house-b'));
     expect(model.busy).toBeNull();
@@ -452,7 +517,7 @@ describe('mounted planner session fencing', () => {
     await act(async () => { pending = mutation('swap'); });
     await until(() => expect(fetchMock).toHaveBeenCalledTimes(3));
     storedPlan = hookPlan(3, 'house-b');
-    await act(async () => { setOwner('user-b', 'house-b'); resetPrivateSession(); });
+    await act(async () => { resetPrivateSession(); setOwner('user-b', 'house-b'); });
     await mount();
     await until(() => expect(model.plan?.householdId).toBe('house-b'));
     expect(model.error).toBeNull(); expect(model.busy).toBeNull();
@@ -471,7 +536,7 @@ describe('mounted planner session fencing', () => {
     await click('Prepare shopping list');
     expect(model.busy).toBe('shopping');
     storedPlan = hookPlan(3, householdId);
-    await act(async () => { setOwner(userId, householdId); resetPrivateSession(); });
+    await act(async () => { resetPrivateSession(); setOwner(userId, householdId); });
     await mount(<Probe shopping />);
     await until(() => expect(model.plan?.revision).toBe(3));
     await act(async () => { pending.resolve(response(hookShopping())); });
@@ -569,7 +634,7 @@ describe('mounted planner generation interactions', () => {
     const oldCreation = deferred<Response>(); fetchMock.mockReturnValueOnce(oldCreation.promise);
     await click('Generate plan');
     storedPlan = { ...hookPlan(1, 'house-b'), id: '8195b083-ddb7-462d-90c3-1e3c83cbb59c' };
-    await act(async () => { setOwner('user-b', 'house-b'); resetPrivateSession(); });
+    await act(async () => { resetPrivateSession(); setOwner('user-b', 'house-b'); });
     await mountPage('/planner/new');
     expect(button('Generate plan').disabled).toBe(false);
     const newCreation = deferred<Response>(); fetchMock.mockReturnValueOnce(newCreation.promise);

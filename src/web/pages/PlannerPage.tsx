@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Navigate, useLocation, useParams } from 'react-router-dom';
-import { CalendarDays } from 'lucide-react';
+import { ArrowRight, CalendarDays, LogIn } from 'lucide-react';
 import { Card } from '../components/common/Card';
 import { PlannerShell, PlannerError, FreshnessNotice } from '../features/planner/PlannerShell';
 import { PlannerSetup } from '../features/planner/PlannerSetup';
@@ -9,6 +9,33 @@ import { PlannerMeal } from '../features/planner/PlannerMeal';
 import { PlannerShopping } from '../features/planner/PlannerShopping';
 import { usePlanner } from '../features/planner/usePlanner';
 import { usePlannerLocale } from '../features/planner/copy';
+import { useAuthStore } from '../stores/useAuthStore';
+
+function RegisteredAccountPrompt({ returnTo, locale }: { returnTo: string; locale: 'vi' | 'en' }) {
+  const href = `/auth?mode=login&returnTo=${encodeURIComponent(returnTo)}`;
+  const english = locale === 'en';
+  return (
+    <Card className="planning-empty !py-10">
+      <LogIn className="mx-auto mb-5 text-takosan-green" size={40} aria-hidden="true" />
+      <h2 className="text-xl font-heading font-bold">
+        {english ? 'Sign in to use meal planning' : 'Đăng nhập để dùng kế hoạch bữa ăn'}
+      </h2>
+      <p className="mt-3 text-sm text-semantic-text-secondary leading-relaxed">
+        {english
+          ? 'Meal plans are saved to a registered household account. You can keep browsing recipes and your fridge as a guest.'
+          : 'Kế hoạch bữa ăn được lưu theo tài khoản đã đăng ký. Bạn vẫn có thể xem công thức và tủ lạnh trong phiên khách.'}
+      </p>
+      <Link
+        data-testid="planner-login-cta"
+        to={href}
+        className="inline-flex min-h-12 mt-6 items-center justify-center gap-2 rounded-xl bg-takosan-green px-5 py-3 text-sm font-semibold text-white"
+      >
+        {english ? 'Sign in to continue' : 'Đăng nhập để tiếp tục'}
+        <ArrowRight size={18} aria-hidden="true" />
+      </Link>
+    </Card>
+  );
+}
 
 export const PlannerPage: React.FC = () => {
   const location = useLocation();
@@ -21,67 +48,75 @@ function PlannerWorkspace() {
   const setup = location.pathname === '/planner/new';
   const language = usePlannerLocale();
   const { locale, copy: t } = language;
-  const model = usePlanner(planId, !setup);
+  const registeredAccountRequired = useAuthStore((state) => state.isGuest);
+  const returnTo = `${location.pathname}${location.search}`;
+  const model = usePlanner(planId, !setup && !registeredAccountRequired);
   const plan = model.plan;
-  if (!setup && !planId && plan) return <Navigate to={`/planner/${plan.id}`} replace />;
+  if (!setup && !registeredAccountRequired && !planId && plan) return <Navigate to={`/planner/${plan.id}`} replace />;
   return (
-    <PlannerShell {...language} plan={setup ? null : plan}>
-      {!!model.error && <PlannerError error={model.error} locale={locale} focus />}
-      {model.refreshed && (
-        <p role="status" className="planning-notice">
-          {t.updated}
-        </p>
-      )}
-      {setup ? (
-        <PlannerSetup model={model} locale={locale} />
-      ) : model.query.isPending ? (
-        <div role="status" className="py-16 text-center text-takosan-green-deep">
-          <CalendarDays className="mx-auto mb-4 animate-pulse" size={36} />
-          <p>{t.loading}</p>
-        </div>
-      ) : model.query.isError ? (
-        <>
-          <PlannerError
-            error={model.query.error}
-            locale={locale}
-            onRetry={() => void model.query.refetch()}
-          />
-          <Link to="/planner" className="underline min-h-11 inline-flex items-center text-sm">
-            {t.back}
-          </Link>
-        </>
-      ) : !plan ? (
-        <Card className="planning-empty !py-10">
-          <CalendarDays className="mx-auto mb-5 text-takosan-green" size={40} />
-          <h2 className="text-xl font-heading font-bold">{t.empty}</h2>
-          <p className="mt-3 text-sm text-semantic-text-secondary leading-relaxed">{t.emptyText}</p>
-          <Link
-            to="/planner/new"
-            className="inline-flex min-h-12 mt-6 items-center justify-center rounded-xl bg-takosan-green px-5 py-3 text-sm font-semibold text-white"
-          >
-            {t.newPlan}
-          </Link>
-        </Card>
+    <PlannerShell {...language} plan={setup || registeredAccountRequired ? null : plan}>
+      {registeredAccountRequired ? (
+        <RegisteredAccountPrompt returnTo={returnTo} locale={locale} />
       ) : (
         <>
-          <FreshnessNotice plan={plan} locale={locale} />
-          {slotId ? (
-            <PlannerMeal
-              key={`${plan.id}:${plan.revision}:${slotId}`}
-              plan={plan}
-              slotId={slotId}
-              model={model}
-              locale={locale}
-            />
-          ) : location.pathname.endsWith('/shopping') ? (
-            <PlannerShopping
-              key={`${plan.id}:${plan.revision}`}
-              plan={plan}
-              model={model}
-              locale={locale}
-            />
+          {!!model.error && <PlannerError error={model.error} locale={locale} focus />}
+          {model.refreshed && (
+            <p role="status" className="planning-notice">
+              {t.updated}
+            </p>
+          )}
+          {setup ? (
+            <PlannerSetup model={model} locale={locale} />
+          ) : model.query.isPending ? (
+            <div role="status" className="py-16 text-center text-takosan-green-deep">
+              <CalendarDays className="mx-auto mb-4 animate-pulse" size={36} />
+              <p>{t.loading}</p>
+            </div>
+          ) : model.query.isError ? (
+            <>
+              <PlannerError
+                error={model.query.error}
+                locale={locale}
+                onRetry={() => void model.query.refetch()}
+              />
+              <Link to="/planner" className="underline min-h-11 inline-flex items-center text-sm">
+                {t.back}
+              </Link>
+            </>
+          ) : !plan ? (
+            <Card className="planning-empty !py-10">
+              <CalendarDays className="mx-auto mb-5 text-takosan-green" size={40} />
+              <h2 className="text-xl font-heading font-bold">{t.empty}</h2>
+              <p className="mt-3 text-sm text-semantic-text-secondary leading-relaxed">{t.emptyText}</p>
+              <Link
+                to="/planner/new"
+                className="inline-flex min-h-12 mt-6 items-center justify-center rounded-xl bg-takosan-green px-5 py-3 text-sm font-semibold text-white"
+              >
+                {t.newPlan}
+              </Link>
+            </Card>
           ) : (
-            <PlannerWeek plan={plan} model={model} locale={locale} />
+            <>
+              <FreshnessNotice plan={plan} locale={locale} />
+              {slotId ? (
+                <PlannerMeal
+                  key={`${plan.id}:${plan.revision}:${slotId}`}
+                  plan={plan}
+                  slotId={slotId}
+                  model={model}
+                  locale={locale}
+                />
+              ) : location.pathname.endsWith('/shopping') ? (
+                <PlannerShopping
+                  key={`${plan.id}:${plan.revision}`}
+                  plan={plan}
+                  model={model}
+                  locale={locale}
+                />
+              ) : (
+                <PlannerWeek plan={plan} model={model} locale={locale} />
+              )}
+            </>
           )}
         </>
       )}

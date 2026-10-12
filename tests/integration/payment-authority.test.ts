@@ -1,6 +1,7 @@
 import { createHmac } from 'node:crypto';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { CreatedPaymentIntent, PaymentIntent } from '../../src/shared/payment';
+import { BillingAccountResponseSchema, type BillingAccount } from '../../src/shared/billing';
 import type { Env } from '../../src/worker/types';
 import { isValidIssuedIntent, type PaymentRow } from '../../src/worker/payment/authority';
 import { SESSION_COOKIE, sha256Hex } from '../../src/worker/utils/session';
@@ -8,7 +9,14 @@ import { SqliteD1 } from '../helpers/sqlite-d1';
 import { fetchWorker } from '../helpers/worker-fetch.mjs';
 
 const currentPrices = vi.hoisted(() => ({ monthly: 49000, annual: 499000 }));
-vi.mock('../../src/worker/payment/prices', () => ({ PLUS_PRICES: currentPrices }));
+vi.mock('../../src/worker/payment/prices', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('../../src/worker/payment/prices')>();
+  return { ...actual, PLUS_PRICES: currentPrices,
+    effectivePlusPrices: (env: Pick<Env, 'PAYOS_TEST_MONTHLY_PRICE_VND'> = {}) => {
+      const trusted = actual.effectivePlusPrices(env);
+      return { ...currentPrices, ...(env.PAYOS_TEST_MONTHLY_PRICE_VND === '2000' ? { monthly: trusted.monthly } : {}) };
+    } };
+});
 
 const ORIGIN = 'http://localhost:8787';
 const PAYOS_URL = 'https://api-merchant.payos.vn/v2/payment-requests';
@@ -37,6 +45,7 @@ let guestCookie: string;
 let providerCalls: ProviderCall[];
 let providerDataOverride: ((request: Json) => Json) | null;
 let providerThrowsAfterRequest: boolean;
+let providerBeforeResponse: ((request: Json) => Promise<void>) | null;
 let providerBadSignature: boolean;
 let testNow: Date;
 let testNumber = 0;
@@ -96,12 +105,14 @@ function installProviderMock(): void {
   providerCalls = [];
   providerDataOverride = null;
   providerThrowsAfterRequest = false;
+  providerBeforeResponse = null;
   providerBadSignature = false;
   vi.stubGlobal('fetch', vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
     const url = String(input);
     if (url !== PAYOS_URL) throw new Error(`Unexpected outbound request: ${url}`);
     const body = JSON.parse(String(init?.body ?? '{}')) as Json;
     providerCalls.push({ url, init: init ?? {}, body });
+    await providerBeforeResponse?.(body);
     if (providerThrowsAfterRequest) throw new Error('simulated provider timeout after order creation');
     const data = providerDataOverride?.(body) ?? providerResponseData(body);
     return new Response(JSON.stringify({
@@ -240,7 +251,7 @@ beforeEach(async () => {
   env = {
     DB: db,
     ENVIRONMENT: 'development',
-    CHECKOUT_ADMISSION_ENABLED: 'true',
+    CHECKOUT_ADMISSION_ENABLED: 'false',
     APP_URL: ORIGIN,
     PAYOS_CHECKOUT_ENABLED: 'true',
     PAYOS_CLIENT_ID: CLIENT_ID,
@@ -282,6 +293,7 @@ describe('server payment authority', () => {
   });
 
   it('returns only the server price catalog to authenticated non-guests', async () => {
+    env.CHECKOUT_ADMISSION_ENABLED = 'true';
     const result = await request('/billing/plans');
     expect(result.status).toBe(200);
     expect(result.json).toEqual({
@@ -806,6 +818,7 @@ describe('legacy activation retirement', () => {
 
 
 describe('checkout identity route integration', () => {
+  beforeEach(() => { env.CHECKOUT_ADMISSION_ENABLED = 'true'; });
   it.each([undefined, 'false', 'TRUE'])('keeps admission dormant for flag %s with legacy creation available', async (flag) => {
     env.CHECKOUT_ADMISSION_ENABLED = flag;
     const plans = await request('/billing/plans');
@@ -874,5 +887,400 @@ describe('payOS account instructions compatibility', () => {
     expect(paymentRow(payment.id).status).toBe('paid');
     expect(subscriptionRow()).toMatchObject({ plan: 'plus', status: 'active' });
     expect((await request('/billing/payment-intents', { method: 'POST', body: { plan: 'monthly' } })).status).toBe(503);
+  });
+});
+
+async function accountView(): Promise<BillingAccount> {
+  const result = await request('/billing/account');
+  expect(result.status).toBe(200);
+  expect(result.response.headers.get('cache-control')).toBe('no-store');
+  return BillingAccountResponseSchema.parse(result.json);
+}
+
+async function seedHistoryPayment(index: number, options: {
+  owner?: string; status?: PaymentIntent['status']; expiresAt?: string; createdAt?: string;
+} = {}) {
+  const id = `pay_history_${index}`;
+  await db.prepare(`INSERT INTO payment_intents
+    (id,user_id,plan,amount_vnd,currency,order_code,description,status,expires_at,created_at)
+    VALUES (?,?,?,?,?,?,?,?,?,?)`).bind(id, options.owner ?? 'user-a', 'monthly', 49000, 'VND',
+    String(100000 + index), `TP${index}`, options.status ?? 'pending',
+    options.expiresAt ?? new Date(testNow.getTime() + 1800000).toISOString(),
+    options.createdAt ?? new Date(testNow.getTime() - index * 1000).toISOString()).run();
+  return id;
+}
+
+async function seedAdmission(id: string, state: 'ready' | 'dispatching' | 'remote_uncertain', deadline = testNow.getTime() + 30000) {
+  const row = paymentRow(id);
+  const instructions = state === 'ready' ? JSON.stringify({ bankBin: '970422', accountNumber: 'VQRTEST1234567897',
+    accountName: 'PRIVATE TEST ACCOUNT', transferContent: row.description, qrImageUrl: 'https://example.test/private-qr.png' }) : null;
+  await db.prepare(`INSERT INTO checkout_admissions
+    (user_id,request_key,intent_id,plan,state,attempt_id,deadline_at,instructions_json,created_at,updated_at)
+    VALUES (?,?,?,?,?,?,?,?,?,?)`).bind(row.user_id, `history-key-${id}`, id, 'monthly', state, `attempt-${id}`,
+    new Date(deadline).toISOString(), instructions, testNow.toISOString(), testNow.toISOString()).run();
+}
+
+describe('owner billing account and recent history', () => {
+  beforeEach(() => { env.CHECKOUT_ADMISSION_ENABLED = 'true'; });
+  it('returns a free account and does not require provider or admission configuration', async () => {
+    env.CHECKOUT_ADMISSION_ENABLED = undefined;
+    env.PAYOS_API_KEY = undefined;
+    expect(await accountView()).toEqual({ subscription: { plan: 'free', status: 'inactive', expiresAt: null },
+      payments: [], hasMore: false, hasPendingPayment: false });
+    expect(providerCalls).toEqual([]);
+    expect(subscriptionRow()).toBeUndefined();
+  });
+
+  it.each([null, 'guest'])('rejects %s account reads before exposing history', async (caller) => {
+    await seedHistoryPayment(1);
+    const result = await request('/billing/account', { cookie: caller === 'guest' ? guestCookie : null });
+    expect(result.status).toBe(401);
+    expect(result.json.payments).toBeUndefined();
+    expect(providerCalls).toEqual([]);
+  });
+
+  it('keeps owner scope in history, pending summary and expected-owner headers', async () => {
+    await seedHistoryPayment(1, { owner: 'user-b' });
+    expect((await accountView()).payments).toEqual([]);
+    expect((await accountView()).hasPendingPayment).toBe(false);
+    const result = await request('/billing/account', { headers: {
+      'X-Frigo-Expected-User-Id': 'user-b', 'X-Frigo-Expected-Household-Id': 'user-b-household',
+    } });
+    expect(result.status).toBe(403);
+    expect(result.json.code).toBe('SESSION_OWNER_MISMATCH');
+    const other = await request('/billing/account', { cookie: otherUserCookie });
+    expect((other.json.payments as Json[]).map((payment) => payment.id)).toEqual(['pay_history_1']);
+  });
+
+  it('returns latest20 in stable order, hasMore, and detects a legacy pending order outside the displayed page', async () => {
+    for (let index = 0; index < 21; index++) await seedHistoryPayment(index, { status: index === 20 ? 'pending' : 'paid' });
+    const account = await accountView();
+    expect(account.payments).toHaveLength(20);
+    expect(account.payments.map((payment) => payment.id)).toEqual(Array.from({ length: 20 }, (_, index) => `pay_history_${index}`));
+    expect(account.hasMore).toBe(true);
+    expect(account.hasPendingPayment).toBe(true);
+    expect(account.payments.every((payment) => payment.status === 'paid' && !payment.canResume)).toBe(true);
+    expect(providerCalls).toEqual([]);
+  });
+
+  it('normalizes legacy SQLite timestamps and marks legacy QR unavailable without fabricating instructions', async () => {
+    await seedHistoryPayment(1, { createdAt: '2026-01-02 03:04:05' });
+    const account = await accountView();
+    expect(account.payments[0]).toMatchObject({ createdAt: '2026-01-02T03:04:05.000Z',
+      status: 'pending', canResume: false, checkoutState: null, amountVnd: 49000 });
+    expect(account.hasPendingPayment).toBe(true);
+    const text = JSON.stringify(account);
+    expect(text).not.toMatch(/instructions|provider_reference|user_id|request_key|attempt_id|bankBin|accountNumber|signature/);
+    expect(providerCalls).toEqual([]);
+  });
+
+  it.each(['pending', 'paid', 'failed', 'expired', 'refunded'] as const)('only allows pending ready instructions to resume (%s)', async (status) => {
+    const id = await seedHistoryPayment(1, { status });
+    await seedAdmission(id, 'ready');
+    const account = await accountView();
+    expect(account.payments[0]).toMatchObject({ status, checkoutState: 'ready', canResume: status === 'pending' });
+    expect(account.hasPendingPayment).toBe(status === 'pending');
+    expect(JSON.stringify(account)).not.toContain('PRIVATE TEST ACCOUNT');
+    expect(JSON.stringify(account)).not.toContain('private-qr');
+    expect(providerCalls).toEqual([]);
+  });
+
+  it.each([undefined, 'false', 'TRUE'])('ready instructions cannot resume when capability is %s', async (flag) => {
+    const id = await seedHistoryPayment(1);
+    await seedAdmission(id, 'ready');
+    env.CHECKOUT_ADMISSION_ENABLED = flag;
+    expect((await accountView()).payments[0].canResume).toBe(false);
+    expect((await accountView()).hasPendingPayment).toBe(true);
+  });
+
+  it('uses a single server clock at the expiry boundary for history and the duplicate fence', async () => {
+    const id = await seedHistoryPayment(1, { expiresAt: testNow.toISOString() });
+    await seedAdmission(id, 'ready');
+    const before = paymentRow(id);
+    expect((await accountView()).payments[0]).toMatchObject({ status: 'expired', canResume: false });
+    expect((await accountView()).hasPendingPayment).toBe(false);
+    expect(paymentRow(id)).toEqual(before);
+  });
+
+  it.each(['dispatching', 'remote_uncertain'] as const)('preserves unresolved %s duplicate protection after payment expiry', async (state) => {
+    const id = await seedHistoryPayment(1, { expiresAt: new Date(testNow.getTime() - 1000).toISOString(), status: 'failed' });
+    await seedAdmission(id, state, testNow.getTime() - 1000);
+    const before = db.query('SELECT * FROM checkout_admissions');
+    const account = await accountView();
+    expect(account.payments[0]).toMatchObject({ checkoutState: 'remote_uncertain', canResume: false });
+    expect(account.hasPendingPayment).toBe(true);
+    expect(db.query('SELECT * FROM checkout_admissions')).toEqual(before);
+    expect(providerCalls).toEqual([]);
+  });
+
+  it.each([
+    ['active', 3600000, 'plus', 'active'], ['active', 0, 'free', 'expired'],
+    ['active', -1000, 'free', 'expired'], ['expired', 3600000, 'free', 'expired'],
+    ['cancelled', 3600000, 'free', 'inactive'],
+  ] as const)('derives entitlement for %s subscription expiry offset%s', async (status, offset, plan, expectedStatus) => {
+    const expiresAt = new Date(testNow.getTime() + offset).toISOString();
+    await db.prepare('INSERT INTO subscriptions (id,user_id,plan,status,expires_at) VALUES (?,?,?,?,?)')
+      .bind('subscription-a', 'user-a', 'plus', status, expiresAt).run();
+    const before = subscriptionRow();
+    expect((await accountView()).subscription).toEqual({ plan, status: expectedStatus, expiresAt });
+    expect(subscriptionRow()).toEqual(before);
+    expect(providerCalls).toEqual([]);
+  });
+
+  it('keeps existing no-expiry Plus entitlement semantics and normalizes UTC timestamps', async () => {
+    await db.prepare("INSERT INTO subscriptions (id,user_id,plan,status,expires_at) VALUES ('sub-a','user-a','plus','active',NULL)").run();
+    expect((await accountView()).subscription).toEqual({ plan: 'plus', status: 'active', expiresAt: null });
+    await db.prepare("UPDATE subscriptions SET expires_at = '2099-01-01T00:00:00Z' WHERE user_id = 'user-a'").run();
+    expect((await accountView()).subscription).toEqual({ plan: 'plus', status: 'active', expiresAt: '2099-01-01T00:00:00.000Z' });
+  });
+
+  it.each([
+    ['amount_vnd', 0], ['currency', 'USD'], ['order_code', '001'], ['expires_at', 'invalid'],
+    ['created_at', 'invalid'], ['expires_at', '2026-10-13 01:00:00'], ['expires_at', '2026-02-30T00:00:00.000Z'],
+    ['created_at', '2026-02-30T00:00:00.000Z'], ['description', ''],
+  ] as const)('fails closed for malformed persisted %s', async (field, value) => {
+    const id = await seedHistoryPayment(1);
+    await db.prepare(`UPDATE payment_intents SET ${field} = ? WHERE id = ?`).bind(value, id).run();
+    const result = await request('/billing/account');
+    expect(result.status).toBe(409);
+    expect(result.json).toMatchObject({ code: 'BILLING_ACCOUNT_INVALID' });
+    expect(result.json.payments).toBeUndefined();
+    expect(providerCalls).toEqual([]);
+  });
+
+  it('fails closed for malformed stored QR and subscription expiry', async () => {
+    const id = await seedHistoryPayment(1);
+    await seedAdmission(id, 'ready');
+    await db.prepare('UPDATE checkout_admissions SET instructions_json = ? WHERE intent_id = ?')
+      .bind('{"qrImageUrl":"javascript:invalid"}', id).run();
+    expect((await request('/billing/account')).json.code).toBe('BILLING_ACCOUNT_INVALID');
+    await db.prepare('DELETE FROM checkout_admissions WHERE intent_id = ?').bind(id).run();
+    await db.prepare("INSERT INTO subscriptions (id,user_id,plan,status,expires_at) VALUES ('bad-sub','user-a','plus','active','invalid')").run();
+    expect((await request('/billing/account')).json.code).toBe('BILLING_ACCOUNT_INVALID');
+    expect(providerCalls).toEqual([]);
+  });
+
+  it('resume reads the same owned QR without provider creation and rejects foreign, expired or disabled reads', async () => {
+    const created = await request('/billing/payment-intents', { method: 'POST', body: { plan: 'monthly' },
+      headers: { 'Idempotency-Key': 'account-resume-key-001' } });
+    const payment = created.json.payment as CreatedPaymentIntent;
+    expect(created.status).toBe(201);
+    const beforeCalls = providerCalls.length;
+    expect((await accountView()).payments[0].canResume).toBe(true);
+    const resumed = await request(`/billing/checkouts/${payment.id}`);
+    expect(resumed.status).toBe(200);
+    expect(resumed.json.payment).toEqual(payment);
+    expect((await request(`/billing/checkouts/${payment.id}`, { cookie: otherUserCookie })).status).toBe(404);
+    vi.setSystemTime(new Date(payment.expiresAt));
+    expect((await request(`/billing/checkouts/${payment.id}`)).status).toBe(409);
+    env.CHECKOUT_ADMISSION_ENABLED = undefined;
+    expect((await request(`/billing/checkouts/${payment.id}`)).status).toBe(404);
+    expect(providerCalls).toHaveLength(beforeCalls);
+  });
+});
+
+describe('temporary operator acceptance price', () => {
+  beforeEach(() => { env.CHECKOUT_ADMISSION_ENABLED = 'true'; });
+  it('offers monthly2000 only under exact trusted flag, leaving annual unchanged', async () => {
+    env.PAYOS_TEST_MONTHLY_PRICE_VND = '2000';
+    expect((await request('/billing/plans')).json.plans).toEqual([
+      { plan: 'monthly', amountVnd: 2000, currency: 'VND' }, { plan: 'annual', amountVnd: 499000, currency: 'VND' },
+    ]);
+    const monthly = await createIntent('monthly');
+    expect(monthly.amountVnd).toBe(2000);
+    expect(providerCalls[0].body.amount).toBe(2000);
+    expect(new URL(monthly.instructions.qrImageUrl).searchParams.get('amount')).toBe('2000');
+    const annual = await createIntent('annual', otherUserCookie);
+    expect(annual.amountVnd).toBe(499000);
+  });
+
+  it('replays original49000 under the temporary flag and original2000 after restore without another dispatch', async () => {
+    const options = { method: 'POST', body: { plan: 'monthly' }, headers: { 'Idempotency-Key': 'original-price-key-001' } };
+    const original = await request('/billing/payment-intents', options);
+    expect((original.json.payment as CreatedPaymentIntent).amountVnd).toBe(49000);
+    env.PAYOS_TEST_MONTHLY_PRICE_VND = '2000';
+    expect((await request('/billing/payment-intents', options)).json.payment).toEqual(original.json.payment);
+    expect((await postWebhook(webhookFor(original.json.payment as CreatedPaymentIntent))).status).toBe(200);
+    const testOptions = { ...options, headers: { 'Idempotency-Key': 'temporary-price-key-001' } };
+    const temporary = await request('/billing/payment-intents', testOptions);
+    expect((temporary.json.payment as CreatedPaymentIntent).amountVnd).toBe(2000);
+    delete env.PAYOS_TEST_MONTHLY_PRICE_VND;
+    expect((await request('/billing/payment-intents', testOptions)).json.payment).toEqual(temporary.json.payment);
+    expect((await request('/billing/plans')).json.plans).toContainEqual({ plan: 'monthly', amountVnd: 49000, currency: 'VND' });
+    expect(providerCalls).toHaveLength(2);
+    const history = await accountView();
+    expect(history.payments.map((payment) => payment.amountVnd).sort((a, b) => a - b)).toEqual([2000, 49000]);
+  });
+
+  it('cannot select the temporary price through body, query or headers', async () => {
+    const result = await request('/billing/payment-intents?PAYOS_TEST_MONTHLY_PRICE_VND=2000', {
+      method: 'POST', body: { plan: 'monthly', amount: 2000, amountVnd: 2000, PAYOS_TEST_MONTHLY_PRICE_VND: '2000' },
+      headers: { 'PAYOS_TEST_MONTHLY_PRICE_VND': '2000', 'X-Payos-Test-Monthly-Price-Vnd': '2000' },
+    });
+    expect(result.status).toBe(201);
+    expect((result.json.payment as CreatedPaymentIntent).amountVnd).toBe(49000);
+    expect(providerCalls[0].body.amount).toBe(49000);
+  });
+
+  it.each(['', 'false', '02000', '2000.0', '5000'])('fails closed for invalid operator price %s before writes/provider', async (flag) => {
+    env.PAYOS_TEST_MONTHLY_PRICE_VND = flag;
+    expect((await request('/billing/plans')).status).toBe(503);
+    const result = await request('/billing/payment-intents', { method: 'POST', body: { plan: 'monthly' } });
+    expect(result.status).toBe(503);
+    expect(result.json.code).toBe('PAYMENT_PRICE_CONFIGURATION_INVALID');
+    expect(db.query('SELECT * FROM payment_intents')).toEqual([]);
+    expect(db.query('SELECT * FROM checkout_admissions')).toEqual([]);
+    expect(providerCalls).toEqual([]);
+  });
+
+  it('settles the persisted2000 offer after catalog restoration, rejecting current-price callback', async () => {
+    env.PAYOS_TEST_MONTHLY_PRICE_VND = '2000';
+    const payment = await createIntent('monthly');
+    delete env.PAYOS_TEST_MONTHLY_PRICE_VND;
+    expect((await postWebhook(webhookFor(payment, { amount: 49000 }))).status).toBe(409);
+    expect(subscriptionRow()).toBeUndefined();
+    expect((await postWebhook(webhookFor(payment))).status).toBe(200);
+    expect(paymentRow(payment.id)).toMatchObject({ amount_vnd: 2000, status: 'paid' });
+    expect(subscriptionRow()).toMatchObject({ plan: 'plus', status: 'active' });
+  });
+});
+
+
+describe('durable creation when admission is enabled', () => {
+  beforeEach(() => { env.CHECKOUT_ADMISSION_ENABLED = 'true'; });
+
+  it('stores instructions for a client without an idempotency header and resumes after reload', async () => {
+    const first = await createIntent();
+    const admissions = db.query<{ request_key: string; state: string; intent_id: string }>('SELECT request_key,state,intent_id FROM checkout_admissions');
+    expect(admissions).toHaveLength(1);
+    expect(admissions[0]).toMatchObject({ state: 'ready', intent_id: first.id });
+    expect(admissions[0].request_key).toMatch(/^[a-f\d-]{36}$/);
+    expect((await accountView()).payments[0]).toMatchObject({ id: first.id, canResume: true, checkoutState: 'ready' });
+    expect((await request(`/billing/checkouts/${first.id}`)).json.payment).toEqual(first);
+    const duplicate = await request('/billing/payment-intents', { method: 'POST', body: { plan: 'annual' } });
+    expect(duplicate.status).toBe(409);
+    expect(duplicate.json).toMatchObject({ code: 'COMMAND_IN_PROGRESS', intentId: first.id });
+    expect(providerCalls).toHaveLength(1);
+    expect(db.query('SELECT * FROM payment_intents')).toHaveLength(1);
+    expect(db.query('SELECT * FROM checkout_admissions')).toHaveLength(1);
+  });
+
+  it('fences simultaneous unkeyed clients at the database before provider dispatch', async () => {
+    const results = await Promise.all(Array.from({ length: 5 }, () =>
+      request('/billing/payment-intents', { method: 'POST', body: { plan: 'monthly' } })));
+    const created = results.find((result) => result.status === 201);
+    expect(created).toBeDefined();
+    const id = (created?.json.payment as CreatedPaymentIntent).id;
+    expect(results.filter((result) => result.status === 201)).toHaveLength(1);
+    expect(results.filter((result) => result.status === 409)).toHaveLength(4);
+    expect(results.filter((result) => result.status === 409).every((result) => result.json.intentId === id)).toBe(true);
+    expect(providerCalls).toHaveLength(1);
+    expect(db.query('SELECT * FROM payment_intents')).toHaveLength(1);
+  });
+
+  it('blocks keyed and unkeyed new clients while a legacy pending order exists', async () => {
+    const id = await seedHistoryPayment(1);
+    const before = paymentRow(id);
+    for (const headers of [{} as Record<string, string>, { 'Idempotency-Key': 'legacy-fence-key-001' }]) {
+      const result = await request('/billing/payment-intents', { method: 'POST', body: { plan: 'monthly' }, headers });
+      expect(result.status).toBe(409);
+      expect(result.json).toMatchObject({ code: 'COMMAND_IN_PROGRESS', intentId: id });
+    }
+    expect((await accountView()).payments[0]).toMatchObject({ id, canResume: false, checkoutState: null });
+    expect(paymentRow(id)).toEqual(before);
+    expect(providerCalls).toEqual([]);
+    expect(db.query('SELECT * FROM payment_intents')).toHaveLength(1);
+    expect(db.query('SELECT * FROM checkout_admissions')).toEqual([]);
+  });
+
+  it('retains uncertainty when an unkeyed remote response is lost instead of allowing a replacement', async () => {
+    providerThrowsAfterRequest = true;
+    const first = await request('/billing/payment-intents', { method: 'POST', body: { plan: 'monthly' } });
+    expect(first.status).toBe(202);
+    expect(first.json.code).toBe('PAYMENT_RECONCILIATION_REQUIRED');
+    providerThrowsAfterRequest = false;
+    const second = await request('/billing/payment-intents', { method: 'POST', body: { plan: 'annual' },
+      headers: { 'Idempotency-Key': 'uncertain-new-key-001' } });
+    expect(second.status).toBe(202);
+    expect(second.json).toEqual(first.json);
+    expect((await accountView()).hasPendingPayment).toBe(true);
+    expect(providerCalls).toHaveLength(1);
+    expect(subscriptionRow()).toBeUndefined();
+  });
+
+  it('retains old unkeyed legacy behavior only when the admission capability is disabled', async () => {
+    env.CHECKOUT_ADMISSION_ENABLED = 'false';
+    await createIntent('monthly');
+    await createIntent('annual');
+    expect(providerCalls).toHaveLength(2);
+    expect(db.query('SELECT * FROM checkout_admissions')).toEqual([]);
+    expect((await accountView()).payments.every((payment) => !payment.canResume)).toBe(true);
+  });
+});
+
+
+describe('verified settlement wins the admission uncertainty fence', () => {
+  beforeEach(() => { env.CHECKOUT_ADMISSION_ENABLED = 'true'; });
+
+  it.each(['lost_response', 'still_dispatching'] as const)('allows renewal after signed settlement during %s without granting twice', async (mode) => {
+    let payment!: PaymentIntent;
+    let granted!: Record<string, unknown>;
+    let renewal: Awaited<ReturnType<typeof request>> | undefined;
+    providerThrowsAfterRequest = mode === 'lost_response';
+    providerBeforeResponse = async (body) => {
+      providerBeforeResponse = null;
+      const row = db.query('SELECT * FROM payment_intents WHERE order_code = ?', String(body.orderCode))[0];
+      payment = paymentFromRow(row);
+      expect((await postWebhook(webhookFor(payment))).status).toBe(200);
+      granted = { ...subscriptionRow() };
+      expect(paymentRow(payment.id)).toMatchObject({ status: 'paid', provider_reference: `reference-${payment.orderCode}` });
+      expect((await accountView()).hasPendingPayment).toBe(false);
+      expect((await request('/billing/checkouts')).json.checkouts).toEqual([]);
+      if (mode === 'still_dispatching') renewal = await request('/billing/payment-intents', {
+        method: 'POST', body: { plan: 'annual' }, headers: { 'Idempotency-Key': 'verified-renewal-key-001' },
+      });
+    };
+    const first = await request('/billing/payment-intents', { method: 'POST', body: { plan: 'monthly' },
+      headers: { 'Idempotency-Key': 'verified-original-key-001' } });
+    expect(first.status).toBe(mode === 'lost_response' ? 202 : 201);
+    expect(db.query('SELECT state FROM checkout_admissions WHERE intent_id = ?', payment.id)).toEqual([
+      { state: mode === 'lost_response' ? 'remote_uncertain' : 'ready' },
+    ]);
+    const account = await accountView();
+    expect(account.subscription).toMatchObject({ plan: 'plus', status: 'active' });
+    expect(account.payments.find((item) => item.id === payment.id)).toMatchObject({ status: 'paid', canResume: false });
+    expect(account.hasPendingPayment).toBe(mode === 'still_dispatching');
+    expect((await postWebhook(webhookFor(payment))).status).toBe(200);
+    expect(subscriptionRow()).toEqual(granted);
+    providerThrowsAfterRequest = false;
+    if (!renewal) renewal = await request('/billing/payment-intents', { method: 'POST', body: { plan: 'annual' },
+      headers: { 'Idempotency-Key': 'verified-renewal-key-001' } });
+    expect(renewal.status).toBe(201);
+    expect((renewal.json.payment as CreatedPaymentIntent).id).not.toBe(payment.id);
+    expect(providerCalls).toHaveLength(2);
+    expect(db.query('SELECT * FROM payment_intents')).toHaveLength(2);
+    expect(subscriptionRow()).toEqual(granted);
+    const open = (await request('/billing/checkouts')).json.checkouts as Json[];
+    expect(open).toHaveLength(1);
+    expect(open[0].intentId).toBe((renewal.json.payment as CreatedPaymentIntent).id);
+    expect((await postWebhook(webhookFor(payment))).status).toBe(200);
+    expect(subscriptionRow()).toEqual(granted);
+  });
+
+  it('keeps uncertainty blocking for a paid row without verified reference and a failed referenced row', async () => {
+    const id = await seedHistoryPayment(1, { status: 'paid' });
+    await seedAdmission(id, 'remote_uncertain');
+    for (const status of ['paid', 'failed']) {
+      await db.prepare('UPDATE payment_intents SET status = ?, provider_reference = ? WHERE id = ?')
+        .bind(status, status === 'failed' ? 'FAILED_TEST_REFERENCE' : null, id).run();
+      expect((await accountView()).hasPendingPayment).toBe(true);
+      const result = await request('/billing/payment-intents', { method: 'POST', body: { plan: 'annual' },
+        headers: { 'Idempotency-Key': 'unverified-new-key-001' } });
+      expect(result.status).toBe(202);
+      expect(result.json).toMatchObject({ code: 'PAYMENT_RECONCILIATION_REQUIRED', intentId: id });
+      expect(((await request('/billing/checkouts')).json.checkouts as Json[]).map((item) => item.intentId)).toEqual([id]);
+    }
+    expect(providerCalls).toEqual([]);
+    expect(subscriptionRow()).toBeUndefined();
   });
 });

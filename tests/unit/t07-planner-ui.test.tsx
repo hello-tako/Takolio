@@ -4,6 +4,7 @@ import { createRoot, type Root } from 'react-dom/client';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { MemoryRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { useAuthStore } from '../../src/web/stores/useAuthStore';
 import { PlannerPage } from '../../src/web/pages/PlannerPage';
 import { queryClient } from '../../src/web/lib/query-client';
 import { queryKeys } from '../../src/web/lib/queryKeys';
@@ -29,6 +30,7 @@ function deferred<T>() {
 function setOwner(userId = 'user-a', householdId = 'house-a') {
   localStorage.setItem('frigo_user_id', userId);
   localStorage.setItem('frigo_household_id', householdId);
+  useAuthStore.setState({ userId, householdId, isGuest: false, logoutStatus: 'idle' });
 }
 
 function LocationProbe() {
@@ -92,6 +94,9 @@ async function follow(path: string) {
 }
 
 beforeEach(() => {
+  // These fixtures exercise V1 meals; T20 composition tests own the enabled path.
+  vi.stubEnv('VITE_MEAL_PLANNER_ENABLED', 'true');
+  vi.stubEnv('VITE_MEAL_COMPOSITION_V2_ENABLED', 'false');
   // jsdom has no layout scrolling API; browser QA verifies visibility and focus.
   Object.defineProperty(Element.prototype, 'scrollIntoView', { configurable: true, value: vi.fn() });
   vi.stubGlobal('IS_REACT_ACT_ENVIRONMENT', true);
@@ -174,8 +179,8 @@ describe('T07 planner mounted route and session audit', () => {
 
     await act(async () => {
       clearPrivateIdentity();
-      setOwner('user-b', 'house-b');
       resetPrivateSession();
+      setOwner('user-b', 'house-b');
     });
     await flush();
     expect(container.textContent).not.toContain('Dinner revision 1');

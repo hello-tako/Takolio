@@ -128,3 +128,31 @@ The first corrected scratch run created order7816263117534 before its cancel
 call failed. The operator matched its exact channel/order/timestamp on the payOS
 dashboard, verified signed provider read49000/PENDING/amountPaid0, then cancelled
 it and verified CANCELLED/0. No diagnostic order remains knowingly payable.
+
+
+## Billing account and recovery follow-up - 2026-10-13 JST
+
+PR73 reached exact-source staging and production at b7358ea4146226a929aa1e20513c2f98f77b7092
+(runs38262309375/38262862169, attempt1). Home/Plus menu mismatch was an intentional
+Plus exclusion from the kitchen shell, corrected without an asset rollback.
+Actual production app order113018856588681 produced a matching decoded49000VND
+QR; provider read PENDING/amountPaid0. Paid settlement remains unverified.
+
+The owner then reported lost QR after closing the app, missing history and no
+subscription management. Checkout admission was still OFF: legacy issuance did
+not retain bank instructions. The replacement uses existing migration0041,
+enables durable creation including old clients omitting a request key, and guards
+one outstanding order per owner inside the same D1 transaction. History and
+entitlement are read-only, bounded and private; malformed stored data fails closed.
+Renewal retains transactional expiry extension after real receipt. Existing
+legacy instructions cannot honestly be reconstructed by this change.
+
+The owner explicitly requests a temporary monthly2000VND offer for a real transfer.
+PAYOS_TEST_MONTHLY_PRICE_VND accepts only exact2000; absence returns canonical49000.
+Invalid configuration returns503 before issuance. GET prices and new payment
+requests use the same trusted configuration. Existing intents, signed provider
+payloads, same-key replay and webhook settlement use frozen persisted amounts.
+The annual499000VND offer remains unchanged. Activation follows the new protected
+release and exact-source proof; restoration follows real settlement acceptance.
+No automatic recurring debit, fake paid callback, bank transfer or manual grant
+is part of the agent's operation.

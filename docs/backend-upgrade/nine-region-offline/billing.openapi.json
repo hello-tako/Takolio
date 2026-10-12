@@ -1,8 +1,8 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Takosan billing admission offline contract",
-    "version": "1-candidate"
+    "title": "Tako-san billing account and admission contract",
+    "version": "2-candidate"
   },
   "servers": [
     {
@@ -21,7 +21,14 @@
         "x-owner-scope": "authenticated non-guest; expected owner headers and CSRF on POST",
         "responses": {
           "200": {
-            "description": "Authoritative prices",
+            "description": "Authoritative server prices and exact admission capability",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
             "content": {
               "application/json": {
                 "schema": {
@@ -29,6 +36,54 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "UNAUTHORIZED"
+          },
+          "503": {
+            "description": "Database unavailable or PAYMENT_PRICE_CONFIGURATION_INVALID"
+          }
+        }
+      }
+    },
+    "/billing/account": {
+      "get": {
+        "security": [
+          {
+            "CookieSession": []
+          }
+        ],
+        "x-owner-scope": "authenticated non-guest; expected owner headers and CSRF on POST",
+        "description": "Read-only owner snapshot of current entitlement and latest20 payments, ordered by creation time then id descending. hasMore indicates older history; hasPendingPayment also covers outstanding orders outside the page, legacy pending orders and unresolved admissions. A paid order with a persisted verified provider reference no longer blocks creation, even if its admission outcome remained uncertain. Resumable instructions are read separately by id; history omits bank and provider data. Subscription expiry and history timestamps are canonical UTC ISO values.",
+        "responses": {
+          "200": {
+            "description": "Owner-only entitlement, bounded history and outstanding-payment fence",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BillingAccountResponseSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED"
+          },
+          "403": {
+            "description": "SESSION_OWNER_MISMATCH"
+          },
+          "409": {
+            "description": "BILLING_ACCOUNT_INVALID; no partial history"
+          },
+          "503": {
+            "description": "DATABASE_UNAVAILABLE or BILLING_ACCOUNT_UNAVAILABLE"
           }
         }
       }
@@ -43,7 +98,14 @@
         "x-owner-scope": "authenticated non-guest; expected owner headers and CSRF on POST",
         "responses": {
           "200": {
-            "description": "Owner-only reload recovery handles",
+            "description": "Owner-only reload recovery handles; verified paid orders omitted",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
             "content": {
               "application/json": {
                 "schema": {
@@ -77,6 +139,13 @@
         "responses": {
           "200": {
             "description": "Resume owned instructions without dispatch",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
             "content": {
               "application/json": {
                 "schema": {
@@ -87,6 +156,13 @@
           },
           "202": {
             "description": "Reconciliation required",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
             "content": {
               "application/json": {
                 "schema": {
@@ -112,6 +188,7 @@
           }
         ],
         "x-owner-scope": "authenticated non-guest; expected owner headers and CSRF on POST",
+        "description": "With admission enabled, creation atomically forbids a new offer while the owner has a pending order or unresolved admission, including legacy orders. Verified paid orders with a persisted provider reference are excluded from this fence. Same-key replay preserves the issued offer. An omitted key uses a server-generated durable key and retains stored instructions for account recovery. With admission disabled, omitted-key creation retains legacy behavior; supplied keys fail closed.",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -121,7 +198,7 @@
               "type": "string",
               "pattern": "^[A-Za-z0-9_-]{16,128}$"
             },
-            "description": "Available only when checkoutAdmissionEnabled is true; otherwise keyed requests fail closed. Absent retains legacy creation. Same-key changed plan conflicts. Keep key through transport failure."
+            "description": "Available only when checkoutAdmissionEnabled is true. Same-key changed plan conflicts. Keep the key through transport failure to replay the exact offer. Without a supplied key, recover an admitted order from billing account history rather than dispatching another."
           }
         ],
         "requestBody": {
@@ -150,6 +227,13 @@
         "responses": {
           "200": {
             "description": "Original offer replay",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
             "content": {
               "application/json": {
                 "schema": {
@@ -160,6 +244,13 @@
           },
           "201": {
             "description": "One newly admitted offer",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
             "content": {
               "application/json": {
                 "schema": {
@@ -169,7 +260,14 @@
             }
           },
           "202": {
-            "description": "Remote outcome unknown; no replacement dispatch",
+            "description": "Remote outcome unknown; existing intent handle, no replacement dispatch",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
             "content": {
               "application/json": {
                 "schema": {
@@ -185,13 +283,13 @@
             "description": "UNAUTHORIZED"
           },
           "409": {
-            "description": "IDEMPOTENCY_CONFLICT, COMMAND_IN_PROGRESS or CHECKOUT_KEY_EXPIRED"
+            "description": "IDEMPOTENCY_CONFLICT, COMMAND_IN_PROGRESS (including an existing owner pending order) or CHECKOUT_KEY_EXPIRED"
           },
           "429": {
             "description": "Creation rate limit (fail closed)"
           },
           "503": {
-            "description": "Provider, rate-limit or database unavailable"
+            "description": "Provider, rate-limit or database unavailable, disabled admission or invalid trusted price configuration"
           }
         }
       }
@@ -450,6 +548,154 @@
           "checkouts"
         ],
         "additionalProperties": false
+      },
+      "BillingAccountResponseSchema": {
+        "type": "object",
+        "properties": {
+          "subscription": {
+            "type": "object",
+            "properties": {
+              "plan": {
+                "type": "string",
+                "enum": [
+                  "free",
+                  "plus"
+                ]
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "active",
+                  "expired",
+                  "inactive"
+                ]
+              },
+              "expiresAt": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "x-runtime-validation": true
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "plan",
+              "status",
+              "expiresAt"
+            ],
+            "additionalProperties": false,
+            "x-runtime-validation": true
+          },
+          "payments": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "plan": {
+                  "type": "string",
+                  "enum": [
+                    "monthly",
+                    "annual"
+                  ]
+                },
+                "amountVnd": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "minimum": -9007199254740991,
+                  "maximum": 9007199254740991
+                },
+                "currency": {
+                  "const": "VND"
+                },
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "orderCode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "description": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "expiresAt": {
+                  "type": "string",
+                  "minLength": 1,
+                  "x-runtime-validation": true
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "pending",
+                    "paid",
+                    "failed",
+                    "expired",
+                    "refunded"
+                  ]
+                },
+                "createdAt": {
+                  "type": "string",
+                  "minLength": 1,
+                  "x-runtime-validation": true
+                },
+                "canResume": {
+                  "type": "boolean"
+                },
+                "checkoutState": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "enum": [
+                        "dispatching",
+                        "ready",
+                        "remote_uncertain"
+                      ]
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "plan",
+                "amountVnd",
+                "currency",
+                "id",
+                "orderCode",
+                "description",
+                "expiresAt",
+                "status",
+                "createdAt",
+                "canResume",
+                "checkoutState"
+              ],
+              "additionalProperties": false,
+              "x-runtime-validation": true
+            },
+            "maxItems": 20,
+            "x-runtime-validation": true
+          },
+          "hasMore": {
+            "type": "boolean"
+          },
+          "hasPendingPayment": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "subscription",
+          "payments",
+          "hasMore",
+          "hasPendingPayment"
+        ],
+        "additionalProperties": false
       }
     },
     "securitySchemes": {
@@ -463,7 +709,7 @@
   "x-source-hashes": [
     {
       "path": "scripts/billing-contract.mjs",
-      "sha256": "9a41358ee2466c378960d10c986774d860b06be99e0182f4830299ea41e94241"
+      "sha256": "68735a5e88f3ea6c8d96f39faed350cdc6305875b0081ed7c82e78796419c5f6"
     },
     {
       "path": "scripts/planner-openapi.ts",
@@ -471,15 +717,31 @@
     },
     {
       "path": "src/shared/billing.ts",
-      "sha256": "41c5879119900941d9ba38301785fe4f13875f6b070927971bc3fdff628f6839"
+      "sha256": "3c8a6ccc86f9c72bc83e1d7c17febbd141f14c3eb3be3e2b3be68505c7b13de8"
     },
     {
       "path": "src/worker/routes/billing.ts",
-      "sha256": "22c6f3694a32e3162ff51659613d1df24662868307180b6c94a924ff7ec65264"
+      "sha256": "cc2efec95cd25574c0857abe5350f4682d9a777a05f0017440ab4b96f6fbfa3d"
     },
     {
       "path": "src/worker/payment/checkout.ts",
-      "sha256": "30a0a11847395941ba370e6aaa737d09b2494ee01ca62d358512de837922024f"
+      "sha256": "f8a5a488cdcd6ec19b8137a18c4053dec8b7027774883bc52ee698a4746611df"
+    },
+    {
+      "path": "src/worker/payment/authority.ts",
+      "sha256": "1d3acf40c55151b2f8fbc8bd3431a47c4a3a5c2a6f75dd4927935119d75e4ae6"
+    },
+    {
+      "path": "src/worker/payment/prices.ts",
+      "sha256": "cdaf748d1bec0925a8483be20f0ac93ecc98bfa9df492e5ca407e6f0b24949e5"
+    },
+    {
+      "path": "src/worker/types.ts",
+      "sha256": "0d5ce8713d9efc4fbda82a610bebe10c278204fcb0f0b6f7564fcd425670e142"
+    },
+    {
+      "path": "src/worker/config/scan-quota-policy.ts",
+      "sha256": "34081cd27c4d82f91d14f8fe537fe2b429ae52a72cbddc50b16dd7c099224bf0"
     },
     {
       "path": "migrations/0041_checkout_admission.sql",

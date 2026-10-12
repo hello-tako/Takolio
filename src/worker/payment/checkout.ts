@@ -7,7 +7,7 @@ import { PLUS_PRICES } from './prices';
 import type { createPayosInstructions } from './payos';
 
 export const checkoutKeySchema = CheckoutKeySchema;
-const instructionsSchema = z.object({
+export const checkoutInstructionsSchema = z.object({
   bankBin: z.string().regex(/^\d{6}$/), accountNumber: z.string().regex(/^[A-Za-z\d]{1,32}$/),
   accountName: z.string().min(1).max(200), transferContent: z.string().min(1).max(200),
   qrImageUrl: z.string().url().refine((value) => new URL(value).protocol === 'https:'),
@@ -24,11 +24,17 @@ export type CheckoutResult =
   | { kind: 'replay'; payment: CreatedPaymentIntent }
   | { kind: 'conflict' | 'expired' | 'in_progress' | 'reconciliation'; intentId: string };
 
+export const verifiedPaidPaymentPredicate = `(p.status = 'paid' AND p.provider_reference IS NOT NULL)`;
+export const outstandingPaymentPredicate = `p.user_id = ? AND NOT ${verifiedPaidPaymentPredicate}
+  AND ((p.status = 'pending' AND
+  (julianday(p.expires_at) IS NULL OR julianday(p.expires_at) > julianday(?)))
+  OR a.state IN ('dispatching', 'remote_uncertain'))`;
+
 const readSql = `SELECT p.*, a.plan AS checkout_plan, a.state, a.attempt_id,
   a.deadline_at, a.instructions_json FROM checkout_admissions a
   JOIN payment_intents p ON p.id = a.intent_id WHERE a.user_id = ? AND a.request_key = ?`;
 
-async function uncertain(db: D1DatabaseBinding, row: CheckoutRow, reason: 'provider_outcome_unknown' | 'attempt_deadline') {
+async function uncertain(db: D1DatabaseBinding, row: Pick<CheckoutRow, 'id'>, reason: 'provider_outcome_unknown' | 'attempt_deadline') {
   const now = new Date().toISOString();
   await db.batch([
     db.prepare(`UPDATE payment_intents SET status = 'failed', updated_at = ?
@@ -48,6 +54,7 @@ async function uncertain(db: D1DatabaseBinding, row: CheckoutRow, reason: 'provi
 export async function createCheckout(
   db: D1DatabaseBinding, userId: string, key: string, plan: PlusPlan,
   dispatch: (intent: PaymentRow) => ReturnType<typeof createPayosInstructions>,
+  prices: Readonly<Record<PlusPlan, number>> = PLUS_PRICES,
 ): Promise<CheckoutResult> {
   checkoutKeySchema.parse(key);
   const now = new Date().toISOString();
@@ -61,16 +68,33 @@ export async function createCheckout(
     db.prepare(`INSERT INTO payment_intents
       (id,user_id,plan,amount_vnd,currency,order_code,description,expires_at)
       SELECT ?,?,?,?,?,?,?,? WHERE NOT EXISTS
-      (SELECT 1 FROM checkout_admissions WHERE user_id = ? AND request_key = ?)`)
-      .bind(id, userId, plan, PLUS_PRICES[plan], PAYMENT_CURRENCY, orderCode,
-        `TP${orderCode.slice(-7)}`, expiresAt, userId, key),
+      (SELECT 1 FROM checkout_admissions WHERE user_id = ? AND request_key = ?)
+      AND NOT EXISTS (SELECT 1 FROM payment_intents p LEFT JOIN checkout_admissions a
+        ON a.intent_id = p.id AND a.user_id = p.user_id WHERE ${outstandingPaymentPredicate})`)
+      .bind(id, userId, plan, prices[plan], PAYMENT_CURRENCY, orderCode,
+        `TP${orderCode.slice(-7)}`, expiresAt, userId, key, userId, now),
     db.prepare(`INSERT INTO checkout_admissions
       (user_id,request_key,intent_id,plan,state,attempt_id,deadline_at,created_at,updated_at)
       SELECT ?,?,?,?,'dispatching',?,?,?,? FROM payment_intents WHERE id = ?`)
       .bind(userId, key, id, plan, attemptId, deadlineAt, now, now, id),
   ]);
   const row = await db.prepare(readSql).bind(userId, key).first<CheckoutRow>();
-  if (!row) throw new Error('CHECKOUT_ADMISSION_UNAVAILABLE');
+  if (!row) {
+    const outstanding = await db.prepare(`SELECT p.id, a.state, a.deadline_at FROM payment_intents p
+      LEFT JOIN checkout_admissions a ON a.intent_id = p.id AND a.user_id = p.user_id
+      WHERE ${outstandingPaymentPredicate}
+      ORDER BY CASE WHEN a.state IN ('dispatching', 'remote_uncertain') THEN 0 ELSE 1 END,
+        datetime(p.created_at) DESC, p.id DESC LIMIT 1`)
+      .bind(userId, now).first<{ id: string; state: CheckoutRow['state'] | null; deadline_at: string | null }>();
+    if (!outstanding) throw new Error('CHECKOUT_ADMISSION_UNAVAILABLE');
+    if (outstanding.state === 'remote_uncertain') return { kind: 'reconciliation', intentId: outstanding.id };
+    if (outstanding.state === 'dispatching' && (outstanding.deadline_at === null
+        || !Number.isFinite(Date.parse(outstanding.deadline_at)) || Date.parse(outstanding.deadline_at) <= Date.now())) {
+      await uncertain(db, outstanding, 'attempt_deadline');
+      return { kind: 'reconciliation', intentId: outstanding.id };
+    }
+    return { kind: 'in_progress', intentId: outstanding.id };
+  }
   if (row.checkout_plan !== plan) return { kind: 'conflict', intentId: row.id };
   if (row.state === 'remote_uncertain') return { kind: 'reconciliation', intentId: row.id };
   if (row.state === 'dispatching' && Date.parse(row.deadline_at) <= Date.now()) {
@@ -79,7 +103,7 @@ export async function createCheckout(
   }
   if (Date.parse(row.expires_at) <= Date.now()) return { kind: 'expired', intentId: row.id };
   if (row.state === 'ready') {
-    const instructions = instructionsSchema.parse(JSON.parse(row.instructions_json!));
+    const instructions = checkoutInstructionsSchema.parse(JSON.parse(row.instructions_json!));
     return { kind: 'replay', payment: { ...paymentView(row), instructions } };
   }
   if (row.attempt_id !== attemptId) return { kind: 'in_progress', intentId: row.id };
@@ -93,7 +117,7 @@ export async function createCheckout(
       });
       value = await Promise.race([Promise.resolve().then(() => dispatch(row)), deadline]);
     } finally { if (timer !== undefined) clearTimeout(timer); }
-    const instructions = instructionsSchema.parse(value);
+    const instructions = checkoutInstructionsSchema.parse(value);
     const finishedAt = new Date().toISOString();
     const results = await db.batch([
       db.prepare(`UPDATE payment_intents SET description = ?, updated_at = ? WHERE id = ? AND EXISTS
@@ -128,6 +152,6 @@ export async function readCheckout(db: D1DatabaseBinding, userId: string, intent
   if (row.state !== 'ready') return { kind: row.state === 'remote_uncertain' || Date.parse(row.deadline_at) <= Date.now()
     ? 'reconciliation' : 'in_progress', intentId: row.id };
   if (Date.parse(row.expires_at) <= Date.now()) return { kind: 'expired', intentId: row.id };
-  const instructions = instructionsSchema.parse(JSON.parse(row.instructions_json!));
+  const instructions = checkoutInstructionsSchema.parse(JSON.parse(row.instructions_json!));
   return { kind: 'replay', payment: { ...paymentView(row), instructions } };
 }
