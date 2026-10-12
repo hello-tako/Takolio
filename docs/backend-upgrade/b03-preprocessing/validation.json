@@ -1,0 +1,1886 @@
+{
+  "version": 1,
+  "classification": "LOCAL_IMPLEMENTATION_VERIFIED_WITH_BLOCKING_RELEASE_GATES",
+  "baseCommit": "85c600542949778168527a4214960d553ce7a86a",
+  "implementationCommit": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+  "branch": "codex/backend-b03-preprocessing",
+  "independentRealSamples": 0,
+  "productOcrCertified": false,
+  "semanticFridgeRecognitionMeasured": false,
+  "securityGate": "FAILED_HIGH_ADVISORY_REMAINS",
+  "tests": {
+    "files": 316,
+    "tests": 7642,
+    "focusedFiles": 3,
+    "focusedTests": 47,
+    "newTests": 32,
+    "fullCommandSeconds": 138.65
+  },
+  "runtimeGroups": [
+    {
+      "task": "receipt_ocr",
+      "locale": "vi",
+      "images": 30,
+      "documents": 6,
+      "expectedFields": 672,
+      "exactFields": 642,
+      "compactExactFields": 666,
+      "edits": 33,
+      "characters": 5418
+    },
+    {
+      "task": "receipt_ocr",
+      "locale": "ja",
+      "images": 30,
+      "documents": 6,
+      "expectedFields": 672,
+      "exactFields": 647,
+      "compactExactFields": 672,
+      "edits": 25,
+      "characters": 3996
+    },
+    {
+      "task": "label_ocr",
+      "locale": "vi",
+      "images": 15,
+      "documents": 3,
+      "expectedFields": 39,
+      "exactFields": 39,
+      "compactExactFields": 39,
+      "edits": 0,
+      "characters": 408
+    },
+    {
+      "task": "label_ocr",
+      "locale": "ja",
+      "images": 15,
+      "documents": 3,
+      "expectedFields": 39,
+      "exactFields": 38,
+      "compactExactFields": 39,
+      "edits": 1,
+      "characters": 318
+    }
+  ],
+  "comparisonGroups": [
+    {
+      "policy": "jpeg82",
+      "task": "receipt_ocr",
+      "locale": "vi",
+      "imageCount": 30,
+      "documentCount": 6,
+      "expectedFields": 672,
+      "exactFields": 619,
+      "compactExactFields": 643,
+      "edits": 56,
+      "inputBytes": 1899785,
+      "outputBytes": 1660156,
+      "maximumBytes": 71730,
+      "losslessOver512KiB": 0,
+      "reportSha256": "abe16c7454c619327f7ed0d3b8ed291b59cf514a97623232ae55b947b88faa80"
+    },
+    {
+      "policy": "jpeg82",
+      "task": "receipt_ocr",
+      "locale": "ja",
+      "imageCount": 30,
+      "documentCount": 6,
+      "expectedFields": 672,
+      "exactFields": 647,
+      "compactExactFields": 672,
+      "edits": 25,
+      "inputBytes": 1729273,
+      "outputBytes": 1422166,
+      "maximumBytes": 60113,
+      "losslessOver512KiB": 0,
+      "reportSha256": "abe16c7454c619327f7ed0d3b8ed291b59cf514a97623232ae55b947b88faa80"
+    },
+    {
+      "policy": "jpeg82",
+      "task": "label_ocr",
+      "locale": "vi",
+      "imageCount": 15,
+      "documentCount": 3,
+      "expectedFields": 39,
+      "exactFields": 39,
+      "compactExactFields": 39,
+      "edits": 0,
+      "inputBytes": 586744,
+      "outputBytes": 483000,
+      "maximumBytes": 41631,
+      "losslessOver512KiB": 0,
+      "reportSha256": "abe16c7454c619327f7ed0d3b8ed291b59cf514a97623232ae55b947b88faa80"
+    },
+    {
+      "policy": "jpeg82",
+      "task": "label_ocr",
+      "locale": "ja",
+      "imageCount": 15,
+      "documentCount": 3,
+      "expectedFields": 39,
+      "exactFields": 38,
+      "compactExactFields": 39,
+      "edits": 1,
+      "inputBytes": 553023,
+      "outputBytes": 447552,
+      "maximumBytes": 38356,
+      "losslessOver512KiB": 0,
+      "reportSha256": "abe16c7454c619327f7ed0d3b8ed291b59cf514a97623232ae55b947b88faa80"
+    },
+    {
+      "policy": "jpeg95",
+      "task": "receipt_ocr",
+      "locale": "vi",
+      "imageCount": 30,
+      "documentCount": 6,
+      "expectedFields": 672,
+      "exactFields": 628,
+      "compactExactFields": 652,
+      "edits": 47,
+      "inputBytes": 1899785,
+      "outputBytes": 2368357,
+      "maximumBytes": 107380,
+      "losslessOver512KiB": 0,
+      "reportSha256": "c4767a8d34fdedd5e95a6a07533010255edab12b5bdda113ffccfec6b4e0804a"
+    },
+    {
+      "policy": "jpeg95",
+      "task": "receipt_ocr",
+      "locale": "ja",
+      "imageCount": 30,
+      "documentCount": 6,
+      "expectedFields": 672,
+      "exactFields": 634,
+      "compactExactFields": 672,
+      "edits": 38,
+      "inputBytes": 1729273,
+      "outputBytes": 2010644,
+      "maximumBytes": 89312,
+      "losslessOver512KiB": 0,
+      "reportSha256": "c4767a8d34fdedd5e95a6a07533010255edab12b5bdda113ffccfec6b4e0804a"
+    },
+    {
+      "policy": "jpeg95",
+      "task": "label_ocr",
+      "locale": "vi",
+      "imageCount": 15,
+      "documentCount": 3,
+      "expectedFields": 39,
+      "exactFields": 39,
+      "compactExactFields": 39,
+      "edits": 0,
+      "inputBytes": 586744,
+      "outputBytes": 684913,
+      "maximumBytes": 61980,
+      "losslessOver512KiB": 0,
+      "reportSha256": "c4767a8d34fdedd5e95a6a07533010255edab12b5bdda113ffccfec6b4e0804a"
+    },
+    {
+      "policy": "jpeg95",
+      "task": "label_ocr",
+      "locale": "ja",
+      "imageCount": 15,
+      "documentCount": 3,
+      "expectedFields": 39,
+      "exactFields": 37,
+      "compactExactFields": 39,
+      "edits": 2,
+      "inputBytes": 553023,
+      "outputBytes": 631236,
+      "maximumBytes": 57000,
+      "losslessOver512KiB": 0,
+      "reportSha256": "c4767a8d34fdedd5e95a6a07533010255edab12b5bdda113ffccfec6b4e0804a"
+    },
+    {
+      "policy": "png",
+      "task": "receipt_ocr",
+      "locale": "vi",
+      "imageCount": 30,
+      "documentCount": 6,
+      "expectedFields": 672,
+      "exactFields": 644,
+      "compactExactFields": 668,
+      "edits": 34,
+      "inputBytes": 1899785,
+      "outputBytes": 7817621,
+      "maximumBytes": 480593,
+      "losslessOver512KiB": 0,
+      "reportSha256": "f91b1cf718e538eaa7ad86ed3ffde7418b7da87b7bc2dc5ec160f32a0a0e818a"
+    },
+    {
+      "policy": "png",
+      "task": "receipt_ocr",
+      "locale": "ja",
+      "imageCount": 30,
+      "documentCount": 6,
+      "expectedFields": 672,
+      "exactFields": 638,
+      "compactExactFields": 672,
+      "edits": 34,
+      "inputBytes": 1729273,
+      "outputBytes": 6951187,
+      "maximumBytes": 421916,
+      "losslessOver512KiB": 0,
+      "reportSha256": "f91b1cf718e538eaa7ad86ed3ffde7418b7da87b7bc2dc5ec160f32a0a0e818a"
+    },
+    {
+      "policy": "png",
+      "task": "label_ocr",
+      "locale": "vi",
+      "imageCount": 15,
+      "documentCount": 3,
+      "expectedFields": 39,
+      "exactFields": 37,
+      "compactExactFields": 37,
+      "edits": 2,
+      "inputBytes": 586744,
+      "outputBytes": 2452362,
+      "maximumBytes": 371092,
+      "losslessOver512KiB": 0,
+      "reportSha256": "f91b1cf718e538eaa7ad86ed3ffde7418b7da87b7bc2dc5ec160f32a0a0e818a"
+    },
+    {
+      "policy": "png",
+      "task": "label_ocr",
+      "locale": "ja",
+      "imageCount": 15,
+      "documentCount": 3,
+      "expectedFields": 39,
+      "exactFields": 35,
+      "compactExactFields": 39,
+      "edits": 5,
+      "inputBytes": 553023,
+      "outputBytes": 2286814,
+      "maximumBytes": 352136,
+      "losslessOver512KiB": 0,
+      "reportSha256": "f91b1cf718e538eaa7ad86ed3ffde7418b7da87b7bc2dc5ec160f32a0a0e818a"
+    },
+    {
+      "policy": "small_original",
+      "task": "receipt_ocr",
+      "locale": "vi",
+      "imageCount": 30,
+      "documentCount": 6,
+      "expectedFields": 672,
+      "exactFields": 642,
+      "compactExactFields": 666,
+      "edits": 33,
+      "inputBytes": 1899785,
+      "outputBytes": 1899785,
+      "maximumBytes": 91731,
+      "losslessOver512KiB": 0,
+      "reportSha256": "701593e0d18e1e145eebfbd87c9c8e058a824a4bf31dd12923b036890c015895"
+    },
+    {
+      "policy": "small_original",
+      "task": "receipt_ocr",
+      "locale": "ja",
+      "imageCount": 30,
+      "documentCount": 6,
+      "expectedFields": 672,
+      "exactFields": 647,
+      "compactExactFields": 672,
+      "edits": 25,
+      "inputBytes": 1729273,
+      "outputBytes": 1729273,
+      "maximumBytes": 86401,
+      "losslessOver512KiB": 0,
+      "reportSha256": "701593e0d18e1e145eebfbd87c9c8e058a824a4bf31dd12923b036890c015895"
+    },
+    {
+      "policy": "small_original",
+      "task": "label_ocr",
+      "locale": "vi",
+      "imageCount": 15,
+      "documentCount": 3,
+      "expectedFields": 39,
+      "exactFields": 37,
+      "compactExactFields": 37,
+      "edits": 2,
+      "inputBytes": 586744,
+      "outputBytes": 586744,
+      "maximumBytes": 58700,
+      "losslessOver512KiB": 0,
+      "reportSha256": "701593e0d18e1e145eebfbd87c9c8e058a824a4bf31dd12923b036890c015895"
+    },
+    {
+      "policy": "small_original",
+      "task": "label_ocr",
+      "locale": "ja",
+      "imageCount": 15,
+      "documentCount": 3,
+      "expectedFields": 39,
+      "exactFields": 35,
+      "compactExactFields": 39,
+      "edits": 5,
+      "inputBytes": 553023,
+      "outputBytes": 553023,
+      "maximumBytes": 55566,
+      "losslessOver512KiB": 0,
+      "reportSha256": "701593e0d18e1e145eebfbd87c9c8e058a824a4bf31dd12923b036890c015895"
+    }
+  ],
+  "browserValidCases": 124,
+  "photoByteExactCases": 60,
+  "pageSubmissions": 5,
+  "stalePageSubmissions": 0,
+  "cssBytes": 134861,
+  "cssSha256": "796ca21e25b5dbfbf13ea2b3f70faed3f388d7c231d3cb00c056c77341cf4fef",
+  "fullAuditHigh": 1,
+  "productionAuditFindings": 0,
+  "failures": [
+    "page-browser-1 virtual JSX import transform",
+    "page-browser-2 wrong label fixture filename"
+  ],
+  "implementationSources": [
+    {
+      "path": "src/web/lib/private-image.ts",
+      "sha256": "4f71572dd68205a403df57142b29d249e1300da5a0d2bf0170b04c9691cd035f"
+    },
+    {
+      "path": "src/web/pages/ScanPage.tsx",
+      "sha256": "54d75f0b9dbc133711e43a0ed94ca4e9d06ccb668b60ff694d69e69d7a071f94"
+    },
+    {
+      "path": "tests/unit/receipt-image-preprocessing.test.ts",
+      "sha256": "6860a1ae1ed7f085f7126ab031c4cf39f510cba59f82f287b83be28d518b03b3"
+    },
+    {
+      "path": "tests/unit/scan-ui-quota.test.tsx",
+      "sha256": "f0358e2945bdb098807014dba2b745674f83b0f4db0034a313d3c679f19d1f31"
+    },
+    {
+      "path": "scripts/compare-scan-preprocessing.mjs",
+      "sha256": "08d8583ca0eb7932a5e2db41d628925c98ea48e21956804a01e582f380783908"
+    },
+    {
+      "path": "scripts/summarize-scan-preprocessing.mjs",
+      "sha256": "a7063a34260b069e0e4ab76fff58f6f7d4aeffbd10d14e0777314110e39db67d"
+    },
+    {
+      "path": "scripts/test-receipt-preprocessing-browser.mjs",
+      "sha256": "20383476f205a0d900a3f5aded04a803a454b6763e1813501527270a9402c5f7"
+    },
+    {
+      "path": "scripts/test-scan-preprocessing-page.mjs",
+      "sha256": "0c8db1b0baed0e6b3e28e7904ee7877ae2f1f9e0cc8d4f68dd98a2b8083f1196"
+    },
+    {
+      "path": "docs/backend-upgrade/b03-preprocessing/ADR-B03-PREP-001.md",
+      "sha256": "510142426307ca370378cc186ae61ebe21d7345289b8f2132c6813f2a4b52e12"
+    },
+    {
+      "path": "docs/backend-upgrade/b03-preprocessing/README.md",
+      "sha256": "faeaedb873fa51f18fc230b5f0f419e91ff20a27a3fb2d1db0de0ca2fae05409"
+    },
+    {
+      "path": "docs/backend-upgrade/b03-preprocessing/receipt_runner.py",
+      "sha256": "08d2fd90a4f5cf3faabd4c811554383af498f41b7f65fde9c81d6bc3f631ecc7"
+    },
+    {
+      "path": "docs/backend-upgrade/b03-preprocessing/verify_packet.py",
+      "sha256": "926a07d69547feeb4905fd06b9451aeb1ebdec35c167eb67c165c36f15a3dc3b"
+    }
+  ],
+  "receiptAssets": [
+    {
+      "path": "docs/ai/CURRENT_STATE.md",
+      "sha256": "053fa096a0bbc9ac4d0a54416b0e66d75e2b7fd0af1d830b914d972c6b5affd3"
+    },
+    {
+      "path": "docs/ai/TASK_BOARD.md",
+      "sha256": "69daa150f0e46fc759f331c25b2c8a499fd7ded03b56b50166d5005ffa2eb69c"
+    },
+    {
+      "path": "docs/ai/HANDOFF.md",
+      "sha256": "70b97a15deb151afcf8b3edc1a03b2ff10229a9fabfd61afe67102b2a307b31f"
+    },
+    {
+      "path": "docs/backend-upgrade/IMPLEMENTATION_PLAN.md",
+      "sha256": "ced2daf47dccbfc04395365a58ada72241fe315b979bbf73bb942b5c10d0599a"
+    },
+    {
+      "path": "docs/backend-upgrade/b03-preprocessing/PLAN.md",
+      "sha256": "1181fcab55aa3d921cea5840228e6a1d432cf27bd2ec18c4635817008b53f95e"
+    },
+    {
+      "path": "docs/backend-upgrade/b03-preprocessing/RESULT.md",
+      "sha256": "eae45285dc416d1ca4ea1b34e4968fee8d2463dbc95214b2d9d949a397d9f502"
+    },
+    {
+      "path": "docs/backend-upgrade/b03-preprocessing/NEXT_ACTIONS.md",
+      "sha256": "826b0695d359c361bfafe512509808971b91b3e89036145b769a493d6e9f362e"
+    }
+  ],
+  "attachments": [
+    {
+      "path": ".artifacts/scan-synthetic-v3/prepared.json",
+      "sha256": "bb6b5c3ebf8c6cb4010079f7ce6da216b40263f00b7b308e9bd6542f66694fcf"
+    },
+    {
+      "path": ".artifacts/scan-preprocessing-comparison/comparison.json",
+      "sha256": "bfdc8bcb9214caf7bd57e844fd16d9560457405cbb743b66c540c5285c984ddb"
+    },
+    {
+      "path": ".artifacts/scan-preprocessing-comparison/summary.json",
+      "sha256": "5161e4bedc4092791bd18e1b95c4d520984ed524c7292d0f86c22a968f36c77f"
+    },
+    {
+      "path": ".artifacts/scan-preprocessing-comparison/jpeg82/prepared.json",
+      "sha256": "96405e6f566d1ad6f31c52abff14aaa79a48c0da16e0bf8353978baf0c7521f0"
+    },
+    {
+      "path": ".artifacts/scan-preprocessing-comparison/jpeg82/apple-vision.raw.json",
+      "sha256": "115289ea50eef0d1eebe3ecb62683191f3460b3b363531d7a1e0e0d163d22f56"
+    },
+    {
+      "path": ".artifacts/scan-preprocessing-comparison/jpeg82/scores.json",
+      "sha256": "abe16c7454c619327f7ed0d3b8ed291b59cf514a97623232ae55b947b88faa80"
+    },
+    {
+      "path": ".artifacts/scan-preprocessing-comparison/jpeg95/prepared.json",
+      "sha256": "8a9f1d8e5bb4389db75bd59bdbbaf806bedfc3f9c6c3cd1106894f0843d5f2b0"
+    },
+    {
+      "path": ".artifacts/scan-preprocessing-comparison/jpeg95/apple-vision.raw.json",
+      "sha256": "d4a11e0e0177993f8437ba152e663f5f6a148f118eae5957aba8c18b1e113c49"
+    },
+    {
+      "path": ".artifacts/scan-preprocessing-comparison/jpeg95/scores.json",
+      "sha256": "c4767a8d34fdedd5e95a6a07533010255edab12b5bdda113ffccfec6b4e0804a"
+    },
+    {
+      "path": ".artifacts/scan-preprocessing-comparison/png/prepared.json",
+      "sha256": "48fd1ea5b8888741928b008bf7a4887119f09955875769cdbec2c84f896ed074"
+    },
+    {
+      "path": ".artifacts/scan-preprocessing-comparison/png/apple-vision.raw.json",
+      "sha256": "f8796628170de86095cc8efc349f51d555f6e4f3ddc5d6238b22d20cbef4e849"
+    },
+    {
+      "path": ".artifacts/scan-preprocessing-comparison/png/scores.json",
+      "sha256": "f91b1cf718e538eaa7ad86ed3ffde7418b7da87b7bc2dc5ec160f32a0a0e818a"
+    },
+    {
+      "path": ".artifacts/scan-preprocessing-comparison/small_original/prepared.json",
+      "sha256": "bb6b5c3ebf8c6cb4010079f7ce6da216b40263f00b7b308e9bd6542f66694fcf"
+    },
+    {
+      "path": ".artifacts/scan-preprocessing-comparison/small_original/apple-vision.raw.json",
+      "sha256": "36f3f95968f52cd0deac2760fd4d307d48d6bd03d2359566a73dd58c21396235"
+    },
+    {
+      "path": ".artifacts/scan-preprocessing-comparison/small_original/scores.json",
+      "sha256": "701593e0d18e1e145eebfbd87c9c8e058a824a4bf31dd12923b036890c015895"
+    },
+    {
+      "path": ".artifacts/scan-preprocessing-runtime/prepared.json",
+      "sha256": "bb6b5c3ebf8c6cb4010079f7ce6da216b40263f00b7b308e9bd6542f66694fcf"
+    },
+    {
+      "path": ".artifacts/scan-preprocessing-runtime/browser-images/prepared.json",
+      "sha256": "bdec57d1d2129eb86d89dcd21c7464851ecdae06465f0bda31c178f1acf72bb4"
+    },
+    {
+      "path": ".artifacts/scan-preprocessing-runtime/browser-report.json",
+      "sha256": "ee0f4f62a8c9d6e1a392192445ce4d732afa0ede92f4fce5bda92e3dd15be80a"
+    },
+    {
+      "path": ".artifacts/scan-preprocessing-runtime/scan-page-report.json",
+      "sha256": "ed705304604bce0ada294c52f1dfbddcc7cde373d51cb0e069db4839d8bd8b65"
+    },
+    {
+      "path": ".artifacts/scan-preprocessing-runtime/apple-vision.raw.json",
+      "sha256": "aff0985b228a91354927d3efcdb04277b0f81490eea54b1b316dd33bf6cdc7bc"
+    },
+    {
+      "path": ".artifacts/scan-preprocessing-runtime/scores.json",
+      "sha256": "2f9680f317849c646a7b07635b6e81671b45e64cf3d88391bcd77fbaef8f303c"
+    },
+    {
+      "path": ".artifacts/scan-preprocessing-runtime/page-screenshots/scan-390.png",
+      "sha256": "5ccc27480932263c143f7862c2316502cdd093374670537639fbbb0f9e024d3c"
+    },
+    {
+      "path": ".artifacts/scan-preprocessing-runtime/page-screenshots/scan-1440.png",
+      "sha256": "8845c71b186e24e1823176b0d26e44f6e4b1496912a5c6350862f3ce3616f20c"
+    },
+    {
+      "path": ".artifacts/backend-b03-preprocessing/check-invariants.py",
+      "sha256": "2f3de867ec5940b8992bbe73b95fefc22882e83446ba109a785d3d4b20b98eb3"
+    }
+  ],
+  "commands": [
+    {
+      "name": "compare-discovery",
+      "command": [
+        "node",
+        "scripts/compare-scan-preprocessing.mjs"
+      ],
+      "startedAtUtc": "2026-10-12T02:06:53.938323+00:00",
+      "durationSeconds": 9.133,
+      "exitCode": 0,
+      "before": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": "?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n"
+      },
+      "after": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": "?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n"
+      },
+      "logSha256": "b40fce5f9107d9f9817c3f8877e6b40525dbda77aab9ebb2abd91f292fdabd40",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "85c600542949778168527a4214960d553ce7a86a",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "ocr-control-discovery",
+      "command": [
+        "swift",
+        "scripts/ocr-synthetic-scan-apple-vision.swift",
+        ".artifacts/scan-preprocessing-comparison/jpeg82/prepared.json",
+        ".artifacts/scan-preprocessing-comparison/jpeg82/apple-vision.raw.json"
+      ],
+      "startedAtUtc": "2026-10-12T02:08:41.364274+00:00",
+      "durationSeconds": 45.358,
+      "exitCode": 0,
+      "before": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": "?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n"
+      },
+      "after": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": "?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n"
+      },
+      "logSha256": "d5c3731c123e0b4e0624e99e483837c2f196803564be537cea48ed0febbd1399",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "85c600542949778168527a4214960d553ce7a86a",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "score-control-discovery",
+      "command": [
+        "node",
+        "scripts/score-synthetic-scan.mjs",
+        ".artifacts/scan-preprocessing-comparison/jpeg82/prepared.json",
+        ".artifacts/scan-preprocessing-comparison/jpeg82/apple-vision.raw.json",
+        ".artifacts/scan-preprocessing-comparison/jpeg82/scores.json"
+      ],
+      "startedAtUtc": "2026-10-12T02:09:27.314561+00:00",
+      "durationSeconds": 0.24,
+      "exitCode": 0,
+      "before": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": "?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n"
+      },
+      "after": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": "?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n"
+      },
+      "logSha256": "71d36a77a89e5aa164e85a7b45f7fc09bca98182c77f0eb46db639917a2dcdd4",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "85c600542949778168527a4214960d553ce7a86a",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "ocr-jpeg95-discovery",
+      "command": [
+        "swift",
+        "scripts/ocr-synthetic-scan-apple-vision.swift",
+        ".artifacts/scan-preprocessing-comparison/jpeg95/prepared.json",
+        ".artifacts/scan-preprocessing-comparison/jpeg95/apple-vision.raw.json"
+      ],
+      "startedAtUtc": "2026-10-12T02:09:27.710769+00:00",
+      "durationSeconds": 44.049,
+      "exitCode": 0,
+      "before": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": "?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n"
+      },
+      "after": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": "?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n"
+      },
+      "logSha256": "d5c3731c123e0b4e0624e99e483837c2f196803564be537cea48ed0febbd1399",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "85c600542949778168527a4214960d553ce7a86a",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "score-jpeg95-discovery",
+      "command": [
+        "node",
+        "scripts/score-synthetic-scan.mjs",
+        ".artifacts/scan-preprocessing-comparison/jpeg95/prepared.json",
+        ".artifacts/scan-preprocessing-comparison/jpeg95/apple-vision.raw.json",
+        ".artifacts/scan-preprocessing-comparison/jpeg95/scores.json"
+      ],
+      "startedAtUtc": "2026-10-12T02:10:12.416879+00:00",
+      "durationSeconds": 0.533,
+      "exitCode": 0,
+      "before": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": "?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n"
+      },
+      "after": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": "?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n"
+      },
+      "logSha256": "0598de5d5a2e8d16a6ff93fdc293ebd4e20e8239edb6edbd642b86d3deb72b35",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "85c600542949778168527a4214960d553ce7a86a",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "ocr-png-discovery",
+      "command": [
+        "swift",
+        "scripts/ocr-synthetic-scan-apple-vision.swift",
+        ".artifacts/scan-preprocessing-comparison/png/prepared.json",
+        ".artifacts/scan-preprocessing-comparison/png/apple-vision.raw.json"
+      ],
+      "startedAtUtc": "2026-10-12T02:10:13.159874+00:00",
+      "durationSeconds": 36.014,
+      "exitCode": 0,
+      "before": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": "?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n"
+      },
+      "after": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": "?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n"
+      },
+      "logSha256": "d5c3731c123e0b4e0624e99e483837c2f196803564be537cea48ed0febbd1399",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "85c600542949778168527a4214960d553ce7a86a",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "score-png-discovery",
+      "command": [
+        "node",
+        "scripts/score-synthetic-scan.mjs",
+        ".artifacts/scan-preprocessing-comparison/png/prepared.json",
+        ".artifacts/scan-preprocessing-comparison/png/apple-vision.raw.json",
+        ".artifacts/scan-preprocessing-comparison/png/scores.json"
+      ],
+      "startedAtUtc": "2026-10-12T02:10:49.346386+00:00",
+      "durationSeconds": 0.184,
+      "exitCode": 0,
+      "before": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": "?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n"
+      },
+      "after": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": "?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n"
+      },
+      "logSha256": "159cba91f71c864b672579e74076687e57946f5972879cbe65050e2bccd0df43",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "85c600542949778168527a4214960d553ce7a86a",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "ocr-original-discovery",
+      "command": [
+        "swift",
+        "scripts/ocr-synthetic-scan-apple-vision.swift",
+        ".artifacts/scan-preprocessing-comparison/small_original/prepared.json",
+        ".artifacts/scan-preprocessing-comparison/small_original/apple-vision.raw.json"
+      ],
+      "startedAtUtc": "2026-10-12T02:10:49.701130+00:00",
+      "durationSeconds": 33.661,
+      "exitCode": 0,
+      "before": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": "?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n"
+      },
+      "after": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": "?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n"
+      },
+      "logSha256": "d5c3731c123e0b4e0624e99e483837c2f196803564be537cea48ed0febbd1399",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "85c600542949778168527a4214960d553ce7a86a",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "score-original-discovery",
+      "command": [
+        "node",
+        "scripts/score-synthetic-scan.mjs",
+        ".artifacts/scan-preprocessing-comparison/small_original/prepared.json",
+        ".artifacts/scan-preprocessing-comparison/small_original/apple-vision.raw.json",
+        ".artifacts/scan-preprocessing-comparison/small_original/scores.json"
+      ],
+      "startedAtUtc": "2026-10-12T02:11:23.545641+00:00",
+      "durationSeconds": 0.214,
+      "exitCode": 0,
+      "before": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": "?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n"
+      },
+      "after": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": "?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n"
+      },
+      "logSha256": "6b032e4553e5c4cad2a18ef545f9936060310722aebcd2710bc79237573efb7e",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "85c600542949778168527a4214960d553ce7a86a",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "summarize-discovery",
+      "command": [
+        "node",
+        "scripts/summarize-scan-preprocessing.mjs"
+      ],
+      "startedAtUtc": "2026-10-12T02:11:36.009673+00:00",
+      "durationSeconds": 0.564,
+      "exitCode": 0,
+      "before": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": "?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n"
+      },
+      "after": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": "?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n"
+      },
+      "logSha256": "81af3b72ac6e4feb50cab1b9fd681408231aff5806b65856234980974c605706",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "85c600542949778168527a4214960d553ce7a86a",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "baseline-privacy",
+      "command": [
+        "pnpm",
+        "vitest",
+        "run",
+        "tests/unit/scan-privacy.test.tsx",
+        "tests/unit/scan-ui-quota.test.tsx"
+      ],
+      "startedAtUtc": "2026-10-12T02:13:35.188234+00:00",
+      "durationSeconds": 2.609,
+      "exitCode": 0,
+      "before": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/DECISIONS.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n"
+      },
+      "after": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/DECISIONS.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n"
+      },
+      "logSha256": "400977d2409a63f76980c8134d9ec5b76b317f580a8dab0b02b0641c67595a68",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "85c600542949778168527a4214960d553ce7a86a",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "focused-receipt-1",
+      "command": [
+        "pnpm",
+        "vitest",
+        "run",
+        "tests/unit/receipt-image-preprocessing.test.ts",
+        "tests/unit/scan-privacy.test.tsx",
+        "tests/unit/scan-ui-quota.test.tsx"
+      ],
+      "startedAtUtc": "2026-10-12T02:17:48.758120+00:00",
+      "durationSeconds": 1.837,
+      "exitCode": 0,
+      "before": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/DECISIONS.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "after": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/DECISIONS.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "logSha256": "3614971d50431ff932a1e449e50f5f0bc2b3e33bceb33a30da0ac9bd495a377b",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "85c600542949778168527a4214960d553ce7a86a",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "focused-receipt-2",
+      "command": [
+        "pnpm",
+        "vitest",
+        "run",
+        "tests/unit/receipt-image-preprocessing.test.ts",
+        "tests/unit/scan-privacy.test.tsx",
+        "tests/unit/scan-ui-quota.test.tsx"
+      ],
+      "startedAtUtc": "2026-10-12T02:19:23.919479+00:00",
+      "durationSeconds": 1.432,
+      "exitCode": 0,
+      "before": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/DECISIONS.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "after": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/DECISIONS.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "logSha256": "fafb6cf10584d05366a53e84ee2cd9b11a50cfec8499fcd9218506ccdb2e9ab0",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "85c600542949778168527a4214960d553ce7a86a",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "generate-runtime",
+      "command": [
+        "node",
+        "scripts/generate-synthetic-scan.mjs",
+        ".artifacts/scan-preprocessing-runtime"
+      ],
+      "startedAtUtc": "2026-10-12T02:19:31.176941+00:00",
+      "durationSeconds": 4.055,
+      "exitCode": 0,
+      "before": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/DECISIONS.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "after": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/DECISIONS.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "logSha256": "b4d4608bc96162a12b6cb92913761e5ef6d8fc3ff4e03af8370ffd21bb134275",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "85c600542949778168527a4214960d553ce7a86a",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "runtime-browser",
+      "command": [
+        "node",
+        "scripts/test-receipt-preprocessing-browser.mjs"
+      ],
+      "startedAtUtc": "2026-10-12T02:19:48.269995+00:00",
+      "durationSeconds": 5.04,
+      "exitCode": 0,
+      "before": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/DECISIONS.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "after": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/DECISIONS.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "logSha256": "0cbfa5ef56b54286e3b99afb9ed39a1da99d9b0ede23dff1f2b9af81e32ce27c",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "85c600542949778168527a4214960d553ce7a86a",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "runtime-ocr",
+      "command": [
+        "swift",
+        "scripts/ocr-synthetic-scan-apple-vision.swift",
+        ".artifacts/scan-preprocessing-runtime/browser-images/prepared.json",
+        ".artifacts/scan-preprocessing-runtime/apple-vision.raw.json"
+      ],
+      "startedAtUtc": "2026-10-12T02:21:27.338206+00:00",
+      "durationSeconds": 34.145,
+      "exitCode": 0,
+      "before": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/DECISIONS.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "after": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/DECISIONS.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? scripts/test-scan-preprocessing-page.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "logSha256": "d5c3731c123e0b4e0624e99e483837c2f196803564be537cea48ed0febbd1399",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "85c600542949778168527a4214960d553ce7a86a",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "page-browser-1",
+      "command": [
+        "node",
+        "scripts/test-scan-preprocessing-page.mjs"
+      ],
+      "startedAtUtc": "2026-10-12T02:21:47.968885+00:00",
+      "durationSeconds": 31.432,
+      "exitCode": 1,
+      "before": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/DECISIONS.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? scripts/test-scan-preprocessing-page.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "after": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/DECISIONS.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? scripts/test-scan-preprocessing-page.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "logSha256": "26924a94d0b752485890efa28604f1baf8b1929e17edba9be7c63350b56a1dd8",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "85c600542949778168527a4214960d553ce7a86a",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "runtime-score",
+      "command": [
+        "node",
+        "scripts/score-synthetic-scan.mjs",
+        ".artifacts/scan-preprocessing-runtime/browser-images/prepared.json",
+        ".artifacts/scan-preprocessing-runtime/apple-vision.raw.json",
+        ".artifacts/scan-preprocessing-runtime/scores.json"
+      ],
+      "startedAtUtc": "2026-10-12T02:22:28.923436+00:00",
+      "durationSeconds": 0.134,
+      "exitCode": 0,
+      "before": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/DECISIONS.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? scripts/test-scan-preprocessing-page.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "after": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/DECISIONS.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? scripts/test-scan-preprocessing-page.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "logSha256": "21c1e18bf545d453845b8801b94b093eee26c1afeaa67491877b325af9221c9c",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "85c600542949778168527a4214960d553ce7a86a",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "page-browser-2",
+      "command": [
+        "node",
+        "scripts/test-scan-preprocessing-page.mjs"
+      ],
+      "startedAtUtc": "2026-10-12T02:22:47.066573+00:00",
+      "durationSeconds": 5.213,
+      "exitCode": 1,
+      "before": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/DECISIONS.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? scripts/test-scan-preprocessing-page.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "after": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/DECISIONS.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? scripts/test-scan-preprocessing-page.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "logSha256": "89ecdcd7418fb8400af647ad071b8417d25ddba97bdcf6235dadb98a97f889e6",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "85c600542949778168527a4214960d553ce7a86a",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "page-browser-3",
+      "command": [
+        "node",
+        "scripts/test-scan-preprocessing-page.mjs"
+      ],
+      "startedAtUtc": "2026-10-12T02:23:16.723304+00:00",
+      "durationSeconds": 6.974,
+      "exitCode": 0,
+      "before": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/DECISIONS.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? scripts/test-scan-preprocessing-page.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "after": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/DECISIONS.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? scripts/test-scan-preprocessing-page.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "logSha256": "8751a3b2dce3accad6811a421f17d12fdf6414fdcbdc54b9c419497719bd5f86",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "85c600542949778168527a4214960d553ce7a86a",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "discovery-types",
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "startedAtUtc": "2026-10-12T02:23:17.859122+00:00",
+      "durationSeconds": 15.26,
+      "exitCode": 0,
+      "before": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/DECISIONS.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? scripts/test-scan-preprocessing-page.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "after": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/DECISIONS.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? scripts/test-scan-preprocessing-page.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "logSha256": "a3a28a25c9246fe7e8bbf5999692dc60347e343a2415f8cefcb7e767e0e6a0d6",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "85c600542949778168527a4214960d553ce7a86a",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "discovery-lint",
+      "command": [
+        "pnpm",
+        "lint"
+      ],
+      "startedAtUtc": "2026-10-12T02:24:46.096274+00:00",
+      "durationSeconds": 6.599,
+      "exitCode": 0,
+      "before": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/DECISIONS.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? scripts/test-scan-preprocessing-page.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "after": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/DECISIONS.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? scripts/test-scan-preprocessing-page.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "logSha256": "25cc1f9634027c24c62f4029a44f00fc3a7e082ac28576c6fc5a3db3e0961f73",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "85c600542949778168527a4214960d553ce7a86a",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "runtime-browser-final",
+      "command": [
+        "node",
+        "scripts/test-receipt-preprocessing-browser.mjs"
+      ],
+      "startedAtUtc": "2026-10-12T02:25:34.198170+00:00",
+      "durationSeconds": 5.405,
+      "exitCode": 0,
+      "before": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/DECISIONS.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? scripts/test-scan-preprocessing-page.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "after": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/CURRENT_STATE.md\n M docs/ai/DECISIONS.md\n M docs/ai/HANDOFF.md\n M docs/ai/TASK_BOARD.md\n M docs/backend-upgrade/IMPLEMENTATION_PLAN.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? scripts/test-scan-preprocessing-page.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "logSha256": "0cbfa5ef56b54286e3b99afb9ed39a1da99d9b0ede23dff1f2b9af81e32ce27c",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "85c600542949778168527a4214960d553ce7a86a",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "page-browser-final",
+      "command": [
+        "node",
+        "scripts/test-scan-preprocessing-page.mjs"
+      ],
+      "startedAtUtc": "2026-10-12T02:25:50.031234+00:00",
+      "durationSeconds": 6.425,
+      "exitCode": 0,
+      "before": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/CURRENT_STATE.md\n M docs/ai/DECISIONS.md\n M docs/ai/HANDOFF.md\n M docs/ai/TASK_BOARD.md\n M docs/backend-upgrade/IMPLEMENTATION_PLAN.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? scripts/test-scan-preprocessing-page.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "after": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/CURRENT_STATE.md\n M docs/ai/DECISIONS.md\n M docs/ai/HANDOFF.md\n M docs/ai/TASK_BOARD.md\n M docs/backend-upgrade/IMPLEMENTATION_PLAN.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? scripts/test-scan-preprocessing-page.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "logSha256": "8751a3b2dce3accad6811a421f17d12fdf6414fdcbdc54b9c419497719bd5f86",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "85c600542949778168527a4214960d553ce7a86a",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "discovery-summary-final",
+      "command": [
+        "node",
+        "scripts/summarize-scan-preprocessing.mjs"
+      ],
+      "startedAtUtc": "2026-10-12T02:26:25.744611+00:00",
+      "durationSeconds": 0.431,
+      "exitCode": 0,
+      "before": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/CURRENT_STATE.md\n M docs/ai/DECISIONS.md\n M docs/ai/HANDOFF.md\n M docs/ai/TASK_BOARD.md\n M docs/backend-upgrade/IMPLEMENTATION_PLAN.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? scripts/test-scan-preprocessing-page.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "after": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/CURRENT_STATE.md\n M docs/ai/DECISIONS.md\n M docs/ai/HANDOFF.md\n M docs/ai/TASK_BOARD.md\n M docs/backend-upgrade/IMPLEMENTATION_PLAN.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? scripts/test-scan-preprocessing-page.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "logSha256": "81af3b72ac6e4feb50cab1b9fd681408231aff5806b65856234980974c605706",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "85c600542949778168527a4214960d553ce7a86a",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "discovery-focused-final",
+      "command": [
+        "pnpm",
+        "vitest",
+        "run",
+        "tests/unit/receipt-image-preprocessing.test.ts",
+        "tests/unit/scan-privacy.test.tsx",
+        "tests/unit/scan-ui-quota.test.tsx"
+      ],
+      "startedAtUtc": "2026-10-12T02:26:26.314892+00:00",
+      "durationSeconds": 1.499,
+      "exitCode": 0,
+      "before": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/CURRENT_STATE.md\n M docs/ai/DECISIONS.md\n M docs/ai/HANDOFF.md\n M docs/ai/TASK_BOARD.md\n M docs/backend-upgrade/IMPLEMENTATION_PLAN.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? scripts/test-scan-preprocessing-page.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "after": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/CURRENT_STATE.md\n M docs/ai/DECISIONS.md\n M docs/ai/HANDOFF.md\n M docs/ai/TASK_BOARD.md\n M docs/backend-upgrade/IMPLEMENTATION_PLAN.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? scripts/test-scan-preprocessing-page.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "logSha256": "264d1d9bea762ec1b08a00449ef13f7df07f235613f08308fd51739729e50f1e",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "85c600542949778168527a4214960d553ce7a86a",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "discovery-lint-final",
+      "command": [
+        "pnpm",
+        "lint"
+      ],
+      "startedAtUtc": "2026-10-12T02:26:27.958632+00:00",
+      "durationSeconds": 5.917,
+      "exitCode": 0,
+      "before": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/CURRENT_STATE.md\n M docs/ai/DECISIONS.md\n M docs/ai/HANDOFF.md\n M docs/ai/TASK_BOARD.md\n M docs/backend-upgrade/IMPLEMENTATION_PLAN.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? scripts/test-scan-preprocessing-page.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "after": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/CURRENT_STATE.md\n M docs/ai/DECISIONS.md\n M docs/ai/HANDOFF.md\n M docs/ai/TASK_BOARD.md\n M docs/backend-upgrade/IMPLEMENTATION_PLAN.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? scripts/test-scan-preprocessing-page.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "logSha256": "25cc1f9634027c24c62f4029a44f00fc3a7e082ac28576c6fc5a3db3e0961f73",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "85c600542949778168527a4214960d553ce7a86a",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "discovery-types-final",
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "startedAtUtc": "2026-10-12T02:26:34.016363+00:00",
+      "durationSeconds": 13.373,
+      "exitCode": 0,
+      "before": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/CURRENT_STATE.md\n M docs/ai/DECISIONS.md\n M docs/ai/HANDOFF.md\n M docs/ai/TASK_BOARD.md\n M docs/backend-upgrade/IMPLEMENTATION_PLAN.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? scripts/test-scan-preprocessing-page.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "after": {
+        "head": "85c600542949778168527a4214960d553ce7a86a",
+        "status": " M docs/ai/CURRENT_STATE.md\n M docs/ai/DECISIONS.md\n M docs/ai/HANDOFF.md\n M docs/ai/TASK_BOARD.md\n M docs/backend-upgrade/IMPLEMENTATION_PLAN.md\n M src/web/lib/private-image.ts\n M src/web/pages/ScanPage.tsx\n M tests/unit/scan-ui-quota.test.tsx\n?? docs/backend-upgrade/b03-preprocessing/\n?? scripts/compare-scan-preprocessing.mjs\n?? scripts/summarize-scan-preprocessing.mjs\n?? scripts/test-receipt-preprocessing-browser.mjs\n?? scripts/test-scan-preprocessing-page.mjs\n?? tests/unit/receipt-image-preprocessing.test.ts\n"
+      },
+      "logSha256": "a3a28a25c9246fe7e8bbf5999692dc60347e343a2415f8cefcb7e767e0e6a0d6",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "85c600542949778168527a4214960d553ce7a86a",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "clean-install",
+      "command": [
+        "pnpm",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "startedAtUtc": "2026-10-12T02:28:09.284704+00:00",
+      "durationSeconds": 0.461,
+      "exitCode": 0,
+      "before": {
+        "head": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "status": ""
+      },
+      "after": {
+        "head": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "status": ""
+      },
+      "logSha256": "6c39eff7398052d3c5f9a54d2a9bd2fe9b43dc00dab46142c6535f5d67e51d66",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "clean-lint",
+      "command": [
+        "pnpm",
+        "lint"
+      ],
+      "startedAtUtc": "2026-10-12T02:28:09.899753+00:00",
+      "durationSeconds": 6.841,
+      "exitCode": 0,
+      "before": {
+        "head": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "status": ""
+      },
+      "after": {
+        "head": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "status": ""
+      },
+      "logSha256": "25cc1f9634027c24c62f4029a44f00fc3a7e082ac28576c6fc5a3db3e0961f73",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "clean-types",
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "startedAtUtc": "2026-10-12T02:28:16.911059+00:00",
+      "durationSeconds": 13.934,
+      "exitCode": 0,
+      "before": {
+        "head": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "status": ""
+      },
+      "after": {
+        "head": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "status": ""
+      },
+      "logSha256": "a3a28a25c9246fe7e8bbf5999692dc60347e343a2415f8cefcb7e767e0e6a0d6",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "clean-focused",
+      "command": [
+        "pnpm",
+        "vitest",
+        "run",
+        "tests/unit/receipt-image-preprocessing.test.ts",
+        "tests/unit/scan-privacy.test.tsx",
+        "tests/unit/scan-ui-quota.test.tsx"
+      ],
+      "startedAtUtc": "2026-10-12T02:28:30.995146+00:00",
+      "durationSeconds": 1.934,
+      "exitCode": 0,
+      "before": {
+        "head": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "status": ""
+      },
+      "after": {
+        "head": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "status": ""
+      },
+      "logSha256": "6aa937d89adf7143ecbb87c1ce86d74e99f4c0202c2d80a3ca271d5d80378d46",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "clean-tests",
+      "command": [
+        "pnpm",
+        "test"
+      ],
+      "startedAtUtc": "2026-10-12T02:28:33.070546+00:00",
+      "durationSeconds": 138.65,
+      "exitCode": 0,
+      "before": {
+        "head": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "status": ""
+      },
+      "after": {
+        "head": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "status": ""
+      },
+      "logSha256": "71a575ca9ae36323011253227f68ede35afda4d51de9f9a0f157e8e4924a00e1",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "clean-migrations",
+      "command": [
+        "pnpm",
+        "check:migrations"
+      ],
+      "startedAtUtc": "2026-10-12T02:30:51.870048+00:00",
+      "durationSeconds": 0.444,
+      "exitCode": 0,
+      "before": {
+        "head": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "status": ""
+      },
+      "after": {
+        "head": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "status": ""
+      },
+      "logSha256": "965811c75cef6d8d7db8527ffaf3ec59c52869fe5cb575a1261bc3b793191de5",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "clean-build",
+      "command": [
+        "pnpm",
+        "build"
+      ],
+      "startedAtUtc": "2026-10-12T02:30:52.454917+00:00",
+      "durationSeconds": 7.329,
+      "exitCode": 0,
+      "before": {
+        "head": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "status": ""
+      },
+      "after": {
+        "head": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "status": ""
+      },
+      "logSha256": "db2d5c9c6335cc589a0b6bad906618f952328e04d051f4b18f29b19a8e081d88",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "clean-browser",
+      "command": [
+        "node",
+        "scripts/test-receipt-preprocessing-browser.mjs"
+      ],
+      "startedAtUtc": "2026-10-12T02:30:59.928536+00:00",
+      "durationSeconds": 5.264,
+      "exitCode": 0,
+      "before": {
+        "head": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "status": ""
+      },
+      "after": {
+        "head": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "status": ""
+      },
+      "logSha256": "0cbfa5ef56b54286e3b99afb9ed39a1da99d9b0ede23dff1f2b9af81e32ce27c",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "clean-page",
+      "command": [
+        "node",
+        "scripts/test-scan-preprocessing-page.mjs"
+      ],
+      "startedAtUtc": "2026-10-12T02:31:05.335612+00:00",
+      "durationSeconds": 7.122,
+      "exitCode": 0,
+      "before": {
+        "head": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "status": ""
+      },
+      "after": {
+        "head": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "status": ""
+      },
+      "logSha256": "8751a3b2dce3accad6811a421f17d12fdf6414fdcbdc54b9c419497719bd5f86",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "clean-audit",
+      "command": [
+        "pnpm",
+        "audit",
+        "--audit-level=high",
+        "--json"
+      ],
+      "startedAtUtc": "2026-10-12T02:31:12.603188+00:00",
+      "durationSeconds": 0.946,
+      "exitCode": 1,
+      "before": {
+        "head": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "status": ""
+      },
+      "after": {
+        "head": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "status": ""
+      },
+      "logSha256": "c18fedca4f85bab360b319edb18a74f3bd4cbd5796b39874d7d66fd31a06065a",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "clean-audit-prod",
+      "command": [
+        "pnpm",
+        "audit",
+        "--prod",
+        "--audit-level=high",
+        "--json"
+      ],
+      "startedAtUtc": "2026-10-12T02:31:13.710372+00:00",
+      "durationSeconds": 0.536,
+      "exitCode": 0,
+      "before": {
+        "head": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "status": ""
+      },
+      "after": {
+        "head": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "status": ""
+      },
+      "logSha256": "89afa98eb2f105e15a07f3557cf2dccadd21175473f32e8671ba497c17d98c22",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "clean-runtime-score",
+      "command": [
+        "node",
+        "scripts/score-synthetic-scan.mjs",
+        ".artifacts/scan-preprocessing-runtime/browser-images/prepared.json",
+        ".artifacts/scan-preprocessing-runtime/apple-vision.raw.json",
+        ".artifacts/scan-preprocessing-runtime/scores.json"
+      ],
+      "startedAtUtc": "2026-10-12T02:32:15.385076+00:00",
+      "durationSeconds": 0.114,
+      "exitCode": 0,
+      "before": {
+        "head": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "status": ""
+      },
+      "after": {
+        "head": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "status": ""
+      },
+      "logSha256": "21c1e18bf545d453845b8801b94b093eee26c1afeaa67491877b325af9221c9c",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "clean-summary",
+      "command": [
+        "node",
+        "scripts/summarize-scan-preprocessing.mjs"
+      ],
+      "startedAtUtc": "2026-10-12T02:32:15.639535+00:00",
+      "durationSeconds": 0.432,
+      "exitCode": 0,
+      "before": {
+        "head": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "status": ""
+      },
+      "after": {
+        "head": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "status": ""
+      },
+      "logSha256": "81af3b72ac6e4feb50cab1b9fd681408231aff5806b65856234980974c605706",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "clean-invariants",
+      "command": [
+        "python3",
+        ".artifacts/backend-b03-preprocessing/check-invariants.py"
+      ],
+      "startedAtUtc": "2026-10-12T02:32:16.213463+00:00",
+      "durationSeconds": 0.27,
+      "exitCode": 0,
+      "before": {
+        "head": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "status": ""
+      },
+      "after": {
+        "head": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "status": ""
+      },
+      "logSha256": "ab7be87256a55ffb96f7981782329b132b999d296095e1aba3769f644f6d0aac",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "clean-invariants-final",
+      "command": [
+        "python3",
+        ".artifacts/backend-b03-preprocessing/check-invariants.py"
+      ],
+      "startedAtUtc": "2026-10-12T02:33:03.344260+00:00",
+      "durationSeconds": 0.185,
+      "exitCode": 0,
+      "before": {
+        "head": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "status": ""
+      },
+      "after": {
+        "head": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "status": ""
+      },
+      "logSha256": "ab7be87256a55ffb96f7981782329b132b999d296095e1aba3769f644f6d0aac",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "a0165c45f6d34c0a4c35c676613d6716f872c534",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    }
+  ],
+  "requiredCleanGates": [
+    "clean-install",
+    "clean-lint",
+    "clean-types",
+    "clean-focused",
+    "clean-tests",
+    "clean-migrations",
+    "clean-build",
+    "clean-browser",
+    "clean-page",
+    "clean-runtime-score",
+    "clean-summary",
+    "clean-invariants-final",
+    "clean-audit",
+    "clean-audit-prod"
+  ],
+  "finalReceiptAllowedBaseChanges": [
+    "docs/ai/CURRENT_STATE.md",
+    "docs/ai/DECISIONS.md",
+    "docs/ai/HANDOFF.md",
+    "docs/ai/TASK_BOARD.md",
+    "docs/backend-upgrade/IMPLEMENTATION_PLAN.md",
+    "src/web/lib/private-image.ts",
+    "src/web/pages/ScanPage.tsx",
+    "tests/unit/scan-ui-quota.test.tsx"
+  ],
+  "finalProtectedBaseFiles": 4614
+}

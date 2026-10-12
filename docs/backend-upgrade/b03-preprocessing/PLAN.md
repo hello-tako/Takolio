@@ -1,6 +1,6 @@
 # B03 receipt preprocessing comparison - 2026-10-12 JST
 
-Status: LOCAL_CANDIDATE_IMPLEMENTED_FINAL_GATES_PENDING.
+Status: LOCAL_IMPLEMENTATION_VERIFIED_WITH_BLOCKING_RELEASE_GATES.
 Base: 85c60054 (resolve full SHA in validation receipt).
 Branch: codex/backend-b03-preprocessing.
 Canonical worktree /Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo.
@@ -47,3 +47,7 @@ candidate images/reports into a separate ignored artifact directory.
   provider cost/privacy or real-photo/object accuracy. Real data stays a release
   acceptance dependency, not a blocker to building/tests of the bounded candidate.
 - Update next actions and state/board/handoff; original checkout untouched.
+
+Final implementation: a0165c45f6d34c0a4c35c676613d6716f872c534.
+All local gates complete; aggregate result/limits in RESULT.md and validation.json.
+External real/provider/device/security/data/hosted/release gates remain open.

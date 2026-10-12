@@ -1,3 +1,34 @@
+# B03 receipt preprocessing final checkpoint - 2026-10-12 JST
+
+**Task/status:** LOCAL_IMPLEMENTATION_VERIFIED_WITH_BLOCKING_RELEASE_GATES.
+Implementation a0165c45f6d34c0a4c35c676613d6716f872c534; base 85c600542949778168527a4214960d553ce7a86a.
+Branch codex/backend-b03-preprocessing; canonical worktree
+/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo.
+
+**Delivered:** receipt-only <=2000px/512KiB original PNG/JPEG preservation, bounded
+PNG derivative then existing JPEG82fallback. Caller/gallery opt-in; camera/photo
+codec unchanged.29helper+3caller tests; native124valid cases+damaged fallback,
+3session/cancel fences,60photo outputs byte-identical. Actual running ScanPage
+5file-input submissions/2mode-change-unmount races,0stale requests/outbox/writes.
+4policy paired Apple Vision: VIcandidate642/672vs619/672control; JA647/672unchanged.
+Remaining errors retained; labels/fridge semantics not provider certification.
+
+**Checks:** clean committed316files/7642tests PASS138.65s; focused3files/47;
+frozen install/lint/bothTS/40migrations/build/browser/page/invariants PASS.
+4614protected base files exact; CSS134861bytes identical; SW actual commit token.
+Full audit1HIGHbraces remains, prod0; security release gateFAILED, no waiver.
+Two initial page harness failures and corrected token-scope/invariant assumptions
+retained; exact commands/source/evidence hashes in validation.json.
+
+**Limits/next:** original checkout untouched. No paidAI/provider activation/remote
+write/deploy/mail/push/PR/merge. Real240image/independent labels/device/EXIF/provider
+facts/budget/security/human ingredient/protectedbilling/inbox/hosted/SLO/release
+acceptance still open. See ../backend-upgrade/b03-preprocessing/RESULT.md and
+NEXT_ACTIONS.md. Final docs checkpoint references verified implementation and
+retains historical status suffixes; full masterplan is not release-complete.
+
+---
+
 # B03 receipt preprocessing implementation - 2026-10-12 JST
 
 **Task/status:** LOCAL_CANDIDATE_IMPLEMENTED_FINAL_GATES_PENDING.
