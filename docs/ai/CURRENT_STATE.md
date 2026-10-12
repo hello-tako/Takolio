@@ -1,3 +1,29 @@
+# B03a synthetic image extension in progress - 2026-10-12 JST
+
+**Task/status:** SYNTHETIC_IMAGES_IMPLEMENTED_FINAL_GATES_PENDING.
+Active packet docs/backend-upgrade/b03a-synthetic/PLAN.md; base receipt
+9e5860806c2d7be6a9daefbb99695885c5e72c4f; branch codex/backend-b03a-synthetic-images.
+Canonical worktree /Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo.
+
+**Changes:** 24 source documents / 120 real raster variants plus damaged JPEG;
+VN/JP invoices, labels and fridge illustrations. Source-first TEST_ONLY labels,
+VND/JPY, duplicate occurrences, missing-field UNKNOWN and rotated visual regions.
+Actual local Apple Vision and native Chromium preprocessing/paired OCR; adapter
+transport tests intercept fetch. V1 UNKNOWN remains rejected; V3 represents it.
+SYNTHETIC_IMAGE enum only extends offline metadata; historical fixtures preserved.
+
+**Checks:** focused7files/49tests, lint and both TS pass at discovery checkpoints.
+Full clean-source install/test/40migration/build gates remain pending. Initial
+5focused failures and3Buffer typing errors are retained then corrected. Paired
+local OCR preserves worse VN receipt text after browser JPEG; no threshold waiver.
+
+**Limits/next:** no runtime/provider/payment/auth/config/lock/migration/public or
+catalog change, no real-photo/independent-label/product-Qwen certificate. No remote
+write/deploy/mail/paidAI/push/PR/merge. Complete clean-source gates and aggregate
+receipt. Existing upstream security/human ingredient/hosted/release gates remain.
+
+---
+
 # B08 dependency mitigation final checkpoint - 2026-10-12 JST
 
 **Task/status:** LOCAL_MITIGATION_VERIFIED_WITH_BLOCKING_RELEASE_GATES.

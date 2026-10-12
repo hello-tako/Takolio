@@ -26,7 +26,7 @@ export const ScanV3DatasetSchema = z.object({
     quality: z.enum(['clean', 'blur', 'tilt', 'low_light', 'missing_field', 'damaged']),
     split: z.enum(['calibration', 'heldout', 'adversarial']),
     assetSha256: Hash, preprocessingSha256: Hash, preprocessingVersion: Id,
-    assetKind: z.enum(['SYNTHETIC_SYMBOLIC', 'LICENSED_IMAGE']),
+    assetKind: z.enum(['SYNTHETIC_SYMBOLIC', 'SYNTHETIC_IMAGE', 'LICENSED_IMAGE']),
     provenance: MissingOrText, licenseReference: MissingOrText, permissionReference: MissingOrText,
     retentionPolicy: MissingOrText, accessPolicy: MissingOrText,
     redactionStatus: z.enum(['SYNTHETIC_NO_PII', 'VERIFIED_REDACTED', 'MISSING']),
@@ -54,7 +54,7 @@ export const ScanV3DatasetSchema = z.object({
         || entry.sourceGroupId !== entry.annotation.groundTruth.document.sourceId) {
       ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'ANNOTATION_BINDING_MISMATCH' });
     }
-    if (dataset.classification === 'TEST_ONLY' && (entry.assetKind !== 'SYNTHETIC_SYMBOLIC'
+    if (dataset.classification === 'TEST_ONLY' && (!['SYNTHETIC_SYMBOLIC', 'SYNTHETIC_IMAGE'].includes(entry.assetKind)
         || entry.annotation.status !== 'TEST_ONLY')) {
       ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'TEST_ONLY_CLASSIFICATION_MISMATCH' });
     }

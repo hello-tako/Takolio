@@ -2660,3 +2660,14 @@ final stable snapshots clean. UI15 short-screen/readability next, not started.
 396source frozen,protected/App/helpers/public proofPASS;four previewports closed.
 Failures/helperUXFAIL/41dependency advisories archived. Implementation
 `7ee28bf48974e8faf52f78caa2b9a5b979953768`; Git-object receipt follows.
+
+
+## ADR-B03a-SYN-001 - Synthetic image test corpus (2026-10-12)
+
+Accepted offline scope: `../backend-upgrade/b03a-synthetic/ADR-B03a-SYN-001.md`.
+User-requested generated invoice/fridge samples supplement the original symbolic
+fixtures with actual raster bytes, local Apple Vision text recognition and real
+Chromium preprocessing. SYNTHETIC_IMAGE remains TEST_ONLY / NOT_CERTIFIED.
+Unknown fields/duplicate occurrences/currency/split/source hashes are preserved;
+fridge object recognition and live Qwen quality are not measured. No runtime,
+provider activation, payment/auth/config/data authority or migration change.

@@ -122,6 +122,7 @@
           "assetKind": {
             "enum": [
               "SYNTHETIC_SYMBOLIC",
+              "SYNTHETIC_IMAGE",
               "LICENSED_IMAGE"
             ]
           },

@@ -1,0 +1,9 @@
+{
+  "sourceUrl": "https://raw.githubusercontent.com/google/fonts/main/ofl/notosansjp/NotoSansJP%5Bwght%5D.ttf",
+  "sourceSha256": "c2f3b4d463500a2ddcd3849cded1fceeb9fd6d1c32e6cbecd568453ba50fc68f",
+  "subsetSha256": "753063c6554d2dfb634d05a3ca75a2f5ec090444b49454e2d1273e8b286cce33",
+  "license": "SIL OFL 1.1",
+  "weight": 400,
+  "fontToolsVersion": "4.60.2",
+  "use": "Synthetic test rendering only; no public app font change"
+}
