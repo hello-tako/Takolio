@@ -1,9 +1,20 @@
 import { readFileSync } from 'node:fs';
 import { DatabaseSync } from 'node:sqlite';
 import { describe, expect, it } from 'vitest';
-import { schemaQuery, verifyStrictOtpSchema } from '../../scripts/staging-otp-migration-check.mjs';
+import { requireCanonicalStagingDispatch, schemaQuery, verifyStrictOtpSchema } from '../../scripts/staging-otp-migration-check.mjs';
 
 describe('0040 hosted staging schema certification', () => {
+  const dispatch = { GITHUB_REF: 'refs/heads/main', GITHUB_REPOSITORY: 'hello-tako/Tako-san', GITHUB_REPOSITORY_ID: '1385308553' };
+  it('accepts the transferred repository with its immutable identity', () => {
+    expect(() => requireCanonicalStagingDispatch(dispatch)).not.toThrow();
+  });
+  it('rejects a different repository or an unreviewed repository name', () => {
+    expect(() => requireCanonicalStagingDispatch({ ...dispatch, GITHUB_REPOSITORY_ID: '1' })).toThrow(/identity/);
+    expect(() => requireCanonicalStagingDispatch({ ...dispatch, GITHUB_REPOSITORY: 'vn-tak/Tako-san' })).toThrow(/identity/);
+  });
+  it('rejects dispatch outside main', () => {
+    expect(() => requireCanonicalStagingDispatch({ ...dispatch, GITHUB_REF: 'refs/heads/candidate' })).toThrow(/main/);
+  });
   it('accepts the actual migration and rejects omitted or weakened schema objects', () => {
     const db = new DatabaseSync(':memory:');
     try {

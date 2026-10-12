@@ -25,9 +25,14 @@ export function verifyStrictOtpSchema(statements) {
   } finally { database.close(); }
 }
 
+export function requireCanonicalStagingDispatch(env = process.env) {
+  if (env.GITHUB_REF !== 'refs/heads/main') throw new Error('Dispatch must run from main');
+  if (env.GITHUB_REPOSITORY_ID !== '1385308553' || env.GITHUB_REPOSITORY !== 'hello-tako/Tako-san')
+    throw new Error('Canonical repository identity required');
+}
+
 export async function gate(ref) {
-  if (process.env.GITHUB_REF !== 'refs/heads/main') throw new Error('Dispatch must run from main');
-  if (process.env.GITHUB_REPOSITORY !== 'vn-tak/Tako-san') throw new Error('Canonical repository required');
+  requireCanonicalStagingDispatch();
   const candidate = validateMigrationCandidate({ ref, expectedPreTip: PRE_TIP, migration: TIP });
   if (candidate.sha !== candidate.mainSha) throw new Error('Migration ref must equal current main');
   const ci = await hostedCi(candidate.sha, process.env.GITHUB_REPOSITORY);

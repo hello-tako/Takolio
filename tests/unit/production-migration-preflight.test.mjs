@@ -167,7 +167,7 @@ describe('production migration workflow ordering', () => {
     expect(steps.indexOf(preflight)).toBeLessThan(stepIndex('Capture D1 Time Travel rollback bookmark'));
     expect(stepIndex('Capture D1 Time Travel rollback bookmark')).toBeLessThan(steps.indexOf(apply));
     const initialFence = steps.find((step) => step.name === 'Recheck candidate after environment approval');
-    const finalFence = steps.find((step) => step.name === 'Recheck current main and CI immediately before migration 0039');
+    const finalFence = steps.find((step) => step.name === 'Recheck current main and CI immediately before migration');
     for (const fence of [initialFence, finalFence]) {
       expect(fence.env.GH_TOKEN).toBe('${{ github.token }}');
       expect(fence.run).toContain('await hostedCi(manifest.sha, manifest.repository)');
@@ -177,7 +177,13 @@ describe('production migration workflow ordering', () => {
     }
     expect(steps.indexOf(initialFence)).toBeLessThan(steps.indexOf(preflight));
     expect(steps.indexOf(finalFence)).toBe(steps.indexOf(apply) - 1);
-    expect(finalFence.if).toBe("inputs.migration == '0039_meal_composition_v2.sql' && steps.pre_ledger.outputs.mode == 'apply'");
+    expect(finalFence.if).toBe("contains(fromJSON('[\"0039_meal_composition_v2.sql\",\"0040_strict_otp_foundation.sql\"]'), inputs.migration) && steps.pre_ledger.outputs.mode == 'apply'");
+    expect(initialFence.run).toContain('"0040_strict_otp_foundation.sql"');
+    const strictSchema = steps.find((step) => step.name === 'Certify exact strict OTP tables, indexes and constraints after 0040');
+    expect(strictSchema.if).toBe("inputs.migration == '0040_strict_otp_foundation.sql'");
+    expect(strictSchema.run).toContain('verifyStrictOtpSchema');
+    expect(strictSchema.run).toContain('frigo-db --remote --yes --json');
+    expect(steps.indexOf(strictSchema)).toBeGreaterThan(steps.indexOf(apply));
     expect(workflow.jobs.migrate.environment).toBe('production');
     const preservation = steps.find((step) => step.name === 'Require unchanged media metadata across migration 0039');
     expect(preservation.if).toBe("inputs.migration == '0039_meal_composition_v2.sql'");
