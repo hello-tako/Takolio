@@ -1,62 +1,86 @@
-# Nine-region production release preparation - 2026-10-12 JST
+# Nine-region production rollout - 2026-10-12 JST
 
-**Task/status:** RELEASE_PREPARATION. Active packet
-../backend-upgrade/nine-region-production-release/PLAN.md. User separately
-requests production upgrade; protected release/migration authorized. OTP/provider
-paid tests remain unauthorized, AI budget USD0. Offline checkpoints0407011d/d8699437
-remain preserved. Release branch codex/nine-region-production-release.
+**Task/status:** PRODUCTION_VERIFIED_WITH_EXTERNAL_ACCEPTANCE_OPEN.
+Repository hello-tako/Tako-san, ID 1385308553. PR #69 MERGED through required
+checks without bypass; implementation 0d8bc26bfc0ee896270978d8bd3affdfc57d4584.
+Exact deployed release source: d63321af13d81a20a3f19f12969030fe353376b9.
+User authorizes production upgrade; AI budget USD 0, no real OTP or live payment
+tests. This documentation checkpoint is not a new runtime deployment.
 
-**Changes:** Checkout admission has a default-off exact Worker capability;
-UI preserves no-key legacy checkout while disabled, keyed requests fail closed.
-Recovery reads are disabled without opt-in. PayOS signatures/prices/pending-only
-grants unchanged. Scanner workflow moved to a preserved non-executable YAML
-candidate pending independent promotion, no protection/check bypass. Added staging
-0041 identity/exact-main/ledger/bookmark/constraint certification workflow. Extended
-production0041 exact-main/constraint checks and explicit post-media tip without
-relaxing catalog/media integrity. 0040 bytes/config/dependencies/deploy unchanged.
-See ADR-RELEASE-001 in the release packet.
+**Changes:** Turnstile lifecycle/loader fixes, typed auth/provider/queue boundaries,
+shared validated billing contract and additive 0041 are integrated. New checkout
+admission remains default OFF; no-key checkout, PayOS signatures, prices and
+pending-only grants remain. Scanner policy stays a non-executable candidate.
+AI V3/provider, Ingredient V2 and Product VNext remain dormant. Applied 0040,
+config, lock and deploy bytes unchanged. See ADR-RELEASE-001 and the actual receipt.
 
-**Checks/failures:** Verification in progress. First focused run235behavior tests
-PASS but new workflow-test quote syntax failed; first fullcheck failed generic
-Zod input/output inference. Both fixes applied; new complete gates in progress.
-No current-SHA PASS or new live deployment claimed yet. All old receipts retained.
+**Verification:** Local pnpm check PASS: 330 files / 7705 tests; lint, both
+TypeScript projects, 41-migration replay, exact paired build and actual local
+workerd schema PASS. Exact PR CI 38232271283 and main CI 38233405702 SUCCESS,
+7705 tests each. Production deploy also reruns 330 files / 7705 tests PASS,
+476.84s total. Local three-engine default-off/mock-opt-in browser checks PASS:
+12 cases / 24 screenshots. Dependency audits 0. Exact implementation scanner
+4867 files: Semgrep/zizmor 0; Syft 504 declared components; Gitleaks raw 17/exit 1
+and FAILED receipt preserved, exact-context 17 matched / 0 unresolved. No
+independent/hosted scanner promotion claimed. Failed tests/mock attempts retained.
 
-**Database/deployment:** Production last separately verified0c0f9933/ledger40.
-0041 rollout must precede app deploy and preserve old-worker coexistence; no
-remote mutation/new release executed yet. Environment reviewer vn-taphoanhatung
-required; CLI hello-tako. Never change protections or reapply0040.
+**Database/deployment:** Staging migration 38234283593 and deploy 38234498171
+SUCCESS at d63321af, public smoke PASS 30 checks. Production migration
+38235082984 SUCCESS: ledger 40 -> 41, only 0041 applied, exact two tables/one
+index/constraints PASS, FK [], quick_check ok, aggregate drift none, schema gate
+PASS. Private Time Travel bookmark captured. Catalog/media retain 500 recipes,
+500 ready active heroes, zero hydration failures and exact runtime fingerprint;
+R2 availability was not recertified by the migration metadata query.
 
-**Next/limits:** Finish local gates/browser/scanners, protected PR/exact-main CI,
-staging0041/deploy/smoke, production0041 and deploy with separate Environment
-approvals, then receipt/monitor. All nine external acceptance rows remain
-PENDING_EXTERNAL_EVIDENCE; checkout/security/AI/data/VNext remain dormant as
-specified. No real OTP, paid AI or live payment testing. Original checkout
-preserved. Historical entries below remain immutable.
+Production deploy 38236084633 SUCCESS. Active 100% Worker version
+bd52d61f-c068-4844-9f5c-2b24a1f8d1a9, deployment
+71b0bf82-2bd8-45bf-b359-693a190655e1, canonical D1 binding verified. Exact API and
+assets SHA d63321af. Catalog d1 / cutover true / canary 0 / 500 / no fallback,
+paired T20 true. Actual GitHub approvals for BOTH production runs:
+vn-taphoanhatung; protections unchanged. Previous strict-compatible Worker
+820c79ef-2db1-4016-95e8-afad9d61958f is the captured code rollback target;
+no rollback, down-migration or new strict-recovery version executed.
 
-**Local verification:** pnpm check PASS: 330 files / 7705 tests,166.03s;
-lint/both TypeScript projects/41-migration replay/build PASS. Remote gates
-explicitly skipped. Focused migration checks18/18 PASS. Full/prod dependency
-audits0. Source scan4865 files: Semgrep/zizmor0; Syft504 declaredcomponents;
-Gitleaks raw17/exit1 retained, exact-context17matched/0unresolved. Eleven
-protected appliedmigration/provider/grant/price/config/lock/deploy paths exact.
-All four baseline failure logs retained: plan-capability expectation, quote
-syntax, Zod inference and exact workflow migration-list expectation. Browser
-attempts preserve port collision, dev-preview empty document and service-worker
-interception bypass/401; final mock tests explicitly block service workers.
-Public PWA remains a separate deployed check; no actual OTP/provider/payment call.
+**Deployed checks/failures:** Production smoke PASS 30 checks, including 18 native
+Chromium/Firefox/WebKit public page cases at 320/1440, exact brand bytes,
+tenant401 guards and release-specific PWA upgrade/offline shell. Five staging/
+production screenshots visually inspected with no observed layout/image defect.
+Bounded production monitor PASS: 11 observations across 321.902s,
+all exact-SHA DB/queue/catalog/config assertions passed. Status degraded solely
+for the existing intentional CONFIG_RECIPE_CATALOG_D1_AUTHORITY warning.
+No seven-day SLO, challenge solve, authenticated journey or inbox/payment proof.
 
-**Release scope/next:** checkout admission default OFF and scanner workflow
-non-executable candidate; real acceptance remains PENDING_EXTERNAL_EVIDENCE.
-Push normal PR and wait exact-head then exact-main CI; staging0041/deploy/smoke
-before protected production0041/deploy/monitor. No production mutation yet.
+Original Node connect ETIMEDOUT/EHOSTUNREACH attempts retained: smoke1 failed
+before checks, smoke2 after 8 checks, monitor after 3 observations. Ten targeted
+readiness controls and complete rerun PASS with Node-only ipv4first/address-attempt
+timeout3000ms; application/assertions unchanged, root cause not certified. Local
+gh JSON dispatch parse failure created no run; corrected strings succeeded.
+Receipt assertion initially expected count instead of names[]; corrected read-only
+verification proved41. Failed evidence is not counted as PASS.
 
+**Limits/next:** Release is deployed and bounded verification complete; all nine
+real acceptance rows remain PENDING_EXTERNAL_EVIDENCE. Checkout/security/AI/data/
+VNext activation requires the concrete missing acceptance in EXTERNAL_ACCEPTANCE.md.
+No paid AI, real OTP or financial transaction made. No additional production
+change required for this release. Packet:
+../backend-upgrade/nine-region-production-release/rollout-receipt.json, RESULT.md
+and EXTERNAL_ACCEPTANCE.md contain source/run identities, hashes and limits.
+Canonical worktree /Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo;
+original checkout untouched. Historical sections below remain preserved.
 
-Final local browser acceptance PASS in both modes: Chromium/Firefox/WebKit at
-320/1440,12 cases/24screenshots, zero stable axe/overflow/broken/page-errors or
-external requests. Default-off calls no recovery API or idempotency header;
-opt-in keeps key/reload replacement fence/GET resume. Actual new checkout remains
-OFF in staging/production configs. Stable enabled-button opacity resolved the
-transient WebKit contrast capture; failed evidence remains retained.
+## Concurrent PayOS integration
+
+After the verified deployment, main was observed at
+4fb7c40d01769f0d8d8d043fac0c799b435b3e3e. The user confirmed that another thread
+owns the ongoing PayOS/payment integration. This packet certifies only the
+released source d63321af13d81a20a3f19f12969030fe353376b9 and its recorded workflows;
+it does not certify the concurrent integration or later main revisions.
+
+Save these receipts on the separate documentation branch
+codex/nine-region-release-receipt. Do not merge, rebase, deploy or change payment
+configuration as part of this receipt checkpoint. The PayOS owner can incorporate
+the historical release evidence without treating its dormant checkout candidate
+as accepted or inheriting CI/release certification for a different SHA.
 
 ---
 

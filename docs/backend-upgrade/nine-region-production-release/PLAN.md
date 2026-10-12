@@ -1,6 +1,13 @@
 # Nine-region production rollout - 2026-10-12
 
-Status: RELEASE_PREPARATION. User explicitly authorizes production upgrade after
+Status: PRODUCTION_VERIFIED_WITH_EXTERNAL_ACCEPTANCE_OPEN.
+Exact deployed source: d63321af13d81a20a3f19f12969030fe353376b9.
+PR69/main CI/staging verified; production0041/deploy PASS with actual Environment
+approvals. Production public/PWA smoke PASS30; bounded monitor PASS11observations
+across 321.902s. See rollout-receipt.json and RESULT.md; real acceptance
+remains pending as enumerated in EXTERNAL_ACCEPTANCE.md.
+
+User explicitly authorizes production upgrade after
 receiving the offline completion status. This authorizes protected push/PR/merge,
 staging, additive 0041 production migration and application deployment. Real OTP,
 paid AI, live payment testing and unrelated feature activation remain unauthorized.
@@ -54,3 +61,17 @@ paired flags remain true, catalog d1/cutover true/canary 0 remain unchanged.
 
 Production approvals are required by the configured GitHub Environment reviewer
 vn-taphoanhatung. The CLI currently uses hello-tako; no bypass or reviewer change.
+
+## Concurrent PayOS integration
+
+After the verified deployment, main was observed at
+4fb7c40d01769f0d8d8d043fac0c799b435b3e3e. The user confirmed that another thread
+owns the ongoing PayOS/payment integration. This packet certifies only the
+released source d63321af13d81a20a3f19f12969030fe353376b9 and its recorded workflows;
+it does not certify the concurrent integration or later main revisions.
+
+Save these receipts on the separate documentation branch
+codex/nine-region-release-receipt. Do not merge, rebase, deploy or change payment
+configuration as part of this receipt checkpoint. The PayOS owner can incorporate
+the historical release evidence without treating its dormant checkout candidate
+as accepted or inheriting CI/release certification for a different SHA.

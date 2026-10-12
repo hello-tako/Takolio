@@ -1,0 +1,533 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-10-12T10:47:26.032048+00:00",
+  "classification": "NINE_REGION_RELEASE_DEPLOYED_WITH_BOUNDED_VERIFICATION",
+  "status": "PRODUCTION_VERIFIED_WITH_EXTERNAL_ACCEPTANCE_OPEN",
+  "repository": {
+    "name": "hello-tako/Tako-san",
+    "id": 1385308553
+  },
+  "releaseSha": "d63321af13d81a20a3f19f12969030fe353376b9",
+  "implementationSha": "0d8bc26bfc0ee896270978d8bd3affdfc57d4584",
+  "pullRequest": {
+    "number": 69,
+    "state": "MERGED",
+    "url": "https://github.com/hello-tako/Tako-san/pull/69"
+  },
+  "ci": {
+    "pr": {
+      "run": 38232271283,
+      "conclusion": "success"
+    },
+    "main": {
+      "run": 38233405702,
+      "conclusion": "success"
+    },
+    "suiteFiles": 330,
+    "suiteTests": 7705
+  },
+  "staging": {
+    "migrationRun": 38234283593,
+    "deployRun": 38234498171,
+    "migration": {
+      "ledgerBefore": 40,
+      "ledgerAfter": 41,
+      "onlyApplied": [
+        "0041_checkout_admission.sql"
+      ],
+      "constraints": {
+        "objects": [
+          "checkout_admissions",
+          "idx_checkout_admissions_user_state",
+          "payment_reconciliation_records"
+        ],
+        "constraints": "PASS"
+      },
+      "health": {
+        "foreignKeyCheck": "[]",
+        "quickCheck": "ok"
+      },
+      "aggregateDrift": "none",
+      "schemaGate": "PASS",
+      "timeTravelBookmarkCapturedInPrivateReceipt": true
+    },
+    "deployed": {
+      "sha": "d63321af13d81a20a3f19f12969030fe353376b9",
+      "environment": "staging",
+      "checkedAt": "2026-10-12T10:10:46.637Z",
+      "attempts": 3,
+      "waitedMs": 8633
+    },
+    "assets": {
+      "sha": "d63321af13d81a20a3f19f12969030fe353376b9",
+      "sha256": "7a5b180395853031d88257106f183d25b9c103254fc6ab9689f03d35ba97c036",
+      "httpStatus": 200,
+      "cacheNoStore": true,
+      "consecutiveObservations": 3
+    },
+    "recipeAuthority": {
+      "configuredMode": "d1",
+      "cutoverEnabled": true,
+      "canaryPercent": 0,
+      "actualSource": "d1",
+      "globalSource": "d1",
+      "servedRecipeCount": 500,
+      "servedFingerprint": "f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37",
+      "releaseId": "rel-bd00a4f53fcaeee4",
+      "d1Readiness": "ready",
+      "fallbackReason": null,
+      "checkedAt": "2026-10-12T10:10:50.023Z"
+    },
+    "mealCompositionV2Enabled": true,
+    "publicSmoke": {
+      "status": "PASS",
+      "checks": 30,
+      "classification": "DEPLOYED_PUBLIC_READ_ONLY_SMOKE",
+      "scopeLimit": "Public page rendering, asset integrity, tenant guards and offline PWA only. WebKit external Turnstile frame errors are recorded separately after direct diagnosis; no challenge solve or authenticated flow is certified."
+    }
+  },
+  "production": {
+    "migrationRun": 38235082984,
+    "gate": "PASS",
+    "migrateJob": "completed",
+    "reviewer": "vn-taphoanhatung",
+    "currentUserCanApprove": false,
+    "migrationApplied": true,
+    "newWorkerDeployed": true,
+    "observedServingSha": "d63321af13d81a20a3f19f12969030fe353376b9",
+    "previousCertifiedLedger": 40,
+    "approvalHistory": [
+      {
+        "state": "approved",
+        "user": "vn-taphoanhatung",
+        "environments": [
+          "production"
+        ]
+      }
+    ],
+    "url": "https://frigo.tungjpstore.net",
+    "beforeReadiness": {
+      "status": "degraded",
+      "app": "Frigo",
+      "version": "0.1.0",
+      "commit": "0c0f9933dcd1af2296d8033709ea3bf5ceec30f2",
+      "timestamp": "2026-10-12T10:16:56.058Z",
+      "environment": "production",
+      "recipeAuthority": {
+        "configuredMode": "d1",
+        "cutoverEnabled": true,
+        "canaryPercent": 0,
+        "globalSource": "d1",
+        "fallbackReason": null,
+        "releaseId": "rel-bd00a4f53fcaeee4",
+        "expectedRecipeCount": 500
+      },
+      "services": {
+        "database": "ok",
+        "queue": "ok",
+        "ai": "configured",
+        "email": {
+          "providerConfigured": true,
+          "deliveryVerified": false
+        },
+        "rateLimiting": "kv-best-effort"
+      },
+      "config": {
+        "ok": true,
+        "issues": [
+          {
+            "code": "CONFIG_RECIPE_CATALOG_D1_AUTHORITY",
+            "severity": "warning"
+          }
+        ]
+      }
+    },
+    "migrationConclusion": "success",
+    "ledgerAfter": 41,
+    "constraints": {
+      "objects": [
+        "checkout_admissions",
+        "idx_checkout_admissions_user_state",
+        "payment_reconciliation_records"
+      ],
+      "constraints": "PASS"
+    },
+    "integrity": {
+      "foreignKeyCheck": "[]",
+      "quickCheck": "ok"
+    },
+    "aggregateDrift": "none",
+    "schemaGate": {
+      "result": "PASS",
+      "checkedAt": "2026-10-12T10:22:14.406Z"
+    },
+    "catalog": {
+      "recipes": 500,
+      "mediaReady": 500,
+      "activeHeroFailures": 0,
+      "runtimeFingerprint": "f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37",
+      "hydrationFailures": 0
+    },
+    "timeTravelBookmarkCapturedInPrivateReceipt": true,
+    "deployRun": 38236084633,
+    "deployGate": "PASS",
+    "applicationStatus": "completed",
+    "deployed": {
+      "sha": "d63321af13d81a20a3f19f12969030fe353376b9",
+      "environment": "production",
+      "checkedAt": "2026-10-12T10:35:48.548Z",
+      "attempts": 3,
+      "waitedMs": 8520
+    },
+    "worker": {
+      "versionId": "bd52d61f-c068-4844-9f5c-2b24a1f8d1a9",
+      "deploymentId": "71b0bf82-2bd8-45bf-b359-693a190655e1",
+      "capturedAt": "2026-10-12T10:35:56.292Z",
+      "binding": {
+        "versionId": "bd52d61f-c068-4844-9f5c-2b24a1f8d1a9",
+        "bindingName": "DB",
+        "databaseId": "f975ec39-b2c8-4a2a-80e1-0366054599d3",
+        "checkedAt": "2026-10-12T10:35:56.292Z"
+      }
+    },
+    "assets": {
+      "sha": "d63321af13d81a20a3f19f12969030fe353376b9",
+      "sha256": "7a5b180395853031d88257106f183d25b9c103254fc6ab9689f03d35ba97c036",
+      "httpStatus": 200,
+      "cacheNoStore": true,
+      "consecutiveObservations": 3
+    },
+    "applicationConclusion": "success",
+    "deploySuite": {
+      "files": 330,
+      "tests": 7705,
+      "durationSeconds": 476.84
+    },
+    "deployApprovalHistory": [
+      {
+        "state": "approved",
+        "user": "vn-taphoanhatung",
+        "environments": [
+          "production"
+        ]
+      }
+    ],
+    "recipeAuthority": {
+      "configuredMode": "d1",
+      "cutoverEnabled": true,
+      "canaryPercent": 0,
+      "actualSource": "d1",
+      "globalSource": "d1",
+      "servedRecipeCount": 500,
+      "servedFingerprint": "f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37",
+      "releaseId": "rel-bd00a4f53fcaeee4",
+      "d1Readiness": "ready",
+      "fallbackReason": null,
+      "checkedAt": "2026-10-12T10:35:56.475Z"
+    },
+    "previousDeployment": {
+      "versionId": "820c79ef-2db1-4016-95e8-afad9d61958f",
+      "deploymentId": "526abd18-51ef-4c9b-bb89-abaa305b62b7",
+      "capturedAt": "2026-10-12T10:35:18.278Z",
+      "binding": {
+        "versionId": "820c79ef-2db1-4016-95e8-afad9d61958f",
+        "bindingName": "DB",
+        "databaseId": "f975ec39-b2c8-4a2a-80e1-0366054599d3",
+        "checkedAt": "2026-10-12T10:35:19.778Z"
+      }
+    },
+    "mealCompositionV2Enabled": true,
+    "strictOtpRecoveryCreated": false,
+    "rollbackExecuted": false,
+    "publicSmoke": {
+      "status": "PASS",
+      "checks": 30,
+      "classification": "DEPLOYED_PUBLIC_READ_ONLY_SMOKE",
+      "browserCases": 18,
+      "engines": [
+        "chromium",
+        "firefox",
+        "webkit"
+      ],
+      "widths": [
+        320,
+        1440
+      ],
+      "externalScriptErrorsObserved": 0,
+      "liveTurnstileCertified": false,
+      "liveInboxOrPaymentCertified": false,
+      "scopeLimit": "Public page rendering, asset integrity, tenant guards and offline PWA only. WebKit external Turnstile frame errors are recorded separately after direct diagnosis; no challenge solve or authenticated flow is certified."
+    },
+    "monitor": {
+      "status": "PASS",
+      "classification": "BOUNDED_PUBLIC_READ_ONLY_MONITOR_NOT_SLO_CERTIFICATION",
+      "observations": 11,
+      "elapsedMs": 321902,
+      "productionSloCertified": false,
+      "acceptedExistingWarning": "CONFIG_RECIPE_CATALOG_D1_AUTHORITY",
+      "newConfigurationIssues": 0,
+      "networkAdjustment": "Node invocation only: ipv4first and family autoselection attempt timeout3000ms",
+      "firstFailedMonitorRetained": true
+    }
+  },
+  "activation": {
+    "checkoutAdmissionEnabled": false,
+    "scannerWorkflowPromoted": false,
+    "aiProviderChanged": false,
+    "ingredientV2Promoted": false,
+    "productVNextActivated": false
+  },
+  "externalAcceptance": "PENDING_EXTERNAL_EVIDENCE",
+  "aiExpenditureUsd": 0,
+  "realOtpSent": false,
+  "livePaymentTested": false,
+  "receiptSha256": {
+    "staging-migration-receipt/staging-migration-receipt.json": "62b9f688f8432268dae8ac76e4c9ac123a4097039be92eebb1d210e35a448d73",
+    "staging-deploy-receipt/release-manifest.json": "ad2d2abdc99b7d7bd9c95304b5cc2f62db518ebba94326432122e74509fd9ff8",
+    "staging-public-smoke/receipt.json": "5af661cb70d305ed7c9237245ff158e5a70336c42ed44bdadba6bdf8ad2db8e8",
+    "production-migration-receipt/migration-manifest.json": "52d1ce2ca54a51295654f02427f9eb2c6f15d8d361ce9f29df2cfb36bd522978",
+    "production-migration-approvals.json": "0bb7e6b16c42aff28d358d8ced9c21627d8b12181c20a1f3e5b6d092b3cdd714",
+    "production-deploy-receipt/release-manifest.json": "44239e173ec2d5b438aa78cd1d4fbb66541d8d192798b14204eb15b9b9cce84a",
+    "production-deploy-approvals.json": "0bb7e6b16c42aff28d358d8ced9c21627d8b12181c20a1f3e5b6d092b3cdd714",
+    "production-expanded-schema-old-worker.json": "ef0009d0f0d3157a4ed3a4f18f1382921a1d8243bceca13856e16e86576f07f5",
+    "production-public-smoke/receipt.json": "80c18d1838af3647da599419d74b98ebb3d8dff17bbee0d0fc7dde3d70041f3c",
+    "production-public-smoke-second/receipt.json": "bbe24b44476fe8d698d525cb18f62693fbdb8318fa024881b89e910e17241ac9",
+    "production-monitor/monitor-failure.json": "910d1a364819838c0d7619d15ef1b6568f7bbe33f2a81147c9b2fbb11d1fafd2",
+    "local-network-control.json": "a949d8e731569aa85e333db64e12227d8f01872616e03d1b46fca215ed557ce6",
+    "production-public-smoke-network/receipt.json": "74dcba71aca7c1ece1a34fb0ef27c1ab246aad9629cef1b8107179ec321cc62e",
+    "security-exact-head/receipt.json": "722b8105516caf68320ea20bc58d551f8a592c7e36ef7327c4c4c355db64f9e7",
+    "security-context-exact-head.json": "b0287e6ba1688d7c51f716686398941bf59708ccc89314d0e344df27aa3ce7b1",
+    "protected-source.json": "198071b1da059be002538d4cb41dc95170a04c91ef6cc7eef4a1705c46c8c70d",
+    "production-deploy-dispatch-first.log": "5d6fb7ad41adcce4b3812cbd684276426aaedc55deaec30680ebf353fd16bbc9",
+    "production-deploy-inputs.json": "59dd2178826972766f8d6c0e340c4a3e97fff12864069f152fa1ab318875c656",
+    "production-deploy-completed.log": "3bd87049aa48ec944e00b9549833db3e55497cf9170f384fdb6e2351b70735fa",
+    "production-migration-completed.log": "5480050d13e4ec658e7863b1f75f37de68a06443e489219c056edb40f5719c9c",
+    "pr-ci-completed.log": "462603da4c1d15a46e2265f7d7b865fcd67f1a933eef5537d486d74190409199",
+    "main-ci-completed.log": "eaa5ffb588faa0cc743a010571a70e6b3e7ec9c85b0f98645b96f0763e18ab08",
+    "production-public-smoke-network.log": "73c92541d06db549dd3d1a2517ffc2b1897083ce6d7c6c0f7a50449700161248",
+    "readiness-monitor.mjs": "1c0bf51d3700f38f9da511b871de799284cfcb02b850dc30a253b6560b49b19c",
+    "production-monitor-network/monitor.json": "7ced668a678f024ed18581fab797331652dc91118ffd15ffc290a600e5658f9c",
+    "production-monitor-network.log": "f804cd17b1749ffecdb492c5436ac00efa7fb9e3e95544613df0d4f83688322f"
+  },
+  "nextAction": "Release is complete. Keep receipt checkpoint separate from the ongoing PayOS integration; external acceptance and any later release require their own source-specific evidence.",
+  "failedAttempts": [
+    {
+      "name": "production-public-smoke",
+      "status": "FAILED",
+      "checksCompleted": 0,
+      "error": "Node connect ETIMEDOUT/EHOSTUNREACH"
+    },
+    {
+      "name": "production-public-smoke-second",
+      "status": "FAILED",
+      "checksCompleted": 8,
+      "error": "Node connect ETIMEDOUT/EHOSTUNREACH"
+    },
+    {
+      "name": "production-monitor",
+      "status": "FAILED",
+      "observationsCompleted": 3,
+      "error": "Node connect ETIMEDOUT/EHOSTUNREACH"
+    },
+    {
+      "name": "production-deploy-dispatch-first",
+      "status": "FAILED_LOCAL_INPUT_NO_RUN_CREATED",
+      "error": "gh workflow --json expects string input; corrected serialized booleans"
+    },
+    {
+      "name": "receipt-verification-first",
+      "status": "FAILED_LOCAL_ASSERTION_ASSUMPTION",
+      "error": "observedMigrationLedger uses names[], not count; corrected read-only assertion verified41"
+    }
+  ],
+  "networkControl": {
+    "classification": "LOCAL_TRANSPORT_CONTROL_NOT_PRODUCTION_SLO",
+    "adjustment": "Node invocation only: ipv4first, family autoselection attempt timeout3000ms",
+    "status": "PASS",
+    "observations": 10,
+    "rootCauseCertified": false,
+    "applicationChanged": false,
+    "assertionsRelaxed": false
+  },
+  "localVerification": {
+    "fullCheck": {
+      "files": 330,
+      "tests": 7705,
+      "testPhaseSeconds": 166.03,
+      "status": "PASS"
+    },
+    "actualWorkerd": {
+      "files": 2,
+      "tests": 3,
+      "status": "PASS"
+    },
+    "focusedMigration": {
+      "files": 2,
+      "tests": 18,
+      "status": "PASS"
+    },
+    "browserMock": {
+      "cases": 12,
+      "screenshots": 24,
+      "engines": [
+        "chromium",
+        "firefox",
+        "webkit"
+      ],
+      "widths": [
+        320,
+        1440
+      ],
+      "serviceWorkersBlockedForMockOnly": true,
+      "classification": "LOCAL_SYNTHETIC_MOCK_NOT_AUTH_OR_PROVIDER_CERTIFICATION"
+    },
+    "dependencyAudit": {
+      "full": 0,
+      "production": 0
+    },
+    "exactImplementationSecurity": {
+      "sourceFiles": 4867,
+      "rawStatus": "FAILED",
+      "tools": [
+        {
+          "findingCount": 0,
+          "rawLogSha256": "0ad2aa67413e9a01954c189a595b29e966abb485a9533d8ecf92f5aadabb08ab",
+          "rawReportSha256": "3c3186f311de93c5191866dfbb2cdef841cfeefcf60eba6bfd0e680d60a57130",
+          "rules": {},
+          "severities": {},
+          "status": "PASS",
+          "tool": "semgrep",
+          "version": "1.180.0"
+        },
+        {
+          "findingCount": 17,
+          "rawLogSha256": "531898afd5313ef15be140d26ec3277a4af5332aa41341e58df45589aca946b2",
+          "rawReportSha256": "da8138f4650fbb98653fc7e31dc23ec0ef8a5b7f0e89b65c96200f3d79778e8b",
+          "rules": {
+            "generic-api-key": 17
+          },
+          "severities": {
+            "SECRET_REVIEW_REQUIRED": 17
+          },
+          "status": "FINDINGS",
+          "tool": "gitleaks",
+          "version": "8.30.1"
+        },
+        {
+          "findingCount": 0,
+          "rawLogSha256": "3f316a81bb86ffcdc8e3ef9de654fab727784fb8d35c24a64a0c02dd9ab1be03",
+          "rawReportSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "rules": {},
+          "severities": {},
+          "status": "PASS",
+          "tool": "zizmor",
+          "version": "1.30.1"
+        },
+        {
+          "packageCount": 504,
+          "rawLogSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rawReportSha256": "e37814015b49b2ae6cc67b2dccccdafa356bb89b26502e833ec97bd76a14bec5",
+          "sbomSha256": "e37814015b49b2ae6cc67b2dccccdafa356bb89b26502e833ec97bd76a14bec5",
+          "scope": "DECLARED_MANIFEST_AND_LOCK_GRAPH_NOT_VULNERABILITY_SCAN",
+          "status": "PASS",
+          "tool": "syft",
+          "version": "1.54.1"
+        }
+      ],
+      "context": {
+        "schemaVersion": 1,
+        "status": "ADJUDICATED",
+        "rawFindingCount": 17,
+        "contextMatchedCount": 17,
+        "unresolvedCount": 0,
+        "scannerSuppressionAdded": false,
+        "externalAcceptance": "PENDING_EXTERNAL_EVIDENCE",
+        "scanReceiptSha256": "722b8105516caf68320ea20bc58d551f8a592c7e36ef7327c4c4c355db64f9e7",
+        "contextSha256": "50856c7bb9cef73e6f9ceb0d96ad4b88477c5dd1ac103bbee87b4e661ded79c8"
+      },
+      "independentOrHostedPromotion": "PENDING_EXTERNAL_EVIDENCE"
+    },
+    "protectedSource": {
+      "status": "PASS",
+      "sourceSha": "0d8bc26bfc0ee896270978d8bd3affdfc57d4584",
+      "baseSha": "0c0f9933dcd1af2296d8033709ea3bf5ceec30f2",
+      "protected": [
+        {
+          "path": "migrations/0040_strict_otp_foundation.sql",
+          "sha256": "8ad04aaf528b2811b693d80f83704bd3d7578f7ffb3cc3698326487e4beb6ae0"
+        },
+        {
+          "path": "migrations/0018_payments.sql",
+          "sha256": "8668f84a4e378227d63cbee591e6feb9ee37ef7b6fc84fd127af7511dddd406b"
+        },
+        {
+          "path": "src/worker/payment/payos.ts",
+          "sha256": "0bb1734c54e576810211ef51a75987adf1886acd00470fb1dec9aa3a9e727780"
+        },
+        {
+          "path": "src/worker/payment/authority.ts",
+          "sha256": "45cfab0253ff23365eb879c9a55bea033104fc40725f80f5f72d1cbbe05a6a14"
+        },
+        {
+          "path": "src/worker/payment/prices.ts",
+          "sha256": "ec1bd004b9dbfb88dda8bac54dc590bdbcecc6b427c7f3852fa467d80cf52dfa"
+        },
+        {
+          "path": "wrangler.jsonc",
+          "sha256": "c91126d5d08d39d2f86018226249bafef1a916f7c5783619535cfe139a156598"
+        },
+        {
+          "path": "wrangler.staging.jsonc",
+          "sha256": "a9c583f10d0fcce8bc38e04cbd2faa971cae4a12c7db9d65dd12670f194f6642"
+        },
+        {
+          "path": "package.json",
+          "sha256": "2b4e3e5f000bf12ef38c05deb42229a8ef7bc8f8deb538d03042d593b6bb5cc1"
+        },
+        {
+          "path": "pnpm-lock.yaml",
+          "sha256": "4998dc372e0beb023700b754b9fce55901caffb211dd2c4e2280ac623d9ce69d"
+        },
+        {
+          "path": ".github/workflows/deploy.yml",
+          "sha256": "b6bbb53b5e9442a298a4b40092ee35777df6ea08478269c042376f077da9babe"
+        },
+        {
+          "path": ".github/workflows/production-certify.yml",
+          "sha256": "9a0c64d9b2bf43c3153c609e11b0f700023c178ec4fd46ec2834dbaf7fba01fb"
+        }
+      ],
+      "candidateWorkflowExecutable": false,
+      "checkoutOptInConfigured": false
+    }
+  },
+  "visualInspection": {
+    "classification": "HUMAN_STYLE_VISUAL_INSPECTION_BY_AGENT_NOT_INDEPENDENT_USER_ACCEPTANCE",
+    "inspectedScreenshots": [
+      "staging-public-smoke/chromium-320-auth.png",
+      "staging-public-smoke/chromium-1440-landing.png",
+      "production-public-smoke-network/webkit-320-auth-mode-register.png",
+      "production-public-smoke-network/firefox-1440-landing.png",
+      "production-public-smoke-network/offline-landing.png"
+    ],
+    "observedLayoutOrImageDefect": false
+  },
+  "rollback": {
+    "codeTarget": "captured previous strict-compatible Worker",
+    "versionId": "820c79ef-2db1-4016-95e8-afad9d61958f",
+    "sourceSha": "0c0f9933dcd1af2296d8033709ea3bf5ceec30f2",
+    "workerReplayPerformed": false,
+    "d1TimeTravelBookmarkPrivate": true,
+    "automaticDownMigration": false,
+    "schemaAvailabilityDoesNotActivateCheckout": true
+  },
+  "concurrentWork": {
+    "mainObservedAfterRelease": "4fb7c40d01769f0d8d8d043fac0c799b435b3e3e",
+    "ownershipConfirmedByUser": "Another thread owns PayOS/payment integration",
+    "receiptBranch": "codex/nine-region-release-receipt",
+    "mainIntegrationReviewed": false,
+    "concurrentSourceCertified": false,
+    "additionalMergeOrDeployPerformed": false,
+    "scope": "Historical deployed d63321af and recorded workflow evidence only"
+  }
+}
