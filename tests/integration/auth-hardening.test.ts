@@ -11,7 +11,7 @@ import { verifyPassword } from '../../src/worker/utils/password';
 import { hmacSha256Hex, SESSION_COOKIE, sha256Hex } from '../../src/worker/utils/session';
 import { createOtpDigest } from '../../src/worker/utils/otp-digest';
 import * as digests from '../../src/worker/utils/otp-digest';
-import { createBarrier, SqliteD1 } from '../helpers/sqlite-d1';
+import { createBarrier, MIGRATION_LEDGER, SqliteD1 } from '../helpers/sqlite-d1';
 
 // The Workers-only cloudflare:email module cannot load in Node; no network mail is sent.
 vi.mock('../../src/worker/services/email', () => ({
@@ -195,9 +195,10 @@ afterEach(async () => {
 describe('real SQLite D1 integration harness', () => {
   it('applies the full migration ledger including strict OTP with real constraints and no plaintext OTP column', () => {
     expect(db.migrations).toContain('0018_payments.sql');
-    expect(db.migrations).toHaveLength(41);
+    expect(db.migrations).toHaveLength(MIGRATION_LEDGER.count);
     expect(db.migrations).toContain('0040_strict_otp_foundation.sql');
-    expect(db.migrations.at(-1)).toBe('0041_checkout_admission.sql');
+    expect(db.migrations).toContain('0041_checkout_admission.sql');
+    expect(db.migrations.at(-1)).toBe(MIGRATION_LEDGER.tip);
     const columns = db.query<{ name: string }>('PRAGMA table_info(auth_otps)').map((column) => column.name);
     expect(columns).toEqual(expect.arrayContaining(['code_digest', 'attempt_count', 'used_at', 'locked_until']));
     expect(columns).not.toContain('code');

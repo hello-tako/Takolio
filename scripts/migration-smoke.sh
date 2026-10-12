@@ -554,5 +554,18 @@ INSERT INTO assert_zero SELECT COUNT(*) FROM checkout_admissions;
 INSERT INTO assert_zero SELECT COUNT(*) FROM payment_reconciliation_records;
 INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_foreign_key_check;
 INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_integrity_check WHERE integrity_check <> 'ok';
+-- Admin Console foundation is additive: no existing row changes; audit is append-only.
+CREATE TEMP TABLE smoke_pre_admin_users AS SELECT * FROM users;
+CREATE TEMP TABLE smoke_pre_admin_payments AS SELECT * FROM payment_intents;
+.read migrations/0042_admin_console_foundation.sql
+INSERT INTO assert_zero SELECT COUNT(*) FROM (SELECT * FROM smoke_pre_admin_users EXCEPT SELECT * FROM users);
+INSERT INTO assert_zero SELECT COUNT(*) FROM (SELECT * FROM smoke_pre_admin_payments EXCEPT SELECT * FROM payment_intents);
+INSERT INTO assert_one SELECT COUNT(*) = 7 FROM sqlite_master WHERE type = 'table' AND name IN
+ ('admin_role_assignments','admin_sessions','admin_audit_events','admin_action_approvals','admin_recipe_editorial_reviews','admin_user_preferences','admin_config_metadata');
+INSERT INTO assert_one SELECT COUNT(*) = 2 FROM sqlite_master WHERE type = 'trigger' AND name IN
+ ('trg_admin_audit_events_no_update','trg_admin_audit_events_no_delete');
+INSERT INTO assert_zero SELECT COUNT(*) FROM admin_role_assignments;
+INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_foreign_key_check;
+INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_integrity_check WHERE integrity_check <> 'ok';
 SELECT 'migration-smoke=ok';
 SQL

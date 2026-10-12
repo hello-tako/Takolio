@@ -1,3 +1,36 @@
+# Takosan Admin Console V1 local implementation - 2026-10-12
+
+**Status:** ADMIN_V1_LOCAL_COMPLETE (local only; not deployed, not production-certified).
+Implemented separate admin frontend (`admin/index.html`, `src/admin/`), Worker admin
+API (`src/worker/routes/admin/`, `/api/v1/admin/*`), shared RBAC/DTO contract
+(`src/shared/admin.ts`), additive migration `0042_admin_console_foundation.sql`,
+local-only fixture/provision/preview tooling (`scripts/admin-*.mjs`), and docs in
+`docs/admin/` (API reference, RBAC matrix, security assessment, migration report,
+integration plan, local setup, screenshots). ADR-ADMIN-001 records the authority model.
+No GitHub/Cloudflare remote operation, deployment, remote migration or payment-code change.
+
+**Verification (local, exact):** pnpm lint PASS; pnpm typecheck PASS (both projects);
+pnpm build PASS (dist/client/admin/index.html + unchanged `index-*` customer entry);
+pnpm check:migrations `migration-smoke=ok` incl. 0042 assertions; wrangler `--local`
+D1 fresh replay 0001-0042 and 0041->0042 upgrade PASS; admin integration 30/30,
+admin unit 37/37 (frontend + tooling); Playwright admin E2E 5/5 (Chromium, real Worker
+serving built admin assets, synthetic fixture); full vitest 339 files/7799 tests: 7797 PASS, 2 FAIL
+(auth-hardening + auth-otp-coordinator hard-coded the 0041 ledger tip/count); both now use
+MIGRATION_LEDGER and pass on re-run (2 files/189 tests). Full suite not re-run after that
+test-only fix.
+
+**Compatibility edits:** customer service worker skips `/admin*`; rate limiter gained
+optional `key`; `MIGRATION_LEDGER` + migration smoke include 0042. Production workflow
+migration allow-lists and `tests/fixtures/migration-sha256.json` intentionally unchanged.
+
+**Next:** Independent security review; real Cloudflare Access tenant verification;
+define production SUPER_ADMIN bootstrap procedure; reviewed PR adding 0042 to the
+production migrate allow-list; wire runtime `ai_requests` logging if AI metrics are
+required. Production integration is a separately authorized operation
+(docs/admin/PRODUCTION_INTEGRATION_PLAN.md).
+
+---
+
 # payOS Worker runtime correction - 2026-10-12 JST
 
 **Status:** FIX_IMPLEMENTED_FOCUSED_VERIFIED; final hosted CI and replacement

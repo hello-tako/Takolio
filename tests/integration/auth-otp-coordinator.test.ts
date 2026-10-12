@@ -3,7 +3,7 @@ import { StrictOtpCoordinator, type OtpIssueInput, type OtpVerifyInput } from '.
 import * as digests from '../../src/worker/utils/otp-digest';
 import { createOtpRequestKey } from '../../src/worker/config/otp-policy';
 import { finishOtpVerification, readOtpDatabaseTime } from '../../packages/db/src/auth-otp';
-import { SqliteD1, createBarrier } from '../helpers/sqlite-d1';
+import { MIGRATION_LEDGER, SqliteD1, createBarrier } from '../helpers/sqlite-d1';
 
 const EPOCH = 1791684000;
 const SECRET = 'strict-test-secret-opaque';
@@ -271,7 +271,7 @@ describe('legacy accounting and durable identity',()=>{
   });
   it('reads database time from the expanded migration ledger',async()=>{
     expect(await readOtpDatabaseTime(db)).toBe(EPOCH);
-    expect(db.migrations).toContain('0040_strict_otp_foundation.sql'); expect(db.migrations.at(-1)).toBe('0041_checkout_admission.sql');idle();
+    expect(db.migrations).toContain('0040_strict_otp_foundation.sql'); expect(db.migrations).toContain('0041_checkout_admission.sql'); expect(db.migrations.at(-1)).toBe(MIGRATION_LEDGER.tip);idle();
   });
 });
 

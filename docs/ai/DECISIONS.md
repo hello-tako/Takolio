@@ -2799,3 +2799,19 @@ integrity all match. Source/catalog/canary drift keeps existing shadow/promotion
 policy. No bypass input or protection change. Exact-main/CI/schema/Environment /
 strict OTP recovery proofs remain required. See
 ../backend-upgrade/final-local-completion/ADR-CATALOG-CONTINUITY-003.md.
+
+## ADR-ADMIN-001 - Separate admin session and RBAC authority for Admin Console V1
+
+Accepted locally, 2026-10-12 (not deployed). Platform administration is a new
+authority, independent of household roles and customer sessions: active
+`admin_role_assignments` rows (migration 0042) are re-read on every request, and
+the versioned code matrix `src/shared/admin.ts#ADMIN_PERMISSION_MATRIX` is the
+only permission authority (deny by default; no DB copy that could drift). Admin
+sessions live in `admin_sessions` with their own `__Host-takosan_admin_*`
+cookies (SameSite=Strict, 8h absolute / 30 min idle) and a session-bound CSRF
+token. Production serves nothing unless `ADMIN_CONSOLE_ENABLED=true` and
+requires Cloudflare Access verification on every request; password login is
+development/staging only. SUPER_ADMIN grants need four-eyes approval; there is
+no HTTP bootstrap, only a local-only one-time CLI. Billing/AI/recipe screens are
+read-only over existing authority; recipe editorial notes use a separate ledger
+and never mutate `recipes`. See docs/admin/.

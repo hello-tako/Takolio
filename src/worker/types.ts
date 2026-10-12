@@ -118,6 +118,15 @@ export interface Env {
   PAYOS_CHECKSUM_KEY?: string;
   PAYOS_CLIENT_ID?: string;
   PAYOS_API_KEY?: string;
+
+  // Admin Console V1 (docs/admin/API_REFERENCE.md). Production serves nothing
+  // unless ADMIN_CONSOLE_ENABLED=true and Cloudflare Access is configured.
+  ADMIN_CONSOLE_ENABLED?: string;
+  ADMIN_AUTH_MODE?: string;
+  ADMIN_PASSWORD_LOGIN_ENABLED?: string;
+  ADMIN_ACCESS_TEAM_DOMAIN?: string;
+  ADMIN_ACCESS_AUD?: string;
+  ADMIN_HOSTNAME?: string;
 }
 
 export interface AuthContext {

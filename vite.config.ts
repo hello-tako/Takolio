@@ -47,9 +47,31 @@ function recordCompositionFlag(): Plugin {
   };
 }
 
+// Serves the admin SPA shell for deep links (/admin/users/123) in dev and preview.
+function adminSpaFallback(): Plugin {
+  const rewrite = (req: { method?: string; url?: string }, next: () => void) => {
+    const url = req.url ?? '';
+    const pathname = url.split('?')[0];
+    const isAdminRoute = pathname === '/admin' || (pathname.startsWith('/admin/') && !path.extname(pathname));
+    if (req.method === 'GET' && isAdminRoute) {
+      req.url = `/admin/index.html${url.slice(pathname.length)}`;
+    }
+    next();
+  };
+  return {
+    name: 'admin-spa-fallback',
+    configureServer(server) {
+      server.middlewares.use((req, _res, next) => rewrite(req, next));
+    },
+    configurePreviewServer(server) {
+      server.middlewares.use((req, _res, next) => rewrite(req, next));
+    },
+  };
+}
+
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), injectServiceWorkerBuildId(), recordCompositionFlag()],
+  plugins: [react(), injectServiceWorkerBuildId(), recordCompositionFlag(), adminSpaFallback()],
   define: {
     'import.meta.env.VITE_APP_VERSION': JSON.stringify(appVersion),
     'import.meta.env.VITE_GIT_COMMIT': JSON.stringify(buildCommit),
@@ -79,6 +101,10 @@ export default defineConfig({
     outDir: 'dist/client',
     sourcemap: true,
     rollupOptions: {
+      input: {
+        index: path.resolve(__dirname, 'index.html'),
+        admin: path.resolve(__dirname, 'admin/index.html'),
+      },
       output: {
         manualChunks: {
           'vendor-react': ['react', 'react-dom', 'react-router-dom'],

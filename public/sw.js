@@ -65,6 +65,10 @@ self.addEventListener('fetch', (event) => {
   // or Turnstile can leave Safari profiles stuck after a blocked network load.
   if (url.origin !== self.location.origin) return;
 
+  // The Admin Console is a separate app; its documents must never be cached
+  // as this app's /index.html shell.
+  if (url.pathname === '/admin' || url.pathname.startsWith('/admin/')) return;
+
   // Static assets (images, fonts, css, js): Cache first, fallback to network
   if (
     url.pathname.startsWith('/frigo/') ||
