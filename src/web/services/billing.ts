@@ -7,13 +7,13 @@ import type {
 import { z } from 'zod';
 import { ApiError, fetchJson } from './http';
 
-type PlansResponse = { plans: PlusPrice[] };
+type PlansResponse = { plans: PlusPrice[]; checkoutAdmissionEnabled: boolean };
 type PaymentResponse<T> = { success: true; payment: T };
 
 import { BillingPaymentSchema, BillingCreatedResponseSchema, BillingPlansResponseSchema,
   OpenCheckoutsResponseSchema, CheckoutUncertainSchema } from '../../shared/billing';
 
-function parseBillingResponse<T>(schema: z.ZodType<T>, value: unknown, label: string): T {
+function parseBillingResponse<T>(schema: z.ZodType<T, z.ZodTypeDef, unknown>, value: unknown, label: string): T {
   const parsed = schema.safeParse(value);
   if (!parsed.success) throw new Error(`Invalid ${label} response`);
   return parsed.data;
@@ -34,11 +34,11 @@ export const billingApi = {
 
   createPaymentIntent: async (
     plan: PlusPlan,
-    checkoutKey: string = crypto.randomUUID(),
+    checkoutKey?: string,
   ): Promise<PaymentResponse<CreatedPaymentIntent>> => {
     const response = await fetchJson<unknown>('/billing/payment-intents', {
       method: 'POST',
-      headers: { 'Idempotency-Key': checkoutKey },
+      ...(checkoutKey ? { headers: { 'Idempotency-Key': checkoutKey } } : {}),
       body: JSON.stringify({ plan }),
     });
     if (CheckoutUncertainSchema.safeParse(response).success) {

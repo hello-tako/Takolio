@@ -30,7 +30,8 @@ billingRoutes.use('/billing/*', async (c, next) => {
   return next();
 });
 
-billingRoutes.get('/billing/plans', (c) => c.json({ plans: plusPrices() }));
+billingRoutes.get('/billing/plans', (c) => c.json({ plans: plusPrices(),
+  checkoutAdmissionEnabled: c.env.CHECKOUT_ADMISSION_ENABLED === 'true' }));
 
 billingRoutes.post('/billing/payment-intents', rateLimiter({
   maxRequests: 10, windowSeconds: 60, prefix: 'rl_payment_create', enforcement: 'fail-closed',
@@ -42,6 +43,7 @@ billingRoutes.post('/billing/payment-intents', rateLimiter({
   const { plan } = parsed.data;
   const key = c.req.header('Idempotency-Key');
   if (key !== undefined) {
+    if (c.env.CHECKOUT_ADMISSION_ENABLED !== 'true') return c.json({ code: 'CHECKOUT_ADMISSION_DISABLED' }, 503);
     if (!checkoutKeySchema.safeParse(key).success) return c.json({ error: 'Invalid checkout key', code: 'INVALID_IDEMPOTENCY_KEY' }, 400);
     const result = await createCheckout(c.env.DB, c.get('auth').userId, key, plan,
       (intent) => createPayosInstructions(c.env, intent));
@@ -78,6 +80,7 @@ billingRoutes.post('/billing/payment-intents', rateLimiter({
 });
 
 billingRoutes.get('/billing/checkouts', async (c) => {
+  if (c.env.CHECKOUT_ADMISSION_ENABLED !== 'true') return c.json({ code: 'CHECKOUT_ADMISSION_DISABLED' }, 404);
   const rows = await c.env.DB.prepare(`SELECT p.id, p.plan, p.status, p.expires_at, a.state, a.deadline_at
     FROM checkout_admissions a JOIN payment_intents p ON p.id = a.intent_id
     WHERE a.user_id = ? AND (a.state <> 'ready' OR (p.status = 'pending' AND p.expires_at > ?))
@@ -91,6 +94,7 @@ billingRoutes.get('/billing/checkouts', async (c) => {
 });
 
 billingRoutes.get('/billing/checkouts/:id', async (c) => {
+  if (c.env.CHECKOUT_ADMISSION_ENABLED !== 'true') return c.json({ code: 'CHECKOUT_ADMISSION_DISABLED' }, 404);
   const result = await readCheckout(c.env.DB, c.get('auth').userId, c.req.param('id'));
   if (!result) return c.json({ error: 'Không tìm thấy thanh toán', code: 'PAYMENT_NOT_FOUND' }, 404);
   if (result.kind === 'replay' || result.kind === 'created') return c.json({ success: true, payment: result.payment });

@@ -121,7 +121,7 @@ describe('server-authoritative payment checkout', () => {
     mocks.authState.isPlus = false;
     mocks.authState.setPlusFromServer.mockReset();
     mocks.authState.syncPlusFromServer.mockReset();
-    mocks.getPlans.mockReset();
+    mocks.getPlans.mockReset().mockImplementation(async () => ({ plans: prices, checkoutAdmissionEnabled: true }));
     mocks.resumeCheckout.mockReset();
     mocks.getOpenCheckouts.mockReset().mockResolvedValue({ checkouts: [] });
     mocks.createPaymentIntent.mockReset();
@@ -148,8 +148,20 @@ describe('server-authoritative payment checkout', () => {
     });
   }
 
+  it('uses legacy creation without querying or activating unaccepted admission', async () => {
+    mocks.getPlans.mockResolvedValue({ plans: prices, checkoutAdmissionEnabled: false });
+    mocks.createPaymentIntent.mockResolvedValue({ success: true, payment: createdIntent() });
+    await mount(<MemoryRouter><PlusPaywallPage /></MemoryRouter>);
+    expect(mocks.getOpenCheckouts).not.toHaveBeenCalled();
+    const button = [...host.querySelectorAll('button')].find((item) => item.textContent?.includes('Nâng cấp ngay'));
+    expect(button?.disabled).toBe(false);
+    await act(async () => { button?.click(); });
+    expect(mocks.createPaymentIntent).toHaveBeenCalledExactlyOnceWith('annual', undefined);
+    expect(host.querySelector('img[alt="Mã VietQR"]')).not.toBeNull();
+  });
+
   it('resumes an owned ready checkout after reload without creating another order', async () => {
-    mocks.getPlans.mockResolvedValue({ plans: prices });
+    mocks.getPlans.mockResolvedValue({ plans: prices, checkoutAdmissionEnabled: true });
     mocks.getOpenCheckouts.mockResolvedValue({ checkouts: [{ intentId: 'pay_fixture', state: 'ready' }] });
     mocks.resumeCheckout.mockResolvedValue({ success: true, payment: createdIntent() });
     await mount(<MemoryRouter><PlusPaywallPage /></MemoryRouter>);
@@ -162,7 +174,7 @@ describe('server-authoritative payment checkout', () => {
   });
 
   it('blocks a new checkout after reload when an unresolved order exists', async () => {
-    mocks.getPlans.mockResolvedValue({ plans: prices });
+    mocks.getPlans.mockResolvedValue({ plans: prices, checkoutAdmissionEnabled: true });
     mocks.getOpenCheckouts.mockResolvedValue({ checkouts: [{ intentId: 'old-order', state: 'remote_uncertain' }] });
     await mount(<MemoryRouter><PlusPaywallPage /></MemoryRouter>);
     expect(host.textContent).toContain('Kiểm tra lệnh cũ');
@@ -172,7 +184,7 @@ describe('server-authoritative payment checkout', () => {
   });
 
   it('reuses the same checkout key after transport failure', async () => {
-    mocks.getPlans.mockResolvedValue({ plans: prices });
+    mocks.getPlans.mockResolvedValue({ plans: prices, checkoutAdmissionEnabled: true });
     mocks.createPaymentIntent.mockRejectedValueOnce(new Error('response lost'))
       .mockResolvedValueOnce({ success: true, payment: createdIntent() });
     await mount(<MemoryRouter><PlusPaywallPage /></MemoryRouter>);
@@ -186,7 +198,7 @@ describe('server-authoritative payment checkout', () => {
   });
 
   it('renders arbitrary server prices and uses the selected plan without a client amount', async () => {
-    mocks.getPlans.mockResolvedValue({ plans: prices });
+    mocks.getPlans.mockResolvedValue({ plans: prices, checkoutAdmissionEnabled: true });
     mocks.createPaymentIntent.mockResolvedValue({ success: true, payment: createdIntent() });
     await mount(<MemoryRouter><PlusPaywallPage /></MemoryRouter>);
     await vi.waitFor(() => expect(host.textContent).toContain('7.654.321 VND'));
@@ -211,7 +223,7 @@ describe('server-authoritative payment checkout', () => {
 
   it('locks plan and creation after dispatch while preserving ready instructions for resume', async () => {
     let resolveAnnual!: (value: { success: true; payment: CreatedPaymentIntent }) => void;
-    mocks.getPlans.mockResolvedValue({ plans: prices });
+    mocks.getPlans.mockResolvedValue({ plans: prices, checkoutAdmissionEnabled: true });
     mocks.createPaymentIntent.mockReturnValue(new Promise((resolve) => { resolveAnnual = resolve; }));
     mocks.resumeCheckout.mockResolvedValue({ success: true, payment: createdIntent() });
     await mount(<MemoryRouter><PlusPaywallPage /></MemoryRouter>);
@@ -232,7 +244,7 @@ describe('server-authoritative payment checkout', () => {
   });
 
   it('rejects a created intent whose server plan differs from the selected plan', async () => {
-    mocks.getPlans.mockResolvedValue({ plans: prices });
+    mocks.getPlans.mockResolvedValue({ plans: prices, checkoutAdmissionEnabled: true });
     mocks.createPaymentIntent.mockResolvedValue({
       success: true,
       payment: createdIntent({ plan: 'monthly', amountVnd: 654321 }),

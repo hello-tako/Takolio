@@ -35,3 +35,11 @@ The existing production schema fingerprint test is re-bound only after reviewing
 the expand-only 0041 table/column/index additions to the single read-only schema
 query. Shell/render/query modules and production workflow executable surface remain
 unchanged. A 0040-only database is explicitly rejected by the new local gate.
+
+## Production release preparation 2026-10-12
+
+The candidate is preserved at backend-security.candidate.yml in this packet,
+not installed in .github/workflows. Independent policy promotion remains pending.
+This prevents deploy authorization from implicitly activating an unreviewed
+workflow/context bootstrap. The trusted-base fail-closed behavior/pins and scanner
+selftests are unchanged; no hosted scan PASS or independent review is asserted.

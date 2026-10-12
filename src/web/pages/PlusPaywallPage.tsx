@@ -28,6 +28,7 @@ export const PlusPaywallPage: React.FC = () => {
   const isPlus = useAuthStore((s) => s.isPlus);
 
   const [plans, setPlans] = useState<PlusPrice[]>([]);
+  const [checkoutAdmissionEnabled, setCheckoutAdmissionEnabled] = useState(false);
   const [checkoutRecoveryPending, setCheckoutRecoveryPending] = useState(true);
   const [hasOpenCheckout, setHasOpenCheckout] = useState(false);
   const [recoverableCheckoutId, setRecoverableCheckoutId] = useState<string | null>(null);
@@ -62,6 +63,7 @@ export const PlusPaywallPage: React.FC = () => {
     setIsCreating(false);
     creatingRef.current = false;
     setPlans([]);
+    setCheckoutAdmissionEnabled(false);
     setCheckoutRecoveryPending(true);
     setHasOpenCheckout(false);
     setRecoverableCheckoutId(null);
@@ -84,8 +86,13 @@ export const PlusPaywallPage: React.FC = () => {
     let active = true;
     const unsubscribe = onPrivateSessionReset(() => { active = false; });
     setErrorMsg(null);
-    void Promise.all([billingApi.getPlans(), billingApi.getOpenCheckouts()]).then(([result, recovery]) => {
+    void billingApi.getPlans().then(async (result) => {
+      const recovery = result.checkoutAdmissionEnabled
+        ? await billingApi.getOpenCheckouts() : { checkouts: [] };
+      return { result, recovery };
+    }).then(({ result, recovery }) => {
       if (!active || !isCurrent()) return;
+      setCheckoutAdmissionEnabled(result.checkoutAdmissionEnabled);
       setHasOpenCheckout(recovery.checkouts.length > 0);
       setRecoverableCheckoutId(recovery.checkouts.find((checkout) => checkout.state === 'ready')?.intentId ?? null);
       setCheckoutRecoveryPending(false);
@@ -121,14 +128,18 @@ export const PlusPaywallPage: React.FC = () => {
     setIsCreating(true);
     setErrorMsg(null);
     try {
-      checkoutKeyRef.current ??= crypto.randomUUID();
-      setAttemptedPlan(requestedPlan);
-      const result = await billingApi.createPaymentIntent(selectedPrice.plan, checkoutKeyRef.current);
+      if (checkoutAdmissionEnabled) {
+        checkoutKeyRef.current ??= crypto.randomUUID();
+        setAttemptedPlan(requestedPlan);
+      }
+      const result = await billingApi.createPaymentIntent(selectedPrice.plan, checkoutKeyRef.current ?? undefined);
       if (requestGeneration !== requestGenerationRef.current || !active || !mountedRef.current || !isCurrent() || useAuthStore.getState().userId !== userId || useAuthStore.getState().householdId !== requestedHouseholdId || selectedPlanRef.current !== requestedPlan) return;
       if (result.payment.plan !== requestedPlan) throw new Error('PAYMENT_PLAN_MISMATCH');
       paymentOwnerRef.current = `${userId}:${requestedHouseholdId}`;
-      setHasOpenCheckout(true);
-      setRecoverableCheckoutId(result.payment.id);
+      if (checkoutAdmissionEnabled) {
+        setHasOpenCheckout(true);
+        setRecoverableCheckoutId(result.payment.id);
+      }
       setPaymentIntent(result.payment);
       setIsQRModalOpen(true);
     } catch (error) {

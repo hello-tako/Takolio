@@ -20,10 +20,10 @@ try {
     paths: {
       '/billing/plans': { get: { ...common, responses: { 200: response('BillingPlansResponseSchema', 'Authoritative prices') } } },
       '/billing/checkouts': { get: { ...common, responses: { 200: response('OpenCheckoutsResponseSchema', 'Owner-only reload recovery handles') } } },
-      '/billing/checkouts/{id}': { get: { ...common, parameters: [{ name: 'id', in: 'path', required: true, schema: { type: 'string', minLength: 1 } }], responses: { 200: response('BillingCreatedResponseSchema', 'Resume owned instructions without dispatch'), 202: response('CheckoutUncertainSchema', 'Reconciliation required'), 404: { description: 'Foreign or missing' }, 409: { description: 'Expired or active attempt' } } } },
+      '/billing/checkouts/{id}': { get: { ...common, parameters: [{ name: 'id', in: 'path', required: true, schema: { type: 'string', minLength: 1 } }], responses: { 200: response('BillingCreatedResponseSchema', 'Resume owned instructions without dispatch'), 202: response('CheckoutUncertainSchema', 'Reconciliation required'), 404: { description: 'Disabled, foreign or missing' }, 409: { description: 'Expired or active attempt' } } } },
       '/billing/payment-intents': { post: { ...common,
         parameters: [{ name: 'Idempotency-Key', in: 'header', required: false, schema: schemas.CheckoutKeySchema,
-          description: 'Required for retry-safe protocol; absent retains legacy creation. Same-key changed plan conflicts. Keep key through transport failure.' }],
+          description: 'Available only when checkoutAdmissionEnabled is true; otherwise keyed requests fail closed. Absent retains legacy creation. Same-key changed plan conflicts. Keep key through transport failure.' }],
         requestBody: { required: true, content: { 'application/json': { schema: schemas.BillingPlanRequestSchema } } },
         responses: { 200: response('BillingCreatedResponseSchema', 'Original offer replay'),
           201: response('BillingCreatedResponseSchema', 'One newly admitted offer'),

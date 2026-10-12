@@ -1,13 +1,14 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { describe, expect, it } from 'vitest';
 const require = createRequire(import.meta.url);
 const { load: parse } = createRequire(require.resolve('eslint/package.json'))('js-yaml');
-const path = '.github/workflows/backend-security.yml';
+const path = 'docs/backend-upgrade/nine-region-offline/backend-security.candidate.yml';
 const source = readFileSync(path, 'utf8');
 const workflow = parse(source);
 describe('isolated scanner CI without deployment credentials', () => {
   it('has immutable actions, least permissions and only unprivileged events', () => {
+    expect(existsSync('.github/workflows/backend-security.yml')).toBe(false);
     expect(workflow.permissions).toEqual({ contents: 'read' });
     expect(Object.keys(workflow.on).sort()).toEqual(['pull_request', 'workflow_dispatch']);
     const job = workflow.jobs.security;

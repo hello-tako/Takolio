@@ -96,7 +96,7 @@
             }
           },
           "404": {
-            "description": "Foreign or missing"
+            "description": "Disabled, foreign or missing"
           },
           "409": {
             "description": "Expired or active attempt"
@@ -121,7 +121,7 @@
               "type": "string",
               "pattern": "^[A-Za-z0-9_-]{16,128}$"
             },
-            "description": "Required for retry-safe protocol; absent retains legacy creation. Same-key changed plan conflicts. Keep key through transport failure."
+            "description": "Available only when checkoutAdmissionEnabled is true; otherwise keyed requests fail closed. Absent retains legacy creation. Same-key changed plan conflicts. Keep key through transport failure."
           }
         ],
         "requestBody": {
@@ -222,6 +222,10 @@
       "BillingPlansResponseSchema": {
         "type": "object",
         "properties": {
+          "checkoutAdmissionEnabled": {
+            "type": "boolean",
+            "default": false
+          },
           "plans": {
             "type": "array",
             "items": {
@@ -459,7 +463,7 @@
   "x-source-hashes": [
     {
       "path": "scripts/billing-contract.mjs",
-      "sha256": "0257e647c165edc7e03bd40feead0284b57f2ed757bb9c96ed84b9d6cf4b2b3d"
+      "sha256": "9a41358ee2466c378960d10c986774d860b06be99e0182f4830299ea41e94241"
     },
     {
       "path": "scripts/planner-openapi.ts",
@@ -467,11 +471,11 @@
     },
     {
       "path": "src/shared/billing.ts",
-      "sha256": "85349c3ac792d7f3712a98bfdafb872f63efd9d3dbdd278ee47e1988fd26ea4a"
+      "sha256": "41c5879119900941d9ba38301785fe4f13875f6b070927971bc3fdff628f6839"
     },
     {
       "path": "src/worker/routes/billing.ts",
-      "sha256": "cbc3af5c0e077487482436d41e47e05eb8ad4bd450db772ad9babbd1e444f403"
+      "sha256": "a81d7c7257c05b7b063e11f8fda6be3a3434a9b35f1573524102fc01273bb232"
     },
     {
       "path": "src/worker/payment/checkout.ts",

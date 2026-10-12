@@ -101,6 +101,22 @@ describe('billing response runtime validation', () => {
     }));
   });
 
+  it('defaults an older server capability to false and rejects non-boolean opt-in', async () => {
+    const plans = [{ plan: 'annual', amountVnd: 499000, currency: 'VND' }];
+    responseBody = { plans };
+    await expect(billingApi.getPlans()).resolves.toEqual({ plans, checkoutAdmissionEnabled: false });
+    responseBody = { plans, checkoutAdmissionEnabled: 'true' };
+    await expect(billingApi.getPlans()).rejects.toThrow('Invalid billing plans response');
+  });
+
+  it('sends no admission header on legacy calls and preserves explicit candidate keys', async () => {
+    responseBody = { success: true, payment: { ...intent, instructions } };
+    await billingApi.createPaymentIntent('annual');
+    expect(fetchMock.mock.calls.at(-1)?.[1]?.headers).not.toHaveProperty('Idempotency-Key');
+    await billingApi.createPaymentIntent('annual', 'explicit-candidate-key');
+    expect(fetchMock.mock.calls.at(-1)?.[1]?.headers).toHaveProperty('Idempotency-Key', 'explicit-candidate-key');
+  });
+
   it('sends owner headers when loading the server price catalog', async () => {
     responseBody = { plans: [{ plan: 'annual', amountVnd: 499000, currency: 'VND' }] };
 
@@ -112,6 +128,22 @@ describe('billing response runtime validation', () => {
         'X-Frigo-Expected-Household-Id': 'billing-household',
       }),
     }));
+  });
+
+  it('defaults an older server capability to false and rejects non-boolean opt-in', async () => {
+    const plans = [{ plan: 'annual', amountVnd: 499000, currency: 'VND' }];
+    responseBody = { plans };
+    await expect(billingApi.getPlans()).resolves.toEqual({ plans, checkoutAdmissionEnabled: false });
+    responseBody = { plans, checkoutAdmissionEnabled: 'true' };
+    await expect(billingApi.getPlans()).rejects.toThrow('Invalid billing plans response');
+  });
+
+  it('sends no admission header on legacy calls and preserves explicit candidate keys', async () => {
+    responseBody = { success: true, payment: { ...intent, instructions } };
+    await billingApi.createPaymentIntent('annual');
+    expect(fetchMock.mock.calls.at(-1)?.[1]?.headers).not.toHaveProperty('Idempotency-Key');
+    await billingApi.createPaymentIntent('annual', 'explicit-candidate-key');
+    expect(fetchMock.mock.calls.at(-1)?.[1]?.headers).toHaveProperty('Idempotency-Key', 'explicit-candidate-key');
   });
 
   it('sends owner headers when creating a payment intent', async () => {

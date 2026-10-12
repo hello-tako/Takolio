@@ -31,3 +31,12 @@ Offline required checks: concurrent same-key admission, owner/plan separation,
 original offer replay, response loss, process crash, expired tombstone, late result,
 invalid instructions, transactional failure and existing webhook/grant suite.
 Mock provider acceptance is separate from PayOS operational certification.
+
+## Production release preparation 2026-10-12
+
+Migration 0041 can be applied as expand-only readiness while admission remains
+OFF. Exact CHECKOUT_ADMISSION_ENABLED=true is required for the authenticated
+capability, keyed creation and recovery reads. This release leaves it absent;
+old-server absent capability defaults to false and the UI retains no-key creation.
+Disabled keyed requests fail closed instead of creating a legacy replacement.
+PayOS/retention/refund/operator-resolution acceptance stays pending before opt-in.

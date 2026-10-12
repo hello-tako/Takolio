@@ -14,7 +14,7 @@ export const BillingInstructionsSchema = z.object({ bankBin: z.string().min(1), 
     try { return ['https:', 'http:'].includes(new URL(value).protocol); } catch { return false; }
   }) });
 export const BillingCreatedPaymentSchema = BillingPaymentSchema.extend({ instructions: BillingInstructionsSchema });
-export const BillingPlansResponseSchema = z.object({ plans: z.array(BillingPriceSchema).min(1)
+export const BillingPlansResponseSchema = z.object({ checkoutAdmissionEnabled: z.boolean().default(false), plans: z.array(BillingPriceSchema).min(1)
   .refine((plans) => new Set(plans.map((plan) => plan.plan)).size === plans.length) });
 export const BillingCreatedResponseSchema = z.object({ success: z.literal(true), payment: BillingCreatedPaymentSchema });
 export const OpenCheckoutSchema = z.object({ intentId: z.string().min(1), plan: BillingPlanSchema,

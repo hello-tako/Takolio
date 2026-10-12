@@ -120,7 +120,7 @@ jobs:
             import { readFileSync, writeFileSync } from "node:fs";
             const manifest = JSON.parse(readFileSync("migration-manifest.json", "utf8"));
             if (migrationManifest(process.cwd(), manifest.sha).sha256 !== manifest.schema.sha256) throw new Error("Migration manifest changed");
-            if (["0039_meal_composition_v2.sql", "0040_strict_otp_foundation.sql"].includes(manifest.migration)) {
+            if (["0039_meal_composition_v2.sql", "0040_strict_otp_foundation.sql", "0041_checkout_admission.sql"].includes(manifest.migration)) {
               if (manifest.repository !== process.env.GITHUB_REPOSITORY) throw new Error("Migration repository changed");
               manifest.ci = await hostedCi(manifest.sha, manifest.repository);
               manifest.liveMain = await requireCurrentHostedMain({ sha: manifest.sha, repository: manifest.repository });
@@ -202,7 +202,7 @@ jobs:
           node scripts/d1-migration-check.mjs plan migration-manifest.json migration-plan.txt
 
       - name: Recheck current main and CI immediately before migration
-        if: contains(fromJSON('["0039_meal_composition_v2.sql","0040_strict_otp_foundation.sql"]'), inputs.migration) && steps.pre_ledger.outputs.mode == 'apply'
+        if: contains(fromJSON('["0039_meal_composition_v2.sql","0040_strict_otp_foundation.sql","0041_checkout_admission.sql"]'), inputs.migration) && steps.pre_ledger.outputs.mode == 'apply'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -308,6 +308,22 @@ jobs:
             import { verifyStrictOtpSchema } from "./scripts/staging-otp-migration-check.mjs";
             const manifest = JSON.parse(readFileSync("migration-manifest.json", "utf8"));
             manifest.strictOtpSchema = verifyStrictOtpSchema(JSON.parse(readFileSync("strict-otp-schema.json", "utf8")));
+            writeFileSync("migration-manifest.json", JSON.stringify(manifest, null, 2) + "\n");
+          '
+
+      - name: Certify exact checkout admission constraints after 0041
+        if: inputs.migration == '0041_checkout_admission.sql'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          query="$(node scripts/staging-checkout-migration-check.mjs query schema)"
+          pnpm wrangler d1 execute frigo-db --remote --yes --json --command "$query" > checkout-schema.json
+          node --input-type=module -e '
+            import { readFileSync, writeFileSync } from "node:fs";
+            import { verifyCheckoutSchema } from "./scripts/staging-checkout-migration-check.mjs";
+            const manifest = JSON.parse(readFileSync("migration-manifest.json", "utf8"));
+            manifest.checkoutSchema = verifyCheckoutSchema(JSON.parse(readFileSync("checkout-schema.json", "utf8")));
             writeFileSync("migration-manifest.json", JSON.stringify(manifest, null, 2) + "\n");
           '
 

@@ -44,6 +44,8 @@ export interface Env {
   RELEASE_VERIFY_TOKEN?: string;
   APP_URL?: string;
   AI_MOCK_MODE?: string;
+  // Dormant until PayOS and financial retention acceptance; exact opt-in only.
+  CHECKOUT_ADMISSION_ENABLED?: string;
   MEAL_PLANNER_ENABLED?: string;
   MEAL_PLANNER_AI_ENABLED?: string;
   // T20: Meal Composition V2 API gate; requires MEAL_PLANNER_ENABLED and migration 0039.

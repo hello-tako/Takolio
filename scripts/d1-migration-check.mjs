@@ -16,7 +16,7 @@ export const RECIPE_MEDIA_OPERATIONAL_AGGREGATES = [
 ];
 const POST_MEDIA_TIPS = new Set([
   '0038_auth_onboarding_completion.sql', '0039_meal_composition_v2.sql',
-  '0040_strict_otp_foundation.sql',
+  '0040_strict_otp_foundation.sql', '0041_checkout_admission.sql',
 ]);
 const SHA = /^[a-f0-9]{40}$/;
 const SHA256 = /^[a-f0-9]{64}$/;
@@ -443,7 +443,7 @@ export function verifyCatalogAtTip(release, tip, statements, registry) {
     if (row[key] !== 0) problems.push(`${key}=${row[key]}`);
   }
   // Historical catalog-import tips certify the untouched pending-only seed. Operational tips
-  // 0038/0039/0040 preserve media rollout and separately validate active heroes and ready metadata.
+  // 0038 through 0041 preserve media rollout and separately validate active heroes and ready metadata.
   if (!postMedia && row.media_ready !== 0) problems.push(`media_ready=${row.media_ready}`);
 
   const expectedIds = release.orderedRecipeIds?.slice(0, expected.recipes);
