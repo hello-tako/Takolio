@@ -1,3 +1,87 @@
+# payOS billing account, QR recovery and temporary offer - 2026-10-13 JST
+
+**Status:** IMPLEMENTED_LOCAL_VERIFIED; hosted checks and new protected
+staging/production release remain pending. Branch
+codex/payos-billing-account-20261013 starts at production b7358ea4 (PR73).
+Explicit owner authorization covers this payment work, protected production
+release and temporary monthly2000VND; canonical monthly49000/annual499000 remain
+source defaults. No new migration, auth policy or release protection change.
+
+**Implemented:** GET billing/account returns a no-store owner snapshot of current
+entitlement/expiry, recent20 payment records and an all-history outstanding fence.
+The Plus UI adds package management, renewal, truthful history and owned saved-QR
+reopening after reload. Session-generation/owner fences discard late responses
+and retained callbacks. Loading/error blocks new creation. Atomic D1 admission
+prevents concurrent different-key and unkeyed duplicate orders; same-key replay
+retains original persisted amount and instructions. Remote uncertainty remains
+blocked for reconciliation unless the payment is already verified paid with its
+persisted provider reference; that rare lost-create-response race no longer
+blocks renewal. Legacy QR instructions were never saved and are not
+fabricated; old pending orders wait for expiry if no transfer was made.
+
+**Guest follow-up:** planner-enabled Home and Planner show an explicit login CTA
+for guests, skip registered-only reads and fence retained authenticated callbacks;
+server guest403 and legacy Week behavior remain intact.
+
+**Checks:** backend focused4files/170tests PASS including actual workerd/D1;
+UI/service focused, owned ESLint, both TypeScript projects, whitespace and billing
+contract generation/check PASS. Final `GIT_COMMIT=local-billing-account-preview
+TMPDIR=/private/tmp pnpm check` PASS:338files/8055tests, lint/types/migration-smoke/
+build, followed by a separate paired planner/T20 build PASS. Running-app synthetic
+fixtures verified desktop1280/mobile390 without horizontal overflow; free, active
+Plus/expiry/renewal, pending reopen, legacy unavailableQR, expired, read-error and
+guest Planner states match expected UI. No fixture dispatches provider/mutations.
+First full attempt failed due scratch review tests accidentally discovered and
+legacy planner fixtures inheriting globalT20 build flags; scratch preserved outside
+repo and V1 fixtures now explicitly isolate flags, with trueT20 tests retained.
+Static Plus rendering also needed a fail-closed browser session capture guard.
+No new live UI or2000VND offer is claimed yet; deployed source remains b7358ea4.
+
+**Next:** normal PR/main CI,
+protected staging then production deployment. Verify exact assets/runtime/D1,
+then enable CHECKOUT_ADMISSION_ENABLED and PAYOS_TEST_MONTHLY_PRICE_VND=2000.
+Create/reopen a true2000VND app QR; owner performs transfer. Confirm real provider
+payment, persisted paid intent and Plus expiry before deleting the temporary
+price secret to restore49000. No fake payment or direct entitlement grant.
+
+---
+
+# payOS / Plus shell production checkpoint - 2026-10-12 JST
+
+**Status:** PRODUCTION_OPERATIONAL; paid-settlement acceptance and follow-up
+registered-planner guest UI correction remain pending. PR73 merged as
+b7358ea4146226a929aa1e20513c2f98f77b7092. Hosted main CI38260918278 PASS:
+337 files / 7966 tests, lint/types/41 migrations/build. Protected staging
+38262309375 and production38262862169 PASS on attempt1, with actual production
+reviewer vn-taphoanhatung. Immutable artifact ID, pre-upload-only retry, process
+cleanup and strict service-worker proof preserve existing release protections.
+
+**Live evidence:** Both exact runtime/asset SHA proofs PASS, Worker100%, matching
+origins/D1, paired planner/T20true, D1 authority500/no fallback. Three payOS keys
+retained. Production checkout secret activation succeeded after proof. Both
+callback matrices PASS signed200/invalid401/malformed400/oversized413/unauth401.
+Actual production app monthly intent113018856588681 yielded a decoded/CRC-verified
+49000VND QR matching visible instructions; providerGET PENDING/amountPaid0.
+No transfer, fake paid webhook or direct grant. Owner may perform paid acceptance.
+Production readiness HTTP200/config/db/queueOK retains informational
+CONFIG_RECIPE_CATALOG_D1_AUTHORITY warning; it is not a failed service.
+
+**UI:** Plus was excluded from the shared kitchen shell and deliberately selected
+legacy navigation. PR73 fixes authenticated/guest Plus, 5-item nav/top Scan,
+scoped white hero headings and route comparison case/trailing-slash consistency.
+All actual App routes audited; only intended auth/landing/onboarding/immersive
+exceptions remain. Production mobile Plus verified visually with real QR.
+
+**New follow-up:** Guest Home with plannerON calls registered-only current-plan
+API and shows a generic403 error. This pre-existing issue also affects production
+because planner/T20true is preserved. Separate branch
+codex/guest-home-planner-20261012 is correcting the Home/Planner guest boundary
+and login CTA without weakening server403. Final source, checks and release
+receipts must be recorded after that correction is deployed. Temporary private
+credential files remain for final verification; cleanup not yet complete.
+
+---
+
 # payOS Worker runtime correction - 2026-10-12 JST
 
 **Status:** FIX_IMPLEMENTED_FOCUSED_VERIFIED; final hosted CI and replacement

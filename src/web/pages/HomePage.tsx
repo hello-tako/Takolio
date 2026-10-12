@@ -146,7 +146,23 @@ export const HomePage = () => {
         />
         <div className="home-workspace">
           <div data-testid="t18c-home-primary" className="min-w-0 space-y-6">
-            {home.query.isPending ? (
+            {home.requiresAccount ? (
+              <section aria-labelledby="home-plan-heading" className="home-plan-card">
+                <div className="home-plan-copy">
+                  <p className="kitchen-eyebrow">Thực đơn của bạn</p>
+                  <h2 id="home-plan-heading" className="home-meal-title">
+                    Đăng nhập để lập thực đơn
+                  </h2>
+                  <p className="mt-3 text-base text-semantic-text-secondary">
+                    Thực đơn được lưu theo tài khoản của bạn. Bạn vẫn có thể dùng tủ lạnh và xem
+                    công thức trong phiên khách.
+                  </p>
+                  <Link className="kitchen-primary-link mt-5" to="/auth?mode=login&returnTo=%2Fplanner">
+                    Đăng nhập để tiếp tục <ArrowRight size={18} aria-hidden="true" />
+                  </Link>
+                </div>
+              </section>
+            ) : home.query.isPending ? (
               <div role="status">
                 <SkeletonCard className="h-64" />
                 <span className="sr-only">Đang tải thực đơn…</span>

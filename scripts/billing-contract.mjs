@@ -11,33 +11,47 @@ try {
   const { describeZodContract } = await vite.ssrLoadModule('/scripts/planner-openapi.ts');
   const shared = await vite.ssrLoadModule('/src/shared/billing.ts');
   const schemas = Object.fromEntries(['BillingPlanRequestSchema','CheckoutKeySchema','BillingPlansResponseSchema',
-    'BillingCreatedResponseSchema','CheckoutUncertainSchema','OpenCheckoutsResponseSchema']
+    'BillingCreatedResponseSchema','CheckoutUncertainSchema','OpenCheckoutsResponseSchema','BillingAccountResponseSchema']
     .map((name) => [name, describeZodContract(shared[name])]));
-  const response = (name, description) => ({ description, content: { 'application/json': { schema: { $ref: `#/components/schemas/${name}` } } } });
+  const response = (name, description) => ({ description,
+    headers: { 'Cache-Control': { schema: { const: 'no-store' } } },
+    content: { 'application/json': { schema: { $ref: `#/components/schemas/${name}` } } } });
   const common = { security: [{ CookieSession: [] }], 'x-owner-scope': 'authenticated non-guest; expected owner headers and CSRF on POST' };
-  const doc = { openapi: '3.1.0', info: { title: 'Takosan billing admission offline contract', version: '1-candidate' },
+  const doc = { openapi: '3.1.0', info: { title: 'Tako-san billing account and admission contract', version: '2-candidate' },
     servers: [{ url: '/api/v1' }], 'x-status': 'LOCAL_CANDIDATE_PENDING_EXTERNAL_EVIDENCE',
     paths: {
-      '/billing/plans': { get: { ...common, responses: { 200: response('BillingPlansResponseSchema', 'Authoritative prices') } } },
-      '/billing/checkouts': { get: { ...common, responses: { 200: response('OpenCheckoutsResponseSchema', 'Owner-only reload recovery handles') } } },
+      '/billing/plans': { get: { ...common, responses: {
+        200: response('BillingPlansResponseSchema', 'Authoritative server prices and exact admission capability'),
+        401: { description: 'UNAUTHORIZED' }, 503: { description: 'Database unavailable or PAYMENT_PRICE_CONFIGURATION_INVALID' },
+      } } },
+      '/billing/account': { get: { ...common,
+        description: 'Read-only owner snapshot of current entitlement and latest20 payments, ordered by creation time then id descending. hasMore indicates older history; hasPendingPayment also covers outstanding orders outside the page, legacy pending orders and unresolved admissions. A paid order with a persisted verified provider reference no longer blocks creation, even if its admission outcome remained uncertain. Resumable instructions are read separately by id; history omits bank and provider data. Subscription expiry and history timestamps are canonical UTC ISO values.',
+        responses: { 200: response('BillingAccountResponseSchema', 'Owner-only entitlement, bounded history and outstanding-payment fence'),
+          401: { description: 'UNAUTHORIZED' }, 403: { description: 'SESSION_OWNER_MISMATCH' },
+          409: { description: 'BILLING_ACCOUNT_INVALID; no partial history' },
+          503: { description: 'DATABASE_UNAVAILABLE or BILLING_ACCOUNT_UNAVAILABLE' } } } },
+      '/billing/checkouts': { get: { ...common, responses: { 200: response('OpenCheckoutsResponseSchema', 'Owner-only reload recovery handles; verified paid orders omitted') } } },
       '/billing/checkouts/{id}': { get: { ...common, parameters: [{ name: 'id', in: 'path', required: true, schema: { type: 'string', minLength: 1 } }], responses: { 200: response('BillingCreatedResponseSchema', 'Resume owned instructions without dispatch'), 202: response('CheckoutUncertainSchema', 'Reconciliation required'), 404: { description: 'Disabled, foreign or missing' }, 409: { description: 'Expired or active attempt' } } } },
       '/billing/payment-intents': { post: { ...common,
+        description: 'With admission enabled, creation atomically forbids a new offer while the owner has a pending order or unresolved admission, including legacy orders. Verified paid orders with a persisted provider reference are excluded from this fence. Same-key replay preserves the issued offer. An omitted key uses a server-generated durable key and retains stored instructions for account recovery. With admission disabled, omitted-key creation retains legacy behavior; supplied keys fail closed.',
         parameters: [{ name: 'Idempotency-Key', in: 'header', required: false, schema: schemas.CheckoutKeySchema,
-          description: 'Available only when checkoutAdmissionEnabled is true; otherwise keyed requests fail closed. Absent retains legacy creation. Same-key changed plan conflicts. Keep key through transport failure.' }],
+          description: 'Available only when checkoutAdmissionEnabled is true. Same-key changed plan conflicts. Keep the key through transport failure to replay the exact offer. Without a supplied key, recover an admitted order from billing account history rather than dispatching another.' }],
         requestBody: { required: true, content: { 'application/json': { schema: schemas.BillingPlanRequestSchema } } },
         responses: { 200: response('BillingCreatedResponseSchema', 'Original offer replay'),
           201: response('BillingCreatedResponseSchema', 'One newly admitted offer'),
-          202: response('CheckoutUncertainSchema', 'Remote outcome unknown; no replacement dispatch'),
-          409: { description: 'IDEMPOTENCY_CONFLICT, COMMAND_IN_PROGRESS or CHECKOUT_KEY_EXPIRED' },
+          202: response('CheckoutUncertainSchema', 'Remote outcome unknown; existing intent handle, no replacement dispatch'),
+          409: { description: 'IDEMPOTENCY_CONFLICT, COMMAND_IN_PROGRESS (including an existing owner pending order) or CHECKOUT_KEY_EXPIRED' },
           400: { description: 'INVALID_PLAN or INVALID_IDEMPOTENCY_KEY' }, 401: { description: 'UNAUTHORIZED' },
-          429: { description: 'Creation rate limit (fail closed)' }, 503: { description: 'Provider, rate-limit or database unavailable' } } } },
+          429: { description: 'Creation rate limit (fail closed)' },
+          503: { description: 'Provider, rate-limit or database unavailable, disabled admission or invalid trusted price configuration' } } } },
     }, components: { schemas, securitySchemes: { CookieSession: { type: 'apiKey', in: 'cookie', name: '__Host-frigo_session' } } },
     'x-source-hashes': await Promise.all(['scripts/billing-contract.mjs','scripts/planner-openapi.ts','src/shared/billing.ts',
-      'src/worker/routes/billing.ts','src/worker/payment/checkout.ts','migrations/0041_checkout_admission.sql']
+      'src/worker/routes/billing.ts','src/worker/payment/checkout.ts','src/worker/payment/authority.ts',
+      'src/worker/payment/prices.ts','src/worker/types.ts','src/worker/config/scan-quota-policy.ts','migrations/0041_checkout_admission.sql']
       .map(async (path) => ({ path, sha256: createHash('sha256').update(await readFile(path)).digest('hex') }))),
   };
   const bytes = `${JSON.stringify(doc, null, 2)}\n`;
   if (args[0] === '--check') { if (await readFile(path, 'utf8') !== bytes) throw new Error('BILLING_CONTRACT_DRIFT'); }
   else await writeFile(path, bytes);
-  process.stdout.write('billing-contract=PASS; 4 route operations with executable Zod authority\n');
+  process.stdout.write('billing-contract=PASS; 5 route operations with executable Zod authority\n');
 } finally { await vite.close(); }

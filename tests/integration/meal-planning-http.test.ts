@@ -137,6 +137,16 @@ describe('T06A real authenticated Worker/API boundary', () => {
     expect(network).not.toHaveBeenCalled();
   });
 
+  it('keeps registered-account authorization on guest reads and generation', async () => {
+    db.seed(`UPDATE users SET is_guest = 1 WHERE id = '${scope.userId}'`);
+    for (const body of [undefined, intent]) {
+      const denied = await request(body === undefined ? '/current' : '', body, { realWorker: true });
+      expect(denied.status).toBe(403);
+      expect(await denied.json()).toMatchObject({ code: 'REGISTERED_ACCOUNT_REQUIRED' });
+    }
+    expect(db.query('SELECT * FROM generated_meal_plans')).toEqual([]);
+  });
+
   it('rejects unauthenticated generation and reads', async () => {
     expect((await request('', intent, { cookie: null, realWorker: true })).status).toBe(401);
     expect((await request(`/${crypto.randomUUID()}`, undefined, { cookie: null, realWorker: true })).status).toBe(401);

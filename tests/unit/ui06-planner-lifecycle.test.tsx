@@ -4,6 +4,7 @@ import { createRoot, type Root } from 'react-dom/client';
 import { MemoryRouter, useNavigate } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { afterEach, beforeEach, expect, it, vi } from 'vitest';
+import { useAuthStore } from '../../src/web/stores/useAuthStore';
 import { PlannerPage } from '../../src/web/pages/PlannerPage';
 import { usePlanner } from '../../src/web/features/planner/usePlanner';
 
@@ -45,6 +46,7 @@ beforeEach(() => {
   sessionStorage.clear();
   localStorage.setItem('frigo_user_id', 'user-a');
   localStorage.setItem('frigo_household_id', 'house-a');
+  useAuthStore.setState({ userId: 'user-a', householdId: 'house-a', isGuest: false, logoutStatus: 'idle' });
   mocks.current.mockResolvedValue({ plan: null });
   mocks.generate.mockReset();
   mocks.accepted.mockReset();

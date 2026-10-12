@@ -1,6 +1,8 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { api } from '../services/api';
 import { mealPlanningApi } from '../services/meal-planning';
+import { ApiError } from '../services/http';
+import { useAuthStore } from '../stores/useAuthStore';
 import { isMealPlannerEnabled } from '../features/planner/feature';
 import {
   compositionUnavailable,
@@ -8,15 +10,22 @@ import {
   usePlanCompositions,
 } from '../features/planner/composition';
 import { queryKeys } from './queryKeys';
+import { capturePrivateSession } from './private-session';
 import { presentCanonicalHome, presentLegacyHome, type CompositionEvidence } from './home-plan';
 
 export function useHomePlan(now: Date) {
   const client = useQueryClient();
   const enabled = isMealPlannerEnabled();
+  const isGuest = useAuthStore((state) => state.isGuest);
+  const requiresAccount = enabled && isGuest;
+  const isCurrent = capturePrivateSession();
   const canonical = useQuery({
     queryKey: queryKeys.currentMealPlanningPlan(),
-    queryFn: async () => (await mealPlanningApi.current()).plan,
-    enabled,
+    queryFn: async () => {
+      if (!isCurrent() || useAuthStore.getState().isGuest) throw new ApiError('auth', 'A registered account is required for this planner session.');
+      return (await mealPlanningApi.current()).plan;
+    },
+    enabled: enabled && !requiresAccount,
     retry: false,
     staleTime: 0,
   });
@@ -26,8 +35,8 @@ export function useHomePlan(now: Date) {
     enabled: !enabled,
   });
   const compositions = usePlanCompositions(
-    canonical.data ?? undefined,
-    enabled && canonical.isSuccess,
+    requiresAccount ? undefined : canonical.data ?? undefined,
+    enabled && !requiresAccount && canonical.isSuccess,
   );
   const query = enabled ? canonical : legacy;
   let evidence: CompositionEvidence = { kind: 'legacy' };
@@ -40,7 +49,7 @@ export function useHomePlan(now: Date) {
           ? { kind: 'mismatch' }
           : { kind: 'ready', data: compositions.data! };
   }
-  const plan = enabled
+  const plan = requiresAccount ? null : enabled
     ? canonical.data
       ? presentCanonicalHome(canonical.data, now, evidence)
       : null
@@ -48,9 +57,11 @@ export function useHomePlan(now: Date) {
       ? presentLegacyHome(legacy.data, now)
       : null;
   const retry = async () => {
+    // A retained callback must not read a plan after the owner or account changes.
+    if (!isCurrent() || (enabled && useAuthStore.getState().isGuest)) return;
     if (enabled) {
       const fresh = await canonical.refetch();
-      if (fresh.isSuccess && fresh.data && isMealCompositionEnabled()) {
+      if (isCurrent() && !useAuthStore.getState().isGuest && fresh.isSuccess && fresh.data && isMealCompositionEnabled()) {
         // Target the returned revision; refetching this render's observer can request an old plan.
         await client.invalidateQueries({
           queryKey: queryKeys.mealPlanningCompositions(fresh.data.id, fresh.data.revision),
@@ -59,5 +70,5 @@ export function useHomePlan(now: Date) {
       }
     } else await legacy.refetch();
   };
-  return { query, plan, retry, setupHref: enabled ? '/planner/new' : '/week/setup' };
+  return { query, plan, retry, requiresAccount, setupHref: enabled ? '/planner/new' : '/week/setup' };
 }

@@ -32,11 +32,22 @@ describe('actual local workerd D1 checkout protocol', () => {
     expect(retry.result).toEqual({ ...first.result, kind: 'replay' });
     expect(retry.dispatchCount).toBe(first.dispatchCount);
     expect((await post('checkout', { key, plan: 'annual' })).result.kind).toBe('conflict');
+    const other = await post('checkout', { key: `${key}_new`, plan: 'annual' });
+    expect(other.result).toEqual({ kind: 'in_progress', intentId: first.result.payment.id });
+    expect(other.dispatchCount).toBe(first.dispatchCount);
+    await post('', { statements: [{ sql: "UPDATE payment_intents SET status = 'paid' WHERE id = ?", values: [first.result.payment.id] }] });
     const uncertain = await post('checkout', { key: `${key}_lost`, plan: 'monthly', fail: true });
     const uncertainRetry = await post('checkout', { key: `${key}_lost`, plan: 'monthly' });
     expect(uncertain.result.kind).toBe('reconciliation');
     expect(uncertainRetry.result).toEqual(uncertain.result);
     expect(uncertainRetry.dispatchCount).toBe(uncertain.dispatchCount);
+    await post('', { statements: [{ sql: "UPDATE payment_intents SET expires_at = '2000-01-01T00:00:00.000Z' WHERE id = ?", values: [uncertain.result.intentId] }] });
+    const replacement = await post('checkout', { key: `${key}_replacement`, plan: 'annual' });
+    expect(replacement.result).toEqual(uncertain.result);
+    expect(replacement.dispatchCount).toBe(uncertain.dispatchCount);
+    const rows = await post('', { statements: [{ sql: 'SELECT COUNT(*) AS count FROM payment_intents' },
+      { sql: 'SELECT COUNT(*) AS count FROM checkout_admissions' }] });
+    expect(rows.results.map((result) => result.results)).toEqual([[{ count: 2 }], [{ count: 2 }]]);
     const integrity = await post('', { statements: [{ sql: 'PRAGMA foreign_key_check' }, { sql: 'PRAGMA quick_check' }] });
     expect(integrity.results[0].results).toEqual([]);
     expect(integrity.results[1].results).toEqual([{ quick_check: 'ok' }]);
