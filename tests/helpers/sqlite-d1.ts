@@ -1,6 +1,9 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
-import { DatabaseSync, type SQLInputValue } from 'node:sqlite';
+import { createRequire } from 'node:module';
+import type { SQLInputValue } from 'node:sqlite';
+// Node 22 excludes experimental sqlite from builtinModules; bypass client bundling.
+const { DatabaseSync } = createRequire(import.meta.url)('node:sqlite') as typeof import('node:sqlite');
 import type { D1DatabaseBinding, D1PreparedStatement, D1Result } from '../../packages/db/src';
 
 export interface SqliteStatementEvent {
