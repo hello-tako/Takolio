@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "status": "ADJUDICATED",
+  "rawFindingCount": 17,
+  "contextMatchedCount": 17,
+  "unresolvedCount": 0,
+  "scannerSuppressionAdded": false,
+  "externalAcceptance": "PENDING_EXTERNAL_EVIDENCE",
+  "scanReceiptSha256": "febce04fcc6274ab4609241cb99c96480649cf49ce0fe923696ced9ead6f4e16",
+  "contextSha256": "50856c7bb9cef73e6f9ceb0d96ad4b88477c5dd1ac103bbee87b4e661ded79c8"
+}

@@ -1,3 +1,37 @@
+# Nine-region offline candidates (2026-10-12)
+
+Implementation0407011d; accepted local scope in
+../backend-upgrade/nine-region-offline/ADR-OFFLINE-001.md. Migration0041 expands
+payment storage with owner/key checkout admission and bounded reconciliation
+records; existing immutable offers/signed pending-only settlement remain authority.
+One thirty-second provider attempt per admission; late/unknown outcomes never
+resubmit, grant or refund. Ready instructions survive transport loss and owned GET
+resume. Client freezes key/plan after dispatch and reads outstanding handles on
+reload. Legacy no-key route behavior remains for coexistence, not retry safety.
+Production schema/retention/operator release acceptance is externally pending.
+
+Shared billing Zod schemas bind worker/client and four generated API operations;
+existing planner contracts remain. Auth rows/context and Cloudflare/queue boundaries
+have concrete types; unknown provider payloads stay untrusted/private. Turnstile
+widget ownership separates active SDK generation from latest consumer callbacks;
+loader has15s deadline and remount retry. Strict OTP backend remains unchanged.
+
+IngredientV2 consumer assessments and source-hashed500recipe audit are offline only,
+retain all6766lines/fourreleasegates and confer no runtime authority. SLO importer
+accepts only synthetic/unverified observations, explicit reviewed template allowlist,
+window/dedupe/sample/denominator/target rules; it cannot certify production. SQLite
+rollback/restore and actual localworkerd schema proof do not certify hosted recovery.
+
+Pinned scanner workflow is an unprivileged promotion candidate with trusted-base
+exact-context proof; initialpolicy/hosted/independent review remains pending. Existing
+production workflows/config/dependencies/appliedmigrations are preserved. Six pure
+ProductVNext policies live in an unexported candidate module with separate decisions;
+there is no role migration, notifier, catalogadmin writer, trial grant or collector.
+No production/provider activation follows. See the aggregateRESULT/validation and
+EXTERNAL_ACCEPTANCE checklist for concrete evidence and remaining gates.
+
+---
+
 # UI14 optional navigation motion delivery (ADR-057, 2026-10-11)
 
 MotionProvider now lives in a lightweight module with the exact user reduced-motion

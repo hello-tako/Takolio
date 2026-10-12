@@ -1,3 +1,59 @@
+# Nine-region offline completion - 2026-10-12 JST
+
+**Task/status:** OFFLINE_IMPLEMENTATION_VERIFIED_EXTERNAL_ACCEPTANCE_PENDING.
+Active packet ../backend-upgrade/nine-region-offline/PLAN.md. Implementation
+0407011d6a0225be920a84c5eeb9fd47f5651961; base9cfadbde; branch
+codex/nine-region-offline-completion. Canonical worktree
+/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo.
+
+**Authorization/delivered:** User authorizes all nine regions, then restricts to
+synthetic/fixture/mock offline work, budgetUSD0. Turnstile callback/loader fencing;
+0041 durable checkout admission/reconciliation/owned reload-resume and frozen
+client plan/key; typed auth/provider/queue boundaries/shared Zod billing contract;
+synthetic scan benchmark/cost plan; IngredientV2 consumer audit; current planner/
+stock closed-loop verification; SLO arithmetic/fault matrix/local restore; pinned
+scanner workflow candidate/trusted-base context; six dormant ProductVNext policies.
+Signed pending-only grants/prices/PayOS provider/applied0018/0040/config/dependencies/
+production workflows unchanged. No email/paidAI/remote mutation/push/merge/deploy.
+
+**Checks/failures:** Node24, canonicalTMPDIR/private/tmp, CItrue; pnpmcheckPASS
+329files/7691tests145.95s, lint/bothTS/41migrations/build. Actual localworkerd D1
+ledger/schema/ready-uncertain replay/FK/quick_checkPASS. Exact0407011dbuild with
+pairedplanner/T20true and actualSWtokenPASS. Threeengines x320/1440 browser mock
+billing6cases/12screenshots plus authmockSDK6cases/6screenshots PASS,
+0stableaxe/overflow/broken/pageerrors/externalrequests; WebKit HTTP
+fixturecookie bridge is not real auth evidence. Billing/planner contracts/pilotPASS;
+120synthetic cases x3profiles,121imagebytes verified; 500recipes/6766lines consumer
+audit retains500blocked and fourgates. SQLite1000-row interrupted rollback/restore
+and100queriesPASS, localp95.631ms only. SLO20synthetic events, targetsunset,
+productionSloCertifiedfalse. Full/prodaudit0. Actualscanner fixturesPASS;
+Semgrep/zizmor0, Syft504declared; Gitleaksraw17/exit1 retained, exactcontext17matched/
+0unresolved; documentation-inclusivescan4857files unchanged findings. Authmock
+StrictMode/transition harness failures retained and stable-state checks pass.
+No independent/hostedsecurity claim. Initialtests had key/fixture/
+0040tip/parser/hash assumptions; browser bootstrap and4.49contrast failure retained
+andfixed. Review plan-switch/close replacement races fixed. Final receipts retain
+all failed attempts; see RESULT.md and validation.json.
+
+**Database/remote:** 0041 was applied only to isolated local test databases;
+production remains historical verified0c0f9933/ledger40, not queried/re-certified here.
+Never rewrite/reapply0040. Remote gates explicitly skipped; originalcheckout
+unchanged with preexisting untrackedfiles preserved. Local preview stopped.
+
+**Limits/next:** All nine real acceptance rows PENDING_EXTERNAL_EVIDENCE. No
+controlled inbox, PayOS operational/retention/refund, real permitted240images/human
+labels/currentproviderpricing, humaningredient/source/license/nutrition, hosted
+load/alerts/seven-daySLO/recovery/nativefloor or ProductVNext activation certificate.
+V3/provider/budget/IngredientV2/VNext candidates remain dormant; runtimeauthorityfalse
+where specified. Initialsecurity-policy promotion fails closed without reviewed
+trusted-base context. Supply region-specific evidence/decisions and separate release
+authorization before any provider/production change; independent offline tasks are
+complete. External AI costUSD0; estimatedscenario3.77856/37.7856 is not a quote or
+upperbound. See EXTERNAL_ACCEPTANCE.md, BILLING_RECONCILIATION.md, OPERATIONS.md,
+SECURITY_PROMOTION.md and six productADRs. Historical entries below remain unchanged.
+
+---
+
 # Integrated backend and Brand V3 production release - 2026-10-12 JST
 
 **Task/status:** PRODUCTION_VERIFIED_WITH_EXTERNAL_ACCEPTANCE_OPEN.

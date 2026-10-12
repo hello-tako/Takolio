@@ -1,3 +1,29 @@
+# Nine-region local decisions (2026-10-12)
+
+ADR-OFFLINE-001 is accepted solely under the user's explicit nine-region request,
+which authorizes bounded checkout/billing work despite AGENTS protection. Latest
+instruction restricts execution to offline/mock/synthetic, AI budgetUSD0 and separate
+approval for real OTP/paidAI/production. No prior production authorization overrides
+that restriction. Expand-only0041/key-admission does not change ADR029 pending-only
+signed grant policy, prices or PayOS signatures/provider. The client freezes plan
+and key after dispatch; ready order/reload cannot silently create replacement.
+No automatic cleanup/refund/resolution policy is inferred. Finance/privacy must
+approve retention and inherited delete behavior before actual activation.
+
+Six PRODUCT001-006 decisions are dormant offline candidates, not accepted release
+policies: family roles, digest consent/timezone, evidence-bound package units,
+global/revision-bound enrichment review, explicit trial projection and private
+analytics. See ../backend-upgrade/nine-region-offline/ADR-PRODUCT-001.md.
+IngredientV2 consumer preview and scan source oracle cannot confer data/AI authority.
+Synthetic seven-day arithmetic cannot certify production SLO. Scanner context binds
+exact source/provenance and uses trusted-base policy for PRs, while raw17 findings
+remain findings; independent/hosted promotion still pending. Read-only schema SQL
+fingerprint was re-bound after reviewing additive0041 objects, preserving the
+unchanged production executable path. Implementation0407011d; all real acceptance
+uses PENDING_EXTERNAL_EVIDENCE. See PLAN.md, RESULT.md and validation.json.
+
+---
+
 # B08 dependency mitigation final checkpoint - 2026-10-12 JST
 
 **Task/status:** LOCAL_MITIGATION_VERIFIED_WITH_BLOCKING_RELEASE_GATES.

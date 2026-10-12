@@ -1,0 +1,716 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-10-12T07:45:15.627417+00:00",
+  "classification": "OFFLINE_IMPLEMENTATION_VERIFIED_EXTERNAL_ACCEPTANCE_PENDING",
+  "implementationSha": "0407011d6a0225be920a84c5eeb9fd47f5651961",
+  "baseSha": "9cfadbde412b97f252fe4be846ffe711f25eb520",
+  "branch": "codex/nine-region-offline-completion",
+  "noOwnDocumentationCommitClaim": true,
+  "environment": {
+    "node": "24.16.0",
+    "NODE_OPTIONS": "--no-experimental-webstorage",
+    "CI": "true",
+    "TMPDIR": "/private/tmp",
+    "WRANGLER_SEND_METRICS": "false"
+  },
+  "authorization": {
+    "approvedAiBudgetUsd": 0,
+    "actualAiCostUsd": 0,
+    "liveOtpSends": 0,
+    "externalAiCalls": 0,
+    "productionChanges": 0,
+    "remoteMigrationDeployMergePush": 0
+  },
+  "regions": [
+    {
+      "region": 1,
+      "offlineStatus": "IMPLEMENTED_OR_REHEARSED",
+      "realAcceptance": "PENDING_EXTERNAL_EVIDENCE"
+    },
+    {
+      "region": 2,
+      "offlineStatus": "IMPLEMENTED_OR_REHEARSED",
+      "realAcceptance": "PENDING_EXTERNAL_EVIDENCE"
+    },
+    {
+      "region": 3,
+      "offlineStatus": "IMPLEMENTED_OR_REHEARSED",
+      "realAcceptance": "PENDING_EXTERNAL_EVIDENCE"
+    },
+    {
+      "region": 4,
+      "offlineStatus": "IMPLEMENTED_OR_REHEARSED",
+      "realAcceptance": "PENDING_EXTERNAL_EVIDENCE"
+    },
+    {
+      "region": 5,
+      "offlineStatus": "IMPLEMENTED_OR_REHEARSED",
+      "realAcceptance": "PENDING_EXTERNAL_EVIDENCE"
+    },
+    {
+      "region": 6,
+      "offlineStatus": "IMPLEMENTED_OR_REHEARSED",
+      "realAcceptance": "PENDING_EXTERNAL_EVIDENCE"
+    },
+    {
+      "region": 7,
+      "offlineStatus": "IMPLEMENTED_OR_REHEARSED",
+      "realAcceptance": "PENDING_EXTERNAL_EVIDENCE"
+    },
+    {
+      "region": 8,
+      "offlineStatus": "IMPLEMENTED_OR_REHEARSED",
+      "realAcceptance": "PENDING_EXTERNAL_EVIDENCE"
+    },
+    {
+      "region": 9,
+      "offlineStatus": "IMPLEMENTED_OR_REHEARSED",
+      "realAcceptance": "PENDING_EXTERNAL_EVIDENCE"
+    }
+  ],
+  "commands": [
+    {
+      "id": "final-integrated-check",
+      "command": "pnpm check",
+      "exitCode": 0,
+      "evidence": "329 files / 7691 tests, lint, both TS, 41 migrations, build; remote flags absent",
+      "log": ".artifacts/nine-region-offline/check-final-verified.log",
+      "logSha256": "e6084afae295cbe9ecf213b86d4dd5e26d140ecb056690cf7fa3ebbec0bdd901"
+    },
+    {
+      "id": "schema-focused",
+      "command": "pnpm test tests/integration/checkout-local-d1.test.mjs tests/integration/d1-schema-gate.test.ts tests/unit/production-certify-workflow.test.mjs tests/unit/slo-report.test.ts",
+      "exitCode": 0,
+      "evidence": "4 files / 66 tests, actual local workerd schema/ledger",
+      "log": ".artifacts/nine-region-offline/schema-review-final.log",
+      "logSha256": "96a6a462f7013ca7b02888f93c702d4ddada4f70235e3566bbde8921373b1935"
+    },
+    {
+      "id": "review-focused",
+      "command": "pnpm test tests/integration/d1-schema-gate.test.ts tests/integration/checkout-admission.test.ts tests/unit/payment-checkout.test.tsx tests/unit/backend-security-workflow.test.mjs",
+      "exitCode": 0,
+      "evidence": "4 files / 49 tests",
+      "log": ".artifacts/nine-region-offline/review-followup.log",
+      "logSha256": "58fe12d57ec0fd0dc82ef81aaa9fc5e9fc01d012d25fdaf3f308d872590a324e"
+    },
+    {
+      "id": "build-exact-checkpoint",
+      "command": "GIT_COMMIT=0407011d6a0225be920a84c5eeb9fd47f5651961 VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build",
+      "exitCode": 0,
+      "evidence": "actual SW token / paired build flags",
+      "log": ".artifacts/nine-region-offline/build-exact-checkpoint.log",
+      "logSha256": "a073f7ca27fa0887a353d3abf6cc1a5f61d69889aeef44b374a4a860613b2dd3"
+    },
+    {
+      "id": "billing-contract-generate",
+      "command": "node scripts/billing-contract.mjs",
+      "exitCode": 0,
+      "evidence": "4 operations",
+      "log": ".artifacts/nine-region-offline/billing-contract-generate.log",
+      "logSha256": "8066092a03ed6819da8717e802483e1de11d978d58bdde7b98b329379510fd79"
+    },
+    {
+      "id": "billing-contract-check",
+      "command": "node scripts/billing-contract.mjs --check",
+      "exitCode": 0,
+      "evidence": "no drift",
+      "log": ".artifacts/nine-region-offline/billing-contract-final.log",
+      "logSha256": "8066092a03ed6819da8717e802483e1de11d978d58bdde7b98b329379510fd79"
+    },
+    {
+      "id": "planner-contract-check",
+      "command": "node scripts/planner-contract.mjs --check",
+      "exitCode": 0,
+      "evidence": "existing bounded 4 operations",
+      "log": ".artifacts/nine-region-offline/planner-contract-final.log",
+      "logSha256": "a0e55333ae355741059a21e7a9420a58cdd8f85ee4bbdf0a7cc2257e39927a43"
+    },
+    {
+      "id": "pilot-check",
+      "command": "node docs/backend-upgrade/b05a/generate-pilot.mjs --check",
+      "exitCode": 0,
+      "evidence": "source-hashed candidate pilot, no human review",
+      "log": ".artifacts/nine-region-offline/pilot-final.log",
+      "logSha256": "cb93390aa740da4f1b33327fc05728ce88930da34974887418d39a8dafe7192e"
+    },
+    {
+      "id": "browser",
+      "command": "node scripts/nine-region-browser-check.mjs",
+      "exitCode": 0,
+      "evidence": "6 cases / 12 screenshots, local billing mock, WebKit cookie bridge",
+      "log": ".artifacts/nine-region-offline/browser-final-bridge.log",
+      "logSha256": "c176a6a052e59b268315faa9e4ccbcfaf06c063f5ad96ff7bb348cee9d4ebd67"
+    },
+    {
+      "id": "slo-report",
+      "command": "node scripts/offline-slo-report.mjs --input .artifacts/nine-region-offline/slo-input.json --output .artifacts/nine-region-offline/slo-report.json",
+      "exitCode": 0,
+      "evidence": "synthetic arithmetic only",
+      "log": ".artifacts/nine-region-offline/slo-report.log",
+      "logSha256": "9ebd7b04db9039ea0c0b7c3e24bf6c255891e797a8d4227ebbd14ce89e173807"
+    },
+    {
+      "id": "benchmark",
+      "command": "node scripts/offline-scan-benchmark.mjs --output .artifacts/nine-region-offline/scan-benchmark",
+      "exitCode": 0,
+      "evidence": "120 synthetic cases / 3 mock profiles / USD 0",
+      "log": ".artifacts/nine-region-offline/scan-benchmark.log",
+      "logSha256": "6e5209826fc32cddcac9c816926b9f7c285b4d95d3a3b8393a140b0090dab18c"
+    },
+    {
+      "id": "ingredient-consumers",
+      "command": "node scripts/ingredient-v2-offline-consumers.mjs --output .artifacts/nine-region-offline/ingredient-consumers-final.json",
+      "exitCode": 0,
+      "evidence": "500 recipes / 6766 lines / 500 blocked",
+      "log": ".artifacts/nine-region-offline/ingredient-consumers-final.log",
+      "logSha256": "7cdd3c073e9400697abdaa788bfe111e547e4b8440379975555a37450031eb2c"
+    },
+    {
+      "id": "local-recovery",
+      "command": "python3 scripts/offline-d1-recovery.py --output .artifacts/nine-region-offline/d1-recovery.json",
+      "exitCode": 0,
+      "evidence": "SQLite only",
+      "log": ".artifacts/nine-region-offline/d1-recovery.log",
+      "logSha256": "2084aa2973524b15c34e76b34f67777c536ea213eb4ad0b4be610bc299b33dcd"
+    },
+    {
+      "id": "scanner-selftest",
+      "command": "python3 docs/backend-upgrade/b08/security/runner.py selftest --tools-dir .artifacts/backend-program-20261011/b08-security-downloads --output-dir .artifacts/nine-region-offline/security-selftest",
+      "exitCode": 0,
+      "evidence": "actual pinned positive/negative/failure fixtures",
+      "log": ".artifacts/nine-region-offline/security-selftest.log",
+      "logSha256": "ca6f5656948a1a9550bd2851f4fa5b7dced3ad62d5efb5ea60882bbbee0bcb82"
+    },
+    {
+      "id": "scanner-source",
+      "command": "python3 docs/backend-upgrade/b08/security/runner.py scan --tools-dir .artifacts/backend-program-20261011/b08-security-downloads --output-dir .artifacts/nine-region-offline/security-scan-final",
+      "exitCode": 1,
+      "evidence": "raw Gitleaks 17 FINDINGS; Semgrep/zizmor 0; Syft 504",
+      "log": ".artifacts/nine-region-offline/security-scan-final.log",
+      "logSha256": "3636c3bf77befd3974f8a5347f8ad97aae910cde5ad22935558a0a672891dcaf"
+    },
+    {
+      "id": "scanner-context",
+      "command": "python3 scripts/security-context-gate.py --scan .artifacts/nine-region-offline/security-scan-final --context docs/backend-upgrade/nine-region-offline/security-context.json --output .artifacts/nine-region-offline/security-context-final.json",
+      "exitCode": 0,
+      "evidence": "17 matched / 0 unresolved, no suppression",
+      "log": ".artifacts/nine-region-offline/security-context-final.log",
+      "logSha256": "2978c0b6a5c6791c6200844e80f8eeb6a744591b941f7290bea6d7d3da59e531"
+    },
+    {
+      "id": "auth-browser-supplement",
+      "command": "node .artifacts/nine-region-offline/auth-browser.mjs",
+      "exitCode": 0,
+      "evidence": "6 cases / 6 screenshots, mock SDK; stable mounted rerenders/mode cleanup; no OTP/POST",
+      "log": ".artifacts/nine-region-offline/auth-browser-third.log",
+      "logSha256": "2558ec1fa058b971825ba4f74e260576c1f490b515c3df91b06281f4ccab2840"
+    },
+    {
+      "id": "scanner-documentation",
+      "command": "python3 docs/backend-upgrade/b08/security/runner.py scan --tools-dir .artifacts/backend-program-20261011/b08-security-downloads --output-dir .artifacts/nine-region-offline/security-scan-documentation-final",
+      "exitCode": 1,
+      "evidence": "4857 files, raw17; final supplemental receipt metadata follows snapshot",
+      "log": ".artifacts/nine-region-offline/security-scan-documentation-final.log",
+      "logSha256": "c34ef00b00a93a76fd833f24cd4ad6d65ea7dbd354e8fb99af44487cc80394b5"
+    },
+    {
+      "id": "scanner-context-documentation",
+      "command": "python3 scripts/security-context-gate.py --scan .artifacts/nine-region-offline/security-scan-documentation-final --context docs/backend-upgrade/nine-region-offline/security-context.json --output .artifacts/nine-region-offline/security-context-documentation-final.json",
+      "exitCode": 0,
+      "evidence": "17 matched / 0 unresolved",
+      "log": ".artifacts/nine-region-offline/security-context-documentation-final.log",
+      "logSha256": "b812e1d22a3a26199871c4edfdcbdb597c6ee11d2a3866171e9be3bc72162331"
+    }
+  ],
+  "audits": [
+    {
+      "command": "pnpm audit --json",
+      "exitCode": 0,
+      "counts": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0
+      },
+      "path": ".artifacts/nine-region-offline/audit-full.json",
+      "sha256": "27e025e56175b1d62b2c12094c431e2aa91c7290e5d4393e7f07df6364fc352f",
+      "lockfileSha256": "4998dc372e0beb023700b754b9fce55901caffb211dd2c4e2280ac623d9ce69d"
+    },
+    {
+      "command": "pnpm audit --prod --json",
+      "exitCode": 0,
+      "counts": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0
+      },
+      "path": ".artifacts/nine-region-offline/audit-production.json",
+      "sha256": "89afa98eb2f105e15a07f3557cf2dccadd21175473f32e8671ba497c17d98c22",
+      "lockfileSha256": "4998dc372e0beb023700b754b9fce55901caffb211dd2c4e2280ac623d9ce69d"
+    }
+  ],
+  "attachments": [
+    {
+      "path": "docs/backend-upgrade/nine-region-offline/attachments/browser.json",
+      "sha256": "2c28468949c63b25b1c7bd281846b3287d5ed83e2765a5364f19d8f83d4fd392",
+      "privateInputPath": ".artifacts/nine-region-offline/browser/receipt.json",
+      "privateInputSha256": "2c28468949c63b25b1c7bd281846b3287d5ed83e2765a5364f19d8f83d4fd392"
+    },
+    {
+      "path": "docs/backend-upgrade/nine-region-offline/attachments/benchmark.json",
+      "sha256": "15ebc7d76064048186bb92c87e27c603c3208dc41eb2d4c1584be4c51acddc3c",
+      "privateInputPath": ".artifacts/nine-region-offline/scan-benchmark/receipt.json",
+      "privateInputSha256": "15ebc7d76064048186bb92c87e27c603c3208dc41eb2d4c1584be4c51acddc3c"
+    },
+    {
+      "path": "docs/backend-upgrade/nine-region-offline/attachments/synthetic-bytes.json",
+      "sha256": "73a35a375cf02162c53268111368d40d210bc9bbd096d795efb46158281dcdc8",
+      "privateInputPath": ".artifacts/nine-region-offline/synthetic-bytes-verified.json",
+      "privateInputSha256": "829149f9ef7a8b5edec3d1476b92ca7743a4fc6281e48c62b7e2be8bdbdf7e5a"
+    },
+    {
+      "path": "docs/backend-upgrade/nine-region-offline/attachments/slo.json",
+      "sha256": "ae2e7414aaf5250b0c64ec54acab885f16e84750ee0f1de5d8ba0635d499af98",
+      "privateInputPath": ".artifacts/nine-region-offline/slo-report.json",
+      "privateInputSha256": "ae2e7414aaf5250b0c64ec54acab885f16e84750ee0f1de5d8ba0635d499af98"
+    },
+    {
+      "path": "docs/backend-upgrade/nine-region-offline/attachments/recovery.json",
+      "sha256": "b5dfd2c83adc0db165ff5e21017e8b1c655d1e7ab2922cede7d8c79b109cdc64",
+      "privateInputPath": ".artifacts/nine-region-offline/d1-recovery.json",
+      "privateInputSha256": "b5dfd2c83adc0db165ff5e21017e8b1c655d1e7ab2922cede7d8c79b109cdc64"
+    },
+    {
+      "path": "docs/backend-upgrade/nine-region-offline/attachments/scanner-selftest.json",
+      "sha256": "2e7c2daa617ac255cba9c8533f07c1a568bc52b2b1266cf472aae7ddacd5f944",
+      "privateInputPath": ".artifacts/nine-region-offline/security-selftest/receipt.json",
+      "privateInputSha256": "2e7c2daa617ac255cba9c8533f07c1a568bc52b2b1266cf472aae7ddacd5f944"
+    },
+    {
+      "path": "docs/backend-upgrade/nine-region-offline/attachments/scanner-source.json",
+      "sha256": "cb68bf68e187de4a2a2c9b4a34090afb64855f46d6b2724933f299300a805c6a",
+      "privateInputPath": ".artifacts/nine-region-offline/security-scan-final/receipt.json",
+      "privateInputSha256": "cb68bf68e187de4a2a2c9b4a34090afb64855f46d6b2724933f299300a805c6a"
+    },
+    {
+      "path": "docs/backend-upgrade/nine-region-offline/attachments/scanner-context.json",
+      "sha256": "e224e063d1b78f7d170c6e07e5598839e925edc3c056d94aaa51791367ede9da",
+      "privateInputPath": ".artifacts/nine-region-offline/security-context-final.json",
+      "privateInputSha256": "e224e063d1b78f7d170c6e07e5598839e925edc3c056d94aaa51791367ede9da"
+    },
+    {
+      "path": "docs/backend-upgrade/nine-region-offline/attachments/ingredient-summary.json",
+      "sha256": "f4ecca0d25b74661174d3f4ff63fdb44cd59268d07e9361b107a2ea59fc59bfa",
+      "privateInputPath": ".artifacts/nine-region-offline/ingredient-consumers-final.json",
+      "privateInputSha256": "1bb17bec7c2ac60fce7538d0bcdd4b6de72fa37f8583faed4671a3522f5065b6"
+    },
+    {
+      "path": "docs/backend-upgrade/nine-region-offline/attachments/auth-browser.json",
+      "sha256": "d24f930c2fad0c858bd356aa59bc20bf1955bfa9b8472b797a6fb9ef3fbe9e93",
+      "privateInputPath": ".artifacts/nine-region-offline/auth-browser/receipt.json",
+      "privateInputSha256": "b187f8adf87fb37292248e41674e355189de78275b5e00699501650765b11578"
+    },
+    {
+      "path": "docs/backend-upgrade/nine-region-offline/attachments/scanner-documentation.json",
+      "sha256": "febce04fcc6274ab4609241cb99c96480649cf49ce0fe923696ced9ead6f4e16",
+      "privateInputPath": ".artifacts/nine-region-offline/security-scan-documentation-final/receipt.json",
+      "privateInputSha256": "febce04fcc6274ab4609241cb99c96480649cf49ce0fe923696ced9ead6f4e16"
+    },
+    {
+      "path": "docs/backend-upgrade/nine-region-offline/attachments/scanner-context-documentation.json",
+      "sha256": "df80e63808c1d7c7281b0d78946c774e356013c560e90e5c39fc85083a9ae51f",
+      "privateInputPath": ".artifacts/nine-region-offline/security-context-documentation-final.json",
+      "privateInputSha256": "df80e63808c1d7c7281b0d78946c774e356013c560e90e5c39fc85083a9ae51f"
+    }
+  ],
+  "implementationSource": [
+    {
+      "path": ".github/workflows/backend-security.yml",
+      "implementationBlob": "905212792cbb63d629e9207a8aece938fef3d660",
+      "implementationSha256": "c5c49e5e04a37271477f722c1bb727ca65a5244eedebc981a44faed0bb93e17b"
+    },
+    {
+      "path": "docs/backend-upgrade/nine-region-offline/ADR-OFFLINE-001.md",
+      "implementationBlob": "8853abd6d54e0a9ed2a1165c6532bba2179a8627",
+      "implementationSha256": "a96369771fac5078b283171a7f423b83bbf7887446f88abc6ea4871d2b6e7264"
+    },
+    {
+      "path": "docs/backend-upgrade/nine-region-offline/ADR-PRODUCT-001.md",
+      "implementationBlob": "af2444669de854351d81e4d08df5308d91c7a7e5",
+      "implementationSha256": "ea9aa43de5711a8616aff8997fe26be59683b3ae9351ccadcc50eb490ecca4ea"
+    },
+    {
+      "path": "docs/backend-upgrade/nine-region-offline/BILLING_RECONCILIATION.md",
+      "implementationBlob": "57bcd29f0d8e1b2cf49591b53a1e4134d2524d2c",
+      "implementationSha256": "589ba37582ed0922cd0bcf3eedaed1655a650c1a8608bcabf182e2f5681c0b9d"
+    },
+    {
+      "path": "docs/backend-upgrade/nine-region-offline/EXTERNAL_ACCEPTANCE.md",
+      "implementationBlob": "62785d46f12027b3fc742f4b2fd9e4b05c69724a",
+      "implementationSha256": "6b34a138c34f3b7e481e5311c967bd1e61b6cb72e61844e79f5576eb46649618"
+    },
+    {
+      "path": "docs/backend-upgrade/nine-region-offline/OPERATIONS.md",
+      "implementationBlob": "ba792bb85d2e1dcf3860ce288dc061469c9f52ff",
+      "implementationSha256": "36c4d14482457bf7c943d0f4aaec84b461be5ef406b17662bad2b71d71ae80cf"
+    },
+    {
+      "path": "docs/backend-upgrade/nine-region-offline/PLAN.md",
+      "implementationBlob": "8eb73f0ea82125b163d2a04e182f32d0244a9543",
+      "implementationSha256": "968b0407c9fa17f0fa3256473350a5e1ee29187fd7559a02cfd5f23ce8b58eb5"
+    },
+    {
+      "path": "docs/backend-upgrade/nine-region-offline/SECURITY_PROMOTION.md",
+      "implementationBlob": "124cf61042942072c5fb06b7455ca52c5eb2bd0c",
+      "implementationSha256": "e480ec3799c9370bfb2f9c675cec37f8aa85cb01dfc3845b7f6930e037b589c9"
+    },
+    {
+      "path": "docs/backend-upgrade/nine-region-offline/billing.openapi.json",
+      "implementationBlob": "735fadc1a9d64b2f0fa943b1f7e8d1b739af978c",
+      "implementationSha256": "dfb245bda0801b41b009e91399cdd3f36d0808219017cbf053ebfb7d80eb1c83"
+    },
+    {
+      "path": "docs/backend-upgrade/nine-region-offline/security-context.json",
+      "implementationBlob": "895ca0edbad74ce1647a0720867616e2369a899b",
+      "implementationSha256": "50856c7bb9cef73e6f9ceb0d96ad4b88477c5dd1ac103bbee87b4e661ded79c8"
+    },
+    {
+      "path": "migrations/0041_checkout_admission.sql",
+      "implementationBlob": "fc304beb87b347799a10aa3a6eeff1aca3ce346f",
+      "implementationSha256": "68e5f71a421d76f1f22bf6405673c824fe742c5e5c6e2931f1a0bbb1d61908da"
+    },
+    {
+      "path": "packages/ai/src/providers/cloudflare.ts",
+      "implementationBlob": "cb1cdaede3bfc0475a333fe73b7cbda10bc97a7f",
+      "implementationSha256": "cb41511114d4f5886d88f7ae309035d80304e13695dc998feac2a6a7de15faab"
+    },
+    {
+      "path": "packages/ai/src/types.ts",
+      "implementationBlob": "33774e6b2b602c67e2d671dd2560cf1ef5c1e86e",
+      "implementationSha256": "2e62b414a7da245e1d109ed9f6ee508980b488a2822b43bc5eb290959dfd91ce"
+    },
+    {
+      "path": "packages/domain/src/product-vnext.ts",
+      "implementationBlob": "107cb6e122134ba9a537451f0e5d486fd251b5cc",
+      "implementationSha256": "d77ab503d0bd887381401f2fc3ae56bd1c76194c215d9f889accf4634e9950c4"
+    },
+    {
+      "path": "packages/recipes/src/ingredient-v2-consumers.ts",
+      "implementationBlob": "15834a33c962d1e20662215be13ecb6bfb517313",
+      "implementationSha256": "d49b046795e02d422dbe2c298fa8da38158671947ac97f264246a7d5578f2a2f"
+    },
+    {
+      "path": "scripts/billing-contract.mjs",
+      "implementationBlob": "9cedae701b934466eba14ecf227e90131e208253",
+      "implementationSha256": "0257e647c165edc7e03bd40feead0284b57f2ed757bb9c96ed84b9d6cf4b2b3d"
+    },
+    {
+      "path": "scripts/d1-schema-gate.sql",
+      "implementationBlob": "079233b1e9fa2f4e4823a3430302647fb86c08f0",
+      "implementationSha256": "eac5f2ca46dd131e1e843567ffdfe17b27fe2bcba615a4e2627e5fa93faefa15"
+    },
+    {
+      "path": "scripts/ingredient-v2-offline-consumers.mjs",
+      "implementationBlob": "f3841121e2365c45f9b05eea883b058973bcb8a5",
+      "implementationSha256": "87b132c607f85b31fa2587bbfb2e81a15cfbfedc57e1e7251cd1c08b5691c615"
+    },
+    {
+      "path": "scripts/migration-smoke.sh",
+      "implementationBlob": "82d1ab4edfdf17cbfb0bcca5c424e7850d917bb2",
+      "implementationSha256": "6770434e119134a6d020840fc348a6ca2a9e3de9cc6f9a82eff1f5cd3647505e"
+    },
+    {
+      "path": "scripts/nine-region-browser-check.mjs",
+      "implementationBlob": "1a87593bdec101f455fe716a6a2665287bd95fc1",
+      "implementationSha256": "9177abf5b851329214a9f5596972ebb26d551e15536273918734f7ebe7b96636"
+    },
+    {
+      "path": "scripts/offline-d1-recovery.py",
+      "implementationBlob": "88ff0c64aa48dc84d0df983929d9873c4540ebff",
+      "implementationSha256": "b2ed21517acd73e1944cbb372f7daa29aaaeefa4885d649081d48f66834c3961"
+    },
+    {
+      "path": "scripts/offline-scan-benchmark.mjs",
+      "implementationBlob": "0d5cf1f607f436e5dfd3affea25d3a12f8fbd1e0",
+      "implementationSha256": "7925ff352ed09a405f26509a165fa6068dfef071ad440ebb35ce689be95539ce"
+    },
+    {
+      "path": "scripts/offline-slo-report.mjs",
+      "implementationBlob": "68228d5d6ac36ee68edaa53cee62dd74d554c902",
+      "implementationSha256": "da78474154ec25326be788d08aeceff71ad787e0ed8a7eb7325cfa6394236cf8"
+    },
+    {
+      "path": "scripts/security-context-gate.py",
+      "implementationBlob": "5b826696142ea1a4f5ce760c111acaf532372037",
+      "implementationSha256": "d14dc89ee94db137defef2067939198c2b18fbce2d641ea2d58b77fa82c171e4"
+    },
+    {
+      "path": "src/shared/billing.ts",
+      "implementationBlob": "8e71f8f110b627b9352ba93610ceb7b6d0e17ba6",
+      "implementationSha256": "85349c3ac792d7f3712a98bfdafb872f63efd9d3dbdd278ee47e1988fd26ea4a"
+    },
+    {
+      "path": "src/web/components/common/TurnstileWidget.tsx",
+      "implementationBlob": "7da25770128f708b15490436636d3c7de6704564",
+      "implementationSha256": "fb35353376bf773576f48ca849e65970ce4671776b862191ea538c8e48de157e"
+    },
+    {
+      "path": "src/web/pages/PlusPaywallPage.tsx",
+      "implementationBlob": "6310117c7de7087effe79b72f345892f58f6c732",
+      "implementationSha256": "2006df187db0aa853e63b18f6e31539028b68986d2247a85ad19e1bf4a01dc44"
+    },
+    {
+      "path": "src/web/services/billing.ts",
+      "implementationBlob": "742f12c667258fc927ecfeb8f48086879418fed5",
+      "implementationSha256": "dae920a7605197202121eafebc1d957c63a19c9b523191b61dc4b2867b590335"
+    },
+    {
+      "path": "src/worker/observability/slo-report.ts",
+      "implementationBlob": "ebeba2c5d3ce2600d3a6ba7da3a2f0f3aa7d9f6b",
+      "implementationSha256": "c1c1133354a7cd817997a8378c1276936b8baef63cccb633ee4adbea29c69444"
+    },
+    {
+      "path": "src/worker/payment/checkout.ts",
+      "implementationBlob": "a0dfde442c0fe3f93a0cfec7153c257b1858ad16",
+      "implementationSha256": "114720534c0147550c26fd70a47896678c069c4ed40f0b7908739cc773d22848"
+    },
+    {
+      "path": "src/worker/routes/auth.ts",
+      "implementationBlob": "0a221d503f019400adad026fa1ee25daf224ada9",
+      "implementationSha256": "9e6eba3bca514dc62455d83428dd062226864e205c3b6d6702a324a2e5df9c9a"
+    },
+    {
+      "path": "src/worker/routes/billing.ts",
+      "implementationBlob": "dbb617581223791b15ac9183c3b05ec71884c324",
+      "implementationSha256": "cbc3af5c0e077487482436d41e47e05eb8ad4bd450db772ad9babbd1e444f403"
+    },
+    {
+      "path": "src/worker/types.ts",
+      "implementationBlob": "798635504817d29b2468c86ed329b42b647f9cc8",
+      "implementationSha256": "a398a4880d0e9568442059caf7fc1627ef81c93ac546f47645aa45a18b8f2e9f"
+    },
+    {
+      "path": "tests/helpers/checkout-d1-worker.ts",
+      "implementationBlob": "b1108aa1cb64304d91623fc6e395cd4c5576ffb8",
+      "implementationSha256": "2466e64c34a543077bf9b32e397bf220062932cc81bb9ba142c2c59057d48033"
+    },
+    {
+      "path": "tests/helpers/sqlite-d1.ts",
+      "implementationBlob": "e4426f09f312b09fe76c20bc034118405d858f45",
+      "implementationSha256": "4451a9918c1006e9993fa9586362e227c5ad5b6b75d006bfa331a1431f7e8d8d"
+    },
+    {
+      "path": "tests/integration/auth-hardening.test.ts",
+      "implementationBlob": "71f6406b539069eeb034887ad7b988cd83c4bc75",
+      "implementationSha256": "12bf6e29c600230bca77f86d44094a608317ed9e0966a5a5a57def73154f9b90"
+    },
+    {
+      "path": "tests/integration/auth-otp-coordinator.test.ts",
+      "implementationBlob": "45b8bf21c3bb236ee6f846dd1f2e9d7a01378253",
+      "implementationSha256": "c1101ab8f62db716155f376f5c676ff85faf29470ffde04a96e2d1da4bea1eed"
+    },
+    {
+      "path": "tests/integration/checkout-admission.test.ts",
+      "implementationBlob": "e8c61580c06e59a344954e93868db47c12c9a1ca",
+      "implementationSha256": "2f7ec8d35a55ac714b6b3451754ea70376cf2978bbd506daa64b344418c0a77c"
+    },
+    {
+      "path": "tests/integration/checkout-local-d1.test.mjs",
+      "implementationBlob": "ffe19fdc196aeb3518c74bafd335f920f40d0a65",
+      "implementationSha256": "74a5cf2e3d97c8c9c5a7121165e2d0e45ab9f1a8a0c06cf7e7ac1e314dc9b16d"
+    },
+    {
+      "path": "tests/integration/d1-schema-gate.test.ts",
+      "implementationBlob": "577de1af83976e3f734d11baad5d2d169e88e006",
+      "implementationSha256": "ca5dd783a3db5b438efe016362327f7079587691c5eb128bb67af486f1f48d20"
+    },
+    {
+      "path": "tests/integration/payment-authority.test.ts",
+      "implementationBlob": "003b7502354308668a1b132d332b06a180f7d469",
+      "implementationSha256": "ad1cc21f2ef1d7395d39895ee2a718953ff1fb09a8aedb8b94d0e7757ab9e456"
+    },
+    {
+      "path": "tests/unit/backend-security-workflow.test.mjs",
+      "implementationBlob": "b5c7f71cf1f17aada44dd1162306866efec24a98",
+      "implementationSha256": "792c46ce665cffb23aae80c40d5471405eb5e3776564e849fc1b6bd1a664813f"
+    },
+    {
+      "path": "tests/unit/config-validation.test.ts",
+      "implementationBlob": "3c55296ce85556f4e2a7bb2cd889a9b07f96033b",
+      "implementationSha256": "b386e8b2ee347dfba3ef07e5e9285df247c8b6c8da3949a668d5561c3055038c"
+    },
+    {
+      "path": "tests/unit/health.test.ts",
+      "implementationBlob": "eeca3bf713e694e5ed1e0e0441032d5cda06a48a",
+      "implementationSha256": "d4f7be3444ffc95cfce0c75b5402b208ce111af4342ebc8b466c9224f715a714"
+    },
+    {
+      "path": "tests/unit/ingredient-v2-consumers.test.ts",
+      "implementationBlob": "f5fb2caa69ec25fda87767426ed3a874d3ad98e7",
+      "implementationSha256": "0572191aba5343782ecfd161736fa9b7a8edd22e4e2fbfba8a5efaf840847f65"
+    },
+    {
+      "path": "tests/unit/payment-checkout.test.tsx",
+      "implementationBlob": "ba27735aa49f96638485fb4d5908c23fe7335a35",
+      "implementationSha256": "fbd00c8cdb841124096f4c4183bd92bf0b477b50bb07025a000d256a7aa3c3d6"
+    },
+    {
+      "path": "tests/unit/product-vnext.test.ts",
+      "implementationBlob": "a165200e49c8950aff5a1d1f58b27996aaa1f784",
+      "implementationSha256": "4e777b679be851b49f6d8f618ce46490e849569f4f1d0a80618e88760ebe8ec3"
+    },
+    {
+      "path": "tests/unit/production-certify-workflow.test.mjs",
+      "implementationBlob": "416b3cc99531f1b54b1edbe0d7e6c3906f3a50dc",
+      "implementationSha256": "36655639a326d2369115b0e8e4f7be6f2f0d28fb51ff16eef3ec5e2e04b9ef93"
+    },
+    {
+      "path": "tests/unit/security-context-gate.test.mjs",
+      "implementationBlob": "0cc633fc2593c6fb8dfc347530f6e61127acd247",
+      "implementationSha256": "31eed4cdd1bdbebc60aadc87ce1718baec6ce69bfb6d17fe08b4fedda0e67919"
+    },
+    {
+      "path": "tests/unit/slo-report.test.ts",
+      "implementationBlob": "d2943042936b415697a2d434fa3928747a28f204",
+      "implementationSha256": "688c81bcdea516f20a0fc809f3d3e4e3dfe594f1d44075ccbf2253c2224b530a"
+    },
+    {
+      "path": "tests/unit/turnstile-lifecycle.test.tsx",
+      "implementationBlob": "0618be340b59176e9d01bd6096e0592591a8cb53",
+      "implementationSha256": "11d4ec154363e49b291b4503529a843fb6a4ffb36a6eb983122e7dddae493df1"
+    },
+    {
+      "path": "tests/unit/turnstile-loader.test.tsx",
+      "implementationBlob": "375755897c12287d1bc9ee80ebccd46e51c916e1",
+      "implementationSha256": "281d57a6e7925e4a5720625ba0bd30c5633e6d210bee9a3a537aa599450ee118"
+    }
+  ],
+  "unchangedProtectedSha256": {
+    "migrations/0040_strict_otp_foundation.sql": "8ad04aaf528b2811b693d80f83704bd3d7578f7ffb3cc3698326487e4beb6ae0",
+    "migrations/0018_payments.sql": "8668f84a4e378227d63cbee591e6feb9ee37ef7b6fc84fd127af7511dddd406b",
+    "src/worker/payment/payos.ts": "0bb1734c54e576810211ef51a75987adf1886acd00470fb1dec9aa3a9e727780",
+    "src/worker/payment/authority.ts": "45cfab0253ff23365eb879c9a55bea033104fc40725f80f5f72d1cbbe05a6a14",
+    "src/worker/payment/prices.ts": "ec1bd004b9dbfb88dda8bac54dc590bdbcecc6b427c7f3852fa467d80cf52dfa",
+    "wrangler.jsonc": "c91126d5d08d39d2f86018226249bafef1a916f7c5783619535cfe139a156598",
+    "package.json": "2b4e3e5f000bf12ef38c05deb42229a8ef7bc8f8deb538d03042d593b6bb5cc1",
+    "pnpm-lock.yaml": "4998dc372e0beb023700b754b9fce55901caffb211dd2c4e2280ac623d9ce69d",
+    ".github/workflows/deploy.yml": "b6bbb53b5e9442a298a4b40092ee35777df6ea08478269c042376f077da9babe",
+    ".github/workflows/production-d1-migrate.yml": "2d49ac05d8d26c0ab99c99dc2d7d4262513cfbeac87f716cefed6d43fdfd56d4",
+    ".github/workflows/production-certify.yml": "9a0c64d9b2bf43c3153c609e11b0f700023c178ec4fd46ec2834dbaf7fba01fb"
+  },
+  "retainedFailures": [
+    {
+      "path": ".artifacts/nine-region-offline/auth-red.log",
+      "sha256": "564a0b174dfef4247c63bbce9f08c3117e51abb7e28f97129571e9c1f7df34b9",
+      "classification": "RETAINED_FAILED_ATTEMPT_NOT_PASS"
+    },
+    {
+      "path": ".artifacts/nine-region-offline/billing-first.log",
+      "sha256": "10c2c843e43669ebd50ac632b86153ca0509946d1622845ec7528aa5928f8f0d",
+      "classification": "RETAINED_FAILED_ATTEMPT_NOT_PASS"
+    },
+    {
+      "path": ".artifacts/nine-region-offline/planner-consumers.log",
+      "sha256": "ca7a72e05ad8448234842209edab1fda606cc0ac8e09ee94424cc32718a022d9",
+      "classification": "RETAINED_FAILED_ATTEMPT_NOT_PASS"
+    },
+    {
+      "path": ".artifacts/nine-region-offline/api-operations-first.log",
+      "sha256": "866a75880b3baac5ddf6e5450edd98e4d44d50c0d2f394cc7b0df5651e5139c5",
+      "classification": "RETAINED_FAILED_ATTEMPT_NOT_PASS"
+    },
+    {
+      "path": ".artifacts/nine-region-offline/operations-recovery.log",
+      "sha256": "1f9dd4cdcfacd95aa93c8e941b513f10b8675326dde58b22a312abfafc55d674",
+      "classification": "RETAINED_FAILED_ATTEMPT_NOT_PASS"
+    },
+    {
+      "path": ".artifacts/nine-region-offline/full-first.log",
+      "sha256": "a298410397814ab03b898452633d78beccdda47366da0f280c6c26615bcfb595",
+      "classification": "RETAINED_FAILED_ATTEMPT_NOT_PASS"
+    },
+    {
+      "path": ".artifacts/nine-region-offline/review-regressions.log",
+      "sha256": "320ca13c12e482076eeecd5e59c35a884c82b8c286968842b4a7710fb6723442",
+      "classification": "RETAINED_FAILED_ATTEMPT_NOT_PASS"
+    },
+    {
+      "path": ".artifacts/nine-region-offline/check-final.log",
+      "sha256": "65ce981ea0ab67a276ccf91c96e9b9c8230d4b83c154a7678cac54ddef160074",
+      "classification": "RETAINED_FAILED_ATTEMPT_NOT_PASS"
+    },
+    {
+      "path": ".artifacts/nine-region-offline/browser-first.log",
+      "sha256": "80e3f185a1ae7fba22f8ca62af5bd5c2da1eec4d20e493cabbfccd996f93e468",
+      "classification": "RETAINED_FAILED_ATTEMPT_NOT_PASS"
+    },
+    {
+      "path": ".artifacts/nine-region-offline/browser-second.log",
+      "sha256": "894449ac0f317ea675dfdf02d77230d02b91ecf28276220b6092d1abdc1eccdc",
+      "classification": "RETAINED_FAILED_ATTEMPT_NOT_PASS"
+    },
+    {
+      "path": ".artifacts/nine-region-offline/browser-third.log",
+      "sha256": "9f9b7eb0e7d4ab1e926b6ef19bfb91aac70d62607c840de55a226daf9e09f621",
+      "classification": "RETAINED_FAILED_ATTEMPT_NOT_PASS"
+    },
+    {
+      "path": ".artifacts/nine-region-offline/browser-fourth.log",
+      "sha256": "56d7c4bf91d94fd9e608f70fda2c782c9b415c2ff0a4f2040f26176864d53384",
+      "classification": "RETAINED_FAILED_ATTEMPT_NOT_PASS"
+    },
+    {
+      "path": ".artifacts/nine-region-offline/browser-fifth.log",
+      "sha256": "e00dd8549434326113fa6e13c8e5ea8eedbe2d53e5e69406ee36d29f2871a17e",
+      "classification": "RETAINED_FAILED_ATTEMPT_NOT_PASS"
+    },
+    {
+      "path": ".artifacts/nine-region-offline/browser-sixth.log",
+      "sha256": "16bcd5d284fac8485b6ef929841b500536e41bdf2f67ac0d1eb88ae11929fce1",
+      "classification": "RETAINED_FAILED_ATTEMPT_NOT_PASS"
+    },
+    {
+      "path": ".artifacts/nine-region-offline/browser-final.log",
+      "sha256": "2bc4eb9d1d180dc5d5475acac634f81c93207eb906dc99b4bd7fe7b9cb50db5b",
+      "classification": "RETAINED_FAILED_ATTEMPT_NOT_PASS"
+    },
+    {
+      "path": ".artifacts/nine-region-offline/security-context-first.json",
+      "sha256": "81b846ae5604f7c64a0b5835801fbb28f908878d1709b33569878cc38ab5ad90",
+      "classification": "RETAINED_FAILED_ATTEMPT_NOT_PASS"
+    },
+    {
+      "path": ".artifacts/nine-region-offline/auth-browser.log",
+      "sha256": "4293d0c54695734c6a04e328b3d8ed8e0d527c33a4d8a5016e87d9890765855e",
+      "classification": "RETAINED_FAILED_ATTEMPT_NOT_PASS"
+    },
+    {
+      "path": ".artifacts/nine-region-offline/auth-browser-second.log",
+      "sha256": "c8e40674248d01bec9b3cbf2ab182f55b03db260b2179567f2d5e0a72aa7224c",
+      "classification": "RETAINED_FAILED_ATTEMPT_NOT_PASS"
+    }
+  ],
+  "review": {
+    "reviewer": "same implementing agent",
+    "independentReview": "PENDING_EXTERNAL_EVIDENCE",
+    "runtimeFeatureCompletionNotClaimed": true
+  },
+  "limitations": [
+    "Browser mock runs use local Vite preview; WebKit loopback cookie bridge does not certify real auth.",
+    "Source-oracle benchmark copies labels; real corpus/provider quality/prices are not certified.",
+    "Ingredient V2 remains 500 blocked candidates; no data promotion.",
+    "Security raw FINDINGS remain 17; exact context reviewed, hosted/independent promotion pending.",
+    "SLO/recovery/load/device/financial retention/Product VNext activation remain external."
+  ],
+  "supplementalHarnessSources": [
+    {
+      "path": ".artifacts/nine-region-offline/auth-browser.mjs",
+      "sha256": "ad10181f141eed78f7d08f6687578498aaad3533cb808eebba386d1da25f9f4a",
+      "classification": "PRIVATE_LOCAL_MOCK_ONLY"
+    }
+  ],
+  "documentationInclusiveScanScope": "Source snapshot precedes final supplemental receipt metadata; runtime source equals implementation commit."
+}

@@ -10,7 +10,9 @@ repository root with Node 24. Inputs accept only SYNTHETIC or UNVERIFIED_IMPORT,
 a forty-character source SHA, an explicit half-open UTC observation window,
 sampling ratio, route-template allowlist, minimum sample count and nullable targets.
 Every event has a unique opaque UUID, template, status, duration, timestamp and
-internal-error flag. Extra fields, raw routes, duplicate IDs or out-of-window events
+internal-error flag. The operator must supply reviewed route templates rather than
+raw request URLs; this offline reporter does not discover trusted runtime routes.
+Extra fields, unlisted routes, duplicate IDs or out-of-window events
 are rejected. Do not import cookies, emails, image/OCR contents, account details or
 provider output. The input SHA binds a source context; it is not proof that those
 synthetic observations came from a deployed version.

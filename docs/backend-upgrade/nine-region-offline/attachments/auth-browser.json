@@ -1,0 +1,81 @@
+{
+  "classification": "LOCAL_BROWSER_MOCK_SDK",
+  "status": "PASS",
+  "records": [
+    {
+      "engine": "chromium",
+      "width": 320,
+      "mockSdkRenders": 2,
+      "removedOnModeChange": true,
+      "lateCallbacksPageErrors": 0,
+      "axeViolations": 0,
+      "overflow": false,
+      "broken": 0,
+      "externalRequests": 0,
+      "apiPosts": 0
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "mockSdkRenders": 2,
+      "removedOnModeChange": true,
+      "lateCallbacksPageErrors": 0,
+      "axeViolations": 0,
+      "overflow": false,
+      "broken": 0,
+      "externalRequests": 0,
+      "apiPosts": 0
+    },
+    {
+      "engine": "firefox",
+      "width": 320,
+      "mockSdkRenders": 2,
+      "removedOnModeChange": true,
+      "lateCallbacksPageErrors": 0,
+      "axeViolations": 0,
+      "overflow": false,
+      "broken": 0,
+      "externalRequests": 0,
+      "apiPosts": 0
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "mockSdkRenders": 2,
+      "removedOnModeChange": true,
+      "lateCallbacksPageErrors": 0,
+      "axeViolations": 0,
+      "overflow": false,
+      "broken": 0,
+      "externalRequests": 0,
+      "apiPosts": 0
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "mockSdkRenders": 2,
+      "removedOnModeChange": true,
+      "lateCallbacksPageErrors": 0,
+      "axeViolations": 0,
+      "overflow": false,
+      "broken": 0,
+      "externalRequests": 0,
+      "apiPosts": 0
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "mockSdkRenders": 2,
+      "removedOnModeChange": true,
+      "lateCallbacksPageErrors": 0,
+      "axeViolations": 0,
+      "overflow": false,
+      "broken": 0,
+      "externalRequests": 0,
+      "apiPosts": 0
+    }
+  ],
+  "realChallengeCertified": false,
+  "realAuthOrEmailCertified": false,
+  "externalAcceptance": "PENDING_EXTERNAL_EVIDENCE"
+}

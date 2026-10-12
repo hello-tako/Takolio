@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "classification": "SYNTHETIC_SQLITE_OFFLINE",
+  "status": "PASS",
+  "externalAcceptance": "PENDING_EXTERNAL_EVIDENCE",
+  "remoteCalls": 0,
+  "migrations": 41,
+  "tip": "0041_checkout_admission.sql",
+  "migrationHashes": [
+    {
+      "path": "migrations/0001_initial_schema.sql",
+      "sha256": "eb97de6170cc73b12c7b83eec3be8082b4434c5f8952616bd4cb64be3f2a3328"
+    },
+    {
+      "path": "migrations/0002_seed_data.sql",
+      "sha256": "13a75fc802205e0654a4dcba59cf2f8573363d9abcf4cdaf66b24b5aee3ddade"
+    },
+    {
+      "path": "migrations/0003_weekly_planner.sql",
+      "sha256": "f6c23b3e288c7da14a4a7adc9da0ab4cfb8f7fdfc36cb2dac1c3a7abf533be9f"
+    },
+    {
+      "path": "migrations/0004_auth_system.sql",
+      "sha256": "39b72e8856dc87ef71b5b95db18497d710f068d4aca2dbe7aec51e82b023f003"
+    },
+    {
+      "path": "migrations/0005_meal_plans_relational.sql",
+      "sha256": "c20cb5e229eaed04e543c46e28e01a6f9db9ab1ad0f58885551c2394b6a3fb95"
+    },
+    {
+      "path": "migrations/0006_vietnamese_recipe_bank.sql",
+      "sha256": "7868539d44fea5aac99a091912629521a3cae79e1648f0a774490fedbb2e048f"
+    },
+    {
+      "path": "migrations/0007_week_integrity.sql",
+      "sha256": "da3d90a1ad95af11e6c58b03a68759fb7f25866434cd800c19f2b242d3181386"
+    },
+    {
+      "path": "migrations/0008_week_snapshot_metadata.sql",
+      "sha256": "5873119f56efb3c310d040220a9c7544d060adab88642f4a5c804121c38918f8"
+    },
+    {
+      "path": "migrations/0009_inventory_optimistic_version.sql",
+      "sha256": "e184538af8cff16465def06be1c37f4ba23e836ed0f4c3543c02f35fa3a5d2c4"
+    },
+    {
+      "path": "migrations/0010_week_schema_shadow_canonical.sql",
+      "sha256": "92eccbd3b6b0b8249b8ae1afdb625652cc906d4d4b5c08a7587964df5529dc0e"
+    },
+    {
+      "path": "migrations/0011_meal_plan_tenant_ownership.sql",
+      "sha256": "049412f7762ed69b2b8ed9977cd3e0e7b015a693f785305b160871f070232951"
+    },
+    {
+      "path": "migrations/0012_scan_queue_jobs.sql",
+      "sha256": "d52d716dc7d1329e5dafb3afc0acd4eab8bc24db1026cbbad0b9c453baf6ad54"
+    },
+    {
+      "path": "migrations/0013_scan_receipt_metadata.sql",
+      "sha256": "d889edf409a35ca7d5e0ca0d68029644a158ad53fd0ed9754702972a14ae85b5"
+    },
+    {
+      "path": "migrations/0014_scan_queue_fencing.sql",
+      "sha256": "d9fb9786fa4091c8877b91904f74dee899b8f6fc20143c1ca7dcb468432720cc"
+    },
+    {
+      "path": "migrations/0015_auth_session_otp_hardening.sql",
+      "sha256": "81ed99c797faeed1b80149057084d42474b594f0859d46049922541a038b1b6f"
+    },
+    {
+      "path": "migrations/0016_scan_quota_ledger.sql",
+      "sha256": "f0d8a9c2e4b4810c1c27874f09f212e7f6dd548ae9be055bade004e3609b7b8d"
+    },
+    {
+      "path": "migrations/0017_auth_otps_remove_plaintext.sql",
+      "sha256": "73ab0857cc7d20ef15b6dd0726fe2142cc39dd45745cfa7f021c3d362e3c33e6"
+    },
+    {
+      "path": "migrations/0018_payments.sql",
+      "sha256": "8668f84a4e378227d63cbee591e6feb9ee37ef7b6fc84fd127af7511dddd406b"
+    },
+    {
+      "path": "migrations/0019_recipe_domain_foundation.sql",
+      "sha256": "5b6fbe9ec441271a49b5116a118af6424e25ceda716ece01d2448e56e84ed005"
+    },
+    {
+      "path": "migrations/0020_t01_foundation_hardening.sql",
+      "sha256": "d46ad482f793d31bdc3c4bbbd3bee9198497f3b5cf02ebef0383871bab001472"
+    },
+    {
+      "path": "migrations/0021_recipe_personalization.sql",
+      "sha256": "149b32b2d7d731ffbd6fdf0bd5b8a4c60068cb02d708dee5b74ac5b92f933f22"
+    },
+    {
+      "path": "migrations/0022_generated_meal_plans.sql",
+      "sha256": "41f7a15c15d8de861489607b87bb03f853348193c4214cd71aaac5a8d1556a51"
+    },
+    {
+      "path": "migrations/0023_scan_request_fingerprint.sql",
+      "sha256": "e4681b61c57f7560b878b3cd34805e6657025ff3e27643ecca98eb6de057dddd"
+    },
+    {
+      "path": "migrations/0024_inventory_truth_foundation.sql",
+      "sha256": "5e32cb457457ad9286d1f23d172b166ae1e73e8c84f10cb428ea44649f7061d4"
+    },
+    {
+      "path": "migrations/0025_inventory_lot_commands.sql",
+      "sha256": "434565634f0c8ca2f5721ab66b451c55fc30310425deec0a7f08ea98aba97194"
+    },
+    {
+      "path": "migrations/0026_inventory_event_authority.sql",
+      "sha256": "d35163d8f25bf66a43afe0232023ea3950769d2ade86153062816a010de0312e"
+    },
+    {
+      "path": "migrations/0027_inventory_event_poststate.sql",
+      "sha256": "f30541dc33927526007d18a2b5ea3d50a7a356f931502d561f7334e16dfc16a7"
+    },
+    {
+      "path": "migrations/0028_inventory_fefo_authority.sql",
+      "sha256": "c162e5c9a8ea93169fa044159e23b2088d7181f54b7456a8506e53cac4a80c8c"
+    },
+    {
+      "path": "migrations/0029_inventory_adoption_authority.sql",
+      "sha256": "564950baf0506bff02582b4e0d8aae60b3dfeb1dfd0ad83279b85cd1f9ddd83a"
+    },
+    {
+      "path": "migrations/0030_inventory_fefo_backfill_compatibility.sql",
+      "sha256": "eb5e6fc959ad96f3127540578b0d40972fb4b40f450bfdccb5bf7afda3662316"
+    },
+    {
+      "path": "migrations/0031_inventory_observation_reconciliation.sql",
+      "sha256": "c4f6c8e0a26c4063164157e38ec55d39522f666cfdafaedacbbd919f55d4eb25"
+    },
+    {
+      "path": "migrations/0032_scan_evidence_retention.sql",
+      "sha256": "fae72602ac7f3128155329a8abc60184609dd589e264cfec9bae1e3c961bc206"
+    },
+    {
+      "path": "migrations/0033_scan_evidence_completeness.sql",
+      "sha256": "18ed8d75d5bcaeb4e9a12b96535f603401bf42b1492201864f81e312cdef1975"
+    },
+    {
+      "path": "migrations/0034_global_recipe_catalog_parity.sql",
+      "sha256": "23f356458a294b240e683fec14012bc932a8b7e57ad0c932e4fc184329bada4d"
+    },
+    {
+      "path": "migrations/0035_recipe_media_layer.sql",
+      "sha256": "a2c017245eec5916db9c24b050c966654b6e1321c8c32025bea64d931feed8aa"
+    },
+    {
+      "path": "migrations/0036_recipe_catalog_pilot.sql",
+      "sha256": "04228788e60d59a2427d70956d4d8a108d0a6c1c4a643c47641402f658120ba9"
+    },
+    {
+      "path": "migrations/0037_recipe_catalog_scale.sql",
+      "sha256": "68e52e6d8b9d44054f609a3d405c9fa329d093521ffc8c97009c76fbf7317ad6"
+    },
+    {
+      "path": "migrations/0038_auth_onboarding_completion.sql",
+      "sha256": "3c9bfeca972b4d1179625ed3e6aa2b3056202442e225d205a4191d9d52505ad8"
+    },
+    {
+      "path": "migrations/0039_meal_composition_v2.sql",
+      "sha256": "24407e61f1aac2b3430bc5cef7a6d1c76d57a39f6314915c4915fc7209e777d5"
+    },
+    {
+      "path": "migrations/0040_strict_otp_foundation.sql",
+      "sha256": "8ad04aaf528b2811b693d80f83704bd3d7578f7ffb3cc3698326487e4beb6ae0"
+    },
+    {
+      "path": "migrations/0041_checkout_admission.sql",
+      "sha256": "68e5f71a421d76f1f22bf6405673c824fe742c5e5c6e2931f1a0bbb1d61908da"
+    }
+  ],
+  "checks": [
+    "backup clone identity",
+    "interrupted command rollback",
+    "restore stock identity",
+    "foreign keys",
+    "quick_check"
+  ],
+  "stockRows": 1000,
+  "stockFingerprint": "919e5da8a48ad23d523c1154097311812e2e9f25dc0406a609e0444922fa174e",
+  "queryMeasurement": {
+    "iterations": 100,
+    "rowsPerQuery": 1000,
+    "plan": [
+      [
+        4,
+        0,
+        61,
+        "SEARCH inventory_items USING INDEX idx_inventory_items_household_version (household_id=?)"
+      ],
+      [
+        20,
+        0,
+        0,
+        "USE TEMP B-TREE FOR ORDER BY"
+      ]
+    ],
+    "p50Ms": 0.561708,
+    "p95Ms": 0.6305,
+    "maxMs": 1.126625,
+    "optimizationApplied": false
+  },
+  "limits": "SQLite local timing/backup, not Cloudflare Time Travel, hosted load, edge isolates or production SLO."
+}

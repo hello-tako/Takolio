@@ -1,0 +1,8 @@
+{
+  "classification": "TEST_ONLY",
+  "status": "PASS",
+  "images": 121,
+  "annotated": 120,
+  "documents": 24,
+  "providerAccuracyCertified": false
+}
