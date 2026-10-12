@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "checkedAtUtc": "2026-10-12T05:30:18.182683+00:00",
-  "classification": "INTEGRATED_LOCAL_VALIDATION_NOT_DEPLOYMENT_CERTIFICATION",
+  "checkedAtUtc": "2026-10-12T06:14:08.965313+00:00",
+  "classification": "INTEGRATED_LOCAL_HOSTED_AND_DEPLOYED_RELEASE_VERIFICATION",
   "repository": {
     "name": "hello-tako/Tako-san",
     "id": 1385308553,
@@ -22,7 +22,7 @@
       "pnpm-lock.yaml"
     ],
     "differenceCount": 0,
-    "limitations": "Earlier browser receipts certify their recorded build SHA. Exact final main deployment requires hosted CI and staging receipts."
+    "limitations": "Earlier local browser receipts retain their recorded build SHA. Hosted merged-main CI and deployed staging/production smoke certify the exact release SHA separately."
   },
   "results": {
     "node22Suite": {
@@ -72,6 +72,21 @@
       "devDependencies": 0,
       "optionalDependencies": 0,
       "totalDependencies": 438
+    },
+    "continuityLatestSuite": {
+      "files": 320,
+      "tests": 7650,
+      "status": "PASS",
+      "sourceSha": "0c0f9933dcd1af2296d8033709ea3bf5ceec30f2",
+      "hostedRunId": 38208731783
+    },
+    "productionRenderingCapture": {
+      "checks": 30,
+      "status": "PASS",
+      "observedExternalErrors": 0,
+      "challengeRequestsPendingAtCapture": true,
+      "liveAuthenticationCertified": false,
+      "priorTurnstileDiagnosticErrorsRetained": true
     }
   },
   "security": {
@@ -653,6 +668,74 @@
         "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
       },
       "remoteFlags": "unset"
+    },
+    {
+      "name": "deployed-staging-continuity-smoke-3",
+      "command": [
+        "node",
+        "/private/tmp/takosan-deployed-smoke.mjs",
+        "https://frigo-staging.tungbipdz.workers.dev",
+        "0c0f9933dcd1af2296d8033709ea3bf5ceec30f2",
+        "staging",
+        ".artifacts/backend-final-local-completion/deployed-staging-continuity-smoke-3"
+      ],
+      "startedAtUtc": "2026-10-12T05:51:33.409381+00:00",
+      "durationSeconds": 60.214,
+      "exitCode": 0,
+      "before": {
+        "head": "0c0f9933dcd1af2296d8033709ea3bf5ceec30f2",
+        "status": ""
+      },
+      "after": {
+        "head": "0c0f9933dcd1af2296d8033709ea3bf5ceec30f2",
+        "status": ""
+      },
+      "logSha256": "226ee4c9c1f1f825ed93d6eb2375b3ea101b4373a1024034db255a2bc565d9ee",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "0c0f9933dcd1af2296d8033709ea3bf5ceec30f2",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "deployed-production-smoke-4",
+      "command": [
+        "node",
+        "/private/tmp/takosan-deployed-smoke.mjs",
+        "https://frigo.tungjpstore.net",
+        "0c0f9933dcd1af2296d8033709ea3bf5ceec30f2",
+        "production",
+        ".artifacts/backend-final-local-completion/deployed-production-smoke-4"
+      ],
+      "startedAtUtc": "2026-10-12T06:12:20.764070+00:00",
+      "durationSeconds": 47.732,
+      "exitCode": 0,
+      "before": {
+        "head": "0c0f9933dcd1af2296d8033709ea3bf5ceec30f2",
+        "status": ""
+      },
+      "after": {
+        "head": "0c0f9933dcd1af2296d8033709ea3bf5ceec30f2",
+        "status": ""
+      },
+      "logSha256": "28d71d9724081948d8d4af6c23662ff4a7122dd126fbb0a471449e713fa4a4ec",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "0c0f9933dcd1af2296d8033709ea3bf5ceec30f2",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
     }
   ],
   "retainedFailures": [
@@ -664,18 +747,31 @@
     "first visual matrix transient fade contrast",
     "hosted Node22 SQLite client bundling failure",
     "839bd hosted CI cancelled during account/repository transfer",
-    "production deploy38206476316 new-SHA D1 continuity preflight rejection before Worker upload; migration0040 remains applied"
+    "production deploy38206476316 new-SHA D1 continuity preflight rejection before Worker upload; migration0040 remains applied",
+    "staging WebKit routed empty HTML attempts; direct final navigation PASS, exact cause unconfirmed",
+    "staging smoke harness API error",
+    "staging urllib health monitor HTTP403 before observation; curl monitor PASS",
+    "continuity staging smoke1 direct WebKit image timeout; nine controls PASS, cause unconfirmed",
+    "continuity staging smoke2 undefined name/width callback; corrected smoke3 PASS",
+    "production monitor1 required ok despite explicit D1 warning/degraded; strict documented-warning monitor2 PASS",
+    "production smoke1 WebKit external Turnstile frame exception; direct diagnosis reproduced at 320/1440, smoke4 records external errors without certifying auth",
+    "production smoke2 WebKit no h1; default/identity 18-case HTML controls PASS, original cause unconfirmed, smoke4 captures document bytes/encoding before DOM assertions",
+    "production smoke3 global networkidle timeout in Firefox; final smoke4 uses explicit rendering assertions and pending-request evidence"
   ],
-  "releaseState": "PR67_MERGED_STAGING_VERIFIED_PRODUCTION_PREFLIGHT_FAILED",
+  "releaseState": "PRODUCTION_VERIFIED_WITH_EXTERNAL_ACCEPTANCE_OPEN",
   "openEvidence": [
-    "production Environment required reviewer vn-taphoanhatung",
-    "actual deployed fail-closed recovery version certification",
-    "real inbox delivery",
-    "live OCR/provider quality and budget",
-    "independent human ingredient/data acceptance",
-    "old physical devices and supported browser floor",
-    "protected payment/billing ownership and live transaction acceptance",
-    "edge/load/chaos/SLO and independent operational acceptance"
+    "Synthetic invoice/fridge evidence remains TEST_ONLY; live OCR/provider accuracy and approved paid budget open.",
+    "Real inbox delivery is unverified; production reports deliveryVerified=false.",
+    "Production smoke3 failed on global networkidle timeout in Firefox. Final rendering smoke uses explicit DOM/font/image/geometry checks and records pending requests; no global network-quiescence certificate is claimed.",
+    "Production smoke2 failed with no h1 on direct WebKit; HTML/encoding diagnostic retained separately. No cause or physical-device certification is inferred from a later pass.",
+    "Direct WebKit production diagnosis reproduces an external Cloudflare Turnstile cross-origin iframe error. Rendering smoke records it separately; real challenge/auth acceptance remains open.",
+    "Production runtime reports degraded for the deliberate CONFIG_RECIPE_CATALOG_D1_AUTHORITY warning. Monitor2 permits exactly this documented warning; monitor1 failed its incorrect ok-only expectation and remains retained.",
+    "Independent ingredient/data acceptance and dormant V2 catalog promotion remain open.",
+    "Physical old devices, supported browser floor and live protected payment/billing acceptance remain open.",
+    "Bounded public health checks do not establish seven-day SLO, load/chaos or multi-isolate acceptance.",
+    "Recovery version metadata is certified; it remains inactive and no live traffic rollback rehearsal is claimed.",
+    "Earlier routed WebKit empty HTML and direct WebKit image-load timeout retained; nine direct diagnostic controls pass, underlying cause unconfirmed.",
+    "New staging smoke attempt 2 failed on an undefined harness callback variable; corrected attempt 3 passed. Failed attempts are excluded from product PASS."
   ],
   "privateContentPublished": false,
   "mainMergedSha": "6bc1fe96527bf111958b870f66b47f4e0c5ea2fd",
@@ -694,6 +790,53 @@
     },
     "runtimeSourceDeltaFromMergedMain": 0,
     "securityDeltaReceipt": "continuity-security.json",
-    "productionDeployPending": true
+    "productionDeployPending": false,
+    "mergedPr": 68
+  },
+  "deployedSha": "0c0f9933dcd1af2296d8033709ea3bf5ceec30f2",
+  "releaseReceiptSha256": "d9aa31e62294b3c82e44c8cd6a733877a811baa6c820f6d99268ff56f23d1c92",
+  "hostedMainCi": {
+    "conclusion": "success",
+    "createdAt": "2026-10-12T05:37:17Z",
+    "event": "push",
+    "headSha": "0c0f9933dcd1af2296d8033709ea3bf5ceec30f2",
+    "status": "completed",
+    "updatedAt": "2026-10-12T05:44:14Z",
+    "url": "https://github.com/hello-tako/Tako-san/actions/runs/38208731783"
+  },
+  "workflowRuns": {
+    "stagingMigration": 38204668457,
+    "stagingDeploy": 38209289078,
+    "productionMigration": 38205975841,
+    "productionDeploy": 38209910253
+  },
+  "deployedPublicSmoke": {
+    "staging": {
+      "status": "PASS",
+      "checks": 30,
+      "scope": "DEPLOYED_PUBLIC_READ_ONLY_SMOKE",
+      "receiptSha256": "36dcc93f4519da8aa3e77629a0fb8e86cc788e14383bcdfe3480a79635274962",
+      "externalScriptErrorObservations": 0,
+      "liveAuthOrTurnstileCertified": false
+    },
+    "production": {
+      "status": "PASS",
+      "checks": 30,
+      "scope": "DEPLOYED_PUBLIC_READ_ONLY_SMOKE",
+      "receiptSha256": "4a53af61e75cbd7d71f4d80d50b00ea0a78852800ac4bdc631d395e7285b7d26",
+      "externalScriptErrorObservations": 0,
+      "liveAuthOrTurnstileCertified": false
+    }
+  },
+  "productionMonitoring": {
+    "status": "PASS",
+    "observations": 11,
+    "durationSeconds": 301.163,
+    "startedAtUtc": "2026-10-12T06:03:54.215634+00:00",
+    "finishedAtUtc": "2026-10-12T06:08:55.373182+00:00",
+    "scope": "BOUNDED_PUBLIC_READINESS_OBSERVATIONS_NOT_SLO_CERTIFICATION",
+    "errors": [],
+    "runtimeStatus": "degraded",
+    "acceptedRuntimeWarning": "CONFIG_RECIPE_CATALOG_D1_AUTHORITY"
   }
 }

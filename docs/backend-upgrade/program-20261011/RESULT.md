@@ -1,3 +1,40 @@
+# Integrated release completed - 2026-10-12 JST
+
+Status: PRODUCTION_VERIFIED_WITH_EXTERNAL_ACCEPTANCE_OPEN.
+Backend integration and complete Brand V3 are merged in hello-tako/Tako-san
+(ID 1385308553) through PR66/67/68. Production serves source `0c0f9933dcd1af2296d8033709ea3bf5ceec30f2` at
+https://frigo.tungjpstore.net. Main CI 38208731783 and protected production deploy
+38209910253 succeeded. Actual reviewer vn-taphoanhatung approved migration and deploy;
+protection settings were preserved. Migration 0040 ran once from 6bc1fe96; the schema
+is unchanged in 0c0f9933. D1 ledger 40, integrity/constraints and 500-recipe authority
+are verified. Normal 100% Worker and inactive strict-OTP recovery are recorded.
+
+Latest full local/hosted suite: 320 files / 7650 tests PASS. Integration evidence includes
+94 isolated E2E and 198 responsive screenshots; these retain their recorded build SHAs.
+Final staging/production rendering smoke: 30 checks each, browser/public/PWA scope.
+Production 11 observations over 301.163 seconds pass exact-SHA,
+DB/queue/catalog/config checks; runtime reports degraded only for the deliberate
+D1 authority warning. This is bounded verification, not a seven-day SLO.
+Production WebKit external Turnstile frame errors are preserved and live auth
+acceptance remains open. Earlier WebKit image/empty-content failures and harness
+errors remain recorded, with direct controls; their intermittent cause is unconfirmed.
+
+Full dependency graph audit: 0 advisories. Final pinned source-delta scanners: 0 findings;
+full-source Gitleaks raw 17 remain context-adjudicated with 0 unresolved, not raw 0.
+Paid AI/provider activation, real inbox delivery, independent OCR/data/ingredient
+quality, physical device/browser-floor, protected payment/billing and operational
+load/chaos/SLO acceptance remain open. Synthetic invoices/fridge images stay
+TEST_ONLY; dormant provider/V3 writer/Ingredient V2 candidates remain unpromoted.
+
+Use [release result](../final-local-completion/RESULT.md),
+[receipt](../final-local-completion/release-receipt.json) and
+[remaining inputs](../final-local-completion/OPEN_ACCEPTANCE.md) as the current release
+state. The following checkpoint is historical; its security/remote-release status
+is superseded by this verified integrated release, while its independent data and
+provider limits remain applicable.
+
+---
+
 # Backend program local result - 2026-10-12 JST
 
 Status: LOCAL_IMPLEMENTATION_VERIFIED_WITH_BLOCKING_SECURITY_AND_EXTERNAL_GATES.

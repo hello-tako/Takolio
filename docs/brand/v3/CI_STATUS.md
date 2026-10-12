@@ -1,3 +1,21 @@
+# Brand V3 integrated production receipt - 2026-10-12 JST
+
+PR66 source `6114a43ee6c2798ecd9aebca959dd6496d1a2aea` is merged and retained in
+production release `0c0f9933dcd1af2296d8033709ea3bf5ceec30f2` through PR67 and PR68 in hello-tako/Tako-san,
+unchanged repository ID 1385308553. Exact merged-main CI 38208731783 and protected
+production deploy 38209910253 PASS. Final public rendering/PWA smoke passes 30 checks
+on staging and production, with external WebKit Turnstile errors recorded separately
+and no authenticated journey certificate. Runtime/API/payment scope and independent
+acceptance limits are detailed in
+[release result](../../backend-upgrade/final-local-completion/RESULT.md) and
+[receipt](../../backend-upgrade/final-local-completion/release-receipt.json).
+
+Earlier baseline E/H failures were addressed in integration test instrumentation;
+94 isolated production-build E2E pass. Full dependency audit now reports 0 advisories.
+Original source-branch evidence follows unchanged and is historical.
+
+---
+
 # Commit / PR / CI Receipt
 
 - Repository: `vn-tak/Tako-san`, ID `1385308553`.

@@ -1,0 +1,283 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-10-12T06:13:58.229539+00:00",
+  "classification": "INTEGRATED_RELEASE_DEPLOYED_WITH_BOUNDED_VERIFICATION",
+  "status": "PRODUCTION_VERIFIED_WITH_EXTERNAL_ACCEPTANCE_OPEN",
+  "continuitySecurityFinalReceiptSha256": "f75f7566c5dd077330147088df488c3cf11d52020c5dd850362d4e64d803f43c",
+  "repository": {
+    "name": "hello-tako/Tako-san",
+    "id": 1385308553
+  },
+  "releaseSha": "0c0f9933dcd1af2296d8033709ea3bf5ceec30f2",
+  "hardeningAncestor": "231486aed1fd67b7bb4e1ce443b56752c8e9bfc7",
+  "brandAncestor": "6114a43ee6c2798ecd9aebca959dd6496d1a2aea",
+  "mergedPrs": [
+    {
+      "headRefOid": "6114a43ee6c2798ecd9aebca959dd6496d1a2aea",
+      "mergeCommit": {
+        "oid": "c8c151eb7d9196f52a23f75b91e228ed8f2e3a22"
+      },
+      "mergedAt": "2026-10-12T04:32:54Z",
+      "state": "MERGED",
+      "url": "https://github.com/hello-tako/Tako-san/pull/66"
+    },
+    {
+      "headRefOid": "a27e201133f33ff12e14f3c789926848730e01f3",
+      "mergeCommit": {
+        "oid": "6bc1fe96527bf111958b870f66b47f4e0c5ea2fd"
+      },
+      "mergedAt": "2026-10-12T04:32:52Z",
+      "state": "MERGED",
+      "url": "https://github.com/hello-tako/Tako-san/pull/67"
+    },
+    {
+      "headRefOid": "231486aed1fd67b7bb4e1ce443b56752c8e9bfc7",
+      "mergeCommit": {
+        "oid": "0c0f9933dcd1af2296d8033709ea3bf5ceec30f2"
+      },
+      "mergedAt": "2026-10-12T05:37:14Z",
+      "state": "MERGED",
+      "url": "https://github.com/hello-tako/Tako-san/pull/68"
+    }
+  ],
+  "mainCi": {
+    "conclusion": "success",
+    "createdAt": "2026-10-12T05:37:17Z",
+    "event": "push",
+    "headSha": "0c0f9933dcd1af2296d8033709ea3bf5ceec30f2",
+    "status": "completed",
+    "updatedAt": "2026-10-12T05:44:14Z",
+    "url": "https://github.com/hello-tako/Tako-san/actions/runs/38208731783"
+  },
+  "priorFailedProductionDeploy": {
+    "runId": 38206476316,
+    "sourceSha": "6bc1fe96527bf111958b870f66b47f4e0c5ea2fd",
+    "beforeWorkerUpload": true
+  },
+  "workflowRuns": {
+    "stagingMigration": 38204668457,
+    "stagingDeploy": 38209289078,
+    "productionMigration": 38205975841,
+    "productionDeploy": 38209910253
+  },
+  "productionApprovals": {
+    "migration": "vn-taphoanhatung",
+    "deploy": "vn-taphoanhatung",
+    "actualGitHubApprovalHistoryVerified": true,
+    "protectionSettingsChanged": false
+  },
+  "migration": {
+    "tip": "0040_strict_otp_foundation.sql",
+    "sourceSha": "6bc1fe96527bf111958b870f66b47f4e0c5ea2fd",
+    "ledgerBefore": 39,
+    "ledgerAfter": 40,
+    "onlyApplied": [
+      "0040_strict_otp_foundation.sql"
+    ],
+    "integrity": {
+      "foreignKeyCheck": "[]",
+      "quickCheck": "ok"
+    },
+    "aggregateDrift": "none",
+    "strictSchemaConstraints": "PASS",
+    "timeTravelBookmarkCapturedInPrivateReceipt": true
+  },
+  "production": {
+    "url": "https://frigo.tungjpstore.net",
+    "deployed": {
+      "sha": "0c0f9933dcd1af2296d8033709ea3bf5ceec30f2",
+      "environment": "production",
+      "checkedAt": "2026-10-12T06:00:49.585Z",
+      "attempts": 3,
+      "waitedMs": 9653
+    },
+    "worker": {
+      "versionId": "820c79ef-2db1-4016-95e8-afad9d61958f",
+      "deploymentId": "526abd18-51ef-4c9b-bb89-abaa305b62b7",
+      "capturedAt": "2026-10-12T06:00:54.773Z",
+      "binding": {
+        "versionId": "820c79ef-2db1-4016-95e8-afad9d61958f",
+        "bindingName": "DB",
+        "databaseId": "f975ec39-b2c8-4a2a-80e1-0366054599d3",
+        "checkedAt": "2026-10-12T06:00:54.773Z"
+      }
+    },
+    "recipeAuthority": {
+      "configuredMode": "d1",
+      "cutoverEnabled": true,
+      "canaryPercent": 0,
+      "actualSource": "d1",
+      "globalSource": "d1",
+      "servedRecipeCount": 500,
+      "servedFingerprint": "f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37",
+      "releaseId": "rel-bd00a4f53fcaeee4",
+      "d1Readiness": "ready",
+      "fallbackReason": null,
+      "checkedAt": "2026-10-12T06:00:56.371Z"
+    },
+    "authorityContinuity": {
+      "from": "d1",
+      "to": "d1",
+      "kind": "unchanged_d1_continuity",
+      "continuity": {
+        "previousAuthorityProof": {
+          "commit": "652e0d7632745e9b77cda4b5b3caac83a3ec1015",
+          "relation": "ancestor",
+          "configuredMode": "d1",
+          "canaryPercent": 0,
+          "cutoverEnabled": true,
+          "release": {
+            "releaseId": "rel-bd00a4f53fcaeee4",
+            "expectedRecipeCount": 500,
+            "expectedRuntimeFingerprint": "f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37",
+            "legacyBaselineCount": 71,
+            "legacyBaselineFingerprint": "9ae153e64d34b30d72bb985d4070d8e210201219c0e8f8998ce8f99057fc7c3f"
+          },
+          "checkedAt": "2026-10-12T06:00:16.967Z"
+        },
+        "binding": {
+          "versionId": "eee43e96-53ff-40f3-9779-e10fe256e0d8",
+          "bindingName": "DB",
+          "databaseId": "f975ec39-b2c8-4a2a-80e1-0366054599d3",
+          "checkedAt": "2026-10-12T06:00:16.967Z"
+        },
+        "sourceBlobs": {
+          "src/worker/services/recipe-authority.ts": "02fe464de14bd46c1bfb325930f8b85c07cc9e13",
+          "src/worker/services/recipe-authority-status.ts": "5ff8c9bd50037707f106d557d8227bedf139b8e3",
+          "packages/db/src/recipe-content.ts": "9b7ecd3c09d5dce5e00791cdcf97803d6ba35cca",
+          "packages/domain/src/foundation.ts": "409586d3933b095ae6cce6ae058774e01bb6293b",
+          "packages/recipes/src/recipe-authority.ts": "d80cf1ffd96679751a42d0ae4af1935e7017efb1",
+          "packages/recipes/src/recipe-canary-cohort.ts": "d27d267dfa8b29ee40e6f8f160e03bc1f8383602",
+          "packages/recipes/src/runtime-catalog.ts": "52c54af1da4158c17c7469edd9a542aa2ec08571",
+          "packages/recipes/src/runtime-hydration.ts": "76010a1a1f5e194c821a91856f4c529a88a11d16",
+          "packages/recipes/src/runtime-recipe.ts": "240dfb9f28bba54ff49d43d5305da149071e8542",
+          "packages/recipes/src/catalog-drift.ts": "720a60120ae9293ddfe78185d6607bcde355924e",
+          "packages/recipes/src/catalog-entry.ts": "89ba4597e14410222bfc033477b350c6a293b4f3",
+          "packages/recipes/src/catalog-fingerprint.ts": "2e76aaae5b287b049829f92d2f7b23c32415b912",
+          "packages/recipes/src/foundation.ts": "83b57c5f36f9750dfd6f5ff263ac8826cfa7e0f1",
+          "packages/recipes/src/types.ts": "31f98a6bed79487b9a1a6dd8352018235cee22d8",
+          "packages/recipes/src/data.ts": "ac3de767eb273e13a3f3804718804d348c58b0df",
+          "packages/recipes/src/vietnamese-bank.ts": "38f66a55844e141bafc2d055034f911292a7ef33",
+          "packages/recipes/src/vietnamese-images.ts": "bea3e0300f0c3a5f0faea81ddb559311daa0e91f",
+          "packages/recipes/src/seed-render.ts": "53253984e3ad1c56090cf0ce5debfcb63758a26f",
+          "packages/recipes/src/import/release-manifest.ts": "0587d3051a283a4243eb8a9c174528e80621e1e3",
+          "packages/recipes/src/import/identity.ts": "7e3df611c5be4b8805d16dd6c6441ec6ae6474ff",
+          "packages/recipes/src/import/types.ts": "fa301e015ae28741b04b074c4b78ad3a7ed946df",
+          "packages/recipes/src/import/catalog-release.current.json": "5f8e30646c053c3bdbeb40720c6809c3f5208f67"
+        },
+        "dependency": {
+          "dependency": "^3.24.2",
+          "version": "3.25.76",
+          "integrity": "sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ=="
+        },
+        "kind": "unchanged_d1_continuity",
+        "checkedAt": "2026-10-12T06:00:17.056Z"
+      },
+      "checkedAt": "2026-10-12T06:00:17.056Z"
+    },
+    "recipeCatalogMode": "d1",
+    "canaryPercent": 0,
+    "cutoverEnabled": true,
+    "mealCompositionV2Enabled": true,
+    "assets": {
+      "sha": "0c0f9933dcd1af2296d8033709ea3bf5ceec30f2",
+      "sha256": "3722d11141f0ecd0ed47b9233974949e187045086071665b81592b919a20b7ca",
+      "httpStatus": 200,
+      "cacheNoStore": true,
+      "consecutiveObservations": 3
+    },
+    "strictOtpRecovery": {
+      "versionId": "a300e28d-d304-4dcb-a256-b2495befe72c",
+      "commit": "0c0f9933dcd1af2296d8033709ea3bf5ceec30f2",
+      "binding": {
+        "versionId": "a300e28d-d304-4dcb-a256-b2495befe72c",
+        "bindingName": "DB",
+        "databaseId": "f975ec39-b2c8-4a2a-80e1-0366054599d3",
+        "checkedAt": "2026-10-12T06:00:27.121Z"
+      },
+      "kind": "STRICT_OTP_FAIL_CLOSED",
+      "checkedAt": "2026-10-12T06:00:27.121Z"
+    },
+    "recoveryActivated": false,
+    "liveRecoveryRehearsalPerformed": false
+  },
+  "smokes": {
+    "staging": {
+      "status": "PASS",
+      "checks": 30,
+      "scope": "DEPLOYED_PUBLIC_READ_ONLY_SMOKE",
+      "receiptSha256": "36dcc93f4519da8aa3e77629a0fb8e86cc788e14383bcdfe3480a79635274962",
+      "externalScriptErrorObservations": 0,
+      "liveAuthOrTurnstileCertified": false
+    },
+    "production": {
+      "status": "PASS",
+      "checks": 30,
+      "scope": "DEPLOYED_PUBLIC_READ_ONLY_SMOKE",
+      "receiptSha256": "4a53af61e75cbd7d71f4d80d50b00ea0a78852800ac4bdc631d395e7285b7d26",
+      "externalScriptErrorObservations": 0,
+      "liveAuthOrTurnstileCertified": false
+    }
+  },
+  "schemaSourceUnchangedFromMigrationSha": "6bc1fe96527bf111958b870f66b47f4e0c5ea2fd",
+  "productionMonitoring": {
+    "status": "PASS",
+    "observations": 11,
+    "durationSeconds": 301.163,
+    "startedAtUtc": "2026-10-12T06:03:54.215634+00:00",
+    "finishedAtUtc": "2026-10-12T06:08:55.373182+00:00",
+    "scope": "BOUNDED_PUBLIC_READINESS_OBSERVATIONS_NOT_SLO_CERTIFICATION",
+    "errors": [],
+    "runtimeStatus": "degraded",
+    "acceptedRuntimeWarning": "CONFIG_RECIPE_CATALOG_D1_AUTHORITY"
+  },
+  "sourceReceiptDigests": {
+    "deployed-smoke-runner-final.mjs": "5f9ac0178e269f6f6a33bd9e4f37b8de366ed8a879065ccfe137208f17794299",
+    "production-health-monitor-runner-final.py": "b2c920d54fb63459c13432e66034d81076d7ec3581976fd43169cb623b5f18a6",
+    "production-health-monitor-1.json": "9a844e1f4a8a0e70cec85c8d1177aeccb653aad2378434927e076aeebf2565d2",
+    "production-health-monitor-1-diagnostic.json": "18fbef2fc9f6ccd4a4ef2980de6770d5416fa033c0fe61d717f0e4f37329bd8f",
+    "deployed-production-smoke-1.json": "3160a24c1c3c3eba581e0e6d0cf424c97c1cfd05442d1500a53a56c14f37e4cc",
+    "deployed-production-smoke-1/receipt.json": "78f7b7234b8b8279ab98c59bf16c1ff0f7c42513b8734a71d3fb0f38e6d01a40",
+    "deployed-production-smoke-2.json": "d6b6fb5bff47d337f58bc47d7eafe7d28f149fa7b7d1b74bdfc95da6e1869443",
+    "deployed-production-smoke-2/receipt.json": "55c68135ebea9f14cb28ff9acd1909c14ba9738d02965a4975988e2d34616010",
+    "production-webkit-html-diagnostic-1.json": "4f431a14fc675307ec399d414795f5bad9deb9b3697f0cf2f9a6fa6179808978",
+    "deployed-production-smoke-3.json": "7d9997e5ebe92f25cbbad5c7c4eeb3fc4df100d27e0081a846f5b071e970c955",
+    "deployed-production-smoke-3/receipt.json": "a7e890bf7bc27964a4708d159e3176403d7bb5ff9c49094a2e2a52a15fc7628a",
+    "production-webkit-external-diagnostic-1.json": "3d02283cd9c0b547368b420c988d4016c98a4df2c46329c914a52a72386977dc",
+    "merged-pr66-final.private.json": "403b72fcb652e3905cabe17a36cf7802d5142436f8530db88df46c5b0b5483f9",
+    "merged-pr67-final.private.json": "ee85b60436d9d87314fba631e6547e36327044a20d24ab8c5335d73676e380a8",
+    "merged-pr68-final.private.json": "8070107719b284111600e7a3e7d1739b515f14b08967b4bd47d1fdb68595b34e",
+    "continuity-merged-main-ci-final.private.json": "11d37e65ad775c8dda39bf77c5dda230cdec52992d312cee09b91f3a65ea19d0",
+    "production-deploy-continuity-final.private.json": "17f9825974ce7d56a13e8c1bd3b4b5f32e82cd9b747d19f8ed2a7b76bfc746d4",
+    "continuity-security-final/receipt.json": "f75f7566c5dd077330147088df488c3cf11d52020c5dd850362d4e64d803f43c",
+    "deployed-staging-continuity-smoke-1.json": "f061f1e2721d45a4c8931c058693c3dd77406365ed5a21322097c29163163b07",
+    "deployed-staging-continuity-smoke-1/receipt.json": "565c96b9bb61cd0febe51f138fa0fb1cd06002f26b50d5f94328391e4317d32f",
+    "deployed-staging-continuity-smoke-2.json": "0b59f58f8b877371519cd2687e79e882c5f2db9b69ae3d6b719cab375039da60",
+    "staging-webkit-asset-diagnostic-1.json": "b3176817fb2d995bf4a4f6f51d35dab55ed20fba06ab0527af2afc0204821076",
+    "hosted-staging-0040/staging-d1-0040-38204668457-1/staging-migration-receipt.json": "e668d0d893118368c26f0572ec1291f408ab46135c786937bd2e506cc1fa5d97",
+    "hosted-production-0040-approved/migration-manifest.json": "536a17a9757bd74d4e2b12a9f5ab9727e40c184390cd4735e1e7fa10b63e5ce6",
+    "hosted-staging-continuity-deploy/release-manifest.json": "1db09ff2aa42fb641289af851fdef5c4a071766a2eba50359eac2149bb794ba8",
+    "hosted-production-deploy/release-manifest.json": "91d96324c6ea6b6052d71254552e3434d232dd1bfe98e384cfefbc488b06b712",
+    "production-0040-approved.private.json": "0bb7e6b16c42aff28d358d8ced9c21627d8b12181c20a1f3e5b6d092b3cdd714",
+    "production-deploy-continuity-approved.private.json": "0bb7e6b16c42aff28d358d8ced9c21627d8b12181c20a1f3e5b6d092b3cdd714",
+    "production-health-monitor-2.json": "3afdbe566430f651b91fe6e5aeb646b4729dfd51ebc0089c1d7d19072d9c2c23",
+    "deployed-production-smoke-4.json": "2a143860302221f9e456e7dbbeaaca4bf951e64450643f3aa3ae6a10054569c8",
+    "deployed-production-smoke-4/receipt.json": "4a53af61e75cbd7d71f4d80d50b00ea0a78852800ac4bdc631d395e7285b7d26",
+    "deployed-staging-continuity-smoke-3/receipt.json": "36dcc93f4519da8aa3e77629a0fb8e86cc788e14383bcdfe3480a79635274962"
+  },
+  "limits": [
+    "Synthetic invoice/fridge evidence remains TEST_ONLY; live OCR/provider accuracy and approved paid budget open.",
+    "Real inbox delivery is unverified; production reports deliveryVerified=false.",
+    "Production smoke3 failed on global networkidle timeout in Firefox. Final rendering smoke uses explicit DOM/font/image/geometry checks and records pending requests; no global network-quiescence certificate is claimed.",
+    "Production smoke2 failed with no h1 on direct WebKit; HTML/encoding diagnostic retained separately. No cause or physical-device certification is inferred from a later pass.",
+    "Direct WebKit production diagnosis reproduces an external Cloudflare Turnstile cross-origin iframe error. Rendering smoke records it separately; real challenge/auth acceptance remains open.",
+    "Production runtime reports degraded for the deliberate CONFIG_RECIPE_CATALOG_D1_AUTHORITY warning. Monitor2 permits exactly this documented warning; monitor1 failed its incorrect ok-only expectation and remains retained.",
+    "Independent ingredient/data acceptance and dormant V2 catalog promotion remain open.",
+    "Physical old devices, supported browser floor and live protected payment/billing acceptance remain open.",
+    "Bounded public health checks do not establish seven-day SLO, load/chaos or multi-isolate acceptance.",
+    "Recovery version metadata is certified; it remains inactive and no live traffic rollback rehearsal is claimed.",
+    "Earlier routed WebKit empty HTML and direct WebKit image-load timeout retained; nine direct diagnostic controls pass, underlying cause unconfirmed.",
+    "New staging smoke attempt 2 failed on an undefined harness callback variable; corrected attempt 3 passed. Failed attempts are excluded from product PASS."
+  ],
+  "privateContentPublished": false
+}
