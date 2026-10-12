@@ -1,3 +1,87 @@
+# payOS operational handoff - 2026-10-12 JST
+
+**Status:** STAGING_ENABLED; PRODUCTION_REPLACEMENT_BLOCKED_BY_CLOUDFLARE_API.
+This entry supersedes the historical payOS checkpoints below. Canonical repository
+hello-tako/Tako-san, ID1385308553. Independent checkout and documentation branch;
+other release worktrees untouched. PR70 and PR71 are merged. Approved runtime source:
+186a9cf05de7c91ed3289e13130feb3b38a264ac; adapter correction ancestor:
+3bd4ad36669af56c7667ef03705d486375dc34e0. This documentation does not certify a
+new runtime deployment or authorize bypassing the protected release workflow.
+
+**Delivered:** Separate Tako-san Staging/Production channels, three credentials
+per matching Worker, both exact provider-confirmed webhooks, explicit payOS
+checkout flag, signed registration ACK without writes/grants, bounded payloads,
+ASCII alphanumeric virtual accounts, private operator CLI and runbook. Actual
+workerd reproduced redirect:error throwing before outbound work. PR71 uses
+redirect:manual and rejects non-2xx before parsing; redirects cannot forward
+credentials. Prices49000/499000 and durations31/366days unchanged. Checkout
+admission remains OFF independently. No schema/auth/dependency/catalog/workflow/
+protection changes and no extra migration for the runtime correction.
+
+**Validation:** Hosted PR CI38243369856 and main CI38244493825 PASS:332files/
+7732tests, lint/bothTS/41migration replay/build. Protected attempts3/4/5 each passed
+332files/7732tests, build and pre-deploy identity/schema/catalog/integrity checks.
+Seven actual-workerd regressions fail before the fix and pass afterward; focused
+138tests PASS. Local full check7731PASS/1 unrelated WranglerD1 five-second timeout;
+isolated32test rerun PASS. Sequential migration/build PASS. Actual production
+provider-only order11306393054 create/signature/read/cancel PASS0/CANCELLED, no
+app intent. Local workerd order32260934446999 PASS/cancelled0; initial diagnostic
+7816263117534 matched to the dashboard and cancelled0.
+
+**Staging:** Normal deploy38245480997 PASS at release186; payOS checkout enabled.
+Stable100% version3a9211ad-5677-4096-b3d7-f3809ca6cb91, deployment
+f78bebaa-f842-4bab-a10e-468c6f970cd0. Exact bindings/origin/D1/readiness verified
+at activation. Final callback checks signed200/invalid401/malformed400/oversized413/
+unauthenticated401 PASS; public readiness still186/ok/databaseok/queueok. Final
+Worker identity refresh twice hit local45second Wrangler timeouts (deployment
+status, then version view); last complete binding receipt remains the activation
+receipt. Do not claim those final refreshes passed. Provider-only order12166022484 create/signature/
+read/cancel PASS0. No staging app session; authenticated app QR/settlement not
+claimed. Both environments retain catalog d1/canary0 and planner/T20true.
+
+**Production release attempts:** Run38245609645 with actual reviewer
+vn-taphoanhatung approvals, immutable source186 and unchanged inputs.
+Attempt1 uploaded186, passed three consecutive exact readiness/SW observations,
+then curl smoke found a SW SHA mismatch. Final Worker/authority proofs were not
+reached; automatic rollback PASS. Cache/transport cause remains unconfirmed.
+Attempt2 failed before upload: failed-job-only rerun requested artifact2 while
+successful release retained artifact1. Later attempts reran the whole workflow.
+Attempts3/4 passed full gates then GET workers/services/frigo returned504 before
+upload. Direct read-only Wrangler probes later saw200 twice at that service
+endpoint, but full imports failed on additional metadata/FormData; no import or
+remote mutation claimed. Attempt5 advanced past metadata, then GET
+workers/scripts/frigo/secrets returned504 before upload. It passed7732tests and
+all pre-deploy gates. No successful replacement receipt exists for attempts3-5.
+Regional status incidents do not establish a cause for these API failures.
+
+**Final production:** Checkout OFF, previous flag-aware source
+4fb7c40d01769f0d8d8d043fac0c799b435b3e3e at100%, Worker version
+6a1a5a1c-e8e4-4ddc-b497-57f28c267662, final rollback deployment
+084b6b09-110e-42c7-b770-5c2637c3a30d. Exact binding/origin/D1/key names/readiness
+and full previous-SHA public smoke PASS after attempt5 rollback. Callback matrix
+200/401/400/413/401 PASS in both environments. Direct production secret-name list
+also succeeds; this does not prove hosted deploy API stability. Database/queueok,
+configok; existing CONFIG_RECIPE_CATALOG_D1_AUTHORITY warning retained.
+
+**Security and acceptance:** Four private temporary credential files were
+truncated and verified0bytes after final callback checks. Keys remain in their
+matching Cloudflare Workers and are recoverable from the owner's payOS dashboard.
+No bank transfer, fake payment callback, direct Plus grant or refund performed.
+Authenticated production QR and paid/persisted Plus remain UNVERIFIED. Do not
+claim production payOS checkout operational while source4fb remains deployed.
+
+**Next:** Resolve the Cloudflare deploy API504, then rerun the WHOLE protected
+workflow on a current-main approved release with d1/canary0/pairedT20true. Require
+actual Environment reviewer approval; no direct deploy or bypass. Verify exact
+Worker/source/assets/authority before setting PAYOS_CHECKOUT_ENABLED=true.
+Verify authenticated application QR49000, then let the owner perform any real
+bank transfer and check server-confirmed paid/Plus persists after refresh.
+See docs/payos/RUNBOOK.md. Local user-facing report and sanitized evidence are
+outputs/payos-integration-status.md and outputs/payos-verification-evidence.json
+outside this repository. Production remains safe while this blocker is open.
+
+---
+
 # payOS Worker runtime correction - 2026-10-12 JST
 
 **Status:** FIX_IMPLEMENTED_FOCUSED_VERIFIED; final hosted CI and replacement
