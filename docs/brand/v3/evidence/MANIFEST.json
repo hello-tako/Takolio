@@ -237,6 +237,11 @@
       "sha256": "44ce793cf94d9270eb900cf145e12ebd8e71360213e6f1e90161cbbfaf51cace"
     },
     {
+      "path": "logs/planning-final-tests.log.gz",
+      "bytes": 585,
+      "sha256": "9466b53095f7c398247e3930a33cef12fe050e6386dea006540f62c1f2e502d1"
+    },
+    {
       "path": "logs/production-e2e-final.log.gz",
       "bytes": 4092,
       "sha256": "54c7a2ba230b5e2dd44a2ed71f89671503383b436e4a7e07f2d49eb70dd17b00"

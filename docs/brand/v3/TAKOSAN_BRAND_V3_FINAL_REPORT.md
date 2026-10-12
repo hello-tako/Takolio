@@ -11,9 +11,9 @@ production release vẫn bị giữ bởi những hạn chế ghi rõ bên dư�
 | Default branch | `main`, protected |
 | Baseline SHA | `652e0d7632745e9b77cda4b5b3caac83a3ec1015` |
 | Branch | `feat/takosan-brand-v3-full-integration` |
-| Implementation SHA | Ghi ở `CI_STATUS.md` sau checkpoint commit |
-| Final commit SHA / PR URL / CI | Ghi ở `CI_STATUS.md`; actual final HEAD trong PR |
-| Changed files | Exact implementation count ghi ở `CI_STATUS.md` |
+| Implementation SHA | `d35f4a68f4c2f6eb77f2a27742b5f1a3900075a7` |
+| Final commit SHA / PR URL / CI | PR https://github.com/vn-tak/Tako-san/pull/66; final HEAD / CI tại PR checks |
+| Changed files | 214; không deleted files |
 | Tác nhân | Một Codex agent; self-review, không independent approval |
 
 ## Kết quả

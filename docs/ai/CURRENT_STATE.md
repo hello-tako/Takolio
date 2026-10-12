@@ -1,12 +1,14 @@
 # Takosan Brand V3 - 2026-10-12 JST
 
-**Task/status:** `TAKOSAN_BRAND_V3_IMPLEMENTED_VERIFIED`, local scope; PR/hosted
+**Task/status:** `TAKOSAN_BRAND_V3_PR_READY`, local scope; PR #66/hosted
 CI tracked in `docs/brand/v3/CI_STATUS.md`. No merge or production deployment.
 
 **Repository/source:** `vn-tak/Tako-san`, ID `1385308553`, main baseline
 `652e0d7632745e9b77cda4b5b3caac83a3ec1015`, feature branch
 `feat/takosan-brand-v3-full-integration`. Isolated checkout in projectless work/repo.
-Implementation checkpoint SHA recorded after commit; this entry does not name itself.
+Implementation checkpoint `d35f4a68f4c2f6eb77f2a27742b5f1a3900075a7`.
+PR: https://github.com/vn-tak/Tako-san/pull/66.
+Hosted validate đang chạy; không tính pending thành PASS.
 
 **Actual change:** Canonical V3 contracts for legacy/kitchen; logo family, micro,
 4 mascot, safe opaque PWA icons/OG, licensed self-host Nunito. Semantic mapping
@@ -15,22 +17,22 @@ payment states retained. Entry/header/sidebar/metadata/SW cache use V3. Curated
 source/native/assets and five Vietnamese reports/evidence. No Worker/domain/auth
 logic/payment config/services/stores/migrations/dependency/CI/deploy changes.
 
-**Executed:** Input83/83 digest/safety/dimensions; reproducible49 exports; runtime54
-files/269090bytes; glyph/weight/license hashes. Full Vitest289files/6749testsPASS
-with canonical local TMPDIR and2workers, no waiver. Types/full lint/local migration
-smoke and both paired-flags buildsPASS; focused brand6files/68testsPASS.
-Production-build E2E82PASS/4 failures: baseline ambiguous status selector H and
+**Executed:** Input 83/83 digest/safety/dimensions; reproducible 49 exports; runtime 54
+files / 269090 bytes; glyph/weight/license hashes. Full Vitest 289 files / 6749 tests PASS
+with canonical local TMPDIR and 2 workers, no waiver. Types/full lint/local migration
+smoke and both paired-flags builds PASS; focused brand 6 files / 68 tests PASS.
+Production-build E2E 82 PASS / 4 failures: baseline ambiguous status selector H and
 source-import instrumentation E unsupported in production, both repeated on baseline.
-Auth resend/expiry8PASS. BEFORE198/AFTER198 renders across320..1440, zero final axe/
-overflow/broken images/navigation clipping; supplemental15states/2journeys,12Week-off,
-3PWAchecksPASS. Performance3cold/warm pairs/3routes, font transfer reduced, JS bundle
-near unchanged, CLSHome~0.01765, zero measured domain writes/inventory unchanged.
+Auth resend/expiry 8 PASS. BEFORE 198 / AFTER 198 renders across 320..1440, zero final axe/
+overflow/broken images/navigation clipping; supplemental 15 states / 2 journeys, 12 Week-off,
+3 PWA checks PASS. Performance 3 cold/warm pairs / 3 routes, font transfer reduced, JS bundle
+near unchanged, CLS Home~0.01765, zero measured domain writes/inventory unchanged.
 
 **Failure disclosure:** Earlier full test run hit /var-vs-/private/var, missing
-historical Git blobs and existing Wrangler5s timeout; environment repaired and full
+historical Git blobs and existing Wrangler 5s timeout; environment repaired and full
 passed. Default dev preview bootstrap failed before app; production alternative
-used real local cookie/Worker. Dependency audit existing16high/2critical, no package
-changes; needs separate remediation. Heuristic UX script advisoryFAIL; changed UI
+used real local cookie/Worker. Dependency audit existing 16 high / 2 critical, no package
+changes; needs separate remediation. Heuristic UX script advisory FAIL; changed UI
 manually checked against guidelines and dynamic a11y evidence. Not field CWV/device/
 real Google login/email delivery/provider payment/native/screen-reader certification.
 
