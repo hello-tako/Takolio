@@ -37,12 +37,36 @@ export async function verifyPayosData(data: Record<string, unknown>, signature: 
 }
 
 export function payosConfigured(env: Env): boolean {
-  return Boolean(env.PAYOS_CLIENT_ID && env.PAYOS_API_KEY && env.PAYOS_CHECKSUM_KEY && applicationOrigin(env));
+  return env.PAYOS_CHECKOUT_ENABLED === 'true' && Boolean(env.PAYOS_CLIENT_ID && env.PAYOS_API_KEY && env.PAYOS_CHECKSUM_KEY && applicationOrigin(env));
+}
+
+async function readBoundedPayosJson(response: Response): Promise<unknown> {
+  const maximum = 64 * 1024;
+  const reader = response.body?.getReader();
+  if (!reader) throw new Error('Invalid provider response');
+  const chunks: Uint8Array[] = [];
+  let size = 0;
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      size += value.byteLength;
+      if (size > maximum) throw new Error('Invalid provider response');
+      chunks.push(value);
+    }
+  } finally {
+    await reader.cancel().catch(() => {});
+    reader.releaseLock();
+  }
+  const bytes = new Uint8Array(size);
+  let offset = 0;
+  for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.byteLength; }
+  return JSON.parse(new TextDecoder('utf-8', { fatal: true, ignoreBOM: false }).decode(bytes));
 }
 
 const linkSchema = z.object({
   bin: z.string().regex(/^\d{6}$/),
-  accountNumber: z.string().regex(/^\d{1,32}$/),
+  accountNumber: z.string().regex(/^[A-Za-z\d]{1,32}$/),
   accountName: z.string().min(1).max(200),
   amount: z.number().int().positive().safe(),
   currency: z.literal('VND'),
@@ -65,12 +89,13 @@ export async function createPayosInstructions(env: Env, intent: PaymentRow): Pro
   const expiredAt = Math.floor(Date.parse(intent.expires_at) / 1000);
   const response = await fetch('https://api-merchant.payos.vn/v2/payment-requests', {
     method: 'POST',
+    redirect: 'error',
     headers: { 'Content-Type': 'application/json', 'x-client-id': env.PAYOS_CLIENT_ID!, 'x-api-key': env.PAYOS_API_KEY! },
     body: JSON.stringify({ ...signedFields, expiredAt, signature: await signPayosData(signedFields, env.PAYOS_CHECKSUM_KEY!) }),
     signal: AbortSignal.timeout(15_000),
   });
   if (!response.ok) throw new Error('Payment provider unavailable');
-  const result: unknown = await response.json();
+  const result = await readBoundedPayosJson(response);
   const envelope = z.object({ code: z.literal('00'), data: z.record(z.unknown()), signature: z.string() }).parse(result);
   if (!await verifyPayosData(envelope.data, envelope.signature, env.PAYOS_CHECKSUM_KEY!)) throw new Error('Invalid provider signature');
   const data = linkSchema.parse(envelope.data);

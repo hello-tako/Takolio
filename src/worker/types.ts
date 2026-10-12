@@ -114,6 +114,7 @@ export interface Env {
   RESEND_API_KEY?: string;
   // Legacy deployment binding; no longer authorizes a subscription grant.
   PLUS_GRANT_SECRET?: string;
+  PAYOS_CHECKOUT_ENABLED?: string;
   PAYOS_CHECKSUM_KEY?: string;
   PAYOS_CLIENT_ID?: string;
   PAYOS_API_KEY?: string;

@@ -1,3 +1,45 @@
+# payOS live protocol fix - 2026-10-12 JST
+
+PR70 / initial e2a963b7 hosted CI38235911445 PASS; final code updates pending CI.
+Live staging found existing digits-only account validation incompatible with a
+signed alphanumeric virtual account. Restricted ASCII letter/digit support and
+redirect rejection added; unsafe QR paths rejected. Six regressions also cover
+existing payment reconciliation with checkout OFF. Focused4files/131tests,
+lint/bothTS/sequentialpairedT20build PASS. Real staging create/HMAC/read/cancel
+PASS, order11877934005, amountPaid0; no app intent/entitlement/transfer.
+See docs/payos/SURVEY.md for failed attempts and cancelled diagnostic orders.
+Production0041 run38235082984 PASS; concurrent production deploy38236084633
+still in progress. Wait completion before merge to preserve its exact-main gate.
+
+---
+
+# payOS integration - 2026-10-12 JST
+
+**Task/status:** IMPLEMENTED_LOCAL_VERIFIED; hosted PR and operational activation
+pending. Explicit owner request authorizes payOS and isolated staging/production
+channels. Independent branch codex/payos-integration-20261012, base d63321af,
+repository hello-tako/Tako-san (1385308553). Other release worktrees untouched.
+
+**Changes:** Exact signed unmapped payOS verification sample ACK without writes
+or grants; default-off checkout flag independent of callback reconciliation;
+16 KiB webhook/64 KiB provider limits; private-credentials/origin-pinned/dry-run
+operator CLI and tests. No price/auth/migration/dependency/catalog change.
+See docs/payos/SURVEY.md, ADR-PAYOS-001.md and RUNBOOK.md.
+
+**Checks/failures:** Full331files/7719tests PASS, focused120 and operator5 PASS;
+lint/both TypeScript/41-migration replay/audit0/sequential pairedT20build PASS.
+Broad unknown-order ACK, TextDecoder typing and concurrent-build SW failures
+were fixed; details retained in survey. No actual paid settlement claim.
+
+**Remote/next:** Dedicated channels created, Cloudflare login scoped to Worker
+script management confirmed. No keys uploaded/checkout enabled yet. Staging
+migration38234283593/deploy38234498171 PASS on d63321af; production0041
+38235082984 awaits actual vn-taphoanhatung review. Complete concurrent release
+before payOS production deployment. Normal PR/exact-mainCI/deploy, then secrets,
+provider confirmations and activation with evidence. Retain existing approvals.
+
+---
+
 # Integrated backend and Brand V3 production release - 2026-10-12 JST
 
 **Task/status:** PRODUCTION_VERIFIED_WITH_EXTERNAL_ACCEPTANCE_OPEN.

@@ -242,6 +242,7 @@ beforeEach(async () => {
     ENVIRONMENT: 'development',
     CHECKOUT_ADMISSION_ENABLED: 'true',
     APP_URL: ORIGIN,
+    PAYOS_CHECKOUT_ENABLED: 'true',
     PAYOS_CLIENT_ID: CLIENT_ID,
     PAYOS_API_KEY: API_KEY,
     PAYOS_CHECKSUM_KEY: CHECKSUM_KEY,
@@ -264,6 +265,22 @@ describe('PayOS webhook signature protocol', () => {
 });
 
 describe('server payment authority', () => {
+  it.each([undefined, 'false', 'TRUE'])('keeps checkout disabled unless explicitly enabled (%s)', async (flag) => {
+    env.PAYOS_CHECKOUT_ENABLED = flag;
+    const result = await request('/billing/payment-intents', { method: 'POST', body: { plan: 'monthly' } });
+    expect(result.status).toBe(503);
+    expect(providerCalls).toEqual([]);
+    expect(db.query('SELECT * FROM payment_intents')).toEqual([]);
+  });
+
+  it('rejects an oversized provider response without returning payment instructions', async () => {
+    providerDataOverride = (body) => ({ ...providerResponseData(body), padding: 'x'.repeat(65 * 1024) });
+    const result = await request('/billing/payment-intents', { method: 'POST', body: { plan: 'monthly' } });
+    expect(result.status).toBe(502);
+    expect(result.json.payment).toBeUndefined();
+    expect(subscriptionRow()).toBeUndefined();
+  });
+
   it('returns only the server price catalog to authenticated non-guests', async () => {
     const result = await request('/billing/plans');
     expect(result.status).toBe(200);
@@ -576,6 +593,52 @@ describe('owned payment intent status', () => {
 });
 
 describe('verified webhook reconciliation and entitlement grants', () => {
+  it('accepts verified confirmation with checkout disabled and rejects oversized webhooks', async () => {
+    env.PAYOS_CHECKOUT_ENABLED = 'false';
+    const data = { ...officialWebhookData(), orderCode: 123, amount: 3000, description: 'VQRIO123' };
+    expect((await postWebhook({ data, signature: signOfficialData(data) })).status).toBe(200);
+    const oversized = { ...data, padding: 'x'.repeat(17 * 1024) };
+    expect((await postWebhook({ data: oversized, signature: signOfficialData(oversized) })).status).toBe(413);
+    expect(db.query('SELECT * FROM payment_intents')).toEqual([]);
+    expect(subscriptionRow()).toBeUndefined();
+  });
+
+  it('acknowledges signed unmapped provider verification without writing or granting', async () => {
+    const data = { ...officialWebhookData(), orderCode: 123, amount: 3000, description: 'VQRIO123' };
+    const beforePayments = db.query('SELECT * FROM payment_intents');
+    const beforeSubscriptions = db.query('SELECT * FROM subscriptions');
+    const body = { data, signature: signOfficialData(data) };
+    expect((await postWebhook(body)).status).toBe(200);
+    expect((await postWebhook(body)).status).toBe(200);
+    expect(db.query('SELECT * FROM payment_intents')).toEqual(beforePayments);
+    expect(db.query('SELECT * FROM subscriptions')).toEqual(beforeSubscriptions);
+  });
+
+  it('rejects unsigned or malformed provider verification before acknowledging it', async () => {
+    const data = { ...officialWebhookData(), orderCode: 123, amount: 3000, description: 'VQRIO123' };
+    const beforeSubscriptions = db.query('SELECT * FROM subscriptions');
+    expect((await postWebhook({ data, signature: '00'.repeat(32) })).status).toBe(401);
+    const malformed = { ...data, amount: '3000' };
+    expect((await postWebhook({ data: malformed, signature: signOfficialData(malformed) })).status).toBe(400);
+    expect(db.query('SELECT * FROM payment_intents')).toEqual([]);
+    expect(db.query('SELECT * FROM subscriptions')).toEqual(beforeSubscriptions);
+  });
+
+  it('rejects signed unknown payments outside the documented confirmation fixture', async () => {
+    const data = { ...officialWebhookData(), orderCode: 124, amount: 3000, description: 'VQRIO123' };
+    expect((await postWebhook({ data, signature: signOfficialData(data) })).status).toBe(409);
+    expect(subscriptionRow()).toBeUndefined();
+  });
+
+  it('still reconciles a verification-shaped event that maps to a real order', async () => {
+    const payment = await createIntent();
+    await db.prepare("UPDATE payment_intents SET order_code = '123' WHERE id = ?").bind(payment.id).run();
+    const body = webhookFor({ ...payment, orderCode: '123' }, { amount: 3000 });
+    expect((await postWebhook(body)).status).toBe(409);
+    expect(paymentRow(payment.id).status).toBe('pending');
+    expect(subscriptionRow()).toBeUndefined();
+  });
+
   it('rejects bad signatures before touching the intent', async () => {
     const payment = await createIntent();
     const body = webhookFor(payment);
@@ -781,5 +844,35 @@ describe('checkout identity route integration', () => {
     expect(mine.json.checkouts).toMatchObject([{ intentId: result.json.intentId, state: 'remote_uncertain' }]);
     const foreign = await request('/billing/checkouts', { cookie: otherUserCookie });
     expect(foreign.json.checkouts).toEqual([]);
+  });
+});
+
+describe('payOS account instructions compatibility', () => {
+  it('accepts signed alphanumeric virtual accounts and encodes the server QR', async () => {
+    providerDataOverride = (body) => ({ ...providerResponseData(body), accountNumber: 'VQR1234567897' });
+    const payment = await createIntent();
+    expect(payment.instructions.accountNumber).toBe('VQR1234567897');
+    const qr = new URL(payment.instructions.qrImageUrl);
+    expect(qr.pathname).toBe('/image/970422-VQR1234567897-compact2.png');
+    expect(qr.searchParams.get('amount')).toBe('49000');
+    expect(qr.searchParams.get('addInfo')).toBe(payment.instructions.transferContent);
+  });
+
+  it.each(['account/path', 'account?query', 'account number', 'x'.repeat(33)])(
+    'rejects an account that cannot safely form the QR path (%s)', async (accountNumber) => {
+      providerDataOverride = (body) => ({ ...providerResponseData(body), accountNumber });
+      const result = await request('/billing/payment-intents', { method: 'POST', body: { plan: 'monthly' } });
+      expect(result.status).toBe(502);
+      expect(result.json.payment).toBeUndefined();
+      expect(subscriptionRow()).toBeUndefined();
+    });
+
+  it('continues reconciling an issued payment after checkout is disabled', async () => {
+    const payment = await createIntent();
+    env.PAYOS_CHECKOUT_ENABLED = 'false';
+    expect((await postWebhook(webhookFor(payment))).status).toBe(200);
+    expect(paymentRow(payment.id).status).toBe('paid');
+    expect(subscriptionRow()).toMatchObject({ plan: 'plus', status: 'active' });
+    expect((await request('/billing/payment-intents', { method: 'POST', body: { plan: 'monthly' } })).status).toBe(503);
   });
 });
