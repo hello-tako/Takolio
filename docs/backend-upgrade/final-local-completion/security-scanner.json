@@ -1,5 +1,5 @@
 {
-  "checkedAtUtc": "2026-10-12T03:37:47.346932+00:00",
+  "checkedAtUtc": "2026-10-12T03:53:23.865956+00:00",
   "classification": "LOCAL_SECURITY_CANDIDATE_NOT_RELEASE_CERTIFICATION",
   "manifestSha256": "094840c1ec0ce518f82325528a8cb83b1eafe7af65a44669cad6dbc09e3a45c2",
   "runnerSha256": "97f3c206b1e0489914655ffa663736292bb89a5c761704615105f7313b68979f",
@@ -7,24 +7,24 @@
   "secretValuesAndSourceTextPublished": false,
   "semgrepRulesSha256": "65a3fbd1e62829ba845f4e2dc3396bf1ac4211660ae4f6b582b117e551c9da99",
   "source": {
-    "fileCount": 4803,
+    "fileCount": 4806,
     "gitHistoryScanned": false,
     "installedNodeModulesScanned": false,
-    "privateSnapshotPointerSha256": "8690dff870bf95beac15e5a34ef1dc548839097283ddb53f6454be1ddc3b50d2",
+    "privateSnapshotPointerSha256": "4c56e9fa86eb2afc77a05c7c9691644d8609e3d3bfd78bf03195463242353511",
     "privateSnapshotStorage": "OS_PRIVATE_TEMP_OUTSIDE_REPOSITORY",
     "scope": "GIT_TRACKED_AND_NONIGNORED_WORKTREE_SNAPSHOT",
     "skipped": {
       "intentional-scanner-fixture": 10,
       "operational-or-generated-artifact": 20
     },
-    "treeContentSha256": "f33d6b8fe240540d021e5e20649b1edbb9bb7d434609583839ac1cad277e4ffb"
+    "treeContentSha256": "1e4d4f3efaf581bce308a8a70eae8dd8a19c8479456bd5d9d9e69cda1c602e10"
   },
   "status": "FAILED",
   "tools": [
     {
       "findingCount": 0,
-      "rawLogSha256": "7c2156df6e5b5ca3a2c9031141e4761f532087a575d737531d19e543255db8a5",
-      "rawReportSha256": "2468b6474567bea11c000b5d6ba93fcc3588e237eac7fd60c5bcb8cf98976dd5",
+      "rawLogSha256": "ee4f10908101b7c504ead94be0f62ba0e35b4e3fef6eb049c67633b4d0a40bca",
+      "rawReportSha256": "1b524389f7247f1818fe8469e3eddbbbfecf0234d04c16f726269b6f0257e2e3",
       "rules": {},
       "severities": {},
       "status": "PASS",
@@ -33,8 +33,8 @@
     },
     {
       "findingCount": 17,
-      "rawLogSha256": "5c0c09ad585fd3daffce621ae0253f1986aa83ee2abe2efff9dcf4a362ab53fe",
-      "rawReportSha256": "988b32e63fe8b4bf505c643b2f441ccba3198efcf5aba1c4275e1147976a93f6",
+      "rawLogSha256": "00fbea7a856655829ea6f990e16aa1a1fff099f3940b60f71cf946837a18c41a",
+      "rawReportSha256": "d521537b8b3d086fe8f11f96a303b510a206c050776326c70acd905d983b750f",
       "rules": {
         "generic-api-key": 17
       },
@@ -47,7 +47,7 @@
     },
     {
       "findingCount": 0,
-      "rawLogSha256": "ab6168706b181788222dc88ec6f1d573036d51d48eb6f754e32cff6f06008dc3",
+      "rawLogSha256": "d543c44bec064e216a19c36c711c0d8eb50054ab11da0a0c615bd17337801812",
       "rawReportSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
       "rules": {},
       "severities": {},
@@ -58,8 +58,8 @@
     {
       "packageCount": 500,
       "rawLogSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "rawReportSha256": "5af9568974ebde7b9e56d4d3e9a66e96863684329747a230f8eb8c9889a9ace0",
-      "sbomSha256": "5af9568974ebde7b9e56d4d3e9a66e96863684329747a230f8eb8c9889a9ace0",
+      "rawReportSha256": "c76c8f31a2180c2d908a2ba77a3a90590356bb5206fc0e0adb7964e8bb295386",
+      "sbomSha256": "c76c8f31a2180c2d908a2ba77a3a90590356bb5206fc0e0adb7964e8bb295386",
       "scope": "DECLARED_MANIFEST_AND_LOCK_GRAPH_NOT_VULNERABILITY_SCAN",
       "status": "PASS",
       "tool": "syft",

@@ -47,6 +47,12 @@ async function shot(name, route, prepare) {
       reducedMotion: matchMedia('(prefers-reduced-motion: reduce)').matches,
     };
   });
+  // Motion's JS-driven fades are not listed in document.getAnimations().
+  // Inspect final appearance only after those visible non-disabled nodes settle.
+  await page.waitForFunction(() => ![...document.querySelectorAll('[style*=opacity]')].some((node) => {
+    const r = node.getBoundingClientRect(), opacity = Number.parseFloat(node.style.opacity);
+    return r.width > 0 && r.height > 0 && opacity > 0 && opacity < 1 && !node.matches(':disabled, [aria-disabled=true]');
+  }));
   const axe = (await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze()).violations.map(({ id, impact, nodes }) => ({ id, impact, nodes: nodes.map((n) => ({ target: n.target, summary: n.failureSummary })) }));
   const file = `${name}-${layout.width}.png`;
   await page.screenshot({ path: resolve(out, file), fullPage: true });

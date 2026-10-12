@@ -4,7 +4,7 @@
   "rawScannerStatus": "FAILED_REVIEW_REQUIRED",
   "unresolvedPotentialSecrets": 0,
   "priorReviewSha256": "b7b1d64223dc0d9d0bd9ad0f10b92879f861d1bcde6cc979d2444d1c1157ad09",
-  "sourceSnapshotSha256": "f33d6b8fe240540d021e5e20649b1edbb9bb7d434609583839ac1cad277e4ffb",
+  "sourceSnapshotSha256": "1e4d4f3efaf581bce308a8a70eae8dd8a19c8479456bd5d9d9e69cda1c602e10",
   "currentSourceAndProvenanceExact": true,
   "ruleSuppressionAdded": false,
   "candidateValuesPublished": false,
@@ -78,30 +78,6 @@
     },
     {
       "classification": "DOCUMENTED_CHECKSUM",
-      "locationSha256": "1a5ff79125a77e7154e90f0afb0e5764982c279fd49b7e5f081e81926dde8ece",
-      "sourceFileSha256": "dbf49b7d1c543c4846909dc49dd72c30a0c71c0792999a55444c42766cb6dbc9",
-      "contextVerification": "Value occurs under overlayAssets indexed by an asset URL; reviewed producer computes SHA256 over local response bytes. Historical asset bytes were not refetched; classification follows verified dataflow, not token shape.",
-      "provenanceInputHashes": [
-        {
-          "path": "scripts/google-auth-responsive-check.mjs",
-          "sha256": "de9480c6f517be3c4568fb99af90cb18c7ef0b274c53e4612b0863b939998e7b"
-        }
-      ]
-    },
-    {
-      "classification": "DOCUMENTED_CHECKSUM",
-      "locationSha256": "c745057111eb415dddf2cfaade8a5745017d3d6160664453442c0a76290d5f18",
-      "sourceFileSha256": "dbf49b7d1c543c4846909dc49dd72c30a0c71c0792999a55444c42766cb6dbc9",
-      "contextVerification": "Value occurs under overlayAssets indexed by an asset URL; reviewed producer computes SHA256 over local response bytes. Historical asset bytes were not refetched; classification follows verified dataflow, not token shape.",
-      "provenanceInputHashes": [
-        {
-          "path": "scripts/google-auth-responsive-check.mjs",
-          "sha256": "de9480c6f517be3c4568fb99af90cb18c7ef0b274c53e4612b0863b939998e7b"
-        }
-      ]
-    },
-    {
-      "classification": "DOCUMENTED_CHECKSUM",
       "locationSha256": "352a308f0527fe79e3057c65adb290d34be914819bd8805cdba45e96cea0ee50",
       "sourceFileSha256": "9994d347889bcf682f885890ef8bb6536c8b5c5feeabaf3480e153f4b18a967b",
       "contextVerification": "Value occurs under overlayAssets indexed by an asset URL; reviewed producer computes SHA256 over local response bytes. Historical asset bytes were not refetched; classification follows verified dataflow, not token shape.",
@@ -116,6 +92,30 @@
       "classification": "DOCUMENTED_CHECKSUM",
       "locationSha256": "ee1ea89882e81c0a61ec27c9442a9188863b1c27b7b53325c0cb578ab896d6cd",
       "sourceFileSha256": "9994d347889bcf682f885890ef8bb6536c8b5c5feeabaf3480e153f4b18a967b",
+      "contextVerification": "Value occurs under overlayAssets indexed by an asset URL; reviewed producer computes SHA256 over local response bytes. Historical asset bytes were not refetched; classification follows verified dataflow, not token shape.",
+      "provenanceInputHashes": [
+        {
+          "path": "scripts/google-auth-responsive-check.mjs",
+          "sha256": "de9480c6f517be3c4568fb99af90cb18c7ef0b274c53e4612b0863b939998e7b"
+        }
+      ]
+    },
+    {
+      "classification": "DOCUMENTED_CHECKSUM",
+      "locationSha256": "1a5ff79125a77e7154e90f0afb0e5764982c279fd49b7e5f081e81926dde8ece",
+      "sourceFileSha256": "dbf49b7d1c543c4846909dc49dd72c30a0c71c0792999a55444c42766cb6dbc9",
+      "contextVerification": "Value occurs under overlayAssets indexed by an asset URL; reviewed producer computes SHA256 over local response bytes. Historical asset bytes were not refetched; classification follows verified dataflow, not token shape.",
+      "provenanceInputHashes": [
+        {
+          "path": "scripts/google-auth-responsive-check.mjs",
+          "sha256": "de9480c6f517be3c4568fb99af90cb18c7ef0b274c53e4612b0863b939998e7b"
+        }
+      ]
+    },
+    {
+      "classification": "DOCUMENTED_CHECKSUM",
+      "locationSha256": "c745057111eb415dddf2cfaade8a5745017d3d6160664453442c0a76290d5f18",
+      "sourceFileSha256": "dbf49b7d1c543c4846909dc49dd72c30a0c71c0792999a55444c42766cb6dbc9",
       "contextVerification": "Value occurs under overlayAssets indexed by an asset URL; reviewed producer computes SHA256 over local response bytes. Historical asset bytes were not refetched; classification follows verified dataflow, not token shape.",
       "provenanceInputHashes": [
         {
@@ -162,30 +162,6 @@
     },
     {
       "classification": "SYNTHETIC_TEST_FIXTURE",
-      "locationSha256": "7887fbbd28a666d8a8f38a96a4d53503c9382bb5e9fc52369b2676eb73109e48",
-      "sourceFileSha256": "adc16a6ed979d350cef2d27284322f490e20d259b8af459fff28bd1e7b6d5a46",
-      "contextVerification": "Literal is an explicit fixture-only JWT or OTP binding inside beforeEach test setup using an in-memory SqliteD1 and local Hono app. No actual provider/service credential validation performed.",
-      "provenanceInputHashes": [
-        {
-          "path": "tests/helpers/sqlite-d1.ts",
-          "sha256": "d503476a003b7333e7a24e6f6a2ae70d4e3d93101b9429258bc32c9f89923941"
-        }
-      ]
-    },
-    {
-      "classification": "SYNTHETIC_TEST_FIXTURE",
-      "locationSha256": "b347115771db1fbd20b68497e1fbf9a68b6416e9e0ad30adcac6425975546ea9",
-      "sourceFileSha256": "adc16a6ed979d350cef2d27284322f490e20d259b8af459fff28bd1e7b6d5a46",
-      "contextVerification": "Literal is an explicit fixture-only JWT or OTP binding inside beforeEach test setup using an in-memory SqliteD1 and local Hono app. No actual provider/service credential validation performed.",
-      "provenanceInputHashes": [
-        {
-          "path": "tests/helpers/sqlite-d1.ts",
-          "sha256": "d503476a003b7333e7a24e6f6a2ae70d4e3d93101b9429258bc32c9f89923941"
-        }
-      ]
-    },
-    {
-      "classification": "SYNTHETIC_TEST_FIXTURE",
       "locationSha256": "ea6840a0a3ff43978365c05f85315a104a52c91b8a125408e574ac172c6a7217",
       "sourceFileSha256": "20d7754d3fc1068a469297c309d5fd738c63a14818be242a7d9a9e6ff1080243",
       "contextVerification": "Literal is an explicit fixture-only JWT or OTP binding inside beforeEach test setup using an in-memory SqliteD1 and local Hono app. No actual provider/service credential validation performed.",
@@ -200,6 +176,30 @@
       "classification": "SYNTHETIC_TEST_FIXTURE",
       "locationSha256": "2a7415d0f6a63add8b828d9c9cd563db85d1a8f53dac42f555ccbdd6a184b4b8",
       "sourceFileSha256": "20d7754d3fc1068a469297c309d5fd738c63a14818be242a7d9a9e6ff1080243",
+      "contextVerification": "Literal is an explicit fixture-only JWT or OTP binding inside beforeEach test setup using an in-memory SqliteD1 and local Hono app. No actual provider/service credential validation performed.",
+      "provenanceInputHashes": [
+        {
+          "path": "tests/helpers/sqlite-d1.ts",
+          "sha256": "d503476a003b7333e7a24e6f6a2ae70d4e3d93101b9429258bc32c9f89923941"
+        }
+      ]
+    },
+    {
+      "classification": "SYNTHETIC_TEST_FIXTURE",
+      "locationSha256": "7887fbbd28a666d8a8f38a96a4d53503c9382bb5e9fc52369b2676eb73109e48",
+      "sourceFileSha256": "adc16a6ed979d350cef2d27284322f490e20d259b8af459fff28bd1e7b6d5a46",
+      "contextVerification": "Literal is an explicit fixture-only JWT or OTP binding inside beforeEach test setup using an in-memory SqliteD1 and local Hono app. No actual provider/service credential validation performed.",
+      "provenanceInputHashes": [
+        {
+          "path": "tests/helpers/sqlite-d1.ts",
+          "sha256": "d503476a003b7333e7a24e6f6a2ae70d4e3d93101b9429258bc32c9f89923941"
+        }
+      ]
+    },
+    {
+      "classification": "SYNTHETIC_TEST_FIXTURE",
+      "locationSha256": "b347115771db1fbd20b68497e1fbf9a68b6416e9e0ad30adcac6425975546ea9",
+      "sourceFileSha256": "adc16a6ed979d350cef2d27284322f490e20d259b8af459fff28bd1e7b6d5a46",
       "contextVerification": "Literal is an explicit fixture-only JWT or OTP binding inside beforeEach test setup using an in-memory SqliteD1 and local Hono app. No actual provider/service credential validation performed.",
       "provenanceInputHashes": [
         {
