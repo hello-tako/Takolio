@@ -69,3 +69,23 @@ provider confirmation, no-transfer live protocol checks and explicit flag activa
 Real paid settlement/entitlement, late payment/refund policy and retention/support
 ownership remain distinct from configuration verification. No bank transfer,
 payout, refund or fake entitlement has been executed.
+
+## Live protocol follow-up
+
+A real staging create response exposed an existing digits-only account validation
+bug: the signed payOS bank account instruction is alphanumeric (virtual account).
+Signature, amount, order identity and expiry were valid. The adapter now accepts
+only ASCII letters/digits, 1-32 characters; path separators, query delimiters,
+spaces and excessive length remain rejected. Requests reject redirects.
+Six regression checks cover virtual QR construction, unsafe paths and processing
+outstanding payments after checkout is disabled. Focused four files / 131 tests,
+lint, both TS projects and sequential paired-T20 build PASS after this fix.
+
+No-transfer staging protocol smoke PASS: order 11877934005, 49,000 VND,
+signed instructions/read verified, provider status CANCELLED, amountPaid 0.
+Diagnostic orders 12048240166 and 9581158296 were cancelled after the initial
+schema rejection; diagnostic order 9502914089 also cancelled with amountPaid 0.
+One transport attempt (9139948807) had no confirmed provider response; subsequent
+provider lookup returns code 101 (order not found). No app intent or entitlement
+was created by these protocol tests; no money was transferred. Their private
+receipts exclude bank identifiers and key values. Final hosted CI still required.

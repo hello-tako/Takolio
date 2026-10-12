@@ -846,3 +846,33 @@ describe('checkout identity route integration', () => {
     expect(foreign.json.checkouts).toEqual([]);
   });
 });
+
+describe('payOS account instructions compatibility', () => {
+  it('accepts signed alphanumeric virtual accounts and encodes the server QR', async () => {
+    providerDataOverride = (body) => ({ ...providerResponseData(body), accountNumber: 'VQR1234567897' });
+    const payment = await createIntent();
+    expect(payment.instructions.accountNumber).toBe('VQR1234567897');
+    const qr = new URL(payment.instructions.qrImageUrl);
+    expect(qr.pathname).toBe('/image/970422-VQR1234567897-compact2.png');
+    expect(qr.searchParams.get('amount')).toBe('49000');
+    expect(qr.searchParams.get('addInfo')).toBe(payment.instructions.transferContent);
+  });
+
+  it.each(['account/path', 'account?query', 'account number', 'x'.repeat(33)])(
+    'rejects an account that cannot safely form the QR path (%s)', async (accountNumber) => {
+      providerDataOverride = (body) => ({ ...providerResponseData(body), accountNumber });
+      const result = await request('/billing/payment-intents', { method: 'POST', body: { plan: 'monthly' } });
+      expect(result.status).toBe(502);
+      expect(result.json.payment).toBeUndefined();
+      expect(subscriptionRow()).toBeUndefined();
+    });
+
+  it('continues reconciling an issued payment after checkout is disabled', async () => {
+    const payment = await createIntent();
+    env.PAYOS_CHECKOUT_ENABLED = 'false';
+    expect((await postWebhook(webhookFor(payment))).status).toBe(200);
+    expect(paymentRow(payment.id).status).toBe('paid');
+    expect(subscriptionRow()).toMatchObject({ plan: 'plus', status: 'active' });
+    expect((await request('/billing/payment-intents', { method: 'POST', body: { plan: 'monthly' } })).status).toBe(503);
+  });
+});

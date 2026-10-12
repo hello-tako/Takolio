@@ -60,3 +60,12 @@ owner's controlled payment. Provider link creation/cancellation and webhook
 confirmation establish protocol/configuration evidence, not money settlement.
 
 Reference: https://payos.vn/docs/api/ (webhook sample and confirm-webhook API).
+
+## Provider compatibility evidence
+
+Live staging evidence confirms payOS can sign alphanumeric virtual account
+instructions. Validate 1-32 ASCII letters/digits instead of digits only, so the
+existing server VietQR path can represent those accounts without accepting path
+or query injection. Preserve HMAC, amount/order/currency/expiry checks. Add
+regressions for permitted virtual accounts, forbidden path characters and
+outstanding-order callbacks when checkout is off. Reject provider redirects.

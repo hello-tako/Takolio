@@ -1,3 +1,18 @@
+# payOS live protocol fix - 2026-10-12 JST
+
+PR70 / initial e2a963b7 hosted CI38235911445 PASS; final code updates pending CI.
+Live staging found existing digits-only account validation incompatible with a
+signed alphanumeric virtual account. Restricted ASCII letter/digit support and
+redirect rejection added; unsafe QR paths rejected. Six regressions also cover
+existing payment reconciliation with checkout OFF. Focused4files/131tests,
+lint/bothTS/sequentialpairedT20build PASS. Real staging create/HMAC/read/cancel
+PASS, order11877934005, amountPaid0; no app intent/entitlement/transfer.
+See docs/payos/SURVEY.md for failed attempts and cancelled diagnostic orders.
+Production0041 run38235082984 PASS; concurrent production deploy38236084633
+still in progress. Wait completion before merge to preserve its exact-main gate.
+
+---
+
 # payOS integration - 2026-10-12 JST
 
 **Task/status:** IMPLEMENTED_LOCAL_VERIFIED; hosted PR and operational activation

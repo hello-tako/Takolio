@@ -66,7 +66,7 @@ async function readBoundedPayosJson(response: Response): Promise<unknown> {
 
 const linkSchema = z.object({
   bin: z.string().regex(/^\d{6}$/),
-  accountNumber: z.string().regex(/^\d{1,32}$/),
+  accountNumber: z.string().regex(/^[A-Za-z\d]{1,32}$/),
   accountName: z.string().min(1).max(200),
   amount: z.number().int().positive().safe(),
   currency: z.literal('VND'),
@@ -89,6 +89,7 @@ export async function createPayosInstructions(env: Env, intent: PaymentRow): Pro
   const expiredAt = Math.floor(Date.parse(intent.expires_at) / 1000);
   const response = await fetch('https://api-merchant.payos.vn/v2/payment-requests', {
     method: 'POST',
+    redirect: 'error',
     headers: { 'Content-Type': 'application/json', 'x-client-id': env.PAYOS_CLIENT_ID!, 'x-api-key': env.PAYOS_API_KEY! },
     body: JSON.stringify({ ...signedFields, expiredAt, signature: await signPayosData(signedFields, env.PAYOS_CHECKSUM_KEY!) }),
     signal: AbortSignal.timeout(15_000),
