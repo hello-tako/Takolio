@@ -1,0 +1,4740 @@
+{
+  "stage": "before",
+  "productionBuild": true,
+  "browser": "153.0.8010.12",
+  "syntheticData": true,
+  "providerBlocked": true,
+  "checks": [
+    {
+      "name": "landing",
+      "requestedRoute": "/landing",
+      "renderedRoute": "/landing",
+      "screenshot": "landing-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Ăn đủ.Mua đủ.Dùng hết.",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "login",
+      "requestedRoute": "/auth",
+      "renderedRoute": "/auth",
+      "screenshot": "login-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Đăng nhập vào Takosan",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "register",
+      "requestedRoute": "/auth?mode=register",
+      "renderedRoute": "/auth",
+      "screenshot": "register-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Tạo tài khoản Takosan",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "verify-missing",
+      "requestedRoute": "/auth/verify",
+      "renderedRoute": "/auth/verify",
+      "screenshot": "verify-missing-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Xác thực mã OTP",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "onboarding-household",
+      "requestedRoute": "/onboarding/household",
+      "renderedRoute": "/onboarding/household",
+      "screenshot": "onboarding-household-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Nhà mình thường có bao nhiêu người ăn?",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "onboarding-preferences",
+      "requestedRoute": "/onboarding/preferences",
+      "renderedRoute": "/onboarding/preferences",
+      "screenshot": "onboarding-preferences-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Nhà mình thích món gì và cần tránh gì?",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "onboarding-goals",
+      "requestedRoute": "/onboarding/goals",
+      "renderedRoute": "/onboarding/goals",
+      "screenshot": "onboarding-goals-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Bạn muốn Takosan giúp việc gì trước?",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "home",
+      "requestedRoute": "/",
+      "renderedRoute": "/",
+      "screenshot": "home-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Hôm nay ăn gì?",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "fridge",
+      "requestedRoute": "/fridge",
+      "renderedRoute": "/fridge",
+      "screenshot": "fridge-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Tủ lạnh của tôi",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "scan",
+      "requestedRoute": "/scan",
+      "renderedRoute": "/scan",
+      "screenshot": "scan-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Chụp ảnh, rồi kiểm tra",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "scan-review",
+      "requestedRoute": "/scan/t13b-preview-fridge/review",
+      "renderedRoute": "/scan/t13b-preview-fridge/review",
+      "screenshot": "scan-review-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Kiểm tra nguyên liệu",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "receipt-review",
+      "requestedRoute": "/scan/receipt-review?scanId=t13b-preview-receipt",
+      "renderedRoute": "/scan/receipt-review",
+      "screenshot": "receipt-review-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Kiểm tra hóa đơn",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "recipes",
+      "requestedRoute": "/recipes",
+      "renderedRoute": "/recipes",
+      "screenshot": "recipes-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Chọn món cho căn bếp của bạn",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "recipe-detail",
+      "requestedRoute": "/recipes/canh-chua-ca-loc-nam-bo",
+      "renderedRoute": "/recipes/canh-chua-ca-loc-nam-bo",
+      "screenshot": "recipe-detail-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Canh chua cá lóc Nam Bộ",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "planner",
+      "requestedRoute": "/planner",
+      "renderedRoute": "/planner",
+      "screenshot": "planner-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Bữa ngon, tuần nhẹ nhàng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "planner-setup",
+      "requestedRoute": "/planner/new",
+      "renderedRoute": "/planner/new",
+      "screenshot": "planner-setup-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Bữa ngon, tuần nhẹ nhàng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "shopping",
+      "requestedRoute": "/shopping",
+      "renderedRoute": "/shopping",
+      "screenshot": "shopping-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Mua đủ cho bữa ngon.",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "profile",
+      "requestedRoute": "/me",
+      "renderedRoute": "/me",
+      "screenshot": "profile-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Hồ sơ",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "preferences",
+      "requestedRoute": "/me/preferences",
+      "renderedRoute": "/me/preferences",
+      "screenshot": "preferences-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Sở thích & hạn chế",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "household",
+      "requestedRoute": "/me/household",
+      "renderedRoute": "/me/household",
+      "screenshot": "household-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Hộ gia đình & chia sẻ",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "settings",
+      "requestedRoute": "/settings/app",
+      "renderedRoute": "/settings/app",
+      "screenshot": "settings-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Cài đặt ứng dụng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "planning-settings",
+      "requestedRoute": "/settings/planning",
+      "renderedRoute": "/settings/planning",
+      "screenshot": "planning-settings-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Cài đặt lập thực đơn",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "notification-settings",
+      "requestedRoute": "/settings/notifications",
+      "renderedRoute": "/settings/notifications",
+      "screenshot": "notification-settings-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Tùy chỉnh thông báo",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "privacy",
+      "requestedRoute": "/settings/privacy",
+      "renderedRoute": "/settings/privacy",
+      "screenshot": "privacy-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Quyền riêng tư & dữ liệu",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "notifications",
+      "requestedRoute": "/notifications",
+      "renderedRoute": "/notifications",
+      "screenshot": "notifications-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Thông báo",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "plus",
+      "requestedRoute": "/plus",
+      "renderedRoute": "/plus",
+      "screenshot": "plus-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Nâng cấp Takosan Plus",
+      "h1Count": 1,
+      "font": "Nunito, system-ui, sans-serif, sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "cooking",
+      "requestedRoute": "/cook/canh-chua-ca-loc-nam-bo",
+      "renderedRoute": "/cook/canh-chua-ca-loc-nam-bo",
+      "screenshot": "cooking-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Canh chua cá lóc Nam Bộ",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "nutrition",
+      "requestedRoute": "/recipes/canh-chua-ca-loc-nam-bo",
+      "renderedRoute": "/recipes/canh-chua-ca-loc-nam-bo",
+      "screenshot": "nutrition-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Canh chua cá lóc Nam Bộ",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "ingredient-detail",
+      "requestedRoute": "/fridge/preview-stock-chicken",
+      "renderedRoute": "/fridge/preview-stock-chicken",
+      "screenshot": "ingredient-detail-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Chi tiết nguyên liệu",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "saved-weekly-plan",
+      "requestedRoute": "/planner/b17303e5-2a19-43ff-b930-7e142507989e",
+      "renderedRoute": "/planner/b17303e5-2a19-43ff-b930-7e142507989e",
+      "screenshot": "saved-weekly-plan-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Bữa ngon, tuần nhẹ nhàng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "daily-planned-home",
+      "requestedRoute": "/",
+      "renderedRoute": "/",
+      "screenshot": "daily-planned-home-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Hôm nay ăn gì?",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "planned-meal",
+      "requestedRoute": "/planner/b17303e5-2a19-43ff-b930-7e142507989e/meal/2026-10-12%3Adinner%3A0",
+      "renderedRoute": "/planner/b17303e5-2a19-43ff-b930-7e142507989e/meal/2026-10-12%3Adinner%3A0",
+      "screenshot": "planned-meal-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Bữa ngon, tuần nhẹ nhàng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "plan-shopping-budget",
+      "requestedRoute": "/planner/b17303e5-2a19-43ff-b930-7e142507989e/shopping",
+      "renderedRoute": "/planner/b17303e5-2a19-43ff-b930-7e142507989e/shopping",
+      "screenshot": "plan-shopping-budget-320.png",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Bữa ngon, tuần nhẹ nhàng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "landing",
+      "requestedRoute": "/landing",
+      "renderedRoute": "/landing",
+      "screenshot": "landing-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Ăn đủ.Mua đủ.Dùng hết.",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "login",
+      "requestedRoute": "/auth",
+      "renderedRoute": "/auth",
+      "screenshot": "login-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Đăng nhập vào Takosan",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "register",
+      "requestedRoute": "/auth?mode=register",
+      "renderedRoute": "/auth",
+      "screenshot": "register-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Tạo tài khoản Takosan",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "verify-missing",
+      "requestedRoute": "/auth/verify",
+      "renderedRoute": "/auth/verify",
+      "screenshot": "verify-missing-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Xác thực mã OTP",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "onboarding-household",
+      "requestedRoute": "/onboarding/household",
+      "renderedRoute": "/onboarding/household",
+      "screenshot": "onboarding-household-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Nhà mình thường có bao nhiêu người ăn?",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "onboarding-preferences",
+      "requestedRoute": "/onboarding/preferences",
+      "renderedRoute": "/onboarding/preferences",
+      "screenshot": "onboarding-preferences-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Nhà mình thích món gì và cần tránh gì?",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "onboarding-goals",
+      "requestedRoute": "/onboarding/goals",
+      "renderedRoute": "/onboarding/goals",
+      "screenshot": "onboarding-goals-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Bạn muốn Takosan giúp việc gì trước?",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "home",
+      "requestedRoute": "/",
+      "renderedRoute": "/",
+      "screenshot": "home-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Hôm nay ăn gì?",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "fridge",
+      "requestedRoute": "/fridge",
+      "renderedRoute": "/fridge",
+      "screenshot": "fridge-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Tủ lạnh của tôi",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "scan",
+      "requestedRoute": "/scan",
+      "renderedRoute": "/scan",
+      "screenshot": "scan-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Chụp ảnh, rồi kiểm tra",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "scan-review",
+      "requestedRoute": "/scan/t13b-preview-fridge/review",
+      "renderedRoute": "/scan/t13b-preview-fridge/review",
+      "screenshot": "scan-review-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Kiểm tra nguyên liệu",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "receipt-review",
+      "requestedRoute": "/scan/receipt-review?scanId=t13b-preview-receipt",
+      "renderedRoute": "/scan/receipt-review",
+      "screenshot": "receipt-review-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Kiểm tra hóa đơn",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "recipes",
+      "requestedRoute": "/recipes",
+      "renderedRoute": "/recipes",
+      "screenshot": "recipes-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Chọn món cho căn bếp của bạn",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "recipe-detail",
+      "requestedRoute": "/recipes/canh-chua-ca-loc-nam-bo",
+      "renderedRoute": "/recipes/canh-chua-ca-loc-nam-bo",
+      "screenshot": "recipe-detail-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Canh chua cá lóc Nam Bộ",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "planner",
+      "requestedRoute": "/planner",
+      "renderedRoute": "/planner",
+      "screenshot": "planner-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Bữa ngon, tuần nhẹ nhàng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "planner-setup",
+      "requestedRoute": "/planner/new",
+      "renderedRoute": "/planner/new",
+      "screenshot": "planner-setup-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Bữa ngon, tuần nhẹ nhàng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "shopping",
+      "requestedRoute": "/shopping",
+      "renderedRoute": "/shopping",
+      "screenshot": "shopping-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Mua đủ cho bữa ngon.",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "profile",
+      "requestedRoute": "/me",
+      "renderedRoute": "/me",
+      "screenshot": "profile-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Hồ sơ",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "preferences",
+      "requestedRoute": "/me/preferences",
+      "renderedRoute": "/me/preferences",
+      "screenshot": "preferences-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Sở thích & hạn chế",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "household",
+      "requestedRoute": "/me/household",
+      "renderedRoute": "/me/household",
+      "screenshot": "household-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Hộ gia đình & chia sẻ",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "settings",
+      "requestedRoute": "/settings/app",
+      "renderedRoute": "/settings/app",
+      "screenshot": "settings-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Cài đặt ứng dụng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "planning-settings",
+      "requestedRoute": "/settings/planning",
+      "renderedRoute": "/settings/planning",
+      "screenshot": "planning-settings-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Cài đặt lập thực đơn",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "notification-settings",
+      "requestedRoute": "/settings/notifications",
+      "renderedRoute": "/settings/notifications",
+      "screenshot": "notification-settings-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Tùy chỉnh thông báo",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "privacy",
+      "requestedRoute": "/settings/privacy",
+      "renderedRoute": "/settings/privacy",
+      "screenshot": "privacy-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Quyền riêng tư & dữ liệu",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "notifications",
+      "requestedRoute": "/notifications",
+      "renderedRoute": "/notifications",
+      "screenshot": "notifications-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Thông báo",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "plus",
+      "requestedRoute": "/plus",
+      "renderedRoute": "/plus",
+      "screenshot": "plus-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Nâng cấp Takosan Plus",
+      "h1Count": 1,
+      "font": "Nunito, system-ui, sans-serif, sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "cooking",
+      "requestedRoute": "/cook/canh-chua-ca-loc-nam-bo",
+      "renderedRoute": "/cook/canh-chua-ca-loc-nam-bo",
+      "screenshot": "cooking-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Canh chua cá lóc Nam Bộ",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "nutrition",
+      "requestedRoute": "/recipes/canh-chua-ca-loc-nam-bo",
+      "renderedRoute": "/recipes/canh-chua-ca-loc-nam-bo",
+      "screenshot": "nutrition-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Canh chua cá lóc Nam Bộ",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "ingredient-detail",
+      "requestedRoute": "/fridge/preview-stock-chicken",
+      "renderedRoute": "/fridge/preview-stock-chicken",
+      "screenshot": "ingredient-detail-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Chi tiết nguyên liệu",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "saved-weekly-plan",
+      "requestedRoute": "/planner/15725ac6-ec5d-4302-8b3e-41ddaa3b379c",
+      "renderedRoute": "/planner/15725ac6-ec5d-4302-8b3e-41ddaa3b379c",
+      "screenshot": "saved-weekly-plan-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Bữa ngon, tuần nhẹ nhàng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "daily-planned-home",
+      "requestedRoute": "/",
+      "renderedRoute": "/",
+      "screenshot": "daily-planned-home-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Hôm nay ăn gì?",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "planned-meal",
+      "requestedRoute": "/planner/15725ac6-ec5d-4302-8b3e-41ddaa3b379c/meal/2026-10-12%3Adinner%3A0",
+      "renderedRoute": "/planner/15725ac6-ec5d-4302-8b3e-41ddaa3b379c/meal/2026-10-12%3Adinner%3A0",
+      "screenshot": "planned-meal-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Bữa ngon, tuần nhẹ nhàng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "plan-shopping-budget",
+      "requestedRoute": "/planner/15725ac6-ec5d-4302-8b3e-41ddaa3b379c/shopping",
+      "renderedRoute": "/planner/15725ac6-ec5d-4302-8b3e-41ddaa3b379c/shopping",
+      "screenshot": "plan-shopping-budget-375.png",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Bữa ngon, tuần nhẹ nhàng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "landing",
+      "requestedRoute": "/landing",
+      "renderedRoute": "/landing",
+      "screenshot": "landing-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Ăn đủ.Mua đủ.Dùng hết.",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "login",
+      "requestedRoute": "/auth",
+      "renderedRoute": "/auth",
+      "screenshot": "login-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Đăng nhập vào Takosan",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "register",
+      "requestedRoute": "/auth?mode=register",
+      "renderedRoute": "/auth",
+      "screenshot": "register-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Tạo tài khoản Takosan",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "verify-missing",
+      "requestedRoute": "/auth/verify",
+      "renderedRoute": "/auth/verify",
+      "screenshot": "verify-missing-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Xác thực mã OTP",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "onboarding-household",
+      "requestedRoute": "/onboarding/household",
+      "renderedRoute": "/onboarding/household",
+      "screenshot": "onboarding-household-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Nhà mình thường có bao nhiêu người ăn?",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "onboarding-preferences",
+      "requestedRoute": "/onboarding/preferences",
+      "renderedRoute": "/onboarding/preferences",
+      "screenshot": "onboarding-preferences-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Nhà mình thích món gì và cần tránh gì?",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "onboarding-goals",
+      "requestedRoute": "/onboarding/goals",
+      "renderedRoute": "/onboarding/goals",
+      "screenshot": "onboarding-goals-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Bạn muốn Takosan giúp việc gì trước?",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "home",
+      "requestedRoute": "/",
+      "renderedRoute": "/",
+      "screenshot": "home-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Hôm nay ăn gì?",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "fridge",
+      "requestedRoute": "/fridge",
+      "renderedRoute": "/fridge",
+      "screenshot": "fridge-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Tủ lạnh của tôi",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "scan",
+      "requestedRoute": "/scan",
+      "renderedRoute": "/scan",
+      "screenshot": "scan-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Chụp ảnh, rồi kiểm tra",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "scan-review",
+      "requestedRoute": "/scan/t13b-preview-fridge/review",
+      "renderedRoute": "/scan/t13b-preview-fridge/review",
+      "screenshot": "scan-review-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Kiểm tra nguyên liệu",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "receipt-review",
+      "requestedRoute": "/scan/receipt-review?scanId=t13b-preview-receipt",
+      "renderedRoute": "/scan/receipt-review",
+      "screenshot": "receipt-review-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Kiểm tra hóa đơn",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "recipes",
+      "requestedRoute": "/recipes",
+      "renderedRoute": "/recipes",
+      "screenshot": "recipes-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Chọn món cho căn bếp của bạn",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "recipe-detail",
+      "requestedRoute": "/recipes/canh-chua-ca-loc-nam-bo",
+      "renderedRoute": "/recipes/canh-chua-ca-loc-nam-bo",
+      "screenshot": "recipe-detail-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Canh chua cá lóc Nam Bộ",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "planner",
+      "requestedRoute": "/planner",
+      "renderedRoute": "/planner",
+      "screenshot": "planner-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Bữa ngon, tuần nhẹ nhàng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "planner-setup",
+      "requestedRoute": "/planner/new",
+      "renderedRoute": "/planner/new",
+      "screenshot": "planner-setup-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Bữa ngon, tuần nhẹ nhàng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "shopping",
+      "requestedRoute": "/shopping",
+      "renderedRoute": "/shopping",
+      "screenshot": "shopping-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Mua đủ cho bữa ngon.",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "profile",
+      "requestedRoute": "/me",
+      "renderedRoute": "/me",
+      "screenshot": "profile-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Hồ sơ",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "preferences",
+      "requestedRoute": "/me/preferences",
+      "renderedRoute": "/me/preferences",
+      "screenshot": "preferences-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Sở thích & hạn chế",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "household",
+      "requestedRoute": "/me/household",
+      "renderedRoute": "/me/household",
+      "screenshot": "household-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Hộ gia đình & chia sẻ",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "settings",
+      "requestedRoute": "/settings/app",
+      "renderedRoute": "/settings/app",
+      "screenshot": "settings-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Cài đặt ứng dụng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "planning-settings",
+      "requestedRoute": "/settings/planning",
+      "renderedRoute": "/settings/planning",
+      "screenshot": "planning-settings-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Cài đặt lập thực đơn",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "notification-settings",
+      "requestedRoute": "/settings/notifications",
+      "renderedRoute": "/settings/notifications",
+      "screenshot": "notification-settings-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Tùy chỉnh thông báo",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "privacy",
+      "requestedRoute": "/settings/privacy",
+      "renderedRoute": "/settings/privacy",
+      "screenshot": "privacy-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Quyền riêng tư & dữ liệu",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "notifications",
+      "requestedRoute": "/notifications",
+      "renderedRoute": "/notifications",
+      "screenshot": "notifications-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Thông báo",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "plus",
+      "requestedRoute": "/plus",
+      "renderedRoute": "/plus",
+      "screenshot": "plus-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Nâng cấp Takosan Plus",
+      "h1Count": 1,
+      "font": "Nunito, system-ui, sans-serif, sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "cooking",
+      "requestedRoute": "/cook/canh-chua-ca-loc-nam-bo",
+      "renderedRoute": "/cook/canh-chua-ca-loc-nam-bo",
+      "screenshot": "cooking-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Canh chua cá lóc Nam Bộ",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "nutrition",
+      "requestedRoute": "/recipes/canh-chua-ca-loc-nam-bo",
+      "renderedRoute": "/recipes/canh-chua-ca-loc-nam-bo",
+      "screenshot": "nutrition-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Canh chua cá lóc Nam Bộ",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "ingredient-detail",
+      "requestedRoute": "/fridge/preview-stock-chicken",
+      "renderedRoute": "/fridge/preview-stock-chicken",
+      "screenshot": "ingredient-detail-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Chi tiết nguyên liệu",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "saved-weekly-plan",
+      "requestedRoute": "/planner/9a92ae81-e3f7-43dc-8902-9bc26ee86fc1",
+      "renderedRoute": "/planner/9a92ae81-e3f7-43dc-8902-9bc26ee86fc1",
+      "screenshot": "saved-weekly-plan-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Bữa ngon, tuần nhẹ nhàng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "daily-planned-home",
+      "requestedRoute": "/",
+      "renderedRoute": "/",
+      "screenshot": "daily-planned-home-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Hôm nay ăn gì?",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "planned-meal",
+      "requestedRoute": "/planner/9a92ae81-e3f7-43dc-8902-9bc26ee86fc1/meal/2026-10-12%3Adinner%3A0",
+      "renderedRoute": "/planner/9a92ae81-e3f7-43dc-8902-9bc26ee86fc1/meal/2026-10-12%3Adinner%3A0",
+      "screenshot": "planned-meal-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Bữa ngon, tuần nhẹ nhàng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "plan-shopping-budget",
+      "requestedRoute": "/planner/9a92ae81-e3f7-43dc-8902-9bc26ee86fc1/shopping",
+      "renderedRoute": "/planner/9a92ae81-e3f7-43dc-8902-9bc26ee86fc1/shopping",
+      "screenshot": "plan-shopping-budget-390.png",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Bữa ngon, tuần nhẹ nhàng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "landing",
+      "requestedRoute": "/landing",
+      "renderedRoute": "/landing",
+      "screenshot": "landing-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Ăn đủ.Mua đủ.Dùng hết.",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "login",
+      "requestedRoute": "/auth",
+      "renderedRoute": "/auth",
+      "screenshot": "login-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Đăng nhập vào Takosan",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "register",
+      "requestedRoute": "/auth?mode=register",
+      "renderedRoute": "/auth",
+      "screenshot": "register-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Tạo tài khoản Takosan",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "verify-missing",
+      "requestedRoute": "/auth/verify",
+      "renderedRoute": "/auth/verify",
+      "screenshot": "verify-missing-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Xác thực mã OTP",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "onboarding-household",
+      "requestedRoute": "/onboarding/household",
+      "renderedRoute": "/onboarding/household",
+      "screenshot": "onboarding-household-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Nhà mình thường có bao nhiêu người ăn?",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "onboarding-preferences",
+      "requestedRoute": "/onboarding/preferences",
+      "renderedRoute": "/onboarding/preferences",
+      "screenshot": "onboarding-preferences-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Nhà mình thích món gì và cần tránh gì?",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "onboarding-goals",
+      "requestedRoute": "/onboarding/goals",
+      "renderedRoute": "/onboarding/goals",
+      "screenshot": "onboarding-goals-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Bạn muốn Takosan giúp việc gì trước?",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "home",
+      "requestedRoute": "/",
+      "renderedRoute": "/",
+      "screenshot": "home-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Hôm nay ăn gì?",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "fridge",
+      "requestedRoute": "/fridge",
+      "renderedRoute": "/fridge",
+      "screenshot": "fridge-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Tủ lạnh của tôi",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "scan",
+      "requestedRoute": "/scan",
+      "renderedRoute": "/scan",
+      "screenshot": "scan-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Chụp ảnh, rồi kiểm tra",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "scan-review",
+      "requestedRoute": "/scan/t13b-preview-fridge/review",
+      "renderedRoute": "/scan/t13b-preview-fridge/review",
+      "screenshot": "scan-review-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Kiểm tra nguyên liệu",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "receipt-review",
+      "requestedRoute": "/scan/receipt-review?scanId=t13b-preview-receipt",
+      "renderedRoute": "/scan/receipt-review",
+      "screenshot": "receipt-review-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Kiểm tra hóa đơn",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "recipes",
+      "requestedRoute": "/recipes",
+      "renderedRoute": "/recipes",
+      "screenshot": "recipes-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Chọn món cho căn bếp của bạn",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "recipe-detail",
+      "requestedRoute": "/recipes/canh-chua-ca-loc-nam-bo",
+      "renderedRoute": "/recipes/canh-chua-ca-loc-nam-bo",
+      "screenshot": "recipe-detail-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Canh chua cá lóc Nam Bộ",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "planner",
+      "requestedRoute": "/planner",
+      "renderedRoute": "/planner",
+      "screenshot": "planner-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Bữa ngon, tuần nhẹ nhàng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "planner-setup",
+      "requestedRoute": "/planner/new",
+      "renderedRoute": "/planner/new",
+      "screenshot": "planner-setup-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Bữa ngon, tuần nhẹ nhàng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "shopping",
+      "requestedRoute": "/shopping",
+      "renderedRoute": "/shopping",
+      "screenshot": "shopping-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Mua đủ cho bữa ngon.",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "profile",
+      "requestedRoute": "/me",
+      "renderedRoute": "/me",
+      "screenshot": "profile-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Hồ sơ",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "preferences",
+      "requestedRoute": "/me/preferences",
+      "renderedRoute": "/me/preferences",
+      "screenshot": "preferences-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Sở thích & hạn chế",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "household",
+      "requestedRoute": "/me/household",
+      "renderedRoute": "/me/household",
+      "screenshot": "household-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Hộ gia đình & chia sẻ",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "settings",
+      "requestedRoute": "/settings/app",
+      "renderedRoute": "/settings/app",
+      "screenshot": "settings-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Cài đặt ứng dụng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "planning-settings",
+      "requestedRoute": "/settings/planning",
+      "renderedRoute": "/settings/planning",
+      "screenshot": "planning-settings-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Cài đặt lập thực đơn",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "notification-settings",
+      "requestedRoute": "/settings/notifications",
+      "renderedRoute": "/settings/notifications",
+      "screenshot": "notification-settings-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Tùy chỉnh thông báo",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "privacy",
+      "requestedRoute": "/settings/privacy",
+      "renderedRoute": "/settings/privacy",
+      "screenshot": "privacy-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Quyền riêng tư & dữ liệu",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "notifications",
+      "requestedRoute": "/notifications",
+      "renderedRoute": "/notifications",
+      "screenshot": "notifications-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Thông báo",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "plus",
+      "requestedRoute": "/plus",
+      "renderedRoute": "/plus",
+      "screenshot": "plus-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Nâng cấp Takosan Plus",
+      "h1Count": 1,
+      "font": "Nunito, system-ui, sans-serif, sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "cooking",
+      "requestedRoute": "/cook/canh-chua-ca-loc-nam-bo",
+      "renderedRoute": "/cook/canh-chua-ca-loc-nam-bo",
+      "screenshot": "cooking-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Canh chua cá lóc Nam Bộ",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "nutrition",
+      "requestedRoute": "/recipes/canh-chua-ca-loc-nam-bo",
+      "renderedRoute": "/recipes/canh-chua-ca-loc-nam-bo",
+      "screenshot": "nutrition-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Canh chua cá lóc Nam Bộ",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "ingredient-detail",
+      "requestedRoute": "/fridge/preview-stock-chicken",
+      "renderedRoute": "/fridge/preview-stock-chicken",
+      "screenshot": "ingredient-detail-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Chi tiết nguyên liệu",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "saved-weekly-plan",
+      "requestedRoute": "/planner/64c6b776-882b-4287-94c9-7f299773403e",
+      "renderedRoute": "/planner/64c6b776-882b-4287-94c9-7f299773403e",
+      "screenshot": "saved-weekly-plan-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Bữa ngon, tuần nhẹ nhàng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "daily-planned-home",
+      "requestedRoute": "/",
+      "renderedRoute": "/",
+      "screenshot": "daily-planned-home-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Hôm nay ăn gì?",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "planned-meal",
+      "requestedRoute": "/planner/64c6b776-882b-4287-94c9-7f299773403e/meal/2026-10-12%3Adinner%3A0",
+      "renderedRoute": "/planner/64c6b776-882b-4287-94c9-7f299773403e/meal/2026-10-12%3Adinner%3A0",
+      "screenshot": "planned-meal-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Bữa ngon, tuần nhẹ nhàng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "plan-shopping-budget",
+      "requestedRoute": "/planner/64c6b776-882b-4287-94c9-7f299773403e/shopping",
+      "renderedRoute": "/planner/64c6b776-882b-4287-94c9-7f299773403e/shopping",
+      "screenshot": "plan-shopping-budget-768.png",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Bữa ngon, tuần nhẹ nhàng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "landing",
+      "requestedRoute": "/landing",
+      "renderedRoute": "/landing",
+      "screenshot": "landing-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Ăn đủ.Mua đủ.Dùng hết.",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "login",
+      "requestedRoute": "/auth",
+      "renderedRoute": "/auth",
+      "screenshot": "login-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Đăng nhập vào Takosan",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "register",
+      "requestedRoute": "/auth?mode=register",
+      "renderedRoute": "/auth",
+      "screenshot": "register-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Tạo tài khoản Takosan",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "verify-missing",
+      "requestedRoute": "/auth/verify",
+      "renderedRoute": "/auth/verify",
+      "screenshot": "verify-missing-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Xác thực mã OTP",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "onboarding-household",
+      "requestedRoute": "/onboarding/household",
+      "renderedRoute": "/onboarding/household",
+      "screenshot": "onboarding-household-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Nhà mình thường có bao nhiêu người ăn?",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "onboarding-preferences",
+      "requestedRoute": "/onboarding/preferences",
+      "renderedRoute": "/onboarding/preferences",
+      "screenshot": "onboarding-preferences-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Nhà mình thích món gì và cần tránh gì?",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "onboarding-goals",
+      "requestedRoute": "/onboarding/goals",
+      "renderedRoute": "/onboarding/goals",
+      "screenshot": "onboarding-goals-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Bạn muốn Takosan giúp việc gì trước?",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "home",
+      "requestedRoute": "/",
+      "renderedRoute": "/",
+      "screenshot": "home-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Hôm nay ăn gì?",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "fridge",
+      "requestedRoute": "/fridge",
+      "renderedRoute": "/fridge",
+      "screenshot": "fridge-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Tủ lạnh của tôi",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "scan",
+      "requestedRoute": "/scan",
+      "renderedRoute": "/scan",
+      "screenshot": "scan-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Chụp ảnh, rồi kiểm tra",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "scan-review",
+      "requestedRoute": "/scan/t13b-preview-fridge/review",
+      "renderedRoute": "/scan/t13b-preview-fridge/review",
+      "screenshot": "scan-review-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Kiểm tra nguyên liệu",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "receipt-review",
+      "requestedRoute": "/scan/receipt-review?scanId=t13b-preview-receipt",
+      "renderedRoute": "/scan/receipt-review",
+      "screenshot": "receipt-review-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Kiểm tra hóa đơn",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "recipes",
+      "requestedRoute": "/recipes",
+      "renderedRoute": "/recipes",
+      "screenshot": "recipes-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Chọn món cho căn bếp của bạn",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "recipe-detail",
+      "requestedRoute": "/recipes/canh-chua-ca-loc-nam-bo",
+      "renderedRoute": "/recipes/canh-chua-ca-loc-nam-bo",
+      "screenshot": "recipe-detail-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Canh chua cá lóc Nam Bộ",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "planner",
+      "requestedRoute": "/planner",
+      "renderedRoute": "/planner",
+      "screenshot": "planner-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Bữa ngon, tuần nhẹ nhàng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "planner-setup",
+      "requestedRoute": "/planner/new",
+      "renderedRoute": "/planner/new",
+      "screenshot": "planner-setup-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Bữa ngon, tuần nhẹ nhàng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "shopping",
+      "requestedRoute": "/shopping",
+      "renderedRoute": "/shopping",
+      "screenshot": "shopping-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Mua đủ cho bữa ngon.",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "profile",
+      "requestedRoute": "/me",
+      "renderedRoute": "/me",
+      "screenshot": "profile-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Hồ sơ",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "preferences",
+      "requestedRoute": "/me/preferences",
+      "renderedRoute": "/me/preferences",
+      "screenshot": "preferences-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Sở thích & hạn chế",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "household",
+      "requestedRoute": "/me/household",
+      "renderedRoute": "/me/household",
+      "screenshot": "household-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Hộ gia đình & chia sẻ",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "settings",
+      "requestedRoute": "/settings/app",
+      "renderedRoute": "/settings/app",
+      "screenshot": "settings-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Cài đặt ứng dụng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "planning-settings",
+      "requestedRoute": "/settings/planning",
+      "renderedRoute": "/settings/planning",
+      "screenshot": "planning-settings-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Cài đặt lập thực đơn",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "notification-settings",
+      "requestedRoute": "/settings/notifications",
+      "renderedRoute": "/settings/notifications",
+      "screenshot": "notification-settings-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Tùy chỉnh thông báo",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "privacy",
+      "requestedRoute": "/settings/privacy",
+      "renderedRoute": "/settings/privacy",
+      "screenshot": "privacy-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Quyền riêng tư & dữ liệu",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "notifications",
+      "requestedRoute": "/notifications",
+      "renderedRoute": "/notifications",
+      "screenshot": "notifications-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Thông báo",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "plus",
+      "requestedRoute": "/plus",
+      "renderedRoute": "/plus",
+      "screenshot": "plus-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Nâng cấp Takosan Plus",
+      "h1Count": 1,
+      "font": "Nunito, system-ui, sans-serif, sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/brand/takosan-logo-horizontal-primary.svg",
+          "width": 117.5625,
+          "height": 36,
+          "naturalRatio": 3.2660550458715596
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "cooking",
+      "requestedRoute": "/cook/canh-chua-ca-loc-nam-bo",
+      "renderedRoute": "/cook/canh-chua-ca-loc-nam-bo",
+      "screenshot": "cooking-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Canh chua cá lóc Nam Bộ",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "nutrition",
+      "requestedRoute": "/recipes/canh-chua-ca-loc-nam-bo",
+      "renderedRoute": "/recipes/canh-chua-ca-loc-nam-bo",
+      "screenshot": "nutrition-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Canh chua cá lóc Nam Bộ",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "ingredient-detail",
+      "requestedRoute": "/fridge/preview-stock-chicken",
+      "renderedRoute": "/fridge/preview-stock-chicken",
+      "screenshot": "ingredient-detail-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Chi tiết nguyên liệu",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "saved-weekly-plan",
+      "requestedRoute": "/planner/bd19d719-4514-405a-837a-ab605c75e7dc",
+      "renderedRoute": "/planner/bd19d719-4514-405a-837a-ab605c75e7dc",
+      "screenshot": "saved-weekly-plan-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Bữa ngon, tuần nhẹ nhàng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "daily-planned-home",
+      "requestedRoute": "/",
+      "renderedRoute": "/",
+      "screenshot": "daily-planned-home-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Hôm nay ăn gì?",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "planned-meal",
+      "requestedRoute": "/planner/bd19d719-4514-405a-837a-ab605c75e7dc/meal/2026-10-12%3Adinner%3A0",
+      "renderedRoute": "/planner/bd19d719-4514-405a-837a-ab605c75e7dc/meal/2026-10-12%3Adinner%3A0",
+      "screenshot": "planned-meal-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Bữa ngon, tuần nhẹ nhàng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "plan-shopping-budget",
+      "requestedRoute": "/planner/bd19d719-4514-405a-837a-ab605c75e7dc/shopping",
+      "renderedRoute": "/planner/bd19d719-4514-405a-837a-ab605c75e7dc/shopping",
+      "screenshot": "plan-shopping-budget-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Bữa ngon, tuần nhẹ nhàng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "landing",
+      "requestedRoute": "/landing",
+      "renderedRoute": "/landing",
+      "screenshot": "landing-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Ăn đủ.Mua đủ.Dùng hết.",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "login",
+      "requestedRoute": "/auth",
+      "renderedRoute": "/auth",
+      "screenshot": "login-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Đăng nhập vào Takosan",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "register",
+      "requestedRoute": "/auth?mode=register",
+      "renderedRoute": "/auth",
+      "screenshot": "register-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Tạo tài khoản Takosan",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "verify-missing",
+      "requestedRoute": "/auth/verify",
+      "renderedRoute": "/auth/verify",
+      "screenshot": "verify-missing-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Xác thực mã OTP",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "onboarding-household",
+      "requestedRoute": "/onboarding/household",
+      "renderedRoute": "/onboarding/household",
+      "screenshot": "onboarding-household-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Nhà mình thường có bao nhiêu người ăn?",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "onboarding-preferences",
+      "requestedRoute": "/onboarding/preferences",
+      "renderedRoute": "/onboarding/preferences",
+      "screenshot": "onboarding-preferences-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Nhà mình thích món gì và cần tránh gì?",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "onboarding-goals",
+      "requestedRoute": "/onboarding/goals",
+      "renderedRoute": "/onboarding/goals",
+      "screenshot": "onboarding-goals-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Bạn muốn Takosan giúp việc gì trước?",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "home",
+      "requestedRoute": "/",
+      "renderedRoute": "/",
+      "screenshot": "home-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Hôm nay ăn gì?",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "fridge",
+      "requestedRoute": "/fridge",
+      "renderedRoute": "/fridge",
+      "screenshot": "fridge-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Tủ lạnh của tôi",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "scan",
+      "requestedRoute": "/scan",
+      "renderedRoute": "/scan",
+      "screenshot": "scan-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Chụp ảnh, rồi kiểm tra",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "scan-review",
+      "requestedRoute": "/scan/t13b-preview-fridge/review",
+      "renderedRoute": "/scan/t13b-preview-fridge/review",
+      "screenshot": "scan-review-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Kiểm tra nguyên liệu",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "receipt-review",
+      "requestedRoute": "/scan/receipt-review?scanId=t13b-preview-receipt",
+      "renderedRoute": "/scan/receipt-review",
+      "screenshot": "receipt-review-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Kiểm tra hóa đơn",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "recipes",
+      "requestedRoute": "/recipes",
+      "renderedRoute": "/recipes",
+      "screenshot": "recipes-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Chọn món cho căn bếp của bạn",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "recipe-detail",
+      "requestedRoute": "/recipes/canh-chua-ca-loc-nam-bo",
+      "renderedRoute": "/recipes/canh-chua-ca-loc-nam-bo",
+      "screenshot": "recipe-detail-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Canh chua cá lóc Nam Bộ",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "planner",
+      "requestedRoute": "/planner",
+      "renderedRoute": "/planner",
+      "screenshot": "planner-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Bữa ngon, tuần nhẹ nhàng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "planner-setup",
+      "requestedRoute": "/planner/new",
+      "renderedRoute": "/planner/new",
+      "screenshot": "planner-setup-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Bữa ngon, tuần nhẹ nhàng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "shopping",
+      "requestedRoute": "/shopping",
+      "renderedRoute": "/shopping",
+      "screenshot": "shopping-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Mua đủ cho bữa ngon.",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "profile",
+      "requestedRoute": "/me",
+      "renderedRoute": "/me",
+      "screenshot": "profile-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Hồ sơ",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "preferences",
+      "requestedRoute": "/me/preferences",
+      "renderedRoute": "/me/preferences",
+      "screenshot": "preferences-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Sở thích & hạn chế",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "household",
+      "requestedRoute": "/me/household",
+      "renderedRoute": "/me/household",
+      "screenshot": "household-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Hộ gia đình & chia sẻ",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "settings",
+      "requestedRoute": "/settings/app",
+      "renderedRoute": "/settings/app",
+      "screenshot": "settings-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Cài đặt ứng dụng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "planning-settings",
+      "requestedRoute": "/settings/planning",
+      "renderedRoute": "/settings/planning",
+      "screenshot": "planning-settings-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Cài đặt lập thực đơn",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "notification-settings",
+      "requestedRoute": "/settings/notifications",
+      "renderedRoute": "/settings/notifications",
+      "screenshot": "notification-settings-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Tùy chỉnh thông báo",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "privacy",
+      "requestedRoute": "/settings/privacy",
+      "renderedRoute": "/settings/privacy",
+      "screenshot": "privacy-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Quyền riêng tư & dữ liệu",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "notifications",
+      "requestedRoute": "/notifications",
+      "renderedRoute": "/notifications",
+      "screenshot": "notifications-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Thông báo",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "plus",
+      "requestedRoute": "/plus",
+      "renderedRoute": "/plus",
+      "screenshot": "plus-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Nâng cấp Takosan Plus",
+      "h1Count": 1,
+      "font": "Nunito, system-ui, sans-serif, sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/brand/takosan-logo-horizontal-primary.svg",
+          "width": 117.5625,
+          "height": 36,
+          "naturalRatio": 3.2660550458715596
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "cooking",
+      "requestedRoute": "/cook/canh-chua-ca-loc-nam-bo",
+      "renderedRoute": "/cook/canh-chua-ca-loc-nam-bo",
+      "screenshot": "cooking-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Canh chua cá lóc Nam Bộ",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 128,
+          "height": 30.71875,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "nutrition",
+      "requestedRoute": "/recipes/canh-chua-ca-loc-nam-bo",
+      "renderedRoute": "/recipes/canh-chua-ca-loc-nam-bo",
+      "screenshot": "nutrition-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Canh chua cá lóc Nam Bộ",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "ingredient-detail",
+      "requestedRoute": "/fridge/preview-stock-chicken",
+      "renderedRoute": "/fridge/preview-stock-chicken",
+      "screenshot": "ingredient-detail-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Chi tiết nguyên liệu",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "saved-weekly-plan",
+      "requestedRoute": "/planner/637b6ea1-7480-4d4c-9b5f-c6bced285a97",
+      "renderedRoute": "/planner/637b6ea1-7480-4d4c-9b5f-c6bced285a97",
+      "screenshot": "saved-weekly-plan-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Bữa ngon, tuần nhẹ nhàng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "daily-planned-home",
+      "requestedRoute": "/",
+      "renderedRoute": "/",
+      "screenshot": "daily-planned-home-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Hôm nay ăn gì?",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "planned-meal",
+      "requestedRoute": "/planner/637b6ea1-7480-4d4c-9b5f-c6bced285a97/meal/2026-10-12%3Adinner%3A0",
+      "renderedRoute": "/planner/637b6ea1-7480-4d4c-9b5f-c6bced285a97/meal/2026-10-12%3Adinner%3A0",
+      "screenshot": "planned-meal-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Bữa ngon, tuần nhẹ nhàng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "plan-shopping-budget",
+      "requestedRoute": "/planner/637b6ea1-7480-4d4c-9b5f-c6bced285a97/shopping",
+      "renderedRoute": "/planner/637b6ea1-7480-4d4c-9b5f-c6bced285a97/shopping",
+      "screenshot": "plan-shopping-budget-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Bữa ngon, tuần nhẹ nhàng",
+      "h1Count": 1,
+      "font": "\"Be Vietnam Pro\", sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takosan/rebuild/lockup.svg",
+          "width": 150,
+          "height": 36,
+          "naturalRatio": 4.166666666666667
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    }
+  ],
+  "journeys": [
+    "logout-dialog-Escape-and-restored-focus",
+    {
+      "kind": "keyboard-branded-home-link",
+      "focus": {
+        "style": "solid",
+        "width": 2
+      }
+    }
+  ],
+  "pageErrors": [],
+  "failures": []
+}

@@ -1,0 +1,18 @@
+:root {
+  --tako-coral: #FF7B6B;
+  --tako-coral-deep: #E96252;
+  --tako-coral-soft: #FFE9E4;
+  --tako-leaf: #2E7D5B;
+  --tako-leaf-deep: #1D5942;
+  --tako-ink: #202C28;
+  --tako-cream: #FFF8F3;
+  --tako-white: #FFFFFF;
+  --tako-mint: #DFF4E6;
+  --tako-yellow: #FFC857;
+  --tako-grey: #6F746E;
+  --tako-outline: #E6E5DC;
+  --tako-danger: #C93D3D;
+  --tako-font-ui: "Nunito", "Noto Sans", system-ui, sans-serif;
+  --tako-radius-md: 16px;
+  --tako-touch-target: 44px;
+}

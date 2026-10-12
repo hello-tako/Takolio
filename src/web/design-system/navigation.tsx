@@ -260,7 +260,7 @@ export function RailSidebar({ kitchen = false, ...brand }: SidebarProps) {
   if (!kitchen) return <LegacyRailSidebar {...brand} />;
   return <nav aria-label="Điều hướng chính" className="kitchen-sidebar">
     <Link to="/" aria-label="Takosan — Trang chủ" translate="no" className="kitchen-sidebar-brand">
-      <img src={brand.brandSymbol ?? TAKOSAN_KITCHEN.symbol} alt="" width={32} height={32} className="kitchen-sidebar-symbol" />
+      <img src={brand.brandSymbol ?? TAKOSAN_KITCHEN.symbolMicro} alt="" width={32} height={32} className="kitchen-sidebar-symbol" />
       <img src={brand.brandLogo ?? TAKOSAN_KITCHEN.logo} alt="" width={300} height={72} className="kitchen-sidebar-logo" />
     </Link>
     <KitchenNavItems />

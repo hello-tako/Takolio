@@ -1,36 +1,33 @@
-/**
- * Takosan brand contract — the single place React code reads brand identity from.
- * Assets are the supplied kit SVG/PNG files installed under /public/takosan;
- * FRIGO_ASSETS keeps owning content paths (ingredients, recipes, legacy art).
- */
-const BASE = '/takosan';
-
+/** Canonical V3 identity. Legacy pose names are compatibility aliases, not new artwork. */
+const BASE = '/takosan/v3';
 export const TAKOSAN_BRAND = {
   name: 'Takosan',
-  tagline: 'Mở tủ lạnh. Biết ngay hôm nay ăn gì.',
-  motto: 'Ăn đủ. Mua đủ. Dùng hết.',
+  tagline: 'Bữa ngon, nhẹ đầu.',
+  supportingLine: 'Less planning. More living.',
+  motto: 'Bữa ngon, nhẹ đầu.',
   base: BASE,
   logos: {
-    horizontal: `${BASE}/brand/takosan-logo-horizontal-primary.svg`,
-    horizontalWhite: `${BASE}/brand/takosan-logo-horizontal-white.svg`,
-    stacked: `${BASE}/brand/takosan-logo-primary.svg`,
-    stackedWhite: `${BASE}/brand/takosan-logo-white.svg`,
+    horizontal: `${BASE}/logo/horizontal-primary.svg`,
+    horizontalWhite: `${BASE}/logo/horizontal-mono-white.svg`,
+    stacked: `${BASE}/logo/stacked-primary.svg`,
+    stackedWhite: `${BASE}/logo/stacked-mono-white.svg`,
   },
-  wordmark: `${BASE}/brand/takosan-wordmark.svg`,
-  symbol: `${BASE}/brand/takosan-symbol.svg`,
-  /** Simplified geometry for < 32px renders. */
-  symbolMicro: `${BASE}/brand/takosan-symbol-micro.svg`,
-  og: `${BASE}/brand/takosan-og.png`,
+  wordmark: `${BASE}/logo/wordmark-primary.svg`,
+  symbol: `${BASE}/logo/symbol-primary.svg`,
+  symbolMicro: `${BASE}/logo/symbol-micro.svg`,
+  og: `${BASE}/social/og-1200x630.png`,
   mascot: {
-    neutral: `${BASE}/mascot/takosan-neutral.svg`,
-    wave: `${BASE}/mascot/takosan-wave.svg`,
-    thinking: `${BASE}/mascot/takosan-thinking.svg`,
-    celebrate: `${BASE}/mascot/takosan-celebrate.svg`,
-    fridge: `${BASE}/mascot/takosan-fridge.svg`,
-    recipe: `${BASE}/mascot/takosan-recipe.svg`,
-    cooking: `${BASE}/mascot/takosan-cooking.svg`,
-    calendar: `${BASE}/mascot/takosan-calendar.svg`,
-    shopping: `${BASE}/mascot/takosan-shopping.svg`,
+    happy: `${BASE}/mascot/tako-happy.svg`,
+    neutral: `${BASE}/mascot/tako-happy.svg`,
+    wave: `${BASE}/mascot/tako-happy.svg`,
+    thinking: `${BASE}/mascot/tako-thinking.svg`,
+    wink: `${BASE}/mascot/tako-wink.svg`,
+    celebrate: `${BASE}/mascot/tako-celebrate.svg`,
+    fridge: `${BASE}/mascot/tako-thinking.svg`,
+    recipe: `${BASE}/mascot/tako-thinking.svg`,
+    cooking: `${BASE}/mascot/tako-happy.svg`,
+    calendar: `${BASE}/mascot/tako-thinking.svg`,
+    shopping: `${BASE}/mascot/tako-happy.svg`,
   },
   appIcons: {
     favicon: `${BASE}/app-icons/favicon.svg`,
@@ -40,23 +37,11 @@ export const TAKOSAN_BRAND = {
     maskable512: `${BASE}/app-icons/icon-maskable-512.png`,
   },
   uiIcons: {
-    home: `${BASE}/ui-icons/takosan-icon-home.svg`,
-    fridge: `${BASE}/ui-icons/takosan-icon-fridge.svg`,
-    scan: `${BASE}/ui-icons/takosan-icon-scan.svg`,
-    recipe: `${BASE}/ui-icons/takosan-icon-recipe.svg`,
-    mealPlan: `${BASE}/ui-icons/takosan-icon-meal-plan.svg`,
-    calendar: `${BASE}/ui-icons/takosan-icon-calendar.svg`,
-    shopping: `${BASE}/ui-icons/takosan-icon-shopping-list.svg`,
-    profile: `${BASE}/ui-icons/takosan-icon-profile.svg`,
+    home: `${BASE}/ui-icons/home.svg`, fridge: `${BASE}/ui-icons/fridge.svg`,
+    scan: `${BASE}/ui-icons/scan.svg`, recipe: `${BASE}/ui-icons/recipe.svg`,
+    mealPlan: `${BASE}/ui-icons/planner.svg`, calendar: `${BASE}/ui-icons/planner.svg`,
+    shopping: `${BASE}/ui-icons/shopping.svg`, profile: `${BASE}/ui-icons/profile.svg`,
   },
-  colors: {
-    coral: '#FF7B6B',
-    green: '#2E7D5B',
-    navy: '#1F2937',
-    cream: '#FFF8F3',
-    mint: '#DFF4E6',
-    yellow: '#FFC857',
-  },
+  colors: { coral: '#FF7B6B', green: '#2E7D5B', navy: '#202C28', cream: '#FFF8F3', mint: '#DFF4E6', yellow: '#FFC857' },
 } as const;
-
 export type TakosanMascotPose = keyof typeof TAKOSAN_BRAND.mascot;

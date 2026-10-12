@@ -1,0 +1,32 @@
+[
+  {
+    "file": "nunito-vietnamese-wght-normal.woff2",
+    "sha256": "61e5958cf3c731423456b31739aa454317ea3bdcb205dd87090e94f632c3642b",
+    "bytes": 13096,
+    "weightRange": [
+      200,
+      1000
+    ],
+    "source": "@fontsource-variable/nunito@5.2.7"
+  },
+  {
+    "file": "nunito-latin-ext-wght-normal.woff2",
+    "sha256": "2c8d792869818ecb253a46bc3c63c7013df7aac2f69291c3c85e5cdc94160960",
+    "bytes": 35588,
+    "weightRange": [
+      200,
+      1000
+    ],
+    "source": "@fontsource-variable/nunito@5.2.7"
+  },
+  {
+    "file": "nunito-latin-wght-normal.woff2",
+    "sha256": "ba344451eab25b217a165363b1982048a5e5830a0daf36577973955a04cac793",
+    "bytes": 39128,
+    "weightRange": [
+      200,
+      1000
+    ],
+    "source": "@fontsource-variable/nunito@5.2.7"
+  }
+]

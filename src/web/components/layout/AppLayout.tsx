@@ -53,7 +53,7 @@ export const AppLayout: React.FC = () => {
         <RailSidebar
           kitchen={kitchen}
           brandLogo={kitchen ? TAKOSAN_KITCHEN.logo : undefined}
-          brandSymbol={kitchen ? TAKOSAN_KITCHEN.symbol : undefined}
+          brandSymbol={kitchen ? TAKOSAN_KITCHEN.symbolMicro : undefined}
           brandDimensions={kitchen ? { width: 300, height: 72 } : undefined}
         />
       )}

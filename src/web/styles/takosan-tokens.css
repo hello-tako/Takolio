@@ -1,8 +1,9 @@
-/* Takosan design tokens — mirrors design-tokens/brand-tokens.json v1.1.0. */
+/* Takosan semantic authority. V3 product scopes share this file. */
 :root {
   --takosan-coral: #FF7B6B;
   --takosan-green: #2E7D5B;
-  --takosan-navy: #1F2937;
+  --takosan-ink: #202C28;
+  --takosan-navy: #1F2937; /* Legacy payment shell compatibility. */
   --takosan-cream: #FFF8F3;
   --takosan-mint: #DFF4E6;
   --takosan-yellow: #FFC857;
@@ -98,4 +99,37 @@
   --z-dialog: 70;
   --z-toast: 80;
   --z-max: 100;
+}
+
+/* V3 product scope; protected legacy payment colours retain root defaults. */
+.takosan-rebuild {
+  --takosan-font-ui: 'Nunito', 'Be Vietnam Pro', sans-serif;
+  --kitchen-pine: var(--takosan-green);
+  /* Small text on mint/tinted surfaces needs a darker semantic shade. */
+  --semantic-text-on-soft: var(--takosan-green-hover);
+  --kitchen-coral: var(--takosan-coral);
+  --kitchen-canvas: var(--takosan-cream);
+  --semantic-background-rgb: 255 248 243;
+  --semantic-background-subtle-rgb: 252 251 248;
+  --semantic-text-primary-rgb: 32 44 40;
+  --semantic-text-secondary-rgb: 74 71 65;
+  --semantic-text-muted-rgb: 111 107 100;
+  --semantic-border-rgb: 231 227 218;
+  --semantic-action-primary-rgb: 46 125 91;
+  --semantic-action-primary-hover-rgb: 36 102 72;
+  --semantic-action-primary-pressed-rgb: 29 85 61;
+  --semantic-success-rgb: 46 125 91;
+  --semantic-success-soft-rgb: 223 244 230;
+  --semantic-focus-rgb: 46 125 91;
+  --takosan-green-color-rgb: 46 125 91;
+  --takosan-green-hover-color-rgb: 38 105 76;
+  --takosan-green-deep-color-rgb: 31 86 62;
+  --takosan-mint-color-rgb: 223 244 230;
+  --takosan-mint-deep-color-rgb: 191 227 204;
+  --takosan-cream-color-rgb: 255 248 243;
+  --takosan-cream-line-color-rgb: 243 228 218;
+  --takosan-navy-color-rgb: 32 44 40;
+  --semantic-text-primary: var(--takosan-ink);
+  --semantic-background: var(--takosan-cream);
+  --semantic-success-soft: var(--takosan-mint);
 }
