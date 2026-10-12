@@ -26,7 +26,8 @@ const properties = ['display', 'position', 'box-sizing', 'font-family', 'font-si
   'border-radius', 'box-shadow', 'outline-style', 'outline-width', 'outline-color', 'cursor',
   'padding-top', 'padding-right', 'padding-bottom', 'padding-left', 'margin-top', 'margin-bottom',
   'gap', 'align-items', 'justify-content', 'opacity', 'overflow-x', 'overflow-y'];
-const browser = await chromium.launch();
+// Forced colors override transparent carets; freeze blinking equally in every pair.
+const browser = await chromium.launch({ args: ['--blink-settings=caretBlinkInterval=0'] });
 const checks = [], errors = [], blocked = [], forbiddenWrites = [];
 const routeCases = process.argv[3] === 'states' ? [
   { path: '/auth', id: 'auth-focus', state: 'focus', authenticated: false },
@@ -146,15 +147,21 @@ try {
       assert.equal(capturedPath, c.path, 'The requested screen must be the actual screen');
       if (c.id === 'auth-register') await expect(page.locator('input[type=\"email\"]')).toHaveCount(1);
       const id = `${width}-${c.id ?? c.path.slice(1).replaceAll('/', '-')}`;
-      await installCss(page, baselineCss);
       if (c.state === 'forced-focus') await page.emulateMedia({ forcedColors: 'active' });
-      if (c.state === 'focus' || c.state === 'forced-focus') await page.locator('input[type="email"]').focus();
-      if (c.state === 'hover') await page.locator('button[class*="hover:"]').first().hover();
+      async function restoreState() {
+        if (c.state === 'focus' || c.state === 'forced-focus') await page.locator('input[type="email"]').focus();
+        if (c.state === 'hover') await page.locator('button[class*="hover:"]').first().hover();
+        await page.evaluate(() => new Promise((done) => requestAnimationFrame(() => requestAnimationFrame(done))));
+      }
+      await installCss(page, baselineCss);
+      await restoreState();
       const before = await stableSnapshot(page), baseline = await page.screenshot();
       await installCss(page, candidateCss);
+      await restoreState();
       const after = await stableSnapshot(page), candidateImage = await page.screenshot();
       const changes = compare(before, after);
       await installCss(page, baselineCss);
+      await restoreState();
       const recovered = await stableSnapshot(page), recovery = await page.screenshot();
       const drift = compare(before, recovered);
       const pixels = await pixelDelta(baseline, candidateImage), recoveryPixels = await pixelDelta(baseline, recovery);
