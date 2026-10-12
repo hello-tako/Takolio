@@ -37,7 +37,31 @@ export async function verifyPayosData(data: Record<string, unknown>, signature: 
 }
 
 export function payosConfigured(env: Env): boolean {
-  return Boolean(env.PAYOS_CLIENT_ID && env.PAYOS_API_KEY && env.PAYOS_CHECKSUM_KEY && applicationOrigin(env));
+  return env.PAYOS_CHECKOUT_ENABLED === 'true' && Boolean(env.PAYOS_CLIENT_ID && env.PAYOS_API_KEY && env.PAYOS_CHECKSUM_KEY && applicationOrigin(env));
+}
+
+async function readBoundedPayosJson(response: Response): Promise<unknown> {
+  const maximum = 64 * 1024;
+  const reader = response.body?.getReader();
+  if (!reader) throw new Error('Invalid provider response');
+  const chunks: Uint8Array[] = [];
+  let size = 0;
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      size += value.byteLength;
+      if (size > maximum) throw new Error('Invalid provider response');
+      chunks.push(value);
+    }
+  } finally {
+    await reader.cancel().catch(() => {});
+    reader.releaseLock();
+  }
+  const bytes = new Uint8Array(size);
+  let offset = 0;
+  for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.byteLength; }
+  return JSON.parse(new TextDecoder('utf-8', { fatal: true, ignoreBOM: false }).decode(bytes));
 }
 
 const linkSchema = z.object({
@@ -70,7 +94,7 @@ export async function createPayosInstructions(env: Env, intent: PaymentRow): Pro
     signal: AbortSignal.timeout(15_000),
   });
   if (!response.ok) throw new Error('Payment provider unavailable');
-  const result: unknown = await response.json();
+  const result = await readBoundedPayosJson(response);
   const envelope = z.object({ code: z.literal('00'), data: z.record(z.unknown()), signature: z.string() }).parse(result);
   if (!await verifyPayosData(envelope.data, envelope.signature, env.PAYOS_CHECKSUM_KEY!)) throw new Error('Invalid provider signature');
   const data = linkSchema.parse(envelope.data);

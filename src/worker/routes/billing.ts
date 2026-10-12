@@ -1,4 +1,5 @@
 import { Hono } from 'hono';
+import { bodyLimit } from 'hono/body-limit';
 import { BillingPlanRequestSchema } from '../../shared/billing';
 import { z } from 'zod';
 import type { Env, AuthContext } from '../types';
@@ -111,7 +112,9 @@ billingRoutes.get('/billing/payment-intents/:id', async (c) => {
   return c.json({ success: true, payment: paymentView(intent) });
 });
 
-billingRoutes.post('/billing/payos/webhook', async (c) => {
+billingRoutes.post('/billing/payos/webhook', bodyLimit({
+  maxSize: 16 * 1024, onError: (c) => c.json({ error: 'Invalid webhook', code: 'WEBHOOK_TOO_LARGE' }, 413),
+}), async (c) => {
   const receivedAt = new Date().toISOString();
   if (!c.env.DB || !c.env.PAYOS_CHECKSUM_KEY) return c.json({ error: 'Webhook chưa cấu hình' }, 503);
   const envelope = z.object({ data: z.record(z.unknown()), signature: z.string().optional() })
@@ -125,6 +128,10 @@ billingRoutes.post('/billing/payos/webhook', async (c) => {
   const payment = parsed.data;
   const intent = await c.env.DB.prepare('SELECT * FROM payment_intents WHERE order_code = ?')
     .bind(String(payment.orderCode)).first<PaymentRow>();
+  // payOS verifies a webhook URL with signed data for an order we did not issue.
+  // Acknowledgement never creates a payment or entitlement; mapped orders keep all checks.
+  if (!intent && payment.orderCode === 123 && payment.amount === 3000 &&
+      payment.currency === 'VND' && data.description === 'VQRIO123') return c.json({ success: true });
   if (!intent || !isValidIssuedIntent(intent) || payment.amount !== intent.amount_vnd || payment.currency !== intent.currency) {
     return c.json({ error: 'Payment reconciliation failed' }, 409);
   }
