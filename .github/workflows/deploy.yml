@@ -66,6 +66,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       deploy_sha: ${{ steps.gate.outputs.deploy_sha }}
+      candidate_artifact_id: ${{ steps.candidate.outputs['artifact-id'] }}
       recipe_catalog_mode: ${{ steps.gate.outputs.recipe_catalog_mode }}
       recipe_catalog_d1_canary_percent: ${{ steps.gate.outputs.recipe_catalog_d1_canary_percent }}
       recipe_catalog_cutover_enabled: ${{ steps.gate.outputs.recipe_catalog_cutover_enabled }}
@@ -96,6 +97,7 @@ jobs:
         run: node scripts/release-check.mjs gate
 
       - name: Save immutable candidate manifest
+        id: candidate
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: release-candidate-${{ github.run_id }}-${{ github.run_attempt }}
@@ -115,9 +117,15 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
+      - name: Require immutable candidate artifact ID
+        env:
+          CANDIDATE_ARTIFACT_ID: ${{ needs.release.outputs.candidate_artifact_id }}
+        run: node --input-type=module -e 'if (!/^[1-9][0-9]*$/.test(process.env.CANDIDATE_ARTIFACT_ID ?? "")) throw new Error("Approved candidate artifact ID is missing or malformed");'
+
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: release-candidate-${{ github.run_id }}-${{ github.run_attempt }}
+          artifact-ids: ${{ needs.release.outputs.candidate_artifact_id }}
+          merge-multiple: true
 
       - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
         with:
@@ -199,12 +207,11 @@ jobs:
 
       - name: Deploy to Cloudflare staging
         if: env.STAGING_UNCONFIGURED != 'true'
-        uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd
-        with:
-          wranglerVersion: '4.149.0'
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: deploy --config wrangler.staging.jsonc --var GIT_COMMIT:${{ needs.release.outputs.deploy_sha }} --var RECIPE_CATALOG_MODE:${{ needs.release.outputs.recipe_catalog_mode }} --var RECIPE_CATALOG_D1_CANARY_PERCENT:${{ needs.release.outputs.recipe_catalog_d1_canary_percent }} --var RECIPE_CATALOG_CUTOVER_ENABLED:${{ needs.release.outputs.recipe_catalog_cutover_enabled }} --var MEAL_COMPOSITION_V2_ENABLED:${{ needs.release.outputs.meal_composition_v2_enabled }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: node scripts/cloudflare-deploy-retry.mjs release-manifest.json
 
       # Exact-SHA proof polls readiness within a bounded deadline: the edge may briefly serve the
       # previous Worker version after upload. Only that propagation case is retried; nothing redeploys.
@@ -244,9 +251,15 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
+      - name: Require immutable candidate artifact ID
+        env:
+          CANDIDATE_ARTIFACT_ID: ${{ needs.release.outputs.candidate_artifact_id }}
+        run: node --input-type=module -e 'if (!/^[1-9][0-9]*$/.test(process.env.CANDIDATE_ARTIFACT_ID ?? "")) throw new Error("Approved candidate artifact ID is missing or malformed");'
+
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: release-candidate-${{ github.run_id }}-${{ github.run_attempt }}
+          artifact-ids: ${{ needs.release.outputs.candidate_artifact_id }}
+          merge-multiple: true
 
       - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
         with:
@@ -400,12 +413,11 @@ jobs:
 
       - name: Deploy to Cloudflare production
         id: deploy
-        uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd
-        with:
-          wranglerVersion: '4.149.0'
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: deploy --var GIT_COMMIT:${{ needs.release.outputs.deploy_sha }} --var STRICT_OTP_FAIL_CLOSED:false --var RECIPE_CATALOG_MODE:${{ needs.release.outputs.recipe_catalog_mode }} --var RECIPE_CATALOG_D1_CANARY_PERCENT:${{ needs.release.outputs.recipe_catalog_d1_canary_percent }} --var RECIPE_CATALOG_CUTOVER_ENABLED:${{ needs.release.outputs.recipe_catalog_cutover_enabled }} --var MEAL_PLANNER_ENABLED:${{ needs.release.outputs.meal_composition_v2_enabled }} --var MEAL_COMPOSITION_V2_ENABLED:${{ needs.release.outputs.meal_composition_v2_enabled }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: node scripts/cloudflare-deploy-retry.mjs release-manifest.json
 
       # T19D: the deployment is not successful until the Worker proves, through the protected
       # recipe-authority evidence, that it serves exactly the approved authority state (mode,

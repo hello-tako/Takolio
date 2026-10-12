@@ -148,6 +148,18 @@ describe('server-authoritative payment checkout', () => {
     });
   }
 
+  it.each([false, true])('shares the top Scan action and one heading for guest=%s Plus', async (isGuest) => {
+    mocks.authState.isGuest = isGuest;
+    await mount(<MemoryRouter initialEntries={['/plus']}><PlusPaywallPage /></MemoryRouter>);
+    expect(host.querySelector('header.kitchen-header')).not.toBeNull();
+    expect(host.querySelector('a.kitchen-header-scan')?.getAttribute('href')).toBe('/scan');
+    expect(host.querySelectorAll('h1')).toHaveLength(1);
+    expect(host.querySelector('a[aria-label="Quay lại"]')?.getAttribute('href')).toBe('/me');
+    expect(host.querySelector('main')).toBeNull();
+    expect(host.querySelector('.plus-hero h2')?.className).toContain('text-white');
+    expect(mocks.createPaymentIntent).not.toHaveBeenCalled();
+  });
+
   it('uses legacy creation without querying or activating unaccepted admission', async () => {
     mocks.getPlans.mockResolvedValue({ plans: prices, checkoutAdmissionEnabled: false });
     mocks.createPaymentIntent.mockResolvedValue({ success: true, payment: createdIntent() });

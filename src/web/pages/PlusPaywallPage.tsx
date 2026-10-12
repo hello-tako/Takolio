@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../stores/useAuthStore';
-import { TopBar } from '../components/common/TopBar';
+import { KitchenHeader, KitchenPageHeading } from '../components/common/KitchenHeader';
 import { Button } from '../components/common/Button';
 import { VietQRModal } from '../components/payment/VietQRModal';
 import { TAKOSAN_BRAND } from '../lib/takosan-brand';
@@ -189,16 +189,17 @@ export const PlusPaywallPage: React.FC = () => {
 
   if (isGuest) {
     return (
-      <div className="min-h-screen bg-semantic-background pb-12">
-        <TopBar showBack title="Takosan Plus" />
-        <main className="mx-auto w-full max-w-[var(--content-compact)] px-4 pt-8 md:px-6">
+      <div className="plus-page">
+        <KitchenHeader backTo="/me" />
+        <div className="kitchen-page-body mx-auto w-full max-w-[var(--content-compact)]">
+          <KitchenPageHeading title="Takosan Plus" />
           <section className="overflow-hidden rounded-feature border border-semantic-border bg-semantic-surface shadow-card">
-            <div className="bg-gradient-to-br from-semantic-action-primary-pressed to-semantic-action-primary-hover px-6 py-7 text-white">
+            <div className="plus-hero bg-gradient-to-br from-semantic-action-primary-pressed to-semantic-action-primary-hover px-6 py-7 text-white">
               <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/12 ring-1 ring-white/15">
                 <ShieldCheck aria-hidden="true" className="h-6 w-6 text-takosan-yellow" />
               </div>
               <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-takosan-yellow">Tài khoản bắt buộc</p>
-              <h1 className="mt-2 text-balance font-heading text-2xl font-bold leading-tight text-white">Đăng nhập trước khi chọn gói Plus</h1>
+              <h2 className="mt-2 text-balance font-heading text-2xl font-bold leading-tight text-white">Đăng nhập trước khi chọn gói Plus</h2>
               <p className="mt-3 text-sm leading-relaxed text-white">
                 Gói Plus được gắn với tài khoản để quyền lợi không mất khi bạn đổi thiết bị. Dữ liệu phiên khách vẫn được giữ riêng khi bạn đăng nhập.
               </p>
@@ -222,16 +223,17 @@ export const PlusPaywallPage: React.FC = () => {
               </p>
             </div>
           </section>
-        </main>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-semantic-background pb-12">
-      <TopBar showBack title="Nâng cấp Takosan Plus" />
-      <div className="mx-auto w-full max-w-[var(--content-compact)] px-4 pt-3 space-y-5 md:px-6">
-        <div className="bg-gradient-to-br from-semantic-action-primary-pressed to-semantic-action-primary-hover text-white rounded-card p-5 shadow-card flex items-center justify-between gap-3 overflow-hidden border border-semantic-action-primary/40">
+    <div className="plus-page">
+      <KitchenHeader backTo="/me" />
+      <div className="kitchen-page-body mx-auto w-full max-w-[var(--content-compact)] space-y-5">
+        <KitchenPageHeading title="Nâng cấp Takosan Plus" />
+        <div className="plus-hero bg-gradient-to-br from-semantic-action-primary-pressed to-semantic-action-primary-hover text-white rounded-card p-5 shadow-card flex items-center justify-between gap-3 overflow-hidden border border-semantic-action-primary/40">
           <div className="space-y-1 max-w-[200px]">
             <div className="flex items-center gap-1.5 mb-1">
               <Sparkles className="w-4 h-4 text-takosan-yellow" />

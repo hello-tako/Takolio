@@ -8,7 +8,7 @@ import type { createPayosInstructions } from './payos';
 
 export const checkoutKeySchema = CheckoutKeySchema;
 const instructionsSchema = z.object({
-  bankBin: z.string().regex(/^\d{6}$/), accountNumber: z.string().regex(/^\d{1,32}$/),
+  bankBin: z.string().regex(/^\d{6}$/), accountNumber: z.string().regex(/^[A-Za-z\d]{1,32}$/),
   accountName: z.string().min(1).max(200), transferContent: z.string().min(1).max(200),
   qrImageUrl: z.string().url().refine((value) => new URL(value).protocol === 'https:'),
 });

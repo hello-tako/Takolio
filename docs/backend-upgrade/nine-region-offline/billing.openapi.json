@@ -475,11 +475,11 @@
     },
     {
       "path": "src/worker/routes/billing.ts",
-      "sha256": "a81d7c7257c05b7b063e11f8fda6be3a3434a9b35f1573524102fc01273bb232"
+      "sha256": "22c6f3694a32e3162ff51659613d1df24662868307180b6c94a924ff7ec65264"
     },
     {
       "path": "src/worker/payment/checkout.ts",
-      "sha256": "114720534c0147550c26fd70a47896678c069c4ed40f0b7908739cc773d22848"
+      "sha256": "30a0a11847395941ba370e6aaa737d09b2494ee01ca62d358512de837922024f"
     },
     {
       "path": "migrations/0041_checkout_admission.sql",

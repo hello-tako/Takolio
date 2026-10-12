@@ -17,7 +17,7 @@ export const DEFAULT_REQUIRED_CONSECUTIVE = 3;
 
 const short = (sha) => (typeof sha === 'string' && sha.length >= 8 ? sha.slice(0, 8) : 'unknown');
 
-async function verifyServiceWorker(response, expectedSha) {
+export async function verifyServiceWorker(response, expectedSha) {
   if (response.status !== 200) throw new Error(`Service worker returned HTTP ${response.status}`);
   const contentType = (response.headers.get('content-type') ?? '').split(';')[0].trim().toLowerCase();
   if (!['text/javascript', 'application/javascript'].includes(contentType)) throw new Error('Service worker content type is not JavaScript');

@@ -214,7 +214,7 @@ const LegacyRailSidebar: React.FC<{ brandLogo?: string; brandSymbol?: string; br
 };
 
 
-const inFamily = (path: string, root: string) => path === root || path.startsWith(`${root}/`);
+const inFamily = (path: string, root: string) => path.toLowerCase() === root || path.toLowerCase().startsWith(`${root}/`);
 
 export function isKitchenNavActive(item: NavItem, pathname: string) {
   if (item.path === '/') return pathname === '/';

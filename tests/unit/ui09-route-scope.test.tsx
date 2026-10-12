@@ -13,7 +13,6 @@ describe('UI09 scope preserves protected and legacy boundaries', () => {
     '/inventory-reconciliation',
   ])('adopts %s', (route) => expect(isKitchenSurface(route)).toBe(true));
   it.each([
-    '/plus',
     '/checkout',
     '/week-old',
     '/week/plan/other',

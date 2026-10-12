@@ -29,6 +29,30 @@ describe('durable checkout creation with mock provider', () => {
     expect(dispatch).toHaveBeenCalledTimes(1);
     expect(db.query('PRAGMA foreign_key_check')).toEqual([]);
   });
+  it('creates, replays and resumes an alphanumeric payOS virtual account without another dispatch', async () => {
+    const virtualInstructions = { ...instructions, accountNumber: 'VQRTEST1234567897' };
+    dispatch.mockResolvedValueOnce(virtualInstructions);
+    const first = await createCheckout(db, 'a', key, 'monthly', dispatch);
+    expect(first.kind).toBe('created');
+    if (first.kind !== 'created') throw new Error('Virtual-account checkout failed');
+    expect(first.payment.instructions).toEqual(virtualInstructions);
+    expect(await createCheckout(db, 'a', key, 'monthly', dispatch)).toEqual({ kind: 'replay', payment: first.payment });
+    expect(await readCheckout(db, 'a', first.payment.id)).toEqual({ kind: 'replay', payment: first.payment });
+    expect(await readCheckout(db, 'b', first.payment.id)).toBeNull();
+    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(db.query('SELECT state FROM checkout_admissions')).toEqual([{ state: 'ready' }]);
+    expect(db.query('SELECT * FROM payment_reconciliation_records')).toEqual([]);
+  });
+  it.each(['VQR/path', 'VQR?query', 'VQR account', 'VQR_123', 'VQR-123', 'VQR\u00e9123', 'x'.repeat(33)])(
+    'does not advertise or retry unsafe virtual-account instructions (%s)', async (accountNumber) => {
+      dispatch.mockResolvedValueOnce({ ...instructions, accountNumber });
+      expect((await createCheckout(db, 'a', key, 'monthly', dispatch)).kind).toBe('reconciliation');
+      expect((await createCheckout(db, 'a', key, 'monthly', dispatch)).kind).toBe('reconciliation');
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(db.query('SELECT state,instructions_json FROM checkout_admissions')).toEqual([
+        { state: 'remote_uncertain', instructions_json: null },
+      ]);
+    });
   it('conflicts on changed plan without creating or dispatching another intent', async () => {
     await createCheckout(db, 'a', key, 'monthly', dispatch);
     expect((await createCheckout(db, 'a', key, 'annual', dispatch)).kind).toBe('conflict');

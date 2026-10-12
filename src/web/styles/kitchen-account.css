@@ -54,3 +54,6 @@
 .account-body [role='alert'] { scroll-margin-block: 96px; }
 .account-profile > a { max-width: 100%; }
 .account-profile > a > span { min-width: 0; }
+
+/* Plus hero and payment dialog headings keep their explicit light text. */
+.takosan-rebuild .plus-page h2.text-white { color: white; }

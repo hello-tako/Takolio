@@ -3244,3 +3244,38 @@ violations and overflow**. Approved source ZIP is now available and direct
 comparison is underway: [provenance](docs/ai/T18C_SOURCE_PROVENANCE.md).
 Final source-led fixes, regressions, full gates and PR remain pending.
 Original baseline and workspace settings preserved; no merge/deploy/T18D.
+
+## 2026-10-12 payOS production recovery and Plus shell consistency
+
+Scope: explicit owner authorization to finish payOS production integration and fix
+related failures, including the reported home/Plus navigation mismatch.
+
+- Verified active production is safe rollback source 4fb7c40, checkout OFF; staging
+  serves 186a9cf with checkout ON. Existing channel secrets and webhook registration
+  remain provisioned separately; no bank transfer or fabricated settlement.
+- Corrected durable admission to accept the same bounded ASCII alphanumeric virtual
+  bank accounts as the signed payOS adapter; real-SQLite create/replay/resume regression.
+- Candidate download follows immutable artifact ID from the producer, including
+  failed-only reruns; missing IDs fail closed, no name/attempt guessing.
+- Added bounded recovery only for proven Wrangler 4.149.0 GET service/secrets
+  metadata transient failures before any mutation. Every restart rechecks current
+  main, exact-SHA hosted CI and release policy. Ambiguous upload/timeout stays failed
+  and uses the existing verified rollback path. Only sanitized evidence is retained.
+- Public smoke proves both ordinary and revalidated native-curl /sw.js profiles,
+  three consecutive full SHA and matching byte hashes. Only a structurally valid
+  prior canonical SHA waits, within 90 seconds; invalid assets still fail closed.
+- Source cause of UI mismatch: /plus omitted from AppLayout kitchen allowlist; same
+  defect exists in both current main and rollback code. Migrated guest/account Plus
+  to shared header, top scan and five-item navigation. Regression enumerates every
+  actual route; immersive scan/cook stays fullscreen.
+- Executed so far: 153 payment tests, 176 UI tests, 313 release/flags/retry tests PASS;
+  lint, both TypeScript checks, executable billing contract, 41 migration replay and
+  paired planner/T20 build PASS. Full suite and protected rollout pending.
+- Next: PR review and exact-SHA hosted CI, staging proof, required production reviewer
+  approval, production identity/assets/authority proof, then checkout activation and
+  authenticated application QR. Paid entitlement acceptance needs the owner's bank
+  transfer. Do not describe pending production as complete.
+- Final pre-PR review: case/slash route variants align with Router; 245 UI and 48
+  retry/process tests PASS. First full local run 7,822 PASS/12 failures; stale Plus
+  exclusion fixed and the 11 existing macOS tmp-path fixture failures all pass under
+  canonical TMPDIR (93 tests). A final full canonical run and hosted CI remain pending.
