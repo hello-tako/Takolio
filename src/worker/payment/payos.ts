@@ -89,7 +89,7 @@ export async function createPayosInstructions(env: Env, intent: PaymentRow): Pro
   const expiredAt = Math.floor(Date.parse(intent.expires_at) / 1000);
   const response = await fetch('https://api-merchant.payos.vn/v2/payment-requests', {
     method: 'POST',
-    redirect: 'error',
+    redirect: 'manual',
     headers: { 'Content-Type': 'application/json', 'x-client-id': env.PAYOS_CLIENT_ID!, 'x-api-key': env.PAYOS_API_KEY! },
     body: JSON.stringify({ ...signedFields, expiredAt, signature: await signPayosData(signedFields, env.PAYOS_CHECKSUM_KEY!) }),
     signal: AbortSignal.timeout(15_000),

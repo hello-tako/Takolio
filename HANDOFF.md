@@ -1,3 +1,37 @@
+# payOS Worker runtime correction - 2026-10-12 JST
+
+**Status:** FIX_IMPLEMENTED_FOCUSED_VERIFIED; final hosted CI and replacement
+staging/production deployments required. PR70 merged as
+4fb7c40d01769f0d8d8d043fac0c799b435b3e3e. Final branch CI38236830274:
+331files/7725tests PASS; merge CI38237818252 PASS. Staging deploy38238816115
+and production deploy38239310493 PASS; actual production reviewer
+vn-taphoanhatung. Concurrent production release38236084633 completed before merge.
+
+**Operations:** Dedicated Tako-san channels have separate credentials uploaded
+to frigo-staging/frigo. Both exact webhooks are provider-confirmed. Live signed
+verification200, invalid401, malformed400, oversized413 and unauthenticated
+issuance401 PASS. Stable merge4fb/config/origin/D1 identities verified, catalog
+d1/canary0/plannerT20true preserved. No extra migration or protection change.
+Temporary credentials remain private pending final setup verification.
+
+**New failure and correction:** Authenticated production issuance returned502.
+Actual workerd reproduces TypeError before outbound provider work because
+redirect:error is unsupported at the edge. Node-only no-transfer tests had
+passed and missed this runtime difference. The adapter now uses redirect:manual;
+existing non-2xx rejection prevents following redirects or forwarding credentials.
+Seven actual-workerd regressions fail before the fix; focused fivefiles/138tests
+PASS after it, including redirect301/302/303/307/308 and forged-signature rejection.
+Both PAYOS_CHECKOUT_ENABLED secret flags setfalse while replacement is prepared;
+callbacks remain available. Checkout admission stays OFF independently.
+
+**Next:** Finish local/full/hosted checks, normal PR/main merge, deploy staging,
+verify actual app issuance, then protected production replacement with reviewer
+approval. Enable and verify only after exact deployment. Owner-controlled bank
+transfer and persisted Plus acceptance remain unverified; no fake grant or real
+money movement. Historical checkpoints below are superseded by this entry.
+
+---
+
 # payOS live protocol fix - 2026-10-12 JST
 
 PR70 / initial e2a963b7 hosted CI38235911445 PASS; final code updates pending CI.

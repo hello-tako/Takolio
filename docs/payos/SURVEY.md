@@ -89,3 +89,42 @@ One transport attempt (9139948807) had no confirmed provider response; subsequen
 provider lookup returns code 101 (order not found). No app intent or entitlement
 was created by these protocol tests; no money was transferred. Their private
 receipts exclude bank identifiers and key values. Final hosted CI still required.
+
+## Deployment and edge-runtime follow-up
+
+PR70 merged as 4fb7c40d01769f0d8d8d043fac0c799b435b3e3e after the
+concurrent production release38236084633 completed. Final hosted PR CI38236830274
+passed331files/7725tests; merge CI38237818252 passed. Staging38238816115 and
+production38239310493 deployments passed; production reviewer vn-taphoanhatung
+approved the protected Environment. Both channel credentials were uploaded to
+the matching Workers with checkout initially OFF; both exact webhook URLs were
+provider-confirmed. Signed probe200/invalid401/malformed400/oversized413/guest401
+checks passed. Catalog D1/canary0/paired plannerT20true stayed intact.
+
+Authenticated production issuance then returned502. Actual workerd reproduced
+an unsupported redirect:error TypeError before any outbound provider request.
+Node-only adapter tests had passed and therefore did not cover this runtime
+boundary. The smallest correction is redirect:manual, retaining non-2xx
+rejection before body parsing; credentials are never forwarded to a redirect.
+Both checkout flags were setfalse pending replacement releases. Checksum-backed
+callbacks remain available; no direct subscription or payment state repair ran.
+
+Seven regressions under actual workerd and deployed compatibility2024-11-01
+fail before the fix and pass afterward. They cover successful signed issuance,
+redirect301/302/303/307/308 without a second request, and signature rejection.
+Focused fivefiles/138tests passed. The corrected local Worker created and cancelled
+provider-only production order32260934446999 with signed response/PENDING/read
+and amountPaid0; no app intent, transfer or entitlement. An earlier large-order
+Node diagnostic170712966684685 also passed/cancelled/0 and rules out order-code
+size as the cause. The first corrected local diagnostic failed during its own
+cancel call because that scratch call still used redirect:error; it was repaired,
+then the untouched cancellation diagnostic was repeated successfully.
+
+Final local/hosted CI and replacement staging/production deployment remain
+required at this checkpoint. The production end-to-end QR and paid Plus checks
+are not yet certified. Historical deployment states above are superseded here.
+
+The first corrected scratch run created order7816263117534 before its cancel
+call failed. The operator matched its exact channel/order/timestamp on the payOS
+dashboard, verified signed provider read49000/PENDING/amountPaid0, then cancelled
+it and verified CANCELLED/0. No diagnostic order remains knowingly payable.
