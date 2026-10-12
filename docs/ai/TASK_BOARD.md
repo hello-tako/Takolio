@@ -1,3 +1,40 @@
+# payOS billing recovery release - 2026-10-13 JST
+
+**Status:** STAGING_VERIFIED_PRODUCTION_WAITING_REVIEW. PR74 merged as
+3a24808b97838235596a43694013e74b1ba64cc2. Source branch05e413df; exact main
+CI38272622426 and PR CI38271394292 PASS338files/8055tests plus lint/types/
+migration-smoke/build. Local pnpm check and separate paired planner/T20 build
+PASS; synthetic desktop1280/mobile390 review PASS without horizontal overflow.
+
+**Delivered code:** owner-only billing/account snapshot, latest20 transactions,
+current package/expiry/renewal, saved pending QR reopening after app reload, and
+session fences on reads/actions. Atomic owner admission prevents duplicate
+outstanding orders across tabs/keys/old clients; original issued prices remain
+frozen. A verified paid webhook with its stored reference allows renewal even
+when the create response was lost; other uncertainty stays blocked. Guest Home
+and Planner prompt sign-in instead of calling registered-only APIs. No migration.
+
+**Live:** protected staging38273790273 PASS attempt1: exact Worker/assets/sw SHA,
+D1catalog500/no fallback, paired planner/T20true, matching D1/origin/keys. Admission
+secret enabled on staging after proof; signed200/invalid401/malformed400/
+oversized413/unauth401 callback matrix PASS. Stage temporary price stays absent.
+Production still b7358ea4. New production38274253206 release gate PASS; deploy
+waits for mandatory reviewer vn-taphoanhatung (CLIhello-tako cannot approve).
+The owner received the exact run link and review screenshot; approval requested.
+
+**Limitations/next:** finish protected production, re-prove exact runtime/assets,
+then bulk set CHECKOUT_ADMISSION_ENABLED=true and PAYOS_TEST_MONTHLY_PRICE_VND=2000
+on frigo. Create an actual owned2000VND QR and verify close/reload/reopen sameorder
+and history. Owner performs transfer; require providerPAID/2000 and owned app
+paid/Plus/expiry after reload before deleting the temporary price secret to restore
+49000. No fake callback, direct grant or agent bank transfer. Earlier49000VND QR
+now shows server-confirmed expired; never ask owner to pay it. Existing OAuth
+can read/manageWorker but readonlyD1query failed7403; use authenticated owned API
+plus provider proof, without expanding permissions. Private temporary keys remain
+for final probes and must be truncated before final evidence export.
+
+---
+
 # payOS billing account, QR recovery and temporary offer - 2026-10-13 JST
 
 **Status:** IMPLEMENTED_LOCAL_VERIFIED; hosted checks and new protected
