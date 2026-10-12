@@ -1,0 +1,108 @@
+{
+  "status": "LOCAL_VERIFIED_HOSTED_AND_PRODUCTION_PENDING",
+  "sourceBase": "d86994377b2d017597d862b08186f1aaf6fdeee6",
+  "suite": {
+    "files": 330,
+    "tests": 7705,
+    "status": "PASS"
+  },
+  "productionChanged": false,
+  "checkoutAdmissionEnabled": false,
+  "scannerWorkflowPromoted": false,
+  "externalAcceptance": "PENDING_EXTERNAL_EVIDENCE",
+  "aiExpenditureUsd": 0,
+  "commands": [
+    {
+      "name": "full-local",
+      "log": "check-third.log",
+      "exitCode": 0,
+      "sha256": "18d81cfa3a45eaec1e689b5b04331f35356467f9978f14521bca591f8fbeaf23"
+    },
+    {
+      "name": "full-local-failed",
+      "log": "check-second.log",
+      "exitCode": 1,
+      "sha256": "381871a6276eb07c58ed71a5565ce69b0e8414f9df64192bd60332bf290806fa"
+    },
+    {
+      "name": "typecheck-failed",
+      "log": "check-first.log",
+      "exitCode": 1,
+      "sha256": "cdd54179957f1a61e25e10ebfadd19140fc69d15871f7318f99754b43ce02641"
+    },
+    {
+      "name": "focused-failed",
+      "log": "focused-first.log",
+      "exitCode": 1,
+      "sha256": "111a8b472ff24dacf553e3418a86c32087681c2444373dc7989755e107d7087f"
+    },
+    {
+      "name": "syntax-failed",
+      "log": "focused-second.log",
+      "exitCode": 1,
+      "sha256": "929b4ed3bb11a786284d3f71d888be126909d45bb7a13fe96d7f971d3c83ed99"
+    },
+    {
+      "name": "migration-focused",
+      "log": "migration-focused.log",
+      "exitCode": 0,
+      "sha256": "4d101a877dd3539f1704e0e0fcf05e911bf03145e249e94d453eb08325b30cca"
+    },
+    {
+      "name": "paired-build",
+      "log": "build-paired-final.log",
+      "exitCode": 0,
+      "sha256": "ca1ffb59aa3f8edb28dc15be1fd281b1d6620ac0db74ced020d2d6dba7a8241b"
+    },
+    {
+      "name": "security-scan",
+      "log": "security-scan-second.log",
+      "exitCode": 1,
+      "sha256": "ab3e6cc4c72f1ac3216a7f88f3143693b1612b6a52d099be5f25f1054c55d0c4"
+    },
+    {
+      "name": "context",
+      "log": "security-context-second.log",
+      "exitCode": 0,
+      "sha256": "ee5eb7ddc0d29e72ad7c8678526578af9b0c53022540f533cd46e621f9c19ad2"
+    }
+  ],
+  "audit-full.json": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0
+    },
+    "sha256": "27e025e56175b1d62b2c12094c431e2aa91c7290e5d4393e7f07df6364fc352f"
+  },
+  "audit-production.json": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0
+    },
+    "sha256": "89afa98eb2f105e15a07f3557cf2dccadd21175473f32e8671ba497c17d98c22"
+  },
+  "browser": [
+    {
+      "name": "browser-default-off-stable",
+      "cases": 6,
+      "screenshots": 12,
+      "sha256": "76a45422546d3f4a8754e87cff5ccfba54f604ecc5e64c9cbb9d073524b3a79f",
+      "serviceWorkersBlockedForMock": true,
+      "classification": "LOCAL_SYNTHETIC_MOCK_NOT_AUTH_OR_PROVIDER_CERTIFICATION"
+    },
+    {
+      "name": "browser-opt-in-final",
+      "cases": 6,
+      "screenshots": 12,
+      "sha256": "0e0aa523e01580b49ea5cd0b6a4217bfa62b875e577958dba74420d6ab3d8c9d",
+      "serviceWorkersBlockedForMock": true,
+      "classification": "LOCAL_SYNTHETIC_MOCK_NOT_AUTH_OR_PROVIDER_CERTIFICATION"
+    }
+  ]
+}

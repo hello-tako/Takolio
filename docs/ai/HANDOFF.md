@@ -1,3 +1,176 @@
+# Nine-region production release preparation - 2026-10-12 JST
+
+**Task/status:** RELEASE_PREPARATION. Active packet
+../backend-upgrade/nine-region-production-release/PLAN.md. User separately
+requests production upgrade; protected release/migration authorized. OTP/provider
+paid tests remain unauthorized, AI budget USD0. Offline checkpoints0407011d/d8699437
+remain preserved. Release branch codex/nine-region-production-release.
+
+**Changes:** Checkout admission has a default-off exact Worker capability;
+UI preserves no-key legacy checkout while disabled, keyed requests fail closed.
+Recovery reads are disabled without opt-in. PayOS signatures/prices/pending-only
+grants unchanged. Scanner workflow moved to a preserved non-executable YAML
+candidate pending independent promotion, no protection/check bypass. Added staging
+0041 identity/exact-main/ledger/bookmark/constraint certification workflow. Extended
+production0041 exact-main/constraint checks and explicit post-media tip without
+relaxing catalog/media integrity. 0040 bytes/config/dependencies/deploy unchanged.
+See ADR-RELEASE-001 in the release packet.
+
+**Checks/failures:** Verification in progress. First focused run235behavior tests
+PASS but new workflow-test quote syntax failed; first fullcheck failed generic
+Zod input/output inference. Both fixes applied; new complete gates in progress.
+No current-SHA PASS or new live deployment claimed yet. All old receipts retained.
+
+**Database/deployment:** Production last separately verified0c0f9933/ledger40.
+0041 rollout must precede app deploy and preserve old-worker coexistence; no
+remote mutation/new release executed yet. Environment reviewer vn-taphoanhatung
+required; CLI hello-tako. Never change protections or reapply0040.
+
+**Next/limits:** Finish local gates/browser/scanners, protected PR/exact-main CI,
+staging0041/deploy/smoke, production0041 and deploy with separate Environment
+approvals, then receipt/monitor. All nine external acceptance rows remain
+PENDING_EXTERNAL_EVIDENCE; checkout/security/AI/data/VNext remain dormant as
+specified. No real OTP, paid AI or live payment testing. Original checkout
+preserved. Historical entries below remain immutable.
+
+**Local verification:** pnpm check PASS: 330 files / 7705 tests,166.03s;
+lint/both TypeScript projects/41-migration replay/build PASS. Remote gates
+explicitly skipped. Focused migration checks18/18 PASS. Full/prod dependency
+audits0. Source scan4865 files: Semgrep/zizmor0; Syft504 declaredcomponents;
+Gitleaks raw17/exit1 retained, exact-context17matched/0unresolved. Eleven
+protected appliedmigration/provider/grant/price/config/lock/deploy paths exact.
+All four baseline failure logs retained: plan-capability expectation, quote
+syntax, Zod inference and exact workflow migration-list expectation. Browser
+attempts preserve port collision, dev-preview empty document and service-worker
+interception bypass/401; final mock tests explicitly block service workers.
+Public PWA remains a separate deployed check; no actual OTP/provider/payment call.
+
+**Release scope/next:** checkout admission default OFF and scanner workflow
+non-executable candidate; real acceptance remains PENDING_EXTERNAL_EVIDENCE.
+Push normal PR and wait exact-head then exact-main CI; staging0041/deploy/smoke
+before protected production0041/deploy/monitor. No production mutation yet.
+
+
+Final local browser acceptance PASS in both modes: Chromium/Firefox/WebKit at
+320/1440,12 cases/24screenshots, zero stable axe/overflow/broken/page-errors or
+external requests. Default-off calls no recovery API or idempotency header;
+opt-in keeps key/reload replacement fence/GET resume. Actual new checkout remains
+OFF in staging/production configs. Stable enabled-button opacity resolved the
+transient WebKit contrast capture; failed evidence remains retained.
+
+---
+
+# Nine-region offline completion - 2026-10-12 JST
+
+**Task/status:** OFFLINE_IMPLEMENTATION_VERIFIED_EXTERNAL_ACCEPTANCE_PENDING.
+Active packet ../backend-upgrade/nine-region-offline/PLAN.md. Implementation
+0407011d6a0225be920a84c5eeb9fd47f5651961; base9cfadbde; branch
+codex/nine-region-offline-completion. Canonical worktree
+/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo.
+
+**Authorization/delivered:** User authorizes all nine regions, then restricts to
+synthetic/fixture/mock offline work, budgetUSD0. Turnstile callback/loader fencing;
+0041 durable checkout admission/reconciliation/owned reload-resume and frozen
+client plan/key; typed auth/provider/queue boundaries/shared Zod billing contract;
+synthetic scan benchmark/cost plan; IngredientV2 consumer audit; current planner/
+stock closed-loop verification; SLO arithmetic/fault matrix/local restore; pinned
+scanner workflow candidate/trusted-base context; six dormant ProductVNext policies.
+Signed pending-only grants/prices/PayOS provider/applied0018/0040/config/dependencies/
+production workflows unchanged. No email/paidAI/remote mutation/push/merge/deploy.
+
+**Checks/failures:** Node24, canonicalTMPDIR/private/tmp, CItrue; pnpmcheckPASS
+329files/7691tests145.95s, lint/bothTS/41migrations/build. Actual localworkerd D1
+ledger/schema/ready-uncertain replay/FK/quick_checkPASS. Exact0407011dbuild with
+pairedplanner/T20true and actualSWtokenPASS. Threeengines x320/1440 browser mock
+billing6cases/12screenshots plus authmockSDK6cases/6screenshots PASS,
+0stableaxe/overflow/broken/pageerrors/externalrequests; WebKit HTTP
+fixturecookie bridge is not real auth evidence. Billing/planner contracts/pilotPASS;
+120synthetic cases x3profiles,121imagebytes verified; 500recipes/6766lines consumer
+audit retains500blocked and fourgates. SQLite1000-row interrupted rollback/restore
+and100queriesPASS, localp95.631ms only. SLO20synthetic events, targetsunset,
+productionSloCertifiedfalse. Full/prodaudit0. Actualscanner fixturesPASS;
+Semgrep/zizmor0, Syft504declared; Gitleaksraw17/exit1 retained, exactcontext17matched/
+0unresolved; documentation-inclusivescan4857files unchanged findings. Authmock
+StrictMode/transition harness failures retained and stable-state checks pass.
+No independent/hostedsecurity claim. Initialtests had key/fixture/
+0040tip/parser/hash assumptions; browser bootstrap and4.49contrast failure retained
+andfixed. Review plan-switch/close replacement races fixed. Final receipts retain
+all failed attempts; see RESULT.md and validation.json.
+
+**Database/remote:** 0041 was applied only to isolated local test databases;
+production remains historical verified0c0f9933/ledger40, not queried/re-certified here.
+Never rewrite/reapply0040. Remote gates explicitly skipped; originalcheckout
+unchanged with preexisting untrackedfiles preserved. Local preview stopped.
+
+**Limits/next:** All nine real acceptance rows PENDING_EXTERNAL_EVIDENCE. No
+controlled inbox, PayOS operational/retention/refund, real permitted240images/human
+labels/currentproviderpricing, humaningredient/source/license/nutrition, hosted
+load/alerts/seven-daySLO/recovery/nativefloor or ProductVNext activation certificate.
+V3/provider/budget/IngredientV2/VNext candidates remain dormant; runtimeauthorityfalse
+where specified. Initialsecurity-policy promotion fails closed without reviewed
+trusted-base context. Supply region-specific evidence/decisions and separate release
+authorization before any provider/production change; independent offline tasks are
+complete. External AI costUSD0; estimatedscenario3.77856/37.7856 is not a quote or
+upperbound. See EXTERNAL_ACCEPTANCE.md, BILLING_RECONCILIATION.md, OPERATIONS.md,
+SECURITY_PROMOTION.md and six productADRs. Historical entries below remain unchanged.
+
+---
+
+# Integrated backend and Brand V3 production release - 2026-10-12 JST
+
+**Task/status:** PRODUCTION_VERIFIED_WITH_EXTERNAL_ACCEPTANCE_OPEN.
+Repository hello-tako/Tako-san, immutable ID 1385308553. PRs 66, 67 and 68 are MERGED.
+Exact deployed source/main merge: 0c0f9933dcd1af2296d8033709ea3bf5ceec30f2; hardening ancestor
+231486aed1fd67b7bb4e1ce443b56752c8e9bfc7; full Brand ancestor
+6114a43ee6c2798ecd9aebca959dd6496d1a2aea. Canonical worktree
+/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo. This documentation
+checkpoint records the verified release source; it is not a new runtime release.
+
+**Delivered/evidence:** Backend integration, Brand V3, Tailwind 4.3.3 compatibility,
+strict OTP recovery and exact-main migration fences are on production. PR68
+preserves only the unchanged complete D1 authority, with verified 22 source blobs. Main CI
+38208731783 PASS. Local/hosted suite 320 files / 7650 tests PASS; 94 isolated
+production-build E2E PASS; 198 responsive screenshots have 0 axe/overflow/broken
+images; 40 appearance + 12 state pairs exact. Full dependency audit 0 findings.
+Pinned Semgrep/zizmor 0; Gitleaks raw 17 context-reviewed / 0 unresolved, raw status
+retained. Approved deploy 38206476316 FAILED before any Worker upload; retained.
+Protected payment/billing sources are unchanged. Synthetic invoice/fridge
+fixtures remain TEST_ONLY. Earlier failed attempts remain recorded.
+
+**Database/deployment:** Staging migration 38204668457 and deploy 38209289078 PASS;
+production migration 38205975841 PASS from 6bc1fe96; final deploy 38209910253 PASS.
+Migration source/schema bytes are unchanged in the new deployed SHA.
+Actual GitHub approvals for BOTH production runs: vn-taphoanhatung; protections
+unchanged. D1 ledger 39 -> 40, only 0040 applied; FK [], quick_check ok, aggregate
+drift none, six strict OTP tables/two indexes/constraints PASS; private rollback
+bookmark retained. Active production Worker 820c79ef-2db1-4016-95e8-afad9d61958f, 100% traffic;
+canonical D1/catalog 500, exact fingerprint, d1/cutover true/canary 0/T20 paired true.
+Certified inactive strict OTP recovery a300e28d-d304-4dcb-a256-b2495befe72c; metadata/flags/binding
+verified before traffic. No live activation/rollback rehearsal occurred.
+
+**Deployed checks:** Staging and production each pass 30 read-only checks, including
+18 Chromium/Firefox/WebKit public page cases at 320/1440, exact brand bytes,
+unauthenticated tenant guards, release-specific PWA cache upgrade and offline shell.
+Production monitoring: 11 observations across 301.163s,
+all exact-SHA database/queue/catalog/configuration checks PASS. Runtime status is
+`degraded` solely for CONFIG_RECIPE_CATALOG_D1_AUTHORITY, the deliberate complete
+D1 cutover warning; no other issue was accepted. These are bounded
+observations, not a seven-day SLO certificate. Routed WebKit empty-response failures
+and controls retained. New staging smoke1 image timeout and smoke2 undefined
+callback failure are retained; smoke3 passes. Exact transport cause unconfirmed.
+
+**Limits/next:** Direct production WebKit Turnstile iframe errors remain recorded;
+rendering smoke does not certify challenge solve/authentication. Real inbox delivery remains unverified (deliveryVerified=false);
+live OCR/provider accuracy/budget, independent ingredient/data acceptance, physical
+old devices/browser floor, protected billing acceptance and load/chaos/SLO remain
+open. Dormant provider/V3 writer/Ingredient V2 candidates remain unpromoted. Use
+final-local-completion/release-receipt.json, RESULT.md and validation.json for run
+links, receipt hashes, recovery instructions and actual scope. No paid calls/mail/
+financial transactions were made. Original checkout unchanged. Next work requires
+the specific missing provider/data/owner inputs in OPEN_ACCEPTANCE.md.
+
+---
+
 # Production catalog continuity preflight fix - 2026-10-12 JST
 
 **Task/status:** FIX_IMPLEMENTED_LOCAL_FULL_VALIDATED; normal PR/main CI and a new

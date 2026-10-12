@@ -48,6 +48,8 @@ required_tables(name) AS (
     ,('auth_otp_tickets')
     ,('auth_otp_claims')
     ,('auth_otp_assertions')
+    ,('checkout_admissions')
+    ,('payment_reconciliation_records')
     ,('scan_quota_periods')
     ,('scan_quota_ledger')
     ,('measurement_units')
@@ -110,6 +112,20 @@ required_columns(table_name, column_name) AS (
     ('meal_plan_shopping_items_v2', 'estimated_price_min'),
     ('meal_plan_shopping_items_v2', 'estimated_price_max'),
     ('meal_plan_shopping_items_v2', 'snapshot_json')
+    ,('checkout_admissions', 'user_id')
+    ,('checkout_admissions', 'request_key')
+    ,('checkout_admissions', 'intent_id')
+    ,('checkout_admissions', 'plan')
+    ,('checkout_admissions', 'state')
+    ,('checkout_admissions', 'attempt_id')
+    ,('checkout_admissions', 'deadline_at')
+    ,('checkout_admissions', 'instructions_json')
+    ,('checkout_admissions', 'created_at')
+    ,('checkout_admissions', 'updated_at')
+    ,('payment_reconciliation_records', 'intent_id')
+    ,('payment_reconciliation_records', 'reason')
+    ,('payment_reconciliation_records', 'first_observed_at')
+    ,('payment_reconciliation_records', 'last_observed_at')
     ,('auth_otp_scopes', 'scope_hash')
     ,('auth_otp_scopes', 'account_hash')
     ,('auth_otp_scopes', 'purpose')
@@ -215,6 +231,7 @@ required_schema_objects(type, name) AS (
   VALUES
     ('index', 'idx_auth_otp_tickets_scope_admitted'),
     ('index', 'idx_auth_otp_requests_retained_until'),
+    ('index', 'idx_checkout_admissions_user_state'),
     -- T14C (0035): at most one current-ready version per recipe/role; bounded bulk lookups.
     ('index', 'idx_recipe_media_current_ready'),
     ('index', 'idx_recipe_media_recipe_role_status'),

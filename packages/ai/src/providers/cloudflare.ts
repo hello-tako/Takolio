@@ -3,7 +3,7 @@ import { VisionScanResult, ReceiptScanResult, DetectedIngredient, ReceiptItem } 
 import { findCanonicalIngredient } from '@frigo/domain';
 
 export interface CloudflareAIBinding {
-  run: (model: string, inputs: any, options?: any) => Promise<any>;
+  run: (model: string, inputs: Record<string, unknown>, options?: Record<string, unknown>) => Promise<unknown>;
 }
 
 /** Legacy compatibility model; production Frigo routing never selects it. */
@@ -48,7 +48,7 @@ function base64ToByteArray(input: string): number[] {
   }
 }
 
-function parseJsonFromText(text: string): any {
+function parseJsonFromText(text: string): unknown {
   if (!text) return null;
   try {
     return JSON.parse(text);
@@ -74,6 +74,17 @@ function parseJsonFromText(text: string): any {
     }
   }
   return null;
+}
+
+function record(value: unknown): Record<string, unknown> | null {
+  return value !== null && typeof value === 'object' && !Array.isArray(value) ? value as Record<string, unknown> : null;
+}
+function responseText(value: unknown): string {
+  if (typeof value === 'string') return value;
+  const row = record(value);
+  if (typeof row?.response === 'string' && row.response) return row.response;
+  if (typeof row?.description === 'string' && row.description) return row.description;
+  return JSON.stringify(value) ?? '';
 }
 
 function standardizeUnit(rawUnit?: string): 'g' | 'kg' | 'ml' | 'l' | 'piece' | 'pack' | 'bunch' | 'slice' {
@@ -166,24 +177,26 @@ Chỉ trả về một đối tượng JSON hợp lệ duy nhất theo mẫu sau
       max_tokens: 1024,
     });
 
-    const rawText = res?.response || res?.description || (typeof res === 'string' ? res : JSON.stringify(res));
-    const parsed = parseJsonFromText(rawText);
+    const rawText = responseText(res);
+    const parsed = record(parseJsonFromText(rawText));
 
     if (!parsed || !Array.isArray(parsed.items) || parsed.items.length === 0) {
-      throw new Error(`Cloudflare Workers AI vision returned non-parsable response: ${rawText?.substring(0, 100)}`);
+      throw new Error('Cloudflare Workers AI vision returned invalid response');
     }
 
-    const items: DetectedIngredient[] = parsed.items.map((item: any) => {
-      const canonical = findCanonicalIngredient(item.raw_name);
+    const items: DetectedIngredient[] = parsed.items.map((value: unknown) => {
+      const item = record(value);
+      if (!item) throw new Error('Invalid provider item');
+      const canonical = findCanonicalIngredient(typeof item.raw_name === 'string' ? item.raw_name : '');
       return {
         raw_name: String(item.raw_name || 'Nguyên liệu'),
         estimated_quantity: Math.max(0.1, Number(item.estimated_quantity) || 1),
-        unit: standardizeUnit(item.unit || canonical?.defaultUnit),
+        unit: standardizeUnit(typeof item.unit === 'string' ? item.unit : canonical?.defaultUnit),
         // T13R-B P2-1: the model's own confidence, exactly, or unknown. The
         // former floor/default (>= 0.5, missing -> 0.9) fabricated certainty.
         confidence: optionalConfidence(item.confidence),
         canonical_id: canonical?.id,
-        category: canonical?.category || item.category || 'other',
+        category: canonical?.category || (typeof item.category === 'string' ? item.category : 'other'),
         storage: item.storage === 'freezer' || item.storage === 'pantry' ? item.storage : 'fridge',
       };
     });
@@ -226,25 +239,27 @@ Chỉ trả về một đối tượng JSON hợp lệ duy nhất theo mẫu sau
       max_tokens: 1500,
     });
 
-    const rawText = res?.response || res?.description || (typeof res === 'string' ? res : JSON.stringify(res));
-    const parsed = parseJsonFromText(rawText);
+    const rawText = responseText(res);
+    const parsed = record(parseJsonFromText(rawText));
 
     if (!parsed || !Array.isArray(parsed.items)) {
-      throw new Error(`Cloudflare Workers AI receipt returned non-parsable response: ${rawText?.substring(0, 600)}`);
+      throw new Error('Cloudflare Workers AI receipt returned invalid response');
     }
 
-    const items: ReceiptItem[] = parsed.items.map((item: any) => {
-      const canonical = findCanonicalIngredient(item.raw_name);
+    const items: ReceiptItem[] = parsed.items.map((value: unknown) => {
+      const item = record(value);
+      if (!item) throw new Error('Invalid provider item');
+      const canonical = findCanonicalIngredient(typeof item.raw_name === 'string' ? item.raw_name : '');
       return {
         raw_name: String(item.raw_name || 'Sản phẩm'),
         estimated_quantity: Math.max(0.1, Number(item.estimated_quantity) || 1),
-        unit: standardizeUnit(item.unit || canonical?.defaultUnit),
+        unit: standardizeUnit(typeof item.unit === 'string' ? item.unit : canonical?.defaultUnit),
         // T13: an unread price is unknown, not 0₫ — `|| 0` turned every
         // failed extraction into a factual "this cost nothing" claim.
         unit_price_vnd: optionalAmount(item.unit_price_vnd),
         total_price_vnd: optionalAmount(item.total_price_vnd),
         canonical_id: canonical?.id,
-        category: canonical?.category || item.category || 'other',
+        category: canonical?.category || (typeof item.category === 'string' ? item.category : 'other'),
         storage: item.storage === 'freezer' || item.storage === 'pantry' ? item.storage : 'fridge',
         // T13: uncertainty is preserved. Clamping to >= 0.5 and defaulting to
         // 0.9 manufactured confidence the model never reported.
@@ -292,7 +307,8 @@ Chỉ trả về một đối tượng JSON hợp lệ duy nhất theo mẫu sau
         ],
         max_tokens: 512,
       });
-      return res?.response || res?.content || 'Frigo luôn đồng hành cùng bữa ăn tươi ngon của gia đình bạn!';
+      const row = record(res);
+      return (typeof row?.response === 'string' && row.response) || (typeof row?.content === 'string' && row.content) || 'Frigo luôn đồng hành cùng bữa ăn tươi ngon của gia đình bạn!';
     } catch {
       return 'Frigo luôn đồng hành cùng bữa ăn tươi ngon của gia đình bạn!';
     }

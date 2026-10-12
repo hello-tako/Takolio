@@ -1,6 +1,38 @@
+# Integrated release execution complete - 2026-10-12 JST
+
+Status: PRODUCTION_VERIFIED_WITH_EXTERNAL_ACCEPTANCE_OPEN.
+Source main merge: `0c0f9933dcd1af2296d8033709ea3bf5ceec30f2`; documentation branch codex/production-release-receipt.
+
+1. Integrated the entire Brand V3 branch, fixed inherited E/H E2E assertions, removed
+   vulnerable dependencies through measured Tailwind4 compatibility, and preserved
+   protected runtime/payment behavior.
+2. Merged PR66/67 normally, passed exact main CI, applied only 0040 to staging and
+   production through exact-main/schema gates and actual production reviewer.
+3. Retained approved deploy 38206476316 as FAILED before upload. Added narrow D1
+   continuity proof in ADR-CATALOG-CONTINUITY-003, validated 40 adversarial tests,
+   merged PR68 normally and passed exact merged-main CI 38208731783 (320/7650).
+4. Deployed staging 38209289078 and passed final 30 public checks; retained image-load
+   and harness failures with nine direct controls and an unconfirmed transport cause.
+5. Deployed production 38209910253 after actual vn-taphoanhatung approval, verified
+   exact SHA/canonical binding/500-recipe authority and prepared inactive strict OTP
+   recovery. Captured all receipts and preserved earlier failed release evidence.
+6. Passed final 30 production rendering/PWA checks and 11 health observations over
+   301.163 seconds. Corrected the monitor's ok-only expectation
+   against the explicit D1 warning; retained all three failed browser attempts, external
+   Turnstile diagnosis and 18 HTML controls. Final smoke uses explicit rendering criteria with pending
+   request records after the Firefox networkidle timeout. No live auth or long-term
+   SLO claimed.
+7. Wrote aggregate release receipt/result, updated state and program documents, and
+   recorded exact receipt hashes. Independent real-provider/data/inbox/device/payment/
+   operational acceptance remains open in OPEN_ACCEPTANCE.md.
+
+The initial plan and historical checkpoints follow.
+
+---
+
 # Final available local completion - 2026-10-12 JST
 
-Status: LOCAL_VALIDATED_HOSTED_AND_DEPLOYMENT_PENDING; Brand V3 integration and release explicitly authorized. Base receipt503ae1ea, branch codex/backend-final-local-completion.
+Historical initial status: LOCAL_VALIDATED_HOSTED_AND_DEPLOYMENT_PENDING; Brand V3 integration and release explicitly authorized. Base receipt503ae1ea, branch codex/backend-final-local-completion.
 Canonical worktree /Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo.
 The user explicitly requests autonomous completion of the remaining plan.
 

@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "classification": "CANONICAL_CANDIDATE_OFFLINE",
+  "status": "OFFLINE_CONSUMER_AUDIT_COMPLETE",
+  "externalAcceptance": "PENDING_EXTERNAL_EVIDENCE",
+  "canonicalSourceSha256": "da87da20475fa8d7ec92c716e899ee572339573258ae6d9cc7f3f8f554f2d695",
+  "recipes": 500,
+  "sourceLines": 6766,
+  "runtimeAuthority": false,
+  "finalRuntimeFingerprint": null,
+  "projectableRecipes": 0,
+  "blockedRecipes": 500,
+  "requiredReleaseBlockers": [
+    "runtime_projection_loss",
+    "ingredient_reconciliation",
+    "source_verification",
+    "nutrition_evidence"
+  ]
+}

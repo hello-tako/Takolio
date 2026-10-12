@@ -5,76 +5,47 @@ import type {
   PlusPrice,
 } from '../../shared/payment';
 import { z } from 'zod';
-import { fetchJson } from './http';
+import { ApiError, fetchJson } from './http';
 
-type PlansResponse = { plans: PlusPrice[] };
+type PlansResponse = { plans: PlusPrice[]; checkoutAdmissionEnabled: boolean };
 type PaymentResponse<T> = { success: true; payment: T };
 
-const planSchema = z.enum(['monthly', 'annual']);
-const amountSchema = z.number().int().positive().safe();
-const currencySchema = z.literal('VND');
-const timestampSchema = z.string().min(1).refine((value) => Number.isFinite(Date.parse(value)));
-const urlSchema = z.string().url().refine((value) => {
-  try {
-    const protocol = new URL(value).protocol;
-    return protocol === 'https:' || protocol === 'http:';
-  } catch {
-    return false;
-  }
-});
-const priceSchema = z.object({
-  plan: planSchema,
-  amountVnd: amountSchema,
-  currency: currencySchema,
-});
-const statusSchema = z.enum(['pending', 'paid', 'failed', 'expired', 'refunded']);
-const paymentSchema = z.object({
-  id: z.string().min(1),
-  orderCode: z.string().min(1),
-  plan: planSchema,
-  amountVnd: amountSchema,
-  currency: currencySchema,
-  description: z.string().min(1),
-  expiresAt: timestampSchema,
-  status: statusSchema,
-});
-const instructionsSchema = z.object({
-  bankBin: z.string().min(1),
-  accountNumber: z.string().min(1),
-  accountName: z.string().min(1),
-  transferContent: z.string().min(1),
-  qrImageUrl: urlSchema,
-});
-const createdPaymentSchema = paymentSchema.extend({ instructions: instructionsSchema });
-const plansResponseSchema = z.object({
-  plans: z.array(priceSchema).min(1).refine((plans) => new Set(plans.map((plan) => plan.plan)).size === plans.length),
-});
-const paymentResponseSchema = <T extends z.ZodTypeAny>(payment: T) => z.object({
-  success: z.literal(true),
-  payment,
-});
+import { BillingPaymentSchema, BillingCreatedResponseSchema, BillingPlansResponseSchema,
+  OpenCheckoutsResponseSchema, CheckoutUncertainSchema } from '../../shared/billing';
 
-function parseBillingResponse<T>(schema: z.ZodType<T>, value: unknown, label: string): T {
+function parseBillingResponse<T>(schema: z.ZodType<T, z.ZodTypeDef, unknown>, value: unknown, label: string): T {
   const parsed = schema.safeParse(value);
   if (!parsed.success) throw new Error(`Invalid ${label} response`);
   return parsed.data;
 }
 
 export const billingApi = {
+  resumeCheckout: async (id: string): Promise<PaymentResponse<CreatedPaymentIntent>> => {
+    const response = await fetchJson<unknown>(`/billing/checkouts/${encodeURIComponent(id)}`);
+    if (CheckoutUncertainSchema.safeParse(response).success) throw new ApiError('http', `HTTP 202: ${JSON.stringify(response)}`, 202, { retryable: false });
+    return parseBillingResponse(BillingCreatedResponseSchema, response, 'payment intent');
+  },
+  getOpenCheckouts: async () => parseBillingResponse(OpenCheckoutsResponseSchema,
+    await fetchJson<unknown>('/billing/checkouts'), 'open checkouts'),
   getPlans: async (): Promise<PlansResponse> => {
     const response = await fetchJson<unknown>('/billing/plans');
-    return parseBillingResponse(plansResponseSchema, response, 'billing plans');
+    return parseBillingResponse(BillingPlansResponseSchema, response, 'billing plans');
   },
 
   createPaymentIntent: async (
     plan: PlusPlan,
+    checkoutKey?: string,
   ): Promise<PaymentResponse<CreatedPaymentIntent>> => {
     const response = await fetchJson<unknown>('/billing/payment-intents', {
       method: 'POST',
+      ...(checkoutKey ? { headers: { 'Idempotency-Key': checkoutKey } } : {}),
       body: JSON.stringify({ plan }),
     });
+    if (CheckoutUncertainSchema.safeParse(response).success) {
+      throw new ApiError('http', `HTTP 202: ${JSON.stringify(response)}`, 202, { retryable: false });
+    }
     return parseBillingResponse<PaymentResponse<CreatedPaymentIntent>>(
-      paymentResponseSchema(createdPaymentSchema), response, 'payment intent',
+      BillingCreatedResponseSchema, response, 'payment intent',
     );
   },
 
@@ -83,7 +54,7 @@ export const billingApi = {
   ): Promise<PaymentResponse<PaymentIntent>> => {
     const response = await fetchJson<unknown>(`/billing/payment-intents/${encodeURIComponent(id)}`);
     return parseBillingResponse<PaymentResponse<PaymentIntent>>(
-      paymentResponseSchema(paymentSchema), response, 'payment status',
+      z.object({ success: z.literal(true), payment: BillingPaymentSchema }), response, 'payment status',
     );
   },
 };

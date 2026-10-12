@@ -25,6 +25,8 @@ const mocks = vi.hoisted(() => {
     authState,
     useAuthStore,
     getPlans: vi.fn(),
+    getOpenCheckouts: vi.fn(),
+    resumeCheckout: vi.fn(),
     createPaymentIntent: vi.fn(),
     getPaymentIntent: vi.fn(),
     getMe: vi.fn(),
@@ -36,6 +38,8 @@ vi.mock('../../src/web/stores/useAuthStore', () => ({ useAuthStore: mocks.useAut
 vi.mock('../../src/web/services/billing', () => ({
   billingApi: {
     getPlans: mocks.getPlans,
+    getOpenCheckouts: mocks.getOpenCheckouts,
+    resumeCheckout: mocks.resumeCheckout,
     createPaymentIntent: mocks.createPaymentIntent,
     getPaymentIntent: mocks.getPaymentIntent,
   },
@@ -117,7 +121,9 @@ describe('server-authoritative payment checkout', () => {
     mocks.authState.isPlus = false;
     mocks.authState.setPlusFromServer.mockReset();
     mocks.authState.syncPlusFromServer.mockReset();
-    mocks.getPlans.mockReset();
+    mocks.getPlans.mockReset().mockImplementation(async () => ({ plans: prices, checkoutAdmissionEnabled: true }));
+    mocks.resumeCheckout.mockReset();
+    mocks.getOpenCheckouts.mockReset().mockResolvedValue({ checkouts: [] });
     mocks.createPaymentIntent.mockReset();
     mocks.getPaymentIntent.mockReset();
     mocks.getMe.mockReset();
@@ -142,8 +148,57 @@ describe('server-authoritative payment checkout', () => {
     });
   }
 
+  it('uses legacy creation without querying or activating unaccepted admission', async () => {
+    mocks.getPlans.mockResolvedValue({ plans: prices, checkoutAdmissionEnabled: false });
+    mocks.createPaymentIntent.mockResolvedValue({ success: true, payment: createdIntent() });
+    await mount(<MemoryRouter><PlusPaywallPage /></MemoryRouter>);
+    expect(mocks.getOpenCheckouts).not.toHaveBeenCalled();
+    const button = [...host.querySelectorAll('button')].find((item) => item.textContent?.includes('Nâng cấp ngay'));
+    expect(button?.disabled).toBe(false);
+    await act(async () => { button?.click(); });
+    expect(mocks.createPaymentIntent).toHaveBeenCalledExactlyOnceWith('annual', undefined);
+    expect(host.querySelector('img[alt="Mã VietQR"]')).not.toBeNull();
+  });
+
+  it('resumes an owned ready checkout after reload without creating another order', async () => {
+    mocks.getPlans.mockResolvedValue({ plans: prices, checkoutAdmissionEnabled: true });
+    mocks.getOpenCheckouts.mockResolvedValue({ checkouts: [{ intentId: 'pay_fixture', state: 'ready' }] });
+    mocks.resumeCheckout.mockResolvedValue({ success: true, payment: createdIntent() });
+    await mount(<MemoryRouter><PlusPaywallPage /></MemoryRouter>);
+    const resume = [...host.querySelectorAll('button')].find((button) => button.textContent?.includes('Mở lệnh thanh toán cũ'));
+    expect(resume).toBeDefined();
+    await act(async () => { resume?.click(); });
+    expect(mocks.resumeCheckout).toHaveBeenCalledExactlyOnceWith('pay_fixture');
+    expect(mocks.createPaymentIntent).not.toHaveBeenCalled();
+    expect(host.querySelector('img[alt="Mã VietQR"]')).not.toBeNull();
+  });
+
+  it('blocks a new checkout after reload when an unresolved order exists', async () => {
+    mocks.getPlans.mockResolvedValue({ plans: prices, checkoutAdmissionEnabled: true });
+    mocks.getOpenCheckouts.mockResolvedValue({ checkouts: [{ intentId: 'old-order', state: 'remote_uncertain' }] });
+    await mount(<MemoryRouter><PlusPaywallPage /></MemoryRouter>);
+    expect(host.textContent).toContain('Kiểm tra lệnh cũ');
+    const buy = [...host.querySelectorAll('button')].find((button) => button.textContent?.includes('Nâng cấp ngay với'));
+    await act(async () => { buy?.click(); });
+    expect(mocks.createPaymentIntent).not.toHaveBeenCalled();
+  });
+
+  it('reuses the same checkout key after transport failure', async () => {
+    mocks.getPlans.mockResolvedValue({ plans: prices, checkoutAdmissionEnabled: true });
+    mocks.createPaymentIntent.mockRejectedValueOnce(new Error('response lost'))
+      .mockResolvedValueOnce({ success: true, payment: createdIntent() });
+    await mount(<MemoryRouter><PlusPaywallPage /></MemoryRouter>);
+    const buy = () => [...host.querySelectorAll('button')].find((button) => button.textContent?.includes('Nâng cấp ngay với'));
+    await act(async () => { buy()?.click(); await Promise.resolve(); });
+    const monthly = [...host.querySelectorAll('button')].find((button) => button.textContent?.includes('Gói 1 Tháng'));
+    expect(monthly?.disabled).toBe(true);
+    await act(async () => { monthly?.click(); buy()?.click(); await Promise.resolve(); });
+    expect(mocks.createPaymentIntent).toHaveBeenCalledTimes(2);
+    expect(mocks.createPaymentIntent.mock.calls[1]).toEqual(mocks.createPaymentIntent.mock.calls[0]);
+  });
+
   it('renders arbitrary server prices and uses the selected plan without a client amount', async () => {
-    mocks.getPlans.mockResolvedValue({ plans: prices });
+    mocks.getPlans.mockResolvedValue({ plans: prices, checkoutAdmissionEnabled: true });
     mocks.createPaymentIntent.mockResolvedValue({ success: true, payment: createdIntent() });
     await mount(<MemoryRouter><PlusPaywallPage /></MemoryRouter>);
     await vi.waitFor(() => expect(host.textContent).toContain('7.654.321 VND'));
@@ -160,52 +215,36 @@ describe('server-authoritative payment checkout', () => {
     expect(buy).toBeDefined();
     await act(async () => { buy?.click(); await Promise.resolve(); });
 
-    expect(mocks.createPaymentIntent).toHaveBeenCalledExactlyOnceWith('annual');
+    expect(mocks.createPaymentIntent).toHaveBeenCalledExactlyOnceWith('annual', expect.stringMatching(/^[a-f0-9-]{36}$/));
     expect(host.querySelector('img[alt="Mã VietQR"]')?.getAttribute('src')).toBe('https://server.test/qr/pay_fixture.png');
     expect(host.textContent).toContain('7.654.321 VND');
     expect(host.textContent).toContain('SERVER-CONTENT');
   });
 
-  it('allows a new plan request after switching plans and ignores the older response', async () => {
+  it('locks plan and creation after dispatch while preserving ready instructions for resume', async () => {
     let resolveAnnual!: (value: { success: true; payment: CreatedPaymentIntent }) => void;
-    let resolveMonthly!: (value: { success: true; payment: CreatedPaymentIntent }) => void;
-    mocks.getPlans.mockResolvedValue({ plans: prices });
-    mocks.createPaymentIntent.mockImplementation((plan: PlusPrice['plan']) => new Promise((resolve) => {
-      if (plan === 'annual') resolveAnnual = resolve;
-      else resolveMonthly = resolve;
-    }));
+    mocks.getPlans.mockResolvedValue({ plans: prices, checkoutAdmissionEnabled: true });
+    mocks.createPaymentIntent.mockReturnValue(new Promise((resolve) => { resolveAnnual = resolve; }));
+    mocks.resumeCheckout.mockResolvedValue({ success: true, payment: createdIntent() });
     await mount(<MemoryRouter><PlusPaywallPage /></MemoryRouter>);
-    await vi.waitFor(() => expect(host.textContent).toContain('7.654.321 VND'));
-
     const buy = () => [...host.querySelectorAll('button')].find((button) => button.textContent?.includes('Nâng cấp ngay với'));
-    await act(async () => { buy()?.click(); await Promise.resolve(); });
-    expect(mocks.createPaymentIntent).toHaveBeenCalledWith('annual');
-
+    await act(async () => { buy()?.click(); });
     const monthly = [...host.querySelectorAll('button')].find((button) => button.textContent?.includes('Gói 1 Tháng'));
-    await act(async () => { monthly?.click(); await Promise.resolve(); });
-    await act(async () => { buy()?.click(); await Promise.resolve(); });
-    expect(mocks.createPaymentIntent).toHaveBeenCalledWith('monthly');
-
-    await act(async () => {
-      resolveAnnual({ success: true, payment: createdIntent({ plan: 'annual', amountVnd: 7654321 }) });
-      await Promise.resolve();
-    });
-    expect(host.querySelector('[role="dialog"]')).toBeNull();
-
-    await act(async () => {
-      resolveMonthly({
-        success: true,
-        payment: createdIntent({ plan: 'monthly', amountVnd: 654321, orderCode: 'monthly-order' }),
-      });
-      await Promise.resolve();
-      await Promise.resolve();
-    });
+    expect(monthly?.disabled).toBe(true);
+    await act(async () => { monthly?.click(); buy()?.click(); });
+    expect(mocks.createPaymentIntent).toHaveBeenCalledTimes(1);
+    await act(async () => { resolveAnnual({ success: true, payment: createdIntent() }); });
     expect(host.querySelector('[role="dialog"]')).not.toBeNull();
-    expect(host.textContent).toContain('654.321 VND');
+    await act(async () => { host.querySelector<HTMLButtonElement>('button[aria-label="Đóng"]')?.click(); });
+    expect(buy()?.disabled).toBe(true);
+    const resume = [...host.querySelectorAll('button')].find((button) => button.textContent?.includes('Mở lệnh thanh toán cũ'));
+    await act(async () => { resume?.click(); });
+    expect(mocks.resumeCheckout).toHaveBeenCalledExactlyOnceWith('pay_fixture');
+    expect(mocks.createPaymentIntent).toHaveBeenCalledTimes(1);
   });
 
   it('rejects a created intent whose server plan differs from the selected plan', async () => {
-    mocks.getPlans.mockResolvedValue({ plans: prices });
+    mocks.getPlans.mockResolvedValue({ plans: prices, checkoutAdmissionEnabled: true });
     mocks.createPaymentIntent.mockResolvedValue({
       success: true,
       payment: createdIntent({ plan: 'monthly', amountVnd: 654321 }),

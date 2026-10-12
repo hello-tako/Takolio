@@ -1,4 +1,6 @@
 import { D1DatabaseBinding } from '@frigo/db';
+import type { CloudflareAIBinding } from '../../packages/ai/src/providers/cloudflare';
+import type { ScanQueueMessage } from './services/scan-queue';
 import type {
   Fetcher,
   KVNamespace,
@@ -11,10 +13,10 @@ export type WeekSchemaMode = 'legacy' | 'dual';
 
 export interface Env {
   DB: D1DatabaseBinding;
-  AI?: any;
+  AI?: CloudflareAIBinding;
   IMAGES?: R2Bucket;
   CACHE?: KVNamespace;
-  SCAN_QUEUE?: Queue<any>;
+  SCAN_QUEUE?: Queue<ScanQueueMessage>;
   SCAN_QUEUE_MODE?: 'sync' | 'async';
   ASSETS?: Fetcher;
   // B1: native Workers email (Paid plan). Present when send_email binding is
@@ -42,6 +44,8 @@ export interface Env {
   RELEASE_VERIFY_TOKEN?: string;
   APP_URL?: string;
   AI_MOCK_MODE?: string;
+  // Dormant until PayOS and financial retention acceptance; exact opt-in only.
+  CHECKOUT_ADMISSION_ENABLED?: string;
   MEAL_PLANNER_ENABLED?: string;
   MEAL_PLANNER_AI_ENABLED?: string;
   // T20: Meal Composition V2 API gate; requires MEAL_PLANNER_ENABLED and migration 0039.

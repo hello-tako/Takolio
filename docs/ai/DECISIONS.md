@@ -1,3 +1,91 @@
+# Nine-region production release preparation - 2026-10-12 JST
+
+**Task/status:** RELEASE_PREPARATION. Active packet
+../backend-upgrade/nine-region-production-release/PLAN.md. User separately
+requests production upgrade; protected release/migration authorized. OTP/provider
+paid tests remain unauthorized, AI budget USD0. Offline checkpoints0407011d/d8699437
+remain preserved. Release branch codex/nine-region-production-release.
+
+**Changes:** Checkout admission has a default-off exact Worker capability;
+UI preserves no-key legacy checkout while disabled, keyed requests fail closed.
+Recovery reads are disabled without opt-in. PayOS signatures/prices/pending-only
+grants unchanged. Scanner workflow moved to a preserved non-executable YAML
+candidate pending independent promotion, no protection/check bypass. Added staging
+0041 identity/exact-main/ledger/bookmark/constraint certification workflow. Extended
+production0041 exact-main/constraint checks and explicit post-media tip without
+relaxing catalog/media integrity. 0040 bytes/config/dependencies/deploy unchanged.
+See ADR-RELEASE-001 in the release packet.
+
+**Checks/failures:** Verification in progress. First focused run235behavior tests
+PASS but new workflow-test quote syntax failed; first fullcheck failed generic
+Zod input/output inference. Both fixes applied; new complete gates in progress.
+No current-SHA PASS or new live deployment claimed yet. All old receipts retained.
+
+**Database/deployment:** Production last separately verified0c0f9933/ledger40.
+0041 rollout must precede app deploy and preserve old-worker coexistence; no
+remote mutation/new release executed yet. Environment reviewer vn-taphoanhatung
+required; CLI hello-tako. Never change protections or reapply0040.
+
+**Next/limits:** Finish local gates/browser/scanners, protected PR/exact-main CI,
+staging0041/deploy/smoke, production0041 and deploy with separate Environment
+approvals, then receipt/monitor. All nine external acceptance rows remain
+PENDING_EXTERNAL_EVIDENCE; checkout/security/AI/data/VNext remain dormant as
+specified. No real OTP, paid AI or live payment testing. Original checkout
+preserved. Historical entries below remain immutable.
+
+**Local verification:** pnpm check PASS: 330 files / 7705 tests,166.03s;
+lint/both TypeScript projects/41-migration replay/build PASS. Remote gates
+explicitly skipped. Focused migration checks18/18 PASS. Full/prod dependency
+audits0. Source scan4865 files: Semgrep/zizmor0; Syft504 declaredcomponents;
+Gitleaks raw17/exit1 retained, exact-context17matched/0unresolved. Eleven
+protected appliedmigration/provider/grant/price/config/lock/deploy paths exact.
+All four baseline failure logs retained: plan-capability expectation, quote
+syntax, Zod inference and exact workflow migration-list expectation. Browser
+attempts preserve port collision, dev-preview empty document and service-worker
+interception bypass/401; final mock tests explicitly block service workers.
+Public PWA remains a separate deployed check; no actual OTP/provider/payment call.
+
+**Release scope/next:** checkout admission default OFF and scanner workflow
+non-executable candidate; real acceptance remains PENDING_EXTERNAL_EVIDENCE.
+Push normal PR and wait exact-head then exact-main CI; staging0041/deploy/smoke
+before protected production0041/deploy/monitor. No production mutation yet.
+
+
+Final local browser acceptance PASS in both modes: Chromium/Firefox/WebKit at
+320/1440,12 cases/24screenshots, zero stable axe/overflow/broken/page-errors or
+external requests. Default-off calls no recovery API or idempotency header;
+opt-in keeps key/reload replacement fence/GET resume. Actual new checkout remains
+OFF in staging/production configs. Stable enabled-button opacity resolved the
+transient WebKit contrast capture; failed evidence remains retained.
+
+---
+
+# Nine-region local decisions (2026-10-12)
+
+ADR-OFFLINE-001 is accepted solely under the user's explicit nine-region request,
+which authorizes bounded checkout/billing work despite AGENTS protection. Latest
+instruction restricts execution to offline/mock/synthetic, AI budgetUSD0 and separate
+approval for real OTP/paidAI/production. No prior production authorization overrides
+that restriction. Expand-only0041/key-admission does not change ADR029 pending-only
+signed grant policy, prices or PayOS signatures/provider. The client freezes plan
+and key after dispatch; ready order/reload cannot silently create replacement.
+No automatic cleanup/refund/resolution policy is inferred. Finance/privacy must
+approve retention and inherited delete behavior before actual activation.
+
+Six PRODUCT001-006 decisions are dormant offline candidates, not accepted release
+policies: family roles, digest consent/timezone, evidence-bound package units,
+global/revision-bound enrichment review, explicit trial projection and private
+analytics. See ../backend-upgrade/nine-region-offline/ADR-PRODUCT-001.md.
+IngredientV2 consumer preview and scan source oracle cannot confer data/AI authority.
+Synthetic seven-day arithmetic cannot certify production SLO. Scanner context binds
+exact source/provenance and uses trusted-base policy for PRs, while raw17 findings
+remain findings; independent/hosted promotion still pending. Read-only schema SQL
+fingerprint was re-bound after reviewing additive0041 objects, preserving the
+unchanged production executable path. Implementation0407011d; all real acceptance
+uses PENDING_EXTERNAL_EVIDENCE. See PLAN.md, RESULT.md and validation.json.
+
+---
+
 # B08 dependency mitigation final checkpoint - 2026-10-12 JST
 
 **Task/status:** LOCAL_MITIGATION_VERIFIED_WITH_BLOCKING_RELEASE_GATES.

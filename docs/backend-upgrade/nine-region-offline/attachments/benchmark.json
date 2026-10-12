@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "classification": "TEST_ONLY",
+  "executionMode": "OFFLINE_MOCK",
+  "acceptance": "OFFLINE_PIPELINE_VERIFIED",
+  "externalAcceptance": "PENDING_EXTERNAL_EVIDENCE",
+  "datasetSha256": "a571dba82948aa753f7517659e49b7e4361d132e2b26ee51d93fb656e0f0e52b",
+  "cases": 120,
+  "outboundCalls": 0,
+  "chargedUsd": 0,
+  "approvedBudgetUsd": 0,
+  "mockOutputBasis": "Source oracle copies synthetic ground truth; tests pipeline, not model accuracy.",
+  "profiles": [
+    "source_oracle",
+    "provider_outage",
+    "malformed_provider"
+  ],
+  "estimates": {
+    "classification": "PLANNING_ESTIMATE",
+    "status": "PENDING_EXTERNAL_EVIDENCE",
+    "pilot": {
+      "assets": 240,
+      "providerCandidates": 2,
+      "maximumCallsPerAssetPerProvider": 3,
+      "inputTokensPerCallScenario": 16000,
+      "outputTokensPerCallCapScenario": 2048
+    },
+    "maximumCalls": 1440,
+    "inputTokensScenario": 23040000,
+    "outputTokensScenario": 2949120,
+    "formulaUsd": "(inputTokens * inputUsdPerMillion + outputTokens * outputUsdPerMillion) / 1000000",
+    "verifiedProviderPrices": null,
+    "costUpperBoundUsd": null,
+    "illustrationOnly": [
+      {
+        "inputUsdPerMillion": 0.1,
+        "outputUsdPerMillion": 0.5,
+        "hypotheticalUsd": 3.77856
+      },
+      {
+        "inputUsdPerMillion": 1,
+        "outputUsdPerMillion": 5,
+        "hypotheticalUsd": 37.7856
+      }
+    ],
+    "warning": "Illustrative rates/token scenarios are not provider quotes or trusted vision-token upper bounds."
+  }
+}

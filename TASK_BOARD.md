@@ -1,3 +1,58 @@
+# Integrated backend and Brand V3 production release - 2026-10-12 JST
+
+**Task/status:** PRODUCTION_VERIFIED_WITH_EXTERNAL_ACCEPTANCE_OPEN.
+Repository hello-tako/Tako-san, immutable ID 1385308553. PRs 66, 67 and 68 are MERGED.
+Exact deployed source/main merge: 0c0f9933dcd1af2296d8033709ea3bf5ceec30f2; hardening ancestor
+231486aed1fd67b7bb4e1ce443b56752c8e9bfc7; full Brand ancestor
+6114a43ee6c2798ecd9aebca959dd6496d1a2aea. Canonical worktree
+/Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo. This documentation
+checkpoint records the verified release source; it is not a new runtime release.
+
+**Delivered/evidence:** Backend integration, Brand V3, Tailwind 4.3.3 compatibility,
+strict OTP recovery and exact-main migration fences are on production. PR68
+preserves only the unchanged complete D1 authority, with verified 22 source blobs. Main CI
+38208731783 PASS. Local/hosted suite 320 files / 7650 tests PASS; 94 isolated
+production-build E2E PASS; 198 responsive screenshots have 0 axe/overflow/broken
+images; 40 appearance + 12 state pairs exact. Full dependency audit 0 findings.
+Pinned Semgrep/zizmor 0; Gitleaks raw 17 context-reviewed / 0 unresolved, raw status
+retained. Approved deploy 38206476316 FAILED before any Worker upload; retained.
+Protected payment/billing sources are unchanged. Synthetic invoice/fridge
+fixtures remain TEST_ONLY. Earlier failed attempts remain recorded.
+
+**Database/deployment:** Staging migration 38204668457 and deploy 38209289078 PASS;
+production migration 38205975841 PASS from 6bc1fe96; final deploy 38209910253 PASS.
+Migration source/schema bytes are unchanged in the new deployed SHA.
+Actual GitHub approvals for BOTH production runs: vn-taphoanhatung; protections
+unchanged. D1 ledger 39 -> 40, only 0040 applied; FK [], quick_check ok, aggregate
+drift none, six strict OTP tables/two indexes/constraints PASS; private rollback
+bookmark retained. Active production Worker 820c79ef-2db1-4016-95e8-afad9d61958f, 100% traffic;
+canonical D1/catalog 500, exact fingerprint, d1/cutover true/canary 0/T20 paired true.
+Certified inactive strict OTP recovery a300e28d-d304-4dcb-a256-b2495befe72c; metadata/flags/binding
+verified before traffic. No live activation/rollback rehearsal occurred.
+
+**Deployed checks:** Staging and production each pass 30 read-only checks, including
+18 Chromium/Firefox/WebKit public page cases at 320/1440, exact brand bytes,
+unauthenticated tenant guards, release-specific PWA cache upgrade and offline shell.
+Production monitoring: 11 observations across 301.163s,
+all exact-SHA database/queue/catalog/configuration checks PASS. Runtime status is
+`degraded` solely for CONFIG_RECIPE_CATALOG_D1_AUTHORITY, the deliberate complete
+D1 cutover warning; no other issue was accepted. These are bounded
+observations, not a seven-day SLO certificate. Routed WebKit empty-response failures
+and controls retained. New staging smoke1 image timeout and smoke2 undefined
+callback failure are retained; smoke3 passes. Exact transport cause unconfirmed.
+
+**Limits/next:** Direct production WebKit Turnstile iframe errors remain recorded;
+rendering smoke does not certify challenge solve/authentication. Real inbox delivery remains unverified (deliveryVerified=false);
+live OCR/provider accuracy/budget, independent ingredient/data acceptance, physical
+old devices/browser floor, protected billing acceptance and load/chaos/SLO remain
+open. Dormant provider/V3 writer/Ingredient V2 candidates remain unpromoted. Use
+final-local-completion/release-receipt.json, RESULT.md and validation.json for run
+links, receipt hashes, recovery instructions and actual scope. No paid calls/mail/
+financial transactions were made. Original checkout unchanged. Next work requires
+the specific missing provider/data/owner inputs in OPEN_ACCEPTANCE.md.
+
+---
+
 # Production catalog continuity preflight fix - 2026-10-12 JST
 
 **Task/status:** FIX_IMPLEMENTED_LOCAL_FULL_VALIDATED; normal PR/main CI and a new

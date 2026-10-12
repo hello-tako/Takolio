@@ -546,5 +546,13 @@ INSERT INTO assert_one SELECT COUNT(*) = 6 FROM sqlite_master WHERE type = 'tabl
 INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_foreign_key_check;
 INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_integrity_check WHERE integrity_check <> 'ok';
 
+-- Expand checkout identity without rewriting existing intents/grants.
+CREATE TEMP TABLE smoke_pre_checkout_payments AS SELECT * FROM payment_intents;
+.read migrations/0041_checkout_admission.sql
+INSERT INTO assert_zero SELECT COUNT(*) FROM (SELECT * FROM smoke_pre_checkout_payments EXCEPT SELECT * FROM payment_intents);
+INSERT INTO assert_zero SELECT COUNT(*) FROM checkout_admissions;
+INSERT INTO assert_zero SELECT COUNT(*) FROM payment_reconciliation_records;
+INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_foreign_key_check;
+INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_integrity_check WHERE integrity_check <> 'ok';
 SELECT 'migration-smoke=ok';
 SQL

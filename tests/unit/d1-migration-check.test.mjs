@@ -895,7 +895,7 @@ describe('pre-deploy runtime catalog content certification', () => {
 describe('operational recipe media at complete 0038, 0039 and 0040 catalogs', () => {
   const release = JSON.parse(readFileSync(CATALOG_RELEASE_MANIFEST, 'utf8'));
   const registry = JSON.parse(readFileSync(APPROVED_BATCHES_REGISTRY, 'utf8'));
-  const tips = ['0038_auth_onboarding_completion.sql', '0039_meal_composition_v2.sql', '0040_strict_otp_foundation.sql'];
+  const tips = ['0038_auth_onboarding_completion.sql', '0039_meal_composition_v2.sql', '0040_strict_otp_foundation.sql', '0041_checkout_admission.sql'];
   const firstId = release.orderedRecipeIds[0];
   let db, cliDirectory;
   const capture = () => catalogQuery().split(';').map((query) => db.execute(query));

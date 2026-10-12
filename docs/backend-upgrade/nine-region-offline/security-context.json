@@ -1,0 +1,331 @@
+{
+  "schemaVersion": 1,
+  "classification": "EXACT_SOURCE_CONTEXT_ADJUDICATION",
+  "originalReviewPath": "docs/backend-upgrade/b08-local-remediation/GITLEAKS_TRIAGE.json",
+  "originalReviewMetadataSha256": "b7b1d64223dc0d9d0bd9ad0f10b92879f861d1bcde6cc979d2444d1c1157ad09",
+  "noCredentialOrMatchBytes": true,
+  "entries": [
+    {
+      "path": "docs/ai/T18B_PAYMENT_AUTHORITY_REPORT.md",
+      "coordinates": [
+        268,
+        32,
+        268,
+        81,
+        "generic-api-key"
+      ],
+      "sourceFileSha256": "db67959dc022ff350de54ddab28c8c16cea3b84f50082ed345e08a33aef86d80",
+      "classification": "DOCUMENTED_NON_SECRET_IDENTIFIER",
+      "contextVerification": "Report lists the candidate alongside implementation commit references; actual Git object is a commit reachable from current HEAD.",
+      "provenanceInputHashes": []
+    },
+    {
+      "path": "docs/backend-upgrade/b08-local-remediation/INDEPENDENT_REVIEW.md",
+      "coordinates": [
+        27,
+        58,
+        27,
+        78,
+        "generic-api-key"
+      ],
+      "sourceFileSha256": "2d02a007cf60fa25ac3eeb5059d5cc671b2239ee14137a47a8da22dc7c306e19",
+      "classification": "DOCUMENTATION_PROSE",
+      "contextVerification": "The new finding is an ordinary grammatical phrase in a Markdown review paragraph describing unchanged authentication behavior. The privately reviewed occurrence is prose, contains no credential assignment or service authorization use, and is not adjudicated from credential format alone.",
+      "provenanceInputHashes": [
+        {
+          "path": "docs/backend-upgrade/b08-local-remediation/INDEPENDENT_REVIEW.md",
+          "sha256": "2d02a007cf60fa25ac3eeb5059d5cc671b2239ee14137a47a8da22dc7c306e19"
+        }
+      ]
+    },
+    {
+      "path": "docs/ui-rebuild/google-auth-320-2026-10-11/evidence/failures/provider-label-normalization.json",
+      "coordinates": [
+        19,
+        8,
+        19,
+        80,
+        "generic-api-key"
+      ],
+      "sourceFileSha256": "a03d0c22c50d9c2d27f623221c53df99eba199523fc51b922055a0835dec65f1",
+      "classification": "DOCUMENTED_CHECKSUM",
+      "contextVerification": "Value occurs under overlayAssets indexed by an asset URL; reviewed producer computes SHA256 over local response bytes. Historical asset bytes were not refetched; classification follows verified dataflow, not token shape.",
+      "provenanceInputHashes": [
+        {
+          "path": "scripts/google-auth-responsive-check.mjs",
+          "sha256": "de9480c6f517be3c4568fb99af90cb18c7ef0b274c53e4612b0863b939998e7b"
+        }
+      ]
+    },
+    {
+      "path": "docs/ui-rebuild/google-auth-320-2026-10-11/evidence/failures/provider-label-normalization.json",
+      "coordinates": [
+        27,
+        15,
+        27,
+        103,
+        "generic-api-key"
+      ],
+      "sourceFileSha256": "a03d0c22c50d9c2d27f623221c53df99eba199523fc51b922055a0835dec65f1",
+      "classification": "DOCUMENTED_CHECKSUM",
+      "contextVerification": "Value occurs under overlayAssets indexed by an asset URL; reviewed producer computes SHA256 over local response bytes. Historical asset bytes were not refetched; classification follows verified dataflow, not token shape.",
+      "provenanceInputHashes": [
+        {
+          "path": "scripts/google-auth-responsive-check.mjs",
+          "sha256": "de9480c6f517be3c4568fb99af90cb18c7ef0b274c53e4612b0863b939998e7b"
+        }
+      ]
+    },
+    {
+      "path": "docs/ui-rebuild/google-auth-320-2026-10-11/evidence/failures/resize-frame-detached.json",
+      "coordinates": [
+        251,
+        8,
+        251,
+        80,
+        "generic-api-key"
+      ],
+      "sourceFileSha256": "42a20e96cc476f24d20c37516c4c6e7e24feb08583881683dce2a4da78bbe8f2",
+      "classification": "DOCUMENTED_CHECKSUM",
+      "contextVerification": "Value occurs under overlayAssets indexed by an asset URL; reviewed producer computes SHA256 over local response bytes. Historical asset bytes were not refetched; classification follows verified dataflow, not token shape.",
+      "provenanceInputHashes": [
+        {
+          "path": "scripts/google-auth-responsive-check.mjs",
+          "sha256": "de9480c6f517be3c4568fb99af90cb18c7ef0b274c53e4612b0863b939998e7b"
+        }
+      ]
+    },
+    {
+      "path": "docs/ui-rebuild/google-auth-320-2026-10-11/evidence/failures/resize-frame-detached.json",
+      "coordinates": [
+        259,
+        15,
+        259,
+        103,
+        "generic-api-key"
+      ],
+      "sourceFileSha256": "42a20e96cc476f24d20c37516c4c6e7e24feb08583881683dce2a4da78bbe8f2",
+      "classification": "DOCUMENTED_CHECKSUM",
+      "contextVerification": "Value occurs under overlayAssets indexed by an asset URL; reviewed producer computes SHA256 over local response bytes. Historical asset bytes were not refetched; classification follows verified dataflow, not token shape.",
+      "provenanceInputHashes": [
+        {
+          "path": "scripts/google-auth-responsive-check.mjs",
+          "sha256": "de9480c6f517be3c4568fb99af90cb18c7ef0b274c53e4612b0863b939998e7b"
+        }
+      ]
+    },
+    {
+      "path": "docs/ui-rebuild/google-auth-320-2026-10-11/evidence/checks.json",
+      "coordinates": [
+        657,
+        8,
+        657,
+        80,
+        "generic-api-key"
+      ],
+      "sourceFileSha256": "9994d347889bcf682f885890ef8bb6536c8b5c5feeabaf3480e153f4b18a967b",
+      "classification": "DOCUMENTED_CHECKSUM",
+      "contextVerification": "Value occurs under overlayAssets indexed by an asset URL; reviewed producer computes SHA256 over local response bytes. Historical asset bytes were not refetched; classification follows verified dataflow, not token shape.",
+      "provenanceInputHashes": [
+        {
+          "path": "scripts/google-auth-responsive-check.mjs",
+          "sha256": "de9480c6f517be3c4568fb99af90cb18c7ef0b274c53e4612b0863b939998e7b"
+        }
+      ]
+    },
+    {
+      "path": "docs/ui-rebuild/google-auth-320-2026-10-11/evidence/checks.json",
+      "coordinates": [
+        668,
+        15,
+        668,
+        103,
+        "generic-api-key"
+      ],
+      "sourceFileSha256": "9994d347889bcf682f885890ef8bb6536c8b5c5feeabaf3480e153f4b18a967b",
+      "classification": "DOCUMENTED_CHECKSUM",
+      "contextVerification": "Value occurs under overlayAssets indexed by an asset URL; reviewed producer computes SHA256 over local response bytes. Historical asset bytes were not refetched; classification follows verified dataflow, not token shape.",
+      "provenanceInputHashes": [
+        {
+          "path": "scripts/google-auth-responsive-check.mjs",
+          "sha256": "de9480c6f517be3c4568fb99af90cb18c7ef0b274c53e4612b0863b939998e7b"
+        }
+      ]
+    },
+    {
+      "path": "docs/ui-rebuild/google-auth-320-2026-10-11/evidence/failures/forgot-return-selector.json",
+      "coordinates": [
+        446,
+        8,
+        446,
+        80,
+        "generic-api-key"
+      ],
+      "sourceFileSha256": "dbf49b7d1c543c4846909dc49dd72c30a0c71c0792999a55444c42766cb6dbc9",
+      "classification": "DOCUMENTED_CHECKSUM",
+      "contextVerification": "Value occurs under overlayAssets indexed by an asset URL; reviewed producer computes SHA256 over local response bytes. Historical asset bytes were not refetched; classification follows verified dataflow, not token shape.",
+      "provenanceInputHashes": [
+        {
+          "path": "scripts/google-auth-responsive-check.mjs",
+          "sha256": "de9480c6f517be3c4568fb99af90cb18c7ef0b274c53e4612b0863b939998e7b"
+        }
+      ]
+    },
+    {
+      "path": "docs/ui-rebuild/google-auth-320-2026-10-11/evidence/failures/forgot-return-selector.json",
+      "coordinates": [
+        458,
+        15,
+        458,
+        103,
+        "generic-api-key"
+      ],
+      "sourceFileSha256": "dbf49b7d1c543c4846909dc49dd72c30a0c71c0792999a55444c42766cb6dbc9",
+      "classification": "DOCUMENTED_CHECKSUM",
+      "contextVerification": "Value occurs under overlayAssets indexed by an asset URL; reviewed producer computes SHA256 over local response bytes. Historical asset bytes were not refetched; classification follows verified dataflow, not token shape.",
+      "provenanceInputHashes": [
+        {
+          "path": "scripts/google-auth-responsive-check.mjs",
+          "sha256": "de9480c6f517be3c4568fb99af90cb18c7ef0b274c53e4612b0863b939998e7b"
+        }
+      ]
+    },
+    {
+      "path": "scripts/t21rc2t-production-approval.mjs",
+      "coordinates": [
+        654,
+        27,
+        654,
+        60,
+        "generic-api-key"
+      ],
+      "sourceFileSha256": "6396e69b21f4dfad8c3591fd7def5b5aef063eb5858218a3980924948e4e94dc",
+      "classification": "STATIC_ERROR_CODE",
+      "contextVerification": "Literal is the fourth getGitHubJson argument. Function body uses it only as fail/reject diagnostic code; separate token parameter supplies Authorization.",
+      "provenanceInputHashes": [
+        {
+          "path": "scripts/t21rc2t-production-approval.mjs",
+          "sha256": "6396e69b21f4dfad8c3591fd7def5b5aef063eb5858218a3980924948e4e94dc"
+        }
+      ]
+    },
+    {
+      "path": "scripts/t21rc2t-production-approval.mjs",
+      "coordinates": [
+        699,
+        72,
+        699,
+        105,
+        "generic-api-key"
+      ],
+      "sourceFileSha256": "6396e69b21f4dfad8c3591fd7def5b5aef063eb5858218a3980924948e4e94dc",
+      "classification": "STATIC_ERROR_CODE",
+      "contextVerification": "Literal is the fourth getGitHubJson argument. Function body uses it only as fail/reject diagnostic code; separate token parameter supplies Authorization.",
+      "provenanceInputHashes": [
+        {
+          "path": "scripts/t21rc2t-production-approval.mjs",
+          "sha256": "6396e69b21f4dfad8c3591fd7def5b5aef063eb5858218a3980924948e4e94dc"
+        }
+      ]
+    },
+    {
+      "path": "tests/fixtures/migration-sha256.json",
+      "coordinates": [
+        8,
+        7,
+        8,
+        95,
+        "generic-api-key"
+      ],
+      "sourceFileSha256": "a2cea8d1a9856c02bea111ffcc285ef3a28845732c989e5933f3a68dd9bba347",
+      "classification": "DOCUMENTED_CHECKSUM",
+      "contextVerification": "Migration checksum fixture entry equals SHA256 of the referenced local migration bytes.",
+      "provenanceInputHashes": [
+        {
+          "path": "migrations/0004_auth_system.sql",
+          "sha256": "39b72e8856dc87ef71b5b95db18497d710f068d4aca2dbe7aec51e82b023f003"
+        }
+      ]
+    },
+    {
+      "path": "tests/integration/backend-shopping-cooking.test.ts",
+      "coordinates": [
+        137,
+        6,
+        137,
+        60,
+        "generic-api-key"
+      ],
+      "sourceFileSha256": "adc16a6ed979d350cef2d27284322f490e20d259b8af459fff28bd1e7b6d5a46",
+      "classification": "SYNTHETIC_TEST_FIXTURE",
+      "contextVerification": "Literal is an explicit fixture-only JWT or OTP binding inside beforeEach test setup using an in-memory SqliteD1 and local Hono app. No actual provider/service credential validation performed.",
+      "provenanceInputHashes": [
+        {
+          "path": "tests/helpers/sqlite-d1.ts",
+          "sha256": "4451a9918c1006e9993fa9586362e227c5ad5b6b75d006bfa331a1431f7e8d8d"
+        }
+      ],
+      "currentTaskReverification": "SQLite helper diff reviewed: only migration ledger adds 0041; binding remains synthetic in-memory database. No credential validation or independent reviewer certification."
+    },
+    {
+      "path": "tests/integration/backend-shopping-cooking.test.ts",
+      "coordinates": [
+        137,
+        63,
+        137,
+        118,
+        "generic-api-key"
+      ],
+      "sourceFileSha256": "adc16a6ed979d350cef2d27284322f490e20d259b8af459fff28bd1e7b6d5a46",
+      "classification": "SYNTHETIC_TEST_FIXTURE",
+      "contextVerification": "Literal is an explicit fixture-only JWT or OTP binding inside beforeEach test setup using an in-memory SqliteD1 and local Hono app. No actual provider/service credential validation performed.",
+      "provenanceInputHashes": [
+        {
+          "path": "tests/helpers/sqlite-d1.ts",
+          "sha256": "4451a9918c1006e9993fa9586362e227c5ad5b6b75d006bfa331a1431f7e8d8d"
+        }
+      ],
+      "currentTaskReverification": "SQLite helper diff reviewed: only migration ledger adds 0041; binding remains synthetic in-memory database. No credential validation or independent reviewer certification."
+    },
+    {
+      "path": "tests/integration/auth-tenant-adversarial.test.ts",
+      "coordinates": [
+        122,
+        6,
+        122,
+        60,
+        "generic-api-key"
+      ],
+      "sourceFileSha256": "20d7754d3fc1068a469297c309d5fd738c63a14818be242a7d9a9e6ff1080243",
+      "classification": "SYNTHETIC_TEST_FIXTURE",
+      "contextVerification": "Literal is an explicit fixture-only JWT or OTP binding inside beforeEach test setup using an in-memory SqliteD1 and local Hono app. No actual provider/service credential validation performed.",
+      "provenanceInputHashes": [
+        {
+          "path": "tests/helpers/sqlite-d1.ts",
+          "sha256": "4451a9918c1006e9993fa9586362e227c5ad5b6b75d006bfa331a1431f7e8d8d"
+        }
+      ],
+      "currentTaskReverification": "SQLite helper diff reviewed: only migration ledger adds 0041; binding remains synthetic in-memory database. No credential validation or independent reviewer certification."
+    },
+    {
+      "path": "tests/integration/auth-tenant-adversarial.test.ts",
+      "coordinates": [
+        122,
+        63,
+        122,
+        122,
+        "generic-api-key"
+      ],
+      "sourceFileSha256": "20d7754d3fc1068a469297c309d5fd738c63a14818be242a7d9a9e6ff1080243",
+      "classification": "SYNTHETIC_TEST_FIXTURE",
+      "contextVerification": "Literal is an explicit fixture-only JWT or OTP binding inside beforeEach test setup using an in-memory SqliteD1 and local Hono app. No actual provider/service credential validation performed.",
+      "provenanceInputHashes": [
+        {
+          "path": "tests/helpers/sqlite-d1.ts",
+          "sha256": "4451a9918c1006e9993fa9586362e227c5ad5b6b75d006bfa331a1431f7e8d8d"
+        }
+      ],
+      "currentTaskReverification": "SQLite helper diff reviewed: only migration ledger adds 0041; binding remains synthetic in-memory database. No credential validation or independent reviewer certification."
+    }
+  ]
+}

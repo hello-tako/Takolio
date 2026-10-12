@@ -271,7 +271,7 @@ describe('legacy accounting and durable identity',()=>{
   });
   it('reads database time from the expanded migration ledger',async()=>{
     expect(await readOtpDatabaseTime(db)).toBe(EPOCH);
-    expect(db.migrations.at(-1)).toBe('0040_strict_otp_foundation.sql');idle();
+    expect(db.migrations).toContain('0040_strict_otp_foundation.sql'); expect(db.migrations.at(-1)).toBe('0041_checkout_admission.sql');idle();
   });
 });
 

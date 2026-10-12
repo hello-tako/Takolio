@@ -1,0 +1,104 @@
+{
+  "classification": "LOCAL_BROWSER_MOCK",
+  "status": "PASS",
+  "records": [
+    {
+      "engine": "chromium",
+      "width": 320,
+      "retryRequests": 2,
+      "keyStable": true,
+      "reloadBlockedReplacement": true,
+      "resumedWithoutDispatch": true,
+      "loopbackCookieBridge": false,
+      "geometry": {
+        "overflow": false,
+        "broken": 0
+      },
+      "axeViolations": 0,
+      "pageErrors": 0,
+      "externalRequests": 0
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "retryRequests": 2,
+      "keyStable": true,
+      "reloadBlockedReplacement": true,
+      "resumedWithoutDispatch": true,
+      "loopbackCookieBridge": false,
+      "geometry": {
+        "overflow": false,
+        "broken": 0
+      },
+      "axeViolations": 0,
+      "pageErrors": 0,
+      "externalRequests": 0
+    },
+    {
+      "engine": "firefox",
+      "width": 320,
+      "retryRequests": 2,
+      "keyStable": true,
+      "reloadBlockedReplacement": true,
+      "resumedWithoutDispatch": true,
+      "loopbackCookieBridge": false,
+      "geometry": {
+        "overflow": false,
+        "broken": 0
+      },
+      "axeViolations": 0,
+      "pageErrors": 0,
+      "externalRequests": 0
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "retryRequests": 2,
+      "keyStable": true,
+      "reloadBlockedReplacement": true,
+      "resumedWithoutDispatch": true,
+      "loopbackCookieBridge": false,
+      "geometry": {
+        "overflow": false,
+        "broken": 0
+      },
+      "axeViolations": 0,
+      "pageErrors": 0,
+      "externalRequests": 0
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "retryRequests": 2,
+      "keyStable": true,
+      "reloadBlockedReplacement": true,
+      "resumedWithoutDispatch": true,
+      "loopbackCookieBridge": true,
+      "geometry": {
+        "overflow": false,
+        "broken": 0
+      },
+      "axeViolations": 0,
+      "pageErrors": 0,
+      "externalRequests": 0
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "retryRequests": 2,
+      "keyStable": true,
+      "reloadBlockedReplacement": true,
+      "resumedWithoutDispatch": true,
+      "loopbackCookieBridge": true,
+      "geometry": {
+        "overflow": false,
+        "broken": 0
+      },
+      "axeViolations": 0,
+      "pageErrors": 0,
+      "externalRequests": 0
+    }
+  ],
+  "screenshots": 12,
+  "externalAcceptance": "PENDING_EXTERNAL_EVIDENCE"
+}

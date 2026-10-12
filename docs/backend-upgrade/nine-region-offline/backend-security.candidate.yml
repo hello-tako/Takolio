@@ -1,0 +1,85 @@
+# Local promotion candidate; hosted/independent acceptance remains in the active packet.
+name: Backend Security
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: backend-security-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  security:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Checkout exact event source without persisted credentials
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Read previously reviewed context from the trusted base
+        env:
+          TRUSTED_POLICY_SHA: ${{ github.event.pull_request.base.sha || github.sha }}
+        run: |
+          mkdir -p .artifacts
+          git show "$TRUSTED_POLICY_SHA:docs/backend-upgrade/nine-region-offline/security-context.json" > .artifacts/b08-trusted-context.json
+      - name: Node 24
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '24'
+      - name: Python 3.12
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12'
+      - name: Frozen project install
+        run: |
+          corepack enable
+          corepack prepare pnpm@10.33.2 --activate
+          pnpm install --frozen-lockfile --ignore-scripts
+      - name: Install pinned external scanners
+        run: python docs/backend-upgrade/b08/security/install-tools.py --tools-dir .artifacts/b08-tools
+      - name: Exercise scanner detection and failure fixtures
+        run: python docs/backend-upgrade/b08/security/runner.py selftest --tools-dir .artifacts/b08-tools --output-dir .artifacts/b08-selftest
+      - name: Scan source, secrets, workflows and declared dependency graph
+        run: |
+          set +e
+          python docs/backend-upgrade/b08/security/runner.py scan --tools-dir .artifacts/b08-tools --output-dir .artifacts/b08-scan
+          scan_status=$?
+          set -e
+          if [ "$scan_status" -gt 1 ]; then exit "$scan_status"; fi
+          python scripts/security-context-gate.py --scan .artifacts/b08-scan --context .artifacts/b08-trusted-context.json --output .artifacts/b08-context-status.json
+      - name: Fresh dependency audits
+        if: ${{ !cancelled() }}
+        run: |
+          python - <<'PY'
+          import hashlib, json, pathlib, subprocess
+          output = pathlib.Path('.artifacts/b08-audits')
+          output.mkdir(parents=True, exist_ok=False)
+          failed = False
+          for name, command in [('full', ['pnpm', 'audit', '--json']), ('production', ['pnpm', 'audit', '--prod', '--json'])]:
+              result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+              data = json.loads(result.stdout)
+              assert isinstance(data, dict) and isinstance(data.get('advisories'), dict), 'Malformed audit result'
+              counts = data.get('metadata', {}).get('vulnerabilities')
+              levels = ['info', 'low', 'moderate', 'high', 'critical']
+              assert isinstance(counts, dict) and all(type(counts.get(key)) is int and counts[key] >= 0 for key in levels), 'Incomplete audit counts'
+              assert result.returncode in (0, 1), 'Audit execution failed'
+              assert (result.returncode == 0) == (sum(counts[key] for key in levels) == 0), 'Audit exit/count disagreement'
+              data['x-lockfile-sha256'] = hashlib.sha256(pathlib.Path('pnpm-lock.yaml').read_bytes()).hexdigest()
+              (output / (name + '.json')).write_text(json.dumps(data, indent=2) + '\n')
+              failed = failed or result.returncode != 0
+          raise SystemExit(1 if failed else 0)
+          PY
+      - name: Retain sanitized status receipts only
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: backend-security-status
+          path: |
+            .artifacts/b08-selftest/receipt.json
+            .artifacts/b08-scan/receipt.json
+            .artifacts/b08-context-status.json
+          if-no-files-found: error
+          retention-days: 7
