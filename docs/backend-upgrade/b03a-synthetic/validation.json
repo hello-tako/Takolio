@@ -1,0 +1,1922 @@
+{
+  "version": 1,
+  "classification": "SYNTHETIC_LOCAL_TESTS_COMPLETE",
+  "baseCommit": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+  "implementationCommit": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+  "branch": "codex/backend-b03a-synthetic-images",
+  "independentRealSamples": 0,
+  "originalDocuments": 24,
+  "variants": 120,
+  "damagedImages": 1,
+  "productOcrCertified": false,
+  "semanticFridgeRecognitionMeasured": false,
+  "securityGate": "FAILED_HIGH_ADVISORY_REMAINS",
+  "tests": {
+    "files": 315,
+    "tests": 7610,
+    "focusedFiles": 7,
+    "focusedTests": 49,
+    "newTests": 28,
+    "fullCommandSeconds": 184.536
+  },
+  "reports": [
+    {
+      "input": "original",
+      "groups": [
+        {
+          "task": "receipt_ocr",
+          "locale": "vi",
+          "images": 30,
+          "documents": 6,
+          "expectedFields": 672,
+          "exactFields": 642,
+          "compactExactFields": 666,
+          "edits": 33,
+          "characters": 5418
+        },
+        {
+          "task": "receipt_ocr",
+          "locale": "ja",
+          "images": 30,
+          "documents": 6,
+          "expectedFields": 672,
+          "exactFields": 647,
+          "compactExactFields": 672,
+          "edits": 25,
+          "characters": 3996
+        },
+        {
+          "task": "label_ocr",
+          "locale": "vi",
+          "images": 15,
+          "documents": 3,
+          "expectedFields": 39,
+          "exactFields": 37,
+          "compactExactFields": 37,
+          "edits": 2,
+          "characters": 408
+        },
+        {
+          "task": "label_ocr",
+          "locale": "ja",
+          "images": 15,
+          "documents": 3,
+          "expectedFields": 39,
+          "exactFields": 35,
+          "compactExactFields": 39,
+          "edits": 5,
+          "characters": 318
+        }
+      ],
+      "slices": [
+        {
+          "slice": "receipt_ocr:vi:clean",
+          "images": 6,
+          "documents": 6,
+          "expectedFields": 138,
+          "exactFields": 132,
+          "compactExactFields": 138,
+          "characterErrorRate": 0.005376344086021506,
+          "failures": 0
+        },
+        {
+          "slice": "receipt_ocr:vi:blur",
+          "images": 6,
+          "documents": 6,
+          "expectedFields": 138,
+          "exactFields": 138,
+          "compactExactFields": 138,
+          "characterErrorRate": 0,
+          "failures": 0
+        },
+        {
+          "slice": "receipt_ocr:vi:tilt",
+          "images": 6,
+          "documents": 6,
+          "expectedFields": 138,
+          "exactFields": 126,
+          "compactExactFields": 132,
+          "characterErrorRate": 0.013440860215053764,
+          "failures": 0
+        },
+        {
+          "slice": "receipt_ocr:vi:low_light",
+          "images": 6,
+          "documents": 6,
+          "expectedFields": 138,
+          "exactFields": 132,
+          "compactExactFields": 138,
+          "characterErrorRate": 0.005376344086021506,
+          "failures": 0
+        },
+        {
+          "slice": "receipt_ocr:vi:missing_field",
+          "images": 6,
+          "documents": 6,
+          "expectedFields": 120,
+          "exactFields": 114,
+          "compactExactFields": 120,
+          "characterErrorRate": 0.006289308176100629,
+          "failures": 0
+        },
+        {
+          "slice": "receipt_ocr:ja:clean",
+          "images": 6,
+          "documents": 6,
+          "expectedFields": 138,
+          "exactFields": 132,
+          "compactExactFields": 138,
+          "characterErrorRate": 0.0072992700729927005,
+          "failures": 0
+        },
+        {
+          "slice": "receipt_ocr:ja:blur",
+          "images": 6,
+          "documents": 6,
+          "expectedFields": 138,
+          "exactFields": 132,
+          "compactExactFields": 138,
+          "characterErrorRate": 0.0072992700729927005,
+          "failures": 0
+        },
+        {
+          "slice": "receipt_ocr:ja:tilt",
+          "images": 6,
+          "documents": 6,
+          "expectedFields": 138,
+          "exactFields": 131,
+          "compactExactFields": 138,
+          "characterErrorRate": 0.00851581508515815,
+          "failures": 0
+        },
+        {
+          "slice": "receipt_ocr:ja:low_light",
+          "images": 6,
+          "documents": 6,
+          "expectedFields": 138,
+          "exactFields": 132,
+          "compactExactFields": 138,
+          "characterErrorRate": 0.0072992700729927005,
+          "failures": 0
+        },
+        {
+          "slice": "receipt_ocr:ja:missing_field",
+          "images": 6,
+          "documents": 6,
+          "expectedFields": 120,
+          "exactFields": 120,
+          "compactExactFields": 120,
+          "characterErrorRate": 0,
+          "failures": 0
+        },
+        {
+          "slice": "label_ocr:vi:clean",
+          "images": 3,
+          "documents": 3,
+          "expectedFields": 9,
+          "exactFields": 9,
+          "compactExactFields": 9,
+          "characterErrorRate": 0,
+          "failures": 0
+        },
+        {
+          "slice": "label_ocr:vi:blur",
+          "images": 3,
+          "documents": 3,
+          "expectedFields": 9,
+          "exactFields": 9,
+          "compactExactFields": 9,
+          "characterErrorRate": 0,
+          "failures": 0
+        },
+        {
+          "slice": "label_ocr:vi:tilt",
+          "images": 3,
+          "documents": 3,
+          "expectedFields": 9,
+          "exactFields": 9,
+          "compactExactFields": 9,
+          "characterErrorRate": 0,
+          "failures": 0
+        },
+        {
+          "slice": "label_ocr:vi:low_light",
+          "images": 3,
+          "documents": 3,
+          "expectedFields": 9,
+          "exactFields": 9,
+          "compactExactFields": 9,
+          "characterErrorRate": 0,
+          "failures": 0
+        },
+        {
+          "slice": "label_ocr:vi:missing_field",
+          "images": 3,
+          "documents": 3,
+          "expectedFields": 3,
+          "exactFields": 1,
+          "compactExactFields": 1,
+          "characterErrorRate": 0.08333333333333333,
+          "failures": 0
+        },
+        {
+          "slice": "fridge_image_analysis:en:clean",
+          "images": 6,
+          "documents": 6,
+          "expectedFields": 0,
+          "exactFields": 0,
+          "compactExactFields": 0,
+          "characterErrorRate": null,
+          "failures": 0
+        },
+        {
+          "slice": "fridge_image_analysis:en:blur",
+          "images": 6,
+          "documents": 6,
+          "expectedFields": 0,
+          "exactFields": 0,
+          "compactExactFields": 0,
+          "characterErrorRate": null,
+          "failures": 0
+        },
+        {
+          "slice": "fridge_image_analysis:en:tilt",
+          "images": 6,
+          "documents": 6,
+          "expectedFields": 0,
+          "exactFields": 0,
+          "compactExactFields": 0,
+          "characterErrorRate": null,
+          "failures": 0
+        },
+        {
+          "slice": "fridge_image_analysis:en:low_light",
+          "images": 6,
+          "documents": 6,
+          "expectedFields": 0,
+          "exactFields": 0,
+          "compactExactFields": 0,
+          "characterErrorRate": null,
+          "failures": 0
+        },
+        {
+          "slice": "fridge_image_analysis:en:missing_field",
+          "images": 6,
+          "documents": 6,
+          "expectedFields": 0,
+          "exactFields": 0,
+          "compactExactFields": 0,
+          "characterErrorRate": null,
+          "failures": 0
+        },
+        {
+          "slice": "label_ocr:ja:clean",
+          "images": 3,
+          "documents": 3,
+          "expectedFields": 9,
+          "exactFields": 6,
+          "compactExactFields": 9,
+          "characterErrorRate": 0.05128205128205128,
+          "failures": 0
+        },
+        {
+          "slice": "label_ocr:ja:blur",
+          "images": 3,
+          "documents": 3,
+          "expectedFields": 9,
+          "exactFields": 9,
+          "compactExactFields": 9,
+          "characterErrorRate": 0,
+          "failures": 0
+        },
+        {
+          "slice": "label_ocr:ja:tilt",
+          "images": 3,
+          "documents": 3,
+          "expectedFields": 9,
+          "exactFields": 8,
+          "compactExactFields": 9,
+          "characterErrorRate": 0.01282051282051282,
+          "failures": 0
+        },
+        {
+          "slice": "label_ocr:ja:low_light",
+          "images": 3,
+          "documents": 3,
+          "expectedFields": 9,
+          "exactFields": 9,
+          "compactExactFields": 9,
+          "characterErrorRate": 0,
+          "failures": 0
+        },
+        {
+          "slice": "label_ocr:ja:missing_field",
+          "images": 3,
+          "documents": 3,
+          "expectedFields": 3,
+          "exactFields": 3,
+          "compactExactFields": 3,
+          "characterErrorRate": 0,
+          "failures": 0
+        },
+        {
+          "slice": "receipt_ocr:en:damaged",
+          "images": 1,
+          "documents": 1,
+          "expectedFields": 0,
+          "exactFields": 0,
+          "compactExactFields": 0,
+          "characterErrorRate": null,
+          "failures": 1
+        }
+      ],
+      "rawFailureCount": 1,
+      "latencyMs": {
+        "minimum": 126.494291,
+        "maximum": 485.624625,
+        "median": 187.116375
+      },
+      "receipt": {
+        "preparedSha256": "bb6b5c3ebf8c6cb4010079f7ce6da216b40263f00b7b308e9bd6542f66694fcf",
+        "rawOcrSha256": "a06d8955c3e2c786fecd74c5c54a14e0aac1c05a280f371bce3bc621181b4c95"
+      }
+    },
+    {
+      "input": "native-browser-output",
+      "groups": [
+        {
+          "task": "receipt_ocr",
+          "locale": "vi",
+          "images": 30,
+          "documents": 6,
+          "expectedFields": 672,
+          "exactFields": 619,
+          "compactExactFields": 643,
+          "edits": 56,
+          "characters": 5418
+        },
+        {
+          "task": "receipt_ocr",
+          "locale": "ja",
+          "images": 30,
+          "documents": 6,
+          "expectedFields": 672,
+          "exactFields": 647,
+          "compactExactFields": 672,
+          "edits": 25,
+          "characters": 3996
+        },
+        {
+          "task": "label_ocr",
+          "locale": "vi",
+          "images": 15,
+          "documents": 3,
+          "expectedFields": 39,
+          "exactFields": 39,
+          "compactExactFields": 39,
+          "edits": 0,
+          "characters": 408
+        },
+        {
+          "task": "label_ocr",
+          "locale": "ja",
+          "images": 15,
+          "documents": 3,
+          "expectedFields": 39,
+          "exactFields": 38,
+          "compactExactFields": 39,
+          "edits": 1,
+          "characters": 318
+        }
+      ],
+      "slices": [
+        {
+          "slice": "receipt_ocr:vi:clean",
+          "images": 6,
+          "documents": 6,
+          "expectedFields": 138,
+          "exactFields": 121,
+          "compactExactFields": 127,
+          "characterErrorRate": 0.015232974910394265,
+          "failures": 0
+        },
+        {
+          "slice": "receipt_ocr:vi:blur",
+          "images": 6,
+          "documents": 6,
+          "expectedFields": 138,
+          "exactFields": 138,
+          "compactExactFields": 138,
+          "characterErrorRate": 0,
+          "failures": 0
+        },
+        {
+          "slice": "receipt_ocr:vi:tilt",
+          "images": 6,
+          "documents": 6,
+          "expectedFields": 138,
+          "exactFields": 126,
+          "compactExactFields": 132,
+          "characterErrorRate": 0.013440860215053764,
+          "failures": 0
+        },
+        {
+          "slice": "receipt_ocr:vi:low_light",
+          "images": 6,
+          "documents": 6,
+          "expectedFields": 138,
+          "exactFields": 132,
+          "compactExactFields": 138,
+          "characterErrorRate": 0.005376344086021506,
+          "failures": 0
+        },
+        {
+          "slice": "receipt_ocr:vi:missing_field",
+          "images": 6,
+          "documents": 6,
+          "expectedFields": 120,
+          "exactFields": 102,
+          "compactExactFields": 108,
+          "characterErrorRate": 0.018867924528301886,
+          "failures": 0
+        },
+        {
+          "slice": "receipt_ocr:ja:clean",
+          "images": 6,
+          "documents": 6,
+          "expectedFields": 138,
+          "exactFields": 132,
+          "compactExactFields": 138,
+          "characterErrorRate": 0.0072992700729927005,
+          "failures": 0
+        },
+        {
+          "slice": "receipt_ocr:ja:blur",
+          "images": 6,
+          "documents": 6,
+          "expectedFields": 138,
+          "exactFields": 132,
+          "compactExactFields": 138,
+          "characterErrorRate": 0.0072992700729927005,
+          "failures": 0
+        },
+        {
+          "slice": "receipt_ocr:ja:tilt",
+          "images": 6,
+          "documents": 6,
+          "expectedFields": 138,
+          "exactFields": 131,
+          "compactExactFields": 138,
+          "characterErrorRate": 0.00851581508515815,
+          "failures": 0
+        },
+        {
+          "slice": "receipt_ocr:ja:low_light",
+          "images": 6,
+          "documents": 6,
+          "expectedFields": 138,
+          "exactFields": 132,
+          "compactExactFields": 138,
+          "characterErrorRate": 0.0072992700729927005,
+          "failures": 0
+        },
+        {
+          "slice": "receipt_ocr:ja:missing_field",
+          "images": 6,
+          "documents": 6,
+          "expectedFields": 120,
+          "exactFields": 120,
+          "compactExactFields": 120,
+          "characterErrorRate": 0,
+          "failures": 0
+        },
+        {
+          "slice": "label_ocr:vi:clean",
+          "images": 3,
+          "documents": 3,
+          "expectedFields": 9,
+          "exactFields": 9,
+          "compactExactFields": 9,
+          "characterErrorRate": 0,
+          "failures": 0
+        },
+        {
+          "slice": "label_ocr:vi:blur",
+          "images": 3,
+          "documents": 3,
+          "expectedFields": 9,
+          "exactFields": 9,
+          "compactExactFields": 9,
+          "characterErrorRate": 0,
+          "failures": 0
+        },
+        {
+          "slice": "label_ocr:vi:tilt",
+          "images": 3,
+          "documents": 3,
+          "expectedFields": 9,
+          "exactFields": 9,
+          "compactExactFields": 9,
+          "characterErrorRate": 0,
+          "failures": 0
+        },
+        {
+          "slice": "label_ocr:vi:low_light",
+          "images": 3,
+          "documents": 3,
+          "expectedFields": 9,
+          "exactFields": 9,
+          "compactExactFields": 9,
+          "characterErrorRate": 0,
+          "failures": 0
+        },
+        {
+          "slice": "label_ocr:vi:missing_field",
+          "images": 3,
+          "documents": 3,
+          "expectedFields": 3,
+          "exactFields": 3,
+          "compactExactFields": 3,
+          "characterErrorRate": 0,
+          "failures": 0
+        },
+        {
+          "slice": "fridge_image_analysis:en:clean",
+          "images": 6,
+          "documents": 6,
+          "expectedFields": 0,
+          "exactFields": 0,
+          "compactExactFields": 0,
+          "characterErrorRate": null,
+          "failures": 0
+        },
+        {
+          "slice": "fridge_image_analysis:en:blur",
+          "images": 6,
+          "documents": 6,
+          "expectedFields": 0,
+          "exactFields": 0,
+          "compactExactFields": 0,
+          "characterErrorRate": null,
+          "failures": 0
+        },
+        {
+          "slice": "fridge_image_analysis:en:tilt",
+          "images": 6,
+          "documents": 6,
+          "expectedFields": 0,
+          "exactFields": 0,
+          "compactExactFields": 0,
+          "characterErrorRate": null,
+          "failures": 0
+        },
+        {
+          "slice": "fridge_image_analysis:en:low_light",
+          "images": 6,
+          "documents": 6,
+          "expectedFields": 0,
+          "exactFields": 0,
+          "compactExactFields": 0,
+          "characterErrorRate": null,
+          "failures": 0
+        },
+        {
+          "slice": "fridge_image_analysis:en:missing_field",
+          "images": 6,
+          "documents": 6,
+          "expectedFields": 0,
+          "exactFields": 0,
+          "compactExactFields": 0,
+          "characterErrorRate": null,
+          "failures": 0
+        },
+        {
+          "slice": "label_ocr:ja:clean",
+          "images": 3,
+          "documents": 3,
+          "expectedFields": 9,
+          "exactFields": 9,
+          "compactExactFields": 9,
+          "characterErrorRate": 0,
+          "failures": 0
+        },
+        {
+          "slice": "label_ocr:ja:blur",
+          "images": 3,
+          "documents": 3,
+          "expectedFields": 9,
+          "exactFields": 9,
+          "compactExactFields": 9,
+          "characterErrorRate": 0,
+          "failures": 0
+        },
+        {
+          "slice": "label_ocr:ja:tilt",
+          "images": 3,
+          "documents": 3,
+          "expectedFields": 9,
+          "exactFields": 8,
+          "compactExactFields": 9,
+          "characterErrorRate": 0.01282051282051282,
+          "failures": 0
+        },
+        {
+          "slice": "label_ocr:ja:low_light",
+          "images": 3,
+          "documents": 3,
+          "expectedFields": 9,
+          "exactFields": 9,
+          "compactExactFields": 9,
+          "characterErrorRate": 0,
+          "failures": 0
+        },
+        {
+          "slice": "label_ocr:ja:missing_field",
+          "images": 3,
+          "documents": 3,
+          "expectedFields": 3,
+          "exactFields": 3,
+          "compactExactFields": 3,
+          "characterErrorRate": 0,
+          "failures": 0
+        },
+        {
+          "slice": "receipt_ocr:en:damaged",
+          "images": 1,
+          "documents": 1,
+          "expectedFields": 0,
+          "exactFields": 0,
+          "compactExactFields": 0,
+          "characterErrorRate": null,
+          "failures": 1
+        }
+      ],
+      "rawFailureCount": 1,
+      "latencyMs": {
+        "minimum": 125.579958,
+        "maximum": 446.320667,
+        "median": 182.679459
+      },
+      "receipt": {
+        "preparedSha256": "96405e6f566d1ad6f31c52abff14aaa79a48c0da16e0bf8353978baf0c7521f0",
+        "rawOcrSha256": "7f9ba0e8c3b45e2917ac0ca1f18c21cf36e5eaf58dea2d18cb80de9ac2ba0fcb"
+      }
+    }
+  ],
+  "offlineMissingDenominators": {
+    "submissions": 120,
+    "documents": 24,
+    "firstSchemaPass": 0,
+    "finalSchemaPass": 0,
+    "usableSuccesses": 0,
+    "fieldPrecision": null,
+    "fieldRecall": 0,
+    "canonicalAccepted": 0,
+    "canonicalExpected": 0,
+    "canonicalPrecision": null,
+    "canonicalCoverage": 0,
+    "canonicalKnownRecall": null,
+    "moneyExact": {
+      "correct": 0,
+      "expected": 456,
+      "recall": 0
+    },
+    "abstainedKnown": 2802,
+    "failureRate": 1,
+    "failureCounts": {
+      "timeout": 0,
+      "missing": 120,
+      "malformed": 0,
+      "provider_error": 0
+    },
+    "occurrencePrecision": null,
+    "occurrenceRecall": 0,
+    "quantityExactOccurrences": 0,
+    "quantityOccurrences": 570,
+    "nameCharacterErrorRate": 1,
+    "unknown": {
+      "slots": 4548,
+      "assertedKnown": 0,
+      "unassessedSlots": 4548,
+      "assessment": "INCONCLUSIVE_MISSING_FIELDS",
+      "rate": 0,
+      "slotWilson95": [
+        0,
+        0.00084393510965766
+      ],
+      "slotIntervalInterpretation": "DESCRIPTIVE_CORRELATED_FIELDS",
+      "documents": 24,
+      "hallucinatingDocuments": 0,
+      "documentWilson95": [
+        1.3877787807814457e-17,
+        0.13797620467498017
+      ]
+    }
+  },
+  "commands": [
+    {
+      "name": "apple-vision-browser",
+      "command": [
+        "swift",
+        "scripts/ocr-synthetic-scan-apple-vision.swift",
+        ".artifacts/scan-synthetic-v3/browser-images/prepared.json",
+        ".artifacts/scan-synthetic-v3/browser-images/apple-vision.raw.json"
+      ],
+      "startedAtUtc": "2026-10-12T01:36:27.095090+00:00",
+      "durationSeconds": 20.609,
+      "exitCode": 0,
+      "before": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? scripts/test-synthetic-scan-browser.mjs\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "after": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? scripts/test-synthetic-scan-browser.mjs\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "logSha256": "d5c3731c123e0b4e0624e99e483837c2f196803564be537cea48ed0febbd1399",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "apple-vision-final",
+      "command": [
+        "swift",
+        "scripts/ocr-synthetic-scan-apple-vision.swift"
+      ],
+      "startedAtUtc": "2026-10-12T01:36:04.936017+00:00",
+      "durationSeconds": 21.765,
+      "exitCode": 0,
+      "before": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? scripts/test-synthetic-scan-browser.mjs\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "after": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? scripts/test-synthetic-scan-browser.mjs\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "logSha256": "d5c3731c123e0b4e0624e99e483837c2f196803564be537cea48ed0febbd1399",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "apple-vision-first",
+      "command": [
+        "swift",
+        "scripts/ocr-synthetic-scan-apple-vision.swift"
+      ],
+      "startedAtUtc": "2026-10-12T01:28:21.022507+00:00",
+      "durationSeconds": 28.257,
+      "exitCode": 0,
+      "before": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n"
+      },
+      "after": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n"
+      },
+      "logSha256": "d5c3731c123e0b4e0624e99e483837c2f196803564be537cea48ed0febbd1399",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "browser-final",
+      "command": [
+        "node",
+        "scripts/test-synthetic-scan-browser.mjs"
+      ],
+      "startedAtUtc": "2026-10-12T01:35:59.183366+00:00",
+      "durationSeconds": 5.609,
+      "exitCode": 0,
+      "before": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? scripts/test-synthetic-scan-browser.mjs\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "after": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? scripts/test-synthetic-scan-browser.mjs\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "logSha256": "f64ecdc6f51212b59e5fa149f921f34677fdd2e75e16d9b358f2ab5335eec002",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "browser-first",
+      "command": [
+        "node",
+        "scripts/test-synthetic-scan-browser.mjs"
+      ],
+      "startedAtUtc": "2026-10-12T01:32:41.115728+00:00",
+      "durationSeconds": 5.866,
+      "exitCode": 0,
+      "before": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? scripts/test-synthetic-scan-browser.mjs\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "after": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? scripts/test-synthetic-scan-browser.mjs\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "logSha256": "f64ecdc6f51212b59e5fa149f921f34677fdd2e75e16d9b358f2ab5335eec002",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "clean-apple-browser",
+      "command": [
+        "swift",
+        "scripts/ocr-synthetic-scan-apple-vision.swift",
+        ".artifacts/scan-synthetic-v3/browser-images/prepared.json",
+        ".artifacts/scan-synthetic-v3/browser-images/apple-vision.raw.json"
+      ],
+      "startedAtUtc": "2026-10-12T01:43:54.922798+00:00",
+      "durationSeconds": 24.675,
+      "exitCode": 0,
+      "before": {
+        "head": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "status": ""
+      },
+      "after": {
+        "head": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "status": ""
+      },
+      "logSha256": "d5c3731c123e0b4e0624e99e483837c2f196803564be537cea48ed0febbd1399",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "clean-apple-original",
+      "command": [
+        "swift",
+        "scripts/ocr-synthetic-scan-apple-vision.swift"
+      ],
+      "startedAtUtc": "2026-10-12T01:43:28.657008+00:00",
+      "durationSeconds": 25.658,
+      "exitCode": 0,
+      "before": {
+        "head": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "status": ""
+      },
+      "after": {
+        "head": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "status": ""
+      },
+      "logSha256": "d5c3731c123e0b4e0624e99e483837c2f196803564be537cea48ed0febbd1399",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "clean-audit-prod",
+      "command": [
+        "pnpm",
+        "audit",
+        "--prod",
+        "--audit-level=high"
+      ],
+      "startedAtUtc": "2026-10-12T01:42:39.563590+00:00",
+      "durationSeconds": 0.79,
+      "exitCode": 0,
+      "before": {
+        "head": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "status": ""
+      },
+      "after": {
+        "head": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "status": ""
+      },
+      "logSha256": "15950a68a7ed99c59779717acefdceb3f69cfd31bde67d2c954f2a3cea4d7955",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "clean-audit",
+      "command": [
+        "pnpm",
+        "audit",
+        "--audit-level=high"
+      ],
+      "startedAtUtc": "2026-10-12T01:42:37.977424+00:00",
+      "durationSeconds": 1.438,
+      "exitCode": 1,
+      "before": {
+        "head": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "status": ""
+      },
+      "after": {
+        "head": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "status": ""
+      },
+      "logSha256": "a1f27909368ec10369149bef60e7f0efb7c54e09aeb46065a707bbd86afe0986",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "clean-browser",
+      "command": [
+        "node",
+        "scripts/test-synthetic-scan-browser.mjs"
+      ],
+      "startedAtUtc": "2026-10-12T01:43:22.988067+00:00",
+      "durationSeconds": 5.521,
+      "exitCode": 0,
+      "before": {
+        "head": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "status": ""
+      },
+      "after": {
+        "head": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "status": ""
+      },
+      "logSha256": "f64ecdc6f51212b59e5fa149f921f34677fdd2e75e16d9b358f2ab5335eec002",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "clean-build",
+      "command": [
+        "pnpm",
+        "build"
+      ],
+      "startedAtUtc": "2026-10-12T01:42:29.988695+00:00",
+      "durationSeconds": 7.833,
+      "exitCode": 0,
+      "before": {
+        "head": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "status": ""
+      },
+      "after": {
+        "head": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "status": ""
+      },
+      "logSha256": "76583289c0aa83d0462dbc36e9c25417a52201c1f37f7843c18dac505b8fef47",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "clean-install",
+      "command": [
+        "pnpm",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "startedAtUtc": "2026-10-12T01:39:02.639102+00:00",
+      "durationSeconds": 0.462,
+      "exitCode": 0,
+      "before": {
+        "head": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "status": ""
+      },
+      "after": {
+        "head": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "status": ""
+      },
+      "logSha256": "90f8ac6ca48ddf24d2af46887c00a14db8b4744231096c7ecf6ff52b66b47f1d",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "clean-lint",
+      "command": [
+        "pnpm",
+        "lint"
+      ],
+      "startedAtUtc": "2026-10-12T01:39:03.249358+00:00",
+      "durationSeconds": 6.608,
+      "exitCode": 0,
+      "before": {
+        "head": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "status": ""
+      },
+      "after": {
+        "head": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "status": ""
+      },
+      "logSha256": "25cc1f9634027c24c62f4029a44f00fc3a7e082ac28576c6fc5a3db3e0961f73",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "clean-migrations",
+      "command": [
+        "pnpm",
+        "check:migrations"
+      ],
+      "startedAtUtc": "2026-10-12T01:42:29.380993+00:00",
+      "durationSeconds": 0.463,
+      "exitCode": 0,
+      "before": {
+        "head": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "status": ""
+      },
+      "after": {
+        "head": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "status": ""
+      },
+      "logSha256": "965811c75cef6d8d7db8527ffaf3ec59c52869fe5cb575a1261bc3b793191de5",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "clean-offline-denominators",
+      "command": [
+        "node",
+        "scripts/scan-v3-eval.mjs",
+        "--dataset",
+        ".artifacts/scan-synthetic-v3/dataset.json",
+        "--predictions",
+        ".artifacts/scan-synthetic-v3/missing-predictions.json",
+        "--dry-run",
+        "--output",
+        ".artifacts/scan-synthetic-v3/missing-report.json"
+      ],
+      "startedAtUtc": "2026-10-12T01:44:54.036245+00:00",
+      "durationSeconds": 0.836,
+      "exitCode": 0,
+      "before": {
+        "head": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "status": ""
+      },
+      "after": {
+        "head": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "status": ""
+      },
+      "logSha256": "f9c9b13c9259cff71753969c885b55394f62672b6aa59ceb535d4bc6493aaf4d",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "clean-score-browser",
+      "command": [
+        "node",
+        "scripts/score-synthetic-scan.mjs",
+        ".artifacts/scan-synthetic-v3/browser-images/prepared.json",
+        ".artifacts/scan-synthetic-v3/browser-images/apple-vision.raw.json",
+        ".artifacts/scan-synthetic-v3/browser-images/scores.json"
+      ],
+      "startedAtUtc": "2026-10-12T01:44:19.787432+00:00",
+      "durationSeconds": 0.208,
+      "exitCode": 0,
+      "before": {
+        "head": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "status": ""
+      },
+      "after": {
+        "head": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "status": ""
+      },
+      "logSha256": "71d36a77a89e5aa164e85a7b45f7fc09bca98182c77f0eb46db639917a2dcdd4",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "clean-score-original",
+      "command": [
+        "node",
+        "scripts/score-synthetic-scan.mjs"
+      ],
+      "startedAtUtc": "2026-10-12T01:43:54.498559+00:00",
+      "durationSeconds": 0.228,
+      "exitCode": 0,
+      "before": {
+        "head": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "status": ""
+      },
+      "after": {
+        "head": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "status": ""
+      },
+      "logSha256": "6b032e4553e5c4cad2a18ef545f9936060310722aebcd2710bc79237573efb7e",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "clean-tests",
+      "command": [
+        "pnpm",
+        "test"
+      ],
+      "startedAtUtc": "2026-10-12T01:39:24.684700+00:00",
+      "durationSeconds": 184.536,
+      "exitCode": 0,
+      "before": {
+        "head": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "status": ""
+      },
+      "after": {
+        "head": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "status": ""
+      },
+      "logSha256": "4d92ed95114f7628849e0fdc7ae04fbf60e23bf75958c9553c4cc30ded533aa8",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "clean-types",
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "startedAtUtc": "2026-10-12T01:39:10.008190+00:00",
+      "durationSeconds": 14.515,
+      "exitCode": 0,
+      "before": {
+        "head": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "status": ""
+      },
+      "after": {
+        "head": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "status": ""
+      },
+      "logSha256": "a3a28a25c9246fe7e8bbf5999692dc60347e343a2415f8cefcb7e767e0e6a0d6",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "7323a0e4dea33953c0bf966742766aa4847f8b1c",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "focused-corrected",
+      "command": [
+        "pnpm",
+        "vitest",
+        "run",
+        "tests/unit/synthetic-scan-images.test.ts",
+        "tests/unit/synthetic-scan-text-score.test.mjs",
+        "tests/unit/scan-v3-dataset.test.ts",
+        "tests/unit/scan-v3-evaluator.test.ts"
+      ],
+      "startedAtUtc": "2026-10-12T01:31:10.451562+00:00",
+      "durationSeconds": 8.363,
+      "exitCode": 0,
+      "before": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "after": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "logSha256": "c25da6b31f5af9418d1387319615f0e8e23f8b7ea6bfa74cc135d3bd5570ede5",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "focused-expanded",
+      "command": [
+        "pnpm",
+        "vitest",
+        "run",
+        "tests/unit/synthetic-scan-images.test.ts",
+        "tests/unit/synthetic-scan-text-score.test.mjs",
+        "tests/unit/scan-v3-dataset.test.ts",
+        "tests/unit/scan-v3-evaluator.test.ts"
+      ],
+      "startedAtUtc": "2026-10-12T01:34:32.362366+00:00",
+      "durationSeconds": 8.344,
+      "exitCode": 0,
+      "before": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? scripts/test-synthetic-scan-browser.mjs\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "after": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? scripts/test-synthetic-scan-browser.mjs\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "logSha256": "3a9124752e7433aded0e511333f4f6c159235980b893aae2bc3ffe6f9568266b",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "focused-final",
+      "command": [
+        "pnpm",
+        "vitest",
+        "run",
+        "tests/unit/synthetic-scan-images.test.ts",
+        "tests/unit/synthetic-scan-text-score.test.mjs",
+        "tests/unit/scan-v3-dataset.test.ts",
+        "tests/unit/scan-v3-evaluator.test.ts",
+        "tests/unit/synthetic-ocr-generator.test.mjs",
+        "tests/unit/synthetic-ocr-score.test.mjs",
+        "tests/unit/ai-golden-dataset.test.ts"
+      ],
+      "startedAtUtc": "2026-10-12T01:36:54.645711+00:00",
+      "durationSeconds": 8.914,
+      "exitCode": 0,
+      "before": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? scripts/test-synthetic-scan-browser.mjs\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "after": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? scripts/test-synthetic-scan-browser.mjs\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "logSha256": "51b0fdd6d4c6cd71290f1075593828a96be40a90a8c273717081ae46110df823",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "focused-first",
+      "command": [
+        "pnpm",
+        "vitest",
+        "run",
+        "tests/unit/synthetic-scan-images.test.ts",
+        "tests/unit/synthetic-scan-text-score.test.mjs",
+        "tests/unit/scan-v3-dataset.test.ts",
+        "tests/unit/scan-v3-evaluator.test.ts"
+      ],
+      "startedAtUtc": "2026-10-12T01:29:55.575650+00:00",
+      "durationSeconds": 8.646,
+      "exitCode": 1,
+      "before": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "after": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "logSha256": "100274c20d462f33832f04661722904cbc585386d156c053971de12b6a8dd395",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "generate-corrected",
+      "command": [
+        "node",
+        "scripts/generate-synthetic-scan.mjs"
+      ],
+      "startedAtUtc": "2026-10-12T01:32:37.444906+00:00",
+      "durationSeconds": 3.52,
+      "exitCode": 0,
+      "before": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? scripts/test-synthetic-scan-browser.mjs\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "after": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? scripts/test-synthetic-scan-browser.mjs\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "logSha256": "e0121d434958ecd16635cab55f679d12681c2c8333b75caf9754ee96221b2aeb",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "generate-final",
+      "command": [
+        "node",
+        "scripts/generate-synthetic-scan.mjs"
+      ],
+      "startedAtUtc": "2026-10-12T01:35:55.615972+00:00",
+      "durationSeconds": 3.422,
+      "exitCode": 0,
+      "before": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? scripts/test-synthetic-scan-browser.mjs\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "after": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? scripts/test-synthetic-scan-browser.mjs\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "logSha256": "e0121d434958ecd16635cab55f679d12681c2c8333b75caf9754ee96221b2aeb",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "generate-first",
+      "command": [
+        "node",
+        "scripts/generate-synthetic-scan.mjs"
+      ],
+      "startedAtUtc": "2026-10-12T01:27:06.638238+00:00",
+      "durationSeconds": 10.142,
+      "exitCode": 0,
+      "before": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n"
+      },
+      "after": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n"
+      },
+      "logSha256": "e0121d434958ecd16635cab55f679d12681c2c8333b75caf9754ee96221b2aeb",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "lint-discovery",
+      "command": [
+        "pnpm",
+        "lint"
+      ],
+      "startedAtUtc": "2026-10-12T01:36:47.877744+00:00",
+      "durationSeconds": 6.604,
+      "exitCode": 0,
+      "before": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? scripts/test-synthetic-scan-browser.mjs\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "after": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? scripts/test-synthetic-scan-browser.mjs\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "logSha256": "25cc1f9634027c24c62f4029a44f00fc3a7e082ac28576c6fc5a3db3e0961f73",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "text-score-browser",
+      "command": [
+        "node",
+        "scripts/score-synthetic-scan.mjs",
+        ".artifacts/scan-synthetic-v3/browser-images/prepared.json",
+        ".artifacts/scan-synthetic-v3/browser-images/apple-vision.raw.json",
+        ".artifacts/scan-synthetic-v3/browser-images/scores.json"
+      ],
+      "startedAtUtc": "2026-10-12T01:36:47.869357+00:00",
+      "durationSeconds": 0.201,
+      "exitCode": 0,
+      "before": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? scripts/test-synthetic-scan-browser.mjs\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "after": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? scripts/test-synthetic-scan-browser.mjs\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "logSha256": "71d36a77a89e5aa164e85a7b45f7fc09bca98182c77f0eb46db639917a2dcdd4",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "text-score-final",
+      "command": [
+        "node",
+        "scripts/score-synthetic-scan.mjs"
+      ],
+      "startedAtUtc": "2026-10-12T01:36:26.842585+00:00",
+      "durationSeconds": 0.114,
+      "exitCode": 0,
+      "before": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? scripts/test-synthetic-scan-browser.mjs\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "after": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? scripts/test-synthetic-scan-browser.mjs\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "logSha256": "6b032e4553e5c4cad2a18ef545f9936060310722aebcd2710bc79237573efb7e",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "text-score-first",
+      "command": [
+        "node",
+        "scripts/score-synthetic-scan.mjs"
+      ],
+      "startedAtUtc": "2026-10-12T01:30:05.639389+00:00",
+      "durationSeconds": 0.145,
+      "exitCode": 0,
+      "before": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "after": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "logSha256": "6b032e4553e5c4cad2a18ef545f9936060310722aebcd2710bc79237573efb7e",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "typecheck-corrected",
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "startedAtUtc": "2026-10-12T01:35:24.403471+00:00",
+      "durationSeconds": 13.764,
+      "exitCode": 0,
+      "before": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? scripts/test-synthetic-scan-browser.mjs\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "after": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? scripts/test-synthetic-scan-browser.mjs\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "logSha256": "a3a28a25c9246fe7e8bbf5999692dc60347e343a2415f8cefcb7e767e0e6a0d6",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "typecheck-discovery",
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "startedAtUtc": "2026-10-12T01:33:45.573591+00:00",
+      "durationSeconds": 10.475,
+      "exitCode": 2,
+      "before": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? scripts/test-synthetic-scan-browser.mjs\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "after": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? scripts/test-synthetic-scan-browser.mjs\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "logSha256": "ee3e831809142a2e9817da3469a0445055a99957d27a261d64793f034b34a5c8",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    },
+    {
+      "name": "typecheck-final",
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "startedAtUtc": "2026-10-12T01:38:31.467815+00:00",
+      "durationSeconds": 17.197,
+      "exitCode": 0,
+      "before": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M docs/ai/CURRENT_STATE.md\n M docs/ai/DECISIONS.md\n M docs/ai/HANDOFF.md\n M docs/ai/TASK_BOARD.md\n M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? scripts/test-synthetic-scan-browser.mjs\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "after": {
+        "head": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "status": " M docs/ai/CURRENT_STATE.md\n M docs/ai/DECISIONS.md\n M docs/ai/HANDOFF.md\n M docs/ai/TASK_BOARD.md\n M qa/ocr/v3/dataset-manifest.schema.json\n M scripts/scan-v3-scoring.ts\n?? docs/backend-upgrade/b03a-synthetic/\n?? qa/ocr/synthetic-v3/\n?? scripts/generate-synthetic-scan.mjs\n?? scripts/ocr-synthetic-scan-apple-vision.swift\n?? scripts/score-synthetic-scan.mjs\n?? scripts/synthetic-scan/\n?? scripts/test-synthetic-scan-browser.mjs\n?? tests/unit/synthetic-scan-images.test.ts\n?? tests/unit/synthetic-scan-text-score.test.mjs\n"
+      },
+      "logSha256": "a3a28a25c9246fe7e8bbf5999692dc60347e343a2415f8cefcb7e767e0e6a0d6",
+      "environment": {
+        "NODE_OPTIONS": "--no-experimental-webstorage",
+        "CI": "true",
+        "WRANGLER_SEND_METRICS": "false",
+        "TMPDIR": "/private/tmp",
+        "GIT_COMMIT": "9e5860806c2d7be6a9daefbb99695885c5e72c4f",
+        "BUILD_TIMESTAMP": "2026-10-12T00:00:00Z",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      },
+      "remoteFlags": "unset"
+    }
+  ],
+  "requiredCleanGates": [
+    "clean-install",
+    "clean-lint",
+    "clean-types",
+    "clean-tests",
+    "clean-migrations",
+    "clean-build",
+    "clean-audit",
+    "clean-audit-prod",
+    "clean-browser",
+    "clean-apple-original",
+    "clean-score-original",
+    "clean-apple-browser",
+    "clean-score-browser",
+    "clean-offline-denominators"
+  ],
+  "implementationSources": [
+    {
+      "path": "qa/ocr/synthetic-v3/README.md",
+      "sha256": "9b4694da9cbd3ebb82bc78b500ef6f5c17da892e3be235d8375ddeb57a8753e2"
+    },
+    {
+      "path": "qa/ocr/synthetic-v3/fonts/noto-sans-jp-test-subset.ttf",
+      "sha256": "753063c6554d2dfb634d05a3ca75a2f5ec090444b49454e2d1273e8b286cce33"
+    },
+    {
+      "path": "qa/ocr/v3/dataset-manifest.schema.json",
+      "sha256": "417d0ef90f072980d9268a3497b0adc5d571fb56a862a38662aceb756e9f71be"
+    },
+    {
+      "path": "scripts/generate-synthetic-scan.mjs",
+      "sha256": "57ec30f064a19ace872721cb07a529c94317b818e23154ec80c8d12d698e8118"
+    },
+    {
+      "path": "scripts/ocr-synthetic-scan-apple-vision.swift",
+      "sha256": "71fadcd6f47072cfb80508304c1aff9a7591c3ca9ddb9319cd894752c4c9e5ce"
+    },
+    {
+      "path": "scripts/scan-v3-scoring.ts",
+      "sha256": "d631cc875e15aa850f8193376d9e510815f58f2f6a3120df951321ecb38539d0"
+    },
+    {
+      "path": "scripts/score-synthetic-scan.mjs",
+      "sha256": "e2b8884e951d240abf215cd8261d33e67f8d73e1a28eed2467de3c7600ddaf21"
+    },
+    {
+      "path": "scripts/synthetic-scan/render.mjs",
+      "sha256": "3738124e5929d6c368f6c066d0d3be4d8cd6f66502c67695f7b5f857fa881517"
+    },
+    {
+      "path": "scripts/synthetic-scan/score.mjs",
+      "sha256": "e358c2ffad9b36fd00ec00338c0b35fdddac7fa966bed14962161dc112df089c"
+    },
+    {
+      "path": "scripts/synthetic-scan/source.mjs",
+      "sha256": "ab85294efaf8add60c52c2cfc28a9deed6cde3df05336d479170f3b56aaf65f1"
+    },
+    {
+      "path": "scripts/synthetic-scan/verify.d.mts",
+      "sha256": "f560a91ef579c8371ccdbc00104785b6344f3cf827dd61ba32cfd1293cf73381"
+    },
+    {
+      "path": "scripts/synthetic-scan/verify.mjs",
+      "sha256": "dad1afa45e8c8ca300b95c7b83b14876ef8139451cb6017bc83f449dc96f9050"
+    },
+    {
+      "path": "scripts/test-synthetic-scan-browser.mjs",
+      "sha256": "4f128b92b38bf2aa24ce228242b04836a7db702c4c8028c75588a3b0917c19f8"
+    },
+    {
+      "path": "tests/unit/synthetic-scan-images.test.ts",
+      "sha256": "993ab1c51996786709a8e61385371b1d9936687f2c1e27d0974bd507c6290d17"
+    },
+    {
+      "path": "tests/unit/synthetic-scan-text-score.test.mjs",
+      "sha256": "d310b7ee5239ad57848de922b73905dc98e08d90119a72150bb9bee270f12642"
+    }
+  ],
+  "attachments": [
+    {
+      "path": ".artifacts/scan-synthetic-v3/sources.json",
+      "sha256": "4365f0e373921c710bd7ae8d83dbcb5fc04ad1f77ddfa10b9c590aad906ba563"
+    },
+    {
+      "path": ".artifacts/scan-synthetic-v3/annotations.source.json",
+      "sha256": "b222cc13afd52c1bc69f9829fd5e405e036c3516138368de5566a2197da604f5"
+    },
+    {
+      "path": ".artifacts/scan-synthetic-v3/dataset.json",
+      "sha256": "a571dba82948aa753f7517659e49b7e4361d132e2b26ee51d93fb656e0f0e52b"
+    },
+    {
+      "path": ".artifacts/scan-synthetic-v3/prepared.json",
+      "sha256": "bb6b5c3ebf8c6cb4010079f7ce6da216b40263f00b7b308e9bd6542f66694fcf"
+    },
+    {
+      "path": ".artifacts/scan-synthetic-v3/apple-vision.raw.json",
+      "sha256": "a06d8955c3e2c786fecd74c5c54a14e0aac1c05a280f371bce3bc621181b4c95"
+    },
+    {
+      "path": ".artifacts/scan-synthetic-v3/scores.json",
+      "sha256": "3b8f9e3ca29194f9ccbebc059f55462e9a171e2bd2204b8818ce4eab12bc63b7"
+    },
+    {
+      "path": ".artifacts/scan-synthetic-v3/browser-report.json",
+      "sha256": "ac0bfd8352637c168f0c2e81fc912013cea77d2d2745aa411eb3ed22e881880d"
+    },
+    {
+      "path": ".artifacts/scan-synthetic-v3/browser-images/prepared.json",
+      "sha256": "96405e6f566d1ad6f31c52abff14aaa79a48c0da16e0bf8353978baf0c7521f0"
+    },
+    {
+      "path": ".artifacts/scan-synthetic-v3/browser-images/apple-vision.raw.json",
+      "sha256": "7f9ba0e8c3b45e2917ac0ca1f18c21cf36e5eaf58dea2d18cb80de9ac2ba0fcb"
+    },
+    {
+      "path": ".artifacts/scan-synthetic-v3/browser-images/scores.json",
+      "sha256": "d26e8ae233e2fd4b6bef0d7882ce2091f8ff345489e085832f21af1b7d1b6332"
+    },
+    {
+      "path": ".artifacts/scan-synthetic-v3/missing-report.json",
+      "sha256": "f9c9b13c9259cff71753969c885b55394f62672b6aa59ceb535d4bc6493aaf4d"
+    },
+    {
+      "path": ".artifacts/scan-synthetic-v3/contact-sheet.png",
+      "sha256": "4a9d98b3e77c5260fac129d362e051c46be88a3bf9def650962de85800083413"
+    },
+    {
+      "path": ".artifacts/backend-b03a-synthetic/protected-implementation.json",
+      "sha256": "ae6a3f7af9314acdbaa2e35263445e250cf795143f8e640e9df234069393431d"
+    },
+    {
+      "path": ".artifacts/backend-b03a-synthetic/failure-notes.json",
+      "sha256": "320f654205255a7fdab6af3081aeef7284c7c75557e6097dc25349264a4d2d2f"
+    },
+    {
+      "path": ".artifacts/backend-b03a-synthetic/build-assets.json",
+      "sha256": "c67de2a50436c3361b825cc580be7810005eb0a9cc7ec642450655ff92f0739e"
+    }
+  ],
+  "protectedBaseFiles": 4593,
+  "allowedBaseChanges": [
+    "docs/ai/CURRENT_STATE.md",
+    "docs/ai/DECISIONS.md",
+    "docs/ai/HANDOFF.md",
+    "docs/ai/TASK_BOARD.md",
+    "qa/ocr/v3/dataset-manifest.schema.json",
+    "scripts/scan-v3-scoring.ts"
+  ],
+  "receiptAssets": [
+    {
+      "path": "qa/ocr/synthetic-v3/fonts/OFL.txt",
+      "sha256": "babcfe66c8a098b2fa279bc724a3a342f8124f77ce18941fbcc1bbb39823cded"
+    },
+    {
+      "path": "qa/ocr/synthetic-v3/fonts/provenance.json",
+      "sha256": "ded1cd8bc7a63d4ca03cc1aee34a22c72674430a6ca73af8e9d4dbd00ebc3e78"
+    }
+  ],
+  "finalReceiptAllowedBaseChanges": [
+    "docs/ai/CURRENT_STATE.md",
+    "docs/ai/DECISIONS.md",
+    "docs/ai/HANDOFF.md",
+    "docs/ai/TASK_BOARD.md",
+    "qa/ocr/v3/dataset-manifest.schema.json",
+    "scripts/scan-v3-scoring.ts",
+    "docs/backend-upgrade/IMPLEMENTATION_PLAN.md",
+    "qa/ocr/v3/LICENSES.md"
+  ],
+  "finalProtectedBaseFiles": 4591
+}

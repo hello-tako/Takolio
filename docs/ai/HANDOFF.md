@@ -1,3 +1,41 @@
+# B03a synthetic image final checkpoint - 2026-10-12 JST
+
+**Task/status:** SYNTHETIC_LOCAL_TESTS_COMPLETE; PRODUCT_RELEASE_GATES_OPEN.
+Implementation7323a0e4dea33953c0bf966742766aa4847f8b1c; base receipt
+9e5860806c2d7be6a9daefbb99695885c5e72c4f; branch codex/backend-b03a-synthetic-images.
+Canonical worktree /Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo.
+
+**Delivered:** 24 source documents / 120 raster variants +1damagedJPEG; VI/JA
+invoices, labels and fridge illustrations; pinned OFL Japanese subset. Source-first
+TEST_ONLY labels, VND/JPY, duplicate positions, missing-field UNKNOWN, rotated
+visual evidence and split/hash binding. Real Apple Vision on121originals and121
+native-browser outputs; native input/bitmap/canvas/FileReader cap/MIME/decode and
+3session/cancel fences. Adapter fetch intercepted; V1 rejects null, V3 preserves
+UNKNOWN. New synthetic tests28; original four receipts/nine symbolic cases intact.
+
+**Checks:** clean committed315files/7610tests PASS184.536s; focused7files/49tests;
+frozen install/lint/bothTS/40migrations/build PASS.4593protected files exact;
+CSS134861bytes identical, SW exact implementationtoken. Full audit1HIGHbraces;
+production0, securitygateFAILED. Paired text: VI642/672->619/672exact; JA647/672
+unchanged; labelsVI37/39->39/39,JA35/39->38/39. Fridge object/mass recognition
+UNMEASURED. Missing submissions120/documents24/UNKNOWNslots4548 preserved.
+
+**Failures/evidence:**5initialfocused assumptions and3Buffer types corrected;
+Git filename quoting corrected with NUL records; upstream OFL one trailing space
+normalized only in docs receipt. Raw/log/asset evidence ignored; source-bound
+validation.json and verifier keep exact command/hashes and measured errors.
+
+**Limits/next:** local sample dependency solved, not real/provider certification.
+No product/auth/payment/config/package/lock/workflow/migration/public/catalog/
+provider activation or remote write/deploy/mail/paidAI/push/PR/merge. Use these
+fixtures for regression; compare preprocessing on permitted real VI images before
+runtime edits, then real labels/provider bounded benchmark and existing upstream
+security/human ingredient/protectedbilling/hosted/SLO/release gates. See
+../backend-upgrade/b03a-synthetic/RESULT.md and NEXT_ACTIONS.md. Original checkout
+untouched; historical checkpoint suffixes retained.
+
+---
+
 # B03a synthetic image extension in progress - 2026-10-12 JST
 
 **Task/status:** SYNTHETIC_IMAGES_IMPLEMENTED_FINAL_GATES_PENDING.

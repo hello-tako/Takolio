@@ -5,5 +5,9 @@
   "license": "SIL OFL 1.1",
   "weight": 400,
   "fontToolsVersion": "4.60.2",
-  "use": "Synthetic test rendering only; no public app font change"
+  "use": "Synthetic test rendering only; no public app font change",
+  "licenseSourceUrl": "https://raw.githubusercontent.com/google/fonts/main/ofl/notosansjp/OFL.txt",
+  "licenseSourceSha256": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9",
+  "licenseSha256": "babcfe66c8a098b2fa279bc724a3a342f8124f77ce18941fbcc1bbb39823cded",
+  "licenseNormalization": "Trim one upstream trailing space only; copyright and legal wording preserved"
 }

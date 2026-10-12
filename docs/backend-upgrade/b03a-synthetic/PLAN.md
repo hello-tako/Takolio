@@ -1,6 +1,6 @@
 # B03a synthetic image extension - 2026-10-12 JST
 
-Status: CODE_IMPLEMENTED_FINAL_GATES_PENDING. Base: 9e5860806c2d7be6a9daefbb99695885c5e72c4f.
+Status: SYNTHETIC_LOCAL_TESTS_COMPLETE; product/release certification remains open. Base: 9e5860806c2d7be6a9daefbb99695885c5e72c4f.
 Branch: codex/backend-b03a-synthetic-images. Canonical worktree remains
 /Users/tunbee27/.codex/worktrees/backend-b00-baseline/frigo.
 

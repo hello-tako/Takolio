@@ -1,3 +1,17 @@
+# Latest synthetic test checkpoint - 2026-10-12 JST
+
+Implementation7323a0e4 adds24source documents/120valid image variants +damagedJPEG,
+VI/JA invoices/labels and fridge illustrations, actual local Apple Vision and
+native browser preprocessing tests.315files/7610tests, install/lint/types/40migrations/
+build pass at clean source. Local sample-file dependency solved; productQwen/fridge
+semantic quality, independent real labels and production gates stay open.
+Paired VI template text642/672->619/672exact exposes a JPEG preprocessing issue;
+compare permitted real inputs before runtime policy changes. Full audit1HIGH remains.
+See b03a-synthetic/RESULT.md, validation.json, ADR-B03a-SYN-001.md and NEXT_ACTIONS.md.
+The original implementation plan and historical status suffix follow unchanged.
+
+---
+
 # B08 dependency mitigation final checkpoint - 2026-10-12 JST
 
 **Task/status:** LOCAL_MITIGATION_VERIFIED_WITH_BLOCKING_RELEASE_GATES.
