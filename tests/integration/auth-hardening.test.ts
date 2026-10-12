@@ -195,8 +195,9 @@ afterEach(async () => {
 describe('real SQLite D1 integration harness', () => {
   it('applies the full migration ledger including strict OTP with real constraints and no plaintext OTP column', () => {
     expect(db.migrations).toContain('0018_payments.sql');
-    expect(db.migrations).toHaveLength(40);
-    expect(db.migrations.at(-1)).toBe('0040_strict_otp_foundation.sql');
+    expect(db.migrations).toHaveLength(41);
+    expect(db.migrations).toContain('0040_strict_otp_foundation.sql');
+    expect(db.migrations.at(-1)).toBe('0041_checkout_admission.sql');
     const columns = db.query<{ name: string }>('PRAGMA table_info(auth_otps)').map((column) => column.name);
     expect(columns).toEqual(expect.arrayContaining(['code_digest', 'attempt_count', 'used_at', 'locked_until']));
     expect(columns).not.toContain('code');

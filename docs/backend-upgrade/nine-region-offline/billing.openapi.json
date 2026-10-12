@@ -1,0 +1,485 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Takosan billing admission offline contract",
+    "version": "1-candidate"
+  },
+  "servers": [
+    {
+      "url": "/api/v1"
+    }
+  ],
+  "x-status": "LOCAL_CANDIDATE_PENDING_EXTERNAL_EVIDENCE",
+  "paths": {
+    "/billing/plans": {
+      "get": {
+        "security": [
+          {
+            "CookieSession": []
+          }
+        ],
+        "x-owner-scope": "authenticated non-guest; expected owner headers and CSRF on POST",
+        "responses": {
+          "200": {
+            "description": "Authoritative prices",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BillingPlansResponseSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/billing/checkouts": {
+      "get": {
+        "security": [
+          {
+            "CookieSession": []
+          }
+        ],
+        "x-owner-scope": "authenticated non-guest; expected owner headers and CSRF on POST",
+        "responses": {
+          "200": {
+            "description": "Owner-only reload recovery handles",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OpenCheckoutsResponseSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/billing/checkouts/{id}": {
+      "get": {
+        "security": [
+          {
+            "CookieSession": []
+          }
+        ],
+        "x-owner-scope": "authenticated non-guest; expected owner headers and CSRF on POST",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resume owned instructions without dispatch",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BillingCreatedResponseSchema"
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Reconciliation required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CheckoutUncertainSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Foreign or missing"
+          },
+          "409": {
+            "description": "Expired or active attempt"
+          }
+        }
+      }
+    },
+    "/billing/payment-intents": {
+      "post": {
+        "security": [
+          {
+            "CookieSession": []
+          }
+        ],
+        "x-owner-scope": "authenticated non-guest; expected owner headers and CSRF on POST",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{16,128}$"
+            },
+            "description": "Required for retry-safe protocol; absent retains legacy creation. Same-key changed plan conflicts. Keep key through transport failure."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "plan": {
+                    "type": "string",
+                    "enum": [
+                      "monthly",
+                      "annual"
+                    ]
+                  }
+                },
+                "required": [
+                  "plan"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Original offer replay",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BillingCreatedResponseSchema"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "One newly admitted offer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BillingCreatedResponseSchema"
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Remote outcome unknown; no replacement dispatch",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CheckoutUncertainSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "INVALID_PLAN or INVALID_IDEMPOTENCY_KEY"
+          },
+          "401": {
+            "description": "UNAUTHORIZED"
+          },
+          "409": {
+            "description": "IDEMPOTENCY_CONFLICT, COMMAND_IN_PROGRESS or CHECKOUT_KEY_EXPIRED"
+          },
+          "429": {
+            "description": "Creation rate limit (fail closed)"
+          },
+          "503": {
+            "description": "Provider, rate-limit or database unavailable"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BillingPlanRequestSchema": {
+        "type": "object",
+        "properties": {
+          "plan": {
+            "type": "string",
+            "enum": [
+              "monthly",
+              "annual"
+            ]
+          }
+        },
+        "required": [
+          "plan"
+        ],
+        "additionalProperties": false
+      },
+      "CheckoutKeySchema": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9_-]{16,128}$"
+      },
+      "BillingPlansResponseSchema": {
+        "type": "object",
+        "properties": {
+          "plans": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "plan": {
+                  "type": "string",
+                  "enum": [
+                    "monthly",
+                    "annual"
+                  ]
+                },
+                "amountVnd": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "minimum": -9007199254740991,
+                  "maximum": 9007199254740991
+                },
+                "currency": {
+                  "const": "VND"
+                }
+              },
+              "required": [
+                "plan",
+                "amountVnd",
+                "currency"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "x-runtime-validation": true
+          }
+        },
+        "required": [
+          "plans"
+        ],
+        "additionalProperties": false
+      },
+      "BillingCreatedResponseSchema": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "const": true
+          },
+          "payment": {
+            "type": "object",
+            "properties": {
+              "plan": {
+                "type": "string",
+                "enum": [
+                  "monthly",
+                  "annual"
+                ]
+              },
+              "amountVnd": {
+                "type": "integer",
+                "exclusiveMinimum": 0,
+                "minimum": -9007199254740991,
+                "maximum": 9007199254740991
+              },
+              "currency": {
+                "const": "VND"
+              },
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "orderCode": {
+                "type": "string",
+                "minLength": 1
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1
+              },
+              "expiresAt": {
+                "type": "string",
+                "minLength": 1,
+                "x-runtime-validation": true
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "pending",
+                  "paid",
+                  "failed",
+                  "expired",
+                  "refunded"
+                ]
+              },
+              "instructions": {
+                "type": "object",
+                "properties": {
+                  "bankBin": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "accountNumber": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "accountName": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "transferContent": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "qrImageUrl": {
+                    "type": "string",
+                    "x-runtime-validation": true
+                  }
+                },
+                "required": [
+                  "bankBin",
+                  "accountNumber",
+                  "accountName",
+                  "transferContent",
+                  "qrImageUrl"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "plan",
+              "amountVnd",
+              "currency",
+              "id",
+              "orderCode",
+              "description",
+              "expiresAt",
+              "status",
+              "instructions"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "success",
+          "payment"
+        ],
+        "additionalProperties": false
+      },
+      "CheckoutUncertainSchema": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "const": false
+          },
+          "code": {
+            "const": "PAYMENT_RECONCILIATION_REQUIRED"
+          },
+          "intentId": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "success",
+          "code",
+          "intentId"
+        ],
+        "additionalProperties": false
+      },
+      "OpenCheckoutsResponseSchema": {
+        "type": "object",
+        "properties": {
+          "checkouts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "intentId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "plan": {
+                  "type": "string",
+                  "enum": [
+                    "monthly",
+                    "annual"
+                  ]
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "pending",
+                    "paid",
+                    "failed",
+                    "expired",
+                    "refunded"
+                  ]
+                },
+                "expiresAt": {
+                  "type": "string",
+                  "minLength": 1,
+                  "x-runtime-validation": true
+                },
+                "state": {
+                  "type": "string",
+                  "enum": [
+                    "dispatching",
+                    "ready",
+                    "remote_uncertain"
+                  ]
+                }
+              },
+              "required": [
+                "intentId",
+                "plan",
+                "status",
+                "expiresAt",
+                "state"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 20
+          }
+        },
+        "required": [
+          "checkouts"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "CookieSession": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "__Host-frigo_session"
+      }
+    }
+  },
+  "x-source-hashes": [
+    {
+      "path": "scripts/billing-contract.mjs",
+      "sha256": "0257e647c165edc7e03bd40feead0284b57f2ed757bb9c96ed84b9d6cf4b2b3d"
+    },
+    {
+      "path": "scripts/planner-openapi.ts",
+      "sha256": "f9cfca53305b4e0ec6dfd09c2720a25e9279205ab88123d2cd15484787e34275"
+    },
+    {
+      "path": "src/shared/billing.ts",
+      "sha256": "85349c3ac792d7f3712a98bfdafb872f63efd9d3dbdd278ee47e1988fd26ea4a"
+    },
+    {
+      "path": "src/worker/routes/billing.ts",
+      "sha256": "cbc3af5c0e077487482436d41e47e05eb8ad4bd450db772ad9babbd1e444f403"
+    },
+    {
+      "path": "src/worker/payment/checkout.ts",
+      "sha256": "114720534c0147550c26fd70a47896678c069c4ed40f0b7908739cc773d22848"
+    },
+    {
+      "path": "migrations/0041_checkout_admission.sql",
+      "sha256": "68e5f71a421d76f1f22bf6405673c824fe742c5e5c6e2931f1a0bbb1d61908da"
+    }
+  ]
+}

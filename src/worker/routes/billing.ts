@@ -1,4 +1,5 @@
 import { Hono } from 'hono';
+import { BillingPlanRequestSchema } from '../../shared/billing';
 import { z } from 'zod';
 import type { Env, AuthContext } from '../types';
 import { rateLimiter } from '../middleware/rate-limit';
@@ -7,10 +8,11 @@ import {
   paymentView, plusPrices, type PaymentRow,
 } from '../payment/authority';
 import { PLUS_PRICES } from '../payment/prices';
+import { checkoutKeySchema, createCheckout, readCheckout } from '../payment/checkout';
 import { createPayosInstructions, payosConfigured, verifyPayosData } from '../payment/payos';
 
 export const billingRoutes = new Hono<{ Bindings: Env; Variables: { auth: AuthContext } }>();
-const planRequest = z.object({ plan: z.enum(['monthly', 'annual']) });
+const planRequest = BillingPlanRequestSchema;
 const webhookData = z.object({
   orderCode: z.number().int().positive().safe(),
   amount: z.number().int().positive().safe(),
@@ -38,6 +40,18 @@ billingRoutes.post('/billing/payment-intents', rateLimiter({
   if (!parsed.success) return c.json({ error: 'Gói Plus không hợp lệ', code: 'INVALID_PLAN' }, 400);
   if (!payosConfigured(c.env)) return c.json({ error: 'Thanh toán tạm thời chưa khả dụng', code: 'PAYMENT_UNAVAILABLE' }, 503);
   const { plan } = parsed.data;
+  const key = c.req.header('Idempotency-Key');
+  if (key !== undefined) {
+    if (!checkoutKeySchema.safeParse(key).success) return c.json({ error: 'Invalid checkout key', code: 'INVALID_IDEMPOTENCY_KEY' }, 400);
+    const result = await createCheckout(c.env.DB, c.get('auth').userId, key, plan,
+      (intent) => createPayosInstructions(c.env, intent));
+    if (result.kind === 'created' || result.kind === 'replay') {
+      return c.json({ success: true, payment: result.payment }, result.kind === 'created' ? 201 : 200);
+    }
+    const code = { conflict: 'IDEMPOTENCY_CONFLICT', expired: 'CHECKOUT_KEY_EXPIRED',
+      in_progress: 'COMMAND_IN_PROGRESS', reconciliation: 'PAYMENT_RECONCILIATION_REQUIRED' }[result.kind];
+    return c.json({ success: false, code, intentId: result.intentId }, result.kind === 'reconciliation' ? 202 : 409);
+  }
   const orderCode = newOrderCode();
   const intent: PaymentRow = {
     id: `pay_${crypto.randomUUID()}`, user_id: c.get('auth').userId,
@@ -61,6 +75,28 @@ billingRoutes.post('/billing/payment-intents', rateLimiter({
       .bind(intent.id).run();
     return c.json({ error: 'Chưa tạo được hướng dẫn thanh toán. Vui lòng thử lại.', code: 'PAYMENT_PROVIDER_UNAVAILABLE' }, 502);
   }
+});
+
+billingRoutes.get('/billing/checkouts', async (c) => {
+  const rows = await c.env.DB.prepare(`SELECT p.id, p.plan, p.status, p.expires_at, a.state, a.deadline_at
+    FROM checkout_admissions a JOIN payment_intents p ON p.id = a.intent_id
+    WHERE a.user_id = ? AND (a.state <> 'ready' OR (p.status = 'pending' AND p.expires_at > ?))
+    ORDER BY a.created_at DESC LIMIT 20`).bind(c.get('auth').userId, new Date().toISOString()).all<{
+      id: string; plan: string; status: string; expires_at: string; state: string; deadline_at: string;
+    }>();
+  return c.json({ checkouts: rows.results.map((row) => ({
+    intentId: row.id, plan: row.plan, status: row.status, expiresAt: row.expires_at,
+    state: row.state === 'dispatching' && Date.parse(row.deadline_at) <= Date.now() ? 'remote_uncertain' : row.state,
+  })) });
+});
+
+billingRoutes.get('/billing/checkouts/:id', async (c) => {
+  const result = await readCheckout(c.env.DB, c.get('auth').userId, c.req.param('id'));
+  if (!result) return c.json({ error: 'Không tìm thấy thanh toán', code: 'PAYMENT_NOT_FOUND' }, 404);
+  if (result.kind === 'replay' || result.kind === 'created') return c.json({ success: true, payment: result.payment });
+  return c.json({ success: false, code: result.kind === 'reconciliation' ? 'PAYMENT_RECONCILIATION_REQUIRED'
+    : result.kind === 'expired' ? 'CHECKOUT_KEY_EXPIRED' : 'COMMAND_IN_PROGRESS', intentId: result.intentId },
+    result.kind === 'reconciliation' ? 202 : 409);
 });
 
 billingRoutes.get('/billing/payment-intents/:id', async (c) => {

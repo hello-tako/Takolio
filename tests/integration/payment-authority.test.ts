@@ -738,3 +738,29 @@ describe('legacy activation retirement', () => {
     expect(db.query('SELECT * FROM subscriptions WHERE user_id = ?', 'user-a')).toEqual(before);
   });
 });
+
+
+describe('checkout identity route integration', () => {
+  it('replays the original offer after a catalog price change', async () => {
+    const options = { method: 'POST', body: { plan: 'monthly' }, headers: { 'Idempotency-Key': 'checkout-route-key-001' } };
+    const first = await request('/billing/payment-intents', options);
+    expect(first.response.status).toBe(201);
+    const firstPayment = first.json.payment as CreatedPaymentIntent;
+    currentPrices.monthly += 12345;
+    const replay = await request('/billing/payment-intents', options);
+    expect(replay.response.status).toBe(200);
+    expect(replay.json.payment).toEqual(firstPayment);
+    expect(providerCalls).toHaveLength(1);
+  });
+  it('returns a bounded uncertainty handle and owner-only reload recovery', async () => {
+    providerThrowsAfterRequest = true;
+    const result = await request('/billing/payment-intents', { method: 'POST', body: { plan: 'monthly' },
+      headers: { 'Idempotency-Key': 'checkout-route-key-002' } });
+    expect(result.response.status).toBe(202);
+    expect(result.json.code).toBe('PAYMENT_RECONCILIATION_REQUIRED');
+    const mine = await request('/billing/checkouts');
+    expect(mine.json.checkouts).toMatchObject([{ intentId: result.json.intentId, state: 'remote_uncertain' }]);
+    const foreign = await request('/billing/checkouts', { cookie: otherUserCookie });
+    expect(foreign.json.checkouts).toEqual([]);
+  });
+});

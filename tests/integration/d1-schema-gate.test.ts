@@ -76,8 +76,23 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
     expect(issues.filter((row) => row.issue === 'missing_table').map((row) => row.detail)).toEqual([
       'auth_otp_assertions', 'auth_otp_claims', 'auth_otp_issuances',
       'auth_otp_requests', 'auth_otp_scopes', 'auth_otp_tickets',
+      'checkout_admissions', 'payment_reconciliation_records',
     ]);
     expect(issues.some((row) => row.issue === 'unexpected_migration')).toBe(false);
+  });
+
+  it('rejects an unchanged 0040 database until checkout admission is applied', () => {
+    const tip = '0040_strict_otp_foundation.sql';
+    const names = listMigrations();
+    const db = withLedger(names.slice(0, names.indexOf(tip) + 1), tip);
+    const issues = db.query<{ issue: string; detail: string }>(gate);
+    expect(issues.filter((row) => row.issue === 'missing_migration')).toEqual(missingMigrationsAfter(tip));
+    expect(issues.filter((row) => row.issue === 'missing_table').map((row) => row.detail)).toEqual([
+      'checkout_admissions', 'payment_reconciliation_records',
+    ]);
+    expect(issues.filter((row) => row.issue === 'missing_index').map((row) => row.detail)).toEqual([
+      'idx_checkout_admissions_user_state',
+    ]);
   });
 
   it('fails closed when the ledger stops at 0034 or 0035 (legacy production tips)', () => {
@@ -105,7 +120,7 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
   it('fails closed when the ledger names a migration the repository never had', () => {
     const db = withLedger([...listMigrations().slice(0, -1), '0040_strict_otp_foundation_v2.sql']);
     expect(db.query(gate)).toEqual([
-      { issue: 'missing_migration', detail: '0040_strict_otp_foundation.sql' },
+      { issue: 'missing_migration', detail: migrationTip() },
       { issue: 'unexpected_migration', detail: '0040_strict_otp_foundation_v2.sql' },
     ]);
   });

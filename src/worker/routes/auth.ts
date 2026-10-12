@@ -1,4 +1,5 @@
-import { Hono } from 'hono';
+import { Hono, type Context } from 'hono';
+import type { D1DatabaseBinding } from '@frigo/db';
 import { Env, AuthContext } from '../types';
 import { SQL } from '@frigo/db';
 import { hashPassword, generateSalt, verifyPassword } from '../utils/password';
@@ -21,7 +22,22 @@ import {
   GoogleAuthSchema,
 } from '../validation/schemas';
 
-export const authRoutes = new Hono<{ Bindings: Env; Variables: { auth: AuthContext } }>();
+type AuthRouteEnv = { Bindings: Env; Variables: { auth: AuthContext } };
+interface ProfileRow {
+  email: string | null; is_guest: number; display_name: string | null; avatar_url: string | null;
+  onboarding_completed_at: string | null; household_id: string | null; household_name: string | null;
+}
+interface PreferencesRow {
+  household_size: number; spicy_level: string; favorite_cuisines: string | null; dietary_restrictions: string | null;
+}
+interface PasswordAccountRow {
+  user_id: string; password_hash: string; salt: string; is_verified: number;
+  display_name: string | null; avatar_url: string | null; onboarding_completed_at: string | null;
+}
+interface GoogleAccountRow {
+  id: string; user_id: string; email: string; google_id: string | null; onboarding_completed_at: string | null;
+}
+export const authRoutes = new Hono<AuthRouteEnv>();
 
 // Session bootstrap also needs CSRF protection before a cookie exists.
 for (const path of ['login', 'register', 'verify-otp', 'resend-otp', 'forgot-password', 'reset-password', 'google', 'guest', 'logout']) {
@@ -46,13 +62,13 @@ for (const path of ['register', 'verify-otp', 'resend-otp', 'forgot-password', '
 // Apply rate limiting to all auth endpoints (max 15 requests per minute)
 authRoutes.use('/auth/*', rateLimiter({ maxRequests: 15, windowSeconds: 60, prefix: 'rl_auth' }));
 
-function setSessionCookie(c: any, token: string): void {
+function setSessionCookie(c: Context<AuthRouteEnv>, token: string): void {
   c.header('Set-Cookie', `${SESSION_COOKIE}=${encodeURIComponent(token)}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${7 * 86400}`);
 }
 
 // Persist only the hash of the opaque cookie credential.
 async function createSessionAndToken(
-  db: any,
+  db: D1DatabaseBinding,
   _env: Env,
   user: { id: string; email: string; householdId: string; role?: string; isGuest?: boolean }
 ): Promise<string> {
@@ -89,8 +105,8 @@ authRoutes.get('/me', async (c) => {
   }
 
   try {
-    const userRow: any = await db.prepare(SQL.GET_USER_PROFILE).bind(auth.householdId, auth.userId).first();
-    const prefRow: any = await db.prepare(SQL.GET_USER_PREFERENCES).bind(auth.userId).first();
+    const userRow = await db.prepare(SQL.GET_USER_PROFILE).bind(auth.householdId, auth.userId).first<ProfileRow>();
+    const prefRow = await db.prepare(SQL.GET_USER_PREFERENCES).bind(auth.userId).first<PreferencesRow>();
 
     const quota = await getScanQuota(db, auth.userId);
 
@@ -260,7 +276,7 @@ authRoutes.post('/auth/login', async (c) => {
   }
 
   try {
-    const account: any = await db
+    const account = await db
       .prepare(
         `SELECT a.user_id, a.password_hash, a.salt, a.is_verified, p.display_name, p.avatar_url, p.onboarding_completed_at
          FROM auth_accounts a
@@ -268,7 +284,7 @@ authRoutes.post('/auth/login', async (c) => {
          WHERE a.email = ?`
       )
       .bind(normalizedEmail)
-      .first();
+      .first<PasswordAccountRow>();
 
     if (!account) {
       return c.json({ error: 'Email hoặc mật khẩu không chính xác' }, 401);
@@ -442,16 +458,16 @@ authRoutes.post('/auth/google', async (c) => {
     // Resolve email and provider identity independently. They should never
     // silently point at two different local accounts; doing so would let a
     // later upsert rebind one account to another provider identity.
-    const existingByEmail: any = await db
+    const existingByEmail = await db
       .prepare(`SELECT a.id, a.user_id, a.email, a.google_id, p.onboarding_completed_at
         FROM auth_accounts a LEFT JOIN profiles p ON p.user_id = a.user_id WHERE a.email = ? LIMIT 1`)
       .bind(email)
-      .first();
-    const existingByGoogle: any = await db
+      .first<GoogleAccountRow>();
+    const existingByGoogle = await db
       .prepare(`SELECT a.id, a.user_id, a.email, a.google_id, p.onboarding_completed_at
         FROM auth_accounts a LEFT JOIN profiles p ON p.user_id = a.user_id WHERE a.google_id = ? LIMIT 1`)
       .bind(googleId)
-      .first();
+      .first<GoogleAccountRow>();
 
     if (
       existingByEmail &&
@@ -646,7 +662,7 @@ authRoutes.post('/auth/logout', async (c) => {
   if (cookieToken) {
     try {
       const tokenHash = await sha256Hex(decodeURIComponent(cookieToken));
-      const result: any = await db.prepare("UPDATE sessions_v2 SET revoked_at = datetime('now') WHERE token_hash = ? AND revoked_at IS NULL").bind(tokenHash).run();
+      const result = await db.prepare("UPDATE sessions_v2 SET revoked_at = datetime('now') WHERE token_hash = ? AND revoked_at IS NULL").bind(tokenHash).run();
       if (result?.success === false) return c.json({ error: 'Không thể đăng xuất lúc này', code: 'LOGOUT_FAILED' }, 503);
     } catch {
       return c.json({ error: 'Không thể đăng xuất lúc này', code: 'LOGOUT_FAILED' }, 503);

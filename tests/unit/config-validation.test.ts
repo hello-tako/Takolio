@@ -11,7 +11,7 @@ function productionEnv(overrides: Partial<Env> = {}): Env {
     WEEK_SCHEMA_MODE: 'dual',
     DB: {} as Env['DB'],
     CACHE: {} as Env['CACHE'],
-    AI: {},
+    AI: { run: async () => { throw new Error('Unexpected AI call in configuration fixture'); } },
     QWEN_API_KEY: 'qwen-test-key',
     SCAN_QUEUE: {} as Env['SCAN_QUEUE'],
     IMAGES: {} as Env['IMAGES'],
@@ -44,7 +44,7 @@ describe('validateEnvironment', () => {
       GROQ_API_KEY: 'groq-key',
       GROQ_FALLBACK_ENABLED: 'true',
       CLOUDFLARE_VISION_FALLBACK: 'true',
-      AI: {},
+      AI: { run: async () => { throw new Error('Unexpected AI call in configuration fixture'); } },
     })).toEqual(['qwen']);
   });
 

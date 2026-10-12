@@ -239,7 +239,7 @@ describe('health endpoints', () => {
     const response = await fetchReady(createApp(), {
       ENVIRONMENT: 'development',
       DB: healthyDb(),
-      AI: {},
+      AI: { run: async () => { throw new Error('Unexpected AI call in configuration fixture'); } },
       AI_MOCK_MODE: 'false',
       CLOUDFLARE_VISION_FALLBACK: 'false',
     });
@@ -274,7 +274,7 @@ describe('health endpoints', () => {
       ENVIRONMENT: 'production',
       DB: healthyDb(),
       CACHE: {} as Env['CACHE'],
-      AI: {},
+      AI: { run: async () => { throw new Error('Unexpected AI call in configuration fixture'); } },
       AI_MOCK_MODE: 'false',
       SCAN_QUEUE: {} as Env['SCAN_QUEUE'],
       SCAN_QUEUE_MODE: 'async',

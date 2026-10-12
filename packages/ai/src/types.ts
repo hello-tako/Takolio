@@ -1,5 +1,6 @@
 import { VisionScanResult, ReceiptScanResult } from './schemas';
 import type { AIGovernanceConfig } from './model-governance';
+import type { CloudflareAIBinding } from './providers/cloudflare';
 
 export interface AICallControl {
   signal?: AbortSignal;
@@ -61,5 +62,5 @@ export interface AIConfig {
   /** Schedule non-critical work within the host lifecycle (for example waitUntil). */
   backgroundExecutor?: (promise: Promise<unknown>) => void;
   aiGatewayUrl?: string;
-  aiBinding?: any;
+  aiBinding?: CloudflareAIBinding;
 }
