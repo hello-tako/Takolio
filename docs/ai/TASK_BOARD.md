@@ -1,39 +1,55 @@
-# payOS billing recovery release - 2026-10-13 JST
+# payOS production acceptance complete - 2026-10-13 JST
 
-**Status:** STAGING_VERIFIED_PRODUCTION_WAITING_REVIEW. PR74 merged as
-3a24808b97838235596a43694013e74b1ba64cc2. Source branch05e413df; exact main
-CI38272622426 and PR CI38271394292 PASS338files/8055tests plus lint/types/
-migration-smoke/build. Local pnpm check and separate paired planner/T20 build
-PASS; synthetic desktop1280/mobile390 review PASS without horizontal overflow.
+**Status:** PRODUCTION_PAID_ACCEPTANCE_VERIFIED_PRICES_RESTORED.
+PR74 is merged as 3a24808b97838235596a43694013e74b1ba64cc2.
+Exact main CI38272622426 and PR CI38271394292 PASS: 338 files / 8,055
+tests, lint, typechecks, migration smoke and build. Local full pnpm check and
+separate paired planner/T20 build PASS. No new migration in PR74.
 
-**Delivered code:** owner-only billing/account snapshot, latest20 transactions,
-current package/expiry/renewal, saved pending QR reopening after app reload, and
-session fences on reads/actions. Atomic owner admission prevents duplicate
-outstanding orders across tabs/keys/old clients; original issued prices remain
-frozen. A verified paid webhook with its stored reference allows renewal even
-when the create response was lost; other uncertainty stays blocked. Guest Home
-and Planner prompt sign-in instead of calling registered-only APIs. No migration.
+**Released:** protected staging38273790273 and production38274253206 both
+SUCCESS attempt1. Actual mandatory reviewer approved production. Immutable
+candidate, exact-head CI, 41 migrations, matching D1 identity, catalog500/no
+fallback, paired planner/T20 flags, exact runtime/assets/service-worker SHA and
+three ordinary/revalidated SW observations PASS. No rollback; upload succeeded
+on attempt1. Final production Worker ded100e7-98ae-4c83-aab5-94342daa06a3,
+deployment56b74111-0bf8-44db-ac79-a15e28f80f27, 100% traffic.
 
-**Live:** protected staging38273790273 PASS attempt1: exact Worker/assets/sw SHA,
-D1catalog500/no fallback, paired planner/T20true, matching D1/origin/keys. Admission
-secret enabled on staging after proof; signed200/invalid401/malformed400/
-oversized413/unauth401 callback matrix PASS. Stage temporary price stays absent.
-Production still b7358ea4. New production38274253206 release gate PASS; deploy
-waits for mandatory reviewer vn-taphoanhatung (CLIhello-tako cannot approve).
-The owner received the exact run link and review screenshot; approval requested.
+**Delivered:** shared UI navigation; owner-only billing account, package status,
+expiry/renewal, latest20 transactions and persisted pending QR recovery after
+reload. Atomic owner admission blocks duplicate outstanding orders across keys,
+tabs and old clients. Session fences protect account changes. Guests see login
+CTAs for registered-only Home/Planner. Verified paid/lost-create-response race
+allows renewal; other uncertainty remains blocked. Issued prices stay frozen.
 
-**Limitations/next:** finish protected production, re-prove exact runtime/assets,
-then bulk set CHECKOUT_ADMISSION_ENABLED=true and PAYOS_TEST_MONTHLY_PRICE_VND=2000
-on frigo. Create an actual owned2000VND QR and verify close/reload/reopen sameorder
-and history. Owner performs transfer; require providerPAID/2000 and owned app
-paid/Plus/expiry after reload before deleting the temporary price secret to restore
-49000. No fake callback, direct grant or agent bank transfer. Earlier49000VND QR
-now shows server-confirmed expired; never ask owner to pay it. Existing OAuth
-can read/manageWorker but readonlyD1query failed7403; use authenticated owned API
-plus provider proof, without expanding permissions. Private temporary keys remain
-for final probes and must be truncated before final evidence export.
+**Actual acceptance:** after protected release, admission enabled on both Workers.
+Production temporary monthly2000VND offer was issued by the real authenticated
+app. QR decoded/CRC/fields matched, payOS initially PENDING/0. Closing modal,
+reloading and opening history restored the same order/instructions with no new
+history row; source resume path does not create a provider order. Owner performed
+the real bank transfer. Provider PAID/amountPaid2000/reference-present verified;
+owned live history shows paid and Plus active after reload with expiry
+2026-11-12T18:31:14.000Z, consistent with 31 days from the free/null baseline.
+No manual grant, fabricated settlement callback or agent bank transfer occurred.
+
+**Restoration/security:** deleted production PAYOS_TEST_MONTHLY_PRICE_VND secret.
+Fresh Worker metadata confirms absence; authenticated UI confirms monthly49000,
+annual499000, paid2000 history and the same Plus expiry. Staging never received
+the price override. Admission/payOS secrets retained. Callback security matrix
+PASS: signed unmapped registration200, invalid401, malformed400, oversized413,
+unauthenticated creation401. Four private temporary key files truncated to zero
+bytes with0600 retained; fresh cleanup receipt saved outside the repository.
+
+**Evidence/limits:** user-facing report/evidence and screenshots are in the chat
+outputs directory; operational receipts are outside the repo under work/.
+Provider proof and authenticated UI proof are separate. Direct D1 SELECT is not
+permitted by current OAuth (7403); no raw D1 query or provider-reference join is
+claimed. Reviewed CONFIG_RECIPE_CATALOG_D1_AUTHORITY informational warning remains;
+config/database/queue readiness PASS. No requested billing work remains pending.
+Production URL: https://frigo.tungjpstore.net/plus.
 
 ---
+
+## Historical checkpoints
 
 # payOS billing account, QR recovery and temporary offer - 2026-10-13 JST
 
