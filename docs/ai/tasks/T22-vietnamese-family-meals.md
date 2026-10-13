@@ -3,6 +3,7 @@
 Status: LOCAL_IMPLEMENTED_VERIFIED (2026-10-13).
 Branch: codex/vietnamese-family-meals-20261013.
 Base: 332a24f468d5360b6cefc57b9451228585457131.
+Implementation checkpoint: 6b63606d97bb2c9009d620c18c3d91aec76d4870.
 ADR: ADR-058 in DECISIONS.md.
 
 ## Authorized Outcome

@@ -3,7 +3,7 @@
 **Status:** LOCAL_IMPLEMENTED_VERIFIED. Branch
 codex/vietnamese-family-meals-20261013; base
 332a24f468d5360b6cefc57b9451228585457131. Implementation checkpoint
-pending first implementation checkpoint. Active packet tasks/T22-vietnamese-family-meals.md;
+6b63606d97bb2c9009d620c18c3d91aec76d4870. Active packet tasks/T22-vietnamese-family-meals.md;
 accepted architecture ADR-058. No push, merge, remote migration or deployment.
 
 **Implemented:** whole-week Vietnamese-first family lunch/dinner compositions;
