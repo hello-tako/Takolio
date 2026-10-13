@@ -142,6 +142,8 @@ describe('Rebuilt recipe preparation', () => {
         name: 'Trứng',
         quantity: 2,
         unit: 'piece',
+        ingredientId: 'CHICKEN_EGG',
+        sourceRecipeId: 'eggs',
         sourceRecipeTitle: recipe.title,
       }),
     );
@@ -187,6 +189,8 @@ describe('Rebuilt recipe preparation', () => {
         name: 'Trứng',
         quantity: 2,
         unit: 'piece',
+        ingredientId: 'CHICKEN_EGG',
+        sourceRecipeId: 'eggs',
         sourceRecipeTitle: 'eggs',
       });
     },

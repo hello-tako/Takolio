@@ -23,8 +23,11 @@ import type { MealPlanDto } from '../../../../packages/domain/src/meal-planning-
 import { Card } from '../../components/common/Card';
 import { Button } from '../../components/common/Button';
 import { mealCompositionApi } from '../../services/meal-composition';
-import { mealPlanningApi } from '../../services/meal-planning';
+import { SaveRecipeButton } from '../../components/common/SaveRecipeButton';
 import { CompositionLoadState } from './CompositionLoadState';
+import { MealTimeNotice } from './MealTimeNotice';
+import { compositionState, compositionStateCopy } from './composition-state';
+import { FamilyPlanNotice } from './FamilyPlanNotice';
 import { ComponentPicker } from './ComponentPicker';
 import { compositionCopy, componentTitle, roleLabel, usePlanCompositions } from './composition';
 import type { PlannerLocale } from './copy';
@@ -51,7 +54,11 @@ export function MealComposer({
   const c = compositionCopy[locale];
   const ownQuery = usePlanCompositions(plan, !loaded);
   const query = loaded ?? ownQuery;
-  const composition = query.data?.compositions.find((entry) => entry.slotId === slotId);
+  const matchingCompositions =
+    query.data?.planId === plan.id && query.data.planRevision === plan.revision;
+  const composition = matchingCompositions
+    ? query.data?.compositions.find((entry) => entry.slotId === slotId)
+    : undefined;
   const [picker, setPicker] = useState<Picker | null>(null);
   const [proposal, setProposal] = useState<AssistProposalDto | null>(null);
   const [options, setOptions] = useState<AutoOptionsDto | null>(null);
@@ -75,7 +82,7 @@ export function MealComposer({
     setProposal(null);
     setOptions(null);
     // Server revision moved: reload the authoritative plan (the composition query is keyed by revision).
-    await model.perform('refresh', () => mealPlanningApi.get(plan.id), model.replacePlan);
+    await model.perform('refresh', () => model.loadPlan(plan.id), model.replacePlan);
   }
 
   function choose(item: PickerItemDto, role: MealRole) {
@@ -90,6 +97,7 @@ export function MealComposer({
           revision: plan.revision,
           target,
           role: permitted,
+          locked: true,
         }),
       );
     } else {
@@ -123,6 +131,15 @@ export function MealComposer({
         {c.heading}
       </h3>
       <p className="text-xs text-semantic-text-muted mt-1">{c.editHint}</p>
+      <p className="planning-composer-state" role="status">
+        {compositionStateCopy[locale][compositionState(composition)]}
+      </p>
+      <FamilyPlanNotice
+        plan={plan}
+        familyPlan={model.familyPlan}
+        warnings={composition.warnings}
+        locale={locale}
+      />
       <p role="status" aria-live="polite" className="sr-only">
         {message}
       </p>
@@ -169,7 +186,8 @@ export function MealComposer({
           />
         ))}
       </ol>
-      {[...composition.missingRoles, ...composition.recommendedRoles].slice(0, 2).map((role) => (
+      <MealTimeNotice warnings={composition.warnings} locale={locale} />
+      {[...new Set([...composition.missingRoles, ...composition.recommendedRoles])].map((role) => (
         <div
           key={role}
           className="mt-3 rounded-xl bg-takosan-mint/60 p-3 flex flex-wrap items-center justify-between gap-2"
@@ -369,9 +387,22 @@ function ComponentRow({
           )}
         </Button>
       </div>
+      <div className="planning-component-primary-actions">
+        <Button
+          size="sm"
+          variant="outline"
+          disabled={disabled}
+          aria-label={`${c.swapDish}: ${title}`}
+          onClick={onSwap}
+        >
+          <RefreshCw size={14} className="mr-1" />
+          {c.swapDish}
+        </Button>
+        {component.recipeId && <SaveRecipeButton recipeId={component.recipeId} title={title} />}
+      </div>
       <details className="mt-2 group">
         <summary className="text-xs text-takosan-green-deep underline cursor-pointer min-h-11 inline-flex items-center">
-          {c.swapDish} · {c.remove} · {c.role}
+          {c.remove} · {c.role} · {locale === 'vi' ? 'Sắp xếp' : 'Reorder'}
         </summary>
         <div className="flex flex-wrap items-center gap-2 mt-2">
           {component.permittedRoles.length > 1 && (
@@ -393,16 +424,6 @@ function ComponentRow({
               </select>
             </label>
           )}
-          <Button
-            size="sm"
-            variant="outline"
-            disabled={disabled}
-            aria-label={`${c.swapDish}: ${title}`}
-            onClick={onSwap}
-          >
-            <RefreshCw size={14} className="mr-1" />
-            {c.swapDish}
-          </Button>
           <Button
             size="sm"
             variant="ghost"

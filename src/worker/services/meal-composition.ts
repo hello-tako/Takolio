@@ -1,6 +1,8 @@
 import type { z } from 'zod';
 import type { D1DatabaseBinding } from '../../../packages/db/src/index';
 import { getGeneratedMealPlan, type GeneratedMealPlanRecord } from '../../../packages/db/src/meal-planning';
+import { readFamilyPreferences } from '../../../packages/db/src/family-preferences';
+import { readFamilyPlanMetadata } from '../../../packages/db/src/family-meal-planning';
 import { loadRankingContext } from '../../../packages/db/src/personalization';
 import {
   readPlanCompositions,
@@ -70,7 +72,8 @@ import {
   type ProjectionSlot,
 } from '../../../packages/recipes/src/composition/projection';
 import { legacyFamilyRestrictions, recipeRestrictions, simpleFoodRestrictions } from '../../../packages/recipes/src/composition/restrictions';
-import { composeMeal, type ComposedOption, type ComposerFixed } from '../../../packages/recipes/src/composition/composer';
+import { familyInternationalCapExceeded, familyMealRoles, planFamilyMeals } from '../../../packages/recipes/src/composition/family-planner';
+import { scoreComposition, composeMeal, type ComposedOption, type ComposerFixed } from '../../../packages/recipes/src/composition/composer';
 import { evaluationFromCandidate, prepareComposerCandidates } from '../../../packages/recipes/src/composition/candidates';
 import { canonicalJson, readPlanningContext } from '../../../packages/recipes/src/planner-context';
 import { resolveRankingPreferences } from '../../../packages/recipes/src/personalization';
@@ -142,11 +145,14 @@ export class MealCompositionService {
     private readonly recipeAuthority: (scope: Scope) => Promise<RecipeAuthoritySnapshot>) {}
 
   // ------------------------------------------------------------------------ context
-  async load(scope: Scope, planId: string) {
+  async load(scope: Scope, planId: string, fenceMode: 'none' | 'family' | 'all' = 'none') {
     const row = await getGeneratedMealPlan(this.db, scope, planId);
     const stored = this.planner.decode(row);
     const now = this.planner.nowIso();
-    const { snapshot, authority } = await this.planner.snapshotWithAuthority(scope, now);
+    const familyMetadata = await readFamilyPlanMetadata(this.db, scope, planId);
+    const fenced = fenceMode === 'all' || (fenceMode === 'family' && familyMetadata !== null)
+      ? await this.planner.snapshotWithPlanningFences(scope, now) : null;
+    const { snapshot, authority } = fenced ?? await this.planner.snapshotWithAuthority(scope, now);
     const roles = roleIndexFor(authority, await persistedRoles(this.db, authority));
     const compositions = await readPlanCompositions(this.db, scope, planId);
     const slots = this.slots(stored);
@@ -154,7 +160,9 @@ export class MealCompositionService {
     // One trusted T04 context per request: Auto candidates, Manual restrictions and the shopping
     // projection all read the same catalog, substitution policy and evidence provider from it.
     const context = this.planner.planningContext(snapshot, referenceInstant);
-    return { row, stored, now, snapshot, authority, roles, compositions, slots, referenceInstant,
+    const planningProfile = fenced?.profile ?? (familyMetadata ? await this.planner.familyProfile(scope) : null);
+    return { row, stored, now, snapshot, authority, roles, familyMetadata, planningFence: fenced?.fence ?? null,
+      transactionFences: fenced?.transactionFences ?? [], planningProfile, compositions, slots, referenceInstant,
       referenceDate: referenceInstant.slice(0, 10), context, evaluation: evaluationScope(context) };
   }
 
@@ -237,10 +245,41 @@ export class MealCompositionService {
 
   private dto(loaded: Loaded, slot: SlotInfo, composition: MealComposition, projection: CompositionProjection | null): MealCompositionDto {
     const items = composition.components.map((component) => componentItem(component, loaded.roles));
-    const required = missingRoles(slot.mealType, items, 'required');
+    const required = loaded.familyMetadata ? familyMealRoles(slot.mealType, loaded.familyMetadata.policy.mealStyle)
+      .filter((role) => !items.some((item) => item.role === role)) : missingRoles(slot.mealType, items, 'required');
     const warnings = new Set<string>(compatibilityIssues(items));
     const meal = loaded.stored.result.meals.find((entry) => entry.slotId === slot.slotId);
     if (composition.source === 'v1_projection' && meal?.source.kind === 'family') warnings.add('LEGACY_FAMILY_MEAL');
+    if (loaded.familyMetadata && projection) {
+      for (const component of composition.components.filter((entry) => entry.locked)) {
+        const inventory = projection.inventoryBeforeComponents.get(component.id);
+        if (!inventory || this.restrictionReasons(loaded, slot, component.recipeId
+          ? { kind: 'recipe', recipeId: component.recipeId } : { kind: 'simple_food', simpleFoodId: component.simpleFoodId! }, inventory).length) {
+          warnings.add('LOCKED_COMPONENT_REQUIRES_REVALIDATION');
+        }
+      }
+    }
+    if (loaded.familyMetadata) {
+      const hardLimits = resolveRankingPreferences(readPlanningContext(this.scopedContext(loaded, slot)).rankingContext).hard
+        .flatMap((policy) => policy.hardMaxTimeMinutes === undefined ? [] : [policy.hardMaxTimeMinutes]);
+      const minutes = composition.components.map((component) => {
+        if (component.simpleFoodId) return getSimpleFood(component.simpleFoodId)?.prepMinutes ?? null;
+        const definition = loaded.snapshot.catalog.recipes.find((entry) => entry.id === component.recipeId);
+        return definition?.prepTimeMinutes === undefined ? null : definition.prepTimeMinutes + definition.cookTimeMinutes;
+      });
+      const unknownTime = minutes.some((value) => value === null);
+      const totalTime = minutes.reduce((sum: number, value) => sum + (value ?? 0), 0);
+      const preferredTime = slot.preferredTimeMinutes ?? loaded.planningProfile?.preferences.preferredTimeMinutes;
+      if (unknownTime) warnings.add('MEAL_TIME_UNKNOWN');
+      else if (preferredTime !== undefined && totalTime > preferredTime) warnings.add('MEAL_TIME_ABOVE_PREFERENCE');
+      if (hardLimits.length && (unknownTime || totalTime > Math.min(...hardLimits))) warnings.add('MEAL_TIME_REQUIRES_REVALIDATION');
+      const isInternationalMain = (component: MealComponent) => component.role === 'main' && component.recipeId !== null
+        && loaded.authority.findById(component.recipeId) !== null && loaded.authority.findById(component.recipeId)?.cuisine !== 'vietnamese';
+      const internationalDates = loaded.slots.flatMap(entry => (entry.slotId === slot.slotId
+        ? composition.components : this.compositionFor(loaded, entry.slotId).components).filter(isInternationalMain).map(() => entry.date));
+      if (composition.components.some(isInternationalMain) && familyInternationalCapExceeded(internationalDates, slot.date,
+        loaded.planningProfile!.preferences.internationalMealsPerWeek)) warnings.add('PRESERVED_INTERNATIONAL_CAP_EXCEEDED');
+    }
     const components = composition.components.map((component) => {
       const resolvable = component.kind === 'simple_food' ? getSimpleFood(component.simpleFoodId!) !== undefined
         : this.visible(loaded, component.recipeId);
@@ -263,7 +302,7 @@ export class MealCompositionService {
     return {
       slotId: slot.slotId, date: slot.date, mealType: slot.mealType, servings: slot.servings, source: composition.source,
       mode: composition.mode, components, missingRoles: required,
-      recommendedRoles: missingRoles(slot.mealType, items, 'recommended').filter((role) => !required.includes(role)),
+      recommendedRoles: loaded.familyMetadata ? [] : missingRoles(slot.mealType, items, 'recommended').filter((role) => !required.includes(role)),
       warnings: [...warnings].sort(),
     };
   }
@@ -301,9 +340,12 @@ export class MealCompositionService {
   // ------------------------------------------------------------------------ reads
   async compositions(scope: Scope, planId: string) {
     const loaded = await this.load(scope, planId);
-    const all = this.allCompositions(loaded);
-    const projection = this.projection(loaded, all);
-    return PlanCompositionsDtoSchema.parse({ schemaVersion: 1, planId, planRevision: loaded.row.revision,
+    return this.compositionsFromLoaded(loaded);
+  }
+
+  compositionsFromLoaded(loaded: Loaded) {
+    const all = this.allCompositions(loaded); const projection = this.projection(loaded, all);
+    return PlanCompositionsDtoSchema.parse({ schemaVersion: 1, planId: loaded.row.id, planRevision: loaded.row.revision,
       compositions: loaded.slots.map((slot) => this.dto(loaded, slot, all.get(slot.slotId)!, projection)) });
   }
 
@@ -349,7 +391,7 @@ export class MealCompositionService {
   private async mutate(scope: Scope, planId: string, slotId: string, revision: number, mode: CompositionMode,
     event: string, operation: (composition: MealComposition, context: CompositionContext, loaded: Loaded) => MealComponent[]) {
     const started = Date.now();
-    const loaded = await this.load(scope, planId);
+    const loaded = await this.load(scope, planId, 'family');
     const slot = await this.checkedSlot(loaded, scope, planId, slotId, revision);
     this.assertEditable(loaded, slot);
     const current = this.compositionFor(loaded, slotId);
@@ -420,10 +462,24 @@ export class MealCompositionService {
         }
       }
     }
+    const hardLimits = resolveRankingPreferences(readPlanningContext(this.scopedContext(loaded, slot)).rankingContext).hard
+      .flatMap((policy) => policy.hardMaxTimeMinutes === undefined ? [] : [policy.hardMaxTimeMinutes]);
+    const hardMaxTimeMinutes = hardLimits.length ? Math.min(...hardLimits) : undefined;
+    if (loaded.familyMetadata && changed && hardMaxTimeMinutes !== undefined) {
+      const minutes = components.map((component) => {
+        if (component.simpleFoodId) return getSimpleFood(component.simpleFoodId)?.prepMinutes ?? null;
+        const recipe = loaded.snapshot.catalog.recipes.find((entry) => entry.id === component.recipeId);
+        return recipe?.prepTimeMinutes === undefined ? null : recipe.prepTimeMinutes + recipe.cookTimeMinutes;
+      });
+      if (minutes.some((value) => value === null) || minutes.reduce((sum: number, value) => sum + (value ?? 0), 0) > hardMaxTimeMinutes) {
+        throw new MealPlanningError('HARD_CONSTRAINT_CONFLICT', 422, 'The full meal exceeds its time limit or has unknown preparation time');
+      }
+    }
     const existing = loaded.compositions.get(slotId);
     const write: CompositionSlotWrite = { slotId, mode, createdRevision: existing?.createdRevision ?? revision + 1,
       createdAt: existing?.createdAt ?? null, components };
-    const row = await writePlanCompositions(this.db, scope, { planId, expectedRevision: revision, slots: [write] });
+    const row = await writePlanCompositions(this.db, scope, { planId, expectedRevision: revision, slots: [write],
+      additionalStatements: loaded.transactionFences });
     logEvent(event, { mode, component_count: components.length, duration_ms: Date.now() - started });
     const next: MealComposition = { slotId, source: 'v2', mode, components };
     return this.slotDto({ ...loaded, row }, slot, this.allCompositions(loaded, next), row.revision);
@@ -479,6 +535,57 @@ export class MealCompositionService {
     const removed = current.components.filter((item) => !kept.includes(item)).map((item) => item.id);
     const all = this.allCompositions(loaded);
     const projection = this.projection(loaded, all, slot.slotId);
+    const metadata = await readFamilyPlanMetadata(this.db, { householdId: loaded.row.householdId, userId: loaded.row.creatorUserId }, loaded.row.id);
+    if (metadata) {
+      const profile = loaded.planningProfile ?? await readFamilyPreferences(this.db, { householdId: loaded.row.householdId, userId: loaded.row.creatorUserId });
+      const generatedInternationalDates = loaded.slots.filter((entry) => entry.slotId !== slot.slotId).flatMap((entry) =>
+        (all.get(entry.slotId)?.components ?? []).filter((component) => component.role === 'main' && component.recipeId
+          && loaded.authority.findById(component.recipeId) !== null && loaded.authority.findById(component.recipeId)?.cuisine !== 'vietnamese')
+          .map(() => entry.date));
+      const scoped = readPlanningContext(this.scopedContext(loaded, slot));
+      const inventory = (projection.inventoryAtStop ?? []).map(({ initialQuantity: _initial, consumedQuantity: _consumed, ...row }) => row);
+      const context = this.planner.planningContext({ ...loaded.snapshot, inventory }, loaded.referenceInstant,
+        scoped.rankingContext);
+      const planning = planFamilyMeals({ context, request: { startDate: slot.date, horizonDays: 1, defaultServings: slot.servings,
+        mode: loaded.stored.intent.mode, slots: [{ date: slot.date, mealType: slot.mealType, sequence: Number(slot.slotId.split(':').at(-1)),
+          time: loaded.stored.intent.slots.find((entry) => entry.date === slot.date && entry.mealType === slot.mealType)?.time,
+          hardMaxTimeMinutes: slot.hardMaxTimeMinutes, preferredTimeMinutes: slot.preferredTimeMinutes }] },
+        preferences: profile.preferences, generatedInternationalDates, variant,
+        roles: loaded.roles, runtimeRecipes: loaded.authority.list(), revision: loaded.row.revision + 1,
+        locked: new Map([[slot.slotId, kept]]) });
+      const options = await Promise.all(planning.alternativeMeals.slice(0, kind === 'auto' ? 3 : 1).map(async (meals) => {
+        const chosen = meals[0];
+        const sequential = projectCompositions({ scope: evaluationScope(context), referenceDate: loaded.referenceDate, inventory,
+          slots: [{ ...slot, components: chosen.components }], inventoryCheckpointComponentIds: new Set(chosen.components.map((component) => component.id)) });
+        const items: ComposedOption['items'] = chosen.components.map((component) => {
+          const food = component.simpleFoodId ? getSimpleFood(component.simpleFoodId) : undefined;
+          const definition = component.recipeId ? loaded.snapshot.catalog.recipes.find((recipe) => recipe.id === component.recipeId)
+            : food ? simpleFoodDefinition(food) : null;
+          const evaluation = definition ? evaluateDefinition(evaluationScope(context), definition,
+            sequential.inventoryBeforeComponents.get(component.id) ?? [], slot.date, slot.servings) : null;
+          const minutes = food ? food.prepMinutes : definition?.prepTimeMinutes === undefined ? null
+            : definition.prepTimeMinutes + definition.cookTimeMinutes;
+          const common = { ...evaluationFromCandidate(evaluation, minutes), key: targetKey(component), kind: component.kind,
+            id: (component.recipeId ?? component.simpleFoodId)!, title: this.title(loaded, component),
+            traits: component.recipeId ? loaded.roles.get(component.recipeId)?.traits ?? [] : [],
+            dominantIngredientId: component.recipeId ? loaded.roles.get(component.recipeId)?.dominantIngredientId ?? null : null };
+          const existing = kept.find((entry) => entry.id === component.id);
+          return existing ? { role: component.role, fixed: { ...common, componentId: component.id, role: component.role, locked: component.locked }, candidate: null }
+            : { role: component.role, fixed: null, candidate: { ...common, roles: [component.role], preference: 0.5 } };
+        });
+        const missing = new Set(items.flatMap((item) => (item.fixed ?? item.candidate)!.missingIngredientIds));
+        const option: ComposedOption = { items, unfilledRoles: chosen.missingRoles, score: scoreComposition(slot.mealType, items), explanations: [
+          { code: missing.size ? 'EXTRA_INGREDIENTS' : 'NO_EXTRA_PURCHASES', count: missing.size, role: null },
+          ...chosen.missingRoles.map((role) => ({ code: 'ROLE_UNFILLED' as const, count: null, role })),
+          ...(kept.some((component) => component.locked) ? [{ code: 'LOCKED_PRESERVED' as const, count: kept.filter((component) => component.locked).length, role: null }] : []),
+        ] };
+        const optionId = await this.optionId(loaded, slot.slotId, kind, action, variant, option);
+        return { option, optionId };
+      }));
+      return { options, removed, budget: { anchorsConsidered: options.length,
+        candidatesConsidered: options.reduce((count, entry) => count + entry.option.items.length, 0),
+        partialsExplored: planning.evaluations, scoringOperations: planning.evaluations, exhausted: planning.searchLimited } };
+    }
     const fixed = this.fixedFor(loaded, slot, kept, projection.inventoryAtStop);
     const rolesToFill = missingRoles(slot.mealType, fixed.map((item) => ({ key: item.key, kind: item.kind, id: item.id,
       role: item.role, traits: item.traits, dominantIngredientId: item.dominantIngredientId })), 'recommended');
@@ -519,7 +626,7 @@ export class MealCompositionService {
   }
 
   private async prepareGeneration(scope: Scope, planId: string, slotId: string, revision: number) {
-    const loaded = await this.load(scope, planId);
+    const loaded = await this.load(scope, planId, 'family');
     const slot = await this.checkedSlot(loaded, scope, planId, slotId, revision);
     this.assertEditable(loaded, slot);
     this.assertComposable(loaded, slotId, this.compositionFor(loaded, slotId));
@@ -569,10 +676,16 @@ export class MealCompositionService {
     const chosen = generated.options.find((entry) => entry.optionId === optionId);
     if (!chosen) throw new MealPlanningError('PROPOSAL_STALE', 409, 'The suggestion is no longer current; request a new one');
     return this.mutate(scope, planId, slotId, revision, mode, kind === 'auto' ? 'composition_auto_generated' : 'composition_assisted_update',
-      (composition, context) => applyGenerated(composition, { removeIds: generated.removed, provenance: mode,
+      (composition, context, currentLoaded) => {
+        if (loaded.familyMetadata && (canonicalJson(loaded.planningFence) !== canonicalJson(currentLoaded.planningFence)
+          || canonicalJson(loaded.snapshot.fingerprint) !== canonicalJson(currentLoaded.snapshot.fingerprint))) {
+          throw new MealPlanningError('PROPOSAL_STALE', 409, 'Planning inputs changed; request a new suggestion');
+        }
+        return applyGenerated(composition, { removeIds: generated.removed, provenance: mode,
         additions: chosen.option.items.filter((item) => item.candidate).map((item) => ({ role: item.role,
           target: item.candidate!.kind === 'recipe' ? { kind: 'recipe' as const, recipeId: item.candidate!.id }
-            : { kind: 'simple_food' as const, simpleFoodId: item.candidate!.id } })) }, context));
+            : { kind: 'simple_food' as const, simpleFoodId: item.candidate!.id } })) }, context);
+      });
   }
 
   async assistApply(scope: Scope, planId: string, slotId: string, input: z.infer<typeof AssistApplySchema>) {
@@ -589,7 +702,7 @@ export class MealCompositionService {
 
   // ------------------------------------------------------------------------ picker
   async picker(scope: Scope, query: { role?: MealRole; cuisine?: string; q?: string; cursor?: string; limit?: string;
-    kind?: 'recipe' | 'simple_food' }) {
+    kind?: 'recipe' | 'simple_food'; savedOnly?: 'true' }) {
     const authority = await this.recipeAuthority(scope);
     const context = await loadRankingContext(this.db, scope, this.planner.nowIso());
     const roles = roleIndexFor(authority, await persistedRoles(this.db, authority));
@@ -598,9 +711,14 @@ export class MealCompositionService {
     const needle = query.q ? normalizeText(query.q) : '';
     const matches = (title: string) => !needle || normalizeText(title).includes(needle);
     const constraintState = safetyRequested ? 'unknown' as const : 'none_requested' as const;
+    const saved = query.savedOnly ? await this.db.prepare('SELECT recipe_id FROM saved_recipe_entries WHERE user_id = ? AND is_saved = 1')
+      .bind(scope.userId).all<{ recipe_id: string }>() : null;
+    if (saved && !saved.success) throw new Error('Saved recipes lookup failed');
+    const savedIds = saved ? new Set(saved.results.map((entry) => entry.recipe_id)) : null;
     const items: PickerItemDto[] = [];
     if (query.kind !== 'simple_food') {
       for (const recipe of authority.list()) {
+        if (savedIds && !savedIds.has(recipe.id)) continue;
         const profile = roles.get(recipe.id);
         if (!profile || (query.role && !profile.roles.includes(query.role)) || !matches(recipe.title)) continue;
         if (query.cuisine && recipe.cuisine !== query.cuisine) continue;
@@ -611,7 +729,7 @@ export class MealCompositionService {
       }
     }
     // Simple foods carry no cuisine metadata, so a cuisine filter excludes them rather than guessing one.
-    if (query.kind !== 'recipe' && !query.cuisine) {
+    if (query.kind !== 'recipe' && !query.cuisine && !query.savedOnly) {
       for (const food of SIMPLE_FOODS) {
         if ((query.role && !food.roles.includes(query.role)) || !(matches(food.title.vi) || matches(food.title.en))) continue;
         if (!simpleFoodRestrictions(food, hard).allowed) continue;
@@ -651,6 +769,51 @@ export class MealCompositionService {
       }
     }
     return compositionShoppingSnapshot(loaded.stored.shoppingPlan, projection, slots);
+  }
+
+  async shoppingDemand(scope: Scope, planId: string, expectedRevision: number) {
+    const loaded = await this.load(scope, planId, 'all'); this.planner.assertRevision(loaded.row, expectedRevision);
+    const freshness = await this.planner.freshness(loaded.row, loaded.snapshot);
+    const metadata = await readFamilyPlanMetadata(this.db, scope, planId);
+    const profile = metadata ? await readFamilyPreferences(this.db, scope) : null;
+    if (metadata && profile && (metadata.profileRevision !== profile.revision
+      || metadata.profileFingerprint !== await sha256Hex(canonicalJson(profile.preferences)))) {
+      throw new MealPlanningError('PLAN_REVALIDATION_REQUIRED', 409, 'Family preferences changed; regenerate the plan');
+    }
+    if (freshness.status !== 'fresh') throw new MealPlanningError('PLAN_REVALIDATION_REQUIRED', 409, 'Regenerate the plan before updating shopping');
+    const compositions = this.allCompositions(loaded); const projection = this.projection(loaded, compositions);
+    const rows: Array<{ ingredientId: string; name: string; quantity: number | null; unit: string; slotId: string; date: string;
+      mealType: MealType; componentId: string; recipeId: string | null; title: string; optional: boolean }> = [];
+    const flags = new Set<string>();
+    for (const slot of loaded.slots) {
+      const composition = compositions.get(slot.slotId)!;
+      const family = this.legacyFamily(loaded, composition);
+      const components = family ? [family] : composition.components;
+      for (const component of components) {
+        const evaluation = projection.components.get(component.id);
+        if (!evaluation) throw new Error('Missing composition demand evaluation');
+        if (evaluation.status === 'unavailable') throw new MealPlanningError('COMPOSITION_REVALIDATION_REQUIRED', 409, 'A dish is no longer available');
+        if (evaluation.status === 'not_tracked') flags.add('UNTRACKED_COMPONENT');
+        const title = component.kind === 'legacy_family' ? loaded.stored.result.meals.find((meal) => meal.slotId === slot.slotId)?.title ?? component.id
+          : this.title(loaded, component as MealComponent);
+        for (const shortage of evaluation.shortages) {
+          if (shortage.missingQuantity === 0) continue;
+          const definition = component.recipeId ? loaded.snapshot.catalog.recipes.find((recipe) => recipe.id === component.recipeId) : undefined;
+          const name = definition?.ingredients.find((line) => line.ingredientId === shortage.ingredientId)?.name ?? shortage.ingredientId;
+          rows.push({ ingredientId: shortage.ingredientId, name, quantity: shortage.missingQuantity, unit: shortage.unit, slotId: slot.slotId,
+            date: slot.date, mealType: slot.mealType, componentId: component.id, recipeId: component.recipeId, title, optional: shortage.isOptional });
+        }
+      }
+    }
+    const fence = loaded.planningFence!;
+    this.planner.assertRevision(await getGeneratedMealPlan(this.db, scope, planId), expectedRevision);
+    return { planRevision: loaded.row.revision, freshness, rows, flags: [...flags].sort(), transactionFences: loaded.transactionFences,
+      inventoryWitness: loaded.snapshot.inventory.map((lot) => ({ id: lot.id, version: lot.version, quantity: lot.quantity, unit: lot.unit })),
+      preferenceWitness: { memberJson: fence.memberJson, householdJson: fence.householdJson, profileRevision: fence.profileRevision },
+      witness: {
+      inventory: loaded.snapshot.inventory.map((lot) => ({ id: lot.id, version: lot.version, quantity: lot.quantity, unit: lot.unit })),
+      fingerprints: loaded.snapshot.fingerprint.parts, profileRevision: profile?.revision ?? null, profileFingerprint: metadata?.profileFingerprint ?? null,
+    } };
   }
 
   /**

@@ -1,3 +1,41 @@
+# T22 family meal, profile and shopping semantics - 2026-10-13
+
+A family meal is a collection of components, rather than only its V1 anchor.
+Default lunch/dinner includes main, vegetable/side, soup and staple; an explicit
+quick style uses main/vegetable/staple. Breakfast and one-pot use their own main
+eligibility. Completeness means these roles are present and resolvable; it does
+not certify clinical nutrition, authenticity or unknown safety metadata.
+
+FamilyPreferences is member-scoped and revisioned: household size, regions,
+preferred cuisines, international meals per week, style, cooking days/meal types,
+soft desired time and shopping cadence. An explicit save updates the existing
+T03 soft preferences. Hard allergens/forbidden ingredients hydrate from T03 and
+survive saves unless explicitly changed. Household hard policies still apply.
+Regions are soft preferences from catalog metadata; common Vietnamese dishes and
+rice may repeat. International generated mains require an explicit cuisine choice
+and calendar seven-day allowance. Manual locked choices remain visible separately.
+
+Whole-meal hard time uses conservative summed known prep/cook durations and
+rejects missing time data; desired time is a soft preference with truthful
+warnings. Locks preserve component identities and serving changes cannot silently
+rescale locked selections. Every generated/replanned slot uses sequential stock
+projection, without modifying physical inventory.
+
+Saved recipes are private canonical recipe identities with CAS revisions and
+unsaved tombstones. The active recipe authority determines availability and picker
+roles; an unavailable saved entry can still be removed. Saving never inserts or
+authors a global recipe. Session changes fence browser writes and cached results.
+
+Shared shopping is a purchase checklist independent from projected demand. Only
+compatible exact units aggregate; unknown quantities remain unresolved and never
+become a fabricated one. Sources retain selected dishes/dates/component identities.
+Updating demand preserves manual rows, checked state and explicit purchase edits.
+Deleting a generated row dismisses it for subsequent updates of that same plan.
+Command replay returns its original receipt without recomputing or duplicating
+rows. Checking bought and cannot-buy presentation do not import or consume stock.
+
+---
+
 # UI10 Week view and completion semantics (ADR-053)
 
 Week setup contains meal preset, budget, one to three priorities and shopping

@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { Plus, Trash2, ShoppingBag, ArrowRight } from 'lucide-react';
+import { Plus, Trash2, ShoppingBag, ArrowRight, Pencil, X } from 'lucide-react';
 import { KitchenHeader, KitchenPageHeading } from '../components/common/KitchenHeader';
 import { Button } from '../components/common/Button';
 import { ConfirmDialog } from '../components/common/ConfirmDialog';
 import { InlineError } from '../components/common/AsyncState';
+import { useModalFocus } from '../design-system/use-modal-focus';
 import { shoppingApi, type ShoppingInput, type ShoppingItem } from '../services/shopping';
 import { ApiError, createClientItemId } from '../services/http';
 import { queryKeys } from '../lib/queryKeys';
@@ -14,10 +15,8 @@ import { parseShoppingForm, SHOPPING_UNITS, shoppingQuantity } from '../lib/shop
 export const ShoppingPage: React.FC = () => {
   const client = useQueryClient();
   const shoppingKey = queryKeys.shoppingList();
-  // A separate key keeps the source envelope out of existing array consumers.
-  const snapshotKey = [...shoppingKey, 'snapshot'];
   const query = useQuery({
-    queryKey: snapshotKey,
+    queryKey: [...shoppingKey, 'snapshot'],
     queryFn: shoppingApi.getShoppingListSnapshot,
     retry: false,
   });
@@ -28,15 +27,15 @@ export const ShoppingPage: React.FC = () => {
   const [attempt, setAttempt] = useState<ShoppingInput | null>(null);
   const [invalid, setInvalid] = useState(false);
   const [removing, setRemoving] = useState<ShoppingItem | null>(null);
+  const [editing, setEditing] = useState<ShoppingItem | null>(null);
   const [receipt, setReceipt] = useState('');
-  const nameRef = useRef<HTMLInputElement>(null);
   const errorRef = useRef<HTMLDivElement>(null);
   const refresh = () => client.invalidateQueries({ queryKey: shoppingKey });
   const accept = (result: { pendingSync?: boolean }) => {
     setReceipt(
       result.pendingSync
         ? 'Đã lưu trên thiết bị, đang chờ đồng bộ. Máy chủ có thể chưa nhận thay đổi.'
-        : 'Máy chủ đã nhận thay đổi.',
+        : 'Đã cập nhật danh sách của gia đình.',
     );
     return refresh();
   };
@@ -54,12 +53,23 @@ export const ShoppingPage: React.FC = () => {
   });
   const toggle = useMutation({
     mutationFn: ({ id, checked }: { id: string; checked: boolean }) =>
-      shoppingApi.toggleShoppingItem(id, checked),
+      shoppingApi.updateShoppingItem(id, {
+        isChecked: checked,
+        ...(checked ? { cannotBuy: false } : {}),
+      }),
+    onSuccess: accept,
+  });
+  const cannotBuy = useMutation({
+    mutationFn: ({ id, unavailable }: { id: string; unavailable: boolean }) =>
+      shoppingApi.updateShoppingItem(id, {
+        cannotBuy: unavailable,
+        ...(unavailable ? { isChecked: false } : {}),
+      }),
     onSuccess: accept,
   });
   const remove = useMutation({ mutationFn: shoppingApi.deleteShoppingItem, onSuccess: accept });
-  const busy = add.isPending || toggle.isPending || remove.isPending;
-  const mutationError = add.error ?? toggle.error ?? remove.error;
+  const busy = add.isPending || toggle.isPending || remove.isPending || cannotBuy.isPending;
+  const mutationError = add.error ?? toggle.error ?? remove.error ?? cannotBuy.error;
   useEffect(() => {
     if (invalid || mutationError) {
       errorRef.current?.focus();
@@ -79,6 +89,7 @@ export const ShoppingPage: React.FC = () => {
     add.reset();
     toggle.reset();
     remove.reset();
+    cannotBuy.reset();
     setReceipt('');
   }
   function submit(event: React.FormEvent) {
@@ -97,6 +108,108 @@ export const ShoppingPage: React.FC = () => {
   }
   const remaining = items.filter((item) => !item.isChecked);
   const checked = items.filter((item) => item.isChecked);
+  function row(item: ShoppingItem) {
+    const sources = item.contributions ?? [];
+    const titles = [...new Set(sources.map((source) => source.title))];
+    return (
+      <li
+        key={item.id}
+        className={`shopping-saved-row ${item.isChecked ? 'is-checked' : ''} ${item.cannotBuy ? 'is-unavailable' : ''}`}
+      >
+        <label className="shopping-check-label">
+          <input
+            type="checkbox"
+            checked={item.isChecked}
+            disabled={busy}
+            aria-label={`Đã mua: ${item.name}`}
+            onChange={(event) => {
+              clearErrors();
+              toggle.mutate({ id: item.id, checked: event.target.checked });
+            }}
+          />
+          <span>
+            <strong>{item.name}</strong>
+            <span className="shopping-row-quantity">
+              {shoppingQuantity(item.quantity, item.unit)}
+              {item.quantityOverridden && ' · lượng đã chỉnh'}
+            </span>
+            {titles.length > 0 ? (
+              <span className="shopping-row-source">
+                Cho {titles.slice(0, 2).join(', ')}
+                {titles.length > 2 && ` và ${titles.length - 2} món khác`}
+              </span>
+            ) : (
+              item.sourceRecipeTitle && (
+                <span className="shopping-row-source">Cho {item.sourceRecipeTitle}</span>
+              )
+            )}
+            {item.pendingSync && <span className="shopping-pending-label">Chờ đồng bộ</span>}
+            {item.cannotBuy && (
+              <span className="shopping-unavailable-label">
+                Chưa mua được · xem bữa liên quan để đổi món
+              </span>
+            )}
+          </span>
+        </label>
+        <div className="shopping-row-actions">
+          <button
+            type="button"
+            className="planning-icon-button"
+            disabled={busy}
+            onClick={() => setEditing(item)}
+            aria-label={`Sửa số lượng: ${item.name}`}
+          >
+            <Pencil size={16} aria-hidden="true" />
+          </button>
+          <button
+            type="button"
+            className="planning-icon-button"
+            disabled={busy}
+            onClick={() => setRemoving(item)}
+            aria-label={`Xóa khỏi danh sách: ${item.name}`}
+          >
+            <Trash2 size={16} aria-hidden="true" />
+          </button>
+        </div>
+        {sources.length > 0 && (
+          <details className="shopping-source-details">
+            <summary>Xem bữa dùng nguyên liệu này</summary>
+            <ul>
+              {sources.map((source, index) => (
+                <li key={`${source.slotId}:${source.componentId}:${index}`}>
+                  <Link to={`/planner/${source.planId}/meal/${encodeURIComponent(source.slotId)}`}>
+                    {source.date} ·{' '}
+                    {source.mealType === 'breakfast'
+                      ? 'Sáng'
+                      : source.mealType === 'lunch'
+                        ? 'Trưa'
+                        : 'Tối'}{' '}
+                    · {source.title}
+                  </Link>
+                  <span>
+                    {source.quantity === null
+                      ? 'Lượng chưa rõ'
+                      : shoppingQuantity(source.quantity, source.unit)}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </details>
+        )}
+        <button
+          type="button"
+          className="shopping-cannot-buy"
+          disabled={busy}
+          onClick={() => {
+            clearErrors();
+            cannotBuy.mutate({ id: item.id, unavailable: !item.cannotBuy });
+          }}
+        >
+          {item.cannotBuy ? 'Bỏ dấu chưa mua được' : 'Chưa mua được'}
+        </button>
+      </li>
+    );
+  }
   return (
     <div className="shopping-workspace">
       <KitchenHeader backTo="/" />
@@ -104,7 +217,7 @@ export const ShoppingPage: React.FC = () => {
         <KitchenPageHeading
           eyebrow="TAKOSAN · ĐI CHỢ"
           title="Mua đủ cho bữa ngon."
-          description="Danh sách của gia đình. Ghi món cần mua, đánh dấu khi đã có."
+          description="Những thứ cần mua cho bữa nhà. Chỉnh lượng theo quầy hàng rồi đánh dấu khi đã mua."
           action={
             <Link to="/planner" className="planning-text-link">
               Xem thực đơn <ArrowRight size={18} aria-hidden="true" />
@@ -113,21 +226,20 @@ export const ShoppingPage: React.FC = () => {
         />
         <div className="saved-shopping-layout">
           <aside className="shopping-add-panel planning-paper">
-            <p className="planning-eyebrow">THÊM VÀO DANH SÁCH</p>
-            <h2>Mình cần mua gì?</h2>
+            <p className="planning-eyebrow">THÊM MÓN NGOÀI THỰC ĐƠN</p>
+            <h2>Mình cần mua thêm gì?</h2>
             <form onSubmit={submit} className="shopping-add-form">
               <fieldset disabled={busy || !!attempt}>
                 <label>
                   Tên nguyên liệu
                   <input
-                    ref={nameRef}
                     name="shopping-name"
                     autoComplete="off"
                     required
                     maxLength={100}
                     value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder="Ví dụ: nấm, hành tím…"
+                    onChange={(event) => setName(event.target.value)}
+                    placeholder="Ví dụ: trái cây, sữa…"
                   />
                 </label>
                 <div className="shopping-amount-fields">
@@ -142,7 +254,7 @@ export const ShoppingPage: React.FC = () => {
                       step="any"
                       required
                       value={quantity}
-                      onChange={(e) => setQuantity(e.target.value)}
+                      onChange={(event) => setQuantity(event.target.value)}
                     />
                   </label>
                   <label>
@@ -150,7 +262,7 @@ export const ShoppingPage: React.FC = () => {
                     <select
                       name="shopping-unit"
                       value={unit}
-                      onChange={(e) => setUnit(e.target.value)}
+                      onChange={(event) => setUnit(event.target.value)}
                     >
                       {SHOPPING_UNITS.map((entry) => (
                         <option key={entry.value} value={entry.value}>
@@ -163,8 +275,7 @@ export const ShoppingPage: React.FC = () => {
               </fieldset>
               {attempt && !busy && (
                 <p className="planning-note">
-                  Thử lại đúng món và số lượng vừa gửi để tránh thêm trùng. Bản nháp này chưa được
-                  giữ khi tải lại trang.
+                  Thử lại đúng món và lượng vừa gửi để tránh thêm trùng.
                 </p>
               )}
               <Button
@@ -178,8 +289,7 @@ export const ShoppingPage: React.FC = () => {
               </Button>
             </form>
             <p className="planning-note">
-              Đánh dấu đã mua chỉ cập nhật danh sách. Thêm thực phẩm vào tủ lạnh qua bước quét hoặc
-              nhập riêng.
+              Đánh dấu đã mua chỉ cập nhật danh sách. Khi về nhà, quét hoặc nhập thực phẩm vào tủ.
             </p>
             <Link to="/scan" className="planning-text-link">
               Quét thực phẩm đã mua <ArrowRight size={16} aria-hidden="true" />
@@ -188,17 +298,16 @@ export const ShoppingPage: React.FC = () => {
           <section className="shopping-saved-list" aria-labelledby="saved-list-heading">
             <div className="shopping-list-heading">
               <div>
-                <p className="planning-eyebrow">DANH SÁCH ĐÃ LƯU</p>
+                <p className="planning-eyebrow">DANH SÁCH CỦA GIA ĐÌNH</p>
                 <h2 id="saved-list-heading">
                   Cần mua <span>{remaining.length}</span>
                 </h2>
               </div>
-              <p>{checked.length} đã đánh dấu</p>
+              <p>{checked.length} đã mua</p>
             </div>
             {query.data?.source === 'device' && (
               <p role="status" className="planning-notice">
-                Đang xem danh sách trên thiết bị. Đây chưa phải xác nhận dữ liệu mới nhất từ máy
-                chủ.
+                Đang xem bản lưu trên thiết bị; thay đổi sẽ đồng bộ khi có kết nối.
               </p>
             )}
             {(invalid || mutationError) && (
@@ -219,60 +328,67 @@ export const ShoppingPage: React.FC = () => {
               <p role="status" className="planning-paper">
                 Đang tải danh sách đi chợ…
               </p>
-            ) : items.length === 0 ? (
-              <div className="shopping-empty planning-paper">
-                <ShoppingBag size={36} aria-hidden="true" />
-                <h3>Danh sách đang trống</h3>
-                <p>Thêm nguyên liệu cần mua hoặc chọn phần thiếu từ một công thức.</p>
-                <Link to="/recipes" className="planning-text-link">
-                  Tìm món cho bữa tới <ArrowRight size={16} aria-hidden="true" />
-                </Link>
-              </div>
             ) : (
               <>
-                <ul className="shopping-item-list">
-                  {[...remaining, ...checked].map((item) => (
-                    <li
-                      key={item.id}
-                      className={`shopping-saved-row ${item.isChecked ? 'is-checked' : ''}`}
-                    >
-                      <label className="shopping-check-label">
-                        <input
-                          type="checkbox"
-                          checked={item.isChecked}
-                          disabled={busy}
-                          onChange={(e) => {
-                            clearErrors();
-                            toggle.mutate({ id: item.id, checked: e.target.checked });
-                          }}
-                        />
-                        <span>
+                {remaining.length ? (
+                  <ul className="shopping-item-list">{remaining.map(row)}</ul>
+                ) : (
+                  <div className="shopping-empty planning-paper">
+                    <ShoppingBag size={32} aria-hidden="true" />
+                    <h3>
+                      {items.length
+                        ? 'Đã mua xong các dòng có lượng'
+                        : 'Chưa có nguyên liệu cần mua'}
+                    </h3>
+                    <p>Lên thực đơn để Takosan gom nguyên liệu của mọi món vào danh sách.</p>
+                    <Link to="/planner" className="planning-text-link">
+                      Lên thực đơn <ArrowRight size={16} aria-hidden="true" />
+                    </Link>
+                  </div>
+                )}
+                {(query.data?.unresolvedItems ?? []).length > 0 && (
+                  <section className="shopping-unresolved">
+                    <h3>Cần kiểm tra lượng trước khi mua</h3>
+                    <p>
+                      Công thức còn thiếu lượng hoặc đơn vị chưa đổi được. Những dòng này chưa có số
+                      lượng mua.
+                    </p>
+                    <ul>
+                      {query.data?.unresolvedItems?.map((item) => (
+                        <li key={`${item.ingredientId}:${item.unit}`}>
                           <strong>{item.name}</strong>
-                          <span className="shopping-row-quantity">
-                            {shoppingQuantity(item.quantity, item.unit)}
-                          </span>
-                          {item.sourceRecipeTitle && (
-                            <span className="planning-note">
-                              Từ công thức: {item.sourceRecipeTitle}
-                            </span>
+                          <span> Lượng chưa rõ</span>
+                          {item.contributions.length > 0 && (
+                            <details className="shopping-source-details shopping-unresolved-sources">
+                              <summary>
+                                Xem{' '}
+                                {new Set(item.contributions.map((source) => source.slotId)).size}{' '}
+                                bữa liên quan
+                              </summary>
+                              <div className="shopping-unresolved-links">
+                                {item.contributions.map((source, index) => (
+                                  <Link
+                                    className="planning-text-link"
+                                    key={`${source.slotId}:${index}`}
+                                    to={`/planner/${source.planId}/meal/${encodeURIComponent(source.slotId)}`}
+                                  >
+                                    {source.title} · {source.date}
+                                  </Link>
+                                ))}
+                              </div>
+                            </details>
                           )}
-                          {item.pendingSync && (
-                            <span className="shopping-pending-label">Chờ đồng bộ</span>
-                          )}
-                        </span>
-                      </label>
-                      <button
-                        type="button"
-                        className="planning-icon-button"
-                        disabled={busy}
-                        onClick={() => setRemoving(item)}
-                        aria-label={`Xóa khỏi danh sách: ${item.name}`}
-                      >
-                        <Trash2 size={18} aria-hidden="true" />
-                      </button>
-                    </li>
-                  ))}
-                </ul>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                )}
+                {checked.length > 0 && (
+                  <details className="shopping-bought">
+                    <summary>Đã mua · {checked.length} dòng</summary>
+                    <ul className="shopping-item-list">{checked.map(row)}</ul>
+                  </details>
+                )}
               </>
             )}
           </section>
@@ -297,6 +413,110 @@ export const ShoppingPage: React.FC = () => {
           }
         }}
       />
+      {editing && (
+        <ShoppingEditDialog
+          item={editing}
+          onClose={() => setEditing(null)}
+          onSaved={async (result) => {
+            setEditing(null);
+            await accept(result);
+          }}
+        />
+      )}
     </div>
   );
 };
+
+function ShoppingEditDialog({
+  item,
+  onClose,
+  onSaved,
+}: {
+  item: ShoppingItem;
+  onClose: () => void;
+  onSaved: (result: { pendingSync: boolean }) => void;
+}) {
+  const panel = useRef<HTMLDivElement>(null);
+  const [name, setName] = useState(item.name);
+  const [quantity, setQuantity] = useState(String(item.quantity));
+  const [unit, setUnit] = useState(item.unit);
+  const [invalid, setInvalid] = useState(false);
+  const save = useMutation({
+    mutationFn: (input: NonNullable<ReturnType<typeof parseShoppingForm>>) =>
+      shoppingApi.updateShoppingItem(item.id, input),
+    onSuccess: onSaved,
+  });
+  useModalFocus(true, panel, () => {
+    if (!save.isPending) onClose();
+  });
+  return (
+    <div className="planning-picker fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-semantic-overlay/50">
+      <div
+        ref={panel}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="shopping-edit-title"
+        className="family-dialog"
+      >
+        <div className="family-dialog-heading">
+          <h2 id="shopping-edit-title">Chỉnh món cần mua</h2>
+          <Button variant="ghost" aria-label="Đóng" disabled={save.isPending} onClick={onClose}>
+            <X size={20} aria-hidden="true" />
+          </Button>
+        </div>
+        <form
+          className="family-settings-form"
+          onSubmit={(event) => {
+            event.preventDefault();
+            const parsed = parseShoppingForm(name, quantity, unit);
+            setInvalid(!parsed);
+            if (parsed) save.mutate(parsed);
+          }}
+        >
+          <fieldset disabled={save.isPending}>
+            <label>
+              Tên nguyên liệu
+              <input
+                required
+                value={name}
+                maxLength={100}
+                onChange={(event) => setName(event.target.value)}
+              />
+            </label>
+            <div className="family-field-pair">
+              <label>
+                Số lượng
+                <input
+                  type="number"
+                  step="any"
+                  min={Number.MIN_VALUE}
+                  required
+                  value={quantity}
+                  onChange={(event) => setQuantity(event.target.value)}
+                />
+              </label>
+              <label>
+                Đơn vị
+                <select value={unit} onChange={(event) => setUnit(event.target.value)}>
+                  {SHOPPING_UNITS.map((entry) => (
+                    <option key={entry.value} value={entry.value}>
+                      {entry.label}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+          </fieldset>
+          {item.generated && (
+            <p className="planning-note">Lượng bạn chỉnh được giữ khi cập nhật lại thực đơn.</p>
+          )}
+          {invalid && <p role="alert">Nhập tên và số lượng lớn hơn 0.</p>}
+          {save.isError && <InlineError error={save.error} />}
+          <Button type="submit" fullWidth isLoading={save.isPending}>
+            Lưu lượng cần mua
+          </Button>
+        </form>
+      </div>
+    </div>
+  );
+}

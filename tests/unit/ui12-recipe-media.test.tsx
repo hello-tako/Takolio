@@ -1,4 +1,6 @@
 // @vitest-environment jsdom
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { MemoryRouter } from 'react-router-dom';
 import { act } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
@@ -119,13 +121,13 @@ describe('UI12 native kitchen cards and compatibility', () => {
       const onClick = vi.fn();
       await act(async () =>
         root.render(
-          <RecipeCard
+          <QueryClientProvider client={new QueryClient({defaultOptions:{queries:{retry:false}}})}><MemoryRouter><RecipeCard
             kitchen
             variant={variant}
             headingLevel={3}
             matchResult={item}
             onClick={onClick}
-          />,
+          /></MemoryRouter></QueryClientProvider>,
         ),
       );
       expect(host.querySelector('h3')?.textContent).toBe(item.recipe.title);
@@ -140,7 +142,7 @@ describe('UI12 native kitchen cards and compatibility', () => {
     async (modifier) => {
       const onClick = vi.fn();
       await act(async () =>
-        root.render(<RecipeCard kitchen matchResult={discoveryRecipes(1)[0]} onClick={onClick} />),
+        root.render(<QueryClientProvider client={new QueryClient({defaultOptions:{queries:{retry:false}}})}><MemoryRouter><RecipeCard kitchen matchResult={discoveryRecipes(1)[0]} onClick={onClick} /></MemoryRouter></QueryClientProvider>),
       );
       const click = new MouseEvent('click', { bubbles: true, cancelable: true, [modifier]: true });
       // Prevent jsdom navigation only after checking the component's default-prevented state.

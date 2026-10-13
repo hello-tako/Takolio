@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef, useState } from 'react';
-import { Search, X } from 'lucide-react';
+import { Heart, Search, X } from 'lucide-react';
 import type {
   MealRole,
   PickerCuisine,
@@ -37,9 +37,10 @@ export function ComponentPicker({
   const panel = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLInputElement>(null);
   const [role, setRole] = useState<MealRole | ''>(initialRole ?? '');
-  const [cuisine, setCuisine] = useState<PickerCuisine | ''>('');
+  const [cuisine, setCuisine] = useState<PickerCuisine | ''>('vietnamese');
+  const [source, setSource] = useState<'catalog' | 'saved'>('catalog');
   const [query, setQuery] = useState('');
-  const filterKey = JSON.stringify([role, cuisine, query.trim()]);
+  const filterKey = JSON.stringify([role, cuisine, source, query.trim()]);
   const requestId = useRef(0);
   const [results, setResults] = useState<{
     key: string;
@@ -74,6 +75,7 @@ export function ComponentPicker({
         q: query.trim() || undefined,
         cursor: reset ? undefined : (from ?? undefined),
         limit: '20',
+        savedOnly: source === 'saved' ? 'true' : undefined,
       });
       if (id !== requestId.current) return;
       setResults((prior) => ({
@@ -95,10 +97,10 @@ export function ComponentPicker({
       window.clearTimeout(timer);
       requestId.current++;
     };
-  }, [role, cuisine, query]);
+  }, [role, cuisine, source, query]);
   const filtered = !!(role || cuisine || query.trim());
   function clearFilters() {
-    setRole('');
+    setRole(initialRole ?? '');
     setCuisine('');
     setQuery('');
     searchRef.current?.focus();
@@ -123,6 +125,26 @@ export function ComponentPicker({
             </Button>
           </div>
           {!!mutationError && <PlannerError error={mutationError} locale={locale} focus />}
+          <div
+            className="planning-picker-tabs"
+            aria-label={locale === 'vi' ? 'Nguồn chọn món' : 'Dish source'}
+          >
+            <button
+              type="button"
+              aria-pressed={source === 'catalog'}
+              onClick={() => setSource('catalog')}
+            >
+              {locale === 'vi' ? 'Khám phá món' : 'Explore dishes'}
+            </button>
+            <button
+              type="button"
+              aria-pressed={source === 'saved'}
+              onClick={() => setSource('saved')}
+            >
+              <Heart size={15} aria-hidden="true" />
+              {locale === 'vi' ? 'Món đã lưu' : 'Saved dishes'}
+            </button>
+          </div>
           <div className="space-y-2">
             <label className="relative block">
               <span className="sr-only">{c.search}</span>
@@ -148,6 +170,7 @@ export function ComponentPicker({
                 <span className="sr-only">{c.role}</span>
                 <select
                   value={role}
+                  disabled={!!initialRole}
                   onChange={(event) => setRole(event.target.value as MealRole | '')}
                   className="w-full min-h-11 rounded-xl border border-semantic-border px-3 text-sm bg-white"
                 >

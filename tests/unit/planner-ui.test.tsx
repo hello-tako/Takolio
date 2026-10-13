@@ -364,7 +364,8 @@ describe('shopping, budget and uncertainty rendering', () => {
     contains(summary, copy[locale].completeTotal);
     contains(html, '2 × 300 g');
     contains(html, `${copy[locale].surplus}: 80 g`);
-    expect(html).toMatch(/<label[^>]*><input type="checkbox"/);
+    expect(html).not.toContain('type="checkbox"');
+    contains(html, locale === 'vi' ? 'đánh dấu đã mua trong danh sách dùng chung.' : 'mark purchases in the shared list.');
     contains(html, copy[locale].checklistNote);
     expect(html).not.toContain('checked=""');
   });

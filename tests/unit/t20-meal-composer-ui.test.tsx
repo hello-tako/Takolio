@@ -5,11 +5,24 @@ import { MemoryRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { MealPlanDtoSchema, type MealPlanDto } from '../../packages/domain/src/meal-planning-api';
-import { PlanCompositionsDtoSchema, type PlanCompositionsDto } from '../../packages/domain/src/meal-composition-api';
+import { FamilyMealPlanDtoSchema } from '../../packages/domain/src/family-meal-planning-api';
+import {
+  PlanCompositionsDtoSchema,
+  type PlanCompositionsDto,
+} from '../../packages/domain/src/meal-composition-api';
 
 const api = vi.hoisted(() => ({
-  plan: vi.fn(), add: vi.fn(), swap: vi.fn(), update: vi.fn(), remove: vi.fn(), assist: vi.fn(), assistApply: vi.fn(),
-  auto: vi.fn(), autoApply: vi.fn(), picker: vi.fn(), get: vi.fn(),
+  plan: vi.fn(),
+  add: vi.fn(),
+  swap: vi.fn(),
+  update: vi.fn(),
+  remove: vi.fn(),
+  assist: vi.fn(),
+  assistApply: vi.fn(),
+  auto: vi.fn(),
+  autoApply: vi.fn(),
+  picker: vi.fn(),
+  get: vi.fn(),
 }));
 vi.mock('../../src/web/services/meal-composition', () => ({ mealCompositionApi: api }));
 vi.mock('../../src/web/services/meal-planning', () => ({ mealPlanningApi: { get: api.get } }));
@@ -25,42 +38,154 @@ const slotId = `${date}:dinner:0`;
 const instant = `${date}T18:00:00.000Z`;
 
 const RECIPE_SOURCE = { kind: 'recipe', id: 'pho-bo', version: 1, variantId: null };
-const FAMILY_SOURCE = { kind: 'family', id: 'stir-fry', version: 3, variantId: 'family:stir-fry:v3:[]' };
+const FAMILY_SOURCE = {
+  kind: 'family',
+  id: 'stir-fry',
+  version: 3,
+  variantId: 'family:stir-fry:v3:[]',
+};
 
 function plan(revision = 4, source: Record<string, unknown> = RECIPE_SOURCE): MealPlanDto {
   return MealPlanDtoSchema.parse({
-    schemaVersion: 1, id: planId, householdId: 'house-ui', revision, createdAt: instant, updatedAt: instant,
-    intent: { startDate: date, horizonDays: 1, utcOffsetMinutes: 0, defaultServings: 2, mode: 'shopping_allowed', slots: [{ date, mealType: 'dinner' }] },
-    result: { status: 'feasible', conclusion: 'feasible', planningReference: { instant, localDate: date, utcOffsetMinutes: 0 },
-      meals: [{ slotId, date, mealType: 'dinner', time: '18:00', instant, servings: 2, candidateId: 'c',
-        source, title: 'Phở bò', cuisine: null, prepTimeMinutes: null,
-        cookTimeMinutes: 40, instructions: [], requirements: [], reasons: [], safetyAssessment: 'not_requested', projectedConsumption: [] }],
-      unplannedSlots: [], search: { exhaustive: true, plannerExhaustive: true, recipeExhaustive: true, truncated: false, limitReasons: [],
-        incompleteReasons: [], rejections: [] }, diagnostics: [] },
-    freshness: { status: 'fresh', reasons: [], checkedAt: instant, requiresRevalidationBeforeConsumption: true },
+    schemaVersion: 1,
+    id: planId,
+    householdId: 'house-ui',
+    revision,
+    createdAt: instant,
+    updatedAt: instant,
+    intent: {
+      startDate: date,
+      horizonDays: 1,
+      utcOffsetMinutes: 0,
+      defaultServings: 2,
+      mode: 'shopping_allowed',
+      slots: [{ date, mealType: 'dinner' }],
+    },
+    result: {
+      status: 'feasible',
+      conclusion: 'feasible',
+      planningReference: { instant, localDate: date, utcOffsetMinutes: 0 },
+      meals: [
+        {
+          slotId,
+          date,
+          mealType: 'dinner',
+          time: '18:00',
+          instant,
+          servings: 2,
+          candidateId: 'c',
+          source,
+          title: 'Phở bò',
+          cuisine: null,
+          prepTimeMinutes: null,
+          cookTimeMinutes: 40,
+          instructions: [],
+          requirements: [],
+          reasons: [],
+          safetyAssessment: 'not_requested',
+          projectedConsumption: [],
+        },
+      ],
+      unplannedSlots: [],
+      search: {
+        exhaustive: true,
+        plannerExhaustive: true,
+        recipeExhaustive: true,
+        truncated: false,
+        limitReasons: [],
+        incompleteReasons: [],
+        rejections: [],
+      },
+      diagnostics: [],
+    },
+    freshness: {
+      status: 'fresh',
+      reasons: [],
+      checkedAt: instant,
+      requiresRevalidationBeforeConsumption: true,
+    },
   });
 }
 
 function compositions(revision = 4): PlanCompositionsDto {
-  const component = (id: string, title: string, role: string, extra: Record<string, unknown>) => ({ id, title, role, ordinal: 0, locked: false,
-    provenance: 'manual', recipeId: null, simpleFoodId: null, permittedRoles: [role], cookable: false, resolvable: true, cookTimeMinutes: 10,
-    createdRevision: 1, updatedRevision: 1, projection: { status: 'covered', missingCount: 0, inventoryLineCount: 1 }, ...extra });
-  return PlanCompositionsDtoSchema.parse({ schemaVersion: 1, planId, planRevision: revision, compositions: [{
-    slotId, date, mealType: 'dinner', servings: 2, source: 'v2', mode: 'manual', missingRoles: [], recommendedRoles: ['soup'], warnings: [],
-    components: [
-      component('v1.x', 'Phở bò', 'main', { kind: 'recipe', recipeId: 'pho-bo', provenance: 'legacy_v1', permittedRoles: ['main'], cookable: true }),
-      component('c-rice', 'Cơm trắng', 'staple', { kind: 'simple_food', simpleFoodId: 'sf-steamed-rice', ordinal: 1, locked: true,
-        permittedRoles: ['staple', 'simple_food'] }),
-    ] }] });
+  const component = (id: string, title: string, role: string, extra: Record<string, unknown>) => ({
+    id,
+    title,
+    role,
+    ordinal: 0,
+    locked: false,
+    provenance: 'manual',
+    recipeId: null,
+    simpleFoodId: null,
+    permittedRoles: [role],
+    cookable: false,
+    resolvable: true,
+    cookTimeMinutes: 10,
+    createdRevision: 1,
+    updatedRevision: 1,
+    projection: { status: 'covered', missingCount: 0, inventoryLineCount: 1 },
+    ...extra,
+  });
+  return PlanCompositionsDtoSchema.parse({
+    schemaVersion: 1,
+    planId,
+    planRevision: revision,
+    compositions: [
+      {
+        slotId,
+        date,
+        mealType: 'dinner',
+        servings: 2,
+        source: 'v2',
+        mode: 'manual',
+        missingRoles: [],
+        recommendedRoles: ['soup'],
+        warnings: [],
+        components: [
+          component('v1.x', 'Phở bò', 'main', {
+            kind: 'recipe',
+            recipeId: 'pho-bo',
+            provenance: 'legacy_v1',
+            permittedRoles: ['main'],
+            cookable: true,
+          }),
+          component('c-rice', 'Cơm trắng', 'staple', {
+            kind: 'simple_food',
+            simpleFoodId: 'sf-steamed-rice',
+            ordinal: 1,
+            locked: true,
+            permittedRoles: ['staple', 'simple_food'],
+          }),
+        ],
+      },
+    ],
+  });
 }
 
 function model(current: MealPlanDto) {
   return {
-    query: {} as never, plan: current, busy: null, error: null, refreshed: false, replacePlan: vi.fn(), requestKey: vi.fn(),
+    query: {} as never,
+    plan: current,
+    busy: null,
+    error: null,
+    refreshed: false,
+    replacePlan: vi.fn(),
+    requestKey: vi.fn(),
     retireRequestKey: vi.fn(),
-    perform: vi.fn(async (_label: string, operation: () => Promise<unknown>, accept?: (value: unknown) => void) => {
-      const result = await operation(); accept?.(result); return result;
-    }),
+    loadPlan: api.get,
+    regenerate: vi.fn(),
+    generate: vi.fn(),
+    perform: vi.fn(
+      async (
+        _label: string,
+        operation: () => Promise<unknown>,
+        accept?: (value: unknown) => void,
+      ) => {
+        const result = await operation();
+        accept?.(result);
+        return result;
+      },
+    ),
   };
 }
 
@@ -85,29 +210,104 @@ afterEach(async () => {
 
 async function render(node: React.ReactNode) {
   const client = new QueryClient({ defaultOptions: { queries: { retry: false } } });
-  await act(async () => root.render(<QueryClientProvider client={client}><MemoryRouter>{node}</MemoryRouter></QueryClientProvider>));
+  await act(async () =>
+    root.render(
+      <QueryClientProvider client={client}>
+        <MemoryRouter>{node}</MemoryRouter>
+      </QueryClientProvider>,
+    ),
+  );
   await settle();
 }
 async function settle(ms = 0) {
-  for (let index = 0; index < 5; index++) await act(async () => { await new Promise((resolve) => setTimeout(resolve, ms)); });
+  for (let index = 0; index < 5; index++)
+    await act(async () => {
+      await new Promise((resolve) => setTimeout(resolve, ms));
+    });
 }
-const byLabel = (label: string) => [...document.querySelectorAll<HTMLElement>('button, select, input, a')]
-  .find((element) => (element.getAttribute('aria-label') ?? element.textContent?.trim()) === label)!;
+const byLabel = (label: string) =>
+  [...document.querySelectorAll<HTMLElement>('button, select, input, a')].find(
+    (element) => (element.getAttribute('aria-label') ?? element.textContent?.trim()) === label,
+  )!;
 /** Control whose wrapping <label> carries the given (visually hidden) accessible name. */
-const labelled = (name: string) => [...document.querySelectorAll('label > span.sr-only')]
-  .find((span) => span.textContent === name)!.parentElement!;
+const labelled = (name: string) =>
+  [...document.querySelectorAll('label > span.sr-only')].find((span) => span.textContent === name)!
+    .parentElement!;
 const selectNamed = (name: string) => labelled(name).querySelector('select')!;
 const inputNamed = (name: string) => labelled(name).querySelector('input')!;
 async function setValue(element: HTMLInputElement | HTMLSelectElement, value: string) {
-  const proto = element instanceof HTMLSelectElement ? HTMLSelectElement.prototype : HTMLInputElement.prototype;
+  const proto =
+    element instanceof HTMLSelectElement ? HTMLSelectElement.prototype : HTMLInputElement.prototype;
   await act(async () => {
     Object.getOwnPropertyDescriptor(proto, 'value')!.set!.call(element, value);
-    element.dispatchEvent(new Event(element instanceof HTMLSelectElement ? 'change' : 'input', { bubbles: true }));
+    element.dispatchEvent(
+      new Event(element instanceof HTMLSelectElement ? 'change' : 'input', { bubbles: true }),
+    );
   });
 }
-const debounce = () => act(async () => { await new Promise((resolve) => setTimeout(resolve, 250)); });
+const debounce = () =>
+  act(async () => {
+    await new Promise((resolve) => setTimeout(resolve, 250));
+  });
 
 describe('T20 Meal composer UI', () => {
+  it.each([
+    ['MEAL_TIME_UNKNOWN', 'Chưa đủ dữ liệu để ước tính thời gian chuẩn bị và nấu cả bữa.', 'vi'],
+    ['MEAL_TIME_ABOVE_PREFERENCE', 'Bữa này có thể cần nhiều thời gian hơn mức bạn đã chọn.', 'vi'],
+    [
+      'LOCKED_MEAL_TIME_REQUIRES_REVALIDATION',
+      'Các món đã khoá cần được kiểm tra lại với giới hạn thời gian của gia đình.',
+      'vi',
+    ],
+    [
+      'MEAL_TIME_REQUIRES_REVALIDATION',
+      'Cần kiểm tra lại thời gian chuẩn bị và nấu cả bữa với giới hạn của gia đình.',
+      'vi',
+    ],
+    [
+      'MEAL_TIME_UNKNOWN',
+      'There is not enough data to estimate prep and cooking time for the whole meal.',
+      'en',
+    ],
+    ['MEAL_TIME_ABOVE_PREFERENCE', 'This meal may take longer than your chosen time.', 'en'],
+  ] as const)(
+    'shows %s visibly in both the board and meal editor (%s)',
+    async (code, message, locale) => {
+      const current = plan();
+      const dto = compositions();
+      dto.compositions[0].warnings = [code];
+      api.plan.mockResolvedValue(dto);
+      const m = model(current);
+      await render(
+        <>
+          <PlannerWeek plan={current} model={m as never} locale={locale} />
+          <MealComposer plan={current} slotId={slotId} model={m as never} locale={locale} />
+        </>,
+      );
+      const notices = [...container.querySelectorAll('.planning-meal-time-note')];
+      expect(notices).toHaveLength(2);
+      for (const notice of notices) {
+        expect(notice.textContent).toBe(message);
+        expect(notice.getAttribute('aria-hidden')).not.toBe('true');
+        expect(notice.classList.contains('sr-only')).toBe(false);
+      }
+      expect(container.textContent).not.toContain(code);
+      expect(container.textContent).not.toMatch(/40 (minutes|phút)/);
+    },
+  );
+
+  it('shows one useful whole-meal time warning when several diagnostics apply', async () => {
+    const current = plan();
+    const dto = compositions();
+    dto.compositions[0].warnings = ['MEAL_TIME_UNKNOWN', 'MEAL_TIME_REQUIRES_REVALIDATION'];
+    api.plan.mockResolvedValue(dto);
+    await render(<PlannerWeek plan={current} model={model(current) as never} locale="vi" />);
+    expect(container.querySelectorAll('.planning-meal-time-note')).toHaveLength(1);
+    expect(container.querySelector('.planning-meal-time-note')?.textContent).toBe(
+      'Cần kiểm tra lại thời gian chuẩn bị và nấu cả bữa với giới hạn của gia đình.',
+    );
+  });
+
   it('renders components with accessible role labels and lock state; lock is a server mutation at the current revision', async () => {
     const current = plan();
     const m = model(current);
@@ -130,18 +330,41 @@ describe('T20 Meal composer UI', () => {
 
   it('picker is a focus-managed dialog; Escape cancels without any mutation', async () => {
     const current = plan();
-    api.picker.mockResolvedValue({ schemaVersion: 1, items: [{ kind: 'simple_food', id: 'sf-sliced-cucumber', title: 'Dưa leo thái lát',
-      roles: ['vegetable', 'side', 'simple_food'], cuisine: null, cookTimeMinutes: 5, difficulty: null, constraintState: 'none_requested' }],
-    nextCursor: null, total: 1 });
-    await render(<MealComposer plan={current} slotId={slotId} model={model(current) as never} locale="en" />);
-    await act(async () => { byLabel('Add dish').focus(); byLabel('Add dish').click(); });
+    api.picker.mockResolvedValue({
+      schemaVersion: 1,
+      items: [
+        {
+          kind: 'simple_food',
+          id: 'sf-sliced-cucumber',
+          title: 'Dưa leo thái lát',
+          roles: ['vegetable', 'side', 'simple_food'],
+          cuisine: null,
+          cookTimeMinutes: 5,
+          difficulty: null,
+          constraintState: 'none_requested',
+        },
+      ],
+      nextCursor: null,
+      total: 1,
+    });
+    await render(
+      <MealComposer plan={current} slotId={slotId} model={model(current) as never} locale="en" />,
+    );
+    await act(async () => {
+      byLabel('Add dish').focus();
+      byLabel('Add dish').click();
+    });
     const dialog = document.querySelector('[role="dialog"]')!;
     expect(dialog.getAttribute('aria-modal')).toBe('true');
     expect(document.activeElement?.getAttribute('type')).toBe('search');
-    await act(async () => { await new Promise((resolve) => setTimeout(resolve, 250)); });
+    await act(async () => {
+      await new Promise((resolve) => setTimeout(resolve, 250));
+    });
     expect(api.picker).toHaveBeenCalled();
     expect(dialog.textContent).toContain('Sliced cucumber');
-    await act(async () => { document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true })); });
+    await act(async () => {
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+    });
     expect(document.querySelector('[role="dialog"]')).toBeNull();
     expect(document.activeElement).toBe(byLabel('Add dish'));
     expect(api.add).not.toHaveBeenCalled();
@@ -149,13 +372,38 @@ describe('T20 Meal composer UI', () => {
 
   it('never exposes stale rows from a previous filter or a late load-more response', async () => {
     const replies: Array<(page: unknown) => void> = [];
-    api.picker.mockImplementation(() => new Promise((resolve) => { replies.push(resolve); }));
-    const page = (id: string, title: string, cuisine: string, nextCursor: string | null = null) => ({
-      schemaVersion: 1, items: [{ kind: 'recipe', id, title, roles: ['main'], cuisine,
-        cookTimeMinutes: 20, difficulty: 'easy', constraintState: 'none_requested' }], nextCursor, total: nextCursor ? 21 : 1,
+    api.picker.mockImplementation(
+      () =>
+        new Promise((resolve) => {
+          replies.push(resolve);
+        }),
+    );
+    const page = (
+      id: string,
+      title: string,
+      cuisine: string,
+      nextCursor: string | null = null,
+    ) => ({
+      schemaVersion: 1,
+      items: [
+        {
+          kind: 'recipe',
+          id,
+          title,
+          roles: ['main'],
+          cuisine,
+          cookTimeMinutes: 20,
+          difficulty: 'easy',
+          constraintState: 'none_requested',
+        },
+      ],
+      nextCursor,
+      total: nextCursor ? 21 : 1,
     });
     const dialog = () => document.querySelector('[role="dialog"]')!;
-    await render(<MealComposer plan={plan()} slotId={slotId} model={model(plan()) as never} locale="en" />);
+    await render(
+      <MealComposer plan={plan()} slotId={slotId} model={model(plan()) as never} locale="en" />,
+    );
     await act(async () => byLabel('Add dish').click());
     await debounce();
     expect(replies).toHaveLength(1);
@@ -182,71 +430,183 @@ describe('T20 Meal composer UI', () => {
 
   it('choosing in the picker adds a locked component at the current revision', async () => {
     const current = plan();
-    api.picker.mockResolvedValue({ schemaVersion: 1, items: [{ kind: 'recipe', id: 'canh-chua', title: 'Canh chua',
-      roles: ['soup'], cuisine: 'vietnamese', cookTimeMinutes: 30, difficulty: 'easy', constraintState: 'none_requested' }], nextCursor: null, total: 1 });
+    api.picker.mockResolvedValue({
+      schemaVersion: 1,
+      items: [
+        {
+          kind: 'recipe',
+          id: 'canh-chua',
+          title: 'Canh chua',
+          roles: ['soup'],
+          cuisine: 'vietnamese',
+          cookTimeMinutes: 30,
+          difficulty: 'easy',
+          constraintState: 'none_requested',
+        },
+      ],
+      nextCursor: null,
+      total: 1,
+    });
     api.add.mockResolvedValue({});
-    await render(<MealComposer plan={current} slotId={slotId} model={model(current) as never} locale="en" />);
+    await render(
+      <MealComposer plan={current} slotId={slotId} model={model(current) as never} locale="en" />,
+    );
     await act(async () => byLabel('Add dish').click());
-    await act(async () => { await new Promise((resolve) => setTimeout(resolve, 250)); });
+    await act(async () => {
+      await new Promise((resolve) => setTimeout(resolve, 250));
+    });
     await act(async () => byLabel('Choose: Canh chua').click());
-    expect(api.add).toHaveBeenCalledWith(planId, slotId, { revision: 4, target: { kind: 'recipe', recipeId: 'canh-chua' }, role: 'soup', locked: true });
+    expect(api.add).toHaveBeenCalledWith(planId, slotId, {
+      revision: 4,
+      target: { kind: 'recipe', recipeId: 'canh-chua' },
+      role: 'soup',
+      locked: true,
+    });
   });
 
   it('picker cuisine filter is a labelled control combined with search and role on the server query', async () => {
     const current = plan();
-    api.picker.mockResolvedValue({ schemaVersion: 1, items: [{ kind: 'recipe', id: 'tom-yum', title: 'Tom yum',
-      roles: ['soup'], cuisine: 'thai', cookTimeMinutes: 30, difficulty: 'easy', constraintState: 'none_requested' }], nextCursor: null, total: 1 });
-    await render(<MealComposer plan={current} slotId={slotId} model={model(current) as never} locale="en" />);
+    api.picker.mockResolvedValue({
+      schemaVersion: 1,
+      items: [
+        {
+          kind: 'recipe',
+          id: 'tom-yum',
+          title: 'Tom yum',
+          roles: ['soup'],
+          cuisine: 'thai',
+          cookTimeMinutes: 30,
+          difficulty: 'easy',
+          constraintState: 'none_requested',
+        },
+      ],
+      nextCursor: null,
+      total: 1,
+    });
+    await render(
+      <MealComposer plan={current} slotId={slotId} model={model(current) as never} locale="en" />,
+    );
     await act(async () => byLabel('Add dish').click());
     await debounce();
     const cuisine = selectNamed('Cuisine');
-    expect(cuisine.value).toBe('');
-    expect([...cuisine.options].map((option) => option.textContent))
-      .toEqual(['All cuisines', 'Vietnamese', 'Korean', 'Japanese', 'Chinese', 'Thai', 'Italian']);
+    expect(cuisine.value).toBe('vietnamese');
+    expect([...cuisine.options].map((option) => option.textContent)).toEqual([
+      'All cuisines',
+      'Vietnamese',
+      'Korean',
+      'Japanese',
+      'Chinese',
+      'Thai',
+      'Italian',
+    ]);
     await setValue(inputNamed('Search dishes'), 'yum');
     await setValue(selectNamed('Role'), 'soup');
     await setValue(cuisine, 'thai');
     await debounce();
-    expect(api.picker).toHaveBeenLastCalledWith({ role: 'soup', cuisine: 'thai', q: 'yum', cursor: undefined, limit: '20' });
+    expect(api.picker).toHaveBeenLastCalledWith({
+      role: 'soup',
+      cuisine: 'thai',
+      q: 'yum',
+      cursor: undefined,
+      limit: '20',
+      savedOnly: undefined,
+    });
     expect(document.querySelector('[role="dialog"]')!.textContent).toContain('Tom yum');
   });
 
   it('an empty filtered picker result explains the filters and can clear them', async () => {
     const current = plan();
     api.picker.mockResolvedValue({ schemaVersion: 1, items: [], nextCursor: null, total: 0 });
-    await render(<MealComposer plan={current} slotId={slotId} model={model(current) as never} locale="en" />);
+    await render(
+      <MealComposer plan={current} slotId={slotId} model={model(current) as never} locale="en" />,
+    );
     await act(async () => byLabel('Add dish').click());
     await debounce();
     const dialog = document.querySelector('[role="dialog"]')!;
-    expect(dialog.textContent).toContain('No matching dishes.');
-    expect(dialog.textContent).not.toContain('Clear filters');
+    expect(dialog.textContent).toContain('No dishes match the current filters.');
+    expect(dialog.textContent).toContain('Clear filters');
     await setValue(selectNamed('Cuisine'), 'italian');
     await debounce();
     expect(dialog.textContent).toContain('No dishes match the current filters.');
     await act(async () => byLabel('Clear filters').click());
     await debounce();
     expect(selectNamed('Cuisine').value).toBe('');
-    expect(api.picker).toHaveBeenLastCalledWith({ role: undefined, cuisine: undefined, q: undefined, cursor: undefined, limit: '20' });
+    expect(api.picker).toHaveBeenLastCalledWith({
+      role: undefined,
+      cuisine: undefined,
+      q: undefined,
+      cursor: undefined,
+      limit: '20',
+      savedOnly: undefined,
+    });
     expect(document.activeElement?.getAttribute('type')).toBe('search');
     expect(api.add).not.toHaveBeenCalled();
   });
 
   it('"Complete this meal" shows an explicit suggestion; nothing changes until Accept', async () => {
     const current = plan();
-    api.assist.mockResolvedValue({ schemaVersion: 1, planId, planRevision: 4, slotId, action: 'complete', variant: 0,
-      budget: { anchorsConsidered: 0, candidatesConsidered: 6, partialsExplored: 6, scoringOperations: 6, exhausted: false },
-      proposal: { optionId: 'a'.repeat(32), removedComponentIds: [], unfilledRoles: [],
-        score: { total: 0.8, parts: { roleCompleteness: 1, inventoryCoverage: 1, shoppingCostProxy: 1, ingredientReuse: 0, preferenceFit: 0.5, variety: 1, effort: 1 } },
-        explanations: [{ code: 'USES_INVENTORY', count: 3, role: null }, { code: 'ROLE_ADDED', count: null, role: 'soup' }],
-        components: [{ kind: 'recipe', role: 'soup', recipeId: 'canh-chua', simpleFoodId: null, title: 'Canh chua', locked: false, existingComponentId: null }] } });
+    api.assist.mockResolvedValue({
+      schemaVersion: 1,
+      planId,
+      planRevision: 4,
+      slotId,
+      action: 'complete',
+      variant: 0,
+      budget: {
+        anchorsConsidered: 0,
+        candidatesConsidered: 6,
+        partialsExplored: 6,
+        scoringOperations: 6,
+        exhausted: false,
+      },
+      proposal: {
+        optionId: 'a'.repeat(32),
+        removedComponentIds: [],
+        unfilledRoles: [],
+        score: {
+          total: 0.8,
+          parts: {
+            roleCompleteness: 1,
+            inventoryCoverage: 1,
+            shoppingCostProxy: 1,
+            ingredientReuse: 0,
+            preferenceFit: 0.5,
+            variety: 1,
+            effort: 1,
+          },
+        },
+        explanations: [
+          { code: 'USES_INVENTORY', count: 3, role: null },
+          { code: 'ROLE_ADDED', count: null, role: 'soup' },
+        ],
+        components: [
+          {
+            kind: 'recipe',
+            role: 'soup',
+            recipeId: 'canh-chua',
+            simpleFoodId: null,
+            title: 'Canh chua',
+            locked: false,
+            existingComponentId: null,
+          },
+        ],
+      },
+    });
     api.assistApply.mockResolvedValue({});
-    await render(<MealComposer plan={current} slotId={slotId} model={model(current) as never} locale="en" />);
+    await render(
+      <MealComposer plan={current} slotId={slotId} model={model(current) as never} locale="en" />,
+    );
     await act(async () => byLabel('Complete this meal').click());
     expect(container.textContent).toContain('Uses 3 ingredients already in your fridge.');
     expect(container.textContent).toContain('Soup added for meal balance.');
     expect(api.assistApply).not.toHaveBeenCalled();
     await act(async () => byLabel('Use this suggestion').click());
-    expect(api.assistApply).toHaveBeenCalledWith(planId, slotId, { revision: 4, action: 'complete', variant: 0, proposalId: 'a'.repeat(32) });
+    expect(api.assistApply).toHaveBeenCalledWith(planId, slotId, {
+      revision: 4,
+      action: 'complete',
+      variant: 0,
+      proposalId: 'a'.repeat(32),
+    });
   });
 
   it('week cards render multi-component compositions with role chips (progressive disclosure)', async () => {
@@ -261,16 +621,32 @@ describe('T20 Meal composer UI', () => {
 
 describe('T20 meal page keeps V1 controls where the composer cannot act', () => {
   const composerVisible = () => container.textContent!.includes('Complete this meal');
-  const swapVisible = () => [...container.querySelectorAll('button')].some((button) => button.textContent?.includes('Swap meal'));
+  const swapVisible = () =>
+    [...container.querySelectorAll('button')].some((button) =>
+      button.textContent?.includes('Swap meal'),
+    );
   function v1Projection(source: 'v1_projection' | 'v2' = 'v1_projection', warnings: string[] = []) {
     const base = compositions();
-    return PlanCompositionsDtoSchema.parse({ ...base, compositions: [{ ...base.compositions[0], source,
-      mode: source === 'v2' ? 'manual' : null, components: [], missingRoles: ['main'], warnings }] });
+    return PlanCompositionsDtoSchema.parse({
+      ...base,
+      compositions: [
+        {
+          ...base.compositions[0],
+          source,
+          mode: source === 'v2' ? 'manual' : null,
+          components: [],
+          missingRoles: ['main'],
+          warnings,
+        },
+      ],
+    });
   }
 
   it('flag on, recipe slot: the composer replaces the V1 swap', async () => {
     const current = plan();
-    await render(<PlannerMeal plan={current} slotId={slotId} model={model(current) as never} locale="en" />);
+    await render(
+      <PlannerMeal plan={current} slotId={slotId} model={model(current) as never} locale="en" />,
+    );
     expect(composerVisible()).toBe(true);
     expect(swapVisible()).toBe(false);
   });
@@ -278,7 +654,9 @@ describe('T20 meal page keeps V1 controls where the composer cannot act', () => 
   it('flag on, V1 family-variant slot: V1 swap stays and no composer is offered', async () => {
     api.plan.mockResolvedValue(v1Projection('v1_projection', ['LEGACY_FAMILY_MEAL']));
     const current = plan(4, FAMILY_SOURCE);
-    await render(<PlannerMeal plan={current} slotId={slotId} model={model(current) as never} locale="en" />);
+    await render(
+      <PlannerMeal plan={current} slotId={slotId} model={model(current) as never} locale="en" />,
+    );
     expect(api.plan).toHaveBeenCalled();
     expect(swapVisible()).toBe(true);
     expect(composerVisible()).toBe(false);
@@ -288,7 +666,9 @@ describe('T20 meal page keeps V1 controls where the composer cannot act', () => 
     const { ApiError } = await import('../../src/web/services/http');
     api.plan.mockRejectedValue(new ApiError('http', 'Not found', 404));
     const current = plan();
-    await render(<PlannerMeal plan={current} slotId={slotId} model={model(current) as never} locale="en" />);
+    await render(
+      <PlannerMeal plan={current} slotId={slotId} model={model(current) as never} locale="en" />,
+    );
     expect(swapVisible()).toBe(true);
     expect(composerVisible()).toBe(false);
   });
@@ -296,7 +676,9 @@ describe('T20 meal page keeps V1 controls where the composer cannot act', () => 
   it('flag off build: pre-T20 page, the composition API is never called', async () => {
     vi.stubEnv('VITE_MEAL_COMPOSITION_V2_ENABLED', 'false');
     const current = plan();
-    await render(<PlannerMeal plan={current} slotId={slotId} model={model(current) as never} locale="en" />);
+    await render(
+      <PlannerMeal plan={current} slotId={slotId} model={model(current) as never} locale="en" />,
+    );
     expect(api.plan).not.toHaveBeenCalled();
     expect(swapVisible()).toBe(true);
     expect(composerVisible()).toBe(false);
@@ -304,38 +686,54 @@ describe('T20 meal page keeps V1 controls where the composer cannot act', () => 
 });
 
 describe('T20 authoritative composition loading and recovery', () => {
-  it.each(['meal', 'week'] as const)('does not show a stale V1 anchor while %s compositions load', async (page) => {
-    api.plan.mockReturnValue(new Promise(() => {}));
-    const current = plan();
-    await render(page === 'meal'
-      ? <PlannerMeal plan={current} slotId={slotId} model={model(current) as never} locale="en" />
-      : <PlannerWeek plan={current} model={model(current) as never} locale="en" />);
-    expect(container.textContent).not.toContain('Phở bò');
-    expect(container.textContent).toContain('Loading dishes');
-    expect(byLabel('Swap meal')).toBeUndefined();
-  });
+  it.each(['meal', 'week'] as const)(
+    'does not show a stale V1 anchor while %s compositions load',
+    async (page) => {
+      api.plan.mockReturnValue(new Promise(() => {}));
+      const current = plan();
+      await render(
+        page === 'meal' ? (
+          <PlannerMeal plan={current} slotId={slotId} model={model(current) as never} locale="en" />
+        ) : (
+          <PlannerWeek plan={current} model={model(current) as never} locale="en" />
+        ),
+      );
+      expect(container.textContent).not.toContain('Phở bò');
+      expect(container.textContent).toContain('Loading dishes');
+      expect(byLabel('Swap meal')).toBeUndefined();
+    },
+  );
 
-  it.each(['meal', 'week'] as const)('keeps %s on an explicit error until Retry recovers canonical components', async (page) => {
-    const { ApiError } = await import('../../src/web/services/http');
-    api.plan.mockRejectedValueOnce(new ApiError('http', 'Unavailable', 500));
-    const current = plan();
-    await render(page === 'meal'
-      ? <PlannerMeal plan={current} slotId={slotId} model={model(current) as never} locale="en" />
-      : <PlannerWeek plan={current} model={model(current) as never} locale="en" />);
-    expect(container.textContent).not.toContain('Phở bò');
-    expect(byLabel('Swap meal')).toBeUndefined();
-    expect(container.querySelector('[role="alert"]')).not.toBeNull();
-    await act(async () => byLabel('Try again').click());
-    await settle();
-    expect(container.textContent).toContain('Steamed rice');
-    expect(api.plan).toHaveBeenCalledTimes(2);
-  });
+  it.each(['meal', 'week'] as const)(
+    'keeps %s on an explicit error until Retry recovers canonical components',
+    async (page) => {
+      const { ApiError } = await import('../../src/web/services/http');
+      api.plan.mockRejectedValueOnce(new ApiError('http', 'Unavailable', 500));
+      const current = plan();
+      await render(
+        page === 'meal' ? (
+          <PlannerMeal plan={current} slotId={slotId} model={model(current) as never} locale="en" />
+        ) : (
+          <PlannerWeek plan={current} model={model(current) as never} locale="en" />
+        ),
+      );
+      expect(container.textContent).not.toContain('Phở bò');
+      expect(byLabel('Swap meal')).toBeUndefined();
+      expect(container.querySelector('[role="alert"]')).not.toBeNull();
+      await act(async () => byLabel('Try again').click());
+      await settle();
+      expect(container.textContent).toContain('Steamed rice');
+      expect(api.plan).toHaveBeenCalledTimes(2);
+    },
+  );
 
   it('offline composition reads never expose V1 ingredients, instructions or swap', async () => {
     const { ApiError } = await import('../../src/web/services/http');
     api.plan.mockRejectedValue(new ApiError('offline', 'Offline'));
     const current = plan();
-    await render(<PlannerMeal plan={current} slotId={slotId} model={model(current) as never} locale="en" />);
+    await render(
+      <PlannerMeal plan={current} slotId={slotId} model={model(current) as never} locale="en" />,
+    );
     expect(container.textContent).not.toContain('Phở bò');
     expect(container.textContent).not.toContain('Ingredients');
     expect(byLabel('Swap meal')).toBeUndefined();
@@ -345,7 +743,9 @@ describe('T20 authoritative composition loading and recovery', () => {
   it('a successful response missing the slot is actionable and cannot imply a V1 meal', async () => {
     api.plan.mockResolvedValueOnce({ ...compositions(), compositions: [] });
     const current = plan();
-    await render(<PlannerMeal plan={current} slotId={slotId} model={model(current) as never} locale="en" />);
+    await render(
+      <PlannerMeal plan={current} slotId={slotId} model={model(current) as never} locale="en" />,
+    );
     expect(container.textContent).not.toContain('Phở bò');
     expect(container.textContent).toContain('Could not load the dishes in this meal');
     await act(async () => byLabel('Try again').click());
@@ -356,27 +756,67 @@ describe('T20 authoritative composition loading and recovery', () => {
 
 it('Assisted regeneration previews locked dishes and applies the same action only on acceptance', async () => {
   const current = plan();
-  api.assist.mockResolvedValue({ schemaVersion: 1, planId, planRevision: 4, slotId, action: 'regenerate_unlocked', variant: 0,
-    proposal: { optionId: 'b'.repeat(32), removedComponentIds: ['v1.x'], unfilledRoles: [],
+  api.assist.mockResolvedValue({
+    schemaVersion: 1,
+    planId,
+    planRevision: 4,
+    slotId,
+    action: 'regenerate_unlocked',
+    variant: 0,
+    proposal: {
+      optionId: 'b'.repeat(32),
+      removedComponentIds: ['v1.x'],
+      unfilledRoles: [],
       explanations: [{ code: 'LOCKED_PRESERVED', count: 1, role: null }],
-      components: [{ kind: 'simple_food', role: 'staple', recipeId: null, simpleFoodId: 'sf-steamed-rice', title: 'Cơm trắng', locked: true, existingComponentId: 'c-rice' }] } });
+      components: [
+        {
+          kind: 'simple_food',
+          role: 'staple',
+          recipeId: null,
+          simpleFoodId: 'sf-steamed-rice',
+          title: 'Cơm trắng',
+          locked: true,
+          existingComponentId: 'c-rice',
+        },
+      ],
+    },
+  });
   api.assistApply.mockResolvedValue({});
-  await render(<MealComposer plan={current} slotId={slotId} model={model(current) as never} locale="en" />);
+  await render(
+    <MealComposer plan={current} slotId={slotId} model={model(current) as never} locale="en" />,
+  );
   await act(async () => byLabel('Suggest new unlocked dishes').click());
-  expect(api.assist).toHaveBeenCalledWith(planId, slotId, { revision: 4, action: 'regenerate_unlocked' });
+  expect(api.assist).toHaveBeenCalledWith(planId, slotId, {
+    revision: 4,
+    action: 'regenerate_unlocked',
+  });
   expect(container.textContent).toContain('Keeps 1 locked dishes.');
   expect(api.assistApply).not.toHaveBeenCalled();
   await act(async () => byLabel('Use this suggestion').click());
-  expect(api.assistApply).toHaveBeenCalledWith(planId, slotId, { revision: 4, action: 'regenerate_unlocked', variant: 0, proposalId: 'b'.repeat(32) });
+  expect(api.assistApply).toHaveBeenCalledWith(planId, slotId, {
+    revision: 4,
+    action: 'regenerate_unlocked',
+    variant: 0,
+    proposalId: 'b'.repeat(32),
+  });
 });
-
 
 describe('T20 shopping makes untracked simple foods explicit', () => {
   function untracked() {
     const dto = compositions();
-    const fruit = { ...dto.compositions[0].components[1], id: 'fruit', title: 'Trái cây theo mùa', role: 'dessert',
-      simpleFoodId: 'sf-seasonal-fruit', permittedRoles: ['dessert', 'simple_food'], projection: { status: 'not_tracked', missingCount: 0, inventoryLineCount: 0 } };
-    return PlanCompositionsDtoSchema.parse({ ...dto, compositions: [{ ...dto.compositions[0], components: [fruit] }] });
+    const fruit = {
+      ...dto.compositions[0].components[1],
+      id: 'fruit',
+      title: 'Trái cây theo mùa',
+      role: 'dessert',
+      simpleFoodId: 'sf-seasonal-fruit',
+      permittedRoles: ['dessert', 'simple_food'],
+      projection: { status: 'not_tracked', missingCount: 0, inventoryLineCount: 0 },
+    };
+    return PlanCompositionsDtoSchema.parse({
+      ...dto,
+      compositions: [{ ...dto.compositions[0], components: [fruit] }],
+    });
   }
   it('shows the untracked dish and its meal in shopping instead of implying zero demand', async () => {
     api.plan.mockResolvedValue(untracked());
@@ -384,20 +824,33 @@ describe('T20 shopping makes untracked simple foods explicit', () => {
     await render(<PlannerShopping plan={current} model={model(current) as never} locale="en" />);
     expect(container.textContent).toContain('Seasonal fruit');
     expect(container.textContent).toContain('Not tracked in inventory');
-    expect(container.querySelector(`a[href="/planner/${planId}/meal/${encodeURIComponent(slotId)}"]`)).not.toBeNull();
+    expect(
+      container.querySelector(`a[href="/planner/${planId}/meal/${encodeURIComponent(slotId)}"]`),
+    ).not.toBeNull();
   });
   it('never labels an entirely untracked meal as available inventory', async () => {
     api.plan.mockResolvedValue(untracked());
     const current = plan();
     await render(<PlannerWeek plan={current} model={model(current) as never} locale="en" />);
-    expect(container.querySelector('[data-testid="planned-meal"]')!.textContent).toContain('Not tracked in inventory');
-    expect(container.querySelector('[data-testid="planned-meal"]')!.textContent).not.toContain('Available');
+    expect(container.querySelector('[data-testid="planned-meal"]')!.textContent).toContain(
+      'Not tracked in inventory',
+    );
+    expect(container.querySelector('[data-testid="planned-meal"]')!.textContent).not.toContain(
+      'Available',
+    );
   });
 });
 
 it('an unknown slot stays unavailable instead of offering an endless composition retry', async () => {
   const current = plan();
-  await render(<PlannerMeal plan={current} slotId={`${date}:lunch:99`} model={model(current) as never} locale="en" />);
+  await render(
+    <PlannerMeal
+      plan={current}
+      slotId={`${date}:lunch:99`}
+      model={model(current) as never}
+      locale="en"
+    />,
+  );
   expect(container.textContent).toContain('This meal is not in the current plan revision.');
   expect(byLabel('Try again')).toBeUndefined();
   expect(byLabel('Add dish')).toBeUndefined();
@@ -411,13 +864,222 @@ it('week returns to V1 after a server-off 404 even when V2 compositions are cach
   const key = queryKeys.mealPlanningCompositions(current.id, current.revision);
   client.setQueryData(key, compositions());
   api.plan.mockRejectedValue(new ApiError('http', 'Not found', 404));
-  await act(async () => root.render(<QueryClientProvider client={client}><MemoryRouter>
-    <PlannerWeek plan={current} model={model(current) as never} locale="en" />
-  </MemoryRouter></QueryClientProvider>));
+  await act(async () =>
+    root.render(
+      <QueryClientProvider client={client}>
+        <MemoryRouter>
+          <PlannerWeek plan={current} model={model(current) as never} locale="en" />
+        </MemoryRouter>
+      </QueryClientProvider>,
+    ),
+  );
   await settle();
   expect(client.getQueryState(key)?.status).toBe('error');
   expect(client.getQueryData(key)).toEqual(compositions());
   expect(container.querySelector('ul[aria-label="Dishes in this meal"]')).toBeNull();
   expect(container.textContent).toContain('Phở bò');
   expect(container.textContent).not.toContain('Steamed rice');
+});
+
+describe('family board reports current dishes instead of stale anchor status', () => {
+  const summary = () => container.querySelector('.planning-board-summary')!;
+
+  it('reports a missing required group after a manual change even when the anchor plan stays feasible', async () => {
+    const current = plan();
+    const dto = compositions();
+    dto.compositions[0].missingRoles = ['soup'];
+    api.plan.mockResolvedValue(dto);
+    await render(<PlannerWeek plan={current} model={model(current) as never} locale="vi" />);
+    expect(current.result.status).toBe('feasible');
+    expect(summary().textContent).toContain('Còn bữa cần hoàn thiện');
+    expect(summary().textContent).toContain('0/1 bữa đủ nhóm món');
+    expect(summary().textContent).not.toMatch(/Mọi món|Đã xếp đủ/);
+    expect(container.querySelector('.planning-missing-roles')?.textContent).toContain('Món canh');
+  });
+
+  it('does not confirm complete dishes before the composition response arrives', async () => {
+    api.plan.mockReturnValue(new Promise(() => {}));
+    const current = plan();
+    await render(<PlannerWeek plan={current} model={model(current) as never} locale="vi" />);
+    expect(summary().textContent).toContain('Chưa xác nhận đủ món');
+    expect(summary().textContent).not.toMatch(/Mọi món|Đã xếp đủ|bữa đủ nhóm món/);
+  });
+
+  it('keeps completeness unconfirmed when the composition read fails or misses a requested slot', async () => {
+    const dto = compositions();
+    dto.compositions = [];
+    api.plan.mockResolvedValue(dto);
+    const current = plan();
+    await render(<PlannerWeek plan={current} model={model(current) as never} locale="en" />);
+    expect(summary().textContent).toContain('Dish completeness not confirmed');
+    expect(summary().textContent).not.toContain('All required dish groups are present');
+  });
+
+  it('keeps completeness unconfirmed on a failed composition read', async () => {
+    const { ApiError } = await import('../../src/web/services/http');
+    api.plan.mockRejectedValue(new ApiError('http', 'Unavailable', 500));
+    const current = plan();
+    await render(<PlannerWeek plan={current} model={model(current) as never} locale="vi" />);
+    expect(summary().textContent).toContain('Chưa xác nhận đủ món');
+    expect(summary().textContent).not.toContain('Đã xếp đủ nhóm món');
+  });
+
+  it('does not reinterpret an untouched V1 projection as a complete family meal', async () => {
+    const dto = compositions();
+    dto.compositions[0].source = 'v1_projection';
+    dto.compositions[0].mode = null;
+    api.plan.mockResolvedValue(dto);
+    const current = plan();
+    await render(<PlannerWeek plan={current} model={model(current) as never} locale="vi" />);
+    expect(summary().textContent).toContain('Kế hoạch món chính');
+    expect(summary().textContent).not.toContain('Đã xếp đủ nhóm món');
+  });
+
+  it('does not confirm or edit composition dishes returned for a different plan revision', async () => {
+    api.plan.mockResolvedValue(compositions(5));
+    const current = plan(4);
+    await render(
+      <>
+        <PlannerWeek plan={current} model={model(current) as never} locale="vi" />
+        <MealComposer plan={current} slotId={slotId} model={model(current) as never} locale="vi" />
+      </>,
+    );
+    expect(summary().textContent).toContain('Chưa xác nhận đủ món');
+    expect(container.querySelector('.planning-composer')).toBeNull();
+    expect(container.querySelector('.planning-dish-list')).toBeNull();
+    expect(summary().textContent).not.toContain('Đã xếp đủ nhóm món');
+  });
+
+  it('labels the legacy main-dish mode truthfully without loading compositions', async () => {
+    vi.stubEnv('VITE_MEAL_COMPOSITION_V2_ENABLED', 'false');
+    const current = plan();
+    await render(<PlannerWeek plan={current} model={model(current) as never} locale="vi" />);
+    expect(summary().textContent).toContain('Kế hoạch món chính');
+    expect(summary().textContent).toContain('1 bữa đã chọn món chính');
+    expect(summary().textContent).not.toMatch(/Mọi món|Đã xếp đủ nhóm món|bữa đủ nhóm món/);
+    expect(api.plan).not.toHaveBeenCalled();
+  });
+
+  it.each([
+    'MEAL_TIME_REQUIRES_REVALIDATION',
+    'LOCKED_COMPONENT_REQUIRES_REVALIDATION',
+    'COMPONENT_UNAVAILABLE',
+  ] as const)('requires review for %s even with every required group present', async (warning) => {
+    const current = plan();
+    const dto = compositions();
+    dto.compositions[0].warnings = [warning];
+    api.plan.mockResolvedValue(dto);
+    await render(
+      <>
+        <PlannerWeek plan={current} model={model(current) as never} locale="vi" />
+        <MealComposer plan={current} slotId={slotId} model={model(current) as never} locale="vi" />
+      </>,
+    );
+    expect(summary().textContent).toContain('Cần kiểm tra lại bữa ăn');
+    expect(summary().textContent).not.toContain('Đã xếp đủ nhóm món');
+    expect(container.querySelector('.planning-composer-state')?.textContent).toContain(
+      'Cần kiểm tra lại',
+    );
+    expect(container.querySelector('.planning-composer-state')?.textContent).not.toContain('Đã đủ');
+  });
+
+  it('keeps missing whole-meal time distinct from dish-group completeness', async () => {
+    const current = plan();
+    const dto = compositions();
+    dto.compositions[0].warnings = ['MEAL_TIME_UNKNOWN'];
+    api.plan.mockResolvedValue(dto);
+    await render(
+      <>
+        <PlannerWeek plan={current} model={model(current) as never} locale="vi" />
+        <MealComposer plan={current} slotId={slotId} model={model(current) as never} locale="vi" />
+      </>,
+    );
+    expect(summary().textContent).toContain('Đã xếp đủ nhóm món');
+    expect(summary().textContent).toContain('1/1 bữa đủ nhóm món');
+    expect(container.querySelector('.planning-composer-state')?.textContent).toBe('Đã đủ nhóm món');
+    expect(container.querySelector('.planning-meal-time-note')?.textContent).toContain(
+      'Chưa đủ dữ liệu',
+    );
+  });
+
+  it('renders dishes manually added to a formerly unplanned slot instead of a stale unplanned card', async () => {
+    const current = plan();
+    current.result.meals = [];
+    current.result.unplannedSlots = [
+      { slotId, date, mealType: 'dinner', reasons: ['NO_CANDIDATE'] },
+    ];
+    current.result.status = 'partial';
+    const dto = compositions();
+    api.plan.mockResolvedValue(dto);
+    await render(<PlannerWeek plan={current} model={model(current) as never} locale="vi" />);
+    expect(summary().textContent).toContain('Đã xếp đủ nhóm món');
+    expect(container.querySelectorAll('[data-testid="planned-meal"]')).toHaveLength(1);
+    expect(container.querySelector('[data-testid="planned-meal"]')?.textContent).toContain(
+      'Phở bò',
+    );
+    expect(container.querySelector('.planning-unplanned')).toBeNull();
+  });
+
+  function family(current: MealPlanDto, dto: PlanCompositionsDto, revision = current.revision) {
+    return FamilyMealPlanDtoSchema.parse({
+      schemaVersion: 2,
+      plan: { ...current, revision },
+      compositions: { ...dto, planRevision: revision },
+      policy: {
+        mealStyle: 'family',
+        preferredRegions: [],
+        internationalMealsPerWeek: 0,
+        internationalGeneratedMainCount: 0,
+        lockedInternationalMainCount: 1,
+        defaultCuisine: 'vietnamese',
+        profileRevision: 1,
+      },
+      diagnostics: {
+        completeMealCount: 1,
+        partialMealCount: 0,
+        unplannedMealCount: 0,
+        reasons: ['PRESERVED_INTERNATIONAL_CAP_EXCEEDED'],
+        searchLimited: false,
+      },
+      familyPreferenceFreshness: 'fresh',
+    });
+  }
+
+  it('makes preserved international choices above the rotation limit visible on the board and editor', async () => {
+    const current = plan();
+    const dto = compositions();
+    const m = { ...model(current), familyPlan: family(current, dto) };
+    await render(
+      <>
+        <PlannerWeek plan={current} model={m as never} locale="vi" />
+        <MealComposer plan={current} slotId={slotId} model={m as never} locale="vi" />
+      </>,
+    );
+    expect(container.querySelectorAll('.planning-family-policy-note')).toHaveLength(2);
+    for (const notice of container.querySelectorAll('.planning-family-policy-note')) {
+      expect(notice.textContent).toContain(
+        'Các món quốc tế bạn đã chọn hoặc khoá vượt mức đổi vị trong 7 ngày',
+      );
+      expect(notice.textContent).toContain('Takosan giữ lựa chọn này');
+    }
+    expect(container.textContent).not.toContain('PRESERVED_INTERNATIONAL_CAP_EXCEEDED');
+  });
+
+  it('shows the rotation warning from current component data without requiring a cached envelope', async () => {
+    const current = plan();
+    const dto = compositions();
+    dto.compositions[0].warnings = ['PRESERVED_INTERNATIONAL_CAP_EXCEEDED'];
+    api.plan.mockResolvedValue(dto);
+    await render(<PlannerWeek plan={current} model={model(current) as never} locale="en" />);
+    expect(container.querySelector('.planning-family-policy-note')?.textContent).toContain(
+      'international dishes exceed the 7-day rotation limit',
+    );
+  });
+
+  it('does not show a rotation warning from a different plan revision', async () => {
+    const current = plan();
+    const m = { ...model(current), familyPlan: family(current, compositions(), 3) };
+    await render(<PlannerWeek plan={current} model={m as never} locale="en" />);
+    expect(container.querySelector('.planning-family-policy-note')).toBeNull();
+  });
 });

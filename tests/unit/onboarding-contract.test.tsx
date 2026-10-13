@@ -3,14 +3,28 @@ import { act } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 import { MemoryRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { FamilyPreferencesSchema } from '../../packages/domain/src/family-preferences-api';
+import { resetPrivateSession } from '../../src/web/lib/private-session';
+import { ApiError } from '../../src/web/services/http';
+import { familyPreferencesKey } from '../../src/web/features/family/useFamilyPreferences';
 import { OnboardingPage } from '../../src/web/pages/OnboardingPage';
 import { useAuthStore } from '../../src/web/stores/useAuthStore';
 
-const mocks = vi.hoisted(() => ({ completeOnboarding: vi.fn() }));
+const mocks = vi.hoisted(() => ({
+  completeOnboarding: vi.fn(),
+  familyGet: vi.fn(),
+  familySave: vi.fn(),
+}));
 
 vi.mock('../../src/web/services/api', () => ({
   api: { completeOnboarding: mocks.completeOnboarding },
 }));
+
+vi.mock('../../src/web/services/family-preferences', async (importOriginal) => {
+  const actual = await importOriginal<Record<string, unknown>>();
+  return { ...actual, familyPreferencesApi: { get: mocks.familyGet, save: mocks.familySave } };
+});
 
 const LocationProbe = () => {
   const location = useLocation();
@@ -20,21 +34,28 @@ const LocationProbe = () => {
 describe('screens 04-06 — onboarding contract', () => {
   let root: Root | undefined;
   let host: HTMLDivElement;
+  let client: QueryClient;
 
   const mount = async (path: string) => {
     await act(async () => {
       root = createRoot(host);
       root.render(
-        <MemoryRouter initialEntries={[path]}>
-          <Routes>
-            <Route path="/onboarding/*" element={<OnboardingPage />} />
-            <Route path="*" element={<div data-testid="destination" />} />
-          </Routes>
-          <LocationProbe />
-        </MemoryRouter>,
+        <QueryClientProvider client={client}>
+          <MemoryRouter initialEntries={[path]}>
+            <Routes>
+              <Route path="/onboarding/*" element={<OnboardingPage />} />
+              <Route path="*" element={<div data-testid="destination" />} />
+            </Routes>
+            <LocationProbe />
+          </MemoryRouter>
+        </QueryClientProvider>,
       );
       await Promise.resolve();
     });
+    for (let index = 0; index < 5; index++)
+      await act(async () => {
+        await new Promise((resolve) => setTimeout(resolve, 5));
+      });
   };
 
   const location = () => host.querySelector('[data-testid="location"]')?.textContent;
@@ -63,6 +84,24 @@ describe('screens 04-06 — onboarding contract', () => {
       dietaryRestrictions: [],
       primaryGoal: undefined,
     });
+    client = new QueryClient({ defaultOptions: { queries: { retry: false } } });
+    client.setQueryData(['planning-preferences', 'unused'], {});
+    mocks.familyGet.mockReset();
+    mocks.familySave.mockReset();
+    mocks.familyGet.mockImplementation(async () => ({
+      revision: 0,
+      preferences: FamilyPreferencesSchema.parse({
+        preferredCuisines: useAuthStore
+          .getState()
+          .favoriteCuisines.filter((value) =>
+            ['vietnamese', 'korean', 'japanese', 'italian', 'chinese', 'thai'].includes(value),
+          ),
+      }),
+    }));
+    mocks.familySave.mockImplementation(async (revision, preferences) => ({
+      revision: revision + 1,
+      preferences,
+    }));
     mocks.completeOnboarding.mockReset();
     mocks.completeOnboarding.mockResolvedValue({ success: true, onboardingCompleted: true });
     host = document.createElement('div');
@@ -73,7 +112,9 @@ describe('screens 04-06 — onboarding contract', () => {
     act(() => root?.unmount());
     root = undefined;
     host.remove();
+    client.clear();
     vi.restoreAllMocks();
+    vi.unstubAllEnvs();
   });
 
   it('screen 04 owns only household size and exposes native single-select state', async () => {
@@ -81,7 +122,7 @@ describe('screens 04-06 — onboarding contract', () => {
 
     expect(location()).toBe('/onboarding/household');
     expect(host.textContent).toContain('Nhà mình thường có bao nhiêu người ăn?');
-    expect(host.textContent).not.toContain('Nền ẩm thực yêu thích');
+    expect(host.textContent).not.toContain('Khẩu vị quen của nhà mình');
     expect(host.querySelector('[role="progressbar"]')?.getAttribute('aria-valuenow')).toBe('1');
 
     const radios = Array.from(
@@ -93,48 +134,43 @@ describe('screens 04-06 — onboarding contract', () => {
     expect(radios[3].checked).toBe(true);
   });
 
-  it('screen 05 owns cuisine and restriction multi-select groups with checked state', async () => {
+  it('screen 05 separates family habits, supported international cuisines and hard restrictions', async () => {
     await mount('/onboarding/preferences');
-
     expect(location()).toBe('/onboarding/preferences');
-    expect(host.textContent).toContain('Nền ẩm thực yêu thích');
-    expect(host.textContent).toContain('Nguyên liệu hoặc món cần tránh');
+    expect(host.textContent).toContain('Khẩu vị quen của nhà mình');
+    expect(host.textContent).toContain('Dị ứng cần tránh');
+    expect(host.textContent).toContain('Nguyên liệu không ăn');
+    expect(host.textContent).toContain('Nguyên liệu không thích');
     expect(host.textContent).not.toContain('Số người thường ăn');
-    expect(host.querySelector('[role="progressbar"]')?.getAttribute('aria-valuenow')).toBe('2');
-
     const cuisines = Array.from(
-      host.querySelectorAll<HTMLInputElement>('input[type="checkbox"][name="favorite-cuisines"]'),
-    );
-    const restrictions = Array.from(
-      host.querySelectorAll<HTMLInputElement>(
-        'input[type="checkbox"][name="dietary-restrictions"]',
-      ),
+      host.querySelectorAll<HTMLInputElement>('input[name="favorite-cuisines"]'),
     );
     expect(cuisines.map((item) => item.value)).toEqual([
-      'vietnamese',
       'korean',
       'japanese',
-      'western',
       'chinese',
       'thai',
-      'other',
-    ]);
-    expect(restrictions.map((item) => item.value)).toEqual([
-      'beef',
-      'seafood',
-      'peanuts',
-      'spicy',
-      'mushroom',
-      'onion_garlic',
-      'milk',
-      'gluten',
-      'other',
+      'italian',
     ]);
     expect(cuisines.every((item) => !item.checked)).toBe(true);
-    await act(async () => cuisines[1].click());
-    await act(async () => restrictions[0].click());
-    expect(cuisines[1].checked).toBe(true);
-    expect(restrictions[0].checked).toBe(true);
+    await act(async () => cuisines[0].click());
+    expect(cuisines[0].checked).toBe(true);
+    await click(button('Tiếp tục'));
+    await click(button('Bắt đầu với Takosan'));
+    expect(mocks.familySave).toHaveBeenCalledWith(
+      0,
+      expect.objectContaining({
+        preferredCuisines: ['korean'],
+        internationalMealsPerWeek: 0,
+        mealStyle: 'family',
+      }),
+    );
+    expect(mocks.completeOnboarding).toHaveBeenCalledWith(
+      expect.objectContaining({
+        favoriteCuisines: ['korean'],
+        dietaryRestrictions: [],
+      }),
+    );
   });
 
   it('next and back change both content and URL while direct navigation selects the URL-owned step', async () => {
@@ -142,7 +178,7 @@ describe('screens 04-06 — onboarding contract', () => {
 
     await click(button('Tiếp tục'));
     expect(location()).toBe('/onboarding/preferences');
-    expect(host.textContent).toContain('Nhà mình thích món gì và cần tránh gì?');
+    expect(host.textContent).toContain('Nhà mình thường nấu thế nào?');
 
     await click(button('Tiếp tục'));
     expect(location()).toBe('/onboarding/goals');
@@ -150,7 +186,7 @@ describe('screens 04-06 — onboarding contract', () => {
 
     await click(button('Quay lại'));
     expect(location()).toBe('/onboarding/preferences');
-    expect(host.textContent).toContain('Nền ẩm thực yêu thích');
+    expect(host.textContent).toContain('Khẩu vị quen của nhà mình');
   });
 
   it('screen 06 owns a native single-select planning goal with exactly the supported values', async () => {
@@ -226,16 +262,21 @@ describe('screens 04-06 — onboarding contract', () => {
     expect(useAuthStore.getState().primaryGoal).toBe('week');
   });
 
-  it.each(['today', 'both'] as const)('%s goal routes to / after confirmed completion', async (goal) => {
-    await mount('/onboarding/goals');
-    const option = host.querySelector<HTMLInputElement>(`input[name="primary-goal"][value="${goal}"]`);
-    await act(async () => option?.click());
-    await click(button('Bắt đầu với Takosan'));
+  it.each(['today', 'both'] as const)(
+    '%s goal routes to / after confirmed completion',
+    async (goal) => {
+      await mount('/onboarding/goals');
+      const option = host.querySelector<HTMLInputElement>(
+        `input[name="primary-goal"][value="${goal}"]`,
+      );
+      await act(async () => option?.click());
+      await click(button('Bắt đầu với Takosan'));
 
-    expect(location()).toBe('/');
-    expect(mocks.completeOnboarding.mock.calls[0][0]).not.toHaveProperty('primaryGoal');
-    expect(useAuthStore.getState().primaryGoal).toBe(goal);
-  });
+      expect(location()).toBe('/');
+      expect(mocks.completeOnboarding.mock.calls[0][0]).not.toHaveProperty('primaryGoal');
+      expect(useAuthStore.getState().primaryGoal).toBe(goal);
+    },
+  );
 
   it('does not navigate on goal when completion is not confirmed', async () => {
     mocks.completeOnboarding.mockResolvedValueOnce({ success: true, onboardingCompleted: false });
@@ -263,15 +304,69 @@ describe('screens 04-06 — onboarding contract', () => {
     expect(location()).toBe('/onboarding/preferences');
     await click(button('Tiếp tục'));
     expect(location()).toBe('/onboarding/goals');
-    expect(host.querySelector('[data-testid="onboarding-preference-review"]')?.textContent).toContain(
-      '5 người trở lên',
-    );
+    expect(
+      host.querySelector('[data-testid="onboarding-preference-review"]')?.textContent,
+    ).toContain('5 người trở lên');
 
     await click(button('Bắt đầu với Takosan'));
     expect(mocks.completeOnboarding).toHaveBeenCalledWith(
       expect.objectContaining({ householdSize: 7 }),
     );
     expect(useAuthStore.getState().householdSize).toBe(7);
+  });
+
+  it('retains a saved family size when the older account profile has a different size', async () => {
+    useAuthStore.setState({ householdSize: 2 });
+    mocks.familyGet.mockResolvedValue({
+      revision: 4,
+      preferences: FamilyPreferencesSchema.parse({ householdSize: 4 }),
+    });
+    await mount('/onboarding/household');
+    expect(
+      host.querySelector<HTMLInputElement>('input[name="household-size"][value="4"]')?.checked,
+    ).toBe(true);
+    await click(button('Tiếp tục'));
+    await click(button('Tiếp tục'));
+    expect(
+      host.querySelector('[data-testid="onboarding-preference-review"]')?.textContent,
+    ).toContain('4 người');
+    await click(button('Bắt đầu với Takosan'));
+    expect(mocks.familySave).toHaveBeenCalledWith(4, expect.objectContaining({ householdSize: 4 }));
+    expect(mocks.completeOnboarding).toHaveBeenCalledWith(
+      expect.objectContaining({ householdSize: 4 }),
+    );
+    expect(useAuthStore.getState().householdSize).toBe(4);
+  });
+
+  it('keeps the explicit household choice when a saved family profile arrives later', async () => {
+    let resolve!: (value: unknown) => void;
+    mocks.familyGet.mockReturnValue(
+      new Promise((done) => {
+        resolve = done;
+      }),
+    );
+    await mount('/onboarding/household');
+    await act(async () =>
+      host.querySelector<HTMLInputElement>('input[name="household-size"][value="3"]')?.click(),
+    );
+    await act(async () => {
+      resolve({ revision: 4, preferences: FamilyPreferencesSchema.parse({ householdSize: 4 }) });
+      await Promise.resolve();
+    });
+    for (let index = 0; index < 5; index++)
+      await act(async () => {
+        await new Promise((done) => setTimeout(done, 5));
+      });
+    expect(
+      host.querySelector<HTMLInputElement>('input[name="household-size"][value="3"]')?.checked,
+    ).toBe(true);
+    await click(button('Tiếp tục'));
+    await click(button('Tiếp tục'));
+    await click(button('Bắt đầu với Takosan'));
+    expect(mocks.familySave).toHaveBeenCalledWith(4, expect.objectContaining({ householdSize: 3 }));
+    expect(mocks.completeOnboarding).toHaveBeenCalledWith(
+      expect.objectContaining({ householdSize: 3 }),
+    );
   });
 
   it('uses the canonical 5 only when the user explicitly picks the 5+ choice', async () => {
@@ -311,8 +406,8 @@ describe('screens 04-06 — onboarding contract', () => {
     useAuthStore.setState({ favoriteCuisines: ['western', 'other'] });
     await mount('/onboarding/goals');
 
-    expect(host.textContent).toContain('Âu - Mỹ');
-    expect(host.textContent).toContain('Khác');
+    expect(host.textContent).toContain('western (hồ sơ cũ, chưa áp dụng)');
+    expect(host.textContent).toContain('other (hồ sơ cũ, chưa áp dụng)');
     await click(button('Bắt đầu với Takosan'));
     expect(mocks.completeOnboarding).toHaveBeenCalledWith(
       expect.objectContaining({ favoriteCuisines: ['western', 'other'] }),
@@ -322,9 +417,9 @@ describe('screens 04-06 — onboarding contract', () => {
   it('keeps an empty cuisine selection empty instead of inventing a default', async () => {
     await mount('/onboarding/goals');
 
-    expect(host.querySelector('[data-testid="onboarding-preference-review"]')?.textContent).toContain(
-      'Ẩm thực yêu thíchKhông có lựa chọn',
-    );
+    expect(
+      host.querySelector('[data-testid="onboarding-preference-review"]')?.textContent,
+    ).toContain('Ẩm thực yêu thíchKhông có lựa chọn');
     await click(button('Bắt đầu với Takosan'));
     expect(mocks.completeOnboarding).toHaveBeenCalledWith(
       expect.objectContaining({ favoriteCuisines: [] }),
@@ -335,9 +430,9 @@ describe('screens 04-06 — onboarding contract', () => {
     useAuthStore.setState({ dietaryRestrictions: ['other'] });
     await mount('/onboarding/goals');
 
-    expect(host.querySelector('[data-testid="onboarding-preference-review"]')?.textContent).toContain(
-      'Món cần tránhKhác',
-    );
+    expect(
+      host.querySelector('[data-testid="onboarding-preference-review"]')?.textContent,
+    ).toContain('Hạn chế từ hồ sơ cũKhác');
     await click(button('Bắt đầu với Takosan'));
     expect(mocks.completeOnboarding).toHaveBeenCalledWith(
       expect.objectContaining({ dietaryRestrictions: ['other'] }),
@@ -352,8 +447,8 @@ describe('screens 04-06 — onboarding contract', () => {
     await mount('/onboarding/goals');
 
     const review = host.querySelector('[data-testid="onboarding-preference-review"]')?.textContent;
-    expect(review).toContain('Ẩm thực yêu thíchitalian');
-    expect(review).toContain('Món cần tránhvegetarian');
+    expect(review).toContain('Ẩm thực yêu thíchÝ');
+    expect(review).toContain('Hạn chế từ hồ sơ cũvegetarian');
     await click(button('Bắt đầu với Takosan'));
     expect(mocks.completeOnboarding).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -386,5 +481,98 @@ describe('screens 04-06 — onboarding contract', () => {
     await mount('/onboarding');
     expect(location()).toBe('/onboarding/household');
     expect(host.textContent).toContain('Nhà mình thường có bao nhiêu người ăn?');
+  });
+  it('routes a week goal to the family planner when both planner flags are enabled', async () => {
+    vi.stubEnv('VITE_MEAL_PLANNER_ENABLED', 'true');
+    vi.stubEnv('VITE_MEAL_COMPOSITION_V2_ENABLED', 'true');
+    await mount('/onboarding/goals');
+    await act(async () =>
+      host.querySelector<HTMLInputElement>('input[name="primary-goal"][value="week"]')?.click(),
+    );
+    await click(button('Bắt đầu với Takosan'));
+    expect(location()).toBe('/planner/new');
+  });
+
+  it('keeps the captured profile revision across background refresh and requires conflict adoption', async () => {
+    mocks.familyGet.mockResolvedValue({
+      revision: 4,
+      preferences: FamilyPreferencesSchema.parse({}),
+    });
+    await mount('/onboarding/preferences');
+    const south = Array.from(
+      host.querySelectorAll<HTMLInputElement>('input[type="checkbox"]'),
+    ).find((input) => input.closest('label')?.textContent === 'Miền Nam');
+    await act(async () => south?.click());
+    await act(async () =>
+      client.setQueryData(familyPreferencesKey(), {
+        revision: 5,
+        preferences: FamilyPreferencesSchema.parse({ preferredRegions: ['bac'] }),
+      }),
+    );
+    await click(button('Tiếp tục'));
+    expect(host.querySelector('[data-testid="family-preference-review"]')?.textContent).toContain(
+      'Miền Nam',
+    );
+    mocks.familySave.mockRejectedValueOnce(
+      new ApiError('http', 'HTTP 409: {"code":"REVISION_CONFLICT"}', 409),
+    );
+    await click(button('Bắt đầu với Takosan'));
+    expect(mocks.familySave).toHaveBeenCalledWith(
+      4,
+      expect.objectContaining({ preferredRegions: ['nam'] }),
+    );
+    expect(mocks.completeOnboarding).not.toHaveBeenCalled();
+    expect(button('Bắt đầu với Takosan')?.disabled).toBe(true);
+    mocks.familyGet.mockResolvedValue({
+      revision: 5,
+      preferences: FamilyPreferencesSchema.parse({ preferredRegions: ['bac'] }),
+    });
+    await click(button('Tải lại và xem thói quen mới nhất'));
+    expect(host.querySelector('[data-testid="family-preference-review"]')?.textContent).toContain(
+      'Miền Bắc',
+    );
+    await click(button('Bắt đầu với Takosan'));
+    expect(mocks.familySave).toHaveBeenLastCalledWith(
+      5,
+      expect.objectContaining({ preferredRegions: ['bac'] }),
+    );
+    expect(mocks.completeOnboarding).toHaveBeenCalledTimes(1);
+  });
+  it('reviews and completes using the authoritative family cuisines instead of an older legacy profile', async () => {
+    useAuthStore.setState({ favoriteCuisines: ['japanese'] });
+    mocks.familyGet.mockResolvedValue({
+      revision: 3,
+      preferences: FamilyPreferencesSchema.parse({ preferredCuisines: ['vietnamese', 'thai'] }),
+    });
+    await mount('/onboarding/goals');
+    const review = host.querySelector('[data-testid="onboarding-preference-review"]')?.textContent;
+    expect(review).toContain('Việt Nam, Thái Lan');
+    expect(review).not.toContain('Nhật Bản');
+    await click(button('Bắt đầu với Takosan'));
+    expect(mocks.completeOnboarding).toHaveBeenCalledWith(
+      expect.objectContaining({ favoriteCuisines: ['vietnamese', 'thai'] }),
+    );
+  });
+
+  it('does not apply completion or navigate after the private session changes during completion', async () => {
+    let resolve!: (value: unknown) => void;
+    mocks.completeOnboarding.mockImplementationOnce(
+      () =>
+        new Promise((done) => {
+          resolve = done;
+        }),
+    );
+    await mount('/onboarding/goals');
+    await click(button('Bắt đầu với Takosan'));
+    expect(mocks.completeOnboarding).toHaveBeenCalledTimes(1);
+    await act(async () => {
+      resetPrivateSession();
+      localStorage.setItem('frigo_user_id', 'user-next');
+      useAuthStore.setState({ userId: 'user-next', isOnboarded: false });
+      resolve({ success: true, onboardingCompleted: true });
+      await Promise.resolve();
+    });
+    expect(location()).toBe('/onboarding/goals');
+    expect(useAuthStore.getState().isOnboarded).toBe(false);
   });
 });

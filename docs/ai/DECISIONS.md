@@ -2799,3 +2799,55 @@ integrity all match. Source/catalog/canary drift keeps existing shadow/promotion
 policy. No bypass input or protection change. Exact-main/CI/schema/Environment /
 strict OTP recovery proofs remain required. See
 ../backend-upgrade/final-local-completion/ADR-CATALOG-CONTINUITY-003.md.
+
+## ADR-058 — Vietnamese family meals and explicit meal-habit preferences (2026-10-13)
+
+The user authorizes implementation of the researched full-meal experience. Active
+packet T22 supersedes T20's optional whole-week composition deferral. Add V2 plan
+commands and metadata alongside strict V1 JSON. Build all selected slots on a
+shared sequential inventory projection and commit plan, components and metadata
+atomically. Regeneration retains locked component identities and refills roles;
+V1 writers cannot discard the components of a family plan.
+
+Vietnam-first is a product default: generated international main slots cap zero
+unless the user explicitly chooses otherwise. Regional preferences are soft,
+based on existing metadata, never inferred from titles or used to stereotype
+flavor. Rice and Vietnamese cuisine repetition are acceptable. Lunch/dinner
+family templates target main, vegetable/side, soup and staple; breakfast and
+explicit quick/one-pot intent use their own templates. Missing roles/data remain
+visible and hard restrictions stay fail closed.
+
+0042 adds explicit member-scoped family preferences and updates T03 soft ranking
+preferences only on an explicit save, preserving existing hard policies. It does
+not import legacy diet strings. Saved recipes are user-private, authority-aware,
+revision-fenced entries with tombstones and no global recipe inserts. Shopping
+materialization shares only the selected demand/title snapshots with the household;
+private plans stay private. Demand reconciliation preserves manual entries,
+checked state and explicit quantity overrides. Checkbox state never consumes stock.
+No payment/auth/provider/infrastructure change or remote release is authorized.
+
+The implementation uses native inventory/ranking/profile/catalog snapshot witnesses
+for both computation and atomic D1 writes; cache freshness alone cannot certify a
+mutation. Hard time applies to the sum of all component prep/cook durations.
+Unknown durations remain explicit. Personal manual locks retain identity. All
+preserved international mains, including future locked dates, reserve their share
+of the rolling seven-calendar-day allowance before Auto/Assisted generation.
+Preserved choices above a newly lowered cap remain visible with an explicit
+warning; no new international main may spend that allowance again. Non-staple
+companions receive a soft repetition penalty across the planning horizon.
+Only exact representable compatible quantities materialize into purchase rows.
+Shopping command receipts retain the original response; explicit deletion dismisses
+same-plan demand. Another household member's active projected plan returns409,
+avoiding independent subtraction of the same stock for separate private plans.
+
+Migration0042 must precede any deployment of this Worker: shopping, favorites and
+family preferences use its additive tables independently of the planner flags.
+Retain0042 during rollback. The current Worker rejects legacy regenerate/swap for
+persisted family plans when composition is disabled, including wholly unplanned
+family results, without adding a0042 dependency to ordinary legacyV1 writes.
+Returning to a pre-T22 Worker after creating family plans is not a certified
+rollback; it lacks these mutation guards. Paired flag-off on the current Worker
+is the supported local rollback path, pending separate hosted rehearsal.
+Purchase status transitions are enforced by both Worker and offline client: bought
+and cannot-buy cannot both become true; switching clears the other state in the
+same command without rewriting purchase quantity.

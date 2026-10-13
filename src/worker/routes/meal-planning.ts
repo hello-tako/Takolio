@@ -1,3 +1,4 @@
+import { FamilyPlanningInputChanged } from '../../../packages/db/src/family-planning-fence';
 import { Hono, type Context } from 'hono';
 import { bodyLimit } from 'hono/body-limit';
 import { z } from 'zod';
@@ -42,6 +43,7 @@ function key(c: Ctx) {
 async function respond(c: Ctx, operation: () => Promise<unknown>) {
   try { return c.json(await operation()); }
   catch (error) {
+    if (error instanceof FamilyPlanningInputChanged) return c.json({ code: 'PLAN_REVALIDATION_REQUIRED', error: 'Planning inputs changed; retry with current data' }, 409);
     if (error instanceof MealPlanningError) return c.json({ code: error.code, error: error.message }, error.status);
     if (error instanceof MealPlanningSnapshotAuthorizationError) return c.json({ code: 'TENANCY_VIOLATION', error: 'Household access denied' }, 403);
     if (error instanceof GeneratedMealPlanPersistenceError) {

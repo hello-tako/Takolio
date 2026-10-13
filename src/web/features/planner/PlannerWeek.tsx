@@ -1,11 +1,16 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { CalendarDays, ChevronRight, Clock, RefreshCw, Users } from 'lucide-react';
+import { CalendarDays, ChevronRight, Clock, Lock, RefreshCw, Users } from 'lucide-react';
 import type { MealPlanDto } from '../../../../packages/domain/src/meal-planning-api';
+import type {
+  MealComponentDto,
+  MealCompositionDto,
+  PickerItemDto,
+} from '../../../../packages/domain/src/meal-composition-api';
 import { Card } from '../../components/common/Card';
 import { Button } from '../../components/common/Button';
 import { ConfirmDialog } from '../../components/common/ConfirmDialog';
-import { mealPlanningApi } from '../../services/meal-planning';
+import { SaveRecipeButton } from '../../components/common/SaveRecipeButton';
 import { plannerCopy, type PlannerLocale } from './copy';
 import { plannerStatusLabel, plannerConclusionLabel, reasonLabel } from './presentation';
 import type { usePlanner } from './usePlanner';
@@ -17,41 +22,110 @@ import {
   roleLabel,
   usePlanCompositions,
 } from './composition';
-import type { MealCompositionDto } from '../../../../packages/domain/src/meal-composition-api';
-
+import { ComponentPicker } from './ComponentPicker';
+import { mealCompositionApi } from '../../services/meal-composition';
 import { CompositionLoadState } from './CompositionLoadState';
+import { MealTimeNotice } from './MealTimeNotice';
+import { compositionState } from './composition-state';
+import { FamilyPlanNotice } from './FamilyPlanNotice';
 
-function CompositionList({
+function DishCard({
   composition,
   locale,
+  planId,
+  slotId,
+  disabled,
+  onSwap,
+  onLock,
 }: {
   composition: MealCompositionDto;
   locale: PlannerLocale;
+  planId: string;
+  slotId: string;
+  disabled: boolean;
+  onSwap: (item: MealComponentDto) => void;
+  onLock: (item: MealComponentDto) => void;
 }) {
   const c = compositionCopy[locale];
-  const shown = composition.components.slice(0, 4);
+  const missing = new Set(composition.missingRoles);
   return (
-    <ul className="mt-2 space-y-1" aria-label={c.heading}>
-      {shown.map((item) => (
-        <li key={item.id} className="flex items-baseline justify-between gap-3 text-sm">
-          <span className="text-semantic-text-primary">
-            {componentTitle(item, locale)}
-            {item.locked && <span className="sr-only"> · {c.locked}</span>}
-          </span>
-          <span className="text-[10px] font-bold uppercase tracking-wide text-takosan-green-deep shrink-0">
-            {roleLabel(item.role, locale)}
-          </span>
-        </li>
-      ))}
-      {composition.components.length > shown.length && (
-        <li className="text-xs text-semantic-text-muted">
-          {c.more(composition.components.length - shown.length)}
-        </li>
+    <div className="planning-composition-card">
+      <ul className="planning-dish-list" aria-label={c.heading}>
+        {composition.components.map((component) => {
+          const title = componentTitle(component, locale);
+          const status = component.projection?.status;
+          return (
+            <li key={component.id} className="planning-dish-row">
+              <div className="planning-dish-copy">
+                <strong>{title}</strong>
+                <span className="planning-dish-meta">
+                  <span>{roleLabel(component.role, locale)}</span>
+                  {component.locked && (
+                    <>
+                      <span aria-hidden="true"> · </span>
+                      <Lock size={12} aria-hidden="true" /> <span>{c.locked}</span>
+                    </>
+                  )}
+                  {status === 'covered' && (
+                    <span className="dish-status is-covered"> · {c.covered}</span>
+                  )}
+                  {status === 'needs_shopping' && (
+                    <span className="dish-status is-shopping"> · {c.needsShopping}</span>
+                  )}
+                  {status === 'unresolved' && (
+                    <span className="dish-status is-warning"> · {c.unresolved}</span>
+                  )}
+                  {status === 'not_tracked' && (
+                    <span className="dish-status"> · {c.notTracked}</span>
+                  )}
+                </span>
+              </div>
+              <div className="planning-dish-actions">
+                {component.recipeId && (
+                  <SaveRecipeButton recipeId={component.recipeId} title={title} compact />
+                )}
+                <button
+                  type="button"
+                  className="planning-icon-button"
+                  disabled={disabled}
+                  aria-label={`${component.locked ? c.unlock : c.lock}: ${title}`}
+                  aria-pressed={component.locked}
+                  onClick={() => onLock(component)}
+                >
+                  <Lock size={15} aria-hidden="true" />
+                </button>
+                <button
+                  type="button"
+                  className="planning-icon-button"
+                  disabled={disabled}
+                  aria-label={`${c.swapDish}: ${title}`}
+                  onClick={() => onSwap(component)}
+                >
+                  <RefreshCw size={15} aria-hidden="true" />
+                </button>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+      <MealTimeNotice warnings={composition.warnings} locale={locale} />
+      {composition.source === 'v2' && missing.size > 0 && (
+        <div className="planning-missing-roles">
+          <p>
+            {locale === 'vi' ? 'Bữa còn thiếu nhóm món:' : 'Meal groups still missing:'}{' '}
+            {Array.from(missing)
+              .map((role) => roleLabel(role, locale))
+              .join(' · ')}
+          </p>
+          <Link
+            className="planning-text-link"
+            to={`/planner/${planId}/meal/${encodeURIComponent(slotId)}`}
+          >
+            {c.addDish}
+          </Link>
+        </div>
       )}
-      {composition.components.length === 0 && (
-        <li className="text-sm text-semantic-text-muted">{c.emptyMeal}</li>
-      )}
-    </ul>
+    </div>
   );
 }
 
@@ -66,60 +140,148 @@ export function PlannerWeek({
 }) {
   const t = plannerCopy[locale];
   const [confirm, setConfirm] = useState(false);
+  const [picker, setPicker] = useState<{ slotId: string; component: MealComponentDto } | null>(
+    null,
+  );
+  async function mutate(operation: () => Promise<unknown>) {
+    const result = await model.perform('composition-change', operation);
+    if (result) {
+      setPicker(null);
+      await model.perform('refresh', () => model.loadPlan(plan.id), model.replacePlan);
+    }
+  }
+  function choose(item: PickerItemDto) {
+    if (!picker) return;
+    const target =
+      item.kind === 'recipe'
+        ? { kind: 'recipe' as const, recipeId: item.id }
+        : { kind: 'simple_food' as const, simpleFoodId: item.id };
+    void mutate(() =>
+      mealCompositionApi.swap(plan.id, picker.slotId, picker.component.id, {
+        revision: plan.revision,
+        target,
+        role: picker.component.role,
+        locked: true,
+      }),
+    );
+  }
   const days = [...new Set(plan.intent.slots.map((slot) => slot.date))].sort();
-  const past = plan.freshness.reasons.includes('planning_time_elapsed');
   const composing = isMealCompositionEnabled();
   const compositions = usePlanCompositions(plan, composing);
+  const matchingCompositions =
+    compositions.data?.planId === plan.id && compositions.data.planRevision === plan.revision;
   const compositionFor = (slotId: string) =>
-    compositions.data?.compositions.find((entry) => entry.slotId === slotId);
+    matchingCompositions
+      ? compositions.data?.compositions.find((entry) => entry.slotId === slotId)
+      : undefined;
   const legacy = !composing || compositionUnavailable(compositions.error);
-  const missing = plan.intent.slots.some(
-    (slot) => !compositionFor(`${slot.date}:${slot.mealType}:${slot.sequence ?? 0}`),
-  );
-  const uncertain = !legacy && (!compositions.isSuccess || missing);
+  const missing =
+    !legacy &&
+    plan.intent.slots.some(
+      (slot) => !compositionFor(`${slot.date}:${slot.mealType}:${slot.sequence ?? 0}`),
+    );
+  const past = plan.freshness.reasons.includes('planning_time_elapsed');
+  const uncertain = !legacy && (!compositions.isSuccess || compositions.isFetching || missing);
+  const currentCompositions = plan.intent.slots.flatMap((slot) => {
+    const composition = compositionFor(`${slot.date}:${slot.mealType}:${slot.sequence ?? 0}`);
+    return composition ? [composition] : [];
+  });
+  const states = currentCompositions.map(compositionState);
+  const legacySummary = legacy || (!uncertain && states.every((state) => state === 'legacy'));
+  const completeCount = states.filter((state) => state === 'complete').length;
+  const reviewOnly =
+    states.length > 0 && states.every((state) => state === 'complete' || state === 'review');
+  const summaryStatus = legacySummary
+    ? `${locale === 'vi' ? 'Kế hoạch món chính' : 'Main-dish plan'} · ${plannerStatusLabel(plan.result.status, locale)}`
+    : uncertain
+      ? locale === 'vi'
+        ? 'Chưa xác nhận đủ món'
+        : 'Dish completeness not confirmed'
+      : completeCount === plan.intent.slots.length
+        ? locale === 'vi'
+          ? 'Đã xếp đủ nhóm món'
+          : 'All required dish groups are present'
+        : reviewOnly
+          ? locale === 'vi'
+            ? 'Cần kiểm tra lại bữa ăn'
+            : 'Meals need review'
+          : locale === 'vi'
+            ? 'Còn bữa cần hoàn thiện'
+            : 'Some meals still need completing';
+  const summaryNote = legacySummary
+    ? locale === 'vi'
+      ? `${plan.result.meals.length} bữa đã chọn món chính`
+      : `Main dishes chosen for ${plan.result.meals.length} meals`
+    : uncertain
+      ? locale === 'vi'
+        ? 'Đang chờ xác nhận các món trong phiên bản hiện tại.'
+        : 'Waiting to confirm dishes in the current revision.'
+      : locale === 'vi'
+        ? `${completeCount}/${plan.intent.slots.length} bữa đủ nhóm món; nguyên liệu được kiểm tra riêng.`
+        : `${completeCount}/${plan.intent.slots.length} meals have all required groups; ingredients are checked separately.`;
+  const boardMeals = [
+    ...plan.result.meals,
+    ...(!legacy && compositions.isSuccess ? currentCompositions : [])
+      .filter(
+        (composition) =>
+          composition.components.length > 0 &&
+          !plan.result.meals.some((meal) => meal.slotId === composition.slotId),
+      )
+      .map((composition) => {
+        const slot = plan.intent.slots.find(
+          (entry) =>
+            `${entry.date}:${entry.mealType}:${entry.sequence ?? 0}` === composition.slotId,
+        );
+        return {
+          slotId: composition.slotId,
+          date: composition.date,
+          mealType: composition.mealType,
+          time: slot?.time ?? '',
+          title: t[composition.mealType],
+          servings: composition.servings,
+          cookTimeMinutes: null,
+          reasons: [],
+          requirements: [],
+        };
+      }),
+  ];
   return (
     <>
       <div className="planning-board-summary">
         <div>
-          <p className="text-sm font-semibold text-takosan-green-deep">
-            {plannerStatusLabel(plan.result.status, locale)}
+          <p className="planning-eyebrow">THỰC ĐƠN GIA ĐÌNH</p>
+          <p className="planning-board-status" role="status">
+            {summaryStatus}
           </p>
-          <p className="text-xs text-semantic-text-muted mt-1">
-            {plan.result.meals.length} {t.meals} · {t.revision}{' '}
-            <span data-testid="plan-revision">{plan.revision}</span>
-          </p>
+          <p className="planning-board-meta">{summaryNote}</p>
         </div>
-        <Link
-          className="text-sm underline font-semibold min-h-11 flex items-center text-takosan-green-deep"
-          to="/planner/new"
-        >
+        <Link className="planning-text-link planning-summary-link" to="/planner/new">
           {t.newPlan}
         </Link>
       </div>
-      {plan.result.conclusion !== 'feasible' && (
+      <FamilyPlanNotice
+        plan={plan}
+        familyPlan={model.familyPlan}
+        warnings={currentCompositions.flatMap((composition) => composition.warnings)}
+        locale={locale}
+      />
+      {legacy && plan.result.conclusion !== 'feasible' && (
         <Card>
           <p role="status" className="text-sm leading-relaxed">
             {plannerConclusionLabel(plan.result.conclusion, locale)}
           </p>
-          <Link
-            to="/planner/new"
-            className="inline-flex min-h-11 items-center text-takosan-green-deep underline text-sm"
-          >
+          <Link to="/planner/new" className="planning-text-link">
             {t.settings}
           </Link>
         </Card>
       )}
-      {plan.result.search.truncated && (
-        <p className="text-sm rounded-xl bg-semantic-info-soft p-3 text-semantic-info">
-          {t.limited}
-        </p>
-      )}
+      {plan.result.search.truncated && <p className="planning-board-warning">{t.limited}</p>}
       {!legacy && <CompositionLoadState query={compositions} locale={locale} missing={missing} />}
       <div className="planning-day-board">
         {days.map((date) => (
           <section key={date} className="planning-day">
             <h2 className="planning-day-heading">
-              <CalendarDays size={16} />
+              <CalendarDays size={16} aria-hidden="true" />
               {new Intl.DateTimeFormat(locale, {
                 weekday: 'long',
                 day: 'numeric',
@@ -127,138 +289,124 @@ export function PlannerWeek({
                 timeZone: 'UTC',
               }).format(new Date(`${date}T12:00:00Z`))}
             </h2>
-            {plan.result.meals
+            {boardMeals
               .filter((meal) => meal.date === date)
-              .map((meal) => (
-                <Card
-                  key={meal.slotId}
-                  className="planning-meal-card !p-0"
-                  data-testid="planned-meal"
-                >
-                  <Link
-                    to={`/planner/${plan.id}/meal/${encodeURIComponent(meal.slotId)}`}
-                    className="planning-meal-link"
-                  >
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-[11px] font-bold uppercase tracking-wide text-takosan-green-deep">
-                        {t[meal.mealType]} · {meal.time}
-                      </span>
-                      <ChevronRight size={17} className="text-semantic-text-muted" />
+              .map((meal) => {
+                const composition = legacy ? undefined : compositionFor(meal.slotId);
+                return (
+                  <Card key={meal.slotId} className="planning-meal-card" data-testid="planned-meal">
+                    <div className="planning-meal-card-head">
+                      <div>
+                        <p className="planning-meal-label">
+                          {t[meal.mealType]}
+                          {meal.time && <> · {meal.time}</>}
+                        </p>
+                        <h3 className="planning-meal-name">
+                          {legacy
+                            ? meal.title
+                            : !composition
+                              ? t[meal.mealType]
+                              : `${composition.components.length} ${locale === 'vi' ? 'món' : 'dishes'} · ${meal.servings} ${t.people}`}
+                        </h3>
+                      </div>
+                      <Link
+                        aria-label={`${compositionCopy[locale].detail}: ${meal.title}`}
+                        className="planning-icon-link"
+                        to={`/planner/${plan.id}/meal/${encodeURIComponent(meal.slotId)}`}
+                      >
+                        <ChevronRight size={18} />
+                      </Link>
                     </div>
-                    {(() => {
-                      const composition = legacy ? undefined : compositionFor(meal.slotId);
-                      if (!legacy && (!compositions.isSuccess || !composition))
-                        return (
-                          <p className="text-sm text-semantic-text-muted">
-                            {compositions.isPending
-                              ? compositionCopy[locale].loadingDishes
-                              : compositionCopy[locale].loadFailed}
-                          </p>
-                        );
-                      if (!composition || composition.source === 'v1_projection')
-                        return (
-                          <>
-                            <h3 className="text-lg font-heading font-bold text-semantic-text-primary leading-snug">
-                              {meal.title}
-                            </h3>
-                            <div className="flex flex-wrap gap-4 text-xs text-semantic-text-secondary mt-3">
-                              <span className="flex items-center gap-1">
-                                <Users size={14} />
-                                {meal.servings} {t.people}
-                              </span>
-                              <span className="flex items-center gap-1">
-                                <Clock size={14} />
-                                {meal.cookTimeMinutes === null
-                                  ? t.unknownTime
-                                  : `${meal.cookTimeMinutes} ${t.minutes}`}
-                              </span>
-                            </div>
-                            <p className="text-xs mt-3 text-takosan-green-deep">
-                              {meal.requirements.some(
-                                (item) => !item.optional && item.status === 'unresolved',
+                    {composition ? (
+                      <DishCard
+                        composition={composition}
+                        locale={locale}
+                        planId={plan.id}
+                        slotId={meal.slotId}
+                        disabled={!!model.busy || past}
+                        onSwap={(component) => setPicker({ slotId: meal.slotId, component })}
+                        onLock={(component) =>
+                          void mutate(() =>
+                            mealCompositionApi.update(plan.id, meal.slotId, component.id, {
+                              revision: plan.revision,
+                              locked: !component.locked,
+                            }),
+                          )
+                        }
+                      />
+                    ) : legacy ? (
+                      <div className="planning-legacy-meal-meta">
+                        <span>
+                          <Users size={14} /> {meal.servings} {t.people}
+                        </span>
+                        <span>
+                          <Clock size={14} />{' '}
+                          {meal.cookTimeMinutes === null
+                            ? t.unknownTime
+                            : `${meal.cookTimeMinutes} ${t.minutes}`}
+                        </span>
+                      </div>
+                    ) : (
+                      <p className="text-sm text-semantic-text-muted">
+                        {compositions.isPending
+                          ? compositionCopy[locale].loadingDishes
+                          : compositionCopy[locale].loadFailed}
+                      </p>
+                    )}
+                    {legacy && meal.reasons.length > 0 && (
+                      <p className="planning-note">{reasonLabel(meal.reasons[0], locale)}</p>
+                    )}
+                    {legacy && (
+                      <p className="planning-meal-availability">
+                        {meal.requirements.some(
+                          (item) => !item.optional && item.status === 'unresolved',
+                        )
+                          ? t.quantityReview
+                          : meal.requirements.some(
+                                (item) => !item.optional && item.status !== 'satisfied',
                               )
-                                ? t.quantityReview
-                                : meal.requirements.some(
-                                      (item) => !item.optional && item.status !== 'satisfied',
-                                    )
-                                  ? t.needsShopping
-                                  : t.available}
-                            </p>
-                            {meal.reasons.length > 0 && (
-                              <p className="text-xs text-semantic-text-muted mt-2">
-                                {reasonLabel(meal.reasons[0], locale)}
-                              </p>
-                            )}
-                          </>
-                        );
-                      // A composed slot is described by its components, not by the V1 generation record.
-                      const statuses = composition.components.map(
-                        (item) => item.projection?.status,
-                      );
-                      return (
-                        <>
-                          <h3 className="sr-only">{t[meal.mealType]}</h3>
-                          <CompositionList composition={composition} locale={locale} />
-                          <div className="flex flex-wrap gap-4 text-xs text-semantic-text-secondary mt-3">
-                            <span className="flex items-center gap-1">
-                              <Users size={14} />
-                              {meal.servings} {t.people}
-                            </span>
-                          </div>
-                          <p className="text-xs mt-3 text-takosan-green-deep">
-                            {statuses.includes('unresolved')
-                              ? t.quantityReview
-                              : statuses.includes('needs_shopping')
-                                ? t.needsShopping
-                                : statuses.includes('not_tracked')
-                                  ? compositionCopy[locale].notTracked
-                                  : t.available}
-                          </p>
-                        </>
-                      );
-                    })()}
-                  </Link>
-                </Card>
-              ))}
+                            ? t.needsShopping
+                            : t.available}
+                      </p>
+                    )}
+                  </Card>
+                );
+              })}
             {plan.result.unplannedSlots
-              .filter((slot) => slot.date === date)
+              .filter(
+                (slot) =>
+                  slot.date === date && (legacy || !compositionFor(slot.slotId)?.components.length),
+              )
               .map((slot) => (
                 <div className="planning-unplanned" key={slot.slotId}>
-                  <h3 className="text-sm font-semibold">
+                  <h3>
                     {t[slot.mealType]} · {t.unplanned}
                   </h3>
-                  <ul className="text-xs text-semantic-text-secondary mt-2 space-y-1">
+                  <ul>
                     {slot.reasons.map((code) => (
                       <li key={code}>{reasonLabel(code, locale)}</li>
                     ))}
                   </ul>
-                  {composing &&
-                    compositions.isSuccess &&
-                    (() => {
-                      const composition = compositionFor(slot.slotId);
-                      return (
-                        <>
-                          {composition && composition.components.length > 0 && (
-                            <CompositionList composition={composition} locale={locale} />
-                          )}
-                          <Link
-                            className="mt-2 inline-flex min-h-11 items-center text-sm font-semibold underline text-takosan-green-deep"
-                            to={`/planner/${plan.id}/meal/${encodeURIComponent(slot.slotId)}`}
-                          >
-                            {compositionCopy[locale].addDish}
-                          </Link>
-                        </>
-                      );
-                    })()}
+                  {composing && (
+                    <Link
+                      className="planning-text-link"
+                      to={`/planner/${plan.id}/meal/${encodeURIComponent(slot.slotId)}`}
+                    >
+                      {compositionCopy[locale].addDish}
+                    </Link>
+                  )}
                 </div>
               ))}
           </section>
         ))}
       </div>
-      <details className="text-sm text-semantic-text-secondary rounded-xl border border-semantic-border bg-white p-4">
-        <summary className="cursor-pointer font-semibold min-h-6">{t.diagnostics}</summary>
-        <p className="mt-3 text-xs">{t.rejectionNote}</p>
-        <ul className="mt-3 space-y-2">
+      <details className="planning-diagnostics">
+        <summary>{t.diagnostics}</summary>
+        <p>
+          {t.revision} <span data-testid="plan-revision">{plan.revision}</span>
+        </p>
+        <p>{t.rejectionNote}</p>
+        <ul>
           {[
             ...new Set([
               ...plan.result.search.limitReasons,
@@ -269,7 +417,7 @@ export function PlannerWeek({
             <li key={code}>{reasonLabel(code, locale)}</li>
           ))}
         </ul>
-        <p className="mt-3 text-xs">{t.safety}</p>
+        <p>{t.safety}</p>
       </details>
       <div className="planning-board-actions">
         <Link to={`/planner/${plan.id}/shopping`} className="planning-primary-link">
@@ -286,14 +434,28 @@ export function PlannerWeek({
         </Button>
       </div>
       {model.busy === 'regenerate' && (
-        <p role="status" className="text-sm text-takosan-green-deep">
+        <p role="status" className="planning-board-status">
           {t.generating}
         </p>
+      )}
+      {picker && (
+        <ComponentPicker
+          locale={locale}
+          busy={!!model.busy}
+          mutationError={model.error}
+          initialRole={picker.component.role}
+          onChoose={choose}
+          onClose={() => setPicker(null)}
+        />
       )}
       <ConfirmDialog
         open={confirm}
         title={t.regenerateTitle}
-        description={t.regenerateText}
+        description={
+          locale === 'vi'
+            ? 'Takosan sẽ gợi ý lại các bữa chưa khoá. Các món đã khoá được giữ nguyên; nguyên liệu sẽ được kiểm tra lại sau đó.'
+            : t.regenerateText
+        }
         confirmText={t.confirm}
         cancelText={t.cancel}
         onCancel={() => setConfirm(false)}
@@ -301,7 +463,7 @@ export function PlannerWeek({
           setConfirm(false);
           void model.perform(
             'regenerate',
-            () => mealPlanningApi.regenerate(plan.id, { revision: plan.revision }),
+            () => model.regenerate(plan.id, plan.revision),
             model.replacePlan,
           );
         }}

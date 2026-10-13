@@ -1,3 +1,87 @@
+# T22 Vietnamese family meals - 2026-10-13 JST
+
+**Status:** LOCAL_IMPLEMENTED_VERIFIED. Branch
+codex/vietnamese-family-meals-20261013; base
+332a24f468d5360b6cefc57b9451228585457131. Implementation checkpoint
+pending first implementation checkpoint. Active packet tasks/T22-vietnamese-family-meals.md;
+accepted architecture ADR-058. No push, merge, remote migration or deployment.
+
+**Implemented:** whole-week Vietnamese-first family lunch/dinner compositions;
+breakfast/quick/one-pot templates; revisioned member meal habits wired into
+schedule/servings/regions/time/cuisine and shopping cadence; private saved recipes
+and picker; per-dish swap/lock/save; current-composition truthful board/composer;
+trip-scoped shared shopping with exact compatible demand, familiar fraction display,
+collapsed source dishes, purchase edits, offline receipt overlays, mutually exclusive bought/cannot-buy,
+dismissal and original command replay. Mobile list precedes manual entry.
+Physical inventory remains unchanged by generation/shopping/checking.
+
+**Integrity and compatibility:** sequential whole-week stock projection;
+current inventory/expiry/storage/profile/ranking/catalog witnesses guard
+computed planning, proposal, composition and shopping-materialization writes
+atomically; explicit profile/favorite/manual shopping commands use their own
+membership and revision guards; strict V1 read shape retained; paired-flag-off V1 writes reject
+stored family plans without optional-schema reads. Locked foreign mains reserve
+rolling seven-day allowance, including future preserved slots; lowered cap warns
+without removing choices. Companion repetition is soft across the horizon,
+staple repetition allowed. Hard time is all-component prep+cook; unknown time is
+visible. All-unplanned hard-time requests return valid strict DTOs. Onboarding
+hydrates saved household size without replacing an explicit local selection.
+
+**Executed gates:** Node v25.9.0 / pnpm 10.33.2. `pnpm lint`, `pnpm typecheck`
+(both projects), `TMPDIR=/private/tmp pnpm test --maxWorkers=4`
+(347 files / 8180 tests), `pnpm check:migrations`
+(42 migrations), `GIT_COMMIT=local-vietnamese-family-meals pnpm build`, and
+`GIT_COMMIT=local-vietnamese-family-meals VITE_MEAL_PLANNER_ENABLED=true
+VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build` PASS.
+`pnpm audit --audit-level=high` PASS; dependencies unchanged.
+Local `pnpm wrangler d1 migrations apply frigo-db --local` and
+`WRANGLER_SEND_METRICS=false pnpm schema:check:local` PASS; ledger 42 through 0042.
+`git diff --check` and protected-path/migration checks PASS. No combined
+`pnpm check`, hosted CI or production success is claimed for this branch.
+
+**Running-app evidence:** `pnpm exec playwright test -c
+playwright.family.config.ts` 4/4 PASS at 320/390/768/1280 with actual app/Worker
+HTTP and synthetic SQLite/catalog fixtures, no API interception. Axe zero on
+board/composer/favorites/shopping; no horizontal overflow in tested flows.
+Actual local workerd/D1 on 8794 (catalog=d1, AI off) independently created 7/7
+four-role dinners, 0 partial/unplanned/generated international meals, materialized 20
+shopping demand keys (3 unresolved / 17 known items), retained 777.5 purchase quantity,
+bought/cannot-buy and favorite count 1 across reads; inventory unchanged. Local receipt
+and fresh browser screenshots copied to the calling chat's outputs/implemented-app.
+This is local synthetic evidence, not hosted smoke or user retention validation.
+
+**Failures retained:** an early full run had 16 failed files / 55 failed tests,
+including UI/provider/capture compatibility failures. A later run identified
+role-distribution and schema-gate hash failures; reviewed seven-recipe role delta
+and expand-only 0042 pin fixed them, with focused regressions. First mid-edit root
+typecheck failed an unknown `search.limits` guard; explicit object narrowing and
+final both-project pass followed. One workerd attempt restarted during an active
+request; later frozen-source run PASS. Early macOS temp-path capture failures
+require TMPDIR=/private/tmp. A concurrent build failed with "Service Worker build
+token was not found" and a concurrent browser attempt showed a blank page before
+the Language control. Their root cause is unproven. Final isolated default and
+paired builds exited 0; final isolated Chromium was 4/4 PASS in 1.2 minutes.
+Earlier passing counts (8137/346 and 8161/346) remain historical; final source is
+347 files / 8180 tests. Failed logs remain retained and are not reported green.
+
+**Limits/release order:** regional preference uses existing catalog metadata;
+not every regional attribution is independently verified. No clinical nutrition,
+assumed package/piece mass, parallel-cooking estimate, or full-week preview/apply
+workflow. Direct regeneration has explicit confirmation. Apply 0042 before this
+Worker serves any traffic, even planner flags OFF, because shopping/favorites/
+profile routes use new tables independently. Retain additive schema on rollback;
+paired flag-off on current guarded Worker is the locally tested rollback path.
+A pre-T22 Worker after family plans exist is not certified for rollback.
+
+**Next action:** independent review of this checkpoint, then separately authorized
+normal PR/exact-head and exact-main CI, migration-first staging, paired flags and
+hosted smoke before protected production release. Keep payment/auth runtime,
+config/dependencies/protected workflows and old migrations unchanged.
+
+---
+
+## Prior Checkpoints
+
 # payOS production acceptance complete - 2026-10-13 JST
 
 **Status:** PRODUCTION_PAID_ACCEPTANCE_VERIFIED_PRICES_RESTORED.

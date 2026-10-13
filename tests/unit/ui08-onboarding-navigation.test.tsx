@@ -2,11 +2,13 @@
 import { act, type ReactNode } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { FamilyPreferencesSchema } from '../../packages/domain/src/family-preferences-api';
 import { App } from '../../src/web/App';
 import { useAuthStore } from '../../src/web/stores/useAuthStore';
 import { queryClient } from '../../src/web/lib/query-client';
-const mocks = vi.hoisted(() => ({ complete: vi.fn() }));
+const mocks = vi.hoisted(() => ({ complete: vi.fn(),familyGet:vi.fn(),familySave:vi.fn() }));
 vi.mock('../../src/web/services/api', () => ({ api: { completeOnboarding: mocks.complete } }));
+vi.mock('../../src/web/services/family-preferences',async(importOriginal)=>{const actual=await importOriginal<Record<string,unknown>>();return {...actual,familyPreferencesApi:{get:mocks.familyGet,save:mocks.familySave}};});
 // Isolate the actual App guards from unrelated boot verification and destination data.
 vi.mock('../../src/web/components/common/SessionBoundary', () => ({ SessionBoundary: ({ children }: { children: ReactNode }) => children }));
 vi.mock('../../src/web/pages/HomePage', () => ({ HomePage: () => <h1>Home destination</h1> }));
@@ -26,6 +28,7 @@ beforeEach(() => {
   localStorage.clear(); sessionStorage.clear();
   localStorage.setItem('frigo_user_id', 'guard-user'); localStorage.setItem('frigo_household_id', 'guard-house');
   useAuthStore.setState({ userId: 'guard-user', householdId: 'guard-house', isGuest: true, isOnboarded: false, householdSize: 2, spicyLevel: 'medium', favoriteCuisines: [], dietaryRestrictions: [], primaryGoal: undefined });
+  mocks.familyGet.mockResolvedValue({revision:0,preferences:FamilyPreferencesSchema.parse({})});mocks.familySave.mockImplementation(async(revision,preferences)=>({revision:revision+1,preferences}));
   mocks.complete.mockReset(); mocks.complete.mockResolvedValue({ success: true, onboardingCompleted: true });
   window.history.replaceState({}, '', '/onboarding/goals');
   host = document.createElement('div'); document.body.appendChild(host); root = createRoot(host);

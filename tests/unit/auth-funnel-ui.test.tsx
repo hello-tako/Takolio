@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 import { act } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { AuthPage } from '../../src/web/pages/AuthPage';
@@ -43,7 +44,7 @@ describe('auth funnel UI', () => {
   it('keeps onboarding focused on preferences without another auth chooser', async () => {
     await act(async () => {
       root = createRoot(host);
-      root.render(<MemoryRouter initialEntries={['/onboarding']}><OnboardingPage /></MemoryRouter>);
+      root.render(<QueryClientProvider client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}><MemoryRouter initialEntries={['/onboarding']}><OnboardingPage /></MemoryRouter></QueryClientProvider>);
     });
     expect(host.textContent).toContain('1 / 3');
     expect(host.textContent).toContain('Nhà mình thường có bao nhiêu người ăn?');

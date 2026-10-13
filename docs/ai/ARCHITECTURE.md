@@ -1,3 +1,39 @@
+# T22 Vietnamese family meals - 2026-10-13
+
+ADR-058 adds whole-week composed planning to the existing planner. The strict V1
+plan and per-slot composition services remain the compatibility boundary.
+`packages/recipes/src/composition/family-planner.ts` searches all requested slots
+against a shared chronological inventory projection. Four-role family lunch and
+dinner, three-role quick meals, and breakfast/one-pot templates are explicit.
+Vietnamese defaults, region preferences and an opted-in international weekly cap
+come from a revisioned member profile, rather than LLM prompt instructions.
+
+`packages/db/src/family-meal-planning.ts` commits V1-compatible anchors, every
+component and V2 metadata together. `family-planning-fence.ts` captures native
+inventory, ranking/profile and catalog witnesses; D1 batch guards abort stale
+writes. The recipe-authority service verifies current D1 content even within its
+cache TTL. Generation, proposals, mutations and shopping share these boundaries.
+V1 writers cannot discard the components of a family plan.
+
+New `/api/v2/meal-planning/plans` routes add generate/current/read/regenerate.
+Existing V1 composition commands still perform individual dish changes. Family
+preferences and private saved recipes use `/api/v1/family-preferences` and
+`/api/v1/recipe-favorites`. The frontend uses the paired planner/composition flags;
+legacy current plans and the Week/settings/card presentations retain compatibility.
+New generation cannot silently fall back to single-dish V1.
+
+`src/worker/services/shopping-plan.ts` materializes trusted composed shortages for
+an explicit trip horizon. Migration 0042 keeps demand sources, command receipts,
+purchase overrides, item metadata and same-plan dismissals separate from physical
+stock. One active projected plan contributes demand per household list; another
+member's active plan returns a conflict. Saved recipes remain personal; only
+chosen purchase demand and dish attribution become household-shared.
+
+Hosted deployment, remote migration and paired flag activation remain a separate
+release operation. Current verification is recorded in CURRENT_STATE.md.
+
+---
+
 # Nine-region production release preparation - 2026-10-12 JST
 
 **Task/status:** RELEASE_PREPARATION. Active packet

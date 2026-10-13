@@ -46,6 +46,7 @@ export const AddComponentSchema = z.object({
   locked: z.boolean().default(true),
 }).strict();
 export const SwapComponentSchema = z.object({
+  locked: z.boolean().optional(),
   revision: PlanRevisionSchema,
   target: ComponentTargetSchema,
   role: MealRoleSchema.optional(),
@@ -93,6 +94,7 @@ export const PICKER_CUISINES = ['vietnamese', 'korean', 'japanese', 'chinese', '
 export const PickerCuisineSchema = z.enum(PICKER_CUISINES);
 export type PickerCuisine = z.infer<typeof PickerCuisineSchema>;
 export const PickerQuerySchema = z.object({
+  savedOnly: z.literal('true').optional(),
   role: MealRoleSchema.optional(),
   cuisine: PickerCuisineSchema.optional(),
   q: z.string().trim().max(80).optional(),

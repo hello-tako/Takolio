@@ -19,9 +19,13 @@ export function PlannerShell({
   setLocale: (locale: PlannerLocale) => void;
 }) {
   const t = plannerCopy[locale];
-  const shopping = useLocation().pathname.endsWith('/shopping');
+  const pathname = useLocation().pathname;
+  const shopping = pathname.endsWith('/shopping');
+  useEffect(() => {
+    document.documentElement.scrollTop = 0;
+  }, [pathname]);
   return (
-    <div className="planning-workspace" lang={locale}>
+    <div className={`planning-workspace${plan ? ' has-plan' : ''}`} lang={locale}>
       <KitchenHeader backTo="/" />
       <div className="planning-page-body">
         <header className="planning-heading">

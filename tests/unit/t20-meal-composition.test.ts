@@ -76,6 +76,18 @@ describe('T20 recipe roles', () => {
     expect(auditRoleDistribution(index)).toMatchObject({ unclassified: [], invalidRoles: [], duplicateAssignments: [], contradictions: [] });
   });
 
+  it('keeps vegetable-led fried mushrooms with coating egg as companions while respecting reviewed main and intentional vegetarian roles', () => {
+    const mushroom = runtime('mushroom', 'Nấm chiên giòn', { category: 'mon_chien', ingredients: [
+      { ingredientId: 'MUSHROOM', name: 'Nấm đùi gà', requiredQuantity: 300, unit: 'g' }, ...egg,
+    ] });
+    const rule = classifyRecipeRoles(mushroom);
+    expect(rule.roles).not.toContain('main');
+    expect(rule.roles).toEqual(['side', 'vegetable']);
+    expect(resolveRecipeRoles(rule, [{ recipeId: 'mushroom', role: 'main', source: 'reviewed', decision: 'assign',
+      confidence: null, reviewed: true }]).roles).toEqual(['main']);
+    expect(classifyRecipeRoles({ ...mushroom, category: 'mon_chay' }).roles).toContain('main');
+  });
+
   it('simple foods have explicit roles and never claim nutrition', () => {
     expect(SIMPLE_FOODS.every((food) => food.roles.includes('simple_food') && food.id.startsWith('sf-'))).toBe(true);
     expect(JSON.stringify(SIMPLE_FOODS)).not.toMatch(/calor|protein|kcal/i);

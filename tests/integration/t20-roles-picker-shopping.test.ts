@@ -42,17 +42,31 @@ describe('T20 role enrichment over the 500-recipe D1 release', () => {
     expect(audit.byRole).toMatchInlineSnapshot(`
       {
         "dessert": 0,
-        "main": 362,
-        "side": 87,
+        "main": 367,
+        "side": 88,
         "simple_food": 7,
         "soup": 70,
         "staple": 0,
-        "vegetable": 37,
+        "vegetable": 38,
       }
     `);
     expect(audit.reviewRequired.length).toMatchInlineSnapshot(`0`);
     for (const role of ['main', 'side', 'vegetable', 'soup'] as const) expect(audit.byRole[role]).toBeGreaterThan(20);
     expect(audit.reviewRequired.length).toBeLessThan(25);
+  });
+
+  it('classifies actual fried mushrooms as a companion and intentional vegetarian dishes as mains', async () => {
+    const authority = (await resolveRecipeAuthority(h.env(), { tenantKey: HOUSE })).snapshot;
+    const index = buildRoleIndex(authority.list());
+    const mushroom = authority.findById('imp-d7836b7d1a4d90b3');
+    expect(mushroom).toMatchObject({ title: 'Nấm chiên giòn', category: 'mon_chien' });
+    expect(mushroom?.ingredients.some(line => line.ingredientId === 'CHICKEN_EGG')).toBe(true);
+    expect(index.get(mushroom!.id)?.roles).toEqual(['side', 'vegetable']);
+    for (const recipeId of ['imp-2e39be75d8f72249', 'imp-4dbcf05ec1f88763', 'imp-8301ed8c884fb619',
+      'imp-c67f536bef1c38d6', 'imp-e771ef1a49b2aeed', 'vn-chay-04']) {
+      expect(authority.findById(recipeId)?.category).toBe('mon_chay');
+      expect(index.get(recipeId)?.roles).toEqual(['main', 'side', 'vegetable']);
+    }
   });
 
   it('persisted reviewed rows override rules for the D1 authority only (fenced to the visible universe)', async () => {

@@ -549,6 +549,16 @@ INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_integrity_check WHERE integr
 -- Expand checkout identity without rewriting existing intents/grants.
 CREATE TEMP TABLE smoke_pre_checkout_payments AS SELECT * FROM payment_intents;
 .read migrations/0041_checkout_admission.sql
+.read migrations/0042_family_meals_preferences_saved_shopping.sql
+INSERT INTO assert_zero SELECT COUNT(*) FROM family_meal_preferences;
+INSERT INTO assert_zero SELECT COUNT(*) FROM saved_recipe_entries;
+INSERT INTO assert_zero SELECT COUNT(*) FROM generated_family_meal_plans;
+INSERT INTO assert_zero SELECT COUNT(*) FROM shopping_plan_sources;
+INSERT INTO assert_zero SELECT COUNT(*) FROM shopping_plan_demands;
+INSERT INTO assert_zero SELECT COUNT(*) FROM shopping_generated_item_state;
+INSERT INTO assert_zero SELECT COUNT(*) FROM shopping_plan_commands;
+INSERT INTO assert_zero SELECT COUNT(*) FROM shopping_item_metadata;
+INSERT INTO assert_zero SELECT COUNT(*) FROM shopping_plan_item_dismissals;
 INSERT INTO assert_zero SELECT COUNT(*) FROM (SELECT * FROM smoke_pre_checkout_payments EXCEPT SELECT * FROM payment_intents);
 INSERT INTO assert_zero SELECT COUNT(*) FROM checkout_admissions;
 INSERT INTO assert_zero SELECT COUNT(*) FROM payment_reconciliation_records;

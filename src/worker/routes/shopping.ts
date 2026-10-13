@@ -1,281 +1,185 @@
 import { Hono } from 'hono';
-import { Env, AuthContext } from '../types';
-import { SQL, D1DatabaseBinding } from '@frigo/db';
-import { StandardUnit } from '@frigo/domain';
-import { resolveRecipeAuthority } from '../services/recipe-authority';
+import { bodyLimit } from 'hono/body-limit';
+import { z } from 'zod';
+import type { Env, AuthContext } from '../types';
+import type { D1DatabaseBinding } from '@frigo/db';
+import { SharePlanShoppingSchema, ShoppingContributionSchema } from '../../../packages/domain/src/shopping-plan-api';
+import { sharePlanShopping } from '../services/shopping-plan';
+import { MealPlanningApplicationService } from '../services/meal-planning';
+import { MealPlanningError } from '../services/meal-planning-error';
+import { GeneratedMealPlanPersistenceError } from '../../../packages/db/src/meal-planning';
+import { readFamilyPreferences } from '../../../packages/db/src/family-preferences';
+import { backgroundExecutorOf, resolveRecipeAuthority } from '../services/recipe-authority';
 import { tenancyGuard } from '../middleware/tenancy';
 import { rateLimiter } from '../middleware/rate-limit';
 import { ShoppingItemCreateSchema, ShoppingItemUpdateSchema } from '../validation/schemas';
 
 export const shoppingRoutes = new Hono<{ Bindings: Env; Variables: { auth: AuthContext } }>();
-
-// Enforce multi-tenancy on all shopping list routes
 shoppingRoutes.use('/shopping-list*', tenancyGuard);
+shoppingRoutes.use('/shopping-list*', bodyLimit({maxSize:65_536}));
+shoppingRoutes.use('/shopping-list*', async (c,next) => {
+  c.header('Cache-Control','no-store');
+  return c.req.method === 'GET' ? next() : rateLimiter({maxRequests:60,windowSeconds:60,prefix:'rl_shop_w'})(c,next);
+});
 
-// Cap shopping-list mutations per user (reads are cheap)
-shoppingRoutes.use(
-  '/shopping-list',
-  async (c, next) => (c.req.method === 'GET' ? next() : rateLimiter({ maxRequests: 60, windowSeconds: 60, prefix: 'rl_shop_w' })(c, next))
-);
-shoppingRoutes.use(
-  '/shopping-list/*',
-  async (c, next) => (c.req.method === 'GET' ? next() : rateLimiter({ maxRequests: 60, windowSeconds: 60, prefix: 'rl_shop_w' })(c, next))
-);
-
-async function getOrCreateShoppingList(db: D1DatabaseBinding, householdId: string): Promise<string> {
-  const existing = await db
-    .prepare('SELECT id FROM shopping_lists WHERE household_id = ? LIMIT 1')
-    .bind(householdId)
-    .first<{ id: string }>();
-  if (existing) return existing.id;
-
-  const listId = `list_${householdId}`;
-  await db
-    .prepare('INSERT OR IGNORE INTO shopping_lists (id, household_id, name) VALUES (?, ?, ?)')
-    .bind(listId, householdId, 'Danh sách mua sắm')
-    .run();
+async function getOrCreateShoppingList(db:D1DatabaseBinding, householdId:string):Promise<string> {
+  const existing=await db.prepare('SELECT id FROM shopping_lists WHERE household_id = ? LIMIT 1').bind(householdId).first<{id:string}>();
+  if(existing) return existing.id;
+  const listId=`list_${householdId}`;
+  await db.prepare('INSERT OR IGNORE INTO shopping_lists(id,household_id,name) VALUES(?,?,?)').bind(listId,householdId,'Đi chợ cho gia đình').run();
   return listId;
 }
+interface ItemRow {
+  id:string; name:string; quantity:number; unit:string; is_checked:number; created_at:string;
+  ingredient_id:string|null; source_recipe_id:string|null; recipe_title:string|null;
+  ingredient_identity:string|null; recipe_identity:string|null; cannot_buy:number|null;
+  household_id:string; demand_key:string|null; is_overridden:number|null;
+}
+const SELECT_ITEMS=`SELECT si.*, sl.household_id, COALESCE(meta.recipe_title,r.title) AS recipe_title,
+  meta.ingredient_identity, meta.recipe_identity, meta.cannot_buy, state.demand_key, state.is_overridden
+  FROM shopping_items si JOIN shopping_lists sl ON sl.id=si.list_id
+  LEFT JOIN recipes r ON r.id=si.source_recipe_id
+  LEFT JOIN shopping_item_metadata meta ON meta.item_id=si.id
+  LEFT JOIN shopping_generated_item_state state ON state.item_id=si.id`;
+const dto=(row:ItemRow,contributions:unknown[]=[])=>({id:row.id,name:row.name,quantity:row.quantity,unit:row.unit,
+  isChecked:!!row.is_checked,cannotBuy:!!row.cannot_buy,ingredientId:row.ingredient_identity ?? row.ingredient_id,
+  sourceRecipeId:row.recipe_identity ?? row.source_recipe_id,sourceRecipeTitle:row.recipe_title ?? null,
+  createdAt:row.created_at,generated:row.demand_key !== null,quantityOverridden:!!row.is_overridden,contributions});
 
-// GET /api/v1/shopping-list
-shoppingRoutes.get('/shopping-list', async (c) => {
-  const auth = c.get('auth');
-  const db = c.env.DB;
-
-  if (!db) {
-    return c.json({ error: 'Database service unavailable', code: 'DATABASE_UNAVAILABLE' }, 503);
-  }
-
+shoppingRoutes.get('/shopping-list',async(c)=>{
+  if(!c.env.DB) return c.json({code:'DATABASE_UNAVAILABLE'},503);
   try {
-    const listId = await getOrCreateShoppingList(db, auth.householdId);
-    const res = await db
-      .prepare(
-        `SELECT id, list_id as listId, ingredient_id as ingredientId, name, quantity, unit, is_checked as isChecked, source_recipe_id as sourceRecipeId, created_at as createdAt 
-         FROM shopping_items 
-         WHERE list_id = ? 
-         ORDER BY is_checked ASC, created_at DESC`
-      )
-      .bind(listId)
-      .all();
-
-    const items = (res.results || []).map((row: any) => ({
-      id: row.id,
-      name: row.name,
-      quantity: row.quantity,
-      unit: row.unit as StandardUnit,
-      isChecked: Boolean(row.isChecked),
-      sourceRecipeTitle: row.sourceRecipeId || '',
-      createdAt: row.createdAt,
-    }));
-
-    return c.json({ items });
-  } catch (err) {
-    console.error('D1 GET shopping list failed:');
-    return c.json({ error: 'Database service unavailable', code: 'DATABASE_UNAVAILABLE' }, 503);
-  }
+    const listId=await getOrCreateShoppingList(c.env.DB,c.get('auth').householdId);
+    const [res,demands]=await Promise.all([
+      c.env.DB.prepare(`${SELECT_ITEMS} WHERE si.list_id=? ORDER BY si.is_checked ASC,si.created_at DESC`).bind(listId).all<ItemRow>(),
+      c.env.DB.prepare(`SELECT d.*,s.plan_id FROM shopping_plan_demands d JOIN shopping_plan_sources s ON s.id=d.source_id WHERE s.list_id=?
+        AND NOT EXISTS(SELECT 1 FROM shopping_plan_item_dismissals dismissed WHERE dismissed.list_id=s.list_id
+          AND dismissed.demand_key=d.demand_key AND dismissed.plan_id=s.plan_id)`).bind(listId)
+        .all<{demand_key:string;name:string;ingredient_id:string;unit:string;quantity:number|null;contributions_json:string;plan_id:string}>(),
+    ]);
+    if(!res.success || !demands.success) throw new Error('Shopping read failed');
+    const sources=new Map<string,unknown[]>();
+    for(const demand of demands.results){
+      const contributions=z.array(ShoppingContributionSchema).parse(JSON.parse(demand.contributions_json));
+      sources.set(demand.demand_key,[...(sources.get(demand.demand_key) ?? []),...contributions]);
+    }
+    return c.json({items:res.results.map(row=>dto(row,row.demand_key ? sources.get(row.demand_key) ?? [] : [])),
+      unresolvedItems:demands.results.filter(row=>row.quantity===null).map(row=>({ingredientId:row.ingredient_id,name:row.name,unit:row.unit,contributions:sources.get(row.demand_key) ?? []}))});
+  }catch{console.error('D1 GET shopping list failed:');return c.json({code:'DATABASE_UNAVAILABLE',error:'Database service unavailable'},503);}
 });
 
-// POST /api/v1/shopping-list/items
-shoppingRoutes.post('/shopping-list/items', async (c) => {
-  const auth = c.get('auth');
-  const db = c.env.DB;
-
-  const rawBody = await c.req.json().catch(() => ({}));
-  const parseResult = ShoppingItemCreateSchema.safeParse(rawBody);
-
-  if (!parseResult.success) {
-    return c.json(
-      {
-        error: parseResult.error.errors[0]?.message || 'Dữ liệu mặt hàng không hợp lệ',
-        code: 'VALIDATION_ERROR',
-      },
-      400
-    );
-  }
-
-  const body = parseResult.data;
-
-  const newItem = {
-    id: body.id || `shop_${Date.now()}_${Math.random().toString(36).substring(2, 8)}`,
-    name: body.name.trim(),
-    quantity: Number(body.quantity) || 1,
-    unit: body.unit || 'piece',
-    isChecked: false,
-    sourceRecipeTitle: body.sourceRecipeTitle || null,
-    createdAt: new Date().toISOString(),
-  };
-
-  if (!db) {
-    return c.json({ error: 'Database service unavailable' }, 503);
-  }
-
-  try {
-    const listId = await getOrCreateShoppingList(db, auth.householdId);
-
-    // A client-generated id makes an offline replay safe. If the id already
-    // exists, only return it when it belongs to this household's list.
-    if (body.id) {
-      const existingById = await db
-        .prepare(
-          `SELECT si.*, sl.household_id
-           FROM shopping_items si
-           JOIN shopping_lists sl ON si.list_id = sl.id
-           WHERE si.id = ? LIMIT 1`
-        )
-        .bind(body.id)
-        .first<any>();
-      if (existingById && existingById.household_id !== auth.householdId) {
-        return c.json({ error: 'ID mặt hàng đã thuộc hộ gia đình khác', code: 'CONFLICT' }, 409);
-      }
-      if (existingById) {
-        return c.json({
-          success: true,
-          idempotentReplay: true,
-          item: {
-            id: existingById.id,
-            name: existingById.name,
-            quantity: existingById.quantity,
-            unit: existingById.unit,
-            isChecked: Boolean(existingById.is_checked),
-            sourceRecipeTitle: existingById.source_recipe_id || null,
-            createdAt: existingById.created_at,
-          },
-        });
-      }
+shoppingRoutes.post('/shopping-list/items',async(c)=>{
+  const parsed=ShoppingItemCreateSchema.safeParse(await c.req.json().catch(()=>null));
+  if(!parsed.success) return c.json({code:'VALIDATION_ERROR',error:'Mặt hàng chưa hợp lệ.'},400);
+  if(!c.env.DB) return c.json({code:'DATABASE_UNAVAILABLE'},503);
+  const auth=c.get('auth');const body=parsed.data;const db=c.env.DB;
+  try{
+    const listId=await getOrCreateShoppingList(db,auth.householdId);
+    const id=body.id ?? `shop_${crypto.randomUUID()}`;
+    const existing=await db.prepare(`${SELECT_ITEMS} WHERE si.id=?`).bind(id).first<ItemRow>();
+    if(existing){
+      if(existing.household_id!==auth.householdId) return c.json({code:'CONFLICT'},409);
+      return c.json({success:true,idempotentReplay:true,item:dto(existing)});
     }
-
-    // T14D: source-recipe attribution reads the request's authority snapshot (content only; no inventory path).
-    const sourceRef = body.sourceRecipeId || body.sourceRecipeTitle;
-    const recipe = sourceRef ? (await resolveRecipeAuthority(c.env, { tenantKey: auth.householdId })).snapshot.findByIdOrSlug(String(sourceRef)) : null;
-    const recipeId = recipe ? recipe.id : null;
-
-    if (recipe) {
-      await db
-        .prepare(
-          `INSERT OR IGNORE INTO recipes (id, slug, title, cuisine, cook_time_minutes, servings, difficulty) VALUES (?, ?, ?, ?, ?, ?, ?)`
-        )
-        .bind(recipe.id, recipe.slug, recipe.title, recipe.cuisine, recipe.cookTimeMinutes, recipe.servings, recipe.difficulty)
-        .run();
-    }
-
-    await db
-      .prepare(SQL.INSERT_SHOPPING_ITEM.replace(/^INSERT /, 'INSERT OR IGNORE '))
-      .bind(newItem.id, listId, body.ingredientId || null, newItem.name, newItem.quantity, newItem.unit, 0, recipeId)
-      .run();
-
-    return c.json({ success: true, item: newItem }, 201);
-  } catch (err: any) {
-    console.error('D1 INSERT_SHOPPING_ITEM failed:');
-    return c.json({ error: 'Không thể thêm mặt hàng vào danh sách đi chợ', code: 'DATABASE_ERROR' }, 500);
-  }
+    const sourceRef=body.sourceRecipeId ?? body.sourceRecipeTitle;
+    const recipe=sourceRef ? (await resolveRecipeAuthority(c.env,{tenantKey:auth.householdId})).snapshot.findByIdOrSlug(sourceRef) : null;
+    if(body.sourceRecipeId && !recipe) return c.json({code:'RECIPE_UNAVAILABLE'},422);
+    const recipeId=recipe ? await db.prepare('SELECT id FROM recipes WHERE id=?').bind(recipe.id).first<{id:string}>() : null;
+    const ingredient=body.ingredientId ? await db.prepare('SELECT id FROM ingredients WHERE id=?').bind(body.ingredientId).first<{id:string}>() : null;
+    const results=await db.batch([
+      db.prepare(`INSERT OR IGNORE INTO shopping_items(id,list_id,ingredient_id,name,quantity,unit,is_checked,source_recipe_id)
+        SELECT ?,?,?,?,?,?,0,? WHERE EXISTS(SELECT 1 FROM household_members WHERE household_id=? AND user_id=?)`)
+        .bind(id,listId,ingredient?.id ?? null,body.name.trim(),body.quantity,body.unit,recipeId?.id ?? null,auth.householdId,auth.userId),
+      db.prepare(`INSERT OR IGNORE INTO shopping_item_metadata(item_id,ingredient_identity,recipe_identity,recipe_title)
+        SELECT id,?,?,? FROM shopping_items WHERE id=? AND list_id=?`).bind(body.ingredientId ?? null,recipe?.id ?? null,recipe?.title ?? body.sourceRecipeTitle ?? null,id,listId),
+    ]);
+    if(results.some(result=>!result.success)) throw new Error('Shopping insert failed');
+    const created=await db.prepare(`${SELECT_ITEMS} WHERE si.id=? AND sl.household_id=?`).bind(id,auth.householdId).first<ItemRow>();
+    if(!created) return c.json({code:'FORBIDDEN'},403);
+    return c.json({success:true,item:dto(created)},201);
+  }catch{return c.json({code:'DATABASE_ERROR',error:'Chưa thêm được mặt hàng.'},500);}
 });
 
-// PATCH /api/v1/shopping-list/items/:id
-shoppingRoutes.patch('/shopping-list/items/:id', async (c) => {
-  const auth = c.get('auth');
-  const id = c.req.param('id');
-  const db = c.env.DB;
-
-  const rawBody = await c.req.json().catch(() => ({}));
-  const parseResult = ShoppingItemUpdateSchema.safeParse(rawBody);
-
-  if (!parseResult.success) {
-    return c.json(
-      {
-        error: parseResult.error.errors[0]?.message || 'Dữ liệu cập nhật không hợp lệ',
-        code: 'VALIDATION_ERROR',
-      },
-      400
-    );
-  }
-
-  const body = parseResult.data;
-
-  if (!db) {
-    return c.json({ error: 'Database service unavailable' }, 503);
-  }
-
-  try {
-    // SEC-05 FIX: Tenancy check via shopping_lists table
-    const existing = await db
-      .prepare(
-        `SELECT si.* 
-         FROM shopping_items si
-         JOIN shopping_lists sl ON si.list_id = sl.id
-         WHERE si.id = ? AND sl.household_id = ?`
-      )
-      .bind(id, auth.householdId)
-      .first<any>();
-
-    if (!existing) {
-      return c.json({ error: 'Mặt hàng không tồn tại hoặc bạn không có quyền sửa', code: 'NOT_FOUND' }, 404);
-    }
-
-    const isChecked = body.isChecked !== undefined ? (body.isChecked ? 1 : 0) : existing.is_checked;
-    const quantity = body.quantity !== undefined ? Number(body.quantity) : existing.quantity;
-    const name = body.name !== undefined ? body.name.trim() : existing.name;
-
-    const updateResult = await db
-      .prepare(
-        `UPDATE shopping_items SET is_checked = ?, quantity = ?, name = ?, updated_at = datetime('now') WHERE id = ?`
-      )
-      .bind(isChecked, quantity, name, id)
-      .run();
-    if (typeof updateResult?.meta?.changes === 'number' && updateResult.meta.changes !== 1) {
-      return c.json({ error: 'Mặt hàng không tồn tại hoặc đã thay đổi', code: 'CONFLICT' }, 409);
-    }
-
-    const updatedItem = {
-      id,
-      name,
-      quantity,
-      unit: existing.unit,
-      isChecked: Boolean(isChecked),
-      sourceRecipeTitle: existing.source_recipe_id,
-      createdAt: existing.created_at,
-    };
-
-    return c.json({ success: true, item: updatedItem });
-  } catch (err: any) {
-    console.error('D1 PATCH shopping item failed:');
-    return c.json({ error: 'Lỗi cập nhật mặt hàng', code: 'DATABASE_ERROR' }, 500);
-  }
+const UpdateSchema=ShoppingItemUpdateSchema.extend({unit:z.enum(['g','kg','ml','l','piece','pack','bunch','slice']).optional()})
+  .refine(value=>Object.values(value).some(value=>value!==undefined),'At least one change required')
+  .refine(value=>!(value.isChecked===true&&value.cannotBuy===true),'Bought and unavailable are mutually exclusive');
+shoppingRoutes.patch('/shopping-list/items/:id',async(c)=>{
+  const parsed=UpdateSchema.safeParse(await c.req.json().catch(()=>null));
+  if(!parsed.success)return c.json({code:'VALIDATION_ERROR'},400);
+  if(!c.env.DB)return c.json({code:'DATABASE_UNAVAILABLE'},503);
+  const auth=c.get('auth');const id=c.req.param('id');
+  const body={...parsed.data,...(parsed.data.isChecked===true?{cannotBuy:false}:{}),...(parsed.data.cannotBuy===true?{isChecked:false}:{})};
+  const db=c.env.DB;
+  try{
+    const existing=await db.prepare(`${SELECT_ITEMS} WHERE si.id=? AND sl.household_id=?`).bind(id,auth.householdId).first<ItemRow>();
+    if(!existing)return c.json({code:'NOT_FOUND'},404);
+    // Write only submitted fields so checking an item cannot restore a stale purchase quantity.
+    const fields:string[] = ["updated_at=datetime('now')"];
+    const values:Array<string|number> = [];
+    if(body.isChecked!==undefined){fields.push('is_checked=?');values.push(body.isChecked?1:0);}
+    if(body.quantity!==undefined){fields.push('quantity=?');values.push(body.quantity);}
+    if(body.name!==undefined){fields.push('name=?');values.push(body.name.trim());}
+    if(body.unit!==undefined){fields.push('unit=?');values.push(body.unit);}
+    const statements=[db.prepare(`UPDATE shopping_items SET ${fields.join(',')} WHERE id=?
+      AND list_id IN(SELECT id FROM shopping_lists WHERE household_id=?)
+      AND EXISTS(SELECT 1 FROM household_members WHERE household_id=? AND user_id=?)`)
+      .bind(...values,id,auth.householdId,auth.householdId,auth.userId)];
+    if(body.cannotBuy!==undefined)statements.push(db.prepare(`INSERT INTO shopping_item_metadata(item_id,cannot_buy) SELECT id,? FROM shopping_items
+      WHERE id=? AND list_id IN(SELECT id FROM shopping_lists WHERE household_id=?)
+      AND EXISTS(SELECT 1 FROM household_members WHERE household_id=? AND user_id=?)
+      ON CONFLICT(item_id) DO UPDATE SET cannot_buy=excluded.cannot_buy`)
+      .bind(body.cannotBuy?1:0,id,auth.householdId,auth.householdId,auth.userId));
+    if(body.quantity!==undefined||body.name!==undefined||body.unit!==undefined)statements.push(db.prepare(`UPDATE shopping_generated_item_state SET is_overridden=1 WHERE item_id=?
+      AND list_id IN(SELECT id FROM shopping_lists WHERE household_id=?)
+      AND EXISTS(SELECT 1 FROM household_members WHERE household_id=? AND user_id=?)`)
+      .bind(id,auth.householdId,auth.householdId,auth.userId));
+    const results=await db.batch(statements);
+    if(results.some(result=>!result.success))throw new Error('Shopping update failed');
+    if(results[0].meta.changes!==1)return c.json({code:'CONFLICT'},409);
+    const updated=await db.prepare(`${SELECT_ITEMS} WHERE si.id=? AND sl.household_id=?`).bind(id,auth.householdId).first<ItemRow>();
+    return c.json({success:true,item:dto(updated!)});
+  }catch{return c.json({code:'DATABASE_ERROR'},500);}
 });
-
-// DELETE /api/v1/shopping-list/items/:id
-shoppingRoutes.delete('/shopping-list/items/:id', async (c) => {
-  const auth = c.get('auth');
-  const id = c.req.param('id');
-  const db = c.env.DB;
-
-  if (!db) {
-    return c.json({ error: 'Database service unavailable' }, 503);
-  }
-
-  try {
-    // SEC-05 FIX: Tenancy check via shopping_lists table
-    const existing = await db
-      .prepare(
-        `SELECT si.id 
-         FROM shopping_items si
-         JOIN shopping_lists sl ON si.list_id = sl.id
-         WHERE si.id = ? AND sl.household_id = ?`
-      )
-      .bind(id, auth.householdId)
-      .first<{ id: string }>();
-
-    if (!existing) {
-      return c.json({ error: 'Mặt hàng không tồn tại hoặc bạn không có quyền xóa', code: 'NOT_FOUND' }, 404);
-    }
-
-    const deleteResult = await db.prepare(SQL.DELETE_SHOPPING_ITEM).bind(id).run();
-    if (typeof deleteResult?.meta?.changes === 'number' && deleteResult.meta.changes !== 1) {
-      return c.json({ error: 'Mặt hàng không tồn tại hoặc đã được xóa', code: 'CONFLICT' }, 409);
-    }
-
-    return c.json({ success: true, message: 'Đã xóa mặt hàng thành công' });
-  } catch (err: any) {
-    console.error('D1 DELETE_SHOPPING_ITEM failed:');
-    return c.json({ error: 'Lỗi xóa mặt hàng', code: 'DATABASE_ERROR' }, 500);
+shoppingRoutes.delete('/shopping-list/items/:id',async(c)=>{
+  if(!c.env.DB)return c.json({code:'DATABASE_UNAVAILABLE'},503);
+  const auth=c.get('auth');const id=c.req.param('id');
+  try{
+    const existing=await c.env.DB.prepare(`${SELECT_ITEMS} WHERE si.id=? AND sl.household_id=?`).bind(id,auth.householdId).first<ItemRow>();
+    if(!existing)return c.json({code:'NOT_FOUND'},404);
+    const deleted=await c.env.DB.batch([
+      c.env.DB.prepare(`INSERT INTO shopping_plan_item_dismissals(list_id,demand_key,plan_id)
+        SELECT state.list_id,state.demand_key,source.plan_id FROM shopping_generated_item_state state
+        JOIN shopping_lists list ON list.id=state.list_id JOIN shopping_plan_sources source ON source.list_id=state.list_id
+        JOIN shopping_plan_demands demand ON demand.source_id=source.id AND demand.demand_key=state.demand_key
+        WHERE state.item_id=? AND list.household_id=?
+        AND EXISTS(SELECT 1 FROM household_members WHERE household_id=? AND user_id=?)
+        ON CONFLICT(list_id,demand_key) DO UPDATE SET plan_id=excluded.plan_id`)
+        .bind(id,auth.householdId,auth.householdId,auth.userId),
+      c.env.DB.prepare(`DELETE FROM shopping_items WHERE id=? AND list_id IN(SELECT id FROM shopping_lists WHERE household_id=?)
+        AND EXISTS(SELECT 1 FROM household_members WHERE household_id=? AND user_id=?)`).bind(id,auth.householdId,auth.householdId,auth.userId),
+    ]);
+    if(deleted.some(result=>!result.success))throw new Error('Shopping delete failed');
+    if(deleted[1].meta.changes!==1)return c.json({code:'CONFLICT'},409);
+    return c.json({success:true});
+  }catch{return c.json({code:'DATABASE_ERROR'},500);}
+});
+shoppingRoutes.post('/shopping-list/from-plan',async(c)=>{
+  const auth=c.get('auth');
+  if(auth.isGuest)return c.json({code:'REGISTERED_ACCOUNT_REQUIRED'},403);
+  if(c.env.MEAL_PLANNER_ENABLED!=='true'||c.env.MEAL_COMPOSITION_V2_ENABLED!=='true')return c.json({code:'MEAL_COMPOSITION_DISABLED'},404);
+  if(!c.env.DB)return c.json({code:'DATABASE_UNAVAILABLE'},503);
+  const parsed=SharePlanShoppingSchema.safeParse(await c.req.json().catch(()=>null));
+  const key=c.req.header('Idempotency-Key');
+  if(!parsed.success||!key)return c.json({code:'VALIDATION_ERROR',error:'Thiếu khoảng ngày hoặc mã lệnh.'},422);
+  try{
+    const service=new MealPlanningApplicationService(c.env.DB,{compositionV2Enabled:true,
+      familyPreferences:scope=>readFamilyPreferences(c.env.DB,scope),
+      recipeAuthority:async scope=>(await resolveRecipeAuthority(c.env,{tenantKey:scope.householdId,backgroundExecutor:backgroundExecutorOf(c)})).snapshot});
+    const scope={householdId:auth.householdId,userId:auth.userId};
+    return c.json(await sharePlanShopping(c.env.DB,scope,parsed.data,key,()=>service.compositions().shoppingDemand(scope,parsed.data.planId,parsed.data.expectedRevision)));
+  }catch(error){
+    if(error instanceof MealPlanningError)return c.json({code:error.code,error:error.message},error.status);
+    if(error instanceof GeneratedMealPlanPersistenceError)return c.json({code:error.code},error.code==='NOT_FOUND'?404:error.code==='FORBIDDEN'?403:409);
+    return c.json({code:'SHOPPING_UPDATE_FAILED',error:'Chưa cập nhật được danh sách đi chợ từ thực đơn.'},503);
   }
 });

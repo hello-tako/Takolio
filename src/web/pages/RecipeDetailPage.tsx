@@ -3,6 +3,7 @@ import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { evaluateRecipeAvailability, type RecipeIngredientAvailability } from '@frigo/recipes';
 import { TopBar } from '../components/common/TopBar';
+import { SaveRecipeButton } from '../components/common/SaveRecipeButton';
 import { RecipeMedia } from '../components/common/RecipeMedia';
 import { Button } from '../components/common/Button';
 import { InlineError, SkeletonCard } from '../components/common/AsyncState';
@@ -86,7 +87,7 @@ export const RecipeDetailPage: React.FC = () => {
   });
 
   const addToShopping = useMutation({
-    mutationFn: ({ ingredient: ing, sourceRecipeTitle }: ShoppingShortfall) => {
+    mutationFn: ({ ingredient: ing, sourceRecipeTitle, sourceRecipeKey }: ShoppingShortfall) => {
       if (ing.missingQuantity === null || ing.missingQuantity <= 0) {
         throw new Error('Cần kiểm tra lượng trước khi thêm vào danh sách mua.');
       }
@@ -95,6 +96,8 @@ export const RecipeDetailPage: React.FC = () => {
         quantity: ing.missingQuantity,
         unit: ing.unit,
         sourceRecipeTitle,
+        ingredientId: ing.ingredientId,
+        sourceRecipeId: sourceRecipeKey,
       });
     },
     onSuccess: (_data, { ingredient, sourceRecipeKey }) => {
@@ -205,6 +208,7 @@ export const RecipeDetailPage: React.FC = () => {
             <h1 className="font-heading font-bold text-[28px] leading-tight text-semantic-text-primary sm:text-[32px]">
               {recipe.title}
             </h1>
+            <SaveRecipeButton recipeId={recipe.id} title={recipe.title} />
             <div className="recipe-facts flex items-center gap-4 text-sm mt-3 text-semantic-text-secondary">
               <span className="flex items-center gap-1">
                 <Clock aria-hidden="true" className="w-4 h-4 text-takosan-green" />
