@@ -3082,3 +3082,11 @@ fetch and match those exact served assets before recording success. Same-SHA
 service-worker metadata alone cannot distinguish the ON and OFF UI builds.
 Staging preserves exact aggregate counts and media diagnostics, not database byte
 content or R2 availability; runtime catalog/media authority checks remain separate.
+
+Hosted staging pre-health exposed D1's SQLite column limit: the103-column
+aggregate baseline cannot execute under SQLITE_LIMIT_COLUMN100. Split the
+unchanged aggregate set into two reviewed SELECTs (84and19columns) and require
+complete successful result shapes before normalization. Saved pre-baselines retain
+strict103-field validation. This is read-only count preservation across observations,
+not a transactionally pinned snapshot or byte-content proof. Exact current-main/CI,
+ledger/bookmark/schema gates and migration order remain unchanged.

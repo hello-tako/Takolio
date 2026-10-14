@@ -1,3 +1,4 @@
+import { spawnSync } from 'node:child_process';
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { tmpdir } from 'node:os';
@@ -7,7 +8,7 @@ import { afterEach, describe, expect, it } from 'vitest';
 import { listMigrations } from '../../scripts/d1-schema-gate.mjs';
 import {
   baselineQuery, CHAIN, familyStagingConfig, gate, PRE_TIP, run, schemaQuery, STAGING_D1, TIP,
-  verifyBaseline, verifyBaselinePreserved, verifyCandidateChain, verifyFamilySchema,
+  verifyBaseline, verifyBaselinePreserved, verifyCandidateChain, verifyFamilySchema, verifySavedBaseline,
 } from '../../scripts/staging-family-migration-check.mjs';
 
 const { load } = createRequire(createRequire(import.meta.url).resolve('eslint/package.json'))('js-yaml');
@@ -23,6 +24,9 @@ function legacyDatabase() {
     database.exec(readFileSync(`migrations/${migration}`, 'utf8'));
   }
   return database;
+}
+function baselineResults(database) {
+  return baselineQuery().split(';').map((query) => ({ success: true, results: [database.prepare(query).get()] }));
 }
 function schemaRows() {
   const database = new DatabaseSync(':memory:');
@@ -100,32 +104,114 @@ describe('bounded staging 0041->0042->0043 family migration', () => {
     expect(verifyFamilySchema(result(whitespace)).constraints).toBe('PASS');
   });
 
-  it('captures only counts for all 83 legacy tables and media diagnostics and preserves them exactly', () => {
+  it('captures only counts for all 83 legacy tables and media diagnostics and preserves all 103 aggregates', () => {
     const database = legacyDatabase();
     try {
       const sql = baselineQuery();
-      const row = database.prepare(sql).get();
+      const remote = baselineResults(database);
+      expect(remote.map((statement) => Object.keys(statement.results[0]).length)).toEqual([84, 19]);
+      const row = verifyBaseline(remote);
       expect(Object.keys(row)).toHaveLength(103);
       const tables = database.prepare("SELECT name FROM sqlite_master WHERE type = 'table' AND name NOT LIKE 'sqlite_%'").all();
       expect(tables).toHaveLength(83);
       for (const { name } of tables) expect(row[name], name).toBe(database.prepare(`SELECT COUNT(*) AS count FROM ${name}`).get().count);
       expect(row).toMatchObject({ recipes: 500, recipe_media: 500, media_total: 500, media_ready: 0,
         shopping_lists: 1, shopping_items: 0, generated_meal_plans: 0, inventory_lots: 0 });
-      expect(verifyBaseline(result([row]))).toEqual(row);
-      expect(verifyBaselinePreserved(result([row]), result([row]))).toMatchObject({ drift: 'none', media: 'unchanged' });
-      for (const key of ['inventory_lots', 'shopping_items', 'recipe_media', 'media_ready', 'generated_meal_plan_components']) {
-        expect(() => verifyBaselinePreserved(result([row]), result([{ ...row, [key]: row[key] + 1 }])))
-          .toThrow(/aggregate drift/);
+      expect(verifySavedBaseline(row)).toEqual(row);
+      expect(verifyBaselinePreserved(result([row]), remote)).toEqual({ drift: 'none', aggregates: 103, media: 'unchanged' });
+      for (const key of Object.keys(row)) {
+        const drift = structuredClone(remote);
+        const group = drift.find((statement) => Object.hasOwn(statement.results[0], key));
+        group.results[0][key] += 1;
+        expect(() => verifyBaselinePreserved(result([row]), drift), key)
+          .toThrow(key === 'recipes' ? /500 recipes/ : /aggregate drift/);
       }
-      const missing = { ...row };
-      delete missing.media_total;
-      expect(() => verifyBaseline(result([missing]))).toThrow(/incomplete/);
-      expect(() => verifyBaseline(result([{ ...row, unexpected: 0 }]))).toThrow(/incomplete/);
-      expect(() => verifyBaseline(result([{ ...row, media_ready: null }]))).toThrow(/invalid/);
-      expect(() => verifyBaseline(result([{ ...row, recipes: 499 }]))).toThrow(/500 recipes/);
-      expect(() => verifyBaseline(result([row, row]))).toThrow(/one successful/);
       expect(sql).not.toMatch(/SELECT\s+\*|SELECT\s+(?:email|token|preferences_json|response_json)\b/i);
     } finally { database.close(); }
+  });
+
+  it('rejects malformed, duplicated, missing or reordered remote groups and never accepts a saved row as remote data', () => {
+    const database = legacyDatabase();
+    try {
+      const valid = baselineResults(database);
+      const row = verifyBaseline(valid);
+      for (const invalid of [undefined, {}, [], result([row]), [...valid, valid[0]],
+        [{ ...valid[0], success: false }, valid[1]], [valid[0], { ...valid[1], success: false }],
+        [{ ...valid[0], results: [] }, valid[1]], [valid[0], { ...valid[1], results: [] }],
+        [{ ...valid[0], results: [valid[0].results[0], valid[0].results[0]] }, valid[1]],
+        [valid[0], { ...valid[1], results: [valid[1].results[0], valid[1].results[0]] }]]) {
+        expect(() => verifyBaseline(invalid)).toThrow(/two successful/);
+      }
+      for (const invalid of [[valid[1], valid[0]], [valid[0], valid[0]], [valid[1], valid[1]]]) {
+        expect(() => verifyBaseline(invalid)).toThrow(/incomplete/);
+      }
+      for (const [index, key] of [[0, 'inventory_lots'], [1, 'media_ready']]) {
+        const missing = structuredClone(valid);
+        delete missing[index].results[0][key];
+        expect(() => verifyBaseline(missing)).toThrow(/incomplete/);
+        const extra = structuredClone(valid);
+        extra[index].results[0].unexpected = 0;
+        expect(() => verifyBaseline(extra)).toThrow(/incomplete/);
+        for (const value of [null, '0', -1, 0.5, Number.MAX_SAFE_INTEGER + 1, NaN, Infinity]) {
+          const bad = structuredClone(valid);
+          bad[index].results[0][key] = value;
+          expect(() => verifyBaseline(bad)).toThrow(/invalid/);
+        }
+        for (const badRow of [null, [], 500]) {
+          const bad = structuredClone(valid);
+          bad[index].results[0] = badRow;
+          expect(() => verifyBaseline(bad)).toThrow(/invalid/);
+        }
+      }
+      const duplicate = structuredClone(valid);
+      duplicate[0].results[0].recipes = duplicate[1].results[0].recipes;
+      expect(() => verifyBaseline(duplicate)).toThrow(/incomplete/);
+      const moved = structuredClone(valid);
+      moved[0].results[0].media_ready = moved[1].results[0].media_ready;
+      delete moved[1].results[0].media_ready;
+      expect(() => verifyBaseline(moved)).toThrow(/incomplete/);
+      const wrongCount = structuredClone(valid);
+      wrongCount[1].results[0].recipes = 499;
+      expect(() => verifyBaseline(wrongCount)).toThrow(/500 recipes/);
+      expect(() => verifyBaselinePreserved(valid, valid)).toThrow(/normalized saved/);
+      expect(() => verifyBaselinePreserved(result([row]), result([row]))).toThrow(/two successful/);
+      for (const bad of [null, { ...row, unexpected: 0 }, { ...row, media_ready: null }]) {
+        expect(() => verifySavedBaseline(bad)).toThrow(/invalid/);
+        expect(() => verifyBaselinePreserved(result([bad]), valid)).toThrow(/invalid/);
+      }
+      const missingSaved = { ...row };
+      delete missingSaved.media_total;
+      expect(() => verifyBaselinePreserved(result([missingSaved]), valid)).toThrow(/incomplete/);
+    } finally { database.close(); }
+  });
+
+  it('reproduces the original D1 column-limit failure and executes both bounded statements at 0041 and 0043', () => {
+    const [counts, catalog] = baselineQuery().split(';').map((query) => query.trim());
+    const original = `${counts}, ${catalog.slice('SELECT '.length)}`;
+    const execute = (tip, sql) => spawnSync('sqlite3', ['-json', ':memory:'], {
+      encoding: 'utf8', input: `.bail on\n.limit column 100\n${names.filter((name) => name <= tip)
+        .map((name) => readFileSync(`migrations/${name}`, 'utf8')).join('\n')}\n${sql};\n`,
+    });
+    const failed = execute(PRE_TIP, original);
+    expect(failed.error).toBeUndefined();
+    expect(failed.status).toBe(1);
+    expect(failed.stderr).toMatch(/too many columns in result set/i);
+    let before;
+    for (const tip of [PRE_TIP, TIP]) {
+      const completed = execute(tip, baselineQuery());
+      expect(completed.error).toBeUndefined();
+      expect(completed.status, completed.stderr).toBe(0);
+      expect(completed.stderr).toBe('');
+      expect(completed.stdout).toMatch(/^\s*column\s+100\r?\n/);
+      const rows = completed.stdout.replace(/^\s*column\s+100\r?\n/, '').trim().split(/\r?\n/)
+        .map((line) => JSON.parse(line));
+      expect(rows.map((values) => Object.keys(values[0]).length)).toEqual([84, 19]);
+      const remote = rows.map((values) => ({ success: true, results: values }));
+      const normalized = verifyBaseline(remote);
+      expect(Object.keys(normalized)).toHaveLength(103);
+      if (!before) before = normalized;
+      expect(verifyBaselinePreserved(result([before]), remote)).toEqual({ drift: 'none', aggregates: 103, media: 'unchanged' });
+    }
   });
 
   it('fails closed before each required receipt stage and rejects partial or unknown ledgers', async () => {
@@ -147,34 +233,44 @@ describe('bounded staging 0041->0042->0043 family migration', () => {
     await expect(run('bookmark', receipt, [write('empty-bookmark.json', {})])).rejects.toThrow(/bookmark/);
   });
 
-  it('certifies the complete local rehearsal and rejects plan or post-migration data drift', async () => {
+  it('certifies the complete local rehearsal with a normalized saved baseline and rejects plan or post-migration data drift', async () => {
     const database = legacyDatabase();
     try {
       const { receipt, write, read } = fixture();
-      const baseline = result([database.prepare(baselineQuery()).get()]);
+      const baseline = baselineResults(database);
       const fk = write('fk.json', result([]));
       const quick = write('quick.json', result([{ quick_check: 'ok' }]));
       await run('identity', receipt, [write('list.json', [{ name: STAGING_D1.name, uuid: STAGING_D1.id }]),
         write('info.json', { name: STAGING_D1.name, uuid: STAGING_D1.id })]);
       await run('pre-ledger', receipt, [write('pre-ledger.json', result(names.filter((name) => name <= PRE_TIP).map((name) => ({ name })) ))]);
       await run('bookmark', receipt, [write('bookmark.json', { bookmark: 'local-rehearsal' })]);
+      await expect(run('pre-health', receipt, [fk, quick, write('unbounded-before.json', result([verifyBaseline(baseline)]))]))
+        .rejects.toThrow(/two successful/);
+      expect(read().preBaseline).toBeUndefined();
       await run('pre-health', receipt, [fk, quick, write('before.json', baseline)]);
+      expect(read().preBaseline).toEqual(verifyBaseline(baseline));
+      expect(Object.keys(read().preBaseline)).toHaveLength(103);
       for (const plan of [CHAIN[0], [...CHAIN].reverse().join('\n'), `${CHAIN.join('\n')}\n0044_unreviewed.sql`]) {
         await expect(run('plan', receipt, [write('wrong-plan.txt', plan)])).rejects.toThrow(/exactly/);
       }
       await run('plan', receipt, [write('plan.txt', CHAIN.join('\n'))]);
       for (const migration of CHAIN) database.exec(readFileSync(`migrations/${migration}`, 'utf8'));
-      const after = result([database.prepare(baselineQuery()).get()]);
+      const after = baselineResults(database);
       const postArgs = [write('post-ledger.json', result(names.map((name) => ({ name })))), fk, quick,
         write('after.json', after), write('schema.json', result(database.prepare(schemaQuery()).all())),
         write('schema-gate.json', result([]))];
-      const drift = result([{ ...after[0].results[0], media_total: 501 }]);
+      const drift = structuredClone(after);
+      drift[1].results[0].media_total += 1;
       await expect(run('post', receipt, [...postArgs.slice(0, 3), write('drift.json', drift), ...postArgs.slice(4)]))
         .rejects.toThrow(/media_total/);
+      await expect(run('post', receipt, [...postArgs.slice(0, 3),
+        write('unbounded-after.json', result([verifyBaseline(after)])), ...postArgs.slice(4)]))
+        .rejects.toThrow(/two successful/);
       expect(read().status).toBeUndefined();
       const completed = await run('post', receipt, postArgs);
       expect(completed).toMatchObject({ status: 'STAGING_0043_FAMILY_MEALS_CERTIFIED', aggregateDrift: 'none',
         postLedger: { count: 43, tip: TIP }, schemaCheck: { constraints: 'PASS' }, schemaGate: 'PASS' });
+      expect(completed.preBaseline).toEqual(verifyBaseline(baseline));
       expect(completed.timeTravel.bookmark).toBe('local-rehearsal');
       await run('pre-ledger', receipt, [postArgs[0]]);
       expect(read().preLedger).toMatchObject({ mode: 'certify', tip: TIP, chain: [] });
