@@ -111,3 +111,25 @@ Follow-up focused picker/bounds/performance: 3 files / 32 tests PASS (36.92s),
 `pnpm exec vitest run tests/integration/t20-scoped-picker-quantity.test.ts tests/integration/family-meal-planner-bounds.test.ts tests/integration/t20-performance.test.ts --maxWorkers=2`.
 Focused ESLint and app/Worker typecheck PASS. Runtime/build/migration source is
 unchanged from the full8440PASS checkpoint; exact-head hosted full CI is required.
+
+## Hosted staging boundary and D1 limit correction - 2026-10-15 JST
+
+PR75 merged headbdb5014d as a07b308c6997947c59a9e5f6ecf715b6b1eb573a.
+Exact-head CI38581755662 and exact-main CI38583565990 PASS359files/8440tests,
+589.91s and592.25s respectively; lint/types/migration smoke/build PASS.
+Staging migration38585376230 attempt1 certified identity/complete0041ledger and
+TimeTravelbookmark, then failed before apply at aggregate query. Apply SKIPPED;
+no new appdeploy or production mutation. Actual remote error stdout was not
+retained; exact query reproduces `too many columns in result set` under SQLite
+column100, matching D1/workerd's security limit.103wide baseline is incompatible.
+The narrow correction splits84+19columns and retains all103aggregates with strict
+shape validation. Product/runtime/migration bytes remain unchanged. New PR/exact
+head/mainCI and sequential staging receipt/deploy/smoke are required before prod.
+Official evidence: https://developers.cloudflare.com/d1/platform/limits/ and
+https://github.com/cloudflare/workerd/blob/main/src/workerd/util/sqlite.c++.
+
+Correction checks PASS: focused migration/workflow suite4files/70tests(6.55s),
+including12direct regressions, full lint/scopedESLint/diffcheck. NativeWrangler4.149
+localworkerd/D1 reproduced oldSQLITE_ERROR and accepted exact2results84/19; all103
+values match0041/0043 reference baselines. Independent source review no findings.
+No remote mutation; hosted exact-head/main gates remain pending for this fix.

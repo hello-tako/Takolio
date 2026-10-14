@@ -1,3 +1,43 @@
+# T25 staging D1 column-limit correction - 2026-10-15 JST
+
+**Status:** RELEASE_IN_PROGRESS; product source merged, staging migration stopped
+before mutation. PR75 merged final head bdb5014d67b3b13688db1746bd07c3c5b5bacd5c
+as main a07b308c6997947c59a9e5f6ecf715b6b1eb573a. Exact-head CI38581755662
+and exact-main CI38583565990 both PASS: 359 files / 8,440 tests, respectively
+589.91s and 592.25s; lint/types/migration smoke/build PASS. Merge tree equals
+reviewed head and preserves ancestry.
+
+**Hosted failure:** staging migration38585376230 attempt1 at main a07b308c
+failed during pre-health. Identity pinned to frigo-db-staging-v3 /
+7854298a-20f5-46aa-9cbf-917079c2a3dd, complete ledger41/tip0041 and Time Travel
+bookmark were certified. Actual bookmark step PASS; failure followed generated
+baseline SQL. Apply step was SKIPPED; no application deployment or production
+migration/deploy occurred. Redirected remote stdout was not uploaded, so its exact
+error text is unavailable. Sanitized receipt remains in scratch.
+
+**Cause and narrow correction:** baseline SQL returned103 columns, above D1's
+SQLITE_LIMIT_COLUMN100. The exact SQL deterministically fails with SQLite CLI
+column100 (`too many columns in result set`) and passes with103. Official
+Cloudflare limits and workerd SQLite security setup confirm100. Split only the
+aggregate query into84+19 columns, preserving all103 counts across83 legacy tables
+and catalog/media diagnostics. Strict parsing and persisted-baseline validation
+retain fail-closed drift/identity/ledger/schema/CI gates. No product/runtime,
+applied migration, auth/payment, dependency or production configuration change.
+
+**Verification:** focused migration/workflow checks PASS: 4 files / 70 tests
+(6.55s), including 12 direct family-migration regressions. Full lint, scoped
+ESLint and diff check PASS. Independent review found no actionable issue.
+Native Wrangler4.149/workerd local D1 reproduced the old103-column SQLITE_ERROR;
+new84+19 results PASS, with all103values equal to0041 and0043 references.
+Only an isolated local D1 received43migrations. New exact-head and exact-main
+hosted CI remain required before staging retry.
+User chooses automated checks/public hosted smoke; authenticated product flows
+remain NOT_TESTED. Existing production reviewer vn-taphoanhatung is required.
+
+**Next:** verify narrow correction; normal PR/merge and exact-main CI; run staging
+migration/deploy/smoke at the resulting immutable SHA; then protected production
+0041->0043 and shadow0->canary1->5->25->d1/0. Preserve previous receipts, all gates
+and additive schema on recovery. No production-success claim.
 # T25 hosted CI timeout correction - 2026-10-14 JST
 
 **Status:** RELEASE_IN_PROGRESS; PR75 final candidate CI retry pending.

@@ -36,32 +36,57 @@ export function baselineQuery() {
         .all().map(({ name }) => name);
     } finally { database.close(); }
   }
-  // Only aggregates leave D1; include every reviewed legacy table and media diagnostics.
+  // Only aggregates leave D1; separate catalog diagnostics to stay below D1's 100-column limit.
   const counts = legacyTables.filter((table) => table !== 'recipes')
     .map((table) => `(SELECT COUNT(*) FROM ${table}) AS ${table}`);
-  return `SELECT ${counts.join(', ')}, (SELECT COUNT(*) FROM recipes WHERE id LIKE 'vn-%') AS recipes_vn, (SELECT COUNT(*) FROM recipes WHERE id LIKE 'gl-%') AS recipes_global, ${catalogQuery().split(';')[0].slice('SELECT '.length)}`;
+  return `SELECT ${counts.join(', ')}, (SELECT COUNT(*) FROM recipes WHERE id LIKE 'vn-%') AS recipes_vn, (SELECT COUNT(*) FROM recipes WHERE id LIKE 'gl-%') AS recipes_global; ${catalogQuery().split(';')[0]}`;
 }
 
-function baselineFields() {
-  return [...baselineQuery().matchAll(/\bAS ([a-z0-9_]+)\b/g)].map((match) => match[1]).sort();
+function baselineFieldGroups() {
+  return baselineQuery().split(';').map((query) => [...query.matchAll(/\bAS ([a-z0-9_]+)\b/g)]
+    .map((match) => match[1]).sort());
 }
 
-export function verifyBaseline(statements) {
-  const actual = statements?.[0]?.results;
-  if (!Array.isArray(statements) || statements.length !== 1 || statements[0]?.success !== true ||
-      !Array.isArray(actual) || actual.length !== 1 || !actual[0] || typeof actual[0] !== 'object' ||
-      Array.isArray(actual[0])) throw new Error('Expected one successful family migration aggregate baseline');
-  const row = actual[0];
-  if (JSON.stringify(Object.keys(row).sort()) !== JSON.stringify(baselineFields()) ||
+function verifyAggregateRow(row, fields) {
+  if (!row || typeof row !== 'object' || Array.isArray(row) ||
+      JSON.stringify(Object.keys(row).sort()) !== JSON.stringify(fields) ||
       Object.values(row).some((value) => !Number.isSafeInteger(value) || value < 0)) {
     throw new Error('Family migration baseline is incomplete or contains invalid aggregates');
   }
+  return row;
+}
+
+export function verifySavedBaseline(row) {
+  verifyAggregateRow(row, baselineFieldGroups().flat().sort());
   if (row.recipes !== 500) throw new Error('Staging D1 does not contain the reviewed 500 recipes');
   return row;
 }
 
+export function verifyBaseline(statements) {
+  const groups = baselineFieldGroups();
+  if (!Array.isArray(statements) || statements.length !== groups.length ||
+      statements.some((statement) => statement?.success !== true ||
+        !Array.isArray(statement.results) || statement.results.length !== 1)) {
+    throw new Error('Expected two successful family migration aggregate results with one row each');
+  }
+  const row = {};
+  for (const [index, statement] of statements.entries()) {
+    const actual = verifyAggregateRow(statement.results[0], groups[index]);
+    for (const [key, value] of Object.entries(actual)) {
+      if (Object.hasOwn(row, key)) throw new Error('Family migration baseline contains duplicate aggregates');
+      row[key] = value;
+    }
+  }
+  return verifySavedBaseline(row);
+}
+
 export function verifyBaselinePreserved(pre, post) {
-  const before = verifyBaseline(pre);
+  // The generic staging runner reconstructs this single result from the validated saved receipt.
+  if (!Array.isArray(pre) || pre.length !== 1 || pre[0]?.success !== true ||
+      !Array.isArray(pre[0].results) || pre[0].results.length !== 1) {
+    throw new Error('Expected one normalized saved family migration baseline');
+  }
+  const before = verifySavedBaseline(pre[0].results[0]);
   const after = verifyBaseline(post);
   const changed = Object.keys(before).filter((key) => before[key] !== after[key]);
   if (changed.length) throw new Error(`Family migration aggregate drift detected in ${changed.join(', ')}`);
