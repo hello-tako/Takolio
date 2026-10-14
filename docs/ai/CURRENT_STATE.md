@@ -1,3 +1,54 @@
+# T25 canary/5 certified; canary/25 awaiting approval - 2026-10-15 JST
+
+**Hosted verification:** Canary/5 full suite PASS: 359 files / 8,442 tests,
+589.04s (`work/t25-production-canary5-full.log`). Earlier shadow 456.63s and
+canary/1 614.33s counts/evidence remain preserved. User selected automated checks
+and public smoke; authenticated hosted household flows remain `NOT_TESTED`.
+
+**Status:** IN_PROGRESS (`RELEASE_IN_PROGRESS`). Serving candidate remains
+`0ff82edb7c251be340b5e00fbcf0ae8703b22a55`, with approved hardened SHA
+`3a24808b97838235596a43694013e74b1ba64cc2`. The previous receipt documentation
+checkpoint is `e8c79dd7`; earlier CI/staging/migration/shadow/canary/1 evidence is
+preserved below.
+
+**Canary/5 completed:** Run `38635714965` SUCCESS after Environment approval.
+Root and independent verifier PASS for
+`work/t25-production-canary5/release-manifest.json`; the prior Worker/deployment
+joins exactly to certified canary/1. New Worker
+`28e28d93-2e95-4779-a624-bd054cbad5be`, deployment
+`6f064c1d-cac7-40e6-a241-18e64a6237c8`, binds canonical production D1.
+Receipt certifies exact candidate/hardening, ledger 43/tip 0043, paired flags ON,
+transition canary/1 -> canary/5, configured canary 5%, actual D1/global mixed,
+D1 ready, served 500 recipes, protected fingerprint
+`f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37`,
+no fallback and three asset/SW observations. Same-candidate paired-OFF recovery
+`5aad31a7-a186-43f8-9456-0339f669f9ea` is inactive and certified with compiled
+OFF assets; recovery traffic was not rehearsed and rollback was NOT_USED.
+
+**Canary/5 public smoke:** `work/t25-production-canary5-public-smoke.log` PASS
+with approved canary mode, exact SHA and three ordinary/revalidated SW observations,
+correct shell/SW/immutable asset cache, database ok, canary 5%/mixed and 500 recipes.
+Readiness remains degraded at canary; the authority notice is informational as
+recorded in `src/worker/config/validation.ts:149`. No authenticated household flow
+is claimed.
+
+**Active gate/next:** Canary/25 run `38642407644` passed its release job and is
+WAITING for `vn-taphoanhatung` at the protected production Environment. Actual
+approval, upload, receipt and smoke are pending. After approval, require exact
+predecessor join to canary/5 IDs above and the same SHA/hardening/paired flags,
+ledger/catalog/Worker/assets/SW and stage-specific public smoke. Then request d1/0
+only after canary/25 certification; final D1/500/no fallback/exact SHA/SW/no rollback
+proof remains outstanding. Root may checkpoint docs on the receipts branch;
+remote main stays `0ff82edb7c251be340b5e00fbcf0ae8703b22a55` until final rollout
+certification. Source/runtime/config/schema are unchanged; no final release claim.
+
+---
+
+## Prior Rollout Checkpoint - e8c79dd7
+
+The following entries preserve their recorded state; the current checkpoint above
+supersedes the earlier canary/5 approval and deployment claims.
+
 # T25 canary/1 certified; canary/5 awaiting approval - 2026-10-15 JST
 
 **Status:** IN_PROGRESS (`RELEASE_IN_PROGRESS`). Immutable candidate remains main

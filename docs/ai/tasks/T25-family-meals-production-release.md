@@ -1,5 +1,53 @@
 # T25 - Release Vietnamese family meals T22-T24
 
+**Hosted verification:** Canary/5 full suite PASS: 359 files / 8,442 tests,
+589.04s (`work/t25-production-canary5-full.log`). Earlier shadow 456.63s and
+canary/1 614.33s counts/evidence remain preserved. User selected automated checks
+and public smoke; authenticated hosted household flows remain `NOT_TESTED`.
+
+Status: IN_PROGRESS (`RELEASE_IN_PROGRESS`, 2026-10-15 JST).
+Candidate `0ff82edb7c251be340b5e00fbcf0ae8703b22a55`; hardened SHA
+`3a24808b97838235596a43694013e74b1ba64cc2`. Documentation checkpoint `e8c79dd7`
+and earlier CI/staging/migration/shadow/canary/1 evidence remain preserved below.
+
+## Current Verified Stage
+
+Canary/5 `38635714965` SUCCESS; root and independent verifier PASS for
+`work/t25-production-canary5/release-manifest.json` with exact canary/1 predecessor
+join. Current Worker `28e28d93-2e95-4779-a624-bd054cbad5be`, deployment
+`6f064c1d-cac7-40e6-a241-18e64a6237c8`. Ledger 43/tip 0043, paired ON flags,
+canonical DB binding, configured canary 5%, actual D1/global mixed, D1 ready,
+served 500/protected fingerprint/no fallback and three asset/SW observations PASS.
+Inactive paired-OFF recovery `5aad31a7-a186-43f8-9456-0339f669f9ea` has compiled
+OFF proof, no traffic rehearsal; rollback NOT_USED.
+
+Public smoke PASS (`work/t25-production-canary5-public-smoke.log`) for approved
+canary mode, exact SHA/SW/cache, database ok, mixed/canary 5%/500 authority.
+Canary readiness remains degraded with the informational authority notice defined
+at `src/worker/config/validation.ts:149`. Authenticated hosted flows are NOT_TESTED.
+
+## Remaining Gates
+
+Canary/25 `38642407644` release PASS; protected production WAITING for reviewer
+`vn-taphoanhatung`. Actual approval, upload, receipt and smoke remain pending.
+After approval, require exact Canary/5 predecessor join and candidate/hardening/
+paired flags, ledger/catalog/Worker/binding/assets/SW and canary public smoke.
+Only then request protected d1/0 and prove D1/500/no fallback/exact SHA/SW/no rollback.
+
+Source/runtime/config/schema unchanged. Root may checkpoint docs on
+`codex/family-release-receipts-20261015`; keep remote main at candidate SHA and
+never merge the receipts branch until final rollout certification. Retain additive
+0042/0043 and compatible flags-OFF recovery proof. No final release claim.
+
+---
+
+## Prior Rollout Checkpoint - e8c79dd7
+
+The current checkpoint supersedes earlier pending canary/5 claims; prior evidence
+and limitations remain unchanged below.
+
+# T25 - Release Vietnamese family meals T22-T24
+
 Status: IN_PROGRESS (`RELEASE_IN_PROGRESS`, 2026-10-15 JST).
 Immutable main candidate `0ff82edb7c251be340b5e00fbcf0ae8703b22a55`; approved
 hardened SHA `3a24808b97838235596a43694013e74b1ba64cc2`. User selected automated

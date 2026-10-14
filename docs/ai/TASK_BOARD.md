@@ -1,3 +1,43 @@
+# T25 canary/5 certified; canary/25 awaiting approval - 2026-10-15 JST
+
+**Hosted verification:** Canary/5 full suite PASS: 359 files / 8,442 tests,
+589.04s (`work/t25-production-canary5-full.log`). Earlier shadow 456.63s and
+canary/1 614.33s counts/evidence remain preserved. User selected automated checks
+and public smoke; authenticated hosted household flows remain `NOT_TESTED`.
+
+**State:** IN_PROGRESS (`RELEASE_IN_PROGRESS`). Candidate
+`0ff82edb7c251be340b5e00fbcf0ae8703b22a55`; hardened SHA
+`3a24808b97838235596a43694013e74b1ba64cc2`. Earlier verified gates and checkpoint
+`e8c79dd7` are preserved below.
+
+**Completed:** Canary/5 `38635714965` SUCCESS; root and independent receipt verifier
+PASS with exact canary/1 predecessor join. Authority is canary 5%, actual D1/global
+mixed, D1 ready, served 500/protected fingerprint/no fallback, ledger 43/tip 0043,
+paired flags ON, canonical Worker/DB binding and three asset/SW observations.
+Inactive same-candidate paired-OFF recovery is certified; rollback NOT_USED.
+Public canary-mode smoke PASS (`work/t25-production-canary5-public-smoke.log`):
+database ok, exact SHA/SW, cache policy and mixed/500 source. The canary readiness
+notice is informational (`src/worker/config/validation.ts:149`).
+
+**Active gate:** Canary/25 `38642407644` release PASS; production WAITING for
+reviewer `vn-taphoanhatung`. Upload, receipt and public smoke are not certified.
+
+**Next:** After approval, join exactly from Canary/5 Worker
+`28e28d93-2e95-4779-a624-bd054cbad5be` / deployment
+`6f064c1d-cac7-40e6-a241-18e64a6237c8`; verify candidate/hardening/paired flags,
+ledger, authority, Worker/binding/assets/SW and canary public smoke. Only after
+canary/25 PASS request final d1/0 and prove D1/500/no fallback/exact SHA/SW/no rollback.
+Root may checkpoint the four docs on the receipts branch; remote main remains
+candidate SHA until final certification. Source/runtime/config/schema unchanged;
+authenticated hosted household flows remain NOT_TESTED.
+
+---
+
+## Prior Rollout Checkpoint - e8c79dd7
+
+The current checkpoint supersedes the earlier pending canary/5 state. Historical
+evidence remains unchanged below.
+
 # T25 production rollout checkpoint - 2026-10-15 JST
 
 **State:** IN_PROGRESS (`RELEASE_IN_PROGRESS`); immutable main candidate
