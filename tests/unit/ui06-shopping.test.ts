@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { afterEach, beforeEach, expect, it, vi } from 'vitest';
 import { shoppingApi, projectShoppingList } from '../../src/web/services/shopping';
-import { parseShoppingForm } from '../../src/web/lib/shopping-form';
+import { parseShoppingForm, shoppingQuantity } from '../../src/web/lib/shopping-form';
 import { getPendingOps } from '../../src/web/lib/sync';
 import { privateCacheKey, resetPrivateSession } from '../../src/web/lib/private-session';
 
@@ -118,4 +118,64 @@ it('rejects invalid quantities before queuing an offline create', async () => {
   await expect(shoppingApi.addShoppingItem({ ...item, quantity: 0 })).rejects.toThrow();
   expect(getPendingOps()).toEqual([]);
   expect(fetchMock).not.toHaveBeenCalled();
+});
+it('offline status replay switches between unavailable and bought without retaining both badges', async () => {
+  localStorage.setItem(
+    privateCacheKey('shopping_list', 'house-a'),
+    JSON.stringify([{ ...item, cannotBuy: true }]),
+  );
+  fetchMock.mockRejectedValue(new TypeError('Failed to fetch'));
+  await shoppingApi.toggleShoppingItem(item.id, true);
+  expect(JSON.parse(getPendingOps()[0].body!)).toEqual({ isChecked: true, cannotBuy: false });
+  expect((await shoppingApi.getShoppingList())[0]).toMatchObject({
+    isChecked: true,
+    cannotBuy: false,
+    quantity: item.quantity,
+  });
+  await shoppingApi.updateShoppingItem(item.id, { cannotBuy: true });
+  expect(JSON.parse(getPendingOps()[1].body!)).toEqual({ cannotBuy: true, isChecked: false });
+  fetchMock.mockResolvedValue(
+    response({ items: [{ ...item, isChecked: true, cannotBuy: false }] }),
+  );
+  expect((await shoppingApi.getShoppingList())[0]).toMatchObject({
+    isChecked: false,
+    cannotBuy: true,
+    quantity: item.quantity,
+    pendingSync: true,
+  });
+  const pendingCount = getPendingOps().length;
+  await expect(
+    shoppingApi.updateShoppingItem(item.id, { isChecked: true, cannotBuy: true }),
+  ).rejects.toThrow();
+  expect(getPendingOps()).toHaveLength(pendingCount);
+});
+
+it.each([
+  [1 / 2, 'piece', '1/2 cái / quả / bìa'],
+  [1 / 3, 'bunch', '1/3 bó'],
+  [0.333333333333, 'bunch', '1/3 bó'],
+  [1 / 4, 'pack', '1/4 gói'],
+  [3 / 4, 'slice', '3/4 lát'],
+  [4 / 3, 'piece', '1 1/3 cái / quả / bìa'],
+  [2, 'piece', '2 cái / quả / bìa'],
+  [7 / 12, 'piece', 'Khoảng 0,58 cái / quả / bìa'],
+  [0.24999, 'piece', 'Khoảng 0,25 cái / quả / bìa'],
+  [777.5, 'g', '777,5 g'],
+  [0.25, 'g', '0,25 g'],
+  [0.125, 'kg', '0,125 kg'],
+  [1.25, 'ml', '1,25 ml'],
+  [0.333333333333, 'l', 'Khoảng 0,333 l'],
+  [0.0000456, 'g', '0,0000456 g'],
+  [0.000045678, 'g', 'Khoảng 0,0000457 g'],
+  [0.000000045678, 'ml', 'Khoảng 4,57E-8 ml'],
+] as const)(
+  'formats %s %s for shopping without changing the entered amount',
+  (quantity, unit, expected) => {
+    expect(shoppingQuantity(quantity, unit)).toBe(expected);
+    expect(parseShoppingForm('Test ingredient', String(quantity), unit)?.quantity).toBe(quantity);
+  },
+);
+it('never turns a tiny positive demand into displayed zero', () => {
+  expect(shoppingQuantity(Number.MIN_VALUE, 'piece')).not.toMatch(/(?:^| )0 cái/);
+  expect(shoppingQuantity(Number.MIN_VALUE, 'piece')).toContain('E-324');
 });

@@ -1,4 +1,5 @@
 import { rankRecipes } from './engine';
+import { scaleRecipeServings } from './servings';
 import type { Recipe, RecipeMatchResult, RecipeScoringContext } from './types';
 import { stableRuntimeJson } from './runtime-recipe';
 import {
@@ -38,7 +39,8 @@ export function rankDiscovery(
       ].some((text) => normalizeDiscoverySearch(text).includes(search))
     );
   });
-  return rankRecipes(candidates, {
+  const portioned = query.servings ? candidates.map(recipe => scaleRecipeServings(recipe, query.servings!)) : candidates;
+  return rankRecipes(portioned, {
     inventory,
     onlyNoBuyNeeded: query.noBuy,
     maxCookTimeMinutes: query.maxTime,

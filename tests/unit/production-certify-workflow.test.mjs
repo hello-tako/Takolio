@@ -32,8 +32,8 @@ const reviewedSchemaGate = {
   'scripts/d1-readonly-query.mjs': '9d43f62c25561423c6b4c00d611a262a82387dce724c6756274d1db9cfc4deb3',
   'scripts/d1-schema-gate.sh': 'e48596c6001f7fc20bb0d03213553f0bfe7575585bc02144d432f0a11cccb625',
   'scripts/d1-schema-gate.mjs': 'e443766807873c458581c82049cef1b0967dff2493b61804e1ae7f6bb6e7128a',
-  // Reviewed expand-only 0041: checkout tables/columns/index; existing read-only OTP gate preserved.
-  'scripts/d1-schema-gate.sql': 'eac5f2ca46dd131e1e843567ffdfe17b27fe2bcba615a4e2627e5fa93faefa15',
+  // Reviewed expand-only 0043: unknown-demand reviews and immutable receipts; read-only checks preserved.
+  'scripts/d1-schema-gate.sql': '4fe085ca882176d56a0e7e6f2b6f27a5c8b901d12c33cc37bd08ddd56f0cb06a',
 };
 const step = (name) => workflow().jobs.certify.steps.find((s) => s.name === name);
 const inline = (script) => script.split("<<'JS'\n")[1].split('\nJS')[0];

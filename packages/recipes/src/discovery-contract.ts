@@ -47,6 +47,8 @@ export const DiscoveryQuerySchema = z
       (value) => (typeof value === 'string' && /^[1-9][0-9]*$/.test(value) ? Number(value) : value),
       z.number().int().min(1).max(240).optional(),
     ),
+    servings: z.preprocess(value => typeof value === 'string' && /^[1-9][0-9]?$/.test(value) ? Number(value) : value,
+      z.number().int().min(1).max(20).optional()),
     page: integer(1, 9999),
     pageSize: integer(DISCOVERY_PAGE_SIZE, DISCOVERY_PAGE_SIZE),
     cursor: z.string().max(80).regex(DISCOVERY_CURSOR_PATTERN).optional(),

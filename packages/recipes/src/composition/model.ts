@@ -125,12 +125,12 @@ export function removeComponent(composition: MealComposition, componentId: strin
 
 /** Explicit user swap: replaces the dish (keeping identity, order and lock) and records manual provenance. */
 export function swapComponent(composition: MealComposition, componentId: string,
-  input: { target: ComponentTarget; role?: MealRole }, context: CompositionContext): MealComponent[] {
+  input: { target: ComponentTarget; role?: MealRole; locked?: boolean }, context: CompositionContext): MealComponent[] {
   const current = find(composition, componentId);
   const role = input.role ?? current.role;
   assertTarget(context, input.target, role);
   return normalizeComponents(composition.components.map((item) => item.id !== componentId ? item : component(input.target, {
-    id: item.id, role, ordinal: item.ordinal, locked: item.locked, provenance: 'manual',
+    id: item.id, role, ordinal: item.ordinal, locked: input.locked ?? item.locked, provenance: 'manual',
     createdRevision: item.createdRevision, updatedRevision: context.revision,
   })));
 }

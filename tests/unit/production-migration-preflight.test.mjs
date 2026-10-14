@@ -177,7 +177,7 @@ describe('production migration workflow ordering', () => {
     }
     expect(steps.indexOf(initialFence)).toBeLessThan(steps.indexOf(preflight));
     expect(steps.indexOf(finalFence)).toBe(steps.indexOf(apply) - 1);
-    expect(finalFence.if).toBe("contains(fromJSON('[\"0039_meal_composition_v2.sql\",\"0040_strict_otp_foundation.sql\",\"0041_checkout_admission.sql\"]'), inputs.migration) && steps.pre_ledger.outputs.mode == 'apply'");
+    expect(finalFence.if).toBe("contains(fromJSON('[\"0039_meal_composition_v2.sql\",\"0040_strict_otp_foundation.sql\",\"0041_checkout_admission.sql\",\"0042_family_meals_preferences_saved_shopping.sql\",\"0043_shopping_demand_review.sql\"]'), inputs.migration) && steps.pre_ledger.outputs.mode == 'apply'");
     expect(initialFence.run).toContain('"0040_strict_otp_foundation.sql"');
     const strictSchema = steps.find((step) => step.name === 'Certify exact strict OTP tables, indexes and constraints after 0040');
     expect(strictSchema.if).toBe("inputs.migration == '0040_strict_otp_foundation.sql'");

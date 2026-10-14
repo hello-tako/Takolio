@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import {
   ArrowLeft,
@@ -14,6 +14,7 @@ import {
   Volume2,
   VolumeX,
 } from 'lucide-react';
+import { scaleRecipeServings } from '@frigo/recipes';
 import { useCookingStore } from '../stores/useCookingStore';
 import { api } from '../services/api';
 import { queryKeys } from '../lib/queryKeys';
@@ -28,13 +29,18 @@ import { TAKOSAN_KITCHEN } from '../lib/takosan-kitchen';
 export const CookingModePage: React.FC = () => {
   const { slug, id } = useParams<{ slug?: string; id?: string }>();
   const recipeKey = slug || id || '';
-  return <CookingLoader key={recipeKey} recipeKey={recipeKey} />;
+  const [params] = useSearchParams();
+  const rawServings = params.get('servings') ?? '';
+  const servings = /^[1-9][0-9]?$/.test(rawServings) && Number(rawServings) <= 20
+    ? Number(rawServings) : undefined;
+  return <CookingLoader key={`${recipeKey}:${servings ?? 'base'}`} recipeKey={recipeKey} servings={servings} />;
 };
 
-function CookingLoader({ recipeKey }: { recipeKey: string }) {
+function CookingLoader({ recipeKey, servings }: { recipeKey: string; servings?: number }) {
   const { activeRecipe, runId, startCooking, attempt } = useCookingStore();
   const matches = Boolean(
-    activeRecipe && (activeRecipe.slug === recipeKey || activeRecipe.id === recipeKey),
+    activeRecipe && (activeRecipe.slug === recipeKey || activeRecipe.id === recipeKey)
+      && (servings === undefined || activeRecipe.servings === servings),
   );
   const blockedRun = Boolean(attempt && !['saved', 'queued'].includes(attempt.status));
   const recipeQuery = useQuery({
@@ -49,8 +55,8 @@ function CookingLoader({ recipeKey }: { recipeKey: string }) {
   });
   useEffect(() => {
     if (!matches && !blockedRun && recipeQuery.data?.recipe && inventoryQuery.data)
-      startCooking(recipeQuery.data.recipe, inventoryQuery.data);
-  }, [matches, blockedRun, recipeQuery.data, inventoryQuery.data, startCooking]);
+      startCooking(servings === undefined ? recipeQuery.data.recipe : scaleRecipeServings(recipeQuery.data.recipe, servings), inventoryQuery.data);
+  }, [matches, blockedRun, recipeQuery.data, inventoryQuery.data, startCooking, servings]);
   if (blockedRun && !matches)
     return (
       <div className="cooking-empty">

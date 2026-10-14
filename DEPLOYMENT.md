@@ -440,3 +440,26 @@ Local development now defaults Vite's API proxy to `127.0.0.1:8787`, never the
 production hostname. The managed preview uses `scripts/security-preview.mjs`
 (in-memory SQLite, no outbound backend fetch, no real mail/AI). Verify
 `/api/v1/health/ready` reports `development` before any local browser mutation.
+
+## Family meals 0042/0043 release
+
+Apply 0042 and 0043 before any current Worker serves shopping/profile/favorites
+traffic, independently of planner flags. Staging uses
+`staging-family-meals-migrate.yml` for the bounded 0041 -> 0043 chain. Production
+uses the existing Environment-protected D1 migration workflow, certifies the exact
+family tables/indexes/triggers after the chain, and accepts
+`expected_pre_tip=0041_checkout_admission.sql` and
+`migration=0043_shopping_demand_review.sql`, followed by the normal protected Deploy
+workflow. Keep both migrations on rollback. The Deploy workflow uploads and
+certifies an inactive current-candidate flags-OFF recovery before serving traffic,
+then rebuilds/checks the approved active flags. It prefers that recovery over an
+older binary after an upload/proof failure. This preparation is not evidence of
+an active recovery rehearsal. If recovery is used, its live root HTML and module
+bundle byte counts/SHA256 must match the certified flags-OFF build before success
+is recorded. Same-SHA flags-ON assets cannot satisfy that proof.
+
+The family-planning changes include new recipe-authority code. The strict unchanged
+D1 continuity check remains binding; this release restarts explicitly in shadow,
+then promotes the same SHA through canary 1, 5 and 25 percent to d1, with protected
+authority proof and normal production approvals at each step. Never silently
+set a catalog or planner flag outside the reviewed deploy workflow.

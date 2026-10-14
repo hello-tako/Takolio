@@ -17,6 +17,7 @@ import {
   provenanceLabel,
 } from '../lib/inventory-truth';
 import { ALL_RECIPES } from '@frigo/recipes';
+import { convertedInventoryQuantity } from '../lib/inventory-quantity';
 import { getIngredientImage } from '../lib/ingredient-images';
 import { Clock, ChefHat, Calendar, Layers, ArrowRight, PackageOpen, Receipt } from 'lucide-react';
 import { clsx } from 'clsx';
@@ -49,15 +50,16 @@ const CATEGORY_LABEL: Record<string, string> = {
 
 type EditDraft = {
   name: string;
+  quantity: string;
   unit: string;
   category: string;
   storage: string;
   expiryDate: string;
 };
-const EMPTY_DRAFT: EditDraft = { name: '', unit: '', category: '', storage: '', expiryDate: '' };
+const EMPTY_DRAFT: EditDraft = { name: '', quantity: '', unit: '', category: '', storage: '', expiryDate: '' };
 
 /** The lot an edit draft was opened for. A draft is never submitted elsewhere. */
-type DraftOwner = { routeId: string; itemId: string };
+type DraftOwner = { routeId: string; itemId: string; version: number };
 
 export const IngredientDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -74,6 +76,7 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
   const editButtonRef = useRef<HTMLButtonElement>(null);
   const nameInputRef = useRef<HTMLInputElement>(null);
   const wasEditing = useRef(false);
+  const quantityUnitRef = useRef('');
   const [actionError, setActionError] = useState<string | null>(null);
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState<EditDraft>(EMPTY_DRAFT);
@@ -219,14 +222,16 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
     setRefetchFailed(false);
     const initialDraft = {
       name: item.name,
+      quantity: String(item.quantity),
       unit: item.unit,
       category: item.category ?? 'other',
       storage: item.storage ?? 'fridge',
       expiryDate: expiry.date ?? '',
     };
+    quantityUnitRef.current = initialDraft.unit;
     setDraft(initialDraft);
     setEditBaseline(initialDraft);
-    setDraftOwner({ routeId, itemId: String(item.id) });
+    setDraftOwner({ routeId, itemId: String(item.id), version: Number(item.version) });
     setEditing(true);
   };
 
@@ -248,7 +253,21 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
       );
       return;
     }
+    const quantity = Number(draft.quantity);
+    if (!Number.isFinite(quantity) || quantity <= 0 || quantity > 10000) {
+      setActionError('Nhập lượng còn thực tế lớn hơn 0 và không quá 10.000 theo đơn vị đã chọn.');
+      return;
+    }
+    const baselineQuantity = convertedInventoryQuantity(Number(editBaseline.quantity), editBaseline.unit, draft.unit)
+      ?? Number(editBaseline.quantity);
+    const correctingQuantity = quantity !== baselineQuantity;
+    const changingMeasurement = correctingQuantity || draft.unit !== editBaseline.unit;
+    if (changingMeasurement && Number(item.version) !== draftOwner.version) {
+      setActionError('Nguyên liệu đã đổi trong lúc bạn sửa lượng hoặc đơn vị. Chọn “Hủy”, kiểm tra lượng mới rồi mở lại chỉnh sửa.');
+      return;
+    }
     const updates: Record<string, unknown> = {};
+    if (correctingQuantity) updates.quantity = quantity;
     // Refetches must not turn untouched draft fields into corrections.
     if (draft.name.trim() !== editBaseline.name.trim()) updates.name = draft.name.trim();
     if (draft.unit !== editBaseline.unit) updates.unit = draft.unit;
@@ -264,7 +283,7 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
       cancelEdit();
       return;
     }
-    mutate.mutate({ target: { id: String(item.id), version: Number(item.version) }, updates });
+    mutate.mutate({ target: { id: String(item.id), version: changingMeasurement ? draftOwner.version : Number(item.version) }, updates });
   };
 
   return (
@@ -433,6 +452,32 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
                 className="w-full h-11 px-3 rounded-xl border border-semantic-border text-sm font-medium text-semantic-text-primary bg-white focus:outline-none focus:ring-2 focus:ring-takosan-green/20 focus:border-takosan-green"
               />
             </div>
+            <div>
+              <label htmlFor="lot-quantity-input" className="block text-xs font-semibold text-semantic-text-secondary mb-1">
+                Lượng còn thực tế
+              </label>
+              <input
+                id="lot-quantity-input"
+                name="quantity"
+                type="number"
+                inputMode="decimal"
+                min="0"
+                max="10000"
+                step="any"
+                required
+                value={draft.quantity}
+                onChange={(event) => {
+                  quantityUnitRef.current = draft.unit;
+                  setDraft({ ...draft, quantity: event.target.value });
+                }}
+                aria-describedby="lot-quantity-note"
+                className="w-full h-11 px-3 rounded-xl border border-semantic-border text-sm font-medium text-semantic-text-primary bg-white focus:outline-none focus:ring-2 focus:ring-takosan-green/20 focus:border-takosan-green"
+              />
+              <p id="lot-quantity-note" className="mt-1 text-xs text-semantic-text-secondary">
+                Nhập lượng bạn vừa kiểm tra, ví dụ 0,5 kg hoặc 250 g.
+                {draft.unit !== editBaseline.unit && ' Kiểm tra lại lượng theo đơn vị mới trước khi lưu.'}
+              </p>
+            </div>
             <div className="stock-editor-grid">
               <div>
                 <label
@@ -445,7 +490,13 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
                   id="lot-unit-input"
                   name="unit"
                   value={draft.unit}
-                  onChange={(event) => setDraft({ ...draft, unit: event.target.value })}
+                  onChange={(event) => {
+                    const unit = event.target.value;
+                    // Retain the last measured unit across an incompatible selection.
+                    const converted = convertedInventoryQuantity(Number(draft.quantity), quantityUnitRef.current, unit);
+                    if (converted !== null) quantityUnitRef.current = unit;
+                    setDraft({ ...draft, unit, quantity: converted === null ? draft.quantity : String(converted) });
+                  }}
                   className="w-full h-11 px-3 rounded-xl border border-semantic-border text-sm font-medium text-semantic-text-primary bg-white focus:outline-none focus:ring-2 focus:ring-takosan-green/20 focus:border-takosan-green"
                 >
                   <option value="g">gam (g)</option>

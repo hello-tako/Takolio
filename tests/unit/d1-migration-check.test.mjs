@@ -892,10 +892,11 @@ describe('pre-deploy runtime catalog content certification', () => {
   });
 });
 
-describe('operational recipe media at complete 0038, 0039 and 0040 catalogs', () => {
+describe('operational recipe media at reviewed complete catalog tips', () => {
   const release = JSON.parse(readFileSync(CATALOG_RELEASE_MANIFEST, 'utf8'));
   const registry = JSON.parse(readFileSync(APPROVED_BATCHES_REGISTRY, 'utf8'));
-  const tips = ['0038_auth_onboarding_completion.sql', '0039_meal_composition_v2.sql', '0040_strict_otp_foundation.sql', '0041_checkout_admission.sql'];
+  const familyTips = ['0042_family_meals_preferences_saved_shopping.sql', '0043_shopping_demand_review.sql'];
+  const tips = ['0038_auth_onboarding_completion.sql', '0039_meal_composition_v2.sql', '0040_strict_otp_foundation.sql', '0041_checkout_admission.sql', ...familyTips];
   const firstId = release.orderedRecipeIds[0];
   let db, cliDirectory;
   const capture = () => catalogQuery().split(';').map((query) => db.execute(query));
@@ -938,6 +939,22 @@ describe('operational recipe media at complete 0038, 0039 and 0040 catalogs', ()
       ...(includeCatalog ? [save('catalog.json', capture())] : []),
     ];
     execFileSync(process.execPath, ['scripts/d1-migration-check.mjs', 'verify', manifestFile, ...evidence], { stdio: ['ignore', 'pipe', 'pipe'] });
+    return JSON.parse(readFileSync(manifestFile, 'utf8'));
+  };
+  const cliReleaseCertify = (tip, catalog = capture()) => {
+    const save = (name, value) => {
+      const file = path.join(cliDirectory, name);
+      writeFileSync(file, JSON.stringify(value));
+      return file;
+    };
+    const manifestFile = save('release-manifest.json', {
+      observedMigrationLedger: { version: tip }, schema: { version: tip },
+    });
+    const evidence = [
+      save('release-catalog.json', catalog), save('release-fk.json', ok([])),
+      save('release-quick.json', ok([{ quick_check: 'ok' }])),
+    ];
+    execFileSync(process.execPath, ['scripts/d1-migration-check.mjs', 'release-certify', manifestFile, ...evidence], { stdio: ['ignore', 'pipe', 'pipe'] });
     return JSON.parse(readFileSync(manifestFile, 'utf8'));
   };
   beforeAll(() => {
@@ -1083,6 +1100,21 @@ describe('operational recipe media at complete 0038, 0039 and 0040 catalogs', ()
   it.each(tips)('generic verify CLI accepts ready media at %s using mandatory catalog evidence', (tip) => {
     ready();
     expect(cliVerify(tip)).toMatchObject({ aggregateDrift: 'none', recipeMedia: { rows: 500, ready: 500, policy: 'OPERATIONAL_READY_OR_PENDING' } });
+  });
+  it.each(familyTips)('release certification preserves the ready catalog at family tip %s', (tip) => {
+    ready();
+    const before = db.query('SELECT id, status, storage_key, content_hash FROM recipe_media ORDER BY id');
+    expect(cliReleaseCertify(tip)).toMatchObject({
+      catalog: { tip, releaseComplete: true, mediaReady: 500, recipeMedia: { ready: 500 } },
+      health: { quickCheck: 'ok' },
+    });
+    expect(db.query('SELECT id, status, storage_key, content_hash FROM recipe_media ORDER BY id')).toEqual(before);
+  });
+  it.each(familyTips)('family tip %s still rejects absent active hero coverage', (tip) => {
+    ready();
+    db.execute('DELETE FROM recipe_media WHERE recipe_id = ?', [firstId]);
+    expect(() => verify(tip)).toThrow('recipes_without_active_hero=1');
+    expect(() => cliReleaseCertify(tip)).toThrow();
   });
   it('generic modern verify CLI fails closed without catalog evidence', () => {
     ready(); expect(() => cliVerify(tips[1], false)).toThrow();

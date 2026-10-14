@@ -97,7 +97,7 @@ function PlannerWorkspace() {
             </Card>
           ) : (
             <>
-              <FreshnessNotice plan={plan} locale={locale} />
+              <FreshnessNotice plan={plan} familyPlan={model.familyPlan} locale={locale} />
               {slotId ? (
                 <PlannerMeal
                   key={`${plan.id}:${plan.revision}:${slotId}`}

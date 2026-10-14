@@ -9,6 +9,7 @@ import {
   recordCookedGeneratedMealPlanAnnotation,
   type GeneratedMealPlanRecord,
 } from '../../../packages/db/src/meal-planning';
+import { recipeAuthoritySnapshotIsCurrent } from './recipe-authority';
 import { loadMealPlanningSnapshot } from '../../../packages/db/src/meal-planning-snapshot';
 import type { RecipeAuthoritySnapshot } from '../../../packages/recipes/src/recipe-authority';
 import {
@@ -28,12 +29,14 @@ import {
 import {
   createPlanningContext,
   canonicalJson,
+  readPlanningContext,
   planningReference,
 } from '../../../packages/recipes/src/planner-context';
 import {
   normalizePlannerRequest,
   PlannerLockSchema,
 } from '../../../packages/recipes/src/planner-request';
+import { projectInventoryRows } from '../../../packages/recipes/src/planner-inventory';
 import { planWeeklyMeals } from '../../../packages/recipes/src/weekly-planner';
 import {
   createShoppingContext,
@@ -59,9 +62,18 @@ import { explainMealReasons, type ExplanationTransport } from './meal-planning-e
 import {
   planHasCompositions,
   readPlanCompositions,
+  readRoleAssignments,
   writePlanCompositions,
 } from '../../../packages/db/src/meal-composition';
-import { MealCompositionService } from './meal-composition';
+import { MealCompositionService, roleIndexFor } from './meal-composition';
+import { familyMealRoles, familyMealRolesForComponents, planFamilyMeals, type FamilyPlanningResult } from '../../../packages/recipes/src/composition/family-planner';
+import { compositionShoppingSnapshot, evaluationScope, projectCompositions } from '../../../packages/recipes/src/composition/projection';
+import { readFamilyPreferences } from '../../../packages/db/src/family-preferences';
+import { FamilyPreferencesSchema, type FamilyPreferences } from '../../../packages/domain/src/family-preferences-api';
+import { FamilyMealPlanDtoSchema, CurrentFamilyMealPlanDtoSchema, type FamilyMealPlanDto } from '../../../packages/domain/src/family-meal-planning-api';
+import { assertFamilyPreferenceSnapshot, familyPlanningFenceStatements, FamilyPlanningInputChanged, readFamilyCatalogReceipts,
+  readFamilyPreferenceFence } from '../../../packages/db/src/family-planning-fence';
+import { createFamilyMealPlan, familyMetadataUpdateStatement, readFamilyPlanMetadata, type FamilyPlanMetadataWrite } from '../../../packages/db/src/family-meal-planning';
 
 type Scope = { householdId: string; userId: string };
 type Snapshot = Awaited<ReturnType<typeof loadMealPlanningSnapshot>>;
@@ -123,10 +135,11 @@ export interface MealPlanningServiceOptions {
    */
   recipeAuthority: (scope: Scope) => Promise<RecipeAuthoritySnapshot>;
   /**
-   * T20 (ADR-031): server flag `MEAL_COMPOSITION_V2_ENABLED`. When false every V1 operation is
-   * byte-for-byte the pre-T20 behaviour and no composition table is read.
+   * T20 (ADR-031): server flag `MEAL_COMPOSITION_V2_ENABLED`. Ordinary V1 plans retain
+   * pre-T20 behaviour without composition reads; stored family plans become read-only when off.
    */
   compositionV2Enabled?: boolean;
+  familyPreferences?: (scope: Scope) => Promise<{ revision: number; preferences: FamilyPreferences }>;
 }
 
 export class MealPlanningApplicationService {
@@ -339,6 +352,238 @@ export class MealPlanningApplicationService {
     };
   }
 
+  private async familySnapshot(scope: Scope, now: string, profile: { revision: number; preferences: FamilyPreferences }) {
+    const authority = await this.options.recipeAuthority(scope);
+    const before = authority.source === 'd1' ? await readFamilyCatalogReceipts(this.db) : [];
+    if (!await recipeAuthoritySnapshotIsCurrent(this.db, authority)) {
+      throw new MealPlanningError('CATALOG_AUTHORITY_CHANGED', 409, 'Catalog changed; retry after it has been revalidated');
+    }
+    const snapshot = await loadMealPlanningSnapshot(this.db, scope, now, authority);
+    const after = authority.source === 'd1' ? await readFamilyCatalogReceipts(this.db) : [];
+    const preferences = await readFamilyPreferenceFence(this.db, scope);
+    try {
+      if (canonicalJson(before) !== canonicalJson(after)) throw new FamilyPlanningInputChanged();
+      assertFamilyPreferenceSnapshot(preferences, scope, snapshot.rankingContext.preferences, profile.revision, profile.preferences);
+    } catch (error) {
+      if (error instanceof FamilyPlanningInputChanged) throw new MealPlanningError('PLAN_REVALIDATION_REQUIRED', 409, 'Planning inputs changed; retry with current data');
+      throw error;
+    }
+    return { authority, snapshot, fence: { ...preferences, inventory: snapshot.inventory, catalog: after } };
+  }
+
+  /** @internal Shared snapshot and atomic-write witnesses for composition and shopping mutations. */
+  async snapshotWithPlanningFences(scope: Scope, now: string) {
+    const profile = await this.familyProfile(scope);
+    const loaded = await this.familySnapshot(scope, now, profile);
+    return { ...loaded, profile, transactionFences: familyPlanningFenceStatements(this.db, scope, loaded.fence) };
+  }
+
+  private async familyRoleIndex(authority: RecipeAuthoritySnapshot) {
+    return roleIndexFor(authority, authority.source === 'd1' ? await readRoleAssignments(this.db, new Set(authority.list().map((recipe) => recipe.id))) : []);
+  }
+
+  async familyProfile(scope: Scope) {
+    const profile = this.options.familyPreferences ? await this.options.familyPreferences(scope)
+      : await readFamilyPreferences(this.db, scope);
+    return { revision: profile.revision, preferences: FamilyPreferencesSchema.parse(profile.preferences) };
+  }
+
+  private familyRequest(intent: MealPlanningIntent, context: ReturnType<MealPlanningApplicationService['planningContext']>) {
+    const request = { startDate: intent.startDate, horizonDays: intent.horizonDays, defaultServings: intent.defaultServings, mode: intent.mode, slots: intent.slots };
+    try { normalizePlannerRequest(request, readPlanningContext(context).reference); }
+    catch { throw new MealPlanningError('INVALID_PLANNING_HORIZON', 422, 'Slots must be unique, future and inside the planning horizon'); }
+    return request;
+  }
+
+  private familyPolicy(result: FamilyPlanningResult, profile: { revision: number; preferences: FamilyPreferences }): FamilyPlanMetadataWrite['policy'] {
+    return { mealStyle: profile.preferences.mealStyle, preferredRegions: profile.preferences.preferredRegions,
+      internationalMealsPerWeek: profile.preferences.internationalMealsPerWeek,
+      internationalGeneratedMainCount: result.internationalGeneratedMainCount,
+      lockedInternationalMainCount: result.lockedInternationalMainCount, defaultCuisine: 'vietnamese', profileRevision: profile.revision };
+  }
+
+  /** A V1-compatible anchor projection of the actual chosen compositions, with one sequential shopping projection. */
+  private familyStoredResult(scope: Scope, id: string, intent: MealPlanningIntent, snapshot: Snapshot, now: string,
+    planning: FamilyPlanningResult) {
+    const context = this.planningContext(snapshot, this.reference(now, intent.utcOffsetMinutes));
+    const source = readPlanningContext(context);
+    const base = { result: { search: { exhaustive: false, plannerExhaustive: false, recipeExhaustive: true, truncated: false,
+      limitReasons: [] as string[], incompleteReasons: [], rejections: [] } }, shoppingPlan: ShoppingMealPlanSnapshotSchema.parse({
+      schemaVersion: 1, id, householdId: scope.householdId, userId: scope.userId, planningReference: planning.reference,
+      sourceSnapshot: { id: source.snapshotId, capturedAt: planning.reference.instant, fingerprint: source.fingerprint,
+        catalogSource: source.catalog.source, recipes: source.catalog.recipes.map((recipe) => ({ id: recipe.id, version: recipe.provenance.version })),
+        families: [], requiresRevalidationBeforeAcceptance: true }, request: { startDate: intent.startDate, horizonDays: intent.horizonDays },
+      status: 'partial', conclusion: 'no_plan_found_without_proof', slots: [], unplannedSlots: [],
+      initialInventorySnapshot: snapshot.inventory.map(({ householdId }) => ({ householdId })), projectedFinalInventory: planning.finalInventory,
+      diagnostics: [], catalogDiagnostics: source.catalog.diagnostics, search: { searchExhaustive: false, plannerSearchExhaustive: false,
+        recipeSearchExhaustive: true, truncated: planning.searchLimited, statesExplored: planning.evaluations, generationCalls: planning.evaluations + planning.poolBuilds,
+        candidatesEvaluated: planning.evaluations, maxCandidatesGenerated: source.catalog.recipes.length, maxCandidatesConsidered: 6,
+        maxFrontierSize: 3, limits: { policy: 'family-v2-bounded' }, familySearches: [], rejections: [], limitReasons: [], incompleteReasons: [],
+        proofScope: 'supplied_catalog_constraints_and_fixed_allocation_policy' }, persistence: 'generated_only' }) };
+    const instructions = new Map<string, string[]>();
+    for (const step of snapshot.recipeSteps) instructions.set(step.recipeId, [...(instructions.get(step.recipeId) ?? []), step.instruction]);
+    const quantity = (value: number, unit: string) => ({ value: value.toString(), unit });
+    const meals = planning.meals.filter((meal) => meal.anchor !== null).map((meal) => {
+      const ranked = meal.anchor!; const candidate = ranked.candidate; const slot = meal.slot;
+      return { slotId: slot.id, date: slot.date, mealType: slot.mealType, time: slot.time, instant: slot.instant, servings: slot.servings,
+        candidateId: candidate.id, source: { kind: candidate.source.kind, id: candidate.source.sourceId,
+          version: candidate.source.version, variantId: candidate.variant?.id ?? null }, title: candidate.title, cuisine: candidate.cuisine ?? null,
+        prepTimeMinutes: candidate.prepTimeMinutes ?? null, cookTimeMinutes: candidate.cookTimeMinutes ?? null,
+        instructions: instructions.get(candidate.source.sourceId) ?? [], requirements: candidate.requirements.map((line) => ({
+          ingredientId: line.ingredientId, optional: line.isOptional, status: line.status,
+          required: quantity(line.requiredQuantity, line.unit), covered: quantity(line.coveredQuantity, line.unit),
+          missing: line.missingQuantity === null ? null : quantity(line.missingQuantity, line.unit), reasons: line.direct.reasons })),
+        reasons: ['FAMILY_MEAL_COMPOSITION', ...ranked.reasons, ...meal.warnings], safetyAssessment: ranked.eligibility.safetyAssessment,
+        projectedConsumption: meal.anchorDeltas.map((delta) => ({ lotId: delta.lotId, ingredientId: delta.ingredientId,
+          consumed: quantity(delta.consumedQuantity, delta.unit), remaining: quantity(delta.remainingQuantity, delta.unit) })) };
+    });
+    const missing = planning.meals.filter((meal) => meal.missingRoles.length > 0 || meal.warnings.some((code) => code.includes('REVALIDATION') || code.includes('UNAVAILABLE')));
+    const status = planning.searchLimited ? 'search_limited' as const : missing.length ? 'partial' as const : 'feasible' as const;
+    const conclusion = status === 'feasible' ? 'feasible' as const : 'no_plan_found_without_proof' as const;
+    const unplannedSlots = planning.meals.filter((meal) => !meal.anchor).map((meal) => ({ slotId: meal.slot.id, date: meal.slot.date,
+      mealType: meal.slot.mealType, reasons: meal.warnings.length ? meal.warnings : ['MAIN_UNAVAILABLE'] }));
+    const diagnostics = missing.map((meal) => ({ slotId: meal.slot.id, code: 'MEAL_COMPOSITION_PARTIAL', count: meal.missingRoles.length }));
+    const result = PlanResultDtoSchema.parse({ planningReference: planning.reference, status, conclusion, meals, unplannedSlots, diagnostics,
+      search: { ...base.result.search, exhaustive: false, plannerExhaustive: false, truncated: planning.searchLimited,
+        limitReasons: planning.searchLimited ? ['FAMILY_SEARCH_LIMIT'] : [], incompleteReasons: [], rejections: [] } });
+    const slots = planning.meals.map((meal) => ({ slotId: meal.slot.id, date: meal.slot.date, instant: meal.slot.instant,
+      servings: meal.slot.servings, components: meal.components }));
+    const projection = projectCompositions({ scope: evaluationScope(context), referenceDate: planning.reference.localDate,
+      inventory: snapshot.inventory, slots });
+    const shoppingPlan = compositionShoppingSnapshot({ ...base.shoppingPlan, status, conclusion, diagnostics,
+      unplannedSlots: planning.meals.filter((meal) => !meal.components.length).map(({ slot, warnings }) => ({
+        id: slot.id, date: slot.date, mealType: slot.mealType, sequence: slot.sequence,
+        time: slot.time, instant: slot.instant, servings: slot.servings,
+        ...(slot.lock ? { lock: slot.lock } : {}), reasons: warnings,
+      })) }, projection, slots);
+    return { schemaVersion: 1 as const, result, shoppingPlan, lastSwap: null };
+  }
+
+  private familyDiagnostics(result: FamilyPlanningResult): FamilyPlanMetadataWrite['diagnostics'] {
+    const unplanned = result.meals.filter((meal) => !meal.components.length).length;
+    const complete = result.meals.filter((meal) => meal.missingRoles.length === 0 && !meal.warnings.some((warning) => warning.startsWith('LOCKED_') || warning === 'UNTRACKED_COMPONENT')).length;
+    return { completeMealCount: complete, partialMealCount: result.meals.length - complete - unplanned, unplannedMealCount: unplanned,
+      reasons: [...new Set(result.meals.flatMap((meal) => meal.warnings))].sort(), searchLimited: result.searchLimited };
+  }
+
+  async generateFamily(scope: Scope, intent: MealPlanningIntent, key: string): Promise<FamilyMealPlanDto> {
+    return this.createFamily(scope, intent, key, false);
+  }
+
+  async createManualFamily(scope: Scope, intent: MealPlanningIntent, key: string): Promise<FamilyMealPlanDto> {
+    return this.createFamily(scope, intent, key, true);
+  }
+
+  private async createFamily(scope: Scope, intent: MealPlanningIntent, key: string, manual: boolean): Promise<FamilyMealPlanDto> {
+    const requestFingerprint = await sha256Hex(canonicalJson({ intent, schemaVersion: 2,
+      ...(manual ? { selectionMode: 'manual' } : {}) }));
+    const prior = await findGeneratedMealPlanByRequest(this.db, scope, key);
+    if (prior) {
+      if (prior.requestFingerprint !== requestFingerprint) throw new MealPlanningError('IDEMPOTENCY_CONFLICT', 409, 'Request key was used with different intent');
+      return this.familyDto(scope, prior);
+    }
+    const profile = await this.familyProfile(scope); const now = this.now();
+    const { snapshot, authority, fence } = await this.familySnapshot(scope, now, profile); const id = crypto.randomUUID();
+    const context = this.planningContext(snapshot, this.reference(now, intent.utcOffsetMinutes));
+    const request = this.familyRequest(intent, context);
+    // A manual calendar intentionally starts empty; it never runs and then discards automatic suggestions.
+    const normalized = normalizePlannerRequest(request, readPlanningContext(context).reference);
+    const planning: FamilyPlanningResult = manual ? {
+      request: normalized, reference: readPlanningContext(context).reference,
+      meals: normalized.slots.map((slot) => ({ slot, components: [], anchor: null, anchorDeltas: [],
+        missingRoles: familyMealRoles(slot.mealType, profile.preferences.mealStyle), warnings: ['MANUAL_SELECTION_PENDING'] })),
+      finalInventory: projectInventoryRows(readPlanningContext(context).inventory),
+      internationalGeneratedMainCount: 0, lockedInternationalMainCount: 0,
+      evaluations: 0, poolBuilds: 0, searchLimited: false, alternativeMeals: [],
+    } : planFamilyMeals({ context, request, preferences: profile.preferences, roles: await this.familyRoleIndex(authority),
+      runtimeRecipes: authority.list(), revision: 1 });
+    const base = this.familyStoredResult(scope, id, intent, snapshot, now, planning);
+    const slots = planning.meals.map((meal) => ({ slotId: meal.slot.id, mode: manual ? 'manual' as const : 'auto' as const, createdRevision: 1, createdAt: null, components: meal.components }));
+    const metadata = { profileRevision: profile.revision, profileFingerprint: await sha256Hex(canonicalJson(profile.preferences)),
+      policy: this.familyPolicy(planning, profile), diagnostics: this.familyDiagnostics(planning) };
+    const row = await createFamilyMealPlan(this.db, scope, { id, requestKey: key, requestFingerprint,
+      intentJson: serialize({ intent, locks: [] }), resultJson: serialize(base), sourceJson: serialize(this.sourceIdentity(snapshot)) }, slots, metadata, familyPlanningFenceStatements(this.db, scope, fence));
+    return this.familyDto(scope, row);
+  }
+
+  private async familyDto(scope: Scope, row: GeneratedMealPlanRecord): Promise<FamilyMealPlanDto> {
+    const service = this.compositions(); const loaded = await service.load(scope, row.id);
+    const plan = await this.dto(loaded.row, loaded.snapshot);
+    const compositions = service.compositionsFromLoaded(loaded);
+    const metadata = await readFamilyPlanMetadata(this.db, scope, row.id);
+    if (!metadata) throw new MealPlanningError('FAMILY_PLAN_METADATA_MISSING', 409, 'Family plan metadata is unavailable');
+    for (const composition of compositions.compositions) {
+      const wanted = familyMealRolesForComponents(composition.mealType, metadata.policy.mealStyle, composition.components, loaded.roles);
+      const covered = new Set(composition.components.map((component) => component.role));
+      if (composition.mealType === 'breakfast' || metadata.policy.mealStyle === 'one_pot') {
+        for (const component of composition.components) {
+          const traits = component.recipeId ? loaded.roles.get(component.recipeId)?.traits ?? [] : [];
+          if (component.role === 'main' && traits.includes('includes_staple')) covered.add('staple');
+          if (component.role === 'main' && traits.includes('brothy')) covered.add('soup');
+        }
+      }
+      composition.missingRoles = wanted.filter((role) => !covered.has(role)); composition.recommendedRoles = [];
+    }
+    const count = compositions.compositions;
+    const mainComponents = count.flatMap((composition) => composition.components).filter((component) => component.role === 'main' && component.recipeId);
+    const international = mainComponents.filter((component) => { const recipe = loaded.authority.findById(component.recipeId!);
+      return recipe !== null && recipe.cuisine !== 'vietnamese'; });
+    const policy = { ...metadata.policy, internationalGeneratedMainCount: international.filter((component) => (component.provenance === 'auto' || component.provenance === 'assisted') && !component.locked).length,
+      lockedInternationalMainCount: international.filter((component) => component.locked).length };
+    const unplannedMealCount = count.filter((composition) => !composition.components.length).length;
+    const completeMealCount = count.filter((composition) => composition.missingRoles.length === 0 && !composition.warnings.includes('COMPONENT_UNAVAILABLE')
+      && !composition.warnings.some((reason) => reason.startsWith('LOCKED_COMPONENT_') || reason === 'MEAL_TIME_REQUIRES_REVALIDATION')).length;
+    const diagnostics = { ...metadata.diagnostics, completeMealCount, unplannedMealCount,
+      partialMealCount: count.length - completeMealCount - unplannedMealCount,
+      reasons: [...new Set(count.flatMap((composition) => [...composition.warnings,
+        ...composition.missingRoles.map((role) => 'ROLE_UNFILLED:' + role)]))].sort() };
+    const current = await this.familyProfile(scope); const fingerprint = await sha256Hex(canonicalJson(current.preferences));
+    this.assertRevision(await getGeneratedMealPlan(this.db, scope, row.id), loaded.row.revision);
+    return FamilyMealPlanDtoSchema.parse({ schemaVersion: 2, plan, compositions, policy, diagnostics,
+      familyPreferenceFreshness: current.revision === metadata.profileRevision && fingerprint === metadata.profileFingerprint ? 'fresh' : 'requires_revalidation' });
+  }
+
+  async currentFamily(scope: Scope): Promise<z.infer<typeof CurrentFamilyMealPlanDtoSchema>> {
+    const row = await findCurrentGeneratedMealPlan(this.db, scope);
+    if (!row || !await readFamilyPlanMetadata(this.db, scope, row.id)) return CurrentFamilyMealPlanDtoSchema.parse({ plan: null });
+    return CurrentFamilyMealPlanDtoSchema.parse({ plan: await this.familyDto(scope, row) });
+  }
+
+  async getFamily(scope: Scope, id: string): Promise<FamilyMealPlanDto> {
+    return this.familyDto(scope, await getGeneratedMealPlan(this.db, scope, id));
+  }
+
+  async regenerateFamily(scope: Scope, id: string, input: z.infer<typeof RegenerateMealPlanSchema>): Promise<FamilyMealPlanDto> {
+    const row = await getGeneratedMealPlan(this.db, scope, id); this.assertRevision(row, input.revision);
+    if (!await readFamilyPlanMetadata(this.db, scope, id)) throw new MealPlanningError('FAMILY_PLAN_METADATA_MISSING', 409, 'This plan requires the V1 regeneration endpoint');
+    const intent = input.intent ?? this.decode(row).intent; const profile = await this.familyProfile(scope); const now = this.now();
+    const { snapshot, authority, fence } = await this.familySnapshot(scope, now, profile); const compositions = await readPlanCompositions(this.db, scope, id);
+    const previousIntent = this.decode(row).intent;
+    for (const slot of intent.slots) {
+      const slotId = `${slot.date}:${slot.mealType}:${slot.sequence}`;
+      const previous = previousIntent.slots.find((entry) => `${entry.date}:${entry.mealType}:${entry.sequence}` === slotId);
+      if (previous && compositions.get(slotId)?.components.some((component) => component.locked)
+        && (previous.servings ?? previousIntent.defaultServings) !== (slot.servings ?? intent.defaultServings)) {
+        throw new MealPlanningError('LOCKED_SERVINGS_CONFLICT', 422, 'Unlock the meal before changing its serving count');
+      }
+    }
+    const locked = new Map([...compositions].map(([slotId, composition]) => [slotId, composition.components.filter((component) => component.locked)]));
+    const context = this.planningContext(snapshot, this.reference(now, intent.utcOffsetMinutes));
+    const planning = planFamilyMeals({ context, request: this.familyRequest(intent, context), preferences: profile.preferences, roles: await this.familyRoleIndex(authority), runtimeRecipes: authority.list(),
+      locked, revision: row.revision + 1 });
+    const result = this.familyStoredResult(scope, id, intent, snapshot, now, planning);
+    const metadata = { profileRevision: profile.revision, profileFingerprint: await sha256Hex(canonicalJson(profile.preferences)),
+      policy: this.familyPolicy(planning, profile), diagnostics: this.familyDiagnostics(planning) };
+    const slots = planning.meals.map((meal) => ({ slotId: meal.slot.id, mode: 'auto' as const,
+      createdRevision: compositions.get(meal.slot.id)?.createdRevision ?? row.revision + 1, createdAt: compositions.get(meal.slot.id)?.createdAt ?? null,
+      components: meal.components }));
+    const current = await writePlanCompositions(this.db, scope, { planId: id, expectedRevision: row.revision,
+      planUpdate: { intentJson: serialize({ intent, locks: [] }), resultJson: serialize(result), sourceJson: serialize(this.sourceIdentity(snapshot)) },
+      slots, deleteSlotIds: [...compositions.keys()].filter((slotId) => !slots.some((slot) => slot.slotId === slotId)),
+      additionalStatements: [...familyPlanningFenceStatements(this.db, scope, fence), familyMetadataUpdateStatement(this.db, scope, id, metadata)] });
+    return this.familyDto(scope, current);
+  }
+
   async generate(scope: Scope, intent: MealPlanningIntent, key: string) {
     const requestFingerprint = await sha256Hex(canonicalJson(intent));
     const prior = await findGeneratedMealPlanByRequest(this.db, scope, key);
@@ -417,10 +662,24 @@ export class MealPlanningApplicationService {
     return result;
   }
 
+  private assertFamilyMutationEnabled(stored: ReturnType<MealPlanningApplicationService['decode']>) {
+    // The persisted server marker protects even empty family plans without reading optional schema.
+    const limits = stored.shoppingPlan.search.limits;
+    if (!this.options.compositionV2Enabled && limits !== null && typeof limits === 'object'
+      && 'policy' in limits && limits.policy === 'family-v2-bounded') {
+      throw new MealPlanningError('MEAL_COMPOSITION_DISABLED', 409,
+        'This family plan is read-only while meal composition is disabled');
+    }
+  }
+
   async regenerate(scope: Scope, id: string, input: z.infer<typeof RegenerateMealPlanSchema>) {
     const row = await getGeneratedMealPlan(this.db, scope, id);
     this.assertRevision(row, input.revision);
     const stored = this.decode(row);
+    this.assertFamilyMutationEnabled(stored);
+    if (this.options.compositionV2Enabled && await readFamilyPlanMetadata(this.db, scope, id)) {
+      return (await this.regenerateFamily(scope, id, input)).plan;
+    }
     const intent = input.intent ?? stored.intent;
     const now = this.now();
     const snapshot = await this.snapshot(scope, now);
@@ -477,6 +736,7 @@ export class MealPlanningApplicationService {
     const row = await getGeneratedMealPlan(this.db, scope, id);
     this.assertRevision(row, input.revision);
     const stored = this.decode(row);
+    this.assertFamilyMutationEnabled(stored);
     const original = stored.result.meals.find((meal) => meal.slotId === input.slotId);
     if (!original)
       throw new MealPlanningError('SLOT_NOT_FOUND', 422, 'Swap requires a selected meal slot');

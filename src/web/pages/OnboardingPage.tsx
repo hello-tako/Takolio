@@ -1,10 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { ArrowRight, Calendar, Check, Flame, Sparkles, Users, Utensils } from 'lucide-react';
+import { useQueryClient } from '@tanstack/react-query';
+import { ApiError, guardPrivateSession } from '../services/http';
+import { isMealPlannerEnabled } from '../features/planner/feature';
+import { isMealCompositionEnabled } from '../features/planner/composition';
+import { FamilyPreferenceSummary } from '../features/family/FamilyPreferenceSummary';
+import { FamilyPreferenceFields } from '../features/family/FamilyPreferenceFields';
+import {
+  useFamilyPreferences,
+  familyPreferencesKey,
+} from '../features/family/useFamilyPreferences';
+import {
+  DEFAULT_FAMILY_PREFERENCES,
+  familyPreferencesApi,
+  type FamilyPreferences,
+} from '../services/family-preferences';
+import { InlineError, InlineLoading } from '../components/common/AsyncState';
 import { clsx } from 'clsx';
 import { Button } from '../components/common/Button';
 import { TAKOSAN_KITCHEN } from '../lib/takosan-kitchen';
-import { isOfflineGuestSession } from '../lib/private-session';
+import { capturePrivateSession, isOfflineGuestSession } from '../lib/private-session';
 import { api } from '../services/api';
 import { useAuthStore } from '../stores/useAuthStore';
 
@@ -18,10 +34,9 @@ const CUISINE_TAGS = [
   { id: 'vietnamese', label: 'Việt Nam' },
   { id: 'korean', label: 'Hàn Quốc' },
   { id: 'japanese', label: 'Nhật Bản' },
-  { id: 'western', label: 'Âu - Mỹ' },
+  { id: 'italian', label: 'Ý' },
   { id: 'chinese', label: 'Trung Hoa' },
   { id: 'thai', label: 'Thái Lan' },
-  { id: 'other', label: 'Khác' },
 ] as const;
 
 const RESTRICTION_TAGS = [
@@ -99,6 +114,27 @@ export const OnboardingPage: React.FC = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const auth = useAuthStore();
+  const client = useQueryClient();
+  const familyQuery = useFamilyPreferences();
+  const [family, setFamily] = useState<FamilyPreferences | null>(() =>
+    isOfflineGuestSession() ? DEFAULT_FAMILY_PREFERENCES : null,
+  );
+  const [draftRevision, setDraftRevision] = useState<number | null>(null);
+  const [profileConflict, setProfileConflict] = useState(false);
+  const householdSizeEdited = useRef(false);
+  useEffect(() => {
+    if (familyQuery.data && !family) {
+      setFamily(familyQuery.data.preferences);
+      setDraftRevision(familyQuery.data.revision);
+      if (familyQuery.data.revision > 0 && !householdSizeEdited.current) {
+        setHouseholdSize(familyQuery.data.preferences.householdSize);
+      }
+      setSelectedCuisines([
+        ...familyQuery.data.preferences.preferredCuisines,
+        ...auth.favoriteCuisines.filter((value) => !CUISINE_TAGS.some((tag) => tag.id === value)),
+      ]);
+    }
+  }, [familyQuery.data, family, auth.favoriteCuisines]);
   const step = stepFromPath(pathname);
   // Stored values above the visible buckets (6..20) are kept verbatim until the
   // user explicitly picks a size; only the presentation buckets them as "5+".
@@ -109,9 +145,7 @@ export const OnboardingPage: React.FC = () => {
   const [selectedCuisines, setSelectedCuisines] = useState<string[]>(() => [
     ...auth.favoriteCuisines,
   ]);
-  const [restrictions, setRestrictions] = useState<string[]>(() => [
-    ...auth.dietaryRestrictions,
-  ]);
+  const [restrictions] = useState<string[]>(() => [...auth.dietaryRestrictions]);
   const spicyLevel = supportedSpicyLevel(auth.spicyLevel);
   const [primaryGoal, setPrimaryGoal] = useState<PrimaryGoal>(() =>
     supportedPrimaryGoal(auth.primaryGoal),
@@ -121,11 +155,8 @@ export const OnboardingPage: React.FC = () => {
 
   if (!step) return <Navigate to={ONBOARDING_PATHS[1]} replace />;
 
-  const toggle = (value: string, values: string[], update: (next: string[]) => void) => {
-    update(values.includes(value) ? values.filter((item) => item !== value) : [...values, value]);
-  };
-
   const finish = async () => {
+    const isCurrent = capturePrivateSession();
     setError(null);
     setIsSaving(true);
     // Only server-supported preference fields; primaryGoal stays client-side.
@@ -136,18 +167,40 @@ export const OnboardingPage: React.FC = () => {
       dietaryRestrictions: restrictions,
     };
     try {
+      const assertCurrent = guardPrivateSession();
+      const key = familyPreferencesKey();
       if (!isOfflineGuestSession()) {
+        if (!family || draftRevision === null || profileConflict)
+          throw new Error('Family preferences not ready');
+        const saved = await familyPreferencesApi.save(draftRevision, { ...family, householdSize });
+        assertCurrent();
+        client.setQueryData(key, saved);
+        setDraftRevision(saved.revision);
         const result = await api.completeOnboarding(preferences);
         if (!result.success || result.onboardingCompleted !== true) {
           throw new Error('Onboarding completion was not confirmed');
         }
       }
+      assertCurrent();
       auth.setOnboardingData({ ...preferences, primaryGoal });
-      navigate(primaryGoal === 'week' ? '/week/setup' : '/', { replace: true });
-    } catch {
-      setError('Chưa thể lưu sở thích. Vui lòng kiểm tra kết nối và thử lại.');
+      navigate(
+        primaryGoal === 'week'
+          ? isMealPlannerEnabled() && isMealCompositionEnabled()
+            ? '/planner/new'
+            : '/week/setup'
+          : '/',
+        { replace: true },
+      );
+    } catch (failure) {
+      if (!isCurrent()) return;
+      if (failure instanceof ApiError && failure.code === 'REVISION_CONFLICT') {
+        setProfileConflict(true);
+        setError('Thói quen vừa thay đổi trên thiết bị khác. Tải lại và xem trước khi hoàn tất.');
+      } else {
+        setError('Chưa thể lưu sở thích. Vui lòng kiểm tra kết nối và thử lại.');
+      }
     } finally {
-      setIsSaving(false);
+      if (isCurrent()) setIsSaving(false);
     }
   };
 
@@ -155,7 +208,14 @@ export const OnboardingPage: React.FC = () => {
     <main className="takosan-rebuild entry-page onboarding-page">
       <div className="onboarding-workspace">
         <header className="mb-7 flex items-center justify-between">
-          <img src={TAKOSAN_KITCHEN.logo} alt="Takosan" translate="no" width={300} height={72} className="entry-logo" />
+          <img
+            src={TAKOSAN_KITCHEN.logo}
+            alt="Takosan"
+            translate="no"
+            width={300}
+            height={72}
+            className="entry-logo"
+          />
           <span className="rounded-full border border-takosan-mint-deep bg-white px-3 py-1 text-xs font-bold text-takosan-green">
             {step} / 3
           </span>
@@ -222,7 +282,10 @@ export const OnboardingPage: React.FC = () => {
                         aria-label={label}
                         value={number}
                         checked={selected}
-                        onChange={() => setHouseholdSize(number)}
+                        onChange={() => {
+                          householdSizeEdited.current = true;
+                          setHouseholdSize(number);
+                        }}
                       />
                       <span
                         className={clsx(
@@ -237,9 +300,7 @@ export const OnboardingPage: React.FC = () => {
                         ) : (
                           <Users className="h-4 w-4" aria-hidden="true" />
                         )}
-                        <span>
-                          {number === HOUSEHOLD_PLUS_CHOICE ? '5+' : number}
-                        </span>
+                        <span>{number === HOUSEHOLD_PLUS_CHOICE ? '5+' : number}</span>
                       </span>
                     </label>
                   );
@@ -273,13 +334,13 @@ export const OnboardingPage: React.FC = () => {
                 ← Quay lại
               </button>
               <p className="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-takosan-green">
-                Gu món & hạn chế
+                Bữa nhà & hạn chế thực phẩm
               </p>
               <h1
                 id="onboarding-preferences-title"
                 className="font-heading text-3xl font-extrabold leading-tight"
               >
-                Nhà mình thích món gì và cần tránh gì?
+                Nhà mình thường nấu thế nào?
               </h1>
               <p className="mt-2 text-sm text-semantic-text-secondary">
                 Chọn nhiều mục nếu phù hợp. Bạn có thể thay đổi trong hồ sơ sau này.
@@ -287,73 +348,39 @@ export const OnboardingPage: React.FC = () => {
             </div>
 
             <div className="mb-8 space-y-7">
-              <fieldset>
-                <legend className="mb-3 text-xs font-bold uppercase tracking-wider text-semantic-text-secondary">
-                  Nền ẩm thực yêu thích
-                </legend>
-                <div className="flex flex-wrap gap-2">
-                  {CUISINE_TAGS.map((tag) => {
-                    const selected = selectedCuisines.includes(tag.id);
-                    return (
-                      <label key={tag.id} className="cursor-pointer">
-                        <input
-                          className="peer sr-only"
-                          type="checkbox"
-                          name="favorite-cuisines"
-                          value={tag.id}
-                          checked={selected}
-                          onChange={() => toggle(tag.id, selectedCuisines, setSelectedCuisines)}
-                        />
-                        <span
-                          className={clsx(
-                            'flex min-h-11 items-center gap-1.5 rounded-full border px-4 py-2.5 text-xs font-semibold transition-tap peer-focus-visible:ring-2 peer-focus-visible:ring-takosan-green peer-focus-visible:ring-offset-2',
-                            selected
-                              ? 'border-takosan-green bg-takosan-mint text-takosan-green-deep'
-                              : 'border-semantic-border bg-white text-semantic-text-secondary',
-                          )}
-                        >
-                          {tag.label}
-                          {selected && <Check className="h-3.5 w-3.5" aria-hidden="true" />}
-                        </span>
-                      </label>
-                    );
-                  })}
-                </div>
-              </fieldset>
+              {familyQuery.isPending && !isOfflineGuestSession() ? (
+                <InlineLoading label="Đang tải thói quen bữa nhà…" />
+              ) : familyQuery.isError ? (
+                <InlineError error={familyQuery.error} onRetry={() => void familyQuery.refetch()} />
+              ) : (
+                family && (
+                  <FamilyPreferenceFields
+                    value={family}
+                    onChange={(next) => {
+                      setFamily(next);
+                      setSelectedCuisines([
+                        ...next.preferredCuisines,
+                        ...auth.favoriteCuisines.filter(
+                          (value) => !CUISINE_TAGS.some((tag) => tag.id === value),
+                        ),
+                      ]);
+                    }}
+                  />
+                )
+              )}
 
-              <fieldset>
-                <legend className="mb-3 text-xs font-bold uppercase tracking-wider text-semantic-text-secondary">
-                  Nguyên liệu hoặc món cần tránh
-                </legend>
-                <div className="flex flex-wrap gap-2.5">
-                  {RESTRICTION_TAGS.map((tag) => {
-                    const selected = restrictions.includes(tag.id);
-                    return (
-                      <label key={tag.id} className="cursor-pointer">
-                        <input
-                          className="peer sr-only"
-                          type="checkbox"
-                          name="dietary-restrictions"
-                          value={tag.id}
-                          checked={selected}
-                          onChange={() => toggle(tag.id, restrictions, setRestrictions)}
-                        />
-                        <span
-                          className={clsx(
-                            'flex min-h-11 items-center gap-1.5 rounded-2xl border px-4 py-3 text-sm font-semibold transition-tap peer-focus-visible:ring-2 peer-focus-visible:ring-takosan-green peer-focus-visible:ring-offset-2',
-                            selected
-                              ? 'border-semantic-danger bg-semantic-danger-soft text-semantic-danger-strong'
-                              : 'border-semantic-border bg-white text-semantic-text-secondary',
-                          )}
-                        >
-                          {selected && <span aria-hidden="true">×</span>}
-                          {tag.label}
-                        </span>
-                      </label>
-                    );
-                  })}
-                </div>
-              </fieldset>
+              {restrictions.length > 0 && (
+                <p className="planning-note">
+                  Hạn chế từ hồ sơ cũ:{' '}
+                  {restrictions
+                    .map(
+                      (value) => RESTRICTION_TAGS.find((tag) => tag.id === value)?.label ?? value,
+                    )
+                    .join(', ')}
+                  . Các giá trị cũ chưa được chuyển thành ràng buộc cho thực đơn; hãy chọn dị ứng và
+                  nguyên liệu bắt buộc tránh ở trên.
+                </p>
+              )}
             </div>
 
             <Button
@@ -391,8 +418,8 @@ export const OnboardingPage: React.FC = () => {
                 Bạn muốn Takosan giúp việc gì trước?
               </h1>
               <p className="mt-2 text-sm text-semantic-text-secondary">
-                Lựa chọn này chỉ quyết định màn hình bắt đầu trên thiết bị này; các sở thích
-                bên dưới được lưu sau khi máy chủ xác nhận hoàn tất.
+                Lựa chọn này chỉ quyết định màn hình bắt đầu trên thiết bị này; các sở thích bên
+                dưới được lưu sau khi máy chủ xác nhận hoàn tất.
               </p>
             </div>
 
@@ -448,6 +475,7 @@ export const OnboardingPage: React.FC = () => {
               </div>
             </fieldset>
 
+            {family && <FamilyPreferenceSummary value={{ ...family, householdSize }} />}
             <h2 className="mb-3 text-xs font-bold uppercase tracking-wider text-semantic-text-secondary">
               Sở thích sẽ được lưu
             </h2>
@@ -475,7 +503,8 @@ export const OnboardingPage: React.FC = () => {
                       : selectedCuisines
                           .map(
                             (value) =>
-                              CUISINE_TAGS.find(({ id }) => id === value)?.label ?? value,
+                              CUISINE_TAGS.find(({ id }) => id === value)?.label ??
+                              `${value} (hồ sơ cũ, chưa áp dụng)`,
                           )
                           .join(', ')}
                   </span>
@@ -497,7 +526,7 @@ export const OnboardingPage: React.FC = () => {
                   <Check className="h-5 w-5" aria-hidden="true" />
                 </span>
                 <span>
-                  <strong className="block font-heading text-base">Món cần tránh</strong>
+                  <strong className="block font-heading text-base">Hạn chế từ hồ sơ cũ</strong>
                   <span className="mt-1 block text-xs text-semantic-text-muted">
                     {restrictions.length === 0
                       ? 'Không có lựa chọn'
@@ -521,10 +550,31 @@ export const OnboardingPage: React.FC = () => {
                   {error}
                 </p>
               )}
+              {profileConflict && (
+                <Button
+                  variant="outline"
+                  fullWidth
+                  className="mb-3"
+                  onClick={async () => {
+                    const result = await familyQuery.refetch();
+                    if (result.data) {
+                      setFamily(result.data.preferences);
+                      setHouseholdSize(result.data.preferences.householdSize);
+                      setSelectedCuisines(result.data.preferences.preferredCuisines);
+                      setDraftRevision(result.data.revision);
+                      setProfileConflict(false);
+                      setError(null);
+                    }
+                  }}
+                >
+                  Tải lại và xem thói quen mới nhất
+                </Button>
+              )}
               <Button
                 fullWidth
                 size="lg"
                 type="button"
+                disabled={profileConflict || (!isOfflineGuestSession() && draftRevision === null)}
                 onClick={() => void finish()}
                 isLoading={isSaving}
                 className="flex items-center justify-center gap-2 rounded-2xl"
@@ -532,7 +582,9 @@ export const OnboardingPage: React.FC = () => {
                 Bắt đầu với Takosan <ArrowRight className="h-5 w-5" aria-hidden="true" />
               </Button>
               <p className="mt-3 text-center text-xs text-semantic-text-muted">
-                Sở thích được lưu cho tài khoản này và có thể thay đổi sau.
+                {isOfflineGuestSession()
+                  ? 'Bản trải nghiệm khách trên thiết bị. Đăng nhập để lưu thói quen gia đình.'
+                  : 'Thói quen được lưu cho gia đình và có thể thay đổi sau.'}
               </p>
             </div>
           </section>

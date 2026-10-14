@@ -19,6 +19,7 @@ export async function submitCookingCompletion(): Promise<void> {
       attempt.deductions,
       attempt.commandId,
       state.stockSnapshot,
+      attempt.servings,
     );
     if (!stillOwns()) return;
     state.finishCompletion(runId, attempt.commandId, result.pendingSync ? 'queued' : 'saved');

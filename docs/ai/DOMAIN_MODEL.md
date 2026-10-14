@@ -1,3 +1,98 @@
+# T24 unknown demand and selected purchase amounts - 2026-10-14
+
+Required demand and selected buying amount are different facts. A household member
+can choose half a pack or one bunch without asserting its mass, recipe coverage or
+stock ownership. Manual duplicate entries do not satisfy an unknown requirement.
+
+Reviews bind the persisted shared trip, not a member's private planner. Exact source
+content determines pending/purchased/skipped state; revision and purchase witnesses
+prevent stale edits. Unchanged re-sharing retains decisions, changed revision/dates/
+attribution requests review again. Skip/reopen stay reversible and source-linked;
+purchased state needs a live linked override. Bought history remains separate.
+
+Immutable command receipts resolve lost responses without another purchase write.
+Cached reads do not authorize an offline resolution or a queued-success claim.
+Neither a review, shopping checkbox nor materialization writes physical inventory.
+
+---
+
+# T23 quantities and intentional manual meals - 2026-10-14
+
+A manual calendar is an intentional empty plan, not a failed or discarded auto
+search. Its slot dates, types, serving counts and manual mode persist independently
+of chosen dishes. Manual identities are locked; optional completion fills the
+chosen meal structure without silently replacing those identities. A selected
+locked main already classified `complete_meal` chooses a one-dish slot template;
+this is a structure decision, never nutritional or allergy certification.
+
+Ingredient fit means amount at the destination servings and chronological stock
+remaining after earlier components/slots. A title match is not sufficient.
+Required, covered and missing amounts use exact compatible units; unknown mass or
+package contents stay unknown. No-buy/cook-now validation includes affected later
+choices. Planning, materializing shopping and checking purchases never deduct stock.
+
+Calendar/display/projection order must agree at equal instants: numeric sequence,
+then stable slot identity. A plan revision authorizes only calculations loaded at
+that same revision. Future recipe destinations use the plan's offset and actual
+scheduled instant, not the device's calendar date alone.
+
+A measured inventory quantity belongs to its selected unit and opened draft
+revision. Pure compatible conversion preserves amount; explicit correction changes
+amount. Metadata-only edits omit quantity. Cooking command attempts freeze both
+servings and deductions across uncertain responses and offline replay.
+
+Shopping demand remains separate from purchase edits. Success ends a request key;
+uncertain delivery retains it. Rows with unknown demand still lack a dedicated
+purchase/resolve/dismiss contract, so manual entries do not falsely resolve them.
+Coarse regional metadata, leftovers, shared prep and vendor allocation remain
+explicit data/product limitations.
+
+An elapsed meal does not reserve current physical stock again. Future compositions
+remain editable under the target slot's server time and revision. Shared shopping
+uses a trusted current stock projection for future demand, while truthful stale
+reasons remain visible; profile/catalog changes still block continuation. The
+shopping date horizon uses the saved plan offset, consistently with slot eligibility.
+
+---
+
+# T22 family meal, profile and shopping semantics - 2026-10-13
+
+A family meal is a collection of components, rather than only its V1 anchor.
+Default lunch/dinner includes main, vegetable/side, soup and staple; an explicit
+quick style uses main/vegetable/staple. Breakfast and one-pot use their own main
+eligibility. Completeness means these roles are present and resolvable; it does
+not certify clinical nutrition, authenticity or unknown safety metadata.
+
+FamilyPreferences is member-scoped and revisioned: household size, regions,
+preferred cuisines, international meals per week, style, cooking days/meal types,
+soft desired time and shopping cadence. An explicit save updates the existing
+T03 soft preferences. Hard allergens/forbidden ingredients hydrate from T03 and
+survive saves unless explicitly changed. Household hard policies still apply.
+Regions are soft preferences from catalog metadata; common Vietnamese dishes and
+rice may repeat. International generated mains require an explicit cuisine choice
+and calendar seven-day allowance. Manual locked choices remain visible separately.
+
+Whole-meal hard time uses conservative summed known prep/cook durations and
+rejects missing time data; desired time is a soft preference with truthful
+warnings. Locks preserve component identities and serving changes cannot silently
+rescale locked selections. Every generated/replanned slot uses sequential stock
+projection, without modifying physical inventory.
+
+Saved recipes are private canonical recipe identities with CAS revisions and
+unsaved tombstones. The active recipe authority determines availability and picker
+roles; an unavailable saved entry can still be removed. Saving never inserts or
+authors a global recipe. Session changes fence browser writes and cached results.
+
+Shared shopping is a purchase checklist independent from projected demand. Only
+compatible exact units aggregate; unknown quantities remain unresolved and never
+become a fabricated one. Sources retain selected dishes/dates/component identities.
+Updating demand preserves manual rows, checked state and explicit purchase edits.
+Deleting a generated row dismisses it for subsequent updates of that same plan.
+Command replay returns its original receipt without recomputing or duplicating
+rows. Checking bought and cannot-buy presentation do not import or consume stock.
+
+---
+
 # UI10 Week view and completion semantics (ADR-053)
 
 Week setup contains meal preset, budget, one to three priorities and shopping

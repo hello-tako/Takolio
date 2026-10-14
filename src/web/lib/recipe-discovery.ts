@@ -13,6 +13,7 @@ export interface DiscoveryFilters {
   cuisine: string | null;
   category: VietnameseCategory | null;
   region: 'bac' | 'trung' | 'nam' | null;
+  servings?: number;
   noBuy: boolean;
   fast: boolean;
   page: number;
@@ -30,6 +31,8 @@ export function readDiscoveryFilters(params: URLSearchParams): DiscoveryFilters 
     cuisine: accepted(params.get('cuisine'), DISCOVERY_CUISINES),
     category: accepted(params.get('category'), DISCOVERY_CATEGORIES),
     region: accepted(params.get('region'), DISCOVERY_REGIONS),
+    servings: /^[1-9][0-9]?$/.test(params.get('servings') ?? '') && Number(params.get('servings')) <= 20
+      ? Number(params.get('servings')) : undefined,
     noBuy: params.get('noBuy') === 'true',
     fast: params.get('maxTime') === '20',
     page: page && /^[1-9][0-9]{0,3}$/.test(page) ? Number(page) : 1,
@@ -95,6 +98,7 @@ export function discoveryRequest(filters: DiscoveryFilters): DiscoveryParams {
     cuisine: (filters.cuisine as DiscoveryParams['cuisine']) ?? undefined,
     category: filters.category ?? undefined,
     region: filters.region ?? undefined,
+    servings: filters.servings,
     noBuy: filters.noBuy,
     maxTime: filters.fast ? 20 : undefined,
     page: filters.page,

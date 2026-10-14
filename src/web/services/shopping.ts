@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { ShoppingContributionSchema, SharePlanShoppingSchema, SharePlanShoppingDtoSchema, ShoppingUnknownDemandSchema, ReviewShoppingDemandSchema, ReviewShoppingDemandDtoSchema } from '../../../packages/domain/src/shopping-plan-api';
 import { privateCacheKey, currentPrivateScope } from '../lib/private-session';
 import { getPendingOps, type PendingOp } from '../lib/sync';
 import {
@@ -18,6 +19,14 @@ const itemSchema = z.object({
   unit: z.string(),
   isChecked: z.boolean(),
   sourceRecipeTitle: z.string().nullable().optional(),
+  sourceRecipeId: z.string().nullable().optional(),
+  ingredientId: z.string().nullable().optional(),
+  cannotBuy: z.boolean().optional(),
+  generated: z.boolean().optional(),
+  quantityOverridden: z.boolean().optional(),
+  unknownDemand: z.boolean().optional(),
+  reviewState: z.enum(['pending', 'purchased', 'skipped']).optional(),
+  contributions: z.array(ShoppingContributionSchema).optional(),
   createdAt: z.string().optional(),
   pendingSync: z.boolean().optional(),
 });
@@ -34,8 +43,20 @@ export interface ShoppingInput {
 export interface ShoppingSnapshot {
   items: ShoppingItem[];
   source: 'server' | 'device';
+  hasPendingChanges?: boolean;
+  unresolvedItems?: ShoppingUnresolvedItem[];
 }
 const itemsSchema = z.array(itemSchema);
+const updateSchema=z.object({name:z.string().trim().min(1).max(100).optional(),quantity:z.number().finite().positive().optional(),unit:z.enum(['g','kg','ml','l','piece','pack','bunch','slice']).optional(),isChecked:z.boolean().optional(),cannotBuy:z.boolean().optional()}).refine(value=>Object.values(value).some(value=>value!==undefined))
+  .refine(value=>!(value.isChecked===true&&value.cannotBuy===true))
+  .transform(value=>({...value,...(value.isChecked===true?{cannotBuy:false}:{}),...(value.cannotBuy===true?{isChecked:false}:{})}));
+// Old cached rows remain readable but cannot authorize a review command.
+const unresolvedItemSchema = ShoppingUnknownDemandSchema.partial({
+  sourceId: true, demandKey: true, snapshot: true, reviewRevision: true,
+  reviewState: true, purchaseItemId: true,
+});
+export type ShoppingUnresolvedItem = z.infer<typeof unresolvedItemSchema>;
+const unresolvedItemsSchema = z.array(unresolvedItemSchema);
 
 function cachedItems(householdId: string): ShoppingItem[] {
   const saved = localStorage.getItem(privateCacheKey('shopping_list', householdId));
@@ -75,7 +96,7 @@ export function projectShoppingList(
       const id = decodeURIComponent(op.path.slice('/shopping-list/items/'.length));
       if (op.method === 'DELETE') projected = projected.filter((item) => item.id !== id);
       else if (op.method === 'PATCH' && op.body) {
-        const change = z.object({ isChecked: z.boolean() }).safeParse(JSON.parse(op.body));
+        const change = updateSchema.safeParse(JSON.parse(op.body));
         if (change.success)
           projected = projected.map((item) =>
             item.id === id ? { ...item, ...change.data, pendingSync: true } : item,
@@ -117,20 +138,24 @@ export const shoppingApi = {
     const householdId = getHouseholdId();
     let source: ShoppingSnapshot['source'] = 'server';
     let items: ShoppingItem[];
+    let unresolvedItems:z.infer<typeof unresolvedItemsSchema> = [];
     try {
       const res = await fetchJson<unknown>('/shopping-list');
       assertCurrent();
-      items = z.object({ items: itemsSchema }).parse(res).items;
+      const parsed=z.object({items:itemsSchema,unresolvedItems:unresolvedItemsSchema.default([])}).parse(res);
+      items=parsed.items;unresolvedItems=parsed.unresolvedItems;
+      localStorage.setItem(privateCacheKey('shopping_unresolved', householdId),JSON.stringify(unresolvedItems));
     } catch (error) {
       if (!isOffline(error)) throw error;
       assertCurrent();
       source = 'device';
       items = cachedItems(householdId);
+      unresolvedItems=unresolvedItemsSchema.parse(JSON.parse(localStorage.getItem(privateCacheKey('shopping_unresolved',householdId)) ?? '[]'));
     }
     assertCurrent();
     items = projectShoppingList(items, ownedOps());
     saveItems(items, householdId);
-    return { items, source };
+    return { items, source, unresolvedItems, hasPendingChanges: ownedOps().some(op => op.path.startsWith('/shopping-list/')) };
   },
   getShoppingList: async (): Promise<ShoppingItem[]> =>
     (await shoppingApi.getShoppingListSnapshot()).items,
@@ -174,32 +199,47 @@ export const shoppingApi = {
     return result;
   },
 
-  toggleShoppingItem: async (id: string, isChecked: boolean): Promise<{ pendingSync: boolean }> => {
+  sharePlanShopping: async (input:z.input<typeof SharePlanShoppingSchema>,requestKey:string) => {
+    const body=SharePlanShoppingSchema.parse(input);
+    return SharePlanShoppingDtoSchema.parse(await fetchJson('/shopping-list/from-plan',{method:'POST',headers:{'Idempotency-Key':requestKey},body:JSON.stringify(body)}));
+  },
+  reviewShoppingDemand: async (input: z.input<typeof ReviewShoppingDemandSchema>, requestKey: string) => {
     const assertCurrent = guardPrivateSession();
-    const householdId = getHouseholdId();
-    const path = `/shopping-list/items/${encodeURIComponent(id)}`;
-    const body = JSON.stringify({ isChecked });
-    let pendingSync = false;
+    const body = ReviewShoppingDemandSchema.parse(input);
+    if (!/^[A-Za-z0-9_-]{8,100}$/.test(requestKey)) throw new Error('Invalid shopping review key');
+    if (navigator.onLine === false) throw new ApiError('offline', 'Cần kết nối mạng để xác nhận lượng mua.');
+    const pending = ownedOps();
+    // Earlier queued purchase edits must finish before a snapshot review can supersede them.
+    if (pending.some(op => op.path.startsWith('/shopping-list/'))) {
+      throw new ApiError('http', 'HTTP 409: {"code":"SHOPPING_PENDING_SYNC"}', 409);
+    }
+    const result = ReviewShoppingDemandDtoSchema.parse(await fetchJson('/shopping-list/demand-review', {
+      method: 'POST', headers: { 'Idempotency-Key': requestKey }, body: JSON.stringify(body),
+    }));
+    assertCurrent();
+    if (result.sourceId !== body.sourceId || result.demandKey !== body.demandKey ||
+        result.reviewRevision !== body.reviewRevision + 1 ||
+        result.reviewState !== (body.action === 'purchase' ? 'purchased' : body.action === 'skip' ? 'skipped' : 'pending')) {
+      throw new Error('Shopping review receipt mismatch');
+    }
+    return result;
+  },
+  updateShoppingItem: async (id:string,patch:z.input<typeof updateSchema>):Promise<{pendingSync:boolean}> => {
+    const assertCurrent=guardPrivateSession();const householdId=getHouseholdId();
+    const change=updateSchema.parse(patch);const path=`/shopping-list/items/${encodeURIComponent(id)}`;
+    const body=JSON.stringify(change);let pendingSync=false;
     try {
-      // Keep later edits behind an already queued command for this item.
-      if (hasPendingItem(id)) throw new ApiError('offline', 'Thay đổi trước đang chờ đồng bộ.');
-      await fetchJson(path, { method: 'PATCH', body });
-    } catch (error) {
-      assertCurrent();
-      if (!isOffline(error)) throw error;
-      enqueue(path, 'PATCH', body, 'Cập nhật danh sách đi chợ');
-      pendingSync = true;
+      if(hasPendingItem(id)) throw new ApiError('offline','Thay đổi trước đang chờ đồng bộ.');
+      await fetchJson(path,{method:'PATCH',body});
+    }catch(error){
+      assertCurrent();if(!isOffline(error))throw error;
+      enqueue(path,'PATCH',body,'Cập nhật danh sách đi chợ');pendingSync=true;
     }
     assertCurrent();
-    saveItems(
-      projectShoppingList(
-        cachedItems(householdId).map((item) => (item.id === id ? { ...item, isChecked } : item)),
-        ownedOps(),
-      ),
-      householdId,
-    );
-    return { pendingSync };
+    saveItems(projectShoppingList(cachedItems(householdId).map(item=>item.id===id?{...item,...change}:item),ownedOps()),householdId);
+    return {pendingSync};
   },
+  toggleShoppingItem: async (id:string,isChecked:boolean):Promise<{pendingSync:boolean}> => shoppingApi.updateShoppingItem(id,{isChecked}),
 
   deleteShoppingItem: async (id: string): Promise<{ pendingSync: boolean }> => {
     const assertCurrent = guardPrivateSession();

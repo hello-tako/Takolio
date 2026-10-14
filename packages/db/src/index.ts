@@ -35,3 +35,4 @@ export * from './recipe-media';
 export * from './personalization';
 export * from './ranking-nutrition';
 export * from './meal-planning';
+export * from './family-preferences';

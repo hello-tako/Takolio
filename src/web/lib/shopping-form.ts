@@ -18,8 +18,24 @@ export function parseShoppingForm(name: string, quantity: string, unit: string) 
     !SHOPPING_UNITS.some((entry) => entry.value === unit)
   )
     return null;
-  return { name: name.trim(), quantity: amount, unit };
+  return {
+    name: name.trim(),
+    quantity: amount,
+    unit: unit as (typeof SHOPPING_UNITS)[number]['value'],
+  };
 }
+
+const countedUnits = new Set(['piece', 'bunch', 'pack', 'slice']);
+const familiarFractions = [
+  [1, 2],
+  [1, 3],
+  [2, 3],
+  [1, 4],
+  [3, 4],
+  [1, 6],
+  [5, 6],
+] as const;
+
 export function shoppingQuantity(quantity: number, unit: string) {
   const labels: Record<string, string> = {
     piece: 'cái / quả / bìa',
@@ -27,5 +43,27 @@ export function shoppingQuantity(quantity: number, unit: string) {
     pack: 'gói',
     slice: 'lát',
   };
-  return `${new Intl.NumberFormat('vi-VN', { maximumFractionDigits: 12 }).format(quantity)} ${labels[unit] ?? unit}`;
+  const unitLabel = labels[unit] ?? unit;
+  if (countedUnits.has(unit)) {
+    const whole = Math.floor(quantity);
+    const remainder = quantity - whole;
+    const fraction = familiarFractions.find(
+      ([numerator, denominator]) =>
+        remainder > 0 && Math.abs(remainder - numerator / denominator) <= 1e-12,
+    );
+    if (fraction) return `${whole ? `${whole} ` : ''}${fraction[0]}/${fraction[1]} ${unitLabel}`;
+  }
+  const digits = unit === 'kg' || unit === 'l' ? 3 : 2;
+  // Preserve a visible positive value below the normal display precision.
+  const options: Intl.NumberFormatOptions =
+    quantity >= 10 ** -digits
+      ? { maximumFractionDigits: digits, useGrouping: false }
+      : {
+          maximumSignificantDigits: 3,
+          useGrouping: false,
+          notation: quantity < 1e-6 ? 'scientific' : 'standard',
+        };
+  const displayed = new Intl.NumberFormat('vi-VN', options).format(quantity);
+  const rounded = Number(new Intl.NumberFormat('en-US', options).format(quantity));
+  return `${rounded === quantity ? '' : 'Khoảng '}${displayed} ${unitLabel}`;
 }

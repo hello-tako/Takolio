@@ -18,6 +18,7 @@ import { presentDomainError, presentRefetchOutcome } from '../lib/inventory-trut
 import { Plus, Search } from 'lucide-react';
 import { clsx } from 'clsx';
 import { StandardUnit } from '@frigo/domain';
+import { adjustedInventoryQuantity } from '../lib/inventory-quantity';
 
 export const InventoryPage: React.FC = () => {
   const navigate = useNavigate();
@@ -101,12 +102,17 @@ export const InventoryPage: React.FC = () => {
   const handleUpdateQty = (id: string, currentQty: number, delta: number, version: number) => {
     setMutationError(null);
     setRefetchFailed(false);
-    updateQty.mutate({ id, newQty: Math.max(1, currentQty + delta), version });
+    const newQty = adjustedInventoryQuantity(currentQty, delta);
+    if (newQty !== null) updateQty.mutate({ id, newQty, version });
   };
 
   const handleAddItem = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim()) return;
+    if (!name.trim() || addItem.isPending) return;
+    if (!Number.isFinite(quantity) || quantity <= 0 || quantity > 10000) {
+      setMutationError('Nhập lượng lớn hơn 0 và không quá 10.000 theo đơn vị đã chọn.');
+      return;
+    }
     setMutationError(null);
     setRefetchFailed(false);
     // T13: "Chưa rõ" means no expiry evidence exists. Sending a computed date
@@ -376,7 +382,11 @@ export const InventoryPage: React.FC = () => {
               <input
                 id="add-quantity"
                 type="number"
-                min="1"
+                min="0"
+                max="10000"
+                step="any"
+                inputMode="decimal"
+                aria-describedby="add-quantity-note"
                 required
                 value={quantity}
                 onChange={(e) => setQuantity(Number(e.target.value))}
@@ -407,6 +417,10 @@ export const InventoryPage: React.FC = () => {
               </select>
             </div>
           </div>
+
+          <p id="add-quantity-note" className="text-xs text-semantic-text-secondary">
+            Nhập lượng thực tế, ví dụ 0,5 kg hoặc 250 g. Gói và bó không được tự quy đổi sang gram.
+          </p>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
@@ -486,7 +500,7 @@ export const InventoryPage: React.FC = () => {
           </div>
 
           <div className="pt-2">
-            <Button fullWidth size="lg" type="submit">
+            <Button fullWidth size="lg" type="submit" isLoading={addItem.isPending}>
               Lưu vào tủ lạnh
             </Button>
           </div>

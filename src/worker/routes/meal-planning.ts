@@ -1,3 +1,4 @@
+import { FamilyPlanningInputChanged } from '../../../packages/db/src/family-planning-fence';
 import { Hono, type Context } from 'hono';
 import { bodyLimit } from 'hono/body-limit';
 import { z } from 'zod';
@@ -42,6 +43,7 @@ function key(c: Ctx) {
 async function respond(c: Ctx, operation: () => Promise<unknown>) {
   try { return c.json(await operation()); }
   catch (error) {
+    if (error instanceof FamilyPlanningInputChanged) return c.json({ code: 'PLAN_REVALIDATION_REQUIRED', error: 'Planning inputs changed; retry with current data' }, 409);
     if (error instanceof MealPlanningError) return c.json({ code: error.code, error: error.message }, error.status);
     if (error instanceof MealPlanningSnapshotAuthorizationError) return c.json({ code: 'TENANCY_VIOLATION', error: 'Household access denied' }, 403);
     if (error instanceof GeneratedMealPlanPersistenceError) {
@@ -131,11 +133,18 @@ export function createMealPlanningRoutes(options: Partial<MealPlanningServiceOpt
     if (!parsed.success) throw new MealPlanningError('INVALID_COMPONENT_ID', 422, 'Invalid component ID');
     return parsed.data;
   };
+  const includeAssessment = (c: Ctx) => {
+    const parsed = z.object({ includeAssessment: z.literal('true').optional() }).strict().safeParse(c.req.query());
+    if (!parsed.success || Object.values(c.req.queries()).some((values) => values.length !== 1)) {
+      throw new MealPlanningError('INVALID_REQUEST', 422, 'Composition read query does not match the contract');
+    }
+    return parsed.data.includeAssessment === 'true';
+  };
   const slotPath = '/meal-planning/plans/:id/slots/:slotId';
   routes.get('/meal-planning/plans/:id/compositions', reads, (c) => respond(c, () =>
-    compositions(c).compositions(scope(c), planId(c))));
+    compositions(c).compositions(scope(c), planId(c), includeAssessment(c))));
   routes.get(`${slotPath}/composition`, reads, (c) => respond(c, () =>
-    compositions(c).composition(scope(c), planId(c), slotId(c))));
+    compositions(c).composition(scope(c), planId(c), slotId(c), includeAssessment(c))));
   routes.put(`${slotPath}/composition`, compositionWrites, (c) => respond(c, async () =>
     compositions(c).replace(scope(c), planId(c), slotId(c), await body(c, ReplaceCompositionSchema))));
   routes.post(`${slotPath}/components`, compositionWrites, (c) => respond(c, async () =>

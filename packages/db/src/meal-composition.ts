@@ -12,6 +12,7 @@ import {
 } from '../../domain/src/meal-composition-api';
 import type { MealComponent } from '../../recipes/src/composition/model';
 import type { PersistedRoleAssignment } from '../../recipes/src/composition/roles';
+import { FamilyPlanningInputChanged } from './family-planning-fence';
 import type { D1DatabaseBinding, D1PreparedStatement } from './index';
 import {
   canonicalGeneratedMealPlanPayload,
@@ -91,6 +92,8 @@ export interface WritePlanCompositionsInput {
   slots: readonly CompositionSlotWrite[];
   /** Compositions of slots that no longer exist in the plan intent (V1 regenerate with a new intent). */
   deleteSlotIds?: readonly string[];
+  /** Server-owned statements committed behind the same membership/revision fence. */
+  additionalStatements?: readonly D1PreparedStatement[];
 }
 
 const OWNED_PLAN = `SELECT 1 FROM generated_meal_plans plan
@@ -219,6 +222,7 @@ export async function writePlanCompositions(db: D1DatabaseBinding, rawScope: unk
         ComponentProvenanceSchema.parse(component.provenance), component.createdRevision, component.updatedRevision));
     }
   }
+  statements.push(...(input.additionalStatements ?? []));
   let results;
   try {
     results = await db.batch(statements);
@@ -226,6 +230,9 @@ export async function writePlanCompositions(db: D1DatabaseBinding, rawScope: unk
     // Classification only; the batch was rolled back as a unit.
     const current = await getGeneratedMealPlan(db, scope, planId);
     if (current.revision !== expected) throw new GeneratedMealPlanPersistenceError('REVISION_CONFLICT');
+    if (input.additionalStatements?.length && error instanceof Error && error.message.includes('NOT NULL constraint failed: generated_meal_plan_compositions')) {
+      throw new FamilyPlanningInputChanged();
+    }
     throw error;
   }
   const updated = results[1];

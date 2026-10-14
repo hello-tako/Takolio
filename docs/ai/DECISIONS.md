@@ -2799,3 +2799,286 @@ integrity all match. Source/catalog/canary drift keeps existing shadow/promotion
 policy. No bypass input or protection change. Exact-main/CI/schema/Environment /
 strict OTP recovery proofs remain required. See
 ../backend-upgrade/final-local-completion/ADR-CATALOG-CONTINUITY-003.md.
+
+## ADR-058 — Vietnamese family meals and explicit meal-habit preferences (2026-10-13)
+
+The user authorizes implementation of the researched full-meal experience. Active
+packet T22 supersedes T20's optional whole-week composition deferral. Add V2 plan
+commands and metadata alongside strict V1 JSON. Build all selected slots on a
+shared sequential inventory projection and commit plan, components and metadata
+atomically. Regeneration retains locked component identities and refills roles;
+V1 writers cannot discard the components of a family plan.
+
+Vietnam-first is a product default: generated international main slots cap zero
+unless the user explicitly chooses otherwise. Regional preferences are soft,
+based on existing metadata, never inferred from titles or used to stereotype
+flavor. Rice and Vietnamese cuisine repetition are acceptable. Lunch/dinner
+family templates target main, vegetable/side, soup and staple; breakfast and
+explicit quick/one-pot intent use their own templates. Missing roles/data remain
+visible and hard restrictions stay fail closed.
+
+0042 adds explicit member-scoped family preferences and updates T03 soft ranking
+preferences only on an explicit save, preserving existing hard policies. It does
+not import legacy diet strings. Saved recipes are user-private, authority-aware,
+revision-fenced entries with tombstones and no global recipe inserts. Shopping
+materialization shares only the selected demand/title snapshots with the household;
+private plans stay private. Demand reconciliation preserves manual entries,
+checked state and explicit quantity overrides. Checkbox state never consumes stock.
+No payment/auth/provider/infrastructure change or remote release is authorized.
+
+The implementation uses native inventory/ranking/profile/catalog snapshot witnesses
+for both computation and atomic D1 writes; cache freshness alone cannot certify a
+mutation. Hard time applies to the sum of all component prep/cook durations.
+Unknown durations remain explicit. Personal manual locks retain identity. All
+preserved international mains, including future locked dates, reserve their share
+of the rolling seven-calendar-day allowance before Auto/Assisted generation.
+Preserved choices above a newly lowered cap remain visible with an explicit
+warning; no new international main may spend that allowance again. Non-staple
+companions receive a soft repetition penalty across the planning horizon.
+Only exact representable compatible quantities materialize into purchase rows.
+Shopping command receipts retain the original response; explicit deletion dismisses
+same-plan demand. Another household member's active projected plan returns409,
+avoiding independent subtraction of the same stock for separate private plans.
+
+Migration0042 must precede any deployment of this Worker: shopping, favorites and
+family preferences use its additive tables independently of the planner flags.
+Retain0042 during rollback. The current Worker rejects legacy regenerate/swap for
+persisted family plans when composition is disabled, including wholly unplanned
+family results, without adding a0042 dependency to ordinary legacyV1 writes.
+Returning to a pre-T22 Worker after creating family plans is not a certified
+rollback; it lacks these mutation guards. Paired flag-off on the current Worker
+is the supported local rollback path, pending separate hosted rehearsal.
+Purchase status transitions are enforced by both Worker and offline client: bought
+and cannot-buy cannot both become true; switching clears the other state in the
+same command without rewriting purchase quantity.
+
+## ADR-059 - Quantity-aware manual family planning and scoped dish selection (2026-10-13)
+
+Accepted under the user's continued comprehensive family-meal request. T23 extends
+T22 without introducing another planner or inventory ledger. Current manual picker
+cannot decide from recipe names alone: household servings, earlier allocated stock,
+kept dishes and downstream effects determine whether a selection can be accepted.
+
+Add POST /api/v2/meal-planning/drafts using the existing validated calendar intent,
+feature gates, membership, idempotency and atomic planning witnesses. It creates
+intentional empty manual compositions without running/discarding automatic search.
+Manual request fingerprints include their mode, so one key cannot replay an auto
+plan as a draft. Existing automatically generated fingerprints remain unchanged.
+Selecting a dish locks its explicit identity; optional completion fills other roles.
+
+Extend the existing picker with all-or-none plan/slot/revision context, an explicit
+excluded component for swap, quantity-only/no-buy filtering and a pinned snapshot.
+Reads and entering writes share chronological projected inventory and hard policy
+checks, including affected later dishes. Corrective removal must remain possible
+when existing companions are invalid. Inventory/profile/catalog/role/saved changes
+invalidate pages and changes before a write reject the transaction.
+
+Quantities expose required/covered/missing in trusted compatible units for the meal's
+servings. Unknown or incompatible units remain null; fractions are preserved and
+purchase rounding belongs to the explicit purchase edit. Planning never consumes
+physical stock. Default strict family/V1 DTOs retain their prior keys; ingredient
+assessments require includeAssessment=true on composition reads. Unscoped picker
+responses/order stay compatible. The updated browser opts into assessments and
+refreshes unassessed family seeds rather than treating absent data as zero shortage.
+
+Recipe discovery accepts optional servings 1..20, scaling only ingredient demand
+before availability/ranking. Omitted servings keep old behavior and response shape.
+The selected count is part of pagination snapshots and preserved in recipe links.
+Detail and cooking start use the same scaled recipe. Nutrition remains per-serving.
+The shared recipe-to-meal dialog selects a real destination and explicitly adds or
+replaces a chosen component. Without a current future plan it preserves recipe and
+servings into manual calendar setup; no mutation occurs from opening a dialog.
+
+Scoped ordering may prefer the member's chosen cuisine/regions before stock fit,
+without relaxing hard restrictions or explicit filters. A fridge match cannot
+force international food into a Vietnamese household's default meal. Regional
+metadata remains the existing coarse catalog evidence; it is not an authenticity
+claim. Read-only projection may reuse an exact prefix to limit repeated computation,
+while every affected suffix and atomic witness remain authoritative.
+
+No new migration, dependencies, remote operation or protected subsystem change.
+0042 remains required from T22. Browser matrices must exercise intentional empty
+calendar, exact quantity assessment, manual add versus swap, serving handoff and
+selected shopping horizon through the actual app/Worker HTTP; synthetic fixtures
+are not production or user-study evidence.
+
+T23 review refinement: an explicitly locked manual main already classified by the
+canonical RoleIndex as complete_meal selects the existing one-dish meal template
+for that slot. Thus a chosen pho/bun meal does not force separate rice and soup,
+while ordinary family dinners still fill four roles. No new title heuristic,
+per-slot persistence or nutrition/allergy assertion is introduced. DTO completeness,
+assisted completion and whole-week regeneration must use the same derived template;
+replacing/removing that main restores the configured family/quick template. Surface
+this choice as a one-dish meal rather than claiming four food groups are present.
+T23 also permits measured fractional inventory input and versioned actual-quantity
+corrections through existing commands. Increment sizes are UI affordances in the
+selected unit, never inferred package mass; no command may invent a positive floor.
+
+T23 quantity-editor refinement (2026-10-14): switching compatible measured units
+converts the displayed amount using exact Quantity arithmetic. Pure unit changes
+preserve the existing unit-only conversion command; an explicit correction is
+compared against the baseline expressed in the selected unit and sends its amount.
+Thus 1 kg -> g displays 1000 g, while a subsequent manual entry of 1 saves 1 g.
+An incompatible dropdown selection does not erase the last measured unit context
+or invent a package factor. Both unit changes and quantity corrections retain the
+opened draft's version fence; untouched metadata retains its existing rebase path.
+
+T23 chronology/revision refinement (2026-10-14): a mutation's expected revision
+must match both the row that supplied its loaded calculation context and the
+subsequent current-row check. A newer second read cannot authorize quantities,
+slot times or constraints computed from an older first row. Genuinely absent
+slots retain their existing 404 classification; a slot introduced during the
+reads is a stale request. Transactional revision and input witnesses still guard
+the final write.
+
+Same-instant stock projection now follows the canonical normalized numeric slot
+sequence, then stable slot identity, rather than lexical IDs (which placed 10
+before 2). Service reads, stock/shopping projections and the optimized affected
+suffix use this comparator. This intentionally corrects which equal-time meal
+receives shared stock; no migration or persisted slot identity changes. UI mixed
+boards and recipe destinations use date/time/numeric sequence with the plan's
+scheduled instant and offset; elapsed same-day destinations are omitted. If all
+slots elapsed, the exact recipe/servings handoff creates a manual calendar.
+
+T23 continued-week refinement (2026-10-14): elapsed breakfast/dinner must not
+freeze every remaining meal. V2 composition edits remain subject to the target
+slot's scheduled instant and current server checks. Legacy V1 swap and whole-plan
+regeneration retain their strict past-horizon rejection; history is not silently
+regenerated. The board explains that future meals can still be edited individually.
+
+Projection from a trusted current context skips elapsed instants, including meals
+earlier today. Their projected allocations are not deducted again from actual
+current stock. Legacy explicit projection scopes without a reference instant keep
+the date fallback. Picker/assessment snapshots include elapsed slot identities so
+a meal-time boundary invalidates quantities without invalidating every second.
+
+Shared family shopping may recalculate remaining composed demand from current
+stock when the only stale reasons are inventory, ranking history or elapsed time.
+Profile, hard preference, catalog and catalog-authority changes still require
+revalidation; all current snapshot/membership/revision/transaction fences remain.
+Non-family composed plans permit time-only continuation, with stock/history
+staleness still rejected. No stale freshness status is rewritten as fresh. The
+legacy price/budget optimizer remains strict. Future shopping excludes elapsed
+slots; a user action calculates demand, never consumes inventory. This policy
+supports actual cooking during a planned week without discarding its later choices.
+
+T23 shopping calendar refinement (2026-10-14): the trip's default start and date
+input minimum use the saved plan offset and the later device/server checked instant,
+consistently with future-slot eligibility. A device in a timezone already on the
+next date must not silently exclude a still-future late meal in the plan's local
+calendar. Missing or malformed offset/instant fails closed; no offset is guessed.
+Shopping uses the trusted reference captured for its request, as other projections
+do. A meal-time boundary during that request is not an inventory version change;
+subsequent requests use their new reference and exclude meals that then elapsed.
+
+## ADR-060 - Snapshot-bound review of unknown shared shopping demand (2026-10-14)
+
+Accepted for T24 under the user's instruction to continue careful implementation
+of practical household shopping. Unknown demand currently offers only source links;
+ordinary manual entries cannot reconcile it because they carry no demand identity.
+Reuse the shared purchase list, rather than introduce another planner or stock ledger.
+
+Migration0043 adds source/demand-key review rows, monotonic review revisions and
+immutable list-scoped command receipts. Reviews reference the durable source, not
+the demand row replaced by reconciliation; receipts survive review/item deletion.
+A persisted demand fingerprint includes source/plan/revision, trip dates, ingredient,
+unit and exact attribution. It excludes update time so unchanged re-sharing retains
+the decision. Changed plan revision, horizon or attribution requires review again.
+User purchase intent and checked history remain preserved by existing reconciliation.
+
+GET unresolvedItems remains additive and includes all unknown demands with an
+explicit pending/purchased/skipped reviewState. New fields bind sourceId, demandKey,
+snapshot, reviewRevision and optional existing purchaseItemId. A full selection
+snapshot additionally binds review and generated purchase state, so a stale open
+page cannot overwrite a concurrent quantity/check/decision edit. A purchased row
+requires a matching current demand fingerprint and a live generated overridden item.
+Legacy/manual entries never resolve demand through name or ingredient coincidence.
+
+POST /shopping-list/demand-review accepts purchase(quantity,standard unit), skip
+or reopen with the exact GET binding and Idempotency-Key. Current household members
+can review the shared persisted list, including demand shared by another member;
+this command does not load a private planner or certify current recipe coverage.
+Replay checks the immutable receipt before current demand and returns the original
+result without another write. Different payloads cannot reuse a key. Atomic batch
+guards bind membership, demand, review revision and the complete purchase witness.
+No request/client household ownership identifiers confer authority.
+
+Purchase creates/reuses the stable generated item as an explicit override without
+changing demand NULL, price, recipe, physical inventory or purchase checked state.
+Skip is scoped to this exact shared trip snapshot; it removes an unchecked linked
+purchase row only by explicit choice, and retains bought history. Reopen advances
+the review tombstone and returns the demand to pending without discarding purchase
+intent. Deleting a reviewed unknown purchase must not create the legacy same-plan
+indefinite dismissal; absence of its live item makes the unknown demand pending.
+Existing known-item dismissal semantics remain compatible.
+
+The web uses clear Vietnamese actions, blank initial purchase amount, source meals,
+separate pending/chosen/skipped presentation and visible reopen. Confirmation/skip
+are online-only; cached device reads remain useful but cannot pretend to resolve a
+snapshot. Uncertain attempts freeze request key and payload for an explicit retry.
+A rejected stale snapshot requires reload and a new user action. No automatic
+re-key, guessed package/bunch mass, outbox claim or stock import follows.
+
+0043 must be applied before this Worker serves shopping traffic, independently of
+planner flags. Preserve additive schema on rollback. Applied migrations, payment,
+unrelated auth, dependencies and infrastructure stay outside T24. Local HTTP,
+SQLite/D1 and browser validation are synthetic evidence, not production acceptance,
+regional user research or retention proof. Remaining whole-week regeneration,
+leftovers, shared prep, regional catalog provenance and vendor allocation gaps remain.
+
+T24 final review refinements: a NULL aggregate may also result from known recipe
+contributions that cannot be represented exactly in persisted shopping arithmetic.
+Show the unknown total separately; only NULL source contributions say their own
+amount is unknown. Shared-source navigation retains date/meal/title and opens the
+canonical recipe independently of creator-private planner ownership. Links open
+separately from a buying draft and are rendered as text during busy/uncertain/stale
+recovery. Missing recipe IDs remain text. The contribution DTO has no serving
+count; these links do not claim to preserve the planned recipe serving context.
+
+Local workerd/D1 validation found that shopping DELETE meta.changes includes
+cascaded generated-state/metadata rows. Accept a positive delete count rather than
+exactly one, preserving zero-change conflict classification and membership guards.
+Command receipts use normal INSERT and replay; UPDATE/DELETE triggers defend those
+paths. Direct privileged SQL INSERT OR REPLACE is outside this application guarantee.
+
+T24 rollback boundary: paired planner flags OFF on the current T24 Worker retain
+shopping review commands and are covered locally. A binary rollback to T23 or an
+older Worker after review purchases exist is not certified: the old DELETE path
+can create a same-plan dismissal for unknown demand and the old UI has no review
+or skip/reopen actions. Do not infer safe mixed-version shopping writes from the
+expand-only schema. Keep 0043 on rollback and rehearse any earlier binary against
+reviewed purchase/history fixtures before authorizing that release path.
+
+## ADR-061 - Operational release support for family-meal schema tips (2026-10-14)
+
+Accepted under the user's explicit instruction to release all T22-T24 changes.
+Add bounded staging migration support for the exact 0041->0043 chain, retaining
+current-main/exact-SHA CI, staging D1 identity, ledger/plan, bookmark, schema and
+unchanged-data evidence. Production 0042/0043 retain the existing Environment gate
+and immutable migration chain, and receive the same immediate current-main/CI
+rechecks as other operational schema tips. Catalog/media verification treats 0042
+and 0043 as post-media operational tips without permitting catalog/media drift.
+No new runtime schema is added; no applied migration or payment/auth runtime is
+changed. Catalog authority progression and strict release proof remain binding.
+
+The first family schema release prepares an inactive recovery version from the
+exact current candidate with both planner UI/server flags OFF before active
+traffic. Its compiled flags, canonical D1 binding, source SHA and catalog flags
+are certified; active assets are rebuilt and rechecked after that upload. Failure
+recovery prefers this named compatible version over the pre-T22/pre-T24 binary,
+keeping additive 0042/0043 schema and shopping review semantics. The unchanged
+strict-OTP recovery retains priority when preparing an initial OTP cutover.
+
+T22 changed the recipe-authority source to add current-content validation. Existing
+unchanged-D1 continuity therefore does not apply. Use the existing explicit
+shadow restart, then same-SHA canary 1 -> 5 -> 25 -> d1 progression with authority
+proof at every step; retain the unchanged rollout policy and human Environment
+gates. This temporary authority transition is part of the authorized release.
+
+Production 0043 additionally certifies every family table/index/trigger/constraint
+against the two reviewed migration files. The recovery receipt binds root HTML
+and module bundle byte counts/SHA256 to the flags-OFF build; a used recovery must
+fetch and match those exact served assets before recording success. Same-SHA
+service-worker metadata alone cannot distinguish the ON and OFF UI builds.
+Staging preserves exact aggregate counts and media diagnostics, not database byte
+content or R2 availability; runtime catalog/media authority checks remain separate.

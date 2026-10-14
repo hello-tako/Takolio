@@ -70,6 +70,17 @@ required_tables(name) AS (
     ,('recipe_feedback_events')
     ,('generated_meal_plans')
     ,('generated_meal_plan_annotations')
+    ,('family_meal_preferences')
+    ,('saved_recipe_entries')
+    ,('generated_family_meal_plans')
+    ,('shopping_plan_sources')
+    ,('shopping_plan_demands')
+    ,('shopping_generated_item_state')
+    ,('shopping_plan_commands')
+    ,('shopping_item_metadata')
+    ,('shopping_plan_item_dismissals')
+    ,('shopping_demand_reviews')
+    ,('shopping_demand_review_commands')
 ),
 required_columns(table_name, column_name) AS (
   VALUES
@@ -224,11 +235,50 @@ required_columns(table_name, column_name) AS (
     ,('recipe_media', 'status')
     ,('recipe_media', 'storage_key')
     ,('recipe_media', 'content_hash')
+    ,('family_meal_preferences', 'revision')
+    ,('family_meal_preferences', 'preferences_json')
+    ,('saved_recipe_entries', 'revision')
+    ,('saved_recipe_entries', 'is_saved')
+    ,('saved_recipe_entries', 'display_json')
+    ,('generated_family_meal_plans', 'schema_version')
+    ,('generated_family_meal_plans', 'profile_revision')
+    ,('generated_family_meal_plans', 'profile_fingerprint')
+    ,('generated_family_meal_plans', 'policy_json')
+    ,('generated_family_meal_plans', 'diagnostics_json')
+    ,('shopping_plan_sources', 'plan_revision')
+    ,('shopping_plan_sources', 'start_date')
+    ,('shopping_plan_sources', 'end_date')
+    ,('shopping_plan_sources', 'creator_user_id')
+    ,('shopping_plan_demands', 'demand_key')
+    ,('shopping_plan_demands', 'quantity')
+    ,('shopping_plan_demands', 'contributions_json')
+    ,('shopping_generated_item_state', 'demand_key')
+    ,('shopping_generated_item_state', 'is_overridden')
+    ,('shopping_plan_commands', 'request_fingerprint')
+    ,('shopping_plan_commands', 'response_json')
+    ,('shopping_item_metadata', 'ingredient_identity')
+    ,('shopping_item_metadata', 'recipe_identity')
+    ,('shopping_item_metadata', 'recipe_title')
+    ,('shopping_item_metadata', 'cannot_buy')
+    ,('shopping_plan_item_dismissals', 'demand_key')
+    ,('shopping_plan_item_dismissals', 'plan_id')
+    ,('shopping_demand_reviews', 'source_id')
+    ,('shopping_demand_reviews', 'demand_key')
+    ,('shopping_demand_reviews', 'revision')
+    ,('shopping_demand_reviews', 'demand_fingerprint')
+    ,('shopping_demand_reviews', 'decision')
+    ,('shopping_demand_reviews', 'item_id')
+    ,('shopping_demand_review_commands', 'request_fingerprint')
+    ,('shopping_demand_review_commands', 'response_json')
 ),
 -- Indexes and triggers share one sqlite_master lookup: D1 (workerd) caps compound SELECTs at
 -- 5 terms (SQLITE_LIMIT_COMPOUND_SELECT), so the gate must stay at five UNION ALL branches.
 required_schema_objects(type, name) AS (
   VALUES
+    ('index', 'idx_saved_recipe_entries_recent'),
+    ('index', 'idx_shopping_demand_reviews_item'),
+    ('trigger', 'trg_shopping_demand_review_commands_immutable_update'),
+    ('trigger', 'trg_shopping_demand_review_commands_immutable_delete'),
     ('index', 'idx_auth_otp_tickets_scope_admitted'),
     ('index', 'idx_auth_otp_requests_retained_until'),
     ('index', 'idx_checkout_admissions_user_state'),

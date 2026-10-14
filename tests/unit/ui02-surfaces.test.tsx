@@ -338,7 +338,7 @@ describe('Home authority and recovery', () => {
 describe('Discovery mounted URL interactions', () => {
   it('renders24/page with native pagination and focuses the new results heading', async () => {
     await mount(<RecipesPage />, '/recipes');
-    await until(() => expect(container.querySelectorAll('.discovery-grid > a')).toHaveLength(24));
+    await until(() => expect(container.querySelectorAll('.discovery-grid > article')).toHaveLength(24));
     expect(container.querySelector('a[href^="/recipes?page=2&cursor="]')).not.toBeNull();
     await click('Tiếp');
     await until(() =>
@@ -354,15 +354,25 @@ describe('Discovery mounted URL interactions', () => {
     );
     expect(mocks.recommendations).toHaveBeenCalledTimes(3);
   });
+  it('keeps selected servings in requests and real recipe anchors when filters are cleared', async () => {
+    await mount(<RecipesPage />, '/recipes?servings=4&cuisine=vietnamese');
+    await until(() => expect(container.querySelectorAll('.discovery-grid > article')).toHaveLength(24));
+    expect(mocks.recommendations).toHaveBeenCalledWith(expect.objectContaining({ servings: 4 }));
+    expect(container.querySelector('.discovery-grid > article > a')?.getAttribute('href')).toContain('servings=4');
+    await click('Xóa tìm kiếm và bộ lọc');
+    await until(() => expect(container.querySelector('[data-location]')?.textContent).toBe('/recipes?servings=4'));
+    expect(container.querySelector('select')?.value).toBe('4');
+    expect(mocks.recommendations).toHaveBeenLastCalledWith(expect.objectContaining({ servings: 4, cuisine: undefined }));
+  });
   it('deep-linked search reaches later ingredients and reset restores all results/focus', async () => {
     await mount(<RecipesPage />, '/recipes?q=dau+do&page=8&origin=home');
-    await until(() => expect(container.querySelectorAll('.discovery-grid > a')).toHaveLength(1));
+    await until(() => expect(container.querySelectorAll('.discovery-grid > article')).toHaveLength(1));
     expect(container.querySelector('.discovery-grid h3')!.textContent).toBe('Món 50');
     expect(container.querySelector('[data-location]')!.textContent).toBe(
       '/recipes?q=dau+do&origin=home',
     );
     await click('Xóa tìm kiếm và bộ lọc');
-    await until(() => expect(container.querySelectorAll('.discovery-grid > a')).toHaveLength(24));
+    await until(() => expect(container.querySelectorAll('.discovery-grid > article')).toHaveLength(24));
     expect(document.activeElement).toBe(container.querySelector('#recipe-search'));
     expect(container.querySelector('[data-location]')!.textContent).toBe('/recipes?origin=home');
   });
@@ -374,9 +384,9 @@ describe('Discovery mounted URL interactions', () => {
       </Routes>,
       '/recipes?page=2',
     );
-    await until(() => expect(container.querySelectorAll('.discovery-grid > a')).toHaveLength(24));
+    await until(() => expect(container.querySelectorAll('.discovery-grid > article')).toHaveLength(24));
     await act(async () =>
-      container.querySelector<HTMLAnchorElement>('.discovery-grid > a')!.click(),
+      container.querySelector<HTMLAnchorElement>('.discovery-grid > article > a')!.click(),
     );
     await until(() =>
       expect(container.querySelector('a[aria-label="Quay lại"]')!.getAttribute('href')).toBe(
@@ -392,7 +402,7 @@ describe('Discovery mounted URL interactions', () => {
   });
   it('stale cursor hides results and restarts with the same filters and heading focus', async () => {
     await mount(<RecipesPage />, '/recipes?cuisine=vietnamese&origin=home');
-    await until(() => expect(container.querySelectorAll('.discovery-grid > a')).toHaveLength(24));
+    await until(() => expect(container.querySelectorAll('.discovery-grid > article')).toHaveLength(24));
     mocks.recommendations.mockRejectedValueOnce(
       new ApiError('http', 'HTTP 409: {"code":"DISCOVERY_SNAPSHOT_CHANGED"}', 409),
     );
@@ -401,7 +411,7 @@ describe('Discovery mounted URL interactions', () => {
     expect(container.querySelector('.discovery-grid')).toBeNull();
     expect(mocks.recommendations).toHaveBeenCalledTimes(2);
     await click('Tải lại từ trang đầu');
-    await until(() => expect(container.querySelectorAll('.discovery-grid > a')).toHaveLength(24));
+    await until(() => expect(container.querySelectorAll('.discovery-grid > article')).toHaveLength(24));
     expect(container.querySelector('[data-location]')!.textContent).toBe(
       '/recipes?cuisine=vietnamese&origin=home',
     );
@@ -409,14 +419,14 @@ describe('Discovery mounted URL interactions', () => {
   });
   it('changing filters waits for the correct request and ignores an older response', async () => {
     await mount(<RecipesPage />, '/recipes');
-    await until(() => expect(container.querySelectorAll('.discovery-grid > a')).toHaveLength(24));
+    await until(() => expect(container.querySelectorAll('.discovery-grid > article')).toHaveLength(24));
     const older = deferred<DiscoveryPage>();
     mocks.recommendations.mockReturnValueOnce(older.promise);
     await click('Không mua thêm');
     await until(() => expect(container.textContent).toContain('Đang tìm món phù hợp'));
     expect(container.querySelector('.discovery-grid')).toBeNull();
     await click('Tối đa 20 phút');
-    await until(() => expect(container.querySelectorAll('.discovery-grid > a')).toHaveLength(24));
+    await until(() => expect(container.querySelectorAll('.discovery-grid > article')).toHaveLength(24));
     await act(async () => older.resolve(discoveryFixture(discoveryRecipes(), { noBuy: true })));
     expect(container.querySelector('[data-location]')!.textContent).toBe(
       '/recipes?noBuy=true&maxTime=20',

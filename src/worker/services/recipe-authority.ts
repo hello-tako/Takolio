@@ -1,5 +1,7 @@
 import type { D1DatabaseBinding } from '@frigo/db';
 import { readRecipeContent } from '../../../packages/db/src/recipe-content';
+import { hydrateRuntimeRecipes } from '../../../packages/recipes/src/runtime-hydration';
+import { fingerprintRecipes } from '../../../packages/recipes/src/catalog-fingerprint';
 import {
   D1RecipeAuthority,
   parseRecipeCanaryPercent,
@@ -122,6 +124,13 @@ type D1LoadOutcome =
   | { kind: 'fresh'; snapshot: RecipeAuthoritySnapshot }
   | { kind: 'stale'; snapshot: RecipeAuthoritySnapshot; readiness: Exclude<RecipeAuthorityReadiness, { status: 'ready' }>; ageMs: number }
   | { kind: 'unavailable'; readiness: Exclude<RecipeAuthorityReadiness, { status: 'ready' }> };
+
+/** Mutations must prove the selected D1 snapshot still matches current content, even inside the cache TTL. */
+export async function recipeAuthoritySnapshotIsCurrent(db: D1DatabaseBinding, snapshot: RecipeAuthoritySnapshot): Promise<boolean> {
+  if (snapshot.source !== 'd1') return true;
+  const hydrated = hydrateRuntimeRecipes(await readRecipeContent(db));
+  return hydrated.failures.length === 0 && await fingerprintRecipes(hydrated.recipes) === snapshot.fingerprint;
+}
 
 /** Test seam: forget the isolate's cached D1 snapshot and any in-flight refresh. */
 export function resetRecipeAuthorityCacheForTests(): void { cachedD1 = null; inflightD1 = null; }
