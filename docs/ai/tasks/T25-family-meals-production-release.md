@@ -1,5 +1,75 @@
 # T25 - Release Vietnamese family meals T22-T24
 
+Status: RELEASE_COMPLETE / PRODUCTION_CERTIFIED (2026-10-15 JST).
+Production `https://frigo.tungjpstore.net` serves candidate
+`0ff82edb7c251be340b5e00fbcf0ae8703b22a55`, hardened SHA
+`3a24808b97838235596a43694013e74b1ba64cc2`, paired UI/server flags ON.
+Certification uses automated gates and public smoke, per the user's choice;
+authenticated hosted household flows remain NOT_TESTED.
+
+## Completed Release Evidence
+
+Exact-head/main CI `38626853404` / `38628474378`, staging migration/deploy
+`38629910072` / `38630223689`, production migration `38630661149` PASS. Exact
+0042+0043 applied, ledger 43/tip 0043, healthy FK/quick checks, aggregate drift none,
+500 recipes/runtime fingerprint and family schema 28 objects/11 tables with
+constraints PASS.
+
+| Production Stage | Protected Run | Full Hosted Tests | Result |
+| --- | --- | --- | --- |
+| shadow/0 | 38631551953 | 359 files / 8,442 tests, 456.63s | SUCCESS |
+| canary/1 | 38633505550 | 359 files / 8,442 tests, 614.33s | SUCCESS |
+| canary/5 | 38635714965 | 359 files / 8,442 tests, 589.04s | SUCCESS |
+| canary/25 | 38642407644 | 359 files / 8,442 tests, 588.97s | SUCCESS |
+| d1/0 | 38646724015 | 359 files / 8,442 tests, 565.46s | SUCCESS |
+
+Every production stage retained normal Environment approval; root/independent
+verification PASS and exact predecessor Worker/deployment joins are certified.
+Final receipt `work/t25-production-d1/release-manifest.json` records Worker
+`25b4008f-3444-4b48-b7e3-071dfc706664`, deployment
+`f37b8645-44fd-4ab4-9975-494ef73a0238`, canonical D1 binding, ledger 43, paired
+ON flags, d1/0 actual/global D1, D1 ready, served 500, fingerprint
+`f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37`,
+no fallback and three asset/SW observations. Rollback NOT_USED. Same-candidate
+flags-OFF recovery `8c5b6928-8144-4eb9-8b61-b757c8ef35a2` is certified inactive
+with compiled OFF assets; recovery traffic NOT_REHEARSED.
+
+Final `work/t25-production-public-adjusted-final.json` is
+PRODUCTION_PUBLIC_READINESS_ASSETS_SMOKE_PASS: exact SHA, no-store auth shell,
+immutable `/assets/index-CRmh9668.js`, protected SW hash match, three observations
+and `EXPECTED_RECIPE_CATALOG_MODE=d1` public smoke PASS. Completed
+`2026-10-14T22:35:43.049Z`. Database ok, D1/500/no fallback; readiness degraded
+carries informational `CONFIG_RECIPE_CATALOG_D1_AUTHORITY`, not a fatal config issue.
+
+## Verification Failures And Limits
+
+Original scratch public verifier failed twice because the external Cloudflare
+Insights module violated its single-module-count assumption. Failed receipts
+`work/t25-production-public-final.json` and
+`work/t25-production-public-final-rerun.json` remain. Adjusted scratch verifier
+requires one bounded local `/assets` module and retains exact SHA/cache/SW/
+authority checks; final PASS. No application/runtime change or incident resulted.
+
+Authenticated planner/manual/favorites/shopping NOT_TESTED; recipe-media R2
+NOT_REVERIFIED; recovery traffic NOT_REHEARSED. Local tests do not certify
+nationwide user habits, retention, regional provenance or signed-in hosted flows.
+Earlier CI/staging/optional-historical-join failures are preserved below.
+
+## Closeout
+
+All T25 production rollout/receipt/public-smoke gates are complete. Root should
+publish the final four-document checkpoint normally. Source/runtime/config/schema
+unchanged by this closeout; preserve additive 0042/0043 and compatible OFF recovery.
+
+---
+
+## Prior Rollout Checkpoint - c622ee61
+
+The current checkpoint supersedes earlier pending canary/25 claims; earlier
+receipts, checks and limitations remain unchanged below.
+
+# T25 - Release Vietnamese family meals T22-T24
+
 **Hosted verification:** Canary/5 full suite PASS: 359 files / 8,442 tests,
 589.04s (`work/t25-production-canary5-full.log`). Earlier shadow 456.63s and
 canary/1 614.33s counts/evidence remain preserved. User selected automated checks

@@ -1,3 +1,56 @@
+# T25 handoff: production release certified - 2026-10-15 JST
+
+**Status:** RELEASE_COMPLETE / PRODUCTION_CERTIFIED. Production
+`https://frigo.tungjpstore.net` serves
+`0ff82edb7c251be340b5e00fbcf0ae8703b22a55`; hardened SHA
+`3a24808b97838235596a43694013e74b1ba64cc2`. Paired planner UI/server flags ON.
+
+**Executed sequence:** Normal PR #75/#76 merges and exact-head/main CI
+`38626853404` / `38628474378` PASS; staging migration/deploy `38629910072` /
+`38630223689` PASS; production migration `38630661149` PASS, exact 0042+0043,
+ledger 43, healthy FK/quick checks, aggregate drift none and exact family schema.
+Approved production stages shadow `38631551953`, canary/1 `38633505550`, canary/5
+`38635714965`, canary/25 `38642407644` and d1/0 `38646724015` all SUCCESS.
+Each root/independent receipt PASS with exact predecessor Worker/deployment join.
+Each stage full hosted suite passed 359 files / 8,442 tests; durations respectively
+456.63s, 614.33s, 589.04s, 588.97s and 565.46s. No rollback occurred.
+
+**Final authority:** `work/t25-production-d1/release-manifest.json` and independent
+receipt certify Worker `25b4008f-3444-4b48-b7e3-071dfc706664`, deployment
+`f37b8645-44fd-4ab4-9975-494ef73a0238`, DB
+`f975ec39-b2c8-4a2a-80e1-0366054599d3`, ledger 43, paired ON flags,
+configured d1/0 and actual/global D1, D1 ready, served 500 recipes, no fallback and
+fingerprint `f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37`.
+Same-candidate flags-OFF recovery `8c5b6928-8144-4eb9-8b61-b757c8ef35a2`
+is inactive and certified with compiled OFF assets; traffic NOT_REHEARSED.
+
+**Final public check:** `work/t25-production-public-adjusted-final.json` PASS,
+completed `2026-10-14T22:35:43.049Z`: exact SHA, no-store auth shell, immutable
+local main `/assets/index-CRmh9668.js`, SW hash matching the protected receipt,
+three observations and final `EXPECTED_RECIPE_CATALOG_MODE=d1` public smoke.
+Readiness database ok, full D1/500/no fallback, degraded solely by informational
+`CONFIG_RECIPE_CATALOG_D1_AUTHORITY` (`src/worker/config/validation.ts:149`).
+
+**Retained failures and limits:** Original public verifier failed twice on an
+external Cloudflare Insights module counted as app main. Failed scratch receipts
+remain; adjusted verifier requires one bounded local `/assets` module and retains
+exact SHA/cache/SW/authority checks, then PASS. No runtime issue/change resulted.
+Authenticated household planner/manual/favorites/shopping NOT_TESTED; recipe-media
+R2 NOT_REVERIFIED; recovery traffic NOT_REHEARSED. Earlier historical failures
+remain preserved; no research/retention or signed-in hosted acceptance claim.
+
+**Next action:** Root reviews and normally commits/pushes the final four-document
+checkpoint on `codex/family-release-receipts-20261015`. All T25 production gates
+are complete; source/runtime/config/schema unchanged by this documentation work.
+Keep additive 0042/0043 and compatible flags-OFF recovery for future operations.
+
+---
+
+## Prior Rollout Checkpoint - c622ee61
+
+The current handoff supersedes earlier canary/25 pending claims; prior evidence
+and limitations follow unchanged.
+
 # T25 handoff: canary/5 certified; canary/25 awaiting approval - 2026-10-15 JST
 
 **Hosted verification:** Canary/5 full suite PASS: 359 files / 8,442 tests,

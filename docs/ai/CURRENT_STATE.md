@@ -1,3 +1,80 @@
+# T25 Vietnamese family meals production certified - 2026-10-15 JST
+
+**Status:** RELEASE_COMPLETE / PRODUCTION_CERTIFIED. T22-T24 is serving production
+at `https://frigo.tungjpstore.net` from candidate
+`0ff82edb7c251be340b5e00fbcf0ae8703b22a55`; approved hardened SHA
+`3a24808b97838235596a43694013e74b1ba64cc2`. Paired planner UI/server flags are
+ON. Release certification uses automated checks and public smoke as requested;
+authenticated hosted household flows remain NOT_TESTED.
+
+**Verified sequence:** PR #75/#76 merged normally; exact-head `38626853404` and
+exact-main `38628474378` CI passed 359 files / 8,442 tests with lint/types/
+migration smoke/build. Staging migration `38629910072` and deploy `38630223689`
+passed. Production migration `38630661149` applied exact 0042+0043, certifying
+ledger 43/tip `0043_shopping_demand_review.sql`, healthy FK/quick checks, aggregate
+drift none and family schema 28 objects/11 tables with constraints PASS.
+
+| Production Stage | Run | Full Hosted Tests | Result |
+| --- | --- | --- | --- |
+| shadow/0 | 38631551953 | 359 files / 8,442 tests, 456.63s | SUCCESS |
+| canary/1 | 38633505550 | 359 files / 8,442 tests, 614.33s | SUCCESS |
+| canary/5 | 38635714965 | 359 files / 8,442 tests, 589.04s | SUCCESS |
+| canary/25 | 38642407644 | 359 files / 8,442 tests, 588.97s | SUCCESS |
+| d1/0 | 38646724015 | 359 files / 8,442 tests, 565.46s | SUCCESS |
+
+Every stage retained normal production Environment approval and passed protected
+receipt verification. Each promotion joined the preceding candidate's exact
+Worker/deployment IDs; final root/independent verification joined canary/25 exactly.
+No rollback was used.
+
+**Final serving receipt:** `work/t25-production-d1/release-manifest.json` and
+`work/t25-production-d1/release-manifest.json.independent-verification.json`
+certify Worker
+`25b4008f-3444-4b48-b7e3-071dfc706664`, deployment
+`f37b8645-44fd-4ab4-9975-494ef73a0238`, production D1
+`f975ec39-b2c8-4a2a-80e1-0366054599d3`, ledger 43, paired flags ON, D1/0,
+actual/global source D1, D1 ready, served 500 recipes, no fallback, release
+`rel-bd00a4f53fcaeee4`, and fingerprint
+`f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37`.
+Three exact asset/SW observations passed. Same-candidate paired-OFF recovery
+`8c5b6928-8144-4eb9-8b61-b757c8ef35a2` is certified inactive with compiled
+OFF assets; recovery traffic NOT_REHEARSED.
+
+**Final public evidence:** `work/t25-production-public-adjusted-final.json` is
+`PRODUCTION_PUBLIC_READINESS_ASSETS_SMOKE_PASS`, completed
+`2026-10-14T22:35:43.049Z`. Exact production SHA, no-store auth shell,
+`/assets/index-CRmh9668.js` with immutable cache, matching protected SW hash and
+three consecutive ordinary/revalidated observations PASS. Final
+`EXPECTED_RECIPE_CATALOG_MODE=d1` public smoke PASS. Database is ok, D1/500/
+no fallback; readiness is degraded solely by informational
+`CONFIG_RECIPE_CATALOG_D1_AUTHORITY` (`src/worker/config/validation.ts:149`),
+which confirms the cutover fence is satisfied.
+
+**Retained verification failures:** Original scratch public verifier failed twice
+because Cloudflare Insights injects an external module and its single-module-count
+assumption rejected the auth shell. Failed receipts
+`work/t25-production-public-final.json` and
+`work/t25-production-public-final-rerun.json` remain. The adjusted scratch verifier
+requires exactly one bounded local `/assets` main module while ignoring external
+module count, retaining exact SHA/cache/SW/authority checks; rerun PASS. This was a
+verification-harness limitation; no runtime change or production incident was found.
+Earlier CI timeouts, staging D1 column-limit failure and optional stale historical
+receipt comparison remain preserved in prior checkpoints.
+
+**Limits and closeout:** Authenticated planner/manual/favorites/shopping flows
+NOT_TESTED; recipe-media R2 NOT_REVERIFIED; recovery traffic NOT_REHEARSED. Local
+product tests are not hosted household acceptance or retention/user-research proof.
+Source/runtime/config/schema were unchanged by this documentation checkpoint.
+Root should publish the final four-document receipt checkpoint normally on the
+receipts branch; no release gate or reviewer approval remains outstanding for T25.
+
+---
+
+## Prior Rollout Checkpoint - c622ee61
+
+The current checkpoint supersedes the earlier canary/25 pending state. Historical
+receipt evidence and limitations remain unchanged below.
+
 # T25 canary/5 certified; canary/25 awaiting approval - 2026-10-15 JST
 
 **Hosted verification:** Canary/5 full suite PASS: 359 files / 8,442 tests,

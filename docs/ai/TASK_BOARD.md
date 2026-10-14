@@ -1,3 +1,45 @@
+# T25 production release complete - 2026-10-15 JST
+
+**State:** RELEASE_COMPLETE / PRODUCTION_CERTIFIED. Candidate
+`0ff82edb7c251be340b5e00fbcf0ae8703b22a55` serves
+`https://frigo.tungjpstore.net`; hardened SHA
+`3a24808b97838235596a43694013e74b1ba64cc2`, paired planner UI/server flags ON.
+
+**Completed gates:** Exact-head/main CI `38626853404` / `38628474378`, staging
+migration/deploy `38629910072` / `38630223689`, production migration `38630661149`
+and approved sequential rollout shadow `38631551953` -> canary/1 `38633505550` ->
+canary/5 `38635714965` -> canary/25 `38642407644` -> d1/0 `38646724015` all PASS.
+Every promotion receipt joined the preceding candidate's exact Worker/deployment.
+All five production full suites passed 359 files / 8,442 tests, with durations
+456.63s / 614.33s / 589.04s / 588.97s / 565.46s respectively.
+
+**Final receipt/public proof:** `work/t25-production-d1/release-manifest.json` and
+its independent verification PASS; Worker `25b4008f-3444-4b48-b7e3-071dfc706664`,
+deployment `f37b8645-44fd-4ab4-9975-494ef73a0238`, ledger 43, actual/global
+D1/500/fingerprint/no fallback, paired ON and three asset/SW observations.
+`work/t25-production-public-adjusted-final.json` PASS: exact SHA, no-store auth,
+immutable `/assets/index-CRmh9668.js`, matching SW hash and final D1 public smoke.
+Rollback NOT_USED; inactive paired-OFF recovery
+`8c5b6928-8144-4eb9-8b61-b757c8ef35a2` certified, traffic NOT_REHEARSED.
+
+**Retained limits/failures:** Readiness degraded carries informational
+`CONFIG_RECIPE_CATALOG_D1_AUTHORITY`, database ok. Original scratch public verifier
+failed twice on external Cloudflare Insights module count; adjusted local-module
+selection retained exact SHA/cache/SW/authority checks and PASS, without runtime
+change. Authenticated hosted flows NOT_TESTED; recipe-media R2 NOT_REVERIFIED.
+
+**Next:** Root publishes the final four-doc receipt checkpoint normally. No pending
+production approval, rollout or T25 release gate remains. Preserve additive 0042/0043,
+protected release rules and compatible flags-OFF recovery; source/runtime/config/
+schema unchanged by this closeout.
+
+---
+
+## Prior Rollout Checkpoint - c622ee61
+
+The current state supersedes the earlier pending canary/25 stage; evidence follows
+unchanged.
+
 # T25 canary/5 certified; canary/25 awaiting approval - 2026-10-15 JST
 
 **Hosted verification:** Canary/5 full suite PASS: 359 files / 8,442 tests,
