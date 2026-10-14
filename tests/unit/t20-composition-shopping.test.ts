@@ -3,12 +3,13 @@ import { aggregateShoppingDemand } from '../../packages/recipes/src/shopping-dem
 import { projectShoppingMealPlan } from '../../packages/recipes/src/shopping-plan-snapshot';
 import {
   compositionShoppingSnapshot,
+  evaluationScope,
   projectCompositions,
   type ProjectionSlot,
 } from '../../packages/recipes/src/composition/projection';
 import type { RecipeDefinition } from '../../packages/recipes/src/foundation';
 import type { InventoryLotSnapshot } from '../../packages/recipes/src/planner-inventory';
-import { catalog, HOUSEHOLD_ID, lot, recipe } from '../helpers/planner-fixtures';
+import { catalog, context, HOUSEHOLD_ID, lot, recipe } from '../helpers/planner-fixtures';
 import { shoppingPlan } from '../helpers/shopping-fixtures';
 
 /**
@@ -109,6 +110,41 @@ describe('T20E aggregate-before-subtract shopping', () => {
     expect(projection.components.get('fruit')!.status).toBe('not_tracked');
     expect(projection.components.get('ghost')!.status).toBe('unavailable');
     expect(requirements).toEqual([expect.objectContaining({ ingredientId: 'RICE', requiredQuantity: 60 })]);
+  });
+
+  it('same-day elapsed meals reserve no stock and a future scoped stop sees the actual inventory', () => {
+    const evaluation = evaluationScope(context({ catalog: catalog([soup, salad]),
+      referenceInstant: '2026-09-08T13:00:00+07:00' }));
+    expect(evaluation.referenceInstant).toBe('2026-09-08T06:00:00.000Z');
+    const slots: ProjectionSlot[] = [
+      { ...slot('2026-09-08', [component('lunch', 'tomato-soup')]), slotId: '2026-09-08:lunch:0', instant: '2026-09-08T05:00:00.000Z' },
+      { ...slot('2026-09-08', [component('dinner', 'tomato-salad')]), instant: '2026-09-08T11:00:00.000Z' },
+    ];
+    const projection = projectCompositions({ scope: evaluation, referenceDate: '2026-09-08', inventory: [tomato(500)],
+      slots, untilSlotId: slots[1].slotId });
+    expect(projection.skippedPastSlots).toEqual([slots[0].slotId]);
+    expect(projection.components.has('lunch')).toBe(false);
+    expect(projection.components.has('dinner')).toBe(false);
+    expect(projection.inventoryAtStop![0]).toMatchObject({ quantity: 500, consumedQuantity: 0 });
+    expect(projection.finalInventory[0]).toMatchObject({ quantity: 500, consumedQuantity: 0 });
+  });
+
+  it('keeps an exact-time meal and emits only remaining meals in the shopping snapshot', () => {
+    const evaluation = evaluationScope(context({ catalog: catalog([soup, salad]),
+      referenceInstant: '2026-09-08T13:00:00+07:00' }));
+    const slots: ProjectionSlot[] = [
+      { ...slot('2026-09-08', [component('elapsed', 'tomato-soup')]), slotId: '2026-09-08:lunch:0', instant: '2026-09-08T05:00:00.000Z' },
+      { ...slot('2026-09-08', [component('now', 'tomato-soup')]), slotId: '2026-09-08:lunch:1', instant: '2026-09-08T06:00:00.000Z' },
+      { ...slot('2026-09-08', [component('future', 'tomato-salad')]), instant: '2026-09-08T11:00:00.000Z' },
+    ];
+    const projection = projectCompositions({ scope: evaluation, referenceDate: '2026-09-08', inventory: [tomato(500)], slots });
+    expect(projection.components.get('now')!.status).toBe('covered');
+    expect(projection.components.get('future')!.shortages[0].missingQuantity).toBe(100);
+    const snapshot = compositionShoppingSnapshot(projectShoppingMealPlan(shoppingPlan([soup])), projection, slots);
+    expect(snapshot.slots.map(entry => entry.id)).toEqual([slots[1].slotId, slots[2].slotId]);
+    expect(aggregateShoppingDemand(snapshot)[0]).toMatchObject({ requiredQuantity: 100,
+      sourceMealSlots: [expect.objectContaining({ slotId: slots[2].slotId })] });
+    expect(projection.finalInventory[0]).toMatchObject({ quantity: 0, consumedQuantity: 500 });
   });
 
   it('past slots are skipped and the untilSlot stop exposes the inventory an assisted slot plans against', () => {

@@ -3,6 +3,7 @@ import { afterEach, beforeEach, expect, it, vi } from 'vitest';
 import { recipesApi } from '../../src/web/services/recipes';
 import { useCookingStore } from '../../src/web/stores/useCookingStore';
 import type { Recipe } from '@frigo/recipes';
+import { flush, getPendingOps } from '../../src/web/lib/sync';
 
 const stock = vi.hoisted(() => ({ read: vi.fn() }));
 vi.mock('../../src/web/services/inventory', () => ({ inventoryApi: { getInventory: stock.read } }));
@@ -182,4 +183,33 @@ it('concurrent same-key network failures keep one outbox operation and project u
   expect(secondResult.inventory).toEqual([{ ...inventory[1], quantity: 0.25, pendingSync: true }]);
   const queued = JSON.parse(localStorage.getItem('frigo_sync_outbox_v1')!);
   expect(queued).toHaveLength(1);
+});
+
+it('sends the selected serving count in the online completion command', async () => {
+  vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify({ success: true, inventory }))));
+  const deductions = [{ ingredientId: 'PORK_BELLY', name: 'Pork', quantityDeducted: 500, unit: 'g' as const }];
+  await recipesApi.completeCooking(recipe.id, deductions, 'four-person-cook', inventory, 4);
+  const request = vi.mocked(fetch).mock.calls[0][1]!;
+  expect(JSON.parse(request.body as string)).toEqual({ deductions, commandId: 'four-person-cook', servings: 4 });
+  expect(new Headers(request.headers).get('Idempotency-Key')).toBe('four-person-cook');
+});
+
+it('keeps serving count in the offline replay and rejects changing it for the same key', async () => {
+  const deductions = [{ ingredientId: 'PORK_BELLY', name: 'Pork', quantityDeducted: 500, unit: 'g' as const }];
+  const first = await recipesApi.completeCooking(recipe.id, deductions, 'four-person-offline', inventory, 4);
+  const queued = getPendingOps();
+  expect(queued).toHaveLength(1);
+  expect(JSON.parse(queued[0].body!)).toEqual({ deductions, commandId: 'four-person-offline', servings: 4 });
+  stock.read.mockResolvedValue(first.inventory);
+  expect((await recipesApi.completeCooking(recipe.id, deductions, 'four-person-offline', inventory, 4)).inventory).toEqual(first.inventory);
+  await expect(recipesApi.completeCooking(recipe.id, deductions, 'four-person-offline', inventory, 2))
+    .rejects.toMatchObject({ code: 'IDEMPOTENCY_CONFLICT' });
+  expect(getPendingOps()).toHaveLength(1);
+  vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response('{}')));
+  await flush(async op => {
+    await fetch(`/api/v1${op.path}`, { method: op.method, body: op.body, headers: op.headers });
+  }, undefined, { scope: { userId: 'user', householdId: 'household' } });
+  expect(vi.mocked(fetch).mock.calls[0][1]?.body).toBe(queued[0].body);
+  expect(new Headers(vi.mocked(fetch).mock.calls[0][1]?.headers).get('Idempotency-Key')).toBe('four-person-offline');
+  expect(getPendingOps()).toEqual([]);
 });

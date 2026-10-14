@@ -26,8 +26,10 @@ import { ComponentPicker } from './ComponentPicker';
 import { mealCompositionApi } from '../../services/meal-composition';
 import { CompositionLoadState } from './CompositionLoadState';
 import { MealTimeNotice } from './MealTimeNotice';
+import { MealStyleNotice } from './MealStyleNotice';
 import { compositionState } from './composition-state';
 import { FamilyPlanNotice } from './FamilyPlanNotice';
+import { isPlannerSlotElapsed, plannerSlotTime } from './schedule';
 
 function DishCard({
   composition,
@@ -35,6 +37,7 @@ function DishCard({
   planId,
   slotId,
   disabled,
+  elapsed,
   onSwap,
   onLock,
 }: {
@@ -43,6 +46,7 @@ function DishCard({
   planId: string;
   slotId: string;
   disabled: boolean;
+  elapsed: boolean;
   onSwap: (item: MealComponentDto) => void;
   onLock: (item: MealComponentDto) => void;
 }) {
@@ -108,6 +112,7 @@ function DishCard({
           );
         })}
       </ul>
+      <MealStyleNotice warnings={composition.warnings} locale={locale} />
       <MealTimeNotice warnings={composition.warnings} locale={locale} />
       {composition.source === 'v2' && missing.size > 0 && (
         <div className="planning-missing-roles">
@@ -121,7 +126,7 @@ function DishCard({
             className="planning-text-link"
             to={`/planner/${planId}/meal/${encodeURIComponent(slotId)}`}
           >
-            {c.addDish}
+            {elapsed ? c.detail : c.addDish}
           </Link>
         </div>
       )}
@@ -143,7 +148,11 @@ export function PlannerWeek({
   const [picker, setPicker] = useState<{ slotId: string; component: MealComponentDto } | null>(
     null,
   );
-  async function mutate(operation: () => Promise<unknown>) {
+  async function mutate(slotId: string, operation: () => Promise<unknown>) {
+    if (isPlannerSlotElapsed(plan, slotId)) {
+      setPicker(null);
+      return;
+    }
     const result = await model.perform('composition-change', operation);
     if (result) {
       setPicker(null);
@@ -151,12 +160,12 @@ export function PlannerWeek({
     }
   }
   function choose(item: PickerItemDto) {
-    if (!picker) return;
+    if (!picker || isPlannerSlotElapsed(plan, picker.slotId)) return;
     const target =
       item.kind === 'recipe'
         ? { kind: 'recipe' as const, recipeId: item.id }
         : { kind: 'simple_food' as const, simpleFoodId: item.id };
-    void mutate(() =>
+    void mutate(picker.slotId, () =>
       mealCompositionApi.swap(plan.id, picker.slotId, picker.component.id, {
         revision: plan.revision,
         target,
@@ -170,6 +179,10 @@ export function PlannerWeek({
   const compositions = usePlanCompositions(plan, composing);
   const matchingCompositions =
     compositions.data?.planId === plan.id && compositions.data.planRevision === plan.revision;
+  const revisionChanged =
+    compositions.isSuccess &&
+    compositions.data.planId === plan.id &&
+    compositions.data.planRevision !== plan.revision;
   const compositionFor = (slotId: string) =>
     matchingCompositions
       ? compositions.data?.compositions.find((entry) => entry.slotId === slotId)
@@ -180,13 +193,20 @@ export function PlannerWeek({
     plan.intent.slots.some(
       (slot) => !compositionFor(`${slot.date}:${slot.mealType}:${slot.sequence ?? 0}`),
     );
-  const past = plan.freshness.reasons.includes('planning_time_elapsed');
+  const past =
+    plan.freshness.reasons.includes('planning_time_elapsed') ||
+    plan.intent.slots.some((slot) =>
+      isPlannerSlotElapsed(plan, `${slot.date}:${slot.mealType}:${slot.sequence ?? 0}`),
+    );
   const uncertain = !legacy && (!compositions.isSuccess || compositions.isFetching || missing);
   const currentCompositions = plan.intent.slots.flatMap((slot) => {
     const composition = compositionFor(`${slot.date}:${slot.mealType}:${slot.sequence ?? 0}`);
     return composition ? [composition] : [];
   });
   const states = currentCompositions.map(compositionState);
+  const hasOneDishMeal = currentCompositions.some((composition) =>
+    composition.warnings.includes('MANUAL_ONE_DISH_MEAL'),
+  );
   const legacySummary = legacy || (!uncertain && states.every((state) => state === 'legacy'));
   const completeCount = states.filter((state) => state === 'complete').length;
   const reviewOnly =
@@ -199,8 +219,12 @@ export function PlannerWeek({
         : 'Dish completeness not confirmed'
       : completeCount === plan.intent.slots.length
         ? locale === 'vi'
-          ? 'Đã xếp đủ nhóm món'
-          : 'All required dish groups are present'
+          ? hasOneDishMeal
+            ? 'Đã xếp món cho các bữa'
+            : 'Đã xếp đủ nhóm món'
+          : hasOneDishMeal
+            ? 'Dishes are planned for each meal'
+            : 'All required dish groups are present'
         : reviewOnly
           ? locale === 'vi'
             ? 'Cần kiểm tra lại bữa ăn'
@@ -217,10 +241,17 @@ export function PlannerWeek({
         ? 'Đang chờ xác nhận các món trong phiên bản hiện tại.'
         : 'Waiting to confirm dishes in the current revision.'
       : locale === 'vi'
-        ? `${completeCount}/${plan.intent.slots.length} bữa đủ nhóm món; nguyên liệu được kiểm tra riêng.`
-        : `${completeCount}/${plan.intent.slots.length} meals have all required groups; ingredients are checked separately.`;
+        ? hasOneDishMeal
+          ? `${completeCount}/${plan.intent.slots.length} bữa đã xếp đủ món theo kiểu ăn đã chọn; nguyên liệu được kiểm tra riêng.`
+          : `${completeCount}/${plan.intent.slots.length} bữa đủ nhóm món; nguyên liệu được kiểm tra riêng.`
+        : hasOneDishMeal
+          ? `${completeCount}/${plan.intent.slots.length} meals have dishes for the chosen meal style; ingredients are checked separately.`
+          : `${completeCount}/${plan.intent.slots.length} meals have all required groups; ingredients are checked separately.`;
   const boardMeals = [
-    ...plan.result.meals,
+    ...plan.result.meals.filter((meal) => {
+      const composition = legacy ? undefined : compositionFor(meal.slotId);
+      return !(composition?.mode === 'manual' && composition.components.length === 0);
+    }),
     ...(!legacy && compositions.isSuccess ? currentCompositions : [])
       .filter(
         (composition) =>
@@ -245,6 +276,22 @@ export function PlannerWeek({
         };
       }),
   ];
+  const boardSlots = plan.intent.slots
+    .map((slot) => {
+      const slotId = `${slot.date}:${slot.mealType}:${slot.sequence ?? 0}`;
+      return {
+        ...slot,
+        slotId,
+        time: plannerSlotTime(plan, slotId) ?? '',
+      };
+    })
+    .sort(
+      (left, right) =>
+        left.date.localeCompare(right.date) ||
+        left.time.localeCompare(right.time) ||
+        (left.sequence ?? 0) - (right.sequence ?? 0) ||
+        left.slotId.localeCompare(right.slotId),
+    );
   return (
     <>
       <div className="planning-board-summary">
@@ -276,7 +323,28 @@ export function PlannerWeek({
         </Card>
       )}
       {plan.result.search.truncated && <p className="planning-board-warning">{t.limited}</p>}
-      {!legacy && <CompositionLoadState query={compositions} locale={locale} missing={missing} />}
+      {!legacy &&
+        (revisionChanged ? (
+          <div role="status" className="planning-notice">
+            <p>
+              {locale === 'vi'
+                ? 'Thực đơn đã có phiên bản mới. Tải lại để xem đúng các bữa.'
+                : 'A newer plan is available. Load it to see the current meals.'}
+            </p>
+            <Button
+              className="mt-3"
+              variant="outline"
+              disabled={!!model.busy}
+              onClick={() =>
+                void model.perform('refresh', () => model.loadPlan(plan.id), model.replacePlan)
+              }
+            >
+              {locale === 'vi' ? 'Tải thực đơn mới nhất' : 'Load latest plan'}
+            </Button>
+          </div>
+        ) : (
+          <CompositionLoadState query={compositions} locale={locale} missing={missing} />
+        ))}
       <div className="planning-day-board">
         {days.map((date) => (
           <section key={date} className="planning-day">
@@ -289,17 +357,95 @@ export function PlannerWeek({
                 timeZone: 'UTC',
               }).format(new Date(`${date}T12:00:00Z`))}
             </h2>
-            {boardMeals
-              .filter((meal) => meal.date === date)
-              .map((meal) => {
-                const composition = legacy ? undefined : compositionFor(meal.slotId);
+            {boardSlots
+              .filter((slot) => slot.date === date)
+              .map((slot) => {
+                const composition = legacy ? undefined : compositionFor(slot.slotId);
+                const slotElapsed = isPlannerSlotElapsed(plan, slot.slotId);
+                if (composition?.mode === 'manual' && composition.components.length === 0) {
+                  return (
+                    <Card
+                      key={composition.slotId}
+                      className="planning-meal-card planning-manual-empty"
+                    >
+                      <p className="planning-meal-label">
+                        {t[composition.mealType]} · {slot.time} · {composition.servings} {t.people}
+                      </p>
+                      <h3 className="planning-meal-name">
+                        {locale === 'vi'
+                          ? slotElapsed
+                            ? 'Bữa đã qua chưa được xếp món'
+                            : 'Bữa này chờ bạn chọn món'
+                          : slotElapsed
+                            ? 'No dishes planned for this past meal'
+                            : 'Choose dishes for this meal'}
+                      </h3>
+                      <p className="text-sm text-semantic-text-secondary mt-2">
+                        {locale === 'vi'
+                          ? slotElapsed
+                            ? 'Giữ nguyên bữa đã qua. Bạn có thể tiếp tục xếp món cho những bữa sắp tới.'
+                            : 'Chọn từ món đã lưu hoặc nguyên liệu đang có. Bạn có thể nhờ Takosan hoàn thiện sau.'
+                          : slotElapsed
+                            ? 'Past meals stay unchanged. Continue choosing dishes for future meals.'
+                            : 'Use saved dishes or your fridge. Takosan can help complete the meal later.'}
+                      </p>
+                      <Link
+                        className="planning-primary-link mt-3"
+                        to={`/planner/${plan.id}/meal/${encodeURIComponent(composition.slotId)}`}
+                      >
+                        {slotElapsed
+                          ? locale === 'vi'
+                            ? 'Xem bữa này'
+                            : 'View meal'
+                          : locale === 'vi'
+                            ? 'Chọn món cho bữa này'
+                            : 'Choose dishes'}
+                      </Link>
+                    </Card>
+                  );
+                }
+                const meal = boardMeals.find((entry) => entry.slotId === slot.slotId);
+                if (!meal) {
+                  const unplanned = plan.result.unplannedSlots.find(
+                    (entry) => entry.slotId === slot.slotId,
+                  );
+                  if (!unplanned || (!legacy && composition?.components.length)) return null;
+                  return (
+                    <div className="planning-unplanned" key={slot.slotId}>
+                      <h3>
+                        {t[slot.mealType]} · {slot.time} · {t.unplanned}
+                      </h3>
+                      <ul>
+                        {unplanned.reasons.map((code) => (
+                          <li key={code}>{reasonLabel(code, locale)}</li>
+                        ))}
+                      </ul>
+                      {composing && (
+                        <Link
+                          className="planning-text-link"
+                          to={`/planner/${plan.id}/meal/${encodeURIComponent(slot.slotId)}`}
+                        >
+                          {slotElapsed
+                            ? compositionCopy[locale].detail
+                            : compositionCopy[locale].addDish}
+                        </Link>
+                      )}
+                    </div>
+                  );
+                }
                 return (
                   <Card key={meal.slotId} className="planning-meal-card" data-testid="planned-meal">
                     <div className="planning-meal-card-head">
                       <div>
                         <p className="planning-meal-label">
                           {t[meal.mealType]}
-                          {meal.time && <> · {meal.time}</>}
+                          {slot.time && <> · {slot.time}</>}
+                          {slotElapsed && (
+                            <>
+                              {' '}
+                              · {locale === 'vi' ? 'Đã qua giờ dự kiến' : 'Scheduled time passed'}
+                            </>
+                          )}
                         </p>
                         <h3 className="planning-meal-name">
                           {legacy
@@ -323,10 +469,11 @@ export function PlannerWeek({
                         locale={locale}
                         planId={plan.id}
                         slotId={meal.slotId}
-                        disabled={!!model.busy || past}
+                        disabled={!!model.busy || slotElapsed}
+                        elapsed={slotElapsed}
                         onSwap={(component) => setPicker({ slotId: meal.slotId, component })}
                         onLock={(component) =>
-                          void mutate(() =>
+                          void mutate(meal.slotId, () =>
                             mealCompositionApi.update(plan.id, meal.slotId, component.id, {
                               revision: plan.revision,
                               locked: !component.locked,
@@ -372,31 +519,6 @@ export function PlannerWeek({
                   </Card>
                 );
               })}
-            {plan.result.unplannedSlots
-              .filter(
-                (slot) =>
-                  slot.date === date && (legacy || !compositionFor(slot.slotId)?.components.length),
-              )
-              .map((slot) => (
-                <div className="planning-unplanned" key={slot.slotId}>
-                  <h3>
-                    {t[slot.mealType]} · {t.unplanned}
-                  </h3>
-                  <ul>
-                    {slot.reasons.map((code) => (
-                      <li key={code}>{reasonLabel(code, locale)}</li>
-                    ))}
-                  </ul>
-                  {composing && (
-                    <Link
-                      className="planning-text-link"
-                      to={`/planner/${plan.id}/meal/${encodeURIComponent(slot.slotId)}`}
-                    >
-                      {compositionCopy[locale].addDish}
-                    </Link>
-                  )}
-                </div>
-              ))}
           </section>
         ))}
       </div>
@@ -438,14 +560,37 @@ export function PlannerWeek({
           {t.generating}
         </p>
       )}
-      {picker && (
+      {picker && !isPlannerSlotElapsed(plan, picker.slotId) && (
         <ComponentPicker
           locale={locale}
           busy={!!model.busy}
           mutationError={model.error}
           initialRole={picker.component.role}
+          intent="swap"
+          context={(() => {
+            const slot = plan.intent.slots.find(
+              (entry) => `${entry.date}:${entry.mealType}:${entry.sequence ?? 0}` === picker.slotId,
+            );
+            return slot
+              ? {
+                  date: slot.date,
+                  mealType: slot.mealType,
+                  servings: slot.servings ?? plan.intent.defaultServings,
+                }
+              : undefined;
+          })()}
+          scope={{
+            planId: plan.id,
+            slotId: picker.slotId,
+            revision: plan.revision,
+            excludeComponentId: picker.component.id,
+          }}
           onChoose={choose}
           onClose={() => setPicker(null)}
+          onReloadPlan={() => {
+            setPicker(null);
+            void model.perform('refresh', () => model.loadPlan(plan.id), model.replacePlan);
+          }}
         />
       )}
       <ConfirmDialog

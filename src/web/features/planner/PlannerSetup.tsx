@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, useSearchParams, Link } from 'react-router-dom';
+import { CatalogIdSchema } from '../../../../packages/domain/src/foundation';
 import { useQueryClient } from '@tanstack/react-query';
 import { CalendarDays } from 'lucide-react';
 import { Card } from '../../components/common/Card';
@@ -18,8 +19,10 @@ import { buildPlanningIntent, localDate } from './intent';
 import type { usePlanner } from './usePlanner';
 import { isMealCompositionEnabled } from './composition';
 import { LegacyPlannerSetup } from './LegacyPlannerSetup';
+
 export const plannerInputClass =
   'planning-input block w-full min-h-11 mt-1 rounded-xl border border-semantic-border-strong bg-white p-3 text-sm text-semantic-text-primary focus:ring-2 focus:ring-takosan-green focus:outline-none';
+
 export function PlannerSetup(props: {
   model: ReturnType<typeof usePlanner>;
   locale: PlannerLocale;
@@ -30,6 +33,7 @@ export function PlannerSetup(props: {
     <LegacyPlannerSetup {...props} />
   );
 }
+
 function FamilyPlannerSetup({
   model,
   locale,
@@ -39,6 +43,17 @@ function FamilyPlannerSetup({
 }) {
   const t = plannerCopy[locale];
   const navigate = useNavigate();
+  const [params] = useSearchParams();
+  const recipe = CatalogIdSchema.safeParse(params.get('recipe'));
+  const recipeId = recipe.success ? recipe.data : null;
+  const requestedServings = params.get('servings') ?? '';
+  const handoffServings =
+    recipeId && /^[1-9][0-9]?$/.test(requestedServings) && Number(requestedServings) <= 20
+      ? Number(requestedServings)
+      : undefined;
+  const [selectionMode, setSelectionMode] = useState<'auto' | 'manual'>(
+    recipeId ? 'manual' : 'auto',
+  );
   const client = useQueryClient();
   const preferences = useFamilyPreferences();
   const [draft, setDraft] = useState<FamilyPreferences | null>(null);
@@ -56,10 +71,13 @@ function FamilyPlannerSetup({
   const errorRef = useRef<HTMLParagraphElement>(null);
   useEffect(() => {
     if (preferences.data && !draft) {
-      setDraft(preferences.data.preferences);
+      setDraft({
+        ...preferences.data.preferences,
+        householdSize: handoffServings ?? preferences.data.preferences.householdSize,
+      });
       setDraftRevision(preferences.data.revision);
     }
-  }, [preferences.data, draft]);
+  }, [preferences.data, draft, handoffServings]);
   useEffect(() => {
     if (invalid) errorRef.current?.focus();
   }, [invalid]);
@@ -85,8 +103,9 @@ function FamilyPlannerSetup({
       setInvalid(true);
       return;
     }
+    const requestIntent = selectionMode === 'manual' ? { selectionMode: 'manual', intent } : intent;
     const result = await model.perform(
-      'generate',
+      selectionMode === 'manual' ? 'manual-draft' : 'generate',
       async () => {
         if (JSON.stringify(draft) !== JSON.stringify(preferences.data.preferences)) {
           try {
@@ -98,14 +117,23 @@ function FamilyPlannerSetup({
             throw failure;
           }
         }
-        return model.generate(intent, model.requestKey(intent));
+        return selectionMode === 'manual'
+          ? model.createManual(intent, model.requestKey(requestIntent))
+          : model.generate(intent, model.requestKey(requestIntent));
       },
       (plan) => {
         model.replacePlan(plan);
-        model.retireRequestKey(intent);
+        model.retireRequestKey(requestIntent);
       },
     );
-    if (result) navigate(`/planner/${result.id}`, { replace: true });
+    if (result) {
+      const first = result.intent.slots[0];
+      const destination =
+        recipeId && first
+          ? `/planner/${result.id}/meal/${encodeURIComponent(`${first.date}:${first.mealType}:${first.sequence ?? 0}`)}?recipe=${encodeURIComponent(recipeId)}`
+          : `/planner/${result.id}`;
+      navigate(destination, { replace: true });
+    }
   }
   return (
     <div className="planning-setup-layout">
@@ -116,8 +144,12 @@ function FamilyPlannerSetup({
             <h2>{locale === 'vi' ? 'Xếp những bữa nhà mình sẽ nấu' : 'Plan the meals you cook'}</h2>
             <p>
               {locale === 'vi'
-                ? 'Takosan gợi ý cả bữa theo thói quen đã chọn.'
-                : 'Get a complete meal based on your habits.'}
+                ? selectionMode === 'manual'
+                  ? 'Chọn lịch nấu trước, rồi tự đặt những món nhà mình muốn ăn.'
+                  : 'Takosan gợi ý cả bữa theo thói quen đã chọn.'
+                : selectionMode === 'manual'
+                  ? 'Choose your cooking calendar, then fill each meal with your own dishes.'
+                  : 'Get a complete meal based on your habits.'}
             </p>
           </div>
         </div>
@@ -129,6 +161,54 @@ function FamilyPlannerSetup({
           draft && (
             <form onSubmit={submit} className="family-settings-form">
               <fieldset disabled={!!model.busy}>
+                <legend>{locale === 'vi' ? 'Cách lên thực đơn' : 'How to plan'}</legend>
+                <div className="family-plan-mode">
+                  <label data-selected={selectionMode === 'auto'}>
+                    <input
+                      type="radio"
+                      name="plan-selection-mode"
+                      value="auto"
+                      checked={selectionMode === 'auto'}
+                      onChange={() => setSelectionMode('auto')}
+                    />
+                    <span>
+                      <strong>
+                        {locale === 'vi' ? 'Takosan gợi ý cả bữa' : 'Let Takosan suggest meals'}
+                      </strong>
+                      <small>
+                        {locale === 'vi'
+                          ? 'Nhận các bữa đủ nhóm món theo thói quen gia đình.'
+                          : 'Get complete dish groups based on your household habits.'}
+                      </small>
+                    </span>
+                  </label>
+                  <label data-selected={selectionMode === 'manual'}>
+                    <input
+                      type="radio"
+                      name="plan-selection-mode"
+                      value="manual"
+                      checked={selectionMode === 'manual'}
+                      onChange={() => setSelectionMode('manual')}
+                    />
+                    <span>
+                      <strong>
+                        {locale === 'vi' ? 'Tự chọn món cho từng bữa' : 'Choose each dish yourself'}
+                      </strong>
+                      <small>
+                        {locale === 'vi'
+                          ? 'Bắt đầu bằng lịch trống, chọn món theo tủ lạnh hoặc món đã lưu.'
+                          : 'Start with an empty calendar and use your fridge or saved dishes.'}
+                      </small>
+                    </span>
+                  </label>
+                </div>
+                {recipeId && (
+                  <p className="planning-note">
+                    {locale === 'vi'
+                      ? 'Món bạn vừa chọn sẽ được mở để xem lượng và đặt vào bữa sau khi tạo lịch.'
+                      : 'Your selected dish will open for quantity review after creating the calendar.'}
+                  </p>
+                )}
                 <div className="family-field-pair">
                   <label>
                     {t.date}
@@ -226,9 +306,21 @@ function FamilyPlannerSetup({
                 </div>
               )}
               <Button type="submit" fullWidth isLoading={!!model.busy} disabled={profileConflict}>
-                {t.generate}
+                {selectionMode === 'manual'
+                  ? locale === 'vi'
+                    ? 'Tạo lịch trống để tự chọn món'
+                    : 'Create an empty meal calendar'
+                  : t.generate}
               </Button>
-              {model.busy && <p role="status">{t.generating}</p>}
+              {model.busy && (
+                <p role="status">
+                  {selectionMode === 'manual'
+                    ? locale === 'vi'
+                      ? 'Đang tạo lịch nấu…'
+                      : 'Creating your meal calendar…'
+                    : t.generating}
+                </p>
+              )}
               <p className="planning-note">
                 Thói quen được lưu cho lần sau. Tạo thực đơn chưa trừ thực phẩm khỏi tủ.
               </p>

@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import type { D1DatabaseBinding, D1PreparedStatement } from './index';
 import { FamilyMealPolicySchema, FamilyMealDiagnosticsSchema } from '../../domain/src/family-meal-planning-api';
-import { ComponentIdSchema, ComponentProvenanceSchema, MealRoleSchema } from '../../domain/src/meal-composition-api';
+import { ComponentIdSchema, ComponentProvenanceSchema, CompositionModeSchema, MealRoleSchema } from '../../domain/src/meal-composition-api';
 import { canonicalGeneratedMealPlanPayload, findGeneratedMealPlanByRequest, getGeneratedMealPlan,
   GeneratedMealPlanPersistenceError, type CreateGeneratedMealPlanInput, type GeneratedMealPlanScope } from './meal-planning';
 import { FamilyPlanningInputChanged } from './family-planning-fence';
@@ -65,8 +65,8 @@ export async function createFamilyMealPlan(db: D1DatabaseBinding, scope: Generat
     if (slot.components.length > 8) throw new Error('Composition exceeds component limit');
     statements.push(db.prepare(`INSERT INTO generated_meal_plan_compositions
       (plan_id, household_id, creator_user_id, slot_id, mode, created_revision, updated_revision)
-      SELECT id, ?, ?, ?, 'auto', 1, 1 FROM (${owned}) WHERE 1 ON CONFLICT(plan_id, slot_id) DO NOTHING`)
-      .bind(scope.householdId, scope.userId, slot.slotId, ...bindings));
+      SELECT id, ?, ?, ?, ?, 1, 1 FROM (${owned}) WHERE 1 ON CONFLICT(plan_id, slot_id) DO NOTHING`)
+      .bind(scope.householdId, scope.userId, slot.slotId, CompositionModeSchema.parse(slot.mode), ...bindings));
     for (const component of slot.components) statements.push(db.prepare(`INSERT INTO generated_meal_plan_components
       (plan_id, id, slot_id, ordinal, kind, role, recipe_id, simple_food_id, locked, provenance, created_revision, updated_revision)
       SELECT id, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, 1 FROM (${owned}) WHERE 1 ON CONFLICT(plan_id, id) DO NOTHING`)

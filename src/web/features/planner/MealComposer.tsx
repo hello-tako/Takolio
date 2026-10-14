@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
+import { CatalogIdSchema } from '../../../../packages/domain/src/foundation';
 import {
   ArrowDown,
   ArrowUp,
@@ -26,9 +27,12 @@ import { mealCompositionApi } from '../../services/meal-composition';
 import { SaveRecipeButton } from '../../components/common/SaveRecipeButton';
 import { CompositionLoadState } from './CompositionLoadState';
 import { MealTimeNotice } from './MealTimeNotice';
+import { MealStyleNotice } from './MealStyleNotice';
 import { compositionState, compositionStateCopy } from './composition-state';
 import { FamilyPlanNotice } from './FamilyPlanNotice';
-import { ComponentPicker } from './ComponentPicker';
+import { isPlannerSlotElapsed, plannerSlotInstant } from './schedule';
+import { ComponentPicker, type PickerMealContext } from './ComponentPicker';
+import { IngredientCoverage } from './IngredientCoverage';
 import { compositionCopy, componentTitle, roleLabel, usePlanCompositions } from './composition';
 import type { PlannerLocale } from './copy';
 import type { usePlanner } from './usePlanner';
@@ -52,19 +56,32 @@ export function MealComposer({
   query?: ReturnType<typeof usePlanCompositions>;
 }) {
   const c = compositionCopy[locale];
+  const [params, setParams] = useSearchParams();
+  const requestedRecipe = CatalogIdSchema.safeParse(params.get('recipe'));
+  const pendingRecipeId = requestedRecipe.success ? requestedRecipe.data : undefined;
+  function clearRecipeHandoff() {
+    if (!pendingRecipeId) return;
+    const next = new URLSearchParams(params);
+    next.delete('recipe');
+    setParams(next, { replace: true });
+  }
   const ownQuery = usePlanCompositions(plan, !loaded);
   const query = loaded ?? ownQuery;
   const matchingCompositions =
     query.data?.planId === plan.id && query.data.planRevision === plan.revision;
+  const revisionChanged =
+    query.isSuccess && query.data.planId === plan.id && query.data.planRevision !== plan.revision;
   const composition = matchingCompositions
     ? query.data?.compositions.find((entry) => entry.slotId === slotId)
     : undefined;
-  const [picker, setPicker] = useState<Picker | null>(null);
+  const [picker, setPicker] = useState<Picker | null>(() =>
+    pendingRecipeId ? { mode: 'add' } : null,
+  );
   const [proposal, setProposal] = useState<AssistProposalDto | null>(null);
   const [options, setOptions] = useState<AutoOptionsDto | null>(null);
   const [message, setMessage] = useState('');
   const heading = useRef<HTMLHeadingElement>(null);
-  const past = plan.freshness.reasons.includes('planning_time_elapsed');
+  const past = isPlannerSlotElapsed(plan, slotId);
 
   useEffect(() => {
     if (!pendingFocus || !composition) return;
@@ -75,10 +92,20 @@ export function MealComposer({
   }, [composition]);
 
   async function mutate(label: string, focusId: string, operation: () => Promise<unknown>) {
+    if (isPlannerSlotElapsed(plan, slotId)) {
+      setPicker(null);
+      setMessage(
+        locale === 'vi'
+          ? 'Bữa này đã qua giờ dự kiến. Chọn một bữa sắp tới để chỉnh món.'
+          : 'This meal has passed. Choose a future meal to edit dishes.',
+      );
+      return;
+    }
     const result = await model.perform(label, operation);
     if (!result) return;
     pendingFocus = { id: focusId, message: c.changed };
     setPicker(null);
+    clearRecipeHandoff();
     setProposal(null);
     setOptions(null);
     // Server revision moved: reload the authoritative plan (the composition query is keyed by revision).
@@ -115,11 +142,45 @@ export function MealComposer({
   if (!query.isSuccess || !composition)
     return (
       <Card>
-        <CompositionLoadState query={query} locale={locale} missing={!composition} />
+        {revisionChanged ? (
+          <div role="status" className="planning-notice">
+            <p>
+              {locale === 'vi'
+                ? 'Thực đơn đã có phiên bản mới. Tải lại trước khi chọn món.'
+                : 'A newer plan is available. Load it before choosing dishes.'}
+            </p>
+            <Button
+              className="mt-3"
+              variant="outline"
+              disabled={!!model.busy}
+              onClick={() =>
+                void model.perform('refresh', () => model.loadPlan(plan.id), model.replacePlan)
+              }
+            >
+              {locale === 'vi' ? 'Tải thực đơn mới nhất' : 'Load latest plan'}
+            </Button>
+          </div>
+        ) : (
+          <CompositionLoadState query={query} locale={locale} missing={!composition} />
+        )}
       </Card>
     );
   const disabled = !!model.busy || past;
   const components = composition.components;
+  const context: PickerMealContext = {
+    date: composition.date,
+    mealType: composition.mealType,
+    servings: composition.servings,
+  };
+  const pickerScope =
+    picker && picker.mode === 'swap'
+      ? {
+          planId: plan.id,
+          slotId,
+          revision: plan.revision,
+          excludeComponentId: picker.component.id,
+        }
+      : { planId: plan.id, slotId, revision: plan.revision };
   return (
     <Card className="planning-composer !p-5 sm:!p-6" aria-labelledby="composition-heading">
       <h3
@@ -130,9 +191,24 @@ export function MealComposer({
       >
         {c.heading}
       </h3>
-      <p className="text-xs text-semantic-text-muted mt-1">{c.editHint}</p>
+      <p className="text-xs text-semantic-text-muted mt-1">
+        {past
+          ? plannerSlotInstant(plan, slotId) === undefined
+            ? locale === 'vi'
+              ? 'Chưa xác nhận được giờ của bữa này. Tải lại thực đơn trước khi chỉnh món.'
+              : 'This meal time could not be confirmed. Reload the plan before editing.'
+            : locale === 'vi'
+              ? 'Bữa này đã qua giờ dự kiến nên được giữ nguyên. Bạn vẫn có thể chỉnh các bữa sắp tới.'
+              : 'This scheduled meal has passed and stays unchanged. You can still edit future meals.'
+          : c.editHint}
+      </p>
       <p className="planning-composer-state" role="status">
-        {compositionStateCopy[locale][compositionState(composition)]}
+        {compositionState(composition) === 'complete' &&
+        composition.warnings.includes('MANUAL_ONE_DISH_MEAL')
+          ? locale === 'vi'
+            ? 'Đã xếp món cho bữa gọn'
+            : 'Your one-dish meal is ready'
+          : compositionStateCopy[locale][compositionState(composition)]}
       </p>
       <FamilyPlanNotice
         plan={plan}
@@ -143,7 +219,20 @@ export function MealComposer({
       <p role="status" aria-live="polite" className="sr-only">
         {message}
       </p>
-      {components.length === 0 && <p className="text-sm mt-4">{c.emptyMeal}</p>}
+      {components.length === 0 && (
+        <div className="planning-empty-composition">
+          <p className="font-semibold">{c.emptyMeal}</p>
+          <p className="text-sm text-semantic-text-secondary">
+            {locale === 'vi'
+              ? past
+                ? 'Bữa đã qua vẫn được giữ trống. Chọn một bữa sắp tới để xếp món.'
+                : 'Chọn một món đầu tiên, sau đó Takosan sẽ cho biết nhóm món và lượng còn thiếu.'
+              : past
+                ? 'This past meal remains empty. Choose a future meal to plan dishes.'
+                : 'Choose a first dish, then Takosan will show dish groups and quantities still needed.'}
+          </p>
+        </div>
+      )}
       <ol className="mt-4 space-y-3">
         {components.map((component, index) => (
           <ComponentRow
@@ -151,6 +240,7 @@ export function MealComposer({
             component={component}
             index={index}
             count={components.length}
+            servings={composition.servings}
             locale={locale}
             disabled={disabled}
             onLock={() =>
@@ -178,6 +268,7 @@ export function MealComposer({
               )
             }
             onSwap={() => setPicker({ mode: 'swap', component })}
+            assessment={component.assessment}
             onRemove={() =>
               void mutate('composition-remove', 'composition-heading', () =>
                 mealCompositionApi.remove(plan.id, slotId, component.id, plan.revision),
@@ -186,6 +277,7 @@ export function MealComposer({
           />
         ))}
       </ol>
+      <MealStyleNotice warnings={composition.warnings} locale={locale} />
       <MealTimeNotice warnings={composition.warnings} locale={locale} />
       {[...new Set([...composition.missingRoles, ...composition.recommendedRoles])].map((role) => (
         <div
@@ -305,14 +397,25 @@ export function MealComposer({
           }
         />
       )}
-      {picker && (
+      {picker && !past && (
         <ComponentPicker
           locale={locale}
           busy={!!model.busy}
           mutationError={model.error}
+          context={context}
+          scope={pickerScope}
+          onReloadPlan={() => {
+            setPicker(null);
+            void model.perform('refresh', () => model.loadPlan(plan.id), model.replacePlan);
+          }}
+          intent={picker.mode === 'swap' ? 'swap' : 'add'}
+          initialRecipeId={picker.mode === 'add' ? pendingRecipeId : undefined}
           initialRole={picker.mode === 'add' ? picker.role : picker.component.role}
           onChoose={choose}
-          onClose={() => setPicker(null)}
+          onClose={() => {
+            setPicker(null);
+            clearRecipeHandoff();
+          }}
         />
       )}
     </Card>
@@ -321,6 +424,7 @@ export function MealComposer({
 
 function ComponentRow({
   component,
+  servings,
   index,
   count,
   locale,
@@ -330,8 +434,11 @@ function ComponentRow({
   onMove,
   onSwap,
   onRemove,
+  assessment,
 }: {
   component: MealComponentDto;
+  servings: number;
+  assessment?: MealComponentDto['assessment'];
   index: number;
   count: number;
   locale: PlannerLocale;
@@ -369,6 +476,13 @@ function ComponentRow({
           </p>
           {!component.resolvable && (
             <p className="text-xs text-semantic-warning-strong mt-1">{c.unavailable}</p>
+          )}
+          {assessment && (
+            <IngredientCoverage
+              assessment={assessment}
+              locale={locale}
+              title={locale === 'vi' ? 'Xem lượng cho món này' : 'Review this dish quantities'}
+            />
           )}
         </div>
         <Button
@@ -452,27 +566,27 @@ function ComponentRow({
             <Trash2 size={14} />
           </Button>
         </div>
-        <div className="mt-2 text-xs">
-          {component.cookable && component.recipeId ? (
-            <span className="flex gap-3">
-              <Link
-                className="underline min-h-11 inline-flex items-center"
-                to={`/recipes/id/${encodeURIComponent(component.recipeId)}`}
-              >
-                {c.detail}
-              </Link>
-              <Link
-                className="underline min-h-11 inline-flex items-center"
-                to={`/cooking/${encodeURIComponent(component.recipeId)}`}
-              >
-                {c.cook}
-              </Link>
-            </span>
-          ) : component.kind === 'simple_food' ? (
-            <span className="text-semantic-text-muted">{c.noCooking}</span>
-          ) : null}
-        </div>
       </details>
+      <div className="mt-2 text-xs">
+        {component.cookable && component.recipeId ? (
+          <span className="flex gap-3">
+            <Link
+              className="underline min-h-11 inline-flex items-center"
+              to={`/recipes/id/${encodeURIComponent(component.recipeId)}?servings=${servings}`}
+            >
+              {c.detail}
+            </Link>
+            <Link
+              className="underline min-h-11 inline-flex items-center"
+              to={`/cooking/${encodeURIComponent(component.recipeId)}?servings=${servings}`}
+            >
+              {c.cook}
+            </Link>
+          </span>
+        ) : component.kind === 'simple_food' ? (
+          <span className="text-semantic-text-muted">{c.noCooking}</span>
+        ) : null}
+      </div>
     </li>
   );
 }

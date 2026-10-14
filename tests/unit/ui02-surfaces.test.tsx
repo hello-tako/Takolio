@@ -354,6 +354,16 @@ describe('Discovery mounted URL interactions', () => {
     );
     expect(mocks.recommendations).toHaveBeenCalledTimes(3);
   });
+  it('keeps selected servings in requests and real recipe anchors when filters are cleared', async () => {
+    await mount(<RecipesPage />, '/recipes?servings=4&cuisine=vietnamese');
+    await until(() => expect(container.querySelectorAll('.discovery-grid > article')).toHaveLength(24));
+    expect(mocks.recommendations).toHaveBeenCalledWith(expect.objectContaining({ servings: 4 }));
+    expect(container.querySelector('.discovery-grid > article > a')?.getAttribute('href')).toContain('servings=4');
+    await click('Xóa tìm kiếm và bộ lọc');
+    await until(() => expect(container.querySelector('[data-location]')?.textContent).toBe('/recipes?servings=4'));
+    expect(container.querySelector('select')?.value).toBe('4');
+    expect(mocks.recommendations).toHaveBeenLastCalledWith(expect.objectContaining({ servings: 4, cuisine: undefined }));
+  });
   it('deep-linked search reaches later ingredients and reset restores all results/focus', async () => {
     await mount(<RecipesPage />, '/recipes?q=dau+do&page=8&origin=home');
     await until(() => expect(container.querySelectorAll('.discovery-grid > article')).toHaveLength(1));

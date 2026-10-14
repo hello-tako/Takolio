@@ -2,10 +2,13 @@ import { useEffect, useRef, type ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { CalendarDays, ShoppingBag, ArrowRight } from 'lucide-react';
 import type { MealPlanDto } from '../../../../packages/domain/src/meal-planning-api';
+import type { FamilyMealPlanDto } from '../../../../packages/domain/src/family-meal-planning-api';
 import { KitchenHeader } from '../../components/common/KitchenHeader';
 import { plannerCopy, type PlannerLocale } from './copy';
 import { freshnessReasonLabel, plannerErrorMessage } from './presentation';
 import { Button } from '../../components/common/Button';
+import { canSharePlannerShopping, hasFuturePlannerSlot } from './schedule';
+import { isMealCompositionEnabled } from './composition';
 
 export function PlannerShell({
   children,
@@ -109,21 +112,53 @@ export function PlannerError({
   );
 }
 
-export function FreshnessNotice({ plan, locale }: { plan: MealPlanDto; locale: PlannerLocale }) {
+export function FreshnessNotice({
+  plan,
+  familyPlan,
+  locale,
+}: {
+  plan: MealPlanDto;
+  familyPlan?: FamilyMealPlanDto;
+  locale: PlannerLocale;
+}) {
   if (plan.freshness.status === 'fresh') return null;
   const t = plannerCopy[locale];
   const past = plan.freshness.reasons.includes('planning_time_elapsed');
+  const composing = isMealCompositionEnabled();
+  const continuing = composing && canSharePlannerShopping(plan, familyPlan);
+  const future = hasFuturePlannerSlot(plan);
   return (
     <section role="status" className="planning-notice planning-stale">
-      <h2>{t.staleTitle}</h2>
-      <p>{past ? t.historical : t.staleText}</p>
+      <h2>
+        {continuing
+          ? locale === 'vi'
+            ? 'Tiếp tục chuẩn bị những bữa sắp tới'
+            : 'Continue planning your next meals'
+          : t.staleTitle}
+      </h2>
+      <p>
+        {continuing
+          ? locale === 'vi'
+            ? `${past ? 'Các bữa đã qua được giữ nguyên. ' : ''}Bạn vẫn có thể chỉnh món cho những bữa sắp tới. Khi tạo danh sách đi chợ, Takosan kiểm tra lại tủ lạnh hiện tại và chỉ tính các bữa còn phía trước.`
+            : `${past ? 'Past meals stay unchanged. ' : ''}You can still edit future meals. Creating a shared shopping list checks your current fridge and only includes upcoming meals.`
+          : composing && past && future
+            ? locale === 'vi'
+              ? 'Các bữa đã qua được giữ nguyên. Dữ liệu dùng cho kế hoạch đã thay đổi và cần kiểm tra lại trước khi tiếp tục chuẩn bị các bữa sắp tới hoặc tạo danh sách đi chợ.'
+              : 'Past meals stay unchanged. Planning data changed and must be revalidated before continuing with future meals or creating a shared shopping list.'
+            : past
+              ? t.historical
+              : t.staleText}
+      </p>
       <ul>
         {plan.freshness.reasons.map((code) => (
           <li key={code}>{freshnessReasonLabel(code, locale)}</li>
         ))}
       </ul>
-      <Link className="planning-text-link" to="/planner/new">
-        {t.newPlan}
+      <Link
+        className="planning-text-link"
+        to={continuing ? `/planner/${plan.id}/shopping` : '/planner/new'}
+      >
+        {continuing ? t.shopping : t.newPlan}
       </Link>
     </section>
   );

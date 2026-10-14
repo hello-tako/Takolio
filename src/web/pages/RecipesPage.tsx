@@ -18,6 +18,8 @@ import {
 import { Search, ArrowLeft, ArrowRight, Clock, CheckCircle } from 'lucide-react';
 import { FavoritesCollection } from '../features/favorites/FavoritesCollection';
 import { clsx } from 'clsx';
+import { useFamilyPreferences } from '../features/family/useFamilyPreferences';
+import { useAuthStore } from '../stores/useAuthStore';
 
 const CATEGORIES = [
   ['mon_canh', 'Canh'],
@@ -45,6 +47,9 @@ export const RecipesPage = () => {
   const [params, setParams] = useSearchParams();
   const savedView = params.get('view') === 'saved';
   const filters = readDiscoveryFilters(params);
+  const isGuest = useAuthStore(state => state.isGuest);
+  const preferences = useFamilyPreferences(!isGuest);
+  const servings = filters.servings ?? preferences.data?.preferences.householdSize ?? 2;
   const [filtersOpen, setFiltersOpen] = useState(
     () => window.matchMedia?.('(min-width: 1280px)').matches ?? false,
   );
@@ -76,7 +81,7 @@ export const RecipesPage = () => {
     const timer = window.setTimeout(() => setReadySearch(filters.q), 250);
     return () => window.clearTimeout(timer);
   }, [filters.q]);
-  const request = discoveryRequest(filters);
+  const request = discoveryRequest({ ...filters, servings });
   const query = useQuery({
     queryKey: queryKeys.recipeDiscovery(request),
     enabled: !savedView && readySearch === filters.q,
@@ -158,6 +163,17 @@ export const RecipesPage = () => {
                   className="kitchen-search-input"
                 />
               </div>
+              <label className="discovery-select-label mt-4">
+                Nấu cho bao nhiêu người?
+                <select value={servings} onChange={event => update({ servings: Number(event.target.value) })}>
+                  {Array.from({ length: 20 }, (_, index) => index + 1).map(value =>
+                    <option key={value} value={value}>{value} người</option>)}
+                </select>
+              </label>
+              <p className="mt-2 text-sm text-semantic-text-secondary">
+                Lượng trong tủ được kiểm tra cho {servings} người. Mỗi món được tính riêng;
+                khi xếp vào thực đơn, app tính tiếp phần đã dành cho các bữa khác.
+              </p>
               <details
                 className="discovery-filter-panel"
                 open={filtersOpen}
@@ -307,10 +323,11 @@ export const RecipesPage = () => {
                         kitchen
                         key={item.recipe.id}
                         matchResult={item}
+                        detailHref={`/recipes/${item.recipe.slug}?servings=${servings}`}
                         variant="grid"
                         headingLevel={3}
                         onClick={() =>
-                          navigate(`/recipes/${item.recipe.slug}`, {
+                          navigate(`/recipes/${item.recipe.slug}?servings=${servings}`, {
                             state: { discoveryReturn: `/recipes?${params}` },
                           })
                         }

@@ -24,7 +24,40 @@ const api = vi.hoisted(() => ({
   picker: vi.fn(),
   get: vi.fn(),
 }));
-vi.mock('../../src/web/services/meal-composition', () => ({ mealCompositionApi: api }));
+vi.mock('../../src/web/services/meal-composition', () => ({
+  mealCompositionApi: {
+    ...api,
+    picker: async (query: Record<string, string>) => {
+      const page = await api.picker(query);
+      if (!query.planId) return page;
+      return {
+        ...page,
+        scope: {
+          planId: query.planId,
+          slotId: query.slotId,
+          revision: Number(query.revision),
+          date: query.slotId.split(':')[0],
+          mealType: 'dinner',
+          servings: 2,
+          mode: 'shopping_allowed',
+          excludeComponentId: query.excludeComponentId ?? null,
+          snapshotId: 'a'.repeat(32),
+        },
+        items: page.items.map((item: Record<string, unknown>) => ({
+          assessment: {
+            status: 'covered',
+            missingCount: 0,
+            inventoryLineCount: 0,
+            selectable: true,
+            blockingReasons: [],
+            requirements: [],
+          },
+          ...item,
+        })),
+      };
+    },
+  },
+}));
 vi.mock('../../src/web/services/meal-planning', () => ({ mealPlanningApi: { get: api.get } }));
 
 import { MealComposer } from '../../src/web/features/planner/MealComposer';
@@ -510,6 +543,12 @@ describe('T20 Meal composer UI', () => {
       cursor: undefined,
       limit: '20',
       savedOnly: undefined,
+      planId,
+      slotId,
+      revision: '4',
+      excludeComponentId: undefined,
+      noBuy: undefined,
+      snapshot: undefined,
     });
     expect(document.querySelector('[role="dialog"]')!.textContent).toContain('Tom yum');
   });
@@ -538,6 +577,12 @@ describe('T20 Meal composer UI', () => {
       cursor: undefined,
       limit: '20',
       savedOnly: undefined,
+      planId,
+      slotId,
+      revision: '4',
+      excludeComponentId: undefined,
+      noBuy: undefined,
+      snapshot: undefined,
     });
     expect(document.activeElement?.getAttribute('type')).toBe('search');
     expect(api.add).not.toHaveBeenCalled();
@@ -608,6 +653,59 @@ describe('T20 Meal composer UI', () => {
       proposalId: 'a'.repeat(32),
     });
   });
+
+  it('recipe and cooking links preserve the selected meal servings and omit simple-food links', async () => {
+    const current = plan();
+    const dto = compositions();
+    dto.compositions[0].servings = 6;
+    api.plan.mockResolvedValue(dto);
+    await render(
+      <MealComposer plan={current} slotId={slotId} model={model(current) as never} locale="en" />,
+    );
+    expect(container.querySelectorAll('a[href="/recipes/id/pho-bo?servings=6"]')).toHaveLength(1);
+    expect(container.querySelectorAll('a[href="/cooking/pho-bo?servings=6"]')).toHaveLength(1);
+    expect(container.querySelectorAll('a[href^="/recipes/id/"]')).toHaveLength(1);
+    expect(container.querySelectorAll('a[href^="/cooking/"]')).toHaveLength(1);
+  });
+
+  it('renders one empty manual card after every dish is removed from an anchored meal', async () => {
+    const current = plan();
+    const dto = compositions();
+    dto.compositions[0].components = [];
+    dto.compositions[0].missingRoles = ['main', 'soup', 'staple'];
+    api.plan.mockResolvedValue(dto);
+    await render(<PlannerWeek plan={current} model={model(current) as never} locale="vi" />);
+    expect(container.querySelectorAll('.planning-meal-card')).toHaveLength(1);
+    expect(container.querySelectorAll('.planning-manual-empty')).toHaveLength(1);
+    expect(
+      container.querySelectorAll(`a[href="/planner/${planId}/meal/${encodeURIComponent(slotId)}"]`),
+    ).toHaveLength(1);
+    expect(container.textContent).not.toContain('0 món');
+    expect(container.textContent).toContain('Bữa này chờ bạn chọn món');
+  });
+
+  it.each(['composer', 'week'] as const)(
+    'loads the parent plan to recover a composition revision mismatch (%s)',
+    async (surface) => {
+      const current = plan();
+      const m = model(current);
+      api.plan.mockResolvedValue(compositions(5));
+      await render(
+        surface === 'composer' ? (
+          <MealComposer plan={current} slotId={slotId} model={m as never} locale="en" />
+        ) : (
+          <PlannerWeek plan={current} model={m as never} locale="en" />
+        ),
+      );
+      expect(container.textContent).toContain('A newer plan is available');
+      expect(byLabel('Try again')).toBeUndefined();
+      expect(byLabel('Add dish')).toBeUndefined();
+      await act(async () => byLabel('Load latest plan').click());
+      expect(api.get).toHaveBeenCalledWith(planId);
+      expect(m.replacePlan).toHaveBeenCalledWith(plan(5));
+      expect(api.plan).toHaveBeenCalledTimes(1);
+    },
+  );
 
   it('week cards render multi-component compositions with role chips (progressive disclosure)', async () => {
     const current = plan();
@@ -1081,5 +1179,276 @@ describe('family board reports current dishes instead of stale anchor status', (
     const m = { ...model(current), familyPlan: family(current, compositions(), 3) };
     await render(<PlannerWeek plan={current} model={m as never} locale="en" />);
     expect(container.querySelector('.planning-family-policy-note')).toBeNull();
+  });
+});
+
+it('labels a manual one-dish meal without claiming a four-role family meal', async () => {
+  const current = plan();
+  const dto = compositions();
+  dto.compositions[0].components = [dto.compositions[0].components[0]];
+  dto.compositions[0].warnings = ['MANUAL_ONE_DISH_MEAL'];
+  api.plan.mockResolvedValue(dto);
+  await render(
+    <>
+      <PlannerWeek plan={current} model={model(current) as never} locale="vi" />
+      <MealComposer plan={current} slotId={slotId} model={model(current) as never} locale="vi" />
+    </>,
+  );
+  expect(container.querySelector('.planning-board-summary')?.textContent).toContain(
+    '1/1 bữa đã xếp đủ món theo kiểu ăn đã chọn',
+  );
+  expect(container.querySelector('.planning-board-summary')?.textContent).not.toContain(
+    'đủ nhóm món',
+  );
+  expect(container.querySelector('.planning-composer-state')?.textContent).toBe(
+    'Đã xếp món cho bữa gọn',
+  );
+  expect(container.querySelectorAll('.planning-meal-style-note')).toHaveLength(2);
+  expect(container.querySelector('.planning-missing-roles')).toBeNull();
+});
+
+it('keeps empty breakfast and lunch before a chosen dinner in a manual day', async () => {
+  const current = plan();
+  current.intent.slots = [
+    { date, mealType: 'dinner', sequence: 0 },
+    { date, mealType: 'lunch', sequence: 0 },
+    { date, mealType: 'breakfast', sequence: 0 },
+  ];
+  current.result.unplannedSlots = current.intent.slots
+    .filter((slot) => slot.mealType !== 'dinner')
+    .map((slot) => ({
+      slotId: `${date}:${slot.mealType}:0`,
+      date,
+      mealType: slot.mealType,
+      reasons: [],
+    }));
+  const dto = compositions();
+  const dinner = dto.compositions[0];
+  dto.compositions = current.intent.slots.map((slot) => ({
+    ...dinner,
+    slotId: `${date}:${slot.mealType}:0`,
+    mealType: slot.mealType,
+    components: slot.mealType === 'dinner' ? dinner.components : [],
+  }));
+  api.plan.mockResolvedValue(dto);
+  await render(<PlannerWeek plan={current} model={model(current) as never} locale="vi" />);
+  const cards = [...container.querySelectorAll('.planning-day > .planning-meal-card')];
+  expect(cards.map((card) => card.querySelector('.planning-meal-label')?.textContent)).toEqual([
+    'Bữa sáng · 08:00 · 2 người',
+    'Bữa trưa · 12:00 · 2 người',
+    'Bữa tối · 18:00',
+  ]);
+  expect(cards.map((card) => card.querySelector('a')?.getAttribute('href'))).toEqual([
+    `/planner/${planId}/meal/${encodeURIComponent(`${date}:breakfast:0`)}`,
+    `/planner/${planId}/meal/${encodeURIComponent(`${date}:lunch:0`)}`,
+    `/planner/${planId}/meal/${encodeURIComponent(slotId)}`,
+  ]);
+  expect(cards[2].textContent).toContain('Phở bò');
+  expect(container.querySelectorAll('.planning-unplanned')).toHaveLength(0);
+  expect(cards.filter((card) => card.classList.contains('planning-manual-empty'))).toHaveLength(2);
+});
+
+it('interleaves chosen, empty and unplanned meals by scheduled time, numeric sequence and slot identity', async () => {
+  const current = plan();
+  current.freshness.checkedAt = `${date}T08:00:00.000Z`;
+  current.intent.slots = [
+    { date, mealType: 'breakfast', sequence: 0, time: '15:00' },
+    { date, mealType: 'lunch', sequence: 10, time: '11:00' },
+    { date, mealType: 'lunch', sequence: 2, time: '11:00' },
+    { date, mealType: 'breakfast', sequence: 2, time: '11:00' },
+    { date, mealType: 'dinner', sequence: 0, time: '10:00' },
+  ];
+  current.result.meals[0].time = '10:00';
+  current.result.unplannedSlots = [
+    { slotId: `${date}:lunch:2`, date, mealType: 'lunch', reasons: [] },
+  ];
+  const dto = compositions();
+  const dinner = dto.compositions[0];
+  dto.compositions = current.intent.slots.map((slot) => ({
+    ...dinner,
+    slotId: `${date}:${slot.mealType}:${slot.sequence}`,
+    mealType: slot.mealType,
+    mode: slot.mealType === 'lunch' && slot.sequence === 2 ? 'auto' : 'manual',
+    components: slot.mealType === 'dinner' ? dinner.components : [],
+  }));
+  api.plan.mockResolvedValue(dto);
+  await render(<PlannerWeek plan={current} model={model(current) as never} locale="vi" />);
+  const cards = [
+    ...container.querySelectorAll(
+      '.planning-day > .planning-meal-card, .planning-day > .planning-unplanned',
+    ),
+  ];
+  expect(cards.map((card) => card.querySelector('a')?.getAttribute('href'))).toEqual(
+    ['dinner:0', 'breakfast:2', 'lunch:2', 'lunch:10', 'breakfast:0'].map(
+      (id) => `/planner/${planId}/meal/${encodeURIComponent(`${date}:${id}`)}`,
+    ),
+  );
+  expect(cards[0].querySelector('.planning-meal-label')?.textContent).toBe('Bữa tối · 10:00');
+  expect(cards[2].classList.contains('planning-unplanned')).toBe(true);
+  expect(cards[2].textContent).toContain('Bữa trưa · 11:00');
+  expect(cards[3].querySelector('.planning-meal-label')?.textContent).toBe(
+    'Bữa trưa · 11:00 · 2 người',
+  );
+  expect(cards[4].querySelector('.planning-meal-label')?.textContent).toBe(
+    'Bữa sáng · 15:00 · 2 người',
+  );
+});
+
+it('keeps legacy meal content and unplanned reasons while ordering the day chronologically', async () => {
+  vi.stubEnv('VITE_MEAL_COMPOSITION_V2_ENABLED', 'false');
+  const current = plan();
+  current.intent.slots = [
+    { date, mealType: 'dinner', sequence: 0 },
+    { date, mealType: 'breakfast', sequence: 0 },
+  ];
+  current.result.unplannedSlots = [
+    { slotId: `${date}:breakfast:0`, date, mealType: 'breakfast', reasons: ['NO_CANDIDATES'] },
+  ];
+  await render(<PlannerWeek plan={current} model={model(current) as never} locale="vi" />);
+  const cards = [
+    ...container.querySelectorAll(
+      '.planning-day > .planning-meal-card, .planning-day > .planning-unplanned',
+    ),
+  ];
+  expect(cards[0].classList.contains('planning-unplanned')).toBe(true);
+  expect(cards[0].textContent).toContain('Bữa sáng · 08:00');
+  expect(cards[0].querySelectorAll('li')).toHaveLength(1);
+  expect(cards[1].querySelector('.planning-meal-name')?.textContent).toBe('Phở bò');
+  expect(cards[1].textContent).toContain('40 phút');
+  expect(cards[1].querySelectorAll('.planning-dish-row')).toHaveLength(0);
+  expect(api.plan).not.toHaveBeenCalled();
+});
+
+describe('T23 weekly continuation controls', () => {
+  beforeEach(() => vi.spyOn(Date, 'now').mockReturnValue(Date.parse(`${date}T06:00:00.000Z`)));
+  afterEach(() => vi.restoreAllMocks());
+  const breakfastId = `${date}:breakfast:0`;
+  const lateDinnerId = `${date}:dinner:2`;
+  function continuingWeek(empty = false) {
+    const current = plan();
+    current.intent.utcOffsetMinutes = 420;
+    current.intent.slots = [
+      { date, mealType: 'breakfast', sequence: 0, time: '07:15' },
+      { date, mealType: 'dinner', sequence: 2, time: '19:30' },
+    ];
+    current.result.planningReference.utcOffsetMinutes = 420;
+    const meal = current.result.meals[0];
+    current.result.meals = empty
+      ? []
+      : [
+          {
+            ...meal,
+            slotId: breakfastId,
+            mealType: 'breakfast',
+            time: '07:15',
+            instant: `${date}T00:15:00.000Z`,
+          },
+          { ...meal, slotId: lateDinnerId, time: '19:30', instant: `${date}T12:30:00.000Z` },
+        ];
+    current.freshness = {
+      ...current.freshness,
+      status: 'requires_revalidation',
+      reasons: ['planning_time_elapsed'],
+      checkedAt: `${date}T06:00:00.000Z`,
+    };
+    const dto = compositions();
+    const composition = dto.compositions[0];
+    dto.compositions = current.intent.slots.map((slot) => ({
+      ...composition,
+      slotId: `${date}:${slot.mealType}:${slot.sequence}`,
+      mealType: slot.mealType,
+      components: empty
+        ? []
+        : composition.components.map((item) => ({ ...item, id: `${slot.mealType}-${item.id}` })),
+    }));
+    api.plan.mockResolvedValue(dto);
+    return current;
+  }
+  it('preserves passed meal controls while allowing future V2 card lock and swap actions', async () => {
+    const current = continuingWeek();
+    api.update.mockResolvedValue({});
+    await render(<PlannerWeek plan={current} model={model(current) as never} locale="en" />);
+    const cards = [...container.querySelectorAll('[data-testid="planned-meal"]')];
+    expect(cards).toHaveLength(2);
+    expect(
+      [...cards[0].querySelectorAll<HTMLButtonElement>('.planning-icon-button')].every(
+        (button) => button.disabled,
+      ),
+    ).toBe(true);
+    expect(cards[0].textContent).toContain('Scheduled time passed');
+    expect(
+      [...cards[1].querySelectorAll<HTMLButtonElement>('.planning-icon-button')].every(
+        (button) => !button.disabled,
+      ),
+    ).toBe(true);
+    await act(async () =>
+      cards[1].querySelector<HTMLButtonElement>('[aria-label="Lock dish: Phở bò"]')!.click(),
+    );
+    expect(api.update).toHaveBeenCalledWith(planId, lateDinnerId, 'dinner-v1.x', {
+      revision: 4,
+      locked: true,
+    });
+    expect((byLabel('Regenerate plan') as HTMLButtonElement).disabled).toBe(true);
+  });
+  it('keeps future meal composer add, replace, reorder, remove and assist controls usable', async () => {
+    const current = continuingWeek();
+    await render(
+      <MealComposer
+        plan={current}
+        slotId={lateDinnerId}
+        model={model(current) as never}
+        locale="en"
+      />,
+    );
+    for (const label of [
+      'Add dish',
+      'Swap dish: Phở bò',
+      'Lock dish: Phở bò',
+      'Remove dish: Phở bò',
+      'Move down: Phở bò',
+      'Complete this meal',
+    ]) {
+      expect((byLabel(label) as HTMLButtonElement).disabled, label).toBe(false);
+    }
+    expect(container.textContent).not.toContain('This scheduled meal has passed');
+  });
+  it('holds empty past manual meals unchanged but opens future empty manual meals', async () => {
+    const current = continuingWeek(true);
+    await render(
+      <MealComposer
+        plan={current}
+        slotId={breakfastId}
+        model={model(current) as never}
+        locale="en"
+      />,
+    );
+    expect((byLabel('Add dish') as HTMLButtonElement).disabled).toBe(true);
+    expect((byLabel('Complete this meal') as HTMLButtonElement).disabled).toBe(true);
+    expect(container.textContent).toContain('This past meal remains empty.');
+    await render(
+      <MealComposer
+        plan={current}
+        slotId={lateDinnerId}
+        model={model(current) as never}
+        locale="en"
+      />,
+    );
+    expect((byLabel('Add dish') as HTMLButtonElement).disabled).toBe(false);
+    expect((byLabel('Complete this meal') as HTMLButtonElement).disabled).toBe(false);
+  });
+  it('refuses a mutation when the scheduled time passes after rendering', async () => {
+    const current = continuingWeek();
+    await render(
+      <MealComposer
+        plan={current}
+        slotId={lateDinnerId}
+        model={model(current) as never}
+        locale="en"
+      />,
+    );
+    vi.mocked(Date.now).mockReturnValue(Date.parse(`${date}T12:30:00.001Z`));
+    await act(async () => byLabel('Lock dish: Phở bò').click());
+    expect(api.update).not.toHaveBeenCalled();
+    expect(container.textContent).toContain('This meal has passed. Choose a future meal');
   });
 });

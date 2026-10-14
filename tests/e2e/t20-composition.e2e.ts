@@ -50,6 +50,8 @@ async function add(page: Page, role: string, kind: 'recipe' | 'simple_food', id?
   await page.getByRole('button', { name: 'Add dish', exact: true }).click();
   const dialog = page.getByRole('dialog', { name: 'Choose a dish' });
   await dialog.getByRole('combobox', { name: 'Role', exact: true }).selectOption(role);
+  // Fixture discovery is unfiltered; opt into all cuisines before selecting its exact title.
+  await dialog.getByRole('combobox', { name: 'Cuisine', exact: true }).selectOption('');
   // Search uses the actual authority title, while English simple foods have a translated display.
   await dialog.getByRole('searchbox').fill(item!.title);
   await expect(dialog.getByRole('button', { name: /^Choose:/ })).toHaveCount(1);
@@ -61,8 +63,11 @@ async function add(page: Page, role: string, kind: 'recipe' | 'simple_food', id?
   await fit(page);
 }
 async function rowAction(page: Page, componentId: string, name: RegExp) {
+  await expect(page.getByRole('button', { name: 'Add dish', exact: true })).toBeEnabled();
   const row = page.locator(`[id="component-${componentId}"]`);
-  await row.locator('summary').click();
+  if (!await row.locator(':scope > details').evaluate(node => (node as HTMLDetailsElement).open)) {
+    await row.locator(':scope > details > summary').click();
+  }
   await row.getByRole('button', { name }).click();
   await expect(page.getByRole('button', { name: 'Add dish', exact: true })).toBeEnabled();
 }
@@ -105,14 +110,21 @@ test('A/I: Manual four dishes, autosave/reload, keyboard picker, reorder, role, 
   await expect.poll(async () => (await canonical(page, plan)).planRevision).toBe(saved.planRevision + 1);
   saved = await canonical(page, plan);
   expect(saved.composition.components[0].id).toBe(rice.id);
-  await page.locator(`[id="component-${rice.id}"] summary`).click();
+  await page.locator(`[id="component-${rice.id}"] > details > summary`).click();
   await page.getByRole('combobox', { name: 'Role: Steamed rice' }).selectOption('simple_food');
   await expect.poll(async () => (await canonical(page, plan)).planRevision).toBe(saved.planRevision + 1);
   saved = await canonical(page, plan);
   expect(saved.composition.components[0].role).toBe('simple_food');
   const egg = saved.composition.components.find((entry) => entry.simpleFoodId === 'sf-boiled-egg')!;
+  await expect(page.getByRole('button', { name: 'Add dish', exact: true })).toBeEnabled();
+  await page.locator(`[id="component-${egg.id}"] > details > summary`).click();
+  await page.getByRole('combobox', { name: 'Role: Boiled egg' }).selectOption('simple_food');
+  await expect.poll(async () => (await canonical(page, plan)).planRevision).toBe(saved.planRevision + 1);
+  saved = await canonical(page, plan);
   await rowAction(page, egg.id, /^Swap dish:/);
-  await page.getByRole('dialog').getByRole('combobox', { name: 'Role', exact: true }).selectOption('simple_food');
+  const swapRole = page.getByRole('dialog').getByRole('combobox', { name: 'Role', exact: true });
+  await expect(swapRole).toBeDisabled();
+  await expect(swapRole).toHaveValue('simple_food');
   await page.getByRole('dialog').getByRole('searchbox').fill('Sữa tươi');
   await page.getByRole('dialog').getByRole('button', { name: 'Choose: Fresh milk', exact: true }).click();
   await expect.poll(async () => (await canonical(page, plan)).planRevision).toBe(saved.planRevision + 1);
@@ -203,6 +215,8 @@ test('D: one running weekly inventory projection: rice 160 + 160 - 220 = 100g; s
     revision = SlotCompositionDtoSchema.parse(await response.json()).planRevision;
   }
   await page.goto(`/planner/${plan.id}/shopping`);
+  await page.getByText('Price estimates and budget (optional)', { exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Prepare shopping list', exact: true })).toBeVisible();
   const response = page.waitForResponse((res) => res.url().endsWith('/shopping') && res.request().method() === 'POST');
   await page.getByRole('button', { name: 'Prepare shopping list', exact: true }).click();
   const dto = PlanShoppingDtoSchema.parse(await (await response).json());
@@ -226,13 +240,16 @@ test(`E: slot hard time ${cap} rejects unsafe Manual/Auto with no saved mutation
   const options = AutoOptionsDtoSchema.parse(await generated.json());
   expect(options.options.every((option) => !option.components.some((component) => component.simpleFoodId === 'sf-steamed-rice'))).toBe(true);
   await open(page, plan);
+  const componentWrites: string[] = [];
+  page.on('request', (request) => {
+    if (request.url().endsWith('/components') && request.method() === 'POST') componentWrites.push(request.url());
+  });
   await page.getByRole('button', { name: 'Add dish', exact: true }).click();
-  await page.getByRole('dialog').getByRole('searchbox').fill('Cơm trắng');
-  // Picker is a catalog summary; the trusted slot context is enforced when adding.
-  const selected = page.waitForResponse((res) => res.url().endsWith('/components') && res.request().method() === 'POST');
-  await page.getByRole('dialog').getByRole('button', { name: 'Choose: Steamed rice' }).click();
-  expect((await selected).status()).toBe(422);
-  await expect(page.getByRole('alert').last()).toBeVisible();
+  const picker = page.getByRole('dialog');
+  await picker.getByRole('combobox', { name: 'Role', exact: true }).selectOption('staple');
+  await picker.getByRole('searchbox').fill('Cơm trắng');
+  await expect(picker.getByRole('button', { name: 'Choose: Steamed rice' })).toBeDisabled();
+  expect(componentWrites).toEqual([]);
   expect((await canonical(page, plan)).planRevision).toBe(before.planRevision);
 });
 }
@@ -245,12 +262,12 @@ test('F: D1-only recipe resolves consistently through planner, detail, cooking a
   await open(page, plan);
   const component = (await canonical(page, plan)).composition.components[0];
   expect(component.recipeId).toBe(id);
-  await page.locator(`[id="component-${component.id}"] summary`).click();
+  await page.locator(`[id="component-${component.id}"] > details > summary`).click();
   await page.getByRole('link', { name: 'View recipe', exact: true }).click();
   await expect(page).toHaveURL(new RegExp(`/recipes/id/${id}`));
   await expect(page.getByRole('heading', { name: component.title, exact: true }).first()).toBeVisible();
   await open(page, plan);
-  await page.locator(`[id="component-${component.id}"] summary`).click();
+  await page.locator(`[id="component-${component.id}"] > details > summary`).click();
   await page.getByRole('link', { name: 'Cook this dish', exact: true }).click();
   await expect(page).toHaveURL(new RegExp(`/cooking/${id}`));
   await expect(page.getByRole('heading', { name: component.title, exact: true }).first()).toBeVisible();
@@ -293,10 +310,17 @@ test('load failure and retry never substitute a stale V1 anchor on week or meal'
   await add(page, 'staple', 'simple_food', 'sf-steamed-rice');
   const source = plan.result.meals[0].title;
   let failing = true;
-  await page.route('**/compositions', async (route) => failing
-    ? route.fulfill({ status: 500, json: { error: 'Synthetic preview failure', code: 'PREVIEW_FAILURE' } }) : route.continue());
+  let failedReads = 0;
+  const compositionRead = (url: URL) => url.pathname === `${prefix}/${plan.id}/compositions`;
+  await page.route(compositionRead, async (route) => {
+    if (failing) {
+      failedReads++;
+      await route.fulfill({ status: 500, json: { error: 'Synthetic preview failure', code: 'PREVIEW_FAILURE' } });
+    } else await route.continue();
+  });
   await page.reload();
   await expect(page.getByRole('alert')).toBeVisible();
+  expect(failedReads).toBeGreaterThan(0);
   await expect(page.getByRole('heading', { name: source, exact: true })).toHaveCount(0);
   await expect(page.getByRole('button', { name: 'Swap meal', exact: true })).toHaveCount(0);
   failing = false;
@@ -326,6 +350,7 @@ for (const restriction of ['forbidden', 'dietary', 'nutrition']) {
     expect((await mutation.json()).code).toBe('HARD_CONSTRAINT_CONFLICT');
     await open(page, plan);
     await page.getByRole('button', { name: 'Add dish', exact: true }).click();
+    await page.getByRole('dialog').getByRole('combobox', { name: 'Role', exact: true }).selectOption('staple');
     await page.getByRole('dialog').getByRole('searchbox').fill('Cơm trắng');
     // Unsafe simple foods are omitted at the household picker boundary, before a user can choose.
     await expect(page.getByRole('dialog').getByText('No dishes match the current filters.', { exact: true })).toBeVisible();
@@ -352,8 +377,9 @@ test('H: a warm V2 week cache gives way to V1 when server composition routes tur
   const plan = await empty(page, await create(page));
   await open(page, plan);
   await add(page, 'staple', 'simple_food', 'sf-steamed-rice');
-  const response = page.waitForResponse((item) => item.url().endsWith('/compositions') && item.status() === 404);
-  await page.route('**/compositions', (route) => route.fulfill({ status: 404, json: { error: 'Not found' } }));
+  const compositionRead = (url: URL) => url.pathname === `${prefix}/${plan.id}/compositions`;
+  const response = page.waitForResponse((item) => compositionRead(new URL(item.url())) && item.status() === 404);
+  await page.route(compositionRead, (route) => route.fulfill({ status: 404, json: { error: 'Not found' } }));
   await page.getByRole('link', { name: 'Back to meals', exact: true }).click();
   await response;
   await expect(page.getByTestId('planned-meal').first().getByRole('heading', { name: plan.result.meals[0].title, exact: true })).toBeVisible();

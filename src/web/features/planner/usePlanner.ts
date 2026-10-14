@@ -29,6 +29,7 @@ export function usePlanner(planId?: string, enabled = true) {
     client.setQueryData(
       queryKeys.mealPlanningCompositions(result.plan.id, result.plan.revision),
       result.compositions,
+      { updatedAt: 0 },
     );
   }
   async function loadPlan(id: string): Promise<MealPlanDto> {
@@ -122,6 +123,12 @@ export function usePlanner(planId?: string, enabled = true) {
     }
     return mealPlanningApi.generate(intent, key);
   }
+  async function createManual(intent: MealPlanningIntent, key: string) {
+    if (!isMealCompositionEnabled()) throw new ApiError('http', 'Manual family planning is not enabled.', 404);
+    const result = await familyMealPlanningApi.createManual(intent, key);
+    seedFamily(result);
+    return result.plan;
+  }
   async function regenerate(id: string, revision: number) {
     if (isMealCompositionEnabled()) {
       try {
@@ -198,6 +205,7 @@ export function usePlanner(planId?: string, enabled = true) {
     retireRequestKey,
     registeredAccountRequired,
     generate,
+    createManual,
     regenerate,
     loadPlan,
   };

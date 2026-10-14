@@ -1,12 +1,14 @@
 // @vitest-environment jsdom
 import { act, type ReactNode } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
-import { MemoryRouter, Route, Routes, useNavigate } from 'react-router-dom';
+import { MemoryRouter, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import type { Recipe } from '@frigo/recipes';
+import type { Recipe, RecipeScoringContext } from '@frigo/recipes';
 import { RecipeDetailPage } from '../../src/web/pages/RecipeDetailPage';
 import { InventoryPage } from '../../src/web/pages/InventoryPage';
+import { useCookingStore } from '../../src/web/stores/useCookingStore';
+import { CookingModePage } from '../../src/web/pages/CookingModePage';
 
 const mocks = vi.hoisted(() => ({ inventory: vi.fn(), recipe: vi.fn(), shopping: vi.fn() }));
 vi.mock('../../src/web/services/api', () => ({
@@ -36,7 +38,9 @@ const recipe: Recipe = {
     { ingredientId: 'PORK_BELLY', name: 'Thịt', requiredQuantity: 500, unit: 'g' },
   ],
 };
-const stock = [
+const stock: Array<
+  RecipeScoringContext['inventory'][number] & { name: string; category: string; version: number }
+> = [
   {
     id: 'eggs',
     ingredientId: 'CHICKEN_EGG',
@@ -64,6 +68,7 @@ let client: QueryClient;
 
 beforeEach(() => {
   vi.clearAllMocks();
+  useCookingStore.getState().resetCooking();
   vi.stubGlobal('IS_REACT_ACT_ENVIRONMENT', true);
   mocks.inventory.mockResolvedValue(stock);
   mocks.recipe.mockResolvedValue({
@@ -84,17 +89,16 @@ afterEach(async () => {
   container.remove();
   vi.unstubAllGlobals();
 });
-async function mount(node: ReactNode, path: string) {
+async function mount(node: ReactNode, path: string, cookingNode: ReactNode = <CookingLocation />) {
   await act(async () =>
     root.render(
       <QueryClientProvider client={client}>
-        <MemoryRouter
-          initialEntries={[path]}
-          useTransitions={true}
-        >
+        <MemoryRouter initialEntries={[path]} useTransitions={true}>
           <Routes>
             <Route path="/recipes/:slug" element={node} />
             <Route path="/inventory" element={node} />
+            <Route path="/cook/:slug" element={cookingNode} />
+            <Route path="/cooking/:id" element={node} />
           </Routes>
         </MemoryRouter>
       </QueryClientProvider>,
@@ -114,6 +118,10 @@ async function until(assertion: () => void) {
       if (Date.now() >= deadline) throw error;
     }
   }
+}
+function CookingLocation() {
+  const location = useLocation();
+  return <output data-cooking-location>{location.pathname}{location.search}</output>;
 }
 function RecipeNavigation() {
   const navigate = useNavigate();
@@ -148,6 +156,66 @@ describe('Rebuilt recipe preparation', () => {
       }),
     );
     await until(() => expect(button('Mua phần thiếu: Trứng').disabled).toBe(true));
+  });
+  it('hydrates the direct cooking link with the meal servings', async () => {
+    await mount(<CookingModePage />, '/cooking/eggs?servings=1');
+    await until(() => expect(useCookingStore.getState().activeRecipe?.servings).toBe(1));
+    expect(useCookingStore.getState().activeRecipe?.ingredients[0].requiredQuantity).toBe(2);
+    expect(useCookingStore.getState().stockSnapshot).toEqual(stock);
+  });
+  it('keeps a pending cooking confirmation intact when a different serving count is requested', async () => {
+    useCookingStore.getState().startCooking(recipe, stock);
+    const previous = useCookingStore.getState().activeRecipe;
+    useCookingStore.setState({
+      attempt: { commandId: 'pending-cook', servings: 2, deductions: [], status: 'uncertain', error: null },
+    });
+    await mount(<CookingModePage />, '/cooking/eggs?servings=1');
+    await until(() => expect(container.textContent).toContain('Cần kiểm tra lần nấu trước'));
+    expect(useCookingStore.getState().activeRecipe).toBe(previous);
+    expect(useCookingStore.getState().attempt?.commandId).toBe('pending-cook');
+    expect(mocks.recipe).not.toHaveBeenCalled();
+    expect(mocks.inventory).not.toHaveBeenCalled();
+  });
+  it('starts cooking with selected servings and restores them after reloading the cooking link', async () => {
+    await mount(<RecipeDetailPage />, '/recipes/eggs?servings=1');
+    await until(() => expect(button('Bắt đầu nấu (10 phút)').disabled).toBe(false));
+    await act(async () => button('Bắt đầu nấu (10 phút)').click());
+    const cookingLocation = container.querySelector('[data-cooking-location]')?.textContent ?? '';
+    expect(cookingLocation).toBe('/cook/eggs?servings=1');
+    expect(useCookingStore.getState().activeRecipe).toMatchObject({ servings: 1 });
+    expect(
+      useCookingStore.getState().activeRecipe?.ingredients.map((line) => line.requiredQuantity),
+    ).toEqual([2, 250]);
+    expect(useCookingStore.getState().stockSnapshot).toEqual(stock);
+    expect(stock[0].quantity).toBe(2);
+    expect(mocks.shopping).not.toHaveBeenCalled();
+    await act(async () => root.unmount());
+    root = createRoot(container);
+    client.clear();
+    useCookingStore.getState().resetCooking();
+    await mount(<CookingModePage />, cookingLocation, <CookingModePage />);
+    await until(() => expect(useCookingStore.getState().activeRecipe?.servings).toBe(1));
+    expect(useCookingStore.getState().activeRecipe?.ingredients.map(line => line.requiredQuantity)).toEqual([2, 250]);
+    expect(useCookingStore.getState().stockSnapshot).toEqual(stock);
+  });
+  it('keeps servings from the recipe URL and recalculates shopping shortfall after changing them', async () => {
+    await mount(<RecipeDetailPage />, '/recipes/eggs?servings=1');
+    await until(() => expect(container.querySelector('select')?.value).toBe('1'));
+    expect(container.querySelector('[data-availability="satisfied"]')?.textContent).toContain(
+      'Đủ lượng',
+    );
+    expect(container.querySelector('[aria-label="Mua phần thiếu: Trứng"]')).toBeNull();
+    const select = container.querySelector('select') as HTMLSelectElement;
+    await act(async () => {
+      select.value = '4';
+      select.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+    await until(() => expect(container.textContent).toContain('Thiếu 6 cái'));
+    await act(async () => button('Mua phần thiếu: Trứng').click());
+    await until(() =>
+      expect(mocks.shopping).toHaveBeenCalledWith(expect.objectContaining({ quantity: 6 })),
+    );
+    expect(recipe.ingredients[0].requiredQuantity).toBe(4);
   });
   it.each(['before navigation', 'after navigation'])(
     'keeps shopping confirmation with the source recipe when it resolves %s',

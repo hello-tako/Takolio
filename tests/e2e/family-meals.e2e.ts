@@ -32,7 +32,7 @@ test('family plan, saved dishes, scoped shopping and editable purchases survive 
   );
   await page.getByRole('button', { name: 'Tạo thực đơn', exact: true }).click();
   const generated = await generatedResponse;
-  expect(generated.status(), await generated.text()).toBe(200);
+  expect(generated.status()).toBe(200);
   await page.waitForURL(/\/planner\/[a-f0-9-]+$/);
   await expect(page.getByTestId('planned-meal')).toHaveCount(7);
   await expect(page.locator('.planning-board-summary')).toContainText('Đã xếp đủ nhóm món');

@@ -2851,3 +2851,122 @@ is the supported local rollback path, pending separate hosted rehearsal.
 Purchase status transitions are enforced by both Worker and offline client: bought
 and cannot-buy cannot both become true; switching clears the other state in the
 same command without rewriting purchase quantity.
+
+## ADR-059 - Quantity-aware manual family planning and scoped dish selection (2026-10-13)
+
+Accepted under the user's continued comprehensive family-meal request. T23 extends
+T22 without introducing another planner or inventory ledger. Current manual picker
+cannot decide from recipe names alone: household servings, earlier allocated stock,
+kept dishes and downstream effects determine whether a selection can be accepted.
+
+Add POST /api/v2/meal-planning/drafts using the existing validated calendar intent,
+feature gates, membership, idempotency and atomic planning witnesses. It creates
+intentional empty manual compositions without running/discarding automatic search.
+Manual request fingerprints include their mode, so one key cannot replay an auto
+plan as a draft. Existing automatically generated fingerprints remain unchanged.
+Selecting a dish locks its explicit identity; optional completion fills other roles.
+
+Extend the existing picker with all-or-none plan/slot/revision context, an explicit
+excluded component for swap, quantity-only/no-buy filtering and a pinned snapshot.
+Reads and entering writes share chronological projected inventory and hard policy
+checks, including affected later dishes. Corrective removal must remain possible
+when existing companions are invalid. Inventory/profile/catalog/role/saved changes
+invalidate pages and changes before a write reject the transaction.
+
+Quantities expose required/covered/missing in trusted compatible units for the meal's
+servings. Unknown or incompatible units remain null; fractions are preserved and
+purchase rounding belongs to the explicit purchase edit. Planning never consumes
+physical stock. Default strict family/V1 DTOs retain their prior keys; ingredient
+assessments require includeAssessment=true on composition reads. Unscoped picker
+responses/order stay compatible. The updated browser opts into assessments and
+refreshes unassessed family seeds rather than treating absent data as zero shortage.
+
+Recipe discovery accepts optional servings 1..20, scaling only ingredient demand
+before availability/ranking. Omitted servings keep old behavior and response shape.
+The selected count is part of pagination snapshots and preserved in recipe links.
+Detail and cooking start use the same scaled recipe. Nutrition remains per-serving.
+The shared recipe-to-meal dialog selects a real destination and explicitly adds or
+replaces a chosen component. Without a current future plan it preserves recipe and
+servings into manual calendar setup; no mutation occurs from opening a dialog.
+
+Scoped ordering may prefer the member's chosen cuisine/regions before stock fit,
+without relaxing hard restrictions or explicit filters. A fridge match cannot
+force international food into a Vietnamese household's default meal. Regional
+metadata remains the existing coarse catalog evidence; it is not an authenticity
+claim. Read-only projection may reuse an exact prefix to limit repeated computation,
+while every affected suffix and atomic witness remain authoritative.
+
+No new migration, dependencies, remote operation or protected subsystem change.
+0042 remains required from T22. Browser matrices must exercise intentional empty
+calendar, exact quantity assessment, manual add versus swap, serving handoff and
+selected shopping horizon through the actual app/Worker HTTP; synthetic fixtures
+are not production or user-study evidence.
+
+T23 review refinement: an explicitly locked manual main already classified by the
+canonical RoleIndex as complete_meal selects the existing one-dish meal template
+for that slot. Thus a chosen pho/bun meal does not force separate rice and soup,
+while ordinary family dinners still fill four roles. No new title heuristic,
+per-slot persistence or nutrition/allergy assertion is introduced. DTO completeness,
+assisted completion and whole-week regeneration must use the same derived template;
+replacing/removing that main restores the configured family/quick template. Surface
+this choice as a one-dish meal rather than claiming four food groups are present.
+T23 also permits measured fractional inventory input and versioned actual-quantity
+corrections through existing commands. Increment sizes are UI affordances in the
+selected unit, never inferred package mass; no command may invent a positive floor.
+
+T23 quantity-editor refinement (2026-10-14): switching compatible measured units
+converts the displayed amount using exact Quantity arithmetic. Pure unit changes
+preserve the existing unit-only conversion command; an explicit correction is
+compared against the baseline expressed in the selected unit and sends its amount.
+Thus 1 kg -> g displays 1000 g, while a subsequent manual entry of 1 saves 1 g.
+An incompatible dropdown selection does not erase the last measured unit context
+or invent a package factor. Both unit changes and quantity corrections retain the
+opened draft's version fence; untouched metadata retains its existing rebase path.
+
+T23 chronology/revision refinement (2026-10-14): a mutation's expected revision
+must match both the row that supplied its loaded calculation context and the
+subsequent current-row check. A newer second read cannot authorize quantities,
+slot times or constraints computed from an older first row. Genuinely absent
+slots retain their existing 404 classification; a slot introduced during the
+reads is a stale request. Transactional revision and input witnesses still guard
+the final write.
+
+Same-instant stock projection now follows the canonical normalized numeric slot
+sequence, then stable slot identity, rather than lexical IDs (which placed 10
+before 2). Service reads, stock/shopping projections and the optimized affected
+suffix use this comparator. This intentionally corrects which equal-time meal
+receives shared stock; no migration or persisted slot identity changes. UI mixed
+boards and recipe destinations use date/time/numeric sequence with the plan's
+scheduled instant and offset; elapsed same-day destinations are omitted. If all
+slots elapsed, the exact recipe/servings handoff creates a manual calendar.
+
+T23 continued-week refinement (2026-10-14): elapsed breakfast/dinner must not
+freeze every remaining meal. V2 composition edits remain subject to the target
+slot's scheduled instant and current server checks. Legacy V1 swap and whole-plan
+regeneration retain their strict past-horizon rejection; history is not silently
+regenerated. The board explains that future meals can still be edited individually.
+
+Projection from a trusted current context skips elapsed instants, including meals
+earlier today. Their projected allocations are not deducted again from actual
+current stock. Legacy explicit projection scopes without a reference instant keep
+the date fallback. Picker/assessment snapshots include elapsed slot identities so
+a meal-time boundary invalidates quantities without invalidating every second.
+
+Shared family shopping may recalculate remaining composed demand from current
+stock when the only stale reasons are inventory, ranking history or elapsed time.
+Profile, hard preference, catalog and catalog-authority changes still require
+revalidation; all current snapshot/membership/revision/transaction fences remain.
+Non-family composed plans permit time-only continuation, with stock/history
+staleness still rejected. No stale freshness status is rewritten as fresh. The
+legacy price/budget optimizer remains strict. Future shopping excludes elapsed
+slots; a user action calculates demand, never consumes inventory. This policy
+supports actual cooking during a planned week without discarding its later choices.
+
+T23 shopping calendar refinement (2026-10-14): the trip's default start and date
+input minimum use the saved plan offset and the later device/server checked instant,
+consistently with future-slot eligibility. A device in a timezone already on the
+next date must not silently exclude a still-future late meal in the plan's local
+calendar. Missing or malformed offset/instant fails closed; no offset is guessed.
+Shopping uses the trusted reference captured for its request, as other projections
+do. A meal-time boundary during that request is not an inventory version change;
+subsequent requests use their new reference and exclude meals that then elapsed.

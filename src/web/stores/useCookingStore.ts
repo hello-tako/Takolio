@@ -11,6 +11,7 @@ import { createClientItemId } from '../services/http';
 export type { DeductionDraft } from '../lib/cooking-review';
 export interface CookingAttempt {
   commandId: string;
+  servings: number;
   deductions: CookingDeduction[];
   status: 'sending' | 'uncertain' | 'rejected' | 'restricted' | 'blocked' | 'saved' | 'queued';
   error: string | null;
@@ -149,6 +150,7 @@ export const useCookingStore = create<CookingState>((set, get) => ({
       ? { ...state.attempt, status: 'sending', error: null }
       : {
           commandId: createClientItemId('cook'),
+          servings: state.activeRecipe.servings,
           status: 'sending',
           error: null,
           deductions: state.deductions.map(({ ingredientId, name, quantityDeducted, unit }) => ({

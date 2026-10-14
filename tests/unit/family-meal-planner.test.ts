@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { FamilyPreferencesSchema } from '../../packages/domain/src/family-preferences-api';
-import { planFamilyMeals } from '../../packages/recipes/src/composition/family-planner';
+import { familyMealRolesForComponents, isManualOneDishMeal, planFamilyMeals } from '../../packages/recipes/src/composition/family-planner';
 import { buildRoleIndex, type PersistedRoleAssignment } from '../../packages/recipes/src/composition/roles';
 import { projectCompositions, evaluationScope } from '../../packages/recipes/src/composition/projection';
 import type { Recipe } from '../../packages/recipes/src/types';
@@ -180,4 +180,90 @@ describe('family week composition planner', () => {
     expect(result.meals[0].components.length).toBeLessThan(4);
   });
 
+});
+
+function manualOneDishFixture() {
+  const f = fixture();
+  const noodleDefinition = recipe('noodle', 'CHICKEN', 200, { title: 'Phở gà', cuisine: 'vietnamese', prepTimeMinutes: 0, cookTimeMinutes: 5 });
+  const runtime: Recipe[] = [...f.runtime, { ...noodleDefinition, cuisine: 'vietnamese', category: 'mon_bun_pho',
+    description: '', imageUrl: '', steps: [], tags: [] }];
+  const ctx = context({ catalog: catalog([...readPlanningContext(f.ctx).catalog.recipes, noodleDefinition]), inventory: f.inventory });
+  const roleIndex = buildRoleIndex(runtime);
+  const main: MealComponent = { id: 'manual-noodle', kind: 'recipe', recipeId: 'noodle', simpleFoodId: null,
+    role: 'main', ordinal: 0, locked: true, provenance: 'manual', createdRevision: 1, updatedRevision: 2 };
+  const roles: MealRole[] = ['main', 'main', 'vegetable', 'soup', 'staple'];
+  const assignments: PersistedRoleAssignment[] = f.runtime.map((definition, index) => ({ recipeId: definition.id, role: roles[index],
+    source: 'reviewed', decision: 'assign', confidence: null, reviewed: true }));
+  return { ...f, ctx, runtime, main, roleIndex: buildRoleIndex(runtime, assignments), inferredTraits: roleIndex.get('noodle')?.traits };
+}
+
+describe('explicit manual one-dish family meals', () => {
+  it('requires a locked manual main and the existing complete-meal classification', () => {
+    const f = manualOneDishFixture();
+    expect(f.inferredTraits).toContain('complete_meal');
+    expect(familyMealRolesForComponents('dinner', 'family', [f.main], f.roleIndex)).toEqual(['main']);
+    for (const component of [{ ...f.main, locked: false }, { ...f.main, provenance: 'auto' as const },
+      { ...f.main, provenance: 'legacy_v1' as const }, { ...f.main, role: 'side' as const }, { ...f.main, recipeId: 'main-a' }]) {
+      expect(isManualOneDishMeal([component], f.roleIndex)).toBe(false);
+      expect(familyMealRolesForComponents('dinner', 'family', [component], f.roleIndex)).toEqual(['main', 'vegetable', 'soup', 'staple']);
+    }
+    expect(familyMealRolesForComponents('dinner', 'quick', [], f.roleIndex)).toEqual(['main', 'vegetable', 'staple']);
+  });
+
+  it('keeps a noodle dinner as one main while the next automatic family dinner fills all four roles', () => {
+    const f = manualOneDishFixture();
+    const slots = [{ date: request.startDate, mealType: 'dinner' as const }, { date: '2026-09-10', mealType: 'dinner' as const }];
+    const result = planFamilyMeals({ context: f.ctx, request: { ...request, slots }, preferences: FamilyPreferencesSchema.parse({}),
+      roles: f.roleIndex, runtimeRecipes: f.runtime, revision: 3, locked: new Map([['2026-09-09:dinner:0', [f.main]]]) });
+    expect(result.meals[0].components).toEqual([f.main]);
+    expect(result.meals[0].missingRoles).toEqual([]);
+    expect(result.meals[0].warnings).toContain('MANUAL_ONE_DISH_MEAL');
+    expect(result.meals[1].components.map(component => component.role)).toEqual(['main', 'vegetable', 'soup', 'staple']);
+    expect(result.meals[1].warnings).not.toContain('MANUAL_ONE_DISH_MEAL');
+    expect(result.meals[1].missingRoles).toEqual([]);
+    expect(result.finalInventory.find(row => row.ingredientId === 'CHICKEN')?.quantity).toBe(700);
+    expect(f.inventory.find(row => row.ingredientId === 'CHICKEN')?.quantity).toBe(1000);
+  });
+
+  it('retains an explicit companion and restores the family template when the main becomes an ordinary dish', () => {
+    const f = manualOneDishFixture();
+    const vegetable: MealComponent = { ...f.main, id: 'manual-vegetable', recipeId: 'vegetable', role: 'vegetable', ordinal: 1 };
+    const run = (components: MealComponent[]) => planFamilyMeals({ context: f.ctx, request: { ...request, slots: request.slots.slice(0, 1) },
+      preferences: FamilyPreferencesSchema.parse({}), roles: f.roleIndex, runtimeRecipes: f.runtime, revision: 3,
+      locked: new Map([['2026-09-09:dinner:0', components]]) });
+    expect(run([f.main, vegetable]).meals[0].components).toEqual([f.main, vegetable]);
+    const ordinary = run([{ ...f.main, recipeId: 'main-b' }, vegetable]).meals[0];
+    expect(ordinary.components.map(component => component.role)).toEqual(['main', 'vegetable', 'soup', 'staple']);
+    expect(ordinary.missingRoles).toEqual([]);
+    expect(ordinary.warnings).not.toContain('MANUAL_ONE_DISH_MEAL');
+  });
+
+  it('continues reporting locked restrictions, time and real shopping demand for a one-dish meal', () => {
+    const f = manualOneDishFixture();
+    const inventory = f.inventory.map(row => row.ingredientId === 'CHICKEN' ? { ...row, quantity: 0 } : row);
+    const ctx = context({ catalog: readPlanningContext(f.ctx).catalog, inventory,
+      rankingContext: { householdId: 'home', userId: 'member', feedback: [], preferences: [{ householdId: 'home', userId: null,
+        values: { forbiddenIngredientIds: ['CHICKEN'], hardMaxTimeMinutes: 4 } }] } });
+    const result = planFamilyMeals({ context: ctx, request: { ...request, slots: request.slots.slice(0, 1), mode: 'cook_now' },
+      preferences: FamilyPreferencesSchema.parse({}), roles: f.roleIndex, runtimeRecipes: f.runtime, revision: 3,
+      locked: new Map([['2026-09-09:dinner:0', [f.main]]]) });
+    const meal = result.meals[0];
+    expect(meal.components).toEqual([f.main]);
+    expect(meal.missingRoles).toEqual([]);
+    expect(meal.warnings).toEqual(expect.arrayContaining(['MANUAL_ONE_DISH_MEAL', 'LOCKED_MEAL_TIME_REQUIRES_REVALIDATION',
+      'LOCKED_COMPONENT_REQUIRES_SHOPPING']));
+    const projection = projectCompositions({ scope: evaluationScope(ctx), referenceDate: result.reference.localDate, inventory,
+      slots: [{ slotId: meal.slot.id, date: meal.slot.date, instant: meal.slot.instant, servings: meal.slot.servings, components: meal.components }] });
+    expect(projection.components.get(f.main.id)?.shortages).toEqual(expect.arrayContaining([
+      expect.objectContaining({ ingredientId: 'CHICKEN', missingQuantity: 200 }),
+    ]));
+    expect(projection.components.get(f.main.id)?.status).toBe('needs_shopping');
+    const restrictedContext = context({ catalog: readPlanningContext(ctx).catalog, inventory: f.inventory,
+      rankingContext: readPlanningContext(ctx).rankingContext });
+    const restricted = planFamilyMeals({ context: restrictedContext, request: { ...request, slots: request.slots.slice(0, 1) },
+      preferences: FamilyPreferencesSchema.parse({}), roles: f.roleIndex, runtimeRecipes: f.runtime, revision: 3,
+      locked: new Map([['2026-09-09:dinner:0', [f.main]]]) });
+    expect(restricted.meals[0].warnings).toContain('LOCKED_COMPONENT_REQUIRES_REVALIDATION');
+    expect(restricted.meals[0].warnings).toContain('LOCKED_MEAL_TIME_REQUIRES_REVALIDATION');
+  });
 });

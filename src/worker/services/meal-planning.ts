@@ -36,6 +36,7 @@ import {
   normalizePlannerRequest,
   PlannerLockSchema,
 } from '../../../packages/recipes/src/planner-request';
+import { projectInventoryRows } from '../../../packages/recipes/src/planner-inventory';
 import { planWeeklyMeals } from '../../../packages/recipes/src/weekly-planner';
 import {
   createShoppingContext,
@@ -65,7 +66,7 @@ import {
   writePlanCompositions,
 } from '../../../packages/db/src/meal-composition';
 import { MealCompositionService, roleIndexFor } from './meal-composition';
-import { familyMealRoles, planFamilyMeals, type FamilyPlanningResult } from '../../../packages/recipes/src/composition/family-planner';
+import { familyMealRoles, familyMealRolesForComponents, planFamilyMeals, type FamilyPlanningResult } from '../../../packages/recipes/src/composition/family-planner';
 import { compositionShoppingSnapshot, evaluationScope, projectCompositions } from '../../../packages/recipes/src/composition/projection';
 import { readFamilyPreferences } from '../../../packages/db/src/family-preferences';
 import { FamilyPreferencesSchema, type FamilyPreferences } from '../../../packages/domain/src/family-preferences-api';
@@ -466,7 +467,16 @@ export class MealPlanningApplicationService {
   }
 
   async generateFamily(scope: Scope, intent: MealPlanningIntent, key: string): Promise<FamilyMealPlanDto> {
-    const requestFingerprint = await sha256Hex(canonicalJson({ intent, schemaVersion: 2 }));
+    return this.createFamily(scope, intent, key, false);
+  }
+
+  async createManualFamily(scope: Scope, intent: MealPlanningIntent, key: string): Promise<FamilyMealPlanDto> {
+    return this.createFamily(scope, intent, key, true);
+  }
+
+  private async createFamily(scope: Scope, intent: MealPlanningIntent, key: string, manual: boolean): Promise<FamilyMealPlanDto> {
+    const requestFingerprint = await sha256Hex(canonicalJson({ intent, schemaVersion: 2,
+      ...(manual ? { selectionMode: 'manual' } : {}) }));
     const prior = await findGeneratedMealPlanByRequest(this.db, scope, key);
     if (prior) {
       if (prior.requestFingerprint !== requestFingerprint) throw new MealPlanningError('IDEMPOTENCY_CONFLICT', 409, 'Request key was used with different intent');
@@ -475,9 +485,20 @@ export class MealPlanningApplicationService {
     const profile = await this.familyProfile(scope); const now = this.now();
     const { snapshot, authority, fence } = await this.familySnapshot(scope, now, profile); const id = crypto.randomUUID();
     const context = this.planningContext(snapshot, this.reference(now, intent.utcOffsetMinutes));
-    const planning = planFamilyMeals({ context, request: this.familyRequest(intent, context), preferences: profile.preferences, roles: await this.familyRoleIndex(authority), runtimeRecipes: authority.list(), revision: 1 });
+    const request = this.familyRequest(intent, context);
+    // A manual calendar intentionally starts empty; it never runs and then discards automatic suggestions.
+    const normalized = normalizePlannerRequest(request, readPlanningContext(context).reference);
+    const planning: FamilyPlanningResult = manual ? {
+      request: normalized, reference: readPlanningContext(context).reference,
+      meals: normalized.slots.map((slot) => ({ slot, components: [], anchor: null, anchorDeltas: [],
+        missingRoles: familyMealRoles(slot.mealType, profile.preferences.mealStyle), warnings: ['MANUAL_SELECTION_PENDING'] })),
+      finalInventory: projectInventoryRows(readPlanningContext(context).inventory),
+      internationalGeneratedMainCount: 0, lockedInternationalMainCount: 0,
+      evaluations: 0, poolBuilds: 0, searchLimited: false, alternativeMeals: [],
+    } : planFamilyMeals({ context, request, preferences: profile.preferences, roles: await this.familyRoleIndex(authority),
+      runtimeRecipes: authority.list(), revision: 1 });
     const base = this.familyStoredResult(scope, id, intent, snapshot, now, planning);
-    const slots = planning.meals.map((meal) => ({ slotId: meal.slot.id, mode: 'auto' as const, createdRevision: 1, createdAt: null, components: meal.components }));
+    const slots = planning.meals.map((meal) => ({ slotId: meal.slot.id, mode: manual ? 'manual' as const : 'auto' as const, createdRevision: 1, createdAt: null, components: meal.components }));
     const metadata = { profileRevision: profile.revision, profileFingerprint: await sha256Hex(canonicalJson(profile.preferences)),
       policy: this.familyPolicy(planning, profile), diagnostics: this.familyDiagnostics(planning) };
     const row = await createFamilyMealPlan(this.db, scope, { id, requestKey: key, requestFingerprint,
@@ -492,7 +513,7 @@ export class MealPlanningApplicationService {
     const metadata = await readFamilyPlanMetadata(this.db, scope, row.id);
     if (!metadata) throw new MealPlanningError('FAMILY_PLAN_METADATA_MISSING', 409, 'Family plan metadata is unavailable');
     for (const composition of compositions.compositions) {
-      const wanted = familyMealRoles(composition.mealType, metadata.policy.mealStyle);
+      const wanted = familyMealRolesForComponents(composition.mealType, metadata.policy.mealStyle, composition.components, loaded.roles);
       const covered = new Set(composition.components.map((component) => component.role));
       if (composition.mealType === 'breakfast' || metadata.policy.mealStyle === 'one_pot') {
         for (const component of composition.components) {

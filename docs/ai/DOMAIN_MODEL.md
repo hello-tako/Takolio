@@ -1,3 +1,42 @@
+# T23 quantities and intentional manual meals - 2026-10-14
+
+A manual calendar is an intentional empty plan, not a failed or discarded auto
+search. Its slot dates, types, serving counts and manual mode persist independently
+of chosen dishes. Manual identities are locked; optional completion fills the
+chosen meal structure without silently replacing those identities. A selected
+locked main already classified `complete_meal` chooses a one-dish slot template;
+this is a structure decision, never nutritional or allergy certification.
+
+Ingredient fit means amount at the destination servings and chronological stock
+remaining after earlier components/slots. A title match is not sufficient.
+Required, covered and missing amounts use exact compatible units; unknown mass or
+package contents stay unknown. No-buy/cook-now validation includes affected later
+choices. Planning, materializing shopping and checking purchases never deduct stock.
+
+Calendar/display/projection order must agree at equal instants: numeric sequence,
+then stable slot identity. A plan revision authorizes only calculations loaded at
+that same revision. Future recipe destinations use the plan's offset and actual
+scheduled instant, not the device's calendar date alone.
+
+A measured inventory quantity belongs to its selected unit and opened draft
+revision. Pure compatible conversion preserves amount; explicit correction changes
+amount. Metadata-only edits omit quantity. Cooking command attempts freeze both
+servings and deductions across uncertain responses and offline replay.
+
+Shopping demand remains separate from purchase edits. Success ends a request key;
+uncertain delivery retains it. Rows with unknown demand still lack a dedicated
+purchase/resolve/dismiss contract, so manual entries do not falsely resolve them.
+Coarse regional metadata, leftovers, shared prep and vendor allocation remain
+explicit data/product limitations.
+
+An elapsed meal does not reserve current physical stock again. Future compositions
+remain editable under the target slot's server time and revision. Shared shopping
+uses a trusted current stock projection for future demand, while truthful stale
+reasons remain visible; profile/catalog changes still block continuation. The
+shopping date horizon uses the saved plan offset, consistently with slot eligibility.
+
+---
+
 # T22 family meal, profile and shopping semantics - 2026-10-13
 
 A family meal is a collection of components, rather than only its V1 anchor.

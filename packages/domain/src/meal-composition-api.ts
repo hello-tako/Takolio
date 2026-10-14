@@ -101,7 +101,20 @@ export const PickerQuerySchema = z.object({
   cursor: z.string().regex(/^[0-9]{1,4}$/).optional(),
   limit: z.string().regex(/^[1-9][0-9]?$/).optional(),
   kind: ComponentKindSchema.optional(),
-}).strict();
+  planId: PlanIdSchema.optional(),
+  slotId: CompositionSlotIdSchema.optional(),
+  revision: z.string().regex(/^[1-9]\d{0,14}$/).optional(),
+  excludeComponentId: ComponentIdSchema.optional(),
+  noBuy: z.literal('true').optional(),
+  snapshot: HexId.optional(),
+}).strict().superRefine((query, context) => {
+  const scopeCount = [query.planId, query.slotId, query.revision].filter((value) => value !== undefined).length;
+  if (scopeCount !== 0 && scopeCount !== 3) context.addIssue({ code: 'custom', message: 'Plan, slot and revision are required together' });
+  if (scopeCount === 0 && (query.excludeComponentId || query.noBuy || query.snapshot)) {
+    context.addIssue({ code: 'custom', message: 'Inventory filters require a meal scope' });
+  }
+});
+export type PickerQuery = z.infer<typeof PickerQuerySchema>;
 
 // ---------------------------------------------------------------------------- responses
 export const ComponentProjectionSchema = z.object({
@@ -109,6 +122,23 @@ export const ComponentProjectionSchema = z.object({
   missingCount: z.number().int().nonnegative(),
   inventoryLineCount: z.number().int().nonnegative(),
 }).strict();
+export const ComponentRequirementDtoSchema = z.object({
+  ingredientId: z.string().min(1),
+  name: z.string(),
+  unit: z.string(),
+  requiredQuantity: z.number().finite().nonnegative().nullable(),
+  coveredQuantity: z.number().finite().nonnegative().nullable(),
+  missingQuantity: z.number().finite().nonnegative().nullable(),
+  isOptional: z.boolean(),
+  status: z.enum(['satisfied', 'partial', 'missing', 'unresolved']),
+}).strict();
+export const ComponentAssessmentSchema = ComponentProjectionSchema.extend({
+  selectable: z.boolean(),
+  blockingReasons: z.array(Code),
+  requirements: z.array(ComponentRequirementDtoSchema),
+}).strict();
+export type ComponentAssessment = z.infer<typeof ComponentAssessmentSchema>;
+export type ComponentAssessmentDto = ComponentAssessment;
 export const MealComponentDtoSchema = z.object({
   id: ComponentIdSchema,
   kind: ComponentKindSchema,
@@ -127,6 +157,7 @@ export const MealComponentDtoSchema = z.object({
   createdRevision: PlanRevisionSchema,
   updatedRevision: PlanRevisionSchema,
   projection: ComponentProjectionSchema.nullable(),
+  assessment: ComponentAssessmentSchema.optional(),
 }).strict();
 export type MealComponentDto = z.infer<typeof MealComponentDtoSchema>;
 
@@ -237,12 +268,25 @@ export const PickerItemSchema = z.object({
   difficulty: z.enum(['easy', 'medium', 'hard']).nullable(),
   /** `unknown`: a requested allergen/dietary constraint has no reviewed safety evidence. */
   constraintState: z.enum(['none_requested', 'unknown']),
+  assessment: ComponentAssessmentSchema.optional(),
+}).strict();
+export const PickerScopeSchema = z.object({
+  planId: PlanIdSchema,
+  slotId: CompositionSlotIdSchema,
+  revision: PlanRevisionSchema,
+  date: z.string().date(),
+  mealType: MealTypeSchema,
+  servings: z.number().int().positive(),
+  mode: z.enum(['cook_now', 'shopping_allowed']),
+  excludeComponentId: ComponentIdSchema.nullable(),
+  snapshotId: HexId,
 }).strict();
 export const PickerPageDtoSchema = z.object({
   schemaVersion: z.literal(1),
   items: z.array(PickerItemSchema).max(PICKER_PAGE_LIMIT),
   nextCursor: z.string().nullable(),
   total: z.number().int().nonnegative(),
+  scope: PickerScopeSchema.optional(),
 }).strict();
 export type PickerPageDto = z.infer<typeof PickerPageDtoSchema>;
 export type PickerItemDto = z.infer<typeof PickerItemSchema>;

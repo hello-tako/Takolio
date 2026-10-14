@@ -26,6 +26,14 @@ export const familyMealPlanningApi = {
       ),
     );
   },
+  async createManual(intent: MealPlanningIntent, key: string) {
+    return FamilyMealPlanDtoSchema.parse(
+      await fetchJson('/meal-planning/drafts', {
+        method: 'POST', body: JSON.stringify(MealPlanningIntentSchema.parse(intent)),
+        headers: { 'Idempotency-Key': PlanningRequestKeySchema.parse(key) },
+      }, 'v2'),
+    );
+  },
   async get(id: string) {
     const result = FamilyMealPlanDtoSchema.parse(
       await fetchJson(planPath(id), { cache: 'no-store' }, 'v2'),

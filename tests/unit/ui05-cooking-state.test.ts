@@ -173,13 +173,17 @@ it('reports queued versus server success and invalidates dependents once per sin
   await submitCookingCompletion();
   expect(state().attempt?.status).toBe('saved');
 });
-it('retries an unknown response using precisely the same command and does not allow edits', async () => {
+it('retries an unknown response using precisely the same command and frozen serving count', async () => {
+  state().startCooking({ ...recipe, servings: 4 }, inventory);
   mocks.complete
     .mockRejectedValueOnce(new TypeError('lost body'))
     .mockResolvedValueOnce({ success: true });
   await submitCookingCompletion();
   expect(state().attempt?.status).toBe('uncertain');
+  expect(state().attempt?.servings).toBe(4);
+  expect(mocks.complete.mock.calls[0][4]).toBe(4);
   state().editDeduction(0, '0.1');
+  useCookingStore.setState({ activeRecipe: { ...recipe, servings: 1 } });
   await submitCookingCompletion();
   expect(mocks.complete.mock.calls[0]).toEqual(mocks.complete.mock.calls[1]);
   expect(state().attempt?.status).toBe('saved');

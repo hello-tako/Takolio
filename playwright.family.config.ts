@@ -3,7 +3,7 @@ import base from './playwright.t20.config';
 export default defineConfig({
   ...base,
   use: { ...base.use, reducedMotion: 'reduce' },
-  testMatch: 'family-meals.e2e.ts',
+  testMatch: ['family-meals.e2e.ts', 'family-manual.e2e.ts'],
   timeout: 60_000,
   outputDir: '.wrangler/family-meals/browser-results',
   reporter: [['list'], ['json', { outputFile: '.wrangler/family-meals/browser-report.json' }]],

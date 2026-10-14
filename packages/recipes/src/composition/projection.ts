@@ -43,6 +43,25 @@ export interface ProjectionSlot {
   servings: number;
   components: readonly ProjectionComponent[];
 }
+
+/**
+ * Canonical meal ordering: chronological instant, then the numeric slot sequence.
+ * Planner request normalization already uses this order; projection must match it so
+ * equal-time meals reserve shared stock in the same order as the generated plan.
+ */
+export function compareProjectionSlots(a: Pick<ProjectionSlot, 'slotId' | 'instant'>,
+  b: Pick<ProjectionSlot, 'slotId' | 'instant'>): number {
+  const byInstant = compareIds(a.instant, b.instant);
+  if (byInstant !== 0) return byInstant;
+  const sequence = (slotId: string) => {
+    const value = Number(slotId.slice(slotId.lastIndexOf(':') + 1));
+    return Number.isSafeInteger(value) && value >= 0 ? value : Number.MAX_SAFE_INTEGER;
+  };
+  const aSequence = sequence(a.slotId);
+  const bSequence = sequence(b.slotId);
+  if (aSequence !== bSequence) return aSequence < bSequence ? -1 : 1;
+  return compareIds(a.slotId, b.slotId);
+}
 export interface ComponentEvaluation {
   componentId: string;
   slotId: string;
@@ -86,6 +105,7 @@ export interface EvaluationScope {
   substitutions: readonly SubstitutionRule[];
   approvedSubstitutionIds: readonly string[];
   activeConstraints: readonly string[];
+  referenceInstant?: string;
 }
 
 /** The evaluation scope of one trusted planning context (same catalog and substitution authority as T04). */
@@ -93,7 +113,7 @@ export function evaluationScope(context: PlanningContext): EvaluationScope {
   const source = readPlanningContext(context);
   return { catalog: source.catalog, householdId: source.rankingContext.householdId, mode: 'shopping_allowed',
     substitutions: source.substitutions, approvedSubstitutionIds: source.approvedSubstitutionIds,
-    activeConstraints: source.activeConstraints };
+    activeConstraints: source.activeConstraints, referenceInstant: source.reference.instant };
 }
 
 function generationPolicy(scope: EvaluationScope) {
@@ -161,10 +181,12 @@ export function projectCompositions(input: {
   const inventoryBeforeComponents = new Map<string, readonly ProjectedInventoryRow[]>();
   const skippedPastSlots: string[] = [];
   let inventoryAtStop: readonly ProjectedInventoryRow[] | null = null;
-  const ordered = [...input.slots].sort((a, b) => compareIds(a.instant, b.instant) || compareIds(a.slotId, b.slotId));
+  const ordered = [...input.slots].sort(compareProjectionSlots);
+  const referenceTime = input.scope.referenceInstant === undefined ? undefined : Date.parse(input.scope.referenceInstant);
   for (const slot of ordered) {
     if (slot.slotId === input.untilSlotId) { inventoryAtStop = projectInventoryRows(state); break; }
-    if (slot.date < input.referenceDate) { skippedPastSlots.push(slot.slotId); continue; }
+    const elapsed = referenceTime === undefined ? slot.date < input.referenceDate : Date.parse(slot.instant) < referenceTime;
+    if (elapsed) { skippedPastSlots.push(slot.slotId); continue; }
     for (const component of slot.components) {
       if (input.inventoryCheckpointComponentIds?.has(component.id)) {
         inventoryBeforeComponents.set(component.id, projectInventoryRows(state));
@@ -227,11 +249,12 @@ export function projectCompositions(input: {
  */
 export function compositionShoppingSnapshot(base: ShoppingMealPlanSnapshot, projection: CompositionProjection,
   slots: readonly ProjectionSlot[]): ShoppingMealPlanSnapshot {
-  const withComponents = slots.filter((slot) => slot.components.length > 0);
+  const skipped = new Set(projection.skippedPastSlots);
+  const withComponents = slots.filter((slot) => slot.components.length > 0 && !skipped.has(slot.slotId));
   const planned = new Set(withComponents.map((slot) => slot.slotId));
   return ShoppingMealPlanSnapshotSchema.parse({
     ...base,
-    slots: [...withComponents].sort((a, b) => compareIds(a.instant, b.instant) || compareIds(a.slotId, b.slotId)).map((slot) => {
+    slots: [...withComponents].sort(compareProjectionSlots).map((slot) => {
       const evaluations = slot.components.map((component) => projection.components.get(component.id))
         .filter((value): value is ComponentEvaluation => value !== undefined);
       return {
@@ -244,7 +267,7 @@ export function compositionShoppingSnapshot(base: ShoppingMealPlanSnapshot, proj
         }))),
       };
     }),
-    unplannedSlots: base.unplannedSlots.filter((slot) => !planned.has(slot.id)),
+    unplannedSlots: base.unplannedSlots.filter((slot) => !planned.has(slot.id) && !skipped.has(slot.id)),
     initialInventorySnapshot: projection.initialInventory.map(({ householdId }) => ({ householdId })),
     projectedFinalInventory: projection.finalInventory,
   });

@@ -193,3 +193,117 @@ describe('UI09 detail interaction and honest state', () => {
     expect(mocks.update).not.toHaveBeenCalled();
   });
 });
+
+
+it('saves a measured fractional remainder using the existing lot revision', async () => {
+  mocks.lot.mockResolvedValue({ ...lot, quantity: 0.5, unit: 'kg' });
+  await render(); await until(() => expect(button('Sửa thông tin nguyên liệu')).toBeTruthy());
+  await click('Sửa thông tin nguyên liệu');
+  const input = host.querySelector<HTMLInputElement>('#lot-quantity-input')!;
+  await act(async () => {
+    Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')!.set!.call(input, '0.35');
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+  });
+  expect(input.checkValidity()).toBe(true);
+  await click('Lưu thay đổi');
+  await until(() => expect(mocks.update).toHaveBeenCalledExactlyOnceWith('projection-egg', { quantity: 0.35 }, 7));
+});
+
+it('does not overwrite a refreshed quantity when only the name was changed', async () => {
+  await render(); await until(() => expect(button('Sửa thông tin nguyên liệu')).toBeTruthy());
+  await click('Sửa thông tin nguyên liệu'); await fill('Trứng đã kiểm tra');
+  mocks.lot.mockResolvedValue({ ...lot, quantity: 0.5, version: 8, lotVersion: 8 });
+  await act(async () => { await client.refetchQueries(); });
+  await until(() => expect(host.querySelector('.stock-quantity')?.textContent).toContain('0.5 piece'));
+  await click('Lưu thay đổi');
+  await until(() => expect(mocks.update).toHaveBeenCalledExactlyOnceWith('projection-egg', { name: 'Trứng đã kiểm tra' }, 8));
+});
+
+it('retains the actual quantity when a correction fails and makes no automatic retry', async () => {
+  mocks.update.mockRejectedValue(new ApiError('http', 'HTTP 500', 500));
+  await render(); await until(() => expect(button('Sửa thông tin nguyên liệu')).toBeTruthy());
+  await click('Sửa thông tin nguyên liệu');
+  const input = host.querySelector<HTMLInputElement>('#lot-quantity-input')!;
+  await act(async () => {
+    Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')!.set!.call(input, '0.75');
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+  });
+  await click('Lưu thay đổi');
+  await until(() => expect(host.querySelector('[role=alert]')).toBeTruthy());
+  expect(host.querySelector<HTMLInputElement>('#lot-quantity-input')!.value).toBe('0.75');
+  expect(mocks.update).toHaveBeenCalledTimes(1);
+});
+
+
+it.each(['g', 'kg'])('blocks a dirty quantity draft after a refreshed stock revision in %s', async unit => {
+  mocks.lot.mockResolvedValue({ ...lot, quantity: 500, unit: 'g' });
+  await render(); await until(() => expect(button('Sửa thông tin nguyên liệu')).toBeTruthy());
+  await click('Sửa thông tin nguyên liệu');
+  const input = host.querySelector<HTMLInputElement>('#lot-quantity-input')!;
+  await act(async () => {
+    Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')!.set!.call(input, '350');
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+  });
+  mocks.lot.mockResolvedValue({ ...lot, quantity: 0.5, unit, version: 8, lotVersion: 8 });
+  await act(async () => { await client.refetchQueries(); });
+  await until(() => expect(host.querySelector('.stock-quantity')?.textContent).toContain(`0.5 ${unit}`));
+  await click('Lưu thay đổi');
+  expect(mocks.update).not.toHaveBeenCalled();
+  expect(host.querySelector('[role=alert]')?.textContent).toContain('Nguyên liệu đã đổi');
+  expect(input.value).toBe('350');
+  await click('Hủy'); await click('Sửa thông tin nguyên liệu');
+  expect(host.querySelector<HTMLInputElement>('#lot-quantity-input')?.value).toBe('0.5');
+});
+
+
+it('converts the displayed amount then sends an explicit correction even when its number matches the baseline', async () => {
+  mocks.lot.mockResolvedValue({ ...lot, quantity: 1, unit: 'kg' });
+  await render(); await until(() => expect(button('Sửa thông tin nguyên liệu')).toBeTruthy());
+  await click('Sửa thông tin nguyên liệu');
+  const select = host.querySelector('#lot-unit-input') as unknown as HTMLSelectElement;
+  await act(async () => {
+    select.value = 'g'; select.dispatchEvent(new Event('change', { bubbles: true }));
+  });
+  const input = host.querySelector<HTMLInputElement>('#lot-quantity-input')!;
+  expect(input.value).toBe('1000');
+  await act(async () => {
+    Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')!.set!.call(input, '1');
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+  });
+  await click('Lưu thay đổi');
+  await until(() => expect(mocks.update).toHaveBeenCalledExactlyOnceWith('projection-egg', { quantity: 1, unit: 'g' }, 7));
+});
+
+it.each([
+  ['g', 500, 'kg', '0.5'],
+  ['ml', 750, 'l', '0.75'],
+])('shows a compatible conversion from %s and preserves a unit-only update', async (from, quantity, to, displayed) => {
+  mocks.lot.mockResolvedValue({ ...lot, quantity, unit: from });
+  await render(); await until(() => expect(button('Sửa thông tin nguyên liệu')).toBeTruthy());
+  await click('Sửa thông tin nguyên liệu');
+  const select = host.querySelector('#lot-unit-input') as unknown as HTMLSelectElement;
+  await act(async () => {
+    select.value = to; select.dispatchEvent(new Event('change', { bubbles: true }));
+  });
+  expect(host.querySelector<HTMLInputElement>('#lot-quantity-input')?.value).toBe(displayed);
+  await click('Lưu thay đổi');
+  await until(() => expect(mocks.update).toHaveBeenCalledExactlyOnceWith('projection-egg', { unit: to }, 7));
+});
+
+it('carries a measured correction through a compatible unit change', async () => {
+  mocks.lot.mockResolvedValue({ ...lot, quantity: 500, unit: 'g' });
+  await render(); await until(() => expect(button('Sửa thông tin nguyên liệu')).toBeTruthy());
+  await click('Sửa thông tin nguyên liệu');
+  const input = host.querySelector<HTMLInputElement>('#lot-quantity-input')!;
+  await act(async () => {
+    Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')!.set!.call(input, '350');
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+  });
+  const select = host.querySelector('#lot-unit-input') as unknown as HTMLSelectElement;
+  await act(async () => {
+    select.value = 'kg'; select.dispatchEvent(new Event('change', { bubbles: true }));
+  });
+  expect(input.value).toBe('0.35');
+  await click('Lưu thay đổi');
+  await until(() => expect(mocks.update).toHaveBeenCalledExactlyOnceWith('projection-egg', { quantity: 0.35, unit: 'kg' }, 7));
+});

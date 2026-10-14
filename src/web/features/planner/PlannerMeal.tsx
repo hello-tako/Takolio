@@ -105,6 +105,18 @@ export function PlannerMeal({
           <ArrowLeft size={16} />
           {t.back}
         </Link>
+        <Card className="planning-meal-overview !p-5 sm:!p-6">
+          <p className="text-xs font-bold text-takosan-green-deep uppercase tracking-wide">
+            {slotComposition?.date} · {slotComposition ? t[slotComposition.mealType] : ''}
+          </p>
+          <h2 className="text-2xl font-heading font-bold mt-2">
+            {locale === 'vi' ? 'Chọn món cho bữa này' : 'Choose dishes for this meal'}
+          </h2>
+          <p className="inline-flex items-center gap-1 text-sm text-semantic-text-secondary mt-3">
+            <Users size={16} aria-hidden="true" />
+            {slotComposition?.servings ?? plan.intent.defaultServings} {t.people}
+          </p>
+        </Card>
         <MealComposer
           query={compositions}
           plan={plan}

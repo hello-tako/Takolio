@@ -24,6 +24,17 @@ export function familyMealRoles(mealType: NormalizedPlannerSlot['mealType'], sty
   if (mealType === 'breakfast' || style === 'one_pot') return ['main'];
   return style === 'quick' ? ['main', 'vegetable', 'staple'] : ['main', 'vegetable', 'soup', 'staple'];
 }
+
+/** Explicit manual identity chooses this slot's template; catalog traits do not change other meals. */
+export function isManualOneDishMeal(components: readonly MealComponent[], roles: RoleIndex): boolean {
+  return components.some(component => component.kind === 'recipe' && component.recipeId !== null
+    && component.role === 'main' && component.locked && component.provenance === 'manual'
+    && roles.get(component.recipeId)?.traits.includes('complete_meal'));
+}
+export function familyMealRolesForComponents(mealType: NormalizedPlannerSlot['mealType'], style: FamilyPreferences['mealStyle'],
+  components: readonly MealComponent[], roles: RoleIndex): MealRole[] {
+  return isManualOneDishMeal(components, roles) ? ['main'] : familyMealRoles(mealType, style);
+}
 export interface FamilyPlannedSlot {
   slot: NormalizedPlannerSlot;
   components: MealComponent[];
@@ -157,11 +168,12 @@ export function planFamilyMeals(input: {
     const hardLimits = resolveRankingPreferences(readPlanningContext(scopedContext).rankingContext).hard
       .flatMap((policy) => policy.hardMaxTimeMinutes === undefined ? [] : [policy.hardMaxTimeMinutes]);
     const hardMaxTimeMinutes = hardLimits.length ? Math.min(...hardLimits) : undefined;
-    const wanted = familyMealRoles(slot.mealType, input.preferences.mealStyle);
+    const wanted = familyMealRolesForComponents(slot.mealType, input.preferences.mealStyle, input.locked?.get(slot.id) ?? [], input.roles);
     const nextWeek: Branch[] = [];
     for (const week of frontier) {
       const locked = [...(input.locked?.get(slot.id) ?? [])];
-      let base: MealBranch = { inventory: week.inventory, components: [], score: 0, anchor: null, anchorDeltas: [], international: 0, warnings: [] };
+      let base: MealBranch = { inventory: week.inventory, components: [], score: 0, anchor: null, anchorDeltas: [], international: 0,
+        warnings: isManualOneDishMeal(locked, input.roles) ? ['MANUAL_ONE_DISH_MEAL'] : [] };
       for (const component of locked) {
         const evaluated = evaluate(scopedContext, component, base.inventory, slot, true);
         base = { ...base, components: [...base.components, component], inventory: evaluated?.inventory ?? base.inventory,

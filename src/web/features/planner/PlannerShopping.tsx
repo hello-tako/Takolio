@@ -25,7 +25,6 @@ import {
 } from './presentation';
 import { plannerInputClass } from './PlannerSetup';
 import type { usePlanner } from './usePlanner';
-import { localDate } from './intent';
 import { useFamilyPreferences } from '../family/useFamilyPreferences';
 import { ApiError } from '../../services/http';
 import { capturePrivateSession } from '../../lib/private-session';
@@ -39,6 +38,12 @@ import {
   usePlanCompositions,
 } from './composition';
 import { CompositionLoadState } from './CompositionLoadState';
+import {
+  canSharePlannerShopping,
+  hasFuturePlannerSlot,
+  isPlannerSlotElapsed,
+  plannerLocalDate,
+} from './schedule';
 
 type Shopping = z.infer<typeof PlanShoppingDtoSchema>;
 export function PlannerShopping({
@@ -54,13 +59,22 @@ export function PlannerShopping({
   const c = compositionCopy[locale];
   const composing = isMealCompositionEnabled();
   const compositions = usePlanCompositions(plan, composing);
-  const untracked = compositions.isSuccess
-    ? compositions.data.compositions.flatMap((meal) =>
-        meal.components
-          .filter((item) => item.projection?.status === 'not_tracked')
-          .map((item) => ({ meal, item })),
-      )
-    : [];
+  const matchingCompositions =
+    compositions.data?.planId === plan.id && compositions.data.planRevision === plan.revision;
+  const compositionRevisionChanged =
+    compositions.isSuccess &&
+    compositions.data.planId === plan.id &&
+    compositions.data.planRevision !== plan.revision;
+  const untracked =
+    compositions.isSuccess && matchingCompositions
+      ? compositions.data.compositions
+          .filter((meal) => !isPlannerSlotElapsed(plan, meal.slotId))
+          .flatMap((meal) =>
+            meal.components
+              .filter((item) => item.projection?.status === 'not_tracked')
+              .map((item) => ({ meal, item })),
+          )
+      : [];
   const client = useQueryClient();
   const [currency, setCurrency] = useState<MoneyDto['currency']>('VND');
   const [budget, setBudget] = useState('');
@@ -81,8 +95,11 @@ export function PlannerShopping({
     retry: false,
   });
   const familyPreferences = useFamilyPreferences();
+  const calendarToday = plannerLocalDate(plan);
   const [tripStart, setTripStart] = useState(
-    plan.intent.startDate > localDate() ? plan.intent.startDate : localDate(),
+    calendarToday && plan.intent.startDate > calendarToday
+      ? plan.intent.startDate
+      : (calendarToday ?? ''),
   );
   const [tripDays, setTripDays] = useState(3);
   useEffect(() => {
@@ -108,15 +125,38 @@ export function PlannerShopping({
   };
   const [shareBusy, setShareBusy] = useState(false);
   const [shareMessage, setShareMessage] = useState('');
-  async function shareShopping() {
+  const [shareRecovery, setShareRecovery] = useState(false);
+  const needsRefresh = shareRecovery || compositionRevisionChanged;
+  async function reloadPlan() {
     const isCurrent = capturePrivateSession();
+    const result = await model.perform('refresh', () => model.loadPlan(plan.id), model.replacePlan);
+    if (result && isCurrent()) {
+      setShareRecovery(false);
+      setShareMessage('');
+    }
+  }
+  async function shareShopping() {
+    if (
+      shareBusy ||
+      model.busy ||
+      needsRefresh ||
+      !plannerLocalDate(plan) ||
+      !tripStart ||
+      !canSharePlannerShopping(plan, model.familyPlan)
+    )
+      return;
+    const isCurrent = capturePrivateSession();
+    const requestIntent = { action: 'share-shopping', ...shareInput };
     setShareBusy(true);
     setShareMessage('');
     try {
       const result = await shoppingApi.sharePlanShopping(
         shareInput,
-        model.requestKey({ action: 'share-shopping', ...shareInput }),
+        model.requestKey(requestIntent),
       );
+      if (!isCurrent()) return;
+      model.retireRequestKey(requestIntent);
+      await client.invalidateQueries({ queryKey: queryKeys.shoppingList() });
       if (!isCurrent()) return;
       setShareMessage(
         locale === 'vi'
@@ -125,20 +165,35 @@ export function PlannerShopping({
       );
     } catch (failure) {
       if (!isCurrent()) return;
+      const changed =
+        failure instanceof ApiError &&
+        [
+          'PLAN_REVISION_CONFLICT',
+          'REVISION_CONFLICT',
+          'SHOPPING_SNAPSHOT_CHANGED',
+          'PLAN_REVALIDATION_REQUIRED',
+        ].includes(failure.code ?? '');
+      setShareRecovery(changed);
       setShareMessage(
-        failure instanceof ApiError && failure.code === 'SHOPPING_PLAN_CONFLICT'
+        changed
           ? locale === 'vi'
-            ? 'Danh sách đang dùng thực đơn của thành viên khác. Hãy thống nhất thực đơn trước khi cập nhật.'
-            : 'The list uses another household member’s plan. Agree on a plan before updating it.'
-          : locale === 'vi'
-            ? 'Chưa tạo được danh sách chung. Kiểm tra kết nối và thử lại.'
-            : 'Could not create the shared list. Check your connection and try again.',
+            ? 'Thực đơn, tủ lạnh hoặc thói quen vừa thay đổi. Tải lại dữ liệu trước khi cập nhật danh sách.'
+            : 'The plan, fridge or preferences changed. Load the latest data before updating the list.'
+          : failure instanceof ApiError && failure.code === 'SHOPPING_PLAN_CONFLICT'
+            ? locale === 'vi'
+              ? 'Danh sách đang dùng thực đơn của thành viên khác. Hãy thống nhất thực đơn trước khi cập nhật.'
+              : 'The list uses another household member’s plan. Agree on a plan before updating it.'
+            : locale === 'vi'
+              ? 'Chưa tạo được danh sách chung. Kiểm tra kết nối và thử lại.'
+              : 'Could not create the shared list. Check your connection and try again.',
       );
     } finally {
       if (isCurrent()) setShareBusy(false);
     }
   }
   const fresh = plan.freshness.status === 'fresh';
+  const canShare = canSharePlannerShopping(plan, model.familyPlan);
+  const hasFutureMeals = hasFuturePlannerSlot(plan);
   const response =
     fresh && !model.busy && !model.error && shopping.data?.planRevision === plan.revision
       ? shopping.data
@@ -202,8 +257,8 @@ export function PlannerShopping({
               </h2>
               <p>
                 {locale === 'vi'
-                  ? 'Takosan cộng dồn nguyên liệu từ mọi món trong các bữa, giữ lại dòng bạn đã sửa và báo rõ lượng chưa biết.'
-                  : 'Takosan combines ingredients from every dish, keeps your edits and flags unknown quantities.'}
+                  ? 'Takosan tính lại theo tủ lạnh hiện tại cho những bữa còn phía trước, cộng nguyên liệu từ mọi món, giữ dòng bạn đã sửa và báo rõ lượng chưa biết.'
+                  : 'Takosan recalculates future meals against your current fridge, combines every dish, keeps your edits and flags unknown quantities.'}
               </p>
             </div>
           </div>
@@ -212,7 +267,7 @@ export function PlannerShopping({
               {locale === 'vi' ? 'Mua cho các bữa từ ngày' : 'Meals from'}
               <input
                 type="date"
-                min={localDate()}
+                min={calendarToday}
                 value={tripStart}
                 onChange={(event) => setTripStart(event.target.value)}
               />
@@ -234,17 +289,48 @@ export function PlannerShopping({
           </p>
           <Button
             fullWidth
-            disabled={!fresh || shareBusy || !tripStart}
+            disabled={
+              !canShare || !calendarToday || shareBusy || !!model.busy || needsRefresh || !tripStart
+            }
             isLoading={shareBusy}
             onClick={() => void shareShopping()}
           >
             <CheckCircle2 size={16} className="mr-2" />
             {locale === 'vi' ? 'Tạo danh sách dùng chung' : 'Create shared list'}
           </Button>
+          {!canShare && !needsRefresh && (
+            <p className="text-sm text-semantic-text-secondary mt-3" role="status">
+              {!hasFutureMeals
+                ? locale === 'vi'
+                  ? 'Các bữa trong thực đơn này đã qua giờ dự kiến. Lên thực đơn mới để chuẩn bị lượt đi chợ tiếp theo.'
+                  : 'The scheduled meals in this plan have passed. Create a new plan for your next shopping trip.'
+                : locale === 'vi'
+                  ? 'Thực đơn hoặc thói quen ăn uống cần được kiểm tra lại. Tải bản mới nhất và cập nhật kế hoạch trước khi tạo danh sách chung.'
+                  : 'The plan or food preferences need revalidation. Load the latest revision and update the plan before creating a shared list.'}
+            </p>
+          )}
           {shareMessage && (
             <p role="status" className="planning-notice">
               {shareMessage}
             </p>
+          )}
+          {needsRefresh && (
+            <div role="status" className="planning-notice">
+              {!shareMessage && (
+                <p>
+                  {locale === 'vi'
+                    ? 'Thực đơn đã có phiên bản mới. Tải lại trước khi cập nhật danh sách đi chợ.'
+                    : 'A newer plan is available. Load it before updating shopping.'}
+                </p>
+              )}
+              <Button
+                variant="outline"
+                disabled={!!model.busy || shareBusy}
+                onClick={() => void reloadPlan()}
+              >
+                {locale === 'vi' ? 'Tải thực đơn mới nhất' : 'Load latest plan'}
+              </Button>
+            </div>
           )}
           <Link className="planning-text-link" to="/shopping">
             {locale === 'vi' ? 'Mở danh sách và chỉnh lượng' : 'Open and edit the list'}

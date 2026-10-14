@@ -168,6 +168,9 @@ const viCopy = {
     INVENTORY_CONTEXT_REQUIRED: 'Cần biết lượng thực tế trong gói để tính tồn kho',
     INVENTORY_EXPIRED: 'Thực phẩm quá hạn sử dụng đã bị loại khỏi lượng có thể dùng',
     INVENTORY_UNAVAILABLE: 'Một số thực phẩm hiện không có lượng dùng được',
+    INVENTORY_NEEDS_SHOPPING: 'Cần mua thêm nguyên liệu cho món này',
+    INVENTORY_UNRESOLVED: 'Cần kiểm tra lại lượng nguyên liệu của món này',
+    INVENTORY_NOT_TRACKED: 'Món này chưa có dữ liệu tồn kho để tính lượng',
     INVENTORY_EXPIRY_REVIEW_REQUIRED: 'Thông tin hạn dùng của tồn kho cần được kiểm tra',
     INVENTORY_DUPLICATE_IGNORED: 'Bản ghi tồn kho trùng đã được bỏ qua để tránh tính hai lần',
     INVENTORY_HOUSEHOLD_MISMATCH: 'Tồn kho ngoài hộ gia đình này đã được loại khỏi kế hoạch',
@@ -269,11 +272,16 @@ const viCopy = {
     FORBIDDEN_INGREDIENT: 'Có nguyên liệu bị loại trừ',
     NEVER_RECOMMEND: 'Món đã được loại khỏi gợi ý',
     COOKING_TIME_UNKNOWN: 'Chưa đủ dữ liệu để kiểm tra giới hạn thời gian',
+    MANUAL_ONE_DISH_MEAL: 'Bữa gọn với món chính bạn đã chọn. Có thể thêm món ăn kèm nếu muốn.',
     MEAL_TIME_UNKNOWN: 'Chưa đủ dữ liệu để ước tính thời gian chuẩn bị và nấu cả bữa.',
-    PRESERVED_INTERNATIONAL_CAP_EXCEEDED: 'Các món quốc tế bạn đã chọn hoặc khoá vượt mức đổi vị trong 7 ngày. Takosan giữ lựa chọn này; giảm món quốc tế hoặc tăng mức đổi vị nếu bạn muốn.',
+    PRESERVED_INTERNATIONAL_CAP_EXCEEDED:
+      'Các món quốc tế bạn đã chọn hoặc khoá vượt mức đổi vị trong 7 ngày. Takosan giữ lựa chọn này; giảm món quốc tế hoặc tăng mức đổi vị nếu bạn muốn.',
     MEAL_TIME_ABOVE_PREFERENCE: 'Bữa này có thể cần nhiều thời gian hơn mức bạn đã chọn.',
-    LOCKED_MEAL_TIME_REQUIRES_REVALIDATION: 'Các món đã khoá cần được kiểm tra lại với giới hạn thời gian của gia đình.',
-    MEAL_TIME_REQUIRES_REVALIDATION: 'Cần kiểm tra lại thời gian chuẩn bị và nấu cả bữa với giới hạn của gia đình.',
+    LOCKED_MEAL_TIME_REQUIRES_REVALIDATION:
+      'Các món đã khoá cần được kiểm tra lại với giới hạn thời gian của gia đình.',
+    MEAL_TIME_REQUIRES_REVALIDATION:
+      'Cần kiểm tra lại thời gian chuẩn bị và nấu cả bữa với giới hạn của gia đình.',
+    MEAL_TIME_EXCEEDED: 'Tổng thời gian các món vượt giới hạn của gia đình.',
     COOKING_TIME_LIMIT: 'Vượt giới hạn thời gian nấu',
     NUTRITION_UNKNOWN: 'Chưa đủ dữ liệu để kiểm tra ràng buộc dinh dưỡng',
     NUTRITION_CONFLICT: 'Không đáp ứng ràng buộc dinh dưỡng',
@@ -299,7 +307,11 @@ const viCopy = {
     notFound: 'Không tìm thấy kế hoạch này hoặc kế hoạch không thuộc tài khoản hiện tại.',
     conflict: 'Kế hoạch đã thay đổi. Tải bản mới nhất trước khi thử lại.',
     PROPOSAL_STALE: 'Gợi ý không còn phù hợp với bản hiện tại. Hãy yêu cầu gợi ý mới.',
-    HARD_CONSTRAINT_CONFLICT: 'Món này không đáp ứng hạn chế của gia đình hoặc giới hạn thời gian. Hãy chọn món khác.',
+    HARD_CONSTRAINT_CONFLICT:
+      'Món này không đáp ứng hạn chế của gia đình hoặc giới hạn thời gian. Hãy chọn món khác.',
+    INSUFFICIENT_INVENTORY: 'Tủ lạnh chưa đủ lượng cho món này ở bữa đã chọn.',
+    PICKER_SNAPSHOT_CHANGED: 'Bữa hoặc tồn kho vừa thay đổi. Tải lại danh sách món trước khi chọn.',
+    INVALID_ROLE: 'Món này không phù hợp với vai trò đã chọn. Hãy chọn vai trò khác.',
     DUPLICATE_COMPONENT: 'Món này đã có trong bữa. Hãy chỉnh món hiện có hoặc chọn món khác.',
     ROLE_NOT_PERMITTED: 'Món này không phù hợp với vai trò đã chọn. Hãy chọn vai trò khác.',
     TARGET_NOT_FOUND: 'Món này không còn trong danh mục hiện tại. Hãy tải lại danh sách.',
@@ -308,7 +320,8 @@ const viCopy = {
     REGISTERED_ACCOUNT_REQUIRED: 'Đăng nhập bằng tài khoản đã đăng ký để dùng kế hoạch bữa ăn.',
     PLAN_REVISION_CONFLICT: 'Kế hoạch đã thay đổi. Tải bản mới nhất trước khi thử lại.',
     PLAN_REVALIDATION_REQUIRED: 'Dữ liệu nguồn đã thay đổi. Hãy lên kế hoạch lại.',
-    CATALOG_AUTHORITY_CHANGED: 'Nguồn danh mục món ăn đã thay đổi. Hãy lên kế hoạch lại trước khi tiếp tục.',
+    CATALOG_AUTHORITY_CHANGED:
+      'Nguồn danh mục món ăn đã thay đổi. Hãy lên kế hoạch lại trước khi tiếp tục.',
     IDEMPOTENCY_CONFLICT:
       'Mã thử lại đã dùng cho thao tác khác. Tải lại trước khi gửi một thao tác mới.',
     SWAP_NOT_FEASIBLE:
@@ -484,8 +497,12 @@ const enCopy: PlannerCopy = {
     INVENTORY_CONTEXT_REQUIRED: 'Package contents are needed to assess inventory quantities',
     INVENTORY_EXPIRED: 'Stock past its use-by date was excluded from usable quantities',
     INVENTORY_UNAVAILABLE: 'Some stock has no usable quantity available',
+    INVENTORY_NEEDS_SHOPPING: 'Additional ingredients are needed for this dish',
+    INVENTORY_UNRESOLVED: 'Review ingredient quantities for this dish',
+    INVENTORY_NOT_TRACKED: 'This dish has no tracked inventory quantities',
     INVENTORY_EXPIRY_REVIEW_REQUIRED: 'Inventory expiry information needs review',
-    INVENTORY_DUPLICATE_IGNORED: 'Duplicate stock records were ignored to avoid counting them twice',
+    INVENTORY_DUPLICATE_IGNORED:
+      'Duplicate stock records were ignored to avoid counting them twice',
     INVENTORY_HOUSEHOLD_MISMATCH: 'Stock outside this household was excluded from planning',
     T02_INVALID_RECIPE: 'Recipe data is invalid for planning',
     T02_INVALID_FAMILY: 'Recipe-family data is invalid for planning',
@@ -507,12 +524,14 @@ const enCopy: PlannerCopy = {
     BUDGET_INFEASIBLE: 'The hard budget cannot be met within the proven price scope',
     SOFT_BUDGET_TARGET_EXCEEDED: 'The selected cost exceeds the soft budget target',
     WITHIN_BUDGET: 'The selected purchase option is within budget',
-    BEST_KNOWN_OVER_BUDGET: 'The option found exceeds budget; cheaper options have not been ruled out',
+    BEST_KNOWN_OVER_BUDGET:
+      'The option found exceeds budget; cheaper options have not been ruled out',
     BUDGET_UNRESOLVED: 'There is not enough data to confirm the budget',
     OUT_OF_STOCK: 'The purchase option is out of stock',
     PACKAGE_CONTENT_UNRESOLVED: 'The purchase package quantity or unit is unresolved',
     PURCHASE_EXPIRES_BEFORE_LAST_USE: 'The purchase package expires before its last planned use',
-    PARTIAL_HORIZON_PURCHASE_UNSUPPORTED: 'Splitting purchases across portions of the schedule is not supported',
+    PARTIAL_HORIZON_PURCHASE_UNSUPPORTED:
+      'Splitting purchases across portions of the schedule is not supported',
     PURCHASE_EXPIRY_REVIEW_REQUIRED: 'Purchase package expiry needs review',
     AVAILABILITY_UNKNOWN: 'Availability of the purchase package has not been confirmed',
     UNSUPPORTED_CURRENCY: 'The price uses another currency; no conversion is assumed',
@@ -585,11 +604,17 @@ const enCopy: PlannerCopy = {
     FORBIDDEN_INGREDIENT: 'Contains an excluded ingredient',
     NEVER_RECOMMEND: 'Recipe excluded from recommendations',
     COOKING_TIME_UNKNOWN: 'Insufficient data to check the time limit',
-    MEAL_TIME_UNKNOWN: 'There is not enough data to estimate prep and cooking time for the whole meal.',
-    PRESERVED_INTERNATIONAL_CAP_EXCEEDED: 'Your chosen or locked international dishes exceed the 7-day rotation limit. Takosan keeps these choices; reduce international dishes or increase the limit if you wish.',
+    MANUAL_ONE_DISH_MEAL: 'A one-dish meal with your chosen main. Add accompaniments if you want.',
+    MEAL_TIME_UNKNOWN:
+      'There is not enough data to estimate prep and cooking time for the whole meal.',
+    PRESERVED_INTERNATIONAL_CAP_EXCEEDED:
+      'Your chosen or locked international dishes exceed the 7-day rotation limit. Takosan keeps these choices; reduce international dishes or increase the limit if you wish.',
     MEAL_TIME_ABOVE_PREFERENCE: 'This meal may take longer than your chosen time.',
-    LOCKED_MEAL_TIME_REQUIRES_REVALIDATION: 'Check the locked dishes against your household time limit.',
-    MEAL_TIME_REQUIRES_REVALIDATION: 'Check prep and cooking time for the whole meal against your household limit.',
+    LOCKED_MEAL_TIME_REQUIRES_REVALIDATION:
+      'Check the locked dishes against your household time limit.',
+    MEAL_TIME_REQUIRES_REVALIDATION:
+      'Check prep and cooking time for the whole meal against your household limit.',
+    MEAL_TIME_EXCEEDED: 'The meal exceeds your household time limit.',
     COOKING_TIME_LIMIT: 'Exceeds the cooking time limit',
     NUTRITION_UNKNOWN: 'Insufficient data to check nutrition constraints',
     NUTRITION_CONFLICT: 'Does not meet a nutrition constraint',
@@ -615,7 +640,11 @@ const enCopy: PlannerCopy = {
     notFound: 'This plan was not found or is not available to your current account.',
     conflict: 'The plan changed. Load the latest version before retrying.',
     PROPOSAL_STALE: 'This suggestion is no longer current. Request a new suggestion.',
-    HARD_CONSTRAINT_CONFLICT: 'This dish does not meet your household restrictions or time limit. Choose another dish.',
+    HARD_CONSTRAINT_CONFLICT:
+      'This dish does not meet your household restrictions or time limit. Choose another dish.',
+    INSUFFICIENT_INVENTORY: 'Your fridge does not have enough for this dish in the selected meal.',
+    PICKER_SNAPSHOT_CHANGED: 'The meal or inventory changed. Reload the dish list before choosing.',
+    INVALID_ROLE: 'This dish cannot use the selected role. Choose another role.',
     DUPLICATE_COMPONENT: 'This dish is already in the meal. Edit it or choose another dish.',
     ROLE_NOT_PERMITTED: 'This dish cannot use the selected role. Choose another role.',
     TARGET_NOT_FOUND: 'This dish is no longer in the current catalog. Reload the choices.',
@@ -624,7 +653,8 @@ const enCopy: PlannerCopy = {
     REGISTERED_ACCOUNT_REQUIRED: 'Sign in with a registered account to use meal planning.',
     PLAN_REVISION_CONFLICT: 'The plan changed. Load the latest version before retrying.',
     PLAN_REVALIDATION_REQUIRED: 'Source data changed. Regenerate the plan first.',
-    CATALOG_AUTHORITY_CHANGED: 'The recipe catalog source changed. Regenerate the plan before continuing.',
+    CATALOG_AUTHORITY_CHANGED:
+      'The recipe catalog source changed. Regenerate the plan before continuing.',
     IDEMPOTENCY_CONFLICT:
       'This retry key belongs to another action. Reload before submitting a new action.',
     SWAP_NOT_FEASIBLE:
@@ -649,7 +679,7 @@ function label(map: Record<string, string>, key: string, fallback: string): stri
 
 export function reasonLabel(code: string, locale?: string): string {
   const copy = plannerCopy[plannerLocale(locale)];
-  return label(copy.reasons, code, copy.ui.unknownReason);
+  return label(copy.reasons, code, label(copy.errors, code, copy.ui.unknownReason));
 }
 
 export function plannerStatusLabel(status: string, locale?: string): string {

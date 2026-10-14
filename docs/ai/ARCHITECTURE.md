@@ -1,3 +1,41 @@
+# T23 quantity-aware manual family meals - 2026-10-14
+
+ADR-059 extends the accepted T22 path. `/api/v2/meal-planning/drafts` creates
+intentional empty compositions with mode-specific request fingerprints, the same
+household/profile/inventory witnesses, and no automatic search. Existing V1
+composition commands add/swap explicit locked identities; assisted completion
+fills remaining roles. A locked manual main with existing `complete_meal` traits
+selects a one-dish template only for that slot, shared by planning and DTO reads.
+
+Scoped picker reads bind plan/revision/slot/servings/swap identity and pagination
+snapshots. Required/from-fridge/missing quantities come from chronological shared
+stock projection. Entering mutations validate the full affected meal/suffix;
+corrective removals remain possible. Rich component assessment is opt-in on reads
+so strict old family/V1 response shapes remain compatible.
+
+Discovery, recipe detail, plan links and cooking attempts retain selected servings;
+frozen cooking retries preserve the original count/deductions. The recipe/favorite
+destination dialog distinguishes add from replace and offers an exact manual
+setup handoff when no future destination exists. Board and destination chronology
+use scheduled time and numeric sequence, including partially filled calendars.
+
+Inventory measured correction reuses existing versioned commands. Compatible
+unit selections convert displayed amounts; explicit measurement is compared in
+the selected unit. Quantity/unit drafts retain their original revision; metadata
+edits never overwrite untouched stock. No package mass or positive floor is made up.
+Shopping request keys retire only after confirmed success; stale revision/snapshot
+recovery requires an explicit reload and a new user action. Local checks and
+remaining unresolved-demand contract gaps are recorded in the T23 packet.
+
+Trusted current projection skips elapsed meal instants, including earlier meals
+today. V2 edits gate the target slot rather than freezing the entire week. Shared
+family shopping may reproject future demand after stock/history/time changes;
+profile, hard preference, catalog and authority changes still require revalidation.
+Picker snapshots capture elapsed slot identities. Freshness remains truthful;
+legacy price optimization and whole-week regeneration retain their strict gates.
+
+---
+
 # T22 Vietnamese family meals - 2026-10-13
 
 ADR-058 adds whole-week composed planning to the existing planner. The strict V1

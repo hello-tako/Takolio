@@ -133,11 +133,18 @@ export function createMealPlanningRoutes(options: Partial<MealPlanningServiceOpt
     if (!parsed.success) throw new MealPlanningError('INVALID_COMPONENT_ID', 422, 'Invalid component ID');
     return parsed.data;
   };
+  const includeAssessment = (c: Ctx) => {
+    const parsed = z.object({ includeAssessment: z.literal('true').optional() }).strict().safeParse(c.req.query());
+    if (!parsed.success || Object.values(c.req.queries()).some((values) => values.length !== 1)) {
+      throw new MealPlanningError('INVALID_REQUEST', 422, 'Composition read query does not match the contract');
+    }
+    return parsed.data.includeAssessment === 'true';
+  };
   const slotPath = '/meal-planning/plans/:id/slots/:slotId';
   routes.get('/meal-planning/plans/:id/compositions', reads, (c) => respond(c, () =>
-    compositions(c).compositions(scope(c), planId(c))));
+    compositions(c).compositions(scope(c), planId(c), includeAssessment(c))));
   routes.get(`${slotPath}/composition`, reads, (c) => respond(c, () =>
-    compositions(c).composition(scope(c), planId(c), slotId(c))));
+    compositions(c).composition(scope(c), planId(c), slotId(c), includeAssessment(c))));
   routes.put(`${slotPath}/composition`, compositionWrites, (c) => respond(c, async () =>
     compositions(c).replace(scope(c), planId(c), slotId(c), await body(c, ReplaceCompositionSchema))));
   routes.post(`${slotPath}/components`, compositionWrites, (c) => respond(c, async () =>
