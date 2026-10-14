@@ -29,21 +29,3 @@ export function spaCsp(): string {
     'upgrade-insecure-requests',
   ].join('; ');
 }
-
-/** Admin Console documents: same-origin only, no third-party scripts or frames. */
-export function adminCsp(environment?: string): string {
-  const directives = [
-    "default-src 'self'",
-    "script-src 'self'",
-    "style-src 'self' 'unsafe-inline'",
-    "img-src 'self' data: blob:",
-    "font-src 'self' data:",
-    "connect-src 'self'",
-    "object-src 'none'",
-    "base-uri 'self'",
-    "form-action 'self'",
-    "frame-ancestors 'none'",
-  ];
-  if (environment !== 'development') directives.push('upgrade-insecure-requests');
-  return directives.join('; ');
-}

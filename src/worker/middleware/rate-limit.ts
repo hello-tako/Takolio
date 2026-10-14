@@ -27,8 +27,6 @@ interface RateLimitConfig {
   prefix?: string;
   enforcement?: RateLimitEnforcement;
   scope?: 'path' | 'account';
-  /** Optional caller identity; when it returns a value it replaces the auth/IP key. */
-  key?: (c: Context) => string | undefined;
 }
 
 // In-memory fallback sliding window for dev / when KV is not bound
@@ -109,7 +107,6 @@ export function rateLimiter(config: RateLimitConfig) {
     // users behind shared NAT/office IPs don't starve each other.
     const auth = c.get('auth') as { userId?: string } | undefined;
     const ip =
-      config.key?.(c as unknown as Context) ||
       auth?.userId ||
       c.req.header('cf-connecting-ip') ||
       c.req.header('x-real-ip') ||

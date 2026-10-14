@@ -503,6 +503,9 @@ code,
 /* ── Tables ────────────────────────────────────────────── */
 
 .table-wrap {
+  /* Containing block for absolutely positioned sr-only cell text; without it that
+     text escapes the scroll clip and widens the whole page. */
+  position: relative;
   overflow-x: auto;
   border: 1px solid var(--admin-line);
   border-radius: 12px;
@@ -1111,4 +1114,9 @@ input[type='hidden'] {
     transition: none;
     animation: none;
   }
+}
+
+.table-wrap:focus-visible {
+  outline: 3px solid var(--takosan-green, #2E7D5B);
+  outline-offset: 2px;
 }

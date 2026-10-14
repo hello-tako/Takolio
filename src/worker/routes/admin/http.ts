@@ -1,13 +1,16 @@
 import type { Context, MiddlewareHandler } from 'hono';
-import type { Env } from '../../types';
-import type { AdminAuthMode, AdminDataContext, AdminErrorCode, AdminPermission, AdminRole } from '../../../shared/admin';
+import type { D1DatabaseBinding } from '@frigo/db';
+import type { AdminDataContext, AdminErrorCode, AdminPermission, AdminRole } from '../../../shared/admin';
+import type { AdminEnv } from './env';
+import type { AdminPolicy } from './policy';
 
 export interface AdminPrincipal {
   userId: string;
   roles: AdminRole[];
   permissions: AdminPermission[];
   sessionId: string;
-  csrfHash: string;
+  /** Session-derived CSRF token (never stored). */
+  csrfToken: string;
   authMethod: 'password' | 'cloudflare_access';
   createdAt: string;
   expiresAt: string;
@@ -16,9 +19,16 @@ export interface AdminPrincipal {
   displayName: string | null;
 }
 
-// `admin` is deliberately distinct from the customer `auth` variable.
-export type AdminVariables = { admin: AdminPrincipal; requestId: string; adminMode: AdminAuthMode };
-export type AdminApp = { Bindings: Env; Variables: AdminVariables };
+export type AdminVariables = {
+  admin: AdminPrincipal;
+  requestId: string;
+  policy: AdminPolicy;
+  /** Customer database wrapped by readOnlyDatabase(). */
+  main: D1DatabaseBinding;
+  adminDb: D1DatabaseBinding;
+  fixtureDataset: string | null;
+};
+export type AdminApp = { Bindings: AdminEnv; Variables: AdminVariables };
 export type AdminContext = Context<AdminApp>;
 export type AdminMiddleware = MiddlewareHandler<AdminApp>;
 
@@ -41,29 +51,21 @@ const MESSAGES: Partial<Record<AdminErrorCode, string>> = {
   ADMIN_NOT_FOUND: 'Không tìm thấy.',
   ADMIN_CONFLICT: 'Dữ liệu đã thay đổi. Vui lòng tải lại.',
   ADMIN_UNAVAILABLE: 'Dịch vụ quản trị tạm thời không khả dụng.',
+  ADMIN_AUDIT_UNAVAILABLE: 'Không ghi được nhật ký kiểm toán nên thao tác đã bị chặn.',
+  ADMIN_SCHEMA_MISMATCH: 'Cơ sở dữ liệu quản trị chưa đúng phiên bản.',
+  ADMIN_FIXTURE_DATA_REJECTED: 'Dữ liệu tổng hợp bị từ chối ở môi trường này.',
 };
-
-export function adminError(status: AdminHttpError['status'], code: AdminErrorCode, message?: string): AdminHttpError {
-  return new AdminHttpError(status, code, message ?? MESSAGES[code] ?? 'Yêu cầu không hợp lệ.');
-}
 
 export function errorResponse(c: Context, status: number, code: AdminErrorCode, message?: string): Response {
   return c.json({ error: message ?? MESSAGES[code] ?? 'Đã xảy ra lỗi.', code }, status as 400);
 }
 
-export async function dataContext(c: AdminContext): Promise<AdminDataContext> {
-  let fixtureDataset: string | null = null;
-  try {
-    const row = await c.env.DB.prepare("SELECT value FROM admin_config_metadata WHERE key = 'fixture_dataset'").first<{ value: string }>();
-    fixtureDataset = row?.value ?? null;
-  } catch {
-    fixtureDataset = null;
-  }
-  return { environment: c.env.ENVIRONMENT || 'development', generatedAt: new Date().toISOString(), fixtureDataset };
+export function dataContext(c: AdminContext): AdminDataContext {
+  return { environment: c.get('policy')?.environment ?? 'unknown', generatedAt: nowIso(), fixtureDataset: c.get('fixtureDataset') ?? null };
 }
 
-export async function ok<T>(c: AdminContext, data: T, status: 200 | 201 = 200): Promise<Response> {
-  return c.json({ data, context: await dataContext(c) }, status);
+export function ok<T>(c: AdminContext, data: T, status: 200 | 201 = 200): Response {
+  return c.json({ data, context: dataContext(c) }, status);
 }
 
 export function nowIso(): string {
@@ -106,12 +108,6 @@ export function readCookie(c: Context, name: string): string | undefined {
   return undefined;
 }
 
-export function clientIp(c: Context): string {
-  return c.req.header('cf-connecting-ip') || c.req.header('x-real-ip') ||
-    c.req.header('x-forwarded-for')?.split(',')[0].trim() || 'anonymous_client';
-}
-
-/** SQLite datetime() comparable "now" for ISO columns written with toISOString(). */
 export function isPast(iso: string, now = Date.now()): boolean {
   const value = Date.parse(iso);
   return !Number.isFinite(value) || value <= now;
@@ -123,15 +119,13 @@ export function rangeDays(range: '7d' | '30d' | '90d'): number {
 
 /** First UTC day included in the range, as YYYY-MM-DD. */
 export function rangeStartDay(range: '7d' | '30d' | '90d', now = Date.now()): string {
-  const start = new Date(now - (rangeDays(range) - 1) * 86_400_000);
-  return start.toISOString().slice(0, 10);
+  return new Date(now - (rangeDays(range) - 1) * 86_400_000).toISOString().slice(0, 10);
 }
 
 export function fillDays(range: '7d' | '30d' | '90d', rows: Array<{ day: string; value: number | null }>, now = Date.now()) {
   const byDay = new Map(rows.map((row) => [row.day, Number(row.value ?? 0)]));
-  const days = rangeDays(range);
   const points = [];
-  for (let i = days - 1; i >= 0; i -= 1) {
+  for (let i = rangeDays(range) - 1; i >= 0; i -= 1) {
     const date = new Date(now - i * 86_400_000).toISOString().slice(0, 10);
     points.push({ date, value: byDay.get(date) ?? 0 });
   }
@@ -140,4 +134,10 @@ export function fillDays(range: '7d' | '30d' | '90d', rows: Array<{ day: string;
 
 export function escapeLike(value: string): string {
   return value.replace(/[\\%_]/g, (char) => `\\${char}`);
+}
+
+/** SQLite/D1 constraint or trigger aborts surface as conflicts, never as 500s. */
+export function isConstraintError(error: unknown): boolean {
+  const message = error instanceof Error ? error.message : String(error);
+  return /UNIQUE constraint failed|CHECK constraint failed|SQLITE_CONSTRAINT|at least two active SUPER_ADMIN|cannot be reactivated|already been completed|are final/i.test(message);
 }

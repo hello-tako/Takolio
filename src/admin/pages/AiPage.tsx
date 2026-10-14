@@ -44,7 +44,7 @@ export function AiPage() {
           </div>
 
           <h3>{vi.ai.byTask}</h3>
-          <div className="table-wrap">
+          <div className="table-wrap" tabIndex={0} role="region" aria-label={vi.ai.byTask}>
             <table className="data-table">
               <caption className="sr-only">{vi.ai.byTask}</caption>
               <thead>
@@ -71,7 +71,7 @@ export function AiPage() {
           </div>
 
           <h3>{vi.ai.byModel}</h3>
-          <div className="table-wrap">
+          <div className="table-wrap" tabIndex={0} role="region" aria-label={vi.ai.byModel}>
             <table className="data-table">
               <caption className="sr-only">{vi.ai.byModel}</caption>
               <thead>
@@ -166,7 +166,7 @@ export function AiPage() {
         {usage.isError ? <ErrorState error={usage.error} onRetry={() => void usage.refetch()} /> : null}
         {usage.data && usage.data.items.length === 0 ? <EmptyState /> : null}
         {usage.data && usage.data.items.length > 0 ? (
-          <div className={usage.isPlaceholderData ? 'table-wrap is-stale' : 'table-wrap'} aria-busy={usage.isPlaceholderData}>
+          <div className={usage.isPlaceholderData ? 'table-wrap is-stale' : 'table-wrap'} aria-busy={usage.isPlaceholderData} tabIndex={0} role="region" aria-label={vi.ai.usageCaption}>
             <table className="data-table">
               <caption className="sr-only">{vi.ai.usageCaption}</caption>
               <thead>

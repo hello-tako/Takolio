@@ -1,0 +1,60 @@
+// Takosan Admin Console Worker (separate deployment boundary from the customer Worker).
+// NOT DEPLOYED. Disabled by default: the console stays 404 until ADMIN_CONSOLE_ENABLED=true,
+// ADMIN_ORIGIN (dedicated https host), Cloudflare Access (team domain + AUD) are configured.
+// Placeholders that must be replaced at integration: ADMIN_DB database_id, CACHE KV id, routes.
+// Never add a `define` for __ADMIN_LOCAL_AUTH__ here: password login exists only in local builds.
+// DB is the customer database; admin code reads it through readOnlyDatabase().
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "takosan-admin",
+  "main": "src/worker/admin-worker.ts",
+  "compatibility_date": "2024-11-01",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "workers_dev": false,
+  "assets": {
+    "directory": "./dist/admin",
+    "binding": "ASSETS",
+    "run_worker_first": true,
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "none"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "frigo-db",
+      "database_id": "f975ec39-b2c8-4a2a-80e1-0366054599d3",
+      "migrations_dir": "migrations"
+    },
+    {
+      "binding": "ADMIN_DB",
+      "database_name": "takosan-admin-db",
+      "database_id": "00000000-0000-4000-8000-000000000000",
+      "migrations_dir": "migrations-admin"
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "CACHE",
+      "id": "00000000000000000000000000000000"
+    }
+  ],
+  "vars": {
+    "ENVIRONMENT": "production",
+    "ADMIN_CONSOLE_ENABLED": "false",
+    "ADMIN_AUTH_MODE": "cloudflare_access",
+    "ADMIN_ORIGIN": "",
+    "CUSTOMER_APP_URL": "https://frigo.tungjpstore.net",
+    "ADMIN_ACCESS_TEAM_DOMAIN": "",
+    "ADMIN_ACCESS_AUD": ""
+  },
+  "observability": {
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 1,
+      "invocation_logs": true,
+      "persist": true
+    }
+  }
+}

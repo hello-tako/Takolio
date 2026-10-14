@@ -1,42 +1,48 @@
 #!/usr/bin/env node
-// Local wrangler D1 (Miniflare) lifecycle for Admin Console development.
-//   pnpm admin:local:reset -- --yes   delete local D1 state, re-apply migrations, seed fixture
-//   pnpm admin:local:seed             apply migrations + synthetic fixture (idempotent marker check)
-// Only `--local` wrangler commands are issued.
+// Local Wrangler D1 (Miniflare) lifecycle for the Admin Console: both the
+// customer database (frigo-db) and the admin database (takosan-admin-db).
+//   pnpm admin:local:reset -- --yes   delete local D1 state, re-apply migrations, seed the fixture
+//   pnpm admin:local:seed             apply migrations + synthetic fixture (skips if already present)
+// Only `--local` wrangler commands are issued, with telemetry off and no reachable OAuth login.
 import { spawnSync } from 'node:child_process';
 import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import { assertLocalProvisioningAllowed, buildAdminFixtureSql, FIXTURE_DATASET } from './admin-local-lib.mjs';
+import { assertLocalProvisioningAllowed, buildAdminFixtureSql, FIXTURE_DATASET, localWranglerEnv } from './admin-local-lib.mjs';
 
+const CONFIG = 'wrangler.admin-local.jsonc';
 const [command, ...rest] = process.argv.slice(2);
 const persistIndex = rest.indexOf('--persist-to');
 const persistTo = persistIndex === -1 ? undefined : rest[persistIndex + 1];
+const env = localWranglerEnv();
 
 function wrangler(args) {
-  const full = ['exec', 'wrangler', 'd1', ...args, '--local', ...(persistTo ? ['--persist-to', persistTo] : [])];
+  const full = ['exec', 'wrangler', 'd1', ...args, '--local', '-c', CONFIG, ...(persistTo ? ['--persist-to', persistTo] : [])];
   if (full.includes('--remote')) throw new Error('Refusing remote wrangler invocation');
-  const result = spawnSync('pnpm', full, { encoding: 'utf8', env: { ...process.env, CLOUDFLARE_API_TOKEN: '', CI: 'true' } });
+  const result = spawnSync('pnpm', full, { encoding: 'utf8', env: { ...env, CI: 'true' } });
   if (result.status !== 0) throw new Error(`wrangler ${args.join(' ')} failed:\n${result.stderr || result.stdout}`);
   return result.stdout;
 }
 
 function seed() {
   wrangler(['migrations', 'apply', 'frigo-db']);
-  const marker = wrangler(['execute', 'frigo-db', '--json', '--command', "SELECT value FROM admin_config_metadata WHERE key = 'fixture_dataset'"]);
+  wrangler(['migrations', 'apply', 'takosan-admin-db']);
+  const marker = wrangler(['execute', 'takosan-admin-db', '--json', '--command', "SELECT value FROM admin_config_metadata WHERE key = 'fixture_dataset'"]);
   if (marker.includes(FIXTURE_DATASET)) {
     console.log(`Fixture ${FIXTURE_DATASET} already present; nothing to do (use reset to rebuild).`);
     return;
   }
   const dir = mkdtempSync(path.join(tmpdir(), 'takosan-admin-fixture-'));
   try {
-    const file = path.join(dir, 'fixture.sql');
-    writeFileSync(file, buildAdminFixtureSql());
-    wrangler(['execute', 'frigo-db', '--file', file]);
+    const fixture = buildAdminFixtureSql();
+    writeFileSync(path.join(dir, 'main.sql'), fixture.main);
+    writeFileSync(path.join(dir, 'admin.sql'), fixture.admin);
+    wrangler(['execute', 'frigo-db', '--file', path.join(dir, 'main.sql')]);
+    wrangler(['execute', 'takosan-admin-db', '--file', path.join(dir, 'admin.sql')]);
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }
-  console.log(`Seeded synthetic fixture ${FIXTURE_DATASET} into local D1.`);
+  console.log(`Seeded synthetic fixture ${FIXTURE_DATASET} into local D1 (frigo-db + takosan-admin-db).`);
 }
 
 try {
@@ -54,5 +60,7 @@ try {
   }
 } catch (error) {
   console.error(error instanceof Error ? error.message : String(error));
-  process.exit(1);
+  process.exitCode = 1;
+} finally {
+  rmSync(env.XDG_CONFIG_HOME, { recursive: true, force: true });
 }

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useId, type ButtonHTMLAttributes, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import { ADMIN_RANGES, type AdminMetric, type AdminRange } from '@shared/admin';
+import { ADMIN_RANGES, type AdminMetric, type AdminRange, ADMIN_PERMISSION_LABELS_VI, type AdminPermission } from '@shared/admin';
 import { AdminApiError } from '../api/client';
 import { errorMessage } from '../lib/errors';
 import { vi } from '../i18n/vi';
@@ -113,11 +113,16 @@ export function EmptyState({ title = vi.common.emptyTitle, body = vi.common.empt
   );
 }
 
-export function PermissionDenied() {
+export function PermissionDenied({ permission }: { permission?: AdminPermission }) {
   return (
     <div className="state state-denied" role="alert" data-testid="admin-permission-denied">
       <h1 data-testid="admin-page-title">{vi.permissionDenied.title}</h1>
       <p>{vi.permissionDenied.body}</p>
+      {permission ? (
+        <p data-testid="admin-permission-missing">
+          {vi.permissionDenied.missing} <strong>{ADMIN_PERMISSION_LABELS_VI[permission]}</strong>
+        </p>
+      ) : null}
       <Link className="btn btn-secondary" to="/">
         {vi.permissionDenied.back}
       </Link>

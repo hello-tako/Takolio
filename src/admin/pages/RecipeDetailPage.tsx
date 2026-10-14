@@ -133,7 +133,7 @@ export function RecipeDetailPage() {
             {data.media.length === 0 ? (
               <p className="muted">{vi.recipes.mediaEmpty}</p>
             ) : (
-              <div className="table-wrap">
+              <div className="table-wrap" tabIndex={0} role="region" aria-label={vi.recipes.media}>
                 <table className="data-table">
                   <caption className="sr-only">{vi.recipes.media}</caption>
                   <thead>
@@ -165,7 +165,7 @@ export function RecipeDetailPage() {
             {data.editorialReviews.length === 0 ? (
               <p className="muted">{vi.recipes.reviewsEmpty}</p>
             ) : (
-              <div className="table-wrap">
+              <div className="table-wrap" tabIndex={0} role="region" aria-label={vi.recipes.reviews}>
                 <table className="data-table">
                   <caption className="sr-only">{vi.recipes.reviews}</caption>
                   <thead>

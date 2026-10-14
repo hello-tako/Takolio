@@ -1,22 +1,26 @@
 import { useEffect, type ReactNode } from 'react';
-import { Navigate, Outlet, useNavigate } from 'react-router-dom';
+import { Navigate, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useQueryClient } from '@tanstack/react-query';
-import { AdminApiError, isSessionFailure, onAdminSessionFailure } from '../api/client';
+import { AdminApiError, isSessionFailure, onAdminSessionFailure, setMemoryCsrfToken } from '../api/client';
 import { useMe } from '../api/hooks';
 import { AdminShell } from '../components/AdminShell';
+import { AdminErrorBoundary } from '../components/ErrorBoundary';
 import { ErrorState, LoadingState, NotConfigured, PermissionDenied } from '../components/ui';
 import { vi } from '../i18n/vi';
 import { hasPermission } from '../lib/nav';
 import type { AdminPermission } from '@shared/admin';
 
-function loginPathFor(code: string | undefined): string {
+/** `midSession` distinguishes an ended session from a first visit. */
+export function loginPathFor(code: string | undefined, midSession = false): string {
   switch (code) {
     case 'ADMIN_SESSION_EXPIRED':
       return '/login?reason=expired';
     case 'ADMIN_SESSION_REVOKED':
       return '/login?reason=revoked';
     case 'ADMIN_ACCESS_DENIED':
-      return '/login?reason=access_denied';
+      return '/login?reason=access';
+    case 'ADMIN_UNAUTHENTICATED':
+      return midSession ? '/login?reason=ended' : '/login';
     default:
       return '/login';
   }
@@ -29,8 +33,9 @@ export function SessionBridge() {
   useEffect(
     () =>
       onAdminSessionFailure((error) => {
+        setMemoryCsrfToken(null);
         queryClient.clear();
-        navigate(loginPathFor(error.code), { replace: true });
+        navigate(loginPathFor(error.code, true), { replace: true });
       }),
     [navigate, queryClient],
   );
@@ -53,6 +58,7 @@ function StandaloneFrame({ children }: { children: ReactNode }) {
 /** Layout route: every console screen requires a verified admin session (/me). */
 export function RequireSession() {
   const me = useMe();
+  const location = useLocation();
 
   if (me.isPending) {
     return (
@@ -79,7 +85,9 @@ export function RequireSession() {
 
   return (
     <AdminShell me={me.data}>
-      <Outlet />
+      <AdminErrorBoundary key={location.pathname}>
+        <Outlet />
+      </AdminErrorBoundary>
     </AdminShell>
   );
 }
@@ -88,6 +96,6 @@ export function RequireSession() {
 export function RequirePermission({ permission, children }: { permission: AdminPermission; children: ReactNode }) {
   const me = useMe();
   if (!me.data) return null;
-  if (!hasPermission(me.data.permissions, permission)) return <PermissionDenied />;
+  if (!hasPermission(me.data.permissions, permission)) return <PermissionDenied permission={permission} />;
   return <>{children}</>;
 }

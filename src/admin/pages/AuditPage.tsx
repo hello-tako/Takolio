@@ -128,7 +128,7 @@ export function AuditPage() {
         {events.isError ? <ErrorState error={events.error} onRetry={() => void events.refetch()} /> : null}
         {events.data && events.data.items.length === 0 ? <EmptyState body={vi.audit.empty} /> : null}
         {events.data && events.data.items.length > 0 ? (
-          <div className={events.isPlaceholderData ? 'table-wrap is-stale' : 'table-wrap'} aria-busy={events.isPlaceholderData}>
+          <div className={events.isPlaceholderData ? 'table-wrap is-stale' : 'table-wrap'} aria-busy={events.isPlaceholderData} tabIndex={0} role="region" aria-label={vi.audit.caption}>
             <table className="data-table audit-table">
               <caption className="sr-only">{vi.audit.caption}</caption>
               <thead>

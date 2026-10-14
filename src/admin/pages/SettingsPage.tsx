@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import { ADMIN_ROLE_LABELS_VI, ADMIN_ROLES, type AdminApproval, type AdminPreferences, type AdminRoleAssignment, type AdminRole } from '@shared/admin';
+import { ADMIN_ROLE_LABELS_VI, ADMIN_ROLES, ADMIN_SUPER_ADMIN_MINIMUM, type AdminApproval, type AdminPreferences, type AdminRoleAssignment, type AdminRole } from '@shared/admin';
 import { type AdminSessionRow, useAdminSessions, useDecideApproval, useGrantRole, useMe, useRevokeRole, useRevokeSession, useSavePreferences, useSettings } from '../api/hooks';
 import { Dialog } from '../components/Dialog';
 import { Badge, Button, DefinitionList, ErrorState, Field, InlineError, LoadingState, Notice, PageHeader, Section, type Tone } from '../components/ui';
@@ -78,7 +78,7 @@ function PreferencesForm({ initial }: { initial: AdminPreferences }) {
         </div>
         <InlineError error={save.error} />
         {saved ? (
-          <p className="form-success" role="status">
+          <p className="form-success" role="status" data-testid="admin-preferences-saved">
             {vi.settings.preferencesSaved}
           </p>
         ) : null}
@@ -93,7 +93,7 @@ function PreferencesForm({ initial }: { initial: AdminPreferences }) {
 function MatrixSection({ matrix }: { matrix: Array<{ permission: string; label: string; roles: AdminRole[] }> }) {
   return (
     <Section title={vi.settings.matrix} description={vi.settings.matrixCaption}>
-      <div className="table-wrap">
+      <div className="table-wrap" tabIndex={0} role="region" aria-label={vi.settings.matrixCaption}>
         <table className="data-table matrix" data-testid="admin-settings-matrix">
           <caption className="sr-only">{vi.settings.matrixCaption}</caption>
           <thead>
@@ -143,6 +143,8 @@ function RolesSection({
   const [grantUserId, setGrantUserId] = useState('');
   const [grantRole, setGrantRole] = useState<AdminRole>('CONTENT_EDITOR');
   const [grantMessage, setGrantMessage] = useState<string | null>(null);
+  const [revokeMessage, setRevokeMessage] = useState<string | null>(null);
+  const activeSupers = assignments.filter((item) => item.role === 'SUPER_ADMIN' && item.status === 'active').length;
 
   const onGrant = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -150,9 +152,9 @@ function RolesSection({
     grant.mutate(
       { userId: grantUserId.trim(), role: grantRole },
       {
-        onSuccess: () => {
+        onSuccess: (result) => {
           setGrantUserId('');
-          setGrantMessage(vi.settings.grantRecorded);
+          setGrantMessage('approval' in result ? vi.settings.approvalRequested : vi.settings.grantRecorded);
         },
       },
     );
@@ -164,7 +166,7 @@ function RolesSection({
         {assignments.length === 0 ? (
           <p className="muted">{vi.settings.noRoles}</p>
         ) : (
-          <div className="table-wrap">
+          <div className="table-wrap" tabIndex={0} role="region" aria-label={vi.settings.assignmentsCaption}>
             <table className="data-table">
               <caption className="sr-only">{vi.settings.assignmentsCaption}</caption>
               <thead>
@@ -199,9 +201,13 @@ function RolesSection({
                           isSelf ? (
                             <span className="muted small">{vi.settings.revokeSelf}</span>
                           ) : (
-                            <Button variant="danger" className="btn-small" onClick={() => setTarget(assignment)}>
-                              {vi.settings.revoke}
-                            </Button>
+                            assignment.role === 'SUPER_ADMIN' && activeSupers <= ADMIN_SUPER_ADMIN_MINIMUM ? (
+                              <span className="muted small" data-testid="admin-role-revoke-blocked">{vi.settings.revokeSuperMinimum}</span>
+                            ) : (
+                              <Button variant="danger" className="btn-small" data-testid="admin-role-revoke" onClick={() => { setRevokeMessage(null); setTarget(assignment); }}>
+                                {vi.settings.revoke}
+                              </Button>
+                            )
                           )
                         ) : (
                           vi.common.dash
@@ -214,6 +220,11 @@ function RolesSection({
             </table>
           </div>
         )}
+        {revokeMessage ? (
+          <p className="form-success" role="status" data-testid="admin-notice">
+            {revokeMessage}
+          </p>
+        ) : null}
       </Section>
 
       {canManage ? (
@@ -222,7 +233,7 @@ function RolesSection({
             <Field label={vi.settings.grantUserId} htmlFor="admin-grant-user-id">
               <input
                 id="admin-grant-user-id"
-                data-testid="admin-grant-user-id"
+                data-testid="admin-grant-user"
                 type="text"
                 maxLength={100}
                 required
@@ -241,11 +252,11 @@ function RolesSection({
             </Field>
             <InlineError error={grant.error} />
             {grantMessage ? (
-              <p className="form-success" role="status">
+              <p className="form-success" role="status" data-testid="admin-notice">
                 {grantMessage}
               </p>
             ) : null}
-            <Button type="submit" variant="primary" disabled={grant.isPending || grantUserId.trim() === ''}>
+            <Button type="submit" variant="primary" data-testid="admin-grant-submit" disabled={grant.isPending || grantUserId.trim() === ''}>
               {grant.isPending ? vi.settings.grantSubmitting : vi.settings.grantSubmit}
             </Button>
           </form>
@@ -266,7 +277,12 @@ function RolesSection({
               disabled={revoke.isPending}
               onClick={() => {
                 if (!target) return;
-                revoke.mutate(target.id, { onSuccess: () => setTarget(null) });
+                revoke.mutate(target.id, {
+                  onSuccess: (result) => {
+                    setTarget(null);
+                    setRevokeMessage('approval' in result ? vi.settings.approvalRequested : vi.settings.revokeDone);
+                  },
+                });
               }}
             >
               {vi.settings.revoke}
@@ -274,7 +290,13 @@ function RolesSection({
           </>
         }
       >
-        {target ? <p>{vi.settings.revokeBody(ADMIN_ROLE_LABELS_VI[target.role], target.userDisplayName ?? target.userEmailMasked ?? target.userId)}</p> : null}
+        {target ? (
+          <p>
+            {target.role === 'SUPER_ADMIN'
+              ? vi.settings.revokeSuperBody(target.userDisplayName ?? target.userEmailMasked ?? target.userId)
+              : vi.settings.revokeBody(ADMIN_ROLE_LABELS_VI[target.role], target.userDisplayName ?? target.userEmailMasked ?? target.userId)}
+          </p>
+        ) : null}
         <InlineError error={revoke.error} />
       </Dialog>
     </>
@@ -289,11 +311,12 @@ function ApprovalsSection({ approvals, canDecide, currentUserId }: { approvals: 
       {approvals.length === 0 ? (
         <p className="muted">{vi.settings.approvalsEmpty}</p>
       ) : (
-        <div className="table-wrap">
+        <div className="table-wrap" tabIndex={0} role="region" aria-label={vi.settings.approvalsCaption}>
           <table className="data-table">
             <caption className="sr-only">{vi.settings.approvalsCaption}</caption>
             <thead>
               <tr>
+                <th scope="col">{vi.settings.approvalColumns.kind}</th>
                 <th scope="col">{vi.settings.approvalColumns.target}</th>
                 <th scope="col">{vi.settings.approvalColumns.requestedBy}</th>
                 <th scope="col">{vi.settings.approvalColumns.requestedAt}</th>
@@ -305,9 +328,12 @@ function ApprovalsSection({ approvals, canDecide, currentUserId }: { approvals: 
             </thead>
             <tbody>
               {approvals.map((approval) => {
-                const canAct = canDecide && approval.status === 'pending' && approval.requestedBy !== currentUserId;
+                // Four-eyes: neither the requester nor the affected user may decide.
+                const involved = approval.requestedBy === currentUserId || approval.targetUserId === currentUserId;
+                const canAct = canDecide && approval.status === 'pending' && !involved;
                 return (
                   <tr key={approval.id} data-testid="admin-approval-row">
+                    <td>{vi.settings.approvalActions[approval.action] ?? approval.action}</td>
                     <td className="mono">{approval.targetUserId}</td>
                     <td className="mono">{approval.requestedBy}</td>
                     <td>{formatDateTime(approval.requestedAt)}</td>
@@ -322,6 +348,7 @@ function ApprovalsSection({ approvals, canDecide, currentUserId }: { approvals: 
                           <Button
                             variant="primary"
                             className="btn-small"
+                            data-testid="admin-approval-approve"
                             disabled={decide.isPending}
                             onClick={() =>
                               decide.mutate(
@@ -335,6 +362,7 @@ function ApprovalsSection({ approvals, canDecide, currentUserId }: { approvals: 
                           <Button
                             variant="danger"
                             className="btn-small"
+                            data-testid="admin-approval-reject"
                             disabled={decide.isPending}
                             onClick={() =>
                               decide.mutate(
@@ -346,6 +374,8 @@ function ApprovalsSection({ approvals, canDecide, currentUserId }: { approvals: 
                             {vi.settings.reject}
                           </Button>
                         </div>
+                      ) : approval.status === 'pending' && involved ? (
+                        <span className="muted small">{vi.settings.approvalNotAllowed}</span>
                       ) : (
                         vi.common.dash
                       )}
@@ -359,7 +389,7 @@ function ApprovalsSection({ approvals, canDecide, currentUserId }: { approvals: 
       )}
       <InlineError error={decide.error} />
       {message ? (
-        <p className="form-success" role="status">
+        <p className="form-success" role="status" data-testid="admin-notice">
           {message}
         </p>
       ) : null}
@@ -374,7 +404,7 @@ function SessionsSection({ sessions, currentSessionId }: { sessions: AdminSessio
       {sessions.length === 0 ? (
         <p className="muted">{vi.settings.sessionsEmpty}</p>
       ) : (
-        <div className="table-wrap">
+        <div className="table-wrap" tabIndex={0} role="region" aria-label={vi.settings.sessionsCaption}>
           <table className="data-table">
             <caption className="sr-only">{vi.settings.sessionsCaption}</caption>
             <thead>
@@ -436,7 +466,8 @@ export function SettingsPage() {
       {settings.isError ? <ErrorState error={settings.error} onRetry={() => void settings.refetch()} /> : null}
       {settings.data ? (
         <>
-          <PreferencesForm key={JSON.stringify(settings.data.preferences)} initial={settings.data.preferences} />
+          {/* Not keyed on server data: a refetch after saving must not remount the form and drop its success state. */}
+          <PreferencesForm initial={settings.data.preferences} />
           <MatrixSection matrix={settings.data.matrix} />
           {canRolesRead ? (
             <>

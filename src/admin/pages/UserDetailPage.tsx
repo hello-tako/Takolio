@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ADMIN_ROLE_LABELS_VI } from '@shared/admin';
 import { AdminApiError } from '../api/client';
@@ -17,6 +17,10 @@ export function UserDetailPage() {
   const [confirmOpen, setConfirmOpen] = useState(false);
   const detail = useUserDetail(userId, revealRequested);
   const user = detail.data;
+  const emailRef = useRef<HTMLSpanElement>(null);
+  useEffect(() => {
+    if (revealRequested && user?.emailRevealed) emailRef.current?.focus();
+  }, [revealRequested, user?.emailRevealed]);
 
   if (detail.isPending) {
     return (
@@ -69,7 +73,7 @@ export function UserDetailPage() {
         <Section title={vi.users.profile}>
           <DefinitionList
             items={[
-              { label: vi.users.email, value: <span className="mono" data-testid="admin-user-email">{shownEmail}</span> },
+              { label: vi.users.email, value: <span className="mono" data-testid="admin-user-email" ref={emailRef} tabIndex={-1}>{shownEmail}</span> },
               { label: vi.users.columns.type, value: user.isGuest ? vi.users.guest : vi.users.registered },
               { label: vi.users.verified, value: user.isVerified ? vi.users.verified : vi.users.unverified },
               { label: vi.users.onboarding, value: formatDateTime(user.onboardingCompletedAt) },
@@ -128,7 +132,7 @@ export function UserDetailPage() {
         {user.households.length === 0 ? (
           <p className="muted">{vi.users.householdEmpty}</p>
         ) : (
-          <div className="table-wrap">
+          <div className="table-wrap" tabIndex={0} role="region" aria-label={vi.users.households}>
             <table className="data-table">
               <caption className="sr-only">{vi.users.households}</caption>
               <thead>

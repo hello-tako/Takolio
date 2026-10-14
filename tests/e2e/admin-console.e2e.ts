@@ -176,8 +176,9 @@ test('content editor sees only permitted screens and the server enforces the res
   // A mutation without the CSRF header is rejected before permission checks matter.
   expect(await api(page, '/api/v1/admin/roles', { method: 'POST', body: { userId: 'fx_user_001', role: 'SUPPORT_AGENT' } }))
     .toEqual({ status: 403, code: 'ADMIN_CSRF_FAILED' });
-  // With a valid CSRF token the server still refuses on permission.
-  const csrfToken = await page.evaluate(() => decodeURIComponent(document.cookie.split('; ').find((c) => c.startsWith('__Host-takosan_admin_csrf='))?.split('=')[1] ?? ''));
+  // No CSRF cookie exists; the token comes from GET /me. With it, the server still refuses on permission.
+  expect(await page.evaluate(() => document.cookie)).not.toContain('takosan_admin');
+  const csrfToken = await page.evaluate(async () => ((await (await fetch('/api/v1/admin/me', { credentials: 'same-origin' })).json()) as { data: { csrfToken: string } }).data.csrfToken);
   expect(csrfToken).toMatch(/^[0-9a-f]{64}$/);
   expect(await api(page, '/api/v1/admin/roles', { method: 'POST', headers: { 'X-Admin-CSRF': csrfToken }, body: { userId: 'fx_user_001', role: 'SUPPORT_AGENT' } }))
     .toEqual({ status: 403, code: 'ADMIN_FORBIDDEN' });
@@ -192,4 +193,42 @@ test('mobile layout keeps navigation reachable', async ({ page }) => {
   await page.getByTestId('admin-mobile-menu').click();
   await page.getByTestId('admin-nav-recipes').click();
   await expect(page.getByTestId('admin-recipe-row').first()).toBeVisible();
+});
+
+test('SUPER_ADMIN grants need a second SUPER_ADMIN in the UI, and the requester cannot approve', async ({ page }) => {
+  await login(page, SUPER);
+  await page.getByTestId('admin-nav-settings').click();
+  await expect(page.getByTestId('admin-settings-matrix')).toBeVisible();
+  // Two active SUPER_ADMINs: revoking either is blocked in the UI (the server enforces it too).
+  await expect(page.getByTestId('admin-role-revoke-blocked').first()).toBeVisible();
+  await page.getByTestId('admin-grant-user').fill('fx_admin_ops');
+  await page.getByTestId('admin-grant-role').selectOption('SUPER_ADMIN');
+  await page.getByTestId('admin-grant-submit').click();
+  await expect(page.getByTestId('admin-notice').first()).toContainText('phê duyệt');
+  const row = page.getByTestId('admin-approval-row').filter({ hasText: 'fx_admin_ops' }).first();
+  await expect(row).toBeVisible();
+  await expect(row.getByTestId('admin-approval-approve')).toHaveCount(0);
+  await page.getByTestId('admin-logout').click();
+  await expect(page).toHaveURL(/\/admin\/login/);
+
+  await login(page, 'super2@fixture.takosan.test');
+  await page.getByTestId('admin-nav-settings').click();
+  const pending = page.getByTestId('admin-approval-row').filter({ hasText: 'fx_admin_ops' }).first();
+  await pending.getByTestId('admin-approval-approve').click();
+  await expect(page.getByTestId('admin-notice').first()).toBeVisible();
+  await expect(page.getByTestId('admin-role-assignment-row').filter({ hasText: 'Vận hành (fixture)' }).filter({ hasText: 'Quản trị viên cấp cao' })).toHaveCount(1);
+  await shot(page, '12-settings-four-eyes');
+});
+
+test('preferences confirmation persists and a server-side session loss returns to sign-in with a reason', async ({ page, request }) => {
+  await login(page, SUPER);
+  await page.getByTestId('admin-nav-settings').click();
+  await page.getByTestId('admin-preferences-form').getByRole('button').last().click();
+  await expect(page.getByTestId('admin-preferences-saved')).toBeVisible();
+  await page.waitForTimeout(1500);
+  await expect(page.getByTestId('admin-preferences-saved')).toBeVisible();
+  // Resetting the preview database invalidates this session server-side.
+  expect((await request.post('/__admin-preview/reset')).status()).toBe(204);
+  await page.getByTestId('admin-nav-users').click();
+  await expect(page).toHaveURL(/\/admin\/login(\?reason=ended)?/);
 });

@@ -43,7 +43,7 @@ export function BillingPage() {
           <div className="two-col">
             <div>
               <h3>{vi.billing.statusBreakdown}</h3>
-              <div className="table-wrap">
+              <div className="table-wrap" tabIndex={0} role="region" aria-label={vi.billing.statusBreakdown}>
                 <table className="data-table">
                   <caption className="sr-only">{vi.billing.statusBreakdown}</caption>
                   <thead>
@@ -85,7 +85,7 @@ export function BillingPage() {
           {data.reconciliationExceptions.length === 0 ? (
             <p className="muted">{vi.billing.exceptionsEmpty}</p>
           ) : (
-            <div className="table-wrap">
+            <div className="table-wrap" tabIndex={0} role="region" aria-label={vi.billing.exceptions}>
               <table className="data-table">
                 <caption className="sr-only">{vi.billing.exceptions}</caption>
                 <thead>
@@ -147,7 +147,7 @@ export function BillingPage() {
         {transactions.isError ? <ErrorState error={transactions.error} onRetry={() => void transactions.refetch()} /> : null}
         {transactions.data && transactions.data.items.length === 0 ? <EmptyState /> : null}
         {transactions.data && transactions.data.items.length > 0 ? (
-          <div className={transactions.isPlaceholderData ? 'table-wrap is-stale' : 'table-wrap'} aria-busy={transactions.isPlaceholderData}>
+          <div className={transactions.isPlaceholderData ? 'table-wrap is-stale' : 'table-wrap'} aria-busy={transactions.isPlaceholderData} tabIndex={0} role="region" aria-label={vi.billing.transactionsCaption}>
             <table className="data-table">
               <caption className="sr-only">{vi.billing.transactionsCaption}</caption>
               <thead>

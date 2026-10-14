@@ -1,4 +1,4 @@
-import type { Env } from '../../types';
+import type { AdminEnv } from './env';
 
 /**
  * Cloudflare Access JWT verification adapter (RS256 against the team JWKS).
@@ -18,6 +18,7 @@ interface Jwk { kid?: string; kty: string; n?: string; e?: string; alg?: string 
 export const accessOptions: AccessVerifierOptions = {};
 
 const JWKS_TTL_MS = 10 * 60_000;
+const JWKS_FORCED_REFRESH_MIN_MS = 60_000;
 const jwksCache = new Map<string, { keys: Jwk[]; fetchedAt: number }>();
 
 export function resetAccessJwksCache(): void {
@@ -41,7 +42,7 @@ function decodeJson(segment: string): Record<string, unknown> | null {
   }
 }
 
-export function accessConfigured(env: Pick<Env, 'ADMIN_ACCESS_TEAM_DOMAIN' | 'ADMIN_ACCESS_AUD'>): boolean {
+export function accessConfigured(env: Pick<AdminEnv, 'ADMIN_ACCESS_TEAM_DOMAIN' | 'ADMIN_ACCESS_AUD'>): boolean {
   return Boolean(env.ADMIN_ACCESS_TEAM_DOMAIN && /^[a-z0-9-]+\.cloudflareaccess\.com$/i.test(env.ADMIN_ACCESS_TEAM_DOMAIN) &&
     env.ADMIN_ACCESS_AUD && env.ADMIN_ACCESS_AUD.length >= 16);
 }
@@ -59,7 +60,7 @@ async function loadKeys(teamDomain: string, fetcher: (url: string) => Promise<Re
 
 export async function verifyAccessAssertion(
   assertion: string | undefined,
-  env: Pick<Env, 'ADMIN_ACCESS_TEAM_DOMAIN' | 'ADMIN_ACCESS_AUD'>,
+  env: Pick<AdminEnv, 'ADMIN_ACCESS_TEAM_DOMAIN' | 'ADMIN_ACCESS_AUD'>,
   options: AccessVerifierOptions = {},
 ): Promise<AccessResult> {
   if (!accessConfigured(env)) return { ok: false, reason: 'not_configured' };
@@ -76,7 +77,11 @@ export async function verifyAccessAssertion(
   let keys: Jwk[];
   try {
     keys = await loadKeys(teamDomain, fetcher, now, false);
-    if (!keys.some((key) => key.kid === header.kid)) keys = await loadKeys(teamDomain, fetcher, now, true);
+    // Unknown kid: refresh at most once per minute so forged kids cannot amplify JWKS fetches.
+    const fetchedAt = jwksCache.get(teamDomain)?.fetchedAt ?? 0;
+    if (!keys.some((key) => key.kid === header.kid) && now - fetchedAt >= JWKS_FORCED_REFRESH_MIN_MS) {
+      keys = await loadKeys(teamDomain, fetcher, now, true);
+    }
   } catch {
     return { ok: false, reason: 'jwks_unavailable' };
   }

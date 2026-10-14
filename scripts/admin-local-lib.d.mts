@@ -7,7 +7,9 @@ export const FIXTURE_ADMINS: ReadonlyArray<{ key: string; role: string; name: st
 export function hashPassword(password: string, salt: string): string;
 export function sql(value: string | number | null | undefined): string;
 export function fixtureEmail(key: string): string;
-export function buildAdminFixtureSql(): string;
+export function buildAdminFixtureSql(): { main: string; admin: string };
 export function assertLocalProvisioningAllowed(options?: { argv?: string[]; env?: Record<string, string | undefined> }): void;
-export function buildBootstrapSql(options: { email: string; assignmentId: string }): string;
+export function localWranglerEnv(base?: Record<string, string | undefined>): Record<string, string | undefined> & { XDG_CONFIG_HOME: string };
+export function buildBootstrapAccountLookupSql(emails: string[]): string;
+export function buildBootstrapAdminSql(options: { userIds: string[]; assignmentIds: string[] }): string;
 export function buildLocalAccountSql(options: { email: string; password: string; name?: string }): string;

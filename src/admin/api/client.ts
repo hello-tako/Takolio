@@ -1,6 +1,5 @@
 import {
   ADMIN_API_BASE,
-  ADMIN_CSRF_COOKIE,
   ADMIN_CSRF_HEADER,
   type AdminDataContext,
   type AdminEnvelope,
@@ -20,6 +19,9 @@ const ERROR_CODES: readonly AdminErrorCode[] = [
   'ADMIN_NOT_FOUND',
   'ADMIN_CONFLICT',
   'ADMIN_UNAVAILABLE',
+  'ADMIN_AUDIT_UNAVAILABLE',
+  'ADMIN_SCHEMA_MISMATCH',
+  'ADMIN_FIXTURE_DATA_REJECTED',
   'RATE_LIMIT_EXCEEDED',
   'RATE_LIMIT_UNAVAILABLE',
   'INTERNAL_SERVER_ERROR',
@@ -28,12 +30,15 @@ const ERROR_CODES: readonly AdminErrorCode[] = [
 export class AdminApiError extends Error {
   readonly status: number;
   readonly code: AdminErrorCode;
+  /** Seconds from the Retry-After header (429/503), when the server sent one. */
+  readonly retryAfterSeconds: number | null;
 
-  constructor(status: number, code: AdminErrorCode, message: string) {
+  constructor(status: number, code: AdminErrorCode, message: string, retryAfterSeconds: number | null = null) {
     super(message);
     this.name = 'AdminApiError';
     this.status = status;
     this.code = code;
+    this.retryAfterSeconds = retryAfterSeconds;
   }
 }
 
@@ -48,27 +53,16 @@ export interface AdminRequestOptions {
   skipCsrf?: boolean;
 }
 
-// In-memory fallback for the CSRF token returned by login (used when the cookie is not readable).
+// Session-bound CSRF token from the login response or GET /me. Memory only:
+// never persisted to storage or cookies.
 let memoryCsrfToken: string | null = null;
 
 export function setMemoryCsrfToken(token: string | null): void {
   memoryCsrfToken = token;
 }
 
-export function readCsrfCookie(): string | null {
-  if (typeof document === 'undefined') return null;
-  for (const part of document.cookie.split(';')) {
-    const separator = part.indexOf('=');
-    if (separator < 0) continue;
-    if (part.slice(0, separator).trim() !== ADMIN_CSRF_COOKIE) continue;
-    const value = decodeURIComponent(part.slice(separator + 1).trim());
-    return value || null;
-  }
-  return null;
-}
-
 export function resolveCsrfToken(): string | null {
-  return readCsrfCookie() ?? memoryCsrfToken;
+  return memoryCsrfToken;
 }
 
 type ContextListener = () => void;
@@ -163,12 +157,17 @@ async function readJson(response: Response): Promise<unknown> {
   }
 }
 
-function toApiError(status: number, payload: unknown): AdminApiError {
+export function parseRetryAfter(value: string | null): number | null {
+  if (!value || !/^\d{1,6}$/.test(value.trim())) return null;
+  return Number(value.trim());
+}
+
+function toApiError(status: number, payload: unknown, retryAfterSeconds: number | null): AdminApiError {
   const body = isRecord(payload) ? payload : {};
   const code = isErrorCode(body.code) ? body.code : fallbackCode(status);
   // The server message is Vietnamese and redacted; the UI renders its own copy per code.
   const message = typeof body.error === 'string' ? body.error : code;
-  return new AdminApiError(status, code, message);
+  return new AdminApiError(status, code, message, retryAfterSeconds);
 }
 
 /** Single transport for every admin call: cookies, CSRF on writes, typed errors, no body logging. */
@@ -201,7 +200,8 @@ export async function adminFetch<T>(method: AdminMethod, path: string, options: 
 
   const payload = await readJson(response);
   if (!response.ok) {
-    const error = toApiError(response.status, payload);
+    const error = toApiError(response.status, payload, parseRetryAfter(response.headers.get('Retry-After')));
+    if (error.status === 401) setMemoryCsrfToken(null);
     if (error.status === 401 && !SESSION_FAILURE_OWN_HANDLING.has(path)) {
       sessionFailureListeners.forEach((listener) => listener(error));
     }

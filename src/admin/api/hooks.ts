@@ -4,11 +4,12 @@ import type {
   AdminAiSummary,
   AdminAiUsageRow,
   AdminApproval,
+  AdminGrantRoleResult,
+  AdminRevokeRoleResult,
   AdminAuditEvent,
   AdminAuthConfig,
   AdminBillingSummary,
   AdminDataContext,
-  AdminEnvelope,
   AdminGrantRoleRequest,
   AdminHouseholdSummary,
   AdminLoginRequest,
@@ -27,7 +28,7 @@ import type {
   AdminUserDetail,
   AdminUserSummary,
 } from '@shared/admin';
-import { AdminApiError, adminData, adminFetch, setMemoryCsrfToken } from './client';
+import { adminData, adminFetch, setMemoryCsrfToken } from './client';
 
 export type UserListParams = {
   q?: string;
@@ -102,26 +103,16 @@ export const adminKeys = {
   sessions: ['admin', 'sessions'] as const,
 };
 
-function retryUnlessClientError(failureCount: number, error: unknown): boolean {
-  if (error instanceof AdminApiError && error.status >= 400 && error.status < 500) return false;
-  return failureCount < 2;
-}
-
-function isEnvelope<T>(value: unknown): value is AdminEnvelope<T> {
-  return typeof value === 'object' && value !== null && 'data' in value && 'context' in value;
-}
-
-// GET /auth/config is documented as returning AdminAuthConfig; accept the envelope form as well.
+// Public endpoint: `{ data: { mode } }`, no context.
 async function fetchAuthConfig(): Promise<AdminAuthConfig> {
-  const body = await adminFetch<AdminEnvelope<AdminAuthConfig> | AdminAuthConfig>('GET', '/auth/config');
-  return isEnvelope<AdminAuthConfig>(body) ? body.data : body;
+  const body = await adminFetch<{ data: AdminAuthConfig }>('GET', '/auth/config');
+  return body.data;
 }
 
 export function useAuthConfig() {
   return useQuery({
     queryKey: adminKeys.authConfig,
     queryFn: fetchAuthConfig,
-    retry: retryUnlessClientError,
     staleTime: 5 * 60_000,
   });
 }
@@ -129,8 +120,12 @@ export function useAuthConfig() {
 export function useMe() {
   return useQuery({
     queryKey: adminKeys.me,
-    queryFn: () => adminData<AdminMe>('GET', '/me'),
-    retry: retryUnlessClientError,
+    queryFn: async () => {
+      const me = await adminData<AdminMe>('GET', '/me');
+      // /me re-issues the session-bound CSRF token after a reload.
+      setMemoryCsrfToken(me.csrfToken);
+      return me;
+    },
     staleTime: 60_000,
   });
 }
@@ -336,7 +331,7 @@ export function useReviewRecipe(recipeId: string) {
 export function useGrantRole() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (body: AdminGrantRoleRequest) => adminData<unknown>('POST', '/roles', { body }),
+    mutationFn: (body: AdminGrantRoleRequest) => adminData<AdminGrantRoleResult>('POST', '/roles', { body }),
     onSettled: () => queryClient.invalidateQueries({ queryKey: adminKeys.settings }),
   });
 }
@@ -344,7 +339,7 @@ export function useGrantRole() {
 export function useRevokeRole() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (assignmentId: string) => adminData<unknown>('DELETE', `/roles/${encodeURIComponent(assignmentId)}`),
+    mutationFn: (assignmentId: string) => adminData<AdminRevokeRoleResult>('DELETE', `/roles/${encodeURIComponent(assignmentId)}`),
     onSettled: () => queryClient.invalidateQueries({ queryKey: adminKeys.settings }),
   });
 }

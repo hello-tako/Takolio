@@ -1,14 +1,17 @@
 import { describe, expect, it } from 'vitest';
 import { spawnSync } from 'node:child_process';
+import path from 'node:path';
 import {
   assertLocalProvisioningAllowed,
   buildAdminFixtureSql,
-  buildBootstrapSql,
+  buildBootstrapAccountLookupSql,
+  buildBootstrapAdminSql,
   buildLocalAccountSql,
   FIXTURE_DATASET,
   FIXTURE_DOMAIN,
+  localWranglerEnv,
 } from '../../scripts/admin-local-lib.mjs';
-import { SqliteD1 } from '../helpers/sqlite-d1';
+import { SqliteD1, applyMigrations } from '../helpers/sqlite-d1';
 
 const DEV = { ENVIRONMENT: 'development' };
 
@@ -19,7 +22,7 @@ describe('admin local provisioning guard', () => {
   it.each(['--remote', '--env=production', '--env', '--preview', '--production'])('refuses %s', (flag) => {
     expect(() => assertLocalProvisioningAllowed({ argv: ['--local', flag], env: DEV })).toThrow(/Refusing/);
   });
-  it.each(['production', 'staging'])('refuses ENVIRONMENT=%s', (environment) => {
+  it.each(['production', 'staging', 'test'])('refuses ENVIRONMENT=%s', (environment) => {
     expect(() => assertLocalProvisioningAllowed({ argv: ['--local'], env: { ENVIRONMENT: environment } })).toThrow(/development/);
   });
   it('refuses CI and reachable Cloudflare credentials', () => {
@@ -27,78 +30,84 @@ describe('admin local provisioning guard', () => {
     expect(() => assertLocalProvisioningAllowed({ argv: ['--local'], env: { ...DEV, GITHUB_ACTIONS: 'true' } })).toThrow(/CI/);
     expect(() => assertLocalProvisioningAllowed({ argv: ['--local'], env: { ...DEV, CLOUDFLARE_API_TOKEN: 'x' } })).toThrow(/CLOUDFLARE_API_TOKEN/);
   });
-  it('allows local development', () => {
-    expect(() => assertLocalProvisioningAllowed({ argv: ['--local'], env: DEV })).not.toThrow();
+  it('child wrangler processes get no telemetry, no token and a throwaway config home (no stored OAuth login)', () => {
+    const env = localWranglerEnv({ HOME: '/home/someone', CLOUDFLARE_API_TOKEN: 'secret', XDG_CONFIG_HOME: '/home/someone/.config' });
+    expect(env.WRANGLER_SEND_METRICS).toBe('false');
+    expect(env.CLOUDFLARE_API_TOKEN).toBe('');
+    expect(env.XDG_CONFIG_HOME).not.toBe('/home/someone/.config');
+    expect(path.basename(env.XDG_CONFIG_HOME)).toMatch(/^takosan-admin-wrangler-home-/);
   });
-  it('the CLI exits non-zero for a remote request without touching wrangler', () => {
-    const result = spawnSync(process.execPath, ['scripts/admin-provision.mjs', '--remote', '--email', 'a@b.test'], { encoding: 'utf8', env: { PATH: process.env.PATH } });
-    expect(result.status).toBe(1);
-    expect(result.stderr).toMatch(/Refusing/);
-  });
-  it('the CLI refuses production even with --local', () => {
-    const result = spawnSync(process.execPath, ['scripts/admin-provision.mjs', '--local', '--email', 'a@b.test'], { encoding: 'utf8', env: { PATH: process.env.PATH, ENVIRONMENT: 'production' } });
-    expect(result.status).toBe(1);
-    expect(result.stderr).toMatch(/ENVIRONMENT=production/);
+  it('the CLI exits non-zero for remote or production requests without invoking wrangler', () => {
+    const remote = spawnSync(process.execPath, ['scripts/admin-provision.mjs', '--remote', '--email', 'a@b.test', '--email', 'c@d.test'], { encoding: 'utf8', env: { PATH: process.env.PATH } });
+    expect(remote.status).toBe(1);
+    expect(remote.stderr).toMatch(/Refusing/);
+    const production = spawnSync(process.execPath, ['scripts/admin-provision.mjs', '--local', '--email', 'a@b.test', '--email', 'c@d.test'], { encoding: 'utf8', env: { PATH: process.env.PATH, ENVIRONMENT: 'production' } });
+    expect(production.status).toBe(1);
+    expect(production.stderr).toMatch(/ENVIRONMENT=production/);
   });
 });
 
-describe('admin bootstrap SQL', () => {
-  function grant(db: SqliteD1, email: string, suffix: string) {
-    const statements = buildBootstrapSql({ email, assignmentId: `ara_${suffix.padEnd(16, '0')}` }).split(';\n').filter(Boolean);
-    for (const statement of statements.slice(0, -1)) db.seed(`${statement};`);
-    return db.query<{ granted: number }>(statements.at(-1)!)[0].granted;
-  }
-
-  it('grants SUPER_ADMIN once to a verified account and is a no-op afterwards', () => {
-    const db = new SqliteD1();
-    try {
-      db.seed(buildLocalAccountSql({ email: 'First@Example.test', password: 'long-local-password', name: 'First' }));
-      db.seed(buildLocalAccountSql({ email: 'second@example.test', password: 'long-local-password', name: 'Second' }));
-      expect(grant(db, 'first@example.test', 'a1')).toBe(1);
-      expect(grant(db, 'second@example.test', 'b2')).toBe(0);
-      expect(db.query('SELECT role, grant_source, granted_by FROM admin_role_assignments')).toEqual([
-        { role: 'SUPER_ADMIN', grant_source: 'local_bootstrap', granted_by: null },
-      ]);
-      expect(db.query("SELECT action, outcome FROM admin_audit_events")).toEqual([{ action: 'admin.bootstrap.local', outcome: 'success' }]);
-    } finally {
-      db.close();
-    }
+describe('two-person bootstrap SQL', () => {
+  it('requires exactly two different, valid emails', () => {
+    expect(() => buildBootstrapAccountLookupSql(['a@example.test'])).toThrow(/two/);
+    expect(() => buildBootstrapAccountLookupSql(['a@example.test', 'A@Example.test'])).toThrow(/different/);
+    expect(() => buildBootstrapAccountLookupSql(["x'@y.test", 'b@example.test'])).toThrow();
+    expect(buildBootstrapAccountLookupSql(['B@example.test', 'a@example.test'])).toContain("'b@example.test'");
   });
 
-  it('does not grant to unknown, unverified or guest users', () => {
-    const db = new SqliteD1();
+  it('resolves only verified non-guest accounts, then grants both SUPER_ADMINs once', () => {
+    const main = new SqliteD1();
+    const admin = new SqliteD1({ migrate: false });
+    applyMigrations(admin, path.resolve('migrations-admin'));
     try {
-      db.seed(buildLocalAccountSql({ email: 'pending@example.test', password: 'long-local-password', name: 'Pending' }));
-      db.seed("UPDATE auth_accounts SET is_verified = 0 WHERE email = 'pending@example.test'");
-      expect(grant(db, 'nobody@example.test', 'c3')).toBe(0);
-      expect(grant(db, 'pending@example.test', 'd4')).toBe(0);
+      main.seed(buildLocalAccountSql({ email: 'first@example.test', password: 'long-local-password', name: 'First' }));
+      main.seed(buildLocalAccountSql({ email: 'second@example.test', password: 'long-local-password', name: 'Second' }));
+      main.seed(buildLocalAccountSql({ email: 'pending@example.test', password: 'long-local-password', name: 'Pending' }));
+      main.seed("UPDATE auth_accounts SET is_verified = 0 WHERE email = 'pending@example.test'");
+      expect(main.query(buildBootstrapAccountLookupSql(['first@example.test', 'pending@example.test']))).toHaveLength(1);
+      const accounts = main.query<{ user_id: string }>(buildBootstrapAccountLookupSql(['first@example.test', 'second@example.test']));
+      expect(accounts).toHaveLength(2);
+      const statements = buildBootstrapAdminSql({ userIds: accounts.map((row) => row.user_id), assignmentIds: ['ara_00000000000000a1', 'ara_00000000000000b2'] }).split(';\n');
+      for (const statement of statements.slice(0, -1)) admin.seed(`${statement};`);
+      expect(admin.query(statements.at(-1)!)).toEqual([{ granted: 2 }]);
+      expect(admin.query("SELECT role, grant_source, granted_by FROM admin_role_assignments ORDER BY id")).toEqual([
+        { role: 'SUPER_ADMIN', grant_source: 'operator_bootstrap', granted_by: null },
+        { role: 'SUPER_ADMIN', grant_source: 'operator_bootstrap', granted_by: null },
+      ]);
+      expect(() => admin.seed("INSERT INTO admin_role_assignments (id, user_id, role, grant_source) VALUES ('ara_00000000000000c3', 'x', 'SUPER_ADMIN', 'operator_bootstrap')")).toThrow(/already been completed/);
     } finally {
-      db.close();
+      main.close();
+      admin.close();
     }
   });
 
   it('rejects malformed input before building SQL', () => {
-    expect(() => buildBootstrapSql({ email: "x'@y.test", assignmentId: 'ara_0000000000000000' })).toThrow();
-    expect(() => buildBootstrapSql({ email: 'ok@y.test', assignmentId: 'bad' })).toThrow();
+    expect(() => buildBootstrapAdminSql({ userIds: ['a', "b'; DROP"], assignmentIds: ['ara_00000000000000a1', 'ara_00000000000000b2'] })).toThrow();
+    expect(() => buildBootstrapAdminSql({ userIds: ['a', 'b'], assignmentIds: ['bad', 'ara_00000000000000b2'] })).toThrow();
     expect(() => buildLocalAccountSql({ email: 'ok@y.test', password: 'short', name: 'x' })).toThrow();
   });
 });
 
 describe('admin synthetic fixture', () => {
-  it('is deterministic, labelled, uses only the reserved .test domain and applies on the full ledger', () => {
-    const sql = buildAdminFixtureSql();
-    expect(buildAdminFixtureSql()).toBe(sql);
-    const emails = [...sql.matchAll(/'([^'\s]+@[^'\s]+)'/g)].map((match) => match[1]);
+  it('is deterministic, uses only the reserved .test domain, and applies to both databases', () => {
+    const fixture = buildAdminFixtureSql();
+    expect(buildAdminFixtureSql()).toEqual(fixture);
+    const emails = [...fixture.main.matchAll(/'([^'\s]+@[^'\s]+)'/g)].map((match) => match[1]);
     expect(emails.length).toBeGreaterThan(50);
     expect(emails.every((email) => email.endsWith(`@${FIXTURE_DOMAIN}`))).toBe(true);
-    const db = new SqliteD1();
+    expect(fixture.main).not.toMatch(/INSERT INTO admin_/);
+    const main = new SqliteD1();
+    const admin = new SqliteD1({ migrate: false });
+    applyMigrations(admin, path.resolve('migrations-admin'));
     try {
-      db.seed(sql);
-      expect(db.query("SELECT value FROM admin_config_metadata WHERE key = 'fixture_dataset'")).toEqual([{ value: FIXTURE_DATASET }]);
-      expect(db.query('SELECT COUNT(*) AS n FROM pragma_foreign_key_check')).toEqual([{ n: 0 }]);
-      expect(db.query("SELECT COUNT(*) AS n FROM admin_role_assignments WHERE status = 'active' AND role = 'SUPER_ADMIN'")).toEqual([{ n: 2 }]);
+      main.seed(fixture.main);
+      admin.seed(fixture.admin);
+      expect(admin.query("SELECT value FROM admin_config_metadata WHERE key = 'fixture_dataset'")).toEqual([{ value: FIXTURE_DATASET }]);
+      expect(main.query('SELECT COUNT(*) AS n FROM pragma_foreign_key_check')).toEqual([{ n: 0 }]);
+      expect(admin.query("SELECT COUNT(*) AS n FROM admin_role_assignments WHERE status = 'active' AND role = 'SUPER_ADMIN'")).toEqual([{ n: 2 }]);
     } finally {
-      db.close();
+      main.close();
+      admin.close();
     }
   });
 });

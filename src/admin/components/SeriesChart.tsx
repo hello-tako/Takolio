@@ -86,7 +86,8 @@ export function SeriesChart({ series, variant = 'bar' }: { series: AdminSeries; 
           ) : null,
         )}
       </svg>
-      <table className="sr-only">
+      <div className="sr-only">
+        <table>
         <caption>{vi.chart.tableCaption(series.label)}</caption>
         <thead>
           <tr>
@@ -103,6 +104,7 @@ export function SeriesChart({ series, variant = 'bar' }: { series: AdminSeries; 
           ))}
         </tbody>
       </table>
+      </div>
     </figure>
   );
 }

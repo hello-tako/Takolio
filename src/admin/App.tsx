@@ -1,5 +1,6 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { adminQueryRetry, adminRetryDelay } from './api/retry';
 import { RequirePermission, RequireSession, SessionBridge } from './auth/AdminSession';
 import { NotFoundNotice } from './components/ui';
 import { AiPage } from './pages/AiPage';
@@ -17,7 +18,8 @@ import { UserDetailPage } from './pages/UserDetailPage';
 export function createAdminQueryClient(): QueryClient {
   return new QueryClient({
     defaultOptions: {
-      queries: { refetchOnWindowFocus: false },
+      queries: { refetchOnWindowFocus: false, retry: adminQueryRetry, retryDelay: adminRetryDelay },
+      // Sensitive mutations are never retried automatically.
       mutations: { retry: false },
     },
   });

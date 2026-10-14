@@ -1,10 +1,10 @@
-import { Hono, type Context } from 'hono';
+import { Hono } from 'hono';
 import { isTrustedOrigin } from './config/origins';
 import { cors } from 'hono/cors';
 import { secureHeaders } from 'hono/secure-headers';
 import { HTTPException } from 'hono/http-exception';
 import { Env, AuthContext } from './types';
-import { adminCsp, apiCsp, spaCsp } from './config/csp';
+import { apiCsp, spaCsp } from './config/csp';
 import { runScheduledCleanup } from './services/cleanup';
 import { authMiddleware } from './middleware/auth';
 import { productionConfigGate } from './middleware/config-gate';
@@ -22,8 +22,6 @@ import { weekRoutes } from './routes/week';
 import { mealPlanningRoutes } from './routes/meal-planning';
 import { processScanJob, ScanQueueError } from './services/scan-queue';
 import { billingRoutes } from './routes/billing';
-import { adminRoutes } from './routes/admin';
-import { consoleEnabled, hostAllowed } from './routes/admin/auth';
 import { buildRequestTelemetry, createRequestCorrelation, emitRequestTelemetry } from './observability/request-telemetry';
 
 const SCAN_RETRY_DELAY_SECONDS = 5;
@@ -73,15 +71,14 @@ app.use('*', async (c, next) => {
   // Google Identity Services uses a popup and needs to retain its opener
   // relationship while exchanging the signed credential. Keep API responses
   // isolated, but allow the SPA document to communicate with OAuth popups.
-  const isAdminDocument = c.req.path === '/admin' || c.req.path.startsWith('/admin/');
-  c.header('Cross-Origin-Opener-Policy', c.req.path.startsWith('/api/') || isAdminDocument
+  c.header('Cross-Origin-Opener-Policy', c.req.path.startsWith('/api/')
     ? 'same-origin'
     : 'same-origin-allow-popups');
   c.header('X-DNS-Prefetch-Control', 'off');
   // CSP: API responses get a locked-down policy; the SPA is served from the
   // same worker so it needs the full script/style/img connect allowances.
   const isApi = c.req.path.startsWith('/api/');
-  c.header('Content-Security-Policy', isApi ? apiCsp() : isAdminDocument ? adminCsp(c.env.ENVIRONMENT) : spaCsp());
+  c.header('Content-Security-Policy', isApi ? apiCsp() : spaCsp());
 });
 
 // 3. Production configuration gate: fail closed with a sanitized diagnostic
@@ -134,10 +131,6 @@ app.route('/api/v1', healthRoutes);
 // T14C: public read-only canonical recipe media (same-origin, D1-trusted keys, allow-listed MIME).
 app.route('/api/v1', recipeMediaRoutes);
 
-// Admin Console API: separate session/RBAC authority, mounted before the
-// customer router so customer auth middleware never handles admin paths.
-app.route('/api/v1/admin', adminRoutes);
-
 // 6. API v1 Router (auth-protected)
 const api = new Hono<WorkerApp>();
 
@@ -156,23 +149,6 @@ api.route('/', mealPlanningRoutes);
 
 // Mount API under /api/v1
 app.route('/api/v1', api);
-
-// Admin Console documents (dist/client/admin/index.html). Disabled in
-// production unless explicitly enabled; optionally pinned to ADMIN_HOSTNAME.
-async function serveAdminDocument(c: Context<WorkerApp>) {
-  if (!consoleEnabled(c.env) || !hostAllowed(c.env, c.req.url)) return c.text('Not Found', 404);
-  if (!c.env.ASSETS) return c.text('Admin Console assets are not attached in this environment.', 503);
-  const url = new URL(c.req.url);
-  const lastSegment = url.pathname.split('/').pop() ?? '';
-  if (lastSegment.includes('.')) return c.env.ASSETS.fetch(c.req.raw);
-  const asset = await c.env.ASSETS.fetch(new Request(new URL('/admin/', url), c.req.raw));
-  const response = new Response(asset.body, asset);
-  response.headers.set('Cache-Control', 'no-store');
-  response.headers.set('X-Robots-Tag', 'noindex, nofollow');
-  return response;
-}
-app.get('/admin', (c) => (consoleEnabled(c.env) && hostAllowed(c.env, c.req.url) ? c.redirect('/admin/', 302) : c.text('Not Found', 404)));
-app.get('/admin/*', serveAdminDocument);
 
 // 7. Static assets fallback (SPA)
 app.get('*', async (c) => {

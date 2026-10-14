@@ -36,6 +36,8 @@ function PlanBadge({ plan }: { plan: 'free' | 'plus' }) {
 }
 
 export function UsersPage() {
+  const me = useMe();
+  const permissions = me.data?.permissions ?? [];
   const [searchInput, setSearchInput] = useState('');
   const search = useDebouncedValue(searchInput.trim(), 300);
   const [type, setType] = useState<NonNullable<UserListParams['type']>>('registered');
@@ -70,6 +72,7 @@ export function UsersPage() {
               id="admin-users-search-input"
               data-testid="admin-users-search"
               type="search"
+              placeholder={hasPermission(permissions, 'users.pii.reveal') ? vi.users.searchPlaceholderPii : vi.users.searchPlaceholderBasic}
               maxLength={100}
               value={searchInput}
               onChange={onSearch}
@@ -128,7 +131,7 @@ export function UsersPage() {
         {users.isError ? <ErrorState error={users.error} onRetry={() => void users.refetch()} /> : null}
         {users.data && users.data.items.length === 0 ? <EmptyState /> : null}
         {users.data && users.data.items.length > 0 ? (
-          <div className={users.isPlaceholderData ? 'table-wrap is-stale' : 'table-wrap'} aria-busy={users.isPlaceholderData}>
+          <div className={users.isPlaceholderData ? 'table-wrap is-stale' : 'table-wrap'} aria-busy={users.isPlaceholderData} tabIndex={0} role="region" aria-label={vi.users.caption}>
             <table className="data-table">
               <caption className="sr-only">{vi.users.caption}</caption>
               <thead>
@@ -207,7 +210,7 @@ export function HouseholdsPage() {
         {households.isError ? <ErrorState error={households.error} onRetry={() => void households.refetch()} /> : null}
         {households.data && households.data.items.length === 0 ? <EmptyState /> : null}
         {households.data && households.data.items.length > 0 ? (
-          <div className={households.isPlaceholderData ? 'table-wrap is-stale' : 'table-wrap'} aria-busy={households.isPlaceholderData}>
+          <div className={households.isPlaceholderData ? 'table-wrap is-stale' : 'table-wrap'} aria-busy={households.isPlaceholderData} tabIndex={0} role="region" aria-label={vi.users.householdCaption}>
             <table className="data-table">
               <caption className="sr-only">{vi.users.householdCaption}</caption>
               <thead>

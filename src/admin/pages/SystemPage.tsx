@@ -33,7 +33,7 @@ export function SystemPage() {
                 {vi.system.reachable}: <Badge tone={data.database.reachable ? 'success' : 'danger'}>{data.database.reachable ? vi.labels.yes : vi.labels.no}</Badge>
               </p>
               <h3>{vi.system.schema}</h3>
-              <div className="table-wrap">
+              <div className="table-wrap" tabIndex={0} role="region" aria-label={vi.system.schema}>
                 <table className="data-table">
                   <caption className="sr-only">{vi.system.schema}</caption>
                   <thead>
@@ -59,7 +59,7 @@ export function SystemPage() {
 
           <div className="two-col">
             <Section title={vi.system.flags}>
-              <div className="table-wrap">
+              <div className="table-wrap" tabIndex={0} role="region" aria-label={vi.system.flags}>
                 <table className="data-table">
                   <caption className="sr-only">{vi.system.flags}</caption>
                   <thead>

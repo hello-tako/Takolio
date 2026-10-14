@@ -25,7 +25,8 @@ export function OverviewPage() {
       {overview.isError ? <ErrorState error={overview.error} onRetry={() => void overview.refetch()} /> : null}
       {overview.data ? (
         <div className={overview.isPlaceholderData ? 'is-stale' : undefined} aria-busy={overview.isPlaceholderData}>
-          <section aria-label={vi.overview.metrics} className="metric-grid">
+          <section aria-labelledby="admin-overview-metrics" className="metric-grid">
+            <h2 id="admin-overview-metrics" className="sr-only">{vi.overview.metrics}</h2>
             {overview.data.metrics.map((metric) => (
               <MetricCard key={metric.key} metric={metric} />
             ))}

@@ -1,31 +1,24 @@
-import { Hono, type Context, type Next } from 'hono';
+import { Hono, type Next } from 'hono';
 import { z } from 'zod';
-import type { Env } from '../../types';
+import type { D1DatabaseBinding } from '@frigo/db';
 import {
-  ADMIN_CSRF_COOKIE,
   ADMIN_CSRF_HEADER,
+  ADMIN_RBAC_MATRIX_VERSION,
   ADMIN_SESSION_ABSOLUTE_MINUTES,
   ADMIN_SESSION_COOKIE,
   ADMIN_SESSION_IDLE_MINUTES,
-  ADMIN_RBAC_MATRIX_VERSION,
   hasAdminPermission,
   isAdminRole,
   permissionsForRoles,
-  type AdminAuthConfig,
-  type AdminAuthMode,
   type AdminMe,
   type AdminPermission,
   type AdminRole,
 } from '../../../shared/admin';
-import { hasTrustedOrigin } from '../../middleware/csrf';
-import { rateLimiter } from '../../middleware/rate-limit';
 import { hashPassword, verifyPassword } from '../../utils/password';
 import { sha256Hex } from '../../utils/session';
-import { accessConfigured, accessOptions, verifyAccessAssertion } from './access';
+import { accessOptions, verifyAccessAssertion } from './access';
 import { auditStatement, writeAudit } from './audit';
 import {
-  adminError,
-  dataContext,
   errorResponse,
   isPast,
   newId,
@@ -38,59 +31,47 @@ import {
   type AdminContext,
   type AdminPrincipal,
 } from './http';
+import { clientIdentity, consumeLimit, limitResponse } from './limits';
 import { maskEmail } from './mask';
+import { type AdminPolicy, requestOriginMatches, resolveAdminPolicy } from './policy';
+import { readOnlyDatabase } from './readonly-db';
 
-export function consoleEnabled(env: Env): boolean {
-  const environment = env.ENVIRONMENT || 'development';
-  if (environment === 'production') return env.ADMIN_CONSOLE_ENABLED === 'true';
-  return env.ADMIN_CONSOLE_ENABLED !== 'false';
+/** Admin database schema version this build requires (migrations-admin). */
+export const ADMIN_SCHEMA_VERSION = '1';
+
+interface AccountRow {
+  id: string;
+  user_id: string;
+  email: string | null;
+  password_hash: string | null;
+  salt: string | null;
+  is_verified: number;
+  google_id: string | null;
+  is_guest: number;
+  display_name: string | null;
 }
 
-export function hostAllowed(env: Env, url: string): boolean {
-  if (!env.ADMIN_HOSTNAME) return true;
-  try {
-    return new URL(url).hostname === env.ADMIN_HOSTNAME.toLowerCase();
-  } catch {
-    return false;
-  }
+const ACCOUNT_SQL = `SELECT a.id, a.user_id, a.email, a.password_hash, a.salt, a.is_verified, a.google_id, u.is_guest, p.display_name
+  FROM auth_accounts a JOIN users u ON u.id = a.user_id LEFT JOIN profiles p ON p.user_id = a.user_id`;
+
+/** Any change to the account's credentials, verification or linked identity changes this value. */
+export async function credentialFingerprint(account: AccountRow): Promise<string> {
+  const parts = ['v1', account.id, account.user_id, account.email, account.password_hash, account.salt, account.is_verified, account.google_id];
+  return sha256Hex(parts.map((part) => String(part ?? '')).join('\u001f'));
 }
 
-export function resolveAuthMode(env: Env): AdminAuthMode {
-  const environment = env.ENVIRONMENT || 'development';
-  if (env.ADMIN_AUTH_MODE === 'cloudflare_access' && accessConfigured(env)) return 'cloudflare_access';
-  if (environment === 'production') return 'unavailable';
-  if (environment === 'development' || env.ADMIN_PASSWORD_LOGIN_ENABLED === 'true') return 'password';
-  return 'unavailable';
+export async function csrfTokenFor(sessionToken: string): Promise<string> {
+  return sha256Hex(`takosan-admin-csrf:v1:${sessionToken}`);
 }
 
-export function authConfig(env: Env): AdminAuthConfig {
-  const mode = resolveAuthMode(env);
-  return {
-    mode,
-    environment: env.ENVIRONMENT || 'development',
-    ...(mode === 'unavailable' ? { reason: 'Cần cấu hình Cloudflare Access (ADMIN_AUTH_MODE, ADMIN_ACCESS_TEAM_DOMAIN, ADMIN_ACCESS_AUD).' } : {}),
-  };
-}
-
-function sessionCookies(token: string, csrf: string): string[] {
-  const maxAge = ADMIN_SESSION_ABSOLUTE_MINUTES * 60;
-  return [
-    `${ADMIN_SESSION_COOKIE}=${encodeURIComponent(token)}; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=${maxAge}`,
-    `${ADMIN_CSRF_COOKIE}=${encodeURIComponent(csrf)}; Path=/; Secure; SameSite=Strict; Max-Age=${maxAge}`,
-  ];
-}
-
-function clearedCookies(): string[] {
-  return [
-    `${ADMIN_SESSION_COOKIE}=; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=0`,
-    `${ADMIN_CSRF_COOKIE}=; Path=/; Secure; SameSite=Strict; Max-Age=0`,
-  ];
-}
-
-export async function activeRoles(env: Env, userId: string): Promise<AdminRole[]> {
-  const rows = await env.DB.prepare(`SELECT role FROM admin_role_assignments
-      WHERE user_id = ? AND status = 'active' ORDER BY role LIMIT 10`).bind(userId).all<{ role: string }>();
+export async function activeRoles(adminDb: D1DatabaseBinding, userId: string): Promise<AdminRole[]> {
+  const rows = await adminDb.prepare(`SELECT role FROM admin_role_assignments WHERE user_id = ? AND status = 'active' ORDER BY role LIMIT 10`)
+    .bind(userId).all<{ role: string }>();
   return rows.results.map((row) => row.role).filter(isAdminRole);
+}
+
+export function revokeUserSessionsStatement(adminDb: D1DatabaseBinding, userId: string, reason: 'role_changed' | 'credential_changed' | 'auth_mode_changed', now: string) {
+  return adminDb.prepare(`UPDATE admin_sessions SET revoked_at = ?, revoked_reason = ? WHERE user_id = ? AND revoked_at IS NULL`).bind(now, reason, userId);
 }
 
 export function meFromPrincipal(principal: AdminPrincipal): AdminMe {
@@ -108,78 +89,112 @@ export function meFromPrincipal(principal: AdminPrincipal): AdminMe {
       idleExpiresAt: principal.idleExpiresAt,
     },
     rbacMatrixVersion: ADMIN_RBAC_MATRIX_VERSION,
+    csrfToken: principal.csrfToken,
   };
 }
 
-/** Rejects requests while the console is disabled, on a foreign hostname, or without an auth mode. */
-export async function adminGate(c: AdminContext, next: Next) {
-  c.header('Cache-Control', 'no-store');
-  c.header('X-Robots-Tag', 'noindex, nofollow');
-  if (!consoleEnabled(c.env) || !hostAllowed(c.env, c.req.url)) return errorResponse(c, 404, 'ADMIN_NOT_FOUND');
-  if (!c.env.DB) return errorResponse(c, 503, 'ADMIN_UNAVAILABLE');
-  c.set('adminMode', resolveAuthMode(c.env));
+/**
+ * First middleware for every admin Worker request (documents, assets, API):
+ * disabled or misconfigured console, or a foreign origin, is an opaque 404.
+ */
+export async function adminSurfaceGate(c: AdminContext, next: Next) {
+  const policy = resolveAdminPolicy(c.env);
+  c.set('policy', policy);
+  if (!policy.enabled || !requestOriginMatches(policy, c.req.url)) return c.text('Not Found', 404);
   await next();
-  c.header('Cache-Control', 'no-store');
-  c.header('X-Robots-Tag', 'noindex, nofollow');
 }
 
-const accessAssertion = (c: Context) => c.req.header('Cf-Access-Jwt-Assertion') ?? undefined;
+/** API prerequisites: both databases, expected admin schema, no synthetic data outside local environments. */
+export async function adminApiGate(c: AdminContext, next: Next) {
+  const policy = c.get('policy');
+  if (!c.env.DB || !c.env.ADMIN_DB) return errorResponse(c, 503, 'ADMIN_UNAVAILABLE');
+  let meta: Map<string, string>;
+  try {
+    const rows = await c.env.ADMIN_DB.prepare(`SELECT key, value FROM admin_config_metadata WHERE key IN ('schema_version', 'fixture_dataset')`)
+      .all<{ key: string; value: string }>();
+    meta = new Map(rows.results.map((row) => [row.key, row.value]));
+  } catch {
+    return errorResponse(c, 503, 'ADMIN_SCHEMA_MISMATCH');
+  }
+  if (meta.get('schema_version') !== ADMIN_SCHEMA_VERSION) return errorResponse(c, 503, 'ADMIN_SCHEMA_MISMATCH');
+  const fixture = meta.get('fixture_dataset') ?? null;
+  if (fixture && !policy.local) return errorResponse(c, 503, 'ADMIN_FIXTURE_DATA_REJECTED');
+  c.set('main', readOnlyDatabase(c.env.DB));
+  c.set('adminDb', c.env.ADMIN_DB);
+  c.set('fixtureDataset', fixture);
+  await next();
+}
 
-/** Session middleware: every authenticated admin route runs behind this. */
+/** Exact admin Origin; Sec-Fetch-Site, when sent, must say same-origin. No Referer fallback. */
+function sameOriginRequest(c: AdminContext, policy: AdminPolicy): boolean {
+  const site = c.req.header('Sec-Fetch-Site');
+  return c.req.header('Origin') === policy.origin && (site === undefined || site === 'same-origin');
+}
+
+const accessAssertion = (c: AdminContext) => c.req.header('Cf-Access-Jwt-Assertion') ?? undefined;
+
 export async function requireAdminSession(c: AdminContext, next: Next) {
-  const mode = c.get('adminMode');
-  if (mode === 'unavailable') return errorResponse(c, 503, 'ADMIN_AUTH_NOT_CONFIGURED');
+  const policy = c.get('policy');
+  if (policy.authMode === 'unavailable') return errorResponse(c, 503, 'ADMIN_AUTH_NOT_CONFIGURED');
   const token = readCookie(c, ADMIN_SESSION_COOKIE);
   if (!token || !/^[0-9a-f]{64}$/.test(token)) return errorResponse(c, 401, 'ADMIN_UNAUTHENTICATED');
-  const row = await c.env.DB.prepare(`SELECT s.id, s.user_id, s.csrf_hash, s.auth_method, s.created_at, s.last_seen_at,
-        s.idle_expires_at, s.expires_at, s.revoked_at, a.email, p.display_name
-      FROM admin_sessions s JOIN users u ON u.id = s.user_id
-      LEFT JOIN auth_accounts a ON a.user_id = s.user_id
-      LEFT JOIN profiles p ON p.user_id = s.user_id
-      WHERE s.token_hash = ? AND u.is_guest = 0 LIMIT 1`).bind(await sha256Hex(token)).first<{
-    id: string; user_id: string; csrf_hash: string; auth_method: 'password' | 'cloudflare_access'; created_at: string;
-    last_seen_at: string; idle_expires_at: string; expires_at: string; revoked_at: string | null; email: string | null; display_name: string | null;
+  const adminDb = c.get('adminDb');
+  const session = await adminDb.prepare(`SELECT id, user_id, account_id, credential_fingerprint, auth_method, created_at, last_seen_at,
+      idle_expires_at, expires_at, revoked_at FROM admin_sessions WHERE token_hash = ? LIMIT 1`).bind(await sha256Hex(token)).first<{
+    id: string; user_id: string; account_id: string; credential_fingerprint: string; auth_method: 'password' | 'cloudflare_access';
+    created_at: string; last_seen_at: string; idle_expires_at: string; expires_at: string; revoked_at: string | null;
   }>();
-  if (!row) return errorResponse(c, 401, 'ADMIN_UNAUTHENTICATED');
-  if (row.revoked_at) return errorResponse(c, 401, 'ADMIN_SESSION_REVOKED');
-  if (isPast(row.expires_at) || isPast(row.idle_expires_at)) return errorResponse(c, 401, 'ADMIN_SESSION_EXPIRED');
-  // A session minted under one mode is not valid under another.
-  if ((mode === 'cloudflare_access') !== (row.auth_method === 'cloudflare_access')) return errorResponse(c, 401, 'ADMIN_SESSION_REVOKED');
-  if (mode === 'cloudflare_access') {
-    const access = await verifyAccessAssertion(accessAssertion(c), c.env, accessOptions);
-    if (!access.ok || !row.email || access.email !== row.email.toLowerCase()) return errorResponse(c, 401, 'ADMIN_ACCESS_DENIED');
-  }
+  if (!session) return errorResponse(c, 401, 'ADMIN_UNAUTHENTICATED');
+  if (session.revoked_at) return errorResponse(c, 401, 'ADMIN_SESSION_REVOKED');
+  if (isPast(session.expires_at) || isPast(session.idle_expires_at)) return errorResponse(c, 401, 'ADMIN_SESSION_EXPIRED');
 
-  const roles = await activeRoles(c.env, row.user_id);
-  if (roles.length === 0) {
-    await c.env.DB.prepare(`UPDATE admin_sessions SET revoked_at = ?, revoked_reason = 'role_revoked'
-        WHERE user_id = ? AND revoked_at IS NULL`).bind(nowIso(), row.user_id).run();
-    await writeAudit(c, { actorUserId: row.user_id, actorRoles: [], action: 'admin.session.denied', outcome: 'denied', reasonCode: 'no_active_role' });
+  const revoke = async (reason: 'role_changed' | 'credential_changed' | 'auth_mode_changed', roles: AdminRole[]) => {
+    const now = nowIso();
+    await adminDb.batch([
+      revokeUserSessionsStatement(adminDb, session.user_id, reason, now),
+      await auditStatement(c, { actorUserId: session.user_id, actorRoles: roles, action: 'admin.session.revoke', targetType: 'admin_session',
+        targetId: session.id, outcome: 'success', reasonCode: reason, metadata: { source: 'session_check' } }),
+    ]);
     return errorResponse(c, 401, 'ADMIN_SESSION_REVOKED');
+  };
+
+  // A session minted under one authentication mode is not valid under another.
+  if (session.auth_method !== policy.authMode) return revoke('auth_mode_changed', []);
+
+  const account = await c.get('main').prepare(`${ACCOUNT_SQL} WHERE a.id = ? LIMIT 1`).bind(session.account_id).first<AccountRow>();
+  const credentialsUnchanged = account !== null && account.user_id === session.user_id && account.is_verified === 1 && account.is_guest === 0 &&
+    timingSafeEqualHex(await credentialFingerprint(account), session.credential_fingerprint);
+  if (!credentialsUnchanged) return revoke('credential_changed', []);
+
+  if (policy.authMode === 'cloudflare_access') {
+    const access = await verifyAccessAssertion(accessAssertion(c), c.env, accessOptions);
+    if (!access.ok || !account.email || access.email !== account.email.toLowerCase()) return errorResponse(c, 401, 'ADMIN_ACCESS_DENIED');
   }
 
-  let idleExpiresAt = row.idle_expires_at;
-  if (Date.now() - Date.parse(row.last_seen_at) >= 60_000) {
-    const slid = new Date(Math.min(Date.now() + ADMIN_SESSION_IDLE_MINUTES * 60_000, Date.parse(row.expires_at))).toISOString();
-    await c.env.DB.prepare(`UPDATE admin_sessions SET last_seen_at = ?, idle_expires_at = ? WHERE id = ? AND revoked_at IS NULL`)
-      .bind(nowIso(), slid, row.id).run();
-    idleExpiresAt = slid;
+  const roles = await activeRoles(adminDb, session.user_id);
+  if (roles.length === 0) return revoke('role_changed', []);
+
+  let idleExpiresAt = session.idle_expires_at;
+  if (Date.now() - Date.parse(session.last_seen_at) >= 60_000) {
+    idleExpiresAt = new Date(Math.min(Date.now() + ADMIN_SESSION_IDLE_MINUTES * 60_000, Date.parse(session.expires_at))).toISOString();
+    await adminDb.prepare(`UPDATE admin_sessions SET last_seen_at = ?, idle_expires_at = ? WHERE id = ? AND revoked_at IS NULL`)
+      .bind(nowIso(), idleExpiresAt, session.id).run();
   }
   c.set('admin', {
-    userId: row.user_id, roles, permissions: permissionsForRoles(roles), sessionId: row.id, csrfHash: row.csrf_hash,
-    authMethod: row.auth_method, createdAt: row.created_at, expiresAt: row.expires_at, idleExpiresAt,
-    email: row.email, displayName: row.display_name,
+    userId: session.user_id, roles, permissions: permissionsForRoles(roles), sessionId: session.id, csrfToken: await csrfTokenFor(token),
+    authMethod: session.auth_method, createdAt: session.created_at, expiresAt: session.expires_at, idleExpiresAt,
+    email: account.email, displayName: account.display_name,
   });
   await next();
 }
 
-/** Double-submit token bound to the session plus a trusted Origin, for every state change. */
+/** Every state change: exact admin Origin plus the session-derived CSRF token. */
 export async function requireCsrf(c: AdminContext, next: Next) {
-  if (['GET', 'HEAD', 'OPTIONS'].includes(c.req.method)) return next();
+  if (['GET', 'HEAD'].includes(c.req.method)) return next();
   const admin = c.get('admin');
   const header = c.req.header(ADMIN_CSRF_HEADER);
-  const valid = hasTrustedOrigin(c) && typeof header === 'string' && /^[0-9a-f]{64}$/.test(header) &&
-    timingSafeEqualHex(await sha256Hex(header), admin.csrfHash);
+  const valid = sameOriginRequest(c, c.get('policy')) && typeof header === 'string' && /^[0-9a-f]{64}$/.test(header) &&
+    timingSafeEqualHex(header, admin.csrfToken);
   if (!valid) {
     await writeAudit(c, { actorUserId: admin.userId, actorRoles: admin.roles, action: 'admin.csrf.denied', outcome: 'denied',
       reasonCode: 'csrf', metadata: { method: c.req.method, path: c.req.routePath } });
@@ -188,7 +203,6 @@ export async function requireCsrf(c: AdminContext, next: Next) {
   await next();
 }
 
-/** Explicit per-route permission check; denials are audited. */
 export function requirePermission(permission: AdminPermission) {
   return async (c: AdminContext, next: Next) => {
     const admin = c.get('admin');
@@ -203,15 +217,13 @@ export function requirePermission(permission: AdminPermission) {
   };
 }
 
-const adminUserKey = (c: Context) => {
-  const admin = (c as AdminContext).get('admin');
-  return admin ? `admin:${admin.userId}` : undefined;
-};
-
-export const readLimiter = rateLimiter({ maxRequests: 120, windowSeconds: 60, prefix: 'rl_admin_read', scope: 'account', key: adminUserKey });
-export const writeLimiter = rateLimiter({ maxRequests: 20, windowSeconds: 60, prefix: 'rl_admin_write', scope: 'account', enforcement: 'fail-closed', key: adminUserKey });
-const loginLimiter = rateLimiter({ maxRequests: 5, windowSeconds: 60, prefix: 'rl_admin_login', scope: 'account', enforcement: 'fail-closed',
-  key: (c) => `ip:${c.req.header('cf-connecting-ip') || c.req.header('x-real-ip') || c.req.header('x-forwarded-for')?.split(',')[0].trim() || 'anonymous_client'}` });
+/** Per-admin read/write budgets, plus fail-closed behavior without KV outside local environments. */
+export async function requestBudget(c: AdminContext, next: Next) {
+  const write = !['GET', 'HEAD'].includes(c.req.method);
+  const result = await consumeLimit(c.env, c.get('policy').local, write ? 'write' : 'read', c.get('admin').userId, write ? 20 : 120, 60);
+  if (!result.ok) return limitResponse(c, result);
+  await next();
+}
 
 const LoginSchema = z.object({
   email: z.string().trim().toLowerCase().max(254).email(),
@@ -219,87 +231,96 @@ const LoginSchema = z.object({
 }).strict();
 
 const DUMMY_SALT = 'admin-login-dummy-salt';
+const SESSION_RETENTION_DAYS = 30;
 
 export const adminAuthRoutes = new Hono<AdminApp>();
 
-adminAuthRoutes.get('/auth/config', async (c) => c.json({ data: authConfig(c.env), context: await dataContext(c) }));
+// Public: the mode only. Environment and configuration details stay server-side.
+adminAuthRoutes.get('/auth/config', (c) => c.json({ data: { mode: c.get('policy').authMode } }));
 
-adminAuthRoutes.post('/auth/login', async (c, next) => {
-  if (!hasTrustedOrigin(c)) return errorResponse(c, 403, 'ADMIN_CSRF_FAILED');
-  if (c.get('adminMode') === 'unavailable') return errorResponse(c, 503, 'ADMIN_AUTH_NOT_CONFIGURED');
-  return next();
-}, loginLimiter as never, async (c) => {
-  const mode = c.get('adminMode');
-  let userId: string | null = null;
-  let reason: string | null = null;
+adminAuthRoutes.post('/auth/login', async (c) => {
+  const policy = c.get('policy');
+  if (!sameOriginRequest(c, policy)) return errorResponse(c, 403, 'ADMIN_CSRF_FAILED');
+  if (policy.authMode === 'unavailable') return errorResponse(c, 503, 'ADMIN_AUTH_NOT_CONFIGURED');
 
-  if (mode === 'cloudflare_access') {
+  // Global, per-IP and (below) per-account budgets are independent.
+  for (const [name, identity, max, windowSeconds] of [['login-global', 'all', 60, 60], ['login-ip', clientIdentity(c, policy), 5, 60]] as const) {
+    const result = await consumeLimit(c.env, policy.local, name, identity, max, windowSeconds);
+    if (!result.ok) return limitResponse(c, result);
+  }
+
+  let email: string;
+  let password: string | null = null;
+  if (policy.authMode === 'cloudflare_access') {
     const access = await verifyAccessAssertion(accessAssertion(c), c.env, accessOptions);
     if (!access.ok) {
       await writeAudit(c, { actorUserId: null, actorRoles: [], action: 'admin.login', outcome: 'failure', reasonCode: `access_${access.reason}`.slice(0, 64) });
       return errorResponse(c, 401, 'ADMIN_ACCESS_DENIED');
     }
-    const account = await c.env.DB.prepare(`SELECT a.user_id FROM auth_accounts a JOIN users u ON u.id = a.user_id
-        WHERE a.email = ? AND a.is_verified = 1 AND u.is_guest = 0 LIMIT 1`).bind(access.email).first<{ user_id: string }>();
-    userId = account?.user_id ?? null;
-    if (!userId) reason = 'invalid_credentials';
+    email = access.email;
   } else {
     let body: unknown;
     try { body = await c.req.json(); } catch { body = null; }
     const parsed = LoginSchema.safeParse(body);
     if (!parsed.success) return errorResponse(c, 400, 'ADMIN_VALIDATION_FAILED');
-    const account = await c.env.DB.prepare(`SELECT a.user_id, a.password_hash, a.salt, a.is_verified, u.is_guest
-        FROM auth_accounts a JOIN users u ON u.id = a.user_id WHERE a.email = ? LIMIT 1`).bind(parsed.data.email)
-      .first<{ user_id: string; password_hash: string | null; salt: string | null; is_verified: number; is_guest: number }>();
-    if (!account || !account.password_hash || !account.salt) {
-      await hashPassword(parsed.data.password, DUMMY_SALT);
-      reason = 'invalid_credentials';
-    } else if (!(await verifyPassword(parsed.data.password, account.salt, account.password_hash))) {
-      reason = 'invalid_credentials';
-    } else if (account.is_verified !== 1 || account.is_guest !== 0) {
-      reason = 'not_verified';
-    } else {
-      userId = account.user_id;
-    }
+    email = parsed.data.email;
+    password = parsed.data.password;
   }
+  const accountBudget = await consumeLimit(c.env, policy.local, 'login-account', email, 10, 15 * 60);
+  if (!accountBudget.ok) return limitResponse(c, accountBudget);
 
-  const roles = userId && !reason ? await activeRoles(c.env, userId) : [];
-  if (userId && !reason && roles.length === 0) reason = 'no_admin_role';
-  if (!userId || reason) {
-    await writeAudit(c, { actorUserId: reason === 'no_admin_role' ? userId : null, actorRoles: [], action: 'admin.login', outcome: 'failure', reasonCode: reason ?? 'invalid_credentials' });
+  const account = await c.get('main').prepare(`${ACCOUNT_SQL} WHERE a.email = ? LIMIT 1`).bind(email).first<AccountRow>();
+  let reason: string | null = null;
+  if (password !== null) {
+    if (!account || !account.password_hash || !account.salt) {
+      await hashPassword(password, DUMMY_SALT);
+      reason = 'invalid_credentials';
+    } else if (!(await verifyPassword(password, account.salt, account.password_hash))) {
+      reason = 'invalid_credentials';
+    }
+  } else if (!account) {
+    reason = 'invalid_credentials';
+  }
+  if (!reason && account && (account.is_verified !== 1 || account.is_guest !== 0)) reason = 'not_verified';
+  const adminDb = c.get('adminDb');
+  const roles = !reason && account ? await activeRoles(adminDb, account.user_id) : [];
+  if (!reason && roles.length === 0) reason = 'no_admin_role';
+  if (reason || !account) {
+    await writeAudit(c, { actorUserId: reason === 'no_admin_role' ? account?.user_id ?? null : null, actorRoles: [], action: 'admin.login',
+      outcome: 'failure', reasonCode: reason ?? 'invalid_credentials' });
     return errorResponse(c, 401, 'ADMIN_INVALID_CREDENTIALS');
   }
 
   const token = randomHex(32);
-  const csrf = randomHex(32);
   const sessionId = newId('asess');
   const createdAt = nowIso();
   const expiresAt = plusMinutes(ADMIN_SESSION_ABSOLUTE_MINUTES);
   const idleExpiresAt = plusMinutes(ADMIN_SESSION_IDLE_MINUTES);
-  const authMethod = mode === 'cloudflare_access' ? 'cloudflare_access' : 'password';
-  await c.env.DB.batch([
-    c.env.DB.prepare(`INSERT INTO admin_sessions (id, user_id, token_hash, csrf_hash, auth_method, created_at, last_seen_at, idle_expires_at, expires_at)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`)
-      .bind(sessionId, userId, await sha256Hex(token), await sha256Hex(csrf), authMethod, createdAt, createdAt, idleExpiresAt, expiresAt),
-    await auditStatement(c, { actorUserId: userId, actorRoles: roles, action: 'admin.login', targetType: 'admin_session', targetId: sessionId,
+  const authMethod = policy.authMode;
+  await adminDb.batch([
+    // Retention hygiene for long-dead sessions.
+    adminDb.prepare(`DELETE FROM admin_sessions WHERE id IN (SELECT id FROM admin_sessions WHERE expires_at < ? LIMIT 100)`)
+      .bind(new Date(Date.now() - SESSION_RETENTION_DAYS * 86_400_000).toISOString()),
+    adminDb.prepare(`INSERT INTO admin_sessions (id, user_id, account_id, token_hash, credential_fingerprint, auth_method, created_at, last_seen_at,
+        idle_expires_at, expires_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`)
+      .bind(sessionId, account.user_id, account.id, await sha256Hex(token), await credentialFingerprint(account), authMethod, createdAt, createdAt, idleExpiresAt, expiresAt),
+    await auditStatement(c, { actorUserId: account.user_id, actorRoles: roles, action: 'admin.login', targetType: 'admin_session', targetId: sessionId,
       outcome: 'success', metadata: { authMethod, rbacMatrixVersion: ADMIN_RBAC_MATRIX_VERSION } }),
   ]);
-  const profile = await c.env.DB.prepare(`SELECT a.email, p.display_name FROM auth_accounts a LEFT JOIN profiles p ON p.user_id = a.user_id
-      WHERE a.user_id = ? LIMIT 1`).bind(userId).first<{ email: string | null; display_name: string | null }>();
-  for (const cookie of sessionCookies(token, csrf)) c.header('Set-Cookie', cookie, { append: true });
-  const me = meFromPrincipal({ userId, roles, permissions: permissionsForRoles(roles), sessionId, csrfHash: '', authMethod,
-    createdAt, expiresAt, idleExpiresAt, email: profile?.email ?? null, displayName: profile?.display_name ?? null });
-  return c.json({ data: me, context: await dataContext(c), csrfToken: csrf });
+  c.header('Set-Cookie', `${ADMIN_SESSION_COOKIE}=${token}; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=${ADMIN_SESSION_ABSOLUTE_MINUTES * 60}`);
+  const csrfToken = await csrfTokenFor(token);
+  const me = meFromPrincipal({ userId: account.user_id, roles, permissions: permissionsForRoles(roles), sessionId, csrfToken, authMethod,
+    createdAt, expiresAt, idleExpiresAt, email: account.email, displayName: account.display_name });
+  return c.json({ data: me, context: { environment: policy.environment ?? 'unknown', generatedAt: nowIso(), fixtureDataset: c.get('fixtureDataset') }, csrfToken });
 });
 
 adminAuthRoutes.post('/auth/logout', requireAdminSession, requireCsrf, async (c) => {
   const admin = c.get('admin');
-  await c.env.DB.batch([
-    c.env.DB.prepare(`UPDATE admin_sessions SET revoked_at = ?, revoked_reason = 'logout' WHERE id = ? AND revoked_at IS NULL`).bind(nowIso(), admin.sessionId),
+  const adminDb = c.get('adminDb');
+  await adminDb.batch([
+    adminDb.prepare(`UPDATE admin_sessions SET revoked_at = ?, revoked_reason = 'logout' WHERE id = ? AND revoked_at IS NULL`).bind(nowIso(), admin.sessionId),
     await auditStatement(c, { actorUserId: admin.userId, actorRoles: admin.roles, action: 'admin.logout', targetType: 'admin_session', targetId: admin.sessionId, outcome: 'success' }),
   ]);
-  for (const cookie of clearedCookies()) c.header('Set-Cookie', cookie, { append: true });
-  return c.json({ data: { loggedOut: true }, context: await dataContext(c) });
+  c.header('Set-Cookie', `${ADMIN_SESSION_COOKIE}=; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=0`);
+  return c.json({ data: { loggedOut: true } });
 });
-
-export { adminError };

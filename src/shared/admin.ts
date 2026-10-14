@@ -37,7 +37,7 @@ export const ADMIN_PERMISSIONS = [
 export type AdminPermission = (typeof ADMIN_PERMISSIONS)[number];
 
 /** Bump when the matrix changes; recorded in audit metadata and system status. */
-export const ADMIN_RBAC_MATRIX_VERSION = '2026-10-12.v1';
+export const ADMIN_RBAC_MATRIX_VERSION = '2026-10-13.v2';
 
 const ALL_ROLES: readonly AdminRole[] = ADMIN_ROLES;
 
@@ -110,7 +110,7 @@ export const ADMIN_PERMISSION_LABELS_VI: Readonly<Record<AdminPermission, string
 
 export const ADMIN_API_BASE = '/api/v1/admin';
 export const ADMIN_SESSION_COOKIE = '__Host-takosan_admin_session';
-export const ADMIN_CSRF_COOKIE = '__Host-takosan_admin_csrf';
+/** CSRF token is session-derived and delivered in JSON (login, GET /me); there is no CSRF cookie. */
 export const ADMIN_CSRF_HEADER = 'X-Admin-CSRF';
 export const ADMIN_SESSION_ABSOLUTE_MINUTES = 8 * 60;
 export const ADMIN_SESSION_IDLE_MINUTES = 30;
@@ -139,6 +139,9 @@ export type AdminErrorCode =
   | 'ADMIN_NOT_FOUND'
   | 'ADMIN_CONFLICT'
   | 'ADMIN_UNAVAILABLE'
+  | 'ADMIN_AUDIT_UNAVAILABLE'
+  | 'ADMIN_SCHEMA_MISMATCH'
+  | 'ADMIN_FIXTURE_DATA_REJECTED'
   | 'RATE_LIMIT_EXCEEDED'
   | 'RATE_LIMIT_UNAVAILABLE'
   | 'INTERNAL_SERVER_ERROR';
@@ -196,11 +199,9 @@ export interface AdminEnvelope<T> {
 
 export type AdminAuthMode = 'password' | 'cloudflare_access' | 'unavailable';
 
+/** Public (unauthenticated) answer: the mode only, no environment or configuration hints. */
 export interface AdminAuthConfig {
   mode: AdminAuthMode;
-  environment: string;
-  /** Present when mode is `unavailable`. */
-  reason?: string;
 }
 
 export interface AdminLoginRequest {
@@ -223,6 +224,8 @@ export interface AdminMe {
     idleExpiresAt: string;
   };
   rbacMatrixVersion: string;
+  /** Session-bound CSRF token for the X-Admin-CSRF header; keep in memory only. */
+  csrfToken: string;
 }
 
 // ── Overview ───────────────────────────────────────────────────────────────
@@ -445,16 +448,24 @@ export interface AdminRoleAssignment {
   userEmailMasked: string | null;
   role: AdminRole;
   status: 'active' | 'revoked';
-  grantSource: 'local_bootstrap' | 'admin_grant' | 'approval';
+  grantSource: 'operator_bootstrap' | 'admin_grant' | 'approval';
   grantedBy: string | null;
   grantedAt: string;
   revokedAt: string | null;
 }
 
+export type AdminApprovalAction = 'role.grant.super_admin' | 'role.revoke.super_admin';
+
+/**
+ * Four-eyes request. Grants and revocations of SUPER_ADMIN both require a second,
+ * distinct SUPER_ADMIN; the requester must still be an active SUPER_ADMIN when it is decided.
+ */
 export interface AdminApproval {
   id: string;
-  action: 'role.grant.super_admin';
+  action: AdminApprovalAction;
   targetUserId: string;
+  /** Set for revocations: the SUPER_ADMIN assignment that will be revoked. */
+  assignmentId: string | null;
   requestedBy: string;
   requestedAt: string;
   status: 'pending' | 'approved' | 'rejected' | 'expired' | 'cancelled';
@@ -481,3 +492,16 @@ export interface AdminGrantRoleRequest {
   userId: string;
   role: AdminRole;
 }
+
+/** Non-SUPER grants apply immediately; SUPER_ADMIN grants return a pending approval (201). */
+export type AdminGrantRoleResult =
+  | { assignment: { id: string; userId: string; role: AdminRole; status: 'active' } }
+  | { approval: AdminApproval };
+
+/** Non-SUPER revocations apply immediately (200); SUPER_ADMIN revocations return a pending approval (201). */
+export type AdminRevokeRoleResult =
+  | { assignment: { id: string; status: 'revoked' } }
+  | { approval: AdminApproval };
+
+/** Minimum active SUPER_ADMINs; enforced by the API and by a database trigger. */
+export const ADMIN_SUPER_ADMIN_MINIMUM = 2;

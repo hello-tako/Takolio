@@ -37,25 +37,31 @@ describe('admin API client', () => {
     setMemoryCsrfToken(null);
   });
 
-  it('attaches X-Admin-CSRF from the cookie on writes and never on reads', async () => {
-    setCookieString('theme=dark; __Host-takosan_admin_csrf=tok%2Babc');
+  it('attaches X-Admin-CSRF from memory on writes, never on reads, and never from a cookie', async () => {
+    // A cookie with the legacy name must be ignored: the token lives in memory only.
+    setCookieString('theme=dark; __Host-takosan_admin_csrf=cookie-token');
+    await adminFetch('PUT', '/preferences', { body: { density: 'compact' } });
+    expect(lastInit(fetchMock).headers['X-Admin-CSRF']).toBeUndefined();
+
+    setMemoryCsrfToken('memory-token');
     await adminFetch('GET', '/me');
     expect(lastInit(fetchMock).headers['X-Admin-CSRF']).toBeUndefined();
     expect(lastInit(fetchMock).credentials).toBe('same-origin');
 
     await adminFetch('PUT', '/preferences', { body: { density: 'compact' } });
     const init = lastInit(fetchMock);
-    expect(init.headers['X-Admin-CSRF']).toBe('tok+abc');
+    expect(init.headers['X-Admin-CSRF']).toBe('memory-token');
     expect(init.headers['Content-Type']).toBe('application/json');
     expect(init.body).toBe(JSON.stringify({ density: 'compact' }));
     expect(String(fetchMock.mock.calls.at(-1)?.[0])).toBe('/api/v1/admin/preferences');
   });
 
-  it('falls back to the in-memory token from login when the cookie is absent', async () => {
-    setCookieString('');
+  it('clears the in-memory token on any 401', async () => {
     setMemoryCsrfToken('memory-token');
+    fetchMock.mockResolvedValueOnce(jsonResponse(401, { error: 'revoked', code: 'ADMIN_SESSION_REVOKED' }));
+    await expect(adminFetch('GET', '/users')).rejects.toBeInstanceOf(AdminApiError);
     await adminFetch('POST', '/recipes/r1/reviews', { body: { state: 'draft' } });
-    expect(lastInit(fetchMock).headers['X-Admin-CSRF']).toBe('memory-token');
+    expect(lastInit(fetchMock).headers['X-Admin-CSRF']).toBeUndefined();
   });
 
   it('does not send the CSRF header on login', async () => {

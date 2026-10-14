@@ -146,7 +146,7 @@ export function RecipesPage() {
         {recipes.isError ? <ErrorState error={recipes.error} onRetry={() => void recipes.refetch()} /> : null}
         {recipes.data && recipes.data.items.length === 0 ? <EmptyState /> : null}
         {recipes.data && recipes.data.items.length > 0 ? (
-          <div className={recipes.isPlaceholderData ? 'table-wrap is-stale' : 'table-wrap'} aria-busy={recipes.isPlaceholderData}>
+          <div className={recipes.isPlaceholderData ? 'table-wrap is-stale' : 'table-wrap'} aria-busy={recipes.isPlaceholderData} tabIndex={0} role="region" aria-label={vi.recipes.listCaption}>
             <table className="data-table">
               <caption className="sr-only">{vi.recipes.listCaption}</caption>
               <thead>

@@ -2,7 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { AdminApp, createAdminQueryClient } from './App';
 import '../web/styles/takosan-tokens.css';
-import '../web/styles/brand-v3-fonts.css';
+import './styles/fonts.css';
 import './styles/admin.css';
 
 const queryClient = createAdminQueryClient();
