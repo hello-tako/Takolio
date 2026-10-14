@@ -1,3 +1,43 @@
+# T24 unknown shopping demand review - LOCAL_IMPLEMENTED_VERIFIED
+
+- Implementation checkpoint: `cf54910f5ebf64293517b855f0da6cbe0f8f9582`.
+- Added migration `0043_shopping_demand_review.sql`, explicit purchase intent, snapshot-bound skip/reopen, immutable receipts, stale/CAS guards and shared-member review.
+- UI now distinguishes `Tổng lượng theo thực đơn chưa xác định` from `Lượng bạn chọn`, exposes source meals/known contributions, independent recipe links and online-only review actions with retry/reload recovery.
+- Verification: full Vitest 357 files / 8,386 tests; focused 7 files / 98 tests; lint, typecheck, migration smoke, local schema tip 0043, default/paired builds, local workerd/D1 HTTP 8/8, browser 12/12 at 320/390/768/1280, dependency audit, diff/protected-path/source receipt checks all PASS.
+- Release order: apply 0042 then 0043 before shopping Worker traffic, including planner flags OFF; retain additive schema on rollback. T23 binary rollback after reviewed purchases remains uncertified.
+- Next: authorized PR/exact-head CI, migration-first staging and hosted smoke. No push, remote migration or deployment.
+
+---
+
+## Prior Checkpoints
+
+# T24 unknown shopping demand review - 2026-10-14 JST
+
+**Status:** IN_PROGRESS. Branch codex/vietnamese-family-meals-20261013.
+Base T23 verified implementation d3952c34b1c217fb695cd551a247c0882c4c01d7;
+documentation743752b68652d41fd0a67f0e7e67fa93e4e46fd5. Active packet
+ tasks/T24-unknown-shopping-demand-review.md. Accepted ADR-060 adds an explicit
+purchase amount, exact-trip skip/reopen and revisioned command receipts.
+
+**Scope:** Unknown demand remains unknown; selected purchase intent is separate.
+Existing shared/manual shopping, stock separation, household tenancy, immutable
+replay and optimistic witnesses remain authoritative. New migration0043 must
+precede shopping Worker release independently of planner flags; applied migrations,
+payment/auth/infrastructure/dependencies stay outside this task.
+
+**Verification:** Pending implementation and sequential focused/full gates, local
+D1 apply/schema and real browser synthetic app/Worker HTTP checks. No push, merge,
+remote migration or deployment authorized or executed. No claim of nationwide
+research validation, clinical safety or improved retention.
+
+**Next action:** Finish local implementation/race and UI verification, update this
+checkpoint with actual counts/failures and commit coherent source/documentation.
+Historical checkpoints remain preserved.
+
+---
+
+## Prior Checkpoints
+
 # T23 fridge quantities, manual selection and continued-week shopping - 2026-10-14 JST
 
 **Status:** LOCAL_IMPLEMENTED_VERIFIED. Branch

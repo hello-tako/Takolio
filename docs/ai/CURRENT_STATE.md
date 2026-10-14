@@ -1,3 +1,95 @@
+# T24 unknown shopping demand review - 2026-10-14 JST
+
+**Status:** LOCAL_IMPLEMENTED_VERIFIED. Branch `codex/vietnamese-family-meals-20261013`.
+Implementation commit `cf54910f5ebf64293517b855f0da6cbe0f8f9582` follows verified T23
+implementation `d3952c34b1c217fb695cd551a247c0882c4c01d7`. Accepted ADR-060 and
+expand-only migration `0043_shopping_demand_review.sql` are included. No push,
+merge, remote migration or deployment was performed.
+
+**Implemented:** unknown shared shopping demand now has a snapshot-bound review
+contract. A member can choose a positive purchase amount/unit, skip only this trip
+snapshot, or reopen a previous decision. The selected purchase is stored as buying
+intent and never changes the recipe demand (which remains NULL), recipe coverage,
+physical inventory, or bought history. The list shows the unknown total separately,
+known source contributions per meal, collapsed source details, independent recipe
+links, explicit Vietnamese actions, and truthful offline/pending/error recovery.
+Shared members review the persisted list without opening another member's private
+planner. Immutable idempotency receipts, full demand/review/purchase witnesses,
+monotonic revisions, household membership checks and atomic D1 batches protect
+concurrent edits. Deleting an unchecked reviewed purchase reopens review rather
+than creating an indefinite same-plan dismissal; checked history remains separate.
+
+**Verification:** Node `v25.9.0`, pnpm `10.33.2`.
+
+- `pnpm lint` PASS (including final post-label run).
+- `pnpm typecheck` PASS for app and Worker; final labels run recorded in `work/t24-typecheck-labels.log`.
+- `TMPDIR=/private/tmp pnpm test --maxWorkers=4` PASS: 357 files / 8,386 tests (`work/t24-full-test-final-frozen.log`).
+- Focused T24 suite PASS: 7 files / 98 tests (`work/t24-focused-final-frozen.log`); explicit UI label suite PASS: 2 files / 13 tests.
+- `pnpm check:migrations` PASS; `pnpm schema:check:local` PASS with migration tip 0043; local D1 apply/HTTP smoke PASS (8/8, including stale 409, replay, skip/reopen, bought history, delete reopen and SQL invariants).
+- `GIT_COMMIT=local-t24-shopping-review pnpm build` PASS and paired planner/composition-flag build PASS (`work/t24-build-default-final.log`, `work/t24-build-paired-final.log`).
+- `PORT=3101 PREVIEW_API_PORT=8891 pnpm exec playwright test -c playwright.family.config.ts` PASS: 12/12 at 320/390/768/1280 (`work/t24-family-browser-final2.log`); screenshots reviewed at phone and desktop widths.
+- `pnpm audit --audit-level=high`, `git diff --check`, protected-path/source receipt checks PASS. Frozen receipt covers 18 changed source files and 61 protected files unchanged.
+
+**Failures retained:** the earlier full suite had one Wrangler 5-second timeout
+(8,385 passed); the later frozen-source full run passed all 8,386. An early
+workerd HTTP DELETE returned 409 after a successful cascade delete; actual D1
+`meta.changes=3` proved the exact-one guard wrong, and the positive-count guard
+plus regression/HTTP rerun fixed it. Earlier browser runs retained 11 passed/1
+navigation timeout and 7 passed/5 failed (four incorrect assumptions that more
+than one unknown demand must exist, plus one ERR_ABORTED while source edits were
+in progress). The final test exercises one demand through its full lifecycle;
+no workspace edits ran during final2, which passed 12/12. Earlier checkbox and
+ReactNode/test-typing failures are retained; explicit labels/locators and final
+lint/type/UI/browser checks passed. The 8,386-test full run preceded the final
+label-only markup refinement; the subsequent 13 UI tests, typecheck, lint,
+12-browser matrix and both builds cover that final refinement.
+
+**Release boundary and limits:** apply migrations 0042 and 0043 before a Worker
+serves shopping traffic, including when planner flags are OFF; retain additive
+0043 tables on rollback. The current T24 Worker with paired flags OFF is covered
+locally. Binary rollback to T23/pre-T24 is not certified after reviewed purchases:
+the older delete path can create legacy dismissal and the older UI cannot review,
+skip or reopen. Local workerd/D1 and browser fixtures are synthetic, not hosted
+acceptance, nationwide Vietnamese user research, regional provenance certification,
+clinical nutrition/allergy safety, retention proof, or production release.
+Unknown package/bunch/piece mass, leftovers/shared prep, vendor allocation and
+future-only whole-week regeneration remain outside T24.
+
+**Next action:** separately authorize normal PR/exact-head CI, migration-first
+staging and hosted smoke before any release. Keep payment/auth/infrastructure,
+dependencies, applied migrations and remote data outside this task.
+
+---
+
+## Prior Checkpoints
+
+# T24 unknown shopping demand review - 2026-10-14 JST
+
+**Status:** IN_PROGRESS. Branch codex/vietnamese-family-meals-20261013.
+Base T23 verified implementation d3952c34b1c217fb695cd551a247c0882c4c01d7;
+documentation743752b68652d41fd0a67f0e7e67fa93e4e46fd5. Active packet
+ tasks/T24-unknown-shopping-demand-review.md. Accepted ADR-060 adds an explicit
+purchase amount, exact-trip skip/reopen and revisioned command receipts.
+
+**Scope:** Unknown demand remains unknown; selected purchase intent is separate.
+Existing shared/manual shopping, stock separation, household tenancy, immutable
+replay and optimistic witnesses remain authoritative. New migration0043 must
+precede shopping Worker release independently of planner flags; applied migrations,
+payment/auth/infrastructure/dependencies stay outside this task.
+
+**Verification:** Pending implementation and sequential focused/full gates, local
+D1 apply/schema and real browser synthetic app/Worker HTTP checks. No push, merge,
+remote migration or deployment authorized or executed. No claim of nationwide
+research validation, clinical safety or improved retention.
+
+**Next action:** Finish local implementation/race and UI verification, update this
+checkpoint with actual counts/failures and commit coherent source/documentation.
+Historical checkpoints remain preserved.
+
+---
+
+## Prior Checkpoints
+
 # T23 fridge quantities, manual selection and continued-week shopping - 2026-10-14 JST
 
 **Status:** LOCAL_IMPLEMENTED_VERIFIED. Branch

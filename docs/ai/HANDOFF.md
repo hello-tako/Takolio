@@ -1,3 +1,61 @@
+# T24 handoff - unknown shopping demand review
+
+**Status:** LOCAL_IMPLEMENTED_VERIFIED on branch `codex/vietnamese-family-meals-20261013`.
+Implementation commit: `cf54910f5ebf64293517b855f0da6cbe0f8f9582`.
+This handoff is included in the subsequent documentation checkpoint; its identity
+is available from Git history.
+
+**Delivered:** Migration 0043 and the review service/API/UI allow a household member
+to choose a buying amount, skip this trip snapshot, or reopen it while preserving
+unknown recipe demand, source provenance, checked history and physical inventory.
+The implementation uses full snapshots, monotonic revisions, membership/atomic
+witnesses, immutable command receipts and explicit offline/uncertain/stale recovery.
+
+**Evidence:** Full Vitest 357/8,386; focused 7/98; lint and both TypeScript checks;
+migration smoke and local D1 schema tip 0043; local workerd/D1 HTTP 8/8; default and
+paired builds; browser 12/12 across 320/390/768/1280; dependency audit; diff,
+protected-path and frozen source receipt checks. Evidence logs remain in `work/`.
+
+**Operational boundary:** Apply 0042 and 0043 before serving shopping traffic;
+planner flags do not gate these table reads. Paired flags OFF on the current Worker
+is covered. A binary rollback to T23/pre-T24 is not certified after reviewed
+purchases because the old delete semantics can dismiss unknown demand and old UI
+lacks review/reopen. No remote migration, deploy or push occurred.
+
+**Next action:** authorize normal PR/exact-head CI, migration-first staging and
+hosted smoke. Keep payment/auth/config/dependencies and remote data out of scope.
+
+---
+
+## Prior Checkpoints
+
+# T24 unknown shopping demand review - 2026-10-14 JST
+
+**Status:** IN_PROGRESS. Branch codex/vietnamese-family-meals-20261013.
+Base T23 verified implementation d3952c34b1c217fb695cd551a247c0882c4c01d7;
+documentation743752b68652d41fd0a67f0e7e67fa93e4e46fd5. Active packet
+ tasks/T24-unknown-shopping-demand-review.md. Accepted ADR-060 adds an explicit
+purchase amount, exact-trip skip/reopen and revisioned command receipts.
+
+**Scope:** Unknown demand remains unknown; selected purchase intent is separate.
+Existing shared/manual shopping, stock separation, household tenancy, immutable
+replay and optimistic witnesses remain authoritative. New migration0043 must
+precede shopping Worker release independently of planner flags; applied migrations,
+payment/auth/infrastructure/dependencies stay outside this task.
+
+**Verification:** Pending implementation and sequential focused/full gates, local
+D1 apply/schema and real browser synthetic app/Worker HTTP checks. No push, merge,
+remote migration or deployment authorized or executed. No claim of nationwide
+research validation, clinical safety or improved retention.
+
+**Next action:** Finish local implementation/race and UI verification, update this
+checkpoint with actual counts/failures and commit coherent source/documentation.
+Historical checkpoints remain preserved.
+
+---
+
+## Prior Checkpoints
+
 # T23 fridge quantities, manual selection and continued-week shopping - 2026-10-14 JST
 
 **Status:** LOCAL_IMPLEMENTED_VERIFIED. Branch
