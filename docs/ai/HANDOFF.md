@@ -1,3 +1,31 @@
+# T25 hosted CI timeout correction - 2026-10-14 JST
+
+**Status:** RELEASE_IN_PROGRESS; PR75 final candidate CI retry pending.
+Commit2ffebf44 remains the verified release-tooling baseline. Hosted CI38579146408
+failed only three 5-second timeouts in scoped-picker quantity integration tests:
+8,437 passed / 3 failed, 358 files passed / 1 failed, total8,440 tests/359 files.
+The failing cases took5.215-5.272s; nearby green multi-request cases took4.5-4.8s.
+An isolated unchanged local rerun passed28/28. The fixture replays43 migrations,
+500 recipes and several Worker requests; comparable functional fixtures use30s.
+
+**Correction:** scoped30-second test deadlines on the three functional suites in
+`t20-scoped-picker-quantity.test.ts`. All assertions and separate evaluation/query/
+pool/performance-bound tests remain intact; no runtime or global CI policy change.
+Focused picker and performance checks run before the follow-up commit. Previous
+full local8440PASS remains recorded; final exact-head hosted CI must pass.
+
+**Authorization:** user chooses automated checks and public hosted smoke; no
+signed-in hosted household product acceptance is claimed. No remote migration or
+new deployment has happened. Existing Environment reviewer gate is preserved.
+
+**Next:** push the narrow correction and actual focused evidence, require successful
+exact-head CI, normal merge/exact-main CI, then staging and protected production
+sequence in tasks/T25-family-meals-production-release.md.
+
+---
+
+## Prior Checkpoints
+
 # T25 family meals production release - 2026-10-14 JST
 
 **Status:** RELEASE_IN_PROGRESS; local release tooling verified. User authorizes

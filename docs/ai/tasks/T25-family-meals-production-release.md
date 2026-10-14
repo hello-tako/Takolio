@@ -99,3 +99,15 @@ Final local rerun PASS: 359 files / 8,440 tests, 423.70s, command
 `TMPDIR=/private/tmp pnpm test --maxWorkers=2`, log work/t25-full-tests-final2.log.
 Default/paired builds and lint/types/migration smoke PASS; source remained frozen
 except the documented workflow assertion update before this final rerun.
+
+Hosted CI38579146408 at2ffebf44 failed8437passed/3timeouts: three scoped-picker
+multi-request fixtures exceeded default5s at5.215-5.272s. Unchanged isolated local
+rerun28/28PASS. Align only the three functional suites with existing30s family
+fixture deadlines; assertions and separate planner performance/query/evaluation
+caps remain intact. No runtime/globalCIpolicy change. User explicitly chooses
+automated checks and public hosted smoke rather than authenticated hosted flows.
+
+Follow-up focused picker/bounds/performance: 3 files / 32 tests PASS (36.92s),
+`pnpm exec vitest run tests/integration/t20-scoped-picker-quantity.test.ts tests/integration/family-meal-planner-bounds.test.ts tests/integration/t20-performance.test.ts --maxWorkers=2`.
+Focused ESLint and app/Worker typecheck PASS. Runtime/build/migration source is
+unchanged from the full8440PASS checkpoint; exact-head hosted full CI is required.

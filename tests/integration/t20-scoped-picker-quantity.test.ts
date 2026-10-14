@@ -9,6 +9,8 @@ import { fetchWorker } from '../helpers/worker-fetch.mjs';
 import { quietLogs, T20Harness, T20_INTENT, T20_ORIGIN } from '../helpers/t20-composition-harness';
 
 vi.mock('../../src/worker/services/email', () => ({ sendEmail: vi.fn(), buildOtpEmail: vi.fn() }));
+// Each functional case replays the D1 catalog and exercises several Worker requests.
+const CASE_TIMEOUT = 30_000;
 const HOUSE = 'picker-quantity'; const OTHER = 'picker-other';
 const DISHES = ['imp-26a36c69306143bc', 'vn-kho-01', 'vn-kho-02'];
 const path = (planId: string, slotId: string) => `/meal-planning/plans/${planId}/slots/${encodeURIComponent(slotId)}`;
@@ -41,7 +43,7 @@ function parsedPage(response: Awaited<ReturnType<typeof picker>>) {
   expect(response.status, JSON.stringify(response.json)).toBe(200); return PickerPageDtoSchema.parse(response.json);
 }
 
-describe('scoped dish picker quantity and mutation agreement', () => {
+describe('scoped dish picker quantity and mutation agreement', { timeout: CASE_TIMEOUT }, () => {
   it('subtracts kept dishes, exposes exact required/covered/missing amounts, and noBuy filters the full meal', async () => {
     const plan = await generate(); const slotId = plan.result.meals[0].slotId; exactProteinRequirements();
     const current = await replace(plan.id, slotId, plan.revision, [DISHES[0]]);
@@ -177,7 +179,7 @@ describe('scoped dish picker quantity and mutation agreement', () => {
   });
 });
 
-describe('scoped picker authority, compatibility and pagination witnesses', () => {
+describe('scoped picker authority, compatibility and pagination witnesses', { timeout: CASE_TIMEOUT }, () => {
   it('rejects malformed scope, foreign plans, stale revisions and a foreign excluded component', async () => {
     const plan = await generate(); const slotId = plan.result.meals[0].slotId;
     expect((await h.call(HOUSE, 'GET', '/meal-planning/compositions/picker?noBuy=true')).status).toBe(422);
@@ -301,7 +303,7 @@ describe('scoped picker authority, compatibility and pagination witnesses', () =
   }, 30000);
 });
 
-describe('remaining-week projection after scheduled meals elapse', () => {
+describe('remaining-week projection after scheduled meals elapse', { timeout: CASE_TIMEOUT }, () => {
   const date = T20_INTENT.startDate;
   const slots = [
     { date, mealType: 'lunch', time: '12:00', sequence: 0 },
