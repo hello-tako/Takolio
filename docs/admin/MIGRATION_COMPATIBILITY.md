@@ -1,5 +1,7 @@
 # Admin Console V1 — migration and compatibility report
 
+> **Status:** Superseded by `remediation-r1/REPORT.md` §7 (R1). Migration 0042 described below was withdrawn: admin tables now live in a separate `ADMIN_DB` (`migrations-admin/`), and the customer ledger is identical to `186a9cf`.
+
 ## Migration `0042_admin_console_foundation.sql` (additive)
 
 New tables: `admin_role_assignments`, `admin_sessions`, `admin_audit_events` (append-only triggers),

@@ -1,3 +1,32 @@
+# Takosan Admin V1 security remediation R1 - 2026-10-13
+
+**Status:** ADMIN_V1_REMEDIATION_READY_FOR_INDEPENDENT_REVIEW (local only; not an
+independent review PASS, not deployed). Implementation commit 25140ba; original
+3e865d0 kept (tag admin-v1-review-baseline); review record 6889f8d. Report:
+docs/admin/remediation-r1/REPORT.md (+ REGRESSION.md, evidence/). ADR-ADMIN-002.
+
+**Changes:** console moved to a separate admin Worker (admin-worker.ts,
+wrangler.admin.jsonc disabled template, wrangler.admin-local.jsonc loopback) with
+its own ADMIN_DB (migrations-admin/0001). Customer Worker/config/sw/vite/ledger
+restored to 186a9cf and 0042 withdrawn. Strict env allow-list, exact admin origin,
+session-derived CSRF (no cookie), no CORS, two-person bootstrap, four-eyes
+SUPER_ADMIN grant+revoke, DB minimum two, credential-change session revocation,
+audit-before-disclosure, per-IP/account/global login limits, UI P1 fixes.
+
+**Verification (clean worktree of 25140ba):** full vitest 342 files/7865 tests
+PASS (exit 0); lint, typecheck, build PASS; check:migrations (customer + admin
+smoke) PASS; admin vitest 10 files/133 tests; real workerd check 6/6 scenarios
+(108 checks); S2 reproduced on 3e865d0 under workerd; migration matrix 11/11;
+Playwright admin 12/12 (axe 0 violations, 0 px overflow at 1440/820/390);
+original 51 PoCs: 51/51 on 3e865d0, 21/23 defect PoCs now fail on R1.
+No GitHub/Cloudflare remote call, push, deploy or remote D1 access.
+
+**Next:** independent review of R1; then (separately authorized) admin hostname,
+Cloudflare Access app, ADMIN_DB + KV, reviewed admin-d1-migrate/admin-deploy
+workflows, two-person bootstrap (PRODUCTION_INTEGRATION_PLAN.md).
+
+---
+
 # Takosan Admin Console V1 local implementation - 2026-10-12
 
 **Status:** ADMIN_V1_LOCAL_COMPLETE (local only; not deployed, not production-certified).

@@ -1,6 +1,6 @@
 # Takosan Admin Console V1 — delivery report
 
-**Final status: `ADMIN_V1_LOCAL_COMPLETE`.** Local implementation is complete and ready for independent
+**Current status: `ADMIN_V1_REMEDIATION_READY_FOR_INDEPENDENT_REVIEW` (R1, see [remediation-r1/REPORT.md](remediation-r1/REPORT.md)).** The original delivery below was reported as `ADMIN_V1_LOCAL_COMPLETE` and then reviewed as `ADMIN_V1_REVIEW_CHANGES_REQUIRED` ([review](reviews/2026-10-12-independent-review.md)). Original delivery notes: Local implementation is complete and ready for independent
 review. It has not been deployed and has no production certification.
 
 | # | Deliverable | Location |

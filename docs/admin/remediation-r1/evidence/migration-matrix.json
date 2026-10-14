@@ -1,0 +1,129 @@
+{
+  "generatedAt": "2026-10-14T01:10:47.606Z",
+  "boundary": {
+    "WRANGLER_SEND_METRICS": "false",
+    "remote": "none (wrangler d1 --local only)"
+  },
+  "pass": true,
+  "rows": [
+    {
+      "scenario": "customer ledger identity",
+      "expectation": "HEAD migrations/ equals the pre-admin release (names + SHA-256)",
+      "observed": {
+        "pre": "3167428137ce8575f1ffe01199f75f5de48b5fbcda51ff8c4421dc8063605165",
+        "head": "3167428137ce8575f1ffe01199f75f5de48b5fbcda51ff8c4421dc8063605165",
+        "headStatus": "clean",
+        "count": 41
+      },
+      "pass": true
+    },
+    {
+      "scenario": "DB 0041 + old application (pre-admin release)",
+      "expectation": "deploy ledger gate passes",
+      "observed": {
+        "pass": true
+      },
+      "pass": true
+    },
+    {
+      "scenario": "DB 0041 + new application (remediated HEAD)",
+      "expectation": "deploy ledger gate passes; customer release train unchanged",
+      "observed": {
+        "pass": true
+      },
+      "pass": true
+    },
+    {
+      "scenario": "DB 0041 + new application schema gate",
+      "expectation": "read-only schema gate (HEAD migrations) reports no issue",
+      "observed": {
+        "pass": true,
+        "issues": []
+      },
+      "pass": true
+    },
+    {
+      "scenario": "DB 0041 + ORIGINAL admin commit 3e865d0 (review finding)",
+      "expectation": "deploy gate fails before 0042 is applied (reproduces the release-train block)",
+      "observed": {
+        "pass": false,
+        "error": "D1 migration ledger differs from the release; migration/rollback owner review required"
+      },
+      "pass": true
+    },
+    {
+      "scenario": "DB 0042 (original design) + old application rollback (review finding)",
+      "expectation": "pre-admin release is rejected (reproduces the rollback defect)",
+      "observed": {
+        "pass": false,
+        "error": "D1 migration ledger differs from the release; migration/rollback owner review required"
+      },
+      "pass": true
+    },
+    {
+      "scenario": "DB 0042 (original design) + remediated HEAD",
+      "expectation": "rejected as unexpected forward drift; remediation never needs 0042 in the customer DB",
+      "observed": {
+        "pass": false,
+        "error": "D1 migration ledger differs from the release; migration/rollback owner review required"
+      },
+      "pass": true
+    },
+    {
+      "scenario": "Unexpected extra customer migration",
+      "expectation": "deploy ledger gate and schema gate both reject",
+      "observed": {
+        "ledger": {
+          "pass": false,
+          "error": "D1 migration ledger differs from the release; migration/rollback owner review required"
+        },
+        "schema": {
+          "pass": false,
+          "issues": [
+            {
+              "issue": "unexpected_migration",
+              "detail": "0042_unexpected_drift.sql"
+            }
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "scenario": "Admin DB fresh apply + re-apply",
+      "expectation": "migrations-admin applies once (ledger 1, schema_version 1, 9 triggers); re-apply is a no-op",
+      "observed": {
+        "apply": 0,
+        "reapply": 0,
+        "state": {
+          "ledger": 1,
+          "schema_version": "1",
+          "triggers": 9
+        }
+      },
+      "pass": true
+    },
+    {
+      "scenario": "Failed admin migration",
+      "expectation": "apply fails, the ledger does not record it, no partial admin schema remains (admin Worker stays 503 ADMIN_SCHEMA_MISMATCH)",
+      "observed": {
+        "exit": 1,
+        "state": {
+          "ledger": 0,
+          "admin_tables": 1,
+          "metadata_table": 0
+        },
+        "error": "\u001b[31m✘ \u001b[41;31m[\u001b[41;97mERROR\u001b[41;31m]\u001b[0m \u001b[1mtable admin_audit_events already exists at offset 13: SQLITE_ERROR\u001b[0m"
+      },
+      "pass": true
+    },
+    {
+      "scenario": "Customer application rollback with admin schema present",
+      "expectation": "admin schema is in a separate database; the customer ledger is untouched, so legacy release gates pass",
+      "observed": {
+        "preAdminGate": true
+      },
+      "pass": true
+    }
+  ]
+}

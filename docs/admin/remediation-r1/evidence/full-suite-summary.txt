@@ -1,0 +1,4 @@
+ Test Files  342 passed (342)
+      Tests  7865 passed (7865)
+   Duration  957.42s (transform 12.80s, setup 2.88s, import 68.17s, tests 808.51s, environment 21.34s)
+pnpm-test-exit=0

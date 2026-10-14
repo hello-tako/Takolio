@@ -1,0 +1,103 @@
+{
+  "generatedAt": "2026-10-13T04:17:08.094Z",
+  "mode": "baseline",
+  "root": "/tmp/remed/baseline",
+  "head": "3e865d009ee62a92ed1d9c8d225a36893035670b",
+  "wranglerVersion": "4.149.0",
+  "boundary": {
+    "WRANGLER_SEND_METRICS": "false",
+    "cloudflareApiToken": "empty",
+    "xdgConfigHome": "throwaway temp dir (no OAuth login)",
+    "commands": "wrangler dev --local, wrangler d1 --local, wrangler deploy --dry-run"
+  },
+  "pass": true,
+  "scenarios": [
+    {
+      "name": "baseline customer Worker with ADMIN_CONSOLE_ENABLED=false (expected to REPRODUCE S2)",
+      "pass": true,
+      "checks": [
+        {
+          "label": "navigate /admin/ is answered by the asset layer with the admin shell (bypass reproduced)",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/",
+            "navigate": true,
+            "status": 200,
+            "location": null,
+            "body": "ADMIN_SHELL",
+            "contentType": "text/html; charset=utf-8",
+            "csp": "customer",
+            "cacheControl": "no-cache, no-store, must-revalidate",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "the bypassed response carries the customer CSP, not the admin CSP",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/",
+            "navigate": true,
+            "status": 200,
+            "location": null,
+            "body": "ADMIN_SHELL",
+            "contentType": "text/html; charset=utf-8",
+            "csp": "customer",
+            "cacheControl": "no-cache, no-store, must-revalidate",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "deep link reaches the Worker and is 404",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/users",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": null,
+            "setCookie": [],
+            "cors": [
+              "access-control-allow-credentials",
+              "access-control-expose-headers"
+            ],
+            "json": null
+          }
+        },
+        {
+          "label": "API is 404",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/api/v1/admin/auth/config",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "{\"error\":\"Không tìm thấy.\",\"code\":\"ADMIN_NOT_FOUND\"}",
+            "contentType": "application/json",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "setCookie": [],
+            "cors": [
+              "access-control-allow-credentials",
+              "access-control-expose-headers"
+            ],
+            "json": {
+              "error": "Không tìm thấy.",
+              "code": "ADMIN_NOT_FOUND"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

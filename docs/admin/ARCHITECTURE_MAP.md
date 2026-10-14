@@ -1,5 +1,7 @@
 # Admin Console V1 — architecture map
 
+> **Status:** Superseded by `remediation-r1/REPORT.md` §1 (R1): the console is a separate admin Worker (`src/worker/admin-worker.ts`, `wrangler.admin.jsonc`) with its own database and origin; the customer Worker no longer mounts admin routes or serves admin documents.
+
 ## Existing systems reused (not duplicated)
 
 | Concern | Existing component | How the console uses it |

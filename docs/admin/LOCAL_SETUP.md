@@ -1,63 +1,58 @@
-# Admin Console V1 — local setup
+# Admin Console V1 — local setup (R1)
 
-Everything here is local. No command below contacts Cloudflare or GitHub.
+Everything here is local. Local tooling runs wrangler with `WRANGLER_SEND_METRICS=false`, an empty
+`CLOUDFLARE_API_TOKEN` and a throwaway config home, so a stored `wrangler login` is never used.
 
 ## Prerequisites
 
-Node ≥ 22.13 (verified with 24), pnpm 10, `sqlite3` CLI, and `pnpm install --frozen-lockfile`.
-For E2E only: `pnpm exec playwright install chromium`.
+Node ≥ 22.13 (verified with 24), pnpm 10, `sqlite3` CLI, `pnpm install --frozen-lockfile`.
+For E2E: `pnpm exec playwright install chromium` (if the sandbox sets another `PLAYWRIGHT_BROWSERS_PATH`,
+point it at the installed browsers).
 
-## Option A — isolated preview (fastest; used by E2E)
+## Option A — isolated preview (used by E2E)
 
 ```sh
-pnpm build:web
-pnpm admin:preview            # http://127.0.0.1:8790/admin/
+pnpm build:admin              # dist/admin (admin bundle only)
+pnpm admin:preview            # http://127.0.0.1:8790/admin/  (loopback only)
 ```
 
-The real Worker (`src/worker/index.ts`) serves both the API and the built admin frontend through an
-emulated `ASSETS` binding over `dist/client`. Data lives in in-memory SQLite: the full migration
-ledger plus the deterministic synthetic fixture `synthetic-admin-v1` (every screen shows a
-"Dữ liệu tổng hợp" banner). `POST /__admin-preview/reset` restores the fixture; it exists only in
-this Node preview, not in the Worker. External network is disabled.
+The real admin Worker serves documents, assets and API on one origin. Both databases are in-memory SQLite:
+customer migrations + `migrations-admin` + the deterministic synthetic fixture (`synthetic-admin-v1`; every screen
+shows the "Dữ liệu tổng hợp" banner). `POST /__admin-preview/reset` restores the fixture (preview only).
 
 Fixture accounts (password `Local-Fixture-Only-2026!`, local fixture only):
 
 | Email | Role |
 |---|---|
-| `super@fixture.takosan.test` | SUPER_ADMIN (bootstrap) |
-| `super2@fixture.takosan.test` | SUPER_ADMIN (second approver) |
-| `ops@fixture.takosan.test` | OPERATIONS_ADMIN |
-| `content@fixture.takosan.test` | CONTENT_EDITOR |
-| `support@fixture.takosan.test` | SUPPORT_AGENT |
-| `auditor@fixture.takosan.test` | READ_ONLY_AUDITOR |
-| `revoked@fixture.takosan.test` | revoked role → denied |
-| `owner@fixture.takosan.test` | household owner, no platform role → denied |
+| `super@fixture.takosan.test`, `super2@fixture.takosan.test` | SUPER_ADMIN (two-person bootstrap) |
+| `ops@…`, `content@…`, `support@…`, `auditor@…` | OPERATIONS_ADMIN, CONTENT_EDITOR, SUPPORT_AGENT, READ_ONLY_AUDITOR |
+| `revoked@…` | revoked role → denied |
+| `owner@…` | household owner, no platform role → denied |
 
-## Option B — wrangler dev against local D1 (Miniflare)
+## Option B — real workerd (`wrangler dev --local`)
 
 ```sh
-pnpm admin:local:reset -- --yes   # wipe .wrangler/state D1, apply migrations, seed fixture
-pnpm build:web
-pnpm dev:worker                    # wrangler dev, ENVIRONMENT=development, local bindings
-pnpm dev:web                       # Vite :5173 proxies /api → :8787; open http://localhost:5173/admin/
+pnpm admin:local:reset -- --yes   # local frigo-db + takosan-admin-db: migrations + fixture
+pnpm build:admin
+pnpm admin:dev                    # wrangler dev -c wrangler.admin-local.jsonc on http://127.0.0.1:8799/admin/
 ```
 
-To bootstrap a real local account instead of the fixture (one-time; refuses if an active
-SUPER_ADMIN exists, outside `ENVIRONMENT=development`, in CI, with `--remote`/`--env`, or when
-`CLOUDFLARE_API_TOKEN` is set):
+`wrangler.admin-local.jsonc` is the only config that compiles the local password login (`__ADMIN_LOCAL_AUTH__`)
+and it binds `ADMIN_ORIGIN` to loopback. Never deploy it.
+
+Bootstrap two real local accounts instead of the fixture (one-time; refuses outside `ENVIRONMENT=development`,
+in CI, with `--remote/--env`, or when `CLOUDFLARE_API_TOKEN` is set):
 
 ```sh
-pnpm admin:provision -- --local --email you@example.test --create-account --password '<12+ chars>' --name 'You'
-# or for an existing verified local account:
-pnpm admin:provision -- --local --email you@example.test
+pnpm admin:provision -- --local --create-accounts --password '<12+ chars>' --email a@example.test --email b@example.test
 ```
 
-## Tests
+## Checks
 
 ```sh
-pnpm exec vitest run tests/integration/admin-* tests/unit/admin-*   # backend security + frontend + tooling
-pnpm test:admin:e2e                                                 # build + Playwright against admin-preview
-pnpm check                                                          # repository gate (lint, types, tests, migrations, build)
+pnpm check:migrations                         # customer smoke + admin smoke (trigger invariants)
+pnpm exec vitest run tests/integration/admin- tests/unit/admin-
+pnpm test:admin:e2e                           # build:admin + Playwright (12 tests incl. axe + 3 viewports)
+pnpm admin:workerd:check                      # real workerd routing evidence (needs pnpm build)
+pnpm admin:migration:matrix                   # offline migration/rollback matrix against committed HEAD
 ```
-
-E2E screenshots are written to `docs/admin/screenshots/`.

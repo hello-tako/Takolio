@@ -1,73 +1,85 @@
 # Admin Console V1 — staging/production integration plan (NOT executed)
 
-Nothing in this plan has been run. Production integration is a separately authorized operation and
-must go through the existing GitHub Environment approvals and release gates (`deploy.yml`,
-`production-d1-migrate.yml`). The console adds **no** deploy, migrate, or flag buttons.
+Revision R1 (supersedes the 2026-10-12 plan). Nothing here has been run. Production integration needs separate
+authorization and must go through GitHub Environment approvals and reviewed workflows. The console has no deploy,
+migrate, flag, payment or entitlement buttons.
 
-## Default production behavior of this code
+## 1. What a merge of R1 changes in production
 
-Deploying this code without new configuration changes nothing user-visible:
-`ENVIRONMENT=production` without `ADMIN_CONSOLE_ENABLED=true` → `/admin*` and `/api/v1/admin/*`
-return 404. With the console enabled but Access not configured, admin APIs fail closed with
-`503 ADMIN_AUTH_NOT_CONFIGURED`; password login is never available in production.
+- **Nothing in the customer Worker.** `src/worker/index.ts`, configs, service worker, build output (`dist/client`)
+  and the customer migration ledger are identical to `186a9cf05de7c91ed3289e13130feb3b38a264ac`; `deploy.yml` deploys `wrangler.jsonc` only.
+- The customer release gates (`d1-schema-gate.sh remote`, `release-check.mjs schema`, exact-SHA CI, D1 identity) are
+  untouched and keep passing against today's 0041 ledger (proven offline: `remediation-r1/evidence/migration-matrix.json`).
+- The admin Worker (`wrangler.admin.jsonc`) is **not** deployed by any existing workflow and is disabled by default.
 
-## Cloudflare Access contract
+## 2. Prerequisites (all required before staging)
 
-- Dedicated hostname (recommended `admin.<domain>`), set as `ADMIN_HOSTNAME`; admin API and HTML are
-  served only for that host. Add a Worker custom-domain route for it in `wrangler.jsonc`.
-- Create an Access self-hosted application for the hostname (path `/*`), policy restricted to named
-  staff identities, session ≤ 8h.
-- Worker vars: `ADMIN_CONSOLE_ENABLED=true`, `ADMIN_AUTH_MODE=cloudflare_access`,
-  `ADMIN_ACCESS_TEAM_DOMAIN=<team>.cloudflareaccess.com`, `ADMIN_ACCESS_AUD=<application AUD tag>`.
-- The Worker verifies `Cf-Access-Jwt-Assertion` (RS256 against `https://<team>/cdn-cgi/access/certs`,
-  `aud`, `iss`, `exp/nbf`) on login **and every request**, and requires the Access email to equal the
-  admin session user's account email. Access alone grants nothing: an active
-  `admin_role_assignments` row is still required.
-- The verifier was unit-tested with a locally generated RSA key only; it has **not** been verified
-  against a real Access tenant.
+| # | Item | Owner | Status |
+|---|---|---|---|
+| 1 | Independent security review of R1 (re-run REPORT §6–§10) | reviewer | open |
+| 2 | Dedicated admin hostname per environment (e.g. `admin-staging.<domain>`, `admin.<domain>`), distinct from the customer host | ops | open |
+| 3 | Cloudflare Access self-hosted application per hostname (`/*`), named-staff policy, session ≤ 8 h; record team domain + AUD | security | open |
+| 4 | `takosan-admin-db` D1 per environment; real ids replace the all-zero placeholders | ops | open |
+| 5 | KV namespace for admin rate limits (fail closed without it) | ops | open |
+| 6 | Reviewed workflows: `admin-d1-migrate.yml` (migrations-admin only, Environment approval, exact SHA, ledger check) and `admin-deploy.yml` (`wrangler deploy -c wrangler.admin.jsonc`, Environment approval, exact SHA, post-deploy checks) | release | open — not created in R1 |
+| 7 | Two-person bootstrap procedure for the first two SUPER_ADMINs (§5) | security | open |
+| 8 | Audit retention/export policy; alerting on `admin.login` failures, `admin.csrf.denied`, `admin.permission.denied` spikes | security/ops | open |
+| 9 | Optional `ADMIN_AUDIT_HMAC_SECRET` (≥ 32 chars) Worker secret for audit IP hashing | security | open |
 
-## D1 migration sequence
+## 3. Admin Worker configuration
 
-1. Staging: apply `0042_admin_console_foundation.sql` through the existing staging migrate workflow;
-   run `schema:check` and the staging readiness checks.
-2. Production: the production migrate workflow pins an allow-list of migrations
-   (`production-d1-migrate.yml`, tested by `tests/unit/production-migration-preflight.test.mjs`).
-   0042 must be added there through a reviewed PR; it was intentionally **not** changed here.
-3. After it is applied, append the 0042 SHA-256 to `tests/fixtures/migration-sha256.json` (repository
-   rule: pin only after merge + apply).
-4. 0042 is additive: new tables and four indexes on `users`, `sessions_v2`, `ai_requests`. Rollback
-   needs no schema change (disable the console); the tables can stay.
+`wrangler.admin.jsonc` vars per environment:
+`ENVIRONMENT` (`staging`/`production`), `ADMIN_CONSOLE_ENABLED` (`false` until go-live), `ADMIN_AUTH_MODE=cloudflare_access`,
+`ADMIN_ORIGIN=https://<admin host>`, `CUSTOMER_APP_URL=<customer URL>`, `ADMIN_ACCESS_TEAM_DOMAIN=<team>.cloudflareaccess.com`,
+`ADMIN_ACCESS_AUD=<AUD>`. Add a custom-domain route for the admin host. Never add a `define` for `__ADMIN_LOCAL_AUTH__`.
+Bindings: `DB` (customer, read through `readOnlyDatabase()`), `ADMIN_DB`, `CACHE`, `ASSETS` (`dist/admin`, `run_worker_first: true`).
 
-## Bootstrap in production
+## 4. Ordered sequence (staging first, then production)
 
-There is no endpoint for it, and the CLI refuses non-development environments. The first production
-SUPER_ADMIN needs a reviewed one-off SQL change through the protected migration/operations path
-(two-person review), recorded in `admin_audit_events` with `grant_source='local_bootstrap'` semantics.
-That procedure needs its own authorization and is a blocker.
+1. Merge R1 to main through the normal PR + CI. No production effect (§1).
+2. Create admin D1 + KV, Access application, DNS route (prerequisites 2–5).
+3. Run the reviewed `admin-d1-migrate` for `migrations-admin/0001` (approval). Verify ledger = 1, `schema_version` = 1, 9 triggers.
+4. Run the bootstrap procedure (§5) — two SUPER_ADMINs.
+5. Deploy the admin Worker with `ADMIN_CONSOLE_ENABLED=false`; verify every admin path is 404.
+6. Set `ADMIN_CONSOLE_ENABLED=true` (approved change); run the staging verification (§6).
+7. Repeat 2–6 for production with production approvals.
 
-## Bindings and environment
+## 5. First-administrator bootstrap (two-person)
 
-Uses the existing `DB`, `CACHE` (rate limits; login and writes fail closed in production without
-KV), and `ASSETS`. No new secrets. `JWT_SECRET` (existing) keys the audit IP HMAC.
+No HTTP endpoint exists. The local CLI refuses non-development environments. For staging/production:
 
-## Staging verification procedure
+1. Two named operators, each with a verified customer account, agree on the two emails.
+2. An operator resolves both `user_id`s with a read-only query on the customer DB.
+3. The SQL is generated by `buildBootstrapAdminSql` (`scripts/admin-local-lib.mjs`), reviewed by the second operator,
+   and executed through a protected, approved workflow against `ADMIN_DB`. It inserts **both** SUPER_ADMIN rows in one
+   statement only if no assignment ever existed, sets `bootstrap_completed_at`, and writes two audit events; a trigger then
+   rejects any further `operator_bootstrap` grant.
+4. From then on, SUPER_ADMIN grants and revocations require approval by a different SUPER_ADMIN, and the database keeps
+   at least two active SUPER_ADMINs.
 
-1. Deploy to staging via the existing workflow with Access configured for a staging admin host.
-2. Check: unauthenticated `/api/v1/admin/me` returns 401; an Access-only identity without a role is
-   denied; role-bound identities see exactly their matrix; mutations without `X-Admin-CSRF` return 403;
-   audit rows appear for login, denial, and mutations.
-3. Check that the customer app regression suite and `/api/v1/health/ready` are unchanged.
+## 6. Staging verification
 
-## Health checks and rollback
+- Unauthenticated: every `/admin*` and `/api/v1/admin/*` without Access → blocked by Access; with the console flag false → 404.
+- Access identity without a role → `ADMIN_INVALID_CREDENTIALS`; role-bound identities see exactly the RBAC matrix.
+- Login from the customer origin → 403; mutations without `X-Admin-CSRF` → 403; no `Access-Control-*` headers.
+- Changing the operator's password or verification revokes the admin session.
+- Audit rows for login, denial, PII reveal, role changes.
+- Customer app regression suite and `/api/v1/health/ready` unchanged.
+- Re-run `scripts/admin-workerd-check.mjs` scenarios against staging (equivalent HTTP checks).
 
-- Health: the existing `/api/v1/health/ready`. Admin status is at `/api/v1/admin/system/status`
-  (authenticated).
-- Rollback: set `ADMIN_CONSOLE_ENABLED=false` (immediate 404), or redeploy the previous release.
-  Admin sessions can be revoked in bulk with
-  `UPDATE admin_sessions SET revoked_at=…, revoked_reason='admin_revoked'` through the protected ops path.
+## 7. Health checks, rollback and failure handling
 
-## Independent security review gates (before enabling)
+- Health: customer `/api/v1/health/ready` (unchanged); admin `/api/v1/admin/system/status` (authenticated).
+- **Disable fast:** set `ADMIN_CONSOLE_ENABLED=false` → every admin path 404. Revoke all admin sessions with
+  `UPDATE admin_sessions SET revoked_at=…, revoked_reason='admin_revoked' WHERE revoked_at IS NULL` via the protected path.
+- **Roll back the admin Worker:** redeploy the previous admin Worker version. The additive admin schema stays; a
+  Worker expecting a different `schema_version` fails closed (503).
+- **Roll back the customer app:** unaffected by admin schema (separate DB); existing customer rollback rules apply.
+- **Failed admin migration:** D1 records nothing and keeps no partial schema (offline proof); fix and re-run. The admin
+  Worker refuses to serve (503 `ADMIN_SCHEMA_MISMATCH`) meanwhile.
 
-Access policy review · Access JWT verification against a real tenant · production bootstrap procedure ·
-audit retention/export policy · rate-limit KV fail-closed confirmation · PII reveal policy sign-off ·
-penetration test of `/api/v1/admin/*` on staging.
+## 8. Independent security review gates (before enabling in production)
+
+Access JWT verification against the real tenant · Access policy review · bootstrap dry run on staging ·
+penetration test of the admin host · audit retention/alerting sign-off · confirmation that `wrangler.admin.jsonc`
+in the deployed artifact has no `define` and no fixture marker in `ADMIN_DB`.

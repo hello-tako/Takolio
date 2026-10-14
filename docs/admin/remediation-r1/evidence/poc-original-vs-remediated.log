@@ -1,0 +1,599 @@
+
+ RUN  v4.1.11 /tmp/hoplite/workspace
+
+ × .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts > H1: ADMIN_HOSTNAME split from APP_URL > H1a CONFIRMED: login from the admin origin is refused with ADMIN_CSRF_FAILED 144ms
+   → expected 404 to be 403 // Object.is equality
+ × .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts > H1: ADMIN_HOSTNAME split from APP_URL > H1b CONFIRMED: the customer origin (APP_URL) is the origin accepted for admin login on the admin host 121ms
+   → expected 404 to be 200 // Object.is equality
+ × .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts > H1: ADMIN_HOSTNAME split from APP_URL > H1c control: when APP_URL equals the admin host, login from the admin origin works 110ms
+   → expected 404 to be 200 // Object.is equality
+ × .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts > H1: ADMIN_HOSTNAME split from APP_URL > H1d CONFIRMED: admin mutations are refused from the admin origin and accepted from the customer origin 108ms
+   → expected 404 to be 403 // Object.is equality
+ × .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts > H1: ADMIN_HOSTNAME split from APP_URL > H1e CONFIRMED: admin API responses reflect the customer origin with credentials (CORS trust follows APP_URL) 136ms
+   → Cannot read properties of undefined (reading 'cookie')
+ × .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts > CSRF and Origin enforcement (colocated console) > refuses a foreign, null, or missing origin and accepts a trusted Referer only as fallback 132ms
+   → expected 403 to be 200 // Object.is equality
+ ✓ .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts > CSRF and Origin enforcement (colocated console) > refuses a wrong CSRF token even with a trusted origin, and audits the denial 121ms
+ × .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts > H2: ENVIRONMENT missing, empty or non-canonical > H2a CONFIRMED: ENVIRONMENT undefined -> console enabled, mode=password, password login succeeds 118ms
+   → expected 404 to be 200 // Object.is equality
+ × .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts > H2: ENVIRONMENT missing, empty or non-canonical > H2b CONFIRMED: ENVIRONMENT="" behaves identically to undefined 131ms
+   → Cannot read properties of null (reading 'data')
+ × .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts > H2: ENVIRONMENT missing, empty or non-canonical > H2c CONFIRMED: ENVIRONMENT="Production" (wrong case) is not 404 and enables the console by default 125ms
+   → expected 404 to be 200 // Object.is equality
+ × .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts > H2: ENVIRONMENT missing, empty or non-canonical > H2d CONFIRMED: ENVIRONMENT="staging" exposes the console by default; password login needs only an extra flag 114ms
+   → expected 404 to be 200 // Object.is equality
+ × .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts > H2: ENVIRONMENT missing, empty or non-canonical > H2e control: ENVIRONMENT=production fails closed (404 unless ADMIN_CONSOLE_ENABLED=true; no password mode) 109ms
+   → Cannot read properties of null (reading 'data')
+ × .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts > H8: host separation and cookie exposure > H8a CONFIRMED (colocated): CSRF cookie is script-readable; session cookie is HttpOnly 125ms
+   → .toMatch() expects to receive a string, but got undefined
+ × .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts > H8: host separation and cookie exposure > H8b CONFIRMED (colocated XSS model): same-origin script reads the CSRF cookie and performs a privileged mutation 120ms
+   → Cannot read properties of null (reading '1')
+ × .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts > H8: host separation and cookie exposure > H8c CONFIRMED (ADMIN_HOSTNAME set): customer API and SPA fallback are still served on the admin host 106ms
+   → expected 404 to be 200 // Object.is equality
+ × .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts > H8: host separation and cookie exposure > H8d control (ADMIN_HOSTNAME set): admin API is not reachable on the customer host 114ms
+   → Cannot read properties of null (reading 'code')
+ × .hoplite/artifacts/review-poc-r1/h5-h6-h9-h10-pii-session-login.test.ts > H5: PII reveal and audit > H5 CONFIRMED: email is returned even though the audit insert fails 226ms
+   → expected 503 to be 200 // Object.is equality
+ ✓ .hoplite/artifacts/review-poc-r1/h5-h6-h9-h10-pii-session-login.test.ts > H5: PII reveal and audit > control: with audit available the reveal is recorded 124ms
+ × .hoplite/artifacts/review-poc-r1/h5-h6-h9-h10-pii-session-login.test.ts > H6: credential change vs admin sessions > H6 CONFIRMED: rotating the customer credential row leaves the admin session valid 122ms
+   → expected 401 to be 200 // Object.is equality
+ ✓ .hoplite/artifacts/review-poc-r1/h5-h6-h9-h10-pii-session-login.test.ts > H9: login brute-force controls > H9a CONFIRMED: no per-account throttle; 10 wrong passwords from 10 IPs are all 401 256ms
+ ✓ .hoplite/artifacts/review-poc-r1/h5-h6-h9-h10-pii-session-login.test.ts > H9: login brute-force controls > H9b control: the per-IP limit (5/min) applies to one source 189ms
+ × .hoplite/artifacts/review-poc-r1/h5-h6-h9-h10-pii-session-login.test.ts > H9: login brute-force controls > H9c CONFIRMED (no CF header, e.g. non-Cloudflare ingress): rotating X-Forwarded-For bypasses the limiter 182ms
+   → expected [ 401, 401, 401, 401, 401, 429, …(2) ] to deeply equal [ 401, 401, 401, 401, 401, 401, …(2) ]
+ × .hoplite/artifacts/review-poc-r1/h5-h6-h9-h10-pii-session-login.test.ts > H10: data exposure to non-PII roles > H10 CONFIRMED: users.read roles confirm a full email via search with no audit trail 150ms
+   → expected +0 to be 1 // Object.is equality
+ ✓ .hoplite/artifacts/review-poc-r1/h5-h6-h9-h10-pii-session-login.test.ts > H10: data exposure to non-PII roles > control: the same auditor is denied the explicit reveal (403) and that denial is audited 125ms
+ × .hoplite/artifacts/review-poc-r1/session-access-lifecycle.test.ts > Cloudflare Access mode > a valid assertion for an admin email creates a cloudflare_access session 217ms
+   → expected undefined to be defined
+ ✓ .hoplite/artifacts/review-poc-r1/session-access-lifecycle.test.ts > Cloudflare Access mode > a valid assertion for a non-admin identity is refused with the generic credential error 191ms
+ ✓ .hoplite/artifacts/review-poc-r1/session-access-lifecycle.test.ts > Cloudflare Access mode > password login is not offered in Access mode 129ms
+ × .hoplite/artifacts/review-poc-r1/session-access-lifecycle.test.ts > Cloudflare Access mode > an existing Access session is denied when the assertion header is absent 149ms
+   → expected 'ADMIN_UNAUTHENTICATED' to be 'ADMIN_ACCESS_DENIED' // Object.is equality
+ × .hoplite/artifacts/review-poc-r1/session-access-lifecycle.test.ts > Cloudflare Access mode > production with ADMIN_AUTH_MODE=cloudflare_access but no AUD fails closed (503) 164ms
+   → expected 404 to be 503 // Object.is equality
+ ✓ .hoplite/artifacts/review-poc-r1/session-access-lifecycle.test.ts > session lifecycle > logout revokes the session server-side 152ms
+ ✓ .hoplite/artifacts/review-poc-r1/session-access-lifecycle.test.ts > session lifecycle > an absolute-expired session is rejected 190ms
+ ✓ .hoplite/artifacts/review-poc-r1/session-access-lifecycle.test.ts > session lifecycle > an idle-expired session is rejected even when absolute expiry is in the future 162ms
+ × .hoplite/artifacts/review-poc-r1/gate-c-db-writeset.test.ts > Gate C: write-set of the admin console > a full admin workflow writes only admin_* tables (DB triggers capture every INSERT/UPDATE/DELETE, incl. cascades) 198ms
+   → expected 201 to be 200 // Object.is equality
+ ✓ .hoplite/artifacts/review-poc-r1/gate-c-db-writeset.test.ts > Gate C: migration constraints and existing-flow impact > admin_audit_events is append-only and has no FK to users (audit survives user deletion) 108ms
+ ✓ .hoplite/artifacts/review-poc-r1/gate-c-db-writeset.test.ts > Gate C: migration constraints and existing-flow impact > latent: a SUPER_ADMIN that granted roles cannot be deleted from users (granted_by has no ON DELETE) 106ms
+ × .hoplite/artifacts/review-poc-r1/gate-c-db-writeset.test.ts > Gate C: migration constraints and existing-flow impact > latent: deleting a user cascades away their admin grant history while the audit trail remains 109ms
+   → expected 1 to be +0 // Object.is equality
+ × .hoplite/artifacts/review-poc-r1/gate-c-db-writeset.test.ts > Gate C: migration constraints and existing-flow impact > latent: deleting a recipe silently cascades its editorial review history 168ms
+   → expected 1 to be +0 // Object.is equality
+ × .hoplite/artifacts/review-poc-r1/h3-h4-h7-roles-approvals.test.ts > H3: exactly one SUPER_ADMIN > H3 CONFIRMED: with a single active SUPER_ADMIN, no product path yields a second one 163ms
+   → at least two active SUPER_ADMIN assignments must remain
+ × .hoplite/artifacts/review-poc-r1/h3-h4-h7-roles-approvals.test.ts > H4 and H7: revocation and stale approvals > H4 CONFIRMED: one SUPER_ADMIN revokes another without four-eyes, and the revoked session dies 273ms
+   → expected 409 to be 200 // Object.is equality
+ ✓ .hoplite/artifacts/review-poc-r1/h3-h4-h7-roles-approvals.test.ts > H4 and H7: revocation and stale approvals > control: a SUPER_ADMIN cannot revoke its own grant 144ms
+ × .hoplite/artifacts/review-poc-r1/h3-h4-h7-roles-approvals.test.ts > H4 and H7: revocation and stale approvals > H7 CONFIRMED: approval requested by a since-revoked SUPER_ADMIN is still approvable and grants SUPER_ADMIN 145ms
+   → expected 409 to be 200 // Object.is equality
+ ✓ .hoplite/artifacts/review-poc-r1/access-verifier.test.ts > Cloudflare Access assertion verifier > accepts a correctly signed token and lowercases the email 130ms
+ ✓ .hoplite/artifacts/review-poc-r1/access-verifier.test.ts > Cloudflare Access assertion verifier > rejects alg=none and non-RS256 headers 22ms
+ ✓ .hoplite/artifacts/review-poc-r1/access-verifier.test.ts > Cloudflare Access assertion verifier > rejects wrong audience, wrong issuer, expired, and missing exp 40ms
+ ✓ .hoplite/artifacts/review-poc-r1/access-verifier.test.ts > Cloudflare Access assertion verifier > rejects a signature made by another key that reuses the trusted kid 119ms
+ ✓ .hoplite/artifacts/review-poc-r1/access-verifier.test.ts > Cloudflare Access assertion verifier > accepts an audience array that contains the configured AUD 69ms
+ × .hoplite/artifacts/review-poc-r1/access-verifier.test.ts > Cloudflare Access assertion verifier > observed: an unknown kid forces a JWKS refetch on every request (no negative caching) 106ms
+   → expected +0 to be 3 // Object.is equality
+ ✓ .hoplite/artifacts/review-poc-r1/authz-matrix.test.ts > endpoint authorization matrix (derived from ADMIN_PERMISSION_MATRIX) > anonymous requests are 401 on every read and mutation 184ms
+ ✓ .hoplite/artifacts/review-poc-r1/authz-matrix.test.ts > endpoint authorization matrix (derived from ADMIN_PERMISSION_MATRIX) > each role gets exactly the reads the matrix grants; others get 403 ADMIN_FORBIDDEN 445ms
+ ✓ .hoplite/artifacts/review-poc-r1/authz-matrix.test.ts > endpoint authorization matrix (derived from ADMIN_PERMISSION_MATRIX) > each role is denied mutations it lacks the permission for, with no side effect 228ms
+ ✓ .hoplite/artifacts/review-poc-r1/authz-matrix.test.ts > endpoint authorization matrix (derived from ADMIN_PERMISSION_MATRIX) > revoked admin, household owner and plain customer cannot obtain a session 151ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 29 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  .hoplite/artifacts/review-poc-r1/access-verifier.test.ts > Cloudflare Access assertion verifier > observed: an unknown kid forces a JWKS refetch on every request (no negative caching)
+AssertionError: expected +0 to be 3 // Object.is equality
+
+- Expected
++ Received
+
+- 3
++ 0
+
+ ❯ .hoplite/artifacts/review-poc-r1/access-verifier.test.ts:72:28
+     70|       expect(await verifyAccessAssertion(await token(ghost.privateKey,…
+     71|     }
+     72|     expect(calls - before).toBe(3);
+       |                            ^
+     73|   });
+     74| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/29]⎯
+
+ FAIL  .hoplite/artifacts/review-poc-r1/gate-c-db-writeset.test.ts > Gate C: write-set of the admin console > a full admin workflow writes only admin_* tables (DB triggers capture every INSERT/UPDATE/DELETE, incl. cascades)
+AssertionError: expected 201 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 201
+
+ ❯ .hoplite/artifacts/review-poc-r1/gate-c-db-writeset.test.ts:33:100
+     31|     expect((await mutate(env, s2.session, 'POST', `/api/v1/admin/appro…
+     32|     const opsGrant = rows(t.db, "SELECT id FROM admin_role_assignments…
+     33|     expect((await mutate(env, s1.session, 'DELETE', `/api/v1/admin/rol…
+       |                                                                                                    ^
+     34|     const s3 = await login(env, FX('super2'));
+     35|     expect((await mutate(env, s1.session, 'POST', `/api/v1/admin/sessi…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/29]⎯
+
+ FAIL  .hoplite/artifacts/review-poc-r1/gate-c-db-writeset.test.ts > Gate C: migration constraints and existing-flow impact > latent: deleting a user cascades away their admin grant history while the audit trail remains
+AssertionError: expected 1 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 1
+
+ ❯ .hoplite/artifacts/review-poc-r1/gate-c-db-writeset.test.ts:72:115
+     70|     try { t.db.seed("DELETE FROM users WHERE id = 'fx_admin_super2';")…
+     71|     expect(deleteError).toBeNull();
+     72|     expect(rows(t.db, "SELECT COUNT(*) AS n FROM admin_role_assignment…
+       |                                                                                                                   ^
+     73|     expect(rows(t.db, "SELECT COUNT(*) AS n FROM admin_audit_events WH…
+     74|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/29]⎯
+
+ FAIL  .hoplite/artifacts/review-poc-r1/gate-c-db-writeset.test.ts > Gate C: migration constraints and existing-flow impact > latent: deleting a recipe silently cascades its editorial review history
+AssertionError: expected 1 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 1
+
+ ❯ .hoplite/artifacts/review-poc-r1/gate-c-db-writeset.test.ts:81:112
+     79|       VALUES ('rev_poc_1', '${recipe.id}', ${Number(recipe.version)}, …
+     80|     t.db.seed(`DELETE FROM recipes WHERE id = '${recipe.id}';`);
+     81|     expect(rows(t.db, "SELECT COUNT(*) AS n FROM admin_recipe_editoria…
+       |                                                                                                                ^
+     82|   });
+     83| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/29]⎯
+
+ FAIL  .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts > H1: ADMIN_HOSTNAME split from APP_URL > H1a CONFIRMED: login from the admin origin is refused with ADMIN_CSRF_FAILED
+AssertionError: expected 404 to be 403 // Object.is equality
+
+- Expected
++ Received
+
+- 403
++ 404
+
+ ❯ .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts:11:24
+      9|   it('H1a CONFIRMED: login from the admin origin is refused with ADMIN…
+     10|     const { res } = await login(makeEnv(t.db, splitHost), FX('super'),…
+     11|     expect(res.status).toBe(403);
+       |                        ^
+     12|     expect(res.json.code).toBe('ADMIN_CSRF_FAILED');
+     13|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/29]⎯
+
+ FAIL  .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts > H1: ADMIN_HOSTNAME split from APP_URL > H1b CONFIRMED: the customer origin (APP_URL) is the origin accepted for admin login on the admin host
+AssertionError: expected 404 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 404
+
+ ❯ .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts:17:24
+     15|   it('H1b CONFIRMED: the customer origin (APP_URL) is the origin accep…
+     16|     const { res, session } = await login(makeEnv(t.db, splitHost), FX(…
+     17|     expect(res.status).toBe(200);
+       |                        ^
+     18|     expect(session).toBeDefined();
+     19|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/29]⎯
+
+ FAIL  .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts > H1: ADMIN_HOSTNAME split from APP_URL > H1c control: when APP_URL equals the admin host, login from the admin origin works
+AssertionError: expected 404 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 404
+
+ ❯ .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts:24:24
+     22|     const env = makeEnv(t.db, { APP_URL: ADMIN_BASE, ADMIN_HOSTNAME: '…
+     23|     const { res } = await login(env, FX('super'), ADMIN_BASE, ADMIN_BA…
+     24|     expect(res.status).toBe(200);
+       |                        ^
+     25|   });
+     26|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/29]⎯
+
+ FAIL  .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts > H1: ADMIN_HOSTNAME split from APP_URL > H1d CONFIRMED: admin mutations are refused from the admin origin and accepted from the customer origin
+AssertionError: expected 404 to be 403 // Object.is equality
+
+- Expected
++ Received
+
+- 403
++ 404
+
+ ❯ .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts:31:27
+     29|     const { session } = await login(env, FX('super'), ADMIN_BASE, APP_…
+     30|     const denied = await mutate(env, session, 'PUT', '/api/v1/admin/pr…
+     31|     expect(denied.status).toBe(403);
+       |                           ^
+     32|     expect(denied.json.code).toBe('ADMIN_CSRF_FAILED');
+     33|     const allowed = await mutate(env, session, 'PUT', '/api/v1/admin/p…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/29]⎯
+
+ FAIL  .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts > H1: ADMIN_HOSTNAME split from APP_URL > H1e CONFIRMED: admin API responses reflect the customer origin with credentials (CORS trust follows APP_URL)
+TypeError: Cannot read properties of undefined (reading 'cookie')
+ ❯ .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts:40:100
+     38|     const env = makeEnv(t.db, splitHost);
+     39|     const { session } = await login(env, FX('super'), ADMIN_BASE, APP_…
+     40|     const fromApp = await send(env, `${ADMIN_BASE}/api/v1/admin/me`, {…
+       |                                                                                                    ^
+     41|     expect(fromApp.status).toBe(200);
+     42|     expect(fromApp.headers.get('access-control-allow-origin')).toBe(AP…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/29]⎯
+
+ FAIL  .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts > CSRF and Origin enforcement (colocated console) > refuses a foreign, null, or missing origin and accepts a trusted Referer only as fallback
+AssertionError: expected 403 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 403
+
+ ❯ .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts:62:28
+     60|     const referer = await send(e, `${DEV_BASE}/api/v1/admin/preference…
+     61|       headers: { Cookie: session!.cookie, 'X-Admin-CSRF': session!.csr…
+     62|     expect(referer.status).toBe(200);
+       |                            ^
+     63|   });
+     64|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/29]⎯
+
+ FAIL  .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts > H2: ENVIRONMENT missing, empty or non-canonical > H2a CONFIRMED: ENVIRONMENT undefined -> console enabled, mode=password, password login succeeds
+AssertionError: expected 404 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 404
+
+ ❯ .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts:79:24
+     77|     const env = makeEnv(t.db, { ENVIRONMENT: undefined });
+     78|     const cfg = await read(env, undefined, '/api/v1/admin/auth/config'…
+     79|     expect(cfg.status).toBe(200);
+       |                        ^
+     80|     expect(cfg.json.data.mode).toBe('password');
+     81|     expect(cfg.json.data.environment).toBe('development');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/29]⎯
+
+ FAIL  .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts > H2: ENVIRONMENT missing, empty or non-canonical > H2b CONFIRMED: ENVIRONMENT="" behaves identically to undefined
+TypeError: Cannot read properties of null (reading 'data')
+ ❯ .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts:89:75
+     87|   it('H2b CONFIRMED: ENVIRONMENT="" behaves identically to undefined',…
+     88|     const env = makeEnv(t.db, { ENVIRONMENT: '' });
+     89|     expect((await read(env, undefined, '/api/v1/admin/auth/config')).j…
+       |                                                                           ^
+     90|     expect((await login(env, FX('super'))).res.status).toBe(200);
+     91|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/29]⎯
+
+ FAIL  .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts > H2: ENVIRONMENT missing, empty or non-canonical > H2c CONFIRMED: ENVIRONMENT="Production" (wrong case) is not 404 and enables the console by default
+AssertionError: expected 404 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 404
+
+ ❯ .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts:96:24
+     94|     const env = makeEnv(t.db, { ENVIRONMENT: 'Production', APP_URL: DE…
+     95|     const cfg = await read(env, undefined, '/api/v1/admin/auth/config'…
+     96|     expect(cfg.status).toBe(200);
+       |                        ^
+     97|     expect(cfg.json.data.mode).toBe('unavailable');
+     98|     const withFlag = makeEnv(t.db, { ENVIRONMENT: 'Production', APP_UR…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/29]⎯
+
+ FAIL  .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts > H2: ENVIRONMENT missing, empty or non-canonical > H2d CONFIRMED: ENVIRONMENT="staging" exposes the console by default; password login needs only an extra flag
+AssertionError: expected 404 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 404
+
+ ❯ .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts:104:78
+    102|   it('H2d CONFIRMED: ENVIRONMENT="staging" exposes the console by defa…
+    103|     const env = makeEnv(t.db, { ENVIRONMENT: 'staging' });
+    104|     expect((await read(env, undefined, '/api/v1/admin/auth/config')).s…
+       |                                                                              ^
+    105|     expect((await login(env, FX('super'))).res.status).toBe(503);
+    106|     const flagged = makeEnv(t.db, { ENVIRONMENT: 'staging', ADMIN_PASS…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/29]⎯
+
+ FAIL  .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts > H2: ENVIRONMENT missing, empty or non-canonical > H2e control: ENVIRONMENT=production fails closed (404 unless ADMIN_CONSOLE_ENABLED=true; no password mode)
+TypeError: Cannot read properties of null (reading 'data')
+ ❯ .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts:116:21
+    114|     const enabled = makeEnv(t.db, { ...prod, ADMIN_CONSOLE_ENABLED: 't…
+    115|     const cfg = await read(enabled, undefined, '/api/v1/admin/auth/con…
+    116|     expect(cfg.json.data.mode).toBe('unavailable');
+       |                     ^
+    117|     expect((await login(enabled, FX('super'), APP_BASE, APP_BASE)).res…
+    118|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/29]⎯
+
+ FAIL  .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts > H8: host separation and cookie exposure > H8a CONFIRMED (colocated): CSRF cookie is script-readable; session cookie is HttpOnly
+TypeError: .toMatch() expects to receive a string, but got undefined
+ ❯ .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts:127:28
+    125|     const csrfCookie = cookies.find((c) => c.startsWith('__Host-takosa…
+    126|     const sessionCookie = cookies.find((c) => c.startsWith('__Host-tak…
+    127|     expect(csrfCookie).not.toMatch(/HttpOnly/i);
+       |                            ^
+    128|     expect(sessionCookie).toMatch(/HttpOnly/);
+    129|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/29]⎯
+
+ FAIL  .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts > H8: host separation and cookie exposure > H8b CONFIRMED (colocated XSS model): same-origin script reads the CSRF cookie and performs a privileged mutation
+TypeError: Cannot read properties of null (reading '1')
+ ❯ .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts:134:94
+    132|     const env = makeEnv(t.db);
+    133|     const { session } = await login(env, FX('super'));
+    134|     const csrfFromCookieJar = /__Host-takosan_admin_csrf=([0-9a-f]{64}…
+       |                                                                                              ^
+    135|     const r = await send(env, `${DEV_BASE}/api/v1/admin/roles/fx_ara_o…
+    136|       headers: { Cookie: session!.cookie, 'X-Admin-CSRF': csrfFromCook…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/29]⎯
+
+ FAIL  .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts > H8: host separation and cookie exposure > H8c CONFIRMED (ADMIN_HOSTNAME set): customer API and SPA fallback are still served on the admin host
+AssertionError: expected 404 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 404
+
+ ❯ .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts:143:69
+    141|   it('H8c CONFIRMED (ADMIN_HOSTNAME set): customer API and SPA fallbac…
+    142|     const env = makeEnv(t.db, { ADMIN_HOSTNAME: 'admin.takosan.test', …
+    143|     expect((await send(env, `${ADMIN_BASE}/api/v1/config`)).status).to…
+       |                                                                     ^
+    144|     expect((await send(env, `${ADMIN_BASE}/api/v1/health`)).status).to…
+    145|     const root = await send(env, `${ADMIN_BASE}/`);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/29]⎯
+
+ FAIL  .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts > H8: host separation and cookie exposure > H8d control (ADMIN_HOSTNAME set): admin API is not reachable on the customer host
+TypeError: Cannot read properties of null (reading 'code')
+ ❯ .hoplite/artifacts/review-poc-r1/h1-h2-h8-origin-host-env.test.ts:154:19
+    152|     const r = await send(env, `${APP_BASE}/api/v1/admin/auth/config`);
+    153|     expect(r.status).toBe(404);
+    154|     expect(r.json.code).toBe('ADMIN_NOT_FOUND');
+       |                   ^
+    155|   });
+    156| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/29]⎯
+
+ FAIL  .hoplite/artifacts/review-poc-r1/h3-h4-h7-roles-approvals.test.ts > H3: exactly one SUPER_ADMIN > H3 CONFIRMED: with a single active SUPER_ADMIN, no product path yields a second one
+Error: at least two active SUPER_ADMIN assignments must remain
+ ❯ SqliteD1.seed tests/helpers/sqlite-d1.ts:142:17
+    140|
+    141|   seed(sql: string): void {
+    142|     this.sqlite.exec(sql);
+       |                 ^
+    143|   }
+    144|
+ ❯ RoutedDb.seed .hoplite/artifacts/review-poc-r1/harness.ts:26:134
+ ❯ .hoplite/artifacts/review-poc-r1/h3-h4-h7-roles-approvals.test.ts:8:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'ERR_SQLITE_ERROR', errcode: 1811, errstr: 'constraint failed' }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[20/29]⎯
+
+ FAIL  .hoplite/artifacts/review-poc-r1/h3-h4-h7-roles-approvals.test.ts > H4 and H7: revocation and stale approvals > H4 CONFIRMED: one SUPER_ADMIN revokes another without four-eyes, and the revoked session dies
+AssertionError: expected 409 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 409
+
+ ❯ .hoplite/artifacts/review-poc-r1/h3-h4-h7-roles-approvals.test.ts:29:27
+     27|     const s1 = await login(env, FX('super'));
+     28|     const revoke = await mutate(env, s1.session, 'DELETE', '/api/v1/ad…
+     29|     expect(revoke.status).toBe(200);
+       |                           ^
+     30|     expect(rows(t.db, "SELECT status, revoke_reason FROM admin_role_as…
+     31|     const me = await read(env, s2.session, '/api/v1/admin/me');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[21/29]⎯
+
+ FAIL  .hoplite/artifacts/review-poc-r1/h3-h4-h7-roles-approvals.test.ts > H4 and H7: revocation and stale approvals > H7 CONFIRMED: approval requested by a since-revoked SUPER_ADMIN is still approvable and grants SUPER_ADMIN
+AssertionError: expected 409 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 409
+
+ ❯ .hoplite/artifacts/review-poc-r1/h3-h4-h7-roles-approvals.test.ts:49:99
+     47|     expect(requested.status).toBe(201);
+     48|     const s1 = await login(env, FX('super'));
+     49|     expect((await mutate(env, s1.session, 'DELETE', '/api/v1/admin/rol…
+       |                                                                                                   ^
+     50|     const approve = await mutate(env, s1.session, 'POST', `/api/v1/adm…
+     51|     expect(approve.status).toBe(200);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[22/29]⎯
+
+ FAIL  .hoplite/artifacts/review-poc-r1/h5-h6-h9-h10-pii-session-login.test.ts > H5: PII reveal and audit > H5 CONFIRMED: email is returned even though the audit insert fails
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ .hoplite/artifacts/review-poc-r1/h5-h6-h9-h10-pii-session-login.test.ts:12:22
+     10|     t.db.seed("CREATE TRIGGER poc_audit_down BEFORE INSERT ON admin_au…
+     11|     const r = await read(env, s.session, '/api/v1/admin/users/fx_user_…
+     12|     expect(r.status).toBe(200);
+       |                      ^
+     13|     expect(r.json.data.email).toBe('customer001@fixture.takosan.test');
+     14|     expect(rows(t.db, "SELECT COUNT(*) AS n FROM admin_audit_events WH…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[23/29]⎯
+
+ FAIL  .hoplite/artifacts/review-poc-r1/h5-h6-h9-h10-pii-session-login.test.ts > H6: credential change vs admin sessions > H6 CONFIRMED: rotating the customer credential row leaves the admin session valid
+AssertionError: expected 401 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 401
+
+ ❯ .hoplite/artifacts/review-poc-r1/h5-h6-h9-h10-pii-session-login.test.ts:32:69
+     30|     // Same row effect as the customer reset path (services/auth-otp.t…
+     31|     t.db.seed(`UPDATE auth_accounts SET password_hash = '${'0'.repeat(…
+     32|     expect((await read(env, s.session, '/api/v1/admin/me')).status).to…
+       |                                                                     ^
+     33|     expect(rows(t.db, "SELECT revoked_at FROM admin_sessions WHERE use…
+     34|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[24/29]⎯
+
+ FAIL  .hoplite/artifacts/review-poc-r1/h5-h6-h9-h10-pii-session-login.test.ts > H9: login brute-force controls > H9c CONFIRMED (no CF header, e.g. non-Cloudflare ingress): rotating X-Forwarded-For bypasses the limiter
+AssertionError: expected [ 401, 401, 401, 401, 401, 429, …(2) ] to deeply equal [ 401, 401, 401, 401, 401, 401, …(2) ]
+
+- Expected
++ Received
+
+@@ -2,9 +2,9 @@
+    401,
+    401,
+    401,
+    401,
+    401,
+-   401,
+-   401,
+-   401,
++   429,
++   429,
++   429,
+  ]
+
+ ❯ .hoplite/artifacts/review-poc-r1/h5-h6-h9-h10-pii-session-login.test.ts:60:22
+     58|     const statuses: number[] = [];
+     59|     for (let i = 1; i <= 8; i += 1) statuses.push((await attempt(env, …
+     60|     expect(statuses).toEqual(Array(8).fill(401));
+       |                      ^
+     61|   });
+     62| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[25/29]⎯
+
+ FAIL  .hoplite/artifacts/review-poc-r1/h5-h6-h9-h10-pii-session-login.test.ts > H10: data exposure to non-PII roles > H10 CONFIRMED: users.read roles confirm a full email via search with no audit trail
+AssertionError: expected +0 to be 1 // Object.is equality
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ .hoplite/artifacts/review-poc-r1/h5-h6-h9-h10-pii-session-login.test.ts:71:33
+     69|     const hit = await read(env, aud.session, `/api/v1/admin/users?q=${…
+     70|     expect(hit.status).toBe(200);
+     71|     expect(hit.json.data.total).toBe(1);
+       |                                 ^
+     72|     expect(hit.json.data.items[0].id).toBe('fx_user_001');
+     73|     expect(hit.text).not.toContain('customer001@fixture');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[26/29]⎯
+
+ FAIL  .hoplite/artifacts/review-poc-r1/session-access-lifecycle.test.ts > Cloudflare Access mode > a valid assertion for an admin email creates a cloudflare_access session
+AssertionError: expected undefined to be defined
+ ❯ .hoplite/artifacts/review-poc-r1/session-access-lifecycle.test.ts:43:21
+     41|     expect(res.status).toBe(200);
+     42|     expect(res.json.data.session.authMethod).toBe('cloudflare_access');
+     43|     expect(session).toBeDefined();
+       |                     ^
+     44|   });
+     45|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[27/29]⎯
+
+ FAIL  .hoplite/artifacts/review-poc-r1/session-access-lifecycle.test.ts > Cloudflare Access mode > an existing Access session is denied when the assertion header is absent
+AssertionError: expected 'ADMIN_UNAUTHENTICATED' to be 'ADMIN_ACCESS_DENIED' // Object.is equality
+
+Expected: "ADMIN_ACCESS_DENIED"
+Received: "ADMIN_UNAUTHENTICATED"
+
+ ❯ .hoplite/artifacts/review-poc-r1/session-access-lifecycle.test.ts:64:25
+     62|     const r = await read(env, session, '/api/v1/admin/me');
+     63|     expect(r.status).toBe(401);
+     64|     expect(r.json.code).toBe('ADMIN_ACCESS_DENIED');
+       |                         ^
+     65|   });
+     66|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[28/29]⎯
+
+ FAIL  .hoplite/artifacts/review-poc-r1/session-access-lifecycle.test.ts > Cloudflare Access mode > production with ADMIN_AUTH_MODE=cloudflare_access but no AUD fails closed (503)
+AssertionError: expected 404 to be 503 // Object.is equality
+
+- Expected
++ Received
+
+- 503
++ 404
+
+ ❯ .hoplite/artifacts/review-poc-r1/session-access-lifecycle.test.ts:72:22
+     70|       ADMIN_CONSOLE_ENABLED: 'true', ADMIN_AUTH_MODE: 'cloudflare_acce…
+     71|     const r = await send(makeEnv(t.db, prod), `${APP_BASE}/api/v1/admi…
+     72|     expect(r.status).toBe(503);
+       |                      ^
+     73|     expect(r.json.code).toBe('ADMIN_AUTH_NOT_CONFIGURED');
+     74|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[29/29]⎯
+
+
+ Test Files  6 failed | 1 passed (7)
+      Tests  29 failed | 22 passed (51)
+   Start at  01:11:02
+   Duration  18.68s (transform 432ms, setup 146ms, import 891ms, tests 15.91s, environment 1ms)
+

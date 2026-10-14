@@ -1,0 +1,36 @@
+== lint
+== typecheck
+== build
+dist/client/assets/scan-errors-DEq_UsYe.js                    7.24 kB │ gzip:  3.09 kB │ map:    18.14 kB
+== migrations
+migration-smoke=ok
+admin-migration-smoke=ok
+== admin-vitest
+    at reportException (/tmp/remed/clean/node_modules/.pnpm/jsdom@26.1.0/node_modules/jsdom/lib/jsdom/living/helpers/runtime-script-errors.js:66:24)
+    at reportException (/tmp/remed/clean/node_modules/.pnpm/jsdom@26.1.0/node_modules/jsdom/lib/jsdom/living/helpers/runtime-script-errors.js:66:24)
+ Test Files  10 passed (10)
+      Tests  133 passed (133)
+== workerd
+PASS admin Worker, production template (ADMIN_CONSOLE_ENABLED=false) (28/28)
+PASS admin Worker, ENVIRONMENT missing (local build, console flag true) (28/28)
+PASS admin Worker, ENVIRONMENT=development on a public origin (28/28)
+PASS admin Worker enabled on loopback (real workerd, run_worker_first) (15/15)
+PASS customer Worker from the current tree has no admin surface (5/5)
+PASS production admin bundle never compiles the local password login (wrangler deploy --dry-run, no upload) (4/4)
+workerd-check current: PASS (6/6 scenarios)
+== e2e
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"1aa2c41a-f15e-4090-aac9-604a2509d174","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"77fd4cf6-4dd5-4970-8a77-22d8587db5b0","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"a83cf0c0-1ea8-4af2-b7b9-4dbb930bca57","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":4,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"29505434-25c7-4e07-be90-991c0842a0cf","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"032e32d7-3c97-4f31-9172-5eb463b74d32","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":2,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"ed858592-0314-4cd4-a3f7-7d8d7bdcdd3e","method":"GET","routeTemplate":"/api/v1/admin/auth/config","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"13babec5-1749-4c11-87bf-7a8b0a8b4c5a","method":"POST","routeTemplate":"/api/v1/admin/auth/login","status":200,"durationMs":74,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"58baec88-3eb1-4477-8a66-916dcd5f8ec1","method":"GET","routeTemplate":"/api/v1/admin/overview","status":200,"durationMs":2,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"860a19dd-4db1-4073-a656-08ebd4d25587","method":"GET","routeTemplate":"/api/v1/admin/settings","status":200,"durationMs":14,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"dcf8e74a-31e1-4a89-aed2-6fd6a2aa7684","method":"GET","routeTemplate":"/api/v1/admin/sessions","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"70127bbd-b84e-41b3-9ab9-b0dca1b2ff1d","method":"PUT","routeTemplate":"/api/v1/admin/preferences","status":200,"durationMs":4,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"e5d52390-65a7-473e-9bc7-bf41505b1bf2","method":"GET","routeTemplate":"/api/v1/admin/settings","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"84a1b005-01a5-4fb2-b178-4d0e2772c763","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":401,"durationMs":0,"environment":"development","errorClass":"AUTHENTICATION"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"ead4415a-36c5-4e7f-8215-f855b9bc9071","method":"GET","routeTemplate":"/api/v1/admin/auth/config","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+  12 passed (1.6m)

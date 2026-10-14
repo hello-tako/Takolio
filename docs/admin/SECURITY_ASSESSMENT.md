@@ -1,5 +1,7 @@
 # Admin Console V1 — security assessment (local, self-assessed)
 
+> **Status:** Superseded by `remediation-r1/REPORT.md` (R1). The 2026-10-12 review found S1–S11 in this design; the controls and residual risks below describe commit `3e865d0` only.
+
 This is an implementer's self-assessment from local testing. It is **not** an independent review and
 **not** a production certification.
 
