@@ -1,3 +1,103 @@
+# T23 fridge quantities, manual selection and continued-week shopping - 2026-10-14 JST
+
+**Status:** LOCAL_IMPLEMENTED_VERIFIED. Branch
+codex/vietnamese-family-meals-20261013. Base T22 documentation checkpoint
+c465bd1baf94246b8a591d07971343c245ad424a. Verified implementation checkpoint
+d3952c34b1c217fb695cd551a247c0882c4c01d7. Active packet tasks/T23-quantity-aware-manual-planning.md;
+accepted architecture ADR-059, extending ADR-058. No push, merge, remote migration
+or deployment. Local evidence is not hosted or production acceptance.
+
+**Implemented:** intentional persisted empty manual calendars; explicit add versus
+named replacement from recipes/saved dishes; canonical role selection; exact
+required/from-fridge/missing amounts at destination servings; earlier meals and
+shared ingredients reserve stock once; downstream no-buy/cook-now consistency;
+locked selections survive assisted completion. Manual complete_meal mains use a
+one-dish template for that slot; ordinary family dinners retain their groups.
+Discovery/detail/calendar/cooking links retain servings; uncertain/offline cooking
+attempts freeze count and deductions. Fractional measured stock entry/correction
+uses exact compatible unit display conversion and original draft revision fences.
+Shopping keeps explicit purchase edits and retires only successful command keys.
+
+**Integrity and compatibility:** scoped picker snapshots bind plan/loaded revision,
+slot/date/type/servings/replacement and current inputs, including elapsed-slot
+identities; later reads cannot authorize a calculation from an older revision.
+Numeric sequence breaks equal-time ties consistently. Membership and atomic
+inventory/profile/catalog fences remain. Strict existing family/V1 response keys
+are retained; richer quantities require opt-in assessments. Source cache seeds
+are refreshed before quantities can be selected. Corrective removal stays possible.
+
+Future V2 meals remain editable after earlier meals elapse. Current projections
+skip elapsed instants rather than reserving current stock for them again. Shared
+family shopping can recalculate future demand after inventory/history/time changes;
+profile/hard preference/catalog/authority staleness still blocks it, and freshness
+remains truthful. Trip defaults/minimum use the saved plan offset, including late
+same-day meals when the device's date differs. Time is captured at request start.
+Legacy price optimization, V1 swapping and whole-week regeneration retain strict
+past-horizon gates; individual future meals can be edited/completed. No calendar,
+shopping generation or checkbox deducts physical inventory.
+
+**Executed gates:** Node v25.9.0 / pnpm 10.33.2. `pnpm lint`, `pnpm typecheck`
+(both projects), `TMPDIR=/private/tmp pnpm test --maxWorkers=4`
+(354 files / 8,332 tests,232.84s), `pnpm check:migrations` (42 migrations),
+`GIT_COMMIT=local-t23-family-planning pnpm build`, and
+`GIT_COMMIT=local-t23-family-planning VITE_MEAL_PLANNER_ENABLED=true
+VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build` PASS. Audit
+`pnpm audit --audit-level=high` PASS, no known vulnerabilities; dependency/config/
+migration bytes unchanged by T23. Focused backend 38 tests and latest UI/calendar
+150 tests PASS. Final typecheck confirmed by root. `git diff --check` and protected
+path/source review PASS. Full tests/browser/builds ran sequentially; no combined
+`pnpm check`, hosted CI or production success is claimed. The later E2E-only URL
+matcher fix did not change runtime or the full unit/integration test graph.
+
+**Running-app evidence:** `PORT=3101 PREVIEW_API_PORT=8891 pnpm exec playwright
+test -c playwright.family.config.ts` 8/8 PASS (3.5m),320/390/768/1280. Actual
+browser/app/Worker HTTP uses synthetic catalog/SQLite D1 fixtures without business
+API interception in family flows. Manual calendar, servings, exact rice320g,
+add/replace/completion/one-dish reload, shopping3->7->3 and changed-stock continuation
+are verified. Inventory stays unchanged by these planning/shopping actions. Axe
+and horizontal-overflow assertions PASS in tested surfaces; screenshots visually
+reviewed. `PORT=3104 PREVIEW_API_PORT=8894 pnpm exec playwright test -c
+playwright.t20.config.ts` 42/42 PASS (3.7m),390/768/1280. Its negative load/fallback tests explicitly
+intercept selected responses. Targeted recovery/fallback 6/6 PASS (32.9s). These
+local Chromium fixtures do not certify hosted workerd/D1, real users or retention.
+
+**Failures retained:** earlier full T23 run exposed three inherited inventory UI
+conversion expectations, fixed with unit-only versus explicit correction semantics.
+Preview login stalls showed Vite504 Outdated Optimize Dep (zustand); concurrent
+Vitest/browser attempts were interrupted (exit130), followed by isolated runs.
+One earlier build was interrupted after Vite and is not a pass. Legacy T20 fixture
+helpers needed actual cuisine/role, idle-state and optional price-panel interactions.
+Final compatibility attempt retained 2failed/1interrupted/20passed/19notrun (exit130):
+load/fallback interceptors omitted the new includeAssessment query. Matching the
+exact pathname and proving an actual failed read fixed the cause without weakening
+assertions; targeted6 and final42 then PASS. Missing test imports/router fixture
+shape in early continuation checks were fixed; failures/logs remain retained.
+Independent final review found the trip device-date mismatch, fixed with actual
+payload/minimum and midnight regressions. No remaining confirmed review finding.
+
+**Database and limits:** T23 adds no schema/migration. T22's0042 remains required
+before releasing any Worker route using family/profile/favorites/shared-shopping
+storage, including planner flags OFF; preserve additive schema on rollback.
+No new remote/local D1 apply is needed for T23. Unknown shopping demand has no
+purchase/resolve/dismiss command; manual entries do not reconcile it. No guessed
+package/bunch/piece mass, leftovers/shared prep/multi-vendor allocation, independently
+verified all-catalog regional provenance or clinical nutrition/allergy certification.
+No future-only whole-week regeneration and no proven retention improvement.
+Research distinguishes Hanoi qualitative evidence, public guidance, product decisions
+and implemented behavior. Source/log/screenshot receipts are in the calling chat's
+outputs/t23-verified directory; scratch work/ and node_modules are not committed.
+
+**Next action:** separately authorize normal PR/exact-head and exact-main CI, then
+migration-first staging and hosted smoke of both planner flags before protected
+production release. Product follow-up: define an explicit unknown-demand review
+contract, validate regional metadata and run a multi-region household diary/task
+study. Keep payment/auth/infrastructure/config/dependencies/applied migrations
+outside this task. Historical checkpoints follow unchanged.
+
+---
+
+## Prior Checkpoints
+
 # T22 Vietnamese family meals - 2026-10-13 JST
 
 **Status:** LOCAL_IMPLEMENTED_VERIFIED. Branch
