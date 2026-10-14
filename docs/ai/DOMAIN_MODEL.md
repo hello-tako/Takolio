@@ -1,3 +1,21 @@
+# T24 unknown demand and selected purchase amounts - 2026-10-14
+
+Required demand and selected buying amount are different facts. A household member
+can choose half a pack or one bunch without asserting its mass, recipe coverage or
+stock ownership. Manual duplicate entries do not satisfy an unknown requirement.
+
+Reviews bind the persisted shared trip, not a member's private planner. Exact source
+content determines pending/purchased/skipped state; revision and purchase witnesses
+prevent stale edits. Unchanged re-sharing retains decisions, changed revision/dates/
+attribution requests review again. Skip/reopen stay reversible and source-linked;
+purchased state needs a live linked override. Bought history remains separate.
+
+Immutable command receipts resolve lost responses without another purchase write.
+Cached reads do not authorize an offline resolution or a queued-success claim.
+Neither a review, shopping checkbox nor materialization writes physical inventory.
+
+---
+
 # T23 quantities and intentional manual meals - 2026-10-14
 
 A manual calendar is an intentional empty plan, not a failed or discarded auto

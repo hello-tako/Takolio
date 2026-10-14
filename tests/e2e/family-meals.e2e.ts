@@ -1,5 +1,7 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+import { z } from 'zod';
+import { ShoppingUnknownDemandSchema } from '../../packages/domain/src/shopping-plan-api';
 import { FamilyMealPlanDtoSchema } from '../../packages/domain/src/family-meal-planning-api';
 
 const folder = '.wrangler/family-meals';
@@ -262,4 +264,124 @@ test('family plan, saved dishes, scoped shopping and editable purchases survive 
     .first();
   await expect(purchased.getByRole('checkbox')).toBeChecked();
   await expect(purchased).not.toContainText('Chưa mua được ·');
+});
+
+test('unknown shopping demand supports chosen amounts, skip, reopen and changed-trip review', async ({
+  page,
+}) => {
+  test.setTimeout(90_000);
+  await page.goto('/__preview');
+  await page.getByRole('button', { name: 'Đặt lại dữ liệu thử nghiệm và đăng nhập' }).click();
+  await page.waitForURL('**/planner');
+  await page.getByRole('combobox', { name: 'Language' }).selectOption('vi');
+  await page.goto('/planner/new');
+  await page.getByLabel('Ngày bắt đầu', { exact: true }).fill('2030-01-07');
+  await page.getByLabel('Số ngày', { exact: true }).fill('7');
+  await page.getByRole('button', { name: 'Tạo thực đơn', exact: true }).click();
+  await page.waitForURL(/\/planner\/[a-f0-9-]+$/);
+  const planId = new URL(page.url()).pathname.split('/').at(-1)!;
+  const stockBefore = await page.evaluate(async () => (await fetch('/api/v1/inventory')).json());
+  await page.goto(`/planner/${planId}/shopping`);
+  await page.getByRole('combobox', { name: 'Khoảng đi chợ', exact: true }).selectOption('3');
+  await page.getByRole('button', { name: 'Tạo danh sách dùng chung', exact: true }).click();
+  await page.getByRole('link', { name: 'Mở danh sách và chỉnh lượng', exact: true }).click();
+  const pending = page.locator('.shopping-unresolved');
+  await expect(
+    pending.getByRole('button', { name: 'Chọn lượng mua', exact: true }).first(),
+  ).toBeVisible();
+  const initial = z
+    .object({ unresolvedItems: z.array(ShoppingUnknownDemandSchema) })
+    .parse(await page.evaluate(async () => (await fetch('/api/v1/shopping-list')).json()));
+  expect(
+    initial.unresolvedItems.filter((row: { reviewState: string }) => row.reviewState === 'pending')
+      .length,
+  ).toBeGreaterThan(0);
+  const firstName = await pending
+    .locator('li')
+    .filter({ has: page.getByRole('button', { name: 'Chọn lượng mua', exact: true }) })
+    .first()
+    .locator('strong')
+    .first()
+    .textContent();
+  await pending.getByRole('button', { name: 'Chọn lượng mua', exact: true }).first().click();
+  const dialog = page.getByRole('dialog', { name: `Chọn lượng mua: ${firstName}`, exact: true });
+  await expect(dialog.getByLabel('Lượng muốn mua', { exact: true })).toHaveValue('');
+  await dialog.getByLabel('Lượng muốn mua', { exact: true }).fill('0.5');
+  await expect(dialog.locator('#shopping-review-unit')).toHaveAccessibleName('Đơn vị mua');
+  await dialog.locator('#shopping-review-unit').selectOption('pack');
+  const auditDialog = await new AxeBuilder({ page }).include('.family-dialog').analyze();
+  expect(auditDialog.violations.map((item) => item.id)).toEqual([]);
+  await page.screenshot({
+    path: `${folder}/review-dialog-${page.viewportSize()!.width}.png`,
+    fullPage: true,
+  });
+  const selected = page.waitForResponse(
+    (response) =>
+      response.url().endsWith('/shopping-list/demand-review') &&
+      response.request().method() === 'POST',
+  );
+  await dialog.getByRole('button', { name: 'Thêm lượng này vào danh sách', exact: true }).click();
+  expect((await selected).status()).toBe(200);
+  await expect(dialog).toHaveCount(0);
+  await page.reload();
+  const purchase = page
+    .locator('.shopping-saved-row')
+    .filter({ has: page.locator('strong', { hasText: firstName! }) });
+  await expect(purchase).toContainText('1/2 gói');
+  await expect(purchase).toContainText('Lượng bạn chọn');
+  await expect(purchase).toContainText('Tổng lượng theo thực đơn chưa xác định');
+  const after = z
+    .object({
+      items: z.array(z.object({ id: z.string() })),
+      unresolvedItems: z.array(ShoppingUnknownDemandSchema),
+    })
+    .parse(await page.evaluate(async () => (await fetch('/api/v1/shopping-list')).json()));
+  expect(
+    after.items.filter(
+      (item: { id: string }) =>
+        item.id === after.unresolvedItems.find((row) => row.name === firstName)!.purchaseItemId,
+    ),
+  ).toHaveLength(1);
+  await purchase.getByRole('checkbox').click();
+  await expect(page.locator('.shopping-bought > summary')).toContainText('1 dòng');
+  await page.locator('.shopping-bought > summary').click();
+  await expect(purchase.getByRole('checkbox')).toBeChecked();
+  await expect(purchase.getByRole('checkbox')).toBeEnabled();
+  await page.locator('.shopping-demand-chosen > summary').click();
+  await page
+    .locator('.shopping-demand-chosen .shopping-demand-card')
+    .filter({ has: page.locator('strong', { hasText: firstName! }) })
+    .getByRole('button', { name: 'Xem lại', exact: true })
+    .click();
+  const reviewedDemand = pending
+    .locator('.shopping-demand-card')
+    .filter({ has: page.locator('strong', { hasText: firstName! }) });
+  await expect(reviewedDemand).toContainText('đã mua');
+  await reviewedDemand.getByRole('button', { name: 'Tạm bỏ qua', exact: true }).click();
+  await expect(page.locator('.shopping-skipped > summary')).toContainText('1');
+  await expect(purchase.getByRole('checkbox')).toBeChecked();
+  await page.reload();
+  await page.locator('.shopping-skipped > summary').click();
+  await page
+    .locator('.shopping-skipped')
+    .getByRole('button', { name: 'Xem lại', exact: true })
+    .click();
+  await expect(page.locator('.shopping-skipped')).toHaveCount(0);
+  await page.goto(`/planner/${planId}/shopping`);
+  await page.getByRole('combobox', { name: 'Khoảng đi chợ', exact: true }).selectOption('7');
+  await page.getByRole('button', { name: 'Tạo danh sách dùng chung', exact: true }).click();
+  await page.getByRole('link', { name: 'Mở danh sách và chỉnh lượng', exact: true }).click();
+  await expect(pending).toContainText(firstName!);
+  await expect(purchase).toContainText('1/2 gói');
+  await page.locator('.shopping-bought > summary').click();
+  await expect(purchase.getByRole('checkbox')).toBeChecked();
+  const stockAfter = await page.evaluate(async () => (await fetch('/api/v1/inventory')).json());
+  expect(stockAfter).toEqual(stockBefore);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  const audit = await new AxeBuilder({ page }).include('.shopping-workspace').analyze();
+  expect(audit.violations.map((item) => item.id)).toEqual([]);
+  await page.screenshot({
+    path: `${folder}/review-shopping-${page.viewportSize()!.width}.png`,
+    fullPage: true,
+  });
 });

@@ -2970,3 +2970,81 @@ calendar. Missing or malformed offset/instant fails closed; no offset is guessed
 Shopping uses the trusted reference captured for its request, as other projections
 do. A meal-time boundary during that request is not an inventory version change;
 subsequent requests use their new reference and exclude meals that then elapsed.
+
+## ADR-060 - Snapshot-bound review of unknown shared shopping demand (2026-10-14)
+
+Accepted for T24 under the user's instruction to continue careful implementation
+of practical household shopping. Unknown demand currently offers only source links;
+ordinary manual entries cannot reconcile it because they carry no demand identity.
+Reuse the shared purchase list, rather than introduce another planner or stock ledger.
+
+Migration0043 adds source/demand-key review rows, monotonic review revisions and
+immutable list-scoped command receipts. Reviews reference the durable source, not
+the demand row replaced by reconciliation; receipts survive review/item deletion.
+A persisted demand fingerprint includes source/plan/revision, trip dates, ingredient,
+unit and exact attribution. It excludes update time so unchanged re-sharing retains
+the decision. Changed plan revision, horizon or attribution requires review again.
+User purchase intent and checked history remain preserved by existing reconciliation.
+
+GET unresolvedItems remains additive and includes all unknown demands with an
+explicit pending/purchased/skipped reviewState. New fields bind sourceId, demandKey,
+snapshot, reviewRevision and optional existing purchaseItemId. A full selection
+snapshot additionally binds review and generated purchase state, so a stale open
+page cannot overwrite a concurrent quantity/check/decision edit. A purchased row
+requires a matching current demand fingerprint and a live generated overridden item.
+Legacy/manual entries never resolve demand through name or ingredient coincidence.
+
+POST /shopping-list/demand-review accepts purchase(quantity,standard unit), skip
+or reopen with the exact GET binding and Idempotency-Key. Current household members
+can review the shared persisted list, including demand shared by another member;
+this command does not load a private planner or certify current recipe coverage.
+Replay checks the immutable receipt before current demand and returns the original
+result without another write. Different payloads cannot reuse a key. Atomic batch
+guards bind membership, demand, review revision and the complete purchase witness.
+No request/client household ownership identifiers confer authority.
+
+Purchase creates/reuses the stable generated item as an explicit override without
+changing demand NULL, price, recipe, physical inventory or purchase checked state.
+Skip is scoped to this exact shared trip snapshot; it removes an unchecked linked
+purchase row only by explicit choice, and retains bought history. Reopen advances
+the review tombstone and returns the demand to pending without discarding purchase
+intent. Deleting a reviewed unknown purchase must not create the legacy same-plan
+indefinite dismissal; absence of its live item makes the unknown demand pending.
+Existing known-item dismissal semantics remain compatible.
+
+The web uses clear Vietnamese actions, blank initial purchase amount, source meals,
+separate pending/chosen/skipped presentation and visible reopen. Confirmation/skip
+are online-only; cached device reads remain useful but cannot pretend to resolve a
+snapshot. Uncertain attempts freeze request key and payload for an explicit retry.
+A rejected stale snapshot requires reload and a new user action. No automatic
+re-key, guessed package/bunch mass, outbox claim or stock import follows.
+
+0043 must be applied before this Worker serves shopping traffic, independently of
+planner flags. Preserve additive schema on rollback. Applied migrations, payment,
+unrelated auth, dependencies and infrastructure stay outside T24. Local HTTP,
+SQLite/D1 and browser validation are synthetic evidence, not production acceptance,
+regional user research or retention proof. Remaining whole-week regeneration,
+leftovers, shared prep, regional catalog provenance and vendor allocation gaps remain.
+
+T24 final review refinements: a NULL aggregate may also result from known recipe
+contributions that cannot be represented exactly in persisted shopping arithmetic.
+Show the unknown total separately; only NULL source contributions say their own
+amount is unknown. Shared-source navigation retains date/meal/title and opens the
+canonical recipe independently of creator-private planner ownership. Links open
+separately from a buying draft and are rendered as text during busy/uncertain/stale
+recovery. Missing recipe IDs remain text. The contribution DTO has no serving
+count; these links do not claim to preserve the planned recipe serving context.
+
+Local workerd/D1 validation found that shopping DELETE meta.changes includes
+cascaded generated-state/metadata rows. Accept a positive delete count rather than
+exactly one, preserving zero-change conflict classification and membership guards.
+Command receipts use normal INSERT and replay; UPDATE/DELETE triggers defend those
+paths. Direct privileged SQL INSERT OR REPLACE is outside this application guarantee.
+
+T24 rollback boundary: paired planner flags OFF on the current T24 Worker retain
+shopping review commands and are covered locally. A binary rollback to T23 or an
+older Worker after review purchases exist is not certified: the old DELETE path
+can create a same-plan dismissal for unknown demand and the old UI has no review
+or skip/reopen actions. Do not infer safe mixed-version shopping writes from the
+expand-only schema. Keep 0043 on rollback and rehearse any earlier binary against
+reviewed purchase/history fixtures before authorizing that release path.

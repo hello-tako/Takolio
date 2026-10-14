@@ -79,6 +79,8 @@ required_tables(name) AS (
     ,('shopping_plan_commands')
     ,('shopping_item_metadata')
     ,('shopping_plan_item_dismissals')
+    ,('shopping_demand_reviews')
+    ,('shopping_demand_review_commands')
 ),
 required_columns(table_name, column_name) AS (
   VALUES
@@ -260,12 +262,23 @@ required_columns(table_name, column_name) AS (
     ,('shopping_item_metadata', 'cannot_buy')
     ,('shopping_plan_item_dismissals', 'demand_key')
     ,('shopping_plan_item_dismissals', 'plan_id')
+    ,('shopping_demand_reviews', 'source_id')
+    ,('shopping_demand_reviews', 'demand_key')
+    ,('shopping_demand_reviews', 'revision')
+    ,('shopping_demand_reviews', 'demand_fingerprint')
+    ,('shopping_demand_reviews', 'decision')
+    ,('shopping_demand_reviews', 'item_id')
+    ,('shopping_demand_review_commands', 'request_fingerprint')
+    ,('shopping_demand_review_commands', 'response_json')
 ),
 -- Indexes and triggers share one sqlite_master lookup: D1 (workerd) caps compound SELECTs at
 -- 5 terms (SQLITE_LIMIT_COMPOUND_SELECT), so the gate must stay at five UNION ALL branches.
 required_schema_objects(type, name) AS (
   VALUES
     ('index', 'idx_saved_recipe_entries_recent'),
+    ('index', 'idx_shopping_demand_reviews_item'),
+    ('trigger', 'trg_shopping_demand_review_commands_immutable_update'),
+    ('trigger', 'trg_shopping_demand_review_commands_immutable_delete'),
     ('index', 'idx_auth_otp_tickets_scope_admitted'),
     ('index', 'idx_auth_otp_requests_retained_until'),
     ('index', 'idx_checkout_admissions_user_state'),

@@ -17,3 +17,36 @@ export const SharePlanShoppingDtoSchema = z.object({
   sourceId: z.string(), itemCount: z.number().int().nonnegative(),
   unresolvedCount: z.number().int().nonnegative(), idempotentReplay: z.boolean(),
 }).strict();
+
+const ShoppingUnitSchema = z.enum(['g', 'kg', 'ml', 'l', 'piece', 'pack', 'bunch', 'slice']);
+export const ShoppingDemandReviewBindingSchema = z.object({
+  sourceId: z.string().min(1).max(160),
+  demandKey: z.string().min(1).max(500),
+  snapshot: z.string().regex(/^[a-f0-9]{64}$/),
+  reviewRevision: z.number().int().nonnegative(),
+}).strict();
+export const ShoppingUnknownDemandSchema = ShoppingDemandReviewBindingSchema.extend({
+  ingredientId: z.string(), name: z.string(), unit: z.string(),
+  contributions: z.array(ShoppingContributionSchema),
+  reviewState: z.enum(['pending', 'purchased', 'skipped']),
+  purchaseItemId: z.string().nullable(),
+}).strict();
+export type ShoppingUnknownDemand = z.infer<typeof ShoppingUnknownDemandSchema>;
+export const ReviewShoppingDemandSchema = z.discriminatedUnion('action', [
+  ShoppingDemandReviewBindingSchema.extend({
+    action: z.literal('purchase'),
+    quantity: z.number().finite().positive().max(100_000),
+    unit: ShoppingUnitSchema,
+  }).strict(),
+  ShoppingDemandReviewBindingSchema.extend({ action: z.literal('skip') }).strict(),
+  ShoppingDemandReviewBindingSchema.extend({ action: z.literal('reopen') }).strict(),
+]);
+export type ReviewShoppingDemandInput = z.infer<typeof ReviewShoppingDemandSchema>;
+export const ReviewShoppingDemandDtoSchema = z.object({
+  success: z.literal(true),
+  sourceId: z.string(), demandKey: z.string(),
+  reviewRevision: z.number().int().positive(),
+  reviewState: z.enum(['pending', 'purchased', 'skipped']),
+  purchaseItemId: z.string().nullable(),
+  idempotentReplay: z.boolean(),
+}).strict();

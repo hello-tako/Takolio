@@ -1178,3 +1178,227 @@
     text-align: right;
   }
 }
+
+/* Keep unknown purchase decisions beside their source meals without crowding the checklist. */
+.shopping-demand-review {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.shopping-demand-review .shopping-unresolved {
+  margin-top: 0;
+  background: linear-gradient(135deg, #fff8e6 0%, #fffdf5 100%);
+  border-color: #dac8a2;
+}
+.shopping-demand-review .shopping-unresolved > p,
+.shopping-demand-chosen > p,
+.shopping-skipped > p {
+  font-size: 13px;
+  line-height: 1.55;
+  color: #655539;
+  margin-top: 6px;
+}
+.shopping-demand-review .shopping-unresolved .planning-eyebrow {
+  font-size: 10px;
+  color: #735129;
+  letter-spacing: 0.08em;
+  margin: 0 0 5px;
+}
+.shopping-demand-list {
+  display: grid;
+  gap: 9px;
+  margin-top: 10px;
+}
+.shopping-demand-review li.shopping-demand-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #dfd5bd;
+  border-radius: 12px;
+  background: #fffefb;
+}
+.shopping-demand-card-copy {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+.shopping-demand-card-copy strong {
+  font-size: 15px;
+  color: #304239;
+  overflow-wrap: anywhere;
+}
+.shopping-demand-actions {
+  display: grid;
+  gap: 2px;
+  justify-items: stretch;
+}
+.shopping-demand-actions button,
+.shopping-demand-reopen,
+.shopping-demand-review-notice button,
+.shopping-demand-dialog button {
+  min-height: 48px;
+  height: auto;
+  white-space: normal;
+  padding: 10px 12px;
+}
+.shopping-demand-skip,
+.shopping-demand-reopen {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: #665332;
+  text-decoration: underline;
+  border-radius: 8px;
+}
+.shopping-demand-review button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.shopping-demand-prior,
+.shopping-demand-dialog-help {
+  font-size: 13px;
+  line-height: 1.55;
+  color: #526359;
+  margin: 3px 0;
+}
+.shopping-demand-prior {
+  padding: 8px 10px;
+  border-left: 3px solid #bacbbb;
+  background: #f0f5ed;
+}
+.shopping-demand-sources {
+  margin-top: 5px;
+}
+.shopping-demand-sources summary {
+  min-height: 40px;
+}
+.shopping-demand-review .shopping-demand-sources ul {
+  gap: 7px;
+}
+.shopping-demand-review .shopping-demand-sources li {
+  display: grid;
+  gap: 2px;
+  font-size: 12px;
+}
+.shopping-demand-sources a {
+  overflow-wrap: anywhere;
+}
+.shopping-demand-chosen,
+.shopping-skipped {
+  border: 1px solid #dae2d5;
+  border-radius: 12px;
+  padding: 0 12px;
+  background: #f6f8f2;
+}
+.shopping-demand-chosen[open],
+.shopping-skipped[open] {
+  padding-bottom: 12px;
+}
+.shopping-demand-chosen > summary,
+.shopping-skipped > summary {
+  cursor: pointer;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 800;
+  color: #3f634e;
+}
+.shopping-demand-review li.shopping-demand-card.is-reviewed,
+.shopping-demand-review li.shopping-demand-card.is-skipped {
+  border-color: #e0e6de;
+}
+.shopping-demand-review-notice {
+  display: grid;
+  gap: 7px;
+  padding: 12px;
+  background: #f0f5ed;
+  border: 1px solid #c9d9c6;
+  border-radius: 12px;
+  font-size: 13px;
+  color: #3f5849;
+}
+.shopping-demand-review-notice button,
+.shopping-demand-error button {
+  justify-self: start;
+}
+.shopping-demand-error {
+  display: grid;
+  gap: 8px;
+  border-radius: 12px;
+  scroll-margin-top: 24px;
+}
+.shopping-demand-receipt {
+  color: #3b664c;
+  font-size: 13px;
+}
+.shopping-demand-receipt:empty {
+  display: none;
+}
+.shopping-demand-badge {
+  color: #765323;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.shopping-count-summary {
+  text-align: right;
+  color: #526359;
+  font-size: 13px;
+}
+.shopping-review-count {
+  color: #80521d;
+  font-weight: 700;
+  margin-top: 4px;
+}
+.shopping-demand-dialog .family-settings-form {
+  margin-top: 14px;
+}
+.shopping-demand-dialog input,
+.shopping-demand-dialog select {
+  min-height: 48px;
+}
+.shopping-demand-dialog .family-dialog-heading {
+  align-items: start;
+}
+.shopping-demand-dialog .family-dialog-heading > div {
+  min-width: 0;
+}
+.shopping-demand-dialog .family-dialog-heading h2 {
+  overflow-wrap: anywhere;
+}
+.shopping-demand-dialog .family-dialog-heading > button {
+  flex-shrink: 0;
+}
+@media (max-width: 480px) {
+  .shopping-demand-review li.shopping-demand-card {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+  .shopping-demand-actions {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: stretch;
+  }
+  .shopping-demand-reopen {
+    justify-self: start;
+  }
+  .shopping-count-summary {
+    max-width: 135px;
+  }
+}
+.shopping-demand-dialog {
+  overscroll-behavior: contain;
+}
+.shopping-demand-review .shopping-demand-sources summary {
+  min-height: 48px;
+}
+.shopping-demand-review :is(button, summary, input, select, a):focus-visible {
+  outline: 2px solid #286046;
+  outline-offset: 3px;
+}

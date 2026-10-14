@@ -59,7 +59,7 @@ export const LEGACY_CATALOG_MIGRATION_TIP = '0035_recipe_media_layer.sql';
 export const MIGRATION_LEDGER = Object.freeze({
   legacyTip: LEGACY_CATALOG_MIGRATION_TIP,
   catalogGrowth: Object.freeze(['0036_recipe_catalog_pilot.sql', '0037_recipe_catalog_scale.sql']),
-  postCatalog: Object.freeze(['0038_auth_onboarding_completion.sql', '0039_meal_composition_v2.sql', '0040_strict_otp_foundation.sql', '0041_checkout_admission.sql', '0042_family_meals_preferences_saved_shopping.sql']),
+  postCatalog: Object.freeze(['0038_auth_onboarding_completion.sql', '0039_meal_composition_v2.sql', '0040_strict_otp_foundation.sql', '0041_checkout_admission.sql', '0042_family_meals_preferences_saved_shopping.sql', '0043_shopping_demand_review.sql']),
   get count() { return 35 + this.catalogGrowth.length + this.postCatalog.length; },
   get tip(): string { return this.postCatalog.at(-1) ?? this.catalogGrowth.at(-1) ?? this.legacyTip; },
 });

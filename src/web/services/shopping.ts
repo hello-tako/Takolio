@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { ShoppingContributionSchema, SharePlanShoppingSchema, SharePlanShoppingDtoSchema } from '../../../packages/domain/src/shopping-plan-api';
+import { ShoppingContributionSchema, SharePlanShoppingSchema, SharePlanShoppingDtoSchema, ShoppingUnknownDemandSchema, ReviewShoppingDemandSchema, ReviewShoppingDemandDtoSchema } from '../../../packages/domain/src/shopping-plan-api';
 import { privateCacheKey, currentPrivateScope } from '../lib/private-session';
 import { getPendingOps, type PendingOp } from '../lib/sync';
 import {
@@ -24,6 +24,8 @@ const itemSchema = z.object({
   cannotBuy: z.boolean().optional(),
   generated: z.boolean().optional(),
   quantityOverridden: z.boolean().optional(),
+  unknownDemand: z.boolean().optional(),
+  reviewState: z.enum(['pending', 'purchased', 'skipped']).optional(),
   contributions: z.array(ShoppingContributionSchema).optional(),
   createdAt: z.string().optional(),
   pendingSync: z.boolean().optional(),
@@ -41,13 +43,20 @@ export interface ShoppingInput {
 export interface ShoppingSnapshot {
   items: ShoppingItem[];
   source: 'server' | 'device';
-  unresolvedItems?: Array<{ingredientId:string;name:string;unit:string;contributions:z.infer<typeof ShoppingContributionSchema>[]}>;
+  hasPendingChanges?: boolean;
+  unresolvedItems?: ShoppingUnresolvedItem[];
 }
 const itemsSchema = z.array(itemSchema);
 const updateSchema=z.object({name:z.string().trim().min(1).max(100).optional(),quantity:z.number().finite().positive().optional(),unit:z.enum(['g','kg','ml','l','piece','pack','bunch','slice']).optional(),isChecked:z.boolean().optional(),cannotBuy:z.boolean().optional()}).refine(value=>Object.values(value).some(value=>value!==undefined))
   .refine(value=>!(value.isChecked===true&&value.cannotBuy===true))
   .transform(value=>({...value,...(value.isChecked===true?{cannotBuy:false}:{}),...(value.cannotBuy===true?{isChecked:false}:{})}));
-const unresolvedItemsSchema=z.array(z.object({ingredientId:z.string(),name:z.string(),unit:z.string(),contributions:z.array(ShoppingContributionSchema)}));
+// Old cached rows remain readable but cannot authorize a review command.
+const unresolvedItemSchema = ShoppingUnknownDemandSchema.partial({
+  sourceId: true, demandKey: true, snapshot: true, reviewRevision: true,
+  reviewState: true, purchaseItemId: true,
+});
+export type ShoppingUnresolvedItem = z.infer<typeof unresolvedItemSchema>;
+const unresolvedItemsSchema = z.array(unresolvedItemSchema);
 
 function cachedItems(householdId: string): ShoppingItem[] {
   const saved = localStorage.getItem(privateCacheKey('shopping_list', householdId));
@@ -146,7 +155,7 @@ export const shoppingApi = {
     assertCurrent();
     items = projectShoppingList(items, ownedOps());
     saveItems(items, householdId);
-    return { items, source, unresolvedItems };
+    return { items, source, unresolvedItems, hasPendingChanges: ownedOps().some(op => op.path.startsWith('/shopping-list/')) };
   },
   getShoppingList: async (): Promise<ShoppingItem[]> =>
     (await shoppingApi.getShoppingListSnapshot()).items,
@@ -193,6 +202,27 @@ export const shoppingApi = {
   sharePlanShopping: async (input:z.input<typeof SharePlanShoppingSchema>,requestKey:string) => {
     const body=SharePlanShoppingSchema.parse(input);
     return SharePlanShoppingDtoSchema.parse(await fetchJson('/shopping-list/from-plan',{method:'POST',headers:{'Idempotency-Key':requestKey},body:JSON.stringify(body)}));
+  },
+  reviewShoppingDemand: async (input: z.input<typeof ReviewShoppingDemandSchema>, requestKey: string) => {
+    const assertCurrent = guardPrivateSession();
+    const body = ReviewShoppingDemandSchema.parse(input);
+    if (!/^[A-Za-z0-9_-]{8,100}$/.test(requestKey)) throw new Error('Invalid shopping review key');
+    if (navigator.onLine === false) throw new ApiError('offline', 'Cần kết nối mạng để xác nhận lượng mua.');
+    const pending = ownedOps();
+    // Earlier queued purchase edits must finish before a snapshot review can supersede them.
+    if (pending.some(op => op.path.startsWith('/shopping-list/'))) {
+      throw new ApiError('http', 'HTTP 409: {"code":"SHOPPING_PENDING_SYNC"}', 409);
+    }
+    const result = ReviewShoppingDemandDtoSchema.parse(await fetchJson('/shopping-list/demand-review', {
+      method: 'POST', headers: { 'Idempotency-Key': requestKey }, body: JSON.stringify(body),
+    }));
+    assertCurrent();
+    if (result.sourceId !== body.sourceId || result.demandKey !== body.demandKey ||
+        result.reviewRevision !== body.reviewRevision + 1 ||
+        result.reviewState !== (body.action === 'purchase' ? 'purchased' : body.action === 'skip' ? 'skipped' : 'pending')) {
+      throw new Error('Shopping review receipt mismatch');
+    }
+    return result;
   },
   updateShoppingItem: async (id:string,patch:z.input<typeof updateSchema>):Promise<{pendingSync:boolean}> => {
     const assertCurrent=guardPrivateSession();const householdId=getHouseholdId();

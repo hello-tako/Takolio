@@ -8,7 +8,7 @@ import { MIGRATION_LEDGER, SqliteD1 } from '../helpers/sqlite-d1';
 // T15A: the production schema gate derives its required migrations from the repository, so it
 // can never silently accept a database that is behind (or ahead of) the release it guards.
 describe('D1 schema gate — migration ledger equality derived from migrations/', () => {
-  const familyTables = ['family_meal_preferences', 'generated_family_meal_plans', 'saved_recipe_entries', 'shopping_generated_item_state', 'shopping_item_metadata', 'shopping_plan_commands', 'shopping_plan_demands', 'shopping_plan_item_dismissals', 'shopping_plan_sources'];
+  const familyTables = ['family_meal_preferences', 'generated_family_meal_plans', 'saved_recipe_entries', 'shopping_demand_review_commands', 'shopping_demand_reviews', 'shopping_generated_item_state', 'shopping_item_metadata', 'shopping_plan_commands', 'shopping_plan_demands', 'shopping_plan_item_dismissals', 'shopping_plan_sources'];
   const databases: SqliteD1[] = [];
   const gate = renderSchemaGateSql();
   const withLedger = (names: readonly string[], through?: string) => {
@@ -92,7 +92,7 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
       'checkout_admissions', 'payment_reconciliation_records', ...familyTables,
     ].sort());
     expect(issues.filter((row) => row.issue === 'missing_index').map((row) => row.detail)).toEqual([
-      'idx_checkout_admissions_user_state', 'idx_saved_recipe_entries_recent',
+      'idx_checkout_admissions_user_state', 'idx_saved_recipe_entries_recent', 'idx_shopping_demand_reviews_item',
     ]);
   });
 
@@ -102,7 +102,18 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
     const issues = db.query<{issue:string;detail:string}>(gate);
     expect(issues.filter(row=>row.issue==='missing_migration')).toEqual(missingMigrationsAfter(tip));
     expect(issues.filter(row=>row.issue==='missing_table').map(row=>row.detail)).toEqual(familyTables);
-    expect(issues.filter(row=>row.issue==='missing_index').map(row=>row.detail)).toEqual(['idx_saved_recipe_entries_recent']);
+    expect(issues.filter(row=>row.issue==='missing_index').map(row=>row.detail)).toEqual(['idx_saved_recipe_entries_recent', 'idx_shopping_demand_reviews_item']);
+  });
+  it('rejects a 0042 database until unknown shopping demand review persistence exists', () => {
+    const tip = '0042_family_meals_preferences_saved_shopping.sql'; const names = listMigrations();
+    const db = withLedger(names.slice(0, names.indexOf(tip) + 1), tip);
+    const issues = db.query<{issue:string;detail:string}>(gate);
+    expect(issues.filter(row=>row.issue==='missing_migration')).toEqual(missingMigrationsAfter(tip));
+    expect(issues.filter(row=>row.issue==='missing_table').map(row=>row.detail)).toEqual(['shopping_demand_review_commands', 'shopping_demand_reviews']);
+    expect(issues.filter(row=>row.issue==='missing_index').map(row=>row.detail)).toEqual(['idx_shopping_demand_reviews_item']);
+    expect(issues.filter(row=>row.issue==='missing_trigger').map(row=>row.detail)).toEqual([
+      'trg_shopping_demand_review_commands_immutable_delete', 'trg_shopping_demand_review_commands_immutable_update',
+    ]);
   });
   it('fails closed when the ledger stops at 0034 or 0035 (legacy production tips)', () => {
     for (const tip of ['0034_global_recipe_catalog_parity.sql', '0035_recipe_media_layer.sql']) {

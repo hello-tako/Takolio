@@ -1,3 +1,24 @@
+# T24 explicit review of unknown shopping demand - 2026-10-14
+
+ADR-060 adds a review command to the existing household shopping list. A source
+fingerprint binds the shared plan revision, trip dates and exact ingredient/dish
+attribution. A selection snapshot also binds review and purchase state; membership
+and raw persisted witnesses guard an atomic command receipt/review/item batch.
+Receipts survive later demand replacement and purchase deletion for exact replay.
+
+Unknown demand remains NULL. Purchase writes only selected purchase intent as an
+existing generated override. Snapshot-scoped skip/reopen are revisioned tombstones;
+changed source content requires review again while purchase edits/history survive.
+Ordinary manual rows never reconcile demand by name. Unknown generated deletion
+reopens review rather than introducing an indefinite same-plan dismissal.
+
+The browser presents pending, selected and skipped demand explicitly, requires a
+connection for review and freezes uncertain payload/key. Migration0043 must precede
+shopping Worker deployment independently of planner flags. Local verification and
+limits are recorded in the T24 packet; no remote release follows local success.
+
+---
+
 # T23 quantity-aware manual family meals - 2026-10-14
 
 ADR-059 extends the accepted T22 path. `/api/v2/meal-planning/drafts` creates

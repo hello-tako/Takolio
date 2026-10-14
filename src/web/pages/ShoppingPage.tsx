@@ -11,6 +11,7 @@ import { shoppingApi, type ShoppingInput, type ShoppingItem } from '../services/
 import { ApiError, createClientItemId } from '../services/http';
 import { queryKeys } from '../lib/queryKeys';
 import { parseShoppingForm, SHOPPING_UNITS, shoppingQuantity } from '../lib/shopping-form';
+import { ShoppingDemandReview } from '../features/ShoppingDemandReview';
 
 export const ShoppingPage: React.FC = () => {
   const client = useQueryClient();
@@ -21,6 +22,11 @@ export const ShoppingPage: React.FC = () => {
     retry: false,
   });
   const items = query.data?.items ?? [];
+  const demands = query.data?.unresolvedItems ?? [];
+  const needsReviewCount = demands.filter(
+    (item) => !item.reviewState || item.reviewState === 'pending',
+  ).length;
+  const [reviewBusy, setReviewBusy] = useState(false);
   const [name, setName] = useState('');
   const [quantity, setQuantity] = useState('1');
   const [unit, setUnit] = useState('piece');
@@ -68,7 +74,8 @@ export const ShoppingPage: React.FC = () => {
     onSuccess: accept,
   });
   const remove = useMutation({ mutationFn: shoppingApi.deleteShoppingItem, onSuccess: accept });
-  const busy = add.isPending || toggle.isPending || remove.isPending || cannotBuy.isPending;
+  const listBusy = add.isPending || toggle.isPending || remove.isPending || cannotBuy.isPending;
+  const busy = listBusy || reviewBusy;
   const mutationError = add.error ?? toggle.error ?? remove.error ?? cannotBuy.error;
   useEffect(() => {
     if (invalid || mutationError) {
@@ -131,8 +138,16 @@ export const ShoppingPage: React.FC = () => {
             <strong>{item.name}</strong>
             <span className="shopping-row-quantity">
               {shoppingQuantity(item.quantity, item.unit)}
-              {item.quantityOverridden && ' · lượng đã chỉnh'}
+              {item.unknownDemand
+                ? ' · Lượng bạn chọn'
+                : item.quantityOverridden && ' · lượng đã chỉnh'}
             </span>
+            {item.unknownDemand && (
+              <span className="shopping-demand-badge">
+                Tổng lượng theo thực đơn chưa xác định
+                {item.reviewState === 'pending' && ' · cần chọn lại cho lượt này'}
+              </span>
+            )}
             {titles.length > 0 ? (
               <span className="shopping-row-source">
                 Cho {titles.slice(0, 2).join(', ')}
@@ -177,18 +192,29 @@ export const ShoppingPage: React.FC = () => {
             <ul>
               {sources.map((source, index) => (
                 <li key={`${source.slotId}:${source.componentId}:${index}`}>
-                  <Link to={`/planner/${source.planId}/meal/${encodeURIComponent(source.slotId)}`}>
+                  <span>
                     {source.date} ·{' '}
                     {source.mealType === 'breakfast'
                       ? 'Sáng'
                       : source.mealType === 'lunch'
                         ? 'Trưa'
                         : 'Tối'}{' '}
-                    · {source.title}
-                  </Link>
+                    ·{' '}
+                    {source.recipeId && !busy ? (
+                      <Link
+                        to={`/recipes/id/${encodeURIComponent(source.recipeId)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {source.title}
+                      </Link>
+                    ) : (
+                      source.title
+                    )}
+                  </span>
                   <span>
                     {source.quantity === null
-                      ? 'Lượng chưa rõ'
+                      ? 'Lượng món này chưa rõ'
                       : shoppingQuantity(source.quantity, source.unit)}
                   </span>
                 </li>
@@ -303,11 +329,19 @@ export const ShoppingPage: React.FC = () => {
                   Cần mua <span>{remaining.length}</span>
                 </h2>
               </div>
-              <p>{checked.length} đã mua</p>
+              <div className="shopping-count-summary">
+                <p>{checked.length} đã mua</p>
+                {needsReviewCount > 0 && (
+                  <p className="shopping-review-count">
+                    {needsReviewCount} nguyên liệu cần chọn lượng
+                  </p>
+                )}
+              </div>
             </div>
             {query.data?.source === 'device' && (
               <p role="status" className="planning-notice">
-                Đang xem bản lưu trên thiết bị; thay đổi sẽ đồng bộ khi có kết nối.
+                Đang xem bản lưu trên thiết bị; các thay đổi ở dòng mua sẽ đồng bộ khi có kết nối.
+                Việc chọn lượng chưa rõ cần kết nối lại.
               </p>
             )}
             {(invalid || mutationError) && (
@@ -322,7 +356,7 @@ export const ShoppingPage: React.FC = () => {
             <p role="status" className="planning-receipt">
               {receipt}
             </p>
-            {query.isError ? (
+            {query.isError && !query.data ? (
               <InlineError error={query.error} onRetry={() => void query.refetch()} />
             ) : query.isPending ? (
               <p role="status" className="planning-paper">
@@ -330,58 +364,50 @@ export const ShoppingPage: React.FC = () => {
               </p>
             ) : (
               <>
+                {query.isError && (
+                  <InlineError
+                    message="Chưa tải lại được danh sách. Đang giữ bản vừa xem; tải lại trước khi rà lượng."
+                    onRetry={() => void query.refetch()}
+                  />
+                )}
+                <ShoppingDemandReview
+                  demands={demands}
+                  items={items}
+                  source={query.data?.source ?? 'device'}
+                  hasPendingChanges={query.data?.hasPendingChanges}
+                  listBusy={listBusy || query.isError}
+                  onBusyChange={setReviewBusy}
+                  onChanged={async () => {
+                    const latest = await query.refetch();
+                    if (latest.isError || latest.data?.source !== 'server')
+                      throw new Error('Shopping reload failed');
+                  }}
+                />
                 {remaining.length ? (
                   <ul className="shopping-item-list">{remaining.map(row)}</ul>
                 ) : (
                   <div className="shopping-empty planning-paper">
                     <ShoppingBag size={32} aria-hidden="true" />
                     <h3>
-                      {items.length
-                        ? 'Đã mua xong các dòng có lượng'
-                        : 'Chưa có nguyên liệu cần mua'}
+                      {needsReviewCount
+                        ? 'Còn nguyên liệu cần chọn lượng'
+                        : items.length
+                          ? 'Đã mua xong các dòng có lượng'
+                          : demands.length
+                            ? 'Các dòng chưa rõ lượng đã được rà'
+                            : 'Chưa có nguyên liệu cần mua'}
                     </h3>
-                    <p>Lên thực đơn để Takosan gom nguyên liệu của mọi món vào danh sách.</p>
+                    <p>
+                      {needsReviewCount
+                        ? 'Chọn lượng hoặc tạm bỏ qua ở phần trên trước khi đi chợ.'
+                        : demands.length
+                          ? 'Mở phần đã chọn hoặc đã bỏ qua nếu bạn muốn xem lại.'
+                          : 'Lên thực đơn để Takosan gom nguyên liệu của mọi món vào danh sách.'}
+                    </p>
                     <Link to="/planner" className="planning-text-link">
                       Lên thực đơn <ArrowRight size={16} aria-hidden="true" />
                     </Link>
                   </div>
-                )}
-                {(query.data?.unresolvedItems ?? []).length > 0 && (
-                  <section className="shopping-unresolved">
-                    <h3>Cần kiểm tra lượng trước khi mua</h3>
-                    <p>
-                      Công thức còn thiếu lượng hoặc đơn vị chưa đổi được. Những dòng này chưa có số
-                      lượng mua.
-                    </p>
-                    <ul>
-                      {query.data?.unresolvedItems?.map((item) => (
-                        <li key={`${item.ingredientId}:${item.unit}`}>
-                          <strong>{item.name}</strong>
-                          <span> Lượng chưa rõ</span>
-                          {item.contributions.length > 0 && (
-                            <details className="shopping-source-details shopping-unresolved-sources">
-                              <summary>
-                                Xem{' '}
-                                {new Set(item.contributions.map((source) => source.slotId)).size}{' '}
-                                bữa liên quan
-                              </summary>
-                              <div className="shopping-unresolved-links">
-                                {item.contributions.map((source, index) => (
-                                  <Link
-                                    className="planning-text-link"
-                                    key={`${source.slotId}:${index}`}
-                                    to={`/planner/${source.planId}/meal/${encodeURIComponent(source.slotId)}`}
-                                  >
-                                    {source.title} · {source.date}
-                                  </Link>
-                                ))}
-                              </div>
-                            </details>
-                          )}
-                        </li>
-                      ))}
-                    </ul>
-                  </section>
                 )}
                 {checked.length > 0 && (
                   <details className="shopping-bought">
@@ -398,7 +424,9 @@ export const ShoppingPage: React.FC = () => {
         open={!!removing}
         title="Xóa khỏi danh sách?"
         description={
-          removing ? `Xóa “${removing.name}” khỏi danh sách mua sắm của gia đình.` : undefined
+          removing
+            ? `Xóa “${removing.name}” khỏi danh sách mua sắm của gia đình.${removing.unknownDemand ? ' Nguyên liệu chưa rõ lượng sẽ trở lại phần cần chọn lượng.' : ''}`
+            : undefined
         }
         confirmText="Xóa món"
         cancelText="Giữ lại"
@@ -508,7 +536,11 @@ function ShoppingEditDialog({
             </div>
           </fieldset>
           {item.generated && (
-            <p className="planning-note">Lượng bạn chỉnh được giữ khi cập nhật lại thực đơn.</p>
+            <p className="planning-note">
+              {item.unknownDemand
+                ? 'Bạn đang chỉnh lượng muốn mua. Tổng lượng theo thực đơn vẫn chưa xác định; thay đổi này không xác nhận nhu cầu của món.'
+                : 'Lượng bạn chỉnh được giữ khi cập nhật lại thực đơn.'}
+            </p>
           )}
           {invalid && <p role="alert">Nhập tên và số lượng lớn hơn 0.</p>}
           {save.isError && <InlineError error={save.error} />}
