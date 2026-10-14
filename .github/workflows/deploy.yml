@@ -406,6 +406,29 @@ jobs:
             node scripts/strict-otp-release.mjs certify release-manifest.json strict-otp-recovery-version.json
           fi
 
+      - name: Prepare compatible family-meal recovery before serving traffic
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          DEPLOY_SHA: ${{ needs.release.outputs.deploy_sha }}
+          CATALOG_MODE: ${{ needs.release.outputs.recipe_catalog_mode }}
+          CATALOG_PERCENT: ${{ needs.release.outputs.recipe_catalog_d1_canary_percent }}
+          CATALOG_CUTOVER: ${{ needs.release.outputs.recipe_catalog_cutover_enabled }}
+          COMPOSITION_ENABLED: ${{ needs.release.outputs.meal_composition_v2_enabled }}
+          WRANGLER_OUTPUT_FILE_PATH: family-recovery-version-output.jsonl
+        run: |
+          needed="$(node scripts/family-meal-release.mjs needed release-manifest.json)"
+          if [ "$needed" = true ]; then
+            GIT_COMMIT="${DEPLOY_SHA}" VITE_MEAL_PLANNER_ENABLED=false VITE_MEAL_COMPOSITION_V2_ENABLED=false pnpm build
+            node scripts/family-meal-release.mjs build-proof dist/composition-flags.json family-recovery-build.json dist/client
+            pnpm wrangler versions upload --var GIT_COMMIT:"${DEPLOY_SHA}" --var STRICT_OTP_FAIL_CLOSED:false --var RECIPE_CATALOG_MODE:"${CATALOG_MODE}" --var RECIPE_CATALOG_D1_CANARY_PERCENT:"${CATALOG_PERCENT}" --var RECIPE_CATALOG_CUTOVER_ENABLED:"${CATALOG_CUTOVER}" --var MEAL_PLANNER_ENABLED:false --var MEAL_COMPOSITION_V2_ENABLED:false
+            recovery_version="$(node scripts/strict-otp-release.mjs version-id release-manifest.json family-recovery-version-output.jsonl)"
+            pnpm wrangler versions view "$recovery_version" --name frigo --json > family-recovery-version.json
+            node scripts/family-meal-release.mjs certify release-manifest.json family-recovery-version.json family-recovery-build.json
+            GIT_COMMIT="${DEPLOY_SHA}" VITE_MEAL_PLANNER_ENABLED="${COMPOSITION_ENABLED}" VITE_MEAL_COMPOSITION_V2_ENABLED="${COMPOSITION_ENABLED}" pnpm build
+            MEAL_PLANNER_ENABLED="${COMPOSITION_ENABLED}" MEAL_COMPOSITION_V2_ENABLED="${COMPOSITION_ENABLED}" VITE_MEAL_COMPOSITION_V2_ENABLED="${COMPOSITION_ENABLED}" node scripts/composition-flags.mjs verify release-manifest.json dist/composition-flags.json
+          fi
+
       - name: Recheck live main and exact-SHA CI immediately before production upload
         env:
           GH_TOKEN: ${{ github.token }}
@@ -452,6 +475,24 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
+          family_recovery="$(node -e "const m=require('./release-manifest.json'); process.stdout.write(m.familyMealRecovery?.versionId ?? '')")"
+          if [ -n "$family_recovery" ]; then
+            node scripts/cloudflare-worker-rollback.mjs "$family_recovery" > rollback-mutation.json
+            deadline=$((SECONDS + 180))
+            restored=false
+            while [ "$SECONDS" -lt "$deadline" ]; do
+              if timeout 20s pnpm wrangler deployments status --name frigo --json > rollback-deployment.json && \
+                curl --fail --silent --show-error --max-time 10 --header "Authorization: Bearer ${RELEASE_VERIFY_TOKEN}" \
+                  "${APP_SMOKE_URL}/api/v1/health/recipe-authority" > rollback-authority.json && \
+                node scripts/family-meal-release.mjs deployed release-manifest.json rollback-deployment.json family-recovery-version.json rollback-mutation.json rollback-authority.json family-recovery-build.json; then
+                restored=true
+                break
+              fi
+              sleep 3
+            done
+            test "$restored" = true
+            exit 0
+          fi
           recovery_version="$(node -e "const m=require('./release-manifest.json'); process.stdout.write(m.strictOtpRecovery?.versionId ?? '')")"
           if [ -n "$recovery_version" ]; then
             node scripts/cloudflare-worker-rollback.mjs "$recovery_version" > rollback-mutation.json

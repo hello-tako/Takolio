@@ -107,8 +107,11 @@ export async function run(command, file, args = [], options = {}) {
   const preTip = options.preTip ?? PRE_TIP;
   const candidateGate = options.gate ?? gate;
   const candidateSchema = options.verifySchema ?? verifySchema;
+  const candidateDatabase = options.stagingConfig ?? stagingConfig;
+  const candidateBaseline = options.verifyBaseline;
+  const preserveBaseline = options.verifyBaselinePreserved ?? verifyBaselinePreserved;
   if (command === 'query') {
-    if (file === 'baseline') return baselineQuery();
+    if (file === 'baseline') return (options.baselineQuery ?? baselineQuery)();
     if (file === 'schema' && options.schemaQuery) return options.schemaQuery();
     if (file === 'schema') {
       return `SELECT type, name, sql FROM sqlite_master WHERE name IN (${[...TABLES, ...INDEXES]
@@ -124,7 +127,7 @@ export async function run(command, file, args = [], options = {}) {
         current.database.id !== receipt.database.id) throw new Error('Candidate changed after dispatch');
     receipt.ci = current.ci;
   } else if (command === 'identity') {
-    const expected = stagingConfig();
+    const expected = candidateDatabase();
     if (expected.id !== receipt.database.id || expected.name !== receipt.database.name)
       throw new Error('Staging database identity changed');
     receipt.cloudflare = verifyCloudflareIdentity({ list: readJson(args[0]), info: readJson(args[1]), expected });
@@ -141,9 +144,13 @@ export async function run(command, file, args = [], options = {}) {
   } else if (command === 'pre-health') {
     if (!receipt.timeTravel) throw new Error('Time Travel bookmark not captured');
     receipt.preHealth = verifyHealth({ foreignKeys: readJson(args[0]), quickCheck: readJson(args[1]) });
-    const baseline = rows(readJson(args[2]), 'Pre-migration baseline');
-    if (baseline.length !== 1 || baseline[0]?.recipes !== 500) throw new Error('Staging D1 does not contain the reviewed 500 recipes');
-    receipt.preBaseline = baseline[0];
+    const baseline = readJson(args[2]);
+    if (candidateBaseline) receipt.preBaseline = candidateBaseline(baseline);
+    else {
+      const values = rows(baseline, 'Pre-migration baseline');
+      if (values.length !== 1 || values[0]?.recipes !== 500) throw new Error('Staging D1 does not contain the reviewed 500 recipes');
+      receipt.preBaseline = values[0];
+    }
   } else if (command === 'plan') {
     if (!receipt.preHealth) throw new Error('Pre-migration health missing');
     receipt.plan = verifyMigrationPlan(readFileSync(args[0], 'utf8'), {
@@ -155,7 +162,7 @@ export async function run(command, file, args = [], options = {}) {
     receipt.postHealth = verifyHealth({ foreignKeys: readJson(args[1]), quickCheck: readJson(args[2]) });
     const postBaseline = readJson(args[3]);
     const preBaseline = [{ success: true, results: [receipt.preBaseline] }];
-    receipt.aggregateDrift = verifyBaselinePreserved(preBaseline, postBaseline).drift;
+    receipt.aggregateDrift = preserveBaseline(preBaseline, postBaseline).drift;
     receipt.schemaCheck = candidateSchema(readJson(args[4]));
     receipt.schemaGate = verifySchemaGate(readJson(args[5]));
     receipt.status = options.status ?? 'STAGING_0039_CERTIFIED';

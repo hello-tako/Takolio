@@ -125,8 +125,35 @@ describe('T20 composition flags: deploy workflow wiring', () => {
           recipeCatalogCanaryPercent: 0, recipeCatalogCutoverEnabled: true, mealCompositionV2Enabled: enabled }))
           .toContain(`MEAL_COMPOSITION_V2_ENABLED:${enabled}`);
       }
-      // No other build in the job may compile the UI without the flag.
-      expect(steps.filter((step) => /pnpm build\b/.test(String(step.run ?? '')))).toHaveLength(1);
+      const builders = steps.filter((step) => /pnpm build\b/.test(String(step.run ?? '')));
+      expect(steps[build].env.VITE_MEAL_PLANNER_ENABLED).toBe(job === 'staging' ? 'true' : OUTPUT);
+      if (job === 'staging') {
+        expect(builders.map((step) => step.name)).toEqual(['Build']);
+      } else {
+        const recoveryName = 'Prepare compatible family-meal recovery before serving traffic';
+        expect(builders.map((step) => step.name)).toEqual(['Build', recoveryName]);
+        const recovery = builders[1];
+        expect(recovery.env.COMPOSITION_ENABLED).toBe(OUTPUT);
+        expect(recovery.env.DEPLOY_SHA).toBe('${{ needs.release.outputs.deploy_sha }}');
+        const compileLines = recovery.run.match(/^[^\n]*\bpnpm build\b.*$/gm);
+        expect(compileLines).toHaveLength(2);
+        expect(compileLines[0]).toContain('GIT_COMMIT="${DEPLOY_SHA}" VITE_MEAL_PLANNER_ENABLED=false VITE_MEAL_COMPOSITION_V2_ENABLED=false pnpm build');
+        expect(compileLines[1]).toContain('GIT_COMMIT="${DEPLOY_SHA}" VITE_MEAL_PLANNER_ENABLED="${COMPOSITION_ENABLED}" VITE_MEAL_COMPOSITION_V2_ENABLED="${COMPOSITION_ENABLED}" pnpm build');
+        const proof = recovery.run.indexOf('node scripts/family-meal-release.mjs build-proof');
+        const inactiveUpload = recovery.run.indexOf('pnpm wrangler versions upload');
+        const certify = recovery.run.indexOf('node scripts/family-meal-release.mjs certify');
+        const activeCompile = recovery.run.indexOf(compileLines[1]);
+        const activeGuard = recovery.run.indexOf('MEAL_PLANNER_ENABLED="${COMPOSITION_ENABLED}" MEAL_COMPOSITION_V2_ENABLED="${COMPOSITION_ENABLED}" VITE_MEAL_COMPOSITION_V2_ENABLED="${COMPOSITION_ENABLED}" node scripts/composition-flags.mjs verify release-manifest.json dist/composition-flags.json');
+        expect(proof).toBeGreaterThan(recovery.run.indexOf(compileLines[0]));
+        expect(inactiveUpload).toBeGreaterThan(proof);
+        expect(certify).toBeGreaterThan(inactiveUpload);
+        expect(activeCompile).toBeGreaterThan(certify);
+        expect(activeGuard).toBeGreaterThan(activeCompile);
+        expect(inactiveUpload).toBeLessThan(activeCompile);
+        expect(recovery.run).toContain('--var MEAL_PLANNER_ENABLED:false --var MEAL_COMPOSITION_V2_ENABLED:false');
+        expect(stepIndex(steps, recoveryName)).toBeGreaterThan(guard);
+        expect(stepIndex(steps, recoveryName)).toBeLessThan(deployStep);
+      }
     },
   );
   it('never reads the dispatch input anywhere but the normalizing gate', () => {

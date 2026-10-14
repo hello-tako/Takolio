@@ -1,3 +1,52 @@
+# T25 family meals production release - 2026-10-14 JST
+
+**Status:** RELEASE_IN_PROGRESS; local release tooling verified. User authorizes
+gathering T22-T24 and releasing production. Branch
+`codex/vietnamese-family-meals-20261013`; PR https://github.com/hello-tako/Tako-san/pull/75.
+Source baseline d64ba0c9; product checkpoints 6b63606d / d3952c34 / cf54910f.
+Active packet `tasks/T25-family-meals-production-release.md`; accepted ADR-061.
+
+**Delivered:** bounded current-main staging 0041->0042->0043 migration/certification;
+production current-main/CI fences and exact family schema proof; post-media catalog
+support for 0042/0043; inactive same-candidate paired flags-OFF recovery with exact
+Worker/D1/catalog and live HTML/module byte-hash verification. Active UI is rebuilt
+and paired flags verified before upload. Schema remains additive on rollback.
+No payment/auth runtime, dependency, production config or applied migration edits.
+
+**Executed:** final full `TMPDIR=/private/tmp pnpm test --maxWorkers=2` PASS,
+359 files / 8,440 tests (423.70s, `work/t25-full-tests-final2.log`). Lint, app/Worker
+typecheck, migration smoke, default and paired flag builds PASS. Migration focused
+7/172, production exact-schema addition 3/30, composition/recovery focused 2/54
+PASS; diff checks and independent read-only release reviews PASS. T24 local
+browser12/12 and workerd/D1 HTTP8/8 remain product evidence, not hosted acceptance.
+
+**Failures retained:** initial full run 8,438 passed / 2 failed: inherited Wrangler
+5-second startup timeout (isolated32/32 PASS unchanged) and obsolete one-build-only
+workflow assertion. The assertion now checks every allowed explicit paired build
+and recovery/active guard ordering. Final full rerun passed every test. Logs stay
+in scratch `work/`; `node_modules` and `work/` are not committed.
+
+**Hosted boundary:** initial PR CI38574007006 passed at old head d64ba0c9; final
+candidate CI, exact-main CI, staging migration/deploy and protected production
+receipts remain pending. No remote migration or new deployment has occurred.
+Public readiness reports prior production/staging SHA
+3a24808b97838235596a43694013e74b1ba64cc2, D1/500/no fallback. Its prior production
+receipt38274253206 provides the already-approved hardened_sha. Re-read active
+version/ledger through new pipeline; do not copy historical IDs.
+
+**Next:** push this checkpoint, require exact-head CI and normal ancestry-preserving
+merge, exact-main CI, staging migration/deploy at D1 with paired flags ON, then
+protected production migration0041->0043. Production restarts shadow/0 with explicit
+rollback confirmation, promotes sameSHA canary1->5->25->D1/0, verifies each receipt.
+GitHub production Environment reviewer vn-taphoanhatung remains required. No gate
+bypass or production-success claim. A used recovery must prove served OFF assets;
+no live recovery rehearsal occurred. Aggregate preservation is not byte-content/R2
+proof. Authenticated hosted family flows need an existing certification session.
+
+---
+
+## Prior Checkpoints
+
 # T24 unknown shopping demand review - LOCAL_IMPLEMENTED_VERIFIED
 
 - Implementation checkpoint: `cf54910f5ebf64293517b855f0da6cbe0f8f9582`.

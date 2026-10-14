@@ -3048,3 +3048,37 @@ can create a same-plan dismissal for unknown demand and the old UI has no review
 or skip/reopen actions. Do not infer safe mixed-version shopping writes from the
 expand-only schema. Keep 0043 on rollback and rehearse any earlier binary against
 reviewed purchase/history fixtures before authorizing that release path.
+
+## ADR-061 - Operational release support for family-meal schema tips (2026-10-14)
+
+Accepted under the user's explicit instruction to release all T22-T24 changes.
+Add bounded staging migration support for the exact 0041->0043 chain, retaining
+current-main/exact-SHA CI, staging D1 identity, ledger/plan, bookmark, schema and
+unchanged-data evidence. Production 0042/0043 retain the existing Environment gate
+and immutable migration chain, and receive the same immediate current-main/CI
+rechecks as other operational schema tips. Catalog/media verification treats 0042
+and 0043 as post-media operational tips without permitting catalog/media drift.
+No new runtime schema is added; no applied migration or payment/auth runtime is
+changed. Catalog authority progression and strict release proof remain binding.
+
+The first family schema release prepares an inactive recovery version from the
+exact current candidate with both planner UI/server flags OFF before active
+traffic. Its compiled flags, canonical D1 binding, source SHA and catalog flags
+are certified; active assets are rebuilt and rechecked after that upload. Failure
+recovery prefers this named compatible version over the pre-T22/pre-T24 binary,
+keeping additive 0042/0043 schema and shopping review semantics. The unchanged
+strict-OTP recovery retains priority when preparing an initial OTP cutover.
+
+T22 changed the recipe-authority source to add current-content validation. Existing
+unchanged-D1 continuity therefore does not apply. Use the existing explicit
+shadow restart, then same-SHA canary 1 -> 5 -> 25 -> d1 progression with authority
+proof at every step; retain the unchanged rollout policy and human Environment
+gates. This temporary authority transition is part of the authorized release.
+
+Production 0043 additionally certifies every family table/index/trigger/constraint
+against the two reviewed migration files. The recovery receipt binds root HTML
+and module bundle byte counts/SHA256 to the flags-OFF build; a used recovery must
+fetch and match those exact served assets before recording success. Same-SHA
+service-worker metadata alone cannot distinguish the ON and OFF UI builds.
+Staging preserves exact aggregate counts and media diagnostics, not database byte
+content or R2 availability; runtime catalog/media authority checks remain separate.
