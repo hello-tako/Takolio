@@ -1,3 +1,80 @@
+# T25 canary/1 certified; canary/5 awaiting approval - 2026-10-15 JST
+
+**Status:** IN_PROGRESS (`RELEASE_IN_PROGRESS`). Immutable candidate remains main
+`0ff82edb7c251be340b5e00fbcf0ae8703b22a55`; approved hardened SHA remains
+`3a24808b97838235596a43694013e74b1ba64cc2`. User selected automated checks and
+public smoke; authenticated hosted household flows remain `NOT_TESTED`.
+
+**Completed source, CI, migration and staging gates:** PR #75/#76 merged normally;
+exact-head `38626853404` and exact-main `38628474378` passed 359 files / 8,442
+tests with lint, types, migration smoke and build. Staging migration
+`38629910072`, staging deploy `38630223689` and production migration `38630661149`
+passed at the exact SHA. Production is ledger 43/tip 0043 on D1
+`frigo-db` / `f975ec39-b2c8-4a2a-80e1-0366054599d3`, with healthy FK/quick check,
+16 production aggregate fields drift-free, 500 recipes/fingerprint and family
+schema constraints PASS; staging separately certified 103 aggregate fields.
+Post-migration public smoke of the previous Worker at approved hardened SHA PASS
+(`work/t25-production-postmigration-oldworker-smoke.log`): database ok, D1/500/
+no fallback and exact SHA/SW convergence. This public coexistence check does not
+certify authenticated household flows.
+
+**Shadow receipt:** Run `38631551953` and independent verification passed. Its
+hosted full suite passed 359 files / 8,442 tests in 456.63s
+(`work/t25-production-shadow-full.log`). Shadow proved paired UI/server flags ON,
+ledger 43, served 500 recipes and protected fingerprint
+`f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37`,
+Worker `3739abf9-b7a5-421e-8c25-ea1069bebbf2`, deployment
+`f2ffb0e5-b84d-4b5f-91ae-df6ef345a1eb`, canonical DB binding and three asset/SW
+observations. Same-candidate paired-OFF recovery `fd637894-0fd3-4017-89cf-729de28ef477`
+was certified inactive with compiled OFF assets; no rollback or recovery traffic.
+Fresh shadow readiness/smoke was status/database `ok`, shadow/0, global `static`,
+500, no fallback and no warnings.
+
+**Canary/1 receipt:** Run `38633505550` and
+`work/t25-production-canary1/release-manifest.json.independent-verification.json`
+passed. Its hosted full suite passed 359 files / 8,442 tests in 614.33s
+(`work/t25-production-canary1-full.log`). The verifier joined exactly to the shadow
+Worker/deployment, then certified transition `shadow -> canary-1`, configured
+canary 1%, actual source D1, global source `mixed`, D1 ready, served 500 recipes,
+the protected fingerprint above, ledger 43, and no fallback. Canary Worker is
+`bb35e2cc-f6fe-4fc0-84ee-284b8440bfe9`, deployment
+`10c00336-861c-4077-8f3a-3355701c2bc1`, with the expected DB binding and three
+asset/SW observations. Its same-candidate paired-OFF recovery
+`86fe3947-73dd-4610-9b34-cf94fef4b570` is inactive and certified; rollback was
+`NOT_USED` and recovery traffic was not rehearsed.
+
+**Canary/1 public observation:** Fresh readiness at `2026-10-14T20:53:52.993Z`
+returned HTTP 200, exact SHA, production database `ok`, canary 1%, mixed source,
+500 expected recipes and no fallback. Status was `degraded` with warning
+`CONFIG_RECIPE_CATALOG_D1_AUTHORITY`. Source `src/worker/config/validation.ts:149`
+defines this as the informational canary/D1 authority notice with the cutover
+fence satisfied; it is not a fatal configuration or failed release gate. Canary/1
+hosted public smoke passed. Retain the exact warning in later observations.
+
+**Active gate:** Canary/5 run `38635714965` passed its release gate and remains
+WAITING for reviewer `vn-taphoanhatung` at the production Environment gate.
+The reviewer request is pending; user intent to approve does not replace the actual
+GitHub approval. No canary/5 upload, receipt or smoke is certified yet. After
+approval, verify the exact canary/1 predecessor join, same candidate/hardened SHA,
+ledger/catalog, Worker/binding, assets/SW and public readiness before canary/25
+and d1/0. Preserve additive 0042/0043 and fail-closed recovery; final release is
+unverified until d1/0.
+
+**Historical receipt limitation:** Optional comparison with artifact `38274253206`
+failed on IDs predating authorized post-release secret operations. Protected release
+gates passed, and root verifier without this stale optional comparison PASS.
+Shadow's actual previous Worker `ded100e7-98ae-4c83-aab5-94342daa06a3` /
+deployment `56b74111-0bf8-44db-ac79-a15e28f80f27` matches preserved payOS
+acceptance. Later receipts must join immediately preceding candidate IDs exactly.
+
+**Documentation checkpoint:** Source/runtime/config/schema remain unchanged.
+Root may commit and normally push these four documents on
+`codex/family-release-receipts-20261015`. Remote main must stay
+`0ff82edb7c251be340b5e00fbcf0ae8703b22a55` throughout the rollout; do not merge
+this documentation branch into main until final deployment/receipt/smoke pass.
+
+---
+
 # T25 staging D1 column-limit correction - 2026-10-15 JST
 
 **Status:** RELEASE_IN_PROGRESS; product source merged, staging migration stopped

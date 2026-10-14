@@ -1,5 +1,71 @@
 # T25 - Release Vietnamese family meals T22-T24
 
+Status: IN_PROGRESS (`RELEASE_IN_PROGRESS`, 2026-10-15 JST).
+Immutable main candidate `0ff82edb7c251be340b5e00fbcf0ae8703b22a55`; approved
+hardened SHA `3a24808b97838235596a43694013e74b1ba64cc2`. User selected automated
+checks and public smoke; signed-in hosted household flows are not claimed.
+
+## Certified stages
+
+Normal PR #75/#76 merges, exact-head/main CI `38626853404` / `38628474378`,
+staging migration/deploy `38629910072` / `38630223689` and production migration
+`38630661149` PASS. Production D1 ledger 43/tip 0043, healthy FK/quick checks,
+500 recipes/fingerprint and family schema constraints remain certified.
+Post-migration previous-Worker public smoke PASS, retained in
+`work/t25-production-postmigration-oldworker-smoke.log`.
+
+Shadow `38631551953` workflow/independent receipt PASS; hosted full suite 359
+files / 8,442 tests, 456.63s. Paired flags ON, served 500/protected fingerprint,
+exact Worker/deployment/assets/SW, inactive paired-OFF recovery and no rollback
+certified. Shadow public readiness/smoke PASS.
+
+Canary/1 `38633505550` workflow/independent receipt PASS with exact shadow
+predecessor join; hosted full suite 359 files / 8,442 tests, 614.33s. Authority
+is canary 1%, actual D1/global mixed, D1 ready, served 500/fingerprint, ledger 43,
+paired ON. Worker `bb35e2cc-f6fe-4fc0-84ee-284b8440bfe9` / deployment
+`10c00336-861c-4077-8f3a-3355701c2bc1`; inactive paired-OFF recovery
+`86fe3947-73dd-4610-9b34-cf94fef4b570`; three asset/SW observations; rollback
+NOT_USED. Public smoke PASS. Fresh readiness was degraded with informational
+`CONFIG_RECIPE_CATALOG_D1_AUTHORITY` (`src/worker/config/validation.ts:149`),
+which confirms the canary/D1 cutover fence is satisfied; database is ok, no fallback.
+
+Canary/5 `38635714965` release gate PASS, production WAITING for the required
+reviewer `vn-taphoanhatung`. Actual approval, upload, receipt and smoke are pending.
+Final production release remains IN_PROGRESS.
+
+## Remaining sequence and documentation checkpoint
+
+1. Root may commit/push the four docs normally on
+   `codex/family-release-receipts-20261015`; source/runtime/config/schema unchanged.
+2. Remote main must stay `0ff82edb7c251be340b5e00fbcf0ae8703b22a55` during
+   rollout; do not merge this receipts branch into main until final certification.
+3. After approval, complete canary/5 and prove exact Canary/1 predecessor join,
+   same candidate/hardening, authority, ledger, assets/SW and public smoke.
+4. Repeat normal approval and exact join/receipt/smoke for canary/25, then d1/0.
+5. Record actual run/approval/warning/rollback evidence in all four docs. Final
+   D1 source, 500/no fallback, exact SHA/SW and no rollback are required.
+
+Keep paired flags, source transitions, additive 0042/0043 and fail-closed recovery.
+Public smoke remains the authorized acceptance path; authenticated household flows
+remain NOT_TESTED.
+
+## Historical comparison
+
+Optional local artifact `38274253206` join failed on IDs predating separately
+authorized secret operations; protected gates and root verifier without the stale
+comparison PASS. Actual previous Worker `ded100e7-98ae-4c83-aab5-94342daa06a3` /
+deployment `56b74111-0bf8-44db-ac79-a15e28f80f27` matches payOS acceptance.
+Subsequent receipts must join immediately preceding candidate IDs exactly.
+
+---
+
+## Prior Checkpoint - 2026-10-14 JST
+
+The following entries preserve the earlier state and failures; the current state
+at the top supersedes their pending release claims.
+
+# T25 - Release Vietnamese family meals T22-T24
+
 Status: IN_PROGRESS (2026-10-14 JST).
 User explicitly authorizes gathering all implemented family-meal changes and
 releasing production. Source baseline d64ba0c9; T24 implementation cf54910f.

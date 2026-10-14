@@ -1,3 +1,58 @@
+# T25 release handoff: canary/1 certified; canary/5 awaiting approval - 2026-10-15 JST
+
+**Status:** IN_PROGRESS (`RELEASE_IN_PROGRESS`). Candidate main
+`0ff82edb7c251be340b5e00fbcf0ae8703b22a55`; hardened SHA
+`3a24808b97838235596a43694013e74b1ba64cc2`.
+
+**Completed gates:** Normal PR #75/#76 merges, exact-head/main CI
+`38626853404` / `38628474378`, staging migration/deploy `38629910072` /
+`38630223689`, production migration `38630661149` and shadow `38631551953` PASS.
+Production D1 is ledger 43, healthy FK/quick check, 500 recipes/fingerprint and
+family schema constraints PASS. Previous-Worker public smoke after migration PASS
+(`work/t25-production-postmigration-oldworker-smoke.log`). Hosted shadow full suite
+359 files / 8,442 tests, 456.63s; hosted canary/1 full suite 359 files / 8,442 tests,
+614.33s. Authenticated household flows remain NOT_TESTED.
+
+**Canary/1 receipt:** `38633505550` and independent verification PASS, joining
+exactly from shadow Worker `3739abf9-b7a5-421e-8c25-ea1069bebbf2` / deployment
+`f2ffb0e5-b84d-4b5f-91ae-df6ef345a1eb` to Canary/1 Worker
+`bb35e2cc-f6fe-4fc0-84ee-284b8440bfe9` / deployment
+`10c00336-861c-4077-8f3a-3355701c2bc1`. Receipt certifies canary 1%, actual
+D1/global mixed, D1 ready, served 500/fingerprint, ledger 43, paired ON, three
+asset/SW observations, inactive paired-OFF recovery
+`86fe3947-73dd-4610-9b34-cf94fef4b570` and rollback NOT_USED.
+
+**Readiness notice:** Fresh canary/1 public readiness was HTTP 200, exact SHA,
+database ok, mixed/500/no fallback, status degraded with
+`CONFIG_RECIPE_CATALOG_D1_AUTHORITY`. Source `src/worker/config/validation.ts:149`
+marks an informational canary/D1 authority notice with cutover fence satisfied.
+This is not a fatal configuration failure. Hosted public smoke PASS.
+
+**Canary/5 gate:** `38635714965` release gate PASS; production job remains WAITING
+for reviewer `vn-taphoanhatung`. Actual Environment approval, upload, receipt and
+smoke are pending. Do not certify final release from the completed canary/1 stage.
+
+**Next actions:**
+
+1. Root may commit and normally push this four-document checkpoint on
+   `codex/family-release-receipts-20261015`; source/runtime/schema/config unchanged.
+2. Keep remote main at `0ff82edb7c251be340b5e00fbcf0ae8703b22a55`; never merge
+   the receipts branch into main until final rollout certification.
+3. After reviewer approval, verify canary/5's exact predecessor join to Canary/1
+   IDs, candidate/hardening, ledger/catalog, Worker/DB binding and asset/SW proof;
+   run `EXPECTED_RECIPE_CATALOG_MODE=canary` public smoke.
+4. Only after canary/5 passes, repeat normal approvals and exact receipt/smoke for
+   canary/25 then d1/0. Final D1/500/no fallback/exact SHA/SW/no rollback is required.
+
+**Historical comparison:** Optional join to artifact `38274253206` failed because
+IDs predate authorized secret operations; protected gates and root verifier without
+it PASS. Shadow actual previous Worker `ded100e7-98ae-4c83-aab5-94342daa06a3` /
+deployment `56b74111-0bf8-44db-ac79-a15e28f80f27` matches preserved payOS
+acceptance. Later receipts must join the immediate predecessor exactly. Keep
+additive 0042/0043 and fail-closed recovery proof.
+
+---
+
 # T25 staging D1 column-limit correction - 2026-10-15 JST
 
 **Status:** RELEASE_IN_PROGRESS; product source merged, staging migration stopped

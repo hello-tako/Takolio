@@ -1,3 +1,53 @@
+# T25 production rollout checkpoint - 2026-10-15 JST
+
+**State:** IN_PROGRESS (`RELEASE_IN_PROGRESS`); immutable main candidate
+`0ff82edb7c251be340b5e00fbcf0ae8703b22a55`, hardened SHA
+`3a24808b97838235596a43694013e74b1ba64cc2`.
+
+**Completed gates:**
+
+- Exact-head `38626853404` / exact-main `38628474378`: 359 files / 8,442 tests;
+  lint, types, migration smoke and build PASS.
+- Staging migration/deploy `38629910072` / `38630223689` and production migration
+  `38630661149`: exact chain/ledger 43, healthy FK/quick checks, catalog/runtime
+  500 and family schema constraints PASS. Post-migration previous-Worker public
+  smoke PASS (`work/t25-production-postmigration-oldworker-smoke.log`).
+- Shadow `38631551953`: workflow/independent receipt PASS; hosted full suite 359
+  files / 8,442 tests, 456.63s; paired ON, ledger 43, served 500/fingerprint,
+  exact Worker/assets/SW, inactive paired-OFF recovery certified, no rollback.
+- Canary/1 `38633505550`: workflow/independent receipt PASS with exact shadow join;
+  hosted full suite 359 files / 8,442 tests, 614.33s; canary 1%, actual D1/global
+  mixed, D1 ready, served 500/fingerprint, paired ON, three asset/SW observations,
+  inactive paired-OFF recovery and rollback NOT_USED.
+
+**Public canary observation:** HTTP 200, exact SHA/database ok, canary 1%, mixed
+source, 500/no fallback; readiness status degraded with
+`CONFIG_RECIPE_CATALOG_D1_AUTHORITY`. `src/worker/config/validation.ts:149` marks
+this informational authority notice with cutover fence satisfied. Hosted smoke
+PASS; retain the warning without treating it as a fatal configuration failure.
+
+**Active gate:** Canary/5 `38635714965` remains WAITING for `vn-taphoanhatung` at
+the production Environment gate after its release gate PASS. Actual approval is
+pending; upload, receipt and smoke are not certified. Final release is IN_PROGRESS.
+
+**Next action:** After approval, finish canary/5 and prove exact predecessor join to
+Canary/1 Worker `bb35e2cc-f6fe-4fc0-84ee-284b8440bfe9` / deployment
+`10c00336-861c-4077-8f3a-3355701c2bc1`. Then repeat normal approval and exact
+receipt/public smoke for canary/25 and d1/0. Preserve flags, source transitions,
+additive 0042/0043 schema and recovery proof.
+
+**Historical comparison:** Optional artifact `38274253206` join failed on IDs
+predating authorized secret operations; root verifier without the stale comparison
+PASS. Actual previous Worker `ded100e7-98ae-4c83-aab5-94342daa06a3` / deployment
+`56b74111-0bf8-44db-ac79-a15e28f80f27` matches payOS acceptance. Later joins stay exact.
+
+**Checkpoint scope:** Source/runtime/schema/config unchanged; root may commit/push
+four docs normally on `codex/family-release-receipts-20261015`. Remote main must
+remain candidate SHA during rollout; no merge into main before final certification.
+Signed-in hosted household flows remain NOT_TESTED under the user's public-smoke choice.
+
+---
+
 # T25 staging D1 column-limit correction - 2026-10-15 JST
 
 **Status:** RELEASE_IN_PROGRESS; product source merged, staging migration stopped
