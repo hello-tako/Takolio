@@ -1,4 +1,4 @@
-import { chromium } from '/tmp/r1cert/src/node_modules/@playwright/test/index.mjs';
+import { chromium } from '@playwright/test';  // resolves from the repository root node_modules
 const base = 'http://127.0.0.1:8795';
 const browser = await chromium.launch();
 const out = [];

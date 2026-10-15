@@ -265,7 +265,7 @@ Chromium (`PLAYWRIGHT_BROWSERS_PATH=$HOME/.cache/ms-playwright`).
 | Migration / rollback matrix | `node scripts/admin-migration-matrix.mjs` | 0 | 11/11 |
 | Implementer workerd checks | `node scripts/admin-workerd-check.mjs` | 0 | **108/108** reproduced |
 | Independent workerd probe | `tools/workerd-probe.mjs` | 0 | **1169/1169** (see breakdown below) |
-| Reviewer tests | `vitest run tools/r1-independent.test.ts` | 0 | 18/18 (5 findings reproduced, 13 controls) |
+| Reviewer tests | `vitest run tools/r1-independent.test.ts` | 0 | 18/18 (6 findings reproduced, 12 controls) |
 | Original PoCs before / after | vitest JSON reporter on `3e865d0` / `0331cc9` | 0 / 1 (expected) | 51/51; 22/29; matrix 0 unexplained |
 | E2E + a11y + responsive | `pnpm test:admin:e2e` | 1 | 11/12; axe 0 violations on 11 screens; 0 px overflow on 10 screens × 1440/820/390; the failure is F8 |
 | F8 isolation | `playwright test -g "scrollable tables" --repeat-each 6` + diagnostic | 1 | 4/6; 5/5 diagnostic runs scroll 80 px within 150 ms |
@@ -280,8 +280,8 @@ Independent workerd probe breakdown (17 scenarios):
 ## 10. Release and migration integrity; admin pipeline design (not implemented)
 
 - Customer runtime, configs, service worker and the 41-file migration ledger are **byte-identical to `186a9cf`**,
-  and the customer build artifacts are identical. Nothing legitimate was reverted: every customer file `3e865d0`
-  had touched was admin-related, and `186a9cf` is the parent of the whole series.
+  and the customer build artifacts are identical. **Correction (2026-10-15):** the earlier claim that every customer
+  file touched by `3e865d0` was admin-related is wrong. `3e865d0` modified customer files; see the erratum below.
   - Caveat: newer commits on GitHub `main`, if any, were not examined (offline).
 - Admin migration `0001` is additive in its own database: 9 triggers, CHECK constraints, partial unique indexes.
   Fresh apply, re-apply and the failed-apply path are verified by the matrix. Weaknesses: F5, and audit
@@ -366,3 +366,10 @@ byte-identical customer artifacts. The verdict is driven by:
 - the absence of reviewer independence (§0), which on its own would forbid a PASS.
 
 This verdict authorizes nothing: no GitHub publication, no Cloudflare staging deployment, no production operation.
+
+
+## Erratum (2026-10-15, handoff)
+
+1. **§10 was wrong.** It said that every customer file touched by `3e865d0` was admin-related. `3e865d0` modified 16 non-admin paths: 4 status documents (`HANDOFF.md`, `TASK_BOARD.md`, `docs/ai/CURRENT_STATE.md`, `docs/ai/DECISIONS.md`), 3 configuration files (`package.json`, `tsconfig.json`, `vite.config.ts`), and 9 runtime, script and test files (`src/worker/index.ts`, `types.ts`, `config/csp.ts`, `middleware/rate-limit.ts`, `public/sw.js`, `scripts/migration-smoke.sh`, `tests/helpers/sqlite-d1.ts`, `tests/integration/auth-hardening.test.ts`, `tests/integration/auth-otp-coordinator.test.ts`). `25140ba` restored the 9 runtime, script and test files to their `186a9cf` content, and `6889f8d` removed the admin SPA plugin from `vite.config.ts`. At `95a1425`, those runtime files are byte-identical to `186a9cf`. `package.json` (+12/−3, admin scripts) and `tsconfig.json` (+1, `src/admin` include) keep admin changes on purpose.
+2. **Test counts in §3 and §9 were wrong.** `tools/r1-independent.test.ts` has 6 FINDING tests (R1C-A1, R1C-B3, R1C-C1, R1C-D1, R1C-D2, R1C-D3) and 12 CONTROL tests. The total of 18/18 is correct.
+3. The `6889f8d` commit is labelled documentation-only, but it changes `vite.config.ts`. See `docs/admin/handoff/PROJECT_HISTORY.md`.

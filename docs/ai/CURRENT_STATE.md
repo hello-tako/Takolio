@@ -1,3 +1,5 @@
+> **Handoff (2026-10-15):** Admin Console work is preserved on branch `handoff/admin-v1-r2-20261015`. Start at `docs/admin/handoff/START_HERE.md`. Status: R1 `ADMIN_V1_R1_CHANGES_REQUIRED`; R2 not started; not certified for staging or production. Commands and results with provenance: `docs/admin/handoff/TEST_AND_EVIDENCE.md`.
+
 # Admin V1 R1 certification review - 2026-10-14
 
 **Status:** ADMIN_V1_R1_CHANGES_REQUIRED (local review of 0331cc9/25140ba; reviewer
