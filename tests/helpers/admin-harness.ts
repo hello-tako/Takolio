@@ -115,9 +115,9 @@ export const count = (db: SqliteD1, query: string, ...binds: unknown[]) => db.qu
 export async function enrollFixtureOperators(dbs: Databases, keys = ['super', 'super2', 'ops', 'content', 'support', 'auditor']) {
   for (const key of keys) {
     const userId = `fx_admin_${key}`;
-    await dbs.admin.prepare(`INSERT INTO approved_human_operators (operator_id,enrollment_record_ref,independent_approval_ref,enrolled_at)
+    await dbs.admin.prepare(`INSERT INTO approved_human_operators (operator_id,enrollment_ref,independent_approval_ref,enrolled_at)
       VALUES (?,?,?,'2026-10-15T00:00:00.000Z')`).bind(`operator_${key}`, `synthetic-human-${key}`, `synthetic-human-approval-${key}`).run();
-    await dbs.admin.prepare(`INSERT INTO operator_identity_bindings (id,user_id,operator_id,access_iss,access_sub,enrollment_record_ref,independent_approval_ref,bound_at)
+    await dbs.admin.prepare(`INSERT INTO operator_identity_bindings (id,user_id,operator_id,access_iss,access_sub,enrollment_ref,independent_approval_ref,bound_at)
       VALUES (?,?,?,?,?,?,?,'2026-10-15T00:00:00.000Z')`).bind(`bind_fixture_${key}`, userId, `operator_${key}`, `https://${ACCESS_TEAM}`, `subject_${key}`, `synthetic-binding-${key}`, `synthetic-binding-approval-${key}`).run();
   }
 }
