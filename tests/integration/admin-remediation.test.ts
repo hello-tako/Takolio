@@ -434,6 +434,15 @@ describe('Cloudflare Access adapter (offline test keys only)', () => {
       const page = await call('/admin/', { env: { ...prod, ASSETS: { fetch: async () => new Response('<div id="admin-root"></div>') } as never } });
       expect(page.headers.get('Strict-Transport-Security')).toContain('max-age=');
       expect(page.headers.get('Content-Security-Policy')).toContain('upgrade-insecure-requests');
+      const wrongSubject = await sign(claims({ sub: 'different-human-subject' }));
+      const deniedLogin = await call('/api/v1/admin/auth/login', { env: prod, method: 'POST', headers: { 'Cf-Access-Jwt-Assertion': wrongSubject } });
+      expect(deniedLogin.status).toBe(403);
+      expect((await call('/api/v1/admin/me', { env: prod, session, headers: { 'Cf-Access-Jwt-Assertion': wrongSubject } })).status).toBe(401);
+      expect(count(prodDbs.admin, "SELECT COUNT(*) AS n FROM admin_audit_events WHERE action='admin.access.denied' AND reason_code='identity_mismatch'")).toBeGreaterThanOrEqual(2);
+      prodDbs.admin.seed("UPDATE admin_role_assignments SET status='revoked',revoked_at='2026-10-15T00:00:00.000Z',revoked_by='fx_admin_super' WHERE id='ara_prod_support'");
+      const governance = await call('/api/v1/admin/auth/login', { env: prod, method: 'POST', headers: { 'Cf-Access-Jwt-Assertion': assertion } });
+      expect(governance.status).toBe(503);
+      expect(governance.json.code).toBe('ADMIN_GOVERNANCE_INCOMPLETE');
     } finally {
       closeDatabases(prodDbs);
     }
