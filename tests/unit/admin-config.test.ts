@@ -47,17 +47,14 @@ describe('admin deployment configuration', () => {
     expect(readdirSync('migrations-admin')).toEqual(['0001_admin_console_foundation.sql']);
   });
 
-  it('the customer Worker entry and config files are unchanged from the pre-admin baseline when that commit is available', () => {
-    let baseline: string | null = null;
+  // Relative to the merge base with main, so later main commits do not trip this guard.
+  it('the customer Worker entry and config files are unchanged from the merge base with main when that history is available', () => {
+    let baseline: string;
     try {
-      execFileSync('git', ['cat-file', '-e', '186a9cf05de7c91ed3289e13130feb3b38a264ac^{commit}'], { stdio: 'ignore' });
-      baseline = '186a9cf05de7c91ed3289e13130feb3b38a264ac';
+      baseline = execFileSync('git', ['merge-base', 'HEAD', 'origin/main'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
     } catch {
-      baseline = null;
-    }
-    if (!baseline) {
       const shallow = execFileSync('git', ['rev-parse', '--is-shallow-repository'], { encoding: 'utf8' }).trim();
-      expect(shallow, 'baseline commit missing from a full clone').toBe('true');
+      expect(shallow, 'origin/main missing from a full clone').toBe('true');
       return;
     }
     for (const file of ['src/worker/index.ts', 'src/worker/types.ts', 'src/worker/config/csp.ts', 'src/worker/middleware/rate-limit.ts', 'wrangler.jsonc', 'wrangler.staging.jsonc', 'public/sw.js', 'vite.config.ts']) {
