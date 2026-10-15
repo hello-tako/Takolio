@@ -240,8 +240,8 @@ describe('data exposure and validation', () => {
 describe('admin documents and routing', () => {
   function fakeAssets() {
     const files: Record<string, string> = { '/admin/': '<div id="admin-root"></div>', '/admin/assets/admin-abc123.js': 'console.log(1)', '/admin/favicon.svg': '<svg/>' };
-    return { fetch: async (request: Request) => {
-      const pathname = new URL(request.url).pathname;
+    return { fetch: async (request: Request | string) => {
+      const pathname = new URL(typeof request === 'string' ? request : request.url).pathname;
       return pathname in files ? new Response(files[pathname], { headers: { 'Content-Type': pathname.endsWith('.js') ? 'text/javascript' : 'text/html' } }) : new Response('nf', { status: 404 });
     } };
   }

@@ -82,7 +82,7 @@ describe('S1 environment decision matrix (fail closed)', () => {
 
 describe('S2/S3 surface gate, origin, CSRF and cookies', () => {
   function assets() {
-    return { fetch: async (request: Request) => new URL(request.url).pathname === '/admin/' ? new Response('<div id="admin-root"></div>') : new Response('<svg/>') };
+    return { fetch: async (request: Request | string) => new URL(typeof request === 'string' ? request : request.url).pathname === '/admin/' ? new Response('<div id="admin-root"></div>') : new Response('<svg/>') };
   }
 
   it('ADMIN_CONSOLE_ENABLED=false makes every admin path 404 (documents, deep links, assets, API)', async () => {
@@ -163,15 +163,20 @@ describe('Super Admin governance', () => {
   it('operator bootstrap is two-person and one-time', () => {
     const fresh = createDatabases({ seed: false });
     try {
-      const statements = buildBootstrapAdminSql({ userIds: ['u_a', 'u_b'], assignmentIds: ['ara_00000000000000a1', 'ara_00000000000000b2'] }).split(';\n');
-      for (const statement of statements.slice(0, -1)) fresh.admin.seed(`${statement};`);
-      expect(fresh.admin.query(statements.at(-1)!)).toEqual([{ granted: 2 }]);
+      for (const key of ['a', 'b']) fresh.admin.seed(`
+        INSERT INTO approved_human_operators(operator_id,enrollment_ref,independent_approval_ref,enrolled_at)
+          VALUES ('operator_${key}','synthetic-human-${key}','synthetic-review-${key}','2026-10-15T00:00:00.000Z');
+        INSERT INTO operator_identity_bindings(id,user_id,operator_id,access_iss,access_sub,enrollment_ref,independent_approval_ref,bound_at)
+          VALUES ('binding_${key}','u_${key}','operator_${key}','https://fixture.cloudflareaccess.com','subject_${key}','synthetic-access-${key}','synthetic-access-review-${key}','2026-10-15T00:00:00.000Z');`);
+      const bootstrap = buildBootstrapAdminSql({ userIds: ['u_a', 'u_b'], assignmentIds: ['ara_00000000000000a1', 'ara_00000000000000b2'],
+        ceremonyId: 'bsc_regression_pair', independentApprovalRef: 'synthetic-bootstrap-review', createdAt: '2026-10-15T00:00:00.000Z' });
+      fresh.admin.seed(bootstrap);
+      expect(count(fresh.admin, 'SELECT COUNT(*) AS n FROM admin_role_assignments')).toBe(2);
       expect(count(fresh.admin, "SELECT COUNT(*) AS n FROM admin_config_metadata WHERE key = 'bootstrap_completed_at'")).toBe(1);
       expect(count(fresh.admin, "SELECT COUNT(*) AS n FROM admin_audit_events WHERE action = 'admin.bootstrap.operator'")).toBe(2);
-      const again = buildBootstrapAdminSql({ userIds: ['u_c', 'u_d'], assignmentIds: ['ara_00000000000000c3', 'ara_00000000000000d4'] }).split(';\n');
-      fresh.admin.seed(`${again[0]};`);
+      expect(() => fresh.admin.seed(bootstrap)).toThrow();
       expect(count(fresh.admin, 'SELECT COUNT(*) AS n FROM admin_role_assignments')).toBe(2);
-      expect(() => fresh.admin.seed("INSERT INTO admin_role_assignments (id, user_id, role, grant_source) VALUES ('ara_00000000000000e5', 'u_e', 'SUPER_ADMIN', 'operator_bootstrap')")).toThrow(/already been completed/);
+      expect(() => fresh.admin.seed("INSERT INTO admin_role_assignments (id, user_id, role, grant_source) VALUES ('ara_00000000000000e5', 'u_a', 'SUPER_ADMIN', 'operator_bootstrap')")).toThrow(/bootstrap|ceremony|completed/);
       expect(() => buildBootstrapAdminSql({ userIds: ['u_a', 'u_a'], assignmentIds: ['ara_00000000000000a1', 'ara_00000000000000b2'] })).toThrow(/two distinct/);
     } finally {
       closeDatabases(fresh);
@@ -364,7 +369,7 @@ describe('admin schema and synthetic data gates', () => {
     } finally {
       closeDatabases(unmigrated);
     }
-    dbs.admin.seed("UPDATE admin_config_metadata SET value = '2' WHERE key = 'schema_version'");
+    dbs.admin.seed("UPDATE admin_config_metadata SET value = '3' WHERE key = 'schema_version'");
     const result = await call('/api/v1/admin/auth/login', { env, method: 'POST', body: { email: fx('super'), password: PASSWORD } });
     expect(result.status).toBe(503);
     expect(result.json.code).toBe('ADMIN_SCHEMA_MISMATCH');

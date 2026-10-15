@@ -11,5 +11,6 @@ export function buildAdminFixtureSql(): { main: string; admin: string };
 export function assertLocalProvisioningAllowed(options?: { argv?: string[]; env?: Record<string, string | undefined> }): void;
 export function localWranglerEnv(base?: Record<string, string | undefined>): Record<string, string | undefined> & { XDG_CONFIG_HOME: string };
 export function buildBootstrapAccountLookupSql(emails: string[]): string;
-export function buildBootstrapAdminSql(options: { userIds: string[]; assignmentIds: string[] }): string;
+export function buildBootstrapIdentityLookupSql(userIds: string[]): string;
+export function buildBootstrapAdminSql(options: { userIds: string[]; assignmentIds: string[]; ceremonyId?: string; independentApprovalRef?: string; createdAt?: string }): string;
 export function buildLocalAccountSql(options: { email: string; password: string; name?: string }): string;
