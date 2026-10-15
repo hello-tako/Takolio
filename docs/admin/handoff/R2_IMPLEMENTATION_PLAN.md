@@ -10,7 +10,7 @@
 ## WP0 — Integrate with `origin/main` (no behaviour change)
 
 - **Why:** `origin/main` (`0ff82edb7c251be340b5e00fbcf0ae8703b22a55`) is 15 commits ahead of `186a9cf` and has 43 migration files (41 at `186a9cf`). It changed `src/worker/index.ts` and `scripts/migration-smoke.sh`.
-- **Steps:** create the derived branch; merge `origin/main`; resolve conflicts (none expected in admin files); re-pin the migration-matrix customer-ledger assertion to the chosen main SHA; run the full gate set.
+- **Steps:** create the derived branch; merge `origin/main`; resolve conflicts (four status documents are expected to conflict, see START_HERE §8; no admin code file conflicts); re-pin the migration-matrix customer-ledger assertion to the chosen main SHA; run the full gate set.
 - **Acceptance:** `pnpm lint`, `pnpm typecheck`, `pnpm test`, `pnpm build`, `pnpm check:migrations` pass on the merged SHA; `admin-migration-matrix` passes with the new pin; no customer file changes beyond the merge result.
 
 ## WP1 — Remove the customer D1 binding from the Admin Worker (priority 1; F1)

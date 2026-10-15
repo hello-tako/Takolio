@@ -103,6 +103,7 @@ Follow `LOCAL_RUNBOOK.md` in a clean clone. Results and their provenance are in 
 ## 8. Traps you will hit
 
 - **Ledger drift.** `origin/main` has 43 migration files; `186a9cf` (the admin base) has 41. The R1 migration matrix pins the 41-file customer ledger, so it will fail on `main`. This is expected until WP0 re-pins it deliberately. Do not weaken the assertion.
+- **PR #77 is `DIRTY`.** Merging `main` conflicts in four status documents: `docs/ai/CURRENT_STATE.md`, `docs/ai/DECISIONS.md`, `docs/ai/HANDOFF.md` and `docs/ai/TASK_BOARD.md`. `main` added about 1,900 lines to them since `186a9cf`, and this branch added blocks at the top. Resolve by keeping both sides. No admin code file conflicts (checked with `git merge-tree`).
 - **Commit labels lie.** `6889f8d` is labelled `docs(admin)` but edits `vite.config.ts`. Use `git diff 186a9cf HEAD -- <path>` for customer provenance, not commit subjects.
 - **Customer files were touched and restored.** `3e865d0` changed customer files (`src/worker/index.ts`, `types.ts`, `config/csp.ts`, `middleware/rate-limit.ts`, `public/sw.js`, `scripts/migration-smoke.sh`, `tests/helpers/sqlite-d1.ts`). `25140ba` restored them. At HEAD they are byte-identical to `186a9cf`. The reviewer's earlier claim that these edits were "admin-related" was wrong; it is corrected in the certification report.
 - **Local PoCs are collected by `vitest` in a dirty workspace.** Restored copies under `.hoplite/artifacts/` are picked up by `pnpm test`. Run the suite in a clean clone, or move the PoCs aside first.
