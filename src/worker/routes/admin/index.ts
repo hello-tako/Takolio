@@ -214,8 +214,8 @@ authed.post('/roles', requirePermission('admin.roles.manage'), async (c) => {
     const id = newId('appr');
     const expiresAt = plusMinutes(72 * 60);
     await commit(c, [
-      adminDb.prepare(`INSERT INTO admin_action_approvals (id, action, target_user_id, requested_by, requested_at, expires_at)
-          VALUES (?, 'role.grant.super_admin', ?, ?, ?, ?)`).bind(id, input.userId, admin.userId, now, expiresAt),
+      adminDb.prepare(`INSERT INTO admin_action_approvals (id, action, target_user_id, requested_by, requested_at, expires_at, requester_access_iss, requester_access_sub)
+          VALUES (?, 'role.grant.super_admin', ?, ?, ?, ?, ?, ?)`).bind(id, input.userId, admin.userId, now, expiresAt, admin.accessIss ?? null, admin.accessSub ?? null),
       await auditStatement(c, { actorUserId: admin.userId, actorRoles: admin.roles, action: 'admin.approval.request', targetType: 'user', targetId: input.userId,
         outcome: 'success', metadata: { role: 'SUPER_ADMIN', approvalId: id, decision: 'grant' } }),
     ], 'Đã có yêu cầu phê duyệt đang chờ cho người dùng này.');
@@ -259,8 +259,8 @@ authed.delete('/roles/:assignmentId', requirePermission('admin.roles.manage'), a
     const approvalId = newId('appr');
     const expiresAt = plusMinutes(72 * 60);
     await commit(c, [
-      adminDb.prepare(`INSERT INTO admin_action_approvals (id, action, target_user_id, assignment_id, requested_by, requested_at, expires_at)
-          VALUES (?, 'role.revoke.super_admin', ?, ?, ?, ?, ?)`).bind(approvalId, row.user_id, id, admin.userId, now, expiresAt),
+      adminDb.prepare(`INSERT INTO admin_action_approvals (id, action, target_user_id, assignment_id, requested_by, requested_at, expires_at, requester_access_iss, requester_access_sub)
+          VALUES (?, 'role.revoke.super_admin', ?, ?, ?, ?, ?, ?, ?)`).bind(approvalId, row.user_id, id, admin.userId, now, expiresAt, admin.accessIss ?? null, admin.accessSub ?? null),
       await auditStatement(c, { actorUserId: admin.userId, actorRoles: admin.roles, action: 'admin.approval.request', targetType: 'user', targetId: row.user_id,
         outcome: 'success', metadata: { role: 'SUPER_ADMIN', approvalId, assignmentId: id, decision: 'revoke' } }),
     ], 'Đã có yêu cầu thu hồi đang chờ cho người dùng này.');
@@ -318,7 +318,7 @@ for (const decision of ['approve', 'reject'] as const) {
     const decidedBinds = [id, decision === 'approve' ? 'approved' : 'rejected', admin.userId, now];
     const statements = [
       // Guards re-validate inside the batch: still pending, unexpired, requester still SUPER_ADMIN, effect still applicable.
-      adminDb.prepare(`UPDATE admin_action_approvals SET status = ?, decided_by = ?, decided_at = ?
+      adminDb.prepare(`UPDATE admin_action_approvals SET status = ?, decided_by = ?, decided_at = ?, decider_access_iss = ?, decider_access_sub = ?
           WHERE id = ? AND status = 'pending' AND expires_at > ?
             AND (? = 'rejected' OR (
               EXISTS (SELECT 1 FROM admin_role_assignments r WHERE r.user_id = admin_action_approvals.requested_by AND r.role = 'SUPER_ADMIN' AND r.status = 'active')
@@ -326,7 +326,7 @@ for (const decision of ['approve', 'reject'] as const) {
               AND (action <> 'role.revoke.super_admin' OR (
                 EXISTS (SELECT 1 FROM admin_role_assignments r WHERE r.id = admin_action_approvals.assignment_id AND r.status = 'active')
                 AND (SELECT COUNT(*) FROM admin_role_assignments r WHERE r.role = 'SUPER_ADMIN' AND r.status = 'active') > ?))))`)
-        .bind(decidedBinds[1], admin.userId, now, id, now, decidedBinds[1], ADMIN_SUPER_ADMIN_MINIMUM),
+        .bind(decidedBinds[1], admin.userId, now, admin.accessIss ?? null, admin.accessSub ?? null, id, now, decidedBinds[1], ADMIN_SUPER_ADMIN_MINIMUM),
     ];
     if (decision === 'approve' && approval.action === 'role.grant.super_admin') {
       statements.push(
