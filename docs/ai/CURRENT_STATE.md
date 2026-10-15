@@ -1,3 +1,31 @@
+# Admin V1 R1 certification review - 2026-10-14
+
+**Status:** ADMIN_V1_R1_CHANGES_REQUIRED (local review of 0331cc9/25140ba; reviewer
+is the same agent that implemented R1, so not independent and no PASS possible).
+Report: docs/admin/reviews/2026-10-14-r1-certification.md (+ r1-certification/
+evidence and reviewer tools). No source change, push, deploy or remote access.
+
+**Re-verified (clean worktree of 0331cc9):** full vitest 342 files/7865 tests
+exit 0; lint/typecheck/build exit 0; customer dist/client byte-identical to
+186a9cf (441 files) and identical Worker dry-run bundle; check:migrations ok;
+migration matrix 11/11; implementer workerd checks 108/108; independent workerd
+probe 1169/1169 (production positive control, 12 negative variants, real browser
+on workerd, customer Worker parity); reviewer tests 18/18; original PoCs 51/51
+before, 22/29 after with 0 unexplained; E2E 11/12 (axe 0, overflow 0) — the one
+failure is a flaky keyboard-scroll assertion (product verified correct).
+
+**Findings:** P1 F1 admin Worker has a writable binding to the production
+customer DB and reads password hashes every request (needs read facade); P1 F2
+two-SUPER_ADMIN governance deadlock without break-glass; P1 F3 no identity-bound
+production bootstrap ceremony. P2 F4-F11: decider TOCTOU, non-atomic bootstrap,
+pre-auth account lockout, full-scan aggregates, flaky E2E, E2E rewrites tracked
+screenshots, deep-link charset, Access sub binding.
+
+**Next:** fix F1-F3 (+P2), then a genuinely independent review; production stays
+blocked on Access staging, admin workflows and the ceremony.
+
+---
+
 # Takosan Admin V1 security remediation R1 - 2026-10-13
 
 **Status:** ADMIN_V1_REMEDIATION_READY_FOR_INDEPENDENT_REVIEW (local only; not an

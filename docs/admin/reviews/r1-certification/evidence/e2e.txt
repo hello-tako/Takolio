@@ -1,0 +1,18 @@
+✓ 1934 modules transformed.
+✓ built in 4.69s
+  ✓   1 tests/e2e/admin-a11y-responsive.e2e.ts:34:1 › no serious or critical axe violations on the sign-in screen and every admin screen (20.9s)
+  ✓   2 tests/e2e/admin-a11y-responsive.e2e.ts:55:3 › no horizontal page overflow at 1440px on any screen (12.8s)
+  ✓   3 tests/e2e/admin-a11y-responsive.e2e.ts:55:3 › no horizontal page overflow at 820px on any screen (13.0s)
+  ✓   4 tests/e2e/admin-a11y-responsive.e2e.ts:55:3 › no horizontal page overflow at 390px on any screen (11.4s)
+  ✘   5 tests/e2e/admin-a11y-responsive.e2e.ts:70:1 › scrollable tables are reachable and scrollable with the keyboard (3.6s)
+  ✓   6 tests/e2e/admin-console.e2e.ts:50:1 › unauthenticated visitors land on the admin sign-in screen (2.8s)
+  ✓   7 tests/e2e/admin-console.e2e.ts:58:1 › a household owner without a platform role is refused with the generic error (2.8s)
+  ✓   8 tests/e2e/admin-console.e2e.ts:65:1 › super admin journey across every primary screen, then logout terminates the session (9.5s)
+  ✓   9 tests/e2e/admin-console.e2e.ts:158:1 › content editor sees only permitted screens and the server enforces the rest (3.5s)
+  ✓  10 tests/e2e/admin-console.e2e.ts:187:1 › mobile layout keeps navigation reachable (3.1s)
+  ✓  11 tests/e2e/admin-console.e2e.ts:198:1 › SUPER_ADMIN grants need a second SUPER_ADMIN in the UI, and the requester cannot approve (4.6s)
+  ✓  12 tests/e2e/admin-console.e2e.ts:223:1 › preferences confirmation persists and a server-side session loss returns to sign-in with a reason (5.9s)
+    .hoplite/artifacts/admin-playwright/results/admin-a11y-responsive.e2e.-8af7b-crollable-with-the-keyboard/test-failed-1.png
+  1 failed
+  11 passed (1.7m)
+ ELIFECYCLE  Command failed with exit code 1.

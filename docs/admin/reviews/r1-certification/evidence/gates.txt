@@ -1,0 +1,16 @@
+== lint
+> frigo@0.1.0 lint /tmp/r1cert/src
+> eslint .
+
+== typecheck
+> frigo@0.1.0 typecheck /tmp/r1cert/src
+> tsc -p tsconfig.json --noEmit && tsc -p tsconfig.worker.json --noEmit
+
+== build
+dist/admin/admin/assets/admin-KJcgBD2_.css                   18.85 kB │ gzip:  5.13 kB
+dist/admin/admin/assets/admin-D9tD2Xpr.js                   336.85 kB │ gzip: 99.52 kB
+✓ built in 3.54s
+== check-migrations
+
+migration-smoke=ok
+admin-migration-smoke=ok
