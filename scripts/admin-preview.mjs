@@ -36,6 +36,7 @@ const vite = await createViteServer({
 });
 const { SqliteD1, applyMigrations } = await vite.ssrLoadModule('/tests/helpers/sqlite-d1.ts');
 const { default: worker } = await vite.ssrLoadModule('/src/worker/admin-worker.ts');
+const { createCustomerReadFacade } = await vite.ssrLoadModule('/src/worker/facade/customer-read-service.ts');
 
 const CONTENT_TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8',
   '.svg': 'image/svg+xml', '.png': 'image/png', '.woff2': 'font/woff2', '.txt': 'text/plain; charset=utf-8' };
@@ -69,7 +70,7 @@ function memoryKv() {
 }
 
 let dbs = freshDatabases();
-const env = { DB: dbs.main, ADMIN_DB: dbs.admin, CACHE: memoryKv(), ASSETS: assets, ENVIRONMENT: 'development', ADMIN_CONSOLE_ENABLED: 'true',
+const env = { CUSTOMER_READ: createCustomerReadFacade(dbs.main, { allowLocalPassword: true }), ADMIN_DB: dbs.admin, CACHE: memoryKv(), ASSETS: assets, ENVIRONMENT: 'development', ADMIN_CONSOLE_ENABLED: 'true',
   ADMIN_AUTH_MODE: 'password', ADMIN_ORIGIN: origin, CUSTOMER_APP_URL: 'http://127.0.0.1:8787', GIT_COMMIT: 'local-preview' };
 globalThis.fetch = async () => { throw new Error('External network disabled in isolated admin preview'); };
 
@@ -81,7 +82,7 @@ const server = createHttpServer((req, res) => {
       if (req.url === '/__admin-preview/reset' && req.method === 'POST') {
         const previous = dbs;
         dbs = freshDatabases();
-        Object.assign(env, { DB: dbs.main, ADMIN_DB: dbs.admin, CACHE: memoryKv() });
+        Object.assign(env, { CUSTOMER_READ: createCustomerReadFacade(dbs.main, { allowLocalPassword: true }), ADMIN_DB: dbs.admin, CACHE: memoryKv() });
         previous.main.close();
         previous.admin.close();
         res.writeHead(204).end();
