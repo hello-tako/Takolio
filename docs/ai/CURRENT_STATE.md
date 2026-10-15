@@ -1,3 +1,38 @@
+# T26 planner repair deployed - 2026-10-15 JST
+
+**Status:** DEPLOYED / AUTHENTICATED_HOSTED_ACCEPTANCE_NOT_TESTED. PR78 merged;
+production serves `03428467cdd5e93d27a3a27e5edaf7d512eef71d`. The repair bounds
+stalled requests/recovery and reduces repeated family-search work. This supersedes
+the local-only checkpoint below; source implementation `063a026d` remains intact.
+
+**Hosted gates:** exact-head CI38725963888, exact-main CI38727424674,
+staging Deploy38728806704 and approved production Deploy38729311534 all SUCCESS.
+All three full hosted suites passed362files/8465tests (556.32s/582.26s/375.79s).
+Native14-slot Worker/D1 regressions6529/5708/4227ms PASS; these are isolated CI
+fixtures, not real production-household latency. Required approval was observed
+from vn-taphoanhatung; no approval bypass, migration or rollback.
+
+**Serving proof:** production Worker`3ce9750e-244f-4a34-90ef-7d65bf3a60c6`,
+deployment`65109b89-1b23-4bb6-b163-ac7fc2de0476`, canonical D1 unchanged.
+Protected ledger43/tip0043/FK/quick/catalog500/fingerprint, exact D1-to-D1
+continuity from0ff82edb, paired ON and recovery proof PASS. Inactive same-candidate
+OFF recovery`f6c92374-423b-4868-b4e6-b637958631f3`; traffic NOT_REHEARSED.
+
+**Final public verification:** `work/t26-production-public-final.json` PASS,
+2026-10-15T11:57:18.726Z. ExactSHA before/after, auth no-store, immutable
+`/assets/index-nVdrWEoj.js`, matching SW hash and3 ordinary/revalidated
+observations plus D1 post-deploy smoke PASS. DBok/D1/500/no fallback. Existing
+informational CONFIG_RECIPE_CATALOG_D1_AUTHORITY is the only degraded warning.
+
+**Limits/next:** signed-in hosted creation still NOT_TESTED under the user's
+automated/public-smoke choice. No production CPU trace or production latency
+certification. Native/browser behavior proofs, initial failed checks,42-slot
+sparse-stock partial case and retry/legacy limits remain in T26. Capture a supported
+signed-in household symptom/response if the issue recurs. No further release gate
+is pending; receipts are checkpointed separately without changing serving main.
+
+---
+
 # T26 family planner hang repaired locally - 2026-10-15 JST
 
 **Status:** READY_FOR_RELEASE. Implementation commit `063a026d` on

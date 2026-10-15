@@ -1,3 +1,22 @@
+# T26 production deployment complete - 2026-10-15 JST
+
+**State:** DEPLOYED, signed-in hosted acceptance NOT_TESTED. PR78 merged and
+`03428467cdd5e93d27a3a27e5edaf7d512eef71d` serves production.
+Exact-head/main CI, staging38728806704, approved production38729311534 and
+root protected/public receipt verifications PASS. Full362files/8465tests passed
+on each hosted CI/production run. No migration, rollback or flag downgrade.
+
+**Certified:** canonical DB, ledger43/tip0043, unchanged D1 continuity from0ff82edb,
+500/fingerprint/no fallback, paired ON, new active Worker/deployment and inactive
+same-candidate OFF recovery; public exactSHA/cache/SW smoke PASS.
+
+**Next:** maintain this serving candidate and evidence checkpoint. Hosted account
+generation still requires supported signed-in acceptance; public smoke is not that
+proof. Product behavior is covered by native Worker/D1 and actual390/1280 browser
+regressions; production CPU trace/latency remains unverified.
+
+---
+
 # T26 family planner response recovery - 2026-10-15 JST
 
 **Status:** READY_FOR_RELEASE; implementation `063a026d`, branch
