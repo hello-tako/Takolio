@@ -1,13 +1,13 @@
 # Takosan Admin Console V1 — delivery report
 
-**Current status: `ADMIN_V1_REMEDIATION_READY_FOR_INDEPENDENT_REVIEW` (R1, see [remediation-r1/REPORT.md](remediation-r1/REPORT.md)).** The original delivery below was reported as `ADMIN_V1_LOCAL_COMPLETE` and then reviewed as `ADMIN_V1_REVIEW_CHANGES_REQUIRED` ([review](reviews/2026-10-12-independent-review.md)). Original delivery notes: Local implementation is complete and ready for independent
+**Current status: `ADMIN_V1_R1_CHANGES_REQUIRED` (R1 certification review: [reviews/2026-10-14-r1-certification.md](reviews/2026-10-14-r1-certification.md); handoff: [handoff/START_HERE.md](handoff/START_HERE.md); R2 remediation in progress).** The original delivery below was reported as `ADMIN_V1_LOCAL_COMPLETE`, reviewed as `ADMIN_V1_REVIEW_CHANGES_REQUIRED` ([review](reviews/2026-10-12-independent-review.md)), and remediated in R1 ([remediation-r1/REPORT.md](remediation-r1/REPORT.md)). Original delivery notes: Local implementation is complete and ready for independent
 review. It has not been deployed and has no production certification.
 
 | # | Deliverable | Location |
 |---|---|---|
 | 1 | Frontend source | `admin/index.html`, `src/admin/` |
 | 2 | Backend source | `src/worker/routes/admin/`, `src/shared/admin.ts`, mounts in `src/worker/index.ts` |
-| 3 | Additive migration | `migrations/0042_admin_console_foundation.sql` |
+| 3 | Additive migration | `migrations-admin/0001_admin_console_foundation.sql` (originally `migrations/0042_admin_console_foundation.sql`, withdrawn in R1) |
 | 4 | Fixtures and bootstrap utilities | `scripts/admin-local-lib.mjs`, `admin-provision.mjs`, `admin-local-d1.mjs`, `admin-preview.mjs` |
 | 5 | Automated tests | `tests/integration/admin-console.test.ts`, `tests/unit/admin-*.test.ts(x)`, `tests/e2e/admin-console.e2e.ts` |
 | 6 | Local startup | [LOCAL_SETUP.md](LOCAL_SETUP.md) |

@@ -7,9 +7,9 @@ migrate, flag, payment or entitlement buttons.
 ## 1. What a merge of R1 changes in production
 
 - **Nothing in the customer Worker.** `src/worker/index.ts`, configs, service worker, build output (`dist/client`)
-  and the customer migration ledger are identical to `186a9cf05de7c91ed3289e13130feb3b38a264ac`; `deploy.yml` deploys `wrangler.jsonc` only.
+  and the customer migration ledger are identical to the `origin/main` merge base (`0ff82ed`, 43 customer migrations through `0043_shopping_demand_review.sql`); `deploy.yml` deploys `wrangler.jsonc` only.
 - The customer release gates (`d1-schema-gate.sh remote`, `release-check.mjs schema`, exact-SHA CI, D1 identity) are
-  untouched and keep passing against today's 0041 ledger (proven offline: `remediation-r1/evidence/migration-matrix.json`).
+  untouched and keep passing against both the historical 0041 baseline and current main's 0043 ledger (proven offline by `scripts/admin-migration-matrix.mjs`).
 - The admin Worker (`wrangler.admin.jsonc`) is **not** deployed by any existing workflow and is disabled by default.
 
 ## 2. Prerequisites (all required before staging)

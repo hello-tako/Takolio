@@ -16,8 +16,8 @@ Nothing in this list has been waived. A blocker is cleared only by evidence on t
 | B8 | Data-isolation certification | Not done. Reads still use the customer binding (F1). | R1C-B1 and WP1 tests on the release SHA; query-plan evidence for F7 | Owner |
 | B9 | Staging end-to-end | Not done. | Staging deploy only with separate approval; E2E and axe against the staging origin; screenshots reviewed | Owner |
 | B10 | Production authorization and rollback approval | Not requested. | Written approval for deploy, admin migration and flag enablement; rollback steps (flag off, previous Worker version; schema is forward-only) | Owner |
-| B11 | Integration with `origin/main` | Not done. `origin/main` `0ff82edb7c251be340b5e00fbcf0ae8703b22a55` has 43 migration files versus 41 at `186a9cf`. PR #77 is `DIRTY`: four status documents conflict (see START_HERE §8), and changed `src/worker/index.ts` and `scripts/migration-smoke.sh`. | WP0 merge, re-pinned migration matrix, full gates on the merged SHA | Engineering |
-| B12 | Stale documentation | `docs/admin/ARCHITECTURE_MAP.md:38` names withdrawn `0042`; `MIGRATION_COMPATIBILITY.md` is superseded; `README.md` status is pre-certification. | Update the three documents in the WP0 change | Engineering |
+| B11 | Integration with `origin/main` | Completed locally in WP0 (`a2f47c5` merge of `0ff82ed`, `87d6d3d` customer runtime guard, updated 14-scenario migration matrix covering 41-file and 43-file ledgers). Pending independent review. | WP0 merge, re-pinned migration matrix, full gates on the merged SHA | Engineering |
+| B12 | Stale documentation | Completed locally in WP0 (`ARCHITECTURE_MAP.md`, `MIGRATION_COMPATIBILITY.md`, `README.md`, `PRODUCTION_INTEGRATION_PLAN.md` updated). | Update the documents in the WP0 change | Engineering |
 | B13 | Public repository disclosure | Repository is public. The admin source and PoCs are published by this handoff. | Owner decision: keep public, make private, or move security material to a private advisory | Project owner |
 | B14 | Customer ledger and migrations for any F7 index | Not authorized. | Separate customer migration approval | Owner |
 

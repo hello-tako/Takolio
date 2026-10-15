@@ -5,7 +5,9 @@
 | Repository | `hello-tako/Tako-san` (public), repository ID `1385308553` |
 | Branch | `handoff/admin-v1-r2-20261015` |
 | Documentation commit (first publication, `ffcb0b2`) | `ffcb0b27236685a5c51199512c9b78a1ae35096a` |
-| Published branch tip | the commit that adds this file (the next commit on the branch) |
+| Published handoff receipt (pre-merge) | `9ee4c49` (after `a2c7b5c`) |
+| Merge with `origin/main` | `a2f47c5` |
+| Observed remote handoff tip | `87d6d3d` |
 | Preservation commit | `45cbec8281692b560bae6ce3b2fe6ad0749d196a` |
 | R1 certification report | `95a1425cc149346d6b8e17ac18bb32990338ef9b` |
 | R1 evidence and report | `0331cc9f4e247446dd1a99715047fe00866d8e2a` |

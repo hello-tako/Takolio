@@ -27,7 +27,10 @@
 | R1 certification report | `95a1425cc149346d6b8e17ac18bb32990338ef9b` | `docs(admin): R1 certification review (CHANGES_REQUIRED)` |
 | Handoff preservation | `45cbec8281692b560bae6ce3b2fe6ad0749d196a` | `docs(admin): preserve handoff inputs, archive reviewer PoCs and evidence logs` |
 | Handoff documentation | first commit after `45cbec8` | see `HEAD_RECORD.md` |
-| origin/main when this handoff was written | `0ff82edb7c251be340b5e00fbcf0ae8703b22a55` | 15 commits ahead of `186a9cf`; not merged into this branch |
+| Handoff receipt tip (pre-merge) | `9ee4c49` | `docs(admin): record main drift and the four status-document conflicts for PR #77` |
+| Merge of `origin/main` | `a2f47c5` | `merge: origin/main into handoff/admin-v1-r2-20261015 (resolve PR #77 conflicts)` |
+| Post-merge customer runtime guard update | `87d6d3d` | `test(admin): compare customer runtime to the merge base with main` |
+| `origin/main` merged in WP0 | `0ff82ed` | 15 commits ahead of `186a9cf`; merged in `a2f47c5` |
 
 Admin commits are authored by `usehoplite[bot]`. The series `186a9cf..95a1425` contains six commits; `45cbec8` and the documentation commits follow.
 

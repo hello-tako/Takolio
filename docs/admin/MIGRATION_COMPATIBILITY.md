@@ -1,6 +1,6 @@
 # Admin Console V1 — migration and compatibility report
 
-> **Status:** Superseded by `remediation-r1/REPORT.md` §7 (R1). Migration 0042 described below was withdrawn: admin tables now live in a separate `ADMIN_DB` (`migrations-admin/`), and the customer ledger is identical to `186a9cf`.
+> **Status:** Superseded by `remediation-r1/REPORT.md` §7 (R1) and R2 WP0. The original customer migration `0042_admin_console_foundation.sql` described below was withdrawn in R1: admin tables live in a separate `ADMIN_DB` (`migrations-admin/`), and the customer ledger matches `origin/main` (`0ff82ed`, 43 customer migrations through `0043_shopping_demand_review.sql`).
 
 ## Migration `0042_admin_console_foundation.sql` (additive)
 

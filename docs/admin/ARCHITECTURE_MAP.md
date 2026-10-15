@@ -35,7 +35,7 @@ src/worker/routes/admin/
   schemas.ts    Zod query/body schemas with strict bounds
   overview.ts, people.ts, billing-ai.ts, recipes.ts, system.ts, settings.ts   read services
   http.ts, mask.ts                     envelope, errors, masking helpers
-migrations/0042_admin_console_foundation.sql
+migrations-admin/0001_admin_console_foundation.sql  (separate ADMIN_DB; customer migrations/ untouched by Admin)
 scripts/admin-local-lib.mjs, admin-provision.mjs, admin-local-d1.mjs, admin-preview.mjs
 tests/integration/admin-console.test.ts, tests/unit/admin-*.test.ts(x), tests/e2e/admin-console.e2e.ts
 playwright.admin.config.ts

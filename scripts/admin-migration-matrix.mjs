@@ -69,9 +69,9 @@ function releaseGate(sha, statements) {
 }
 
 /** The repository's read-only schema gate rendered for a given migrations directory. */
-function schemaGate(db, migrationsDirectory) {
+function schemaGate(db, migrationsDirectory, template = path.join(root, 'scripts/d1-schema-gate.sql')) {
   const result = wrangler(db.config, ['execute', 'frigo-db', '--persist-to', db.persist, '--json', '--yes', '--command',
-    renderSchemaGateCommand({ template: path.join(root, 'scripts/d1-schema-gate.sql'), migrationsDirectory })]);
+    renderSchemaGateCommand({ template, migrationsDirectory })]);
   if (result.status !== 0) return { pass: false, error: (result.stderr || result.stdout).slice(-300) };
   const issues = JSON.parse(result.stdout).flatMap((statement) => statement.results ?? []);
   return { pass: issues.length === 0, issues: issues.slice(0, 5) };
@@ -85,26 +85,49 @@ function row(scenario, expectation, observed, pass) {
 
 try {
   const head = git('rev-parse', 'HEAD').trim();
+  const currentMain = git('rev-parse', 'origin/main').trim();
   const headStatus = git('status', '--porcelain', '--', 'migrations', 'migrations-admin').trim();
   const pre = filesAt(PRE_ADMIN);
   const original = filesAt(ORIGINAL_ADMIN);
+  const mainFiles = filesAt(currentMain);
   const current = readdirSync(path.join(root, 'migrations')).filter((f) => f.endsWith('.sql')).sort();
 
-  // Customer schema identity: the remediated tree ships exactly the pre-admin migrations.
+  // Customer schema identity: the merged tree ships exactly current main's 43 migrations (including 0042/0043).
   const preManifest = migrationManifest(root, PRE_ADMIN);
+  const mainManifest = migrationManifest(root, currentMain);
   const headManifest = migrationManifest(root, head);
-  row('customer ledger identity', 'HEAD migrations/ equals the pre-admin release (names + SHA-256)', { pre: preManifest.sha256, head: headManifest.sha256, headStatus: headStatus || 'clean', count: current.length },
-    preManifest.sha256 === headManifest.sha256 && current.length === pre.length && !headStatus);
+  row('customer ledger identity', 'HEAD migrations/ equals current main (43 files including 0042/0043, names + SHA-256)',
+    { main: mainManifest.sha256, head: headManifest.sha256, preCount: pre.length, headStatus: headStatus || 'clean', count: current.length, has0042: current.includes('0042_family_meals_preferences_saved_shopping.sql'), has0043: current.includes('0043_shopping_demand_review.sql') },
+    mainManifest.sha256 === headManifest.sha256 && current.length === 43 && current.length === mainFiles.length && pre.length === 41 && !headStatus);
 
-  // DB at 0041 (current production shape).
+  // Historical DB at 0041 (pre-admin 41-file baseline).
   const db41 = customerDb('db41', pre);
+  const preGateTemplate = path.join(db41.dir, 'd1-schema-gate.sql');
+  writeFileSync(preGateTemplate, git('show', `${PRE_ADMIN}:scripts/d1-schema-gate.sql`));
   const applied41 = apply(db41);
   const ledger41 = ledger(db41);
   row('DB 0041 + old application (pre-admin release)', 'deploy ledger gate passes', releaseGate(PRE_ADMIN, ledger41), releaseGate(PRE_ADMIN, ledger41).pass && applied41.status === 0);
-  row('DB 0041 + new application (remediated HEAD)', 'deploy ledger gate passes; customer release train unchanged', releaseGate(head, ledger41), releaseGate(head, ledger41).pass);
-  const gate41 = schemaGate(db41, path.join(root, 'migrations'));
-  row('DB 0041 + new application schema gate', 'read-only schema gate (HEAD migrations) reports no issue', gate41, gate41.pass);
+  const gate41 = schemaGate(db41, path.join(db41.dir, 'migrations'), preGateTemplate);
+  row('DB 0041 + pre-admin schema gate (41-file baseline)', 'read-only schema gate (pre-admin 41 migrations) reports no issue', gate41, gate41.pass);
+  row('DB 0041 + current HEAD (43-file ledger)', 'deploy gate fails before customer 0042/0043 are applied', releaseGate(head, ledger41), !releaseGate(head, ledger41).pass);
   row('DB 0041 + ORIGINAL admin commit 3e865d0 (review finding)', 'deploy gate fails before 0042 is applied (reproduces the release-train block)', releaseGate(ORIGINAL_ADMIN, ledger41), !releaseGate(ORIGINAL_ADMIN, ledger41).pass);
+
+  // Current-main DB at 0043 (43-file customer ledger, fresh and 0041->0043 upgrade).
+  const db43 = customerDb('db43', mainFiles);
+  const applied43 = apply(db43);
+  const ledger43 = ledger(db43);
+  row('DB 0043 (current main) + new application (remediated HEAD)', 'deploy ledger gate passes; customer release train unchanged', releaseGate(head, ledger43), releaseGate(head, ledger43).pass && applied43.status === 0);
+  const gate43 = schemaGate(db43, path.join(root, 'migrations'));
+  row('DB 0043 (current main) + new application schema gate', 'read-only schema gate (HEAD migrations) reports no issue', gate43, gate43.pass);
+
+  // Upgrade path: DB at 0041 upgraded with customer 0042 and 0043.
+  for (const file of mainFiles.slice(pre.length)) writeFileSync(path.join(db41.dir, 'migrations', file.name), file.content);
+  const upgraded43 = apply(db41);
+  const ledgerUpgraded43 = ledger(db41);
+  const gateUpgraded43 = schemaGate(db41, path.join(root, 'migrations'));
+  row('DB 0041 -> 0043 customer upgrade + HEAD gates', 'incremental customer apply 0042..0043 passes both deploy ledger gate and read-only schema gate',
+    { applyExit: upgraded43.status, ledger: releaseGate(head, ledgerUpgraded43), schema: gateUpgraded43 },
+    upgraded43.status === 0 && releaseGate(head, ledgerUpgraded43).pass && gateUpgraded43.pass);
 
   // DB at 0042 under the ORIGINAL design (0042 in the customer ledger).
   const db42 = customerDb('db42', original);
@@ -114,7 +137,7 @@ try {
   row('DB 0042 (original design) + remediated HEAD', 'rejected as unexpected forward drift; remediation never needs 0042 in the customer DB', releaseGate(head, ledger42), !releaseGate(head, ledger42).pass);
 
   // Unexpected extra migration / drift in the customer DB is still refused by both gates.
-  const drift = customerDb('drift', [...pre, { name: '0042_unexpected_drift.sql', content: 'CREATE TABLE unexpected_drift (id TEXT PRIMARY KEY);\n' }]);
+  const drift = customerDb('drift', [...mainFiles, { name: '0044_unexpected_drift.sql', content: 'CREATE TABLE unexpected_drift (id TEXT PRIMARY KEY);\n' }]);
   apply(drift);
   const ledgerDrift = ledger(drift);
   const gateDrift = schemaGate(drift, path.join(root, 'migrations'));
@@ -143,8 +166,16 @@ try {
   row('Failed admin migration', 'apply fails, the ledger does not record it, no partial admin schema remains (admin Worker stays 503 ADMIN_SCHEMA_MISMATCH)',
     { exit: failed.status, state: failedState, error: (failed.stderr || failed.stdout).split('\n').find((line) => /already exists|error/i.test(line)) ?? null },
     failed.status !== 0 && failedState.ledger === 0 && failedState.metadata_table === 0);
+
+  // Application rollback with additive schema (DB at 0043 retains all 41-file schema objects intact; admin DB separate).
+  const db41Fresh = customerDb('db41-fresh', pre);
+  apply(db41Fresh);
+  const ledger41Fresh = ledger(db41Fresh);
+  const additiveObjectsOn43 = schemaGate(db43, path.join(root, 'migrations'), preGateTemplate);
+  const blindRollback41 = schemaGate(db43, path.join(db41Fresh.dir, 'migrations'), preGateTemplate);
   row('Customer application rollback with admin schema present', 'admin schema is in a separate database; the customer ledger is untouched, so legacy release gates pass',
-    { preAdminGate: releaseGate(PRE_ADMIN, ledger41).pass }, releaseGate(PRE_ADMIN, ledger41).pass);
+    { preAdminGate: releaseGate(PRE_ADMIN, ledger41Fresh).pass, currentMainGate: releaseGate(currentMain, ledger43).pass, additiveObjectsIntactOn43: additiveObjectsOn43.pass, blindRollback41Rejected: !blindRollback41.pass },
+    releaseGate(PRE_ADMIN, ledger41Fresh).pass && releaseGate(currentMain, ledger43).pass && additiveObjectsOn43.pass && !blindRollback41.pass);
 } catch (error) {
   row('matrix execution', 'completes', error instanceof Error ? error.message : String(error), false);
 } finally {
