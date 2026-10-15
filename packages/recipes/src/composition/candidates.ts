@@ -10,6 +10,7 @@ import { COMPOSITION_BUDGET, type ComposerCandidate, type ComposerEvaluation } f
 import { evaluateDefinition, evaluationScope, simpleFoodDefinition } from './projection';
 import { simpleFoodRestrictions } from './restrictions';
 import type { RoleIndex } from './roles';
+import type { RecipeDefinition } from '../foundation';
 import { SIMPLE_FOODS, type SimpleFood } from './simple-foods';
 
 export const recipeKey = (id: string) => `recipe:${id}`;
@@ -58,13 +59,22 @@ export function prepareComposerCandidates(input: {
   mode: 'cook_now' | 'shopping_allowed';
   excludeKeys: ReadonlySet<string>;
   usedElsewhere: ReadonlySet<string>;
+  /** Server-owned template/culture filter, applied before ranking and the pool cap. */
+  recipeFilter?: (recipe: RecipeDefinition) => boolean;
+  /** Optional caller budget covers all candidate evaluations before this pool does work. */
+  reserveEvaluations?: (count: number) => boolean;
 }): ComposerCandidate[] {
   const source = readPlanningContext(input.context);
   const limit = COMPOSITION_BUDGET.maxCatalogCandidates;
   const recipes = source.catalog.recipes.filter((recipe) => {
     const profile = input.roleIndex.get(recipe.id);
-    return profile !== undefined && !input.excludeKeys.has(recipeKey(recipe.id)) && profile.roles.some((role) => input.roles.includes(role));
+    return profile !== undefined && !input.excludeKeys.has(recipeKey(recipe.id))
+      && profile.roles.some((role) => input.roles.includes(role)) && (input.recipeFilter?.(recipe) ?? true);
   });
+  const hard = resolveRankingPreferences(source.rankingContext).hard;
+  const eligibleSimpleFoods = SIMPLE_FOODS.filter((food) => !input.excludeKeys.has(simpleFoodKey(food.id))
+    && food.roles.some((role) => input.roles.includes(role)) && simpleFoodRestrictions(food, hard).allowed);
+  if (input.reserveEvaluations && !input.reserveEvaluations(recipes.length + eligibleSimpleFoods.length)) return [];
   const rankedRecipes: ComposerCandidate[] = [];
   if (recipes.length) {
     const generation = generateRecipeCandidates({
@@ -91,12 +101,9 @@ export function prepareComposerCandidates(input: {
         traits: profile.traits, dominantIngredientId: profile.dominantIngredientId, preference });
     }
   }
-  const hard = resolveRankingPreferences(source.rankingContext).hard;
   const simpleFoods: ComposerCandidate[] = [];
-  for (const food of SIMPLE_FOODS) {
+  for (const food of eligibleSimpleFoods) {
     const key = simpleFoodKey(food.id);
-    if (input.excludeKeys.has(key) || !food.roles.some((role) => input.roles.includes(role))
-      || !simpleFoodRestrictions(food, hard).allowed) continue;
     const evaluation = evaluateSimpleFood(input.context, food, input.inventory, input.slot);
     if (input.mode === 'cook_now' && evaluation.coverage !== null && evaluation.coverage < 1) continue;
     simpleFoods.push({ ...evaluation, key, kind: 'simple_food', id: food.id, title: food.title.vi,

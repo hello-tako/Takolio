@@ -17,7 +17,7 @@ import {
   SwapComponentSchema,
   UpdateComponentSchema,
 } from '../../../packages/domain/src/meal-composition-api';
-import { fetchJson } from './http';
+import { fetchPlannerJson } from './planner-http';
 
 /** T20 composition client: validates every request before sending and every response before use. */
 const planPath = (id: string) =>
@@ -32,7 +32,7 @@ async function request<T>(
   schema: z.ZodType<T, z.ZodTypeDef, unknown>,
   options?: RequestInit,
 ): Promise<T> {
-  return schema.parse(await fetchJson<unknown>(path, { ...options, cache: 'no-store' }));
+  return schema.parse(await fetchPlannerJson<unknown>(path, { ...options, cache: 'no-store' }));
 }
 const send = (method: string, body: unknown): RequestInit => ({
   method,

@@ -302,6 +302,9 @@ const viCopy = {
     auth: 'Phiên làm việc đã thay đổi. Vui lòng đăng nhập lại.',
     forbidden: 'Tài khoản hiện tại không có quyền dùng kế hoạch này.',
     unavailable: 'Không thể tải kế hoạch lúc này. Vui lòng thử lại sau.',
+    FAMILY_PREFERENCES_CHANGED: 'Thói quen đang lưu chưa khớp với lựa chọn này. Tải bản mới nhất và kiểm tra trước khi tiếp tục.',
+    PLAN_REQUEST_TIMEOUT:
+      'Takosan chưa phản hồi kịp. Yêu cầu có thể vẫn hoàn tất; giữ nguyên lựa chọn và thử lại để nhận kết quả của cùng yêu cầu. Với bữa đang chỉnh, tải bản mới nhất trước khi thử lại.',
     invalid: 'Dữ liệu không hợp lệ. Kiểm tra lựa chọn hoặc tải lại kế hoạch.',
     rateLimited: 'Bạn thao tác quá nhanh. Vui lòng đợi trước khi thử lại.',
     notFound: 'Không tìm thấy kế hoạch này hoặc kế hoạch không thuộc tài khoản hiện tại.',
@@ -635,6 +638,9 @@ const enCopy: PlannerCopy = {
     auth: 'Your session changed. Please sign in again.',
     forbidden: 'Your current account cannot access this plan.',
     unavailable: 'Meal planning is unavailable right now. Please try again later.',
+    FAMILY_PREFERENCES_CHANGED: 'The saved household habits differ from these choices. Load the latest version and review before continuing.',
+    PLAN_REQUEST_TIMEOUT:
+      'Takosan has not responded in time. The request may still finish; keep your choices and retry to retrieve the same request. For an existing meal, load the latest version before retrying.',
     invalid: 'Invalid data. Check your choices or reload the plan.',
     rateLimited: 'Too many requests. Please wait before trying again.',
     notFound: 'This plan was not found or is not available to your current account.',

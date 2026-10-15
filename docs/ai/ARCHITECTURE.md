@@ -1,3 +1,19 @@
+# T26 bounded family generation - 2026-10-15
+
+ADR-062 adds `derivePlanningContext` for original trusted immutable snapshots and
+request-local per-slot pool reuse in the existing family planner. Family
+eligibility precedes capped ranking; full candidate scoring work is counted and
+bounded independently from selected-component search. These optimizations retain
+the existing context/tenancy validation, chronological inventory and persistence
+fences. No route, schema or release configuration changes.
+
+`src/web/services/planner-http.ts` bounds planner, composition and family-profile
+requests through both transport and body reads. Late aborted responses cannot
+seed data or clear identity. Setup preserves uncertain create keys, reconciles
+uncertain profile saves, and exposes retry/current-plan recovery. See T26 for
+native workerd/D1 and actual browser verification and production limitations.
+
+---
 # T24 explicit review of unknown shopping demand - 2026-10-14
 
 ADR-060 adds a review command to the existing household shopping list. A source

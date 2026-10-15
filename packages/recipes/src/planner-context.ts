@@ -94,6 +94,34 @@ export function readPlanningContext(context: PlanningContext) {
   return stored;
 }
 
+/** Reuse a trusted immutable source when a slot changes only its ranking policy. */
+export function derivePlanningContext(context: PlanningContext, overrides: {
+  rankingContext: z.input<typeof RankingContextSchema>;
+  rankingProfile?: z.input<typeof RankingProfileSchema>;
+}): PlanningContext {
+  const source = readPlanningContext(context);
+  const rankingContext = RankingContextSchema.parse(overrides.rankingContext);
+  if (rankingContext.householdId !== source.rankingContext.householdId || rankingContext.userId !== source.rankingContext.userId) {
+    throw new Error('Derived planning context must retain its authorized scope');
+  }
+  if (rankingContext.feedback.length > PLANNER_LIMITS.feedbackEvents) throw new Error('Planning history limit exceeded');
+  rankingContext.feedback = rankingContext.feedback
+    .filter((event) => Date.parse(event.occurredAt) <= Date.parse(source.reference.instant))
+    .sort((a, b) => compareIds(a.id, b.id));
+  rankingContext.preferences.sort((a, b) => compareIds(a.userId ?? '', b.userId ?? ''));
+  const rankingProfile = RankingProfileSchema.parse(overrides.rankingProfile ?? source.rankingProfile);
+  const hard = resolveRankingPreferences(rankingContext).hard;
+  const activeConstraints = [...new Set([...source.activeConstraints, ...hard.flatMap((policy) => [
+    ...policy.allergens.map((key) => `allergen:${key}`), ...policy.requiredDietaryTags.map((key) => `dietary:${key}`),
+  ])])].sort(compareIds);
+  if (activeConstraints.length > 100) throw new Error('Planning substitution constraint limit exceeded');
+  const fingerprint = planningFingerprint({ parent: source.fingerprint, rankingContext, rankingProfile, activeConstraints });
+  const derived = Object.freeze({}) as PlanningContext;
+  contexts.set(derived, Object.freeze({ ...source, rankingContext: freezePlanningValue(rankingContext),
+    rankingProfile: freezePlanningValue(rankingProfile), activeConstraints: freezePlanningValue(activeConstraints), fingerprint }));
+  return derived;
+}
+
 function prepareSource(source: PlanningSourceInput) {
   const reference = planningReference(source.referenceInstant);
   const snapshotId = z.string().min(1).max(200).parse(source.snapshotId);

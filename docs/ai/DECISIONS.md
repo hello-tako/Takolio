@@ -3090,3 +3090,44 @@ complete successful result shapes before normalization. Saved pre-baselines reta
 strict103-field validation. This is read-only count preservation across observations,
 not a transactionally pinned snapshot or byte-content proof. Exact current-main/CI,
 ledger/bookmark/schema gates and migration order remain unchanged.
+
+## ADR-062 - Bounded family planner response and exact trusted-input reuse (2026-10-15)
+
+Accepted for T26 under the user's production hang report and comprehensive fix
+request. The existing synchronous deterministic planner repeatedly clones and
+fingerprints the same immutable500-recipe snapshot and scores equivalent pools.
+The selected-component cap does not reflect hidden pool work. Browser requests
+also have no completion deadline, so a stalled response leaves the UI busy forever.
+
+Retain the current architecture and persistence contracts. A derived branded
+planning context may reuse already-validated frozen catalog, reference, inventory,
+substitutions and evidence from an original server context, validating same-scope
+ranking overrides. It cannot accept serialized/client contexts or change tenancy.
+Request-local pool reuse must bind exact slot/date/instant/servings, projected lots,
+role, exclusions, repetition context and family cuisine/template eligibility. Never
+reuse quantity or safety witnesses across changed inputs. Move existing family
+eligibility before bounded pool selection so ineligible dishes do not displace
+eligible Vietnamese choices. T02/T03 checks, chronological consumption and final
+DB/profile/catalog/revision fences remain mandatory. No schema or migration change.
+
+Planner/profile requests receive a30-second browser deadline including full body
+reads, abort normal transport and reject even a transport that ignores abort.
+Uncertain create delivery retains its exact intent/key; recovery offers retry and
+current-plan access. Late aborted responses cannot seed caches or clear identity.
+The timeout does not certify a server rollback or imply a failed commit. Existing
+revision-fenced edits must reload after uncertainty. This is local product repair;
+production CPU exhaustion is not asserted without production runtime evidence.
+
+T26 refinements: reserve full eligible recipe/simple-food pool evaluations before
+scoring, plus selected-component rechecks, with a32768-unit generated-work limit.
+Per-candidate weight is max(1,ceil(inventory lots/32),ceil(feedback events/128));
+it is a deterministic safety bound, not a CPU-time certification. Locked
+preservation still validates safety after generated work exhausts. Pool reuse never
+crosses slots and binds full projected rows, eligible IDs and relevant exclusions.
+
+Browser retry fingerprints include selection mode, validated intent and family
+draft preferences; HTTP bodies and backend idempotency contracts are unchanged.
+Changed family choices receive another key; unchanged uncertain requests retain
+the existing key while the setup remains mounted. A timed-out profile PUT is
+reconciled on explicit retry with a fresh GET and matching newer revision/content.
+Conflicting content requires reload; the browser never blindly overwrites it.
