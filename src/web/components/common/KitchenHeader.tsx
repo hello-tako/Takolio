@@ -14,7 +14,7 @@ export function KitchenHeader({
 }) {
   const { avatarUrl } = useAuthStore();
   return (
-    <header className="kitchen-header">
+    <header className={`kitchen-header${backTo ? ' kitchen-header-with-back' : ''}`}>
       <div className="flex min-w-0 items-center gap-2">
         {backTo && (
           <Link to={backTo} aria-label={backLabel} className="kitchen-icon-link">
@@ -22,7 +22,12 @@ export function KitchenHeader({
           </Link>
         )}
         <Link to="/" aria-label="Takolio — Trang chủ" translate="no" className="kitchen-brand-link">
-          <img src={TAKOSAN_KITCHEN.compactLogo} alt="" width={44} height={44} style={{ width: 44, height: 44 }} />
+          <picture>
+            {backTo && (
+              <source media="(max-width: 374px)" srcSet={TAKOSAN_KITCHEN.wordmark} width={466} height={262} />
+            )}
+            <img src={TAKOSAN_KITCHEN.logo} alt="" width={1050} height={414} />
+          </picture>
         </Link>
         <span className="kitchen-brand-motto" aria-hidden="true">{TAKOSAN_KITCHEN.motto}</span>
       </div>

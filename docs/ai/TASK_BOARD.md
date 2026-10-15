@@ -1,3 +1,16 @@
+# Takolio V1 corrective header task - 2026-10-16 JST
+
+- [x] Reproduce the reported icon-only Home/Recipes/Planner/Shopping header behavior.
+- [x] Map the failure to the deliberate `compactLogo` choice and compare against the supplied logo usage guideline.
+- [x] Use the canonical horizontal/wordmark masters without changing the generator or asset URLs.
+- [x] Verify 36 synthetic screens at six widths, targeted accessibility/overflow/action checks and focused unit tests.
+- [x] Record full-suite result: 363 files / 8,474 tests PASS, bundled Node 24.19.0, TMPDIR=/private/tmp, 163.49s, exit 0.
+- [x] Independent corrective code/design/security review: no concrete findings; 46-test rerun PASS.
+- [ ] Commit/push the verified follow-up and refresh draft PR #79 exact-head checks/review; final delivery receipt records the published head.
+
+**Scope:** shared presentation header only. Payment, auth behavior, Worker, data, migrations, flags, domains and deployment remain protected.
+
+---
 # Takolio V1 final reviewed implementation - 2026-10-16 JST
 
 **Implementation status:** `TAKOLIO_V1_IMPLEMENTED_REVIEW_REQUIRED`. Canonical public repository `lol-vn/Tako-san`, immutable ID `1385308553`; branch `feat/takolio-brand-migration-v1`; refreshed main `f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1`; verified implementation/integration `b5ba0cc2594ef83431693118f92350b6e81674f1`. Worktree was clean after push. Draft PR #79 is OPEN/DRAFT/MERGEABLE: https://github.com/lol-vn/Tako-san/pull/79.

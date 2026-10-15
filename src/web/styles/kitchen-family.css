@@ -955,10 +955,6 @@
   .shopping-workspace .kitchen-header {
     gap: 8px;
   }
-  .planning-workspace .kitchen-brand-link img,
-  .shopping-workspace .kitchen-brand-link img {
-    width: 128px;
-  }
 }
 
 .planning-meal-time-note {

@@ -11,13 +11,21 @@ describe('UI07 shell ownership and accessible brand', () => {
   it('keeps a named home link, decorative logo, explicit aspect and back/actions', () => {
     const html = render(<KitchenHeader backTo="/recipes" />);
     expect(html).toContain('aria-label="Takolio — Trang chủ"');
-    expect(html).toContain(`src="${TAKOSAN_KITCHEN.compactLogo}" alt="" width="44" height="44"`);
+    expect(html).toContain(`src="${TAKOSAN_KITCHEN.logo}" alt="" width="1050" height="414"`);
+    expect(html).toContain(`media="(max-width: 374px)" srcSet="${TAKOSAN_KITCHEN.wordmark}" width="466" height="262"`);
+    expect(html).not.toContain(TAKOSAN_KITCHEN.compactLogo);
     expect(html).toContain('translate="no"');
     expect(html).toContain('aria-label="Quay lại"');
     expect(html).toContain('href="/recipes"');
     expect(html).toContain('aria-label="Thông báo"');
     expect(html).toContain('aria-label="Tài khoản cá nhân"');
     expect(html).toContain(`aria-hidden="true">${TAKOSAN_KITCHEN.motto}`);
+  });
+  it('uses the full outlined lockup without a narrow fallback when no back control is present', () => {
+    const html = render(<KitchenHeader />);
+    expect(html).toContain(`src="${TAKOSAN_KITCHEN.logo}"`);
+    expect(html).not.toContain('<source');
+    expect(html).not.toContain(TAKOSAN_KITCHEN.compactLogo);
   });
   it.each(['/', '/recipes', '/fridge', '/scan/review/example', '/planner', '/shopping', '/week', '/week/setup', '/plus'])('persistent %s owns the desktop brand', (route) => {
     expect(render(<AppLayout />, route)).toContain('data-kitchen-navigation="persistent"');

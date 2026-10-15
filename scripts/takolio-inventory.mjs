@@ -3,7 +3,7 @@ import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { resolve, extname } from 'node:path';
 const root = resolve(import.meta.dirname, '..');
-const baselineSha = process.env.TAKOLIO_BASELINE_SHA ?? '03428467cdd5e93d27a3a27e5edaf7d512eef71d';
+const baselineSha = process.env.TAKOLIO_BASELINE_SHA ?? 'f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1';
 const files = execFileSync('git', ['ls-files', '--cached', '--others', '--exclude-standard', 'src/web', 'src/worker', 'index.html', 'public/manifest.json', 'public/sw.js'], { cwd: root, encoding: 'utf8' }).trim().split('\n');
 const baselineFiles = new Set(execFileSync('git', ['ls-tree', '-r', '--name-only', baselineSha, '--', 'src/web', 'src/worker'], { cwd: root, encoding: 'utf8' }).trim().split('\n'));
 const oldBrand = /\b(?:takosan|tako-san|frigo)\b/i;

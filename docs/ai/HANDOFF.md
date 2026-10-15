@@ -1,3 +1,12 @@
+# Takolio V1 corrective handoff - 2026-10-16 JST
+
+The user reported that daily kitchen routes showed only the mascot symbol. The shared header now uses the supplied outlined horizontal Takolio lockup, with a 120px wordmark fallback below 375px only when a back control consumes the mobile width. Evidence and limitations are in `docs/brand/takolio/v1/HEADER_FOLLOWUP.md`; the superseding decision is ADR-TAKOLIO-002.
+
+Targeted local evidence is complete: 36/36 screens across six widths pass, axe/page-error/broken-image/overflow checks are clear, action targets remain 44px, keyboard home-link focus passes, and the focused 46-test suite passes. The complete unit rerun passes 363 files / 8,474 tests in 163.49s (exit 0), using bundled Node v24.19.0 with `TMPDIR=/private/tmp`. The raw macOS run failed 11 temp-path normalization assertions (8,463 PASS); the affected 93 tests pass with that TMPDIR. A Node 25 rerun was stopped after an existing Python subprocess waited for stdin EOF; diagnostics remain in the receipt. No test or protected implementation was changed to bypass these environment issues.
+
+The branch remains feature-only. User approval of the previous PR head does not approve the new correction head. Independent corrective review found no concrete code/design/security findings and reran 46 tests. Next action is coherent commit, feature-only push, draft PR update, exact-head hosted CI and independent review binding. Final committed-head CI/review evidence will be recorded in the delivery receipt and PR body. No merge/deploy.
+
+---
 # Takolio V1 final reviewed implementation - 2026-10-16 JST
 
 **Implementation status:** `TAKOLIO_V1_IMPLEMENTED_REVIEW_REQUIRED`. Canonical public repository `lol-vn/Tako-san`, immutable ID `1385308553`; branch `feat/takolio-brand-migration-v1`; refreshed main `f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1`; verified implementation/integration `b5ba0cc2594ef83431693118f92350b6e81674f1`. Worktree was clean after push. Draft PR #79 is OPEN/DRAFT/MERGEABLE: https://github.com/lol-vn/Tako-san/pull/79.

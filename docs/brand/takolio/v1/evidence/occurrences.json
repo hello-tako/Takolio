@@ -1,5 +1,5 @@
 {
-  "baselineSha": "03428467cdd5e93d27a3a27e5edaf7d512eef71d",
+  "baselineSha": "f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1",
   "note": "Source literals/JSX text; counts locations rather than unique rendered strings. Technical values remain. Metadata/assets separately audited.",
   "remainingProductLocations": 25,
   "remaining": [
@@ -1417,7 +1417,7 @@
     {
       "stage": "before",
       "path": "src/web/components/layout/AppLayout.tsx",
-      "line": 47,
+      "line": 48,
       "text": "takosan-rebuild",
       "productCopy": false,
       "decision": "KEEP",
@@ -1426,7 +1426,7 @@
     {
       "stage": "before",
       "path": "src/web/components/layout/AppLayout.tsx",
-      "line": 47,
+      "line": 48,
       "text": "min-h-dvh bg-semantic-background text-semantic-text-primary antialiased selection:bg-takosan-mint",
       "productCopy": false,
       "decision": "KEEP",
@@ -1444,7 +1444,7 @@
     {
       "stage": "after",
       "path": "src/web/components/layout/AppLayout.tsx",
-      "line": 47,
+      "line": 48,
       "text": "takosan-rebuild",
       "productCopy": false,
       "decision": "KEEP",
@@ -1453,7 +1453,7 @@
     {
       "stage": "after",
       "path": "src/web/components/layout/AppLayout.tsx",
-      "line": 47,
+      "line": 48,
       "text": "min-h-dvh bg-semantic-background text-semantic-text-primary antialiased selection:bg-takosan-mint",
       "productCopy": false,
       "decision": "KEEP",
@@ -2668,7 +2668,7 @@
     {
       "stage": "before",
       "path": "src/web/features/planner/PlannerSetup.tsx",
-      "line": 24,
+      "line": 25,
       "text": "planning-input block w-full min-h-11 mt-1 rounded-xl border border-semantic-border-strong bg-white p-3 text-sm text-semantic-text-primary focus:ring-2 focus:ring-takosan-green focus:outline-none",
       "productCopy": false,
       "decision": "KEEP",
@@ -2677,7 +2677,7 @@
     {
       "stage": "before",
       "path": "src/web/features/planner/PlannerSetup.tsx",
-      "line": 171,
+      "line": 206,
       "text": "Takosan gợi ý cả bữa theo thói quen đã chọn.",
       "productCopy": true,
       "decision": "REPLACE",
@@ -2686,7 +2686,7 @@
     {
       "stage": "before",
       "path": "src/web/features/planner/PlannerSetup.tsx",
-      "line": 198,
+      "line": 233,
       "text": "Takosan gợi ý cả bữa",
       "productCopy": true,
       "decision": "REPLACE",
@@ -2695,7 +2695,7 @@
     {
       "stage": "before",
       "path": "src/web/features/planner/PlannerSetup.tsx",
-      "line": 198,
+      "line": 233,
       "text": "Let Takosan suggest meals",
       "productCopy": true,
       "decision": "REPLACE",
@@ -2704,7 +2704,16 @@
     {
       "stage": "before",
       "path": "src/web/features/planner/PlannerSetup.tsx",
-      "line": 370,
+      "line": 438,
+      "text": "Chọn lịch nấu và số người ăn. Takosan xếp theo kiểu bữa nhà mình, rồi gom phần nguyên liệu\n          còn thiếu vào danh sách đi chợ.",
+      "productCopy": true,
+      "decision": "REPLACE",
+      "reason": "Display copy candidate; protected exclusions evaluated in after inventory"
+    },
+    {
+      "stage": "before",
+      "path": "src/web/features/planner/PlannerSetup.tsx",
+      "line": 443,
       "text": "Đủ nhóm món không đồng nghĩa đã xác minh dinh dưỡng hoặc an toàn dị ứng. Takosan sẽ báo\n          phần còn thiếu dữ liệu.",
       "productCopy": true,
       "decision": "REPLACE",
@@ -2713,7 +2722,7 @@
     {
       "stage": "after",
       "path": "src/web/features/planner/PlannerSetup.tsx",
-      "line": 24,
+      "line": 25,
       "text": "planning-input block w-full min-h-11 mt-1 rounded-xl border border-semantic-border-strong bg-white p-3 text-sm text-semantic-text-primary focus:ring-2 focus:ring-takosan-green focus:outline-none",
       "productCopy": false,
       "decision": "KEEP",
@@ -2722,7 +2731,25 @@
     {
       "stage": "before",
       "path": "src/web/features/planner/PlannerShell.tsx",
-      "line": 142,
+      "line": 61,
+      "text": "Chọn lịch nấu, Takosan lo xếp món và phần cần mua.",
+      "productCopy": true,
+      "decision": "REPLACE",
+      "reason": "Display copy candidate; protected exclusions evaluated in after inventory"
+    },
+    {
+      "stage": "before",
+      "path": "src/web/features/planner/PlannerShell.tsx",
+      "line": 62,
+      "text": "Choose your cooking calendar. Takosan plans the dishes and shopping.",
+      "productCopy": true,
+      "decision": "REPLACE",
+      "reason": "Display copy candidate; protected exclusions evaluated in after inventory"
+    },
+    {
+      "stage": "before",
+      "path": "src/web/features/planner/PlannerShell.tsx",
+      "line": 166,
       "text": "Bạn vẫn có thể chỉnh món cho những bữa sắp tới. Khi tạo danh sách đi chợ, Takosan kiểm tra lại tủ lạnh hiện tại và chỉ tính các bữa còn phía trước.",
       "productCopy": true,
       "decision": "REPLACE",
@@ -2731,8 +2758,8 @@
     {
       "stage": "before",
       "path": "src/web/features/planner/PlannerShopping.tsx",
-      "line": 260,
-      "text": "Takosan tính lại theo tủ lạnh hiện tại cho những bữa còn phía trước, cộng nguyên liệu từ mọi món, giữ dòng bạn đã sửa và báo rõ lượng chưa biết.",
+      "line": 264,
+      "text": "Chọn khoảng ngày cần mua. Takosan gom phần còn thiếu của các bữa sắp tới theo tủ lạnh hiện tại.",
       "productCopy": true,
       "decision": "REPLACE",
       "reason": "Display copy candidate; protected exclusions evaluated in after inventory"
@@ -2740,8 +2767,8 @@
     {
       "stage": "before",
       "path": "src/web/features/planner/PlannerShopping.tsx",
-      "line": 261,
-      "text": "Takosan recalculates future meals against your current fridge, combines every dish, keeps your edits and flags unknown quantities.",
+      "line": 265,
+      "text": "Choose the days to shop for. Takosan combines what upcoming meals still need from your current fridge.",
       "productCopy": true,
       "decision": "REPLACE",
       "reason": "Display copy candidate; protected exclusions evaluated in after inventory"
@@ -2749,7 +2776,7 @@
     {
       "stage": "before",
       "path": "src/web/features/planner/PlannerShopping.tsx",
-      "line": 348,
+      "line": 353,
       "text": "text-takosan-green-deep",
       "productCopy": false,
       "decision": "KEEP",
@@ -2758,7 +2785,7 @@
     {
       "stage": "before",
       "path": "src/web/features/planner/PlannerShopping.tsx",
-      "line": 413,
+      "line": 418,
       "text": "text-sm mt-3 text-takosan-green-deep",
       "productCopy": false,
       "decision": "KEEP",
@@ -2767,7 +2794,7 @@
     {
       "stage": "before",
       "path": "src/web/features/planner/PlannerShopping.tsx",
-      "line": 422,
+      "line": 427,
       "text": "inline-flex min-h-11 items-center underline text-sm text-takosan-green-deep",
       "productCopy": false,
       "decision": "KEEP",
@@ -2776,7 +2803,7 @@
     {
       "stage": "after",
       "path": "src/web/features/planner/PlannerShopping.tsx",
-      "line": 348,
+      "line": 353,
       "text": "text-takosan-green-deep",
       "productCopy": false,
       "decision": "KEEP",
@@ -2785,7 +2812,7 @@
     {
       "stage": "after",
       "path": "src/web/features/planner/PlannerShopping.tsx",
-      "line": 413,
+      "line": 418,
       "text": "text-sm mt-3 text-takosan-green-deep",
       "productCopy": false,
       "decision": "KEEP",
@@ -2794,7 +2821,7 @@
     {
       "stage": "after",
       "path": "src/web/features/planner/PlannerShopping.tsx",
-      "line": 422,
+      "line": 427,
       "text": "inline-flex min-h-11 items-center underline text-sm text-takosan-green-deep",
       "productCopy": false,
       "decision": "KEEP",
@@ -6800,7 +6827,7 @@
       "stage": "before",
       "path": "src/web/pages/OnboardingPage.tsx",
       "line": 265,
-      "text": "mb-8 rounded-3xl border border-takosan-cream-line bg-white p-5 shadow-sm",
+      "text": "mb-6 rounded-3xl border border-takosan-cream-line bg-white p-5 shadow-sm",
       "productCopy": false,
       "decision": "KEEP",
       "reason": "Technical path/class/module/header/storage compatibility"
@@ -6871,8 +6898,8 @@
     {
       "stage": "before",
       "path": "src/web/pages/OnboardingPage.tsx",
-      "line": 446,
-      "text": "flex w-full items-center gap-4 rounded-3xl border bg-white p-4 text-left shadow-sm transition-tap peer-focus-visible:ring-2 peer-focus-visible:ring-takosan-green peer-focus-visible:ring-offset-2",
+      "line": 445,
+      "text": "flex w-full items-center gap-3 rounded-2xl border bg-white p-3 text-left transition-tap peer-focus-visible:ring-2 peer-focus-visible:ring-takosan-green peer-focus-visible:ring-offset-2",
       "productCopy": false,
       "decision": "KEEP",
       "reason": "Technical path/class/module/header/storage compatibility"
@@ -6880,7 +6907,7 @@
     {
       "stage": "before",
       "path": "src/web/pages/OnboardingPage.tsx",
-      "line": 448,
+      "line": 447,
       "text": "border-takosan-green ring-2 ring-takosan-green/20",
       "productCopy": false,
       "decision": "KEEP",
@@ -6889,7 +6916,7 @@
     {
       "stage": "before",
       "path": "src/web/pages/OnboardingPage.tsx",
-      "line": 456,
+      "line": 455,
       "text": "bg-takosan-mint text-takosan-green",
       "productCopy": false,
       "decision": "KEEP",
@@ -6898,7 +6925,7 @@
     {
       "stage": "before",
       "path": "src/web/pages/OnboardingPage.tsx",
-      "line": 469,
+      "line": 468,
       "text": "h-5 w-5 text-takosan-green",
       "productCopy": false,
       "decision": "KEEP",
@@ -6907,43 +6934,7 @@
     {
       "stage": "before",
       "path": "src/web/pages/OnboardingPage.tsx",
-      "line": 484,
-      "text": "flex h-12 w-12 items-center justify-center rounded-2xl bg-takosan-mint text-takosan-green",
-      "productCopy": false,
-      "decision": "KEEP",
-      "reason": "Technical path/class/module/header/storage compatibility"
-    },
-    {
-      "stage": "before",
-      "path": "src/web/pages/OnboardingPage.tsx",
-      "line": 495,
-      "text": "flex h-12 w-12 items-center justify-center rounded-2xl bg-takosan-mint text-takosan-green",
-      "productCopy": false,
-      "decision": "KEEP",
-      "reason": "Technical path/class/module/header/storage compatibility"
-    },
-    {
-      "stage": "before",
-      "path": "src/web/pages/OnboardingPage.tsx",
-      "line": 514,
-      "text": "flex h-12 w-12 items-center justify-center rounded-2xl bg-takosan-mint text-takosan-green",
-      "productCopy": false,
-      "decision": "KEEP",
-      "reason": "Technical path/class/module/header/storage compatibility"
-    },
-    {
-      "stage": "before",
-      "path": "src/web/pages/OnboardingPage.tsx",
-      "line": 525,
-      "text": "flex h-12 w-12 items-center justify-center rounded-2xl bg-takosan-mint text-takosan-green",
-      "productCopy": false,
-      "decision": "KEEP",
-      "reason": "Technical path/class/module/header/storage compatibility"
-    },
-    {
-      "stage": "before",
-      "path": "src/web/pages/OnboardingPage.tsx",
-      "line": 582,
+      "line": 560,
       "text": "Bắt đầu với Takosan",
       "productCopy": true,
       "decision": "REPLACE",
@@ -6998,7 +6989,7 @@
       "stage": "after",
       "path": "src/web/pages/OnboardingPage.tsx",
       "line": 265,
-      "text": "mb-8 rounded-3xl border border-takosan-cream-line bg-white p-5 shadow-sm",
+      "text": "mb-6 rounded-3xl border border-takosan-cream-line bg-white p-5 shadow-sm",
       "productCopy": false,
       "decision": "KEEP",
       "reason": "Technical path/class/module/header/storage compatibility"
@@ -7060,8 +7051,8 @@
     {
       "stage": "after",
       "path": "src/web/pages/OnboardingPage.tsx",
-      "line": 446,
-      "text": "flex w-full items-center gap-4 rounded-3xl border bg-white p-4 text-left shadow-sm transition-tap peer-focus-visible:ring-2 peer-focus-visible:ring-takosan-green peer-focus-visible:ring-offset-2",
+      "line": 445,
+      "text": "flex w-full items-center gap-3 rounded-2xl border bg-white p-3 text-left transition-tap peer-focus-visible:ring-2 peer-focus-visible:ring-takosan-green peer-focus-visible:ring-offset-2",
       "productCopy": false,
       "decision": "KEEP",
       "reason": "Technical path/class/module/header/storage compatibility"
@@ -7069,7 +7060,7 @@
     {
       "stage": "after",
       "path": "src/web/pages/OnboardingPage.tsx",
-      "line": 448,
+      "line": 447,
       "text": "border-takosan-green ring-2 ring-takosan-green/20",
       "productCopy": false,
       "decision": "KEEP",
@@ -7078,7 +7069,7 @@
     {
       "stage": "after",
       "path": "src/web/pages/OnboardingPage.tsx",
-      "line": 456,
+      "line": 455,
       "text": "bg-takosan-mint text-takosan-green",
       "productCopy": false,
       "decision": "KEEP",
@@ -7087,44 +7078,8 @@
     {
       "stage": "after",
       "path": "src/web/pages/OnboardingPage.tsx",
-      "line": 469,
+      "line": 468,
       "text": "h-5 w-5 text-takosan-green",
-      "productCopy": false,
-      "decision": "KEEP",
-      "reason": "Technical path/class/module/header/storage compatibility"
-    },
-    {
-      "stage": "after",
-      "path": "src/web/pages/OnboardingPage.tsx",
-      "line": 484,
-      "text": "flex h-12 w-12 items-center justify-center rounded-2xl bg-takosan-mint text-takosan-green",
-      "productCopy": false,
-      "decision": "KEEP",
-      "reason": "Technical path/class/module/header/storage compatibility"
-    },
-    {
-      "stage": "after",
-      "path": "src/web/pages/OnboardingPage.tsx",
-      "line": 495,
-      "text": "flex h-12 w-12 items-center justify-center rounded-2xl bg-takosan-mint text-takosan-green",
-      "productCopy": false,
-      "decision": "KEEP",
-      "reason": "Technical path/class/module/header/storage compatibility"
-    },
-    {
-      "stage": "after",
-      "path": "src/web/pages/OnboardingPage.tsx",
-      "line": 514,
-      "text": "flex h-12 w-12 items-center justify-center rounded-2xl bg-takosan-mint text-takosan-green",
-      "productCopy": false,
-      "decision": "KEEP",
-      "reason": "Technical path/class/module/header/storage compatibility"
-    },
-    {
-      "stage": "after",
-      "path": "src/web/pages/OnboardingPage.tsx",
-      "line": 525,
-      "text": "flex h-12 w-12 items-center justify-center rounded-2xl bg-takosan-mint text-takosan-green",
       "productCopy": false,
       "decision": "KEEP",
       "reason": "Technical path/class/module/header/storage compatibility"
@@ -7913,6 +7868,15 @@
       "reason": "Technical path/class/module/header/storage compatibility"
     },
     {
+      "stage": "before",
+      "path": "src/web/pages/RecipesPage.tsx",
+      "line": 184,
+      "text": "người. Khi xếp thực đơn, Takosan tính tiếp phần\n                đã dành cho các bữa khác.",
+      "productCopy": true,
+      "decision": "REPLACE",
+      "reason": "Display copy candidate; protected exclusions evaluated in after inventory"
+    },
+    {
       "stage": "after",
       "path": "src/web/pages/RecipesPage.tsx",
       "line": 123,
@@ -8095,7 +8059,7 @@
     {
       "stage": "before",
       "path": "src/web/pages/ShoppingPage.tsx",
-      "line": 244,
+      "line": 247,
       "text": "TAKOSAN · ĐI CHỢ",
       "productCopy": true,
       "decision": "REPLACE",
@@ -8104,7 +8068,7 @@
     {
       "stage": "before",
       "path": "src/web/pages/ShoppingPage.tsx",
-      "line": 405,
+      "line": 411,
       "text": "Lên thực đơn để Takosan gom nguyên liệu của mọi món vào danh sách.",
       "productCopy": true,
       "decision": "REPLACE",

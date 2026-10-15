@@ -1,3 +1,15 @@
+# ADR-TAKOLIO-002: show the product name throughout the kitchen shell - 2026-10-16 JST
+
+**Status:** accepted corrective presentation change; supersedes the small-header micro-symbol choice in ADR-TAKOLIO-001. The operator reported that Home, Recipes, Planner Setup and Shopping lack the visible Takolio name while entry/onboarding show it. An accessible name alone does not provide visual brand recognition.
+
+**Decision:** reuse the canonical outlined horizontal master at 180 CSS px in the shared kitchen header. For a back-arrow header below 375px, use the existing wordmark at 120px to fit the back, notification and scan controls without shrinking 44px targets. The 640-1023px tablet header retains the horizontal logo while the narrow rail keeps its symbol. At >=1024px the existing 168px rail wordmark owns the name and the header retains its motto. Preserve the master composition, intrinsic aspect ratio and built-in clearspace; no new glyph, asset crop, live-text wordmark or global compactLogo remapping.
+
+**Compatibility:** presentation and its tests only. Existing routes, control destinations, symbols in immersive contexts and dynamically measured sticky-header behavior remain. The shared header also appears on protected Plus chrome: verify its inherited layout without editing payment source or behavior. No new runtime assets, generator, token, auth, business-rule, API, database, flag, workflow or production changes.
+
+**Fidelity limits:** the kit explicitly identifies its Comfortaa-derived glyph outlines as a candidate pending official glyph finishing and its mascot as 2D gradient pending premium 3D finishing. A completed migration/test suite is not 100% concept-board, legal or owner design approval. Reference boards remain visual references only. The kit logo usage document remains the source for variant, clearspace and minimum-size decisions.
+
+---
+
 # ADR-TAKOLIO-001: versioned identity with protected compatibility - 2026-10-16 JST
 
 **Status:** implemented locally; publication/release requires review. Mission `TAKOLIO-BRAND-MIGRATION-V1`.

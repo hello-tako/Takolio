@@ -1,3 +1,20 @@
+# Takolio V1 corrective header checkpoint - 2026-10-16 JST
+
+**Status:** `TAKOLIO_V1_CHANGES_REQUIRED` until the corrective header commit receives independent review and exact-head hosted CI. User approved draft PR #79, but this follow-up changes its head after that approval.
+
+**Finding and fix:** the shared kitchen header used a 44px `symbol-micro.svg`, so Home, Recipes, Planner Setup and Shopping lacked visible `Takolio` text. `KitchenHeader` now uses the canonical outlined horizontal lockup at 180px; below 375px with a back control it selects the 120px outlined wordmark through `<picture>`. Tablet keeps the lockup in the header, while the desktop rail continues using its 168px wordmark and the narrow rail keeps its symbol.
+
+**Kit alignment:** the implementation follows `02_LOGO_USAGE.md`: horizontal for website headers, icon-only for genuinely narrow/avatar contexts, no live-text substitution, no board crop. The supplied candidate glyph geometry and 2D mascot remain documented fidelity limits; this is not a 100% concept-board or premium-3D claim.
+
+**Checks:** targeted synthetic header run: 36/36 screens PASS at 320/375/390/768/1024/1440, zero axe violations, zero page errors, zero broken images, no overflow, 44px actions and keyboard home-link focus PASS. Focused unit tests: 4 files / 46 tests PASS. `pnpm lint`, `pnpm typecheck`, `pnpm build`, `pnpm check:migrations`, `pnpm brand:icons` PASS. Broad `ux_audit.py` is recorded as NOT a gate: 110 checks passed but repository-wide scan exited FAIL with 59 issues / 1,859 warnings. Rebased inventory baseline is `f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1`; 25 protected deferred product-copy locations remain.
+
+**Additional verification:** paired ON/OFF builds PASS; PWA 3/3, states 15/15 and flags OFF 12/12 PASS. Actual computed palette/font checks PASS on landing/auth/onboarding, which each own their own `.takosan-rebuild` scope. Independent corrective code/design/security review found no concrete findings and reran 46 tests. Initial raw `pnpm test` encountered 11 existing macOS temp-path normalization failures; the affected two files pass 93/93 with documented `TMPDIR=/private/tmp`. The complete rerun passes 363 files / 8,474 tests in 163.49s (exit 0), using bundled Node v24.19.0 with `TMPDIR=/private/tmp`. The Node 25 rerun was stopped after an existing Python subprocess waited for stdin EOF; its diagnostic logs remain retained. Custom build `--outDir` was rejected by the existing SW token hook; standard output OFF build PASS without configuration changes.
+
+**Protected scope:** no PayOS/payment/checkout/webhook, auth behavior, Worker, migrations, database, domain, flags, production infrastructure or persisted identifiers changed. Old `/takosan/v3` assets remain retained.
+
+**Next:** commit the verified corrective branch, push feature branch only, update draft PR #79, wait for exact-head hosted CI and independent review binding. Record the final committed head and hosted result in the delivery receipt and PR body. Do not merge or deploy.
+
+---
 # Takolio V1 final reviewed implementation - 2026-10-16 JST
 
 **Implementation status:** `TAKOLIO_V1_IMPLEMENTED_REVIEW_REQUIRED`. Canonical public repository `lol-vn/Tako-san`, immutable ID `1385308553`; branch `feat/takolio-brand-migration-v1`; refreshed main `f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1`; verified implementation/integration `b5ba0cc2594ef83431693118f92350b6e81674f1`. Worktree was clean after push. Draft PR #79 is OPEN/DRAFT/MERGEABLE: https://github.com/lol-vn/Tako-san/pull/79.

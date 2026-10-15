@@ -2,6 +2,14 @@
 
 Date: 2026-10-16 JST
 
+## Corrective header and review follow-up
+
+The icon-only daily-app header choice is superseded by ADR-TAKOLIO-002 and `HEADER_FOLLOWUP.md`. Current occurrence inventory and `evidence/header-followup/protected-audit.json` use main `f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1`. The original `evidence/protected-audit.json` detailed receipt and CI incident receipts remain historical; `evidence/main-sync/protected-audit.json` separately records the earlier main integration comparison.
+
+Takolio product colors also apply to standalone entry pages: `LandingPage`, `features/auth/AuthShell` and `OnboardingPage` each render their own `.takosan-rebuild` root, independently of the route-level `AppLayout` scope. Read-only synthetic browser measurements confirm landing and auth inherit cream `#FFF8ED`, navy `#0F2D46`, coral `#FF6B6B`, Plus Jakarta Sans UI and Nunito headings. Root/body compatibility tokens remain legacy by design to protect payment callers; they are not the product-page token scope. The reviewer observation that entry pages have no scope is not supported by these actual wrappers.
+
+`TakosanIcon.strokeWidth` is intentionally retained as a compatibility prop and does not override the supplied SVG stroke geometry. `evidence/portable-raster.json` is a historical CI incident/correction receipt, not the current export inventory; runtime export hashes live in `public/takolio/v1/asset-manifest.json` and source provenance in `source/provenance.json`.
+
 ## Authority and baseline
 
 - Canonical repository: `lol-vn/Tako-san`, repository ID `1385308553`.
@@ -21,13 +29,13 @@ Date: 2026-10-16 JST
 
 ## Consumer graph
 
-The contract has 21 import entries across 19 unique consumer files. UI imports use `takolio-brand`, `takosan-brand` or `takosan-kitchen`; no screen constructs a Takolio runtime asset URL independently. The inventory script records every consumer and is reproducible with `TAKOLIO_BASELINE_SHA=03428467cdd5e93d27a3a27e5edaf7d512eef71d pnpm exec node scripts/takolio-inventory.mjs`.
+The contract has 21 import entries across 19 unique consumer files. UI imports use `takolio-brand`, `takosan-brand` or `takosan-kitchen`; no screen constructs a Takolio runtime asset URL independently. The inventory script records every consumer and is reproducible with `TAKOLIO_BASELINE_SHA=f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1 pnpm exec node scripts/takolio-inventory.mjs`.
 
 The source inventory compares against the pinned baseline SHA, even after this branch is committed. Its output records `baselineSha`, before/after occurrences, decisions and consumers.
 
 ## Protected-scope evidence
 
-`evidence/protected-audit.json` records the file-level audit: 294 protected paths were byte-identical to baseline. Separate exact-diff checks allowed only the two explicitly authorized auth fallback display literals (`Bạn mới của Takosan` -> `Bạn mới của Takolio` and `Người dùng Takosan` -> `Người dùng Takolio`). No PayOS, payment, checkout, payment webhook, Worker logic, D1/KV/R2/DO, migration, domain, OAuth redirect, flag or persisted-ID changes were found. The audit also confirms old V3 assets remain unchanged and no ZIP, reference board, PDF, native mock project or private-key pattern entered the public diff.
+`evidence/protected-audit.json` records the original historical file-level audit; the current main comparison is `evidence/header-followup/protected-audit.json`: 294 protected paths were byte-identical to baseline. Separate exact-diff checks allowed only the two explicitly authorized auth fallback display literals (`Bạn mới của Takosan` -> `Bạn mới của Takolio` and `Người dùng Takosan` -> `Người dùng Takolio`). No PayOS, payment, checkout, payment webhook, Worker logic, D1/KV/R2/DO, migration, domain, OAuth redirect, flag or persisted-ID changes were found. The audit also confirms old V3 assets remain unchanged and no ZIP, reference board, PDF, native mock project or private-key pattern entered the public diff.
 
 ## Stack observed
 
@@ -35,7 +43,7 @@ Resolved packages at execution: React 18.3.1, Vite 6.4.3, TypeScript 5.9.3, Hono
 
 ## Remaining visible product-copy locations
 
-The inventory counts literal/template chunks, including multiple messages inside one email chunk; it does not claim 25 unique rendered strings. Baseline 112 locations became 25 protected deferred locations.
+The inventory counts literal/template chunks, including multiple messages inside one email chunk; it does not claim 25 unique rendered strings. Refreshed baseline `f7386e6a...` has 116 locations, becoming 25 protected deferred locations. The initial `03428467...` inventory had 112 locations and is historical.
 
 | Source | Line | Excerpt | Decision |
 |---|---:|---|---|

@@ -33,3 +33,7 @@ No native Android/iOS project exists in this repository; the generated platform 
 ## Refreshed-main integration
 
 Current diff/evidence base is `f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1` after PR #80. Compact kitchen layouts, progressive setup and shopping disclosure behavior from main are retained. The new `kitchen-density.css` uses existing semantic variables for its five remaining brand-dependent colors, and incoming display text uses Takolio. The synthetic QA harness starts a future valid plan and waits for enabled scan confirmation before checking images. No application business rule changes accompany this integration.
+
+## Corrective shared header
+
+ADR-TAKOLIO-002 supersedes the initial compact-header symbol choice. `KitchenHeader` renders the canonical horizontal logo at 180px; below 375px with a back control, a native `<picture>` selects the 120px outlined wordmark. Tablet keeps the horizontal header while desktop continues using its existing rail wordmark. No source artwork or generator changes are needed. See `HEADER_FOLLOWUP.md` for matched before/after proof, scope, tests and the remaining candidate-glyph/premium-3D fidelity limits.

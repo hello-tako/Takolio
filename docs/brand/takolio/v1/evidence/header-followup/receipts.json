@@ -1,0 +1,189 @@
+{
+  "environment": {
+    "os": "macOS",
+    "node": "v25.9.0",
+    "pnpm": "10.33.2",
+    "browser": "Chromium",
+    "localSyntheticOnly": true
+  },
+  "priorPublishedHead": "f6147dc3aa0f88d521748738f54a46082157698f",
+  "baselineSha": "f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1",
+  "checks": [
+    {
+      "command": "pnpm build",
+      "exitCode": 0,
+      "result": "PASS: before-header synthetic build on f6147dc",
+      "log": "work/header-before-build.log",
+      "logSHA256": "a0dd0998fbb1700570085934f7e881302a54a8df4bd716b742782cecf8489fa7"
+    },
+    {
+      "command": "BRAND_STAGE=before node scripts/takolio-header-check.mjs",
+      "exitCode": 0,
+      "result": "PASS: 36 matched screens",
+      "log": "work/header-browser-before.log",
+      "logSHA256": "36fecb62282659975e59121b3f6b65c808d044ceb77c2034d7778a6348b494c8"
+    },
+    {
+      "command": "pnpm exec vitest run tests/unit/ui07-brand-shell.test.tsx tests/unit/takosan-brand.test.tsx tests/unit/takolio-brand.test.mjs tests/unit/ui07-brand-exports.test.mjs",
+      "exitCode": 0,
+      "result": "PASS: 4 files / 46 tests",
+      "log": "work/header-focused.log",
+      "logSHA256": "f3667eae2b4298039387436b9823ba737b9ee98d06b5fa48edbcd0681df5b45d"
+    },
+    {
+      "command": "pnpm lint",
+      "exitCode": 0,
+      "result": "PASS",
+      "log": "work/header-lint-final.log",
+      "logSHA256": "290e79cfb92b0915688046f7a3f234f26b64f79410f10aa0dd07bdd3ddd1391e"
+    },
+    {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "result": "PASS",
+      "log": "work/header-typecheck.log",
+      "logSHA256": "0480249daf53df62608924dde61f2642b1983da7a8188ede24d8fdaabb9d1a44"
+    },
+    {
+      "command": "pnpm build",
+      "exitCode": 0,
+      "result": "PASS: default production build",
+      "log": "work/header-build.log",
+      "logSHA256": "19edfada16cc218327dd819ac78ba75ac412b835409b3179b8bdd29712559b16"
+    },
+    {
+      "command": "node scripts/takolio-header-check.mjs",
+      "exitCode": 0,
+      "result": "PASS: 36 screens / 0 axe / 0 page errors / 0 overflow / 44px header actions / keyboard home",
+      "log": "work/header-browser-after.log",
+      "logSHA256": "f8ddaac948ad4b001a39b59e87bee8a3916ff530cb56472aee3920e311fa91ba"
+    },
+    {
+      "command": "pnpm check:migrations",
+      "exitCode": 0,
+      "result": "PASS: migration-smoke=ok; local SQLite only",
+      "log": "work/header-migrations.log",
+      "logSHA256": "7511976f436ecb96a180ddf3d92f2b200e2b328c476ebe2ae236b74091f34f36"
+    },
+    {
+      "command": "pnpm brand:icons",
+      "exitCode": 0,
+      "result": "PASS: 70 outputs including manifest; no runtime asset byte changes",
+      "log": "work/header-generator.log",
+      "logSHA256": "7977bdbb64f955a914a5e8219dde81507123d3c07d4f62ea5cad6bf9275ac188"
+    },
+    {
+      "command": "pnpm test",
+      "exitCode": 1,
+      "result": "FAIL: 11 pre-existing macOS temp-directory normalization failures; 8463 PASS / 11 FAIL / 8474 total",
+      "log": "work/header-unit.log",
+      "logSHA256": "c62c9c952cea33bd2fe8d5a39b0b9bb0406fb9a76323806a435363475092ceca"
+    },
+    {
+      "command": "TMPDIR=/private/tmp pnpm exec vitest run tests/unit/t21rc2-production-capture.test.mjs tests/unit/t21rc2t-production-capture.test.mjs --maxWorkers=2",
+      "exitCode": 0,
+      "result": "PASS: 2 files / 93 tests; environment diagnosis only",
+      "log": "work/header-tempdir-focused.log",
+      "logSHA256": "25bd25bb20f9d9978bb37b2adf3dd659493146b343a52a53192ff892c5d30a4a"
+    },
+    {
+      "command": "BRAND_URL=http://127.0.0.1:5230 BRAND_OUT=.artifacts/takolio-v1/header-pwa node scripts/takolio-pwa-check.mjs",
+      "exitCode": 0,
+      "result": "PASS: 3 checks; public offline shell only",
+      "log": "work/header-pwa.log",
+      "logSHA256": "f5042bbb911be67d75a00046dc238df729f857ab4e82560324238039f1125c08"
+    },
+    {
+      "command": "BRAND_URL=http://127.0.0.1:5230 BRAND_OUT=.artifacts/takolio-v1/header-states node scripts/brand-v3-state-check.mjs",
+      "exitCode": 0,
+      "result": "PASS: 15 states plus recorded journeys",
+      "log": "work/header-states.log",
+      "logSHA256": "4d9ae4a651be5d1cd98589ec70022c48bfa9f6a32dfd677e0e117a8a675da031"
+    },
+    {
+      "command": "python3 [installed frontend-design skill]/scripts/ux_audit.py [repo]",
+      "exitCode": 1,
+      "result": "FAIL heuristic scan: 59 issues / 1859 warnings / 110 passed checks; cross-repo tests/build output, not a targeted header gate",
+      "log": "work/header-ux-audit.log",
+      "logSHA256": "66f76e679e4863a618f9a0ce055af25733a7a44b7be915eb68f29eda41d16624"
+    },
+    {
+      "command": "VITE_MEAL_PLANNER_ENABLED=false VITE_MEAL_COMPOSITION_V2_ENABLED=false pnpm build:web --outDir .artifacts/takolio-v1/header-off-build",
+      "exitCode": 1,
+      "result": "FAIL: custom outDir unsupported by existing SW build token hook; bundle built, closeBundle rejected default output token",
+      "log": "work/header-build-off.log",
+      "logSHA256": "d7544e75f87e660808713b45a4737bf41a416d1707ccf4ac90d18cf42cd3ba14"
+    },
+    {
+      "command": "VITE_MEAL_PLANNER_ENABLED=false VITE_MEAL_COMPOSITION_V2_ENABLED=false pnpm build",
+      "exitCode": 0,
+      "result": "PASS: standard repository output directory",
+      "log": "work/header-build-off-final.log",
+      "logSHA256": "ff0e94138e2f214e0719446bbcbb92a868a7a302bb36a232f674dc0439b81a52"
+    },
+    {
+      "command": "node ../header-palette-check.mjs",
+      "exitCode": 0,
+      "result": "PASS: 3 entry page scopes, actual computed palette/fonts",
+      "log": "work/header-palette-final.log",
+      "logSHA256": "c7dd65399853bf8613eaf4a1ac70ee805cd2f206dcfd90a5c20782d912b86459"
+    },
+    {
+      "command": "TAKOLIO_BASELINE_SHA=f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1 node scripts/takolio-inventory.mjs",
+      "exitCode": 0,
+      "result": "PASS: 116 before / 25 protected after",
+      "log": "work/header-inventory.log",
+      "logSHA256": "112173a3bf6696875caf97607ee19446e7a0484c222f732a031abd49f059f5b7"
+    },
+    {
+      "command": "python3 ../final-audit.py",
+      "exitCode": 0,
+      "result": "PASS: 294 protected files, 425 legacy asset files, root tokens unchanged",
+      "log": "work/header-protected-audit.log",
+      "logSHA256": "7a3ba94bcc05eadd19364b35c084ae57ce04d2da2bf60030049a71457d0e5309"
+    },
+    {
+      "command": "VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build",
+      "exitCode": 0,
+      "result": "PASS: standard output paired ON build",
+      "log": "work/header-build-on-final.log",
+      "logSHA256": "17a909a5c77be862d173de6e4798a3cfcf3e38a707698a4335f75b96f6be929b"
+    },
+    {
+      "command": "BRAND_URL=http://127.0.0.1:5232 BRAND_OUT=.artifacts/takolio-v1/header-flags-off BRAND_FLAG_OFF=true node scripts/brand-v3-state-check.mjs",
+      "exitCode": 0,
+      "result": "PASS: 12 states at six widths",
+      "log": "work/header-flags-off.log",
+      "logSHA256": "ed21a101df08c4fab9490023cddcf4d2684bccf0cf8f691f050475e66a5cc19a"
+    },
+    {
+      "command": "TMPDIR=/private/tmp pnpm test",
+      "environment": {
+        "node": "v24.19.0",
+        "runtime": "bundled Node/Python on PATH",
+        "TMPDIR": "/private/tmp"
+      },
+      "exitCode": 0,
+      "result": "PASS: 363 files / 8474 tests; 163.49s",
+      "log": "work/header-unit-node24.log",
+      "logSHA256": "819c4da324b35db26d49d65c2f211b70e8b5390ab38937d1b3a2ab4d016cfd8e"
+    }
+  ],
+  "diagnostics": [
+    {
+      "command": "TMPDIR=/private/tmp pnpm test",
+      "environment": "Node 25; macOS Python",
+      "result": "INTERRUPTED: existing Python migration-inspection subprocess waited for stdin EOF; replaced by successful bundled Node24/Python rerun",
+      "logs": [
+        {
+          "log": "work/header-unit-private-tmp.log",
+          "sha256": "4c8612984cf3757db3ebb1a1f7667cf7186f10bae648734eb49bd5185762334e"
+        },
+        {
+          "log": "work/header-hung-python-sample.log",
+          "sha256": "5a1d0e161f5cb23ad7b5da025ef4d71ea60093b993deec979e3c0b98aad097b6"
+        }
+      ]
+    }
+  ]
+}

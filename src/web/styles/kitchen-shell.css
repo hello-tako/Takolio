@@ -139,15 +139,8 @@
     --kitchen-rail-width: 112px;
   }
   [data-kitchen-navigation='persistent'] .kitchen-bottom-nav,
-  [data-kitchen-navigation='persistent'] .kitchen-header-scan,
-  [data-kitchen-navigation='persistent'] .kitchen-brand-link {
+  [data-kitchen-navigation='persistent'] .kitchen-header-scan {
     display: none;
-  }
-  [data-kitchen-navigation='persistent'] .kitchen-brand-motto {
-    display: block;
-    font-size: 14px;
-    line-height: 1.5;
-    color: var(--semantic-text-on-soft);
   }
   [data-kitchen-navigation='persistent'] .kitchen-sidebar {
     position: fixed;

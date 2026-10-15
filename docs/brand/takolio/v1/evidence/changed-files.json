@@ -5,23 +5,23 @@
   "files": [
     {
       "path": "docs/ai/CURRENT_STATE.md",
-      "bytes": 648672,
-      "sha256": "256199bbe247dbc1cf6926aeea3f5dc61f9b76fbfb4139a4fdf6a4ab285fd32e"
+      "bytes": 651712,
+      "sha256": "50f04b705869cd0d5c35438c49cfe032edac8a362d31feeb5ca0c669dd8fcc9c"
     },
     {
       "path": "docs/ai/DECISIONS.md",
-      "bytes": 213081,
-      "sha256": "45d3c17c2093d280439390e8fa53932f80883287ba7b3f0d823a816d95e405c1"
+      "bytes": 214960,
+      "sha256": "e8bd9dd799b1783348df505f6bafe4913f19fb701efee8a4efa9ec71ca3830db"
     },
     {
       "path": "docs/ai/HANDOFF.md",
-      "bytes": 650514,
-      "sha256": "cb99dd242374900119f2b362c1e9f32a9ec32bd3700db6ad162e986dc4df2e0c"
+      "bytes": 652069,
+      "sha256": "85cd42f461e097bb216d3eef5539c08960123117c285addcbf25b64e5fce21e1"
     },
     {
       "path": "docs/ai/TASK_BOARD.md",
-      "bytes": 492375,
-      "sha256": "b4cbcd9b4f34552f1f000c0c4ecb91374804b65134be1091747d4dd7a2dedde4"
+      "bytes": 493361,
+      "sha256": "74ed18dfef7c79354fe5c539e3f3ba3afa935073e91395b384d09983b4eb790d"
     },
     {
       "path": "docs/brand/takolio/v1/ASSET_MANIFEST.md",
@@ -30,13 +30,18 @@
     },
     {
       "path": "docs/brand/takolio/v1/AUDIT.md",
-      "bytes": 10234,
-      "sha256": "45a4c2de809eacf6123cc194c68a8277776a4fc77b89081da18b2825d1819bfb"
+      "bytes": 11903,
+      "sha256": "ca6443114b61747f76bd44c6ef516f2da9d9222d5132040b46fb13afd4966270"
+    },
+    {
+      "path": "docs/brand/takolio/v1/HEADER_FOLLOWUP.md",
+      "bytes": 5498,
+      "sha256": "df770412774840c0efeab1f1e198a40276e0aee03551d51c809ebd1059dd90e3"
     },
     {
       "path": "docs/brand/takolio/v1/IMPLEMENTATION.md",
-      "bytes": 4167,
-      "sha256": "e542563c65ae98a5569b845dc4fd012a155068e73bf9b38a15dd28fb47a27a91"
+      "bytes": 4697,
+      "sha256": "7197ad14cdf01addbec5d1c5d2a63088c2b2962cc249281463aec994a84437f7"
     },
     {
       "path": "docs/brand/takolio/v1/ROLLBACK.md",
@@ -45,8 +50,8 @@
     },
     {
       "path": "docs/brand/takolio/v1/VERIFICATION.md",
-      "bytes": 11859,
-      "sha256": "b99c3c6c752ef17f3680dd927cf73935d4c36df73ec42e4503973831ec61ea97"
+      "bytes": 12766,
+      "sha256": "9daa92f12ebf9ca8a5b5cb7c1d8e489c2496d3f9c2bf2869da85e3a7233d569a"
     },
     {
       "path": "docs/brand/takolio/v1/evidence/before-observations.json",
@@ -72,6 +77,66 @@
       "path": "docs/brand/takolio/v1/evidence/flags-off-observations.json",
       "bytes": 2041,
       "sha256": "8aa470e368d9858a09312eabc2fd8413dd1946a10014bf8e71653b75771a28dd"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/header-followup/after.json",
+      "bytes": 37683,
+      "sha256": "e280be3bfdc4b24dce01bc2b91ae02e7207b5500448b96125b43dcf468e3319b"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/header-followup/before.json",
+      "bytes": 34739,
+      "sha256": "9715f48ac7cffbeb87b3fcffe796fd20c594bf0ce7e8289de7ee359ad824b0f5"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/header-followup/flags-off.json",
+      "bytes": 2041,
+      "sha256": "8aa470e368d9858a09312eabc2fd8413dd1946a10014bf8e71653b75771a28dd"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/header-followup/header-comparison-320.png",
+      "bytes": 47178,
+      "sha256": "2d35b4eab83b96fd49f1eac23052e6eda165b61ee1b98b5301b0b24cfd0a3f76"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/header-followup/header-comparison-390.png",
+      "bytes": 62217,
+      "sha256": "49c16f98264a4baa626019365c9af6e3c9d661440a3d8625de0725c089dddea9"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/header-followup/header-comparison-768.png",
+      "bytes": 78484,
+      "sha256": "2f5bc13ca3a3191c5293d39d0500c89a7ea7c94f4303a0dc1fe55d7ddbcc8423"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/header-followup/independent-review.json",
+      "bytes": 1716,
+      "sha256": "8b38d6783d3617318cfee50974277e6717604e352608c80c80f3d71fe959b369"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/header-followup/palette.json",
+      "bytes": 1234,
+      "sha256": "901284cc9a8a881075c5c5a32caf1729b66de9ed39117c43338b47231d822d5f"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/header-followup/protected-audit.json",
+      "bytes": 805,
+      "sha256": "9166732cf5698da13a641d2affd8d2d199fad2d447692f56a2c69100af9663e5"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/header-followup/pwa.json",
+      "bytes": 2385,
+      "sha256": "25131f07a14a8b2b2e1f962517dc92fb6a8e6c7fc49004613d72cef5822fcd25"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/header-followup/receipts.json",
+      "bytes": 8076,
+      "sha256": "83ac1fc84e1bba378ce367ac91afe5de217e6a26b2957d986a9f638777c112d1"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/header-followup/states.json",
+      "bytes": 2708,
+      "sha256": "2909ba93d641c56f9eeb3d0a49f6c52b30864230ab5c5281086b162117ba7def"
     },
     {
       "path": "docs/brand/takolio/v1/evidence/icon-proof.png",
@@ -150,8 +215,8 @@
     },
     {
       "path": "docs/brand/takolio/v1/evidence/occurrences.json",
-      "bytes": 337273,
-      "sha256": "e3ef6cb09ee2cde586e68d78ce95938903bff2bda79831a115e9af27a5005f28"
+      "bytes": 335943,
+      "sha256": "7afdc41d68949cb6de770f552f5cd06fe40be23bc7426257fdf7431e598be977"
     },
     {
       "path": "docs/brand/takolio/v1/evidence/portable-raster.json",
@@ -879,9 +944,14 @@
       "sha256": "7a1e6c54dd0e1edf67661d889acd886b961c5544e924de3241f25a4c2759ebd5"
     },
     {
+      "path": "scripts/takolio-header-check.mjs",
+      "bytes": 6721,
+      "sha256": "226b93c74d1b484bb82479eb8ab60cf468a51d810e55cff3ca1d6e2b6ee09fc7"
+    },
+    {
       "path": "scripts/takolio-inventory.mjs",
       "bytes": 3701,
-      "sha256": "2ba322b9515bde5c5a3e641c2c650925b6d1d68201ef2aa7796e6a0427d4405b"
+      "sha256": "3e20880e3109839366aec46cdff7e4b6fd4096785de41ccdc8555d82100e0053"
     },
     {
       "path": "scripts/takolio-pwa-check.mjs",
@@ -895,8 +965,8 @@
     },
     {
       "path": "src/web/components/common/KitchenHeader.tsx",
-      "bytes": 2370,
-      "sha256": "365f7d76e64c0245c1a5a65a12bd451b0f8ba7f31974b88012be4f2b0eb0ab4a"
+      "bytes": 2572,
+      "sha256": "354696ee968d880b8d84ca49e37902dc3bf309cb609f8370c2eafaf78b42e576"
     },
     {
       "path": "src/web/components/common/SystemStatusPage.tsx",
@@ -1104,9 +1174,14 @@
       "sha256": "951ac6836fc02bd1853b33f1feafc3b802969cb87a282ba43ff7d01c780af072"
     },
     {
+      "path": "src/web/styles/kitchen-daily.css",
+      "bytes": 8135,
+      "sha256": "493d441fcf4d38b2fbe0007ef2b7423e504586962d1d20fcd27abb2a3280073f"
+    },
+    {
       "path": "src/web/styles/kitchen-density.css",
-      "bytes": 23405,
-      "sha256": "29398bb3f42566e87f3efacea8983509ff4c5786f8c378c46ea3f8ab51a12df2"
+      "bytes": 23183,
+      "sha256": "157953b4100b8be6a773593e2a2cbd600fadd937247560375cf6e51a239cb101"
     },
     {
       "path": "src/web/styles/kitchen-entry.css",
@@ -1115,8 +1190,13 @@
     },
     {
       "path": "src/web/styles/kitchen-family.css",
-      "bytes": 27763,
-      "sha256": "c7431fd209f008e3993b474e01eb164e7083d18dadc149233a3802f972d6c300"
+      "bytes": 27646,
+      "sha256": "bf0b4d3520c5d7756edc8bc99459b7b147eeb2f85a7c90d96cadd755aa95b89e"
+    },
+    {
+      "path": "src/web/styles/kitchen-shell.css",
+      "bytes": 7494,
+      "sha256": "c9c526adbbe12f3c878840e3d002bdbce8ef91363cfea63c6a56d24d962de0bb"
     },
     {
       "path": "src/web/styles/takosan-tokens.css",
@@ -1185,8 +1265,8 @@
     },
     {
       "path": "tests/unit/ui07-brand-shell.test.tsx",
-      "bytes": 2183,
-      "sha256": "af70f328649c3855e86d22df460d0bebedf7f4df893cdf3fc4408b67563fa9e6"
+      "bytes": 2679,
+      "sha256": "7e44c9c8a555c77674231702d14fd0fec1b3e451a1106f9a129a972a06ee0a02"
     },
     {
       "path": "tests/unit/ui08-onboarding-navigation.test.tsx",
