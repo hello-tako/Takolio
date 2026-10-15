@@ -6,7 +6,9 @@ const PASSWORD = 'Local-Fixture-Only-2026!';
 const SUPER = 'super@fixture.takosan.test';
 const CONTENT = 'content@fixture.takosan.test';
 const OWNER = 'owner@fixture.takosan.test';
-const SHOTS = 'docs/admin/screenshots';
+const SHOTS = process.env.ADMIN_E2E_WRITE_DOC_SCREENSHOTS === '1'
+  ? 'docs/admin/screenshots'
+  : '.hoplite/artifacts/admin-e2e/screenshots';
 mkdirSync(SHOTS, { recursive: true });
 
 async function shot(page: Page, name: string) {

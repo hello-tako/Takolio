@@ -26,7 +26,13 @@ globalThis.__ADMIN_LOCAL_AUTH__ = true;
 
 const vite = await createViteServer({
   root, configFile: false, server: { middlewareMode: true, hmr: false }, appType: 'custom', logLevel: 'error',
-  resolve: { alias: { '@frigo/db': path.join(root, 'packages/db/src/index.ts'), '@shared': path.join(root, 'src/shared') } },
+  resolve: { alias: {
+    '@frigo/domain': path.join(root, 'packages/domain/src/index.ts'),
+    '@frigo/recipes': path.join(root, 'packages/recipes/src/index.ts'),
+    '@frigo/ai': path.join(root, 'packages/ai/src/index.ts'),
+    '@frigo/db': path.join(root, 'packages/db/src/index.ts'),
+    '@shared': path.join(root, 'src/shared'),
+  } },
 });
 const { SqliteD1, applyMigrations } = await vite.ssrLoadModule('/tests/helpers/sqlite-d1.ts');
 const { default: worker } = await vite.ssrLoadModule('/src/worker/admin-worker.ts');

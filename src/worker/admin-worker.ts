@@ -42,7 +42,14 @@ app.get('/admin', (c) => c.redirect('/admin/', 302));
 
 // Raw (still percent-encoded) pathname is matched, so encoded variants never reach ASSETS.
 const STATIC_FILE = /^\/admin\/(?:assets\/[A-Za-z0-9][A-Za-z0-9_-]*\.(?:js|css|svg|png|woff2)|fonts\/[A-Za-z0-9][A-Za-z0-9-]*\.(?:woff2|txt)|favicon\.svg)$/;
-const SHELL_ROUTE = /^\/admin\/(?:[A-Za-z0-9_-]+(?:\/[A-Za-z0-9_-]+)*\/?)?$/;
+const SHELL_PAGE = /^\/admin\/(?:login|users|households|billing|ai|recipes|system|audit|settings)\/?$/;
+const SHELL_DETAIL = /^\/admin\/(?:users|recipes)\/([A-Za-z0-9_.:-]{1,128})\/?$/;
+
+function isAdminShellRoute(pathname: string): boolean {
+  if (pathname === '/admin' || pathname === '/admin/' || SHELL_PAGE.test(pathname)) return true;
+  const identifier = SHELL_DETAIL.exec(pathname)?.[1];
+  return identifier !== undefined && identifier !== '.' && identifier !== '..';
+}
 
 async function serveAdminFile(c: AdminContext) {
   const url = new URL(c.req.url);
@@ -51,12 +58,12 @@ async function serveAdminFile(c: AdminContext) {
   const assets = c.env.ASSETS;
   if (!assets) return c.text('Admin Console assets are not attached.', 503);
   if (STATIC_FILE.test(pathname)) {
-    const asset = await assets.fetch(new Request(new URL(pathname, url.origin).toString()));
+    const asset = await assets.fetch(new URL(pathname, url.origin).toString());
     if (!asset.ok) return c.text('Not Found', 404);
     return new Response(asset.body as ReadableStream, { status: 200, headers: { 'Content-Type': asset.headers.get('Content-Type') ?? 'application/octet-stream' } });
   }
-  if (SHELL_ROUTE.test(pathname)) {
-    const shell = await assets.fetch(new Request(new URL('/admin/', url.origin).toString()));
+  if (isAdminShellRoute(pathname)) {
+    const shell = await assets.fetch(new URL('/admin/', url.origin).toString());
     if (!shell.ok) return c.text('Admin Console build is missing.', 503);
     return new Response(shell.body as ReadableStream, { status: 200, headers: { 'Content-Type': 'text/html; charset=utf-8' } });
   }

@@ -15,7 +15,7 @@ export const PageSchema = z.object({
 
 const search = optional(z.string().trim().min(1).max(100));
 const rangeParam = z.preprocess((value) => (value === undefined || value === '' ? '30d' : value), z.enum(['7d', '30d', '90d']));
-const identifier = z.string().min(1).max(128).regex(/^[A-Za-z0-9_.:-]+$/);
+const identifier = z.string().min(1).max(128).regex(/^(?!\.{1,2}$)[A-Za-z0-9_.:-]+$/);
 const isoBound = optional(z.string().max(40).refine((value) => Number.isFinite(Date.parse(value)), 'invalid date'));
 
 export const RangeQuery = z.object({ range: rangeParam }).strict();
