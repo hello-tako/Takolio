@@ -3123,3 +3123,16 @@ complete successful result shapes before normalization. Saved pre-baselines reta
 strict103-field validation. This is read-only count preservation across observations,
 not a transactionally pinned snapshot or byte-content proof. Exact current-main/CI,
 ledger/bookmark/schema gates and migration order remain unchanged.
+
+## ADR-ADMIN-003 — Separate internal read facade and explicit operator enrollment (R2, 2026-10-15)
+
+Status: accepted for local implementation by the attached R2 task; verification
+and independent review remain pending in docs/admin/remediation-r2/REPORT.md.
+Use a separate internal Worker, not an export added to the customer Worker, for
+named, validated customer reads. Remove the customer D1 capability from the Admin
+Worker. The facade has no public route/default HTTP API; service bindings are not
+read-only D1 permissions. Keep customer runtime/auth/schema/release gates unchanged.
+Admin identity is exact verified Access issuer+subject plus independently approved
+human enrollment, never email alone or an inferred two-human claim. Recovery stays
+offline, dual-approved, source/database-bound, replay-protected and atomically
+audited; no remote action or production activation is authorized by this decision.
