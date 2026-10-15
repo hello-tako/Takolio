@@ -5,8 +5,8 @@
   "files": [
     {
       "path": "docs/ai/CURRENT_STATE.md",
-      "bytes": 651712,
-      "sha256": "50f04b705869cd0d5c35438c49cfe032edac8a362d31feeb5ca0c669dd8fcc9c"
+      "bytes": 653676,
+      "sha256": "a0cd107a1615ad91a251879d9e77a0ee7c7269c67a5f03af9daf6d62f67ed0ad"
     },
     {
       "path": "docs/ai/DECISIONS.md",
@@ -15,13 +15,13 @@
     },
     {
       "path": "docs/ai/HANDOFF.md",
-      "bytes": 652069,
-      "sha256": "85cd42f461e097bb216d3eef5539c08960123117c285addcbf25b64e5fce21e1"
+      "bytes": 654033,
+      "sha256": "12e42dbf585b61d1dca1117f0c169b3536246d17335421111db0581fe825ecf9"
     },
     {
       "path": "docs/ai/TASK_BOARD.md",
-      "bytes": 493361,
-      "sha256": "74ed18dfef7c79354fe5c539e3f3ba3afa935073e91395b384d09983b4eb790d"
+      "bytes": 495325,
+      "sha256": "5187a8257eb3f787956535a67e2ece47755175d4933861660124eeaeac118088"
     },
     {
       "path": "docs/brand/takolio/v1/ASSET_MANIFEST.md",
@@ -130,8 +130,8 @@
     },
     {
       "path": "docs/brand/takolio/v1/evidence/header-followup/receipts.json",
-      "bytes": 8076,
-      "sha256": "83ac1fc84e1bba378ce367ac91afe5de217e6a26b2957d986a9f638777c112d1"
+      "bytes": 8091,
+      "sha256": "6bb95324c61aba59b82fb0fdad8eacf8c6b445af3bcc6e44226134653a664a24"
     },
     {
       "path": "docs/brand/takolio/v1/evidence/header-followup/states.json",

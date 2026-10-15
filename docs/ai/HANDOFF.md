@@ -1,3 +1,15 @@
+# Takolio V1 corrective publication checkpoint - 2026-10-16 JST
+
+**Implementation:** corrective header commit `617c52b3a095227a90e36a10bb08449e1a3ab1c2` is pushed to `feat/takolio-brand-migration-v1`. Canonical repository `lol-vn/Tako-san` (ID `1385308553`), live main `f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1`. PR #79 remains OPEN/DRAFT/MERGEABLE: https://github.com/lol-vn/Tako-san/pull/79. Worktree was clean after the implementation push. This checkpoint only updates publication documentation, the exact interrupted-test command and file hashes.
+
+**Validation:** 363 files / 8,474 tests PASS in 163.49s with bundled Node 24.19.0 and TMPDIR=/private/tmp. Focused 46, matched header 36, PWA 3, states 15, flags-OFF 12, lint, typecheck, migrations, generator and default/ON/OFF builds PASS. Historical failures remain disclosed. Independent corrective code/design/security review has no concrete findings; final documentation-head binding and automatic hosted CI are pending at this checkpoint. Run 38816613109 started automatically on the implementation head; this documentation commit gets its own automatic PR run. No manual workflow dispatch.
+
+**Status/next:** `TAKOLIO_V1_CHANGES_REQUIRED` until the final published head has successful hosted CI and independent binding. Final SHA/check/review receipts will be recorded in the PR body and delivery outputs, avoiding a self-referential commit/hash cycle. Then owner/reviewers inspect the new head and exclusions. The earlier owner approval is retained as reported and is not represented as a GitHub approval of this new head.
+
+**Boundaries:** no new runtime/source/generator/test/CI-workflow/PayOS/auth/Worker/database/migration/flag/domain changes in this checkpoint; no merge or deploy. Header correction changes presentation only; both asset trees and persisted identifiers remain. Candidate glyph, premium 3D, legal/trademark, protected-copy and native/device/hosted-offline gaps remain explicit.
+
+---
+
 # Takolio V1 corrective handoff - 2026-10-16 JST
 
 The user reported that daily kitchen routes showed only the mascot symbol. The shared header now uses the supplied outlined horizontal Takolio lockup, with a 120px wordmark fallback below 375px only when a back control consumes the mobile width. Evidence and limitations are in `docs/brand/takolio/v1/HEADER_FOLLOWUP.md`; the superseding decision is ADR-TAKOLIO-002.

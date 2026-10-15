@@ -171,7 +171,7 @@
   ],
   "diagnostics": [
     {
-      "command": "TMPDIR=/private/tmp pnpm test",
+      "command": "TMPDIR=/private/tmp pnpm test --maxWorkers=2",
       "environment": "Node 25; macOS Python",
       "result": "INTERRUPTED: existing Python migration-inspection subprocess waited for stdin EOF; replaced by successful bundled Node24/Python rerun",
       "logs": [
