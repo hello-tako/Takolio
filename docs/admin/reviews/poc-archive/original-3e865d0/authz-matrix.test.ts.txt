@@ -1,0 +1,81 @@
+import { describe, expect, it } from 'vitest';
+import { ADMIN_PERMISSION_MATRIX, type AdminPermission, type AdminRole } from '../../../src/shared/admin';
+import { DEV_BASE, FX, fixtureDb, login, makeEnv, mutate, read, rows, send } from './harness';
+
+const t = fixtureDb();
+
+const ACCOUNTS: Array<[AdminRole, string]> = [
+  ['SUPER_ADMIN', 'super'], ['OPERATIONS_ADMIN', 'ops'], ['CONTENT_EDITOR', 'content'], ['SUPPORT_AGENT', 'support'], ['READ_ONLY_AUDITOR', 'auditor'],
+];
+
+// GET endpoints with the permission each route declares in src/worker/routes/admin/index.ts.
+const READS: Array<[string, AdminPermission]> = [
+  ['/api/v1/admin/me', 'admin.self.read'],
+  ['/api/v1/admin/overview?range=7d', 'overview.read'],
+  ['/api/v1/admin/users', 'users.read'],
+  ['/api/v1/admin/users/fx_user_001', 'users.read'],
+  ['/api/v1/admin/households', 'households.read'],
+  ['/api/v1/admin/billing/summary', 'billing.read'],
+  ['/api/v1/admin/billing/transactions', 'billing.read'],
+  ['/api/v1/admin/ai/summary', 'ai.read'],
+  ['/api/v1/admin/ai/usage', 'ai.read'],
+  ['/api/v1/admin/recipes/summary', 'recipes.read'],
+  ['/api/v1/admin/recipes', 'recipes.read'],
+  ['/api/v1/admin/system/status', 'system.read'],
+  ['/api/v1/admin/audit', 'audit.read'],
+  ['/api/v1/admin/settings', 'admin.self.read'],
+  ['/api/v1/admin/sessions', 'admin.sessions.revoke'],
+];
+
+// Mutations are probed on the deny side only: requirePermission runs before any handler side effect.
+const DENIED_MUTATIONS: Array<[string, string, AdminPermission, unknown?]> = [
+  ['POST', '/api/v1/admin/roles', 'admin.roles.manage', { userId: 'fx_user_001', role: 'OPERATIONS_ADMIN' }],
+  ['DELETE', '/api/v1/admin/roles/fx_ara_ops', 'admin.roles.manage'],
+  ['POST', '/api/v1/admin/approvals/appr_none/approve', 'admin.approvals.decide'],
+  ['POST', '/api/v1/admin/sessions/asess_none/revoke', 'admin.sessions.revoke'],
+  ['POST', '/api/v1/admin/recipes/recipe_none/reviews', 'recipes.review', { state: 'draft', note: 'x', recipeVersion: 1 }],
+];
+
+describe('endpoint authorization matrix (derived from ADMIN_PERMISSION_MATRIX)', () => {
+  it('anonymous requests are 401 on every read and mutation', async () => {
+    const e = makeEnv(t.db);
+    for (const [path] of READS) expect((await read(e, undefined, path)).status, path).toBe(401);
+    for (const [method, path] of DENIED_MUTATIONS) {
+      expect((await send(e, `${DEV_BASE}${path}`, { method, headers: { Origin: DEV_BASE } })).status, path).toBe(401);
+    }
+  });
+
+  it('each role gets exactly the reads the matrix grants; others get 403 ADMIN_FORBIDDEN', async () => {
+    const e = makeEnv(t.db);
+    for (const [role, key] of ACCOUNTS) {
+      const session = (await login(e, FX(key))).session!;
+      expect(session, role).toBeDefined();
+      for (const [path, permission] of READS) {
+        const expected = ADMIN_PERMISSION_MATRIX[permission].includes(role) ? 200 : 403;
+        expect((await read(e, session, path)).status, `${role} ${path}`).toBe(expected);
+      }
+    }
+  });
+
+  it('each role is denied mutations it lacks the permission for, with no side effect', async () => {
+    const e = makeEnv(t.db);
+    for (const [role, key] of ACCOUNTS) {
+      const session = (await login(e, FX(key))).session!;
+      for (const [method, path, permission, body] of DENIED_MUTATIONS) {
+        if (ADMIN_PERMISSION_MATRIX[permission].includes(role)) continue;
+        const r = await mutate(e, session, method, path, body);
+        expect(r.status, `${role} ${method} ${path}`).toBe(403);
+        expect(r.json.code, `${role} ${method} ${path}`).toBe('ADMIN_FORBIDDEN');
+      }
+    }
+    expect(rows(t.db, "SELECT COUNT(*) AS n FROM admin_role_assignments WHERE user_id = 'fx_user_001'")[0].n).toBe(0);
+  });
+
+  it('revoked admin, household owner and plain customer cannot obtain a session', async () => {
+    for (const key of ['revoked', 'owner', 'customer001']) {
+      const { res, session } = await login(makeEnv(t.db), FX(key));
+      expect(res.status, key).toBe(401);
+      expect(session, key).toBeUndefined();
+    }
+  });
+});

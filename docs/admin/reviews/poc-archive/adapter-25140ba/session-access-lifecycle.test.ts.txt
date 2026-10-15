@@ -1,0 +1,104 @@
+import { describe, expect, it, beforeEach, afterEach } from 'vitest';
+import { accessOptions, resetAccessJwksCache } from '../../../src/worker/routes/admin/access';
+import type { Env } from '../../../src/worker/types';
+import { APP_BASE, DEV_BASE, FX, SECRET, fixtureDb, login, makeEnv, mutate, read, rows, send } from './harness';
+
+const t = fixtureDb();
+const TEAM = 'takosan-test.cloudflareaccess.com';
+const AUD = 'a'.repeat(32);
+const b64 = (value: unknown) => Buffer.from(JSON.stringify(value)).toString('base64url');
+const now = () => Math.floor(Date.now() / 1000);
+
+async function keyPair() {
+  const pair = await crypto.subtle.generateKey({ name: 'RSASSA-PKCS1-v1_5', modulusLength: 2048, publicExponent: new Uint8Array([1, 0, 1]), hash: 'SHA-256' }, true, ['sign', 'verify']);
+  return { privateKey: pair.privateKey, jwk: { ...(await crypto.subtle.exportKey('jwk', pair.publicKey)), kid: 'k1', alg: 'RS256', use: 'sig' } };
+}
+let key: Awaited<ReturnType<typeof keyPair>>;
+beforeEach(async () => {
+  resetAccessJwksCache();
+  key = await keyPair();
+  accessOptions.fetcher = async () => new Response(JSON.stringify({ keys: [key.jwk] }), { status: 200, headers: { 'content-type': 'application/json' } });
+});
+afterEach(() => { delete accessOptions.fetcher; resetAccessJwksCache(); });
+
+async function assertion(email: string): Promise<string> {
+  const head = `${b64({ alg: 'RS256', kid: 'k1' })}.${b64({ aud: [AUD], iss: `https://${TEAM}`, exp: now() + 600, email })}`;
+  const sig = await crypto.subtle.sign('RSASSA-PKCS1-v1_5', key.privateKey, new TextEncoder().encode(head));
+  return `${head}.${Buffer.from(new Uint8Array(sig)).toString('base64url')}`;
+}
+const accessEnv = (overrides: Partial<Env> = {}) => makeEnv(t.db, { ADMIN_AUTH_MODE: 'cloudflare_access', ADMIN_ACCESS_TEAM_DOMAIN: TEAM, ADMIN_ACCESS_AUD: AUD, ...overrides });
+async function accessLogin(env: Env, email: string) {
+  const res = await send(env, `${DEV_BASE}/api/v1/admin/auth/login`, { method: 'POST', headers: { Origin: DEV_BASE, 'Cf-Access-Jwt-Assertion': await assertion(email) }, body: {} });
+  const cookies = res.headers.getSetCookie().join('\n');
+  const token = /__Host-takosan_admin_session=([0-9a-f]{64})/.exec(cookies)?.[1];
+  const csrf = /__Host-takosan_admin_csrf=([0-9a-f]{64})/.exec(cookies)?.[1];
+  return { res, session: token && csrf ? { cookie: `__Host-takosan_admin_session=${token}; __Host-takosan_admin_csrf=${csrf}`, csrf, id: res.json?.data?.session?.id ?? null } : undefined };
+}
+
+describe('Cloudflare Access mode', () => {
+  it('a valid assertion for an admin email creates a cloudflare_access session', async () => {
+    const { res, session } = await accessLogin(accessEnv(), FX('super'));
+    expect(res.status).toBe(200);
+    expect(res.json.data.session.authMethod).toBe('cloudflare_access');
+    expect(session).toBeDefined();
+  });
+
+  it('a valid assertion for a non-admin identity is refused with the generic credential error', async () => {
+    const { res, session } = await accessLogin(accessEnv(), FX('customer001'));
+    expect(res.status).toBe(401);
+    expect(res.json.code).toBe('ADMIN_INVALID_CREDENTIALS');
+    expect(session).toBeUndefined();
+  });
+
+  it('password login is not offered in Access mode', async () => {
+    const { res } = await login(accessEnv(), FX('super'));
+    expect(res.status).toBe(401);
+    expect(res.json.code).toBe('ADMIN_ACCESS_DENIED');
+  });
+
+  it('an existing Access session is denied when the assertion header is absent', async () => {
+    const env = accessEnv();
+    const { session } = await accessLogin(env, FX('super'));
+    const r = await read(env, session, '/api/v1/admin/me');
+    expect(r.status).toBe(401);
+    expect(r.json.code).toBe('ADMIN_ACCESS_DENIED');
+  });
+
+  it('production with ADMIN_AUTH_MODE=cloudflare_access but no AUD fails closed (503)', async () => {
+    const prod = { ENVIRONMENT: 'production', APP_URL: APP_BASE, OTP_HASH_SECRET: SECRET, QWEN_API_KEY: 'test-only-placeholder',
+      TURNSTILE_SITE_KEY: 'test-site', TURNSTILE_SECRET_KEY: 'test-secret', SCAN_QUEUE: { send: async () => {}, sendBatch: async () => {} },
+      ADMIN_CONSOLE_ENABLED: 'true', ADMIN_AUTH_MODE: 'cloudflare_access', ADMIN_ACCESS_TEAM_DOMAIN: TEAM } as Partial<Env>;
+    const r = await send(makeEnv(t.db, prod), `${APP_BASE}/api/v1/admin/auth/login`, { method: 'POST', headers: { Origin: APP_BASE }, body: {} });
+    expect(r.status).toBe(503);
+    expect(r.json.code).toBe('ADMIN_AUTH_NOT_CONFIGURED');
+  });
+});
+
+describe('session lifecycle', () => {
+  it('logout revokes the session server-side', async () => {
+    const env = makeEnv(t.db);
+    const { session } = await login(env, FX('super'));
+    expect((await mutate(env, session, 'POST', '/api/v1/admin/auth/logout')).status).toBe(200);
+    const me = await read(env, session, '/api/v1/admin/me');
+    expect(me.status).toBe(401);
+    expect(me.json.code).toBe('ADMIN_SESSION_REVOKED');
+  });
+
+  it('an absolute-expired session is rejected', async () => {
+    const env = makeEnv(t.db);
+    const { session } = await login(env, FX('super'));
+    t.db.seed("UPDATE admin_sessions SET expires_at = '2000-01-01T00:00:00.000Z';");
+    const me = await read(env, session, '/api/v1/admin/me');
+    expect(me.status).toBe(401);
+    expect(me.json.code).toBe('ADMIN_SESSION_EXPIRED');
+  });
+
+  it('an idle-expired session is rejected even when absolute expiry is in the future', async () => {
+    const env = makeEnv(t.db);
+    const { session } = await login(env, FX('super'));
+    t.db.seed("UPDATE admin_sessions SET idle_expires_at = '2000-01-01T00:00:00.000Z';");
+    const me = await read(env, session, '/api/v1/admin/me');
+    expect(me.json.code).toBe('ADMIN_SESSION_EXPIRED');
+    expect(rows(t.db, 'SELECT COUNT(*) AS n FROM admin_sessions WHERE revoked_at IS NULL')[0].n).toBe(1);
+  });
+});

@@ -1,0 +1,60 @@
+{
+ "authConfig503": {
+  "snaps": [
+   {
+    "atS": 5,
+    "requests": 3,
+    "errorState": 0,
+    "loading": 0,
+    "text": "T | Takosan Admin | Đăng nhập quản trị | Khu vực dành cho nhân viên Takosan được cấp quyền. Mọi thao tác đều được ghi nh"
+   },
+   {
+    "atS": 10,
+    "requests": 3,
+    "errorState": 0,
+    "loading": 0,
+    "text": "T | Takosan Admin | Đăng nhập quản trị | Khu vực dành cho nhân viên Takosan được cấp quyền. Mọi thao tác đều được ghi nh"
+   },
+   {
+    "atS": 20,
+    "requests": 3,
+    "errorState": 0,
+    "loading": 0,
+    "text": "T | Takosan Admin | Đăng nhập quản trị | Khu vực dành cho nhân viên Takosan được cấp quyền. Mọi thao tác đều được ghi nh"
+   },
+   {
+    "atS": 30,
+    "requests": 3,
+    "errorState": 0,
+    "loading": 0,
+    "text": "T | Takosan Admin | Đăng nhập quản trị | Khu vực dành cho nhân viên Takosan được cấp quyền. Mọi thao tác đều được ghi nh"
+   }
+  ],
+  "gapsMs": [
+   0,
+   1011,
+   2005
+  ]
+ },
+ "preferences": {
+  "putStatus": 200,
+  "noticeRightAfterPut": null,
+  "noticeEverRenderedInWindow": [
+   "Đã lưu tùy chọn."
+  ]
+ },
+ "grantedAssignment": {
+  "id": "ara_7d5f0cf02935ade7895fb3b1",
+  "role": "SUPPORT_AGENT",
+  "status": "active"
+ },
+ "rowBeforeRevoke": "Lê Vycu•••@fixture.takosan.testNhân viên hỗ trợĐang hiệu lựcQuản trị viên cấpfx_admin_super12 thg 10, 2026Thu hồi",
+ "rowAfterRevoke": "Lê Vycu•••@fixture.takosan.testNhân viên hỗ trợĐã thu hồiQuản trị viên cấpfx_admin_super12 thg 10, 2026—",
+ "revokedInApi": [
+  {
+   "status": "revoked",
+   "revokedAt": "2026-10-12T15:10:42.103Z"
+  }
+ ]
+}
+unexpected console errors: [] pageErrors: []
