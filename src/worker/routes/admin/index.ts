@@ -63,7 +63,22 @@ const MINIMUM_MESSAGE = `Phải luôn còn ít nhất ${ADMIN_SUPER_ADMIN_MINIMU
 /** Batch that maps constraint/trigger aborts to 409 instead of 500. */
 async function commit(c: AdminContext, statements: D1PreparedStatement[], message?: string) {
   try {
-    await c.get('adminDb').batch(statements);
+    const adminDb = c.get('adminDb');
+    if (/\/(?:roles|approvals)(?:\/|$)/.test(c.req.path)) {
+      const actor = c.get('admin');
+      const now = nowIso();
+      // A constraint failure aborts the whole batch if authority changed after middleware.
+      statements.unshift(adminDb.prepare(`INSERT INTO admin_config_metadata (key,value)
+        SELECT 'authority_check', 'denied' WHERE NOT EXISTS (
+          SELECT 1 FROM admin_role_assignments r JOIN admin_sessions s ON s.user_id = r.user_id
+          WHERE r.user_id = ? AND r.role = 'SUPER_ADMIN' AND r.status = 'active'
+            AND s.id = ? AND s.revoked_at IS NULL AND s.expires_at > ? AND s.idle_expires_at > ?
+            AND (? IS NULL OR EXISTS (SELECT 1 FROM operator_identity_bindings b
+              JOIN approved_human_operators h ON h.operator_id = b.operator_id AND h.status = 'active'
+              WHERE b.user_id = r.user_id AND b.access_iss = ? AND b.access_sub = ? AND b.status = 'active'))
+        )`).bind(actor.userId, actor.sessionId, now, now, actor.accessIss ?? null, actor.accessIss ?? null, actor.accessSub ?? null));
+    }
+    await adminDb.batch(statements);
   } catch (error) {
     if (isConstraintError(error)) throw conflict(/SUPER_ADMIN/.test(String(error)) ? MINIMUM_MESSAGE : message);
     throw error;

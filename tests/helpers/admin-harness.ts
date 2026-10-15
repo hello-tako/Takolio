@@ -1,5 +1,6 @@
 import path from 'node:path';
 import { fetchAdminWorker } from './admin-worker-fetch.mjs';
+import { createCustomerReadFacade } from '../../src/worker/facade/customer-read-service';
 import type { AdminEnv } from '../../src/worker/routes/admin/env';
 import { buildAdminFixtureSql, FIXTURE_PASSWORD } from '../../scripts/admin-local-lib.mjs';
 import { SqliteD1, applyMigrations } from './sqlite-d1';
@@ -51,12 +52,12 @@ export function setLocalAuthBuild(enabled: boolean) {
 }
 
 export function localEnv(dbs: Databases, overrides: Partial<AdminEnv> = {}): AdminEnv {
-  return { DB: dbs.main, ADMIN_DB: dbs.admin, CACHE: memoryKv() as never, ENVIRONMENT: 'development', ADMIN_CONSOLE_ENABLED: 'true',
+  return { CUSTOMER_READ: createCustomerReadFacade(dbs.main, { allowLocalPassword: true }), ADMIN_DB: dbs.admin, CACHE: memoryKv() as never, ENVIRONMENT: 'development', ADMIN_CONSOLE_ENABLED: 'true',
     ADMIN_AUTH_MODE: 'password', ADMIN_ORIGIN: LOCAL_ORIGIN, CUSTOMER_APP_URL: 'http://127.0.0.1:8787', ...overrides };
 }
 
 export function productionEnv(dbs: Databases, overrides: Partial<AdminEnv> = {}): AdminEnv {
-  return { DB: dbs.main, ADMIN_DB: dbs.admin, CACHE: memoryKv() as never, ENVIRONMENT: 'production', ADMIN_CONSOLE_ENABLED: 'true',
+  return { CUSTOMER_READ: createCustomerReadFacade(dbs.main), ADMIN_DB: dbs.admin, CACHE: memoryKv() as never, ENVIRONMENT: 'production', ADMIN_CONSOLE_ENABLED: 'true',
     ADMIN_AUTH_MODE: 'cloudflare_access', ADMIN_ORIGIN: PROD_ORIGIN, CUSTOMER_APP_URL: CUSTOMER_URL,
     ADMIN_ACCESS_TEAM_DOMAIN: ACCESS_TEAM, ADMIN_ACCESS_AUD: ACCESS_AUD, ...overrides };
 }
@@ -109,3 +110,14 @@ export async function login(env: AdminEnv, email: string, password = PASSWORD, e
 }
 
 export const count = (db: SqliteD1, query: string, ...binds: unknown[]) => db.query<{ n: number }>(query, ...binds)[0].n;
+
+/** Synthetic enrollment only; runtime provisioning never calls this helper. */
+export async function enrollFixtureOperators(dbs: Databases, keys = ['super', 'super2', 'ops', 'content', 'support', 'auditor']) {
+  for (const key of keys) {
+    const userId = `fx_admin_${key}`;
+    await dbs.admin.prepare(`INSERT INTO approved_human_operators (operator_id,enrollment_record_ref,independent_approval_ref,enrolled_at)
+      VALUES (?,?,?,'2026-10-15T00:00:00.000Z')`).bind(`operator_${key}`, `synthetic-human-${key}`, `synthetic-human-approval-${key}`).run();
+    await dbs.admin.prepare(`INSERT INTO operator_identity_bindings (id,user_id,operator_id,access_iss,access_sub,enrollment_record_ref,independent_approval_ref,bound_at)
+      VALUES (?,?,?,?,?,?,?,'2026-10-15T00:00:00.000Z')`).bind(`bind_fixture_${key}`, userId, `operator_${key}`, `https://${ACCESS_TEAM}`, `subject_${key}`, `synthetic-binding-${key}`, `synthetic-binding-approval-${key}`).run();
+  }
+}

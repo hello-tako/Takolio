@@ -4,6 +4,7 @@ import { sha256Hex } from '../../src/worker/utils/session';
 import {
   call, closeDatabases, count, createDatabases, fx, localEnv, login, PASSWORD, setLocalAuthBuild, type Databases,
 } from '../helpers/admin-harness';
+import { createCustomerReadFacade } from '../../src/worker/facade/customer-read-service';
 import type { AdminEnv } from '../../src/worker/routes/admin/env';
 
 let dbs: Databases;
@@ -230,7 +231,7 @@ describe('data exposure and validation', () => {
       const value = Reflect.get(target, prop, receiver);
       return typeof value === 'function' ? value.bind(target) : value;
     } });
-    const result = await call('/api/v1/admin/ai/summary', { env: { ...env, DB: failing as never }, session: sup });
+    const result = await call('/api/v1/admin/ai/summary', { env: { ...env, CUSTOMER_READ: createCustomerReadFacade(failing, { allowLocalPassword: true }) }, session: sup });
     expect(result.status).toBe(500);
     expect(result.json).toEqual({ error: 'Đã xảy ra lỗi máy chủ nội bộ', code: 'INTERNAL_SERVER_ERROR' });
   });
