@@ -6,14 +6,16 @@ const STATIC_PRECACHE = [
   '/',
   '/index.html',
   '/manifest.json',
-  '/takosan/v3/app-icons/favicon.svg',
-  '/takosan/v3/app-icons/icon-192.png',
-  '/takosan/v3/app-icons/icon-512.png',
-  '/takosan/v3/app-icons/icon-maskable-512.png',
-  '/takosan/v3/logo/horizontal-primary.svg',
-  '/takosan/v3/logo/symbol-primary.svg',
-  '/takosan/v3/logo/symbol-micro.svg',
-  '/takosan/v3/mascot/tako-happy.svg',
+  '/takolio/v1/app-icons/favicon.svg',
+  '/takolio/v1/app-icons/icon-192.png',
+  '/takolio/v1/app-icons/icon-512.png',
+  '/takolio/v1/app-icons/icon-maskable-512.png',
+  '/takolio/v1/logo/horizontal-primary.svg',
+  '/takolio/v1/logo/symbol-primary.svg',
+  '/takolio/v1/logo/symbol-micro.svg',
+  '/takolio/v1/mascot/tako-welcome.svg',
+  '/takolio/v1/logo/wordmark-primary.svg',
+  '/takolio/v1/fonts/plus-jakarta-sans-vietnamese-latin-wght.woff2',
   '/takosan/v3/fonts/nunito-latin-wght-normal.woff2',
   '/takosan/v3/fonts/nunito-vietnamese-wght-normal.woff2',
 ];
@@ -69,6 +71,7 @@ self.addEventListener('fetch', (event) => {
   if (
     url.pathname.startsWith('/frigo/') ||
     url.pathname.startsWith('/takosan/') ||
+    url.pathname.startsWith('/takolio/') ||
     url.pathname.startsWith('/assets/')
   ) {
     event.respondWith(

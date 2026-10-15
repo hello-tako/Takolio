@@ -1,0 +1,79 @@
+{
+  "brand": "Takolio",
+  "color": {
+    "coral": {
+      "value": "#FF6B6B",
+      "type": "color"
+    },
+    "navy": {
+      "value": "#0F2D46",
+      "type": "color"
+    },
+    "gold": {
+      "value": "#F7C15A",
+      "type": "color"
+    },
+    "green": {
+      "value": "#4CAF6B",
+      "type": "color"
+    },
+    "cream": {
+      "value": "#FFF8ED",
+      "type": "color"
+    },
+    "pink": {
+      "value": "#FFE3E0",
+      "type": "color"
+    },
+    "sky": {
+      "value": "#E3F2FF",
+      "type": "color"
+    },
+    "mint": {
+      "value": "#E8F7EC",
+      "type": "color"
+    },
+    "beige": {
+      "value": "#F9E7D7",
+      "type": "color"
+    },
+    "blush": {
+      "value": "#FFB3B3",
+      "type": "color"
+    },
+    "apron": {
+      "value": "#E6E1D9",
+      "type": "color"
+    },
+    "wood": {
+      "value": "#D99055",
+      "type": "color"
+    },
+    "amber": {
+      "value": "#FFC94B",
+      "type": "color"
+    }
+  },
+  "typography": {
+    "heading": {
+      "fontFamily": "Nunito",
+      "fontWeight": 800
+    },
+    "body": {
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": 400
+    }
+  },
+  "spacing": {
+    "1": "4px",
+    "2": "8px",
+    "4": "16px",
+    "6": "24px",
+    "8": "32px"
+  },
+  "radius": {
+    "small": "8px",
+    "medium": "16px",
+    "large": "24px"
+  }
+}

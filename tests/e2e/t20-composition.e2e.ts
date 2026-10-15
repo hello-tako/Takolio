@@ -157,7 +157,7 @@ test('B/I: Assisted complete and regenerate preview/apply preserve locked main a
   const before = await canonical(page, plan);
   const other = await canonical(page, plan, `${days[1]}:dinner:0`);
   await page.getByRole('button', { name: 'Complete this meal', exact: true }).click();
-  await expect(page.getByRole('region', { name: 'Takosan suggestion' })).toBeVisible();
+  await expect(page.getByRole('region', { name: 'Takolio suggestion' })).toBeVisible();
   expect((await canonical(page, plan)).planRevision).toBe(before.planRevision);
   await page.getByRole('button', { name: 'Use this suggestion', exact: true }).click();
   await expect.poll(async () => (await canonical(page, plan)).planRevision).toBe(before.planRevision + 1);
@@ -166,7 +166,7 @@ test('B/I: Assisted complete and regenerate preview/apply preserve locked main a
   const main = before.composition.components[0];
   expect(completed.composition.components.find((entry) => entry.id === main.id)).toMatchObject({ recipeId: main.recipeId, locked: true });
   await page.getByRole('button', { name: 'Suggest new unlocked dishes', exact: true }).click();
-  await expect(page.getByRole('region', { name: 'Takosan suggestion' })).toBeVisible();
+  await expect(page.getByRole('region', { name: 'Takolio suggestion' })).toBeVisible();
   expect((await canonical(page, plan)).planRevision).toBe(completed.planRevision);
   await page.getByRole('button', { name: 'Use this suggestion', exact: true }).click();
   await expect.poll(async () => (await canonical(page, plan)).planRevision).toBe(completed.planRevision + 1);
@@ -184,7 +184,7 @@ test('C/I: Auto returns three bounded deterministic explainable options, writes 
   const plan = await empty(page, await create(page));
   await open(page, plan);
   const response = page.waitForResponse((res) => res.url().endsWith('/auto') && res.request().method() === 'POST');
-  await page.getByRole('button', { name: 'Let Takosan build the meal', exact: true }).click();
+  await page.getByRole('button', { name: 'Let Takolio build the meal', exact: true }).click();
   const result = AutoOptionsDtoSchema.parse(await (await response).json());
   expect(result.options).toHaveLength(3);
   expect(result.budget.partialsExplored).toBeLessThanOrEqual(1200);

@@ -168,7 +168,7 @@ function FamilyPlannerSetup({
               {locale === 'vi'
                 ? selectionMode === 'manual'
                   ? 'Chọn lịch nấu trước, rồi tự đặt những món nhà mình muốn ăn.'
-                  : 'Takosan gợi ý cả bữa theo thói quen đã chọn.'
+                  : 'Takolio gợi ý cả bữa theo thói quen đã chọn.'
                 : selectionMode === 'manual'
                   ? 'Choose your cooking calendar, then fill each meal with your own dishes.'
                   : 'Get a complete meal based on your habits.'}
@@ -195,7 +195,7 @@ function FamilyPlannerSetup({
                     />
                     <span>
                       <strong>
-                        {locale === 'vi' ? 'Takosan gợi ý cả bữa' : 'Let Takosan suggest meals'}
+                        {locale === 'vi' ? 'Takolio gợi ý cả bữa' : 'Let Takolio suggest meals'}
                       </strong>
                       <small>
                         {locale === 'vi'
@@ -367,7 +367,7 @@ function FamilyPlannerSetup({
         </p>
         <p>Khẩu vị vùng là ưu tiên mềm. Đổi vị quốc tế chỉ xuất hiện trong mức bạn chọn.</p>
         <p className="planning-note">
-          Đủ nhóm món không đồng nghĩa đã xác minh dinh dưỡng hoặc an toàn dị ứng. Takosan sẽ báo
+          Đủ nhóm món không đồng nghĩa đã xác minh dinh dưỡng hoặc an toàn dị ứng. Takolio sẽ báo
           phần còn thiếu dữ liệu.
         </p>
       </aside>

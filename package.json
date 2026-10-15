@@ -31,7 +31,8 @@
     "lint": "eslint .",
     "format": "prettier --write \"src/**/*.{ts,tsx,css,json}\" \"packages/**/*.{ts,tsx}\"",
     "check": "bash scripts/deploy-check.sh",
-    "brand:icons": "node scripts/generate-takosan-icons.mjs"
+    "brand:icons": "node scripts/generate-takolio-brand.mjs",
+    "brand:icons:v3": "node scripts/generate-takosan-v3.mjs"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.67.2",

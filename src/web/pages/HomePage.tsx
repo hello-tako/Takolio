@@ -179,7 +179,7 @@ export const HomePage = () => {
                     Chưa có thực đơn hiện tại
                   </h2>
                   <p className="mt-3 text-base text-semantic-text-secondary">
-                    Chọn ngày và số người. Takosan sẽ giúp bạn sắp xếp các bữa từ nguyên liệu đang
+                    Chọn ngày và số người. Takolio sẽ giúp bạn sắp xếp các bữa từ nguyên liệu đang
                     có.
                   </p>
                   <Link className="kitchen-primary-link mt-5" to={home.setupHref}>

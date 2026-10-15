@@ -210,7 +210,7 @@ export const OnboardingPage: React.FC = () => {
         <header className="mb-7 flex items-center justify-between">
           <img
             src={TAKOSAN_KITCHEN.logo}
-            alt="Takosan"
+            alt="Takolio"
             translate="no"
             width={300}
             height={72}
@@ -258,7 +258,7 @@ export const OnboardingPage: React.FC = () => {
                 Nhà mình thường có bao nhiêu người ăn?
               </h1>
               <p className="mt-2 text-sm leading-relaxed text-semantic-text-secondary">
-                Takosan dùng số người để tính khẩu phần phù hợp cho mỗi bữa.
+                Takolio dùng số người để tính khẩu phần phù hợp cho mỗi bữa.
               </p>
             </div>
 
@@ -415,7 +415,7 @@ export const OnboardingPage: React.FC = () => {
                 id="onboarding-goals-title"
                 className="font-heading text-3xl font-extrabold leading-tight"
               >
-                Bạn muốn Takosan giúp việc gì trước?
+                Bạn muốn Takolio giúp việc gì trước?
               </h1>
               <p className="mt-2 text-sm text-semantic-text-secondary">
                 Lựa chọn này chỉ quyết định màn hình bắt đầu trên thiết bị này; các sở thích bên
@@ -579,7 +579,7 @@ export const OnboardingPage: React.FC = () => {
                 isLoading={isSaving}
                 className="flex items-center justify-center gap-2 rounded-2xl"
               >
-                Bắt đầu với Takosan <ArrowRight className="h-5 w-5" aria-hidden="true" />
+                Bắt đầu với Takolio <ArrowRight className="h-5 w-5" aria-hidden="true" />
               </Button>
               <p className="mt-3 text-center text-xs text-semantic-text-muted">
                 {isOfflineGuestSession()

@@ -43,7 +43,7 @@ export const FamilySharingPage: React.FC = () => {
         <Section title="Chia sẻ với người thân">
           <div className="space-y-3">
             <UnavailableState title="Mời thành viên — chưa hỗ trợ">
-              Takosan chưa hỗ trợ gửi lời mời hay mã tham gia hộ. Bạn hiện dùng tủ lạnh
+              Takolio chưa hỗ trợ gửi lời mời hay mã tham gia hộ. Bạn hiện dùng tủ lạnh
               thuộc hộ của tài khoản này.
             </UnavailableState>
             <UnavailableState title="Tham gia hộ khác — chưa hỗ trợ">

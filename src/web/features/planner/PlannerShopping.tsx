@@ -257,8 +257,8 @@ export function PlannerShopping({
               </h2>
               <p>
                 {locale === 'vi'
-                  ? 'Takosan tính lại theo tủ lạnh hiện tại cho những bữa còn phía trước, cộng nguyên liệu từ mọi món, giữ dòng bạn đã sửa và báo rõ lượng chưa biết.'
-                  : 'Takosan recalculates future meals against your current fridge, combines every dish, keeps your edits and flags unknown quantities.'}
+                  ? 'Takolio tính lại theo tủ lạnh hiện tại cho những bữa còn phía trước, cộng nguyên liệu từ mọi món, giữ dòng bạn đã sửa và báo rõ lượng chưa biết.'
+                  : 'Takolio recalculates future meals against your current fridge, combines every dish, keeps your edits and flags unknown quantities.'}
               </p>
             </div>
           </div>

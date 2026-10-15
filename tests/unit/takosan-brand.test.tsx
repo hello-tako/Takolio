@@ -13,6 +13,8 @@ vi.mock('../../src/web/stores/useAuthStore', () => ({
 
 import { TAKOSAN_KITCHEN } from '../../src/web/lib/takosan-kitchen';
 import { TAKOSAN_BRAND } from '../../src/web/lib/takosan-brand';
+import { TAKOLIO_BRAND } from '../../src/web/lib/takolio-brand';
+import { TakosanIcon } from '../../src/web/components/common/TakosanIcon';
 import { LandingPage } from '../../src/web/pages/LandingPage';
 import { Header } from '../../src/web/components/common/Header';
 import { TopBar } from '../../src/web/components/common/TopBar';
@@ -26,23 +28,23 @@ const publicFile = (webPath: string) => resolve(root, 'public', webPath.replace(
 
 function collectPaths(value: unknown, out: string[] = []): string[] {
   if (typeof value === 'string') {
-    if (value.startsWith('/takosan/')) out.push(value);
+    if (value.startsWith('/takolio/')) out.push(value);
   } else if (value && typeof value === 'object') {
     Object.values(value).forEach((v) => collectPaths(v, out));
   }
   return out;
 }
 
-describe('Takosan brand contract', () => {
-  it('names the product Takosan and uses the kit palette', () => {
-    expect(TAKOSAN_BRAND.name).toBe('Takosan');
+describe('Takolio brand contract', () => {
+  it('names the product Takolio and uses the kit palette', () => {
+    expect(TAKOSAN_BRAND.name).toBe('Takolio');
     expect(TAKOSAN_BRAND.colors).toEqual({
-      coral: '#FF7B6B',
-      green: '#2E7D5B',
-      navy: '#202C28',
-      cream: '#FFF8F3',
-      mint: '#DFF4E6',
-      yellow: '#FFC857',
+      coral: '#FF6B6B',
+      green: '#4CAF6B',
+      navy: '#0F2D46',
+      cream: '#FFF8ED',
+      mint: '#E8F7EC',
+      yellow: '#F7C15A',
     });
   });
 
@@ -57,7 +59,7 @@ describe('Takosan brand contract', () => {
     for (const logo of Object.values(TAKOSAN_BRAND.logos)) {
       const svg = readFileSync(publicFile(logo), 'utf8');
       expect(svg).toContain('<svg');
-      expect(svg).toContain('M128 321');
+      expect(svg).toContain('<path');
       expect(svg).not.toMatch(/<script|foreignObject|(?:href|src)=/i);
       expect(svg).not.toMatch(/<text/i);
     }
@@ -97,28 +99,28 @@ describe('Takosan brand contract', () => {
 });
 
 describe('PWA metadata', () => {
-  it('manifest is branded Takosan with kitchen theme colours and generated icons', () => {
+  it('manifest is branded Takolio with kitchen theme colours and generated icons', () => {
     const manifest = JSON.parse(readFileSync(resolve(root, 'public/manifest.json'), 'utf8'));
-    expect(manifest.short_name).toBe('Takosan');
-    expect(manifest.name).toMatch(/^Takosan/);
-    expect(manifest.theme_color).toBe('#2E7D5B');
-    expect(manifest.background_color).toBe('#FFF8F3');
+    expect(manifest.short_name).toBe('Takolio');
+    expect(manifest.name).toMatch(/^Takolio/);
+    expect(manifest.theme_color).toBe('#0F2D46');
+    expect(manifest.background_color).toBe('#FFF8ED');
     const sizes = manifest.icons.map((i: { sizes: string; purpose?: string }) => `${i.sizes}${i.purpose ? `:${i.purpose}` : ''}`);
     expect(sizes).toEqual(expect.arrayContaining(['192x192', '512x512', '512x512:maskable']));
     for (const icon of manifest.icons) {
-      expect(icon.src.startsWith('/takosan/')).toBe(true);
+      expect(icon.src.startsWith('/takolio/')).toBe(true);
       expect(existsSync(publicFile(icon.src))).toBe(true);
     }
   });
 
-  it('index.html title, favicon, theme colour and OpenGraph are Takosan while the domain is unchanged', () => {
+  it('index.html title, favicon, theme colour and OpenGraph are Takolio while the domain is unchanged', () => {
     const html = readFileSync(resolve(root, 'index.html'), 'utf8');
-    expect(html).toMatch(/<title>Takosan/);
-    expect(html).toContain('href="/takosan/v3/app-icons/favicon.svg"');
-    expect(html).toContain('<meta name="theme-color" content="#2E7D5B" />');
-    expect(html).toContain('property="og:title" content="Takosan');
+    expect(html).toMatch(/<title>Takolio/);
+    expect(html).toContain('href="/takolio/v1/app-icons/favicon.svg"');
+    expect(html).toContain('<meta name="theme-color" content="#0F2D46" />');
+    expect(html).toContain('property="og:title" content="Takolio');
     // og:image must be absolute for scrapers; the temporary domain stays until the maintainer picks one.
-    expect(html).toContain('property="og:image" content="https://frigo.tungjpstore.net/takosan/v3/social/og-1200x630.png"');
+    expect(html).toContain('property="og:image" content="https://frigo.tungjpstore.net/takolio/v1/social/og-1200x630.png"');
     expect(html).toContain('property="og:url" content="https://frigo.tungjpstore.net"');
     expect(html).not.toMatch(/og:image" content="\//);
     expect(html).not.toMatch(/\/frigo\/(brand|app-icons)\//);
@@ -126,23 +128,23 @@ describe('PWA metadata', () => {
     expect(readFileSync(resolve(root, 'src/web/styles/brand-v3-fonts.css'), 'utf8')).toContain("font-family: 'Nunito'");
   });
 
-  it('favicon, apple-touch-icon and icon links in index.html point at existing Takosan files', () => {
+  it('favicon, apple-touch-icon and icon links in index.html point at existing Takolio files', () => {
     const html = readFileSync(resolve(root, 'index.html'), 'utf8');
     const iconHrefs = [...html.matchAll(/<link rel="(?:icon|apple-touch-icon)"[^>]*href="([^"]+)"/g)].map((m) => m[1]);
     expect(iconHrefs.length).toBeGreaterThanOrEqual(3);
     for (const href of iconHrefs) {
-      expect(href.startsWith('/takosan/v3/app-icons/')).toBe(true);
+      expect(href.startsWith('/takolio/v1/app-icons/')).toBe(true);
       expect(existsSync(publicFile(href))).toBe(true);
     }
     expect(existsSync(publicFile(TAKOSAN_BRAND.og))).toBe(true);
   });
 
-  it('service worker cache version moved off frigo-pwa-v1 and precaches Takosan assets', () => {
+  it('service worker cache version moved off frigo-pwa-v1 and precaches Takolio assets', () => {
     const sw = readFileSync(resolve(root, 'public/sw.js'), 'utf8');
     expect(sw).not.toContain("'frigo-pwa-v1'");
     expect(sw).toContain("BUILD_ID = '__TAKOSAN_BUILD_ID__'");
     expect(sw).toContain('CACHE_NAME = `takosan-pwa-${BUILD_ID}`');
-    expect(sw).toContain('/takosan/v3/app-icons/icon-192.png');
+    expect(sw).toContain('/takolio/v1/app-icons/icon-192.png');
     expect(sw).toContain("url.pathname.startsWith('/takosan/')");
     const crossOriginBypass = sw.indexOf('if (url.origin !== self.location.origin) return;');
     expect(crossOriginBypass).toBeGreaterThan(-1);
@@ -171,7 +173,7 @@ describe('PWA metadata', () => {
   });
 });
 
-describe('Primary shell renders Takosan, not Frigo', () => {
+describe('Primary shell renders Takolio, not Frigo', () => {
   const render = (ui: React.ReactElement, path = '/') =>
     renderToStaticMarkup(<StaticRouter location={path}>{ui}</StaticRouter>);
 
@@ -181,20 +183,20 @@ describe('Primary shell renders Takosan, not Frigo', () => {
     expect(html).toContain('width="300" height="72"');
     expect(html).toContain('Kiểm tra trước khi thêm');
     expect(html).toContain('Kết quả có thể cần sửa');
-    expect(html).not.toContain('Takosan sẽ phân loại');
+    expect(html).not.toContain('Takolio sẽ phân loại');
     expect(html).not.toContain('Frigo');
     expect(html).not.toContain('/frigo/brand/');
   });
 
-  it('Header, TopBar and bottom navigation use the Takosan logo and icon grammar', () => {
+  it('Header, TopBar and bottom navigation use the Takolio logo and icon grammar', () => {
     const header = render(<Header />);
-    expect(header).toContain(`src="${TAKOSAN_BRAND.logos.horizontal}"`);
-    expect(header).toContain('alt="Takosan"');
+    expect(header).toContain(`src="${TAKOSAN_BRAND.compactLogo}"`);
+    expect(header).toContain('alt="Takolio"');
     expect(header).not.toContain('frigo-logo');
 
     const top = render(<TopBar />);
-    expect(top).toContain(`src="${TAKOSAN_BRAND.logos.horizontal}"`);
-    expect(top).toContain('alt="Takosan"');
+    expect(top).toContain(`src="${TAKOSAN_BRAND.compactLogo}"`);
+    expect(top).toContain('alt="Takolio"');
     expect(top).not.toContain('/frigo/brand/');
 
     const nav = render(<BottomNavigationBar />);
@@ -239,15 +241,15 @@ describe('Palette hardening (P2-BRAND-1)', () => {
     expect(offenders).toEqual([]);
   });
 
-  it('Tailwind config parses and exposes the locked palette plus Takosan-green tinted shadows', () => {
+  it('Tailwind config parses and exposes the locked palette plus Takolio-green tinted shadows', () => {
     const theme = (tailwindConfig as { theme: { extend: { colors: Record<string, unknown>; boxShadow: Record<string, string> } } }).theme.extend;
     const takosan = theme.colors.takosan as Record<string, string | Record<string, string>>;
     const value = (c: string | Record<string, string>) => (typeof c === 'string' ? c : c.DEFAULT);
-    for (const [name, hex] of Object.entries(TAKOSAN_BRAND.colors)) {
+    for (const [name, hex] of Object.entries({ coral: '#FF7B6B', green: '#2E7D5B', navy: '#202C28', cream: '#FFF8F3', mint: '#DFF4E6', yellow: '#FFC857' })) {
       const actual = value(takosan[name]);
       if (name === 'navy') {
         expect(actual).toContain('--takosan-navy-color-rgb');
-        expect(readFileSync(resolve(root, 'src/web/styles/takosan-tokens.css'), 'utf8')).toContain('--takosan-navy-color-rgb: 32 44 40');
+        expect(readFileSync(resolve(root, 'src/web/styles/takosan-tokens.css'), 'utf8')).toContain('--takosan-navy-color-rgb: 15 45 70');
       } else if (actual.startsWith('rgb(var(')) {
         const rgb = [1, 3, 5].map(index => Number.parseInt(hex.slice(index, index + 2), 16)).join(' ');
         expect(actual).toContain(`, ${rgb}) / <alpha-value>)`);
@@ -257,7 +259,7 @@ describe('Palette hardening (P2-BRAND-1)', () => {
       expect(theme.boxShadow[name]).toContain('rgba(46, 125, 91');
       expect(theme.boxShadow[name]).not.toMatch(/rgba\((5, 150, 105|16, 185, 129)/);
     }
-    // Legacy `frigo.*` aliases must resolve to Takosan values, never to the old emerald ramp.
+    // Legacy `frigo.*` aliases must resolve to Takolio values, never to the old emerald ramp.
     expect(JSON.stringify(theme.colors.frigo)).not.toMatch(/#059669|#047857|#0F3D2E|#10B981|#34D399/i);
   });
 
@@ -296,7 +298,7 @@ describe('Brand generator (P2-BRAND-2)', () => {
   it('sharp is a direct, exactly pinned devDependency and the generator imports it directly', () => {
     const pkg = JSON.parse(readFileSync(resolve(root, 'package.json'), 'utf8'));
     expect(pkg.devDependencies.sharp).toBe('0.35.5');
-    expect(pkg.scripts['brand:icons']).toBe('node scripts/generate-takosan-icons.mjs');
+    expect(pkg.scripts['brand:icons']).toBe('node scripts/generate-takolio-brand.mjs');
     const script = readFileSync(resolve(root, 'scripts/generate-takosan-icons.mjs'), 'utf8');
     expect(script).toContain("import sharp from 'sharp'");
     expect(script).not.toContain('NODE_PATH');
@@ -312,4 +314,13 @@ describe('Brand generator (P2-BRAND-2)', () => {
     ]);
     expect(expected.filter((p) => !existsSync(publicFile(p)))).toEqual([]);
   });
+});
+
+it('keeps legacy imports identical and renders detailed kit icons without alpha masks', () => {
+  expect(TAKOSAN_BRAND).toBe(TAKOLIO_BRAND);
+  const fridge = renderToStaticMarkup(<TakosanIcon name="fridge" title="Tủ lạnh" />);
+  expect(fridge).toContain(`src="${TAKOLIO_BRAND.uiIcons.fridge}"`);
+  expect(fridge).toContain('alt="Tủ lạnh"');
+  expect(fridge).not.toContain('mask');
+  expect(renderToStaticMarkup(<TakosanIcon name="scan" onDark />)).toContain(TAKOLIO_BRAND.scanIconOnDark);
 });

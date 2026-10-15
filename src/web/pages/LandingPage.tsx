@@ -27,25 +27,25 @@ export const LandingPage: React.FC = () => {
   return (
     <main data-testid="landing-page" className="takosan-rebuild entry-page landing-page">
       <header className="entry-brand-header">
-        <img src={TAKOSAN_KITCHEN.logo} alt="Takosan" translate="no" width={300} height={72} data-testid="landing-logo" />
+        <img src={TAKOSAN_KITCHEN.logo} alt="Takolio" translate="no" width={300} height={72} data-testid="landing-logo" />
         <span>{TAKOSAN_KITCHEN.motto}</span>
       </header>
       <div className="landing-intro">
         <p className="kitchen-eyebrow">Từ đồ ăn trong tủ đến bữa cơm trên bàn</p>
-        <h1>Bữa ngon, <br /><span>nhẹ đầu.</span></h1>
-        <p className="landing-description">Bớt quên đồ trong tủ. Bớt băn khoăn hôm nay ăn gì. Takosan giúp bạn nhìn rõ nguyên liệu đang có và chuẩn bị bữa ăn tiếp theo.</p>
+        <h1>Lên kế hoạch bữa ăn <span>thông minh.</span></h1>
+        <p className="landing-description">Bớt quên đồ trong tủ. Bớt băn khoăn hôm nay ăn gì. Takolio giúp bạn nhìn rõ nguyên liệu đang có và chuẩn bị bữa ăn tiếp theo.</p>
       </div>
       <div className="landing-actions">
         {guestError && <p role="alert" className="text-semantic-danger-strong">{guestError}</p>}
         <Button fullWidth size="lg" onClick={() => startGuest('/onboarding')} isLoading={isStarting}>
-          Dùng thử Takosan ngay <ArrowRight size={20} aria-hidden="true" />
+          Dùng thử Takolio ngay <ArrowRight size={20} aria-hidden="true" />
         </Button>
         <Button fullWidth size="lg" variant="outline" onClick={() => navigate('/auth')} disabled={isStarting}>
           Đăng nhập hoặc tạo tài khoản
         </Button>
         <p>Dùng thử không cần tạo tài khoản. Đăng nhập để đồng bộ giữa các thiết bị.</p>
       </div>
-      <section className="landing-flow" aria-label="Cách Takosan giúp bạn">
+      <section className="landing-flow" aria-label="Cách Takolio giúp bạn">
         <h2>Bắt đầu từ chính căn bếp của bạn.</h2>
         <ol>
           {STEPS.map(({ title, description, icon: Icon }, index) => (

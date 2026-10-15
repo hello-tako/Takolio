@@ -54,9 +54,9 @@ export const AppLayout: React.FC = () => {
       {!immersive && (
         <RailSidebar
           kitchen={kitchen}
-          brandLogo={kitchen ? TAKOSAN_KITCHEN.logo : undefined}
+          brandLogo={kitchen ? TAKOSAN_KITCHEN.wordmark : undefined}
           brandSymbol={kitchen ? TAKOSAN_KITCHEN.symbolMicro : undefined}
-          brandDimensions={kitchen ? { width: 300, height: 72 } : undefined}
+          brandDimensions={kitchen ? { width: 466, height: 262 } : undefined}
         />
       )}
       {/* The shell owns rail/sidebar offsets and the maximum content width. */}

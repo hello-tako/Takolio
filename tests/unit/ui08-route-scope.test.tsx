@@ -5,12 +5,13 @@ vi.mock('../../src/web/stores/useAuthStore', () => ({ useAuthStore: () => ({ ava
 import { AppLayout, isKitchenSurface } from '../../src/web/components/layout/AppLayout';
 import { AccountPage } from '../../src/web/components/common/AccountPage';
 import { RouteFallback } from '../../src/web/components/common/RouteFallback';
+import { TAKOLIO_BRAND } from '../../src/web/lib/takolio-brand';
 
 describe('UI08 adoption boundary', () => {
   it.each(['/me', '/profile', '/me/preferences', '/me/household', '/notifications', '/settings/app', '/settings/privacy', '/settings/planning', '/settings/notifications'])('adopts the actual account route %s', (route) => {
     const html = renderToStaticMarkup(<StaticRouter location={route}><AppLayout /></StaticRouter>);
     expect(html).toContain('data-kitchen-navigation="persistent"');
-    expect(html).toContain('/takosan/v3/logo/horizontal-primary.svg');
+    expect(html).toContain(TAKOLIO_BRAND.wordmark);
     expect(html).toContain('id="kitchen-main"');
   });
   it.each(['/checkout', '/week-old', '/week/plan/other', '/settings', '/me/unrelated', '/settings/billing', '/fridge/item/other', '/inventory-reconciliation/other'])('keeps unmigrated/protected %s outside the new route scope', (route) => {
@@ -25,7 +26,7 @@ describe('UI08 adoption boundary', () => {
   it('keeps route loading as a real live status with the new decorative symbol', () => {
     const html = renderToStaticMarkup(<RouteFallback />);
     expect(html).toContain('role="status"');
-    expect(html).toContain('src="/takosan/v3/logo/symbol-primary.svg" alt="" width="64" height="64"');
+    expect(html).toContain(`src="${TAKOLIO_BRAND.symbol}" alt="" width="64" height="64"`);
     expect(html).toContain('motion-reduce:animate-none');
   });
 });

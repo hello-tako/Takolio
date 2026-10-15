@@ -276,14 +276,14 @@ describe('screen 03 — /auth/verify route', () => {
     expect(calls).toEqual([]);
     await click('Đăng nhập bằng tài khoản đã có');
     expect(location()).toBe('/auth');
-    expect(container.textContent).toContain('Đăng nhập vào Takosan');
+    expect(container.textContent).toContain('Đăng nhập vào Takolio');
   });
 
   it('missing-context exit to registration opens the register mode', async () => {
     await mount('/auth/verify');
     await click('Tạo tài khoản mới');
     expect(location()).toBe('/auth');
-    expect(container.textContent).toContain('Tạo tài khoản Takosan');
+    expect(container.textContent).toContain('Tạo tài khoản Takolio');
   });
 
   it('registration navigates to /auth/verify with the email, a 60s cooldown and a tab-scoped context that never holds the code', async () => {
@@ -337,7 +337,7 @@ describe('screen 03 — /auth/verify route', () => {
     release(response(registerResponse.body, registerResponse.status));
     await flush();
     expect(location()).toBe('/auth');
-    expect(container.textContent).toContain('Đăng nhập vào Takosan');
+    expect(container.textContent).toContain('Đăng nhập vào Takolio');
     expect(readVerifyContext()).toBeNull();
   });
 
@@ -768,7 +768,7 @@ describe('screen 03 — /auth/verify route', () => {
     await registerAndReachVerify();
     await click('Quay lại');
     expect(location()).toBe('/auth');
-    expect(container.textContent).toContain('Đăng nhập vào Takosan');
+    expect(container.textContent).toContain('Đăng nhập vào Takolio');
     expect(readVerifyContext()).toBeNull();
     await act(async () => {
       root?.unmount();
@@ -898,7 +898,7 @@ describe('screen 03 — /auth/verify route', () => {
     await click('Xác thực & Hoàn tất');
     await until(() => expect(location()).toBe('/auth'));
     expect(container.textContent).toContain('Hãy đăng nhập để xác nhận phiên tài khoản');
-    expect(container.textContent).toContain('Đăng nhập vào Takosan');
+    expect(container.textContent).toContain('Đăng nhập vào Takolio');
     expect(localStorage.getItem('frigo_user_id')).toBe('guest-replay');
     expect(localStorage.getItem('frigo_household_id')).toBe('hh_guest_replay');
     expect(readVerifyContext()).toBeNull();
@@ -940,7 +940,7 @@ describe('screen 03 — /auth/verify route', () => {
     await click('← Quay lại màn hình đăng nhập');
     release(response({ success: true, message: 'Nếu tài khoản tồn tại, hãy kiểm tra email.' }));
     await flush();
-    expect(container.textContent).toContain('Đăng nhập vào Takosan');
+    expect(container.textContent).toContain('Đăng nhập vào Takolio');
     expect(otpBoxes()).toHaveLength(0);
     expect(container.textContent).not.toContain('Nếu tài khoản tồn tại');
   });
@@ -984,7 +984,7 @@ describe('screen 03 — /auth/verify route', () => {
     await typeOtp();
     await act(async () => setNative(container.querySelector<HTMLInputElement>('input[name="newPassword"]')!, 'new-password-1'));
     await click('Lưu mật khẩu mới & Đăng nhập');
-    expect(container.textContent).toContain('Đăng nhập vào Takosan');
+    expect(container.textContent).toContain('Đăng nhập vào Takolio');
     expect(container.textContent).toContain('Hãy đăng nhập để xác nhận phiên tài khoản');
     expect(localStorage.getItem('frigo_user_id')).toBeNull();
     expect(calls.some(({ path }) => path.endsWith('/auth/verify-otp'))).toBe(false);

@@ -90,7 +90,7 @@ const LegacyBottomNavigationBar: React.FC = () => {
             className="relative -top-4 flex flex-col items-center rounded-feature tap-target focus-visible:outline-none focus-visible:shadow-t17-focus"
           >
             <span className="w-[58px] h-[58px] rounded-[20px] bg-semantic-action-primary shadow-t17-md ring-2 ring-white flex items-center justify-center text-white">
-              <TakosanIcon name="scan" className="w-7 h-7" />
+              <TakosanIcon name="scan" onDark className="w-7 h-7" />
             </span>
             <span className="text-[11px] font-bold text-semantic-text-primary mt-1 tracking-tight">Quét</span>
           </Link>
@@ -120,9 +120,9 @@ const NavItemButton: React.FC<{ item: NavItem }> = ({ item }) => {
 
 /** Tablet rail (80px) and desktop sidebar (256px) — same items, same truth. */
 const LegacyRailSidebar: React.FC<{ brandLogo?: string; brandSymbol?: string; brandDimensions?: { width: number; height: number } }> = ({
-  brandLogo = TAKOSAN_BRAND.logos.horizontal,
-  brandSymbol = TAKOSAN_BRAND.symbol,
-  brandDimensions = { width: 712, height: 218 },
+  brandLogo = TAKOSAN_BRAND.wordmark,
+  brandSymbol = TAKOSAN_BRAND.symbolMicro,
+  brandDimensions = { width: 466, height: 262 },
 }) => {
   const { pathname } = useLocation();
   return (
@@ -132,7 +132,7 @@ const LegacyRailSidebar: React.FC<{ brandLogo?: string; brandSymbol?: string; br
         aria-label="Điều hướng chính"
         className="hidden sm:flex lg:hidden fixed left-0 top-0 bottom-0 w-20 flex-col items-center gap-2 py-4 bg-semantic-surface border-r border-semantic-border z-30"
       >
-        <Link to="/" className="mb-2 tap-target flex items-center justify-center rounded-card focus-visible:outline-none focus-visible:shadow-t17-focus" aria-label="Takosan — Trang chủ" translate="no">
+        <Link to="/" className="mb-2 tap-target flex items-center justify-center rounded-card focus-visible:outline-none focus-visible:shadow-t17-focus" aria-label="Takolio — Trang chủ" translate="no">
           <img src={brandSymbol} alt="" width={32} height={32} className="w-8 h-8" />
         </Link>
         {NAV_ITEMS.map((item) => {
@@ -159,7 +159,7 @@ const LegacyRailSidebar: React.FC<{ brandLogo?: string; brandSymbol?: string; br
           className="mt-auto flex flex-col items-center gap-1 px-3 py-1.5 rounded-feature tap-target focus-visible:outline-none focus-visible:shadow-t17-focus"
         >
           <span className="flex w-11 h-11 items-center justify-center rounded-card bg-semantic-action-primary text-white">
-            <TakosanIcon name="scan" className="w-6 h-6" />
+            <TakosanIcon name="scan" onDark className="w-6 h-6" />
           </span>
           <span className="text-[10px] font-medium text-semantic-text-muted">Quét</span>
         </Link>
@@ -170,8 +170,8 @@ const LegacyRailSidebar: React.FC<{ brandLogo?: string; brandSymbol?: string; br
         aria-label="Điều hướng chính"
         className="hidden lg:flex fixed left-0 top-0 bottom-0 w-64 flex-col px-4 py-5 bg-semantic-surface border-r border-semantic-border z-30"
       >
-        <Link to="/" className="flex min-h-11 items-center gap-2.5 mb-6 px-2 rounded-card focus-visible:outline-none focus-visible:shadow-t17-focus" aria-label="Takosan — Trang chủ" translate="no">
-          <img src={brandLogo} alt="" width={brandDimensions.width} height={brandDimensions.height} className="h-9 w-auto" />
+        <Link to="/" className="flex min-h-11 items-center gap-2.5 mb-6 px-2 rounded-card focus-visible:outline-none focus-visible:shadow-t17-focus" aria-label="Takolio — Trang chủ" translate="no">
+          <img src={brandLogo} alt="" width={brandDimensions.width} height={brandDimensions.height} className="w-[168px] h-auto" />
         </Link>
         <ul className="flex flex-col gap-1">
           {NAV_ITEMS.map((item) => {
@@ -205,7 +205,7 @@ const LegacyRailSidebar: React.FC<{ brandLogo?: string; brandSymbol?: string; br
           to={SCAN_PATH}
           className="mt-auto flex items-center justify-center gap-2 h-12 rounded-card bg-semantic-action-primary text-white text-sm font-bold shadow-t17-md focus-visible:outline-none focus-visible:shadow-t17-focus"
         >
-          <TakosanIcon name="scan" className="w-5 h-5" />
+          <TakosanIcon name="scan" onDark className="w-5 h-5" />
           Quét nguyên liệu
         </Link>
       </nav>
@@ -243,7 +243,7 @@ export function KitchenScanLink({ className = '' }: { className?: string }) {
   const { pathname } = useLocation();
   return <Link to={SCAN_PATH} className={`kitchen-scan-link ${className}`}
     aria-current={inFamily(pathname, SCAN_PATH) ? 'page' : undefined}>
-    <TakosanIcon name="scan" className="kitchen-nav-icon" />
+    <TakosanIcon name="scan" onDark className="kitchen-nav-icon" />
     <span>Quét nguyên liệu</span>
   </Link>;
 }
@@ -259,9 +259,9 @@ type SidebarProps = React.ComponentProps<typeof LegacyRailSidebar> & { kitchen?:
 export function RailSidebar({ kitchen = false, ...brand }: SidebarProps) {
   if (!kitchen) return <LegacyRailSidebar {...brand} />;
   return <nav aria-label="Điều hướng chính" className="kitchen-sidebar">
-    <Link to="/" aria-label="Takosan — Trang chủ" translate="no" className="kitchen-sidebar-brand">
+    <Link to="/" aria-label="Takolio — Trang chủ" translate="no" className="kitchen-sidebar-brand">
       <img src={brand.brandSymbol ?? TAKOSAN_KITCHEN.symbolMicro} alt="" width={32} height={32} className="kitchen-sidebar-symbol" />
-      <img src={brand.brandLogo ?? TAKOSAN_KITCHEN.logo} alt="" width={300} height={72} className="kitchen-sidebar-logo" />
+      <img src={brand.brandLogo ?? TAKOSAN_KITCHEN.wordmark} alt="" width={466} height={262} className="kitchen-sidebar-logo" />
     </Link>
     <KitchenNavItems />
     <KitchenScanLink />

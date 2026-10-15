@@ -10,8 +10,8 @@ const render = (node: React.ReactElement, route = '/') => renderToStaticMarkup(<
 describe('UI07 shell ownership and accessible brand', () => {
   it('keeps a named home link, decorative logo, explicit aspect and back/actions', () => {
     const html = render(<KitchenHeader backTo="/recipes" />);
-    expect(html).toContain('aria-label="Takosan — Trang chủ"');
-    expect(html).toContain(`src="${TAKOSAN_KITCHEN.logo}" alt="" width="300" height="72"`);
+    expect(html).toContain('aria-label="Takolio — Trang chủ"');
+    expect(html).toContain(`src="${TAKOSAN_KITCHEN.compactLogo}" alt="" width="44" height="44"`);
     expect(html).toContain('translate="no"');
     expect(html).toContain('aria-label="Quay lại"');
     expect(html).toContain('href="/recipes"');
@@ -30,6 +30,6 @@ describe('UI07 shell ownership and accessible brand', () => {
   it.each(['/settings', '/week-old'])('legacy %s retains the supplied shell contract', (route) => {
     const html = render(<AppLayout />, route);
     expect(html).not.toContain('data-kitchen-navigation="persistent"');
-    expect(html).toContain('/takosan/v3/logo/horizontal-primary.svg');
+    expect(html).toContain(TAKOSAN_KITCHEN.wordmark);
   });
 });

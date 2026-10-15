@@ -805,7 +805,7 @@
 }
 .family-recipe-coverage {
   font-size: 10px;
-  color: #738176;
+  color: rgb(var(--semantic-text-secondary-rgb));
 }
 .family-setup-heading {
   display: flex;

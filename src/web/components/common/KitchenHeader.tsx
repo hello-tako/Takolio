@@ -21,8 +21,8 @@ export function KitchenHeader({
             <ArrowLeft aria-hidden="true" size={20} />
           </Link>
         )}
-        <Link to="/" aria-label="Takosan — Trang chủ" translate="no" className="kitchen-brand-link">
-          <img src={TAKOSAN_KITCHEN.logo} alt="" width={300} height={72} />
+        <Link to="/" aria-label="Takolio — Trang chủ" translate="no" className="kitchen-brand-link">
+          <img src={TAKOSAN_KITCHEN.compactLogo} alt="" width={44} height={44} style={{ width: 44, height: 44 }} />
         </Link>
         <span className="kitchen-brand-motto" aria-hidden="true">{TAKOSAN_KITCHEN.motto}</span>
       </div>

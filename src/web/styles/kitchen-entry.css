@@ -74,3 +74,7 @@
 .onboarding-page [data-testid='onboarding-goal-group'] label > span { align-items: flex-start; }
 .entry-page { padding-top: max(28px, env(safe-area-inset-top, 0px)); padding-bottom: max(32px, env(safe-area-inset-bottom, 0px)); padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
 @media (min-width: 1024px) { .landing-page { max-width: none; padding: 40px max(64px, calc((100vw - 1272px) / 2)); } }
+
+/* The supplied horizontal lockup needs room for its mascot and outlined wordmark. */
+.entry-brand-header img, .entry-logo { width: 240px; max-width: 100%; }
+.landing-intro h1 { font-size: clamp(40px, 6vw, 72px); letter-spacing: -.025em; max-width: 18ch; }

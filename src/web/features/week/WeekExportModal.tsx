@@ -65,7 +65,7 @@ export function WeekExportModal({
     });
 
     lines.push('--------------------------------');
-    lines.push('Lên bởi Takosan Week — Ăn đủ. Mua đủ. Dùng hết.');
+    lines.push('Lên bởi Takolio Week — Ăn đủ. Mua đủ. Dùng hết.');
     return lines.join('\n');
   };
 
@@ -103,7 +103,7 @@ export function WeekExportModal({
     });
 
     lines.push('\n--------------------------------');
-    lines.push('Tạo bởi Takosan — frigo.tungjpstore.net');
+    lines.push('Tạo bởi Takolio — frigo.tungjpstore.net');
     return lines.join('\n');
   };
 
@@ -148,7 +148,7 @@ export function WeekExportModal({
     setFeedback(null);
     try {
       await navigator.share({
-        title: 'Thực đơn & Danh sách đi chợ tuần Takosan',
+        title: 'Thực đơn & Danh sách đi chợ tuần Takolio',
         text: `${generateMenuText()}\n\n${generateShoppingText()}`,
       });
       if (epoch.current === owner)

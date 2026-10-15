@@ -139,7 +139,7 @@ export function FreshnessNotice({
       <p>
         {continuing
           ? locale === 'vi'
-            ? `${past ? 'Các bữa đã qua được giữ nguyên. ' : ''}Bạn vẫn có thể chỉnh món cho những bữa sắp tới. Khi tạo danh sách đi chợ, Takosan kiểm tra lại tủ lạnh hiện tại và chỉ tính các bữa còn phía trước.`
+            ? `${past ? 'Các bữa đã qua được giữ nguyên. ' : ''}Bạn vẫn có thể chỉnh món cho những bữa sắp tới. Khi tạo danh sách đi chợ, Takolio kiểm tra lại tủ lạnh hiện tại và chỉ tính các bữa còn phía trước.`
             : `${past ? 'Past meals stay unchanged. ' : ''}You can still edit future meals. Creating a shared shopping list checks your current fridge and only includes upcoming meals.`
           : composing && past && future
             ? locale === 'vi'

@@ -1,0 +1,318 @@
+{
+  "zip_sha256": "d2f77b552c07570d846a20d2602dd3a6c41ebb4fd9c66328234bf86da8ca1142",
+  "kit_status": "DESIGN_CANDIDATE",
+  "source_assets": [
+    {
+      "kit_path": "02_Logo/SVG/takolio-logo-horizontal.svg",
+      "source_path": "docs/brand/takolio/v1/source/02_Logo/takolio-logo-horizontal.svg",
+      "bytes": 6480,
+      "sha256": "34815d761ab454439762a9d8c109e3914bfe525d9dce28c327a4792344acdff5"
+    },
+    {
+      "kit_path": "02_Logo/SVG/takolio-logo-icon-only.svg",
+      "source_path": "docs/brand/takolio/v1/source/02_Logo/takolio-logo-icon-only.svg",
+      "bytes": 3155,
+      "sha256": "3fd1db773e537cfa4fc196556cdb3c86c5ce113e174568e3e32df448fabd219e"
+    },
+    {
+      "kit_path": "02_Logo/SVG/takolio-logo-monochrome-navy.svg",
+      "source_path": "docs/brand/takolio/v1/source/02_Logo/takolio-logo-monochrome-navy.svg",
+      "bytes": 3323,
+      "sha256": "cb348d9a3807b644709c09b073b44b1179c7b204d911a6e3830c5ec67032b41f"
+    },
+    {
+      "kit_path": "02_Logo/SVG/takolio-logo-monochrome-white.svg",
+      "source_path": "docs/brand/takolio/v1/source/02_Logo/takolio-logo-monochrome-white.svg",
+      "bytes": 3323,
+      "sha256": "b8ed9dd17431469118cac19a314fbd2f8799ae373bd724e0eb8537a666517a69"
+    },
+    {
+      "kit_path": "02_Logo/SVG/takolio-logo-on-coral.svg",
+      "source_path": "docs/brand/takolio/v1/source/02_Logo/takolio-logo-on-coral.svg",
+      "bytes": 3370,
+      "sha256": "fdc92c0680b0702ff46c4937f6a468bf2acae42b9dac369f8ec9f1eda120abda"
+    },
+    {
+      "kit_path": "02_Logo/SVG/takolio-logo-on-cream.svg",
+      "source_path": "docs/brand/takolio/v1/source/02_Logo/takolio-logo-on-cream.svg",
+      "bytes": 3372,
+      "sha256": "2e41cb6364de8afd31ad5d7749436d34b2c6ab6594e51239525dbafccadf71b2"
+    },
+    {
+      "kit_path": "02_Logo/SVG/takolio-logo-on-navy.svg",
+      "source_path": "docs/brand/takolio/v1/source/02_Logo/takolio-logo-on-navy.svg",
+      "bytes": 3370,
+      "sha256": "32da6af982a2195f286e31fc210c9db32ae66be7ea314f15dcf9246e2a262875"
+    },
+    {
+      "kit_path": "02_Logo/SVG/takolio-logo-primary.svg",
+      "source_path": "docs/brand/takolio/v1/source/02_Logo/takolio-logo-primary.svg",
+      "bytes": 3468,
+      "sha256": "149901617476a1d9e5c3bdef5e8c61990fdd3c6f38aa1a58becbb2a8c9659114"
+    },
+    {
+      "kit_path": "02_Logo/SVG/takolio-logo-stacked.svg",
+      "source_path": "docs/brand/takolio/v1/source/02_Logo/takolio-logo-stacked.svg",
+      "bytes": 6372,
+      "sha256": "e214eefd13a633b4decb9fc5e58830f529db22c8db877ae05c864bed8616beaa"
+    },
+    {
+      "kit_path": "02_Logo/SVG/takolio-logo-wordmark.svg",
+      "source_path": "docs/brand/takolio/v1/source/02_Logo/takolio-logo-wordmark.svg",
+      "bytes": 3325,
+      "sha256": "a13dc9f81421873303d1e5e4c7591f8c2fcd94bf2bcf0aaac7d1417128dab274"
+    },
+    {
+      "kit_path": "03_Mascot/SVG/takolio-mascot-cheering.svg",
+      "source_path": "docs/brand/takolio/v1/source/03_Mascot/takolio-mascot-cheering.svg",
+      "bytes": 4835,
+      "sha256": "73b3de68102150e646f6920e6c2c7ddfcc9452093793cfa33a3b3fb8630884db"
+    },
+    {
+      "kit_path": "03_Mascot/SVG/takolio-mascot-completed.svg",
+      "source_path": "docs/brand/takolio/v1/source/03_Mascot/takolio-mascot-completed.svg",
+      "bytes": 5559,
+      "sha256": "afe3ec6c0382bc3fffdac1d63dad5ab3bb1847a72a28dd7336af12e063dd9fa4"
+    },
+    {
+      "kit_path": "03_Mascot/SVG/takolio-mascot-cooking.svg",
+      "source_path": "docs/brand/takolio/v1/source/03_Mascot/takolio-mascot-cooking.svg",
+      "bytes": 5829,
+      "sha256": "1091ccdf496b87235cbaf884e0652c5fd083885d5a8c790845b6197fa2bce844"
+    },
+    {
+      "kit_path": "03_Mascot/SVG/takolio-mascot-excited.svg",
+      "source_path": "docs/brand/takolio/v1/source/03_Mascot/takolio-mascot-excited.svg",
+      "bytes": 4730,
+      "sha256": "dbdaa7045bf3e168ee2ab780cebbfca8272ab4804762347c7d9907a5a2456dbb"
+    },
+    {
+      "kit_path": "03_Mascot/SVG/takolio-mascot-mascot-back.svg",
+      "source_path": "docs/brand/takolio/v1/source/03_Mascot/takolio-mascot-mascot-back.svg",
+      "bytes": 3746,
+      "sha256": "3905e1720821ca75baa159c33215d7b69f71e98dea484c7a39f7394335d5e8fa"
+    },
+    {
+      "kit_path": "03_Mascot/SVG/takolio-mascot-mascot-side.svg",
+      "source_path": "docs/brand/takolio/v1/source/03_Mascot/takolio-mascot-mascot-side.svg",
+      "bytes": 4457,
+      "sha256": "ba0e96daf223f401b28ea64d6a592856a1f7236b6e6f959b8ff592b7ca6cdf2c"
+    },
+    {
+      "kit_path": "03_Mascot/SVG/takolio-mascot-mascot-three-quarter.svg",
+      "source_path": "docs/brand/takolio/v1/source/03_Mascot/takolio-mascot-mascot-three-quarter.svg",
+      "bytes": 4667,
+      "sha256": "e3a1ce1de47696c4bd4aae9072cd41d855fad8762897278fd4f117f9c4ea3025"
+    },
+    {
+      "kit_path": "03_Mascot/SVG/takolio-mascot-master-front.svg",
+      "source_path": "docs/brand/takolio/v1/source/03_Mascot/takolio-mascot-master-front.svg",
+      "bytes": 4639,
+      "sha256": "cb9d7f8f745b2a521ba8ba7597a96dfbfceece42d14f0d95388fbaf69d7f4ebf"
+    },
+    {
+      "kit_path": "03_Mascot/SVG/takolio-mascot-thinking.svg",
+      "source_path": "docs/brand/takolio/v1/source/03_Mascot/takolio-mascot-thinking.svg",
+      "bytes": 4691,
+      "sha256": "c2ea95490b637c3703d82b8aee5ee50ac0b3f3e0ab3d55ce5ab034160673cd2c"
+    },
+    {
+      "kit_path": "03_Mascot/SVG/takolio-mascot-welcome.svg",
+      "source_path": "docs/brand/takolio/v1/source/03_Mascot/takolio-mascot-welcome.svg",
+      "bytes": 4639,
+      "sha256": "cb9d7f8f745b2a521ba8ba7597a96dfbfceece42d14f0d95388fbaf69d7f4ebf"
+    },
+    {
+      "kit_path": "04_App_Icons/SVG/takolio-android-adaptive-foreground.svg",
+      "source_path": "docs/brand/takolio/v1/source/04_App_Icons/takolio-android-adaptive-foreground.svg",
+      "bytes": 3204,
+      "sha256": "c02b9b5b9feda210603f08ed1c7a80a0970ac5402b55cc5418098de8dd6139db"
+    },
+    {
+      "kit_path": "04_App_Icons/SVG/takolio-appicon-coral.svg",
+      "source_path": "docs/brand/takolio/v1/source/04_App_Icons/takolio-appicon-coral.svg",
+      "bytes": 3273,
+      "sha256": "8b6f4386e2215cdb37bcc0f0865963fad127cbcdb87e42da78c002e1bb652e12"
+    },
+    {
+      "kit_path": "04_App_Icons/SVG/takolio-appicon-cream.svg",
+      "source_path": "docs/brand/takolio/v1/source/04_App_Icons/takolio-appicon-cream.svg",
+      "bytes": 3211,
+      "sha256": "c8f3a9c8d442ee42eb27ffc5d283fb1f76d9c86f237ac37c36fc74ab10bf8154"
+    },
+    {
+      "kit_path": "04_App_Icons/SVG/takolio-appicon-navy.svg",
+      "source_path": "docs/brand/takolio/v1/source/04_App_Icons/takolio-appicon-navy.svg",
+      "bytes": 3211,
+      "sha256": "e4f2bfd6a5172ae2e1ca6595a180141eaf3381523a630e10cd87504c14d16895"
+    },
+    {
+      "kit_path": "04_App_Icons/SVG/takolio-appicon-primary.svg",
+      "source_path": "docs/brand/takolio/v1/source/04_App_Icons/takolio-appicon-primary.svg",
+      "bytes": 3273,
+      "sha256": "8b6f4386e2215cdb37bcc0f0865963fad127cbcdb87e42da78c002e1bb652e12"
+    },
+    {
+      "kit_path": "04_App_Icons/SVG/takolio-appicon-symbol-transparent.svg",
+      "source_path": "docs/brand/takolio/v1/source/04_App_Icons/takolio-appicon-symbol-transparent.svg",
+      "bytes": 3155,
+      "sha256": "3fd1db773e537cfa4fc196556cdb3c86c5ce113e174568e3e32df448fabd219e"
+    },
+    {
+      "kit_path": "05_UI_Icons/SVG/takolio-icon-ai-suggestion.svg",
+      "source_path": "docs/brand/takolio/v1/source/05_UI_Icons/takolio-icon-ai-suggestion.svg",
+      "bytes": 401,
+      "sha256": "6f4809003a6b288dfa58d002c11c3bb43c918a1a24cf3da060e0166a7810a401"
+    },
+    {
+      "kit_path": "05_UI_Icons/SVG/takolio-icon-analytics.svg",
+      "source_path": "docs/brand/takolio/v1/source/05_UI_Icons/takolio-icon-analytics.svg",
+      "bytes": 447,
+      "sha256": "547a504eef51e7d5f7bee075a0bdd85d50f0e3dc959c9ec6bc7dae084b6b7939"
+    },
+    {
+      "kit_path": "05_UI_Icons/SVG/takolio-icon-calendar.svg",
+      "source_path": "docs/brand/takolio/v1/source/05_UI_Icons/takolio-icon-calendar.svg",
+      "bytes": 493,
+      "sha256": "0cc3ad2c4ac5b20cce32327a8d9fd707a62ab8299aff0907fe1ca9fa0ba859db"
+    },
+    {
+      "kit_path": "05_UI_Icons/SVG/takolio-icon-camera.svg",
+      "source_path": "docs/brand/takolio/v1/source/05_UI_Icons/takolio-icon-camera.svg",
+      "bytes": 356,
+      "sha256": "c2def4136de5ccbb943803c9790e3debdc1edce993b4c86f0bc3530ee884d2f1"
+    },
+    {
+      "kit_path": "05_UI_Icons/SVG/takolio-icon-cook.svg",
+      "source_path": "docs/brand/takolio/v1/source/05_UI_Icons/takolio-icon-cook.svg",
+      "bytes": 380,
+      "sha256": "5b3ce43424ad7e33903557b51b51adb36caafd0ed99bcf2596dc5d0ac1f72b0c"
+    },
+    {
+      "kit_path": "05_UI_Icons/SVG/takolio-icon-favorites.svg",
+      "source_path": "docs/brand/takolio/v1/source/05_UI_Icons/takolio-icon-favorites.svg",
+      "bytes": 325,
+      "sha256": "f3cfd2a2c9fb364d4cf9fe6f1b3ff78376a534197432a16d46b416fe530341b8"
+    },
+    {
+      "kit_path": "05_UI_Icons/SVG/takolio-icon-filter.svg",
+      "source_path": "docs/brand/takolio/v1/source/05_UI_Icons/takolio-icon-filter.svg",
+      "bytes": 421,
+      "sha256": "c159d227fb16db01e7cc466354712ff57fd8b56302e38741c788069222f5df85"
+    },
+    {
+      "kit_path": "05_UI_Icons/SVG/takolio-icon-fridge.svg",
+      "source_path": "docs/brand/takolio/v1/source/05_UI_Icons/takolio-icon-fridge.svg",
+      "bytes": 356,
+      "sha256": "49bb7a430d19b8c5ab66d8ccc1302a6ebd96aa15107436c020527910727dca17"
+    },
+    {
+      "kit_path": "05_UI_Icons/SVG/takolio-icon-history.svg",
+      "source_path": "docs/brand/takolio/v1/source/05_UI_Icons/takolio-icon-history.svg",
+      "bytes": 337,
+      "sha256": "e1854abf5b81a3c47dd3d7a5b4a46d34ed2111e373e056f9b10c53d3cb46d5a0"
+    },
+    {
+      "kit_path": "05_UI_Icons/SVG/takolio-icon-ingredient.svg",
+      "source_path": "docs/brand/takolio/v1/source/05_UI_Icons/takolio-icon-ingredient.svg",
+      "bytes": 342,
+      "sha256": "e78588d18a1fd32c2a2edd85fd68edfbd7476c9573b206b18bd2451b9c0fd4fc"
+    },
+    {
+      "kit_path": "05_UI_Icons/SVG/takolio-icon-meal-plan.svg",
+      "source_path": "docs/brand/takolio/v1/source/05_UI_Icons/takolio-icon-meal-plan.svg",
+      "bytes": 395,
+      "sha256": "4ace4e5f30776c3b9d434043a6125f4fb54459e7d36febf160272fea1ac06d21"
+    },
+    {
+      "kit_path": "05_UI_Icons/SVG/takolio-icon-notifications.svg",
+      "source_path": "docs/brand/takolio/v1/source/05_UI_Icons/takolio-icon-notifications.svg",
+      "bytes": 349,
+      "sha256": "778b64634f9cbe82cbd80f88fa49d3c499b240fb387bcd4e12933e23756528cd"
+    },
+    {
+      "kit_path": "05_UI_Icons/SVG/takolio-icon-nutrition.svg",
+      "source_path": "docs/brand/takolio/v1/source/05_UI_Icons/takolio-icon-nutrition.svg",
+      "bytes": 418,
+      "sha256": "0e168981ba1a69ffa6a36b1a5597c084eb61c6c4d0d022f6cb0388275b3456af"
+    },
+    {
+      "kit_path": "05_UI_Icons/SVG/takolio-icon-profile.svg",
+      "source_path": "docs/brand/takolio/v1/source/05_UI_Icons/takolio-icon-profile.svg",
+      "bytes": 357,
+      "sha256": "22fa64537c1c5c57557e5d3ca7e4e1e29bee618b400adadecbe78239c73d1951"
+    },
+    {
+      "kit_path": "05_UI_Icons/SVG/takolio-icon-recipe.svg",
+      "source_path": "docs/brand/takolio/v1/source/05_UI_Icons/takolio-icon-recipe.svg",
+      "bytes": 403,
+      "sha256": "904a382dfed1854752828217370c64c11be511ab4e1484f97839bc21c554e3fa"
+    },
+    {
+      "kit_path": "05_UI_Icons/SVG/takolio-icon-scan-label.svg",
+      "source_path": "docs/brand/takolio/v1/source/05_UI_Icons/takolio-icon-scan-label.svg",
+      "bytes": 351,
+      "sha256": "8f08384c78a991db6ab215db454460bc27a98585ed10eeaa10406b54c534c7fa"
+    },
+    {
+      "kit_path": "05_UI_Icons/SVG/takolio-icon-search.svg",
+      "source_path": "docs/brand/takolio/v1/source/05_UI_Icons/takolio-icon-search.svg",
+      "bytes": 333,
+      "sha256": "fe7bbaf9621c59a1b7ba7e58331456968f7f37111b2c990fd4d724d08a43418f"
+    },
+    {
+      "kit_path": "05_UI_Icons/SVG/takolio-icon-settings.svg",
+      "source_path": "docs/brand/takolio/v1/source/05_UI_Icons/takolio-icon-settings.svg",
+      "bytes": 446,
+      "sha256": "cfa9e5c46772d9b4db3001e5201c8d764258bf88c90a8ca0fc96639bc131172b"
+    },
+    {
+      "kit_path": "05_UI_Icons/SVG/takolio-icon-shopping.svg",
+      "source_path": "docs/brand/takolio/v1/source/05_UI_Icons/takolio-icon-shopping.svg",
+      "bytes": 395,
+      "sha256": "c0283b8a5386c1a6b01e56f7468a36abb23aba430b6d929f68ced07b69cbb411"
+    },
+    {
+      "kit_path": "01_Brand_Guidelines/01_BRAND_SPEC.md",
+      "source_path": "docs/brand/takolio/v1/source/01_Brand_Guidelines/01_BRAND_SPEC.md",
+      "bytes": 2481,
+      "sha256": "7f36cbdc8ecd708e599b0fa30c79088843f25d57113b524a6a6c68d4cafae66b"
+    },
+    {
+      "kit_path": "01_Brand_Guidelines/02_LOGO_USAGE.md",
+      "source_path": "docs/brand/takolio/v1/source/01_Brand_Guidelines/02_LOGO_USAGE.md",
+      "bytes": 1744,
+      "sha256": "4dddeecfad4a2dfb1eabc11b47e1a6834b70375a0c73df1fe0b2c683281ea1e0"
+    },
+    {
+      "kit_path": "01_Brand_Guidelines/03_MASCOT_BIBLE.md",
+      "source_path": "docs/brand/takolio/v1/source/01_Brand_Guidelines/03_MASCOT_BIBLE.md",
+      "bytes": 2356,
+      "sha256": "c9ce49fd581976114613f903759daed4d7a01ff091bf2282f68276095576f01c"
+    },
+    {
+      "kit_path": "08_Design_Tokens/design-tokens.json",
+      "source_path": "docs/brand/takolio/v1/source/08_Design_Tokens/design-tokens.json",
+      "bytes": 1314,
+      "sha256": "323c4756e396dfd2f7a530f65be3552f18488a39fb0f92083388c61183b156cc"
+    },
+    {
+      "kit_path": "08_Design_Tokens/TYPOGRAPHY.md",
+      "source_path": "docs/brand/takolio/v1/source/08_Design_Tokens/TYPOGRAPHY.md",
+      "bytes": 1617,
+      "sha256": "8e7622a5f96ce785930cbc9953c0219c907a069cec0ba053657094e6f8b9cfbe"
+    }
+  ],
+  "rights": "Operator supplied kit for this application migration. Kit has no standalone asset LICENSE; no trademark or exclusive commercial ownership clearance is asserted. Font licenses are separately included.",
+  "fonts": [
+    {
+      "file": "fonts/plus-jakarta-sans-vietnamese-latin-wght.woff2",
+      "sha256": "a435079ca1bd7818134bf75b4c18b9dd9fa0af659d39b47d7cd5d71fb572343b",
+      "source": "https://github.com/google/fonts/blob/94301472b4d809299b4775bc6502592b83dd6934/ofl/plusjakartasans/PlusJakartaSans%5Bwght%5D.ttf",
+      "upstream_sha256": "89b3fb38aa0d275d7a731d0d817a4f1622b316b4d7fbdedcf02ee9099ff68bc8",
+      "license": "SIL OFL 1.1",
+      "subset": "fonttools 4.60.2, brotli 1.2.0; latin+Vietnamese, 400-800 variable upstream axis retained",
+      "vietnamese_glyph_missing": []
+    }
+  ]
+}
