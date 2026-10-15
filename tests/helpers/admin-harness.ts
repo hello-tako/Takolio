@@ -8,7 +8,7 @@ import { SqliteD1, applyMigrations } from './sqlite-d1';
 export const LOCAL_ORIGIN = 'http://127.0.0.1:8790';
 export const PROD_ORIGIN = 'https://admin.takosan.test';
 export const CUSTOMER_URL = 'https://app.takosan.test';
-export const ACCESS_TEAM = 'takosan.cloudflareaccess.com';
+export const ACCESS_TEAM = 'fixture.cloudflareaccess.com';
 export const ACCESS_AUD = 'a'.repeat(32);
 export const PASSWORD = FIXTURE_PASSWORD;
 export const fx = (key: string) => `${key}@fixture.takosan.test`;
@@ -111,13 +111,23 @@ export async function login(env: AdminEnv, email: string, password = PASSWORD, e
 
 export const count = (db: SqliteD1, query: string, ...binds: unknown[]) => db.query<{ n: number }>(query, ...binds)[0].n;
 
-/** Synthetic enrollment only; runtime provisioning never calls this helper. */
+/** Confirms the explicitly enrolled synthetic fixture; never used by runtime provisioning. */
 export async function enrollFixtureOperators(dbs: Databases, keys = ['super', 'super2', 'ops', 'content', 'support', 'auditor']) {
   for (const key of keys) {
-    const userId = `fx_admin_${key}`;
-    await dbs.admin.prepare(`INSERT INTO approved_human_operators (operator_id,enrollment_ref,independent_approval_ref,enrolled_at)
-      VALUES (?,?,?,'2026-10-15T00:00:00.000Z')`).bind(`operator_${key}`, `synthetic-human-${key}`, `synthetic-human-approval-${key}`).run();
-    await dbs.admin.prepare(`INSERT INTO operator_identity_bindings (id,user_id,operator_id,access_iss,access_sub,enrollment_ref,independent_approval_ref,bound_at)
-      VALUES (?,?,?,?,?,?,?,'2026-10-15T00:00:00.000Z')`).bind(`bind_fixture_${key}`, userId, `operator_${key}`, `https://${ACCESS_TEAM}`, `subject_${key}`, `synthetic-binding-${key}`, `synthetic-binding-approval-${key}`).run();
+    const binding = await dbs.admin.prepare(`SELECT b.id FROM operator_identity_bindings b
+      JOIN approved_human_operators h ON h.operator_id=b.operator_id AND h.status='active'
+      WHERE b.user_id=? AND b.access_iss=? AND b.access_sub=? AND b.status='active'`)
+      .bind(`fx_admin_${key}`, `https://${ACCESS_TEAM}`, `fx-sub-${key}`).first();
+    if (!binding) throw new Error('Synthetic operator enrollment is missing');
   }
+}
+
+/** Establishes a synthetic third/fourth SUPER_ADMIN through a real finalized approval row. */
+export function seedFixtureSuper(dbs: Databases, key: string, assignmentId: string) {
+  if (!/^[a-z0-9_]+$/.test(key) || !/^[A-Za-z0-9_]{8,64}$/.test(assignmentId)) throw new Error('Invalid fixture grant');
+  const approval = `appr_${assignmentId}`;
+  dbs.admin.seed(`INSERT INTO admin_action_approvals(id,action,target_user_id,requested_by,requested_at,expires_at,requester_access_iss,requester_access_sub)
+    VALUES ('${approval}','role.grant.super_admin','fx_admin_${key}','fx_admin_super','2026-10-15T00:00:00.000Z','2099-01-01T00:00:00.000Z','https://${ACCESS_TEAM}','fx-sub-super');
+    UPDATE admin_action_approvals SET status='approved',decided_by='fx_admin_super2',decided_at='2026-10-15T00:00:00.000Z',decider_access_iss='https://${ACCESS_TEAM}',decider_access_sub='fx-sub-super2' WHERE id='${approval}';
+    INSERT INTO admin_role_assignments(id,user_id,role,grant_source,granted_by) VALUES ('${assignmentId}','fx_admin_${key}','SUPER_ADMIN','approval','fx_admin_super2');`);
 }

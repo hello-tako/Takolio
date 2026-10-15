@@ -7,7 +7,7 @@ import { accessOptions, resetAccessJwksCache, verifyAccessAssertion } from '../.
 import { buildBootstrapAdminSql } from '../../scripts/admin-local-lib.mjs';
 import { fetchWorker } from '../helpers/worker-fetch.mjs';
 import {
-  ACCESS_AUD, ACCESS_TEAM, enrollFixtureOperators, call, closeDatabases, count, createDatabases, CUSTOMER_URL, fx, LOCAL_ORIGIN, localEnv, login, PASSWORD,
+  ACCESS_AUD, ACCESS_TEAM, seedFixtureSuper, enrollFixtureOperators, call, closeDatabases, count, createDatabases, CUSTOMER_URL, fx, LOCAL_ORIGIN, localEnv, login, PASSWORD,
   PROD_ORIGIN, productionEnv, setLocalAuthBuild, type Databases, type Session,
 } from '../helpers/admin-harness';
 
@@ -153,7 +153,7 @@ describe('Super Admin governance', () => {
   async function supers(n: 2 | 3) {
     const result: Record<string, Session> = { super: await login(env, fx('super')), super2: await login(env, fx('super2')) };
     if (n === 3) {
-      dbs.admin.seed("INSERT INTO admin_role_assignments (id, user_id, role, grant_source, granted_by) VALUES ('ara_third_super', 'fx_admin_ops', 'SUPER_ADMIN', 'approval', 'fx_admin_super2')");
+      seedFixtureSuper(dbs, 'ops', 'ara_third_super');
       result.ops = await login(env, fx('ops'));
     }
     return result;
@@ -392,7 +392,7 @@ describe('Cloudflare Access adapter (offline test keys only)', () => {
     return `${head}.${body}.${b64(new Uint8Array(await crypto.subtle.sign('RSASSA-PKCS1-v1_5', key, new TextEncoder().encode(`${head}.${body}`))))}`;
   }
   const now = () => Math.floor(Date.now() / 1000);
-  const claims = (overrides: Record<string, unknown> = {}) => ({ aud: [ACCESS_AUD], iss: `https://${ACCESS_TEAM}`, exp: now() + 300, nbf: now() - 10, email: fx('super'), sub: 'subject_super', ...overrides });
+  const claims = (overrides: Record<string, unknown> = {}) => ({ aud: [ACCESS_AUD], iss: `https://${ACCESS_TEAM}`, exp: now() + 300, nbf: now() - 10, email: fx('super'), sub: 'fx-sub-super', ...overrides });
   const config = { ADMIN_ACCESS_TEAM_DOMAIN: ACCESS_TEAM, ADMIN_ACCESS_AUD: ACCESS_AUD };
   function installJwks() {
     fetches = 0;
@@ -402,7 +402,7 @@ describe('Cloudflare Access adapter (offline test keys only)', () => {
   it('verifies signature, audience, issuer and lifetime, and throttles unknown-kid refetches', async () => {
     installJwks();
     const options = { fetcher: accessOptions.fetcher };
-    expect(await verifyAccessAssertion(await sign(claims()), config, options)).toEqual({ ok: true, email: fx('super'), iss: `https://${ACCESS_TEAM}`, sub: 'subject_super' });
+    expect(await verifyAccessAssertion(await sign(claims()), config, options)).toEqual({ ok: true, email: fx('super'), iss: `https://${ACCESS_TEAM}`, sub: 'fx-sub-super' });
     expect(await verifyAccessAssertion(await sign(claims({ aud: ['another-audience-0000000000000'] })), config, options)).toEqual({ ok: false, reason: 'wrong_audience' });
     expect(await verifyAccessAssertion(await sign(claims({ iss: 'https://evil.cloudflareaccess.com' })), config, options)).toEqual({ ok: false, reason: 'wrong_issuer' });
     expect(await verifyAccessAssertion(await sign(claims({ exp: now() - 1 })), config, options)).toEqual({ ok: false, reason: 'expired' });
@@ -419,7 +419,7 @@ describe('Cloudflare Access adapter (offline test keys only)', () => {
     installJwks();
     const prodDbs = createDatabases();
     await enrollFixtureOperators(prodDbs);
-    prodDbs.admin.seed("INSERT INTO admin_role_assignments (id,user_id,role,grant_source,granted_by) VALUES ('ara_prod_support','fx_admin_support','SUPER_ADMIN','approval','fx_admin_super')");
+    seedFixtureSuper(prodDbs, 'support', 'ara_prod_support');
     prodDbs.admin.seed("DELETE FROM admin_config_metadata WHERE key = 'fixture_dataset'");
     try {
       const prod = productionEnv(prodDbs);

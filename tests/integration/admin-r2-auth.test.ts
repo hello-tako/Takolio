@@ -1,6 +1,6 @@
 import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest';
 import { accessOptions, resetAccessJwksCache, verifyAccessAssertion } from '../../src/worker/routes/admin/access';
-import { ACCESS_AUD, ACCESS_TEAM, call, closeDatabases, createDatabases, fx, localEnv, login, PASSWORD, setLocalAuthBuild, type Databases } from '../helpers/admin-harness';
+import { ACCESS_AUD, ACCESS_TEAM, call, closeDatabases, createDatabases, fx, localEnv, login, PASSWORD, setLocalAuthBuild, seedFixtureSuper, type Databases } from '../helpers/admin-harness';
 
 let dbs: Databases | undefined;
 beforeAll(() => setLocalAuthBuild(true));
@@ -35,7 +35,8 @@ describe('R2 authentication regressions', () => {
     for (let attempt = 0; attempt < 20; attempt += 1) {
       const current = createDatabases();
       try {
-        current.admin.seed("INSERT INTO admin_role_assignments (id,user_id,role,grant_source,granted_by) VALUES ('ara_r2_support','fx_admin_support','SUPER_ADMIN','approval','fx_admin_super'), ('ara_r2_ops','fx_admin_ops','SUPER_ADMIN','approval','fx_admin_super')");
+        seedFixtureSuper(current, 'support', 'ara_r2_support');
+        seedFixtureSuper(current, 'ops', 'ara_r2_ops');
         const env = localEnv(current);
         const requester = await login(env, fx('super'));
         const decider = await login(env, fx('super2'));

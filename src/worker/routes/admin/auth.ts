@@ -166,6 +166,12 @@ export async function requireAdminSession(c: AdminContext, next: Next) {
       return errorResponse(c, 401, 'ADMIN_ACCESS_DENIED');
     }
   }
+  else if (policy.local) {
+    // Password mode is a local-only fixture/provisioning path, not Access verification.
+    const identity = await adminDb.prepare(`SELECT access_iss, access_sub FROM operator_identity_bindings
+      WHERE user_id = ? AND status = 'active' LIMIT 1`).bind(session.user_id).first<{ access_iss: string; access_sub: string }>();
+    if (identity) enrolled = await verifyEnrolledAdminAccessIdentity(adminDb, { issuer: identity.access_iss, subject: identity.access_sub });
+  }
 
   const roles = await activeRoles(adminDb, session.user_id);
   if (roles.length === 0) return revoke('role_changed', []);
