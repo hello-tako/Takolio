@@ -46,6 +46,14 @@ import {
 } from './schedule';
 
 type Shopping = z.infer<typeof PlanShoppingDtoSchema>;
+function tripDateLabel(value: string, locale: PlannerLocale) {
+  const date = new Date(`${value}T12:00:00Z`);
+  return Number.isFinite(date.getTime())
+    ? new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'numeric', timeZone: 'UTC' }).format(
+        date,
+      )
+    : '—';
+}
 export function PlannerShopping({
   plan,
   model,
@@ -250,15 +258,11 @@ export function PlannerShopping({
           <div className="planning-share-heading">
             <CalendarDays size={20} aria-hidden="true" />
             <div>
-              <h2>
-                {locale === 'vi'
-                  ? 'Đưa cả thực đơn vào danh sách đi chợ'
-                  : 'Send this plan to shopping'}
-              </h2>
+              <h2>{locale === 'vi' ? 'Chuẩn bị lượt đi chợ' : 'Prepare your shopping trip'}</h2>
               <p>
                 {locale === 'vi'
-                  ? 'Takosan tính lại theo tủ lạnh hiện tại cho những bữa còn phía trước, cộng nguyên liệu từ mọi món, giữ dòng bạn đã sửa và báo rõ lượng chưa biết.'
-                  : 'Takosan recalculates future meals against your current fridge, combines every dish, keeps your edits and flags unknown quantities.'}
+                  ? 'Chọn khoảng ngày cần mua. Takosan gom phần còn thiếu của các bữa sắp tới theo tủ lạnh hiện tại.'
+                  : 'Choose the days to shop for. Takosan combines what upcoming meals still need from your current fridge.'}
               </p>
             </div>
           </div>
@@ -285,7 +289,8 @@ export function PlannerShopping({
             </label>
           </div>
           <p className="planning-note">
-            {tripStart} → {endDate}
+            {locale === 'vi' ? 'Cho các bữa từ' : 'For meals from'}{' '}
+            {tripDateLabel(tripStart, locale)} → {tripDateLabel(endDate, locale)}
           </p>
           <Button
             fullWidth

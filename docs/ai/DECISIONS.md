@@ -1,3 +1,43 @@
+# ADR-063 - Compact kitchen presentation and progressive setup (T27)
+
+Date: 2026-10-15. Status: Accepted for local implementation.
+
+## Context
+
+The product's 40-44px page headings, large repeated panels and two-row mobile
+header use too much of a small screen. Planner setup exposes saved preferences
+and secondary instructions before the main action. Reducing the root font size
+would also shrink controls, touch targets and safety information.
+
+## Decision
+
+Use `data-kitchen-density="compact"` on existing kitchen app routes, excluding
+`/plus`, and a final scoped `kitchen-density.css` layer. Standalone onboarding
+uses its existing page scope. Keep the established Nunito/green/cream identity.
+Page titles use 22-28px, sections 18px, card titles 15-16px and UI body 14-15px.
+Editable text stays 16px and action hit areas stay at least 44px. The mobile scan
+action keeps its accessible name in the existing dynamically measured header.
+Narrow dish rows give the dish name a full line before the actions.
+
+Show saved family habits as an editable summary; first-time setup remains open.
+Applied allergies and forbidden ingredients remain visible outside the disclosure.
+Keep automatic whole-meal and explicit manual-calendar paths distinct. Use task
+headings and shorter Vietnamese copy. Saved-recipe empty/search states expose a
+next action. Mobile shopping prioritizes its purchase list and puts manual entry
+in a labelled native disclosure; desktop keeps that form open by default.
+
+## Compatibility and limits
+
+This changes presentation and local disclosure state only. Existing routes,
+commands, quantities, constraints, private favorites, shopping review/recovery,
+planner deadlines and Week compatibility remain authoritative. No API, database,
+migration, flag, dependency, payment or deployment change is introduced. Native
+keyboard disclosure behavior, zoom/reflow, accessibility and small-screen layout
+must be checked in the actual app. Local synthetic browser checks do not certify
+hosted signed-in behavior, native iOS behavior or real-user retention.
+
+---
+
 # Nine-region production release preparation - 2026-10-12 JST
 
 **Task/status:** RELEASE_PREPARATION. Active packet

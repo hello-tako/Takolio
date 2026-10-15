@@ -15,6 +15,7 @@ import {
 } from '../../services/family-preferences';
 import { ApiError } from '../../services/http';
 import { plannerCopy, type PlannerLocale } from './copy';
+import { ingredientLabel } from './presentation';
 import { buildPlanningIntent, localDate } from './intent';
 import type { usePlanner } from './usePlanner';
 import { isMealCompositionEnabled } from './composition';
@@ -58,6 +59,7 @@ function FamilyPlannerSetup({
   const preferences = useFamilyPreferences();
   const [draft, setDraft] = useState<FamilyPreferences | null>(null);
   const [draftRevision, setDraftRevision] = useState<number | null>(null);
+  const [habitsOpen, setHabitsOpen] = useState(false);
   const [startDate, setStartDate] = useState(() => {
     const date = new Date();
     date.setDate(date.getDate() + 1);
@@ -78,6 +80,7 @@ function FamilyPlannerSetup({
         householdSize: handoffServings ?? preferences.data.preferences.householdSize,
       });
       setDraftRevision(preferences.data.revision);
+      setHabitsOpen(preferences.data.revision === 0);
     }
   }, [preferences.data, draft, handoffServings]);
   useEffect(() => {
@@ -102,6 +105,7 @@ function FamilyPlannerSetup({
         offset: -new Date().getTimezoneOffset(),
       });
     } catch {
+      setHabitsOpen(true);
       setInvalid(true);
       return;
     }
@@ -116,7 +120,10 @@ function FamilyPlannerSetup({
         if (uncertainProfileRevision !== null) {
           // An explicit retry reads the uncertain save before issuing another write.
           const latest = await familyPreferencesApi.get();
-          if (latest.revision <= uncertainProfileRevision || JSON.stringify(latest.preferences) !== JSON.stringify(draft)) {
+          if (
+            latest.revision <= uncertainProfileRevision ||
+            JSON.stringify(latest.preferences) !== JSON.stringify(draft)
+          ) {
             setProfileConflict(true);
             throw new ApiError('http', 'HTTP 409: {"code":"FAMILY_PREFERENCES_CHANGED"}', 409);
           }
@@ -157,17 +164,45 @@ function FamilyPlannerSetup({
       navigate(destination, { replace: true });
     }
   }
+  const regionLabels =
+    locale === 'vi'
+      ? { bac: 'Miền Bắc', trung: 'Miền Trung', nam: 'Miền Nam' }
+      : { bac: 'North', trung: 'Central', nam: 'South' };
+  const allergenLabels: Record<string, string> =
+    locale === 'vi'
+      ? {
+          peanut: 'đậu phộng',
+          milk: 'sữa',
+          egg: 'trứng',
+          soy: 'đậu nành',
+          wheat: 'lúa mì',
+          shellfish: 'giáp xác / nhuyễn thể',
+          fish: 'cá',
+        }
+      : {
+          peanut: 'peanuts',
+          milk: 'milk',
+          egg: 'eggs',
+          soy: 'soy',
+          wheat: 'wheat',
+          shellfish: 'shellfish',
+          fish: 'fish',
+        };
+  const appliedAllergens = (draft?.allergens ?? []).map((id) => allergenLabels[id] ?? id);
+  const appliedAvoid = (draft?.forbiddenIngredientIds ?? []).map((id) =>
+    ingredientLabel(id, locale),
+  );
   return (
     <div className="planning-setup-layout">
       <Card className="planning-setup-form">
         <div className="family-setup-heading">
           <CalendarDays size={24} aria-hidden="true" />
           <div>
-            <h2>{locale === 'vi' ? 'Xếp những bữa nhà mình sẽ nấu' : 'Plan the meals you cook'}</h2>
+            <h2>{locale === 'vi' ? 'Lên thực đơn cho nhà mình' : 'Plan the meals you cook'}</h2>
             <p>
               {locale === 'vi'
                 ? selectionMode === 'manual'
-                  ? 'Chọn lịch nấu trước, rồi tự đặt những món nhà mình muốn ăn.'
+                  ? 'Tạo lịch trống, rồi chọn món cho từng bữa.'
                   : 'Takosan gợi ý cả bữa theo thói quen đã chọn.'
                 : selectionMode === 'manual'
                   ? 'Choose your cooking calendar, then fill each meal with your own dishes.'
@@ -199,7 +234,7 @@ function FamilyPlannerSetup({
                       </strong>
                       <small>
                         {locale === 'vi'
-                          ? 'Nhận các bữa đủ nhóm món theo thói quen gia đình.'
+                          ? 'Xếp món chính, rau/phụ, canh và cơm theo kiểu bữa đã chọn.'
                           : 'Get complete dish groups based on your household habits.'}
                       </small>
                     </span>
@@ -218,7 +253,7 @@ function FamilyPlannerSetup({
                       </strong>
                       <small>
                         {locale === 'vi'
-                          ? 'Bắt đầu bằng lịch trống, chọn món theo tủ lạnh hoặc món đã lưu.'
+                          ? 'Chọn món từ tủ lạnh, tìm kiếm hoặc món đã lưu.'
                           : 'Start with an empty calendar and use your fridge or saved dishes.'}
                       </small>
                     </span>
@@ -267,7 +302,47 @@ function FamilyPlannerSetup({
                     }
                   />
                 </label>
-                <FamilyPreferenceFields value={draft} onChange={setDraft} />
+                <details
+                  className="family-extra family-plan-habits"
+                  open={habitsOpen}
+                  onToggle={(event) => setHabitsOpen(event.currentTarget.open)}
+                >
+                  <summary>
+                    <span>
+                      {locale === 'vi'
+                        ? 'Thói quen bữa nhà · Chỉnh lại'
+                        : 'Household habits · Edit'}
+                    </span>
+                    <span className="family-plan-habit-summary">
+                      {draft.cookingMealTypes.map((meal) => t[meal]).join(', ')}
+                      {' · '}
+                      {draft.cookingDays.length} {locale === 'vi' ? 'ngày/tuần' : 'days/week'}
+                      {' · '}
+                      {draft.preferredRegions.map((region) => regionLabels[region]).join(', ') ||
+                        (locale === 'vi' ? 'Món Việt mọi vùng' : 'All Vietnamese regions')}
+                      {' · '}
+                      {draft.mealStyle === 'family'
+                        ? locale === 'vi'
+                          ? 'bữa cơm gia đình'
+                          : 'family meals'
+                        : draft.mealStyle === 'quick'
+                          ? locale === 'vi'
+                            ? 'nhanh gọn'
+                            : 'quick meals'
+                          : locale === 'vi'
+                            ? 'một món trọn bữa'
+                            : 'one-dish meals'}
+                      {' · '}
+                      {mode === 'shopping_allowed' ? t.allowShopping : t.cookNow}
+                    </span>
+                  </summary>
+                  <FamilyPreferenceFields value={draft} onChange={setDraft} />
+                </details>
+                <p className="planning-note">
+                  {locale === 'vi'
+                    ? `Dị ứng đã chọn (${appliedAllergens.length}): ${appliedAllergens.join(', ') || 'chưa chọn'}. Nguyên liệu bắt buộc tránh (${appliedAvoid.length}): ${appliedAvoid.join(', ') || 'chưa chọn'}.`
+                    : `Selected allergies (${appliedAllergens.length}): ${appliedAllergens.join(', ') || 'none selected'}. Forbidden ingredients (${appliedAvoid.length}): ${appliedAvoid.join(', ') || 'none selected'}.`}
+                </p>
                 <details className="family-extra">
                   <summary>Nguyên liệu và giới hạn bắt buộc</summary>
                   <label>
@@ -351,21 +426,19 @@ function FamilyPlannerSetup({
                     : t.generating}
                 </p>
               )}
-              <p className="planning-note">
-                Thói quen được lưu cho lần sau. Tạo thực đơn chưa trừ thực phẩm khỏi tủ.
-              </p>
+              <p className="planning-note">Thói quen được lưu cho lần tạo thực đơn tiếp theo.</p>
             </form>
           )
         )}
       </Card>
       <aside className="planning-setup-context">
         <p className="planning-eyebrow">BỮA NHÀ, THEO NHỊP NHÀ MÌNH</p>
-        <h2>Đủ món trước. Đi chợ vừa đủ.</h2>
+        <h2>Một lần xếp. Nhẹ cả tuần.</h2>
         <p>
-          Bữa cơm gia đình có món chính, rau hoặc món phụ, canh và cơm. Bữa sáng và một món trọn bữa
-          có cách xếp riêng.
+          Chọn lịch nấu và số người ăn. Takosan xếp theo kiểu bữa nhà mình, rồi gom phần nguyên liệu
+          còn thiếu vào danh sách đi chợ.
         </p>
-        <p>Khẩu vị vùng là ưu tiên mềm. Đổi vị quốc tế chỉ xuất hiện trong mức bạn chọn.</p>
+        <p>Ưu tiên món Việt và khẩu vị vùng đã chọn. Bạn tự quyết định số bữa đổi vị quốc tế.</p>
         <p className="planning-note">
           Đủ nhóm món không đồng nghĩa đã xác minh dinh dưỡng hoặc an toàn dị ứng. Takosan sẽ báo
           phần còn thiếu dữ liệu.
