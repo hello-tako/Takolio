@@ -28,11 +28,11 @@ async function shot(name, route, prepare) {
     await document.fonts.ready;
     await Promise.race([new Promise((ok) => setTimeout(ok, 1000)), Promise.all(document.getAnimations().filter((a) => a.effect?.getTiming().iterations !== Infinity).map((a) => a.finished.catch(() => {})))]);
   });
+  if (name === 'scan-review') await expect(page.getByRole('button', { name: /Xác nhận nguyên liệu/ })).toBeEnabled();
   await page.waitForFunction(() => {
     for (const im of document.images) im.loading = 'eager';
     return [...document.images].every((im) => im.complete && im.naturalWidth > 0) && !document.querySelector('[data-recipe-media=loading]');
   }, null, { timeout: 30000 });
-  if (name === 'scan-review') await expect(page.getByRole('button', { name: /Xác nhận nguyên liệu/ })).toBeEnabled();
   await expect(page.locator('h1')).toHaveCount(1);
   await page.evaluate(() => scrollTo(0, 0));
   await page.waitForLoadState('networkidle');
@@ -133,12 +133,12 @@ try {
     });
     await shot('ingredient-detail', '/fridge/preview-stock-chicken');
     const plan = await page.evaluate(async () => {
-      const startDate = new Date().toISOString().slice(0, 10);
+      const startDate = new Date(Date.now() + 86_400_000).toISOString().slice(0, 10);
       const slots = Array.from({ length: 7 }, (_, i) => ({ date: new Date(Date.parse(startDate) + i * 86400000).toISOString().slice(0, 10), mealType: 'dinner' }));
       const response = await fetch('/api/v1/meal-planning/plans', { method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Idempotency-Key': crypto.randomUUID() },
         body: JSON.stringify({ startDate, horizonDays: 7, defaultServings: 2, mode: 'shopping_allowed', slots }) });
-      if (!response.ok) throw new Error('Local plan generation failed: ' + response.status);
+      if (!response.ok) throw new Error('Local plan generation failed: ' + response.status + ': ' + await response.text());
       return response.json();
     });
     await shot('saved-weekly-plan', `/planner/${plan.id}`);

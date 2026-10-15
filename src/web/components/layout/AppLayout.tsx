@@ -44,6 +44,7 @@ export const AppLayout: React.FC = () => {
     <div
       ref={shellRef}
       data-kitchen-navigation={kitchen && !immersive ? 'persistent' : undefined}
+      data-kitchen-density={kitchen && !/^\/plus\/?$/i.test(pathname) ? 'compact' : undefined}
       className={`${kitchen ? 'takosan-rebuild ' : ''}min-h-dvh bg-semantic-background text-semantic-text-primary antialiased selection:bg-takosan-mint`}
     >
       {kitchen && (

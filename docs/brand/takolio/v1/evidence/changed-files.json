@@ -1,27 +1,27 @@
 {
-  "baselineSha": "03428467cdd5e93d27a3a27e5edaf7d512eef71d",
+  "baselineSha": "f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1",
   "implementationCommit": "8e81d5d9879f6a8ea22db7cbc232fcf399a354fa",
   "excludedSelf": "docs/brand/takolio/v1/evidence/changed-files.json",
   "files": [
     {
       "path": "docs/ai/CURRENT_STATE.md",
-      "bytes": 639119,
-      "sha256": "f084395959d8de958ad29798e27c40e8da6437cc1024019a9b958662cc4c3ba6"
+      "bytes": 646135,
+      "sha256": "d085740b00c585ffed6db819ca5cff040556984665438ced54ccee9e0a681b8b"
     },
     {
       "path": "docs/ai/DECISIONS.md",
-      "bytes": 211014,
-      "sha256": "362b5ac8e1cf97d1f2f71c2513e8052121d4cf611b7aef1cba95028caa79ca93"
+      "bytes": 213081,
+      "sha256": "45d3c17c2093d280439390e8fa53932f80883287ba7b3f0d823a816d95e405c1"
     },
     {
       "path": "docs/ai/HANDOFF.md",
-      "bytes": 641426,
-      "sha256": "43199e485c8731a27fa88869af768f3325ebae2dd241297a4561b35f786d4d94"
+      "bytes": 647977,
+      "sha256": "a0780d8ab7f67f4ce34655c3cc1d831200673707f44dbcd6067f0f00d72339fd"
     },
     {
       "path": "docs/ai/TASK_BOARD.md",
-      "bytes": 485307,
-      "sha256": "7afad11afd1228fa135562f1472d6f95a051ba62d1c8a8bb98589c18053ae112"
+      "bytes": 489838,
+      "sha256": "897acf7bd5e1513065acb554f527c59811cf6bda9240b339cd6abdd3b1845c7a"
     },
     {
       "path": "docs/brand/takolio/v1/ASSET_MANIFEST.md",
@@ -30,13 +30,13 @@
     },
     {
       "path": "docs/brand/takolio/v1/AUDIT.md",
-      "bytes": 9215,
-      "sha256": "9e115019d6a0e76760069b49473eedbc34710b2b61000a581d948a98f875248e"
+      "bytes": 10234,
+      "sha256": "45a4c2de809eacf6123cc194c68a8277776a4fc77b89081da18b2825d1819bfb"
     },
     {
       "path": "docs/brand/takolio/v1/IMPLEMENTATION.md",
-      "bytes": 3617,
-      "sha256": "5f6022761145c25c0dff4f17a5ad01932e9c4d04a6648ee0a498ac50836497d2"
+      "bytes": 4167,
+      "sha256": "e542563c65ae98a5569b845dc4fd012a155068e73bf9b38a15dd28fb47a27a91"
     },
     {
       "path": "docs/brand/takolio/v1/ROLLBACK.md",
@@ -45,8 +45,8 @@
     },
     {
       "path": "docs/brand/takolio/v1/VERIFICATION.md",
-      "bytes": 8681,
-      "sha256": "647bffcb763a3b84f47ea24f5d0ab136175ded2ad56e8e89c98927ce1cced7ae"
+      "bytes": 10473,
+      "sha256": "2f79df04db4275aade5ed8e5826306c4c090a2e9e89acedfbfec4fa181f838f9"
     },
     {
       "path": "docs/brand/takolio/v1/evidence/before-observations.json",
@@ -82,6 +82,61 @@
       "path": "docs/brand/takolio/v1/evidence/kit-validation.json",
       "bytes": 4838,
       "sha256": "99d6f3e1eba663c5c19f380521097e735ddae0cfe57d51a95bdc5a180e2b9faf"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/main-sync/after-observations.json",
+      "bytes": 156569,
+      "sha256": "32500f623308751763bff0459c21a868ea2c1a4ad04aaeb22a69af0d28baec5e"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/main-sync/before-observations.json",
+      "bytes": 212713,
+      "sha256": "3ef24a0527ee607e0744591016743a48a02434b457dad414e2aa1cb0c07f2267"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/main-sync/comparison-main-sync-1440.png",
+      "bytes": 547262,
+      "sha256": "d3d9b799da96ae8edb272a326eb00c599b7daccdd8349a60dbf051129f4151e5"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/main-sync/comparison-main-sync-390.png",
+      "bytes": 482384,
+      "sha256": "69433ee0722e70d52aa346086f33a123654c1c3ea4e8da3255f0ffcb7c1b3f1b"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/main-sync/flags-off-observations.json",
+      "bytes": 2041,
+      "sha256": "8aa470e368d9858a09312eabc2fd8413dd1946a10014bf8e71653b75771a28dd"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/main-sync/occurrences.json",
+      "bytes": 335943,
+      "sha256": "7afdc41d68949cb6de770f552f5cd06fe40be23bc7426257fdf7431e598be977"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/main-sync/protected-audit.json",
+      "bytes": 553,
+      "sha256": "fc2ed17d37fda0f00eef200ac6a2c7debcf80143111dc204b0bcd2008b8b8626"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/main-sync/pwa-observations.json",
+      "bytes": 2385,
+      "sha256": "5cd60f89c4b33f6f115f87f50b4a8c1761472e8a0090f2d770aff24b21b5c9f8"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/main-sync/receipts.json",
+      "bytes": 6377,
+      "sha256": "20ff93f892a0db9d8ce5a0a2b1cf5818470d13dfa1d943321f41dad43a3e2f17"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/main-sync/scan-review-recheck-observations.json",
+      "bytes": 1184,
+      "sha256": "6e2f0a718015f0c014e2b28e177cd97ee26d024cfbec201bf49688d9a7474b57"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/main-sync/states-observations.json",
+      "bytes": 2708,
+      "sha256": "2909ba93d641c56f9eeb3d0a49f6c52b30864230ab5c5281086b162117ba7def"
     },
     {
       "path": "docs/brand/takolio/v1/evidence/occurrences.json",
@@ -810,8 +865,8 @@
     },
     {
       "path": "scripts/takolio-browser-check.mjs",
-      "bytes": 11996,
-      "sha256": "80cd4aef3db52fbbeef992e31f11346dd170a99a1e384f956f8b31ece6c85bd7"
+      "bytes": 12050,
+      "sha256": "7a1e6c54dd0e1edf67661d889acd886b961c5544e924de3241f25a4c2759ebd5"
     },
     {
       "path": "scripts/takolio-inventory.mjs",
@@ -830,8 +885,8 @@
     },
     {
       "path": "src/web/components/common/KitchenHeader.tsx",
-      "bytes": 2349,
-      "sha256": "8457e7893ae5ade9c85a8b80312f1bf9a153de0e377b9ea284e5250fe2b3e7dd"
+      "bytes": 2370,
+      "sha256": "365f7d76e64c0245c1a5a65a12bd451b0f8ba7f31974b88012be4f2b0eb0ab4a"
     },
     {
       "path": "src/web/components/common/SystemStatusPage.tsx",
@@ -855,8 +910,8 @@
     },
     {
       "path": "src/web/components/layout/AppLayout.tsx",
-      "bytes": 3405,
-      "sha256": "475069d40262a25d2b04b00f3ba90c8e9fe282f8496e9846629ccc7fcc66cb0a"
+      "bytes": 3500,
+      "sha256": "88b925c2862a27546185e40258288476196fff91dcf10e8f1b21ce749eaed15d"
     },
     {
       "path": "src/web/design-system/navigation.tsx",
@@ -890,18 +945,18 @@
     },
     {
       "path": "src/web/features/planner/PlannerSetup.tsx",
-      "bytes": 16455,
-      "sha256": "5a7d8bcd7193afee92cc4f5604eef7de6335589d1f7ae9fb81d39da5c70e2490"
+      "bytes": 19757,
+      "sha256": "e6423c8fccfced9808ebd630fa152bcb41b50bf327ffb8b45f4306b60e42f35f"
     },
     {
       "path": "src/web/features/planner/PlannerShell.tsx",
-      "bytes": 6060,
-      "sha256": "71a631940489589021cd975c3ef4040e094951c5fc1eb27ea4ff799f9a359261"
+      "bytes": 6901,
+      "sha256": "b92d0589978c2e72d97c889284538085f0bcedfd3ca6aa6d367b3be04597b16c"
     },
     {
       "path": "src/web/features/planner/PlannerShopping.tsx",
-      "bytes": 25077,
-      "sha256": "120465f2d91ea1cd178c68f4e2b367842cba4e736640650afb1dbd4304ed7291"
+      "bytes": 25307,
+      "sha256": "c31a28800e629ad0f67df5b5e436a80fb3db7b912943915ae0205ed99a15e072"
     },
     {
       "path": "src/web/features/planner/PlannerWeek.tsx",
@@ -975,13 +1030,18 @@
     },
     {
       "path": "src/web/pages/OnboardingPage.tsx",
-      "bytes": 25021,
-      "sha256": "e09b98573242238e8322d2a35dbd6e684b17dc499cfa1ff58eb71af3dacc7795"
+      "bytes": 22928,
+      "sha256": "bf68a08bf3e8692460abd3c41262fb31b60676456fd8e9cd9b9f67d75d2d97e6"
     },
     {
       "path": "src/web/pages/ProfilePage.tsx",
       "bytes": 4378,
       "sha256": "581cc067e45500339e82189357d97ac912c114469b89e9ed5cdff7fc5efaa337"
+    },
+    {
+      "path": "src/web/pages/RecipesPage.tsx",
+      "bytes": 17699,
+      "sha256": "aa9e8859aa01a2011c04c7fd3e1c3e19c39230fbea6442c7ffc26836ab0a7e39"
     },
     {
       "path": "src/web/pages/SettingsPage.tsx",
@@ -990,8 +1050,8 @@
     },
     {
       "path": "src/web/pages/ShoppingPage.tsx",
-      "bytes": 21959,
-      "sha256": "0cf7847ae37efa126ea998d4b1b1f388a6f34b0ed8a562071cd7c29da3ecb68d"
+      "bytes": 22076,
+      "sha256": "76528374b3c86c7b69e3e79056fb561fcc33810e8873a4132042dbcbab734e63"
     },
     {
       "path": "src/web/pages/WeekDashboardPage.tsx",
@@ -1030,8 +1090,13 @@
     },
     {
       "path": "src/web/styles/index.css",
-      "bytes": 17045,
-      "sha256": "f39c3fa9c359f065b3f733eac504af857e14985184044871d51eea0c1e504290"
+      "bytes": 17078,
+      "sha256": "951ac6836fc02bd1853b33f1feafc3b802969cb87a282ba43ff7d01c780af072"
+    },
+    {
+      "path": "src/web/styles/kitchen-density.css",
+      "bytes": 23405,
+      "sha256": "29398bb3f42566e87f3efacea8983509ff4c5786f8c378c46ea3f8ab51a12df2"
     },
     {
       "path": "src/web/styles/kitchen-entry.css",

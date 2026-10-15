@@ -5,7 +5,7 @@ Date: 2026-10-16 JST
 ## Authority and baseline
 
 - Canonical repository: `lol-vn/Tako-san`, repository ID `1385308553`.
-- Live `main` baseline: `03428467cdd5e93d27a3a27e5edaf7d512eef71d` (verified with GitHub API and `git ls-remote`).
+- Initial live `main` baseline: `03428467cdd5e93d27a3a27e5edaf7d512eef71d` (verified with GitHub API and `git ls-remote`).
 - Working branch: `feat/takolio-brand-migration-v1`.
 - ZIP: `Takolio_Brand_OS_Kit_v1.0.zip (operator-supplied download)`.
 - ZIP SHA256: `d2f77b552c07570d846a20d2602dd3a6c41ebb4fd9c66328234bf86da8ca1142`.
@@ -100,3 +100,9 @@ Main is protected with required `validate`. Open PRs observed were #77, #63, #29
 ## Shared-shell impact
 
 The protected Plus/payment source files are unchanged, but the existing shared brand contract, header/mascot, typography and scoped colors can appear on those screens. This inherited presentation impact was evaluated by visual spot-checks and the passing isolated payment-authority E2E suite. Price, entitlement, checkout admission, QR authority, settlement and payment lifecycle remain untouched.
+
+## Refreshed main and final diff authority
+
+Main advanced through PR #80 to `f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1`; it was reverified through `git ls-remote` and integrated into this feature branch. Initial evidence remains historical. Current matched browser observations, protected audit and occurrence inventory are in `evidence/main-sync/`; the top-level changed-file ledger now compares against this refreshed main. That inventory finds 116 original source locations and 25 remaining protected locations; the original 112 count belongs to the earlier main. Contract consumers remain 21 import entries in 19 files.
+
+The resolution retains incoming compact UI behavior and structure and shortens no safety/quantity authority. Five incoming hardcoded colors map to the existing semantic authority; new Takosan display literals become Takolio. Protected files/root tokens and all 425 old asset paths match refreshed main. No upstream production-release authority is adopted from historical documentation.

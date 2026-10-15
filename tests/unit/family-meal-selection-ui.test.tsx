@@ -283,6 +283,55 @@ afterEach(async () => {
   vi.restoreAllMocks();
 });
 
+it('summarizes saved meal habits without hiding the applied safety choices', async () => {
+  mocks.familyGet.mockResolvedValue({
+    revision: 2,
+    preferences: FamilyPreferencesSchema.parse({
+      householdSize: 3,
+      preferredRegions: ['nam'],
+      cookingDays: [1, 2, 3, 4, 5],
+      cookingMealTypes: ['lunch', 'dinner'],
+      allergens: ['peanut'],
+      forbiddenIngredientIds: ['BEEF_SIRLOIN'],
+    }),
+  });
+  await mount(<PlannerSetup model={setupModel() as never} locale="vi" />);
+  await until(() => expect(host.querySelector('.family-plan-habits')).not.toBeNull());
+  const habits = host.querySelector<HTMLDetailsElement>('.family-plan-habits')!;
+  expect(habits.open).toBe(false);
+  const summary = habits.querySelector('summary')!.textContent;
+  expect(summary).toContain('Bữa trưa, Bữa tối');
+  expect(summary).toContain('5 ngày/tuần');
+  expect(summary).toContain('Miền Nam');
+  expect(summary).toContain('bữa cơm gia đình');
+  expect(summary).toContain('Có thể mua thêm');
+  const notes = [...host.querySelectorAll('.planning-note')]
+    .map((node) => node.textContent)
+    .join(' ');
+  expect(notes).toContain('đậu phộng');
+  expect(notes).toContain('Thịt bò');
+  await act(async () => {
+    habits.open = true;
+    habits.dispatchEvent(new Event('toggle'));
+  });
+  expect(habits.open).toBe(true);
+  expect(select('Kiểu bữa thường nấu').value).toBe('family');
+});
+
+it('opens meal habits for the first setup and preserves generation from a saved collapsed profile', async () => {
+  mocks.familyGet.mockResolvedValue({
+    revision: 0,
+    preferences: FamilyPreferencesSchema.parse({}),
+  });
+  const model = setupModel();
+  await mount(<PlannerSetup model={model as never} locale="vi" />);
+  await until(() =>
+    expect(host.querySelector<HTMLDetailsElement>('.family-plan-habits')?.open).toBe(true),
+  );
+  await submit();
+  expect(model.generate).toHaveBeenCalledTimes(1);
+});
+
 it('creates an authoritative empty calendar when the family chooses manual planning', async () => {
   const model = setupModel();
   await mount(<PlannerSetup model={model as never} locale="vi" />);
@@ -445,7 +494,7 @@ it('places an unsaved detail recipe through canonical roles and gates concurrent
     />,
   );
   await until(() => expect(button('Thêm vào bữa')?.disabled).toBe(false));
-  expect(select('Vai trò').value).toBe('soup');
+  expect(select('Nhóm món').value).toBe('soup');
   await act(async () => {
     const event = () => new Event('submit', { bubbles: true, cancelable: true });
     host.querySelector('form')!.dispatchEvent(event());

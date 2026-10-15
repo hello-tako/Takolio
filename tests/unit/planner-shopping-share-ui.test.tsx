@@ -359,7 +359,8 @@ describe('T23 shared shopping continues the current family week', () => {
       expect.objectContaining({ planId: plan.id, expectedRevision: plan.revision }),
       'share-command-1',
     );
-    expect(host.textContent).toContain('tủ lạnh hiện tại cho những bữa còn phía trước');
+    expect(host.textContent).toContain('các bữa sắp tới');
+    expect(host.textContent).toContain('tủ lạnh hiện tại');
   });
   it.each(['stale_preferences', 'stale_catalog', 'catalog_authority_changed'] as const)(
     'blocks sharing if %s changed alongside elapsed history',

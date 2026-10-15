@@ -29,3 +29,7 @@ Contrast decisions are intentional: navy on cream is 13.41:1, white on navy is 1
 Landing, auth, onboarding, home, planner/week, recipe, cooking, fridge/inventory, scan/review, shopping, profile, household, settings, notification, offline/error/loading states, header/navigation and PWA metadata now use the contract. `start_url`, `id`, scope, OAuth URLs, storage keys and cache lifecycle remain unchanged. `public/sw.js` precaches Takolio assets and retains Nunito plus old `/takosan/` fallback handling.
 
 No native Android/iOS project exists in this repository; the generated platform assets are preparation only. No premium 3D mascot claim is made.
+
+## Refreshed-main integration
+
+Current diff/evidence base is `f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1` after PR #80. Compact kitchen layouts, progressive setup and shopping disclosure behavior from main are retained. The new `kitchen-density.css` uses existing semantic variables for its five remaining brand-dependent colors, and incoming display text uses Takolio. The synthetic QA harness starts a future valid plan and waits for enabled scan confirmation before checking images. No application business rule changes accompany this integration.

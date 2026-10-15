@@ -24,6 +24,24 @@ export function PlannerShell({
   const t = plannerCopy[locale];
   const pathname = useLocation().pathname;
   const shopping = pathname.endsWith('/shopping');
+  const setup = pathname === '/planner/new';
+  const meal = pathname.includes('/meal/');
+  const heading =
+    locale === 'vi'
+      ? setup
+        ? 'Tạo thực đơn'
+        : shopping
+          ? 'Đi chợ theo thực đơn'
+          : meal
+            ? 'Chuẩn bị bữa ăn'
+            : 'Thực đơn của nhà mình'
+      : setup
+        ? 'Create a meal plan'
+        : shopping
+          ? 'Shop for your meals'
+          : meal
+            ? 'Prepare your meal'
+            : 'Your household meal plan';
   useEffect(() => {
     document.documentElement.scrollTop = 0;
   }, [pathname]);
@@ -36,11 +54,17 @@ export function PlannerShell({
             <p className="planning-eyebrow" translate="no">
               {t.eyebrow}
             </p>
-            <h1>{t.title}</h1>
-            <p className="planning-intro">{t.intro}</p>
+            <h1>{heading}</h1>
+            <p className="planning-intro">
+              {setup
+                ? locale === 'vi'
+                  ? 'Chọn lịch nấu, Takolio lo xếp món và phần cần mua.'
+                  : 'Choose your cooking calendar. Takolio plans the dishes and shopping.'
+                : t.intro}
+            </p>
           </div>
           <label className="planning-locale">
-            Language
+            <span>{locale === 'vi' ? 'Ngôn ngữ' : 'Language'}</span>
             <select
               aria-label="Language"
               value={locale}

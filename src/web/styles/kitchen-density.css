@@ -1,0 +1,675 @@
+/* Shared compact type and spacing scale; protected payment surfaces keep their current geometry. */
+[data-kitchen-density='compact'],
+.onboarding-page {
+  --kitchen-type-title: clamp(1.375rem, 1.1rem + 1vw, 1.75rem);
+  --kitchen-type-section: 1.125rem;
+  --kitchen-type-card: 1rem;
+  --kitchen-type-body: 0.875rem;
+  --kitchen-type-meta: 0.75rem;
+  --kitchen-space-panel: 1rem;
+  --kitchen-space-section: 1.25rem;
+  font-size: 0.9375rem;
+}
+/* T27 compact density: keep the product readable while removing oversized chrome. */
+:is([data-kitchen-density='compact'], .onboarding-page) .kitchen-header {
+  min-height: 64px;
+  padding: 8px 12px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .kitchen-brand-link img {
+  width: 148px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .kitchen-page-body {
+  padding: 20px 14px 32px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .kitchen-page-heading {
+  gap: 12px;
+  margin-bottom: 20px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .kitchen-page-heading h1 {
+  font-size: var(--kitchen-type-title);
+  line-height: 1.2;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .kitchen-section-heading h2 {
+  font-size: var(--kitchen-type-section);
+  line-height: 1.3;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .home-workspace,
+:is([data-kitchen-density='compact'], .onboarding-page) .discovery-workspace {
+  gap: 20px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .home-plan-copy {
+  padding: 16px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .home-meal-title {
+  font-size: var(--kitchen-type-title);
+  line-height: 1.2;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .discovery-grid {
+  gap: 14px;
+}
+
+/* The scan action stays available in the mobile header without consuming a full row. */
+@media (max-width: 639px) {
+  :is([data-kitchen-density='compact'], .onboarding-page)[data-kitchen-navigation='persistent']
+    .kitchen-header {
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+  :is([data-kitchen-density='compact'], .onboarding-page) .kitchen-header .kitchen-brand-link img {
+    width: 112px;
+  }
+  :is([data-kitchen-density='compact'], .onboarding-page) .kitchen-header .kitchen-account-link {
+    display: none;
+  }
+  :is([data-kitchen-density='compact'], .onboarding-page)[data-kitchen-navigation='persistent']
+    .kitchen-header-scan {
+    display: flex;
+    flex: 0 0 44px;
+    order: 0;
+    min-width: 44px;
+  }
+  :is([data-kitchen-density='compact'], .onboarding-page)[data-kitchen-navigation='persistent']
+    .kitchen-scan-link.kitchen-header-scan {
+    width: 44px;
+    min-height: 44px;
+    padding: 8px;
+    border-radius: 12px;
+    font-size: 0;
+  }
+  :is([data-kitchen-density='compact'], .onboarding-page)[data-kitchen-navigation='persistent']
+    .kitchen-header-scan
+    > span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  :is([data-kitchen-density='compact'], .onboarding-page)[data-kitchen-navigation='persistent']
+    .kitchen-nav-items
+    a {
+    min-height: 64px;
+    padding-block: 6px;
+    gap: 4px;
+  }
+}
+
+/* Planner and shopping are task surfaces: make the next action visible sooner. */
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-page-body {
+  padding: 20px 14px 32px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-heading {
+  gap: 12px;
+  margin-bottom: 16px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-heading h1 {
+  font-size: var(--kitchen-type-title);
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-intro {
+  margin-top: 8px;
+  font-size: var(--kitchen-type-body);
+  line-height: 1.5;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-tabs {
+  margin-bottom: 16px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-content {
+  gap: 16px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-paper,
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-setup-form,
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-shopping-form,
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-meal-overview,
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-composer {
+  padding: 16px;
+  border-radius: 12px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-setup-context {
+  padding: 16px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-setup-context h2 {
+  font-size: 20px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page)
+  .planning-setup-context
+  > p:not(.planning-eyebrow) {
+  margin-top: 10px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-setup-context dl {
+  gap: 14px;
+  margin-top: 16px;
+  padding-block: 12px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-setup-context dd {
+  font-size: 22px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-day-board {
+  gap: 14px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-day {
+  gap: 8px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-meal-card h3 {
+  font-size: var(--kitchen-type-card);
+  line-height: 1.3;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-meal-link {
+  padding: 14px;
+  min-height: 0;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-meal-card p.text-xs {
+  font-size: var(--kitchen-type-meta);
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-board-summary {
+  gap: 10px;
+  padding: 12px 14px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-board-status {
+  font-size: 15px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-suggestions {
+  margin-top: 14px;
+  padding: 14px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-shopping-result {
+  gap: 16px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-cost-summary {
+  padding: 16px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-requirements h2 {
+  font-size: var(--kitchen-type-section);
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .shopping-add-panel > h2,
+:is([data-kitchen-density='compact'], .onboarding-page) .shopping-list-heading h2 {
+  font-size: 20px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .shopping-add-form {
+  margin-block: 16px;
+  gap: 12px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .shopping-add-form fieldset {
+  gap: 12px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .shopping-list-heading {
+  padding-bottom: 12px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .shopping-saved-list,
+:is([data-kitchen-density='compact'], .onboarding-page) .shopping-item-list {
+  gap: 10px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .shopping-saved-row {
+  padding: 10px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .shopping-check-label strong {
+  font-size: var(--kitchen-type-body);
+}
+
+/* Family choices and saved dishes share one restrained card rhythm. */
+:is([data-kitchen-density='compact'], .onboarding-page) .family-preference-fields,
+:is([data-kitchen-density='compact'], .onboarding-page) .family-settings-form {
+  gap: 14px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .family-preference-fields fieldset,
+:is([data-kitchen-density='compact'], .onboarding-page) .family-settings-form fieldset {
+  padding: 12px;
+  border-radius: 12px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .family-choice-row {
+  gap: 6px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .family-choice-row label {
+  min-height: 44px;
+  padding: 7px 10px;
+  font-size: 13px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .family-extra {
+  gap: 10px;
+  padding: 12px;
+  border-radius: 12px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .family-setup-heading {
+  margin-bottom: 14px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .family-setup-heading h2 {
+  font-size: var(--kitchen-type-section);
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .family-favorites {
+  gap: 14px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .family-collection-heading h2 {
+  font-size: 20px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .family-collection-heading p {
+  font-size: 13px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .family-favorite-image {
+  height: 112px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .family-favorite-card {
+  gap: 7px;
+  padding: 11px;
+  border-radius: 12px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .family-dialog {
+  max-height: 92dvh;
+  padding: 14px;
+  border-radius: 14px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .family-dialog-heading h2 {
+  font-size: var(--kitchen-type-section);
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .family-recipe-body h2,
+:is([data-kitchen-density='compact'], .onboarding-page) .family-recipe-body h3,
+:is([data-kitchen-density='compact'], .onboarding-page)
+  .family-recipe-card.kitchen-recipe-card
+  .family-recipe-body
+  h2,
+:is([data-kitchen-density='compact'], .onboarding-page)
+  .family-recipe-card.kitchen-recipe-card
+  .family-recipe-body
+  h3 {
+  font-size: 15px;
+  line-height: 1.3;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .family-recipe-description {
+  font-size: var(--kitchen-type-meta);
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .family-recipe-facts {
+  font-size: var(--kitchen-type-meta);
+}
+
+/* Recipe discovery/detail cards keep the dish name primary and metadata quiet. */
+:is([data-kitchen-density='compact'], .onboarding-page)
+  .kitchen-recipe-card
+  .kitchen-recipe-card-body {
+  gap: 8px;
+  padding: 14px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .kitchen-recipe-card :is(h2, h3) {
+  font-size: var(--kitchen-type-card);
+  line-height: 1.3;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .kitchen-recipe-readiness {
+  padding: 3px 7px;
+  font-size: var(--kitchen-type-meta);
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .kitchen-recipe-description {
+  font-size: 13px;
+  line-height: 1.45;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .kitchen-recipe-facts span {
+  font-size: var(--kitchen-type-meta);
+}
+:is([data-kitchen-density='compact'], .onboarding-page)
+  .recipe-page
+  .recipe-preparation
+  :is(h3, h4) {
+  font-size: 15px;
+}
+
+/* Week is a dense calendar, so keep hierarchy in weight rather than scale. */
+:is([data-kitchen-density='compact'], .onboarding-page) .week-body {
+  padding: 20px 14px 36px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .week-workspace .kitchen-page-heading {
+  margin-bottom: 18px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .week-workspace .kitchen-page-heading h1 {
+  font-size: var(--kitchen-type-title);
+  line-height: 1.2;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .week-workspace h2 {
+  font-size: var(--kitchen-type-section);
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .week-paper {
+  padding: 16px;
+}
+
+/* Onboarding should feel like a short setup, not a wall of large cards. */
+:is([data-kitchen-density='compact'], .onboarding-page) .onboarding-workspace {
+  max-width: 600px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .onboarding-workspace h1 {
+  font-size: var(--kitchen-type-title);
+  line-height: 1.25;
+}
+.onboarding-page .family-preference-summary {
+  gap: 8px;
+  margin-bottom: 16px;
+  padding: 12px;
+  border-radius: 12px;
+}
+.onboarding-page .family-preference-summary dt,
+.onboarding-page .family-preference-summary dd {
+  font-size: var(--kitchen-type-meta);
+}
+
+@media (min-width: 640px) {
+  :is([data-kitchen-density='compact'], .onboarding-page) .kitchen-page-body,
+  :is([data-kitchen-density='compact'], .onboarding-page) .planning-page-body,
+  :is([data-kitchen-density='compact'], .onboarding-page) .week-body {
+    padding: 24px 24px 36px;
+  }
+  :is([data-kitchen-density='compact'], .onboarding-page) .kitchen-page-heading h1 {
+    font-size: var(--kitchen-type-title);
+  }
+  :is([data-kitchen-density='compact'], .onboarding-page) .home-meal-title {
+    font-size: 26px;
+  }
+  :is([data-kitchen-density='compact'], .onboarding-page) .planning-page-body {
+    max-width: 1180px;
+    margin-inline: auto;
+  }
+}
+
+@media (min-width: 900px) {
+  :is([data-kitchen-density='compact'], .onboarding-page) .kitchen-page-body,
+  :is([data-kitchen-density='compact'], .onboarding-page) .planning-page-body,
+  :is([data-kitchen-density='compact'], .onboarding-page) .week-body {
+    padding: 28px 32px 40px;
+  }
+  :is([data-kitchen-density='compact'], .onboarding-page) .planning-paper,
+  :is([data-kitchen-density='compact'], .onboarding-page) .planning-setup-form,
+  :is([data-kitchen-density='compact'], .onboarding-page) .planning-shopping-form,
+  :is([data-kitchen-density='compact'], .onboarding-page) .planning-meal-overview,
+  :is([data-kitchen-density='compact'], .onboarding-page) .planning-composer {
+    padding: 20px;
+  }
+  :is([data-kitchen-density='compact'], .onboarding-page) .planning-heading h1,
+  :is([data-kitchen-density='compact'], .onboarding-page) .week-workspace .kitchen-page-heading h1 {
+    font-size: var(--kitchen-type-title);
+  }
+  :is([data-kitchen-density='compact'], .onboarding-page) .planning-content {
+    gap: 18px;
+  }
+}
+
+@media (min-width: 1280px) {
+  :is([data-kitchen-density='compact'], .onboarding-page) .kitchen-page-body,
+  :is([data-kitchen-density='compact'], .onboarding-page) .planning-page-body,
+  :is([data-kitchen-density='compact'], .onboarding-page) .week-body {
+    padding-inline: 36px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is([data-kitchen-density='compact'], .onboarding-page) .planning-day {
+    animation: none;
+  }
+}
+
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-workspace button,
+:is([data-kitchen-density='compact'], .onboarding-page) .shopping-workspace button,
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-tabs a,
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-workspace select,
+:is([data-kitchen-density='compact'], .onboarding-page)
+  .planning-workspace
+  input:not([type='checkbox']):not([type='radio']) {
+  min-height: 44px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-workspace .planning-icon-button,
+:is([data-kitchen-density='compact'], .onboarding-page) .shopping-workspace .planning-icon-button,
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-workspace .recipe-save-button {
+  min-height: 44px;
+  height: 44px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .family-plan-mode label {
+  padding: 10px 12px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .family-plan-mode span {
+  gap: 2px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .family-plan-habits > summary {
+  min-height: 44px;
+  line-height: 1.4;
+  font-size: var(--kitchen-type-body);
+}
+:is([data-kitchen-density='compact'], .onboarding-page)
+  .family-plan-habits
+  .family-preference-fields {
+  margin-top: 12px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .shopping-add-panel > summary {
+  min-height: 44px;
+  cursor: pointer;
+  color: var(--semantic-text-on-soft);
+  font-size: 15px;
+  font-weight: 700;
+  align-content: center;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .shopping-add-panel[open] > summary {
+  margin-bottom: 8px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .onboarding-preference-review > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+  gap: 12px;
+  padding-block: 7px;
+  border-bottom: 1px solid rgb(var(--semantic-border-rgb));
+}
+:is([data-kitchen-density='compact'], .onboarding-page)
+  .onboarding-preference-review
+  > div:last-child {
+  border-bottom: 0;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .onboarding-preference-review dd {
+  margin-top: 0;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .account-workspace {
+  padding: 20px 14px 32px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .account-body {
+  gap: 18px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .account-profile {
+  padding: 16px;
+  gap: 12px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .account-profile h2 {
+  font-size: var(--kitchen-type-section);
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .account-body h2,
+:is([data-kitchen-density='compact'], .onboarding-page) .account-body legend {
+  font-size: 17px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .account-body button,
+:is([data-kitchen-density='compact'], .onboarding-page) .account-text-link {
+  font-size: var(--kitchen-type-body);
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .account-nav-link {
+  min-height: 64px;
+  padding: 12px;
+  gap: 10px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .account-nav-link strong {
+  font-size: var(--kitchen-type-body);
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .account-link-meta {
+  font-size: 13px;
+  line-height: 1.4;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .stock-detail-workspace {
+  padding: 20px 14px 32px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .stock-detail-body {
+  gap: 18px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .stock-detail-body h2 {
+  font-size: 20px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .stock-detail-body .stock-summary {
+  padding: 16px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .stock-detail-body button {
+  font-size: var(--kitchen-type-body);
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .recipe-intro {
+  padding-block: 16px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .recipe-intro h1 {
+  font-size: var(--kitchen-type-title);
+  line-height: 1.25;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .recipe-preparation p.text-base {
+  font-size: 15px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .cooking-context h1,
+:is([data-kitchen-density='compact'], .onboarding-page) .cooking-review-intro h1 {
+  font-size: var(--kitchen-type-title);
+}
+@media (min-width: 640px) {
+  :is([data-kitchen-density='compact'], .onboarding-page)[data-kitchen-navigation='persistent'] {
+    --kitchen-rail-width: 96px;
+  }
+  :is([data-kitchen-density='compact'], .onboarding-page)[data-kitchen-navigation='persistent']
+    .kitchen-nav-label {
+    font-size: 13px;
+  }
+}
+@media (min-width: 1024px) {
+  :is([data-kitchen-density='compact'], .onboarding-page)[data-kitchen-navigation='persistent'] {
+    --kitchen-rail-width: 224px;
+  }
+  :is([data-kitchen-density='compact'], .onboarding-page)[data-kitchen-navigation='persistent']
+    .kitchen-sidebar {
+    gap: 16px;
+  }
+  :is([data-kitchen-density='compact'], .onboarding-page)[data-kitchen-navigation='persistent']
+    .kitchen-nav-label {
+    font-size: var(--kitchen-type-body);
+  }
+}
+
+:is([data-kitchen-density='compact'], .onboarding-page) .has-plan .planning-heading h1 {
+  font-size: var(--kitchen-type-title);
+}
+
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-heading > div {
+  flex-basis: 160px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-locale {
+  font-size: 0;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .planning-locale select {
+  width: 112px;
+  padding: 8px;
+  font-size: 16px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page)
+  .family-settings-form
+  > fieldset
+  > .family-field-pair {
+  grid-template-columns: minmax(0, 1.7fr) minmax(64px, 1fr);
+  gap: 10px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .family-plan-habits > summary {
+  display: list-item;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .family-plan-habits > summary > span {
+  display: block;
+}
+:is([data-kitchen-density='compact'], .onboarding-page)
+  .family-plan-habits
+  > summary
+  > span
+  + span {
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgb(var(--semantic-text-secondary-rgb));
+  font-weight: 400;
+}
+
+:is([data-kitchen-density='compact'], .onboarding-page) .scan-workspace-header h1,
+:is([data-kitchen-density='compact'], .onboarding-page) .review-heading h1,
+:is([data-kitchen-density='compact'], .onboarding-page) .system-status-content h1 {
+  font-size: var(--kitchen-type-title);
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .scan-guide h2 {
+  font-size: var(--kitchen-type-section);
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .scan-workspace-grid,
+:is([data-kitchen-density='compact'], .onboarding-page) .review-layout {
+  gap: var(--kitchen-space-section);
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .cooking-stage,
+:is([data-kitchen-density='compact'], .onboarding-page) .cooking-use-list {
+  padding: var(--kitchen-space-panel);
+}
+
+/* Editable text remains 16px so Safari does not zoom a focused form. */
+:is([data-kitchen-density='compact'], .onboarding-page)
+  :is(input:not([type='checkbox']):not([type='radio']), select, textarea) {
+  font-size: 16px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .family-settings-form > fieldset {
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .family-settings-form > fieldset > legend {
+  padding: 0;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+:is([data-kitchen-density='compact'], .onboarding-page) .family-plan-habits {
+  border-style: solid;
+  background: var(--semantic-background-subtle);
+}
+
+/* Give dish names room before the action row on the narrowest phones. */
+@media (max-width: 359px) {
+  [data-kitchen-density='compact'] .planning-dish-row {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  [data-kitchen-density='compact'] .planning-dish-copy {
+    flex-basis: 100%;
+  }
+  [data-kitchen-density='compact'] .planning-dish-actions {
+    margin-left: auto;
+  }
+}
+
+/* Use quiet dividers inside a meal instead of a card around every dish. */
+[data-kitchen-density='compact'] .planning-dish-row {
+  padding-inline: 0;
+  border: 0;
+  border-bottom: 1px solid var(--semantic-border);
+  border-radius: 0;
+  background: transparent;
+}
+[data-kitchen-density='compact'] .planning-dish-row:last-child {
+  border-bottom: 0;
+}
+[data-kitchen-density='compact']
+  .planning-dish-actions
+  :is(.planning-icon-button, .recipe-save-button):not([aria-pressed='true']) {
+  border-color: transparent;
+  background: transparent;
+}
+[data-kitchen-density='compact']
+  .planning-dish-actions
+  :is(.planning-icon-button, .recipe-save-button):not([aria-pressed='true']):hover {
+  background: var(--semantic-success-soft);
+}
+[data-kitchen-density='compact'] .planning-dish-actions .planning-icon-button[aria-pressed='true'] {
+  border-color: var(--semantic-action-primary);
+  background: var(--semantic-success-soft);
+}
+@media (max-width: 639px) {
+  [data-kitchen-density='compact'] .has-plan .planning-board-summary {
+    display: grid;
+  }
+  [data-kitchen-density='compact'] .has-plan .planning-summary-link {
+    justify-self: start;
+  }
+}

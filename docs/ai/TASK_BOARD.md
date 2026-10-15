@@ -1,3 +1,19 @@
+# Takolio V1 refreshed-main integration - 2026-10-16 JST
+
+**Status:** `TAKOLIO_V1_CHANGES_REQUIRED` pending automatic hosted `validate` on the committed integration head and final independent evidence review. Draft PR #79 remains OPEN/DRAFT: https://github.com/lol-vn/Tako-san/pull/79.
+
+**Repository/base:** `lol-vn/Tako-san`, immutable ID `1385308553`. Initial migration base `03428467cdd5e93d27a3a27e5edaf7d512eef71d`; refreshed live main `f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1` incorporates PR #80. This integration brings that main into the feature branch only; it does not merge the feature into main. Previous pushed feature head is `00befc505c578bfa41e854ed69b0438ad355644f`; this checkpoint records the verified tree before its merge commit exists.
+
+**Changes:** retain incoming compact kitchen structure, setup/shopping copy and interaction behavior; map five compact CSS colors to existing semantic tokens and change new display references to Takolio. Canonical assets, generators and protected systems remain unchanged. Synthetic browser fixture starts tomorrow's valid plan and waits for scan confirmation readiness before checking images. Historical docs from both branches are preserved.
+
+**Executed:** complete local unit suite PASS 363 files / 8,473 tests (571.29s); focused 8 files / 118 PASS; E2E 94/94 PASS (7.1m); lint, typecheck, migration smoke, canonical generator and default/paired ON/OFF builds PASS. Refreshed matched browser evidence: 198 before/after screens at six widths; main has 18 existing axe findings, Takolio after has zero axe findings and one retained transient image race at scan-review/320; focused recheck PASS after the harness wait correction. States 15/15, PWA 3/3 and flags-OFF 12/12 PASS. New proof/log hashes are in `docs/brand/takolio/v1/evidence/main-sync/`.
+
+**Protected/exclusions:** 294 protected files and 425 old asset paths byte-identical to refreshed main; root tokens unchanged, two auth fallback display literals only, 25 protected legacy source-copy locations deferred. No main push, deploy, workflow dispatch, payment/Worker/migration/domain/flag/persisted-ID change. Legal, premium 3D, native/device and authenticated hosted/offline acceptance remain pending.
+
+**Next:** finish feature integration commit/push, confirm draft PR mergeability, wait for automatic exact-head hosted `validate` and independent reviewer inspection of refreshed evidence. Owner review follows; no automatic merge/deploy.
+
+---
+
 # Takolio V1 native raster validation follow-up - 2026-10-16 JST
 
 **Status:** `TAKOLIO_V1_CHANGES_REQUIRED` until the automatic exact-head hosted `validate` succeeds. Draft PR #79 remains open: https://github.com/lol-vn/Tako-san/pull/79.
@@ -38,6 +54,49 @@
 Current status is `TAKOLIO_V1_CHANGES_REQUIRED` until hosted review artifacts exist. Merge/deploy remains outside authorization.
 
 ---
+
+# T27 compact kitchen UI - 2026-10-16
+
+Verified implementation checkpoint: `34421382` (source/tests/ADR/task packet).
+
+**State:** LOCAL_COMPLETE / NOT_DEPLOYED. Source and tests are ready for review on
+`codex/compact-kitchen-ux-20261015`.
+
+**Done:** Scoped compact typography/spacing; smaller mobile shell; clearer planner
+setup for whole-meal vs manual calendar; visible allergy/forbidden summaries;
+compact favorites/recipes/onboarding; shopping list prioritization and responsive
+manual-add disclosure with keyboard and draft persistence. No backend, schema,
+flags, payments, auth or production files changed.
+
+**Checks:** lint/typecheck/builds/migrations/diff checks PASS; family E2E 12/12
+across 320/390/768/1280 PASS. Full Vitest has 8,466/8,467 passing; one Wrangler
+local migration-list test exceeded its 5s budget by 326ms, while isolated 32/32
+passes. See `docs/ai/tasks/T27-compact-kitchen-ux.md` and `work/` logs.
+
+**Next:** Product/design review, then protected CI and release workflow only after
+acceptance. Do not treat local preview or E2E as production evidence.
+
+---
+
+# T26 production deployment complete - 2026-10-15 JST
+
+**State:** DEPLOYED, signed-in hosted acceptance NOT_TESTED. PR78 merged and
+`03428467cdd5e93d27a3a27e5edaf7d512eef71d` serves production.
+Exact-head/main CI, staging38728806704, approved production38729311534 and
+root protected/public receipt verifications PASS. Full362files/8465tests passed
+on each hosted CI/production run. No migration, rollback or flag downgrade.
+
+**Certified:** canonical DB, ledger43/tip0043, unchanged D1 continuity from0ff82edb,
+500/fingerprint/no fallback, paired ON, new active Worker/deployment and inactive
+same-candidate OFF recovery; public exactSHA/cache/SW smoke PASS.
+
+**Next:** maintain this serving candidate and evidence checkpoint. Hosted account
+generation still requires supported signed-in acceptance; public smoke is not that
+proof. Product behavior is covered by native Worker/D1 and actual390/1280 browser
+regressions; production CPU trace/latency remains unverified.
+
+---
+
 # T26 family planner response recovery - 2026-10-15 JST
 
 **Status:** READY_FOR_RELEASE; implementation `063a026d`, branch

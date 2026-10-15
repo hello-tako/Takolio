@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
-import { ArrowRight, Calendar, Check, Flame, Sparkles, Users, Utensils } from 'lucide-react';
+import { ArrowRight, Calendar, Check, Sparkles, Users, Utensils } from 'lucide-react';
 import { useQueryClient } from '@tanstack/react-query';
 import { ApiError, guardPrivateSession } from '../services/http';
 import { isMealPlannerEnabled } from '../features/planner/feature';
@@ -207,7 +207,7 @@ export const OnboardingPage: React.FC = () => {
   return (
     <main className="takosan-rebuild entry-page onboarding-page">
       <div className="onboarding-workspace">
-        <header className="mb-7 flex items-center justify-between">
+        <header className="mb-5 flex items-center justify-between">
           <img
             src={TAKOSAN_KITCHEN.logo}
             alt="Takolio"
@@ -222,7 +222,7 @@ export const OnboardingPage: React.FC = () => {
         </header>
 
         <div
-          className="mb-7 grid grid-cols-3 gap-2"
+          className="mb-5 grid grid-cols-3 gap-2"
           role="progressbar"
           aria-label={`Bước ${step} trên 3`}
           aria-valuemin={1}
@@ -247,13 +247,13 @@ export const OnboardingPage: React.FC = () => {
             className="flex flex-1 flex-col animate-fade-in"
             aria-labelledby="onboarding-household-title"
           >
-            <div className="mb-7">
+            <div className="mb-5">
               <p className="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-takosan-green">
                 Khẩu phần gia đình
               </p>
               <h1
                 id="onboarding-household-title"
-                className="font-heading text-3xl font-extrabold leading-tight"
+                className="font-heading text-2xl font-bold leading-tight"
               >
                 Nhà mình thường có bao nhiêu người ăn?
               </h1>
@@ -262,7 +262,7 @@ export const OnboardingPage: React.FC = () => {
               </p>
             </div>
 
-            <fieldset className="mb-8 rounded-3xl border border-takosan-cream-line bg-white p-5 shadow-sm">
+            <fieldset className="mb-6 rounded-3xl border border-takosan-cream-line bg-white p-5 shadow-sm">
               <legend className="px-1 text-xs font-bold uppercase tracking-wider text-semantic-text-secondary">
                 Số người thường ăn
               </legend>
@@ -310,7 +310,7 @@ export const OnboardingPage: React.FC = () => {
 
             <Button
               fullWidth
-              size="lg"
+              size="md"
               type="button"
               onClick={() => navigate(ONBOARDING_PATHS[2])}
               className="mt-auto rounded-2xl"
@@ -325,7 +325,7 @@ export const OnboardingPage: React.FC = () => {
             className="flex flex-1 flex-col animate-fade-in"
             aria-labelledby="onboarding-preferences-title"
           >
-            <div className="mb-7">
+            <div className="mb-5">
               <button
                 type="button"
                 onClick={() => navigate(ONBOARDING_PATHS[1])}
@@ -338,16 +338,16 @@ export const OnboardingPage: React.FC = () => {
               </p>
               <h1
                 id="onboarding-preferences-title"
-                className="font-heading text-3xl font-extrabold leading-tight"
+                className="font-heading text-2xl font-bold leading-tight"
               >
                 Nhà mình thường nấu thế nào?
               </h1>
               <p className="mt-2 text-sm text-semantic-text-secondary">
-                Chọn nhiều mục nếu phù hợp. Bạn có thể thay đổi trong hồ sơ sau này.
+                Chọn thói quen thường ngày. Bạn có thể đổi lại bất cứ lúc nào.
               </p>
             </div>
 
-            <div className="mb-8 space-y-7">
+            <div className="mb-6 space-y-5">
               {familyQuery.isPending && !isOfflineGuestSession() ? (
                 <InlineLoading label="Đang tải thói quen bữa nhà…" />
               ) : familyQuery.isError ? (
@@ -385,7 +385,7 @@ export const OnboardingPage: React.FC = () => {
 
             <Button
               fullWidth
-              size="lg"
+              size="md"
               type="button"
               onClick={() => navigate(ONBOARDING_PATHS[3])}
               className="mt-auto rounded-2xl"
@@ -400,7 +400,7 @@ export const OnboardingPage: React.FC = () => {
             className="flex flex-1 flex-col animate-fade-in"
             aria-labelledby="onboarding-goals-title"
           >
-            <div className="mb-7">
+            <div className="mb-5">
               <button
                 type="button"
                 onClick={() => navigate(ONBOARDING_PATHS[2])}
@@ -413,17 +413,16 @@ export const OnboardingPage: React.FC = () => {
               </p>
               <h1
                 id="onboarding-goals-title"
-                className="font-heading text-3xl font-extrabold leading-tight"
+                className="font-heading text-2xl font-bold leading-tight"
               >
                 Bạn muốn Takolio giúp việc gì trước?
               </h1>
               <p className="mt-2 text-sm text-semantic-text-secondary">
-                Lựa chọn này chỉ quyết định màn hình bắt đầu trên thiết bị này; các sở thích bên
-                dưới được lưu sau khi máy chủ xác nhận hoàn tất.
+                Chọn việc muốn làm trước, rồi kiểm tra lại thói quen bên dưới.
               </p>
             </div>
 
-            <fieldset className="mb-7" data-testid="onboarding-goal-group">
+            <fieldset className="mb-5" data-testid="onboarding-goal-group">
               <legend className="mb-3 text-xs font-bold uppercase tracking-wider text-semantic-text-secondary">
                 Ưu tiên trước
               </legend>
@@ -443,7 +442,7 @@ export const OnboardingPage: React.FC = () => {
                       />
                       <span
                         className={clsx(
-                          'flex w-full items-center gap-4 rounded-3xl border bg-white p-4 text-left shadow-sm transition-tap peer-focus-visible:ring-2 peer-focus-visible:ring-takosan-green peer-focus-visible:ring-offset-2',
+                          'flex w-full items-center gap-3 rounded-2xl border bg-white p-3 text-left transition-tap peer-focus-visible:ring-2 peer-focus-visible:ring-takosan-green peer-focus-visible:ring-offset-2',
                           selected
                             ? 'border-takosan-green ring-2 ring-takosan-green/20'
                             : 'border-semantic-border',
@@ -451,7 +450,7 @@ export const OnboardingPage: React.FC = () => {
                       >
                         <span
                           className={clsx(
-                            'flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl',
+                            'flex h-10 w-10 shrink-0 items-center justify-center rounded-xl',
                             selected
                               ? 'bg-takosan-mint text-takosan-green'
                               : 'bg-semantic-border/60 text-semantic-text-muted',
@@ -479,69 +478,48 @@ export const OnboardingPage: React.FC = () => {
             <h2 className="mb-3 text-xs font-bold uppercase tracking-wider text-semantic-text-secondary">
               Sở thích sẽ được lưu
             </h2>
-            <div className="space-y-3" data-testid="onboarding-preference-review">
-              <div className="flex items-center gap-4 rounded-3xl border border-semantic-border bg-white p-4 shadow-sm">
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-takosan-mint text-takosan-green">
-                  <Users className="h-5 w-5" aria-hidden="true" />
-                </span>
-                <span>
-                  <strong className="block font-heading text-base">Quy mô bữa ăn</strong>
-                  <span className="mt-1 block text-xs text-semantic-text-muted">
-                    {householdSizeLabel(householdSize)}
-                  </span>
-                </span>
+            <dl
+              className="family-preference-summary onboarding-preference-review"
+              data-testid="onboarding-preference-review"
+            >
+              <div>
+                <dt>Quy mô bữa ăn</dt>
+                <dd>{householdSizeLabel(householdSize)}</dd>
               </div>
-              <div className="flex items-center gap-4 rounded-3xl border border-semantic-border bg-white p-4 shadow-sm">
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-takosan-mint text-takosan-green">
-                  <Sparkles className="h-5 w-5" aria-hidden="true" />
-                </span>
-                <span>
-                  <strong className="block font-heading text-base">Ẩm thực yêu thích</strong>
-                  <span className="mt-1 block text-xs text-semantic-text-muted">
-                    {selectedCuisines.length === 0
-                      ? 'Không có lựa chọn'
-                      : selectedCuisines
-                          .map(
-                            (value) =>
-                              CUISINE_TAGS.find(({ id }) => id === value)?.label ??
-                              `${value} (hồ sơ cũ, chưa áp dụng)`,
-                          )
-                          .join(', ')}
-                  </span>
-                </span>
+              <div>
+                <dt>Ẩm thực yêu thích</dt>
+                <dd>
+                  {selectedCuisines.length === 0
+                    ? 'Không có lựa chọn'
+                    : selectedCuisines
+                        .map(
+                          (value) =>
+                            CUISINE_TAGS.find(({ id }) => id === value)?.label ??
+                            `${value} (hồ sơ cũ, chưa áp dụng)`,
+                        )
+                        .join(', ')}
+                </dd>
               </div>
-              <div className="flex items-center gap-4 rounded-3xl border border-semantic-border bg-white p-4 shadow-sm">
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-takosan-mint text-takosan-green">
-                  <Flame className="h-5 w-5" aria-hidden="true" />
-                </span>
-                <span>
-                  <strong className="block font-heading text-base">Mức độ cay</strong>
-                  <span className="mt-1 block text-xs text-semantic-text-muted">
-                    {SPICY_LABELS[spicyLevel]}
-                  </span>
-                </span>
+              <div>
+                <dt>Mức độ cay</dt>
+                <dd>{SPICY_LABELS[spicyLevel]}</dd>
               </div>
-              <div className="flex items-center gap-4 rounded-3xl border border-semantic-border bg-white p-4 shadow-sm">
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-takosan-mint text-takosan-green">
-                  <Check className="h-5 w-5" aria-hidden="true" />
-                </span>
-                <span>
-                  <strong className="block font-heading text-base">Hạn chế từ hồ sơ cũ</strong>
-                  <span className="mt-1 block text-xs text-semantic-text-muted">
-                    {restrictions.length === 0
-                      ? 'Không có lựa chọn'
-                      : restrictions
-                          .map(
-                            (value) =>
-                              RESTRICTION_TAGS.find(({ id }) => id === value)?.label ?? value,
-                          )
-                          .join(', ')}
-                  </span>
-                </span>
+              <div>
+                <dt>Hạn chế từ hồ sơ cũ</dt>
+                <dd>
+                  {restrictions.length === 0
+                    ? 'Không có lựa chọn'
+                    : restrictions
+                        .map(
+                          (value) =>
+                            RESTRICTION_TAGS.find(({ id }) => id === value)?.label ?? value,
+                        )
+                        .join(', ')}
+                </dd>
               </div>
-            </div>
+            </dl>
 
-            <div className="mt-auto pt-7">
+            <div className="mt-auto pt-5">
               {error && (
                 <p
                   role="alert"
@@ -572,7 +550,7 @@ export const OnboardingPage: React.FC = () => {
               )}
               <Button
                 fullWidth
-                size="lg"
+                size="md"
                 type="button"
                 disabled={profileConflict || (!isOfflineGuestSession() && draftRevision === null)}
                 onClick={() => void finish()}
