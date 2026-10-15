@@ -1,3 +1,45 @@
+# T26 family planner hang repaired locally - 2026-10-15 JST
+
+**Status:** READY_FOR_RELEASE. Implementation commit `063a026d` on
+`codex/fix-family-planner-hang-20261015`. Production still serves
+`0ff82edb7c251be340b5e00fbcf0ae8703b22a55`; no T26 deployment claim.
+
+**Repair:** planner/profile/composition requests now stop waiting after30s through
+transport and body reads, show uncertain-delivery recovery and preserve exact
+retry keys. Changed family choices get a new key; uncertain profile saves are
+read back before continuing. Late aborted responses cannot seed caches or clear
+identity. Backend shares trusted immutable contexts, reuses exact slot pools,
+filters family eligibility before caps and bounds/counts generated work.
+Hard restrictions, quantities, locks, tenancy and schema0043 remain intact.
+
+**Executed gates:** `pnpm lint`, `pnpm typecheck`,
+`TMPDIR=/private/tmp pnpm test --maxWorkers=2` (362 files/8465 tests,
+429.67s), `pnpm check:migrations`, default and paired-ON `pnpm build`
+all PASS. Final focused6files/46tests PASS. Native workerd/D1 authenticated
+14-slot full-role week2118ms versus baseline9796ms; replay/one-plan/unchanged
+stock/events PASS. Browser390/1280 actual transport/body stalls and exact retry
+PASS4/4; timeout setup axe0 violations after narrow existing text-contrast fix.
+
+**Retained failures:** initial full run failed3 discovered scratch suites and11
+pre-existing macOS /var versus /private/var path/parser assertions. Scratch names
+now use.proof; canonical TMPDIR isolated capture79/79 and full8465/8465PASS
+without capture-code changes. Initial helper type and browser harness failures
+are retained. Exact logs, timings and acceptance are in T26 task packet.
+
+**Limits:** no hosted signed-in or production generation proof yet; CPU exhaustion
+is a hypothesis. Sparse-stock42-slot case remains36complete/6unplanned as before;
+another bounds fixture completes42/42. The work cap is heuristic, not CPU
+certification. Retry keys last for the mounted setup; current-plan recovery is
+available after navigation. Legacy flag-OFF Week requests remain outside scope.
+
+**Next:** normal PR/exact-head and exact-main CI, staging deploy and supported
+authenticated smoke, then protected production rollout with explicit d1/0 and
+paired flags ON. No migration is needed. Catalog continuity sources/dependencies
+are unchanged. Canonical GitHub repo is now `lol-vn/Tako-san` (same ID); old pinned
+staging migration workflow names may skip after transfer, an unrelated follow-up.
+
+---
+
 # T25 Vietnamese family meals production certified - 2026-10-15 JST
 
 **Status:** RELEASE_COMPLETE / PRODUCTION_CERTIFIED. T22-T24 is serving production

@@ -1,3 +1,27 @@
+# T26 family planner response recovery - 2026-10-15 JST
+
+**Status:** READY_FOR_RELEASE; implementation `063a026d`, branch
+`codex/fix-family-planner-hang-20261015`. Local source/tests complete;
+production remains the prior T25 SHA.
+
+**Done:**30s transport/body deadlines and recovery UX; exact retry and changed
+family-choice key semantics; late response/session fences; uncertain profile
+reconciliation; trusted context/exact pool reuse; filter-before-cap; bounded
+candidate-work accounting; native Worker/D1 and real browser regressions.
+
+**Checks:** lint, types, full362files/8465tests (429.67s), migrations, default
+and paired-ON builds PASS. Focused6files/46tests PASS. Native14-slot week2118ms,
+replay/stock unchanged PASS. Browser390/1280 matrix4/4 and timeout axe0PASS.
+Initial scratch/macOS capture/harness failures are documented in T26 and retained;
+final canonical-TMP full run PASS, with no capture code changes.
+
+**Release pending:** normal protected PR/CI/staging/production workflow; explicit
+d1/0 + paired ON, no migration. Authenticated hosted generation remains unverified.
+Do not replace this gap with public readiness, which currently serves old SHA.
+Canonical repo `lol-vn/Tako-san`; no new infrastructure/configuration changes.
+
+---
+
 # T25 production release complete - 2026-10-15 JST
 
 **State:** RELEASE_COMPLETE / PRODUCTION_CERTIFIED. Candidate

@@ -1,3 +1,43 @@
+# T26 handoff - family planner response recovery - 2026-10-15 JST
+
+**Status:** READY_FOR_RELEASE. Verified implementation commit `063a026d`;
+branch `codex/fix-family-planner-hang-20261015`. This handoff is the subsequent
+documentation checkpoint. Production remains `0ff82edb7c251be340b5e00fbcf0ae8703b22a55`.
+
+**Changes:**30s complete-response planner/profile deadlines, explicit recovery,
+exact create retry keys including family choices, late abort/session guards,
+uncertain profile-save reconciliation. Backend avoids repeated trusted-context
+cloning and equivalent pool scoring, filters family eligibility before truncation,
+and bounds/counts full candidate work. Hard safety, stock projection, locks,
+tenancy, shopping and migrations remain intact.
+
+**Executed verification:** lint/typecheck/migration smoke/default+paired-ON build
+PASS. Canonical-TMP full suite362files/8465tests PASS429.67s; focused6files/46PASS.
+Native workerd/D1 real14-slot create2118ms (before9796ms), exact replay/GET/current,
+one persisted plan and unchanged stock/events PASS. Browser390/1280 real30s
+transport/body deadline plus exact retry PASS4/4; final clock/axe matrix4/4PASS,
+zero timeout setup violations. Root and independent reviews found no blocker.
+
+**Failures and limitations:** initial full run had3 scratch discovery failures and
+11 macOS path/parser failures; proof files renamed and canonical TMPDIR yielded
+fullPASS without capture changes. Initial helper type and browser harness/contrast
+failures are retained in work and described in the T26 packet. No hosted signed-in
+generation or production trace yet; CPU exhaustion is not proven. Sparse-stock42
+case stays36complete/6unplanned; exact budget is heuristic. Legacy Week flag-OFF
+transport and navigation-lifetime retry keys remain documented limits.
+
+**Database/deployment:** no migration/config/dependency change. Production43/tip0043,
+paired ON/fullD1 at old SHA. Catalog continuity22sources/Zod/dependency blobs match.
+Use canonical repo `lol-vn/Tako-san`, explicit d1/0 + meal_composition_v2_enabled=true.
+No source/test important file belongs only to scratch; logs/raw images stay local.
+
+**Next action:** publish PR, require exact-head/main hosted CI, then staging and
+protected production receipts. Public readiness cannot certify signed-in planner
+acceptance. GitHub production still requires reviewer `vn-taphoanhatung`; retain
+normal approvals. No need to run old repo-name-pinned migration workflows.
+
+---
+
 # T25 handoff: production release certified - 2026-10-15 JST
 
 **Status:** RELEASE_COMPLETE / PRODUCTION_CERTIFIED. Production
