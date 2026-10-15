@@ -267,3 +267,61 @@ describe('explicit manual one-dish family meals', () => {
     expect(restricted.meals[0].warnings).toContain('LOCKED_MEAL_TIME_REQUIRES_REVALIDATION');
   });
 });
+
+describe('family candidate work and immutable culture filtering', () => {
+  it('does not let a foreign catalog crowd eligible Vietnamese dishes out before the pool cap', () => {
+    const f = fixture();
+    const foreign = Array.from({ length: 340 }, (_, index) => recipe(`foreign-${index}`, 'CHICKEN', 100,
+      { cuisine: 'thai', prepTimeMinutes: 0, cookTimeMinutes: 5 }));
+    const runtime: Recipe[] = [...f.runtime, ...foreign.map(definition => ({ ...definition, cuisine: 'thai' as const,
+      description: '', imageUrl: '', steps: [], tags: [] }))];
+    const assignments: PersistedRoleAssignment[] = runtime.flatMap(entry => [{ recipeId: entry.id,
+      role: entry.id.startsWith('foreign-') || entry.id.startsWith('main-') ? 'main' as const
+        : entry.id === 'vegetable' ? 'vegetable' as const : entry.id === 'soup' ? 'soup' as const : 'staple' as const,
+      source: 'reviewed' as const, decision: 'assign' as const, confidence: null, reviewed: true }]);
+    const visited: string[] = [];
+    const ctx = context({ catalog: catalog([...readPlanningContext(f.ctx).catalog.recipes, ...foreign]), inventory: f.inventory,
+      rankingContext: { householdId: 'home', userId: 'member', feedback: [], preferences: [{ householdId: 'home', userId: null,
+        values: { preferredCuisines: ['thai'] } }] }, evidenceProvider: candidates => {
+        visited.push(...candidates.map(candidate => candidate.source.sourceId)); return [];
+      } });
+    const result = planFamilyMeals({ context: ctx, request: { ...request, slots: request.slots.slice(0, 1) },
+      preferences: FamilyPreferencesSchema.parse({}), roles: buildRoleIndex(runtime, assignments), runtimeRecipes: runtime, revision: 1 });
+    expect(result.meals[0].missingRoles).toEqual([]);
+    expect(result.meals[0].anchor?.candidate.cuisine).toBe('vietnamese');
+    expect(visited.some(id => id.startsWith('foreign-'))).toBe(false);
+  });
+
+  it('bounds hidden pool work with large inventories and still validates a later locked component', () => {
+    const f = fixture();
+    const inventory = Array.from({ length: 1000 }, (_, index) => lot({ id: `large-lot-${index}`, ingredientId: 'CHICKEN', quantity: 1 }));
+    const definitions = [...readPlanningContext(f.ctx).catalog.recipes,
+      ...Array.from({ length: 100 }, (_, index) => recipe(`extra-main-${index}`, 'CHICKEN', 100,
+        { cuisine: 'vietnamese', prepTimeMinutes: 0, cookTimeMinutes: 5 }))];
+    const runtime: Recipe[] = [...f.runtime, ...definitions.slice(f.runtime.length).map(definition => ({ ...definition, cuisine: 'vietnamese' as const,
+      description: '', imageUrl: '', steps: [], tags: [] }))];
+    const roles: MealRole[] = ['main', 'main', 'vegetable', 'soup', 'staple'];
+    const assignments: PersistedRoleAssignment[] = runtime.map((entry, index) => ({ recipeId: entry.id,
+      role: roles[index] ?? 'main', source: 'reviewed', decision: 'assign', confidence: null, reviewed: true }));
+    const slots = Array.from({ length: 14 }, (_, index) => ({ date: new Date(Date.parse(request.startDate) + index * 86400000)
+      .toISOString().slice(0, 10), mealType: 'dinner' as const }));
+    const locked: MealComponent = { id: 'later-locked', kind: 'recipe', role: 'main', recipeId: 'main-b', simpleFoodId: null,
+      ordinal: 0, locked: true, provenance: 'manual', createdRevision: 1, updatedRevision: 1 };
+    const ctx = context({ catalog: catalog(definitions), inventory,
+      rankingContext: { householdId: 'home', userId: 'member', feedback: [], preferences: [{ householdId: 'home', userId: null,
+        values: { neverRecommendRecipeIds: ['main-b'] } }] } });
+    const result = planFamilyMeals({ context: ctx, request: { ...request, horizonDays: 14, slots }, preferences: FamilyPreferencesSchema.parse({}),
+      roles: buildRoleIndex(runtime, assignments), runtimeRecipes: runtime, revision: 2,
+      locked: new Map([[slots.at(-1)!.date + ':dinner:0', [locked]]]) });
+    expect(result.searchLimited).toBe(true);
+    expect(result.candidateWork).toBeLessThanOrEqual(32768);
+    expect(result.candidateEvaluations).toBeLessThanOrEqual(1024);
+    expect(result.meals).toHaveLength(14);
+    const last = result.meals.at(-1)!;
+    expect(last.components).toContainEqual(locked);
+    expect(last.warnings).toContain('LOCKED_COMPONENT_REQUIRES_REVALIDATION');
+    expect(result.meals.slice(0, -1).every(meal => !meal.components.some(component => component.recipeId === 'main-b'))).toBe(true);
+    expect(result.finalInventory.every(row => row.quantity >= 0)).toBe(true);
+    expect(inventory.every(row => row.quantity === 1)).toBe(true);
+  }, 30000);
+});

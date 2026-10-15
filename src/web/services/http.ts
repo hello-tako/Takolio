@@ -65,7 +65,13 @@ export function guardPrivateSession(): () => void {
 }
 
 export async function fetchJson<T>(path: string, options?: RequestInit, apiVersion: 'v1' | 'v2' = 'v1'): Promise<T> {
-  const assertCurrent = guardPrivateSession();
+  const assertSessionCurrent = guardPrivateSession();
+  const assertCurrent = () => {
+    assertSessionCurrent();
+    // Ignore late responses from an abandoned request before accepting data or clearing identity.
+    if (options?.signal?.aborted) throw options.signal.reason ?? new DOMException('Request aborted', 'AbortError');
+  };
+  assertCurrent();
   const scope = getCurrentScope();
   const pathname = path.split('?')[0];
   const publicRead = (options?.method?.toUpperCase() || 'GET') === 'GET' &&

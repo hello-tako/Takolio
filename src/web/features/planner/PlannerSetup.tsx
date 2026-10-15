@@ -68,7 +68,9 @@ function FamilyPlannerSetup({
   const [maxTime, setMaxTime] = useState('');
   const [invalid, setInvalid] = useState(false);
   const [profileConflict, setProfileConflict] = useState(false);
+  const [uncertainProfileRevision, setUncertainProfileRevision] = useState<number | null>(null);
   const errorRef = useRef<HTMLParagraphElement>(null);
+  const timedOut = model.error instanceof ApiError && model.error.code === 'PLAN_REQUEST_TIMEOUT';
   useEffect(() => {
     if (preferences.data && !draft) {
       setDraft({
@@ -103,17 +105,37 @@ function FamilyPlannerSetup({
       setInvalid(true);
       return;
     }
-    const requestIntent = selectionMode === 'manual' ? { selectionMode: 'manual', intent } : intent;
+    // Include family choices in the retry fingerprint. The server body remains the validated intent,
+    // while a changed preference set must never replay a timed-out plan from the old profile.
+    const requestIntent = { selectionMode, intent, familyPreferences: draft };
     const result = await model.perform(
       selectionMode === 'manual' ? 'manual-draft' : 'generate',
       async () => {
-        if (JSON.stringify(draft) !== JSON.stringify(preferences.data.preferences)) {
+        let acceptedProfile = preferences.data;
+        let expectedRevision = draftRevision;
+        if (uncertainProfileRevision !== null) {
+          // An explicit retry reads the uncertain save before issuing another write.
+          const latest = await familyPreferencesApi.get();
+          if (latest.revision <= uncertainProfileRevision || JSON.stringify(latest.preferences) !== JSON.stringify(draft)) {
+            setProfileConflict(true);
+            throw new ApiError('http', 'HTTP 409: {"code":"FAMILY_PREFERENCES_CHANGED"}', 409);
+          }
+          acceptedProfile = latest;
+          expectedRevision = latest.revision;
+          client.setQueryData(familyPreferencesKey(), latest);
+          setDraftRevision(latest.revision);
+          setUncertainProfileRevision(null);
+        }
+        if (JSON.stringify(draft) !== JSON.stringify(acceptedProfile.preferences)) {
           try {
-            const saved = await familyPreferencesApi.save(draftRevision, draft);
+            const saved = await familyPreferencesApi.save(expectedRevision, draft);
             client.setQueryData(familyPreferencesKey(), saved);
             setDraftRevision(saved.revision);
           } catch (failure) {
             if (failure instanceof ApiError && failure.status === 409) setProfileConflict(true);
+            if (failure instanceof ApiError && failure.code === 'PLAN_REQUEST_TIMEOUT') {
+              setUncertainProfileRevision(expectedRevision);
+            }
             throw failure;
           }
         }
@@ -298,6 +320,7 @@ function FamilyPlannerSetup({
                         setDraft(result.data.preferences);
                         setDraftRevision(result.data.revision);
                         setProfileConflict(false);
+                        setUncertainProfileRevision(null);
                       }
                     }}
                   >
@@ -306,12 +329,19 @@ function FamilyPlannerSetup({
                 </div>
               )}
               <Button type="submit" fullWidth isLoading={!!model.busy} disabled={profileConflict}>
-                {selectionMode === 'manual'
-                  ? locale === 'vi'
-                    ? 'Tạo lịch trống để tự chọn món'
-                    : 'Create an empty meal calendar'
-                  : t.generate}
+                {timedOut
+                  ? t.retry
+                  : selectionMode === 'manual'
+                    ? locale === 'vi'
+                      ? 'Tạo lịch trống để tự chọn món'
+                      : 'Create an empty meal calendar'
+                    : t.generate}
               </Button>
+              {timedOut && (
+                <Link className="planning-text-link" to="/planner">
+                  {locale === 'vi' ? 'Kiểm tra thực đơn hiện tại' : 'Check your current plan'}
+                </Link>
+              )}
               {model.busy && (
                 <p role="status">
                   {selectionMode === 'manual'

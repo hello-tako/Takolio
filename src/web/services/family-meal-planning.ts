@@ -9,13 +9,13 @@ import {
   RegenerateMealPlanSchema,
   type MealPlanningIntent,
 } from '../../../packages/domain/src/meal-planning-api';
-import { fetchJson } from './http';
+import { fetchPlannerJson } from './planner-http';
 const plans = '/meal-planning/plans';
 const planPath = (id: string) => `${plans}/${encodeURIComponent(PlanIdSchema.parse(id))}`;
 export const familyMealPlanningApi = {
   async generate(intent: MealPlanningIntent, key: string) {
     return FamilyMealPlanDtoSchema.parse(
-      await fetchJson(
+      await fetchPlannerJson(
         plans,
         {
           method: 'POST',
@@ -28,7 +28,7 @@ export const familyMealPlanningApi = {
   },
   async createManual(intent: MealPlanningIntent, key: string) {
     return FamilyMealPlanDtoSchema.parse(
-      await fetchJson('/meal-planning/drafts', {
+      await fetchPlannerJson('/meal-planning/drafts', {
         method: 'POST', body: JSON.stringify(MealPlanningIntentSchema.parse(intent)),
         headers: { 'Idempotency-Key': PlanningRequestKeySchema.parse(key) },
       }, 'v2'),
@@ -36,19 +36,19 @@ export const familyMealPlanningApi = {
   },
   async get(id: string) {
     const result = FamilyMealPlanDtoSchema.parse(
-      await fetchJson(planPath(id), { cache: 'no-store' }, 'v2'),
+      await fetchPlannerJson(planPath(id), { cache: 'no-store' }, 'v2'),
     );
     if (result.plan.id !== id) throw new Error('Plan identity mismatch');
     return result;
   },
   async current() {
     return CurrentFamilyMealPlanDtoSchema.parse(
-      await fetchJson(`${plans}/current`, { cache: 'no-store' }, 'v2'),
+      await fetchPlannerJson(`${plans}/current`, { cache: 'no-store' }, 'v2'),
     );
   },
   async regenerate(id: string, revision: number) {
     const result = FamilyMealPlanDtoSchema.parse(
-      await fetchJson(
+      await fetchPlannerJson(
         `${planPath(id)}/regenerate`,
         { method: 'POST', body: JSON.stringify(RegenerateMealPlanSchema.parse({ revision })) },
         'v2',
