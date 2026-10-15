@@ -38,7 +38,7 @@
     "format": "prettier --write \"src/**/*.{ts,tsx,css,json}\" \"packages/**/*.{ts,tsx}\"",
     "check": "bash scripts/deploy-check.sh",
     "brand:icons": "node scripts/generate-takosan-icons.mjs",
-    "admin:dev": "WRANGLER_SEND_METRICS=false wrangler dev -c wrangler.admin-local.jsonc --local --ip 127.0.0.1 --port 8799 --show-interactive-dev-session=false",
+    "admin:dev": "WRANGLER_SEND_METRICS=false wrangler dev -c wrangler.admin-local.jsonc -c wrangler.admin-facade-local.jsonc --local --ip 127.0.0.1 --port 8799 --show-interactive-dev-session=false",
     "admin:workerd:check": "node scripts/admin-workerd-check.mjs",
     "admin:migration:matrix": "node scripts/admin-migration-matrix.mjs"
   },

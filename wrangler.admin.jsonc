@@ -3,7 +3,8 @@
 // ADMIN_ORIGIN (dedicated https host), Cloudflare Access (team domain + AUD) are configured.
 // Placeholders that must be replaced at integration: ADMIN_DB database_id, CACHE KV id, routes.
 // Never add a `define` for __ADMIN_LOCAL_AUTH__ here: password login exists only in local builds.
-// DB is the customer database; admin code reads it through readOnlyDatabase().
+// R2 (F1): No direct customer D1 binding. Customer reads go strictly through the internal
+// Service Binding CUSTOMER_READ -> takosan-admin-read-facade (AdminCustomerReadFacade).
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "takosan-admin",
@@ -22,16 +23,17 @@
   },
   "d1_databases": [
     {
-      "binding": "DB",
-      "database_name": "frigo-db",
-      "database_id": "f975ec39-b2c8-4a2a-80e1-0366054599d3",
-      "migrations_dir": "migrations"
-    },
-    {
       "binding": "ADMIN_DB",
       "database_name": "takosan-admin-db",
       "database_id": "00000000-0000-4000-8000-000000000000",
       "migrations_dir": "migrations-admin"
+    }
+  ],
+  "services": [
+    {
+      "binding": "CUSTOMER_READ",
+      "service": "takosan-admin-read-facade",
+      "entrypoint": "AdminCustomerReadFacade"
     }
   ],
   "kv_namespaces": [

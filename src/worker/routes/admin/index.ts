@@ -76,9 +76,7 @@ async function activeSuperCount(c: AdminContext): Promise<number> {
 }
 
 async function eligibleUser(c: AdminContext, userId: string): Promise<boolean> {
-  const row = await c.get('main').prepare(`SELECT u.id FROM users u WHERE u.id = ? AND u.is_guest = 0
-      AND EXISTS (SELECT 1 FROM auth_accounts a WHERE a.user_id = u.id AND a.is_verified = 1)`).bind(userId).first();
-  return row !== null;
+  return c.get('main').eligibleUser(userId);
 }
 
 // ── Reads ──────────────────────────────────────────────────────────────────
@@ -109,11 +107,11 @@ authed.get('/users/:id', requirePermission('users.read'), async (c) => {
     const budget = await consumeLimit(c.env, c.get('policy').local, 'reveal', admin.userId, 30, 3600);
     if (!budget.ok) return limitResponse(c, budget);
   }
-  const user = await getUser(c.get('main'), c.get('adminDb'), id, reveal);
-  if (!user) throw notFound();
   // The record is written before the response; if it cannot be written, nothing is disclosed.
   await requireAudit(c, { actorUserId: admin.userId, actorRoles: admin.roles, action: reveal ? 'users.pii.reveal' : 'users.view', targetType: 'user',
     targetId: id, outcome: 'success', metadata: reveal ? { field: 'email' } : undefined });
+  const user = await getUser(c.get('main'), c.get('adminDb'), id, reveal);
+  if (!user) throw notFound();
   return ok(c, user);
 });
 authed.get('/households', requirePermission('households.read'), async (c) => ok(c, await listHouseholds(c.get('main'), query(c, HouseholdsQuery))));
@@ -167,9 +165,9 @@ authed.post('/recipes/:id/reviews', requirePermission('recipes.review'), async (
   const recipeId = param(c, 'id');
   const input = await body(c, RecipeReviewBody);
   // Recipe authority stays in the customer database and is only read here.
-  const recipe = await c.get('main').prepare('SELECT version FROM recipes WHERE id = ?').bind(recipeId).first<{ version: number }>();
-  if (!recipe) throw notFound();
-  if (Number(recipe.version) !== input.recipeVersion) throw conflict('Công thức đã thay đổi, vui lòng tải lại.');
+  const recipe = await c.get('main').recipeVersion(recipeId);
+  if (recipe === null) throw notFound();
+  if (recipe !== input.recipeVersion) throw conflict('Công thức đã thay đổi, vui lòng tải lại.');
   const id = newId('rev');
   const createdAt = nowIso();
   const adminDb = c.get('adminDb');

@@ -1,5 +1,6 @@
 // LOCAL ONLY (pnpm admin:dev). Compiles in the development password login and binds the
 // console to the loopback origin; a public host can never match ADMIN_ORIGIN. Do not deploy.
+// R2 (F1): No direct customer D1 binding. Customer reads go strictly through CUSTOMER_READ.
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "takosan-admin-local",
@@ -18,16 +19,17 @@
   },
   "d1_databases": [
     {
-      "binding": "DB",
-      "database_name": "frigo-db",
-      "database_id": "f975ec39-b2c8-4a2a-80e1-0366054599d3",
-      "migrations_dir": "migrations"
-    },
-    {
       "binding": "ADMIN_DB",
       "database_name": "takosan-admin-db",
       "database_id": "00000000-0000-4000-8000-000000000000",
       "migrations_dir": "migrations-admin"
+    }
+  ],
+  "services": [
+    {
+      "binding": "CUSTOMER_READ",
+      "service": "takosan-admin-read-facade-local",
+      "entrypoint": "AdminCustomerReadFacade"
     }
   ],
   "kv_namespaces": [
