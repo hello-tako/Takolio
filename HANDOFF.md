@@ -1,3 +1,38 @@
+# Admin Console R2 local continuation — 2026-10-15
+
+**Status:** ADMIN_V1_R2_CHANGES_REQUIRED; implementation/integration in progress,
+not ready for independent review, staging or production. Work is local on
+`feat/admin-v1-r2-isolation-governance`; do not push, merge PR #77, deploy, access
+remote D1, change credentials or activate resources. Report/package:
+`docs/admin/remediation-r2/REPORT.md` (not an independent certification).
+
+**Source:** verified initial handoff `87d6d3d2acc69a6ca3f0409c3c22753469807222`;
+main `0ff82ed` is a parent of merge `a2f47c5`, which preserves all main-side
+lines in the four conflicted docs/ai status files. Customer protected runtime
+paths and migrations 0001–0043 were unchanged by this continuation.
+WP0 checkpoint `a0662040`: migration matrix14/14, workerd108/108, E2E12/12,
+lint/types/build/customer+admin migration smoke passed before R2 edits.
+Full-suite two-worker run: 8,574 pass / 1 family-planner30s timeout; isolated
+family-planner3/3 pass does not make the whole run PASS. Fresh full proof pending.
+
+**Changes under integration:** separate internal facade and no Admin customer DB
+binding; issuer/subject validation; independent operator enrollment and offline
+signed recovery; atomic role/approval guards; bootstrap/audit hardening; bounded
+reads/caching; keyboard/screenshot/deep-link regressions. Customer auth/schema,
+payment runtime and release gates remain protected. Historical R1 evidence stays.
+
+**Environment failure:** unrequested Modal replacement generation3→4 at ~07:38UTC
+restored an old snapshot and lost uncommitted R2 edits and active checks. Code is
+being recovered from retained context into local checkpoint commits, beginning
+`12fbacaa`/`2ddc5f7f`/`c6de26ee`; platform feedback filed. Partial/reconstruction
+checks are not final evidence. No publication or remote resource operation occurred.
+
+**Next:** complete reconstruction/integration, freeze an implementation commit,
+run the full required local gates plus original/adversarial PoCs, workerd and
+browser proof, review the diff, and finalize the exact-SHA R2 evidence package.
+
+---
+
 # Admin V1 R1 certification review - 2026-10-14
 
 **Status:** ADMIN_V1_R1_CHANGES_REQUIRED (local review of 0331cc9/25140ba; reviewer
