@@ -1,3 +1,79 @@
+# T27 compact kitchen UI local checkpoint - 2026-10-16 JST
+
+Verified implementation checkpoint: `34421382` (source/tests/ADR/task packet).
+
+**Status:** LOCAL_COMPLETE / NOT_DEPLOYED. The compact UI/UX pass is implemented on
+branch `codex/compact-kitchen-ux-20261015`; no production, staging or migration
+operation was performed for T27.
+
+**Product result:** Kitchen routes use a scoped compact density layer. Page titles,
+section/card typography, repeated padding and panel chrome are smaller while text
+inputs remain 16px and action targets remain at least 44px. The mobile header is
+64px, scan keeps its accessible name, and `/plus` is excluded. Planner setup now
+clearly separates auto whole-meal generation from a manual calendar, summarizes
+saved habits, keeps allergy/forbidden-ingredient choices visible and reflects
+Vietnamese meal structure. Favorites, shopping, recipes and onboarding use shorter
+copy and clearer next actions. Shopping manual entry is a native disclosure that
+preserves the user's open state and draft across responsive resizing.
+
+**Verification:** `pnpm lint`, `pnpm typecheck`, paired ON build, default build,
+`pnpm check:migrations`, `git diff --check` and scoped Prettier all PASS. Family
+Playwright E2E is 12/12 PASS across 320/390/768/1280 in 4.9m, covering manual
+calendar, multi-dish servings, picker quantities, favorites, generated family
+meals, shopping edit/reload and unknown-demand review/skip/reopen. Full Vitest
+ran 362 files / 8,467 tests: 8,466 PASS and one timeout in the Wrangler local
+migration-list test (5.326s execution against a 5s budget), exit 1. That file
+passes 32/32 in isolation in 6.47s; this is a test-runner timing budget issue,
+not a failed assertion. Logs and exact limits are in `docs/ai/tasks/T27-compact-kitchen-ux.md`.
+
+**Browser proof:** Isolated preview manually checked at 320px and 390px/desktop.
+Planner setup accessibility exposes Vietnamese contextual headings, meal structure
+and safety summary. Shopping disclosure opens by Enter/Space, has visible focus,
+keeps a typed draft and stays open through 320px -> 1280px -> 320px; no horizontal
+overflow was observed. Final visual artifacts are in `.wrangler/family-meals/`.
+
+**Limits/next:** Local synthetic preview does not certify hosted signed-in
+behavior, native iOS rendering, 200% zoom or retention. Product/design review and
+normal protected CI/staging/production release remain the next action if this
+checkpoint is accepted.
+
+---
+
+# T26 planner repair deployed - 2026-10-15 JST
+
+**Status:** DEPLOYED / AUTHENTICATED_HOSTED_ACCEPTANCE_NOT_TESTED. PR78 merged;
+production serves `03428467cdd5e93d27a3a27e5edaf7d512eef71d`. The repair bounds
+stalled requests/recovery and reduces repeated family-search work. This supersedes
+the local-only checkpoint below; source implementation `063a026d` remains intact.
+
+**Hosted gates:** exact-head CI38725963888, exact-main CI38727424674,
+staging Deploy38728806704 and approved production Deploy38729311534 all SUCCESS.
+All three full hosted suites passed362files/8465tests (556.32s/582.26s/375.79s).
+Native14-slot Worker/D1 regressions6529/5708/4227ms PASS; these are isolated CI
+fixtures, not real production-household latency. Required approval was observed
+from vn-taphoanhatung; no approval bypass, migration or rollback.
+
+**Serving proof:** production Worker`3ce9750e-244f-4a34-90ef-7d65bf3a60c6`,
+deployment`65109b89-1b23-4bb6-b163-ac7fc2de0476`, canonical D1 unchanged.
+Protected ledger43/tip0043/FK/quick/catalog500/fingerprint, exact D1-to-D1
+continuity from0ff82edb, paired ON and recovery proof PASS. Inactive same-candidate
+OFF recovery`f6c92374-423b-4868-b4e6-b637958631f3`; traffic NOT_REHEARSED.
+
+**Final public verification:** `work/t26-production-public-final.json` PASS,
+2026-10-15T11:57:18.726Z. ExactSHA before/after, auth no-store, immutable
+`/assets/index-nVdrWEoj.js`, matching SW hash and3 ordinary/revalidated
+observations plus D1 post-deploy smoke PASS. DBok/D1/500/no fallback. Existing
+informational CONFIG_RECIPE_CATALOG_D1_AUTHORITY is the only degraded warning.
+
+**Limits/next:** signed-in hosted creation still NOT_TESTED under the user's
+automated/public-smoke choice. No production CPU trace or production latency
+certification. Native/browser behavior proofs, initial failed checks,42-slot
+sparse-stock partial case and retry/legacy limits remain in T26. Capture a supported
+signed-in household symptom/response if the issue recurs. No further release gate
+is pending; receipts are checkpointed separately without changing serving main.
+
+---
+
 # T26 family planner hang repaired locally - 2026-10-15 JST
 
 **Status:** READY_FOR_RELEASE. Implementation commit `063a026d` on

@@ -30,7 +30,7 @@ export function KitchenHeader({
         <Link to="/notifications" aria-label="Thông báo" className="kitchen-icon-link">
           <Bell aria-hidden="true" size={20} />
         </Link>
-        <Link to="/me" aria-label="Tài khoản cá nhân" className="kitchen-icon-link">
+        <Link to="/me" aria-label="Tài khoản cá nhân" className="kitchen-icon-link kitchen-account-link">
           {avatarUrl ? (
             <img
               src={avatarUrl}

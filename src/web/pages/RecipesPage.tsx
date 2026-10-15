@@ -47,7 +47,7 @@ export const RecipesPage = () => {
   const [params, setParams] = useSearchParams();
   const savedView = params.get('view') === 'saved';
   const filters = readDiscoveryFilters(params);
-  const isGuest = useAuthStore(state => state.isGuest);
+  const isGuest = useAuthStore((state) => state.isGuest);
   const preferences = useFamilyPreferences(!isGuest);
   const servings = filters.servings ?? preferences.data?.preferences.householdSize ?? 2;
   const [filtersOpen, setFiltersOpen] = useState(
@@ -125,8 +125,12 @@ export const RecipesPage = () => {
       <div className="kitchen-page-body animate-fade-in">
         <KitchenPageHeading
           eyebrow="Công thức mỗi ngày"
-          title="Chọn món cho căn bếp của bạn"
-          description="Tìm theo món, nguyên liệu hoặc cách nấu. Kiểm tra phần cần mua trước khi bắt đầu."
+          title={savedView ? 'Món đã lưu' : 'Hôm nay nhà mình nấu gì?'}
+          description={
+            savedView
+              ? 'Chọn món quen để thêm vào bữa hoặc xem lại công thức.'
+              : 'Tìm món Việt quen thuộc và xem nguyên liệu cần cho cả nhà.'
+          }
         />
         <nav className="family-recipe-tabs" aria-label="Thư viện món">
           <Link to="/recipes" aria-current={!savedView ? 'page' : undefined}>
@@ -165,14 +169,20 @@ export const RecipesPage = () => {
               </div>
               <label className="discovery-select-label mt-4">
                 Nấu cho bao nhiêu người?
-                <select value={servings} onChange={event => update({ servings: Number(event.target.value) })}>
-                  {Array.from({ length: 20 }, (_, index) => index + 1).map(value =>
-                    <option key={value} value={value}>{value} người</option>)}
+                <select
+                  value={servings}
+                  onChange={(event) => update({ servings: Number(event.target.value) })}
+                >
+                  {Array.from({ length: 20 }, (_, index) => index + 1).map((value) => (
+                    <option key={value} value={value}>
+                      {value} người
+                    </option>
+                  ))}
                 </select>
               </label>
               <p className="mt-2 text-sm text-semantic-text-secondary">
-                Lượng trong tủ được kiểm tra cho {servings} người. Mỗi món được tính riêng;
-                khi xếp vào thực đơn, app tính tiếp phần đã dành cho các bữa khác.
+                Tính riêng từng món cho {servings} người. Khi xếp thực đơn, Takosan tính tiếp phần
+                đã dành cho các bữa khác.
               </p>
               <details
                 className="discovery-filter-panel"

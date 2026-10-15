@@ -1,3 +1,45 @@
+# T27 compact kitchen UI - 2026-10-16
+
+Verified implementation checkpoint: `34421382` (source/tests/ADR/task packet).
+
+**State:** LOCAL_COMPLETE / NOT_DEPLOYED. Source and tests are ready for review on
+`codex/compact-kitchen-ux-20261015`.
+
+**Done:** Scoped compact typography/spacing; smaller mobile shell; clearer planner
+setup for whole-meal vs manual calendar; visible allergy/forbidden summaries;
+compact favorites/recipes/onboarding; shopping list prioritization and responsive
+manual-add disclosure with keyboard and draft persistence. No backend, schema,
+flags, payments, auth or production files changed.
+
+**Checks:** lint/typecheck/builds/migrations/diff checks PASS; family E2E 12/12
+across 320/390/768/1280 PASS. Full Vitest has 8,466/8,467 passing; one Wrangler
+local migration-list test exceeded its 5s budget by 326ms, while isolated 32/32
+passes. See `docs/ai/tasks/T27-compact-kitchen-ux.md` and `work/` logs.
+
+**Next:** Product/design review, then protected CI and release workflow only after
+acceptance. Do not treat local preview or E2E as production evidence.
+
+---
+
+# T26 production deployment complete - 2026-10-15 JST
+
+**State:** DEPLOYED, signed-in hosted acceptance NOT_TESTED. PR78 merged and
+`03428467cdd5e93d27a3a27e5edaf7d512eef71d` serves production.
+Exact-head/main CI, staging38728806704, approved production38729311534 and
+root protected/public receipt verifications PASS. Full362files/8465tests passed
+on each hosted CI/production run. No migration, rollback or flag downgrade.
+
+**Certified:** canonical DB, ledger43/tip0043, unchanged D1 continuity from0ff82edb,
+500/fingerprint/no fallback, paired ON, new active Worker/deployment and inactive
+same-candidate OFF recovery; public exactSHA/cache/SW smoke PASS.
+
+**Next:** maintain this serving candidate and evidence checkpoint. Hosted account
+generation still requires supported signed-in acceptance; public smoke is not that
+proof. Product behavior is covered by native Worker/D1 and actual390/1280 browser
+regressions; production CPU trace/latency remains unverified.
+
+---
+
 # T26 family planner response recovery - 2026-10-15 JST
 
 **Status:** READY_FOR_RELEASE; implementation `063a026d`, branch

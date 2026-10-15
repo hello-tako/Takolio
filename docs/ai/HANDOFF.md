@@ -1,3 +1,77 @@
+# T27 handoff - compact kitchen UI - 2026-10-16 JST
+
+Verified implementation checkpoint: `34421382` (source/tests/ADR/task packet).
+
+**Status:** LOCAL_COMPLETE / NOT_DEPLOYED. Branch:
+`codex/compact-kitchen-ux-20261015`. Implementation is intentionally presentation
+and copy scoped; planner contracts, safety rules, inventory semantics, auth,
+payments, migrations and infrastructure remain unchanged.
+
+**Changes:** `kitchen-density.css` supplies compact tokens and route-scoped density;
+planner setup makes auto/manual intent legible and keeps safety selections visible;
+shopping uses a responsive native disclosure; favorites, recipes, onboarding and
+shell copy are shorter and task-oriented. Editable controls remain 16px and touch
+areas remain >=44px.
+
+**Evidence:** lint, types, default/paired builds, migration checks and diff checks
+PASS. Family E2E 12/12 PASS across four viewports. Full Vitest is 8,466 PASS / 1
+Wrangler startup timeout (5.326s vs 5s); focused staging catch-up is 32/32 PASS.
+Manual preview verified keyboard disclosure, focus, draft retention, responsive
+state and no overflow at 320px. Exact evidence is in the T27 task packet.
+
+**Next action:** Review `.wrangler/family-meals/board-viewport-390.png` and the
+T27 packet, then decide whether to start protected CI/staging/production release.
+No deployment was performed by this checkpoint.
+
+---
+
+# T26 release handoff - 2026-10-15 JST
+
+**Status:** DEPLOYED / AUTHENTICATED_HOSTED_ACCEPTANCE_NOT_TESTED. Verified source
+`063a026d`, docs`bf6d4f1e`, normal PR78 merge/deployed main
+`03428467cdd5e93d27a3a27e5edaf7d512eef71d`. Receipt documentation continues on
+`codex/planner-response-release-receipts-20261015`; no runtime change after deploy.
+
+**Executed release:** exact-head CI38725963888 PASS362/8465,556.32s; exact-main
+CI38727424674 PASS362/8465,582.26s; staging38728806704 PASS; production38729311534
+approved by vn-taphoanhatung and SUCCESS, full362/8465PASS375.79s. Production
+native14-slot fixture4227ms (other hosted6529/5708ms), exact replay/full roles/
+one plan/stock unchanged PASS. Local final gates/browser evidence remains below.
+
+**Final production authority:** Worker`3ce9750e-244f-4a34-90ef-7d65bf3a60c6`,
+deployment`65109b89-1b23-4bb6-b163-ac7fc2de0476`, DB
+`f975ec39-b2c8-4a2a-80e1-0366054599d3`. Exact old Worker/deployment join,
+22unchanged authority blobs/Zod dependency and D1-to-D1 continuity PASS.
+Remote ledger43/tip0043, FK/quick/catalog500/fingerprint/no fallback and paired
+ON PASS. Inactive OFF recovery`f6c92374-423b-4868-b4e6-b637958631f3` certified
+with compiled OFF assets; recovery traffic NOT_REHEARSED, rollback NOT_USED.
+
+**Receipts:** artifact11969744595 at
+`work/t26-production-38729311534-1/release-manifest.json` and root verification
+sibling PASS. Staging artifact11968907373/root/public proofs PASS; staging remote
+ledger proof is inherited T25 with unchanged source. Final production public
+`work/t26-production-public-final.json` PASS2026-10-15T11:57:18.726Z: exactSHA,
+auth no-store, immutable local main, protected SW hash and3 observations, D1 smoke.
+Existing readiness warning is informational CONFIG_RECIPE_CATALOG_D1_AUTHORITY.
+
+**Limits:** signed-in hosted household generation NOT_TESTED, as user selected
+automated/public smoke. Isolated native tests and local actual-browser checks do
+not certify real production-household latency or resolve that acceptance gap.
+No production CPU-exhaustion trace. Prior failures and sparse42-slot partial/
+mount-lifetime retry/flag-OFF legacy limits are fully retained in T26.
+
+**Independent review:** protected production receipt reverified in memory
+against actual hosted jobs; direct public GET matches the final receipt. Exact
+SHA, reviewer approval, D1 continuity, catalog, active Worker, recovery identity
+and assets PASS. No blocking finding.
+
+**Next action:** retain this receipt checkpoint and deployed main. No pending
+production approval or migration remains. If the symptom recurs, inspect a
+supported signed-in request and actual response/trace; do not infer authenticated
+success from health.
+
+---
+
 # T26 handoff - family planner response recovery - 2026-10-15 JST
 
 **Status:** READY_FOR_RELEASE. Verified implementation commit `063a026d`;
