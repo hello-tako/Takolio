@@ -5,8 +5,8 @@
   "files": [
     {
       "path": "docs/ai/CURRENT_STATE.md",
-      "bytes": 637421,
-      "sha256": "2becc482942e861aa626e0ab01c61d62362ef21cf93671143ffa4bb930b9ed3c"
+      "bytes": 639119,
+      "sha256": "f084395959d8de958ad29798e27c40e8da6437cc1024019a9b958662cc4c3ba6"
     },
     {
       "path": "docs/ai/DECISIONS.md",
@@ -15,13 +15,13 @@
     },
     {
       "path": "docs/ai/HANDOFF.md",
-      "bytes": 639728,
-      "sha256": "d16f35b7f78558bd73ce601e5efde828b4e9316e24aeb614fadff9e5c02b4c2c"
+      "bytes": 641426,
+      "sha256": "43199e485c8731a27fa88869af768f3325ebae2dd241297a4561b35f786d4d94"
     },
     {
       "path": "docs/ai/TASK_BOARD.md",
-      "bytes": 483609,
-      "sha256": "b73591061e7b99c0abf65de38ef846a4fb7951e34897599bb80f25e29598c23c"
+      "bytes": 485307,
+      "sha256": "7afad11afd1228fa135562f1472d6f95a051ba62d1c8a8bb98589c18053ae112"
     },
     {
       "path": "docs/brand/takolio/v1/ASSET_MANIFEST.md",
@@ -45,8 +45,8 @@
     },
     {
       "path": "docs/brand/takolio/v1/VERIFICATION.md",
-      "bytes": 6805,
-      "sha256": "2df3bcad79b67de333e312ff4b8070a78d090700c69ba8f2f69e8fc70c3897fd"
+      "bytes": 8681,
+      "sha256": "647bffcb763a3b84f47ea24f5d0ab136175ded2ad56e8e89c98927ce1cced7ae"
     },
     {
       "path": "docs/brand/takolio/v1/evidence/before-observations.json",
@@ -87,6 +87,11 @@
       "path": "docs/brand/takolio/v1/evidence/occurrences.json",
       "bytes": 337273,
       "sha256": "e3ef6cb09ee2cde586e68d78ce95938903bff2bda79831a115e9af27a5005f28"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/portable-raster.json",
+      "bytes": 2755,
+      "sha256": "d4d55364226dd6f2444a62a8dc88ba9052e93dd17db77b70af0cd17f9c9dcfac"
     },
     {
       "path": "docs/brand/takolio/v1/evidence/protected-audit.json",
@@ -1090,8 +1095,8 @@
     },
     {
       "path": "tests/unit/takolio-brand.test.mjs",
-      "bytes": 4501,
-      "sha256": "916c123ed5be43803f923d4d1be3aa44038fa535b775a3daae15a32d740415a3"
+      "bytes": 7298,
+      "sha256": "182719dbc50890a2eee102d27f5133051758e1057c1d0e125146e83d50838b72"
     },
     {
       "path": "tests/unit/takosan-brand.test.tsx",

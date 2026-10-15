@@ -1,3 +1,17 @@
+# Takolio V1 native raster validation follow-up - 2026-10-16 JST
+
+**Status:** `TAKOLIO_V1_CHANGES_REQUIRED` until the automatic exact-head hosted `validate` succeeds. Draft PR #79 remains open: https://github.com/lol-vn/Tako-san/pull/79.
+
+**Observed failure:** runs `38791694785` and `38791948359` passed lint/typecheck but failed one new brand test (8,469/8,470 passed). The test required committed macOS PNG pixels to exactly match native Linux SVG rasterization; `icon-512.png` differed by one RGB LSB. Same-toolchain double-generation hashes passed. Migration smoke and build were skipped by those failed hosted jobs; prior local results remain separate evidence.
+
+**Correction:** test-only comparison retains exact same-toolchain SHA, committed manifest SHA, all non-PNG source bytes, dimensions/channels/decoded length and alpha. Cross-platform RGB differences must be at most one LSB in no more than floor(width * height * 3 * 0.0001) channels, with no minimum allowance for micro icons. Negative controls reject larger/color-density/alpha/geometry/micro changes. Generator, runtime artwork, application code and CI workflow are unchanged.
+
+**Executed:** `pnpm lint` PASS; `pnpm typecheck` PASS; focused brand suite PASS, five files / 50 tests. The earlier complete local suite remains 8,470 PASS; the added comparator guard is included in this focused run and the forthcoming hosted full run. See `docs/brand/takolio/v1/evidence/portable-raster.json` for log hashes and reproduction limits.
+
+**Next:** independent review of this follow-up, push feature branch only, wait for its automatic hosted validation and owner review. No merge, deployment, dispatch or protected-system change.
+
+---
+
 # Takolio V1 draft published - 2026-10-16 JST
 
 **Status:** `TAKOLIO_V1_IMPLEMENTED_REVIEW_REQUIRED`. Local implementation, local QA and independent code/design/security review complete. Draft PR #79: https://github.com/lol-vn/Tako-san/pull/79. Hosted `validate` runs automatically from the PR; it is pending at this checkpoint and is not claimed PASS.

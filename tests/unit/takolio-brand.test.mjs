@@ -9,8 +9,27 @@ const root = resolve(import.meta.dirname, '../..');
 const runtime = resolve(root, 'public/takolio/v1');
 const hash = (b) => createHash('sha256').update(b).digest('hex');
 
+function expectPortableRaster(actual, expected, name) {
+  const geometry = ({ width, height, channels }) => [width, height, channels];
+  expect(geometry(actual.info), `${name}: raster geometry`).toEqual(geometry(expected.info));
+  expect(actual.data.length, `${name}: decoded length`).toBe(expected.data.length);
+  let changedRgbChannels = 0, maxRgbDelta = 0, maxAlphaDelta = 0;
+  for (let i = 0; i < actual.data.length; i++) {
+    const delta = Math.abs(actual.data[i] - expected.data[i]);
+    if (actual.info.channels === 4 && i % 4 === 3) maxAlphaDelta = Math.max(maxAlphaDelta, delta);
+    else if (delta) { changedRgbChannels++; maxRgbDelta = Math.max(maxRgbDelta, delta); }
+  }
+  // Native SVG rasterizers may round sparse RGB channels by one LSB across OSes.
+  // There is no minimum allowance: micro exports and every alpha byte remain exact.
+  const allowedRgbChannels = Math.floor(actual.info.width * actual.info.height * 3 * 0.0001);
+  expect(maxAlphaDelta, `${name}: alpha drift`).toBe(0);
+  expect(maxRgbDelta, `${name}: RGB delta`).toBeLessThanOrEqual(1);
+  expect(changedRgbChannels, `${name}: RGB drift density`).toBeLessThanOrEqual(allowedRgbChannels);
+  return { changedRgbChannels, allowedRgbChannels, maxRgbDelta };
+}
+
 describe('Takolio V1 migration exports', () => {
-  it('regenerates exact source bytes and decoded pixels, with stable same-toolchain hashes', async () => {
+  it('regenerates exact source bytes and same-toolchain hashes with bounded native RGB rounding', async () => {
     const first = await mkdtemp(resolve(tmpdir(), 'takolio-first-'));
     const second = await mkdtemp(resolve(tmpdir(), 'takolio-second-'));
     const files = await generateTakolio(first);
@@ -22,10 +41,36 @@ describe('Takolio V1 migration exports', () => {
       const committed = await readFile(resolve(runtime, name));
       expect(hash(a), name).toBe(hash(b));
       if (name.endsWith('.png')) {
-        expect(await sharp(a).raw().toBuffer(), name).toEqual(await sharp(committed).raw().toBuffer());
+        const actual = await sharp(a).raw().toBuffer({ resolveWithObject: true });
+        const expected = await sharp(committed).raw().toBuffer({ resolveWithObject: true });
+        const rounding = expectPortableRaster(actual, expected, name);
+        if (rounding.changedRgbChannels) console.log('TAKOLIO_RASTER_ROUNDING', JSON.stringify({ path: name, ...rounding }));
       } else if (name !== 'asset-manifest.json') expect(a, name).toEqual(committed);
     }
   }, 30000);
+  it('rejects material RGB, opacity, geometry and micro-icon drift', () => {
+    const raster = (width = 100, height = 100, channels = 3) => ({
+      info: { width, height, channels }, data: Buffer.alloc(width * height * channels, 100),
+    });
+    const baseline = raster();
+    const rounding = raster();
+    rounding.data[0]++;
+    expect(expectPortableRaster(rounding, baseline, 'one LSB').changedRgbChannels).toBe(1);
+    const color = raster();
+    color.data[0] += 2;
+    expect(() => expectPortableRaster(color, baseline, 'color')).toThrow('RGB delta');
+    const density = raster();
+    for (let i = 0; i < 4; i++) density.data[i]++;
+    expect(() => expectPortableRaster(density, baseline, 'density')).toThrow('RGB drift density');
+    const alpha = raster(100, 100, 4);
+    alpha.data[3]++;
+    expect(() => expectPortableRaster(alpha, raster(100, 100, 4), 'opacity')).toThrow('alpha drift');
+    expect(() => expectPortableRaster(raster(50, 200), baseline, 'dimensions')).toThrow('raster geometry');
+    expect(() => expectPortableRaster(raster(100, 100, 4), baseline, 'channels')).toThrow('raster geometry');
+    const micro = raster(32, 32);
+    micro.data[0]++;
+    expect(() => expectPortableRaster(micro, raster(32, 32), 'micro')).toThrow('RGB drift density');
+  });
   it('keeps every canonical output hashed and SVG free of fonts, scripts or external references', async () => {
     const manifest = JSON.parse(await readFile(resolve(runtime, 'asset-manifest.json'), 'utf8'));
     for (const file of manifest.files) {

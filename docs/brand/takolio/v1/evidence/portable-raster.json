@@ -1,0 +1,75 @@
+{
+  "failureHeads": [
+    "6ee9c8c4fff71a472383c39e9ce0d9f97be541c6",
+    "06e5bdf403c48f7dcd6ab697cbe3fc5f0c18db15"
+  ],
+  "failureRuns": [
+    38791694785,
+    38791948359
+  ],
+  "observedDecodedMismatch": {
+    "path": "app-icons/icon-512.png",
+    "macOS": 241,
+    "linux": 240
+  },
+  "causeBoundary": "Native cross-platform SVG rasterization/rounding; same-toolchain repeated output SHA passed",
+  "guard": {
+    "maximumRgbDelta": 1,
+    "maximumChangedRgbFraction": 0.0001,
+    "allowance": "floor(width * height * 3 * fraction), no minimum",
+    "exact": [
+      "same-toolchain SHA",
+      "non-PNG source bytes",
+      "committed manifest SHA",
+      "dimensions",
+      "channels",
+      "decoded length",
+      "alpha"
+    ]
+  },
+  "runtimeGeneratorWorkflowChanged": false,
+  "localLinuxReproduction": "NOT_RUN: Docker daemon socket unavailable; hosted Ubuntu job is reproduction environment",
+  "receipts": [
+    {
+      "command": "pnpm lint",
+      "commandExitCode": 0,
+      "result": "PASS",
+      "workspaceLog": "work/after-portable-raster-lint.log",
+      "bytes": 129,
+      "logSHA256": "290e79cfb92b0915688046f7a3f234f26b64f79410f10aa0dd07bdd3ddd1391e"
+    },
+    {
+      "command": "pnpm typecheck",
+      "commandExitCode": 0,
+      "result": "PASS",
+      "workspaceLog": "work/after-portable-raster-typecheck.log",
+      "bytes": 195,
+      "logSHA256": "0480249daf53df62608924dde61f2642b1983da7a8188ede24d8fdaabb9d1a44"
+    },
+    {
+      "command": "pnpm exec vitest run tests/unit/takolio-brand.test.mjs tests/unit/brand-v3.test.mjs tests/unit/takosan-brand.test.tsx tests/unit/ui07-brand-exports.test.mjs tests/unit/ui07-brand-shell.test.tsx --maxWorkers=2",
+      "commandExitCode": 0,
+      "result": "PASS: five files / 50 tests",
+      "workspaceLog": "work/after-portable-raster-focused.log",
+      "bytes": 284,
+      "logSHA256": "78362e65ee0638c1a5c3c6128b0a07f880d8aafb0ce4b377c47e551edf8a2244"
+    },
+    {
+      "command": "gh run view 38791694785 --repo lol-vn/Tako-san --log-failed",
+      "commandExitCode": 0,
+      "result": "Hosted test failure preserved; log download succeeded",
+      "workspaceLog": "work/hosted-initial-failed.log",
+      "bytes": 1026612,
+      "logSHA256": "eb164d227fb7cfe6b514489b153639c97681198f49e709550b61cf5bacd61589"
+    },
+    {
+      "command": "gh run view 38791948359 --repo lol-vn/Tako-san --log-failed",
+      "commandExitCode": 0,
+      "result": "Hosted test failure preserved; log download succeeded",
+      "workspaceLog": "work/hosted-pre-fix-failed.log",
+      "bytes": 1024965,
+      "logSHA256": "b1deea983171fe360380397acd45a4e5ebe2aa17a5ba40ebef028b6addbe5aa5"
+    }
+  ],
+  "nextGate": "Automatic full validate at follow-up branch head; no manual dispatch"
+}
