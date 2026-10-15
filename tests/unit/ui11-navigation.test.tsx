@@ -42,6 +42,7 @@ describe('UI11 destination and compatibility contracts', () => {
     ['/planner/new', 'mealPlan'],
     ['/settings/planning', 'profile'],
     ['/notifications', 'profile'],
+    ['/plus', 'profile'],
   ])('%s selects exactly its route family', (route, icon) => {
     const active = NAV_ITEMS.filter((item) => isKitchenNavActive(item, route));
     expect(active).toHaveLength(1);
@@ -70,7 +71,7 @@ describe('UI11 destination and compatibility contracts', () => {
     expect(html).toContain('data-kitchen-navigation="persistent"');
     expect(html).toContain('id="kitchen-main"');
   });
-  it.each(['/plus', '/checkout', '/settings/billing'])(
+  it.each(['/checkout', '/settings/billing'])(
     '%s retains legacy shell and identity',
     (route) => {
       const html = render(<AppLayout />, route);

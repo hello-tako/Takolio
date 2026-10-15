@@ -7,6 +7,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { z } from 'zod';
 import { MealPlanDtoSchema, PlanShoppingDtoSchema, type MealPlanDto } from '../../packages/domain/src/meal-planning-api';
 import type { MoneyDto } from '../../packages/domain/src/meal-shopping-api';
+import { useAuthStore } from '../../src/web/stores/useAuthStore';
 import { PlannerPage } from '../../src/web/pages/PlannerPage';
 import { PlannerWeek } from '../../src/web/features/planner/PlannerWeek';
 import { PlannerMeal } from '../../src/web/features/planner/PlannerMeal';
@@ -18,6 +19,15 @@ import { budgetStatusLabel, plannerConclusionLabel, plannerCopy, plannerStatusLa
 import { queryKeys } from '../../src/web/lib/queryKeys';
 import { mealPlanningApi } from '../../src/web/services/meal-planning';
 import { ApiError } from '../../src/web/services/http';
+
+
+const auth = vi.hoisted(() => ({ userId: 'user-ui', householdId: 'house-ui', isGuest: false, avatarUrl: null }));
+vi.mock('../../src/web/stores/useAuthStore', () => {
+  const useAuthStore = (selector?: (state: typeof auth) => unknown) => selector ? selector(auth) : auth;
+  useAuthStore.getState = () => auth;
+  useAuthStore.setState = (state: Partial<typeof auth>) => Object.assign(auth, state);
+  return { useAuthStore };
+});
 
 type Shopping = z.infer<typeof PlanShoppingDtoSchema>;
 const id = '11111111-1111-4111-8111-111111111111';
@@ -123,10 +133,15 @@ function costSummary(html: string) {
 }
 
 beforeEach(() => {
+  // These fixtures exercise V1 meals; T20 composition tests own the enabled path.
+  vi.stubEnv('VITE_MEAL_PLANNER_ENABLED', 'true');
+  vi.stubEnv('VITE_MEAL_COMPOSITION_V2_ENABLED', 'false');
   vi.stubGlobal('localStorage', { getItem: () => null });
+  useAuthStore.setState({ userId: 'user-ui', householdId: 'house-ui', isGuest: false });
 });
 afterEach(() => {
   clients.splice(0).forEach((client) => client.clear());
+  vi.unstubAllEnvs();
   vi.unstubAllGlobals();
   vi.restoreAllMocks();
 });
@@ -349,7 +364,8 @@ describe('shopping, budget and uncertainty rendering', () => {
     contains(summary, copy[locale].completeTotal);
     contains(html, '2 × 300 g');
     contains(html, `${copy[locale].surplus}: 80 g`);
-    expect(html).toMatch(/<label[^>]*><input type="checkbox"/);
+    expect(html).not.toContain('type="checkbox"');
+    contains(html, locale === 'vi' ? 'đánh dấu đã mua trong danh sách dùng chung.' : 'mark purchases in the shared list.');
     contains(html, copy[locale].checklistNote);
     expect(html).not.toContain('checked=""');
   });

@@ -17,9 +17,12 @@ import { recipeRoutes } from './routes/recipes';
 import { recipeMediaRoutes } from './routes/recipe-media';
 import { shoppingRoutes } from './routes/shopping';
 import { preferencesRoutes } from './routes/preferences';
+import { familyPreferencesRoutes } from './routes/family-preferences';
+import { recipeFavoritesRoutes } from './routes/recipe-favorites';
 import { notificationRoutes } from './routes/notifications';
 import { weekRoutes } from './routes/week';
 import { mealPlanningRoutes } from './routes/meal-planning';
+import { createFamilyMealPlanningRoutes } from './routes/family-meal-planning';
 import { processScanJob, ScanQueueError } from './services/scan-queue';
 import { billingRoutes } from './routes/billing';
 import { buildRequestTelemetry, createRequestCorrelation, emitRequestTelemetry } from './observability/request-telemetry';
@@ -143,12 +146,20 @@ api.route('/', scanRoutes);
 api.route('/', recipeRoutes);
 api.route('/', shoppingRoutes);
 api.route('/', preferencesRoutes);
+api.route('/', familyPreferencesRoutes);
+api.route('/', recipeFavoritesRoutes);
 api.route('/', notificationRoutes);
 api.route('/', weekRoutes);
 api.route('/', mealPlanningRoutes);
 
 // Mount API under /api/v1
 app.route('/api/v1', api);
+
+// Family meal planning V2 is additive: strict V1 planner responses remain untouched.
+const apiV2 = new Hono<WorkerApp>();
+apiV2.use('*', authMiddleware);
+apiV2.route('/', createFamilyMealPlanningRoutes());
+app.route('/api/v2', apiV2);
 
 // 7. Static assets fallback (SPA)
 app.get('*', async (c) => {

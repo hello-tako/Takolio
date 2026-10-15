@@ -29,6 +29,30 @@ describe('durable checkout creation with mock provider', () => {
     expect(dispatch).toHaveBeenCalledTimes(1);
     expect(db.query('PRAGMA foreign_key_check')).toEqual([]);
   });
+  it('creates, replays and resumes an alphanumeric payOS virtual account without another dispatch', async () => {
+    const virtualInstructions = { ...instructions, accountNumber: 'VQRTEST1234567897' };
+    dispatch.mockResolvedValueOnce(virtualInstructions);
+    const first = await createCheckout(db, 'a', key, 'monthly', dispatch);
+    expect(first.kind).toBe('created');
+    if (first.kind !== 'created') throw new Error('Virtual-account checkout failed');
+    expect(first.payment.instructions).toEqual(virtualInstructions);
+    expect(await createCheckout(db, 'a', key, 'monthly', dispatch)).toEqual({ kind: 'replay', payment: first.payment });
+    expect(await readCheckout(db, 'a', first.payment.id)).toEqual({ kind: 'replay', payment: first.payment });
+    expect(await readCheckout(db, 'b', first.payment.id)).toBeNull();
+    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(db.query('SELECT state FROM checkout_admissions')).toEqual([{ state: 'ready' }]);
+    expect(db.query('SELECT * FROM payment_reconciliation_records')).toEqual([]);
+  });
+  it.each(['VQR/path', 'VQR?query', 'VQR account', 'VQR_123', 'VQR-123', 'VQR\u00e9123', 'x'.repeat(33)])(
+    'does not advertise or retry unsafe virtual-account instructions (%s)', async (accountNumber) => {
+      dispatch.mockResolvedValueOnce({ ...instructions, accountNumber });
+      expect((await createCheckout(db, 'a', key, 'monthly', dispatch)).kind).toBe('reconciliation');
+      expect((await createCheckout(db, 'a', key, 'monthly', dispatch)).kind).toBe('reconciliation');
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(db.query('SELECT state,instructions_json FROM checkout_admissions')).toEqual([
+        { state: 'remote_uncertain', instructions_json: null },
+      ]);
+    });
   it('conflicts on changed plan without creating or dispatching another intent', async () => {
     await createCheckout(db, 'a', key, 'monthly', dispatch);
     expect((await createCheckout(db, 'a', key, 'annual', dispatch)).kind).toBe('conflict');
@@ -131,4 +155,72 @@ it('recovers an already committed ready order after losing the database response
   expect(dispatch).toHaveBeenCalledTimes(1);
   expect(db.query('SELECT * FROM payment_reconciliation_records')).toHaveLength(0);
   expect(db.query('SELECT status FROM payment_intents')).toEqual([{ status: 'pending' }]);
+});
+
+
+describe('owner outstanding-order fence', () => {
+  it('admits one provider order across concurrent different keys and plans without orphan rows', async () => {
+    const results = await Promise.all(Array.from({ length: 100 }, (_, index) =>
+      createCheckout(db, 'a', `different_checkout_key_${index}`, index % 2 ? 'annual' : 'monthly', dispatch)));
+    const created = results.find((result) => result.kind === 'created');
+    expect(created?.kind).toBe('created');
+    if (created?.kind !== 'created') throw new Error('Admission fixture failed');
+    expect(results.filter((result) => result.kind === 'created')).toHaveLength(1);
+    expect(results.filter((result) => result.kind === 'in_progress')).toHaveLength(99);
+    expect(results.filter((result) => result.kind === 'in_progress').every((result) => result.kind !== 'in_progress' || result.intentId === created.payment.id)).toBe(true);
+    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(db.query('SELECT * FROM payment_intents')).toHaveLength(1);
+    expect(db.query('SELECT * FROM checkout_admissions')).toHaveLength(1);
+    expect(db.query('PRAGMA foreign_key_check')).toEqual([]);
+  });
+
+  it.each(['2099-01-01T00:00:00.000Z', 'invalid'])('blocks a legacy pending order with expiry %s without fabricating QR', async (expiry) => {
+    db.seed(`INSERT INTO payment_intents
+      (id,user_id,plan,amount_vnd,currency,order_code,description,status,expires_at)
+      VALUES ('legacy-pending','a','monthly',49000,'VND','100001','TP100001','pending','${expiry}')`);
+    expect(await createCheckout(db, 'a', key, 'annual', dispatch)).toEqual({ kind: 'in_progress', intentId: 'legacy-pending' });
+    expect(dispatch).not.toHaveBeenCalled();
+    expect(db.query('SELECT * FROM payment_intents')).toHaveLength(1);
+    expect(db.query('SELECT * FROM checkout_admissions')).toEqual([]);
+    expect(await readCheckout(db, 'a', 'legacy-pending')).toBeNull();
+    expect((await createCheckout(db, 'b', key, 'monthly', dispatch)).kind).toBe('created');
+  });
+
+  it('keeps ready same-key replay but blocks a different key until that offer expires', async () => {
+    const first = await createCheckout(db, 'a', key, 'monthly', dispatch);
+    expect(first.kind).toBe('created');
+    if (first.kind !== 'created') throw new Error('Admission fixture failed');
+    expect(await createCheckout(db, 'a', `${key}_new`, 'annual', dispatch)).toEqual({ kind: 'in_progress', intentId: first.payment.id });
+    expect((await createCheckout(db, 'a', key, 'monthly', dispatch)).kind).toBe('replay');
+    db.seed("UPDATE payment_intents SET expires_at = '2000-01-01T00:00:00.000Z'");
+    expect((await createCheckout(db, 'a', key, 'monthly', dispatch)).kind).toBe('expired');
+    expect((await createCheckout(db, 'a', `${key}_new`, 'annual', dispatch)).kind).toBe('created');
+    expect(dispatch).toHaveBeenCalledTimes(2);
+    expect(db.query('SELECT * FROM payment_intents')).toHaveLength(2);
+  });
+
+  it('blocks another key indefinitely after an ambiguous provider response, even after expiry', async () => {
+    dispatch.mockRejectedValueOnce(new Error('response lost'));
+    const first = await createCheckout(db, 'a', key, 'monthly', dispatch);
+    expect(first.kind).toBe('reconciliation');
+    if (first.kind !== 'reconciliation') throw new Error('Uncertainty fixture failed');
+    db.seed("UPDATE payment_intents SET expires_at = '2000-01-01T00:00:00.000Z'");
+    expect(await createCheckout(db, 'a', `${key}_new`, 'annual', dispatch)).toEqual(first);
+    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(db.query('SELECT * FROM payment_intents')).toHaveLength(1);
+    expect(db.query('SELECT * FROM checkout_admissions')).toHaveLength(1);
+  });
+
+  it('returns the existing dispatch and converts a crossed deadline to reconciliation on a different key', async () => {
+    db.hooks.afterBatch = () => { throw new Error('simulated crash'); };
+    await expect(createCheckout(db, 'a', key, 'monthly', dispatch)).rejects.toThrow('simulated crash');
+    db.hooks = {};
+    const id = db.query<{ id: string }>('SELECT id FROM payment_intents')[0].id;
+    expect(await createCheckout(db, 'a', `${key}_new`, 'annual', dispatch)).toEqual({ kind: 'in_progress', intentId: id });
+    db.seed("UPDATE checkout_admissions SET deadline_at = '2000-01-01T00:00:00.000Z'");
+    expect(await createCheckout(db, 'a', `${key}_new`, 'annual', dispatch)).toEqual({ kind: 'reconciliation', intentId: id });
+    expect(dispatch).not.toHaveBeenCalled();
+    expect(db.query('SELECT state FROM checkout_admissions')).toEqual([{ state: 'remote_uncertain' }]);
+    expect(db.query('SELECT * FROM payment_intents')).toHaveLength(1);
+  });
 });

@@ -1699,7 +1699,7 @@ describe('release workflow guardrails', () => {
     expect(deploy).toContain('inputs.confirm_production == true');
     expect(deploy).toContain('environment: production');
     expect(deploy).toContain('ref: ${{ needs.release.outputs.deploy_sha }}');
-    expect(deploy).toContain('GIT_COMMIT:${{ needs.release.outputs.deploy_sha }}');
+    expect(deploy).toContain('run: node scripts/cloudflare-deploy-retry.mjs release-manifest.json');
     // T19B: full D1 is an explicit reviewed release state; 25 is the widest deterministic canary stage.
     expect(deploy).toContain('options: [static, shadow, canary, d1]');
     expect(deploy).toContain("options: ['0', '1', '2', '5', '25']");
@@ -1716,19 +1716,13 @@ describe('release workflow guardrails', () => {
     expect(deploy).toContain(
       "RECIPE_CATALOG_D1_CANARY_PERCENT: ${{ github.event_name == 'workflow_dispatch' && inputs.recipe_catalog_d1_canary_percent || '0' }}",
     );
-    expect(
-      deploy.match(/RECIPE_CATALOG_MODE:\$\{\{ needs\.release\.outputs\.recipe_catalog_mode \}\}/g),
-    ).toHaveLength(2);
-    expect(
-      deploy.match(
-        /RECIPE_CATALOG_D1_CANARY_PERCENT:\$\{\{ needs\.release\.outputs\.recipe_catalog_d1_canary_percent \}\}/g,
-      ),
-    ).toHaveLength(2);
-    expect(
-      deploy.match(
-        /RECIPE_CATALOG_CUTOVER_ENABLED:\$\{\{ needs\.release\.outputs\.recipe_catalog_cutover_enabled \}\}/g,
-      ),
-    ).toHaveLength(2);
+    const uploader = readFileSync(new URL('../../scripts/cloudflare-deploy-retry.mjs', import.meta.url), 'utf8');
+    expect(uploader).toContain('validateRecipeCatalogManifestPolicy(manifest)');
+    for (const field of ['RECIPE_CATALOG_MODE: manifest.recipeCatalogMode',
+      'RECIPE_CATALOG_D1_CANARY_PERCENT: manifest.recipeCatalogCanaryPercent',
+      'RECIPE_CATALOG_CUTOVER_ENABLED: manifest.recipeCatalogCutoverEnabled', 'GIT_COMMIT: manifest.sha']) {
+      expect(uploader).toContain(field);
+    }
     expect(deploy).not.toContain("options: ['0', '1', '2', '5', '10'");
     expect(deploy).not.toContain("'50'");
     expect(deploy).not.toContain("'100'");
@@ -1743,7 +1737,7 @@ describe('release workflow guardrails', () => {
       production.indexOf('d1-schema-gate.sh remote'),
     );
     expect(production.indexOf('release-check.mjs schema')).toBeLessThan(
-      production.indexOf('command: deploy'),
+      production.indexOf('run: node scripts/cloudflare-deploy-retry.mjs release-manifest.json'),
     );
     for (const check of [
       'd1-migration-check.mjs config',
@@ -1757,18 +1751,18 @@ describe('release workflow guardrails', () => {
       'PRAGMA quick_check',
     ]) {
       expect(production.indexOf(check), check).toBeGreaterThan(-1);
-      expect(production.indexOf(check), check).toBeLessThan(production.indexOf('command: deploy'));
+      expect(production.indexOf(check), check).toBeLessThan(production.indexOf('run: node scripts/cloudflare-deploy-retry.mjs release-manifest.json'));
     }
     expect(production.indexOf('wrangler secret list')).toBeLessThan(
-      production.indexOf('command: deploy'),
+      production.indexOf('run: node scripts/cloudflare-deploy-retry.mjs release-manifest.json'),
     );
     expect(production.indexOf('release-check.mjs transition')).toBeLessThan(
-      production.indexOf('command: deploy'),
+      production.indexOf('run: node scripts/cloudflare-deploy-retry.mjs release-manifest.json'),
     );
     expect(production.indexOf('release-check.mjs rollback-target')).toBeLessThan(
-      production.indexOf('command: deploy'),
+      production.indexOf('run: node scripts/cloudflare-deploy-retry.mjs release-manifest.json'),
     );
-    expect(production.indexOf('command: deploy')).toBeLessThan(
+    expect(production.indexOf('run: node scripts/cloudflare-deploy-retry.mjs release-manifest.json')).toBeLessThan(
       production.indexOf('wait-for-deployed-release.mjs'),
     );
     // Production authority proof is unconditional: no token ⇒ the step fails, never silently passes.
@@ -1832,8 +1826,9 @@ describe('release workflow guardrails', () => {
     for (const job of [staging, production]) {
       expect(job).toContain('post-deploy-smoke.sh');
       expect(job).toContain('DEPLOY_SHA: ${{ needs.release.outputs.deploy_sha }}');
-      expect(job).toContain('uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd');
-      expect(job).toContain("wranglerVersion: '4.149.0'");
+      expect(job).toContain('run: node scripts/cloudflare-deploy-retry.mjs release-manifest.json');
+      expect(job).toContain('CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}');
+      expect(job).toContain('CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}');
       expect(job).toContain("cache: ''");
       expect(job).toContain("package-manager-cache: false");
       expect(job).toContain("actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38");
@@ -1856,7 +1851,7 @@ describe('release workflow guardrails', () => {
         /if: always\(\)[\s\S]*upload-artifact/,
       );
     }
-    const stagingDeploy = staging.indexOf('command: deploy');
+    const stagingDeploy = staging.indexOf('run: node scripts/cloudflare-deploy-retry.mjs release-manifest.json');
     const stagingProofConfig = staging.indexOf(
       'Require staging proof configuration before deployment',
     );
@@ -1889,7 +1884,7 @@ describe('release workflow guardrails', () => {
       'composition-flags.mjs verify',
       'release-check.mjs recheck',
       'release-check.mjs previous-authority release-manifest.json',
-      'command: deploy',
+      'run: node scripts/cloudflare-deploy-retry.mjs release-manifest.json',
       'wait-for-deployed-release.mjs release-manifest.json',
       'post-deploy-smoke.sh',
       'release-check.mjs authority release-manifest.json',
@@ -1898,15 +1893,15 @@ describe('release workflow guardrails', () => {
     const positions = order.map((needle) => staging.indexOf(needle));
     expect(positions.every((position) => position >= 0), JSON.stringify(positions)).toBe(true);
     expect([...positions].sort((a, b) => a - b)).toEqual(positions);
-    expect(staging.match(/command: deploy/g)).toHaveLength(1);
+    expect(staging.match(/run: node scripts\/cloudflare-deploy-retry\.mjs/g)).toHaveLength(1);
     expect(staging.match(/release-check\.mjs previous-authority/g)).toHaveLength(1);
-    expect(staging).toContain('command: deploy --config wrangler.staging.jsonc');
+    expect(staging).toContain('run: node scripts/cloudflare-deploy-retry.mjs release-manifest.json');
     expect(staging).not.toMatch(/vars\.PRODUCTION_URL|secrets\.RELEASE_VERIFY_TOKEN\b|environment: production/);
     // The receipt survives a failed capture or proof.
     expect(staging.slice(staging.indexOf('previous-authority'))).toMatch(/if: always\(\)[\s\S]*upload-artifact/);
     // T20 server/UI flags still come from the one release output.
     expect(staging).toContain(
-      '--var MEAL_COMPOSITION_V2_ENABLED:${{ needs.release.outputs.meal_composition_v2_enabled }}',
+      'run: node scripts/cloudflare-deploy-retry.mjs release-manifest.json',
     );
     expect(staging).toContain(
       'VITE_MEAL_COMPOSITION_V2_ENABLED: ${{ needs.release.outputs.meal_composition_v2_enabled }}',

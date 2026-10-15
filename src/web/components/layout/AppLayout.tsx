@@ -16,11 +16,13 @@ const IMMERSIVE_PATTERNS = [
 
 /** Scope the kitchen shell to migrated screens; other routes retain the current kit. */
 export function isKitchenSurface(pathname: string) {
+  pathname = pathname.toLowerCase();
   return (
     pathname === '/' ||
+    /^\/plus\/?$/.test(pathname) ||
     /^\/(fridge|inventory)\/?$/.test(pathname) ||
     /^\/(fridge|inventory|ingredients)\/[^/]+\/?$/.test(pathname) ||
-    pathname === '/inventory-reconciliation' ||
+    /^\/inventory-reconciliation\/?$/.test(pathname) ||
     /^\/scan(?:\/|$)/.test(pathname) ||
     /^\/recipes(?:\/|$)/.test(pathname) ||
     /^\/(cook|cooking)(?:\/|$)/.test(pathname) ||
@@ -34,7 +36,7 @@ export function isKitchenSurface(pathname: string) {
 
 export const AppLayout: React.FC = () => {
   const { pathname } = useLocation();
-  const immersive = IMMERSIVE_PATTERNS.some((re) => re.test(pathname));
+  const immersive = IMMERSIVE_PATTERNS.some((re) => re.test(pathname.toLowerCase()));
   const kitchen = isKitchenSurface(pathname);
   const shellRef = useRef<HTMLDivElement>(null);
   useKitchenShell(shellRef, kitchen && !immersive, pathname);

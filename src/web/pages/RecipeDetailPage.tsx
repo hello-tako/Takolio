@@ -1,8 +1,9 @@
-import React, { useRef, useState } from 'react';
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { useParams, useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { evaluateRecipeAvailability, type RecipeIngredientAvailability } from '@frigo/recipes';
+import { evaluateRecipeAvailability, scaleRecipeServings, type RecipeIngredientAvailability } from '@frigo/recipes';
 import { TopBar } from '../components/common/TopBar';
+import { SaveRecipeButton } from '../components/common/SaveRecipeButton';
 import { RecipeMedia } from '../components/common/RecipeMedia';
 import { Button } from '../components/common/Button';
 import { InlineError, SkeletonCard } from '../components/common/AsyncState';
@@ -13,6 +14,10 @@ import { getIngredientImage } from '../lib/ingredient-images';
 import { Clock, Users, ChefHat, Check, ShoppingBag, ArrowRight, SearchX } from 'lucide-react';
 import { clsx } from 'clsx';
 import { resolveRecipeImage } from '../lib/recipe-media';
+import { RecipeMealDialog } from '../features/favorites/FavoritesCollection';
+import { isMealPlannerEnabled } from '../features/planner/feature';
+import { isMealCompositionEnabled } from '../features/planner/composition';
+import { useAuthStore } from '../stores/useAuthStore';
 
 type RecipeTabId = 'steps' | 'ingredients' | 'nutrition';
 
@@ -55,6 +60,9 @@ const RECIPE_TABS: Array<{ id: RecipeTabId; label: string; tabId: string; panelI
 export const RecipeDetailPage: React.FC = () => {
   const { slug, id } = useParams<{ slug?: string; id?: string }>();
   const recipeKey = slug || id || '';
+  const [params, setParams] = useSearchParams();
+  const selectedServings = /^[1-9][0-9]?$/.test(params.get('servings') ?? '') && Number(params.get('servings')) <= 20
+    ? Number(params.get('servings')) : undefined;
   const navigate = useNavigate();
   const { state } = useLocation();
   const returnTo =
@@ -66,6 +74,10 @@ export const RecipeDetailPage: React.FC = () => {
   const shoppingKey = queryKeys.shoppingList();
   const startCooking = useCookingStore((s) => s.startCooking);
 
+  const owner = useAuthStore(state => `${state.userId}:${state.householdId}:${state.isGuest}`);
+  const isGuest = useAuthStore(state => state.isGuest);
+  const [mealDialogOpen, setMealDialogOpen] = useState(false);
+  useEffect(() => { setMealDialogOpen(false); }, [owner, recipeKey]);
   const [addedToShop, setAddedToShop] = useState<string[]>([]);
   const [activeTab, setActiveTab] = useState<RecipeTabId>('ingredients');
   const tabRefs = useRef<Record<RecipeTabId, HTMLButtonElement | null>>({
@@ -86,7 +98,7 @@ export const RecipeDetailPage: React.FC = () => {
   });
 
   const addToShopping = useMutation({
-    mutationFn: ({ ingredient: ing, sourceRecipeTitle }: ShoppingShortfall) => {
+    mutationFn: ({ ingredient: ing, sourceRecipeTitle, sourceRecipeKey }: ShoppingShortfall) => {
       if (ing.missingQuantity === null || ing.missingQuantity <= 0) {
         throw new Error('Cần kiểm tra lượng trước khi thêm vào danh sách mua.');
       }
@@ -95,6 +107,8 @@ export const RecipeDetailPage: React.FC = () => {
         quantity: ing.missingQuantity,
         unit: ing.unit,
         sourceRecipeTitle,
+        ingredientId: ing.ingredientId,
+        sourceRecipeId: sourceRecipeKey,
       });
     },
     onSuccess: (_data, { ingredient, sourceRecipeKey }) => {
@@ -103,7 +117,8 @@ export const RecipeDetailPage: React.FC = () => {
     },
   });
 
-  const recipe = recipeQuery.data?.recipe;
+  const baseRecipe = recipeQuery.data?.recipe;
+  const recipe = baseRecipe && selectedServings ? scaleRecipeServings(baseRecipe, selectedServings) : baseRecipe;
   const matchInfo = recipeQuery.data?.match;
   const inventory = inventoryQuery.data ?? [];
 
@@ -178,12 +193,16 @@ export const RecipeDetailPage: React.FC = () => {
       return;
     }
     startCooking(recipe, inventory);
-    navigate(`/cook/${recipe.slug}`);
+    navigate(`/cook/${recipe.slug}?servings=${recipe.servings}`);
   };
 
   return (
     <div className="takosan-rebuild recipe-page min-h-screen bg-semantic-background pb-32">
       <TopBar kitchen showBack backTo={returnTo} title={recipe.title} />
+      {mealDialogOpen && !isGuest && (
+        <RecipeMealDialog key={`${owner}:${recipe.id}`} entry={{ recipeId: recipe.id, title: recipe.title }}
+          requireSaved={false} defaultServings={recipe.servings} onClose={() => setMealDialogOpen(false)} />
+      )}
       {inventoryQuery.isError && (
         <InlineError error={inventoryQuery.error} onRetry={() => inventoryQuery.refetch()} />
       )}
@@ -205,6 +224,12 @@ export const RecipeDetailPage: React.FC = () => {
             <h1 className="font-heading font-bold text-[28px] leading-tight text-semantic-text-primary sm:text-[32px]">
               {recipe.title}
             </h1>
+            <SaveRecipeButton recipeId={recipe.id} title={recipe.title} />
+            {!isGuest && isMealPlannerEnabled() && isMealCompositionEnabled() && (
+              <Button variant="outline" className="mt-3" onClick={() => setMealDialogOpen(true)}>
+                Xếp món vào bữa
+              </Button>
+            )}
             <div className="recipe-facts flex items-center gap-4 text-sm mt-3 text-semantic-text-secondary">
               <span className="flex items-center gap-1">
                 <Clock aria-hidden="true" className="w-4 h-4 text-takosan-green" />
@@ -215,6 +240,20 @@ export const RecipeDetailPage: React.FC = () => {
                 <span>{recipe.servings} người</span>
               </span>
             </div>
+            <label className="discovery-select-label mt-4">
+              Nấu cho bao nhiêu người?
+              <select value={recipe.servings} onChange={event => {
+                const next = new URLSearchParams(params);
+                next.set('servings', event.target.value);
+                setParams(next, { replace: true });
+              }}>
+                {Array.from({ length: 20 }, (_, index) => index + 1).map(value =>
+                  <option key={value} value={value}>{value} người</option>)}
+              </select>
+            </label>
+            {addedToShop.length > 0 && <p className="mt-2 text-sm text-semantic-text-secondary">
+              Đã thêm nguyên liệu vào danh sách. Nếu đổi số người, kiểm tra và chỉnh lượng đã thêm trong danh sách đi chợ.
+            </p>}
             <p className="mt-4 text-base leading-relaxed text-semantic-text-secondary">
               {recipe.description}
             </p>

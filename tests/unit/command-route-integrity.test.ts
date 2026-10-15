@@ -437,8 +437,9 @@ class ShoppingListDatabase extends FakeDatabase {
     return { success: true, meta: { changes: 1 } };
   }
 
-  async batch(): Promise<D1Result[]> {
-    return [];
+  async batch(statements: FakeStatement[]): Promise<D1Result[]> {
+    this.batches.push(statements);
+    return Promise.all(statements.map(statement=>this.run(statement)));
   }
 }
 

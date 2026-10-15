@@ -5,6 +5,7 @@
 #
 # Usage: bash scripts/post-deploy-smoke.sh <base-url> [expected-release-sha]
 set -euo pipefail
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 
 BASE_URL="${1:?usage: post-deploy-smoke.sh <base-url> [expected-release-sha]}"
 EXPECTED_RELEASE_SHA="${2:-}"
@@ -69,12 +70,12 @@ if [[ -n "$EXPECTED_RELEASE_SHA" ]]; then
     echo "FAIL service worker release: expected SHA is not canonical"
     exit 1
   fi
-  SW_BODY="$(curl -sS --max-time 15 "${BASE_URL}/sw.js")"
-  if [[ "$SW_BODY" != *"const BUILD_ID = '${EXPECTED_RELEASE_SHA}';"* ]]; then
-    echo "FAIL service worker release: deployed SHA is not embedded in /sw.js"
+  # Ordinary and revalidated native curl profiles can converge at different edges.
+  # The shared parser requires canonical full SHA, JavaScript, no-store, and all markers.
+  if ! node "${SCRIPT_DIR}/wait-for-service-worker-release.mjs" "$BASE_URL" "$EXPECTED_RELEASE_SHA"; then
+    echo "FAIL service worker release: deployed SHA is not embedded in /sw.js or strict asset validation failed"
     exit 1
   fi
-  echo "ok service worker release: ${EXPECTED_RELEASE_SHA}"
 fi
 
 # Readiness: status must be ok or degraded (never unhealthy), the D1 database

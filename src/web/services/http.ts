@@ -64,7 +64,7 @@ export function guardPrivateSession(): () => void {
   return assertCurrent;
 }
 
-export async function fetchJson<T>(path: string, options?: RequestInit): Promise<T> {
+export async function fetchJson<T>(path: string, options?: RequestInit, apiVersion: 'v1' | 'v2' = 'v1'): Promise<T> {
   const assertCurrent = guardPrivateSession();
   const scope = getCurrentScope();
   const pathname = path.split('?')[0];
@@ -98,7 +98,7 @@ export async function fetchJson<T>(path: string, options?: RequestInit): Promise
   }
   let res: Response;
   try {
-    res = await fetch(`${BASE_URL}${path}`, {
+    res = await fetch(`${apiVersion === 'v2' ? '/api/v2' : BASE_URL}${path}`, {
       ...options,
       headers,
       credentials: 'include',

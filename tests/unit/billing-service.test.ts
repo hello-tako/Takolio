@@ -160,3 +160,41 @@ describe('billing response runtime validation', () => {
     }));
   });
 });
+
+describe('billing account runtime contract', () => {
+  afterEach(() => vi.unstubAllGlobals());
+
+  const account = {
+    subscription: { plan: 'plus', status: 'active', expiresAt: '2099-01-01T00:00:00.000Z' },
+    payments: [{ ...intent, createdAt: '2026-01-01T00:00:00.000Z', checkoutState: 'ready', canResume: true }],
+    hasPendingPayment: true,
+    hasMore: false,
+  };
+
+  it('reads history with current owner headers and validates the subscription snapshot', async () => {
+    localStorage.setItem('frigo_user_id', 'billing-account-user');
+    localStorage.setItem('frigo_household_id', 'billing-account-household');
+    const request = vi.fn(async () => new Response(JSON.stringify(account), {
+      headers: { 'Content-Type': 'application/json' },
+    }));
+    vi.stubGlobal('fetch', request);
+    await expect(billingApi.getAccount()).resolves.toEqual(account);
+    expect(request).toHaveBeenCalledWith('/api/v1/billing/account', expect.objectContaining({
+      credentials: 'include', headers: expect.objectContaining({
+        'X-Frigo-Expected-User-Id': 'billing-account-user',
+        'X-Frigo-Expected-Household-Id': 'billing-account-household',
+      }),
+    }));
+  });
+
+  it.each([
+    { subscription: { plan: 'plus', status: 'active', expiresAt: 'invalid' } },
+    { payments: [{ ...account.payments[0], status: 'unknown' }] },
+    { hasPendingPayment: 'false' },
+  ])('rejects malformed billing account data before display: %o', async (changes) => {
+    vi.stubGlobal('fetch', vi.fn(async () => new Response(JSON.stringify({ ...account, ...changes }), {
+      headers: { 'Content-Type': 'application/json' },
+    })));
+    await expect(billingApi.getAccount()).rejects.toThrow('Invalid billing account response');
+  });
+});

@@ -1,5 +1,6 @@
 import type { PaymentIntent, PaymentStatus, PlusPlan, PlusPrice } from '../../shared/payment';
-import { PLUS_PRICES } from './prices';
+import { effectivePlusPrices } from './prices';
+import type { Env } from '../types';
 
 export const PAYMENT_CURRENCY = 'VND' as const;
 export const INTENT_TTL_SECONDS = 30 * 60;
@@ -29,13 +30,14 @@ export function isValidIssuedIntent(row: PaymentRow): boolean {
     ['pending', 'paid', 'failed', 'expired', 'refunded'].includes(row.status);
 }
 
-export function plusPrices(): PlusPrice[] {
+export function plusPrices(env: Pick<Env, 'PAYOS_TEST_MONTHLY_PRICE_VND'> = {}): PlusPrice[] {
+  const prices = effectivePlusPrices(env);
   return (['monthly', 'annual'] as const).map((plan) => ({
-    plan, amountVnd: PLUS_PRICES[plan], currency: PAYMENT_CURRENCY,
+    plan, amountVnd: prices[plan], currency: PAYMENT_CURRENCY,
   }));
 }
 
-export function paymentView(row: PaymentRow): PaymentIntent {
+export function paymentView(row: PaymentRow, now = Date.now()): PaymentIntent {
   return {
     id: row.id,
     orderCode: row.order_code,
@@ -44,7 +46,7 @@ export function paymentView(row: PaymentRow): PaymentIntent {
     currency: PAYMENT_CURRENCY,
     description: row.description,
     expiresAt: row.expires_at,
-    status: row.status === 'pending' && Date.parse(row.expires_at) <= Date.now() ? 'expired' : row.status,
+    status: row.status === 'pending' && Date.parse(row.expires_at) <= now ? 'expired' : row.status,
   };
 }
 

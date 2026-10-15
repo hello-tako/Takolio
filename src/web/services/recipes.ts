@@ -90,14 +90,18 @@ export const recipesApi = {
     deductions: CookingDeduction[],
     commandId = createClientItemId('cook'),
     stockBeforeAttempt?: RecipeScoringContext['inventory'],
+    servings?: number,
   ) => {
+    if (servings !== undefined && (!Number.isSafeInteger(servings) || servings < 1 || servings > 100)) {
+      throw new RangeError('Cooking servings must be between 1 and 100');
+    }
     const assertCurrent = guardPrivateSession();
     const hhId = getHouseholdId();
     const scope = currentPrivateScope();
     const path = `/recipes/${encodeURIComponent(recipeId)}/cook/complete`;
     const init = {
       method: 'POST',
-      body: JSON.stringify({ deductions, commandId }),
+      body: JSON.stringify({ deductions, commandId, ...(servings === undefined ? {} : { servings }) }),
       headers: { 'Idempotency-Key': commandId },
     };
     const queued = () =>

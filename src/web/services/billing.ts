@@ -11,7 +11,7 @@ type PlansResponse = { plans: PlusPrice[]; checkoutAdmissionEnabled: boolean };
 type PaymentResponse<T> = { success: true; payment: T };
 
 import { BillingPaymentSchema, BillingCreatedResponseSchema, BillingPlansResponseSchema,
-  OpenCheckoutsResponseSchema, CheckoutUncertainSchema } from '../../shared/billing';
+  OpenCheckoutsResponseSchema, CheckoutUncertainSchema, BillingAccountResponseSchema } from '../../shared/billing';
 
 function parseBillingResponse<T>(schema: z.ZodType<T, z.ZodTypeDef, unknown>, value: unknown, label: string): T {
   const parsed = schema.safeParse(value);
@@ -20,6 +20,8 @@ function parseBillingResponse<T>(schema: z.ZodType<T, z.ZodTypeDef, unknown>, va
 }
 
 export const billingApi = {
+  getAccount: async () => parseBillingResponse(BillingAccountResponseSchema,
+    await fetchJson<unknown>('/billing/account'), 'billing account'),
   resumeCheckout: async (id: string): Promise<PaymentResponse<CreatedPaymentIntent>> => {
     const response = await fetchJson<unknown>(`/billing/checkouts/${encodeURIComponent(id)}`);
     if (CheckoutUncertainSchema.safeParse(response).success) throw new ApiError('http', `HTTP 202: ${JSON.stringify(response)}`, 202, { retryable: false });

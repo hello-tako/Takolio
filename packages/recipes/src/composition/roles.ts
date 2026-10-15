@@ -12,7 +12,7 @@ import type { Recipe } from '../types';
  * recipe always yields the same assignments for a given `ROLE_RULES_VERSION`. Rule assignments
  * carry no confidence (confidence is meaningful only for inferred/AI rows).
  */
-export const ROLE_RULES_VERSION = 't20-roles-v1';
+export const ROLE_RULES_VERSION = 't22-roles-v2';
 /** AI-inferred rows below this confidence are never effective; they remain review queue items. */
 export const AI_ROLE_MIN_CONFIDENCE = 0.8;
 
@@ -76,13 +76,13 @@ function add(list: RoleAssignment[], role: MealRole, evidence: string) {
   }
 }
 
-function proteinLine(recipe: Recipe): string | null {
+function proteinLine(recipe: Recipe, ignoreEgg = false): string | null {
   for (const line of recipe.ingredients) {
     if (line.isOptional) continue;
     const category = CANONICAL_CATEGORY.get(line.ingredientId);
     const name = lower(line.name);
     // Mushrooms named after meat ("nấm đùi gà") are not a protein line.
-    if (name.startsWith('nấm')) continue;
+    if (name.startsWith('nấm') || (ignoreEgg && (category === 'egg' || /^(trứng|egg)(?![\p{L}\p{N}])/u.test(name)))) continue;
     if ((category && PROTEIN_CATEGORIES.has(category)) || PROTEIN_WORDS.test(name)) {
       return line.ingredientId;
     }
@@ -124,9 +124,16 @@ export function classifyRecipeRoles(recipe: Recipe): RecipeRoleProfile {
   } else if (ROLL_TITLE.test(title) || category === 'mon_cuon_nom') {
     add(assignments, 'side', 'title_or_category:roll');
     if (protein) add(assignments, 'main', 'roll_with_protein');
+  } else if (/^(nam|rau|bap cai|bong cai|bi|ca tim|dau bap|khoai|ngo|bap)\b/.test(title) && VEG_METHOD.test(title)
+    && !proteinLine(recipe, true)) {
+    // Eggs used as a coating do not turn a vegetable-led dish into the meal's primary protein.
+    add(assignments, 'vegetable', 'vegetable_title_with_coating_egg');
+    add(assignments, 'side', 'vegetable_title_with_coating_egg');
+    if (category === 'mon_chay') add(assignments, 'main', 'category:mon_chay');
   } else if (!protein && VEG_METHOD.test(title)) {
     add(assignments, 'vegetable', 'no_protein:vegetable_method');
     add(assignments, 'side', 'no_protein:vegetable_method');
+    if (category === 'mon_chay') add(assignments, 'main', 'category:mon_chay');
   } else if (protein) {
     add(assignments, 'main', category ? `category:${category}` : 'protein_ingredient');
     if (/\btrung\b/.test(title) && required <= 4) add(assignments, 'side', 'simple_egg_dish');

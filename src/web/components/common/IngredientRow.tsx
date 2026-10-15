@@ -5,6 +5,7 @@ import { QuantityStepper } from './QuantityStepper';
 import { FreshnessStatus } from '@frigo/domain';
 import { presentExpiry } from '../../lib/inventory-truth';
 import { Trash2 } from 'lucide-react';
+import { inventoryQuantityStep } from '../../lib/inventory-quantity';
 
 interface IngredientRowProps {
   id: string;
@@ -40,6 +41,7 @@ export const IngredientRow: React.FC<IngredientRowProps> = ({
   onDelete,
 }) => {
   const imgSrc = getIngredientImage(ingredientId, name);
+  const quantityStep = inventoryQuantityStep(unit);
   // T13: an item with no expiry evidence must not be presented as fresh with a
   // fabricated "Còn N ngày" countdown.
   const expiry = presentExpiry({ expiryKind, expiryDate, estimatedExpiryDate });
@@ -93,8 +95,9 @@ export const IngredientRow: React.FC<IngredientRowProps> = ({
           <QuantityStepper
             quantity={quantity}
             unit={unit}
-            onIncrement={() => onUpdateQuantity(unit === 'g' ? 50 : 1)}
-            onDecrement={() => onUpdateQuantity(unit === 'g' ? -50 : -1)}
+            min={quantityStep}
+            onIncrement={() => onUpdateQuantity(quantityStep)}
+            onDecrement={() => onUpdateQuantity(-quantityStep)}
           />
         )}
 

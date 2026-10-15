@@ -227,6 +227,10 @@ describe('paired Worker and service-worker release convergence', () => {
     expect(runner).toContain('waitForDeployedRelease(manifest, { url, verifyAssets: true })');
     expect(runner.indexOf('manifest.deployedAssets = assets')).toBeLessThan(runner.indexOf('writeFileSync(file'));
     expect(smoke).toContain('deployed SHA is not embedded in /sw.js');
-    expect(smoke).toContain("const BUILD_ID = '${EXPECTED_RELEASE_SHA}';");
+    expect(smoke).toContain('wait-for-service-worker-release.mjs" "$BASE_URL" "$EXPECTED_RELEASE_SHA"');
+    expect(smoke).not.toContain('SW_BODY=');
+    const nativeSmoke = readFileSync('scripts/wait-for-service-worker-release.mjs', 'utf8');
+    expect(nativeSmoke).toContain('verifyServiceWorker(response, expectedSha)');
+    expect(nativeSmoke).toContain('fetch: fetchImpl = fetchServiceWorkerWithCurl');
   });
 });

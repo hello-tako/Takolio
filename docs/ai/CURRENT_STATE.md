@@ -1,5 +1,533 @@
 > **Handoff (2026-10-15):** Admin Console work is preserved on branch `handoff/admin-v1-r2-20261015`. Start at `docs/admin/handoff/START_HERE.md`. Status: R1 `ADMIN_V1_R1_CHANGES_REQUIRED`; R2 not started; not certified for staging or production. Commands and results with provenance: `docs/admin/handoff/TEST_AND_EVIDENCE.md`.
 
+# T25 staging D1 column-limit correction - 2026-10-15 JST
+
+**Status:** RELEASE_IN_PROGRESS; product source merged, staging migration stopped
+before mutation. PR75 merged final head bdb5014d67b3b13688db1746bd07c3c5b5bacd5c
+as main a07b308c6997947c59a9e5f6ecf715b6b1eb573a. Exact-head CI38581755662
+and exact-main CI38583565990 both PASS: 359 files / 8,440 tests, respectively
+589.91s and 592.25s; lint/types/migration smoke/build PASS. Merge tree equals
+reviewed head and preserves ancestry.
+
+**Hosted failure:** staging migration38585376230 attempt1 at main a07b308c
+failed during pre-health. Identity pinned to frigo-db-staging-v3 /
+7854298a-20f5-46aa-9cbf-917079c2a3dd, complete ledger41/tip0041 and Time Travel
+bookmark were certified. Actual bookmark step PASS; failure followed generated
+baseline SQL. Apply step was SKIPPED; no application deployment or production
+migration/deploy occurred. Redirected remote stdout was not uploaded, so its exact
+error text is unavailable. Sanitized receipt remains in scratch.
+
+**Cause and narrow correction:** baseline SQL returned103 columns, above D1's
+SQLITE_LIMIT_COLUMN100. The exact SQL deterministically fails with SQLite CLI
+column100 (`too many columns in result set`) and passes with103. Official
+Cloudflare limits and workerd SQLite security setup confirm100. Split only the
+aggregate query into84+19 columns, preserving all103 counts across83 legacy tables
+and catalog/media diagnostics. Strict parsing and persisted-baseline validation
+retain fail-closed drift/identity/ledger/schema/CI gates. No product/runtime,
+applied migration, auth/payment, dependency or production configuration change.
+
+**Verification:** focused migration/workflow checks PASS: 4 files / 70 tests
+(6.55s), including 12 direct family-migration regressions. Full lint, scoped
+ESLint and diff check PASS. Independent review found no actionable issue.
+Native Wrangler4.149/workerd local D1 reproduced the old103-column SQLITE_ERROR;
+new84+19 results PASS, with all103values equal to0041 and0043 references.
+Only an isolated local D1 received43migrations. New exact-head and exact-main
+hosted CI remain required before staging retry.
+User chooses automated checks/public hosted smoke; authenticated product flows
+remain NOT_TESTED. Existing production reviewer vn-taphoanhatung is required.
+
+**Next:** verify narrow correction; normal PR/merge and exact-main CI; run staging
+migration/deploy/smoke at the resulting immutable SHA; then protected production
+0041->0043 and shadow0->canary1->5->25->d1/0. Preserve previous receipts, all gates
+and additive schema on recovery. No production-success claim.
+# T25 hosted CI timeout correction - 2026-10-14 JST
+
+**Status:** RELEASE_IN_PROGRESS; PR75 final candidate CI retry pending.
+Commit2ffebf44 remains the verified release-tooling baseline. Hosted CI38579146408
+failed only three 5-second timeouts in scoped-picker quantity integration tests:
+8,437 passed / 3 failed, 358 files passed / 1 failed, total8,440 tests/359 files.
+The failing cases took5.215-5.272s; nearby green multi-request cases took4.5-4.8s.
+An isolated unchanged local rerun passed28/28. The fixture replays43 migrations,
+500 recipes and several Worker requests; comparable functional fixtures use30s.
+
+**Correction:** scoped30-second test deadlines on the three functional suites in
+`t20-scoped-picker-quantity.test.ts`. All assertions and separate evaluation/query/
+pool/performance-bound tests remain intact; no runtime or global CI policy change.
+Focused picker and performance checks run before the follow-up commit. Previous
+full local8440PASS remains recorded; final exact-head hosted CI must pass.
+
+**Authorization:** user chooses automated checks and public hosted smoke; no
+signed-in hosted household product acceptance is claimed. No remote migration or
+new deployment has happened. Existing Environment reviewer gate is preserved.
+
+**Next:** push the narrow correction and actual focused evidence, require successful
+exact-head CI, normal merge/exact-main CI, then staging and protected production
+sequence in tasks/T25-family-meals-production-release.md.
+
+---
+
+## Prior Checkpoints
+
+# T25 family meals production release - 2026-10-14 JST
+
+**Status:** RELEASE_IN_PROGRESS; local release tooling verified. User authorizes
+gathering T22-T24 and releasing production. Branch
+`codex/vietnamese-family-meals-20261013`; PR https://github.com/hello-tako/Tako-san/pull/75.
+Source baseline d64ba0c9; product checkpoints 6b63606d / d3952c34 / cf54910f.
+Active packet `tasks/T25-family-meals-production-release.md`; accepted ADR-061.
+
+**Delivered:** bounded current-main staging 0041->0042->0043 migration/certification;
+production current-main/CI fences and exact family schema proof; post-media catalog
+support for 0042/0043; inactive same-candidate paired flags-OFF recovery with exact
+Worker/D1/catalog and live HTML/module byte-hash verification. Active UI is rebuilt
+and paired flags verified before upload. Schema remains additive on rollback.
+No payment/auth runtime, dependency, production config or applied migration edits.
+
+**Executed:** final full `TMPDIR=/private/tmp pnpm test --maxWorkers=2` PASS,
+359 files / 8,440 tests (423.70s, `work/t25-full-tests-final2.log`). Lint, app/Worker
+typecheck, migration smoke, default and paired flag builds PASS. Migration focused
+7/172, production exact-schema addition 3/30, composition/recovery focused 2/54
+PASS; diff checks and independent read-only release reviews PASS. T24 local
+browser12/12 and workerd/D1 HTTP8/8 remain product evidence, not hosted acceptance.
+
+**Failures retained:** initial full run 8,438 passed / 2 failed: inherited Wrangler
+5-second startup timeout (isolated32/32 PASS unchanged) and obsolete one-build-only
+workflow assertion. The assertion now checks every allowed explicit paired build
+and recovery/active guard ordering. Final full rerun passed every test. Logs stay
+in scratch `work/`; `node_modules` and `work/` are not committed.
+
+**Hosted boundary:** initial PR CI38574007006 passed at old head d64ba0c9; final
+candidate CI, exact-main CI, staging migration/deploy and protected production
+receipts remain pending. No remote migration or new deployment has occurred.
+Public readiness reports prior production/staging SHA
+3a24808b97838235596a43694013e74b1ba64cc2, D1/500/no fallback. Its prior production
+receipt38274253206 provides the already-approved hardened_sha. Re-read active
+version/ledger through new pipeline; do not copy historical IDs.
+
+**Next:** push this checkpoint, require exact-head CI and normal ancestry-preserving
+merge, exact-main CI, staging migration/deploy at D1 with paired flags ON, then
+protected production migration0041->0043. Production restarts shadow/0 with explicit
+rollback confirmation, promotes sameSHA canary1->5->25->D1/0, verifies each receipt.
+GitHub production Environment reviewer vn-taphoanhatung remains required. No gate
+bypass or production-success claim. A used recovery must prove served OFF assets;
+no live recovery rehearsal occurred. Aggregate preservation is not byte-content/R2
+proof. Authenticated hosted family flows need an existing certification session.
+
+---
+
+## Prior Checkpoints
+
+# T24 unknown shopping demand review - 2026-10-14 JST
+
+**Status:** LOCAL_IMPLEMENTED_VERIFIED. Branch `codex/vietnamese-family-meals-20261013`.
+Implementation commit `cf54910f5ebf64293517b855f0da6cbe0f8f9582` follows verified T23
+implementation `d3952c34b1c217fb695cd551a247c0882c4c01d7`. Accepted ADR-060 and
+expand-only migration `0043_shopping_demand_review.sql` are included. No push,
+merge, remote migration or deployment was performed.
+
+**Implemented:** unknown shared shopping demand now has a snapshot-bound review
+contract. A member can choose a positive purchase amount/unit, skip only this trip
+snapshot, or reopen a previous decision. The selected purchase is stored as buying
+intent and never changes the recipe demand (which remains NULL), recipe coverage,
+physical inventory, or bought history. The list shows the unknown total separately,
+known source contributions per meal, collapsed source details, independent recipe
+links, explicit Vietnamese actions, and truthful offline/pending/error recovery.
+Shared members review the persisted list without opening another member's private
+planner. Immutable idempotency receipts, full demand/review/purchase witnesses,
+monotonic revisions, household membership checks and atomic D1 batches protect
+concurrent edits. Deleting an unchecked reviewed purchase reopens review rather
+than creating an indefinite same-plan dismissal; checked history remains separate.
+
+**Verification:** Node `v25.9.0`, pnpm `10.33.2`.
+
+- `pnpm lint` PASS (including final post-label run).
+- `pnpm typecheck` PASS for app and Worker; final labels run recorded in `work/t24-typecheck-labels.log`.
+- `TMPDIR=/private/tmp pnpm test --maxWorkers=4` PASS: 357 files / 8,386 tests (`work/t24-full-test-final-frozen.log`).
+- Focused T24 suite PASS: 7 files / 98 tests (`work/t24-focused-final-frozen.log`); explicit UI label suite PASS: 2 files / 13 tests.
+- `pnpm check:migrations` PASS; `pnpm schema:check:local` PASS with migration tip 0043; local D1 apply/HTTP smoke PASS (8/8, including stale 409, replay, skip/reopen, bought history, delete reopen and SQL invariants).
+- `GIT_COMMIT=local-t24-shopping-review pnpm build` PASS and paired planner/composition-flag build PASS (`work/t24-build-default-final.log`, `work/t24-build-paired-final.log`).
+- `PORT=3101 PREVIEW_API_PORT=8891 pnpm exec playwright test -c playwright.family.config.ts` PASS: 12/12 at 320/390/768/1280 (`work/t24-family-browser-final2.log`); screenshots reviewed at phone and desktop widths.
+- `pnpm audit --audit-level=high`, `git diff --check`, protected-path/source receipt checks PASS. Frozen receipt covers 18 changed source files and 61 protected files unchanged.
+
+**Failures retained:** the earlier full suite had one Wrangler 5-second timeout
+(8,385 passed); the later frozen-source full run passed all 8,386. An early
+workerd HTTP DELETE returned 409 after a successful cascade delete; actual D1
+`meta.changes=3` proved the exact-one guard wrong, and the positive-count guard
+plus regression/HTTP rerun fixed it. Earlier browser runs retained 11 passed/1
+navigation timeout and 7 passed/5 failed (four incorrect assumptions that more
+than one unknown demand must exist, plus one ERR_ABORTED while source edits were
+in progress). The final test exercises one demand through its full lifecycle;
+no workspace edits ran during final2, which passed 12/12. Earlier checkbox and
+ReactNode/test-typing failures are retained; explicit labels/locators and final
+lint/type/UI/browser checks passed. The 8,386-test full run preceded the final
+label-only markup refinement; the subsequent 13 UI tests, typecheck, lint,
+12-browser matrix and both builds cover that final refinement.
+
+**Release boundary and limits:** apply migrations 0042 and 0043 before a Worker
+serves shopping traffic, including when planner flags are OFF; retain additive
+0043 tables on rollback. The current T24 Worker with paired flags OFF is covered
+locally. Binary rollback to T23/pre-T24 is not certified after reviewed purchases:
+the older delete path can create legacy dismissal and the older UI cannot review,
+skip or reopen. Local workerd/D1 and browser fixtures are synthetic, not hosted
+acceptance, nationwide Vietnamese user research, regional provenance certification,
+clinical nutrition/allergy safety, retention proof, or production release.
+Unknown package/bunch/piece mass, leftovers/shared prep, vendor allocation and
+future-only whole-week regeneration remain outside T24.
+
+**Next action:** separately authorize normal PR/exact-head CI, migration-first
+staging and hosted smoke before any release. Keep payment/auth/infrastructure,
+dependencies, applied migrations and remote data outside this task.
+
+---
+
+## Prior Checkpoints
+
+# T24 unknown shopping demand review - 2026-10-14 JST
+
+**Status:** IN_PROGRESS. Branch codex/vietnamese-family-meals-20261013.
+Base T23 verified implementation d3952c34b1c217fb695cd551a247c0882c4c01d7;
+documentation743752b68652d41fd0a67f0e7e67fa93e4e46fd5. Active packet
+ tasks/T24-unknown-shopping-demand-review.md. Accepted ADR-060 adds an explicit
+purchase amount, exact-trip skip/reopen and revisioned command receipts.
+
+**Scope:** Unknown demand remains unknown; selected purchase intent is separate.
+Existing shared/manual shopping, stock separation, household tenancy, immutable
+replay and optimistic witnesses remain authoritative. New migration0043 must
+precede shopping Worker release independently of planner flags; applied migrations,
+payment/auth/infrastructure/dependencies stay outside this task.
+
+**Verification:** Pending implementation and sequential focused/full gates, local
+D1 apply/schema and real browser synthetic app/Worker HTTP checks. No push, merge,
+remote migration or deployment authorized or executed. No claim of nationwide
+research validation, clinical safety or improved retention.
+
+**Next action:** Finish local implementation/race and UI verification, update this
+checkpoint with actual counts/failures and commit coherent source/documentation.
+Historical checkpoints remain preserved.
+
+---
+
+## Prior Checkpoints
+
+# T23 fridge quantities, manual selection and continued-week shopping - 2026-10-14 JST
+
+**Status:** LOCAL_IMPLEMENTED_VERIFIED. Branch
+codex/vietnamese-family-meals-20261013. Base T22 documentation checkpoint
+c465bd1baf94246b8a591d07971343c245ad424a. Verified implementation checkpoint
+d3952c34b1c217fb695cd551a247c0882c4c01d7. Active packet tasks/T23-quantity-aware-manual-planning.md;
+accepted architecture ADR-059, extending ADR-058. No push, merge, remote migration
+or deployment. Local evidence is not hosted or production acceptance.
+
+**Implemented:** intentional persisted empty manual calendars; explicit add versus
+named replacement from recipes/saved dishes; canonical role selection; exact
+required/from-fridge/missing amounts at destination servings; earlier meals and
+shared ingredients reserve stock once; downstream no-buy/cook-now consistency;
+locked selections survive assisted completion. Manual complete_meal mains use a
+one-dish template for that slot; ordinary family dinners retain their groups.
+Discovery/detail/calendar/cooking links retain servings; uncertain/offline cooking
+attempts freeze count and deductions. Fractional measured stock entry/correction
+uses exact compatible unit display conversion and original draft revision fences.
+Shopping keeps explicit purchase edits and retires only successful command keys.
+
+**Integrity and compatibility:** scoped picker snapshots bind plan/loaded revision,
+slot/date/type/servings/replacement and current inputs, including elapsed-slot
+identities; later reads cannot authorize a calculation from an older revision.
+Numeric sequence breaks equal-time ties consistently. Membership and atomic
+inventory/profile/catalog fences remain. Strict existing family/V1 response keys
+are retained; richer quantities require opt-in assessments. Source cache seeds
+are refreshed before quantities can be selected. Corrective removal stays possible.
+
+Future V2 meals remain editable after earlier meals elapse. Current projections
+skip elapsed instants rather than reserving current stock for them again. Shared
+family shopping can recalculate future demand after inventory/history/time changes;
+profile/hard preference/catalog/authority staleness still blocks it, and freshness
+remains truthful. Trip defaults/minimum use the saved plan offset, including late
+same-day meals when the device's date differs. Time is captured at request start.
+Legacy price optimization, V1 swapping and whole-week regeneration retain strict
+past-horizon gates; individual future meals can be edited/completed. No calendar,
+shopping generation or checkbox deducts physical inventory.
+
+**Executed gates:** Node v25.9.0 / pnpm 10.33.2. `pnpm lint`, `pnpm typecheck`
+(both projects), `TMPDIR=/private/tmp pnpm test --maxWorkers=4`
+(354 files / 8,332 tests,232.84s), `pnpm check:migrations` (42 migrations),
+`GIT_COMMIT=local-t23-family-planning pnpm build`, and
+`GIT_COMMIT=local-t23-family-planning VITE_MEAL_PLANNER_ENABLED=true
+VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build` PASS. Audit
+`pnpm audit --audit-level=high` PASS, no known vulnerabilities; dependency/config/
+migration bytes unchanged by T23. Focused backend 38 tests and latest UI/calendar
+150 tests PASS. Final typecheck confirmed by root. `git diff --check` and protected
+path/source review PASS. Full tests/browser/builds ran sequentially; no combined
+`pnpm check`, hosted CI or production success is claimed. The later E2E-only URL
+matcher fix did not change runtime or the full unit/integration test graph.
+
+**Running-app evidence:** `PORT=3101 PREVIEW_API_PORT=8891 pnpm exec playwright
+test -c playwright.family.config.ts` 8/8 PASS (3.5m),320/390/768/1280. Actual
+browser/app/Worker HTTP uses synthetic catalog/SQLite D1 fixtures without business
+API interception in family flows. Manual calendar, servings, exact rice320g,
+add/replace/completion/one-dish reload, shopping3->7->3 and changed-stock continuation
+are verified. Inventory stays unchanged by these planning/shopping actions. Axe
+and horizontal-overflow assertions PASS in tested surfaces; screenshots visually
+reviewed. `PORT=3104 PREVIEW_API_PORT=8894 pnpm exec playwright test -c
+playwright.t20.config.ts` 42/42 PASS (3.7m),390/768/1280. Its negative load/fallback tests explicitly
+intercept selected responses. Targeted recovery/fallback 6/6 PASS (32.9s). These
+local Chromium fixtures do not certify hosted workerd/D1, real users or retention.
+
+**Failures retained:** earlier full T23 run exposed three inherited inventory UI
+conversion expectations, fixed with unit-only versus explicit correction semantics.
+Preview login stalls showed Vite504 Outdated Optimize Dep (zustand); concurrent
+Vitest/browser attempts were interrupted (exit130), followed by isolated runs.
+One earlier build was interrupted after Vite and is not a pass. Legacy T20 fixture
+helpers needed actual cuisine/role, idle-state and optional price-panel interactions.
+Final compatibility attempt retained 2failed/1interrupted/20passed/19notrun (exit130):
+load/fallback interceptors omitted the new includeAssessment query. Matching the
+exact pathname and proving an actual failed read fixed the cause without weakening
+assertions; targeted6 and final42 then PASS. Missing test imports/router fixture
+shape in early continuation checks were fixed; failures/logs remain retained.
+Independent final review found the trip device-date mismatch, fixed with actual
+payload/minimum and midnight regressions. No remaining confirmed review finding.
+
+**Database and limits:** T23 adds no schema/migration. T22's0042 remains required
+before releasing any Worker route using family/profile/favorites/shared-shopping
+storage, including planner flags OFF; preserve additive schema on rollback.
+No new remote/local D1 apply is needed for T23. Unknown shopping demand has no
+purchase/resolve/dismiss command; manual entries do not reconcile it. No guessed
+package/bunch/piece mass, leftovers/shared prep/multi-vendor allocation, independently
+verified all-catalog regional provenance or clinical nutrition/allergy certification.
+No future-only whole-week regeneration and no proven retention improvement.
+Research distinguishes Hanoi qualitative evidence, public guidance, product decisions
+and implemented behavior. Source/log/screenshot receipts are in the calling chat's
+outputs/t23-verified directory; scratch work/ and node_modules are not committed.
+
+**Next action:** separately authorize normal PR/exact-head and exact-main CI, then
+migration-first staging and hosted smoke of both planner flags before protected
+production release. Product follow-up: define an explicit unknown-demand review
+contract, validate regional metadata and run a multi-region household diary/task
+study. Keep payment/auth/infrastructure/config/dependencies/applied migrations
+outside this task. Historical checkpoints follow unchanged.
+
+---
+
+## Prior Checkpoints
+
+# T22 Vietnamese family meals - 2026-10-13 JST
+
+**Status:** LOCAL_IMPLEMENTED_VERIFIED. Branch
+codex/vietnamese-family-meals-20261013; base
+332a24f468d5360b6cefc57b9451228585457131. Implementation checkpoint
+6b63606d97bb2c9009d620c18c3d91aec76d4870. Active packet tasks/T22-vietnamese-family-meals.md;
+accepted architecture ADR-058. No push, merge, remote migration or deployment.
+
+**Implemented:** whole-week Vietnamese-first family lunch/dinner compositions;
+breakfast/quick/one-pot templates; revisioned member meal habits wired into
+schedule/servings/regions/time/cuisine and shopping cadence; private saved recipes
+and picker; per-dish swap/lock/save; current-composition truthful board/composer;
+trip-scoped shared shopping with exact compatible demand, familiar fraction display,
+collapsed source dishes, purchase edits, offline receipt overlays, mutually exclusive bought/cannot-buy,
+dismissal and original command replay. Mobile list precedes manual entry.
+Physical inventory remains unchanged by generation/shopping/checking.
+
+**Integrity and compatibility:** sequential whole-week stock projection;
+current inventory/expiry/storage/profile/ranking/catalog witnesses guard
+computed planning, proposal, composition and shopping-materialization writes
+atomically; explicit profile/favorite/manual shopping commands use their own
+membership and revision guards; strict V1 read shape retained; paired-flag-off V1 writes reject
+stored family plans without optional-schema reads. Locked foreign mains reserve
+rolling seven-day allowance, including future preserved slots; lowered cap warns
+without removing choices. Companion repetition is soft across the horizon,
+staple repetition allowed. Hard time is all-component prep+cook; unknown time is
+visible. All-unplanned hard-time requests return valid strict DTOs. Onboarding
+hydrates saved household size without replacing an explicit local selection.
+
+**Executed gates:** Node v25.9.0 / pnpm 10.33.2. `pnpm lint`, `pnpm typecheck`
+(both projects), `TMPDIR=/private/tmp pnpm test --maxWorkers=4`
+(347 files / 8180 tests), `pnpm check:migrations`
+(42 migrations), `GIT_COMMIT=local-vietnamese-family-meals pnpm build`, and
+`GIT_COMMIT=local-vietnamese-family-meals VITE_MEAL_PLANNER_ENABLED=true
+VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build` PASS.
+`pnpm audit --audit-level=high` PASS; dependencies unchanged.
+Local `pnpm wrangler d1 migrations apply frigo-db --local` and
+`WRANGLER_SEND_METRICS=false pnpm schema:check:local` PASS; ledger 42 through 0042.
+`git diff --check` and protected-path/migration checks PASS. No combined
+`pnpm check`, hosted CI or production success is claimed for this branch.
+
+**Running-app evidence:** `pnpm exec playwright test -c
+playwright.family.config.ts` 4/4 PASS at 320/390/768/1280 with actual app/Worker
+HTTP and synthetic SQLite/catalog fixtures, no API interception. Axe zero on
+board/composer/favorites/shopping; no horizontal overflow in tested flows.
+Actual local workerd/D1 on 8794 (catalog=d1, AI off) independently created 7/7
+four-role dinners, 0 partial/unplanned/generated international meals, materialized 20
+shopping demand keys (3 unresolved / 17 known items), retained 777.5 purchase quantity,
+bought/cannot-buy and favorite count 1 across reads; inventory unchanged. Local receipt
+and fresh browser screenshots copied to the calling chat's outputs/implemented-app.
+This is local synthetic evidence, not hosted smoke or user retention validation.
+
+**Failures retained:** an early full run had 16 failed files / 55 failed tests,
+including UI/provider/capture compatibility failures. A later run identified
+role-distribution and schema-gate hash failures; reviewed seven-recipe role delta
+and expand-only 0042 pin fixed them, with focused regressions. First mid-edit root
+typecheck failed an unknown `search.limits` guard; explicit object narrowing and
+final both-project pass followed. One workerd attempt restarted during an active
+request; later frozen-source run PASS. Early macOS temp-path capture failures
+require TMPDIR=/private/tmp. A concurrent build failed with "Service Worker build
+token was not found" and a concurrent browser attempt showed a blank page before
+the Language control. Their root cause is unproven. Final isolated default and
+paired builds exited 0; final isolated Chromium was 4/4 PASS in 1.2 minutes.
+Earlier passing counts (8137/346 and 8161/346) remain historical; final source is
+347 files / 8180 tests. Failed logs remain retained and are not reported green.
+
+**Limits/release order:** regional preference uses existing catalog metadata;
+not every regional attribution is independently verified. No clinical nutrition,
+assumed package/piece mass, parallel-cooking estimate, or full-week preview/apply
+workflow. Direct regeneration has explicit confirmation. Apply 0042 before this
+Worker serves any traffic, even planner flags OFF, because shopping/favorites/
+profile routes use new tables independently. Retain additive schema on rollback;
+paired flag-off on current guarded Worker is the locally tested rollback path.
+A pre-T22 Worker after family plans exist is not certified for rollback.
+
+**Next action:** independent review of this checkpoint, then separately authorized
+normal PR/exact-head and exact-main CI, migration-first staging, paired flags and
+hosted smoke before protected production release. Keep payment/auth runtime,
+config/dependencies/protected workflows and old migrations unchanged.
+
+---
+
+## Prior Checkpoints
+
+# payOS production acceptance complete - 2026-10-13 JST
+
+**Status:** PRODUCTION_PAID_ACCEPTANCE_VERIFIED_PRICES_RESTORED.
+PR74 is merged as 3a24808b97838235596a43694013e74b1ba64cc2.
+Exact main CI38272622426 and PR CI38271394292 PASS: 338 files / 8,055
+tests, lint, typechecks, migration smoke and build. Local full pnpm check and
+separate paired planner/T20 build PASS. No new migration in PR74.
+
+**Released:** protected staging38273790273 and production38274253206 both
+SUCCESS attempt1. Actual mandatory reviewer approved production. Immutable
+candidate, exact-head CI, 41 migrations, matching D1 identity, catalog500/no
+fallback, paired planner/T20 flags, exact runtime/assets/service-worker SHA and
+three ordinary/revalidated SW observations PASS. No rollback; upload succeeded
+on attempt1. Final production Worker ded100e7-98ae-4c83-aab5-94342daa06a3,
+deployment56b74111-0bf8-44db-ac79-a15e28f80f27, 100% traffic.
+
+**Delivered:** shared UI navigation; owner-only billing account, package status,
+expiry/renewal, latest20 transactions and persisted pending QR recovery after
+reload. Atomic owner admission blocks duplicate outstanding orders across keys,
+tabs and old clients. Session fences protect account changes. Guests see login
+CTAs for registered-only Home/Planner. Verified paid/lost-create-response race
+allows renewal; other uncertainty remains blocked. Issued prices stay frozen.
+
+**Actual acceptance:** after protected release, admission enabled on both Workers.
+Production temporary monthly2000VND offer was issued by the real authenticated
+app. QR decoded/CRC/fields matched, payOS initially PENDING/0. Closing modal,
+reloading and opening history restored the same order/instructions with no new
+history row; source resume path does not create a provider order. Owner performed
+the real bank transfer. Provider PAID/amountPaid2000/reference-present verified;
+owned live history shows paid and Plus active after reload with expiry
+2026-11-12T18:31:14.000Z, consistent with 31 days from the free/null baseline.
+No manual grant, fabricated settlement callback or agent bank transfer occurred.
+
+**Restoration/security:** deleted production PAYOS_TEST_MONTHLY_PRICE_VND secret.
+Fresh Worker metadata confirms absence; authenticated UI confirms monthly49000,
+annual499000, paid2000 history and the same Plus expiry. Staging never received
+the price override. Admission/payOS secrets retained. Callback security matrix
+PASS: signed unmapped registration200, invalid401, malformed400, oversized413,
+unauthenticated creation401. Four private temporary key files truncated to zero
+bytes with0600 retained; fresh cleanup receipt saved outside the repository.
+
+**Evidence/limits:** user-facing report/evidence and screenshots are in the chat
+outputs directory; operational receipts are outside the repo under work/.
+Provider proof and authenticated UI proof are separate. Direct D1 SELECT is not
+permitted by current OAuth (7403); no raw D1 query or provider-reference join is
+claimed. Reviewed CONFIG_RECIPE_CATALOG_D1_AUTHORITY informational warning remains;
+config/database/queue readiness PASS. No requested billing work remains pending.
+Production URL: https://frigo.tungjpstore.net/plus.
+
+---
+
+## Historical checkpoints
+
+# payOS billing account, QR recovery and temporary offer - 2026-10-13 JST
+
+**Status:** IMPLEMENTED_LOCAL_VERIFIED; hosted checks and new protected
+staging/production release remain pending. Branch
+codex/payos-billing-account-20261013 starts at production b7358ea4 (PR73).
+Explicit owner authorization covers this payment work, protected production
+release and temporary monthly2000VND; canonical monthly49000/annual499000 remain
+source defaults. No new migration, auth policy or release protection change.
+
+**Implemented:** GET billing/account returns a no-store owner snapshot of current
+entitlement/expiry, recent20 payment records and an all-history outstanding fence.
+The Plus UI adds package management, renewal, truthful history and owned saved-QR
+reopening after reload. Session-generation/owner fences discard late responses
+and retained callbacks. Loading/error blocks new creation. Atomic D1 admission
+prevents concurrent different-key and unkeyed duplicate orders; same-key replay
+retains original persisted amount and instructions. Remote uncertainty remains
+blocked for reconciliation unless the payment is already verified paid with its
+persisted provider reference; that rare lost-create-response race no longer
+blocks renewal. Legacy QR instructions were never saved and are not
+fabricated; old pending orders wait for expiry if no transfer was made.
+
+**Guest follow-up:** planner-enabled Home and Planner show an explicit login CTA
+for guests, skip registered-only reads and fence retained authenticated callbacks;
+server guest403 and legacy Week behavior remain intact.
+
+**Checks:** backend focused4files/170tests PASS including actual workerd/D1;
+UI/service focused, owned ESLint, both TypeScript projects, whitespace and billing
+contract generation/check PASS. Final `GIT_COMMIT=local-billing-account-preview
+TMPDIR=/private/tmp pnpm check` PASS:338files/8055tests, lint/types/migration-smoke/
+build, followed by a separate paired planner/T20 build PASS. Running-app synthetic
+fixtures verified desktop1280/mobile390 without horizontal overflow; free, active
+Plus/expiry/renewal, pending reopen, legacy unavailableQR, expired, read-error and
+guest Planner states match expected UI. No fixture dispatches provider/mutations.
+First full attempt failed due scratch review tests accidentally discovered and
+legacy planner fixtures inheriting globalT20 build flags; scratch preserved outside
+repo and V1 fixtures now explicitly isolate flags, with trueT20 tests retained.
+Static Plus rendering also needed a fail-closed browser session capture guard.
+No new live UI or2000VND offer is claimed yet; deployed source remains b7358ea4.
+
+**Next:** normal PR/main CI,
+protected staging then production deployment. Verify exact assets/runtime/D1,
+then enable CHECKOUT_ADMISSION_ENABLED and PAYOS_TEST_MONTHLY_PRICE_VND=2000.
+Create/reopen a true2000VND app QR; owner performs transfer. Confirm real provider
+payment, persisted paid intent and Plus expiry before deleting the temporary
+price secret to restore49000. No fake payment or direct entitlement grant.
+
+---
+
+# payOS / Plus shell production checkpoint - 2026-10-12 JST
+
+**Status:** PRODUCTION_OPERATIONAL; paid-settlement acceptance and follow-up
+registered-planner guest UI correction remain pending. PR73 merged as
+b7358ea4146226a929aa1e20513c2f98f77b7092. Hosted main CI38260918278 PASS:
+337 files / 7966 tests, lint/types/41 migrations/build. Protected staging
+38262309375 and production38262862169 PASS on attempt1, with actual production
+reviewer vn-taphoanhatung. Immutable artifact ID, pre-upload-only retry, process
+cleanup and strict service-worker proof preserve existing release protections.
+
+**Live evidence:** Both exact runtime/asset SHA proofs PASS, Worker100%, matching
+origins/D1, paired planner/T20true, D1 authority500/no fallback. Three payOS keys
+retained. Production checkout secret activation succeeded after proof. Both
+callback matrices PASS signed200/invalid401/malformed400/oversized413/unauth401.
+Actual production app monthly intent113018856588681 yielded a decoded/CRC-verified
+49000VND QR matching visible instructions; providerGET PENDING/amountPaid0.
+No transfer, fake paid webhook or direct grant. Owner may perform paid acceptance.
+Production readiness HTTP200/config/db/queueOK retains informational
+CONFIG_RECIPE_CATALOG_D1_AUTHORITY warning; it is not a failed service.
+
+**UI:** Plus was excluded from the shared kitchen shell and deliberately selected
+legacy navigation. PR73 fixes authenticated/guest Plus, 5-item nav/top Scan,
+scoped white hero headings and route comparison case/trailing-slash consistency.
+All actual App routes audited; only intended auth/landing/onboarding/immersive
+exceptions remain. Production mobile Plus verified visually with real QR.
+
+**New follow-up:** Guest Home with plannerON calls registered-only current-plan
+API and shows a generic403 error. This pre-existing issue also affects production
+because planner/T20true is preserved. Separate branch
+codex/guest-home-planner-20261012 is correcting the Home/Planner guest boundary
+and login CTA without weakening server403. Final source, checks and release
+receipts must be recorded after that correction is deployed. Temporary private
+credential files remain for final verification; cleanup not yet complete.
+
 # Admin V1 R1 certification review - 2026-10-14
 
 **Status:** ADMIN_V1_R1_CHANGES_REQUIRED (local review of 0331cc9/25140ba; reviewer
@@ -8737,3 +9265,38 @@ receipt scope is recipe ID set and V1 ingredient tuples only. T21G remains
 stopped. Next: separately authorize a manual production Environment read-only
 diagnostic at an exact current-main SHA, then inspect only the sanitized
 receipt before planning any row-level evidence path.
+
+## 2026-10-12 payOS production recovery and Plus shell consistency
+
+Scope: explicit owner authorization to finish payOS production integration and fix
+related failures, including the reported home/Plus navigation mismatch.
+
+- Verified active production is safe rollback source 4fb7c40, checkout OFF; staging
+  serves 186a9cf with checkout ON. Existing channel secrets and webhook registration
+  remain provisioned separately; no bank transfer or fabricated settlement.
+- Corrected durable admission to accept the same bounded ASCII alphanumeric virtual
+  bank accounts as the signed payOS adapter; real-SQLite create/replay/resume regression.
+- Candidate download follows immutable artifact ID from the producer, including
+  failed-only reruns; missing IDs fail closed, no name/attempt guessing.
+- Added bounded recovery only for proven Wrangler 4.149.0 GET service/secrets
+  metadata transient failures before any mutation. Every restart rechecks current
+  main, exact-SHA hosted CI and release policy. Ambiguous upload/timeout stays failed
+  and uses the existing verified rollback path. Only sanitized evidence is retained.
+- Public smoke proves both ordinary and revalidated native-curl /sw.js profiles,
+  three consecutive full SHA and matching byte hashes. Only a structurally valid
+  prior canonical SHA waits, within 90 seconds; invalid assets still fail closed.
+- Source cause of UI mismatch: /plus omitted from AppLayout kitchen allowlist; same
+  defect exists in both current main and rollback code. Migrated guest/account Plus
+  to shared header, top scan and five-item navigation. Regression enumerates every
+  actual route; immersive scan/cook stays fullscreen.
+- Executed so far: 153 payment tests, 176 UI tests, 313 release/flags/retry tests PASS;
+  lint, both TypeScript checks, executable billing contract, 41 migration replay and
+  paired planner/T20 build PASS. Full suite and protected rollout pending.
+- Next: PR review and exact-SHA hosted CI, staging proof, required production reviewer
+  approval, production identity/assets/authority proof, then checkout activation and
+  authenticated application QR. Paid entitlement acceptance needs the owner's bank
+  transfer. Do not describe pending production as complete.
+- Final pre-PR review: case/slash route variants align with Router; 245 UI and 48
+  retry/process tests PASS. First full local run 7,822 PASS/12 failures; stale Plus
+  exclusion fixed and the 11 existing macOS tmp-path fixture failures all pass under
+  canonical TMPDIR (93 tests). A final full canonical run and hosted CI remain pending.

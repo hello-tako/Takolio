@@ -1,8 +1,10 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../stores/useAuthStore';
-import { TopBar } from '../components/common/TopBar';
+import { KitchenHeader, KitchenPageHeading } from '../components/common/KitchenHeader';
 import { Button } from '../components/common/Button';
+import { BillingAccountPanel } from '../components/payment/BillingAccountPanel';
+import type { BillingAccount, BillingHistoryPayment } from '../../shared/billing';
 import { VietQRModal } from '../components/payment/VietQRModal';
 import { TAKOSAN_BRAND } from '../lib/takosan-brand';
 import { capturePrivateSession, onPrivateSessionReset } from '../lib/private-session';
@@ -25,12 +27,34 @@ export const PlusPaywallPage: React.FC = () => {
   const userId = useAuthStore((s) => s.userId);
   const householdId = useAuthStore((s) => s.householdId);
   const isGuest = useAuthStore((s) => s.isGuest);
-  const isPlus = useAuthStore((s) => s.isPlus);
+  const cachedIsPlus = useAuthStore((s) => s.isPlus);
+  const [verifiedPlus, setVerifiedPlus] = useState<{ owner: string; active: boolean } | null>(null);
+  const isPlus = verifiedPlus?.owner === `${userId}:${householdId}` ? verifiedPlus.active : cachedIsPlus;
+  const isRenderCurrent = typeof window === 'undefined' ? () => false : capturePrivateSession();
+  const ownsCurrentSession = () => isRenderCurrent() && !useAuthStore.getState().isGuest &&
+    useAuthStore.getState().userId === userId && useAuthStore.getState().householdId === householdId;
 
   const [plans, setPlans] = useState<PlusPrice[]>([]);
   const [checkoutAdmissionEnabled, setCheckoutAdmissionEnabled] = useState(false);
   const [checkoutRecoveryPending, setCheckoutRecoveryPending] = useState(true);
   const [hasOpenCheckout, setHasOpenCheckout] = useState(false);
+  const [historyBlockingCheckout, setHistoryBlockingCheckout] = useState(true);
+  const [accountReady, setAccountReady] = useState(false);
+  const [accountRefreshVersion, setAccountRefreshVersion] = useState(0);
+  const [pricesReload, setPricesReload] = useState(0);
+  const onAccountLoading = useCallback(() => { setAccountReady(false); }, []);
+  const onAccountLoaded = useCallback((account: BillingAccount) => {
+    const owner = useAuthStore.getState();
+    setVerifiedPlus({ owner: `${owner.userId}:${owner.householdId}`, active: account.subscription.plan === 'plus' && account.subscription.status === 'active' });
+    setHistoryBlockingCheckout(account.hasPendingPayment);
+    setHasOpenCheckout(account.hasPendingPayment);
+    setRecoverableCheckoutId(account.payments.find((payment) => payment.canResume)?.id ?? null);
+    setAccountReady(true);
+    if (paymentIdRef.current && account.payments.some((payment) => payment.id === paymentIdRef.current && payment.status !== 'pending')) {
+      checkoutKeyRef.current = null;
+      setAttemptedPlan(null);
+    }
+  }, []);
   const [recoverableCheckoutId, setRecoverableCheckoutId] = useState<string | null>(null);
   const [selectedPlan, setSelectedPlan] = useState<PlusPlan>('annual');
   const [paymentIntent, setPaymentIntent] = useState<CreatedPaymentIntent | null>(null);
@@ -38,10 +62,12 @@ export const PlusPaywallPage: React.FC = () => {
   const [attemptedPlan, setAttemptedPlan] = useState<PlusPlan | null>(null);
   const [isQRModalOpen, setIsQRModalOpen] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [priceNotice, setPriceNotice] = useState<string | null>(null);
   const creatingRef = useRef(false);
   const checkoutKeyRef = useRef<string | null>(null);
   const checkoutTriggerRef = useRef<HTMLButtonElement | null>(null);
   const paymentOwnerRef = useRef('');
+  const paymentIdRef = useRef<string | null>(null);
   const requestGenerationRef = useRef(0);
   const mountedRef = useRef(true);
   const selectedPlanRef = useRef(selectedPlan);
@@ -66,9 +92,13 @@ export const PlusPaywallPage: React.FC = () => {
     setCheckoutAdmissionEnabled(false);
     setCheckoutRecoveryPending(true);
     setHasOpenCheckout(false);
+    setHistoryBlockingCheckout(true);
+    setAccountReady(false);
     setRecoverableCheckoutId(null);
     setPaymentIntent(null);
+    paymentIdRef.current = null;
     setIsQRModalOpen(false);
+    setPriceNotice(null);
   }, [isGuest, userId, householdId]);
 
   useEffect(() => {
@@ -81,22 +111,15 @@ export const PlusPaywallPage: React.FC = () => {
   }, [selectedPlan]);
 
   useEffect(() => {
-    if (isGuest || !userId) return;
+    if (isGuest || !userId || !ownsCurrentSession()) return;
     const isCurrent = capturePrivateSession();
     let active = true;
     const unsubscribe = onPrivateSessionReset(() => { active = false; });
     setErrorMsg(null);
-    void billingApi.getPlans().then(async (result) => {
-      const recovery = result.checkoutAdmissionEnabled
-        ? await billingApi.getOpenCheckouts() : { checkouts: [] };
-      return { result, recovery };
-    }).then(({ result, recovery }) => {
+    void billingApi.getPlans().then((result) => {
       if (!active || !isCurrent()) return;
       setCheckoutAdmissionEnabled(result.checkoutAdmissionEnabled);
-      setHasOpenCheckout(recovery.checkouts.length > 0);
-      setRecoverableCheckoutId(recovery.checkouts.find((checkout) => checkout.state === 'ready')?.intentId ?? null);
       setCheckoutRecoveryPending(false);
-      if (recovery.checkouts.length > 0) setErrorMsg('Bạn còn lệnh thanh toán đang mở hoặc chờ đối soát. Kiểm tra lệnh cũ trước khi tạo lệnh thay thế.');
       const nextPlans = result.plans.filter((price) => price.plan === 'monthly' || price.plan === 'annual');
       setPlans(nextPlans);
       if (!nextPlans.some((price) => price.plan === selectedPlanRef.current)) {
@@ -109,7 +132,7 @@ export const PlusPaywallPage: React.FC = () => {
       active = false;
       unsubscribe();
     };
-  }, [isGuest, userId, householdId]);
+  }, [isGuest, userId, householdId, pricesReload]);
 
   const selectedPrice = useMemo(
     () => plans.find((price) => price.plan === selectedPlan) ?? null,
@@ -117,7 +140,7 @@ export const PlusPaywallPage: React.FC = () => {
   );
 
   const handleCreateIntent = async () => {
-    if (checkoutRecoveryPending || hasOpenCheckout || !selectedPrice || isCreating || creatingRef.current || isGuest || !userId || !householdId) return;
+    if (!ownsCurrentSession() || checkoutRecoveryPending || hasOpenCheckout || historyBlockingCheckout || !accountReady || !selectedPrice || isCreating || creatingRef.current || isGuest || !userId || !householdId) return;
     const requestedPlan = selectedPrice.plan;
     const requestedHouseholdId = householdId;
     const requestGeneration = requestGenerationRef.current;
@@ -127,6 +150,7 @@ export const PlusPaywallPage: React.FC = () => {
     creatingRef.current = true;
     setIsCreating(true);
     setErrorMsg(null);
+    setPriceNotice(null);
     try {
       if (checkoutAdmissionEnabled) {
         checkoutKeyRef.current ??= crypto.randomUUID();
@@ -135,13 +159,20 @@ export const PlusPaywallPage: React.FC = () => {
       const result = await billingApi.createPaymentIntent(selectedPrice.plan, checkoutKeyRef.current ?? undefined);
       if (requestGeneration !== requestGenerationRef.current || !active || !mountedRef.current || !isCurrent() || useAuthStore.getState().userId !== userId || useAuthStore.getState().householdId !== requestedHouseholdId || selectedPlanRef.current !== requestedPlan) return;
       if (result.payment.plan !== requestedPlan) throw new Error('PAYMENT_PLAN_MISMATCH');
+      if (result.payment.amountVnd !== selectedPrice.amountVnd || result.payment.currency !== selectedPrice.currency) {
+        setPriceNotice('Bảng giá đã cập nhật. Kiểm tra số tiền trên lệnh và mã QR trước khi chuyển khoản.');
+        setPricesReload((value) => value + 1);
+      }
       paymentOwnerRef.current = `${userId}:${requestedHouseholdId}`;
       if (checkoutAdmissionEnabled) {
         setHasOpenCheckout(true);
         setRecoverableCheckoutId(result.payment.id);
       }
+      paymentIdRef.current = result.payment.id;
       setPaymentIntent(result.payment);
       setIsQRModalOpen(true);
+      setHistoryBlockingCheckout(true);
+      setAccountRefreshVersion((version) => version + 1);
     } catch (error) {
       if (requestGeneration === requestGenerationRef.current && active && isCurrent() &&
           error instanceof ApiError && error.code === 'PAYMENT_RECONCILIATION_REQUIRED') setHasOpenCheckout(true);
@@ -159,15 +190,16 @@ export const PlusPaywallPage: React.FC = () => {
     }
   };
 
-  const handleResumeCheckout = async () => {
-    if (!recoverableCheckoutId || creatingRef.current) return;
+  const handleResumeCheckout = async (intentId = recoverableCheckoutId) => {
+    if (!ownsCurrentSession() || !accountReady || !intentId || creatingRef.current || isGuest || !userId || !householdId) return;
     const generation = requestGenerationRef.current;
     const isCurrent = capturePrivateSession();
     creatingRef.current = true; setIsCreating(true);
     try {
-      const result = await billingApi.resumeCheckout(recoverableCheckoutId);
+      const result = await billingApi.resumeCheckout(intentId);
       if (!mountedRef.current || generation !== requestGenerationRef.current || !isCurrent()) return;
       paymentOwnerRef.current = `${userId}:${householdId}`;
+      paymentIdRef.current = result.payment.id;
       setPaymentIntent(result.payment); setIsQRModalOpen(true);
     } catch {
       if (mountedRef.current && generation === requestGenerationRef.current && isCurrent()) setErrorMsg('Chưa mở được lệnh cũ. Không chuyển tiền thêm; kiểm tra trạng thái trước khi thử lại.');
@@ -177,6 +209,12 @@ export const PlusPaywallPage: React.FC = () => {
         if (mountedRef.current && isCurrent()) setIsCreating(false);
       }
     }
+  };
+
+  const handleHistoryResume = (payment: BillingHistoryPayment, trigger: HTMLButtonElement) => {
+    if (!payment.canResume) return;
+    checkoutTriggerRef.current = trigger;
+    void handleResumeCheckout(payment.id);
   };
 
   const handlePaymentSuccess = () => {
@@ -189,16 +227,17 @@ export const PlusPaywallPage: React.FC = () => {
 
   if (isGuest) {
     return (
-      <div className="min-h-screen bg-semantic-background pb-12">
-        <TopBar showBack title="Takosan Plus" />
-        <main className="mx-auto w-full max-w-[var(--content-compact)] px-4 pt-8 md:px-6">
+      <div className="plus-page">
+        <KitchenHeader backTo="/me" />
+        <div className="kitchen-page-body mx-auto w-full max-w-[var(--content-compact)]">
+          <KitchenPageHeading title="Takosan Plus" />
           <section className="overflow-hidden rounded-feature border border-semantic-border bg-semantic-surface shadow-card">
-            <div className="bg-gradient-to-br from-semantic-action-primary-pressed to-semantic-action-primary-hover px-6 py-7 text-white">
+            <div className="plus-hero bg-gradient-to-br from-semantic-action-primary-pressed to-semantic-action-primary-hover px-6 py-7 text-white">
               <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/12 ring-1 ring-white/15">
                 <ShieldCheck aria-hidden="true" className="h-6 w-6 text-takosan-yellow" />
               </div>
               <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-takosan-yellow">Tài khoản bắt buộc</p>
-              <h1 className="mt-2 text-balance font-heading text-2xl font-bold leading-tight text-white">Đăng nhập trước khi chọn gói Plus</h1>
+              <h2 className="mt-2 text-balance font-heading text-2xl font-bold leading-tight text-white">Đăng nhập trước khi chọn gói Plus</h2>
               <p className="mt-3 text-sm leading-relaxed text-white">
                 Gói Plus được gắn với tài khoản để quyền lợi không mất khi bạn đổi thiết bị. Dữ liệu phiên khách vẫn được giữ riêng khi bạn đăng nhập.
               </p>
@@ -222,16 +261,17 @@ export const PlusPaywallPage: React.FC = () => {
               </p>
             </div>
           </section>
-        </main>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-semantic-background pb-12">
-      <TopBar showBack title="Nâng cấp Takosan Plus" />
-      <div className="mx-auto w-full max-w-[var(--content-compact)] px-4 pt-3 space-y-5 md:px-6">
-        <div className="bg-gradient-to-br from-semantic-action-primary-pressed to-semantic-action-primary-hover text-white rounded-card p-5 shadow-card flex items-center justify-between gap-3 overflow-hidden border border-semantic-action-primary/40">
+    <div className="plus-page">
+      <KitchenHeader backTo="/me" />
+      <div className="kitchen-page-body mx-auto w-full max-w-[var(--content-compact)] space-y-5">
+        <KitchenPageHeading title={isPlus ? "Quản lý Takosan Plus" : "Nâng cấp Takosan Plus"} />
+        <div className="plus-hero bg-gradient-to-br from-semantic-action-primary-pressed to-semantic-action-primary-hover text-white rounded-card p-5 shadow-card flex items-center justify-between gap-3 overflow-hidden border border-semantic-action-primary/40">
           <div className="space-y-1 max-w-[200px]">
             <div className="flex items-center gap-1.5 mb-1">
               <Sparkles className="w-4 h-4 text-takosan-yellow" />
@@ -249,7 +289,11 @@ export const PlusPaywallPage: React.FC = () => {
           </div>
         </div>
 
-        {errorMsg && <p role="alert" className="rounded-xl border border-semantic-danger/20 bg-semantic-danger-soft px-3 py-2 text-sm text-semantic-danger-strong">{errorMsg}</p>}
+        <BillingAccountPanel refreshVersion={accountRefreshVersion} isBusy={isCreating} onResume={handleHistoryResume} onLoaded={onAccountLoaded} onLoading={onAccountLoading} />
+        {accountReady && historyBlockingCheckout && <p role="status" className="rounded-xl border border-semantic-border bg-semantic-surface p-4 text-sm">Bạn còn lệnh thanh toán đang mở hoặc chờ đối soát. Kiểm tra lệnh cũ trong lịch sử trước khi tạo lệnh mới.</p>}
+
+        {priceNotice && <p role="status" className="rounded-xl border border-semantic-border bg-semantic-surface p-4 text-sm">{priceNotice}</p>}
+        {errorMsg && <div className="space-y-2"><p role="alert" className="rounded-xl border border-semantic-danger/20 bg-semantic-danger-soft px-3 py-2 text-sm text-semantic-danger-strong">{errorMsg}</p>{checkoutRecoveryPending && <Button variant="outline" onClick={() => setPricesReload((value) => value + 1)}>Tải lại bảng giá</Button>}</div>}
 
         <div className="grid grid-cols-2 gap-3" role="group" aria-label="Gói Takosan Plus">
           {plans.map((price) => {
@@ -259,7 +303,7 @@ export const PlusPaywallPage: React.FC = () => {
                 key={price.plan}
                 type="button"
                 aria-pressed={isSelected}
-                disabled={attemptedPlan !== null || hasOpenCheckout}
+                disabled={attemptedPlan !== null || hasOpenCheckout || historyBlockingCheckout}
                 onClick={() => { setSelectedPlan(price.plan); setPaymentIntent(null); setIsQRModalOpen(false); }}
                 className={clsx(
                   'text-left rounded-xl p-4 relative shadow-xs cursor-pointer transition-tap active:scale-[0.98] focus-visible:outline-none focus-visible:shadow-t17-focus',
@@ -293,11 +337,11 @@ export const PlusPaywallPage: React.FC = () => {
 
         <div className="pt-2">
           {recoverableCheckoutId && (
-            <Button fullWidth size="lg" disabled={isCreating} onClick={(event) => { checkoutTriggerRef.current = event.currentTarget; void handleResumeCheckout(); }}>
+            <Button fullWidth size="lg" disabled={isCreating || !accountReady} onClick={(event) => { checkoutTriggerRef.current = event.currentTarget; void handleResumeCheckout(); }}>
               Mở lệnh thanh toán cũ
             </Button>
           )}
-          <Button fullWidth size="lg" disabled={checkoutRecoveryPending || hasOpenCheckout || !selectedPrice || isCreating} onClick={(event) => { checkoutTriggerRef.current = event.currentTarget; void handleCreateIntent(); }} className="flex items-center justify-center gap-2">
+          <Button fullWidth size="lg" disabled={checkoutRecoveryPending || hasOpenCheckout || historyBlockingCheckout || !accountReady || !selectedPrice || isCreating} onClick={(event) => { checkoutTriggerRef.current = event.currentTarget; void handleCreateIntent(); }} className="flex items-center justify-center gap-2">
             <span>{isCreating ? 'Đang tạo lệnh thanh toán…' : isPlus ? 'Gia hạn hội viên' : selectedPrice ? `Nâng cấp ngay với ${formatPrice(selectedPrice)}` : 'Đang tải bảng giá…'}</span>
             <ArrowRight className="w-4 h-4 ml-1" />
           </Button>
@@ -307,9 +351,10 @@ export const PlusPaywallPage: React.FC = () => {
       {paymentIntent && paymentOwnerRef.current === `${userId}:${householdId}` && (
         <VietQRModal
           isOpen={isQRModalOpen}
-          onClose={() => { setIsQRModalOpen(false); setPaymentIntent(null); }}
+          onClose={() => { setIsQRModalOpen(false); setAccountRefreshVersion((version) => version + 1); }}
           onSuccess={handlePaymentSuccess}
           intent={paymentIntent}
+          recoverable={checkoutAdmissionEnabled}
           returnFocus={checkoutTriggerRef}
         />
       )}

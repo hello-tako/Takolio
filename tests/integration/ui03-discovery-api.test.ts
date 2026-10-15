@@ -188,6 +188,19 @@ describe('UI03 authenticated discovery', () => {
       (await discoverRecipes(env(), auth, snapshot, query)).items[0].canCookWithoutBuying,
     ).toBe(true);
   });
+  it('checks exact stock for the selected household servings and pins pagination to that size', async () => {
+    const recipe: Recipe = { ...ALL_RECIPES[0], id: 'portion-egg', slug: 'portion-egg',
+      servings: 4, ingredients: [{ ingredientId: 'CHICKEN_EGG', name: 'Trứng', requiredQuantity: 4, unit: 'piece' }] };
+    const snapshot = await createRecipeAuthoritySnapshot('static', [recipe]);
+    const stockBefore = db.query('SELECT id, quantity, version FROM inventory_items ORDER BY id');
+    const two = await discoverRecipes(env(), auth, snapshot, DiscoveryQuerySchema.parse({ servings: '2', noBuy: true }));
+    expect(two.total).toBe(1);
+    expect(two.items[0]).toMatchObject({ recipe: { servings: 2 }, canCookWithoutBuying: true });
+    expect((await discoverRecipes(env(), auth, snapshot, DiscoveryQuerySchema.parse({ servings: '4', noBuy: true }))).total).toBe(0);
+    const first = await page('servings=2');
+    expect((await request(`servings=4&page=2&cursor=${first.nextCursor}`)).status).toBe(409);
+    expect(db.query('SELECT id, quantity, version FROM inventory_items ORDER BY id')).toEqual(stockBefore);
+  });
   it('stock/version changes reject cursor409 and unfenced restart computes new results', async () => {
     const first = await page();
     db.seed("UPDATE inventory_items SET quantity=3, version=version+1 WHERE id='ui03-eggs'");
@@ -218,6 +231,9 @@ describe('UI03 authenticated discovery', () => {
     expect((await request(`page=2&cursor=${first.nextCursor}`)).status).toBe(409);
   });
   it.each([
+    'servings=0',
+    'servings=21',
+    'servings=2.5',
     'page=0',
     'page=01',
     'page=1e3',

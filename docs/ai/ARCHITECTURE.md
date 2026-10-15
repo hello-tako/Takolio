@@ -1,3 +1,98 @@
+# T24 explicit review of unknown shopping demand - 2026-10-14
+
+ADR-060 adds a review command to the existing household shopping list. A source
+fingerprint binds the shared plan revision, trip dates and exact ingredient/dish
+attribution. A selection snapshot also binds review and purchase state; membership
+and raw persisted witnesses guard an atomic command receipt/review/item batch.
+Receipts survive later demand replacement and purchase deletion for exact replay.
+
+Unknown demand remains NULL. Purchase writes only selected purchase intent as an
+existing generated override. Snapshot-scoped skip/reopen are revisioned tombstones;
+changed source content requires review again while purchase edits/history survive.
+Ordinary manual rows never reconcile demand by name. Unknown generated deletion
+reopens review rather than introducing an indefinite same-plan dismissal.
+
+The browser presents pending, selected and skipped demand explicitly, requires a
+connection for review and freezes uncertain payload/key. Migration0043 must precede
+shopping Worker deployment independently of planner flags. Local verification and
+limits are recorded in the T24 packet; no remote release follows local success.
+
+---
+
+# T23 quantity-aware manual family meals - 2026-10-14
+
+ADR-059 extends the accepted T22 path. `/api/v2/meal-planning/drafts` creates
+intentional empty compositions with mode-specific request fingerprints, the same
+household/profile/inventory witnesses, and no automatic search. Existing V1
+composition commands add/swap explicit locked identities; assisted completion
+fills remaining roles. A locked manual main with existing `complete_meal` traits
+selects a one-dish template only for that slot, shared by planning and DTO reads.
+
+Scoped picker reads bind plan/revision/slot/servings/swap identity and pagination
+snapshots. Required/from-fridge/missing quantities come from chronological shared
+stock projection. Entering mutations validate the full affected meal/suffix;
+corrective removals remain possible. Rich component assessment is opt-in on reads
+so strict old family/V1 response shapes remain compatible.
+
+Discovery, recipe detail, plan links and cooking attempts retain selected servings;
+frozen cooking retries preserve the original count/deductions. The recipe/favorite
+destination dialog distinguishes add from replace and offers an exact manual
+setup handoff when no future destination exists. Board and destination chronology
+use scheduled time and numeric sequence, including partially filled calendars.
+
+Inventory measured correction reuses existing versioned commands. Compatible
+unit selections convert displayed amounts; explicit measurement is compared in
+the selected unit. Quantity/unit drafts retain their original revision; metadata
+edits never overwrite untouched stock. No package mass or positive floor is made up.
+Shopping request keys retire only after confirmed success; stale revision/snapshot
+recovery requires an explicit reload and a new user action. Local checks and
+remaining unresolved-demand contract gaps are recorded in the T23 packet.
+
+Trusted current projection skips elapsed meal instants, including earlier meals
+today. V2 edits gate the target slot rather than freezing the entire week. Shared
+family shopping may reproject future demand after stock/history/time changes;
+profile, hard preference, catalog and authority changes still require revalidation.
+Picker snapshots capture elapsed slot identities. Freshness remains truthful;
+legacy price optimization and whole-week regeneration retain their strict gates.
+
+---
+
+# T22 Vietnamese family meals - 2026-10-13
+
+ADR-058 adds whole-week composed planning to the existing planner. The strict V1
+plan and per-slot composition services remain the compatibility boundary.
+`packages/recipes/src/composition/family-planner.ts` searches all requested slots
+against a shared chronological inventory projection. Four-role family lunch and
+dinner, three-role quick meals, and breakfast/one-pot templates are explicit.
+Vietnamese defaults, region preferences and an opted-in international weekly cap
+come from a revisioned member profile, rather than LLM prompt instructions.
+
+`packages/db/src/family-meal-planning.ts` commits V1-compatible anchors, every
+component and V2 metadata together. `family-planning-fence.ts` captures native
+inventory, ranking/profile and catalog witnesses; D1 batch guards abort stale
+writes. The recipe-authority service verifies current D1 content even within its
+cache TTL. Generation, proposals, mutations and shopping share these boundaries.
+V1 writers cannot discard the components of a family plan.
+
+New `/api/v2/meal-planning/plans` routes add generate/current/read/regenerate.
+Existing V1 composition commands still perform individual dish changes. Family
+preferences and private saved recipes use `/api/v1/family-preferences` and
+`/api/v1/recipe-favorites`. The frontend uses the paired planner/composition flags;
+legacy current plans and the Week/settings/card presentations retain compatibility.
+New generation cannot silently fall back to single-dish V1.
+
+`src/worker/services/shopping-plan.ts` materializes trusted composed shortages for
+an explicit trip horizon. Migration 0042 keeps demand sources, command receipts,
+purchase overrides, item metadata and same-plan dismissals separate from physical
+stock. One active projected plan contributes demand per household list; another
+member's active plan returns a conflict. Saved recipes remain personal; only
+chosen purchase demand and dish attribution become household-shared.
+
+Hosted deployment, remote migration and paired flag activation remain a separate
+release operation. Current verification is recorded in CURRENT_STATE.md.
+
+---
+
 # Nine-region production release preparation - 2026-10-12 JST
 
 **Task/status:** RELEASE_PREPARATION. Active packet

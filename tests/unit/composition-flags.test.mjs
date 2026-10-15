@@ -9,6 +9,7 @@ import {
   verifyCompositionRelease,
   verifyStagingPlannerPrerequisite,
 } from '../../scripts/composition-flags.mjs';
+import { deploymentArguments } from '../../scripts/cloudflare-deploy-retry.mjs';
 import { resolveMealCompositionV2Release } from '../../scripts/release-check.mjs';
 import { parseWranglerJsonc } from '../../scripts/d1-migration-check.mjs';
 
@@ -104,7 +105,7 @@ describe('T20 composition flags: deploy workflow wiring', () => {
       const steps = deploy.jobs[job].steps;
       const build = stepIndex(steps, 'Build');
       const guard = stepIndex(steps, GUARD);
-      const deployStep = steps.findIndex((step) => String(step.with?.command ?? '').startsWith('deploy '));
+      const deployStep = steps.findIndex((step) => step.run === 'node scripts/cloudflare-deploy-retry.mjs release-manifest.json');
       expect(build).toBeGreaterThan(-1);
       expect(steps[build].run).toBe('pnpm build');
       expect(steps[build].env.VITE_MEAL_COMPOSITION_V2_ENABLED).toBe(OUTPUT);
@@ -119,14 +120,45 @@ describe('T20 composition flags: deploy workflow wiring', () => {
         ...(job === 'production' ? { MEAL_PLANNER_ENABLED: OUTPUT } : {}),
       });
       if (job === 'staging') expect(steps[guard].if).toBe(steps[build].if);
-      expect(steps[deployStep].with.command).toContain(`--var MEAL_COMPOSITION_V2_ENABLED:${OUTPUT}`);
-      // No other build in the job may compile the UI without the flag.
-      expect(steps.filter((step) => /pnpm build\b/.test(String(step.run ?? '')))).toHaveLength(1);
+      for (const enabled of [true, false]) {
+        expect(deploymentArguments({ sha: 'a'.repeat(40), environment: job, recipeCatalogMode: 'd1',
+          recipeCatalogCanaryPercent: 0, recipeCatalogCutoverEnabled: true, mealCompositionV2Enabled: enabled }))
+          .toContain(`MEAL_COMPOSITION_V2_ENABLED:${enabled}`);
+      }
+      const builders = steps.filter((step) => /pnpm build\b/.test(String(step.run ?? '')));
+      expect(steps[build].env.VITE_MEAL_PLANNER_ENABLED).toBe(job === 'staging' ? 'true' : OUTPUT);
+      if (job === 'staging') {
+        expect(builders.map((step) => step.name)).toEqual(['Build']);
+      } else {
+        const recoveryName = 'Prepare compatible family-meal recovery before serving traffic';
+        expect(builders.map((step) => step.name)).toEqual(['Build', recoveryName]);
+        const recovery = builders[1];
+        expect(recovery.env.COMPOSITION_ENABLED).toBe(OUTPUT);
+        expect(recovery.env.DEPLOY_SHA).toBe('${{ needs.release.outputs.deploy_sha }}');
+        const compileLines = recovery.run.match(/^[^\n]*\bpnpm build\b.*$/gm);
+        expect(compileLines).toHaveLength(2);
+        expect(compileLines[0]).toContain('GIT_COMMIT="${DEPLOY_SHA}" VITE_MEAL_PLANNER_ENABLED=false VITE_MEAL_COMPOSITION_V2_ENABLED=false pnpm build');
+        expect(compileLines[1]).toContain('GIT_COMMIT="${DEPLOY_SHA}" VITE_MEAL_PLANNER_ENABLED="${COMPOSITION_ENABLED}" VITE_MEAL_COMPOSITION_V2_ENABLED="${COMPOSITION_ENABLED}" pnpm build');
+        const proof = recovery.run.indexOf('node scripts/family-meal-release.mjs build-proof');
+        const inactiveUpload = recovery.run.indexOf('pnpm wrangler versions upload');
+        const certify = recovery.run.indexOf('node scripts/family-meal-release.mjs certify');
+        const activeCompile = recovery.run.indexOf(compileLines[1]);
+        const activeGuard = recovery.run.indexOf('MEAL_PLANNER_ENABLED="${COMPOSITION_ENABLED}" MEAL_COMPOSITION_V2_ENABLED="${COMPOSITION_ENABLED}" VITE_MEAL_COMPOSITION_V2_ENABLED="${COMPOSITION_ENABLED}" node scripts/composition-flags.mjs verify release-manifest.json dist/composition-flags.json');
+        expect(proof).toBeGreaterThan(recovery.run.indexOf(compileLines[0]));
+        expect(inactiveUpload).toBeGreaterThan(proof);
+        expect(certify).toBeGreaterThan(inactiveUpload);
+        expect(activeCompile).toBeGreaterThan(certify);
+        expect(activeGuard).toBeGreaterThan(activeCompile);
+        expect(inactiveUpload).toBeLessThan(activeCompile);
+        expect(recovery.run).toContain('--var MEAL_PLANNER_ENABLED:false --var MEAL_COMPOSITION_V2_ENABLED:false');
+        expect(stepIndex(steps, recoveryName)).toBeGreaterThan(guard);
+        expect(stepIndex(steps, recoveryName)).toBeLessThan(deployStep);
+      }
     },
   );
   it('never reads the dispatch input anywhere but the normalizing gate', () => {
     expect(deploySource.match(/inputs\.meal_composition_v2_enabled/g)).toHaveLength(1);
-    expect(deploySource.match(/MEAL_COMPOSITION_V2_ENABLED:\$\{\{ needs\.release\.outputs\.meal_composition_v2_enabled \}\}/g)).toHaveLength(2);
+    expect(deploySource.match(/run: node scripts\/cloudflare-deploy-retry\.mjs release-manifest\.json/g)).toHaveLength(2);
   });
 });
 
@@ -189,10 +221,15 @@ describe('T20 production planner prerequisite', () => {
     const steps = deploy.jobs.production.steps;
     const build = steps.find((step) => step.name === 'Build');
     const guard = steps.find((step) => step.name === GUARD);
-    const upload = steps.find((step) => String(step.with?.command ?? '').startsWith('deploy '));
+    const upload = steps.find((step) => step.run === 'node scripts/cloudflare-deploy-retry.mjs release-manifest.json');
     expect(build.env.VITE_MEAL_PLANNER_ENABLED).toBe(OUTPUT);
     expect(guard.env.MEAL_PLANNER_ENABLED).toBe(OUTPUT);
-    expect(upload.with.command).toContain(`--var MEAL_PLANNER_ENABLED:${OUTPUT}`);
+    expect(upload.run).toBe('node scripts/cloudflare-deploy-retry.mjs release-manifest.json');
+    for (const enabled of [true, false]) {
+      expect(deploymentArguments({ sha: 'a'.repeat(40), environment: 'production', recipeCatalogMode: 'd1',
+        recipeCatalogCanaryPercent: 0, recipeCatalogCutoverEnabled: true, mealCompositionV2Enabled: enabled }))
+        .toContain(`MEAL_PLANNER_ENABLED:${enabled}`);
+    }
     // Production defaults remain off; no config edit activates a runtime.
     expect(parseWranglerJsonc(read('wrangler.jsonc'), 'wrangler.jsonc').vars.MEAL_PLANNER_ENABLED).not.toBe('true');
   });

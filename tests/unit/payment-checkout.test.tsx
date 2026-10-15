@@ -25,6 +25,7 @@ const mocks = vi.hoisted(() => {
     authState,
     useAuthStore,
     getPlans: vi.fn(),
+    getAccount: vi.fn(),
     getOpenCheckouts: vi.fn(),
     resumeCheckout: vi.fn(),
     createPaymentIntent: vi.fn(),
@@ -38,6 +39,7 @@ vi.mock('../../src/web/stores/useAuthStore', () => ({ useAuthStore: mocks.useAut
 vi.mock('../../src/web/services/billing', () => ({
   billingApi: {
     getPlans: mocks.getPlans,
+    getAccount: mocks.getAccount,
     getOpenCheckouts: mocks.getOpenCheckouts,
     resumeCheckout: mocks.resumeCheckout,
     createPaymentIntent: mocks.createPaymentIntent,
@@ -124,6 +126,21 @@ describe('server-authoritative payment checkout', () => {
     mocks.getPlans.mockReset().mockImplementation(async () => ({ plans: prices, checkoutAdmissionEnabled: true }));
     mocks.resumeCheckout.mockReset();
     mocks.getOpenCheckouts.mockReset().mockResolvedValue({ checkouts: [] });
+    mocks.getAccount.mockReset().mockImplementation(async () => {
+      const open = await mocks.getOpenCheckouts();
+      const latestCreate = mocks.createPaymentIntent.mock.results.at(-1);
+      const created = latestCreate?.type === 'return' ? await Promise.resolve(latestCreate.value).catch(() => null) : null;
+      const checkouts = created?.payment?.status === 'pending' && !open.checkouts.some((checkout: { intentId: string }) => checkout.intentId === created.payment.id)
+        ? [...open.checkouts, { intentId: created.payment.id, state: 'ready' }] : open.checkouts;
+      return {
+        subscription: { plan: 'free', status: 'inactive', expiresAt: null },
+        payments: checkouts.map((checkout: { intentId: string; state: string }) => ({
+          ...payment({ id: checkout.intentId }), createdAt: '2026-01-01T00:00:00.000Z',
+          checkoutState: checkout.state, canResume: checkout.state === 'ready',
+        })),
+        hasPendingPayment: checkouts.length > 0, hasMore: false,
+      };
+    });
     mocks.createPaymentIntent.mockReset();
     mocks.getPaymentIntent.mockReset();
     mocks.getMe.mockReset();
@@ -148,11 +165,23 @@ describe('server-authoritative payment checkout', () => {
     });
   }
 
+  it.each([false, true])('shares the top Scan action and one heading for guest=%s Plus', async (isGuest) => {
+    mocks.authState.isGuest = isGuest;
+    await mount(<MemoryRouter initialEntries={['/plus']}><PlusPaywallPage /></MemoryRouter>);
+    expect(host.querySelector('header.kitchen-header')).not.toBeNull();
+    expect(host.querySelector('a.kitchen-header-scan')?.getAttribute('href')).toBe('/scan');
+    expect(host.querySelectorAll('h1')).toHaveLength(1);
+    expect(host.querySelector('a[aria-label="Quay lại"]')?.getAttribute('href')).toBe('/me');
+    expect(host.querySelector('main')).toBeNull();
+    expect(host.querySelector('.plus-hero h2')?.className).toContain('text-white');
+    expect(mocks.createPaymentIntent).not.toHaveBeenCalled();
+  });
+
   it('uses legacy creation without querying or activating unaccepted admission', async () => {
     mocks.getPlans.mockResolvedValue({ plans: prices, checkoutAdmissionEnabled: false });
     mocks.createPaymentIntent.mockResolvedValue({ success: true, payment: createdIntent() });
     await mount(<MemoryRouter><PlusPaywallPage /></MemoryRouter>);
-    expect(mocks.getOpenCheckouts).not.toHaveBeenCalled();
+    expect(mocks.getAccount).toHaveBeenCalledTimes(1);
     const button = [...host.querySelectorAll('button')].find((item) => item.textContent?.includes('Nâng cấp ngay'));
     expect(button?.disabled).toBe(false);
     await act(async () => { button?.click(); });
