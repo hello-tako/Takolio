@@ -5,6 +5,7 @@
 //
 //   node scripts/admin-workerd-check.mjs [--out FILE]                         current tree
 //   node scripts/admin-workerd-check.mjs --mode baseline --root DIR [--out]   pre-remediation reproduction
+import { createHash } from 'node:crypto';
 import { spawn, spawnSync } from 'node:child_process';
 import { existsSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { request as httpRequest } from 'node:http';
@@ -267,6 +268,24 @@ async function main() {
     } finally {
       customer.stop();
     }
+
+    // Same-candidate flags-OFF recovery keeps the additive 0043 schema and its strict ledger.
+    const recoveryToken = 'synthetic-local-recovery-token';
+    const recoveryHash = createHash('sha256').update(recoveryToken).digest('hex');
+    const recoverySql = `INSERT INTO sessions_v2(id,user_id,household_id,token_hash,expires_at)
+      SELECT 'r2-recovery-session',u.id,hm.household_id,'${recoveryHash}','2099-01-01T00:00:00.000Z'
+      FROM users u JOIN household_members hm ON hm.user_id=u.id WHERE u.id='fx_user_001' LIMIT 1;`;
+    const sessionSeed = run('pnpm', ['exec', 'wrangler', 'd1', 'execute', 'frigo-db', '--local', '-c', 'wrangler.admin-facade-local.jsonc', '--persist-to', persist, '--command', recoverySql], { env: { ...env, CI: 'true' } });
+    if (sessionSeed.status !== 0) throw new Error('Local recovery session seed failed');
+    const recovery = await startWorker(customerConfig('customer-flags-off', { MEAL_PLANNER_ENABLED: 'false', MEAL_COMPOSITION_V2_ENABLED: 'false' }), persist);
+    try {
+      const checks = [];
+      for (const route of ['/api/v1/me', '/api/v1/inventory', '/api/v1/week/current']) {
+        const response = await probe(recovery.base, route, { navigate: false, headers: { Cookie: `__Host-frigo_session=${recoveryToken}` } });
+        checks.push(check(`flags-OFF recovery on additive 0043: ${route}`, response.status === 200, { status: response.status }));
+      }
+      record('current-main compatible application recovery with additive schema', checks);
+    } finally { recovery.stop(); }
 
     const facadeCfg = jsonc('wrangler.admin-facade-local.jsonc');
     const facadeFile = writeConfig('facade-public-probe', { ...facadeCfg, main: path.join(root, facadeCfg.main), d1_databases: facadeCfg.d1_databases.map((db) => ({...db, migrations_dir: path.join(root, db.migrations_dir)})) });
