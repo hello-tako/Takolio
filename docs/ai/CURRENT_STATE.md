@@ -1,3 +1,15 @@
+# Takolio V1 draft published - 2026-10-16 JST
+
+**Status:** `TAKOLIO_V1_IMPLEMENTED_REVIEW_REQUIRED`. Local implementation, local QA and independent code/design/security review complete. Draft PR #79: https://github.com/lol-vn/Tako-san/pull/79. Hosted `validate` runs automatically from the PR; it is pending at this checkpoint and is not claimed PASS.
+
+**Repository/branch:** `lol-vn/Tako-san` (ID `1385308553`); `feat/takolio-brand-migration-v1`; live main remains `03428467cdd5e93d27a3a27e5edaf7d512eef71d`. Implementation `8e81d5d9879f6a8ea22db7cbc232fcf399a354fa`, independently reviewed source/evidence checkpoint `6ee9c8c4fff71a472383c39e9ce0d9f97be541c6`. This publication documentation checkpoint follows them.
+
+**Actual actions:** GitHub CLI authenticated as `lol-vn`; feature branch push succeeded; PR #79 verified OPEN and DRAFT with base main. No merge, deployment, workflow dispatch or protected-system mutation occurred. Previous authentication failures below remain historical evidence.
+
+**Next:** require successful exact-head `validate` and owner review; independently reviewed implementation has no open findings. Keep 25 protected-copy locations, legal clearance, premium 3D finishing and native/device exclusions explicit. No release action is authorized.
+
+---
+
 # Takolio V1 migration checkpoint - 2026-10-16 JST
 
 **Status:** `TAKOLIO_V1_CHANGES_REQUIRED` pending authenticated push/draft PR and hosted `validate`; local implementation and independent review are complete.

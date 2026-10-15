@@ -34,7 +34,7 @@ Independent code/design/security review by `/root/independent_brand_review` foun
 
 ## Known limits
 
-Hosted GitHub CI, authenticated hosted flows, native physical-device installs, legal/trademark clearance, premium 3D mascot finishing and protected payment/Worker copy migration are not certified. GitHub CLI was unauthenticated, so no branch push or draft PR was created.
+Authenticated hosted flows, native physical-device installs, legal/trademark clearance, premium 3D mascot finishing and protected payment/Worker copy migration are not certified. GitHub authentication was restored; the feature branch was pushed and draft PR #79 opened. Hosted `validate` is pending at this checkpoint; its actual result must be read from GitHub before approval.
 
 ## Reproducible evidence and retained failures
 
@@ -47,3 +47,7 @@ The 198-screen run has one retained transient finding and a passing focused rech
 Typography: 106 required Vietnamese precomposed letters were present in both font families. Existing Nunito subsets total 87,812 bytes; added Plus Jakarta Sans subset is 35,180 bytes. All use font-display swap and local fallbacks. Generated font and SVG hashes, maskable safe-circle pixel check and PNG alpha/dimensions are covered by the focused brand suites. Repeat deterministic generation is hash-stable in this pinned toolchain; cross-platform PNG encoders are compared by decoded pixel bytes.
 
 `git diff --cached --check` returned exit 2 only for unchanged upstream OFL notice CRLF/trailing whitespace in the three imported license copies. These legal notices retain their original bytes; code lint/typecheck remain PASS. This exception is recorded in receipts.
+
+## Draft publication
+
+Draft PR: https://github.com/lol-vn/Tako-san/pull/79. Branch push and PR creation succeeded after the operator completed GitHub device login. The PR remains DRAFT against protected main; initial published head `6ee9c8c4fff71a472383c39e9ce0d9f97be541c6`. GitHub automatically started `validate` run `38791694785`; no manual workflow dispatch was used. `evidence/publication.json` records this observation. Exact-head status must be refreshed after this documentation commit.

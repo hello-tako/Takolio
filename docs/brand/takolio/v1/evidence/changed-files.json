@@ -5,8 +5,8 @@
   "files": [
     {
       "path": "docs/ai/CURRENT_STATE.md",
-      "bytes": 636139,
-      "sha256": "a73ffd8a40063b152c3aa66ae056679314662e2b59420a4d25fcd35343de9366"
+      "bytes": 637421,
+      "sha256": "2becc482942e861aa626e0ab01c61d62362ef21cf93671143ffa4bb930b9ed3c"
     },
     {
       "path": "docs/ai/DECISIONS.md",
@@ -15,13 +15,13 @@
     },
     {
       "path": "docs/ai/HANDOFF.md",
-      "bytes": 638446,
-      "sha256": "1c8cd048e79dbe51a5964674036f5ccb7bd7256b6259391e6e52619c3138bc8b"
+      "bytes": 639728,
+      "sha256": "d16f35b7f78558bd73ce601e5efde828b4e9316e24aeb614fadff9e5c02b4c2c"
     },
     {
       "path": "docs/ai/TASK_BOARD.md",
-      "bytes": 482327,
-      "sha256": "96c656b12563c8d39e281b3af68385f3e46d9409d75c6f736c14621cd2d5b504"
+      "bytes": 483609,
+      "sha256": "b73591061e7b99c0abf65de38ef846a4fb7951e34897599bb80f25e29598c23c"
     },
     {
       "path": "docs/brand/takolio/v1/ASSET_MANIFEST.md",
@@ -45,8 +45,8 @@
     },
     {
       "path": "docs/brand/takolio/v1/VERIFICATION.md",
-      "bytes": 6201,
-      "sha256": "6599213e7c57edecefffd8943af4edaa1eb6e6265bef64d8b99a05bb6928ba67"
+      "bytes": 6805,
+      "sha256": "2df3bcad79b67de333e312ff4b8070a78d090700c69ba8f2f69e8fc70c3897fd"
     },
     {
       "path": "docs/brand/takolio/v1/evidence/before-observations.json",
@@ -92,6 +92,11 @@
       "path": "docs/brand/takolio/v1/evidence/protected-audit.json",
       "bytes": 42062,
       "sha256": "f9569a59cb6783e98ae278f98a0addcc87cc6abb763062dd66199ea4dba329d7"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/publication.json",
+      "bytes": 642,
+      "sha256": "7ad1461475120e5f8e2d7fff3328640ac6dab0959e0d3cf983071784e28b6a38"
     },
     {
       "path": "docs/brand/takolio/v1/evidence/pwa-final-observations.json",
