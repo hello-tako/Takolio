@@ -2,6 +2,8 @@
 
 Status: LOCAL_COMPLETE / NOT_DEPLOYED (2026-10-16 JST)
 
+Verified implementation checkpoint: `34421382`.
+
 ## Outcome
 
 This pass makes the existing Takosan kitchen surfaces denser and easier to scan
@@ -58,6 +60,21 @@ Screenshots from the final E2E run are in `.wrangler/family-meals/`, including
 `favorites-390.png` and `onboarding-390.png`. Local synthetic preview checks do
 not certify hosted signed-in behavior, native iOS rendering, 200% browser zoom or
 real-user retention. No production deployment was performed for T27.
+
+## Retained failures
+
+The initial full suite had a stale shopping-copy assertion (8,466 PASS / 1 FAIL);
+that assertion was updated to check the final future-meal/current-fridge contract.
+An initial E2E attempt used two Vite instances sharing a dependency cache and did
+not complete synthetic sign-in. A later run was 11/12 because source/docs editing
+triggered a Vite reload during generation. After the source was frozen, 12/12
+passed. Logs remain in `work/`; no failing test was skipped or weakened.
+
+The broad heuristic `ux_audit.py` run reported 39 issues/1,505 warnings from
+128 checks across the repository including tests/scratch. This is not a PASS;
+targeted UI review and existing E2E axe/overflow assertions found no remaining
+introduced blocker. The Wrangler timeout in the final full run is preserved;
+the isolated PASS does not turn that full run into an aggregate PASS.
 
 ## Next action
 

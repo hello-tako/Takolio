@@ -1,3 +1,30 @@
+# T27 handoff - compact kitchen UI - 2026-10-16 JST
+
+Verified implementation checkpoint: `34421382` (source/tests/ADR/task packet).
+
+**Status:** LOCAL_COMPLETE / NOT_DEPLOYED. Branch:
+`codex/compact-kitchen-ux-20261015`. Implementation is intentionally presentation
+and copy scoped; planner contracts, safety rules, inventory semantics, auth,
+payments, migrations and infrastructure remain unchanged.
+
+**Changes:** `kitchen-density.css` supplies compact tokens and route-scoped density;
+planner setup makes auto/manual intent legible and keeps safety selections visible;
+shopping uses a responsive native disclosure; favorites, recipes, onboarding and
+shell copy are shorter and task-oriented. Editable controls remain 16px and touch
+areas remain >=44px.
+
+**Evidence:** lint, types, default/paired builds, migration checks and diff checks
+PASS. Family E2E 12/12 PASS across four viewports. Full Vitest is 8,466 PASS / 1
+Wrangler startup timeout (5.326s vs 5s); focused staging catch-up is 32/32 PASS.
+Manual preview verified keyboard disclosure, focus, draft retention, responsive
+state and no overflow at 320px. Exact evidence is in the T27 task packet.
+
+**Next action:** Review `.wrangler/family-meals/board-viewport-390.png` and the
+T27 packet, then decide whether to start protected CI/staging/production release.
+No deployment was performed by this checkpoint.
+
+---
+
 # T26 release handoff - 2026-10-15 JST
 
 **Status:** DEPLOYED / AUTHENTICATED_HOSTED_ACCEPTANCE_NOT_TESTED. Verified source
