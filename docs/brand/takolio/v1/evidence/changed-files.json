@@ -5,8 +5,8 @@
   "files": [
     {
       "path": "docs/ai/CURRENT_STATE.md",
-      "bytes": 646135,
-      "sha256": "d085740b00c585ffed6db819ca5cff040556984665438ced54ccee9e0a681b8b"
+      "bytes": 648672,
+      "sha256": "256199bbe247dbc1cf6926aeea3f5dc61f9b76fbfb4139a4fdf6a4ab285fd32e"
     },
     {
       "path": "docs/ai/DECISIONS.md",
@@ -15,13 +15,13 @@
     },
     {
       "path": "docs/ai/HANDOFF.md",
-      "bytes": 647977,
-      "sha256": "a0780d8ab7f67f4ce34655c3cc1d831200673707f44dbcd6067f0f00d72339fd"
+      "bytes": 650514,
+      "sha256": "cb99dd242374900119f2b362c1e9f32a9ec32bd3700db6ad162e986dc4df2e0c"
     },
     {
       "path": "docs/ai/TASK_BOARD.md",
-      "bytes": 489838,
-      "sha256": "897acf7bd5e1513065acb554f527c59811cf6bda9240b339cd6abdd3b1845c7a"
+      "bytes": 492375,
+      "sha256": "b4cbcd9b4f34552f1f000c0c4ecb91374804b65134be1091747d4dd7a2dedde4"
     },
     {
       "path": "docs/brand/takolio/v1/ASSET_MANIFEST.md",
@@ -45,8 +45,8 @@
     },
     {
       "path": "docs/brand/takolio/v1/VERIFICATION.md",
-      "bytes": 10473,
-      "sha256": "2f79df04db4275aade5ed8e5826306c4c090a2e9e89acedfbfec4fa181f838f9"
+      "bytes": 11859,
+      "sha256": "b99c3c6c752ef17f3680dd927cf73935d4c36df73ec42e4503973831ec61ea97"
     },
     {
       "path": "docs/brand/takolio/v1/evidence/before-observations.json",
@@ -107,6 +107,16 @@
       "path": "docs/brand/takolio/v1/evidence/main-sync/flags-off-observations.json",
       "bytes": 2041,
       "sha256": "8aa470e368d9858a09312eabc2fd8413dd1946a10014bf8e71653b75771a28dd"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/main-sync/hosted-integration-success.json",
+      "bytes": 4335,
+      "sha256": "6fe486975e22cadce2d178ef24f9775ef21c77816d257062ada0d34c0de56620"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/main-sync/independent-review.json",
+      "bytes": 1258,
+      "sha256": "50ecddbea1dc2890b5b3d4c26411f2daba87a4839d8903fadeddf59c1d26cd8b"
     },
     {
       "path": "docs/brand/takolio/v1/evidence/main-sync/occurrences.json",

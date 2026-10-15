@@ -1,3 +1,17 @@
+# Takolio V1 final reviewed implementation - 2026-10-16 JST
+
+**Implementation status:** `TAKOLIO_V1_IMPLEMENTED_REVIEW_REQUIRED`. Canonical public repository `lol-vn/Tako-san`, immutable ID `1385308553`; branch `feat/takolio-brand-migration-v1`; refreshed main `f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1`; verified implementation/integration `b5ba0cc2594ef83431693118f92350b6e81674f1`. Worktree was clean after push. Draft PR #79 is OPEN/DRAFT/MERGEABLE: https://github.com/lol-vn/Tako-san/pull/79.
+
+**Hosted verification:** automatic pull-request run `38809062361` is SUCCESS on that exact head: https://github.com/lol-vn/Tako-san/actions/runs/38809062361. Hosted lint/typecheck, all 363 files / 8,473 tests (565.45s), local SQLite migration smoke and web/Worker build PASS. The bounded native RGB rounding guard passes on Ubuntu. No manual workflow dispatch occurred. This documentation-only checkpoint follows the verified integration; its own automatic CI must still be read at the final published head and recorded in the output receipt/PR before completion.
+
+**Independent review:** separate `/root/independent_brand_review` found no concrete code/design/security/compatibility findings on the integration head. It verified 238 ledger hashes, 69 runtime hashes, 17 current log hashes, 425 legacy files and 748 protected paths; root tokens unchanged and auth display literals only. Independent final rerun 4 files / 45 tests PASS (2.00s), log hash `ce14731a61de2bd7250c7bac1aada8b7e8569f9bf0ed2420691a56d5f14479d7`. It reviewed matched mobile/desktop and narrow planner/scan proof. No human GitHub approval is claimed. `evidence/main-sync/` records the receipts.
+
+**Changes/database state:** implementation remains canonical Takolio with preserved compatibility facades/assets and incoming compact UI behavior. This checkpoint only records verified CI/review and refreshes hashes; it does not change runtime, sources, generator, tests or workflows. No production/database/domain/flag/PayOS mutation, deployment or feature-to-main merge. All prior history and failures remain preserved.
+
+**Handoff/next:** wait for automatic CI of the final documentation head; update final receipt/PR with that exact result. Owner/reviewers review the draft, source provenance, visuals and exclusions. Keep 25 protected legacy-copy locations, legal/trademark clearance, premium 3D finishing, native/device and hosted signed-in/offline household-data gaps explicit. Do not merge/deploy/publish a release without separate operator authorization.
+
+---
+
 # Takolio V1 refreshed-main integration - 2026-10-16 JST
 
 **Status:** `TAKOLIO_V1_CHANGES_REQUIRED` pending automatic hosted `validate` on the committed integration head and final independent evidence review. Draft PR #79 remains OPEN/DRAFT: https://github.com/lol-vn/Tako-san/pull/79.

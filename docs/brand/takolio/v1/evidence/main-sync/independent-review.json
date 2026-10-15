@@ -1,0 +1,34 @@
+{
+  "reviewer": "/root/independent_brand_review",
+  "reviewedHead": "b5ba0cc2594ef83431693118f92350b6e81674f1",
+  "result": "NO_OPEN_FINDINGS",
+  "scope": [
+    "code",
+    "design",
+    "security",
+    "compatibility",
+    "refreshed evidence"
+  ],
+  "changedFileHashes": 238,
+  "runtimeAssetHashes": 69,
+  "receiptLogHashes": 17,
+  "retainedLegacyFiles": 425,
+  "protectedPaths": 748,
+  "protectedPathScope": "baseline src/worker/, migrations/, .github/workflows/, data/, packages/recipes/ and paths matching payos|payment|billing|checkout",
+  "command": "pnpm exec vitest run tests/unit/takolio-brand.test.mjs tests/unit/takosan-brand.test.tsx tests/unit/ui07-brand-exports.test.mjs tests/unit/ui07-brand-shell.test.tsx --maxWorkers=2",
+  "testFiles": 4,
+  "tests": 45,
+  "exitCode": 0,
+  "workspaceLog": "work/after-main-sync-independent-brand-review.log",
+  "logSHA256": "ce14731a61de2bd7250c7bac1aada8b7e8569f9bf0ed2420691a56d5f14479d7",
+  "githubApproval": false,
+  "hostedCIAtReview": "IN_PROGRESS",
+  "reviewerModifiedRepository": false,
+  "limits": [
+    "human owner/reviewer approval",
+    "hosted signed-in/offline household-data acceptance",
+    "physical devices/native release",
+    "legal clearance",
+    "premium 3D mascot finishing"
+  ]
+}
