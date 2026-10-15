@@ -1,0 +1,189 @@
+{
+  "stage": "after",
+  "productionBuild": true,
+  "browser": "153.0.8010.12",
+  "syntheticData": true,
+  "providerBlocked": true,
+  "checks": [
+    {
+      "name": "shopping",
+      "requestedRoute": "/shopping",
+      "renderedRoute": "/shopping",
+      "screenshot": "shopping-320.png",
+      "fixtureNameOccurrences": 0,
+      "legacyBrand": false,
+      "protectedLegacyDeferred": false,
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "heading": "Mua đủ cho bữa ngon.",
+      "h1Count": 1,
+      "font": "\"Plus Jakarta Sans\", system-ui, sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takolio/v1/logo/symbol-micro.svg",
+          "width": 44,
+          "height": 44,
+          "naturalRatio": 1
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "shopping",
+      "requestedRoute": "/shopping",
+      "renderedRoute": "/shopping",
+      "screenshot": "shopping-375.png",
+      "fixtureNameOccurrences": 0,
+      "legacyBrand": false,
+      "protectedLegacyDeferred": false,
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "heading": "Mua đủ cho bữa ngon.",
+      "h1Count": 1,
+      "font": "\"Plus Jakarta Sans\", system-ui, sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takolio/v1/logo/symbol-micro.svg",
+          "width": 44,
+          "height": 44,
+          "naturalRatio": 1
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "shopping",
+      "requestedRoute": "/shopping",
+      "renderedRoute": "/shopping",
+      "screenshot": "shopping-390.png",
+      "fixtureNameOccurrences": 0,
+      "legacyBrand": false,
+      "protectedLegacyDeferred": false,
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "heading": "Mua đủ cho bữa ngon.",
+      "h1Count": 1,
+      "font": "\"Plus Jakarta Sans\", system-ui, sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takolio/v1/logo/symbol-micro.svg",
+          "width": 44,
+          "height": 44,
+          "naturalRatio": 1
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "shopping",
+      "requestedRoute": "/shopping",
+      "renderedRoute": "/shopping",
+      "screenshot": "shopping-768.png",
+      "fixtureNameOccurrences": 0,
+      "legacyBrand": false,
+      "protectedLegacyDeferred": false,
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "heading": "Mua đủ cho bữa ngon.",
+      "h1Count": 1,
+      "font": "\"Plus Jakarta Sans\", system-ui, sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takolio/v1/logo/symbol-micro.svg",
+          "width": 32,
+          "height": 32,
+          "naturalRatio": 1
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "shopping",
+      "requestedRoute": "/shopping",
+      "renderedRoute": "/shopping",
+      "screenshot": "shopping-1024.png",
+      "fixtureNameOccurrences": 0,
+      "legacyBrand": false,
+      "protectedLegacyDeferred": false,
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Mua đủ cho bữa ngon.",
+      "h1Count": 1,
+      "font": "\"Plus Jakarta Sans\", system-ui, sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takolio/v1/logo/wordmark-primary.svg",
+          "width": 168,
+          "height": 94.453125,
+          "naturalRatio": 1.7786259541984732
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    },
+    {
+      "name": "shopping",
+      "requestedRoute": "/shopping",
+      "renderedRoute": "/shopping",
+      "screenshot": "shopping-1440.png",
+      "fixtureNameOccurrences": 0,
+      "legacyBrand": false,
+      "protectedLegacyDeferred": false,
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "heading": "Mua đủ cho bữa ngon.",
+      "h1Count": 1,
+      "font": "\"Plus Jakarta Sans\", system-ui, sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takolio/v1/logo/wordmark-primary.svg",
+          "width": 168,
+          "height": 94.453125,
+          "naturalRatio": 1.7786259541984732
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    }
+  ],
+  "journeys": [
+    "logout-dialog-Escape-and-restored-focus",
+    {
+      "kind": "keyboard-branded-home-link",
+      "focus": {
+        "style": "solid",
+        "width": 3
+      }
+    }
+  ],
+  "pageErrors": [],
+  "failures": []
+}

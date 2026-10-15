@@ -1,0 +1,130 @@
+{
+  "checks": [
+    {
+      "name": "home-320-844-text2",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "route": "/",
+      "violations": []
+    },
+    {
+      "name": "fridge-320-844-text2",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "route": "/fridge",
+      "violations": []
+    },
+    {
+      "name": "recipes-320-844-text2",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "route": "/recipes",
+      "violations": []
+    },
+    {
+      "name": "settings-320-844-text2",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "route": "/settings/app",
+      "violations": []
+    },
+    {
+      "name": "home-768-1000-text2",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "route": "/",
+      "violations": []
+    },
+    {
+      "name": "fridge-768-1000-text2",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "route": "/fridge",
+      "violations": []
+    },
+    {
+      "name": "recipes-768-1000-text2",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "route": "/recipes",
+      "violations": []
+    },
+    {
+      "name": "settings-768-1000-text2",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "route": "/settings/app",
+      "violations": []
+    },
+    {
+      "name": "home-390-420",
+      "width": 390,
+      "height": 420,
+      "scrollWidth": 390,
+      "route": "/",
+      "violations": []
+    },
+    {
+      "name": "fridge-390-420",
+      "width": 390,
+      "height": 420,
+      "scrollWidth": 390,
+      "route": "/fridge",
+      "violations": []
+    },
+    {
+      "name": "recipes-390-420",
+      "width": 390,
+      "height": 420,
+      "scrollWidth": 390,
+      "route": "/recipes",
+      "violations": []
+    },
+    {
+      "name": "settings-390-420",
+      "width": 390,
+      "height": 420,
+      "scrollWidth": 390,
+      "route": "/settings/app",
+      "violations": []
+    },
+    {
+      "name": "inventory-error-320",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "route": "/fridge",
+      "violations": []
+    },
+    {
+      "name": "cooking-review-320",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "route": "/cooking/complete",
+      "violations": []
+    },
+    {
+      "name": "cooking-success-320",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "route": "/cooking/complete",
+      "violations": []
+    }
+  ],
+  "journeys": [
+    "actual-delayed-inventory-loading-state",
+    "real-local-cooking-completion-and-inventory-confirmation"
+  ],
+  "errors": [],
+  "localSyntheticData": true
+}

@@ -1,3 +1,22 @@
+# Takolio V1 migration checkpoint - 2026-10-16 JST
+
+**Status:** `TAKOLIO_V1_CHANGES_REQUIRED` pending authenticated push/draft PR and hosted `validate`; local implementation and independent review are complete.
+
+**Repository:** `lol-vn/Tako-san` (ID `1385308553`), baseline main `03428467cdd5e93d27a3a27e5edaf7d512eef71d`, branch `feat/takolio-brand-migration-v1`.
+
+**Implementation commit:** `8e81d5d9879f6a8ea22db7cbc232fcf399a354fa`.
+
+**Implemented:** canonical `TAKOLIO_BRAND`, compatibility facades, versioned `/takolio/v1` sources/runtime, deterministic Sharp generator, semantic tokens, Plus Jakarta Sans subset, public surfaces/metadata/PWA updates, protected old V3 fallback. Runtime manifest: 69 files / 478,874 bytes. ZIP SHA256: `d2f77b552c07570d846a20d2602dd3a6c41ebb4fd9c66328234bf86da8ca1142`.
+
+**Verification:** lint/typecheck/migrations/audit/build ON+OFF/full 363 files and 8,470 tests/94 E2E/PWA/flags-OFF all PASS. Matched browser run retains one transient scan-review axe receipt and has a passing narrow recheck. Independent reviewer found no implementation findings.
+
+**Protected:** no PayOS/payment/checkout/Worker/migration/infra/domain/OAuth/persisted-ID/flag changes. Twenty-five protected legacy product-copy locations remain DEFER. Legal clearance, premium 3D mascot, native stores/physical devices and hosted CI are pending.
+
+**Next action:** review docs/evidence, authenticate `gh`, push branch and create a draft PR only; request hosted `validate` and owner review. Do not merge/deploy.
+
+See `docs/brand/takolio/v1/{AUDIT,IMPLEMENTATION,VERIFICATION,ROLLBACK,ASSET_MANIFEST}.md` and `docs/brand/takolio/v1/evidence/`.
+
+---
 # T26 family planner hang repaired locally - 2026-10-15 JST
 
 **Status:** READY_FOR_RELEASE. Implementation commit `063a026d` on

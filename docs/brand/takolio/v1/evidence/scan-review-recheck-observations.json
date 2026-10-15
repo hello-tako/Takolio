@@ -1,0 +1,49 @@
+{
+  "stage": "after",
+  "productionBuild": true,
+  "browser": "153.0.8010.12",
+  "syntheticData": true,
+  "providerBlocked": true,
+  "checks": [
+    {
+      "name": "scan-review",
+      "requestedRoute": "/scan/t13b-preview-fridge/review",
+      "renderedRoute": "/scan/t13b-preview-fridge/review",
+      "screenshot": "scan-review-1024.png",
+      "fixtureNameOccurrences": 0,
+      "legacyBrand": false,
+      "protectedLegacyDeferred": false,
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "heading": "Kiểm tra nguyên liệu",
+      "h1Count": 1,
+      "font": "\"Plus Jakarta Sans\", system-ui, sans-serif",
+      "broken": [],
+      "logos": [
+        {
+          "src": "/takolio/v1/logo/wordmark-primary.svg",
+          "width": 168,
+          "height": 94.453125,
+          "naturalRatio": 1.7786259541984732
+        }
+      ],
+      "clippedNavigation": [],
+      "reducedMotion": true,
+      "violations": [],
+      "failures": []
+    }
+  ],
+  "journeys": [
+    "logout-dialog-Escape-and-restored-focus",
+    {
+      "kind": "keyboard-branded-home-link",
+      "focus": {
+        "style": "solid",
+        "width": 3
+      }
+    }
+  ],
+  "pageErrors": [],
+  "failures": []
+}

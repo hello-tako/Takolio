@@ -1,3 +1,16 @@
+# Takolio V1 handoff checkpoint - 2026-10-16 JST
+
+**Implementation commit:** `8e81d5d9879f6a8ea22db7cbc232fcf399a354fa`, branch `feat/takolio-brand-migration-v1` (local). This documentation checkpoint follows that verified implementation commit.
+
+**Receipt:** baseline `03428467cdd5e93d27a3a27e5edaf7d512eef71d`; ZIP `d2f77b552c07570d846a20d2602dd3a6c41ebb4fd9c66328234bf86da8ca1142`; runtime `69` entries / `478874` bytes; remaining protected visible locations `25`.
+
+**Checks:** 363/8470 unit PASS; 94/94 E2E PASS; browser final 198 matched screens with one retained transient finding and passing scan-review recheck; PWA 3/3; flags-OFF 12/12; independent code/design/security review no findings.
+
+**Protected and exclusions:** no payment/Worker/migration/infrastructure/auth logic changes; two auth fallback display literals only. No merge, main push, deploy or workflow dispatch. Legal, premium 3D, native/device, hosted CI and protected-copy approval remain open.
+
+**Handoff action:** after local commits, authenticate GitHub, push branch, create draft PR and request exact-head `validate` plus reviewer/owner review. Do not merge or deploy.
+
+---
 # T26 handoff - family planner response recovery - 2026-10-15 JST
 
 **Status:** READY_FOR_RELEASE. Verified implementation commit `063a026d`;

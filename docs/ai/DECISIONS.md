@@ -1,3 +1,19 @@
+# ADR-TAKOLIO-001: versioned identity with protected compatibility - 2026-10-16 JST
+
+**Status:** implemented locally; publication/release requires review. Mission `TAKOLIO-BRAND-MIGRATION-V1`.
+
+**Problem:** Takosan V3 contract and asset URLs feed many product screens plus protected payment consumers. A global rename would break persisted/technical identities or change protected systems.
+
+**Decision:** add `/takolio/v1` source/runtime line and one canonical `TAKOLIO_BRAND`; re-export through legacy modules, preserve `.takosan-rebuild`, old asset trees and cache build/lifecycle identifiers. Keep root semantics and payment code byte-identical. Only product-copy literals and scoped presentation change. Two auth fallback literals change without auth behavior edits.
+
+**Kit adaptations:** retain supplied vector wordmark geometry (Comfortaa OFL notice retained as source provenance); UI/heading fonts are Plus Jakarta Sans/Nunito. Outline the kit's live text from pinned legal Plus Jakarta Sans masters. Use compact micro symbols in small headers and wordmark on desktop rail because tagline lockups are unreadable at header sizes. Rebuild true one-ink silhouettes with face knockouts; reverse only navy text, preserving mascot detail. Do not crop reference boards. Supplied art is 2D gradient; premium 3D finishing remains pending. These choices are documented source adaptations, not claims of visual or legal approval.
+
+**Accessibility:** semantic navy CTA and derived green `#276F3F` preserve white text AA. Raw coral/green remain brand accents. Focus/error/warning and root payment semantics stay authoritative. Keep existing router/components and 44px target authority.
+
+**Consequences:** protected payment/Worker strings (25 literal/template locations) remain DEFER. V3 clients keep valid URLs. No schema/data/flag/domain change is needed. Rollback is a reviewed code/metadata revert retaining both asset trees; normal SW build-ID lifecycle advances on separately approved release. See `docs/brand/takolio/v1/` for receipts and exclusions.
+
+---
+
 # Nine-region production release preparation - 2026-10-12 JST
 
 **Task/status:** RELEASE_PREPARATION. Active packet

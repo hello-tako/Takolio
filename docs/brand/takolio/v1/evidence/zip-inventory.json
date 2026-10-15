@@ -1,0 +1,1385 @@
+{
+  "zip_sha256": "d2f77b552c07570d846a20d2602dd3a6c41ebb4fd9c66328234bf86da8ca1142",
+  "entries": [
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/00_START_HERE/HANDOFF_COMMAND.txt",
+      "bytes": 773,
+      "sha256": "bf1ee607ea35312bb86e7a8bca6298c5fc85d593af31cd4f29496ab258d2da45"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/00_START_HERE/README_FIRST_VI.md",
+      "bytes": 3581,
+      "sha256": "f6f13cc43d072033d4db4d1972002cae788630ab5dfe720e01af9720d5ce1595"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/00_START_HERE/SOURCE_OF_TRUTH.md",
+      "bytes": 732,
+      "sha256": "9a79936916935a58928dce61567b2a3c53e7bd95eaf356e7c357c86d2354a30b"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/01_Brand_Guidelines/01_BRAND_SPEC.md",
+      "bytes": 2481,
+      "sha256": "7f36cbdc8ecd708e599b0fa30c79088843f25d57113b524a6a6c68d4cafae66b"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/01_Brand_Guidelines/02_LOGO_USAGE.md",
+      "bytes": 1744,
+      "sha256": "4dddeecfad4a2dfb1eabc11b47e1a6834b70375a0c73df1fe0b2c683281ea1e0"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/01_Brand_Guidelines/03_MASCOT_BIBLE.md",
+      "bytes": 2356,
+      "sha256": "c9ce49fd581976114613f903759daed4d7a01ff091bf2282f68276095576f01c"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/01_Brand_Guidelines/04_APPICON_AND_UI.md",
+      "bytes": 1391,
+      "sha256": "9ce2513e05a76b799ee1b99a5a4597f0a2245e3e4cc6c2f1594e5a8209ca2aa5"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/01_Brand_Guidelines/05_PATTERNS_AND_STICKERS.md",
+      "bytes": 1178,
+      "sha256": "5c62fa70b3805bd66c387a5fa1dd4aee5b38da9af5952793028eaab28176b33d"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/01_Brand_Guidelines/06_ACCESSIBILITY_AND_COPY.md",
+      "bytes": 1297,
+      "sha256": "2e1ec8c4b1d8a914be2bf0ff7d68de48a49f9cf70186d2581a3d0e2f5b467b3e"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/01_Brand_Guidelines/TAKOLIO_BRAND_GUIDELINE_v1.pdf",
+      "bytes": 1616328,
+      "sha256": "02497954e1b55a195d504cb16796a42730d706aa623bfa3a383b80f3e9179ea6"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/02_Logo/PNG/takolio-logo-horizontal.png",
+      "bytes": 56730,
+      "sha256": "55722a65c4695ced0c55bc8fa51e791fb325697796098f9b8a9791d822be4945"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/02_Logo/PNG/takolio-logo-icon-only.png",
+      "bytes": 102229,
+      "sha256": "b380d541583f0150da4ec11260619e07c003a4967aae4a7fdab68e99834ffda6"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/02_Logo/PNG/takolio-logo-monochrome-navy.png",
+      "bytes": 12155,
+      "sha256": "46779f263f49feaadbac95c2725c7d3e81af18bdb825b831beacecff1b700573"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/02_Logo/PNG/takolio-logo-monochrome-white.png",
+      "bytes": 8995,
+      "sha256": "3dd59d42d01b0e55ba04ecca7f0a36acd0338f222794f099028bf2045be0ce73"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/02_Logo/PNG/takolio-logo-on-coral.png",
+      "bytes": 9919,
+      "sha256": "37ff8504e31b83bd68abf7a4b5f2cc9875ce088d9ae8794df70e607e14f8a62d"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/02_Logo/PNG/takolio-logo-on-cream.png",
+      "bytes": 11716,
+      "sha256": "fc2a442c15dc0636de895564e202fc84fc541b2c3803d9d01bd89bc507cf80e3"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/02_Logo/PNG/takolio-logo-on-navy.png",
+      "bytes": 12205,
+      "sha256": "4b456e1fddbfa5fe97f50d8bf20966e13ceadb7a8bac8250b53d4dc30359a6e4"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/02_Logo/PNG/takolio-logo-primary.png",
+      "bytes": 25581,
+      "sha256": "d71b782924bb3061504629d3009f66cb09925a3931e84454c8247de98d1ea3dc"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/02_Logo/PNG/takolio-logo-stacked.png",
+      "bytes": 83546,
+      "sha256": "97d7a88b8056cb392aabc80f2cfb4e9842a8500de049ec2c214f557e575fd768"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/02_Logo/PNG/takolio-logo-wordmark.png",
+      "bytes": 12112,
+      "sha256": "efed7c2ad44a5dc0e3a0ae6c0be878560f61124f1731b4ed8a2dd1c5a28f7842"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/02_Logo/SVG/takolio-logo-horizontal.svg",
+      "bytes": 6480,
+      "sha256": "34815d761ab454439762a9d8c109e3914bfe525d9dce28c327a4792344acdff5"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/02_Logo/SVG/takolio-logo-icon-only.svg",
+      "bytes": 3155,
+      "sha256": "3fd1db773e537cfa4fc196556cdb3c86c5ce113e174568e3e32df448fabd219e"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/02_Logo/SVG/takolio-logo-monochrome-navy.svg",
+      "bytes": 3323,
+      "sha256": "cb348d9a3807b644709c09b073b44b1179c7b204d911a6e3830c5ec67032b41f"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/02_Logo/SVG/takolio-logo-monochrome-white.svg",
+      "bytes": 3323,
+      "sha256": "b8ed9dd17431469118cac19a314fbd2f8799ae373bd724e0eb8537a666517a69"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/02_Logo/SVG/takolio-logo-on-coral.svg",
+      "bytes": 3370,
+      "sha256": "fdc92c0680b0702ff46c4937f6a468bf2acae42b9dac369f8ec9f1eda120abda"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/02_Logo/SVG/takolio-logo-on-cream.svg",
+      "bytes": 3372,
+      "sha256": "2e41cb6364de8afd31ad5d7749436d34b2c6ab6594e51239525dbafccadf71b2"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/02_Logo/SVG/takolio-logo-on-navy.svg",
+      "bytes": 3370,
+      "sha256": "32da6af982a2195f286e31fc210c9db32ae66be7ea314f15dcf9246e2a262875"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/02_Logo/SVG/takolio-logo-primary.svg",
+      "bytes": 3468,
+      "sha256": "149901617476a1d9e5c3bdef5e8c61990fdd3c6f38aa1a58becbb2a8c9659114"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/02_Logo/SVG/takolio-logo-stacked.svg",
+      "bytes": 6372,
+      "sha256": "e214eefd13a633b4decb9fc5e58830f529db22c8db877ae05c864bed8616beaa"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/02_Logo/SVG/takolio-logo-wordmark.svg",
+      "bytes": 3325,
+      "sha256": "a13dc9f81421873303d1e5e4c7591f8c2fcd94bf2bcf0aaac7d1417128dab274"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/02_Logo/takolio-logo-horizontal.pdf",
+      "bytes": 15631,
+      "sha256": "89de0285c7214e14b282bd77828cdec2bf3b2ce16ee9d7bccff6ef66f6ca93ee"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/02_Logo/takolio-logo-monochrome-navy.pdf",
+      "bytes": 3667,
+      "sha256": "2cd98abf96fcf769d84050caf33cf9e1d66098ccdff65f741024541aaa20ffc5"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/02_Logo/takolio-logo-monochrome-white.pdf",
+      "bytes": 3650,
+      "sha256": "97b520c113c078b9634d8dd85846cf25b2498a04a5c8925f5da4296b8509aa0d"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/02_Logo/takolio-logo-primary.pdf",
+      "bytes": 14326,
+      "sha256": "92782209ceb024e5a2790da2a37e4f6dacf8a0dff2bd33bd050f352b046e5f19"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/02_Logo/takolio-logo-stacked.pdf",
+      "bytes": 10293,
+      "sha256": "1f4e45613d6f60b5c4aa35a2e791325d2cd697849d72f0e59f72414f9cc3b55f"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/02_Logo/takolio-logo-wordmark.pdf",
+      "bytes": 3687,
+      "sha256": "41812f49778476b9f05e225ab01e1d5b1d597f03fbc8df57782a0f3701f0585a"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/03_Mascot/PNG/takolio-mascot-cheering-1024.png",
+      "bytes": 126168,
+      "sha256": "61bda09ed85bfa6f8abf506e24639701c45a27f3d52fcedab0dcb82bbafc06f1"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/03_Mascot/PNG/takolio-mascot-completed-1024.png",
+      "bytes": 122996,
+      "sha256": "650f1b60f30355e71945ab3ee847826dd142f043b88bf960a1013098a2346c7b"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/03_Mascot/PNG/takolio-mascot-completed-512.png",
+      "bytes": 53854,
+      "sha256": "8d0b89bcf9f430298992939e829b5ff8c655321df7de25fa7ea8bb22b16b61ea"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/03_Mascot/PNG/takolio-mascot-cooking-1024.png",
+      "bytes": 130947,
+      "sha256": "3d6c509cc9f7da08833031cd2d8e09c042871c09e6d7276e081e0b7eefadf316"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/03_Mascot/PNG/takolio-mascot-cooking-512.png",
+      "bytes": 59869,
+      "sha256": "343ce175018b8fe5564bb4c93e31cd8c0d2904ec3e2995f96ab1834d500b701d"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/03_Mascot/PNG/takolio-mascot-excited-1024.png",
+      "bytes": 123865,
+      "sha256": "bd85301e2feb5311848ba7c3139dc473c6ba12960c6bd2f34c73f2a72b4ad1b6"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/03_Mascot/PNG/takolio-mascot-mascot-back-1024.png",
+      "bytes": 110410,
+      "sha256": "f2863aa1b73ecf265d6d812cf1c856dde76197ec72651ad9921012593a6a993d"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/03_Mascot/PNG/takolio-mascot-mascot-side-1024.png",
+      "bytes": 107612,
+      "sha256": "22311dd43e9c5d6012206839569fce8a448b7b0285d92a6082b118a90698a0be"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/03_Mascot/PNG/takolio-mascot-mascot-three-quarter-1024.png",
+      "bytes": 118895,
+      "sha256": "073a0acb641648cee6a791d2adb74f1adc53f86eebc786f8f8a20f1de79193fd"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/03_Mascot/PNG/takolio-mascot-master-front-1024.png",
+      "bytes": 123373,
+      "sha256": "fd31c7b5745bf04abd18d8e161a08ee3b8a0ccd9deeefe326051b41e96c1e146"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/03_Mascot/PNG/takolio-mascot-thinking-1024.png",
+      "bytes": 123481,
+      "sha256": "fd0f5f8095048158f326d4cc0faefb77d11d1e6648e4d2140b09fbcc9e59c20f"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/03_Mascot/PNG/takolio-mascot-thinking-512.png",
+      "bytes": 54668,
+      "sha256": "33228edd6d329370b4da50a06b73e84c66a042b2dabfab7092f54b1eb0b9844f"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/03_Mascot/PNG/takolio-mascot-welcome-1024.png",
+      "bytes": 123373,
+      "sha256": "fd31c7b5745bf04abd18d8e161a08ee3b8a0ccd9deeefe326051b41e96c1e146"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/03_Mascot/PNG/takolio-mascot-welcome-512.png",
+      "bytes": 51909,
+      "sha256": "971d799a43eca51e9f69581cf86c14329a80611ac74d8837480cd3235ae67dc7"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/03_Mascot/SVG/takolio-mascot-cheering.svg",
+      "bytes": 4835,
+      "sha256": "73b3de68102150e646f6920e6c2c7ddfcc9452093793cfa33a3b3fb8630884db"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/03_Mascot/SVG/takolio-mascot-completed.svg",
+      "bytes": 5559,
+      "sha256": "afe3ec6c0382bc3fffdac1d63dad5ab3bb1847a72a28dd7336af12e063dd9fa4"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/03_Mascot/SVG/takolio-mascot-cooking.svg",
+      "bytes": 5829,
+      "sha256": "1091ccdf496b87235cbaf884e0652c5fd083885d5a8c790845b6197fa2bce844"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/03_Mascot/SVG/takolio-mascot-excited.svg",
+      "bytes": 4730,
+      "sha256": "dbdaa7045bf3e168ee2ab780cebbfca8272ab4804762347c7d9907a5a2456dbb"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/03_Mascot/SVG/takolio-mascot-mascot-back.svg",
+      "bytes": 3746,
+      "sha256": "3905e1720821ca75baa159c33215d7b69f71e98dea484c7a39f7394335d5e8fa"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/03_Mascot/SVG/takolio-mascot-mascot-side.svg",
+      "bytes": 4457,
+      "sha256": "ba0e96daf223f401b28ea64d6a592856a1f7236b6e6f959b8ff592b7ca6cdf2c"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/03_Mascot/SVG/takolio-mascot-mascot-three-quarter.svg",
+      "bytes": 4667,
+      "sha256": "e3a1ce1de47696c4bd4aae9072cd41d855fad8762897278fd4f117f9c4ea3025"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/03_Mascot/SVG/takolio-mascot-master-front.svg",
+      "bytes": 4639,
+      "sha256": "cb9d7f8f745b2a521ba8ba7597a96dfbfceece42d14f0d95388fbaf69d7f4ebf"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/03_Mascot/SVG/takolio-mascot-thinking.svg",
+      "bytes": 4691,
+      "sha256": "c2ea95490b637c3703d82b8aee5ee50ac0b3f3e0ab3d55ce5ab034160673cd2c"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/03_Mascot/SVG/takolio-mascot-welcome.svg",
+      "bytes": 4639,
+      "sha256": "cb9d7f8f745b2a521ba8ba7597a96dfbfceece42d14f0d95388fbaf69d7f4ebf"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/PNG/favicon.ico",
+      "bytes": 536,
+      "sha256": "ba001ccd063e41de1bf9d80708b3d813dc355e13f98b1ff83de3a521500ca2a3"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/PNG/takolio-android-adaptive-foreground-432.png",
+      "bytes": 22341,
+      "sha256": "40c4d56b5c2858ac78f5725b94f5642a540067ac7f088f7d327368e456e00205"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/PNG/takolio-appicon-coral-1024.png",
+      "bytes": 88479,
+      "sha256": "e0951192c50430e758205f051e511f810c93fd24875ad67262ae6c06f083f34a"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/PNG/takolio-appicon-coral-128.png",
+      "bytes": 6312,
+      "sha256": "300ffe048e0ef5331928188d178913ba73537b9695594e0a34e3265f299a2fd4"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/PNG/takolio-appicon-coral-256.png",
+      "bytes": 15246,
+      "sha256": "53630349a5de0bf80c3c69fd47c9777cef0333f8bcc0ca2a0649c62270673eeb"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/PNG/takolio-appicon-coral-512.png",
+      "bytes": 37536,
+      "sha256": "c83af22353731d04265c4d319ec4c5d8423af6cfdd08f667186536737799a41b"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/PNG/takolio-appicon-coral-64.png",
+      "bytes": 2527,
+      "sha256": "cd6df65cc3537deb267828702f8a5e76cbce0092e989061bacb7a25ba8279cae"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/PNG/takolio-appicon-cream-1024.png",
+      "bytes": 90740,
+      "sha256": "8af600aa4ae8875f9b2284dd1241cfb7fd0615147f7259a5274c24380ee1c371"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/PNG/takolio-appicon-cream-128.png",
+      "bytes": 6473,
+      "sha256": "7ada3869d226fce270c2e5e460be685920c36ddd31c0a256e7fa58bb99390ee6"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/PNG/takolio-appicon-cream-256.png",
+      "bytes": 15846,
+      "sha256": "72bf69ad7f9dfe9537b5522b3399580a217de718151a3bd8de5496d2e7aa0321"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/PNG/takolio-appicon-cream-512.png",
+      "bytes": 38737,
+      "sha256": "8acd312e79ee652e438265463fca6e21cf57a25d3d6e19a4760c2c616fb13941"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/PNG/takolio-appicon-cream-64.png",
+      "bytes": 2618,
+      "sha256": "b93d1d0ea99b8d3cbb7bd0e1ace1ac7524143ba814a167226eb130a3a4623152"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/PNG/takolio-appicon-navy-1024.png",
+      "bytes": 94770,
+      "sha256": "1fcd722f4c1a83ccc08a4ca0e782910e6bcb39c99360cd23841052f42c05b9c7"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/PNG/takolio-appicon-navy-128.png",
+      "bytes": 7011,
+      "sha256": "93a80502fdfe0d2962a1635d6522d368c357c6e03a5e47353606b12e0100a69f"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/PNG/takolio-appicon-navy-256.png",
+      "bytes": 16825,
+      "sha256": "20027f1a3a52868e68e94456da5802293af1f40d8c445788438d4135b10d7908"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/PNG/takolio-appicon-navy-512.png",
+      "bytes": 40562,
+      "sha256": "51c9a353ca70f661cbb6043e9fe6821dfb10adc973cb82858c5f9213b736762e"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/PNG/takolio-appicon-navy-64.png",
+      "bytes": 2854,
+      "sha256": "1f195ce9370a98800d1d073a8294779f37ea8e7726ec52baf7ef1eea365c460a"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/PNG/takolio-favicon-128.png",
+      "bytes": 7433,
+      "sha256": "1abc461a726675f21373ec25076cfa01210f8a52201641eb5797875b2113af54"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/PNG/takolio-favicon-16.png",
+      "bytes": 532,
+      "sha256": "21c72ab529f7e57c455476cfa811e0854388779095e55668667393adb458d481"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/PNG/takolio-favicon-256.png",
+      "bytes": 17884,
+      "sha256": "b52d2e130c12298b015d8cee8b13dcbf5aa344155124f80364289f9b1bc91517"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/PNG/takolio-favicon-32.png",
+      "bytes": 1261,
+      "sha256": "8a35ee3aed1c8913cb11065eab7d1c29bf4f5efda0beca67dca223c1c41b2f6c"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/PNG/takolio-favicon-48.png",
+      "bytes": 2072,
+      "sha256": "406d04c01120647e6c27fd52ea9f4a75ee35aa59dd5cc6869f9f963c73906131"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/PNG/takolio-favicon-512.png",
+      "bytes": 43720,
+      "sha256": "30f10fe3ff8c74e942d81be9b4f43060fe9ef8a556b28ef0c594f26848a136a6"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/PNG/takolio-favicon-64.png",
+      "bytes": 3041,
+      "sha256": "ed7def6a249896920f3f2419d1068826703aaa5459ad17a19e9dd87923448ca9"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/PNG/takolio-googleplay-512.png",
+      "bytes": 37493,
+      "sha256": "e929ae00dccefbb005b1ebae4d544ea17ccb319ba3b7e95dabecd4739648cc9a"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/PNG/takolio-ios-1024.png",
+      "bytes": 89868,
+      "sha256": "4daa3e01d9e329f24a1b0fcb54ef6b924aa0a97aebb3097d49db42ee656bd4b7"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/SVG/takolio-android-adaptive-foreground.svg",
+      "bytes": 3204,
+      "sha256": "c02b9b5b9feda210603f08ed1c7a80a0970ac5402b55cc5418098de8dd6139db"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/SVG/takolio-appicon-coral.svg",
+      "bytes": 3273,
+      "sha256": "8b6f4386e2215cdb37bcc0f0865963fad127cbcdb87e42da78c002e1bb652e12"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/SVG/takolio-appicon-cream.svg",
+      "bytes": 3211,
+      "sha256": "c8f3a9c8d442ee42eb27ffc5d283fb1f76d9c86f237ac37c36fc74ab10bf8154"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/SVG/takolio-appicon-navy.svg",
+      "bytes": 3211,
+      "sha256": "e4f2bfd6a5172ae2e1ca6595a180141eaf3381523a630e10cd87504c14d16895"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/SVG/takolio-appicon-primary.svg",
+      "bytes": 3273,
+      "sha256": "8b6f4386e2215cdb37bcc0f0865963fad127cbcdb87e42da78c002e1bb652e12"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/04_App_Icons/SVG/takolio-appicon-symbol-transparent.svg",
+      "bytes": 3155,
+      "sha256": "3fd1db773e537cfa4fc196556cdb3c86c5ce113e174568e3e32df448fabd219e"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-ai-suggestion-24.png",
+      "bytes": 679,
+      "sha256": "1d38e6badf00dd105ae52c47700043a227770f1fb2b0550800a23c424df77130"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-ai-suggestion-48.png",
+      "bytes": 1463,
+      "sha256": "a756cd19d85a94e081232ae6943280768036780840229d354d5179846e4400c9"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-ai-suggestion-72.png",
+      "bytes": 2157,
+      "sha256": "d4766deeb1e9e301a2aa48413cc35fbd0823c172b9bb233de78530a3ea2f25cc"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-ai-suggestion-96.png",
+      "bytes": 2780,
+      "sha256": "4c5418bb41d598a8c3fdf893426f25ef9fb47b9342b93462e929abd506672bfe"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-analytics-24.png",
+      "bytes": 288,
+      "sha256": "fd649f039258550bbc01c7045592cc5e55fcc42e2c394a5ebaf1db16f25e821f"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-analytics-48.png",
+      "bytes": 522,
+      "sha256": "f058a362c8ccd215c16eb1d98ee9ff3c5905d499c7de58015c06fef89b26da98"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-analytics-72.png",
+      "bytes": 713,
+      "sha256": "50e8a4a24856a4c1f847cedb53393fe139d96e7e9af3e0e48353aa7817b81c15"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-analytics-96.png",
+      "bytes": 997,
+      "sha256": "4681a4347bb0fb165a088164c2a84542b9dcc63f8b7fbd58b6b433d1d71551cf"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-calendar-24.png",
+      "bytes": 515,
+      "sha256": "293f9ff012e64d041b0f02acc30562412f29b46e035e3ee4d53f05d4e88a5579"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-calendar-48.png",
+      "bytes": 1030,
+      "sha256": "fcf3745929d68e941402703ee977cf519cc9808f4c55f54022e81218636985e6"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-calendar-72.png",
+      "bytes": 1532,
+      "sha256": "7305c02c6c5766a38bf2d07d2233d52c2f28f26dc25f712abd637aad33263af6"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-calendar-96.png",
+      "bytes": 2008,
+      "sha256": "8a82ce7e34fe9ad8905db4bbe8fdd46a7527ca75bdd244efa269b34f3c488d23"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-camera-24.png",
+      "bytes": 600,
+      "sha256": "297bac2008d098cc5990f197a1bd733593935cd1512577bd02174c7e1dbb5a18"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-camera-48.png",
+      "bytes": 1195,
+      "sha256": "9f9f86940333be314ebbb99717bb9100e359ab546e45ede01012cf93205a9ff9"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-camera-72.png",
+      "bytes": 1793,
+      "sha256": "9a2734e9e33ab23407bfbe4a66770abde7e0b1c2a628e16b36b07fe76ba20395"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-camera-96.png",
+      "bytes": 2412,
+      "sha256": "377ec5fdbdccf69ab862938aeb48716962e06921b1d49e51dfebbce10afd71ef"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-cook-24.png",
+      "bytes": 435,
+      "sha256": "2e6807699573cd1452042e5e856d4fdae5c9fec8f84e14ea62ee05bc81388af5"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-cook-48.png",
+      "bytes": 822,
+      "sha256": "95007f01c63d84d95658f78b586acfeebf29164d2500e8a5475530d752710964"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-cook-72.png",
+      "bytes": 1105,
+      "sha256": "57b5e80407cc177cee698cf4fc53f807d5ef272790a7fe5393dc73fb3eeeb093"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-cook-96.png",
+      "bytes": 1383,
+      "sha256": "6f488e83ad010565b8c6d0781078841c6b8c510dc6c9d96b866061a9311eaff6"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-favorites-24.png",
+      "bytes": 714,
+      "sha256": "5a9cd2471b6c3b5ab465d4d5d80673fd866e583df2e16ee328436310fbc8705b"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-favorites-48.png",
+      "bytes": 1440,
+      "sha256": "88b8f33b58abd16a2d8f24ffcc61fe46ec62e1b74abea3f1d85f17cbcbe21f8d"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-favorites-72.png",
+      "bytes": 2068,
+      "sha256": "8c10370565ce4c64c1dbc52e633b23a43053076adf4a0432358db72585859563"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-favorites-96.png",
+      "bytes": 2684,
+      "sha256": "60a609c18fed18eb1f6804127d2a38782b959b160290d28aed9ea66c6bd92334"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-filter-24.png",
+      "bytes": 332,
+      "sha256": "6c933c04d23e72bfee46064ac66f42ec5bf989cbbf75f95c76b605140b3476c9"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-filter-48.png",
+      "bytes": 636,
+      "sha256": "17f363ff8e8e64f7ddb55506a12cc568ca70853e7c3c5edc0db6f0606fe448d4"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-filter-72.png",
+      "bytes": 904,
+      "sha256": "b6edbeeb3e798ae2ff596f179344d5fe71856d67ccfe308710f73c2f9bd3edc5"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-filter-96.png",
+      "bytes": 1244,
+      "sha256": "329245b00d8bd44da77df9c9b0332d947393cc66ec483db7788729854e4c67ae"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-fridge-24.png",
+      "bytes": 437,
+      "sha256": "0dd01abf5b9feb6915786a7942ec9ac0a1030ac94ff96267ad9bce789bb0a8fb"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-fridge-48.png",
+      "bytes": 882,
+      "sha256": "3fc6d0d48ed4efd9c77894930f1a0206eb6b47ff113df09112e2a6db146a4339"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-fridge-72.png",
+      "bytes": 1254,
+      "sha256": "cc61a2f73677e7de3d30b618907b23c7c24473a90a7c65613e31d8ab464340bb"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-fridge-96.png",
+      "bytes": 1656,
+      "sha256": "0d255131b9d3a42651ef600d059096cf13aae3d644bf6567f48b8a3f87b25076"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-history-24.png",
+      "bytes": 777,
+      "sha256": "1ebb7602e17b152b9815bfc707307e03fbd79debf550bec787e13e791c3d9cb3"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-history-48.png",
+      "bytes": 1571,
+      "sha256": "0e960e00b2ac80f4d4e4ea748ca6956cd45d4e767d9654971406d116fe5bd7ad"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-history-72.png",
+      "bytes": 2329,
+      "sha256": "cdc5252b6d320eea3d63f47db43b4c26342acf83b12f28b24bcae387bfac8f10"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-history-96.png",
+      "bytes": 3084,
+      "sha256": "99145f564bbfd8fd9ff13c8e9fff1a75dca121bbcc53b52fb9c7d02c6fe25b3e"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-ingredient-24.png",
+      "bytes": 988,
+      "sha256": "97394a6f86a3a534a2a365406640deccefe0f8cd52bc8427806b320adf22c4e3"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-ingredient-48.png",
+      "bytes": 2025,
+      "sha256": "dc4f8763d60d81ef50fa84aa66c3a7f4faa7c71e3660148e47568cd174cc62b6"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-ingredient-72.png",
+      "bytes": 2822,
+      "sha256": "5155bb8c9aef922e9e0ea0966b238f7b5db68fb40a3c08c8bfcf22a328238aa6"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-ingredient-96.png",
+      "bytes": 3617,
+      "sha256": "676f649c21c3d955bc45116c799e6d9a84028b538705609c1d072c9d12ea23b1"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-meal-plan-24.png",
+      "bytes": 577,
+      "sha256": "4c2089dbef63479ac45f80440e1dde4c557ab82607b948e8aabec9e20d7684c1"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-meal-plan-48.png",
+      "bytes": 1097,
+      "sha256": "36aac9ce79e2d93c69738045ad1d5be594b1e29a166bfd1568c249f4559dd5c9"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-meal-plan-72.png",
+      "bytes": 1567,
+      "sha256": "0d6ea62ae7aa016e333d89bd63b3d54a9bf87c2850d8f9e15470b3350802ffd7"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-meal-plan-96.png",
+      "bytes": 2024,
+      "sha256": "87f93268c7791d89c297cf58ad80aa02275bb9fa239b894e6e64144e3ac83452"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-notifications-24.png",
+      "bytes": 514,
+      "sha256": "321e01e77f2006b89d6779c53b1cd810d995fb84a8ec19c7d491ec2138653705"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-notifications-48.png",
+      "bytes": 988,
+      "sha256": "d1562ae8a4509762729465b97b86585d52fdcc92d81136e363ebbd5bc940e66d"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-notifications-72.png",
+      "bytes": 1469,
+      "sha256": "10d166951d161146a083e76c310a50a9668e844fc750e1ee19e201ca4d499246"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-notifications-96.png",
+      "bytes": 1895,
+      "sha256": "f4a99ef490e52f7a68b4ffdffbda3e9b0b4481b3dca747a9afd3c888b0699a3a"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-nutrition-24.png",
+      "bytes": 566,
+      "sha256": "9ac2f3db8a8aa681c31fb54feb7621c3bbe4ba5508b889d2a65109f98ee1ff30"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-nutrition-48.png",
+      "bytes": 1039,
+      "sha256": "5843f1dc4eb88de1adfd34fc07d6958b70db8049c35f3078779fad3a78ce2e12"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-nutrition-72.png",
+      "bytes": 1494,
+      "sha256": "97300f8f3c681b0128d3c54b71dcf8dbfb49fbff6f6d1f8c45d0ee193a3fa0dc"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-nutrition-96.png",
+      "bytes": 1933,
+      "sha256": "fc60f0a948864476975d3dcca24690d475aeba716d94e28629399a0a712ba5cd"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-profile-24.png",
+      "bytes": 660,
+      "sha256": "074e1cef89910f8a6039f94acbf76ad157e83d7d957f11ce62e6d0146dbd4ff0"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-profile-48.png",
+      "bytes": 1383,
+      "sha256": "682c09c92f77138fda2287de4ec0c55bb600dc5c8b9ef27720ff8b9cbea9866d"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-profile-72.png",
+      "bytes": 2103,
+      "sha256": "9f63602483d50c9d8496f9ca53ae5444d5f23ec135087747ecb860557216b3a6"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-profile-96.png",
+      "bytes": 2827,
+      "sha256": "cb098690cde1ebc94397c62de82d481183b58da6219afd9b3dde00e9127fdfb5"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-recipe-24.png",
+      "bytes": 821,
+      "sha256": "fa6906bb3bc5e709121cfc67772f9d3c4ffbcafd4ce5fc54f444e689a15f4dab"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-recipe-48.png",
+      "bytes": 1539,
+      "sha256": "17c7c24ba78e988ce7fd992290fc0e4a2da69879719dc1873fcfd0f321ae234f"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-recipe-72.png",
+      "bytes": 2434,
+      "sha256": "fa16f2bdb5e673bca3a83d03a75c142870b0b541516b7a6adbf693c5f45d5b81"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-recipe-96.png",
+      "bytes": 3078,
+      "sha256": "8b608c01bdfdf4b02a1c8ab582af4cfa7805b8638cd0bc00cf2eec6afb95639c"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-scan-label-24.png",
+      "bytes": 253,
+      "sha256": "5caed4199f2dcc62753ce1ef43ea729273c149f358c769533654f51da9c165eb"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-scan-label-48.png",
+      "bytes": 413,
+      "sha256": "56d85aed33058cdea391be9e3dc1d40cad4be7b4e6851e142d4cebdda6ea3098"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-scan-label-72.png",
+      "bytes": 650,
+      "sha256": "2c968664308557ae0ccbe0d7c6a68ef7f0aa5ea556d0a44bebd0fc84d92c4a04"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-scan-label-96.png",
+      "bytes": 804,
+      "sha256": "1c98fdfe70f27a5e829169215c32e1768e8bc384954136ad2ba060905ebb1a0d"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-search-24.png",
+      "bytes": 631,
+      "sha256": "4be31015fcc12a6f459d24e0fd1fc146bfdb44d1a52fd904caeacbf0f6e8d53e"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-search-48.png",
+      "bytes": 1307,
+      "sha256": "8262f09a828d7cffe890a7cf15810201283b1db96f89fe9d5d8b8472970c64f1"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-search-72.png",
+      "bytes": 1846,
+      "sha256": "ecbe7433abc6e567b5d6f0286de495991e63b7c7a0529d3f8ca65733bfadf70b"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-search-96.png",
+      "bytes": 2427,
+      "sha256": "b3b2ad4cd6a577b29888c0c18dc5d84c849e058082b36255e114adaa03a18eea"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-settings-24.png",
+      "bytes": 1133,
+      "sha256": "ea9ed0a842ed99b91d4e6e0676b39d0aed136b9529fa47be8d92a8fc087b11f9"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-settings-48.png",
+      "bytes": 2463,
+      "sha256": "be820683cdc960e7e55c9ca78fcc5650444656fe1db9660684ab3b12fd2cee32"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-settings-72.png",
+      "bytes": 3761,
+      "sha256": "c2b63981717b8df4754b185b25fc34bdb09022261d34cf15880396b8af102a73"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-settings-96.png",
+      "bytes": 4723,
+      "sha256": "c81b1779bb48b3a199a18f7fa9e3f84a4490990cc7d13565f0951de88df24bcf"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-shopping-24.png",
+      "bytes": 445,
+      "sha256": "19cecb2e3e36235f5343c616fc2c68ce3a67cd0cc65e389e4eb261917f155094"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-shopping-48.png",
+      "bytes": 774,
+      "sha256": "289c79ab56f1fb8d5593fb361c09fa1b9031c5dbb6aef0eb0dcfe57ba2009463"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-shopping-72.png",
+      "bytes": 1128,
+      "sha256": "1afe8e6a595590174ae470de3c44aa6063a914e7ebcc1bcd772520439c010fa4"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/PNG/takolio-icon-shopping-96.png",
+      "bytes": 1412,
+      "sha256": "07e07cd213bb6abe34ddc77db1b755e897b1c5512863f1cf4f8421ee06019a47"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/SVG/takolio-icon-ai-suggestion.svg",
+      "bytes": 401,
+      "sha256": "6f4809003a6b288dfa58d002c11c3bb43c918a1a24cf3da060e0166a7810a401"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/SVG/takolio-icon-analytics.svg",
+      "bytes": 447,
+      "sha256": "547a504eef51e7d5f7bee075a0bdd85d50f0e3dc959c9ec6bc7dae084b6b7939"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/SVG/takolio-icon-calendar.svg",
+      "bytes": 493,
+      "sha256": "0cc3ad2c4ac5b20cce32327a8d9fd707a62ab8299aff0907fe1ca9fa0ba859db"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/SVG/takolio-icon-camera.svg",
+      "bytes": 356,
+      "sha256": "c2def4136de5ccbb943803c9790e3debdc1edce993b4c86f0bc3530ee884d2f1"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/SVG/takolio-icon-cook.svg",
+      "bytes": 380,
+      "sha256": "5b3ce43424ad7e33903557b51b51adb36caafd0ed99bcf2596dc5d0ac1f72b0c"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/SVG/takolio-icon-favorites.svg",
+      "bytes": 325,
+      "sha256": "f3cfd2a2c9fb364d4cf9fe6f1b3ff78376a534197432a16d46b416fe530341b8"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/SVG/takolio-icon-filter.svg",
+      "bytes": 421,
+      "sha256": "c159d227fb16db01e7cc466354712ff57fd8b56302e38741c788069222f5df85"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/SVG/takolio-icon-fridge.svg",
+      "bytes": 356,
+      "sha256": "49bb7a430d19b8c5ab66d8ccc1302a6ebd96aa15107436c020527910727dca17"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/SVG/takolio-icon-history.svg",
+      "bytes": 337,
+      "sha256": "e1854abf5b81a3c47dd3d7a5b4a46d34ed2111e373e056f9b10c53d3cb46d5a0"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/SVG/takolio-icon-ingredient.svg",
+      "bytes": 342,
+      "sha256": "e78588d18a1fd32c2a2edd85fd68edfbd7476c9573b206b18bd2451b9c0fd4fc"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/SVG/takolio-icon-meal-plan.svg",
+      "bytes": 395,
+      "sha256": "4ace4e5f30776c3b9d434043a6125f4fb54459e7d36febf160272fea1ac06d21"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/SVG/takolio-icon-notifications.svg",
+      "bytes": 349,
+      "sha256": "778b64634f9cbe82cbd80f88fa49d3c499b240fb387bcd4e12933e23756528cd"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/SVG/takolio-icon-nutrition.svg",
+      "bytes": 418,
+      "sha256": "0e168981ba1a69ffa6a36b1a5597c084eb61c6c4d0d022f6cb0388275b3456af"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/SVG/takolio-icon-profile.svg",
+      "bytes": 357,
+      "sha256": "22fa64537c1c5c57557e5d3ca7e4e1e29bee618b400adadecbe78239c73d1951"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/SVG/takolio-icon-recipe.svg",
+      "bytes": 403,
+      "sha256": "904a382dfed1854752828217370c64c11be511ab4e1484f97839bc21c554e3fa"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/SVG/takolio-icon-scan-label.svg",
+      "bytes": 351,
+      "sha256": "8f08384c78a991db6ab215db454460bc27a98585ed10eeaa10406b54c534c7fa"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/SVG/takolio-icon-search.svg",
+      "bytes": 333,
+      "sha256": "fe7bbaf9621c59a1b7ba7e58331456968f7f37111b2c990fd4d724d08a43418f"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/SVG/takolio-icon-settings.svg",
+      "bytes": 446,
+      "sha256": "cfa9e5c46772d9b4db3001e5201c8d764258bf88c90a8ca0fc96639bc131172b"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/05_UI_Icons/SVG/takolio-icon-shopping.svg",
+      "bytes": 395,
+      "sha256": "c0283b8a5386c1a6b01e56f7468a36abb23aba430b6d929f68ced07b69cbb411"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/06_Patterns/PNG/takolio-pattern-border-1400.png",
+      "bytes": 42558,
+      "sha256": "11cbb0b5ebe6ce157d5c8124378a6ccf7922eccb3ce4e166a1778428a06c4f95"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/06_Patterns/PNG/takolio-pattern-ingredients-tile-1200.png",
+      "bytes": 91673,
+      "sha256": "2af04d2523692025e47f83b9ecb3ab278d830e6afb71b9515ff2bb472dd60b68"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/06_Patterns/PNG/takolio-pattern-leaves-tile-800.png",
+      "bytes": 22383,
+      "sha256": "5491fe62bddbc46f4d4d08c475ad8886e46f87f24575a9bcd6fb97e9d03a2a37"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/06_Patterns/PNG/takolio-pattern-repeat-preview-1200.png",
+      "bytes": 62625,
+      "sha256": "26f1c30c50fc9435680b6abfa6761487d460d37ed464598c81a50861b402d42f"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/06_Patterns/SVG/takolio-pattern-border.svg",
+      "bytes": 5625,
+      "sha256": "521ebba94b826cd89aff92f3112a247e98bb5b4d330271f3050beea9ba7764c5"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/06_Patterns/SVG/takolio-pattern-ingredients-tile.svg",
+      "bytes": 6071,
+      "sha256": "766df91a258aba96392dbe7b66a7b48b2794b4097abd49fa7e4c75a634f4fc5a"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/06_Patterns/SVG/takolio-pattern-leaves-tile.svg",
+      "bytes": 2236,
+      "sha256": "f8619439f17ad5500b80829a06baff42cf032264879a0120b74b77bfc7bf846f"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/06_Patterns/SVG/takolio-pattern-repeat-preview.svg",
+      "bytes": 6216,
+      "sha256": "5399ff6e8d6efb86ebebf66da3a66cb5ea701b927e414ba0b6f4cb396c3da890"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/07_Stickers/PNG/takolio-sticker-bowl-512.png",
+      "bytes": 18188,
+      "sha256": "98e5fb6b4fb57f3476461328dff023d6f50da342f5751ef6b9f66b1e6dbb213e"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/07_Stickers/PNG/takolio-sticker-carrot-512.png",
+      "bytes": 15994,
+      "sha256": "c7244436e7d04d2eaa800a83f7c88f9420cbbdba60f35405fa82ca931233a5b8"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/07_Stickers/PNG/takolio-sticker-cook-hat-512.png",
+      "bytes": 15773,
+      "sha256": "077605ee81efb72ec01ddbe7f5c569d5318372a732d5e6a1122a5b9604510321"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/07_Stickers/PNG/takolio-sticker-fish-512.png",
+      "bytes": 17740,
+      "sha256": "176d56cdb60c78956ab5633938edc4d5808883c3cb3f88d9e62ea7ab288e7cd4"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/07_Stickers/PNG/takolio-sticker-heart-512.png",
+      "bytes": 16047,
+      "sha256": "8948729b45ad54dadbad379097f014f0e7810b98a6bdd5bc5677fab4f58a9b7d"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/07_Stickers/PNG/takolio-sticker-leaf-512.png",
+      "bytes": 23457,
+      "sha256": "4410ed77b546da0fa3e2da359887564dd3188f0a5978531c2175e306f104555a"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/07_Stickers/PNG/takolio-sticker-octopus-512.png",
+      "bytes": 46765,
+      "sha256": "716205ee7a776728dc7363605bc29552775d63a8f3ab207c6b2261bdb53cbdec"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/07_Stickers/PNG/takolio-sticker-pot-512.png",
+      "bytes": 11474,
+      "sha256": "c8597221811b23cbe21af9cd73b2186b11685d9226c9ef9b5966f06722af6916"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/07_Stickers/PNG/takolio-sticker-sparkle-512.png",
+      "bytes": 15423,
+      "sha256": "77124e4e1edbfe185455ed9a364a30ba72b2003ba489b3a0656ec8a12dea6dc2"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/07_Stickers/PNG/takolio-sticker-spoon-512.png",
+      "bytes": 12961,
+      "sha256": "0c54475c9fe811c8d4157905fa6426e1680d9c21c70b4837997abd5b8bfdca57"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/07_Stickers/PNG/takolio-sticker-tomato-512.png",
+      "bytes": 16976,
+      "sha256": "9f6121a8f030ac5e4efe03c654af59ba4273efb4e10f07cc6bff58335b4934d9"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/07_Stickers/SVG/takolio-sticker-bowl.svg",
+      "bytes": 1528,
+      "sha256": "78230758aacb86bcd61b9e5d8932c7b2392cc52a1b058d3c244452869af9fade"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/07_Stickers/SVG/takolio-sticker-carrot.svg",
+      "bytes": 1482,
+      "sha256": "0c9ba372b977279b80afa46e9813f11ef75802f6fee091da561b0c38e95694e5"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/07_Stickers/SVG/takolio-sticker-cook-hat.svg",
+      "bytes": 1463,
+      "sha256": "cb46c0ef01105ad9f5f0ac2bbfef9d277030ad06c0e305a5478211dc58ba0ebd"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/07_Stickers/SVG/takolio-sticker-fish.svg",
+      "bytes": 1486,
+      "sha256": "1c80262fb57156429f0c414c8a08bb24869dc4acd22bcc6e3dc3b44149ba26a5"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/07_Stickers/SVG/takolio-sticker-heart.svg",
+      "bytes": 1401,
+      "sha256": "8f0e8f4696c9b89565db928ccba13b6385c1e6b92d0ff03b30a29ede57a5b3b1"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/07_Stickers/SVG/takolio-sticker-leaf.svg",
+      "bytes": 1435,
+      "sha256": "6687dcfc6929662494020bd8d8920aa625035cdf54d5ffbe4b9a73fad3055aa6"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/07_Stickers/SVG/takolio-sticker-octopus.svg",
+      "bytes": 3201,
+      "sha256": "340cbdc2d046ba1b67ec68de978a9b7872f8c33e01108ec990270248aa71a7c6"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/07_Stickers/SVG/takolio-sticker-pot.svg",
+      "bytes": 1529,
+      "sha256": "2d9b7c24195e811fea7b54212011de661073a0004a72882a434b1a3de589c237"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/07_Stickers/SVG/takolio-sticker-sparkle.svg",
+      "bytes": 1379,
+      "sha256": "2e0fb3ca2e61ff60a25dde9959d6b35a23a28e107c030ff1b0efc550bd7c076e"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/07_Stickers/SVG/takolio-sticker-spoon.svg",
+      "bytes": 1451,
+      "sha256": "9f2a38f2424d3989fe36a473c415d0fdfd52054332c36dc0316dc74c183de0f0"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/07_Stickers/SVG/takolio-sticker-tomato.svg",
+      "bytes": 1484,
+      "sha256": "e53fb7973ab96dc2a1f0a7aac4b41d176b53a01ae9d04e0fe28cb87f6ed20541"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/08_Design_Tokens/THEME_USAGE.md",
+      "bytes": 651,
+      "sha256": "a753d3cd7e6134069943b659ad8c329ee3cfabdc7c67420d29ab9e361e9b19da"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/08_Design_Tokens/TYPOGRAPHY.md",
+      "bytes": 1617,
+      "sha256": "8e7622a5f96ce785930cbc9953c0219c907a069cec0ba053657094e6f8b9cfbe"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/08_Design_Tokens/android-colors.xml",
+      "bytes": 681,
+      "sha256": "c899bddb53cc13192ebfad5608c9909f11e83a73e69eb6443082bb328e7f7f48"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/08_Design_Tokens/colors.json",
+      "bytes": 1544,
+      "sha256": "d37788209a79d81eaff5bc47f23ac57b08f8110794e57c986400dbb62d9dd050"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/08_Design_Tokens/design-tokens.json",
+      "bytes": 1314,
+      "sha256": "323c4756e396dfd2f7a530f65be3552f18488a39fb0f92083388c61183b156cc"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/08_Design_Tokens/fonts.css",
+      "bytes": 365,
+      "sha256": "fcc19254e1af120512e718c9b285e5f568008c9163a9b5a3233fdeb953233350"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/08_Design_Tokens/swift-colors.swift",
+      "bytes": 1147,
+      "sha256": "004a6a2aa9562652a70d4f213fcc981e6547ac349285788847cb412549c1369d"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/08_Design_Tokens/takolio-tokens.css",
+      "bytes": 683,
+      "sha256": "21d130efc21b85c158870db331cd0b455a721ee08962ed5f57284a29fcc476e8"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/09_Prompts/00_MASTER_ORCHESTRATOR.md",
+      "bytes": 3232,
+      "sha256": "f506f169ac29494f1e1ef68af2fcb3a0897e52e47464541256491b7ae9671497"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/09_Prompts/01_EXECUTION_PLAN.md",
+      "bytes": 1277,
+      "sha256": "9e168039f548c11ccbad26055a033b0fd9c8056d31acad957ac43d162ab8a0fb"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/09_Prompts/02_LOGO_AGENT.md",
+      "bytes": 826,
+      "sha256": "926df48aa77fa35e0667a7651e4eb4007209d3e85adb58384dbf99ef7de79e54"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/09_Prompts/03_MASCOT_AGENT.md",
+      "bytes": 1209,
+      "sha256": "c279481c0debce2d40ab3661a2a061a8b99441ae8fcebde5c6ddc81b3beda8fe"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/09_Prompts/04_APP_ICON_AGENT.md",
+      "bytes": 858,
+      "sha256": "8f5b95e76b9aabfa8b5278ebacd8627bed7ebd8ae4c672574b2028ec062e6f09"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/09_Prompts/05_ICON_AND_PATTERN_AGENT.md",
+      "bytes": 644,
+      "sha256": "59a838e4128b75a8691160aa0b67d98d923989c524cf6b9223dc7c9fa94dbe95"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/09_Prompts/06_TYPOGRAPHY_AGENT.md",
+      "bytes": 655,
+      "sha256": "ad3e3f65865c40ff9ebde254768267a07011cbcb35619b0e63a1beb4d33ed6a1"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/09_Prompts/07_GUIDELINE_AGENT.md",
+      "bytes": 849,
+      "sha256": "23c36a140695db037d57daa9840aad35147b1e292b7f691b0bdfccaaff137839"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/09_Prompts/08_APPLICATION_AGENT.md",
+      "bytes": 829,
+      "sha256": "fa7830ffd7ee3f91ceddf0360f6949a687dec7de22cf0d958490dc4fbdb7a9ce"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/09_Prompts/09_INDEPENDENT_REVIEW_AGENT.md",
+      "bytes": 994,
+      "sha256": "8adbc62bfdb4e7b65342fc5992416c4c416380019373179bdb45c96fe4f6cea1"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/09_Prompts/10_RELEASE_MIGRATION_AGENT.md",
+      "bytes": 644,
+      "sha256": "27f2fb06ee95d5dc536e999da766bbc2a9372d33bda4e3ad8a3e4cc65a919aa0"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/09_Prompts/11_ALL_IN_ONE_AGENT_COMMAND.md",
+      "bytes": 988,
+      "sha256": "31e41450fb7e67c43fd9a7a82823dc3a738e854c1324a70cbb7d4e54abc9ff28"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/10_Reference_Boards/00_old-takosan-moodboard.png",
+      "bytes": 2038282,
+      "sha256": "ea735a17fb2f361dbf207897f5a5e631a443f9d9c556c9ed1a342c8bfdfd0358"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/10_Reference_Boards/01_takolio-concept-board.png",
+      "bytes": 2184738,
+      "sha256": "988ab237fe93a05c94412f598e6a72ca21c043c681b0e01e2024bd9cad3ef0b2"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/10_Reference_Boards/02_takolio-core-identity-board.png",
+      "bytes": 2084562,
+      "sha256": "2e9f88b965ec2a6f39565ae3fdd3fd5e0aa653b9f85c1174a31af43bb1811579"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/10_Reference_Boards/03_takolio-logo-board.png",
+      "bytes": 1986736,
+      "sha256": "be6697dbbeb73e86d650e814d5e8656c3e10af9df665c10d28f07d82ec124bfd"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/10_Reference_Boards/04_takolio-color-type-board.png",
+      "bytes": 1954866,
+      "sha256": "1065c9b4c1d83d68731321c1666373b9b6f8388d80b00df03dd69befad71c7fc"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/10_Reference_Boards/05_takolio-mascot-board.png",
+      "bytes": 2093204,
+      "sha256": "9d1628cff9da47e4c9906990aed2f8273f3b6f4611380e13dd8a0481004f91e3"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/10_Reference_Boards/06_takolio-icons-pattern-board.png",
+      "bytes": 1913737,
+      "sha256": "d9e88a4ff1aa87e99b245495e8350bda70672f1c53f187efa07db7612aea3aa1"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/10_Reference_Boards/07_takolio-application-board.png",
+      "bytes": 2295931,
+      "sha256": "1bac84a50ddaaf5fd1942df2179c937c3fe598e0269e5eea3e206ce984554031"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/10_Reference_Boards/REFERENCE_README.md",
+      "bytes": 491,
+      "sha256": "d04dfb9a9a6c42e748b6f8b1351d37d61ad24d78c01f8a49a15678143abcca65"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/11_Previews/appicons-contact-sheet.png",
+      "bytes": 57374,
+      "sha256": "a0f24e720497d9b6e1d5e0f358dac036e4ff2ac36567c7f789a94bd04aab4f1a"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/11_Previews/brand-guideline-page-01.png",
+      "bytes": 162857,
+      "sha256": "89d491b9130af10965dcf2a314088a586005eccd2046a3ce17f10eed785bd123"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/11_Previews/brand-guideline-page-03.png",
+      "bytes": 112370,
+      "sha256": "7d6a4af6e881fecbb216deb157834d5b8de2e7e99f773d8b0a6a090d20eea331"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/11_Previews/brand-guideline-page-07.png",
+      "bytes": 330221,
+      "sha256": "4b676f2dbb26d8a50b204c9848ae3da5929e0b5ab7621d2c00a7a24234d668da"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/11_Previews/brand-guideline-page-12.png",
+      "bytes": 171742,
+      "sha256": "833b9c07b46d8f453c6eb51a27a4581b710bebbe555e9842b7696f1af9c7f003"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/11_Previews/logo-contact-sheet.png",
+      "bytes": 93200,
+      "sha256": "1258f6f2f9ba5ccfd44518fcd7cf6e4b118a9668e0ad7c7023ae1fab9119dae7"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/11_Previews/mascot-contact-sheet.png",
+      "bytes": 162032,
+      "sha256": "2a35f5fea6ac486d4dde06eee816a867d8001b583c5551245c57c12386e4d63f"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/11_Previews/sticker-contact-sheet.png",
+      "bytes": 130498,
+      "sha256": "36a2c777115947a78b3c953ba74c8f1a0de22498a0e1d90484295267961c8276"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/11_Previews/ui-icons-contact-sheet.png",
+      "bytes": 77209,
+      "sha256": "007b3413496a5bfce002df4a806c3e908cd838fbe92655e1dc7b7394c1fdac93"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/12_QA/ACCEPTANCE_CRITERIA.md",
+      "bytes": 1960,
+      "sha256": "e1e995f1f831a57dbc1123dbc3a6b5e6931a2a2f3aa2f98b9e5066c322292147"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/12_QA/CONTRAST_REPORT.md",
+      "bytes": 365,
+      "sha256": "cd29159af063b782d929a04db1e65e7b8c68c7194161845ede0fd6feb4b3e438"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/12_QA/FILE_POLICY.md",
+      "bytes": 570,
+      "sha256": "2b0878a307b9627792a7c0018c9bf1cf7e108bd68904924bc4fcdec93f99779f"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/12_QA/RELEASE_STATUS.md",
+      "bytes": 775,
+      "sha256": "06c32ee386ef6e5b1cb95a7822284919fe4540bcd71f2836ba1c16f608cedac0"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/12_QA/SHA256SUMS.txt",
+      "bytes": 29804,
+      "sha256": "70abd14eaffcab172db6ee01a67b3ccaa959765cb1a26c70d1fbec551191485a"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/12_QA/VALIDATION_RECEIPT.txt",
+      "bytes": 49,
+      "sha256": "67851673a0c0dfa1cc0b71152f869386ae796c49a875c6752718746f2ccb461d"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/12_QA/asset-manifest.csv",
+      "bytes": 34577,
+      "sha256": "3bbd93f665530dcad9c869beb611b4bf9dec1a76e83c6cf371bdf718ded2a8d3"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/12_QA/asset-manifest.json",
+      "bytes": 57611,
+      "sha256": "6eab1fadb9f328cea1f02dbd19b9170650fd3fb6584c51d983bc350549f80942"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/12_QA/validate_assets.py",
+      "bytes": 1428,
+      "sha256": "e3fac3f2f77a0cf2446c6dc6a98daa3f1d19bc44d11613b6cca60bb67493fee3"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/13_Source_Code/build_assets.py",
+      "bytes": 27128,
+      "sha256": "dc524385446f60746588b649357842f73a46780c7a5ed6ec71c1409c9fefc917"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/13_Source_Code/build_docs.py",
+      "bytes": 46472,
+      "sha256": "569948bbb9bccefba75fd685ae4a6715a880afc9c67193120237ec1794af1082"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/13_Source_Code/build_pdf_and_validate.py",
+      "bytes": 18724,
+      "sha256": "2445b20e81c995d35529c2921d439ba8940fc2744c4eee4e261dc9186ed2ff1f"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/14_Applications/PNG/takolio-social-square-1080x1080.png",
+      "bytes": 137448,
+      "sha256": "e789e273c664427e6b1492625293660842d0eb691933163a9c62191bac3bf0d2"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/14_Applications/PNG/takolio-social-story-1080x1920.png",
+      "bytes": 168522,
+      "sha256": "a256d8eb82dd7186f4c50cd0224d377e002a223067504226260f4c7562eec20d"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/14_Applications/PNG/takolio-website-hero-1600x900.png",
+      "bytes": 156317,
+      "sha256": "e16817beacce5b99bd71f18a2ef22b2920ee753ab373b20909d66805bd201443"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/14_Applications/PNG/takolio-welcome-screen-1080x1920.png",
+      "bytes": 183284,
+      "sha256": "50a9c5a3bf6f4da19b83e13422b92a7246bce7dfea9f16d98ae016e07ca94c43"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/14_Applications/README.md",
+      "bytes": 665,
+      "sha256": "3a0356a4858465007a9cf53e6d6584e7771a47561f9187970aa948cc458467fa"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/14_Applications/SVG/takolio-social-square-1080x1080.svg",
+      "bytes": 175646,
+      "sha256": "d0113dc01304ea916a60b142a59e1ba7c4920520cd903235022d9fafa9a85028"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/14_Applications/SVG/takolio-social-story-1080x1920.svg",
+      "bytes": 165509,
+      "sha256": "19b7590d51004c16a0160e312e3d9e3ea11934bd087cdb411c799bdefd06dd39"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/14_Applications/SVG/takolio-website-hero-1600x900.svg",
+      "bytes": 176302,
+      "sha256": "bd17ae108958c191c88bad294d6d761c3e22e06314e4689442fa5e1e1d4d4061"
+    },
+    {
+      "path": "Takolio-Brand-OS-Kit-v1.0/14_Applications/SVG/takolio-welcome-screen-1080x1920.svg",
+      "bytes": 175873,
+      "sha256": "7160dcc546fc67b18f26c15bd3b1b01c2fb37f736461838872e9ddbaa2f9b2e9"
+    }
+  ]
+}

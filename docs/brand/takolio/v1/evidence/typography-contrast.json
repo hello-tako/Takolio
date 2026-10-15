@@ -1,0 +1,63 @@
+{
+  "requiredVietnameseCodepoints": 106,
+  "missing": {
+    "Nunito": [],
+    "Plus Jakarta Sans": []
+  },
+  "fontBytes": {
+    "public/takosan/v3/fonts/nunito-vietnamese-wght-normal.woff2": 13096,
+    "public/takosan/v3/fonts/nunito-latin-wght-normal.woff2": 39128,
+    "public/takosan/v3/fonts/nunito-latin-ext-wght-normal.woff2": 35588,
+    "public/takolio/v1/fonts/plus-jakarta-sans-vietnamese-latin-wght.woff2": 35180
+  },
+  "contrast": [
+    {
+      "usage": "Navy on cream",
+      "foreground": "#0F2D46",
+      "background": "#FFF8ED",
+      "ratio": 13.41,
+      "normalAA": true,
+      "largeAA": true
+    },
+    {
+      "usage": "White on navy CTA",
+      "foreground": "#FFFFFF",
+      "background": "#0F2D46",
+      "ratio": 14.15,
+      "normalAA": true,
+      "largeAA": true
+    },
+    {
+      "usage": "White on derived green",
+      "foreground": "#FFFFFF",
+      "background": "#276F3F",
+      "ratio": 6.119,
+      "normalAA": true,
+      "largeAA": true
+    },
+    {
+      "usage": "Navy on coral",
+      "foreground": "#0F2D46",
+      "background": "#FF6B6B",
+      "ratio": 5.099,
+      "normalAA": true,
+      "largeAA": true
+    },
+    {
+      "usage": "White on raw coral (avoid)",
+      "foreground": "#FFFFFF",
+      "background": "#FF6B6B",
+      "ratio": 2.775,
+      "normalAA": false,
+      "largeAA": false
+    },
+    {
+      "usage": "White on raw brand green (avoid)",
+      "foreground": "#FFFFFF",
+      "background": "#4CAF6B",
+      "ratio": 2.745,
+      "normalAA": false,
+      "largeAA": false
+    }
+  ]
+}

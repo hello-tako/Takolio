@@ -1,3 +1,17 @@
+# Takolio V1 migration checkpoint - 2026-10-16 JST
+
+- [x] Phase 0: canonical repo, live SHA, ZIP checksum/inventory, AGENTS rules and protected scope verified.
+- [x] Phase 1: versioned source/runtime assets, deterministic generator and manifest committed in `8e81d5d9879f6a8ea22db7cbc232fcf399a354fa`; V3 retained.
+- [x] Phase 2: contract, compatibility facade, scoped semantic tokens and licensed self-hosted fonts implemented.
+- [x] Phase 3: public product surfaces, metadata, manifest and SW precache migrated; protected payment/Worker/auth protocol preserved.
+- [x] Phase 4: local gates, full unit suite, E2E, browser matrix, PWA and flags-OFF state proof complete.
+- [x] Phase 5 local: docs, receipts, rollback, asset manifest and independent review complete.
+- [ ] Hosted: authenticate GitHub, push feature branch, create draft PR, obtain required `validate` and owner review.
+- [ ] Release: legal/trademark clearance, premium mascot finishing, native/device proof and any protected payment/Worker copy decision.
+
+Current status is `TAKOLIO_V1_CHANGES_REQUIRED` until hosted review artifacts exist. Merge/deploy remains outside authorization.
+
+---
 # T26 family planner response recovery - 2026-10-15 JST
 
 **Status:** READY_FOR_RELEASE; implementation `063a026d`, branch
