@@ -1,3 +1,23 @@
+# T27 compact UI production complete - 2026-10-16 JST
+
+**State:** DEPLOYED. PR80 merged normally; `f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1` serves production.
+Exact-head/main CI and approved production38795680975 each passed 362 files /
+8,467 tests. Staging38795229534, independent protected receipt, final public
+SHA/cache/SW/D1 smoke and compact-CSS proof PASS. Actual approval was recorded from
+`vn-taphoanhatung`; no migration, rollback or flag downgrade.
+
+**Done:** Compact kitchen presentation, clear auto/manual planning, visible safety
+summaries, focused favorites/onboarding copy and responsive shopping disclosure.
+Production Worker `0c99a435-7e7d-43fe-97a3-8e05ebc723d4`; paired planner/composition ON,
+D1/500/no fallback and schema43 retained. Inactive OFF recovery is certified.
+
+**Next:** Retain the deployed candidate and release evidence. No release gate is
+pending. Hosted signed-in acceptance, native iOS/200% zoom and retention remain
+unverified; do not infer them from public smoke. Historical local failures remain
+in the T27 packet.
+
+---
+
 # T27 compact kitchen UI - 2026-10-16
 
 Verified implementation checkpoint: `34421382` (source/tests/ADR/task packet).

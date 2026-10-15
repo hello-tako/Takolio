@@ -1,3 +1,53 @@
+# T27 production release handoff - 2026-10-16 JST
+
+**Status:** DEPLOYED / AUTHENTICATED_HOSTED_ACCEPTANCE_NOT_TESTED. Source34421382,
+normal PR80 merge/deployed main `f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1`.
+Receipt-only documentation continues on
+`codex/compact-kitchen-release-receipts-20261016`; it does not change serving main.
+
+**Changes:** Scoped compact type/spacing, 64px mobile header, clear whole-meal and
+manual-calendar setup, visible safety selections, concise favorites/onboarding and
+shopping disclosure with responsive draft/open-state retention. Existing planner,
+inventory, tenancy, auth, payments, schema and flags remain authoritative.
+
+**Executed verification:** exact-head CI38792223988 PASS 362/8467,525.60s;
+exact-main CI38793721402 PASS 362/8467,554.80s; staging38795229534 SUCCESS;
+production38795680975 approved by required reviewer `vn-taphoanhatung`, SUCCESS,
+full 362/8467 PASS,556.32s plus lint/types/migrations/build. Production native
+14-slot fixture7756ms and 500-recipe bounds19446ms PASS are isolated CI test times,
+not real household latency. Local E2E12/12 at320/390/768/1280 and keyboard/draft/
+reflow proofs remain in T27 alongside the retained local Wrangler timeout.
+
+**Database/deployment:** Worker `0c99a435-7e7d-43fe-97a3-8e05ebc723d4`,
+deployment `21c45ed0-9e3d-462e-8d5c-d40109a070eb`, canonical DB
+`f975ec39-b2c8-4a2a-80e1-0366054599d3`. Protected remote ledger43/tip0043,
+FK/quick-check/catalog500/fingerprint, exact prior T26 Worker/deployment join and
+22 unchanged authority blobs plus Zod continuity PASS. Paired flags ON, d1/0,
+cutover true, no fallback. No migration or rollback. Inactive current-candidate
+OFF recovery `5911a565-d000-4f2b-8c4f-ecc5a8c85731` and OFF compiled assets certified;
+recovery traffic NOT_REHEARSED.
+
+**Evidence:** production artifact12003052751,
+`work/t27-production-38795680975-1/release-manifest.json` and independent sibling;
+`work/t27-production-public-final.json` and `work/t27-production-compact-assets.json`
+PASS at `2026-10-15T20:04:34.798Z`. Actual public CSS `/assets/index-JCj7nCEo.css`
+(211206 bytes), immutable main `/assets/index-Bw_UlFCV.js`, exact SHA, auth no-store,
+matching SW and three observations verified. Staging equivalents and sanitized
+head/main/production gate logs remain in `work/`. Independent agent rechecked
+approval, receipt, source scope, hosted test counts and live public health.
+
+**Limits:** Hosted signed-in household acceptance NOT_TESTED under the user's
+chosen automated/public smoke. Native iOS, 200% zoom and retention not certified.
+Public markers prove asset delivery, not computed authenticated UI. Existing
+informational readiness warning is `CONFIG_RECIPE_CATALOG_D1_AUTHORITY` only.
+Local failures remain historical evidence; hosted full suites passed unchanged.
+
+**Next action:** Retain the serving candidate and receipt checkpoint. No T27
+release gate or approval remains pending. If a household symptom recurs, inspect
+its supported signed-in request/response; public health cannot certify that flow.
+
+---
+
 # T27 handoff - compact kitchen UI - 2026-10-16 JST
 
 Verified implementation checkpoint: `34421382` (source/tests/ADR/task packet).

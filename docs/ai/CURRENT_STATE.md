@@ -1,3 +1,46 @@
+# T27 compact kitchen UI deployed - 2026-10-16 JST
+
+**Status:** DEPLOYED / AUTHENTICATED_HOSTED_ACCEPTANCE_NOT_TESTED. PR80 merged
+normally; production serves `f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1` at
+`https://frigo.tungjpstore.net`. UI implementation checkpoint: `34421382`.
+This release supersedes the historical local-only checkpoint below.
+
+**Product result:** Scoped compact typography and spacing, smaller mobile header,
+clear automatic whole-meal versus manual-calendar setup, visible safety summaries,
+shorter favorites/onboarding copy and a shopping manual-add disclosure that keeps
+the user's draft and open state on resize. Inputs remain 16px and action targets
+remain at least 44px. No backend, schema, dependency or protected-path changes.
+
+**Hosted gates:** exact-head CI38792223988 PASS 362 files / 8,467 tests in 525.60s;
+exact-main CI38793721402 PASS 362 / 8,467 in 554.80s. Staging38795229534 and
+production38795680975 SUCCESS. Production reran lint, types, 362 / 8,467 tests
+(556.32s), migration smoke and build. Required Environment approval was observed
+from `vn-taphoanhatung`; normal protections were retained. The local Wrangler
+startup timeout remains documented in T27; no test was weakened.
+
+**Serving proof:** Worker `0c99a435-7e7d-43fe-97a3-8e05ebc723d4`,
+deployment `21c45ed0-9e3d-462e-8d5c-d40109a070eb`, canonical D1 unchanged. Protected remote
+ledger43/tip0043, FK/quick-check, catalog500/fingerprint/no fallback, unchanged
+D1-to-D1 continuity from T26 and paired planner/composition ON all PASS. No migration
+or rollback. Inactive same-candidate OFF recovery `5911a565-d000-4f2b-8c4f-ecc5a8c85731`
+was certified with its compiled assets; recovery traffic was NOT_REHEARSED.
+
+**Final public verification:** `2026-10-15T20:04:34.798Z` PASS. Exact SHA before/after,
+auth no-store, immutable `/assets/index-Bw_UlFCV.js`, protected SW hash and three
+observations, D1 post-deploy smoke, and actual compact CSS
+`/assets/index-JCj7nCEo.css` (211206 bytes) all PASS. Existing informational
+`CONFIG_RECIPE_CATALOG_D1_AUTHORITY` is the only readiness warning; database is OK.
+Protected/public/CSS receipts are in `work/t27-production-38795680975-1/`,
+`work/t27-production-public-final.json` and `work/t27-production-compact-assets.json`.
+GitHub production artifact12003052751 retains the protected manifest for 90 days.
+
+**Limits/next:** Hosted signed-in household flows remain NOT_TESTED under the
+user's automated/public-smoke choice. Local browser/E2E coverage does not certify
+native iOS, native 200% zoom or retention. Keep the serving candidate and receipt
+checkpoint; no T27 release approval or rollout gate remains pending.
+
+---
+
 # T27 compact kitchen UI local checkpoint - 2026-10-16 JST
 
 Verified implementation checkpoint: `34421382` (source/tests/ADR/task packet).
