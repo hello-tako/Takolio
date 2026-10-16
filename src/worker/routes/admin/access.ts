@@ -6,7 +6,7 @@ import type { AdminEnv } from './env';
  * a reviewed Access application. It never reports success without a valid
  * signature, audience, issuer and time window.
  */
-export type AccessResult = { ok: true; email: string } | { ok: false; reason: string };
+export type AccessResult = { ok: true; email: string; iss: string; sub: string } | { ok: false; reason: string };
 
 export interface AccessVerifierOptions {
   fetcher?: (url: string) => Promise<Response>;
@@ -64,6 +64,7 @@ export async function verifyAccessAssertion(
   options: AccessVerifierOptions = {},
 ): Promise<AccessResult> {
   if (!accessConfigured(env)) return { ok: false, reason: 'not_configured' };
+  if (assertion && assertion.length > 16384) return { ok: false, reason: 'malformed' };
   if (!assertion) return { ok: false, reason: 'missing_assertion' };
   const parts = assertion.split('.');
   if (parts.length !== 3) return { ok: false, reason: 'malformed' };
@@ -106,5 +107,6 @@ export async function verifyAccessAssertion(
   if (typeof payload.exp !== 'number' || payload.exp <= seconds) return { ok: false, reason: 'expired' };
   if (typeof payload.nbf === 'number' && payload.nbf > seconds + 60) return { ok: false, reason: 'not_yet_valid' };
   if (typeof payload.email !== 'string' || !payload.email.includes('@')) return { ok: false, reason: 'missing_email' };
-  return { ok: true, email: payload.email.trim().toLowerCase() };
+  if (payload.common_name !== undefined || typeof payload.sub !== 'string' || !/^[A-Za-z0-9_.:@-]{1,128}$/.test(payload.sub)) return { ok: false, reason: 'missing_subject' };
+  return { ok: true, email: payload.email.trim().toLowerCase(), iss: payload.iss as string, sub: payload.sub };
 }

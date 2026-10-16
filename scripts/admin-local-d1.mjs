@@ -17,7 +17,7 @@ const persistTo = persistIndex === -1 ? undefined : rest[persistIndex + 1];
 const env = localWranglerEnv();
 
 function wrangler(args) {
-  const full = ['exec', 'wrangler', 'd1', ...args, '--local', '-c', CONFIG, ...(persistTo ? ['--persist-to', persistTo] : [])];
+  const full = ['exec', 'wrangler', 'd1', ...args, '--local', '-c', args.includes('frigo-db') ? 'wrangler.admin-facade-local.jsonc' : CONFIG, ...(persistTo ? ['--persist-to', persistTo] : [])];
   if (full.includes('--remote')) throw new Error('Refusing remote wrangler invocation');
   const result = spawnSync('pnpm', full, { encoding: 'utf8', env: { ...env, CI: 'true' } });
   if (result.status !== 0) throw new Error(`wrangler ${args.join(' ')} failed:\n${result.stderr || result.stdout}`);

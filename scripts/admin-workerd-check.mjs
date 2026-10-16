@@ -5,6 +5,7 @@
 //
 //   node scripts/admin-workerd-check.mjs [--out FILE]                         current tree
 //   node scripts/admin-workerd-check.mjs --mode baseline --root DIR [--out]   pre-remediation reproduction
+import { createHash } from 'node:crypto';
 import { spawn, spawnSync } from 'node:child_process';
 import { existsSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { request as httpRequest } from 'node:http';
@@ -35,8 +36,12 @@ function run(cmd, args, options = {}) {
 }
 
 async function startWorker(configFile, persist) {
+  const cfg = JSON.parse(readFileSync(configFile, 'utf8'));
+  const service = cfg.services?.find((s) => s.binding === 'CUSTOMER_READ');
+  const facade = service ? jsonc(service.service.endsWith('-local') ? 'wrangler.admin-facade-local.jsonc' : 'wrangler.admin-facade.jsonc') : null;
+  const auxiliary = facade ? writeConfig(`facade-${nextPort}`, { ...facade, main: path.join(root, facade.main), d1_databases: facade.d1_databases.map((db) => ({...db, migrations_dir: path.join(root, db.migrations_dir)})) }) : null;
   const port = nextPort++;
-  const child = spawn('pnpm', ['exec', 'wrangler', 'dev', '-c', configFile, '--local', '--ip', '127.0.0.1', '--port', String(port), '--persist-to', persist,
+  const child = spawn('pnpm', ['exec', 'wrangler', 'dev', '-c', configFile, ...(auxiliary ? ['-c', auxiliary] : []), '--local', '--ip', '127.0.0.1', '--port', String(port), '--persist-to', persist,
     '--show-interactive-dev-session=false'], { cwd: root, env, stdio: ['ignore', 'pipe', 'pipe'], detached: true });
   let log = '';
   child.stdout.on('data', (chunk) => { log += chunk; });
@@ -221,6 +226,25 @@ async function main() {
         check('mutation with CSRF + exact Origin → 200', withCsrf.status === 200, { status: withCsrf.status }),
         check('no CORS headers for a cross-origin preflight', crossOriginMe.cors.length === 0, crossOriginMe.cors),
       ]);
+      const { chromium } = await import('@playwright/test');
+      const browser = await chromium.launch();
+      try {
+        const page = await browser.newPage();
+        await page.goto(`${origin}/admin/login`);
+        await page.getByTestId('admin-login-email').fill('super@fixture.takosan.test');
+        await page.getByTestId('admin-login-password').fill('Local-Fixture-Only-2026!');
+        await page.getByTestId('admin-login-submit').click();
+        await page.waitForURL((url) => !url.pathname.includes('/login'));
+        const checks = [];
+        for (const route of ['', 'users', 'users/fx_user_001', 'households', 'billing', 'ai', 'recipes', 'system', 'audit', 'settings']) {
+          await page.goto(`${origin}/admin/${route}`);
+          await page.getByTestId('admin-page-title').first().waitFor();
+          await page.waitForLoadState('networkidle');
+          checks.push(check(`browser ${route || 'overview'} has no error panel`, await page.getByTestId('admin-error-state').count() === 0, null));
+        }
+        if (out) await page.screenshot({ path: `${out}.png`, fullPage: true });
+        record('real browser on multi-Worker workerd (synthetic fixture)', checks);
+      } finally { await browser.close(); }
     } finally {
       worker.stop();
     }
@@ -244,6 +268,36 @@ async function main() {
     } finally {
       customer.stop();
     }
+
+    // Same-candidate flags-OFF recovery keeps the additive 0043 schema and its strict ledger.
+    const recoveryToken = 'synthetic-local-recovery-token';
+    const recoveryHash = createHash('sha256').update(recoveryToken).digest('hex');
+    const recoverySql = `INSERT INTO sessions_v2(id,user_id,household_id,token_hash,expires_at)
+      SELECT 'r2-recovery-session',u.id,hm.household_id,'${recoveryHash}','2099-01-01T00:00:00.000Z'
+      FROM users u JOIN household_members hm ON hm.user_id=u.id WHERE u.id='fx_user_001' LIMIT 1;`;
+    const sessionSeed = run('pnpm', ['exec', 'wrangler', 'd1', 'execute', 'frigo-db', '--local', '-c', 'wrangler.admin-facade-local.jsonc', '--persist-to', persist, '--command', recoverySql], { env: { ...env, CI: 'true' } });
+    if (sessionSeed.status !== 0) throw new Error('Local recovery session seed failed');
+    const recovery = await startWorker(customerConfig('customer-flags-off', { MEAL_PLANNER_ENABLED: 'false', MEAL_COMPOSITION_V2_ENABLED: 'false' }), persist);
+    try {
+      const checks = [];
+      for (const route of ['/api/v1/me', '/api/v1/inventory', '/api/v1/week/current']) {
+        const response = await probe(recovery.base, route, { navigate: false, headers: { Cookie: `__Host-frigo_session=${recoveryToken}` } });
+        checks.push(check(`flags-OFF recovery on additive 0043: ${route}`, response.status === 200, { status: response.status }));
+      }
+      record('current-main compatible application recovery with additive schema', checks);
+    } finally { recovery.stop(); }
+
+    const facadeCfg = jsonc('wrangler.admin-facade-local.jsonc');
+    const facadeFile = writeConfig('facade-public-probe', { ...facadeCfg, main: path.join(root, facadeCfg.main), d1_databases: facadeCfg.d1_databases.map((db) => ({...db, migrations_dir: path.join(root, db.migrations_dir)})) });
+    const publicFacade = await startWorker(facadeFile, persist);
+    try {
+      const checks = [];
+      for (const method of ['GET', 'POST']) for (const route of ['/', '/rpc', '/api/v1/admin/users']) {
+        const response = await probe(publicFacade.base, route, { method, navigate: false, body: method === 'POST' ? { op: 'healthCheck', input: {} } : undefined });
+        checks.push(check(`${method} default facade ${route} refuses HTTP`, response.status === 404, { status: response.status }));
+      }
+      record('facade default entrypoint exposes no HTTP API', checks);
+    } finally { publicFacade.stop(); }
 
     // Production artifact: the bundle built from the production template has no local-auth define.
     const bundles = {};

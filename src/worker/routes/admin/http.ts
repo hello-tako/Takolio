@@ -1,6 +1,7 @@
 import type { Context, MiddlewareHandler } from 'hono';
 import type { D1DatabaseBinding } from '@frigo/db';
 import type { AdminDataContext, AdminErrorCode, AdminPermission, AdminRole } from '../../../shared/admin';
+import type { CustomerReadClient } from './customer-facade-client';
 import type { AdminEnv } from './env';
 import type { AdminPolicy } from './policy';
 
@@ -17,14 +18,17 @@ export interface AdminPrincipal {
   idleExpiresAt: string;
   email: string | null;
   displayName: string | null;
+  accessIss?: string;
+  accessSub?: string;
+  operatorId?: string;
 }
 
 export type AdminVariables = {
   admin: AdminPrincipal;
   requestId: string;
   policy: AdminPolicy;
-  /** Customer database wrapped by readOnlyDatabase(). */
-  main: D1DatabaseBinding;
+  /** Internal named reads, not a D1 binding. */
+  main: CustomerReadClient;
   adminDb: D1DatabaseBinding;
   fixtureDataset: string | null;
 };
@@ -50,6 +54,7 @@ const MESSAGES: Partial<Record<AdminErrorCode, string>> = {
   ADMIN_VALIDATION_FAILED: 'Tham số yêu cầu không hợp lệ.',
   ADMIN_NOT_FOUND: 'Không tìm thấy.',
   ADMIN_CONFLICT: 'Dữ liệu đã thay đổi. Vui lòng tải lại.',
+  ADMIN_GOVERNANCE_INCOMPLETE: 'Cần ít nhất ba người vận hành đã được phê duyệt và có thể đăng nhập.',
   ADMIN_UNAVAILABLE: 'Dịch vụ quản trị tạm thời không khả dụng.',
   ADMIN_AUDIT_UNAVAILABLE: 'Không ghi được nhật ký kiểm toán nên thao tác đã bị chặn.',
   ADMIN_SCHEMA_MISMATCH: 'Cơ sở dữ liệu quản trị chưa đúng phiên bản.',

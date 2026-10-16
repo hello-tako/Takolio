@@ -4,7 +4,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 
 // Accessibility and responsive regression for every admin screen (synthetic local fixture).
 const PASSWORD = 'Local-Fixture-Only-2026!';
-const OUT = '.hoplite/artifacts/admin-r1';
+const OUT = '.hoplite/artifacts/admin-e2e/a11y';
 mkdirSync(`${OUT}/screens`, { recursive: true });
 
 const SCREENS: Array<[string, string]> = [
@@ -81,6 +81,5 @@ test('scrollable tables are reachable and scrollable with the keyboard', async (
   const before = await region.evaluate((el) => el.scrollLeft);
   await page.keyboard.press('ArrowRight');
   await page.keyboard.press('ArrowRight');
-  const after = await region.evaluate((el) => el.scrollLeft);
-  expect(after).toBeGreaterThan(before);
+  await expect.poll(() => region.evaluate((el) => el.scrollLeft)).toBeGreaterThan(before);
 });

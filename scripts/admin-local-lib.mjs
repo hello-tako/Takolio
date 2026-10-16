@@ -46,6 +46,7 @@ function prng(seed) {
 export const FIXTURE_ADMINS = [
   { key: 'super', role: 'SUPER_ADMIN', name: 'Quản trị Tổng (fixture)' },
   { key: 'super2', role: 'SUPER_ADMIN', name: 'Quản trị Phụ (fixture)' },
+  { key: 'super3', role: 'SUPER_ADMIN', name: 'Quản trị Dự phòng (fixture)' },
   { key: 'ops', role: 'OPERATIONS_ADMIN', name: 'Vận hành (fixture)' },
   { key: 'content', role: 'CONTENT_EDITOR', name: 'Biên tập (fixture)' },
   { key: 'support', role: 'SUPPORT_AGENT', name: 'Hỗ trợ (fixture)' },
@@ -74,7 +75,7 @@ function userRows(lines, { id, email, name, createdAt, isGuest = 0, password = F
  * schema (migrations/), `admin` the admin database (migrations-admin/). All
  * identities use the reserved `.test` TLD.
  */
-export function buildAdminFixtureSql() {
+function buildLegacyFixtureSql() {
   const rand = prng(20261012);
   const main = ['-- Takosan Admin Console synthetic fixture: customer database part (local only).'];
   const admin = ['-- Takosan Admin Console synthetic fixture: admin database part (local only).'];
@@ -85,8 +86,8 @@ export function buildAdminFixtureSql() {
   }
   // Two-person operator bootstrap, then normal grants by the first SUPER_ADMIN.
   admin.push(`INSERT INTO admin_role_assignments (id, user_id, role, grant_source, granted_at) VALUES
-    ('fx_ara_super', 'fx_admin_super', 'SUPER_ADMIN', 'operator_bootstrap', ${sql(iso(119))}),
-    ('fx_ara_super2', 'fx_admin_super2', 'SUPER_ADMIN', 'operator_bootstrap', ${sql(iso(119))});`);
+    ('fx_ceremony_001_0', 'fx_admin_super', 'SUPER_ADMIN', 'operator_bootstrap', ${sql(iso(119))}),
+    ('fx_ceremony_001_1', 'fx_admin_super2', 'SUPER_ADMIN', 'operator_bootstrap', ${sql(iso(119))});`);
   admin.push(`INSERT INTO admin_config_metadata (key, value) VALUES ('bootstrap_completed_at', ${sql(iso(119))});`);
   for (const entry of FIXTURE_ADMINS.filter((item) => item.role !== 'SUPER_ADMIN')) {
     admin.push(`INSERT INTO admin_role_assignments (id, user_id, role, grant_source, granted_by, granted_at) VALUES (${sql(`fx_ara_${entry.key}`)}, ${sql(`fx_admin_${entry.key}`)}, ${sql(entry.role)}, 'admin_grant', 'fx_admin_super', ${sql(iso(110))});`);
@@ -206,7 +207,7 @@ export function buildBootstrapAccountLookupSql(emails) {
  * the admin database has never had an assignment; a trigger then forbids any
  * later operator_bootstrap grant.
  */
-export function buildBootstrapAdminSql({ userIds, assignmentIds }) {
+function legacyBootstrapAdminSql({ userIds, assignmentIds }) {
   if (!Array.isArray(userIds) || userIds.length !== 2 || new Set(userIds).size !== 2 || !userIds.every((id) => USER_ID_RE.test(id))) {
     throw new Error('Bootstrap requires two distinct verified accounts.');
   }
@@ -237,4 +238,33 @@ export function buildLocalAccountSql({ email, password, name }) {
   const lines = [];
   userRows(lines, { id, email: normalized, name: name || normalized.split('@')[0], createdAt: new Date().toISOString(), password });
   return lines.join('\n');
+}
+
+
+export function buildBootstrapIdentityLookupSql(userIds) {
+ if(!Array.isArray(userIds)||userIds.length!==3||new Set(userIds).size!==3||!userIds.every(id=>USER_ID_RE.test(id)))throw new Error('Bootstrap requires three distinct enrolled operators');
+ return `SELECT b.user_id,b.operator_id,b.access_iss,b.access_sub FROM operator_identity_bindings b JOIN approved_human_operators h ON h.operator_id=b.operator_id AND h.status='active' WHERE b.status='active' AND b.user_id IN (${userIds.map(sql).join(',')}) ORDER BY b.user_id`;
+}
+export function buildBootstrapAdminSql({userIds,assignmentIds,ceremonyId='ceremony_local_001',independentApprovalRef,createdAt='2026-10-17T00:00:00.000Z'}) {
+ buildBootstrapIdentityLookupSql(userIds);
+ if(!independentApprovalRef||independentApprovalRef.length<8)throw new Error('Explicit independent approval reference required');
+ if(!/^[A-Za-z0-9_-]{8,48}$/.test(ceremonyId))throw new Error('Invalid ceremony id');
+ if(assignmentIds && (assignmentIds.length!==3||!assignmentIds.every(id=>/^ara_[0-9a-f]{16,48}$/.test(id))))throw new Error('Invalid assignment ids');
+ return `INSERT INTO admin_bootstrap_ceremonies(id,operator_user_ids,independent_approval_ref,created_at,audit_id) VALUES (${sql(ceremonyId)},${sql(JSON.stringify(userIds))},${sql(independentApprovalRef)},${sql(createdAt)},${sql('evt_'+ceremonyId)});`;
+}
+export function buildAdminFixtureSql() {
+ const legacy=buildLegacyFixtureSql();
+ const admin=[`INSERT INTO admin_config_metadata(key,value) VALUES('fixture_dataset',${sql(FIXTURE_DATASET)});`];
+ const operators=[...FIXTURE_ADMINS.map(a=>({userId:`fx_admin_${a.key}`,key:a.key,name:a.name,email:fixtureEmail(a.key)})),{userId:'fx_owner',key:'owner',name:'Chủ bếp (fixture)',email:fixtureEmail('owner')},...Array.from({length:50},(_,i)=>{const n=String(i+1).padStart(3,'0');return {userId:`fx_user_${n}`,key:`user_${n}`,name:`Người dùng ${n}`,email:fixtureEmail(`customer${n}`)};})];
+ for(const o of operators) {
+  admin.push(`INSERT INTO approved_human_operators(operator_id,approval_ref,approved_at,status) VALUES(${sql('operator_'+o.key)},'synthetic-independent-roster','2026-10-12T00:00:00.000Z','active');`);
+  admin.push(`INSERT INTO operator_identity_bindings(user_id,operator_id,access_iss,access_sub,approved_at,approval_ref,email,display_name) VALUES(${sql(o.userId)},${sql('operator_'+o.key)},'https://fixture.cloudflareaccess.com',${sql('fx-sub-'+o.key)},'2026-10-12T00:00:00.000Z','synthetic-independent-roster',${sql(o.email)},${sql(o.name)});`);
+  const salt='admin-local-'+o.userId;
+  admin.push(`INSERT INTO admin_local_credentials(user_id,email,display_name,password_hash,salt) VALUES(${sql(o.userId)},${sql(o.email)},${sql(o.name)},${sql(hashPassword(FIXTURE_PASSWORD,salt))},${sql(salt)});`);
+ }
+ admin.push(buildBootstrapAdminSql({userIds:['fx_admin_super','fx_admin_super2','fx_admin_super3'],ceremonyId:'fx_ceremony_001',independentApprovalRef:'synthetic-three-person-ceremony',createdAt:'2026-06-15T00:00:00.000Z'}));
+ for(const entry of FIXTURE_ADMINS.filter(a=>a.role!=='SUPER_ADMIN'))admin.push(`INSERT INTO admin_role_assignments(id,user_id,role,grant_source,granted_by,granted_at) VALUES(${sql('fx_ara_'+entry.key)},${sql('fx_admin_'+entry.key)},${sql(entry.role)},'admin_grant','fx_admin_super','2026-07-01T00:00:00.000Z');`);
+ // Historical revoked assignment and editorial/audit data are retained from the old synthetic dataset.
+ for(const statement of legacy.admin.match(/INSERT INTO (?:admin_recipe_editorial_reviews|admin_audit_events|admin_user_preferences)[\s\S]*?;/g)??[])admin.push(statement);
+ return {main:legacy.main,admin:admin.join('\n')};
 }

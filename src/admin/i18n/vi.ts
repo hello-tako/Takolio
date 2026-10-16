@@ -112,6 +112,7 @@ export const vi = {
     ADMIN_VALIDATION_FAILED: 'Bộ lọc hoặc dữ liệu gửi lên không hợp lệ.',
     ADMIN_NOT_FOUND: 'Không tìm thấy dữ liệu được yêu cầu.',
     ADMIN_CONFLICT: 'Dữ liệu đã thay đổi. Tải lại để xem phiên bản mới nhất.',
+    ADMIN_GOVERNANCE_INCOMPLETE: 'Cần ít nhất ba người vận hành đã được phê duyệt và có thể đăng nhập.',
     ADMIN_UNAVAILABLE: 'Dịch vụ quản trị tạm thời không khả dụng.',
     ADMIN_AUDIT_UNAVAILABLE: 'Không ghi được nhật ký kiểm toán nên thao tác đã bị chặn. Vui lòng thử lại sau.',
     ADMIN_SCHEMA_MISMATCH: 'Cơ sở dữ liệu quản trị chưa đúng phiên bản; console tạm khoá.',

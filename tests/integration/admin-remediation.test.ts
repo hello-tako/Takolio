@@ -7,7 +7,7 @@ import { accessOptions, resetAccessJwksCache, verifyAccessAssertion } from '../.
 import { buildBootstrapAdminSql } from '../../scripts/admin-local-lib.mjs';
 import { fetchWorker } from '../helpers/worker-fetch.mjs';
 import {
-  ACCESS_AUD, ACCESS_TEAM, call, closeDatabases, count, createDatabases, CUSTOMER_URL, fx, LOCAL_ORIGIN, localEnv, login, PASSWORD,
+  ACCESS_AUD, ACCESS_TEAM, seedFixtureSuper, enrollFixtureOperators, call, closeDatabases, count, createDatabases, CUSTOMER_URL, fx, LOCAL_ORIGIN, localEnv, login, PASSWORD,
   PROD_ORIGIN, productionEnv, setLocalAuthBuild, type Databases, type Session,
 } from '../helpers/admin-harness';
 
@@ -82,7 +82,7 @@ describe('S1 environment decision matrix (fail closed)', () => {
 
 describe('S2/S3 surface gate, origin, CSRF and cookies', () => {
   function assets() {
-    return { fetch: async (request: Request) => new URL(request.url).pathname === '/admin/' ? new Response('<div id="admin-root"></div>') : new Response('<svg/>') };
+    return { fetch: async (request: Request | string) => new URL(typeof request === 'string' ? request : request.url).pathname === '/admin/' ? new Response('<div id="admin-root"></div>') : new Response('<svg/>') };
   }
 
   it('ADMIN_CONSOLE_ENABLED=false makes every admin path 404 (documents, deep links, assets, API)', async () => {
@@ -151,28 +151,34 @@ describe('S2/S3 surface gate, origin, CSRF and cookies', () => {
 
 describe('Super Admin governance', () => {
   async function supers(n: 2 | 3) {
+    if (n === 2) dbs.admin.seed("UPDATE admin_role_assignments SET status='revoked',revoked_at='x' WHERE id='fx_ceremony_001_2' AND status='active'");
     const result: Record<string, Session> = { super: await login(env, fx('super')), super2: await login(env, fx('super2')) };
     if (n === 3) {
-      dbs.admin.seed("INSERT INTO admin_role_assignments (id, user_id, role, grant_source, granted_by) VALUES ('ara_third_super', 'fx_admin_ops', 'SUPER_ADMIN', 'approval', 'fx_admin_super2')");
+      seedFixtureSuper(dbs, 'ops', 'ara_third_super');
       result.ops = await login(env, fx('ops'));
     }
     return result;
   }
   const activeSupers = () => count(dbs.admin, "SELECT COUNT(*) AS n FROM admin_role_assignments WHERE role = 'SUPER_ADMIN' AND status = 'active'");
 
-  it('operator bootstrap is two-person and one-time', () => {
+  it('operator bootstrap requires three enrolled operators and is one-time', () => {
     const fresh = createDatabases({ seed: false });
     try {
-      const statements = buildBootstrapAdminSql({ userIds: ['u_a', 'u_b'], assignmentIds: ['ara_00000000000000a1', 'ara_00000000000000b2'] }).split(';\n');
-      for (const statement of statements.slice(0, -1)) fresh.admin.seed(`${statement};`);
-      expect(fresh.admin.query(statements.at(-1)!)).toEqual([{ granted: 2 }]);
+      for (const key of ['a', 'b', 'c']) fresh.admin.seed(`
+        INSERT INTO approved_human_operators(operator_id,approval_ref,approved_at)
+          VALUES ('operator_${key}','synthetic-review-${key}','2026-10-15T00:00:00.000Z');
+        INSERT INTO operator_identity_bindings(id,user_id,operator_id,access_iss,access_sub,approval_ref,approved_at,email,display_name)
+          VALUES ('binding_${key}','u_${key}','operator_${key}','https://fixture.cloudflareaccess.com','subject_${key}','synthetic-access-review-${key}','2026-10-15T00:00:00.000Z','${key}@example.test','Operator ${key}');`);
+      const bootstrap = buildBootstrapAdminSql({ userIds: ['u_a', 'u_b', 'u_c'],
+        ceremonyId: 'bsc_regression_pair', independentApprovalRef: 'synthetic-bootstrap-review', createdAt: '2026-10-15T00:00:00.000Z' });
+      fresh.admin.seed(bootstrap);
+      expect(count(fresh.admin, 'SELECT COUNT(*) AS n FROM admin_role_assignments')).toBe(3);
       expect(count(fresh.admin, "SELECT COUNT(*) AS n FROM admin_config_metadata WHERE key = 'bootstrap_completed_at'")).toBe(1);
-      expect(count(fresh.admin, "SELECT COUNT(*) AS n FROM admin_audit_events WHERE action = 'admin.bootstrap.operator'")).toBe(2);
-      const again = buildBootstrapAdminSql({ userIds: ['u_c', 'u_d'], assignmentIds: ['ara_00000000000000c3', 'ara_00000000000000d4'] }).split(';\n');
-      fresh.admin.seed(`${again[0]};`);
-      expect(count(fresh.admin, 'SELECT COUNT(*) AS n FROM admin_role_assignments')).toBe(2);
-      expect(() => fresh.admin.seed("INSERT INTO admin_role_assignments (id, user_id, role, grant_source) VALUES ('ara_00000000000000e5', 'u_e', 'SUPER_ADMIN', 'operator_bootstrap')")).toThrow(/already been completed/);
-      expect(() => buildBootstrapAdminSql({ userIds: ['u_a', 'u_a'], assignmentIds: ['ara_00000000000000a1', 'ara_00000000000000b2'] })).toThrow(/two distinct/);
+      expect(count(fresh.admin, "SELECT COUNT(*) AS n FROM admin_audit_events WHERE action = 'admin.bootstrap'")).toBe(1);
+      expect(() => fresh.admin.seed(bootstrap)).toThrow();
+      expect(count(fresh.admin, 'SELECT COUNT(*) AS n FROM admin_role_assignments')).toBe(3);
+      expect(() => fresh.admin.seed("INSERT INTO admin_role_assignments (id, user_id, role, grant_source) VALUES ('ara_00000000000000e5', 'u_a', 'SUPER_ADMIN', 'operator_bootstrap')")).toThrow(/bootstrap|ceremony|completed/);
+      expect(() => buildBootstrapAdminSql({ userIds: ['u_a', 'u_a'], assignmentIds: ['ara_00000000000000a1', 'ara_00000000000000b2'] })).toThrow(/three distinct/);
     } finally {
       closeDatabases(fresh);
     }
@@ -209,15 +215,15 @@ describe('Super Admin governance', () => {
 
   it('revoking a SUPER_ADMIN is a four-eyes request and can never drop below two', async () => {
     const s2 = await supers(2);
-    const blocked = await call('/api/v1/admin/roles/fx_ara_super2', { env, method: 'DELETE', session: s2.super });
+    const blocked = await call('/api/v1/admin/roles/fx_ceremony_001_1', { env, method: 'DELETE', session: s2.super });
     expect(blocked.status).toBe(409);
     expect(activeSupers()).toBe(2);
-    expect(() => dbs.admin.seed("UPDATE admin_role_assignments SET status = 'revoked', revoked_at = 'x' WHERE id = 'fx_ara_super2'")).toThrow(/at least two/);
+    expect(() => dbs.admin.seed("UPDATE admin_role_assignments SET status = 'revoked', revoked_at = 'x' WHERE id = 'fx_ceremony_001_1'")).toThrow(/at least two/);
 
     const s = await supers(3);
-    const request = await call('/api/v1/admin/roles/fx_ara_super2', { env, method: 'DELETE', session: s.super });
+    const request = await call('/api/v1/admin/roles/fx_ceremony_001_1', { env, method: 'DELETE', session: s.super });
     expect(request.status).toBe(201);
-    expect(request.json.data.approval).toMatchObject({ action: 'role.revoke.super_admin', assignmentId: 'fx_ara_super2', status: 'pending' });
+    expect(request.json.data.approval).toMatchObject({ action: 'role.revoke.super_admin', assignmentId: 'fx_ceremony_001_1', status: 'pending' });
     expect(activeSupers()).toBe(3);
     // The target cannot approve its own revocation, nor can the requester.
     expect((await call(`/api/v1/admin/approvals/${request.json.data.approval.id}/approve`, { env, method: 'POST', session: s.super2 })).status).toBe(403);
@@ -239,24 +245,24 @@ describe('Super Admin governance', () => {
   it('non-SUPER grants and revocations still forbid self-service and end the target sessions', async () => {
     const sup = await login(env, fx('super'));
     expect((await call('/api/v1/admin/roles', { env, method: 'POST', session: sup, body: { userId: 'fx_admin_super', role: 'SUPPORT_AGENT' } })).status).toBe(403);
-    expect((await call('/api/v1/admin/roles/fx_ara_super', { env, method: 'DELETE', session: sup })).status).toBe(403);
+    expect((await call('/api/v1/admin/roles/fx_ceremony_001_0', { env, method: 'DELETE', session: sup })).status).toBe(403);
     const auditor = await login(env, fx('auditor'));
     expect((await call('/api/v1/admin/roles', { env, method: 'POST', session: sup, body: { userId: 'fx_admin_auditor', role: 'SUPPORT_AGENT' } })).status).toBe(201);
     expect((await call('/api/v1/admin/me', { env, session: auditor })).json.code).toBe('ADMIN_SESSION_REVOKED');
   });
 });
 
-describe('sessions follow account security state', () => {
+describe('sessions follow independent Admin authority security state', () => {
   const mutations: Array<[string, string]> = [
-    ['password change', "UPDATE auth_accounts SET password_hash = 'deadbeef', salt = 'new-salt' WHERE user_id = 'fx_admin_super'"],
-    ['verification revoked', "UPDATE auth_accounts SET is_verified = 0 WHERE user_id = 'fx_admin_super'"],
-    ['Google identity linked', "UPDATE auth_accounts SET google_id = 'google-123' WHERE user_id = 'fx_admin_super'"],
-    ['email changed', "UPDATE auth_accounts SET email = 'new@fixture.takosan.test' WHERE user_id = 'fx_admin_super'"],
+    ['local password change', "UPDATE admin_local_credentials SET password_hash = 'deadbeef', salt = 'new-salt' WHERE user_id = 'fx_admin_super'"],
+    ['operator revoked', "UPDATE approved_human_operators SET status = 'revoked' WHERE operator_id = 'operator_super'"],
+    ['identity revoked', "UPDATE operator_identity_bindings SET status = 'revoked' WHERE user_id = 'fx_admin_super'"],
+    ['authority epoch changed', "UPDATE operator_identity_bindings SET security_epoch = security_epoch + 1 WHERE user_id = 'fx_admin_super'"],
   ];
   it.each(mutations)('%s revokes admin sessions', async (_name, statement) => {
     const session = await login(env, fx('super'));
     expect((await call('/api/v1/admin/me', { env, session })).status).toBe(200);
-    dbs.main.seed(statement);
+    dbs.admin.seed(statement);
     const result = await call('/api/v1/admin/me', { env, session });
     expect(result.status).toBe(401);
     expect(result.json.code).toBe('ADMIN_SESSION_REVOKED');
@@ -298,11 +304,11 @@ describe('required audit records fail closed', () => {
 });
 
 describe('rate limits', () => {
-  it('limits per account across many IPs and per IP across accounts', async () => {
+  it('F6: unverified clients cannot exhaust another operator identity allowance; per-IP limits remain', async () => {
     const perAccount = [];
     for (let i = 0; i < 11; i += 1) perAccount.push((await call('/api/v1/admin/auth/login', { env, method: 'POST', body: { email: fx('super'), password: 'wrong-password' } })).status);
-    expect(perAccount.slice(0, 10)).toEqual(Array(10).fill(401));
-    expect(perAccount[10]).toBe(429);
+    expect(perAccount).toEqual(Array(11).fill(401));
+    expect((await call('/api/v1/admin/auth/login', { env, method: 'POST', body: { email: fx('super'), password: PASSWORD } })).status).toBe(200);
     const perIp = [];
     for (let i = 0; i < 6; i += 1) perIp.push((await call('/api/v1/admin/auth/login', { env, method: 'POST', ip: '203.0.113.7', body: { email: fx(`customer00${i + 1}`), password: 'x' } })).status);
     expect(perIp).toEqual([401, 401, 401, 401, 401, 429]);
@@ -364,7 +370,7 @@ describe('admin schema and synthetic data gates', () => {
     } finally {
       closeDatabases(unmigrated);
     }
-    dbs.admin.seed("UPDATE admin_config_metadata SET value = '2' WHERE key = 'schema_version'");
+    dbs.admin.seed("UPDATE admin_config_metadata SET value = '3' WHERE key = 'schema_version'");
     const result = await call('/api/v1/admin/auth/login', { env, method: 'POST', body: { email: fx('super'), password: PASSWORD } });
     expect(result.status).toBe(503);
     expect(result.json.code).toBe('ADMIN_SCHEMA_MISMATCH');
@@ -392,7 +398,7 @@ describe('Cloudflare Access adapter (offline test keys only)', () => {
     return `${head}.${body}.${b64(new Uint8Array(await crypto.subtle.sign('RSASSA-PKCS1-v1_5', key, new TextEncoder().encode(`${head}.${body}`))))}`;
   }
   const now = () => Math.floor(Date.now() / 1000);
-  const claims = (overrides: Record<string, unknown> = {}) => ({ aud: [ACCESS_AUD], iss: `https://${ACCESS_TEAM}`, exp: now() + 300, nbf: now() - 10, email: fx('super'), ...overrides });
+  const claims = (overrides: Record<string, unknown> = {}) => ({ aud: [ACCESS_AUD], iss: `https://${ACCESS_TEAM}`, exp: now() + 300, nbf: now() - 10, email: fx('super'), sub: 'fx-sub-super', ...overrides });
   const config = { ADMIN_ACCESS_TEAM_DOMAIN: ACCESS_TEAM, ADMIN_ACCESS_AUD: ACCESS_AUD };
   function installJwks() {
     fetches = 0;
@@ -402,7 +408,7 @@ describe('Cloudflare Access adapter (offline test keys only)', () => {
   it('verifies signature, audience, issuer and lifetime, and throttles unknown-kid refetches', async () => {
     installJwks();
     const options = { fetcher: accessOptions.fetcher };
-    expect(await verifyAccessAssertion(await sign(claims()), config, options)).toEqual({ ok: true, email: fx('super') });
+    expect(await verifyAccessAssertion(await sign(claims()), config, options)).toEqual({ ok: true, email: fx('super'), iss: `https://${ACCESS_TEAM}`, sub: 'fx-sub-super' });
     expect(await verifyAccessAssertion(await sign(claims({ aud: ['another-audience-0000000000000'] })), config, options)).toEqual({ ok: false, reason: 'wrong_audience' });
     expect(await verifyAccessAssertion(await sign(claims({ iss: 'https://evil.cloudflareaccess.com' })), config, options)).toEqual({ ok: false, reason: 'wrong_issuer' });
     expect(await verifyAccessAssertion(await sign(claims({ exp: now() - 1 })), config, options)).toEqual({ ok: false, reason: 'expired' });
@@ -418,6 +424,7 @@ describe('Cloudflare Access adapter (offline test keys only)', () => {
   it('production requires a valid assertion on login and every request, bound to the session account', async () => {
     installJwks();
     const prodDbs = createDatabases();
+    await enrollFixtureOperators(prodDbs);
     prodDbs.admin.seed("DELETE FROM admin_config_metadata WHERE key = 'fixture_dataset'");
     try {
       const prod = productionEnv(prodDbs);
@@ -428,10 +435,19 @@ describe('Cloudflare Access adapter (offline test keys only)', () => {
       expect((await call('/api/v1/admin/me', { env: prod, session })).json.code).toBe('ADMIN_ACCESS_DENIED');
       expect((await call('/api/v1/admin/me', { env: prod, session, headers: { 'Cf-Access-Jwt-Assertion': assertion } })).status).toBe(200);
       expect((await call('/api/v1/admin/me', { env: prod, session, headers: { 'Cf-Access-Jwt-Assertion': await sign(claims({ email: fx('ops') })) } })).json.code).toBe('ADMIN_ACCESS_DENIED');
-      expect((await call('/api/v1/admin/auth/login', { env: prod, method: 'POST', headers: { 'Cf-Access-Jwt-Assertion': await sign(claims({ email: fx('owner') })) } })).json.code).toBe('ADMIN_INVALID_CREDENTIALS');
+      expect((await call('/api/v1/admin/auth/login', { env: prod, method: 'POST', headers: { 'Cf-Access-Jwt-Assertion': await sign(claims({ email: fx('owner') })) } })).json.code).toBe('ADMIN_ACCESS_DENIED');
       const page = await call('/admin/', { env: { ...prod, ASSETS: { fetch: async () => new Response('<div id="admin-root"></div>') } as never } });
       expect(page.headers.get('Strict-Transport-Security')).toContain('max-age=');
       expect(page.headers.get('Content-Security-Policy')).toContain('upgrade-insecure-requests');
+      const wrongSubject = await sign(claims({ sub: 'different-human-subject' }));
+      const deniedLogin = await call('/api/v1/admin/auth/login', { env: prod, method: 'POST', headers: { 'Cf-Access-Jwt-Assertion': wrongSubject } });
+      expect(deniedLogin.status).toBe(403);
+      expect((await call('/api/v1/admin/me', { env: prod, session, headers: { 'Cf-Access-Jwt-Assertion': wrongSubject } })).status).toBe(401);
+      expect(count(prodDbs.admin, "SELECT COUNT(*) AS n FROM admin_audit_events WHERE action='admin.access.denied' AND reason_code='identity_mismatch'")).toBeGreaterThanOrEqual(2);
+      prodDbs.admin.seed("UPDATE admin_role_assignments SET status='revoked',revoked_at='2026-10-15T00:00:00.000Z',revoked_by='fx_admin_super' WHERE id='fx_ceremony_001_2'");
+      const governance = await call('/api/v1/admin/auth/login', { env: prod, method: 'POST', headers: { 'Cf-Access-Jwt-Assertion': assertion } });
+      expect(governance.status).toBe(503);
+      expect(governance.json.code).toBe('ADMIN_GOVERNANCE_INCOMPLETE');
     } finally {
       closeDatabases(prodDbs);
     }

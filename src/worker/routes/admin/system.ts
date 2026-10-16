@@ -1,3 +1,4 @@
+import type { CustomerReadClient } from './customer-facade-client';
 import type { D1DatabaseBinding } from '@frigo/db';
 import { ADMIN_RBAC_MATRIX_VERSION, type AdminHealthCheck, type AdminSystemStatus } from '../../../shared/admin';
 import type { AdminEnv } from './env';
@@ -17,8 +18,8 @@ async function reachable(db: D1DatabaseBinding): Promise<boolean> {
 }
 
 /** Checks observed by this admin Worker; customer-Worker internals require a remote adapter. */
-export async function systemChecks(env: AdminEnv, main: D1DatabaseBinding, adminDb: D1DatabaseBinding, policy: AdminPolicy): Promise<AdminHealthCheck[]> {
-  const [mainOk, adminOk] = await Promise.all([reachable(main), reachable(adminDb)]);
+export async function systemChecks(env: AdminEnv, main: CustomerReadClient, adminDb: D1DatabaseBinding, policy: AdminPolicy): Promise<AdminHealthCheck[]> {
+  const [mainOk, adminOk] = await Promise.all([main.read<{reachable:boolean}>('system',{}).then(r=>r.reachable).catch(()=>false), reachable(adminDb)]);
   const local = (key: string, label: string, status: AdminHealthCheck['status'], detail: string): AdminHealthCheck => ({ key, label, status, observedBy: 'local', detail });
   const remote = (key: string, label: string, detail: string): AdminHealthCheck => ({ key, label, status: 'unavailable', observedBy: 'remote', detail });
   return [
@@ -40,10 +41,10 @@ async function presentTables(db: D1DatabaseBinding, names: string[]): Promise<Se
   return new Set(rows.results.map((row) => row.name));
 }
 
-export async function systemStatus(env: AdminEnv, main: D1DatabaseBinding, adminDb: D1DatabaseBinding, policy: AdminPolicy, fixture: string | null): Promise<AdminSystemStatus> {
+export async function systemStatus(env: AdminEnv, main: CustomerReadClient, adminDb: D1DatabaseBinding, policy: AdminPolicy, fixture: string | null): Promise<AdminSystemStatus> {
   const checks = await systemChecks(env, main, adminDb, policy);
   const reachableDbs = checks[0].status === 'ok' && checks[1].status === 'ok';
-  const [customer, admin] = reachableDbs ? await Promise.all([presentTables(main, CUSTOMER_TABLES), presentTables(adminDb, ADMIN_TABLES)]) : [new Set<string>(), new Set<string>()];
+  const [customer, admin] = reachableDbs ? await Promise.all([main.read<{tables:string[]}>('system',{}).then(r=>new Set(r.tables)), presentTables(adminDb, ADMIN_TABLES)]) : [new Set<string>(), new Set<string>()];
   const warnings: AdminSystemStatus['warnings'] = [];
   if (fixture) warnings.push({ code: 'SYNTHETIC_FIXTURE_ACTIVE', message: `Đang dùng dữ liệu tổng hợp (${fixture}); chỉ được phép ở môi trường local.` });
   if (policy.authMode === 'password') warnings.push({ code: 'LOCAL_PASSWORD_AUTH', message: 'Đăng nhập bằng mật khẩu chỉ dành cho bản build local.' });

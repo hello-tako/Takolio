@@ -1,14 +1,11 @@
 import type { D1DatabaseBinding } from '@frigo/db';
+import type { CustomerReadBinding } from '../../facade/contract';
 import type { Fetcher, KVNamespace } from '@cloudflare/workers-types';
 
-/**
- * Bindings of the dedicated admin Worker (wrangler.admin.jsonc). The customer
- * Worker never receives ADMIN_DB, and the admin Worker only reads DB through
- * readOnlyDatabase().
- */
+/** Dedicated admin bindings; customer data is reachable only through named RPC reads. */
 export interface AdminEnv {
-  /** Customer database (frigo-db). Read-only for admin code. */
-  DB?: D1DatabaseBinding;
+  CUSTOMER_READ?: CustomerReadBinding;
+  ADMIN_FACADE_HMAC_SECRET?: string;
   /** Admin authority database (roles, sessions, approvals, audit). */
   ADMIN_DB?: D1DatabaseBinding;
   CACHE?: KVNamespace;

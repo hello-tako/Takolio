@@ -39,7 +39,7 @@
     "check": "bash scripts/deploy-check.sh",
     "brand:icons": "node scripts/generate-takolio-brand.mjs",
     "brand:icons:v3": "node scripts/generate-takosan-v3.mjs",
-    "admin:dev": "WRANGLER_SEND_METRICS=false wrangler dev -c wrangler.admin-local.jsonc --local --ip 127.0.0.1 --port 8799 --show-interactive-dev-session=false",
+    "admin:dev": "WRANGLER_SEND_METRICS=false wrangler dev -c wrangler.admin-local.jsonc -c wrangler.admin-facade-local.jsonc --local --ip 127.0.0.1 --port 8799 --show-interactive-dev-session=false",
     "admin:workerd:check": "node scripts/admin-workerd-check.mjs",
     "admin:migration:matrix": "node scripts/admin-migration-matrix.mjs"
   },

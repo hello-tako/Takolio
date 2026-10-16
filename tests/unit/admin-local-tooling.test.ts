@@ -5,6 +5,7 @@ import {
   assertLocalProvisioningAllowed,
   buildAdminFixtureSql,
   buildBootstrapAccountLookupSql,
+  buildBootstrapIdentityLookupSql,
   buildBootstrapAdminSql,
   buildLocalAccountSql,
   FIXTURE_DATASET,
@@ -47,7 +48,7 @@ describe('admin local provisioning guard', () => {
   });
 });
 
-describe('two-person bootstrap SQL', () => {
+describe('Admin authority bootstrap SQL', () => {
   it('requires exactly two different, valid emails', () => {
     expect(() => buildBootstrapAccountLookupSql(['a@example.test'])).toThrow(/two/);
     expect(() => buildBootstrapAccountLookupSql(['a@example.test', 'A@Example.test'])).toThrow(/different/);
@@ -55,30 +56,23 @@ describe('two-person bootstrap SQL', () => {
     expect(buildBootstrapAccountLookupSql(['B@example.test', 'a@example.test'])).toContain("'b@example.test'");
   });
 
-  it('resolves only verified non-guest accounts, then grants both SUPER_ADMINs once', () => {
-    const main = new SqliteD1();
+  it('requires three independently enrolled operators before an atomic one-time grant', () => {
     const admin = new SqliteD1({ migrate: false });
     applyMigrations(admin, path.resolve('migrations-admin'));
     try {
-      main.seed(buildLocalAccountSql({ email: 'first@example.test', password: 'long-local-password', name: 'First' }));
-      main.seed(buildLocalAccountSql({ email: 'second@example.test', password: 'long-local-password', name: 'Second' }));
-      main.seed(buildLocalAccountSql({ email: 'pending@example.test', password: 'long-local-password', name: 'Pending' }));
-      main.seed("UPDATE auth_accounts SET is_verified = 0 WHERE email = 'pending@example.test'");
-      expect(main.query(buildBootstrapAccountLookupSql(['first@example.test', 'pending@example.test']))).toHaveLength(1);
-      const accounts = main.query<{ user_id: string }>(buildBootstrapAccountLookupSql(['first@example.test', 'second@example.test']));
-      expect(accounts).toHaveLength(2);
-      const statements = buildBootstrapAdminSql({ userIds: accounts.map((row) => row.user_id), assignmentIds: ['ara_00000000000000a1', 'ara_00000000000000b2'] }).split(';\n');
-      for (const statement of statements.slice(0, -1)) admin.seed(`${statement};`);
-      expect(admin.query(statements.at(-1)!)).toEqual([{ granted: 2 }]);
-      expect(admin.query("SELECT role, grant_source, granted_by FROM admin_role_assignments ORDER BY id")).toEqual([
-        { role: 'SUPER_ADMIN', grant_source: 'operator_bootstrap', granted_by: null },
-        { role: 'SUPER_ADMIN', grant_source: 'operator_bootstrap', granted_by: null },
-      ]);
-      expect(() => admin.seed("INSERT INTO admin_role_assignments (id, user_id, role, grant_source) VALUES ('ara_00000000000000c3', 'x', 'SUPER_ADMIN', 'operator_bootstrap')")).toThrow(/already been completed/);
-    } finally {
-      main.close();
-      admin.close();
-    }
+      const ids = ['operator_a', 'operator_b', 'operator_c'];
+      expect(admin.query(buildBootstrapIdentityLookupSql(ids))).toHaveLength(0);
+      for (const id of ids) admin.seed(`INSERT INTO approved_human_operators(operator_id,approval_ref,approved_at) VALUES('${id}','synthetic-review','now');
+        INSERT INTO operator_identity_bindings(user_id,operator_id,access_iss,access_sub,approved_at,approval_ref,email,display_name)
+        VALUES('${id}','${id}','https://fixture.cloudflareaccess.com','${id}','now','synthetic-review','${id}@example.test','${id}');`);
+      expect(admin.query(buildBootstrapIdentityLookupSql(ids))).toHaveLength(3);
+      const sql = buildBootstrapAdminSql({userIds:ids, independentApprovalRef:'synthetic-review', ceremonyId:'ceremony_unit_01'});
+      admin.seed(sql);
+      expect(admin.query("SELECT COUNT(*) AS n FROM admin_role_assignments WHERE role='SUPER_ADMIN'")).toEqual([{n:3}]);
+      expect(admin.query("SELECT COUNT(*) AS n FROM admin_audit_events WHERE action='admin.bootstrap'")).toEqual([{n:1}]);
+      expect(() => admin.seed(sql)).toThrow();
+      expect(() => admin.seed("INSERT INTO admin_role_assignments(id,user_id,role,grant_source) VALUES('extra_grant','other','SUPER_ADMIN','operator_bootstrap')")).toThrow();
+    } finally { admin.close(); }
   });
 
   it('rejects malformed input before building SQL', () => {
@@ -104,7 +98,7 @@ describe('admin synthetic fixture', () => {
       admin.seed(fixture.admin);
       expect(admin.query("SELECT value FROM admin_config_metadata WHERE key = 'fixture_dataset'")).toEqual([{ value: FIXTURE_DATASET }]);
       expect(main.query('SELECT COUNT(*) AS n FROM pragma_foreign_key_check')).toEqual([{ n: 0 }]);
-      expect(admin.query("SELECT COUNT(*) AS n FROM admin_role_assignments WHERE status = 'active' AND role = 'SUPER_ADMIN'")).toEqual([{ n: 2 }]);
+      expect(admin.query("SELECT COUNT(*) AS n FROM admin_role_assignments WHERE status = 'active' AND role = 'SUPER_ADMIN'")).toEqual([{ n: 3 }]);
     } finally {
       main.close();
       admin.close();

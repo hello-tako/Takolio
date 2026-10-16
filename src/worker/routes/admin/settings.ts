@@ -13,6 +13,7 @@ import {
   type AdminRoleAssignment,
   type AdminSettings,
 } from '../../../shared/admin';
+import type { CustomerReadClient } from './customer-facade-client';
 import { userLabels } from './people';
 
 export interface ApprovalRow {
@@ -28,7 +29,7 @@ export function approvalView(row: ApprovalRow): AdminApproval {
     decidedBy: row.decided_by, decidedAt: row.decided_at, expiresAt: row.expires_at };
 }
 
-export async function settingsFor(main: D1DatabaseBinding, adminDb: D1DatabaseBinding, userId: string, canReadRoles: boolean): Promise<AdminSettings> {
+export async function settingsFor(main: CustomerReadClient, adminDb: D1DatabaseBinding, userId: string, canReadRoles: boolean): Promise<AdminSettings> {
   let assignments: AdminRoleAssignment[] = [];
   let approvals: AdminApproval[] = [];
   if (canReadRoles) {

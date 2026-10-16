@@ -4,6 +4,7 @@ import { sha256Hex } from '../../src/worker/utils/session';
 import {
   call, closeDatabases, count, createDatabases, fx, localEnv, login, PASSWORD, setLocalAuthBuild, type Databases,
 } from '../helpers/admin-harness';
+import { createCustomerReadFacade } from '../../src/worker/facade/customer-read-service';
 import type { AdminEnv } from '../../src/worker/routes/admin/env';
 
 let dbs: Databases;
@@ -189,7 +190,7 @@ describe('data exposure and validation', () => {
     }
     expect((await call('/api/v1/admin/users?q=%25', { env, session: sup })).json.data.total).toBe(0);
     const page = await call('/api/v1/admin/users?page=2&pageSize=10', { env, session: sup });
-    expect(page.json.data).toMatchObject({ page: 2, pageSize: 10, total: 56 });
+    expect(page.json.data).toMatchObject({ page: 2, pageSize: 10, total: 57 });
     expect(page.json.data.items).toHaveLength(10);
   });
 
@@ -230,7 +231,7 @@ describe('data exposure and validation', () => {
       const value = Reflect.get(target, prop, receiver);
       return typeof value === 'function' ? value.bind(target) : value;
     } });
-    const result = await call('/api/v1/admin/ai/summary', { env: { ...env, DB: failing as never }, session: sup });
+    const result = await call('/api/v1/admin/ai/summary', { env: { ...env, CUSTOMER_READ: createCustomerReadFacade(failing, { secret: 'local-facade-fixture-secret-32-characters' }) }, session: sup });
     expect(result.status).toBe(500);
     expect(result.json).toEqual({ error: 'Đã xảy ra lỗi máy chủ nội bộ', code: 'INTERNAL_SERVER_ERROR' });
   });
@@ -239,8 +240,8 @@ describe('data exposure and validation', () => {
 describe('admin documents and routing', () => {
   function fakeAssets() {
     const files: Record<string, string> = { '/admin/': '<div id="admin-root"></div>', '/admin/assets/admin-abc123.js': 'console.log(1)', '/admin/favicon.svg': '<svg/>' };
-    return { fetch: async (request: Request) => {
-      const pathname = new URL(request.url).pathname;
+    return { fetch: async (request: Request | string) => {
+      const pathname = new URL(typeof request === 'string' ? request : request.url).pathname;
       return pathname in files ? new Response(files[pathname], { headers: { 'Content-Type': pathname.endsWith('.js') ? 'text/javascript' : 'text/html' } }) : new Response('nf', { status: 404 });
     } };
   }

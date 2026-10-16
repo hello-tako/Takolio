@@ -63,7 +63,22 @@ const MINIMUM_MESSAGE = `Phải luôn còn ít nhất ${ADMIN_SUPER_ADMIN_MINIMU
 /** Batch that maps constraint/trigger aborts to 409 instead of 500. */
 async function commit(c: AdminContext, statements: D1PreparedStatement[], message?: string) {
   try {
-    await c.get('adminDb').batch(statements);
+    const adminDb = c.get('adminDb');
+    if (/\/(?:roles|approvals)(?:\/|$)/.test(c.req.path)) {
+      const actor = c.get('admin');
+      const now = nowIso();
+      // A constraint failure aborts the whole batch if authority changed after middleware.
+      statements.unshift(adminDb.prepare(`INSERT INTO admin_config_metadata (key,value)
+        SELECT 'authority_check', 'denied' WHERE NOT EXISTS (
+          SELECT 1 FROM admin_role_assignments r JOIN admin_sessions s ON s.user_id = r.user_id
+          WHERE r.user_id = ? AND r.role = 'SUPER_ADMIN' AND r.status = 'active'
+            AND s.id = ? AND s.revoked_at IS NULL AND s.expires_at > ? AND s.idle_expires_at > ?
+            AND (? IS NULL OR EXISTS (SELECT 1 FROM operator_identity_bindings b
+              JOIN approved_human_operators h ON h.operator_id = b.operator_id AND h.status = 'active'
+              WHERE b.user_id = r.user_id AND b.access_iss = ? AND b.access_sub = ? AND b.status = 'active'))
+        )`).bind(actor.userId, actor.sessionId, now, now, actor.accessIss ?? null, actor.accessIss ?? null, actor.accessSub ?? null));
+    }
+    await adminDb.batch(statements);
   } catch (error) {
     if (isConstraintError(error)) throw conflict(/SUPER_ADMIN/.test(String(error)) ? MINIMUM_MESSAGE : message);
     throw error;
@@ -76,9 +91,7 @@ async function activeSuperCount(c: AdminContext): Promise<number> {
 }
 
 async function eligibleUser(c: AdminContext, userId: string): Promise<boolean> {
-  const row = await c.get('main').prepare(`SELECT u.id FROM users u WHERE u.id = ? AND u.is_guest = 0
-      AND EXISTS (SELECT 1 FROM auth_accounts a WHERE a.user_id = u.id AND a.is_verified = 1)`).bind(userId).first();
-  return row !== null;
+  return c.get('main').eligibleUser(userId);
 }
 
 // ── Reads ──────────────────────────────────────────────────────────────────
@@ -109,11 +122,11 @@ authed.get('/users/:id', requirePermission('users.read'), async (c) => {
     const budget = await consumeLimit(c.env, c.get('policy').local, 'reveal', admin.userId, 30, 3600);
     if (!budget.ok) return limitResponse(c, budget);
   }
-  const user = await getUser(c.get('main'), c.get('adminDb'), id, reveal);
-  if (!user) throw notFound();
   // The record is written before the response; if it cannot be written, nothing is disclosed.
   await requireAudit(c, { actorUserId: admin.userId, actorRoles: admin.roles, action: reveal ? 'users.pii.reveal' : 'users.view', targetType: 'user',
     targetId: id, outcome: 'success', metadata: reveal ? { field: 'email' } : undefined });
+  const user = await getUser(c.get('main'), c.get('adminDb'), id, reveal);
+  if (!user) throw notFound();
   return ok(c, user);
 });
 authed.get('/households', requirePermission('households.read'), async (c) => ok(c, await listHouseholds(c.get('main'), query(c, HouseholdsQuery))));
@@ -167,9 +180,9 @@ authed.post('/recipes/:id/reviews', requirePermission('recipes.review'), async (
   const recipeId = param(c, 'id');
   const input = await body(c, RecipeReviewBody);
   // Recipe authority stays in the customer database and is only read here.
-  const recipe = await c.get('main').prepare('SELECT version FROM recipes WHERE id = ?').bind(recipeId).first<{ version: number }>();
-  if (!recipe) throw notFound();
-  if (Number(recipe.version) !== input.recipeVersion) throw conflict('Công thức đã thay đổi, vui lòng tải lại.');
+  const recipe = await c.get('main').recipeVersion(recipeId);
+  if (recipe === null) throw notFound();
+  if (recipe !== input.recipeVersion) throw conflict('Công thức đã thay đổi, vui lòng tải lại.');
   const id = newId('rev');
   const createdAt = nowIso();
   const adminDb = c.get('adminDb');
@@ -201,8 +214,8 @@ authed.post('/roles', requirePermission('admin.roles.manage'), async (c) => {
     const id = newId('appr');
     const expiresAt = plusMinutes(72 * 60);
     await commit(c, [
-      adminDb.prepare(`INSERT INTO admin_action_approvals (id, action, target_user_id, requested_by, requested_at, expires_at)
-          VALUES (?, 'role.grant.super_admin', ?, ?, ?, ?)`).bind(id, input.userId, admin.userId, now, expiresAt),
+      adminDb.prepare(`INSERT INTO admin_action_approvals (id, action, target_user_id, requested_by, requested_at, expires_at, requester_access_iss, requester_access_sub)
+          VALUES (?, 'role.grant.super_admin', ?, ?, ?, ?, ?, ?)`).bind(id, input.userId, admin.userId, now, expiresAt, admin.accessIss ?? null, admin.accessSub ?? null),
       await auditStatement(c, { actorUserId: admin.userId, actorRoles: admin.roles, action: 'admin.approval.request', targetType: 'user', targetId: input.userId,
         outcome: 'success', metadata: { role: 'SUPER_ADMIN', approvalId: id, decision: 'grant' } }),
     ], 'Đã có yêu cầu phê duyệt đang chờ cho người dùng này.');
@@ -246,8 +259,8 @@ authed.delete('/roles/:assignmentId', requirePermission('admin.roles.manage'), a
     const approvalId = newId('appr');
     const expiresAt = plusMinutes(72 * 60);
     await commit(c, [
-      adminDb.prepare(`INSERT INTO admin_action_approvals (id, action, target_user_id, assignment_id, requested_by, requested_at, expires_at)
-          VALUES (?, 'role.revoke.super_admin', ?, ?, ?, ?, ?)`).bind(approvalId, row.user_id, id, admin.userId, now, expiresAt),
+      adminDb.prepare(`INSERT INTO admin_action_approvals (id, action, target_user_id, assignment_id, requested_by, requested_at, expires_at, requester_access_iss, requester_access_sub)
+          VALUES (?, 'role.revoke.super_admin', ?, ?, ?, ?, ?, ?, ?)`).bind(approvalId, row.user_id, id, admin.userId, now, expiresAt, admin.accessIss ?? null, admin.accessSub ?? null),
       await auditStatement(c, { actorUserId: admin.userId, actorRoles: admin.roles, action: 'admin.approval.request', targetType: 'user', targetId: row.user_id,
         outcome: 'success', metadata: { role: 'SUPER_ADMIN', approvalId, assignmentId: id, decision: 'revoke' } }),
     ], 'Đã có yêu cầu thu hồi đang chờ cho người dùng này.');
@@ -305,7 +318,7 @@ for (const decision of ['approve', 'reject'] as const) {
     const decidedBinds = [id, decision === 'approve' ? 'approved' : 'rejected', admin.userId, now];
     const statements = [
       // Guards re-validate inside the batch: still pending, unexpired, requester still SUPER_ADMIN, effect still applicable.
-      adminDb.prepare(`UPDATE admin_action_approvals SET status = ?, decided_by = ?, decided_at = ?
+      adminDb.prepare(`UPDATE admin_action_approvals SET status = ?, decided_by = ?, decided_at = ?, decider_access_iss = ?, decider_access_sub = ?
           WHERE id = ? AND status = 'pending' AND expires_at > ?
             AND (? = 'rejected' OR (
               EXISTS (SELECT 1 FROM admin_role_assignments r WHERE r.user_id = admin_action_approvals.requested_by AND r.role = 'SUPER_ADMIN' AND r.status = 'active')
@@ -313,7 +326,7 @@ for (const decision of ['approve', 'reject'] as const) {
               AND (action <> 'role.revoke.super_admin' OR (
                 EXISTS (SELECT 1 FROM admin_role_assignments r WHERE r.id = admin_action_approvals.assignment_id AND r.status = 'active')
                 AND (SELECT COUNT(*) FROM admin_role_assignments r WHERE r.role = 'SUPER_ADMIN' AND r.status = 'active') > ?))))`)
-        .bind(decidedBinds[1], admin.userId, now, id, now, decidedBinds[1], ADMIN_SUPER_ADMIN_MINIMUM),
+        .bind(decidedBinds[1], admin.userId, now, admin.accessIss ?? null, admin.accessSub ?? null, id, now, decidedBinds[1], ADMIN_SUPER_ADMIN_MINIMUM),
     ];
     if (decision === 'approve' && approval.action === 'role.grant.super_admin') {
       statements.push(
