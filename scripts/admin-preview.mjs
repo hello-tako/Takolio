@@ -8,9 +8,9 @@ import { createServer as createHttpServer } from 'node:http';
 import { existsSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { createServer as createViteServer } from 'vite';
-import { assertLocalProvisioningAllowed, buildAdminFixtureSql } from './admin-local-lib.mjs';
+import { assertLocalFixtureAllowed, buildAdminFixtureSql } from './admin-local-lib.mjs';
 
-assertLocalProvisioningAllowed({ argv: ['--local'] });
+assertLocalFixtureAllowed({ argv: ['--local'] });
 const port = Number(process.env.PORT || 8790);
 const host = '127.0.0.1';
 const origin = `http://${host}:${port}`;

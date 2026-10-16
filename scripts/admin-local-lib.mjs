@@ -168,15 +168,25 @@ function buildLegacyFixtureSql() {
 const EMAIL_RE = /^[^\s@'"\\]{1,64}@[^\s@'"\\]{1,190}\.[a-z0-9-]{2,24}$/i;
 const USER_ID_RE = /^[A-Za-z0-9_.:-]{1,128}$/;
 
-/** Environment guard shared by the CLIs and the in-memory preview. Fails closed. */
-export function assertLocalProvisioningAllowed({ argv = [], env = process.env } = {}) {
+/** Shared boundary for local runtime tools, including synthetic CI fixtures. */
+function assertLocalRuntimeAllowed(argv, env) {
   const forbidden = argv.filter((arg) => ['--remote', '--env', '--preview', '--production'].includes(arg.split('=')[0]));
   if (forbidden.length) throw new Error(`Refusing: ${forbidden.join(', ')} is not allowed; provisioning is local-only.`);
   if (!argv.includes('--local')) throw new Error('Refusing: pass --local explicitly; provisioning never targets remote D1.');
   const environment = env.ENVIRONMENT ?? env.TAKOSAN_ENVIRONMENT ?? 'development';
   if (environment !== 'development') throw new Error(`Refusing: ENVIRONMENT=${environment}; provisioning runs only in development.`);
-  if (env.CI === 'true' || env.GITHUB_ACTIONS === 'true') throw new Error('Refusing: provisioning is disabled in CI.');
   if (env.CLOUDFLARE_API_TOKEN) throw new Error('Refusing: CLOUDFLARE_API_TOKEN is set; unset it so no remote credential is reachable.');
+}
+
+/** Real operator provisioning stays unavailable to CI. */
+export function assertLocalProvisioningAllowed({ argv = [], env = process.env } = {}) {
+  assertLocalRuntimeAllowed(argv, env);
+  if (env.CI === 'true' || env.GITHUB_ACTIONS === 'true') throw new Error('Refusing: provisioning is disabled in CI.');
+}
+
+/** Synthetic preview/seed only; callers have fixed local targets and fixture data. */
+export function assertLocalFixtureAllowed({ argv = [], env = process.env } = {}) {
+  assertLocalRuntimeAllowed(argv, env);
 }
 
 /**

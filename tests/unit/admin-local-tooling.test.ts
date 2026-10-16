@@ -3,6 +3,7 @@ import { spawnSync } from 'node:child_process';
 import path from 'node:path';
 import {
   assertLocalProvisioningAllowed,
+  assertLocalFixtureAllowed,
   buildAdminFixtureSql,
   buildBootstrapAccountLookupSql,
   buildBootstrapIdentityLookupSql,
@@ -30,6 +31,24 @@ describe('admin local provisioning guard', () => {
     expect(() => assertLocalProvisioningAllowed({ argv: ['--local'], env: { ...DEV, CI: 'true' } })).toThrow(/CI/);
     expect(() => assertLocalProvisioningAllowed({ argv: ['--local'], env: { ...DEV, GITHUB_ACTIONS: 'true' } })).toThrow(/CI/);
     expect(() => assertLocalProvisioningAllowed({ argv: ['--local'], env: { ...DEV, CLOUDFLARE_API_TOKEN: 'x' } })).toThrow(/CLOUDFLARE_API_TOKEN/);
+  });
+  it('allows synthetic local fixtures in CI while keeping operator provisioning blocked', () => {
+    for (const ci of [{ CI: 'true' }, { GITHUB_ACTIONS: 'true' }, { CI: 'true', GITHUB_ACTIONS: 'true' }]) {
+      const env = { ...DEV, ...ci };
+      expect(() => assertLocalFixtureAllowed({ argv: ['--local'], env })).not.toThrow();
+      expect(() => assertLocalProvisioningAllowed({ argv: ['--local'], env })).toThrow(/CI/);
+    }
+  });
+  it('keeps the remote, environment and credential boundary for CI fixtures', () => {
+    const env = { ...DEV, CI: 'true', GITHUB_ACTIONS: 'true' };
+    expect(() => assertLocalFixtureAllowed({ argv: [], env })).toThrow(/--local/);
+    for (const flag of ['--remote', '--env=production', '--env', '--preview', '--production']) {
+      expect(() => assertLocalFixtureAllowed({ argv: ['--local', flag], env })).toThrow(/Refusing/);
+    }
+    for (const environment of ['production', 'staging', 'test']) {
+      expect(() => assertLocalFixtureAllowed({ argv: ['--local'], env: { ...env, ENVIRONMENT: environment } })).toThrow(/development/);
+    }
+    expect(() => assertLocalFixtureAllowed({ argv: ['--local'], env: { ...env, CLOUDFLARE_API_TOKEN: 'x' } })).toThrow(/CLOUDFLARE_API_TOKEN/);
   });
   it('child wrangler processes get no telemetry, no token and a throwaway config home (no stored OAuth login)', () => {
     const env = localWranglerEnv({ HOME: '/home/someone', CLOUDFLARE_API_TOKEN: 'secret', XDG_CONFIG_HOME: '/home/someone/.config' });

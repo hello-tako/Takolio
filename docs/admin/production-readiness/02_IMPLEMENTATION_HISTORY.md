@@ -39,3 +39,21 @@ No independent closure, live release adapter, staging, production access or
 production readiness is claimed. Next: freeze this source, run complete checks
 on the exact commit, obtain separate code/security review, finish the evidence
 packet and publish only after public-change/workflow safety checks.
+
+## CI fixture startup repair (2026-10-17)
+
+Exact-source validation of `6c3c68147efb3f95b435b9452df34e76bea17a82`
+with CI=true reproduced a tooling blocker: synthetic preview and local D1 seed
+called the real operator provisioning guard, which rejects CI. Workerd reached
+its first three closed-surface scenarios, then fixture setup failed; browser
+startup also failed. These are retained as FAIL, not certified browser results.
+The in-progress full suite was deliberately stopped (SIGTERM) before changing
+source and is retained as INTERRUPTED, not PASS.
+
+Synthetic preview/seed now use a dedicated guard that retains explicit --local,
+development environment, remote-flag and reachable-token restrictions. Real
+operator provisioning retains its CI prohibition. Two dedicated regression cases
+cover positive synthetic CI setup and negative CI operator/remote/env/credential
+paths. Working-tree validation: 25/25 tooling/config tests, lint and typecheck
+exit 0. New exact-source workerd/browser/full validation follows this checkpoint.
+No remote resource or credential operation is added.

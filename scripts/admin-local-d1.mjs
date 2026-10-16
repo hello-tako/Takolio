@@ -8,7 +8,7 @@ import { spawnSync } from 'node:child_process';
 import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import { assertLocalProvisioningAllowed, buildAdminFixtureSql, FIXTURE_DATASET, localWranglerEnv } from './admin-local-lib.mjs';
+import { assertLocalFixtureAllowed, buildAdminFixtureSql, FIXTURE_DATASET, localWranglerEnv } from './admin-local-lib.mjs';
 
 const CONFIG = 'wrangler.admin-local.jsonc';
 const [command, ...rest] = process.argv.slice(2);
@@ -46,7 +46,7 @@ function seed() {
 }
 
 try {
-  assertLocalProvisioningAllowed({ argv: ['--local', ...rest.filter((arg) => arg !== '--yes')] });
+  assertLocalFixtureAllowed({ argv: ['--local', ...rest.filter((arg) => arg !== '--yes')] });
   if (command === 'seed') {
     seed();
   } else if (command === 'reset') {
