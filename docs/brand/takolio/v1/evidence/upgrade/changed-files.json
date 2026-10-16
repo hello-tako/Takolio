@@ -1,0 +1,391 @@
+{
+  "baselineSha": "0db4ce2f4c5823eaf7fd085921e3b3a7ba0d8608",
+  "implementationSha": "dae71688bde863608a20855b56351ccd51d99c34",
+  "note": "Final follow-up file bytes excluding this ledger itself. Publication SHA is recorded in PR/output receipt after commit.",
+  "files": [
+    {
+      "path": "docs/ai/CURRENT_STATE.md",
+      "bytes": 660302,
+      "sha256": "a41b35e32581f4d59e8c5126ed0df51a1b57bd2090d47279dc4c2dba264fc2d2",
+      "scope": "documentation-and-evidence"
+    },
+    {
+      "path": "docs/ai/DECISIONS.md",
+      "bytes": 219250,
+      "sha256": "dbc4381026218f2ca2ea3afc70b8fa34936f234dd982bed7cc990ae275fb7d18",
+      "scope": "documentation-and-evidence"
+    },
+    {
+      "path": "docs/ai/HANDOFF.md",
+      "bytes": 659359,
+      "sha256": "8346810a55da8fab430d9bce2b2782915117ed6ec76b56e82d328bc0b1158848",
+      "scope": "documentation-and-evidence"
+    },
+    {
+      "path": "docs/ai/TASK_BOARD.md",
+      "bytes": 500746,
+      "sha256": "92b8970279c8a415e6dba7f45610185c6355864f604b0fad5fe66ad201170d35",
+      "scope": "documentation-and-evidence"
+    },
+    {
+      "path": "docs/brand/takolio/v1/ADR-TAKOLIO-004.md",
+      "bytes": 306,
+      "sha256": "347e9f1b399ebd08fdebba4711a088ef7b572705f3fd15982232acbe9a71316c",
+      "scope": "documentation-and-evidence"
+    },
+    {
+      "path": "docs/brand/takolio/v1/ASSET_MANIFEST.md",
+      "bytes": 17620,
+      "sha256": "2b2d9b2cbb149e3ef884fd75d2cf5ec12bc3fd4b806b89af6020a26a8a95986c",
+      "scope": "documentation-and-evidence"
+    },
+    {
+      "path": "docs/brand/takolio/v1/IMPLEMENTATION.md",
+      "bytes": 5947,
+      "sha256": "af1c55a4225857cf0ad0c926f17a46c28cbffe08a52c96ca06e1eedc18f9dcf7",
+      "scope": "documentation-and-evidence"
+    },
+    {
+      "path": "docs/brand/takolio/v1/ROLLBACK.md",
+      "bytes": 2331,
+      "sha256": "ed3ff8f92d81d142f4af1c6647ccd4c5fb086d463f155845d673692dec7dffd5",
+      "scope": "documentation-and-evidence"
+    },
+    {
+      "path": "docs/brand/takolio/v1/UPGRADE.md",
+      "bytes": 4995,
+      "sha256": "4f49329864cba3fc927075cf0ec4caf60628ae3d4a1525d667208fee4f33a968",
+      "scope": "documentation-and-evidence"
+    },
+    {
+      "path": "docs/brand/takolio/v1/VERIFICATION.md",
+      "bytes": 16767,
+      "sha256": "fa8a8612e8631c37c663242290ec0ecaa54fb381c3c5a4689841c8fa78b745c8",
+      "scope": "documentation-and-evidence"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/upgrade/after-final-observations.json",
+      "bytes": 162701,
+      "sha256": "c138d669a164935da3f73beed1cd38e26d6fb6cd787186ef0d6100aaa2b6fe31",
+      "scope": "documentation-and-evidence"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/upgrade/before-observations.json",
+      "bytes": 162702,
+      "sha256": "07d1d6c08239a406203822d0d731c958f57a85c2dd766ce850f5c9f1fd040193",
+      "scope": "documentation-and-evidence"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/upgrade/flags-off-final-observations.json",
+      "bytes": 2041,
+      "sha256": "8aa470e368d9858a09312eabc2fd8413dd1946a10014bf8e71653b75771a28dd",
+      "scope": "documentation-and-evidence"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/upgrade/independent-review.json",
+      "bytes": 1639,
+      "sha256": "3b51bcfdb61c968d25c43b5435b1a2461a820d4d4f5c283005281adebc615b4f",
+      "scope": "documentation-and-evidence"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/upgrade/local-artifacts.json",
+      "bytes": 1462,
+      "sha256": "f108abc5005a7405c8df8d1ee70adb0b1b9124665801159847f8c2e8e5824c18",
+      "scope": "documentation-and-evidence"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/upgrade/mascot-final-observations.json",
+      "bytes": 25109,
+      "sha256": "2d34f5f99c21337832a27696d67c6b236e24658fbd82e2f7f46541349649f62f",
+      "scope": "documentation-and-evidence"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/upgrade/mascot-six-poses.png",
+      "bytes": 480512,
+      "sha256": "8faff0448a169abf8f6085298f6af493f7c958b134e99953e466698b5e96197a",
+      "scope": "documentation-and-evidence"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/upgrade/occurrences.json",
+      "bytes": 336082,
+      "sha256": "da39b68c19683fe8c6df16570148770159195f2950dd3b9679455681f551c15b",
+      "scope": "documentation-and-evidence"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/upgrade/plus-pixel-comparison.json",
+      "bytes": 2183,
+      "sha256": "f112e12f2ef62ca3866658d30798352cd5d433f8552148719ee9520cfaf915da",
+      "scope": "documentation-and-evidence"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/upgrade/protected-audit.json",
+      "bytes": 56118,
+      "sha256": "16a21e1616aab3fc1cd4542d727146252caea272bc0d7b02adba56e45999ec93",
+      "scope": "documentation-and-evidence"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/upgrade/pwa-final-observations.json",
+      "bytes": 3298,
+      "sha256": "730f197238094676fadc9831d185ab4cb3d3e06473f30016acd1c7646cd22b9d",
+      "scope": "documentation-and-evidence"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/upgrade/receipts.json",
+      "bytes": 11646,
+      "sha256": "08b6f54839d0a3666fdaa9cd94554a8eb04153512a9ff3520f6da800595f9c7e",
+      "scope": "documentation-and-evidence"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/upgrade/screen-matrix.json",
+      "bytes": 2238,
+      "sha256": "906f2aceef03b40e33f9d3ae0bcceb9793b582ec1a4ab7da22b9e5084de4c29b",
+      "scope": "documentation-and-evidence"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/upgrade/states-final-observations.json",
+      "bytes": 2708,
+      "sha256": "2909ba93d641c56f9eeb3d0a49f6c52b30864230ab5c5281086b162117ba7def",
+      "scope": "documentation-and-evidence"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/upgrade/stress-final-observations.json",
+      "bytes": 9202,
+      "sha256": "8d953c179c4765e12c5d722011323fdb67625d0a38e0f4040b97bfe08e056183",
+      "scope": "documentation-and-evidence"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/upgrade/ui-before-after-1440.png",
+      "bytes": 636306,
+      "sha256": "f07bfdf2a397932e61353d6a93172663e39371438991e5bf92f92e9de6263088",
+      "scope": "documentation-and-evidence"
+    },
+    {
+      "path": "docs/brand/takolio/v1/evidence/upgrade/ui-before-after-390.png",
+      "bytes": 957942,
+      "sha256": "ce0e4fd737c5a9f02a1fdd2aa49b865805c4150372b0ccaa15ae97f1a09f9965",
+      "scope": "documentation-and-evidence"
+    },
+    {
+      "path": "docs/brand/takolio/v1/source/3d/README.md",
+      "bytes": 3763,
+      "sha256": "5376f5a5d88b86ce28684a6219b3a5bbab3c9be87465d9100c758c849f10354a",
+      "scope": "source-and-render"
+    },
+    {
+      "path": "docs/brand/takolio/v1/source/3d/build_tako.py",
+      "bytes": 20773,
+      "sha256": "ba740345ea22eaf27f71b549f77b16ceb9e33b4489e1b37d2b1b86d53200624a",
+      "scope": "source-and-render"
+    },
+    {
+      "path": "docs/brand/takolio/v1/source/3d/render-manifest.json",
+      "bytes": 5102,
+      "sha256": "b458335e3d094029a73b8cc45f20823a3b9c7bf8ac335a68604ccef423e2503c",
+      "scope": "source-and-render"
+    },
+    {
+      "path": "docs/brand/takolio/v1/source/3d/render_pose_set.py",
+      "bytes": 13136,
+      "sha256": "904c7878afd5db5d7e648f8b4afa96ee7d4a91763f39377ebcf965b138e19a8a",
+      "scope": "source-and-render"
+    },
+    {
+      "path": "docs/brand/takolio/v1/source/3d/renders/tako-cheering-2048.png",
+      "bytes": 2424717,
+      "sha256": "6c70442ecec84f9e890e46132460584ea2757d08764c547f82ab2243fb57da42",
+      "scope": "source-and-render"
+    },
+    {
+      "path": "docs/brand/takolio/v1/source/3d/renders/tako-completed-2048.png",
+      "bytes": 2366907,
+      "sha256": "08a11c663683df74a5dc94bbc82ccb8c12c9a3123c2b6039aec9242c142d5938",
+      "scope": "source-and-render"
+    },
+    {
+      "path": "docs/brand/takolio/v1/source/3d/renders/tako-cooking-2048.png",
+      "bytes": 2395397,
+      "sha256": "1ca7d586bfb16ecdfe04ec35bd6edfb0aa94ee29bf7448f804366bb29e4a9e83",
+      "scope": "source-and-render"
+    },
+    {
+      "path": "docs/brand/takolio/v1/source/3d/renders/tako-excited-2048.png",
+      "bytes": 2427170,
+      "sha256": "554065b7c337525172145ce729f50da34f2e9c5fee9d4c136c5dfc7bd967777c",
+      "scope": "source-and-render"
+    },
+    {
+      "path": "docs/brand/takolio/v1/source/3d/renders/tako-thinking-2048.png",
+      "bytes": 2383156,
+      "sha256": "98f5628d54da52acdd7765648dfbd79b7d967ada7eda8e5680c68b23ef5a5db8",
+      "scope": "source-and-render"
+    },
+    {
+      "path": "docs/brand/takolio/v1/source/3d/renders/tako-welcome-2048.png",
+      "bytes": 2382062,
+      "sha256": "693d1e769b5bbe7abed77f63ea8035ef0f68ddb22fa0fe60464f3fe485f69eb4",
+      "scope": "source-and-render"
+    },
+    {
+      "path": "public/takolio/v1/asset-manifest.json",
+      "bytes": 14145,
+      "sha256": "c3395bf6478cdfc22e461a268e747822cb00463284673e0f6aad09248b8a7cc0",
+      "scope": "runtime"
+    },
+    {
+      "path": "public/takolio/v1/mascot/3d/tako-cheering-1024.webp",
+      "bytes": 55034,
+      "sha256": "5d3a37f208127d1adcc96064983afab53b240367e2996972429cc66e3d88a351",
+      "scope": "runtime"
+    },
+    {
+      "path": "public/takolio/v1/mascot/3d/tako-cheering-256.webp",
+      "bytes": 11976,
+      "sha256": "510ec01f8d8039e5e5941c5f68f3f6503c867380eec04f275302f1d2d64ab8ed",
+      "scope": "runtime"
+    },
+    {
+      "path": "public/takolio/v1/mascot/3d/tako-cheering-512.webp",
+      "bytes": 25920,
+      "sha256": "f1a11f40312c9b356ce3ac9fe08333e423ded444d489e6cc90609dac649ee05e",
+      "scope": "runtime"
+    },
+    {
+      "path": "public/takolio/v1/mascot/3d/tako-completed-1024.webp",
+      "bytes": 49522,
+      "sha256": "7438e40c687055ba867e83f19f2851c0e02d542ba6c9dcfd7146ffca6e048816",
+      "scope": "runtime"
+    },
+    {
+      "path": "public/takolio/v1/mascot/3d/tako-completed-256.webp",
+      "bytes": 10810,
+      "sha256": "164416f2bb6a08783ac9b89081ca5a46f288984f14c75090551ae99007d76fe9",
+      "scope": "runtime"
+    },
+    {
+      "path": "public/takolio/v1/mascot/3d/tako-completed-512.webp",
+      "bytes": 23224,
+      "sha256": "fff6ea97a967f79b10d9fbf5f114472d921e35736c6351be73be5a781fcc907d",
+      "scope": "runtime"
+    },
+    {
+      "path": "public/takolio/v1/mascot/3d/tako-cooking-1024.webp",
+      "bytes": 48638,
+      "sha256": "d3880fee7c9e64bb5812920ec8b9e4009784747c6c00c80a1494df8bc2e2cc3f",
+      "scope": "runtime"
+    },
+    {
+      "path": "public/takolio/v1/mascot/3d/tako-cooking-256.webp",
+      "bytes": 10424,
+      "sha256": "62486f304a5b1441a0bc62d68fa34a5100a0da172420c7f74768354087e17235",
+      "scope": "runtime"
+    },
+    {
+      "path": "public/takolio/v1/mascot/3d/tako-cooking-512.webp",
+      "bytes": 22330,
+      "sha256": "5223bc0d3b9d56ffefb02d05fa9e233c9eb32ec552b1ccdb6d3b7cd4295d0c68",
+      "scope": "runtime"
+    },
+    {
+      "path": "public/takolio/v1/mascot/3d/tako-excited-1024.webp",
+      "bytes": 53138,
+      "sha256": "545eab69a9cb1c7523497a66fb08f1d076568cadefd3d2f0948aa10143f93387",
+      "scope": "runtime"
+    },
+    {
+      "path": "public/takolio/v1/mascot/3d/tako-excited-256.webp",
+      "bytes": 11418,
+      "sha256": "72a5011c07f51e276ef6aab05f6f584983241ad038890c6f2c106b6d18a4ec81",
+      "scope": "runtime"
+    },
+    {
+      "path": "public/takolio/v1/mascot/3d/tako-excited-512.webp",
+      "bytes": 25144,
+      "sha256": "9241e814fe1e93fb78485e08a2f45e256c94053796236d375510b01b3b44df33",
+      "scope": "runtime"
+    },
+    {
+      "path": "public/takolio/v1/mascot/3d/tako-thinking-1024.webp",
+      "bytes": 50908,
+      "sha256": "a68ccc1f3c2616e8ce5e873178f5c77d9e8dbf1f5db7fa034951d5134eabae82",
+      "scope": "runtime"
+    },
+    {
+      "path": "public/takolio/v1/mascot/3d/tako-thinking-256.webp",
+      "bytes": 10990,
+      "sha256": "3c24e7316afcb39e68939741e41f6ce6a7b4d3066eb5ea995abc3b2a12bea767",
+      "scope": "runtime"
+    },
+    {
+      "path": "public/takolio/v1/mascot/3d/tako-thinking-512.webp",
+      "bytes": 23264,
+      "sha256": "4ae51190b52f4d241a2a8d0ac4246fb43837767e58694db47ab0deb964cb83c1",
+      "scope": "runtime"
+    },
+    {
+      "path": "public/takolio/v1/mascot/3d/tako-welcome-1024.webp",
+      "bytes": 50498,
+      "sha256": "48855bb55303bb655766a533137b4968bb01740584a1788fb8332d61bdd443da",
+      "scope": "runtime"
+    },
+    {
+      "path": "public/takolio/v1/mascot/3d/tako-welcome-256.webp",
+      "bytes": 10882,
+      "sha256": "fc0e1497399e36767a5e31c9b9e21d6025036d8e1e500770085fa73f39fe5a25",
+      "scope": "runtime"
+    },
+    {
+      "path": "public/takolio/v1/mascot/3d/tako-welcome-512.webp",
+      "bytes": 23326,
+      "sha256": "23e9e0a2ff3dcacc5de3b0d520c96e1ee227955dc04e047ea124204384b42b49",
+      "scope": "runtime"
+    },
+    {
+      "path": "scripts/takolio-browser-check.mjs",
+      "bytes": 12174,
+      "sha256": "47e5b8221f1578b5fe3efe6e611bd48bd517c30372f5b3392b107e6a2c52d0f6",
+      "scope": "qa-harness"
+    },
+    {
+      "path": "scripts/takolio-pwa-check.mjs",
+      "bytes": 4115,
+      "sha256": "68c8d5af401fca4c72a1c2589c14c5ed185f156923db678b5789bb36997fdc1e",
+      "scope": "qa-harness"
+    },
+    {
+      "path": "scripts/takolio-upgrade-check.mjs",
+      "bytes": 9488,
+      "sha256": "d2b88bb6c92ff77a30a3ea44d228393f45697c2af6cb5e09a84cd9c7221718ae",
+      "scope": "qa-harness"
+    },
+    {
+      "path": "src/web/components/common/EmptyState.tsx",
+      "bytes": 2712,
+      "sha256": "c2cf0df47fadeebf8fdfd25390ebc2a542ecd1396b64f2a98279c2b5dcbf5720",
+      "scope": "presentation"
+    },
+    {
+      "path": "src/web/pages/InventoryPage.tsx",
+      "bytes": 22898,
+      "sha256": "89b1e97cba5d0bb42ffdb3d7eca12bc49697331c3f6e4654f8a46e57795bff13",
+      "scope": "presentation"
+    },
+    {
+      "path": "src/web/pages/LandingPage.tsx",
+      "bytes": 4683,
+      "sha256": "5a5c41af1fb68fa9fdb6c7ce708d19e43c1329d0b9a4e4f96177becc9231c109",
+      "scope": "presentation"
+    },
+    {
+      "path": "src/web/styles/index.css",
+      "bytes": 17111,
+      "sha256": "8d3df33776fea8744ef6cac1691e138da1b32b4937e97648d071e4c0c11a9b29",
+      "scope": "presentation"
+    },
+    {
+      "path": "src/web/styles/kitchen-upgrade.css",
+      "bytes": 11505,
+      "sha256": "228be243ba0f7db39789eb45ace654f7c7cca6d0088310f202f39146d29a577a",
+      "scope": "presentation"
+    }
+  ]
+}

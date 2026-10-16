@@ -1,0 +1,444 @@
+{
+  "toolchain": {
+    "node": "24.19.0",
+    "TMPDIR": "/private/tmp",
+    "browser": "153.0.8010.12",
+    "blender": "4.5.9 LTS",
+    "sharp": "0.35.5"
+  },
+  "note": "All receipts are local. Failed attempts retained. Final unit-rerun supersedes unit-final timeout. Full logs are in the local delivery archive.",
+  "receipts": [
+    {
+      "name": "audit-final",
+      "argv": [
+        "pnpm",
+        "audit",
+        "--audit-level=high"
+      ],
+      "exitCode": 0,
+      "seconds": 1.12,
+      "log": "upgrade-audit-final.log",
+      "logSha256": "15950a68a7ed99c59779717acefdceb3f69cfd31bde67d2c954f2a3cea4d7955",
+      "logBytes": 31,
+      "environment": {
+        "TMPDIR": "/private/tmp"
+      }
+    },
+    {
+      "name": "browser-final",
+      "argv": [
+        "node",
+        "scripts/takolio-browser-check.mjs"
+      ],
+      "exitCode": 0,
+      "seconds": 204.48,
+      "log": "upgrade-browser-final.log",
+      "logSha256": "e0242ca162210eff26c9762f0a862273139dceb3db88aba9935fb7c166c9aa60",
+      "logBytes": 5731,
+      "environment": {
+        "TMPDIR": "/private/tmp",
+        "BRAND_URL": "http://127.0.0.1:5230",
+        "BRAND_OUT": ".artifacts/takolio-v1/upgrade/after-final"
+      }
+    },
+    {
+      "name": "build-default",
+      "argv": [
+        "pnpm",
+        "build"
+      ],
+      "exitCode": 0,
+      "seconds": 11.58,
+      "log": "upgrade-build-default.log",
+      "logSha256": "fa8acf8549eaa2b8d0b569bf7eeeef4b6827c4843e8bac2c9aea70588b5a2faf",
+      "logBytes": 8518,
+      "environment": {
+        "TMPDIR": "/private/tmp"
+      }
+    },
+    {
+      "name": "build-off-final",
+      "argv": [
+        "pnpm",
+        "build"
+      ],
+      "exitCode": 0,
+      "seconds": 8.23,
+      "log": "upgrade-build-off-final.log",
+      "logSha256": "5158720fb7bb7192f789cd21c4dd34e8fa3c808d311cb16e46fba73397f18c01",
+      "logBytes": 8518,
+      "environment": {
+        "TMPDIR": "/private/tmp",
+        "VITE_MEAL_PLANNER_ENABLED": "false",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      }
+    },
+    {
+      "name": "build-off",
+      "argv": [
+        "pnpm",
+        "exec",
+        "vite",
+        "build",
+        "--outDir",
+        ".artifacts/takolio-v1/upgrade/off-build"
+      ],
+      "exitCode": 1,
+      "seconds": 5.56,
+      "log": "upgrade-build-off.log",
+      "logSha256": "e0db8c754783d5a836bd822f902c402cf3e3cf5b25b1f88f32df1d5ad08e25cc",
+      "logBytes": 12676,
+      "environment": {
+        "TMPDIR": "/private/tmp",
+        "VITE_MEAL_PLANNER_ENABLED": "false",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "false"
+      }
+    },
+    {
+      "name": "build-on-final",
+      "argv": [
+        "pnpm",
+        "build"
+      ],
+      "exitCode": 0,
+      "seconds": 8.16,
+      "log": "upgrade-build-on-final.log",
+      "logSha256": "75c4f685f2a59dc8f400c0563ba9b12730bcb5208ecf2883dcf3d651afc3f815",
+      "logBytes": 8518,
+      "environment": {
+        "TMPDIR": "/private/tmp",
+        "VITE_MEAL_PLANNER_ENABLED": "true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED": "true"
+      }
+    },
+    {
+      "name": "e2e-final",
+      "argv": [
+        "pnpm",
+        "exec",
+        "playwright",
+        "test",
+        "--config",
+        "playwright.takolio.config.ts"
+      ],
+      "exitCode": 0,
+      "seconds": 365.64,
+      "log": "upgrade-e2e-final.log",
+      "logSha256": "de68bb45bae911cbd98e7344e2b55dc94fb92df6ca6ea91f7e45ff918dd4ab49",
+      "logBytes": 16714,
+      "environment": {
+        "TMPDIR": "/private/tmp",
+        "BRAND_PORT": "5243"
+      }
+    },
+    {
+      "name": "flags-off-final",
+      "argv": [
+        "node",
+        "scripts/brand-v3-state-check.mjs"
+      ],
+      "exitCode": 0,
+      "seconds": 12.36,
+      "log": "upgrade-flags-off-final.log",
+      "logSha256": "ed21a101df08c4fab9490023cddcf4d2684bccf0cf8f691f050475e66a5cc19a",
+      "logBytes": 256,
+      "environment": {
+        "TMPDIR": "/private/tmp",
+        "BRAND_URL": "http://127.0.0.1:5238",
+        "BRAND_OUT": ".artifacts/takolio-v1/upgrade/flags-off-final",
+        "BRAND_FLAG_OFF": "true"
+      }
+    },
+    {
+      "name": "focused-final",
+      "argv": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/unit/takolio-brand.test.mjs",
+        "tests/unit/takolio-3d-assets.test.mjs",
+        "tests/unit/takolio-mascot.test.tsx",
+        "tests/unit/takosan-brand.test.tsx",
+        "tests/unit/ui07-brand-exports.test.mjs",
+        "tests/unit/ui07-brand-shell.test.tsx"
+      ],
+      "exitCode": 0,
+      "seconds": 6.35,
+      "log": "upgrade-focused-final.log",
+      "logSha256": "560ec8388bcaa607005bfa65d8e4377964f006e0e57fa34d8b585a99b57c6025",
+      "logBytes": 287,
+      "environment": {
+        "TMPDIR": "/private/tmp"
+      }
+    },
+    {
+      "name": "generator",
+      "argv": [
+        "pnpm",
+        "brand:icons"
+      ],
+      "exitCode": 0,
+      "seconds": 1.95,
+      "log": "upgrade-generator.log",
+      "logSha256": "60d6c22a16a3b8eeb2226782f488b3363b5c798b81d01c7f2b5a160200ac3f92",
+      "logBytes": 190,
+      "environment": {
+        "TMPDIR": "/private/tmp"
+      }
+    },
+    {
+      "name": "inventory",
+      "argv": [
+        "node",
+        "scripts/takolio-inventory.mjs"
+      ],
+      "exitCode": 0,
+      "seconds": 7.63,
+      "log": "upgrade-inventory.log",
+      "logSha256": "148b6a7b94e077a68005928a2204bab133fd83a51b5db8c0ef68cddc1d569d34",
+      "logBytes": 11613,
+      "environment": {
+        "TMPDIR": "/private/tmp"
+      }
+    },
+    {
+      "name": "lint-final",
+      "argv": [
+        "pnpm",
+        "lint"
+      ],
+      "exitCode": 0,
+      "seconds": 18.64,
+      "log": "upgrade-lint-final.log",
+      "logSha256": "290e79cfb92b0915688046f7a3f234f26b64f79410f10aa0dd07bdd3ddd1391e",
+      "logBytes": 129,
+      "environment": {
+        "TMPDIR": "/private/tmp"
+      }
+    },
+    {
+      "name": "lint-final2",
+      "argv": [
+        "pnpm",
+        "lint"
+      ],
+      "exitCode": 0,
+      "seconds": 15.48,
+      "log": "upgrade-lint-final2.log",
+      "logSha256": "290e79cfb92b0915688046f7a3f234f26b64f79410f10aa0dd07bdd3ddd1391e",
+      "logBytes": 129,
+      "environment": {
+        "TMPDIR": "/private/tmp"
+      }
+    },
+    {
+      "name": "lint-final3",
+      "argv": [
+        "pnpm",
+        "lint"
+      ],
+      "exitCode": 0,
+      "seconds": 15.03,
+      "log": "upgrade-lint-final3.log",
+      "logSha256": "290e79cfb92b0915688046f7a3f234f26b64f79410f10aa0dd07bdd3ddd1391e",
+      "logBytes": 129,
+      "environment": {
+        "TMPDIR": "/private/tmp"
+      }
+    },
+    {
+      "name": "lint-final4",
+      "argv": [
+        "pnpm",
+        "lint"
+      ],
+      "exitCode": 0,
+      "seconds": 17.25,
+      "log": "upgrade-lint-final4.log",
+      "logSha256": "290e79cfb92b0915688046f7a3f234f26b64f79410f10aa0dd07bdd3ddd1391e",
+      "logBytes": 129,
+      "environment": {
+        "TMPDIR": "/private/tmp"
+      }
+    },
+    {
+      "name": "mascot-final",
+      "argv": [
+        "node",
+        "scripts/takolio-mascot-check.mjs"
+      ],
+      "exitCode": 0,
+      "seconds": 72.11,
+      "log": "upgrade-mascot-final.log",
+      "logSha256": "72ad1e0d5f64c4f36dbf6f6f175c40ad3247911e725ef79c4457caa6b685ccfd",
+      "logBytes": 2051,
+      "environment": {
+        "TMPDIR": "/private/tmp",
+        "BRAND_URL": "http://127.0.0.1:5237",
+        "BRAND_OUT": ".artifacts/takolio-v1/upgrade/mascot-final"
+      }
+    },
+    {
+      "name": "migrations-final",
+      "argv": [
+        "pnpm",
+        "check:migrations"
+      ],
+      "exitCode": 0,
+      "seconds": 0.45,
+      "log": "upgrade-migrations-final.log",
+      "logSha256": "7511976f436ecb96a180ddf3d92f2b200e2b328c476ebe2ae236b74091f34f36",
+      "logBytes": 183,
+      "environment": {
+        "TMPDIR": "/private/tmp"
+      }
+    },
+    {
+      "name": "pwa-final",
+      "argv": [
+        "node",
+        "scripts/takolio-pwa-check.mjs"
+      ],
+      "exitCode": 0,
+      "seconds": 1.09,
+      "log": "upgrade-pwa-final.log",
+      "logSha256": "f5042bbb911be67d75a00046dc238df729f857ab4e82560324238039f1125c08",
+      "logBytes": 19,
+      "environment": {
+        "TMPDIR": "/private/tmp",
+        "BRAND_URL": "http://127.0.0.1:5237",
+        "BRAND_OUT": ".artifacts/takolio-v1/upgrade/pwa-final"
+      }
+    },
+    {
+      "name": "staging-check-rerun",
+      "argv": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/unit/staging-d1-catchup-check.test.mjs"
+      ],
+      "exitCode": 0,
+      "seconds": 5.52,
+      "log": "upgrade-staging-check-rerun.log",
+      "logSha256": "6f6acb7071f0e90686458b682d688ba15f31d8334e79d2234603daba648d7f4f",
+      "logBytes": 284,
+      "environment": {
+        "TMPDIR": "/private/tmp"
+      }
+    },
+    {
+      "name": "states-final",
+      "argv": [
+        "node",
+        "scripts/brand-v3-state-check.mjs"
+      ],
+      "exitCode": 0,
+      "seconds": 25.73,
+      "log": "upgrade-states-final.log",
+      "logSha256": "4d9ae4a651be5d1cd98589ec70022c48bfa9f6a32dfd677e0e117a8a675da031",
+      "logBytes": 384,
+      "environment": {
+        "TMPDIR": "/private/tmp",
+        "BRAND_URL": "http://127.0.0.1:5237",
+        "BRAND_OUT": ".artifacts/takolio-v1/upgrade/states-final"
+      }
+    },
+    {
+      "name": "stress-final",
+      "argv": [
+        "node",
+        "scripts/takolio-upgrade-check.mjs"
+      ],
+      "exitCode": 0,
+      "seconds": 21.19,
+      "log": "upgrade-stress-final.log",
+      "logSha256": "9ee7916ad31033f51a65fa7727a22eab41b851d5ff52af8f1c255d97bde7bad7",
+      "logBytes": 177,
+      "environment": {
+        "TMPDIR": "/private/tmp",
+        "BRAND_URL": "http://127.0.0.1:5236",
+        "BRAND_OUT": ".artifacts/takolio-v1/upgrade/stress-final"
+      }
+    },
+    {
+      "name": "typecheck-final",
+      "argv": [
+        "pnpm",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "seconds": 23.03,
+      "log": "upgrade-typecheck-final.log",
+      "logSha256": "0480249daf53df62608924dde61f2642b1983da7a8188ede24d8fdaabb9d1a44",
+      "logBytes": 195,
+      "environment": {
+        "TMPDIR": "/private/tmp"
+      }
+    },
+    {
+      "name": "typecheck-final2",
+      "argv": [
+        "pnpm",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "seconds": 24.56,
+      "log": "upgrade-typecheck-final2.log",
+      "logSha256": "0480249daf53df62608924dde61f2642b1983da7a8188ede24d8fdaabb9d1a44",
+      "logBytes": 195,
+      "environment": {
+        "TMPDIR": "/private/tmp"
+      }
+    },
+    {
+      "name": "typecheck-final3",
+      "argv": [
+        "pnpm",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "seconds": 15.16,
+      "log": "upgrade-typecheck-final3.log",
+      "logSha256": "0480249daf53df62608924dde61f2642b1983da7a8188ede24d8fdaabb9d1a44",
+      "logBytes": 195,
+      "environment": {
+        "TMPDIR": "/private/tmp"
+      }
+    },
+    {
+      "name": "unit-final",
+      "argv": [
+        "pnpm",
+        "test",
+        "--maxWorkers=2"
+      ],
+      "exitCode": 1,
+      "seconds": 396.23,
+      "log": "upgrade-unit-final.log",
+      "logSha256": "a1c0118c72e7e7bed9013eca1b4d0d957294d927f72e09d60f57ca9ab14d8df4",
+      "logBytes": 2055,
+      "environment": {
+        "TMPDIR": "/private/tmp"
+      }
+    },
+    {
+      "name": "unit-rerun",
+      "argv": [
+        "pnpm",
+        "test",
+        "--maxWorkers=2"
+      ],
+      "exitCode": 0,
+      "seconds": 357.38,
+      "log": "upgrade-unit-rerun.log",
+      "logSha256": "99acc91b4fbbc91425917f47c3dc88d664d42d9d64d4a483814d90891d12ae81",
+      "logBytes": 1051,
+      "environment": {
+        "TMPDIR": "/private/tmp"
+      }
+    }
+  ]
+}

@@ -85,3 +85,27 @@ See `HEADER_FOLLOWUP.md` and `evidence/header-followup/receipts.json` for the op
 The final candidate follow-up is recorded in `MASCOT_3D.md` and `evidence/mascot-3d/`. Fixed geometry was rerendered after independent review found a heart-badge spike; the final welcome/excited masters have clean solid heart silhouettes. The browser receipt was rerun from an unauthenticated state after preserving the initial harness failure. No runtime fallback defect was found.
 
 Final follow-up receipts: full unit 365 files / 8,479 tests PASS; focused 6 files / 51 tests PASS; 72 mascot screens PASS across six widths; local protected E2E 94/94 tests PASS; state checks 15/15 PASS; PWA 3/3 PASS; generator and ON build PASS. The broad heuristic UX audit remains a non-gating repository-wide scan with pre-existing findings; it is retained separately and not relabeled PASS.
+
+
+## Full-app and 3D visual upgrade (latest local checkpoint)
+
+Implementation `dae71688bde863608a20855b56351ccd51d99c34`; follow-up baseline `0db4ce2f4c5823eaf7fd085921e3b3a7ba0d8608`; live main unchanged at `f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1`. Current machine-readable receipts are `evidence/upgrade/receipts.json`; full logs/captures are retained in the local upgraded delivery archive. Older sections above remain historical.
+
+| Current command/check | Final result |
+|---|---|
+| `pnpm lint`, `pnpm typecheck`, `pnpm audit --audit-level=high` | PASS |
+| `pnpm brand:icons`, focused six-file brand suite | PASS; 51 tests; pinned-master/hash/double-generation tests |
+| `TMPDIR=/private/tmp pnpm test --maxWorkers=2` | PASS; 365 files / 8,479 tests;357.38s wrapper |
+| `pnpm check:migrations`, `pnpm build`, paired flags ON/OFF `pnpm build` | PASS; local smoke/build only |
+| `pnpm exec playwright test --config playwright.takolio.config.ts` | PASS; 94/94 ; 365.64s wrapper |
+| `node scripts/takolio-browser-check.mjs` | PASS; 198 current screens; 0 failures/page errors/axe/overflow/broken images;two journeys |
+| `node scripts/takolio-mascot-check.mjs` | PASS; 72;SVG network fallback PASS |
+| `node scripts/takolio-upgrade-check.mjs` | PASS; 24;actual doubled font, two short/tall heights, no nav occlusion, Navy indicator 11.6676:1 |
+| PWA/state/flags-OFF scripts | PASS;3/15/12 checks |
+| Protected path and /plus pixel comparisons | 299 protected paths, 54 V3 files unchanged; all six /plus captures pixel-identical |
+
+Both before and after matrices contain 198 screens at 320/375/390/768/1024/1440. `screen-matrix.json` and individual observations record requested/rendered routes; all current captured pathnames match. Matched eight-route contact sheets contain the first 844px viewport excerpt, while full captures are in the delivery archive. The app supports light only. Test font injection bypasses CSP solely inside the isolated synthetic stress harness; normal matrix/PWA checks use app CSP.
+
+The first full run failed one unchanged Wrangler local subprocess test at the existing 5s timeout (8,478 passed). The affected 32-test file passed unchanged, and the full rerun above passed after CPU-heavy browser/render work completed. Logs are retained; timeout/config/assertions were not weakened. Earlier unsupported `vite --outDir` build failed because the existing service-worker hook expects the normal dist path; final standard default/ON/OFF builds passed with no hook/config change. Intermediate transform/render, stale hash, premature computed-font reads and concurrent fixture-reset captures are excluded from acceptance.
+
+Independent read-only code/design/security review found no open concrete implementation/sheet findings, verified 87 runtime hashes and 299 protected path hashes, and bound implementation to source snapshot `9a3511173e4c822b8588f7c0d9483a6a077c57dfcd44ce3546b7a7c2042aeffb`. Final publication SHA/CI/review binding is recorded externally after this documentation commit; no human GitHub approval is implied. Legal, premium 3D, physical-device/native and hosted signed-in/offline household-data gaps remain as documented in `UPGRADE.md`.

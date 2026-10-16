@@ -162,3 +162,7 @@ Every manifest SHA was checked after generation and by `tests/unit/takolio-brand
 The final candidate generator now reports 87 manifest entries and 1,012,952 runtime bytes. Eighteen entries are transparent WebP exports from six pinned 2048px RGBA PNG masters: `mascot/3d/tako-{welcome,cooking,thinking,excited,completed,cheering}-{256,512,1024}.webp`. Their source SHA, authoring SHA, native handoff hashes and `premiumApproved: false` status are in `source/3d/render-manifest.json`. The selected service-worker precache contains nine preferred raster variants (194,324 bytes) plus the vector fallbacks; all 69 pre-existing Takolio runtime entries remain byte-identical.
 
 The native Blender `.blend` and `.glb` files, the full ZIP, boards and PDFs stay outside the public repository. The local delivery ZIP has an adjacent `.sha256` and separate publication receipt; its contents include native/source/QA handoff, not browser runtime.
+
+## Later 3D/UI upgrade
+
+The initial 69-entry table is historical. The current manifest has 87 entries including 18 responsive 3D WebP files; `public/takolio/v1/asset-manifest.json` is the current byte/hash authority. The upgraded six PNG masters, authoring scripts, native handoff hashes and render settings are pinned in `source/3d/render-manifest.json`; `evidence/upgrade/` records the change against the first 3D candidate. No logo, font, UI icon, app icon, SVG fallback or V3 asset is replaced by this follow-up.

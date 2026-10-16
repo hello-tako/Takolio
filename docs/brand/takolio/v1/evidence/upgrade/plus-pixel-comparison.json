@@ -1,0 +1,101 @@
+{
+  "note": "Matched synthetic /plus screenshots only; no production payment operation.",
+  "checks": [
+    {
+      "width": 320,
+      "info": {
+        "format": "raw",
+        "width": 320,
+        "height": 1703,
+        "channels": 3,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": false,
+        "size": 1634880
+      },
+      "changedChannels": 0,
+      "totalChannels": 1634880,
+      "identical": true
+    },
+    {
+      "width": 375,
+      "info": {
+        "format": "raw",
+        "width": 375,
+        "height": 1579,
+        "channels": 3,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": false,
+        "size": 1776375
+      },
+      "changedChannels": 0,
+      "totalChannels": 1776375,
+      "identical": true
+    },
+    {
+      "width": 390,
+      "info": {
+        "format": "raw",
+        "width": 390,
+        "height": 1543,
+        "channels": 3,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": false,
+        "size": 1805310
+      },
+      "changedChannels": 0,
+      "totalChannels": 1805310,
+      "identical": true
+    },
+    {
+      "width": 768,
+      "info": {
+        "format": "raw",
+        "width": 768,
+        "height": 1304,
+        "channels": 3,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": false,
+        "size": 3004416
+      },
+      "changedChannels": 0,
+      "totalChannels": 3004416,
+      "identical": true
+    },
+    {
+      "width": 1024,
+      "info": {
+        "format": "raw",
+        "width": 1024,
+        "height": 1311,
+        "channels": 3,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": false,
+        "size": 4027392
+      },
+      "changedChannels": 0,
+      "totalChannels": 4027392,
+      "identical": true
+    },
+    {
+      "width": 1440,
+      "info": {
+        "format": "raw",
+        "width": 1440,
+        "height": 1311,
+        "channels": 3,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": false,
+        "size": 5663520
+      },
+      "changedChannels": 0,
+      "totalChannels": 5663520,
+      "identical": true
+    }
+  ]
+}

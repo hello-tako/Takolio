@@ -43,3 +43,7 @@ ADR-TAKOLIO-002 supersedes the initial compact-header symbol choice. `KitchenHea
 The implementation now includes a reviewed static 3D illustration layer documented in `MASCOT_3D.md`. Six Blender-derived PNG masters are pinned in `source/3d/`; `pnpm brand:icons` generates 18 transparent WebP variants under `public/takolio/v1/mascot/3d/`. `TakoMascot` preserves the SVG contract and uses WebP only for illustrations at least 96 CSS pixels, with network/format fallback and reserved dimensions. The native `.blend`/`.glb` handoff is local-only and not in public runtime.
 
 The candidate is used on landing, auth decoration, onboarding, unplanned Home and generic empty states. Error, Plus and protected payment consumers remain unchanged. This is a candidate illustration set; premium finishing, concept fidelity, native/device acceptance and legal review remain open.
+
+## Comprehensive visual follow-up
+
+The later mascot/UI refinement is documented in `UPGRADE.md` and ADR-TAKOLIO-004. It preserves contract URLs and SVG fallback while replacing the six pinned render masters, improving static poses and scoped compact/landing presentation. See `evidence/upgrade/` for the fresh matrix and command receipts; historical checks in this document remain associated with their original checkpoints.

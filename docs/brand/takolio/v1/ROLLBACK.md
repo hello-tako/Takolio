@@ -13,3 +13,7 @@ This task did not merge, push main, deploy, dispatch workflows or mutate product
 ## 3D illustration rollback
 
 If the candidate is rejected, remove the `TakoMascot` consumers through a reviewed revert while retaining the generated `/takolio/v1/mascot/3d/` paths until the service-worker release has drained. The SVG mascot URLs remain the direct fallback and can be restored in the contract without touching auth, payment, persisted identifiers or cache keys. Do not delete `/takosan/v3`, invalidate installed clients or remove the local native handoff as a substitute for a reviewed asset decision.
+
+## Visual upgrade follow-up
+
+A focused revert of ADR-TAKOLIO-004's implementation restores the previous six master/runtime render bytes, removes the final compact/landing polish layer and the extra empty-fridge modal entry. Runtime URLs remain the same, SVG fallbacks and both asset trees stay available, and no data/identifier migration is involved. Use the normal reviewed release SHA to rotate service-worker caches. No release is performed by this task.
