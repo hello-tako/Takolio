@@ -506,3 +506,20 @@ related failures, including the reported home/Plus navigation mismatch.
   retry/process tests PASS. First full local run 7,822 PASS/12 failures; stale Plus
   exclusion fixed and the 11 existing macOS tmp-path fixture failures all pass under
   canonical TMPDIR (93 tests). A final full canonical run and hosted CI remain pending.
+
+## Admin release adapter follow-up (2026-10-17)
+
+The evidence-only checkpoint is 77f81b7bff1c29790a67ea48475aa720a86b9f2e.
+It preserves full local runtime evidence on 066c35ad670bc877756150c2055e3844dd7a17ce.
+A separate default-disabled release adapter now implements signed, expiry/run/source/
+policy/migration-bound operations, live target/source/protection checks, durable
+pre-action artifacts, fixed Admin-only migration/bootstrap/recovery paths and
+disabled deploy/rollback with compensation attempts. Four manual workflows use
+protected dedicated Admin environments and no credential in plan mode.
+52 adapter/provider tests passed during development; new exact-SHA full validation
+and independent source review are still mandatory. Initial development fixture
+key destructuring failed four tests and was fixed before the passing run.
+No Cloudflare or production operation occurred. Real identities/protections,
+independent human custody, initial resource/enrollment setup, first safe rollback
+baseline, live API staging rehearsal and explicit owner authorization remain
+blocked. Existing evidence is not relabeled as a test of the adapter.

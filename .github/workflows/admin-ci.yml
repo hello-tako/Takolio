@@ -3,7 +3,7 @@ on:
   pull_request:
     branches: [main]
   push:
-    branches: [codex/admin-v1-r2-production-readiness]
+    branches: [main, codex/admin-v1-r2-production-readiness]
 permissions:
   contents: read
 concurrency:

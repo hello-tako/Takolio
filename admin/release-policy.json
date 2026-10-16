@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "repositoryId": 1385308553,
+  "repository": "lol-vn/Tako-san",
+  "branch": "main",
+  "environments": {
+    "staging": {
+      "enabled": false,
+      "accountId": "",
+      "adminWorker": "takosan-admin-staging",
+      "facadeWorker": "takosan-admin-read-facade-staging",
+      "adminDatabaseId": "",
+      "adminDatabaseName": "takosan-admin-staging-db",
+      "customerDatabaseId": "",
+      "customerDatabaseName": "",
+      "kvId": "",
+      "zoneId": "",
+      "hostname": "",
+      "accessApplicationId": "",
+      "issuer": "",
+      "audience": "",
+      "custodians": []
+    },
+    "production": {
+      "enabled": false,
+      "accountId": "",
+      "adminWorker": "takosan-admin",
+      "facadeWorker": "takosan-admin-read-facade",
+      "adminDatabaseId": "",
+      "adminDatabaseName": "takosan-admin-db",
+      "customerDatabaseId": "",
+      "customerDatabaseName": "",
+      "kvId": "",
+      "zoneId": "",
+      "hostname": "",
+      "accessApplicationId": "",
+      "issuer": "",
+      "audience": "",
+      "custodians": []
+    }
+  }
+}
