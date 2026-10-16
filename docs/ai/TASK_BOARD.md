@@ -1,3 +1,26 @@
+# Admin R2 blocked recovery checkpoint — 2026-10-16
+
+**Status: ADMIN_V1_R2_BLOCKED.** Exact recovered source `9f3e59a6ed3a9b6b6041fef2e0a83340d1db1dd5` on
+`feat/admin-v1-r2-isolation-governance`; full evidence and missing-module list:
+`docs/admin/remediation-r2/REPORT.md`, SOURCE_MANIFEST.md and REGRESSION.md.
+Repeated unrequested sandbox replacements restored stale refs and lost
+uncommitted facade/governance code. Surviving local commit objects were recovered
+without rewriting history. Runtime compilation is currently broken by missing
+required modules; do not treat configuration changes as a completed facade.
+Lint and 20 routing tests pass; types/build/auth/workerd/browser gates fail.
+Migration smoke passes only Admin0001/version1, not required R2/version2.
+No clean full-suite/R2 acceptance PASS, independent review PASS or deployment.
+Customer protected runtime/config/schema paths still equal integrated main0ff82ed.
+PR77 remains draft; task auto-merge off. No push, merge, remote D1 or activation.
+
+**Next:** reconstruct/recover missing modules, checkpoint durably, finish
+integration and rerun all gates/PoCs/multi-Worker/browser proof on one frozen SHA.
+The last runnable pre-R2 checkpoint is a0662040 (not a clean full-suite PASS).
+The preliminary restored draft is preserved in stash7acadce3; it is not a safe
+substitute for completed identity enrollment and signed-recovery logic.
+
+---
+
 # Admin Console R2 local continuation — 2026-10-15
 
 **Status:** ADMIN_V1_R2_CHANGES_REQUIRED; implementation/integration in progress,

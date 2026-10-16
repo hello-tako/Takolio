@@ -1,3 +1,54 @@
+# Admin R2 recovery boundary — 2026-10-16
+
+**Status: ADMIN_V1_R2_BLOCKED. Do not publish, merge, deploy or enable.**
+
+Recovered source revision: `9f3e59a6ed3a9b6b6041fef2e0a83340d1db1dd5`. All current observations below refer to
+this incomplete recovered source or the explicitly labelled preceding revision
+`9ade6a1593016e99ecd6cd4044495c95ed7cccb9`. No independent review PASS is claimed.
+
+Repeated sandbox replacement restored stale branch refs and removed uncommitted
+facade/governance modules. Committed Git objects survived: the implementation
+branch was fast-forward recovered through `9ade6a15`, then the matrix's missing
+`spawnSync` import was corrected in `9f3e59a6`. No reset, rebase, force push,
+publication, remote D1, deployment, production bootstrap or activation occurred.
+The historical handoff branch and PR #77 were not modified. Task auto-merge for
+PR #77 is explicitly off; the existing review loop remains enabled.
+
+## Reproducible blocker
+
+The recovered integration imports modules that are absent from this source:
+
+- `src/worker/admin-read-facade-worker.ts`
+- `src/worker/facade/contract.ts`
+- `src/worker/facade/customer-read-service.ts`
+- `src/worker/routes/admin/customer-facade-client.ts`
+- `src/worker/routes/admin/governance.ts`
+- `migrations-admin/0002_admin_identity_governance_r2.sql`
+- `tests/integration/admin-r2-facade.test.ts`
+- `tests/integration/admin-r2-governance.test.ts`
+
+These are not optional dependencies. Do not replace them with permissive stubs,
+re-enable the direct customer DB binding, skip assertions or deploy this tree.
+The only surviving migration is Admin0001/version1, while auth requires version2.
+A successful current `check:migrations` therefore tests version1 only, not R2.
+
+## Recovery references and next action
+
+The restored preliminary draft is preserved in local stash
+`7acadce3ad76ca58e88375665537538b7d957584` and ignored recovery artifacts. It was
+not applied: it is not the completed signed-recovery/enrollment implementation
+and must not be mistaken for certified R2 source. The last runnable pre-R2
+checkpoint is `a066204047d0ec4c306987db9c82fb5aa3ac4d5e`; its recorded full suite
+has a failure and is not a clean all-gates PASS.
+
+Next: recover or reconstruct the missing modules in a durable workspace,
+checkpoint each before verification, finish integration, then run every mandatory
+gate on one frozen implementation SHA. Re-run all original/adversarial PoCs,
+real multi-Worker workerd, ten keyboard repeats and browser appearance/behavior.
+Complete all evidence before changing the verdict. No push is authorized.
+
+---
+
 # Admin Console remediation R2
 
 **Status: ADMIN_V1_R2_CHANGES_REQUIRED. Local implementation and integration in progress.**
