@@ -11,7 +11,7 @@ on:
       operation:
         description: Fixed operation; Admin remains disabled
         type: choice
-        options: [deploy-disabled, disable, rollback-disabled]
+        options: [deploy-disabled, rollback-disabled]
         required: true
       execute:
         description: Requires separate owner authorization and two signatures
@@ -88,9 +88,11 @@ jobs:
           RELEASE_OPERATION: ${{ inputs.operation }}
           ADMIN_RELEASE_EXECUTION_ENABLED: ${{ vars.ADMIN_RELEASE_EXECUTION_ENABLED }}
           ADMIN_RELEASE_AUTHORIZATION: ${{ secrets.ADMIN_RELEASE_AUTHORIZATION }}
+          ADMIN_STAGING_CERTIFICATION: ${{ secrets.ADMIN_STAGING_CERTIFICATION }}
           GH_TOKEN: ${{ secrets.ADMIN_RELEASE_GITHUB_READ_TOKEN }}
         run: node scripts/admin-release-adapter.mjs authorize "$RELEASE_ENVIRONMENT" "$RELEASE_OPERATION"
-      - name: Persist pre-action audit before any Cloudflare credential is available
+      - id: pre_action
+        name: Persist pre-action audit before any Cloudflare credential is available
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: admin-pre-action-${{ github.run_id }}
@@ -103,7 +105,9 @@ jobs:
           RELEASE_OPERATION: ${{ inputs.operation }}
           ADMIN_RELEASE_EXECUTION_ENABLED: ${{ vars.ADMIN_RELEASE_EXECUTION_ENABLED }}
           ADMIN_RELEASE_AUTHORIZATION: ${{ secrets.ADMIN_RELEASE_AUTHORIZATION }}
+          ADMIN_STAGING_CERTIFICATION: ${{ secrets.ADMIN_STAGING_CERTIFICATION }}
           GH_TOKEN: ${{ secrets.ADMIN_RELEASE_GITHUB_READ_TOKEN }}
+          ADMIN_PRE_ACTION_ARTIFACT_DIGEST: ${{ steps.pre_action.outputs.artifact-digest }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.ADMIN_RELEASE_CLOUDFLARE_TOKEN }}
         run: node scripts/admin-release-adapter.mjs execute "$RELEASE_ENVIRONMENT" "$RELEASE_OPERATION"
       - name: Retain receipt, including uncertain partial-failure state

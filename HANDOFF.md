@@ -523,3 +523,14 @@ No Cloudflare or production operation occurred. Real identities/protections,
 independent human custody, initial resource/enrollment setup, first safe rollback
 baseline, live API staging rehearsal and explicit owner authorization remain
 blocked. Existing evidence is not relabeled as a test of the adapter.
+
+## Admin adapter containment follow-up (2026-10-17)
+
+The next candidate includes `admin-emergency-disable.yml`, the minimal shutdown
+Worker, full account facade route inventory, strict API/asset denial smoke and
+signed staging/artifact gates. `rollback-disabled` is the narrowly authorized
+restore path after shutdown; it validates both approved versions and live DB
+identity, and compensates back to shutdown on partial failure. Validation is
+pending the new frozen SHA. GitHub HTTP 403/account suspension, real Access and
+operator roster, live provider schema, and all real staging cases remain blocked.
+Do not push/merge/deploy/migrate/bootstrap or change production secrets here.

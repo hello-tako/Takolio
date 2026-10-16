@@ -87,7 +87,12 @@ export function meFromPrincipal(principal: AdminPrincipal): AdminMe {
 export async function adminSurfaceGate(c: AdminContext, next: Next) {
   const policy = resolveAdminPolicy(c.env);
   c.set('policy', policy);
-  if (!policy.enabled || !requestOriginMatches(policy, c.req.url)) return c.text('Not Found', 404);
+  if (!policy.enabled) {
+    c.header('X-Admin-Disabled', 'true');
+    c.header('Cache-Control', 'no-store');
+    return c.text('Not Found', 404);
+  }
+  if (!requestOriginMatches(policy, c.req.url)) return c.text('Not Found', 404);
   await next();
 }
 

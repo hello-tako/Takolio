@@ -3515,3 +3515,11 @@ No Cloudflare or production operation occurred. Real identities/protections,
 independent human custody, initial resource/enrollment setup, first safe rollback
 baseline, live API staging rehearsal and explicit owner authorization remain
 blocked. Existing evidence is not relabeled as a test of the adapter.
+
+## Admin adapter containment follow-up (2026-10-17)
+
+- Implemented narrow signed shutdown without D1/facade/secrets/build dependence.
+- Added dedicated manual containment lane, strict smoke markers, full account
+  route inventory, staging artifact authority, and restore-from-shutdown checks.
+- Pending next frozen SHA full verification and independent review; retain all
+  old evidence under its original SHA. Staging and production remain blocked.

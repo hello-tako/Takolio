@@ -83,6 +83,7 @@ function probe(base, pathname, { navigate = true, headers = {}, method = 'GET', 
           contentType: res.headers['content-type'] ?? null,
           csp: csp.includes('accounts.google.com') ? 'customer' : csp.includes("script-src 'self'") ? 'admin' : csp ? 'other' : 'none',
           cacheControl: res.headers['cache-control'] ?? null,
+          disabledMarker: res.headers['x-admin-disabled'] ?? null,
           setCookie: [].concat(res.headers['set-cookie'] ?? []),
           cors: Object.keys(res.headers).filter((key) => key.startsWith('access-control-')),
           json,
@@ -174,6 +175,19 @@ async function main() {
       worker.stop();
     }
   } else {
+    const shutdownFile = writeConfig('shutdown', { name: 'review-admin-shutdown',
+      main: path.join(root, 'src/worker/admin-shutdown-worker.mjs'), compatibility_date: '2026-10-01', workers_dev: false, preview_urls: false });
+    const shutdown = await startWorker(shutdownFile, path.join(work, 'shutdown-no-d1'));
+    try {
+      const checks = [];
+      const { js } = adminFiles();
+      for (const method of ['GET', 'POST', 'OPTIONS']) for (const route of [...ADMIN_PATHS, `/admin/assets/${js}`]) {
+        const response = await probe(shutdown.base, route, { method, navigate: false });
+        checks.push(check(`${method} ${route} closed without bindings`, response.status === 404 && response.body === 'Not Found' &&
+          response.disabledMarker === 'true' && response.cacheControl === 'no-store', response));
+      }
+      record('emergency shutdown has no D1, facade, secret, asset or auth dependencies', checks);
+    } finally { shutdown.stop(); }
     const prodTemplate = jsonc('wrangler.admin.jsonc').vars;
     const localVars = jsonc('wrangler.admin-local.jsonc').vars;
 

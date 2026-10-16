@@ -38,7 +38,7 @@ if (changed) throw new Error('Customer release surface changed: ' + changed);
 const paths = git('ls-files', '--cached', '--others', '--exclude-standard').split('\n').filter(Boolean)
   .filter(file => /^(?:src\/(?:admin|worker\/(?:facade|routes\/admin))\/|src\/worker\/admin-|migrations-admin\/|scripts\/admin-|tests\/(?:unit|integration|e2e)\/admin-|\.github\/workflows\/admin-|wrangler\.admin|vite\.admin|playwright\.admin|admin\/)/.test(file)).sort();
 const sourceManifest = paths.map(file => ({ path: file, sha256: hash(readFileSync(file)) }));
-const blockers = ['independent security/workflow review on exact SHA', 'reviewed live release adapters are not implemented',
+const blockers = ['independent security/workflow review on exact SHA', 'default-disabled live adapter requires authorized staging API/rollback validation and operator activation',
   'real staging operator authorization and resource identities', 'verified three-person Access roster and recovery custodians',
   'protected environment self-review prevention and required checks', 'staging identity, rollback and browser certification'];
 const result = { schemaVersion: 2, generatedAt: new Date().toISOString(), sourceSha: sha, sourceTree: git('rev-parse', 'HEAD^{tree}'),

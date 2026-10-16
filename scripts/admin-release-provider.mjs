@@ -1,5 +1,5 @@
 import { execFileSync } from 'node:child_process';
-import { readFileSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { digest, renderConfigs, validateGitHub } from './admin-release-adapter.mjs';
 
@@ -17,23 +17,48 @@ export function createProvider(authorized, context, env = process.env, fetcher =
     if (!response.ok) throw new Error(`Release provider HTTP ${response.status}`);
     const value = await response.json();
     if (origin.includes('cloudflare') && value.success !== true) throw new Error('Cloudflare operation failed');
-    return origin.includes('cloudflare') ? value.result : value;
+    return origin.includes('cloudflare') ? (options.pagination ? value : value.result) : value;
   };
   const gh = route => request('https://api.github.com', `/repos/lol-vn/Tako-san${route}`, env.GH_TOKEN, { headers: { 'X-GitHub-Api-Version': '2022-11-28' } });
   const cf = (route, options) => request('https://api.cloudflare.com', `/client/v4/accounts/${target.accountId}${route}`, env.CLOUDFLARE_API_TOKEN, options);
+  const cfList = async (route, singlePage = false) => {
+    const rows = [];
+    for (let page = 1; page <= 1000; page++) {
+      const value = await request('https://api.cloudflare.com', `/client/v4${route}${singlePage ? '' : `${route.includes('?') ? '&' : '?'}per_page=50&page=${page}`}`,
+        env.CLOUDFLARE_API_TOKEN, { pagination: true });
+      if (!Array.isArray(value.result)) throw new Error('Incomplete provider inventory');
+      rows.push(...value.result);
+      const info = value.result_info;
+      if (singlePage) {
+        if (info?.total_pages > 1 || info?.total_count > rows.length) throw new Error('Truncated provider inventory');
+        return rows;
+      }
+      if (info?.page !== undefined && info.page !== page) throw new Error('Invalid provider pagination');
+      if (info?.total_pages !== undefined ? Number.isInteger(info.total_pages) && page >= info.total_pages : value.result.length < 50) return rows;
+    }
+    throw new Error('Provider inventory limit exceeded');
+  };
   const query = async (sql, params = []) => {
     const result = await cf(`/d1/database/${target.adminDatabaseId}/query`, { method: 'POST', body: JSON.stringify({ sql, params }) });
     if (!Array.isArray(result) || result.length !== 1 || result[0].success !== true || !Array.isArray(result[0].results)) throw new Error('Invalid D1 result');
     return result[0].results;
   };
-  const configs = renderConfigs(target, context.environment, context.sourceSha, { admin: jsonc('wrangler.admin.jsonc'), facade: jsonc('wrangler.admin-facade.jsonc') });
+  const shutdown = {
+    name: target.adminWorker, account_id: target.accountId, main: 'src/worker/admin-shutdown-worker.mjs', compatibility_date: '2026-10-01',
+    workers_dev: false, preview_urls: false, routes: [{ pattern: target.hostname, custom_domain: true }],
+    vars: { ENVIRONMENT: context.environment, ADMIN_CONSOLE_ENABLED: 'false', ADMIN_AUTH_MODE: 'cloudflare_access', GIT_COMMIT: context.sourceSha, ADMIN_SHUTDOWN: 'true' },
+  };
+  const configs = { shutdown, ...(context.operation === 'disable' ? {} : renderConfigs(target, context.environment, context.sourceSha, {
+    admin: jsonc('wrangler.admin.jsonc'), facade: jsonc('wrangler.admin-facade.jsonc'),
+  })) };
   for (const config of Object.values(configs)) {
     config.main = path.resolve(config.main);
     if (config.assets) config.assets.directory = path.resolve(config.assets.directory);
-    for (const db of config.d1_databases) if (db.migrations_dir) db.migrations_dir = path.resolve(db.migrations_dir);
+    for (const db of config.d1_databases ?? []) if (db.migrations_dir) db.migrations_dir = path.resolve(db.migrations_dir);
   }
   const configPath = worker => `${output}/${worker}.json`;
   const wrangler = (worker, args) => {
+    mkdirSync(output, { recursive: true });
     writeFileSync(configPath(worker), JSON.stringify(configs[worker], null, 2) + '\n', { mode: 0o600 });
     // Never forward process output to a public receipt; provider metadata may be sensitive.
     try { return command('pnpm', ['exec', 'wrangler', ...args, '--config', configPath(worker)], { encoding: 'utf8', maxBuffer: 16 * 1024 * 1024,
@@ -75,31 +100,54 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
       return { repository, branch, protection, environment, run, ci: ci.workflow_runs ?? [], approvals,
         artifact: artifacts.artifacts?.find(a => a.name === `admin-pre-action-${context.runId}`) };
     },
-    async verifyTargets(t) {
-      const [adminDb, customerDb, kv, app, routes, domains, zone] = await Promise.all([
+    async verifyStagingArtifact(certificate) {
+      const artifact = await gh(`/actions/artifacts/${certificate.artifactId}`);
+      if (artifact.expired || artifact.digest !== `sha256:${certificate.artifactDigest}` || artifact.workflow_run?.head_sha !== context.sourceSha ||
+          !artifact.name?.startsWith('admin-staging-certification-')) throw new Error('Staging evidence artifact mismatch');
+      const run = await gh(`/actions/runs/${artifact.workflow_run.id}`);
+      if (artifact.name !== `admin-staging-certification-${run.id}` || run.path !== '.github/workflows/admin-staging-deploy.yml' ||
+          run.event !== 'workflow_dispatch' || run.run_attempt !== 1 || run.head_branch !== 'main' || run.status !== 'completed' ||
+          run.head_sha !== context.sourceSha || run.conclusion !== 'success' || run.repository?.id !== 1385308553) throw new Error('Staging evidence run mismatch');
+    },
+    async verifyShutdownTarget(t) {
+      const [domains, zone, s] = await Promise.all([
+        cfList(`/accounts/${t.accountId}/workers/domains`, true),
+        request('https://api.cloudflare.com', `/client/v4/zones/${t.zoneId}`, env.CLOUDFLARE_API_TOKEN), settings(t.adminWorker),
+      ]);
+      if (zone.id !== t.zoneId || zone.account?.id !== t.accountId || !(t.hostname === zone.name || t.hostname.endsWith(`.${zone.name}`)) ||
+          !domains.some(d => d.hostname === t.hostname && d.service === t.adminWorker && d.zone_id === t.zoneId) ||
+          binding(s, 'ENVIRONMENT', 'plain_text')?.text !== context.environment) throw new Error('Exact shutdown target mapping required');
+    },
+    async shutdown() { await checkWrite(); wrangler('shutdown', ['deploy']); },
+    async verifyTargets(t, _environment, allowShutdown = false) {
+      await provider.verifyShutdownTarget(t);
+      const [adminDb, customerDb, kv, app, domains, zones] = await Promise.all([
         cf(`/d1/database/${t.adminDatabaseId}`), cf(`/d1/database/${t.customerDatabaseId}`),
-        cf('/storage/kv/namespaces?per_page=1000'), cf(`/access/apps/${t.accessApplicationId}`),
-        request('https://api.cloudflare.com', `/client/v4/zones/${t.zoneId}/workers/routes`, env.CLOUDFLARE_API_TOKEN),
-        cf('/workers/domains'),
-        request('https://api.cloudflare.com', `/client/v4/zones/${t.zoneId}`, env.CLOUDFLARE_API_TOKEN),
+        cfList(`/accounts/${t.accountId}/storage/kv/namespaces`), cf(`/access/apps/${t.accessApplicationId}`),
+        cfList(`/accounts/${t.accountId}/workers/domains`, true), cfList(`/zones?account.id=${t.accountId}`),
       ]);
       if (adminDb.uuid !== t.adminDatabaseId || adminDb.name !== t.adminDatabaseName || customerDb.uuid !== t.customerDatabaseId ||
-          customerDb.name !== t.customerDatabaseName || !Array.isArray(kv) || !kv.some(n => n.id === t.kvId) || app.id !== t.accessApplicationId || app.domain !== t.hostname ||
-          app.aud !== t.audience || app.type !== 'self_hosted' || !Array.isArray(routes) || routes.some(r => r.script === t.facadeWorker)) throw new Error('Live target identity mismatch');
-      if (zone.id !== t.zoneId || zone.account?.id !== t.accountId || !(t.hostname === zone.name || t.hostname.endsWith(`.${zone.name}`)) ||
-          !Array.isArray(domains) || domains.some(d => d.service === t.facadeWorker) ||
-          !domains.some(d => d.hostname === t.hostname && d.service === t.adminWorker && d.zone_id === t.zoneId)) throw new Error('Exact Admin custom-domain mapping required');
+          customerDb.name !== t.customerDatabaseName || !kv.some(n => n.id === t.kvId) || app.id !== t.accessApplicationId || app.domain !== t.hostname ||
+          app.aud !== t.audience || app.type !== 'self_hosted' || domains.some(d => d.service === t.facadeWorker) ||
+          !zones.some(z => z.id === t.zoneId) || zones.some(z => z.account?.id !== t.accountId)) throw new Error('Live target identity mismatch');
+      for (const zone of zones) {
+        const routes = await cfList(`/zones/${zone.id}/workers/routes`, true);
+        if (routes.some(r => r.script === t.facadeWorker)) throw new Error('Facade public route enabled');
+      }
       const account = await cf('/access/organizations');
       if (`https://${account.auth_domain}` !== t.issuer) throw new Error('Access issuer mismatch');
       const facadeSubdomain = await cf(`/workers/scripts/${t.facadeWorker}/subdomain`);
       if (facadeSubdomain.enabled || facadeSubdomain.previews_enabled) throw new Error('Facade public subdomain enabled');
       // Existing binding identities must agree before a release can replace them.
       const [a, f] = await Promise.all([settings(t.adminWorker), settings(t.facadeWorker)]);
-      if (binding(a, 'ADMIN_DB', 'd1')?.id !== t.adminDatabaseId || binding(f, 'DB', 'd1')?.id !== t.customerDatabaseId ||
+      const shutdown = allowShutdown && binding(a, 'ADMIN_SHUTDOWN', 'plain_text')?.text === 'true' &&
+        binding(a, 'ADMIN_CONSOLE_ENABLED', 'plain_text')?.text === 'false' &&
+        !a.bindings?.some(b => !['plain_text', 'secret_text'].includes(b.type));
+      if ((!shutdown && (binding(a, 'ADMIN_DB', 'd1')?.id !== t.adminDatabaseId ||
           binding(a, 'CACHE', 'kv_namespace')?.namespace_id !== t.kvId ||
           binding(a, 'CUSTOMER_READ', 'service')?.service !== t.facadeWorker ||
           binding(a, 'CUSTOMER_READ', 'service')?.entrypoint !== 'AdminCustomerReadFacade' ||
-          a.bindings?.filter(b => b.type === 'd1').length !== 1 || f.bindings?.filter(b => b.type === 'd1').length !== 1) throw new Error('Existing Worker binding mismatch');
+          a.bindings?.filter(b => b.type === 'd1').length !== 1)) || binding(f, 'DB', 'd1')?.id !== t.customerDatabaseId || f.bindings?.filter(b => b.type === 'd1').length !== 1) throw new Error('Existing Worker binding mismatch');
     },
     async verifyLedger(t, migrations, complete) {
       for (const m of migrations) if (digest(readFileSync(`migrations-admin/${m.name}`)) !== m.sha256) throw new Error('Migration file changed');
@@ -150,23 +198,39 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
       }
     },
     async deploy(worker) { await checkWrite(); wrangler(worker, ['deploy']); },
-    async verifyDisabled(t, expectedSha) {
+    async verifyDisabled(t, expectedSha, shutdown = false) {
+      await provider.verifyShutdownTarget(t);
       const s = await settings(t.adminWorker);
       const text = n => binding(s, n, 'plain_text')?.text;
-      if (text('ADMIN_CONSOLE_ENABLED') !== 'false' || text('GIT_COMMIT') !== expectedSha || text('ENVIRONMENT') !== context.environment) throw new Error('Disabled release metadata mismatch');
-      for (const route of ['/admin', '/admin/login', '/api/admin/auth/me']) {
+      if (text('ADMIN_CONSOLE_ENABLED') !== 'false' || text('GIT_COMMIT') !== expectedSha || text('ENVIRONMENT') !== context.environment ||
+          (shutdown && (text('ADMIN_SHUTDOWN') !== 'true' || s.bindings?.some(b => !['plain_text', 'secret_text'].includes(b.type))))) throw new Error('Disabled release metadata mismatch');
+      const routes = ['/admin', '/admin/login', '/api/v1/admin/me', '/admin/favicon.svg'];
+      if (!shutdown) {
+        const html = readFileSync('dist/admin/admin/index.html', 'utf8');
+        const asset = /src="(\/admin\/assets\/[A-Za-z0-9_-]+\.js)"/.exec(html)?.[1];
+        if (!asset) throw new Error('Protected built asset missing');
+        routes.push(asset);
+      }
+      for (const route of routes) {
         const response = await fetcher(`https://${t.hostname}${route}`, { redirect: 'manual', signal: AbortSignal.timeout(15000) });
-        // Access may intercept before the disabled Worker; a redirect is only
-        // accepted to the exact tenant's Access login path.
-        const location = response.headers.get('location');
-        const access = location ? new URL(location, `https://${t.hostname}`) : null;
-        if (![401, 403, 404].includes(response.status) && !(response.status === 302 && access?.origin === t.issuer && access.pathname.startsWith('/cdn-cgi/access/login'))) throw new Error('Disabled/auth smoke failed');
-        await response.body?.cancel();
+        try {
+          const location = response.headers.get('location');
+          const access = location ? new URL(location, `https://${t.hostname}`) : null;
+          const tenantDenied = response.status === 302 && access?.origin === t.issuer && access.pathname.startsWith('/cdn-cgi/access/login');
+          const disabled = response.status === 404 && response.headers.get('x-admin-disabled') === 'true' &&
+            response.headers.get('cache-control') === 'no-store' && await response.text() === 'Not Found';
+          if (!disabled && !tenantDenied) throw new Error('Disabled/auth smoke failed');
+        } finally { if (!response.bodyUsed) await response.body?.cancel(); }
       }
     },
     async captureRollback() {
-      const versions = await provider.deploymentVersions();
       const s = await settings(target.adminWorker);
+      if (binding(s, 'ADMIN_SHUTDOWN', 'plain_text')?.text === 'true') {
+        const sourceSha = binding(s, 'GIT_COMMIT', 'plain_text')?.text;
+        await provider.verifyDisabled(target, sourceSha, true);
+        return { shutdown: true };
+      }
+      const versions = await provider.deploymentVersions();
       const previousSha = binding(s, 'GIT_COMMIT', 'plain_text')?.text;
       if (!/^[a-f0-9]{40}$/.test(previousSha ?? '')) throw new Error('Reviewed disabled rollback baseline required');
       const baseline = { adminVersion: versions[target.adminWorker], facadeVersion: versions[target.facadeWorker], previousSha };
@@ -174,6 +238,11 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
       return baseline;
     },
     async restoreRollback(baseline) {
+      if (baseline.shutdown) {
+        await provider.shutdown();
+        await provider.verifyDisabled(target, context.sourceSha, true);
+        return;
+      }
       await provider.verifyRollback(target, baseline);
       await provider.rollback('facade', baseline.facadeVersion);
       await provider.rollback('admin', baseline.adminVersion);
@@ -197,9 +266,9 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
     async bootstrap(sql) { await checkWrite(); await query(sql); },
     async recoveryRoster() { return query("SELECT operator_id,status,recovery_key_algorithm,recovery_public_key FROM approved_human_operators WHERE status='active' AND recovery_key_algorithm='Ed25519' LIMIT 100"); },
     async recover(sql) { await checkWrite(); await query(sql); },
-    async deploymentVersions() {
+    async deploymentVersions(workers = [target.adminWorker, target.facadeWorker]) {
       const versions = {};
-      for (const worker of [target.adminWorker, target.facadeWorker]) {
+      for (const worker of workers) {
         const deployments = await cf(`/workers/scripts/${worker}/deployments`);
         const latest = deployments.deployments?.[0];
         if (!latest || latest.versions?.length !== 1 || latest.versions[0].percentage !== 100) throw new Error('Ambiguous deployed Worker version');

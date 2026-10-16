@@ -1,0 +1,75 @@
+# Independent containment lane: an ordinary migration/release cannot queue this job.
+name: Admin Emergency Disable
+on:
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: Exact reviewed main SHA
+        type: string
+        required: true
+      environment:
+        type: choice
+        options: [staging, production]
+        required: true
+      execute:
+        description: Requires separate owner authorization and two shutdown signatures
+        type: boolean
+        default: false
+        required: true
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: admin-containment-${{ inputs.environment }}
+  cancel-in-progress: false
+jobs:
+  execute:
+    if: inputs.execute == true && vars.ADMIN_RELEASE_EXECUTION_ENABLED == 'true' && github.ref == 'refs/heads/main' && inputs.source_sha == github.sha && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: admin-${{ inputs.environment }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+      - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1
+        with:
+          version: 10
+      - run: pnpm install --frozen-lockfile
+      - name: Verify source policy and signed authorization
+        env:
+          RELEASE_ENVIRONMENT: ${{ inputs.environment }}
+          ADMIN_RELEASE_EXECUTION_ENABLED: ${{ vars.ADMIN_RELEASE_EXECUTION_ENABLED }}
+          ADMIN_RELEASE_AUTHORIZATION: ${{ secrets.ADMIN_RELEASE_AUTHORIZATION }}
+          GH_TOKEN: ${{ secrets.ADMIN_RELEASE_GITHUB_READ_TOKEN }}
+        run: node scripts/admin-release-adapter.mjs authorize "$RELEASE_ENVIRONMENT" disable
+      - id: pre_action
+        name: Persist pre-action audit before any Cloudflare credential is available
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: admin-pre-action-${{ github.run_id }}
+          path: .artifacts/admin-release/pre-action.json
+          if-no-files-found: error
+          retention-days: 90
+      - name: Execute fixed authorized containment and verify result
+        env:
+          RELEASE_ENVIRONMENT: ${{ inputs.environment }}
+          ADMIN_RELEASE_EXECUTION_ENABLED: ${{ vars.ADMIN_RELEASE_EXECUTION_ENABLED }}
+          ADMIN_RELEASE_AUTHORIZATION: ${{ secrets.ADMIN_RELEASE_AUTHORIZATION }}
+          ADMIN_PRE_ACTION_ARTIFACT_DIGEST: ${{ steps.pre_action.outputs.artifact-digest }}
+          GH_TOKEN: ${{ secrets.ADMIN_RELEASE_GITHUB_READ_TOKEN }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.ADMIN_RELEASE_CLOUDFLARE_TOKEN }}
+        run: node scripts/admin-release-adapter.mjs execute "$RELEASE_ENVIRONMENT" disable
+      - name: Retain receipt, including uncertain partial-failure state
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: admin-operation-${{ github.run_id }}
+          path: .artifacts/admin-release/receipt.json
+          if-no-files-found: warn
+          retention-days: 90

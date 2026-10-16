@@ -9905,3 +9905,14 @@ No Cloudflare or production operation occurred. Real identities/protections,
 independent human custody, initial resource/enrollment setup, first safe rollback
 baseline, live API staging rehearsal and explicit owner authorization remain
 blocked. Existing evidence is not relabeled as a test of the adapter.
+
+## Admin release adapter containment follow-up (2026-10-17)
+
+Local candidate adds a dependency-free shutdown Worker/manual containment lane,
+correct-route and built-asset negative smoke, paginated account-zone facade route
+inventory, signed staging evidence gate, upload-digest-bound pre-action audit,
+and approved disabled-version restoration after containment. Candidate validation
+and independent review are recorded by exact SHA under
+`docs/admin/production-readiness/`; previous 066c35ad results do not certify these
+changes. Release execution remains disabled; GitHub account suspension and
+staging/operator approval remain external blockers. No remote action occurred.

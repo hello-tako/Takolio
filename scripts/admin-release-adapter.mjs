@@ -74,6 +74,29 @@ export function validateAuthorization(bundle, policy, context, now = Date.now())
   return { target, manifest: m, authorizationDigest: digest(bundle), policyDigest: digest(policy) };
 }
 
+export function validateStagingCertificate(certificate, policy, context, now = Date.now()) {
+  const target = validateTarget(policy, 'production');
+  validateTarget(policy, 'staging');
+  const fields = ['version', 'sourceSha', 'policyDigest', 'stagingDatabaseId', 'completedAt', 'expiresAt',
+    'independentReviewDigest', 'artifactId', 'artifactDigest', 'checks'];
+  if (!exact(certificate, ['manifest', 'approvals']) || !exact(certificate.manifest, fields)) throw new Error('Signed staging certification required');
+  const m = certificate.manifest;
+  if (m.version !== 1 || m.sourceSha !== context.sourceSha || m.policyDigest !== digest(policy) ||
+      m.stagingDatabaseId !== policy.environments.staging.adminDatabaseId || !/^[a-f0-9]{64}$/.test(m.independentReviewDigest) ||
+      !/^[a-f0-9]{64}$/.test(m.artifactDigest) || !/^[1-9][0-9]{0,19}$/.test(m.artifactId) ||
+      !exact(m.checks, Array.from({ length: 20 }, (_, i) => `ST${String(i + 1).padStart(2, '0')}`)) ||
+      Object.values(m.checks).some(v => v !== 'PASS')) throw new Error('Incomplete exact-source staging certification');
+  const completed = Date.parse(m.completedAt), expires = Date.parse(m.expiresAt);
+  if (!Number.isFinite(completed) || !Number.isFinite(expires) || completed > now || expires <= now || expires - completed > 7 * 86400000) throw new Error('Staging certification expired');
+  if (!Array.isArray(certificate.approvals) || certificate.approvals.length !== 2 || new Set(certificate.approvals.map(a => a.operatorId)).size !== 2) throw new Error('Independent staging attestations required');
+  for (const a of certificate.approvals) {
+    const custodian = target.custodians.find(c => c.operatorId === a.operatorId);
+    if (!exact(a, ['operatorId', 'signature']) || !custodian || !/^[A-Za-z0-9_-]{86}$/.test(a.signature) ||
+        !verify(null, Buffer.from(canonical(m)), createPublicKey(custodian.publicKey), Buffer.from(a.signature, 'base64url'))) throw new Error('Invalid staging attestation');
+  }
+  return m;
+}
+
 export function validateGitHub(facts, context) {
   const { repository, branch, protection, environment, run, ci, approvals, artifact } = facts;
   if (repository.id !== 1385308553 || repository.full_name !== 'lol-vn/Tako-san' || repository.default_branch !== 'main' ||
@@ -85,7 +108,7 @@ export function validateGitHub(facts, context) {
       environment.deployment_branch_policy?.protected_branches !== true || environment.deployment_branch_policy?.custom_branch_policies !== false) throw new Error('Protected environment policy required');
   const expectedWorkflow = { staging: '.github/workflows/admin-staging-deploy.yml', production: '.github/workflows/admin-production-deploy.yml',
     migrate: '.github/workflows/admin-d1-migrate.yml', recover: '.github/workflows/admin-breakglass.yml' };
-  const expectedPath = context.operation === 'migrate' ? expectedWorkflow.migrate : ['bootstrap', 'recover'].includes(context.operation) ? expectedWorkflow.recover : expectedWorkflow[context.environment];
+  const expectedPath = context.operation === 'disable' ? '.github/workflows/admin-emergency-disable.yml' : context.operation === 'migrate' ? expectedWorkflow.migrate : ['bootstrap', 'recover'].includes(context.operation) ? expectedWorkflow.recover : expectedWorkflow[context.environment];
   if (String(run.id) !== context.runId || run.run_attempt !== 1 || run.event !== 'workflow_dispatch' || run.head_sha !== context.sourceSha ||
       run.head_branch !== 'main' || run.path !== expectedPath || run.actor?.type !== 'User' || run.triggering_actor?.id !== run.actor.id ||
       run.repository?.id !== 1385308553 || !ci.some(c => c.head_sha === context.sourceSha && c.path === '.github/workflows/admin-ci.yml' &&
@@ -93,7 +116,8 @@ export function validateGitHub(facts, context) {
   if (!approvals.some(a => a.state === 'approved' && a.user?.type === 'User' && a.user.id !== run.actor.id &&
       a.environments?.some(e => e.id === environment.id))) throw new Error('Independent environment approval required');
   if (context.requireAudit && (!artifact || artifact.expired || artifact.name !== `admin-pre-action-${context.runId}` ||
-      artifact.workflow_run?.head_sha !== context.sourceSha)) throw new Error('Immutable pre-action audit artifact required');
+      artifact.workflow_run?.head_sha !== context.sourceSha || String(artifact.workflow_run?.id) !== context.runId ||
+      !/^sha256:[a-f0-9]{64}$/.test(context.auditArtifactDigest ?? '') || artifact.digest !== context.auditArtifactDigest)) throw new Error('Immutable pre-action audit artifact required');
 }
 
 export function renderConfigs(target, environment, sourceSha, templates) {
@@ -119,8 +143,18 @@ export async function executeRelease(authorized, context, provider) {
   const { manifest: m, target } = authorized;
   // Identity checks and a pre-action durable artifact precede every mutation.
   if (Date.parse(m.expiresAt) <= Date.now()) throw new Error('Release authorization expired');
-  await provider.verifyTargets(target, context.environment);
-  if (m.operation !== 'disable') await provider.verifyConsoleDisabled(target);
+  if (m.operation === 'disable') {
+    await provider.verifyShutdownTarget(target);
+    await provider.shutdown();
+    await provider.verifyShutdownTarget(target);
+    await provider.verifyDisabled(target, m.sourceSha, true);
+    return { version: 1, sourceSha: m.sourceSha, environment: context.environment, operation: m.operation, runId: m.runId,
+      authorizationDigest: authorized.authorizationDigest, policyDigest: authorized.policyDigest, completedAt: new Date().toISOString(),
+      deploymentVersions: await provider.deploymentVersions([target.adminWorker]), result: 'PASS', consoleEnabled: false,
+      remoteExecuted: true, productionDeployed: context.environment === 'production' };
+  }
+  await provider.verifyTargets(target, context.environment, m.operation === 'rollback-disabled');
+  await provider.verifyConsoleDisabled(target);
   if (m.operation === 'migrate') {
     await provider.verifyLedger(target, context.migrations, false);
     await provider.verifyExistingDatabaseIdentity(target, context.environment);
@@ -130,11 +164,11 @@ export async function executeRelease(authorized, context, provider) {
   } else {
     await provider.verifyLedger(target, context.migrations, true);
     await provider.verifyDatabaseIdentity(target, context.environment);
-    if (['deploy-disabled', 'disable'].includes(m.operation)) {
+    if (m.operation === 'deploy-disabled') {
       await provider.verifySecrets(target);
-      const baseline = m.operation === 'deploy-disabled' ? await provider.captureRollback() : null;
+      const baseline = await provider.captureRollback();
       try {
-        if (m.operation === 'deploy-disabled') await provider.deploy('facade');
+        await provider.deploy('facade');
         await provider.deploy('admin');
         await provider.verifyTargets(target, context.environment);
         await provider.verifyDisabled(target, m.sourceSha);
@@ -179,9 +213,9 @@ export function loadContext(environment, operation, env = process.env) {
   const git = (...args) => execFileSync('git', args, { encoding: 'utf8' }).trim();
   const sourceSha = git('rev-parse', 'HEAD');
   if (!sha.test(sourceSha) || git('status', '--porcelain', '--untracked-files=normal')) throw new Error('Clean exact-SHA checkout required');
-  const migrations = readdirSync('migrations-admin').filter(p => /^\d{4}_[a-z0-9_]+\.sql$/.test(p)).sort()
+  const migrations = operation === 'disable' ? [] : readdirSync('migrations-admin').filter(p => /^\d{4}_[a-z0-9_]+\.sql$/.test(p)).sort()
     .map(p => ({ name: p, sha256: digest(readFileSync(`migrations-admin/${p}`)) }));
-  return { environment, operation, sourceSha, migrations, migrationDigest: digest(migrations), runId: env.GITHUB_RUN_ID, runAttempt: env.GITHUB_RUN_ATTEMPT };
+  return { environment, operation, sourceSha, migrations, migrationDigest: digest(migrations), runId: env.GITHUB_RUN_ID, runAttempt: env.GITHUB_RUN_ATTEMPT, auditArtifactDigest: /^[a-f0-9]{64}$/.test(env.ADMIN_PRE_ACTION_ARTIFACT_DIGEST ?? '') ? `sha256:${env.ADMIN_PRE_ACTION_ARTIFACT_DIGEST}` : undefined };
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
@@ -206,6 +240,10 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
       const authorized = validateAuthorization(bundle, policy, context);
       const { createProvider } = await import('./admin-release-provider.mjs');
       const provider = createProvider(authorized, context);
+      if (environment === 'production' && operation !== 'disable') {
+        const certificate = validateStagingCertificate(JSON.parse(process.env.ADMIN_STAGING_CERTIFICATION ?? 'null'), policy, context);
+        await provider.verifyStagingArtifact(certificate);
+      }
       validateGitHub(await provider.githubFacts(), { ...context, requireAudit: phase === 'execute' });
       const audit = { sourceSha: context.sourceSha, runId: context.runId, operation, environment,
         authorizationDigest: authorized.authorizationDigest, policyDigest: authorized.policyDigest, migrationDigest: context.migrationDigest };

@@ -6,6 +6,7 @@ import {
   OPERATIONS,
   executeRelease,
   validateGitHub,
+  validateStagingCertificate,
   digest,
   renderConfigs,
   validateAuthorization,
@@ -63,6 +64,7 @@ function authorizationFixture() {
     runId: '42',
     runAttempt: '1',
     migrationDigest: 'b'.repeat(64),
+    auditArtifactDigest: 'sha256:' + 'f'.repeat(64),
   };
   const manifest = {
     version: 1,
@@ -147,7 +149,7 @@ function githubFixture(context) {
       actor: { id: 1, type: 'User' }, triggering_actor: { id: 1 }, repository: { id: 1385308553 } },
     ci: [{ head_sha: context.sourceSha, path: '.github/workflows/admin-ci.yml', status: 'completed', conclusion: 'success', event: 'push', repository: { id: 1385308553 } }],
     approvals: [{ state: 'approved', user: { id: 2, type: 'User' }, environments: [{ id: 123 }] }],
-    artifact: { name: 'admin-pre-action-42', expired: false, workflow_run: { head_sha: context.sourceSha } },
+    artifact: { name: 'admin-pre-action-42', expired: false, digest: 'sha256:' + 'f'.repeat(64), workflow_run: { id: 42, head_sha: context.sourceSha } },
   };
 }
 
@@ -193,6 +195,8 @@ describe('Admin release policy failure boundaries', () => {
     ['self approval', f => { f.approvals[0].user.id = 1; }],
     ['approval for another environment', f => { f.approvals[0].environments[0].id = 456; }],
     ['missing pre-action audit', f => { delete f.artifact; }],
+    ['wrong audit run', f => { f.artifact.workflow_run.id = 99; }],
+    ['wrong audit digest', f => { f.artifact.digest = 'sha256:' + '0'.repeat(64); }],
     ['expired pre-action audit', f => { f.artifact.expired = true; }],
   ])('blocks %s before credentials can mutate Cloudflare', (_name, mutate) => {
     const { context } = authorizationFixture();
@@ -204,7 +208,7 @@ describe('Admin release policy failure boundaries', () => {
 
   const fakeProvider = () => Object.fromEntries(['verifyTargets', 'verifyConsoleDisabled', 'verifyLedger', 'verifyExistingDatabaseIdentity', 'applyMigrations', 'bindDatabaseIdentity',
     'verifyDatabaseIdentity', 'verifySecrets', 'deploy', 'verifyDisabled', 'verifyRollback', 'rollback', 'verifyBootstrapRoster', 'bootstrap',
-    'recoveryRoster', 'recover', 'deploymentVersions', 'captureRollback', 'restoreRollback'].map(name => [name, vi.fn(async () => ({}))]));
+    'recoveryRoster', 'recover', 'deploymentVersions', 'captureRollback', 'restoreRollback', 'verifyShutdownTarget', 'shutdown'].map(name => [name, vi.fn(async () => ({}))]));
   const operationFixture = operation => {
     const { fixture, context, bundle } = authorizationFixture();
     context.operation = operation;
@@ -228,6 +232,37 @@ describe('Admin release policy failure boundaries', () => {
     expect(provider.verifyTargets.mock.calls.length).toBeGreaterThanOrEqual(2);
     expect(provider.verifySecrets.mock.invocationCallOrder[0]).toBeLessThan(provider.deploy.mock.invocationCallOrder[0]);
     expect(provider.verifyDisabled).toHaveBeenCalledWith(authorized.target, context.sourceSha);
+  });
+
+  it('contains Admin even when D1, facade, secrets, and rollback checks are unavailable', async () => {
+    const { authorized, context, provider } = operationFixture('disable');
+    for (const name of ['verifyTargets', 'verifyLedger', 'verifyDatabaseIdentity', 'verifyConsoleDisabled', 'verifySecrets', 'captureRollback']) {
+      provider[name].mockRejectedValue(new Error('Dependency unavailable'));
+    }
+    await expect(executeRelease(authorized, context, provider)).resolves.toMatchObject({ result: 'PASS', consoleEnabled: false });
+    expect(provider.shutdown).toHaveBeenCalledOnce();
+    expect(provider.verifyShutdownTarget).toHaveBeenCalledTimes(2);
+    expect(provider.verifyDisabled).toHaveBeenCalledWith(authorized.target, context.sourceSha, true);
+    expect(provider.deploymentVersions).toHaveBeenCalledWith([authorized.target.adminWorker]);
+    expect(provider.deploy).not.toHaveBeenCalled();
+    expect(provider.verifyLedger).not.toHaveBeenCalled();
+  });
+
+  it('does not perform containment when the narrow target identity mismatches', async () => {
+    const { authorized, context, provider } = operationFixture('disable');
+    provider.verifyShutdownTarget.mockRejectedValue(new Error('wrong Worker'));
+    await expect(executeRelease(authorized, context, provider)).rejects.toThrow('wrong Worker');
+    expect(provider.shutdown).not.toHaveBeenCalled();
+  });
+
+  it('restores only approved disabled versions after containment and compensates to containment on failure', async () => {
+    const { authorized, context, provider } = operationFixture('rollback-disabled');
+    authorized.manifest.payload = { adminVersion: 'safe-admin', facadeVersion: 'safe-facade', previousSha: 'f'.repeat(40) };
+    provider.captureRollback.mockResolvedValue({ shutdown: true });
+    provider.rollback.mockResolvedValueOnce({}).mockRejectedValueOnce(new Error('switch failed'));
+    await expect(executeRelease(authorized, context, provider)).rejects.toThrow('switch failed');
+    expect(provider.verifyTargets).toHaveBeenCalledWith(authorized.target, context.environment, true);
+    expect(provider.restoreRollback).toHaveBeenCalledWith({ shutdown: true });
   });
 
   it('does not migrate a database with an unexpected existing identity', async () => {
@@ -282,4 +317,37 @@ it('rejects customer database reuse when validating production as well as stagin
   policy.environments.production.customerDatabaseId = policy.environments.staging.customerDatabaseId;
   expect(() => validateTarget(policy, 'production')).toThrow(/production customer D1/);
   expect(() => validateTarget(policy, 'staging')).toThrow(/production customer D1/);
+});
+
+function certificateFixture() {
+  const { policy, keys } = policyFixture();
+  const context = { sourceSha: 'a'.repeat(40) };
+  const manifest = { version: 1, sourceSha: context.sourceSha, policyDigest: digest(policy), stagingDatabaseId: policy.environments.staging.adminDatabaseId,
+    completedAt: '2026-10-17T00:00:00.000Z', expiresAt: '2026-10-18T00:00:00.000Z', independentReviewDigest: 'b'.repeat(64),
+    artifactId: '1234', artifactDigest: 'c'.repeat(64), checks: Object.fromEntries(Array.from({ length: 20 }, (_, i) => [`ST${String(i + 1).padStart(2, '0')}`, 'PASS'])) };
+  const approvals = keys.map(({ privateKey }, i) => ({ operatorId: `operator-${i + 1}`, signature: sign(null, Buffer.from(canonical(manifest)), privateKey).toString('base64url') }));
+  return { policy, context, certificate: { manifest, approvals } };
+}
+
+describe('Production staging certification gate', () => {
+  it('requires both signatures over all twenty exact-source staging checks and artifact identity', () => {
+    const { policy, context, certificate } = certificateFixture();
+    expect(validateStagingCertificate(certificate, policy, context, Date.parse('2026-10-17T00:10:00.000Z'))).toBe(certificate.manifest);
+  });
+
+  it.each([
+    ['missing check', c => { delete c.manifest.checks.ST20; }],
+    ['failed check', c => { c.manifest.checks.ST01 = 'FAIL'; }],
+    ['unrun check', c => { c.manifest.checks.ST14 = 'NOT_RUN'; }],
+    ['changed source', c => { c.manifest.sourceSha = 'd'.repeat(40); }],
+    ['missing review', c => { c.manifest.independentReviewDigest = ''; }],
+    ['changed artifact', c => { c.manifest.artifactDigest = 'd'.repeat(64); }],
+    ['single signer', c => { c.approvals.pop(); }],
+    ['duplicated signer', c => { c.approvals[1] = c.approvals[0]; }],
+    ['expired', c => { c.manifest.expiresAt = '2026-10-17T00:05:00.000Z'; }],
+  ])('rejects production certification with %s', (_name, mutate) => {
+    const { policy, context, certificate } = certificateFixture();
+    mutate(certificate);
+    expect(() => validateStagingCertificate(certificate, policy, context, Date.parse('2026-10-17T00:10:00.000Z'))).toThrow();
+  });
 });
