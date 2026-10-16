@@ -216,7 +216,7 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
         try {
           const location = response.headers.get('location');
           const access = location ? new URL(location, `https://${t.hostname}`) : null;
-          const tenantDenied = response.status === 302 && access?.origin === t.issuer && access.pathname.startsWith('/cdn-cgi/access/login');
+          const tenantDenied = response.status === 302 && access?.origin === t.issuer && (access.pathname === '/cdn-cgi/access/login' || access.pathname.startsWith('/cdn-cgi/access/login/'));
           const disabled = response.status === 404 && response.headers.get('x-admin-disabled') === 'true' &&
             response.headers.get('cache-control') === 'no-store' && await response.text() === 'Not Found';
           if (!disabled && !tenantDenied) throw new Error('Disabled/auth smoke failed');

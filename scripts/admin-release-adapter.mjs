@@ -74,16 +74,16 @@ export function validateAuthorization(bundle, policy, context, now = Date.now())
   return { target, manifest: m, authorizationDigest: digest(bundle), policyDigest: digest(policy) };
 }
 
-export function validateStagingCertificate(certificate, policy, context, now = Date.now()) {
+function validateStagingAttestation(certificate, policy, context, now, artifactRequired) {
   const target = validateTarget(policy, 'production');
   validateTarget(policy, 'staging');
   const fields = ['version', 'sourceSha', 'policyDigest', 'stagingDatabaseId', 'completedAt', 'expiresAt',
-    'independentReviewDigest', 'artifactId', 'artifactDigest', 'checks'];
+    'independentReviewDigest', 'checks', ...(artifactRequired ? ['artifactId', 'artifactDigest'] : [])];
   if (!exact(certificate, ['manifest', 'approvals']) || !exact(certificate.manifest, fields)) throw new Error('Signed staging certification required');
   const m = certificate.manifest;
   if (m.version !== 1 || m.sourceSha !== context.sourceSha || m.policyDigest !== digest(policy) ||
       m.stagingDatabaseId !== policy.environments.staging.adminDatabaseId || !/^[a-f0-9]{64}$/.test(m.independentReviewDigest) ||
-      !/^[a-f0-9]{64}$/.test(m.artifactDigest) || !/^[1-9][0-9]{0,19}$/.test(m.artifactId) ||
+      (artifactRequired && (!/^[a-f0-9]{64}$/.test(m.artifactDigest) || !/^[1-9][0-9]{0,19}$/.test(m.artifactId))) ||
       !exact(m.checks, Array.from({ length: 20 }, (_, i) => `ST${String(i + 1).padStart(2, '0')}`)) ||
       Object.values(m.checks).some(v => v !== 'PASS')) throw new Error('Incomplete exact-source staging certification');
   const completed = Date.parse(m.completedAt), expires = Date.parse(m.expiresAt);
@@ -95,6 +95,14 @@ export function validateStagingCertificate(certificate, policy, context, now = D
         !verify(null, Buffer.from(canonical(m)), createPublicKey(custodian.publicKey), Buffer.from(a.signature, 'base64url'))) throw new Error('Invalid staging attestation');
   }
   return m;
+}
+
+export function validateStagingCertificate(certificate, policy, context, now = Date.now()) {
+  return validateStagingAttestation(certificate, policy, context, now, true);
+}
+
+export function validateStagingReport(report, policy, context, now = Date.now()) {
+  return validateStagingAttestation(report, policy, context, now, false);
 }
 
 export function validateGitHub(facts, context) {
@@ -208,6 +216,8 @@ export async function executeRelease(authorized, context, provider) {
     result: 'PASS', consoleEnabled: false, remoteExecuted: true, productionDeployed: context.environment === 'production' && ['deploy-disabled', 'disable', 'rollback-disabled'].includes(m.operation) };
 }
 
+export const normalizeArtifactDigest = value => /^[a-f0-9]{64}$/.test(value ?? '') ? `sha256:${value}` : undefined;
+
 export function loadContext(environment, operation, env = process.env) {
   if (!['staging', 'production'].includes(environment) || !OPERATIONS.includes(operation)) throw new Error('Enumerated environment and operation required');
   const git = (...args) => execFileSync('git', args, { encoding: 'utf8' }).trim();
@@ -215,7 +225,7 @@ export function loadContext(environment, operation, env = process.env) {
   if (!sha.test(sourceSha) || git('status', '--porcelain', '--untracked-files=normal')) throw new Error('Clean exact-SHA checkout required');
   const migrations = operation === 'disable' ? [] : readdirSync('migrations-admin').filter(p => /^\d{4}_[a-z0-9_]+\.sql$/.test(p)).sort()
     .map(p => ({ name: p, sha256: digest(readFileSync(`migrations-admin/${p}`)) }));
-  return { environment, operation, sourceSha, migrations, migrationDigest: digest(migrations), runId: env.GITHUB_RUN_ID, runAttempt: env.GITHUB_RUN_ATTEMPT, auditArtifactDigest: /^[a-f0-9]{64}$/.test(env.ADMIN_PRE_ACTION_ARTIFACT_DIGEST ?? '') ? `sha256:${env.ADMIN_PRE_ACTION_ARTIFACT_DIGEST}` : undefined };
+  return { environment, operation, sourceSha, migrations, migrationDigest: digest(migrations), runId: env.GITHUB_RUN_ID, runAttempt: env.GITHUB_RUN_ATTEMPT, auditArtifactDigest: normalizeArtifactDigest(env.ADMIN_PRE_ACTION_ARTIFACT_DIGEST) };
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {

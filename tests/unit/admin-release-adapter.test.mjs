@@ -7,6 +7,8 @@ import {
   executeRelease,
   validateGitHub,
   validateStagingCertificate,
+  validateStagingReport,
+  normalizeArtifactDigest,
   digest,
   renderConfigs,
   validateAuthorization,
@@ -350,4 +352,26 @@ describe('Production staging certification gate', () => {
     mutate(certificate);
     expect(() => validateStagingCertificate(certificate, policy, context, Date.parse('2026-10-17T00:10:00.000Z'))).toThrow();
   });
+});
+
+
+it('validates a separately signed completed report before its artifact ID exists', () => {
+  const { policy, keys } = policyFixture();
+  const { certificate, context } = certificateFixture();
+  const manifest = { ...certificate.manifest, policyDigest: digest(policy) };
+  delete manifest.artifactId;
+  delete manifest.artifactDigest;
+  const approvals = keys.map(({ privateKey }, i) => ({ operatorId: `operator-${i + 1}`,
+    signature: sign(null, Buffer.from(canonical(manifest)), privateKey).toString('base64url') }));
+  const report = { manifest, approvals };
+  expect(validateStagingReport(report, policy, context, Date.parse('2026-10-17T00:10:00.000Z'))).toBe(manifest);
+  expect(() => validateStagingCertificate(report, policy, context, Date.parse('2026-10-17T00:10:00.000Z'))).toThrow();
+  report.manifest.checks.ST20 = 'NOT_RUN';
+  expect(() => validateStagingReport(report, policy, context, Date.parse('2026-10-17T00:10:00.000Z'))).toThrow();
+});
+
+it('normalizes the pinned upload action bare digest at the real context boundary', () => {
+  expect(normalizeArtifactDigest('f'.repeat(64))).toBe('sha256:' + 'f'.repeat(64));
+  expect(normalizeArtifactDigest('sha256:' + 'f'.repeat(64))).toBeUndefined();
+  expect(normalizeArtifactDigest('invalid')).toBeUndefined();
 });

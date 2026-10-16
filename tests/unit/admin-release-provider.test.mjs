@@ -190,6 +190,7 @@ describe('Containment and disabled smoke', () => {
     ['unrelated 404', () => new Response('Not Found', { status: 404 })],
     ['unrelated 403', () => new Response('Forbidden', { status: 403 })],
     ['public page', () => new Response('Admin secrets')],
+    ['unrelated tenant path', () => new Response(null, { status: 302, headers: { location: `${target.issuer}/cdn-cgi/access/loginevil` } })],
     ['foreign Access redirect', () => new Response(null, { status: 302, headers: { location: 'https://evil.cloudflareaccess.com/cdn-cgi/access/login' } })],
   ])('rejects %s as shutdown evidence', async (_name, response) => {
     const provider = createProvider(authorized, { ...context, operation: 'disable' }, { CLOUDFLARE_API_TOKEN: 'synthetic' }, smokeFixture(response), vi.fn());
@@ -332,4 +333,16 @@ it('rejects an explicitly truncated domain inventory', async () => {
     result: [{ hostname: target.hostname, service: target.adminWorker, zone_id: target.zoneId }], result_info: { total_count: 2 } })) : base(url, options));
   const provider = createProvider(authorized, context, { CLOUDFLARE_API_TOKEN: 'synthetic' }, fetcher, vi.fn());
   await expect(provider.verifyTargets(target)).rejects.toThrow('Truncated');
+});
+
+
+it('produces only a validated, opt-in, protected staging report in the exact staging workflow', () => {
+  const workflow = load(readFileSync('.github/workflows/admin-staging-deploy.yml', 'utf8'));
+  expect(workflow.on.workflow_dispatch.inputs.certify.default).toBe(false);
+  const job = workflow.jobs.certify;
+  expect(job.environment).toBe('admin-staging');
+  expect(job.if).toContain('inputs.certify == true');
+  expect(job.steps.find(s => s.run?.includes('admin-staging-attest.mjs')).env.ADMIN_STAGING_REPORT).toContain('secrets.ADMIN_STAGING_REPORT');
+  expect(job.steps.at(-1).with.name).toBe('admin-staging-certification-${{ github.run_id }}');
+  expect(job.steps.some(s => s.env?.CLOUDFLARE_API_TOKEN)).toBe(false);
 });

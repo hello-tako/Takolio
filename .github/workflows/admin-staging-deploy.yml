@@ -13,6 +13,11 @@ on:
         type: choice
         options: [deploy-disabled, rollback-disabled]
         required: true
+      certify:
+        description: Package a separately signed completed ST01-ST20 report
+        type: boolean
+        default: false
+        required: true
       execute:
         description: Requires separate owner authorization and two signatures
         type: boolean
@@ -117,4 +122,31 @@ jobs:
           name: admin-operation-${{ github.run_id }}
           path: .artifacts/admin-release/receipt.json
           if-no-files-found: warn
+          retention-days: 90
+
+  certify:
+    if: inputs.certify == true && vars.ADMIN_RELEASE_EXECUTION_ENABLED == 'true' && github.ref == 'refs/heads/main' && inputs.source_sha == github.sha && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: admin-staging
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+      - name: Validate two-custodian completed staging report
+        env:
+          ADMIN_RELEASE_EXECUTION_ENABLED: ${{ vars.ADMIN_RELEASE_EXECUTION_ENABLED }}
+          ADMIN_STAGING_REPORT: ${{ secrets.ADMIN_STAGING_REPORT }}
+          GH_TOKEN: ${{ secrets.ADMIN_RELEASE_GITHUB_READ_TOKEN }}
+        run: node scripts/admin-staging-attest.mjs
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: admin-staging-certification-${{ github.run_id }}
+          path: .artifacts/admin-release/staging-report.json
+          if-no-files-found: error
           retention-days: 90
