@@ -49,8 +49,8 @@ try {
   const mascot = page.locator('[data-takolio-mascot="wave"] img');
   await expect.poll(() => mascot.evaluate((img) => img.complete && img.naturalWidth > 0 && img.currentSrc.includes('/mascot/3d/'))).toBe(true);
   const offlineMascot = await mascot.evaluate((img) => ({ src: new URL(img.currentSrc).pathname, width: img.width, height: img.height, naturalWidth: img.naturalWidth }));
-  assert.equal(offlineMascot.width, 224);
-  assert.equal(offlineMascot.height, 224);
+  assert.equal(offlineMascot.width, 240);
+  assert.equal(offlineMascot.height, 240);
   await page.screenshot({ path: resolve(out, 'offline-landing-390.png'), fullPage: true });
   result.checks.push({ kind: 'offline-cached-public-shell-logo-font-and-3d-mascot', route: new URL(page.url()).pathname, offlineMascot });
   assert.deepEqual(result.errors, []);

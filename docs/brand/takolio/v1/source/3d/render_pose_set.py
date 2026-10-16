@@ -9,15 +9,16 @@ master = Path(os.environ.get('TAKO_MASTER', str(out / 'tako-3d-candidate-v1.blen
 bpy.ops.wm.open_mainfile(filepath=str(master))
 scene = bpy.context.scene
 scene.render.engine = 'CYCLES'
-scene.cycles.samples = 48
+scene.cycles.samples = int(os.environ.get('TAKO_SAMPLES', '64'))
 scene.cycles.seed = 17
 scene.cycles.use_denoising = True
 scene.render.film_transparent = True
 scene.render.image_settings.file_format = 'PNG'
 scene.render.image_settings.color_mode = 'RGBA'
-scene.render.resolution_x = scene.render.resolution_y = 2048
+scene.render.resolution_x = scene.render.resolution_y = int(os.environ.get('TAKO_RENDER_SIZE', '2048'))
 scene.render.resolution_percentage = 100
 scene.frame_set(1)
+out.mkdir(parents=True, exist_ok=True)
 rig = bpy.data.objects['Tako_Rig / eight articulated tentacles']
 rig.animation_data_clear()
 camera = scene.camera
@@ -25,6 +26,7 @@ camera.location = (1.25, -8, 3.05)
 camera.data.ortho_scale = 4.65
 camera.rotation_euler = (Vector((0, 0, 1.72)) - camera.location).to_track_quat('-Z', 'Y').to_euler()
 created = []
+pose_contacts = []
 
 
 def mat(name, color, rough=0.4):
@@ -125,23 +127,35 @@ def star(center, scale=.22):
     return badge('star', points, center, scale, gold)
 
 
+def parent_to_rig(obj):
+    # Object operators defer scale/rotation evaluation until the dependency graph updates.
+    bpy.context.view_layer.update()
+    world = obj.matrix_world.copy()
+    obj.parent = rig
+    obj.matrix_world = world
+    return obj
+
+
 def second_eye():
+    parts = []
     def eye_part(name, x, z, scale, material, offset):
         y = -.73*math.sqrt(max(.08, 1-(x/.96)**2-((z-1.55)/1.03)**2))
         normal = Vector((x/.96**2, y/.73**2, (z-1.55)/1.03**2)).normalized()
         obj = sphere(name, Vector((x,y,z))+normal*offset, scale, material)
         obj.rotation_mode = 'QUATERNION'
         obj.rotation_quaternion = Vector((0,-1,0)).rotation_difference(normal)
+        parts.append(parent_to_rig(obj))
     eye_part('right eye rim', .36, 1.96, (.205,.064,.265), white, .035)
     eye_part('right pupil', .36, 1.96, (.177,.073,.233), pupil, .083)
     eye_part('right catchlight', .31, 2.045, (.064,.016,.077), white, .156)
-    eye_part('right catchlight small', .41, 1.88, (.022,.009,.025), white, .159)
     for obj in scene.objects:
         if obj.name.startswith(('Expression / joyful wink','Wink / rounded end')):
             obj.hide_render = True
+    return parts
 
 
 def bowl():
+    parts = []
     vertices, faces = [], []
     profile = [(0,.74),(.27,.74),(.38,.83),(.48,1.04),(.49,1.08),(.45,1.09),(.39,.91),(.26,.82),(0,.82)]
     for radius,z in profile:
@@ -153,15 +167,17 @@ def bowl():
             a=row*64+j; b=row*64+(j+1)%64
             faces.append((a,b,b+64,a+64))
     mesh=bpy.data.meshes.new('bowl');mesh.from_pydata(vertices,[],faces);mesh.update()
-    obj=bpy.data.objects.new('bowl',mesh);scene.collection.objects.link(obj);finish(obj,'bowl',cream)
-    sphere('food rice',(.82,-.65,1.04),(.41,.38,.10),gold)
+    obj=bpy.data.objects.new('bowl',mesh);scene.collection.objects.link(obj);parts.append(parent_to_rig(finish(obj,'bowl',cream)))
+    parts.append(parent_to_rig(sphere('food rice',(.82,-.65,1.04),(.41,.38,.10),gold)))
     for x,y,z in [(.7,-.69,1.14),(.95,-.62,1.14),(.78,-.47,1.13)]:
-        sphere('greens',(x,y,z),(.10,.06,.035),green)
+        parts.append(parent_to_rig(sphere('greens',(x,y,z),(.10,.06,.035),green)))
+    return parts
 
 
 def spoon():
-    tube('wooden spoon handle',[(-1.3,-.3,1.24),(-1.43,-.3,1.65),(-1.56,-.3,2.0)],.045,wood)
-    sphere('wooden spoon head',(-1.60,-.3,2.12),(.11,.05,.19),wood)
+    handle=tube('wooden spoon handle',[(-1.3,-.3,1.24),(-1.43,-.3,1.65),(-1.56,-.3,2.0)],.045,wood)
+    head=sphere('wooden spoon head',(-1.60,-.3,2.12),(.11,.05,.19),wood)
+    return [parent_to_rig(handle), parent_to_rig(head)]
 
 
 def clear_pose():
@@ -171,7 +187,9 @@ def clear_pose():
     for obj in scene.objects:
         if obj.name.startswith(('Expression /','Wink /')):
             obj.hide_render = False
+    rig.rotation_euler=(0,0,0)
     for bone in rig.pose.bones:
+        for constraint in list(bone.constraints): bone.constraints.remove(constraint)
         bone.rotation_mode='XYZ';bone.rotation_euler=(0,0,0)
 
 
@@ -179,33 +197,102 @@ def pose_bone(arm, segment, angle):
     rig.pose.bones[f'Arm_{arm:02d}_{segment:02d}'].rotation_euler.z=angle
 
 
+def articulate(arm, angles):
+    for segment,angle in enumerate(angles,1): pose_bone(arm,segment,angle)
+
+
+def reach(arm, point):
+    target=bpy.data.objects.new('Pose / grip target',None)
+    scene.collection.objects.link(target);target.location=point
+    created.append(target)
+    ik=rig.pose.bones[f'Arm_{arm:02d}_04'].constraints.new('IK')
+    ik.target=target;ik.chain_count=4;ik.use_tail=True;ik.use_stretch=False
+    ik.iterations=128
+    target.parent=rig
+    bpy.context.view_layer.update()
+
+
+def grip(arm, objects, authored_anchor):
+    if not objects: return
+    bone=rig.pose.bones[f'Arm_{arm:02d}_04']
+    bpy.context.view_layer.update()
+    center=rig.matrix_world@bone.tail
+    delta=center-Vector(authored_anchor)
+    holder=bpy.data.objects.new('Pose / articulated prop grip',None)
+    scene.collection.objects.link(holder)
+    holder.location=center
+    bpy.context.view_layer.update()
+    world=holder.matrix_world.copy()
+    holder.parent=rig;holder.parent_type='BONE';holder.parent_bone=bone.name
+    holder.matrix_world=world
+    created.append(holder)
+    for obj in objects:
+        world=obj.matrix_world.copy();world.translation += delta
+        obj.matrix_world=world
+        obj.parent=holder
+        obj.matrix_world=world
+    bpy.context.view_layer.update()
+    depsgraph=bpy.context.evaluated_depsgraph_get()
+    distance=float('inf')
+    for obj in objects:
+        evaluated=obj.evaluated_get(depsgraph);mesh=evaluated.to_mesh()
+        distance=min(distance,min((evaluated.matrix_world@v.co-center).length for v in mesh.vertices))
+        evaluated.to_mesh_clear()
+    assert distance<.18, f'Prop contact gap: {distance}'
+    pose_contacts.append({'arm':arm,'objects':[obj.name for obj in objects],'surfaceDistance':round(distance,4),'maximumAllowed':.18})
+
+
 def configure(name):
+    # Multi-segment poses intentionally change the silhouette at real UI sizes.
     if name == 'welcome':
-        pose_bone(1,4,-.20)
+        articulate(1,[0,.08,-.18,-.30])
+        articulate(2,[0,-.10,-.12,.10])
+        reach(1,(-1.33,-.14,2.01))
+        rig.rotation_euler.y=-.035
         heart((-1.2,-.1,2.48), .012)
     elif name == 'cooking':
-        second_eye();bowl();spoon()
-        pose_bone(2,4,.08)
+        eye_parts=second_eye();bowl_parts=bowl();spoon_parts=spoon()
+        articulate(1,[0,-.10,.12,.26])
+        articulate(2,[.12,.22,-.12,-.20])
+        reach(1,(-1.28,-.30,1.53))
+        reach(2,(.94,-.66,.78))
+        grip(1,spoon_parts,(-1.28,-.30,1.53))
+        grip(2,bowl_parts,(.94,-.66,.78))
+        rig.rotation_euler.y=.035
     elif name == 'thinking':
-        second_eye()
+        eye_parts=second_eye()
         for obj in scene.objects:
             if obj.name.startswith(('Expression / open smile','Expression / tongue')):
                 obj.hide_render=True
-        sphere('thinking mouth',(0,-.752,1.42),(.065,.025,.055),navy)
+        parent_to_rig(sphere('thinking mouth',(0,-.752,1.42),(.065,.025,.055),navy))
         tube('question hook',[(1.15,0,2.7),(1.18,0,2.84),(1.38,0,2.9),(1.53,0,2.77),(1.48,0,2.62),(1.34,0,2.5),(1.34,0,2.42)],.045,navy)
         sphere('question dot',(1.34,0,2.27),(.055,.045,.055),navy)
-        pose_bone(1,4,-.12)
+        articulate(1,[-.15,-.32,-.35,-.40])
+        articulate(2,[0,-.25,-.15,.08])
+        reach(1,(-.76,-.62,1.74))
+        rig.rotation_euler.y=-.065
     elif name == 'excited':
         heart((-1.18,0,2.55));heart((1.18,0,2.5),.012)
-        pose_bone(1,4,-.18);pose_bone(2,4,.18)
+        articulate(1,[.10,.12,-.25,-.32])
+        articulate(2,[-.10,-.12,.25,.32])
+        reach(1,(-1.13,-.05,2.10))
+        reach(2,(1.13,-.05,2.10))
+        rig.rotation_euler.y=.045
     elif name == 'completed':
-        bowl();star((-1.25,0,2.55),.19);star((1.3,0,2.55),.12)
-        pose_bone(1,4,-.12)
+        eye_parts=second_eye();bowl_parts=bowl();star((-1.25,0,2.55),.19);star((1.3,0,2.55),.12)
+        articulate(1,[0,-.22,-.12,.08])
+        articulate(2,[.12,.22,-.12,-.20])
+        reach(2,(.94,-.66,.78))
+        grip(2,bowl_parts,(.94,-.66,.78))
     elif name == 'cheering':
-        second_eye();star((-1.2,0,2.65));star((1.23,0,2.65),.16)
+        eye_parts=second_eye();star((-1.2,0,2.65));star((1.23,0,2.65),.16)
         for x,z in [(-1.62,2.22),(-.94,3.20),(1.64,2.07),(1.05,3.16)]:
             tube('confetti',[(x,0,z),(x+.05,0,z+.10)],.025,gold if x<0 else green)
-        pose_bone(1,4,-.2);pose_bone(2,4,.2)
+        articulate(1,[.08,.22,-.34,-.36])
+        articulate(2,[-.08,-.22,.34,.36])
+        reach(1,(-1.10,.03,2.19))
+        reach(2,(1.10,.03,2.19))
+        rig.rotation_euler.y=-.035
 
 
 receipt=[]
@@ -213,7 +300,8 @@ for name in os.environ.get('TAKO_POSES', 'welcome,cooking,thinking,excited,compl
     clear_pose();configure(name)
     scene.render.filepath=str(out/f'tako-pose-{name}-2048.png')
     bpy.ops.render.render(write_still=True)
-    receipt.append({'name':name,'file':f'tako-pose-{name}-2048.png','status':'candidate','blender':bpy.app.version_string})
+    receipt.append({'name':name,'file':f'tako-pose-{name}-2048.png','status':'candidate','blender':bpy.app.version_string,'contacts':list(pose_contacts)})
+    pose_contacts.clear()
     print('POSE_COMPLETE',name,flush=True)
 clear_pose()
 # The compact symbol keeps the eye/hat silhouette and omits apron/props and cups.

@@ -61,6 +61,7 @@ async function shot(name, route, prepare) {
   const fixtureNameOccurrences = bodyText.split('Frigo Preview').length - 1;
   const legacyBrand = /Takosan|Tako-san|Frigo/i.test(bodyText.replaceAll('Frigo Preview', '[fixture-account]'));
   if (stage !== 'before' && legacyBrand && name !== 'plus') result.failures.push({ name, width: layout.width, kind: 'legacy-visible-brand' });
+  assert.equal(new URL(page.url()).pathname, new URL(route, base).pathname, name + ': capture must match requested route');
   const file = `${name}-${layout.width}.png`;
   await page.screenshot({ path: resolve(out, file), fullPage: true });
   const failures = [];

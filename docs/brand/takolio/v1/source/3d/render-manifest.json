@@ -8,51 +8,51 @@
     {
       "pose": "welcome",
       "path": "renders/tako-welcome-2048.png",
-      "sha256": "211efb83f09d08e9385e53efd8998820d8a17819ae1ebb6d7558d56d22125cff",
-      "bytes": 2402250,
+      "sha256": "693d1e769b5bbe7abed77f63ea8035ef0f68ddb22fa0fe60464f3fe485f69eb4",
+      "bytes": 2382062,
       "size": "2048x2048 RGBA PNG"
     },
     {
       "pose": "cooking",
       "path": "renders/tako-cooking-2048.png",
-      "sha256": "21ad494a91890a5b49e5e30fe8243647ff8defbb07edc6352c06edc36e052c72",
-      "bytes": 2429912,
+      "sha256": "1ca7d586bfb16ecdfe04ec35bd6edfb0aa94ee29bf7448f804366bb29e4a9e83",
+      "bytes": 2395397,
       "size": "2048x2048 RGBA PNG"
     },
     {
       "pose": "thinking",
       "path": "renders/tako-thinking-2048.png",
-      "sha256": "e2565eaf8965df4ee729c0549b1a1a7069614499b17d2bac6398848b4b62a5a3",
-      "bytes": 2419916,
+      "sha256": "98f5628d54da52acdd7765648dfbd79b7d967ada7eda8e5680c68b23ef5a5db8",
+      "bytes": 2383156,
       "size": "2048x2048 RGBA PNG"
     },
     {
       "pose": "excited",
       "path": "renders/tako-excited-2048.png",
-      "sha256": "1a6e799bade5cc20c15bba110a73506820d024a9ee98effef28fd71630bdb67d",
-      "bytes": 2437010,
+      "sha256": "554065b7c337525172145ce729f50da34f2e9c5fee9d4c136c5dfc7bd967777c",
+      "bytes": 2427170,
       "size": "2048x2048 RGBA PNG"
     },
     {
       "pose": "completed",
       "path": "renders/tako-completed-2048.png",
-      "sha256": "c29bac83eec2e21053e134845a90cca0d0c4319622656358b758050a26b49315",
-      "bytes": 2422622,
+      "sha256": "08a11c663683df74a5dc94bbc82ccb8c12c9a3123c2b6039aec9242c142d5938",
+      "bytes": 2366907,
       "size": "2048x2048 RGBA PNG"
     },
     {
       "pose": "cheering",
       "path": "renders/tako-cheering-2048.png",
-      "sha256": "a720328fb0e87561f05e9299e118d5ad51ddb8701015f4a6ebea3e32bc2e4406",
-      "bytes": 2449415,
+      "sha256": "6c70442ecec84f9e890e46132460584ea2757d08764c547f82ab2243fb57da42",
+      "bytes": 2424717,
       "size": "2048x2048 RGBA PNG"
     }
   ],
   "authoringFiles": [
     {
       "path": "build_tako.py",
-      "sha256": "fe3b3185933de22cd6d58eed02c663e9fc8472c0767eaa39f1d2ee06d4d71c5e",
-      "bytes": 19741
+      "sha256": "ba740345ea22eaf27f71b549f77b16ceb9e33b4489e1b37d2b1b86d53200624a",
+      "bytes": 20773
     },
     {
       "path": "render_views.py",
@@ -61,21 +61,110 @@
     },
     {
       "path": "render_pose_set.py",
-      "sha256": "e316da466bd2955c714f12a633d8f0b52ce4882bd69db71f17b24ba07e57c73a",
-      "bytes": 9515
+      "sha256": "904c7878afd5db5d7e648f8b4afa96ee7d4a91763f39377ebcf965b138e19a8a",
+      "bytes": 13136
     }
   ],
   "nativeHandoff": {
     "tako-3d-candidate-v1.blend": {
-      "sha256": "41da1b7257188c5d561310156301f10fff3f75dba1e1341b243b325b6c154630",
-      "bytes": 13777177,
+      "sha256": "de303822918dcdecaa020c7773778303c390e44d596f1b8aae1f144bad58b00c",
+      "bytes": 17459976,
       "status": "local handoff; excluded from browser runtime and public repository"
     },
     "tako-3d-candidate-v1.glb": {
-      "sha256": "41e0d22e90e5f0961400d9a0e96a3c0d942cbe39093814425be3a1f051e4f383",
-      "bytes": 6172708,
+      "sha256": "dd678d1335f0f4fd1256666ec20b839e9f92dc20d8558aa3b9df60a9c448fd3a",
+      "bytes": 7959280,
       "status": "local handoff; excluded from browser runtime and public repository"
     }
   },
-  "note": "Procedural Blender geometry is a review candidate. Rendered poses are static illustrations; premium finishing, complete facial controls and device acceptance remain pending."
+  "note": "Procedural Blender geometry with multi-segment/IK poses and bone-parented props is a review candidate. Runtime uses static renders. Premium concept fidelity, full facial controls, deformation polish and device acceptance remain pending.",
+  "renderSettings": {
+    "blender": "4.5.9 LTS",
+    "engine": "Cycles",
+    "size": 2048,
+    "samples": 64,
+    "seed": 17,
+    "filmTransparent": true,
+    "staticPoses": true
+  },
+  "poseContactSmokeChecks": [
+    {
+      "name": "welcome",
+      "file": "tako-pose-welcome-2048.png",
+      "status": "candidate",
+      "blender": "4.5.9 LTS",
+      "contacts": []
+    },
+    {
+      "name": "cooking",
+      "file": "tako-pose-cooking-2048.png",
+      "status": "candidate",
+      "blender": "4.5.9 LTS",
+      "contacts": [
+        {
+          "arm": 1,
+          "objects": [
+            "Pose / wooden spoon handle",
+            "Pose / wooden spoon head"
+          ],
+          "surfaceDistance": 0.06,
+          "maximumAllowed": 0.18
+        },
+        {
+          "arm": 2,
+          "objects": [
+            "Pose / bowl",
+            "Pose / food rice",
+            "Pose / greens",
+            "Pose / greens.001",
+            "Pose / greens.002"
+          ],
+          "surfaceDistance": 0.1269,
+          "maximumAllowed": 0.18
+        }
+      ]
+    },
+    {
+      "name": "thinking",
+      "file": "tako-pose-thinking-2048.png",
+      "status": "candidate",
+      "blender": "4.5.9 LTS",
+      "contacts": []
+    },
+    {
+      "name": "excited",
+      "file": "tako-pose-excited-2048.png",
+      "status": "candidate",
+      "blender": "4.5.9 LTS",
+      "contacts": []
+    },
+    {
+      "name": "completed",
+      "file": "tako-pose-completed-2048.png",
+      "status": "candidate",
+      "blender": "4.5.9 LTS",
+      "contacts": [
+        {
+          "arm": 2,
+          "objects": [
+            "Pose / bowl.001",
+            "Pose / food rice.001",
+            "Pose / greens.003",
+            "Pose / greens.004",
+            "Pose / greens.005"
+          ],
+          "surfaceDistance": 0.1269,
+          "maximumAllowed": 0.18
+        }
+      ]
+    },
+    {
+      "name": "cheering",
+      "file": "tako-pose-cheering-2048.png",
+      "status": "candidate",
+      "blender": "4.5.9 LTS",
+      "contacts": []
+    }
+  ],
+  "contactCheckLimit": "Distance from bone tip to nearest prop vertex is a smoke check, not proof of a natural hand grip; actual-size visual review is required."
 }

@@ -3209,3 +3209,43 @@ Changed family choices receive another key; unchanged uncertain requests retain
 the existing key while the setup remains mounted. A timed-out profile PUT is
 reconciled on explicit retry with a fresh GET and matching newer revision/content.
 Conflicting content requires reload; the browser never blindly overwrites it.
+
+# ADR-TAKOLIO-004: comprehensive visual polish without changing product contracts - 2026-10-16
+
+**Status:** accepted for feature-branch implementation; review required.
+
+## Context
+
+The first Takolio migration establishes the identity contract and compact kitchen
+shell, but browser review found two mobile presentation defects: missing recipe
+media wraps into narrow letter columns and the fixed fridge add action can cover
+the empty-state scan action. The 3D candidate also needs stronger semantic pose
+separation and prop contact before it can be described as a polished illustration
+set.
+
+## Decision
+
+Add one final, scoped Takolio visual layer for `[data-kitchen-density='compact']`
+and entry/onboarding surfaces. It defines spacing, surface, typography, focus and
+motion relationships using existing semantic tokens; it does not create a second
+color authority. Empty and media states gain responsive layout rules while keeping
+existing callbacks, routes and accessible names. The shell's measured action
+reserve remains the source of truth. The empty fridge presents the existing add
+action beside its scan action in document flow and hides the duplicate floating
+control while that empty-state block is visible.
+
+Refine the existing Blender candidate in its authoring source only: pose multiple
+armature segments per state, position cooking/completed props against the body and
+hands, use a local tangent frame for sucker placement, reduce redundant catchlights
+and soften the chef-hat/skin highlight response. The six states remain transparent
+static illustrations with the same contract URLs and SVG fallback. Native Blender
+and GLB files stay local handoff files; no WebGL runtime or new dependency is added.
+
+## Compatibility and limits
+
+No route, API, session, auth, payment, Worker, database, migration, flag, domain,
+persisted identifier, recipe authority or household behavior changes. Existing
+Takolio/V3 assets remain additive and rollback is a feature-branch revert. The
+result remains a 3D candidate until fresh screenshots, asset checks and independent
+review confirm the visual result; premium concept fidelity and legal clearance are
+not asserted.

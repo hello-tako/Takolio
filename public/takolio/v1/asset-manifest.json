@@ -348,93 +348,93 @@
     },
     {
       "path": "mascot/3d/tako-welcome-256.webp",
-      "bytes": 10986,
-      "sha256": "cb7afe56069f4b910b3f93f407576e6390a9b608bcbcbab47e6c59ed6dddd92e"
+      "bytes": 10882,
+      "sha256": "fc0e1497399e36767a5e31c9b9e21d6025036d8e1e500770085fa73f39fe5a25"
     },
     {
       "path": "mascot/3d/tako-welcome-512.webp",
-      "bytes": 23296,
-      "sha256": "7f73fc0f83608afd5a8d02d795e9f70ea017c0914556d7e9019323131c9de9da"
+      "bytes": 23326,
+      "sha256": "23e9e0a2ff3dcacc5de3b0d520c96e1ee227955dc04e047ea124204384b42b49"
     },
     {
       "path": "mascot/3d/tako-welcome-1024.webp",
-      "bytes": 50454,
-      "sha256": "9c992dc20afc26e98f86b94f6c78b694da0660d575f11fb6ce40854ad234679e"
+      "bytes": 50498,
+      "sha256": "48855bb55303bb655766a533137b4968bb01740584a1788fb8332d61bdd443da"
     },
     {
       "path": "mascot/3d/tako-cooking-256.webp",
-      "bytes": 11090,
-      "sha256": "6a7c5aab970ff354ed4e0fad32b8aa19ec2c1da4d6948a30daf8242ff22cbee0"
+      "bytes": 10424,
+      "sha256": "62486f304a5b1441a0bc62d68fa34a5100a0da172420c7f74768354087e17235"
     },
     {
       "path": "mascot/3d/tako-cooking-512.webp",
-      "bytes": 23626,
-      "sha256": "fb76496037e76f5c3767978bfb62a0662a9fbb251246e1a3f54d9ee3787b412d"
+      "bytes": 22330,
+      "sha256": "5223bc0d3b9d56ffefb02d05fa9e233c9eb32ec552b1ccdb6d3b7cd4295d0c68"
     },
     {
       "path": "mascot/3d/tako-cooking-1024.webp",
-      "bytes": 51876,
-      "sha256": "c64956fea7d39020a4efe9d22ced799dc3b928ebf29b6b2191cbdf675d59948b"
+      "bytes": 48638,
+      "sha256": "d3880fee7c9e64bb5812920ec8b9e4009784747c6c00c80a1494df8bc2e2cc3f"
     },
     {
       "path": "mascot/3d/tako-thinking-256.webp",
-      "bytes": 11522,
-      "sha256": "0e0d11e67634be3778f433348622157413c9e3933b6c142c18cef0cede9d372c"
+      "bytes": 10990,
+      "sha256": "3c24e7316afcb39e68939741e41f6ce6a7b4d3066eb5ea995abc3b2a12bea767"
     },
     {
       "path": "mascot/3d/tako-thinking-512.webp",
-      "bytes": 24470,
-      "sha256": "f31c7ff273468d9ff6873662c75bcd94526f3d63fb4b2c02a96e6ead383d3def"
+      "bytes": 23264,
+      "sha256": "4ae51190b52f4d241a2a8d0ac4246fb43837767e58694db47ab0deb964cb83c1"
     },
     {
       "path": "mascot/3d/tako-thinking-1024.webp",
-      "bytes": 53214,
-      "sha256": "4a19e6efd19ecbb38633ec0987011563d873f4fefacf6689fce9e35846e6c68b"
+      "bytes": 50908,
+      "sha256": "a68ccc1f3c2616e8ce5e873178f5c77d9e8dbf1f5db7fa034951d5134eabae82"
     },
     {
       "path": "mascot/3d/tako-excited-256.webp",
-      "bytes": 11758,
-      "sha256": "003906ba25f38f0920b627c1908899856d56dc08f220a1b6743599f0b391e255"
+      "bytes": 11418,
+      "sha256": "72a5011c07f51e276ef6aab05f6f584983241ad038890c6f2c106b6d18a4ec81"
     },
     {
       "path": "mascot/3d/tako-excited-512.webp",
-      "bytes": 24932,
-      "sha256": "b2ec9f60ec4453f565b7c15b31622fec759d12e97d96e8510d5ca9bad042017d"
+      "bytes": 25144,
+      "sha256": "9241e814fe1e93fb78485e08a2f45e256c94053796236d375510b01b3b44df33"
     },
     {
       "path": "mascot/3d/tako-excited-1024.webp",
-      "bytes": 53666,
-      "sha256": "d38957d13f1ad7804a552a45f0cde28b418559b094997716dec1619cbd2e3ebe"
+      "bytes": 53138,
+      "sha256": "545eab69a9cb1c7523497a66fb08f1d076568cadefd3d2f0948aa10143f93387"
     },
     {
       "path": "mascot/3d/tako-completed-256.webp",
-      "bytes": 11440,
-      "sha256": "288f1defab7d29372f6b8dcd882a159500f2dfe6168b086c71a3297156246e7b"
+      "bytes": 10810,
+      "sha256": "164416f2bb6a08783ac9b89081ca5a46f288984f14c75090551ae99007d76fe9"
     },
     {
       "path": "mascot/3d/tako-completed-512.webp",
-      "bytes": 24252,
-      "sha256": "fad2539ca0bb2bc3b3417538ce712c13fe152560be82f6aa61917008919b21e6"
+      "bytes": 23224,
+      "sha256": "fff6ea97a967f79b10d9fbf5f114472d921e35736c6351be73be5a781fcc907d"
     },
     {
       "path": "mascot/3d/tako-completed-1024.webp",
-      "bytes": 52298,
-      "sha256": "ce58dc12467dff606f3db16c7c7cfd394c455ff35494e53b3ddc85a4a09b946c"
+      "bytes": 49522,
+      "sha256": "7438e40c687055ba867e83f19f2851c0e02d542ba6c9dcfd7146ffca6e048816"
     },
     {
       "path": "mascot/3d/tako-cheering-256.webp",
-      "bytes": 12432,
-      "sha256": "8b67536947281853de06be41f94af9eb46f3ea23eebe9422f77bb33e834b89a5"
+      "bytes": 11976,
+      "sha256": "510ec01f8d8039e5e5941c5f68f3f6503c867380eec04f275302f1d2d64ab8ed"
     },
     {
       "path": "mascot/3d/tako-cheering-512.webp",
-      "bytes": 26448,
-      "sha256": "7330d65fea0f20abd3aea5e90d9127c560bf4e1c5c712641c60e13a53f95483d"
+      "bytes": 25920,
+      "sha256": "f1a11f40312c9b356ce3ac9fe08333e423ded444d489e6cc90609dac649ee05e"
     },
     {
       "path": "mascot/3d/tako-cheering-1024.webp",
-      "bytes": 56318,
-      "sha256": "aff4f5377e5a02c035f6d256ae4fbe5ffac9faa9cbf0ff18f5c1df01e61b259d"
+      "bytes": 55034,
+      "sha256": "5d3a37f208127d1adcc96064983afab53b240367e2996972429cc66e3d88a351"
     }
   ]
 }

@@ -3,7 +3,8 @@ from pathlib import Path
 from mathutils import Vector
 from mathutils.kdtree import KDTree
 
-OUT = Path(__file__).resolve().parent
+OUT = Path(os.environ.get('TAKO_BUILD_OUT', str(Path(__file__).resolve().parent)))
+OUT.mkdir(parents=True, exist_ok=True)
 bpy.ops.object.select_all(action='SELECT')
 bpy.ops.object.delete(use_global=False)
 scene = bpy.context.scene
@@ -48,12 +49,12 @@ def material(name, color, rough=0.35, subsurface=0, coat=0):
     p.inputs['Coat Roughness'].default_value = 0.2
     return m
 
-skin = material('Takolio Coral FF6B6B - soft vinyl', 'FF6B6B', 0.33, 0.07, 0.12)
+skin = material('Takolio Coral FF6B6B - soft vinyl', 'FF6B6B', 0.43, 0.09, 0.055)
 brow_mat = skin.copy();brow_mat.name='Soft coral brows'
-cream = material('Chef hat - warm ivory', 'FFF8ED', 0.49, 0.025)
+cream = material('Chef hat - warm ivory', 'FFF8ED', 0.68, 0.035)
 apron_mat = material('Apron - cream cotton', 'F7EFE3', 0.61)
 navy = material('Facial navy 0F2D46', '0F2D46', 0.31)
-eye_mat = material('Glossy pupil - deep navy', '07121D', 0.09, 0, 0.5)
+eye_mat = material('Glossy pupil - deep navy', '07121D', 0.22, 0, 0.18)
 white = material('Eye catchlight - ivory', 'FFFDF8', 0.16)
 blush = material('Cheeks FFB3B3', 'FFB3B3', 0.4, 0.05)
 mouth_mat = material('Smile - warm burgundy', '65232F', 0.43)
@@ -174,10 +175,22 @@ for index,path in enumerate(paths):
     limb=tube('Tentacle_%02d'%(index+1),path)
     limb['tentacle_index']=index+1
     if index in [0,1,4,5,6,7]:
-        for n,u in enumerate([0.45,0.59,0.72,0.82]):
-            point=catmull(path,u)
-            point.y -= 0.245*(1-0.62*u)*0.9
-            cup=sphere('Sucker_%02d_%02d'%(index+1,n+1),point,(0.058,0.021,0.047),sucker_mat,24,16)
+        # Arc-length spacing and a local surface frame keep cups separated at curls.
+        samples=[catmull(path,j/256) for j in range(257)]
+        distances=[0]
+        for a,b in zip(samples,samples[1:]): distances.append(distances[-1]+(b-a).length)
+        for n,fraction in enumerate([0.43,0.56,0.69,0.81]):
+            target=distances[-1]*fraction
+            j=min(range(len(distances)),key=lambda j:abs(distances[j]-target))
+            u=j/256;point=samples[j]
+            tangent=(samples[min(j+1,256)]-samples[max(0,j-1)]).normalized()
+            facing=Vector((0,-1,0))
+            normal=(facing-tangent*facing.dot(tangent)).normalized()
+            radius=0.245*(1-0.62*u)
+            size=0.064*(1-0.42*u)
+            cup=sphere('Sucker_%02d_%02d'%(index+1,n+1),point+normal*(radius-0.006),(size,0.018,size*0.86),sucker_mat,24,16)
+            cup.rotation_mode='QUATERNION'
+            cup.rotation_quaternion=Vector((0,-1,0)).rotation_difference(normal)
             cup['follow_tentacle']=index
             cup['follow_u']=u
 
@@ -185,7 +198,7 @@ for index,path in enumerate(paths):
 face_blob('Eye / ivory rim',-0.36,1.96,(0.205,0.064,0.265),white,0.035)
 face_blob('Eye / glossy dark pupil',-0.36,1.96,(0.177,0.073,0.233),eye_mat,0.083)
 face_blob('Eye / large catchlight',-0.405,2.045,(0.064,0.016,0.077),white,0.156)
-face_blob('Eye / small catchlight',-0.31,1.88,(0.022,0.009,0.025),white,0.159)
+# One authored catchlight per eye; broad studio reflections supply the lens depth.
 wink=[]
 for i in range(17):
     t=i/16;x=0.22+0.42*t;z=1.95+0.12*math.sin(math.pi*t)
@@ -227,6 +240,9 @@ solid=obj.modifiers.new('Cotton thickness','SOLIDIFY');solid.thickness=0.018
 sub=obj.modifiers.new('Soft cloth edge','SUBSURF');sub.levels=2
 neckline=[front(x,1.18-0.038*(1-(x/0.31)**2),0.057)[0] for x in [-0.31,-0.2,0,0.2,0.31]]
 curve('Apron / rolled neckline',neckline,0.019,cream)
+# Small rounded fasteners attach the bib without bright lines across the face.
+for sign in [-1,1]:
+    face_blob('Apron / rounded attachment '+str(sign),sign*.28,1.10,(.025,.016,.025),cream,.065)
 
 
 def leaf(name,center,width,height,mat,tilt=0):
@@ -262,9 +278,9 @@ bpy.ops.object.select_all(action='DESELECT')
 for puff in puffs:puff.select_set(True);actor.remove(puff)
 bpy.context.view_layer.objects.active=puffs[0];bpy.ops.object.join()
 crown=bpy.context.object;crown.name='Hat / unified sculpted crown';actor.append(crown)
-remesh=crown.modifiers.new('Joined organic chef crown','REMESH');remesh.mode='VOXEL';remesh.voxel_size=0.035;remesh.use_smooth_shade=True
+remesh=crown.modifiers.new('Joined organic chef crown','REMESH');remesh.mode='VOXEL';remesh.voxel_size=0.022;remesh.use_smooth_shade=True
 bpy.ops.object.modifier_apply(modifier=remesh.name)
-smooth=crown.modifiers.new('Soft fabric crown','SMOOTH');smooth.factor=1;smooth.iterations=4
+smooth=crown.modifiers.new('Soft fabric crown','SMOOTH');smooth.factor=0.8;smooth.iterations=14
 sub=crown.modifiers.new('Crown finish','SUBSURF');sub.levels=1
 leaf('Hat / green leaf badge',(0.005,-0.674,2.55),0.075,0.22,green,0.14)
 leaf('Hat / small green leaf badge',(-0.01,-0.679,2.56),0.047,0.13,green,-0.075)
