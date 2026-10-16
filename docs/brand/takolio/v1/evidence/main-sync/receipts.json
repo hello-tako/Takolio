@@ -1,0 +1,155 @@
+{
+  "baselineSha": "f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1",
+  "environment": {
+    "node": "v25.9.0",
+    "pnpm": "10.33.2",
+    "os": "macOS",
+    "browser": "Chromium 153.0.8010.12",
+    "data": "isolated synthetic local fixtures; external providers blocked"
+  },
+  "receipts": [
+    {
+      "command": "pnpm lint",
+      "exitCode": 0,
+      "result": "PASS",
+      "workspaceLog": "work/after-main-sync-lint-final.log",
+      "logSHA256": "290e79cfb92b0915688046f7a3f234f26b64f79410f10aa0dd07bdd3ddd1391e",
+      "bytes": 129
+    },
+    {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "result": "PASS",
+      "workspaceLog": "work/after-main-sync-typecheck-final.log",
+      "logSHA256": "0480249daf53df62608924dde61f2642b1983da7a8188ede24d8fdaabb9d1a44",
+      "bytes": 195
+    },
+    {
+      "command": "pnpm check:migrations",
+      "exitCode": 0,
+      "result": "PASS",
+      "workspaceLog": "work/after-main-sync-migrations.log",
+      "logSHA256": "7511976f436ecb96a180ddf3d92f2b200e2b328c476ebe2ae236b74091f34f36",
+      "bytes": 183
+    },
+    {
+      "command": "pnpm brand:icons",
+      "exitCode": 0,
+      "result": "PASS: 70 outputs including manifest",
+      "workspaceLog": "work/after-main-sync-generator.log",
+      "logSHA256": "7977bdbb64f955a914a5e8219dde81507123d3c07d4f62ea5cad6bf9275ac188",
+      "bytes": 190
+    },
+    {
+      "command": "TMPDIR=/private/tmp pnpm test --maxWorkers=2",
+      "exitCode": 0,
+      "result": "PASS: 363 files / 8473 tests; 571.29s",
+      "workspaceLog": "work/after-main-sync-full-test.log",
+      "logSHA256": "334430984dc20583f2d4803a2d5a7c3bb4a3994b10b638f5417adb27fe5b4bac",
+      "bytes": 1053
+    },
+    {
+      "command": "VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build",
+      "exitCode": 0,
+      "result": "PASS",
+      "workspaceLog": "work/after-main-sync-build-on-final.log",
+      "logSHA256": "b7d4524147db82c4e7904e486ca6d86f70405c0c0a53d59dd3635061982c386a",
+      "bytes": 8408
+    },
+    {
+      "command": "VITE_MEAL_PLANNER_ENABLED=false VITE_MEAL_COMPOSITION_V2_ENABLED=false pnpm build",
+      "exitCode": 0,
+      "result": "PASS",
+      "workspaceLog": "work/after-main-sync-build-off-final.log",
+      "logSHA256": "4d52602bc9bf1a5afc8d798b5d643e41be3a9dadff691d9674be2b04c9ee2ec7",
+      "bytes": 8408
+    },
+    {
+      "command": "pnpm build",
+      "exitCode": 0,
+      "result": "PASS",
+      "workspaceLog": "work/after-main-sync-build-default-final.log",
+      "logSHA256": "1361a24abce7dba36e07c1e6edad8571dbfeecd57f635d42ed4d3afe3c5033e7",
+      "bytes": 8408
+    },
+    {
+      "command": "pnpm exec playwright test --config playwright.takolio.config.ts",
+      "exitCode": 0,
+      "result": "PASS: 94/94, 7.1m",
+      "workspaceLog": "work/after-main-sync-e2e.log",
+      "logSHA256": "382e6be930c984173ae3b7fd8b1ba885cc2796888192a1c5ba0795a8e924d8b6",
+      "bytes": 16710
+    },
+    {
+      "command": "BRAND_URL=http://127.0.0.1:5251 BRAND_STAGE=before BRAND_OUT=.artifacts/takolio-v1/main-sync-before-final node scripts/brand-v3-browser-check.mjs",
+      "exitCode": 0,
+      "result": "198 before screens, 18 existing axe findings recorded",
+      "workspaceLog": "work/baseline-main-sync-browser-final.log",
+      "logSHA256": "72de4d010bdeeb4190cd48b93bd4745cda50bb9b507badc43c2855415c0168f6",
+      "bytes": 5913
+    },
+    {
+      "command": "BRAND_URL=http://127.0.0.1:5256 BRAND_STAGE=after BRAND_OUT=.artifacts/takolio-v1/main-sync-after-final node scripts/takolio-browser-check.mjs",
+      "exitCode": 1,
+      "result": "198 after screens; one scan-review/320 transient image race; zero axe findings",
+      "workspaceLog": "work/after-main-sync-browser-final.log",
+      "logSHA256": "721cdc1adeeaee6c50285506d2365bdd2042e7314805dce83d2dc66d8fe9b7dc",
+      "bytes": 6326
+    },
+    {
+      "command": "BRAND_URL=http://127.0.0.1:5256 BRAND_STAGE=after BRAND_SCREEN=scan-review BRAND_WIDTH=320 BRAND_OUT=.artifacts/takolio-v1/main-sync-scan-recheck-final node scripts/takolio-browser-check.mjs",
+      "exitCode": 0,
+      "result": "PASS: focused scan-review/320; no broken images/findings",
+      "workspaceLog": "work/after-main-sync-scan-recheck-final.log",
+      "logSHA256": "826ca56291e7e97628b41a855c74b75c56f85d05df6b68f065fda64b4cdac032",
+      "bytes": 69
+    },
+    {
+      "command": "BRAND_URL=http://127.0.0.1:5254 BRAND_OUT=.artifacts/takolio-v1/main-sync-states node scripts/brand-v3-state-check.mjs",
+      "exitCode": 0,
+      "result": "PASS: 15 state checks, two journeys",
+      "workspaceLog": "work/after-main-sync-states.log",
+      "logSHA256": "4d9ae4a651be5d1cd98589ec70022c48bfa9f6a32dfd677e0e117a8a675da031",
+      "bytes": 384
+    },
+    {
+      "command": "BRAND_URL=http://127.0.0.1:5255 BRAND_OUT=.artifacts/takolio-v1/main-sync-pwa node scripts/takolio-pwa-check.mjs",
+      "exitCode": 0,
+      "result": "PASS: 3 checks; authenticated offline data not certified",
+      "workspaceLog": "work/after-main-sync-pwa.log",
+      "logSHA256": "f5042bbb911be67d75a00046dc238df729f857ab4e82560324238039f1125c08",
+      "bytes": 19
+    },
+    {
+      "command": "BRAND_URL=http://127.0.0.1:5257 BRAND_FLAG_OFF=true BRAND_OUT=.artifacts/takolio-v1/main-sync-flags-off node scripts/brand-v3-state-check.mjs",
+      "exitCode": 0,
+      "result": "PASS: 12 flags-OFF screens",
+      "workspaceLog": "work/after-main-sync-flags-off.log",
+      "logSHA256": "ed21a101df08c4fab9490023cddcf4d2684bccf0cf8f691f050475e66a5cc19a",
+      "bytes": 256
+    },
+    {
+      "command": "pnpm lint",
+      "exitCode": 0,
+      "result": "PASS after final checkpoint updates",
+      "workspaceLog": "work/after-main-sync-checkpoint-lint.log",
+      "logSHA256": "5d2897c135c8c8cc9356ec9f6b687f42304ad97f0e50fe3f52d48a3360a2b959",
+      "bytes": 141
+    },
+    {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "result": "PASS after final checkpoint updates",
+      "workspaceLog": "work/after-main-sync-checkpoint-typecheck.log",
+      "logSHA256": "f43d2283c1212e8834aaac9424edae72ee1595ed51120f8b94425961fc8d12e8",
+      "bytes": 207
+    }
+  ],
+  "notRun": [
+    "pnpm check aggregate (constituents executed individually)",
+    "native/physical-device installs",
+    "hosted signed-in and offline household-data certification",
+    "legal clearance",
+    "premium 3D finishing"
+  ]
+}

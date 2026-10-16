@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowLeft, AlertCircle, CheckCircle2, ShieldCheck, Sparkles } from 'lucide-react';
 import { TAKOSAN_KITCHEN } from '../../lib/takosan-kitchen';
+import { TakoMascot } from '../../components/common/TakoMascot';
 import type { AuthMode } from './auth-shared';
 
 interface AuthShellProps {
@@ -17,8 +18,8 @@ interface AuthShellProps {
 }
 
 const HEADING: Record<AuthMode, string> = {
-  login: 'Đăng nhập vào Takosan',
-  register: 'Tạo tài khoản Takosan',
+  login: 'Đăng nhập vào Takolio',
+  register: 'Tạo tài khoản Takolio',
   otp_verify: 'Xác thực mã OTP',
   forgot_password: 'Quên mật khẩu',
 };
@@ -46,17 +47,18 @@ export const AuthShell: React.FC<AuthShellProps> = ({
         >
           <ArrowLeft className="w-5 h-5" />
         </button>
-        <span className="text-xs font-semibold text-semantic-text-muted">Tài khoản Takosan</span>
+        <span className="text-xs font-semibold text-semantic-text-muted">Tài khoản Takolio</span>
       </div>
 
       <div className="auth-intro">
         <img
           src={TAKOSAN_KITCHEN.logo}
-          alt="Takosan" translate="no"
+          alt="Takolio" translate="no"
           width={300}
           height={72}
           className="entry-logo"
         />
+        {(mode === 'login' || mode === 'register') && <TakoMascot pose="wave" size={112} className="auth-mascot" />}
         {/* Single page heading (accessibility checklist: sequential levels). */}
         <h1 className="auth-heading">
           {HEADING[mode]}
@@ -64,7 +66,7 @@ export const AuthShell: React.FC<AuthShellProps> = ({
         <p className="auth-description">
           {mode === 'login' && 'Đồng bộ tủ lạnh, thực đơn tuần và gợi ý món ăn mọi lúc mọi nơi'}
           {mode === 'register' &&
-            'Gia nhập Takosan để quản lý thực phẩm thông minh và giảm lãng phí'}
+            'Gia nhập Takolio để quản lý thực phẩm thông minh và giảm lãng phí'}
           {mode === 'otp_verify' &&
             (email
               ? otpDelivered === false

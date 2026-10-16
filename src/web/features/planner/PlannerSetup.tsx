@@ -203,7 +203,7 @@ function FamilyPlannerSetup({
               {locale === 'vi'
                 ? selectionMode === 'manual'
                   ? 'Tạo lịch trống, rồi chọn món cho từng bữa.'
-                  : 'Takosan gợi ý cả bữa theo thói quen đã chọn.'
+                  : 'Takolio gợi ý cả bữa theo thói quen đã chọn.'
                 : selectionMode === 'manual'
                   ? 'Choose your cooking calendar, then fill each meal with your own dishes.'
                   : 'Get a complete meal based on your habits.'}
@@ -230,7 +230,7 @@ function FamilyPlannerSetup({
                     />
                     <span>
                       <strong>
-                        {locale === 'vi' ? 'Takosan gợi ý cả bữa' : 'Let Takosan suggest meals'}
+                        {locale === 'vi' ? 'Takolio gợi ý cả bữa' : 'Let Takolio suggest meals'}
                       </strong>
                       <small>
                         {locale === 'vi'
@@ -435,12 +435,12 @@ function FamilyPlannerSetup({
         <p className="planning-eyebrow">BỮA NHÀ, THEO NHỊP NHÀ MÌNH</p>
         <h2>Một lần xếp. Nhẹ cả tuần.</h2>
         <p>
-          Chọn lịch nấu và số người ăn. Takosan xếp theo kiểu bữa nhà mình, rồi gom phần nguyên liệu
+          Chọn lịch nấu và số người ăn. Takolio xếp theo kiểu bữa nhà mình, rồi gom phần nguyên liệu
           còn thiếu vào danh sách đi chợ.
         </p>
         <p>Ưu tiên món Việt và khẩu vị vùng đã chọn. Bạn tự quyết định số bữa đổi vị quốc tế.</p>
         <p className="planning-note">
-          Đủ nhóm món không đồng nghĩa đã xác minh dinh dưỡng hoặc an toàn dị ứng. Takosan sẽ báo
+          Đủ nhóm món không đồng nghĩa đã xác minh dinh dưỡng hoặc an toàn dị ứng. Takolio sẽ báo
           phần còn thiếu dữ liệu.
         </p>
       </aside>

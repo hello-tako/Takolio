@@ -101,35 +101,60 @@
   --z-max: 100;
 }
 
-/* V3 product scope; protected legacy payment colours retain root defaults. */
+/* Takolio V1 semantic mapping. Payment/legacy root tokens stay unchanged. */
 .takosan-rebuild {
-  --takosan-font-ui: 'Nunito', 'Be Vietnam Pro', sans-serif;
-  --kitchen-pine: var(--takosan-green);
-  /* Small text on mint/tinted surfaces needs a darker semantic shade. */
-  --semantic-text-on-soft: var(--takosan-green-hover);
+  --takosan-coral: #FF6B6B;
+  --takosan-coral-color-rgb: 255 107 107;
+  --takosan-coral-deep-color-rgb: 232 76 90;
+  --takosan-coral-soft-color-rgb: 255 227 224;
+  --takosan-yellow-color-rgb: 247 193 90;
+  --semantic-accent: var(--takosan-coral);
+  --semantic-accent-rgb: 255 107 107;
+  --semantic-accent-soft: #FFE3E0;
+  --semantic-accent-soft-rgb: 255 227 224;
+  --takosan-green: #276F3F; /* Accessible semantic alias; brand green lives in the contract. */
+  --takosan-ink: #0F2D46;
+  --takosan-navy: #0F2D46;
+  --takosan-cream: #FFF8ED;
+  --takosan-mint: #E8F7EC;
+  --takosan-yellow: #F7C15A;
+  /* Derived action tones keep white labels WCAG AA while the primary green remains an accent. */
+  --takosan-green-color-rgb: 39 111 63;
+  --takosan-green-hover-color-rgb: 31 91 51;
+  --takosan-green-deep-color-rgb: 24 72 40;
+  --takosan-navy-color-rgb: 15 45 70;
+  --takosan-cream-color-rgb: 255 248 237;
+  --takosan-mint-color-rgb: 232 247 236;
+  --kitchen-pine: #2E6B40;
   --kitchen-coral: var(--takosan-coral);
   --kitchen-canvas: var(--takosan-cream);
-  --semantic-background-rgb: 255 248 243;
-  --semantic-background-subtle-rgb: 252 251 248;
-  --semantic-text-primary-rgb: 32 44 40;
-  --semantic-text-secondary-rgb: 74 71 65;
-  --semantic-text-muted-rgb: 111 107 100;
-  --semantic-border-rgb: 231 227 218;
-  --semantic-action-primary-rgb: 46 125 91;
-  --semantic-action-primary-hover-rgb: 36 102 72;
-  --semantic-action-primary-pressed-rgb: 29 85 61;
-  --semantic-success-rgb: 46 125 91;
-  --semantic-success-soft-rgb: 223 244 230;
-  --semantic-focus-rgb: 46 125 91;
-  --takosan-green-color-rgb: 46 125 91;
-  --takosan-green-hover-color-rgb: 38 105 76;
-  --takosan-green-deep-color-rgb: 31 86 62;
-  --takosan-mint-color-rgb: 223 244 230;
-  --takosan-mint-deep-color-rgb: 191 227 204;
-  --takosan-cream-color-rgb: 255 248 243;
-  --takosan-cream-line-color-rgb: 243 228 218;
-  --takosan-navy-color-rgb: 32 44 40;
-  --semantic-text-primary: var(--takosan-ink);
+  --takolio-font-heading: 'Nunito', system-ui, sans-serif;
+  --takolio-font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --takosan-font-ui: var(--takolio-font-body);
   --semantic-background: var(--takosan-cream);
+  --semantic-background-rgb: 255 248 237;
+  --semantic-text-primary: var(--takosan-navy);
+  --semantic-text-primary-rgb: 15 45 70;
+  --semantic-text-secondary-rgb: 60 78 93;
+  --semantic-text-muted-rgb: 77 94 108;
+  --semantic-action-primary: var(--takosan-navy);
+  --semantic-action-primary-rgb: 15 45 70;
+  --semantic-action-primary-hover: #092133;
+  --semantic-action-primary-pressed: #061825;
+  --semantic-text-on-soft: #276F3F;
+  --semantic-action-primary-hover-rgb: 9 33 51;
+  --semantic-action-primary-pressed-rgb: 6 24 37;
+  --semantic-on-action-primary: #FFFFFF;
+  --semantic-success: #2E7D5B;
+  --semantic-success-rgb: 46 125 91;
   --semantic-success-soft: var(--takosan-mint);
+  --semantic-success-soft-rgb: 232 247 236;
+  --semantic-focus: #2E7D5B;
+  --semantic-focus-rgb: 46 125 91;
+}
+.takosan-rebuild {
+  font-family: var(--takolio-font-body);
+}
+.takosan-rebuild :is(h1, h2, h3, h4, h5, h6, .font-heading) {
+  font-family: var(--takolio-font-heading);
 }

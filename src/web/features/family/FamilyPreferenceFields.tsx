@@ -245,7 +245,7 @@ export function FamilyPreferenceFields({
           </fieldset>
           <IngredientChoices
             label="Nguyên liệu không thích"
-            hint="Ưu tiên khẩu vị mềm; Takosan có thể dùng nếu các lựa chọn khác bị giới hạn."
+            hint="Ưu tiên khẩu vị mềm; Takolio có thể dùng nếu các lựa chọn khác bị giới hạn."
             value={value.dislikedIngredientIds}
             onChange={(next) => change('dislikedIngredientIds', next)}
           />
@@ -254,7 +254,7 @@ export function FamilyPreferenceFields({
       <details className="family-extra family-safety">
         <summary>Dị ứng & nguyên liệu bắt buộc tránh</summary>
         <p>
-          Các lựa chọn này là ràng buộc bắt buộc khi tạo thực đơn. Thiếu dữ liệu an toàn, Takosan sẽ
+          Các lựa chọn này là ràng buộc bắt buộc khi tạo thực đơn. Thiếu dữ liệu an toàn, Takolio sẽ
           báo chưa tìm được bữa phù hợp.
         </p>
         <fieldset>

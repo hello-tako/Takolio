@@ -18,7 +18,7 @@ export const VerifyUnavailable: React.FC<VerifyUnavailableProps> = ({ onRegister
       <p className="text-sm font-semibold text-semantic-text-secondary">Không có yêu cầu xác thực đang chờ</p>
       <p className="mt-1 text-xs leading-relaxed text-semantic-text-muted">
         Trang này chỉ dùng ngay sau khi đăng ký hoặc đăng nhập bằng tài khoản chưa xác thực trên
-        cùng thiết bị. Takosan không thể gửi mã OTP khi chưa biết email của bạn.
+        cùng thiết bị. Takolio không thể gửi mã OTP khi chưa biết email của bạn.
       </p>
     </div>
     <Button fullWidth size="lg" type="button" onClick={onRegister}>

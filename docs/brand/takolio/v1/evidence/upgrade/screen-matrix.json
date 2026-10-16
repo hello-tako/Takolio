@@ -1,0 +1,73 @@
+{
+  "widths": [
+    320,
+    375,
+    390,
+    768,
+    1024,
+    1440
+  ],
+  "theme": "light only; app has no supported dark theme",
+  "beforeBase": "0db4ce2f4c5823eaf7fd085921e3b3a7ba0d8608",
+  "afterImplementation": "dae71688bde863608a20855b56351ccd51d99c34",
+  "matrix": [
+    {
+      "name": "before",
+      "checks": 198,
+      "errors": 0,
+      "failures": 0,
+      "path": "before-observations.json",
+      "sha256": "07d1d6c08239a406203822d0d731c958f57a85c2dd766ce850f5c9f1fd040193"
+    },
+    {
+      "name": "after-final",
+      "checks": 198,
+      "errors": 0,
+      "failures": 0,
+      "path": "after-final-observations.json",
+      "sha256": "c138d669a164935da3f73beed1cd38e26d6fb6cd787186ef0d6100aaa2b6fe31"
+    },
+    {
+      "name": "mascot-final",
+      "checks": 72,
+      "errors": 0,
+      "failures": 0,
+      "path": "mascot-final-observations.json",
+      "sha256": "2d34f5f99c21337832a27696d67c6b236e24658fbd82e2f7f46541349649f62f"
+    },
+    {
+      "name": "stress-final",
+      "checks": 24,
+      "errors": 0,
+      "failures": 0,
+      "path": "stress-final-observations.json",
+      "sha256": "8d953c179c4765e12c5d722011323fdb67625d0a38e0f4040b97bfe08e056183"
+    },
+    {
+      "name": "pwa-final",
+      "checks": 3,
+      "errors": 0,
+      "failures": 0,
+      "path": "pwa-final-observations.json",
+      "sha256": "730f197238094676fadc9831d185ab4cb3d3e06473f30016acd1c7646cd22b9d"
+    },
+    {
+      "name": "states-final",
+      "checks": 15,
+      "errors": 0,
+      "failures": 0,
+      "path": "states-final-observations.json",
+      "sha256": "2909ba93d641c56f9eeb3d0a49f6c52b30864230ab5c5281086b162117ba7def"
+    },
+    {
+      "name": "flags-off-final",
+      "checks": 12,
+      "errors": 0,
+      "failures": 0,
+      "path": "flags-off-final-observations.json",
+      "sha256": "8aa470e368d9858a09312eabc2fd8413dd1946a10014bf8e71653b75771a28dd"
+    }
+  ],
+  "contactSheets": "Matched 390/1440 sheets contain the first 844px viewport excerpt of eight representative routes. Full screenshots are in the local delivery archive.",
+  "fontStress": "Synthetic font injection bypasses CSP only inside this isolated stress harness. The normal browser matrix and PWA checks use actual app CSP."
+}

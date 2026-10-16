@@ -92,7 +92,7 @@ export const NotificationPreferencesPage: React.FC = () => {
               { key: 'remindExpiring', label: 'Nhắc nguyên liệu sắp hết', desc: 'Ưu tiên đồ ăn cần dùng sớm', icon: Clock },
               { key: 'remindShopping', label: 'Nhắc đi chợ', desc: 'Theo dõi nguyên liệu cần mua', icon: ShoppingBag },
               { key: 'remindTodayMeal', label: 'Nhắc bữa ăn hôm nay', desc: 'Theo dõi bữa ăn trong ngày', icon: Bell },
-              { key: 'promoUpdates', label: 'Khuyến mãi & cập nhật', desc: 'Tính năng mới và ưu đãi Takosan Plus', icon: Sparkles },
+              { key: 'promoUpdates', label: 'Khuyến mãi & cập nhật', desc: 'Tính năng mới và ưu đãi Takolio Plus', icon: Sparkles },
             ] as const
           ).map((item) => {
             const Icon = item.icon;
@@ -125,7 +125,7 @@ export const NotificationPreferencesPage: React.FC = () => {
           Chưa có email nhắc nhở bữa ăn hay đi chợ. Email xác thực tài khoản là luồng riêng.
         </UnavailableState>
         <UnavailableState title="Thông báo đẩy — chưa cấu hình">
-          Takosan hiện chưa gửi thông báo đẩy. Quyền thông báo trên trình duyệt:{' '}
+          Takolio hiện chưa gửi thông báo đẩy. Quyền thông báo trên trình duyệt:{' '}
           <strong>{PERMISSION_LABELS[browserPermission] ?? 'không xác định'}</strong>. Quyền này
           không có nghĩa là nhắc nhở đang được gửi.
         </UnavailableState>

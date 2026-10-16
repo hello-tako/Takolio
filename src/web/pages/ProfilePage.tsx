@@ -31,7 +31,7 @@ export const ProfilePage: React.FC = () => {
   const initialLetter = (displayName || 'K').charAt(0).toUpperCase();
 
   return (
-    <AccountPage title="Hồ sơ" description="Một nơi để chăm chút bữa ăn, gia đình và cách bạn dùng Takosan." backTo={null}>
+    <AccountPage title="Hồ sơ" description="Một nơi để chăm chút bữa ăn, gia đình và cách bạn dùng Takolio." backTo={null}>
       <section className="account-profile" aria-label="Tài khoản hiện tại">
         <div className="account-identity">
           {avatarUrl ? (
@@ -72,7 +72,7 @@ export const ProfilePage: React.FC = () => {
         <button type="button" onClick={() => setConfirmLogout(true)}>
           <LogOut size={18} aria-hidden="true" /> Đăng xuất khỏi tài khoản
         </button>
-        <p>Takosan · Ăn đủ. Mua đủ. Dùng hết.</p>
+        <p>Takolio · Lên kế hoạch bữa ăn thông minh.</p>
       </div>
       <LogoutDialog open={confirmLogout} onCancel={() => setConfirmLogout(false)} onLoggedOut={() => navigate('/auth', { replace: true })} />
     </AccountPage>

@@ -6,6 +6,7 @@ import { useAuthStore } from '../stores/useAuthStore';
 import { TopBar } from '../components/common/TopBar';
 import { RecipeCard } from '../components/common/RecipeCard';
 import { RecipeMedia } from '../components/common/RecipeMedia';
+import { TakoMascot } from '../components/common/TakoMascot';
 import { KitchenPageHeading } from '../components/common/KitchenHeader';
 import { InlineLoading, InlineError, SkeletonCard } from '../components/common/AsyncState';
 import { Button } from '../components/common/Button';
@@ -174,12 +175,13 @@ export const HomePage = () => {
             ) : (
               <section aria-labelledby="home-plan-heading" className="home-plan-card">
                 <div className="home-plan-copy">
+                  <TakoMascot pose="calendar" size={128} className="home-plan-mascot" />
                   <p className="kitchen-eyebrow">Bắt đầu từ căn bếp của bạn</p>
                   <h2 id="home-plan-heading" className="home-meal-title">
                     Chưa có thực đơn hiện tại
                   </h2>
                   <p className="mt-3 text-base text-semantic-text-secondary">
-                    Chọn ngày và số người. Takosan sẽ giúp bạn sắp xếp các bữa từ nguyên liệu đang
+                    Chọn ngày và số người. Takolio sẽ giúp bạn sắp xếp các bữa từ nguyên liệu đang
                     có.
                   </p>
                   <Link className="kitchen-primary-link mt-5" to={home.setupHref}>

@@ -1,0 +1,35 @@
+{
+  "directory": "outputs/Takolio_Upgrade_Review (outer local workspace)",
+  "artifacts": [
+    {
+      "file": "Takolio_Tako_3D_Upgrade_v1.zip",
+      "bytes": 23425107,
+      "sha256": "548223f5a6014483927802649dff4773f3159ac7efd3802b625f24b68f9d26ca",
+      "distribution": "Local handoff only; native files and full screenshots are excluded from public repo."
+    },
+    {
+      "file": "Takolio_Upgrade_Visual_QA.zip",
+      "bytes": 86959039,
+      "sha256": "90428447b9bfb19d4a6610099e0627ce5e2cb86d7d22ec3eb82ffa9676748d51",
+      "distribution": "Local handoff only; native files and full screenshots are excluded from public repo."
+    },
+    {
+      "file": "mascot-six-poses.png",
+      "bytes": 480512,
+      "sha256": "8faff0448a169abf8f6085298f6af493f7c958b134e99953e466698b5e96197a",
+      "distribution": "Local handoff only; native files and full screenshots are excluded from public repo."
+    },
+    {
+      "file": "ui-before-after-1440.png",
+      "bytes": 636306,
+      "sha256": "f07bfdf2a397932e61353d6a93172663e39371438991e5bf92f92e9de6263088",
+      "distribution": "Local handoff only; native files and full screenshots are excluded from public repo."
+    },
+    {
+      "file": "ui-before-after-390.png",
+      "bytes": 957942,
+      "sha256": "ce0e4fd737c5a9f02a1fdd2aa49b865805c4150372b0ccaa15ae97f1a09f9965",
+      "distribution": "Local handoff only; native files and full screenshots are excluded from public repo."
+    }
+  ]
+}

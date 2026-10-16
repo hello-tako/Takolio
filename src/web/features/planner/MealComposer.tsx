@@ -226,10 +226,10 @@ export function MealComposer({
             {locale === 'vi'
               ? past
                 ? 'Bữa đã qua vẫn được giữ trống. Chọn một bữa sắp tới để xếp món.'
-                : 'Chọn một món đầu tiên, sau đó Takosan sẽ cho biết nhóm món và lượng còn thiếu.'
+                : 'Chọn một món đầu tiên, sau đó Takolio sẽ cho biết nhóm món và lượng còn thiếu.'
               : past
                 ? 'This past meal remains empty. Choose a future meal to plan dishes.'
-                : 'Choose a first dish, then Takosan will show dish groups and quantities still needed.'}
+                : 'Choose a first dish, then Takolio will show dish groups and quantities still needed.'}
           </p>
         </div>
       )}

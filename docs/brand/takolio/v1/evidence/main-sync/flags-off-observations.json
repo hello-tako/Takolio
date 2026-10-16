@@ -1,0 +1,103 @@
+{
+  "checks": [
+    {
+      "name": "week-empty-320",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "route": "/week",
+      "violations": []
+    },
+    {
+      "name": "week-setup-320",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "route": "/week/setup",
+      "violations": []
+    },
+    {
+      "name": "week-empty-375",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "route": "/week",
+      "violations": []
+    },
+    {
+      "name": "week-setup-375",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "route": "/week/setup",
+      "violations": []
+    },
+    {
+      "name": "week-empty-390",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "route": "/week",
+      "violations": []
+    },
+    {
+      "name": "week-setup-390",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "route": "/week/setup",
+      "violations": []
+    },
+    {
+      "name": "week-empty-768",
+      "width": 768,
+      "height": 844,
+      "scrollWidth": 768,
+      "route": "/week",
+      "violations": []
+    },
+    {
+      "name": "week-setup-768",
+      "width": 768,
+      "height": 844,
+      "scrollWidth": 768,
+      "route": "/week/setup",
+      "violations": []
+    },
+    {
+      "name": "week-empty-1024",
+      "width": 1024,
+      "height": 844,
+      "scrollWidth": 1024,
+      "route": "/week",
+      "violations": []
+    },
+    {
+      "name": "week-setup-1024",
+      "width": 1024,
+      "height": 844,
+      "scrollWidth": 1024,
+      "route": "/week/setup",
+      "violations": []
+    },
+    {
+      "name": "week-empty-1440",
+      "width": 1440,
+      "height": 844,
+      "scrollWidth": 1440,
+      "route": "/week",
+      "violations": []
+    },
+    {
+      "name": "week-setup-1440",
+      "width": 1440,
+      "height": 844,
+      "scrollWidth": 1440,
+      "route": "/week/setup",
+      "violations": []
+    }
+  ],
+  "journeys": [],
+  "errors": [],
+  "localSyntheticData": true
+}

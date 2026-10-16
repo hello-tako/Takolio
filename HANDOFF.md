@@ -1,3 +1,25 @@
+# PR #77 brand-main conflict reconciliation — 2026-10-16
+
+**Scope:** merge main `526596a8cd857984ad2b69901a8c7b0e9d6bccc2` into handoff `73e0c490a15e2014abb6e5096ec45ec980981d37`.
+Resolved three docs/ai status conflicts by keeping both complete parent histories.
+Resolved package.json by retaining main's `brand:icons` Takolio generator and
+`brand:icons:v3` legacy generator alongside all handoff Admin commands and the
+existing Admin-aware build/migration checks. No dependency/lockfile change.
+All customer source/assets/configs/migrations and incoming brand evidence are
+identical to main; no custom product, authentication, payment or release edit.
+Separate local R2 commits remain excluded from this historical handoff PR.
+
+**Checks:** both-parent status content retention, package JSON/script assertions,
+no conflict markers/unmerged paths, customer/main byte identity and diff check.
+Lint/types/build/migration/Admin regression results follow in the verification
+checkpoint. This merge does not remediate F1–F11 or grant release certification.
+
+**Next:** publish the conflict-only handoff update and require exact-head hosted
+CI. Preserve draft / DO NOT MERGE, independent review and release gates; no PR
+merge/close, deployment, remote D1, credential or account operation is authorized.
+
+---
+
 # PR #77 conflict-resolution verification — 2026-10-16
 
 **Result:** all three status-document conflicts resolved in merge

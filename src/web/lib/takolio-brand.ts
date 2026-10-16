@@ -1,0 +1,72 @@
+/** Takolio V1 identity. Legacy names remain adapters to this single contract. */
+const BASE = '/takolio/v1';
+const illustration = (pose: string) => ({
+  small: `${BASE}/mascot/3d/tako-${pose}-256.webp`,
+  standard: `${BASE}/mascot/3d/tako-${pose}-512.webp`,
+  large: `${BASE}/mascot/3d/tako-${pose}-1024.webp`,
+});
+export const TAKOLIO_BRAND = {
+  name: 'Takolio',
+  mascotName: 'Tako',
+  tagline: 'Lên kế hoạch bữa ăn thông minh.',
+  supportingLine: 'Plan Better. Eat Happier.',
+  motto: 'Lên kế hoạch bữa ăn thông minh.',
+  base: BASE,
+  logos: {
+    horizontal: `${BASE}/logo/horizontal-primary.svg`,
+    horizontalWhite: `${BASE}/logo/horizontal-mono-white.svg`,
+    stacked: `${BASE}/logo/stacked-primary.svg`,
+    stackedWhite: `${BASE}/logo/stacked-mono-white.svg`,
+  },
+  compactLogo: `${BASE}/logo/symbol-micro.svg`,
+  scanIconOnDark: `${BASE}/ui-icons/scan-label-reverse.svg`,
+  wordmark: `${BASE}/logo/wordmark-primary.svg`,
+  symbol: `${BASE}/logo/symbol-primary.svg`,
+  symbolMicro: `${BASE}/logo/symbol-micro.svg`,
+  og: `${BASE}/social/og-1200x630.png`,
+  mascot: {
+    happy: `${BASE}/mascot/tako-welcome.svg`,
+    neutral: `${BASE}/mascot/tako-master-front.svg`,
+    wave: `${BASE}/mascot/tako-welcome.svg`,
+    thinking: `${BASE}/mascot/tako-thinking.svg`,
+    wink: `${BASE}/mascot/tako-welcome.svg`,
+    celebrate: `${BASE}/mascot/tako-cheering.svg`,
+    fridge: `${BASE}/mascot/tako-thinking.svg`,
+    recipe: `${BASE}/mascot/tako-cooking.svg`,
+    cooking: `${BASE}/mascot/tako-cooking.svg`,
+    calendar: `${BASE}/mascot/tako-thinking.svg`,
+    shopping: `${BASE}/mascot/tako-completed.svg`,
+  },
+  // Vector mascot URLs remain stable for compact and protected consumers.
+  mascotRenders: {
+    happy: illustration('welcome'), neutral: illustration('welcome'),
+    wave: illustration('welcome'), thinking: illustration('thinking'),
+    wink: illustration('welcome'), celebrate: illustration('cheering'),
+    fridge: illustration('thinking'), recipe: illustration('cooking'),
+    cooking: illustration('cooking'), calendar: illustration('thinking'),
+    shopping: illustration('completed'),
+  },
+  appIcons: {
+    favicon: `${BASE}/app-icons/favicon.svg`,
+    icon180: `${BASE}/app-icons/icon-180.png`,
+    icon192: `${BASE}/app-icons/icon-192.png`,
+    icon512: `${BASE}/app-icons/icon-512.png`,
+    maskable512: `${BASE}/app-icons/icon-maskable-512.png`,
+  },
+  uiIcons: {
+    home: `${BASE}/ui-icons/meal-plan.svg`, fridge: `${BASE}/ui-icons/fridge.svg`,
+    scan: `${BASE}/ui-icons/scan-label.svg`, recipe: `${BASE}/ui-icons/recipe.svg`,
+    mealPlan: `${BASE}/ui-icons/meal-plan.svg`, calendar: `${BASE}/ui-icons/calendar.svg`,
+    shopping: `${BASE}/ui-icons/shopping.svg`, profile: `${BASE}/ui-icons/profile.svg`,
+    shoppingList: `${BASE}/ui-icons/shopping.svg`, shoppingCart: `${BASE}/ui-icons/shopping.svg`,
+    chef: `${BASE}/ui-icons/cook.svg`, camera: `${BASE}/ui-icons/camera.svg`,
+    nutrition: `${BASE}/ui-icons/nutrition.svg`, search: `${BASE}/ui-icons/search.svg`,
+    favorites: `${BASE}/ui-icons/favorites.svg`, settings: `${BASE}/ui-icons/settings.svg`,
+    notifications: `${BASE}/ui-icons/notifications.svg`, history: `${BASE}/ui-icons/history.svg`,
+    analytics: `${BASE}/ui-icons/analytics.svg`, filter: `${BASE}/ui-icons/filter.svg`,
+    ingredient: `${BASE}/ui-icons/ingredient.svg`, aiSuggestion: `${BASE}/ui-icons/ai-suggestion.svg`,
+  },
+  colors: { coral: '#FF6B6B', green: '#4CAF6B', navy: '#0F2D46', cream: '#FFF8ED', mint: '#E8F7EC', yellow: '#F7C15A' },
+  supportColors: { blush: '#FFE3E0', sky: '#E3F2FF', mint: '#E8F7EC', beige: '#F9E7D7' },
+} as const;
+export type TakolioMascotPose = keyof typeof TAKOLIO_BRAND.mascot;

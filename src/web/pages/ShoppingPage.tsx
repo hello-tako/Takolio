@@ -244,7 +244,7 @@ export const ShoppingPage: React.FC = () => {
       <KitchenHeader backTo="/" />
       <div className="planning-page-body">
         <KitchenPageHeading
-          eyebrow="TAKOSAN · ĐI CHỢ"
+          eyebrow="Takolio · ĐI CHỢ"
           title="Danh sách mua sắm"
           description="Chỉnh lượng cần mua, rồi đánh dấu từng món khi đã mua."
           action={
@@ -408,7 +408,7 @@ export const ShoppingPage: React.FC = () => {
                         ? 'Chọn lượng hoặc tạm bỏ qua ở phần trên trước khi đi chợ.'
                         : demands.length
                           ? 'Mở phần đã chọn hoặc đã bỏ qua nếu bạn muốn xem lại.'
-                          : 'Lên thực đơn để Takosan gom nguyên liệu của mọi món vào danh sách.'}
+                          : 'Lên thực đơn để Takolio gom nguyên liệu của mọi món vào danh sách.'}
                     </p>
                     <Link to="/planner" className="planning-text-link">
                       Lên thực đơn <ArrowRight size={16} aria-hidden="true" />

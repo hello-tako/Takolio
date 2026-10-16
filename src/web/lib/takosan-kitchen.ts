@@ -1,10 +1,11 @@
 import { TAKOSAN_BRAND } from './takosan-brand';
 
-/** Compatibility facade: both shells read the same V3 identity. */
+/** Compatibility facade: both shells read the same Takolio identity. */
 export const TAKOSAN_KITCHEN = {
   name: TAKOSAN_BRAND.name,
   motto: TAKOSAN_BRAND.tagline,
   logo: TAKOSAN_BRAND.logos.horizontal,
+  compactLogo: TAKOSAN_BRAND.compactLogo,
   symbol: TAKOSAN_BRAND.symbol,
   symbolMicro: TAKOSAN_BRAND.symbolMicro,
   wordmark: TAKOSAN_BRAND.wordmark,

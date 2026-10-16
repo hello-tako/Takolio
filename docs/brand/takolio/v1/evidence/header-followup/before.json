@@ -1,0 +1,1722 @@
+{
+  "stage": "before",
+  "browser": "153.0.8010.12",
+  "syntheticLocalOnly": true,
+  "checks": [
+    {
+      "name": "home",
+      "route": "/",
+      "screenshot": "home-320.png",
+      "width": 320,
+      "scrollWidth": 320,
+      "brand": [
+        {
+          "src": "/takolio/v1/logo/symbol-micro.svg",
+          "x": 12,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "actions": [
+        {
+          "name": "Takolio — Trang chủ",
+          "x": 12,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Thông báo",
+          "x": 138,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Quét nguyên liệu",
+          "x": 264,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 64
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "recipes",
+      "route": "/recipes",
+      "screenshot": "recipes-320.png",
+      "width": 320,
+      "scrollWidth": 320,
+      "brand": [
+        {
+          "src": "/takolio/v1/logo/symbol-micro.svg",
+          "x": 12,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "actions": [
+        {
+          "name": "Takolio — Trang chủ",
+          "x": 12,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Thông báo",
+          "x": 138,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Quét nguyên liệu",
+          "x": 264,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 64
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "planner-setup",
+      "route": "/planner/new",
+      "screenshot": "planner-setup-320.png",
+      "width": 320,
+      "scrollWidth": 320,
+      "brand": [
+        {
+          "src": "/takolio/v1/logo/symbol-micro.svg",
+          "x": 64,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "actions": [
+        {
+          "name": "Quay lại thực đơn tuần",
+          "x": 12,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Takolio — Trang chủ",
+          "x": 64,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Thông báo",
+          "x": 164,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Quét nguyên liệu",
+          "x": 264,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 64
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "shopping",
+      "route": "/shopping",
+      "screenshot": "shopping-320.png",
+      "width": 320,
+      "scrollWidth": 320,
+      "brand": [
+        {
+          "src": "/takolio/v1/logo/symbol-micro.svg",
+          "x": 64,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "actions": [
+        {
+          "name": "Quay lại",
+          "x": 12,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Takolio — Trang chủ",
+          "x": 64,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Thông báo",
+          "x": 164,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Quét nguyên liệu",
+          "x": 264,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 64
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "recipe-detail",
+      "route": "/recipes/canh-chua-ca-loc-nam-bo",
+      "screenshot": "recipe-detail-320.png",
+      "width": 320,
+      "scrollWidth": 320,
+      "brand": [
+        {
+          "src": "/takolio/v1/logo/symbol-micro.svg",
+          "x": 64,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "actions": [
+        {
+          "name": "Quay lại",
+          "x": 12,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Takolio — Trang chủ",
+          "x": 64,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Thông báo",
+          "x": 164,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Quét nguyên liệu",
+          "x": 264,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 64
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "plus-shared-shell",
+      "route": "/plus",
+      "screenshot": "plus-shared-shell-320.png",
+      "width": 320,
+      "scrollWidth": 320,
+      "brand": [
+        {
+          "src": "/takolio/v1/logo/symbol-micro.svg",
+          "x": 68,
+          "y": 12,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "actions": [
+        {
+          "name": "Quay lại",
+          "x": 16,
+          "y": 12,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Takolio — Trang chủ",
+          "x": 68,
+          "y": 12,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Thông báo",
+          "x": 208,
+          "y": 12,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Tài khoản cá nhân",
+          "x": 260,
+          "y": 12,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Quét nguyên liệu",
+          "x": 16,
+          "y": 68,
+          "width": 288,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 124
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "home",
+      "route": "/",
+      "screenshot": "home-375.png",
+      "width": 375,
+      "scrollWidth": 375,
+      "brand": [
+        {
+          "src": "/takolio/v1/logo/symbol-micro.svg",
+          "x": 12,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "actions": [
+        {
+          "name": "Takolio — Trang chủ",
+          "x": 12,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Thông báo",
+          "x": 165.5,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Quét nguyên liệu",
+          "x": 319,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 375,
+        "height": 64
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "recipes",
+      "route": "/recipes",
+      "screenshot": "recipes-375.png",
+      "width": 375,
+      "scrollWidth": 375,
+      "brand": [
+        {
+          "src": "/takolio/v1/logo/symbol-micro.svg",
+          "x": 12,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "actions": [
+        {
+          "name": "Takolio — Trang chủ",
+          "x": 12,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Thông báo",
+          "x": 165.5,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Quét nguyên liệu",
+          "x": 319,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 375,
+        "height": 64
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "planner-setup",
+      "route": "/planner/new",
+      "screenshot": "planner-setup-375.png",
+      "width": 375,
+      "scrollWidth": 375,
+      "brand": [
+        {
+          "src": "/takolio/v1/logo/symbol-micro.svg",
+          "x": 64,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "actions": [
+        {
+          "name": "Quay lại thực đơn tuần",
+          "x": 12,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Takolio — Trang chủ",
+          "x": 64,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Thông báo",
+          "x": 191.5,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Quét nguyên liệu",
+          "x": 319,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 375,
+        "height": 64
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "shopping",
+      "route": "/shopping",
+      "screenshot": "shopping-375.png",
+      "width": 375,
+      "scrollWidth": 375,
+      "brand": [
+        {
+          "src": "/takolio/v1/logo/symbol-micro.svg",
+          "x": 64,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "actions": [
+        {
+          "name": "Quay lại",
+          "x": 12,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Takolio — Trang chủ",
+          "x": 64,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Thông báo",
+          "x": 191.5,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Quét nguyên liệu",
+          "x": 319,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 375,
+        "height": 64
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "recipe-detail",
+      "route": "/recipes/canh-chua-ca-loc-nam-bo",
+      "screenshot": "recipe-detail-375.png",
+      "width": 375,
+      "scrollWidth": 375,
+      "brand": [
+        {
+          "src": "/takolio/v1/logo/symbol-micro.svg",
+          "x": 64,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "actions": [
+        {
+          "name": "Quay lại",
+          "x": 12,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Takolio — Trang chủ",
+          "x": 64,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Thông báo",
+          "x": 191.5,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Quét nguyên liệu",
+          "x": 319,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 375,
+        "height": 64
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "plus-shared-shell",
+      "route": "/plus",
+      "screenshot": "plus-shared-shell-375.png",
+      "width": 375,
+      "scrollWidth": 375,
+      "brand": [
+        {
+          "src": "/takolio/v1/logo/symbol-micro.svg",
+          "x": 68,
+          "y": 12,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "actions": [
+        {
+          "name": "Quay lại",
+          "x": 16,
+          "y": 12,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Takolio — Trang chủ",
+          "x": 68,
+          "y": 12,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Thông báo",
+          "x": 263,
+          "y": 12,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Tài khoản cá nhân",
+          "x": 315,
+          "y": 12,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Quét nguyên liệu",
+          "x": 16,
+          "y": 68,
+          "width": 343,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 375,
+        "height": 124
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "home",
+      "route": "/",
+      "screenshot": "home-390.png",
+      "width": 390,
+      "scrollWidth": 390,
+      "brand": [
+        {
+          "src": "/takolio/v1/logo/symbol-micro.svg",
+          "x": 12,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "actions": [
+        {
+          "name": "Takolio — Trang chủ",
+          "x": 12,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Thông báo",
+          "x": 173,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Quét nguyên liệu",
+          "x": 334,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "recipes",
+      "route": "/recipes",
+      "screenshot": "recipes-390.png",
+      "width": 390,
+      "scrollWidth": 390,
+      "brand": [
+        {
+          "src": "/takolio/v1/logo/symbol-micro.svg",
+          "x": 12,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "actions": [
+        {
+          "name": "Takolio — Trang chủ",
+          "x": 12,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Thông báo",
+          "x": 173,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Quét nguyên liệu",
+          "x": 334,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "planner-setup",
+      "route": "/planner/new",
+      "screenshot": "planner-setup-390.png",
+      "width": 390,
+      "scrollWidth": 390,
+      "brand": [
+        {
+          "src": "/takolio/v1/logo/symbol-micro.svg",
+          "x": 64,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "actions": [
+        {
+          "name": "Quay lại thực đơn tuần",
+          "x": 12,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Takolio — Trang chủ",
+          "x": 64,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Thông báo",
+          "x": 199,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Quét nguyên liệu",
+          "x": 334,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "shopping",
+      "route": "/shopping",
+      "screenshot": "shopping-390.png",
+      "width": 390,
+      "scrollWidth": 390,
+      "brand": [
+        {
+          "src": "/takolio/v1/logo/symbol-micro.svg",
+          "x": 64,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "actions": [
+        {
+          "name": "Quay lại",
+          "x": 12,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Takolio — Trang chủ",
+          "x": 64,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Thông báo",
+          "x": 199,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Quét nguyên liệu",
+          "x": 334,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "recipe-detail",
+      "route": "/recipes/canh-chua-ca-loc-nam-bo",
+      "screenshot": "recipe-detail-390.png",
+      "width": 390,
+      "scrollWidth": 390,
+      "brand": [
+        {
+          "src": "/takolio/v1/logo/symbol-micro.svg",
+          "x": 64,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "actions": [
+        {
+          "name": "Quay lại",
+          "x": 12,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Takolio — Trang chủ",
+          "x": 64,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Thông báo",
+          "x": 199,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Quét nguyên liệu",
+          "x": 334,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "plus-shared-shell",
+      "route": "/plus",
+      "screenshot": "plus-shared-shell-390.png",
+      "width": 390,
+      "scrollWidth": 390,
+      "brand": [
+        {
+          "src": "/takolio/v1/logo/symbol-micro.svg",
+          "x": 68,
+          "y": 12,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "actions": [
+        {
+          "name": "Quay lại",
+          "x": 16,
+          "y": 12,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Takolio — Trang chủ",
+          "x": 68,
+          "y": 12,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Thông báo",
+          "x": 278,
+          "y": 12,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Tài khoản cá nhân",
+          "x": 330,
+          "y": 12,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Quét nguyên liệu",
+          "x": 16,
+          "y": 68,
+          "width": 358,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 124
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "home",
+      "route": "/",
+      "screenshot": "home-768.png",
+      "width": 768,
+      "scrollWidth": 768,
+      "brand": [],
+      "actions": [
+        {
+          "name": "Thông báo",
+          "x": 660,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Tài khoản cá nhân",
+          "x": 712,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 96,
+        "y": 0,
+        "width": 672,
+        "height": 64
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "recipes",
+      "route": "/recipes",
+      "screenshot": "recipes-768.png",
+      "width": 768,
+      "scrollWidth": 768,
+      "brand": [],
+      "actions": [
+        {
+          "name": "Thông báo",
+          "x": 660,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Tài khoản cá nhân",
+          "x": 712,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 96,
+        "y": 0,
+        "width": 672,
+        "height": 64
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "planner-setup",
+      "route": "/planner/new",
+      "screenshot": "planner-setup-768.png",
+      "width": 768,
+      "scrollWidth": 768,
+      "brand": [],
+      "actions": [
+        {
+          "name": "Quay lại thực đơn tuần",
+          "x": 108,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Thông báo",
+          "x": 660,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Tài khoản cá nhân",
+          "x": 712,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 96,
+        "y": 0,
+        "width": 672,
+        "height": 64
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "shopping",
+      "route": "/shopping",
+      "screenshot": "shopping-768.png",
+      "width": 768,
+      "scrollWidth": 768,
+      "brand": [],
+      "actions": [
+        {
+          "name": "Quay lại",
+          "x": 108,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Thông báo",
+          "x": 660,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Tài khoản cá nhân",
+          "x": 712,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 96,
+        "y": 0,
+        "width": 672,
+        "height": 64
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "recipe-detail",
+      "route": "/recipes/canh-chua-ca-loc-nam-bo",
+      "screenshot": "recipe-detail-768.png",
+      "width": 768,
+      "scrollWidth": 768,
+      "brand": [],
+      "actions": [
+        {
+          "name": "Quay lại",
+          "x": 108,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Thông báo",
+          "x": 660,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Tài khoản cá nhân",
+          "x": 712,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 96,
+        "y": 0,
+        "width": 672,
+        "height": 64
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "plus-shared-shell",
+      "route": "/plus",
+      "screenshot": "plus-shared-shell-768.png",
+      "width": 768,
+      "scrollWidth": 768,
+      "brand": [],
+      "actions": [
+        {
+          "name": "Quay lại",
+          "x": 128,
+          "y": 14,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Thông báo",
+          "x": 656,
+          "y": 14,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Tài khoản cá nhân",
+          "x": 708,
+          "y": 14,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 112,
+        "y": 0,
+        "width": 656,
+        "height": 72
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "home",
+      "route": "/",
+      "screenshot": "home-1024.png",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "brand": [
+        {
+          "src": "/takolio/v1/logo/wordmark-primary.svg",
+          "x": 28,
+          "y": 20,
+          "width": 168,
+          "height": 94.453125
+        }
+      ],
+      "actions": [
+        {
+          "name": "Thông báo",
+          "x": 916,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Tài khoản cá nhân",
+          "x": 968,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 224,
+        "y": 0,
+        "width": 800,
+        "height": 64
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "recipes",
+      "route": "/recipes",
+      "screenshot": "recipes-1024.png",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "brand": [
+        {
+          "src": "/takolio/v1/logo/wordmark-primary.svg",
+          "x": 28,
+          "y": 20,
+          "width": 168,
+          "height": 94.453125
+        }
+      ],
+      "actions": [
+        {
+          "name": "Thông báo",
+          "x": 916,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Tài khoản cá nhân",
+          "x": 968,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 224,
+        "y": 0,
+        "width": 800,
+        "height": 64
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "planner-setup",
+      "route": "/planner/new",
+      "screenshot": "planner-setup-1024.png",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "brand": [
+        {
+          "src": "/takolio/v1/logo/wordmark-primary.svg",
+          "x": 28,
+          "y": 20,
+          "width": 168,
+          "height": 94.453125
+        }
+      ],
+      "actions": [
+        {
+          "name": "Quay lại thực đơn tuần",
+          "x": 236,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Thông báo",
+          "x": 916,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Tài khoản cá nhân",
+          "x": 968,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 224,
+        "y": 0,
+        "width": 800,
+        "height": 64
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "shopping",
+      "route": "/shopping",
+      "screenshot": "shopping-1024.png",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "brand": [
+        {
+          "src": "/takolio/v1/logo/wordmark-primary.svg",
+          "x": 28,
+          "y": 20,
+          "width": 168,
+          "height": 94.453125
+        }
+      ],
+      "actions": [
+        {
+          "name": "Quay lại",
+          "x": 236,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Thông báo",
+          "x": 916,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Tài khoản cá nhân",
+          "x": 968,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 224,
+        "y": 0,
+        "width": 800,
+        "height": 64
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "recipe-detail",
+      "route": "/recipes/canh-chua-ca-loc-nam-bo",
+      "screenshot": "recipe-detail-1024.png",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "brand": [
+        {
+          "src": "/takolio/v1/logo/wordmark-primary.svg",
+          "x": 28,
+          "y": 20,
+          "width": 168,
+          "height": 94.453125
+        }
+      ],
+      "actions": [
+        {
+          "name": "Quay lại",
+          "x": 236,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Thông báo",
+          "x": 916,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Tài khoản cá nhân",
+          "x": 968,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 224,
+        "y": 0,
+        "width": 800,
+        "height": 64
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "plus-shared-shell",
+      "route": "/plus",
+      "screenshot": "plus-shared-shell-1024.png",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "brand": [
+        {
+          "src": "/takolio/v1/logo/wordmark-primary.svg",
+          "x": 44,
+          "y": 20,
+          "width": 168,
+          "height": 94.453125
+        }
+      ],
+      "actions": [
+        {
+          "name": "Quay lại",
+          "x": 288,
+          "y": 14,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Thông báo",
+          "x": 896,
+          "y": 14,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Tài khoản cá nhân",
+          "x": 948,
+          "y": 14,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 256,
+        "y": 0,
+        "width": 768,
+        "height": 72
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "home",
+      "route": "/",
+      "screenshot": "home-1440.png",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "brand": [
+        {
+          "src": "/takolio/v1/logo/wordmark-primary.svg",
+          "x": 28,
+          "y": 20,
+          "width": 168,
+          "height": 94.453125
+        }
+      ],
+      "actions": [
+        {
+          "name": "Thông báo",
+          "x": 1324,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Tài khoản cá nhân",
+          "x": 1376,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 232,
+        "y": 0,
+        "width": 1200,
+        "height": 64
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "recipes",
+      "route": "/recipes",
+      "screenshot": "recipes-1440.png",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "brand": [
+        {
+          "src": "/takolio/v1/logo/wordmark-primary.svg",
+          "x": 28,
+          "y": 20,
+          "width": 168,
+          "height": 94.453125
+        }
+      ],
+      "actions": [
+        {
+          "name": "Thông báo",
+          "x": 1324,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Tài khoản cá nhân",
+          "x": 1376,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 232,
+        "y": 0,
+        "width": 1200,
+        "height": 64
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "planner-setup",
+      "route": "/planner/new",
+      "screenshot": "planner-setup-1440.png",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "brand": [
+        {
+          "src": "/takolio/v1/logo/wordmark-primary.svg",
+          "x": 28,
+          "y": 20,
+          "width": 168,
+          "height": 94.453125
+        }
+      ],
+      "actions": [
+        {
+          "name": "Quay lại thực đơn tuần",
+          "x": 244,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Thông báo",
+          "x": 1324,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Tài khoản cá nhân",
+          "x": 1376,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 232,
+        "y": 0,
+        "width": 1200,
+        "height": 64
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "shopping",
+      "route": "/shopping",
+      "screenshot": "shopping-1440.png",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "brand": [
+        {
+          "src": "/takolio/v1/logo/wordmark-primary.svg",
+          "x": 28,
+          "y": 20,
+          "width": 168,
+          "height": 94.453125
+        }
+      ],
+      "actions": [
+        {
+          "name": "Quay lại",
+          "x": 244,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Thông báo",
+          "x": 1324,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Tài khoản cá nhân",
+          "x": 1376,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 232,
+        "y": 0,
+        "width": 1200,
+        "height": 64
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "recipe-detail",
+      "route": "/recipes/canh-chua-ca-loc-nam-bo",
+      "screenshot": "recipe-detail-1440.png",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "brand": [
+        {
+          "src": "/takolio/v1/logo/wordmark-primary.svg",
+          "x": 28,
+          "y": 20,
+          "width": 168,
+          "height": 94.453125
+        }
+      ],
+      "actions": [
+        {
+          "name": "Quay lại",
+          "x": 244,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Thông báo",
+          "x": 1324,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Tài khoản cá nhân",
+          "x": 1376,
+          "y": 10,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 232,
+        "y": 0,
+        "width": 1200,
+        "height": 64
+      },
+      "broken": [],
+      "axe": []
+    },
+    {
+      "name": "plus-shared-shell",
+      "route": "/plus",
+      "screenshot": "plus-shared-shell-1440.png",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "brand": [
+        {
+          "src": "/takolio/v1/logo/wordmark-primary.svg",
+          "x": 44,
+          "y": 20,
+          "width": 168,
+          "height": 94.453125
+        }
+      ],
+      "actions": [
+        {
+          "name": "Quay lại",
+          "x": 288,
+          "y": 14,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Thông báo",
+          "x": 1312,
+          "y": 14,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "name": "Tài khoản cá nhân",
+          "x": 1364,
+          "y": 14,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "header": {
+        "x": 256,
+        "y": 0,
+        "width": 1184,
+        "height": 72
+      },
+      "broken": [],
+      "axe": []
+    }
+  ],
+  "pageErrors": [],
+  "keyboardHome": {
+    "result": "PASS",
+    "focus": {
+      "style": "solid",
+      "width": 3
+    }
+  }
+}

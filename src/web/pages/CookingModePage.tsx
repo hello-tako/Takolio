@@ -287,7 +287,7 @@ function CookingSteps() {
           <ArrowLeft aria-hidden="true" size={20} />
           <span>Thoát</span>
         </button>
-        <img src={TAKOSAN_KITCHEN.logo} width={300} height={72} className="cooking-brand" alt="Takosan" translate="no" />
+        <img src={TAKOSAN_KITCHEN.compactLogo} width={44} height={44} className="cooking-brand" style={{ width: 44, height: 44 }} alt="Takolio" translate="no" />
         <span className="cooking-eyebrow">Bếp nhà</span>
       </header>
       <div className="cooking-workspace-grid">

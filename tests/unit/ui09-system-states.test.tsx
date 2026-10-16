@@ -6,6 +6,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { SessionBoundary } from '../../src/web/components/common/SessionBoundary';
 import { useAuthStore } from '../../src/web/stores/useAuthStore';
 import { queryClient } from '../../src/web/lib/query-client';
+import { TAKOLIO_BRAND } from '../../src/web/lib/takolio-brand';
 const mocks = vi.hoisted(() => ({ me: vi.fn(), logout: vi.fn() }));
 vi.mock('../../src/web/services/api', () => ({ api: { getMe: mocks.me } }));
 let host: HTMLDivElement, root: Root;
@@ -70,7 +71,7 @@ describe('UI09 system presentation preserves session gates', () => {
     expect(host.textContent).not.toContain('PRIVATE_CHILD');
     expect(host.querySelectorAll('h1')).toHaveLength(1);
     expect(host.querySelector('main')?.getAttribute('aria-busy')).toBe('true');
-    expect(host.querySelector('img')?.getAttribute('src')).toBe('/takosan/v3/logo/horizontal-primary.svg');
+    expect(host.querySelector('img')?.getAttribute('src')).toBe(TAKOLIO_BRAND.compactLogo);
     expect(host.querySelector('[role=status]')?.textContent).toContain('Đang kiểm tra phiên');
   });
   it('retries verification explicitly and reveals children only after the real gate resolves', async () => {

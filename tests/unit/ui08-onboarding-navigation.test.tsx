@@ -39,7 +39,7 @@ describe('UI08 completion intent through actual App guards', () => {
     await act(async () => root.render(<App />));
     await until(() => expect(host.querySelector('input[name="primary-goal"]')).toBeTruthy());
     await act(async () => host.querySelector<HTMLInputElement>(`input[value="${goal}"]`)!.click());
-    const submit = [...host.querySelectorAll('button')].find((el) => el.textContent?.includes('Bắt đầu với Takosan'))!;
+    const submit = [...host.querySelectorAll('button')].find((el) => el.textContent?.includes('Bắt đầu với Takolio'))!;
     await act(async () => submit.click());
     await until(() => expect(window.location.pathname).toBe(goal === 'week' ? '/planner/new' : '/'));
     expect(useAuthStore.getState().isOnboarded).toBe(true);
@@ -51,7 +51,7 @@ describe('UI08 completion intent through actual App guards', () => {
     await act(async () => root.render(<App />));
     await until(() => expect(host.querySelector('input[name="primary-goal"]')).toBeTruthy());
     await act(async () => host.querySelector<HTMLInputElement>('input[value="week"]')!.click());
-    await act(async () => [...host.querySelectorAll('button')].find((el) => el.textContent?.includes('Bắt đầu với Takosan'))!.click());
+    await act(async () => [...host.querySelectorAll('button')].find((el) => el.textContent?.includes('Bắt đầu với Takolio'))!.click());
     await until(() => expect(window.location.pathname).toBe('/week/setup'));
     expect(host.textContent).toContain('Legacy Week destination');
   });
@@ -66,7 +66,7 @@ describe('UI08 completion intent through actual App guards', () => {
     await act(async () => root.render(<App />));
     await until(() => expect(host.querySelector('input[name="primary-goal"]')).toBeTruthy());
     await act(async () => host.querySelector<HTMLInputElement>('input[value="week"]')!.click());
-    await act(async () => [...host.querySelectorAll('button')].find((el) => el.textContent?.includes('Bắt đầu với Takosan'))!.click());
+    await act(async () => [...host.querySelectorAll('button')].find((el) => el.textContent?.includes('Bắt đầu với Takolio'))!.click());
     expect(window.location.pathname).toBe('/onboarding/goals');
     expect(useAuthStore.getState().isOnboarded).toBe(false);
     expect(host.querySelector<HTMLInputElement>('input[value="week"]')!.checked).toBe(true);

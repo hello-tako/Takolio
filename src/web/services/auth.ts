@@ -115,7 +115,7 @@ export const authApi = {
       return {
         user: {
           id: getUserId(),
-          displayName: 'Bạn mới của Takosan',
+          displayName: 'Bạn mới của Takolio',
           isGuest: true,
           onboardingCompleted: localStorage.getItem('frigo_onboarded') === 'true',
           household: { id: getHouseholdId(), name: 'Tủ lạnh nhà tôi' },

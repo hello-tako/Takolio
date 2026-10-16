@@ -1,0 +1,15 @@
+{
+  "repository": "lol-vn/Tako-san",
+  "repositoryId": 1385308553,
+  "baselineSha": "03428467cdd5e93d27a3a27e5edaf7d512eef71d",
+  "branch": "feat/takolio-brand-migration-v1",
+  "publishedInitialHead": "6ee9c8c4fff71a472383c39e9ce0d9f97be541c6",
+  "pullRequest": "https://github.com/lol-vn/Tako-san/pull/79",
+  "draft": true,
+  "push": "SUCCESS",
+  "createDraftPR": "SUCCESS",
+  "initialValidateRun": 38791694785,
+  "initialValidateStatus": "IN_PROGRESS",
+  "noMergeDeployDispatch": true,
+  "independentReview": "No open implementation findings; 69 runtime hashes, 223 initial ledger entries, 58 sources and final visual/code/docs reviewed"
+}
