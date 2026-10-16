@@ -26,6 +26,8 @@ describe('R2 authentication regressions', () => {
       const signature = Buffer.from(await crypto.subtle.sign('RSASSA-PKCS1-v1_5', keys.privateKey, new TextEncoder().encode(data))).toString('base64url');
       return verifyAccessAssertion(`${data}.${signature}`, { ADMIN_ACCESS_TEAM_DOMAIN: ACCESS_TEAM, ADMIN_ACCESS_AUD: ACCESS_AUD }, accessOptions);
     };
+    for (const nbf of ['later',null,{}]) expect((await verify({sub:'human',nbf})).ok).toBe(false);
+    expect((await verify({sub:'human',iat:Math.floor(Date.now()/1000)+3600})).ok).toBe(false);
     for (const sub of [undefined, '', null, 42, 'a'.repeat(129)]) expect((await verify({ sub })).ok).toBe(false);
     expect((await verify({ sub: 'human', common_name: 'service-token' })).ok).toBe(false);
     expect(await verify({ sub: 'human' })).toEqual({ ok: true, email: fx('super'), iss: `https://${ACCESS_TEAM}`, sub: 'human' });

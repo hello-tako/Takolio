@@ -74,7 +74,7 @@ export async function verifyAccessAssertion(
 
   const teamDomain = env.ADMIN_ACCESS_TEAM_DOMAIN!.toLowerCase();
   const now = (options.now ?? Date.now)();
-  const fetcher = options.fetcher ?? ((url: string) => fetch(url));
+  const fetcher = options.fetcher ?? ((url: string) => fetch(url, {signal:AbortSignal.timeout(5000)}));
   let keys: Jwk[];
   try {
     keys = await loadKeys(teamDomain, fetcher, now, false);
@@ -104,8 +104,9 @@ export async function verifyAccessAssertion(
   if (!audience.includes(env.ADMIN_ACCESS_AUD)) return { ok: false, reason: 'wrong_audience' };
   if (payload.iss !== `https://${teamDomain}`) return { ok: false, reason: 'wrong_issuer' };
   const seconds = Math.floor(now / 1000);
-  if (typeof payload.exp !== 'number' || payload.exp <= seconds) return { ok: false, reason: 'expired' };
-  if (typeof payload.nbf === 'number' && payload.nbf > seconds + 60) return { ok: false, reason: 'not_yet_valid' };
+  if (typeof payload.exp !== 'number' || !Number.isFinite(payload.exp) || payload.exp <= seconds) return { ok: false, reason: 'expired' };
+  if (payload.nbf !== undefined && (typeof payload.nbf !== 'number' || !Number.isFinite(payload.nbf) || payload.nbf > seconds + 60)) return { ok: false, reason: 'not_yet_valid' };
+  if (payload.iat !== undefined && (typeof payload.iat !== 'number' || !Number.isFinite(payload.iat) || payload.iat > seconds + 60 || payload.iat >= payload.exp)) return {ok:false,reason:'invalid_issued_at'};
   if (typeof payload.email !== 'string' || !payload.email.includes('@')) return { ok: false, reason: 'missing_email' };
   if (payload.common_name !== undefined || typeof payload.sub !== 'string' || !/^[A-Za-z0-9_.:@-]{1,128}$/.test(payload.sub)) return { ok: false, reason: 'missing_subject' };
   return { ok: true, email: payload.email.trim().toLowerCase(), iss: payload.iss as string, sub: payload.sub };

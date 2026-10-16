@@ -4,6 +4,8 @@ import { getUser, listUsers, listHouseholds, userLabels } from './people';
 import { getRecipe, listRecipes, recipesSummary } from './recipes';
 import { aiSummary, billingSummary, listAiUsage, listTransactions } from './billing-ai';
 import { buildOverview } from './overview';
+import { budgetedDatabase } from './query-budget';
+import { validateOutput } from './output-contract';
 
 // A second boundary after SQL projection. Never serialize unknown object keys.
 export function assertSafeOutput(value:unknown, depth=0):void {
@@ -18,11 +20,12 @@ export function assertSafeOutput(value:unknown, depth=0):void {
     assertSafeOutput(entry,depth+1);
   }
 }
-export function createCustomerReadFacade(db:D1DatabaseBinding, options:{secret:string}):CustomerReadBinding {
+export function createCustomerReadFacade(database:D1DatabaseBinding, options:{secret:string}):CustomerReadBinding {
   return { async read(operation:ReadOperation, raw:unknown, capability:ReadCapability):Promise<unknown> {
     if(!Object.hasOwn(operationInputs,operation)) throw new Error('FACADE_OPERATION_INVALID');
     const schema=operationInputs[operation]; const input=schema.parse(raw);
     await verifyCapability(options.secret,operation,raw,capability);
+    const db = budgetedDatabase(database);
     let result:unknown;
     // Each branch parses its named input independently to preserve inferred types.
     switch(operation) {
@@ -42,6 +45,7 @@ export function createCustomerReadFacade(db:D1DatabaseBinding, options:{secret:s
       case 'overview': result=await buildOverview(db,operationInputs[operation].parse(input).range,[]);break;
       case 'system': {const rows=await db.prepare(`SELECT name FROM sqlite_master WHERE type='table' AND name IN ('users','auth_accounts','sessions_v2','payment_intents','subscriptions','ai_requests','scan_queue_jobs','recipes') LIMIT 8`).all<{name:string}>();result={reachable:true,tables:rows.results.map(r=>r.name)};break;}
     }
+    result = validateOutput(operation, result);
     assertSafeOutput(result);
     if(JSON.stringify(result).length>512_000) throw new Error('FACADE_OUTPUT_INVALID');
     return result;

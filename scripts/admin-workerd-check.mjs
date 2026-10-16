@@ -130,7 +130,7 @@ function adminConfig(name, source, vars, { define } = {}) {
     d1_databases: config.d1_databases.map((db) => ({ ...db, migrations_dir: path.join(root, db.migrations_dir) })), vars };
   delete result.$schema;
   delete result.observability;
-  if (define) result.define = define; else delete result.define;
+  result.define = define ?? {__ADMIN_LOCAL_AUTH__:'false'};
   return writeConfig(name, result);
 }
 
@@ -308,11 +308,11 @@ async function main() {
       const source = bundleFile ? readFileSync(path.join(outdir, bundleFile), 'utf8') : '';
       bundles[label] = { exit: result.status, bundleFile: bundleFile ?? null, bytes: source.length,
         typeofGuardUnreplaced: source.includes('typeof __ADMIN_LOCAL_AUTH__'), identifierPresent: source.includes('__ADMIN_LOCAL_AUTH__'),
-        containsFixturePassword: source.includes('Local-Fixture-Only-2026!'), log: (result.stderr || result.stdout).split('\n').filter((line) => /error|warn/i.test(line)).slice(0, 5) };
+        containsFixturePassword: source.includes('Local-Fixture-Only-2026!'), containsLocalAuthority: source.includes('FROM admin_local_credentials'), log: (result.stderr || result.stdout).split('\n').filter((line) => /error|warn/i.test(line)).slice(0, 5) };
     }
     record('production admin bundle never compiles the local password login (wrangler deploy --dry-run, no upload)', [
       check('production dry-run bundle built', bundles.production.exit === 0 && bundles.production.bytes > 0, bundles.production),
-      check('production bundle keeps the runtime typeof guard (define absent → evaluates false)', bundles.production.typeofGuardUnreplaced, bundles.production),
+      check('production bundle excludes the local password authority module', !bundles.production.containsLocalAuthority && !bundles.production.identifierPresent, bundles.production),
       check('local bundle has the define substituted', bundles.local.exit === 0 && !bundles.local.identifierPresent, bundles.local),
       check('no fixture credential in either bundle', !bundles.production.containsFixturePassword && !bundles.local.containsFixturePassword, null),
     ]);

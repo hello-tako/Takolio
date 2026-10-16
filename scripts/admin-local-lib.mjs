@@ -1,4 +1,4 @@
-// Admin Console local tooling: synthetic fixtures, two-person operator bootstrap
+// Admin Console local tooling: synthetic fixtures, three-operator bootstrap
 // SQL and the isolated Wrangler environment. Nothing here talks to Cloudflare or
 // GitHub; callers apply SQL to in-memory SQLite or `wrangler --local` only.
 import { mkdtempSync } from 'node:fs';
@@ -207,28 +207,6 @@ export function buildBootstrapAccountLookupSql(emails) {
  * the admin database has never had an assignment; a trigger then forbids any
  * later operator_bootstrap grant.
  */
-function legacyBootstrapAdminSql({ userIds, assignmentIds }) {
-  if (!Array.isArray(userIds) || userIds.length !== 2 || new Set(userIds).size !== 2 || !userIds.every((id) => USER_ID_RE.test(id))) {
-    throw new Error('Bootstrap requires two distinct verified accounts.');
-  }
-  if (!Array.isArray(assignmentIds) || assignmentIds.length !== 2 || !assignmentIds.every((id) => /^ara_[0-9a-f]{16,48}$/.test(id))) {
-    throw new Error('Invalid assignment ids.');
-  }
-  const guard = `NOT EXISTS (SELECT 1 FROM admin_role_assignments) AND NOT EXISTS (SELECT 1 FROM admin_config_metadata WHERE key = 'bootstrap_completed_at')`;
-  const ids = assignmentIds.map(sql).join(', ');
-  return `INSERT INTO admin_role_assignments (id, user_id, role, grant_source)
-SELECT ${sql(assignmentIds[0])}, ${sql(userIds[0])}, 'SUPER_ADMIN', 'operator_bootstrap' WHERE ${guard}
-UNION ALL
-SELECT ${sql(assignmentIds[1])}, ${sql(userIds[1])}, 'SUPER_ADMIN', 'operator_bootstrap' WHERE ${guard};
-INSERT INTO admin_config_metadata (key, value)
-SELECT 'bootstrap_completed_at', strftime('%Y-%m-%dT%H:%M:%fZ','now')
- WHERE (SELECT COUNT(*) FROM admin_role_assignments WHERE id IN (${ids}) AND grant_source = 'operator_bootstrap') = 2;
-INSERT INTO admin_audit_events (id, actor_user_id, actor_roles, action, target_type, target_id, outcome, metadata_json)
-SELECT 'evt_' || substr(id, 5), NULL, '[]', 'admin.bootstrap.operator', 'user', user_id, 'success', '{"source":"cli"}'
-  FROM admin_role_assignments WHERE id IN (${ids});
-SELECT COUNT(*) AS granted FROM admin_role_assignments WHERE id IN (${ids});`;
-}
-
 /** Local-only test account creation (customer database, development only). */
 export function buildLocalAccountSql({ email, password, name }) {
   if (typeof email !== 'string' || !EMAIL_RE.test(email.trim())) throw new Error('A valid --email is required.');
@@ -252,7 +230,9 @@ export function buildBootstrapAdminSql({userIds,assignmentIds,ceremonyId='ceremo
  if(assignmentIds && (assignmentIds.length!==3||!assignmentIds.every(id=>/^ara_[0-9a-f]{16,48}$/.test(id))))throw new Error('Invalid assignment ids');
  return `INSERT INTO admin_bootstrap_ceremonies(id,operator_user_ids,independent_approval_ref,created_at,audit_id) VALUES (${sql(ceremonyId)},${sql(JSON.stringify(userIds))},${sql(independentApprovalRef)},${sql(createdAt)},${sql('evt_'+ceremonyId)});`;
 }
+let fixtureCache;
 export function buildAdminFixtureSql() {
+ if (fixtureCache) return fixtureCache;
  const legacy=buildLegacyFixtureSql();
  const admin=[`INSERT INTO admin_config_metadata(key,value) VALUES('fixture_dataset',${sql(FIXTURE_DATASET)});`];
  const operators=[...FIXTURE_ADMINS.map(a=>({userId:`fx_admin_${a.key}`,key:a.key,name:a.name,email:fixtureEmail(a.key)})),{userId:'fx_owner',key:'owner',name:'Chủ bếp (fixture)',email:fixtureEmail('owner')},...Array.from({length:50},(_,i)=>{const n=String(i+1).padStart(3,'0');return {userId:`fx_user_${n}`,key:`user_${n}`,name:`Người dùng ${n}`,email:fixtureEmail(`customer${n}`)};})];
@@ -266,5 +246,6 @@ export function buildAdminFixtureSql() {
  for(const entry of FIXTURE_ADMINS.filter(a=>a.role!=='SUPER_ADMIN'))admin.push(`INSERT INTO admin_role_assignments(id,user_id,role,grant_source,granted_by,granted_at) VALUES(${sql('fx_ara_'+entry.key)},${sql('fx_admin_'+entry.key)},${sql(entry.role)},'admin_grant','fx_admin_super','2026-07-01T00:00:00.000Z');`);
  // Historical revoked assignment and editorial/audit data are retained from the old synthetic dataset.
  for(const statement of legacy.admin.match(/INSERT INTO (?:admin_recipe_editorial_reviews|admin_audit_events|admin_user_preferences)[\s\S]*?;/g)??[])admin.push(statement);
- return {main:legacy.main,admin:admin.join('\n')};
+ fixtureCache = Object.freeze({main:legacy.main,admin:admin.join('\n')});
+ return fixtureCache;
 }

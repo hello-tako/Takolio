@@ -36,7 +36,13 @@ import { type AdminPolicy, requestOriginMatches, resolveAdminPolicy } from './po
 import { CustomerReadClient } from './customer-facade-client';
 import { verifyEnrolledAdminAccessIdentity, checkAdminGovernanceReadiness } from './governance';
 import { authorityAccount } from './governance';
-import { localAuthorityAccount } from './local-auth';
+declare const __ADMIN_LOCAL_AUTH__: unknown;
+async function localAuthorityAccount(db: import('@frigo/db').D1DatabaseBinding, email: string, password: string|null) {
+  if (typeof __ADMIN_LOCAL_AUTH__ !== 'undefined' && __ADMIN_LOCAL_AUTH__ === true) {
+    return (await import('./local-auth')).localAuthorityAccount(db,email,password);
+  }
+  return null;
+}
 
 /** Admin database schema version this build requires (migrations-admin). */
 export const ADMIN_SCHEMA_VERSION = '2';

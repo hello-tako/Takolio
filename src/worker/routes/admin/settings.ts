@@ -13,8 +13,6 @@ import {
   type AdminRoleAssignment,
   type AdminSettings,
 } from '../../../shared/admin';
-import type { CustomerReadClient } from './customer-facade-client';
-import { userLabels } from './people';
 
 export interface ApprovalRow {
   id: string; action: AdminApprovalAction; target_user_id: string; assignment_id: string | null; requested_by: string; requested_at: string;
@@ -29,7 +27,19 @@ export function approvalView(row: ApprovalRow): AdminApproval {
     decidedBy: row.decided_by, decidedAt: row.decided_at, expiresAt: row.expires_at };
 }
 
-export async function settingsFor(main: CustomerReadClient, adminDb: D1DatabaseBinding, userId: string, canReadRoles: boolean): Promise<AdminSettings> {
+import { maskEmail } from './mask';
+
+
+async function adminIdentityLabels(adminDb: D1DatabaseBinding, userIds: string[]): Promise<Map<string, { displayName: string | null; emailMasked: string | null }>> {
+  const ids = [...new Set(userIds)].slice(0, 500);
+  if (ids.length === 0) return new Map();
+  const rows = await adminDb.prepare(`SELECT user_id, display_name, email FROM operator_identity_bindings
+      WHERE status = 'active' AND user_id IN (SELECT value FROM json_each(?))`).bind(JSON.stringify(ids))
+    .all<{ user_id: string; display_name: string; email: string }>();
+  return new Map(rows.results.map(row => [row.user_id, { displayName: row.display_name, emailMasked: maskEmail(row.email) }]));
+}
+
+export async function settingsFor(adminDb: D1DatabaseBinding, userId: string, canReadRoles: boolean): Promise<AdminSettings> {
   let assignments: AdminRoleAssignment[] = [];
   let approvals: AdminApproval[] = [];
   if (canReadRoles) {
@@ -39,7 +49,7 @@ export async function settingsFor(main: CustomerReadClient, adminDb: D1DatabaseB
           grant_source: AdminRoleAssignment['grantSource']; granted_by: string | null; granted_at: string; revoked_at: string | null }>(),
       adminDb.prepare(`SELECT ${APPROVAL_COLUMNS} FROM admin_action_approvals ORDER BY requested_at DESC, id DESC LIMIT 50`).all<ApprovalRow>(),
     ]);
-    const labels = await userLabels(main, assignmentRows.results.map((row) => row.user_id));
+    const labels = await adminIdentityLabels(adminDb, assignmentRows.results.map((row) => row.user_id));
     assignments = assignmentRows.results.map((row) => ({ id: row.id, userId: row.user_id, userDisplayName: labels.get(row.user_id)?.displayName ?? null,
       userEmailMasked: labels.get(row.user_id)?.emailMasked ?? null, role: row.role, status: row.status, grantSource: row.grant_source,
       grantedBy: row.granted_by, grantedAt: row.granted_at, revokedAt: row.revoked_at }));

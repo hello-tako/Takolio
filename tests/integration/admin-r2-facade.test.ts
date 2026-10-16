@@ -1,6 +1,8 @@
 import {afterAll,afterEach,beforeAll,describe,expect,it} from 'vitest';
 import {createCustomerReadFacade} from '../../src/worker/facade/customer-read-service';
 import {operationInputs,signCapability,type ReadOperation} from '../../src/worker/facade/contract';
+import {budgetedDatabase,boundedSql,MAX_SOURCE_ROWS} from '../../src/worker/facade/query-budget';
+import {validateOutput} from '../../src/worker/facade/output-contract';
 import {call,createDatabases,closeDatabases,localEnv,login,fx,setLocalAuthBuild,type Databases} from '../helpers/admin-harness';
 const secret='local-facade-fixture-secret-32-characters';
 let dbs:Databases|undefined;
@@ -36,4 +38,24 @@ describe('F1 named facade boundary',()=>{
   expect((await call('/api/v1/admin/users/fx_user_001?reveal=email',{env,session})).status).toBe(503);
   expect(disclosed).toBe(false);expect(events.length).toBeGreaterThan(0);
  });
+ it('F7: indexed materialization bounds base reads and refuses oversized data even for empty results',async()=>{
+  dbs=createDatabases();
+  const query="SELECT COUNT(*) AS n FROM users WHERE is_guest=0";
+  const plan=dbs.main.query<{detail:string}>('EXPLAIN QUERY PLAN '+boundedSql(query));
+  expect(plan.some(row=>/SEARCH main.users USING INDEX.*id>/.test(row.detail))).toBe(true);
+  const bounded=budgetedDatabase(dbs.main);
+  expect((await bounded.prepare(query).first<{n:number}>())!.n).toBeGreaterThan(0);
+  dbs.main.seed(`WITH RECURSIVE n(i) AS(VALUES(1) UNION ALL SELECT i+1 FROM n WHERE i<${MAX_SOURCE_ROWS+1}) INSERT INTO users(id,is_guest) SELECT 'budget_'||i,1 FROM n`);
+  await expect(budgetedDatabase(dbs.main).prepare(query).first()).rejects.toThrow('FACADE_DATASET_LIMIT');
+  await expect(budgetedDatabase(dbs.main).prepare("SELECT id FROM users WHERE id='absent'").all()).rejects.toThrow('FACADE_DATASET_LIMIT');
+  const env=localEnv(dbs);const session=await login(env,fx('super'));
+  expect((await call('/api/v1/admin/users',{env,session})).status).toBe(503);
+ });
+ it('F1: all named operations enforce output schemas and reject undisclosed fields',()=>{
+  expect(()=>validateOutput('users.eligible',true)).not.toThrow();
+  expect(()=>validateOutput('users.eligible',{allowed:true})).toThrow();
+  expect(()=>validateOutput('system',{reachable:true,tables:[],email:'leak@example.test'})).toThrow();
+  expect(()=>validateOutput('recipes.version',NaN)).toThrow();
+ });
+
 });

@@ -19,7 +19,7 @@ const work = mkdtempSync(path.join(tmpdir(), 'takosan-migration-matrix-'));
 const PRE_ADMIN = '186a9cf05de7c91ed3289e13130feb3b38a264ac';
 const ORIGINAL_ADMIN = '3e865d009ee62a92ed1d9c8d225a36893035670b';
 const R1 = '25140baa99ef0aecc5e8d0e53206132e01e0f765';
-const MAIN_BASELINE = '0ff82edb7c251be340b5e00fbcf0ae8703b22a55';
+const MAIN_BASELINE = '526596a8cd857984ad2b69901a8c7b0e9d6bccc2';
 const runEvidence = {
   head: null, tree: null, mergeBase: null, dirtyScopedPaths: null,
   adminManifest: null, workerVersion: null, workerSourceSha256: null,

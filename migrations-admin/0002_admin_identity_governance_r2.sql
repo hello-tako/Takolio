@@ -98,3 +98,39 @@ CREATE TABLE admin_local_credentials (
  password_hash TEXT NOT NULL,
  salt TEXT NOT NULL
 );
+
+-- Environment identity is provisioned only by the separately approved ceremony.
+CREATE TABLE admin_database_identity (
+ id TEXT PRIMARY KEY CHECK(id='authority'),
+ identity TEXT NOT NULL UNIQUE CHECK(length(identity) BETWEEN 8 AND 128),
+ environment TEXT NOT NULL CHECK(environment IN ('local','staging','production'))
+);
+ALTER TABLE admin_recovery_operations ADD COLUMN target_user_id TEXT NOT NULL;
+ALTER TABLE admin_recovery_operations ADD COLUMN approval_public_keys TEXT NOT NULL
+ CHECK(json_valid(approval_public_keys) AND json_type(approval_public_keys)='array' AND json_array_length(approval_public_keys)=2);
+CREATE TRIGGER trg_admin_recovery_authority BEFORE INSERT ON admin_recovery_operations
+WHEN NOT EXISTS(SELECT 1 FROM admin_database_identity WHERE identity=NEW.database_identity)
+ OR (SELECT COUNT(DISTINCT value) FROM json_each(NEW.approval_public_keys)) <> 2
+ OR NEW.expires_at <= strftime('%Y-%m-%dT%H:%M:%fZ','now')
+ OR NEW.executed_at > strftime('%Y-%m-%dT%H:%M:%fZ','now','+1 minute')
+ OR (SELECT COUNT(DISTINCT h.operator_id) FROM json_each(NEW.approval_operator_ids) a
+   JOIN approved_human_operators h ON h.operator_id=a.value AND h.status='active' AND h.recovery_key_algorithm='Ed25519'
+     AND h.recovery_public_key=json_extract(NEW.approval_public_keys,'$['||a.key||']')) <> 2
+ OR NOT EXISTS(SELECT 1 FROM operator_identity_bindings b JOIN approved_human_operators h ON h.operator_id=b.operator_id AND h.status='active'
+   WHERE b.user_id=NEW.target_user_id AND b.status='active'
+     AND b.operator_id NOT IN(SELECT value FROM json_each(NEW.approval_operator_ids)))
+ OR EXISTS(SELECT 1 FROM admin_role_assignments WHERE user_id=NEW.target_user_id AND role='SUPER_ADMIN' AND status='active')
+BEGIN SELECT RAISE(ABORT,'recovery authority, expiry, database identity or independent operator check failed'); END;
+CREATE TRIGGER trg_admin_recovery_apply AFTER INSERT ON admin_recovery_operations
+BEGIN
+ INSERT INTO admin_role_assignments(id,user_id,role,grant_source,granted_by,granted_at)
+ VALUES('ara_'||NEW.id,NEW.target_user_id,'SUPER_ADMIN','approval','recovery:'||NEW.id,NEW.executed_at);
+ INSERT INTO admin_audit_events(id,occurred_at,actor_roles,action,target_type,target_id,outcome,metadata_json)
+ VALUES('evt_'||NEW.id,NEW.executed_at,'[]','admin.breakglass','user',NEW.target_user_id,'success',
+   json_object('manifestHash',NEW.manifest_hash,'sourceSha',NEW.source_sha,'operators',json(NEW.approval_operator_ids)));
+ UPDATE admin_sessions SET revoked_at=NEW.executed_at,revoked_reason='role_changed' WHERE user_id=NEW.target_user_id AND revoked_at IS NULL;
+END;
+CREATE TRIGGER trg_admin_recovery_no_update BEFORE UPDATE ON admin_recovery_operations
+BEGIN SELECT RAISE(ABORT,'recovery operations are immutable'); END;
+CREATE TRIGGER trg_admin_recovery_no_delete BEFORE DELETE ON admin_recovery_operations
+BEGIN SELECT RAISE(ABORT,'recovery operations are retained history'); END;

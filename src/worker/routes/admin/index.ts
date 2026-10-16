@@ -91,7 +91,9 @@ async function activeSuperCount(c: AdminContext): Promise<number> {
 }
 
 async function eligibleUser(c: AdminContext, userId: string): Promise<boolean> {
-  return c.get('main').eligibleUser(userId);
+  return !!await c.get('adminDb').prepare(`SELECT b.user_id FROM operator_identity_bindings b
+    JOIN approved_human_operators h ON h.operator_id=b.operator_id AND h.status='active'
+    WHERE b.user_id=? AND b.status='active' LIMIT 1`).bind(userId).first();
 }
 
 // ── Reads ──────────────────────────────────────────────────────────────────
@@ -151,7 +153,7 @@ authed.get('/system/status', requirePermission('system.read'), async (c) => {
 authed.get('/audit', requirePermission('audit.read'), async (c) => ok(c, await listAudit(c.get('adminDb'), query(c, AuditQuery))));
 authed.get('/settings', requirePermission('admin.self.read'), async (c) => {
   const admin = c.get('admin');
-  return ok(c, await settingsFor(c.get('main'), c.get('adminDb'), admin.userId, hasAdminPermission(admin.roles, 'admin.roles.read')));
+  return ok(c, await settingsFor(c.get('adminDb'), admin.userId, hasAdminPermission(admin.roles, 'admin.roles.read')));
 });
 authed.get('/sessions', requirePermission('admin.sessions.revoke'), async (c) => {
   const now = nowIso();
@@ -377,4 +379,3 @@ authed.post('/sessions/:id/revoke', requirePermission('admin.sessions.revoke'), 
 adminRoutes.route('/', authed);
 // Never fall through; there is intentionally no bootstrap or provisioning endpoint.
 adminRoutes.all('*', (c) => errorResponse(c, 404, 'ADMIN_NOT_FOUND'));
-

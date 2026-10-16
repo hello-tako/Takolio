@@ -19,8 +19,8 @@ describe('admin deployment configuration', () => {
   });
 
   it('the production template is disabled, Access-only, and never compiles the local password login', () => {
-    expect(production.define).toBeUndefined();
-    expect(JSON.stringify(production)).not.toContain('__ADMIN_LOCAL_AUTH__');
+    expect(production.define).toEqual({__ADMIN_LOCAL_AUTH__:'false'});
+    expect(production.define.__ADMIN_LOCAL_AUTH__).not.toBe('true');
     expect(production.vars).toMatchObject({ ENVIRONMENT: 'production', ADMIN_CONSOLE_ENABLED: 'false', ADMIN_AUTH_MODE: 'cloudflare_access' });
     expect(production.routes).toBeUndefined();
     expect(production.d1_databases.map((db: { binding: string }) => db.binding)).toEqual(['ADMIN_DB']);
@@ -39,7 +39,9 @@ describe('admin deployment configuration', () => {
       expect(facade.workers_dev).toBe(false);
       expect(facade.preview_urls).toBe(false);
       expect(facade.routes).toBeUndefined();
-      expect(facade.d1_databases[0]).toMatchObject({ binding: 'DB', database_id: customerId });
+      expect(facade.d1_databases[0].binding).toBe('DB');
+      if (file.endsWith('-local.jsonc')) expect(facade.d1_databases[0].database_id).toBe(customerId);
+      else expect(facade.d1_databases[0].database_id).toBe('00000000-0000-4000-8000-000000000001');
     }
   });
 

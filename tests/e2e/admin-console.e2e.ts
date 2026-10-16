@@ -142,9 +142,10 @@ test('super admin journey across every primary screen, then logout terminates th
   await expect(page.getByTestId('admin-role-assignment-row').first()).toBeVisible();
   await shot(page, '09-settings');
 
-  // Unknown admin route.
-  await page.goto('/admin/does-not-exist');
-  await expect(page.getByTestId('admin-not-found')).toBeVisible();
+  // Unregistered server routes fail closed without serving the Admin shell.
+  const missing = await page.goto('/admin/does-not-exist');
+  expect(missing?.status()).toBe(404);
+  await expect(page.locator('.admin-app')).toHaveCount(0);
 
   // Logout terminates the server session.
   await page.goto('/admin/');
@@ -201,8 +202,9 @@ test('SUPER_ADMIN grants need a second SUPER_ADMIN in the UI, and the requester 
   await login(page, SUPER);
   await page.getByTestId('admin-nav-settings').click();
   await expect(page.getByTestId('admin-settings-matrix')).toBeVisible();
-  // Two active SUPER_ADMINs: revoking either is blocked in the UI (the server enforces it too).
-  await expect(page.getByTestId('admin-role-revoke-blocked').first()).toBeVisible();
+  // R2 starts with three independent operators; revocations require approval.
+  await expect(page.getByTestId('admin-role-assignment-row').filter({ hasText: 'Quản trị viên cấp cao' })).toHaveCount(3);
+  await expect(page.getByTestId('admin-role-revoke-blocked')).toHaveCount(0);
   await page.getByTestId('admin-grant-user').fill('fx_admin_ops');
   await page.getByTestId('admin-grant-role').selectOption('SUPER_ADMIN');
   await page.getByTestId('admin-grant-submit').click();

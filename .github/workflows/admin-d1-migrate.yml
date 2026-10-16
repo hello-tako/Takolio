@@ -1,0 +1,50 @@
+# Preparation only: no Cloudflare credential, environment approval or remote execution.
+# Activating a live release adapter requires separate workflow/security review.
+name: Admin Migrate Plan (Offline)
+on:
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: Reviewed exact 40-character source SHA
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: admin-migrate-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ inputs.source_sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+      - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1
+        with:
+          version: 10
+      - run: pnpm install --frozen-lockfile
+      - name: Validate exact source and prepare offline release manifest
+        env:
+          SOURCE_SHA: ${{ inputs.source_sha }}
+        run: node scripts/admin-release-preflight.mjs --sha "$SOURCE_SHA" --operation migrate
+      - name: Build disabled Admin artifact
+        run: pnpm build:admin
+      - name: Offline bundle validation
+        env:
+          WRANGLER_SEND_METRICS: 'false'
+        run: pnpm exec wrangler deploy --dry-run -c wrangler.admin.jsonc --outdir .artifacts/admin-r2/bundle
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: admin-migrate-offline-plan-${{ github.run_id }}
+          path: .artifacts/admin-r2/release-plan.json
+          retention-days: 14

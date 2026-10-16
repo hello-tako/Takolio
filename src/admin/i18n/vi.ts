@@ -26,7 +26,7 @@ const editorialStateLabels = {
 } as const;
 
 export const vi = {
-  appName: 'Takosan Admin',
+  appName: 'Takolio Admin',
   skipToContent: 'Chuyển đến nội dung chính',
   labels: {
     paymentStatus: paymentStatusLabels,
@@ -127,7 +127,7 @@ export const vi = {
   },
   auth: {
     loginTitle: 'Đăng nhập quản trị',
-    loginLead: 'Khu vực dành cho nhân viên Takosan được cấp quyền. Mọi thao tác đều được ghi nhật ký.',
+    loginLead: 'Khu vực dành cho nhân viên Takolio được cấp quyền. Mọi thao tác đều được ghi nhật ký.',
     email: 'Email quản trị',
     password: 'Mật khẩu',
     submit: 'Đăng nhập',

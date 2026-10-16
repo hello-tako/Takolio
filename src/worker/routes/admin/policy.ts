@@ -29,7 +29,7 @@ export interface AdminPolicy {
 const ENVIRONMENTS: readonly AdminEnvironment[] = ['development', 'test', 'staging', 'production'];
 
 // Defined only by local builds (wrangler.admin-local.jsonc `define`, local tooling,
-// tests). Production/staging configs never define it, so their bundles evaluate false.
+// tests). Production/staging configs explicitly define false and remove local password code.
 declare const __ADMIN_LOCAL_AUTH__: unknown;
 
 export function localPasswordAuthCompiled(): boolean {

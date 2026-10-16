@@ -14,8 +14,8 @@
   "d1_databases": [
     {
       "binding": "DB",
-      "database_name": "frigo-db",
-      "database_id": "f975ec39-b2c8-4a2a-80e1-0366054599d3",
+      "database_name": "REPLACE_CUSTOMER_READ_DATABASE",
+      "database_id": "00000000-0000-4000-8000-000000000001",
       "migrations_dir": "migrations"
     }
   ],

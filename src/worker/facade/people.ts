@@ -64,7 +64,7 @@ export async function getUser(main: D1DatabaseBinding, userId: string, reveal: b
     main.prepare(`SELECT h.id, h.name, hm.role, h.created_at, (SELECT COUNT(*) FROM household_members x WHERE x.household_id = h.id) AS member_count
         FROM household_members hm JOIN households h ON h.id = hm.household_id WHERE hm.user_id = ? ORDER BY h.created_at DESC, h.id DESC LIMIT 20`)
       .bind(userId).all<{ id: string; name: string; role: string; created_at: string; member_count: number }>(),
-    main.prepare(`SELECT MAX(password_hash IS NOT NULL) AS password, MAX(google_id IS NOT NULL) AS google FROM auth_accounts WHERE user_id = ?`)
+    main.prepare(`SELECT MAX(has_password) AS password, MAX(has_google) AS google FROM auth_accounts WHERE user_id = ?`)
       .bind(userId).first<{ password: number | null; google: number | null }>(),
     main.prepare(`SELECT COUNT(*) AS value FROM sessions_v2 WHERE user_id = ? AND revoked_at IS NULL AND datetime(expires_at) > datetime('now')`)
       .bind(userId).first<{ value: number }>(),

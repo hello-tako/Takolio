@@ -1,17 +1,17 @@
 /* Admin Console styles. Scoped to the admin bundle; customer styles are not touched. */
 
 :root {
-  --admin-bg: #F7F6F2;
+  --admin-bg: #FFF8ED;
   --admin-surface: #FFFFFF;
-  --admin-ink: #202C28;
+  --admin-ink: #0F2D46;
   --admin-muted: #5F5B53;
   --admin-line: #E7E3DA;
   --admin-field-line: #8C867B;
-  --admin-green: #2E7D5B;
-  --admin-green-deep: #1F563E;
-  --admin-green-hover: #26694C;
+  --admin-green: #276F3F;
+  --admin-green-deep: #0F2D46;
+  --admin-green-hover: #205C35;
   --admin-mint: #DFF4E6;
-  --admin-coral: #FF7B6B;
+  --admin-coral: #FF6B6B;
   --admin-coral-soft: #FFE6E1;
   --admin-coral-ink: #7A2E24;
   --admin-sidebar-width: 248px;

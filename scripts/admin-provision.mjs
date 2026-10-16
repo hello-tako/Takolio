@@ -1,84 +1,40 @@
 #!/usr/bin/env node
-// Local-only, one-time, two-person Admin Console bootstrap against local
-// Wrangler D1 (Miniflare). No HTTP endpoint exists for this. Refuses outside
-// development, in CI, with remote flags, or with a Cloudflare token present;
-// child wrangler processes run with telemetry off and no reachable OAuth login.
-//
-//   pnpm admin:provision -- --local --email a@example.test --email b@example.test
-//   pnpm admin:provision -- --local --create-accounts --password '<12+ chars>' --email a@example.test --email b@example.test
+// Local-only enrollment and three-operator atomic bootstrap. No customer D1 access.
 import { spawnSync } from 'node:child_process';
-import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, writeFileSync } from 'node:fs';
 import { randomBytes } from 'node:crypto';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import {
-  assertLocalProvisioningAllowed, buildBootstrapAccountLookupSql, buildBootstrapAdminSql, buildLocalAccountSql, localWranglerEnv,
-} from './admin-local-lib.mjs';
-
+import { assertLocalProvisioningAllowed, buildBootstrapAdminSql, hashPassword, localWranglerEnv, sql } from './admin-local-lib.mjs';
 const argv = process.argv.slice(2);
-const CONFIG = 'wrangler.admin-local.jsonc';
-function values(name) {
-  const out = [];
-  argv.forEach((arg, index) => {
-    if (arg === name) {
-      const value = argv[index + 1];
-      if (!value || value.startsWith('--')) throw new Error(`${name} requires a value`);
-      out.push(value);
-    }
-  });
-  return out;
-}
-
-function wranglerLocal(database, args, persistTo, env) {
-  const full = ['exec', 'wrangler', 'd1', 'execute', database, '--local', '--json', '-c', CONFIG, ...args];
-  if (persistTo) full.push('--persist-to', persistTo);
-  if (full.includes('--remote')) throw new Error('Refusing remote wrangler invocation');
-  const result = spawnSync('pnpm', full, { encoding: 'utf8', env });
-  if (result.status !== 0) throw new Error(`wrangler --local failed:\n${result.stderr || result.stdout}`);
-  return result.stdout;
-}
-
+function values(flag) { return argv.flatMap((v,i)=>v===flag?[argv[i+1]]:[]); }
 try {
-  assertLocalProvisioningAllowed({ argv });
-  const emails = values('--email');
-  const persistTo = values('--persist-to')[0];
-  const env = localWranglerEnv();
-  const dir = mkdtempSync(path.join(tmpdir(), 'takosan-admin-provision-'));
-  try {
-    if (argv.includes('--create-accounts')) {
-      const password = values('--password')[0];
-      for (const email of emails) {
-        const file = path.join(dir, `account-${randomBytes(4).toString('hex')}.sql`);
-        writeFileSync(file, buildLocalAccountSql({ email, password, name: email.split('@')[0] }));
-        wranglerLocal('frigo-db', ['--file', file], persistTo, env);
-      }
-    }
-    const lookup = JSON.parse(wranglerLocal('frigo-db', ['--command', buildBootstrapAccountLookupSql(emails).replace(/\s+/g, ' ')], persistTo, env));
-    const accounts = lookup[0]?.results ?? [];
-    if (accounts.length !== 2 || new Set(accounts.map((row) => row.user_id)).size !== 2) {
-      console.error('Bootstrap needs two existing, verified, non-guest accounts with different users.');
-      process.exit(2);
-    }
-    const assignmentIds = [`ara_${randomBytes(12).toString('hex')}`, `ara_${randomBytes(12).toString('hex')}`];
-    const file = path.join(dir, 'bootstrap.sql');
-    writeFileSync(file, buildBootstrapAdminSql({ userIds: accounts.map((row) => row.user_id), assignmentIds }));
-    let output;
-    try {
-      output = wranglerLocal('takosan-admin-db', ['--file', file], persistTo, env);
-    } catch (error) {
-      if (/already been completed/.test(String(error))) output = '';
-      else throw error;
-    }
-    if (!/"granted":\s*2\b/.test(output)) {
-      console.error('No SUPER_ADMIN was granted: bootstrap is one-time and only runs on an admin database that has never had an assignment.');
-      process.exit(2);
-    }
-    console.log(`Granted local SUPER_ADMIN to ${accounts.map((row) => row.email).join(' and ')} (two-person bootstrap).`);
-  } finally {
-    rmSync(dir, { recursive: true, force: true });
-    rmSync(env.XDG_CONFIG_HOME, { recursive: true, force: true });
-  }
-} catch (error) {
-  console.error(error instanceof Error ? error.message : String(error));
-  process.exit(1);
-}
+  assertLocalProvisioningAllowed({argv});
+  const emails=values('--email').map(v=>String(v).trim().toLowerCase());
+  const approval=values('--approval-ref')[0];
+  const password=process.env.ADMIN_LOCAL_PASSWORD;
+  if(emails.length!==3 || new Set(emails).size!==3 || emails.some(v=>!/^[a-z0-9._+-]+@[a-z0-9.-]+\.test$/.test(v))) throw new Error('Three distinct reserved .test emails are required');
+  if(!approval || approval.length<8 || approval.length>200)throw new Error('Explicit --approval-ref is required');
+  if(!password || password.length<12)throw new Error('Set ADMIN_LOCAL_PASSWORD (at least 12 characters)');
+  const env=localWranglerEnv();
+  const directory=mkdtempSync(path.join(tmpdir(),'takosan-admin-local-enrollment-'));
+  const file=path.join(directory,'ceremony.sql');
+  const now=new Date().toISOString();
+  const ceremony='ceremony_'+randomBytes(12).toString('hex');
+  const ids=emails.map(()=> 'local_'+randomBytes(12).toString('hex'));
+  const statements=emails.map((email,i)=>{
+    const id=ids[i],operator='operator_'+randomBytes(12).toString('hex'),salt=randomBytes(16).toString('hex');
+    return `INSERT INTO approved_human_operators(operator_id,approval_ref,approved_at) VALUES(${sql(operator)},${sql(approval)},${sql(now)});
+      INSERT INTO operator_identity_bindings(user_id,operator_id,access_iss,access_sub,approved_at,approval_ref,email,display_name)
+        VALUES(${sql(id)},${sql(operator)},'https://local.cloudflareaccess.com',${sql(id)},${sql(now)},${sql(approval)},${sql(email)},${sql(email.split('@')[0])});
+      INSERT INTO admin_local_credentials(user_id,email,display_name,password_hash,salt)
+        VALUES(${sql(id)},${sql(email)},${sql(email.split('@')[0])},${sql(hashPassword(password,salt))},${sql(salt)});`;
+  });
+  statements.push(buildBootstrapAdminSql({userIds:ids,ceremonyId:ceremony,independentApprovalRef:approval,createdAt:now}));
+  writeFileSync(file,statements.join('\n'),{mode:0o600});
+  const persist=values('--persist-to')[0];
+  const result=spawnSync('pnpm',['exec','wrangler','d1','execute','takosan-admin-db','--local','-c','wrangler.admin-local.jsonc','--file',file,...(persist?['--persist-to',persist]:[])],{encoding:'utf8',env});
+  // Keep the private SQL available for inspection; never echo credentials.
+  if(result.status!==0)throw new Error('Local ceremony failed; inspect local D1 state before retrying');
+  console.log('Local Admin enrollment and atomic three-operator bootstrap applied. Synthetic local authority only.');
+} catch(error) { console.error(error instanceof Error?error.message:String(error));process.exitCode=1; }
