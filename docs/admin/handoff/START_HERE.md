@@ -1,3 +1,9 @@
+> **Current continuation status (2026-10-16): ADMIN_V1_R2_BLOCKED.**
+> Local recovered source9f3e59a6 imports facade/governance modules lost during
+> sandbox replacement. It does not compile and is not ready for review or use.
+> Read `../remediation-r2/REPORT.md` and SOURCE_MANIFEST.md before running it.
+> No R2 push, merge, deploy, remote D1 or activation is authorized.
+
 # START HERE — Takosan Admin Console V1 handoff (2026-10-15)
 
 **Status: preserved and documented, NOT approved.** Admin Console V1 and its R1 security remediation are on this branch as local source. The independent-style certification verdict is `ADMIN_V1_R1_CHANGES_REQUIRED`. Findings F1–F11 are open. **R2 has not been started.** Nothing is routed, deployed, activated, or certified for staging or production.
