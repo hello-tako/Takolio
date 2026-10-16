@@ -1,0 +1,323 @@
+{
+  "mission": "TAKOLIO-BRAND-MIGRATION-V1",
+  "status": "PRODUCTION_DEPLOYED_WITH_PWA_FOLLOWUP_REQUIRED",
+  "recordedAtUtc": "2026-10-16T13:57:52.731558+00:00",
+  "repository": {
+    "fullName": "lol-vn/Tako-san",
+    "immutableId": 1385308553,
+    "public": true,
+    "releasedMainSha": "526596a8cd857984ad2b69901a8c7b0e9d6bccc2",
+    "reviewedFeatureHead": "0275604761f5f8272de7895bdbf818371e9a9e87",
+    "treeEqualsReviewedFeature": true,
+    "pr79": "https://github.com/lol-vn/Tako-san/pull/79",
+    "pr79State": "MERGED"
+  },
+  "authorization": {
+    "mergeAndDeployExplicitlyApprovedInChat": true,
+    "githubEnvironment": "production",
+    "githubReviewer": "vn-taphoanhatung",
+    "approvalHistoryVerified": true,
+    "adminBypass": false
+  },
+  "production": {
+    "url": "https://frigo.tungjpstore.net",
+    "workflowRunId": 38909163802,
+    "attempt": 1,
+    "workflowUrl": "https://github.com/lol-vn/Tako-san/actions/runs/38909163802",
+    "workflowConclusion": "success",
+    "deployed": {
+      "sha": "526596a8cd857984ad2b69901a8c7b0e9d6bccc2",
+      "environment": "production",
+      "checkedAt": "2026-10-16T13:50:24.617Z",
+      "attempts": 3,
+      "waitedMs": 9431
+    },
+    "workerVersionId": "35dd189e-7e3c-4782-b69b-237da7dadd62",
+    "deploymentId": "1575e4e8-7aed-4ca6-953d-8c45a0b13021",
+    "swProof": {
+      "sha": "526596a8cd857984ad2b69901a8c7b0e9d6bccc2",
+      "sha256": "1f76f7dc6cd77243879808ef6c391c15c218493ed9029d1b37ff7601b0165e23",
+      "httpStatus": 200,
+      "cacheNoStore": true,
+      "consecutiveObservations": 3
+    },
+    "previousSha": "f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1",
+    "previousWorkerVersionId": "0c99a435-7e7d-43fe-97a3-8e05ebc723d4",
+    "previousDeploymentId": "21c45ed0-9e3d-462e-8d5c-d40109a070eb",
+    "rollbackActivated": false,
+    "inactiveRecoveryVersionId": "0690efc8-1fbb-400d-8d11-7cb329e30810",
+    "inactiveRecoveryRehearsed": false
+  },
+  "flags": {
+    "catalogMode": "d1",
+    "canaryPercent": 0,
+    "cutover": true,
+    "mealCompositionV2": true,
+    "planner": true,
+    "sameAsPreviousProduction": true
+  },
+  "recipeAuthority": {
+    "configuredMode": "d1",
+    "cutoverEnabled": true,
+    "canaryPercent": 0,
+    "actualSource": "d1",
+    "globalSource": "d1",
+    "servedRecipeCount": 500,
+    "servedFingerprint": "f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37",
+    "releaseId": "rel-bd00a4f53fcaeee4",
+    "d1Readiness": "ready",
+    "fallbackReason": null,
+    "checkedAt": "2026-10-16T13:50:37.723Z"
+  },
+  "database": {
+    "remoteCertification": "SELECT_ONLY_PASS",
+    "schemaTip": "0043_shopping_demand_review.sql",
+    "migrationsAppliedByThisRelease": 0,
+    "importsRunByThisRelease": 0,
+    "integrity": {
+      "foreignKeyCheck": "[]",
+      "quickCheck": "ok"
+    },
+    "bindingUnchanged": true,
+    "catalogContinuity": "unchanged_d1_continuity"
+  },
+  "verification": {
+    "mainCi": {
+      "runId": 38907543924,
+      "url": "https://github.com/lol-vn/Tako-san/actions/runs/38907543924",
+      "conclusion": "success",
+      "files": 365,
+      "tests": 8479,
+      "durationSeconds": 593.3
+    },
+    "productionGates": {
+      "files": 365,
+      "tests": 8479,
+      "durationSeconds": 382.79,
+      "lintTypesMigrationSmokeBuild": "PASS"
+    },
+    "anonymousPostDeploySmoke": "PASS_EXIT_0",
+    "assetAudit": {
+      "result": "PASS_EXIT_0",
+      "count": 143,
+      "groups": {
+        "takolioRuntime": 87,
+        "manifests": 2,
+        "retainedV3": 54
+      }
+    },
+    "publicBrowser": {
+      "result": "PASS_EXIT_0",
+      "routes": [
+        "/landing",
+        "/auth"
+      ],
+      "widths": [
+        320,
+        390,
+        1440
+      ],
+      "matchedBeforeScreens": 6,
+      "afterScreens": 6,
+      "brokenImages": 0,
+      "horizontalOverflow": 0,
+      "pageErrors": 0,
+      "actual3dWebpPresence": true
+    },
+    "warmPublicPwa": {
+      "result": "PASS",
+      "checks": 2,
+      "note": "Controlled online navigation precedes offline reload; no household-data certification"
+    },
+    "firstInstallOffline": {
+      "before": "FAIL_NET_ERR_FAILED",
+      "after": "FAIL_NET_ERR_FAILED",
+      "sameObservedBehavior": true,
+      "diagnosticExitCode": 0,
+      "notAnAcceptancePass": true
+    },
+    "existingClientAutomaticUpdate": {
+      "result": "UNVERIFIED_TIMEOUT_EXIT_1",
+      "observedChecks": 2,
+      "failure": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n\nCall Log:\n- Timeout 90000ms exceeded while waiting on the predicate",
+      "oldContextClosedByHarnessAfterTimeout": true,
+      "note": "No root-cause attribution or regression exemption claimed"
+    }
+  },
+  "readiness": {
+    "baselineStatus": "degraded",
+    "observations": [
+      {
+        "status": "degraded",
+        "app": "Frigo",
+        "version": "0.1.0",
+        "commit": "526596a8cd857984ad2b69901a8c7b0e9d6bccc2",
+        "timestamp": "2026-10-16T13:51:36.739Z",
+        "environment": "production",
+        "recipeAuthority": {
+          "configuredMode": "d1",
+          "cutoverEnabled": true,
+          "canaryPercent": 0,
+          "globalSource": "d1",
+          "fallbackReason": null,
+          "releaseId": "rel-bd00a4f53fcaeee4",
+          "expectedRecipeCount": 500
+        },
+        "services": {
+          "database": "ok",
+          "queue": "ok",
+          "ai": "configured",
+          "email": {
+            "providerConfigured": true,
+            "deliveryVerified": false
+          },
+          "rateLimiting": "kv-best-effort"
+        },
+        "config": {
+          "ok": true,
+          "issues": [
+            {
+              "code": "CONFIG_RECIPE_CATALOG_D1_AUTHORITY",
+              "severity": "warning"
+            }
+          ]
+        }
+      },
+      {
+        "status": "degraded",
+        "app": "Frigo",
+        "version": "0.1.0",
+        "commit": "526596a8cd857984ad2b69901a8c7b0e9d6bccc2",
+        "timestamp": "2026-10-16T13:52:45.985Z",
+        "environment": "production",
+        "recipeAuthority": {
+          "configuredMode": "d1",
+          "cutoverEnabled": true,
+          "canaryPercent": 0,
+          "globalSource": "d1",
+          "fallbackReason": null,
+          "releaseId": "rel-bd00a4f53fcaeee4",
+          "expectedRecipeCount": 500
+        },
+        "services": {
+          "database": "ok",
+          "queue": "ok",
+          "ai": "configured",
+          "email": {
+            "providerConfigured": true,
+            "deliveryVerified": false
+          },
+          "rateLimiting": "kv-best-effort"
+        },
+        "config": {
+          "ok": true,
+          "issues": [
+            {
+              "code": "CONFIG_RECIPE_CATALOG_D1_AUTHORITY",
+              "severity": "warning"
+            }
+          ]
+        }
+      },
+      {
+        "status": "degraded",
+        "app": "Frigo",
+        "version": "0.1.0",
+        "commit": "526596a8cd857984ad2b69901a8c7b0e9d6bccc2",
+        "timestamp": "2026-10-16T13:54:47.404Z",
+        "environment": "production",
+        "recipeAuthority": {
+          "configuredMode": "d1",
+          "cutoverEnabled": true,
+          "canaryPercent": 0,
+          "globalSource": "d1",
+          "fallbackReason": null,
+          "releaseId": "rel-bd00a4f53fcaeee4",
+          "expectedRecipeCount": 500
+        },
+        "services": {
+          "database": "ok",
+          "queue": "ok",
+          "ai": "configured",
+          "email": {
+            "providerConfigured": true,
+            "deliveryVerified": false
+          },
+          "rateLimiting": "kv-best-effort"
+        },
+        "config": {
+          "ok": true,
+          "issues": [
+            {
+              "code": "CONFIG_RECIPE_CATALOG_D1_AUTHORITY",
+              "severity": "warning"
+            }
+          ]
+        }
+      },
+      {
+        "status": "degraded",
+        "app": "Frigo",
+        "version": "0.1.0",
+        "commit": "526596a8cd857984ad2b69901a8c7b0e9d6bccc2",
+        "timestamp": "2026-10-16T13:57:37.959Z",
+        "environment": "production",
+        "recipeAuthority": {
+          "configuredMode": "d1",
+          "cutoverEnabled": true,
+          "canaryPercent": 0,
+          "globalSource": "d1",
+          "fallbackReason": null,
+          "releaseId": "rel-bd00a4f53fcaeee4",
+          "expectedRecipeCount": 500
+        },
+        "services": {
+          "database": "ok",
+          "queue": "ok",
+          "ai": "configured",
+          "email": {
+            "providerConfigured": true,
+            "deliveryVerified": false
+          },
+          "rateLimiting": "kv-best-effort"
+        },
+        "config": {
+          "ok": true,
+          "issues": [
+            {
+              "code": "CONFIG_RECIPE_CATALOG_D1_AUTHORITY",
+              "severity": "warning"
+            }
+          ]
+        }
+      }
+    ],
+    "newFatalConfigIssues": false,
+    "limitations": [
+      "Provider configuration does not prove OTP delivery",
+      "Rate limiting remains KV best-effort",
+      "No live provider/account/payment mutation used"
+    ]
+  },
+  "protectedScope": {
+    "noNewWorkerAuthPaymentLogicChanges": true,
+    "noWorkflowWranglerDomainSecretPersistedIdChanges": true,
+    "noRemoteMigrationImport": true,
+    "noActiveFlagsChanged": true,
+    "nativeStoreAndLegalRelease": "NOT_PERFORMED"
+  },
+  "inputProvenance": {
+    "zipSha256": "d2f77b552c07570d846a20d2602dd3a6c41ebb4fd9c66328234bf86da8ca1142",
+    "fullPriorReviewReceipt": "../Takolio_Upgrade_Review/FINAL_RECEIPT.json",
+    "priorReviewReceiptUnmodified": true
+  },
+  "knownGaps": [
+    "Immediate first-install offline navigation fails both before and after release",
+    "Existing-client background update timed out and is unverified",
+    "PREMIUM_MASCOT_FINISHING_PENDING; no 100-percent concept/legal claim",
+    "25 protected legacy source-copy locations deferred",
+    "Physical-device/native store and hosted signed-in/offline household-data acceptance not performed"
+  ],
+  "rollback": "Retain current recovery receipts and both brand trees. Use existing authorized incident recovery policy; do not bypass current-main release gates or revert D1. Normal brand rollback requires a reviewed revert, exact-SHA CI and protected Deploy.",
+  "nextAction": "Review docs-only follow-up; investigate PWA first-install/cache/update behavior in a separate reviewed change. No further merge/deploy authorized by this receipt."
+}
