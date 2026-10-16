@@ -16,8 +16,8 @@ These are implementer checks, not independent certification.
 | `pnpm admin:workerd:check` | FAIL, exit1: missing facade Worker entrypoint; no new workerd/browser proof |
 | `pnpm test:admin:e2e` | FAIL, exit1: preview cannot load missing facade client; no browser tests executed |
 | `pnpm admin:migration:matrix -- --out ...` before repair | FAIL0/1, exit1: `spawnSync is not defined` |
-| Expanded matrix after9f3e59a6 import repair | Execution in progress when this record was written; final result must be appended, not inferred |
-| `pnpm test --maxWorkers=1 --bail=1 --silent` | At least one suite import failure already observed; no all-suite PASS; final status must be recorded |
+| Expanded matrix after9f3e59a6 import repair | FAIL, exit1, **20/23**: two version1-vs2 apply failures plus missing-column rollback-injection precondition. Preserved JSON: evidence/migration-matrix-9f3e59a6.json |
+| `pnpm test --maxWorkers=1 --bail=1 --silent` | Stopped after confirmed missing-module collection failure; exit143 (SIGTERM). Partial run only, no complete test total/PASS. |
 
 The missing modules and preserved preliminary draft stash are listed in REPORT.md.
 Protected-path diff against integrated main0ff82ed is empty for customer web,

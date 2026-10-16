@@ -1,3 +1,20 @@
+## Actual recovered-source run (2026-10-16)
+
+Source `9f3e59a6ed3a9b6b6041fef2e0a83340d1db1dd5`, clean scoped inputs:
+`pnpm admin:migration:matrix -- --out ...` exited1, **20/23** rows passed.
+The recovered script's missing spawnSync import was fixed before this run.
+R1 regression scenarios, current-main43 fresh and0041→0043 upgrade, missing0043
+and unknown0044 rejection, strict old41 gate refusal, and legacy schema-object
+retention all passed. R2 Admin upgrade/fresh-apply rows failed: only0001/version1
+exists, while the Worker requires2. The rollback-injection row could not run
+because the lost migration's two new admin_sessions columns are absent.
+These failures are retained, not suppressed or replaced with expected passes.
+Evidence: `evidence/migration-matrix-9f3e59a6.json`.
+SQL object retention is not runtime rollback/browser proof; workerd could not
+start because the facade entrypoint is missing. **ADMIN_V1_R2_BLOCKED.**
+
+---
+
 > **Recovery status (2026-10-16): ADMIN_V1_R2_BLOCKED.** Source
 > `9f3e59a6ed3a9b6b6041fef2e0a83340d1db1dd5` is incomplete; required modules were lost in sandbox replacement.
 > The design/checklist below is not proof of implementation. Actual checks and

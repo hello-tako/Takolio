@@ -32,6 +32,22 @@ re-enable the direct customer DB binding, skip assertions or deploy this tree.
 The only surviving migration is Admin0001/version1, while auth requires version2.
 A successful current `check:migrations` therefore tests version1 only, not R2.
 
+## Final checks after recovery
+
+At source `9f3e59a6ed3a9b6b6041fef2e0a83340d1db1dd5`, the expanded local
+migration matrix completed with exit1, **20/23**. Its three failing rows expose
+the lost R2 schema: Admin version remains1 versus required2, and rollback
+failure injection cannot find the missing new columns. The historical41 and
+current-main43 migration/strict drift scenarios passed. Full JSON is retained
+in `evidence/migration-matrix-9f3e59a6.json`.
+
+Lint, version1-only migration smoke and20 routing tests passed on the recovered
+integration source before the matrix import-only fix. Typecheck/build/auth
+collection/workerd/browser startup failed because required modules are missing.
+The full-suite bail attempt was stopped after the same confirmed import failure
+(exit143); no completed full-suite result is claimed. Current browser screenshots
+cannot be verified or supplied because the app does not start.
+
 ## Recovery references and next action
 
 The restored preliminary draft is preserved in local stash

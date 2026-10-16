@@ -9,6 +9,10 @@ without rewriting history. Runtime compilation is currently broken by missing
 required modules; do not treat configuration changes as a completed facade.
 Lint and 20 routing tests pass; types/build/auth/workerd/browser gates fail.
 Migration smoke passes only Admin0001/version1, not required R2/version2.
+Recovered-source expanded local migration matrix:20/23 PASS,3 FAIL,exit1 at
+9f3e59a6 (missing R2 schema/version2/columns); evidence in remediation-r2/evidence/.
+Full-suite attempt stopped after confirmed missing-module failure (exit143),
+not a completed test run.
 No clean full-suite/R2 acceptance PASS, independent review PASS or deployment.
 Customer protected runtime/config/schema paths still equal integrated main0ff82ed.
 PR77 remains draft; task auto-merge off. No push, merge, remote D1 or activation.
