@@ -1,3 +1,31 @@
+# PR #77 brand-main merge verification — 2026-10-16
+
+**Result:** four conflicts resolved in merge
+`03a84b03e0b11b93c0e2ab2a6c56cc29cf3fa845` (parents `73e0c490`, `526596a8`).
+On that exact source: `pnpm lint`, `pnpm typecheck`, `pnpm build`,
+`pnpm check:migrations` and focused Admin/brand Vitest all exit0. Regression
+command: `pnpm exec vitest run tests/unit/admin- tests/integration/admin-
+tests/unit/takolio-brand.test.mjs tests/unit/takolio-3d-assets.test.mjs
+tests/unit/takolio-mascot.test.tsx --maxWorkers=1 --silent`: 13 files /143 tests
+PASS. Both customer/Admin migration smoke markers are `ok`. Existing Admin font
+build warnings remain; the expected emitted font files are present.
+
+Both complete parent status histories survive. Main's Takolio and V3 brand
+commands and all prior Admin commands/build/migration checks coexist in valid
+package JSON, with dependencies and lockfile unchanged. Customer runtime/assets,
+configs/migrations and incoming brand artifacts match merged main byte-for-byte;
+Admin runtime/config/schema matches the previous PR head. Resolution-path diff
+checks and conflict-marker scans pass. Broad merge diff whitespace warnings are
+inherited verbatim font licenses / historical logs, not new resolution changes;
+those authoritative files were not reformatted. Separate local R2 stays excluded.
+
+**Next:** publish only this handoff merge/receipt and require exact-head hosted CI.
+Full repository tests and browser E2E were not rerun locally for this conflict
+resolution. Preserve draft / DO NOT MERGE status, F1–F11 and independent-review /
+release gates. No PR merge/close, deploy, remote D1, secret or account operation.
+
+---
+
 # PR #77 brand-main conflict reconciliation — 2026-10-16
 
 **Scope:** merge main `526596a8cd857984ad2b69901a8c7b0e9d6bccc2` into handoff `73e0c490a15e2014abb6e5096ec45ec980981d37`.
