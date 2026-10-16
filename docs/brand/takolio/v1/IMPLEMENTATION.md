@@ -37,3 +37,9 @@ Current diff/evidence base is `f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1` after P
 ## Corrective shared header
 
 ADR-TAKOLIO-002 supersedes the initial compact-header symbol choice. `KitchenHeader` renders the canonical horizontal logo at 180px; below 375px with a back control, a native `<picture>` selects the 120px outlined wordmark. Tablet keeps the horizontal header while desktop continues using its existing rail wordmark. No source artwork or generator changes are needed. See `HEADER_FOLLOWUP.md` for matched before/after proof, scope, tests and the remaining candidate-glyph/premium-3D fidelity limits.
+
+## 3D mascot candidate (2026-10-16)
+
+The implementation now includes a reviewed static 3D illustration layer documented in `MASCOT_3D.md`. Six Blender-derived PNG masters are pinned in `source/3d/`; `pnpm brand:icons` generates 18 transparent WebP variants under `public/takolio/v1/mascot/3d/`. `TakoMascot` preserves the SVG contract and uses WebP only for illustrations at least 96 CSS pixels, with network/format fallback and reserved dimensions. The native `.blend`/`.glb` handoff is local-only and not in public runtime.
+
+The candidate is used on landing, auth decoration, onboarding, unplanned Home and generic empty states. Error, Plus and protected payment consumers remain unchanged. This is a candidate illustration set; premium finishing, concept fidelity, native/device acceptance and legal review remain open.

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../stores/useAuthStore';
+import { TakoMascot } from '../components/common/TakoMascot';
 import { Button } from '../components/common/Button';
 import { TAKOSAN_KITCHEN } from '../lib/takosan-kitchen';
 import { ArrowRight, Camera, ClipboardCheck, CookingPot } from 'lucide-react';
@@ -31,6 +32,7 @@ export const LandingPage: React.FC = () => {
         <span>{TAKOSAN_KITCHEN.motto}</span>
       </header>
       <div className="landing-intro">
+        <TakoMascot pose="wave" size={224} className="landing-mascot" />
         <p className="kitchen-eyebrow">Từ đồ ăn trong tủ đến bữa cơm trên bàn</p>
         <h1>Lên kế hoạch bữa ăn <span>thông minh.</span></h1>
         <p className="landing-description">Bớt quên đồ trong tủ. Bớt băn khoăn hôm nay ăn gì. Takolio giúp bạn nhìn rõ nguyên liệu đang có và chuẩn bị bữa ăn tiếp theo.</p>

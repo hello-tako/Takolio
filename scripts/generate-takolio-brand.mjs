@@ -90,9 +90,18 @@ export async function generateTakolio(out = resolve(root, 'public/takolio/v1')) 
   const ogLogo = await sharp(files.get('logo/horizontal-primary.svg')).resize({ width: 1080, height: 500, fit: 'inside' }).png().toBuffer();
   put('social/og-1200x630.png', await sharp({ create: { width: 1200, height: 630, channels: 3, background: TAKOLIO_COLORS.cream } }).composite([{ input: ogLogo, gravity: 'centre' }]).png(png).toBuffer());
   for (const file of ['plus-jakarta-sans-vietnamese-latin-wght.woff2', 'Plus-Jakarta-Sans-OFL.txt']) put(`fonts/${file}`, await readFile(resolve(source, 'fonts', file)));
+  // Pinned authoring renders keep native Blender/GPU work outside runtime and CI.
+  const renders = JSON.parse(await read('3d/render-manifest.json'));
+  for (const render of renders.files) {
+    const input = await readFile(resolve(source, '3d', render.path));
+    if (sha256(input) !== render.sha256) throw new Error(`3D master integrity: ${render.path}`);
+    for (const size of [256, 512, 1024]) {
+      put(`mascot/3d/tako-${render.pose}-${size}.webp`, await sharp(input).resize(size, size).webp({ quality: 84, alphaQuality: 100, effort: 4 }).toBuffer());
+    }
+  }
   const manifest = [...files].map(([path, data]) => ({ path, bytes: data.length, sha256: sha256(data) }));
   for (const [path, bytes] of files) { await mkdir(dirname(resolve(out, path)), { recursive: true }); await writeFile(resolve(out, path), bytes); }
-  await writeFile(resolve(out, 'asset-manifest.json'), JSON.stringify({ generator: 'sharp 0.35.5; offline pinned SVG/path masters', files: manifest }, null, 2) + '\n');
+  await writeFile(resolve(out, 'asset-manifest.json'), JSON.stringify({ generator: 'sharp 0.35.5; offline pinned SVG/path and 3D PNG masters', files: manifest }, null, 2) + '\n');
   return [...files.keys(), 'asset-manifest.json'];
 }
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) console.log(`Takolio V1 exports: ${(await generateTakolio()).length}`);

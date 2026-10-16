@@ -30,7 +30,7 @@ try {
     return { keys, paths: (await (await caches.open(current)).keys()).map((r) => new URL(r.url).pathname) };
   });
   assert(!cache.keys.includes('takosan-pwa-v3-before'));
-  for (const path of ['/takolio/v1/app-icons/icon-maskable-512.png', '/takolio/v1/logo/horizontal-primary.svg', '/takosan/v3/fonts/nunito-vietnamese-wght-normal.woff2']) assert(cache.paths.includes(path), path);
+  for (const path of ['/takolio/v1/app-icons/icon-maskable-512.png', '/takolio/v1/logo/horizontal-primary.svg', '/takosan/v3/fonts/nunito-vietnamese-wght-normal.woff2', '/takolio/v1/mascot/3d/tako-welcome-512.webp', '/takolio/v1/mascot/3d/tako-welcome-1024.webp', '/takolio/v1/mascot/tako-welcome.svg']) assert(cache.paths.includes(path), path);
   result.checks.push({ kind: 'activation-cleans-old-release-and-precaches-Takolio-and-retained-fonts', ...cache });
   const manifest = await (await context.request.get(base + '/manifest.json')).json();
   assert.equal(manifest.short_name, 'Takolio');
@@ -46,8 +46,13 @@ try {
   await expect(page.getByRole('heading', { name: 'Lên kế hoạch bữa ăn thông minh.' })).toBeVisible();
   await expect(page.getByTestId('landing-logo')).toBeVisible();
   assert(await page.getByTestId('landing-logo').evaluate((im) => im.naturalWidth > 0));
+  const mascot = page.locator('[data-takolio-mascot="wave"] img');
+  await expect.poll(() => mascot.evaluate((img) => img.complete && img.naturalWidth > 0 && img.currentSrc.includes('/mascot/3d/'))).toBe(true);
+  const offlineMascot = await mascot.evaluate((img) => ({ src: new URL(img.currentSrc).pathname, width: img.width, height: img.height, naturalWidth: img.naturalWidth }));
+  assert.equal(offlineMascot.width, 224);
+  assert.equal(offlineMascot.height, 224);
   await page.screenshot({ path: resolve(out, 'offline-landing-390.png'), fullPage: true });
-  result.checks.push({ kind: 'offline-cached-public-shell-logo-and-font', route: new URL(page.url()).pathname });
+  result.checks.push({ kind: 'offline-cached-public-shell-logo-font-and-3d-mascot', route: new URL(page.url()).pathname, offlineMascot });
   assert.deepEqual(result.errors, []);
 } finally {
   await writeFile(resolve(out, 'observations.json'), JSON.stringify(result, null, 2) + '\n');

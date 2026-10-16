@@ -1,5 +1,10 @@
 /** Takolio V1 identity. Legacy names remain adapters to this single contract. */
 const BASE = '/takolio/v1';
+const illustration = (pose: string) => ({
+  small: `${BASE}/mascot/3d/tako-${pose}-256.webp`,
+  standard: `${BASE}/mascot/3d/tako-${pose}-512.webp`,
+  large: `${BASE}/mascot/3d/tako-${pose}-1024.webp`,
+});
 export const TAKOLIO_BRAND = {
   name: 'Takolio',
   mascotName: 'Tako',
@@ -31,6 +36,15 @@ export const TAKOLIO_BRAND = {
     cooking: `${BASE}/mascot/tako-cooking.svg`,
     calendar: `${BASE}/mascot/tako-thinking.svg`,
     shopping: `${BASE}/mascot/tako-completed.svg`,
+  },
+  // Vector mascot URLs remain stable for compact and protected consumers.
+  mascotRenders: {
+    happy: illustration('welcome'), neutral: illustration('welcome'),
+    wave: illustration('welcome'), thinking: illustration('thinking'),
+    wink: illustration('welcome'), celebrate: illustration('cheering'),
+    fridge: illustration('thinking'), recipe: illustration('cooking'),
+    cooking: illustration('cooking'), calendar: illustration('thinking'),
+    shopping: illustration('completed'),
   },
   appIcons: {
     favicon: `${BASE}/app-icons/favicon.svg`,

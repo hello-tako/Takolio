@@ -79,3 +79,9 @@ This documentation-only checkpoint follows those verified results. Runtime/sourc
 ## Corrective header follow-up
 
 See `HEADER_FOLLOWUP.md` and `evidence/header-followup/receipts.json` for the operator-reported icon-only-header correction. Matched 36 before/after screens at six widths have no after axe/broken-image/overflow/page errors; header action sizes/overlap and keyboard home-link focus pass. The header deliberately follows the kit's horizontal180/wordmark120 minimums, preserving the supplied masters. Entry-page palette/font measurements confirm all three standalone scopes. Paired builds, PWA3, state15, flagsOFF12 and focused46 pass. Historical whole-app 198 captures and94 E2E remain bound to the preceding integration, not relabelled as current-head reruns. The initial unadjusted macOS full suite failed11 temp-path normalization assertions; the affected files pass93/93 with documented `TMPDIR=/private/tmp`. Full-suite final result is in the current handoff checkpoint.
+
+## 3D mascot candidate follow-up
+
+The final candidate follow-up is recorded in `MASCOT_3D.md` and `evidence/mascot-3d/`. Fixed geometry was rerendered after independent review found a heart-badge spike; the final welcome/excited masters have clean solid heart silhouettes. The browser receipt was rerun from an unauthenticated state after preserving the initial harness failure. No runtime fallback defect was found.
+
+Final follow-up receipts: full unit 365 files / 8,479 tests PASS; focused 6 files / 51 tests PASS; 72 mascot screens PASS across six widths; local protected E2E 94/94 tests PASS; state checks 15/15 PASS; PWA 3/3 PASS; generator and ON build PASS. The broad heuristic UX audit remains a non-gating repository-wide scan with pre-existing findings; it is retained separately and not relabeled PASS.

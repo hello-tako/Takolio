@@ -1,3 +1,15 @@
+# ADR-TAKOLIO-003: render the reviewed 3D candidate as lightweight illustrations - 2026-10-16 JST
+
+**Status:** accepted implementation scope after operator feedback on the genuine Blender candidate. Design acceptance is provisional; premium production approval, concept fidelity and legal clearance are not asserted.
+
+**Decision:** keep the kit's outlined logos, UI icons, PWA/store-prep icons and vector mascot URLs intact. Add six transparent static 3D renders from one procedural Blender master, with state-specific expressions/props, to the single Takolio contract. A presentation component selects responsive raster variants for illustrations >=96 CSS px and retains the existing SVG as an unsupported-format/network fallback. Small uses remain vector. Do not ship a WebGL engine or the high-detail GLB/native file to browsers.
+
+**Adoption:** public landing, login/register presentation, three onboarding steps, unplanned Home and generic non-error EmptyState illustrations. Keep layouts/task actions compact, preserve all callbacks/conditions, and leave protected Plus/payment mascot pointers unchanged. AuthShell changes are decorative markup only; AuthPage, credential/session/OTP/Google logic and Worker are outside scope. Existing logo correction remains authoritative.
+
+**Source/recovery:** procedural construction and pose scripts plus hashed 2048px PNG masters/provenance live in the versioned brand source directory. Native Blender/GLB remain local handoff outputs. The normal pinned Sharp generator creates web variants offline; Blender rendering is an explicit authoring step, not a CI/network dependency. Precache only the preferred raster variants; retain vector/old asset paths and the existing release-aware cache lifecycle. A reviewed follow-up can remove illustration consumers while retaining generated paths for installed clients.
+
+**Limits:** starter rig/weights and facial controls still need production polish. Rendered poses are candidate illustrations, not certification of a complete production animation system. Physical-device, premium finishing and legal/trademark gates remain open.
+
 # ADR-TAKOLIO-002: show the product name throughout the kitchen shell - 2026-10-16 JST
 
 **Status:** accepted corrective presentation change; supersedes the small-header micro-symbol choice in ADR-TAKOLIO-001. The operator reported that Home, Recipes, Planner Setup and Shopping lack the visible Takolio name while entry/onboarding show it. An accessible name alone does not provide visual brand recognition.

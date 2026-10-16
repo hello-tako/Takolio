@@ -1,0 +1,81 @@
+{
+  "status": "3D_CANDIDATE_REVIEW_REQUIRED",
+  "premiumApproved": false,
+  "sourceZipSha256": "d2f77b552c07570d846a20d2602dd3a6c41ebb4fd9c66328234bf86da8ca1142",
+  "sourceMascot": "03_Mascot/SVG/takolio-mascot-master-front.svg",
+  "referenceBoardsUsedAsStyleOnly": true,
+  "files": [
+    {
+      "pose": "welcome",
+      "path": "renders/tako-welcome-2048.png",
+      "sha256": "211efb83f09d08e9385e53efd8998820d8a17819ae1ebb6d7558d56d22125cff",
+      "bytes": 2402250,
+      "size": "2048x2048 RGBA PNG"
+    },
+    {
+      "pose": "cooking",
+      "path": "renders/tako-cooking-2048.png",
+      "sha256": "21ad494a91890a5b49e5e30fe8243647ff8defbb07edc6352c06edc36e052c72",
+      "bytes": 2429912,
+      "size": "2048x2048 RGBA PNG"
+    },
+    {
+      "pose": "thinking",
+      "path": "renders/tako-thinking-2048.png",
+      "sha256": "e2565eaf8965df4ee729c0549b1a1a7069614499b17d2bac6398848b4b62a5a3",
+      "bytes": 2419916,
+      "size": "2048x2048 RGBA PNG"
+    },
+    {
+      "pose": "excited",
+      "path": "renders/tako-excited-2048.png",
+      "sha256": "1a6e799bade5cc20c15bba110a73506820d024a9ee98effef28fd71630bdb67d",
+      "bytes": 2437010,
+      "size": "2048x2048 RGBA PNG"
+    },
+    {
+      "pose": "completed",
+      "path": "renders/tako-completed-2048.png",
+      "sha256": "c29bac83eec2e21053e134845a90cca0d0c4319622656358b758050a26b49315",
+      "bytes": 2422622,
+      "size": "2048x2048 RGBA PNG"
+    },
+    {
+      "pose": "cheering",
+      "path": "renders/tako-cheering-2048.png",
+      "sha256": "a720328fb0e87561f05e9299e118d5ad51ddb8701015f4a6ebea3e32bc2e4406",
+      "bytes": 2449415,
+      "size": "2048x2048 RGBA PNG"
+    }
+  ],
+  "authoringFiles": [
+    {
+      "path": "build_tako.py",
+      "sha256": "fe3b3185933de22cd6d58eed02c663e9fc8472c0767eaa39f1d2ee06d4d71c5e",
+      "bytes": 19741
+    },
+    {
+      "path": "render_views.py",
+      "sha256": "58eba807f84d31bae65c7604c593e032476e5da328ea9580dafd210c55062b66",
+      "bytes": 865
+    },
+    {
+      "path": "render_pose_set.py",
+      "sha256": "e316da466bd2955c714f12a633d8f0b52ce4882bd69db71f17b24ba07e57c73a",
+      "bytes": 9515
+    }
+  ],
+  "nativeHandoff": {
+    "tako-3d-candidate-v1.blend": {
+      "sha256": "41da1b7257188c5d561310156301f10fff3f75dba1e1341b243b325b6c154630",
+      "bytes": 13777177,
+      "status": "local handoff; excluded from browser runtime and public repository"
+    },
+    "tako-3d-candidate-v1.glb": {
+      "sha256": "41e0d22e90e5f0961400d9a0e96a3c0d942cbe39093814425be3a1f051e4f383",
+      "bytes": 6172708,
+      "status": "local handoff; excluded from browser runtime and public repository"
+    }
+  },
+  "note": "Procedural Blender geometry is a review candidate. Rendered poses are static illustrations; premium finishing, complete facial controls and device acceptance remain pending."
+}

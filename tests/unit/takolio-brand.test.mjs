@@ -47,7 +47,7 @@ describe('Takolio V1 migration exports', () => {
         if (rounding.changedRgbChannels) console.log('TAKOLIO_RASTER_ROUNDING', JSON.stringify({ path: name, ...rounding }));
       } else if (name !== 'asset-manifest.json') expect(a, name).toEqual(committed);
     }
-  }, 30000);
+  }, 120000);
   it('rejects material RGB, opacity, geometry and micro-icon drift', () => {
     const raster = (width = 100, height = 100, channels = 3) => ({
       info: { width, height, channels }, data: Buffer.alloc(width * height * channels, 100),

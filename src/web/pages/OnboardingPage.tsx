@@ -19,6 +19,7 @@ import {
 import { InlineError, InlineLoading } from '../components/common/AsyncState';
 import { clsx } from 'clsx';
 import { Button } from '../components/common/Button';
+import { TakoMascot } from '../components/common/TakoMascot';
 import { TAKOSAN_KITCHEN } from '../lib/takosan-kitchen';
 import { capturePrivateSession, isOfflineGuestSession } from '../lib/private-session';
 import { api } from '../services/api';
@@ -241,6 +242,8 @@ export const OnboardingPage: React.FC = () => {
             />
           ))}
         </div>
+
+        <TakoMascot pose={step === 1 ? 'wave' : step === 2 ? 'cooking' : 'celebrate'} size={128} className="onboarding-mascot" />
 
         {step === 1 && (
           <section

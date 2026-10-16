@@ -1,3 +1,18 @@
+# Takolio V1 3D candidate follow-up - 2026-10-16 JST
+
+- [x] Repair heart-badge mesh and rerender the affected welcome/excited masters.
+- [x] Pin six source PNGs, authoring hashes and native handoff provenance.
+- [x] Generate 18 responsive WebP runtime assets with deterministic local Sharp.
+- [x] Integrate the responsive component with SVG/network fallback and preserve protected consumers.
+- [x] Run focused/full tests, lint, types, builds, E2E, mascot matrix, PWA, state and flags-OFF checks.
+- [x] Preserve the first fallback-harness failure and rerun from a clean synthetic auth state.
+- [ ] Commit/push feature branch, refresh draft PR #79, read exact-head hosted CI.
+- [ ] Obtain independent final review binding and owner review; no merge/deploy.
+
+**Scope:** static candidate illustrations and evidence only. PayOS/payment/checkout/webhooks, auth behavior, Worker, data/migrations, recipe/inventory/household/Week compatibility, flags, domains, persisted identifiers and production infrastructure remain protected.
+
+---
+
 # Takolio V1 corrective publication checkpoint - 2026-10-16 JST
 
 **Implementation:** corrective header commit `617c52b3a095227a90e36a10bb08449e1a3ab1c2` is pushed to `feat/takolio-brand-migration-v1`. Canonical repository `lol-vn/Tako-san` (ID `1385308553`), live main `f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1`. PR #79 remains OPEN/DRAFT/MERGEABLE: https://github.com/lol-vn/Tako-san/pull/79. Worktree was clean after the implementation push. This checkpoint only updates publication documentation, the exact interrupted-test command and file hashes.

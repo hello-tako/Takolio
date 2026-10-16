@@ -1,0 +1,13 @@
+# Tako 3D candidate authoring source
+
+The operator accepted the first genuine Blender candidate for continued implementation on 2026-10-16 JST. This is provisional visual acceptance, not premium-production, 100% concept-fidelity, trademark or release approval.
+
+Six 2048px RGBA PNG masters are pinned by `render-manifest.json`. `build_tako.py` constructs the real mesh/material/33-bone starter rig in Blender 4.5.9. `render_pose_set.py` adds expressions and purpose-specific props to that same model. `render_views.py` creates front/3-4/side/back proof. Boards were inspected for style only; no pixels were cropped, traced or extracted as textures. No external textures or installed fonts are used.
+
+The native `.blend` and high-detail `.glb` are local handoff deliverables, identified by SHA in the manifest. They are intentionally excluded from the public repo and browser runtime. Rebuild in a scratch copy of this directory: first run Blender with `build_tako.py`, then set `TAKO_POSE_OUT` to that absolute scratch directory and `TAKO_MASTER` to its generated `.blend` when running `render_pose_set.py`. The builder's output directory is its own location. The turnaround script also reads the native master next to itself. Blender render pixels may vary by GPU/version; review and pin new masters explicitly rather than silently regenerating them during CI.
+
+`pnpm brand:icons` uses only the pinned PNG/SVG/font masters and local Sharp 0.35.5. It verifies PNG SHA and creates responsive 256/512/1024 WebP illustrations. Same-toolchain double-generation and committed hashes are tested separately from the historical native SVG raster rounding allowance. Every runtime URL is additive; the vector mascot fallback and old Takosan assets are retained.
+
+The six state illustrations have basic arm variations plus distinct expressions/props: welcome heart/wink; cooking open eyes, bowl and spoon; thinking open eyes/question; excited hearts; completed bowl/sparkles; cheering open eyes, stars/confetti. These are static candidate compositions, not six certified production animation poses. Full facial/pose controls, prop-grip polish, rig-weight refinement, model optimization and physical-device acceptance remain open. A simplified 64px raster is supplied in the local review package; the app retains the kit's vector micro icon for small controls.
+
+Rights provenance: original procedural geometry created for the operator's authorized Takolio migration from the supplied kit. The kit supplies no standalone asset license and this does not assert exclusive ownership or trademark clearance. No third-party texture/model/paid font is included. Blender itself is an external authoring tool and is not redistributed here.

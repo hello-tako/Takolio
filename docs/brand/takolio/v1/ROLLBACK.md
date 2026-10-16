@@ -9,3 +9,7 @@ Rollback is additive and safe for installed clients:
 5. Re-run lint, typecheck, full tests, migration smoke, build, PWA and matched browser checks before any approved deployment.
 
 This task did not merge, push main, deploy, dispatch workflows or mutate production. A hosted reviewer must approve any rollback or release action.
+
+## 3D illustration rollback
+
+If the candidate is rejected, remove the `TakoMascot` consumers through a reviewed revert while retaining the generated `/takolio/v1/mascot/3d/` paths until the service-worker release has drained. The SVG mascot URLs remain the direct fallback and can be restored in the contract without touching auth, payment, persisted identifiers or cache keys. Do not delete `/takosan/v3`, invalidate installed clients or remove the local native handoff as a substitute for a reviewed asset decision.

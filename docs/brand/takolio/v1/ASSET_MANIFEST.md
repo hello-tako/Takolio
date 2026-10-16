@@ -156,3 +156,9 @@ Every manifest SHA was checked after generation and by `tests/unit/takolio-brand
 | `source/typography/question.svg` | 678 | `7ab94387c8cfaedc8bdf65d485e06a298e6483ff826dc5287ca66a8609124a5f` |
 | `source/typography/tagline-en.svg` | 8139 | `86e8429a4d76d4e96e17e0b32171de3646e6f7809c2a8590cf571ee16e8abceb` |
 | `source/typography/tagline-vi.svg` | 11848 | `c79671d8189b6fb2ecc20a49b6375cf46bd9b3a062fe7ecba9f7f686aed05468` |
+
+## 3D illustration exports
+
+The final candidate generator now reports 87 manifest entries and 1,012,952 runtime bytes. Eighteen entries are transparent WebP exports from six pinned 2048px RGBA PNG masters: `mascot/3d/tako-{welcome,cooking,thinking,excited,completed,cheering}-{256,512,1024}.webp`. Their source SHA, authoring SHA, native handoff hashes and `premiumApproved: false` status are in `source/3d/render-manifest.json`. The selected service-worker precache contains nine preferred raster variants (194,324 bytes) plus the vector fallbacks; all 69 pre-existing Takolio runtime entries remain byte-identical.
+
+The native Blender `.blend` and `.glb` files, the full ZIP, boards and PDFs stay outside the public repository. The local delivery ZIP has an adjacent `.sha256` and separate publication receipt; its contents include native/source/QA handoff, not browser runtime.

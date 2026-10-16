@@ -1,3 +1,19 @@
+# Takolio V1 3D candidate follow-up - 2026-10-16 JST
+
+**Status:** `TAKOLIO_V1_CHANGES_REQUIRED` until the new feature commit is pushed, automatic exact-head CI is read, and independent review binds to that SHA. Draft PR #79 remains OPEN/DRAFT: https://github.com/lol-vn/Tako-san/pull/79. No merge, deploy, workflow dispatch or main push is authorized.
+
+**Repository/base:** canonical `lol-vn/Tako-san`, immutable ID `1385308553`; live main `f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1`; working branch `feat/takolio-brand-migration-v1`; previous published head `ac7956952fbdfaaddbf379f0fb2355aa922ae1a1`. The current worktree is dirty with the 3D candidate integration and evidence; final branch SHA will be recorded after commit.
+
+**Implementation:** six pinned Blender-derived 2048px RGBA masters now generate 18 responsive WebP mascot illustrations through `pnpm brand:icons`. `TakoMascot` uses WebP for illustrations >=96 CSS px and keeps the canonical SVG fallback; small controls, error states and protected Plus/payment consumers retain vector behavior. The heart-badge geometry was rerendered after independent review found a visible spike. The native `.blend`/`.glb` remain local handoff outputs and are not runtime assets.
+
+**Validation:** focused 6 files / 51 tests PASS; full local unit 365 files / 8,479 tests PASS; lint, typecheck, default/ON/OFF builds, migration smoke and generator PASS; protected E2E 94/94 PASS; mascot browser matrix 72/72 PASS at 320/375/390/768/1024/1440; state checks 15/15, PWA 3/3 and flags-OFF 12/12 PASS. Final fallback receipt passes after clearing synthetic auth state. Evidence is in `docs/brand/takolio/v1/evidence/mascot-3d/` and the local delivery package is recorded in `MASCOT_3D.md`.
+
+**Protected scope:** final audit reports 299 compared protected paths unchanged relative to the previous implementation head, 69 prior runtime entries byte-identical, and no payment/auth logic, Worker, database, migration, recipe, household, Week, flag, domain or persisted-ID change. The public file scan found no ZIP/PDF/boards/native model/secrets in the repository; it is not a legal or comprehensive secret certification.
+
+**Open limits/next:** premium mascot finishing, exact concept fidelity, rig/weight/prop polish, physical-device/native acceptance, legal/trademark clearance and hosted signed-in/offline household-data acceptance remain open. Commit coherent changes, push feature branch only, update draft PR body, wait for automatic CI, obtain independent final binding, then request owner review. Do not merge or deploy.
+
+---
+
 # Takolio V1 corrective publication checkpoint - 2026-10-16 JST
 
 **Implementation:** corrective header commit `617c52b3a095227a90e36a10bb08449e1a3ab1c2` is pushed to `feat/takolio-brand-migration-v1`. Canonical repository `lol-vn/Tako-san` (ID `1385308553`), live main `f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1`. PR #79 remains OPEN/DRAFT/MERGEABLE: https://github.com/lol-vn/Tako-san/pull/79. Worktree was clean after the implementation push. This checkpoint only updates publication documentation, the exact interrupted-test command and file hashes.

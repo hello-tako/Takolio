@@ -1,0 +1,1089 @@
+{
+  "stage": "after",
+  "syntheticLocalOnly": true,
+  "browser": "153.0.8010.12",
+  "checks": [
+    {
+      "name": "landing",
+      "route": "/landing",
+      "screenshot": "landing-320.png",
+      "width": 320,
+      "scrollWidth": 320,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-welcome-256.webp",
+          "width": 224,
+          "height": 224,
+          "alt": "",
+          "naturalWidth": 223,
+          "pose": "wave"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "login",
+      "route": "/auth",
+      "screenshot": "login-320.png",
+      "width": 320,
+      "scrollWidth": 320,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-welcome-256.webp",
+          "width": 112,
+          "height": 112,
+          "alt": "",
+          "naturalWidth": 111,
+          "pose": "wave"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "register",
+      "route": "/auth?mode=register",
+      "screenshot": "register-320.png",
+      "width": 320,
+      "scrollWidth": 320,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-welcome-256.webp",
+          "width": 112,
+          "height": 112,
+          "alt": "",
+          "naturalWidth": 111,
+          "pose": "wave"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "onboarding-household",
+      "route": "/onboarding/household",
+      "screenshot": "onboarding-household-320.png",
+      "width": 320,
+      "scrollWidth": 320,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-welcome-256.webp",
+          "width": 128,
+          "height": 128,
+          "alt": "",
+          "naturalWidth": 128,
+          "pose": "wave"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "onboarding-preferences",
+      "route": "/onboarding/preferences",
+      "screenshot": "onboarding-preferences-320.png",
+      "width": 320,
+      "scrollWidth": 320,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-cooking-256.webp",
+          "width": 128,
+          "height": 128,
+          "alt": "",
+          "naturalWidth": 128,
+          "pose": "cooking"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "onboarding-goals",
+      "route": "/onboarding/goals",
+      "screenshot": "onboarding-goals-320.png",
+      "width": 320,
+      "scrollWidth": 320,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-cheering-256.webp",
+          "width": 128,
+          "height": 128,
+          "alt": "",
+          "naturalWidth": 128,
+          "pose": "celebrate"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "home-empty",
+      "route": "/",
+      "screenshot": "home-empty-320.png",
+      "width": 320,
+      "scrollWidth": 320,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-thinking-256.webp",
+          "width": 128,
+          "height": 128,
+          "alt": "",
+          "naturalWidth": 128,
+          "pose": "calendar"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "fridge-empty",
+      "route": "/fridge",
+      "screenshot": "fridge-empty-320.png",
+      "width": 320,
+      "scrollWidth": 320,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-thinking-256.webp",
+          "width": 128,
+          "height": 128,
+          "alt": "",
+          "naturalWidth": 128,
+          "pose": "fridge"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "recipes",
+      "route": "/recipes",
+      "screenshot": "recipes-320.png",
+      "width": 320,
+      "scrollWidth": 320,
+      "images": [],
+      "axe": []
+    },
+    {
+      "name": "planner-setup",
+      "route": "/planner/new",
+      "screenshot": "planner-setup-320.png",
+      "width": 320,
+      "scrollWidth": 320,
+      "images": [],
+      "axe": []
+    },
+    {
+      "name": "shopping",
+      "route": "/shopping",
+      "screenshot": "shopping-320.png",
+      "width": 320,
+      "scrollWidth": 320,
+      "images": [],
+      "axe": []
+    },
+    {
+      "name": "plus-protected",
+      "route": "/plus",
+      "screenshot": "plus-protected-320.png",
+      "width": 320,
+      "scrollWidth": 320,
+      "images": [],
+      "axe": []
+    },
+    {
+      "name": "landing",
+      "route": "/landing",
+      "screenshot": "landing-375.png",
+      "width": 375,
+      "scrollWidth": 375,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-welcome-256.webp",
+          "width": 224,
+          "height": 224,
+          "alt": "",
+          "naturalWidth": 223,
+          "pose": "wave"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "login",
+      "route": "/auth",
+      "screenshot": "login-375.png",
+      "width": 375,
+      "scrollWidth": 375,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-welcome-256.webp",
+          "width": 112,
+          "height": 112,
+          "alt": "",
+          "naturalWidth": 111,
+          "pose": "wave"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "register",
+      "route": "/auth?mode=register",
+      "screenshot": "register-375.png",
+      "width": 375,
+      "scrollWidth": 375,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-welcome-256.webp",
+          "width": 112,
+          "height": 112,
+          "alt": "",
+          "naturalWidth": 111,
+          "pose": "wave"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "onboarding-household",
+      "route": "/onboarding/household",
+      "screenshot": "onboarding-household-375.png",
+      "width": 375,
+      "scrollWidth": 375,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-welcome-256.webp",
+          "width": 128,
+          "height": 128,
+          "alt": "",
+          "naturalWidth": 128,
+          "pose": "wave"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "onboarding-preferences",
+      "route": "/onboarding/preferences",
+      "screenshot": "onboarding-preferences-375.png",
+      "width": 375,
+      "scrollWidth": 375,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-cooking-256.webp",
+          "width": 128,
+          "height": 128,
+          "alt": "",
+          "naturalWidth": 128,
+          "pose": "cooking"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "onboarding-goals",
+      "route": "/onboarding/goals",
+      "screenshot": "onboarding-goals-375.png",
+      "width": 375,
+      "scrollWidth": 375,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-cheering-256.webp",
+          "width": 128,
+          "height": 128,
+          "alt": "",
+          "naturalWidth": 128,
+          "pose": "celebrate"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "home-empty",
+      "route": "/",
+      "screenshot": "home-empty-375.png",
+      "width": 375,
+      "scrollWidth": 375,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-thinking-256.webp",
+          "width": 128,
+          "height": 128,
+          "alt": "",
+          "naturalWidth": 128,
+          "pose": "calendar"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "fridge-empty",
+      "route": "/fridge",
+      "screenshot": "fridge-empty-375.png",
+      "width": 375,
+      "scrollWidth": 375,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-thinking-256.webp",
+          "width": 128,
+          "height": 128,
+          "alt": "",
+          "naturalWidth": 128,
+          "pose": "fridge"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "recipes",
+      "route": "/recipes",
+      "screenshot": "recipes-375.png",
+      "width": 375,
+      "scrollWidth": 375,
+      "images": [],
+      "axe": []
+    },
+    {
+      "name": "planner-setup",
+      "route": "/planner/new",
+      "screenshot": "planner-setup-375.png",
+      "width": 375,
+      "scrollWidth": 375,
+      "images": [],
+      "axe": []
+    },
+    {
+      "name": "shopping",
+      "route": "/shopping",
+      "screenshot": "shopping-375.png",
+      "width": 375,
+      "scrollWidth": 375,
+      "images": [],
+      "axe": []
+    },
+    {
+      "name": "plus-protected",
+      "route": "/plus",
+      "screenshot": "plus-protected-375.png",
+      "width": 375,
+      "scrollWidth": 375,
+      "images": [],
+      "axe": []
+    },
+    {
+      "name": "landing",
+      "route": "/landing",
+      "screenshot": "landing-390.png",
+      "width": 390,
+      "scrollWidth": 390,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-welcome-256.webp",
+          "width": 224,
+          "height": 224,
+          "alt": "",
+          "naturalWidth": 223,
+          "pose": "wave"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "login",
+      "route": "/auth",
+      "screenshot": "login-390.png",
+      "width": 390,
+      "scrollWidth": 390,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-welcome-256.webp",
+          "width": 112,
+          "height": 112,
+          "alt": "",
+          "naturalWidth": 111,
+          "pose": "wave"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "register",
+      "route": "/auth?mode=register",
+      "screenshot": "register-390.png",
+      "width": 390,
+      "scrollWidth": 390,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-welcome-256.webp",
+          "width": 112,
+          "height": 112,
+          "alt": "",
+          "naturalWidth": 111,
+          "pose": "wave"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "onboarding-household",
+      "route": "/onboarding/household",
+      "screenshot": "onboarding-household-390.png",
+      "width": 390,
+      "scrollWidth": 390,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-welcome-256.webp",
+          "width": 128,
+          "height": 128,
+          "alt": "",
+          "naturalWidth": 128,
+          "pose": "wave"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "onboarding-preferences",
+      "route": "/onboarding/preferences",
+      "screenshot": "onboarding-preferences-390.png",
+      "width": 390,
+      "scrollWidth": 390,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-cooking-256.webp",
+          "width": 128,
+          "height": 128,
+          "alt": "",
+          "naturalWidth": 128,
+          "pose": "cooking"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "onboarding-goals",
+      "route": "/onboarding/goals",
+      "screenshot": "onboarding-goals-390.png",
+      "width": 390,
+      "scrollWidth": 390,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-cheering-256.webp",
+          "width": 128,
+          "height": 128,
+          "alt": "",
+          "naturalWidth": 128,
+          "pose": "celebrate"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "home-empty",
+      "route": "/",
+      "screenshot": "home-empty-390.png",
+      "width": 390,
+      "scrollWidth": 390,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-thinking-256.webp",
+          "width": 128,
+          "height": 128,
+          "alt": "",
+          "naturalWidth": 128,
+          "pose": "calendar"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "fridge-empty",
+      "route": "/fridge",
+      "screenshot": "fridge-empty-390.png",
+      "width": 390,
+      "scrollWidth": 390,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-thinking-256.webp",
+          "width": 128,
+          "height": 128,
+          "alt": "",
+          "naturalWidth": 128,
+          "pose": "fridge"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "recipes",
+      "route": "/recipes",
+      "screenshot": "recipes-390.png",
+      "width": 390,
+      "scrollWidth": 390,
+      "images": [],
+      "axe": []
+    },
+    {
+      "name": "planner-setup",
+      "route": "/planner/new",
+      "screenshot": "planner-setup-390.png",
+      "width": 390,
+      "scrollWidth": 390,
+      "images": [],
+      "axe": []
+    },
+    {
+      "name": "shopping",
+      "route": "/shopping",
+      "screenshot": "shopping-390.png",
+      "width": 390,
+      "scrollWidth": 390,
+      "images": [],
+      "axe": []
+    },
+    {
+      "name": "plus-protected",
+      "route": "/plus",
+      "screenshot": "plus-protected-390.png",
+      "width": 390,
+      "scrollWidth": 390,
+      "images": [],
+      "axe": []
+    },
+    {
+      "name": "landing",
+      "route": "/landing",
+      "screenshot": "landing-768.png",
+      "width": 768,
+      "scrollWidth": 768,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-welcome-256.webp",
+          "width": 224,
+          "height": 224,
+          "alt": "",
+          "naturalWidth": 223,
+          "pose": "wave"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "login",
+      "route": "/auth",
+      "screenshot": "login-768.png",
+      "width": 768,
+      "scrollWidth": 768,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-welcome-256.webp",
+          "width": 112,
+          "height": 112,
+          "alt": "",
+          "naturalWidth": 111,
+          "pose": "wave"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "register",
+      "route": "/auth?mode=register",
+      "screenshot": "register-768.png",
+      "width": 768,
+      "scrollWidth": 768,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-welcome-256.webp",
+          "width": 112,
+          "height": 112,
+          "alt": "",
+          "naturalWidth": 111,
+          "pose": "wave"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "onboarding-household",
+      "route": "/onboarding/household",
+      "screenshot": "onboarding-household-768.png",
+      "width": 768,
+      "scrollWidth": 768,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-welcome-256.webp",
+          "width": 128,
+          "height": 128,
+          "alt": "",
+          "naturalWidth": 128,
+          "pose": "wave"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "onboarding-preferences",
+      "route": "/onboarding/preferences",
+      "screenshot": "onboarding-preferences-768.png",
+      "width": 768,
+      "scrollWidth": 768,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-cooking-256.webp",
+          "width": 128,
+          "height": 128,
+          "alt": "",
+          "naturalWidth": 128,
+          "pose": "cooking"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "onboarding-goals",
+      "route": "/onboarding/goals",
+      "screenshot": "onboarding-goals-768.png",
+      "width": 768,
+      "scrollWidth": 768,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-cheering-256.webp",
+          "width": 128,
+          "height": 128,
+          "alt": "",
+          "naturalWidth": 128,
+          "pose": "celebrate"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "home-empty",
+      "route": "/",
+      "screenshot": "home-empty-768.png",
+      "width": 768,
+      "scrollWidth": 768,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-thinking-256.webp",
+          "width": 128,
+          "height": 128,
+          "alt": "",
+          "naturalWidth": 128,
+          "pose": "calendar"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "fridge-empty",
+      "route": "/fridge",
+      "screenshot": "fridge-empty-768.png",
+      "width": 768,
+      "scrollWidth": 768,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-thinking-256.webp",
+          "width": 128,
+          "height": 128,
+          "alt": "",
+          "naturalWidth": 128,
+          "pose": "fridge"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "recipes",
+      "route": "/recipes",
+      "screenshot": "recipes-768.png",
+      "width": 768,
+      "scrollWidth": 768,
+      "images": [],
+      "axe": []
+    },
+    {
+      "name": "planner-setup",
+      "route": "/planner/new",
+      "screenshot": "planner-setup-768.png",
+      "width": 768,
+      "scrollWidth": 768,
+      "images": [],
+      "axe": []
+    },
+    {
+      "name": "shopping",
+      "route": "/shopping",
+      "screenshot": "shopping-768.png",
+      "width": 768,
+      "scrollWidth": 768,
+      "images": [],
+      "axe": []
+    },
+    {
+      "name": "plus-protected",
+      "route": "/plus",
+      "screenshot": "plus-protected-768.png",
+      "width": 768,
+      "scrollWidth": 768,
+      "images": [],
+      "axe": []
+    },
+    {
+      "name": "landing",
+      "route": "/landing",
+      "screenshot": "landing-1024.png",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-welcome-256.webp",
+          "width": 224,
+          "height": 224,
+          "alt": "",
+          "naturalWidth": 223,
+          "pose": "wave"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "login",
+      "route": "/auth",
+      "screenshot": "login-1024.png",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-welcome-256.webp",
+          "width": 112,
+          "height": 112,
+          "alt": "",
+          "naturalWidth": 111,
+          "pose": "wave"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "register",
+      "route": "/auth?mode=register",
+      "screenshot": "register-1024.png",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-welcome-256.webp",
+          "width": 112,
+          "height": 112,
+          "alt": "",
+          "naturalWidth": 111,
+          "pose": "wave"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "onboarding-household",
+      "route": "/onboarding/household",
+      "screenshot": "onboarding-household-1024.png",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-welcome-256.webp",
+          "width": 128,
+          "height": 128,
+          "alt": "",
+          "naturalWidth": 128,
+          "pose": "wave"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "onboarding-preferences",
+      "route": "/onboarding/preferences",
+      "screenshot": "onboarding-preferences-1024.png",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-cooking-256.webp",
+          "width": 128,
+          "height": 128,
+          "alt": "",
+          "naturalWidth": 128,
+          "pose": "cooking"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "onboarding-goals",
+      "route": "/onboarding/goals",
+      "screenshot": "onboarding-goals-1024.png",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-cheering-256.webp",
+          "width": 128,
+          "height": 128,
+          "alt": "",
+          "naturalWidth": 128,
+          "pose": "celebrate"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "home-empty",
+      "route": "/",
+      "screenshot": "home-empty-1024.png",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-thinking-256.webp",
+          "width": 128,
+          "height": 128,
+          "alt": "",
+          "naturalWidth": 128,
+          "pose": "calendar"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "fridge-empty",
+      "route": "/fridge",
+      "screenshot": "fridge-empty-1024.png",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-thinking-256.webp",
+          "width": 128,
+          "height": 128,
+          "alt": "",
+          "naturalWidth": 128,
+          "pose": "fridge"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "recipes",
+      "route": "/recipes",
+      "screenshot": "recipes-1024.png",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "images": [],
+      "axe": []
+    },
+    {
+      "name": "planner-setup",
+      "route": "/planner/new",
+      "screenshot": "planner-setup-1024.png",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "images": [],
+      "axe": []
+    },
+    {
+      "name": "shopping",
+      "route": "/shopping",
+      "screenshot": "shopping-1024.png",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "images": [],
+      "axe": []
+    },
+    {
+      "name": "plus-protected",
+      "route": "/plus",
+      "screenshot": "plus-protected-1024.png",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "images": [],
+      "axe": []
+    },
+    {
+      "name": "landing",
+      "route": "/landing",
+      "screenshot": "landing-1440.png",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-welcome-256.webp",
+          "width": 224,
+          "height": 224,
+          "alt": "",
+          "naturalWidth": 223,
+          "pose": "wave"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "login",
+      "route": "/auth",
+      "screenshot": "login-1440.png",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-welcome-256.webp",
+          "width": 112,
+          "height": 112,
+          "alt": "",
+          "naturalWidth": 111,
+          "pose": "wave"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "register",
+      "route": "/auth?mode=register",
+      "screenshot": "register-1440.png",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-welcome-256.webp",
+          "width": 112,
+          "height": 112,
+          "alt": "",
+          "naturalWidth": 111,
+          "pose": "wave"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "onboarding-household",
+      "route": "/onboarding/household",
+      "screenshot": "onboarding-household-1440.png",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-welcome-256.webp",
+          "width": 128,
+          "height": 128,
+          "alt": "",
+          "naturalWidth": 128,
+          "pose": "wave"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "onboarding-preferences",
+      "route": "/onboarding/preferences",
+      "screenshot": "onboarding-preferences-1440.png",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-cooking-256.webp",
+          "width": 128,
+          "height": 128,
+          "alt": "",
+          "naturalWidth": 128,
+          "pose": "cooking"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "onboarding-goals",
+      "route": "/onboarding/goals",
+      "screenshot": "onboarding-goals-1440.png",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-cheering-256.webp",
+          "width": 128,
+          "height": 128,
+          "alt": "",
+          "naturalWidth": 128,
+          "pose": "celebrate"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "home-empty",
+      "route": "/",
+      "screenshot": "home-empty-1440.png",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-thinking-256.webp",
+          "width": 128,
+          "height": 128,
+          "alt": "",
+          "naturalWidth": 128,
+          "pose": "calendar"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "fridge-empty",
+      "route": "/fridge",
+      "screenshot": "fridge-empty-1440.png",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "images": [
+        {
+          "src": "/takolio/v1/mascot/3d/tako-thinking-256.webp",
+          "width": 128,
+          "height": 128,
+          "alt": "",
+          "naturalWidth": 128,
+          "pose": "fridge"
+        }
+      ],
+      "axe": []
+    },
+    {
+      "name": "recipes",
+      "route": "/recipes",
+      "screenshot": "recipes-1440.png",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "images": [],
+      "axe": []
+    },
+    {
+      "name": "planner-setup",
+      "route": "/planner/new",
+      "screenshot": "planner-setup-1440.png",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "images": [],
+      "axe": []
+    },
+    {
+      "name": "shopping",
+      "route": "/shopping",
+      "screenshot": "shopping-1440.png",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "images": [],
+      "axe": []
+    },
+    {
+      "name": "plus-protected",
+      "route": "/plus",
+      "screenshot": "plus-protected-1440.png",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "images": [],
+      "axe": []
+    }
+  ],
+  "errors": [],
+  "fallback": null
+}

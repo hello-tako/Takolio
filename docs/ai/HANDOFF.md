@@ -1,3 +1,13 @@
+# Takolio V1 3D candidate handoff - 2026-10-16 JST
+
+The icon-only kitchen-header issue remains fixed by the previously pushed wordmark correction. This follow-up adds a responsive static 3D illustration layer after operator acceptance of the first genuine Blender candidate. Six poses are pinned, the heart geometry finding is closed, and the fallback harness now passes from an unauthenticated state.
+
+Local receipts: 365/8,479 unit tests, 94/94 protected E2E, 72 mascot screens, 15 state checks, 3 PWA checks, 12 flags-OFF checks, lint, typecheck, migration smoke, generator and default/paired builds all pass. The initial fallback assertion failure is retained as `after-attempt1/` evidence and was caused by authenticated `/landing` redirect state, not runtime fallback. Independent reviewer confirmed clean heart silhouettes and no protected-scope finding; final review must bind to the new commit SHA.
+
+The branch is feature-only and currently uncommitted. Next action is commit, push, update draft PR #79, wait for automatic exact-head validation, then owner/reviewer inspection. Native handoff ZIP and SHA are local outputs; native files are excluded from public runtime. No merge, deployment, production migration, domain/store update or release publication.
+
+---
+
 # Takolio V1 corrective publication checkpoint - 2026-10-16 JST
 
 **Implementation:** corrective header commit `617c52b3a095227a90e36a10bb08449e1a3ab1c2` is pushed to `feat/takolio-brand-migration-v1`. Canonical repository `lol-vn/Tako-san` (ID `1385308553`), live main `f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1`. PR #79 remains OPEN/DRAFT/MERGEABLE: https://github.com/lol-vn/Tako-san/pull/79. Worktree was clean after the implementation push. This checkpoint only updates publication documentation, the exact interrupted-test command and file hashes.

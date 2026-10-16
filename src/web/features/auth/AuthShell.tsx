@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowLeft, AlertCircle, CheckCircle2, ShieldCheck, Sparkles } from 'lucide-react';
 import { TAKOSAN_KITCHEN } from '../../lib/takosan-kitchen';
+import { TakoMascot } from '../../components/common/TakoMascot';
 import type { AuthMode } from './auth-shared';
 
 interface AuthShellProps {
@@ -57,6 +58,7 @@ export const AuthShell: React.FC<AuthShellProps> = ({
           height={72}
           className="entry-logo"
         />
+        {(mode === 'login' || mode === 'register') && <TakoMascot pose="wave" size={112} className="auth-mascot" />}
         {/* Single page heading (accessibility checklist: sequential levels). */}
         <h1 className="auth-heading">
           {HEADING[mode]}
