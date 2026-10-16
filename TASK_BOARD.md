@@ -1,3 +1,24 @@
+# PR #77 main-conflict reconciliation — 2026-10-16
+
+**Scope:** merge current main `f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1` into handoff
+`87d6d3d2acc69a6ca3f0409c3c22753469807222` without rebasing or publishing local R2 work.
+Resolved conflicts in `docs/ai/CURRENT_STATE.md`, `docs/ai/HANDOFF.md` and
+`docs/ai/TASK_BOARD.md` by retaining both the Admin handoff notice and all new
+main-side status entries. Customer runtime, configs, migration history and main's
+T26/T27 changes are taken unchanged from the merged main. No new product/UI,
+authentication, payment, deployment or remote database change is introduced.
+
+**Checks:** conflict-marker scan, main/head status-document content retention,
+customer-source identity against merged main, and staged diff validation.
+Additional lint/types/migration/admin regression results are recorded in the
+follow-up verification checkpoint. This merge does not resolve Admin F1–F11 or
+certify staging/production. The separate local R2 branch is not part of this PR.
+
+**Next:** publish only this handoff merge, require exact-head CI, retain draft /
+DO NOT MERGE status and independent-review/release gates. No PR merge or close.
+
+---
+
 # Admin V1 R1 certification review - 2026-10-14
 
 **Status:** ADMIN_V1_R1_CHANGES_REQUIRED (local review of 0331cc9/25140ba; reviewer

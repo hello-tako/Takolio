@@ -16,6 +16,7 @@
 @import "./kitchen-shell.css";
 @import "./kitchen-recipes.css";
 @import "./kitchen-family.css";
+@import "./kitchen-density.css";
 @config "../../../tailwind.config.js";
 @source "../";
 @source "../../../index.html";

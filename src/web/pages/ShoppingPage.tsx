@@ -27,6 +27,9 @@ export const ShoppingPage: React.FC = () => {
     (item) => !item.reviewState || item.reviewState === 'pending',
   ).length;
   const [reviewBusy, setReviewBusy] = useState(false);
+  const [addOpen, setAddOpen] = useState(
+    () => window.matchMedia?.('(min-width: 1024px)').matches ?? false,
+  );
   const [name, setName] = useState('');
   const [quantity, setQuantity] = useState('1');
   const [unit, setUnit] = useState('piece');
@@ -188,7 +191,7 @@ export const ShoppingPage: React.FC = () => {
         </div>
         {sources.length > 0 && (
           <details className="shopping-source-details">
-            <summary>Xem bữa dùng nguyên liệu này</summary>
+            <summary>Dùng cho bữa nào?</summary>
             <ul>
               {sources.map((source, index) => (
                 <li key={`${source.slotId}:${source.componentId}:${index}`}>
@@ -242,8 +245,8 @@ export const ShoppingPage: React.FC = () => {
       <div className="planning-page-body">
         <KitchenPageHeading
           eyebrow="TAKOSAN · ĐI CHỢ"
-          title="Mua đủ cho bữa ngon."
-          description="Những thứ cần mua cho bữa nhà. Chỉnh lượng theo quầy hàng rồi đánh dấu khi đã mua."
+          title="Danh sách mua sắm"
+          description="Chỉnh lượng cần mua, rồi đánh dấu từng món khi đã mua."
           action={
             <Link to="/planner" className="planning-text-link">
               Xem thực đơn <ArrowRight size={18} aria-hidden="true" />
@@ -251,9 +254,12 @@ export const ShoppingPage: React.FC = () => {
           }
         />
         <div className="saved-shopping-layout">
-          <aside className="shopping-add-panel planning-paper">
-            <p className="planning-eyebrow">THÊM MÓN NGOÀI THỰC ĐƠN</p>
-            <h2>Mình cần mua thêm gì?</h2>
+          <details
+            className="shopping-add-panel planning-paper"
+            open={addOpen}
+            onToggle={(event) => setAddOpen(event.currentTarget.open)}
+          >
+            <summary>Thêm nguyên liệu ngoài thực đơn</summary>
             <form onSubmit={submit} className="shopping-add-form">
               <fieldset disabled={busy || !!attempt}>
                 <label>
@@ -315,12 +321,12 @@ export const ShoppingPage: React.FC = () => {
               </Button>
             </form>
             <p className="planning-note">
-              Đánh dấu đã mua chỉ cập nhật danh sách. Khi về nhà, quét hoặc nhập thực phẩm vào tủ.
+              Mua xong chưa tự thêm vào tủ. Khi về nhà, quét hoặc nhập thực phẩm đã mua.
             </p>
             <Link to="/scan" className="planning-text-link">
               Quét thực phẩm đã mua <ArrowRight size={16} aria-hidden="true" />
             </Link>
-          </aside>
+          </details>
           <section className="shopping-saved-list" aria-labelledby="saved-list-heading">
             <div className="shopping-list-heading">
               <div>

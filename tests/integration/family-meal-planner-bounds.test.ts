@@ -31,9 +31,14 @@ describe('family search at supported input bounds', () => {
     expect(result.meals).toHaveLength(count); expect(result.evaluations).toBeLessThanOrEqual(FAMILY_SEARCH_LIMITS.evaluations);
     expect(result.internationalGeneratedMainCount).toBe(0);
     expect(result.poolBuilds).toBeLessThanOrEqual(FAMILY_SEARCH_LIMITS.poolBuilds);
+    expect(result.candidateEvaluations).toBeGreaterThan(result.evaluations);
+    expect(result.candidateWork).toBeLessThanOrEqual(FAMILY_SEARCH_LIMITS.candidateWork);
+    expect(result.meals.every(meal => meal.missingRoles.length === 0)).toBe(true);
+    expect(result.searchLimited).toBe(false);
     expect(result.finalInventory.every((row) => row.quantity >= 0)).toBe(true);
     const summary = { count, milliseconds: Math.round(performance.now() - started), evaluations: result.evaluations, poolBuilds: result.poolBuilds,
-      complete: result.meals.filter((meal) => !meal.missingRoles.length).length, searchLimited: result.searchLimited };
+      complete: result.meals.filter((meal) => !meal.missingRoles.length).length, candidateEvaluations: result.candidateEvaluations,
+      candidateWork: result.candidateWork, searchLimited: result.searchLimited };
     process.stdout.write('FAMILY_BOUNDS ' + JSON.stringify(summary) + '\n');
   }, 30000);
 });

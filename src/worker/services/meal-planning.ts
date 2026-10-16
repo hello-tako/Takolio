@@ -417,7 +417,7 @@ export class MealPlanningApplicationService {
       initialInventorySnapshot: snapshot.inventory.map(({ householdId }) => ({ householdId })), projectedFinalInventory: planning.finalInventory,
       diagnostics: [], catalogDiagnostics: source.catalog.diagnostics, search: { searchExhaustive: false, plannerSearchExhaustive: false,
         recipeSearchExhaustive: true, truncated: planning.searchLimited, statesExplored: planning.evaluations, generationCalls: planning.evaluations + planning.poolBuilds,
-        candidatesEvaluated: planning.evaluations, maxCandidatesGenerated: source.catalog.recipes.length, maxCandidatesConsidered: 6,
+        candidatesEvaluated: planning.candidateEvaluations, maxCandidatesGenerated: source.catalog.recipes.length, maxCandidatesConsidered: 6,
         maxFrontierSize: 3, limits: { policy: 'family-v2-bounded' }, familySearches: [], rejections: [], limitReasons: [], incompleteReasons: [],
         proofScope: 'supplied_catalog_constraints_and_fixed_allocation_policy' }, persistence: 'generated_only' }) };
     const instructions = new Map<string, string[]>();
@@ -494,7 +494,7 @@ export class MealPlanningApplicationService {
         missingRoles: familyMealRoles(slot.mealType, profile.preferences.mealStyle), warnings: ['MANUAL_SELECTION_PENDING'] })),
       finalInventory: projectInventoryRows(readPlanningContext(context).inventory),
       internationalGeneratedMainCount: 0, lockedInternationalMainCount: 0,
-      evaluations: 0, poolBuilds: 0, searchLimited: false, alternativeMeals: [],
+      evaluations: 0, poolBuilds: 0, candidateEvaluations: 0, candidateWork: 0, searchLimited: false, alternativeMeals: [],
     } : planFamilyMeals({ context, request, preferences: profile.preferences, roles: await this.familyRoleIndex(authority),
       runtimeRecipes: authority.list(), revision: 1 });
     const base = this.familyStoredResult(scope, id, intent, snapshot, now, planning);

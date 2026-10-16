@@ -171,7 +171,7 @@ export const SCREEN_REGISTRY: RegisteredScreen[] = [
     name: 'planner',
     path: '/planner',
     auth: 'session',
-    contract: { heading: /Bữa ngon, tuần nhẹ nhàng|Kế hoạch bữa ăn/ },
+    contract: { heading: /Thực đơn của nhà mình|Kế hoạch bữa ăn/ },
     nav: 'visible',
     source: 'reviewer-verified-kit',
   },
@@ -181,7 +181,7 @@ export const SCREEN_REGISTRY: RegisteredScreen[] = [
     path: '/planner/:planId/meal/:slotId',
     auth: 'session',
     contract: {
-      heading: /Bữa ngon, tuần nhẹ nhàng/,
+      heading: /Chuẩn bị bữa ăn/,
       text: /Nguyên liệu cho bữa này/,
     },
     nav: 'visible',
@@ -193,8 +193,8 @@ export const SCREEN_REGISTRY: RegisteredScreen[] = [
     path: '/planner/:planId/shopping',
     auth: 'session',
     contract: {
-      heading: /Bữa ngon, tuần nhẹ nhàng/,
-      text: /Chỉ mua phần còn thiếu theo kế hoạch/,
+      heading: /Đi chợ theo thực đơn/,
+      text: /Chọn khoảng ngày cần mua|Ước tính giá & ngân sách/,
     },
     nav: 'visible',
     source: 'reviewer-verified-kit',

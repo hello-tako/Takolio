@@ -19,7 +19,7 @@ import {
   PlanExplanationDtoSchema,
   PlanExplanationRequestSchema,
 } from '../../../packages/domain/src/meal-planning-presentation';
-import { fetchJson } from './http';
+import { fetchPlannerJson } from './planner-http';
 
 const plansPath = '/meal-planning/plans';
 const planPath = (id: string) => `${plansPath}/${encodeURIComponent(PlanIdSchema.parse(id))}`;
@@ -29,7 +29,7 @@ async function request<T>(
   schema: z.ZodType<T, z.ZodTypeDef, unknown>,
   options?: RequestInit,
 ): Promise<T> {
-  return schema.parse(await fetchJson<unknown>(path, { ...options, cache: 'no-store' }));
+  return schema.parse(await fetchPlannerJson<unknown>(path, { ...options, cache: 'no-store' }));
 }
 
 function post(body: unknown, key?: string): RequestInit {

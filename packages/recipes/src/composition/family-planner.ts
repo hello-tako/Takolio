@@ -2,7 +2,7 @@ import { compareIds } from '../../../domain/src/availability';
 import type { FamilyPreferences } from '../../../domain/src/family-preferences-api';
 import type { MealRole } from '../../../domain/src/meal-composition-api';
 import { generateRecipeCandidates, type RecipeCandidate } from '../candidates';
-import { createPlanningContext, planningFingerprint, readPlanningContext, type PlanningContext } from '../planner-context';
+import { derivePlanningContext, planningFingerprint, readPlanningContext, type PlanningContext } from '../planner-context';
 import { applyProjectedConsumption, InventoryProjectionError, projectInventoryRows, type ProjectedInventory, type ProjectedInventoryDelta } from '../planner-inventory';
 import { normalizePlannerRequest, type NormalizedPlannerSlot, type PlannerRequestInput } from '../planner-request';
 import { createRankingEvidenceSnapshot } from '../ranking-evidence';
@@ -17,9 +17,9 @@ import { compatibilityIssues, coveredRoles, hasHardIssue, type ComposableItem } 
 import { evaluateDefinition, evaluationScope, simpleFoodDefinition } from './projection';
 import { recipeRestrictions, simpleFoodRestrictions } from './restrictions';
 import { normalizeText, type RoleIndex } from './roles';
-import { getSimpleFood } from './simple-foods';
+import { getSimpleFood, SIMPLE_FOODS } from './simple-foods';
 
-export const FAMILY_SEARCH_LIMITS = Object.freeze({ weekBeam: 3, mealBeam: 4, mains: 4, perRole: 6, evaluations: 4096, poolBuilds: 1536 });
+export const FAMILY_SEARCH_LIMITS = Object.freeze({ weekBeam: 3, mealBeam: 4, mains: 4, perRole: 6, evaluations: 4096, poolBuilds: 1536, candidateWork: 32768 });
 export function familyMealRoles(mealType: NormalizedPlannerSlot['mealType'], style: FamilyPreferences['mealStyle']): MealRole[] {
   if (mealType === 'breakfast' || style === 'one_pot') return ['main'];
   return style === 'quick' ? ['main', 'vegetable', 'staple'] : ['main', 'vegetable', 'soup', 'staple'];
@@ -56,6 +56,10 @@ export interface FamilyPlanningResult {
   evaluations: number;
   searchLimited: boolean;
   poolBuilds: number;
+  /** Attempted generated candidates, including full pools and selected-component rechecks. */
+  candidateEvaluations: number;
+  /** Deterministic generated-work units; locked preservation remains outside this budget. */
+  candidateWork: number;
   alternativeMeals: FamilyPlannedSlot[][];
 }
 
@@ -75,9 +79,22 @@ export function planFamilyMeals(input: {
   const source = readPlanningContext(input.context);
   const request = normalizePlannerRequest(input.request, source.reference);
   const runtime = new Map(input.runtimeRecipes.map((recipe) => [recipe.id, recipe]));
+  const definitions = new Map(source.catalog.recipes.map((recipe) => [recipe.id, recipe]));
+  const scopedContexts = new Map<string, PlanningContext>();
   let evaluations = 0;
   let searchLimited = false;
   let poolBuilds = 0;
+  let candidateEvaluations = 0;
+  let candidateWork = 0;
+  // Conservative workload units bound large inventory/history inputs; these are not CPU milliseconds.
+  const candidateCost = Math.max(1, Math.ceil(source.inventory.lotCount / 32), Math.ceil(source.rankingContext.feedback.length / 128));
+  const reserveEvaluations = (count: number) => {
+    const cost = count * candidateCost;
+    if (candidateWork + cost > FAMILY_SEARCH_LIMITS.candidateWork) { searchLimited = true; return false; }
+    candidateEvaluations += count;
+    candidateWork += cost;
+    return true;
+  };
   const internationalAllowed = (dates: readonly string[], date: string) =>
     !familyInternationalCapExceeded([...dates, date], date, input.preferences.internationalMealsPerWeek);
   const preservedInternationalDates = request.slots.flatMap(slot => (input.locked?.get(slot.id) ?? [])
@@ -87,7 +104,7 @@ export function planFamilyMeals(input: {
     internationalDates: [...(input.generatedInternationalDates ?? []), ...preservedInternationalDates], usedMains: new Set() }];
   const componentMinutes = (component: MealComponent): number | null => {
     if (component.simpleFoodId) return getSimpleFood(component.simpleFoodId)?.prepMinutes ?? null;
-    const definition = source.catalog.recipes.find((recipe) => recipe.id === component.recipeId);
+    const definition = definitions.get(component.recipeId ?? '');
     return definition?.prepTimeMinutes === undefined ? null : definition.prepTimeMinutes + definition.cookTimeMinutes;
   };
   const mealEffort = (components: readonly MealComponent[], target: number) => {
@@ -109,6 +126,7 @@ export function planFamilyMeals(input: {
   const evaluate = (context: PlanningContext, component: MealComponent, inventory: ProjectedInventory, slot: NormalizedPlannerSlot,
     preserve: boolean): { inventory: ProjectedInventory; ranked: RankedRecipeCandidate | null; deltas: readonly ProjectedInventoryDelta[]; warning?: string } | null => {
     if (!preserve && evaluations >= FAMILY_SEARCH_LIMITS.evaluations) { searchLimited = true; return null; }
+    if (!preserve && !reserveEvaluations(1)) return null;
     evaluations++;
     const rows = projectInventoryRows(inventory);
     const scoped = readPlanningContext(context);
@@ -116,7 +134,7 @@ export function planFamilyMeals(input: {
     let ranked: RankedRecipeCandidate | null = null;
     let warning: string | undefined;
     if (component.kind === 'recipe') {
-      const definition = scoped.catalog.recipes.find((recipe) => recipe.id === component.recipeId);
+      const definition = definitions.get(component.recipeId ?? '');
       if (!definition) return preserve ? { inventory, ranked, deltas: [], warning: 'LOCKED_COMPONENT_UNAVAILABLE' } : null;
       const generation = generateRecipeCandidates({ catalog: { ...scoped.catalog, recipes: [definition], families: [] },
         inventory: rows.map((row) => ({ ...row, freshness: row.freshness ?? undefined })), householdId: scoped.rankingContext.householdId,
@@ -158,13 +176,17 @@ export function planFamilyMeals(input: {
       ...(warning || (preserve && !ranked && component.kind === 'recipe') ? { warning: warning ?? 'LOCKED_COMPONENT_REQUIRES_REVALIDATION' } : {}) };
   };
   for (const slot of request.slots) {
-    const scopedContext = createPlanningContext(() => ({ snapshotId: source.snapshotId, referenceInstant: new Date(Date.parse(source.reference.instant) + source.reference.utcOffsetMinutes * 60_000).toISOString().replace('Z', '')
-        + (source.reference.utcOffsetMinutes < 0 ? '-' : '+') + String(Math.floor(Math.abs(source.reference.utcOffsetMinutes) / 60)).padStart(2, '0')
-        + ':' + String(Math.abs(source.reference.utcOffsetMinutes) % 60).padStart(2, '0'),
-      catalog: source.catalog, inventory: projectInventoryRows(source.inventory).map(({ initialQuantity: _initial, consumedQuantity: _consumed, ...row }) => row),
-      rankingContext: contextForSlot(source.rankingContext, slot), rankingProfile: { ...source.rankingProfile, cuisineRepetitionStrength: 0 },
-      evidenceProvider: source.evidenceProvider, substitutions: source.substitutions, approvedSubstitutionIds: source.approvedSubstitutionIds,
-      activeConstraints: source.activeConstraints }));
+    const policyKey = JSON.stringify([slot.hardMaxTimeMinutes ?? null, slot.preferredTimeMinutes ?? null]);
+    let scopedContext = scopedContexts.get(policyKey);
+    if (!scopedContext) {
+      scopedContext = derivePlanningContext(input.context, {
+        rankingContext: contextForSlot(source.rankingContext, slot),
+        rankingProfile: { ...source.rankingProfile, cuisineRepetitionStrength: 0 },
+      });
+      scopedContexts.set(policyKey, scopedContext);
+    }
+    // A cached pool belongs to this exact slot, policy, inventory and family eligibility state.
+    const pools = new Map<string, ComposerCandidate[]>();
     const hardLimits = resolveRankingPreferences(readPlanningContext(scopedContext).rankingContext).hard
       .flatMap((policy) => policy.hardMaxTimeMinutes === undefined ? [] : [policy.hardMaxTimeMinutes]);
     const hardMaxTimeMinutes = hardLimits.length ? Math.min(...hardLimits) : undefined;
@@ -209,7 +231,7 @@ export function planFamilyMeals(input: {
           ? 0.15 * (companionCounts.get(candidate.key) ?? 0) : 0;
         const canh = role === 'soup' && input.preferences.mealStyle === 'family'
           && recipe?.cuisine === 'vietnamese' && /^canh\b/.test(normalizeText(recipe.title)) ? 0.08 : 0;
-        const definition = source.catalog.recipes.find((entry) => entry.id === candidate.id);
+        const definition = definitions.get(candidate.id);
         const minutes = candidate.kind === 'simple_food' ? getSimpleFood(candidate.id)?.prepMinutes ?? null
           : definition?.prepTimeMinutes === undefined ? null : definition.prepTimeMinutes + definition.cookTimeMinutes;
         const effort = minutes === null ? 0.2 : 0.1 * Math.min(minutes / preferredMinutes, 6)
@@ -225,29 +247,45 @@ export function planFamilyMeals(input: {
           if (evaluations >= FAMILY_SEARCH_LIMITS.evaluations || poolBuilds >= FAMILY_SEARCH_LIMITS.poolBuilds) {
             searchLimited = true; nextMeals.push(meal); continue;
           }
-          poolBuilds++;
-          const pool = prepareComposerCandidates({ context: scopedContext, roleIndex: input.roles, slot,
-            inventory: projectInventoryRows(meal.inventory), roles: [role], mode: request.mode,
-            excludeKeys: new Set(meal.components.map(targetKey)), usedElsewhere: new Set([...week.usedMains].map(recipeKey)) });
-          const candidates = pool.filter((candidate) => {
-            if (!candidate.roles.includes(role) || meal.components.some((component) => targetKey(component) === candidate.key)) return false;
-            if (candidate.kind === 'simple_food') return candidate.id !== 'sf-bread';
-            const recipe = runtime.get(candidate.id);
-            if (!recipe || (recipe.category === 'mon_lau_tiec' && input.preferences.mealStyle !== 'one_pot')) return false;
-            if (role !== 'main' && recipe.cuisine !== 'vietnamese') {
-              const main = meal.components.find((component) => component.role === 'main');
-              const cuisine = main?.recipeId ? runtime.get(main.recipeId)?.cuisine : null;
-              if (!cuisine || cuisine === 'vietnamese' || recipe.cuisine !== cuisine || !input.preferences.preferredCuisines.includes(recipe.cuisine)) return false;
-            }
-            if (role === 'main') {
-              if (recipe.cuisine !== 'vietnamese' && (!internationalAllowed(week.internationalDates, slot.date)
+          const rows = projectInventoryRows(meal.inventory);
+          const excludeKeys = new Set(meal.components.map(targetKey));
+          const usedElsewhere = new Set([...week.usedMains].map(recipeKey));
+          const main = meal.components.find((component) => component.role === 'main');
+          const mainCuisine = main?.recipeId ? runtime.get(main.recipeId)?.cuisine ?? null : null;
+          const allowInternational = internationalAllowed(week.internationalDates, slot.date);
+          const eligibleRecipeIds = new Set(source.catalog.recipes.filter((definition) => {
+            const recipe = runtime.get(definition.id);
+            const profile = input.roles.get(definition.id);
+            if (!recipe || !profile?.roles.includes(role)
+              || (recipe.category === 'mon_lau_tiec' && input.preferences.mealStyle !== 'one_pot')) return false;
+            if (role !== 'main' && recipe.cuisine !== 'vietnamese'
+              && (!mainCuisine || mainCuisine === 'vietnamese' || recipe.cuisine !== mainCuisine
                 || !input.preferences.preferredCuisines.includes(recipe.cuisine))) return false;
-              if (slot.mealType === 'breakfast' && !candidate.traits.includes('complete_meal') && recipe.category !== 'mon_nhanh_sang') return false;
-              if (slot.mealType !== 'breakfast' && input.preferences.mealStyle === 'family' && candidate.traits.includes('complete_meal')) return false;
-              if (input.preferences.mealStyle === 'one_pot' && !candidate.traits.includes('complete_meal')) return false;
+            if (role === 'main') {
+              if (recipe.cuisine !== 'vietnamese' && (!allowInternational || !input.preferences.preferredCuisines.includes(recipe.cuisine))) return false;
+              if (slot.mealType === 'breakfast' && !profile.traits.includes('complete_meal') && recipe.category !== 'mon_nhanh_sang') return false;
+              if (slot.mealType !== 'breakfast' && input.preferences.mealStyle === 'family' && profile.traits.includes('complete_meal')) return false;
+              if (input.preferences.mealStyle === 'one_pot' && !profile.traits.includes('complete_meal')) return false;
             }
             return true;
-          }).sort((a, b) => candidateUtility(b, role) - candidateUtility(a, role) || compareIds(a.key, b.key)).slice(0, role === 'main' ? FAMILY_SEARCH_LIMITS.mains : FAMILY_SEARCH_LIMITS.perRole);
+          }).map((definition) => definition.id));
+          const relevantKeys = new Set([...eligibleRecipeIds].map(recipeKey));
+          for (const food of SIMPLE_FOODS) if (food.roles.includes(role)) relevantKeys.add(`simple_food:${food.id}`);
+          const poolKey = JSON.stringify([role, rows, [...eligibleRecipeIds],
+            [...excludeKeys].filter((key) => relevantKeys.has(key)).sort(compareIds),
+            [...usedElsewhere].filter((key) => relevantKeys.has(key)).sort(compareIds)]);
+          let pool = pools.get(poolKey);
+          if (!pool) {
+            poolBuilds++;
+            pool = prepareComposerCandidates({ context: scopedContext, roleIndex: input.roles, slot,
+              inventory: rows, roles: [role], mode: request.mode, excludeKeys, usedElsewhere,
+              recipeFilter: (definition) => eligibleRecipeIds.has(definition.id), reserveEvaluations });
+            pools.set(poolKey, pool);
+          }
+          const candidates = pool.filter((candidate) => candidate.roles.includes(role)
+            && !excludeKeys.has(candidate.key) && (candidate.kind !== 'simple_food' || candidate.id !== 'sf-bread'))
+            .sort((a, b) => candidateUtility(b, role) - candidateUtility(a, role) || compareIds(a.key, b.key))
+            .slice(0, role === 'main' ? FAMILY_SEARCH_LIMITS.mains : FAMILY_SEARCH_LIMITS.perRole);
           let added = false;
           for (const candidate of candidates) {
             const component: MealComponent = { id: `family.${slot.id}.r${input.revision}.${role}.${planningFingerprint(candidate.key)}`, kind: candidate.kind,
@@ -301,5 +339,5 @@ export function planFamilyMeals(input: {
   return { request, reference: source.reference, meals: best.meals, finalInventory: projectInventoryRows(best.inventory),
     internationalGeneratedMainCount: best.international, lockedInternationalMainCount: best.meals.flatMap((meal) => meal.components)
       .filter((component) => component.locked && component.role === 'main' && component.recipeId && runtime.has(component.recipeId) && runtime.get(component.recipeId)?.cuisine !== 'vietnamese').length,
-    evaluations, searchLimited, poolBuilds, alternativeMeals: alternatives.map((entry) => entry.meals) };
+    evaluations, searchLimited, poolBuilds, candidateEvaluations, candidateWork, alternativeMeals: alternatives.map((entry) => entry.meals) };
 }

@@ -99,7 +99,7 @@ test('recipe servings flow into an empty calendar, exact manual dishes and trip 
   const currentDestination = page.getByRole('dialog', { name: `Đặt ${title} vào bữa`, exact: true });
   await expect(currentDestination.getByRole('combobox', { name: 'Bữa', exact: true })).toContainText('4 người');
   await expect(currentDestination.getByRole('radio', { name: 'Thêm món này', exact: true })).toBeChecked();
-  await currentDestination.getByRole('radio', { name: 'Thay một món trong vai trò đã chọn', exact: true }).check();
+  await currentDestination.getByRole('radio', { name: 'Thay món cùng nhóm', exact: true }).check();
   await expect(currentDestination).toContainText(`Món này sẽ thay “${title}”`);
   await expect(currentDestination.getByRole('button', { name: 'Thay món trong bữa', exact: true })).toBeEnabled();
   await page.screenshot({ path: `${folder}/manual-replace-${page.viewportSize()!.width}.png`, fullPage: true });

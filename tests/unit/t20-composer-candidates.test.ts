@@ -99,3 +99,37 @@ describe('T20 composer candidate pool is bounded at its own boundary', () => {
     expect(restrictedCandidates.some((candidate) => candidate.id === 'main-000')).toBe(true);
   });
 });
+
+describe('server family filters and complete pool work reservation', () => {
+  it('filters the full catalog before its ranking cap without bypassing hard restrictions', () => {
+    const { ctx, roleIndex, definitions } = fixture(340);
+    const source = readPlanningContext(ctx);
+    const input = { context: ctx, roleIndex, slot, inventory: projectInventoryRows(source.inventory),
+      roles: ['main'] as MealRole[], mode: 'shopping_allowed' as const, excludeKeys: new Set<string>(), usedElsewhere: new Set<string>(),
+      recipeFilter: (definition: RecipeDefinition) => definition.id === 'main-000' };
+    const counts: number[] = [];
+    const candidates = prepareComposerCandidates({ ...input, reserveEvaluations: count => { counts.push(count); return true; } });
+    expect(counts).toEqual([1]);
+    expect(candidates.map(candidate => candidate.id)).toEqual(['main-000']);
+    const restricted = context({ catalog: catalog(definitions), inventory: [lot({ ingredientId: 'CHICKEN', quantity: 1000 })],
+      rankingContext: { householdId: HOUSEHOLD_ID, userId: USER_ID, feedback: [], preferences: [{ householdId: HOUSEHOLD_ID,
+        userId: null, values: { neverRecommendRecipeIds: ['main-000'] } }] } });
+    expect(prepareComposerCandidates({ ...input, context: restricted })).toEqual([]);
+  });
+
+  it('reserves every recipe and simple food attempt before doing any evidence evaluation', () => {
+    const { ctx, roleIndex } = fixture(6);
+    const source = readPlanningContext(ctx);
+    let evidenceCalls = 0;
+    const tracked = context({ ...source, referenceInstant: '2026-09-08T07:00:00+07:00',
+      inventory: [lot({ ingredientId: 'CHICKEN', quantity: 1000 })],
+      evidenceProvider: () => { evidenceCalls++; return []; } });
+    let reserved = 0;
+    const result = prepareComposerCandidates({ context: tracked, roleIndex, slot, inventory: projectInventoryRows(source.inventory),
+      roles: desiredRoles, mode: 'shopping_allowed', excludeKeys: new Set(), usedElsewhere: new Set(),
+      reserveEvaluations: count => { reserved = count; return false; } });
+    expect(reserved).toBeGreaterThan(10);
+    expect(evidenceCalls).toBe(0);
+    expect(result).toEqual([]);
+  });
+});

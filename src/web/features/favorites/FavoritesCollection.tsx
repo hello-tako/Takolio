@@ -18,7 +18,12 @@ import { resolveRecipeImage, recipeImageErrorHandler } from '../../lib/recipe-me
 import { roleLabel } from '../planner/composition';
 import { IngredientCoverage } from '../planner/IngredientCoverage';
 import { plannerErrorMessage } from '../planner/presentation';
-import { isPlannerSlotElapsed, plannerDefaultTimes, plannerSlotId, plannerSlotTime } from '../planner/schedule';
+import {
+  isPlannerSlotElapsed,
+  plannerDefaultTimes,
+  plannerSlotId,
+  plannerSlotTime,
+} from '../planner/schedule';
 import type { MealRole } from '../../../../packages/domain/src/meal-composition-api';
 
 export type RecipeMealDialogEntry = {
@@ -57,8 +62,10 @@ export function FavoritesCollection() {
     <section className="family-favorites" aria-labelledby="favorite-heading">
       <div className="family-collection-heading">
         <div>
-          <h2 id="favorite-heading">Món nhà mình đã lưu</h2>
-          <p>Những món muốn nấu lại, sẵn để chọn cho bữa tới.</p>
+          <h2 id="favorite-heading">
+            {query.data ? `${query.data.entries.length} món để nấu lại` : 'Món nhà mình đã lưu'}
+          </h2>
+          <p>Chọn “Thêm vào bữa” để đặt món vào thực đơn.</p>
         </div>
         <label>
           <span className="sr-only">Tìm món đã lưu</span>
@@ -79,7 +86,20 @@ export function FavoritesCollection() {
         <div className="planning-empty">
           <Heart size={32} aria-hidden="true" />
           <h3>{search ? 'Không có món khớp' : 'Bắt đầu từ món quen của nhà mình'}</h3>
-          <p>Chạm trái tim trên món muốn nấu lần sau. Món được lưu cho tài khoản của bạn.</p>
+          <p>
+            {search
+              ? 'Thử tên ngắn hơn hoặc xem lại tất cả món đã lưu.'
+              : 'Chạm trái tim ở món bạn thích để tìm lại và thêm vào bữa sau.'}
+          </p>
+          {search ? (
+            <Button variant="outline" onClick={() => setSearch('')}>
+              Xem tất cả món đã lưu
+            </Button>
+          ) : (
+            <Link className="planning-primary-link" to="/recipes">
+              Tìm món để lưu
+            </Link>
+          )}
         </div>
       ) : (
         <div className="family-favorites-grid">
@@ -162,8 +182,10 @@ export function RecipeMealDialog({
   const schedule = new Map(
     (family?.plan.intent.slots ?? []).map((slot) => [
       plannerSlotId(slot),
-      { time: plannerSlotTime(family!.plan, plannerSlotId(slot)) ?? defaultTimes[slot.mealType],
-        sequence: slot.sequence },
+      {
+        time: plannerSlotTime(family!.plan, plannerSlotId(slot)) ?? defaultTimes[slot.mealType],
+        sequence: slot.sequence,
+      },
     ]),
   );
   const compositions = (family?.compositions.compositions ?? [])
@@ -380,7 +402,7 @@ export function RecipeMealDialog({
               </select>
             </label>
             <label>
-              Vai trò
+              Nhóm món
               <select
                 value={role}
                 onChange={(event) => {
@@ -391,7 +413,7 @@ export function RecipeMealDialog({
                 disabled={busy || !roles.length}
               >
                 <option value="" disabled>
-                  Chọn vai trò cho món
+                  Chọn nhóm món
                 </option>
                 {roles.map((value) => (
                   <option key={value} value={value}>
@@ -426,7 +448,7 @@ export function RecipeMealDialog({
                     }}
                     disabled={busy}
                   />{' '}
-                  Thay một món trong vai trò đã chọn
+                  Thay món cùng nhóm
                 </label>
               )}
             </fieldset>

@@ -1,3 +1,19 @@
+# T26 response uncertainty and bounded search - 2026-10-15
+
+A browser timeout does not establish whether the server committed a plan. An
+explicit retry with unchanged family choices uses the same create key; a changed
+draft receives another key. An uncertain family-profile save must be read back
+and matched before generation continues. Concurrent conflicting content requires
+reload. Keys are currently retained for the mounted setup; current-plan access
+is the recovery route after navigation/reload.
+
+Family search has both selected-component and actual generated-candidate work
+bounds. Reaching a bound produces truthful limited/incomplete diagnostics; it
+never relaxes restrictions or invents stock. Locked components remain subject to
+safety validation even after generated search work exhausts. Reused evaluations
+belong to exact projected stock, slot, servings and family eligibility inputs.
+
+---
 # T24 unknown demand and selected purchase amounts - 2026-10-14
 
 Required demand and selected buying amount are different facts. A household member

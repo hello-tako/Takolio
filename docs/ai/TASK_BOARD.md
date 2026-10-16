@@ -1,4 +1,201 @@
 > **Handoff (2026-10-15):** Admin Console work is preserved on branch `handoff/admin-v1-r2-20261015`. Start at `docs/admin/handoff/START_HERE.md`. Status: R1 `ADMIN_V1_R1_CHANGES_REQUIRED`; R2 not started; not certified for staging or production. Commands and results with provenance: `docs/admin/handoff/TEST_AND_EVIDENCE.md`.
+# T27 compact kitchen UI - 2026-10-16
+
+Verified implementation checkpoint: `34421382` (source/tests/ADR/task packet).
+
+**State:** LOCAL_COMPLETE / NOT_DEPLOYED. Source and tests are ready for review on
+`codex/compact-kitchen-ux-20261015`.
+
+**Done:** Scoped compact typography/spacing; smaller mobile shell; clearer planner
+setup for whole-meal vs manual calendar; visible allergy/forbidden summaries;
+compact favorites/recipes/onboarding; shopping list prioritization and responsive
+manual-add disclosure with keyboard and draft persistence. No backend, schema,
+flags, payments, auth or production files changed.
+
+**Checks:** lint/typecheck/builds/migrations/diff checks PASS; family E2E 12/12
+across 320/390/768/1280 PASS. Full Vitest has 8,466/8,467 passing; one Wrangler
+local migration-list test exceeded its 5s budget by 326ms, while isolated 32/32
+passes. See `docs/ai/tasks/T27-compact-kitchen-ux.md` and `work/` logs.
+
+**Next:** Product/design review, then protected CI and release workflow only after
+acceptance. Do not treat local preview or E2E as production evidence.
+
+---
+
+# T26 production deployment complete - 2026-10-15 JST
+
+**State:** DEPLOYED, signed-in hosted acceptance NOT_TESTED. PR78 merged and
+`03428467cdd5e93d27a3a27e5edaf7d512eef71d` serves production.
+Exact-head/main CI, staging38728806704, approved production38729311534 and
+root protected/public receipt verifications PASS. Full362files/8465tests passed
+on each hosted CI/production run. No migration, rollback or flag downgrade.
+
+**Certified:** canonical DB, ledger43/tip0043, unchanged D1 continuity from0ff82edb,
+500/fingerprint/no fallback, paired ON, new active Worker/deployment and inactive
+same-candidate OFF recovery; public exactSHA/cache/SW smoke PASS.
+
+**Next:** maintain this serving candidate and evidence checkpoint. Hosted account
+generation still requires supported signed-in acceptance; public smoke is not that
+proof. Product behavior is covered by native Worker/D1 and actual390/1280 browser
+regressions; production CPU trace/latency remains unverified.
+
+---
+
+# T26 family planner response recovery - 2026-10-15 JST
+
+**Status:** READY_FOR_RELEASE; implementation `063a026d`, branch
+`codex/fix-family-planner-hang-20261015`. Local source/tests complete;
+production remains the prior T25 SHA.
+
+**Done:**30s transport/body deadlines and recovery UX; exact retry and changed
+family-choice key semantics; late response/session fences; uncertain profile
+reconciliation; trusted context/exact pool reuse; filter-before-cap; bounded
+candidate-work accounting; native Worker/D1 and real browser regressions.
+
+**Checks:** lint, types, full362files/8465tests (429.67s), migrations, default
+and paired-ON builds PASS. Focused6files/46tests PASS. Native14-slot week2118ms,
+replay/stock unchanged PASS. Browser390/1280 matrix4/4 and timeout axe0PASS.
+Initial scratch/macOS capture/harness failures are documented in T26 and retained;
+final canonical-TMP full run PASS, with no capture code changes.
+
+**Release pending:** normal protected PR/CI/staging/production workflow; explicit
+d1/0 + paired ON, no migration. Authenticated hosted generation remains unverified.
+Do not replace this gap with public readiness, which currently serves old SHA.
+Canonical repo `lol-vn/Tako-san`; no new infrastructure/configuration changes.
+
+---
+
+# T25 production release complete - 2026-10-15 JST
+
+**State:** RELEASE_COMPLETE / PRODUCTION_CERTIFIED. Candidate
+`0ff82edb7c251be340b5e00fbcf0ae8703b22a55` serves
+`https://frigo.tungjpstore.net`; hardened SHA
+`3a24808b97838235596a43694013e74b1ba64cc2`, paired planner UI/server flags ON.
+
+**Completed gates:** Exact-head/main CI `38626853404` / `38628474378`, staging
+migration/deploy `38629910072` / `38630223689`, production migration `38630661149`
+and approved sequential rollout shadow `38631551953` -> canary/1 `38633505550` ->
+canary/5 `38635714965` -> canary/25 `38642407644` -> d1/0 `38646724015` all PASS.
+Every promotion receipt joined the preceding candidate's exact Worker/deployment.
+All five production full suites passed 359 files / 8,442 tests, with durations
+456.63s / 614.33s / 589.04s / 588.97s / 565.46s respectively.
+
+**Final receipt/public proof:** `work/t25-production-d1/release-manifest.json` and
+its independent verification PASS; Worker `25b4008f-3444-4b48-b7e3-071dfc706664`,
+deployment `f37b8645-44fd-4ab4-9975-494ef73a0238`, ledger 43, actual/global
+D1/500/fingerprint/no fallback, paired ON and three asset/SW observations.
+`work/t25-production-public-adjusted-final.json` PASS: exact SHA, no-store auth,
+immutable `/assets/index-CRmh9668.js`, matching SW hash and final D1 public smoke.
+Rollback NOT_USED; inactive paired-OFF recovery
+`8c5b6928-8144-4eb9-8b61-b757c8ef35a2` certified, traffic NOT_REHEARSED.
+
+**Retained limits/failures:** Readiness degraded carries informational
+`CONFIG_RECIPE_CATALOG_D1_AUTHORITY`, database ok. Original scratch public verifier
+failed twice on external Cloudflare Insights module count; adjusted local-module
+selection retained exact SHA/cache/SW/authority checks and PASS, without runtime
+change. Authenticated hosted flows NOT_TESTED; recipe-media R2 NOT_REVERIFIED.
+
+**Next:** Root publishes the final four-doc receipt checkpoint normally. No pending
+production approval, rollout or T25 release gate remains. Preserve additive 0042/0043,
+protected release rules and compatible flags-OFF recovery; source/runtime/config/
+schema unchanged by this closeout.
+
+---
+
+## Prior Rollout Checkpoint - c622ee61
+
+The current state supersedes the earlier pending canary/25 stage; evidence follows
+unchanged.
+
+# T25 canary/5 certified; canary/25 awaiting approval - 2026-10-15 JST
+
+**Hosted verification:** Canary/5 full suite PASS: 359 files / 8,442 tests,
+589.04s (`work/t25-production-canary5-full.log`). Earlier shadow 456.63s and
+canary/1 614.33s counts/evidence remain preserved. User selected automated checks
+and public smoke; authenticated hosted household flows remain `NOT_TESTED`.
+
+**State:** IN_PROGRESS (`RELEASE_IN_PROGRESS`). Candidate
+`0ff82edb7c251be340b5e00fbcf0ae8703b22a55`; hardened SHA
+`3a24808b97838235596a43694013e74b1ba64cc2`. Earlier verified gates and checkpoint
+`e8c79dd7` are preserved below.
+
+**Completed:** Canary/5 `38635714965` SUCCESS; root and independent receipt verifier
+PASS with exact canary/1 predecessor join. Authority is canary 5%, actual D1/global
+mixed, D1 ready, served 500/protected fingerprint/no fallback, ledger 43/tip 0043,
+paired flags ON, canonical Worker/DB binding and three asset/SW observations.
+Inactive same-candidate paired-OFF recovery is certified; rollback NOT_USED.
+Public canary-mode smoke PASS (`work/t25-production-canary5-public-smoke.log`):
+database ok, exact SHA/SW, cache policy and mixed/500 source. The canary readiness
+notice is informational (`src/worker/config/validation.ts:149`).
+
+**Active gate:** Canary/25 `38642407644` release PASS; production WAITING for
+reviewer `vn-taphoanhatung`. Upload, receipt and public smoke are not certified.
+
+**Next:** After approval, join exactly from Canary/5 Worker
+`28e28d93-2e95-4779-a624-bd054cbad5be` / deployment
+`6f064c1d-cac7-40e6-a241-18e64a6237c8`; verify candidate/hardening/paired flags,
+ledger, authority, Worker/binding/assets/SW and canary public smoke. Only after
+canary/25 PASS request final d1/0 and prove D1/500/no fallback/exact SHA/SW/no rollback.
+Root may checkpoint the four docs on the receipts branch; remote main remains
+candidate SHA until final certification. Source/runtime/config/schema unchanged;
+authenticated hosted household flows remain NOT_TESTED.
+
+---
+
+## Prior Rollout Checkpoint - e8c79dd7
+
+The current checkpoint supersedes the earlier pending canary/5 state. Historical
+evidence remains unchanged below.
+
+# T25 production rollout checkpoint - 2026-10-15 JST
+
+**State:** IN_PROGRESS (`RELEASE_IN_PROGRESS`); immutable main candidate
+`0ff82edb7c251be340b5e00fbcf0ae8703b22a55`, hardened SHA
+`3a24808b97838235596a43694013e74b1ba64cc2`.
+
+**Completed gates:**
+
+- Exact-head `38626853404` / exact-main `38628474378`: 359 files / 8,442 tests;
+  lint, types, migration smoke and build PASS.
+- Staging migration/deploy `38629910072` / `38630223689` and production migration
+  `38630661149`: exact chain/ledger 43, healthy FK/quick checks, catalog/runtime
+  500 and family schema constraints PASS. Post-migration previous-Worker public
+  smoke PASS (`work/t25-production-postmigration-oldworker-smoke.log`).
+- Shadow `38631551953`: workflow/independent receipt PASS; hosted full suite 359
+  files / 8,442 tests, 456.63s; paired ON, ledger 43, served 500/fingerprint,
+  exact Worker/assets/SW, inactive paired-OFF recovery certified, no rollback.
+- Canary/1 `38633505550`: workflow/independent receipt PASS with exact shadow join;
+  hosted full suite 359 files / 8,442 tests, 614.33s; canary 1%, actual D1/global
+  mixed, D1 ready, served 500/fingerprint, paired ON, three asset/SW observations,
+  inactive paired-OFF recovery and rollback NOT_USED.
+
+**Public canary observation:** HTTP 200, exact SHA/database ok, canary 1%, mixed
+source, 500/no fallback; readiness status degraded with
+`CONFIG_RECIPE_CATALOG_D1_AUTHORITY`. `src/worker/config/validation.ts:149` marks
+this informational authority notice with cutover fence satisfied. Hosted smoke
+PASS; retain the warning without treating it as a fatal configuration failure.
+
+**Active gate:** Canary/5 `38635714965` remains WAITING for `vn-taphoanhatung` at
+the production Environment gate after its release gate PASS. Actual approval is
+pending; upload, receipt and smoke are not certified. Final release is IN_PROGRESS.
+
+**Next action:** After approval, finish canary/5 and prove exact predecessor join to
+Canary/1 Worker `bb35e2cc-f6fe-4fc0-84ee-284b8440bfe9` / deployment
+`10c00336-861c-4077-8f3a-3355701c2bc1`. Then repeat normal approval and exact
+receipt/public smoke for canary/25 and d1/0. Preserve flags, source transitions,
+additive 0042/0043 schema and recovery proof.
+
+**Historical comparison:** Optional artifact `38274253206` join failed on IDs
+predating authorized secret operations; root verifier without the stale comparison
+PASS. Actual previous Worker `ded100e7-98ae-4c83-aab5-94342daa06a3` / deployment
+`56b74111-0bf8-44db-ac79-a15e28f80f27` matches payOS acceptance. Later joins stay exact.
+
+**Checkpoint scope:** Source/runtime/schema/config unchanged; root may commit/push
+four docs normally on `codex/family-release-receipts-20261015`. Remote main must
+remain candidate SHA during rollout; no merge into main before final certification.
+Signed-in hosted household flows remain NOT_TESTED under the user's public-smoke choice.
+
+---
 
 # T25 staging D1 column-limit correction - 2026-10-15 JST
 
