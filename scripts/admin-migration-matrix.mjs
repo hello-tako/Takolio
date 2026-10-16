@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Local Wrangler D1 matrix for immutable R1 regressions, current-main customer
 // migrations, and the separate Admin D1 upgrade. No remote commands.
+import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { readFileSync, readdirSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
