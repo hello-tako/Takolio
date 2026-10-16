@@ -446,7 +446,7 @@ export const vi = {
       `Thu hồi vai trò ${role} của ${user}. Nếu không còn vai trò quản trị nào, phiên của người này sẽ bị thu hồi.`,
     revokeSelf: 'Không thể tự thu hồi vai trò của mình.',
     revokeSuperBody: (user: string) => `Thu hồi vai trò Quản trị viên cấp cao của ${user} sẽ tạo yêu cầu phê duyệt; một quản trị viên cấp cao khác phải phê duyệt.`,
-    revokeSuperMinimum: 'Phải luôn còn ít nhất 2 quản trị viên cấp cao; không thể thu hồi thêm.',
+    revokeSuperMinimum: 'Phải luôn còn ít nhất 3 quản trị viên cấp cao; không thể thu hồi thêm.',
     revokeDone: 'Đã thu hồi vai trò.',
     approvalRequested: 'Đã tạo yêu cầu phê duyệt; cần một quản trị viên cấp cao khác phê duyệt.',
     approvalActions: { 'role.grant.super_admin': 'Cấp Quản trị viên cấp cao', 'role.revoke.super_admin': 'Thu hồi Quản trị viên cấp cao' } as Record<string, string>,

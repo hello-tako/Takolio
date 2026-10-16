@@ -204,7 +204,7 @@ test('SUPER_ADMIN grants need a second SUPER_ADMIN in the UI, and the requester 
   await expect(page.getByTestId('admin-settings-matrix')).toBeVisible();
   // R2 starts with three independent operators; revocations require approval.
   await expect(page.getByTestId('admin-role-assignment-row').filter({ hasText: 'Quản trị viên cấp cao' })).toHaveCount(3);
-  await expect(page.getByTestId('admin-role-revoke-blocked')).toHaveCount(0);
+  await expect(page.getByTestId('admin-role-revoke-blocked')).toHaveCount(2);
   await page.getByTestId('admin-grant-user').fill('fx_admin_ops');
   await page.getByTestId('admin-grant-role').selectOption('SUPER_ADMIN');
   await page.getByTestId('admin-grant-submit').click();
