@@ -7,7 +7,7 @@ db = sqlite3.connect(':memory:')
 db.execute('PRAGMA foreign_keys=ON')
 for migration in sorted((root / 'migrations-admin').glob('*.sql')):
     db.executescript(migration.read_text())
-assert db.execute("SELECT value FROM admin_config_metadata WHERE key='schema_version'").fetchone()[0] == '2'
+assert db.execute("SELECT value FROM admin_config_metadata WHERE key='schema_version'").fetchone()[0] == '3'
 
 
 def refuses(sql):
@@ -33,13 +33,13 @@ assert db.execute('SELECT COUNT(*) FROM admin_role_assignments').fetchone()[0] =
 assert db.execute("SELECT COUNT(*) FROM admin_audit_events WHERE action='admin.bootstrap'").fetchone()[0] == 1
 refuses(bootstrap)
 refuses("INSERT INTO admin_role_assignments(id,user_id,role,grant_source) VALUES('late_bootstrap','other','SUPER_ADMIN','operator_bootstrap')")
-db.execute("UPDATE admin_role_assignments SET status='revoked',revoked_at='now' WHERE id='smoke_ceremony_2'")
+refuses("UPDATE admin_role_assignments SET status='revoked',revoked_at='now' WHERE id='smoke_ceremony_2'")
 refuses("UPDATE admin_role_assignments SET status='revoked',revoked_at='now' WHERE id='smoke_ceremony_1'")
-refuses("UPDATE admin_role_assignments SET status='active',revoked_at=NULL WHERE id='smoke_ceremony_2'")
+refuses("UPDATE admin_role_assignments SET user_id='another' WHERE id='smoke_ceremony_2'")
 refuses("DELETE FROM admin_role_assignments")
 refuses("UPDATE admin_audit_events SET outcome='denied'")
 refuses("DELETE FROM admin_audit_events")
 refuses("UPDATE operator_identity_bindings SET access_sub='different' WHERE user_id='user_0'")
 assert db.execute('PRAGMA integrity_check').fetchone()[0] == 'ok'
 assert not db.execute('PRAGMA foreign_key_check').fetchall()
-print('admin-migration-smoke=ok (schema v2; atomic bootstrap; minimum; immutable identity; append-only audit)')
+print('admin-migration-smoke=ok (schema v3; atomic bootstrap; minimum; immutable identity; append-only audit)')

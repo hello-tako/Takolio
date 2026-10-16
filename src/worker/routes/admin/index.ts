@@ -86,14 +86,14 @@ async function commit(c: AdminContext, statements: D1PreparedStatement[], messag
 }
 
 async function activeSuperCount(c: AdminContext): Promise<number> {
-  const row = await c.get('adminDb').prepare(`SELECT COUNT(*) AS n FROM admin_role_assignments WHERE role = 'SUPER_ADMIN' AND status = 'active'`).first<{ n: number }>();
+  const row = await c.get('adminDb').prepare(`SELECT COUNT(DISTINCT operator_id) AS n FROM admin_active_super_operators WHERE access_iss = ?`).bind(c.get('admin').accessIss ?? '').first<{ n: number }>();
   return Number(row?.n ?? 0);
 }
 
 async function eligibleUser(c: AdminContext, userId: string): Promise<boolean> {
   return !!await c.get('adminDb').prepare(`SELECT b.user_id FROM operator_identity_bindings b
     JOIN approved_human_operators h ON h.operator_id=b.operator_id AND h.status='active'
-    WHERE b.user_id=? AND b.status='active' LIMIT 1`).bind(userId).first();
+    WHERE b.user_id=? AND b.status='active' AND b.access_iss=? LIMIT 1`).bind(userId, c.get('admin').accessIss ?? '').first();
 }
 
 // ── Reads ──────────────────────────────────────────────────────────────────
@@ -324,11 +324,15 @@ for (const decision of ['approve', 'reject'] as const) {
           WHERE id = ? AND status = 'pending' AND expires_at > ?
             AND (? = 'rejected' OR (
               EXISTS (SELECT 1 FROM admin_role_assignments r WHERE r.user_id = admin_action_approvals.requested_by AND r.role = 'SUPER_ADMIN' AND r.status = 'active')
-              AND (action <> 'role.grant.super_admin' OR NOT EXISTS (SELECT 1 FROM admin_role_assignments r WHERE r.user_id = admin_action_approvals.target_user_id AND r.role = 'SUPER_ADMIN' AND r.status = 'active'))
+              AND (action <> 'role.grant.super_admin' OR (
+                NOT EXISTS (SELECT 1 FROM admin_role_assignments r WHERE r.user_id = admin_action_approvals.target_user_id AND r.role = 'SUPER_ADMIN' AND r.status = 'active')
+                AND EXISTS (SELECT 1 FROM operator_identity_bindings b
+                  JOIN approved_human_operators h ON h.operator_id=b.operator_id AND h.status='active'
+                  WHERE b.user_id=admin_action_approvals.target_user_id AND b.status='active' AND b.access_iss=?)))
               AND (action <> 'role.revoke.super_admin' OR (
                 EXISTS (SELECT 1 FROM admin_role_assignments r WHERE r.id = admin_action_approvals.assignment_id AND r.status = 'active')
-                AND (SELECT COUNT(*) FROM admin_role_assignments r WHERE r.role = 'SUPER_ADMIN' AND r.status = 'active') > ?))))`)
-        .bind(decidedBinds[1], admin.userId, now, admin.accessIss ?? null, admin.accessSub ?? null, id, now, decidedBinds[1], ADMIN_SUPER_ADMIN_MINIMUM),
+                AND (SELECT COUNT(DISTINCT operator_id) FROM admin_active_super_operators WHERE access_iss=?) > ?))))`)
+        .bind(decidedBinds[1], admin.userId, now, admin.accessIss ?? null, admin.accessSub ?? null, id, now, decidedBinds[1], admin.accessIss ?? '', admin.accessIss ?? '', ADMIN_SUPER_ADMIN_MINIMUM),
     ];
     if (decision === 'approve' && approval.action === 'role.grant.super_admin') {
       statements.push(

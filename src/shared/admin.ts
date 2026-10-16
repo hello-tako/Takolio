@@ -505,4 +505,4 @@ export type AdminRevokeRoleResult =
   | { approval: AdminApproval };
 
 /** Minimum active SUPER_ADMINs; enforced by the API and by a database trigger. */
-export const ADMIN_SUPER_ADMIN_MINIMUM = 2;
+export const ADMIN_SUPER_ADMIN_MINIMUM = 3;

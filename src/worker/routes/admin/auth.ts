@@ -45,7 +45,7 @@ async function localAuthorityAccount(db: import('@frigo/db').D1DatabaseBinding, 
 }
 
 /** Admin database schema version this build requires (migrations-admin). */
-export const ADMIN_SCHEMA_VERSION = '2';
+export const ADMIN_SCHEMA_VERSION = '3';
 
 export async function csrfTokenFor(sessionToken: string): Promise<string> {
   return sha256Hex(`takosan-admin-csrf:v1:${sessionToken}`);

@@ -1,3 +1,4 @@
+import { ADMIN_SUPER_ADMIN_MINIMUM } from '../../../shared/admin';
 import type { D1DatabaseBinding } from '@frigo/db';
 import { sha256Hex } from '../../utils/session';
 export interface EnrolledIdentity { userId:string;operatorId:string;issuer:string;subject:string;email:string;displayName:string;credentialFingerprint:string }
@@ -9,7 +10,7 @@ export async function verifyEnrolledAdminAccessIdentity(db:D1DatabaseBinding,ide
 export async function checkAdminGovernanceReadiness(db:D1DatabaseBinding,issuer?:string):Promise<{ready:boolean;activeOperators:number}> {
  const row=await db.prepare(`SELECT COUNT(DISTINCT b.operator_id) AS n FROM admin_role_assignments r JOIN operator_identity_bindings b ON b.user_id=r.user_id AND b.status='active' JOIN approved_human_operators h ON h.operator_id=b.operator_id AND h.status='active' WHERE r.role='SUPER_ADMIN' AND r.status='active' AND (? IS NULL OR b.access_iss=?)`).bind(issuer??null,issuer??null).first<{n:number}>();
  const bootstrapped=await db.prepare("SELECT value FROM admin_config_metadata WHERE key='bootstrap_completed_at'").first();
- return {ready:!!bootstrapped && Number(row?.n??0)>=3,activeOperators:Number(row?.n??0)};
+ return {ready:!!bootstrapped && Number(row?.n??0)>=ADMIN_SUPER_ADMIN_MINIMUM,activeOperators:Number(row?.n??0)};
 }
 export async function authorityAccount(db:D1DatabaseBinding,identity:{issuer:string;subject:string}) {
  const enrolled=await verifyEnrolledAdminAccessIdentity(db,identity); if(!enrolled)return null;
