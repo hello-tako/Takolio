@@ -18,3 +18,20 @@ Existing unrelated dirty local checkouts were left untouched. Work uses an isola
 Main requires validate, strict up-to-date checks, no force pushes/deletions, and enforces admins. Required approving review count is zero; stale approvals are not dismissed. Production Environment has one reviewer with prevent_self_review=false and no branch restriction. Staging has no protection rules. Repository workflow token defaults to read and cannot approve PRs. These observations are blockers, not permission to alter protection.
 
 No production or real staging operation is authorized. No deployment, remote D1, secrets change, merge, or approval is performed.
+
+## Final local runtime checkpoint
+
+Frozen runtime source: `066c35ad670bc877756150c2055e3844dd7a17ce`; tree `341df1dd57e1034890007b3fec9a22c020fbadfb`.
+Last verified remote branch source is ba762a205fd890efe4af47ef6c0fd7cd6f45fc14;
+UI and CI fixture repair checkpoints are local-only. Source identity refresh
+(`gh api repositories/1385308553`) and `git fetch origin` now fail with HTTP 403
+and account-suspended responses. An unauthenticated public identity lookup returned
+404. These failures do not prove a rename or new repository identity. Latest
+GitHub refs, PR state/protection and hosted CI cannot be refreshed. Codex review
+connector also requests GitHub sign-in. No prior R1 CI is relabeled as R2 evidence.
+
+The final packet's source and migration manifest is in evidence/release-plan.json.
+Its declared mode remains offline-plan-only and readyForDeployment=false.
+Documentation packaging is a later commit whose runtime manifest is compared
+byte-for-byte; only the stated frozen runtime SHA has full local test evidence.
+Timestamp: 2026-10-16T20:59:47.897729+00:00.

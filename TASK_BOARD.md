@@ -1,3 +1,39 @@
+# Admin R2 local recovery/readiness checkpoint - 2026-10-17
+
+Status: ADMIN_V1_PRODUCTION_READINESS_BLOCKED. Runtime source:
+066c35ad670bc877756150c2055e3844dd7a17ce, branch
+codex/admin-v1-r2-production-readiness, Draft PR #82 (last verified remote backend
+ba762a205fd890efe4af47ef6c0fd7cd6f45fc14). PR #77 remains untouched.
+
+Recovered facade/identity/governance/recovery implementation and fixed independently
+reproduced roster/target races. Added CI-safe synthetic fixture guard while real
+operator provisioning still refuses CI. On the exact clean runtime commit with
+Node24/pnpm10/Python3.12, canonical TMPDIR and CI=true/GITHUB_ACTIONS=true:
+382 files /8661 tests, 146 focused tests, lint, typecheck, build, customer/Admin
+migration smoke, 9 workerd scenarios/127 assertions, 23 migration cases,
+12 Admin browser tests and 10 consecutive keyboard repetitions all PASS.
+Tracked screenshot diff, configuration preflight, public patch scan and dependency
+audit exit0. Full suite completed 2026-10-16T20:59:30Z; source unchanged.
+Independent reviewer /root/independent_admin_review found no new actionable issue
+in final delta; review scope and inherited SHA-specific evidence are explicit.
+Earlier failed and interrupted runs are retained, never promoted to PASS.
+
+Complete 19-document evidence package: docs/admin/production-readiness/00-18.
+Customer runtime, customer migrations and customer release protected paths are
+unchanged from main 526596a8cd857984ad2b69901a8c7b0e9d6bccc2. No customer payment,
+authentication or production infrastructure operation occurred.
+
+Blocked: GitHub account suspended prevents ref refresh/push/hosted CI; four
+release workflows remain offline plans with no reviewed live adapters; protections,
+real Access/resource identity, independent human roster/custody, representative
+D1 load and all live staging/rollback gates are unverified. Staging authorization
+is required; production is not deployed or authorized. Next: restore GitHub,
+publish local branch/evidence with a normal push, commission live-adapter/protection
+review and scoped staging authorization. No merge, remote D1, secrets change,
+production bootstrap, deployment or enablement is authorized.
+
+---
+
 # PR #77 brand-main merge verification — 2026-10-16
 
 **Result:** four conflicts resolved in merge

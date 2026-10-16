@@ -1,58 +1,66 @@
-# Admin Console V1 — local setup (R1)
+# Admin Console V1 - local R2 setup
 
-Everything here is local. Local tooling runs wrangler with `WRANGLER_SEND_METRICS=false`, an empty
-`CLOUDFLARE_API_TOKEN` and a throwaway config home, so a stored `wrangler login` is never used.
+Local tools use synthetic .test identities. They never authorize a real staging
+or production operator. Prerequisites: Node >=22.13 (local evidence uses 24.19),
+pnpm 10, sqlite3, installed frozen dependencies, and Playwright Chromium.
 
-## Prerequisites
-
-Node ≥ 22.13 (verified with 24), pnpm 10, `sqlite3` CLI, `pnpm install --frozen-lockfile`.
-For E2E: `pnpm exec playwright install chromium` (if the sandbox sets another `PLAYWRIGHT_BROWSERS_PATH`,
-point it at the installed browsers).
-
-## Option A — isolated preview (used by E2E)
+## Built frontend and SQLite preview
 
 ```sh
-pnpm build:admin              # dist/admin (admin bundle only)
-pnpm admin:preview            # http://127.0.0.1:8790/admin/  (loopback only)
-```
-
-The real admin Worker serves documents, assets and API on one origin. Both databases are in-memory SQLite:
-customer migrations + `migrations-admin` + the deterministic synthetic fixture (`synthetic-admin-v1`; every screen
-shows the "Dữ liệu tổng hợp" banner). `POST /__admin-preview/reset` restores the fixture (preview only).
-
-Fixture accounts (password `Local-Fixture-Only-2026!`, local fixture only):
-
-| Email | Role |
-|---|---|
-| `super@fixture.takosan.test`, `super2@fixture.takosan.test` | SUPER_ADMIN (two-person bootstrap) |
-| `ops@…`, `content@…`, `support@…`, `auditor@…` | OPERATIONS_ADMIN, CONTENT_EDITOR, SUPPORT_AGENT, READ_ONLY_AUDITOR |
-| `revoked@…` | revoked role → denied |
-| `owner@…` | household owner, no platform role → denied |
-
-## Option B — real workerd (`wrangler dev --local`)
-
-```sh
-pnpm admin:local:reset -- --yes   # local frigo-db + takosan-admin-db: migrations + fixture
 pnpm build:admin
-pnpm admin:dev                    # wrangler dev -c wrangler.admin-local.jsonc on http://127.0.0.1:8799/admin/
+pnpm admin:preview
 ```
 
-`wrangler.admin-local.jsonc` is the only config that compiles the local password login (`__ADMIN_LOCAL_AUTH__`)
-and it binds `ADMIN_ORIGIN` to loopback. Never deploy it.
+Open http://127.0.0.1:8790/admin/ . The real Admin Worker serves built HTML,
+assets and API over loopback with in-memory SQLite, current customer/Admin
+migrations and synthetic-admin-v1 fixture. Fixture SUPER_ADMIN identities are
+super, super2 and super3 at fixture.takosan.test. Local fixture password is
+Local-Fixture-Only-2026! . Other fixture roles are ops/content/support/auditor.
+A household owner or revoked identity cannot sign in as an Admin. Every page
+labels synthetic data. No actual production numbers are shown.
 
-Bootstrap two real local accounts instead of the fixture (one-time; refuses outside `ENVIRONMENT=development`,
-in CI, with `--remote/--env`, or when `CLOUDFLARE_API_TOKEN` is set):
+## Local workerd topology
 
 ```sh
-pnpm admin:provision -- --local --create-accounts --password '<12+ chars>' --email a@example.test --email b@example.test
+pnpm admin:local:reset -- --yes
+pnpm build:admin
+pnpm admin:dev
 ```
+
+This creates/replaces only local D1 state, replays customer and separate Admin
+migrations, and seeds fixed synthetic fixtures. Admin + Facade Workers are
+started with restricted service binding on loopback. Telemetry is disabled,
+Cloudflare API credentials are blanked for Wrangler children and the OAuth config
+home is throwaway. Never deploy local configs. Synthetic preview/seed may run in
+CI under their local-only guard; operator provisioning still refuses CI.
+
+## Optional local operator ceremony
+
+Use an empty already-migrated local ADMIN_DB, three distinct reserved .test
+emails, an explicit approval reference, and ADMIN_LOCAL_PASSWORD in the local
+environment. `pnpm admin:provision -- --local --email a@example.test --email
+b@example.test --email c@example.test --approval-ref local-independent-review`
+creates independent local Admin identities/credentials and one atomic three-role
+bootstrap. It does not read customer accounts. It refuses CI, nondevelopment,
+remote/env/preview/production flags or reachable Cloudflare API credentials.
+Do not pass real identities or use it against a remote database.
 
 ## Checks
 
 ```sh
-pnpm check:migrations                         # customer smoke + admin smoke (trigger invariants)
-pnpm exec vitest run tests/integration/admin- tests/unit/admin-
-pnpm test:admin:e2e                           # build:admin + Playwright (12 tests incl. axe + 3 viewports)
-pnpm admin:workerd:check                      # real workerd routing evidence (needs pnpm build)
-pnpm admin:migration:matrix                   # offline migration/rollback matrix against committed HEAD
+pnpm lint
+pnpm typecheck
+pnpm build
+pnpm check:migrations
+pnpm exec vitest run tests/unit/admin- tests/integration/admin- --maxWorkers=1
+pnpm admin:workerd:check
+pnpm admin:migration:matrix
+pnpm test:admin:e2e
+pnpm exec playwright test -c playwright.admin.config.ts -g 'scrollable tables' --repeat-each 10
 ```
+
+Exact completed results are recorded in production-readiness/12, with full
+source SHA and environment. Generated images live in ignored
+.hoplite/artifacts/admin-e2e rather than tracked historical references.
+Staging and production need separate operator authorization and reviewed live
+adapters. The four release workflows are offline plans only.

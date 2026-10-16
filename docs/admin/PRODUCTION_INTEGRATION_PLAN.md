@@ -1,3 +1,11 @@
+> R2 CURRENT AUTHORITY: production-readiness/00_EXECUTIVE_STATUS.md and 03-18.
+> The material retained below is historical original/R1 documentation; its source,
+> customer binding/password authority, schema version 1, two-person/bootstrap,
+> per-email throttling and rollout directions are superseded. Do not execute
+> historical release or SQL instructions. Current Admin authority is independent
+> issuer/subject enrollment, three operators, ADMIN_DB schema 3 and internal
+> read facade. Live workflows are offline plans; staging/production are blocked.
+
 # Admin Console V1 — staging/production integration plan (NOT executed)
 
 Revision R1 (supersedes the 2026-10-12 plan). Nothing here has been run. Production integration needs separate

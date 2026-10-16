@@ -1,3 +1,11 @@
+> R2 CURRENT AUTHORITY: production-readiness/00_EXECUTIVE_STATUS.md and 03-18.
+> The material retained below is historical original/R1 documentation; its source,
+> customer binding/password authority, schema version 1, two-person/bootstrap,
+> per-email throttling and rollout directions are superseded. Do not execute
+> historical release or SQL instructions. Current Admin authority is independent
+> issuer/subject enrollment, three operators, ADMIN_DB schema 3 and internal
+> read facade. Live workflows are offline plans; staging/production are blocked.
+
 # Takosan Admin Console V1 — API reference
 
 Base path: `/api/v1/admin` on the admin Worker. Types: `src/shared/admin.ts`. Admin schema: `migrations-admin/0001_admin_console_foundation.sql` (binding `ADMIN_DB`).

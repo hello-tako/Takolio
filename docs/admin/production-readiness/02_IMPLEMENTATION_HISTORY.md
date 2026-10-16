@@ -57,3 +57,25 @@ cover positive synthetic CI setup and negative CI operator/remote/env/credential
 paths. Working-tree validation: 25/25 tooling/config tests, lint and typecheck
 exit 0. New exact-source workerd/browser/full validation follows this checkpoint.
 No remote resource or credential operation is added.
+
+## Frozen local verification and evidence package
+
+Timestamp: 2026-10-16T20:59:47.897729+00:00. Runtime SHA `066c35ad670bc877756150c2055e3844dd7a17ce`.
+All fourteen owner validation commands completed with exit 0 and source unchanged;
+see 12_REGRESSION_RESULTS.md for counts, commands and artifact hashes. Earlier
+failed/incomplete runs are attributed to their original sources. Separate
+independent final-delta review has no new actionable finding within its scope.
+Nineteen required documents and sanitized evidence are packaged. Live release
+adapters, account access, operator/staging authorization and certification remain
+blockers. No production or real staging operation is performed.
+
+| Checkpoint | Package |
+| --- | --- |
+| b15215286bb4a9c392e50be80634e96bac2fb92d | docs(admin): checkpoint verified R2 recovery provenance |
+| 50cdd740ca2d250b9160477251e2ff3c77fac3ba | fix(admin): recover R2 facade and independent operator authority |
+| 3b75f20e3a6ab9c55c479dacc612eb483f6f4598 | fix(admin): enforce bounded disclosure and offline recovery controls |
+| 53f4f4a0c14475fb411aa1a53ae90d09d87b5498 | fix(admin): preserve eligible operator roster and atomic target enrollment |
+| 77a08c38484e8a32d718ab11c932d6d402ab9d3e | test(admin): update migration manifest expectation |
+| ba762a205fd890efe4af47ef6c0fd7cd6f45fc14 | fix(admin): permit safe offboarding with three eligible operators remaining |
+| 6c3c68147efb3f95b435b9452df34e76bea17a82 | test(admin): align governance UI with three-operator floor |
+| 066c35ad670bc877756150c2055e3844dd7a17ce | fix(admin): allow isolated synthetic fixtures in CI |
