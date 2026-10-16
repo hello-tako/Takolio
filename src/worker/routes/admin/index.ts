@@ -85,8 +85,8 @@ async function commit(c: AdminContext, statements: D1PreparedStatement[], messag
   }
 }
 
-async function activeSuperCount(c: AdminContext): Promise<number> {
-  const row = await c.get('adminDb').prepare(`SELECT COUNT(DISTINCT operator_id) AS n FROM admin_active_super_operators WHERE access_iss = ?`).bind(c.get('admin').accessIss ?? '').first<{ n: number }>();
+async function remainingSuperCount(c: AdminContext, assignmentId: string): Promise<number> {
+  const row = await c.get('adminDb').prepare(`SELECT COUNT(DISTINCT operator_id) AS n FROM admin_active_super_operators WHERE access_iss = ? AND assignment_id <> ?`).bind(c.get('admin').accessIss ?? '', assignmentId).first<{ n: number }>();
   return Number(row?.n ?? 0);
 }
 
@@ -253,7 +253,7 @@ authed.delete('/roles/:assignmentId', requirePermission('admin.roles.manage'), a
 
   if (row.role === 'SUPER_ADMIN') {
     // Symmetric four-eyes: revoking a SUPER_ADMIN is a request a second SUPER_ADMIN must approve.
-    if ((await activeSuperCount(c)) <= ADMIN_SUPER_ADMIN_MINIMUM) {
+    if ((await remainingSuperCount(c, id)) < ADMIN_SUPER_ADMIN_MINIMUM) {
       await writeAudit(c, { actorUserId: admin.userId, actorRoles: admin.roles, action: 'admin.role.revoke', targetType: 'user', targetId: row.user_id,
         outcome: 'denied', reasonCode: 'super_admin_minimum', metadata: { role: row.role, assignmentId: id } });
       throw conflict(MINIMUM_MESSAGE);
@@ -331,7 +331,7 @@ for (const decision of ['approve', 'reject'] as const) {
                   WHERE b.user_id=admin_action_approvals.target_user_id AND b.status='active' AND b.access_iss=?)))
               AND (action <> 'role.revoke.super_admin' OR (
                 EXISTS (SELECT 1 FROM admin_role_assignments r WHERE r.id = admin_action_approvals.assignment_id AND r.status = 'active')
-                AND (SELECT COUNT(DISTINCT operator_id) FROM admin_active_super_operators WHERE access_iss=?) > ?))))`)
+                AND (SELECT COUNT(DISTINCT operator_id) FROM admin_active_super_operators WHERE access_iss=? AND assignment_id<>admin_action_approvals.assignment_id) >= ?))))`)
         .bind(decidedBinds[1], admin.userId, now, admin.accessIss ?? null, admin.accessSub ?? null, id, now, decidedBinds[1], admin.accessIss ?? '', admin.accessIss ?? '', ADMIN_SUPER_ADMIN_MINIMUM),
     ];
     if (decision === 'approve' && approval.action === 'role.grant.super_admin') {

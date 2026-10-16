@@ -43,6 +43,23 @@ describe('R2 reviewed governance races', () => {
     expect(roster()).toBe(4);
   });
 
+  it.each(['binding', 'operator'])('allows audited offboarding of an already-ineligible fourth %s while three eligible operators remain', async (kind) => {
+    dbs = createDatabases();
+    seedFixtureSuper(dbs, 'ops', 'ara_fourth_operator');
+    dbs.admin.seed(kind === 'binding'
+      ? "UPDATE operator_identity_bindings SET status='revoked' WHERE user_id='fx_admin_ops'"
+      : "UPDATE approved_human_operators SET status='revoked' WHERE operator_id='operator_ops'");
+    const env = localEnv(dbs);
+    const requester = await login(env, fx('super'));
+    const decider = await login(env, fx('super2'));
+    const request = await call('/api/v1/admin/roles/ara_fourth_operator', { env, method: 'DELETE', session: requester });
+    expect(request.status).toBe(201);
+    expect((await call(`/api/v1/admin/approvals/${request.json.data.approval.id}/approve`, { env, method: 'POST', session: decider })).status).toBe(200);
+    expect(roster()).toBe(3);
+    expect((await call('/api/v1/admin/me', { env, session: requester })).status).toBe(200);
+    expect(dbs.admin.query("SELECT COUNT(*) AS n FROM admin_audit_events WHERE action='admin.approval.approve'")[0].n).toBe(1);
+  });
+
   it('rechecks the roster inside the approval batch after another revocation', async () => {
     dbs = createDatabases();
     seedFixtureSuper(dbs, 'ops', 'ara_fourth_operator');
