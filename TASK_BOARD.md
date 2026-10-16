@@ -1,3 +1,25 @@
+# PR #77 conflict-resolution verification — 2026-10-16
+
+**Result:** all three status-document conflicts resolved in merge
+`d47cc70b0d477dfbf575e3d215f71178231a1362` (parents `87d6d3d`, `f7386e6a`).
+On that exact source: `pnpm lint`, `pnpm typecheck`, `pnpm build`,
+`pnpm check:migrations` and `pnpm exec vitest run tests/unit/admin-
+tests/integration/admin- --maxWorkers=1 --silent` all exit0; Admin regressions:
+10 files / 133 tests PASS. Both migration smoke markers are `ok`. Build reports
+the existing runtime-resolved Admin font warnings; the generated font files exist.
+Conflict-marker scan, staged diff check, both parents' status-history retention,
+and exact customer-source/config/migration identity against merged main PASS.
+The merge changes no Admin runtime/config/schema from the published handoff.
+
+**Publication boundary:** only this handoff main merge and its verification notes
+are authorized for PR #77. Separate local R2 commits/artifacts are excluded.
+Full repository tests and browser E2E were not rerun locally for these document
+resolutions; exact-head hosted CI remains required. Draft / DO NOT MERGE,
+Admin findings, independent review and release gates remain unchanged.
+No PR merge/close, deployment, remote D1, secret or account change.
+
+---
+
 # PR #77 main-conflict reconciliation — 2026-10-16
 
 **Scope:** merge current main `f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1` into handoff
