@@ -384,10 +384,10 @@ export function PlannerWeek({
                         {locale === 'vi'
                           ? slotElapsed
                             ? 'Giữ nguyên bữa đã qua. Bạn có thể tiếp tục xếp món cho những bữa sắp tới.'
-                            : 'Chọn từ món đã lưu hoặc nguyên liệu đang có. Bạn có thể nhờ Takosan hoàn thiện sau.'
+                            : 'Chọn từ món đã lưu hoặc nguyên liệu đang có. Bạn có thể nhờ Takolio hoàn thiện sau.'
                           : slotElapsed
                             ? 'Past meals stay unchanged. Continue choosing dishes for future meals.'
-                            : 'Use saved dishes or your fridge. Takosan can help complete the meal later.'}
+                            : 'Use saved dishes or your fridge. Takolio can help complete the meal later.'}
                       </p>
                       <Link
                         className="planning-primary-link mt-3"
@@ -598,7 +598,7 @@ export function PlannerWeek({
         title={t.regenerateTitle}
         description={
           locale === 'vi'
-            ? 'Takosan sẽ gợi ý lại các bữa chưa khoá. Các món đã khoá được giữ nguyên; nguyên liệu sẽ được kiểm tra lại sau đó.'
+            ? 'Takolio sẽ gợi ý lại các bữa chưa khoá. Các món đã khoá được giữ nguyên; nguyên liệu sẽ được kiểm tra lại sau đó.'
             : t.regenerateText
         }
         confirmText={t.confirm}

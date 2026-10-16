@@ -1158,7 +1158,7 @@ describe('family board reports current dishes instead of stale anchor status', (
       expect(notice.textContent).toContain(
         'Các món quốc tế bạn đã chọn hoặc khoá vượt mức đổi vị trong 7 ngày',
       );
-      expect(notice.textContent).toContain('Takosan giữ lựa chọn này');
+      expect(notice.textContent).toContain('Takolio giữ lựa chọn này');
     }
     expect(container.textContent).not.toContain('PRESERVED_INTERNATIONAL_CAP_EXCEEDED');
   });

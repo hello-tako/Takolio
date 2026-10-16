@@ -1,6 +1,7 @@
 import React from 'react';
 import { AlertTriangle } from 'lucide-react';
-import { TAKOSAN_BRAND, type TakosanMascotPose } from '../../lib/takosan-brand';
+import { type TakosanMascotPose } from '../../lib/takosan-brand';
+import { TakoMascot } from './TakoMascot';
 import { Button } from './Button';
 
 interface EmptyStateProps {
@@ -34,25 +35,26 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
   onSecondaryAction,
 }) => {
   const pose = POSE_BY_TYPE[type] ?? 'fridge';
-  const imgSrc = TAKOSAN_BRAND.mascot[pose];
   const Heading = headingLevel === 3 ? 'h3' : 'h2';
 
   return (
-    <div className="bg-white rounded-2xl p-6 text-center border border-takosan-cream-line shadow-xs my-4 animate-fade-in">
+    <div className="kitchen-empty-state bg-white rounded-2xl p-6 text-center border border-takosan-cream-line shadow-xs my-4 animate-fade-in">
       <div className="w-32 h-32 mx-auto mb-3 overflow-hidden flex items-center justify-center">
-        {type === 'error' ? <AlertTriangle aria-hidden="true" className="w-12 h-12 text-semantic-danger-strong" /> : <img src={imgSrc} alt="" aria-hidden="true" width={128} height={128} className="w-full h-full object-contain" data-mascot-pose={pose} />}
+        {type === 'error' ? (
+          <AlertTriangle aria-hidden="true" className="w-12 h-12 text-semantic-danger-strong" />
+        ) : (
+          <TakoMascot pose={pose} size={128} />
+        )}
       </div>
 
-      <Heading className="font-heading font-bold text-base text-takosan-navy">
-        {title}
-      </Heading>
+      <Heading className="font-heading font-bold text-base text-takosan-navy">{title}</Heading>
 
       <p className="text-xs text-semantic-text-muted mt-1 max-w-xs mx-auto leading-relaxed">
         {description}
       </p>
 
       {(actionText || secondaryActionText) && (
-        <div className="mt-5 flex gap-2.5 justify-center max-w-xs mx-auto">
+        <div className="kitchen-empty-actions mt-5 flex gap-2.5 justify-center max-w-xs mx-auto">
           {actionText && onAction && (
             <Button
               size="md"

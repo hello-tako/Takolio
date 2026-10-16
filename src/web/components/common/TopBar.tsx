@@ -18,7 +18,7 @@ interface TopBarProps {
 export const TopBar: React.FC<TopBarProps> = ({
   kitchen = false,
   backTo,
-  brandLogo = TAKOSAN_BRAND.logos.horizontal,
+  brandLogo = TAKOSAN_BRAND.compactLogo,
   showBack = false,
   title,
   subtitle,
@@ -64,7 +64,7 @@ export const TopBar: React.FC<TopBarProps> = ({
             to="/"
             className="tap-target flex items-center gap-2 active:opacity-80 transition-opacity"
           >
-            <img src={brandLogo} alt="Takosan" className="h-8 w-auto object-contain" />
+            <img src={brandLogo} alt="Takolio" width={44} height={44} className="h-11 w-auto object-contain" />
           </Link>
         )}
 

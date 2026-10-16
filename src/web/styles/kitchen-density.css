@@ -15,9 +15,6 @@
   min-height: 64px;
   padding: 8px 12px;
 }
-:is([data-kitchen-density='compact'], .onboarding-page) .kitchen-brand-link img {
-  width: 148px;
-}
 :is([data-kitchen-density='compact'], .onboarding-page) .kitchen-page-body {
   padding: 20px 14px 32px;
 }
@@ -54,9 +51,6 @@
     .kitchen-header {
     flex-wrap: nowrap;
     gap: 8px;
-  }
-  :is([data-kitchen-density='compact'], .onboarding-page) .kitchen-header .kitchen-brand-link img {
-    width: 112px;
   }
   :is([data-kitchen-density='compact'], .onboarding-page) .kitchen-header .kitchen-account-link {
     display: none;
@@ -622,7 +616,7 @@
 }
 :is([data-kitchen-density='compact'], .onboarding-page) .family-plan-habits {
   border-style: solid;
-  background: #f6f8f2;
+  background: var(--semantic-background-subtle);
 }
 
 /* Give dish names room before the action row on the narrowest phones. */
@@ -643,7 +637,7 @@
 [data-kitchen-density='compact'] .planning-dish-row {
   padding-inline: 0;
   border: 0;
-  border-bottom: 1px solid #e4e8df;
+  border-bottom: 1px solid var(--semantic-border);
   border-radius: 0;
   background: transparent;
 }
@@ -659,11 +653,11 @@
 [data-kitchen-density='compact']
   .planning-dish-actions
   :is(.planning-icon-button, .recipe-save-button):not([aria-pressed='true']):hover {
-  background: #edf5ed;
+  background: var(--semantic-success-soft);
 }
 [data-kitchen-density='compact'] .planning-dish-actions .planning-icon-button[aria-pressed='true'] {
-  border-color: #91b5a1;
-  background: #dff0e2;
+  border-color: var(--semantic-action-primary);
+  background: var(--semantic-success-soft);
 }
 @media (max-width: 639px) {
   [data-kitchen-density='compact'] .has-plan .planning-board-summary {

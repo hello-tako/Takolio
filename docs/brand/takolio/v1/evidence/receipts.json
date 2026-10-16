@@ -1,0 +1,326 @@
+{
+  "environment": {
+    "node": "v25.9.0",
+    "pnpm": "10.33.2",
+    "browser": "Chromium 153.0.8010.12",
+    "os": "macOS",
+    "tmpdir": "/private/tmp",
+    "data": "isolated local SQLite/Worker synthetic fixtures; external providers blocked"
+  },
+  "receipts": [
+    {
+      "command": "pnpm lint",
+      "exitCode": 0,
+      "result": "Baseline PASS",
+      "workspaceLog": "work/baseline/lint.log",
+      "logSHA256": "290e79cfb92b0915688046f7a3f234f26b64f79410f10aa0dd07bdd3ddd1391e",
+      "bytes": 129,
+      "tail": "\n> frigo@0.1.0 lint REPO_ROOT\n> eslint .\n\n"
+    },
+    {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "result": "Baseline PASS",
+      "workspaceLog": "work/baseline/typecheck.log",
+      "logSHA256": "0480249daf53df62608924dde61f2642b1983da7a8188ede24d8fdaabb9d1a44",
+      "bytes": 195,
+      "tail": "\n> frigo@0.1.0 typecheck REPO_ROOT\n> tsc -p tsconfig.json --noEmit && tsc -p tsconfig.worker.json --noEmit\n\n"
+    },
+    {
+      "command": "TMPDIR=/private/tmp pnpm test --maxWorkers=2",
+      "exitCode": 0,
+      "result": "Baseline 362 files / 8465 tests",
+      "workspaceLog": "work/baseline/test.log",
+      "logSHA256": "73dc43a6a6a83deecc15a08f045200ebe3e06043a10fae777d11624101e90f86",
+      "bytes": 1052,
+      "tail": "\n> frigo@0.1.0 test REPO_ROOT\n> vitest run --maxWorkers=2\n\n\n RUN  v4.1.11 REPO_ROOT\n\nNATIVE_FAMILY_WEEK {\"slots\":14,\"milliseconds\":2347,\"catalog\":500,\"replay\":true,\"stockUnchanged\":true}\nFAMILY_BOUNDS {\"count\":7,\"milliseconds\":1218,\"evaluations\":822,\"poolBuilds\":137,\"complete\":7,\"candidateEvaluations\":4273,\"candidateWork\":4273,\"searchLimited\":false}\nFAMILY_BOUNDS {\"count\":14,\"milliseconds\":2600,\"evaluations\":1746,\"poolBuilds\":325,\"complete\":14,\"candidateEvaluations\":9898,\"candidateWork\":9898,\"searchLimited\":false}\nFAMILY_BOUNDS {\"count\":42,\"milliseconds\":6039,\"evaluations\":3211,\"poolBuilds\":813,\"complete\":42,\"candidateEvaluations\":24438,\"candidateWork\":24438,\"searchLimited\":false}\n\n Test Files  362 passed (362)\n      Tests  8465 passed (8465)\n   Start at  00:53:07\n   Duration  510.21s (transform 9.25s, setup 2.47s, import 58.80s, tests 881.15s, environment 17.40s)\n\n"
+    },
+    {
+      "command": "pnpm check:migrations",
+      "exitCode": 0,
+      "result": "Baseline PASS",
+      "workspaceLog": "work/baseline/migrations.log",
+      "logSHA256": "7511976f436ecb96a180ddf3d92f2b200e2b328c476ebe2ae236b74091f34f36",
+      "bytes": 183,
+      "tail": "\n> frigo@0.1.0 check:migrations REPO_ROOT\n> bash scripts/migration-smoke.sh\n\nmigration-smoke=ok\n"
+    },
+    {
+      "command": "pnpm build",
+      "exitCode": 0,
+      "result": "Baseline default PASS",
+      "workspaceLog": "work/baseline/build.log",
+      "logSHA256": "84433ac557a5909ed5e1e46ed57838470b2441479e50633aff5f93689757aa24",
+      "bytes": 8408,
+      "tail": "map:    73.50 kB\ndist/client/assets/ShoppingPage-BBxM3ofg.js                  26.30 kB │ gzip:  8.17 kB │ map:    76.07 kB\ndist/client/assets/PlusPaywallPage-BGVGEATd.js               27.63 kB │ gzip:  8.11 kB │ map:    69.20 kB\ndist/client/assets/Button-BcOcj2KF.js                        29.01 kB │ gzip:  9.35 kB │ map:   152.63 kB\ndist/client/assets/vendor-icons-Bl_yltCO.js                  33.93 kB │ gzip:  7.34 kB │ map:    90.38 kB\ndist/client/assets/AuthPage-CT9F03HL.js                      35.96 kB │ gzip: 10.57 kB │ map:   112.02 kB\ndist/client/assets/vendor-query-QBjVy4CQ.js                  42.42 kB │ gzip: 12.92 kB │ map:   155.73 kB\ndist/client/assets/family-meal-planning-api-IzrZ01pS.js      46.72 kB │ gzip: 14.30 kB │ map:    88.21 kB\ndist/client/assets/PlannerPage-DTVDaB-K.js                   61.80 kB │ gzip: 19.41 kB │ map:   208.71 kB\ndist/client/assets/react-DOGaRgXh.js                        127.21 kB │ gzip: 41.57 kB │ map:   712.36 kB\ndist/client/assets/vendor-react-8_e6pVwi.js                 181.96 kB │ gzip: 59.96 kB │ map:   794.35 kB\ndist/client/assets/index-D-6fMfi4.js                        344.35 kB │ gzip: 90.26 kB │ map: 1,065.19 kB\n✓ built in 4.07s\n"
+    },
+    {
+      "command": "VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build",
+      "exitCode": 0,
+      "result": "Baseline ON PASS",
+      "workspaceLog": "work/baseline/build-on.log",
+      "logSHA256": "c4008b04f7ebaa49028ba6a2f868a5a42aba7d79442b6c5769a5cdb5fda77156",
+      "bytes": 8408,
+      "tail": "map:    73.50 kB\ndist/client/assets/ShoppingPage-WPdyrZKc.js                  26.30 kB │ gzip:  8.16 kB │ map:    76.07 kB\ndist/client/assets/PlusPaywallPage-DOOym2nh.js               27.63 kB │ gzip:  8.11 kB │ map:    69.20 kB\ndist/client/assets/Button-CmukqQrt.js                        29.01 kB │ gzip:  9.35 kB │ map:   152.63 kB\ndist/client/assets/vendor-icons-l95eg-KF.js                  35.07 kB │ gzip:  7.53 kB │ map:    93.64 kB\ndist/client/assets/AuthPage-DaRWO_Ur.js                      35.96 kB │ gzip: 10.57 kB │ map:   112.02 kB\ndist/client/assets/vendor-query-DPpZBWpS.js                  42.42 kB │ gzip: 12.92 kB │ map:   155.73 kB\ndist/client/assets/family-meal-planning-BAvhFzSY.js          47.58 kB │ gzip: 14.60 kB │ map:    91.71 kB\ndist/client/assets/PlannerPage-CcKXLJ1c.js                   91.71 kB │ gzip: 27.47 kB │ map:   255.53 kB\ndist/client/assets/react-B9dMyZ5r.js                        127.21 kB │ gzip: 41.57 kB │ map:   712.36 kB\ndist/client/assets/vendor-react-8_e6pVwi.js                 181.96 kB │ gzip: 59.96 kB │ map:   794.35 kB\ndist/client/assets/index-aTz1gJHN.js                        344.65 kB │ gzip: 90.32 kB │ map: 1,065.70 kB\n✓ built in 4.50s\n"
+    },
+    {
+      "command": "BRAND_URL=http://127.0.0.1:5230 BRAND_STAGE=before BRAND_OUT=.artifacts/takolio-v1/before node scripts/brand-v3-browser-check.mjs",
+      "exitCode": 0,
+      "result": "Baseline capture 198 screens / 18 pre-existing axe findings; capture does not gate before stage",
+      "workspaceLog": "work/baseline/browser.log",
+      "logSHA256": "72de4d010bdeeb4190cd48b93bd4745cda50bb9b507badc43c2855415c0168f6",
+      "bytes": 5913,
+      "tail": "l/1024: PASS\nbefore saved-weekly-plan/1024: PASS\nbefore daily-planned-home/1024: axe\nbefore planned-meal/1024: PASS\nbefore plan-shopping-budget/1024: PASS\nbefore landing/1440: PASS\nbefore login/1440: PASS\nbefore register/1440: PASS\nbefore verify-missing/1440: PASS\nbefore onboarding-household/1440: PASS\nbefore onboarding-preferences/1440: PASS\nbefore onboarding-goals/1440: PASS\nbefore home/1440: axe\nbefore fridge/1440: PASS\nbefore scan/1440: PASS\nbefore scan-review/1440: PASS\nbefore receipt-review/1440: PASS\nbefore recipes/1440: axe\nbefore recipe-detail/1440: PASS\nbefore planner/1440: PASS\nbefore planner-setup/1440: PASS\nbefore shopping/1440: PASS\nbefore profile/1440: PASS\nbefore preferences/1440: PASS\nbefore household/1440: PASS\nbefore settings/1440: PASS\nbefore planning-settings/1440: PASS\nbefore notification-settings/1440: PASS\nbefore privacy/1440: PASS\nbefore notifications/1440: PASS\nbefore plus/1440: PASS\nbefore cooking/1440: PASS\nbefore nutrition/1440: PASS\nbefore ingredient-detail/1440: PASS\nbefore saved-weekly-plan/1440: PASS\nbefore daily-planned-home/1440: axe\nbefore planned-meal/1440: PASS\nbefore plan-shopping-budget/1440: PASS\nbefore: 198 screens, 18 findings, 2 journeys\n"
+    },
+    {
+      "command": "pnpm lint",
+      "exitCode": 0,
+      "result": "PASS",
+      "workspaceLog": "work/after-lint-complete.log",
+      "logSHA256": "290e79cfb92b0915688046f7a3f234f26b64f79410f10aa0dd07bdd3ddd1391e",
+      "bytes": 129,
+      "tail": "\n> frigo@0.1.0 lint REPO_ROOT\n> eslint .\n\n"
+    },
+    {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "result": "PASS",
+      "workspaceLog": "work/after-typecheck-complete.log",
+      "logSHA256": "0480249daf53df62608924dde61f2642b1983da7a8188ede24d8fdaabb9d1a44",
+      "bytes": 195,
+      "tail": "\n> frigo@0.1.0 typecheck REPO_ROOT\n> tsc -p tsconfig.json --noEmit && tsc -p tsconfig.worker.json --noEmit\n\n"
+    },
+    {
+      "command": "pnpm check:migrations",
+      "exitCode": 0,
+      "result": "PASS",
+      "workspaceLog": "work/after-migrations.log",
+      "logSHA256": "7511976f436ecb96a180ddf3d92f2b200e2b328c476ebe2ae236b74091f34f36",
+      "bytes": 183,
+      "tail": "\n> frigo@0.1.0 check:migrations REPO_ROOT\n> bash scripts/migration-smoke.sh\n\nmigration-smoke=ok\n"
+    },
+    {
+      "command": "pnpm audit --audit-level=high",
+      "exitCode": 0,
+      "result": "PASS: no known vulnerabilities",
+      "workspaceLog": "work/after-audit.log",
+      "logSHA256": "15950a68a7ed99c59779717acefdceb3f69cfd31bde67d2c954f2a3cea4d7955",
+      "bytes": 31,
+      "tail": "No known vulnerabilities found\n"
+    },
+    {
+      "command": "VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build",
+      "exitCode": 0,
+      "result": "PASS",
+      "workspaceLog": "work/after-build-on-complete.log",
+      "logSHA256": "0e0a1c4dcc5fa13e60c3e41c57a708a90a9c9c9c44c8c1c980b6b0f2c102d5a3",
+      "bytes": 8408,
+      "tail": "map:    73.50 kB\ndist/client/assets/ShoppingPage-DybDYYhK.js                  26.30 kB │ gzip:  8.16 kB │ map:    76.07 kB\ndist/client/assets/PlusPaywallPage-CFqOAxFe.js               27.63 kB │ gzip:  8.11 kB │ map:    69.20 kB\ndist/client/assets/Button-DFjxIFUv.js                        29.01 kB │ gzip:  9.35 kB │ map:   152.63 kB\ndist/client/assets/vendor-icons-l95eg-KF.js                  35.07 kB │ gzip:  7.53 kB │ map:    93.64 kB\ndist/client/assets/AuthPage-mShYlqAH.js                      35.96 kB │ gzip: 10.57 kB │ map:   112.02 kB\ndist/client/assets/vendor-query-DPpZBWpS.js                  42.42 kB │ gzip: 12.92 kB │ map:   155.73 kB\ndist/client/assets/family-meal-planning-BaFHBjn1.js          47.58 kB │ gzip: 14.60 kB │ map:    91.71 kB\ndist/client/assets/PlannerPage-ChVhoYvh.js                   91.71 kB │ gzip: 27.46 kB │ map:   255.53 kB\ndist/client/assets/react-D2lplGYL.js                        127.21 kB │ gzip: 41.57 kB │ map:   712.36 kB\ndist/client/assets/vendor-react-8_e6pVwi.js                 181.96 kB │ gzip: 59.96 kB │ map:   794.35 kB\ndist/client/assets/index-AmnR4vlY.js                        344.82 kB │ gzip: 90.16 kB │ map: 1,066.17 kB\n✓ built in 4.42s\n"
+    },
+    {
+      "command": "VITE_MEAL_PLANNER_ENABLED=false VITE_MEAL_COMPOSITION_V2_ENABLED=false pnpm build",
+      "exitCode": 0,
+      "result": "PASS",
+      "workspaceLog": "work/after-build-off.log",
+      "logSHA256": "88317b5776ecdf401883b304fef5f1a7b85b4981c22913e21aae519727638c0f",
+      "bytes": 8408,
+      "tail": "map:    73.50 kB\ndist/client/assets/ShoppingPage-C_wPFQzL.js                  26.30 kB │ gzip:  8.16 kB │ map:    76.07 kB\ndist/client/assets/PlusPaywallPage-D4DnP85h.js               27.63 kB │ gzip:  8.11 kB │ map:    69.20 kB\ndist/client/assets/Button-BxfLk5Jt.js                        29.01 kB │ gzip:  9.35 kB │ map:   152.63 kB\ndist/client/assets/vendor-icons-Bl_yltCO.js                  33.93 kB │ gzip:  7.34 kB │ map:    90.38 kB\ndist/client/assets/AuthPage-D12qQrGH.js                      35.96 kB │ gzip: 10.57 kB │ map:   112.02 kB\ndist/client/assets/vendor-query-QBjVy4CQ.js                  42.42 kB │ gzip: 12.92 kB │ map:   155.73 kB\ndist/client/assets/family-meal-planning-api-BG2oLffz.js      46.72 kB │ gzip: 14.30 kB │ map:    88.21 kB\ndist/client/assets/PlannerPage-MH4A2F4G.js                   61.80 kB │ gzip: 19.41 kB │ map:   208.71 kB\ndist/client/assets/react-DoY79uw7.js                        127.21 kB │ gzip: 41.57 kB │ map:   712.36 kB\ndist/client/assets/vendor-react-8_e6pVwi.js                 181.96 kB │ gzip: 59.96 kB │ map:   794.35 kB\ndist/client/assets/index-BExxxsU7.js                        344.53 kB │ gzip: 90.14 kB │ map: 1,065.71 kB\n✓ built in 5.48s\n"
+    },
+    {
+      "command": "TMPDIR=/private/tmp pnpm test --maxWorkers=2",
+      "exitCode": 1,
+      "result": "Retained failure: 11 stale V3 asset expectations in two suites",
+      "workspaceLog": "work/after-full-test.log",
+      "logSHA256": "addf5124463b5cde450fb251bb602b98505f9ab3a91ed06b85d3547d499b018b",
+      "bytes": 11282,
+      "tail": "te-none');\n     30|   });\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/11]⎯\n\n FAIL  tests/unit/ui09-system-states.test.tsx > UI09 system presentation preserves session gates > withholds children while verifying and renders one branded busy heading\nAssertionError: expected '/takolio/v1/logo/symbol-micro.svg' to be '/takosan/v3/logo/horizontal-primary.s…' // Object.is equality\n\nExpected: \"/takosan/v3/logo/horizontal-primary.svg\"\nReceived: \"/takolio/v1/logo/symbol-micro.svg\"\n\n ❯ tests/unit/ui09-system-states.test.tsx:73:60\n     71|     expect(host.querySelectorAll('h1')).toHaveLength(1);\n     72|     expect(host.querySelector('main')?.getAttribute('aria-busy')).toBe…\n     73|     expect(host.querySelector('img')?.getAttribute('src')).toBe('/tako…\n       |                                                            ^\n     74|     expect(host.querySelector('[role=status]')?.textContent).toContain…\n     75|   });\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/11]⎯\n\n\n Test Files  2 failed | 361 passed (363)\n      Tests  11 failed | 8459 passed (8470)\n   Start at  01:27:49\n   Duration  490.91s (transform 7.93s, setup 2.24s, import 52.17s, tests 858.28s, environment 14.90s)\n\n ELIFECYCLE  Test failed. See above for more details.\n"
+    },
+    {
+      "command": "pnpm exec vitest run tests/unit/ui08-route-scope.test.tsx tests/unit/ui09-system-states.test.tsx",
+      "exitCode": 0,
+      "result": "PASS: 2 files / 23 tests",
+      "workspaceLog": "work/after-stale-tests.log",
+      "logSHA256": "ed60bb822b367d4bcaaeb85c1419ab0fee1d95241d3d1872d98a50e0eb4ad169",
+      "bytes": 285,
+      "tail": "\n RUN  v4.1.11 REPO_ROOT\n\n\n Test Files  2 passed (2)\n      Tests  23 passed (23)\n   Start at  01:39:21\n   Duration  914ms (transform 589ms, setup 34ms, import 860ms, tests 72ms, environment 230ms)\n\n"
+    },
+    {
+      "command": "TMPDIR=/private/tmp pnpm test --maxWorkers=2",
+      "exitCode": 0,
+      "result": "PASS: 363 files / 8470 tests, 466.68s",
+      "workspaceLog": "work/after-full-test-final.log",
+      "logSHA256": "98eee4e5082118becb502740fd0dc94ec4826cb445199e6e84cfabf6f2de6e99",
+      "bytes": 1052,
+      "tail": "\n> frigo@0.1.0 test REPO_ROOT\n> vitest run --maxWorkers=2\n\n\n RUN  v4.1.11 REPO_ROOT\n\nFAMILY_BOUNDS {\"count\":7,\"milliseconds\":1078,\"evaluations\":822,\"poolBuilds\":137,\"complete\":7,\"candidateEvaluations\":4273,\"candidateWork\":4273,\"searchLimited\":false}\nFAMILY_BOUNDS {\"count\":14,\"milliseconds\":2439,\"evaluations\":1746,\"poolBuilds\":325,\"complete\":14,\"candidateEvaluations\":9898,\"candidateWork\":9898,\"searchLimited\":false}\nFAMILY_BOUNDS {\"count\":42,\"milliseconds\":5912,\"evaluations\":3211,\"poolBuilds\":813,\"complete\":42,\"candidateEvaluations\":24438,\"candidateWork\":24438,\"searchLimited\":false}\nNATIVE_FAMILY_WEEK {\"slots\":14,\"milliseconds\":2237,\"catalog\":500,\"replay\":true,\"stockUnchanged\":true}\n\n Test Files  363 passed (363)\n      Tests  8470 passed (8470)\n   Start at  01:39:49\n   Duration  466.68s (transform 7.25s, setup 2.23s, import 50.32s, tests 812.64s, environment 15.04s)\n\n"
+    },
+    {
+      "command": "pnpm test tests/unit/takolio-brand.test.mjs tests/unit/brand-v3.test.mjs tests/unit/takosan-brand.test.tsx tests/unit/ui07-brand-exports.test.mjs tests/unit/ui07-brand-shell.test.tsx --maxWorkers=2",
+      "exitCode": 0,
+      "result": "PASS: 5 files / 49 tests",
+      "workspaceLog": "work/after-focused-final2.log",
+      "logSHA256": "ee499c81cc8b3052cae2ea53e7f6b9fcf0eaa7000df01a8355721223f4790e75",
+      "bytes": 605,
+      "tail": "\n> frigo@0.1.0 test REPO_ROOT\n> vitest run tests/unit/takolio-brand.test.mjs tests/unit/brand-v3.test.mjs tests/unit/takosan-brand.test.tsx tests/unit/ui07-brand-exports.test.mjs tests/unit/ui07-brand-shell.test.tsx --maxWorkers=2\n\n\n RUN  v4.1.11 REPO_ROOT\n\n\n Test Files  5 passed (5)\n      Tests  49 passed (49)\n   Start at  01:27:34\n   Duration  14.00s (transform 589ms, setup 59ms, import 1.06s, tests 14.44s, environment 0ms)\n\n"
+    },
+    {
+      "command": "pnpm brand:icons",
+      "exitCode": 0,
+      "result": "PASS: 70 outputs",
+      "workspaceLog": "work/after-generator-final.log",
+      "logSHA256": "7977bdbb64f955a914a5e8219dde81507123d3c07d4f62ea5cad6bf9275ac188",
+      "bytes": 190,
+      "tail": "\n> frigo@0.1.0 brand:icons REPO_ROOT\n> node scripts/generate-takolio-brand.mjs\n\nTakolio V1 exports: 70\n"
+    },
+    {
+      "command": "BRAND_URL=http://127.0.0.1:5242 BRAND_STAGE=after BRAND_OUT=.artifacts/takolio-v1/final node scripts/takolio-browser-check.mjs",
+      "exitCode": 1,
+      "result": "198 screenshots retained; 1 transient scan-review axe finding",
+      "workspaceLog": "work/after-browser-final.log",
+      "logSHA256": "4ed8048210db4179f0d567b307f5641beacc95c004a9bf6cdefbda2449a0eb38",
+      "bytes": 6298,
+      "tail": "ipe-detail/1440: PASS\nafter planner/1440: PASS\nafter planner-setup/1440: PASS\nafter shopping/1440: PASS\nafter profile/1440: PASS\nafter preferences/1440: PASS\nafter household/1440: PASS\nafter settings/1440: PASS\nafter planning-settings/1440: PASS\nafter notification-settings/1440: PASS\nafter privacy/1440: PASS\nafter notifications/1440: PASS\nafter plus/1440: PASS\nafter cooking/1440: PASS\nafter nutrition/1440: PASS\nafter ingredient-detail/1440: PASS\nafter saved-weekly-plan/1440: PASS\nafter daily-planned-home/1440: PASS\nafter planned-meal/1440: PASS\nafter plan-shopping-budget/1440: PASS\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: See observations.json for actual failures\n+ actual - expected\n\n+ [\n+   {\n+     kind: 'axe',\n+     name: 'scan-review',\n+     width: 1024\n+   }\n+ ]\n- []\n\n    at file://REPO_ROOT/scripts/takolio-browser-check.mjs:170:32 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: [ { name: 'scan-review', width: 1024, kind: 'axe' } ],\n  expected: [],\n  operator: 'deepStrictEqual',\n  diff: 'simple'\n}\n\nNode.js v25.9.0\n"
+    },
+    {
+      "command": "BRAND_URL=http://127.0.0.1:5242 BRAND_STAGE=after BRAND_WIDTH=1024 BRAND_SCREEN=scan-review BRAND_OUT=.artifacts/takolio-v1/scan-review-recheck node scripts/takolio-browser-check.mjs",
+      "exitCode": 0,
+      "result": "PASS: 1 screen / 0 findings / 2 journeys",
+      "workspaceLog": "work/after-scan-recheck.log",
+      "logSHA256": "1cbf342a1cbb9311964bf9933f6d4c055969923ec7bfe0241505a6ce84b765b0",
+      "bytes": 70,
+      "tail": "after scan-review/1024: PASS\nafter: 1 screens, 0 findings, 2 journeys\n"
+    },
+    {
+      "command": "BRAND_URL=http://127.0.0.1:5245 BRAND_STAGE=after BRAND_SCREEN=shopping BRAND_OUT=.artifacts/takolio-v1/shopping-recheck node scripts/takolio-browser-check.mjs",
+      "exitCode": 0,
+      "result": "PASS: 6 screens / 0 findings / 2 journeys",
+      "workspaceLog": "work/after-shopping-recheck.log",
+      "logSHA256": "bb708df18fbed5a824b84e7db3f1ec172d79bbcde7b36b0b969e67a410290f07",
+      "bytes": 193,
+      "tail": "after shopping/320: PASS\nafter shopping/375: PASS\nafter shopping/390: PASS\nafter shopping/768: PASS\nafter shopping/1024: PASS\nafter shopping/1440: PASS\nafter: 6 screens, 0 findings, 2 journeys\n"
+    },
+    {
+      "command": "BRAND_URL=http://127.0.0.1:5244 BRAND_OUT=.artifacts/takolio-v1/states node scripts/brand-v3-state-check.mjs",
+      "exitCode": 0,
+      "result": "PASS: 15 checks / 2 journeys",
+      "workspaceLog": "work/after-states.log",
+      "logSHA256": "4d9ae4a651be5d1cd98589ec70022c48bfa9f6a32dfd677e0e117a8a675da031",
+      "bytes": 384,
+      "tail": "home-320-844-text2: PASS\nfridge-320-844-text2: PASS\nrecipes-320-844-text2: PASS\nsettings-320-844-text2: PASS\nhome-768-1000-text2: PASS\nfridge-768-1000-text2: PASS\nrecipes-768-1000-text2: PASS\nsettings-768-1000-text2: PASS\nhome-390-420: PASS\nfridge-390-420: PASS\nrecipes-390-420: PASS\nsettings-390-420: PASS\ninventory-error-320: PASS\ncooking-review-320: PASS\ncooking-success-320: PASS\n"
+    },
+    {
+      "command": "BRAND_URL=http://127.0.0.1:5246 BRAND_FLAG_OFF=true BRAND_OUT=.artifacts/takolio-v1/flags-off node scripts/brand-v3-state-check.mjs",
+      "exitCode": 0,
+      "result": "PASS: 12 checks",
+      "workspaceLog": "work/after-flags-off.log",
+      "logSHA256": "ed21a101df08c4fab9490023cddcf4d2684bccf0cf8f691f050475e66a5cc19a",
+      "bytes": 256,
+      "tail": "week-empty-320: PASS\nweek-setup-320: PASS\nweek-empty-375: PASS\nweek-setup-375: PASS\nweek-empty-390: PASS\nweek-setup-390: PASS\nweek-empty-768: PASS\nweek-setup-768: PASS\nweek-empty-1024: PASS\nweek-setup-1024: PASS\nweek-empty-1440: PASS\nweek-setup-1440: PASS\n"
+    },
+    {
+      "command": "BRAND_URL=http://127.0.0.1:5245 BRAND_OUT=.artifacts/takolio-v1/pwa-final node scripts/takolio-pwa-check.mjs",
+      "exitCode": 0,
+      "result": "PASS: 3 checks",
+      "workspaceLog": "work/after-pwa-final.log",
+      "logSHA256": "f5042bbb911be67d75a00046dc238df729f857ab4e82560324238039f1125c08",
+      "bytes": 19,
+      "tail": "PWA: 3 checks PASS\n"
+    },
+    {
+      "command": "BRAND_PORT=5243 pnpm exec playwright test --config playwright.takolio.config.ts",
+      "exitCode": 1,
+      "result": "Retained 92 PASS / 2 onboarding test synchronization failures",
+      "workspaceLog": "work/after-e2e.log",
+      "logSHA256": "6034b0e3c06650e3a9e2d0b6bbfcbe9d0b423ba370db5f4051dae2a57d3dd51b",
+      "bytes": 21544,
+      "tail": "eAttribute('data-expiry-kind', 'ESTIMATED');\n      110 |   await expect(chip.first()).toHaveText(/Ước tính còn \\d+ ngày|Ước tính hết hạn hôm nay/);\n      111 |   // No ESTIMATED chip anywhere renders the bare KNOWN countdown form.\n        at REPO_ROOT/tests/e2e/t13r-b-presentation.e2e.ts:108:30\n\n    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────\n    .artifacts/takolio-v1/e2e/t13r-b-presentation.e2e.ts-ef311-nd-no-unqualified-countdown-desktop-1440/test-failed-1.png\n    ────────────────────────────────────────────────────────────────────────────────────────────────\n\n    Error Context: .artifacts/takolio-v1/e2e/t13r-b-presentation.e2e.ts-ef311-nd-no-unqualified-countdown-desktop-1440/error-context.md\n\n  2 failed\n    [mobile-390] › tests/e2e/t13r-b-presentation.e2e.ts:91:1 › C Home shows an explicit estimate qualifier for an ESTIMATED expiry and no unqualified countdown \n    [desktop-1440] › tests/e2e/t13r-b-presentation.e2e.ts:91:1 › C Home shows an explicit estimate qualifier for an ESTIMATED expiry and no unqualified countdown \n  92 passed (6.7m)\n"
+    },
+    {
+      "command": "BRAND_PORT=5243 pnpm exec playwright test --config playwright.takolio.config.ts tests/e2e/t13r-b-presentation.e2e.ts --grep 'C Home'",
+      "exitCode": 0,
+      "result": "PASS: 2/2",
+      "workspaceLog": "work/after-e2e-recheck.log",
+      "logSHA256": "bb7e00a51514794c529656229b81e5e6d04e9db639c2caa5db6dbc2349511dc0",
+      "bytes": 987,
+      "tail": "[WebServer] (node:18834) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)\n[WebServer] WebSocket server error: Port 24678 is already in use\n\nRunning 2 tests using 1 worker\n\n(node:19138) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n  ✓  1 [mobile-390] › tests/e2e/t13r-b-presentation.e2e.ts:91:1 › C Home shows an explicit estimate qualifier for an ESTIMATED expiry and no unqualified countdown (1.0s)\n(node:19425) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n  ✓  2 [desktop-1440] › tests/e2e/t13r-b-presentation.e2e.ts:91:1 › C Home shows an explicit estimate qualifier for an ESTIMATED expiry and no unqualified countdown (1.0s)\n\n  2 passed (5.1s)\n"
+    },
+    {
+      "command": "BRAND_PORT=5243 BRAND_BUILD_ROOT=.artifacts/takolio-v1/after-on-complete pnpm exec playwright test --config playwright.takolio.config.ts",
+      "exitCode": 0,
+      "result": "PASS: 94/94, 6.3 minutes",
+      "workspaceLog": "work/after-e2e-final.log",
+      "logSHA256": "7d125e655c6e8f287e36a1dd3d2711d83219d361c46ac249f98db5fbdb0b15b4",
+      "bytes": 16710,
+      "tail": "2e/t20-composition.e2e.ts:257:1 › F: D1-only recipe resolves consistently through planner, detail, cooking and shopping reads (3.6s)\n  ✓  88 [desktop-1440] › tests/e2e/t20-composition.e2e.ts:278:1 › G: two sessions submit competing edits; stale write conflicts and canonical winner survives (4.6s)\n  ✓  89 [desktop-1440] › tests/e2e/t20-composition.e2e.ts:307:1 › load failure and retry never substitute a stale V1 anchor on week or meal (5.1s)\n  ✓  90 [desktop-1440] › tests/e2e/t20-composition.e2e.ts:335:3 › E: forbidden household rejects Manual and Auto fails closed without saving (2.9s)\n  ✓  91 [desktop-1440] › tests/e2e/t20-composition.e2e.ts:335:3 › E: dietary household rejects Manual and Auto fails closed without saving (3.0s)\n  ✓  92 [desktop-1440] › tests/e2e/t20-composition.e2e.ts:335:3 › E: nutrition household rejects Manual and Auto fails closed without saving (2.9s)\n  ✓  93 [desktop-1440] › tests/e2e/t20-composition.e2e.ts:362:1 › D: untracked fruit remains explicit in shopping and week summaries (5.9s)\n  ✓  94 [desktop-1440] › tests/e2e/t20-composition.e2e.ts:376:1 › H: a warm V2 week cache gives way to V1 when server composition routes turn off (4.0s)\n\n  94 passed (6.3m)\n"
+    },
+    {
+      "command": "node scripts/takolio-inventory.mjs",
+      "exitCode": 0,
+      "result": "PASS: baseline112 / remaining25 locations / 21 consumer entries",
+      "workspaceLog": "work/occurrence-audit-final.log",
+      "logSHA256": "178c73169a53784fb6494eead4cbae887eae03591475a9fbfae82623fcf6ae83",
+      "bytes": 11494,
+      "tail": "\n    {\n      \"consumer\": \"src/web/design-system/navigation.tsx\",\n      \"contract\": \"../lib/takosan-kitchen\"\n    },\n    {\n      \"consumer\": \"src/web/features/auth/AuthShell.tsx\",\n      \"contract\": \"../../lib/takosan-kitchen\"\n    },\n    {\n      \"consumer\": \"src/web/lib/takosan-brand.ts\",\n      \"contract\": \"./takolio-brand\"\n    },\n    {\n      \"consumer\": \"src/web/lib/takosan-brand.ts\",\n      \"contract\": \"./takolio-brand\"\n    },\n    {\n      \"consumer\": \"src/web/lib/takosan-kitchen.ts\",\n      \"contract\": \"./takosan-brand\"\n    },\n    {\n      \"consumer\": \"src/web/pages/CookingModePage.tsx\",\n      \"contract\": \"../lib/takosan-kitchen\"\n    },\n    {\n      \"consumer\": \"src/web/pages/LandingPage.tsx\",\n      \"contract\": \"../lib/takosan-kitchen\"\n    },\n    {\n      \"consumer\": \"src/web/pages/OnboardingPage.tsx\",\n      \"contract\": \"../lib/takosan-kitchen\"\n    },\n    {\n      \"consumer\": \"src/web/pages/PlusPaywallPage.tsx\",\n      \"contract\": \"../lib/takosan-brand\"\n    },\n    {\n      \"consumer\": \"src/web/pages/ReconciliationPage.tsx\",\n      \"contract\": \"../lib/takosan-kitchen\"\n    },\n    {\n      \"consumer\": \"src/web/pages/WeekGeneratingPage.tsx\",\n      \"contract\": \"../lib/takosan-kitchen\"\n    }\n  ]\n}\n"
+    },
+    {
+      "command": "pnpm exec eslint scripts/takolio-inventory.mjs",
+      "exitCode": 0,
+      "result": "PASS",
+      "workspaceLog": "work/after-inventory-lint-final.log",
+      "logSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "tail": ""
+    },
+    {
+      "command": "python3 ../final-audit.py",
+      "exitCode": 0,
+      "result": "PASS: 294 protected paths / 425 old asset paths unchanged",
+      "workspaceLog": "work/final-audit.log",
+      "logSHA256": "dba31f589a2bc7f37515a765a753885be8eece2b8171c96ff5c5f757d6e4a23b",
+      "bytes": 571,
+      "tail": "{\n  \"baselineSha\": \"03428467cdd5e93d27a3a27e5edaf7d512eef71d\",\n  \"protectedFileCount\": 294,\n  \"protectedPathsUnchanged\": true,\n  \"authLogicUnchanged\": \"two fallback display literals only; exact bytes after approved brand substitution\",\n  \"rootTokenPrefixUnchanged\": true,\n  \"retainedOldAssetCount\": 425,\n  \"retainedOldAssetsUnchanged\": true,\n  \"noZipBoardsPdfNativeMockSources\": true,\n  \"publicFileReview\": \"Selected SVG/spec/token/font artifacts only; explicit key-pattern scan and <3MB per file checked; not a general legal or secret certification\"\n}\nchanged files 201\n"
+    },
+    {
+      "command": "GIT_TERMINAL_PROMPT=0 git -c credential.interactive=false push --dry-run origin feat/takolio-brand-migration-v1",
+      "exitCode": 128,
+      "result": "BLOCKED: unable to get password from user",
+      "workspaceLog": "work/push-dry-run.log",
+      "logSHA256": "df3408a8d5c3d94711c9bfa4361390576571cc8b42c28f477784ffaac922d128",
+      "bytes": 40,
+      "tail": "fatal: unable to get password from user\n"
+    },
+    {
+      "command": "pnpm lint",
+      "exitCode": 0,
+      "result": "PASS after docs/QA script finalization",
+      "workspaceLog": "work/after-docs-lint.log",
+      "logSHA256": "290e79cfb92b0915688046f7a3f234f26b64f79410f10aa0dd07bdd3ddd1391e",
+      "bytes": 129,
+      "tail": "\n> frigo@0.1.0 lint REPO_ROOT\n> eslint .\n\n"
+    },
+    {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "result": "PASS after docs/QA script finalization",
+      "workspaceLog": "work/after-docs-typecheck.log",
+      "logSHA256": "0480249daf53df62608924dde61f2642b1983da7a8188ede24d8fdaabb9d1a44",
+      "bytes": 195,
+      "tail": "\n> frigo@0.1.0 typecheck REPO_ROOT\n> tsc -p tsconfig.json --noEmit && tsc -p tsconfig.worker.json --noEmit\n\n"
+    },
+    {
+      "command": "git diff --cached --check",
+      "exitCode": 2,
+      "result": "Upstream OFL notices retain original CRLF/trailing whitespace only; reviewed exception, not an application error",
+      "workspaceLog": "work/staged-diff-check.log",
+      "logSHA256": "1baed9ae36bff81baa228b4ca0615e083a222dcf711aaed5ff54237f75662ee9",
+      "bytes": 11594,
+      "tail": "R IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING\ndocs/brand/takolio/v1/source/Comfortaa-OFL.txt:92: trailing whitespace.\n+FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM\ndocs/brand/takolio/v1/source/Comfortaa-OFL.txt:93: trailing whitespace.\n+OTHER DEALINGS IN THE FONT SOFTWARE.\ndocs/brand/takolio/v1/source/fonts/Plus-Jakarta-Sans-OFL.txt:21: trailing whitespace.\n+fonts, including any derivative works, can be bundled, embedded, \npublic/takolio/v1/fonts/Plus-Jakarta-Sans-OFL.txt:21: trailing whitespace.\n+fonts, including any derivative works, can be bundled, embedded, \n"
+    }
+  ],
+  "notRun": [
+    "pnpm check aggregate (constituent local gates run individually)",
+    "hosted required validate check (no PR/auth)",
+    "hosted signed-in flows",
+    "native stores and physical-device install",
+    "legal/trademark clearance",
+    "premium 3D finishing"
+  ]
+}

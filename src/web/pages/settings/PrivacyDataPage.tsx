@@ -23,10 +23,10 @@ export const PrivacyDataPage: React.FC = () => {
     <AccountPage title="Quyền riêng tư & dữ liệu" description="Dữ liệu của bạn ở trong tủ lạnh của bạn">
 
       <div className="space-y-4 pb-8">
-        <Section title="Dữ liệu Takosan lưu">
+        <Section title="Dữ liệu Takolio lưu">
           <Surface className="p-4 space-y-2">
             <p className="text-sm text-semantic-text-secondary leading-relaxed">
-              Takosan lưu hồ sơ tài khoản, sở thích ăn uống, nguyên liệu trong tủ, lịch sử quét
+              Takolio lưu hồ sơ tài khoản, sở thích ăn uống, nguyên liệu trong tủ, lịch sử quét
               và thực đơn thuộc hộ gia đình của bạn. Dữ liệu được phân tách theo hộ; các hộ khác
               không nhìn thấy tủ hoặc thực đơn của bạn.
             </p>
@@ -51,7 +51,7 @@ export const PrivacyDataPage: React.FC = () => {
               <span className="min-w-0 leading-relaxed">
                 Quyền thông báo hiện tại:{' '}
                 <strong>{PERMISSION_LABELS[browserPermission] ?? 'không xác định'}</strong>. Bạn đổi
-                quyền này trong cài đặt trình duyệt; Takosan không thể tự bật.
+                quyền này trong cài đặt trình duyệt; Takolio không thể tự bật.
               </span>
             </p>
           </Surface>

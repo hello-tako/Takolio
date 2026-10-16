@@ -175,7 +175,7 @@ export const OtpMode: React.FC<OtpModeProps> = ({
             <div className="flex items-start gap-2">
               <AlertCircle className="w-4 h-4 shrink-0 text-semantic-warning mt-0.5" />
               <p className="leading-relaxed">
-                Hiện Takosan chưa thể chuyển dữ liệu trong tủ khách sang tài khoản mới một cách an
+                Hiện Takolio chưa thể chuyển dữ liệu trong tủ khách sang tài khoản mới một cách an
                 toàn. Bạn vẫn có thể tiếp tục tạo tài khoản: dữ liệu của phiên khách được giữ riêng
                 trên hộ khách, không bị xóa và không được chuyển sang tài khoản mới.
               </p>

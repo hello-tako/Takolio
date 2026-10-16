@@ -261,8 +261,8 @@ export function PlannerShopping({
               <h2>{locale === 'vi' ? 'Chuẩn bị lượt đi chợ' : 'Prepare your shopping trip'}</h2>
               <p>
                 {locale === 'vi'
-                  ? 'Chọn khoảng ngày cần mua. Takosan gom phần còn thiếu của các bữa sắp tới theo tủ lạnh hiện tại.'
-                  : 'Choose the days to shop for. Takosan combines what upcoming meals still need from your current fridge.'}
+                  ? 'Chọn khoảng ngày cần mua. Takolio gom phần còn thiếu của các bữa sắp tới theo tủ lạnh hiện tại.'
+                  : 'Choose the days to shop for. Takolio combines what upcoming meals still need from your current fridge.'}
               </p>
             </div>
           </div>

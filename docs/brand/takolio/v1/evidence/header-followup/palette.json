@@ -1,0 +1,38 @@
+{
+  "syntheticLocalOnly": true,
+  "checks": [
+    {
+      "route": "/landing",
+      "scope": "takosan-rebuild entry-page landing-page",
+      "cream": "#fff8ed",
+      "navy": "#0f2d46",
+      "coral": "#ff6b6b",
+      "font": "\"Plus Jakarta Sans\", system-ui, sans-serif",
+      "headingFont": "Nunito, system-ui, sans-serif",
+      "background": "rgb(255, 248, 237)",
+      "bodyCompatibilityBackground": "rgb(255, 248, 243)"
+    },
+    {
+      "route": "/auth",
+      "scope": "takosan-rebuild entry-page auth-page",
+      "cream": "#fff8ed",
+      "navy": "#0f2d46",
+      "coral": "#ff6b6b",
+      "font": "\"Plus Jakarta Sans\", system-ui, sans-serif",
+      "headingFont": "Nunito, system-ui, sans-serif",
+      "background": "rgb(255, 248, 237)",
+      "bodyCompatibilityBackground": "rgb(255, 248, 243)"
+    },
+    {
+      "route": "/onboarding/household",
+      "scope": "takosan-rebuild entry-page onboarding-page",
+      "cream": "#fff8ed",
+      "navy": "#0f2d46",
+      "coral": "#ff6b6b",
+      "font": "\"Plus Jakarta Sans\", system-ui, sans-serif",
+      "headingFont": "Nunito, system-ui, sans-serif",
+      "background": "rgb(255, 248, 237)",
+      "bodyCompatibilityBackground": "rgb(255, 248, 243)"
+    }
+  ]
+}

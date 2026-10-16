@@ -1,3 +1,41 @@
+# ADR-TAKOLIO-003: render the reviewed 3D candidate as lightweight illustrations - 2026-10-16 JST
+
+**Status:** accepted implementation scope after operator feedback on the genuine Blender candidate. Design acceptance is provisional; premium production approval, concept fidelity and legal clearance are not asserted.
+
+**Decision:** keep the kit's outlined logos, UI icons, PWA/store-prep icons and vector mascot URLs intact. Add six transparent static 3D renders from one procedural Blender master, with state-specific expressions/props, to the single Takolio contract. A presentation component selects responsive raster variants for illustrations >=96 CSS px and retains the existing SVG as an unsupported-format/network fallback. Small uses remain vector. Do not ship a WebGL engine or the high-detail GLB/native file to browsers.
+
+**Adoption:** public landing, login/register presentation, three onboarding steps, unplanned Home and generic non-error EmptyState illustrations. Keep layouts/task actions compact, preserve all callbacks/conditions, and leave protected Plus/payment mascot pointers unchanged. AuthShell changes are decorative markup only; AuthPage, credential/session/OTP/Google logic and Worker are outside scope. Existing logo correction remains authoritative.
+
+**Source/recovery:** procedural construction and pose scripts plus hashed 2048px PNG masters/provenance live in the versioned brand source directory. Native Blender/GLB remain local handoff outputs. The normal pinned Sharp generator creates web variants offline; Blender rendering is an explicit authoring step, not a CI/network dependency. Precache only the preferred raster variants; retain vector/old asset paths and the existing release-aware cache lifecycle. A reviewed follow-up can remove illustration consumers while retaining generated paths for installed clients.
+
+**Limits:** starter rig/weights and facial controls still need production polish. Rendered poses are candidate illustrations, not certification of a complete production animation system. Physical-device, premium finishing and legal/trademark gates remain open.
+
+# ADR-TAKOLIO-002: show the product name throughout the kitchen shell - 2026-10-16 JST
+
+**Status:** accepted corrective presentation change; supersedes the small-header micro-symbol choice in ADR-TAKOLIO-001. The operator reported that Home, Recipes, Planner Setup and Shopping lack the visible Takolio name while entry/onboarding show it. An accessible name alone does not provide visual brand recognition.
+
+**Decision:** reuse the canonical outlined horizontal master at 180 CSS px in the shared kitchen header. For a back-arrow header below 375px, use the existing wordmark at 120px to fit the back, notification and scan controls without shrinking 44px targets. The 640-1023px tablet header retains the horizontal logo while the narrow rail keeps its symbol. At >=1024px the existing 168px rail wordmark owns the name and the header retains its motto. Preserve the master composition, intrinsic aspect ratio and built-in clearspace; no new glyph, asset crop, live-text wordmark or global compactLogo remapping.
+
+**Compatibility:** presentation and its tests only. Existing routes, control destinations, symbols in immersive contexts and dynamically measured sticky-header behavior remain. The shared header also appears on protected Plus chrome: verify its inherited layout without editing payment source or behavior. No new runtime assets, generator, token, auth, business-rule, API, database, flag, workflow or production changes.
+
+**Fidelity limits:** the kit explicitly identifies its Comfortaa-derived glyph outlines as a candidate pending official glyph finishing and its mascot as 2D gradient pending premium 3D finishing. A completed migration/test suite is not 100% concept-board, legal or owner design approval. Reference boards remain visual references only. The kit logo usage document remains the source for variant, clearspace and minimum-size decisions.
+
+---
+
+# ADR-TAKOLIO-001: versioned identity with protected compatibility - 2026-10-16 JST
+
+**Status:** implemented locally; publication/release requires review. Mission `TAKOLIO-BRAND-MIGRATION-V1`.
+
+**Problem:** Takosan V3 contract and asset URLs feed many product screens plus protected payment consumers. A global rename would break persisted/technical identities or change protected systems.
+
+**Decision:** add `/takolio/v1` source/runtime line and one canonical `TAKOLIO_BRAND`; re-export through legacy modules, preserve `.takosan-rebuild`, old asset trees and cache build/lifecycle identifiers. Keep root semantics and payment code byte-identical. Only product-copy literals and scoped presentation change. Two auth fallback literals change without auth behavior edits.
+
+**Kit adaptations:** retain supplied vector wordmark geometry (Comfortaa OFL notice retained as source provenance); UI/heading fonts are Plus Jakarta Sans/Nunito. Outline the kit's live text from pinned legal Plus Jakarta Sans masters. Use compact micro symbols in small headers and wordmark on desktop rail because tagline lockups are unreadable at header sizes. Rebuild true one-ink silhouettes with face knockouts; reverse only navy text, preserving mascot detail. Do not crop reference boards. Supplied art is 2D gradient; premium 3D finishing remains pending. These choices are documented source adaptations, not claims of visual or legal approval.
+
+**Accessibility:** semantic navy CTA and derived green `#276F3F` preserve white text AA. Raw coral/green remain brand accents. Focus/error/warning and root payment semantics stay authoritative. Keep existing router/components and 44px target authority.
+
+**Consequences:** protected payment/Worker strings (25 literal/template locations) remain DEFER. V3 clients keep valid URLs. No schema/data/flag/domain change is needed. Rollback is a reviewed code/metadata revert retaining both asset trees; normal SW build-ID lifecycle advances on separately approved release. See `docs/brand/takolio/v1/` for receipts and exclusions.
+
 # ADR-063 - Compact kitchen presentation and progressive setup (T27)
 
 Date: 2026-10-15. Status: Accepted for local implementation.
@@ -3171,3 +3209,43 @@ Changed family choices receive another key; unchanged uncertain requests retain
 the existing key while the setup remains mounted. A timed-out profile PUT is
 reconciled on explicit retry with a fresh GET and matching newer revision/content.
 Conflicting content requires reload; the browser never blindly overwrites it.
+
+# ADR-TAKOLIO-004: comprehensive visual polish without changing product contracts - 2026-10-16
+
+**Status:** accepted for feature-branch implementation; review required.
+
+## Context
+
+The first Takolio migration establishes the identity contract and compact kitchen
+shell, but browser review found two mobile presentation defects: missing recipe
+media wraps into narrow letter columns and the fixed fridge add action can cover
+the empty-state scan action. The 3D candidate also needs stronger semantic pose
+separation and prop contact before it can be described as a polished illustration
+set.
+
+## Decision
+
+Add one final, scoped Takolio visual layer for `[data-kitchen-density='compact']`
+and entry/onboarding surfaces. It defines spacing, surface, typography, focus and
+motion relationships using existing semantic tokens; it does not create a second
+color authority. Empty and media states gain responsive layout rules while keeping
+existing callbacks, routes and accessible names. The shell's measured action
+reserve remains the source of truth. The empty fridge presents the existing add
+action beside its scan action in document flow and hides the duplicate floating
+control while that empty-state block is visible.
+
+Refine the existing Blender candidate in its authoring source only: pose multiple
+armature segments per state, position cooking/completed props against the body and
+hands, use a local tangent frame for sucker placement, reduce redundant catchlights
+and soften the chef-hat/skin highlight response. The six states remain transparent
+static illustrations with the same contract URLs and SVG fallback. Native Blender
+and GLB files stay local handoff files; no WebGL runtime or new dependency is added.
+
+## Compatibility and limits
+
+No route, API, session, auth, payment, Worker, database, migration, flag, domain,
+persisted identifier, recipe authority or household behavior changes. Existing
+Takolio/V3 assets remain additive and rollback is a feature-branch revert. The
+result remains a 3D candidate until fresh screenshots, asset checks and independent
+review confirm the visual result; premium concept fidelity and legal clearance are
+not asserted.

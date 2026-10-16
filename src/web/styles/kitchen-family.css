@@ -805,7 +805,7 @@
 }
 .family-recipe-coverage {
   font-size: 10px;
-  color: #738176;
+  color: rgb(var(--semantic-text-secondary-rgb));
 }
 .family-setup-heading {
   display: flex;
@@ -954,10 +954,6 @@
   .planning-workspace .kitchen-header,
   .shopping-workspace .kitchen-header {
     gap: 8px;
-  }
-  .planning-workspace .kitchen-brand-link img,
-  .shopping-workspace .kitchen-brand-link img {
-    width: 128px;
   }
 }
 

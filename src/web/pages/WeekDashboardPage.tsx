@@ -61,7 +61,7 @@ export function WeekDashboardPage() {
           <p className="week-eyebrow">BẮT ĐẦU TỪ BẾP NHÀ</p>
           <h2>Chưa có thực đơn tuần</h2>
           <p className="week-muted">
-            Chọn bữa cần nấu, ngân sách và ưu tiên. Takosan sẽ đề xuất thực đơn để bạn xem lại.
+            Chọn bữa cần nấu, ngân sách và ưu tiên. Takolio sẽ đề xuất thực đơn để bạn xem lại.
           </p>
           <Link to="/week/setup" className="week-button">
             Lên thực đơn tuần

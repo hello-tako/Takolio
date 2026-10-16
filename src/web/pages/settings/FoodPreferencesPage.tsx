@@ -133,7 +133,7 @@ export const FoodPreferencesPage: React.FC = () => {
     }`;
 
   return (
-    <AccountPage title="Sở thích & hạn chế" description="Gu món ăn giúp Takosan gợi ý món sát hơn">
+    <AccountPage title="Sở thích & hạn chế" description="Gu món ăn giúp Takolio gợi ý món sát hơn">
 
       {isGuestOffline && (
         <p className="text-xs text-semantic-text-muted mb-3">

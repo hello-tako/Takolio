@@ -37,7 +37,7 @@ describe('auth funnel UI', () => {
       root.render(<MemoryRouter initialEntries={['/auth?mode=register']}><AuthPage /></MemoryRouter>);
       await Promise.resolve();
     });
-    expect(host.textContent).toContain('Tạo tài khoản Takosan');
+    expect(host.textContent).toContain('Tạo tài khoản Takolio');
     expect(host.textContent).toContain('Tạo tài khoản & Nhận mã OTP');
   });
 

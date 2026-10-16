@@ -262,6 +262,8 @@ export const InventoryPage: React.FC = () => {
               description="Hãy bấm quét ảnh tủ lạnh bằng AI hoặc thêm thủ công nguyên liệu bạn vừa mua nhé."
               actionText="Chụp tủ lạnh ngay"
               onAction={() => navigate('/scan')}
+              secondaryActionText="Thêm nguyên liệu"
+              onSecondaryAction={() => setIsAddModalOpen(true)}
             />
           ) : filteredItems.length === 0 ? (
             <div

@@ -1,0 +1,270 @@
+{
+  "checksum_entries": 273,
+  "manifest_entries": 273,
+  "manifest_declared_total": 273,
+  "file_count": 276,
+  "svg_count": 64,
+  "png_count": 161,
+  "errors": [],
+  "svg_risks": [
+    "14_Applications/SVG/takolio-social-square-1080x1080.svg: image",
+    "14_Applications/SVG/takolio-social-square-1080x1080.svg: {http://www.w3.org/1999/xlink}href",
+    "14_Applications/SVG/takolio-social-story-1080x1920.svg: image",
+    "14_Applications/SVG/takolio-social-story-1080x1920.svg: {http://www.w3.org/1999/xlink}href",
+    "14_Applications/SVG/takolio-website-hero-1600x900.svg: image",
+    "14_Applications/SVG/takolio-website-hero-1600x900.svg: {http://www.w3.org/1999/xlink}href",
+    "14_Applications/SVG/takolio-welcome-screen-1080x1920.svg: image",
+    "14_Applications/SVG/takolio-welcome-screen-1080x1920.svg: {http://www.w3.org/1999/xlink}href"
+  ],
+  "app_icon_modes": [
+    {
+      "file": "takolio-android-adaptive-foreground-432.png",
+      "size": [
+        432,
+        432
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "takolio-appicon-coral-1024.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "alpha": null
+    },
+    {
+      "file": "takolio-appicon-coral-128.png",
+      "size": [
+        128,
+        128
+      ],
+      "mode": "RGB",
+      "alpha": null
+    },
+    {
+      "file": "takolio-appicon-coral-256.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGB",
+      "alpha": null
+    },
+    {
+      "file": "takolio-appicon-coral-512.png",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGB",
+      "alpha": null
+    },
+    {
+      "file": "takolio-appicon-coral-64.png",
+      "size": [
+        64,
+        64
+      ],
+      "mode": "RGB",
+      "alpha": null
+    },
+    {
+      "file": "takolio-appicon-cream-1024.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "alpha": null
+    },
+    {
+      "file": "takolio-appicon-cream-128.png",
+      "size": [
+        128,
+        128
+      ],
+      "mode": "RGB",
+      "alpha": null
+    },
+    {
+      "file": "takolio-appicon-cream-256.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGB",
+      "alpha": null
+    },
+    {
+      "file": "takolio-appicon-cream-512.png",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGB",
+      "alpha": null
+    },
+    {
+      "file": "takolio-appicon-cream-64.png",
+      "size": [
+        64,
+        64
+      ],
+      "mode": "RGB",
+      "alpha": null
+    },
+    {
+      "file": "takolio-appicon-navy-1024.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "alpha": null
+    },
+    {
+      "file": "takolio-appicon-navy-128.png",
+      "size": [
+        128,
+        128
+      ],
+      "mode": "RGB",
+      "alpha": null
+    },
+    {
+      "file": "takolio-appicon-navy-256.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGB",
+      "alpha": null
+    },
+    {
+      "file": "takolio-appicon-navy-512.png",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGB",
+      "alpha": null
+    },
+    {
+      "file": "takolio-appicon-navy-64.png",
+      "size": [
+        64,
+        64
+      ],
+      "mode": "RGB",
+      "alpha": null
+    },
+    {
+      "file": "takolio-favicon-128.png",
+      "size": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "takolio-favicon-16.png",
+      "size": [
+        16,
+        16
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "takolio-favicon-256.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "takolio-favicon-32.png",
+      "size": [
+        32,
+        32
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "takolio-favicon-48.png",
+      "size": [
+        48,
+        48
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "takolio-favicon-512.png",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "takolio-favicon-64.png",
+      "size": [
+        64,
+        64
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "takolio-googleplay-512.png",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGB",
+      "alpha": null
+    },
+    {
+      "file": "takolio-ios-1024.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "alpha": null
+    }
+  ]
+}

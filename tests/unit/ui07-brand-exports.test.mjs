@@ -89,16 +89,16 @@ describe('UI07 reproducible digital brand', () => {
   it('manifest, browser links and precache resolve while keeping legacy compatibility assets', async () => {
     const manifest = JSON.parse(await readFile(resolve(root, 'public/manifest.json'), 'utf8'));
     for (const icon of manifest.icons) {
-      expect(icon.src.startsWith('/takosan/v3/app-icons/')).toBe(true);
+      expect(icon.src.startsWith('/takolio/v1/app-icons/')).toBe(true);
       const meta = await sharp(publicFile(icon.src)).metadata();
       expect(icon.sizes).toBe(`${meta.width}x${meta.height}`);
     }
     const html = await readFile(resolve(root, 'index.html'), 'utf8');
-    expect(html).toContain('https://frigo.tungjpstore.net/takosan/v3/social/og-1200x630.png');
+    expect(html).toContain('https://frigo.tungjpstore.net/takolio/v1/social/og-1200x630.png');
     expect(html).toContain('og:image:alt');
     const sw = await readFile(resolve(root, 'public/sw.js'), 'utf8');
     for (const name of ['logo/horizontal-primary.svg', 'logo/symbol-primary.svg', 'app-icons/favicon.svg', 'app-icons/icon-192.png', 'app-icons/icon-512.png']) {
-      expect(sw).toContain(`/takosan/v3/${name}`);
+      expect(sw).toContain(`/takolio/v1/${name}`);
     }
     for (const path of ['/takosan/brand/takosan-logo-horizontal-primary.svg', '/takosan/brand/takosan-og.png', '/takosan/app-icons/icon-512.png', '/takosan/mascot/takosan-fridge.svg', '/frigo/brand/wordmark.png']) {
       expect((await readFile(publicFile(path))).length).toBeGreaterThan(0);

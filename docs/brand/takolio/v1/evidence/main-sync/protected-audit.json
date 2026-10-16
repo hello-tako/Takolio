@@ -1,0 +1,11 @@
+{
+  "baselineSha": "f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1",
+  "protectedFileCount": 294,
+  "protectedPathsUnchanged": true,
+  "authLogicUnchanged": "two fallback display literals only; exact bytes after approved brand substitution",
+  "rootTokenPrefixUnchanged": true,
+  "retainedOldAssetCount": 425,
+  "retainedOldAssetsUnchanged": true,
+  "noZipBoardsPdfNativeMockSources": true,
+  "publicFileReview": "Selected SVG/spec/token/font artifacts only; explicit key-pattern scan and <3MB per file checked; not a general legal or secret certification"
+}

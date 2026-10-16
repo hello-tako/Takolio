@@ -13,13 +13,23 @@
 }
 .kitchen-brand-link {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   min-height: 44px;
 }
+.kitchen-brand-link picture {
+  display: block;
+  width: 180px;
+}
 .kitchen-brand-link img {
-  width: 168px;
-  max-width: 100%;
+  display: block;
+  width: 100%;
   height: auto;
+}
+@media (max-width: 374px) {
+  .kitchen-header-with-back .kitchen-brand-link picture {
+    width: 120px;
+  }
 }
 .kitchen-brand-motto {
   display: none;

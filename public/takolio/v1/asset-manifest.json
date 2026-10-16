@@ -1,0 +1,440 @@
+{
+  "generator": "sharp 0.35.5; offline pinned SVG/path and 3D PNG masters",
+  "files": [
+    {
+      "path": "logo/primary.svg",
+      "bytes": 15086,
+      "sha256": "e20955fcf7482cd2676d795e19b30129edabcd3235479c7f97ed6743572419d7"
+    },
+    {
+      "path": "logo/horizontal-primary.svg",
+      "bytes": 14424,
+      "sha256": "77a37be66e9dd91e943ec8c82a53371c641eabafffb8564d2878c1e17e645f79"
+    },
+    {
+      "path": "logo/stacked-primary.svg",
+      "bytes": 6320,
+      "sha256": "fbb8e40c2e24d4fbb85054b5c6ccf25a1ed9793ad40044776c1491e150fee4a4"
+    },
+    {
+      "path": "logo/wordmark-primary.svg",
+      "bytes": 3274,
+      "sha256": "e8b150c284036d9321d6888fd8b3d0d1b998974a967c056835e22c697fd8a81e"
+    },
+    {
+      "path": "logo/wordmark-mono-dark.svg",
+      "bytes": 3273,
+      "sha256": "789a50a4ba89c1f1667f5027aa4d114d192c3f76dfbf773fc17378d93668c34d"
+    },
+    {
+      "path": "logo/wordmark-mono-white.svg",
+      "bytes": 3273,
+      "sha256": "b8c79ff0a646502a3fbc4192de602e13ff09661512d6d88072b73824e173e93c"
+    },
+    {
+      "path": "logo/symbol-primary.svg",
+      "bytes": 3101,
+      "sha256": "1499a9c036e6a2d7daf4cab40f543177cacb5daa0d7758f76d284c4a101964b5"
+    },
+    {
+      "path": "logo/wordmark-on-coral.svg",
+      "bytes": 3323,
+      "sha256": "eb701fec21920c0158f13316b8efb33ceb3911cf81fec80000cbc639155451ae"
+    },
+    {
+      "path": "logo/wordmark-on-cream.svg",
+      "bytes": 3325,
+      "sha256": "2ed0b6b916e4b7f133803fe42b2483fedbfab6391f716689c4e698c3e801fb60"
+    },
+    {
+      "path": "logo/wordmark-on-navy.svg",
+      "bytes": 3323,
+      "sha256": "2ff04538a18777b95c8e277c167dd2297aaa83223a58c9355603ca96a40b31b0"
+    },
+    {
+      "path": "logo/horizontal-reverse.svg",
+      "bytes": 14424,
+      "sha256": "9ce0484068298aa9adbfe2e6f90501de11a01abbdd26f59ad1abe755b60da23d"
+    },
+    {
+      "path": "logo/horizontal-mono-dark.svg",
+      "bytes": 4466,
+      "sha256": "fc75386943b68359c5ad3cadb7c85dc45879d6b2caebb51869e9635d096db31d"
+    },
+    {
+      "path": "logo/horizontal-mono-white.svg",
+      "bytes": 4466,
+      "sha256": "e64edd911908be0ff632d2875a9e1c3681e94795c05a81faf307de326d6d5dfd"
+    },
+    {
+      "path": "logo/stacked-reverse.svg",
+      "bytes": 6320,
+      "sha256": "13eb20649b7164d1715e8855a826f6ad0896deb443d1e59937b051affe763b40"
+    },
+    {
+      "path": "logo/stacked-mono-dark.svg",
+      "bytes": 4470,
+      "sha256": "cea5056303b0b89eccd37d3f94a0f38a7550b338f4f59d872151a8e82ffcaa47"
+    },
+    {
+      "path": "logo/stacked-mono-white.svg",
+      "bytes": 4470,
+      "sha256": "6ea2689e2df0b0b8442411989081a81a6937f202ea11ccf511ea43a8a04da881"
+    },
+    {
+      "path": "logo/symbol-micro.svg",
+      "bytes": 1128,
+      "sha256": "658950332be743f440f639e4e821e6718b86327125f7674005f1829c4cc4c874"
+    },
+    {
+      "path": "mascot/tako-welcome.svg",
+      "bytes": 4639,
+      "sha256": "cb9d7f8f745b2a521ba8ba7597a96dfbfceece42d14f0d95388fbaf69d7f4ebf"
+    },
+    {
+      "path": "mascot/tako-cooking.svg",
+      "bytes": 5829,
+      "sha256": "1091ccdf496b87235cbaf884e0652c5fd083885d5a8c790845b6197fa2bce844"
+    },
+    {
+      "path": "mascot/tako-thinking.svg",
+      "bytes": 5233,
+      "sha256": "03c30f53b780c7122e74625ef1134c193fbbbbda5c44c14f6bc1d466bd1f0ea9"
+    },
+    {
+      "path": "mascot/tako-excited.svg",
+      "bytes": 4730,
+      "sha256": "dbdaa7045bf3e168ee2ab780cebbfca8272ab4804762347c7d9907a5a2456dbb"
+    },
+    {
+      "path": "mascot/tako-completed.svg",
+      "bytes": 5559,
+      "sha256": "afe3ec6c0382bc3fffdac1d63dad5ab3bb1847a72a28dd7336af12e063dd9fa4"
+    },
+    {
+      "path": "mascot/tako-cheering.svg",
+      "bytes": 4835,
+      "sha256": "73b3de68102150e646f6920e6c2c7ddfcc9452093793cfa33a3b3fb8630884db"
+    },
+    {
+      "path": "mascot/tako-master-front.svg",
+      "bytes": 4639,
+      "sha256": "cb9d7f8f745b2a521ba8ba7597a96dfbfceece42d14f0d95388fbaf69d7f4ebf"
+    },
+    {
+      "path": "mascot/tako-mascot-side.svg",
+      "bytes": 4457,
+      "sha256": "ba0e96daf223f401b28ea64d6a592856a1f7236b6e6f959b8ff592b7ca6cdf2c"
+    },
+    {
+      "path": "mascot/tako-mascot-back.svg",
+      "bytes": 3746,
+      "sha256": "3905e1720821ca75baa159c33215d7b69f71e98dea484c7a39f7394335d5e8fa"
+    },
+    {
+      "path": "mascot/tako-mascot-three-quarter.svg",
+      "bytes": 4667,
+      "sha256": "e3a1ce1de47696c4bd4aae9072cd41d855fad8762897278fd4f117f9c4ea3025"
+    },
+    {
+      "path": "ui-icons/ai-suggestion.svg",
+      "bytes": 401,
+      "sha256": "6f4809003a6b288dfa58d002c11c3bb43c918a1a24cf3da060e0166a7810a401"
+    },
+    {
+      "path": "ui-icons/analytics.svg",
+      "bytes": 447,
+      "sha256": "547a504eef51e7d5f7bee075a0bdd85d50f0e3dc959c9ec6bc7dae084b6b7939"
+    },
+    {
+      "path": "ui-icons/calendar.svg",
+      "bytes": 493,
+      "sha256": "0cc3ad2c4ac5b20cce32327a8d9fd707a62ab8299aff0907fe1ca9fa0ba859db"
+    },
+    {
+      "path": "ui-icons/camera.svg",
+      "bytes": 356,
+      "sha256": "c2def4136de5ccbb943803c9790e3debdc1edce993b4c86f0bc3530ee884d2f1"
+    },
+    {
+      "path": "ui-icons/cook.svg",
+      "bytes": 380,
+      "sha256": "5b3ce43424ad7e33903557b51b51adb36caafd0ed99bcf2596dc5d0ac1f72b0c"
+    },
+    {
+      "path": "ui-icons/favorites.svg",
+      "bytes": 325,
+      "sha256": "f3cfd2a2c9fb364d4cf9fe6f1b3ff78376a534197432a16d46b416fe530341b8"
+    },
+    {
+      "path": "ui-icons/filter.svg",
+      "bytes": 421,
+      "sha256": "c159d227fb16db01e7cc466354712ff57fd8b56302e38741c788069222f5df85"
+    },
+    {
+      "path": "ui-icons/fridge.svg",
+      "bytes": 356,
+      "sha256": "49bb7a430d19b8c5ab66d8ccc1302a6ebd96aa15107436c020527910727dca17"
+    },
+    {
+      "path": "ui-icons/history.svg",
+      "bytes": 337,
+      "sha256": "e1854abf5b81a3c47dd3d7a5b4a46d34ed2111e373e056f9b10c53d3cb46d5a0"
+    },
+    {
+      "path": "ui-icons/ingredient.svg",
+      "bytes": 342,
+      "sha256": "e78588d18a1fd32c2a2edd85fd68edfbd7476c9573b206b18bd2451b9c0fd4fc"
+    },
+    {
+      "path": "ui-icons/meal-plan.svg",
+      "bytes": 395,
+      "sha256": "4ace4e5f30776c3b9d434043a6125f4fb54459e7d36febf160272fea1ac06d21"
+    },
+    {
+      "path": "ui-icons/notifications.svg",
+      "bytes": 349,
+      "sha256": "778b64634f9cbe82cbd80f88fa49d3c499b240fb387bcd4e12933e23756528cd"
+    },
+    {
+      "path": "ui-icons/nutrition.svg",
+      "bytes": 418,
+      "sha256": "0e168981ba1a69ffa6a36b1a5597c084eb61c6c4d0d022f6cb0388275b3456af"
+    },
+    {
+      "path": "ui-icons/profile.svg",
+      "bytes": 357,
+      "sha256": "22fa64537c1c5c57557e5d3ca7e4e1e29bee618b400adadecbe78239c73d1951"
+    },
+    {
+      "path": "ui-icons/recipe.svg",
+      "bytes": 403,
+      "sha256": "904a382dfed1854752828217370c64c11be511ab4e1484f97839bc21c554e3fa"
+    },
+    {
+      "path": "ui-icons/scan-label.svg",
+      "bytes": 351,
+      "sha256": "8f08384c78a991db6ab215db454460bc27a98585ed10eeaa10406b54c534c7fa"
+    },
+    {
+      "path": "ui-icons/search.svg",
+      "bytes": 333,
+      "sha256": "fe7bbaf9621c59a1b7ba7e58331456968f7f37111b2c990fd4d724d08a43418f"
+    },
+    {
+      "path": "ui-icons/settings.svg",
+      "bytes": 446,
+      "sha256": "cfa9e5c46772d9b4db3001e5201c8d764258bf88c90a8ca0fc96639bc131172b"
+    },
+    {
+      "path": "ui-icons/shopping.svg",
+      "bytes": 395,
+      "sha256": "c0283b8a5386c1a6b01e56f7468a36abb23aba430b6d929f68ced07b69cbb411"
+    },
+    {
+      "path": "ui-icons/scan-label-reverse.svg",
+      "bytes": 351,
+      "sha256": "1f1ef97ff07a592c738a818299c9f83286a4eaec52139daf0c49d87c1c1ec828"
+    },
+    {
+      "path": "app-icons/icon-master.svg",
+      "bytes": 3273,
+      "sha256": "8b6f4386e2215cdb37bcc0f0865963fad127cbcdb87e42da78c002e1bb652e12"
+    },
+    {
+      "path": "app-icons/icon-maskable.svg",
+      "bytes": 3200,
+      "sha256": "4db6a69bbffaa092f5da115476d72d81924abb4b4b64d60a2a7c20acdb925384"
+    },
+    {
+      "path": "app-icons/favicon.svg",
+      "bytes": 1177,
+      "sha256": "e970731624ccdb1ff44227cff342e06508319c485d31f4c6b132e968b3e1af6c"
+    },
+    {
+      "path": "app-icons/android-adaptive-foreground.svg",
+      "bytes": 3204,
+      "sha256": "c02b9b5b9feda210603f08ed1c7a80a0970ac5402b55cc5418098de8dd6139db"
+    },
+    {
+      "path": "app-icons/android-adaptive-background.svg",
+      "bytes": 147,
+      "sha256": "2cdac35dfdeda0a9b34816b5bfd0cf4a549f5bdd5dcb00d64ee4ff2c5d7cecb9"
+    },
+    {
+      "path": "app-icons/icon-16.png",
+      "bytes": 387,
+      "sha256": "7e82678e660435198819f23f785c5c7cee68c0b76cc2a9ed23dfb3a2283b5e39"
+    },
+    {
+      "path": "app-icons/icon-24.png",
+      "bytes": 560,
+      "sha256": "0810ac177860137b8a1d33238ba6281a148a63663adcab2d9ace01fe764d4a69"
+    },
+    {
+      "path": "app-icons/icon-32.png",
+      "bytes": 746,
+      "sha256": "a8ddc518db087eb96041eb70a51b57cdf9fdbf238a72108c0aeb342816aa98a4"
+    },
+    {
+      "path": "app-icons/icon-48.png",
+      "bytes": 1833,
+      "sha256": "7d93d63a0fc9eca66d4d8ffbabb083986901a42e29cd7ee9d45069f824d89372"
+    },
+    {
+      "path": "app-icons/icon-64.png",
+      "bytes": 2787,
+      "sha256": "1740a0f2dbf59c9461bef4ff18a403df678e3cd084778b5ca736cfeba254777f"
+    },
+    {
+      "path": "app-icons/icon-128.png",
+      "bytes": 6603,
+      "sha256": "d657169dd5c530ffab0d01de47fa8fdc08b6d49f829fddc2db8203e1c3f1a734"
+    },
+    {
+      "path": "app-icons/icon-180.png",
+      "bytes": 9807,
+      "sha256": "e2eab5682f1ad6574cf7b54e8e2f4e2046f30bbefd91f53d217c1230967e9583"
+    },
+    {
+      "path": "app-icons/icon-192.png",
+      "bytes": 10522,
+      "sha256": "c4529ff2dea5f8ddac0e3f5957a2c9debe8d7860b409443212e700ce71dc4d24"
+    },
+    {
+      "path": "app-icons/icon-256.png",
+      "bytes": 14767,
+      "sha256": "d70c04fbb7573af75bc8497bc5065ff3bf9b4bd5d18c9a0693818b4a262d2c63"
+    },
+    {
+      "path": "app-icons/icon-512.png",
+      "bytes": 31708,
+      "sha256": "c2fb3dd2c70dc802044e5db94d22e71a16366a65ce0902069ea9c1ce4126f501"
+    },
+    {
+      "path": "app-icons/icon-maskable-512.png",
+      "bytes": 22422,
+      "sha256": "1f4bc5824bf27909028afc5d067bbda7e9a6d617a15bbf5efb8de79730a36cbf"
+    },
+    {
+      "path": "app-icons/ios-1024.png",
+      "bytes": 68014,
+      "sha256": "d8b5cb564c21d36b625689fba39d4cc2596d30e826290c18b40c36e60397ec7b"
+    },
+    {
+      "path": "app-icons/googleplay-512.png",
+      "bytes": 31708,
+      "sha256": "c2fb3dd2c70dc802044e5db94d22e71a16366a65ce0902069ea9c1ce4126f501"
+    },
+    {
+      "path": "app-icons/android-adaptive-foreground-432.png",
+      "bytes": 20946,
+      "sha256": "3254e7d389c5d78f5e68e0df7620fd62218247aac375404badc9fa9e03cb5195"
+    },
+    {
+      "path": "social/og-1200x630.png",
+      "bytes": 51025,
+      "sha256": "ce41fb439502906a4f509b11f0e8db67ecac70a1c391ba1c198186e8146ba58c"
+    },
+    {
+      "path": "fonts/plus-jakarta-sans-vietnamese-latin-wght.woff2",
+      "bytes": 35180,
+      "sha256": "a435079ca1bd7818134bf75b4c18b9dd9fa0af659d39b47d7cd5d71fb572343b"
+    },
+    {
+      "path": "fonts/Plus-Jakarta-Sans-OFL.txt",
+      "bytes": 4402,
+      "sha256": "995c7199cab65954f545996326755daee7b63cc6b42b06c13da1f9502ab08a99"
+    },
+    {
+      "path": "mascot/3d/tako-welcome-256.webp",
+      "bytes": 10882,
+      "sha256": "fc0e1497399e36767a5e31c9b9e21d6025036d8e1e500770085fa73f39fe5a25"
+    },
+    {
+      "path": "mascot/3d/tako-welcome-512.webp",
+      "bytes": 23326,
+      "sha256": "23e9e0a2ff3dcacc5de3b0d520c96e1ee227955dc04e047ea124204384b42b49"
+    },
+    {
+      "path": "mascot/3d/tako-welcome-1024.webp",
+      "bytes": 50498,
+      "sha256": "48855bb55303bb655766a533137b4968bb01740584a1788fb8332d61bdd443da"
+    },
+    {
+      "path": "mascot/3d/tako-cooking-256.webp",
+      "bytes": 10424,
+      "sha256": "62486f304a5b1441a0bc62d68fa34a5100a0da172420c7f74768354087e17235"
+    },
+    {
+      "path": "mascot/3d/tako-cooking-512.webp",
+      "bytes": 22330,
+      "sha256": "5223bc0d3b9d56ffefb02d05fa9e233c9eb32ec552b1ccdb6d3b7cd4295d0c68"
+    },
+    {
+      "path": "mascot/3d/tako-cooking-1024.webp",
+      "bytes": 48638,
+      "sha256": "d3880fee7c9e64bb5812920ec8b9e4009784747c6c00c80a1494df8bc2e2cc3f"
+    },
+    {
+      "path": "mascot/3d/tako-thinking-256.webp",
+      "bytes": 10990,
+      "sha256": "3c24e7316afcb39e68939741e41f6ce6a7b4d3066eb5ea995abc3b2a12bea767"
+    },
+    {
+      "path": "mascot/3d/tako-thinking-512.webp",
+      "bytes": 23264,
+      "sha256": "4ae51190b52f4d241a2a8d0ac4246fb43837767e58694db47ab0deb964cb83c1"
+    },
+    {
+      "path": "mascot/3d/tako-thinking-1024.webp",
+      "bytes": 50908,
+      "sha256": "a68ccc1f3c2616e8ce5e873178f5c77d9e8dbf1f5db7fa034951d5134eabae82"
+    },
+    {
+      "path": "mascot/3d/tako-excited-256.webp",
+      "bytes": 11418,
+      "sha256": "72a5011c07f51e276ef6aab05f6f584983241ad038890c6f2c106b6d18a4ec81"
+    },
+    {
+      "path": "mascot/3d/tako-excited-512.webp",
+      "bytes": 25144,
+      "sha256": "9241e814fe1e93fb78485e08a2f45e256c94053796236d375510b01b3b44df33"
+    },
+    {
+      "path": "mascot/3d/tako-excited-1024.webp",
+      "bytes": 53138,
+      "sha256": "545eab69a9cb1c7523497a66fb08f1d076568cadefd3d2f0948aa10143f93387"
+    },
+    {
+      "path": "mascot/3d/tako-completed-256.webp",
+      "bytes": 10810,
+      "sha256": "164416f2bb6a08783ac9b89081ca5a46f288984f14c75090551ae99007d76fe9"
+    },
+    {
+      "path": "mascot/3d/tako-completed-512.webp",
+      "bytes": 23224,
+      "sha256": "fff6ea97a967f79b10d9fbf5f114472d921e35736c6351be73be5a781fcc907d"
+    },
+    {
+      "path": "mascot/3d/tako-completed-1024.webp",
+      "bytes": 49522,
+      "sha256": "7438e40c687055ba867e83f19f2851c0e02d542ba6c9dcfd7146ffca6e048816"
+    },
+    {
+      "path": "mascot/3d/tako-cheering-256.webp",
+      "bytes": 11976,
+      "sha256": "510ec01f8d8039e5e5941c5f68f3f6503c867380eec04f275302f1d2d64ab8ed"
+    },
+    {
+      "path": "mascot/3d/tako-cheering-512.webp",
+      "bytes": 25920,
+      "sha256": "f1a11f40312c9b356ce3ac9fe08333e423ded444d489e6cc90609dac649ee05e"
+    },
+    {
+      "path": "mascot/3d/tako-cheering-1024.webp",
+      "bytes": 55034,
+      "sha256": "5d3a37f208127d1adcc96064983afab53b240367e2996972429cc66e3d88a351"
+    }
+  ]
+}

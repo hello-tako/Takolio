@@ -101,8 +101,9 @@ test('C Home shows an explicit estimate qualifier for an ESTIMATED expiry and no
   await page.goto('/onboarding');
   await page.getByRole('button', { name: 'Tiếp tục' }).click();
   await page.getByRole('button', { name: 'Tiếp tục' }).click();
-  await page.getByRole('button', { name: /Bắt đầu với Takosan/ }).click();
-  await expect(page).toHaveURL(/\/onboarding|\/week\/setup|\/$/);
+  await page.getByRole('button', { name: /Bắt đầu với Takolio/ }).click();
+  // Wait for the server-backed completion before navigating away.
+  await expect(page).toHaveURL(/\/week\/setup|\/$/);
   await page.goto('/');
   const chip = page.getByTestId('home-use-soon-expiry').filter({ hasText: /Ước tính/ });
   await expect(chip.first()).toBeVisible();

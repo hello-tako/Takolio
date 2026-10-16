@@ -1,3 +1,136 @@
+# Takolio mascot and full-app visual upgrade checkpoint - 2026-10-16 JST
+
+**Repository:** `lol-vn/Tako-san`, immutable ID `1385308553`, protected main `f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1`, branch `feat/takolio-brand-migration-v1`. Implementation commit `dae71688bde863608a20855b56351ccd51d99c34`. Draft PR: https://github.com/lol-vn/Tako-san/pull/79. Final publication SHA, automatic hosted CI and independent final binding are recorded in the PR and local delivery receipt after this documentation checkpoint; earlier-head CI is not current-head evidence.
+
+**Implementation:** the operator selected both 3D mascot refinement and app-wide presentation work. Six genuine Blender poses have softer materials, smoother hat/eye details, multi-segment/IK silhouettes and attached spoon/bowl props; six 2048px masters generate 18 responsive WebPs. Shared compact styles improve heading rhythm, card spacing, account grouping and Navy-on-Blush navigation (11.6676:1 indicator contrast). Home empty-plan layout, narrow missing-media labels and empty-fridge scan/manual-add actions are readable. Short compact viewports keep navigation in document flow for enlarged text. Landing has responsive copy/actions and a mascot scene. Existing logo/wordmark correction remains. `/plus` is excluded from compact rules and all six matched /plus screenshots are pixel-identical.
+
+**Local verification:** lint, typecheck, audit-high, generator, migration smoke, default/paired ON/OFF builds PASS. Focused 6 files /51 tests PASS; full rerun 365 files /8,479 tests PASS (357.38s wrapper duration); protected synthetic E2E 94/94 PASS. Matched before/after 198 screens per side, six widths 320/375/390/768/1024/1440, zero after axe findings/page errors/broken assets/overflow; mascot 72, stress 24, PWA 3, states 15 and flags OFF 12 PASS. Exact argv/environment/exit/log hashes and current observations are in `docs/brand/takolio/v1/evidence/upgrade/`. Normal browser/PWA checks retain CSP; synthetic font stress alone bypasses CSP for test injection. No production login, OTP delivery or real payment settlement was used.
+
+**Retained failure:** the first full run had 8,478 passes and one unchanged Wrangler local test exceeding 5s under concurrent load. The affected 32-test file passed separately, then the full unchanged suite passed after heavy browser/render work finished. No test timeout/assertion/config was weakened. Intermediate render, font-harness, route-capture and unsupported outDir failures remain local evidence, not acceptance results.
+
+**Independent review/protection:** the separate read-only reviewer found no open concrete code/design/security findings in the implementation or matched sheets; implementation source matches its reviewed snapshot `9a3511173e4c822b8588f7c0d9483a6a077c57dfcd44ce3546b7a7c2042aeffb`. Final published-head binding is still required. All 299 audited protected files and 54 V3 assets are byte-identical to follow-up baseline `0db4ce2f4c5823eaf7fd085921e3b3a7ba0d8608` ; 69 prior Takolio runtime entries unchanged, 18 WebPs updated, 87 entries/996,320 bytes total. No PayOS/payment/auth logic, Worker, database/migration, household/inventory/Week/recipe authority, flags, domain, persisted-ID or workflow edit. Database state is unchanged outside disposable local fixtures.
+
+**Limits/next:** `3D_CANDIDATE_REVIEW_REQUIRED` and `PREMIUM_MASCOT_FINISHING_PENDING`; no 100% concept/premium/legal/native-release claim. Full production facial/deformation/grip finishing, legal/trademark clearance, physical-device installs and hosted signed-in/offline household-data acceptance remain open. 25 protected legacy source-copy locations remain deferred. Commit documentation/evidence, push feature branch, read automatic exact-head CI, bind independent review, then owner/reviewers inspect draft PR. Revert the follow-up to restore prior presentation/render bytes while retaining both asset trees and existing service-worker release-ID cache rotation. Do not merge/deploy/dispatch/publish/change domains or payment systems.
+
+- [x] Refine six genuine 3D mascot poses and shared compact UI.
+- [x] Run final local gates and preserve failed attempts.
+- [x] Obtain independent implementation/code/design/security review.
+- [ ] Push final feature head and read automatic exact-head CI.
+- [ ] Bind independent final-head review and request owner review; no merge/deploy.
+
+---
+
+# Takolio V1 3D candidate follow-up - 2026-10-16 JST
+
+- [x] Repair heart-badge mesh and rerender the affected welcome/excited masters.
+- [x] Pin six source PNGs, authoring hashes and native handoff provenance.
+- [x] Generate 18 responsive WebP runtime assets with deterministic local Sharp.
+- [x] Integrate the responsive component with SVG/network fallback and preserve protected consumers.
+- [x] Run focused/full tests, lint, types, builds, E2E, mascot matrix, PWA, state and flags-OFF checks.
+- [x] Preserve the first fallback-harness failure and rerun from a clean synthetic auth state.
+- [ ] Commit/push feature branch, refresh draft PR #79, read exact-head hosted CI.
+- [ ] Obtain independent final review binding and owner review; no merge/deploy.
+
+**Scope:** static candidate illustrations and evidence only. PayOS/payment/checkout/webhooks, auth behavior, Worker, data/migrations, recipe/inventory/household/Week compatibility, flags, domains, persisted identifiers and production infrastructure remain protected.
+
+---
+
+# Takolio V1 corrective publication checkpoint - 2026-10-16 JST
+
+**Implementation:** corrective header commit `617c52b3a095227a90e36a10bb08449e1a3ab1c2` is pushed to `feat/takolio-brand-migration-v1`. Canonical repository `lol-vn/Tako-san` (ID `1385308553`), live main `f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1`. PR #79 remains OPEN/DRAFT/MERGEABLE: https://github.com/lol-vn/Tako-san/pull/79. Worktree was clean after the implementation push. This checkpoint only updates publication documentation, the exact interrupted-test command and file hashes.
+
+**Validation:** 363 files / 8,474 tests PASS in 163.49s with bundled Node 24.19.0 and TMPDIR=/private/tmp. Focused 46, matched header 36, PWA 3, states 15, flags-OFF 12, lint, typecheck, migrations, generator and default/ON/OFF builds PASS. Historical failures remain disclosed. Independent corrective code/design/security review has no concrete findings; final documentation-head binding and automatic hosted CI are pending at this checkpoint. Run 38816613109 started automatically on the implementation head; this documentation commit gets its own automatic PR run. No manual workflow dispatch.
+
+**Status/next:** `TAKOLIO_V1_CHANGES_REQUIRED` until the final published head has successful hosted CI and independent binding. Final SHA/check/review receipts will be recorded in the PR body and delivery outputs, avoiding a self-referential commit/hash cycle. Then owner/reviewers inspect the new head and exclusions. The earlier owner approval is retained as reported and is not represented as a GitHub approval of this new head.
+
+**Boundaries:** no new runtime/source/generator/test/CI-workflow/PayOS/auth/Worker/database/migration/flag/domain changes in this checkpoint; no merge or deploy. Header correction changes presentation only; both asset trees and persisted identifiers remain. Candidate glyph, premium 3D, legal/trademark, protected-copy and native/device/hosted-offline gaps remain explicit.
+
+---
+
+# Takolio V1 corrective header task - 2026-10-16 JST
+
+- [x] Reproduce the reported icon-only Home/Recipes/Planner/Shopping header behavior.
+- [x] Map the failure to the deliberate `compactLogo` choice and compare against the supplied logo usage guideline.
+- [x] Use the canonical horizontal/wordmark masters without changing the generator or asset URLs.
+- [x] Verify 36 synthetic screens at six widths, targeted accessibility/overflow/action checks and focused unit tests.
+- [x] Record full-suite result: 363 files / 8,474 tests PASS, bundled Node 24.19.0, TMPDIR=/private/tmp, 163.49s, exit 0.
+- [x] Independent corrective code/design/security review: no concrete findings; 46-test rerun PASS.
+- [ ] Commit/push the verified follow-up and refresh draft PR #79 exact-head checks/review; final delivery receipt records the published head.
+
+**Scope:** shared presentation header only. Payment, auth behavior, Worker, data, migrations, flags, domains and deployment remain protected.
+
+---
+# Takolio V1 final reviewed implementation - 2026-10-16 JST
+
+**Implementation status:** `TAKOLIO_V1_IMPLEMENTED_REVIEW_REQUIRED`. Canonical public repository `lol-vn/Tako-san`, immutable ID `1385308553`; branch `feat/takolio-brand-migration-v1`; refreshed main `f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1`; verified implementation/integration `b5ba0cc2594ef83431693118f92350b6e81674f1`. Worktree was clean after push. Draft PR #79 is OPEN/DRAFT/MERGEABLE: https://github.com/lol-vn/Tako-san/pull/79.
+
+**Hosted verification:** automatic pull-request run `38809062361` is SUCCESS on that exact head: https://github.com/lol-vn/Tako-san/actions/runs/38809062361. Hosted lint/typecheck, all 363 files / 8,473 tests (565.45s), local SQLite migration smoke and web/Worker build PASS. The bounded native RGB rounding guard passes on Ubuntu. No manual workflow dispatch occurred. This documentation-only checkpoint follows the verified integration; its own automatic CI must still be read at the final published head and recorded in the output receipt/PR before completion.
+
+**Independent review:** separate `/root/independent_brand_review` found no concrete code/design/security/compatibility findings on the integration head. It verified 238 ledger hashes, 69 runtime hashes, 17 current log hashes, 425 legacy files and 748 protected paths; root tokens unchanged and auth display literals only. Independent final rerun 4 files / 45 tests PASS (2.00s), log hash `ce14731a61de2bd7250c7bac1aada8b7e8569f9bf0ed2420691a56d5f14479d7`. It reviewed matched mobile/desktop and narrow planner/scan proof. No human GitHub approval is claimed. `evidence/main-sync/` records the receipts.
+
+**Changes/database state:** implementation remains canonical Takolio with preserved compatibility facades/assets and incoming compact UI behavior. This checkpoint only records verified CI/review and refreshes hashes; it does not change runtime, sources, generator, tests or workflows. No production/database/domain/flag/PayOS mutation, deployment or feature-to-main merge. All prior history and failures remain preserved.
+
+**Handoff/next:** wait for automatic CI of the final documentation head; update final receipt/PR with that exact result. Owner/reviewers review the draft, source provenance, visuals and exclusions. Keep 25 protected legacy-copy locations, legal/trademark clearance, premium 3D finishing, native/device and hosted signed-in/offline household-data gaps explicit. Do not merge/deploy/publish a release without separate operator authorization.
+
+---
+
+# Takolio V1 refreshed-main integration - 2026-10-16 JST
+
+**Status:** `TAKOLIO_V1_CHANGES_REQUIRED` pending automatic hosted `validate` on the committed integration head and final independent evidence review. Draft PR #79 remains OPEN/DRAFT: https://github.com/lol-vn/Tako-san/pull/79.
+
+**Repository/base:** `lol-vn/Tako-san`, immutable ID `1385308553`. Initial migration base `03428467cdd5e93d27a3a27e5edaf7d512eef71d`; refreshed live main `f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1` incorporates PR #80. This integration brings that main into the feature branch only; it does not merge the feature into main. Previous pushed feature head is `00befc505c578bfa41e854ed69b0438ad355644f`; this checkpoint records the verified tree before its merge commit exists.
+
+**Changes:** retain incoming compact kitchen structure, setup/shopping copy and interaction behavior; map five compact CSS colors to existing semantic tokens and change new display references to Takolio. Canonical assets, generators and protected systems remain unchanged. Synthetic browser fixture starts tomorrow's valid plan and waits for scan confirmation readiness before checking images. Historical docs from both branches are preserved.
+
+**Executed:** complete local unit suite PASS 363 files / 8,473 tests (571.29s); focused 8 files / 118 PASS; E2E 94/94 PASS (7.1m); lint, typecheck, migration smoke, canonical generator and default/paired ON/OFF builds PASS. Refreshed matched browser evidence: 198 before/after screens at six widths; main has 18 existing axe findings, Takolio after has zero axe findings and one retained transient image race at scan-review/320; focused recheck PASS after the harness wait correction. States 15/15, PWA 3/3 and flags-OFF 12/12 PASS. New proof/log hashes are in `docs/brand/takolio/v1/evidence/main-sync/`.
+
+**Protected/exclusions:** 294 protected files and 425 old asset paths byte-identical to refreshed main; root tokens unchanged, two auth fallback display literals only, 25 protected legacy source-copy locations deferred. No main push, deploy, workflow dispatch, payment/Worker/migration/domain/flag/persisted-ID change. Legal, premium 3D, native/device and authenticated hosted/offline acceptance remain pending.
+
+**Next:** finish feature integration commit/push, confirm draft PR mergeability, wait for automatic exact-head hosted `validate` and independent reviewer inspection of refreshed evidence. Owner review follows; no automatic merge/deploy.
+
+---
+
+# Takolio V1 native raster validation follow-up - 2026-10-16 JST
+
+**Status:** `TAKOLIO_V1_CHANGES_REQUIRED` until the automatic exact-head hosted `validate` succeeds. Draft PR #79 remains open: https://github.com/lol-vn/Tako-san/pull/79.
+
+**Observed failure:** runs `38791694785` and `38791948359` passed lint/typecheck but failed one new brand test (8,469/8,470 passed). The test required committed macOS PNG pixels to exactly match native Linux SVG rasterization; `icon-512.png` differed by one RGB LSB. Same-toolchain double-generation hashes passed. Migration smoke and build were skipped by those failed hosted jobs; prior local results remain separate evidence.
+
+**Correction:** test-only comparison retains exact same-toolchain SHA, committed manifest SHA, all non-PNG source bytes, dimensions/channels/decoded length and alpha. Cross-platform RGB differences must be at most one LSB in no more than floor(width * height * 3 * 0.0001) channels, with no minimum allowance for micro icons. Negative controls reject larger/color-density/alpha/geometry/micro changes. Generator, runtime artwork, application code and CI workflow are unchanged.
+
+**Executed:** `pnpm lint` PASS; `pnpm typecheck` PASS; focused brand suite PASS, five files / 50 tests. The earlier complete local suite remains 8,470 PASS; the added comparator guard is included in this focused run and the forthcoming hosted full run. See `docs/brand/takolio/v1/evidence/portable-raster.json` for log hashes and reproduction limits.
+
+**Next:** independent review of this follow-up, push feature branch only, wait for its automatic hosted validation and owner review. No merge, deployment, dispatch or protected-system change.
+
+---
+
+# Takolio V1 draft published - 2026-10-16 JST
+
+**Status:** `TAKOLIO_V1_IMPLEMENTED_REVIEW_REQUIRED`. Local implementation, local QA and independent code/design/security review complete. Draft PR #79: https://github.com/lol-vn/Tako-san/pull/79. Hosted `validate` runs automatically from the PR; it is pending at this checkpoint and is not claimed PASS.
+
+**Repository/branch:** `lol-vn/Tako-san` (ID `1385308553`); `feat/takolio-brand-migration-v1`; live main remains `03428467cdd5e93d27a3a27e5edaf7d512eef71d`. Implementation `8e81d5d9879f6a8ea22db7cbc232fcf399a354fa`, independently reviewed source/evidence checkpoint `6ee9c8c4fff71a472383c39e9ce0d9f97be541c6`. This publication documentation checkpoint follows them.
+
+**Actual actions:** GitHub CLI authenticated as `lol-vn`; feature branch push succeeded; PR #79 verified OPEN and DRAFT with base main. No merge, deployment, workflow dispatch or protected-system mutation occurred. Previous authentication failures below remain historical evidence.
+
+**Next:** require successful exact-head `validate` and owner review; independently reviewed implementation has no open findings. Keep 25 protected-copy locations, legal clearance, premium 3D finishing and native/device exclusions explicit. No release action is authorized.
+
+---
+
+# Takolio V1 migration checkpoint - 2026-10-16 JST
+
+- [x] Phase 0: canonical repo, live SHA, ZIP checksum/inventory, AGENTS rules and protected scope verified.
+- [x] Phase 1: versioned source/runtime assets, deterministic generator and manifest committed in `8e81d5d9879f6a8ea22db7cbc232fcf399a354fa`; V3 retained.
+- [x] Phase 2: contract, compatibility facade, scoped semantic tokens and licensed self-hosted fonts implemented.
+- [x] Phase 3: public product surfaces, metadata, manifest and SW precache migrated; protected payment/Worker/auth protocol preserved.
+- [x] Phase 4: local gates, full unit suite, E2E, browser matrix, PWA and flags-OFF state proof complete.
+- [x] Phase 5 local: docs, receipts, rollback, asset manifest and independent review complete.
+- [ ] Hosted: authenticate GitHub, push feature branch, create draft PR, obtain required `validate` and owner review.
+- [ ] Release: legal/trademark clearance, premium mascot finishing, native/device proof and any protected payment/Worker copy decision.
+
+Current status is `TAKOLIO_V1_CHANGES_REQUIRED` until hosted review artifacts exist. Merge/deploy remains outside authorization.
+
+---
+
 # T27 compact kitchen UI - 2026-10-16
 
 Verified implementation checkpoint: `34421382` (source/tests/ADR/task packet).

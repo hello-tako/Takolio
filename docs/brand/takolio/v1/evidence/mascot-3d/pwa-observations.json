@@ -1,0 +1,95 @@
+{
+  "localProductionBuild": true,
+  "offlineDataCertified": false,
+  "checks": [
+    {
+      "kind": "activation-cleans-old-release-and-precaches-Takolio-and-retained-fonts",
+      "keys": [
+        "takosan-pwa-local"
+      ],
+      "paths": [
+        "/",
+        "/manifest.json",
+        "/takolio/v1/app-icons/favicon.svg",
+        "/takolio/v1/app-icons/icon-192.png",
+        "/takolio/v1/app-icons/icon-512.png",
+        "/takolio/v1/app-icons/icon-maskable-512.png",
+        "/takolio/v1/logo/horizontal-primary.svg",
+        "/takolio/v1/logo/symbol-primary.svg",
+        "/takolio/v1/logo/symbol-micro.svg",
+        "/takolio/v1/mascot/tako-welcome.svg",
+        "/takolio/v1/mascot/tako-thinking.svg",
+        "/takolio/v1/mascot/tako-cooking.svg",
+        "/takolio/v1/mascot/tako-cheering.svg",
+        "/takolio/v1/mascot/tako-completed.svg",
+        "/takolio/v1/mascot/3d/tako-welcome-256.webp",
+        "/takolio/v1/mascot/3d/tako-welcome-512.webp",
+        "/takolio/v1/mascot/3d/tako-welcome-1024.webp",
+        "/takolio/v1/mascot/3d/tako-thinking-256.webp",
+        "/takolio/v1/mascot/3d/tako-thinking-512.webp",
+        "/takolio/v1/mascot/3d/tako-cooking-256.webp",
+        "/takolio/v1/mascot/3d/tako-cooking-512.webp",
+        "/takolio/v1/mascot/3d/tako-cheering-256.webp",
+        "/takolio/v1/mascot/3d/tako-cheering-512.webp",
+        "/takolio/v1/logo/wordmark-primary.svg",
+        "/takolio/v1/fonts/plus-jakarta-sans-vietnamese-latin-wght.woff2",
+        "/takosan/v3/fonts/nunito-latin-wght-normal.woff2",
+        "/takosan/v3/fonts/nunito-vietnamese-wght-normal.woff2",
+        "/index.html",
+        "/assets/vendor-query-DPpZBWpS.js",
+        "/assets/vendor-icons-oqw1P401.js",
+        "/assets/vendor-react-8_e6pVwi.js",
+        "/assets/index-CDWCjaEL.js",
+        "/assets/index-kR6YNP0b.css",
+        "/assets/LandingPage-Dq9u2Ekn.js",
+        "/assets/TakoMascot-BLBYguOm.js",
+        "/assets/Button-BBVEwdDS.js",
+        "/takosan/v3/fonts/nunito-latin-ext-wght-normal.woff2"
+      ]
+    },
+    {
+      "kind": "manifest-and-icon-content-types",
+      "manifest": {
+        "name": "Takolio - Lên kế hoạch bữa ăn thông minh",
+        "short_name": "Takolio",
+        "description": "Plan Better. Eat Happier.",
+        "start_url": "/",
+        "display": "standalone",
+        "background_color": "#FFF8ED",
+        "theme_color": "#0F2D46",
+        "orientation": "portrait",
+        "icons": [
+          {
+            "src": "/takolio/v1/app-icons/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+          },
+          {
+            "src": "/takolio/v1/app-icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+          },
+          {
+            "src": "/takolio/v1/app-icons/icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+          }
+        ],
+        "id": "/",
+        "scope": "/"
+      }
+    },
+    {
+      "kind": "offline-cached-public-shell-logo-font-and-3d-mascot",
+      "route": "/landing",
+      "offlineMascot": {
+        "src": "/takolio/v1/mascot/3d/tako-welcome-256.webp",
+        "width": 224,
+        "height": 224,
+        "naturalWidth": 223
+      }
+    }
+  ],
+  "errors": []
+}

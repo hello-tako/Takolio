@@ -275,7 +275,7 @@ const viCopy = {
     MANUAL_ONE_DISH_MEAL: 'Bữa gọn với món chính bạn đã chọn. Có thể thêm món ăn kèm nếu muốn.',
     MEAL_TIME_UNKNOWN: 'Chưa đủ dữ liệu để ước tính thời gian chuẩn bị và nấu cả bữa.',
     PRESERVED_INTERNATIONAL_CAP_EXCEEDED:
-      'Các món quốc tế bạn đã chọn hoặc khoá vượt mức đổi vị trong 7 ngày. Takosan giữ lựa chọn này; giảm món quốc tế hoặc tăng mức đổi vị nếu bạn muốn.',
+      'Các món quốc tế bạn đã chọn hoặc khoá vượt mức đổi vị trong 7 ngày. Takolio giữ lựa chọn này; giảm món quốc tế hoặc tăng mức đổi vị nếu bạn muốn.',
     MEAL_TIME_ABOVE_PREFERENCE: 'Bữa này có thể cần nhiều thời gian hơn mức bạn đã chọn.',
     LOCKED_MEAL_TIME_REQUIRES_REVALIDATION:
       'Các món đã khoá cần được kiểm tra lại với giới hạn thời gian của gia đình.',
@@ -304,7 +304,7 @@ const viCopy = {
     unavailable: 'Không thể tải kế hoạch lúc này. Vui lòng thử lại sau.',
     FAMILY_PREFERENCES_CHANGED: 'Thói quen đang lưu chưa khớp với lựa chọn này. Tải bản mới nhất và kiểm tra trước khi tiếp tục.',
     PLAN_REQUEST_TIMEOUT:
-      'Takosan chưa phản hồi kịp. Yêu cầu có thể vẫn hoàn tất; giữ nguyên lựa chọn và thử lại để nhận kết quả của cùng yêu cầu. Với bữa đang chỉnh, tải bản mới nhất trước khi thử lại.',
+      'Takolio chưa phản hồi kịp. Yêu cầu có thể vẫn hoàn tất; giữ nguyên lựa chọn và thử lại để nhận kết quả của cùng yêu cầu. Với bữa đang chỉnh, tải bản mới nhất trước khi thử lại.',
     invalid: 'Dữ liệu không hợp lệ. Kiểm tra lựa chọn hoặc tải lại kế hoạch.',
     rateLimited: 'Bạn thao tác quá nhanh. Vui lòng đợi trước khi thử lại.',
     notFound: 'Không tìm thấy kế hoạch này hoặc kế hoạch không thuộc tài khoản hiện tại.',
@@ -611,7 +611,7 @@ const enCopy: PlannerCopy = {
     MEAL_TIME_UNKNOWN:
       'There is not enough data to estimate prep and cooking time for the whole meal.',
     PRESERVED_INTERNATIONAL_CAP_EXCEEDED:
-      'Your chosen or locked international dishes exceed the 7-day rotation limit. Takosan keeps these choices; reduce international dishes or increase the limit if you wish.',
+      'Your chosen or locked international dishes exceed the 7-day rotation limit. Takolio keeps these choices; reduce international dishes or increase the limit if you wish.',
     MEAL_TIME_ABOVE_PREFERENCE: 'This meal may take longer than your chosen time.',
     LOCKED_MEAL_TIME_REQUIRES_REVALIDATION:
       'Check the locked dishes against your household time limit.',
@@ -640,7 +640,7 @@ const enCopy: PlannerCopy = {
     unavailable: 'Meal planning is unavailable right now. Please try again later.',
     FAMILY_PREFERENCES_CHANGED: 'The saved household habits differ from these choices. Load the latest version and review before continuing.',
     PLAN_REQUEST_TIMEOUT:
-      'Takosan has not responded in time. The request may still finish; keep your choices and retry to retrieve the same request. For an existing meal, load the latest version before retrying.',
+      'Takolio has not responded in time. The request may still finish; keep your choices and retry to retrieve the same request. For an existing meal, load the latest version before retrying.',
     invalid: 'Invalid data. Check your choices or reload the plan.',
     rateLimited: 'Too many requests. Please wait before trying again.',
     notFound: 'This plan was not found or is not available to your current account.',

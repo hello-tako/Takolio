@@ -181,7 +181,7 @@ export const RecipesPage = () => {
                 </select>
               </label>
               <p className="mt-2 text-sm text-semantic-text-secondary">
-                Tính riêng từng món cho {servings} người. Khi xếp thực đơn, Takosan tính tiếp phần
+                Tính riêng từng món cho {servings} người. Khi xếp thực đơn, Takolio tính tiếp phần
                 đã dành cho các bữa khác.
               </p>
               <details

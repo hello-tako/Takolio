@@ -1,0 +1,182 @@
+{
+  "repo": "lol-vn/Tako-san",
+  "repositoryId": 1385308553,
+  "mainSha": "f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1",
+  "followupBaselineSha": "ac7956952fbdfaaddbf379f0fb2355aa922ae1a1",
+  "environment": {
+    "node": "24.19.0 bundled runtime",
+    "TMPDIR": "/private/tmp",
+    "localOnly": true,
+    "browser": "Chromium153.0.8010.12",
+    "externalNetwork": "blocked in fixtures; no production credentials/OTP/payment settlement"
+  },
+  "commands": [
+    {
+      "command": "pnpm lint",
+      "exitCode": 0,
+      "result": "PASS",
+      "log": "local QA/lint-final2.log",
+      "bytes": 129,
+      "sha256": "290e79cfb92b0915688046f7a3f234f26b64f79410f10aa0dd07bdd3ddd1391e"
+    },
+    {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "result": "PASS",
+      "log": "local QA/typecheck-final.log",
+      "bytes": 195,
+      "sha256": "0480249daf53df62608924dde61f2642b1983da7a8188ede24d8fdaabb9d1a44"
+    },
+    {
+      "command": "pnpm check:migrations",
+      "exitCode": 0,
+      "result": "PASS",
+      "log": "local QA/migrations.log",
+      "bytes": 183,
+      "sha256": "7511976f436ecb96a180ddf3d92f2b200e2b328c476ebe2ae236b74091f34f36"
+    },
+    {
+      "command": "pnpm test",
+      "exitCode": 0,
+      "result": "365 files /8479 tests PASS149.83s",
+      "log": "local QA/full-unit.log",
+      "bytes": 1038,
+      "sha256": "0a54d55fbbee5a8f8307843f3df3ed9a592cde2c36952bcd5667eb5e8db412ce"
+    },
+    {
+      "command": "pnpm brand:icons",
+      "exitCode": 0,
+      "result": "88 files incl manifest PASS",
+      "log": "local QA/generator-fixed.log",
+      "bytes": 190,
+      "sha256": "60d6c22a16a3b8eeb2226782f488b3363b5c798b81d01c7f2b5a160200ac3f92"
+    },
+    {
+      "command": "pnpm exec vitest run tests/unit/takolio-brand.test.mjs tests/unit/takolio-3d-assets.test.mjs tests/unit/takolio-mascot.test.tsx tests/unit/takosan-brand.test.tsx tests/unit/ui07-brand-exports.test.mjs tests/unit/ui07-brand-shell.test.tsx",
+      "exitCode": 0,
+      "result": "6 files /51 tests PASS5.22s",
+      "log": "local QA/focused-fixed.log",
+      "bytes": 287,
+      "sha256": "f8e2a979fa1a48d544abe0165a3d85aaf9b4b7fe6042ddadeea4827d442a7e05"
+    },
+    {
+      "command": "VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build",
+      "exitCode": 0,
+      "result": "PASS",
+      "log": "local QA/build-on-fixed.log",
+      "bytes": 8518,
+      "sha256": "3e073130d1aa341f179cdf58945ab9a7bbe189c34cb79ad50964f46abb5b9785"
+    },
+    {
+      "command": "pnpm build",
+      "exitCode": 0,
+      "result": "PASS",
+      "log": "local QA/build-default-fixed.log",
+      "bytes": 8518,
+      "sha256": "a0e6a458312ee53c17d4105923358492eeab4dae03c7a8b4ec1aa81703e85b0c"
+    },
+    {
+      "command": "VITE_MEAL_PLANNER_ENABLED=false VITE_MEAL_COMPOSITION_V2_ENABLED=false pnpm build",
+      "exitCode": 0,
+      "result": "PASS",
+      "log": "local QA/build-off-fixed.log",
+      "bytes": 8518,
+      "sha256": "7f68602cbc0ce6e8086fcb1b5f2a1fbc4e7a9891f600310c63a4693f82669146"
+    },
+    {
+      "command": "pnpm exec playwright test --config playwright.takolio.config.ts",
+      "exitCode": 0,
+      "result": "94/94 PASS6.0m",
+      "log": "local QA/e2e-fixed.log",
+      "bytes": 16715,
+      "sha256": "04d9e004bb4915dd9ce6e1ae2e7f8c8d058d040f443cc980d58b385a18ce7646"
+    },
+    {
+      "command": "BRAND_STAGE=before node scripts/takolio-mascot-check.mjs",
+      "exitCode": 0,
+      "result": "72 screens PASS",
+      "log": "local QA/before-browser.log",
+      "bytes": 2124,
+      "sha256": "c77ccaca2b43527c608111be12a4d5a6b8331f16a173af2f7a7c5a1e3f91fb9a"
+    },
+    {
+      "command": "BRAND_STAGE=after node scripts/takolio-mascot-check.mjs",
+      "exitCode": 0,
+      "result": "72 screens+network fallback PASS",
+      "log": "local QA/after-browser-fixed.log",
+      "bytes": 2051,
+      "sha256": "72ad1e0d5f64c4f36dbf6f6f175c40ad3247911e725ef79c4457caa6b685ccfd"
+    },
+    {
+      "command": "BRAND_URL=http://127.0.0.1:5230 BRAND_OUT=.artifacts/takolio-v1/mascot-3d/pwa-fixed node scripts/takolio-pwa-check.mjs",
+      "exitCode": 0,
+      "result": "3 checks PASS",
+      "log": "local QA/pwa-fixed-attempt2.log",
+      "bytes": 19,
+      "sha256": "f5042bbb911be67d75a00046dc238df729f857ab4e82560324238039f1125c08"
+    },
+    {
+      "command": "BRAND_URL=http://127.0.0.1:5230 BRAND_OUT=.artifacts/takolio-v1/mascot-3d/states-fixed node scripts/brand-v3-state-check.mjs",
+      "exitCode": 0,
+      "result": "15 checks+2 journeys PASS",
+      "log": "local QA/states-fixed.log",
+      "bytes": 384,
+      "sha256": "4d9ae4a651be5d1cd98589ec70022c48bfa9f6a32dfd677e0e117a8a675da031"
+    },
+    {
+      "command": "BRAND_URL=http://127.0.0.1:5233 BRAND_FLAG_OFF=true BRAND_OUT=.artifacts/takolio-v1/mascot-3d/flags-off-fixed node scripts/brand-v3-state-check.mjs",
+      "exitCode": 0,
+      "result": "12 screens PASS",
+      "log": "local QA/flags-off-fixed.log",
+      "bytes": 256,
+      "sha256": "ed21a101df08c4fab9490023cddcf4d2684bccf0cf8f691f050475e66a5cc19a"
+    },
+    {
+      "command": "BRAND_STAGE=after node scripts/takolio-mascot-check.mjs",
+      "exitCode": 1,
+      "result": "72 captures PASS; final fallback FAIL due authenticated redirect; preserved",
+      "log": "local QA/after-browser-attempt1.log",
+      "bytes": 4854,
+      "sha256": "12e55ec5ffad5efec331cbe5e909ac9f0256161bf01e3ed16d6c5e3a4dfcc37c"
+    },
+    {
+      "command": "pnpm brand:icons",
+      "exitCode": 1,
+      "result": "authoring manifest path missing; corrected",
+      "log": "local QA/generator-attempt1.log",
+      "bytes": 1205,
+      "sha256": "a9321df7ab84d8dd2cdeac81db76ade695aca3fd25fe6d1f04454c2a65ecd7f4"
+    },
+    {
+      "command": "pnpm typecheck",
+      "exitCode": 2,
+      "result": "DOM append typing; appendChild repair; final PASS",
+      "log": "local QA/typecheck.log",
+      "bytes": 418,
+      "sha256": "5faec9299cf048d491716a9e78da683e8e63b5f58764df39c5bb2ad6827f30bb"
+    },
+    {
+      "command": "BRAND_PORT=5230 BRAND_OUT=.artifacts/takolio-v1/mascot-3d/pwa-fixed node scripts/takolio-pwa-check.mjs",
+      "exitCode": 1,
+      "result": "connection refused; script expects BRAND_URL, corrected",
+      "log": "local QA/pwa-fixed.log",
+      "bytes": 536,
+      "sha256": "752760be9ef2665f5e3dd280c046adeef81766fcaa2166821ffe8c3d32912d8d"
+    },
+    {
+      "command": "frontend-design/scripts/ux_audit.py repository-wide scan",
+      "exitCode": 1,
+      "result": "advisory FAIL63 issues/1976 warnings/112 checks passed; includes tests and build output; no exemption invented",
+      "log": "local QA/ux-audit.log",
+      "sha256": "d6a208c9d158e7522d619cb88bba5d0f90cdce5f1c73c9819b37fba539807cae"
+    }
+  ],
+  "package": {
+    "name": "Takolio_Tako_3D_Candidate_v1.zip",
+    "sha256": "2fef4fd671a64a40bac464abaf30cf6213639ce21fa88aeb6ede3abfb8985337",
+    "bytes": 83693113,
+    "fileCount": 349,
+    "zipCRC": "PASS"
+  },
+  "pending": "frozen-head independent binding and automatic hosted CI"
+}

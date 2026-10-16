@@ -1,0 +1,428 @@
+{
+  "syntheticLocalOnly": true,
+  "syntheticFontInjectionBypassesCsp": true,
+  "browser": "153.0.8010.12",
+  "checks": [
+    {
+      "route": "/fridge",
+      "width": 320,
+      "kind": "empty-actions-contact",
+      "scanBox": {
+        "x": 37,
+        "y": 640.4375,
+        "width": 246,
+        "height": 44
+      },
+      "addBox": {
+        "x": 37,
+        "y": 694.4375,
+        "width": 246,
+        "height": 44
+      }
+    },
+    {
+      "route": "/",
+      "width": 320,
+      "kind": "compact-missing-media",
+      "media": [
+        {
+          "width": 90,
+          "label": "Chưa có ảnh món ăn",
+          "display": "none"
+        }
+      ],
+      "navIndicator": [
+        {
+          "stroke": "rgb(15, 45, 70)",
+          "background": "rgb(255, 227, 224)",
+          "ratio": 11.667633790086331
+        }
+      ]
+    },
+    {
+      "route": "/settings/app",
+      "width": 320,
+      "height": 420,
+      "kind": "synthetic-font-200-percent",
+      "baselineFont": 14,
+      "font": 28,
+      "line": 44.8,
+      "scrollWidth": 320,
+      "occlusion": {
+        "overlaps": false,
+        "navPosition": "static",
+        "descriptionBottom": 397.828125,
+        "navTop": 1246.65625
+      },
+      "axe": []
+    },
+    {
+      "route": "/settings/app",
+      "width": 320,
+      "height": 844,
+      "kind": "synthetic-font-200-percent",
+      "baselineFont": 14,
+      "font": 28,
+      "line": 44.8,
+      "scrollWidth": 320,
+      "occlusion": {
+        "overlaps": false,
+        "navPosition": "fixed",
+        "descriptionBottom": 397.828125,
+        "navTop": 762.40625
+      },
+      "axe": []
+    },
+    {
+      "route": "/fridge",
+      "width": 375,
+      "kind": "empty-actions-contact",
+      "scanBox": {
+        "x": 37,
+        "y": 649.9375,
+        "width": 301,
+        "height": 44
+      },
+      "addBox": {
+        "x": 37,
+        "y": 703.9375,
+        "width": 301,
+        "height": 44
+      }
+    },
+    {
+      "route": "/",
+      "width": 375,
+      "kind": "compact-missing-media",
+      "media": [
+        {
+          "width": 90,
+          "label": "Chưa có ảnh món ăn",
+          "display": "none"
+        }
+      ],
+      "navIndicator": [
+        {
+          "stroke": "rgb(15, 45, 70)",
+          "background": "rgb(255, 227, 224)",
+          "ratio": 11.667633790086331
+        }
+      ]
+    },
+    {
+      "route": "/settings/app",
+      "width": 375,
+      "height": 420,
+      "kind": "synthetic-font-200-percent",
+      "baselineFont": 14,
+      "font": 28,
+      "line": 44.8,
+      "scrollWidth": 375,
+      "occlusion": {
+        "overlaps": false,
+        "navPosition": "static",
+        "descriptionBottom": 303.75,
+        "navTop": 1107.796875
+      },
+      "axe": []
+    },
+    {
+      "route": "/settings/app",
+      "width": 375,
+      "height": 844,
+      "kind": "synthetic-font-200-percent",
+      "baselineFont": 14,
+      "font": 28,
+      "line": 44.8,
+      "scrollWidth": 375,
+      "occlusion": {
+        "overlaps": false,
+        "navPosition": "fixed",
+        "descriptionBottom": 303.75,
+        "navTop": 772
+      },
+      "axe": []
+    },
+    {
+      "route": "/fridge",
+      "width": 390,
+      "kind": "empty-actions-contact",
+      "scanBox": {
+        "x": 37,
+        "y": 649.9375,
+        "width": 316,
+        "height": 44
+      },
+      "addBox": {
+        "x": 37,
+        "y": 703.9375,
+        "width": 316,
+        "height": 44
+      }
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "kind": "compact-missing-media",
+      "media": [
+        {
+          "width": 90,
+          "label": "Chưa có ảnh món ăn",
+          "display": "none"
+        }
+      ],
+      "navIndicator": [
+        {
+          "stroke": "rgb(15, 45, 70)",
+          "background": "rgb(255, 227, 224)",
+          "ratio": 11.667633790086331
+        }
+      ]
+    },
+    {
+      "route": "/settings/app",
+      "width": 390,
+      "height": 420,
+      "kind": "synthetic-font-200-percent",
+      "baselineFont": 14,
+      "font": 28,
+      "line": 44.8,
+      "scrollWidth": 390,
+      "occlusion": {
+        "overlaps": false,
+        "navPosition": "static",
+        "descriptionBottom": 303.75,
+        "navTop": 1107.796875
+      },
+      "axe": []
+    },
+    {
+      "route": "/settings/app",
+      "width": 390,
+      "height": 844,
+      "kind": "synthetic-font-200-percent",
+      "baselineFont": 14,
+      "font": 28,
+      "line": 44.8,
+      "scrollWidth": 390,
+      "occlusion": {
+        "overlaps": false,
+        "navPosition": "fixed",
+        "descriptionBottom": 303.75,
+        "navTop": 772
+      },
+      "axe": []
+    },
+    {
+      "route": "/fridge",
+      "width": 768,
+      "kind": "empty-actions-contact",
+      "scanBox": {
+        "x": 272,
+        "y": 695.875,
+        "width": 320,
+        "height": 44
+      },
+      "addBox": {
+        "x": 272,
+        "y": 749.875,
+        "width": 320,
+        "height": 44
+      }
+    },
+    {
+      "route": "/",
+      "width": 768,
+      "kind": "compact-missing-media",
+      "media": [
+        {
+          "width": 110,
+          "label": "Chưa có ảnh món ăn",
+          "display": "none"
+        }
+      ],
+      "navIndicator": [
+        {
+          "stroke": "rgb(15, 45, 70)",
+          "background": "rgb(255, 227, 224)",
+          "ratio": 11.667633790086331
+        }
+      ]
+    },
+    {
+      "route": "/settings/app",
+      "width": 768,
+      "height": 420,
+      "kind": "synthetic-font-200-percent",
+      "baselineFont": 14,
+      "font": 28,
+      "line": 44.8,
+      "scrollWidth": 768,
+      "occlusion": {
+        "overlaps": false,
+        "navPosition": "static",
+        "descriptionBottom": 303.75,
+        "navTop": 0
+      },
+      "axe": []
+    },
+    {
+      "route": "/settings/app",
+      "width": 768,
+      "height": 844,
+      "kind": "synthetic-font-200-percent",
+      "baselineFont": 14,
+      "font": 28,
+      "line": 44.8,
+      "scrollWidth": 768,
+      "occlusion": {
+        "overlaps": false,
+        "navPosition": "fixed",
+        "descriptionBottom": 303.75,
+        "navTop": 0
+      },
+      "axe": []
+    },
+    {
+      "route": "/fridge",
+      "width": 1024,
+      "kind": "empty-actions-contact",
+      "scanBox": {
+        "x": 464,
+        "y": 675.984375,
+        "width": 320,
+        "height": 44
+      },
+      "addBox": {
+        "x": 464,
+        "y": 729.984375,
+        "width": 320,
+        "height": 44
+      }
+    },
+    {
+      "route": "/",
+      "width": 1024,
+      "kind": "compact-missing-media",
+      "media": [
+        {
+          "width": 110,
+          "label": "Chưa có ảnh món ăn",
+          "display": "none"
+        }
+      ],
+      "navIndicator": [
+        {
+          "stroke": "rgb(15, 45, 70)",
+          "background": "rgb(255, 227, 224)",
+          "ratio": 11.667633790086331
+        }
+      ]
+    },
+    {
+      "route": "/settings/app",
+      "width": 1024,
+      "height": 420,
+      "kind": "synthetic-font-200-percent",
+      "baselineFont": 14,
+      "font": 28,
+      "line": 44.8,
+      "scrollWidth": 1024,
+      "occlusion": {
+        "overlaps": false,
+        "navPosition": "static",
+        "descriptionBottom": 235.984375,
+        "navTop": 0
+      },
+      "axe": []
+    },
+    {
+      "route": "/settings/app",
+      "width": 1024,
+      "height": 844,
+      "kind": "synthetic-font-200-percent",
+      "baselineFont": 14,
+      "font": 28,
+      "line": 44.8,
+      "scrollWidth": 1024,
+      "occlusion": {
+        "overlaps": false,
+        "navPosition": "fixed",
+        "descriptionBottom": 235.984375,
+        "navTop": 0
+      },
+      "axe": []
+    },
+    {
+      "route": "/fridge",
+      "width": 1440,
+      "kind": "empty-actions-contact",
+      "scanBox": {
+        "x": 672,
+        "y": 676.171875,
+        "width": 320,
+        "height": 44
+      },
+      "addBox": {
+        "x": 672,
+        "y": 730.171875,
+        "width": 320,
+        "height": 44
+      }
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "kind": "compact-missing-media",
+      "media": [
+        {
+          "width": 110,
+          "label": "Chưa có ảnh món ăn",
+          "display": "none"
+        }
+      ],
+      "navIndicator": [
+        {
+          "stroke": "rgb(15, 45, 70)",
+          "background": "rgb(255, 227, 224)",
+          "ratio": 11.667633790086331
+        }
+      ]
+    },
+    {
+      "route": "/settings/app",
+      "width": 1440,
+      "height": 420,
+      "kind": "synthetic-font-200-percent",
+      "baselineFont": 14,
+      "font": 28,
+      "line": 44.8,
+      "scrollWidth": 1440,
+      "occlusion": {
+        "overlaps": false,
+        "navPosition": "static",
+        "descriptionBottom": 235.984375,
+        "navTop": 0
+      },
+      "axe": []
+    },
+    {
+      "route": "/settings/app",
+      "width": 1440,
+      "height": 844,
+      "kind": "synthetic-font-200-percent",
+      "baselineFont": 14,
+      "font": 28,
+      "line": 44.8,
+      "scrollWidth": 1440,
+      "occlusion": {
+        "overlaps": false,
+        "navPosition": "fixed",
+        "descriptionBottom": 235.984375,
+        "navTop": 0
+      },
+      "axe": []
+    }
+  ],
+  "pageErrors": []
+}

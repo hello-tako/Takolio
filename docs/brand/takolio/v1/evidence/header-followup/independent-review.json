@@ -1,0 +1,38 @@
+{
+  "reviewer": "/root/independent_brand_review",
+  "comparedWith": "f6147dc3aa0f88d521748738f54a46082157698f",
+  "result": "NO_CONCRETE_FINDINGS",
+  "scope": [
+    "shared header code",
+    "design/minimum sizes",
+    "accessibility",
+    "inherited Plus shell",
+    "security/protected scope"
+  ],
+  "screens": 36,
+  "focusedTestFiles": 4,
+  "focusedTests": 46,
+  "focusedDurationSeconds": 4.36,
+  "reviewerModifiedRepository": false,
+  "runtimeAssetsUnchanged": true,
+  "generatorUnchanged": true,
+  "tokenAuthorityUnchanged": true,
+  "protectedSystemsUnchanged": true,
+  "githubHumanApproval": false,
+  "ownerReportedApproval": "Previous PR head approved in chat; this corrective head still requires review",
+  "fidelityLimits": [
+    "candidate Comfortaa glyph outlines pending official finishing",
+    "2D gradient mascot; premium 3D finishing pending",
+    "physical-device verification",
+    "owner/legal release approval"
+  ],
+  "reviewedFileHashes": {
+    "src/web/components/common/KitchenHeader.tsx": "354696ee968d880b8d84ca49e37902dc3bf309cb609f8370c2eafaf78b42e576",
+    "src/web/styles/kitchen-daily.css": "493d441fcf4d38b2fbe0007ef2b7423e504586962d1d20fcd27abb2a3280073f",
+    "src/web/styles/kitchen-density.css": "157953b4100b8be6a773593e2a2cbd600fadd937247560375cf6e51a239cb101",
+    "src/web/styles/kitchen-family.css": "bf0b4d3520c5d7756edc8bc99459b7b147eeb2f85a7c90d96cadd755aa95b89e",
+    "src/web/styles/kitchen-shell.css": "c9c526adbbe12f3c878840e3d002bdbce8ef91363cfea63c6a56d24d962de0bb"
+  },
+  "beforeObservationsSha256": "9715f48ac7cffbeb87b3fcffe796fd20c594bf0ce7e8289de7ee359ad824b0f5",
+  "afterObservationsSha256": "e280be3bfdc4b24dce01bc2b91ae02e7207b5500448b96125b43dcf468e3319b"
+}

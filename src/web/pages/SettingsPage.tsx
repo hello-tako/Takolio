@@ -60,10 +60,10 @@ export const SettingsPage: React.FC = () => {
   return (
     <AccountPage title="Cài đặt ứng dụng" description="Mở bếp nhanh hơn, quản lý tài nguyên trên thiết bị.">
       <Card className="p-5 space-y-3">
-        <h2 className="flex items-center gap-2"><Smartphone size={20} aria-hidden="true" /> Takosan trên điện thoại</h2>
+        <h2 className="flex items-center gap-2"><Smartphone size={20} aria-hidden="true" /> Takolio trên điện thoại</h2>
         <p>{isStandalone
-          ? 'Bạn đang mở Takosan từ ứng dụng đã cài trên màn hình chính.'
-          : 'Thêm Takosan vào màn hình chính để mở nhanh. Một số dữ liệu đã lưu có thể xem khi mất mạng; tính năng cần máy chủ vẫn cần kết nối.'}</p>
+          ? 'Bạn đang mở Takolio từ ứng dụng đã cài trên màn hình chính.'
+          : 'Thêm Takolio vào màn hình chính để mở nhanh. Một số dữ liệu đã lưu có thể xem khi mất mạng; tính năng cần máy chủ vẫn cần kết nối.'}</p>
         {!isStandalone && <Button variant="outline" fullWidth onClick={handleInstallPwa}>Cài đặt lên màn hình chính</Button>}
       </Card>
       <Card className="p-5 space-y-3">
@@ -82,9 +82,9 @@ export const SettingsPage: React.FC = () => {
       <Link to="/settings/privacy" className="account-text-link">Xem quyền riêng tư & dữ liệu</Link>
       <details className="account-build-info">
         <summary>Thông tin phiên bản</summary>
-        <p>Takosan v{import.meta.env.VITE_APP_VERSION} · Build {import.meta.env.VITE_GIT_COMMIT || 'local'} · {import.meta.env.VITE_BUILD_TIMESTAMP || 'local build'}</p>
+        <p>Takolio v{import.meta.env.VITE_APP_VERSION} · Build {import.meta.env.VITE_GIT_COMMIT || 'local'} · {import.meta.env.VITE_BUILD_TIMESTAMP || 'local build'}</p>
       </details>
-      <ConfirmDialog open={showInstallHelp} title="Cài đặt Takosan lên màn hình chính"
+      <ConfirmDialog open={showInstallHelp} title="Cài đặt Takolio lên màn hình chính"
         description={'Trên iPhone (Safari): nhấn nút Chia sẻ rồi chọn "Thêm vào MH chính". Trên Android (Chrome): nhấn menu ba chấm rồi chọn "Cài đặt ứng dụng".'}
         confirmText="Đã hiểu" cancelText="Đóng" onConfirm={() => setShowInstallHelp(false)} onCancel={() => setShowInstallHelp(false)} />
     </AccountPage>

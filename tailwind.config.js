@@ -25,8 +25,8 @@ export default {
           "action-primary-hover": "rgb(var(--semantic-action-primary-hover-rgb, 36 102 72) / <alpha-value>)",
           "action-primary-pressed": "rgb(var(--semantic-action-primary-pressed-rgb, 29 85 61) / <alpha-value>)",
           "on-action-primary": "rgb(255 255 255 / <alpha-value>)",
-          "accent": "rgb(255 123 107 / <alpha-value>)",
-          "accent-soft": "rgb(255 240 237 / <alpha-value>)",
+          "accent": "rgb(var(--semantic-accent-rgb, 255 123 107) / <alpha-value>)",
+          "accent-soft": "rgb(var(--semantic-accent-soft-rgb, 255 240 237) / <alpha-value>)",
           "success": "rgb(var(--semantic-success-rgb, 46 125 91) / <alpha-value>)",
           "success-soft": "rgb(var(--semantic-success-soft-rgb, 231 245 236) / <alpha-value>)",
           "warning": "rgb(182 106 9 / <alpha-value>)",
@@ -49,12 +49,12 @@ export default {
         // Takosan locked palette (design-tokens/brand-tokens.json v1.1.0) plus a few
         // derived shades for hover/depth/borders so runtime UI never falls back to emerald.
         takosan: {
-          coral: { DEFAULT: "#FF7B6B", deep: "#E8624F", soft: "#FFE6E1" },
+          coral: { DEFAULT: "rgb(var(--takosan-coral-color-rgb, 255 123 107) / <alpha-value>)", deep: "rgb(var(--takosan-coral-deep-color-rgb, 232 98 79) / <alpha-value>)", soft: "rgb(var(--takosan-coral-soft-color-rgb, 255 230 225) / <alpha-value>)" },
           green: { DEFAULT: "rgb(var(--takosan-green-color-rgb, 46 125 91) / <alpha-value>)", hover: "rgb(var(--takosan-green-hover-color-rgb, 38 105 76) / <alpha-value>)", deep: "rgb(var(--takosan-green-deep-color-rgb, 31 86 62) / <alpha-value>)" },
           navy: "rgb(var(--takosan-navy-color-rgb, 31 41 55) / <alpha-value>)",
           cream: { DEFAULT: "rgb(var(--takosan-cream-color-rgb, 255 248 243) / <alpha-value>)", deep: "#FFF1E8", line: "rgb(var(--takosan-cream-line-color-rgb, 243 228 218) / <alpha-value>)", shade: "#F6EEE8" },
           mint: { DEFAULT: "rgb(var(--takosan-mint-color-rgb, 223 244 230) / <alpha-value>)", hover: "#CFEDDA", deep: "rgb(var(--takosan-mint-deep-color-rgb, 191 227 204) / <alpha-value>)" },
-          yellow: "#FFC857",
+          yellow: "rgb(var(--takosan-yellow-color-rgb, 255 200 87) / <alpha-value>)",
         },
         // Legacy Frigo palette names kept as aliases onto Takosan values (no runtime
         // utility uses them today; retained so stray legacy classes cannot re-introduce emerald).
