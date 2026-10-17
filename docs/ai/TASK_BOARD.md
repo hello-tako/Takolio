@@ -7535,3 +7535,32 @@ Status: `DOMAIN_IMPLEMENTATION_IN_PROGRESS`.
   exact-main checks/audit, resolve Access, deploy restricted staging email, perform
   real acceptance/rollback, then protected production certification and cutover.
 - Production is unchanged; Admin reserved. Status DOMAIN_SECURITY_REVIEW_REQUIRED.
+
+## Merged release tooling and live Access rejection - 2026-10-18 JST
+
+- DONE: independent PR #9 approval at 9752c4bf; normal merge 45528f16.
+- DONE: approved-head and exact-main CI/Admin CI; main 397 files / 8,904 tests
+  each, Admin 12 browser cases and 10 keyboard repetitions.
+- DONE: read-only exact-main staging audit 39065535627; 43 migrations and original
+  isolated runtime/storage/queue verified without applying migrations.
+- OBSERVED: staging release 39065618823 stops at Access HTTP 302 before upload,
+  traffic, domains or email. Sanitized receipt confirms mutationAttempted=false.
+- DONE: current Client ID resynchronized; existing token/policy/expiry preserved;
+  Google Console production/staging origins rechecked without mutation.
+- BLOCKED: Mac locked again and in-app Cloudflare session expired. Await unlock,
+  diagnose the credential rejection, then rerun the reviewed same-main staging lane.
+- PENDING: real Google/OTP/session/sandbox PayOS/user/mobile/PWA/rollback acceptance,
+  fresh production certification, protected Environment review and observed cutover.
+- Production remains unchanged. No acceptance attestation has been issued.
+
+## Access repair and upload parser - 2026-10-18 JST
+
+- DONE: rotated the existing staging Access token secret with one-hour overlap;
+  saved matching credential pair to staging Environment without scope/policy/expiry changes.
+- DONE: direct legacy Worker probe returned HTTP 200; token Last Seen updated.
+- DONE: isolated Wrangler 4.149.0 JSONL contract: session record precedes upload result.
+- DONE: shared strict `uploadedWorkerVersion` parser for staging/production plus 18
+  focused parser cases; total focused release/domain regression 467 tests PASS.
+- PENDING: commit/push parser fix, independent review and exact-main hosted checks,
+  then rerun staging release. Existing uploaded version is not traffic-active.
+- Production remains unchanged; full acceptance and production gates remain pending.

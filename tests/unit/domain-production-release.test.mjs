@@ -175,8 +175,9 @@ it('uses protected production, immutable trusted main and a shared deployment lo
 
 it('validates uploaded version identity before constructing any Cloudflare read path', async () => {
   const { productionUploadVersion } = await import('../../scripts/domain/production-release.mjs');
-  const record = { type: 'version-upload', worker_name: 'frigo', version_id: '22222222-2222-4222-8222-222222222222' };
+  const record = { type: 'version-upload', version: 1, worker_name: 'frigo', version_id: '22222222-2222-4222-8222-222222222222' };
   expect(productionUploadVersion([record])).toBe(record.version_id);
+  expect(productionUploadVersion([{ type: 'wrangler-session', version: 1, wrangler_version: '4.149.0' }, record])).toBe(record.version_id);
   for (const value of [[], [record, record], [{ ...record, worker_name: 'frigo-staging' }],
     [{ ...record, version_id: '../../settings' }], [{ ...record, version_id: 'x'.repeat(36) }],
     [{ ...record, version_id: '22222222-2222-4222-8222-222222222222?secret=x' }]]) {

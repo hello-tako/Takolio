@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 import { isDeepStrictEqual } from 'node:util';
 import { ACCOUNT, REPOSITORY, REPOSITORY_ID } from './audit-cloud.mjs';
 import { isDomainId } from './hosts.mjs';
+import { uploadedWorkerVersion } from './upload-output.mjs';
 
 export const ACCEPTANCE_CHECKS = Object.freeze([
   'dns-tls', 'access', 'google-login', 'otp-delivery', 'session-lifecycle',
@@ -101,12 +102,7 @@ export async function observeProduction(probe, persist, { now = Date.now,
 }
 
 export function productionUploadVersion(records) {
-  const record = Array.isArray(records) && records.length === 1 ? records[0] : undefined;
-  if (record?.type !== 'version-upload' || record.worker_name !== 'frigo' ||
-      !/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(record.version_id ?? '')) {
-    throw new Error('Production upload outcome requires reconciliation');
-  }
-  return record.version_id;
+  return uploadedWorkerVersion(records, 'frigo');
 }
 
 export function productionRecoveryIdentity(certification, snapshot) {

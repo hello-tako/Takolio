@@ -9853,3 +9853,60 @@ Google/OTP/session/PayOS sandbox/user/mobile/PWA/rollback acceptance, then use t
 existing protected production certification and new manual adapter. No acceptance
 attestation or production release has been issued. Production is unchanged; Admin
 stays reserved. Status DOMAIN_SECURITY_REVIEW_REQUIRED.
+
+## Latest live continuation - 2026-10-18 JST
+
+PR #9 is merged: approved head 9752c4bf, independent reviewer vn-taphoanhatung,
+merge/main 45528f16dd08cb17fdcfd95ee29d5a9953a49275. Both approved-head and
+exact-main hosted checks PASS. Main CI 39064033998 and Admin CI 39064034053
+passed 397 files / 8,904 tests each; Admin's real Worker/migration/browser gates
+also pass (12 browser cases, 10 keyboard runs). No local full-suite PASS is claimed.
+
+Watcher work/wait-pr9-main-audit.py exited successfully after dispatching only
+read-only audit 39065535627. Audit succeeded; receipt is in
+work/audit-39065535627/domain-audit-staging-39065535627-1/staging.json. Runtime,
+original staging version b4257b5c-dddf-4093-b969-f5bc09888bf6, isolated bindings,
+queue/cron and all 43 migrations were verified; new-zone DNS/routes were empty.
+
+Staging release 39065618823 was then explicitly dispatched on the same main SHA
+with restricted email enabled. It failed before upload on Access HTTP 302. Receipt:
+work/release-39065618823/domain-staging-release-39065618823-1/receipt.json.
+It records preflight-failed, mutationAttempted=false and no traffic/host mutation.
+The existing Client ID was resynchronized via authorized CLI; the service secret
+has not been rotated. Native UI confirmed Enabled token, correct Service Auth
+policy/application and original November 16 expiry; usage still Not Seen Yet.
+Root cause remains unresolved; do not invent a successful credential test.
+
+Native Chrome was authenticated but macOS locked again when token inspection was
+attempted. In-app tab 20 still redirects to login. A fresh asynchronous owner
+prompt asks only for Mac unlock; no secret or OTP is requested. Continue through
+the existing native Cloudflare session when unlocked. Preserve scopes/expiry and
+never bypass protection. Google Console origin configuration was rechecked and
+matches both candidates; actual new-origin login remains pending.
+
+Next: resolve Access, rerun same-main staging (recheck main/CI/no conflicting run),
+then perform actual provider/browser/rollback acceptance. No acceptance attestation
+or production release exists. Production/legacy identity remains unchanged by this
+lane; protected production approval is still enforced. Status DOMAIN_BLOCKED.
+
+## Access repaired; parser fix awaiting protected review - 2026-10-18 JST
+
+The original Access failure is resolved without weakening policy: token secret was
+rotated with one-hour overlap under the same service token, permissions, policy and
+expiry. The pair was saved to the existing GitHub staging Environment, a direct
+read-only probe returned HTTP 200, and Cloudflare Last Seen updated. Policy evidence
+is saved at outputs/evidence/access-policy-preserved-2026-10-18.png.
+
+Staging release 39073868744 reached Access and successfully uploaded a version for
+SHA 45528f16, but stopped before activation because Wrangler 4.149.0 emits a
+`wrangler-session` JSONL record before its `version-upload` record. The previous
+parser treated the session record as an unexpected upload response. Read-only
+Cloudflare inspection confirms uploaded version cf5aaef5-d83d-4dcf-b817-dfe41341cf18
+has the expected SHA and restricted native email binding; traffic remains on the
+original staging deployment/version.
+
+Fix branch `fix/domain-wrangler-upload-records` adds a shared strict parser and
+uses it in staging and production. Regression is 467 focused tests PASS; lint,
+typecheck, migrations and build pass. Commit/push and protected independent review
+are next. Do not rerun the workflow from an unreviewed branch. Production remains
+unchanged and real staging acceptance has not started.

@@ -5,6 +5,7 @@ import { pathToFileURL } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
 import { ACCOUNT, ZONE, REPOSITORY, REPOSITORY_ID, audit, cloudflareRead } from './audit-cloud.mjs';
 import { prepareReleaseConfig, configHash } from './release-config.mjs';
+import { uploadedWorkerVersion } from './upload-output.mjs';
 import { privateDomainReceipt, restorePrivateDomains, hasPrivateDomains } from './receipt-privacy.mjs';
 import { stagingFetch, stagingCurlExecute } from './access-http.mjs';
 import { planHosts, attachHosts, detachCreatedHosts, validateDomains, isDomainId } from './hosts.mjs';
@@ -182,9 +183,8 @@ export const provider = {
     context.state = 'upload-intent'; persist(context);
     await run('pnpm', ['exec', 'wrangler', 'versions', 'upload', '--config', configFile, '--strict'], { WRANGLER_OUTPUT_FILE_PATH: uploadFile });
     const records = readFileSync(uploadFile, 'utf8').trim().split('\n').map((line) => JSON.parse(line));
-    if (records.length !== 1 || records[0].type !== 'version-upload' || records[0].worker_name !== worker ||
-        !/^[a-f0-9-]{36}$/.test(records[0].version_id ?? '')) throw new Error('Upload response requires reconciliation');
-    context.uploadedVersionId = verifyUploadedVersion(await read(`${script}/versions/${records[0].version_id}`), context.plan, context.audit.worker);
+    const versionId = uploadedWorkerVersion(records, worker);
+    context.uploadedVersionId = verifyUploadedVersion(await read(`${script}/versions/${versionId}`), context.plan, context.audit.worker);
     context.state = 'uploaded'; persist(context);
   },
   async activate(context) {

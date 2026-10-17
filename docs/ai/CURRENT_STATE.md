@@ -10340,3 +10340,52 @@ Wrangler upload dry-run, public scan and diff check PASS. The first new positive
 audit test exposed a shared mutable negative-test fixture; deep-cloning its live
 metadata fixed fixture isolation without changing assertions/timeouts. Live OTP,
 staging acceptance and the reviewed production adapter remain pending.
+
+## Live domain checkpoint - 2026-10-18 JST
+
+PR #9 was independently approved by vn-taphoanhatung at 9752c4bf and merged
+normally as 45528f16dd08cb17fdcfd95ee29d5a9953a49275. Approved-head CI
+39061857508/Admin CI 39061857592 and exact-main CI 39064033998/Admin CI
+39064034053 all succeeded. Each main suite passed 397 files / 8,904 tests;
+Admin also passed Worker/migration boundaries, 12 browser cases and 10 keyboard
+repetitions. Local sleep-affected full runs remain failed/incomplete.
+
+Fresh read-only staging audit 39065535627 succeeded on this main SHA, preserving
+isolated storage/queue/runtime and confirming all 43 migrations. The existing
+Access Service Auth token/policy association was verified in native Chrome. Its
+Client ID was resynchronized into the existing staging Environment secret without
+rotating the secret or changing policy/scope/expiry. Google Console origins were
+rechecked: production includes takolio.app; the separate staging client permits
+only staging.takolio.app. Real Google login is still NOT RUN.
+
+Staging release 39065618823 failed safely at preflight: Access returned HTTP 302.
+The sanitized receipt records mutationAttempted=false and no traffic or hostname
+mutation. No upload, email send or production mutation occurred. This exposes the
+credential rejection but does not establish its root cause. Native Chrome became
+unavailable when macOS locked again; the in-app Cloudflare session is expired.
+Owner unlock is required to inspect/repair the authorized credential. Do not
+bypass Access or broaden permissions. Actual staging browser/provider/rollback
+acceptance and production Environment approval remain required.
+Status: DOMAIN_BLOCKED at the live Access preflight; production NOT_CHANGED.
+
+## Access repair and Wrangler output parser fix - 2026-10-18 JST
+
+The existing staging Access service token returned HTTP 302 from the first exact-main
+release. Native Chrome confirmed the Service Auth policy still contains only the
+approved token, the application contains staging/API hostnames plus frigo-staging
+Worker scope, and no extra Require/Exclude rules. The token secret was rotated with
+one hour overlap, keeping the same token, policy, permissions and November 16 expiry;
+the matching ID/secret pair was saved to the existing staging Environment. A direct
+read-only probe of the legacy Worker then returned HTTP 200 and Cloudflare showed the
+token Last Seen timestamp updating. No policy or application setting was changed.
+
+The next release passed Access and build but stopped safely while parsing Wrangler's
+JSONL output. Wrangler 4.149.0 writes a `wrangler-session` record followed by one
+`version-upload` record; the lane incorrectly required exactly one record. The
+unuploaded version identity was read-only verified as SHA 45528f16 with restricted
+SEND_EMAIL binding, while staging traffic remained on b4257b5c. A shared strict
+parser now accepts exactly that ordered pair (or a single upload record for backward
+compatibility), rejects duplicates/unexpected records/invalid IDs, and is used by
+both staging and production adapters. Focused parser/release regression: 467 tests
+PASS; lint/typecheck/migrations/build pass (two pre-existing ignored generated-bundle
+warnings). A PR is required before the fixed lane can run on protected main.
