@@ -5,6 +5,7 @@ import { pathToFileURL } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
 import { ACCOUNT, ZONE, REPOSITORY, REPOSITORY_ID, audit, cloudflareRead } from './audit-cloud.mjs';
 import { prepareReleaseConfig, configHash } from './release-config.mjs';
+import { privateDomainReceipt, restorePrivateDomains, hasPrivateDomains } from './receipt-privacy.mjs';
 import { stagingFetch, stagingCurlExecute } from './access-http.mjs';
 import { planHosts, attachHosts, detachCreatedHosts, validateDomains, isDomainId } from './hosts.mjs';
 import { STAGING_GOOGLE_CLIENT_ID, unchangedAudit, verifyUploadedVersion, releaseStaging, recoveryAction, validateRecoveryContext } from './staging-release.mjs';
@@ -26,7 +27,7 @@ const uploadFile = resolve(output, 'upload.jsonl');
 const env = process.env;
 const readJson = (file) => JSON.parse(readFileSync(file, 'utf8'));
 const recipient = env.STAGING_OTP_TEST_RECIPIENT;
-const persist = (context) => writeFileSync(resolve(output, 'receipt.json'), serializeStagingReceipt(context, recipient));
+const persist = (context) => writeFileSync(resolve(output, 'receipt.json'), serializeStagingReceipt(privateDomainReceipt(context), recipient));
 const read = (path, sql) => cloudflareRead(path, env.CLOUDFLARE_API_TOKEN, { sql });
 const baseline = () => readJson('docs/domain-integration/evidence/live-runtime.json');
 const capture = (schema) => audit('staging', { read, schema, baseline: baseline(), stagingEmailRecipient: recipient });
@@ -236,6 +237,7 @@ export const provider = {
     persist(context);
     if (!context.mutationAttempted) { context.recovery = 'No traffic or hostname mutation attempted'; persist(context); return; }
     validateRecoveryContext(context, env);
+    if (hasPrivateDomains(context)) restorePrivateDomains(context, await domainList());
     const active = await currentDeployment();
     if (recoveryAction(context, active) === 'verify-previous') {
       await verifyRestored(context, active);

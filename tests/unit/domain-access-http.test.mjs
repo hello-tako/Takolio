@@ -67,7 +67,7 @@ it('scopes fetch credentials and forbids redirects and writes before transmissio
   const calls = [];
   const fetchImpl = async (...args) => { calls.push(args); return new Response('{}'); };
   await stagingFetch('https://staging.takolio.app/api/v1/health', { redirect: 'follow', credentials: 'include' }, { env, fetchImpl });
-  expect(calls[0][1].redirect).toBe('error');
+  expect(calls[0][1].redirect).toBe('manual');
   expect(calls[0][1].credentials).toBe('omit');
   expect(calls[0][1].headers.get('CF-Access-Client-Secret')).toBe(env.CF_ACCESS_CLIENT_SECRET);
   await expect(stagingFetch('https://evil.example', {}, { env, fetchImpl })).rejects.toThrow('approved staging origins');
@@ -89,4 +89,18 @@ it('rejects mismatched native URLs and curl options that could expose credential
   ]) {
     await expect(stagingCurlExecute('curl', args, { maxBuffer: 1024 }, 'https://staging.takolio.app', env)).rejects.toThrow();
   }
+});
+
+it('reports only redirect status and never follows or exposes its destination', async () => {
+  const { stagingFetch } = await import('../../scripts/domain/access-http.mjs');
+  let calls = 0;
+  const error = await stagingFetch('https://staging.takolio.app', {}, { env, fetchImpl: async (url, init) => {
+    calls += 1;
+    expect(init.redirect).toBe('manual');
+    return new Response(null, { status: 302, headers: { location: `https://outside.example/${env.CF_ACCESS_CLIENT_SECRET}` } });
+  } }).catch((value) => value);
+  expect(calls).toBe(1);
+  expect(error.message).toContain('HTTP 302');
+  expect(error.message).not.toContain('outside.example');
+  expect(error.message).not.toContain(env.CF_ACCESS_CLIENT_SECRET);
 });

@@ -7507,3 +7507,31 @@ Status: `DOMAIN_IMPLEMENTATION_IN_PROGRESS`.
 - Next: independent review and protected merge/checks; deploy opt-in staging,
   receive real OTP, complete Google/session/sandbox/user/PWA and rollback gates.
   Production still requires its separately reviewed lane and Environment approval.
+
+## Domain production adapter preparation - 2026-10-18 JST
+
+- PR #7 merged 02337f88; both approved-head hosted suites passed 8,859 tests.
+- PR #8 approved at 09799d5d; full local 395 files / 8,885 tests PASS; hosted checks pending.
+- Separate production branch prepares exact-main staging/certification/real-acceptance
+  prerequisites, protected production Environment, strict verified version upload,
+  individual hostname ownership, paired recovery and >=15-minute observation.
+- Initial ten production-specific tests PASS; complete validation/review pending.
+- Next: finish exact-main audit and staging release, integrate approved PR #8 in
+  sequence, accept real providers/browser/rollback, then review production tooling.
+- No application/traffic/domain/DNS/data/email/payment/Admin mutation occurred.
+
+## Domain release review checkpoint - 2026-10-18 JST
+
+- PR #8 merged normally at 0a9f63ca after exact-head review and both hosted checks
+  passed 395 files / 8,885 tests. Both exact-main checks, CI 39045489657 and Admin CI 39045489679, succeeded.
+- Fresh staging audit 39045069392 PASS; activation 39045380675 failed at Access
+  preflight with mutationAttempted=false. Dashboard login/Mac unlock are pending.
+- Production adapter plus unrelated-domain receipt commitments and safe Access
+  redirect diagnostics are prepared on feat/domain-production-gated-release.
+- PASS: 388 focused tests, lint/types/migrations/build/ESLint/public/diff checks.
+- Full local checks remain FAIL/incomplete from documented system sleep: first
+  four timeouts, then six failures and a worker timeout. No timeout/assertion changed.
+- Next: draft PR and exact-head hosted CI, independent review/normal merge, fresh
+  exact-main checks/audit, resolve Access, deploy restricted staging email, perform
+  real acceptance/rollback, then protected production certification and cutover.
+- Production is unchanged; Admin reserved. Status DOMAIN_SECURITY_REVIEW_REQUIRED.
