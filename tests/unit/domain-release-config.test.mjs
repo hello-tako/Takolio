@@ -43,6 +43,47 @@ describe('audit-bound runtime upload config', () => {
     expect(plan.buildEnvironment.VITE_MEAL_COMPOSITION_V2_ENABLED).toBe('true');
   });
 
+  it('accepts the live script identity and omitted automatic concurrency fields', () => {
+    const args = fixture();
+    args.receipt.operational.consumers = [{ consumer_id: 'a315a36230104821bec7fce83b1ea87d',
+      type: 'worker', script: 'frigo-staging', dead_letter_queue: 'frigo-scan-dlq-staging',
+      settings: { batch_size: 5, max_retries: 3, max_wait_time_ms: 10000, retry_delay: 0 } }];
+    const plan = prepareReleaseConfig(args);
+    expect(plan.config.queues.consumers).toEqual([{ queue: 'frigo-scan-queue-staging',
+      dead_letter_queue: 'frigo-scan-dlq-staging', max_batch_size: 5, max_batch_timeout: 10,
+      max_retries: 3, retry_delay: 0 }]);
+  });
+
+  it('preserves omitted automatic concurrency for a fully identified legacy consumer', () => {
+    const args = fixture();
+    delete args.receipt.operational.consumers[0].settings.max_concurrency;
+    expect(prepareReleaseConfig(args).config.queues.consumers[0]).not.toHaveProperty('max_concurrency');
+    args.receipt.operational.consumers[0].settings.max_concurrency = 2;
+    expect(prepareReleaseConfig(args).config.queues.consumers[0].max_concurrency).toBe(2);
+  });
+
+  it.each([
+    { script: 'frigo-staging', environment: 'other' },
+    { script: 'frigo-staging', service: 'frigo' },
+    { script: 'frigo', service: 'frigo-staging', environment: 'production' },
+    { service: 'frigo-staging' },
+    { service: 'frigo-staging', environment: 'other' },
+    {},
+  ])('rejects ambiguous or wrong queue ownership %j', (identity) => {
+    const args = fixture();
+    const consumer = args.receipt.operational.consumers[0];
+    delete consumer.service;
+    delete consumer.environment;
+    Object.assign(consumer, identity);
+    expect(() => prepareReleaseConfig(args)).toThrow('Queue consumer identity');
+  });
+
+  it.each([0, -1, 1.5, '2', false])('rejects invalid explicit concurrency %j', (value) => {
+    const args = fixture();
+    args.receipt.operational.consumers[0].settings.max_concurrency = value;
+    expect(() => prepareReleaseConfig(args)).toThrow('Unsupported queue consumer settings');
+  });
+
   it('rejects stale, future, wrong-SHA and cross-environment evidence', () => {
     for (const alter of [
       (a) => { a.receipt.observedAt = new Date(now - AUDIT_MAX_AGE_MS - 1).toISOString(); },

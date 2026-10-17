@@ -1,3 +1,36 @@
+# Queue consumer API compatibility - 2026-10-17
+
+PR #5 merged normally as `0900b013613fb1da62b0907b04eaf20734a9ac26` after
+vn-taphoanhatung approved exact head `4b54fe56` and both required hosted checks
+passed. CI and Admin CI each passed 393 files / 8,842 tests; Admin additionally
+passed the real Worker boundary, migration matrix, 12 browser cases and 10 keyboard
+repetitions. Exact-merge-main CI 39037543517 and Admin CI 39037543525 are pending.
+
+A supplementary read-only request against the actual staging Queue consumers API
+returned the exact Worker `script: frigo-staging` without the deprecated service
+`environment` field. Its automatic concurrency setting omits `max_concurrency`.
+Cloudflare's UI independently shows automatic concurrency and the expected
+5-item/10-second/3-retry consumer with its staging DLQ. No queue setting changed.
+
+The config adapter previously rejected both omissions. Two focused regression
+cases reproduce those failures on main. This fix accepts an exact direct script
+identity without a legacy environment, still requires production environment for
+legacy service identity, rejects conflicting identities and preserves omitted/null
+automatic concurrency by omitting the Wrangler override. Explicit positive limits
+remain unchanged; invalid values, unknown settings, wrong DLQ, extra consumers,
+source/CI/environment fences and all operational drift checks remain rejected.
+
+Validation: focused domain/release checks and changed-module lint are recorded in
+`docs/domain-integration/17-queue-consumer-compatibility.md`. Fresh exact-head CI
+and independent review are mandatory before merging this fix. This is a local
+config fix, not an upload, activation or live staging acceptance. The complete
+hosted audit still needs to pass. Staging email-provider setup and real
+Google/OTP/PayOS sandbox/session/mobile/PWA/rollback acceptance remain pending.
+Production is unchanged and Admin remains disabled/undeployed.
+Status: `DOMAIN_IMPLEMENTATION_IN_PROGRESS`.
+
+---
+
 # Domain activation preparation - 2026-10-17
 
 PR #3 merged normally into main as
