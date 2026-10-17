@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import { isDeepStrictEqual } from 'node:util';
 import { captureBindings, configBindings } from './bindings.mjs';
+import { preserveStagingEmailConfig } from './staging-email-policy.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const profiles = JSON.parse(readFileSync(resolve(root, 'config/domain-profiles.json'), 'utf8'));
@@ -15,13 +16,14 @@ export function sourceIdentity(cwd) {
   return git('rev-parse', 'HEAD');
 }
 
-export function prepareConfig(environment, snapshot, sha) {
+export function prepareConfig(environment, snapshot, sha, { stagingEmailRecipient } = {}) {
   if (!['staging', 'production'].includes(environment) || !/^[a-f0-9]{40}$/.test(sha)) throw new Error('Invalid environment or source SHA');
   if (snapshot.accountId !== 'ef250a88911fd24073cb73d1c07e0218' || snapshot.zoneId !== '9284fb2186987f14f810818583acaa46') throw new Error('Account/zone mismatch');
-  const base = readConfig(environment === 'production' ? 'wrangler.jsonc' : 'wrangler.staging.jsonc');
+  let base = readConfig(environment === 'production' ? 'wrangler.jsonc' : 'wrangler.staging.jsonc');
   const live = snapshot.workers[environment];
   if (live.name !== base.name || !/^[a-f0-9-]{36}$/.test(live.versionId)) throw new Error('Worker identity mismatch');
   if (!Array.isArray(live.typedBindings)) throw new Error('Complete typed bindings are required');
+  if (environment === 'staging') base = preserveStagingEmailConfig(base, live, stagingEmailRecipient);
   const captured = captureBindings(live.typedBindings);
   const expected = captureBindings(configBindings(base));
   if (!isDeepStrictEqual(captured, expected) || !isDeepStrictEqual(captured.bindings, live.bindings)) throw new Error('Binding drift requires a new audit');

@@ -10,7 +10,7 @@ const equal = (actual, expected, message) => {
 export const configHash = (bytes) => createHash('sha256').update(bytes).digest('hex');
 
 // This prepares an upload only. Hostnames are attached separately after runtime proof.
-export function prepareReleaseConfig({ manifest, receipt, baseline, now = Date.now() }) {
+export function prepareReleaseConfig({ manifest, receipt, baseline, stagingEmailRecipient, now = Date.now() }) {
   const environment = manifest.environment;
   if (!['staging', 'production'].includes(environment) || !/^[a-f0-9]{40}$/.test(manifest.sha ?? '') ||
       manifest.repository !== REPOSITORY || receipt.repository !== REPOSITORY || receipt.repositoryId !== REPOSITORY_ID ||
@@ -27,7 +27,7 @@ export function prepareReleaseConfig({ manifest, receipt, baseline, now = Date.n
   }
   const snapshot = structuredClone(baseline);
   snapshot.workers[environment] = worker;
-  const plan = prepareConfig(environment, snapshot, manifest.sha);
+  const plan = prepareConfig(environment, snapshot, manifest.sha, { stagingEmailRecipient });
   const config = plan.config;
   const live = worker.vars;
   const flags = ['MEAL_PLANNER_ENABLED', 'MEAL_COMPOSITION_V2_ENABLED'];

@@ -10280,3 +10280,20 @@ remain acceptance gates. A separately reviewed production adapter and independen
 production Environment approval are still required. No application upload,
 traffic activation, hostname attachment, DNS, data, payment or Admin mutation
 has occurred in this checkpoint.
+
+## Restricted staging email preparation - 2026-10-17
+
+The owner-approved test inbox is stored only as staging Environment secret
+STAGING_OTP_TEST_RECIPIENT. No native binding or email send has occurred. The
+staging release lane now has a false-by-default opt-in for one restricted native
+SEND_EMAIL destination. It rejects alternate Resend configuration, other targets
+and unrelated binding changes; audits and subsequent releases preserve the exact
+restriction. Public receipts redact the address and recovery verifies the original
+config commitment after private rehydration. See domain-integration/19.
+
+Validation: 10 domain/release/SW files / 369 tests PASS, full lint exit 0 (two
+existing generated-bundle warnings), both TS checks, migrations, build, strict
+Wrangler upload dry-run, public scan and diff check PASS. The first new positive
+audit test exposed a shared mutable negative-test fixture; deep-cloning its live
+metadata fixed fixture isolation without changing assertions/timeouts. Live OTP,
+staging acceptance and the reviewed production adapter remain pending.

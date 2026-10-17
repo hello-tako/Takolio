@@ -15,6 +15,10 @@ on:
         description: Intentionally deploy staging and attach its two Takolio hostnames
         type: boolean
         default: false
+      enable_staging_email:
+        description: Add native email restricted to the private approved staging recipient
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -57,6 +61,8 @@ jobs:
           RELEASE_SHA: ${{ inputs.ref }}
           HARDENED_SHA: ${{ inputs.hardened_sha }}
           CONFIRM_STAGING: ${{ inputs.confirm_staging }}
+          ENABLE_STAGING_EMAIL: ${{ inputs.enable_staging_email }}
+          STAGING_OTP_TEST_RECIPIENT: ${{ secrets.STAGING_OTP_TEST_RECIPIENT }}
           GH_TOKEN: ${{ github.token }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -72,6 +78,7 @@ jobs:
           RELEASE_VERIFY_TOKEN: ${{ secrets.STAGING_RELEASE_VERIFY_TOKEN }}
           CF_ACCESS_CLIENT_ID: ${{ secrets.CF_ACCESS_CLIENT_ID }}
           CF_ACCESS_CLIENT_SECRET: ${{ secrets.CF_ACCESS_CLIENT_SECRET }}
+          STAGING_OTP_TEST_RECIPIENT: ${{ secrets.STAGING_OTP_TEST_RECIPIENT }}
         run: node scripts/domain/staging-provider.mjs recover
       - name: Retain sanitized receipt including failed or uncertain outcomes
         if: always()

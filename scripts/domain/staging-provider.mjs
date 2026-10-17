@@ -9,6 +9,7 @@ import { stagingFetch, stagingCurlExecute } from './access-http.mjs';
 import { planHosts, attachHosts, detachCreatedHosts, validateDomains, isDomainId } from './hosts.mjs';
 import { STAGING_GOOGLE_CLIENT_ID, unchangedAudit, verifyUploadedVersion, releaseStaging, recoveryAction, validateRecoveryContext } from './staging-release.mjs';
 import { capturedCommand } from '../cloudflare-deploy-retry.mjs';
+import { addStagingEmail, serializeStagingReceipt, hydrateStagingReceipt } from './staging-email-policy.mjs';
 import { validateReleaseSource, migrationManifest, hostedCi, requireCurrentHostedMain,
   fetchRecipeAuthorityEvidence, verifyPreviousRecipeAuthority, verifyRecipeAuthorityEvidence,
   CATALOG_RELEASE_MANIFEST_PATH, verifyStableWorkerDeployment } from '../release-check.mjs';
@@ -24,10 +25,11 @@ const configFile = resolve(output, 'wrangler.json');
 const uploadFile = resolve(output, 'upload.jsonl');
 const env = process.env;
 const readJson = (file) => JSON.parse(readFileSync(file, 'utf8'));
-const persist = (context) => writeFileSync(resolve(output, 'receipt.json'), `${JSON.stringify(context, null, 2)}\n`);
+const recipient = env.STAGING_OTP_TEST_RECIPIENT;
+const persist = (context) => writeFileSync(resolve(output, 'receipt.json'), serializeStagingReceipt(context, recipient));
 const read = (path, sql) => cloudflareRead(path, env.CLOUDFLARE_API_TOKEN, { sql });
 const baseline = () => readJson('docs/domain-integration/evidence/live-runtime.json');
-const capture = (schema) => audit('staging', { read, schema, baseline: baseline() });
+const capture = (schema) => audit('staging', { read, schema, baseline: baseline(), stagingEmailRecipient: recipient });
 const domainList = async () => validateDomains(await read(`${base}/workers/domains?per_page=100`));
 const inventory = async () => ({ dns: await read(`/zones/${ZONE}/dns_records?per_page=100`),
   routes: await read(`/zones/${ZONE}/workers/routes`) });
@@ -145,7 +147,8 @@ export const provider = {
       mealCompositionV2Enabled: vars.MEAL_COMPOSITION_V2_ENABLED === 'true', recipeCatalogMode: vars.RECIPE_CATALOG_MODE,
       recipeCatalogCanaryPercent: Number(vars.RECIPE_CATALOG_D1_CANARY_PERCENT), recipeCatalogCutoverEnabled: vars.RECIPE_CATALOG_CUTOVER_ENABLED === 'true' };
     const receipt = { repository: REPOSITORY, repositoryId: REPOSITORY_ID, sha, ...checks, ...snapshot };
-    const plan = prepareReleaseConfig({ manifest, receipt, baseline: baseline() });
+    const plan = prepareReleaseConfig({ manifest, receipt, baseline: baseline(), stagingEmailRecipient: recipient });
+    if (env.ENABLE_STAGING_EMAIL === 'true') addStagingEmail(plan, snapshot.worker, recipient);
     plan.config.vars.GOOGLE_CLIENT_ID = STAGING_GOOGLE_CLIENT_ID;
     plan.bytes = `${JSON.stringify(plan.config, null, 2)}\n`;
     plan.sha256 = configHash(plan.bytes);
@@ -263,12 +266,15 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
     if (mode === 'release') return releaseStaging(provider);
     if (mode !== 'recover') throw new Error('Usage: staging-provider.mjs [release|recover]');
     const file = resolve(output, 'receipt.json');
-    if (existsSync(file)) return provider.recover(readJson(file));
+    if (existsSync(file)) {
+      const context = hydrateStagingReceipt(readFileSync(file, 'utf8'), recipient);
+      return provider.recover(context);
+    }
     console.log('No recorded staging activation intent; no recovery mutation attempted');
   };
   execute().catch((error) => {
     let message = error instanceof Error ? error.message : 'Staging release failed';
-    for (const name of ['GH_TOKEN', 'CLOUDFLARE_API_TOKEN', 'RELEASE_VERIFY_TOKEN', 'CF_ACCESS_CLIENT_ID', 'CF_ACCESS_CLIENT_SECRET']) {
+    for (const name of ['GH_TOKEN', 'CLOUDFLARE_API_TOKEN', 'RELEASE_VERIFY_TOKEN', 'CF_ACCESS_CLIENT_ID', 'CF_ACCESS_CLIENT_SECRET', 'STAGING_OTP_TEST_RECIPIENT']) {
       if (env[name]) message = message.replaceAll(env[name], '[redacted]');
     }
     mkdirSync(output, { recursive: true });

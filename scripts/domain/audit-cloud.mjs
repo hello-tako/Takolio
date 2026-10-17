@@ -4,6 +4,7 @@ import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
 import { captureBindings } from './bindings.mjs';
+import { expectedStagingBindings, serializeStagingReceipt } from './staging-email-policy.mjs';
 import { hostedCi, migrationManifest, requireCurrentHostedMain, verifyMigrationLedger, verifyStableWorkerDeployment } from '../release-check.mjs';
 
 export const ACCOUNT = 'ef250a88911fd24073cb73d1c07e0218';
@@ -78,7 +79,7 @@ export function sanitizeRuntime(version, deployment) {
   };
 }
 
-export async function audit(environment, { read, schema, baseline } = {}) {
+export async function audit(environment, { read, schema, baseline, stagingEmailRecipient } = {}) {
   const name = targets[environment];
   if (!name) throw new Error('Audit requires staging or production');
   const base = `/accounts/${ACCOUNT}`;
@@ -96,9 +97,15 @@ export async function audit(environment, { read, schema, baseline } = {}) {
     read(`/zones/${ZONE}/dns_records?per_page=100`), read(`/zones/${ZONE}/workers/routes`),
   ]);
   if (zone.id !== ZONE || zone.name !== 'takolio.app' || zone.account?.id !== ACCOUNT || zone.status !== 'active') throw new Error('Cloudflare zone/account is not the active verified target');
+  if (environment === 'staging' && stagingEmailRecipient && runtime.secretNames.includes('RESEND_API_KEY')) {
+    throw new Error('Private staging email must not have an alternate provider');
+  }
   const current = baseline.workers[environment];
+  const expectedTyped = environment === 'staging' && current
+    ? expectedStagingBindings(current.typedBindings, runtime.typedBindings, stagingEmailRecipient)
+    : current?.typedBindings;
   if (!current || !isDeepStrictEqual(runtime.bindings, current.bindings) ||
-      !isDeepStrictEqual(runtime.typedBindings, current.typedBindings)) throw new Error('Worker binding drift');
+      !isDeepStrictEqual(runtime.typedBindings, expectedTyped)) throw new Error('Worker binding drift');
   const queueName = runtime.bindings.SCAN_QUEUE;
   // Queue totals ignore search filters; inventory the complete account before selecting.
   const queues = await read(`${base}/queues?per_page=100`);
@@ -141,11 +148,13 @@ async function main() {
   await requireCurrentHostedMain({ sha, repository: REPOSITORY });
   const baseline = JSON.parse(readFileSync('docs/domain-integration/evidence/live-runtime.json', 'utf8'));
   const receipt = await audit(environment, { schema: migrationManifest(process.cwd(), sha), baseline,
+    stagingEmailRecipient: environment === 'staging' ? env.STAGING_OTP_TEST_RECIPIENT : undefined,
     read: (path, sql) => cloudflareRead(path, env.CLOUDFLARE_API_TOKEN, { sql }) });
   await requireCurrentHostedMain({ sha, repository: REPOSITORY });
   const output = resolve('.artifacts/domain/audit');
   mkdirSync(output, { recursive: true });
-  writeFileSync(resolve(output, `${environment}.json`), `${JSON.stringify({ repository: REPOSITORY, repositoryId: REPOSITORY_ID, sha, ci, ...receipt }, null, 2)}\n`);
+  writeFileSync(resolve(output, `${environment}.json`), serializeStagingReceipt({ repository: REPOSITORY, repositoryId: REPOSITORY_ID, sha, ci, ...receipt },
+    environment === 'staging' ? env.STAGING_OTP_TEST_RECIPIENT : undefined));
   process.stdout.write(`Read-only ${environment} audit completed for ${sha}. No deployment, DNS or data mutation.\n`);
 }
 
