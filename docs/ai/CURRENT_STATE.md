@@ -1,3 +1,24 @@
+# Repository migration checkpoint - 2026-10-17
+
+Source and history are now published at hello-tako/Takolio (repository ID
+1422954151). Original main 526596a8cd857984ad2b69901a8c7b0e9d6bccc2 and Admin
+R2 72a9b7ff46aa71cf95b4a948c52b710e46d28bd6 are preserved without rewriting
+957 historical commits. All 168 original refs map to 166 verified remote branches.
+The former remote R2 tip is retained under archive/source-origin/.
+
+Migration details and exact ref mapping: docs/repository-migration/2026-10-17.md
+and docs/repository-migration/ref-map.json. This checkpoint changes documentation
+only. Fresh remote restoration and CI status are recorded in the external receipt;
+publication is not test or release certification. Historical reports and old repo
+identity pins remain provenance and do not authorize the new repository to release.
+
+Next: review repository identity updates and recreate required protections/CI
+configuration before release work. Real staging requires separate authorization.
+ADMIN_V1_PRODUCTION_READINESS_BLOCKED; ADMIN_V1_STAGING_AUTHORIZATION_REQUIRED.
+No merge, deployment, external database operation or production secret change.
+
+---
+
 # Admin R2 local recovery/readiness checkpoint - 2026-10-17
 
 Status: ADMIN_V1_PRODUCTION_READINESS_BLOCKED. Runtime source:

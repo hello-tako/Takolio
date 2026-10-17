@@ -1,3 +1,24 @@
+# Repository migration checkpoint - 2026-10-17
+
+Source and history are now published at hello-tako/Takolio (repository ID
+1422954151). Original main 526596a8cd857984ad2b69901a8c7b0e9d6bccc2 and Admin
+R2 72a9b7ff46aa71cf95b4a948c52b710e46d28bd6 are preserved without rewriting
+957 historical commits. All 168 original refs map to 166 verified remote branches.
+The former remote R2 tip is retained under archive/source-origin/.
+
+Migration details and exact ref mapping: docs/repository-migration/2026-10-17.md
+and docs/repository-migration/ref-map.json. This checkpoint changes documentation
+only. Fresh remote restoration and CI status are recorded in the external receipt;
+publication is not test or release certification. Historical reports and old repo
+identity pins remain provenance and do not authorize the new repository to release.
+
+Next: review repository identity updates and recreate required protections/CI
+configuration before release work. Real staging requires separate authorization.
+ADMIN_V1_PRODUCTION_READINESS_BLOCKED; ADMIN_V1_STAGING_AUTHORIZATION_REQUIRED.
+No merge, deployment, external database operation or production secret change.
+
+---
+
 > **Handoff (2026-10-15):** Admin Console work is preserved on branch `handoff/admin-v1-r2-20261015`. Start at `docs/admin/handoff/START_HERE.md`. Status: R1 `ADMIN_V1_R1_CHANGES_REQUIRED`; R2 not started; not certified for staging or production. Commands and results with provenance: `docs/admin/handoff/TEST_AND_EVIDENCE.md`.
 # Takolio mascot and full-app visual upgrade checkpoint - 2026-10-16 JST
 
