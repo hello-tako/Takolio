@@ -17,19 +17,49 @@ export async function cloudflareRead(path, token, { fetchImpl = fetch, sql } = {
   if (!path.startsWith(`/accounts/${ACCOUNT}/`) && path !== `/zones/${ZONE}` && !path.startsWith(`/zones/${ZONE}/`)) throw new Error('Unapproved Cloudflare target');
   const query = sql !== undefined;
   if (query && (path !== `/accounts/${ACCOUNT}/d1/database/${sql.databaseId}/query` || sql.sql !== 'SELECT name FROM d1_migrations ORDER BY name')) throw new Error('Only the fixed migration-ledger query is allowed');
-  const response = await fetchImpl(`https://api.cloudflare.com/client/v4${path}`, {
-    method: query ? 'POST' : 'GET',
-    headers: { Authorization: `Bearer ${token}`, ...(query ? { 'Content-Type': 'application/json' } : {}) },
-    ...(query ? { body: JSON.stringify({ sql: sql.sql }) } : {}),
-    redirect: 'error', signal: AbortSignal.timeout(30000),
-  });
-  let body;
-  try { body = await response.json(); } catch { throw new Error(`Cloudflare returned invalid JSON: ${response.status} ${path}`); }
-  if (!response.ok || body.success !== true) {
-    const codes = (body.errors || []).map((error) => error.code).filter(Number.isInteger);
-    throw new Error(`Cloudflare read failed: HTTP ${response.status} ${path}; codes=${codes.join(',')}`);
+  const readPage = async (requestPath) => {
+    const response = await fetchImpl(`https://api.cloudflare.com/client/v4${requestPath}`, {
+      method: query ? 'POST' : 'GET',
+      headers: { Authorization: `Bearer ${token}`, ...(query ? { 'Content-Type': 'application/json' } : {}) },
+      ...(query ? { body: JSON.stringify({ sql: sql.sql }) } : {}),
+      redirect: 'error', signal: AbortSignal.timeout(30000),
+    });
+    let body;
+    try { body = await response.json(); } catch { throw new Error(`Cloudflare returned invalid JSON: ${response.status} ${requestPath}`); }
+    if (!response.ok || body.success !== true) {
+      const codes = (body.errors || []).map((error) => error.code).filter(Number.isInteger);
+      throw new Error(`Cloudflare read failed: HTTP ${response.status} ${requestPath}; codes=${codes.join(',')}`);
+    }
+    return body;
+  };
+  const body = await readPage(path);
+  const deploymentsPath = new URL(`https://api.cloudflare.com${path}`);
+  const deploymentList = [`/accounts/${ACCOUNT}/workers/scripts/frigo/deployments`,
+    `/accounts/${ACCOUNT}/workers/scripts/frigo-staging/deployments`].includes(deploymentsPath.pathname);
+  if (deploymentList) {
+    const entries = body.result?.deployments;
+    const info = body.result_info;
+    if (!Array.isArray(entries)) throw new Error('Invalid deployment history response');
+    if (info?.total_pages > 1) {
+      if (query || deploymentsPath.searchParams.get('per_page') !== '100' ||
+          !Number.isSafeInteger(info.total_pages) || info.total_pages > 100 ||
+          info.page !== 1 || info.per_page !== 100 || !Number.isSafeInteger(info.total_count)) {
+        throw new Error('Unsupported deployment pagination metadata');
+      }
+      for (let page = 2; page <= info.total_pages; page += 1) {
+        deploymentsPath.searchParams.set('page', String(page));
+        const next = await readPage(`${deploymentsPath.pathname}${deploymentsPath.search}`);
+        if (next.result_info?.page !== page || next.result_info?.total_pages !== info.total_pages ||
+            next.result_info?.total_count !== info.total_count || next.result_info?.per_page !== 100 ||
+            !Array.isArray(next.result?.deployments)) throw new Error('Deployment pagination changed during capture');
+        entries.push(...next.result.deployments);
+      }
+    }
+    if ((info?.total_count !== undefined && info.total_count !== entries.length) ||
+        new Set(entries.map((entry) => entry.id)).size !== entries.length) throw new Error('Incomplete or duplicate deployment history');
+  } else if (body.result_info?.total_pages > 1 || body.result_info?.total_count > body.result?.length) {
+    throw new Error(`Paginated inventory requires explicit follow-up: ${path}`);
   }
-  if (body.result_info?.total_pages > 1 || body.result_info?.total_count > body.result?.length) throw new Error(`Paginated inventory requires explicit follow-up: ${path}`);
   return body.result;
 }
 
@@ -53,7 +83,7 @@ export async function audit(environment, { read, schema, baseline } = {}) {
   if (!name) throw new Error('Audit requires staging or production');
   const base = `/accounts/${ACCOUNT}`;
   const script = `${base}/workers/scripts/${name}`;
-  const deployments = await read(`${script}/deployments`);
+  const deployments = await read(`${script}/deployments?per_page=100`);
   const entries = Array.isArray(deployments) ? deployments : deployments.deployments;
   if (!Array.isArray(entries) || entries.length === 0) throw new Error('No Worker deployments returned');
   const deployment = [...entries].sort((a, b) => Date.parse(b.created_on) - Date.parse(a.created_on))[0];

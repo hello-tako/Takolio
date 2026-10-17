@@ -1,3 +1,61 @@
+# Domain activation preparation - 2026-10-17
+
+PR #3 merged normally into main as
+`0de18ff90963ae84dbaa4dc16eb0257a250510d1`. Both required merge-commit jobs,
+`validate` (39025377241) and `validate-admin` (39025377368), passed. The first
+live staging Domain Infrastructure Audit (39026886923) stopped before producing
+a complete receipt because the deployments endpoint returned multiple pages.
+The follow-up reads bounded deployment pages, checks page/count consistency and
+duplicate IDs, and still refuses incomplete unrelated inventories.
+
+The new hostname operations module plans only the configured Takolio hosts,
+preserves the complete supplied domain inventory and records each mutation intent
+and returned ID before proceeding. It refuses DNS/route/ownership conflicts,
+external drift and ambiguous responses. Rollback can detach only IDs created by
+that receipt; correct pre-existing and unrelated domains are retained. It is an
+injected-I/O module, not an enabled workflow, deploy command or live mutation.
+Pinned Wrangler's bulk custom-domain reconciliation is unsuitable for the first
+cutover because it can replace omitted origins and override existing DNS.
+
+Google OAuth production origin `https://takolio.app` was saved and verified in
+Google Cloud project `selinow-auth`. Separate public client
+`Takolio Staging Web` was created with only `https://staging.takolio.app` and no
+redirect URI. Its client ID is
+`509963441971-c8ij1hv901p0fsljhd2ur1qc4t63432g.apps.googleusercontent.com`.
+No client secret was retained. This is provider configuration evidence, not a
+successful hosted sign-in. No new Worker version or domain/DNS change occurred.
+
+Local checks: two focused files / 17 tests, targeted ESLint, both TypeScript
+checks, Admin configuration preflight, public text scan and whitespace checks
+PASS. Fresh hosted exact-head validation is pending.
+Temporary credential files were previously emptied; a local API diagnostic using
+those empty files was rejected before a complete audit. It is not evidence of a
+Cloudflare permission failure. Secrets remain in their GitHub Environments.
+
+Cloudflare Access `Takolio Staging Access` is now saved for both staging
+hostnames and the `frigo-staging` Worker URLs after the owner confirmed creation.
+Its exact-email Allow policy is
+`Takolio staging approved tester` (policy ID `814bebea-4fcf-4582-88ea-d21fd12d153c`)
+and the application ID is `bd0bae35-56b4-4766-a3b5-9de378ba93ad`. The policy
+allows only the privately recorded owner-approved inbox for a 24-hour session.
+An unauthenticated HTTPS probe of the legacy Worker now returns HTTP 302 to
+Cloudflare Access. The two new staging hosts remain unreachable until DNS/domain
+attachment. No Worker application version was deployed. A local read-only OAuth
+diagnostic successfully read the real deployment history through the new code,
+then stopped on missing DNS-read scope (HTTP 403 / code 10000). This is distinct
+from the scoped Environment tokens, which still require a hosted audit.
+Staging OAuth/email bindings,
+real Google/OTP delivery and sandbox PayOS acceptance, fresh complete cloud audits,
+the reviewed deploy adapter, staging rollback rehearsal and production
+Environment review remain gates. Status: `DOMAIN_IMPLEMENTED_LOCAL_VERIFIED`;
+production domain cutover is pending, Admin remains reserved and undeployed.
+
+Next: publish this follow-up PR, obtain exact-head checks and independent human
+review, merge normally, rerun the read-only audit, then complete the reviewed
+activation workflow and live staging acceptance before production.
+
+---
+
 # Admin release guard follow-up - 2026-10-17
 
 Hosted CI `validate` passed on `09d425a1` (run 39021612765). The required

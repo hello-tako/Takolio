@@ -15,7 +15,7 @@ function fixture(environment) {
     script_runtime: { ...live.runtime, assets: { ...live.runtime.assets, raw_run_worker_first: false } },
   } };
   const responses = {
-    [`${script}/deployments`]: { deployments: [deployment] },
+    [`${script}/deployments?per_page=100`]: { deployments: [deployment] },
     [`${script}/versions/${live.versionId}`]: version,
     [`${script}/subdomain`]: { enabled: environment === 'staging', previews_enabled: environment === 'staging' },
     [`${script}/schedules`]: { schedules: [{ cron: '0 3 * * *' }] },
@@ -97,6 +97,28 @@ describe('read-only domain infrastructure audit', () => {
     await expect(cloudflareRead(`/accounts/${ACCOUNT}/d1/database/fixture/query`, 'fixture', { sql: { databaseId: 'fixture', sql: 'DELETE FROM users' } })).rejects.toThrow('fixed migration-ledger');
     await expect(cloudflareRead(`/zones/${ZONE}/dns_records`, 'fixture', { fetchImpl: async () => ({ ok: true, status: 200,
       json: async () => ({ success: true, result: [], result_info: { total_pages: 2 } }) }) })).rejects.toThrow('Paginated inventory');
+  });
+
+
+  it('reads every deployment page and rejects inconsistent or partial history', async () => {
+    const path = `/accounts/${ACCOUNT}/workers/scripts/frigo-staging/deployments?per_page=100`;
+    const calls = [];
+    const response = (page, count = 101) => ({ ok: true, status: 200, json: async () => ({ success: true,
+      result: { deployments: Array.from({ length: page === 1 ? 100 : 1 }, (_, index) => ({ id: String((page - 1) * 100 + index) })) },
+      result_info: { page, per_page: 100, total_pages: 2, total_count: count },
+    }) });
+    const history = await cloudflareRead(path, 'fixture', { fetchImpl: async (url) => {
+      calls.push(url);
+      return response(calls.length);
+    } });
+    expect(history.deployments).toHaveLength(101);
+    expect(calls[1]).toBe(`https://api.cloudflare.com/client/v4${path}&page=2`);
+    let page = 0;
+    await expect(cloudflareRead(path, 'fixture', { fetchImpl: async () => response(++page, page === 1 ? 101 : 102) }))
+      .rejects.toThrow('pagination changed');
+    await expect(cloudflareRead(path, 'fixture', { fetchImpl: async () => ({ ok: true, status: 200,
+      json: async () => ({ success: true, result: { deployments: [] }, result_info: { total_count: 2 } }) }) }))
+      .rejects.toThrow('Incomplete');
   });
 
   it('uses environment-scoped credentials, canonical main and read-only GitHub permissions', () => {
