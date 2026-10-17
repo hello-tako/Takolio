@@ -48,27 +48,34 @@ export function prepareReleaseConfig({ manifest, receipt, baseline, now = Date.n
     throw new Error('Production exposure requires a separate reviewed change');
   }
   const [consumer] = operational.consumers;
+  // Modern script identities omit the legacy service environment field.
+  const directScript = consumer?.script === worker.name &&
+    (consumer.service === undefined || consumer.service === worker.name) &&
+    (consumer.environment === undefined || consumer.environment === 'production');
+  const legacyService = consumer?.script === undefined && consumer?.service === worker.name &&
+    consumer.environment === 'production';
   if (operational.consumers.length !== 1 || consumer.type !== 'worker' ||
-      (consumer.script ?? consumer.service) !== worker.name || consumer.environment !== 'production' ||
+      !(directScript || legacyService) ||
       typeof consumer.consumer_id !== 'string' || !consumer.consumer_id ||
       consumer.dead_letter_queue !== config.queues.consumers[0].dead_letter_queue) {
     throw new Error('Queue consumer identity or dead-letter queue requires review');
   }
   const settings = consumer.settings;
   const allowed = ['batch_size', 'max_wait_time_ms', 'max_retries', 'retry_delay', 'max_concurrency'];
+  const automaticConcurrency = settings?.max_concurrency === undefined || settings.max_concurrency === null;
   if (!settings || Object.keys(settings).some((key) => !allowed.includes(key)) ||
       !Number.isInteger(settings.batch_size) || settings.batch_size <= 0 ||
       !Number.isInteger(settings.max_wait_time_ms) || settings.max_wait_time_ms < 0 || settings.max_wait_time_ms % 1000 !== 0 ||
       !Number.isInteger(settings.max_retries) || settings.max_retries < 0 ||
       !Number.isInteger(settings.retry_delay) || settings.retry_delay < 0 ||
-      !(settings.max_concurrency === null || (Number.isInteger(settings.max_concurrency) && settings.max_concurrency > 0))) {
+      !(automaticConcurrency || (Number.isInteger(settings.max_concurrency) && settings.max_concurrency > 0))) {
     throw new Error('Unsupported queue consumer settings');
   }
   config.queues.consumers = [{ queue: worker.bindings.SCAN_QUEUE,
     dead_letter_queue: consumer.dead_letter_queue,
     max_batch_size: settings.batch_size, max_batch_timeout: settings.max_wait_time_ms / 1000,
     max_retries: settings.max_retries, retry_delay: settings.retry_delay,
-    ...(settings.max_concurrency === null ? {} : { max_concurrency: settings.max_concurrency }) }];
+    ...(automaticConcurrency ? {} : { max_concurrency: settings.max_concurrency }) }];
   config.workers_dev = operational.workers_dev;
   config.preview_urls = operational.preview_urls;
   config.triggers = { crons: [...operational.crons] };
