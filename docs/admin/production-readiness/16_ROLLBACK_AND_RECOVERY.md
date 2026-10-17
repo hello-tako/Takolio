@@ -1,9 +1,9 @@
 # Rollback and recovery
 
-Runtime source: `066c35ad670bc877756150c2055e3844dd7a17ce`. Main baseline: `526596a8cd857984ad2b69901a8c7b0e9d6bccc2`.
+Runtime source: `9395f0e31ea599f1eb7780a8eba36964fed7c483`. Main baseline: `526596a8cd857984ad2b69901a8c7b0e9d6bccc2`.
 Prepared by implementation owner `/root` (Codex); independent reviewer is
 `/root/independent_admin_review`. Evidence environment: local macOS arm64,
-Node 24.19.0, pnpm 10.33.2, Python 3.12.14, `TMPDIR=/private/tmp`.
+Node v24.16.0, pnpm 10.33.2, Python 3.9.6, `TMPDIR=/private/tmp`.
 Evidence timestamps are UTC. Commands, exit codes, log digests and limitations
 are in `evidence/verification.json` and `12_REGRESSION_RESULTS.md`.
 No live Cloudflare operation or operator approval is implied.
@@ -11,8 +11,11 @@ No live Cloudflare operation or operator approval is implied.
 ## Immediate containment
 
 For suspected identity, disclosure, audit or binding failure, an authorized
-operator must set ADMIN_CONSOLE_ENABLED=false on the exact Admin target and
-verify protected HTML/assets/API fail closed externally. Revoke affected
+operator should use the separately signed emergency-disable workflow to replace
+the exact Admin target with the minimal denial Worker and verify protected
+HTML/assets/API fail closed externally. A separately authorized incident action
+may set ADMIN_CONSOLE_ENABLED=false on the exact ordinary runtime target when
+that path is healthy; the prepared emergency lane is independent of its health. Revoke affected
 sessions/identity and disable the Access policy/service binding as appropriate
 under the incident plan. Preserve audit and release evidence; do not mutate
 customer billing/data or delete authority history. This procedure is prepared;
@@ -56,3 +59,5 @@ normal push is verified. No force push or history rewrite is required.
 
 Actual staging backup, compatible release switch, customer regression and
 emergency shutdown demonstration are OPEN (ST19/ST20).
+
+The implemented emergency adapter replaces only the exact Admin target with an import-free denial Worker; it bypasses D1/facade/secret health dependencies and uses a separate protected workflow lane. rollback-disabled restores only signed certified compatible disabled versions after full live authority checks and compensates back to shutdown on failure. See 10 for exact controls. Actual remote propagation and restoration remain ST20 NOT RUN.

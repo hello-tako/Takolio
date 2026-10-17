@@ -1,6 +1,6 @@
 # Independent review
 
-Frozen runtime candidate: `066c35ad670bc877756150c2055e3844dd7a17ce`.
+Historical backend runtime candidate: `066c35ad670bc877756150c2055e3844dd7a17ce`.
 Reviewer: `/root/independent_admin_review`, a separate delegated agent that did
 not implement R2 or any remediation. Implementation owner: `/root` (Codex).
 This is independent local source review within this task; it is not a human
@@ -35,8 +35,23 @@ removed from the record.
 
 Real Cloudflare Access/IdP/JWKS rotation/logout, actual D1 concurrency, live
 binding and route identities, verified human independence/custody, protected
-GitHub environments, live release/migration/recovery adapters, operational scale,
+GitHub environments, actual release/migration/recovery provider behavior, operational scale,
 staging rollback/shutdown and the full staged matrix remain unverified.
 F3/F7 and live acceptance criteria are not declared independently closed.
 Current reports support targeted local remediation review only. The strongest
 overall status remains `ADMIN_V1_PRODUCTION_READINESS_BLOCKED`.
+
+## Current release candidate
+
+Exact source: `9395f0e31ea599f1eb7780a8eba36964fed7c483`. Separate reviewer `/root/independent_admin_review`
+reviewed the adapter/provider/workflows, containment/restoration, route inventory,
+smoke, signatures, artifact authority and staging-report producer. Reports for
+feb04933/a915b5a9 retain earlier CHANGES REQUIRED decisions and the withdrawn
+digest false positive. Current exact-source report is
+`evidence/review/independent-review-9395f0e3.md`; use its actual result,
+commands and limitations. This is targeted local independent agent review,
+not external human approval, staging certification or complete security signoff.
+
+## Final generated-packet audit
+
+The separate reviewer checked the generated evidence/source manifests, raw-log hashes, concurrent-failure/complete-serial-run attribution, historical evidence, public normalization, current receipt, protected customer paths, required19documents and20NOT RUN staging cases. Report: evidence/review/independent-final-evidence-audit-9395f0e3.md. Disposition is PASS within that local evidence-audit scope, with no actionable finding. This does not certify the later archive bytes, external security acceptance or actual staging; the output packaging process separately verifies bundle/ZIP/digests.

@@ -1,17 +1,15 @@
 {
-  "checkedAt": "2026-10-16T22:28:59.001465+00:00",
-  "packageHead": "066c35ad670bc877756150c2055e3844dd7a17ce",
-  "runtimeSourceSha": "066c35ad670bc877756150c2055e3844dd7a17ce",
+  "checkedAt": "2026-10-17T01:13:01.039891+00:00",
+  "sourceSha": "9395f0e31ea599f1eb7780a8eba36964fed7c483",
+  "packageHead": "9395f0e31ea599f1eb7780a8eba36964fed7c483",
   "result": "PASS",
-  "sourceFilesVerifiedAgainstGitAndWorktree": 2290,
-  "adminSourceManifestSha256": "2b0c55193c4b0081a5e86c873a00ad05d7614d1c09e41179b27246b740cd2bfe",
-  "commands": 14,
-  "requiredDocuments": 19,
-  "customerProtectedPathsUnchanged": true,
-  "documentationOnlyDelta": true,
+  "sourceFilesVerified": 2298,
+  "commands": 15,
   "rawLogDigestsVerified": true,
   "artifactDigestsVerified": true,
-  "productionDeployed": false,
+  "customerProtectedPathsUnchanged": true,
+  "documentationOnlyDelta": true,
   "stagingCertified": false,
-  "limitation": "No new full-suite run on documentation packaging; executable/config/test bytes equal exact tested source. Hosted final-SHA checks and staging are still required."
+  "productionDeployed": false,
+  "limitation": "Full suite belongs to frozen source; documentation packaging is compared by source manifest. Hosted checks and actual staging remain required."
 }

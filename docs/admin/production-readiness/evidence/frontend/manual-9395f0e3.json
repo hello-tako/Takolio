@@ -1,0 +1,18 @@
+{
+  "sourceSha": "9395f0e31ea599f1eb7780a8eba36964fed7c483",
+  "reviewedAt": "2026-10-17T01:08:50.618162+00:00",
+  "reviewer": "/root (implementation owner, visual inspection)",
+  "scope": "Two current E2E screenshots only; no manual interactive, device or screen-reader acceptance.",
+  "observations": [
+    {
+      "path": "evidence/frontend/a11y/screens/1440-overview.png",
+      "sha256": "84935d0cabeaa01b83296900302c4a9f82112555d969e56dd60b76e03a877a61",
+      "observation": "Desktop overview is coherent; fixture provenance and partial/unavailable metric labels are visible."
+    },
+    {
+      "path": "evidence/frontend/a11y/screens/390-settings.png",
+      "sha256": "57c01618c295a0c26a1594885543a52e1a1b891e044ad3aff3559cf5d97c1b5d",
+      "observation": "Mobile settings cards and forms fit the viewport; wide permission, grant and session tables use their intended bounded horizontal scroll containers."
+    }
+  ]
+}

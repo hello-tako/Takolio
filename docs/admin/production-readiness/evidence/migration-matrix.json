@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-16T20:55:35.213Z",
+  "generatedAt": "2026-10-16T23:09:26.344Z",
   "source": {
-    "head": "066c35ad670bc877756150c2055e3844dd7a17ce",
-    "tree": "341df1dd57e1034890007b3fec9a22c020fbadfb",
+    "head": "9395f0e31ea599f1eb7780a8eba36964fed7c483",
+    "tree": "72276a5a3ecc8754c7537ac23ff2c8639d5cb79c",
     "matrixScriptSha256": "749d8e3dabb58b56aa878a9e4203082b90c4c6d9a7adc420986c3684e49bcf8f",
     "historicalR1": "25140baa99ef0aecc5e8d0e53206132e01e0f765",
     "currentMainBaseline": "526596a8cd857984ad2b69901a8c7b0e9d6bccc2",
@@ -21,7 +21,7 @@
       ]
     },
     "workerExpectedVersion": "3",
-    "workerSourceSha256": "889952f978d828adc492455c0dc73fd6e11c438ce45f84cd34e894f915ba74a5"
+    "workerSourceSha256": "12e42af1d84877942fcbbac63f17950d8baf3153a9e90b9508ac1a17cd81cc71"
   },
   "boundary": {
     "WRANGLER_SEND_METRICS": "false",
@@ -34,7 +34,7 @@
       "scenario": "pinned current-main ancestry",
       "expectation": "HEAD origin/main merge-base matches fixed baseline 526596a8cd857984ad2b69901a8c7b0e9d6bccc2",
       "observed": {
-        "head": "066c35ad670bc877756150c2055e3844dd7a17ce",
+        "head": "9395f0e31ea599f1eb7780a8eba36964fed7c483",
         "mergeBase": "526596a8cd857984ad2b69901a8c7b0e9d6bccc2",
         "pinnedBaseline": "526596a8cd857984ad2b69901a8c7b0e9d6bccc2"
       },
@@ -100,7 +100,7 @@
             "0040_strict_otp_foundation.sql",
             "0041_checkout_admission.sql"
           ],
-          "checkedAt": "2026-10-16T20:54:00.152Z"
+          "checkedAt": "2026-10-16T23:07:42.744Z"
         }
       },
       "pass": true
@@ -156,7 +156,7 @@
               "0040_strict_otp_foundation.sql",
               "0041_checkout_admission.sql"
             ],
-            "checkedAt": "2026-10-16T20:54:01.669Z"
+            "checkedAt": "2026-10-16T23:07:44.403Z"
           }
         },
         "schema": {
@@ -240,7 +240,7 @@
             "names": [
               "0001_admin_console_foundation.sql"
             ],
-            "checkedAt": "2026-10-16T20:54:26.551Z"
+            "checkedAt": "2026-10-16T23:08:11.031Z"
           }
         }
       },
@@ -312,7 +312,7 @@
               "0040_strict_otp_foundation.sql",
               "0041_checkout_admission.sql"
             ],
-            "checkedAt": "2026-10-16T20:54:29.736Z"
+            "checkedAt": "2026-10-16T23:08:14.807Z"
           }
         },
         "adminPresent": true,
@@ -324,7 +324,7 @@
       "scenario": "current-main customer ledger identity",
       "expectation": "HEAD and working migrations match pinned 43-file current main (names + SHA-256)",
       "observed": {
-        "head": "066c35ad670bc877756150c2055e3844dd7a17ce",
+        "head": "9395f0e31ea599f1eb7780a8eba36964fed7c483",
         "baseline": "526596a8cd857984ad2b69901a8c7b0e9d6bccc2",
         "currentMain": "b09ff3fe485cb2b16595b58b2abadd663c89c67acaf91224b218bf6e574e6209",
         "headManifest": "b09ff3fe485cb2b16595b58b2abadd663c89c67acaf91224b218bf6e574e6209",
@@ -388,7 +388,7 @@
               "0042_family_meals_preferences_saved_shopping.sql",
               "0043_shopping_demand_review.sql"
             ],
-            "checkedAt": "2026-10-16T20:54:41.222Z"
+            "checkedAt": "2026-10-16T23:08:26.668Z"
           }
         },
         "schema": {
@@ -450,7 +450,7 @@
               "0040_strict_otp_foundation.sql",
               "0041_checkout_admission.sql"
             ],
-            "checkedAt": "2026-10-16T20:54:53.883Z"
+            "checkedAt": "2026-10-16T23:08:40.428Z"
           }
         },
         "additions": [
@@ -507,7 +507,7 @@
               "0042_family_meals_preferences_saved_shopping.sql",
               "0043_shopping_demand_review.sql"
             ],
-            "checkedAt": "2026-10-16T20:54:53.883Z"
+            "checkedAt": "2026-10-16T23:08:40.428Z"
           }
         },
         "schema": {
@@ -636,7 +636,7 @@
               "0002_admin_identity_governance_r2.sql",
               "0003_admin_governance_transaction_guards.sql"
             ],
-            "checkedAt": "2026-10-16T20:55:25.896Z"
+            "checkedAt": "2026-10-16T23:09:15.634Z"
           }
         },
         "state": {
@@ -668,7 +668,7 @@
               "0002_admin_identity_governance_r2.sql",
               "0003_admin_governance_transaction_guards.sql"
             ],
-            "checkedAt": "2026-10-16T20:55:29.584Z"
+            "checkedAt": "2026-10-16T23:09:19.919Z"
           }
         },
         "state": {

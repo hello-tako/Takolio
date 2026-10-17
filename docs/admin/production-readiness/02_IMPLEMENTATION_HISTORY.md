@@ -79,3 +79,10 @@ blockers. No production or real staging operation is performed.
 | ba762a205fd890efe4af47ef6c0fd7cd6f45fc14 | fix(admin): permit safe offboarding with three eligible operators remaining |
 | 6c3c68147efb3f95b435b9452df34e76bea17a82 | test(admin): align governance UI with three-operator floor |
 | 066c35ad670bc877756150c2055e3844dd7a17ce | fix(admin): allow isolated synthetic fixtures in CI |
+
+## Release containment and evidence producer
+
+Current source `9395f0e31ea599f1eb7780a8eba36964fed7c483` adds signed disabled release adapters and five manual
+workflows, including independent containment, strict smoke, restore compensation,
+account-wide route checks and signed staging-report artifact packaging. Full local
+checks and independent review are attributed to this exact source in 12/13.

@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-16T20:53:45.072Z",
+  "generatedAt": "2026-10-16T23:07:27.802Z",
   "mode": "current",
   "root": "<local-repository>",
-  "head": "066c35ad670bc877756150c2055e3844dd7a17ce",
+  "head": "9395f0e31ea599f1eb7780a8eba36964fed7c483",
   "wranglerVersion": "4.149.0",
   "boundary": {
     "WRANGLER_SEND_METRICS": "false",
@@ -12,6 +12,810 @@
   },
   "pass": true,
   "scenarios": [
+    {
+      "name": "emergency shutdown has no D1, facade, secret, asset or auth dependencies",
+      "pass": true,
+      "checks": [
+        {
+          "label": "GET / closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "GET /admin closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "GET /admin/ closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "GET /admin/index.html closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/index.html",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "GET /admin/users closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/users",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "GET /admin/users/fx_user_001 closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/users/fx_user_001",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "GET /admin/favicon.svg closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/favicon.svg",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "GET /%61dmin/ closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/%61dmin/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "GET /admin%2F closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin%2F",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "GET //admin/ closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "//admin/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "GET /ADMIN/ closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/ADMIN/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "GET /api/v1/admin/auth/config closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/api/v1/admin/auth/config",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "GET /api/v1/admin/me closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/api/v1/admin/me",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "GET /admin/assets/admin-BpYQhRzb.js closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/assets/admin-BpYQhRzb.js",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "POST / closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "POST",
+            "path": "/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "POST /admin closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "POST",
+            "path": "/admin",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "POST /admin/ closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "POST",
+            "path": "/admin/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "POST /admin/index.html closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "POST",
+            "path": "/admin/index.html",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "POST /admin/users closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "POST",
+            "path": "/admin/users",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "POST /admin/users/fx_user_001 closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "POST",
+            "path": "/admin/users/fx_user_001",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "POST /admin/favicon.svg closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "POST",
+            "path": "/admin/favicon.svg",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "POST /%61dmin/ closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "POST",
+            "path": "/%61dmin/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "POST /admin%2F closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "POST",
+            "path": "/admin%2F",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "POST //admin/ closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "POST",
+            "path": "//admin/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "POST /ADMIN/ closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "POST",
+            "path": "/ADMIN/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "POST /api/v1/admin/auth/config closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "POST",
+            "path": "/api/v1/admin/auth/config",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "POST /api/v1/admin/me closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "POST",
+            "path": "/api/v1/admin/me",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "POST /admin/assets/admin-BpYQhRzb.js closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "POST",
+            "path": "/admin/assets/admin-BpYQhRzb.js",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "OPTIONS / closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "OPTIONS",
+            "path": "/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "OPTIONS /admin closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "OPTIONS",
+            "path": "/admin",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "OPTIONS /admin/ closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "OPTIONS",
+            "path": "/admin/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "OPTIONS /admin/index.html closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "OPTIONS",
+            "path": "/admin/index.html",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "OPTIONS /admin/users closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "OPTIONS",
+            "path": "/admin/users",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "OPTIONS /admin/users/fx_user_001 closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "OPTIONS",
+            "path": "/admin/users/fx_user_001",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "OPTIONS /admin/favicon.svg closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "OPTIONS",
+            "path": "/admin/favicon.svg",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "OPTIONS /%61dmin/ closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "OPTIONS",
+            "path": "/%61dmin/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "OPTIONS /admin%2F closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "OPTIONS",
+            "path": "/admin%2F",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "OPTIONS //admin/ closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "OPTIONS",
+            "path": "//admin/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "OPTIONS /ADMIN/ closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "OPTIONS",
+            "path": "/ADMIN/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "OPTIONS /api/v1/admin/auth/config closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "OPTIONS",
+            "path": "/api/v1/admin/auth/config",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "OPTIONS /api/v1/admin/me closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "OPTIONS",
+            "path": "/api/v1/admin/me",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "OPTIONS /admin/assets/admin-BpYQhRzb.js closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "OPTIONS",
+            "path": "/admin/assets/admin-BpYQhRzb.js",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        }
+      ]
+    },
     {
       "name": "admin Worker, production template (ADMIN_CONSOLE_ENABLED=false)",
       "pass": true,
@@ -29,6 +833,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -47,6 +852,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -65,6 +871,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -83,6 +890,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -101,6 +909,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -119,6 +928,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -137,6 +947,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -155,6 +966,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -173,6 +985,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -191,6 +1004,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -209,6 +1023,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -227,6 +1042,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -245,6 +1061,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -263,6 +1080,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -281,6 +1099,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -299,6 +1118,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -317,6 +1137,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -335,6 +1156,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -353,6 +1175,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -371,6 +1194,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -389,6 +1213,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -407,6 +1232,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -425,6 +1251,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "other",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -443,6 +1270,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "other",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -461,6 +1289,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "other",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -479,6 +1308,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "other",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -497,6 +1327,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -515,6 +1346,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -539,6 +1371,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -557,6 +1390,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -575,6 +1409,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -593,6 +1428,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -611,6 +1447,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -629,6 +1466,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -647,6 +1485,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -665,6 +1504,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -683,6 +1523,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -701,6 +1542,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -719,6 +1561,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -737,6 +1580,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -755,6 +1599,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -773,6 +1618,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -791,6 +1637,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -809,6 +1656,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -827,6 +1675,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -845,6 +1694,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -863,6 +1713,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -881,6 +1732,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -899,6 +1751,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -917,6 +1770,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -935,6 +1789,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "other",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -953,6 +1808,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "other",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -971,6 +1827,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "other",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -989,6 +1846,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "other",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1007,6 +1865,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1025,6 +1884,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1049,6 +1909,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1067,6 +1928,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1085,6 +1947,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1103,6 +1966,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1121,6 +1985,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1139,6 +2004,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1157,6 +2023,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1175,6 +2042,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1193,6 +2061,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1211,6 +2080,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1229,6 +2099,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1247,6 +2118,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1265,6 +2137,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1283,6 +2156,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1301,6 +2175,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1319,6 +2194,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1337,6 +2213,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1355,6 +2232,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1373,6 +2251,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1391,6 +2270,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1409,6 +2289,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1427,6 +2308,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1445,6 +2327,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "other",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1463,6 +2346,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "other",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1481,6 +2365,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "other",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1499,6 +2384,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "other",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1517,6 +2403,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1535,6 +2422,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": "true",
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1559,6 +2447,7 @@
             "contentType": "text/html; charset=utf-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": null,
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1577,6 +2466,7 @@
             "contentType": "text/html; charset=utf-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": null,
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1595,6 +2485,7 @@
             "contentType": null,
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": null,
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1613,6 +2504,7 @@
             "contentType": "text/javascript; charset=utf-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": null,
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1631,6 +2523,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": null,
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1649,6 +2542,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": null,
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1667,6 +2561,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": null,
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1694,6 +2589,7 @@
             "contentType": "application/json",
             "csp": "other",
             "cacheControl": "no-store",
+            "disabledMarker": null,
             "setCookie": [],
             "cors": [],
             "json": {
@@ -1715,6 +2611,7 @@
             "contentType": "text/plain; charset=UTF-8",
             "csp": "admin",
             "cacheControl": "no-store",
+            "disabledMarker": null,
             "setCookie": [],
             "cors": [],
             "json": null
@@ -1832,6 +2729,7 @@
             "contentType": "text/html; charset=utf-8",
             "csp": "customer",
             "cacheControl": "no-cache, no-store, must-revalidate",
+            "disabledMarker": null,
             "setCookie": [],
             "cors": [
               "access-control-allow-credentials",
@@ -1853,6 +2751,7 @@
             "contentType": "text/html; charset=utf-8",
             "csp": "customer",
             "cacheControl": "no-cache, no-store, must-revalidate",
+            "disabledMarker": null,
             "setCookie": [],
             "cors": [
               "access-control-allow-credentials",
@@ -1874,6 +2773,7 @@
             "contentType": "text/html; charset=utf-8",
             "csp": "other",
             "cacheControl": "no-cache, no-store, must-revalidate",
+            "disabledMarker": null,
             "setCookie": [],
             "cors": [
               "access-control-allow-credentials",
@@ -1982,7 +2882,7 @@
           "observed": {
             "exit": 0,
             "bundleFile": "admin-worker.js",
-            "bytes": 319543,
+            "bytes": 319675,
             "typeofGuardUnreplaced": false,
             "identifierPresent": false,
             "containsFixturePassword": false,
@@ -1996,7 +2896,7 @@
           "observed": {
             "exit": 0,
             "bundleFile": "admin-worker.js",
-            "bytes": 319543,
+            "bytes": 319675,
             "typeofGuardUnreplaced": false,
             "identifierPresent": false,
             "containsFixturePassword": false,
@@ -2010,7 +2910,7 @@
           "observed": {
             "exit": 0,
             "bundleFile": "admin-worker.js",
-            "bytes": 346463,
+            "bytes": 346595,
             "typeofGuardUnreplaced": false,
             "identifierPresent": false,
             "containsFixturePassword": false,

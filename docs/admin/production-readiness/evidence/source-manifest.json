@@ -1,7 +1,7 @@
 {
-  "sourceSha": "066c35ad670bc877756150c2055e3844dd7a17ce",
-  "sourceTree": "341df1dd57e1034890007b3fec9a22c020fbadfb",
-  "scope": "All tracked non-documentation files, including shared contracts, packages, customer source, fixtures, data, lockfiles, workflows and transitive test helpers; documentation tree remains identified by sourceTree.",
+  "sourceSha": "9395f0e31ea599f1eb7780a8eba36964fed7c483",
+  "sourceTree": "72276a5a3ecc8754c7537ac23ff2c8639d5cb79c",
+  "scope": "All tracked non-documentation source, dependencies, data, tests, configurations and workflows.",
   "files": [
     {
       "path": ".dev.vars.example",
@@ -10,28 +10,33 @@
     },
     {
       "path": ".github/workflows/admin-breakglass.yml",
-      "bytes": 1765,
-      "sha256": "ddb0ee90313b02bdbdf0c7510ff4dc4ae01c5b87301b7cbe02caee283c0a368b"
+      "bytes": 5355,
+      "sha256": "adfea1a7385030f8b949648ad059e5d4ae0046345c01e86eee2d0fb8bbc899ec"
     },
     {
       "path": ".github/workflows/admin-ci.yml",
-      "bytes": 2088,
-      "sha256": "2c6a495cd8507f8d1e13e530bf1ed13de5b2fb1b7373fac7bd5acd895e4cd534"
+      "bytes": 2094,
+      "sha256": "af9d70ce69a4e8f66668a1db4991bbdd6b14c862652b76fbce2e3c60a4bdc70e"
     },
     {
       "path": ".github/workflows/admin-d1-migrate.yml",
-      "bytes": 1753,
-      "sha256": "3fc1928a68b258467007a8f994d7e2c4d4a30a64b1282e0eee36d7f6eea9a93c"
+      "bytes": 5339,
+      "sha256": "88a7a3dfea28f17009e4574e678f32ff8617ca9ed13a4dfe9a6c9245caba605a"
+    },
+    {
+      "path": ".github/workflows/admin-emergency-disable.yml",
+      "bytes": 3253,
+      "sha256": "e4c46f1bd54e8708702502053952c03c00bf98da718533d20015530dfb9f6a1e"
     },
     {
       "path": ".github/workflows/admin-production-deploy.yml",
-      "bytes": 1765,
-      "sha256": "fb731df1040b5f21ec18b4f677b206381d499b03c61ccbb4d67c5fe88a4f1e81"
+      "bytes": 5126,
+      "sha256": "2569838000852c070fe5e744072ddd231abf91a29e0c74e58dc63a64fdc7e519"
     },
     {
       "path": ".github/workflows/admin-staging-deploy.yml",
-      "bytes": 1753,
-      "sha256": "117a1df2ccf72e9374a73f813d4634132f3e1dc6b61c73be35c22f446c48915f"
+      "bytes": 6477,
+      "sha256": "c222f4d2701790bb0aebf2b3e07ec8f011da6b53f1c3a73ce0c03d9d9810f959"
     },
     {
       "path": ".github/workflows/ci.yml",
@@ -232,6 +237,11 @@
       "path": "admin/index.html",
       "bytes": 538,
       "sha256": "74d99c516ac8cda576842314e96f48f9609ca3db196bc6534611fd7ef6aa3993"
+    },
+    {
+      "path": "admin/release-policy.json",
+      "bytes": 1075,
+      "sha256": "18c25b53533274502c21577713c14f3ae2e002c85f9176fb2993b0b6c6dee149"
     },
     {
       "path": "artifacts/recipe-refresh-v2/audit-summary.json",
@@ -4539,10 +4549,9 @@
       "sha256": "f4307e5995db9f3333f621274a17c26eaf5d48d938aafbfddee9bc4da226d5cf"
     },
     {
-      "path": "patches/braces%403.0.3.patch",
+      "path": "patches/braces\u00403.0.3.patch",
       "bytes": 4425,
-      "sha256": "3f11ec1cd189913f4389e48eb8614f5f7d38b6e14b4b8aa37a46a85dcdfc9751",
-      "pathEncoding": "percent-encoded UTF-8; decode before filesystem lookup"
+      "sha256": "3f11ec1cd189913f4389e48eb8614f5f7d38b6e14b4b8aa37a46a85dcdfc9751"
     },
     {
       "path": "playwright.admin.config.ts",
@@ -6680,9 +6689,19 @@
       "sha256": "36a1cdcf1303dbf0846f94f82fb3c63d9115fcdbea21dffad24af07f36ee2bb7"
     },
     {
+      "path": "scripts/admin-release-adapter.mjs",
+      "bytes": 22217,
+      "sha256": "0d24b2bde93ced92c9e6adbe0717134391a7ef3ad619ef1650a330f0f2849241"
+    },
+    {
       "path": "scripts/admin-release-preflight.mjs",
-      "bytes": 4893,
-      "sha256": "db240387adcb5b623362864e72a120c77c104359e8f50ab9170c30ea2599cbbd"
+      "bytes": 4948,
+      "sha256": "4fb2a29f4e2a05d6898c152218c94199a4b2bb43535e91b2f02f4c3c07b4584d"
+    },
+    {
+      "path": "scripts/admin-release-provider.mjs",
+      "bytes": 21333,
+      "sha256": "9ebaeb16b7faab72f45597185a2fc1f20fbe1dc18c75a8b0e74398d4d4c3e9a4"
     },
     {
       "path": "scripts/admin-schema-smoke.py",
@@ -6690,9 +6709,14 @@
       "sha256": "aca4519650e5ed4afe75047ecd570c9a52ed6b537c09ba422ce0ac9d68d97069"
     },
     {
+      "path": "scripts/admin-staging-attest.mjs",
+      "bytes": 1601,
+      "sha256": "2acdb002e90aa2858b9460aede5ee8a610cf2c69f9cdef8c8ebaccab26b7cbb4"
+    },
+    {
       "path": "scripts/admin-workerd-check.mjs",
-      "bytes": 23594,
-      "sha256": "b3c80c1985b6d225ad7d454300c2bcbfb95719f31891f3ecce516a4888e3f81e"
+      "bytes": 24627,
+      "sha256": "61e73d2e605bba8bdae24437b25251a2d2954a2f5af7721203ca6123d0daaab9"
     },
     {
       "path": "scripts/ai-eval.mjs",
@@ -8640,6 +8664,11 @@
       "sha256": "7809b68412e4945ec16e826ce0c52c847a6cd538f214013bd007e5047432845d"
     },
     {
+      "path": "src/worker/admin-shutdown-worker.mjs",
+      "bytes": 433,
+      "sha256": "462b300dd05c8262a6c499160598573c620bdaaaf85df21adde2f892dd9beb8c"
+    },
+    {
       "path": "src/worker/admin-worker.ts",
       "bytes": 3634,
       "sha256": "9d9551e94c25111b39d2ea17165c73c8a565459850f19de7b0ebbcff1370dabf"
@@ -8796,8 +8825,8 @@
     },
     {
       "path": "src/worker/routes/admin/auth.ts",
-      "bytes": 19505,
-      "sha256": "889952f978d828adc492455c0dc73fd6e11c438ce45f84cd34e894f915ba74a5"
+      "bytes": 19637,
+      "sha256": "12e42af1d84877942fcbbac63f17950d8baf3153a9e90b9508ac1a17cd81cc71"
     },
     {
       "path": "src/worker/routes/admin/billing-ai.ts",
@@ -10150,6 +10179,16 @@
       "sha256": "74862bd8c059a1bc980c54ef851930b8e7bdbb6a43fe091897f78f4ce2e53f7a"
     },
     {
+      "path": "tests/unit/admin-release-adapter.test.mjs",
+      "bytes": 21797,
+      "sha256": "9dfda91a31cb475869c5b8fd03a99f4358c39f0919fcf780ca4116106bc06e83"
+    },
+    {
+      "path": "tests/unit/admin-release-provider.test.mjs",
+      "bytes": 23132,
+      "sha256": "8999161fffdb974a04c3d586406e9f2345f95c7a44cff583084945072d8ae396"
+    },
+    {
       "path": "tests/unit/admin-remediation-ui.test.tsx",
       "bytes": 5516,
       "sha256": "6678ecd39a9e1450b430682209e37c50d532b6094d6d863bad79ed5d89a82d84"
@@ -11454,6 +11493,5 @@
       "bytes": 3395,
       "sha256": "a808f19bca08a780bbc683b372c7f9b7345e15a2fb3b07de130244a7b8fa2346"
     }
-  ],
-  "pathEncodingNote": "One package patch/version filename is percent-encoded to avoid an email-pattern scanner false positive; every source path remains reconstructable."
+  ]
 }

@@ -1,9 +1,9 @@
 # Frontend and UX QA
 
-Runtime source: `066c35ad670bc877756150c2055e3844dd7a17ce`. Main baseline: `526596a8cd857984ad2b69901a8c7b0e9d6bccc2`.
+Runtime source: `9395f0e31ea599f1eb7780a8eba36964fed7c483`. Main baseline: `526596a8cd857984ad2b69901a8c7b0e9d6bccc2`.
 Prepared by implementation owner `/root` (Codex); independent reviewer is
 `/root/independent_admin_review`. Evidence environment: local macOS arm64,
-Node 24.19.0, pnpm 10.33.2, Python 3.12.14, `TMPDIR=/private/tmp`.
+Node v24.16.0, pnpm 10.33.2, Python 3.9.6, `TMPDIR=/private/tmp`.
 Evidence timestamps are UTC. Commands, exit codes, log digests and limitations
 are in `evidence/verification.json` and `12_REGRESSION_RESULTS.md`.
 No live Cloudflare operation or operator approval is implied.
@@ -41,3 +41,5 @@ recorded local rows cannot be treated as complete production cost. Future
 instrumentation needs an independently scoped durable event writer, provider
 usage reconciliation, retry/deduplication policy, retention and cost validation.
 It is not silently added to customer runtime by Admin remediation.
+
+Current limited manual inspection is recorded in evidence/frontend/manual-9395f0e3.json, binding desktop overview (1440) and mobile settings (390) to their SHA256. The implementation owner observed coherent fixture labels and layout, with bounded horizontal tables on mobile. Retained visual-qa.json/contact-sheet files named 066c35ad belong to the prior candidate, preserved in evidence/historical-066c35ad; they are not fresh acceptance for this source.

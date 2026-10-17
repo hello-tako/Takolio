@@ -1,5 +1,21 @@
 [
   {
+    "sha": "9395f0e31ea599f1eb7780a8eba36964fed7c483",
+    "subject": "fix(admin): produce protected signed staging evidence artifacts"
+  },
+  {
+    "sha": "a915b5a9713a01caa7f29c4935108a1152a29c8f",
+    "subject": "fix(admin): isolate emergency containment and bind release evidence"
+  },
+  {
+    "sha": "feb049334eeb0e54ffcfe4fbc397f8eddbebe27f",
+    "subject": "feat(admin): prepare disabled signed release adapters and protected workflows"
+  },
+  {
+    "sha": "77f81b7bff1c29790a67ea48475aa720a86b9f2e",
+    "subject": "docs(admin): preserve exact-source readiness evidence and release blockers"
+  },
+  {
     "sha": "066c35ad670bc877756150c2055e3844dd7a17ce",
     "subject": "fix(admin): allow isolated synthetic fixtures in CI"
   },

@@ -1,66 +1,68 @@
 # Exact-source regression results
 
-Frozen runtime source: `066c35ad670bc877756150c2055e3844dd7a17ce`. Tree: `341df1dd57e1034890007b3fec9a22c020fbadfb`.
-Owner: `/root` (Codex). Start: 2026-10-16T20:52:04.696Z.
-Finish: 2026-10-16T20:59:30.583Z. Environment: macOS arm64, Node 24.19.0,
-pnpm 10.33.2, Python 3.12.14, TMPDIR=/private/tmp and recorded CI=true.
-All commands completed with exit 0. Source and checkout remained unchanged.
-Machine-readable commands, exact start/finish times, exits, signals, paths and
-raw-log SHA256 are retained in `evidence/verification.json`. The runner did not
-serialize GITHUB_ACTIONS; its value for this full run is not certified by that
-record. The handoff reports true, but this is a provenance limitation. The
-independent final-delta report separately records its 25-test command using both
-CI=true and GITHUB_ACTIONS=true. Original verification bytes remain unchanged.
+Frozen source: `9395f0e31ea599f1eb7780a8eba36964fed7c483`. Tree: `72276a5a3ecc8754c7537ac23ff2c8639d5cb79c`.
+Implementation owner: `/root` (Codex). Started 2026-10-16T23:05:40.862Z; finished
+2026-10-17T01:08:26.747Z. Environment: darwin/arm64, Node v24.16.0,
+pnpm 10.33.2, Python 3.9.6. Recorded environment:
+`{"CI": "true", "GITHUB_ACTIONS": "true", "PYTHONDONTWRITEBYTECODE": "1", "TMPDIR": "/private/tmp", "WRANGLER_SEND_METRICS": "false"}`.
+All 15 commands completed with exit 0 and the frozen checkout
+remained unchanged. Exact arguments, timestamps, raw-log SHA256 and results are
+in `evidence/verification.json`. Original 066c35ad evidence is preserved under
+`evidence/historical-066c35ad/`; it is not relabeled as this candidate.
 
-| Check | Exact command | Exit / result | Started UTC | Raw artifact path |
-| --- | --- | --- | --- | --- |
-| focused | `pnpm exec vitest run tests/integration/admin-console.test.ts tests/integration/admin-remediation.test.ts tests/integration/admin-r2-auth.test.ts tests/integration/admin-r2-governance.test.ts tests/integration/admin-r2-governance-races.test.ts tests/integration/admin-r2-facade.test.ts tests/integration/admin-r2-settings.test.ts tests/unit/admin-recovery.test.mjs tests/unit/admin-config.test.ts tests/unit/admin-local-tooling.test.ts tests/unit/admin-r2-routing.test.ts --maxWorkers=1 --testTimeout=20000` | 0 / PASS | 2026-10-16T20:52:04.712Z | `.artifacts/admin-r2/066c35ad/focused.log` |
-| lint | `pnpm lint` | 0 / PASS | 2026-10-16T20:52:37.197Z | `.artifacts/admin-r2/066c35ad/lint.log` |
-| typecheck | `pnpm typecheck` | 0 / PASS | 2026-10-16T20:52:44.003Z | `.artifacts/admin-r2/066c35ad/typecheck.log` |
-| build | `pnpm build` | 0 / PASS | 2026-10-16T20:53:00.880Z | `.artifacts/admin-r2/066c35ad/build.log` |
-| migration-smoke | `pnpm check:migrations` | 0 / PASS | 2026-10-16T20:53:10.196Z | `.artifacts/admin-r2/066c35ad/migration-smoke.log` |
-| workerd | `node scripts/admin-workerd-check.mjs --out .artifacts/admin-r2/066c35ad/workerd.json` | 0 / PASS | 2026-10-16T20:53:10.652Z | `.artifacts/admin-r2/066c35ad/workerd.log` |
-| migration-matrix | `node scripts/admin-migration-matrix.mjs --out .artifacts/admin-r2/066c35ad/migration-matrix.json` | 0 / PASS | 2026-10-16T20:53:45.102Z | `.artifacts/admin-r2/066c35ad/migration-matrix.log` |
-| admin-e2e | `pnpm test:admin:e2e` | 0 / PASS | 2026-10-16T20:55:35.268Z | `.artifacts/admin-r2/066c35ad/admin-e2e.log` |
-| keyboard-repeat | `pnpm exec playwright test -c playwright.admin.config.ts -g scrollable tables --repeat-each 10` | 0 / PASS | 2026-10-16T20:56:26.417Z | `.artifacts/admin-r2/066c35ad/keyboard-repeat.log` |
-| tracked-screenshots | `git diff --exit-code -- docs/admin/screenshots` | 0 / PASS | 2026-10-16T20:56:46.393Z | `.artifacts/admin-r2/066c35ad/tracked-screenshots.log` |
-| configuration | `node scripts/admin-release-preflight.mjs` | 0 / PASS | 2026-10-16T20:56:46.409Z | `.artifacts/admin-r2/066c35ad/configuration.log` |
-| public-scan | `python3 scripts/admin-public-scan.py` | 0 / PASS | 2026-10-16T20:56:46.579Z | `.artifacts/admin-r2/066c35ad/public-scan.log` |
-| dependency-audit | `pnpm audit --audit-level=high` | 0 / PASS | 2026-10-16T20:56:46.708Z | `.artifacts/admin-r2/066c35ad/dependency-audit.log` |
-| full-suite | `pnpm test` | 0 / PASS | 2026-10-16T20:56:47.367Z | `.artifacts/admin-r2/066c35ad/full-suite.log` |
+| Check | Command | Exit / result | Local raw artifact |
+| --- | --- | --- | --- |
+| focused | `pnpm exec vitest run tests/integration/admin-console.test.ts tests/integration/admin-remediation.test.ts tests/integration/admin-r2-auth.test.ts tests/integration/admin-r2-governance.test.ts tests/integration/admin-r2-governance-races.test.ts tests/integration/admin-r2-facade.test.ts tests/integration/admin-r2-settings.test.ts tests/unit/admin-recovery.test.mjs tests/unit/admin-config.test.ts tests/unit/admin-local-tooling.test.ts tests/unit/admin-r2-routing.test.ts --maxWorkers=1 --testTimeout=20000` | 0 / PASS | `.artifacts/admin-r2/9395f0e3/focused.log` |
+| adapter | `pnpm exec vitest run tests/unit/admin-release-adapter.test.mjs tests/unit/admin-release-provider.test.mjs --maxWorkers=1` | 0 / PASS | `.artifacts/admin-r2/9395f0e3/adapter.log` |
+| lint | `pnpm lint` | 0 / PASS | `.artifacts/admin-r2/9395f0e3/lint.log` |
+| typecheck | `pnpm typecheck` | 0 / PASS | `.artifacts/admin-r2/9395f0e3/typecheck.log` |
+| build | `pnpm build` | 0 / PASS | `.artifacts/admin-r2/9395f0e3/build.log` |
+| migration-smoke | `pnpm check:migrations` | 0 / PASS | `.artifacts/admin-r2/9395f0e3/migration-smoke.log` |
+| workerd | `node scripts/admin-workerd-check.mjs --out .artifacts/admin-r2/9395f0e3/workerd.json` | 0 / PASS | `.artifacts/admin-r2/9395f0e3/workerd.log` |
+| migration-matrix | `node scripts/admin-migration-matrix.mjs --out .artifacts/admin-r2/9395f0e3/migration-matrix.json` | 0 / PASS | `.artifacts/admin-r2/9395f0e3/migration-matrix.log` |
+| admin-e2e | `pnpm test:admin:e2e` | 0 / PASS | `.artifacts/admin-r2/9395f0e3/admin-e2e.log` |
+| keyboard-repeat | `pnpm exec playwright test -c playwright.admin.config.ts -g scrollable tables --repeat-each 10` | 0 / PASS | `.artifacts/admin-r2/9395f0e3/keyboard-repeat.log` |
+| tracked-screenshots | `git diff --exit-code -- docs/admin/screenshots` | 0 / PASS | `.artifacts/admin-r2/9395f0e3/tracked-screenshots.log` |
+| configuration | `node scripts/admin-release-preflight.mjs` | 0 / PASS | `.artifacts/admin-r2/9395f0e3/configuration.log` |
+| public-scan | `python3 scripts/admin-public-scan.py` | 0 / PASS | `.artifacts/admin-r2/9395f0e3/public-scan.log` |
+| dependency-audit | `pnpm audit --audit-level=high` | 0 / PASS | `.artifacts/admin-r2/9395f0e3/dependency-audit.log` |
+| full-suite | `pnpm test --maxWorkers=1` | 0 / PASS | `.artifacts/admin-r2/9395f0e3/full-suite-serial.log` |
 
 ## Counts and scope
 
 ```json
 {
   "focused": [
-    " Test Files  11 passed (11)",
-    "      Tests  146 passed (146)"
+    "Test Files  11 passed (11)",
+    "Tests  146 passed (146)"
+  ],
+  "adapter": [
+    "Test Files  2 passed (2)",
+    "Tests  107 passed (107)"
   ],
   "workerd": [
-    "workerd-check current: PASS (9/9 scenarios)"
+    "workerd-check current: PASS (10/10 scenarios)"
   ],
   "admin-e2e": [
-    "  12 passed (49.1s)"
+    "12 passed (48.6s)"
   ],
   "keyboard-repeat": [
-    "  10 passed (19.5s)"
+    "10 passed (20.0s)"
   ],
   "full-suite": [
-    " Test Files  382 passed (382)",
-    "      Tests  8661 passed (8661)"
+    "Test Files  384 passed (384)",
+    "Tests  8768 passed (8768)"
   ]
 }
 ```
 
-Migration matrix: 23 scenarios,
-all pass. Workerd uses actual local Wrangler/Workers/D1, synthetic fixtures and
-Chromium. Admin E2E additionally uses the in-memory SQLite preview with the real
-built frontend/Worker; it is not remote staging. Keyboard repeated ten consecutive
-runs. Screenshot integrity command returned 0; no tracked reference changed.
-Dependency audit reports no known vulnerabilities at its execution time; it is
-not proof of absence. Existing Vite Admin font URL warnings are retained; emitted
-font files exist and browser requests are checked. No new dependency is added.
+The matrix has 23
+passing scenarios. Real local workerd includes the minimal shutdown Worker with
+no bindings, three HTTP methods and protected pages/API/built assets. Multi-Worker
+facade, customer compatibility, local D1 and Chromium checks remain included.
+Browser E2E uses synthetic local data; keyboard runs repeat ten times; tracked
+reference screenshots remain unchanged. The dependency audit is time-bounded,
+and no dependency was added. All real staging checks remain NOT RUN.
 
 ## Failed and interrupted runs retained
 
@@ -94,7 +96,27 @@ claim complete manual keyboard/screen-reader certification or device coverage.
 
 Hosted final-SHA CI, real Access tenant/JWKS/IdP policy, actual D1 distributed
 concurrency, live resource identity, independent human roster, operational load,
-live release adapters and all staging cases remain unverified. Runtime test
+remote adapter behavior and all staging cases remain unverified. Runtime test
 results are pinned to the exact SHA above. Later documentation-only packaging
 is not silently relabeled as full-suite-tested; its runtime/source manifest must
 match and hosted checks on any deployment SHA are still required.
+
+
+## Latest candidate qualification
+
+The current full run is `9395f0e31ea599f1eb7780a8eba36964fed7c483`. Retained visual contact sheets and manual
+observations named 066c35ad belong to that historical SHA; current generated E2E
+screenshots/axe/overflow reports are copied from the new run and hashed in the
+artifact manifest. No new manual device or screen-reader certification is claimed.
+Live provider responses, environment configuration, account-wide token visibility,
+first-resource provisioning and a compatible certified rollback baseline require
+operator verification in staging. The live adapter exists and has local review;
+its remote behavior is not certified by these offline fixtures.
+
+## Current-source timing failure and complete rerun
+
+The first default-concurrency `pnpm test` on 9395f0e3 failed: 374/384 files and 8758/8768 tests passed; nine tests exceeded their existing five-second timeout, and native family D1 measured 9136ms against its existing 8000ms budget. The exact failed verification and raw log remain under `.artifacts/admin-r2/9395f0e3-concurrent-failure/` in the private archive. All ten affected files then passed with one worker (170 tests); native D1 measured 2862ms. The complete full suite was subsequently rerun with `pnpm test --maxWorkers=1`, with all assertions and timeouts unchanged. Its actual result and count are listed above. These observations support machine resource contention; they do not certify default-concurrency stability or hosted latency. No source was changed to obtain the rerun. `evidence/verification.json` retains both fullSuiteAttempts and names the effective passing command.
+
+Isolation experiment metadata is retained alongside timing-isolation.log in the private raw archive as timing-isolation.json. It binds the exact command, source, environment and digest; filesystem timestamps are recorded with their retrospective limitation. The complete serial full-suite native D1 measurement was 1966ms.
+
+Public serialization normalization is recorded in evidence/public-normalization.json: a dependency patch filename is escaped for the unchanged email scanner; parsed source paths/digests remain identical. The original historical review report is preserved in the private evidence ZIP.

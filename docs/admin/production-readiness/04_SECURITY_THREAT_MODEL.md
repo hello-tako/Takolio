@@ -1,9 +1,9 @@
 # Security threat model
 
-Runtime source: `066c35ad670bc877756150c2055e3844dd7a17ce`. Main baseline: `526596a8cd857984ad2b69901a8c7b0e9d6bccc2`.
+Runtime source: `9395f0e31ea599f1eb7780a8eba36964fed7c483`. Main baseline: `526596a8cd857984ad2b69901a8c7b0e9d6bccc2`.
 Prepared by implementation owner `/root` (Codex); independent reviewer is
 `/root/independent_admin_review`. Evidence environment: local macOS arm64,
-Node 24.19.0, pnpm 10.33.2, Python 3.12.14, `TMPDIR=/private/tmp`.
+Node v24.16.0, pnpm 10.33.2, Python 3.9.6, `TMPDIR=/private/tmp`.
 Evidence timestamps are UTC. Commands, exit codes, log digests and limitations
 are in `evidence/verification.json` and `12_REGRESSION_RESULTS.md`.
 No live Cloudflare operation or operator approval is implied.
@@ -23,7 +23,7 @@ facade/customer D1 and operator/release control plane.
 | Operator loss locks governance | Three eligible operators per issuer; offline two-custodian recovery | Independent people, key custody and staging rehearsal |
 | Database/audit failure produces unaudited privilege or disclosure | Audit before sensitive disclosure; atomic trigger/batch writes | Managed-service failure behavior |
 | Expensive read harms customer DB | Indexed capped materialized sources, operation query cap, output/page bounds, fail closed | Actual D1 rows-read, latency, cost and representative scale |
-| Unauthorized workflow dispatch deploys production | Current workflows have no remote adapter or credentials | Reviewed adapter with exact source, protected checks/environments and identity allowlist |
+| Unauthorized workflow dispatch deploys production | Default-off signed exact-source release adapters; protected environment and durable audit gate | Authorized staging validation of actual API contracts, protections and token scope |
 | Secret or sensitive evidence is published | Added-content credential/email scan; synthetic fixtures; manual patch review | Owner public-disclosure decision and external scanner/CI |
 
 The source review and local tests do not prove absence of vulnerabilities. Any

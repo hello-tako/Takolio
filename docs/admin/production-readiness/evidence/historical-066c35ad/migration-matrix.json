@@ -1,0 +1,702 @@
+{
+  "generatedAt": "2026-10-16T20:55:35.213Z",
+  "source": {
+    "head": "066c35ad670bc877756150c2055e3844dd7a17ce",
+    "tree": "341df1dd57e1034890007b3fec9a22c020fbadfb",
+    "matrixScriptSha256": "749d8e3dabb58b56aa878a9e4203082b90c4c6d9a7adc420986c3684e49bcf8f",
+    "historicalR1": "25140baa99ef0aecc5e8d0e53206132e01e0f765",
+    "currentMainBaseline": "526596a8cd857984ad2b69901a8c7b0e9d6bccc2",
+    "currentMainMergeBase": "526596a8cd857984ad2b69901a8c7b0e9d6bccc2",
+    "dirtyScopedPaths": ""
+  },
+  "adminSchema": {
+    "migrationManifest": {
+      "count": 3,
+      "version": "0003_admin_governance_transaction_guards.sql",
+      "sha256": "eaa8886e47a68418aef58afe1f1eaf570f02c34cda650c40d7bea297554f8a41",
+      "names": [
+        "0001_admin_console_foundation.sql",
+        "0002_admin_identity_governance_r2.sql",
+        "0003_admin_governance_transaction_guards.sql"
+      ]
+    },
+    "workerExpectedVersion": "3",
+    "workerSourceSha256": "889952f978d828adc492455c0dc73fd6e11c438ce45f84cd34e894f915ba74a5"
+  },
+  "boundary": {
+    "WRANGLER_SEND_METRICS": "false",
+    "remote": "none (wrangler d1 --local only)",
+    "applicationRuntime": "not tested by this SQL-only matrix; flags-OFF recovery and Worker responses require separate local Workerd/runtime evidence"
+  },
+  "pass": true,
+  "rows": [
+    {
+      "scenario": "pinned current-main ancestry",
+      "expectation": "HEAD origin/main merge-base matches fixed baseline 526596a8cd857984ad2b69901a8c7b0e9d6bccc2",
+      "observed": {
+        "head": "066c35ad670bc877756150c2055e3844dd7a17ce",
+        "mergeBase": "526596a8cd857984ad2b69901a8c7b0e9d6bccc2",
+        "pinnedBaseline": "526596a8cd857984ad2b69901a8c7b0e9d6bccc2"
+      },
+      "pass": true
+    },
+    {
+      "scenario": "customer ledger identity",
+      "expectation": "R1 migrations equal pre-admin release (names + SHA-256)",
+      "observed": {
+        "r1": "3167428137ce8575f1ffe01199f75f5de48b5fbcda51ff8c4421dc8063605165",
+        "preAdmin": "3167428137ce8575f1ffe01199f75f5de48b5fbcda51ff8c4421dc8063605165",
+        "count": 41
+      },
+      "pass": true
+    },
+    {
+      "scenario": "DB 0041 + old application (pre-admin release)",
+      "expectation": "pinned pre-admin deploy ledger gate passes",
+      "observed": {
+        "pass": true,
+        "manifest": {
+          "version": "0041_checkout_admission.sql",
+          "names": [
+            "0001_initial_schema.sql",
+            "0002_seed_data.sql",
+            "0003_weekly_planner.sql",
+            "0004_auth_system.sql",
+            "0005_meal_plans_relational.sql",
+            "0006_vietnamese_recipe_bank.sql",
+            "0007_week_integrity.sql",
+            "0008_week_snapshot_metadata.sql",
+            "0009_inventory_optimistic_version.sql",
+            "0010_week_schema_shadow_canonical.sql",
+            "0011_meal_plan_tenant_ownership.sql",
+            "0012_scan_queue_jobs.sql",
+            "0013_scan_receipt_metadata.sql",
+            "0014_scan_queue_fencing.sql",
+            "0015_auth_session_otp_hardening.sql",
+            "0016_scan_quota_ledger.sql",
+            "0017_auth_otps_remove_plaintext.sql",
+            "0018_payments.sql",
+            "0019_recipe_domain_foundation.sql",
+            "0020_t01_foundation_hardening.sql",
+            "0021_recipe_personalization.sql",
+            "0022_generated_meal_plans.sql",
+            "0023_scan_request_fingerprint.sql",
+            "0024_inventory_truth_foundation.sql",
+            "0025_inventory_lot_commands.sql",
+            "0026_inventory_event_authority.sql",
+            "0027_inventory_event_poststate.sql",
+            "0028_inventory_fefo_authority.sql",
+            "0029_inventory_adoption_authority.sql",
+            "0030_inventory_fefo_backfill_compatibility.sql",
+            "0031_inventory_observation_reconciliation.sql",
+            "0032_scan_evidence_retention.sql",
+            "0033_scan_evidence_completeness.sql",
+            "0034_global_recipe_catalog_parity.sql",
+            "0035_recipe_media_layer.sql",
+            "0036_recipe_catalog_pilot.sql",
+            "0037_recipe_catalog_scale.sql",
+            "0038_auth_onboarding_completion.sql",
+            "0039_meal_composition_v2.sql",
+            "0040_strict_otp_foundation.sql",
+            "0041_checkout_admission.sql"
+          ],
+          "checkedAt": "2026-10-16T20:54:00.152Z"
+        }
+      },
+      "pass": true
+    },
+    {
+      "scenario": "DB 0041 + new application (remediated HEAD)",
+      "expectation": "pinned R1 ledger and 41-file schema gates pass",
+      "observed": {
+        "ledger": {
+          "pass": true,
+          "manifest": {
+            "version": "0041_checkout_admission.sql",
+            "names": [
+              "0001_initial_schema.sql",
+              "0002_seed_data.sql",
+              "0003_weekly_planner.sql",
+              "0004_auth_system.sql",
+              "0005_meal_plans_relational.sql",
+              "0006_vietnamese_recipe_bank.sql",
+              "0007_week_integrity.sql",
+              "0008_week_snapshot_metadata.sql",
+              "0009_inventory_optimistic_version.sql",
+              "0010_week_schema_shadow_canonical.sql",
+              "0011_meal_plan_tenant_ownership.sql",
+              "0012_scan_queue_jobs.sql",
+              "0013_scan_receipt_metadata.sql",
+              "0014_scan_queue_fencing.sql",
+              "0015_auth_session_otp_hardening.sql",
+              "0016_scan_quota_ledger.sql",
+              "0017_auth_otps_remove_plaintext.sql",
+              "0018_payments.sql",
+              "0019_recipe_domain_foundation.sql",
+              "0020_t01_foundation_hardening.sql",
+              "0021_recipe_personalization.sql",
+              "0022_generated_meal_plans.sql",
+              "0023_scan_request_fingerprint.sql",
+              "0024_inventory_truth_foundation.sql",
+              "0025_inventory_lot_commands.sql",
+              "0026_inventory_event_authority.sql",
+              "0027_inventory_event_poststate.sql",
+              "0028_inventory_fefo_authority.sql",
+              "0029_inventory_adoption_authority.sql",
+              "0030_inventory_fefo_backfill_compatibility.sql",
+              "0031_inventory_observation_reconciliation.sql",
+              "0032_scan_evidence_retention.sql",
+              "0033_scan_evidence_completeness.sql",
+              "0034_global_recipe_catalog_parity.sql",
+              "0035_recipe_media_layer.sql",
+              "0036_recipe_catalog_pilot.sql",
+              "0037_recipe_catalog_scale.sql",
+              "0038_auth_onboarding_completion.sql",
+              "0039_meal_composition_v2.sql",
+              "0040_strict_otp_foundation.sql",
+              "0041_checkout_admission.sql"
+            ],
+            "checkedAt": "2026-10-16T20:54:01.669Z"
+          }
+        },
+        "schema": {
+          "pass": true,
+          "issues": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "scenario": "DB 0041 + new application schema gate",
+      "expectation": "pinned R1 read-only schema gate reports no issue",
+      "observed": {
+        "pass": true,
+        "issues": []
+      },
+      "pass": true
+    },
+    {
+      "scenario": "DB 0041 + ORIGINAL admin commit 3e865d0 (review finding)",
+      "expectation": "original deploy gate fails before customer 0042 is applied",
+      "observed": {
+        "pass": false,
+        "error": "D1 migration ledger differs from the release; migration/rollback owner review required"
+      },
+      "pass": true
+    },
+    {
+      "scenario": "DB 0042 (original design) + old application rollback (review finding)",
+      "expectation": "pinned pre-admin release rejects original 0042 ledger",
+      "observed": {
+        "pass": false,
+        "error": "D1 migration ledger differs from the release; migration/rollback owner review required"
+      },
+      "pass": true
+    },
+    {
+      "scenario": "DB 0042 (original design) + remediated HEAD",
+      "expectation": "pinned R1 release rejects unexpected forward ledger",
+      "observed": {
+        "pass": false,
+        "error": "D1 migration ledger differs from the release; migration/rollback owner review required"
+      },
+      "pass": true
+    },
+    {
+      "scenario": "Unexpected extra customer migration",
+      "expectation": "pinned R1 deploy and schema gates reject extra 0042 drift",
+      "observed": {
+        "ledger": {
+          "pass": false,
+          "error": "D1 migration ledger differs from the release; migration/rollback owner review required"
+        },
+        "schema": {
+          "pass": false,
+          "issues": [
+            {
+              "issue": "unexpected_migration",
+              "detail": "0042_unexpected_drift.sql"
+            }
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "scenario": "Admin DB fresh apply + re-apply",
+      "expectation": "pinned R1 admin manifest applies at version 1 with nine triggers",
+      "observed": {
+        "apply": 0,
+        "reapply": 0,
+        "state": {
+          "ledger": 1,
+          "schema_version": "1",
+          "triggers": 9
+        },
+        "ledger": {
+          "pass": true,
+          "manifest": {
+            "version": "0001_admin_console_foundation.sql",
+            "names": [
+              "0001_admin_console_foundation.sql"
+            ],
+            "checkedAt": "2026-10-16T20:54:26.551Z"
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "scenario": "Failed admin migration",
+      "expectation": "R1 apply leaves no record or partial schema beyond injected conflict (SQL only; no Worker response asserted)",
+      "observed": {
+        "exit": 1,
+        "state": {
+          "ledger": 0,
+          "admin_tables": 1,
+          "metadata_table": 0,
+          "injected_collision": 1
+        },
+        "error": "\u001b[31m✘ \u001b[41;31m[\u001b[41;97mERROR\u001b[41;31m]\u001b[0m \u001b[1mtable admin_audit_events already exists at offset 13: SQLITE_ERROR\u001b[0m"
+      },
+      "pass": true
+    },
+    {
+      "scenario": "Customer application rollback with admin schema present",
+      "expectation": "pinned R1 customer gate remains valid; Admin schema is separate (SQL only)",
+      "observed": {
+        "customerGate": {
+          "pass": true,
+          "manifest": {
+            "version": "0041_checkout_admission.sql",
+            "names": [
+              "0001_initial_schema.sql",
+              "0002_seed_data.sql",
+              "0003_weekly_planner.sql",
+              "0004_auth_system.sql",
+              "0005_meal_plans_relational.sql",
+              "0006_vietnamese_recipe_bank.sql",
+              "0007_week_integrity.sql",
+              "0008_week_snapshot_metadata.sql",
+              "0009_inventory_optimistic_version.sql",
+              "0010_week_schema_shadow_canonical.sql",
+              "0011_meal_plan_tenant_ownership.sql",
+              "0012_scan_queue_jobs.sql",
+              "0013_scan_receipt_metadata.sql",
+              "0014_scan_queue_fencing.sql",
+              "0015_auth_session_otp_hardening.sql",
+              "0016_scan_quota_ledger.sql",
+              "0017_auth_otps_remove_plaintext.sql",
+              "0018_payments.sql",
+              "0019_recipe_domain_foundation.sql",
+              "0020_t01_foundation_hardening.sql",
+              "0021_recipe_personalization.sql",
+              "0022_generated_meal_plans.sql",
+              "0023_scan_request_fingerprint.sql",
+              "0024_inventory_truth_foundation.sql",
+              "0025_inventory_lot_commands.sql",
+              "0026_inventory_event_authority.sql",
+              "0027_inventory_event_poststate.sql",
+              "0028_inventory_fefo_authority.sql",
+              "0029_inventory_adoption_authority.sql",
+              "0030_inventory_fefo_backfill_compatibility.sql",
+              "0031_inventory_observation_reconciliation.sql",
+              "0032_scan_evidence_retention.sql",
+              "0033_scan_evidence_completeness.sql",
+              "0034_global_recipe_catalog_parity.sql",
+              "0035_recipe_media_layer.sql",
+              "0036_recipe_catalog_pilot.sql",
+              "0037_recipe_catalog_scale.sql",
+              "0038_auth_onboarding_completion.sql",
+              "0039_meal_composition_v2.sql",
+              "0040_strict_otp_foundation.sql",
+              "0041_checkout_admission.sql"
+            ],
+            "checkedAt": "2026-10-16T20:54:29.736Z"
+          }
+        },
+        "adminPresent": true,
+        "version": "1"
+      },
+      "pass": true
+    },
+    {
+      "scenario": "current-main customer ledger identity",
+      "expectation": "HEAD and working migrations match pinned 43-file current main (names + SHA-256)",
+      "observed": {
+        "head": "066c35ad670bc877756150c2055e3844dd7a17ce",
+        "baseline": "526596a8cd857984ad2b69901a8c7b0e9d6bccc2",
+        "currentMain": "b09ff3fe485cb2b16595b58b2abadd663c89c67acaf91224b218bf6e574e6209",
+        "headManifest": "b09ff3fe485cb2b16595b58b2abadd663c89c67acaf91224b218bf6e574e6209",
+        "workingManifest": "b09ff3fe485cb2b16595b58b2abadd663c89c67acaf91224b218bf6e574e6209",
+        "count": 43,
+        "status": "clean"
+      },
+      "pass": true
+    },
+    {
+      "scenario": "current-main 43-file fresh apply + strict gates",
+      "expectation": "43 migrations apply; pinned main ledger and schema gates pass",
+      "observed": {
+        "apply": 0,
+        "ledger": {
+          "pass": true,
+          "manifest": {
+            "version": "0043_shopping_demand_review.sql",
+            "names": [
+              "0001_initial_schema.sql",
+              "0002_seed_data.sql",
+              "0003_weekly_planner.sql",
+              "0004_auth_system.sql",
+              "0005_meal_plans_relational.sql",
+              "0006_vietnamese_recipe_bank.sql",
+              "0007_week_integrity.sql",
+              "0008_week_snapshot_metadata.sql",
+              "0009_inventory_optimistic_version.sql",
+              "0010_week_schema_shadow_canonical.sql",
+              "0011_meal_plan_tenant_ownership.sql",
+              "0012_scan_queue_jobs.sql",
+              "0013_scan_receipt_metadata.sql",
+              "0014_scan_queue_fencing.sql",
+              "0015_auth_session_otp_hardening.sql",
+              "0016_scan_quota_ledger.sql",
+              "0017_auth_otps_remove_plaintext.sql",
+              "0018_payments.sql",
+              "0019_recipe_domain_foundation.sql",
+              "0020_t01_foundation_hardening.sql",
+              "0021_recipe_personalization.sql",
+              "0022_generated_meal_plans.sql",
+              "0023_scan_request_fingerprint.sql",
+              "0024_inventory_truth_foundation.sql",
+              "0025_inventory_lot_commands.sql",
+              "0026_inventory_event_authority.sql",
+              "0027_inventory_event_poststate.sql",
+              "0028_inventory_fefo_authority.sql",
+              "0029_inventory_adoption_authority.sql",
+              "0030_inventory_fefo_backfill_compatibility.sql",
+              "0031_inventory_observation_reconciliation.sql",
+              "0032_scan_evidence_retention.sql",
+              "0033_scan_evidence_completeness.sql",
+              "0034_global_recipe_catalog_parity.sql",
+              "0035_recipe_media_layer.sql",
+              "0036_recipe_catalog_pilot.sql",
+              "0037_recipe_catalog_scale.sql",
+              "0038_auth_onboarding_completion.sql",
+              "0039_meal_composition_v2.sql",
+              "0040_strict_otp_foundation.sql",
+              "0041_checkout_admission.sql",
+              "0042_family_meals_preferences_saved_shopping.sql",
+              "0043_shopping_demand_review.sql"
+            ],
+            "checkedAt": "2026-10-16T20:54:41.222Z"
+          }
+        },
+        "schema": {
+          "pass": true,
+          "issues": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "scenario": "current-main 0041 -> 0043 incremental upgrade",
+      "expectation": "apply only 0042/0043 after R1 0041; both strict gates pass",
+      "observed": {
+        "baselineApply": 0,
+        "baselineGate": {
+          "pass": true,
+          "manifest": {
+            "version": "0041_checkout_admission.sql",
+            "names": [
+              "0001_initial_schema.sql",
+              "0002_seed_data.sql",
+              "0003_weekly_planner.sql",
+              "0004_auth_system.sql",
+              "0005_meal_plans_relational.sql",
+              "0006_vietnamese_recipe_bank.sql",
+              "0007_week_integrity.sql",
+              "0008_week_snapshot_metadata.sql",
+              "0009_inventory_optimistic_version.sql",
+              "0010_week_schema_shadow_canonical.sql",
+              "0011_meal_plan_tenant_ownership.sql",
+              "0012_scan_queue_jobs.sql",
+              "0013_scan_receipt_metadata.sql",
+              "0014_scan_queue_fencing.sql",
+              "0015_auth_session_otp_hardening.sql",
+              "0016_scan_quota_ledger.sql",
+              "0017_auth_otps_remove_plaintext.sql",
+              "0018_payments.sql",
+              "0019_recipe_domain_foundation.sql",
+              "0020_t01_foundation_hardening.sql",
+              "0021_recipe_personalization.sql",
+              "0022_generated_meal_plans.sql",
+              "0023_scan_request_fingerprint.sql",
+              "0024_inventory_truth_foundation.sql",
+              "0025_inventory_lot_commands.sql",
+              "0026_inventory_event_authority.sql",
+              "0027_inventory_event_poststate.sql",
+              "0028_inventory_fefo_authority.sql",
+              "0029_inventory_adoption_authority.sql",
+              "0030_inventory_fefo_backfill_compatibility.sql",
+              "0031_inventory_observation_reconciliation.sql",
+              "0032_scan_evidence_retention.sql",
+              "0033_scan_evidence_completeness.sql",
+              "0034_global_recipe_catalog_parity.sql",
+              "0035_recipe_media_layer.sql",
+              "0036_recipe_catalog_pilot.sql",
+              "0037_recipe_catalog_scale.sql",
+              "0038_auth_onboarding_completion.sql",
+              "0039_meal_composition_v2.sql",
+              "0040_strict_otp_foundation.sql",
+              "0041_checkout_admission.sql"
+            ],
+            "checkedAt": "2026-10-16T20:54:53.883Z"
+          }
+        },
+        "additions": [
+          "0042_family_meals_preferences_saved_shopping.sql",
+          "0043_shopping_demand_review.sql"
+        ],
+        "apply": 0,
+        "ledger": {
+          "pass": true,
+          "manifest": {
+            "version": "0043_shopping_demand_review.sql",
+            "names": [
+              "0001_initial_schema.sql",
+              "0002_seed_data.sql",
+              "0003_weekly_planner.sql",
+              "0004_auth_system.sql",
+              "0005_meal_plans_relational.sql",
+              "0006_vietnamese_recipe_bank.sql",
+              "0007_week_integrity.sql",
+              "0008_week_snapshot_metadata.sql",
+              "0009_inventory_optimistic_version.sql",
+              "0010_week_schema_shadow_canonical.sql",
+              "0011_meal_plan_tenant_ownership.sql",
+              "0012_scan_queue_jobs.sql",
+              "0013_scan_receipt_metadata.sql",
+              "0014_scan_queue_fencing.sql",
+              "0015_auth_session_otp_hardening.sql",
+              "0016_scan_quota_ledger.sql",
+              "0017_auth_otps_remove_plaintext.sql",
+              "0018_payments.sql",
+              "0019_recipe_domain_foundation.sql",
+              "0020_t01_foundation_hardening.sql",
+              "0021_recipe_personalization.sql",
+              "0022_generated_meal_plans.sql",
+              "0023_scan_request_fingerprint.sql",
+              "0024_inventory_truth_foundation.sql",
+              "0025_inventory_lot_commands.sql",
+              "0026_inventory_event_authority.sql",
+              "0027_inventory_event_poststate.sql",
+              "0028_inventory_fefo_authority.sql",
+              "0029_inventory_adoption_authority.sql",
+              "0030_inventory_fefo_backfill_compatibility.sql",
+              "0031_inventory_observation_reconciliation.sql",
+              "0032_scan_evidence_retention.sql",
+              "0033_scan_evidence_completeness.sql",
+              "0034_global_recipe_catalog_parity.sql",
+              "0035_recipe_media_layer.sql",
+              "0036_recipe_catalog_pilot.sql",
+              "0037_recipe_catalog_scale.sql",
+              "0038_auth_onboarding_completion.sql",
+              "0039_meal_composition_v2.sql",
+              "0040_strict_otp_foundation.sql",
+              "0041_checkout_admission.sql",
+              "0042_family_meals_preferences_saved_shopping.sql",
+              "0043_shopping_demand_review.sql"
+            ],
+            "checkedAt": "2026-10-16T20:54:53.883Z"
+          }
+        },
+        "schema": {
+          "pass": true,
+          "issues": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "scenario": "current-main missing migration drift",
+      "expectation": "strict release and schema gates reject missing 0043",
+      "observed": {
+        "apply": 0,
+        "delete": 0,
+        "ledger": {
+          "pass": false,
+          "error": "D1 migration ledger differs from the release; migration/rollback owner review required"
+        },
+        "schema": {
+          "pass": false,
+          "issues": [
+            {
+              "issue": "missing_migration",
+              "detail": "0043_shopping_demand_review.sql"
+            }
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "scenario": "current-main unknown 0044 drift",
+      "expectation": "strict release and schema gates reject unexpected 0044",
+      "observed": {
+        "apply": 0,
+        "ledger": {
+          "pass": false,
+          "error": "D1 migration ledger differs from the release; migration/rollback owner review required"
+        },
+        "schema": {
+          "pass": false,
+          "issues": [
+            {
+              "issue": "unexpected_migration",
+              "detail": "0044_unexpected_drift.sql"
+            }
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "scenario": "strict 41-file release gate refuses current-main 0043 ledger",
+      "expectation": "old release gates reject 43 applied migrations; binary rollback is not certified",
+      "observed": {
+        "release": {
+          "pass": false,
+          "error": "D1 migration ledger differs from the release; migration/rollback owner review required"
+        },
+        "schema": {
+          "pass": false,
+          "issues": [
+            {
+              "issue": "unexpected_migration",
+              "detail": "0042_family_meals_preferences_saved_shopping.sql"
+            },
+            {
+              "issue": "unexpected_migration",
+              "detail": "0043_shopping_demand_review.sql"
+            }
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "scenario": "current-main additive legacy customer schema",
+      "expectation": "all R1 table, index, trigger and view definitions remain unchanged",
+      "observed": {
+        "comparison": {
+          "pass": true,
+          "count": 233,
+          "missing": [],
+          "changed": []
+        },
+        "r1SchemaSha256": "c170eb1fda8a4d8852a7cb0d1a125fbfedaad7254616a591ec8afbbdd1c37fde",
+        "currentMainSchemaSha256": "aa91ad2fba6e2f999c8de3fddda2f204efb890ed626dd78cc5f232adc134c01a"
+      },
+      "pass": true
+    },
+    {
+      "scenario": "R1 Admin DB version mismatches current Worker before upgrade",
+      "expectation": "R1 stored version differs from current Worker expectation; no Worker request is made",
+      "observed": {
+        "stored": "1",
+        "r1Worker": "1",
+        "currentWorker": "3",
+        "runtimeGate": "ADMIN_SCHEMA_MISMATCH response requires separate Workerd evidence"
+      },
+      "pass": true
+    },
+    {
+      "scenario": "Admin D1 local R1 -> R2 apply + re-apply",
+      "expectation": "actual Admin manifest applies once and records current Worker schema version",
+      "observed": {
+        "baselineApply": 0,
+        "baselineVersion": "1",
+        "added": [
+          "0002_admin_identity_governance_r2.sql",
+          "0003_admin_governance_transaction_guards.sql"
+        ],
+        "apply": 0,
+        "reapply": 0,
+        "manifest": {
+          "count": 3,
+          "version": "0003_admin_governance_transaction_guards.sql",
+          "sha256": "eaa8886e47a68418aef58afe1f1eaf570f02c34cda650c40d7bea297554f8a41"
+        },
+        "ledger": {
+          "pass": true,
+          "manifest": {
+            "version": "0003_admin_governance_transaction_guards.sql",
+            "names": [
+              "0001_admin_console_foundation.sql",
+              "0002_admin_identity_governance_r2.sql",
+              "0003_admin_governance_transaction_guards.sql"
+            ],
+            "checkedAt": "2026-10-16T20:55:25.896Z"
+          }
+        },
+        "state": {
+          "ledger": 3,
+          "schema_version": "3",
+          "triggers": 27
+        },
+        "workerExpectedVersion": "3"
+      },
+      "pass": true
+    },
+    {
+      "scenario": "current Admin D1 fresh apply + re-apply",
+      "expectation": "actual Admin manifest applies once with exact ledger and Worker version",
+      "observed": {
+        "apply": 0,
+        "reapply": 0,
+        "manifest": {
+          "count": 3,
+          "version": "0003_admin_governance_transaction_guards.sql",
+          "sha256": "eaa8886e47a68418aef58afe1f1eaf570f02c34cda650c40d7bea297554f8a41"
+        },
+        "ledger": {
+          "pass": true,
+          "manifest": {
+            "version": "0003_admin_governance_transaction_guards.sql",
+            "names": [
+              "0001_admin_console_foundation.sql",
+              "0002_admin_identity_governance_r2.sql",
+              "0003_admin_governance_transaction_guards.sql"
+            ],
+            "checkedAt": "2026-10-16T20:55:29.584Z"
+          }
+        },
+        "state": {
+          "ledger": 3,
+          "schema_version": "3",
+          "triggers": 27
+        }
+      },
+      "pass": true
+    },
+    {
+      "scenario": "R2 failed apply rolls back schema-version and prior DDL",
+      "expectation": "duplicate-column failure leaves R1 ledger/version intact and rolls back earlier R2 DDL (SQL-only)",
+      "observed": {
+        "baselineApply": 0,
+        "injection": 0,
+        "failedApply": 1,
+        "firstColumn": "access_iss",
+        "injectedColumn": "access_sub",
+        "state": {
+          "ledger": 1,
+          "schema_version": "1",
+          "first_added_column": 0,
+          "injected_column": 1
+        },
+        "error": "\u001b[31m✘ \u001b[41;31m[\u001b[41;97mERROR\u001b[41;31m]\u001b[0m \u001b[1mduplicate column name: access_sub: SQLITE_ERROR\u001b[0m"
+      },
+      "pass": true
+    }
+  ]
+}
