@@ -9781,3 +9781,75 @@ alternate provider; later releases preserve it. Do not publish runner-local
 config files or claim inbox delivery from provider acceptance alone. Independent
 review, exact-main CI, live staging acceptance/rollback and a reviewed production
 adapter remain necessary before production cutover.
+
+## Protected production adapter continuation - 2026-10-18 JST
+
+Implementation base: PR #8 head 09799d5d (independently approved); current main
+02337f88 is PR #7's normal merge. Both PR #7 approved-head hosted checks passed
+8,859 tests. PR #8 full local suite passed 395 files / 8,885 tests, exit 0 in
+476.09 seconds with two workers. Required hosted checks remain running.
+
+New branch feat/domain-production-gated-release holds an unreviewed production
+adapter. It requires exact-main CI/Admin CI, same-SHA successful staging artifact,
+fresh successful existing production certification, real staging acceptance
+attestation with sanitized evidence, explicit confirmations and independent
+production Environment approval. It preserves flags/resources/settings and does
+not migrate data or change payment/provider/Admin behavior. Upload is verified
+before traffic; owned new hosts are removed before original-version recovery.
+At least fifteen minutes of repeated probes are persisted before reporting only
+infrastructure-observed. Separate production browser/error evidence remains needed.
+
+Initial ten tests pass; focused/full regression and static/build gates are pending.
+See docs/domain-integration/20-production-release-adapter.md. Do not create a PASS
+attestation before executing actual staging acceptance, or dispatch this unreviewed
+code. Keep main at 02337f88 while its staging workflow source fence is active.
+Watcher work/continue-domain-pr7-audit.py dispatches only a read-only staging audit
+when exact-main checks pass. Then inspect its receipt and dispatch staging manually.
+
+Read-only identity refresh at 14:58 UTC confirms both previous deployments/source
+SHAs unchanged. The local CLI cannot read zone metadata (403/9109); use the already
+provisioned matching Environment audit credential. No new credential is needed.
+No application upload, traffic activation, hostname/DNS/data/email/payment/Admin
+mutation occurred. Next: complete staging and PR #8 sequence, validate/review this
+production adapter, then obtain the existing independent Environment approval.
+
+## Reviewable production lane and staging privacy checkpoint - 2026-10-18 JST
+
+Verified implementation base is PR #8 merge 0a9f63ca; its approved head 09799d5d
+passed CI 39042340845 and Admin CI 39042340863 with 395 files / 8,885 tests each.
+Admin included Worker/migration boundaries, 12 browser cases and ten keyboard
+runs. Exact-main CI 39045489657 and Admin CI 39045489679 both succeeded. Recheck current
+main before any subsequent audit; no deployment is automatic on merge.
+
+Fresh audit 39045069392 at 02337f88 verified original isolated runtime and all
+43 migrations. Release 39045380675 failed at Access preflight with no upload or
+traffic/hostname mutation. Its receipt is in work/release-39045380675/receipt.json.
+The dashboard redirected to login; native Chrome cannot run while the Mac is
+locked. Two asynchronous prompts ask the owner to unlock/log in; do not ask for
+credentials or bypass a lock. Keep the login/CI tabs for handoff.
+
+Branch feat/domain-production-gated-release prepares the manual production adapter,
+full exact-SHA/Environment/evidence gates, D1 recovery identity, strict upload proof,
+owned-host/code recovery and >=15-minute observation. It also prevents publication
+of unrelated account hostnames by storing full-metadata commitments and privately
+rehydrating them against live inventory before recovery. Staging redirect failures
+now expose only HTTP status and still never forward credentials. Independent
+review must cover these changes before another staging activation; do not retry
+the old public receipt publisher while Access is being restored.
+
+Latest focused selection passes 12 files / 388 tests. Lint (two existing ignored
+bundle warnings), both TS checks, migrations, Web/Admin/Worker build, targeted
+ESLint, public scan and diff check pass. Full local validation has no PASS result:
+first run 8,894 pass/four timeouts during 901-second clamshell sleep; final run
+8,892 pass/six failures and one worker timeout during continued sleep, duration
+4376.41 seconds and incomplete 396-file coverage. Assertions/timeouts are intact.
+Use draft PR exact-head hosted CI to obtain full validation on an awake runner.
+Implementation hash is unavailable before the checkpoint commit is created.
+
+Next: publish draft PR, wait for full hosted CI/Admin CI and independent approval,
+merge normally and require exact-main checks. Resolve Access through the restored
+session, audit/release staging with explicit restricted-email opt-in, perform real
+Google/OTP/session/PayOS sandbox/user/mobile/PWA/rollback acceptance, then use the
+existing protected production certification and new manual adapter. No acceptance
+attestation or production release has been issued. Production is unchanged; Admin
+stays reserved. Status DOMAIN_SECURITY_REVIEW_REQUIRED.

@@ -74,9 +74,14 @@ export async function stagingFetch(url, init = {}, { env = process.env, fetchImp
   if (!['GET', 'HEAD', 'OPTIONS'].includes(init.method ?? 'GET') || init.body !== undefined) {
     throw new Error('Staging release transport permits read-only requests only');
   }
+  let response;
   try {
-    return await fetchImpl(url, { ...init, headers, signal: init.signal ?? AbortSignal.timeout(15000), redirect: 'error', credentials: 'omit' });
+    response = await fetchImpl(url, { ...init, headers, signal: init.signal ?? AbortSignal.timeout(15000), redirect: 'manual', credentials: 'omit' });
   } catch { throw new TypeError('Staging Access request failed'); }
+  if (response.status >= 300 && response.status < 400) {
+    throw new Error(`Staging Access rejected a redirect (HTTP ${response.status}); credentials were not forwarded`);
+  }
+  return response;
 }
 
 export async function stagingCurlExecute(command, args, options, url, env = process.env) {

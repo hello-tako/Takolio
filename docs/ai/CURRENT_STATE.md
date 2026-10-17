@@ -1,3 +1,46 @@
+# Domain release checkpoint - 2026-10-18 JST
+
+PR #8 merged normally as 0a9f63ca5e92eab649e4745961a6fcc7bb70c225 after exact-head
+approval and both required hosted checks succeeded (395 files / 8,885 tests each;
+Admin additionally passed Worker boundaries, migrations and browser/keyboard gates).
+Both exact-main checks, CI 39045489657 and Admin CI 39045489679, succeeded. No production deployment was triggered by the merge.
+
+Fresh read-only staging audit 39045069392 passed at 02337f88, including active
+account/zone, isolated bindings, Queue operations and all 43 migrations. Staging
+release 39045380675 then failed at Access preflight before upload/traffic/hostname
+mutation. Its retained receipt says mutationAttempted=false. The Cloudflare
+dashboard session requires login, and native Chrome reports the Mac locked. The
+owner has been asked to unlock and log in; no password/token/OTP was requested.
+
+Branch feat/domain-production-gated-release, based on the PR #8 merge, prepares
+a protected manual production adapter. It requires same-SHA staging infrastructure,
+actual browser/provider/rollback acceptance with public evidence, fresh production
+read-only certification, exact-main CI/Admin CI and independent production
+Environment approval. Strict upload is verified before traffic. Owned hostname
+removal precedes code rollback; repeated probes last at least 15 real minutes.
+It reports only infrastructure-observed until separate final acceptance exists.
+
+Both adapters now hash unrelated account hostname metadata in public receipts,
+then privately reconstruct exact commitments before recovery. Staging fetch
+rejects redirects without following or disclosing Location/body/credentials and
+reports only HTTP status. No security gate, assertion or timeout is relaxed.
+
+Validation: 12 focused files / 388 tests PASS; lint (two existing ignored generated
+bundle warnings), both TS checks, migration smoke, Web/Admin/Worker build, changed
+ESLint, public scan and diff checks PASS. Full local runs are NOT PASS: first
+8,894 passed / four timeout failures during a documented 901-second clamshell
+sleep; final attempt 8,892 passed / six failures plus a worker timeout during
+continued system sleep (4376.41 seconds, incomplete 396-file run). Use exact-head
+hosted CI for complete validation. Prepare a draft PR; do not merge or activate
+before its required hosted checks and independent review succeed.
+
+No application upload, traffic activation, new hostname, DNS/data/email/payment
+or Admin mutation occurred through this lane. Production retains its prior
+version/source. Real staging acceptance and the production cutover remain pending.
+Status: DOMAIN_SECURITY_REVIEW_REQUIRED.
+
+---
+
 # Domain release checkpoint - 2026-10-17 14:19 UTC
 
 PR #6 merged normally as `51d3590ad88c59128d15a746b4e3dfe5b7b8fb72` after exact-head
