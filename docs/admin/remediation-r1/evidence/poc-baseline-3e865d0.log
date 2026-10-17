@@ -1,0 +1,17 @@
+
+ RUN  v4.1.11 /tmp/hoplite/workspace
+
+ ✓ .hoplite/artifacts/review-poc/h1-h2-h8-origin-host-env.test.ts (16 tests) 3004ms
+     ✓ H1a CONFIRMED: login from the admin origin is refused with ADMIN_CSRF_FAILED  361ms
+ ✓ .hoplite/artifacts/review-poc/h5-h6-h9-h10-pii-session-login.test.ts (8 tests) 2274ms
+ ✓ .hoplite/artifacts/review-poc/session-access-lifecycle.test.ts (8 tests) 2195ms
+ ✓ .hoplite/artifacts/review-poc/authz-matrix.test.ts (4 tests) 1883ms
+ ✓ .hoplite/artifacts/review-poc/gate-c-db-writeset.test.ts (5 tests) 1749ms
+ ✓ .hoplite/artifacts/review-poc/h3-h4-h7-roles-approvals.test.ts (4 tests) 1728ms
+ ✓ .hoplite/artifacts/review-poc/access-verifier.test.ts (6 tests) 314ms
+
+ Test Files  7 passed (7)
+      Tests  51 passed (51)
+   Start at  03:48:28
+   Duration  17.63s (transform 1.65s, setup 85ms, import 3.38s, tests 13.15s, environment 0ms)
+

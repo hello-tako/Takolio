@@ -1,0 +1,207 @@
+{
+ "loading": [
+  {
+   "id": "overview",
+   "skeletonDuringDelay": 1,
+   "shellVisibleDuringDelay": true,
+   "loadedAfterDelay": true
+  },
+  {
+   "id": "users",
+   "skeletonDuringDelay": 1,
+   "shellVisibleDuringDelay": true,
+   "loadedAfterDelay": true
+  },
+  {
+   "id": "billing",
+   "skeletonDuringDelay": 2,
+   "shellVisibleDuringDelay": true,
+   "loadedAfterDelay": true
+  },
+  {
+   "id": "recipe-detail",
+   "skeletonDuringDelay": 1,
+   "shellVisibleDuringDelay": true,
+   "loadedAfterDelay": true
+  },
+  {
+   "id": "settings",
+   "skeletonDuringDelay": 1,
+   "shellVisibleDuringDelay": true,
+   "loadedAfterDelay": true
+  },
+  {
+   "id": "me-pending(pre-shell)",
+   "skeletonDuringDelay": 1,
+   "shellVisibleDuringDelay": false,
+   "banner": 0
+  }
+ ],
+ "error": [
+  {
+   "id": "overview",
+   "errorShown": true,
+   "tErrorMs": 7392,
+   "errorText": "Không tải được dữ liệu | Đã xảy ra lỗi máy chủ. Vui lòng thử lại. | Thử lại",
+   "retryButtons": 1,
+   "fulfilled500": 4,
+   "recoveredAfterRetry": true
+  },
+  {
+   "id": "users",
+   "errorShown": true,
+   "tErrorMs": 7467,
+   "errorText": "Không tải được dữ liệu | Đã xảy ra lỗi máy chủ. Vui lòng thử lại. | Thử lại",
+   "retryButtons": 1,
+   "fulfilled500": 4,
+   "recoveredAfterRetry": true
+  },
+  {
+   "id": "user-detail",
+   "errorShown": true,
+   "tErrorMs": 7456,
+   "errorText": "Không tải được dữ liệu | Đã xảy ra lỗi máy chủ. Vui lòng thử lại. | Thử lại",
+   "retryButtons": 1,
+   "fulfilled500": 4,
+   "recoveredAfterRetry": true
+  },
+  {
+   "id": "households",
+   "errorShown": true,
+   "tErrorMs": 7478,
+   "errorText": "Không tải được dữ liệu | Đã xảy ra lỗi máy chủ. Vui lòng thử lại. | Thử lại",
+   "retryButtons": 1,
+   "fulfilled500": 4,
+   "recoveredAfterRetry": true
+  },
+  {
+   "id": "billing",
+   "errorShown": true,
+   "tErrorMs": 7465,
+   "errorText": "Không tải được dữ liệu | Đã xảy ra lỗi máy chủ. Vui lòng thử lại. | Thử lại",
+   "retryButtons": 2,
+   "fulfilled500": 8,
+   "recoveredAfterRetry": false
+  },
+  {
+   "id": "ai",
+   "errorShown": true,
+   "tErrorMs": 7542,
+   "errorText": "Không tải được dữ liệu | Đã xảy ra lỗi máy chủ. Vui lòng thử lại. | Thử lại",
+   "retryButtons": 2,
+   "fulfilled500": 8,
+   "recoveredAfterRetry": false
+  },
+  {
+   "id": "recipes",
+   "errorShown": true,
+   "tErrorMs": 7485,
+   "errorText": "Không tải được dữ liệu | Đã xảy ra lỗi máy chủ. Vui lòng thử lại. | Thử lại",
+   "retryButtons": 1,
+   "fulfilled500": 4,
+   "recoveredAfterRetry": true
+  },
+  {
+   "id": "recipe-detail",
+   "errorShown": true,
+   "tErrorMs": 7498,
+   "errorText": "Không tải được dữ liệu | Đã xảy ra lỗi máy chủ. Vui lòng thử lại. | Thử lại",
+   "retryButtons": 1,
+   "fulfilled500": 4,
+   "recoveredAfterRetry": true
+  },
+  {
+   "id": "system",
+   "errorShown": true,
+   "tErrorMs": 7457,
+   "errorText": "Không tải được dữ liệu | Đã xảy ra lỗi máy chủ. Vui lòng thử lại. | Thử lại",
+   "retryButtons": 1,
+   "fulfilled500": 4,
+   "recoveredAfterRetry": false
+  },
+  {
+   "id": "audit",
+   "errorShown": true,
+   "tErrorMs": 7480,
+   "errorText": "Không tải được dữ liệu | Đã xảy ra lỗi máy chủ. Vui lòng thử lại. | Thử lại",
+   "retryButtons": 1,
+   "fulfilled500": 4,
+   "recoveredAfterRetry": true
+  },
+  {
+   "id": "settings",
+   "errorShown": true,
+   "tErrorMs": 7484,
+   "errorText": "Không tải được dữ liệu | Đã xảy ra lỗi máy chủ. Vui lòng thử lại. | Thử lại",
+   "retryButtons": 1,
+   "fulfilled500": 4,
+   "recoveredAfterRetry": true
+  },
+  {
+   "id": "me-500(pre-shell)",
+   "errorShown": true,
+   "banner": 0,
+   "sidebar": 0,
+   "recoveredAfterRetry": true
+  }
+ ],
+ "session": {
+  "resetInvalidates": {
+   "url": "?undefined",
+   "loginForm": 1,
+   "banner": 0
+  },
+  "backAfterExpiry": {
+   "url": "/admin/login",
+   "rowsShown": 0,
+   "billingRows": 0,
+   "loginForm": 1
+  },
+  "remoteRevoke": {
+   "revokeStatus": 200,
+   "revokeCode": null,
+   "url": "/admin/login?reason=revoked",
+   "reasonText": "Phiên quản trị đã bị thu hồi.",
+   "loginForm": 1
+  }
+ },
+ "rate": {
+  "readSimulated429": {
+   "errorShown": true,
+   "tMs": 7449,
+   "text": "Không tải được dữ liệu | Quá nhiều yêu cầu. Vui lòng thử lại sau ít phút. | Thử lại",
+   "recovered": true
+  },
+  "realLoginAttempts": [
+   "401/ADMIN_INVALID_CREDENTIALS",
+   "401/ADMIN_INVALID_CREDENTIALS",
+   "401/ADMIN_INVALID_CREDENTIALS",
+   "401/ADMIN_INVALID_CREDENTIALS",
+   "401/ADMIN_INVALID_CREDENTIALS",
+   "429/RATE_LIMIT_EXCEEDED"
+  ],
+  "realLoginUiMessage": "Quá nhiều yêu cầu. Vui lòng thử lại sau ít phút."
+ },
+ "notConfigured": {
+  "me503": {
+   "shown": true,
+   "tMs": 3465,
+   "text": "Chưa cấu hình xác thực quản trị | Môi trường này chưa có cấu hình xác thực quản trị hợp lệ.",
+   "banner": 0
+  }
+ },
+ "loginConfig": {
+  "config503": {
+   "errorState": 0,
+   "text": "T | Takosan Admin | Đăng nhập quản trị | Khu vực dành cho nhân viên Takosan được cấp quyền. Mọi thao tác đều được ghi nhật ký. | Đang tải…"
+  },
+  "config404": {
+   "unavailableNotice": 1
+  },
+  "login503": {
+   "error": "Chưa cấu hình xác thực quản trị."
+  }
+ }
+}
+console errors (page, first 10): [{"type":"error","text":"Failed to load resource: the server responded with a status of 500 (Internal Server Error)","url":"http://127.0.0.1:8791/api/v1/admin/overview?range=30d"},{"type":"error","text":"Failed to load resource: the server responded with a status of 500 (Internal Server Error)","url":"http://127.0.0.1:8791/api/v1/admin/overview?range=30d"},{"type":"error","text":"Failed to load resource: the server responded with a status of 500 (Internal Server Error)","url":"http://127.0.0.1:8791/api/v1/admin/overview?range=30d"},{"type":"error","text":"Failed to load resource: the server responded with a status of 500 (Internal Server Error)","url":"http://127.0.0.1:8791/api/v1/admin/overview?range=30d"},{"type":"error","text":"Failed to load resource: the server responded with a status of 500 (Internal Server Error)","url":"http://127.0.0.1:8791/api/v1/admin/users?page=1&pageSize=25&type=registered"},{"type":"error","text":"Failed to load resource: the server responded with a status of 500 (Internal Server Error)","url":"http://127.0.0.1:8791/api/v1/admin/users?page=1&pageSize=25&type=registered"},{"type":"error","text":"Failed to load resource: the server responded with a status of 500 (Internal Server Error)","url":"http://127.0.0.1:8791/api/v1/admin/users?page=1&pageSize=25&type=registered"},{"type":"error","text":"Failed to load resource: the server responded with a status of 500 (Internal Server Error)","url":"http://127.0.0.1:8791/api/v1/admin/users?page=1&pageSize=25&type=registered"},{"type":"error","text":"Failed to load resource: the server responded with a status of 500 (Internal Server Error)","url":"http://127.0.0.1:8791/api/v1/admin/users/fx_user_001"},{"type":"error","text":"Failed to load resource: the server responded with a status of 500 (Internal Server Error)","url":"http://127.0.0.1:8791/api/v1/admin/users/fx_user_001"}]
+pageErrors: []

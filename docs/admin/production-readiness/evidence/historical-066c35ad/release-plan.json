@@ -1,0 +1,481 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-16T20:56:46.560Z",
+  "sourceSha": "066c35ad670bc877756150c2055e3844dd7a17ce",
+  "sourceTree": "341df1dd57e1034890007b3fec9a22c020fbadfb",
+  "cleanCheckout": true,
+  "dirtyPaths": [],
+  "operation": "validate",
+  "mode": "offline-plan-only",
+  "remoteExecuted": false,
+  "productionDeployed": false,
+  "sourceManifest": [
+    {
+      "path": ".github/workflows/admin-breakglass.yml",
+      "sha256": "ddb0ee90313b02bdbdf0c7510ff4dc4ae01c5b87301b7cbe02caee283c0a368b"
+    },
+    {
+      "path": ".github/workflows/admin-ci.yml",
+      "sha256": "2c6a495cd8507f8d1e13e530bf1ed13de5b2fb1b7373fac7bd5acd895e4cd534"
+    },
+    {
+      "path": ".github/workflows/admin-d1-migrate.yml",
+      "sha256": "3fc1928a68b258467007a8f994d7e2c4d4a30a64b1282e0eee36d7f6eea9a93c"
+    },
+    {
+      "path": ".github/workflows/admin-production-deploy.yml",
+      "sha256": "fb731df1040b5f21ec18b4f677b206381d499b03c61ccbb4d67c5fe88a4f1e81"
+    },
+    {
+      "path": ".github/workflows/admin-staging-deploy.yml",
+      "sha256": "117a1df2ccf72e9374a73f813d4634132f3e1dc6b61c73be35c22f446c48915f"
+    },
+    {
+      "path": "admin/index.html",
+      "sha256": "74d99c516ac8cda576842314e96f48f9609ca3db196bc6534611fd7ef6aa3993"
+    },
+    {
+      "path": "migrations-admin/0001_admin_console_foundation.sql",
+      "sha256": "a890b20ae824072ecc0768e0bd6ebd548151fc3a0468d6c82e42064e20dabc48"
+    },
+    {
+      "path": "migrations-admin/0002_admin_identity_governance_r2.sql",
+      "sha256": "216a42dddf3b8dc2967cfa911dcee88756b061aca100819816b1554256e7a28f"
+    },
+    {
+      "path": "migrations-admin/0003_admin_governance_transaction_guards.sql",
+      "sha256": "6ba2694cba74820cbd7defc6e3cafbe1b18614c0e6739b1d9fca39215fccae33"
+    },
+    {
+      "path": "playwright.admin.config.ts",
+      "sha256": "80067ed35d99b6e4e680ab906c4a5683d00ebbc1b7ee931c592294a0f4eacf2b"
+    },
+    {
+      "path": "scripts/admin-local-d1.mjs",
+      "sha256": "29743e512c26ac3fffca6d6a67f12b8c86898e393131633162afb8abc1ff0c4d"
+    },
+    {
+      "path": "scripts/admin-local-lib.d.mts",
+      "sha256": "ac59f0d2dd9b41fa3e5bb0ed819edc97b98dbd6b8f6fd9db3af9761b4b34d29b"
+    },
+    {
+      "path": "scripts/admin-local-lib.mjs",
+      "sha256": "1d3054398e3928ed4375a5f5d48305f1f89116238d9fe6c46ce15493cf5faf55"
+    },
+    {
+      "path": "scripts/admin-migration-matrix.mjs",
+      "sha256": "749d8e3dabb58b56aa878a9e4203082b90c4c6d9a7adc420986c3684e49bcf8f"
+    },
+    {
+      "path": "scripts/admin-migration-smoke.sh",
+      "sha256": "8ce9011415ea19cf9ff32093a288c815f95e770d1c930d9afcfe7c96d15eda90"
+    },
+    {
+      "path": "scripts/admin-preview.mjs",
+      "sha256": "8caab08120438e01049a8caf324676affa02eb001069dd9ff7c1ab38279c8d0a"
+    },
+    {
+      "path": "scripts/admin-provision.mjs",
+      "sha256": "6e07cc8d21f47405f63ffd2fa5d2061751a1a91f9122d63a2648bdb1feff64fa"
+    },
+    {
+      "path": "scripts/admin-public-scan.py",
+      "sha256": "64df3dee479e5806f9af7fea71b97c0f2d7a23080e9ef3c1c0892100a3274f5a"
+    },
+    {
+      "path": "scripts/admin-recovery.mjs",
+      "sha256": "36a1cdcf1303dbf0846f94f82fb3c63d9115fcdbea21dffad24af07f36ee2bb7"
+    },
+    {
+      "path": "scripts/admin-release-preflight.mjs",
+      "sha256": "db240387adcb5b623362864e72a120c77c104359e8f50ab9170c30ea2599cbbd"
+    },
+    {
+      "path": "scripts/admin-schema-smoke.py",
+      "sha256": "aca4519650e5ed4afe75047ecd570c9a52ed6b537c09ba422ce0ac9d68d97069"
+    },
+    {
+      "path": "scripts/admin-workerd-check.mjs",
+      "sha256": "b3c80c1985b6d225ad7d454300c2bcbfb95719f31891f3ecce516a4888e3f81e"
+    },
+    {
+      "path": "src/admin/App.tsx",
+      "sha256": "0ab4038a41c6ab005948b41e29fc72769f753b8621e314ae3f881b23f56c68fc"
+    },
+    {
+      "path": "src/admin/api/client.ts",
+      "sha256": "635875dc81bb3e67c88c553db4b49be65d8118d65587fe412c9f6e1d7e1180e3"
+    },
+    {
+      "path": "src/admin/api/hooks.ts",
+      "sha256": "85e90fd45da4ea08b4e91ebbc9a708248e72461614a54cbe18be61f44179a230"
+    },
+    {
+      "path": "src/admin/api/retry.ts",
+      "sha256": "74bdde075d542f7387c7fa767619d3b5d4804a88616eab3d241c59c109d310a2"
+    },
+    {
+      "path": "src/admin/auth/AdminSession.tsx",
+      "sha256": "9a2e355f797dbb4b03906d882460a643b56bad4a54888480dded684e0e567fca"
+    },
+    {
+      "path": "src/admin/components/AdminShell.tsx",
+      "sha256": "c2fcdfbbd788d0894e056dbdc90fb9b51ef921719e6dc4ea6a487b1159be27f2"
+    },
+    {
+      "path": "src/admin/components/Dialog.tsx",
+      "sha256": "6a5f7729b4585be6fd1a2e68eb3b99cfeef08d6259f21543510b94d573002051"
+    },
+    {
+      "path": "src/admin/components/ErrorBoundary.tsx",
+      "sha256": "21541e9cafee6269612ae4ac1c9925d5841c75060fc1bbd55fa0d166aad3dabb"
+    },
+    {
+      "path": "src/admin/components/HealthChecks.tsx",
+      "sha256": "481ef271d451e6d9fe315e2ea5ebc9eebc21de1a84326c0356354ec17893f0a0"
+    },
+    {
+      "path": "src/admin/components/KeyCountList.tsx",
+      "sha256": "e8e7b606fc05e97f6c835745e42e24d6eb06a77277a9580e46afd8475befa504"
+    },
+    {
+      "path": "src/admin/components/MetricCard.tsx",
+      "sha256": "b1cb6db620aaa12be73e9f3a2134782049c6b062c680e2e797833b27fff846ac"
+    },
+    {
+      "path": "src/admin/components/SeriesChart.tsx",
+      "sha256": "ae05b39bde4785cb835904dc15fbc67c8cd243b0a8e046993a077fa4df96d517"
+    },
+    {
+      "path": "src/admin/components/ui.tsx",
+      "sha256": "9d6bf888ed401e6c229cbc7333d45fb38584a2a6cc5331b7d2b56b79491537b8"
+    },
+    {
+      "path": "src/admin/i18n/vi.ts",
+      "sha256": "535c3808bf14499040e5a7c1a90b4d08a060e7fe4c6d7eb8b800323fc7572129"
+    },
+    {
+      "path": "src/admin/lib/errors.ts",
+      "sha256": "aa0a3ecfb5eea32874f78fe994c0213d1820325cb321b8f17d6e072000ea1d9c"
+    },
+    {
+      "path": "src/admin/lib/format.ts",
+      "sha256": "150f4b193f22d2d2be19807b4f30389bccb72f565ddc077b7f06f48639942a08"
+    },
+    {
+      "path": "src/admin/lib/hooks.ts",
+      "sha256": "1019f1f718ba5c60ee5c3702f5a95d4ec7d5298ab73aab8a5ac25a77f490a09f"
+    },
+    {
+      "path": "src/admin/lib/nav.ts",
+      "sha256": "689494cbfa8863cf0095d9665667d3c50b80e55b597def7e23057e5fb2e4ccb7"
+    },
+    {
+      "path": "src/admin/main.tsx",
+      "sha256": "8db76c727e588d40a88313973928290170a9ff6f1f05be4ac46746b16fa4096f"
+    },
+    {
+      "path": "src/admin/pages/AiPage.tsx",
+      "sha256": "dafcba8fa3bffb6dfa11d3f6ef857457c0cc83ec8a34064491fa6b35f2247e71"
+    },
+    {
+      "path": "src/admin/pages/AuditPage.tsx",
+      "sha256": "8a8c9bfc76f2d771e4ea133a9136ab430e81de5e5528053564073127b666078c"
+    },
+    {
+      "path": "src/admin/pages/BillingPage.tsx",
+      "sha256": "4166073b84d730aa7ebf6af649232bcc752cc254a4715e560f3d7e92c6c3cb35"
+    },
+    {
+      "path": "src/admin/pages/LoginPage.tsx",
+      "sha256": "6d3292b6580afff3043d56b3dd871a18138fdd0cd7b71c959e837b65f4ca192c"
+    },
+    {
+      "path": "src/admin/pages/OverviewPage.tsx",
+      "sha256": "b70c6a2931999d47932857d267c8ef7a271f29097bec6c15fa3af42c495fb29f"
+    },
+    {
+      "path": "src/admin/pages/RecipeDetailPage.tsx",
+      "sha256": "988b4f993d9f827084fca1ee1b353e03b1f4430bd7cadc95e4cf030451edafaa"
+    },
+    {
+      "path": "src/admin/pages/RecipesPage.tsx",
+      "sha256": "b4b3e1fcb05f8992c900d976a9c0e3c2349db1282f93647f9eccfd47491a1054"
+    },
+    {
+      "path": "src/admin/pages/SettingsPage.tsx",
+      "sha256": "6261b1a6639505b41d3a517ddf0b9c3189a2fb8ccd5917a0259ba5dab8524836"
+    },
+    {
+      "path": "src/admin/pages/SystemPage.tsx",
+      "sha256": "89779cdc0ef5382463b4b197e88277dc57d7be977dd73c92a6b79ff8bf67aa27"
+    },
+    {
+      "path": "src/admin/pages/UserDetailPage.tsx",
+      "sha256": "81cb57ea435f3638a350b206c49d9ba3ce40f10b3d8364515233735ca0a592f8"
+    },
+    {
+      "path": "src/admin/pages/UsersPage.tsx",
+      "sha256": "221010c1a72576b0301cb88bcc6452859c228b614b24b0711422fd8e458e1c8e"
+    },
+    {
+      "path": "src/admin/styles/admin.css",
+      "sha256": "06aff511a4b4f3fbb27ce745e3cd49c0b75339f3f00295347045bb2ab3ecec6f"
+    },
+    {
+      "path": "src/admin/styles/fonts.css",
+      "sha256": "9560583333cd966fc114d32e98ca90f800c1365db5e239159367ae851ffaea83"
+    },
+    {
+      "path": "src/worker/admin-read-facade-worker.ts",
+      "sha256": "7809b68412e4945ec16e826ce0c52c847a6cd538f214013bd007e5047432845d"
+    },
+    {
+      "path": "src/worker/admin-worker.ts",
+      "sha256": "9d9551e94c25111b39d2ea17165c73c8a565459850f19de7b0ebbcff1370dabf"
+    },
+    {
+      "path": "src/worker/facade/billing-ai.ts",
+      "sha256": "5f902da43d13f356aae6c037aa720c6593b1d78a7fa0758089f2cb636a72884e"
+    },
+    {
+      "path": "src/worker/facade/contract.ts",
+      "sha256": "aa235bf68f527f39fc84c51202f9baab1efd772e2ea863afe704e0c63b06f4c1"
+    },
+    {
+      "path": "src/worker/facade/customer-read-service.ts",
+      "sha256": "443bcd57e0722c4cc6f56ef54d489fe7be631b43e21116b2e300831ef28d1461"
+    },
+    {
+      "path": "src/worker/facade/output-contract.ts",
+      "sha256": "5a0c244ff526a49edbb40163ccc3310ba0f57e587ab59be72e6084d7a4742d5b"
+    },
+    {
+      "path": "src/worker/facade/overview.ts",
+      "sha256": "42273f2636d6b0e148b8ae34725fe58ad6e170e56849dcf835bf1897bd28633d"
+    },
+    {
+      "path": "src/worker/facade/people.ts",
+      "sha256": "e32513e12c78c061ad1c7a6429d6950274c59652a911c6dbabdb1ae0cbffbec6"
+    },
+    {
+      "path": "src/worker/facade/query-budget.ts",
+      "sha256": "80b78cd734865f10c5990887e06d221eb8c9a7a9b900ea7185bf3d9faba9a03b"
+    },
+    {
+      "path": "src/worker/facade/recipes.ts",
+      "sha256": "d9fc772de4a1bdc50cfc0ab4b5d409f4ebf2ec2fb534fb86b03b0d22a5fa005e"
+    },
+    {
+      "path": "src/worker/routes/admin/access.ts",
+      "sha256": "01b12dbabb9c7c598812795c00f31844f96fa5139d8e56208b8ebaa253a8d8a3"
+    },
+    {
+      "path": "src/worker/routes/admin/audit.ts",
+      "sha256": "bdccd1f893e9190210d0a59247f6d3510f644e4cd4d007270757eee786e9d676"
+    },
+    {
+      "path": "src/worker/routes/admin/auth.ts",
+      "sha256": "889952f978d828adc492455c0dc73fd6e11c438ce45f84cd34e894f915ba74a5"
+    },
+    {
+      "path": "src/worker/routes/admin/billing-ai.ts",
+      "sha256": "a1797e9aa5f2bc81503ce07280b7c6442792175920677eb327f19977766b562e"
+    },
+    {
+      "path": "src/worker/routes/admin/customer-facade-client.ts",
+      "sha256": "4afb4554b4d17200ee42d10c9f2afd9e1e069bec367b7cd2bc077908d1ddc446"
+    },
+    {
+      "path": "src/worker/routes/admin/env.ts",
+      "sha256": "856e2416b226848a9fa54f85cf19ca11a9f568500268be546ef0fd3727bbf673"
+    },
+    {
+      "path": "src/worker/routes/admin/governance.ts",
+      "sha256": "82ce82651208cd511b19cf531ed5231791dfc560b4402c87ef92a43d3718f735"
+    },
+    {
+      "path": "src/worker/routes/admin/headers.ts",
+      "sha256": "b12ac016c8e141a9e60ea58337532c1c551c6770a830d1f32acfd05535fbfacc"
+    },
+    {
+      "path": "src/worker/routes/admin/http.ts",
+      "sha256": "38cc9f000230c7546bda6a1d650f995a2a623906b2f93c3932b976e9654e71f7"
+    },
+    {
+      "path": "src/worker/routes/admin/index.ts",
+      "sha256": "11e2d375ebf630aedbeb39f946ee89657a768a778ba257013b1df39da740fe03"
+    },
+    {
+      "path": "src/worker/routes/admin/limits.ts",
+      "sha256": "c1c274202646ed09f1d52d8fcb3044a837d1f17e4eb1f565611fd58d24886a2e"
+    },
+    {
+      "path": "src/worker/routes/admin/local-auth.ts",
+      "sha256": "e0ed70cb46ab321c6955565c9ba7f6f274d34205d5cb1303dc1b0ef27cdc7adb"
+    },
+    {
+      "path": "src/worker/routes/admin/mask.ts",
+      "sha256": "70555e6871914c29bd2e777e985be29b4c5ce786bb9f1b1214789d003f2c33f2"
+    },
+    {
+      "path": "src/worker/routes/admin/overview.ts",
+      "sha256": "fa59c48725721b1d1bc26ffe9affc08d4506f1bde98106c8fcb33001c71a7e3c"
+    },
+    {
+      "path": "src/worker/routes/admin/people.ts",
+      "sha256": "82c30789bb5b04ca39a81d65c4f1969effd5e9ba44c053663bb2b5e985981d2b"
+    },
+    {
+      "path": "src/worker/routes/admin/policy.ts",
+      "sha256": "dc5ce3b314271961d3a0b240d36acb4f8b1f66c652d8e4add58862cc7ba08b13"
+    },
+    {
+      "path": "src/worker/routes/admin/readonly-db.ts",
+      "sha256": "3c15fd300248260a8e8b0cdff4c178d0d0ce04151a269154badde2ca57cf9c70"
+    },
+    {
+      "path": "src/worker/routes/admin/recipes.ts",
+      "sha256": "177d3f2596a0c01a97863f7caee1b66cbd1d4d0c860f75f9bfc5b10050f45a02"
+    },
+    {
+      "path": "src/worker/routes/admin/schemas.ts",
+      "sha256": "3af83607a343eb824ca5be583f97c5f1499d1a7ea4875799e266b91d2e236103"
+    },
+    {
+      "path": "src/worker/routes/admin/settings.ts",
+      "sha256": "5a5306b7ac8665b6e9fab421228d7a7a3c4d5ddbd6328af55daa921b8c380d8f"
+    },
+    {
+      "path": "src/worker/routes/admin/system.ts",
+      "sha256": "8874a42aac5c66e3abb56c40be28fd2b2f9a6ef10832750285d8814339c8ba44"
+    },
+    {
+      "path": "tests/e2e/admin-a11y-responsive.e2e.ts",
+      "sha256": "86d3f758cbb93c1e94318a913db6b10601d8be358115402ed0cc233b8102cdb2"
+    },
+    {
+      "path": "tests/e2e/admin-console.e2e.ts",
+      "sha256": "0c4406d2df8da04b948ca3d607c6f96924cb5001a9da777e24be863f66b49f06"
+    },
+    {
+      "path": "tests/integration/admin-console.test.ts",
+      "sha256": "a088ebed29a0a54c26d71d358b12fff03fa624d4948273ad17eaf94697cef810"
+    },
+    {
+      "path": "tests/integration/admin-r2-auth.test.ts",
+      "sha256": "6f63d075a243fe3273a72b6498fb3d8d45e2059cc490863deb64f0ffa403ec09"
+    },
+    {
+      "path": "tests/integration/admin-r2-facade.test.ts",
+      "sha256": "54340661a022a5bda11a07d18b99e15ee6d65976882b8e3f7d66d7141f63cf1d"
+    },
+    {
+      "path": "tests/integration/admin-r2-governance-races.test.ts",
+      "sha256": "cf137e97268051623bb8f5ed05d0404c8d2a0b3726b0ee42fa7d679444cc060b"
+    },
+    {
+      "path": "tests/integration/admin-r2-governance.test.ts",
+      "sha256": "f53694a14ff058a100085578148a6b22f402368dbd38992e7c5d73c47b05d1d3"
+    },
+    {
+      "path": "tests/integration/admin-r2-settings.test.ts",
+      "sha256": "6528d5e3774674536825c6bd5003e0d33764724f8c9f776d58665ea63efb650d"
+    },
+    {
+      "path": "tests/integration/admin-remediation.test.ts",
+      "sha256": "1430c6d4966a95e1724b6111eccecf63eef7d0a4a19924c8a51398177702e9c3"
+    },
+    {
+      "path": "tests/unit/admin-api-client.test.ts",
+      "sha256": "f9b957a2a91f6c97e6be5b72b7eaf4e83dee1853e7b1d36fa75aec5319f4fca4"
+    },
+    {
+      "path": "tests/unit/admin-components.test.tsx",
+      "sha256": "dc1ccac6faf3f206bb4102e65de7133b11baf4a4451727cd46c0613402879fac"
+    },
+    {
+      "path": "tests/unit/admin-config.test.ts",
+      "sha256": "a0fb878666833f2e6288f8c12ed203d9a8fd10809cd3e3a8129a0652a9b1f800"
+    },
+    {
+      "path": "tests/unit/admin-local-tooling.test.ts",
+      "sha256": "5d3cac471abb0e399564a2ea00d5ccca5e83b8180bf8dd7518ea90efff346c43"
+    },
+    {
+      "path": "tests/unit/admin-login.test.tsx",
+      "sha256": "2f398954079a35f8eaadff71413406b9926b50f94476fa57ccc038332c6a5e34"
+    },
+    {
+      "path": "tests/unit/admin-nav.test.ts",
+      "sha256": "1081052af15df1fb378a35795286d1b162978223be8ae16ec2ec4179151034bc"
+    },
+    {
+      "path": "tests/unit/admin-r2-routing.test.ts",
+      "sha256": "b4be8285dcf765ba761499bf193dbeec21caaeb988cdeb31c448304e0a72c492"
+    },
+    {
+      "path": "tests/unit/admin-recovery.test.mjs",
+      "sha256": "74862bd8c059a1bc980c54ef851930b8e7bdbb6a43fe091897f78f4ce2e53f7a"
+    },
+    {
+      "path": "tests/unit/admin-remediation-ui.test.tsx",
+      "sha256": "6678ecd39a9e1450b430682209e37c50d532b6094d6d863bad79ed5d89a82d84"
+    },
+    {
+      "path": "tests/unit/admin-shell.test.tsx",
+      "sha256": "083c9a9ac48f5bcb982ba8dff070250ce977414b4240f3b0c62d17472524c805"
+    },
+    {
+      "path": "vite.admin.config.ts",
+      "sha256": "11f489d7c70cad9cace221337af084928c17a35bc7afa24a88303b47ec2ee84b"
+    },
+    {
+      "path": "wrangler.admin-facade-local.jsonc",
+      "sha256": "5a4e5ad1413eec747a796fc1edd78428b266e02def328da6e8fa5636a9c49e93"
+    },
+    {
+      "path": "wrangler.admin-facade.jsonc",
+      "sha256": "23c0fb7db4491f4fd55bfabc0a0d5d3ec59ac99a0674ff2403807205aa3a88af"
+    },
+    {
+      "path": "wrangler.admin-local.jsonc",
+      "sha256": "d66820241364da1e9b572e9a583ff454f7bb31e0d5112fd2f306eeddd7391572"
+    },
+    {
+      "path": "wrangler.admin.jsonc",
+      "sha256": "42a0e2401f151b231ea0c19ecc33905a564d8934a485f385ca1d2cc28e0525da"
+    }
+  ],
+  "sourceManifestSha256": "2b0c55193c4b0081a5e86c873a00ad05d7614d1c09e41179b27246b740cd2bfe",
+  "migrations": [
+    {
+      "name": "0001_admin_console_foundation.sql",
+      "sha256": "a890b20ae824072ecc0768e0bd6ebd548151fc3a0468d6c82e42064e20dabc48"
+    },
+    {
+      "name": "0002_admin_identity_governance_r2.sql",
+      "sha256": "216a42dddf3b8dc2967cfa911dcee88756b061aca100819816b1554256e7a28f"
+    },
+    {
+      "name": "0003_admin_governance_transaction_guards.sql",
+      "sha256": "6ba2694cba74820cbd7defc6e3cafbe1b18614c0e6739b1d9fca39215fccae33"
+    }
+  ],
+  "migrationManifestSha256": "eaa8886e47a68418aef58afe1f1eaf570f02c34cda650c40d7bea297554f8a41",
+  "targets": {
+    "admin": "takosan-admin",
+    "facade": "takosan-admin-read-facade",
+    "adminDb": "00000000-0000-4000-8000-000000000000",
+    "customerDb": "00000000-0000-4000-8000-000000000001"
+  },
+  "readyForDeployment": false,
+  "blockers": [
+    "independent security/workflow review on exact SHA",
+    "reviewed live release adapters are not implemented",
+    "real staging operator authorization and resource identities",
+    "verified three-person Access roster and recovery custodians",
+    "protected environment self-review prevention and required checks",
+    "staging identity, rollback and browser certification"
+  ]
+}

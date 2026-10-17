@@ -1,0 +1,12 @@
+{
+  "observedAt": "2026-10-16T20:44:00Z",
+  "repositoryId": 1385308553,
+  "repository": "lol-vn/Tako-san",
+  "operations": [
+    {"command": "gh api repositories/1385308553 --jq {id,full_name,default_branch}", "exitCode": 1, "result": "HTTP 403: Sorry. Your account was suspended"},
+    {"command": "git fetch origin", "exitCode": 128, "result": "HTTP 403: remote account suspended"},
+    {"command": "curl public api.github.com/repositories/1385308553", "exitCode": 56, "result": "HTTP 404; no current identity refresh"},
+    {"tool": "mcp__code_review__pull_requests_checks", "pullRequest": 82, "result": "UNAVAILABLE: Sign in to Codex with ChatGPT to connect GitHub"}
+  ],
+  "limitations": "Timestamp is rounded to the initial refresh window. Exact provider output exists in task tool history. No remote ref, PR state, protection or hosted CI is certified by these failures."
+}

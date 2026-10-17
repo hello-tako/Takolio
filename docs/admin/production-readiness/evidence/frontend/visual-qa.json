@@ -1,0 +1,22 @@
+{
+  "sourceSha": "066c35ad670bc877756150c2055e3844dd7a17ce",
+  "reviewer": "/root (implementation owner, manual local visual QA)",
+  "environment": "Chromium local built Admin frontend; synthetic-admin-v1 SQLite fixture; real Worker/API; no staging",
+  "inspected": [
+    "contact sheet: login, overview, users, billing, AI, recipes, audit, settings, mobile/tablet samples",
+    "viewport crops: 1440-overview, 1440-settings, 390-overview, 390-settings"
+  ],
+  "observations": [
+    "Takolio Admin identity, navigation, Vietnamese text, synthetic-data banner and metric provenance are visible",
+    "390px view keeps Menu and logout available and wraps metric cards and profile/preferences; no page overflow in automated measurements",
+    "Settings authority matrix remains in its own horizontally scrollable region with keyboard regression passing",
+    "AI metrics visibly report partial instrumentation; synthetic counts are labeled as fixture data",
+    "No obvious overlap or clipped primary controls in inspected viewport crops"
+  ],
+  "artifacts": [
+    "admin-066c35ad-contact-sheet.jpg",
+    "admin-066c35ad-viewport-crops.png"
+  ],
+  "limits": "Sampled manual image inspection, not exhaustive screen-reader/device/user acceptance. Full screenshots are long pages; actual staging appearance, Access UI and rollout behavior remain unverified.",
+  "reviewedAt": "2026-10-16T21:02:16.318778+00:00"
+}

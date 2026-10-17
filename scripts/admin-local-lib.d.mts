@@ -1,0 +1,17 @@
+export const ADMIN_ROLES: readonly string[];
+export const FIXTURE_DATASET: string;
+export const FIXTURE_DOMAIN: string;
+export const FIXTURE_PASSWORD: string;
+export const FIXTURE_NOW: number;
+export const FIXTURE_ADMINS: ReadonlyArray<{ key: string; role: string; name: string }>;
+export function hashPassword(password: string, salt: string): string;
+export function sql(value: string | number | null | undefined): string;
+export function fixtureEmail(key: string): string;
+export function buildAdminFixtureSql(): { main: string; admin: string };
+export function assertLocalProvisioningAllowed(options?: { argv?: string[]; env?: Record<string, string | undefined> }): void;
+export function assertLocalFixtureAllowed(options?: { argv?: string[]; env?: Record<string, string | undefined> }): void;
+export function localWranglerEnv(base?: Record<string, string | undefined>): Record<string, string | undefined> & { XDG_CONFIG_HOME: string };
+export function buildBootstrapAccountLookupSql(emails: string[]): string;
+export function buildBootstrapIdentityLookupSql(userIds: string[]): string;
+export function buildBootstrapAdminSql(options: { userIds: string[]; assignmentIds?: string[]; ceremonyId?: string; independentApprovalRef?: string; createdAt?: string }): string;
+export function buildLocalAccountSql(options: { email: string; password: string; name?: string }): string;

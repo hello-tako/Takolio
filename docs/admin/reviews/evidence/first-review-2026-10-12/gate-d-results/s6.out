@@ -1,0 +1,113 @@
+{
+ "reveal": {
+  "open": 1,
+  "focusInside": true,
+  "title": "Hiện email đầy đủ?",
+  "afterCancel": {
+   "open": 0,
+   "email": "cu•••@fixture.takosan.test",
+   "focusReturnedTo": "admin-reveal-email"
+  },
+  "afterEsc": {
+   "open": 0,
+   "focusReturnedTo": "admin-reveal-email"
+  },
+  "tabTrapInside": true,
+  "afterConfirm": {
+   "open": 0,
+   "email": "customer001@fixture.takosan.test",
+   "revealStatus": 200,
+   "notice": "Dữ liệu tổng hợp (fixture: synthetic-admin-v1) — không phải số liệu sản xuất",
+   "focusReturnedTo": "BODY",
+   "emailMaskedBefore": "cu•••@fixture.takosan.test"
+  },
+  "auditRevealEvents": 1
+ },
+ "reviewSuccess": {
+  "status": 201,
+  "requestBody": {
+   "state": "approved",
+   "note": "E2E review note (fixture)",
+   "recipeVersion": 1
+  },
+  "message": "Đã lưu ghi chú biên tập."
+ },
+ "review409": {
+  "formText": "Ghi chú biên tập | Trạng thái biên tập | Bản nháp | Đang duyệt | Đã duyệt | Từ chối | Ghi chú | Tối đa 2000 ký tự. | Công thức đã thay đổi, tải lại để xem phiên bản mới nhất. | Tải lại công thức | Lưu ghi chú biên tập",
+  "reloadButton": 2
+ },
+ "review500": {
+  "formText": "Ghi chú biên tập | Trạng thái biên tập | Bản nháp | Đang duyệt | Đã duyệt | Từ chối | Ghi chú | Tối đa 2000 ký tự. | Đã xảy ra lỗi máy chủ. Vui lòng thử lại. | Lưu ghi chú biên tập"
+ },
+ "preferences": {
+  "status": 200,
+  "success": null,
+  "persistedDensity": "compact"
+ },
+ "grant": {
+  "status": 201,
+  "newRow": "Lê Vycu•••@fixture.takosan.testNhân viên hỗ trợĐang hiệu lựcQuản trị viên cấpfx_admin_super12 thg 10, 2026Thu hồi",
+  "rowCount": [
+   7,
+   8
+  ],
+  "message": "Yêu cầu đã được ghi nhận."
+ },
+ "revoke": {
+  "dialogOpen": 1,
+  "titleText": "Thu hồi vai trò quản trị?",
+  "afterCancelRowStillActive": true,
+  "status": 200,
+  "rowAfter": "Hỗ trợ (fixture)su•••@fixture.takosan.testNhân viên hỗ trợĐang hiệu lựcQuản trị viên cấpfx_admin_super24 thg 6, 2026Thu hồi"
+ },
+ "superRequest": {
+  "status": 201,
+  "body": "{\"data\":{\"approval\":{\"id\":\"appr_6c5937b7cbea4647956dbadc\",\"action\":\"role.grant.super_admin\",\"targetUserId\":\"fx_admin_ops\",\"requestedBy\":\"fx_admin_super\",\"requestedAt\":\"2026-10-12T15:06:03.685Z\",\"statu",
+  "message": "Yêu cầu đã được ghi nhận."
+ },
+ "approvalsAsRequester": {
+  "rows": [
+   "fx_admin_opsfx_admin_super22:06 12/10/26Chờ phê duyệt22:06 15/10/26——"
+  ],
+  "approveButtonsInRows": 0
+ },
+ "approvalsApi": {
+  "pendingCount": 1,
+  "sample": {
+   "id": "appr_6c5937b7cbea4647956dbadc",
+   "requestedBy": "fx_admin_super",
+   "targetUserId": "fx_admin_ops"
+  }
+ },
+ "requesterApproveApi": {
+  "status": 403,
+  "code": "ADMIN_FORBIDDEN",
+  "data": null
+ },
+ "super2ApprovalView": {
+  "pendingRows": 1,
+  "approveVisible": 1
+ },
+ "super2Approve": {
+  "status": 200,
+  "message": "Đã ghi nhận quyết định.",
+  "rowAfter": "fx_admin_opsfx_admin_super22:06 12/10/26Đã phê duyệt22:06 15/10/26fx_admin_super2—"
+ },
+ "afterApprove": {
+  "fxAdminOpsRoles": [
+   "SUPER_ADMIN",
+   "OPERATIONS_ADMIN"
+  ]
+ },
+ "logout": {
+  "url": "/admin/login",
+  "cookiesLeft": [],
+  "meAfter": {
+   "status": 401,
+   "code": "ADMIN_UNAUTHENTICATED"
+  },
+  "rowsAfterBack": 0,
+  "loginFormAfterBack": 1
+ }
+}
+unexpected console errors: [] pageErrors: []

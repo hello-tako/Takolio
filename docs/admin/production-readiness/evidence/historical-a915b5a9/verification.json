@@ -1,0 +1,254 @@
+{
+  "sourceSha": "a915b5a9713a01caa7f29c4935108a1152a29c8f",
+  "sourceTree": "df2a732e49b01ba5c526a5cb6e957f132fe5281f",
+  "startedAt": "2026-10-16T22:56:56.791Z",
+  "node": "v24.16.0",
+  "python": "Python 3.9.6",
+  "platform": "darwin",
+  "arch": "arm64",
+  "pnpm": "10.33.2",
+  "environment": {
+    "GITHUB_ACTIONS": "true",
+    "WRANGLER_SEND_METRICS": "false",
+    "TMPDIR": "/private/tmp",
+    "CI": "true",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "results": [
+    {
+      "id": "focused",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/integration/admin-console.test.ts",
+        "tests/integration/admin-remediation.test.ts",
+        "tests/integration/admin-r2-auth.test.ts",
+        "tests/integration/admin-r2-governance.test.ts",
+        "tests/integration/admin-r2-governance-races.test.ts",
+        "tests/integration/admin-r2-facade.test.ts",
+        "tests/integration/admin-r2-settings.test.ts",
+        "tests/unit/admin-recovery.test.mjs",
+        "tests/unit/admin-config.test.ts",
+        "tests/unit/admin-local-tooling.test.ts",
+        "tests/unit/admin-r2-routing.test.ts",
+        "--maxWorkers=1",
+        "--testTimeout=20000"
+      ],
+      "startedAt": "2026-10-16T22:56:57.106Z",
+      "finishedAt": "2026-10-16T22:57:30.496Z",
+      "exitCode": 0,
+      "signal": null,
+      "logPath": ".artifacts/admin-r2/a915b5a9/focused.log",
+      "sha256": "9b09e233d61059b6f015ce04754975b98cb6a010ffe250ed621e86871daa09b3"
+    },
+    {
+      "id": "adapter",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/unit/admin-release-adapter.test.mjs",
+        "tests/unit/admin-release-provider.test.mjs",
+        "--maxWorkers=1"
+      ],
+      "startedAt": "2026-10-16T22:57:30.496Z",
+      "finishedAt": "2026-10-16T22:57:31.562Z",
+      "exitCode": 0,
+      "signal": null,
+      "logPath": ".artifacts/admin-r2/a915b5a9/adapter.log",
+      "sha256": "c9a60a82a9d960b95966c57c318ef67b28143494d46058a17848e2b2826803fe"
+    },
+    {
+      "id": "lint",
+      "command": [
+        "pnpm",
+        "lint"
+      ],
+      "startedAt": "2026-10-16T22:57:31.562Z",
+      "finishedAt": "2026-10-16T22:57:38.202Z",
+      "exitCode": 0,
+      "signal": null,
+      "logPath": ".artifacts/admin-r2/a915b5a9/lint.log",
+      "sha256": "6c2722b8bc951895862d6f853abf12262670e9ee6cdfd145b6fcaefa5c419bf0"
+    },
+    {
+      "id": "typecheck",
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "startedAt": "2026-10-16T22:57:38.202Z",
+      "finishedAt": "2026-10-16T22:57:54.251Z",
+      "exitCode": 0,
+      "signal": null,
+      "logPath": ".artifacts/admin-r2/a915b5a9/typecheck.log",
+      "sha256": "9009680ac07ca60648b7a0415c720b26d68d3eec0a0db4a0a39d13f222fd52e0"
+    },
+    {
+      "id": "build",
+      "command": [
+        "pnpm",
+        "build"
+      ],
+      "startedAt": "2026-10-16T22:57:54.252Z",
+      "finishedAt": "2026-10-16T22:58:03.341Z",
+      "exitCode": 0,
+      "signal": null,
+      "logPath": ".artifacts/admin-r2/a915b5a9/build.log",
+      "sha256": "efa4ce0e310adf2a7d4c11a80232cee2a08eadaa4e2995a00ed82a22b812db45"
+    },
+    {
+      "id": "migration-smoke",
+      "command": [
+        "pnpm",
+        "check:migrations"
+      ],
+      "startedAt": "2026-10-16T22:58:03.342Z",
+      "finishedAt": "2026-10-16T22:58:03.817Z",
+      "exitCode": 0,
+      "signal": null,
+      "logPath": ".artifacts/admin-r2/a915b5a9/migration-smoke.log",
+      "sha256": "b85bd9f8a214c62a54e6c1bed45b57251881856df5db1bf96194c282a5010dd6"
+    },
+    {
+      "id": "workerd",
+      "command": [
+        "node",
+        "scripts/admin-workerd-check.mjs",
+        "--out",
+        ".artifacts/admin-r2/a915b5a9/workerd.json"
+      ],
+      "startedAt": "2026-10-16T22:58:03.818Z",
+      "finishedAt": "2026-10-16T22:58:43.086Z",
+      "exitCode": 0,
+      "signal": null,
+      "logPath": ".artifacts/admin-r2/a915b5a9/workerd.log",
+      "sha256": "65624f150521034ada78eff2e0cf8186752add584f767094a6824f9b15710f7b"
+    },
+    {
+      "id": "migration-matrix",
+      "command": [
+        "node",
+        "scripts/admin-migration-matrix.mjs",
+        "--out",
+        ".artifacts/admin-r2/a915b5a9/migration-matrix.json"
+      ],
+      "startedAt": "2026-10-16T22:58:43.086Z",
+      "finishedAt": "2026-10-16T23:00:36.137Z",
+      "exitCode": 0,
+      "signal": null,
+      "logPath": ".artifacts/admin-r2/a915b5a9/migration-matrix.log",
+      "sha256": "c68755d94186eb6430b9a63578102e09f87875089f99fd89c98b124b5c4ad2f8"
+    },
+    {
+      "id": "admin-e2e",
+      "command": [
+        "pnpm",
+        "test:admin:e2e"
+      ],
+      "startedAt": "2026-10-16T23:00:36.137Z",
+      "finishedAt": "2026-10-16T23:01:27.738Z",
+      "exitCode": 0,
+      "signal": null,
+      "logPath": ".artifacts/admin-r2/a915b5a9/admin-e2e.log",
+      "sha256": "6291587a84745698facc41e511b77a4d094fd462dc0528d8001684fbcf0c10c5"
+    },
+    {
+      "id": "keyboard-repeat",
+      "command": [
+        "pnpm",
+        "exec",
+        "playwright",
+        "test",
+        "-c",
+        "playwright.admin.config.ts",
+        "-g",
+        "scrollable tables",
+        "--repeat-each",
+        "10"
+      ],
+      "startedAt": "2026-10-16T23:01:27.739Z",
+      "finishedAt": "2026-10-16T23:01:48.438Z",
+      "exitCode": 0,
+      "signal": null,
+      "logPath": ".artifacts/admin-r2/a915b5a9/keyboard-repeat.log",
+      "sha256": "1bfab2480ad5815830fc90955dc24984761d257f92d14bcdc6ce6d0d0eca240b"
+    },
+    {
+      "id": "tracked-screenshots",
+      "command": [
+        "git",
+        "diff",
+        "--exit-code",
+        "--",
+        "docs/admin/screenshots"
+      ],
+      "startedAt": "2026-10-16T23:01:48.438Z",
+      "finishedAt": "2026-10-16T23:01:48.452Z",
+      "exitCode": 0,
+      "signal": null,
+      "logPath": ".artifacts/admin-r2/a915b5a9/tracked-screenshots.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "configuration",
+      "command": [
+        "node",
+        "scripts/admin-release-preflight.mjs"
+      ],
+      "startedAt": "2026-10-16T23:01:48.453Z",
+      "finishedAt": "2026-10-16T23:01:48.650Z",
+      "exitCode": 0,
+      "signal": null,
+      "logPath": ".artifacts/admin-r2/a915b5a9/configuration.log",
+      "sha256": "7533cd3d17b29db476f0b070680bf5a6fcd2fdf7b39cc17fb66d7a88b02f6f38"
+    },
+    {
+      "id": "public-scan",
+      "command": [
+        "python3",
+        "scripts/admin-public-scan.py"
+      ],
+      "startedAt": "2026-10-16T23:01:48.650Z",
+      "finishedAt": "2026-10-16T23:01:48.864Z",
+      "exitCode": 0,
+      "signal": null,
+      "logPath": ".artifacts/admin-r2/a915b5a9/public-scan.log",
+      "sha256": "cb0bb7a54a243fa6e61a65de3678d5044aa81ac9fa211bdc0d558a34759d8aee"
+    },
+    {
+      "id": "dependency-audit",
+      "command": [
+        "pnpm",
+        "audit",
+        "--audit-level=high"
+      ],
+      "startedAt": "2026-10-16T23:01:48.865Z",
+      "finishedAt": "2026-10-16T23:01:49.930Z",
+      "exitCode": 0,
+      "signal": null,
+      "logPath": ".artifacts/admin-r2/a915b5a9/dependency-audit.log",
+      "sha256": "15950a68a7ed99c59779717acefdceb3f69cfd31bde67d2c954f2a3cea4d7955"
+    },
+    {
+      "id": "full-suite",
+      "command": [
+        "pnpm",
+        "test"
+      ],
+      "startedAt": "2026-10-16T23:01:49.932Z",
+      "finishedAt": "2026-10-16T23:04:28.594Z",
+      "exitCode": 0,
+      "signal": null,
+      "logPath": ".artifacts/admin-r2/a915b5a9/full-suite.log",
+      "sha256": "70b9a11023bb8b5dda1e290ac480fc95262a1f45ed0f728f125ec92e70b37bd5"
+    }
+  ],
+  "finishedAt": "2026-10-16T23:04:28.595Z",
+  "finalStatus": "",
+  "sourceUnchanged": true,
+  "pass": true
+}

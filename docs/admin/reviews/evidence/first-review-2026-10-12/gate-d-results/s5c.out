@@ -1,0 +1,76 @@
+{
+ "sequentialRetry-billing": {
+  "initialErrorBlocks": 2,
+  "steps": [
+   {
+    "errorBlocksBefore": 2,
+    "requestsAfterRetry": [
+     "200 /api/v1/admin/billing/summary?range=30d"
+    ],
+    "errorBlocksAfter": 1
+   },
+   {
+    "errorBlocksBefore": 1,
+    "requestsAfterRetry": [
+     "200 /api/v1/admin/billing/transactions?page=1&pageSize=25"
+    ],
+    "errorBlocksAfter": 0
+   }
+  ],
+  "markerLoaded": 25,
+  "remainingErrorText": null
+ },
+ "sequentialRetry-ai": {
+  "initialErrorBlocks": 2,
+  "steps": [
+   {
+    "errorBlocksBefore": 2,
+    "requestsAfterRetry": [
+     "200 /api/v1/admin/ai/summary?range=30d"
+    ],
+    "errorBlocksAfter": 1
+   },
+   {
+    "errorBlocksBefore": 1,
+    "requestsAfterRetry": [
+     "200 /api/v1/admin/ai/usage?page=1&pageSize=25"
+    ],
+    "errorBlocksAfter": 0
+   }
+  ],
+  "markerLoaded": 25,
+  "remainingErrorText": null
+ },
+ "authConfig503": {
+  "errorShown": false,
+  "tMs": 30001,
+  "text": null,
+  "formShown": 0
+ },
+ "preferencesSave": {
+  "samples": [
+   {
+    "atMs": 50,
+    "notice": "0:"
+   },
+   {
+    "atMs": 300,
+    "notice": "0:"
+   },
+   {
+    "atMs": 800,
+    "notice": "0:"
+   },
+   {
+    "atMs": 1500,
+    "notice": "0:"
+   }
+  ],
+  "apiAfterSave": [
+   "200 PUT /api/v1/admin/preferences",
+   "200 GET /api/v1/admin/settings"
+  ]
+ },
+ "revokedRowsSnapshot": []
+}
+unexpected console errors: [] pageErrors: []

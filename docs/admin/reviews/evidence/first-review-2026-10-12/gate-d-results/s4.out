@@ -1,0 +1,30 @@
+[super] role=SUPER_ADMIN meRoles=SUPER_ADMIN navMismatch=[] routeMismatch=0
+   actions: {"revealEmailButton":true,"recipeReviewForm":true,"grantForm":true,"roleRevokeButtons":5,"approvalButtons":0,"sessionRevokeButtons":0,"preferencesForm":true,"settingsMatrix":true} pageErrors 0 consoleErr 4
+[ops] role=OPERATIONS_ADMIN meRoles=OPERATIONS_ADMIN navMismatch=[] routeMismatch=0
+   actions: {"revealEmailButton":false,"recipeReviewForm":false,"grantForm":false,"roleRevokeButtons":0,"approvalButtons":0,"sessionRevokeButtons":0,"preferencesForm":true,"settingsMatrix":true} pageErrors 0 consoleErr 7
+[content] role=CONTENT_EDITOR meRoles=CONTENT_EDITOR navMismatch=[] routeMismatch=7
+   route-mismatch /admin/users(allowed=false,denied=1,marker=0,err=0,api=200 /api/v1/admin/me)
+   route-mismatch /admin/users/fx_user_001(allowed=false,denied=1,marker=0,err=0,api=200 /api/v1/admin/me)
+   route-mismatch /admin/households(allowed=false,denied=1,marker=0,err=0,api=200 /api/v1/admin/me)
+   route-mismatch /admin/billing(allowed=false,denied=1,marker=0,err=0,api=200 /api/v1/admin/me)
+   route-mismatch /admin/ai(allowed=false,denied=1,marker=0,err=0,api=200 /api/v1/admin/me)
+   route-mismatch /admin/system(allowed=false,denied=1,marker=1,err=0,api=200 /api/v1/admin/me)
+   route-mismatch /admin/audit(allowed=false,denied=1,marker=0,err=0,api=200 /api/v1/admin/me)
+   actions: {"revealEmailButton":false,"recipeReviewForm":true,"grantForm":false,"roleRevokeButtons":0,"approvalButtons":0,"sessionRevokeButtons":0,"preferencesForm":true,"settingsMatrix":true} pageErrors 0 consoleErr 14
+[support] role=SUPPORT_AGENT meRoles=SUPPORT_AGENT navMismatch=[] routeMismatch=6
+   route-mismatch /admin/billing(allowed=false,denied=1,marker=0,err=0,api=200 /api/v1/admin/me)
+   route-mismatch /admin/ai(allowed=false,denied=1,marker=0,err=0,api=200 /api/v1/admin/me)
+   route-mismatch /admin/recipes(allowed=false,denied=1,marker=0,err=0,api=200 /api/v1/admin/me)
+   route-mismatch /admin/recipes/imp-c6e706b483805e44(allowed=false,denied=1,marker=0,err=0,api=200 /api/v1/admin/me)
+   route-mismatch /admin/system(allowed=false,denied=1,marker=1,err=0,api=200 /api/v1/admin/me)
+   route-mismatch /admin/audit(allowed=false,denied=1,marker=0,err=0,api=200 /api/v1/admin/me)
+   actions: {"revealEmailButton":true,"recipeReviewForm":false,"grantForm":false,"roleRevokeButtons":0,"approvalButtons":0,"sessionRevokeButtons":0,"preferencesForm":true,"settingsMatrix":true} pageErrors 0 consoleErr 13
+[auditor] role=READ_ONLY_AUDITOR meRoles=READ_ONLY_AUDITOR navMismatch=[] routeMismatch=0
+   actions: {"revealEmailButton":false,"recipeReviewForm":false,"grantForm":false,"roleRevokeButtons":0,"approvalButtons":0,"sessionRevokeButtons":0,"preferencesForm":true,"settingsMatrix":true} pageErrors 0 consoleErr 7
+[super2] role=SUPER_ADMIN meRoles=SUPER_ADMIN navMismatch=[] routeMismatch=0
+   actions: {"revealEmailButton":true,"recipeReviewForm":true,"grantForm":true,"roleRevokeButtons":5,"approvalButtons":0,"sessionRevokeButtons":0,"preferencesForm":true,"settingsMatrix":true} pageErrors 0 consoleErr 4
+[login] revoked {"url":"/admin/login","errorText":"Thông tin đăng nhập không hợp lệ hoặc tài khoản không có quyền quản trị.","loginStatus":401,"loginCode":"ADMIN_INVALID_CREDENTIALS","loginError":"Thông tin đăng nhập không hợp lệ hoặc tài khoản không có quyền quản trị.","meAfter":401,"meCode":"ADMIN_UNAUTHENTICATED","pageErrors":[]}
+[login] owner-no-platform-role {"url":"/admin/login","errorText":"Thông tin đăng nhập không hợp lệ hoặc tài khoản không có quyền quản trị.","loginStatus":401,"loginCode":"ADMIN_INVALID_CREDENTIALS","loginError":"Thông tin đăng nhập không hợp lệ hoặc tài khoản không có quyền quản trị.","meAfter":401,"meCode":"ADMIN_UNAUTHENTICATED","pageErrors":[]}
+[login] customer-no-admin-role {"url":"/admin/login","errorText":"Thông tin đăng nhập không hợp lệ hoặc tài khoản không có quyền quản trị.","loginStatus":401,"loginCode":"ADMIN_INVALID_CREDENTIALS","loginError":"Thông tin đăng nhập không hợp lệ hoặc tài khoản không có quyền quản trị.","meAfter":401,"meCode":"ADMIN_UNAUTHENTICATED","pageErrors":[]}
+[login] unknown-user {"url":"/admin/login","errorText":"Thông tin đăng nhập không hợp lệ hoặc tài khoản không có quyền quản trị.","loginStatus":401,"loginCode":"ADMIN_INVALID_CREDENTIALS","loginError":"Thông tin đăng nhập không hợp lệ hoặc tài khoản không có quyền quản trị.","meAfter":401,"meCode":"ADMIN_UNAUTHENTICATED","pageErrors":[]}
+[login] super-wrong-password {"url":"/admin/login","errorText":"Thông tin đăng nhập không hợp lệ hoặc tài khoản không có quyền quản trị.","loginStatus":401,"loginCode":"ADMIN_INVALID_CREDENTIALS","loginError":"Thông tin đăng nhập không hợp lệ hoặc tài khoản không có quyền quản trị.","meAfter":401,"meCode":"ADMIN_UNAUTHENTICATED","pageErrors":[]}

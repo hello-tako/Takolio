@@ -28,6 +28,7 @@
   },
   "include": [
     "src/web",
+    "src/admin",
     "src/shared",
     "packages",
     "tests",

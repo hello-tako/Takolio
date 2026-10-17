@@ -1,0 +1,182 @@
+[WebServer] Isolated Admin Console preview on http://127.0.0.1:8790/admin/ (loopback only, in-memory SQLite, synthetic fixture, external network disabled)
+
+Running 6 tests using 1 worker
+
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"4e21e0c8-e54c-443f-b16e-09c7b6d8b71b","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":20,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"f0e69824-62c1-43d1-aa42-7bd27a1b8cba","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"f31e2e26-76d4-480d-836f-e03045ba6dbc","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"1f94b4b4-ab4f-4c48-a514-04996dcd4743","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"1f47be40-47c4-401f-b4da-2b189fdad5d5","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"8a85f58f-2805-4bc0-9039-8a4024db5c5e","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"e1d028e2-c709-493d-a2a7-387916e7b5fd","method":"GET","routeTemplate":"/api/v1/admin/auth/config","status":200,"durationMs":2,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"7929bb53-3c42-4c3c-94c2-861709f8796b","method":"POST","routeTemplate":"/api/v1/admin/auth/login","status":200,"durationMs":44,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"cfc4fd88-6181-4fd0-873e-62941ca2779f","method":"GET","routeTemplate":"/api/v1/admin/overview","status":200,"durationMs":5,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"b627317e-0635-4ec5-81b4-e639bb7a7d32","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"8b995295-f7e1-4ed8-b1ac-2883f3a0d3de","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"5b124423-964f-4a80-8faf-b01fdaa15314","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"f1c45184-877e-4a41-8e1a-6792fe26da9f","method":"GET","routeTemplate":"/api/v1/admin/me","status":200,"durationMs":2,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"fdf32550-22b7-444f-b45c-90a6cf6e90b5","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"2cdd47e3-ec75-4753-9520-f908791fec00","method":"GET","routeTemplate":"/api/v1/admin/settings","status":200,"durationMs":18,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"2b64d652-4578-46b9-ad26-8cb1d8d4bae9","method":"GET","routeTemplate":"/api/v1/admin/sessions","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"b1a91d64-c815-47a3-abed-f51cb8d3d726","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"9f6beea5-606c-44ac-9e68-affea3ec5b05","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+  ✓  1 tests/e2e/admin-a11y-responsive.e2e.ts:70:1 › scrollable tables are reachable and scrollable with the keyboard (3.0s)
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"538dc912-39e1-4ed6-b0ec-0f5f0c7543c9","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"c0c3322e-77b3-4ad3-9c84-c8ce657f942a","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"674d1f4f-3ea6-4810-b8c2-de03b280a918","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":3,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"56446436-8d2e-42ed-9718-7b9c33655443","method":"GET","routeTemplate":"/api/v1/admin/auth/config","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"b671b1d9-be08-4c4d-9c16-79063f49e753","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"86778289-4e69-4b0d-a968-6f4849f0004e","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":11,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"80789d7e-ba8e-4574-b2ad-e7aba430ba9e","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"0538d7fa-d21e-4475-b341-606535fe0ff4","method":"POST","routeTemplate":"/api/v1/admin/auth/login","status":200,"durationMs":42,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"d7f4b0b2-964a-47be-8340-785deb948646","method":"GET","routeTemplate":"/api/v1/admin/overview","status":200,"durationMs":2,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"9c5fe77e-a688-49f0-ad3c-2ef6adb7aca1","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"7946e13c-fd7b-45af-a7aa-1f4b932f2f8f","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"f97a8018-6ea9-4193-b4e3-72f9f71abf53","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":2,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"285e9fbb-7d47-4446-babe-29586a5af6e2","method":"GET","routeTemplate":"/api/v1/admin/me","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"fb8530d9-cd81-4f4c-9efb-007262d89a4e","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"7d92f9f4-7c74-4916-a32d-99c80bc1efb9","method":"GET","routeTemplate":"/api/v1/admin/settings","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"fc6f620c-75f9-4451-afd8-0ad3935bd21c","method":"GET","routeTemplate":"/api/v1/admin/sessions","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"6f2f9aaa-8eed-4629-aa58-13d5443f36e4","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"2113eb2b-5782-4602-9a5d-831a65ac057b","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+  ✓  2 tests/e2e/admin-a11y-responsive.e2e.ts:70:1 › scrollable tables are reachable and scrollable with the keyboard (2.9s)
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"aaf7772f-b808-4ef4-952d-9856d08635d6","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"1806339e-a778-42ba-a4dd-3d68acc223dc","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"9f01e136-511f-4103-acbd-2004c85f21a6","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"8c00b88f-3e2e-495d-9fbd-2eff78346414","method":"GET","routeTemplate":"/api/v1/admin/auth/config","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"1afa8c60-d827-4309-a705-f9f19c6efe0b","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"1cd51eab-ecd2-4baf-b639-1cd4a684af61","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"e04e4ab9-fd87-4f7e-84a3-ebc0094a38f9","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"74ade32c-f619-4dc1-b907-456a1e3efe2a","method":"POST","routeTemplate":"/api/v1/admin/auth/login","status":200,"durationMs":19,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"f43a8ffe-f5ae-455e-9701-09596782c563","method":"GET","routeTemplate":"/api/v1/admin/overview","status":200,"durationMs":2,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"db3834e2-2412-4b52-87a2-f44c8194bb64","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"1d019bbb-62d3-4c5c-ade7-ec253b9c604e","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"40be6506-bbd1-4f14-bd29-e2b7fa51922d","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"73952d0b-bb07-4f57-91d6-a238648aaef0","method":"GET","routeTemplate":"/api/v1/admin/me","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"0c649de5-3a3e-42ec-b280-709a699200c1","method":"GET","routeTemplate":"/api/v1/admin/settings","status":200,"durationMs":2,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"71dd9e24-4748-4705-a082-9419ab1929b7","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"d60d60d9-53a2-4305-ac4d-a504dfe03d43","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"2bc5c299-536a-446e-b41a-47dc84920da2","method":"GET","routeTemplate":"/api/v1/admin/sessions","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"5b909788-d2bb-4912-9c8b-eedbb0c0478a","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+  ✘  3 tests/e2e/admin-a11y-responsive.e2e.ts:70:1 › scrollable tables are reachable and scrollable with the keyboard (3.1s)
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"fe7f4d5a-a2e6-44c3-9de2-f2085c5c3a40","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"077b0cbe-0c7d-4130-9474-f10a65cb5b43","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"5daff25b-b1fa-4352-8ffe-29ab033ebd35","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"e822868e-01aa-43d6-b35b-6dcd6dab1b1a","method":"GET","routeTemplate":"/api/v1/admin/auth/config","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"46834bbc-a567-43bc-8710-cba4161d2e88","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"29cc5829-4d5e-43d1-88b3-e597e2957f7f","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"2cca9feb-eff4-4499-bf8c-f79cc53282f6","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"3e68a0dc-0506-41c0-93cf-e8ddf8ed3646","method":"POST","routeTemplate":"/api/v1/admin/auth/login","status":200,"durationMs":17,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"f1a0d4a3-c659-487d-900d-1f69987de6bb","method":"GET","routeTemplate":"/api/v1/admin/overview","status":200,"durationMs":2,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"42cfcb08-933e-4ff4-a41e-ab95a44c634f","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"f8246af9-4273-445b-a0bc-fe3371f7e2e8","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"3224174e-8bff-468d-8227-87745a88256b","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":7,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"41291b82-7f05-4d6b-99af-1127530a8b83","method":"GET","routeTemplate":"/api/v1/admin/me","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"e1e302e4-00b0-4814-bc6b-6e0f65554e1f","method":"GET","routeTemplate":"/api/v1/admin/settings","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"53d77802-d760-4d64-9c8a-68dbba91b790","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"ce1328a2-7594-4da2-a788-51cbc93e25bb","method":"GET","routeTemplate":"/api/v1/admin/sessions","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"6f822fd9-0601-4075-838b-944e909472bd","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"6e397e53-d1cf-4580-b9f5-1bf782bbf692","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+  ✘  4 tests/e2e/admin-a11y-responsive.e2e.ts:70:1 › scrollable tables are reachable and scrollable with the keyboard (3.3s)
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"6892bef6-749a-457a-a9db-e4c49520252f","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"1b4cc48c-8c32-4294-bb21-9f383ff5b6a3","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"e0c47f65-83bd-4206-a825-0b15148c2067","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"b591cb75-b5c8-4ba6-b546-925f6deb285e","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"d6246491-e18b-4165-8cbb-fd17a48d222c","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"10976b1e-7e1f-4e96-bd77-1116f9eee78d","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"b9cc60a9-d26c-458c-9ad2-c1ace1a1738e","method":"GET","routeTemplate":"/api/v1/admin/auth/config","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"faa9d6cb-8e4e-4cee-aaa2-c12ab64e0ac1","method":"POST","routeTemplate":"/api/v1/admin/auth/login","status":200,"durationMs":17,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"116fa7dc-d2a9-4b61-af3d-17c90dbd2c6b","method":"GET","routeTemplate":"/api/v1/admin/overview","status":200,"durationMs":2,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"49f7fefa-4690-4c42-9b37-305bccc4bf4e","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"7ca78acf-f12f-4f0e-afa2-3218f602a96e","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"71e22b06-d1f8-45af-b4dd-602440b6d6a6","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"e0e7218a-eaf9-41db-b22c-8c0341488d20","method":"GET","routeTemplate":"/api/v1/admin/me","status":200,"durationMs":2,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"8843fc16-aa6f-4ce4-905f-8bcb206beff4","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"40e618ef-38e5-4e6e-85d5-e86dfbe56e09","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"ec777eaf-b566-4011-bd24-1720132ee898","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"9f7de558-3584-463a-bccb-a236cdc9d83c","method":"GET","routeTemplate":"/api/v1/admin/settings","status":200,"durationMs":5,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"909f1f96-0701-43bc-a3b0-6817d3395c6f","method":"GET","routeTemplate":"/api/v1/admin/sessions","status":200,"durationMs":7,"environment":"development","errorClass":"NONE"}
+  ✓  5 tests/e2e/admin-a11y-responsive.e2e.ts:70:1 › scrollable tables are reachable and scrollable with the keyboard (3.0s)
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"e7061597-2ef6-4e2b-81d9-7fe257c00d41","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"80dbabe1-35e9-413f-84e0-5adcc805a8d9","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"ac965871-4ed7-4561-b26c-0c2245b4b313","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"4545511a-4906-40db-8aef-365ac157e8c5","method":"GET","routeTemplate":"/api/v1/admin/auth/config","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"3ead7d6c-c7ca-4462-8cca-def285eb051b","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"2eb43009-6fd1-48af-9306-310aaf8f79e8","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"058a4f13-f124-409e-8076-9eca09c90786","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"b4b96875-b8c0-420d-859c-6189d922d619","method":"POST","routeTemplate":"/api/v1/admin/auth/login","status":200,"durationMs":15,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"7807df42-6c06-47cb-a004-f2b4cfb3630c","method":"GET","routeTemplate":"/api/v1/admin/overview","status":200,"durationMs":2,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"a5024aa0-8765-48c6-93fc-4bf643f6e6ac","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"b0aab462-e2a8-41ae-bdbc-fe16083bef75","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"895c0230-c5dd-4962-9358-779be3f59c4a","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"493c7db1-d3ce-4c5d-a9c5-3afd2cd508aa","method":"GET","routeTemplate":"/api/v1/admin/me","status":200,"durationMs":2,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"0d1ce915-19bc-412d-ac93-dba1ec5c8d55","method":"GET","routeTemplate":"/api/v1/admin/settings","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"d8146767-c74a-422d-a80e-9fa4c368bbe1","method":"GET","routeTemplate":"/api/v1/admin/sessions","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"74ef18cc-91ee-402f-a51b-3567ee7052c5","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"26dab6e1-2ddd-432e-baea-0e9908969170","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":1,"environment":"development","errorClass":"NONE"}
+[WebServer] {"event":"http_request","schemaVersion":1,"requestId":"cc583c80-edf5-4c13-85b4-b2181355d5b5","method":"GET","routeTemplate":"UNMATCHED_OR_GATED","status":200,"durationMs":0,"environment":"development","errorClass":"NONE"}
+  ✓  6 tests/e2e/admin-a11y-responsive.e2e.ts:70:1 › scrollable tables are reachable and scrollable with the keyboard (2.8s)
+
+
+  1) tests/e2e/admin-a11y-responsive.e2e.ts:70:1 › scrollable tables are reachable and scrollable with the keyboard 
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 0
+    Received:   0
+
+      83 |   await page.keyboard.press('ArrowRight');
+      84 |   const after = await region.evaluate((el) => el.scrollLeft);
+    > 85 |   expect(after).toBeGreaterThan(before);
+         |                 ^
+      86 | });
+      87 |
+        at /tmp/r1cert/src/tests/e2e/admin-a11y-responsive.e2e.ts:85:17
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .hoplite/artifacts/admin-playwright/results/admin-a11y-responsive.e2e.-8af7b-crollable-with-the-keyboard-repeat2/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .hoplite/artifacts/admin-playwright/results/admin-a11y-responsive.e2e.-8af7b-crollable-with-the-keyboard-repeat2/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .hoplite/artifacts/admin-playwright/results/admin-a11y-responsive.e2e.-8af7b-crollable-with-the-keyboard-repeat2/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace .hoplite/artifacts/admin-playwright/results/admin-a11y-responsive.e2e.-8af7b-crollable-with-the-keyboard-repeat2/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests/e2e/admin-a11y-responsive.e2e.ts:70:1 › scrollable tables are reachable and scrollable with the keyboard 
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 0
+    Received:   0
+
+      83 |   await page.keyboard.press('ArrowRight');
+      84 |   const after = await region.evaluate((el) => el.scrollLeft);
+    > 85 |   expect(after).toBeGreaterThan(before);
+         |                 ^
+      86 | });
+      87 |
+        at /tmp/r1cert/src/tests/e2e/admin-a11y-responsive.e2e.ts:85:17
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .hoplite/artifacts/admin-playwright/results/admin-a11y-responsive.e2e.-8af7b-crollable-with-the-keyboard-repeat3/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .hoplite/artifacts/admin-playwright/results/admin-a11y-responsive.e2e.-8af7b-crollable-with-the-keyboard-repeat3/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .hoplite/artifacts/admin-playwright/results/admin-a11y-responsive.e2e.-8af7b-crollable-with-the-keyboard-repeat3/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace .hoplite/artifacts/admin-playwright/results/admin-a11y-responsive.e2e.-8af7b-crollable-with-the-keyboard-repeat3/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests/e2e/admin-a11y-responsive.e2e.ts:70:1 › scrollable tables are reachable and scrollable with the keyboard 
+    tests/e2e/admin-a11y-responsive.e2e.ts:70:1 › scrollable tables are reachable and scrollable with the keyboard 
+  4 passed (27.8s)

@@ -1,0 +1,74 @@
+import { beforeEach, describe, expect, it } from 'vitest';
+import { accessOptions, resetAccessJwksCache, verifyAccessAssertion } from '../../../src/worker/routes/admin/access';
+
+const TEAM = 'takosan-test.cloudflareaccess.com';
+const AUD = 'a'.repeat(32);
+const env = { ADMIN_ACCESS_TEAM_DOMAIN: TEAM, ADMIN_ACCESS_AUD: AUD } as never;
+const b64 = (value: unknown) => Buffer.from(typeof value === 'string' ? value : JSON.stringify(value)).toString('base64url');
+
+async function keyPair(kid: string) {
+  const pair = await crypto.subtle.generateKey({ name: 'RSASSA-PKCS1-v1_5', modulusLength: 2048, publicExponent: new Uint8Array([1, 0, 1]), hash: 'SHA-256' }, true, ['sign', 'verify']);
+  const jwk = { ...(await crypto.subtle.exportKey('jwk', pair.publicKey)), kid, alg: 'RS256', use: 'sig' };
+  return { privateKey: pair.privateKey, jwk };
+}
+
+async function token(privateKey: CryptoKey, header: Record<string, unknown>, payload: Record<string, unknown>) {
+  const signingInput = `${b64(header)}.${b64(payload)}`;
+  const sig = await crypto.subtle.sign('RSASSA-PKCS1-v1_5', privateKey, new TextEncoder().encode(signingInput));
+  return `${signingInput}.${Buffer.from(new Uint8Array(sig)).toString('base64url')}`;
+}
+
+const now = () => Math.floor(Date.now() / 1000);
+const claims = (over: Record<string, unknown> = {}) => ({ aud: [AUD], iss: `https://${TEAM}`, exp: now() + 600, email: 'Super@Fixture.takosan.test', ...over });
+
+let main: Awaited<ReturnType<typeof keyPair>>;
+let calls = 0;
+beforeEach(async () => {
+  resetAccessJwksCache();
+  main = await keyPair('main-kid');
+  calls = 0;
+  accessOptions.fetcher = async () => { calls += 1; return new Response(JSON.stringify({ keys: [main.jwk] }), { status: 200, headers: { 'content-type': 'application/json' } }); };
+});
+
+describe('Cloudflare Access assertion verifier', () => {
+  it('accepts a correctly signed token and lowercases the email', async () => {
+    const r = await verifyAccessAssertion(await token(main.privateKey, { alg: 'RS256', kid: 'main-kid' }, claims()), env, accessOptions);
+    expect(r).toEqual({ ok: true, email: 'super@fixture.takosan.test' });
+  });
+
+  it('rejects alg=none and non-RS256 headers', async () => {
+    const r = await verifyAccessAssertion(`${b64({ alg: 'none', kid: 'main-kid' })}.${b64(claims())}.`, env, accessOptions);
+    expect(r).toEqual({ ok: false, reason: 'malformed' });
+  });
+
+  it('rejects wrong audience, wrong issuer, expired, and missing exp', async () => {
+    const h = { alg: 'RS256', kid: 'main-kid' };
+    expect(await verifyAccessAssertion(await token(main.privateKey, h, claims({ aud: ['b'.repeat(32)] })), env, accessOptions)).toEqual({ ok: false, reason: 'wrong_audience' });
+    expect(await verifyAccessAssertion(await token(main.privateKey, h, claims({ iss: 'https://evil.cloudflareaccess.com' })), env, accessOptions)).toEqual({ ok: false, reason: 'wrong_issuer' });
+    expect(await verifyAccessAssertion(await token(main.privateKey, h, claims({ exp: now() - 5 })), env, accessOptions)).toEqual({ ok: false, reason: 'expired' });
+    const noExp = { ...claims() } as Record<string, unknown>;
+    delete noExp.exp;
+    expect(await verifyAccessAssertion(await token(main.privateKey, h, noExp), env, accessOptions)).toEqual({ ok: false, reason: 'expired' });
+  });
+
+  it('rejects a signature made by another key that reuses the trusted kid', async () => {
+    const attacker = await keyPair('main-kid');
+    const r = await verifyAccessAssertion(await token(attacker.privateKey, { alg: 'RS256', kid: 'main-kid' }, claims()), env, accessOptions);
+    expect(r).toEqual({ ok: false, reason: 'bad_signature' });
+  });
+
+  it('accepts an audience array that contains the configured AUD', async () => {
+    const r = await verifyAccessAssertion(await token(main.privateKey, { alg: 'RS256', kid: 'main-kid' }, claims({ aud: ['x', AUD] })), env, accessOptions);
+    expect(r.ok).toBe(true);
+  });
+
+  it('observed: an unknown kid forces a JWKS refetch on every request (no negative caching)', async () => {
+    const ghost = await keyPair('ghost-kid');
+    await verifyAccessAssertion(await token(main.privateKey, { alg: 'RS256', kid: 'main-kid' }, claims()), env, accessOptions);
+    const before = calls;
+    for (let i = 0; i < 3; i += 1) {
+      expect(await verifyAccessAssertion(await token(ghost.privateKey, { alg: 'RS256', kid: 'ghost-kid' }, claims()), env, accessOptions)).toEqual({ ok: false, reason: 'unknown_key' });
+    }
+    expect(calls - before).toBe(3);
+  });
+});

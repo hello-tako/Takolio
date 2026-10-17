@@ -1,0 +1,12 @@
+PASS customer ledger identity — HEAD migrations/ equals the pre-admin release (names + SHA-256)
+PASS DB 0041 + old application (pre-admin release) — deploy ledger gate passes
+PASS DB 0041 + new application (remediated HEAD) — deploy ledger gate passes; customer release train unchanged
+PASS DB 0041 + new application schema gate — read-only schema gate (HEAD migrations) reports no issue
+PASS DB 0041 + ORIGINAL admin commit 3e865d0 (review finding) — deploy gate fails before 0042 is applied (reproduces the release-train block)
+PASS DB 0042 (original design) + old application rollback (review finding) — pre-admin release is rejected (reproduces the rollback defect)
+PASS DB 0042 (original design) + remediated HEAD — rejected as unexpected forward drift; remediation never needs 0042 in the customer DB
+PASS Unexpected extra customer migration — deploy ledger gate and schema gate both reject
+PASS Admin DB fresh apply + re-apply — migrations-admin applies once (ledger 1, schema_version 1, 9 triggers); re-apply is a no-op
+PASS Failed admin migration — apply fails, the ledger does not record it, no partial admin schema remains (admin Worker stays 503 ADMIN_SCHEMA_MISMATCH)
+PASS Customer application rollback with admin schema present — admin schema is in a separate database; the customer ledger is untouched, so legacy release gates pass
+migration-matrix: PASS (11/11)

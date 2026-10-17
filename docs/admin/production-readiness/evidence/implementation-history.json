@@ -1,0 +1,50 @@
+[
+  {
+    "sha": "9395f0e31ea599f1eb7780a8eba36964fed7c483",
+    "subject": "fix(admin): produce protected signed staging evidence artifacts"
+  },
+  {
+    "sha": "a915b5a9713a01caa7f29c4935108a1152a29c8f",
+    "subject": "fix(admin): isolate emergency containment and bind release evidence"
+  },
+  {
+    "sha": "feb049334eeb0e54ffcfe4fbc397f8eddbebe27f",
+    "subject": "feat(admin): prepare disabled signed release adapters and protected workflows"
+  },
+  {
+    "sha": "77f81b7bff1c29790a67ea48475aa720a86b9f2e",
+    "subject": "docs(admin): preserve exact-source readiness evidence and release blockers"
+  },
+  {
+    "sha": "066c35ad670bc877756150c2055e3844dd7a17ce",
+    "subject": "fix(admin): allow isolated synthetic fixtures in CI"
+  },
+  {
+    "sha": "6c3c68147efb3f95b435b9452df34e76bea17a82",
+    "subject": "test(admin): align governance UI with three-operator floor"
+  },
+  {
+    "sha": "ba762a205fd890efe4af47ef6c0fd7cd6f45fc14",
+    "subject": "fix(admin): permit safe offboarding with three eligible operators remaining"
+  },
+  {
+    "sha": "77a08c38484e8a32d718ab11c932d6d402ab9d3e",
+    "subject": "test(admin): update migration manifest expectation"
+  },
+  {
+    "sha": "53f4f4a0c14475fb411aa1a53ae90d09d87b5498",
+    "subject": "fix(admin): preserve eligible operator roster and atomic target enrollment"
+  },
+  {
+    "sha": "3b75f20e3a6ab9c55c479dacc612eb483f6f4598",
+    "subject": "fix(admin): enforce bounded disclosure and offline recovery controls"
+  },
+  {
+    "sha": "50cdd740ca2d250b9160477251e2ff3c77fac3ba",
+    "subject": "fix(admin): recover R2 facade and independent operator authority"
+  },
+  {
+    "sha": "b15215286bb4a9c392e50be80634e96bac2fb92d",
+    "subject": "docs(admin): checkpoint verified R2 recovery provenance"
+  }
+]

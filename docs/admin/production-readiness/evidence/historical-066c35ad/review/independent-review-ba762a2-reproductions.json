@@ -1,0 +1,95 @@
+{
+  "sourceSha": "ba762a205fd890efe4af47ef6c0fd7cd6f45fc14",
+  "passed": 12,
+  "environment": "local SQLite with production Admin policy and locally signed Access assertions",
+  "results": [
+    {
+      "scenario": "three",
+      "request": 409,
+      "approval": null,
+      "subsequentMe": 200,
+      "subsequentLogin": 200,
+      "eligible": 3
+    },
+    {
+      "scenario": "fourth-binding-revoked",
+      "request": 409,
+      "approval": null,
+      "subsequentMe": 200,
+      "subsequentLogin": 200,
+      "eligible": 3
+    },
+    {
+      "scenario": "fourth-operator-revoked",
+      "request": 409,
+      "approval": null,
+      "subsequentMe": 200,
+      "subsequentLogin": 200,
+      "eligible": 3
+    },
+    {
+      "scenario": "other-issuer",
+      "request": 409,
+      "approval": null,
+      "subsequentMe": 200,
+      "subsequentLogin": 200,
+      "eligible": 3
+    },
+    {
+      "scenario": "four-eligible",
+      "request": 201,
+      "approval": 200,
+      "subsequentMe": 200,
+      "subsequentLogin": 200,
+      "eligible": 3
+    },
+    {
+      "scenario": "revoke-race",
+      "request": 201,
+      "approval": 409,
+      "subsequentMe": 200,
+      "subsequentLogin": 200,
+      "eligible": 3
+    },
+    {
+      "scenario": "cleanup-binding",
+      "request": 201,
+      "approval": 200,
+      "subsequentMe": 200,
+      "subsequentLogin": 200,
+      "eligible": 3
+    },
+    {
+      "scenario": "cleanup-operator",
+      "request": 201,
+      "approval": 200,
+      "subsequentMe": 200,
+      "subsequentLogin": 200,
+      "eligible": 3
+    },
+    {
+      "scenario": "target-binding-SUPER_ADMIN",
+      "status": 409,
+      "roleCreated": false,
+      "successAudit": false
+    },
+    {
+      "scenario": "target-operator-SUPER_ADMIN",
+      "status": 409,
+      "roleCreated": false,
+      "successAudit": false
+    },
+    {
+      "scenario": "target-binding-SUPPORT_AGENT",
+      "status": 409,
+      "roleCreated": false,
+      "successAudit": false
+    },
+    {
+      "scenario": "target-operator-SUPPORT_AGENT",
+      "status": 409,
+      "roleCreated": false,
+      "successAudit": false
+    }
+  ]
+}

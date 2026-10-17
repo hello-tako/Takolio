@@ -1,0 +1,2929 @@
+{
+  "generatedAt": "2026-10-16T22:58:43.057Z",
+  "mode": "current",
+  "root": "<local-repository>",
+  "head": "a915b5a9713a01caa7f29c4935108a1152a29c8f",
+  "wranglerVersion": "4.149.0",
+  "boundary": {
+    "WRANGLER_SEND_METRICS": "false",
+    "cloudflareApiToken": "empty",
+    "xdgConfigHome": "throwaway temp dir (no OAuth login)",
+    "commands": "wrangler dev --local, wrangler d1 --local, wrangler deploy --dry-run"
+  },
+  "pass": true,
+  "scenarios": [
+    {
+      "name": "emergency shutdown has no D1, facade, secret, asset or auth dependencies",
+      "pass": true,
+      "checks": [
+        {
+          "label": "GET / closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "GET /admin closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "GET /admin/ closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "GET /admin/index.html closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/index.html",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "GET /admin/users closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/users",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "GET /admin/users/fx_user_001 closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/users/fx_user_001",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "GET /admin/favicon.svg closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/favicon.svg",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "GET /%61dmin/ closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/%61dmin/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "GET /admin%2F closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin%2F",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "GET //admin/ closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "//admin/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "GET /ADMIN/ closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/ADMIN/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "GET /api/v1/admin/auth/config closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/api/v1/admin/auth/config",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "GET /api/v1/admin/me closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/api/v1/admin/me",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "GET /admin/assets/admin-BpYQhRzb.js closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/assets/admin-BpYQhRzb.js",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "POST / closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "POST",
+            "path": "/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "POST /admin closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "POST",
+            "path": "/admin",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "POST /admin/ closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "POST",
+            "path": "/admin/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "POST /admin/index.html closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "POST",
+            "path": "/admin/index.html",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "POST /admin/users closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "POST",
+            "path": "/admin/users",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "POST /admin/users/fx_user_001 closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "POST",
+            "path": "/admin/users/fx_user_001",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "POST /admin/favicon.svg closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "POST",
+            "path": "/admin/favicon.svg",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "POST /%61dmin/ closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "POST",
+            "path": "/%61dmin/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "POST /admin%2F closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "POST",
+            "path": "/admin%2F",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "POST //admin/ closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "POST",
+            "path": "//admin/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "POST /ADMIN/ closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "POST",
+            "path": "/ADMIN/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "POST /api/v1/admin/auth/config closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "POST",
+            "path": "/api/v1/admin/auth/config",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "POST /api/v1/admin/me closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "POST",
+            "path": "/api/v1/admin/me",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "POST /admin/assets/admin-BpYQhRzb.js closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "POST",
+            "path": "/admin/assets/admin-BpYQhRzb.js",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "OPTIONS / closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "OPTIONS",
+            "path": "/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "OPTIONS /admin closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "OPTIONS",
+            "path": "/admin",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "OPTIONS /admin/ closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "OPTIONS",
+            "path": "/admin/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "OPTIONS /admin/index.html closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "OPTIONS",
+            "path": "/admin/index.html",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "OPTIONS /admin/users closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "OPTIONS",
+            "path": "/admin/users",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "OPTIONS /admin/users/fx_user_001 closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "OPTIONS",
+            "path": "/admin/users/fx_user_001",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "OPTIONS /admin/favicon.svg closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "OPTIONS",
+            "path": "/admin/favicon.svg",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "OPTIONS /%61dmin/ closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "OPTIONS",
+            "path": "/%61dmin/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "OPTIONS /admin%2F closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "OPTIONS",
+            "path": "/admin%2F",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "OPTIONS //admin/ closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "OPTIONS",
+            "path": "//admin/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "OPTIONS /ADMIN/ closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "OPTIONS",
+            "path": "/ADMIN/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "OPTIONS /api/v1/admin/auth/config closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "OPTIONS",
+            "path": "/api/v1/admin/auth/config",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "OPTIONS /api/v1/admin/me closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "OPTIONS",
+            "path": "/api/v1/admin/me",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "OPTIONS /admin/assets/admin-BpYQhRzb.js closed without bindings",
+          "pass": true,
+          "observed": {
+            "method": "OPTIONS",
+            "path": "/admin/assets/admin-BpYQhRzb.js",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        }
+      ]
+    },
+    {
+      "name": "admin Worker, production template (ADMIN_CONSOLE_ENABLED=false)",
+      "pass": true,
+      "checks": [
+        {
+          "label": "navigate / → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch / → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /admin → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /admin → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /admin/ → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /admin/ → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /admin/index.html → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/index.html",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /admin/index.html → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/index.html",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /admin/users → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/users",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /admin/users → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/users",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /admin/users/fx_user_001 → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/users/fx_user_001",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /admin/users/fx_user_001 → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/users/fx_user_001",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /admin/favicon.svg → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/favicon.svg",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /admin/favicon.svg → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/favicon.svg",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /%61dmin/ → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/%61dmin/",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /%61dmin/ → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/%61dmin/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /admin%2F → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin%2F",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /admin%2F → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin%2F",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate //admin/ → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "//admin/",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch //admin/ → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "//admin/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /ADMIN/ → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/ADMIN/",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /ADMIN/ → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/ADMIN/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /api/v1/admin/auth/config → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/api/v1/admin/auth/config",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /api/v1/admin/auth/config → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/api/v1/admin/auth/config",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /api/v1/admin/me → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/api/v1/admin/me",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /api/v1/admin/me → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/api/v1/admin/me",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /admin/assets/admin-BpYQhRzb.js → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/assets/admin-BpYQhRzb.js",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /admin/assets/admin-BpYQhRzb.js → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/assets/admin-BpYQhRzb.js",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        }
+      ]
+    },
+    {
+      "name": "admin Worker, ENVIRONMENT missing (local build, console flag true)",
+      "pass": true,
+      "checks": [
+        {
+          "label": "navigate / → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch / → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /admin → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /admin → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /admin/ → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /admin/ → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /admin/index.html → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/index.html",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /admin/index.html → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/index.html",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /admin/users → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/users",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /admin/users → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/users",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /admin/users/fx_user_001 → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/users/fx_user_001",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /admin/users/fx_user_001 → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/users/fx_user_001",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /admin/favicon.svg → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/favicon.svg",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /admin/favicon.svg → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/favicon.svg",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /%61dmin/ → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/%61dmin/",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /%61dmin/ → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/%61dmin/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /admin%2F → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin%2F",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /admin%2F → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin%2F",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate //admin/ → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "//admin/",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch //admin/ → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "//admin/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /ADMIN/ → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/ADMIN/",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /ADMIN/ → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/ADMIN/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /api/v1/admin/auth/config → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/api/v1/admin/auth/config",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /api/v1/admin/auth/config → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/api/v1/admin/auth/config",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /api/v1/admin/me → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/api/v1/admin/me",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /api/v1/admin/me → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/api/v1/admin/me",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /admin/assets/admin-BpYQhRzb.js → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/assets/admin-BpYQhRzb.js",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /admin/assets/admin-BpYQhRzb.js → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/assets/admin-BpYQhRzb.js",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        }
+      ]
+    },
+    {
+      "name": "admin Worker, ENVIRONMENT=development on a public origin",
+      "pass": true,
+      "checks": [
+        {
+          "label": "navigate / → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch / → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /admin → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /admin → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /admin/ → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /admin/ → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /admin/index.html → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/index.html",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /admin/index.html → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/index.html",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /admin/users → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/users",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /admin/users → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/users",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /admin/users/fx_user_001 → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/users/fx_user_001",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /admin/users/fx_user_001 → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/users/fx_user_001",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /admin/favicon.svg → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/favicon.svg",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /admin/favicon.svg → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/favicon.svg",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /%61dmin/ → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/%61dmin/",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /%61dmin/ → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/%61dmin/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /admin%2F → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin%2F",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /admin%2F → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin%2F",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate //admin/ → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "//admin/",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch //admin/ → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "//admin/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /ADMIN/ → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/ADMIN/",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /ADMIN/ → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/ADMIN/",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /api/v1/admin/auth/config → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/api/v1/admin/auth/config",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /api/v1/admin/auth/config → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/api/v1/admin/auth/config",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /api/v1/admin/me → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/api/v1/admin/me",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /api/v1/admin/me → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/api/v1/admin/me",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /admin/assets/admin-BpYQhRzb.js → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/assets/admin-BpYQhRzb.js",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "fetch /admin/assets/admin-BpYQhRzb.js → 404, no admin content",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/assets/admin-BpYQhRzb.js",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": "true",
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        }
+      ]
+    },
+    {
+      "name": "admin Worker enabled on loopback (real workerd, run_worker_first)",
+      "pass": true,
+      "checks": [
+        {
+          "label": "/admin/ → 200 admin shell with admin CSP and no-store",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/",
+            "navigate": true,
+            "status": 200,
+            "location": null,
+            "body": "ADMIN_SHELL",
+            "contentType": "text/html; charset=utf-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": null,
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "deep link → 200 admin shell with admin CSP",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/users/fx_user_001",
+            "navigate": true,
+            "status": 200,
+            "location": null,
+            "body": "ADMIN_SHELL",
+            "contentType": "text/html; charset=utf-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": null,
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "/admin/index.html → redirect to /admin/",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/index.html",
+            "navigate": true,
+            "status": 302,
+            "location": "/admin/",
+            "body": "",
+            "contentType": null,
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": null,
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "admin asset served through the Worker with no-store",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/assets/admin-BpYQhRzb.js",
+            "navigate": false,
+            "status": 200,
+            "location": null,
+            "body": "[js]",
+            "contentType": "text/javascript; charset=utf-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": null,
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "customer-style /assets path is 404",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/assets/admin-BpYQhRzb.js",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": null,
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "percent-encoded asset path is 404",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/%61ssets/admin-BpYQhRzb.js",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": null,
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "encoded traversal is 404",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/assets/..%2F..%2Fadmin%2Findex.html",
+            "navigate": false,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": null,
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "auth config discloses only the mode",
+          "pass": true,
+          "observed": {
+            "data": {
+              "mode": "password"
+            }
+          }
+        },
+        {
+          "label": "login from the customer origin → 403",
+          "pass": true,
+          "observed": {
+            "method": "POST",
+            "path": "/api/v1/admin/auth/login",
+            "navigate": false,
+            "status": 403,
+            "location": null,
+            "body": "{\"error\":\"Yêu cầu bị chặn do không xác minh được nguồn gốc.\",\"code\":\"ADMIN_CSRF_",
+            "contentType": "application/json",
+            "csp": "other",
+            "cacheControl": "no-store",
+            "disabledMarker": null,
+            "setCookie": [],
+            "cors": [],
+            "json": {
+              "error": "Yêu cầu bị chặn do không xác minh được nguồn gốc.",
+              "code": "ADMIN_CSRF_FAILED"
+            }
+          }
+        },
+        {
+          "label": "forged Host header → 404",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/",
+            "navigate": true,
+            "status": 404,
+            "location": null,
+            "body": "Not Found",
+            "contentType": "text/plain; charset=UTF-8",
+            "csp": "admin",
+            "cacheControl": "no-store",
+            "disabledMarker": null,
+            "setCookie": [],
+            "cors": [],
+            "json": null
+          }
+        },
+        {
+          "label": "same-origin login → 200 with one HttpOnly SameSite=Strict __Host- cookie",
+          "pass": true,
+          "observed": {
+            "status": 200,
+            "setCookie": [
+              "__Host-takosan_admin_session=<redacted>; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=28800"
+            ]
+          }
+        },
+        {
+          "label": "GET /me → 200 with a session-derived CSRF token",
+          "pass": true,
+          "observed": {
+            "status": 200
+          }
+        },
+        {
+          "label": "mutation without CSRF → 403",
+          "pass": true,
+          "observed": {
+            "error": "Yêu cầu bị chặn do không xác minh được nguồn gốc.",
+            "code": "ADMIN_CSRF_FAILED"
+          }
+        },
+        {
+          "label": "mutation with CSRF + exact Origin → 200",
+          "pass": true,
+          "observed": {
+            "status": 200
+          }
+        },
+        {
+          "label": "no CORS headers for a cross-origin preflight",
+          "pass": true,
+          "observed": []
+        }
+      ]
+    },
+    {
+      "name": "real browser on multi-Worker workerd (synthetic fixture)",
+      "pass": true,
+      "checks": [
+        {
+          "label": "browser overview has no error panel",
+          "pass": true,
+          "observed": null
+        },
+        {
+          "label": "browser users has no error panel",
+          "pass": true,
+          "observed": null
+        },
+        {
+          "label": "browser users/fx_user_001 has no error panel",
+          "pass": true,
+          "observed": null
+        },
+        {
+          "label": "browser households has no error panel",
+          "pass": true,
+          "observed": null
+        },
+        {
+          "label": "browser billing has no error panel",
+          "pass": true,
+          "observed": null
+        },
+        {
+          "label": "browser ai has no error panel",
+          "pass": true,
+          "observed": null
+        },
+        {
+          "label": "browser recipes has no error panel",
+          "pass": true,
+          "observed": null
+        },
+        {
+          "label": "browser system has no error panel",
+          "pass": true,
+          "observed": null
+        },
+        {
+          "label": "browser audit has no error panel",
+          "pass": true,
+          "observed": null
+        },
+        {
+          "label": "browser settings has no error panel",
+          "pass": true,
+          "observed": null
+        }
+      ]
+    },
+    {
+      "name": "customer Worker from the current tree has no admin surface",
+      "pass": true,
+      "checks": [
+        {
+          "label": "navigate /admin/ → customer SPA shell, never the admin shell",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/",
+            "navigate": true,
+            "status": 200,
+            "location": null,
+            "body": "CUSTOMER_SHELL",
+            "contentType": "text/html; charset=utf-8",
+            "csp": "customer",
+            "cacheControl": "no-cache, no-store, must-revalidate",
+            "disabledMarker": null,
+            "setCookie": [],
+            "cors": [
+              "access-control-allow-credentials",
+              "access-control-expose-headers"
+            ],
+            "json": null
+          }
+        },
+        {
+          "label": "navigate /admin/users → not the admin shell",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/admin/users",
+            "navigate": true,
+            "status": 200,
+            "location": null,
+            "body": "CUSTOMER_SHELL",
+            "contentType": "text/html; charset=utf-8",
+            "csp": "customer",
+            "cacheControl": "no-cache, no-store, must-revalidate",
+            "disabledMarker": null,
+            "setCookie": [],
+            "cors": [
+              "access-control-allow-credentials",
+              "access-control-expose-headers"
+            ],
+            "json": null
+          }
+        },
+        {
+          "label": "/api/v1/admin/auth/config is not answered by admin code",
+          "pass": true,
+          "observed": {
+            "method": "GET",
+            "path": "/api/v1/admin/auth/config",
+            "navigate": false,
+            "status": 200,
+            "location": null,
+            "body": "CUSTOMER_SHELL",
+            "contentType": "text/html; charset=utf-8",
+            "csp": "other",
+            "cacheControl": "no-cache, no-store, must-revalidate",
+            "disabledMarker": null,
+            "setCookie": [],
+            "cors": [
+              "access-control-allow-credentials",
+              "access-control-expose-headers"
+            ],
+            "json": null
+          }
+        },
+        {
+          "label": "admin bundle file is not served",
+          "pass": true,
+          "observed": {
+            "status": 200,
+            "contentType": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "label": "dist/client contains no admin files",
+          "pass": true,
+          "observed": ""
+        }
+      ]
+    },
+    {
+      "name": "current-main compatible application recovery with additive schema",
+      "pass": true,
+      "checks": [
+        {
+          "label": "flags-OFF recovery on additive 0043: /api/v1/me",
+          "pass": true,
+          "observed": {
+            "status": 200
+          }
+        },
+        {
+          "label": "flags-OFF recovery on additive 0043: /api/v1/inventory",
+          "pass": true,
+          "observed": {
+            "status": 200
+          }
+        },
+        {
+          "label": "flags-OFF recovery on additive 0043: /api/v1/week/current",
+          "pass": true,
+          "observed": {
+            "status": 200
+          }
+        }
+      ]
+    },
+    {
+      "name": "facade default entrypoint exposes no HTTP API",
+      "pass": true,
+      "checks": [
+        {
+          "label": "GET default facade / refuses HTTP",
+          "pass": true,
+          "observed": {
+            "status": 404
+          }
+        },
+        {
+          "label": "GET default facade /rpc refuses HTTP",
+          "pass": true,
+          "observed": {
+            "status": 404
+          }
+        },
+        {
+          "label": "GET default facade /api/v1/admin/users refuses HTTP",
+          "pass": true,
+          "observed": {
+            "status": 404
+          }
+        },
+        {
+          "label": "POST default facade / refuses HTTP",
+          "pass": true,
+          "observed": {
+            "status": 404
+          }
+        },
+        {
+          "label": "POST default facade /rpc refuses HTTP",
+          "pass": true,
+          "observed": {
+            "status": 404
+          }
+        },
+        {
+          "label": "POST default facade /api/v1/admin/users refuses HTTP",
+          "pass": true,
+          "observed": {
+            "status": 404
+          }
+        }
+      ]
+    },
+    {
+      "name": "production admin bundle never compiles the local password login (wrangler deploy --dry-run, no upload)",
+      "pass": true,
+      "checks": [
+        {
+          "label": "production dry-run bundle built",
+          "pass": true,
+          "observed": {
+            "exit": 0,
+            "bundleFile": "admin-worker.js",
+            "bytes": 319675,
+            "typeofGuardUnreplaced": false,
+            "identifierPresent": false,
+            "containsFixturePassword": false,
+            "containsLocalAuthority": false,
+            "log": []
+          }
+        },
+        {
+          "label": "production bundle excludes the local password authority module",
+          "pass": true,
+          "observed": {
+            "exit": 0,
+            "bundleFile": "admin-worker.js",
+            "bytes": 319675,
+            "typeofGuardUnreplaced": false,
+            "identifierPresent": false,
+            "containsFixturePassword": false,
+            "containsLocalAuthority": false,
+            "log": []
+          }
+        },
+        {
+          "label": "local bundle has the define substituted",
+          "pass": true,
+          "observed": {
+            "exit": 0,
+            "bundleFile": "admin-worker.js",
+            "bytes": 346595,
+            "typeofGuardUnreplaced": false,
+            "identifierPresent": false,
+            "containsFixturePassword": false,
+            "containsLocalAuthority": true,
+            "log": []
+          }
+        },
+        {
+          "label": "no fixture credential in either bundle",
+          "pass": true,
+          "observed": null
+        }
+      ]
+    }
+  ]
+}

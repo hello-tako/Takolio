@@ -1,0 +1,228 @@
+{
+ "axeTargets-overview": [
+  {
+   "id": "heading-order",
+   "nodes": [
+    {
+     "target": [
+      "#\\:r1\\:-label"
+     ],
+     "html": "<h3 id=\":r1:-label\">Người dùng đã đăng ký</h3>",
+     "summary": "Fix any of the following:\n  Heading order invalid"
+    }
+   ]
+  }
+ ],
+ "headings-overview": [
+  "H1:Tổng quan",
+  "H3:Người dùng đã đăng ký",
+  "H3:Người dùng hoạt động",
+  "H3:Đăng ký mới",
+  "H3:Gói Plus đang hoạt động",
+  "H3:Doanh thu đã xác nhận",
+  "H3:Yêu cầu AI",
+  "H3:Lượt quét",
+  "H2:Sức khỏe hệ thống",
+  "H2:Sự cố gần đây",
+  "H2:Xu hướng theo ngày",
+  "H3:Đăng ký mới theo ngày",
+  "H3:Lượt quét theo ngày",
+  "H3:Doanh thu đã xác nhận theo ngày"
+ ],
+ "axeTargets-settings": [
+  {
+   "id": "scrollable-region-focusable",
+   "nodes": [
+    {
+     "target": [
+      "section[aria-labelledby=\":r2:\"] > .table-wrap"
+     ],
+     "html": "<div class=\"table-wrap\">",
+     "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+    }
+   ]
+  }
+ ],
+ "headings-settings": [
+  "H1:Cài đặt",
+  "H2:Hồ sơ & phiên",
+  "H2:Tùy chọn cá nhân",
+  "H2:Ma trận quyền",
+  "H2:Phân quyền quản trị",
+  "H2:Cấp vai trò quản trị",
+  "H2:Yêu cầu phê duyệt",
+  "H2:Phiên quản trị đang hoạt động"
+ ],
+ "settingsOverflow-820": {
+  "scrollWidth": 1264,
+  "innerWidth": 820,
+  "widestCount": 251,
+  "widest": [
+   {
+    "tag": "table",
+    "cls": "data-table matrix",
+    "testid": "admin-settings-matrix",
+    "right": 1392,
+    "text": "Ma trận quyền theo vai tròQuyềnQuản trị ",
+    "chain": [
+     "div.table-wrap[ox=auto,disp=block,w=522]",
+     "section.card section[ox=visible,disp=block,w=560]",
+     "main.admin-main[ox=visible,disp=block,w=600]",
+     "div.admin-body[ox=visible,disp=flex,w=600]",
+     "div.admin-app[ox=visible,disp=grid,w=820]",
+     "div.[ox=visible,disp=block,w=820]"
+    ]
+   },
+   {
+    "tag": "thead",
+    "cls": "",
+    "testid": null,
+    "right": 1392,
+    "text": "QuyềnQuản trị viên cấp caoQuản trị vận h",
+    "chain": [
+     "table.data-table matrix[ox=visible,disp=table,w=1132]",
+     "div.table-wrap[ox=auto,disp=block,w=522]",
+     "section.card section[ox=visible,disp=block,w=560]",
+     "main.admin-main[ox=visible,disp=block,w=600]",
+     "div.admin-body[ox=visible,disp=flex,w=600]",
+     "div.admin-app[ox=visible,disp=grid,w=820]"
+    ]
+   },
+   {
+    "tag": "tr",
+    "cls": "",
+    "testid": null,
+    "right": 1392,
+    "text": "QuyềnQuản trị viên cấp caoQuản trị vận h",
+    "chain": [
+     "thead.[ox=visible,disp=table-header-group,w=1132]",
+     "table.data-table matrix[ox=visible,disp=table,w=1132]",
+     "div.table-wrap[ox=auto,disp=block,w=522]",
+     "section.card section[ox=visible,disp=block,w=560]",
+     "main.admin-main[ox=visible,disp=block,w=600]",
+     "div.admin-body[ox=visible,disp=flex,w=600]"
+    ]
+   },
+   {
+    "tag": "th",
+    "cls": "",
+    "testid": null,
+    "right": 1392,
+    "text": "Kiểm toán (chỉ đọc)",
+    "chain": [
+     "tr.[ox=visible,disp=table-row,w=1132]",
+     "thead.[ox=visible,disp=table-header-group,w=1132]",
+     "table.data-table matrix[ox=visible,disp=table,w=1132]",
+     "div.table-wrap[ox=auto,disp=block,w=522]",
+     "section.card section[ox=visible,disp=block,w=560]",
+     "main.admin-main[ox=visible,disp=block,w=600]"
+    ]
+   }
+  ]
+ },
+ "settingsOverflow-390": {
+  "scrollWidth": 1038,
+  "innerWidth": 390,
+  "widestCount": 352,
+  "widest": [
+   {
+    "tag": "table",
+    "cls": "data-table matrix",
+    "testid": "admin-settings-matrix",
+    "right": 1166,
+    "text": "Ma trận quyền theo vai tròQuyềnQuản trị ",
+    "chain": [
+     "div.table-wrap[ox=auto,disp=block,w=324]",
+     "section.card section[ox=visible,disp=block,w=362]",
+     "main.admin-main[ox=visible,disp=block,w=390]",
+     "div.admin-body[ox=visible,disp=flex,w=390]",
+     "div.admin-app[ox=visible,disp=grid,w=390]",
+     "div.[ox=visible,disp=block,w=390]"
+    ]
+   },
+   {
+    "tag": "thead",
+    "cls": "",
+    "testid": null,
+    "right": 1166,
+    "text": "QuyềnQuản trị viên cấp caoQuản trị vận h",
+    "chain": [
+     "table.data-table matrix[ox=visible,disp=table,w=1132]",
+     "div.table-wrap[ox=auto,disp=block,w=324]",
+     "section.card section[ox=visible,disp=block,w=362]",
+     "main.admin-main[ox=visible,disp=block,w=390]",
+     "div.admin-body[ox=visible,disp=flex,w=390]",
+     "div.admin-app[ox=visible,disp=grid,w=390]"
+    ]
+   },
+   {
+    "tag": "tr",
+    "cls": "",
+    "testid": null,
+    "right": 1166,
+    "text": "QuyềnQuản trị viên cấp caoQuản trị vận h",
+    "chain": [
+     "thead.[ox=visible,disp=table-header-group,w=1132]",
+     "table.data-table matrix[ox=visible,disp=table,w=1132]",
+     "div.table-wrap[ox=auto,disp=block,w=324]",
+     "section.card section[ox=visible,disp=block,w=362]",
+     "main.admin-main[ox=visible,disp=block,w=390]",
+     "div.admin-body[ox=visible,disp=flex,w=390]"
+    ]
+   },
+   {
+    "tag": "th",
+    "cls": "",
+    "testid": null,
+    "right": 1166,
+    "text": "Kiểm toán (chỉ đọc)",
+    "chain": [
+     "tr.[ox=visible,disp=table-row,w=1132]",
+     "thead.[ox=visible,disp=table-header-group,w=1132]",
+     "table.data-table matrix[ox=visible,disp=table,w=1132]",
+     "div.table-wrap[ox=auto,disp=block,w=324]",
+     "section.card section[ox=visible,disp=block,w=362]",
+     "main.admin-main[ox=visible,disp=block,w=390]"
+    ]
+   }
+  ]
+ },
+ "loginConfig503": {
+  "mainHtml": "<div class=\"brand brand-login\"><span class=\"brand-mark\" aria-hidden=\"true\">T</span><span class=\"brand-name\">Takosan Admin</span></div><h1 data-testid=\"admin-page-title\">Đăng nhập quản trị</h1><p class=\"muted\">Khu vực dành cho nhân viên Takosan được cấp quyền. Mọi thao tác đều được ghi nhật ký.</p><div class=\"state state-denied\" role=\"alert\" data-testid=\"admin-auth-not-configured\"><h1 data-testid=\"admin-page-title\">Chưa cấu hình xác thực quản trị</h1><p>Môi trường này chưa có cấu hình xác thực qu",
+  "errorStates": 0,
+  "configRequests": 3,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 503 (Service Unavailable)",
+   "Failed to load resource: the server responded with a status of 503 (Service Unavailable)",
+   "Failed to load resource: the server responded with a status of 503 (Service Unavailable)"
+  ],
+  "pageErrors": []
+ },
+ "noticeLifetime": [
+  {
+   "present": true,
+   "atMs": 122,
+   "text": "Đã lưu tùy chọn."
+  },
+  {
+   "present": false,
+   "atMs": 124,
+   "text": null
+  }
+ ],
+ "noticePutStatus": 200,
+ "tabFromTop": [
+  "A:Chuyển đến nội dung chính",
+  "admin-nav-overview:Tổng quan",
+  "admin-nav-users:Người dùng & hộ gia đình",
+  "admin-nav-billing:Thanh toán",
+  "admin-nav-ai:AI & OCR",
+  "admin-nav-recipes:Công thức",
+  "admin-nav-system:Hệ thống",
+  "admin-nav-audit:Nhật ký kiểm toán",
+  "admin-nav-settings:Cài đặt",
+  "admin-sidebar-toggle:«Thu gọn thanh bên",
+  "admin-logout:Đăng xuất",
+  "admin-range-select:7 ngày30 ngày90 ngày"
+ ]
+}

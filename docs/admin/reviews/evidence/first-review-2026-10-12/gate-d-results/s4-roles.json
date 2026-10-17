@@ -1,0 +1,2447 @@
+{
+  "roles": {
+    "super": {
+      "role": "SUPER_ADMIN",
+      "meRoles": [
+        "SUPER_ADMIN"
+      ],
+      "navExpected": {
+        "overview": true,
+        "users": true,
+        "billing": true,
+        "ai": true,
+        "recipes": true,
+        "system": true,
+        "audit": true,
+        "settings": true
+      },
+      "navObserved": {
+        "overview": true,
+        "users": true,
+        "billing": true,
+        "ai": true,
+        "recipes": true,
+        "system": true,
+        "audit": true,
+        "settings": true
+      },
+      "routes": [
+        {
+          "path": "/admin/",
+          "perm": "overview.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 7,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/overview?range=30d"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/users",
+          "perm": "users.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 25,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/users?page=1&pageSize=25&type=registered"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/users/fx_user_001",
+          "perm": "users.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 1,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/users/fx_user_001"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/households",
+          "perm": "households.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 25,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/households?page=1&pageSize=25"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/billing",
+          "perm": "billing.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 25,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/billing/transactions?page=1&pageSize=25",
+            "200 /api/v1/admin/billing/summary?range=30d"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/ai",
+          "perm": "ai.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 25,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/ai/summary?range=30d",
+            "200 /api/v1/admin/ai/usage?page=1&pageSize=25"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/recipes",
+          "perm": "recipes.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 25,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/recipes/summary",
+            "200 /api/v1/admin/recipes?page=1&pageSize=25"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/recipes/imp-c6e706b483805e44",
+          "perm": "recipes.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 1,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/recipes/imp-c6e706b483805e44"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/system",
+          "perm": "system.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 1,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/system/status"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/audit",
+          "perm": "audit.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 5,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/audit?page=1&pageSize=25"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/settings",
+          "perm": "admin.self.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 1,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/sessions",
+            "200 /api/v1/admin/settings"
+          ],
+          "match": true
+        }
+      ],
+      "actions": {
+        "revealEmailButton": {
+          "expected": true,
+          "observed": true
+        },
+        "recipeReviewForm": {
+          "expected": true,
+          "observed": true
+        },
+        "grantForm": {
+          "expected": true,
+          "observed": true
+        },
+        "roleRevokeButtons": {
+          "expected": true,
+          "observed": 5
+        },
+        "approvalButtons": {
+          "expected": true,
+          "observed": 0
+        },
+        "sessionRevokeButtons": {
+          "expected": true,
+          "observed": 0
+        },
+        "preferencesForm": {
+          "expected": true,
+          "observed": true
+        },
+        "settingsMatrix": {
+          "expected": true,
+          "observed": true
+        }
+      },
+      "serverCalls": [
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/me",
+          "perm": "admin.self.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/overview?range=30d",
+          "perm": "overview.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/users?pageSize=5",
+          "perm": "users.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/users/fx_user_001?reveal=email",
+          "perm": "users.pii.reveal",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/households?pageSize=5",
+          "perm": "households.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/billing/summary?range=30d",
+          "perm": "billing.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/billing/transactions?pageSize=5",
+          "perm": "billing.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/ai/summary?range=30d",
+          "perm": "ai.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/ai/usage?pageSize=5",
+          "perm": "ai.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/recipes?pageSize=5",
+          "perm": "recipes.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/system/status",
+          "perm": "system.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/audit?pageSize=5",
+          "perm": "audit.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/settings",
+          "perm": "admin.self.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/sessions",
+          "perm": "admin.sessions.revoke",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "POST",
+          "path": "/api/v1/admin/recipes/imp-c6e706b483805e44/reviews",
+          "perm": "recipes.review",
+          "expectedDenied": false,
+          "status": 201,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "POST",
+          "path": "/api/v1/admin/roles",
+          "perm": "admin.roles.manage",
+          "expectedDenied": false,
+          "status": 404,
+          "code": "ADMIN_NOT_FOUND",
+          "match": true
+        },
+        {
+          "method": "DELETE",
+          "path": "/api/v1/admin/roles/no-such-assignment",
+          "perm": "admin.roles.manage",
+          "expectedDenied": false,
+          "status": 404,
+          "code": "ADMIN_NOT_FOUND",
+          "match": true
+        },
+        {
+          "method": "POST",
+          "path": "/api/v1/admin/approvals/no-such-approval/approve",
+          "perm": "admin.approvals.decide",
+          "expectedDenied": false,
+          "status": 404,
+          "code": "ADMIN_NOT_FOUND",
+          "match": true
+        },
+        {
+          "method": "POST",
+          "path": "/api/v1/admin/sessions/no-such-session/revoke",
+          "perm": "admin.sessions.revoke",
+          "expectedDenied": false,
+          "status": 404,
+          "code": "ADMIN_NOT_FOUND",
+          "match": true
+        },
+        {
+          "method": "PUT",
+          "path": "/api/v1/admin/preferences",
+          "perm": "admin.preferences.write",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        }
+      ],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "pageErrors": []
+    },
+    "ops": {
+      "role": "OPERATIONS_ADMIN",
+      "meRoles": [
+        "OPERATIONS_ADMIN"
+      ],
+      "navExpected": {
+        "overview": true,
+        "users": true,
+        "billing": true,
+        "ai": true,
+        "recipes": true,
+        "system": true,
+        "audit": true,
+        "settings": true
+      },
+      "navObserved": {
+        "overview": true,
+        "users": true,
+        "billing": true,
+        "ai": true,
+        "recipes": true,
+        "system": true,
+        "audit": true,
+        "settings": true
+      },
+      "routes": [
+        {
+          "path": "/admin/",
+          "perm": "overview.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 7,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/overview?range=30d"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/users",
+          "perm": "users.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 25,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/users?page=1&pageSize=25&type=registered"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/users/fx_user_001",
+          "perm": "users.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 1,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/users/fx_user_001"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/households",
+          "perm": "households.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 25,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/households?page=1&pageSize=25"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/billing",
+          "perm": "billing.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 25,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/billing/summary?range=30d",
+            "200 /api/v1/admin/billing/transactions?page=1&pageSize=25"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/ai",
+          "perm": "ai.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 25,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/ai/summary?range=30d",
+            "200 /api/v1/admin/ai/usage?page=1&pageSize=25"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/recipes",
+          "perm": "recipes.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 25,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/recipes/summary",
+            "200 /api/v1/admin/recipes?page=1&pageSize=25"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/recipes/imp-c6e706b483805e44",
+          "perm": "recipes.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 1,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/recipes/imp-c6e706b483805e44"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/system",
+          "perm": "system.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 1,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/system/status"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/audit",
+          "perm": "audit.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 5,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/audit?page=1&pageSize=25"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/settings",
+          "perm": "admin.self.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 1,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/settings"
+          ],
+          "match": true
+        }
+      ],
+      "actions": {
+        "revealEmailButton": {
+          "expected": false,
+          "observed": false
+        },
+        "recipeReviewForm": {
+          "expected": false,
+          "observed": false
+        },
+        "grantForm": {
+          "expected": false,
+          "observed": false
+        },
+        "roleRevokeButtons": {
+          "expected": false,
+          "observed": 0
+        },
+        "approvalButtons": {
+          "expected": false,
+          "observed": 0
+        },
+        "sessionRevokeButtons": {
+          "expected": false,
+          "observed": 0
+        },
+        "preferencesForm": {
+          "expected": true,
+          "observed": true
+        },
+        "settingsMatrix": {
+          "expected": true,
+          "observed": true
+        }
+      },
+      "serverCalls": [
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/me",
+          "perm": "admin.self.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/overview?range=30d",
+          "perm": "overview.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/users?pageSize=5",
+          "perm": "users.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/users/fx_user_001?reveal=email",
+          "perm": "users.pii.reveal",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/households?pageSize=5",
+          "perm": "households.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/billing/summary?range=30d",
+          "perm": "billing.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/billing/transactions?pageSize=5",
+          "perm": "billing.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/ai/summary?range=30d",
+          "perm": "ai.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/ai/usage?pageSize=5",
+          "perm": "ai.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/recipes?pageSize=5",
+          "perm": "recipes.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/system/status",
+          "perm": "system.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/audit?pageSize=5",
+          "perm": "audit.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/settings",
+          "perm": "admin.self.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/sessions",
+          "perm": "admin.sessions.revoke",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "POST",
+          "path": "/api/v1/admin/recipes/imp-c6e706b483805e44/reviews",
+          "perm": "recipes.review",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "POST",
+          "path": "/api/v1/admin/roles",
+          "perm": "admin.roles.manage",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "DELETE",
+          "path": "/api/v1/admin/roles/no-such-assignment",
+          "perm": "admin.roles.manage",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "POST",
+          "path": "/api/v1/admin/approvals/no-such-approval/approve",
+          "perm": "admin.approvals.decide",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "POST",
+          "path": "/api/v1/admin/sessions/no-such-session/revoke",
+          "perm": "admin.sessions.revoke",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "PUT",
+          "path": "/api/v1/admin/preferences",
+          "perm": "admin.preferences.write",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        }
+      ],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)"
+      ],
+      "pageErrors": []
+    },
+    "content": {
+      "role": "CONTENT_EDITOR",
+      "meRoles": [
+        "CONTENT_EDITOR"
+      ],
+      "navExpected": {
+        "overview": true,
+        "users": false,
+        "billing": false,
+        "ai": false,
+        "recipes": true,
+        "system": false,
+        "audit": false,
+        "settings": true
+      },
+      "navObserved": {
+        "overview": true,
+        "users": false,
+        "billing": false,
+        "ai": false,
+        "recipes": true,
+        "system": false,
+        "audit": false,
+        "settings": true
+      },
+      "routes": [
+        {
+          "path": "/admin/",
+          "perm": "overview.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 7,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/overview?range=30d"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/users",
+          "perm": "users.read",
+          "expectedAllowed": false,
+          "denied": 1,
+          "marker": 0,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me"
+          ],
+          "match": false
+        },
+        {
+          "path": "/admin/users/fx_user_001",
+          "perm": "users.read",
+          "expectedAllowed": false,
+          "denied": 1,
+          "marker": 0,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me"
+          ],
+          "match": false
+        },
+        {
+          "path": "/admin/households",
+          "perm": "households.read",
+          "expectedAllowed": false,
+          "denied": 1,
+          "marker": 0,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me"
+          ],
+          "match": false
+        },
+        {
+          "path": "/admin/billing",
+          "perm": "billing.read",
+          "expectedAllowed": false,
+          "denied": 1,
+          "marker": 0,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me"
+          ],
+          "match": false
+        },
+        {
+          "path": "/admin/ai",
+          "perm": "ai.read",
+          "expectedAllowed": false,
+          "denied": 1,
+          "marker": 0,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me"
+          ],
+          "match": false
+        },
+        {
+          "path": "/admin/recipes",
+          "perm": "recipes.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 25,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/recipes/summary",
+            "200 /api/v1/admin/recipes?page=1&pageSize=25"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/recipes/imp-c6e706b483805e44",
+          "perm": "recipes.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 1,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/recipes/imp-c6e706b483805e44"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/system",
+          "perm": "system.read",
+          "expectedAllowed": false,
+          "denied": 1,
+          "marker": 1,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me"
+          ],
+          "match": false
+        },
+        {
+          "path": "/admin/audit",
+          "perm": "audit.read",
+          "expectedAllowed": false,
+          "denied": 1,
+          "marker": 0,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me"
+          ],
+          "match": false
+        },
+        {
+          "path": "/admin/settings",
+          "perm": "admin.self.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 1,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/settings"
+          ],
+          "match": true
+        }
+      ],
+      "actions": {
+        "revealEmailButton": {
+          "expected": false,
+          "observed": false
+        },
+        "recipeReviewForm": {
+          "expected": true,
+          "observed": true
+        },
+        "grantForm": {
+          "expected": false,
+          "observed": false
+        },
+        "roleRevokeButtons": {
+          "expected": false,
+          "observed": 0
+        },
+        "approvalButtons": {
+          "expected": false,
+          "observed": 0
+        },
+        "sessionRevokeButtons": {
+          "expected": false,
+          "observed": 0
+        },
+        "preferencesForm": {
+          "expected": true,
+          "observed": true
+        },
+        "settingsMatrix": {
+          "expected": true,
+          "observed": true
+        }
+      },
+      "serverCalls": [
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/me",
+          "perm": "admin.self.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/overview?range=30d",
+          "perm": "overview.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/users?pageSize=5",
+          "perm": "users.read",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/users/fx_user_001?reveal=email",
+          "perm": "users.pii.reveal",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/households?pageSize=5",
+          "perm": "households.read",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/billing/summary?range=30d",
+          "perm": "billing.read",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/billing/transactions?pageSize=5",
+          "perm": "billing.read",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/ai/summary?range=30d",
+          "perm": "ai.read",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/ai/usage?pageSize=5",
+          "perm": "ai.read",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/recipes?pageSize=5",
+          "perm": "recipes.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/system/status",
+          "perm": "system.read",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/audit?pageSize=5",
+          "perm": "audit.read",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/settings",
+          "perm": "admin.self.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/sessions",
+          "perm": "admin.sessions.revoke",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "POST",
+          "path": "/api/v1/admin/recipes/imp-c6e706b483805e44/reviews",
+          "perm": "recipes.review",
+          "expectedDenied": false,
+          "status": 201,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "POST",
+          "path": "/api/v1/admin/roles",
+          "perm": "admin.roles.manage",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "DELETE",
+          "path": "/api/v1/admin/roles/no-such-assignment",
+          "perm": "admin.roles.manage",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "POST",
+          "path": "/api/v1/admin/approvals/no-such-approval/approve",
+          "perm": "admin.approvals.decide",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "POST",
+          "path": "/api/v1/admin/sessions/no-such-session/revoke",
+          "perm": "admin.sessions.revoke",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "PUT",
+          "path": "/api/v1/admin/preferences",
+          "perm": "admin.preferences.write",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        }
+      ],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)"
+      ],
+      "pageErrors": []
+    },
+    "support": {
+      "role": "SUPPORT_AGENT",
+      "meRoles": [
+        "SUPPORT_AGENT"
+      ],
+      "navExpected": {
+        "overview": true,
+        "users": true,
+        "billing": false,
+        "ai": false,
+        "recipes": false,
+        "system": false,
+        "audit": false,
+        "settings": true
+      },
+      "navObserved": {
+        "overview": true,
+        "users": true,
+        "billing": false,
+        "ai": false,
+        "recipes": false,
+        "system": false,
+        "audit": false,
+        "settings": true
+      },
+      "routes": [
+        {
+          "path": "/admin/",
+          "perm": "overview.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 7,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/overview?range=30d"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/users",
+          "perm": "users.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 25,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/users?page=1&pageSize=25&type=registered"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/users/fx_user_001",
+          "perm": "users.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 1,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/users/fx_user_001"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/households",
+          "perm": "households.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 25,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/households?page=1&pageSize=25"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/billing",
+          "perm": "billing.read",
+          "expectedAllowed": false,
+          "denied": 1,
+          "marker": 0,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me"
+          ],
+          "match": false
+        },
+        {
+          "path": "/admin/ai",
+          "perm": "ai.read",
+          "expectedAllowed": false,
+          "denied": 1,
+          "marker": 0,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me"
+          ],
+          "match": false
+        },
+        {
+          "path": "/admin/recipes",
+          "perm": "recipes.read",
+          "expectedAllowed": false,
+          "denied": 1,
+          "marker": 0,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me"
+          ],
+          "match": false
+        },
+        {
+          "path": "/admin/recipes/imp-c6e706b483805e44",
+          "perm": "recipes.read",
+          "expectedAllowed": false,
+          "denied": 1,
+          "marker": 0,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me"
+          ],
+          "match": false
+        },
+        {
+          "path": "/admin/system",
+          "perm": "system.read",
+          "expectedAllowed": false,
+          "denied": 1,
+          "marker": 1,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me"
+          ],
+          "match": false
+        },
+        {
+          "path": "/admin/audit",
+          "perm": "audit.read",
+          "expectedAllowed": false,
+          "denied": 1,
+          "marker": 0,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me"
+          ],
+          "match": false
+        },
+        {
+          "path": "/admin/settings",
+          "perm": "admin.self.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 1,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/settings"
+          ],
+          "match": true
+        }
+      ],
+      "actions": {
+        "revealEmailButton": {
+          "expected": true,
+          "observed": true
+        },
+        "recipeReviewForm": {
+          "expected": false,
+          "observed": false
+        },
+        "grantForm": {
+          "expected": false,
+          "observed": false
+        },
+        "roleRevokeButtons": {
+          "expected": false,
+          "observed": 0
+        },
+        "approvalButtons": {
+          "expected": false,
+          "observed": 0
+        },
+        "sessionRevokeButtons": {
+          "expected": false,
+          "observed": 0
+        },
+        "preferencesForm": {
+          "expected": true,
+          "observed": true
+        },
+        "settingsMatrix": {
+          "expected": true,
+          "observed": true
+        }
+      },
+      "serverCalls": [
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/me",
+          "perm": "admin.self.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/overview?range=30d",
+          "perm": "overview.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/users?pageSize=5",
+          "perm": "users.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/users/fx_user_001?reveal=email",
+          "perm": "users.pii.reveal",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/households?pageSize=5",
+          "perm": "households.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/billing/summary?range=30d",
+          "perm": "billing.read",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/billing/transactions?pageSize=5",
+          "perm": "billing.read",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/ai/summary?range=30d",
+          "perm": "ai.read",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/ai/usage?pageSize=5",
+          "perm": "ai.read",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/recipes?pageSize=5",
+          "perm": "recipes.read",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/system/status",
+          "perm": "system.read",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/audit?pageSize=5",
+          "perm": "audit.read",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/settings",
+          "perm": "admin.self.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/sessions",
+          "perm": "admin.sessions.revoke",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "POST",
+          "path": "/api/v1/admin/recipes/imp-c6e706b483805e44/reviews",
+          "perm": "recipes.review",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "POST",
+          "path": "/api/v1/admin/roles",
+          "perm": "admin.roles.manage",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "DELETE",
+          "path": "/api/v1/admin/roles/no-such-assignment",
+          "perm": "admin.roles.manage",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "POST",
+          "path": "/api/v1/admin/approvals/no-such-approval/approve",
+          "perm": "admin.approvals.decide",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "POST",
+          "path": "/api/v1/admin/sessions/no-such-session/revoke",
+          "perm": "admin.sessions.revoke",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "PUT",
+          "path": "/api/v1/admin/preferences",
+          "perm": "admin.preferences.write",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        }
+      ],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)"
+      ],
+      "pageErrors": []
+    },
+    "auditor": {
+      "role": "READ_ONLY_AUDITOR",
+      "meRoles": [
+        "READ_ONLY_AUDITOR"
+      ],
+      "navExpected": {
+        "overview": true,
+        "users": true,
+        "billing": true,
+        "ai": true,
+        "recipes": true,
+        "system": true,
+        "audit": true,
+        "settings": true
+      },
+      "navObserved": {
+        "overview": true,
+        "users": true,
+        "billing": true,
+        "ai": true,
+        "recipes": true,
+        "system": true,
+        "audit": true,
+        "settings": true
+      },
+      "routes": [
+        {
+          "path": "/admin/",
+          "perm": "overview.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 7,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/overview?range=30d"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/users",
+          "perm": "users.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 25,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/users?page=1&pageSize=25&type=registered"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/users/fx_user_001",
+          "perm": "users.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 1,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/users/fx_user_001"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/households",
+          "perm": "households.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 25,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/households?page=1&pageSize=25"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/billing",
+          "perm": "billing.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 25,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/billing/summary?range=30d",
+            "200 /api/v1/admin/billing/transactions?page=1&pageSize=25"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/ai",
+          "perm": "ai.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 25,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/ai/summary?range=30d",
+            "200 /api/v1/admin/ai/usage?page=1&pageSize=25"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/recipes",
+          "perm": "recipes.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 25,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/recipes/summary",
+            "200 /api/v1/admin/recipes?page=1&pageSize=25"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/recipes/imp-c6e706b483805e44",
+          "perm": "recipes.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 1,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/recipes/imp-c6e706b483805e44"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/system",
+          "perm": "system.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 1,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/system/status"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/audit",
+          "perm": "audit.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 5,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/audit?page=1&pageSize=25"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/settings",
+          "perm": "admin.self.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 1,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/settings"
+          ],
+          "match": true
+        }
+      ],
+      "actions": {
+        "revealEmailButton": {
+          "expected": false,
+          "observed": false
+        },
+        "recipeReviewForm": {
+          "expected": false,
+          "observed": false
+        },
+        "grantForm": {
+          "expected": false,
+          "observed": false
+        },
+        "roleRevokeButtons": {
+          "expected": false,
+          "observed": 0
+        },
+        "approvalButtons": {
+          "expected": false,
+          "observed": 0
+        },
+        "sessionRevokeButtons": {
+          "expected": false,
+          "observed": 0
+        },
+        "preferencesForm": {
+          "expected": true,
+          "observed": true
+        },
+        "settingsMatrix": {
+          "expected": true,
+          "observed": true
+        }
+      },
+      "serverCalls": [
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/me",
+          "perm": "admin.self.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/overview?range=30d",
+          "perm": "overview.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/users?pageSize=5",
+          "perm": "users.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/users/fx_user_001?reveal=email",
+          "perm": "users.pii.reveal",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/households?pageSize=5",
+          "perm": "households.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/billing/summary?range=30d",
+          "perm": "billing.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/billing/transactions?pageSize=5",
+          "perm": "billing.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/ai/summary?range=30d",
+          "perm": "ai.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/ai/usage?pageSize=5",
+          "perm": "ai.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/recipes?pageSize=5",
+          "perm": "recipes.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/system/status",
+          "perm": "system.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/audit?pageSize=5",
+          "perm": "audit.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/settings",
+          "perm": "admin.self.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/sessions",
+          "perm": "admin.sessions.revoke",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "POST",
+          "path": "/api/v1/admin/recipes/imp-c6e706b483805e44/reviews",
+          "perm": "recipes.review",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "POST",
+          "path": "/api/v1/admin/roles",
+          "perm": "admin.roles.manage",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "DELETE",
+          "path": "/api/v1/admin/roles/no-such-assignment",
+          "perm": "admin.roles.manage",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "POST",
+          "path": "/api/v1/admin/approvals/no-such-approval/approve",
+          "perm": "admin.approvals.decide",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "POST",
+          "path": "/api/v1/admin/sessions/no-such-session/revoke",
+          "perm": "admin.sessions.revoke",
+          "expectedDenied": true,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "match": true
+        },
+        {
+          "method": "PUT",
+          "path": "/api/v1/admin/preferences",
+          "perm": "admin.preferences.write",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        }
+      ],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)"
+      ],
+      "pageErrors": []
+    },
+    "super2": {
+      "role": "SUPER_ADMIN",
+      "meRoles": [
+        "SUPER_ADMIN"
+      ],
+      "navExpected": {
+        "overview": true,
+        "users": true,
+        "billing": true,
+        "ai": true,
+        "recipes": true,
+        "system": true,
+        "audit": true,
+        "settings": true
+      },
+      "navObserved": {
+        "overview": true,
+        "users": true,
+        "billing": true,
+        "ai": true,
+        "recipes": true,
+        "system": true,
+        "audit": true,
+        "settings": true
+      },
+      "routes": [
+        {
+          "path": "/admin/",
+          "perm": "overview.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 7,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/overview?range=30d"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/users",
+          "perm": "users.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 25,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/users?page=1&pageSize=25&type=registered"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/users/fx_user_001",
+          "perm": "users.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 1,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/users/fx_user_001"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/households",
+          "perm": "households.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 25,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/households?page=1&pageSize=25"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/billing",
+          "perm": "billing.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 25,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/billing/summary?range=30d",
+            "200 /api/v1/admin/billing/transactions?page=1&pageSize=25"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/ai",
+          "perm": "ai.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 25,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/ai/summary?range=30d",
+            "200 /api/v1/admin/ai/usage?page=1&pageSize=25"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/recipes",
+          "perm": "recipes.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 25,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/recipes/summary",
+            "200 /api/v1/admin/recipes?page=1&pageSize=25"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/recipes/imp-c6e706b483805e44",
+          "perm": "recipes.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 1,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/recipes/imp-c6e706b483805e44"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/system",
+          "perm": "system.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 1,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/system/status"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/audit",
+          "perm": "audit.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 5,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/audit?page=1&pageSize=25"
+          ],
+          "match": true
+        },
+        {
+          "path": "/admin/settings",
+          "perm": "admin.self.read",
+          "expectedAllowed": true,
+          "denied": 0,
+          "marker": 1,
+          "errState": 0,
+          "apiStatuses": [
+            "200 /api/v1/admin/me",
+            "200 /api/v1/admin/settings",
+            "200 /api/v1/admin/sessions"
+          ],
+          "match": true
+        }
+      ],
+      "actions": {
+        "revealEmailButton": {
+          "expected": true,
+          "observed": true
+        },
+        "recipeReviewForm": {
+          "expected": true,
+          "observed": true
+        },
+        "grantForm": {
+          "expected": true,
+          "observed": true
+        },
+        "roleRevokeButtons": {
+          "expected": true,
+          "observed": 5
+        },
+        "approvalButtons": {
+          "expected": true,
+          "observed": 0
+        },
+        "sessionRevokeButtons": {
+          "expected": true,
+          "observed": 0
+        },
+        "preferencesForm": {
+          "expected": true,
+          "observed": true
+        },
+        "settingsMatrix": {
+          "expected": true,
+          "observed": true
+        }
+      },
+      "serverCalls": [
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/me",
+          "perm": "admin.self.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/overview?range=30d",
+          "perm": "overview.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/users?pageSize=5",
+          "perm": "users.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/users/fx_user_001?reveal=email",
+          "perm": "users.pii.reveal",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/households?pageSize=5",
+          "perm": "households.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/billing/summary?range=30d",
+          "perm": "billing.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/billing/transactions?pageSize=5",
+          "perm": "billing.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/ai/summary?range=30d",
+          "perm": "ai.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/ai/usage?pageSize=5",
+          "perm": "ai.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/recipes?pageSize=5",
+          "perm": "recipes.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/system/status",
+          "perm": "system.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/audit?pageSize=5",
+          "perm": "audit.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/settings",
+          "perm": "admin.self.read",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "GET",
+          "path": "/api/v1/admin/sessions",
+          "perm": "admin.sessions.revoke",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "POST",
+          "path": "/api/v1/admin/recipes/imp-c6e706b483805e44/reviews",
+          "perm": "recipes.review",
+          "expectedDenied": false,
+          "status": 201,
+          "code": null,
+          "match": true
+        },
+        {
+          "method": "POST",
+          "path": "/api/v1/admin/roles",
+          "perm": "admin.roles.manage",
+          "expectedDenied": false,
+          "status": 404,
+          "code": "ADMIN_NOT_FOUND",
+          "match": true
+        },
+        {
+          "method": "DELETE",
+          "path": "/api/v1/admin/roles/no-such-assignment",
+          "perm": "admin.roles.manage",
+          "expectedDenied": false,
+          "status": 404,
+          "code": "ADMIN_NOT_FOUND",
+          "match": true
+        },
+        {
+          "method": "POST",
+          "path": "/api/v1/admin/approvals/no-such-approval/approve",
+          "perm": "admin.approvals.decide",
+          "expectedDenied": false,
+          "status": 404,
+          "code": "ADMIN_NOT_FOUND",
+          "match": true
+        },
+        {
+          "method": "POST",
+          "path": "/api/v1/admin/sessions/no-such-session/revoke",
+          "perm": "admin.sessions.revoke",
+          "expectedDenied": false,
+          "status": 404,
+          "code": "ADMIN_NOT_FOUND",
+          "match": true
+        },
+        {
+          "method": "PUT",
+          "path": "/api/v1/admin/preferences",
+          "perm": "admin.preferences.write",
+          "expectedDenied": false,
+          "status": 200,
+          "code": null,
+          "match": true
+        }
+      ],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "pageErrors": []
+    }
+  },
+  "login": {
+    "revoked": {
+      "url": "/admin/login",
+      "errorText": "Thông tin đăng nhập không hợp lệ hoặc tài khoản không có quyền quản trị.",
+      "loginStatus": 401,
+      "loginCode": "ADMIN_INVALID_CREDENTIALS",
+      "loginError": "Thông tin đăng nhập không hợp lệ hoặc tài khoản không có quyền quản trị.",
+      "meAfter": 401,
+      "meCode": "ADMIN_UNAUTHENTICATED",
+      "pageErrors": []
+    },
+    "owner-no-platform-role": {
+      "url": "/admin/login",
+      "errorText": "Thông tin đăng nhập không hợp lệ hoặc tài khoản không có quyền quản trị.",
+      "loginStatus": 401,
+      "loginCode": "ADMIN_INVALID_CREDENTIALS",
+      "loginError": "Thông tin đăng nhập không hợp lệ hoặc tài khoản không có quyền quản trị.",
+      "meAfter": 401,
+      "meCode": "ADMIN_UNAUTHENTICATED",
+      "pageErrors": []
+    },
+    "customer-no-admin-role": {
+      "url": "/admin/login",
+      "errorText": "Thông tin đăng nhập không hợp lệ hoặc tài khoản không có quyền quản trị.",
+      "loginStatus": 401,
+      "loginCode": "ADMIN_INVALID_CREDENTIALS",
+      "loginError": "Thông tin đăng nhập không hợp lệ hoặc tài khoản không có quyền quản trị.",
+      "meAfter": 401,
+      "meCode": "ADMIN_UNAUTHENTICATED",
+      "pageErrors": []
+    },
+    "unknown-user": {
+      "url": "/admin/login",
+      "errorText": "Thông tin đăng nhập không hợp lệ hoặc tài khoản không có quyền quản trị.",
+      "loginStatus": 401,
+      "loginCode": "ADMIN_INVALID_CREDENTIALS",
+      "loginError": "Thông tin đăng nhập không hợp lệ hoặc tài khoản không có quyền quản trị.",
+      "meAfter": 401,
+      "meCode": "ADMIN_UNAUTHENTICATED",
+      "pageErrors": []
+    },
+    "super-wrong-password": {
+      "url": "/admin/login",
+      "errorText": "Thông tin đăng nhập không hợp lệ hoặc tài khoản không có quyền quản trị.",
+      "loginStatus": 401,
+      "loginCode": "ADMIN_INVALID_CREDENTIALS",
+      "loginError": "Thông tin đăng nhập không hợp lệ hoặc tài khoản không có quyền quản trị.",
+      "meAfter": 401,
+      "meCode": "ADMIN_UNAUTHENTICATED",
+      "pageErrors": []
+    }
+  }
+}

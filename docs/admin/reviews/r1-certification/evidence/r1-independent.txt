@@ -1,0 +1,20 @@
+ ✓ .hoplite/artifacts/r1-cert/r1-independent.test.ts > Gate B - data isolation > R1C-B1 CONTROL: every admin mutation and read leaves all customer tables unwritten (write-capture triggers)
+ ✓ .hoplite/artifacts/r1-cert/r1-independent.test.ts > Gate B - data isolation > R1C-B2 CONTROL: the SELECT-only guard rejects write and multi-statement shapes; read-only table functions and credential columns stay readable (informational)
+ ✓ .hoplite/artifacts/r1-cert/r1-independent.test.ts > Gate B - data isolation > R1C-B3 FINDING (P1 data minimisation): in Access mode every authenticated request reads password_hash and salt from the customer DB
+ ✓ .hoplite/artifacts/r1-cert/r1-independent.test.ts > Gate B - data isolation > R1C-B4 CONTROL (latent-FK PoCs): the admin DB has no foreign keys; deleting a customer user leaves admin history intact
+ ✓ .hoplite/artifacts/r1-cert/r1-independent.test.ts > Gate C - identity > R1C-C1 FINDING (P2): the per-account login budget is spent before authentication, so 10 bad attempts lock the real admin out for 15 minutes
+ ✓ .hoplite/artifacts/r1-cert/r1-independent.test.ts > Gate C - identity > R1C-C2 CONTROL: Access replay of another identity, expiry, foreign signature, revoked role, unverified account and password bodies are refused
+ ✓ .hoplite/artifacts/r1-cert/r1-independent.test.ts > Gate C - identity > R1C-C3 CONTROL: production without an Access AUD is fail-closed (mode unavailable; login and session APIs 503)
+ ✓ .hoplite/artifacts/r1-cert/r1-independent.test.ts > Gate C - identity > R1C-C4 CONTROL: non-canonical or hostile Origin values and non-same-origin fetch metadata are refused
+ ✓ .hoplite/artifacts/r1-cert/r1-independent.test.ts > Gate C - identity > R1C-C5 CONTROL (S3 under a valid production split host): the customer origin cannot log in or mutate even with valid Access, session and CSRF; no CORS
+ ✓ .hoplite/artifacts/r1-cert/r1-independent.test.ts > Gate C - identity > R1C-C6 CONTROL (H9a): the 11th wrong password for one account from an 11th IP is refused with 429
+ ✓ .hoplite/artifacts/r1-cert/r1-independent.test.ts > Gate D - SUPER_ADMIN governance > R1C-D1 FINDING (P2): a decider whose SUPER_ADMIN role is revoked after the session check still completes the decision
+ ✓ .hoplite/artifacts/r1-cert/r1-independent.test.ts > Gate D - SUPER_ADMIN governance > R1C-D2 FINDING (P1): with exactly two SUPER_ADMINs, losing one leaves no in-product path to add or remove a SUPER_ADMIN
+ ✓ .hoplite/artifacts/r1-cert/r1-independent.test.ts > Gate D - SUPER_ADMIN governance > R1C-D3 FINDING (P2): an interrupted bootstrap (grants written, marker and audit not) still accepts further operator_bootstrap grants and leaves no audit trail
+ ✓ .hoplite/artifacts/r1-cert/r1-independent.test.ts > Gate D - SUPER_ADMIN governance > R1C-D4 CONTROL: two SUPER_ADMINs deciding the same request concurrently produce exactly one grant
+ ✓ .hoplite/artifacts/r1-cert/r1-independent.test.ts > Gate D - SUPER_ADMIN governance > R1C-D5 CONTROL: concurrent approvals of two SUPER_ADMIN revocations never drop below two active SUPER_ADMINs
+ ✓ .hoplite/artifacts/r1-cert/r1-independent.test.ts > Gate D - SUPER_ADMIN governance > R1C-D6 CONTROL (H7): an approval whose requester is no longer SUPER_ADMIN is cancelled, not applied
+ ✓ .hoplite/artifacts/r1-cert/r1-independent.test.ts > Gate D - SUPER_ADMIN governance > R1C-D7 CONTROL (H3/H4): a single-SUPER_ADMIN state cannot be created; unilateral SUPER_ADMIN revocation is impossible
+ ✓ .hoplite/artifacts/r1-cert/r1-independent.test.ts > Gate A - routing (Node harness; workerd covered by workerd-probe.mjs) > R1C-A1 FINDING (P2 functional): deep links whose id contains "." or ":" (allowed by the API schema) are 404 on reload
+ Test Files  1 passed (1)
+      Tests  18 passed (18)

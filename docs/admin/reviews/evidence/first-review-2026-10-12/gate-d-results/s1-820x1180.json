@@ -1,0 +1,223 @@
+[
+  {
+    "screen": "login",
+    "loaded": true,
+    "banner": false,
+    "overflow": {
+      "scrollWidth": 820,
+      "innerWidth": 820
+    },
+    "apiNon2xx": [],
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  {
+    "screen": "overview",
+    "path": "/admin/",
+    "loaded": true,
+    "markerCount": 7,
+    "title": "Tổng quan",
+    "banner": true,
+    "errorState": 0,
+    "denied": 0,
+    "overflow": {
+      "scrollWidth": 820,
+      "innerWidth": 820
+    },
+    "note": "",
+    "apiNon2xx": [],
+    "apiCount": 2,
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  {
+    "screen": "users",
+    "path": "/admin/users",
+    "loaded": true,
+    "markerCount": 25,
+    "title": "Người dùng & hộ gia đình",
+    "banner": true,
+    "errorState": 0,
+    "denied": 0,
+    "overflow": {
+      "scrollWidth": 820,
+      "innerWidth": 820
+    },
+    "note": "",
+    "apiNon2xx": [],
+    "apiCount": 2,
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  {
+    "screen": "user-detail",
+    "path": "/admin/users/fx_user_001",
+    "loaded": true,
+    "markerCount": 1,
+    "title": "Trần Linh",
+    "banner": true,
+    "errorState": 0,
+    "denied": 0,
+    "overflow": {
+      "scrollWidth": 820,
+      "innerWidth": 820
+    },
+    "note": "",
+    "apiNon2xx": [],
+    "apiCount": 2,
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  {
+    "screen": "households",
+    "path": "/admin/households",
+    "loaded": true,
+    "markerCount": 25,
+    "title": "Người dùng & hộ gia đình",
+    "banner": true,
+    "errorState": 0,
+    "denied": 0,
+    "overflow": {
+      "scrollWidth": 820,
+      "innerWidth": 820
+    },
+    "note": "",
+    "apiNon2xx": [],
+    "apiCount": 2,
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  {
+    "screen": "billing",
+    "path": "/admin/billing",
+    "loaded": true,
+    "markerCount": 25,
+    "title": "Thanh toán",
+    "banner": true,
+    "errorState": 0,
+    "denied": 0,
+    "overflow": {
+      "scrollWidth": 820,
+      "innerWidth": 820
+    },
+    "note": "",
+    "apiNon2xx": [],
+    "apiCount": 3,
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  {
+    "screen": "ai",
+    "path": "/admin/ai",
+    "loaded": true,
+    "markerCount": 25,
+    "title": "AI & OCR",
+    "banner": true,
+    "errorState": 0,
+    "denied": 0,
+    "overflow": {
+      "scrollWidth": 820,
+      "innerWidth": 820
+    },
+    "note": "",
+    "apiNon2xx": [],
+    "apiCount": 3,
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  {
+    "screen": "recipes",
+    "path": "/admin/recipes",
+    "loaded": true,
+    "markerCount": 25,
+    "title": "Công thức",
+    "banner": true,
+    "errorState": 0,
+    "denied": 0,
+    "overflow": {
+      "scrollWidth": 820,
+      "innerWidth": 820
+    },
+    "note": "",
+    "apiNon2xx": [],
+    "apiCount": 3,
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  {
+    "screen": "recipe-detail",
+    "path": "/admin/recipes/imp-c6e706b483805e44",
+    "loaded": true,
+    "markerCount": 1,
+    "title": "Ba chỉ hầm kakuni",
+    "banner": true,
+    "errorState": 0,
+    "denied": 0,
+    "overflow": {
+      "scrollWidth": 820,
+      "innerWidth": 820
+    },
+    "note": "",
+    "apiNon2xx": [],
+    "apiCount": 2,
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  {
+    "screen": "system",
+    "path": "/admin/system",
+    "loaded": true,
+    "markerCount": 1,
+    "title": "Hệ thống",
+    "banner": true,
+    "errorState": 0,
+    "denied": 0,
+    "overflow": {
+      "scrollWidth": 820,
+      "innerWidth": 820
+    },
+    "note": "",
+    "apiNon2xx": [],
+    "apiCount": 2,
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  {
+    "screen": "audit",
+    "path": "/admin/audit",
+    "loaded": true,
+    "markerCount": 6,
+    "title": "Nhật ký kiểm toán",
+    "banner": true,
+    "errorState": 0,
+    "denied": 0,
+    "overflow": {
+      "scrollWidth": 820,
+      "innerWidth": 820
+    },
+    "note": "",
+    "apiNon2xx": [],
+    "apiCount": 2,
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  {
+    "screen": "settings",
+    "path": "/admin/settings",
+    "loaded": true,
+    "markerCount": 1,
+    "title": "Cài đặt",
+    "banner": true,
+    "errorState": 0,
+    "denied": 0,
+    "overflow": {
+      "scrollWidth": 1264,
+      "innerWidth": 820
+    },
+    "note": "",
+    "apiNon2xx": [],
+    "apiCount": 3,
+    "consoleErrors": [],
+    "pageErrors": []
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-10-17T01:13:01.039891+00:00",
+  "sourceSha": "9395f0e31ea599f1eb7780a8eba36964fed7c483",
+  "packageHead": "9395f0e31ea599f1eb7780a8eba36964fed7c483",
+  "result": "PASS",
+  "sourceFilesVerified": 2298,
+  "commands": 15,
+  "rawLogDigestsVerified": true,
+  "artifactDigestsVerified": true,
+  "customerProtectedPathsUnchanged": true,
+  "documentationOnlyDelta": true,
+  "stagingCertified": false,
+  "productionDeployed": false,
+  "limitation": "Full suite belongs to frozen source; documentation packaging is compared by source manifest. Hosted checks and actual staging remain required."
+}

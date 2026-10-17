@@ -1,0 +1,55 @@
+import { describe, expect, it } from 'vitest';
+import { DEV_BASE, FX, fixtureDb, login, makeEnv, mutate, read, rows } from './harness';
+
+const t = fixtureDb();
+
+describe('H3: exactly one SUPER_ADMIN', () => {
+  it('H3 CONFIRMED: with a single active SUPER_ADMIN, no product path yields a second one', async () => {
+    t.db.seed("UPDATE admin_role_assignments SET status = 'revoked', revoked_at = '2026-10-01T00:00:00.000Z', revoke_reason = 'poc single super' WHERE id = 'fx_ara_super2';");
+    const env = makeEnv(t.db);
+    const sup = await login(env, FX('super'));
+    const requested = await mutate(env, sup.session, 'POST', '/api/v1/admin/roles', { userId: 'fx_admin_ops', role: 'SUPER_ADMIN' });
+    expect(requested.status).toBe(201);
+    const approvalId = requested.json.data.approval.id;
+    expect((await mutate(env, sup.session, 'POST', `/api/v1/admin/approvals/${approvalId}/approve`)).status).toBe(403);
+    const ops = await login(env, FX('ops'));
+    expect((await mutate(env, ops.session, 'POST', `/api/v1/admin/approvals/${approvalId}/approve`)).status).toBe(403);
+    expect((await mutate(env, ops.session, 'POST', '/api/v1/admin/roles', { userId: 'fx_user_001', role: 'SUPER_ADMIN' })).status).toBe(403);
+    expect(rows(t.db, "SELECT COUNT(*) AS n FROM admin_role_assignments WHERE role = 'SUPER_ADMIN' AND status = 'active'")[0].n).toBe(1);
+    expect(rows(t.db, `SELECT status FROM admin_action_approvals WHERE id = '${approvalId}'`)[0].status).toBe('pending');
+  });
+});
+
+describe('H4 and H7: revocation and stale approvals', () => {
+  it('H4 CONFIRMED: one SUPER_ADMIN revokes another without four-eyes, and the revoked session dies', async () => {
+    const env = makeEnv(t.db);
+    const s2 = await login(env, FX('super2'));
+    const s1 = await login(env, FX('super'));
+    const revoke = await mutate(env, s1.session, 'DELETE', '/api/v1/admin/roles/fx_ara_super2');
+    expect(revoke.status).toBe(200);
+    expect(rows(t.db, "SELECT status, revoke_reason FROM admin_role_assignments WHERE id = 'fx_ara_super2'")[0].status).toBe('revoked');
+    const me = await read(env, s2.session, '/api/v1/admin/me');
+    expect(me.status).toBe(401);
+    expect(me.json.code).toBe('ADMIN_SESSION_REVOKED');
+  });
+
+  it('control: a SUPER_ADMIN cannot revoke its own grant', async () => {
+    const env = makeEnv(t.db);
+    const s1 = await login(env, FX('super'));
+    const self = await mutate(env, s1.session, 'DELETE', '/api/v1/admin/roles/fx_ara_super');
+    expect(self.status).toBe(403);
+  });
+
+  it('H7 CONFIRMED: approval requested by a since-revoked SUPER_ADMIN is still approvable and grants SUPER_ADMIN', async () => {
+    const env = makeEnv(t.db);
+    const s2 = await login(env, FX('super2'));
+    const requested = await mutate(env, s2.session, 'POST', '/api/v1/admin/roles', { userId: 'fx_admin_ops', role: 'SUPER_ADMIN' });
+    expect(requested.status).toBe(201);
+    const s1 = await login(env, FX('super'));
+    expect((await mutate(env, s1.session, 'DELETE', '/api/v1/admin/roles/fx_ara_super2')).status).toBe(200);
+    const approve = await mutate(env, s1.session, 'POST', `/api/v1/admin/approvals/${requested.json.data.approval.id}/approve`);
+    expect(approve.status).toBe(200);
+    const ops = await login(env, FX('ops'));
+    expect(ops.res.json.data.roles).toContain('SUPER_ADMIN');
+  });
+});
