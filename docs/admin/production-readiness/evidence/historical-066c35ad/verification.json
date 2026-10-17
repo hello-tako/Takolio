@@ -1,0 +1,233 @@
+{
+  "sourceSha": "066c35ad670bc877756150c2055e3844dd7a17ce",
+  "sourceTree": "341df1dd57e1034890007b3fec9a22c020fbadfb",
+  "startedAt": "2026-10-16T20:52:04.696Z",
+  "node": "v24.19.0",
+  "python": "Python 3.12.14",
+  "platform": "darwin",
+  "arch": "arm64",
+  "environment": {
+    "TMPDIR": "/private/tmp",
+    "CI": "true",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "results": [
+    {
+      "id": "focused",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/integration/admin-console.test.ts",
+        "tests/integration/admin-remediation.test.ts",
+        "tests/integration/admin-r2-auth.test.ts",
+        "tests/integration/admin-r2-governance.test.ts",
+        "tests/integration/admin-r2-governance-races.test.ts",
+        "tests/integration/admin-r2-facade.test.ts",
+        "tests/integration/admin-r2-settings.test.ts",
+        "tests/unit/admin-recovery.test.mjs",
+        "tests/unit/admin-config.test.ts",
+        "tests/unit/admin-local-tooling.test.ts",
+        "tests/unit/admin-r2-routing.test.ts",
+        "--maxWorkers=1",
+        "--testTimeout=20000"
+      ],
+      "startedAt": "2026-10-16T20:52:04.712Z",
+      "finishedAt": "2026-10-16T20:52:37.197Z",
+      "exitCode": 0,
+      "signal": null,
+      "logPath": ".artifacts/admin-r2/066c35ad/focused.log",
+      "sha256": "95f6def2209c9f3e6006b2e32de61c86a8b3e0a56f563327c73ca1c266275b31"
+    },
+    {
+      "id": "lint",
+      "command": [
+        "pnpm",
+        "lint"
+      ],
+      "startedAt": "2026-10-16T20:52:37.197Z",
+      "finishedAt": "2026-10-16T20:52:44.003Z",
+      "exitCode": 0,
+      "signal": null,
+      "logPath": ".artifacts/admin-r2/066c35ad/lint.log",
+      "sha256": "6c2722b8bc951895862d6f853abf12262670e9ee6cdfd145b6fcaefa5c419bf0"
+    },
+    {
+      "id": "typecheck",
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "startedAt": "2026-10-16T20:52:44.003Z",
+      "finishedAt": "2026-10-16T20:53:00.879Z",
+      "exitCode": 0,
+      "signal": null,
+      "logPath": ".artifacts/admin-r2/066c35ad/typecheck.log",
+      "sha256": "9009680ac07ca60648b7a0415c720b26d68d3eec0a0db4a0a39d13f222fd52e0"
+    },
+    {
+      "id": "build",
+      "command": [
+        "pnpm",
+        "build"
+      ],
+      "startedAt": "2026-10-16T20:53:00.880Z",
+      "finishedAt": "2026-10-16T20:53:10.196Z",
+      "exitCode": 0,
+      "signal": null,
+      "logPath": ".artifacts/admin-r2/066c35ad/build.log",
+      "sha256": "5f9567202ed7d13ae20390cee38daf7a75438ae0843af94cb092ce2e0df44222"
+    },
+    {
+      "id": "migration-smoke",
+      "command": [
+        "pnpm",
+        "check:migrations"
+      ],
+      "startedAt": "2026-10-16T20:53:10.196Z",
+      "finishedAt": "2026-10-16T20:53:10.652Z",
+      "exitCode": 0,
+      "signal": null,
+      "logPath": ".artifacts/admin-r2/066c35ad/migration-smoke.log",
+      "sha256": "b85bd9f8a214c62a54e6c1bed45b57251881856df5db1bf96194c282a5010dd6"
+    },
+    {
+      "id": "workerd",
+      "command": [
+        "node",
+        "scripts/admin-workerd-check.mjs",
+        "--out",
+        ".artifacts/admin-r2/066c35ad/workerd.json"
+      ],
+      "startedAt": "2026-10-16T20:53:10.652Z",
+      "finishedAt": "2026-10-16T20:53:45.102Z",
+      "exitCode": 0,
+      "signal": null,
+      "logPath": ".artifacts/admin-r2/066c35ad/workerd.log",
+      "sha256": "f795c20300c9bc5fa3a60addf6c0d727b69955552c851ed615940ff2086a1974"
+    },
+    {
+      "id": "migration-matrix",
+      "command": [
+        "node",
+        "scripts/admin-migration-matrix.mjs",
+        "--out",
+        ".artifacts/admin-r2/066c35ad/migration-matrix.json"
+      ],
+      "startedAt": "2026-10-16T20:53:45.102Z",
+      "finishedAt": "2026-10-16T20:55:35.267Z",
+      "exitCode": 0,
+      "signal": null,
+      "logPath": ".artifacts/admin-r2/066c35ad/migration-matrix.log",
+      "sha256": "c68755d94186eb6430b9a63578102e09f87875089f99fd89c98b124b5c4ad2f8"
+    },
+    {
+      "id": "admin-e2e",
+      "command": [
+        "pnpm",
+        "test:admin:e2e"
+      ],
+      "startedAt": "2026-10-16T20:55:35.268Z",
+      "finishedAt": "2026-10-16T20:56:26.416Z",
+      "exitCode": 0,
+      "signal": null,
+      "logPath": ".artifacts/admin-r2/066c35ad/admin-e2e.log",
+      "sha256": "51365d85b79e231397871a52a914a26a89b8a07b9ae5444333b6d276e612a605"
+    },
+    {
+      "id": "keyboard-repeat",
+      "command": [
+        "pnpm",
+        "exec",
+        "playwright",
+        "test",
+        "-c",
+        "playwright.admin.config.ts",
+        "-g",
+        "scrollable tables",
+        "--repeat-each",
+        "10"
+      ],
+      "startedAt": "2026-10-16T20:56:26.417Z",
+      "finishedAt": "2026-10-16T20:56:46.392Z",
+      "exitCode": 0,
+      "signal": null,
+      "logPath": ".artifacts/admin-r2/066c35ad/keyboard-repeat.log",
+      "sha256": "cd9ba47a03ccda0a983c9a2977775d6d63cef423bdb983bbde014c2468713776"
+    },
+    {
+      "id": "tracked-screenshots",
+      "command": [
+        "git",
+        "diff",
+        "--exit-code",
+        "--",
+        "docs/admin/screenshots"
+      ],
+      "startedAt": "2026-10-16T20:56:46.393Z",
+      "finishedAt": "2026-10-16T20:56:46.408Z",
+      "exitCode": 0,
+      "signal": null,
+      "logPath": ".artifacts/admin-r2/066c35ad/tracked-screenshots.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "configuration",
+      "command": [
+        "node",
+        "scripts/admin-release-preflight.mjs"
+      ],
+      "startedAt": "2026-10-16T20:56:46.409Z",
+      "finishedAt": "2026-10-16T20:56:46.578Z",
+      "exitCode": 0,
+      "signal": null,
+      "logPath": ".artifacts/admin-r2/066c35ad/configuration.log",
+      "sha256": "8030efb012dac8f0cfa3650d5210b8641364d4218774abef6acafb8a1bf55215"
+    },
+    {
+      "id": "public-scan",
+      "command": [
+        "python3",
+        "scripts/admin-public-scan.py"
+      ],
+      "startedAt": "2026-10-16T20:56:46.579Z",
+      "finishedAt": "2026-10-16T20:56:46.707Z",
+      "exitCode": 0,
+      "signal": null,
+      "logPath": ".artifacts/admin-r2/066c35ad/public-scan.log",
+      "sha256": "cb0bb7a54a243fa6e61a65de3678d5044aa81ac9fa211bdc0d558a34759d8aee"
+    },
+    {
+      "id": "dependency-audit",
+      "command": [
+        "pnpm",
+        "audit",
+        "--audit-level=high"
+      ],
+      "startedAt": "2026-10-16T20:56:46.708Z",
+      "finishedAt": "2026-10-16T20:56:47.366Z",
+      "exitCode": 0,
+      "signal": null,
+      "logPath": ".artifacts/admin-r2/066c35ad/dependency-audit.log",
+      "sha256": "15950a68a7ed99c59779717acefdceb3f69cfd31bde67d2c954f2a3cea4d7955"
+    },
+    {
+      "id": "full-suite",
+      "command": [
+        "pnpm",
+        "test"
+      ],
+      "startedAt": "2026-10-16T20:56:47.367Z",
+      "finishedAt": "2026-10-16T20:59:30.582Z",
+      "exitCode": 0,
+      "signal": null,
+      "logPath": ".artifacts/admin-r2/066c35ad/full-suite.log",
+      "sha256": "2d05a23a83e5fda5026310bf53c53206a414ded6cffb8283f533ba0a14c471ad"
+    }
+  ],
+  "finishedAt": "2026-10-16T20:59:30.583Z",
+  "finalStatus": "",
+  "sourceUnchanged": true,
+  "pass": true
+}

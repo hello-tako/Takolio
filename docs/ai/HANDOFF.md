@@ -1,3 +1,54 @@
+# Takolio repository safeguards checkpoint - 2026-10-17
+
+Canonical repository hello-tako/Takolio (1422954151), candidate branch
+codex/takolio-identity-safeguards-20261017, based on acb47fe5. All original
+957 commits and mapped upgrade branches remain intact. Main remains 526596a8.
+
+Active Admin release identity/API/CI/rollback contracts now pin the new ID/name;
+legacy signatures and old repository CI are rejected. Release targets remain
+disabled. Historical customer production approval contracts are preserved.
+CI Vitest scheduling is serial via a dedicated config extending unchanged
+Vite configuration, with unchanged assertions and timeout budgets. Original CI run 39004821831 failed
+one 5s wrong-password flood test; that failure remains recorded. The first
+follow-up full run failed only the customer-config guard (8,774 PASS); the
+customer Vite config is now restored byte-for-byte and the guard passes.
+
+Local focused 4 files/124 tests, lint, types, build, migration smoke, audit-high,
+release config preflight, public patch scan and diff checks PASS. Published-head
+CI and exact SHA are recorded in the PR/external migration receipt. Main now has
+enforced required checks, fresh independent review and force/deletion protection.
+Actions defaults to read-only and cannot approve PRs. No reviewer/secret/Environment
+was fabricated. See docs/repository-migration/2026-10-17-follow-up.md.
+
+Next: independent review, operator/resource/custodian provisioning and separately
+authorized real staging. ADMIN_V1_PRODUCTION_READINESS_BLOCKED;
+ADMIN_V1_STAGING_AUTHORIZATION_REQUIRED; live ST01-ST20 NOT RUN. No merge/deploy,
+workflow dispatch, remote D1, production secret, bootstrap or enablement action.
+
+---
+
+# Repository migration checkpoint - 2026-10-17
+
+Source and history are now published at hello-tako/Takolio (repository ID
+1422954151). Original main 526596a8cd857984ad2b69901a8c7b0e9d6bccc2 and Admin
+R2 72a9b7ff46aa71cf95b4a948c52b710e46d28bd6 are preserved without rewriting
+957 historical commits. All 168 original refs map to 166 verified remote branches.
+The former remote R2 tip is retained under archive/source-origin/.
+
+Migration details and exact ref mapping: docs/repository-migration/2026-10-17.md
+and docs/repository-migration/ref-map.json. This checkpoint changes documentation
+only. Fresh remote restoration and CI status are recorded in the external receipt;
+publication is not test or release certification. Historical reports and old repo
+identity pins remain provenance and do not authorize the new repository to release.
+
+Next: review repository identity updates and recreate required protections/CI
+configuration before release work. Real staging requires separate authorization.
+ADMIN_V1_PRODUCTION_READINESS_BLOCKED; ADMIN_V1_STAGING_AUTHORIZATION_REQUIRED.
+No merge, deployment, external database operation or production secret change.
+
+---
+
+> **Handoff (2026-10-15):** Admin Console work is preserved on branch `handoff/admin-v1-r2-20261015`. Start at `docs/admin/handoff/START_HERE.md`. Status: R1 `ADMIN_V1_R1_CHANGES_REQUIRED`; R2 not started; not certified for staging or production. Commands and results with provenance: `docs/admin/handoff/TEST_AND_EVIDENCE.md`.
 # Takolio mascot and full-app visual upgrade checkpoint - 2026-10-16 JST
 
 **Repository:** `lol-vn/Tako-san`, immutable ID `1385308553`, protected main `f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1`, branch `feat/takolio-brand-migration-v1`. Implementation commit `dae71688bde863608a20855b56351ccd51d99c34`. Draft PR: https://github.com/lol-vn/Tako-san/pull/79. Final publication SHA, automatic hosted CI and independent final binding are recorded in the PR and local delivery receipt after this documentation checkpoint; earlier-head CI is not current-head evidence.

@@ -1,3 +1,222 @@
+# Admin R2 local recovery/readiness checkpoint - 2026-10-17
+
+Status: ADMIN_V1_PRODUCTION_READINESS_BLOCKED. Runtime source:
+066c35ad670bc877756150c2055e3844dd7a17ce, branch
+codex/admin-v1-r2-production-readiness, Draft PR #82 (last verified remote backend
+ba762a205fd890efe4af47ef6c0fd7cd6f45fc14). PR #77 remains untouched.
+
+Recovered facade/identity/governance/recovery implementation and fixed independently
+reproduced roster/target races. Added CI-safe synthetic fixture guard while real
+operator provisioning still refuses CI. On the exact clean runtime commit with
+Node24/pnpm10/Python3.12, canonical TMPDIR and CI=true/GITHUB_ACTIONS=true:
+382 files /8661 tests, 146 focused tests, lint, typecheck, build, customer/Admin
+migration smoke, 9 workerd scenarios/127 assertions, 23 migration cases,
+12 Admin browser tests and 10 consecutive keyboard repetitions all PASS.
+Tracked screenshot diff, configuration preflight, public patch scan and dependency
+audit exit0. Full suite completed 2026-10-16T20:59:30Z; source unchanged.
+Independent reviewer /root/independent_admin_review found no new actionable issue
+in final delta; review scope and inherited SHA-specific evidence are explicit.
+Earlier failed and interrupted runs are retained, never promoted to PASS.
+
+Complete 19-document evidence package: docs/admin/production-readiness/00-18.
+Customer runtime, customer migrations and customer release protected paths are
+unchanged from main 526596a8cd857984ad2b69901a8c7b0e9d6bccc2. No customer payment,
+authentication or production infrastructure operation occurred.
+
+Blocked: GitHub account suspended prevents ref refresh/push/hosted CI; four
+release workflows remain offline plans with no reviewed live adapters; protections,
+real Access/resource identity, independent human roster/custody, representative
+D1 load and all live staging/rollback gates are unverified. Staging authorization
+is required; production is not deployed or authorized. Next: restore GitHub,
+publish local branch/evidence with a normal push, commission live-adapter/protection
+review and scoped staging authorization. No merge, remote D1, secrets change,
+production bootstrap, deployment or enablement is authorized.
+
+---
+
+# PR #77 brand-main merge verification — 2026-10-16
+
+**Result:** four conflicts resolved in merge
+`03a84b03e0b11b93c0e2ab2a6c56cc29cf3fa845` (parents `73e0c490`, `526596a8`).
+On that exact source: `pnpm lint`, `pnpm typecheck`, `pnpm build`,
+`pnpm check:migrations` and focused Admin/brand Vitest all exit0. Regression
+command: `pnpm exec vitest run tests/unit/admin- tests/integration/admin-
+tests/unit/takolio-brand.test.mjs tests/unit/takolio-3d-assets.test.mjs
+tests/unit/takolio-mascot.test.tsx --maxWorkers=1 --silent`: 13 files /143 tests
+PASS. Both customer/Admin migration smoke markers are `ok`. Existing Admin font
+build warnings remain; the expected emitted font files are present.
+
+Both complete parent status histories survive. Main's Takolio and V3 brand
+commands and all prior Admin commands/build/migration checks coexist in valid
+package JSON, with dependencies and lockfile unchanged. Customer runtime/assets,
+configs/migrations and incoming brand artifacts match merged main byte-for-byte;
+Admin runtime/config/schema matches the previous PR head. Resolution-path diff
+checks and conflict-marker scans pass. Broad merge diff whitespace warnings are
+inherited verbatim font licenses / historical logs, not new resolution changes;
+those authoritative files were not reformatted. Separate local R2 stays excluded.
+
+**Next:** publish only this handoff merge/receipt and require exact-head hosted CI.
+Full repository tests and browser E2E were not rerun locally for this conflict
+resolution. Preserve draft / DO NOT MERGE status, F1–F11 and independent-review /
+release gates. No PR merge/close, deploy, remote D1, secret or account operation.
+
+---
+
+# PR #77 brand-main conflict reconciliation — 2026-10-16
+
+**Scope:** merge main `526596a8cd857984ad2b69901a8c7b0e9d6bccc2` into handoff `73e0c490a15e2014abb6e5096ec45ec980981d37`.
+Resolved three docs/ai status conflicts by keeping both complete parent histories.
+Resolved package.json by retaining main's `brand:icons` Takolio generator and
+`brand:icons:v3` legacy generator alongside all handoff Admin commands and the
+existing Admin-aware build/migration checks. No dependency/lockfile change.
+All customer source/assets/configs/migrations and incoming brand evidence are
+identical to main; no custom product, authentication, payment or release edit.
+Separate local R2 commits remain excluded from this historical handoff PR.
+
+**Checks:** both-parent status content retention, package JSON/script assertions,
+no conflict markers/unmerged paths, customer/main byte identity and diff check.
+Lint/types/build/migration/Admin regression results follow in the verification
+checkpoint. This merge does not remediate F1–F11 or grant release certification.
+
+**Next:** publish the conflict-only handoff update and require exact-head hosted
+CI. Preserve draft / DO NOT MERGE, independent review and release gates; no PR
+merge/close, deployment, remote D1, credential or account operation is authorized.
+
+---
+
+# PR #77 conflict-resolution verification — 2026-10-16
+
+**Result:** all three status-document conflicts resolved in merge
+`d47cc70b0d477dfbf575e3d215f71178231a1362` (parents `87d6d3d`, `f7386e6a`).
+On that exact source: `pnpm lint`, `pnpm typecheck`, `pnpm build`,
+`pnpm check:migrations` and `pnpm exec vitest run tests/unit/admin-
+tests/integration/admin- --maxWorkers=1 --silent` all exit0; Admin regressions:
+10 files / 133 tests PASS. Both migration smoke markers are `ok`. Build reports
+the existing runtime-resolved Admin font warnings; the generated font files exist.
+Conflict-marker scan, staged diff check, both parents' status-history retention,
+and exact customer-source/config/migration identity against merged main PASS.
+The merge changes no Admin runtime/config/schema from the published handoff.
+
+**Publication boundary:** only this handoff main merge and its verification notes
+are authorized for PR #77. Separate local R2 commits/artifacts are excluded.
+Full repository tests and browser E2E were not rerun locally for these document
+resolutions; exact-head hosted CI remains required. Draft / DO NOT MERGE,
+Admin findings, independent review and release gates remain unchanged.
+No PR merge/close, deployment, remote D1, secret or account change.
+
+---
+
+# PR #77 main-conflict reconciliation — 2026-10-16
+
+**Scope:** merge current main `f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1` into handoff
+`87d6d3d2acc69a6ca3f0409c3c22753469807222` without rebasing or publishing local R2 work.
+Resolved conflicts in `docs/ai/CURRENT_STATE.md`, `docs/ai/HANDOFF.md` and
+`docs/ai/TASK_BOARD.md` by retaining both the Admin handoff notice and all new
+main-side status entries. Customer runtime, configs, migration history and main's
+T26/T27 changes are taken unchanged from the merged main. No new product/UI,
+authentication, payment, deployment or remote database change is introduced.
+
+**Checks:** conflict-marker scan, main/head status-document content retention,
+customer-source identity against merged main, and staged diff validation.
+Additional lint/types/migration/admin regression results are recorded in the
+follow-up verification checkpoint. This merge does not resolve Admin F1–F11 or
+certify staging/production. The separate local R2 branch is not part of this PR.
+
+**Next:** publish only this handoff merge, require exact-head CI, retain draft /
+DO NOT MERGE status and independent-review/release gates. No PR merge or close.
+
+---
+
+# Admin V1 R1 certification review - 2026-10-14
+
+**Status:** ADMIN_V1_R1_CHANGES_REQUIRED (local review of 0331cc9/25140ba; reviewer
+is the same agent that implemented R1, so not independent and no PASS possible).
+Report: docs/admin/reviews/2026-10-14-r1-certification.md (+ r1-certification/
+evidence and reviewer tools). No source change, push, deploy or remote access.
+
+**Re-verified (clean worktree of 0331cc9):** full vitest 342 files/7865 tests
+exit 0; lint/typecheck/build exit 0; customer dist/client byte-identical to
+186a9cf (441 files) and identical Worker dry-run bundle; check:migrations ok;
+migration matrix 11/11; implementer workerd checks 108/108; independent workerd
+probe 1169/1169 (production positive control, 12 negative variants, real browser
+on workerd, customer Worker parity); reviewer tests 18/18; original PoCs 51/51
+before, 22/29 after with 0 unexplained; E2E 11/12 (axe 0, overflow 0) — the one
+failure is a flaky keyboard-scroll assertion (product verified correct).
+
+**Findings:** P1 F1 admin Worker has a writable binding to the production
+customer DB and reads password hashes every request (needs read facade); P1 F2
+two-SUPER_ADMIN governance deadlock without break-glass; P1 F3 no identity-bound
+production bootstrap ceremony. P2 F4-F11: decider TOCTOU, non-atomic bootstrap,
+pre-auth account lockout, full-scan aggregates, flaky E2E, E2E rewrites tracked
+screenshots, deep-link charset, Access sub binding.
+
+**Next:** fix F1-F3 (+P2), then a genuinely independent review; production stays
+blocked on Access staging, admin workflows and the ceremony.
+
+---
+
+# Takosan Admin V1 security remediation R1 - 2026-10-13
+
+**Status:** ADMIN_V1_REMEDIATION_READY_FOR_INDEPENDENT_REVIEW (local only; not an
+independent review PASS, not deployed). Implementation commit 25140ba; original
+3e865d0 kept (tag admin-v1-review-baseline); review record 6889f8d. Report:
+docs/admin/remediation-r1/REPORT.md (+ REGRESSION.md, evidence/). ADR-ADMIN-002.
+
+**Changes:** console moved to a separate admin Worker (admin-worker.ts,
+wrangler.admin.jsonc disabled template, wrangler.admin-local.jsonc loopback) with
+its own ADMIN_DB (migrations-admin/0001). Customer Worker/config/sw/vite/ledger
+restored to 186a9cf and 0042 withdrawn. Strict env allow-list, exact admin origin,
+session-derived CSRF (no cookie), no CORS, two-person bootstrap, four-eyes
+SUPER_ADMIN grant+revoke, DB minimum two, credential-change session revocation,
+audit-before-disclosure, per-IP/account/global login limits, UI P1 fixes.
+
+**Verification (clean worktree of 25140ba):** full vitest 342 files/7865 tests
+PASS (exit 0); lint, typecheck, build PASS; check:migrations (customer + admin
+smoke) PASS; admin vitest 10 files/133 tests; real workerd check 6/6 scenarios
+(108 checks); S2 reproduced on 3e865d0 under workerd; migration matrix 11/11;
+Playwright admin 12/12 (axe 0 violations, 0 px overflow at 1440/820/390);
+original 51 PoCs: 51/51 on 3e865d0, 21/23 defect PoCs now fail on R1.
+No GitHub/Cloudflare remote call, push, deploy or remote D1 access.
+
+**Next:** independent review of R1; then (separately authorized) admin hostname,
+Cloudflare Access app, ADMIN_DB + KV, reviewed admin-d1-migrate/admin-deploy
+workflows, two-person bootstrap (PRODUCTION_INTEGRATION_PLAN.md).
+
+---
+
+# Takosan Admin Console V1 local implementation - 2026-10-12
+
+**Status:** ADMIN_V1_LOCAL_COMPLETE (local only; not deployed, not production-certified).
+Implemented separate admin frontend (`admin/index.html`, `src/admin/`), Worker admin
+API (`src/worker/routes/admin/`, `/api/v1/admin/*`), shared RBAC/DTO contract
+(`src/shared/admin.ts`), additive migration `0042_admin_console_foundation.sql`,
+local-only fixture/provision/preview tooling (`scripts/admin-*.mjs`), and docs in
+`docs/admin/` (API reference, RBAC matrix, security assessment, migration report,
+integration plan, local setup, screenshots). ADR-ADMIN-001 records the authority model.
+No GitHub/Cloudflare remote operation, deployment, remote migration or payment-code change.
+
+**Verification (local, exact):** pnpm lint PASS; pnpm typecheck PASS (both projects);
+pnpm build PASS (dist/client/admin/index.html + unchanged `index-*` customer entry);
+pnpm check:migrations `migration-smoke=ok` incl. 0042 assertions; wrangler `--local`
+D1 fresh replay 0001-0042 and 0041->0042 upgrade PASS; admin integration 30/30,
+admin unit 37/37 (frontend + tooling); Playwright admin E2E 5/5 (Chromium, real Worker
+serving built admin assets, synthetic fixture); full vitest 339 files/7799 tests: 7797 PASS, 2 FAIL
+(auth-hardening + auth-otp-coordinator hard-coded the 0041 ledger tip/count); both now use
+MIGRATION_LEDGER and pass on re-run (2 files/189 tests). Full suite not re-run after that
+test-only fix.
+
+**Compatibility edits:** customer service worker skips `/admin*`; rate limiter gained
+optional `key`; `MIGRATION_LEDGER` + migration smoke include 0042. Production workflow
+migration allow-lists and `tests/fixtures/migration-sha256.json` intentionally unchanged.
+
+**Next:** Independent security review; real Cloudflare Access tenant verification;
+define production SUPER_ADMIN bootstrap procedure; reviewed PR adding 0042 to the
+production migrate allow-list; wire runtime `ai_requests` logging if AI metrics are
+required. Production integration is a separately authorized operation
+(docs/admin/PRODUCTION_INTEGRATION_PLAN.md).
+
+---
+
 # payOS Worker runtime correction - 2026-10-12 JST
 
 **Status:** FIX_IMPLEMENTED_FOCUSED_VERIFIED; final hosted CI and replacement
@@ -3279,3 +3498,35 @@ related failures, including the reported home/Plus navigation mismatch.
   retry/process tests PASS. First full local run 7,822 PASS/12 failures; stale Plus
   exclusion fixed and the 11 existing macOS tmp-path fixture failures all pass under
   canonical TMPDIR (93 tests). A final full canonical run and hosted CI remain pending.
+
+## Admin release adapter follow-up (2026-10-17)
+
+The evidence-only checkpoint is 77f81b7bff1c29790a67ea48475aa720a86b9f2e.
+It preserves full local runtime evidence on 066c35ad670bc877756150c2055e3844dd7a17ce.
+A separate default-disabled release adapter now implements signed, expiry/run/source/
+policy/migration-bound operations, live target/source/protection checks, durable
+pre-action artifacts, fixed Admin-only migration/bootstrap/recovery paths and
+disabled deploy/rollback with compensation attempts. Four manual workflows use
+protected dedicated Admin environments and no credential in plan mode.
+52 adapter/provider tests passed during development; new exact-SHA full validation
+and independent source review are still mandatory. Initial development fixture
+key destructuring failed four tests and was fixed before the passing run.
+No Cloudflare or production operation occurred. Real identities/protections,
+independent human custody, initial resource/enrollment setup, first safe rollback
+baseline, live API staging rehearsal and explicit owner authorization remain
+blocked. Existing evidence is not relabeled as a test of the adapter.
+
+## Admin adapter containment follow-up (2026-10-17)
+
+- Implemented narrow signed shutdown without D1/facade/secrets/build dependence.
+- Added dedicated manual containment lane, strict smoke markers, full account
+  route inventory, staging artifact authority, and restore-from-shutdown checks.
+- Pending next frozen SHA full verification and independent review; retain all
+  old evidence under its original SHA. Staging and production remain blocked.
+
+Admin final source `9395f0e31ea599f1eb7780a8eba36964fed7c483`: all 15 exact-source local verification commands exit 0;
+independent release review is retained in docs/admin/production-readiness/13_INDEPENDENT_REVIEW.md.
+Next: restore GitHub access/protections and obtain explicit real staging/resource/operator authorization.
+Status remains ADMIN_V1_PRODUCTION_READINESS_BLOCKED / ADMIN_V1_STAGING_AUTHORIZATION_REQUIRED.
+
+Validation qualification: default-concurrency full suite on 9395f0e3 failed 10 timing checks; full serial rerun uses existing assertions/timeouts. Both attempts are retained in production-readiness evidence and raw output archive; see 12_REGRESSION_RESULTS.md for actual results. Hosted default-concurrency CI remains required.

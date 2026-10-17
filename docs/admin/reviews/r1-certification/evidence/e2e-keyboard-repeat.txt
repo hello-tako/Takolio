@@ -1,0 +1,10 @@
+  ✓  1 tests/e2e/admin-a11y-responsive.e2e.ts:70:1 › scrollable tables are reachable and scrollable with the keyboard (3.0s)
+  ✓  2 tests/e2e/admin-a11y-responsive.e2e.ts:70:1 › scrollable tables are reachable and scrollable with the keyboard (2.9s)
+  ✘  3 tests/e2e/admin-a11y-responsive.e2e.ts:70:1 › scrollable tables are reachable and scrollable with the keyboard (3.1s)
+  ✘  4 tests/e2e/admin-a11y-responsive.e2e.ts:70:1 › scrollable tables are reachable and scrollable with the keyboard (3.3s)
+  ✓  5 tests/e2e/admin-a11y-responsive.e2e.ts:70:1 › scrollable tables are reachable and scrollable with the keyboard (3.0s)
+  ✓  6 tests/e2e/admin-a11y-responsive.e2e.ts:70:1 › scrollable tables are reachable and scrollable with the keyboard (2.8s)
+    .hoplite/artifacts/admin-playwright/results/admin-a11y-responsive.e2e.-8af7b-crollable-with-the-keyboard-repeat2/test-failed-1.png
+    .hoplite/artifacts/admin-playwright/results/admin-a11y-responsive.e2e.-8af7b-crollable-with-the-keyboard-repeat3/test-failed-1.png
+  2 failed
+  4 passed (27.8s)

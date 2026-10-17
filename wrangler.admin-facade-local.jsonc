@@ -1,0 +1,28 @@
+// LOCAL ONLY (pnpm admin:dev) Read Facade Worker (R2 F1).
+// Internal-only Worker bound via Service Binding from takosan-admin-local. Do not deploy.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "takosan-admin-read-facade-local",
+  "main": "src/worker/admin-read-facade-worker.ts",
+  "compatibility_date": "2024-11-01",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "workers_dev": false,
+  "preview_urls": false,
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "frigo-db",
+      "database_id": "f975ec39-b2c8-4a2a-80e1-0366054599d3",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "define": {
+    "__ADMIN_LOCAL_AUTH__": "true"
+  },
+  "vars": {
+    "ADMIN_FACADE_HMAC_SECRET": "local-facade-fixture-secret-32-characters",
+    "ENVIRONMENT": "development"
+  }
+}

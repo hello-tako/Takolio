@@ -1,0 +1,7 @@
+PASS admin Worker, production template (ADMIN_CONSOLE_ENABLED=false) (28/28)
+PASS admin Worker, ENVIRONMENT missing (local build, console flag true) (28/28)
+PASS admin Worker, ENVIRONMENT=development on a public origin (28/28)
+PASS admin Worker enabled on loopback (real workerd, run_worker_first) (15/15)
+PASS customer Worker from the current tree has no admin surface (5/5)
+PASS production admin bundle never compiles the local password login (wrangler deploy --dry-run, no upload) (4/4)
+workerd-check current: PASS (6/6 scenarios)

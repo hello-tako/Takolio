@@ -1,0 +1,436 @@
+{
+  "checks": [
+    {
+      "area": "users",
+      "name": "initial request",
+      "pass": true,
+      "first": "/users?page=1&pageSize=25&type=registered"
+    },
+    {
+      "area": "users",
+      "name": "paging next -> page=2",
+      "pass": true,
+      "requests": [
+        "/users?page=2&pageSize=25&type=registered"
+      ],
+      "info0": "Trang 1 / 3 · 56 mục",
+      "info1": "Trang 2 / 3 · 56 mục",
+      "rowsChanged": true
+    },
+    {
+      "area": "users",
+      "name": "paging prev -> page=1",
+      "pass": true,
+      "requests": [
+        "/users?page=1&pageSize=25&type=registered"
+      ],
+      "info2": "Trang 1 / 3 · 56 mục",
+      "rowsRestored": true
+    },
+    {
+      "area": "users",
+      "name": "filter admin-users-type-filter=guest -> type",
+      "pass": true,
+      "requests": [
+        "/users?page=1&pageSize=25&type=guest"
+      ],
+      "values": [
+        "registered",
+        "guest",
+        "all"
+      ]
+    },
+    {
+      "area": "users",
+      "name": "filter admin-users-plan-filter=plus -> plan",
+      "pass": true,
+      "requests": [
+        "/users?page=1&pageSize=25&type=registered&plan=plus"
+      ],
+      "values": [
+        "",
+        "free",
+        "plus"
+      ]
+    },
+    {
+      "area": "users",
+      "name": "filter admin-users-admin-filter=true -> admin",
+      "pass": true,
+      "requests": [
+        "/users?page=1&pageSize=25&type=registered&admin=true"
+      ],
+      "values": [
+        "",
+        "true",
+        "false"
+      ]
+    },
+    {
+      "area": "users",
+      "name": "search debounce \"customer001\"",
+      "pass": true,
+      "qRequests": [
+        "/users?q=customer001&page=1&pageSize=25&type=registered"
+      ],
+      "intermediate": [],
+      "rows": 1
+    },
+    {
+      "area": "users",
+      "name": "no-match search \"zz-nomatch-xyz\" -> empty state",
+      "pass": true,
+      "requests": [
+        "/users?q=zz-nomatch-xyz&page=1&pageSize=25&type=registered"
+      ],
+      "emptyState": 1
+    },
+    {
+      "area": "households",
+      "name": "paging next -> page=2",
+      "pass": true,
+      "requests": [
+        "/households?page=2&pageSize=25"
+      ],
+      "info0": "Trang 1 / 3 · 63 mục",
+      "info1": "Trang 2 / 3 · 63 mục",
+      "rowsChanged": true
+    },
+    {
+      "area": "households",
+      "name": "paging prev -> page=1",
+      "pass": true,
+      "requests": [
+        "/households?page=1&pageSize=25"
+      ],
+      "info2": "Trang 1 / 3 · 63 mục",
+      "rowsRestored": true
+    },
+    {
+      "area": "households",
+      "name": "search debounce \"Bếp\"",
+      "pass": true,
+      "qRequests": [
+        "/households?q=B%E1%BA%BFp&page=1&pageSize=25"
+      ],
+      "intermediate": [],
+      "rows": 25
+    },
+    {
+      "area": "households",
+      "name": "no-match search \"zz-nomatch-xyz\" -> empty state",
+      "pass": true,
+      "requests": [
+        "/households?q=zz-nomatch-xyz&page=1&pageSize=25"
+      ],
+      "emptyState": 1
+    },
+    {
+      "area": "billing",
+      "name": "paging next -> page=2",
+      "pass": true,
+      "requests": [
+        "/billing/transactions?page=2&pageSize=25"
+      ],
+      "info0": "Trang 1 / 2 · 40 mục",
+      "info1": "Trang 2 / 2 · 40 mục",
+      "rowsChanged": true
+    },
+    {
+      "area": "billing",
+      "name": "paging prev -> page=1",
+      "pass": true,
+      "requests": [
+        "/billing/transactions?page=1&pageSize=25"
+      ],
+      "info2": "Trang 1 / 2 · 40 mục",
+      "rowsRestored": true
+    },
+    {
+      "area": "billing",
+      "name": "filter admin-billing-status-filter=pending -> status",
+      "pass": true,
+      "requests": [
+        "/billing/transactions?status=pending&page=1&pageSize=25"
+      ],
+      "values": [
+        "",
+        "pending",
+        "paid",
+        "failed",
+        "expired",
+        "refunded"
+      ]
+    },
+    {
+      "area": "billing",
+      "name": "range 7d",
+      "pass": true,
+      "requests": [
+        "/billing/summary?range=7d"
+      ],
+      "chartChanged": true,
+      "sigLen": 1288
+    },
+    {
+      "area": "billing",
+      "name": "range 90d",
+      "pass": true,
+      "requests": [
+        "/billing/summary?range=90d"
+      ],
+      "chartChanged": true,
+      "sigLen": 2732
+    },
+    {
+      "area": "billing",
+      "name": "range default 30d",
+      "pass": true,
+      "values": [
+        "7d",
+        "30d",
+        "90d"
+      ],
+      "note": "initial load sends range=30d (default)"
+    },
+    {
+      "area": "ai",
+      "name": "paging next -> page=2",
+      "pass": true,
+      "requests": [
+        "/ai/usage?page=2&pageSize=25"
+      ],
+      "info0": "Trang 1 / 5 · 120 mục",
+      "info1": "Trang 2 / 5 · 120 mục",
+      "rowsChanged": true
+    },
+    {
+      "area": "ai",
+      "name": "paging prev -> page=1",
+      "pass": true,
+      "requests": [
+        "/ai/usage?page=1&pageSize=25"
+      ],
+      "info2": "Trang 1 / 5 · 120 mục",
+      "rowsRestored": true
+    },
+    {
+      "area": "ai",
+      "name": "text filter admin-ai-task-filter=\"scan_ocr\" -> task",
+      "pass": true,
+      "requests": [
+        "/ai/usage?task=scan_ocr&page=1&pageSize=25"
+      ]
+    },
+    {
+      "area": "ai",
+      "name": "text filter admin-ai-status-filter=\"success\" -> status",
+      "pass": true,
+      "requests": [
+        "/ai/usage?status=success&page=1&pageSize=25"
+      ]
+    },
+    {
+      "area": "ai",
+      "name": "range 7d",
+      "pass": true,
+      "requests": [
+        "/ai/summary?range=7d"
+      ],
+      "chartChanged": true,
+      "sigLen": 2061
+    },
+    {
+      "area": "ai",
+      "name": "range 90d",
+      "pass": true,
+      "requests": [
+        "/ai/summary?range=90d"
+      ],
+      "chartChanged": true,
+      "sigLen": 3203
+    },
+    {
+      "area": "ai",
+      "name": "range default 30d",
+      "pass": true,
+      "values": [
+        "7d",
+        "30d",
+        "90d"
+      ],
+      "note": "initial load sends range=30d (default)"
+    },
+    {
+      "area": "recipes",
+      "name": "paging next -> page=2",
+      "pass": true,
+      "requests": [
+        "/recipes?page=2&pageSize=25"
+      ],
+      "info0": "Trang 1 / 20 · 500 mục",
+      "info1": "Trang 2 / 20 · 500 mục",
+      "rowsChanged": true
+    },
+    {
+      "area": "recipes",
+      "name": "paging prev -> page=1",
+      "pass": true,
+      "requests": [
+        "/recipes?page=1&pageSize=25"
+      ],
+      "info2": "Trang 1 / 20 · 500 mục",
+      "rowsRestored": true
+    },
+    {
+      "area": "recipes",
+      "name": "filter admin-recipes-cuisine-filter=vietnamese -> cuisine",
+      "pass": true,
+      "requests": [
+        "/recipes?cuisine=vietnamese&page=1&pageSize=25"
+      ],
+      "values": [
+        "",
+        "vietnamese",
+        "chinese",
+        "japanese",
+        "korean",
+        "thai",
+        "italian"
+      ]
+    },
+    {
+      "area": "recipes",
+      "name": "filter admin-recipes-verification-filter=unverified -> verification",
+      "pass": true,
+      "requests": [
+        "/recipes?verification=unverified&page=1&pageSize=25"
+      ],
+      "values": [
+        "",
+        "unverified",
+        "reviewed",
+        "rejected"
+      ]
+    },
+    {
+      "area": "recipes",
+      "name": "filter admin-recipes-source-filter=ai_generated -> source",
+      "pass": true,
+      "requests": [
+        "/recipes?source=ai_generated&page=1&pageSize=25"
+      ],
+      "values": [
+        "",
+        "ai_generated",
+        "legacy"
+      ]
+    },
+    {
+      "area": "recipes",
+      "name": "search debounce \"canh\"",
+      "pass": true,
+      "qRequests": [
+        "/recipes?q=canh&page=1&pageSize=25"
+      ],
+      "intermediate": [],
+      "rows": 25
+    },
+    {
+      "area": "recipes",
+      "name": "no-match search \"zz-nomatch-xyz\" -> empty state",
+      "pass": true,
+      "requests": [
+        "/recipes?q=zz-nomatch-xyz&page=1&pageSize=25"
+      ],
+      "emptyState": 2
+    },
+    {
+      "area": "audit",
+      "name": "paging next",
+      "pass": false,
+      "info0": "Trang 1 / 1 · 5 mục",
+      "note": "next disabled: single page with fixture data"
+    },
+    {
+      "area": "audit",
+      "name": "text filter admin-audit-action-filter=\"scan_ocr\" -> action",
+      "pass": true,
+      "requests": [
+        "/audit?action=scan_ocr&page=1&pageSize=25"
+      ]
+    },
+    {
+      "area": "audit",
+      "name": "filter admin-audit-outcome-filter=success -> outcome",
+      "pass": true,
+      "requests": [
+        "/audit?outcome=success&page=1&pageSize=25"
+      ],
+      "values": [
+        "",
+        "success",
+        "denied",
+        "failure"
+      ]
+    },
+    {
+      "area": "audit",
+      "name": "text filter admin-audit-actor-filter=\"fx_admin_super\" -> actor",
+      "pass": true,
+      "requests": [
+        "/audit?actor=fx_admin_super&page=1&pageSize=25"
+      ]
+    },
+    {
+      "area": "audit",
+      "name": "date from=2026-10-01",
+      "pass": true,
+      "requests": [
+        "/audit?from=2026-10-01T00%3A00%3A00.000Z&page=1&pageSize=25"
+      ]
+    },
+    {
+      "area": "audit",
+      "name": "date to=2026-10-12",
+      "pass": true,
+      "requests": [
+        "/audit?from=2026-10-01T00%3A00%3A00.000Z&to=2026-10-12T23%3A59%3A59.999Z&page=1&pageSize=25"
+      ]
+    },
+    {
+      "area": "overview",
+      "name": "range 7d",
+      "pass": true,
+      "requests": [
+        "/overview?range=7d"
+      ],
+      "chartChanged": true,
+      "sigLen": 693
+    },
+    {
+      "area": "overview",
+      "name": "range 90d",
+      "pass": true,
+      "requests": [
+        "/overview?range=90d"
+      ],
+      "chartChanged": true,
+      "sigLen": 4221
+    },
+    {
+      "area": "overview",
+      "name": "range default 30d",
+      "pass": true,
+      "values": [
+        "7d",
+        "30d",
+        "90d"
+      ],
+      "note": "initial load sends range=30d (default)"
+    }
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "non2xx": []
+}

@@ -1,0 +1,859 @@
+{
+  "source": {
+    "repository": "lol-vn/Tako-san",
+    "repositoryId": 1385308553,
+    "snapshotHead": "72a9b7ff46aa71cf95b4a948c52b710e46d28bd6",
+    "reachableCommits": 957
+  },
+  "destination": {
+    "repository": "hello-tako/Takolio",
+    "repositoryId": 1422954151,
+    "url": "https://github.com/hello-tako/Takolio.git",
+    "public": true,
+    "defaultBranch": "main"
+  },
+  "sourceRefCount": 168,
+  "destinationBranchCount": 166,
+  "refs": [
+    {
+      "sourceRef": "refs/heads/codex/admin-v1-r2-production-readiness",
+      "sourceSha": "72a9b7ff46aa71cf95b4a948c52b710e46d28bd6",
+      "destinationRef": "refs/heads/codex/admin-v1-r2-production-readiness"
+    },
+    {
+      "sourceRef": "refs/heads/docs/takolio-production-receipt-20261016",
+      "sourceSha": "7eb2cc6ad1589ff959d89e4dfa462f4987b67dcb",
+      "destinationRef": "refs/heads/docs/takolio-production-receipt-20261016"
+    },
+    {
+      "sourceRef": "refs/heads/rescue/admin-r2-8d08c787",
+      "sourceSha": "8d08c787d11994d974dc083c9695fcf0fe2474e3",
+      "destinationRef": "refs/heads/rescue/admin-r2-8d08c787"
+    },
+    {
+      "sourceRef": "refs/heads/rescue/admin-r2-start-87d6d3d",
+      "sourceSha": "87d6d3d2acc69a6ca3f0409c3c22753469807222",
+      "destinationRef": "refs/heads/rescue/admin-r2-start-87d6d3d"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/HEAD",
+      "sourceSha": "7eb2cc6ad1589ff959d89e4dfa462f4987b67dcb",
+      "destinationRef": "refs/heads/docs/takolio-production-receipt-20261016"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/archive/legacy-origin/hoplite/megara-hyblaia-888f1514--t13b-b-ux-final-hardening",
+      "sourceSha": "a8cefd13505bc6b45dd11f45a6323539deb60f93",
+      "destinationRef": "refs/heads/archive/legacy-origin/hoplite/megara-hyblaia-888f1514--t13b-b-ux-final-hardening"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/archive/pre-canonical-consolidation",
+      "sourceSha": "d1b06732f8a80db4e77986df31ff28d9f04641fa",
+      "destinationRef": "refs/heads/archive/pre-canonical-consolidation"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/canonical/5f6853d-promotion",
+      "sourceSha": "adc6cae5d07df75fc1d57674ff6215d60ad0b077",
+      "destinationRef": "refs/heads/canonical/5f6853d-promotion"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/canonical/5f6853d-promotion-ci",
+      "sourceSha": "7ede92c73a41da24500746fd0eded892689d8558",
+      "destinationRef": "refs/heads/canonical/5f6853d-promotion-ci"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/admin-v1-r2-production-readiness",
+      "sourceSha": "ba762a205fd890efe4af47ef6c0fd7cd6f45fc14",
+      "destinationRef": "refs/heads/archive/source-origin/codex/admin-v1-r2-production-readiness"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/ai-scan-rollout-evidence",
+      "sourceSha": "fad18a99b94da1b4ac95ec585645747e64d046cb",
+      "destinationRef": "refs/heads/codex/ai-scan-rollout-evidence"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/ai-scan-validation-diagnostics",
+      "sourceSha": "bc4a1cdfb567610e339e35d4845a993bfb0a6534",
+      "destinationRef": "refs/heads/codex/ai-scan-validation-diagnostics"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/auth-csp-production-hotfix",
+      "sourceSha": "c14a3755d95ddae316d5e6636ef85f9784ac4a54",
+      "destinationRef": "refs/heads/codex/auth-csp-production-hotfix"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/auth-csp-production-receipt",
+      "sourceSha": "af49fefa192106a186129cf7739592b5639fe9e3",
+      "destinationRef": "refs/heads/codex/auth-csp-production-receipt"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/auth-funnel-recovery",
+      "sourceSha": "66e8073161cf418ffe4df2ed6cece75d56087af1",
+      "destinationRef": "refs/heads/codex/auth-funnel-recovery"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/auth-google-responsive",
+      "sourceSha": "eb78366a2784df6a58e419fffff35c42109eef6f",
+      "destinationRef": "refs/heads/codex/auth-google-responsive"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/auth-ocr-production-fix",
+      "sourceSha": "336b1ffb0ea1428a1bc83a3d270bb965e2417318",
+      "destinationRef": "refs/heads/codex/auth-ocr-production-fix"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/auth-otp-guest-account-gates",
+      "sourceSha": "ee0055b88eb773ad617ea378c6727393c4e68e26",
+      "destinationRef": "refs/heads/codex/auth-otp-guest-account-gates"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/auth-pwa-cache-google-recovery",
+      "sourceSha": "54dd81b3ba260843ed39d625c8e0b7c2f4cef831",
+      "destinationRef": "refs/heads/codex/auth-pwa-cache-google-recovery"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/auth-pwa-cache-production-receipt",
+      "sourceSha": "ff2b58bb0d27d3fe29c74568c095591f809cfcb9",
+      "destinationRef": "refs/heads/codex/auth-pwa-cache-production-receipt"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/backend-final-local-completion",
+      "sourceSha": "a27e201133f33ff12e14f3c789926848730e01f3",
+      "destinationRef": "refs/heads/codex/backend-final-local-completion"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/catalog-preflight-diagnostics",
+      "sourceSha": "0745bfc3f8ceaf0ed4bc79e41fb0635a991058d4",
+      "destinationRef": "refs/heads/codex/catalog-preflight-diagnostics"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/compact-kitchen-release-receipts-20261016",
+      "sourceSha": "d919023e81b207b359e55885d0d26c6c32be98e2",
+      "destinationRef": "refs/heads/codex/compact-kitchen-release-receipts-20261016"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/compact-kitchen-ux-20261015",
+      "sourceSha": "e9fa48b7adc7c2263936081fe16ab7c8bc895356",
+      "destinationRef": "refs/heads/codex/compact-kitchen-ux-20261015"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/family-release-d1-baseline-20261015",
+      "sourceSha": "90b55aaf9695a5ae8bd88ad2f951be0abe13cf8f",
+      "destinationRef": "refs/heads/codex/family-release-d1-baseline-20261015"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/family-release-receipts-20261015",
+      "sourceSha": "94cfbe75c6128894aba2513170ccc3bbb64850f6",
+      "destinationRef": "refs/heads/codex/family-release-receipts-20261015"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/fix-family-planner-hang-20261015",
+      "sourceSha": "bf6d4f1e5d50fc9e4fd7bc14a34bb20edc444aa3",
+      "destinationRef": "refs/heads/codex/fix-family-planner-hang-20261015"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/google-safari-turnstile",
+      "sourceSha": "4ca8b7e5d8bd7c515233d0ef235571d2be07ad96",
+      "destinationRef": "refs/heads/codex/google-safari-turnstile"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/migration-gate-toolchain",
+      "sourceSha": "ca5df79e0212cc14d727270892c7a1c18602f0fd",
+      "destinationRef": "refs/heads/codex/migration-gate-toolchain"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/nine-region-production-release",
+      "sourceSha": "0d8bc26bfc0ee896270978d8bd3affdfc57d4584",
+      "destinationRef": "refs/heads/codex/nine-region-production-release"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/nine-region-release-receipt",
+      "sourceSha": "8cdb202873ca0dbb97b30fee76c9bef256b4c607",
+      "destinationRef": "refs/heads/codex/nine-region-release-receipt"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/payos-billing-account-20261013",
+      "sourceSha": "05e413dfaf68bb27d275e4da709a5bf7c460abce",
+      "destinationRef": "refs/heads/codex/payos-billing-account-20261013"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/payos-billing-release-20261013",
+      "sourceSha": "332a24f468d5360b6cefc57b9451228585457131",
+      "destinationRef": "refs/heads/codex/payos-billing-release-20261013"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/payos-integration-20261012",
+      "sourceSha": "ad01d433c94d1ba0328808074ea13aa1d7efefa0",
+      "destinationRef": "refs/heads/codex/payos-integration-20261012"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/payos-operational-handoff-20261012",
+      "sourceSha": "827b77cb5e8cb7cd66f70a5c371435c95454e7ba",
+      "destinationRef": "refs/heads/codex/payos-operational-handoff-20261012"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/payos-worker-fetch-fix-20261012",
+      "sourceSha": "3bd4ad36669af56c7667ef03705d486375dc34e0",
+      "destinationRef": "refs/heads/codex/payos-worker-fetch-fix-20261012"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/planner-response-release-receipts-20261015",
+      "sourceSha": "091223077aaf7fc3e71b139fe66ccdfa83f45c37",
+      "destinationRef": "refs/heads/codex/planner-response-release-receipts-20261015"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/post-media-migration-gate",
+      "sourceSha": "82ce0cd8eb8188c475126fd5a88c2ff063ac25f9",
+      "destinationRef": "refs/heads/codex/post-media-migration-gate"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/post-media-rollout-evidence",
+      "sourceSha": "a29af19abb88cadcf349279493b0fa96dc1f2e48",
+      "destinationRef": "refs/heads/codex/post-media-rollout-evidence"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/post-merge-canonical-docs",
+      "sourceSha": "1e1f3ee97009fb27831525e5b8a58ad7b31b50ac",
+      "destinationRef": "refs/heads/codex/post-merge-canonical-docs"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/production-asset-convergence",
+      "sourceSha": "d70d644e5d4e953ebe02894a28cf8fe4c110006e",
+      "destinationRef": "refs/heads/codex/production-asset-convergence"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/production-catalog-continuity",
+      "sourceSha": "231486aed1fd67b7bb4e1ce443b56752c8e9bfc7",
+      "destinationRef": "refs/heads/codex/production-catalog-continuity"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/production-catalog-lineage-diagnostic",
+      "sourceSha": "43b1d2596b8c2d627f09f86a6aa1c4ee5256b4ad",
+      "destinationRef": "refs/heads/codex/production-catalog-lineage-diagnostic"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/production-d1-capacity",
+      "sourceSha": "3f38acaca216bf8a6e6f0345b42129ae0a707623",
+      "destinationRef": "refs/heads/codex/production-d1-capacity"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/production-d1-diagnostic-followup",
+      "sourceSha": "2fa9d0b4cf9e7db122b401e9c5e21dc7d650dbc9",
+      "destinationRef": "refs/heads/codex/production-d1-diagnostic-followup"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/production-d1-diagnostics",
+      "sourceSha": "4f720d46e8c6a1306a3b2c4e527828c300b40c05",
+      "destinationRef": "refs/heads/codex/production-d1-diagnostics"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/production-d1-order-recovery-packet",
+      "sourceSha": "4d33a7477198b8b34f5e8861e6b80e704cf4a507",
+      "destinationRef": "refs/heads/codex/production-d1-order-recovery-packet"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/production-import-inspection",
+      "sourceSha": "9a659fade16fee293fff1a634938fb23be6b7903",
+      "destinationRef": "refs/heads/codex/production-import-inspection"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/production-import-json-confirmation",
+      "sourceSha": "1ca4a4d4c608546a6a49c47d527859ffc62e4817",
+      "destinationRef": "refs/heads/codex/production-import-json-confirmation"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/production-recovery-fk-guard",
+      "sourceSha": "6e45d824363c24c8b63b629eefce8252e8f16a6f",
+      "destinationRef": "refs/heads/codex/production-recovery-fk-guard"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/production-release-guards",
+      "sourceSha": "524e8c57138f892023cbbc91071814579137369b",
+      "destinationRef": "refs/heads/codex/production-release-guards"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/production-release-receipt",
+      "sourceSha": "9cfadbde412b97f252fe4be846ffe711f25eb520",
+      "destinationRef": "refs/heads/codex/production-release-receipt"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/production-v1-recovery",
+      "sourceSha": "6f5cd543e5b13dc2da32344975b8b48c55043baf",
+      "destinationRef": "refs/heads/codex/production-v1-recovery"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/production-v2-import-forensics",
+      "sourceSha": "796097d9c1e2db4972151376449873c1ef60419f",
+      "destinationRef": "refs/heads/codex/production-v2-import-forensics"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/recipe-content-refresh-v2-canonical",
+      "sourceSha": "021d951297a8996e4e85abb950f8e023ec151974",
+      "destinationRef": "refs/heads/codex/recipe-content-refresh-v2-canonical"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/runtime-ingredient-model-v2",
+      "sourceSha": "8c7ccafa83e0b68d58e056982a2cd844272ebc96",
+      "destinationRef": "refs/heads/codex/runtime-ingredient-model-v2"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/scan-synthetic-ocr-certification",
+      "sourceSha": "29455854ae53889261a4fa68cce125fa8a6fa2f1",
+      "destinationRef": "refs/heads/codex/scan-synthetic-ocr-certification"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/t15b-shadow-certification",
+      "sourceSha": "bb14ba3dcf594fdf4a71fa6bbd6e72fefa52e02e",
+      "destinationRef": "refs/heads/codex/t15b-shadow-certification"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/t15b-shadow-wiring",
+      "sourceSha": "ad3e1d1656418aaf495b130443d6514926b8bdca",
+      "destinationRef": "refs/heads/codex/t15b-shadow-wiring"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/t15c-b-authorized-cohort-safe-stop",
+      "sourceSha": "c6744eb03ee40d3f018fc87617e6a1b8396cdabf",
+      "destinationRef": "refs/heads/codex/t15c-b-authorized-cohort-safe-stop"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/t15c-b1-operator-auth-required",
+      "sourceSha": "ef81259725f798353932a89e0d10e17403aa421d",
+      "destinationRef": "refs/heads/codex/t15c-b1-operator-auth-required"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/t15c-canary-control-plane",
+      "sourceSha": "a7b3d23f2ad8b48203328116d0e35425390d2127",
+      "destinationRef": "refs/heads/codex/t15c-canary-control-plane"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/t15c-production-canary-1pct",
+      "sourceSha": "16958c605c1d4659591f2c02faecf593d81a7a6a",
+      "destinationRef": "refs/heads/codex/t15c-production-canary-1pct"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/t15c-production-canary-1pct-final",
+      "sourceSha": "2e7bf38f8831cdf57c54772a04759f47fd609478",
+      "destinationRef": "refs/heads/codex/t15c-production-canary-1pct-final"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/t15p-production-approval-safe-stop",
+      "sourceSha": "7384fdf2c5351f29851609b6f0c8e0f6cdfdc201",
+      "destinationRef": "refs/heads/codex/t15p-production-approval-safe-stop"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/t19-v2-production-blocked-handoff",
+      "sourceSha": "2475f2c1a22a07e659fb82c53492c33d973eacd7",
+      "destinationRef": "refs/heads/codex/t19-v2-production-blocked-handoff"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/t20-certified-rollout",
+      "sourceSha": "71e9a1327ea7bb34bfee978aeeea65788b07e413",
+      "destinationRef": "refs/heads/codex/t20-certified-rollout"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/t20-fixture-schema-contract",
+      "sourceSha": "8b7b254ddcc9e0a36989a2c8c3add6ad3d776ee9",
+      "destinationRef": "refs/heads/codex/t20-fixture-schema-contract"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/t20-production-completion",
+      "sourceSha": "faf98d0465ea82ecd4bd1845cb6e6aae3bee34a5",
+      "destinationRef": "refs/heads/codex/t20-production-completion"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/t20-staging-certification-tools",
+      "sourceSha": "b789d7986c9a4e74e86840f8026a1fcb1b91985f",
+      "destinationRef": "refs/heads/codex/t20-staging-certification-tools"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/t20-staging-hard-time",
+      "sourceSha": "c2f75b7fd9f0c91322cfd8a29c4762f49436886c",
+      "destinationRef": "refs/heads/codex/t20-staging-hard-time"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/t20-staging-planner-enabled",
+      "sourceSha": "a80fc9a2349fe9d9d12c5dcf23a9f5a15a0da17b",
+      "destinationRef": "refs/heads/codex/t20-staging-planner-enabled"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/t20-staging-turnstile",
+      "sourceSha": "b4dcb7075e9c0a79cc00df72453fd29d09f2c2ca",
+      "destinationRef": "refs/heads/codex/t20-staging-turnstile"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/t21rb-merge-receipt",
+      "sourceSha": "3ffca5cbee5a1e952c90b5a456cbed47df7de823",
+      "destinationRef": "refs/heads/codex/t21rb-merge-receipt"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/t21rb-offline-semantic-snapshot",
+      "sourceSha": "0b28b48e2fbd8f4892ddbf57ae9139d96addc0a3",
+      "destinationRef": "refs/heads/codex/t21rb-offline-semantic-snapshot"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/t21rc-row-level-reconciliation",
+      "sourceSha": "0c33782e4a9a67a78c4836b39fda909db07e011d",
+      "destinationRef": "refs/heads/codex/t21rc-row-level-reconciliation"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/t21rc2-protected-production-row-read",
+      "sourceSha": "63739c565622c725b02e21af590342d98ed0fa65",
+      "destinationRef": "refs/heads/codex/t21rc2-protected-production-row-read"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/t21rc2d-classification-diagnostics",
+      "sourceSha": "95b1746819c4690d267985ce55cb0ba673373a95",
+      "destinationRef": "refs/heads/codex/t21rc2d-classification-diagnostics"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/t21rc2s-schema-forensic",
+      "sourceSha": "ae19f0571d7e9236e8cf014f65b22d2d3d381df3",
+      "destinationRef": "refs/heads/codex/t21rc2s-schema-forensic"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/t21rc3-production-dispatch-readiness",
+      "sourceSha": "93c4055a42cd2d94f4db296d8ca10d555c2c52c2",
+      "destinationRef": "refs/heads/codex/t21rc3-production-dispatch-readiness"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/t21rc4-cloudflare-identity-diagnostic",
+      "sourceSha": "a0c1cfd47441e3475d0a7cc147cbb9690e1e07f3",
+      "destinationRef": "refs/heads/codex/t21rc4-cloudflare-identity-diagnostic"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/t21rc4l-wrangler-parsed-output-fix",
+      "sourceSha": "a0d4bf9cab7b7602d5cec03f65910f526a4930f0",
+      "destinationRef": "refs/heads/codex/t21rc4l-wrangler-parsed-output-fix"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/ui-rebuild-foundation",
+      "sourceSha": "44cc75629a7d6f4676bfac98fb13e0f2267640ba",
+      "destinationRef": "refs/heads/codex/ui-rebuild-foundation"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/codex/vietnamese-family-meals-20261013",
+      "sourceSha": "bdb5014d67b3b13688db1746bd07c3c5b5bacd5c",
+      "destinationRef": "refs/heads/codex/vietnamese-family-meals-20261013"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/docs/t19-v2-safe-stop-handoff",
+      "sourceSha": "5acaaa1c5f00f033901c3146eb71423c59810af0",
+      "destinationRef": "refs/heads/docs/t19-v2-safe-stop-handoff"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/docs/takolio-production-receipt-20261016",
+      "sourceSha": "7eb2cc6ad1589ff959d89e4dfa462f4987b67dcb",
+      "destinationRef": "refs/heads/docs/takolio-production-receipt-20261016"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/feat/ingredient-icons-v2",
+      "sourceSha": "92d65a2ad5dde6fdd0816090709e8b04f5c4e71d",
+      "destinationRef": "refs/heads/feat/ingredient-icons-v2"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/feat/staging-d1-catchup-0033-0038",
+      "sourceSha": "eb81f10c99ee39761ad6aad8d0bdcb6a75f19cbc",
+      "destinationRef": "refs/heads/feat/staging-d1-catchup-0033-0038"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/feat/t14c-recipe-media-layer",
+      "sourceSha": "7b37325fe4be1366706e2a87a094c2d8023539ca",
+      "destinationRef": "refs/heads/feat/t14c-recipe-media-layer"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/feat/t17-takosan-ui-v2",
+      "sourceSha": "c9525ab997777f259b428d7fc55e3864db064012",
+      "destinationRef": "refs/heads/feat/t17-takosan-ui-v2"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/feat/t17b-contract-reconciliation",
+      "sourceSha": "2cae57eebd8b25deac570964ee4f829986fceb57",
+      "destinationRef": "refs/heads/feat/t17b-contract-reconciliation"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/feat/t18a-auth-resend-expiry-contract",
+      "sourceSha": "cbd40c6ec3c891ef05660fc0d439e79a87ccbcb2",
+      "destinationRef": "refs/heads/feat/t18a-auth-resend-expiry-contract"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/feat/t18b-payment-authority",
+      "sourceSha": "90c5ada5e2c01f98e1b10897cc51b488e5d698f8",
+      "destinationRef": "refs/heads/feat/t18b-payment-authority"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/feat/t18c-final-redesign-certification",
+      "sourceSha": "1f856e5cbe43e004892cca745c4f58c691b1b87c",
+      "destinationRef": "refs/heads/feat/t18c-final-redesign-certification"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/feat/t18d-a11y-human-style-hardening",
+      "sourceSha": "e2dce042bc7472cf53216cbe5d56de9ce8661835",
+      "destinationRef": "refs/heads/feat/t18d-a11y-human-style-hardening"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/feat/t18e-otp-email-delivery-recovery",
+      "sourceSha": "220fcc99db88b8fb0c0a45a9f7bfce55bf449e69",
+      "destinationRef": "refs/heads/feat/t18e-otp-email-delivery-recovery"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/feat/t19-recipe-authority-cutover-v2",
+      "sourceSha": "0a04209e512d19293ed56a19d3fd51eb29ffefcd",
+      "destinationRef": "refs/heads/feat/t19-recipe-authority-cutover-v2"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/feat/t19-recipe-authority-cutover-v2-integration",
+      "sourceSha": "dbf32547a07fbc767e044365866a2bdfc4264cd8",
+      "destinationRef": "refs/heads/feat/t19-recipe-authority-cutover-v2-integration"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/feat/t19-staging-d1-runtime-readiness-certifier",
+      "sourceSha": "fe7f055f704bf0ddef36e4502c950b0820f0ff53",
+      "destinationRef": "refs/heads/feat/t19-staging-d1-runtime-readiness-certifier"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/feat/t19-staging-shadow-smoke-cohort",
+      "sourceSha": "a9c90114e3618a44539d51715719c76f1aa94d37",
+      "destinationRef": "refs/heads/feat/t19-staging-shadow-smoke-cohort"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/feat/t20-meal-composition-v2",
+      "sourceSha": "3789f061af0bbcc91a1edb833da214e414ec18a1",
+      "destinationRef": "refs/heads/feat/t20-meal-composition-v2"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/feat/t20-staging-release-observability",
+      "sourceSha": "791df463f1c0cee763981316f871e2d65fe1bb47",
+      "destinationRef": "refs/heads/feat/t20-staging-release-observability"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/feat/t21d-d1-temporal-forensics",
+      "sourceSha": "a79f5e5d8894c4dc53109fb4731fec22f7decc92",
+      "destinationRef": "refs/heads/feat/t21d-d1-temporal-forensics"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/feat/t21e-audit-pagination-temporal-refinement",
+      "sourceSha": "7cba0f18d14fe3c52539c627fe31b09f5100fe75",
+      "destinationRef": "refs/heads/feat/t21e-audit-pagination-temporal-refinement"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/feat/t21rc2t-identity-topology-diagnostic",
+      "sourceSha": "16b07bedcc72310e69a349c4343e5f076d504554",
+      "destinationRef": "refs/heads/feat/t21rc2t-identity-topology-diagnostic"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/feat/takolio-brand-migration-v1",
+      "sourceSha": "0275604761f5f8272de7895bdbf818371e9a9e87",
+      "destinationRef": "refs/heads/feat/takolio-brand-migration-v1"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/feat/takosan-brand-v3-full-integration",
+      "sourceSha": "6114a43ee6c2798ecd9aebca959dd6496d1a2aea",
+      "destinationRef": "refs/heads/feat/takosan-brand-v3-full-integration"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/fix/scan-ai-quota-ocr-reliability",
+      "sourceSha": "439451afeb81aee732c3e7d13acaf0a194b1e70e",
+      "destinationRef": "refs/heads/fix/scan-ai-quota-ocr-reliability"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/fix/scan-synthetic-ocr-test-timeout",
+      "sourceSha": "b30f6825aeb5ce94217049cdba1ac23566898920",
+      "destinationRef": "refs/heads/fix/scan-synthetic-ocr-test-timeout"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/fix/t19-cooking-hard-restriction-bypass",
+      "sourceSha": "65f6b1281c7cd43f39eb3b03c832b87604f8a897",
+      "destinationRef": "refs/heads/fix/t19-cooking-hard-restriction-bypass"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/fix/t20-postmerge-ci-picker-cuisine",
+      "sourceSha": "16c5aae96bf24e4e880d6a3d752ee8b979468c43",
+      "destinationRef": "refs/heads/fix/t20-postmerge-ci-picker-cuisine"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/fix/t20-postmerge-ci-picker-cuisine--hardening",
+      "sourceSha": "521f4da01a9a98c76f54fcfe65c987ec878502e7",
+      "destinationRef": "refs/heads/fix/t20-postmerge-ci-picker-cuisine--hardening"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/fix/t20-postmerge-ci-picker-cuisine--hardening--staging-d1-migrate",
+      "sourceSha": "c04bdb00c2974b21f98efc4d4ed6a5a743073b53",
+      "destinationRef": "refs/heads/fix/t20-postmerge-ci-picker-cuisine--hardening--staging-d1-migrate"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/handoff/admin-v1-r2-20261015",
+      "sourceSha": "cc1267e719b4af38325a20290382481e86f67a05",
+      "destinationRef": "refs/heads/handoff/admin-v1-r2-20261015"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/aigeai-eca96ae8--t15a-r-receipt",
+      "sourceSha": "66eadfbe26ac78d80eb6f4c15bdae1e93b0de185",
+      "destinationRef": "refs/heads/hoplite/aigeai-eca96ae8--t15a-r-receipt"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/aigeai-eca96ae8--t15c-canary",
+      "sourceSha": "fe388094a3a912045a800c8246e0b30e272a63ad",
+      "destinationRef": "refs/heads/hoplite/aigeai-eca96ae8--t15c-canary"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/aigeai-eca96ae8--t15c-cohort",
+      "sourceSha": "83c68ead48efdc642474ab7efd00795d974f4ee8",
+      "destinationRef": "refs/heads/hoplite/aigeai-eca96ae8--t15c-cohort"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/akanthos-df8cfb50",
+      "sourceSha": "2254816a5f9ae007f552b05dd96e45643fdb7ca5",
+      "destinationRef": "refs/heads/hoplite/akanthos-df8cfb50"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/akraiphia-akraiphnion-a03445c7",
+      "sourceSha": "32b6ec103c6c38b1903b8af12118018a61f5088d",
+      "destinationRef": "refs/heads/hoplite/akraiphia-akraiphnion-a03445c7"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/delos-f0bb1d04",
+      "sourceSha": "897102b6816c22af2e6a49f29662690e3e3206e0",
+      "destinationRef": "refs/heads/hoplite/delos-f0bb1d04"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/dreros-8066d555",
+      "sourceSha": "7719840ce762972f97acbbc273dbdc0e71b3d78b",
+      "destinationRef": "refs/heads/hoplite/dreros-8066d555"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/gela-77317a62--t19-staging-secret-receipt",
+      "sourceSha": "7c62ff43d07e16281a87ca3b65e997739de0c6e6",
+      "destinationRef": "refs/heads/hoplite/gela-77317a62--t19-staging-secret-receipt"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/korinthos-137338f6",
+      "sourceSha": "bc19c3aed3fb9310aa4fc0e90cf4c2ae101189cd",
+      "destinationRef": "refs/heads/hoplite/korinthos-137338f6"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/koroneia-838b0ccc",
+      "sourceSha": "769e0532fadc95018bc1aedc01a36b396b91a974",
+      "destinationRef": "refs/heads/hoplite/koroneia-838b0ccc"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/koroneia-838b0ccc--t14b-a-catalog-safety",
+      "sourceSha": "4a1fa07cbc9c22e393234bcba9212ca2ef887d65",
+      "destinationRef": "refs/heads/hoplite/koroneia-838b0ccc--t14b-a-catalog-safety"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/koroneia-982c5213",
+      "sourceSha": "a434e6f5a1b3a0b96d7872d3d07e40335bcbb017",
+      "destinationRef": "refs/heads/hoplite/koroneia-982c5213"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/koroneia-982c5213--v2-catalog-lineage",
+      "sourceSha": "c17a9b2a44eed6db50f8beb93f7d89e0b8e1944c",
+      "destinationRef": "refs/heads/hoplite/koroneia-982c5213--v2-catalog-lineage"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/kos-1350efad",
+      "sourceSha": "f96c92952ebe16ef17691cb09982bd3fef4e9909",
+      "destinationRef": "refs/heads/hoplite/kos-1350efad"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/kos-9d39545d--t13b-b-final-certification",
+      "sourceSha": "a9b5904aeba0fc7e4d649165770a4e86701312a2",
+      "destinationRef": "refs/heads/hoplite/kos-9d39545d--t13b-b-final-certification"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/kos-9d39545d--t13b-b-final-hardening",
+      "sourceSha": "f845d04bbd8555cdcc1f774379b11bba6e017475",
+      "destinationRef": "refs/heads/hoplite/kos-9d39545d--t13b-b-final-hardening"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/massalia-c2862d7c",
+      "sourceSha": "b4a2b9bafce775d2ce5f4ae1fca1ef97c1ece113",
+      "destinationRef": "refs/heads/hoplite/massalia-c2862d7c"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/medma-164548ce",
+      "sourceSha": "83248df4f97d2110527a69e92a3ebe162aa71492",
+      "destinationRef": "refs/heads/hoplite/medma-164548ce"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/megale-polis-f7fb9e9a",
+      "sourceSha": "047637cbd03c82f4a908efa307abb1829e6b71e9",
+      "destinationRef": "refs/heads/hoplite/megale-polis-f7fb9e9a"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/megale-polis-f7fb9e9a-t14d-recipe-authority-cutover",
+      "sourceSha": "f2831805c9bf61fcf72d46d93425c0303c25361f",
+      "destinationRef": "refs/heads/hoplite/megale-polis-f7fb9e9a-t14d-recipe-authority-cutover"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/megale-polis-f7fb9e9a-t14d-recipe-authority-cutover-t14d-development-closure",
+      "sourceSha": "2cdfdcaa8c12918863266e72828a1fec9d0370f3",
+      "destinationRef": "refs/heads/hoplite/megale-polis-f7fb9e9a-t14d-recipe-authority-cutover-t14d-development-closure"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/megara-hyblaia-6b723eb2",
+      "sourceSha": "60ab7d40649084ac046f0f941571d4bb517dcaf8",
+      "destinationRef": "refs/heads/hoplite/megara-hyblaia-6b723eb2"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/megara-hyblaia-888f1514",
+      "sourceSha": "69b0dc676fcb4136861a8ca0c66994259eba5116",
+      "destinationRef": "refs/heads/hoplite/megara-hyblaia-888f1514"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/megara-hyblaia-888f1514--t13b-b-ux-final-hardening",
+      "sourceSha": "fd7e0204a81b74d9c8e3e630353451e2bf3056c5",
+      "destinationRef": "refs/heads/hoplite/megara-hyblaia-888f1514--t13b-b-ux-final-hardening"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/megara-hyblaia-888f1514--t13b-b-ux-final-hardening--quota-wip",
+      "sourceSha": "2334a6f41cf68d42ae1eba7a30440b8fe324eb31",
+      "destinationRef": "refs/heads/hoplite/megara-hyblaia-888f1514--t13b-b-ux-final-hardening--quota-wip"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/mende-26679a14",
+      "sourceSha": "3262eaff86333da142ada1135e5a20c58ea640eb",
+      "destinationRef": "refs/heads/hoplite/mende-26679a14"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/mende-26679a14--browser-harness-final-cert",
+      "sourceSha": "4fcbc96b5a5d4b3cea2c2ad0bdb5682b1866891a",
+      "destinationRef": "refs/heads/hoplite/mende-26679a14--browser-harness-final-cert"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/mesambria-d133eda3--t21rc2t-pnpm-action-pin",
+      "sourceSha": "089ae329ebba2ba38659c030266068aeace9b8a8",
+      "destinationRef": "refs/heads/hoplite/mesambria-d133eda3--t21rc2t-pnpm-action-pin"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/oropos-eb2d4886",
+      "sourceSha": "b9735b441d93dfb7d7d409a47292974c8f2f1e52",
+      "destinationRef": "refs/heads/hoplite/oropos-eb2d4886"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/oropos-eb2d4886--t13r-a-data-integrity-ownership",
+      "sourceSha": "d589342cbcef9f80487a2c269bcf6133fe0e4415",
+      "destinationRef": "refs/heads/hoplite/oropos-eb2d4886--t13r-a-data-integrity-ownership"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/philippoi-9bccde67",
+      "sourceSha": "abb467230def9b7c2fc0c593f75b26c8a1ac7462",
+      "destinationRef": "refs/heads/hoplite/philippoi-9bccde67"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/pistiros-848e5f0f",
+      "sourceSha": "0244ce92a9f9b60ae59838bd798b89d57778efc6",
+      "destinationRef": "refs/heads/hoplite/pistiros-848e5f0f"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/polyrhen-82141980",
+      "sourceSha": "9c3c3d3b842685f1b8ad82746621f4f5c41962f1",
+      "destinationRef": "refs/heads/hoplite/polyrhen-82141980"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/poteidaia-c88481ca",
+      "sourceSha": "e916d292d391ba999bcdd96bfdfec98e6b598678",
+      "destinationRef": "refs/heads/hoplite/poteidaia-c88481ca"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/poteidaia-c88481ca-integrate-t14b-a-current-main",
+      "sourceSha": "3e3937419b560f1ebf0aa7f5e29a3131508b7d94",
+      "destinationRef": "refs/heads/hoplite/poteidaia-c88481ca-integrate-t14b-a-current-main"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/poteidaia-c88481ca-integrate-t14b-a-current-main-t14-canonical-merge-receipt",
+      "sourceSha": "d2b796f3d86ad898fd4a9c3a37120e598efc077b",
+      "destinationRef": "refs/heads/hoplite/poteidaia-c88481ca-integrate-t14b-a-current-main-t14-canonical-merge-receipt"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/poteidaia-c88481ca-integrate-t14b-a-current-main-t14-canonical-merge-receipt-t14b-b-d1-recipe-parity-shadow",
+      "sourceSha": "004e5a320397b71e7bff5a65b8f5efa9a7a09065",
+      "destinationRef": "refs/heads/hoplite/poteidaia-c88481ca-integrate-t14b-a-current-main-t14-canonical-merge-receipt-t14b-b-d1-recipe-parity-shadow"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/rhegion-c9ff1930",
+      "sourceSha": "e6a3be3ccdfe466c601ffa6033c3c913602cedfb",
+      "destinationRef": "refs/heads/hoplite/rhegion-c9ff1930"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/sparta-lakedaimon-43461860",
+      "sourceSha": "c9744f23cc2a575c7f4ab68eb9f7f571ac9fb2f8",
+      "destinationRef": "refs/heads/hoplite/sparta-lakedaimon-43461860"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/sparta-lakedaimon-43461860--t15a-r-workflow-readiness",
+      "sourceSha": "637a848c96e04efef6b44b56624a5c2dd6e0e218",
+      "destinationRef": "refs/heads/hoplite/sparta-lakedaimon-43461860--t15a-r-workflow-readiness"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/stymphalos-a3bdf6c6--authority-propagation",
+      "sourceSha": "68a36502903b7ab7beb8a281c7c6711c97a56afd",
+      "destinationRef": "refs/heads/hoplite/stymphalos-a3bdf6c6--authority-propagation"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/stymphalos-a3bdf6c6--legacy-authority-bootstrap",
+      "sourceSha": "1772e1ea3d86a4d7a39bb741a87764eea00589fe",
+      "destinationRef": "refs/heads/hoplite/stymphalos-a3bdf6c6--legacy-authority-bootstrap"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/syrakousai-f7b7c8a0",
+      "sourceSha": "2c39e484f5d9e7808484e37735ac191efd77dc20",
+      "destinationRef": "refs/heads/hoplite/syrakousai-f7b7c8a0"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/syrakousai-f7b7c8a0-t14cd-ops-rollout-state",
+      "sourceSha": "1e1b017dbc4d7e9666f3b48f9234524af7c78bf5",
+      "destinationRef": "refs/heads/hoplite/syrakousai-f7b7c8a0-t14cd-ops-rollout-state"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/hoplite/syrakousai-f7b7c8a0-t14cd-ops-rollout-state-t14e-bulk-recipe-import-factory",
+      "sourceSha": "ba1a45d43f2f4b85d4f7500eba36fe094a7d3655",
+      "destinationRef": "refs/heads/hoplite/syrakousai-f7b7c8a0-t14cd-ops-rollout-state-t14e-bulk-recipe-import-factory"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/main",
+      "sourceSha": "526596a8cd857984ad2b69901a8c7b0e9d6bccc2",
+      "destinationRef": "refs/heads/main"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/ops/t19-main-ci-recovery",
+      "sourceSha": "2002dfd28dfa1b0092515b3595336c9f4f2e8fed",
+      "destinationRef": "refs/heads/ops/t19-main-ci-recovery"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/ops/t19-production-cert-pr-prep",
+      "sourceSha": "0899c49a28906d09f1a51b8afe2c72e09c860f18",
+      "destinationRef": "refs/heads/ops/t19-production-cert-pr-prep"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/ops/t19-staging-blocker-receipt",
+      "sourceSha": "6eadce265600ea75d0549a39ebf0d88a0d9055f9",
+      "destinationRef": "refs/heads/ops/t19-staging-blocker-receipt"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/release/canonical-staging-smoke",
+      "sourceSha": "6665c665ed824b51e20d018d353466ad024ff95a",
+      "destinationRef": "refs/heads/release/canonical-staging-smoke"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/release/d1-migration-parser-compat",
+      "sourceSha": "ff2da3b62b24a3341acbf638321d6f8bcf76ea45",
+      "destinationRef": "refs/heads/release/d1-migration-parser-compat"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/release/pre0032-schema-compat",
+      "sourceSha": "64ee9ed1d986a5e521598a36656e9c2f59d682ee",
+      "destinationRef": "refs/heads/release/pre0032-schema-compat"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/rescue/t13b-b-wip",
+      "sourceSha": "2334a6f41cf68d42ae1eba7a30440b8fe324eb31",
+      "destinationRef": "refs/heads/rescue/t13b-b-wip"
+    },
+    {
+      "sourceRef": "refs/remotes/origin/t19-readonly-d1-query-proofs",
+      "sourceSha": "65534ff7ecfcff8c66c1e0ecd864afd59c813e62",
+      "destinationRef": "refs/heads/t19-readonly-d1-query-proofs"
+    }
+  ]
+}

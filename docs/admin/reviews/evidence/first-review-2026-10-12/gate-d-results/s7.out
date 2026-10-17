@@ -1,0 +1,348 @@
+{
+ "axe": {
+  "login": {
+   "violationRules": 0,
+   "byImpact": {
+    "critical": 0,
+    "serious": 0,
+    "moderate": 0,
+    "minor": 0
+   },
+   "rules": [],
+   "passes": 24,
+   "incomplete": 0
+  },
+  "overview": {
+   "violationRules": 1,
+   "byImpact": {
+    "critical": 0,
+    "serious": 0,
+    "moderate": 1,
+    "minor": 0
+   },
+   "rules": [
+    {
+     "id": "heading-order",
+     "impact": "moderate",
+     "nodes": 1,
+     "help": "Heading levels should only increase by one"
+    }
+   ],
+   "passes": 47,
+   "incomplete": 1
+  },
+  "users": {
+   "violationRules": 0,
+   "byImpact": {
+    "critical": 0,
+    "serious": 0,
+    "moderate": 0,
+    "minor": 0
+   },
+   "rules": [],
+   "passes": 46,
+   "incomplete": 0
+  },
+  "user-detail": {
+   "violationRules": 0,
+   "byImpact": {
+    "critical": 0,
+    "serious": 0,
+    "moderate": 0,
+    "minor": 0
+   },
+   "rules": [],
+   "passes": 44,
+   "incomplete": 0
+  },
+  "households": {
+   "violationRules": 0,
+   "byImpact": {
+    "critical": 0,
+    "serious": 0,
+    "moderate": 0,
+    "minor": 0
+   },
+   "rules": [],
+   "passes": 45,
+   "incomplete": 0
+  },
+  "billing": {
+   "violationRules": 0,
+   "byImpact": {
+    "critical": 0,
+    "serious": 0,
+    "moderate": 0,
+    "minor": 0
+   },
+   "rules": [],
+   "passes": 47,
+   "incomplete": 1
+  },
+  "ai": {
+   "violationRules": 0,
+   "byImpact": {
+    "critical": 0,
+    "serious": 0,
+    "moderate": 0,
+    "minor": 0
+   },
+   "rules": [],
+   "passes": 48,
+   "incomplete": 1
+  },
+  "recipes": {
+   "violationRules": 0,
+   "byImpact": {
+    "critical": 0,
+    "serious": 0,
+    "moderate": 0,
+    "minor": 0
+   },
+   "rules": [],
+   "passes": 46,
+   "incomplete": 0
+  },
+  "recipe-detail": {
+   "violationRules": 0,
+   "byImpact": {
+    "critical": 0,
+    "serious": 0,
+    "moderate": 0,
+    "minor": 0
+   },
+   "rules": [],
+   "passes": 48,
+   "incomplete": 1
+  },
+  "system": {
+   "violationRules": 0,
+   "byImpact": {
+    "critical": 0,
+    "serious": 0,
+    "moderate": 0,
+    "minor": 0
+   },
+   "rules": [],
+   "passes": 44,
+   "incomplete": 0
+  },
+  "audit": {
+   "violationRules": 0,
+   "byImpact": {
+    "critical": 0,
+    "serious": 0,
+    "moderate": 0,
+    "minor": 0
+   },
+   "rules": [],
+   "passes": 46,
+   "incomplete": 0
+  },
+  "settings": {
+   "violationRules": 1,
+   "byImpact": {
+    "critical": 0,
+    "serious": 1,
+    "moderate": 0,
+    "minor": 0
+   },
+   "rules": [
+    {
+     "id": "scrollable-region-focusable",
+     "impact": "serious",
+     "nodes": 1,
+     "help": "Scrollable region must have keyboard access"
+    }
+   ],
+   "passes": 48,
+   "incomplete": 1
+  }
+ },
+ "keyboard": {
+  "firstTab": {
+   "tag": "A",
+   "testid": null,
+   "id": null,
+   "text": "Chuyển đến nội dung chính",
+   "href": "#admin-main",
+   "outline": "solid 3px",
+   "boxShadow": true,
+   "rect": [
+    12,
+    12,
+    219,
+    39
+   ]
+  },
+  "afterSkipEnter": {
+   "active": "admin-main",
+   "mainFocused": true
+  },
+  "tabSequence": [
+   "admin-users-tab:Người dùng",
+   "admin-households-tab:Hộ gia đình",
+   "admin-users-search:",
+   "admin-users-type-filter:Đã đăng ký\nKhách\nTất cả",
+   "admin-users-plan-filter:Tất cả gói\nMiễn phí\nPlus",
+   "admin-users-admin-filter:Tất cả\nLà quản trị viên\nKhông phải quản trị v",
+   "A:Hoàng Minh",
+   "A:Phạm Bình",
+   "A:Hồ Dũng",
+   "A:Nguyễn Phúc",
+   "A:Hoàng Minh",
+   "A:Trần Thảo",
+   "A:Bùi Giang",
+   "A:Phạm Khoa",
+   "A:Lê Giang",
+   "A:Đặng Chi",
+   "A:Đặng Linh",
+   "A:Vũ Phúc",
+   "A:Bùi Vy",
+   "A:Hoàng Trang",
+   "A:Lê Ngọc",
+   "A:Vũ An",
+   "A:Hồ Minh",
+   "A:Đỗ Khoa",
+   "A:Đặng Thảo",
+   "A:Hoàng Trang",
+   "A:Hồ Dũng",
+   "A:Nguyễn An",
+   "A:Trần Linh",
+   "A:Hoàng Dũng"
+  ],
+  "reachesNavLinks": 0,
+  "reachesSearch": true,
+  "focusStyleNav": {
+   "tag": "A",
+   "testid": "admin-nav-billing",
+   "id": null,
+   "text": "Thanh toán",
+   "href": "/admin/billing",
+   "outline": "solid 3px",
+   "boxShadow": false,
+   "rect": [
+    12,
+    192,
+    223,
+    41
+   ]
+  },
+  "focusStyleInput": {
+   "tag": "INPUT",
+   "testid": "admin-users-search",
+   "id": "admin-users-search-input",
+   "text": "",
+   "href": null,
+   "outline": "solid 3px",
+   "boxShadow": false,
+   "rect": [
+    291,
+    314,
+    209,
+    41
+   ]
+  },
+  "revokeDialogOpenFocus": {
+   "inDialog": true,
+   "tag": "BUTTON",
+   "text": "Hủy"
+  },
+  "revokeDialogEsc": {
+   "closed": true,
+   "focusReturnedToRevokeBtn": true
+  }
+ },
+ "drawer": {
+  "closedRect": [
+   -294,
+   -6
+  ],
+  "open": {
+   "expanded": "true",
+   "rect": [
+    0,
+    288
+   ],
+   "backdrop": 1,
+   "sidebarOpenClass": "admin-sidebar is-open"
+  },
+  "afterBackdrop": {
+   "expanded": "false",
+   "rect": [
+    -294,
+    -6
+   ]
+  },
+  "afterEsc": {
+   "expanded": "false"
+  },
+  "afterNavClick": {
+   "path": "/admin/billing",
+   "expanded": "false"
+  }
+ },
+ "overflow": {
+  "390 /admin/": {
+   "scrollWidth": 394,
+   "innerWidth": 390,
+   "offenders": [
+    "table.sr-only[] right=394 text=Dữ liệu bảng cho Doanh thu đã "
+   ]
+  },
+  "390 /admin/users": {
+   "scrollWidth": 390,
+   "innerWidth": 390,
+   "offenders": []
+  },
+  "390 /admin/households": {
+   "scrollWidth": 390,
+   "innerWidth": 390,
+   "offenders": []
+  },
+  "390 /admin/billing": {
+   "scrollWidth": 394,
+   "innerWidth": 390,
+   "offenders": [
+    "table.sr-only[] right=394 text=Dữ liệu bảng cho Doanh thu đã "
+   ]
+  },
+  "390 /admin/ai": {
+   "scrollWidth": 390,
+   "innerWidth": 390,
+   "offenders": []
+  },
+  "390 /admin/recipes": {
+   "scrollWidth": 390,
+   "innerWidth": 390,
+   "offenders": []
+  },
+  "390 /admin/recipes/imp-c6e706b483805e44": {
+   "scrollWidth": 390,
+   "innerWidth": 390,
+   "offenders": []
+  },
+  "390 /admin/system": {
+   "scrollWidth": 390,
+   "innerWidth": 390,
+   "offenders": []
+  },
+  "390 /admin/audit": {
+   "scrollWidth": 390,
+   "innerWidth": 390,
+   "offenders": []
+  },
+  "390 /admin/settings": {
+   "scrollWidth": 1038,
+   "innerWidth": 390,
+   "offenders": []
+  }
+ },
+ "banner": {
+  "deniedRecipesAsSupport": {
+   "denied": 1,
+   "banner": 1,
+   "bannerText": "Dữ liệu tổng hợp (fixture: synthetic-admin-v1) — không phải số liệu sản xuất"
+  }
+ }
+}

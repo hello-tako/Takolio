@@ -1,0 +1,83 @@
+import { describe, expect, it } from 'vitest';
+import { DEV_BASE, FX, fixtureDb, login, makeEnv, mutate, read, rows } from './harness';
+
+const t = fixtureDb();
+
+const PROTECTED = ['recipes', 'recipe_media', 'recipe_ingredients', 'recipe_steps', 'payment_intents', 'subscriptions', 'households',
+  'household_members', 'inventory_items', 'users', 'auth_accounts', 'profiles', 'sessions_v2', 'checkout_admissions',
+  'payment_reconciliation_records', 'scans', 'ai_requests', 'scan_queue_jobs'];
+const ADMIN_TABLES = ['admin_role_assignments', 'admin_sessions', 'admin_audit_events', 'admin_action_approvals',
+  'admin_recipe_editorial_reviews', 'admin_user_preferences'];
+
+describe('Gate C: write-set of the admin console', () => {
+  it('a full admin workflow writes only admin_* tables (DB triggers capture every INSERT/UPDATE/DELETE, incl. cascades)', async () => {
+    const existing = (names: string[]) => names.filter((n) => rows(t.db, `SELECT name FROM sqlite_master WHERE type='table' AND name='${n}'`).length === 1);
+    const watched = [...existing(PROTECTED), ...existing(ADMIN_TABLES)];
+    expect(existing(PROTECTED).length).toBeGreaterThan(10);
+    t.db.seed('CREATE TABLE poc_write_log (tbl TEXT, op TEXT);');
+    for (const table of watched) {
+      for (const op of ['INSERT', 'UPDATE', 'DELETE']) {
+        t.db.seed(`CREATE TRIGGER poc_${table}_${op} AFTER ${op} ON ${table} BEGIN INSERT INTO poc_write_log VALUES ('${table}', '${op}'); END;`);
+      }
+    }
+    const env = makeEnv(t.db);
+    const s1 = await login(env, FX('super'));
+    const s2 = await login(env, FX('super2'));
+    const recipe = rows(t.db, 'SELECT id, version FROM recipes ORDER BY id LIMIT 1')[0];
+    expect((await mutate(env, s1.session, 'PUT', '/api/v1/admin/preferences', { density: 'compact' })).status).toBe(200);
+    expect((await mutate(env, s1.session, 'POST', `/api/v1/admin/recipes/${recipe.id}/reviews`,
+      { state: 'in_review', note: 'poc review', recipeVersion: Number(recipe.version) })).status).toBe(201);
+    const requested = await mutate(env, s1.session, 'POST', '/api/v1/admin/roles', { userId: 'fx_admin_ops', role: 'SUPER_ADMIN' });
+    expect((await mutate(env, s2.session, 'POST', `/api/v1/admin/approvals/${requested.json.data.approval.id}/approve`)).status).toBe(200);
+    const opsGrant = rows(t.db, "SELECT id FROM admin_role_assignments WHERE user_id = 'fx_admin_ops' AND status = 'active' AND role = 'SUPER_ADMIN'")[0];
+    expect((await mutate(env, s1.session, 'DELETE', `/api/v1/admin/roles/${opsGrant.id}`)).status).toBe(200);
+    const s3 = await login(env, FX('super2'));
+    expect((await mutate(env, s1.session, 'POST', `/api/v1/admin/sessions/${s3.session!.id ?? 'none'}/revoke`)).status).toBeLessThan(500);
+    expect((await mutate(env, s2.session, 'POST', '/api/v1/admin/auth/logout')).status).toBe(200);
+    for (const path of ['/api/v1/admin/users?q=customer', '/api/v1/admin/users/fx_user_001?reveal=email', '/api/v1/admin/audit',
+      '/api/v1/admin/settings', '/api/v1/admin/billing/summary?range=90d', '/api/v1/admin/overview?range=30d', '/api/v1/admin/system/status']) {
+      await read(env, s1.session, path);
+    }
+    const written = rows(t.db, 'SELECT DISTINCT tbl FROM poc_write_log ORDER BY tbl').map((r) => r.tbl as string);
+    expect(written.length).toBeGreaterThan(0);
+    expect(written.filter((tbl) => !tbl.startsWith('admin_'))).toEqual([]);
+    expect(written).toContain('admin_role_assignments');
+    expect(written).toContain('admin_audit_events');
+  });
+});
+
+describe('Gate C: migration constraints and existing-flow impact', () => {
+  it('admin_audit_events is append-only and has no FK to users (audit survives user deletion)', () => {
+    t.db.seed("INSERT INTO admin_audit_events (id, actor_user_id, actor_roles, action, outcome) VALUES ('evt_poc_1', 'fx_admin_super', '[\"SUPER_ADMIN\"]', 'admin.login', 'success');");
+    expect(() => t.db.seed("UPDATE admin_audit_events SET outcome = 'failure' WHERE id = 'evt_poc_1';")).toThrow(/append-only/);
+    expect(() => t.db.seed("DELETE FROM admin_audit_events WHERE id = 'evt_poc_1';")).toThrow(/append-only/);
+    expect(rows(t.db, 'PRAGMA foreign_key_list(admin_audit_events)')).toEqual([]);
+  });
+
+  it('latent: a SUPER_ADMIN that granted roles cannot be deleted from users (granted_by has no ON DELETE)', () => {
+    expect(() => t.db.seed("DELETE FROM users WHERE id = 'fx_admin_super';")).toThrow(/FOREIGN KEY/);
+  });
+
+  it('latent: deleting a user cascades away their admin grant history while the audit trail remains', () => {
+    t.db.seed("INSERT INTO admin_audit_events (id, actor_user_id, actor_roles, action, outcome) VALUES ('evt_poc_s2', 'fx_admin_super2', '[]', 'admin.login', 'success');");
+    expect(rows(t.db, "SELECT COUNT(*) AS n FROM admin_role_assignments WHERE user_id = 'fx_admin_super2'")[0].n).toBe(1);
+    // Pre-existing (0001) constraint: households.created_by REFERENCES users(id) with no cascade blocks this delete first.
+    let householdBlock: string | null = null;
+    try { t.db.seed("DELETE FROM users WHERE id = 'fx_admin_super2';"); } catch (error) { householdBlock = (error as Error).message; }
+    expect(householdBlock).toBe('FOREIGN KEY constraint failed');
+    t.db.seed("DELETE FROM household_members WHERE user_id = 'fx_admin_super2'; DELETE FROM households WHERE created_by = 'fx_admin_super2';");
+    let deleteError: string | null = null;
+    try { t.db.seed("DELETE FROM users WHERE id = 'fx_admin_super2';"); } catch (error) { deleteError = (error as Error).message; }
+    expect(deleteError).toBeNull();
+    expect(rows(t.db, "SELECT COUNT(*) AS n FROM admin_role_assignments WHERE user_id = 'fx_admin_super2'")[0].n).toBe(0);
+    expect(rows(t.db, "SELECT COUNT(*) AS n FROM admin_audit_events WHERE id = 'evt_poc_s2'")[0].n).toBe(1);
+  });
+
+  it('latent: deleting a recipe silently cascades its editorial review history', () => {
+    const recipe = rows(t.db, 'SELECT id, version FROM recipes ORDER BY id LIMIT 1')[0];
+    t.db.seed(`INSERT INTO admin_recipe_editorial_reviews (id, recipe_id, recipe_version, state, note, author_user_id, created_at)
+      VALUES ('rev_poc_1', '${recipe.id}', ${Number(recipe.version)}, 'approved', 'poc note', 'fx_admin_super', '2026-10-12T00:00:00.000Z');`);
+    t.db.seed(`DELETE FROM recipes WHERE id = '${recipe.id}';`);
+    expect(rows(t.db, "SELECT COUNT(*) AS n FROM admin_recipe_editorial_reviews WHERE id = 'rev_poc_1'")[0].n).toBe(0);
+  });
+});

@@ -1,0 +1,69 @@
+{
+ "390 settings": {
+  "x": 0,
+  "sw": 1038,
+  "cw": 390,
+  "scrollXAfterScrollTo": 648,
+  "tableWraps": [
+   {
+    "sw": 1132,
+    "cw": 322
+   },
+   {
+    "sw": 649,
+    "cw": 322
+   },
+   {
+    "sw": 622,
+    "cw": 322
+   }
+  ]
+ },
+ "820 settings": {
+  "x": 0,
+  "sw": 1264,
+  "cw": 820,
+  "scrollXAfterScrollTo": 444,
+  "tableWraps": [
+   {
+    "sw": 1132,
+    "cw": 520
+   },
+   {
+    "sw": 649,
+    "cw": 520
+   },
+   {
+    "sw": 671,
+    "cw": 520
+   }
+  ]
+ },
+ "390 overview": {
+  "x": 0,
+  "sw": 394,
+  "cw": 390,
+  "scrollXAfterScrollTo": 4,
+  "tableWraps": []
+ },
+ "390 billing": {
+  "x": 0,
+  "sw": 394,
+  "cw": 390,
+  "scrollXAfterScrollTo": 4,
+  "tableWraps": [
+   {
+    "sw": 329,
+    "cw": 322
+   },
+   {
+    "sw": 518,
+    "cw": 322
+   },
+   {
+    "sw": 805,
+    "cw": 322
+   }
+  ]
+ }
+}

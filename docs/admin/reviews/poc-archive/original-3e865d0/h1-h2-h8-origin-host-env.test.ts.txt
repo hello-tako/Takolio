@@ -1,0 +1,156 @@
+import { describe, expect, it } from 'vitest';
+import type { Env } from '../../../src/worker/types';
+import { APP_BASE, ADMIN_BASE, DEV_BASE, FX, SECRET, fixtureDb, login, makeEnv, mutate, read, send } from './harness';
+
+const t = fixtureDb();
+const splitHost = { ENVIRONMENT: 'development', APP_URL: APP_BASE, ADMIN_HOSTNAME: 'admin.takosan.test' } as Partial<Env>;
+
+describe('H1: ADMIN_HOSTNAME split from APP_URL', () => {
+  it('H1a CONFIRMED: login from the admin origin is refused with ADMIN_CSRF_FAILED', async () => {
+    const { res } = await login(makeEnv(t.db, splitHost), FX('super'), ADMIN_BASE, ADMIN_BASE);
+    expect(res.status).toBe(403);
+    expect(res.json.code).toBe('ADMIN_CSRF_FAILED');
+  });
+
+  it('H1b CONFIRMED: the customer origin (APP_URL) is the origin accepted for admin login on the admin host', async () => {
+    const { res, session } = await login(makeEnv(t.db, splitHost), FX('super'), ADMIN_BASE, APP_BASE);
+    expect(res.status).toBe(200);
+    expect(session).toBeDefined();
+  });
+
+  it('H1c control: when APP_URL equals the admin host, login from the admin origin works', async () => {
+    const env = makeEnv(t.db, { APP_URL: ADMIN_BASE, ADMIN_HOSTNAME: 'admin.takosan.test' });
+    const { res } = await login(env, FX('super'), ADMIN_BASE, ADMIN_BASE);
+    expect(res.status).toBe(200);
+  });
+
+  it('H1d CONFIRMED: admin mutations are refused from the admin origin and accepted from the customer origin', async () => {
+    const env = makeEnv(t.db, splitHost);
+    const { session } = await login(env, FX('super'), ADMIN_BASE, APP_BASE);
+    const denied = await mutate(env, session, 'PUT', '/api/v1/admin/preferences', { locale: 'en' }, ADMIN_BASE, ADMIN_BASE);
+    expect(denied.status).toBe(403);
+    expect(denied.json.code).toBe('ADMIN_CSRF_FAILED');
+    const allowed = await mutate(env, session, 'PUT', '/api/v1/admin/preferences', { locale: 'en' }, ADMIN_BASE, APP_BASE);
+    expect(allowed.status).toBe(200);
+  });
+
+  it('H1e CONFIRMED: admin API responses reflect the customer origin with credentials (CORS trust follows APP_URL)', async () => {
+    const env = makeEnv(t.db, splitHost);
+    const { session } = await login(env, FX('super'), ADMIN_BASE, APP_BASE);
+    const fromApp = await send(env, `${ADMIN_BASE}/api/v1/admin/me`, { headers: { Cookie: session!.cookie, Origin: APP_BASE } });
+    expect(fromApp.status).toBe(200);
+    expect(fromApp.headers.get('access-control-allow-origin')).toBe(APP_BASE);
+    expect(fromApp.headers.get('access-control-allow-credentials')).toBe('true');
+    const fromAdmin = await send(env, `${ADMIN_BASE}/api/v1/admin/me`, { headers: { Cookie: session!.cookie, Origin: ADMIN_BASE } });
+    expect(fromAdmin.headers.get('access-control-allow-origin')).toBeNull();
+  });
+});
+
+describe('CSRF and Origin enforcement (colocated console)', () => {
+  const env = () => makeEnv(t.db);
+  it('refuses a foreign, null, or missing origin and accepts a trusted Referer only as fallback', async () => {
+    const e = env();
+    const { session } = await login(e, FX('super'));
+    const foreign = await mutate(e, session, 'PUT', '/api/v1/admin/preferences', { locale: 'en' }, DEV_BASE, 'https://evil.example');
+    expect(foreign.status).toBe(403);
+    const nullOrigin = await mutate(e, session, 'PUT', '/api/v1/admin/preferences', { locale: 'en' }, DEV_BASE, 'null');
+    expect(nullOrigin.status).toBe(403);
+    const noSignal = await send(e, `${DEV_BASE}/api/v1/admin/preferences`, { method: 'PUT', headers: { Cookie: session!.cookie, 'X-Admin-CSRF': session!.csrf }, body: { locale: 'en' } });
+    expect(noSignal.status).toBe(403);
+    const referer = await send(e, `${DEV_BASE}/api/v1/admin/preferences`, { method: 'PUT',
+      headers: { Cookie: session!.cookie, 'X-Admin-CSRF': session!.csrf, Referer: `${DEV_BASE}/admin/settings` }, body: { locale: 'en' } });
+    expect(referer.status).toBe(200);
+  });
+
+  it('refuses a wrong CSRF token even with a trusted origin, and audits the denial', async () => {
+    const e = env();
+    const { session } = await login(e, FX('super'));
+    const bad = await send(e, `${DEV_BASE}/api/v1/admin/preferences`, { method: 'PUT',
+      headers: { Cookie: session!.cookie, 'X-Admin-CSRF': 'a'.repeat(64), Origin: DEV_BASE }, body: { locale: 'en' } });
+    expect(bad.status).toBe(403);
+    expect(t.db.query<{ n: number }>("SELECT COUNT(*) AS n FROM admin_audit_events WHERE action = 'admin.csrf.denied'")[0].n).toBe(1);
+  });
+});
+
+describe('H2: ENVIRONMENT missing, empty or non-canonical', () => {
+  it('H2a CONFIRMED: ENVIRONMENT undefined -> console enabled, mode=password, password login succeeds', async () => {
+    const env = makeEnv(t.db, { ENVIRONMENT: undefined });
+    const cfg = await read(env, undefined, '/api/v1/admin/auth/config');
+    expect(cfg.status).toBe(200);
+    expect(cfg.json.data.mode).toBe('password');
+    expect(cfg.json.data.environment).toBe('development');
+    const { res, session } = await login(env, FX('super'));
+    expect(res.status).toBe(200);
+    expect(session).toBeDefined();
+  });
+
+  it('H2b CONFIRMED: ENVIRONMENT="" behaves identically to undefined', async () => {
+    const env = makeEnv(t.db, { ENVIRONMENT: '' });
+    expect((await read(env, undefined, '/api/v1/admin/auth/config')).json.data.mode).toBe('password');
+    expect((await login(env, FX('super'))).res.status).toBe(200);
+  });
+
+  it('H2c CONFIRMED: ENVIRONMENT="Production" (wrong case) is not 404 and enables the console by default', async () => {
+    const env = makeEnv(t.db, { ENVIRONMENT: 'Production', APP_URL: DEV_BASE });
+    const cfg = await read(env, undefined, '/api/v1/admin/auth/config');
+    expect(cfg.status).toBe(200);
+    expect(cfg.json.data.mode).toBe('unavailable');
+    const withFlag = makeEnv(t.db, { ENVIRONMENT: 'Production', APP_URL: DEV_BASE, ADMIN_PASSWORD_LOGIN_ENABLED: 'true' });
+    expect((await login(withFlag, FX('super'))).res.status).toBe(200);
+  });
+
+  it('H2d CONFIRMED: ENVIRONMENT="staging" exposes the console by default; password login needs only an extra flag', async () => {
+    const env = makeEnv(t.db, { ENVIRONMENT: 'staging' });
+    expect((await read(env, undefined, '/api/v1/admin/auth/config')).status).toBe(200);
+    expect((await login(env, FX('super'))).res.status).toBe(503);
+    const flagged = makeEnv(t.db, { ENVIRONMENT: 'staging', ADMIN_PASSWORD_LOGIN_ENABLED: 'true' });
+    expect((await login(flagged, FX('super'))).res.status).toBe(200);
+  });
+
+  it('H2e control: ENVIRONMENT=production fails closed (404 unless ADMIN_CONSOLE_ENABLED=true; no password mode)', async () => {
+    const prod = { ENVIRONMENT: 'production', APP_URL: APP_BASE, OTP_HASH_SECRET: SECRET, QWEN_API_KEY: 'test-only-placeholder',
+      TURNSTILE_SITE_KEY: 'test-site', TURNSTILE_SECRET_KEY: 'test-secret', SCAN_QUEUE: { send: async () => {}, sendBatch: async () => {} } } as Partial<Env>;
+    expect((await read(makeEnv(t.db, prod), undefined, '/api/v1/admin/auth/config', APP_BASE)).status).toBe(404);
+    const enabled = makeEnv(t.db, { ...prod, ADMIN_CONSOLE_ENABLED: 'true', ADMIN_PASSWORD_LOGIN_ENABLED: 'true' });
+    const cfg = await read(enabled, undefined, '/api/v1/admin/auth/config', APP_BASE);
+    expect(cfg.json.data.mode).toBe('unavailable');
+    expect((await login(enabled, FX('super'), APP_BASE, APP_BASE)).res.status).toBe(503);
+  });
+});
+
+describe('H8: host separation and cookie exposure', () => {
+  it('H8a CONFIRMED (colocated): CSRF cookie is script-readable; session cookie is HttpOnly', async () => {
+    const { res } = await login(makeEnv(t.db), FX('super'));
+    const cookies = res.headers.getSetCookie();
+    const csrfCookie = cookies.find((c) => c.startsWith('__Host-takosan_admin_csrf='))!;
+    const sessionCookie = cookies.find((c) => c.startsWith('__Host-takosan_admin_session='))!;
+    expect(csrfCookie).not.toMatch(/HttpOnly/i);
+    expect(sessionCookie).toMatch(/HttpOnly/);
+  });
+
+  it('H8b CONFIRMED (colocated XSS model): same-origin script reads the CSRF cookie and performs a privileged mutation', async () => {
+    const env = makeEnv(t.db);
+    const { session } = await login(env, FX('super'));
+    const csrfFromCookieJar = /__Host-takosan_admin_csrf=([0-9a-f]{64})/.exec(session!.cookie)![1];
+    const r = await send(env, `${DEV_BASE}/api/v1/admin/roles/fx_ara_ops`, { method: 'DELETE',
+      headers: { Cookie: session!.cookie, 'X-Admin-CSRF': csrfFromCookieJar, Origin: DEV_BASE } });
+    expect(r.status).toBe(200);
+    expect(t.db.query<{ status: string }>("SELECT status FROM admin_role_assignments WHERE id = 'fx_ara_ops'")[0].status).toBe('revoked');
+  });
+
+  it('H8c CONFIRMED (ADMIN_HOSTNAME set): customer API and SPA fallback are still served on the admin host', async () => {
+    const env = makeEnv(t.db, { ADMIN_HOSTNAME: 'admin.takosan.test', APP_URL: APP_BASE });
+    expect((await send(env, `${ADMIN_BASE}/api/v1/config`)).status).toBe(200);
+    expect((await send(env, `${ADMIN_BASE}/api/v1/health`)).status).toBe(200);
+    const root = await send(env, `${ADMIN_BASE}/`);
+    expect(root.status).toBe(200);
+    expect(root.text).toContain('Frigo API Worker');
+  });
+
+  it('H8d control (ADMIN_HOSTNAME set): admin API is not reachable on the customer host', async () => {
+    const env = makeEnv(t.db, { ADMIN_HOSTNAME: 'admin.takosan.test', APP_URL: APP_BASE });
+    const r = await send(env, `${APP_BASE}/api/v1/admin/auth/config`);
+    expect(r.status).toBe(404);
+    expect(r.json.code).toBe('ADMIN_NOT_FOUND');
+  });
+});

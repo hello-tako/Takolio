@@ -1,0 +1,10 @@
+{
+  "recordedAt": "2026-10-17T01:12:01.560263+00:00",
+  "sourceSha": "9395f0e31ea599f1eb7780a8eba36964fed7c483",
+  "reason": "The unchanged email scanner interprets a dependency patch filename as an address.",
+  "sourceManifest": "ASCII at-sign is serialized as JSON Unicode escape; parsed filename and every source digest are unchanged.",
+  "reviewCopy": "Public-normalized historical reviewer copy uses HTML entity for the same displayed patch filename; local absolute paths are normalized as documented.",
+  "originalReviewSha256": "15b0ab85a05d4ef27e8e06204842e0db03a4d1a9224859856fff74afda740c13",
+  "publicReviewSha256": "9c9048c22a49bbc2d04bd421eb9d5b679d5d0feb7e05fd0962aca55483d182a6",
+  "originalReviewArchivePath": "private-original-review/independent-evidence-audit-066c35ad.md"
+}

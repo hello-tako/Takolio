@@ -1,0 +1,83 @@
+import { beforeAll, beforeEach, afterEach } from 'vitest';
+import { fetchWorker } from '../../../tests/helpers/worker-fetch.mjs';
+import type { Env } from '../../../src/worker/types';
+import { buildAdminFixtureSql, FIXTURE_PASSWORD } from '../../../scripts/admin-local-lib.mjs';
+import { SqliteD1 } from '../../../tests/helpers/sqlite-d1';
+
+export const SECRET = 'admin-integration-test-secret-0123456789';
+export const DEV_BASE = 'http://127.0.0.1:8790';
+export const APP_BASE = 'https://app.takosan.test';
+export const ADMIN_BASE = 'https://admin.takosan.test';
+export const PASSWORD = FIXTURE_PASSWORD;
+export const FX = (key: string) => `${key}@fixture.takosan.test`;
+
+let fixtureSql = '';
+/** Fresh migrated + fixture SQLite D1 per test. */
+export function fixtureDb() {
+  const state = { db: undefined as unknown as SqliteD1 };
+  beforeAll(() => { fixtureSql = buildAdminFixtureSql(); });
+  beforeEach(() => { state.db = new SqliteD1(); state.db.seed(fixtureSql); });
+  afterEach(() => { state.db.close(); });
+  return state;
+}
+
+function kv() {
+  const entries = new Map<string, string>();
+  return {
+    async get(key: string, type?: string) { const v = entries.get(key); return v === undefined ? null : type === 'json' ? JSON.parse(v) : v; },
+    async put(key: string, value: string) { entries.set(key, value); },
+    async delete(key: string) { entries.delete(key); },
+  };
+}
+
+export function makeEnv(db: SqliteD1, overrides: Partial<Env> = {}): Env {
+  return { DB: db, CACHE: kv() as never, ENVIRONMENT: 'development', APP_URL: DEV_BASE, JWT_SECRET: SECRET, ...overrides } as Env;
+}
+
+let ipCounter = 0;
+export function nextIp(): string {
+  ipCounter += 1;
+  return `198.51.100.${(ipCounter % 250) + 1}`;
+}
+
+export interface Res { status: number; json: any; text: string; headers: Headers }
+export interface SendOptions { method?: string; headers?: Record<string, string>; body?: unknown; cf?: boolean }
+
+export async function send(env: Env, url: string, options: SendOptions = {}): Promise<Res> {
+  const headers = new Headers();
+  if (options.cf !== false) headers.set('CF-Connecting-IP', nextIp());
+  for (const [key, value] of Object.entries(options.headers ?? {})) headers.set(key, value);
+  if (options.body !== undefined) headers.set('Content-Type', 'application/json');
+  const response = await fetchWorker(new Request(url, { method: options.method ?? 'GET', headers,
+    body: options.body === undefined ? undefined : JSON.stringify(options.body) }), env);
+  const text = await response.text();
+  let json: any = null;
+  try { json = JSON.parse(text); } catch { json = null; }
+  return { status: response.status, json, text, headers: response.headers };
+}
+
+export interface Session { cookie: string; csrf: string; id: string | null }
+
+export async function login(env: Env, email: string, base = DEV_BASE, origin = base): Promise<{ res: Res; session?: Session }> {
+  const res = await send(env, `${base}/api/v1/admin/auth/login`, { method: 'POST', headers: { Origin: origin }, body: { email, password: PASSWORD } });
+  const cookies = res.headers.getSetCookie().join('\n');
+  const token = /__Host-takosan_admin_session=([0-9a-f]{64})/.exec(cookies)?.[1];
+  const csrf = /__Host-takosan_admin_csrf=([0-9a-f]{64})/.exec(cookies)?.[1];
+  if (!token || !csrf) return { res };
+  return { res, session: { cookie: `__Host-takosan_admin_session=${token}; __Host-takosan_admin_csrf=${csrf}`, csrf, id: res.json?.data?.session?.id ?? null } };
+}
+
+/** Authenticated mutation: session cookie, CSRF header and Origin (defaults to the dev origin). */
+export function mutate(env: Env, session: Session | undefined, method: string, path: string, body?: unknown, base = DEV_BASE, origin = base) {
+  const headers: Record<string, string> = { Origin: origin };
+  if (session) { headers.Cookie = session.cookie; headers['X-Admin-CSRF'] = session.csrf; }
+  return send(env, `${base}${path}`, { method, headers, body });
+}
+
+export function read(env: Env, session: Session | undefined, path: string, base = DEV_BASE) {
+  return send(env, `${base}${path}`, { headers: session ? { Cookie: session.cookie } : {} });
+}
+
+export function rows(db: SqliteD1, sql: string): any[] {
+  return db.query<any>(sql);
+}

@@ -1,0 +1,78 @@
+{
+  "sourceSha": "53f4f4a0c14475fb411aa1a53ae90d09d87b5498",
+  "passed": 10,
+  "results": [
+    {
+      "scenario": "three",
+      "request": 409,
+      "approval": null,
+      "subsequentMe": 200,
+      "subsequentLogin": 200,
+      "eligible": 3
+    },
+    {
+      "scenario": "fourth-binding-revoked",
+      "request": 409,
+      "approval": null,
+      "subsequentMe": 200,
+      "subsequentLogin": 200,
+      "eligible": 3
+    },
+    {
+      "scenario": "fourth-operator-revoked",
+      "request": 409,
+      "approval": null,
+      "subsequentMe": 200,
+      "subsequentLogin": 200,
+      "eligible": 3
+    },
+    {
+      "scenario": "other-issuer",
+      "request": 409,
+      "approval": null,
+      "subsequentMe": 200,
+      "subsequentLogin": 200,
+      "eligible": 3
+    },
+    {
+      "scenario": "four-eligible",
+      "request": 201,
+      "approval": 200,
+      "subsequentMe": 200,
+      "subsequentLogin": 200,
+      "eligible": 3
+    },
+    {
+      "scenario": "revoke-race",
+      "request": 201,
+      "approval": 409,
+      "subsequentMe": 200,
+      "subsequentLogin": 200,
+      "eligible": 3
+    },
+    {
+      "scenario": "target-binding-SUPER_ADMIN",
+      "status": 409,
+      "roleCreated": false,
+      "successAudit": false
+    },
+    {
+      "scenario": "target-operator-SUPER_ADMIN",
+      "status": 409,
+      "roleCreated": false,
+      "successAudit": false
+    },
+    {
+      "scenario": "target-binding-SUPPORT_AGENT",
+      "status": 409,
+      "roleCreated": false,
+      "successAudit": false
+    },
+    {
+      "scenario": "target-operator-SUPPORT_AGENT",
+      "status": 409,
+      "roleCreated": false,
+      "successAudit": false
+    }
+  ]
+}

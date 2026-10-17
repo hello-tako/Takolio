@@ -1,0 +1,49 @@
+
+ ⛅️ wrangler 4.149.0
+────────────────────
+✨ Read 472 files from the assets directory /tmp/r1cert/src/dist/client
+Total Upload: 1745.08 KiB / gzip: 369.70 KiB
+Your Worker has access to the following bindings:
+Binding                                                                                       Resource                  
+env.CACHE (cbcd186cb63d4729ac23b04f1a539f2d)                                                  KV Namespace              
+env.SEND_EMAIL (unrestricted)                                                                 Send Email                
+env.SCAN_QUEUE (frigo-scan-queue)                                                             Queue                     
+env.DB (frigo-db)                                                                             D1 Database               
+env.IMAGES (frigo-images)                                                                     R2 Bucket                 
+env.AI                                                                                        AI                        
+env.ASSETS                                                                                    Assets                    
+env.ENVIRONMENT ("production")                                                                Environment Variable      
+env.APP_URL ("https://frigo.tungjpstore.net")                                                 Environment Variable      
+env.AI_MOCK_MODE ("false")                                                                    Environment Variable      
+env.SCAN_QUEUE_MODE ("async")                                                                 Environment Variable      
+env.QWEN_BASE_URL ("https://dashscope-intl.aliyuncs.com/c...")                                Environment Variable      
+env.QWEN_MODEL ("qwen3.7-flash")                                                              Environment Variable      
+env.QWEN_REQUEST_TIMEOUT_MS ("60000")                                                         Environment Variable      
+env.AI_ENABLED ("true")                                                                       Environment Variable      
+env.AI_QWEN_ONLY ("true")                                                                     Environment Variable      
+env.AI_ALLOW_REASONING_MODEL ("false")                                                        Environment Variable      
+env.AI_ALLOW_JUDGE_MODEL ("false")                                                            Environment Variable      
+env.AI_MAX_CALLS_PER_OPERATION ("3")                                                          Environment Variable      
+env.AI_MAX_TOTAL_TOKENS ("16000")                                                             Environment Variable      
+env.AI_MAX_INPUT_TOKENS ("12000")                                                             Environment Variable      
+env.AI_MAX_OUTPUT_TOKENS ("2048")                                                             Environment Variable      
+env.AI_MAX_IMAGE_BYTES ("5242880")                                                            Environment Variable      
+env.AI_MAX_OCR_IMAGE_BYTES ("5242880")                                                        Environment Variable      
+env.AI_SHADOW_CANARY_PERCENT ("0")                                                            Environment Variable      
+env.AI_MODEL_FAST ("qwen3.7-flash-2026-07-15")                                                Environment Variable      
+env.AI_MODEL_FAST_CANARY ("qwen3.7-flash")                                                    Environment Variable      
+env.AI_MODEL_MULTIMODAL ("qwen3.8-flash")                                                     Environment Variable      
+env.AI_MODEL_OCR ("qwen-vl-ocr")                                                              Environment Variable      
+env.AI_MODEL_REASONING ("qwen3.8-27b")                                                        Environment Variable      
+env.AI_MODEL_JUDGE ("qwen3.8-max-0902")                                                       Environment Variable      
+env.GROQ_FALLBACK_ENABLED ("false")                                                           Environment Variable      
+env.CLOUDFLARE_VISION_FALLBACK ("false")                                                      Environment Variable      
+env.GLM_FALLBACK_ENABLED ("false")                                                            Environment Variable      
+env.DEEPSEEK_FALLBACK_ENABLED ("false")                                                       Environment Variable      
+env.CLEANUP_RESERVED_SCAN_RETENTION_MINUTES ("60")                                            Environment Variable      
+env.WEEK_SCHEMA_MODE ("dual")                                                                 Environment Variable      
+env.MEAL_COMPOSITION_V2_ENABLED ("false")                                                     Environment Variable      
+env.TURNSTILE_SITE_KEY ("0x4AAAAAAEqYwPIUD6OGmNNQ")                                           Environment Variable      
+env.GOOGLE_CLIENT_ID ("509963441971-c9sofh0ueaf8nji4r2gd5kah...")                             Environment Variable      
+
+--dry-run: exiting now.

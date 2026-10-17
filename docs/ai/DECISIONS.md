@@ -2878,6 +2878,39 @@ policy. No bypass input or protection change. Exact-main/CI/schema/Environment /
 strict OTP recovery proofs remain required. See
 ../backend-upgrade/final-local-completion/ADR-CATALOG-CONTINUITY-003.md.
 
+## ADR-ADMIN-001 - Separate admin session and RBAC authority for Admin Console V1
+
+Accepted locally, 2026-10-12 (not deployed). Platform administration is a new
+authority, independent of household roles and customer sessions: active
+`admin_role_assignments` rows (migration 0042) are re-read on every request, and
+the versioned code matrix `src/shared/admin.ts#ADMIN_PERMISSION_MATRIX` is the
+only permission authority (deny by default; no DB copy that could drift). Admin
+sessions live in `admin_sessions` with their own `__Host-takosan_admin_*`
+cookies (SameSite=Strict, 8h absolute / 30 min idle) and a session-bound CSRF
+token. Production serves nothing unless `ADMIN_CONSOLE_ENABLED=true` and
+requires Cloudflare Access verification on every request; password login is
+development/staging only. SUPER_ADMIN grants need four-eyes approval; there is
+no HTTP bootstrap, only a local-only one-time CLI. Billing/AI/recipe screens are
+read-only over existing authority; recipe editorial notes use a separate ledger
+and never mutate `recipes`. See docs/admin/.
+
+## ADR-ADMIN-002 - Admin Console as a separate Worker and database (supersedes parts of ADR-ADMIN-001)
+
+Accepted locally, 2026-10-13 (not deployed). The 2026-10-12 review showed that
+hosting the console inside the customer Worker caused an asset-layer bypass
+(S2), customer-origin trust (S3), and blocked the customer release train via
+migration 0042. The console is now its own Worker (`src/worker/admin-worker.ts`,
+`wrangler.admin.jsonc`, `run_worker_first`) on a dedicated origin, with its own
+D1 (`ADMIN_DB`, `migrations-admin/`). The customer Worker, configs, build and
+migration ledger are restored to 186a9cf; 0042 is withdrawn. Admin code reads the
+customer DB through a SELECT-only wrapper. Availability is an exact server-side
+allow-list (no environment defaults); password login exists only in local builds
+on loopback; staging/production require Cloudflare Access. SUPER_ADMIN changes are
+four-eyes in both directions with a database minimum of two, and the first two
+come from a one-time two-person operator bootstrap. See
+docs/admin/remediation-r1/REPORT.md. Production integration still needs reviewed
+admin migrate/deploy workflows, Access setup and an independent review.
+
 ## ADR-058 — Vietnamese family meals and explicit meal-habit preferences (2026-10-13)
 
 The user authorizes implementation of the researched full-meal experience. Active

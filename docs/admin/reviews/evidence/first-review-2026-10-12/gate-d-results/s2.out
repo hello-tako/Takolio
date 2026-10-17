@@ -1,0 +1,217 @@
+[
+ {
+  "area": "nav",
+  "name": "sidebar overview",
+  "pass": false,
+  "href": "/admin",
+  "path": "/admin",
+  "title": "Tổng quan",
+  "ariaCurrent": "page"
+ },
+ {
+  "area": "nav",
+  "name": "sidebar users",
+  "pass": true,
+  "href": "/admin/users",
+  "path": "/admin/users",
+  "title": "Người dùng & hộ gia đình",
+  "ariaCurrent": "page"
+ },
+ {
+  "area": "nav",
+  "name": "sidebar billing",
+  "pass": true,
+  "href": "/admin/billing",
+  "path": "/admin/billing",
+  "title": "Thanh toán",
+  "ariaCurrent": "page"
+ },
+ {
+  "area": "nav",
+  "name": "sidebar ai",
+  "pass": true,
+  "href": "/admin/ai",
+  "path": "/admin/ai",
+  "title": "AI & OCR",
+  "ariaCurrent": "page"
+ },
+ {
+  "area": "nav",
+  "name": "sidebar recipes",
+  "pass": true,
+  "href": "/admin/recipes",
+  "path": "/admin/recipes",
+  "title": "Công thức",
+  "ariaCurrent": "page"
+ },
+ {
+  "area": "nav",
+  "name": "sidebar system",
+  "pass": true,
+  "href": "/admin/system",
+  "path": "/admin/system",
+  "title": "Hệ thống",
+  "ariaCurrent": "page"
+ },
+ {
+  "area": "nav",
+  "name": "sidebar audit",
+  "pass": true,
+  "href": "/admin/audit",
+  "path": "/admin/audit",
+  "title": "Nhật ký kiểm toán",
+  "ariaCurrent": "page"
+ },
+ {
+  "area": "nav",
+  "name": "sidebar settings",
+  "pass": true,
+  "href": "/admin/settings",
+  "path": "/admin/settings",
+  "title": "Cài đặt",
+  "ariaCurrent": "page"
+ },
+ {
+  "area": "nav",
+  "name": "users tab -> households tab",
+  "pass": true,
+  "path": "/admin/households"
+ },
+ {
+  "area": "nav",
+  "name": "households tab -> users tab",
+  "pass": true,
+  "path": "/admin/users"
+ },
+ {
+  "area": "nav",
+  "name": "404 unknown route",
+  "pass": true,
+  "notFoundShown": 1,
+  "bannerVisible": 1,
+  "shellSidebar": 1,
+  "backLinkPath": "/admin"
+ },
+ {
+  "area": "nav",
+  "name": "history back/forward",
+  "pass": true,
+  "backPath": "/admin/users",
+  "back2Path": "/admin/",
+  "fwdPath": "/admin/users"
+ },
+ {
+  "area": "deeplink",
+  "name": "reload /admin/users/fx_user_001",
+  "pass": true,
+  "marker": "admin-user-detail",
+  "count": 1,
+  "notFound": 0,
+  "errorText": "",
+  "finalPath": "/admin/users/fx_user_001"
+ },
+ {
+  "area": "deeplink",
+  "name": "reload /admin/recipes/imp-c6e706b483805e44",
+  "pass": true,
+  "marker": "admin-recipe-detail",
+  "count": 1,
+  "notFound": 0,
+  "errorText": "",
+  "finalPath": "/admin/recipes/imp-c6e706b483805e44"
+ },
+ {
+  "area": "deeplink",
+  "name": "reload /admin/recipes/nope-missing",
+  "pass": false,
+  "marker": "admin-error-state",
+  "count": 0,
+  "notFound": 0,
+  "errorText": "Không tải được dữ liệuKhông tìm thấy dữ liệu được yêu cầu.Thử lại",
+  "finalPath": "/admin/recipes/nope-missing"
+ },
+ {
+  "area": "nav",
+  "name": "user detail back link",
+  "pass": true,
+  "path": "/admin/users"
+ },
+ {
+  "area": "nav",
+  "name": "sidebar collapse toggle",
+  "pass": true,
+  "e0": "true",
+  "e1": "false",
+  "e2": "true"
+ },
+ {
+  "area": "nav",
+  "name": "no dead internal links",
+  "pass": true,
+  "internalCount": 59,
+  "internal": [
+   "/admin",
+   "/admin/users",
+   "/admin/billing",
+   "/admin/ai",
+   "/admin/recipes",
+   "/admin/system",
+   "/admin/audit",
+   "/admin/settings",
+   "/admin/households",
+   "/admin/users/fx_user_044",
+   "/admin/users/fx_user_013",
+   "/admin/users/fx_user_039",
+   "/admin/users/fx_user_010",
+   "/admin/users/fx_user_014",
+   "/admin/users/fx_user_021",
+   "/admin/users/fx_user_007",
+   "/admin/users/fx_user_033",
+   "/admin/users/fx_user_022",
+   "/admin/users/fx_user_026",
+   "/admin/users/fx_user_016",
+   "/admin/users/fx_user_025",
+   "/admin/users/fx_user_047",
+   "/admin/users/fx_user_004",
+   "/admin/users/fx_user_012",
+   "/admin/users/fx_user_045",
+   "/admin/users/fx_user_029",
+   "/admin/users/fx_user_048",
+   "/admin/users/fx_user_036",
+   "/admin/users/fx_user_034",
+   "/admin/users/fx_user_009",
+   "/admin/users/fx_user_030",
+   "/admin/users/fx_user_001",
+   "/admin/users/fx_user_024",
+   "/admin/users/fx_user_038",
+   "/admin/recipes/imp-c6e706b483805e44",
+   "/admin/recipes/imp-e5d49dd8dc1449d1",
+   "/admin/recipes/imp-a22f9257b0fd7a46",
+   "/admin/recipes/imp-a17f5a86a1bc891c",
+   "/admin/recipes/imp-8608afb7fee8ebc3",
+   "/admin/recipes/imp-15155ec6cc7b7713",
+   "/admin/recipes/imp-0a1f8e0bd042cbfd",
+   "/admin/recipes/imp-57b4406be05661c7",
+   "/admin/recipes/gl-08",
+   "/admin/recipes/imp-d3d0c59e0cfa845d",
+   "/admin/recipes/vn-sang-02",
+   "/admin/recipes/imp-ce3c9df133ba1cd4",
+   "/admin/recipes/imp-b1dcb812f8671a49",
+   "/admin/recipes/imp-24e75cbb2ba569f4",
+   "/admin/recipes/imp-83ed31fc537569a6",
+   "/admin/recipes/imp-70e5e19dd4073b76",
+   "/admin/recipes/imp-3e8e08fb584de7f3",
+   "/admin/recipes/imp-a3e676be13c4c51c",
+   "/admin/recipes/imp-363ca9ee2c5f7738",
+   "/admin/recipes/imp-4b592ae31a81a527",
+   "/admin/recipes/imp-52b5963c6cecfb96",
+   "/admin/recipes/imp-4d9fae75b597d2c5",
+   "/admin/recipes/imp-4693d6520fbd9d49",
+   "/admin/recipes/imp-76ddca35768468fe",
+   "/admin/recipes/imp-a0ed6c762f7dceba"
+  ],
+  "deadLinks": [],
+  "externalOrOther": []
+ }
+]
+console errors: 5 page errors: 0 non2xx: 5

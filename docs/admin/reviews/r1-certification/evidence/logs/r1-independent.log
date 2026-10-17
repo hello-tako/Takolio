@@ -1,0 +1,27 @@
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.11 [39m[90m/tmp/r1cert/src[39m
+
+ [32m✓[39m .hoplite/artifacts/r1-cert/r1-independent.test.ts[2m > [22mGate B - data isolation[2m > [22mR1C-B1 CONTROL: every admin mutation and read leaves all customer tables unwritten (write-capture triggers)[33m 1679[2mms[22m[39m
+ [32m✓[39m .hoplite/artifacts/r1-cert/r1-independent.test.ts[2m > [22mGate B - data isolation[2m > [22mR1C-B2 CONTROL: the SELECT-only guard rejects write and multi-statement shapes; read-only table functions and credential columns stay readable (informational)[32m 113[2mms[22m[39m
+ [32m✓[39m .hoplite/artifacts/r1-cert/r1-independent.test.ts[2m > [22mGate B - data isolation[2m > [22mR1C-B3 FINDING (P1 data minimisation): in Access mode every authenticated request reads password_hash and salt from the customer DB[32m 121[2mms[22m[39m
+ [32m✓[39m .hoplite/artifacts/r1-cert/r1-independent.test.ts[2m > [22mGate B - data isolation[2m > [22mR1C-B4 CONTROL (latent-FK PoCs): the admin DB has no foreign keys; deleting a customer user leaves admin history intact[32m 113[2mms[22m[39m
+ [32m✓[39m .hoplite/artifacts/r1-cert/r1-independent.test.ts[2m > [22mGate C - identity[2m > [22mR1C-C1 FINDING (P2): the per-account login budget is spent before authentication, so 10 bad attempts lock the real admin out for 15 minutes[32m 269[2mms[22m[39m
+ [32m✓[39m .hoplite/artifacts/r1-cert/r1-independent.test.ts[2m > [22mGate C - identity[2m > [22mR1C-C2 CONTROL: Access replay of another identity, expiry, foreign signature, revoked role, unverified account and password bodies are refused[32m 124[2mms[22m[39m
+ [32m✓[39m .hoplite/artifacts/r1-cert/r1-independent.test.ts[2m > [22mGate C - identity[2m > [22mR1C-C3 CONTROL: production without an Access AUD is fail-closed (mode unavailable; login and session APIs 503)[32m 114[2mms[22m[39m
+ [32m✓[39m .hoplite/artifacts/r1-cert/r1-independent.test.ts[2m > [22mGate C - identity[2m > [22mR1C-C4 CONTROL: non-canonical or hostile Origin values and non-same-origin fetch metadata are refused[32m 133[2mms[22m[39m
+ [32m✓[39m .hoplite/artifacts/r1-cert/r1-independent.test.ts[2m > [22mGate C - identity[2m > [22mR1C-C5 CONTROL (S3 under a valid production split host): the customer origin cannot log in or mutate even with valid Access, session and CSRF; no CORS[32m 120[2mms[22m[39m
+ [32m✓[39m .hoplite/artifacts/r1-cert/r1-independent.test.ts[2m > [22mGate C - identity[2m > [22mR1C-C6 CONTROL (H9a): the 11th wrong password for one account from an 11th IP is refused with 429[32m 259[2mms[22m[39m
+ [32m✓[39m .hoplite/artifacts/r1-cert/r1-independent.test.ts[2m > [22mGate D - SUPER_ADMIN governance[2m > [22mR1C-D1 FINDING (P2): a decider whose SUPER_ADMIN role is revoked after the session check still completes the decision[32m 144[2mms[22m[39m
+ [32m✓[39m .hoplite/artifacts/r1-cert/r1-independent.test.ts[2m > [22mGate D - SUPER_ADMIN governance[2m > [22mR1C-D2 FINDING (P1): with exactly two SUPER_ADMINs, losing one leaves no in-product path to add or remove a SUPER_ADMIN[32m 144[2mms[22m[39m
+ [32m✓[39m .hoplite/artifacts/r1-cert/r1-independent.test.ts[2m > [22mGate D - SUPER_ADMIN governance[2m > [22mR1C-D3 FINDING (P2): an interrupted bootstrap (grants written, marker and audit not) still accepts further operator_bootstrap grants and leaves no audit trail[32m 218[2mms[22m[39m
+ [32m✓[39m .hoplite/artifacts/r1-cert/r1-independent.test.ts[2m > [22mGate D - SUPER_ADMIN governance[2m > [22mR1C-D4 CONTROL: two SUPER_ADMINs deciding the same request concurrently produce exactly one grant[32m 161[2mms[22m[39m
+ [32m✓[39m .hoplite/artifacts/r1-cert/r1-independent.test.ts[2m > [22mGate D - SUPER_ADMIN governance[2m > [22mR1C-D5 CONTROL: concurrent approvals of two SUPER_ADMIN revocations never drop below two active SUPER_ADMINs[32m 164[2mms[22m[39m
+ [32m✓[39m .hoplite/artifacts/r1-cert/r1-independent.test.ts[2m > [22mGate D - SUPER_ADMIN governance[2m > [22mR1C-D6 CONTROL (H7): an approval whose requester is no longer SUPER_ADMIN is cancelled, not applied[32m 146[2mms[22m[39m
+ [32m✓[39m .hoplite/artifacts/r1-cert/r1-independent.test.ts[2m > [22mGate D - SUPER_ADMIN governance[2m > [22mR1C-D7 CONTROL (H3/H4): a single-SUPER_ADMIN state cannot be created; unilateral SUPER_ADMIN revocation is impossible[32m 133[2mms[22m[39m
+ [32m✓[39m .hoplite/artifacts/r1-cert/r1-independent.test.ts[2m > [22mGate A - routing (Node harness; workerd covered by workerd-probe.mjs)[2m > [22mR1C-A1 FINDING (P2 functional): deep links whose id contains "." or ":" (allowed by the API schema) are 404 on reload[32m 114[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m18 passed[39m[22m[90m (18)[39m
+[2m   Start at [22m 00:26:05
+[2m   Duration [22m 5.65s[2m (transform 511ms, setup 62ms, import 552ms, tests 4.45s, environment 0ms)[22m
+
