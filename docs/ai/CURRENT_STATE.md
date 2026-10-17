@@ -10178,7 +10178,7 @@ ESLint, both TypeScript checks, migration smoke, public scan and whitespace
 checks PASS. Build and strict Wrangler upload dry-run passed separately without
 upload. The earlier combined check had 8,836 passes and two timing failures;
 both existing affected suites passed 74/74 with one worker and unchanged
-assertions/timeouts. A controlled final full-suite result is recorded separately.
+assertions/timeouts. Controlled final full Vitest: 393 files / 8,840 tests PASS (exit 0), `TMPDIR=/private/tmp NODE_OPTIONS=--no-experimental-webstorage pnpm exec vitest run --maxWorkers=2 --reporter=verbose`; 527.06 seconds. No assertion or timeout was changed. This is a separate successful full-suite run, not a successful rerun of the earlier combined `pnpm check`.
 
 Submit the adapter through normal PR review. After the read scope is approved,
 rerun the exact-main read-only audit; require exact-head CI and fresh independent

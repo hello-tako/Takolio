@@ -88,6 +88,7 @@ production Environment approval.
 - Full `TMPDIR=/private/tmp pnpm check`: 8,836 PASS / 2 timeout failures; no
   combined PASS is claimed. The two affected pre-existing suites pass 74/74
   with `--maxWorkers=1`, retaining their assertions and timeout settings.
+- Controlled final full Vitest: 393 files / 8,840 tests PASS (exit 0) with 2 workers in 527.06 seconds; unchanged assertions/timeouts.
 - Build and migration smoke pass separately. Exact-final-head hosted checks and
   independent review remain mandatory before this lane may run.
 

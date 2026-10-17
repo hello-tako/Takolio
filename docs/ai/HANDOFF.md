@@ -9658,8 +9658,7 @@ bypass the audit, dispatch legacy Deploy, or attach hostnames manually.
 migration smoke, public scan and whitespace checks PASS. Build and strict
 Wrangler upload dry-run passed separately. Earlier combined check: 8,836 passes
 and two existing timing failures; affected suites pass 74/74 with one worker
-without changing assertions/timeouts. Record the controlled final full-suite
-result before claiming a full PASS.
+without changing assertions/timeouts. Controlled final full Vitest: 393 files / 8,840 tests PASS (exit 0), `TMPDIR=/private/tmp NODE_OPTIONS=--no-experimental-webstorage pnpm exec vitest run --maxWorkers=2 --reporter=verbose`; 527.06 seconds. No assertion or timeout was changed. This is a separate successful full-suite run, not a successful rerun of the earlier combined `pnpm check`.
 
 Next: normal PR/independent review and exact-head CI; approve the read scope and
 rerun exact-main audit; normal merge and exact-main CI; staging dispatch and
