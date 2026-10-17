@@ -7381,3 +7381,26 @@ Implementation checkpoint: `5dd9990` on
 - [ ] Review sanitized V1 counts, unresolved rows and T20 impact before a
   protected row-evidence path or T21G design. `T21G_NOT_READY`; repair, 0039
   and production deploy remain stopped.
+
+---
+
+# Takolio domain release checkpoint - 2026-10-17
+
+- [x] Merge PR #4 normally at `6fc3f3f`; exact-main CI and Admin CI SUCCESS.
+- [x] Save approved staging Access CI Service Auth policy and credentials.
+- [x] Implement staging-only adapter, trusted source/CI fences and owned recovery.
+- [x] Pass 350 focused release/domain tests after the queue fix, targeted lint, TypeScript, migrations and public scan.
+- [x] Build and strict Wrangler upload dry-run locally without upload.
+- [x] Dispatch read-only audit `39031638646`; retain safe HTTP 403 failure.
+- [x] Save only account `Workers Scripts Read` after owner action-time confirmation; retain token expiration.
+- [x] Rerun audit `39035489645`; retain safe filtered-Queues completeness failure.
+- [x] Fix queue search-total mismatch with complete unfiltered inventory and exact unique selection.
+- [ ] Rerun the fixed exact-main audit after protected merge and verify complete evidence.
+- [ ] Complete adapter PR exact-head CI, independent review and protected merge.
+- [ ] Dispatch staging only after exact-main CI, then verify real auth/OTP/PayOS sandbox/session/PWA/journeys and rollback.
+- [ ] Review production adapter, obtain independent Environment approval, deploy and observe at least 15 minutes.
+
+Earlier combined check had 8,836 passes and two timing failures; affected suites
+pass 74/74 with one worker and unchanged assertions/timeouts. Full Vitest before the queue fix: 393 files / 8,840 tests PASS (exit 0), `TMPDIR=/private/tmp NODE_OPTIONS=--no-experimental-webstorage pnpm exec vitest run --maxWorkers=2 --reporter=verbose`; 527.06 seconds. No assertion or timeout was changed. This is a separate successful full-suite run, not a successful rerun of the earlier combined `pnpm check`. No application upload, traffic
+activation, hostname attachment, DNS, data, payment or Admin mutation has occurred.
+Status: `DOMAIN_IMPLEMENTATION_IN_PROGRESS`.

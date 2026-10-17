@@ -9632,3 +9632,39 @@ certification. Only recipe ID set and V1 ingredient tuples are compared.
 exact current-main SHA. Review the sanitized V1 receipt and unresolved rows
 before a distinct protected row-evidence path. Do not infer repair from counts;
 0039 and production deploy stay stopped.
+
+---
+
+# Takolio domain release handoff - 2026-10-17
+
+Main is `6fc3f3ffa4d5230610acff6e51cf097400652443`; exact-main CI
+`39030256282` and Admin CI `39030256276` succeeded. PR #4 merged through normal
+protection. Staging Access has the approved email Allow and CI Service Auth
+policies; credential values are only in GitHub Environment staging.
+
+The staging-only release adapter is on `feat/takolio-domain-release`; its manual
+workflow defaults to no activation, requires canonical exact-main source and
+successful CI/Admin CI, and records upload/activation/owned-hostname recovery.
+See `docs/domain-integration/16-staging-release-adapter.md` for its boundaries.
+Production and Admin remain undeployed by this lane.
+
+The owner approved account `Workers Scripts Read`; it is saved on the existing
+staging token with the same November 16 expiration. Audit `39035489645` passed
+Workers Domains authorization, then safely stopped on filtered Queues metadata.
+Cloudflare queue totals ignore search filters. The reviewed fix reads an
+unfiltered complete inventory and selects exactly one staging queue; partial
+inventories and missing/duplicate names fail closed. Do not create another token,
+print values, bypass audit, dispatch legacy Deploy, or attach hosts manually.
+
+350 focused release/domain tests after the queue fix, targeted lint, both TypeScript checks,
+migration smoke, public scan and whitespace checks PASS. Build and strict
+Wrangler upload dry-run passed separately. Earlier combined check: 8,836 passes
+and two existing timing failures; affected suites pass 74/74 with one worker
+without changing assertions/timeouts. Full Vitest before the queue fix: 393 files / 8,840 tests PASS (exit 0), `TMPDIR=/private/tmp NODE_OPTIONS=--no-experimental-webstorage pnpm exec vitest run --maxWorkers=2 --reporter=verbose`; 527.06 seconds. No assertion or timeout was changed. This is a separate successful full-suite run, not a successful rerun of the earlier combined `pnpm check`.
+
+Next: PR #5 independent review and exact-head CI; normal merge and exact-main
+CI; rerun the fixed exact-main audit; staging dispatch and
+live acceptance/rollback rehearsal. Real Google/approved-inbox OTP/PayOS sandbox
+and user journeys remain unverified. Production requires its separately reviewed
+adapter and independent Environment approval. Status remains
+`DOMAIN_IMPLEMENTATION_IN_PROGRESS`.

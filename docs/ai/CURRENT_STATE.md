@@ -10149,3 +10149,43 @@ Next: restore GitHub access/protections and obtain explicit real staging/resourc
 Status remains ADMIN_V1_PRODUCTION_READINESS_BLOCKED / ADMIN_V1_STAGING_AUTHORIZATION_REQUIRED.
 
 Validation qualification: default-concurrency full suite on 9395f0e3 failed 10 timing checks; full serial rerun uses existing assertions/timeouts. Both attempts are retained in production-readiness evidence and raw output archive; see 12_REGRESSION_RESULTS.md for actual results. Hosted default-concurrency CI remains required.
+
+## Takolio domain staging release checkpoint (2026-10-17)
+
+Status: `DOMAIN_IMPLEMENTATION_IN_PROGRESS`.
+Canonical main is `6fc3f3ffa4d5230610acff6e51cf097400652443`, the protected merge
+of PR #4. Exact-main CI `39030256282` and Admin CI `39030256276` succeeded.
+The approved staging Access Service Auth policy is saved alongside the existing
+email Allow policy. Service credentials are stored only in GitHub Environment
+staging; no values appear in this source or receipts.
+
+The new manual staging lane audits and preserves current runtime/storage/queue
+settings, uploads without traffic activation, verifies uploaded metadata, then
+activates staging and attaches two owned hostnames after legacy-URL release
+proof. It fences source/current-main/CI, Access credential destinations, domain
+ownership and failure/cancellation recovery. Production, Admin, business logic,
+migrations and payment settings are outside this adapter's mutation surface.
+
+The owner approved and the browser saved only account `Workers Scripts Read` on
+the existing staging token; expiration remains November 16, 2026. Audit
+`39035489645` passed the earlier Workers Domains authorization boundary but
+stopped before mutation on filtered queue pagination metadata. Cloudflare defines
+queue total_count/total_pages without search filters. The audit now reads the
+complete unfiltered list, retains completeness checks, and selects one exact
+staging queue, rejecting missing/duplicate names. Queue Write remains previously
+approved; D1/KV/R2 remain read-only. Fresh hosted audit awaits the reviewed fix.
+
+Current local verification: 350 focused release/domain tests PASS after the queue fix; targeted
+ESLint, both TypeScript checks, migration smoke, public scan and whitespace
+checks PASS. Build and strict Wrangler upload dry-run passed separately without
+upload. The earlier combined check had 8,836 passes and two timing failures;
+both existing affected suites passed 74/74 with one worker and unchanged
+assertions/timeouts. Full Vitest before the queue fix: 393 files / 8,840 tests PASS (exit 0), `TMPDIR=/private/tmp NODE_OPTIONS=--no-experimental-webstorage pnpm exec vitest run --maxWorkers=2 --reporter=verbose`; 527.06 seconds. No assertion or timeout was changed. This is a separate successful full-suite run, not a successful rerun of the earlier combined `pnpm check`.
+
+PR #5 is ready for normal independent review. Require exact-head CI and fresh
+independent approval before merging, then rerun the fixed exact-main read-only audit. Then require exact-main CI before staging dispatch.
+Real Google/OTP/PayOS sandbox, session/PWA/user journeys and rollback rehearsal
+remain acceptance gates. A separately reviewed production adapter and independent
+production Environment approval are still required. No application upload,
+traffic activation, hostname attachment, DNS, data, payment or Admin mutation
+has occurred in this checkpoint.

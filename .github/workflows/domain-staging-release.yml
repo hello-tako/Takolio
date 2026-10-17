@@ -1,0 +1,83 @@
+name: Domain Staging Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: Exact reviewed current-main SHA with successful CI and Admin CI
+        type: string
+        required: true
+      hardened_sha:
+        description: Exact reviewed hardening ancestor
+        type: string
+        required: true
+      confirm_staging:
+        description: Intentionally deploy staging and attach its two Takolio hostnames
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: frigo-deploy-staging
+  cancel-in-progress: false
+
+jobs:
+  release:
+    if: github.ref == 'refs/heads/main' && github.repository == 'hello-tako/Takolio' && github.repository_id == '1422954151' && inputs.confirm_staging == true
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment: staging
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Match trusted checkout to dispatched workflow and requested SHA before executing source
+        env:
+          RELEASE_SHA: ${{ inputs.ref }}
+          WORKFLOW_SHA: ${{ github.workflow_sha }}
+        run: |
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$GITHUB_SHA" = "$WORKFLOW_SHA"
+          test "$GITHUB_SHA" = "$RELEASE_SHA"
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+      - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1
+        with:
+          version: 10
+      - run: pnpm install --frozen-lockfile
+      - name: Audit, upload, verify, activate and attach only staging
+        id: activate
+        env:
+          RELEASE_SHA: ${{ inputs.ref }}
+          HARDENED_SHA: ${{ inputs.hardened_sha }}
+          CONFIRM_STAGING: ${{ inputs.confirm_staging }}
+          GH_TOKEN: ${{ github.token }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          RELEASE_VERIFY_TOKEN: ${{ secrets.STAGING_RELEASE_VERIFY_TOKEN }}
+          CF_ACCESS_CLIENT_ID: ${{ secrets.CF_ACCESS_CLIENT_ID }}
+          CF_ACCESS_CLIENT_SECRET: ${{ secrets.CF_ACCESS_CLIENT_SECRET }}
+        run: node scripts/domain/staging-provider.mjs
+      - name: Reconcile recorded staging activation after failure or cancellation
+        if: (failure() || cancelled()) && steps.activate.outcome != 'skipped'
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          RELEASE_VERIFY_TOKEN: ${{ secrets.STAGING_RELEASE_VERIFY_TOKEN }}
+          CF_ACCESS_CLIENT_ID: ${{ secrets.CF_ACCESS_CLIENT_ID }}
+          CF_ACCESS_CLIENT_SECRET: ${{ secrets.CF_ACCESS_CLIENT_SECRET }}
+        run: node scripts/domain/staging-provider.mjs recover
+      - name: Retain sanitized receipt including failed or uncertain outcomes
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: domain-staging-release-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .artifacts/domain/staging-release/receipt.json
+          if-no-files-found: warn
+          retention-days: 90
