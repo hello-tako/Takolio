@@ -1,4 +1,5 @@
 import type { Env } from '../types';
+import { domainProfile } from './domains';
 
 const DEVELOPMENT_ORIGINS = new Set([
   'http://localhost:5173', 'http://127.0.0.1:5173',
@@ -18,10 +19,12 @@ export function applicationOrigin(env: Pick<Env, 'APP_URL' | 'ENVIRONMENT'>): st
   }
 }
 
-export function isTrustedOrigin(origin: string, env: Pick<Env, 'APP_URL' | 'ENVIRONMENT'>): boolean {
+export function isTrustedOrigin(origin: string, env: Pick<Env, 'APP_URL' | 'ENVIRONMENT' | 'PUBLIC_DOMAIN_ROUTING'>): boolean {
   try {
     if (new URL(origin).origin !== origin) return false;
+    const profile = domainProfile(env);
     return origin === applicationOrigin(env) ||
+      (profile !== null && origin === profile.legacy) ||
       (env.ENVIRONMENT === 'development' && DEVELOPMENT_ORIGINS.has(origin));
   } catch {
     return false;

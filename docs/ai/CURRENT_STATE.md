@@ -1,3 +1,25 @@
+# Current checkpoint: Takolio domain integration - 2026-10-17
+
+Status: `DOMAIN_IMPLEMENTED_LOCAL_VERIFIED`; staging blocked; production NOT_CHANGED. This checkpoint supersedes historical operational claims below for the current domain task.
+
+Canonical source: `hello-tako/Takolio`, repository ID `1422954151`; base `526596a8cd857984ad2b69901a8c7b0e9d6bccc2`; branch `feat/takolio-app-domain-integration`. Both combined Workers are preserved, Admin remains reserved. Default Wrangler files, payment business logic and storage schema are unchanged. New routing is dormant until an explicitly reviewed generated candidate enables it.
+
+Implemented: central domain profiles, exact host boundaries, safe WWW document redirects, preserved legacy app/API, API-only aliases, noindex/SEO, verified native association 404 boundaries, current-host export attribution, local read-only capture/probes and candidate preparation. Candidate preparation checks complete supported typed bindings, compatibility, staging overlap and clean source identity, and reports outstanding operational audit blockers. Unknown binding shapes are rejected.
+
+Actual local verification: full run before final review fixes 367 files / 8,496 tests PASS (811.53s). After review fixes, 86 focused domain/config/CORS/Workerd tests PASS; domain + export presentation subset 38 PASS. Lint, both TypeScript checks, paired planner/T20 build, migration smoke and high-severity dependency audit PASS. Initial synthetic harness failures (stale validator, Hono HSTS ordering) were corrected; actual Workerd harness initially omitted has_user_worker and was corrected without relaxing assertions. Legacy HSTS regression assertion required the outer header to preserve existing strict legacy asset policy. No tests were skipped or timeouts increased.
+
+Browser: isolated synthetic SQLite preview, mobile 390x844 and desktop 1440x1000. Created 7-day family meal plan, opened shopping view, refreshed nested route, no horizontal overflow or broken images on inspected views. This is local regression evidence, not live domain or real Google/OTP/PayOS certification. Plain Vite static preview initially showed session-unavailable because no API was attached; switched to existing isolated API preview.
+
+Cloudflare: account `ef250a88911fd24073cb73d1c07e0218`, active zone `takolio.app` / `9284fb2186987f14f810818583acaa46`, Universal SSL active. DNS 0 records, Worker routes 0, Redirect rules 0, no Worker connected. Access has 3 unrelated apps and no Takolio staging protection. Edge HSTS, live cron/consumers/observability and account-wide DO/Workflows remain unverified. Pages/D1 list NOT_ACCESSIBLE with current OAuth. Existing staging storage/queue IDs are distinct, but sandbox provider credentials/data sensitivity are unverified.
+
+Live versions: production `35dd189e-7e3c-4782-b69b-237da7dadd62`, SHA equals verified main; staging `b97b11fe-9151-41ac-9130-52532c045c8e`, SHA `f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1` exists and is ancestor of main. Read-only probes reached legacy production/staging; all five new hosts unreachable. No DNS, Worker, database, secret, OAuth, email or payment mutation occurred.
+
+Next: final exact-head draft PR/hosted CI and independent review; then authorized operator resolves Cloudflare scope, live settings, staging Access/data/provider isolation, Google JS origins and approved OTP inbox. New-domain staging acceptance must precede any separate owner production approval. Current repository has 0 Actions secrets and 0 Environments; historical deployment identity/approval controls need reviewed restoration before release. Do not weaken branch protection or route Admin.
+
+Details: `docs/domain-integration/FINAL-ACCEPTANCE.md`, `12-production-runbook.md`, `13-rollback-runbook.md`. Rollback pairs previous code with the recorded routes/settings/provider configuration; database rollback is excluded.
+
+---
+
 # Takolio mascot and full-app visual upgrade checkpoint - 2026-10-16 JST
 
 **Repository:** `lol-vn/Tako-san`, immutable ID `1385308553`, protected main `f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1`, branch `feat/takolio-brand-migration-v1`. Implementation commit `dae71688bde863608a20855b56351ccd51d99c34`. Draft PR: https://github.com/lol-vn/Tako-san/pull/79. Final publication SHA, automatic hosted CI and independent final binding are recorded in the PR and local delivery receipt after this documentation checkpoint; earlier-head CI is not current-head evidence.

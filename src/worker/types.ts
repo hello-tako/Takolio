@@ -43,6 +43,7 @@ export interface Env {
   // deploy automation. Absent ⇒ the endpoint is 404; it never grants any user-data access.
   RELEASE_VERIFY_TOKEN?: string;
   APP_URL?: string;
+  PUBLIC_DOMAIN_ROUTING?: string;
   AI_MOCK_MODE?: string;
   // Dormant until PayOS and financial retention acceptance; exact opt-in only.
   CHECKOUT_ADMISSION_ENABLED?: string;

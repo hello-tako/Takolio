@@ -1,0 +1,14 @@
+{
+  "production": {
+    "app": "https://takolio.app",
+    "api": "https://api.takolio.app",
+    "www": "https://www.takolio.app",
+    "legacy": "https://frigo.tungjpstore.net"
+  },
+  "staging": {
+    "app": "https://staging.takolio.app",
+    "api": "https://api-staging.takolio.app",
+    "www": null,
+    "legacy": "https://frigo-staging.tungbipdz.workers.dev"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "observedAt": "2026-10-17T06:36:26.165Z",
+  "mutation": false,
+  "results": [
+    {
+      "url": "https://takolio.app",
+      "status": null,
+      "httpsVerified": false,
+      "error": "DNS_TLS_OR_HTTP_UNREACHABLE"
+    },
+    {
+      "url": "https://www.takolio.app/recipes/fixture?domain_probe=1",
+      "status": null,
+      "httpsVerified": false,
+      "error": "DNS_TLS_OR_HTTP_UNREACHABLE"
+    },
+    {
+      "url": "https://api.takolio.app/api/v1/health",
+      "status": null,
+      "httpsVerified": false,
+      "error": "DNS_TLS_OR_HTTP_UNREACHABLE"
+    },
+    {
+      "url": "https://staging.takolio.app",
+      "status": null,
+      "httpsVerified": false,
+      "error": "DNS_TLS_OR_HTTP_UNREACHABLE"
+    },
+    {
+      "url": "https://api-staging.takolio.app/api/v1/health",
+      "status": null,
+      "httpsVerified": false,
+      "error": "DNS_TLS_OR_HTTP_UNREACHABLE"
+    },
+    {
+      "url": "https://frigo.tungjpstore.net/api/v1/health/ready",
+      "status": 200,
+      "httpsVerified": true,
+      "headers": {
+        "location": null,
+        "content-type": "application/json",
+        "strict-transport-security": "max-age=15552000; includeSubDomains",
+        "x-robots-tag": null
+      },
+      "bodySha256": "c8bad05b25b25128628f6b7ae056c4b85e47ef0b8abfd753c3b7b96485a4e37e",
+      "health": {
+        "status": "degraded",
+        "commit": "526596a8cd857984ad2b69901a8c7b0e9d6bccc2",
+        "environment": "production",
+        "database": "ok",
+        "emailDeliveryVerified": false
+      }
+    },
+    {
+      "url": "https://frigo-staging.tungbipdz.workers.dev/api/v1/health/ready",
+      "status": 200,
+      "httpsVerified": true,
+      "headers": {
+        "location": null,
+        "content-type": "application/json",
+        "strict-transport-security": "max-age=15552000; includeSubDomains",
+        "x-robots-tag": null
+      },
+      "bodySha256": "331a6ec5dfb202dd8b17fd2f5503b3deb0cb3edefe659aa1cada5118119dd941",
+      "health": {
+        "status": "ok",
+        "commit": "f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1",
+        "environment": "staging",
+        "database": "ok",
+        "emailDeliveryVerified": false
+      }
+    }
+  ]
+}

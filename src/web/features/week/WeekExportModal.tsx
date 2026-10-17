@@ -103,7 +103,7 @@ export function WeekExportModal({
     });
 
     lines.push('\n--------------------------------');
-    lines.push('Tạo bởi Takolio — frigo.tungjpstore.net');
+    lines.push(`Tạo bởi Takolio — ${window.location.host}`);
     return lines.join('\n');
   };
 
