@@ -7381,3 +7381,25 @@ Implementation checkpoint: `5dd9990` on
 - [ ] Review sanitized V1 counts, unresolved rows and T20 impact before a
   protected row-evidence path or T21G design. `T21G_NOT_READY`; repair, 0039
   and production deploy remain stopped.
+
+---
+
+# Takolio domain release checkpoint - 2026-10-17
+
+- [x] Merge PR #4 normally at `6fc3f3f`; exact-main CI and Admin CI SUCCESS.
+- [x] Save approved staging Access CI Service Auth policy and credentials.
+- [x] Implement staging-only adapter, trusted source/CI fences and owned recovery.
+- [x] Pass 348 focused release/domain tests, targeted lint, TypeScript, migrations and public scan.
+- [x] Build and strict Wrangler upload dry-run locally without upload.
+- [x] Dispatch read-only audit `39031638646`; retain safe HTTP 403 failure.
+- [ ] Save only missing account `Workers Scripts Read` after owner action-time confirmation.
+- [ ] Rerun exact-main audit and verify runtime/domain/DNS/queue/ledger evidence.
+- [ ] Complete adapter PR exact-head CI, independent review and protected merge.
+- [ ] Dispatch staging only after exact-main CI, then verify real auth/OTP/PayOS sandbox/session/PWA/journeys and rollback.
+- [ ] Review production adapter, obtain independent Environment approval, deploy and observe at least 15 minutes.
+
+Earlier combined check had 8,836 passes and two timing failures; affected suites
+pass 74/74 with one worker and unchanged assertions/timeouts. Controlled final
+full-suite result is recorded separately. No application upload, traffic
+activation, hostname attachment, DNS, data, payment or Admin mutation has occurred.
+Status: `DOMAIN_IMPLEMENTATION_IN_PROGRESS`.

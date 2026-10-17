@@ -9632,3 +9632,38 @@ certification. Only recipe ID set and V1 ingredient tuples are compared.
 exact current-main SHA. Review the sanitized V1 receipt and unresolved rows
 before a distinct protected row-evidence path. Do not infer repair from counts;
 0039 and production deploy stay stopped.
+
+---
+
+# Takolio domain release handoff - 2026-10-17
+
+Main is `6fc3f3ffa4d5230610acff6e51cf097400652443`; exact-main CI
+`39030256282` and Admin CI `39030256276` succeeded. PR #4 merged through normal
+protection. Staging Access has the approved email Allow and CI Service Auth
+policies; credential values are only in GitHub Environment staging.
+
+The staging-only release adapter is on `feat/takolio-domain-release`; its manual
+workflow defaults to no activation, requires canonical exact-main source and
+successful CI/Admin CI, and records upload/activation/owned-hostname recovery.
+See `docs/domain-integration/16-staging-release-adapter.md` for its boundaries.
+Production and Admin remain undeployed by this lane.
+
+Audit `39031638646` failed safely with HTTP 403/code 10000 on Workers Domains
+inventory. Its required account `Workers Scripts Read` permission is prepared
+on the Cloudflare token review screen but NOT saved; the owner must answer the
+pending action-time question first. Do not create another token, print values,
+bypass the audit, dispatch legacy Deploy, or attach hostnames manually.
+
+348 focused release/domain tests, targeted lint, both TypeScript checks,
+migration smoke, public scan and whitespace checks PASS. Build and strict
+Wrangler upload dry-run passed separately. Earlier combined check: 8,836 passes
+and two existing timing failures; affected suites pass 74/74 with one worker
+without changing assertions/timeouts. Record the controlled final full-suite
+result before claiming a full PASS.
+
+Next: normal PR/independent review and exact-head CI; approve the read scope and
+rerun exact-main audit; normal merge and exact-main CI; staging dispatch and
+live acceptance/rollback rehearsal. Real Google/approved-inbox OTP/PayOS sandbox
+and user journeys remain unverified. Production requires its separately reviewed
+adapter and independent Environment approval. Status remains
+`DOMAIN_IMPLEMENTATION_IN_PROGRESS`.

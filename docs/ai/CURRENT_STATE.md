@@ -10149,3 +10149,42 @@ Next: restore GitHub access/protections and obtain explicit real staging/resourc
 Status remains ADMIN_V1_PRODUCTION_READINESS_BLOCKED / ADMIN_V1_STAGING_AUTHORIZATION_REQUIRED.
 
 Validation qualification: default-concurrency full suite on 9395f0e3 failed 10 timing checks; full serial rerun uses existing assertions/timeouts. Both attempts are retained in production-readiness evidence and raw output archive; see 12_REGRESSION_RESULTS.md for actual results. Hosted default-concurrency CI remains required.
+
+## Takolio domain staging release checkpoint (2026-10-17)
+
+Status: `DOMAIN_IMPLEMENTATION_IN_PROGRESS`.
+Canonical main is `6fc3f3ffa4d5230610acff6e51cf097400652443`, the protected merge
+of PR #4. Exact-main CI `39030256282` and Admin CI `39030256276` succeeded.
+The approved staging Access Service Auth policy is saved alongside the existing
+email Allow policy. Service credentials are stored only in GitHub Environment
+staging; no values appear in this source or receipts.
+
+The new manual staging lane audits and preserves current runtime/storage/queue
+settings, uploads without traffic activation, verifies uploaded metadata, then
+activates staging and attaches two owned hostnames after legacy-URL release
+proof. It fences source/current-main/CI, Access credential destinations, domain
+ownership and failure/cancellation recovery. Production, Admin, business logic,
+migrations and payment settings are outside this adapter's mutation surface.
+
+Read-only staging audit `39031638646` returned HTTP 403/code 10000 on the Workers
+Domains inventory before any mutation. The staging API token needs the distinct
+account-level `Workers Scripts Read` permission accepted by this endpoint.
+The browser is on the final scope review; the owner permission question remains
+pending. No scope expansion has been saved. Queue Write remains part of the
+previously approved token; D1/KV/R2 remain read-only.
+
+Current local verification: 348 focused release/domain tests PASS; targeted
+ESLint, both TypeScript checks, migration smoke, public scan and whitespace
+checks PASS. Build and strict Wrangler upload dry-run passed separately without
+upload. The earlier combined check had 8,836 passes and two timing failures;
+both existing affected suites passed 74/74 with one worker and unchanged
+assertions/timeouts. A controlled final full-suite result is recorded separately.
+
+Submit the adapter through normal PR review. After the read scope is approved,
+rerun the exact-main read-only audit; require exact-head CI and fresh independent
+approval before merging. Then require exact-main CI before staging dispatch.
+Real Google/OTP/PayOS sandbox, session/PWA/user journeys and rollback rehearsal
+remain acceptance gates. A separately reviewed production adapter and independent
+production Environment approval are still required. No application upload,
+traffic activation, hostname attachment, DNS, data, payment or Admin mutation
+has occurred in this checkpoint.
