@@ -44,8 +44,8 @@ function policyFixture() {
   return {
     policy: {
       version: 1,
-      repositoryId: 1385308553,
-      repository: 'lol-vn/Tako-san',
+      repositoryId: 1422954151,
+      repository: 'hello-tako/Takolio',
       branch: 'main',
       environments: {
         staging: target('staging', '1', custodians),
@@ -98,6 +98,21 @@ describe('Admin offline release adapter', () => {
     expect(() => validateTarget(policy, 'staging')).toThrow(/disabled|unsafe target identity/i);
   });
 
+  it('rejects the former repository and approvals signed for its policy', () => {
+    const { fixture, context, bundle } = authorizationFixture();
+    fixture.policy.repositoryId = 1385308553;
+    fixture.policy.repository = 'lol-vn/Tako-san';
+    bundle.manifest.policyDigest = digest(fixture.policy);
+    bundle.approvals = fixture.keys.map(({ privateKey }, i) => ({
+      operatorId: `operator-${i + 1}`,
+      signature: sign(null, Buffer.from(canonical(bundle.manifest)), privateKey).toString('base64url'),
+    }));
+    expect(() => validateTarget(fixture.policy, 'staging')).toThrow('Untrusted release policy');
+    fixture.policy.repositoryId = 1422954151;
+    fixture.policy.repository = 'hello-tako/Takolio';
+    expect(() => validateAuthorization(bundle, fixture.policy, context, Date.parse('2026-10-17T00:10:00.000Z'))).toThrow(/mismatch/);
+  });
+
   it('accepts only a distinct, fully identified staging target', () => {
     const fixture = policyFixture();
     expect(validateTarget(fixture.policy, 'staging').adminWorker).toBe('takosan-admin-staging');
@@ -141,15 +156,15 @@ describe('Admin offline release adapter', () => {
 
 function githubFixture(context) {
   return {
-    repository: { id: 1385308553, full_name: 'lol-vn/Tako-san', default_branch: 'main' },
+    repository: { id: 1422954151, full_name: 'hello-tako/Takolio', default_branch: 'main' },
     branch: { protected: true, commit: { sha: context.sourceSha } },
     protection: { enforce_admins: { enabled: true }, required_pull_request_reviews: { required_approving_review_count: 1, dismiss_stale_reviews: true },
       required_status_checks: { strict: true, contexts: ['validate-admin'] } },
     environment: { id: 123, can_admins_bypass: false, protection_rules: [{ type: 'required_reviewers', prevent_self_review: true, reviewers: [{ type: 'User' }] }],
       deployment_branch_policy: { protected_branches: true, custom_branch_policies: false } },
     run: { id: 42, run_attempt: 1, event: 'workflow_dispatch', head_sha: context.sourceSha, head_branch: 'main', path: '.github/workflows/admin-staging-deploy.yml',
-      actor: { id: 1, type: 'User' }, triggering_actor: { id: 1 }, repository: { id: 1385308553 } },
-    ci: [{ head_sha: context.sourceSha, path: '.github/workflows/admin-ci.yml', status: 'completed', conclusion: 'success', event: 'push', repository: { id: 1385308553 } }],
+      actor: { id: 1, type: 'User' }, triggering_actor: { id: 1 }, repository: { id: 1422954151 } },
+    ci: [{ head_sha: context.sourceSha, path: '.github/workflows/admin-ci.yml', status: 'completed', conclusion: 'success', event: 'push', repository: { id: 1422954151 } }],
     approvals: [{ state: 'approved', user: { id: 2, type: 'User' }, environments: [{ id: 123 }] }],
     artifact: { name: 'admin-pre-action-42', expired: false, digest: 'sha256:' + 'f'.repeat(64), workflow_run: { id: 42, head_sha: context.sourceSha } },
   };
@@ -189,6 +204,10 @@ describe('Admin release policy failure boundaries', () => {
     ['stale review reuse', f => { f.protection.required_pull_request_reviews.dismiss_stale_reviews = false; }],
     ['wrong exact main', f => { f.branch.commit.sha = 'c'.repeat(40); }],
     ['wrong repository id', f => { f.repository.id = 1; }],
+    ['former repository id', f => { f.repository.id = 1385308553; }],
+    ['former repository name', f => { f.repository.full_name = 'lol-vn/Tako-san'; }],
+    ['former dispatch repository', f => { f.run.repository.id = 1385308553; }],
+    ['former CI repository', f => { f.ci[0].repository.id = 1385308553; }],
     ['missing CI', f => { f.ci = []; }],
     ['CI from another SHA', f => { f.ci[0].head_sha = 'c'.repeat(40); }],
     ['CI from PR context', f => { f.ci[0].event = 'pull_request'; }],

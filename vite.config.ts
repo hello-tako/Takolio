@@ -89,6 +89,8 @@ export default defineConfig({
     },
   },
   test: {
+    // Crypto and local Wrangler tests share the hosted runner's CPU budget.
+    maxWorkers: process.env.CI ? 1 : undefined,
     setupFiles: ['tests/helpers/vitest-event-loop-yield.ts'],
     execArgv: testExecArgv,
   },

@@ -19,7 +19,7 @@ export function createProvider(authorized, context, env = process.env, fetcher =
     if (origin.includes('cloudflare') && value.success !== true) throw new Error('Cloudflare operation failed');
     return origin.includes('cloudflare') ? (options.pagination ? value : value.result) : value;
   };
-  const gh = route => request('https://api.github.com', `/repos/lol-vn/Tako-san${route}`, env.GH_TOKEN, { headers: { 'X-GitHub-Api-Version': '2022-11-28' } });
+  const gh = route => request('https://api.github.com', `/repos/hello-tako/Takolio${route}`, env.GH_TOKEN, { headers: { 'X-GitHub-Api-Version': '2022-11-28' } });
   const cf = (route, options) => request('https://api.cloudflare.com', `/client/v4/accounts/${target.accountId}${route}`, env.CLOUDFLARE_API_TOKEN, options);
   const cfList = async (route, singlePage = false) => {
     const rows = [];
@@ -107,7 +107,7 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
       const run = await gh(`/actions/runs/${artifact.workflow_run.id}`);
       if (artifact.name !== `admin-staging-certification-${run.id}` || run.path !== '.github/workflows/admin-staging-deploy.yml' ||
           run.event !== 'workflow_dispatch' || run.run_attempt !== 1 || run.head_branch !== 'main' || run.status !== 'completed' ||
-          run.head_sha !== context.sourceSha || run.conclusion !== 'success' || run.repository?.id !== 1385308553) throw new Error('Staging evidence run mismatch');
+          run.head_sha !== context.sourceSha || run.conclusion !== 'success' || run.repository?.id !== 1422954151) throw new Error('Staging evidence run mismatch');
     },
     async verifyShutdownTarget(t) {
       const [domains, zone, s] = await Promise.all([
@@ -254,7 +254,7 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
       try { command('git', ['merge-base', '--is-ancestor', payload.previousSha, context.sourceSha], { stdio: 'ignore' }); }
       catch { throw new Error('Rollback source is outside the reviewed ancestry'); }
       const runs = await gh(`/actions/workflows/admin-ci.yml/runs?head_sha=${payload.previousSha}&status=success&per_page=100`);
-      if (!runs.workflow_runs?.some(r => r.head_sha === payload.previousSha && r.path === '.github/workflows/admin-ci.yml' && r.event === 'push' && r.status === 'completed' && r.conclusion === 'success' && r.repository?.id === 1385308553)) throw new Error('Rollback source lacks exact-SHA CI');
+      if (!runs.workflow_runs?.some(r => r.head_sha === payload.previousSha && r.path === '.github/workflows/admin-ci.yml' && r.event === 'push' && r.status === 'completed' && r.conclusion === 'success' && r.repository?.id === 1422954151)) throw new Error('Rollback source lacks exact-SHA CI');
       await verifyVersion(t.adminWorker, payload.adminVersion, payload.previousSha, true);
       await verifyVersion(t.facadeWorker, payload.facadeVersion, payload.previousSha, false);
     },

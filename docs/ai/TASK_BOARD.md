@@ -1,3 +1,30 @@
+# Takolio repository safeguards checkpoint - 2026-10-17
+
+Canonical repository hello-tako/Takolio (1422954151), candidate branch
+codex/takolio-identity-safeguards-20261017, based on acb47fe5. All original
+957 commits and mapped upgrade branches remain intact. Main remains 526596a8.
+
+Active Admin release identity/API/CI/rollback contracts now pin the new ID/name;
+legacy signatures and old repository CI are rejected. Release targets remain
+disabled. Historical customer production approval contracts are preserved.
+CI Vitest scheduling is serial to reduce shared-runner CPU contention, with
+unchanged assertions and timeout budgets. Original CI run 39004821831 failed
+one 5s wrong-password flood test; that failure remains recorded.
+
+Local focused 3 files/117 tests, lint, types, build, migration smoke, audit-high,
+release config preflight, public patch scan and diff checks PASS. Published-head
+CI and exact SHA are recorded in the PR/external migration receipt. Main now has
+enforced required checks, fresh independent review and force/deletion protection.
+Actions defaults to read-only and cannot approve PRs. No reviewer/secret/Environment
+was fabricated. See docs/repository-migration/2026-10-17-follow-up.md.
+
+Next: independent review, operator/resource/custodian provisioning and separately
+authorized real staging. ADMIN_V1_PRODUCTION_READINESS_BLOCKED;
+ADMIN_V1_STAGING_AUTHORIZATION_REQUIRED; live ST01-ST20 NOT RUN. No merge/deploy,
+workflow dispatch, remote D1, production secret, bootstrap or enablement action.
+
+---
+
 # Repository migration checkpoint - 2026-10-17
 
 Source and history are now published at hello-tako/Takolio (repository ID

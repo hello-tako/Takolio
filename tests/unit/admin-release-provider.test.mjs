@@ -25,6 +25,17 @@ describe('Admin release provider boundaries', () => {
     expect(command).not.toHaveBeenCalled();
   });
 
+  it('reads GitHub facts only from the migrated repository API', async () => {
+    const fetcher = vi.fn(async () => Response.json({}));
+    const provider = createProvider(authorized, context, { GH_TOKEN: 'synthetic' }, fetcher, vi.fn());
+    await provider.githubFacts();
+    expect(fetcher).toHaveBeenCalledTimes(8);
+    for (const [url] of fetcher.mock.calls) {
+      expect(new URL(url).origin).toBe('https://api.github.com');
+      expect(new URL(url).pathname).toMatch(/^\/repos\/hello-tako\/Takolio(?:\/|$)/);
+    }
+  });
+
   it('fails before an HTTP request when the credential is missing', async () => {
     const fetcher = vi.fn(), command = vi.fn();
     const provider = createProvider(authorized, context, {}, fetcher, command);
@@ -257,7 +268,7 @@ describe('Staging artifact authority', () => {
   const fixture = () => ({ artifact: { name: 'admin-staging-certification-77', expired: false, digest: 'sha256:' + certificate.artifactDigest,
     workflow_run: { id: 77, head_sha: context.sourceSha } }, run: { id: 77, head_sha: context.sourceSha,
     path: '.github/workflows/admin-staging-deploy.yml', event: 'workflow_dispatch', run_attempt: 1, head_branch: 'main',
-    status: 'completed', conclusion: 'success', repository: { id: 1385308553 } } });
+    status: 'completed', conclusion: 'success', repository: { id: 1422954151 } } });
   const providerFor = facts => createProvider(authorized, context, { GH_TOKEN: 'synthetic' },
     async url => new Response(JSON.stringify(url.includes('/artifacts/') ? facts.artifact : facts.run)), vi.fn());
   it('accepts only the signed artifact digest from the dedicated successful staging dispatch', async () => {
@@ -271,6 +282,7 @@ describe('Staging artifact authority', () => {
     ['wrong artifact name', f => { f.artifact.name = 'admin-staging-certification-99'; }],
     ['expired artifact', f => { f.artifact.expired = true; }],
     ['failed run', f => { f.run.conclusion = 'failure'; }],
+    ['former repository', f => { f.run.repository.id = 1385308553; }],
   ])('rejects %s', async (_name, mutate) => {
     const facts = fixture();
     mutate(facts);
@@ -290,15 +302,15 @@ it('constructs a real shutdown config when rollback compensation starts from con
   });
   const provider = createProvider(authorized, ctx, {}, vi.fn(), command);
   vi.spyOn(provider, 'githubFacts').mockResolvedValue({
-    repository: { id: 1385308553, full_name: 'lol-vn/Tako-san', default_branch: 'main' },
+    repository: { id: 1422954151, full_name: 'hello-tako/Takolio', default_branch: 'main' },
     branch: { commit: { sha: ctx.sourceSha }, protected: true },
     protection: { enforce_admins: { enabled: true }, required_pull_request_reviews: { required_approving_review_count: 1, dismiss_stale_reviews: true },
       required_status_checks: { strict: true, contexts: ['validate-admin'] } },
     environment: { id: 1, can_admins_bypass: false, protection_rules: [{ type: 'required_reviewers', prevent_self_review: true, reviewers: [1] }],
       deployment_branch_policy: { protected_branches: true, custom_branch_policies: false } },
     run: { id: 42, run_attempt: 1, event: 'workflow_dispatch', head_sha: ctx.sourceSha, head_branch: 'main',
-      path: '.github/workflows/admin-staging-deploy.yml', actor: { id: 1, type: 'User' }, triggering_actor: { id: 1 }, repository: { id: 1385308553 } },
-    ci: [{ head_sha: ctx.sourceSha, path: '.github/workflows/admin-ci.yml', status: 'completed', conclusion: 'success', event: 'push', repository: { id: 1385308553 } }],
+      path: '.github/workflows/admin-staging-deploy.yml', actor: { id: 1, type: 'User' }, triggering_actor: { id: 1 }, repository: { id: 1422954151 } },
+    ci: [{ head_sha: ctx.sourceSha, path: '.github/workflows/admin-ci.yml', status: 'completed', conclusion: 'success', event: 'push', repository: { id: 1422954151 } }],
     approvals: [{ state: 'approved', user: { type: 'User', id: 2 }, environments: [{ id: 1 }] }],
     artifact: { name: 'admin-pre-action-42', expired: false, digest: ctx.auditArtifactDigest, workflow_run: { id: 42, head_sha: ctx.sourceSha } },
   });

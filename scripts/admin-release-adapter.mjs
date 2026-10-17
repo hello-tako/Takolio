@@ -21,7 +21,7 @@ const keyFingerprint = pem => {
 
 export function validateTarget(policy, environment) {
   if (!exact(policy, ['version', 'repositoryId', 'repository', 'branch', 'environments']) || policy.version !== 1 ||
-      policy.repositoryId !== 1385308553 || policy.repository !== 'lol-vn/Tako-san' || policy.branch !== 'main' ||
+      policy.repositoryId !== 1422954151 || policy.repository !== 'hello-tako/Takolio' || policy.branch !== 'main' ||
       !exact(policy.environments, ['staging', 'production']) || !['staging', 'production'].includes(environment)) throw new Error('Untrusted release policy');
   const target = policy.environments[environment];
   if (!exact(target, ['enabled', 'accountId', 'adminWorker', 'facadeWorker', 'adminDatabaseId', 'adminDatabaseName',
@@ -107,7 +107,7 @@ export function validateStagingReport(report, policy, context, now = Date.now())
 
 export function validateGitHub(facts, context) {
   const { repository, branch, protection, environment, run, ci, approvals, artifact } = facts;
-  if (repository.id !== 1385308553 || repository.full_name !== 'lol-vn/Tako-san' || repository.default_branch !== 'main' ||
+  if (repository.id !== 1422954151 || repository.full_name !== 'hello-tako/Takolio' || repository.default_branch !== 'main' ||
       branch.commit?.sha !== context.sourceSha || !branch.protected || !protection.enforce_admins?.enabled ||
       !(protection.required_pull_request_reviews?.required_approving_review_count >= 1) || !protection.required_pull_request_reviews?.dismiss_stale_reviews ||
       !protection.required_status_checks?.strict || !(protection.required_status_checks.contexts ?? []).includes('validate-admin')) throw new Error('Protected exact-main source required');
@@ -119,8 +119,8 @@ export function validateGitHub(facts, context) {
   const expectedPath = context.operation === 'disable' ? '.github/workflows/admin-emergency-disable.yml' : context.operation === 'migrate' ? expectedWorkflow.migrate : ['bootstrap', 'recover'].includes(context.operation) ? expectedWorkflow.recover : expectedWorkflow[context.environment];
   if (String(run.id) !== context.runId || run.run_attempt !== 1 || run.event !== 'workflow_dispatch' || run.head_sha !== context.sourceSha ||
       run.head_branch !== 'main' || run.path !== expectedPath || run.actor?.type !== 'User' || run.triggering_actor?.id !== run.actor.id ||
-      run.repository?.id !== 1385308553 || !ci.some(c => c.head_sha === context.sourceSha && c.path === '.github/workflows/admin-ci.yml' &&
-        c.status === 'completed' && c.conclusion === 'success' && c.event === 'push' && c.repository?.id === 1385308553)) throw new Error('Exact-source dispatch and CI required');
+      run.repository?.id !== 1422954151 || !ci.some(c => c.head_sha === context.sourceSha && c.path === '.github/workflows/admin-ci.yml' &&
+        c.status === 'completed' && c.conclusion === 'success' && c.event === 'push' && c.repository?.id === 1422954151)) throw new Error('Exact-source dispatch and CI required');
   if (!approvals.some(a => a.state === 'approved' && a.user?.type === 'User' && a.user.id !== run.actor.id &&
       a.environments?.some(e => e.id === environment.id))) throw new Error('Independent environment approval required');
   if (context.requireAudit && (!artifact || artifact.expired || artifact.name !== `admin-pre-action-${context.runId}` ||
