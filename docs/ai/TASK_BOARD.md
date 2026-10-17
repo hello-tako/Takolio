@@ -7559,7 +7559,7 @@ Status: `DOMAIN_IMPLEMENTATION_IN_PROGRESS`.
   saved matching credential pair to staging Environment without scope/policy/expiry changes.
 - DONE: direct legacy Worker probe returned HTTP 200; token Last Seen updated.
 - DONE: isolated Wrangler 4.149.0 JSONL contract: session record precedes upload result.
-- DONE: shared strict `uploadedWorkerVersion` parser for staging/production plus 18
+- DONE: shared strict `uploadedWorkerVersion` parser for staging/production plus six
   focused parser cases; total focused release/domain regression 467 tests PASS.
 - PENDING: commit/push parser fix, independent review and exact-main hosted checks,
   then rerun staging release. Existing uploaded version is not traffic-active.

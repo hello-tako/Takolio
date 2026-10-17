@@ -10382,7 +10382,7 @@ token Last Seen timestamp updating. No policy or application setting was changed
 The next release passed Access and build but stopped safely while parsing Wrangler's
 JSONL output. Wrangler 4.149.0 writes a `wrangler-session` record followed by one
 `version-upload` record; the lane incorrectly required exactly one record. The
-unuploaded version identity was read-only verified as SHA 45528f16 with restricted
+uploaded version identity was read-only verified as SHA 45528f16 with restricted
 SEND_EMAIL binding, while staging traffic remained on b4257b5c. A shared strict
 parser now accepts exactly that ordered pair (or a single upload record for backward
 compatibility), rejects duplicates/unexpected records/invalid IDs, and is used by
