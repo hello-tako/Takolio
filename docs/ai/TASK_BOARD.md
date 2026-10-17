@@ -7,11 +7,13 @@ codex/takolio-identity-safeguards-20261017, based on acb47fe5. All original
 Active Admin release identity/API/CI/rollback contracts now pin the new ID/name;
 legacy signatures and old repository CI are rejected. Release targets remain
 disabled. Historical customer production approval contracts are preserved.
-CI Vitest scheduling is serial to reduce shared-runner CPU contention, with
-unchanged assertions and timeout budgets. Original CI run 39004821831 failed
-one 5s wrong-password flood test; that failure remains recorded.
+CI Vitest scheduling is serial via a dedicated config extending unchanged
+Vite configuration, with unchanged assertions and timeout budgets. Original CI run 39004821831 failed
+one 5s wrong-password flood test; that failure remains recorded. The first
+follow-up full run failed only the customer-config guard (8,774 PASS); the
+customer Vite config is now restored byte-for-byte and the guard passes.
 
-Local focused 3 files/117 tests, lint, types, build, migration smoke, audit-high,
+Local focused 4 files/124 tests, lint, types, build, migration smoke, audit-high,
 release config preflight, public patch scan and diff checks PASS. Published-head
 CI and exact SHA are recorded in the PR/external migration receipt. Main now has
 enforced required checks, fresh independent review and force/deletion protection.
