@@ -2,7 +2,9 @@ import { isDeepStrictEqual } from 'node:util';
 import profiles from '../../config/domain-profiles.json' with { type: 'json' };
 import { ACCOUNT, ZONE } from './audit-cloud.mjs';
 
-const ID = /^[a-f0-9]{32}$/;
+const ZONE_ID = /^[a-f0-9]{32}$/;
+// Workers domain IDs are 40 hex characters in the live API; retain older receipts.
+export const isDomainId = (value) => typeof value === 'string' && /^(?:[a-f0-9]{32}|[a-f0-9]{40})$/.test(value);
 const SHA = /^[a-f0-9]{40}$/;
 const VERSION = /^[a-f0-9-]{36}$/;
 const fields = ['id', 'hostname', 'service', 'environment', 'zone_id', 'enabled', 'previews_enabled'];
@@ -20,7 +22,7 @@ export function validateDomains(domains) {
   const ids = new Set();
   const hosts = new Set();
   for (const domain of domains) {
-    if (!ID.test(domain?.id ?? '') || !ID.test(domain.zone_id ?? '') ||
+    if (!isDomainId(domain?.id) || !ZONE_ID.test(domain.zone_id ?? '') ||
         typeof domain.hostname !== 'string' || domain.hostname !== domain.hostname.toLowerCase() ||
         typeof domain.service !== 'string' || typeof domain.environment !== 'string' ||
         typeof domain.enabled !== 'boolean' || typeof domain.previews_enabled !== 'boolean' ||
