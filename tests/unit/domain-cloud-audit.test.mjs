@@ -6,7 +6,7 @@ import { ACCOUNT, ZONE, audit, cloudflareRead, sanitizeRuntime } from '../../scr
 const baseline = JSON.parse(readFileSync('docs/domain-integration/evidence/live-runtime.json', 'utf8'));
 const schema = { version: '0001_fixture.sql', migrations: [{ name: '0001_fixture.sql' }] };
 function fixture(environment) {
-  const live = baseline.workers[environment];
+  const live = structuredClone(baseline.workers[environment]);
   const script = `/accounts/${ACCOUNT}/workers/scripts/${live.name}`;
   const deployment = { id: live.deploymentId, created_on: '2026-10-17T00:00:00Z', versions: [{ version_id: live.versionId, percentage: 100 }] };
   const version = { id: live.versionId, resources: {
@@ -155,4 +155,33 @@ describe('read-only domain infrastructure audit', () => {
     expect(workflow.jobs.audit.if).toContain("github.ref == 'refs/heads/main'");
     expect(workflow.jobs.audit.steps.some((step) => /wrangler deploy|secret put|migrations apply/.test(step.run || ''))).toBe(false);
   });
+});
+
+it('audits only the exact private restricted staging email addition and redacts its receipt', async () => {
+  const { serializeStagingReceipt } = await import('../../scripts/domain/staging-email-policy.mjs');
+  const source = fixture('staging');
+  const recipient = 'approved-inbox@example.test';
+  const native = { name: 'SEND_EMAIL', type: 'send_email', destination_address: recipient };
+  source.version.resources.bindings.push(native);
+  const receipt = await audit('staging', { ...source, schema, baseline, stagingEmailRecipient: recipient });
+  expect(receipt.worker.typedBindings.find((entry) => entry.type === 'send_email')).toEqual(native);
+  expect(serializeStagingReceipt(receipt, recipient)).not.toContain(recipient);
+  await expect(audit('staging', { ...source, schema, baseline })).rejects.toThrow('private canonical');
+  native.destination_address = 'other@example.test';
+  await expect(audit('staging', { ...source, schema, baseline, stagingEmailRecipient: recipient })).rejects.toThrow('restricted');
+  native.destination_address = recipient;
+  source.version.resources.bindings.find((entry) => entry.type === 'd1').database_id = 'production-database';
+  await expect(audit('staging', { ...source, schema, baseline, stagingEmailRecipient: recipient })).rejects.toThrow('binding drift');
+});
+
+it('rejects an alternate staging email provider while leaving production baseline rules strict', async () => {
+  const recipient = 'approved-inbox@example.test';
+  const staging = fixture('staging');
+  staging.version.resources.bindings.push({ name: 'RESEND_API_KEY', type: 'secret_text' });
+  await expect(audit('staging', { ...staging, schema, baseline, stagingEmailRecipient: recipient })).rejects.toThrow('alternate provider');
+  const production = fixture('production');
+  const receipt = await audit('production', { ...production, schema, baseline, stagingEmailRecipient: recipient });
+  expect(receipt.worker.typedBindings).toEqual(baseline.workers.production.typedBindings);
+  production.version.resources.bindings.find((entry) => entry.name === 'SEND_EMAIL').destination_address = recipient;
+  await expect(audit('production', { ...production, schema, baseline, stagingEmailRecipient: recipient })).rejects.toThrow('binding drift');
 });

@@ -43,6 +43,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          STAGING_OTP_TEST_RECIPIENT: ${{ secrets.STAGING_OTP_TEST_RECIPIENT }}
         run: node scripts/domain/audit-cloud.mjs "$AUDIT_ENVIRONMENT"
       - name: Save sanitized read-only evidence
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02

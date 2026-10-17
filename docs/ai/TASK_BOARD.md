@@ -7495,3 +7495,15 @@ Earlier combined check had 8,836 passes and two timing failures; affected suites
 pass 74/74 with one worker and unchanged assertions/timeouts. Full Vitest before the queue fix: 393 files / 8,840 tests PASS (exit 0), `TMPDIR=/private/tmp NODE_OPTIONS=--no-experimental-webstorage pnpm exec vitest run --maxWorkers=2 --reporter=verbose`; 527.06 seconds. No assertion or timeout was changed. This is a separate successful full-suite run, not a successful rerun of the earlier combined `pnpm check`. No application upload, traffic
 activation, hostname attachment, DNS, data, payment or Admin mutation has occurred.
 Status: `DOMAIN_IMPLEMENTATION_IN_PROGRESS`.
+
+## Domain staging email follow-up - 2026-10-17
+
+- Prepared private, opt-in native staging email restricted to the approved inbox.
+- Preserved exact storage/secrets/flags/runtime and production binding baseline.
+- Added receipt redaction, recovery commitment and wrong-recipient/provider/drift
+  coverage; fixed shared mutable audit fixture isolation.
+- PASS: 369 focused tests, lint, both types, migrations, build, strict upload dry-run,
+  public scan and whitespace. No live provider mutation or email send.
+- Next: independent review and protected merge/checks; deploy opt-in staging,
+  receive real OTP, complete Google/session/sandbox/user/PWA and rollback gates.
+  Production still requires its separately reviewed lane and Environment approval.

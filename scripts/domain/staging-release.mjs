@@ -1,5 +1,6 @@
 import { isDeepStrictEqual } from 'node:util';
 import { captureBindings } from './bindings.mjs';
+import { uploadTypedBindings } from './staging-email-policy.mjs';
 
 export const STAGING_GOOGLE_CLIENT_ID = '509963441971-c8ij1hv901p0fsljhd2ur1qc4t63432g.apps.googleusercontent.com';
 
@@ -8,7 +9,7 @@ export function verifyUploadedVersion(version, plan, previous) {
   const runtime = version.resources?.script_runtime;
   if (!/^[a-f0-9-]{36}$/.test(version.id ?? '') || version.id === previous.versionId ||
       !isDeepStrictEqual(captured.bindings, previous.bindings) ||
-      !isDeepStrictEqual(captured.typedBindings, previous.typedBindings) ||
+      !isDeepStrictEqual(captured.typedBindings, uploadTypedBindings(plan, previous)) ||
       !isDeepStrictEqual(captured.secretNames, previous.secretNames) ||
       !isDeepStrictEqual(captured.vars, plan.config.vars) ||
       runtime?.compatibility_date !== plan.config.compatibility_date ||

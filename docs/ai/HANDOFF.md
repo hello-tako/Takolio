@@ -9759,3 +9759,25 @@ live acceptance/rollback rehearsal. Real Google/approved-inbox OTP/PayOS sandbox
 and user journeys remain unverified. Production requires its separately reviewed
 adapter and independent Environment approval. Status remains
 `DOMAIN_IMPLEMENTATION_IN_PROGRESS`.
+
+## Restricted staging email handoff - 2026-10-17
+
+New opt-in enable_staging_email adds only SEND_EMAIL.destination_address from
+STAGING_OTP_TEST_RECIPIENT in the staging Environment. The approved address is
+saved privately; there is no new API credential. Production and application/
+payment logic are unchanged. No binding activation or email send has occurred.
+See docs/domain-integration/19-restricted-staging-email.md for exact boundaries.
+
+10 related files / 369 tests PASS; lint exit 0 with two existing ignored generated
+bundle warnings, both TS checks, migration smoke, build, strict Wrangler dry-run,
+public scan and diff check PASS. An initial new audit test failed because an older
+negative fixture mutated shared baseline objects. The fixture now clones its
+metadata; positive and negative checks pass without assertion/timeout changes.
+
+Recovery replaces its public recipient marker from the same secret and verifies
+the original full-config hash before mutation; absent/different secret stops it.
+The audit recognizes only the exact restricted native binding and rejects an
+alternate provider; later releases preserve it. Do not publish runner-local
+config files or claim inbox delivery from provider acceptance alone. Independent
+review, exact-main CI, live staging acceptance/rollback and a reviewed production
+adapter remain necessary before production cutover.
