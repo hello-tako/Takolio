@@ -24,7 +24,7 @@ function fixture(environment) {
     [`/accounts/${ACCOUNT}/workers/domains?zone_id=${ZONE}&per_page=100`]: [],
     [`/zones/${ZONE}/dns_records?per_page=100`]: [],
     [`/zones/${ZONE}/workers/routes`]: [],
-    [`/accounts/${ACCOUNT}/queues?name=${live.bindings.SCAN_QUEUE}&per_page=100`]: [{ queue_name: live.bindings.SCAN_QUEUE, queue_id: 'fixture-queue' }],
+    [`/accounts/${ACCOUNT}/queues?per_page=100`]: [{ queue_name: live.bindings.SCAN_QUEUE, queue_id: 'fixture-queue' }],
     [`/accounts/${ACCOUNT}/queues/fixture-queue/consumers`]: [{ consumer_id: 'fixture-consumer', type: 'worker', script: live.name, environment: 'production', settings: { batch_size: 5 } }],
     [`/accounts/${ACCOUNT}/d1/database/${live.bindings.DB}/query`]: [{ success: true, results: [{ name: schema.version }] }],
   };
@@ -52,6 +52,31 @@ describe('read-only domain infrastructure audit', () => {
       path: `/accounts/${ACCOUNT}/d1/database/${baseline.workers[environment].bindings.DB}/query`,
       sql: { databaseId: baseline.workers[environment].bindings.DB, sql: 'SELECT name FROM d1_migrations ORDER BY name' },
     }]);
+  });
+
+  it('inventories unfiltered queues and selects one exact target without accepting ambiguous names', async () => {
+    const source = fixture('staging');
+    const queuePath = `/accounts/${ACCOUNT}/queues?per_page=100`;
+    source.responses[queuePath].push({ queue_name: 'frigo-scan-queue', queue_id: 'unrelated-production-queue' });
+    const receipt = await audit('staging', { ...source, schema, baseline });
+    expect(receipt.operational.consumers[0].consumer_id).toBe('fixture-consumer');
+    expect(source.calls.filter(({ path }) => path.includes('/queues?')).map(({ path }) => path)).toEqual([queuePath]);
+    source.responses[queuePath].push({ queue_name: baseline.workers.staging.bindings.SCAN_QUEUE, queue_id: 'duplicate' });
+    await expect(audit('staging', { ...source, schema, baseline })).rejects.toThrow('ambiguous');
+    source.responses[queuePath] = [];
+    await expect(audit('staging', { ...source, schema, baseline })).rejects.toThrow('Exact queue identity');
+  });
+
+  it('keeps queue inventory completeness checks when search totals describe the unfiltered account', async () => {
+    const entries = [{ queue_name: 'fixture-staging', queue_id: 'one' }, { queue_name: 'fixture-production', queue_id: 'two' }];
+    const response = (result) => ({ ok: true, status: 200, json: async () => ({ success: true, result,
+      result_info: { page: 1, per_page: 100, count: result.length, total_count: 2, total_pages: 1 } }) });
+    const path = `/accounts/${ACCOUNT}/queues?per_page=100`;
+    expect(await cloudflareRead(path, 'fixture', { fetchImpl: async () => response(entries) })).toEqual(entries);
+    await expect(cloudflareRead(path, 'fixture', { fetchImpl: async () => response(entries.slice(0, 1)) }))
+      .rejects.toThrow('Paginated inventory');
+    await expect(cloudflareRead(`${path}&name=fixture-staging`, 'fixture', { fetchImpl: async () => response(entries.slice(0, 1)) }))
+      .rejects.toThrow('Paginated inventory');
   });
 
   it('retains legacy service/environment queue consumer identity', async () => {

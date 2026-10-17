@@ -10166,23 +10166,24 @@ proof. It fences source/current-main/CI, Access credential destinations, domain
 ownership and failure/cancellation recovery. Production, Admin, business logic,
 migrations and payment settings are outside this adapter's mutation surface.
 
-Read-only staging audit `39031638646` returned HTTP 403/code 10000 on the Workers
-Domains inventory before any mutation. The staging API token needs the distinct
-account-level `Workers Scripts Read` permission accepted by this endpoint.
-The browser is on the final scope review; the owner permission question remains
-pending. No scope expansion has been saved. Queue Write remains part of the
-previously approved token; D1/KV/R2 remain read-only.
+The owner approved and the browser saved only account `Workers Scripts Read` on
+the existing staging token; expiration remains November 16, 2026. Audit
+`39035489645` passed the earlier Workers Domains authorization boundary but
+stopped before mutation on filtered queue pagination metadata. Cloudflare defines
+queue total_count/total_pages without search filters. The audit now reads the
+complete unfiltered list, retains completeness checks, and selects one exact
+staging queue, rejecting missing/duplicate names. Queue Write remains previously
+approved; D1/KV/R2 remain read-only. Fresh hosted audit awaits the reviewed fix.
 
-Current local verification: 348 focused release/domain tests PASS; targeted
+Current local verification: 350 focused release/domain tests PASS after the queue fix; targeted
 ESLint, both TypeScript checks, migration smoke, public scan and whitespace
 checks PASS. Build and strict Wrangler upload dry-run passed separately without
 upload. The earlier combined check had 8,836 passes and two timing failures;
 both existing affected suites passed 74/74 with one worker and unchanged
-assertions/timeouts. Controlled final full Vitest: 393 files / 8,840 tests PASS (exit 0), `TMPDIR=/private/tmp NODE_OPTIONS=--no-experimental-webstorage pnpm exec vitest run --maxWorkers=2 --reporter=verbose`; 527.06 seconds. No assertion or timeout was changed. This is a separate successful full-suite run, not a successful rerun of the earlier combined `pnpm check`.
+assertions/timeouts. Full Vitest before the queue fix: 393 files / 8,840 tests PASS (exit 0), `TMPDIR=/private/tmp NODE_OPTIONS=--no-experimental-webstorage pnpm exec vitest run --maxWorkers=2 --reporter=verbose`; 527.06 seconds. No assertion or timeout was changed. This is a separate successful full-suite run, not a successful rerun of the earlier combined `pnpm check`.
 
-Submit the adapter through normal PR review. After the read scope is approved,
-rerun the exact-main read-only audit; require exact-head CI and fresh independent
-approval before merging. Then require exact-main CI before staging dispatch.
+PR #5 is ready for normal independent review. Require exact-head CI and fresh
+independent approval before merging, then rerun the fixed exact-main read-only audit. Then require exact-main CI before staging dispatch.
 Real Google/OTP/PayOS sandbox, session/PWA/user journeys and rollback rehearsal
 remain acceptance gates. A separately reviewed production adapter and independent
 production Environment approval are still required. No application upload,

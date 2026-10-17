@@ -100,9 +100,11 @@ export async function audit(environment, { read, schema, baseline } = {}) {
   if (!current || !isDeepStrictEqual(runtime.bindings, current.bindings) ||
       !isDeepStrictEqual(runtime.typedBindings, current.typedBindings)) throw new Error('Worker binding drift');
   const queueName = runtime.bindings.SCAN_QUEUE;
-  const queues = await read(`${base}/queues?name=${encodeURIComponent(queueName)}&per_page=100`);
-  const queue = queues.find((entry) => entry.queue_name === queueName);
-  if (!queue?.queue_id) throw new Error('Exact queue identity not found');
+  // Queue totals ignore search filters; inventory the complete account before selecting.
+  const queues = await read(`${base}/queues?per_page=100`);
+  const matches = queues.filter((entry) => entry.queue_name === queueName);
+  if (matches.length !== 1 || !matches[0].queue_id) throw new Error('Exact queue identity not found or ambiguous');
+  const [queue] = matches;
   const consumers = await read(`${base}/queues/${queue.queue_id}/consumers`);
   const ledger = await read(`${base}/d1/database/${runtime.bindings.DB}/query`, {
     databaseId: runtime.bindings.DB, sql: 'SELECT name FROM d1_migrations ORDER BY name',

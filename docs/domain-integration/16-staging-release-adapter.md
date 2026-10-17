@@ -10,12 +10,19 @@ email Allow policy on application `bd0bae35-56b4-4766-a3b5-9de378ba93ad`.
 Its 30-day credential values are stored only in the staging GitHub Environment.
 No value is retained in this source or its receipts.
 
-Read-only audit `39031638646` failed before any mutation with HTTP 403/code
-10000 on the account Workers Domains inventory. Cloudflare documents Workers
-Scripts Read or Write for that endpoint. The current token's per-Worker Editor
-and zone Workers Routes Write scopes do not satisfy that account inventory call.
-The owner is being asked to approve the smallest additional legacy read scope;
-no token scope has been saved while that confirmation is pending.
+The owner approved account `Workers Scripts Read`, which is saved on the
+existing staging token with the same November 16, 2026 expiration. Audit
+`39035489645` passed the earlier Workers Domains authorization boundary, then
+failed safely before mutation on filtered Queues pagination metadata.
+
+Cloudflare defines Queues `total_count` and `total_pages` as totals without search
+parameters. Comparing those totals to a name-filtered result incorrectly rejects
+a complete one-queue match. The audit now requests an unfiltered account queue
+inventory and selects exactly one matching queue. Completeness checks remain;
+more than one page still requires explicit follow-up, and missing or duplicate
+matching queue names fail closed. See the official
+[Queues list API](https://developers.cloudflare.com/api/resources/queues/methods/list/).
+A fresh hosted audit of this fix remains pending protected merge.
 
 ## Explicit staging lane
 
@@ -83,12 +90,12 @@ production Environment approval.
 ## Validation
 
 - Focused config/Access/hostname/adapter tests: 26/26 PASS.
-- Final focused release/domain regression: 9 files / 348 tests PASS.
+- Latest focused release/domain regression after the queue fix: 9 files / 350 tests PASS.
 - Syntax, targeted ESLint, both TypeScript checks, Admin preflight, migration smoke, public scan and whitespace checks PASS.
 - Full `TMPDIR=/private/tmp pnpm check`: 8,836 PASS / 2 timeout failures; no
   combined PASS is claimed. The two affected pre-existing suites pass 74/74
   with `--maxWorkers=1`, retaining their assertions and timeout settings.
-- Controlled final full Vitest: 393 files / 8,840 tests PASS (exit 0) with 2 workers in 527.06 seconds; unchanged assertions/timeouts.
+- Full Vitest before the queue fix: 393 files / 8,840 tests PASS (exit 0) with 2 workers in 527.06 seconds; unchanged assertions/timeouts.
 - Build and migration smoke pass separately. Exact-final-head hosted checks and
   independent review remain mandatory before this lane may run.
 
