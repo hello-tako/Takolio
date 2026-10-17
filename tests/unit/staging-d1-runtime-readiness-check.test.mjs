@@ -8,6 +8,7 @@ import { currentCatalogRelease } from '../../packages/recipes/src/recipe-authori
 import { APPROVED_BATCHES_REGISTRY } from '../../scripts/d1-migration-check.mjs';
 import { migrationManifest } from '../../scripts/release-check.mjs';
 import {
+  CANONICAL_REPOSITORY_ID,
   LEDGER_TIP,
   STAGING_D1,
   STATUS,
@@ -56,6 +57,10 @@ afterEach(() => {
 });
 
 describe('staging D1 runtime readiness SQL and identity', () => {
+  it('pins the migrated canonical repository identity', () => {
+    expect(CANONICAL_REPOSITORY_ID).toBe('1422954151');
+  });
+
   it('pins the reviewed staging database and rejects a different identity', () => {
     expect(pinnedStagingDatabase()).toEqual(STAGING_D1);
     const raw = readFileSync('wrangler.staging.jsonc', 'utf8');

@@ -8,6 +8,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { localWranglerEnv } from './admin-local-lib.mjs';
+import { CUSTOMER_BASELINE, selectGuardedCustomerBaseline } from './admin-customer-baseline.mjs';
 import { migrationManifest, verifyMigrationLedger } from './release-check.mjs';
 import { renderSchemaGateCommand } from './d1-schema-gate.mjs';
 
@@ -19,7 +20,7 @@ const work = mkdtempSync(path.join(tmpdir(), 'takosan-migration-matrix-'));
 const PRE_ADMIN = '186a9cf05de7c91ed3289e13130feb3b38a264ac';
 const ORIGINAL_ADMIN = '3e865d009ee62a92ed1d9c8d225a36893035670b';
 const R1 = '25140baa99ef0aecc5e8d0e53206132e01e0f765';
-const MAIN_BASELINE = '526596a8cd857984ad2b69901a8c7b0e9d6bccc2';
+const MAIN_BASELINE = CUSTOMER_BASELINE;
 const runEvidence = {
   head: null, tree: null, mergeBase: null, dirtyScopedPaths: null,
   adminManifest: null, workerVersion: null, workerSourceSha256: null,
@@ -139,11 +140,13 @@ function row(scenario, expectation, observed, pass) {
 
 try {
   const head = git('rev-parse', 'HEAD');
-  const mergeBase = git('merge-base', head, 'origin/main');
+  const { mainBase: mergeBase } = selectGuardedCustomerBaseline({
+    git, originalBaseline: MAIN_BASELINE, guardedPaths: ['migrations', 'scripts/d1-schema-gate.sql'],
+  });
   runEvidence.head = head;
   runEvidence.tree = git('rev-parse', head + '^{tree}');
   runEvidence.mergeBase = mergeBase;
-  runEvidence.dirtyScopedPaths = git('status', '--porcelain', '--', 'scripts/admin-migration-matrix.mjs', 'migrations', 'migrations-admin', 'src/worker/routes/admin/auth.ts');
+  runEvidence.dirtyScopedPaths = git('status', '--porcelain', '--', 'scripts/admin-migration-matrix.mjs', 'scripts/admin-customer-baseline.mjs', 'migrations', 'migrations-admin', 'src/worker/routes/admin/auth.ts');
   const r1Files = filesAt(R1, 'migrations');
   const preFiles = filesAt(PRE_ADMIN, 'migrations');
   const originalFiles = filesAt(ORIGINAL_ADMIN, 'migrations');
@@ -174,9 +177,9 @@ try {
   writeFileSync(r1Template, git('show', R1 + ':scripts/d1-schema-gate.sql'));
   writeFileSync(mainTemplate, git('show', MAIN_BASELINE + ':scripts/d1-schema-gate.sql'));
 
-  row('pinned current-main ancestry', 'HEAD origin/main merge-base matches fixed baseline ' + MAIN_BASELINE,
+  row('pinned current-main ancestry', 'fixed baseline is an ancestor; protected main migration/schema bytes remain unchanged',
     { head, mergeBase, pinnedBaseline: MAIN_BASELINE },
-    mergeBase === MAIN_BASELINE && git('merge-base', head, MAIN_BASELINE) === MAIN_BASELINE);
+    git('merge-base', mergeBase, MAIN_BASELINE) === MAIN_BASELINE && git('merge-base', head, MAIN_BASELINE) === MAIN_BASELINE);
 
   // The original eleven R1 scenarios stay tied to the exact R1 and pre-admin commits.
   const r1MigrationDirectory = path.join(work, 'r1-migrations');
@@ -237,7 +240,7 @@ try {
     { customerGate: releaseGate(R1, ledger41), adminPresent: r1AdminApply.status === 0, version: r1AdminState.schema_version },
     releaseGate(R1, ledger41).pass && r1AdminApply.status === 0 && r1AdminState.schema_version === r1Version);
 
-  const mainIdentity = mergeBase === MAIN_BASELINE &&
+  const mainIdentity = git('merge-base', mergeBase, MAIN_BASELINE) === MAIN_BASELINE &&
     git('merge-base', head, MAIN_BASELINE) === MAIN_BASELINE &&
     mainManifest.count === 43 &&
     mainFiles.some((file) => file.name === '0042_family_meals_preferences_saved_shopping.sql') &&
@@ -375,6 +378,7 @@ try {
       head: runEvidence.head,
       tree: runEvidence.tree,
       matrixScriptSha256: hash(readFileSync(fileURLToPath(import.meta.url))),
+      customerBaselineGuardSha256: hash(readFileSync(new URL('./admin-customer-baseline.mjs', import.meta.url))),
       historicalR1: R1,
       currentMainBaseline: MAIN_BASELINE,
       currentMainMergeBase: runEvidence.mergeBase,

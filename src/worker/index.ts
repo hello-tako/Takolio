@@ -1,5 +1,7 @@
 import { Hono } from 'hono';
 import { isTrustedOrigin } from './config/origins';
+import { publicDomainRouting } from './middleware/domains';
+import { DOMAIN_PROFILES } from './config/domains';
 import { cors } from 'hono/cors';
 import { secureHeaders } from 'hono/secure-headers';
 import { HTTPException } from 'hono/http-exception';
@@ -56,6 +58,14 @@ app.use('*', async (c, next) => {
   }
 });
 
+// Domain cutover must not extend HSTS to unaudited subdomains.
+app.use('*', async (c, next) => {
+  await next();
+  const legacy = Object.values(DOMAIN_PROFILES).some((profile) => profile.legacy === new URL(c.req.url).origin);
+  if (c.env.PUBLIC_DOMAIN_ROUTING === 'true') c.header('Strict-Transport-Security',
+    legacy ? 'max-age=63072000; includeSubDomains; preload' : 'max-age=31536000');
+});
+
 // 2. Global Security Middlewares
 app.use('*', secureHeaders({
   xFrameOptions: 'DENY',
@@ -87,6 +97,7 @@ app.use('*', async (c, next) => {
 // 3. Production configuration gate: fail closed with a sanitized diagnostic
 // when the deployment is dangerous. Development/staging are not gated.
 app.use('*', productionConfigGate);
+app.use('*', publicDomainRouting);
 
 app.use('*', cors({
   origin: (origin, c) => isTrustedOrigin(origin, c.env) ? origin : undefined,

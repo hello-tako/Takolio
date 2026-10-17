@@ -1,0 +1,231 @@
+{
+  "observedAt": "2026-10-17T09:22:56.827Z",
+  "accountId": "ef250a88911fd24073cb73d1c07e0218",
+  "zoneId": "9284fb2186987f14f810818583acaa46",
+  "workers": {
+    "production": {
+      "name": "frigo",
+      "deploymentId": "0ce984e1-0c1a-4221-a271-ff252a279ae1",
+      "versionId": "01b81140-3162-47e0-8573-88b679877f8a",
+      "createdOn": "2026-10-17T09:22:33.66973Z",
+      "bindings": {
+        "CACHE": "cbcd186cb63d4729ac23b04f1a539f2d",
+        "DB": "f975ec39-b2c8-4a2a-80e1-0366054599d3",
+        "IMAGES": "frigo-images",
+        "SCAN_QUEUE": "frigo-scan-queue"
+      },
+      "typedBindings": [
+        {
+          "name": "AI",
+          "project": "<catalog>",
+          "type": "ai"
+        },
+        {
+          "name": "ASSETS",
+          "type": "assets"
+        },
+        {
+          "name": "CACHE",
+          "namespace_id": "cbcd186cb63d4729ac23b04f1a539f2d",
+          "type": "kv_namespace"
+        },
+        {
+          "database_id": "f975ec39-b2c8-4a2a-80e1-0366054599d3",
+          "id": "f975ec39-b2c8-4a2a-80e1-0366054599d3",
+          "name": "DB",
+          "type": "d1"
+        },
+        {
+          "bucket_name": "frigo-images",
+          "name": "IMAGES",
+          "type": "r2_bucket"
+        },
+        {
+          "name": "SCAN_QUEUE",
+          "queue_name": "frigo-scan-queue",
+          "type": "queue"
+        },
+        {
+          "name": "SEND_EMAIL",
+          "type": "send_email"
+        }
+      ],
+      "vars": {
+        "AI_ALLOW_JUDGE_MODEL": "false",
+        "AI_ALLOW_REASONING_MODEL": "false",
+        "AI_ENABLED": "true",
+        "AI_MAX_CALLS_PER_OPERATION": "3",
+        "AI_MAX_IMAGE_BYTES": "5242880",
+        "AI_MAX_INPUT_TOKENS": "12000",
+        "AI_MAX_OCR_IMAGE_BYTES": "5242880",
+        "AI_MAX_OUTPUT_TOKENS": "2048",
+        "AI_MAX_TOTAL_TOKENS": "16000",
+        "AI_MOCK_MODE": "false",
+        "AI_MODEL_FAST": "qwen3.7-flash-2026-07-15",
+        "AI_MODEL_FAST_CANARY": "qwen3.7-flash",
+        "AI_MODEL_JUDGE": "qwen3.8-max-0902",
+        "AI_MODEL_MULTIMODAL": "qwen3.8-flash",
+        "AI_MODEL_OCR": "qwen-vl-ocr",
+        "AI_MODEL_REASONING": "qwen3.8-27b",
+        "AI_QWEN_ONLY": "true",
+        "AI_SHADOW_CANARY_PERCENT": "0",
+        "APP_URL": "https://frigo.tungjpstore.net",
+        "CLEANUP_RESERVED_SCAN_RETENTION_MINUTES": "60",
+        "CLOUDFLARE_VISION_FALLBACK": "false",
+        "DEEPSEEK_FALLBACK_ENABLED": "false",
+        "ENVIRONMENT": "production",
+        "GIT_COMMIT": "526596a8cd857984ad2b69901a8c7b0e9d6bccc2",
+        "GLM_FALLBACK_ENABLED": "false",
+        "GOOGLE_CLIENT_ID": "509963441971-c9sofh0ueaf8nji4r2gd5kahjlerrjdl.apps.googleusercontent.com",
+        "GROQ_FALLBACK_ENABLED": "false",
+        "MEAL_COMPOSITION_V2_ENABLED": "true",
+        "MEAL_PLANNER_ENABLED": "true",
+        "QWEN_BASE_URL": "https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
+        "QWEN_MODEL": "qwen3.7-flash",
+        "QWEN_REQUEST_TIMEOUT_MS": "60000",
+        "RECIPE_CATALOG_CUTOVER_ENABLED": "true",
+        "RECIPE_CATALOG_D1_CANARY_PERCENT": "0",
+        "RECIPE_CATALOG_MODE": "d1",
+        "SCAN_QUEUE_MODE": "async",
+        "STRICT_OTP_FAIL_CLOSED": "false",
+        "TURNSTILE_SITE_KEY": "0x4AAAAAAEqYwPIUD6OGmNNQ",
+        "WEEK_SCHEMA_MODE": "dual"
+      },
+      "secretNames": [
+        "CHECKOUT_ADMISSION_ENABLED",
+        "GROQ_API_KEY",
+        "JWT_SECRET",
+        "OTP_HASH_SECRET",
+        "PAYOS_API_KEY",
+        "PAYOS_CHECKOUT_ENABLED",
+        "PAYOS_CHECKSUM_KEY",
+        "PAYOS_CLIENT_ID",
+        "QWEN_API_KEY",
+        "RELEASE_VERIFY_TOKEN",
+        "RESEND_API_KEY",
+        "TURNSTILE_SECRET_KEY"
+      ],
+      "handlers": [
+        "fetch",
+        "queue",
+        "scheduled"
+      ],
+      "runtime": {
+        "compatibility_date": "2024-11-01",
+        "compatibility_flags": [
+          "nodejs_compat"
+        ],
+        "usage_model": "standard",
+        "assets": {
+          "html_handling": "auto-trailing-slash",
+          "not_found_handling": "single-page-application",
+          "run_worker_first": false,
+          "base_path": "/"
+        }
+      },
+      "operationalSettingsVerified": false,
+      "operationalBlockers": [
+        "Live routes, workers.dev, cron schedules, queue consumers and observability must be captured and compared immediately before deployment"
+      ]
+    },
+    "staging": {
+      "name": "frigo-staging",
+      "deploymentId": "8724644f-b993-4615-a714-e6beb226a493",
+      "versionId": "b4257b5c-dddf-4093-b969-f5bc09888bf6",
+      "createdOn": "2026-10-17T09:22:20.247576Z",
+      "bindings": {
+        "CACHE": "5582086f94e34e0ca9c4ef6fc6f0016e",
+        "DB": "7854298a-20f5-46aa-9cbf-917079c2a3dd",
+        "IMAGES": "frigo-images-staging",
+        "SCAN_QUEUE": "frigo-scan-queue-staging"
+      },
+      "typedBindings": [
+        {
+          "name": "AI",
+          "project": "<catalog>",
+          "type": "ai"
+        },
+        {
+          "name": "ASSETS",
+          "type": "assets"
+        },
+        {
+          "name": "CACHE",
+          "namespace_id": "5582086f94e34e0ca9c4ef6fc6f0016e",
+          "type": "kv_namespace"
+        },
+        {
+          "database_id": "7854298a-20f5-46aa-9cbf-917079c2a3dd",
+          "id": "7854298a-20f5-46aa-9cbf-917079c2a3dd",
+          "name": "DB",
+          "type": "d1"
+        },
+        {
+          "bucket_name": "frigo-images-staging",
+          "name": "IMAGES",
+          "type": "r2_bucket"
+        },
+        {
+          "name": "SCAN_QUEUE",
+          "queue_name": "frigo-scan-queue-staging",
+          "type": "queue"
+        }
+      ],
+      "vars": {
+        "AI_MOCK_MODE": "true",
+        "APP_URL": "https://frigo-staging.tungbipdz.workers.dev",
+        "CLEANUP_RESERVED_SCAN_RETENTION_MINUTES": "60",
+        "CLOUDFLARE_VISION_FALLBACK": "false",
+        "DEEPSEEK_FALLBACK_ENABLED": "false",
+        "ENVIRONMENT": "staging",
+        "GIT_COMMIT": "f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1",
+        "GLM_FALLBACK_ENABLED": "false",
+        "GROQ_FALLBACK_ENABLED": "false",
+        "MEAL_COMPOSITION_V2_ENABLED": "true",
+        "MEAL_PLANNER_ENABLED": "true",
+        "RECIPE_CATALOG_CUTOVER_ENABLED": "true",
+        "RECIPE_CATALOG_D1_CANARY_PERCENT": "0",
+        "RECIPE_CATALOG_MODE": "d1",
+        "SCAN_QUEUE_MODE": "async",
+        "TURNSTILE_SITE_KEY": "1x00000000000000000000AA",
+        "WEEK_SCHEMA_MODE": "dual"
+      },
+      "secretNames": [
+        "CHECKOUT_ADMISSION_ENABLED",
+        "JWT_SECRET",
+        "OTP_HASH_SECRET",
+        "PAYOS_API_KEY",
+        "PAYOS_CHECKOUT_ENABLED",
+        "PAYOS_CHECKSUM_KEY",
+        "PAYOS_CLIENT_ID",
+        "RECIPE_CATALOG_TEST_COHORT_ENABLED",
+        "RECIPE_CATALOG_TEST_EXCLUDE",
+        "RECIPE_CATALOG_TEST_INCLUDE",
+        "RELEASE_VERIFY_TOKEN",
+        "TURNSTILE_SECRET_KEY"
+      ],
+      "handlers": [
+        "fetch",
+        "queue",
+        "scheduled"
+      ],
+      "runtime": {
+        "compatibility_date": "2024-11-01",
+        "compatibility_flags": [
+          "nodejs_compat"
+        ],
+        "usage_model": "standard",
+        "assets": {
+          "html_handling": "auto-trailing-slash",
+          "not_found_handling": "single-page-application",
+          "run_worker_first": false,
+          "base_path": "/"
+        }
+      },
+      "operationalSettingsVerified": false,
+      "operationalBlockers": [
+        "Live routes, workers.dev, cron schedules, queue consumers and observability must be captured and compared immediately before deployment"
+      ]
+    }
+  }
+}

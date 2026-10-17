@@ -1,0 +1,53 @@
+name: Domain Infrastructure Audit
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Read-only target environment
+        type: choice
+        options: [staging, production]
+        default: staging
+      ref:
+        description: Full current main SHA with successful exact-SHA hosted CI
+        type: string
+        required: true
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: frigo-deploy-${{ inputs.environment }}
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    if: github.ref == 'refs/heads/main' && github.repository == 'hello-tako/Takolio' && github.repository_id == '1422954151'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: ${{ inputs.environment }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+      - name: Read-only Cloudflare runtime, routing, queue and ledger audit
+        env:
+          AUDIT_ENVIRONMENT: ${{ inputs.environment }}
+          AUDIT_SHA: ${{ inputs.ref }}
+          GH_TOKEN: ${{ github.token }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: node scripts/domain/audit-cloud.mjs "$AUDIT_ENVIRONMENT"
+      - name: Save sanitized read-only evidence
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: domain-audit-${{ inputs.environment }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .artifacts/domain/audit/
+          if-no-files-found: error
+          retention-days: 30

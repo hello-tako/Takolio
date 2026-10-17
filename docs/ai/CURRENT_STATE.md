@@ -1,3 +1,121 @@
+# Admin release guard follow-up - 2026-10-17
+
+Hosted CI `validate` passed on `09d425a1` (run 39021612765). The required
+Admin CI run 39021612780 passed lint, types, the full suite, migration smoke and
+build, then failed its release preflight because intentional domain entry/type
+changes were compared with the original customer commit. The human approval of
+`09d425a1` was verified; this follow-up requires a fresh approval after push.
+
+Preflight now selects only the immutable reviewed domain commit `352a4211` when
+it is in HEAD ancestry and parallel main history has no protected customer byte
+changes. Current working/committed customer edits still fail the final comparison.
+The downstream migration matrix likewise accepts descendant main history only
+when its pinned migrations/schema contract is unchanged; the 43-file ledger,
+historical failure cases and Admin database isolation stay strict.
+
+Local follow-up checks: baseline/config 16/16, real local D1 matrix 23/23,
+preflight, targeted lint, both TypeScript checks, public scan and diff check PASS.
+The matrix ran against the edited script and records dirty scoped paths; it is
+not hosted certification of the next commit. Exact-head CI remains required.
+The real local multi-Worker boundary check also passes 10/10 scenarios, including
+its synthetic browser and production-bundle isolation checks.
+
+Google Cloud client details were recovered through the authenticated UI. The
+Frigo production client currently authorizes only localhost and the legacy host;
+new Takolio origins are not yet saved. OAuth/provider acceptance, the read-only
+live infrastructure audit, deployment activation/rollback implementation and
+staging acceptance remain release gates. Production/domain state is unchanged;
+Admin remains disabled and undeployed. Next: publish this fix, obtain fresh
+human review, pass exact-head CI, then follow the protected release gates.
+
+---
+
+# Final local verification - 2026-10-17
+
+Full canonical-temp run: 388 files / 8,804 tests PASS. Final focused audit/config/
+readiness/Admin guard run: 44/44 PASS; independent read-only delta review PASS.
+Lint, both TypeScript checks and public-change scan PASS. The full run overlapped
+final audit fixes; final focused checks and exact-commit hosted CI cover that
+delta. Prior build/migration smoke also passed. No new application/domain deploy
+has occurred. Fresh final-head GitHub review and CI remain mandatory. See
+`docs/domain-integration/14-release-operations.md`.
+
+---
+
+# Credential and release checkpoint - 2026-10-17
+
+Status: `DOMAIN_IMPLEMENTED_LOCAL_VERIFIED`; new-domain staging acceptance and
+production cutover remain pending. The owner authorized production release and
+confirmed creating/saving the reviewed separate Cloudflare tokens. Both 30-day
+API tokens and account-ID secrets are now saved in their matching GitHub
+Environments; expiry is 2026-11-16. Separate release-verification keys are also
+synchronized with the Workers and proven by authenticated HTTP 200 responses.
+Secret rotation preserved code/runtime/bindings/assets. Current production
+version is `01b81140-3162-47e0-8573-88b679877f8a` (source `526596a8`); staging is
+`b4257b5c-dddf-4093-b969-f5bc09888bf6` (source `f7386e6a`). This was credential
+provisioning, not a new application/domain deployment. Admin is undeployed.
+
+The post-main-merge CI failure was isolated to the Admin customer-baseline test
+(8,794 other tests passed); its reviewed-baseline guard and the public documentation
+scan are fixed. Generated production candidates now explicitly preserve
+workers.dev/preview OFF. A manual current-schema read-only Cloudflare audit is
+prepared; the historical 0039-only readiness contract remains intact. Final-head
+hosted CI and fresh PR #3 approval are required; prior approval was dismissed by
+GitHub after the main merge. Main and Environment protections remain enforced.
+
+Next: finish final-head CI/review, merge normally, pass exact-main CI and execute
+read-only infrastructure audits. Resolve operational/provider/isolation evidence
+before reviewing a deployment activation path; the default Deploy workflow still
+uses legacy configs. Do not dispatch it as a domain cutover. Live staging must
+pass before production Environment approval and rollout. See
+`docs/domain-integration/14-release-operations.md` for evidence and exact gates.
+
+---
+
+# Release operations checkpoint - 2026-10-17
+
+Canonical repository: `hello-tako/Takolio` (`1422954151`). Admin prerequisite PR #2
+was approved by `vn-taphoanhatung` at exact head `84554b0f` and merged through
+branch protection as `304349ea09d542881eb09033327fdd0ff8c2d272`.
+This does not activate or deploy the Admin Console. Domain PR #3 was approved at
+`352a4211`; it is being integrated with the new main and requires fresh exact-head
+CI and review. Its last complete hosted run was 39011736920: 368 files / 8499 tests
+passed, plus lint, type checks, migration validation and production build.
+Local isolated browser regression: 94/94 passed (synthetic providers).
+
+The owner authorized production release and creating necessary Cloudflare tokens.
+GitHub staging/production Environments and account-ID secrets are restored;
+production still requires independent environment review without admin bypass.
+Cloudflare tokens are being provisioned with limited scope and 30-day expiry.
+New-domain live staging/provider acceptance remains pending; production/DNS are
+unchanged. Keep the existing planner/T20 flags and isolated storage. Never infer
+staging or production verification from local tests or candidate dry runs.
+
+# Current checkpoint: Takolio domain integration - 2026-10-17
+
+Status: `DOMAIN_IMPLEMENTED_LOCAL_VERIFIED`; staging blocked; production NOT_CHANGED. This checkpoint supersedes historical operational claims below for the current domain task.
+
+Canonical source: `hello-tako/Takolio`, repository ID `1422954151`; base `526596a8cd857984ad2b69901a8c7b0e9d6bccc2`; branch `feat/takolio-app-domain-integration`. Both combined Workers are preserved, Admin remains reserved. Default Wrangler files, payment business logic and storage schema are unchanged. New routing is dormant until an explicitly reviewed generated candidate enables it.
+
+Implemented: central domain profiles, exact host boundaries, safe WWW document redirects, preserved legacy app/API, API-only aliases, noindex/SEO, verified native association 404 boundaries, current-host export attribution, local read-only capture/probes and candidate preparation. Candidate preparation checks complete supported typed bindings, compatibility, staging overlap and clean source identity, and reports outstanding operational audit blockers. Unknown binding shapes are rejected.
+
+Actual local verification: full run before final review fixes 367 files / 8,496 tests PASS (811.53s). After review fixes, 86 focused domain/config/CORS/Workerd tests PASS; domain + export presentation subset 38 PASS. Lint, both TypeScript checks, paired planner/T20 build, migration smoke and high-severity dependency audit PASS. Initial synthetic harness failures (stale validator, Hono HSTS ordering) were corrected; actual Workerd harness initially omitted has_user_worker and was corrected without relaxing assertions. Legacy HSTS regression assertion required the outer header to preserve existing strict legacy asset policy. No tests were skipped or timeouts increased.
+
+Browser: isolated synthetic SQLite preview, mobile 390x844 and desktop 1440x1000. Created 7-day family meal plan, opened shopping view, refreshed nested route, no horizontal overflow or broken images on inspected views. This is local regression evidence, not live domain or real Google/OTP/PayOS certification. Plain Vite static preview initially showed session-unavailable because no API was attached; switched to existing isolated API preview.
+
+Cloudflare: account `ef250a88911fd24073cb73d1c07e0218`, active zone `takolio.app` / `9284fb2186987f14f810818583acaa46`, Universal SSL active. DNS 0 records, Worker routes 0, Redirect rules 0, no Worker connected. Access has 3 unrelated apps and no Takolio staging protection. Edge HSTS, live cron/consumers/observability and account-wide DO/Workflows remain unverified. Pages/D1 list NOT_ACCESSIBLE with current OAuth. Existing staging storage/queue IDs are distinct, but sandbox provider credentials/data sensitivity are unverified.
+
+Live versions: production `35dd189e-7e3c-4782-b69b-237da7dadd62`, SHA equals verified main; staging `b97b11fe-9151-41ac-9130-52532c045c8e`, SHA `f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1` exists and is ancestor of main. Read-only probes reached legacy production/staging; all five new hosts unreachable. No DNS, Worker, database, secret, OAuth, email or payment mutation occurred.
+
+Next: final exact-head draft PR/hosted CI and independent review; then authorized operator resolves Cloudflare scope, live settings, staging Access/data/provider isolation, Google JS origins and approved OTP inbox. New-domain staging acceptance must precede any separate owner production approval. Current repository has 0 Actions secrets and 0 Environments; historical deployment identity/approval controls need reviewed restoration before release. Do not weaken branch protection or route Admin.
+
+Details: `docs/domain-integration/FINAL-ACCEPTANCE.md`, `12-production-runbook.md`, `13-rollback-runbook.md`. Rollback pairs previous code with the recorded routes/settings/provider configuration; database rollback is excluded.
+
+---
+
+
+---
+
 # Takolio repository safeguards checkpoint - 2026-10-17
 
 Canonical repository hello-tako/Takolio (1422954151), candidate branch

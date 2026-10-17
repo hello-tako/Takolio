@@ -65,8 +65,8 @@ describe('admin deployment configuration', () => {
     expect(readdirSync('migrations-admin')).toEqual(['0001_admin_console_foundation.sql', '0002_admin_identity_governance_r2.sql', '0003_admin_governance_transaction_guards.sql']);
   });
 
-  // Relative to the merge base with main, so later main commits do not trip this guard.
-  it('the customer Worker entry and config files are unchanged from the merge base with main when that history is available', () => {
+  it('customer entry/config matches main or the exact reviewed domain integration baseline', () => {
+    const files = ['src/worker/index.ts', 'src/worker/types.ts', 'src/worker/config/csp.ts', 'src/worker/middleware/rate-limit.ts', 'wrangler.jsonc', 'wrangler.staging.jsonc', 'public/sw.js', 'vite.config.ts'];
     let baseline: string;
     try {
       baseline = execFileSync('git', ['merge-base', 'HEAD', 'origin/main'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
@@ -75,7 +75,18 @@ describe('admin deployment configuration', () => {
       expect(shallow, 'origin/main missing from a full clone').toBe('true');
       return;
     }
-    for (const file of ['src/worker/index.ts', 'src/worker/types.ts', 'src/worker/config/csp.ts', 'src/worker/middleware/rate-limit.ts', 'wrangler.jsonc', 'wrangler.staging.jsonc', 'public/sw.js', 'vite.config.ts']) {
+    const reviewedDomain = '352a4211afe7f70bf75115e0688ff9f4e1e232ee';
+    try {
+      execFileSync('git', ['merge-base', '--is-ancestor', reviewedDomain, 'HEAD'], { stdio: 'ignore' });
+      const common = execFileSync('git', ['merge-base', baseline, reviewedDomain], { encoding: 'utf8' }).trim();
+      // Parallel Admin history must leave every guarded file unchanged before using
+      // the independently reviewed domain baseline. Current unreviewed edits still fail.
+      execFileSync('git', ['diff', '--exit-code', common, baseline, '--', ...files], { stdio: 'ignore' });
+      baseline = reviewedDomain;
+    } catch {
+      // Any customer changes on main retain the normal merge-base comparison.
+    }
+    for (const file of files) {
       const before = execFileSync('git', ['show', `${baseline}:${file}`], { encoding: 'utf8', maxBuffer: 1 << 24 });
       expect(readFileSync(file, 'utf8'), file).toBe(before);
     }
