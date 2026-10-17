@@ -6,7 +6,7 @@ import { isDeepStrictEqual } from 'node:util';
 import { ACCOUNT, ZONE, REPOSITORY, REPOSITORY_ID, audit, cloudflareRead } from './audit-cloud.mjs';
 import { prepareReleaseConfig, configHash } from './release-config.mjs';
 import { stagingFetch, stagingCurlExecute } from './access-http.mjs';
-import { planHosts, attachHosts, detachCreatedHosts, validateDomains } from './hosts.mjs';
+import { planHosts, attachHosts, detachCreatedHosts, validateDomains, isDomainId } from './hosts.mjs';
 import { STAGING_GOOGLE_CLIENT_ID, unchangedAudit, verifyUploadedVersion, releaseStaging, recoveryAction, validateRecoveryContext } from './staging-release.mjs';
 import { capturedCommand } from '../cloudflare-deploy-retry.mjs';
 import { validateReleaseSource, migrationManifest, hostedCi, requireCurrentHostedMain,
@@ -61,11 +61,16 @@ async function gate(sha) {
     headSha: adminCi.head_sha, checkedAt: new Date().toISOString() } };
 }
 
-async function mutate(path, method, body) {
-  const allowed = path === `${script}/deployments` && method === 'POST' ||
+export function isStagingMutation(path, method) {
+  const domainPrefix = `${base}/workers/domains/`;
+  return path === `${script}/deployments` && method === 'POST' ||
     path === `${base}/workers/domains` && method === 'PUT' ||
-    new RegExp(`^${base}/workers/domains/[a-f0-9]{32}$`).test(path) && method === 'DELETE';
-  if (!allowed) throw new Error('Unapproved staging mutation');
+    typeof path === 'string' && path.startsWith(domainPrefix) &&
+    isDomainId(path.slice(domainPrefix.length)) && method === 'DELETE';
+}
+
+async function mutate(path, method, body) {
+  if (!isStagingMutation(path, method)) throw new Error('Unapproved staging mutation');
   let response;
   try {
     response = await fetch(`https://api.cloudflare.com/client/v4${path}`, {
@@ -144,6 +149,9 @@ export const provider = {
     plan.config.vars.GOOGLE_CLIENT_ID = STAGING_GOOGLE_CLIENT_ID;
     plan.bytes = `${JSON.stringify(plan.config, null, 2)}\n`;
     plan.sha256 = configHash(plan.bytes);
+    // Validate account inventory and hostname conflicts before any code upload or traffic change.
+    planHosts({ environment: 'staging', sha, versionId: snapshot.worker.versionId,
+      domains: await domainList(), ...await inventory() });
     const anonymous = await fetch(`${profiles.staging.legacy}/api/v1/health`, { redirect: 'manual', signal: AbortSignal.timeout(15000) });
     const location = new URL(anonymous.headers.get('location') ?? 'https://invalid.example');
     if (anonymous.status !== 302 || location.protocol !== 'https:' || !location.hostname.endsWith('.cloudflareaccess.com')) {

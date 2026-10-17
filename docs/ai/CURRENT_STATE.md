@@ -1,3 +1,32 @@
+# Live custom-domain ID compatibility - 2026-10-17
+
+PR #6 has exact-head approval for `ccf00bea`; CI 39038226587 succeeded with
+393 files / 8,855 tests. Admin CI 39038226579 remains pending at this checkpoint.
+Both previous main checks and canonical read-only staging audit 39039057157 passed.
+The staging Environment token can read all required runtime/Queue/D1 evidence;
+all 43 source migrations match. No migration was applied.
+
+A further supplementary read-only account domain inventory found 21 domain IDs,
+all 40 lowercase hex characters, while the adapter expected 32. The failure was
+reproduced before changing code. The fix retains 32-character receipts, accepts
+observed 40-character IDs and uses the same validator in rollback DELETE guards.
+Zone IDs remain 32 characters, ownership/conflict/drift checks remain enforced,
+and malformed lengths/path suffixes/other resources remain rejected. Staging
+preparation now validates account domains and hostname conflicts before upload
+or traffic activation; attachment still rechecks live fences and records its own
+returned IDs. No permission change or external mutation occurred.
+
+Validation: 10 focused domain/release/asset files / 391 tests PASS, changed-file
+ESLint PASS, and all 21 actual domain entries now validate with only the two
+approved staging targets planned. Exact checks and limitations are recorded in
+`docs/domain-integration/18-live-domain-id-compatibility.md`. This tooling fix
+needs normal protected merge and exact-main CI before staging release.
+Staging email-provider setup and real Google/OTP/PayOS sandbox/session/mobile/PWA/
+rollback acceptance remain pending. Production is unchanged; Admin stays reserved.
+Status: `DOMAIN_IMPLEMENTATION_IN_PROGRESS`.
+
+---
+
 # Queue consumer API compatibility - 2026-10-17
 
 PR #5 merged normally as `0900b013613fb1da62b0907b04eaf20734a9ac26` after
