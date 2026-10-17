@@ -41,3 +41,13 @@ This fix changes release tooling only. It does not add an email binding, change
 Access/provider permissions, expose Admin, or enable production deployment.
 Real staging Google/approved-inbox OTP/PayOS sandbox/session/mobile/PWA and live
 rollback acceptance remain pending. Status: `DOMAIN_IMPLEMENTATION_IN_PROGRESS`.
+
+## Merge baseline and additional checks
+
+PR #6 merged normally as `51d3590ad88c59128d15a746b4e3dfe5b7b8fb72` after both
+required checks and exact-head approval. Each suite passed 8,855 tests. This fix
+branch includes that merge. Its exact-main CI runs are 39040157903/39040157898.
+Full lint, both TypeScript checks, migration smoke, Web/Admin/Worker build and
+public added-text scan pass locally. Additional full local Vitest with 2 workers
+is running; its result is not claimed here. No staging release may use this fix
+before independent review, normal merge and successful exact-main checks.

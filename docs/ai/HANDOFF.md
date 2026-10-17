@@ -1,3 +1,32 @@
+# Domain release checkpoint - 2026-10-17 14:19 UTC
+
+PR #6 merged normally as `51d3590ad88c59128d15a746b4e3dfe5b7b8fb72` after exact-head
+approval and successful CI/Admin CI. Both hosted suites passed 393 files / 8,855
+tests; Admin also passed Worker boundaries, migration matrix, 12 browser cases
+and 10 keyboard repetitions. Exact-new-main checks 39040157903 and 39040157898
+are running. The automatic catalog workflow only ran its registration job;
+production gate/recover jobs were skipped.
+
+Implementation `2129545f` fixes observed 40-character custom-domain IDs, preserves
+32-character receipts and moves hostname preflight before upload/traffic. Its
+branch includes the new main merge without changing application code. Targeted
+regression passes 10 files / 391 tests. Full lint, typecheck, migration smoke,
+Web/Admin/Worker build, public-text scan and whitespace checks pass. Additional
+`TMPDIR=/private/tmp pnpm exec vitest run --maxWorkers=2` is running; do not claim
+its result before completion. Final-head hosted checks and independent review
+remain required before the normal protected merge.
+
+Canonical staging audit 39039057157 passed all 43 migrations and operational
+checks. A supplementary read-only check confirms production and staging still
+serve their recorded old deployment/version/source IDs. No application upload,
+traffic activation, new hostname, DNS, data, email, payment or Admin mutation has
+occurred. Staging provider/browser/rollback acceptance and a separately reviewed
+production lane remain pending. Next: review/merge this tooling fix, pass exact
+main checks, then dispatch the reviewed staging lane with fresh audit evidence.
+Status: `DOMAIN_IMPLEMENTATION_IN_PROGRESS`.
+
+---
+
 # Live custom-domain ID compatibility - 2026-10-17
 
 PR #6 has exact-head approval for `ccf00bea`; CI 39038226587 succeeded with
