@@ -4,6 +4,7 @@ import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { readFileSync, readdirSync, mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
+import { CUSTOMER_BASELINE, REVIEWED_DOMAIN_BASELINE, selectGuardedCustomerBaseline } from './admin-customer-baseline.mjs';
 
 const args = process.argv.slice(2);
 const get = (key, fallback) => args.includes(key) ? args[args.indexOf(key) + 1] : fallback;
@@ -33,7 +34,10 @@ const migrations = readdirSync('migrations-admin').filter(file => /^[0-9]{4}_[a-
   .map(name => ({ name, sha256: hash(readFileSync(path.join('migrations-admin', name))) }));
 const protectedPaths = ['migrations', 'src/worker/index.ts', 'src/worker/types.ts', 'wrangler.jsonc', 'wrangler.staging.jsonc',
   '.github/workflows/ci.yml', '.github/workflows/deploy.yml', '.github/workflows/production-d1-migrate.yml'];
-const changed = git('diff', '--name-only', '526596a8cd857984ad2b69901a8c7b0e9d6bccc2', '--', ...protectedPaths);
+const { baseline: customerBaseline } = selectGuardedCustomerBaseline({
+  git, originalBaseline: CUSTOMER_BASELINE, reviewedBaseline: REVIEWED_DOMAIN_BASELINE, guardedPaths: protectedPaths,
+});
+const changed = git('diff', '--name-only', customerBaseline, '--', ...protectedPaths);
 if (changed) throw new Error('Customer release surface changed: ' + changed);
 const paths = git('ls-files', '--cached', '--others', '--exclude-standard').split('\n').filter(Boolean)
   .filter(file => /^(?:src\/(?:admin|worker\/(?:facade|routes\/admin))\/|src\/worker\/admin-|migrations-admin\/|scripts\/admin-|tests\/(?:unit|integration|e2e)\/admin-|\.github\/workflows\/admin-|wrangler\.admin|vite\.admin|playwright\.admin|admin\/)/.test(file)).sort();
@@ -43,10 +47,10 @@ const blockers = ['independent security/workflow review on exact SHA', 'default-
   'protected environment self-review prevention and required checks', 'staging identity, rollback and browser certification'];
 const result = { schemaVersion: 2, generatedAt: new Date().toISOString(), sourceSha: sha, sourceTree: git('rev-parse', 'HEAD^{tree}'),
   cleanCheckout: dirtyPaths.length === 0, dirtyPaths, operation, mode: 'offline-plan-only', remoteExecuted: false, productionDeployed: false,
-  sourceManifest, sourceManifestSha256: hash(JSON.stringify(sourceManifest)), migrations, migrationManifestSha256: hash(JSON.stringify(migrations)),
+  customerBaseline, sourceManifest, sourceManifestSha256: hash(JSON.stringify(sourceManifest)), migrations, migrationManifestSha256: hash(JSON.stringify(migrations)),
   targets: { admin: admin.name, facade: facade.name, adminDb: admin.d1_databases[0].database_id, customerDb: facade.d1_databases[0].database_id },
   readyForDeployment: false, blockers };
 mkdirSync('.artifacts/admin-r2', { recursive: true });
 writeFileSync('.artifacts/admin-r2/release-plan.json', JSON.stringify(result, null, 2) + '\n');
 console.log(JSON.stringify({ sourceSha: sha, cleanCheckout: result.cleanCheckout, sourceManifestSha256: result.sourceManifestSha256,
-  operation, configurationValidation: 'PASS', readyForDeployment: false, remoteExecuted: false }));
+  operation, customerBaseline, configurationValidation: 'PASS', readyForDeployment: false, remoteExecuted: false }));

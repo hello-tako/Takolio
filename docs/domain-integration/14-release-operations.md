@@ -117,3 +117,27 @@ passed earlier in this checkpoint. The public-change scan and diff whitespace
 check pass. Independent read-only review found one queue-consumer identity issue;
 it was fixed with realistic script/service response coverage and re-reviewed PASS.
 Exact final-commit hosted CI and the fresh human approval are still required.
+
+## Required Admin CI follow-up
+
+At `09d425a1`, CI run 39021612765 passed. Admin CI run 39021612780 passed lint,
+types, the full suite, migration smoke and build, then failed its preflight's
+fixed pre-domain customer comparison. The exact-head human approval was present.
+This follow-up changes the preflight to accept only immutable reviewed domain
+baseline `352a4211` with HEAD ancestry and protected parallel-main byte checks;
+working/committed edits still fail. The subsequent migration matrix retains the
+original 43-file contract and permits descendant main history only if migration
+and schema-gate bytes remain unchanged. No branch-name exemption is used.
+
+Focused baseline/config tests pass 16/16, including rejection of unreviewed edits,
+parallel-main changes and missing history. Actual local preflight and D1 matrix
+23/23 pass; targeted lint, both typechecks, public scan and whitespace check pass.
+The local matrix receipt honestly records its dirty scoped source. A new commit
+needs new hosted CI and fresh human approval through the existing protection.
+
+Google Cloud's Frigo client details now load in the authenticated browser. Its
+current JavaScript origins are localhost and the legacy production host only.
+Takolio origins and staging OAuth acceptance remain pending; no client secret was
+revealed and no OAuth configuration was saved during this inspection.
+The real local multi-Worker boundary check also passes 10/10 scenarios, including
+synthetic browser requests and the production-bundle local-auth exclusion.

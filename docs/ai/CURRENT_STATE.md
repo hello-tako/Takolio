@@ -1,3 +1,35 @@
+# Admin release guard follow-up - 2026-10-17
+
+Hosted CI `validate` passed on `09d425a1` (run 39021612765). The required
+Admin CI run 39021612780 passed lint, types, the full suite, migration smoke and
+build, then failed its release preflight because intentional domain entry/type
+changes were compared with the original customer commit. The human approval of
+`09d425a1` was verified; this follow-up requires a fresh approval after push.
+
+Preflight now selects only the immutable reviewed domain commit `352a4211` when
+it is in HEAD ancestry and parallel main history has no protected customer byte
+changes. Current working/committed customer edits still fail the final comparison.
+The downstream migration matrix likewise accepts descendant main history only
+when its pinned migrations/schema contract is unchanged; the 43-file ledger,
+historical failure cases and Admin database isolation stay strict.
+
+Local follow-up checks: baseline/config 16/16, real local D1 matrix 23/23,
+preflight, targeted lint, both TypeScript checks, public scan and diff check PASS.
+The matrix ran against the edited script and records dirty scoped paths; it is
+not hosted certification of the next commit. Exact-head CI remains required.
+The real local multi-Worker boundary check also passes 10/10 scenarios, including
+its synthetic browser and production-bundle isolation checks.
+
+Google Cloud client details were recovered through the authenticated UI. The
+Frigo production client currently authorizes only localhost and the legacy host;
+new Takolio origins are not yet saved. OAuth/provider acceptance, the read-only
+live infrastructure audit, deployment activation/rollback implementation and
+staging acceptance remain release gates. Production/domain state is unchanged;
+Admin remains disabled and undeployed. Next: publish this fix, obtain fresh
+human review, pass exact-head CI, then follow the protected release gates.
+
+---
+
 # Final local verification - 2026-10-17
 
 Full canonical-temp run: 388 files / 8,804 tests PASS. Final focused audit/config/
