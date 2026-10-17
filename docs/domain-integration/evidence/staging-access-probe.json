@@ -1,0 +1,26 @@
+{
+  "observedAt": "2026-10-17T11:19:37.714Z",
+  "readOnly": true,
+  "results": [
+    {
+      "url": "https://frigo-staging.tungbipdz.workers.dev/api/v1/health/ready",
+      "status": 302,
+      "httpsVerified": true,
+      "accessLogin": true,
+      "redirectOrigin": "https://little-bar-8ffa.cloudflareaccess.com",
+      "redirectPath": "/cdn-cgi/access/login/frigo-staging.tungbipdz.workers.dev"
+    },
+    {
+      "url": "https://staging.takolio.app",
+      "status": null,
+      "httpsVerified": false,
+      "error": "DNS_TLS_OR_HTTP_UNREACHABLE"
+    },
+    {
+      "url": "https://api-staging.takolio.app/api/v1/health",
+      "status": null,
+      "httpsVerified": false,
+      "error": "DNS_TLS_OR_HTTP_UNREACHABLE"
+    }
+  ]
+}
