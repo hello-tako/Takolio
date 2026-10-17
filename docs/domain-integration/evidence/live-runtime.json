@@ -1,13 +1,13 @@
 {
-  "observedAt": "2026-10-17T06:43:01.664Z",
+  "observedAt": "2026-10-17T09:22:56.827Z",
   "accountId": "ef250a88911fd24073cb73d1c07e0218",
   "zoneId": "9284fb2186987f14f810818583acaa46",
   "workers": {
     "production": {
       "name": "frigo",
-      "deploymentId": "1575e4e8-7aed-4ca6-953d-8c45a0b13021",
-      "versionId": "35dd189e-7e3c-4782-b69b-237da7dadd62",
-      "createdOn": "2026-10-16T13:50:11.940986Z",
+      "deploymentId": "0ce984e1-0c1a-4221-a271-ff252a279ae1",
+      "versionId": "01b81140-3162-47e0-8573-88b679877f8a",
+      "createdOn": "2026-10-17T09:22:33.66973Z",
       "bindings": {
         "CACHE": "cbcd186cb63d4729ac23b04f1a539f2d",
         "DB": "f975ec39-b2c8-4a2a-80e1-0366054599d3",
@@ -130,9 +130,9 @@
     },
     "staging": {
       "name": "frigo-staging",
-      "deploymentId": "2fe87688-a7f4-4357-b13c-86f960ba6033",
-      "versionId": "b97b11fe-9151-41ac-9130-52532c045c8e",
-      "createdOn": "2026-10-15T19:37:36.223737Z",
+      "deploymentId": "8724644f-b993-4615-a714-e6beb226a493",
+      "versionId": "b4257b5c-dddf-4093-b969-f5bc09888bf6",
+      "createdOn": "2026-10-17T09:22:20.247576Z",
       "bindings": {
         "CACHE": "5582086f94e34e0ca9c4ef6fc6f0016e",
         "DB": "7854298a-20f5-46aa-9cbf-917079c2a3dd",

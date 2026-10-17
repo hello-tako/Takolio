@@ -41,6 +41,9 @@ export function prepareConfig(environment, snapshot, sha) {
     assets: { ...base.assets, directory: resolve(root, base.assets.directory), run_worker_first: true },
     d1_databases: base.d1_databases.map((db) => ({ ...db, migrations_dir: resolve(root, db.migrations_dir) })),
     vars: { ...live.vars, APP_URL: profile.app, PUBLIC_DOMAIN_ROUTING: 'true', GIT_COMMIT: sha },
+    // Keep exposure settings explicit in the generated release candidate.
+    workers_dev: environment === 'staging',
+    preview_urls: environment === 'staging',
     routes,
   };
   if (routes.some((route) => /(^|\.)admin\.takolio\.app/.test(route.pattern))) throw new Error('Admin must stay reserved');

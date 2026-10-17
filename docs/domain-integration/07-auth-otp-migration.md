@@ -10,7 +10,7 @@ Sessions use `__Host-` host-only, Path=/, HttpOnly, Secure, SameSite=Lax cookies
 
 ## OTP and email
 
-`src/worker/services/email.ts` builds numeric OTP emails with no app-domain link. Existing sender `no-reply@tungjpstore.net` remains configured; moving the app does not require moving the sender. Production has SEND_EMAIL and RESEND_API_KEY names; staging has neither in the inspected version. This proves configuration presence, not deliverability. No email has been sent by this task.
+`src/worker/services/email.ts` builds numeric OTP emails with no app-domain link. The existing sender remains configured; moving the app does not require moving the sender. Production has SEND_EMAIL and RESEND_API_KEY names; staging has neither in the inspected version. This proves configuration presence, not deliverability. No email has been sent by this task.
 
 OTP request/resend/verification/recovery retain expiration, rate limiting, hashing and replay controls. Do not change strict-mode or delivery flags as a domain workaround.
 

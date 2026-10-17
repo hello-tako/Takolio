@@ -4,8 +4,8 @@ import { captureBindings } from './bindings.mjs';
 
 const accountId = 'ef250a88911fd24073cb73d1c07e0218';
 const targets = [
-  ['production', 'frigo', '35dd189e-7e3c-4782-b69b-237da7dadd62'],
-  ['staging', 'frigo-staging', 'b97b11fe-9151-41ac-9130-52532c045c8e'],
+  ['production', 'frigo', '01b81140-3162-47e0-8573-88b679877f8a'],
+  ['staging', 'frigo-staging', 'b4257b5c-dddf-4093-b969-f5bc09888bf6'],
 ];
 const snapshot = { observedAt: new Date().toISOString(), accountId, zoneId: '9284fb2186987f14f810818583acaa46', workers: {} };
 for (const [environment, name, expectedVersion] of targets) {

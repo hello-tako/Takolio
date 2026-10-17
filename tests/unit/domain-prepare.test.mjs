@@ -12,6 +12,8 @@ it('prepares domain configs while preserving observed flags, storage, queues and
     const live = snapshot.workers[environment];
     expect(plan.deployAuthorized).toBe(false);
     expect(config.name).toBe(live.name);
+    expect(config.workers_dev).toBe(environment === 'staging');
+    expect(config.preview_urls).toBe(environment === 'staging');
     expect(config.assets.run_worker_first).toBe(true);
     expect(config.vars).toEqual({ ...live.vars, APP_URL: environment === 'production' ? 'https://takolio.app' : 'https://staging.takolio.app', PUBLIC_DOMAIN_ROUTING: 'true', GIT_COMMIT: sha });
     expect(config.d1_databases[0].database_id).toBe(live.bindings.DB);

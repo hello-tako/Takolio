@@ -19,7 +19,7 @@ export const STAGING_D1 = Object.freeze({
   id: '7854298a-20f5-46aa-9cbf-917079c2a3dd',
 });
 export const LEDGER_TIP = '0039_meal_composition_v2.sql';
-export const CANONICAL_REPOSITORY_ID = '1385308553';
+export const CANONICAL_REPOSITORY_ID = '1422954151';
 
 export const STATUS = Object.freeze({
   CERTIFIED: 'STAGING_D1_RUNTIME_READINESS_CERTIFIED',

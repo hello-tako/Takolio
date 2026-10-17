@@ -1,6 +1,6 @@
 # Cloudflare Inventory
 
-Observed 2026-10-17 through authenticated dashboard and read-only Wrangler metadata. Secret values were neither read nor retained. Snapshot timestamps and version IDs are in `evidence/live-runtime.json`.
+Baseline observed 2026-10-17 through authenticated dashboard and read-only Wrangler metadata. Credential provisioning and secret-only versions were subsequently verified; see `14-release-operations.md`. Snapshot timestamps and current version IDs are in `evidence/live-runtime.json`. Secret values are excluded from this inventory.
 
 | Resource | Status | Verified evidence or limit |
 | --- | --- | --- |
@@ -20,14 +20,14 @@ Observed 2026-10-17 through authenticated dashboard and read-only Wrangler metad
 | Account-wide D1 list | NOT_ACCESSIBLE | Existing OAuth request returned authentication error 10000 |
 | Durable Objects / Workflows | UNKNOWN | No binding in inspected versions; account-wide inventory not established |
 | Cron / queue consumers / observability | UNKNOWN live | Source config exists, but version metadata does not prove current account-level settings |
-| GitHub deployment integration | FOUND | Manual workflow_dispatch; new repository has 0 Actions secrets and 0 Environments |
+| GitHub deployment integration | FOUND | Manual workflow_dispatch; separate protected staging/production Environments now contain Cloudflare/account-ID/release-verification secrets |
 
 ## Workers and bindings
 
 | Resource | Production | Staging |
 | --- | --- | --- |
 | Combined Worker | `frigo` | `frigo-staging` |
-| Version | `35dd189e-7e3c-4782-b69b-237da7dadd62` | `b97b11fe-9151-41ac-9130-52532c045c8e` |
+| Version | `01b81140-3162-47e0-8573-88b679877f8a` | `b4257b5c-dddf-4093-b969-f5bc09888bf6` |
 | D1 | `f975ec39-b2c8-4a2a-80e1-0366054599d3` | `7854298a-20f5-46aa-9cbf-917079c2a3dd` |
 | KV | `cbcd186cb63d4729ac23b04f1a539f2d` | `5582086f94e34e0ca9c4ef6fc6f0016e` |
 | R2 | `frigo-images` | `frigo-images-staging` |
@@ -44,4 +44,4 @@ The Applications dashboard lists 3 self-hosted apps: roomAgent Staging (`api-sta
 
 ## Available authorization
 
-Existing Wrangler OAuth permits user/account read and Worker scripts access, but lacks zone/routes/Pages/D1 scopes needed for this task. Browser dashboard access allowed read-only audit. No new token, Global API Key, OAuth scope expansion, DNS change or deployment was performed. Use an existing authorized minimum-scoped credential or an authorized operator for the remaining gates.
+Existing Wrangler OAuth permits user/account read and Worker scripts access, but lacks zone/routes/Pages/D1 scopes needed for this task. The owner subsequently authorized two scoped, 30-day account-owned tokens; they are saved in matching GitHub Environments. Release verification keys were also synchronized and proven live without changing code/runtime/bindings/assets. No Global API Key, domain attachment, DNS change, application cutover or data migration was performed. Complete operational scope verification through the reviewed current-schema read-only audit before any activation.

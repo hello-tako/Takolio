@@ -1,3 +1,45 @@
+# Final local verification - 2026-10-17
+
+Full canonical-temp run: 388 files / 8,804 tests PASS. Final focused audit/config/
+readiness/Admin guard run: 44/44 PASS; independent read-only delta review PASS.
+Lint, both TypeScript checks and public-change scan PASS. The full run overlapped
+final audit fixes; final focused checks and exact-commit hosted CI cover that
+delta. Prior build/migration smoke also passed. No new application/domain deploy
+has occurred. Fresh final-head GitHub review and CI remain mandatory. See
+`docs/domain-integration/14-release-operations.md`.
+
+---
+
+# Credential and release checkpoint - 2026-10-17
+
+Status: `DOMAIN_IMPLEMENTED_LOCAL_VERIFIED`; new-domain staging acceptance and
+production cutover remain pending. The owner authorized production release and
+confirmed creating/saving the reviewed separate Cloudflare tokens. Both 30-day
+API tokens and account-ID secrets are now saved in their matching GitHub
+Environments; expiry is 2026-11-16. Separate release-verification keys are also
+synchronized with the Workers and proven by authenticated HTTP 200 responses.
+Secret rotation preserved code/runtime/bindings/assets. Current production
+version is `01b81140-3162-47e0-8573-88b679877f8a` (source `526596a8`); staging is
+`b4257b5c-dddf-4093-b969-f5bc09888bf6` (source `f7386e6a`). This was credential
+provisioning, not a new application/domain deployment. Admin is undeployed.
+
+The post-main-merge CI failure was isolated to the Admin customer-baseline test
+(8,794 other tests passed); its reviewed-baseline guard and the public documentation
+scan are fixed. Generated production candidates now explicitly preserve
+workers.dev/preview OFF. A manual current-schema read-only Cloudflare audit is
+prepared; the historical 0039-only readiness contract remains intact. Final-head
+hosted CI and fresh PR #3 approval are required; prior approval was dismissed by
+GitHub after the main merge. Main and Environment protections remain enforced.
+
+Next: finish final-head CI/review, merge normally, pass exact-main CI and execute
+read-only infrastructure audits. Resolve operational/provider/isolation evidence
+before reviewing a deployment activation path; the default Deploy workflow still
+uses legacy configs. Do not dispatch it as a domain cutover. Live staging must
+pass before production Environment approval and rollout. See
+`docs/domain-integration/14-release-operations.md` for evidence and exact gates.
+
+---
+
 # Release operations checkpoint - 2026-10-17
 
 Canonical repository: `hello-tako/Takolio` (`1422954151`). Admin prerequisite PR #2

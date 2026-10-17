@@ -47,7 +47,7 @@ The compressed URL inventory is path-assisted and query-redacted; it includes tr
 | `index.html` legacy OG URL | Baseline SEO and source fixture contract | Retain baseline; activated Worker rewrites response OG/canonical/Twitter | Workerd metadata/validator tests; disable fence/restore version |
 | `src/web/features/week/WeekExportModal.tsx` old bare hostname | Shopping-list attribution, browser | Current `window.location.host` | Display-only, no sensitive redirect; existing export/UI checks; revert one line |
 | `src/worker/utils/oauth.ts` Google tokeninfo and AuthPage GIS | External auth credential flow | Retain endpoints; operator adds exact JS origins | No guessed callback; live login required; retain old authorized origin |
-| `src/worker/services/email.ts` `no-reply@tungjpstore.net`, Resend API | Existing email transport | Retain sender; OTP has no domain link | Approved inbox delivery required; no transport/credential mutation |
+| `src/worker/services/email.ts` the existing configured sender, Resend API | Existing email transport | Retain sender; OTP has no domain link | Approved inbox delivery required; no transport/credential mutation |
 | `src/worker/payment/payos.ts` APP_URL + `/plus` | Return/cancel for each env | Derive from reviewed APP_URL as before | Sandbox and pending-order checks; coordinated config/provider rollback |
 | `src/worker/routes/billing.ts` PayOS webhook path | Server callback | Exact `/api/v1/billing/payos/webhook` on reviewed API host | Signed/invalid/duplicate tests; retain old endpoint |
 | `public/manifest.json`, `public/sw.js` | PWA root-relative assets/cache | Retain relative paths and build-ID strategy | New-origin storage is separate; install/offline tests live pending |

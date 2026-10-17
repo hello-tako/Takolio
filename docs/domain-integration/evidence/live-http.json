@@ -1,5 +1,5 @@
 {
-  "observedAt": "2026-10-17T06:36:26.165Z",
+  "observedAt": "2026-10-17T09:23:06.292Z",
   "mutation": false,
   "results": [
     {
@@ -42,7 +42,7 @@
         "strict-transport-security": "max-age=15552000; includeSubDomains",
         "x-robots-tag": null
       },
-      "bodySha256": "c8bad05b25b25128628f6b7ae056c4b85e47ef0b8abfd753c3b7b96485a4e37e",
+      "bodySha256": "1d5449f74e27d0b1a305a20d74c7430a4349272d14ebbb31c312f9e7b9148cd3",
       "health": {
         "status": "degraded",
         "commit": "526596a8cd857984ad2b69901a8c7b0e9d6bccc2",
@@ -61,7 +61,7 @@
         "strict-transport-security": "max-age=15552000; includeSubDomains",
         "x-robots-tag": null
       },
-      "bodySha256": "331a6ec5dfb202dd8b17fd2f5503b3deb0cb3edefe659aa1cada5118119dd941",
+      "bodySha256": "8bf1940caf42ca7fa27009b161fd27dbe6447fe68abac20b1534b212b7010237",
       "health": {
         "status": "ok",
         "commit": "f7386e6a8d9ef8955cc314daebf4d1aeecf4e5a1",

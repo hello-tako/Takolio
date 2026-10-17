@@ -2,7 +2,7 @@
 
 Trigger rollback on invalid TLS, wrong source SHA, host-boundary failure, login/session loss beyond expected new-origin login, CORS/CSRF failure, incompatible callback verification or sustained API errors.
 
-Before cutover capture exact Worker version/deployment, route and custom-domain IDs, DNS record IDs, workers.dev state, cron/consumers/settings and provider URLs. Current known production version is `35dd189e-7e3c-4782-b69b-237da7dadd62`; refresh it before use. Existing new-zone record/route counts are zero. That count is baseline evidence, not a replacement for IDs created during cutover.
+Before cutover capture exact Worker version/deployment, route and custom-domain IDs, DNS record IDs, workers.dev state, cron/consumers/settings and provider URLs. Current known production version is `01b81140-3162-47e0-8573-88b679877f8a`; refresh it before use. Existing new-zone record/route counts are zero. That count is baseline evidence, not a replacement for IDs created during cutover.
 
 1. Stop rollout and retain sanitized request IDs and Cloudflare audit events.
 2. Restore the recorded Worker version through the reviewed release mechanism and restore the matching pre-cutover domain/route/settings snapshot. The previous code has no domain fence: do not leave new API/WWW hosts attached to that code and assume boundaries still hold. Remove only newly created attachments through an approved reversible plan; do not alter unrelated DNS or delete the zone.
