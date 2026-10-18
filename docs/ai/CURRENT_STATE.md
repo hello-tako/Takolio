@@ -10716,3 +10716,32 @@ Owner-key proposal verification PASS: 4 files / 92 tests, lint, both TypeScript
 checks, disabled-target/key fingerprint contract, public patch scan and diff.
 pnpm audit snapshot reported all severity counts zero; no claim is made that
 GitHub's separately reported default-branch Dependabot findings are resolved.
+
+## Admin commissioning merged - 2026-10-18 12:38 UTC
+
+PR #16 exact-head review and both required checks PASS (406 files / 9,045 tests).
+Protected merge is 61a34b74d749ef1d6dfe42e74df74d79cb67ff50. Exact-main CI
+39127790356/Admin CI 39127790370 remain in progress at this checkpoint.
+Protected staging GET audit 39127939910 PASS after vn-taphoanhatung approval;
+all seven metadata sections observed, dedicated resources/Access match, no Admin
+Workers/domains deployed. Artifact 12136509550 is retained with its exact source
+and digest in admin/production-readiness/25_POST_MERGE_RELEASE_CHECKPOINT.md.
+Production GET audit 39127977644 awaits reviewer. Owner authorized agent browser
+approval, but concurrent window changes interrupted production UI operations.
+
+Release remains disabled. Token rotation/re-audit, GitHub read credential,
+verified Access subject, off-machine key recovery, reviewed activation and actual
+ST01-ST20 remain PENDING_EXTERNAL_EVIDENCE. The existing Cloudflare secret still
+has its original storage timestamp. No Admin live release write occurred.
+Merged-source local plan correctly refused disabled targets; Admin build and
+Wrangler dry-run PASS. Production customer health via curl: HTTP 200, DB ok,
+existing recipe authority warning. Evidence-only follow-up is not release source.
+
+At 12:49 UTC, production GET audit 39127977644 also SUCCESS after actual reviewer
+vn-taphoanhatung approval; all seven sections and exact target matches verified.
+Both reports state readyForDeployment=false, remoteMutations=false. Secret
+metadata now confirms ADMIN_RELEASE_GITHUB_READ_TOKEN exists in both Admin
+Environments, updated 12:39:49/12:40:06 UTC; its contents/scopes were not read.
+Cloudflare secret timestamps remain 11:43 UTC, so rotation is not certified.
+Owner Access subject and independent off-machine recovery still require evidence.
+Main CI/Admin CI are still running. No live Admin release write occurred.

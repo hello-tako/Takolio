@@ -7637,3 +7637,24 @@ bundle/font warnings. Hosted full-suite checks and human review remain required.
 - PENDING OWNER CONFIRMATION: save exact-origin credentialed Access CORS; bypass OFF and email/CI policies unchanged.
 - PENDING: PR independent review, protected merge/exact-main CI, new staging release, nine real staging acceptance checks, fresh production certification and independently approved production release.
 - Production remains unchanged; no staging acceptance PASS is claimed.
+
+## 2026-10-18 Admin post-merge checkpoint
+
+- DONE: PR #16 exact-head review; CI/Admin CI PASS with 9,045 tests each;
+  normal protected merge to 61a34b74.
+- RUNNING: exact-main CI 39127790356 / Admin CI 39127790370.
+- DONE: protected staging GET audit 39127939910 approved by vn-taphoanhatung;
+  seven metadata sections observed, no Admin Workers/custom domains yet.
+- WAITING: production GET audit 39127977644 Environment approval; agent browser
+  approval is authorized, but current UI control was interrupted by window changes.
+- PENDING: rotate/re-audit Cloudflare credential, fine-grained GitHub read secret,
+  real Access subject, independently recoverable owner-key backup, activation-policy
+  review and signed protected staging sequence/ST01-ST20 before production.
+- VERIFIED: merged-source disabled plan, Admin build and bundle dry-run; local key
+  fingerprint/modes. These do not certify live staging or production readiness.
+
+- UPDATE 12:49 UTC: production audit 39127977644 approved by vn-taphoanhatung
+  and PASS; both sanitized reports match all seven metadata sections and targets.
+- UPDATE: GitHub read secret is present in both Admin Environments; effective
+  scope/use verification pending. Cloudflare rotation and actual owner identity /
+  independent recovery remain pending; main checks are still running.

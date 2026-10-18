@@ -10046,3 +10046,39 @@ preflight and unauthenticated GET protection. Publish/review/protected merge thi
 fix and exact-main CI before any new release. Complete actual Google/OTP/session/
 sandbox PayOS/user/mobile/PWA/rollback acceptance, then fresh production-certify
 and protected production release. The infrastructure audit is not that certification.
+
+## Admin PR #16 merged; live release dependencies remain - 2026-10-18
+
+Source main 61a34b74d749ef1d6dfe42e74df74d79cb67ff50 came from approved exact-head
+02661c67 and successful CI 39125868119/Admin CI 39125868139 (9,045 tests, Admin
+browser 12/12, keyboard 10/10). Main CI 39127790356/Admin CI 39127790370 are
+running; verify their actual conclusions before any release.
+
+Protected staging credential audit 39127939910 SUCCESS after reviewer
+vn-taphoanhatung approved. Sanitized artifact 12136509550 and digest are recorded
+in admin/production-readiness/25_POST_MERGE_RELEASE_CHECKPOINT.md. Both Access
+apps/issuer/D1/KV match. No Admin Worker/custom domain exists. Production audit
+39127977644 awaits review. The owner explicitly authorized agent approval through
+the existing reviewer session; browser control was interrupted by window changes
+and the extension channel has unavailable auth. Do not bypass Environment policy.
+
+Token rotation question, fine-grained GitHub token setup and off-machine recovery
+questions are pending. No token rotation is inferred from owner authorization;
+secret timestamps are still 11:43 UTC. The browser tool requires owner handoff
+for new/changed credentials. Keep keys outside Git; real Access subject remains
+unverified. Policy enabled=false and execution variable absent. Do not sign a
+completed staging certificate without actual ST01-ST20. No Admin live write or
+production deployment occurred. Current checkout is an evidence-only branch
+codex/admin-postmerge-evidence-20261018 based on 61a34b74; use the exact reviewed
+main source, not this documentation branch, for future release operations.
+
+Superseding audit/storage update at 12:49 UTC: production credential audit
+39127977644 SUCCESS after vn-taphoanhatung approved; no approval bypass. Artifact
+12136599643 digest sha256:e21480f4225ae1e7f666bab82be7b6aa06eb678180bcd979f9c0b97777c9e0ef
+and its sanitized report are retained. Both audits have seven OBSERVED sections,
+match both Access apps/issuer and show no Admin Worker deployment.
+ADMIN_RELEASE_GITHUB_READ_TOKEN metadata now exists in both Environments with
+12:39:49/12:40:06 UTC timestamps, but effective scopes/use are unverified.
+Cloudflare token metadata is unchanged at 11:43 UTC; do not assume rotation.
+Main CI/Admin CI still running, Access subject/off-machine recovery remain
+PENDING_EXTERNAL_EVIDENCE, and there has been no live Admin release write.
