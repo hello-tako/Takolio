@@ -49,3 +49,14 @@ No Admin live migration, owner enrollment, key/secret change, Access configurati
 Worker upload or production deployment has occurred. Real owner identity,
 resource/protection configuration, ST01-ST20 and production acceptance remain
 PENDING_EXTERNAL_EVIDENCE. Current operational steps are in 19_SINGLE_OWNER_RELEASE.md.
+
+## Read-only Cloudflare dashboard observation
+
+At the logged-in account dashboard, D1 showed 12 databases and KV showed 10
+namespaces. The visible names were existing customer/other projects (`frigo`,
+`frigo-db-staging-v3`, `selinow-*`, `tungjpstore-*`, `frigo-frigo-cache*`,
+`selinow-cache/session-*`, and unrelated projects); no dedicated `takosan-admin*`,
+`takolio-admin*`, Admin D1 or Admin KV was present. Access Applications showed
+five existing apps (Takolio staging customer/PayOS, roomAgent, MailVault and
+portfolio admin) and no `Takolio Admin` app. This observation is read-only and
+uses no copied IDs; it confirms the infrastructure gate remains pending.
