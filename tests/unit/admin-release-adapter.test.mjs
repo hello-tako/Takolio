@@ -1,6 +1,7 @@
 import { generateKeyPairSync, sign } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { describe, expect, it, vi } from 'vitest';
+import { signOwnerArtifact } from '../../scripts/admin-owner-sign.mjs';
 import { canonical } from '../../scripts/admin-recovery.mjs';
 import {
   OPERATIONS,
@@ -35,7 +36,7 @@ const target = (environment, suffix, custodians) => ({
 });
 
 function policyFixture() {
-  const keys = [key(), key()];
+  const keys = [key()];
   const custodians = keys.map(({publicKey}, i) => ({
     operatorId: `operator-${i + 1}`,
     publicKey: publicKey.export({ type: 'spki', format: 'pem' }),
@@ -90,7 +91,7 @@ function authorizationFixture() {
 
 describe('Admin offline release adapter', () => {
   it('keeps the release operation set finite and explicit', () => {
-    expect(OPERATIONS).toEqual(['deploy-disabled', 'migrate', 'bootstrap', 'recover', 'disable', 'rollback-disabled']);
+    expect(OPERATIONS).toEqual(['initialize-disabled', 'deploy-disabled', 'enable', 'migrate', 'enroll-owner', 'bootstrap', 'recover', 'disable', 'rollback-disabled']);
   });
 
   it('fails closed when target identities are still placeholders', () => {
@@ -120,7 +121,7 @@ describe('Admin offline release adapter', () => {
     expect(() => validateTarget(fixture.policy, 'staging')).toThrow(/distinct/);
   });
 
-  it('binds two signatures to the exact source, policy, run and operation', () => {
+  it('binds the owner signature to the exact source, policy, run and operation', () => {
     const { fixture, context, bundle } = authorizationFixture();
     const authorized = validateAuthorization(bundle, fixture.policy, context, Date.parse('2026-10-17T00:10:00.000Z'));
     expect(authorized.manifest.sourceSha).toBe(context.sourceSha);
@@ -128,7 +129,7 @@ describe('Admin offline release adapter', () => {
     expect(() => validateAuthorization(bundle, fixture.policy, context, Date.parse('2026-10-17T00:10:00.000Z'))).toThrow(/signature|operation|mismatch/i);
   });
 
-  it('rejects replay, single approval and arbitrary operation payloads', () => {
+  it('rejects replay, missing approval and arbitrary operation payloads', () => {
     const { fixture, context, bundle } = authorizationFixture();
     bundle.manifest.expiresAt = '2026-10-17T00:09:00.000Z';
     expect(() => validateAuthorization(bundle, fixture.policy, context, Date.parse('2026-10-17T00:10:00.000Z'))).toThrow(/expired/);
@@ -140,6 +141,27 @@ describe('Admin offline release adapter', () => {
     expect(() => validateAuthorization(payload.bundle, payload.fixture.policy, payload.context, Date.parse('2026-10-17T00:10:00.000Z'))).toThrow(/payload|signature/);
   });
 
+  it('signs a bounded first-owner enrollment using only the rostered key', () => {
+    const { fixture, context, bundle } = authorizationFixture();
+    context.operation = bundle.manifest.operation = 'enroll-owner';
+    bundle.manifest.payload = { userId: 'owner', subject: 'real-access-subject', email: 'owner@example.test', displayName: 'Owner', approvalRef: 'owner-confirmation' };
+    const pem = fixture.keys[0].privateKey.export({ type: 'pkcs8', format: 'pem' });
+    const signed = signOwnerArtifact('release', bundle.manifest, 'operator-1', pem, fixture.policy, context, Date.parse('2026-10-17T00:10:00Z'));
+    expect(validateAuthorization(signed, fixture.policy, context, Date.parse('2026-10-17T00:10:00Z')).signer.operatorId).toBe('operator-1');
+    for (const payload of [{ ...bundle.manifest.payload, sql: 'arbitrary' }, { ...bundle.manifest.payload, subject: "injected'" }, { ...bundle.manifest.payload, email: 'invalid' }]) {
+      expect(() => signOwnerArtifact('release', { ...bundle.manifest, payload }, 'operator-1', pem, fixture.policy, context, Date.parse('2026-10-17T00:10:00Z'))).toThrow();
+    }
+  });
+
+  it('rejects customer or unrelated Worker names as Admin release destinations', () => {
+    const { policy } = policyFixture();
+    for (const field of ['adminWorker', 'facadeWorker']) {
+      const changed = structuredClone(policy);
+      changed.environments.staging[field] = 'frigo';
+      expect(() => validateTarget(changed, 'staging')).toThrow('unsafe target');
+    }
+  });
+
   it('renders isolated environment configs with Admin disabled', () => {
     const fixture = policyFixture();
     const configs = renderConfigs(fixture.policy.environments.staging, 'staging', 'a'.repeat(40), {
@@ -148,6 +170,8 @@ describe('Admin offline release adapter', () => {
     });
     expect(configs.admin.name).toBe('takosan-admin-staging');
     expect(configs.admin.vars.ADMIN_CONSOLE_ENABLED).toBe('false');
+    expect(configs.admin.vars.CUSTOMER_APP_URL).toBe('https://staging.takolio.app');
+    expect(configs.admin.vars.ADMIN_SCHEMA_VERSION).toBe('4');
     expect(configs.admin.d1_databases[0].database_id).toBe(fixture.policy.environments.staging.adminDatabaseId);
     expect(configs.facade.d1_databases[0].database_id).toBe(fixture.policy.environments.staging.customerDatabaseId);
     expect(configs.admin.d1_databases).not.toEqual(configs.facade.d1_databases);
@@ -185,7 +209,7 @@ describe('Admin release policy failure boundaries', () => {
   });
 
   it.each([
-    ['same signer', f => { f.bundle.approvals[1] = f.bundle.approvals[0]; }],
+    ['extra signer', f => { f.bundle.approvals.push(f.bundle.approvals[0]); }],
     ['invalid signature', f => { f.bundle.approvals[0].signature = 'a'.repeat(86); }],
     ['changed policy', f => { f.fixture.policy.environments.staging.hostname = 'changed.takosan.com'; }],
     ['injected SQL payload', f => { f.bundle.manifest.payload = { sql: 'DELETE FROM operator_identity_bindings' }; }],
@@ -229,7 +253,7 @@ describe('Admin release policy failure boundaries', () => {
 
   const fakeProvider = () => Object.fromEntries(['verifyTargets', 'verifyConsoleDisabled', 'verifyLedger', 'verifyExistingDatabaseIdentity', 'applyMigrations', 'bindDatabaseIdentity',
     'verifyDatabaseIdentity', 'verifySecrets', 'deploy', 'verifyDisabled', 'verifyRollback', 'rollback', 'verifyBootstrapRoster', 'bootstrap',
-    'recoveryRoster', 'recover', 'deploymentVersions', 'captureRollback', 'restoreRollback', 'verifyShutdownTarget', 'shutdown'].map(name => [name, vi.fn(async () => ({}))]));
+    'recoveryRoster', 'recover', 'deploymentVersions', 'captureRollback', 'restoreRollback', 'verifyShutdownTarget', 'shutdown', 'verifyInitialTargets', 'enrollOwner', 'verifyOwnerReady', 'enable', 'verifyEnabled'].map(name => [name, vi.fn(async () => ({}))]));
   const operationFixture = operation => {
     const { fixture, context, bundle } = authorizationFixture();
     context.operation = operation;
@@ -253,6 +277,67 @@ describe('Admin release policy failure boundaries', () => {
     expect(provider.verifyTargets.mock.calls.length).toBeGreaterThanOrEqual(2);
     expect(provider.verifySecrets.mock.invocationCallOrder[0]).toBeLessThan(provider.deploy.mock.invocationCallOrder[0]);
     expect(provider.verifyDisabled).toHaveBeenCalledWith(authorized.target, context.sourceSha);
+  });
+
+  it('initializes only absent targets and leaves the first release disabled', async () => {
+    const { authorized, context, provider } = operationFixture('initialize-disabled');
+    await expect(executeRelease(authorized, context, provider)).resolves.toMatchObject({ result: 'PASS', consoleEnabled: false });
+    expect(provider.deploy.mock.calls).toEqual([['facade'], ['admin']]);
+    expect(provider.verifyInitialTargets.mock.invocationCallOrder[0]).toBeLessThan(provider.deploy.mock.invocationCallOrder[0]);
+    expect(provider.verifyLedger).not.toHaveBeenCalled();
+    expect(provider.enable).not.toHaveBeenCalled();
+  });
+
+  it('does not overwrite an existing target during initialization', async () => {
+    const { authorized, context, provider } = operationFixture('initialize-disabled');
+    provider.verifyInitialTargets.mockRejectedValue(new Error('occupied'));
+    await expect(executeRelease(authorized, context, provider)).rejects.toThrow('occupied');
+    expect(provider.deploy).not.toHaveBeenCalled();
+    expect(provider.shutdown).not.toHaveBeenCalled();
+  });
+
+  it('contains a partially initialized exact target and still reports failure', async () => {
+    const { authorized, context, provider } = operationFixture('initialize-disabled');
+    provider.deploy.mockResolvedValueOnce({}).mockRejectedValueOnce(new Error('install failed'));
+    await expect(executeRelease(authorized, context, provider)).rejects.toThrow('install failed');
+    expect(provider.shutdown).toHaveBeenCalledOnce();
+    expect(provider.verifyDisabled).toHaveBeenCalledWith(authorized.target, context.sourceSha, true);
+    expect(provider.applyMigrations).not.toHaveBeenCalled();
+  });
+
+  it('never uses containment against an unverified partially initialized target', async () => {
+    const { authorized, context, provider } = operationFixture('initialize-disabled');
+    provider.deploy.mockRejectedValue(new Error('install failed'));
+    provider.verifyShutdownTarget.mockRejectedValue(new Error('unmapped'));
+    await expect(executeRelease(authorized, context, provider)).rejects.toThrow('install failed');
+    expect(provider.shutdown).not.toHaveBeenCalled();
+  });
+
+  it('enables only a migrated disabled release with secrets and an enrolled owner', async () => {
+    const { authorized, context, provider } = operationFixture('enable');
+    await expect(executeRelease(authorized, context, provider)).resolves.toMatchObject({ result: 'PASS', consoleEnabled: true });
+    for (const check of ['verifyLedger', 'verifyDatabaseIdentity', 'verifySecrets', 'verifyOwnerReady', 'captureRollback']) {
+      expect(provider[check].mock.invocationCallOrder[0]).toBeLessThan(provider.enable.mock.invocationCallOrder[0]);
+    }
+    expect(provider.enable).toHaveBeenCalledOnce();
+    expect(provider.verifyEnabled).toHaveBeenCalledWith(authorized.target, context.sourceSha);
+    expect(provider.deploy).not.toHaveBeenCalled();
+  });
+
+  it.each(['verifyLedger', 'verifyDatabaseIdentity', 'verifySecrets', 'verifyOwnerReady'])('refuses enablement when %s fails', async check => {
+    const { authorized, context, provider } = operationFixture('enable');
+    provider[check].mockRejectedValue(new Error('not ready'));
+    await expect(executeRelease(authorized, context, provider)).rejects.toThrow('not ready');
+    expect(provider.enable).not.toHaveBeenCalled();
+  });
+
+  it.each(['enable', 'verifyEnabled', 'verifyTargets'])('restores the disabled baseline after %s fails during enablement', async check => {
+    const { authorized, context, provider } = operationFixture('enable');
+    provider.captureRollback.mockResolvedValue({ adminVersion: 'disabled' });
+    if (check === 'verifyTargets') provider[check].mockResolvedValueOnce({}).mockRejectedValueOnce(new Error('postcheck failed'));
+    else provider[check].mockRejectedValue(new Error('postcheck failed'));
+    await expect(executeRelease(authorized, context, provider)).rejects.toThrow('postcheck failed');
+    expect(provider.restoreRollback).toHaveBeenCalledWith({ adminVersion: 'disabled' });
   });
 
   it('contains Admin even when D1, facade, secrets, and rollback checks are unavailable', async () => {
@@ -316,6 +401,16 @@ describe('Admin release policy failure boundaries', () => {
     expect(provider.restoreRollback).toHaveBeenCalledWith({ adminVersion: 'safe-admin', facadeVersion: 'safe-facade' });
   });
 
+  it('enrolls only through the fixed owner provider after schema and identity checks', async () => {
+    const { authorized, context, provider } = operationFixture('enroll-owner');
+    authorized.signer = { operatorId: 'owner' };
+    await expect(executeRelease(authorized, context, provider)).resolves.toMatchObject({ result: 'PASS', consoleEnabled: false });
+    expect(provider.enrollOwner).toHaveBeenCalledWith(authorized.manifest, authorized.signer);
+    expect(provider.verifyDatabaseIdentity.mock.invocationCallOrder[0]).toBeLessThan(provider.enrollOwner.mock.invocationCallOrder[0]);
+    expect(provider.bootstrap).not.toHaveBeenCalled();
+    expect(provider.enable).not.toHaveBeenCalled();
+  });
+
   it('requires a complete eligible roster before one atomic bootstrap statement', async () => {
     const { authorized, context, provider } = operationFixture('bootstrap');
     authorized.manifest.payload = { userIds: ['operator-1', 'operator-2', 'operator-3'], approvalRef: 'human-approval' };
@@ -351,7 +446,7 @@ function certificateFixture() {
 }
 
 describe('Production staging certification gate', () => {
-  it('requires both signatures over all twenty exact-source staging checks and artifact identity', () => {
+  it('requires the owner signature over all twenty exact-source staging checks and artifact identity', () => {
     const { policy, context, certificate } = certificateFixture();
     expect(validateStagingCertificate(certificate, policy, context, Date.parse('2026-10-17T00:10:00.000Z'))).toBe(certificate.manifest);
   });
@@ -363,7 +458,7 @@ describe('Production staging certification gate', () => {
     ['changed source', c => { c.manifest.sourceSha = 'd'.repeat(40); }],
     ['missing review', c => { c.manifest.independentReviewDigest = ''; }],
     ['changed artifact', c => { c.manifest.artifactDigest = 'd'.repeat(64); }],
-    ['single signer', c => { c.approvals.pop(); }],
+    ['missing signer', c => { c.approvals.pop(); }],
     ['duplicated signer', c => { c.approvals[1] = c.approvals[0]; }],
     ['expired', c => { c.manifest.expiresAt = '2026-10-17T00:05:00.000Z'; }],
   ])('rejects production certification with %s', (_name, mutate) => {

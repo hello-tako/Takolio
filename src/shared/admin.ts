@@ -504,5 +504,5 @@ export type AdminRevokeRoleResult =
   | { assignment: { id: string; status: 'revoked' } }
   | { approval: AdminApproval };
 
-/** Minimum active SUPER_ADMINs; enforced by the API and by a database trigger. */
-export const ADMIN_SUPER_ADMIN_MINIMUM = 3;
+/** Single-owner mode keeps the console operable without a multi-person roster. */
+export const ADMIN_SUPER_ADMIN_MINIMUM = 1;

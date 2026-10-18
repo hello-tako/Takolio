@@ -2,16 +2,25 @@ import {describe,it,expect} from 'vitest';
 import {generateKeyPairSync,sign} from 'node:crypto';
 import path from 'node:path';
 import {canonical,verifyRecovery} from '../../scripts/admin-recovery.mjs';
+import {signOwnerArtifact} from '../../scripts/admin-owner-sign.mjs';
 import {SqliteD1,applyMigrations} from '../helpers/sqlite-d1';
-describe('offline two-operator recovery',()=>{
+describe('offline enrolled-owner recovery',()=>{
  function fixture(){
   const keys=Array.from({length:2},()=>generateKeyPairSync('ed25519'));
   const roster=keys.map((key,i)=>({operator_id:`recovery_${i}`,status:'active',recovery_key_algorithm:'Ed25519',recovery_public_key:key.publicKey.export({type:'spki',format:'pem'}).toString()}));
   const now=Date.now();const sourceSha='a'.repeat(40),databaseIdentity='synthetic-admin-db';
   const manifest={version:1,id:'recovery_test_01',sourceSha,databaseIdentity,targetUserId:'replacement_admin',issuedAt:new Date(now-1000).toISOString(),expiresAt:new Date(now+60000).toISOString()};
   const approvals=keys.map((key,i)=>({operatorId:roster[i].operator_id,signature:sign(null,Buffer.from(canonical(manifest)),key.privateKey).toString('base64url')}));
-  return {roster,manifest,approvals,options:{sourceSha,databaseIdentity,now}};
+  return {keys,roster,manifest,approvals,options:{sourceSha,databaseIdentity,now}};
  }
+ it('prepares exactly one valid owner signature offline and rejects an untrusted key',()=>{
+  const f=fixture();const pem=f.keys[0].privateKey.export({type:'pkcs8',format:'pem'});
+  const signed=signOwnerArtifact('recovery',f.manifest,f.roster[0].operator_id,pem,f.roster,f.options,f.options.now);
+  expect(signed.approvals).toHaveLength(1);
+  expect(verifyRecovery(signed.manifest,signed.approvals,f.roster,f.options).sql).toContain('admin_recovery_operations');
+  expect(()=>signOwnerArtifact('recovery',f.manifest,'untrusted',pem,f.roster,f.options,f.options.now)).toThrow();
+  expect(()=>signOwnerArtifact('unknown',f.manifest,f.roster[0].operator_id,pem,f.roster,f.options,f.options.now)).toThrow();
+ });
  it('rejects duplicate, forged, expired, revoked, changed-source and changed-database approvals',()=>{
   const f=fixture();expect(verifyRecovery(f.manifest,f.approvals,f.roster,f.options).sql).toContain('admin_recovery_operations');
   expect(()=>verifyRecovery(f.manifest,[f.approvals[0],f.approvals[0]],f.roster,f.options)).toThrow();
@@ -25,8 +34,8 @@ describe('offline two-operator recovery',()=>{
   expect(()=>verifyRecovery(f.manifest,f.approvals,f.roster,{...f.options,sourceSha:'b'.repeat(40)})).toThrow();
   expect(()=>verifyRecovery(f.manifest,f.approvals,f.roster,{...f.options,databaseIdentity:'wrong-db'})).toThrow();
  });
- it('applies a narrow grant with audit atomically and refuses replay, changed keys, self-approval and audit failure',async()=>{
-  const f=fixture();const db=new SqliteD1({migrate:false});applyMigrations(db,path.resolve('migrations-admin'));
+ it('applies a narrow grant with audit atomically and refuses replay, changed keys, revoked enrollment and audit failure with one owner key',async()=>{
+  const f=fixture();f.approvals=f.approvals.slice(0,1);const db=new SqliteD1({migrate:false});applyMigrations(db,path.resolve('migrations-admin'));
   try{
    await db.prepare("INSERT INTO admin_database_identity VALUES('authority',?,'local')").bind(f.options.databaseIdentity).run();
    for(const r of [...f.roster,{operator_id:'replacement_operator',status:'active',recovery_key_algorithm:null,recovery_public_key:null}])db.seed(`INSERT INTO approved_human_operators(operator_id,approval_ref,approved_at,status,recovery_public_key,recovery_key_algorithm) VALUES('${r.operator_id}','synthetic-approval','now','active',${r.recovery_public_key?"'"+r.recovery_public_key+"'":'NULL'},${r.recovery_key_algorithm?"'Ed25519'":'NULL'})`);

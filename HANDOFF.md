@@ -674,3 +674,22 @@ Next: restore GitHub access/protections and obtain explicit real staging/resourc
 Status remains ADMIN_V1_PRODUCTION_READINESS_BLOCKED / ADMIN_V1_STAGING_AUTHORIZATION_REQUIRED.
 
 Validation qualification: default-concurrency full suite on 9395f0e3 failed 10 timing checks; full serial rerun uses existing assertions/timeouts. Both attempts are retained in production-readiness evidence and raw output archive; see 12_REGRESSION_RESULTS.md for actual results. Hosted default-concurrency CI remains required.
+
+## Admin console takeover — 2026-10-18
+
+Canonical repo is `hello-tako/Takolio`; working branch is
+`codex/admin-production-readiness-20261018` in
+`/Users/tunbee27/Documents/takolio-admin-production-20261018`.
+
+The owner removed the mandatory three-admin/two-custodian requirement. This branch
+implements schema 4 single-owner governance, audited owner enrollment, exact
+initialize-disabled/enable release operations, one-key offline signing/recovery,
+read-only sanitized infrastructure inventory and local verification. Existing
+customer/PayOS paths are untouched. Changes are published through PR #15 in hello-tako/Takolio; no live
+Admin resource or production mutation was performed. Exact-head hosted checks and configured human review remain required.
+
+Local Admin 348 tests, metadata delta 4 tests, workerd 10 scenarios, D1 matrix 25 cases, browser 12 cases and keyboard 10 repetitions PASS. Whole-project local regression was running at this publication checkpoint; its exact completion result is recorded on PR #15. Before merge: inspect the PR exact SHA, require both hosted checks and configured human review, and record the results. After merge: run the read-only audit, replace placeholders
+only with observed dedicated IDs/Access policy, create protected admin-staging and
+admin-production Environments, then stage initialize -> migrate -> enroll-owner ->
+bootstrap -> deploy-disabled -> enable. Keep all missing live acceptance as
+`PENDING_EXTERNAL_EVIDENCE`.

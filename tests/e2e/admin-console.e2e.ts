@@ -198,30 +198,25 @@ test('mobile layout keeps navigation reachable', async ({ page }) => {
   await expect(page.getByTestId('admin-recipe-row').first()).toBeVisible();
 });
 
-test('SUPER_ADMIN grants need a second SUPER_ADMIN in the UI, and the requester cannot approve', async ({ page }) => {
+test('SUPER_ADMIN grants allow the owner to confirm in the UI', async ({ page }) => {
   await login(page, SUPER);
   await page.getByTestId('admin-nav-settings').click();
   await expect(page.getByTestId('admin-settings-matrix')).toBeVisible();
-  // R2 starts with three independent operators; revocations require approval.
+  // The multi-role fixture remains available; one owner can confirm changes.
   await expect(page.getByTestId('admin-role-assignment-row').filter({ hasText: 'Quản trị viên cấp cao' })).toHaveCount(3);
-  await expect(page.getByTestId('admin-role-revoke-blocked')).toHaveCount(2);
+  await expect(page.getByTestId('admin-role-revoke-blocked')).toHaveCount(0);
   await page.getByTestId('admin-grant-user').fill('fx_admin_ops');
   await page.getByTestId('admin-grant-role').selectOption('SUPER_ADMIN');
   await page.getByTestId('admin-grant-submit').click();
   await expect(page.getByTestId('admin-notice').first()).toContainText('phê duyệt');
   const row = page.getByTestId('admin-approval-row').filter({ hasText: 'fx_admin_ops' }).first();
   await expect(row).toBeVisible();
-  await expect(row.getByTestId('admin-approval-approve')).toHaveCount(0);
-  await page.getByTestId('admin-logout').click();
-  await expect(page).toHaveURL(/\/admin\/login/);
-
-  await login(page, 'super2@fixture.takosan.test');
-  await page.getByTestId('admin-nav-settings').click();
+  await expect(row.getByTestId('admin-approval-approve')).toBeVisible();
   const pending = page.getByTestId('admin-approval-row').filter({ hasText: 'fx_admin_ops' }).first();
   await pending.getByTestId('admin-approval-approve').click();
   await expect(page.getByTestId('admin-notice').first()).toBeVisible();
   await expect(page.getByTestId('admin-role-assignment-row').filter({ hasText: 'Vận hành (fixture)' }).filter({ hasText: 'Quản trị viên cấp cao' })).toHaveCount(1);
-  await shot(page, '12-settings-four-eyes');
+  await shot(page, '12-settings-owner-confirmation');
 });
 
 test('preferences confirmation persists and a server-side session loss returns to sign-in with a reason', async ({ page, request }) => {

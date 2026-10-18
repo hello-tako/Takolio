@@ -14,7 +14,7 @@ on:
         options: [migrate]
         required: true
       execute:
-        description: Requires separate owner authorization and two signatures
+        description: Requires separate owner authorization and protected Environment approval
         type: boolean
         default: false
         required: true

@@ -11,10 +11,10 @@ on:
       operation:
         description: Fixed operation; Admin remains disabled
         type: choice
-        options: [bootstrap, recover]
+        options: [enroll-owner, bootstrap, recover]
         required: true
       execute:
-        description: Requires separate owner authorization and two signatures
+        description: Requires separate owner authorization and protected Environment approval
         type: boolean
         default: false
         required: true

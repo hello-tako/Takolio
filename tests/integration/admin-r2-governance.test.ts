@@ -11,10 +11,10 @@ describe('R2 governance invariants',()=>{
   expect(await verifyEnrolledAdminAccessIdentity(dbs.admin,{issuer:'https://fixture.cloudflareaccess.com',subject:'reassigned-email-new-sub'})).toBeNull();
   expect(()=>dbs!.admin.seed("INSERT INTO operator_identity_bindings(user_id,operator_id,access_iss,access_sub,approved_at,approval_ref,email,display_name) VALUES('different','operator_super','https://fixture.cloudflareaccess.com','another-sub','now','approved-reference','same@example.test','Same')")).toThrow();
  });
- it('F2: requires three approved active operators for production readiness',async()=>{
+ it('permits an enrolled owner without a three-person roster',async()=>{
   dbs=createDatabases();expect(await checkAdminGovernanceReadiness(dbs.admin,'https://fixture.cloudflareaccess.com')).toEqual({ready:true,activeOperators:3});
   dbs.admin.seed("UPDATE approved_human_operators SET status='revoked' WHERE operator_id='operator_super3'");
-  expect(await checkAdminGovernanceReadiness(dbs.admin,'https://fixture.cloudflareaccess.com')).toEqual({ready:false,activeOperators:2});
+  expect(await checkAdminGovernanceReadiness(dbs.admin,'https://fixture.cloudflareaccess.com')).toEqual({ready:true,activeOperators:2});
  });
  it('F5: an injected audit failure rolls back every bootstrap grant and closure',()=>{
   dbs=createDatabases({seed:false});

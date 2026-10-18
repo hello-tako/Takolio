@@ -9,9 +9,9 @@ on:
         type: string
         required: true
       operation:
-        description: Fixed operation; Admin remains disabled
+        description: Reviewed Admin operation
         type: choice
-        options: [deploy-disabled, rollback-disabled]
+        options: [initialize-disabled, deploy-disabled, enable, rollback-disabled]
         required: true
       certify:
         description: Package a separately signed completed ST01-ST20 report
@@ -19,7 +19,7 @@ on:
         default: false
         required: true
       execute:
-        description: Requires separate owner authorization and two signatures
+        description: Requires owner authorization and protected Environment approval
         type: boolean
         default: false
         required: true
@@ -138,7 +138,7 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: 22
-      - name: Validate two-custodian completed staging report
+      - name: Validate owner-signed completed staging report
         env:
           ADMIN_RELEASE_EXECUTION_ENABLED: ${{ vars.ADMIN_RELEASE_EXECUTION_ENABLED }}
           ADMIN_STAGING_REPORT: ${{ secrets.ADMIN_STAGING_REPORT }}

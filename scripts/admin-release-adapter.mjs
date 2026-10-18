@@ -6,7 +6,7 @@ import { pathToFileURL } from 'node:url';
 import { canonical, verifyRecovery } from './admin-recovery.mjs';
 import { buildBootstrapAdminSql } from './admin-local-lib.mjs';
 
-export const OPERATIONS = ['deploy-disabled', 'migrate', 'bootstrap', 'recover', 'disable', 'rollback-disabled'];
+export const OPERATIONS = ['initialize-disabled', 'deploy-disabled', 'enable', 'migrate', 'enroll-owner', 'bootstrap', 'recover', 'disable', 'rollback-disabled'];
 export const digest = value => createHash('sha256').update(typeof value === 'string' || Buffer.isBuffer(value) ? value : canonical(value)).digest('hex');
 const exact = (value, keys) => value && canonical(Object.keys(value).sort()) === canonical([...keys].sort());
 const sha = /^[a-f0-9]{40}$/;
@@ -31,6 +31,8 @@ export function validateTarget(policy, environment) {
       ![target.adminDatabaseId, target.customerDatabaseId, target.accessApplicationId].every(v => uuid.test(v) && !/^00000000-/.test(v)) ||
       target.adminDatabaseId === target.customerDatabaseId ||
       ![target.adminWorker, target.facadeWorker, target.adminDatabaseName, target.customerDatabaseName].every(v => name.test(v)) ||
+      !/^(?:takosan|takolio)-admin(?:-[a-z0-9-]+)?$/.test(target.adminWorker) ||
+      !/^(?:takosan|takolio)-admin-read-facade(?:-[a-z0-9-]+)?$/.test(target.facadeWorker) ||
       target.adminWorker === target.facadeWorker || !/^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)+$/.test(target.hostname) ||
       /\.(?:test|invalid|example|localhost)$/.test(target.hostname) ||
       !/^https:\/\/[a-z0-9-]+\.cloudflareaccess\.com$/.test(target.issuer) || !/^[a-f0-9]{64}$/.test(target.audience)) throw new Error('Missing or unsafe target identity');
@@ -39,18 +41,18 @@ export function validateTarget(policy, environment) {
     if (other[field] && target[field] === other[field]) throw new Error('Staging/production resources must be distinct');
   }
   if (other.customerDatabaseId && target.customerDatabaseId === other.customerDatabaseId) throw new Error('Staging cannot read production customer D1');
-  if (!Array.isArray(target.custodians) || target.custodians.length < 2 || target.custodians.length > 10 ||
+  if (!Array.isArray(target.custodians) || target.custodians.length < 1 || target.custodians.length > 10 ||
       target.custodians.some(c => !exact(c, ['operatorId', 'publicKey', 'approvalRef']) || !/^[A-Za-z0-9_-]{8,64}$/.test(c.operatorId) ||
         typeof c.approvalRef !== 'string' || c.approvalRef.length < 8 || c.approvalRef.length > 200) ||
       new Set(target.custodians.map(c => c.operatorId)).size !== target.custodians.length ||
-      new Set(target.custodians.map(c => keyFingerprint(c.publicKey))).size !== target.custodians.length) throw new Error('Independent custodian roster required');
+      new Set(target.custodians.map(c => keyFingerprint(c.publicKey))).size !== target.custodians.length) throw new Error('Owner signing key required');
   return target;
 }
 
 export function validateAuthorization(bundle, policy, context, now = Date.now()) {
   const target = validateTarget(policy, context.environment);
   if (!exact(bundle, ['manifest', 'approvals']) || !exact(bundle.manifest, ['version', 'id', 'sourceSha', 'environment', 'operation', 'runId',
-    'policyDigest', 'migrationDigest', 'issuedAt', 'expiresAt', 'payload']) || !Array.isArray(bundle.approvals) || bundle.approvals.length !== 2) throw new Error('Invalid release authorization');
+    'policyDigest', 'migrationDigest', 'issuedAt', 'expiresAt', 'payload']) || !Array.isArray(bundle.approvals) || bundle.approvals.length !== 1) throw new Error('Invalid owner release authorization');
   const m = bundle.manifest;
   if (m.version !== 1 || !/^[A-Za-z0-9_-]{8,48}$/.test(m.id) || !sha.test(m.sourceSha) ||
       m.sourceSha !== context.sourceSha || m.environment !== context.environment || m.operation !== context.operation || !OPERATIONS.includes(m.operation) ||
@@ -58,20 +60,25 @@ export function validateAuthorization(bundle, policy, context, now = Date.now())
       context.runAttempt !== '1') throw new Error('Release source, target, operation or run mismatch');
   const issued = Date.parse(m.issuedAt), expires = Date.parse(m.expiresAt);
   if (!Number.isFinite(issued) || !Number.isFinite(expires) || issued > now || expires <= now || expires - issued > 3600000) throw new Error('Release authorization expired');
-  if (new Set(bundle.approvals.map(a => a.operatorId)).size !== 2) throw new Error('Two independent signatures required');
+  if (new Set(bundle.approvals.map(a => a.operatorId)).size !== 1) throw new Error('One owner signature required');
   for (const approval of bundle.approvals) {
     const custodian = target.custodians.find(c => c.operatorId === approval.operatorId);
     if (!exact(approval, ['operatorId', 'signature']) || !custodian || !/^[A-Za-z0-9_-]{86}$/.test(approval.signature) ||
         !verify(null, Buffer.from(canonical(m)), createPublicKey(custodian.publicKey), Buffer.from(approval.signature, 'base64url'))) throw new Error('Invalid release signature');
   }
-  if (['deploy-disabled', 'migrate', 'disable'].includes(m.operation) && !exact(m.payload, [])) throw new Error('Unexpected operation payload');
-  if (m.operation === 'bootstrap' && (!exact(m.payload, ['userIds', 'approvalRef']) || !Array.isArray(m.payload.userIds) || m.payload.userIds.length !== 3 ||
-      new Set(m.payload.userIds).size !== 3 || !m.payload.userIds.every(v => /^[A-Za-z0-9_.:-]{1,128}$/.test(v)) ||
+  if (['initialize-disabled', 'deploy-disabled', 'enable', 'migrate', 'disable'].includes(m.operation) && !exact(m.payload, [])) throw new Error('Unexpected operation payload');
+  if (m.operation === 'enroll-owner' && (!exact(m.payload, ['userId', 'subject', 'email', 'displayName', 'approvalRef']) ||
+      !/^[A-Za-z0-9_.:-]{1,128}$/.test(m.payload.userId) || !/^[A-Za-z0-9_.:@-]{1,128}$/.test(m.payload.subject) ||
+      typeof m.payload.email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m.payload.email) || m.payload.email.length > 254 ||
+      typeof m.payload.displayName !== 'string' || !m.payload.displayName.trim() || m.payload.displayName.length > 200 ||
+      typeof m.payload.approvalRef !== 'string' || m.payload.approvalRef.length < 8 || m.payload.approvalRef.length > 200)) throw new Error('Invalid owner enrollment payload');
+  if (m.operation === 'bootstrap' && (!exact(m.payload, ['userIds', 'approvalRef']) || !Array.isArray(m.payload.userIds) || m.payload.userIds.length !== 1 ||
+      new Set(m.payload.userIds).size !== 1 || !m.payload.userIds.every(v => /^[A-Za-z0-9_.:-]{1,128}$/.test(v)) ||
       typeof m.payload.approvalRef !== 'string' || m.payload.approvalRef.length < 8 || m.payload.approvalRef.length > 200)) throw new Error('Invalid bootstrap payload');
   if (m.operation === 'recover' && !exact(m.payload, ['manifest', 'approvals'])) throw new Error('Invalid recovery payload');
   if (m.operation === 'rollback-disabled' && (!exact(m.payload, ['adminVersion', 'facadeVersion', 'previousSha']) ||
       !uuid.test(m.payload.adminVersion) || !uuid.test(m.payload.facadeVersion) || !sha.test(m.payload.previousSha))) throw new Error('Invalid rollback payload');
-  return { target, manifest: m, authorizationDigest: digest(bundle), policyDigest: digest(policy) };
+  return { target, signer: target.custodians.find(c => c.operatorId === bundle.approvals[0].operatorId), manifest: m, authorizationDigest: digest(bundle), policyDigest: digest(policy) };
 }
 
 function validateStagingAttestation(certificate, policy, context, now, artifactRequired) {
@@ -88,7 +95,7 @@ function validateStagingAttestation(certificate, policy, context, now, artifactR
       Object.values(m.checks).some(v => v !== 'PASS')) throw new Error('Incomplete exact-source staging certification');
   const completed = Date.parse(m.completedAt), expires = Date.parse(m.expiresAt);
   if (!Number.isFinite(completed) || !Number.isFinite(expires) || completed > now || expires <= now || expires - completed > 7 * 86400000) throw new Error('Staging certification expired');
-  if (!Array.isArray(certificate.approvals) || certificate.approvals.length !== 2 || new Set(certificate.approvals.map(a => a.operatorId)).size !== 2) throw new Error('Independent staging attestations required');
+  if (!Array.isArray(certificate.approvals) || certificate.approvals.length !== 1 || new Set(certificate.approvals.map(a => a.operatorId)).size !== 1) throw new Error('Owner staging attestation required');
   for (const a of certificate.approvals) {
     const custodian = target.custodians.find(c => c.operatorId === a.operatorId);
     if (!exact(a, ['operatorId', 'signature']) || !custodian || !/^[A-Za-z0-9_-]{86}$/.test(a.signature) ||
@@ -116,7 +123,7 @@ export function validateGitHub(facts, context) {
       environment.deployment_branch_policy?.protected_branches !== true || environment.deployment_branch_policy?.custom_branch_policies !== false) throw new Error('Protected environment policy required');
   const expectedWorkflow = { staging: '.github/workflows/admin-staging-deploy.yml', production: '.github/workflows/admin-production-deploy.yml',
     migrate: '.github/workflows/admin-d1-migrate.yml', recover: '.github/workflows/admin-breakglass.yml' };
-  const expectedPath = context.operation === 'disable' ? '.github/workflows/admin-emergency-disable.yml' : context.operation === 'migrate' ? expectedWorkflow.migrate : ['bootstrap', 'recover'].includes(context.operation) ? expectedWorkflow.recover : expectedWorkflow[context.environment];
+  const expectedPath = context.operation === 'disable' ? '.github/workflows/admin-emergency-disable.yml' : context.operation === 'migrate' ? expectedWorkflow.migrate : ['enroll-owner', 'bootstrap', 'recover'].includes(context.operation) ? expectedWorkflow.recover : expectedWorkflow[context.environment];
   if (String(run.id) !== context.runId || run.run_attempt !== 1 || run.event !== 'workflow_dispatch' || run.head_sha !== context.sourceSha ||
       run.head_branch !== 'main' || run.path !== expectedPath || run.actor?.type !== 'User' || run.triggering_actor?.id !== run.actor.id ||
       run.repository?.id !== 1422954151 || !ci.some(c => c.head_sha === context.sourceSha && c.path === '.github/workflows/admin-ci.yml' &&
@@ -139,10 +146,10 @@ export function renderConfigs(target, environment, sourceSha, templates) {
   admin.services = [{ binding: 'CUSTOMER_READ', service: target.facadeWorker, entrypoint: 'AdminCustomerReadFacade' }];
   admin.vars = { ...admin.vars, ENVIRONMENT: environment, ADMIN_CONSOLE_ENABLED: 'false', ADMIN_AUTH_MODE: 'cloudflare_access',
     ADMIN_ORIGIN: `https://${target.hostname}`, ADMIN_ACCESS_TEAM_DOMAIN: new URL(target.issuer).hostname, ADMIN_ACCESS_AUD: target.audience,
-    GIT_COMMIT: sourceSha, ADMIN_SCHEMA_VERSION: '3' };
+    GIT_COMMIT: sourceSha, ADMIN_SCHEMA_VERSION: '4', CUSTOMER_APP_URL: environment === 'production' ? 'https://takolio.app' : 'https://staging.takolio.app' };
   facade.name = target.facadeWorker;
   facade.routes = [];
-  facade.vars = { ...facade.vars, ENVIRONMENT: environment, GIT_COMMIT: sourceSha, ADMIN_SCHEMA_VERSION: '3' };
+  facade.vars = { ...facade.vars, ENVIRONMENT: environment, GIT_COMMIT: sourceSha, ADMIN_SCHEMA_VERSION: '4' };
   facade.d1_databases = [{ binding: 'DB', database_name: target.customerDatabaseName, database_id: target.customerDatabaseId }];
   return { admin, facade };
 }
@@ -161,6 +168,27 @@ export async function executeRelease(authorized, context, provider) {
       deploymentVersions: await provider.deploymentVersions([target.adminWorker]), result: 'PASS', consoleEnabled: false,
       remoteExecuted: true, productionDeployed: context.environment === 'production' };
   }
+  if (m.operation === 'initialize-disabled') {
+    await provider.verifyInitialTargets(target);
+    try {
+      await provider.deploy('facade');
+      await provider.deploy('admin');
+      await provider.verifyTargets(target, context.environment);
+      await provider.verifyDisabled(target, m.sourceSha);
+    } catch (error) {
+      // A first install has no previous version. Contain only an exact mapped target.
+      try {
+        await provider.verifyShutdownTarget(target);
+        await provider.shutdown();
+        await provider.verifyDisabled(target, m.sourceSha, true);
+      } catch { /* Preserve uncertainty in the failure receipt. */ }
+      throw error;
+    }
+    return { version: 1, sourceSha: m.sourceSha, environment: context.environment, operation: m.operation, runId: m.runId,
+      authorizationDigest: authorized.authorizationDigest, policyDigest: authorized.policyDigest, completedAt: new Date().toISOString(),
+      deploymentVersions: await provider.deploymentVersions(), result: 'PASS', consoleEnabled: false,
+      remoteExecuted: true, productionDeployed: context.environment === 'production' };
+  }
   await provider.verifyTargets(target, context.environment, m.operation === 'rollback-disabled');
   await provider.verifyConsoleDisabled(target);
   if (m.operation === 'migrate') {
@@ -172,7 +200,20 @@ export async function executeRelease(authorized, context, provider) {
   } else {
     await provider.verifyLedger(target, context.migrations, true);
     await provider.verifyDatabaseIdentity(target, context.environment);
-    if (m.operation === 'deploy-disabled') {
+    if (m.operation === 'enable') {
+      await provider.verifySecrets(target);
+      await provider.verifyOwnerReady(target);
+      const baseline = await provider.captureRollback();
+      try {
+        await provider.enable();
+        await provider.verifyTargets(target, context.environment);
+        await provider.verifyEnabled(target, m.sourceSha);
+        await provider.verifyTargets(target, context.environment);
+      } catch (error) {
+        try { await provider.restoreRollback(baseline); } catch { /* Failure receipt requires inspection. */ }
+        throw error;
+      }
+    } else if (m.operation === 'deploy-disabled') {
       await provider.verifySecrets(target);
       const baseline = await provider.captureRollback();
       try {
@@ -196,6 +237,8 @@ export async function executeRelease(authorized, context, provider) {
         try { if (baseline) await provider.restoreRollback(baseline); } catch { /* Explicit failure receipt requires operator inspection. */ }
         throw error;
       }
+    } else if (m.operation === 'enroll-owner') {
+      await provider.enrollOwner(m, authorized.signer);
     } else if (m.operation === 'bootstrap') {
       await provider.verifyBootstrapRoster(target, m.payload.userIds, target.issuer);
       await provider.bootstrap(buildBootstrapAdminSql({ userIds: m.payload.userIds, ceremonyId: m.id,
@@ -208,12 +251,14 @@ export async function executeRelease(authorized, context, provider) {
       await provider.recover(recovery.sql);
     }
   }
-  await provider.verifyTargets(target, context.environment);
-  await provider.verifyConsoleDisabled(target);
+  if (m.operation !== 'enable') {
+    await provider.verifyTargets(target, context.environment);
+    await provider.verifyConsoleDisabled(target);
+  }
   return { version: 1, sourceSha: m.sourceSha, environment: context.environment, operation: m.operation, runId: m.runId,
     authorizationDigest: authorized.authorizationDigest, policyDigest: authorized.policyDigest, completedAt: new Date().toISOString(),
     deploymentVersions: await provider.deploymentVersions(),
-    result: 'PASS', consoleEnabled: false, remoteExecuted: true, productionDeployed: context.environment === 'production' && ['deploy-disabled', 'disable', 'rollback-disabled'].includes(m.operation) };
+    result: 'PASS', consoleEnabled: m.operation === 'enable', remoteExecuted: true, productionDeployed: context.environment === 'production' && ['deploy-disabled', 'enable', 'disable', 'rollback-disabled'].includes(m.operation) };
 }
 
 export const normalizeArtifactDigest = value => /^[a-f0-9]{64}$/.test(value ?? '') ? `sha256:${value}` : undefined;

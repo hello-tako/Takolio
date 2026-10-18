@@ -9,12 +9,12 @@ on:
         type: string
         required: true
       operation:
-        description: Fixed operation; Admin remains disabled
+        description: Reviewed Admin operation
         type: choice
-        options: [deploy-disabled, rollback-disabled]
+        options: [initialize-disabled, deploy-disabled, enable, rollback-disabled]
         required: true
       execute:
-        description: Requires separate owner authorization and two signatures
+        description: Requires owner authorization and protected Environment approval
         type: boolean
         default: false
         required: true

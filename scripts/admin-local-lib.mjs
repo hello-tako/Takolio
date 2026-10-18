@@ -1,4 +1,4 @@
-// Admin Console local tooling: synthetic fixtures, three-operator bootstrap
+// Admin Console local tooling: synthetic fixtures, enrolled-owner bootstrap
 // SQL and the isolated Wrangler environment. Nothing here talks to Cloudflare or
 // GitHub; callers apply SQL to in-memory SQLite or `wrangler --local` only.
 import { mkdtempSync } from 'node:fs';
@@ -212,7 +212,7 @@ export function buildBootstrapAccountLookupSql(emails) {
 }
 
 /**
- * One-time, two-person operator bootstrap for the admin database. Both
+ * One-time enrolled-owner bootstrap for the admin database. All
  * SUPER_ADMIN grants are inserted by one statement (both or neither), only when
  * the admin database has never had an assignment; a trigger then forbids any
  * later operator_bootstrap grant.
@@ -230,14 +230,14 @@ export function buildLocalAccountSql({ email, password, name }) {
 
 
 export function buildBootstrapIdentityLookupSql(userIds) {
- if(!Array.isArray(userIds)||userIds.length!==3||new Set(userIds).size!==3||!userIds.every(id=>USER_ID_RE.test(id)))throw new Error('Bootstrap requires three distinct enrolled operators');
+ if(!Array.isArray(userIds)||userIds.length<1||userIds.length>3||new Set(userIds).size!==userIds.length||!userIds.every(id=>USER_ID_RE.test(id)))throw new Error('Bootstrap requires one to three distinct enrolled operators');
  return `SELECT b.user_id,b.operator_id,b.access_iss,b.access_sub FROM operator_identity_bindings b JOIN approved_human_operators h ON h.operator_id=b.operator_id AND h.status='active' WHERE b.status='active' AND b.user_id IN (${userIds.map(sql).join(',')}) ORDER BY b.user_id`;
 }
 export function buildBootstrapAdminSql({userIds,assignmentIds,ceremonyId='ceremony_local_001',independentApprovalRef,createdAt='2026-10-17T00:00:00.000Z'}) {
  buildBootstrapIdentityLookupSql(userIds);
  if(!independentApprovalRef||independentApprovalRef.length<8)throw new Error('Explicit independent approval reference required');
  if(!/^[A-Za-z0-9_-]{8,48}$/.test(ceremonyId))throw new Error('Invalid ceremony id');
- if(assignmentIds && (assignmentIds.length!==3||!assignmentIds.every(id=>/^ara_[0-9a-f]{16,48}$/.test(id))))throw new Error('Invalid assignment ids');
+ if(assignmentIds && (assignmentIds.length!==userIds.length||!assignmentIds.every(id=>/^ara_[0-9a-f]{16,48}$/.test(id))))throw new Error('Invalid assignment ids');
  return `INSERT INTO admin_bootstrap_ceremonies(id,operator_user_ids,independent_approval_ref,created_at,audit_id) VALUES (${sql(ceremonyId)},${sql(JSON.stringify(userIds))},${sql(independentApprovalRef)},${sql(createdAt)},${sql('evt_'+ceremonyId)});`;
 }
 let fixtureCache;

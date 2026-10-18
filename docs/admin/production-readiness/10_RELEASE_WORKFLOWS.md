@@ -1,5 +1,9 @@
 # Release workflows
 
+> Historical schema-3/source-specific snapshot. Staffing, signing, release operations
+> and current blockers are superseded by [19_SINGLE_OWNER_RELEASE.md](19_SINGLE_OWNER_RELEASE.md).
+> Retained receipts are not current-source or live deployment evidence.
+
 The exact tested/reviewed source is identified in `12_REGRESSION_RESULTS.md` and
 `13_INDEPENDENT_REVIEW.md`. Live execution remains disabled in both environments
 in `admin/release-policy.json`. No real resource IDs, keys or credentials were

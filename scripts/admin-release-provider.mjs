@@ -71,7 +71,7 @@ export function createProvider(authorized, context, env = process.env, fetcher =
     const v = await cf(`/workers/scripts/${worker}/versions/${versionId}`);
     const bindings = { bindings: v.resources?.bindings };
     const text = n => binding(bindings, n, 'plain_text')?.text;
-    if (v.id !== versionId || text('ENVIRONMENT') !== context.environment || text('GIT_COMMIT') !== previousSha || text('ADMIN_SCHEMA_VERSION') !== '3' ||
+    if (v.id !== versionId || text('ENVIRONMENT') !== context.environment || text('GIT_COMMIT') !== previousSha || text('ADMIN_SCHEMA_VERSION') !== '4' ||
         (isAdmin && (text('ADMIN_CONSOLE_ENABLED') !== 'false' || text('ADMIN_AUTH_MODE') !== 'cloudflare_access' ||
           binding(bindings, 'ADMIN_DB', 'd1')?.id !== target.adminDatabaseId ||
           binding(bindings, 'CUSTOMER_READ', 'service')?.service !== target.facadeWorker)) ||
@@ -119,8 +119,7 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
           binding(s, 'ENVIRONMENT', 'plain_text')?.text !== context.environment) throw new Error('Exact shutdown target mapping required');
     },
     async shutdown() { await checkWrite(); wrangler('shutdown', ['deploy']); },
-    async verifyTargets(t, _environment, allowShutdown = false) {
-      await provider.verifyShutdownTarget(t);
+    async verifyResourceTargets(t) {
       const [adminDb, customerDb, kv, app, domains, zones] = await Promise.all([
         cf(`/d1/database/${t.adminDatabaseId}`), cf(`/d1/database/${t.customerDatabaseId}`),
         cfList(`/accounts/${t.accountId}/storage/kv/namespaces`), cf(`/access/apps/${t.accessApplicationId}`),
@@ -128,14 +127,28 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
       ]);
       if (adminDb.uuid !== t.adminDatabaseId || adminDb.name !== t.adminDatabaseName || customerDb.uuid !== t.customerDatabaseId ||
           customerDb.name !== t.customerDatabaseName || !kv.some(n => n.id === t.kvId) || app.id !== t.accessApplicationId || app.domain !== t.hostname ||
-          app.aud !== t.audience || app.type !== 'self_hosted' || domains.some(d => d.service === t.facadeWorker) ||
+          app.aud !== t.audience || app.type !== 'self_hosted' || domains.some(d => d.service === t.facadeWorker || (d.service === t.adminWorker && d.hostname !== t.hostname)) ||
           !zones.some(z => z.id === t.zoneId) || zones.some(z => z.account?.id !== t.accountId)) throw new Error('Live target identity mismatch');
       for (const zone of zones) {
         const routes = await cfList(`/zones/${zone.id}/workers/routes`, true);
-        if (routes.some(r => r.script === t.facadeWorker)) throw new Error('Facade public route enabled');
+        if (routes.some(r => [t.facadeWorker, t.adminWorker].includes(r.script))) throw new Error('Admin or facade public route outside the dedicated custom-domain contract');
       }
       const account = await cf('/access/organizations');
       if (`https://${account.auth_domain}` !== t.issuer) throw new Error('Access issuer mismatch');
+    },
+    async verifyInitialTargets(t) {
+      await provider.verifyResourceTargets(t);
+      const workers = await cfList(`/accounts/${t.accountId}/workers/scripts`, true);
+      const domains = await cfList(`/accounts/${t.accountId}/workers/domains`, true);
+      const dns = await cfList(`/zones/${t.zoneId}/dns_records?name=${t.hostname}`);
+      if (dns.length) throw new Error('Initialization requires an unused DNS hostname');
+      if (workers.some(w => [t.adminWorker, t.facadeWorker].includes(w.id)) || domains.some(d => d.hostname === t.hostname)) {
+        throw new Error('Initialization requires absent Admin Workers and an unused hostname');
+      }
+    },
+    async verifyTargets(t, _environment, allowShutdown = false) {
+      await provider.verifyResourceTargets(t);
+      await provider.verifyShutdownTarget(t);
       const facadeSubdomain = await cf(`/workers/scripts/${t.facadeWorker}/subdomain`);
       if (facadeSubdomain.enabled || facadeSubdomain.previews_enabled) throw new Error('Facade public subdomain enabled');
       // Existing binding identities must agree before a release can replace them.
@@ -157,7 +170,7 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
       if (names.some((n, i) => migrations[i]?.name !== n) || (complete && names.length !== migrations.length)) throw new Error('Admin migration ledger mismatch');
       if (complete) {
         const schema = await query("SELECT value FROM admin_config_metadata WHERE key='schema_version'");
-        if (schema.length !== 1 || schema[0].value !== '3') throw new Error('Admin schema version mismatch');
+        if (schema.length !== 1 || schema[0].value !== '4') throw new Error('Admin schema version mismatch');
         const actual = await query("SELECT type,name,tbl_name,sql FROM sqlite_master WHERE sql IS NOT NULL AND name NOT LIKE 'sqlite_%' AND name NOT LIKE '_cf_%' AND name <> 'd1_migrations' ORDER BY type,name");
         if (digest(actual) !== digest(expectedSchema())) throw new Error('Actual Admin schema/trigger manifest mismatch');
         const health = await query('PRAGMA quick_check');
@@ -195,6 +208,42 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
       for (const worker of [t.adminWorker, t.facadeWorker]) {
         const s = await settings(worker);
         if (!binding(s, 'ADMIN_FACADE_HMAC_SECRET', 'secret_text') || (worker === t.adminWorker && !binding(s, 'ADMIN_AUDIT_HMAC_SECRET', 'secret_text'))) throw new Error('Operator-provisioned secrets missing');
+      }
+    },
+    async enrollOwner(manifest, signer) {
+      if (!signer || !target.custodians.some(c => c.operatorId === signer.operatorId && c.publicKey === signer.publicKey)) throw new Error('Trusted owner signer required');
+      const p = manifest.payload;
+      await checkWrite();
+      await query('INSERT INTO admin_owner_enrollments(id,user_id,operator_id,access_iss,access_sub,email,display_name,public_key,approval_ref,created_at) VALUES(?,?,?,?,?,?,?,?,?,?)',
+        [manifest.id, p.userId, signer.operatorId, target.issuer, p.subject, p.email, p.displayName, signer.publicKey, p.approvalRef, new Date().toISOString()]);
+    },
+    async verifyOwnerReady(t) {
+      const rows = await query(`SELECT COUNT(*) AS n FROM admin_active_super_operators WHERE access_iss=?`, [t.issuer]);
+      const marker = await query("SELECT value FROM admin_config_metadata WHERE key='bootstrap_completed_at'");
+      if (Number(rows[0]?.n) < 1 || marker.length !== 1) throw new Error('Enrolled owner bootstrap required before enablement');
+    },
+    async enable() {
+      await checkWrite();
+      configs.admin.vars.ADMIN_CONSOLE_ENABLED = 'true';
+      wrangler('admin', ['deploy']);
+    },
+    async verifyEnabled(t, expectedSha) {
+      await provider.verifyOwnerReady(t);
+      const [s, f] = await Promise.all([settings(t.adminWorker), settings(t.facadeWorker)]);
+      if (binding(f, 'GIT_COMMIT', 'plain_text')?.text !== expectedSha || binding(f, 'ADMIN_SCHEMA_VERSION', 'plain_text')?.text !== '4' ||
+          binding(s, 'ADMIN_SCHEMA_VERSION', 'plain_text')?.text !== '4' || binding(s, 'ADMIN_CONSOLE_ENABLED', 'plain_text')?.text !== 'true' ||
+          binding(s, 'ADMIN_AUTH_MODE', 'plain_text')?.text !== 'cloudflare_access' ||
+          binding(s, 'GIT_COMMIT', 'plain_text')?.text !== expectedSha) throw new Error('Enabled release metadata mismatch');
+      for (const route of ['/admin/', '/api/v1/admin/me', '/admin/favicon.svg']) {
+        const response = await fetcher(`https://${t.hostname}${route}`, { redirect: 'manual', signal: AbortSignal.timeout(15000) });
+        try {
+          const location = response.headers.get('location');
+          const access = location ? new URL(location, `https://${t.hostname}`) : null;
+          if (response.status !== 302 || access?.origin !== t.issuer ||
+              !(access.pathname === '/cdn-cgi/access/login' || access.pathname.startsWith('/cdn-cgi/access/login/'))) {
+            throw new Error('Enabled Admin must still deny anonymous traffic through Access');
+          }
+        } finally { await response.body?.cancel(); }
       }
     },
     async deploy(worker) { await checkWrite(); wrangler(worker, ['deploy']); },
@@ -260,8 +309,8 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
     },
     async rollback(worker, versionId) { await checkWrite(); wrangler(worker, ['versions', 'deploy', `${versionId}@100%`, '--yes']); },
     async verifyBootstrapRoster(_t, userIds, issuer) {
-      const rows = await query("SELECT b.user_id,b.operator_id,b.access_iss FROM operator_identity_bindings b JOIN approved_human_operators h ON h.operator_id=b.operator_id AND h.status='active' WHERE b.status='active' AND b.user_id IN (?,?,?)", userIds);
-      if (rows.length !== 3 || new Set(rows.map(r => r.operator_id)).size !== 3 || rows.some(r => r.access_iss !== issuer)) throw new Error('Verified three-operator enrollment required');
+      const rows = await query("SELECT b.user_id,b.operator_id,b.access_iss FROM operator_identity_bindings b JOIN approved_human_operators h ON h.operator_id=b.operator_id AND h.status='active' WHERE b.status='active' AND b.user_id IN (SELECT value FROM json_each(?))", [JSON.stringify(userIds)]);
+      if (rows.length !== userIds.length || new Set(rows.map(r => r.operator_id)).size !== userIds.length || rows.some(r => r.access_iss !== issuer)) throw new Error('Verified owner enrollment required');
     },
     async bootstrap(sql) { await checkWrite(); await query(sql); },
     async recoveryRoster() { return query("SELECT operator_id,status,recovery_key_algorithm,recovery_public_key FROM approved_human_operators WHERE status='active' AND recovery_key_algorithm='Ed25519' LIMIT 100"); },

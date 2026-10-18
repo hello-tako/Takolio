@@ -160,7 +160,7 @@ describe('Super Admin governance', () => {
   }
   const activeSupers = () => count(dbs.admin, "SELECT COUNT(*) AS n FROM admin_role_assignments WHERE role = 'SUPER_ADMIN' AND status = 'active'");
 
-  it('operator bootstrap requires three enrolled operators and is one-time', () => {
+  it('operator bootstrap accepts an enrolled roster and is one-time', () => {
     const fresh = createDatabases({ seed: false });
     try {
       for (const key of ['a', 'b', 'c']) fresh.admin.seed(`
@@ -177,24 +177,23 @@ describe('Super Admin governance', () => {
       expect(() => fresh.admin.seed(bootstrap)).toThrow();
       expect(count(fresh.admin, 'SELECT COUNT(*) AS n FROM admin_role_assignments')).toBe(3);
       expect(() => fresh.admin.seed("INSERT INTO admin_role_assignments (id, user_id, role, grant_source) VALUES ('ara_00000000000000e5', 'u_a', 'SUPER_ADMIN', 'operator_bootstrap')")).toThrow(/bootstrap|ceremony|completed/);
-      expect(() => buildBootstrapAdminSql({ userIds: ['u_a', 'u_a'], assignmentIds: ['ara_00000000000000a1', 'ara_00000000000000b2'] })).toThrow(/three distinct/);
+      expect(() => buildBootstrapAdminSql({ userIds: ['u_a', 'u_a'], assignmentIds: ['ara_00000000000000a1', 'ara_00000000000000b2'] })).toThrow(/distinct enrolled/);
     } finally {
       closeDatabases(fresh);
     }
   });
 
-  it('a SUPER_ADMIN grant needs a second, distinct SUPER_ADMIN; requester and target cannot approve; replay is rejected', async () => {
+  it('an owner can confirm a SUPER_ADMIN grant; the target cannot approve and replay is rejected', async () => {
     const s = await supers(3);
     const request = await call('/api/v1/admin/roles', { env, method: 'POST', session: s.super, body: { userId: 'fx_admin_ops', role: 'SUPER_ADMIN' } });
     expect(request.status).toBe(201);
     const approvalId = request.json.data.approval.id;
-    expect((await call(`/api/v1/admin/approvals/${approvalId}/approve`, { env, method: 'POST', session: s.super })).status).toBe(403);
     const ops = await login(env, fx('ops'));
     expect((await call(`/api/v1/admin/approvals/${approvalId}/approve`, { env, method: 'POST', session: ops })).status).toBe(403);
     expect(activeSupers()).toBe(3);
-    const approved = await call(`/api/v1/admin/approvals/${approvalId}/approve`, { env, method: 'POST', session: s.super2 });
+    const approved = await call(`/api/v1/admin/approvals/${approvalId}/approve`, { env, method: 'POST', session: s.super });
     expect(approved.status).toBe(200);
-    expect(approved.json.data.approval).toMatchObject({ status: 'approved', decidedBy: 'fx_admin_super2' });
+    expect(approved.json.data.approval).toMatchObject({ status: 'approved', decidedBy: 'fx_admin_super' });
     expect(activeSupers()).toBe(4);
     expect((await call(`/api/v1/admin/approvals/${approvalId}/approve`, { env, method: 'POST', session: s.super2 })).status).toBe(409);
     // The grant ended the target's existing sessions.
@@ -212,26 +211,19 @@ describe('Super Admin governance', () => {
     expect(count(dbs.admin, "SELECT COUNT(*) AS n FROM admin_role_assignments WHERE user_id = 'fx_admin_support' AND role = 'SUPER_ADMIN'")).toBe(0);
   });
 
-  it('revoking a SUPER_ADMIN is a four-eyes request and can never drop below three enrolled operators', async () => {
-    const s2 = await supers(3);
-    const blocked = await call('/api/v1/admin/roles/fx_ceremony_001_1', { env, method: 'DELETE', session: s2.super });
-    expect(blocked.status).toBe(409);
-    expect(activeSupers()).toBe(3);
-    expect(() => dbs.admin.seed("UPDATE admin_role_assignments SET status = 'revoked', revoked_at = 'x' WHERE id = 'fx_ceremony_001_1'")).toThrow(/at least three/);
-
+  it('an owner may confirm revocation while preserving the last enrolled SUPER_ADMIN', async () => {
     const s = await supers(4);
     const request = await call('/api/v1/admin/roles/fx_ceremony_001_1', { env, method: 'DELETE', session: s.super });
     expect(request.status).toBe(201);
     expect(request.json.data.approval).toMatchObject({ action: 'role.revoke.super_admin', assignmentId: 'fx_ceremony_001_1', status: 'pending' });
     expect(activeSupers()).toBe(4);
-    // The target cannot approve its own revocation, nor can the requester.
+    // The target cannot approve its own revocation; the requesting owner can.
     expect((await call(`/api/v1/admin/approvals/${request.json.data.approval.id}/approve`, { env, method: 'POST', session: s.super2 })).status).toBe(403);
-    expect((await call(`/api/v1/admin/approvals/${request.json.data.approval.id}/approve`, { env, method: 'POST', session: s.super })).status).toBe(403);
-    const approved = await call(`/api/v1/admin/approvals/${request.json.data.approval.id}/approve`, { env, method: 'POST', session: s.ops });
+    const approved = await call(`/api/v1/admin/approvals/${request.json.data.approval.id}/approve`, { env, method: 'POST', session: s.super });
     expect(approved.status).toBe(200);
     expect(activeSupers()).toBe(3);
     expect((await call('/api/v1/admin/me', { env, session: s.super2 })).json.code).toBe('ADMIN_SESSION_REVOKED');
-    expect(count(dbs.admin, "SELECT COUNT(*) AS n FROM admin_audit_events WHERE action = 'admin.approval.approve' AND actor_user_id = 'fx_admin_ops'")).toBe(1);
+    expect(count(dbs.admin, "SELECT COUNT(*) AS n FROM admin_audit_events WHERE action = 'admin.approval.approve' AND actor_user_id = 'fx_admin_super'")).toBe(1);
   });
 
   it('concurrent duplicate requests yield one approval and a 409, never a 500', async () => {
@@ -445,8 +437,7 @@ describe('Cloudflare Access adapter (offline test keys only)', () => {
       expect(count(prodDbs.admin, "SELECT COUNT(*) AS n FROM admin_audit_events WHERE action='admin.access.denied' AND reason_code='identity_mismatch'")).toBeGreaterThanOrEqual(2);
       prodDbs.admin.seed("UPDATE operator_identity_bindings SET status='revoked' WHERE user_id='fx_admin_super3'");
       const governance = await call('/api/v1/admin/auth/login', { env: prod, method: 'POST', headers: { 'Cf-Access-Jwt-Assertion': assertion } });
-      expect(governance.status).toBe(503);
-      expect(governance.json.code).toBe('ADMIN_GOVERNANCE_INCOMPLETE');
+      expect(governance.status).toBe(200); // One enrolled owner remains sufficient.
     } finally {
       closeDatabases(prodDbs);
     }

@@ -144,5 +144,5 @@ export function escapeLike(value: string): string {
 /** SQLite/D1 constraint or trigger aborts surface as conflicts, never as 500s. */
 export function isConstraintError(error: unknown): boolean {
   const message = error instanceof Error ? error.message : String(error);
-  return /UNIQUE constraint failed|CHECK constraint failed|SQLITE_CONSTRAINT|at least (?:two|three) active (?:enrolled )?SUPER_ADMIN|role target must be|approval target must be|cannot be reactivated|already been completed|are final/i.test(message);
+  return /UNIQUE constraint failed|CHECK constraint failed|SQLITE_CONSTRAINT|at least (?:one|two|three) active (?:enrolled )?SUPER_ADMIN|role target must be|approval target must be|cannot be reactivated|already been completed|are final/i.test(message);
 }

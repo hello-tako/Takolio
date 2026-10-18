@@ -7,7 +7,7 @@ import { readFileSync, readdirSync, mkdirSync, mkdtempSync, rmSync, writeFileSyn
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { localWranglerEnv } from './admin-local-lib.mjs';
+import { buildAdminFixtureSql, localWranglerEnv } from './admin-local-lib.mjs';
 import { CUSTOMER_BASELINE, selectGuardedCustomerBaseline } from './admin-customer-baseline.mjs';
 import { migrationManifest, verifyMigrationLedger } from './release-check.mjs';
 import { renderSchemaGateCommand } from './d1-schema-gate.mjs';
@@ -350,6 +350,47 @@ try {
       ledger: adminFreshLedger, state: adminFreshState },
     adminFreshApply.status === 0 && adminFreshReapply.status === 0 && adminFreshLedger.pass &&
       adminFreshState.ledger === adminManifest.count && adminFreshState.schema_version === currentVersion);
+
+  const schema3Files = currentAdminFiles.filter(file => Number(file.name.slice(0, 4)) <= 3);
+  const populated3 = database('admin-populated-3-to-4', schema3Files, true);
+  const populatedBaseApply = apply(populated3);
+  const fixtureFile = path.join(populated3.dir, 'synthetic-admin.sql');
+  writeFileSync(fixtureFile, buildAdminFixtureSql().admin + `
+    INSERT INTO admin_action_approvals(id,action,target_user_id,requested_by,requested_at,expires_at,requester_access_iss,requester_access_sub)
+    VALUES('pending_upgrade','role.grant.super_admin','fx_admin_ops','fx_admin_super','2026-10-17','2099-01-01','https://fixture.cloudflareaccess.com','fx-sub-super');`);
+  const populatedSeed = wrangler(populated3.config, ['execute', populated3.database, '--persist-to', populated3.persist, '--file', fixtureFile, '--yes']);
+  const historyTables = ['admin_bootstrap_ceremonies', 'admin_role_assignments', 'admin_action_approvals', 'admin_audit_events', 'admin_recovery_operations'];
+  const histories = () => historyTables.map(table => query(populated3, `SELECT * FROM ${table} ORDER BY id`));
+  const priorHistories = histories();
+  writeFiles(populated3.migrationDirectory, currentAdminFiles);
+  const ownerUpgrade = apply(populated3), ownerReapply = apply(populated3);
+  const historiesPreserved = JSON.stringify(histories()) === JSON.stringify(priorHistories);
+  const ownerState = adminState(populated3);
+  const ownerConfirm = sql(populated3, "UPDATE admin_action_approvals SET status='approved',decided_by='fx_admin_super',decided_at='2026-10-18',decider_access_iss='https://fixture.cloudflareaccess.com',decider_access_sub='fx-sub-super' WHERE id='pending_upgrade'");
+  const ownerIntegrity = query(populated3, 'PRAGMA quick_check');
+  const ownerForeignKeys = query(populated3, 'PRAGMA foreign_key_check');
+  row('populated Admin schema 3 -> 4 owner governance',
+    'D1 preserves authority/audit histories, applies once, permits owner confirmation and passes integrity',
+    { baselineApply: populatedBaseApply.status, seed: populatedSeed.status, upgrade: ownerUpgrade.status,
+      reapply: ownerReapply.status, historiesPreserved, state: ownerState, confirm: ownerConfirm.status,
+      integrity: ownerIntegrity, foreignKeys: ownerForeignKeys },
+    populatedBaseApply.status === 0 && populatedSeed.status === 0 && ownerUpgrade.status === 0 && ownerReapply.status === 0 &&
+      historiesPreserved && ownerState.schema_version === currentVersion && ownerConfirm.status === 0 &&
+      Object.values(ownerIntegrity[0] ?? {})[0] === 'ok' && ownerForeignKeys.length === 0);
+
+  const failedOwner = database('admin-owner-failed', schema3Files, true);
+  const failedOwnerBase = apply(failedOwner);
+  const ownerConflict = sql(failedOwner, 'CREATE TABLE admin_owner_enrollments (conflict TEXT)');
+  writeFiles(failedOwner.migrationDirectory, currentAdminFiles);
+  const failedOwnerApply = apply(failedOwner), failedOwnerState = adminState(failedOwner);
+  const oldGuard = query(failedOwner, "SELECT name FROM sqlite_master WHERE type='trigger' AND name='trg_admin_roles_three_operators'");
+  const rebuiltTables = query(failedOwner, "SELECT name FROM sqlite_master WHERE name LIKE '%_next'");
+  row('failed Admin schema 4 restores schema-3 transaction guards',
+    'late DDL conflict rolls back all earlier table rebuilds, trigger removals, version and ledger',
+    { baselineApply: failedOwnerBase.status, injection: ownerConflict.status, failedApply: failedOwnerApply.status,
+      state: failedOwnerState, priorGuardPresent: oldGuard.length === 1, temporaryTables: rebuiltTables },
+    failedOwnerBase.status === 0 && ownerConflict.status === 0 && failedOwnerApply.status !== 0 &&
+      failedOwnerState.schema_version === '3' && failedOwnerState.ledger === 3 && oldGuard.length === 1 && rebuiltTables.length === 0);
 
   const addedSql = addedAdmin.map((file) => file.content).join('\n');
   const columns = [...addedSql.matchAll(/ALTER\s+TABLE\s+admin_sessions\s+ADD\s+COLUMN\s+([A-Za-z_][A-Za-z0-9_]*)/gi)]

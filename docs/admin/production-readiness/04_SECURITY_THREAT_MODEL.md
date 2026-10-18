@@ -1,5 +1,8 @@
 # Security threat model
 
+> Historical source-specific findings. The owner removed staffing/quorum requirements;
+> current controls and live gates are in [19_SINGLE_OWNER_RELEASE.md](19_SINGLE_OWNER_RELEASE.md).
+
 Runtime source: `9395f0e31ea599f1eb7780a8eba36964fed7c483`. Main baseline: `526596a8cd857984ad2b69901a8c7b0e9d6bccc2`.
 Prepared by implementation owner `/root` (Codex); independent reviewer is
 `/root/independent_admin_review`. Evidence environment: local macOS arm64,
