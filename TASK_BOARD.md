@@ -1,3 +1,29 @@
+# Admin commissioning publication - 2026-10-18
+
+PR #16: https://github.com/hello-tako/Takolio/pull/16, branch
+codex/admin-infrastructure-commissioning-20261018. Initial implementation commit
+37bcf42554ed4fd31e290dc1674b0a8321e3824c; required PR checks are running and
+reviewDecision=REVIEW_REQUIRED. Final PR HEAD needs its own checks and review;
+main 8217f0bd evidence does not certify these commissioning changes.
+
+Executed on the commissioning candidate: pnpm lint PASS; focused credential
+workflow/infrastructure/release/config suite 4 files / 92 tests PASS;
+admin-public-scan PASS; git diff --check PASS; offline release preflight
+configurationValidation=PASS with readyForDeployment=false/remoteExecuted=false.
+Earlier local full-run 5-second timeout and subsequent 32/32 rerun remain
+attributed in 21_INFRASTRUCTURE_COMMISSIONING.md; hosted exact-main full suites
+both passed 9,043 tests. No live evidence status was promoted by those results.
+
+Next: owner creates/enters the scoped credentials through the protected UI,
+then exact-HEAD review/CI, merge and exact-main checks, protected credential audit,
+real owner key/identity enrollment and the fixed staging release sequence.
+The current browser token draft has name/account/Workers Scripts Edit only and
+an empty next permission row; no credential was generated. The requested exact
+permissions and secret names are in 22_CREDENTIAL_HANDOFF.md. Current runtime
+and release policy are still disabled; Admin has not been deployed.
+
+---
+
 # Admin infrastructure commissioning - 2026-10-18
 
 PR #15 approved at 89349b4c and merged through protection as 8217f0bd.
