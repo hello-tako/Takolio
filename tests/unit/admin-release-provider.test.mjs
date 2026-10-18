@@ -118,7 +118,7 @@ function providerFacts(mutate = () => {}) {
   ] };
   const f = { bindings: [{ name: 'DB', type: 'd1', id: target.customerDatabaseId }] };
   const facts = { a, f, domains: [{ hostname: target.hostname, service: target.adminWorker, zone_id: target.zoneId }],
-    subdomain: { enabled: false, previews_enabled: false }, routes: [], zones: [{ id: target.zoneId, account: { id: target.accountId } }] };
+    subdomain: { enabled: false, previews_enabled: false }, workers: [], dns: [], routes: [], zones: [{ id: target.zoneId, account: { id: target.accountId } }] };
   mutate(facts);
   return vi.fn(async url => {
     const route = new URL(url).pathname;
@@ -127,6 +127,8 @@ function providerFacts(mutate = () => {}) {
     if (route.endsWith('/storage/kv/namespaces')) return cloudflare([{ id: target.kvId }]);
     if (route.endsWith(`/access/apps/${target.accessApplicationId}`)) return cloudflare({ id: target.accessApplicationId, aud: target.audience, domain: target.hostname, type: 'self_hosted' });
     if (route.endsWith('/zones')) return cloudflare(facts.zones);
+    if (route.endsWith('/dns_records')) return cloudflare(facts.dns);
+    if (route.endsWith('/workers/scripts')) return cloudflare(facts.workers);
     if (route.endsWith('/workers/routes')) return cloudflare(facts.routes);
     if (route.endsWith('/workers/domains')) return cloudflare(facts.domains);
     if (route.endsWith(`/zones/${target.zoneId}`)) return cloudflare({ id: target.zoneId, account: { id: target.accountId }, name: 'takosan.com' });
@@ -146,10 +148,33 @@ describe('Admin provider live-identity contract with offline provider fixtures',
     expect(fetcher.mock.calls.every(([, options]) => !options.method || options.method === 'GET')).toBe(true);
   });
 
+  it('allows first initialization only when both Workers and the hostname are absent', async () => {
+    const fetcher = providerFacts(f => { f.domains = []; });
+    const command = vi.fn();
+    const provider = createProvider(authorized, context, { CLOUDFLARE_API_TOKEN: 'synthetic' }, fetcher, command);
+    await expect(provider.verifyInitialTargets(target)).resolves.toBeUndefined();
+    expect(command).not.toHaveBeenCalled();
+  });
+
+  it.each([
+    ['Admin exists', f => { f.domains = []; f.workers = [{ id: target.adminWorker }]; }],
+    ['facade exists', f => { f.domains = []; f.workers = [{ id: target.facadeWorker }]; }],
+    ['hostname exists', () => {}],
+    ['DNS record exists', f => { f.domains = []; f.dns = [{ name: target.hostname }]; }],
+    ['facade has a route', f => { f.domains = []; f.routes = [{ script: target.facadeWorker }]; }],
+  ])('refuses initialization when %s', async (_name, change) => {
+    const command = vi.fn();
+    const provider = createProvider(authorized, context, { CLOUDFLARE_API_TOKEN: 'synthetic' }, providerFacts(change), command);
+    await expect(provider.verifyInitialTargets(target)).rejects.toThrow();
+    expect(command).not.toHaveBeenCalled();
+  });
+
   it.each([
     ['missing mapping', f => { f.domains = []; }],
     ['wrong Worker mapping', f => { f.domains[0].service = 'unrelated-worker'; }],
     ['wrong zone mapping', f => { f.domains[0].zone_id = 'f'.repeat(32); }],
+    ['unrelated Admin custom domain', f => { f.domains.push({ service: target.adminWorker, hostname: 'unrelated.takosan.com' }); }],
+    ['Admin zone route', f => { f.routes.push({ script: target.adminWorker }); }],
     ['public facade custom domain', f => { f.domains.push({ service: target.facadeWorker }); }],
     ['public facade route', f => { f.routes.push({ script: target.facadeWorker }); }],
     ['workers.dev facade', f => { f.subdomain.enabled = true; }],
@@ -357,4 +382,50 @@ it('produces only a validated, opt-in, protected staging report in the exact sta
   expect(job.steps.find(s => s.run?.includes('admin-staging-attest.mjs')).env.ADMIN_STAGING_REPORT).toContain('secrets.ADMIN_STAGING_REPORT');
   expect(job.steps.at(-1).with.name).toBe('admin-staging-certification-${{ github.run_id }}');
   expect(job.steps.some(s => s.env?.CLOUDFLARE_API_TOKEN)).toBe(false);
+});
+
+describe('Enabled Admin release checks', () => {
+  function enabledFixture({ ownerCount = 1, marker = true, publicResponse, facadeSha = context.sourceSha } = {}) {
+    const base = providerFacts(f => {
+      f.a.bindings.push(...Object.entries({ ADMIN_CONSOLE_ENABLED: 'true', ADMIN_AUTH_MODE: 'cloudflare_access', GIT_COMMIT: context.sourceSha, ADMIN_SCHEMA_VERSION: '4' })
+        .map(([name, text]) => ({ name, text, type: 'plain_text' })));
+      f.f.bindings.push({ name: 'GIT_COMMIT', type: 'plain_text', text: facadeSha }, { name: 'ADMIN_SCHEMA_VERSION', type: 'plain_text', text: '4' });
+    });
+    return vi.fn((url, options) => {
+      if (new URL(url).hostname === target.hostname) return publicResponse ? publicResponse() : new Response(null, { status: 302, headers: { location: `${target.issuer}/cdn-cgi/access/login/${target.hostname}` } });
+      if (url.endsWith('/query')) {
+        const { sql, params } = JSON.parse(options.body);
+        if (sql.includes('admin_active_super_operators')) {
+          expect(params).toEqual([target.issuer]);
+          return d1([{ n: ownerCount }]);
+        }
+        if (sql.includes('bootstrap_completed_at')) return d1(marker ? [{ value: 'now' }] : []);
+        throw new Error('Unexpected enablement query');
+      }
+      return base(url, options);
+    });
+  }
+
+  it('requires a real enrolled owner and exact-source facade, and probes anonymous Access denial', async () => {
+    const fetcher = enabledFixture();
+    const command = vi.fn();
+    const provider = createProvider(authorized, context, { CLOUDFLARE_API_TOKEN: 'synthetic' }, fetcher, command);
+    await expect(provider.verifyEnabled(target, context.sourceSha)).resolves.toBeUndefined();
+    expect(fetcher.mock.calls.filter(([url]) => new URL(url).hostname === target.hostname)).toHaveLength(3);
+    expect(command).not.toHaveBeenCalled();
+  });
+
+  it.each([
+    ['missing owner', { ownerCount: 0 }],
+    ['unbootstrapped owner', { marker: false }],
+    ['old facade source', { facadeSha: 'f'.repeat(40) }],
+    ['public Admin', { publicResponse: () => new Response('Admin') }],
+    ['foreign issuer', { publicResponse: () => new Response(null, { status: 302, headers: { location: 'https://foreign.cloudflareaccess.com/cdn-cgi/access/login' } }) }],
+    ['generic denial', { publicResponse: () => new Response(null, { status: 403 }) }],
+  ])('fails enabled certification with %s', async (_name, options) => {
+    const command = vi.fn();
+    const provider = createProvider(authorized, context, { CLOUDFLARE_API_TOKEN: 'synthetic' }, enabledFixture(options), command);
+    await expect(provider.verifyEnabled(target, context.sourceSha)).rejects.toThrow();
+    expect(command).not.toHaveBeenCalled();
+  });
 });

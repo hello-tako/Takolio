@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Local-only enrollment and three-operator atomic bootstrap. No customer D1 access.
+// Local-only enrollment and owner atomic bootstrap. No customer D1 access.
 import { spawnSync } from 'node:child_process';
 import { mkdtempSync, writeFileSync } from 'node:fs';
 import { randomBytes } from 'node:crypto';
@@ -13,7 +13,7 @@ try {
   const emails=values('--email').map(v=>String(v).trim().toLowerCase());
   const approval=values('--approval-ref')[0];
   const password=process.env.ADMIN_LOCAL_PASSWORD;
-  if(emails.length!==3 || new Set(emails).size!==3 || emails.some(v=>!/^[a-z0-9._+-]+@[a-z0-9.-]+\.test$/.test(v))) throw new Error('Three distinct reserved .test emails are required');
+  if(emails.length<1 || emails.length>3 || new Set(emails).size!==emails.length || emails.some(v=>!/^[a-z0-9._+-]+@[a-z0-9.-]+\.test$/.test(v))) throw new Error('One to three distinct reserved .test emails are required');
   if(!approval || approval.length<8 || approval.length>200)throw new Error('Explicit --approval-ref is required');
   if(!password || password.length<12)throw new Error('Set ADMIN_LOCAL_PASSWORD (at least 12 characters)');
   const env=localWranglerEnv();
@@ -36,5 +36,5 @@ try {
   const result=spawnSync('pnpm',['exec','wrangler','d1','execute','takosan-admin-db','--local','-c','wrangler.admin-local.jsonc','--file',file,...(persist?['--persist-to',persist]:[])],{encoding:'utf8',env});
   // Keep the private SQL available for inspection; never echo credentials.
   if(result.status!==0)throw new Error('Local ceremony failed; inspect local D1 state before retrying');
-  console.log('Local Admin enrollment and atomic three-operator bootstrap applied. Synthetic local authority only.');
+  console.log('Local Admin enrollment and atomic owner bootstrap applied. Synthetic local authority only.');
 } catch(error) { console.error(error instanceof Error?error.message:String(error));process.exitCode=1; }

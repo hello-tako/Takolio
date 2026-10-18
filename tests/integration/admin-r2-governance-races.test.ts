@@ -12,35 +12,35 @@ afterEach(() => { closeDatabases(dbs); dbs = undefined; });
 const roster = () => dbs!.admin.query("SELECT COUNT(*) AS n FROM admin_role_assignments WHERE role='SUPER_ADMIN' AND status='active'")[0].n;
 
 describe('R2 reviewed governance races', () => {
-  it('denies a three-to-two revocation in the API and database', async () => {
+  it('allows an owner to remove another administrator but protects the last usable owner', async () => {
     dbs = createDatabases();
     const env = localEnv(dbs);
     const requester = await login(env, fx('super'));
-    const result = await call('/api/v1/admin/roles/fx_ceremony_001_2', { env, method: 'DELETE', session: requester });
-    expect(result.status).toBe(409);
-    expect(() => dbs!.admin.seed("UPDATE admin_role_assignments SET status='revoked',revoked_at='now' WHERE id='fx_ceremony_001_2'")).toThrow(/three/);
-    expect(roster()).toBe(3);
+    const request = await call('/api/v1/admin/roles/fx_ceremony_001_2', { env, method: 'DELETE', session: requester });
+    expect(request.status).toBe(201);
+    expect((await call(`/api/v1/admin/approvals/${request.json.data.approval.id}/approve`, { env, method: 'POST', session: requester })).status).toBe(200);
+    dbs.admin.seed("UPDATE admin_role_assignments SET status='revoked',revoked_at='now' WHERE id='fx_ceremony_001_1'");
+    expect(roster()).toBe(1);
+    expect(() => dbs!.admin.seed("UPDATE admin_role_assignments SET status='revoked',revoked_at='now' WHERE id='fx_ceremony_001_0'")).toThrow(/one/);
     expect((await call('/api/v1/admin/me', { env, session: requester })).status).toBe(200);
-    await expect(login(env, fx('super2'))).resolves.toHaveProperty('sessionId');
   });
 
-  it.each(['binding', 'operator', 'issuer'])('counts eligible same-issuer operators when a fourth role has a different %s state', async (kind) => {
+  it.each(['binding', 'operator', 'issuer'])('does not count an ineligible or foreign %s as a replacement for the last owner', async (kind) => {
     dbs = createDatabases();
     seedFixtureSuper(dbs, 'ops', 'ara_fourth_operator');
+    dbs.admin.seed("UPDATE admin_role_assignments SET status='revoked',revoked_at='now' WHERE id IN ('fx_ceremony_001_1','fx_ceremony_001_2')");
     if (kind === 'binding') dbs.admin.seed("UPDATE operator_identity_bindings SET status='revoked' WHERE user_id='fx_admin_ops'");
     if (kind === 'operator') dbs.admin.seed("UPDATE approved_human_operators SET status='revoked' WHERE operator_id='operator_ops'");
     if (kind === 'issuer') {
       dbs.admin.seed("INSERT INTO approved_human_operators VALUES('operator_other_issuer','synthetic-review','now','active',NULL,NULL)");
       dbs.admin.seed("INSERT INTO operator_identity_bindings(user_id,operator_id,access_iss,access_sub,approved_at,approval_ref,email,display_name) VALUES('other_issuer_user','operator_other_issuer','https://other.cloudflareaccess.com','different-sub','now','synthetic-review','other@example.test','Other')");
-      // Replace the extra eligible role with a role in another issuer cohort.
       dbs.admin.seed("INSERT INTO admin_role_assignments(id,user_id,role,grant_source,granted_by) VALUES('ara_other_issuer','other_issuer_user','SUPER_ADMIN','approval','fx_admin_super')");
       dbs.admin.seed("UPDATE admin_role_assignments SET status='revoked',revoked_at='now' WHERE id='ara_fourth_operator'");
     }
     const env = localEnv(dbs);
     const requester = await login(env, fx('super'));
-    expect((await call('/api/v1/admin/roles/fx_ceremony_001_2', { env, method: 'DELETE', session: requester })).status).toBe(409);
-    expect(() => dbs!.admin.seed("UPDATE admin_role_assignments SET status='revoked',revoked_at='now' WHERE id='fx_ceremony_001_2'")).toThrow(/three/);
-    expect(roster()).toBe(4);
+    expect((await call('/api/v1/admin/roles/fx_ceremony_001_0', { env, method: 'DELETE', session: requester })).status).toBe(403);
+    expect(() => dbs!.admin.seed("UPDATE admin_role_assignments SET status='revoked',revoked_at='now' WHERE id='fx_ceremony_001_0'")).toThrow(/one/);
   });
 
   it.each(['binding', 'operator'])('allows audited offboarding of an already-ineligible fourth %s while three eligible operators remain', async (kind) => {
@@ -65,19 +65,19 @@ describe('R2 reviewed governance races', () => {
     seedFixtureSuper(dbs, 'ops', 'ara_fourth_operator');
     const env = localEnv(dbs);
     const requester = await login(env, fx('super'));
-    const decider = await login(env, fx('super2'));
+    const decider = requester;
     const request = await call('/api/v1/admin/roles/fx_ceremony_001_2', { env, method: 'DELETE', session: requester });
     expect(request.status).toBe(201);
     let fired = false;
     dbs.admin.hooks.beforeBatch = (statements) => {
       if (!fired && statements.some(s => s.sql.includes('UPDATE admin_action_approvals SET status = ?, decided_by'))) {
         fired = true;
-        dbs!.admin.seed("UPDATE admin_role_assignments SET status='revoked',revoked_at='now' WHERE id='ara_fourth_operator'");
+        dbs!.admin.seed("UPDATE admin_role_assignments SET status='revoked',revoked_at='now' WHERE id IN ('ara_fourth_operator','fx_ceremony_001_1','fx_ceremony_001_0')");
       }
     };
     expect((await call(`/api/v1/admin/approvals/${request.json.data.approval.id}/approve`, { env, method: 'POST', session: decider })).status).toBe(409);
     expect(fired).toBe(true);
-    expect(roster()).toBe(3);
+    expect(roster()).toBe(1);
     expect(dbs.admin.query('SELECT status FROM admin_action_approvals WHERE id=?', request.json.data.approval.id)).toEqual([{ status: 'pending' }]);
     expect(dbs.admin.query("SELECT id FROM admin_audit_events WHERE action='admin.approval.approve'")).toEqual([]);
   });

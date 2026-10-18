@@ -1,3 +1,5 @@
+> Current schema is 4 (migration 0004). See production-readiness/19_SINGLE_OWNER_RELEASE.md.
+
 # Admin migration and compatibility - R2
 
 Current authority: [production-readiness/09_DATABASE_MIGRATIONS.md](production-readiness/09_DATABASE_MIGRATIONS.md)
@@ -16,5 +18,5 @@ R1 -> R2 upgrade/replay, partial apply rollback, strict ledger drift and schema
 mismatch. Full commands/results/timestamps/digests are in production-readiness/12.
 No remote ledger is queried. Schema changes are forward-only; R1 binary rollback
 is not certified for R2 authority. Disable Admin and use a previously certified
-schema-3-compatible Worker; preserve grants/audit and current customer ledger.
+schema-4-compatible Worker; preserve grants/audit and current customer ledger.
 Actual backup/restore, compatible rollback and staging rehearsal remain blocked.

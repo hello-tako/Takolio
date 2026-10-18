@@ -26,14 +26,12 @@ Roles: `SUPER_ADMIN` (SUPER) — Quản trị viên cấp cao; `OPERATIONS_ADMIN
 Matrix version: `2026-10-13.v2`.
 
 
-## Escalation rules (server- and database-enforced, R2)
+## Escalation rules (server- and database-enforced, schema 4)
 
-- No self-grant, no self-revoke.
-- SUPER_ADMIN **grants and revocations** are requests that a *different* SUPER_ADMIN must approve; neither the
-  requester nor the affected user may decide; the requester must still be an active SUPER_ADMIN when it is decided
-  (otherwise the request is cancelled); every guard is re-checked inside the D1 batch; decisions are final.
-- Normal revocation must leave three active approved enrolled human SUPER_ADMIN operators in the configured issuer. Durable triggers recheck the target and roster at commit; see production-readiness/08.
-- First authority is one atomic three-operator ceremony with independent approval references, grants, closure marker and audit. There is no HTTP bootstrap. Real human independence and staging ceremony remain unverified.
-- Roles and immutable issuer/subject enrollment are checked on requests; Admin authority epoch, identity/operator status and role changes revoke sessions. Customer password changes do not define independent Admin authority.
-- Offline recovery requires two distinct Ed25519 custodians and a reviewed live adapter; no permanent public bypass exists. Actual live recovery remains blocked.
-- Household roles (`household_members.role`) and customer sessions are never consulted.
+- No self-grant or self-revoke by the affected account.
+- SUPER_ADMIN grants/revocations require an expiring request and explicit confirmation. The requesting owner may confirm; the target may not. Current issuer, enrollment and roles are rechecked inside the atomic D1 batch; decisions are final.
+- Normal revocation must leave one active approved enrolled SUPER_ADMIN in the configured issuer. Role, identity and operator-status guards protect the last usable owner.
+- First authority uses audited owner enrollment, then one atomic single-owner bootstrap with grants, closure marker and audit. No HTTP bootstrap exists.
+- Immutable issuer/subject enrollment and roles are checked on requests; identity/operator status, authority epoch and role changes revoke Admin sessions.
+- Offline recovery accepts one enrolled Ed25519 owner key; existing two-key recovery remains supported. Release artifacts require one rostered owner signature. Existing main review and GitHub Environment approval protections remain enforced.
+- Household roles and customer sessions never grant Admin authority. Actual Access, owner enrollment and live recovery remain PENDING_EXTERNAL_EVIDENCE; see production-readiness/19_SINGLE_OWNER_RELEASE.md.

@@ -12,7 +12,7 @@ on:
         options: [staging, production]
         required: true
       execute:
-        description: Requires separate owner authorization and two shutdown signatures
+        description: Requires separate owner authorization and protected Environment approval
         type: boolean
         default: false
         required: true

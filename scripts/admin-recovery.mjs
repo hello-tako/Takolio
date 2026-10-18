@@ -24,8 +24,8 @@ export function verifyRecovery(manifest, approvals, roster, { sourceSha, databas
   if (!Number.isFinite(issued) || !Number.isFinite(expires) || issued > now || expires <= now || expires - issued > 3600000) {
     throw new Error('Recovery authorization expired or exceeds one hour');
   }
-  if (!Array.isArray(roster) || !Array.isArray(approvals) || approvals.length !== 2 ||
-      new Set(approvals.map(a => a.operatorId)).size !== 2) throw new Error('Two distinct recovery approvers required');
+  if (!Array.isArray(roster) || !Array.isArray(approvals) || approvals.length < 1 || approvals.length > 2 ||
+      new Set(approvals.map(a => a.operatorId)).size !== approvals.length) throw new Error('One or two enrolled recovery approvers required');
   const fingerprints = new Set();
   const keys = approvals.map(approval => {
     const matches = roster.filter(row => row.operator_id === approval.operatorId && row.status === 'active' && row.recovery_key_algorithm === 'Ed25519');
@@ -40,7 +40,7 @@ export function verifyRecovery(manifest, approvals, roster, { sourceSha, databas
     fingerprints.add(createHash('sha256').update(key.export({ type: 'spki', format: 'der' })).digest('hex'));
     return operator.recovery_public_key;
   });
-  if (fingerprints.size !== 2) throw new Error('Distinct recovery signing keys required');
+  if (fingerprints.size !== approvals.length) throw new Error('Distinct recovery signing keys required');
   const digest = createHash('sha256').update(canonical(manifest)).digest('hex');
   return { manifestHash: digest, sql: `INSERT INTO admin_recovery_operations(id,manifest_hash,source_sha,database_identity,expires_at,executed_at,approval_operator_ids,target_user_id,approval_public_keys)
  VALUES(${sql(manifest.id)},${sql(digest)},${sql(sourceSha)},${sql(databaseIdentity)},${sql(new Date(expires).toISOString())},${sql(new Date(now).toISOString())},${sql(JSON.stringify(approvals.map(a => a.operatorId)))},${sql(manifest.targetUserId)},${sql(JSON.stringify(keys))});` };

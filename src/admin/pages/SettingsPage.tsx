@@ -328,8 +328,8 @@ function ApprovalsSection({ approvals, canDecide, currentUserId }: { approvals: 
             </thead>
             <tbody>
               {approvals.map((approval) => {
-                // Four-eyes: neither the requester nor the affected user may decide.
-                const involved = approval.requestedBy === currentUserId || approval.targetUserId === currentUserId;
+                // The requesting owner may confirm; the affected user cannot approve.
+                const involved = approval.targetUserId === currentUserId;
                 const canAct = canDecide && approval.status === 'pending' && !involved;
                 return (
                   <tr key={approval.id} data-testid="admin-approval-row">

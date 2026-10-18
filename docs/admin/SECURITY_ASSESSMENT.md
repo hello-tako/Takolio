@@ -1,4 +1,7 @@
 > R2 CURRENT AUTHORITY: production-readiness/00_EXECUTIVE_STATUS.md and 03-18.
+
+> Historical assessment. Current single-owner governance supersedes the requester/decider
+> separation and staffing rules; see production-readiness/19_SINGLE_OWNER_RELEASE.md.
 > The material retained below is historical original/R1 documentation; its source,
 > customer binding/password authority, schema version 1, two-person/bootstrap,
 > per-email throttling and rollout directions are superseded. Do not execute

@@ -1,5 +1,9 @@
 # Staging certification
 
+> Historical schema-3/source-specific snapshot. Staffing, signing, release operations
+> and current blockers are superseded by [19_SINGLE_OWNER_RELEASE.md](19_SINGLE_OWNER_RELEASE.md).
+> Retained receipts are not current-source or live deployment evidence.
+
 Runtime source: `9395f0e31ea599f1eb7780a8eba36964fed7c483`. Main baseline: `526596a8cd857984ad2b69901a8c7b0e9d6bccc2`.
 Prepared by implementation owner `/root` (Codex); independent reviewer is
 `/root/independent_admin_review`. Evidence environment: local macOS arm64,
@@ -15,7 +19,7 @@ placeholder IDs and offline dry-runs do not satisfy this gate.
 Required authorized targets: dedicated staging Admin Worker, ADMIN_DB and KV;
 staging Read Facade Worker; synthetic/approved customer staging D1; exact internal
 Service Binding; dedicated hostname and Access application/issuer/audience;
-verified three-person operator roster and recovery custodians. Password login
+verified enrolled owner identity and owner recovery key. Password login
 must be compiled out, flag initially OFF, and the facade must have no public
 route/preview URL. No staging target may point to production customer D1.
 
@@ -44,7 +48,7 @@ protection settings remain prerequisites.
 | ST11 | Facade unreachable publicly | NOT RUN |
 | ST12 | Invalid facade operations denied | NOT RUN |
 | ST13 | Password hashes/salts absent from Admin output | NOT RUN |
-| ST14 | Three independent operators perform authorized bootstrap | NOT RUN |
+| ST14 | One enrolled owner performs authorized atomic bootstrap | NOT RUN |
 | ST15 | Approval/revocation concurrency and recovery pass | NOT RUN |
 | ST16 | Sensitive action audit matches state | NOT RUN |
 | ST17 | Migration replay, manifest and database identity verified | NOT RUN |
@@ -57,4 +61,4 @@ operator/reviewer, command/test ID, exit/result, sanitized artifact digest and
 limitations. Access verification additionally needs real JWKS rotation and logout
 semantics. A single failure blocks enablement and production readiness.
 
-The protected staging workflow now packages a completed two-custodian signed report via opt-in certify=true. The producer does not execute or infer PASS for any ST case. Production separately signs the resulting artifact ID/digest; no circular self-digest is required. Report fields and API contract limits are in 10_RELEASE_WORKFLOWS.md. All real ST cases remain NOT RUN.
+The protected staging workflow now packages a completed owner-signed report via opt-in certify=true. The producer does not execute or infer PASS for any ST case. Production separately signs the resulting artifact ID/digest; no circular self-digest is required. Report fields and API contract limits are in 10_RELEASE_WORKFLOWS.md. All real ST cases remain NOT RUN.

@@ -36,11 +36,11 @@ CI under their local-only guard; operator provisioning still refuses CI.
 
 ## Optional local operator ceremony
 
-Use an empty already-migrated local ADMIN_DB, three distinct reserved .test
+Use an empty already-migrated local ADMIN_DB, one to three distinct reserved .test
 emails, an explicit approval reference, and ADMIN_LOCAL_PASSWORD in the local
 environment. `pnpm admin:provision -- --local --email a@example.test --email
 b@example.test --email c@example.test --approval-ref local-independent-review`
-creates independent local Admin identities/credentials and one atomic three-role
+creates synthetic local Admin identities/credentials and one atomic owner
 bootstrap. It does not read customer accounts. It refuses CI, nondevelopment,
 remote/env/preview/production flags or reachable Cloudflare API credentials.
 Do not pass real identities or use it against a remote database.
@@ -63,4 +63,4 @@ Exact completed results are recorded in production-readiness/12, with full
 source SHA and environment. Generated images live in ignored
 .hoplite/artifacts/admin-e2e rather than tracked historical references.
 Staging and production need separate operator authorization and reviewed live
-adapters. The four release workflows are offline plans only.
+adapters. The five release workflows remain default-disabled until actual targets and protected authorization exist; see production-readiness/19_SINGLE_OWNER_RELEASE.md.

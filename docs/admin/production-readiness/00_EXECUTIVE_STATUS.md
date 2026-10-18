@@ -1,35 +1,24 @@
-# Executive status
+# Current executive status - 2026-10-18
 
-Runtime source: `9395f0e31ea599f1eb7780a8eba36964fed7c483`. Main baseline: `526596a8cd857984ad2b69901a8c7b0e9d6bccc2`.
-Prepared by implementation owner `/root` (Codex); independent reviewer is
-`/root/independent_admin_review`. Evidence environment: local macOS arm64,
-Node v24.16.0, pnpm 10.33.2, Python 3.9.6, `TMPDIR=/private/tmp`.
-Evidence timestamps are UTC. Commands, exit codes, log digests and limitations
-are in `evidence/verification.json` and `12_REGRESSION_RESULTS.md`.
-No live Cloudflare operation or operator approval is implied.
+`ADMIN_SINGLE_OWNER_IMPLEMENTED_LIVE_ACCEPTANCE_PENDING`
 
-`ADMIN_V1_PRODUCTION_READINESS_BLOCKED`
+Canonical source is hello-tako/Takolio (repository ID 1422954151), starting at
+main 571f3c229696d6bc766de89f552a36f48ca92e58. The recovered Admin R2 code is
+already on canonical main. GitHub publication and baseline hosted validation
+are available; the old suspension blocker no longer applies.
 
-The recovered R2 implementation is preserved on a dedicated branch and adds a
-separate customer read facade, independent Admin identity authority, atomic
-three-person bootstrap, four-eyes governance and offline recovery verification.
-The implementation is reviewable. Staging and production are not certified.
+The owner removed mandatory three administrators/two release custodians. Current
+schema 4 and release tools support one enrolled owner and one signing key while
+retaining Access, RBAC, CSRF, session revocation, mandatory audit and protection
+of the last usable owner. Initial disabled installation, audited first-owner
+enrollment and guarded enablement are now prepared.
 
-## Gate disposition
+Current implementation, release sequence and live gaps are in
+[19_SINGLE_OWNER_RELEASE.md](19_SINGLE_OWNER_RELEASE.md). Executed checks are in
+[20_CURRENT_VERIFICATION.md](20_CURRENT_VERIFICATION.md). Old 01-18 source-specific
+receipts retain their historical attribution and do not certify the new source.
 
-| Gate | Disposition | Evidence / next requirement |
-| --- | --- | --- |
-| G0 recovery | Local source recovered and checkpointed | Provenance and rescue refs in 01/02; durable bundles outside repository |
-| G1 implementation | Local remediation candidate; closure limits remain | F1-F11 matrix in 05; independent local review in 13 |
-| G2 local validation | See exact-source results in 12 | Full-suite result is reported only after completion |
-| G3 CI/CD and staging | BLOCKED | CI and five default-disabled manual release workflows exist; GitHub account suspension blocks publication/hosted checks; live staging needs authorization |
-| G4 production readiness | BLOCKED | Live adapter behavior, protected environments, independent release certification and actual staging evidence remain unverified |
-
-No production deployment, migration, bootstrap, secrets change, remote D1 access,
-PR merge or environment approval was performed. PR #77 is untouched. PR #82 is a
-Draft handoff whose last verified remote source predates this local checkpoint.
-
-The owner must restore GitHub access, select the live staging resources and
-operators, validate real adapter/provider contracts and protection settings, then explicitly
-authorize the staging ceremony and 20-case certification in 14. Production
-requires a separate decision after those gates pass.
+Admin staging/production acceptance remains PENDING_EXTERNAL_EVIDENCE. Real
+resource/Access identities, an enrolled owner, protected Admin Environments,
+exact-head review/CI and actual staging certification precede any production
+readiness claim. No Admin deployment or remote authority mutation is implied.

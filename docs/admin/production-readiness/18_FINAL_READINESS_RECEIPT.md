@@ -1,5 +1,9 @@
 # Final readiness receipt
 
+> Historical schema-3/source-specific snapshot. Staffing, signing, release operations
+> and current blockers are superseded by [19_SINGLE_OWNER_RELEASE.md](19_SINGLE_OWNER_RELEASE.md).
+> Retained receipts are not current-source or live deployment evidence.
+
 The exact executed runtime checks are in `12_REGRESSION_RESULTS.md` and
 `evidence/verification.json`. This document records source-level disposition;
 the external output receipt additionally identifies the documentation packaging

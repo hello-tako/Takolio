@@ -252,7 +252,7 @@ authed.delete('/roles/:assignmentId', requirePermission('admin.roles.manage'), a
   const now = nowIso();
 
   if (row.role === 'SUPER_ADMIN') {
-    // Symmetric four-eyes: revoking a SUPER_ADMIN is a request a second SUPER_ADMIN must approve.
+    // SUPER_ADMIN changes retain an explicit confirmation, including by the requesting owner.
     if ((await remainingSuperCount(c, id)) < ADMIN_SUPER_ADMIN_MINIMUM) {
       await writeAudit(c, { actorUserId: admin.userId, actorRoles: admin.roles, action: 'admin.role.revoke', targetType: 'user', targetId: row.user_id,
         outcome: 'denied', reasonCode: 'super_admin_minimum', metadata: { role: row.role, assignmentId: id } });
@@ -291,10 +291,10 @@ for (const decision of ['approve', 'reject'] as const) {
     const id = param(c, 'id');
     const approval = await adminDb.prepare(`SELECT ${APPROVAL_COLUMNS} FROM admin_action_approvals WHERE id = ?`).bind(id).first<ApprovalRow>();
     if (!approval) throw notFound();
-    if (approval.requested_by === admin.userId || approval.target_user_id === admin.userId) {
+    if (approval.target_user_id === admin.userId) {
       await writeAudit(c, { actorUserId: admin.userId, actorRoles: admin.roles, action: `admin.approval.${decision}`, targetType: 'approval', targetId: id,
-        outcome: 'denied', reasonCode: 'four_eyes', metadata: { approvalId: id } });
-      return errorResponse(c, 403, 'ADMIN_FORBIDDEN', 'Người yêu cầu hoặc người bị tác động không thể tự phê duyệt.');
+        outcome: 'denied', reasonCode: 'target_self_approval', metadata: { approvalId: id } });
+      return errorResponse(c, 403, 'ADMIN_FORBIDDEN', 'Người bị tác động không thể tự phê duyệt.');
     }
     if (approval.status !== 'pending') throw conflict('Yêu cầu không còn ở trạng thái chờ.');
     const now = nowIso();

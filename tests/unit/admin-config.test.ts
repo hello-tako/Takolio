@@ -62,7 +62,7 @@ describe('admin deployment configuration', () => {
   it('no admin migration lives in the customer ledger', () => {
     const customer = readdirSync('migrations').filter((name) => name.endsWith('.sql'));
     expect(customer.some((name) => /admin/i.test(name))).toBe(false);
-    expect(readdirSync('migrations-admin')).toEqual(['0001_admin_console_foundation.sql', '0002_admin_identity_governance_r2.sql', '0003_admin_governance_transaction_guards.sql']);
+    expect(readdirSync('migrations-admin')).toEqual(['0001_admin_console_foundation.sql', '0002_admin_identity_governance_r2.sql', '0003_admin_governance_transaction_guards.sql', '0004_admin_single_owner_governance.sql']);
   });
 
   it('customer entry/config matches main or the exact reviewed domain integration baseline', () => {

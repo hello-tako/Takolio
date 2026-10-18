@@ -10587,3 +10587,24 @@ is pending. No production release, acceptance attestation or live browser/provid
 PASS exists. Next: protected PR/review/CI, save owner-approved CORS, exact-main
 checks and staging release, actual nine-check acceptance, fresh production
 certification and separately approved protected cutover.
+
+---
+
+# Admin console takeover - 2026-10-18
+
+Canonical repository: `hello-tako/Takolio` (ID `1422954151`), main baseline
+`571f3c229696d6bc766de89f552a36f48ca92e58`. Isolated branch:
+`codex/admin-production-readiness-20261018`; local verification is recorded in docs/admin/production-readiness/20_CURRENT_VERIFICATION.md; publication/hosted results must be read from the PR.
+
+Admin governance now follows the owner's single-owner decision: one enrolled
+SUPER_ADMIN and one owner signing key are sufficient. The affected target cannot
+approve itself; the last usable owner is protected. Schema 4 preserves old
+records and revokes existing sessions on auth-mode change. Added audited owner
+enrollment, disabled initialization/enable operations, exact target/provider
+checks, offline owner signing, sanitized read-only infrastructure audit and
+failure containment. PayOS, payment, customer runtime/migrations and customer
+release paths were not changed.
+
+Verified locally: Admin unit/integration suite 22 files / 348 tests PASS; final metadata delta 4/4, workerd 10/10, D1 matrix 25/25, browser 12/12, keyboard 10/10, lint, typecheck, build, migration smoke, dependency audit, public scan and diff checks PASS. Whole-project regression is running; hosted CI must verify the published SHA. Real Admin Cloudflare resources, dedicated Access app,
+protected Admin Environments and ST01-ST20 staging evidence are
+`PENDING_EXTERNAL_EVIDENCE`; no Admin production mutation occurred.
