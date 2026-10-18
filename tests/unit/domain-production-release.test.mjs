@@ -214,3 +214,19 @@ it('joins certified production D1 and the exact prior deployment for continuity 
     expect(() => productionRecoveryIdentity(changed, snapshot)).toThrow('identity');
   }
 });
+
+it('accepts Access HTTP 200 staging preflight only with matching credentialed CORS proof', () => {
+  const { receipt, acceptance } = staging();
+  receipt.hostProof.corsStatus = 200;
+  const options = { sha, runId: 123, now };
+  expect(() => verifyStagingAcceptance(acceptance, receipt, options)).toThrow('infrastructure');
+  receipt.hostProof.cors = { status: 200, origin: 'https://staging.takolio.app', credentials: true, method: 'GET',
+    actualResponseVerified: true, unapprovedOriginsRejected: true };
+  expect(verifyStagingAcceptance(acceptance, receipt, options).sha).toBe(sha);
+  for (const change of [{ origin: '*' }, { origin: 'https://takolio.app' }, { credentials: false }, { method: 'POST' }, { status: 403 },
+    { actualResponseVerified: false }, { unapprovedOriginsRejected: false }]) {
+    const changed = structuredClone(receipt);
+    Object.assign(changed.hostProof.cors, change);
+    expect(() => verifyStagingAcceptance(acceptance, changed, options)).toThrow('infrastructure');
+  }
+});

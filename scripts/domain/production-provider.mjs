@@ -1,3 +1,4 @@
+import { mutationResponse } from './mutation-response.mjs';
 import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
@@ -99,10 +100,7 @@ async function mutate(path, method, body) {
       headers: { Authorization: `Bearer ${env.CLOUDFLARE_API_TOKEN}`, 'Content-Type': 'application/json' },
       ...(body ? { body: JSON.stringify(body) } : {}), redirect: 'error', signal: AbortSignal.timeout(30000) });
   } catch { throw new Error('Production mutation outcome is uncertain; reconcile the retained receipt'); }
-  let data;
-  try { data = await response.json(); } catch { throw new Error('Production mutation returned an uncertain response'); }
-  if (!response.ok || data.success !== true) throw new Error(`Production mutation failed: HTTP ${response.status}`);
-  return data.result;
+  return mutationResponse(response, { environment: 'production', method });
 }
 
 async function currentDeployment() {

@@ -1,3 +1,5 @@
+import { verifyStagingCors } from './cors-proof.mjs';
+import { mutationResponse } from './mutation-response.mjs';
 import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
@@ -83,10 +85,7 @@ async function mutate(path, method, body) {
       ...(body ? { body: JSON.stringify(body) } : {}), redirect: 'error', signal: AbortSignal.timeout(30000),
     });
   } catch { throw new Error('Staging mutation outcome is uncertain; inspect receipt before reconciliation'); }
-  let data;
-  try { data = await response.json(); } catch { throw new Error('Staging mutation returned an uncertain response'); }
-  if (!response.ok || data.success !== true) throw new Error(`Staging mutation failed: HTTP ${response.status}`);
-  return data.result;
+  return mutationResponse(response, { environment: 'staging', method });
 }
 
 async function currentDeployment() {
@@ -218,15 +217,27 @@ export const provider = {
   },
   async proveHosts(context) {
     context.appProof = await prove(profiles.staging.app, context);
-    const api = await stagingFetch(`${profiles.staging.api}/api/v1/health`, { signal: AbortSignal.timeout(15000) });
+    const api = await stagingFetch(`${profiles.staging.api}/api/v1/health`, {
+      headers: { Origin: profiles.staging.app }, signal: AbortSignal.timeout(15000) });
     if (api.status !== 200 || !(api.headers.get('content-type') ?? '').includes('application/json')) throw new Error('Staging API liveness failed');
     const spa = await stagingFetch(`${profiles.staging.api}/auth`, { signal: AbortSignal.timeout(15000) });
     if (spa.status !== 404) throw new Error('Staging API served a frontend route');
     const cors = await stagingFetch(`${profiles.staging.api}/api/v1/health`, { method: 'OPTIONS',
       headers: { Origin: profiles.staging.app, 'Access-Control-Request-Method': 'GET' }, signal: AbortSignal.timeout(15000) });
-    if (cors.status !== 204 || cors.headers.get('access-control-allow-origin') !== profiles.staging.app ||
-        cors.headers.get('access-control-allow-credentials') !== 'true') throw new Error('Staging API CORS proof failed');
-    context.hostProof = { apiStatus: api.status, apiSpaStatus: spa.status, corsStatus: cors.status, httpsVerified: true };
+    const corsProof = verifyStagingCors(cors, profiles.staging.app);
+    if (api.headers.get('access-control-allow-origin') !== profiles.staging.app ||
+        api.headers.get('access-control-allow-credentials') !== 'true') throw new Error('Staging API actual response CORS failed');
+    corsProof.actualResponseVerified = true;
+    for (const origin of [profiles.production.app, 'https://untrusted.invalid']) {
+      const denied = await stagingFetch(`${profiles.staging.api}/api/v1/health`, { method: 'OPTIONS',
+        headers: { Origin: origin, 'Access-Control-Request-Method': 'GET' }, signal: AbortSignal.timeout(15000) });
+      const allowed = denied.headers.get('access-control-allow-origin');
+      if (![200, 204, 403].includes(denied.status) || allowed === origin || allowed === '*') {
+        throw new Error('Staging CORS accepted an unapproved origin or returned an uncertain status');
+      }
+    }
+    corsProof.unapprovedOriginsRejected = true;
+    context.hostProof = { apiStatus: api.status, apiSpaStatus: spa.status, corsStatus: cors.status, cors: corsProof, httpsVerified: true };
     await fenced(context);
   },
   async finish(context) {

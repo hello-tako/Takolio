@@ -28,7 +28,11 @@ export function verifyStagingAcceptance(acceptance, receipt, { sha, runId, now =
       receipt.plan?.config?.name !== 'frigo-staging' || !receipt.uploadedVersionId ||
       receipt.hosts?.state !== 'attached' || receipt.hosts.environment !== 'staging' ||
       receipt.hosts.sha !== sha || receipt.hostProof?.httpsVerified !== true ||
-      receipt.hostProof.apiStatus !== 200 || receipt.hostProof.apiSpaStatus !== 404 || receipt.hostProof.corsStatus !== 204 ||
+      receipt.hostProof.apiStatus !== 200 || receipt.hostProof.apiSpaStatus !== 404 ||
+      !(receipt.hostProof.corsStatus === 204 || receipt.hostProof.corsStatus === 200 &&
+        receipt.hostProof.cors?.origin === 'https://staging.takolio.app' && receipt.hostProof.cors.credentials === true &&
+        receipt.hostProof.cors.status === 200 && receipt.hostProof.cors.method === 'GET' &&
+        receipt.hostProof.cors.actualResponseVerified === true && receipt.hostProof.cors.unapprovedOriginsRejected === true) ||
       receipt.appProof?.deployed?.sha !== sha || receipt.appProof?.assets?.sha !== sha ||
       receipt.recoveryFailure || receipt.failure) throw new Error('Exact-SHA staging infrastructure proof required');
   const age = now - Date.parse(acceptance?.acceptedAt);

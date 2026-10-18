@@ -7607,3 +7607,33 @@ bundle/font warnings. Hosted full-suite checks and human review remain required.
 - Live provider/browser/rollback staging acceptance and production gates pending.
 - Read-back validation: 454 focused tests, lint, both types, migrations, build,
   targeted ESLint, syntax and diff checks PASS; full hosted validation pending.
+- PR #12 exact head 2e9e7330 independently approved; CI 39089454566/Admin CI
+  39089454580 running. Await successful checks before protected merge.
+- Public staging DNS/TLS/Access are evidenced; local resolver NXDOMAIN blocks
+  browser acceptance. Temporary Chrome DNS change awaits owner confirmation.
+- Production readiness still 526596a8, database OK, authority warning and email
+  delivery unverified; no production release dispatched.
+
+- PR #12 merged normally to 2dbe74ba after verified independent approval and both
+  required checks. Exact-main CI 39091692776/Admin CI 39091692765 running.
+- Watcher waits for both checks/current-main identity before read-only staging audit.
+- No Secure DNS change: managed-browser policy disables the control. Network DNS
+  now resolves staging and Chrome host-cache clear succeeds. Access SSO reaches
+  the still-unattached API hostname. Live acceptance and production remain pending.
+
+- Production token needs account Workers Scripts Edit for domain attachment;
+  action-time confirmation is pending. A premature save was immediately reversed,
+  disclosed and verified back at 11 permissions. No production dispatch occurred.
+
+- Owner confirmed production Workers Scripts Edit; saved and verified at 12
+  permissions after confirmation. Other scopes/expiry unchanged. No deployment.
+
+## Current CORS/deletion checkpoint - 2026-10-18 JST
+
+- DONE: exact-main CI/Admin CI at 2dbe74ba PASS (8,956 tests each).
+- DONE: production infrastructure audit 39093057999 approved by vn-taphoanhatung and PASS; post-failure staging audit 39093604510 PASS.
+- DONE: read-only release 39093031910 reconciliation; candidate active, original web/account inventory retained and created API hostname absent.
+- PREPARED: bounded DELETE response/reconciliation and Access preflight proof patch; 252 focused tests plus 79 ownership/response tests, lint/types/build/migration PASS.
+- PENDING OWNER CONFIRMATION: save exact-origin credentialed Access CORS; bypass OFF and email/CI policies unchanged.
+- PENDING: PR independent review, protected merge/exact-main CI, new staging release, nine real staging acceptance checks, fresh production certification and independently approved production release.
+- Production remains unchanged; no staging acceptance PASS is claimed.

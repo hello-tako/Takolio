@@ -131,7 +131,21 @@ export async function detachCreatedHosts(receipt, { list, remove, gate, persist 
   for (const created of [...receipt.created].reverse()) {
     const current = validateDomains(await list());
     const domain = current.find((entry) => entry.id === created.id || entry.hostname === created.hostname);
-    if (!domain || !isDeepStrictEqual(domain, created) || !isDeepStrictEqual(current, expectedInventory(receipt))) {
+    const expected = expectedInventory(receipt);
+    const detachIntent = receipt.events.at(-1);
+    // A successful DELETE can lose its response. Reconcile only when the persisted
+    // intent and the complete post-delete inventory prove that exact host is gone.
+    if (!domain && receipt.state === 'detaching' && detachIntent?.operation === 'detach-intent' &&
+        detachIntent.id === created.id && detachIntent.hostname === created.hostname &&
+        isDeepStrictEqual(current, sort(expected.filter((entry) => entry.id !== created.id)))) {
+      await gate(receipt);
+      if (!isDeepStrictEqual(validateDomains(await list()), current)) throw new Error('Rollback ownership or inventory drift; no deletion attempted');
+      receipt.created = receipt.created.filter((entry) => entry.id !== created.id);
+      receipt.events.push({ operation: 'detach-reconciled', hostname: created.hostname, id: created.id });
+      await persist(receipt);
+      continue;
+    }
+    if (!domain || !isDeepStrictEqual(domain, created) || !isDeepStrictEqual(current, expected)) {
       throw new Error('Rollback ownership or inventory drift; no deletion attempted');
     }
     await gate(receipt);
@@ -140,8 +154,8 @@ export async function detachCreatedHosts(receipt, { list, remove, gate, persist 
     await persist(receipt);
     await remove(created.id);
     const after = validateDomains(await list());
-    const expected = sort(expectedInventory(receipt).filter((entry) => entry.id !== created.id));
-    if (!isDeepStrictEqual(after, expected)) throw new Error('Ambiguous detach result; stop before code rollback');
+    const expectedAfter = sort(expectedInventory(receipt).filter((entry) => entry.id !== created.id));
+    if (!isDeepStrictEqual(after, expectedAfter)) throw new Error('Ambiguous detach result; stop before code rollback');
     receipt.created = receipt.created.filter((entry) => entry.id !== created.id);
     receipt.events.push({ operation: 'detached', hostname: created.hostname, id: created.id });
     await persist(receipt);

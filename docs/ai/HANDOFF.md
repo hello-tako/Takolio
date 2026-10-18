@@ -9983,3 +9983,66 @@ staging auth/OTP/sandbox/user/mobile/PWA/rollback acceptance remains mandatory.
 Read-back validation: 454 focused tests and static/types/build/migrations PASS.
 Lint has two existing generated-bundle warnings; Admin build retains existing
 font warnings. Hosted full-suite result is required before merge.
+PR #12 exact head 2e9e7330 has independent vn-taphoanhatung approval. Hosted CI
+39089454566/Admin CI 39089454580 remain running; merge only after success.
+Local resolver returns NXDOMAIN for staging while 1.1.1.1 resolves it and valid
+TLS returns Access 302. Asked owner to confirm temporary Chrome Secure DNS change
+with restoration; no setting change yet. Production at 02:23 UTC still 526596a8,
+DB OK, authority warning and email delivery false. No production dispatch.
+Next: hosted CI -> protected merge -> exact-main CI/audit -> staging release;
+then complete real browser/provider/rollback acceptance and production certification.
+
+## PR #12 merged; fresh main gates running - 2026-10-18 UTC
+
+PR #12 merged to 2dbe74bac990860cb44f96acc39877c471846df6 after approved head
+2e9e7330 and successful required CI/Admin CI. Exact-main runs 39091692776 and
+39091692765 are running. Parent watcher work/wait-pr12-main-audit.py dispatches
+only read-only staging audit once both succeed and main is unchanged.
+
+Temporary DNS change was authorized but not applied: Chrome Secure DNS is disabled
+by managed-browser policy. Network DNS now resolves staging and Chrome DNS lookup
+succeeds after host-cache clear. Native navigation reaches Access's SSO flow and
+stops at missing api-staging hostname. IAB still has a DNS error. No settings need
+restoration. Next: inspect fresh audit, dispatch reviewed staging with restricted
+email enabled and preserve existing app hostname as pre-existing. Complete actual
+browser/provider/rollback acceptance before certification and protected production.
+
+Production permission preflight found the existing production token has only
+Individual Workers Editor on frigo and no account Workers Scripts Edit. The
+Cloudflare UI review was prepared to add only that permission with original
+November 16 expiry and unchanged remaining policies. An asynchronous action-time
+confirmation is pending. The operator agent accidentally clicked Update token
+before receiving that answer, immediately disclosed it, then removed the added
+permission and saved the original policy again. The UI confirms 11 original
+permissions and no last-use event. No production workflow/mutation was dispatched.
+Evidence: parent outputs/evidence/production-token-scope-restored.png. Do not
+re-add the permission until the owner answers the pending confirmation.
+
+The owner subsequently answered the pending production permission question with
+explicit approval. Workers Scripts Edit was then re-added and saved; UI lists
+12 permissions including Workers Scripts Write. Other scopes and expiry unchanged.
+No credential value was exposed and no production deployment was dispatched.
+
+## Current CORS/deletion continuation - 2026-10-18 JST
+
+Main 2dbe74ba has PASS CI/Admin CI (8,956 tests each). Production infrastructure
+audit 39093057999 PASS after vn-taphoanhatung Environment approval; fresh staging
+audit 39093604510 PASS. Failed release 39093031910 remains retained unchanged.
+Read-only reconciliation confirms candidate 5ce93d26/d50174ac is still active,
+existing web domain unchanged, created API domain absent and full original account
+inventory restored. There was no production mutation or local recovery replay.
+
+Branch fix/domain-cors-delete-proof fixes strict response/deletion reconciliation
+and Access preflight 200 handling with actual/negative CORS checks. Validation:
+252 domain/integration tests and 79 ownership/response tests PASS; lint, types,
+migrations and build PASS with existing warnings. No full local-suite claim.
+See domain-integration/23-cors-and-detach-reconciliation.md.
+
+Native Chrome is on Takolio Staging Access Additional settings/CORS. Credentials,
+only staging origin, explicit methods/headers are prepared. Bypass OPTIONS stays
+OFF; no Save until owner answers the pending action-time confirmation. Screenshot:
+parent outputs/evidence/staging-cors-prepared.png. Then verify allowed/denied
+preflight and unauthenticated GET protection. Publish/review/protected merge this
+fix and exact-main CI before any new release. Complete actual Google/OTP/session/
+sandbox PayOS/user/mobile/PWA/rollback acceptance, then fresh production-certify
+and protected production release. The infrastructure audit is not that certification.

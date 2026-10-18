@@ -10470,3 +10470,70 @@ generated-bundle warnings), both typechecks, customer/Admin migration smoke,
 Web/Admin/Worker build, changed-file ESLint, syntax and diff check PASS. Initial
 new positive-test hook was corrected after it checked the later read phase.
 No local full-suite PASS is claimed; exact-head hosted CI/review remain required.
+
+PR #12 is published at 2e9e733002dfaef1a84464c3078cd6599abe5b33 and independently
+approved by vn-taphoanhatung at that exact commit. Hosted CI 39089454566 and
+Admin CI 39089454580 are running; do not merge before both succeed. Public scan
+passes. Public DNS for staging resolves via 1.1.1.1 and valid TLS returns Access
+HTTP 302; the local network resolver still returns NXDOMAIN, preventing browser
+acceptance. Owner confirmation is pending for a temporary Chrome Secure DNS
+change and restoration. No network settings have been changed.
+Production read-only readiness at 02:23 UTC remains source 526596a8, database OK,
+status degraded with CONFIG_RECIPE_CATALOG_D1_AUTHORITY and email delivery false.
+No production dispatch. Supplemental receipts and current evidence are retained
+in the parent workspace outputs/evidence without changing the failed receipt.
+
+## PR #12 protected merge and DNS continuation - 2026-10-18 UTC
+
+Verified exact-head independent approval and successful CI 39089454566 / Admin
+CI 39089454580, then merged normally to 2dbe74bac990860cb44f96acc39877c471846df6.
+Exact-main CI 39091692776 and Admin CI 39091692765 are running. The parent
+workspace watcher wait-pr12-main-audit.py dispatches only a read-only staging
+audit after both pass and current main still equals that SHA. No staging release
+or production mutation has been dispatched at this checkpoint.
+
+The owner confirmed a temporary Chrome Secure DNS change with restoration. The
+UI shows Secure DNS disabled by managed-browser policy; no setting was changed.
+Current network DNS and 1.1.1.1 both resolve staging. Clearing Chrome's stale host
+cache also made its DNS lookup succeed, without changing privacy/network settings.
+Browser navigation reaches Access, then attempts its api-staging SSO hostname,
+which is not attached yet. In-app Chromium still reports name resolution failure.
+Fresh staging release after exact-main checks/audit remains the next dependency.
+
+Production token scope is restored to its original 11 permissions after an
+accidental premature permission-save was immediately reversed and disclosed.
+Only a new owner action-time confirmation may authorize adding account Workers
+Scripts Edit. Existing Environment prevent_self_review and can_admins_bypass=false
+were rechecked; reviewer remains vn-taphoanhatung. No production dispatch.
+
+Owner subsequently confirmed adding Workers Scripts Edit to the production token.
+It was saved after that confirmation and the UI now lists 12 permissions including
+Workers Scripts Write, with original policies and November 16 expiration retained.
+No token value was shown or copied and no production workflow was dispatched.
+Public readiness via ordinary curl at 03:04 UTC returned HTTP 200, source 526596a8,
+DB OK, config.ok=true with the existing authority warning and email delivery false.
+
+## Current CORS and deletion checkpoint - 2026-10-18 JST
+
+This checkpoint supersedes earlier pending CI/audit statements. Exact-main CI
+39091692776/Admin CI 39091692765 PASS at 2dbe74ba, 8,956 tests each. Production
+infrastructure audit 39093057999 was independently approved and PASS. Post-failure
+staging infrastructure audit 39093604510 PASS; this is not browser acceptance.
+Release 39093031910 activated 5ce93d26 under d50174ac and failed at API preflight.
+Read-only full account inventory exactly matches its original inventory: existing
+web hostname retained, created API hostname absent; candidate traffic still active.
+
+Branch fix/domain-cors-delete-proof adds bounded empty DELETE response handling,
+strict journal/inventory/fence reconciliation without repeating DELETE, Access
+HTTP 200/Worker HTTP 204 CORS verification, actual GET CORS and denied-origin
+checks. The initial focused regression reproduced two failures. Final selections
+pass 252 tests/20 files and 79 tests/5 files; full lint, both types, migration smoke
+and Web/Admin/Worker build pass with existing bundle/font warnings. See domain-
+integration/23-cors-and-detach-reconciliation.md for remaining uncertainty and gates.
+
+Dashboard confirms Access CORS is empty; public staging OPTIONS returns 403.
+Restricted CORS is prepared but NOT SAVED while owner action-time confirmation
+is pending. No production release, acceptance attestation or live browser/provider
+PASS exists. Next: protected PR/review/CI, save owner-approved CORS, exact-main
+checks and staging release, actual nine-check acceptance, fresh production
+certification and separately approved protected cutover.
