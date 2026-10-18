@@ -1,3 +1,18 @@
+# Admin activation candidate - 2026-10-18
+
+- DONE: exact-main CI/Admin CI and protected audits of both rotated credentials.
+- DONE: archive digest/policy identity checks; local recovery challenge.
+- DONE: isolated activation proposal, default-disabled runtime, 158 focused
+  tests/build/lint/types/offline plans/preflight/public scan/whitespace checks.
+- NEXT: final candidate CI, independent review and normal protected merge.
+- NEXT: exact-main checks, repository Admin execution gate, run-bound signatures
+  and protected approvals for staging initialize/migrate/enroll/bootstrap/enable.
+- PENDING_EXTERNAL_EVIDENCE: actual Access subject and independent off-machine
+  recovery; acquire direct-app identity after initialize-disabled.
+- PENDING_EXTERNAL_EVIDENCE: ST01-ST20 and signed certificate before production.
+
+---
+
 # Domain release checkpoint - 2026-10-17 14:19 UTC
 
 PR #6 merged normally as `51d3590ad88c59128d15a746b4e3dfe5b7b8fb72` after exact-head

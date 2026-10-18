@@ -1,3 +1,23 @@
+# Admin guarded activation proposal - 2026-10-18
+
+Current release source on main remains `61a34b74`, disabled and undeployed.
+Its exact-main CI/Admin CI and both post-rotation credential audits succeeded.
+This candidate proposes both release-policy enabled flags true for the already
+verified isolated targets, while rendered console runtime stays false. The
+repository execution variable is absent; no live operation was dispatched.
+
+Local validation: 5 focused files / 158 tests, Admin build, lint (one generated
+bundle warning), both typechecks, offline target plans/customer-isolation
+preflight, public text scan and whitespace checks PASS. Actual ST01-ST20,
+verified Access subject and independent off-machine recovery remain
+PENDING_EXTERNAL_EVIDENCE. The App Launcher is optional; acquire the real owner
+identity through the direct app after protected initialize-disabled. See
+docs/admin/production-readiness/26_REVIEWED_ACTIVATION_PROPOSAL.md. Next: exact
+candidate CI and independent PR review, normal merge, exact-main CI, then signed
+staging initialization. Production still requires a completed staging certificate.
+
+---
+
 # Admin commissioning publication - 2026-10-18
 
 PR #16: https://github.com/hello-tako/Takolio/pull/16, branch

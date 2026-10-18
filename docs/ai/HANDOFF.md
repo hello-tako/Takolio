@@ -1,3 +1,29 @@
+# Admin activation handoff - 2026-10-18
+
+Branch `codex/admin-activation-20261018` proposes only the two release-policy
+enabled flags plus release-gate regression coverage and sanitized receipts/docs.
+Main remains `61a34b74`, disabled/undeployed; exact-main CI and both fresh rotated
+credential audits succeeded. GitHub artifact ZIP digests and all seven metadata
+sections were checked against the actual targets. The owner reports independent
+key backup; only the local restore challenge is independently verified here.
+
+5 focused files / 158 tests, Admin build, lint (one generated bundle warning),
+typecheck, clean offline plans, isolation preflight, public scan and whitespace
+checks passed. The runtime still renders disabled; no execution variable, Admin
+Worker/DNS write, migration, HMAC provisioning, identity enrollment or bootstrap
+has happened. Customer/PayOS code and release settings are unchanged.
+
+Publish this candidate for exact-HEAD CI and independent review, then merge
+normally and wait for exact-main checks. The execution variable must be a
+repository configuration variable because job-level if is evaluated before
+environment variables. Run protected signed initialize-disabled before asking
+the owner to authenticate at the direct staging hostname. The optional App
+Launcher message is not an identity PASS. Retain actual JWT/enrollment claims
+privately. ST01-ST20, independent recovery and its signed certificate remain
+required before production. See production-readiness/26 for precise gates.
+
+---
+
 # Domain release checkpoint - 2026-10-17 14:19 UTC
 
 PR #6 merged normally as `51d3590ad88c59128d15a746b4e3dfe5b7b8fb72` after exact-head
