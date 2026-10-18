@@ -10781,3 +10781,16 @@ Admin release policy remains disabled. Owner-supplied Drive backup evidence and
 the App Launcher error do not yet establish independently recoverable key custody
 or a verified Access subject. No Admin Worker, migration, enrollment, bootstrap,
 enablement or production deployment has occurred.
+
+## Protected HMAC follow-up candidate
+
+A separate branch `codex/admin-hmac-provisioning-20261018` implements the missing
+initial HMAC step in the signed, protected Admin Operator Ceremony lane. The new
+finite `provision-hmac` operation accepts an empty payload, uses in-memory random
+keys, writes only mapped Admin/Facade Worker secrets and requires schema/identity,
+disabled-console and zero authority/session/audit/fixture-history checks. Every
+PUT rechecks the protected source/approval/artifact and unused authority. A fresh
+signed initial retry may replace a partial key set only before authority exists;
+operational audit-key rotation remains prohibited. No live action was performed.
+Validation and exact-head review status belong to this follow-up, not PR #17.
+See production-readiness/27_PROTECTED_HMAC_PROVISIONING.md.

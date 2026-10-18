@@ -7683,3 +7683,14 @@ bundle/font warnings. Hosted full-suite checks and human review remain required.
 - [ ] Obtain verified Access subject and independently recoverable owner-key evidence.
 - [ ] Run signed staging initialization/migration/enrollment/bootstrap, ST01-ST20 and certificate.
 - [ ] Run the protected production sequence only after the exact-source staging certificate.
+
+## Initial HMAC release gap
+
+- IMPLEMENTED: finite signed `provision-hmac`, protected operator workflow,
+  mapped Worker-only secret PUTs, unused-authority guard and no secret outputs.
+- VERIFIED OFFLINE: guard/schema, independent approval/artifact, target/console,
+  concurrent-authority and partial-write failure cases.
+- NEXT: final follow-up checks/review/merge before any live staging initialization,
+  so ST01-ST20 and production use the complete final immutable source.
+- PENDING_EXTERNAL_EVIDENCE: live HMAC provider behavior and authenticated facade
+  smoke; no local fixture is counted as live acceptance.

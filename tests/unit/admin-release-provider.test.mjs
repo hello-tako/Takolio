@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { createRequire } from 'node:module';
 import { describe, expect, it, vi } from 'vitest';
 import shutdownWorker from '../../src/worker/admin-shutdown-worker.mjs';
@@ -427,5 +428,142 @@ describe('Enabled Admin release checks', () => {
     const provider = createProvider(authorized, context, { CLOUDFLARE_API_TOKEN: 'synthetic' }, enabledFixture(options), command);
     await expect(provider.verifyEnabled(target, context.sourceSha)).rejects.toThrow();
     expect(command).not.toHaveBeenCalled();
+  });
+});
+
+describe('Protected initial HMAC provisioning', () => {
+  function fixture({ authority = 0, failWrite = 0, mutate, invalidGitHub = false } = {}) {
+    const ctx = { ...context, operation: 'provision-hmac', runAttempt: '1', auditArtifactDigest: 'sha256:' + 'f'.repeat(64) };
+    const facts = {
+      repository: { id: 1422954151, full_name: 'hello-tako/Takolio', default_branch: 'main' },
+      branch: { protected: true, commit: { sha: ctx.sourceSha } },
+      protection: { enforce_admins: { enabled: true }, required_pull_request_reviews: { required_approving_review_count: 1, dismiss_stale_reviews: true },
+        required_status_checks: { strict: true, contexts: ['validate-admin'] } },
+      environment: { id: 1, can_admins_bypass: false, protection_rules: [{ type: 'required_reviewers', prevent_self_review: true, reviewers: [1] }],
+        deployment_branch_policy: { protected_branches: true, custom_branch_policies: false } },
+      run: { id: 42, run_attempt: 1, event: 'workflow_dispatch', head_sha: ctx.sourceSha, head_branch: 'main',
+        path: '.github/workflows/admin-breakglass.yml', actor: { id: 1, type: 'User' }, triggering_actor: { id: 1 }, repository: { id: 1422954151 } },
+      ci: [{ head_sha: ctx.sourceSha, path: '.github/workflows/admin-ci.yml', status: 'completed', conclusion: 'success', event: 'push', repository: { id: 1422954151 } }],
+      approvals: invalidGitHub ? [] : [{ state: 'approved', user: { type: 'User', id: 2 }, environments: [{ id: 1 }] }],
+      artifact: { name: 'admin-pre-action-42', expired: false, digest: ctx.auditArtifactDigest, workflow_run: { id: 42, head_sha: ctx.sourceSha } },
+    };
+    const base = providerFacts(f => {
+      f.a.bindings.push({ name: 'ADMIN_CONSOLE_ENABLED', type: 'plain_text', text: 'false' }, { name: 'ADMIN_AUTH_MODE', type: 'plain_text', text: 'cloudflare_access' });
+      mutate?.(f);
+    });
+    const writes = [];
+    let checks = 0;
+    const fetcher = vi.fn(async (url, options) => {
+      if (url.endsWith(`/d1/database/${target.adminDatabaseId}/query`)) {
+        const { sql } = JSON.parse(options.body);
+        expect(sql).toContain('admin_audit_events');
+        expect(sql).toContain('admin_owner_enrollments');
+        expect(sql.trim().startsWith('SELECT')).toBe(true);
+        return d1([{ n: typeof authority === 'function' ? authority(checks++) : authority }]);
+      }
+      if (url.endsWith('/secrets')) {
+        writes.push({ url, ...JSON.parse(options.body) });
+        expect(options.method).toBe('PUT');
+        if (failWrite === writes.length) return new Response('provider body is suppressed', { status: 503 });
+        return cloudflare({ name: writes.at(-1).name, type: 'secret_text' });
+      }
+      return base(url, options);
+    });
+    const command = vi.fn();
+    const provider = createProvider(authorized, ctx, { CLOUDFLARE_API_TOKEN: 'synthetic' }, fetcher, command);
+    vi.spyOn(provider, 'githubFacts').mockResolvedValue(facts);
+    return { ctx, provider, fetcher, writes, command, facts };
+  }
+
+  it('generates distinct fresh secrets and writes a matching facade pair only to mapped Workers', async () => {
+    const first = fixture();
+    const result = await first.provider.provisionHmac();
+    expect(result).toBeUndefined();
+    expect(first.writes.map(w => [w.url, w.name, w.type])).toEqual([
+      [`https://api.cloudflare.com/client/v4/accounts/${target.accountId}/workers/scripts/${target.facadeWorker}/secrets`, 'ADMIN_FACADE_HMAC_SECRET', 'secret_text'],
+      [`https://api.cloudflare.com/client/v4/accounts/${target.accountId}/workers/scripts/${target.adminWorker}/secrets`, 'ADMIN_FACADE_HMAC_SECRET', 'secret_text'],
+      [`https://api.cloudflare.com/client/v4/accounts/${target.accountId}/workers/scripts/${target.adminWorker}/secrets`, 'ADMIN_AUDIT_HMAC_SECRET', 'secret_text'],
+    ]);
+    expect(first.writes.every(w => /^[A-Za-z0-9_-]{43}$/.test(w.text))).toBe(true);
+    expect(first.writes[0].text === first.writes[1].text).toBe(true);
+    expect(first.writes[2].text !== first.writes[0].text).toBe(true);
+    expect(first.provider.githubFacts).toHaveBeenCalledTimes(3);
+    expect(first.command).not.toHaveBeenCalled();
+    const second = fixture();
+    await second.provider.provisionHmac();
+    expect(second.writes[0].text !== first.writes[0].text).toBe(true);
+    expect(second.writes[2].text !== first.writes[2].text).toBe(true);
+  });
+
+  it.each([1, '0', null, -1])('refuses nonempty or invalid authority count %s before writing', async authority => {
+    const f = fixture({ authority });
+    await expect(f.provider.provisionHmac()).rejects.toThrow('unused Admin authority');
+    expect(f.writes).toHaveLength(0);
+  });
+
+  it('rechecks authority before every write and stops if authority appears', async () => {
+    const f = fixture({ authority: check => check < 2 ? 0 : 1 });
+    await expect(f.provider.provisionHmac()).rejects.toThrow('unused Admin authority');
+    expect(f.writes).toHaveLength(1);
+  });
+
+  it('runs the unused-authority guard on real schema-4 and detects pre-enrollment audit history', async () => {
+    const f = fixture();
+    await f.provider.provisionHmac();
+    const sql = JSON.parse(f.fetcher.mock.calls.find(([url]) => url.endsWith('/query'))[1].body).sql;
+    const code = `import sqlite3,pathlib,sys,json
+c=sqlite3.connect(':memory:')
+for p in sorted(pathlib.Path('migrations-admin').iterdir()):
+ if p.name.endswith('.sql'): c.executescript(p.read_text())
+q=sys.stdin.read()
+before=c.execute(q).fetchone()[0]
+c.execute("INSERT INTO admin_audit_events(id,action,outcome) VALUES('test-audit-guard','test.guard','denied')")
+print(json.dumps([before,c.execute(q).fetchone()[0]]))`;
+    expect(JSON.parse(execFileSync('python3', ['-c', code], { input: sql, encoding: 'utf8' }))).toEqual([0, 1]);
+  });
+
+  it.each([
+    ['enabled console', f => { f.a.bindings.find(b => b.name === 'ADMIN_CONSOLE_ENABLED').text = 'true'; }],
+    ['foreign DB', f => { f.a.bindings.find(b => b.name === 'ADMIN_DB').id = target.customerDatabaseId; }],
+    ['public facade', f => { f.subdomain.enabled = true; }],
+  ])('refuses %s before writing', async (_name, mutate) => {
+    const f = fixture({ mutate });
+    await expect(f.provider.provisionHmac()).rejects.toThrow();
+    expect(f.writes).toHaveLength(0);
+  });
+
+  it('requires protected independent approval before a secret write', async () => {
+    const f = fixture({ invalidGitHub: true });
+    await expect(f.provider.provisionHmac()).rejects.toThrow('Independent environment approval required');
+    expect(f.writes).toHaveLength(0);
+  });
+
+  it('requires the operation-specific workflow and immutable audit artifact before writes', async () => {
+    for (const change of [f => { f.run.path = '.github/workflows/admin-staging-deploy.yml'; }, f => { f.artifact.expired = true; }]) {
+      const f = fixture();
+      change(f.facts);
+      await expect(f.provider.provisionHmac()).rejects.toThrow();
+      expect(f.writes).toHaveLength(0);
+    }
+  });
+
+  it('stops after a partial failure without printing bodies, retrying or enabling', async () => {
+    const f = fixture({ failWrite: 2 });
+    await expect(f.provider.provisionHmac()).rejects.toThrow('Release provider HTTP 503');
+    expect(f.writes).toHaveLength(2);
+    expect(f.command).not.toHaveBeenCalled();
+    expect(f.writes.every(w => !w.url.includes(target.customerDatabaseId))).toBe(true);
+  });
+
+  it('cannot provision from an unrelated operation', async () => {
+    const provider = createProvider(authorized, context, {}, vi.fn(), vi.fn());
+    await expect(provider.provisionHmac()).rejects.toThrow('Dedicated HMAC provisioning operation required');
+  });
+
+  it('exposes provisioning only in the protected serialized operator ceremony with no secret input', () => {
+    const workflow = load(readFileSync('.github/workflows/admin-breakglass.yml', 'utf8'));
+    expect(workflow.on.workflow_dispatch.inputs.operation.options).toEqual(['provision-hmac', 'enroll-owner', 'bootstrap', 'recover']);
+    expect(Object.keys(workflow.on.workflow_dispatch.inputs).sort()).toEqual(['environment', 'execute', 'operation', 'source_sha']);
+    expect(workflow.concurrency.group).toBe('admin-release-${{ inputs.environment }}');
   });
 });

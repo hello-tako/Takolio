@@ -6,7 +6,7 @@ import { pathToFileURL } from 'node:url';
 import { canonical, verifyRecovery } from './admin-recovery.mjs';
 import { buildBootstrapAdminSql } from './admin-local-lib.mjs';
 
-export const OPERATIONS = ['initialize-disabled', 'deploy-disabled', 'enable', 'migrate', 'enroll-owner', 'bootstrap', 'recover', 'disable', 'rollback-disabled'];
+export const OPERATIONS = ['initialize-disabled', 'deploy-disabled', 'enable', 'migrate', 'provision-hmac', 'enroll-owner', 'bootstrap', 'recover', 'disable', 'rollback-disabled'];
 export const digest = value => createHash('sha256').update(typeof value === 'string' || Buffer.isBuffer(value) ? value : canonical(value)).digest('hex');
 const exact = (value, keys) => value && canonical(Object.keys(value).sort()) === canonical([...keys].sort());
 const sha = /^[a-f0-9]{40}$/;
@@ -66,7 +66,7 @@ export function validateAuthorization(bundle, policy, context, now = Date.now())
     if (!exact(approval, ['operatorId', 'signature']) || !custodian || !/^[A-Za-z0-9_-]{86}$/.test(approval.signature) ||
         !verify(null, Buffer.from(canonical(m)), createPublicKey(custodian.publicKey), Buffer.from(approval.signature, 'base64url'))) throw new Error('Invalid release signature');
   }
-  if (['initialize-disabled', 'deploy-disabled', 'enable', 'migrate', 'disable'].includes(m.operation) && !exact(m.payload, [])) throw new Error('Unexpected operation payload');
+  if (['initialize-disabled', 'deploy-disabled', 'enable', 'migrate', 'provision-hmac', 'disable'].includes(m.operation) && !exact(m.payload, [])) throw new Error('Unexpected operation payload');
   if (m.operation === 'enroll-owner' && (!exact(m.payload, ['userId', 'subject', 'email', 'displayName', 'approvalRef']) ||
       !/^[A-Za-z0-9_.:-]{1,128}$/.test(m.payload.userId) || !/^[A-Za-z0-9_.:@-]{1,128}$/.test(m.payload.subject) ||
       typeof m.payload.email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m.payload.email) || m.payload.email.length > 254 ||
@@ -123,7 +123,7 @@ export function validateGitHub(facts, context) {
       environment.deployment_branch_policy?.protected_branches !== true || environment.deployment_branch_policy?.custom_branch_policies !== false) throw new Error('Protected environment policy required');
   const expectedWorkflow = { staging: '.github/workflows/admin-staging-deploy.yml', production: '.github/workflows/admin-production-deploy.yml',
     migrate: '.github/workflows/admin-d1-migrate.yml', recover: '.github/workflows/admin-breakglass.yml' };
-  const expectedPath = context.operation === 'disable' ? '.github/workflows/admin-emergency-disable.yml' : context.operation === 'migrate' ? expectedWorkflow.migrate : ['enroll-owner', 'bootstrap', 'recover'].includes(context.operation) ? expectedWorkflow.recover : expectedWorkflow[context.environment];
+  const expectedPath = context.operation === 'disable' ? '.github/workflows/admin-emergency-disable.yml' : context.operation === 'migrate' ? expectedWorkflow.migrate : ['provision-hmac', 'enroll-owner', 'bootstrap', 'recover'].includes(context.operation) ? expectedWorkflow.recover : expectedWorkflow[context.environment];
   if (String(run.id) !== context.runId || run.run_attempt !== 1 || run.event !== 'workflow_dispatch' || run.head_sha !== context.sourceSha ||
       run.head_branch !== 'main' || run.path !== expectedPath || run.actor?.type !== 'User' || run.triggering_actor?.id !== run.actor.id ||
       run.repository?.id !== 1422954151 || !ci.some(c => c.head_sha === context.sourceSha && c.path === '.github/workflows/admin-ci.yml' &&
@@ -200,7 +200,10 @@ export async function executeRelease(authorized, context, provider) {
   } else {
     await provider.verifyLedger(target, context.migrations, true);
     await provider.verifyDatabaseIdentity(target, context.environment);
-    if (m.operation === 'enable') {
+    if (m.operation === 'provision-hmac') {
+      await provider.provisionHmac();
+      await provider.verifySecrets(target);
+    } else if (m.operation === 'enable') {
       await provider.verifySecrets(target);
       await provider.verifyOwnerReady(target);
       const baseline = await provider.captureRollback();

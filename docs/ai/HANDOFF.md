@@ -10122,3 +10122,19 @@ backup link and App Launcher message remain external evidence only; direct Acces
 subject verification, independent restore, signed staging acceptance and the
 reviewed activation-policy merge are still required. No Admin runtime or database
 mutation has occurred.
+
+## HMAC provisioning follow-up
+
+`codex/admin-hmac-provisioning-20261018` adds `provision-hmac` to the fixed signed
+adapter and existing protected Admin Operator Ceremony. It generates fresh facade
+and audit HMAC keys in memory, revalidates authorization/live mapping/disabled
+state/empty authority before each of three fixed secret PUTs, and publishes no
+values. Schema-4 identity checks precede it. Partial failure remains UNKNOWN;
+a fresh signed retry is allowed only before any operator/session/audit/fixture
+history. Operational key rotation is blocked.
+
+Keep PR #17's independent approval attributed to its policy-only HEAD. This
+follow-up needs its own final-source CI/review and normal merge. Do not initialize
+staging until the complete final source passes exact-main CI. Then use the fixed
+sequence in production-readiness/27; actual Access identity/recovery and ST01-ST20
+still remain external evidence. Customer/payment code and settings are unchanged.

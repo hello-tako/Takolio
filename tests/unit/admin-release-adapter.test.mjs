@@ -91,7 +91,7 @@ function authorizationFixture() {
 
 describe('Admin offline release adapter', () => {
   it('keeps the release operation set finite and explicit', () => {
-    expect(OPERATIONS).toEqual(['initialize-disabled', 'deploy-disabled', 'enable', 'migrate', 'enroll-owner', 'bootstrap', 'recover', 'disable', 'rollback-disabled']);
+    expect(OPERATIONS).toEqual(['initialize-disabled', 'deploy-disabled', 'enable', 'migrate', 'provision-hmac', 'enroll-owner', 'bootstrap', 'recover', 'disable', 'rollback-disabled']);
   });
 
   it('validates the commissioned targets while keeping rendered consoles disabled', () => {
@@ -159,6 +159,18 @@ describe('Admin offline release adapter', () => {
     const payload = authorizationFixture();
     payload.bundle.manifest.payload = { sql: 'DELETE FROM admin_role_assignments' };
     expect(() => validateAuthorization(payload.bundle, payload.fixture.policy, payload.context, Date.parse('2026-10-17T00:10:00.000Z'))).toThrow(/payload|signature/);
+  });
+
+  it('accepts signed HMAC provisioning only with an empty operation payload', () => {
+    const { fixture, context, bundle } = authorizationFixture();
+    context.operation = bundle.manifest.operation = 'provision-hmac';
+    const pem = fixture.keys[0].privateKey.export({ type: 'pkcs8', format: 'pem' });
+    const now = Date.parse('2026-10-17T00:10:00Z');
+    const signed = signOwnerArtifact('release', bundle.manifest, 'operator-1', pem, fixture.policy, context, now);
+    expect(validateAuthorization(signed, fixture.policy, context, now).manifest.operation).toBe('provision-hmac');
+    for (const payload of [{ secret: 'operator-chosen-value' }, { worker: 'frigo' }, { name: 'SESSION_SECRET' }]) {
+      expect(() => signOwnerArtifact('release', { ...bundle.manifest, payload }, 'operator-1', pem, fixture.policy, context, now)).toThrow('Unexpected operation payload');
+    }
   });
 
   it('signs a bounded first-owner enrollment using only the rostered key', () => {
@@ -273,7 +285,7 @@ describe('Admin release policy failure boundaries', () => {
 
   const fakeProvider = () => Object.fromEntries(['verifyTargets', 'verifyConsoleDisabled', 'verifyLedger', 'verifyExistingDatabaseIdentity', 'applyMigrations', 'bindDatabaseIdentity',
     'verifyDatabaseIdentity', 'verifySecrets', 'deploy', 'verifyDisabled', 'verifyRollback', 'rollback', 'verifyBootstrapRoster', 'bootstrap',
-    'recoveryRoster', 'recover', 'deploymentVersions', 'captureRollback', 'restoreRollback', 'verifyShutdownTarget', 'shutdown', 'verifyInitialTargets', 'enrollOwner', 'verifyOwnerReady', 'enable', 'verifyEnabled'].map(name => [name, vi.fn(async () => ({}))]));
+    'recoveryRoster', 'recover', 'deploymentVersions', 'captureRollback', 'restoreRollback', 'verifyShutdownTarget', 'shutdown', 'verifyInitialTargets', 'enrollOwner', 'verifyOwnerReady', 'enable', 'verifyEnabled', 'provisionHmac'].map(name => [name, vi.fn(async () => ({}))]));
   const operationFixture = operation => {
     const { fixture, context, bundle } = authorizationFixture();
     context.operation = operation;
@@ -419,6 +431,24 @@ describe('Admin release policy failure boundaries', () => {
     provider.deploy.mockResolvedValueOnce({}).mockRejectedValueOnce(new Error('admin deploy failed'));
     await expect(executeRelease(authorized, context, provider)).rejects.toThrow('admin deploy failed');
     expect(provider.restoreRollback).toHaveBeenCalledWith({ adminVersion: 'safe-admin', facadeVersion: 'safe-facade' });
+  });
+
+  it('provisions HMAC only after schema and identity checks and never enables the console', async () => {
+    const { authorized, context, provider } = operationFixture('provision-hmac');
+    await expect(executeRelease(authorized, context, provider)).resolves.toMatchObject({ result: 'PASS', consoleEnabled: false });
+    expect(provider.verifyLedger).toHaveBeenCalledWith(authorized.target, context.migrations, true);
+    expect(provider.verifyDatabaseIdentity.mock.invocationCallOrder[0]).toBeLessThan(provider.provisionHmac.mock.invocationCallOrder[0]);
+    expect(provider.provisionHmac.mock.invocationCallOrder[0]).toBeLessThan(provider.verifySecrets.mock.invocationCallOrder[0]);
+    expect(provider.verifyConsoleDisabled).toHaveBeenCalledTimes(2);
+    expect(provider.deploy).not.toHaveBeenCalled();
+    expect(provider.enable).not.toHaveBeenCalled();
+  });
+
+  it.each(['verifyLedger', 'verifyDatabaseIdentity', 'verifyConsoleDisabled'])('does not provision HMAC when %s fails', async check => {
+    const { authorized, context, provider } = operationFixture('provision-hmac');
+    provider[check].mockRejectedValue(new Error('not ready'));
+    await expect(executeRelease(authorized, context, provider)).rejects.toThrow('not ready');
+    expect(provider.provisionHmac).not.toHaveBeenCalled();
   });
 
   it('enrolls only through the fixed owner provider after schema and identity checks', async () => {
