@@ -1,3 +1,23 @@
+# Admin guarded activation proposal - 2026-10-18
+
+Current release source on main remains `61a34b74`, disabled and undeployed.
+Its exact-main CI/Admin CI and both post-rotation credential audits succeeded.
+This candidate proposes both release-policy enabled flags true for the already
+verified isolated targets, while rendered console runtime stays false. The
+repository execution variable is absent; no live operation was dispatched.
+
+Local validation: 5 focused files / 158 tests, Admin build, lint (one generated
+bundle warning), both typechecks, offline target plans/customer-isolation
+preflight, public text scan and whitespace checks PASS. Actual ST01-ST20,
+verified Access subject and independent off-machine recovery remain
+PENDING_EXTERNAL_EVIDENCE. The App Launcher is optional; acquire the real owner
+identity through the direct app after protected initialize-disabled. See
+docs/admin/production-readiness/26_REVIEWED_ACTIVATION_PROPOSAL.md. Next: exact
+candidate CI and independent PR review, normal merge, exact-main CI, then signed
+staging initialization. Production still requires a completed staging certificate.
+
+---
+
 # Admin commissioning publication - 2026-10-18
 
 PR #16: https://github.com/hello-tako/Takolio/pull/16, branch
@@ -10716,3 +10736,61 @@ Owner-key proposal verification PASS: 4 files / 92 tests, lint, both TypeScript
 checks, disabled-target/key fingerprint contract, public patch scan and diff.
 pnpm audit snapshot reported all severity counts zero; no claim is made that
 GitHub's separately reported default-branch Dependabot findings are resolved.
+
+## Admin commissioning merged - 2026-10-18 12:38 UTC
+
+PR #16 exact-head review and both required checks PASS (406 files / 9,045 tests).
+Protected merge is 61a34b74d749ef1d6dfe42e74df74d79cb67ff50. Exact-main CI
+39127790356/Admin CI 39127790370 remain in progress at this checkpoint.
+Protected staging GET audit 39127939910 PASS after vn-taphoanhatung approval;
+all seven metadata sections observed, dedicated resources/Access match, no Admin
+Workers/domains deployed. Artifact 12136509550 is retained with its exact source
+and digest in admin/production-readiness/25_POST_MERGE_RELEASE_CHECKPOINT.md.
+Production GET audit 39127977644 awaits reviewer. Owner authorized agent browser
+approval, but concurrent window changes interrupted production UI operations.
+
+Release remains disabled. Token rotation/re-audit, GitHub read credential,
+verified Access subject, off-machine key recovery, reviewed activation and actual
+ST01-ST20 remain PENDING_EXTERNAL_EVIDENCE. The existing Cloudflare secret still
+has its original storage timestamp. No Admin live release write occurred.
+Merged-source local plan correctly refused disabled targets; Admin build and
+Wrangler dry-run PASS. Production customer health via curl: HTTP 200, DB ok,
+existing recipe authority warning. Evidence-only follow-up is not release source.
+
+At 12:49 UTC, production GET audit 39127977644 also SUCCESS after actual reviewer
+vn-taphoanhatung approval; all seven sections and exact target matches verified.
+Both reports state readyForDeployment=false, remoteMutations=false. Secret
+metadata now confirms ADMIN_RELEASE_GITHUB_READ_TOKEN exists in both Admin
+Environments, updated 12:39:49/12:40:06 UTC; its contents/scopes were not read.
+Cloudflare secret timestamps remain 11:43 UTC, so rotation is not certified.
+Owner Access subject and independent off-machine recovery still require evidence.
+Main CI/Admin CI are still running. No live Admin release write occurred.
+
+# Rotated Admin credential verification - 2026-10-18
+
+Fresh protected GET-only Admin credential audits after the owner's Cloudflare
+rotation succeeded on exact main `61a34b74d749ef1d6dfe42e74df74d79cb67ff50`:
+`39135545563` (staging, artifact `12139143437`, digest
+`sha256:e17301fd8a36b2a9446a896e4f5b333ae86769ce540f806fd4d79c6ffe01a558`) and
+`39135545460` (production, artifact `12139304681`, digest
+`sha256:55f2e782f7e23964734a4b3d5b1015b061e58b922d5ef7de2850b9420e1b3bd5`).
+Both were approved by `vn-taphoanhatung`; all seven sections are `OBSERVED`,
+with `remoteMutations=false` and `readyForDeployment=false`.
+
+Admin release policy remains disabled. Owner-supplied Drive backup evidence and
+the App Launcher error do not yet establish independently recoverable key custody
+or a verified Access subject. No Admin Worker, migration, enrollment, bootstrap,
+enablement or production deployment has occurred.
+
+## Protected HMAC follow-up candidate
+
+A separate branch `codex/admin-hmac-provisioning-20261018` implements the missing
+initial HMAC step in the signed, protected Admin Operator Ceremony lane. The new
+finite `provision-hmac` operation accepts an empty payload, uses in-memory random
+keys, writes only mapped Admin/Facade Worker secrets and requires schema/identity,
+disabled-console and zero authority/session/audit/fixture-history checks. Every
+PUT rechecks the protected source/approval/artifact and unused authority. A fresh
+signed initial retry may replace a partial key set only before authority exists;
+operational audit-key rotation remains prohibited. No live action was performed.
+Validation and exact-head review status belong to this follow-up, not PR #17.
+See production-readiness/27_PROTECTED_HMAC_PROVISIONING.md.

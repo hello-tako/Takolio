@@ -1,3 +1,18 @@
+# Admin activation candidate - 2026-10-18
+
+- DONE: exact-main CI/Admin CI and protected audits of both rotated credentials.
+- DONE: archive digest/policy identity checks; local recovery challenge.
+- DONE: isolated activation proposal, default-disabled runtime, 158 focused
+  tests/build/lint/types/offline plans/preflight/public scan/whitespace checks.
+- NEXT: final candidate CI, independent review and normal protected merge.
+- NEXT: exact-main checks, repository Admin execution gate, run-bound signatures
+  and protected approvals for staging initialize/migrate/enroll/bootstrap/enable.
+- PENDING_EXTERNAL_EVIDENCE: actual Access subject and independent off-machine
+  recovery; acquire direct-app identity after initialize-disabled.
+- PENDING_EXTERNAL_EVIDENCE: ST01-ST20 and signed certificate before production.
+
+---
+
 # Domain release checkpoint - 2026-10-17 14:19 UTC
 
 PR #6 merged normally as `51d3590ad88c59128d15a746b4e3dfe5b7b8fb72` after exact-head
@@ -7637,3 +7652,45 @@ bundle/font warnings. Hosted full-suite checks and human review remain required.
 - PENDING OWNER CONFIRMATION: save exact-origin credentialed Access CORS; bypass OFF and email/CI policies unchanged.
 - PENDING: PR independent review, protected merge/exact-main CI, new staging release, nine real staging acceptance checks, fresh production certification and independently approved production release.
 - Production remains unchanged; no staging acceptance PASS is claimed.
+
+## 2026-10-18 Admin post-merge checkpoint
+
+- DONE: PR #16 exact-head review; CI/Admin CI PASS with 9,045 tests each;
+  normal protected merge to 61a34b74.
+- RUNNING: exact-main CI 39127790356 / Admin CI 39127790370.
+- DONE: protected staging GET audit 39127939910 approved by vn-taphoanhatung;
+  seven metadata sections observed, no Admin Workers/custom domains yet.
+- WAITING: production GET audit 39127977644 Environment approval; agent browser
+  approval is authorized, but current UI control was interrupted by window changes.
+- PENDING: rotate/re-audit Cloudflare credential, fine-grained GitHub read secret,
+  real Access subject, independently recoverable owner-key backup, activation-policy
+  review and signed protected staging sequence/ST01-ST20 before production.
+- VERIFIED: merged-source disabled plan, Admin build and bundle dry-run; local key
+  fingerprint/modes. These do not certify live staging or production readiness.
+
+- UPDATE 12:49 UTC: production audit 39127977644 approved by vn-taphoanhatung
+  and PASS; both sanitized reports match all seven metadata sections and targets.
+- UPDATE: GitHub read secret is present in both Admin Environments; effective
+  scope/use verification pending. Cloudflare rotation and actual owner identity /
+  independent recovery remain pending; main checks are still running.
+
+## Admin rotated-token checkpoint (2026-10-18)
+
+- [x] Rotate Cloudflare release token and update both protected Environments.
+- [x] Run and approve fresh staging/production GET-only credential audits on exact main.
+- [x] Retain sanitized artifacts and SHA-256 digests for both runs.
+- [ ] Review and merge the separate activation-policy PR with protected checks.
+- [ ] Obtain verified Access subject and independently recoverable owner-key evidence.
+- [ ] Run signed staging initialization/migration/enrollment/bootstrap, ST01-ST20 and certificate.
+- [ ] Run the protected production sequence only after the exact-source staging certificate.
+
+## Initial HMAC release gap
+
+- IMPLEMENTED: finite signed `provision-hmac`, protected operator workflow,
+  mapped Worker-only secret PUTs, unused-authority guard and no secret outputs.
+- VERIFIED OFFLINE: guard/schema, independent approval/artifact, target/console,
+  concurrent-authority and partial-write failure cases.
+- NEXT: final follow-up checks/review/merge before any live staging initialization,
+  so ST01-ST20 and production use the complete final immutable source.
+- PENDING_EXTERNAL_EVIDENCE: live HMAC provider behavior and authenticated facade
+  smoke; no local fixture is counted as live acceptance.

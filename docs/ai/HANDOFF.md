@@ -1,3 +1,29 @@
+# Admin activation handoff - 2026-10-18
+
+Branch `codex/admin-activation-20261018` proposes only the two release-policy
+enabled flags plus release-gate regression coverage and sanitized receipts/docs.
+Main remains `61a34b74`, disabled/undeployed; exact-main CI and both fresh rotated
+credential audits succeeded. GitHub artifact ZIP digests and all seven metadata
+sections were checked against the actual targets. The owner reports independent
+key backup; only the local restore challenge is independently verified here.
+
+5 focused files / 158 tests, Admin build, lint (one generated bundle warning),
+typecheck, clean offline plans, isolation preflight, public scan and whitespace
+checks passed. The runtime still renders disabled; no execution variable, Admin
+Worker/DNS write, migration, HMAC provisioning, identity enrollment or bootstrap
+has happened. Customer/PayOS code and release settings are unchanged.
+
+Publish this candidate for exact-HEAD CI and independent review, then merge
+normally and wait for exact-main checks. The execution variable must be a
+repository configuration variable because job-level if is evaluated before
+environment variables. Run protected signed initialize-disabled before asking
+the owner to authenticate at the direct staging hostname. The optional App
+Launcher message is not an identity PASS. Retain actual JWT/enrollment claims
+privately. ST01-ST20, independent recovery and its signed certificate remain
+required before production. See production-readiness/26 for precise gates.
+
+---
+
 # Domain release checkpoint - 2026-10-17 14:19 UTC
 
 PR #6 merged normally as `51d3590ad88c59128d15a746b4e3dfe5b7b8fb72` after exact-head
@@ -10046,3 +10072,69 @@ preflight and unauthenticated GET protection. Publish/review/protected merge thi
 fix and exact-main CI before any new release. Complete actual Google/OTP/session/
 sandbox PayOS/user/mobile/PWA/rollback acceptance, then fresh production-certify
 and protected production release. The infrastructure audit is not that certification.
+
+## Admin PR #16 merged; live release dependencies remain - 2026-10-18
+
+Source main 61a34b74d749ef1d6dfe42e74df74d79cb67ff50 came from approved exact-head
+02661c67 and successful CI 39125868119/Admin CI 39125868139 (9,045 tests, Admin
+browser 12/12, keyboard 10/10). Main CI 39127790356/Admin CI 39127790370 are
+running; verify their actual conclusions before any release.
+
+Protected staging credential audit 39127939910 SUCCESS after reviewer
+vn-taphoanhatung approved. Sanitized artifact 12136509550 and digest are recorded
+in admin/production-readiness/25_POST_MERGE_RELEASE_CHECKPOINT.md. Both Access
+apps/issuer/D1/KV match. No Admin Worker/custom domain exists. Production audit
+39127977644 awaits review. The owner explicitly authorized agent approval through
+the existing reviewer session; browser control was interrupted by window changes
+and the extension channel has unavailable auth. Do not bypass Environment policy.
+
+Token rotation question, fine-grained GitHub token setup and off-machine recovery
+questions are pending. No token rotation is inferred from owner authorization;
+secret timestamps are still 11:43 UTC. The browser tool requires owner handoff
+for new/changed credentials. Keep keys outside Git; real Access subject remains
+unverified. Policy enabled=false and execution variable absent. Do not sign a
+completed staging certificate without actual ST01-ST20. No Admin live write or
+production deployment occurred. Current checkout is an evidence-only branch
+codex/admin-postmerge-evidence-20261018 based on 61a34b74; use the exact reviewed
+main source, not this documentation branch, for future release operations.
+
+Superseding audit/storage update at 12:49 UTC: production credential audit
+39127977644 SUCCESS after vn-taphoanhatung approved; no approval bypass. Artifact
+12136599643 digest sha256:e21480f4225ae1e7f666bab82be7b6aa06eb678180bcd979f9c0b97777c9e0ef
+and its sanitized report are retained. Both audits have seven OBSERVED sections,
+match both Access apps/issuer and show no Admin Worker deployment.
+ADMIN_RELEASE_GITHUB_READ_TOKEN metadata now exists in both Environments with
+12:39:49/12:40:06 UTC timestamps, but effective scopes/use are unverified.
+Cloudflare token metadata is unchanged at 11:43 UTC; do not assume rotation.
+Main CI/Admin CI still running, Access subject/off-machine recovery remain
+PENDING_EXTERNAL_EVIDENCE, and there has been no live Admin release write.
+
+## Latest Admin release handoff - 2026-10-18 23:25 JST
+
+The rotated Cloudflare token was stored in both Admin Environments and fresh
+protected GET-only audits succeeded: staging `39135545563` and production
+`39135545460`, both on main `61a34b74d749ef1d6dfe42e74df74d79cb67ff50`, with all
+seven sections `OBSERVED`. Their sanitized artifacts and digests are retained in
+`docs/admin/production-readiness/evidence/commissioning-20261018/rotated-token/`.
+
+The release lane is still intentionally disabled. The owner-supplied Drive key
+backup link and App Launcher message remain external evidence only; direct Access
+subject verification, independent restore, signed staging acceptance and the
+reviewed activation-policy merge are still required. No Admin runtime or database
+mutation has occurred.
+
+## HMAC provisioning follow-up
+
+`codex/admin-hmac-provisioning-20261018` adds `provision-hmac` to the fixed signed
+adapter and existing protected Admin Operator Ceremony. It generates fresh facade
+and audit HMAC keys in memory, revalidates authorization/live mapping/disabled
+state/empty authority before each of three fixed secret PUTs, and publishes no
+values. Schema-4 identity checks precede it. Partial failure remains UNKNOWN;
+a fresh signed retry is allowed only before any operator/session/audit/fixture
+history. Operational key rotation is blocked.
+
+Keep PR #17's independent approval attributed to its policy-only HEAD. This
+follow-up needs its own final-source CI/review and normal merge. Do not initialize
+staging until the complete final source passes exact-main CI. Then use the fixed
+sequence in production-readiness/27; actual Access identity/recovery and ST01-ST20
+still remain external evidence. Customer/payment code and settings are unchanged.

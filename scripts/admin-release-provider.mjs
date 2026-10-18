@@ -1,4 +1,5 @@
 import { execFileSync } from 'node:child_process';
+import { randomBytes } from 'node:crypto';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { digest, renderConfigs, validateGitHub } from './admin-release-adapter.mjs';
@@ -208,6 +209,45 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
       for (const worker of [t.adminWorker, t.facadeWorker]) {
         const s = await settings(worker);
         if (!binding(s, 'ADMIN_FACADE_HMAC_SECRET', 'secret_text') || (worker === t.adminWorker && !binding(s, 'ADMIN_AUDIT_HMAC_SECRET', 'secret_text'))) throw new Error('Operator-provisioned secrets missing');
+      }
+    },
+    async provisionHmac() {
+      if (context.operation !== 'provision-hmac') throw new Error('Dedicated HMAC provisioning operation required');
+      const assertUnused = async () => {
+        const rows = await query(`SELECT
+          (SELECT COUNT(*) FROM approved_human_operators) +
+          (SELECT COUNT(*) FROM operator_identity_bindings) +
+          (SELECT COUNT(*) FROM admin_owner_enrollments) +
+          (SELECT COUNT(*) FROM admin_role_assignments) +
+          (SELECT COUNT(*) FROM admin_local_credentials) +
+          (SELECT COUNT(*) FROM admin_sessions) +
+          (SELECT COUNT(*) FROM admin_audit_events) +
+          (SELECT COUNT(*) FROM admin_bootstrap_ceremonies) +
+          (SELECT COUNT(*) FROM admin_recovery_operations) +
+          (SELECT COUNT(*) FROM admin_action_approvals) +
+          (SELECT COUNT(*) FROM admin_config_metadata WHERE key IN ('bootstrap_completed_at','fixture_dataset')) AS n`);
+        if (rows.length !== 1 || rows[0].n !== 0) throw new Error('HMAC provisioning requires unused Admin authority');
+      };
+      await provider.verifyTargets(target, context.environment);
+      await provider.verifyConsoleDisabled(target);
+      await assertUnused();
+      // A fresh signed retry can replace partial initial provisioning, only
+      // before authority/session/audit history exists. No values enter files/logs.
+      const facade = randomBytes(32).toString('base64url');
+      const audit = randomBytes(32).toString('base64url');
+      for (const [worker, name, text] of [
+        [target.facadeWorker, 'ADMIN_FACADE_HMAC_SECRET', facade],
+        [target.adminWorker, 'ADMIN_FACADE_HMAC_SECRET', facade],
+        [target.adminWorker, 'ADMIN_AUDIT_HMAC_SECRET', audit],
+      ]) {
+        await checkWrite();
+        await provider.verifyTargets(target, context.environment);
+        await provider.verifyConsoleDisabled(target);
+        await assertUnused();
+        const stored = await cf(`/workers/scripts/${worker}/secrets`, {
+          method: 'PUT', body: JSON.stringify({ name, type: 'secret_text', text }),
+        });
+        if (stored?.name !== name || stored.type !== 'secret_text') throw new Error('HMAC secret metadata mismatch');
       }
     },
     async enrollOwner(manifest, signer) {

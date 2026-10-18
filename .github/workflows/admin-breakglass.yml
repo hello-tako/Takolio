@@ -11,7 +11,7 @@ on:
       operation:
         description: Fixed operation; Admin remains disabled
         type: choice
-        options: [enroll-owner, bootstrap, recover]
+        options: [provision-hmac, enroll-owner, bootstrap, recover]
         required: true
       execute:
         description: Requires separate owner authorization and protected Environment approval
