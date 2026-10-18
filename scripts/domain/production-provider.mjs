@@ -13,6 +13,7 @@ import { unchangedAudit, verifyUploadedVersion, recoveryAction } from './staging
 import { verifyEvidenceRun, verifyStagingAcceptance, verifyProductionCertification,
   isProductionMutation, validateProductionRecovery, observeProduction, productionUploadVersion, productionRecoveryIdentity } from './production-release.mjs';
 import { capturedCommand } from '../cloudflare-deploy-retry.mjs';
+import { verifyCompositionRelease, verifyPlannerPrerequisite } from '../composition-flags.mjs';
 import { validateReleaseSource, migrationManifest, hostedCi, requireCurrentHostedMain,
   fetchRecipeAuthorityEvidence, verifyPreviousRecipeAuthority, verifyRecipeAuthorityEvidence,
   verifyD1CatalogContinuity, CATALOG_RELEASE_MANIFEST_PATH, verifyStableWorkerDeployment } from '../release-check.mjs';
@@ -171,8 +172,15 @@ export const productionProvider = {
   },
   async build(context) {
     await run('pnpm', ['build'], context.plan.buildEnvironment);
-    await run('node', ['scripts/composition-flags.mjs', 'verify', resolve(output, 'manifest.json'), 'dist/composition-flags.json', configFile],
-      { ...context.plan.buildEnvironment, MEAL_COMPOSITION_V2_ENABLED: String(context.manifest.mealCompositionV2Enabled) });
+    const vars = context.plan.config.vars;
+    if (context.manifest.environment !== 'production' || vars.ENVIRONMENT !== 'production') {
+      throw new Error('Production build requires the audited production configuration');
+    }
+    const buildRecord = readJson('dist/composition-flags.json');
+    const composition = verifyCompositionRelease({ server: vars.MEAL_COMPOSITION_V2_ENABLED,
+      ui: context.plan.buildEnvironment.VITE_MEAL_COMPOSITION_V2_ENABLED,
+      manifest: context.manifest, buildRecord });
+    verifyPlannerPrerequisite({ composition, server: vars.MEAL_PLANNER_ENABLED, buildRecord });
   },
   async upload(context) {
     await gate(context.manifest.sha);

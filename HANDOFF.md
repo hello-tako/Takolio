@@ -1,3 +1,53 @@
+# Production build guard correction - 2026-10-18
+
+Current: DOMAIN_STAGING_VERIFIED on d5f2e726; production cutover pending the reviewed
+adapter correction. This checkpoint supersedes earlier domain status sections.
+Production remains version 01b81140/source 526596a8. Admin remains reserved.
+
+Staging canonical release 39098613336 succeeded with version 53b3ce38 and both
+custom hostnames. Real Google GIS, approved-inbox OTP delivery, refresh/logout,
+sandbox QR/provider verification and signed synthetic replay, user journeys and
+mobile/PWA smoke were executed. The sandbox event was not a bank settlement or
+transfer. Staging scan used its configured mock-AI pipeline. A real paired rollback
+restored 5ce93d26, retained the app hostname, detached only the receipt-owned API
+hostname and passed audit 39098518311 before canonical same-SHA re-release.
+Public evidence with explicit test scope:
+https://github.com/hello-tako/Takolio/pull/13#issuecomment-6245968702
+
+The old staging checksum appeared in private tool output. The owner confirmed
+rotation and Worker secret update. No new checksum was read. Two real provider
+verification callbacks after rotation returned POST 200/outcome ok/exceptions 0;
+the canonical webhook was restored. Audit 39101311454 confirms the same active
+version/source, isolated bindings, vars, secret names, runtime and operations.
+The owner-approved exact-path Access exception retains Worker signatures;
+anonymous app/health remain protected.
+
+Read-only production certification 39101415582 was independently approved and
+passed at 05:44:39Z. Production release 39101591421 was independently approved by
+vn-taphoanhatung, then failed at prepared before upload/traffic/hostname mutation.
+Receipt records mutationAttempted=false, no uploadedVersionId and recovery says
+no traffic or hostname mutation attempted. Failed evidence remains unchanged.
+
+The actual production build passes. Exact receipt reproduction identifies the
+composition CLI's optional config argument as staging-only. The adapter now uses
+existing generic composition/planner validators directly against audited production
+vars and the compiled UI record, with an explicit production identity check.
+Mismatches still fail. Staging, shared validators, customer application, payments,
+schema, feature flags and workflow protections are unchanged.
+
+Executed: actual pnpm build and corrected adapter build using the sanitized
+production receipt PASS; 19 related files / 288 tests PASS (11 new build cases);
+lint, both TypeScript checks and customer/Admin migration smoke PASS. Two existing
+generated-bundle lint warnings and existing Admin font warnings remain. Exact-head
+hosted CI and independent PR review remain mandatory; full hosted result pending.
+
+Next: protected fix review/merge and exact-main CI, new canonical staging receipt
+and accurate acceptance on the new SHA, fresh production certification and release
+approval, then at least 15 real minutes and final live acceptance. Do not relabel
+an old-SHA attestation as a test of the new release. See 24-production-build-guard.md.
+
+---
+
 # Final local verification - 2026-10-17
 
 Full canonical-temp run: 388 files / 8,804 tests PASS. Final focused audit/config/
