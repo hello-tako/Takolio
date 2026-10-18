@@ -55,8 +55,10 @@ The fix is not authorized for live execution until independent review, protected
 merge and exact-main CI/Admin CI. No retry of the failed activation is allowed
 before reconciliation. Production remains unchanged. Live staging Google/OTP/
 sessions, PayOS sandbox, user/mobile/PWA journeys and rollback acceptance are still
-pending. PayOS checkout is currently disabled in the audited staging variables;
-credential presence alone is not sandbox checkout acceptance.
+pending. The audited staging version has PAYOS_CHECKOUT_ENABLED as a secret
+binding; its value is not visible in the ordinary variables. Checkout availability
+and actual sandbox behavior remain unverified. Credential names alone are not
+sandbox checkout acceptance, and no payment flag has been changed.
 
 ## Executed validation
 

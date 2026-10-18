@@ -7578,7 +7578,8 @@ Status: `DOMAIN_IMPLEMENTATION_IN_PROGRESS`.
 - NEXT: validate and independently review this fix, protected merge/exact-main CI,
   fresh audit and restricted-email staging release, actual acceptance, then fresh
   production certification and independent Environment approval. Do not issue PASS
-  for pending browser/provider/rollback checks or enable absent checkout flags.
+  for pending browser/provider/rollback checks. Checkout flag is a secret binding;
+  its value and actual sandbox behavior remain unverified. Do not change payment flags.
 
 Reconciliation local validation completed: 439 tests / 15 files PASS; lint,
 typecheck, migration smoke, build and syntax/whitespace checks PASS with existing

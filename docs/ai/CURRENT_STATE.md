@@ -10421,3 +10421,8 @@ smokes, Web/Admin/Worker build, Node syntax and diff check PASS. A read-only run
 the new helper confirms restored deployment ce74eb29 and original version via both
 specific/current endpoints. No new deployment was created by that probe. Hosted
 exact-head CI/Admin CI and independent human review remain next.
+
+PayOS availability correction: PAYOS_CHECKOUT_ENABLED is present among the live
+secret binding names. Its absence from ordinary variables does not prove checkout
+is disabled; its value and sandbox runtime behavior remain unverified. Preserve
+all payment flags and credentials until authorized actual staging acceptance.

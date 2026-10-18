@@ -9941,7 +9941,9 @@ activation/recovery calls without changing application/payment/Admin behavior,
 permissions or gates. Initial four-file focused run: 55 PASS; broader validation
 pending. Next: finish checks, independent PR review, protected merge/exact-main
 checks; fresh audit and staging. Actual nine-check acceptance is still pending.
-No production release/attestation exists; checkout remains disabled in staging.
+No production release/attestation exists. Staging has a secret binding named
+PAYOS_CHECKOUT_ENABLED; its value cannot be inferred from ordinary variables.
+Checkout availability and actual sandbox behavior remain unverified.
 
 Reconciliation final local validation: 15 files / 439 tests PASS; lint (two
 existing generated-bundle warnings), types, customer/Admin migration smoke,
