@@ -1,3 +1,64 @@
+# Admin commissioning publication - 2026-10-18
+
+PR #16: https://github.com/hello-tako/Takolio/pull/16, branch
+codex/admin-infrastructure-commissioning-20261018. Initial implementation commit
+37bcf42554ed4fd31e290dc1674b0a8321e3824c; required PR checks are running and
+reviewDecision=REVIEW_REQUIRED. Final PR HEAD needs its own checks and review;
+main 8217f0bd evidence does not certify these commissioning changes.
+
+Executed on the commissioning candidate: pnpm lint PASS; focused credential
+workflow/infrastructure/release/config suite 4 files / 92 tests PASS;
+admin-public-scan PASS; git diff --check PASS; offline release preflight
+configurationValidation=PASS with readyForDeployment=false/remoteExecuted=false.
+Earlier local full-run 5-second timeout and subsequent 32/32 rerun remain
+attributed in 21_INFRASTRUCTURE_COMMISSIONING.md; hosted exact-main full suites
+both passed 9,043 tests. No live evidence status was promoted by those results.
+
+Next: owner creates/enters the scoped credentials through the protected UI,
+then exact-HEAD review/CI, merge and exact-main checks, protected credential audit,
+real owner key/identity enrollment and the fixed staging release sequence.
+The current browser token draft has name/account/Workers Scripts Edit only and
+an empty next permission row; no credential was generated. The requested exact
+permissions and secret names are in 22_CREDENTIAL_HANDOFF.md. Current runtime
+and release policy are still disabled; Admin has not been deployed.
+
+---
+
+# Admin infrastructure commissioning - 2026-10-18
+
+PR #15 approved at 89349b4c and merged through protection as 8217f0bd.
+Exact-main Admin CI 39121353870 and CI 39121353814 both PASS with 405 files /
+9,043 tests each; Admin workerd 10/10, migration 25/25, browser 12/12 and
+keyboard 10/10 PASS. Main artifact 12134718940 is correctly bound to 8217f0bd;
+the preflight is offline-only and reports an untracked Python cache.
+
+Provisioned separate staging/production Admin D1/KV and Access apps, plus
+protected admin-staging/admin-production Environments. Both Access apps use the
+current Cloudflare owner email, Allow only, 30-minute sessions, and no bypass.
+Staging and production HttpOnly/binding cookies are ON; production settings were
+read back after Save. Sole-owner private identity stays outside public Git.
+
+Exact-main GET-only audit 39122015225 SUCCESS observed both Admin D1/KV pairs and
+customer bindings; readyForDeployment=false. Access organization remains HTTP
+403 and filtered app inventory is empty under the old audit credential, so the
+credential visibility discrepancy remains PENDING_EXTERNAL_EVIDENCE.
+
+Commissioning policy records all observed nonsecret targets but stays
+enabled=false with no rostered signing key. New admin-credential-audit.yml is a
+GET-only manual workflow limited to protected Admin Environments and dedicated
+Admin secrets, with no fallback to customer credentials. New focused contract
+and configuration suite: 4 files / 92 tests PASS. See production-readiness/21
+and 22 for identities, evidence attribution and exact credential handoff.
+
+No Admin Worker upload, migration, secret, owner enrollment/bootstrap or console
+enable occurred. Scoped credentials, actual verified Access subject, owner-held
+Ed25519 key/backup, live staging ST01-ST20 and production release remain
+PENDING_EXTERNAL_EVIDENCE. The browser credential final step requires owner
+handoff; the draft has only name/account/Workers Scripts Edit prepared.
+Customer/payment runtime and customer Environments remain unchanged.
+
+---
+
 # Production build guard correction - 2026-10-18
 
 Current: DOMAIN_STAGING_VERIFIED on d5f2e726; production cutover pending the reviewed
@@ -693,3 +754,33 @@ only with observed dedicated IDs/Access policy, create protected admin-staging a
 admin-production Environments, then stage initialize -> migrate -> enroll-owner ->
 bootstrap -> deploy-disabled -> enable. Keep all missing live acceptance as
 `PENDING_EXTERNAL_EVIDENCE`.
+
+## Admin Cloudflare secret stored - 2026-10-18 11:44 UTC
+
+On the owner's clipboard-storage instruction, verified the existing token active
+and scoped access to the expected account, then stored
+ADMIN_RELEASE_CLOUDFLARE_TOKEN via CLI stdin in admin-staging and admin-production.
+GitHub secret metadata readback passed for both. GET-only local infrastructure
+audit on 629614da observed all seven sections; both exact Access app IDs/audiences
+and the issuer matched. See docs/admin/production-readiness/23_CREDENTIAL_STORAGE_RECEIPT.md.
+No Admin runtime/database mutation or deployment occurred. PR #16 review/CI,
+GitHub metadata token, owner key and actual Access subject remain dependencies;
+live staging/production acceptance remains PENDING_EXTERNAL_EVIDENCE.
+
+## Owner key prepared for review - 2026-10-18
+
+The owner requested a new local Ed25519 key and asked to inspect PR #16 before
+approval. Generated the key outside the repository (0600/0700), retained a local
+recovery copy and verified restored signing against a random challenge. Only its
+public key is proposed in both disabled release-policy targets; signer ID
+owner-20261018. Independent offline backup and actual Access subject are still
+PENDING_EXTERNAL_EVIDENCE. See production-readiness/24_OWNER_PUBLIC_KEY_REVIEW.md.
+No real authorization/enrollment or remote runtime mutation occurred. Initial
+replanning after the policy edit correctly refused the dirty checkout; earlier
+clean-source plans on 500740e5 reported execution disabled. New checks/PR head
+must be used for review; old CI does not certify the public-key addition.
+
+Owner-key proposal validation: 4 files / 92 tests, lint, both TypeScript checks,
+disabled-policy/public-key contract checks, public patch scan and diff check PASS.
+The pnpm audit snapshot reported zero vulnerabilities at every severity; the
+separate default-branch GitHub Dependabot view is not certified as cleared.
