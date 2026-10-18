@@ -76,6 +76,25 @@ async function unchanged(receipt, list) {
   return current;
 }
 
+async function confirmAttachment(receipt, hostname, response, { list, persist }) {
+  const [acknowledged] = validateDomains([response]);
+  if (acknowledged.hostname !== hostname || acknowledged.service !== receipt.service || acknowledged.zone_id !== ZONE ||
+      !['', 'production'].includes(acknowledged.environment) || !acknowledged.enabled || acknowledged.previews_enabled ||
+      expectedInventory(receipt).some((domain) => domain.id === acknowledged.id)) {
+    throw new Error('Ambiguous attachment response; manual reconciliation required');
+  }
+  receipt.events.push({ operation: 'attach-acknowledged', hostname, id: acknowledged.id });
+  await persist(receipt);
+  // PUT returns an empty deprecated environment; GET must independently prove production and all routing metadata.
+  const current = validateDomains(await list());
+  const created = current.find((domain) => domain.id === acknowledged.id);
+  if (!created || !isDeepStrictEqual(created, { ...acknowledged, environment: 'production' }) ||
+      !isDeepStrictEqual(current, sort([...expectedInventory(receipt), created]))) {
+    throw new Error('Attachment read-back did not prove ownership; manual reconciliation required');
+  }
+  return created;
+}
+
 // The caller supplies the reviewed workflow gate and persists every intent/result.
 // An ambiguous response is never retried or claimed as ownership for deletion.
 export async function attachHosts(receipt, { list, put, gate, persist, inventory }) {
@@ -93,10 +112,7 @@ export async function attachHosts(receipt, { list, put, gate, persist, inventory
     await persist(receipt);
     const response = await put({ hostname, service: receipt.service, zone_id: ZONE,
       enabled: true, previews_enabled: false });
-    const [created] = validateDomains([response]);
-    if (created.hostname !== hostname || created.service !== receipt.service || created.zone_id !== ZONE ||
-        created.environment !== 'production' || !created.enabled || created.previews_enabled ||
-        receipt.before.some((domain) => domain.id === created.id)) throw new Error('Ambiguous attachment response; manual reconciliation required');
+    const created = await confirmAttachment(receipt, hostname, response, { list, persist });
     receipt.created.push(created);
     receipt.events.push({ operation: 'attached', hostname, id: created.id });
     await persist(receipt);

@@ -10426,3 +10426,47 @@ PayOS availability correction: PAYOS_CHECKOUT_ENABLED is present among the live
 secret binding names. Its absence from ordinary variables does not prove checkout
 is disabled; its value and sandbox runtime behavior remain unverified. Preserve
 all payment flags and credentials until authorized actual staging acceptance.
+
+## Current checkpoint - PR #11 staging reconciliation - 2026-10-18 JST
+
+PR #11 is merged at `ff3b78a653cc3adaca333ebe637ef44374074a55` after independent approval of reviewed head `44b6fd77` by `vn-taphoanhatung`. Main CI `39083922483` and Admin CI `39083922411` passed; each reports 399 files and 8,931 tests, with Admin migration 23/23, browser 12/12 and keyboard 10/10.
+
+Read-only staging audit `39085897841` passed against the exact main SHA. It confirms candidate version `789192f3-74a4-4c0a-a455-46b8248fb9c0` and deployment `ae036020-1a5b-48ad-aa88-b9eee7e76454` are active on `frigo-staging`; 43 migrations, the staging queue consumer, database/bindings and operational settings are unchanged. It also confirms zero custom domains, zero DNS records and zero Worker routes.
+
+The staging release `39085756138` failed at the first custom-domain attach with HTTP 403 after candidate activation. Its receipt remains `attaching` with no created hostname IDs, and recovery correctly stopped before rollback because ownership was ambiguous. The Cloudflare API specification identifies `Workers Scripts Write` as the permission required by the Worker Domains attach endpoint. Do not retry or expand token scope until the owner explicitly confirms that exact security-sensitive permission change.
+
+Production is unchanged. Production preflight remains warning-level degraded on `CONFIG_RECIPE_CATALOG_D1_AUTHORITY` and email delivery is not verified. No production release has been dispatched.
+
+Status: `DOMAIN_BLOCKED`. Live staging acceptance and production cutover remain pending; neither staging nor production is certified.
+
+Next action: reconcile the staging receipt using the logged-in Cloudflare dashboard, confirm the exact token permission needed for Worker Domains, then perform the reviewed staging hostname attach and run live DNS/TLS/Access/auth/OTP/PayOS-sandbox/user-journey/mobile/PWA/rollback checks before requesting production Environment approval.
+
+## Staging hostname response reconciliation - 2026-10-18 JST
+
+Owner-confirmed Workers Scripts Edit was saved to the existing staging token,
+preserving expiry and other grants. Audit 39088470405 attempt 2 PASS after one
+HTTP 500 read failure. Staging release 39088644278 activated 5f7a12fb under
+ae070c36 and proved legacy readiness/assets/authority, then stopped at the first
+hostname response. Read-only audit 39088800033 PASS: staging.takolio.app exists
+as 5556df933b1ab7756f71ea0e34f349312f2cac45 with one AAAA record; API host is absent;
+43 migrations, bindings and operations remain unchanged. Original receipt retained.
+
+A reconciled operator PUT reaffirming identical existing hostname settings proves
+the exact incompatibility: response environment is empty, GET environment is
+production; all other fields and full domain inventory are equal. No additional
+hostname or production mutation occurred. Initial supplementary diagnostic stopped
+on read HTTP 403 before mutation. See domain-integration/22 for operation boundaries.
+
+Branch fix/domain-attach-readback persists a valid acknowledged ID then requires
+a complete inventory proving exact identity/routing/production environment and
+unchanged unrelated domains before claiming ownership. Empty deprecated PUT
+environment is the only newly accepted metadata value. Unknown/missing fields,
+other environments and failed/drifted reads remain blocked. Existing partial
+attachments are never silently claimed or deleted. Live staging acceptance and
+production cutover remain pending; fresh hosted CI/review/protected merge required.
+
+Read-back patch validation: 17 files / 454 focused tests PASS; lint (two existing
+generated-bundle warnings), both typechecks, customer/Admin migration smoke,
+Web/Admin/Worker build, changed-file ESLint, syntax and diff check PASS. Initial
+new positive-test hook was corrected after it checked the later read phase.
+No local full-suite PASS is claimed; exact-head hosted CI/review remain required.

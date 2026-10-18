@@ -9953,3 +9953,33 @@ mutation. Initial JSON round-trip tests reproduced two failures before the fix;
 a digit-only uppercase negative UUID fixture was corrected to use hex letters.
 No local full-suite result is claimed. Commit/push PR and hosted exact-head
 CI/Admin CI plus independent review are next; do not change main before that.
+
+## Handoff - PR #11 staging release blocker - 2026-10-18 JST
+
+Current main is `ff3b78a653cc3adaca333ebe637ef44374074a55`; PR #11 reviewed head was `44b6fd77` and was independently approved by `vn-taphoanhatung`. Main CI `39083922483` and Admin CI `39083922411` passed with 399 files / 8,931 tests each.
+
+Read-only audit `39085897841` passed. Candidate version `789192f3-74a4-4c0a-a455-46b8248fb9c0` and deployment `ae036020-1a5b-48ad-aa88-b9eee7e76454` are active on `frigo-staging`; zero custom domains, zero DNS records and zero Worker routes were observed. The 43-migration ledger, database, queue consumer and operational settings are unchanged.
+
+Staging release `39085756138` failed with HTTP 403 on the first Worker Domain attach. The retained receipt is `work/release-39085756138/domain-staging-release-39085756138-1/receipt.json`; it records `state: attaching`, `created: []`, and recovery refusal due to ambiguous ownership. The API specification maps the attach endpoint to `Workers Scripts Write`. Do not retry the mutation or expand a security token until the exact permission is confirmed at action time.
+
+Production has not changed. Do not dispatch production release. After controlled staging reconciliation, complete live staging acceptance and rollback rehearsal, then obtain the required independent production Environment approval.
+
+## 2026-10-18 staging hostname read-back follow-up
+
+Main remains ff3b78a6. Owner-confirmed Workers Scripts Edit is saved on staging
+token with unchanged expiry. Audit 39088470405 attempt 2 and audit 39088800033 PASS.
+Failed release 39088644278 retains candidate 5f7a12fb at 100% under ae070c36;
+staging.takolio.app is 5556df933b1ab7756f71ea0e34f349312f2cac45, API host absent.
+Original failed receipt remains unmodified; no rollback/deletion/release retry.
+
+A bounded reconciled operator PUT of identical existing domain settings returned
+empty deprecated environment; GET returned production. All routing metadata and
+full inventory remained unchanged. Evidence is recorded in domain-integration/22.
+Branch fix/domain-attach-readback persists acknowledged ID then proves complete
+live inventory before claiming ownership. Do not retry until protected merge and
+exact-main checks. Preserve existing app host as pre-existing in subsequent receipts;
+rollback must not delete it under a new receipt. Production is unchanged; actual
+staging auth/OTP/sandbox/user/mobile/PWA/rollback acceptance remains mandatory.
+Read-back validation: 454 focused tests and static/types/build/migrations PASS.
+Lint has two existing generated-bundle warnings; Admin build retains existing
+font warnings. Hosted full-suite result is required before merge.
