@@ -10389,3 +10389,35 @@ compatibility), rejects duplicates/unexpected records/invalid IDs, and is used b
 both staging and production adapters. Focused parser/release regression: 467 tests
 PASS; lint/typecheck/migrations/build pass (two pre-existing ignored generated-bundle
 warnings). A PR is required before the fixed lane can run on protected main.
+
+## PR #10 merged; staging activation reconciled - 2026-10-18 JST
+
+Main is b773431cad032e9bcf385a6abad780e7659aa8c2. PR #10's independent
+approval matches a18f2b2b; exact-main CI 39079573250 and Admin CI 39079573261
+PASS 398 files / 8,910 tests each. Admin also passes Worker/migration/browser
+boundaries, 12 browser cases and ten keyboard runs. Audit 39081283100 PASS.
+
+Release 39081376589 activated the uploaded candidate, then its mutation-response
+parser failed. Recovery restored original version b4257b5c but hit the same parser;
+its follow-up verification additionally found a false drift from undefined queue
+fields dropped during JSON serialization. Fresh read-only audit 39081624560,
+deployment history/version reads and authenticated readiness independently prove
+original version b4257b5c at 100% under deployment ce74eb29, source f7386e6a,
+healthy database, unchanged operations, all 43 migrations and no new hosts/DNS/routes.
+The original artifact records failure and is retained unmodified. Raw POST bodies
+were not captured; do not assert their exact shape. Production is unchanged.
+
+Branch fix/domain-deployment-reconciliation now retains canonical mutation IDs,
+confirms each through deployment-specific and current-traffic reads, and omits
+only undefined optional queue fields before comparison/receipt serialization.
+Both domain providers use the same confirmation path for activation and recovery.
+Initial four focused files / 55 tests PASS; broader/static/build checks pending.
+See docs/domain-integration/21-deployment-reconciliation.md. No live retry before
+protected review/merge and exact-main checks. Staging acceptance remains pending.
+
+Validation completion for the reconciliation patch: 15 files / 439 targeted tests
+PASS; lint (two existing generated-bundle warnings), typecheck, both migration
+smokes, Web/Admin/Worker build, Node syntax and diff check PASS. A read-only run of
+the new helper confirms restored deployment ce74eb29 and original version via both
+specific/current endpoints. No new deployment was created by that probe. Hosted
+exact-head CI/Admin CI and independent human review remain next.

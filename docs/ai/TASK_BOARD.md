@@ -7564,3 +7564,22 @@ Status: `DOMAIN_IMPLEMENTATION_IN_PROGRESS`.
 - PENDING: commit/push parser fix, independent review and exact-main hosted checks,
   then rerun staging release. Existing uploaded version is not traffic-active.
 - Production remains unchanged; full acceptance and production gates remain pending.
+
+## Domain deployment reconciliation - 2026-10-18 JST
+
+- PR #10 merged normally at b773431c; exact-main CI/Admin CI PASS, 8,910 tests each.
+- Audits 39081283100 and 39081624560 PASS; the second reconciles failed release
+  39081376589 to original version b4257b5c, deployment ce74eb29, source f7386e6a.
+- No new staging hosts/DNS/routes or production mutation. Authenticated original
+  readiness/database is OK; original queue/cron/observability/exposure is preserved.
+- IN REVIEW PREPARATION: shared mutation-ID persistence plus exact deployment/
+  current-traffic read verification; JSON-stable optional consumer metadata.
+  Initial 55 tests PASS; static/build/regression checks pending.
+- NEXT: validate and independently review this fix, protected merge/exact-main CI,
+  fresh audit and restricted-email staging release, actual acceptance, then fresh
+  production certification and independent Environment approval. Do not issue PASS
+  for pending browser/provider/rollback checks or enable absent checkout flags.
+
+Reconciliation local validation completed: 439 tests / 15 files PASS; lint,
+typecheck, migration smoke, build and syntax/whitespace checks PASS with existing
+bundle/font warnings. Hosted full-suite checks and human review remain required.
