@@ -120,3 +120,12 @@ paired recovery all complete. All ST01-ST20 are still pending; no signature or C
 result invents a live PASS. Production requires the completed staging certificate
 and its own protected release approval. No Admin Worker upload, Admin migration,
 secret provisioning, owner enrollment or console enable has occurred here.
+
+## Dedicated credential update - 2026-10-18 11:44 UTC
+
+Supersedes the earlier absent-credential and unresolved Access-visibility notes:
+ADMIN_RELEASE_CLOUDFLARE_TOKEN is now stored and metadata-verified in both
+protected Admin Environments. A GET-only local audit using the new token observed
+all seven sections and matched both exact Access app identities/audiences plus
+the issuer. See 23_CREDENTIAL_STORAGE_RECEIPT.md and its sanitized report. Release
+execution remains disabled; the local audit does not certify deployment readiness.

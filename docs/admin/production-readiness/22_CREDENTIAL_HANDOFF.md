@@ -81,3 +81,12 @@ the configured reviewer. Console runtime stays disabled until a later explicit
 Complete staging initialization, Admin-only migration, HMAC provisioning, actual
 owner enrollment/bootstrap, disabled rollback baseline, enable and ST01-ST20.
 Only completed signed staging evidence can authorize the production sequence.
+
+## Storage checkpoint - 2026-10-18 11:44 UTC
+
+The introduction's uncreated-token state is historical. The owner has now created
+the Cloudflare token and authorized storage. It is active, expires
+2026-11-18T14:59:59Z, and ADMIN_RELEASE_CLOUDFLARE_TOKEN is stored in both
+admin-staging and admin-production. Metadata readback and a GET-only local audit
+passed; see 23_CREDENTIAL_STORAGE_RECEIPT.md. The GitHub metadata token and owner
+signing/identity requirements above remain pending. No release was dispatched.

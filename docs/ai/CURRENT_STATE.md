@@ -10685,3 +10685,17 @@ release paths were not changed.
 Verified locally: Admin unit/integration suite 22 files / 348 tests PASS; final metadata delta 4/4, workerd 10/10, D1 matrix 25/25, browser 12/12, keyboard 10/10, lint, typecheck, build, migration smoke, dependency audit, public scan and diff checks PASS. Whole-project regression is running; hosted CI must verify the published SHA. Real Admin Cloudflare resources, dedicated Access app,
 protected Admin Environments and ST01-ST20 staging evidence are
 `PENDING_EXTERNAL_EVIDENCE`; no Admin production mutation occurred.
+
+## Admin dedicated credential stored - 2026-10-18 11:44 UTC
+
+The owner-created Cloudflare token was verified active (expiry
+2026-11-18T14:59:59Z) and stored via CLI stdin as
+ADMIN_RELEASE_CLOUDFLARE_TOKEN in protected admin-staging/admin-production.
+Both GitHub secret metadata readbacks passed. The GET-only local audit on
+629614da observed all seven sections, including both exact Access app IDs,
+audiences and expected issuer. Sanitized evidence and attribution are in
+production-readiness/23_CREDENTIAL_STORAGE_RECEIPT.md. This is local metadata
+verification, not a protected-run receipt or staging acceptance.
+PR #16 review/CI, GitHub metadata credential, owner signing key and actual verified
+Access subject remain pending. Admin policy/execution remains disabled; no
+Admin Worker upload, migration, HMAC/bootstrap or production deployment occurred.

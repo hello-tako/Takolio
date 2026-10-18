@@ -754,3 +754,15 @@ only with observed dedicated IDs/Access policy, create protected admin-staging a
 admin-production Environments, then stage initialize -> migrate -> enroll-owner ->
 bootstrap -> deploy-disabled -> enable. Keep all missing live acceptance as
 `PENDING_EXTERNAL_EVIDENCE`.
+
+## Admin Cloudflare secret stored - 2026-10-18 11:44 UTC
+
+On the owner's clipboard-storage instruction, verified the existing token active
+and scoped access to the expected account, then stored
+ADMIN_RELEASE_CLOUDFLARE_TOKEN via CLI stdin in admin-staging and admin-production.
+GitHub secret metadata readback passed for both. GET-only local infrastructure
+audit on 629614da observed all seven sections; both exact Access app IDs/audiences
+and the issuer matched. See docs/admin/production-readiness/23_CREDENTIAL_STORAGE_RECEIPT.md.
+No Admin runtime/database mutation or deployment occurred. PR #16 review/CI,
+GitHub metadata token, owner key and actual Access subject remain dependencies;
+live staging/production acceptance remains PENDING_EXTERNAL_EVIDENCE.

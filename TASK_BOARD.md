@@ -3738,3 +3738,14 @@ Validation qualification: default-concurrency full suite on 9395f0e3 failed 10 t
 - [ ] Execute staging ST01-ST20, then production release only after exact-SHA evidence and Environment approval.
 
 Live Admin deployment and remote authority mutation remain pending external evidence.
+
+## Admin credential checkpoint - 2026-10-18 11:44 UTC
+
+- [x] Store the owner-created Cloudflare token in both dedicated Admin Environment secrets and verify metadata.
+- [x] Run GET-only local audit with the new credential: all seven sections observed; exact Access apps/audiences/issuer matched.
+- [ ] Complete PR #16 review and exact-head/main CI; run protected credential audit.
+- [ ] Provision GitHub metadata token, reviewed owner public key and verified actual Access subject.
+- [ ] Execute signed protected staging sequence and real acceptance before production.
+
+Evidence: docs/admin/production-readiness/23_CREDENTIAL_STORAGE_RECEIPT.md.
+No runtime deployment occurred; release policy remains disabled.
