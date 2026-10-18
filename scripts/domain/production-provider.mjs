@@ -3,6 +3,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
+import { confirmDeploymentMutation } from './deployments.mjs';
 import { ACCOUNT, ZONE, REPOSITORY, REPOSITORY_ID, audit, cloudflareRead } from './audit-cloud.mjs';
 import { prepareReleaseConfig, configHash } from './release-config.mjs';
 import { privateDomainReceipt, restorePrivateDomains, hasPrivateDomains } from './receipt-privacy.mjs';
@@ -190,10 +191,13 @@ export const productionProvider = {
     await gate(context.manifest.sha);
     unchangedAudit(context.audit, await capture(context.manifest.schema));
     context.state = 'activation-intent'; context.mutationAttempted = true; persist(context);
-    const active = verifyStableWorkerDeployment(await mutate(`${script}/deployments`, 'POST', {
-      strategy: 'percentage', versions: [{ version_id: context.uploadedVersionId, percentage: 100 }] }));
-    if (active.versionId !== context.uploadedVersionId) throw new Error('Production activation identity mismatch');
-    context.activeDeploymentId = active.deploymentId; context.state = 'activated'; persist(context); await fenced(context);
+    const response = await mutate(`${script}/deployments`, 'POST', {
+      strategy: 'percentage', versions: [{ version_id: context.uploadedVersionId, percentage: 100 }] });
+    context.activationProof = await confirmDeploymentMutation(response, context.uploadedVersionId, {
+      recordId: (id) => { context.activeDeploymentId = id; persist(context); },
+      readDeployment: (id) => read(`${script}/deployments/${id}`), readCurrent: currentDeployment,
+    });
+    context.state = 'activated'; persist(context); await fenced(context);
   },
   async proveLegacy(context) { context.legacyProof = await prove(profiles.production.legacy, context); context.state = 'legacy-proven'; persist(context); },
   async attach(context) {
@@ -249,9 +253,12 @@ export const productionProvider = {
     if (context.hosts) await detachCreatedHosts(context.hosts, { list: domainList,
       remove: (id) => mutate(`${base}/workers/domains/${id}`, 'DELETE'), gate: rollbackGate, persist: () => persist(context) });
     await rollbackGate(); context.state = 'rollback-intent'; persist(context);
-    const mutation = verifyStableWorkerDeployment(await mutate(`${script}/deployments`, 'POST', {
-      strategy: 'percentage', versions: [{ version_id: context.audit.worker.versionId, percentage: 100 }] }));
-    if (mutation.versionId !== context.audit.worker.versionId) throw new Error('Production rollback identity mismatch');
+    const response = await mutate(`${script}/deployments`, 'POST', {
+      strategy: 'percentage', versions: [{ version_id: context.audit.worker.versionId, percentage: 100 }] });
+    const mutation = await confirmDeploymentMutation(response, context.audit.worker.versionId, {
+      recordId: (id) => { context.rollbackDeploymentId = id; persist(context); },
+      readDeployment: (id) => read(`${script}/deployments/${id}`), readCurrent: currentDeployment,
+    });
     await verifyRestored(context, mutation);
   },
 };

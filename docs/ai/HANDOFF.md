@@ -9910,3 +9910,46 @@ uses it in staging and production. Regression is 467 focused tests PASS; lint,
 typecheck, migrations and build pass. Commit/push and protected independent review
 are next. Do not rerun the workflow from an unreviewed branch. Production remains
 unchanged and real staging acceptance has not started.
+
+## PR #10 merge and staging recovery reconciliation - 2026-10-18 JST
+
+PR #10 approval at a18f2b2b was verified, then merged normally to b773431c.
+Exact-main runs 39079573250/39079573261 PASS 398 files / 8,910 tests each; Admin
+also passes its full Worker/migration/browser gates. Read-only audit 39081283100
+passed before explicitly dispatched restricted-email staging release 39081376589.
+
+Release uploaded f69f62e9 and briefly activated it as 3b69330a. The full stable
+parser rejected its POST response, then rejected recovery's POST response after
+it restored b4257b5c as ce74eb29. Separate recovery found original traffic but
+strict operational comparison failed because fresh undefined optional consumer
+properties disappear in JSON receipts. Actual metadata did not change.
+
+Fresh protected read-only audit 39081624560, local read-only API/CLI history and
+original version details, plus Access-authenticated readiness prove original
+version/source, healthy DB, all 43 migrations, unchanged operational settings
+and zero new Takolio hosts/DNS/routes. No recovery mutation was retried locally.
+Original failed receipt remains intact at
+work/release-39081376589/domain-staging-release-39081376589-1/receipt.json.
+Sanitized independent reconciliation is in outputs/evidence/
+staging-reconciliation-39081376589.json. Raw mutation responses were not saved;
+the exact response discrepancy remains bounded to that acknowledgement parser.
+
+New branch fix/domain-deployment-reconciliation records acknowledged IDs before
+reads, proves the exact stable deployment and current traffic independently, and
+uses JSON-stable optional queue projections. It covers both providers and all
+activation/recovery calls without changing application/payment/Admin behavior,
+permissions or gates. Initial four-file focused run: 55 PASS; broader validation
+pending. Next: finish checks, independent PR review, protected merge/exact-main
+checks; fresh audit and staging. Actual nine-check acceptance is still pending.
+No production release/attestation exists. Staging has a secret binding named
+PAYOS_CHECKOUT_ENABLED; its value cannot be inferred from ordinary variables.
+Checkout availability and actual sandbox behavior remain unverified.
+
+Reconciliation final local validation: 15 files / 439 tests PASS; lint (two
+existing generated-bundle warnings), types, customer/Admin migration smoke,
+Web/Admin/Worker build, syntax and whitespace checks PASS. The new helper proved
+restored deployment identity through both read-only endpoints; no additional
+mutation. Initial JSON round-trip tests reproduced two failures before the fix;
+a digit-only uppercase negative UUID fixture was corrected to use hex letters.
+No local full-suite result is claimed. Commit/push PR and hosted exact-head
+CI/Admin CI plus independent review are next; do not change main before that.

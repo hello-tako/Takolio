@@ -185,3 +185,23 @@ it('rejects an alternate staging email provider while leaving production baselin
   production.version.resources.bindings.find((entry) => entry.name === 'SEND_EMAIL').destination_address = recipient;
   await expect(audit('production', { ...production, schema, baseline, stagingEmailRecipient: recipient })).rejects.toThrow('binding drift');
 });
+
+it.each(['staging', 'production'])('keeps %s audits identical across receipt serialization when consumer fields are absent', async (environment) => {
+  const source = fixture(environment);
+  const consumerPath = `/accounts/${ACCOUNT}/queues/fixture-queue/consumers`;
+  const consumer = source.responses[consumerPath][0];
+  delete consumer.environment;
+  const before = await audit(environment, { ...source, schema, baseline });
+  const saved = JSON.parse(JSON.stringify(before));
+  expect(before).toStrictEqual(saved);
+  const { unchangedAudit } = await import('../../scripts/domain/staging-release.mjs');
+  const after = await audit(environment, { ...source, schema, baseline });
+  expect(() => unchangedAudit(saved, after)).not.toThrow();
+  consumer.environment = 'production';
+  const changed = await audit(environment, { ...source, schema, baseline });
+  expect(() => unchangedAudit(saved, changed)).toThrow('operational');
+  delete consumer.environment;
+  consumer.settings.max_retries = 4;
+  const settingsChanged = await audit(environment, { ...source, schema, baseline });
+  expect(() => unchangedAudit(saved, settingsChanged)).toThrow('operational');
+});

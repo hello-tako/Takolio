@@ -3,6 +3,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
+import { confirmDeploymentMutation } from './deployments.mjs';
 import { ACCOUNT, ZONE, REPOSITORY, REPOSITORY_ID, audit, cloudflareRead } from './audit-cloud.mjs';
 import { prepareReleaseConfig, configHash } from './release-config.mjs';
 import { uploadedWorkerVersion } from './upload-output.mjs';
@@ -194,9 +195,10 @@ export const provider = {
     const deployment = await mutate(`${script}/deployments`, 'POST', {
       strategy: 'percentage', versions: [{ version_id: context.uploadedVersionId, percentage: 100 }],
     });
-    const active = verifyStableWorkerDeployment(deployment);
-    if (active.versionId !== context.uploadedVersionId) throw new Error('Activation did not prove the uploaded version');
-    context.activeDeploymentId = active.deploymentId;
+    context.activationProof = await confirmDeploymentMutation(deployment, context.uploadedVersionId, {
+      recordId: (id) => { context.activeDeploymentId = id; persist(context); },
+      readDeployment: (id) => read(`${script}/deployments/${id}`), readCurrent: currentDeployment,
+    });
     context.state = 'activated'; persist(context);
     await fenced(context);
   },
@@ -254,10 +256,13 @@ export const provider = {
       remove: (id) => mutate(`${base}/workers/domains/${id}`, 'DELETE'), gate: rollbackGate, persist: () => persist(context) });
     await rollbackGate();
     context.state = 'rollback-intent'; persist(context);
-    const mutation = verifyStableWorkerDeployment(await mutate(`${script}/deployments`, 'POST', {
+    const response = await mutate(`${script}/deployments`, 'POST', {
       strategy: 'percentage', versions: [{ version_id: context.audit.worker.versionId, percentage: 100 }],
-    }));
-    if (mutation.versionId !== context.audit.worker.versionId) throw new Error('Rollback response version mismatch');
+    });
+    const mutation = await confirmDeploymentMutation(response, context.audit.worker.versionId, {
+      recordId: (id) => { context.rollbackDeploymentId = id; persist(context); },
+      readDeployment: (id) => read(`${script}/deployments/${id}`), readCurrent: currentDeployment,
+    });
     await verifyRestored(context, mutation);
   },
 };

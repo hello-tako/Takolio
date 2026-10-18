@@ -124,9 +124,10 @@ export async function audit(environment, { read, schema, baseline, stagingEmailR
       workers_dev: subdomain.enabled, preview_urls: subdomain.previews_enabled,
       crons: (Array.isArray(schedules) ? schedules : schedules.schedules).map((entry) => entry.cron),
       observability: settings.observability,
-      consumers: consumers.map((entry) => ({ consumer_id: entry.consumer_id, type: entry.type,
-        script: entry.script, service: entry.service, environment: entry.environment,
-        settings: entry.settings, dead_letter_queue: entry.dead_letter_queue })),
+      consumers: consumers.map((entry) => Object.fromEntries(Object.entries({
+        consumer_id: entry.consumer_id, type: entry.type, script: entry.script, service: entry.service,
+        environment: entry.environment, settings: entry.settings, dead_letter_queue: entry.dead_letter_queue,
+      }).filter(([, value]) => value !== undefined))),
     },
     zone: { name: zone.name, status: zone.status },
     customDomains: domains.map((entry) => ({ id: entry.id, hostname: entry.hostname, service: entry.service, zone_id: entry.zone_id })),
