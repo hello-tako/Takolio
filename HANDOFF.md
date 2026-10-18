@@ -685,10 +685,10 @@ The owner removed the mandatory three-admin/two-custodian requirement. This bran
 implements schema 4 single-owner governance, audited owner enrollment, exact
 initialize-disabled/enable release operations, one-key offline signing/recovery,
 read-only sanitized infrastructure inventory and local verification. Existing
-customer/PayOS paths are untouched. Changes are uncommitted and unpushed; no live
-Admin resources or production mutation was performed.
+customer/PayOS paths are untouched. Changes are published through PR #15 in hello-tako/Takolio; no live
+Admin resource or production mutation was performed. Exact-head hosted checks and configured human review remain required.
 
-Local Admin 348 tests, metadata delta 4 tests, workerd 10 scenarios, D1 matrix 25 cases, browser 12 cases and keyboard 10 repetitions PASS. Whole-project regression is running. Before merge: inspect the PR exact SHA, require both hosted checks and configured human review, and record the results. After merge: run the read-only audit, replace placeholders
+Local Admin 348 tests, metadata delta 4 tests, workerd 10 scenarios, D1 matrix 25 cases, browser 12 cases and keyboard 10 repetitions PASS. Whole-project local regression was running at this publication checkpoint; its exact completion result is recorded on PR #15. Before merge: inspect the PR exact SHA, require both hosted checks and configured human review, and record the results. After merge: run the read-only audit, replace placeholders
 only with observed dedicated IDs/Access policy, create protected admin-staging and
 admin-production Environments, then stage initialize -> migrate -> enroll-owner ->
 bootstrap -> deploy-disabled -> enable. Keep all missing live acceptance as

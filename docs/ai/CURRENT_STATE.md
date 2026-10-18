@@ -1,3 +1,19 @@
+# Admin console current checkpoint - 2026-10-18
+
+PR #15 in hello-tako/Takolio publishes single-owner Admin governance and guarded
+first activation from main 571f3c22. Admin 348 tests, metadata delta 4/4,
+workerd 10/10, local D1 matrix 25/25, browser 12/12 and keyboard 10/10 pass;
+lint/typecheck/build/migration smoke/public scan/dependency audit pass.
+Whole-project local regression and exact-head hosted checks were running at
+publication; read their final results from PR #15. Configured human review is
+required by existing main protection. No Admin live migration, Access/secret or
+production deployment occurred. Dedicated infrastructure/identity/staging
+acceptance remain PENDING_EXTERNAL_EVIDENCE. Current runbook and verification:
+docs/admin/production-readiness/19_SINGLE_OWNER_RELEASE.md and 20_CURRENT_VERIFICATION.md.
+Earlier domain/customer checkpoints below retain their source-specific history.
+
+---
+
 # Production build guard correction - 2026-10-18
 
 Current: DOMAIN_STAGING_VERIFIED on d5f2e726; production cutover pending the reviewed

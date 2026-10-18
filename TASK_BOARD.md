@@ -3671,7 +3671,8 @@ Validation qualification: default-concurrency full suite on 9395f0e3 failed 10 t
 - [x] Add audited owner enrollment, disabled initialization, guarded enablement and exact rollback/containment.
 - [x] Add offline owner signing utility and sanitized read-only Cloudflare metadata audit workflow.
 - [x] Run local focused governance/release tests, lint, typecheck, build, migration smoke and public scan.
-- [ ] Publish branch through normal PR and wait for exact-head `validate` + `validate-admin`.
+- [x] Publish branch through normal PR #15.
+- [ ] Require exact-head `validate` + `validate-admin` and configured human review before merge.
 - [ ] Observe dedicated Admin resources/Access app and create protected admin Environments.
 - [ ] Execute staging ST01-ST20, then production release only after exact-SHA evidence and Environment approval.
 

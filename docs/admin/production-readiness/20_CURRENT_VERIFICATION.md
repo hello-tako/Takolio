@@ -52,7 +52,7 @@ PENDING_EXTERNAL_EVIDENCE. Current operational steps are in 19_SINGLE_OWNER_RELE
 
 ## Read-only Cloudflare dashboard observation
 
-At the logged-in account dashboard, D1 showed 12 databases and KV showed 10
+At the logged-in account dashboard, D1 showed 12 databases and KV listed 9 visible
 namespaces. The visible names were existing customer/other projects (`frigo`,
 `frigo-db-staging-v3`, `selinow-*`, `tungjpstore-*`, `frigo-frigo-cache*`,
 `selinow-cache/session-*`, and unrelated projects); no dedicated `takosan-admin*`,
@@ -60,3 +60,19 @@ namespaces. The visible names were existing customer/other projects (`frigo`,
 five existing apps (Takolio staging customer/PayOS, roomAgent, MailVault and
 portfolio admin) and no `Takolio Admin` app. This observation is read-only and
 uses no copied IDs; it confirms the infrastructure gate remains pending.
+
+
+## Dependency alert reconciliation
+
+`pnpm audit --audit-level high` reports no known vulnerabilities and the installed
+application resolves Hono 4.13.7. GitHub's API separately lists 44 open alerts
+(5 high, 36 medium, 3 low), all for the same deliberately old Hono 4.0.0 lockfile:
+`docs/backend-upgrade/b08/security/fixtures/syft/positive/package-lock.json`.
+This is a scanner positive fixture, not the deployed dependency graph. No alert
+was dismissed and no fixture/runtime package was changed. Keep the open alerts
+visible with this scope distinction in release review.
+
+Publication: [PR #15](https://github.com/hello-tako/Takolio/pull/15). The PR records
+its current exact head, required hosted checks and review state. Local check
+receipts precede publication and remain attributed to the candidate source;
+missing live acceptance is still pending.
