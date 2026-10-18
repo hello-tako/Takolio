@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "sourceSha": "8217f0bdbd9c7defe7751c3c8a6b2982ceb2b079",
+  "repository": "hello-tako/Takolio",
+  "ci": {
+    "runId": 39121353814,
+    "event": "push",
+    "conclusion": "success",
+    "filesPassed": 405,
+    "testsPassed": 9043
+  },
+  "adminCi": {
+    "runId": 39121353870,
+    "event": "push",
+    "conclusion": "success",
+    "filesPassed": 405,
+    "testsPassed": 9043,
+    "workerdScenariosPassed": 10,
+    "migrationScenariosPassed": 25,
+    "browserTestsPassed": 12,
+    "keyboardRepeatsPassed": 10,
+    "artifactId": 12134718940,
+    "artifactName": "admin-evidence-8217f0bdbd9c7defe7751c3c8a6b2982ceb2b079",
+    "artifactDigest": "sha256:4ef11da23d5ebd8fa934d231e0c402765ca90f59c4c3ac3c560679717bccc9b0",
+    "preflightCleanCheckout": false,
+    "preflightDirtyPaths": ["?? scripts/__pycache__/"],
+    "preflightMode": "offline-plan-only"
+  },
+  "scope": "Hosted offline/local-runtime checks of the merged implementation; does not certify the later commissioning policy branch or any live Admin deployment",
+  "adminRemoteExecuted": false,
+  "adminProductionDeployed": false,
+  "readyForDeployment": false
+}

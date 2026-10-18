@@ -1,3 +1,38 @@
+# Admin infrastructure commissioning - 2026-10-18
+
+PR #15 approved at 89349b4c and merged through protection as 8217f0bd.
+Exact-main Admin CI 39121353870 and CI 39121353814 both PASS with 405 files /
+9,043 tests each; Admin workerd 10/10, migration 25/25, browser 12/12 and
+keyboard 10/10 PASS. Main artifact 12134718940 is correctly bound to 8217f0bd;
+the preflight is offline-only and reports an untracked Python cache.
+
+Provisioned separate staging/production Admin D1/KV and Access apps, plus
+protected admin-staging/admin-production Environments. Both Access apps use the
+current Cloudflare owner email, Allow only, 30-minute sessions, and no bypass.
+Staging and production HttpOnly/binding cookies are ON; production settings were
+read back after Save. Sole-owner private identity stays outside public Git.
+
+Exact-main GET-only audit 39122015225 SUCCESS observed both Admin D1/KV pairs and
+customer bindings; readyForDeployment=false. Access organization remains HTTP
+403 and filtered app inventory is empty under the old audit credential, so the
+credential visibility discrepancy remains PENDING_EXTERNAL_EVIDENCE.
+
+Commissioning policy records all observed nonsecret targets but stays
+enabled=false with no rostered signing key. New admin-credential-audit.yml is a
+GET-only manual workflow limited to protected Admin Environments and dedicated
+Admin secrets, with no fallback to customer credentials. New focused contract
+and configuration suite: 4 files / 92 tests PASS. See production-readiness/21
+and 22 for identities, evidence attribution and exact credential handoff.
+
+No Admin Worker upload, migration, secret, owner enrollment/bootstrap or console
+enable occurred. Scoped credentials, actual verified Access subject, owner-held
+Ed25519 key/backup, live staging ST01-ST20 and production release remain
+PENDING_EXTERNAL_EVIDENCE. The browser credential final step requires owner
+handoff; the draft has only name/account/Workers Scripts Edit prepared.
+Customer/payment runtime and customer Environments remain unchanged.
+
+---
+
 # Production build guard correction - 2026-10-18
 
 Current: DOMAIN_STAGING_VERIFIED on d5f2e726; production cutover pending the reviewed
