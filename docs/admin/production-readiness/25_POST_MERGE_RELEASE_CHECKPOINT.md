@@ -1,6 +1,11 @@
 # Admin post-merge release checkpoint - 2026-10-18
 
-Status: `ADMIN_COMMISSIONING_MERGED_RELEASE_PREREQUISITES_PENDING`.
+Status: `ADMIN_COMMISSIONING_MERGED_ROTATED_CREDENTIALS_VERIFIED`.
+
+Latest evidence is in the rotated-token checkpoint at the end of this document.
+Activation proposal and remaining live gates are recorded in
+`26_REVIEWED_ACTIVATION_PROPOSAL.md`. Earlier observations below retain their
+original timestamps and do not override that checkpoint.
 
 PR #16 was independently approved by vn-taphoanhatung at exact source
 02661c67f97b78749b53498abfa5fb543ed5efde. Required CI 39125868119 and Admin CI
@@ -10,8 +15,8 @@ matrix steps, browser regression 12/12 and keyboard repetition 10/10.
 
 The normal protected squash merge completed at 2026-10-18T12:33:39Z as
 61a34b74d749ef1d6dfe42e74df74d79cb67ff50. The reviewed Admin source tree matches
-the merged source. Exact-main CI 39127790356 and Admin CI 39127790370 were still
-running at 12:49 UTC; prior PR results are not substituted for them.
+the merged source. Exact-main CI 39127790356 and Admin CI 39127790370 both
+subsequently succeeded on 61a34b74; prior PR results are not substituted for them.
 
 ## Protected read-only audit
 
@@ -78,3 +83,36 @@ No Admin Worker upload, migration, HMAC provisioning, enrollment, bootstrap,
 console enablement or production release was performed. All unexecuted live
 acceptance stays `PENDING_EXTERNAL_EVIDENCE`. Customer/payment runtime and release
 configuration were not changed. This evidence-only branch is not release source.
+
+## Rotated-token audit checkpoint - 2026-10-18 23:25 JST
+
+The owner rotated `ADMIN_RELEASE_CLOUDFLARE_TOKEN` and updated both protected
+Admin Environments. Fresh GET-only audits ran on exact main
+`61a34b74d749ef1d6dfe42e74df74d79cb67ff50`:
+
+- Staging run `39135545563` succeeded after `vn-taphoanhatung` approved
+  `admin-staging`; artifact `12139143437`, digest
+  `sha256:e17301fd8a36b2a9446a896e4f5b333ae86769ce540f806fd4d79c6ffe01a558`.
+- Production run `39135545460` succeeded after `vn-taphoanhatung` approved
+  `admin-production`; artifact `12139304681`, digest
+  `sha256:55f2e782f7e23964734a4b3d5b1015b061e58b922d5ef7de2850b9420e1b3bd5`.
+
+Each report has all seven metadata sections `OBSERVED`, `remoteMutations=false`
+and `readyForDeployment=false`. The reports confirm the dedicated D1/KV pairs,
+Access application IDs/audiences and issuer; only the existing customer Workers
+are present, so no Admin Worker or Admin hostname was uploaded by these audits.
+Sanitized copies are retained under `evidence/commissioning-20261018/rotated-token/`.
+
+The owner reports a Drive backup for the signing key with matching truncated
+fingerprint. This is recorded as owner-supplied evidence only; independent
+restore, sharing scope and offline encryption have not been verified. The Access
+App Launcher message is an optional portal configuration issue; it does not
+prove direct application authentication and does not change the requirement for
+an actual verified Access subject before enrollment.
+
+Main still has reviewed policy flags `enabled=false`; this branch proposes
+`enabled=true` for guarded release operations only. Runtime rendering remains
+disabled, and the execution variable is absent. Actual owner Access subject,
+independently recoverable key evidence and live staging ST01-ST20 remain pending.
+No Admin Worker upload, D1 migration, enrollment, bootstrap, enablement or
+production deployment has occurred.

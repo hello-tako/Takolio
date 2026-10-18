@@ -94,9 +94,29 @@ describe('Admin offline release adapter', () => {
     expect(OPERATIONS).toEqual(['initialize-disabled', 'deploy-disabled', 'enable', 'migrate', 'enroll-owner', 'bootstrap', 'recover', 'disable', 'rollback-disabled']);
   });
 
-  it('fails closed when target identities are still placeholders', () => {
+  it('validates the commissioned targets while keeping rendered consoles disabled', () => {
     const policy = JSON.parse(readFileSync('admin/release-policy.json', 'utf8'));
-    expect(() => validateTarget(policy, 'staging')).toThrow(/disabled|unsafe target identity/i);
+    for (const environment of ['staging', 'production']) {
+      const commissioned = validateTarget(policy, environment);
+      const configs = renderConfigs(commissioned, environment, 'a'.repeat(40), {
+        admin: { vars: {} }, facade: { vars: {} },
+      });
+      expect(configs.admin.vars.ADMIN_CONSOLE_ENABLED).toBe('false');
+      expect(configs.admin.vars.ADMIN_AUTH_MODE).toBe('cloudflare_access');
+      expect(configs.admin.preview_urls).toBe(false);
+      expect(configs.admin.routes).toEqual([{ pattern: commissioned.hostname, custom_domain: true }]);
+      expect(configs.admin.d1_databases[0].database_id).toBe(commissioned.adminDatabaseId);
+      expect(configs.facade.d1_databases[0].database_id).toBe(commissioned.customerDatabaseId);
+    }
+  });
+
+  it('fails closed for an explicitly disabled target and placeholder identities', () => {
+    const { policy } = policyFixture();
+    policy.environments.staging.enabled = false;
+    expect(() => validateTarget(policy, 'staging')).toThrow('Release execution is disabled');
+    policy.environments.staging.enabled = true;
+    policy.environments.staging.adminDatabaseId = '00000000-0000-4000-8000-000000000000';
+    expect(() => validateTarget(policy, 'staging')).toThrow('Missing or unsafe target identity');
   });
 
   it('rejects the former repository and approvals signed for its policy', () => {

@@ -10745,3 +10745,19 @@ Environments, updated 12:39:49/12:40:06 UTC; its contents/scopes were not read.
 Cloudflare secret timestamps remain 11:43 UTC, so rotation is not certified.
 Owner Access subject and independent off-machine recovery still require evidence.
 Main CI/Admin CI are still running. No live Admin release write occurred.
+
+# Rotated Admin credential verification - 2026-10-18
+
+Fresh protected GET-only Admin credential audits after the owner's Cloudflare
+rotation succeeded on exact main `61a34b74d749ef1d6dfe42e74df74d79cb67ff50`:
+`39135545563` (staging, artifact `12139143437`, digest
+`sha256:e17301fd8a36b2a9446a896e4f5b333ae86769ce540f806fd4d79c6ffe01a558`) and
+`39135545460` (production, artifact `12139304681`, digest
+`sha256:55f2e782f7e23964734a4b3d5b1015b061e58b922d5ef7de2850b9420e1b3bd5`).
+Both were approved by `vn-taphoanhatung`; all seven sections are `OBSERVED`,
+with `remoteMutations=false` and `readyForDeployment=false`.
+
+Admin release policy remains disabled. Owner-supplied Drive backup evidence and
+the App Launcher error do not yet establish independently recoverable key custody
+or a verified Access subject. No Admin Worker, migration, enrollment, bootstrap,
+enablement or production deployment has occurred.

@@ -10082,3 +10082,17 @@ ADMIN_RELEASE_GITHUB_READ_TOKEN metadata now exists in both Environments with
 Cloudflare token metadata is unchanged at 11:43 UTC; do not assume rotation.
 Main CI/Admin CI still running, Access subject/off-machine recovery remain
 PENDING_EXTERNAL_EVIDENCE, and there has been no live Admin release write.
+
+## Latest Admin release handoff - 2026-10-18 23:25 JST
+
+The rotated Cloudflare token was stored in both Admin Environments and fresh
+protected GET-only audits succeeded: staging `39135545563` and production
+`39135545460`, both on main `61a34b74d749ef1d6dfe42e74df74d79cb67ff50`, with all
+seven sections `OBSERVED`. Their sanitized artifacts and digests are retained in
+`docs/admin/production-readiness/evidence/commissioning-20261018/rotated-token/`.
+
+The release lane is still intentionally disabled. The owner-supplied Drive key
+backup link and App Launcher message remain external evidence only; direct Access
+subject verification, independent restore, signed staging acceptance and the
+reviewed activation-policy merge are still required. No Admin runtime or database
+mutation has occurred.

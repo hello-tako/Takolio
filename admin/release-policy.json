@@ -5,7 +5,7 @@
   "branch": "main",
   "environments": {
     "staging": {
-      "enabled": false,
+      "enabled": true,
       "accountId": "ef250a88911fd24073cb73d1c07e0218",
       "adminWorker": "takosan-admin-staging",
       "facadeWorker": "takosan-admin-read-facade-staging",
@@ -28,7 +28,7 @@
       ]
     },
     "production": {
-      "enabled": false,
+      "enabled": true,
       "accountId": "ef250a88911fd24073cb73d1c07e0218",
       "adminWorker": "takosan-admin",
       "facadeWorker": "takosan-admin-read-facade",

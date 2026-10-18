@@ -7658,3 +7658,13 @@ bundle/font warnings. Hosted full-suite checks and human review remain required.
 - UPDATE: GitHub read secret is present in both Admin Environments; effective
   scope/use verification pending. Cloudflare rotation and actual owner identity /
   independent recovery remain pending; main checks are still running.
+
+## Admin rotated-token checkpoint (2026-10-18)
+
+- [x] Rotate Cloudflare release token and update both protected Environments.
+- [x] Run and approve fresh staging/production GET-only credential audits on exact main.
+- [x] Retain sanitized artifacts and SHA-256 digests for both runs.
+- [ ] Review and merge the separate activation-policy PR with protected checks.
+- [ ] Obtain verified Access subject and independently recoverable owner-key evidence.
+- [ ] Run signed staging initialization/migration/enrollment/bootstrap, ST01-ST20 and certificate.
+- [ ] Run the protected production sequence only after the exact-source staging certificate.
