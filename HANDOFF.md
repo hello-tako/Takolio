@@ -766,3 +766,21 @@ and the issuer matched. See docs/admin/production-readiness/23_CREDENTIAL_STORAG
 No Admin runtime/database mutation or deployment occurred. PR #16 review/CI,
 GitHub metadata token, owner key and actual Access subject remain dependencies;
 live staging/production acceptance remains PENDING_EXTERNAL_EVIDENCE.
+
+## Owner key prepared for review - 2026-10-18
+
+The owner requested a new local Ed25519 key and asked to inspect PR #16 before
+approval. Generated the key outside the repository (0600/0700), retained a local
+recovery copy and verified restored signing against a random challenge. Only its
+public key is proposed in both disabled release-policy targets; signer ID
+owner-20261018. Independent offline backup and actual Access subject are still
+PENDING_EXTERNAL_EVIDENCE. See production-readiness/24_OWNER_PUBLIC_KEY_REVIEW.md.
+No real authorization/enrollment or remote runtime mutation occurred. Initial
+replanning after the policy edit correctly refused the dirty checkout; earlier
+clean-source plans on 500740e5 reported execution disabled. New checks/PR head
+must be used for review; old CI does not certify the public-key addition.
+
+Owner-key proposal validation: 4 files / 92 tests, lint, both TypeScript checks,
+disabled-policy/public-key contract checks, public patch scan and diff check PASS.
+The pnpm audit snapshot reported zero vulnerabilities at every severity; the
+separate default-branch GitHub Dependabot view is not certified as cleared.

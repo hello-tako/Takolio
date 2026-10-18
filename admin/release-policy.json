@@ -19,7 +19,13 @@
       "accessApplicationId": "fccffa25-a7ca-40ba-b878-b149c7418064",
       "issuer": "https://little-bar-8ffa.cloudflareaccess.com",
       "audience": "fed43dc973208d1b12fdcc0c6df838743ea450b59ace3842b665126a8673a9ce",
-      "custodians": []
+      "custodians": [
+        {
+          "operatorId": "owner-20261018",
+          "publicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEARo55zJOjyzve/vflNs+JMeMkGRSkL+xQCXDlmPb3HiE=\n-----END PUBLIC KEY-----\n",
+          "approvalRef": "owner-key-review-20261018"
+        }
+      ]
     },
     "production": {
       "enabled": false,
@@ -36,7 +42,13 @@
       "accessApplicationId": "12a242e6-d60a-4e07-97a5-1f77c34d7db1",
       "issuer": "https://little-bar-8ffa.cloudflareaccess.com",
       "audience": "b35d4e11be7103bf19479504628c18ea3c7eb9f550675d56b9ff90546fdbea51",
-      "custodians": []
+      "custodians": [
+        {
+          "operatorId": "owner-20261018",
+          "publicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEARo55zJOjyzve/vflNs+JMeMkGRSkL+xQCXDlmPb3HiE=\n-----END PUBLIC KEY-----\n",
+          "approvalRef": "owner-key-review-20261018"
+        }
+      ]
     }
   }
 }

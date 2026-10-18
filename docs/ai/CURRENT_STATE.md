@@ -10699,3 +10699,20 @@ verification, not a protected-run receipt or staging acceptance.
 PR #16 review/CI, GitHub metadata credential, owner signing key and actual verified
 Access subject remain pending. Admin policy/execution remains disabled; no
 Admin Worker upload, migration, HMAC/bootstrap or production deployment occurred.
+
+## Owner key review checkpoint - 2026-10-18
+
+The owner asked to inspect PR #16 and authorized creating a new local Ed25519 key.
+Generated private/public files and a local recovery copy outside Git with 0600
+file/0700 directory modes. Restored-key challenge signing verified. Public-key
+fingerprint is be0258713682a00e18a218e6523994716446a1c28e18935d7a2a34f6158cb316;
+proposed signer owner-20261018 is in both release-policy targets, still disabled.
+Private material is not in GitHub or workflow secrets. Actual Access subject,
+independent offline backup/custody, GitHub metadata token and final-head review
+remain pending. Initial plan attempts after editing refused the dirty checkout;
+there was no attempted remote execution. See production-readiness/24_OWNER_PUBLIC_KEY_REVIEW.md.
+
+Owner-key proposal verification PASS: 4 files / 92 tests, lint, both TypeScript
+checks, disabled-target/key fingerprint contract, public patch scan and diff.
+pnpm audit snapshot reported all severity counts zero; no claim is made that
+GitHub's separately reported default-branch Dependabot findings are resolved.

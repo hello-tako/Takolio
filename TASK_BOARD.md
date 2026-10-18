@@ -3749,3 +3749,18 @@ Live Admin deployment and remote authority mutation remain pending external evid
 
 Evidence: docs/admin/production-readiness/23_CREDENTIAL_STORAGE_RECEIPT.md.
 No runtime deployment occurred; release policy remains disabled.
+
+## Owner signing preparation - 2026-10-18
+
+- [x] Generate owner-requested Ed25519 key outside Git with restrictive file modes.
+- [x] Verify cryptographic restoration from a local recovery copy.
+- [x] Propose only the public key in both disabled release-policy targets.
+- [ ] Obtain independent review of the final PR #16 head and exact-source hosted checks.
+- [ ] Obtain independent offline backup, actual Access subject and GitHub read token.
+- [ ] Run protected audit and staging operations/acceptance before production.
+
+New key is proposed, not enrolled; custody remains PENDING_EXTERNAL_EVIDENCE.
+
+Owner-key proposal checks PASS: 92 focused tests, lint, both TypeScript checks,
+disabled-policy/key contract, public scan and diff check. pnpm audit snapshot
+reports zero vulnerabilities; this does not close the separate Dependabot view.
