@@ -1,0 +1,49 @@
+{
+  "observedAt": "2026-10-18T02:12:35.328Z",
+  "sha": "ff3b78a653cc3adaca333ebe637ef44374074a55",
+  "mutationAttempted": true,
+  "purpose": "Reaffirm identical existing staging hostname settings after independent ownership reconciliation",
+  "production": "NOT_CHANGED",
+  "before": {
+    "id": "5556df933b1ab7756f71ea0e34f349312f2cac45",
+    "hostname": "staging.takolio.app",
+    "service": "frigo-staging",
+    "environment": "production",
+    "zone_id": "9284fb2186987f14f810818583acaa46",
+    "enabled": true,
+    "previews_enabled": false
+  },
+  "intent": {
+    "method": "PUT",
+    "body": {
+      "hostname": "staging.takolio.app",
+      "service": "frigo-staging",
+      "zone_id": "9284fb2186987f14f810818583acaa46",
+      "enabled": true,
+      "previews_enabled": false
+    },
+    "at": "2026-10-18T02:12:38.101Z"
+  },
+  "response": {
+    "id": "5556df933b1ab7756f71ea0e34f349312f2cac45",
+    "hostname": "staging.takolio.app",
+    "service": "frigo-staging",
+    "environment": "",
+    "zone_id": "9284fb2186987f14f810818583acaa46",
+    "enabled": true,
+    "previews_enabled": false
+  },
+  "readBack": {
+    "id": "5556df933b1ab7756f71ea0e34f349312f2cac45",
+    "hostname": "staging.takolio.app",
+    "service": "frigo-staging",
+    "environment": "production",
+    "zone_id": "9284fb2186987f14f810818583acaa46",
+    "enabled": true,
+    "previews_enabled": false
+  },
+  "responseDifferences": [
+    "environment"
+  ],
+  "result": "EXISTING_SETTINGS_UNCHANGED"
+}

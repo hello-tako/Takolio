@@ -7584,3 +7584,26 @@ Status: `DOMAIN_IMPLEMENTATION_IN_PROGRESS`.
 Reconciliation local validation completed: 439 tests / 15 files PASS; lint,
 typecheck, migration smoke, build and syntax/whitespace checks PASS with existing
 bundle/font warnings. Hosted full-suite checks and human review remain required.
+
+## PR #11 release checkpoint - 2026-10-18 JST
+
+- DONE: PR #11 merged through branch protection at main `ff3b78a653cc3adaca333ebe637ef44374074a55` after independent approval by `vn-taphoanhatung` at reviewed head `44b6fd77`.
+- DONE: Exact-main CI `39083922483` and Admin CI `39083922411` passed (399 files / 8,931 tests each; Admin migration 23/23, browser 12/12, keyboard 10/10).
+- DONE: Read-only staging audit `39085897841` passed; candidate version `789192f3-74a4-4c0a-a455-46b8248fb9c0` and deployment `ae036020-1a5b-48ad-aa88-b9eee7e76454` are active on `frigo-staging`; 43 migrations and operational settings are unchanged.
+- BLOCKED: Staging release `39085756138` returned HTTP 403 while attaching the first custom domain. Receipt is `attaching` with `created: []`; recovery stopped safely because ownership is ambiguous. Cloudflare documents `Workers Scripts Write` for the attach endpoint.
+- PENDING: Live staging DNS/TLS, Access, Google login, OTP, session, PayOS sandbox, user journeys, mobile/PWA and rollback rehearsal.
+- PENDING: Production certification, independent production Environment approval and production cutover. Production remains unchanged.
+
+## 2026-10-18 staging hostname acknowledgement
+
+- Owner-approved staging Workers Scripts Edit saved; audit 39088470405 attempt 2 PASS.
+- Release 39088644278 partially attached staging.takolio.app after activation;
+  audit 39088800033 proves exact candidate, one custom domain/AAAA, zero routes,
+  unchanged operations/bindings and 43 migrations. API hostname remains absent.
+- Separate reconciled identical-settings PUT/GET proves empty PUT environment
+  versus production GET; original failed receipt retained, production unchanged.
+- fix/domain-attach-readback requires exact acknowledgement plus complete live
+  inventory before ownership. Fresh CI/independent review/merge remain required.
+- Live provider/browser/rollback staging acceptance and production gates pending.
+- Read-back validation: 454 focused tests, lint, both types, migrations, build,
+  targeted ESLint, syntax and diff checks PASS; full hosted validation pending.
