@@ -1,3 +1,15 @@
+# Current operational checkpoint - 2026-10-18
+
+The adapter is merged and staging is accepted on d5f2e726. Production attempt
+39101591421 was independently approved, then failed safely at prepared because
+its composition command incorrectly selected the staging-only config guard.
+No upload/traffic/hostname mutation occurred. The correction and real reproduction
+are documented in 24-production-build-guard.md. Production remains unchanged;
+new exact-head CI/review and new-SHA staging/certification evidence are required.
+Historical implementation notes follow and do not override this checkpoint.
+
+---
+
 # Protected production domain adapter
 
 This adapter is prepared for independent review. It has not run, and no production
