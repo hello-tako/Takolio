@@ -1,3 +1,43 @@
+# Admin release CLI correction - 2026-10-19 JST
+
+PR #18 merged as fc5b2f04 after exact-head human review. Exact-main CI
+39162677770 and Admin CI 39162677732 succeeded (406 files / 9,066 tests).
+The repository Admin execution variable is true; rendered console stays OFF.
+Independent off-machine owner-key restore was verified against the reviewed
+public fingerprint; no private identity/key/token is published.
+
+Expired staging initialization 39164847244 was canceled without approval or
+execution. Fresh initialize-disabled run 39170839984 had a valid one-hour signed
+authorization and matching plan archive (artifact 12152671543, SHA-256
+b974cbec3a7fc90b5606242b0a3fed716b8d83fbeacc5338c6929cdf590bc8ab).
+The owner-authorized browser reviewer vn-taphoanhatung approved admin-staging.
+Execution failed in authorize at dynamic provider import with Node exit 13 /
+unsettled top-level await. The provider imports the still-evaluating CLI adapter,
+so the top-level dynamic import waits on its own module. No pre-action artifact
+or operation receipt was created; the Cloudflare credential step was skipped.
+No Admin Worker/DNS, D1, HMAC, enrollment/bootstrap or production mutation occurred.
+
+The correction imports createProvider statically; provider module evaluation has
+no HTTP/command side effects. Two real Node CLI subprocess regressions use a
+clean synthetic Git fixture, an ephemeral signing key and a closed in-process
+HTTP boundary. They reproduce exit 13 on fc5b2f04, pass authorization/pre-action
+creation with the fix, and still reject a missing independent approval. Related
+local validation: six files / 180 tests, whole-project lint (two existing
+generated-bundle warnings), both TypeScript checks, Admin build (existing font
+resolution warnings; emitted fonts present), public added-text scan and whitespace
+checks PASS. Exact-head
+hosted CI, independent PR review, protected merge and exact-main checks remain
+required before a fresh signed initialization dispatch (never rerun the old run).
+
+Next: publish/review this correction; staging initialize-disabled, migrate,
+provision-hmac, direct real-owner Access login and verified subject, enroll-owner,
+bootstrap, deploy-disabled, enable, actual ST01-ST20 and signed exact-source
+certificate, then the same protected production sequence. Real Access identity,
+ST01-ST20 and Admin production remain PENDING_EXTERNAL_EVIDENCE. Customer and
+PayOS runtime, data, credentials and release workflows are outside this change.
+
+---
+
 # Admin guarded activation proposal - 2026-10-18
 
 Current release source on main remains `61a34b74`, disabled and undeployed.

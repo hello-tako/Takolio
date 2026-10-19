@@ -3,6 +3,7 @@ import { createHash, createPublicKey, verify } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
+import { createProvider } from './admin-release-provider.mjs';
 import { canonical, verifyRecovery } from './admin-recovery.mjs';
 import { buildBootstrapAdminSql } from './admin-local-lib.mjs';
 
@@ -296,7 +297,6 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
           process.env.GITHUB_WORKFLOW_SHA !== context.sourceSha) throw new Error('Authorized protected exact-main Actions execution required');
       const bundle = JSON.parse(process.env.ADMIN_RELEASE_AUTHORIZATION ?? 'null');
       const authorized = validateAuthorization(bundle, policy, context);
-      const { createProvider } = await import('./admin-release-provider.mjs');
       const provider = createProvider(authorized, context);
       if (environment === 'production' && operation !== 'disable') {
         const certificate = validateStagingCertificate(JSON.parse(process.env.ADMIN_STAGING_CERTIFICATION ?? 'null'), policy, context);
