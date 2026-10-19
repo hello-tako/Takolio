@@ -63,7 +63,7 @@ export async function auditAdminInfrastructure(token, fetcher = fetch) {
           if (b.type === 'd1') return [{ name: b.name, type: b.type, id: b.id }];
           if (b.type === 'kv_namespace') return [{ name: b.name, type: b.type, id: b.namespace_id }];
           if (b.type === 'service') return [{ name: b.name, type: b.type, service: b.service, entrypoint: b.entrypoint }];
-          if (b.type === 'plain_text' && ['ENVIRONMENT', 'GIT_COMMIT', 'ADMIN_SCHEMA_VERSION', 'ADMIN_CONSOLE_ENABLED', 'ADMIN_AUTH_MODE'].includes(b.name)) return [{ name: b.name, type: b.type, value: b.text }];
+          if (b.type === 'plain_text' && ['ENVIRONMENT', 'GIT_COMMIT', 'ADMIN_SCHEMA_VERSION', 'ADMIN_CONSOLE_ENABLED', 'ADMIN_AUTH_MODE', 'ADMIN_SHUTDOWN'].includes(b.name)) return [{ name: b.name, type: b.type, value: b.text }];
           return [];
         }) };
       }));

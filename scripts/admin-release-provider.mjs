@@ -2,23 +2,43 @@ import { execFileSync } from 'node:child_process';
 import { randomBytes } from 'node:crypto';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
+import { setTimeout as delay } from 'node:timers/promises';
 import { digest, renderConfigs, validateGitHub } from './admin-release-adapter.mjs';
 
 const jsonc = file => JSON.parse(readFileSync(file, 'utf8').split('\n').filter(line => !/^\s*\/\//.test(line)).join('\n'));
 
 // HTTP origins and executable/arguments are fixed here; signed inputs never
 // become SQL, command fragments, file paths, or network destinations.
-export function createProvider(authorized, context, env = process.env, fetcher = fetch, command = execFileSync) {
+export function createProvider(authorized, context, env = process.env, fetcher = fetch, command = execFileSync, wait = delay) {
   const { target } = authorized;
   const output = '.artifacts/admin-release';
   const request = async (origin, route, token, options = {}) => {
     if (!token) throw new Error('Required API credential is unavailable');
-    const response = await fetcher(`${origin}${route}`, { ...options, redirect: 'error', signal: AbortSignal.timeout(30000),
-      headers: { Authorization: `Bearer ${token}`, Accept: 'application/json', 'Content-Type': 'application/json', ...options.headers } });
+    let response;
+    try {
+      response = await fetcher(`${origin}${route}`, { ...options, redirect: 'error', signal: AbortSignal.timeout(30000),
+        headers: { Authorization: `Bearer ${token}`, Accept: 'application/json', 'Content-Type': 'application/json', ...options.headers } });
+    } catch {
+      throw new Error(`${origin.includes('cloudflare') ? 'Cloudflare' : 'GitHub'} provider transport failed`);
+    }
     if (!response.ok) throw new Error(`Release provider HTTP ${response.status}`);
     const value = await response.json();
     if (origin.includes('cloudflare') && value.success !== true) throw new Error('Cloudflare operation failed');
     return origin.includes('cloudflare') ? (options.pagination ? value : value.result) : value;
+  };
+  const publicSmoke = async route => {
+    const transient = new Set(['ENOTFOUND', 'EAI_AGAIN', 'ECONNRESET', 'ETIMEDOUT', 'UND_ERR_CONNECT_TIMEOUT']);
+    for (let attempt = 0; attempt < 3; attempt++) {
+      try {
+        return await fetcher(`https://${target.hostname}${route}`, { redirect: 'manual', signal: AbortSignal.timeout(15000) });
+      } catch (error) {
+        const code = error?.cause?.code ?? error?.code;
+        if (!transient.has(code) || attempt === 2) {
+          throw new Error(`Public Admin smoke transport failed (${transient.has(code) ? code : 'NON_RETRYABLE'})`);
+        }
+        await wait(attempt === 0 ? 1000 : 3000);
+      }
+    }
   };
   const gh = route => request('https://api.github.com', `/repos/hello-tako/Takolio${route}`, env.GH_TOKEN, { headers: { 'X-GitHub-Api-Version': '2022-11-28' } });
   const cf = (route, options) => request('https://api.cloudflare.com', `/client/v4/accounts/${target.accountId}${route}`, env.CLOUDFLARE_API_TOKEN, options);
@@ -146,6 +166,30 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
       if (workers.some(w => [t.adminWorker, t.facadeWorker].includes(w.id)) || domains.some(d => d.hostname === t.hostname)) {
         throw new Error('Initialization requires absent Admin Workers and an unused hostname');
       }
+    },
+    async verifyInitialRecoveryTargets(t) {
+      if (context.operation !== 'restore-initial-disabled') throw new Error('Dedicated initial restoration operation required');
+      await provider.verifyTargets(t, context.environment, true);
+      await provider.verifyConsoleDisabled(t);
+      const [a, f, subdomain] = await Promise.all([settings(t.adminWorker), settings(t.facadeWorker),
+        cf(`/workers/scripts/${t.adminWorker}/subdomain`)]);
+      const text = (s, n) => binding(s, n, 'plain_text')?.text;
+      const containedSha = text(a, 'GIT_COMMIT');
+      if (text(a, 'ADMIN_SHUTDOWN') !== 'true' || a.bindings?.some(b => b.type !== 'plain_text') ||
+          f.bindings?.some(b => !['plain_text', 'd1'].includes(b.type)) || subdomain.enabled !== false || subdomain.previews_enabled !== false ||
+          !/^[a-f0-9]{40}$/.test(containedSha ?? '') || ![containedSha, context.sourceSha].includes(text(f, 'GIT_COMMIT')) ||
+          text(f, 'ADMIN_SCHEMA_VERSION') !== '4' || text(f, 'ENVIRONMENT') !== context.environment) {
+        throw new Error('Unused exact-source initial containment required');
+      }
+      try { command('git', ['merge-base', '--is-ancestor', containedSha, context.sourceSha], { stdio: 'ignore' }); }
+      catch { throw new Error('Initial containment source is outside reviewed ancestry'); }
+      const runs = await gh(`/actions/workflows/admin-ci.yml/runs?head_sha=${containedSha}&status=success&per_page=100`);
+      if (!runs.workflow_runs?.some(r => r.head_sha === containedSha && r.path === '.github/workflows/admin-ci.yml' &&
+          r.event === 'push' && r.status === 'completed' && r.conclusion === 'success' && r.repository?.id === 1422954151)) {
+        throw new Error('Initial containment source lacks exact-SHA CI');
+      }
+      const objects = await query("SELECT type,name FROM sqlite_master WHERE sql IS NOT NULL AND name NOT IN ('_cf_METADATA','sqlite_sequence')");
+      if (objects.length) throw new Error('Initial restoration requires an unmigrated empty Admin database');
     },
     async verifyTargets(t, _environment, allowShutdown = false) {
       await provider.verifyResourceTargets(t);
@@ -275,7 +319,7 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
           binding(s, 'ADMIN_AUTH_MODE', 'plain_text')?.text !== 'cloudflare_access' ||
           binding(s, 'GIT_COMMIT', 'plain_text')?.text !== expectedSha) throw new Error('Enabled release metadata mismatch');
       for (const route of ['/admin/', '/api/v1/admin/me', '/admin/favicon.svg']) {
-        const response = await fetcher(`https://${t.hostname}${route}`, { redirect: 'manual', signal: AbortSignal.timeout(15000) });
+        const response = await publicSmoke(route);
         try {
           const location = response.headers.get('location');
           const access = location ? new URL(location, `https://${t.hostname}`) : null;
@@ -286,7 +330,11 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
         } finally { await response.body?.cancel(); }
       }
     },
-    async deploy(worker) { await checkWrite(); wrangler(worker, ['deploy']); },
+    async deploy(worker) {
+      if (context.operation === 'restore-initial-disabled') await provider.verifyInitialRecoveryTargets(target);
+      await checkWrite();
+      wrangler(worker, ['deploy']);
+    },
     async verifyDisabled(t, expectedSha, shutdown = false) {
       await provider.verifyShutdownTarget(t);
       const s = await settings(t.adminWorker);
@@ -301,7 +349,7 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
         routes.push(asset);
       }
       for (const route of routes) {
-        const response = await fetcher(`https://${t.hostname}${route}`, { redirect: 'manual', signal: AbortSignal.timeout(15000) });
+        const response = await publicSmoke(route);
         try {
           const location = response.headers.get('location');
           const access = location ? new URL(location, `https://${t.hostname}`) : null;

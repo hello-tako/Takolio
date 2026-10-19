@@ -11,7 +11,7 @@ on:
       operation:
         description: Reviewed Admin operation
         type: choice
-        options: [initialize-disabled, deploy-disabled, enable, rollback-disabled]
+        options: [initialize-disabled, restore-initial-disabled, deploy-disabled, enable, rollback-disabled]
         required: true
       execute:
         description: Requires owner authorization and protected Environment approval

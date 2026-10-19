@@ -1,3 +1,50 @@
+# Admin first-install recovery - 2026-10-19 JST
+
+PR #19 merged normally as 5c44cc5d after exact-HEAD human approval; exact-main CI
+39237659372 and Admin CI 39237659377 PASS. Fresh staging/production credential
+audits 39238475637/39238479727 PASS with matching target/policy and archive digests.
+
+Protected initialize-disabled 39240631059 passed authorization/pre-action upload
+but failed during live execution with fetch failed. Its receipt remains FAIL /
+UNKNOWN_REQUIRES_OPERATOR_INSPECTION. Inspection audit 39241507968 confirms the
+dedicated staging Workers/hostname were created with the expected source and
+console=false; exported Admin bindings are consistent with compensating shutdown.
+The old audit omits ADMIN_SHUTDOWN, so its exact marker still needs verification.
+Customer Worker sources/bindings match baseline; four anonymous Admin curl probes
+redirect correctly to the Access tenant and customer health is ok. No Admin D1
+migration, HMAC, owner enrollment/bootstrap, enablement or production Admin release
+has been dispatched. All complete-live acceptance rows stay PENDING_EXTERNAL_EVIDENCE.
+
+The candidate adds protected restore-initial-disabled for an unmigrated empty
+Admin DB and exact contained source/mapping only. Rechecks precede each fixed
+upload, secrets/used schema/unreviewed ancestry/public exposure refuse, rendered
+console stays OFF and partial failure contains. Existing initialization/rollback
+guards and branch/Environment/signature/certificate protections remain. Public
+GET smoke retries only bounded transient transport failures, never bad HTTP/TLS
+or provider writes. Raw provider details are suppressed; the original precise
+transport cause remains unknown. Audit now exports the shutdown marker safely.
+
+Validation: new regressions first 17 FAIL / 81 PASS on the old provider; final
+5-file / 198-test focused suite PASS, real SQLite empty-schema guard and raced
+second upload included. Lint PASS (two pre-existing generated warnings), both
+typechecks and Admin build PASS (existing font warnings, all fonts emitted).
+Dependency audit 438 dependencies/0 vulnerabilities; public scan/whitespace PASS.
+See docs/admin/production-readiness/28_INITIAL_INSTALL_RECOVERY.md for receipts.
+
+Supplementary local full suite: 407 files / 9,093 tests, 9,081 PASS / 12 FAIL
+in three existing customer tooling files (macOS temporary-path canonicalization,
+mock executable paths and a 5-second Wrangler timeout). Corrected isolated rerun
+with TMPDIR=/private/tmp and actual Vitest maxWorkers=2 passes 3 files / 125 tests.
+No customer tooling files changed; exact-HEAD hosted full CI remains required.
+
+Next: independent exact-HEAD review and CI; protected merge/exact-main checks;
+updated staging GET-only audit, then fresh signed restore-initial-disabled.
+Continue migrate/HMAC/real-owner login/enroll/bootstrap/disabled baseline/enable,
+actual ST01-ST20 and exact-source certificate before protected production.
+PayOS/customer runtime/data/credentials/release workflows remain out of scope.
+
+---
+
 # Admin release CLI correction - 2026-10-19 JST
 
 PR #18 merged as fc5b2f04 after exact-head human review. Exact-main CI

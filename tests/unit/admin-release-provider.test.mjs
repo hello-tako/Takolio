@@ -567,3 +567,170 @@ print(json.dumps([before,c.execute(q).fetchone()[0]]))`;
     expect(workflow.concurrency.group).toBe('admin-release-${{ inputs.environment }}');
   });
 });
+
+describe('First-install restoration from containment', () => {
+  function recoveryFixture(change = () => {}) {
+    const state = {
+      shutdown: true, enabled: false, adminSha: context.sourceSha, facadeSha: context.sourceSha,
+      schema: '4', objects: [], extraAdminBinding: null, extraFacadeBinding: null,
+      adminSubdomain: false, validCi: true,
+    };
+    change(state);
+    const base = providerFacts(f => {
+      f.a.bindings = Object.entries({ ENVIRONMENT: context.environment, ADMIN_AUTH_MODE: 'cloudflare_access',
+        ADMIN_CONSOLE_ENABLED: String(state.enabled), GIT_COMMIT: state.adminSha, ADMIN_SHUTDOWN: String(state.shutdown) })
+        .map(([name, text]) => ({ name, text, type: 'plain_text' }));
+      if (state.extraAdminBinding) f.a.bindings.push(state.extraAdminBinding);
+      f.f.bindings.push(...Object.entries({ ENVIRONMENT: context.environment, GIT_COMMIT: state.facadeSha, ADMIN_SCHEMA_VERSION: state.schema })
+        .map(([name, text]) => ({ name, text, type: 'plain_text' })));
+      if (state.extraFacadeBinding) f.f.bindings.push(state.extraFacadeBinding);
+    });
+    const fetcher = vi.fn((url, options) => {
+      const u = new URL(url);
+      if (u.origin === 'https://api.github.com') return Response.json({ workflow_runs: state.validCi ? [{
+        head_sha: state.adminSha, path: '.github/workflows/admin-ci.yml', status: 'completed', conclusion: 'success',
+        event: 'push', repository: { id: 1422954151 },
+      }] : [] });
+      if (u.pathname.endsWith(`/scripts/${target.adminWorker}/subdomain`)) return cloudflare({ enabled: state.adminSubdomain, previews_enabled: false });
+      if (u.pathname.endsWith('/query')) {
+        expect(u.pathname).toContain(`/d1/database/${target.adminDatabaseId}/query`);
+        expect(JSON.parse(options.body).sql).toMatch(/^SELECT .*sqlite_master/);
+        return d1(typeof state.objects === 'function' ? state.objects(JSON.parse(options.body).sql) : state.objects);
+      }
+      return base(url, options);
+    });
+    const command = vi.fn(() => '');
+    const provider = createProvider(authorized, { ...context, operation: 'restore-initial-disabled' },
+      { CLOUDFLARE_API_TOKEN: 'synthetic', GH_TOKEN: 'synthetic' }, fetcher, command);
+    return { provider, fetcher, command };
+  }
+
+  it('accepts only an unused database and exact contained Admin/facade mapping with reviewed ancestry', async () => {
+    const { provider, fetcher, command } = recoveryFixture();
+    await provider.verifyInitialRecoveryTargets(target);
+    expect(command).toHaveBeenCalledWith('git', ['merge-base', '--is-ancestor', context.sourceSha, context.sourceSha], { stdio: 'ignore' });
+    expect(fetcher.mock.calls.filter(([, init]) => init.method === 'POST')).toHaveLength(1);
+    expect(fetcher.mock.calls.every(([, init]) => !init.body || JSON.parse(init.body).sql.startsWith('SELECT'))).toBe(true);
+  });
+
+  it.each([
+    ['no shutdown marker', s => { s.shutdown = false; }],
+    ['enabled Admin', s => { s.enabled = true; }],
+    ['Admin data binding', s => { s.extraAdminBinding = { name: 'ADMIN_DB', type: 'd1', id: target.adminDatabaseId }; }],
+    ['previously provisioned HMAC', s => { s.extraAdminBinding = { name: 'ADMIN_AUDIT_HMAC_SECRET', type: 'secret_text' }; }],
+    ['facade secret', s => { s.extraFacadeBinding = { name: 'ADMIN_FACADE_HMAC_SECRET', type: 'secret_text' }; }],
+    ['mismatched source', s => { s.facadeSha = 'f'.repeat(40); }],
+    ['unversioned source', s => { s.adminSha = s.facadeSha = 'unknown'; }],
+    ['foreign schema', s => { s.schema = '3'; }],
+    ['public Admin subdomain', s => { s.adminSubdomain = true; }],
+    ['unreviewed contained source', s => { s.validCi = false; }],
+    ['migration ledger already exists', s => { s.objects = [{ type: 'table', name: 'd1_migrations' }]; }],
+    ['existing authority schema', s => { s.objects = [{ type: 'table', name: 'approved_human_operators' }]; }],
+  ])('refuses restoration with %s before any mutation', async (_label, change) => {
+    const { provider, fetcher, command } = recoveryFixture(change);
+    await expect(provider.verifyInitialRecoveryTargets(target)).rejects.toThrow();
+    expect(command.mock.calls.every(([executable]) => executable === 'git')).toBe(true);
+    expect(fetcher.mock.calls.every(([, init]) => !init.body || JSON.parse(init.body).sql?.startsWith('SELECT'))).toBe(true);
+  });
+
+  it('accepts the new facade source between the two guarded restoration uploads', async () => {
+    const { provider } = recoveryFixture(s => { s.adminSha = 'f'.repeat(40); });
+    await expect(provider.verifyInitialRecoveryTargets(target)).resolves.toBeUndefined();
+  });
+
+  it('checks the real SQLite schema and rejects application objects with a system-like prefix', async () => {
+    for (const occupied of [false, true]) {
+      const { provider } = recoveryFixture(state => {
+        state.objects = sql => {
+          const code = `import sqlite3,json
+c=sqlite3.connect(':memory:')
+c.execute('CREATE TABLE _cf_METADATA(key TEXT PRIMARY KEY,value TEXT)')
+if ${occupied ? 'True' : 'False'}: c.execute('CREATE TABLE _cf_not_a_system_table(id TEXT)')
+print(json.dumps([dict(zip(['type','name'],r)) for r in c.execute(${JSON.stringify(sql)})]))`;
+          return JSON.parse(execFileSync('python3', ['-c', code], { encoding: 'utf8' }));
+        };
+      });
+      if (occupied) await expect(provider.verifyInitialRecoveryTargets(target)).rejects.toThrow('empty Admin database');
+      else await expect(provider.verifyInitialRecoveryTargets(target)).resolves.toBeUndefined();
+    }
+  });
+
+  it('refuses a contained source outside the current reviewed ancestry', async () => {
+    const { provider, command } = recoveryFixture();
+    command.mockImplementation(() => { throw new Error('synthetic non-ancestor'); });
+    await expect(provider.verifyInitialRecoveryTargets(target)).rejects.toThrow('ancestry');
+  });
+});
+
+describe('Public smoke transport handling', () => {
+  const settings = { bindings: Object.entries({ ENVIRONMENT: context.environment, ADMIN_CONSOLE_ENABLED: 'false',
+    GIT_COMMIT: context.sourceSha, ADMIN_SHUTDOWN: 'true' }).map(([name, text]) => ({ name, text, type: 'plain_text' })) };
+  function smokeProvider(publicFetch, wait = vi.fn(async () => {})) {
+    const base = providerFacts(f => { f.a = settings; });
+    const fetcher = vi.fn((url, options) => new URL(url).hostname === target.hostname ? publicFetch(url, options) : base(url, options));
+    return { provider: createProvider(authorized, { ...context, operation: 'disable' }, { CLOUDFLARE_API_TOKEN: 'synthetic' }, fetcher, vi.fn(), wait), wait };
+  }
+  const transient = () => new TypeError('fetch failed with synthetic-private-provider-body', { cause: { code: 'ENOTFOUND' } });
+
+  it('retries only transient public GET connection failures and still verifies each denial', async () => {
+    const publicFetch = vi.fn().mockRejectedValueOnce(transient()).mockRejectedValueOnce(transient())
+      .mockImplementation(async () => shutdownWorker.fetch());
+    const { provider, wait } = smokeProvider(publicFetch);
+    await provider.verifyDisabled(target, context.sourceSha, true);
+    expect(publicFetch).toHaveBeenCalledTimes(6);
+    expect(wait.mock.calls).toEqual([[1000], [3000]]);
+  });
+
+  it('stops after three connection failures and emits only the allowlisted diagnostic', async () => {
+    const publicFetch = vi.fn(async () => { throw transient(); });
+    const { provider } = smokeProvider(publicFetch);
+    await expect(provider.verifyDisabled(target, context.sourceSha, true)).rejects.toThrow('Public Admin smoke transport failed (ENOTFOUND)');
+    expect(publicFetch).toHaveBeenCalledTimes(3);
+  });
+
+  it('does not retry an unsafe HTTP response or a certificate failure', async () => {
+    for (const response of [async () => new Response('Forbidden', { status: 403 }),
+      async () => { throw new TypeError('private detail', { cause: { code: 'CERT_HAS_EXPIRED' } }); }]) {
+      const publicFetch = vi.fn(response);
+      const { provider, wait } = smokeProvider(publicFetch);
+      await expect(provider.verifyDisabled(target, context.sourceSha, true)).rejects.toThrow();
+      expect(publicFetch).toHaveBeenCalledOnce();
+      expect(wait).not.toHaveBeenCalled();
+    }
+  });
+});
+
+it('suppresses provider transport detail without retrying an API write', async () => {
+  const fetcher = vi.fn(async () => { throw new Error('synthetic-private-provider-detail'); });
+  const provider = createProvider(authorized, context, { CLOUDFLARE_API_TOKEN: 'synthetic' }, fetcher, vi.fn());
+  await expect(provider.verifyLedger(target, [], false)).rejects.toThrow('Cloudflare provider transport failed');
+  expect(fetcher).toHaveBeenCalledOnce();
+});
+
+it('rechecks unused containment before each upload and refuses a newly occupied database', async () => {
+  const ctx = { ...context, operation: 'restore-initial-disabled', runAttempt: '1', auditArtifactDigest: 'sha256:' + 'f'.repeat(64) };
+  const command = vi.fn(() => 'synthetic upload');
+  const provider = createProvider(authorized, ctx, {}, vi.fn(), command);
+  vi.spyOn(provider, 'githubFacts').mockResolvedValue({
+    repository: { id: 1422954151, full_name: 'hello-tako/Takolio', default_branch: 'main' },
+    branch: { protected: true, commit: { sha: ctx.sourceSha } },
+    protection: { enforce_admins: { enabled: true }, required_pull_request_reviews: { required_approving_review_count: 1, dismiss_stale_reviews: true },
+      required_status_checks: { strict: true, contexts: ['validate-admin'] } },
+    environment: { id: 123, can_admins_bypass: false, protection_rules: [{ type: 'required_reviewers', prevent_self_review: true, reviewers: [{}] }],
+      deployment_branch_policy: { protected_branches: true, custom_branch_policies: false } },
+    run: { id: 42, run_attempt: 1, event: 'workflow_dispatch', head_sha: ctx.sourceSha, head_branch: 'main',
+      path: '.github/workflows/admin-staging-deploy.yml', actor: { id: 1, type: 'User' }, triggering_actor: { id: 1 }, repository: { id: 1422954151 } },
+    ci: [{ head_sha: ctx.sourceSha, path: '.github/workflows/admin-ci.yml', status: 'completed', conclusion: 'success', event: 'push', repository: { id: 1422954151 } }],
+    approvals: [{ state: 'approved', user: { id: 2, type: 'User' }, environments: [{ id: 123 }] }],
+    artifact: { name: 'admin-pre-action-42', expired: false, workflow_run: { id: 42, head_sha: ctx.sourceSha }, digest: ctx.auditArtifactDigest },
+  });
+  const guard = vi.spyOn(provider, 'verifyInitialRecoveryTargets').mockResolvedValueOnce()
+    .mockRejectedValueOnce(new Error('Initial restoration requires an unmigrated empty Admin database'));
+  await provider.deploy('facade');
+  await expect(provider.deploy('admin')).rejects.toThrow('empty Admin database');
+  expect(guard).toHaveBeenCalledTimes(2);
+  expect(command).toHaveBeenCalledOnce();
+  expect(command.mock.calls[0][1].slice(0, 3)).toEqual(['exec', 'wrangler', 'deploy']);
+  expect(guard.mock.invocationCallOrder[0]).toBeLessThan(command.mock.invocationCallOrder[0]);
+  expect(provider.githubFacts).toHaveBeenCalledOnce();
+});
