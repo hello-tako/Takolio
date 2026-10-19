@@ -1,3 +1,31 @@
+# Admin staging live acceptance / rollback fix - 2026-10-20 JST
+
+Runtime main 24cf5d45 has completed staging restore, four Admin migrations, HMAC,
+actual owner enrollment/bootstrap, disabled baseline and enable (39270091042
+PASS). Real Chrome owner reads and logout were verified. Emergency OFF
+39273582548 PASS. Paired rollback 39274064739 and instrumented 39275962070 FAIL /
+UNKNOWN: /settings kept reporting latest-upload shutdown bindings while the
+reviewed disabled version was receiving 100% traffic. Compensation is observed;
+latest GET-only probe sees Admin 4f105c43 and facade f8c39deb, console OFF.
+No production Admin operation has run; customer/payments were not mutated.
+
+Candidate codex/admin-active-version-bindings-20261020 verifies serving-version
+bindings through deployment/version/deployment reads, rejects split or changed
+deployments and duplicate binding names, and uses that selection in receipts.
+Focused release/provider/CLI suite 4 files / 215 tests PASS; lint PASS (two existing
+generated warnings), both typechecks and Admin build PASS; candidate GET-only
+live metadata probe PASS (9 reads, no mutations). Earlier initial test fixture
+setup error was corrected; final assertions were retained. Full ST01-ST20 stays
+incomplete (ST20 FAIL; negative identity/role/CSRF/facade, recovery, axe/load and
+JWKS evidence missing). No staging certificate or production readiness claim.
+
+Next: independent exact-HEAD PR approval and hosted checks, normal merge and
+exact-main CI, fresh protected rollback-disabled rehearsal, then new disabled
+baseline/enable and complete actual live evidence before production.
+Details: docs/admin/production-readiness/30_STAGING_LIVE_ACCEPTANCE_20261020.md.
+
+---
+
 # Admin commissioning publication - 2026-10-18
 
 PR #16: https://github.com/hello-tako/Takolio/pull/16, branch

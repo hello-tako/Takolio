@@ -6,6 +6,7 @@ import { setTimeout as delay } from 'node:timers/promises';
 import { digest, renderConfigs, validateGitHub } from './admin-release-adapter.mjs';
 
 const jsonc = file => JSON.parse(readFileSync(file, 'utf8').split('\n').filter(line => !/^\s*\/\//.test(line)).join('\n'));
+const versionIdPattern = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/;
 
 // HTTP origins and executable/arguments are fixed here; signed inputs never
 // become SQL, command fragments, file paths, or network destinations.
@@ -86,8 +87,43 @@ export function createProvider(authorized, context, env = process.env, fetcher =
       timeout: 600000, env: { ...env, CLOUDFLARE_ACCOUNT_ID: target.accountId, WRANGLER_SEND_METRICS: 'false' }, stdio: ['ignore', 'pipe', 'pipe'] }); }
     catch { throw new Error('Fixed Wrangler operation failed; no provider output is published'); }
   };
-  const settings = worker => cf(`/workers/scripts/${worker}/settings`);
   const binding = (s, n, type) => s.bindings?.find(b => b.name === n && b.type === type);
+  // Cloudflare can leave /settings describing a newer upload after a version
+  // rollback. Verify the version receiving 100% traffic and confirm its
+  // deployment identity before inspecting bindings.
+  const activeSettings = async worker => {
+    const readDeployment = async () => {
+      const result = await cf(`/workers/scripts/${worker}/deployments`);
+      const deployments = result?.deployments;
+      if (!Array.isArray(deployments) || deployments.length < 1) throw new Error('Active Worker deployment unavailable');
+      const deployment = deployments[0];
+      const versions = deployment.versions;
+      if (!versionIdPattern.test(deployment.id ?? '') || !Array.isArray(versions) || versions.length !== 1 ||
+          versions[0].percentage !== 100 || !versionIdPattern.test(versions[0].version_id ?? '')) {
+        throw new Error('Active Worker traffic is ambiguous');
+      }
+      return { deploymentId: deployment.id, versionId: versions[0].version_id };
+    };
+    const selected = await readDeployment();
+    const version = await cf(`/workers/scripts/${worker}/versions/${selected.versionId}`);
+    if (version?.id !== selected.versionId || !Array.isArray(version.resources?.bindings)) throw new Error('Active Worker version metadata mismatch');
+    const names = version.resources.bindings.map(b => b?.name);
+    if (names.some(n => typeof n !== 'string' || !n) || new Set(names).size !== names.length) throw new Error('Active Worker bindings are ambiguous');
+    const confirmed = await readDeployment();
+    if (confirmed.deploymentId !== selected.deploymentId || confirmed.versionId !== selected.versionId) throw new Error('Active Worker deployment changed during verification');
+    return { ...version.resources, versionId: version.id };
+  };
+  const verifySecretWriteTarget = async worker => {
+    const active = await activeSettings(worker);
+    const uploaded = await cf(`/workers/scripts/${worker}/settings`);
+    // The secrets API updates the latest upload. Do not let a stale upload
+    // replace a different serving configuration while provisioning secrets.
+    const normalized = bindings => {
+      if (!Array.isArray(bindings)) throw new Error('Secret write target metadata unavailable');
+      return bindings.map(({ database_id: _databaseId, ...b }) => b).sort((a, b) => String(a.name).localeCompare(String(b.name)));
+    };
+    if (digest(normalized(active.bindings)) !== digest(normalized(uploaded?.bindings))) throw new Error('Latest upload differs from active secret write target');
+  };
   const verifyVersion = async (worker, versionId, previousSha, isAdmin) => {
     const v = await cf(`/workers/scripts/${worker}/versions/${versionId}`);
     const bindings = { bindings: v.resources?.bindings };
@@ -133,7 +169,7 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
     async verifyShutdownTarget(t) {
       const [domains, zone, s] = await Promise.all([
         cfList(`/accounts/${t.accountId}/workers/domains`, true),
-        request('https://api.cloudflare.com', `/client/v4/zones/${t.zoneId}`, env.CLOUDFLARE_API_TOKEN), settings(t.adminWorker),
+        request('https://api.cloudflare.com', `/client/v4/zones/${t.zoneId}`, env.CLOUDFLARE_API_TOKEN), activeSettings(t.adminWorker),
       ]);
       if (zone.id !== t.zoneId || zone.account?.id !== t.accountId || !(t.hostname === zone.name || t.hostname.endsWith(`.${zone.name}`)) ||
           !domains.some(d => d.hostname === t.hostname && d.service === t.adminWorker && d.zone_id === t.zoneId) ||
@@ -171,7 +207,7 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
       if (context.operation !== 'restore-initial-disabled') throw new Error('Dedicated initial restoration operation required');
       await provider.verifyTargets(t, context.environment, true);
       await provider.verifyConsoleDisabled(t);
-      const [a, f, subdomain] = await Promise.all([settings(t.adminWorker), settings(t.facadeWorker),
+      const [a, f, subdomain] = await Promise.all([activeSettings(t.adminWorker), activeSettings(t.facadeWorker),
         cf(`/workers/scripts/${t.adminWorker}/subdomain`)]);
       const text = (s, n) => binding(s, n, 'plain_text')?.text;
       const containedSha = text(a, 'GIT_COMMIT');
@@ -201,7 +237,7 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
       const facadeSubdomain = await cf(`/workers/scripts/${t.facadeWorker}/subdomain`);
       if (facadeSubdomain.enabled || facadeSubdomain.previews_enabled) throw new Error('Facade public subdomain enabled');
       // Existing binding identities must agree before a release can replace them.
-      const [a, f] = await Promise.all([settings(t.adminWorker), settings(t.facadeWorker)]);
+      const [a, f] = await Promise.all([activeSettings(t.adminWorker), activeSettings(t.facadeWorker)]);
       const shutdown = allowShutdown && binding(a, 'ADMIN_SHUTDOWN', 'plain_text')?.text === 'true' &&
         binding(a, 'ADMIN_CONSOLE_ENABLED', 'plain_text')?.text === 'false' &&
         !a.bindings?.some(b => !['plain_text', 'secret_text'].includes(b.type));
@@ -248,14 +284,14 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
       if (rows.length !== 1 || rows[0].identity !== t.adminDatabaseId || rows[0].environment !== environment) throw new Error('Admin authority identity mismatch');
     },
     async verifyConsoleDisabled(t) {
-      const s = await settings(t.adminWorker);
+      const s = await activeSettings(t.adminWorker);
       if (binding(s, 'ADMIN_CONSOLE_ENABLED', 'plain_text')?.text !== 'false' ||
           binding(s, 'ENVIRONMENT', 'plain_text')?.text !== context.environment ||
           binding(s, 'ADMIN_AUTH_MODE', 'plain_text')?.text !== 'cloudflare_access') throw new Error('Disabled Access-only console required');
     },
     async verifySecrets(t) {
       for (const worker of [t.adminWorker, t.facadeWorker]) {
-        const s = await settings(worker);
+        const s = await activeSettings(worker);
         if (!binding(s, 'ADMIN_FACADE_HMAC_SECRET', 'secret_text') || (worker === t.adminWorker && !binding(s, 'ADMIN_AUDIT_HMAC_SECRET', 'secret_text'))) throw new Error('Operator-provisioned secrets missing');
       }
     },
@@ -292,6 +328,7 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
         await provider.verifyTargets(target, context.environment);
         await provider.verifyConsoleDisabled(target);
         await assertUnused();
+        await verifySecretWriteTarget(worker);
         const stored = await cf(`/workers/scripts/${worker}/secrets`, {
           method: 'PUT', body: JSON.stringify({ name, type: 'secret_text', text }),
         });
@@ -317,7 +354,7 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
     },
     async verifyEnabled(t, expectedSha) {
       await provider.verifyOwnerReady(t);
-      const [s, f] = await Promise.all([settings(t.adminWorker), settings(t.facadeWorker)]);
+      const [s, f] = await Promise.all([activeSettings(t.adminWorker), activeSettings(t.facadeWorker)]);
       if (binding(f, 'GIT_COMMIT', 'plain_text')?.text !== expectedSha || binding(f, 'ADMIN_SCHEMA_VERSION', 'plain_text')?.text !== '4' ||
           binding(s, 'ADMIN_SCHEMA_VERSION', 'plain_text')?.text !== '4' || binding(s, 'ADMIN_CONSOLE_ENABLED', 'plain_text')?.text !== 'true' ||
           binding(s, 'ADMIN_AUTH_MODE', 'plain_text')?.text !== 'cloudflare_access' ||
@@ -341,7 +378,7 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
     },
     async verifyDisabled(t, expectedSha, shutdown = false) {
       await provider.verifyShutdownTarget(t);
-      const s = await settings(t.adminWorker);
+      const s = await activeSettings(t.adminWorker);
       const text = n => binding(s, n, 'plain_text')?.text;
       if (text('ADMIN_CONSOLE_ENABLED') !== 'false' || text('GIT_COMMIT') !== expectedSha || text('ENVIRONMENT') !== context.environment ||
           (shutdown && (text('ADMIN_SHUTDOWN') !== 'true' || s.bindings?.some(b => !['plain_text', 'secret_text'].includes(b.type))))) throw new Error('Disabled release metadata mismatch');
@@ -365,7 +402,7 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
       }
     },
     async captureRollback() {
-      const s = await settings(target.adminWorker);
+      const s = await activeSettings(target.adminWorker);
       if (binding(s, 'ADMIN_SHUTDOWN', 'plain_text')?.text === 'true') {
         const sourceSha = binding(s, 'GIT_COMMIT', 'plain_text')?.text;
         await provider.verifyDisabled(target, sourceSha, true);
@@ -410,10 +447,7 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
     async deploymentVersions(workers = [target.adminWorker, target.facadeWorker]) {
       const versions = {};
       for (const worker of workers) {
-        const deployments = await cf(`/workers/scripts/${worker}/deployments`);
-        const latest = deployments.deployments?.[0];
-        if (!latest || latest.versions?.length !== 1 || latest.versions[0].percentage !== 100) throw new Error('Ambiguous deployed Worker version');
-        versions[worker] = latest.versions[0].version_id;
+        versions[worker] = (await activeSettings(worker)).versionId;
       }
       return versions;
     },

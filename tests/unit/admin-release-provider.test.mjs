@@ -137,6 +137,13 @@ function providerFacts(mutate = () => {}) {
     if (route.endsWith('/subdomain')) return cloudflare(facts.subdomain);
     if (route.endsWith(`/scripts/${target.adminWorker}/settings`)) return cloudflare(facts.a);
     if (route.endsWith(`/scripts/${target.facadeWorker}/settings`)) return cloudflare(facts.f);
+    for (const [worker, bindings, versionId] of [[target.adminWorker, facts.a.bindings, '11111111-1111-4111-8111-111111111111'],
+      [target.facadeWorker, facts.f.bindings, '22222222-2222-4222-8222-222222222222']]) {
+      if (route.endsWith(`/scripts/${worker}/deployments`)) return cloudflare({ deployments: [{
+        id: '33333333-3333-4333-8333-333333333333', versions: [{ version_id: versionId, percentage: 100 }],
+      }] });
+      if (route.endsWith(`/scripts/${worker}/versions/${versionId}`)) return cloudflare({ id: versionId, resources: { bindings } });
+    }
     throw new Error('Unexpected provider endpoint');
   });
 }
@@ -252,6 +259,16 @@ describe('Containment and disabled smoke', () => {
     const provider = createProvider(authorized, context, { CLOUDFLARE_API_TOKEN: 'synthetic' }, fetcher, vi.fn());
     await expect(provider.verifyTargets(target, context.environment, true)).resolves.toBeUndefined();
     await expect(provider.verifyTargets(target)).rejects.toThrow('binding');
+  });
+
+  it('verifies restored data bindings from the serving version even while latest-upload settings still show shutdown', async () => {
+    const active = providerFacts();
+    const fetcher = vi.fn((url, options) => url.endsWith('/settings') ? cloudflare(shutdownSettings()) : active(url, options));
+    const command = vi.fn();
+    const provider = createProvider(authorized, { ...context, operation: 'rollback-disabled' }, { CLOUDFLARE_API_TOKEN: 'synthetic' }, fetcher, command);
+    await expect(provider.verifyTargets(target)).resolves.toBeUndefined();
+    expect(fetcher.mock.calls.some(([url]) => url.endsWith('/settings'))).toBe(false);
+    expect(command).not.toHaveBeenCalled();
   });
 
   it('enumerates subsequent account zones and rejects facade routes outside the Admin zone', async () => {
@@ -432,7 +449,7 @@ describe('Enabled Admin release checks', () => {
 });
 
 describe('Protected initial HMAC provisioning', () => {
-  function fixture({ authority = 0, failWrite = 0, mutate, invalidGitHub = false } = {}) {
+  function fixture({ authority = 0, failWrite = 0, mutate, invalidGitHub = false, staleUpload = false } = {}) {
     const ctx = { ...context, operation: 'provision-hmac', runAttempt: '1', auditArtifactDigest: 'sha256:' + 'f'.repeat(64) };
     const facts = {
       repository: { id: 1422954151, full_name: 'hello-tako/Takolio', default_branch: 'main' },
@@ -454,6 +471,7 @@ describe('Protected initial HMAC provisioning', () => {
     const writes = [];
     let checks = 0;
     const fetcher = vi.fn(async (url, options) => {
+      if (staleUpload && url.endsWith('/settings')) return cloudflare({ bindings: [] });
       if (url.endsWith(`/d1/database/${target.adminDatabaseId}/query`)) {
         const { sql } = JSON.parse(options.body);
         expect(sql).toContain('admin_audit_events');
@@ -536,6 +554,13 @@ print(json.dumps([before,c.execute(q).fetchone()[0]]))`;
     const f = fixture({ invalidGitHub: true });
     await expect(f.provider.provisionHmac()).rejects.toThrow('Independent environment approval required');
     expect(f.writes).toHaveLength(0);
+  });
+
+  it('refuses a secret write when the latest upload differs from the verified serving version', async () => {
+    const f = fixture({ staleUpload: true });
+    await expect(f.provider.provisionHmac()).rejects.toThrow('Latest upload differs');
+    expect(f.writes).toHaveLength(0);
+    expect(f.command).not.toHaveBeenCalled();
   });
 
   it('requires the operation-specific workflow and immutable audit artifact before writes', async () => {
