@@ -91,7 +91,7 @@ function authorizationFixture() {
 
 describe('Admin offline release adapter', () => {
   it('keeps the release operation set finite and explicit', () => {
-    expect(OPERATIONS).toEqual(['initialize-disabled', 'deploy-disabled', 'enable', 'migrate', 'provision-hmac', 'enroll-owner', 'bootstrap', 'recover', 'disable', 'rollback-disabled']);
+    expect(OPERATIONS).toEqual(['initialize-disabled', 'restore-initial-disabled', 'deploy-disabled', 'enable', 'migrate', 'provision-hmac', 'enroll-owner', 'bootstrap', 'recover', 'disable', 'rollback-disabled']);
   });
 
   it('validates the commissioned targets while keeping rendered consoles disabled', () => {
@@ -171,6 +171,15 @@ describe('Admin offline release adapter', () => {
     for (const payload of [{ secret: 'operator-chosen-value' }, { worker: 'frigo' }, { name: 'SESSION_SECRET' }]) {
       expect(() => signOwnerArtifact('release', { ...bundle.manifest, payload }, 'operator-1', pem, fixture.policy, context, now)).toThrow('Unexpected operation payload');
     }
+  });
+
+  it('binds first-install restoration to its own empty signed operation', () => {
+    const { fixture, context, bundle } = authorizationFixture();
+    context.operation = bundle.manifest.operation = 'restore-initial-disabled';
+    const pem = fixture.keys[0].privateKey.export({ type: 'pkcs8', format: 'pem' });
+    const now = Date.parse('2026-10-17T00:10:00Z');
+    expect(signOwnerArtifact('release', bundle.manifest, 'operator-1', pem, fixture.policy, context, now).manifest.operation).toBe(context.operation);
+    expect(() => signOwnerArtifact('release', { ...bundle.manifest, payload: { worker: 'frigo' } }, 'operator-1', pem, fixture.policy, context, now)).toThrow('Unexpected operation payload');
   });
 
   it('signs a bounded first-owner enrollment using only the rostered key', () => {
@@ -285,7 +294,7 @@ describe('Admin release policy failure boundaries', () => {
 
   const fakeProvider = () => Object.fromEntries(['verifyTargets', 'verifyConsoleDisabled', 'verifyLedger', 'verifyExistingDatabaseIdentity', 'applyMigrations', 'bindDatabaseIdentity',
     'verifyDatabaseIdentity', 'verifySecrets', 'deploy', 'verifyDisabled', 'verifyRollback', 'rollback', 'verifyBootstrapRoster', 'bootstrap',
-    'recoveryRoster', 'recover', 'deploymentVersions', 'captureRollback', 'restoreRollback', 'verifyShutdownTarget', 'shutdown', 'verifyInitialTargets', 'enrollOwner', 'verifyOwnerReady', 'enable', 'verifyEnabled', 'provisionHmac'].map(name => [name, vi.fn(async () => ({}))]));
+    'recoveryRoster', 'recover', 'deploymentVersions', 'captureRollback', 'restoreRollback', 'verifyShutdownTarget', 'shutdown', 'verifyInitialTargets', 'verifyInitialRecoveryTargets', 'enrollOwner', 'verifyOwnerReady', 'enable', 'verifyEnabled', 'provisionHmac'].map(name => [name, vi.fn(async () => ({}))]));
   const operationFixture = operation => {
     const { fixture, context, bundle } = authorizationFixture();
     context.operation = operation;
@@ -318,6 +327,32 @@ describe('Admin release policy failure boundaries', () => {
     expect(provider.verifyInitialTargets.mock.invocationCallOrder[0]).toBeLessThan(provider.deploy.mock.invocationCallOrder[0]);
     expect(provider.verifyLedger).not.toHaveBeenCalled();
     expect(provider.enable).not.toHaveBeenCalled();
+  });
+
+  it('restores a contained first install without migration, HMAC, bootstrap or enablement', async () => {
+    const { authorized, context, provider } = operationFixture('restore-initial-disabled');
+    await expect(executeRelease(authorized, context, provider)).resolves.toMatchObject({ operation: 'restore-initial-disabled', result: 'PASS', consoleEnabled: false });
+    expect(provider.verifyInitialRecoveryTargets.mock.invocationCallOrder[0]).toBeLessThan(provider.deploy.mock.invocationCallOrder[0]);
+    expect(provider.deploy.mock.calls).toEqual([['facade'], ['admin']]);
+    for (const action of ['verifyInitialTargets', 'applyMigrations', 'provisionHmac', 'enrollOwner', 'bootstrap', 'enable']) {
+      expect(provider[action]).not.toHaveBeenCalled();
+    }
+  });
+
+  it('keeps containment when the initial restoration precheck fails', async () => {
+    const { authorized, context, provider } = operationFixture('restore-initial-disabled');
+    provider.verifyInitialRecoveryTargets.mockRejectedValue(new Error('database not empty'));
+    await expect(executeRelease(authorized, context, provider)).rejects.toThrow('database not empty');
+    expect(provider.deploy).not.toHaveBeenCalled();
+    expect(provider.shutdown).not.toHaveBeenCalled();
+  });
+
+  it('contains a failed first-install restoration without declaring success', async () => {
+    const { authorized, context, provider } = operationFixture('restore-initial-disabled');
+    provider.deploy.mockResolvedValueOnce({}).mockRejectedValueOnce(new Error('restore interrupted'));
+    await expect(executeRelease(authorized, context, provider)).rejects.toThrow('restore interrupted');
+    expect(provider.shutdown).toHaveBeenCalledOnce();
+    expect(provider.verifyDisabled).toHaveBeenCalledWith(authorized.target, context.sourceSha, true);
   });
 
   it('does not overwrite an existing target during initialization', async () => {

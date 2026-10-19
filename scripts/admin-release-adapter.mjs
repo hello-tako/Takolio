@@ -7,7 +7,7 @@ import { createProvider } from './admin-release-provider.mjs';
 import { canonical, verifyRecovery } from './admin-recovery.mjs';
 import { buildBootstrapAdminSql } from './admin-local-lib.mjs';
 
-export const OPERATIONS = ['initialize-disabled', 'deploy-disabled', 'enable', 'migrate', 'provision-hmac', 'enroll-owner', 'bootstrap', 'recover', 'disable', 'rollback-disabled'];
+export const OPERATIONS = ['initialize-disabled', 'restore-initial-disabled', 'deploy-disabled', 'enable', 'migrate', 'provision-hmac', 'enroll-owner', 'bootstrap', 'recover', 'disable', 'rollback-disabled'];
 export const digest = value => createHash('sha256').update(typeof value === 'string' || Buffer.isBuffer(value) ? value : canonical(value)).digest('hex');
 const exact = (value, keys) => value && canonical(Object.keys(value).sort()) === canonical([...keys].sort());
 const sha = /^[a-f0-9]{40}$/;
@@ -67,7 +67,7 @@ export function validateAuthorization(bundle, policy, context, now = Date.now())
     if (!exact(approval, ['operatorId', 'signature']) || !custodian || !/^[A-Za-z0-9_-]{86}$/.test(approval.signature) ||
         !verify(null, Buffer.from(canonical(m)), createPublicKey(custodian.publicKey), Buffer.from(approval.signature, 'base64url'))) throw new Error('Invalid release signature');
   }
-  if (['initialize-disabled', 'deploy-disabled', 'enable', 'migrate', 'provision-hmac', 'disable'].includes(m.operation) && !exact(m.payload, [])) throw new Error('Unexpected operation payload');
+  if (['initialize-disabled', 'restore-initial-disabled', 'deploy-disabled', 'enable', 'migrate', 'provision-hmac', 'disable'].includes(m.operation) && !exact(m.payload, [])) throw new Error('Unexpected operation payload');
   if (m.operation === 'enroll-owner' && (!exact(m.payload, ['userId', 'subject', 'email', 'displayName', 'approvalRef']) ||
       !/^[A-Za-z0-9_.:-]{1,128}$/.test(m.payload.userId) || !/^[A-Za-z0-9_.:@-]{1,128}$/.test(m.payload.subject) ||
       typeof m.payload.email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m.payload.email) || m.payload.email.length > 254 ||
@@ -169,8 +169,9 @@ export async function executeRelease(authorized, context, provider) {
       deploymentVersions: await provider.deploymentVersions([target.adminWorker]), result: 'PASS', consoleEnabled: false,
       remoteExecuted: true, productionDeployed: context.environment === 'production' };
   }
-  if (m.operation === 'initialize-disabled') {
-    await provider.verifyInitialTargets(target);
+  if (['initialize-disabled', 'restore-initial-disabled'].includes(m.operation)) {
+    if (m.operation === 'initialize-disabled') await provider.verifyInitialTargets(target);
+    else await provider.verifyInitialRecoveryTargets(target);
     try {
       await provider.deploy('facade');
       await provider.deploy('admin');

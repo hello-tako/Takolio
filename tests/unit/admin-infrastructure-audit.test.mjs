@@ -14,6 +14,7 @@ const fixture = () => vi.fn(async url => {
   if (path.endsWith('/settings')) return response({ bindings: [
     { name: 'DB', type: 'd1', id: 'customer-id' },
     { name: 'GIT_COMMIT', type: 'plain_text', text: 'a'.repeat(40) },
+    { name: 'ADMIN_SHUTDOWN', type: 'plain_text', text: 'true' },
     { name: 'SECRET_IN_PLAIN_TEXT', type: 'plain_text', text: 'hidden-value' },
     { name: 'SECRET_TOKEN', type: 'secret_text', text: 'hidden-value' },
   ] });
@@ -26,6 +27,7 @@ describe('read-only Admin infrastructure metadata', () => {
     const report = await auditAdminInfrastructure('synthetic-private-token', read);
     expect(report.remoteMutations).toBe(false);
     expect(report.readyForDeployment).toBe(false);
+    expect(report.sections.workers.value[0].bindings).toContainEqual({ name: 'ADMIN_SHUTDOWN', type: 'plain_text', value: 'true' });
     expect(Object.values(report.sections).every(s => s.status === 'OBSERVED')).toBe(true);
     const publicText = JSON.stringify(report);
     for (const privateValue of ['synthetic-private-token', 'private@example.test', 'hidden-value', 'unrelated', 'private-unrelated', 'policies']) expect(publicText).not.toContain(privateValue);
