@@ -1,3 +1,11 @@
+# Admin restore guard correction - 2026-10-19 JST
+
+The first protected restore attempt `39252519153` on main `e18b12e1` was approved by `vn-taphoanhatung` and failed before any Worker upload because the D1 empty-schema guard rejected Cloudflare's internal `_cf_KV` table. Cloudflare D1 Studio read-only evidence shows `_cf_KV` is exactly `CREATE TABLE _cf_KV ( key TEXT PRIMARY KEY, value BLOB ) WITHOUT ROWID`; no application table was observed. The receipt remains `FAIL / UNKNOWN_REQUIRES_OPERATOR_INSPECTION`; no migration, HMAC, owner enrollment, bootstrap, enablement or production mutation occurred.
+
+Candidate branch `codex/admin-d1-system-table-20261019` allows only the exact Cloudflare `_cf_KV` table definition alongside `_cf_METADATA`/SQLite system metadata, and rejects same-name views/tables, application objects, `d1_migrations`, and system-like impostors. Focused provider/admin suite: 205 tests PASS; lint (two pre-existing generated warnings), typecheck, Admin build and whitespace checks PASS. Hosted CI and independent review are required before retrying restore. Keep live acceptance and production status `PENDING_EXTERNAL_EVIDENCE`.
+
+---
+
 # Admin first-install recovery - 2026-10-19 JST
 
 PR #19 merged normally as 5c44cc5d after exact-HEAD human approval; exact-main CI

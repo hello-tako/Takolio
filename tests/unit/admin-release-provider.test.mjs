@@ -646,13 +646,37 @@ describe('First-install restoration from containment', () => {
 c=sqlite3.connect(':memory:')
 c.execute('CREATE TABLE _cf_METADATA(key TEXT PRIMARY KEY,value TEXT)')
 if ${occupied ? 'True' : 'False'}: c.execute('CREATE TABLE _cf_not_a_system_table(id TEXT)')
-print(json.dumps([dict(zip(['type','name'],r)) for r in c.execute(${JSON.stringify(sql)})]))`;
+print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execute(${JSON.stringify(sql)})]))`;
           return JSON.parse(execFileSync('python3', ['-c', code], { encoding: 'utf8' }));
         };
       });
       if (occupied) await expect(provider.verifyInitialRecoveryTargets(target)).rejects.toThrow('empty Admin database');
       else await expect(provider.verifyInitialRecoveryTargets(target)).resolves.toBeUndefined();
     }
+  });
+
+  it.each([
+    ['Cloudflare internal table', 'CREATE TABLE _cf_KV (\n  key TEXT PRIMARY KEY,\n  value BLOB\n) WITHOUT ROWID', true],
+    ['Cloudflare internal table with metadata', 'CREATE TABLE _cf_KV (key TEXT PRIMARY KEY,value BLOB) WITHOUT ROWID; CREATE TABLE _cf_METADATA(key TEXT PRIMARY KEY,value TEXT)', true],
+    ['same-name application table', 'CREATE TABLE _cf_KV(user_id TEXT,role TEXT)', false],
+    ['same-name view', 'CREATE VIEW _cf_KV AS SELECT 1 AS key', false],
+    ['application alongside internal table', 'CREATE TABLE _cf_KV (key TEXT PRIMARY KEY,value BLOB) WITHOUT ROWID; CREATE TABLE admin_owner_enrollments(id TEXT)', false],
+    ['migration ledger alongside internal table', 'CREATE TABLE _cf_KV (key TEXT PRIMARY KEY,value BLOB) WITHOUT ROWID; CREATE TABLE d1_migrations(id INTEGER PRIMARY KEY,name TEXT)', false],
+    ['system-like application table alongside internal table', 'CREATE TABLE _cf_KV (key TEXT PRIMARY KEY,value BLOB) WITHOUT ROWID; CREATE TABLE _cf_not_a_system_table(id TEXT)', false],
+  ])('checks real SQLite for %s during initial restoration', async (_label, schema, accepted) => {
+    const { provider, command } = recoveryFixture(state => {
+      state.objects = sql => {
+        const code = `import sqlite3,json
+c=sqlite3.connect(':memory:')
+c.row_factory=sqlite3.Row
+c.executescript(${JSON.stringify(schema)})
+print(json.dumps([dict(r) for r in c.execute(${JSON.stringify(sql)})]))`;
+        return JSON.parse(execFileSync('python3', ['-c', code], { encoding: 'utf8' }));
+      };
+    });
+    if (accepted) await expect(provider.verifyInitialRecoveryTargets(target)).resolves.toBeUndefined();
+    else await expect(provider.verifyInitialRecoveryTargets(target)).rejects.toThrow('empty Admin database');
+    expect(command.mock.calls.every(([executable]) => executable === 'git')).toBe(true);
   });
 
   it('refuses a contained source outside the current reviewed ancestry', async () => {
