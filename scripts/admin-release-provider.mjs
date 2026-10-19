@@ -188,8 +188,12 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
           r.event === 'push' && r.status === 'completed' && r.conclusion === 'success' && r.repository?.id === 1422954151)) {
         throw new Error('Initial containment source lacks exact-SHA CI');
       }
-      const objects = await query("SELECT type,name FROM sqlite_master WHERE sql IS NOT NULL AND name NOT IN ('_cf_METADATA','sqlite_sequence')");
-      if (objects.length) throw new Error('Initial restoration requires an unmigrated empty Admin database');
+      const objects = await query("SELECT type,name,tbl_name,sql FROM sqlite_master WHERE sql IS NOT NULL AND name NOT IN ('_cf_METADATA','sqlite_sequence')");
+      const cloudflareKvSql = 'CREATETABLE_cf_KV(keyTEXTPRIMARYKEY,valueBLOB)WITHOUTROWID';
+      if (objects.some(object => object.type !== 'table' || object.name !== '_cf_KV' || object.tbl_name !== '_cf_KV' ||
+          typeof object.sql !== 'string' || object.sql.replace(/\s+/g, '') !== cloudflareKvSql)) {
+        throw new Error('Initial restoration requires an unmigrated empty Admin database');
+      }
     },
     async verifyTargets(t, _environment, allowShutdown = false) {
       await provider.verifyResourceTargets(t);
