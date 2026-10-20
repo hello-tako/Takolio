@@ -1,3 +1,38 @@
+# QA rollout continuation - 2026-10-20 JST
+
+PR #23 is merged at `96c4236e572a94df4977a686e20e31312191a321`.
+Both exact-main checks passed: CI `39425624695`, Admin CI `39425624726`.
+GitHub records two approvals by `vn-taphoanhatung` on HEAD `0008bed9`;
+the agent observed those existing approvals and merged through the reviewer
+browser session under the owner's delegated authority. This is not a claim
+of a new independent human audit performed during this continuation.
+
+The staging policy is saved with the owner and five QA aliases. The owner
+also confirmed One-time PIN for staging and delivery to the owner mailbox.
+OTP is not enabled or sent yet: the organization has only Cloudflare IdP,
+and seven Access apps include production and unrelated systems. Scope must
+be preserved before any organization-level provider is created.
+
+A rollout regression was reproduced offline: after emergency containment,
+`migrate` failed on missing Worker data bindings, while restoration required
+the complete five-migration ledger. The contained-migration correction permits
+only migration/rollback to accept the exact mapped shutdown target; migration
+retains console OFF, isolated Admin D1 identity, signed manifest, protected
+Environment, pre-action audit and complete post-migration schema validation.
+Ordinary deployment, enablement and identity ceremonies still require full
+bindings; rollback still requires full restored bindings at its final check.
+
+Validation: initial regression FAIL 1 / PASS 94; after correction release
+adapter/provider/CLI tests PASS 209/209, targeted ESLint PASS, typecheck PASS,
+public scan PASS and diff check PASS. These are offline release-tool results,
+not completed live staging acceptance. No Cloudflare migration or production
+operation was executed. Existing source-specific live results remain historical.
+Next: review/merge the correction and await exact-main CI, then emergency OFF,
+contained migration 0005, verified schema-4 disabled rollback, new-source
+disabled pair, real QA identity ceremonies and complete ST01-ST20 evidence.
+
+---
+
 # Latest production request checkpoint - 2026-10-20 JST
 
 Status: `PRODUCTION_NOT_DEPLOYED_STAGING_CERTIFICATE_MISSING`.

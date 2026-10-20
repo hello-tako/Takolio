@@ -98,3 +98,15 @@ The five owner-controlled staging aliases were saved in the staging Access
 policy after the owner confirmed the exact change. The production policy was not
 modified. Real Access sign-in and subject capture remain separate steps; no
 identity was invented from the alias strings.
+
+## Containment-to-migration ordering
+
+Emergency OFF deliberately removes the Admin data/service bindings. The
+migration operation may verify that exact mapped contained target while the
+console remains OFF, then apply only the signed Admin migration manifest.
+It must verify the complete ledger/schema and authority identity afterward.
+Migration must not redeploy or enable either Worker. Restore the verified
+schema-4 disabled pair only after the fifth migration is present, then deploy
+the new exact-source disabled pair. Ordinary deploy/enable/identity operations
+must continue rejecting containment, and the restored pair must pass the normal
+full-binding check. Retain all receipts, including a failed postcondition.
