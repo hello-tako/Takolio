@@ -9,9 +9,9 @@ on:
         type: string
         required: true
       operation:
-        description: Fixed operation; Admin remains disabled
+        description: Fixed operator ceremony; QA identity operations are staging-only
         type: choice
-        options: [provision-hmac, enroll-owner, bootstrap, recover]
+        options: [provision-hmac, enroll-owner, bootstrap, recover, enroll-staging-test, revoke-staging-test]
         required: true
       execute:
         description: Requires separate owner authorization and protected Environment approval

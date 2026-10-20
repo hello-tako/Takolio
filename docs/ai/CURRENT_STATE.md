@@ -1,3 +1,196 @@
+# Latest production request checkpoint - 2026-10-20 JST
+
+Status: `PRODUCTION_NOT_DEPLOYED_STAGING_CERTIFICATE_MISSING`.
+Release source: `0307fc1032624f38321a894b164c030b73849faa`; main and Admin CI PASS.
+This current checkpoint supersedes the historical checkpoints retained below.
+
+Production run `39333366228` is plan-only: plan SUCCESS, execute SKIPPED.
+No production Admin mutation or new execute dispatch was performed. The
+`admin-production` Environment has its release credentials but no
+`ADMIN_STAGING_CERTIFICATION` or current run-bound release authorization.
+The adapter requires a signed exact-source ST01-ST20 all-PASS certificate for
+all production operations except emergency disable. Current evidence is
+unsigned and incomplete: 6 PASS, 6 PARTIAL, 8 PENDING_EXTERNAL_EVIDENCE.
+The missing separate Access test identity remains an external prerequisite;
+the owner's existing deploy and Environment-approval authorization is retained.
+
+Read-only recheck: main SHA, CI/run job states, Environment protection rules,
+secret names and artifact metadata verified. The production Admin hostname
+was not resolvable from this machine; customer web/API health returned HTTP
+200. This hostname observation is not a substitute for a Cloudflare inventory.
+The latest owner staging session was logged out; a subsequent `/me` navigation
+returned the Cloudflare Access sign-in page. The previous Mac-lock/logout
+uncertainty is resolved. Screenshot: ignored local
+`.artifacts/admin-live-20261020/resumed/logout-confirmed-20261020.png`.
+
+Checks: `git diff --check` and `python3 scripts/admin-public-scan.py` PASS.
+No source, gate, protection, customer database, payment, OTP or AI API change.
+Next: complete actual missing staging evidence, package/sign the protected
+exact-source certificate, then perform protected production commissioning.
+A gate change would need an explicit reviewed release-policy change; this
+request did not fabricate PASS or silently remove the certificate gate.
+
+---
+
+# Current Admin staging checkpoint - 2026-10-20 JST
+
+Status: `ADMIN_STAGING_OWNER_SMOKE_ROLLBACK_PASS_PRODUCTION_BLOCKED`.
+Exact source: `0307fc1032624f38321a894b164c030b73849faa`; exact-main CI
+`39289222795` and Admin CI `39289223049` remain PASS. No runtime, customer,
+payment, OTP or AI-provider code changed in this continuation.
+
+Fresh protected staging evidence remains PASS: emergency disable
+`39331453601`, paired rollback `39331742184`, and re-enable `39332174066`, all
+approved by `vn-taphoanhatung` with run-bound signatures and verified artifacts.
+Owner SSO smoke resumed on the exact source and a logout event was verified.
+A later login was opened for more GET coverage; macOS locked during logout, so
+the latest session logout remains UNCONFIRMED. See latest browser limitation.
+
+Additional read-only evidence under ignored `.artifacts/admin-live-20261020/resumed/`:
+
+- `api-read-scan-0307fc10.json`: six owner-authenticated GET payloads (`me`,
+  users, overview, settings, audit, sessions) scanned; no forbidden credential
+  field names found. The session-bound CSRF field is expected. This is payload
+  evidence only and does not close every ST13 path.
+- `boundary-extended-valid-preflight.json`: 60 anonymous/forged-header edge
+  checks PASS. GET/POST redirect to the exact Access tenant; valid hostile-origin
+  OPTIONS preflight returns the exact Cloudflare 403 denial body with no CORS
+  headers. These are edge checks, not authenticated Worker CSRF/RBAC evidence.
+  The original malformed OPTIONS probe omitted Access-Control-Request-Method,
+  returned HTTP 400 and remains a retained failed harness. Its intermediate
+  status-only reinterpretation is superseded and not acceptance evidence.
+- `owner-final-logout-recheck.png`: an earlier verified logout at `/admin/login`;
+  a subsequent session logout is unconfirmed because macOS locked.
+
+Focused validation: release/provider/auth/concurrency tests `213/213` PASS;
+T21RC2 capture files `93/93` PASS with `TMPDIR=/private/tmp`; Admin build and
+both TypeScript checks PASS. Lint exits 0 with two warnings in generated ignored
+bundles. Public scan and diff check PASS. An inadvertently unscoped full-suite
+run reported 11 failures in two macOS temp-path/identity-fixture tooling files
+(9105 tests passed); all 93 tests in those files passed on the focused corrected
+temp-directory run. The failed full run is not reported as all-suite PASS.
+
+The exact staging certification gate still has only 6 PASS (ST01/ST02/ST11/ST14/
+ST17/ST20), 6 PARTIAL (ST08/ST10/ST13/ST16/ST18/ST19), and 8
+`PENDING_EXTERNAL_EVIDENCE` (ST03-ST07/ST09/ST12/ST15). Missing evidence includes
+validly signed foreign/expired JWTs at the live Worker, an actual separate Access
+identity and role matrix, authenticated negative CSRF, internal facade negatives,
+concurrency/key recovery, complete audit/action matrix, real-host axe/load/JWKS
+and full customer regression. No all-PASS report or certificate was signed.
+
+Production plan-only run `39333366228` remains SUCCESS with execute SKIPPED,
+artifact `12224599448` (archive SHA256
+`0a75a03d8db02fcaf22a6363eb783360bee0e63e483789efbbe87c60f2d76713`).
+`productionMutationExecuted=false`; production Admin remains untouched.
+Next: complete the missing real staging evidence, package the protected exact-SHA
+certificate, then perform the signed production commissioning sequence. Existing
+owner authorization for deployment and Environment approvals remains valid;
+this blocker is evidence, not a new permission request.
+
+## Latest browser limitation
+
+After the successful logout screenshot below, the owner session was opened once
+more to continue the remaining GET coverage. The Mac then locked during the
+logout attempt. The new session's logout is UNCONFIRMED; the earlier screenshot
+proves its own completed logout event only, not the final current session state.
+Do not reuse that image as proof that the latest session is logged out. No
+browser lock bypass was attempted. Native Chrome access must resume on an
+unlocked Mac for further authenticated acceptance work.
+
+---
+
+# Current Admin staging checkpoint - 2026-10-20 JST
+
+Status: `ADMIN_STAGING_OWNER_SMOKE_ROLLBACK_PASS_PRODUCTION_BLOCKED`.
+Exact source: `0307fc1032624f38321a894b164c030b73849faa`; protected main and
+exact-main CI `39289222795` / Admin CI `39289223049` remain unchanged and PASS.
+This header supersedes the historical checkpoints retained below.
+
+Owner Access login, dashboard/users/AI/recipes/system/audit/settings reads,
+preference save, `/me`, logout and post-logout `/me` rejection completed on this
+source. Authenticated users JSON contained 21 rows and no forbidden credential
+fields; this is one payload path, not full ST13 certification. Credentials and
+private data remain outside Git.
+
+Fresh protected staging emergency disable `39331453601`, paired rollback
+`39331742184`, and re-enable `39332174066` all PASS with run-bound owner
+signatures, actual `vn-taphoanhatung` Environment approvals and verified artifact
+digests. Full source-specific ST20 now PASS. Current enabled Admin version:
+`e7ed80bd-26cb-4e33-a658-0cf298412af0`; facade:
+`4dbf1918-e8cc-4162-b06a-bc377ab23f57`. Disabled baseline Admin:
+`e38bfb72-8614-4b9f-b3e3-ef3fdf0824eb`, same facade. Anonymous boundary curl
+checks PASS 12/12; customer `takolio.app` and `api.takolio.app` health 200/ok.
+
+Current required matrix: 6 PASS (ST01/ST02/ST11/ST14/ST17/ST20), 6 PARTIAL
+(ST08/ST10/ST13/ST16/ST18/ST19), 8 `PENDING_EXTERNAL_EVIDENCE`
+(ST03-ST07/ST09/ST12/ST15). Missing actual foreign/expired token, other identity/
+role, negative CSRF/facade, concurrency/recovery, full API exclusion, real-host
+axe/load/JWKS and full customer regression evidence still prevents certification.
+No all-PASS report or certificate was signed. Production plan-only `39333366228`
+PASS with execute SKIPPED; no production Admin mutation/deployment occurred.
+
+The Chrome extension still lacks its automation connection; native Chrome was
+used through the documented UI API. Initial owner continuation failed under a
+stale Access session; ordinary Cloudflare SSO sign-in restored it without OTP.
+Initial Python urllib probes returned Cloudflare browser-integrity error 1010;
+that failed harness report remains separate from successful curl boundary and
+health evidence. An incorrect early `/api/health` path and Access-protected
+customer staging health were not treated as runtime outage or successful health.
+Preserve earlier release FAIL/UNKNOWN receipts and the checkpoint stash.
+
+Latest ignored evidence: `.artifacts/admin-live-20261020/resumed/`.
+`git diff --check` and `python3 scripts/admin-public-scan.py` PASS. Only operational
+documentation changed; no runtime code, customer data/schema, payment, OTP or AI
+provider change was performed. Next: complete remaining live evidence, then the
+protected exact-source staging certificate and production sequence. The owner
+already delegated Environment approvals; no renewed deployment permission is
+needed for the authorized scope.
+
+---
+
+# Current Admin staging release status - 2026-10-20 JST
+
+Status: `ADMIN_STAGING_ENABLED_PRODUCTION_BLOCKED_LIVE_EVIDENCE`.
+Exact source `0307fc1032624f38321a894b164c030b73849faa` is merged through PR #22;
+exact-main CI `39289222795` and Admin CI `39289223049` both PASS.
+Fresh protected staging rollback `39292571221`, deploy-disabled `39293405049`,
+and enable `39294320059` all PASS. Authorization, pre-action and receipt digests
+were independently matched to the actual successful run and reviewer approval.
+
+The verified disabled baseline at this SHA is Admin
+`e38bfb72-8614-4b9f-b3e3-ef3fdf0824eb` / facade
+`4dbf1918-e8cc-4162-b06a-bc377ab23f57`. Current enabled staging Admin version is
+`22c714f5-b281-4f9c-8a90-78292df78db4` with that same facade. Post-enable
+anonymous Access denial checks PASS 12/12; customer health is HTTP 200/status=ok.
+
+Production Admin has not been deployed or mutated. The corrected rollback
+component passed, but a full emergency-OFF/paired-rollback cycle on this exact
+new source has not run; do not mark complete ST20 or the entire ST01-ST20 matrix
+PASS. Actual new-source owner dashboard/API/logout smoke was interrupted by
+macOS locking; Chrome extension authentication was also unavailable. The user
+confirmed no separate actual test Access identity. Foreign-token, unauthorized/
+unprivileged identity, other-role, CSRF, facade-negative, recovery, full audit,
+axe/load/JWKS and complete customer regression evidence remains pending/partial.
+No all-PASS staging report or certificate was signed. The removed staffing quorum
+is not reintroduced. No OTP or paid AI call was made.
+
+The user delegated Environment approvals through the existing reviewer Chrome
+session. Those approvals were used successfully; main review protections and
+Environment settings remain intact. A run dispatched early (`39290770177`)
+failed at authorization before Cloudflare execution because its runner started
+before the new run-bound secret was stored. Preserve that FAIL and all earlier
+FAIL/UNKNOWN rollback receipts. The original outage checkpoint stash is retained.
+
+Next: unlock Mac/resume real owner smoke and finish missing actual live evidence,
+rehearse exact-source OFF/rollback, then sign/protect the completed staging
+certificate before the production sequence. Details and exact artifact digests:
+`docs/admin/production-readiness/30_STAGING_LIVE_ACCEPTANCE_20261020.md`.
+Ignored local evidence: `.artifacts/admin-live-20261020`.
+
+This current header supersedes historical statuses and PASS wording below.
+
+---
+
 # Admin staging live acceptance / rollback fix - 2026-10-20 JST
 
 Runtime main 24cf5d45 has completed staging restore, four Admin migrations, HMAC,
@@ -10917,3 +11110,85 @@ signed initial retry may replace a partial key set only before authority exists;
 operational audit-key rotation remains prohibited. No live action was performed.
 Validation and exact-head review status belong to this follow-up, not PR #17.
 See production-readiness/27_PROTECTED_HMAC_PROVISIONING.md.
+
+# Admin release checkpoint - 2026-10-20 JST
+
+Main is `0307fc1032624f38321a894b164c030b73849faa`; exact-main CI `39289222795`
+and Admin CI `39289223049` are PASS. Protected staging rollback `39292571221`,
+deploy-disabled `39293405049`, and enable `39294320059` are PASS with verified
+run-bound authorization, pre-action receipts and artifact digests. The disabled
+baseline was Admin `e38bfb72-8614-4b9f-b3e3-ef3fdf0824eb` / facade
+`4dbf1918-e8cc-4162-b06a-bc377ab23f57`; the enabled staging Admin is
+`22c714f5-b281-4f9c-8a90-78292df78db4` with the same facade.
+
+Post-enable anonymous Access-boundary checks passed 12/12 with invalid assertion
+and role headers, and customer health returned HTTP 200/status=ok. Authenticated
+owner smoke on the new SHA could not be completed because the Mac locked while
+opening the Cloudflare Access continuation. ST03-ST07, ST09, ST12, ST15 and the
+remaining partial ST08/ST10/ST13/ST16/ST18/ST19 rows stay pending or partial;
+The corrected protected rollback component is PASS; full exact-source ST20 remains incomplete. No staging certificate was
+signed, and no Admin production operation ran. Production remains blocked by
+incomplete exact-source live evidence, not by the removed staffing quorum.
+
+## Admin continuation checkpoint - 2026-10-20 JST
+
+`0307fc1032624f38321a894b164c030b73849faa` is still the exact protected main source. Owner Access smoke is complete on the new source, including authenticated dashboard/API reads, audit/settings, successful preference save, logout and `ADMIN_UNAUTHENTICATED` after logout. Exact-source protected emergency disable `39331453601`, rollback `39331742184`, and re-enable `39332174066` all PASS; the final enabled staging Admin is `e7ed80bd-26cb-4e33-a658-0cf298412af0`, facade `4dbf1918-e8cc-4162-b06a-bc377ab23f57`. Anonymous boundary and customer health rechecks PASS. Production Admin was not mutated.
+
+The release gate remains closed because the signed all-PASS ST01-ST20 certificate contract is not met. Missing live evidence includes foreign issuer/audience/expired token, unauthorized/unprivileged/other-role identity, hostile-origin CSRF, invalid facade operations, concurrency/recovery, complete credential-field scan, automated real-host axe/load/JWKS rotation and full customer regression. Keep all such rows `PENDING_EXTERNAL_EVIDENCE` or `PARTIAL`; do not infer PASS from synthetic fixtures or owner-only smoke.
+
+The owner users API payload scan observed 21 items and no forbidden credential fields; only this read-only, owner-authenticated response is covered. Production plan-only run `39333366228` passed with execution skipped and made no mutation.
+
+## Production dispatch recheck - 2026-10-20 10:31 UTC
+
+The requested production deployment was rechecked against exact main
+`0307fc1032624f38321a894b164c030b73849faa`. Read-only checks passed for branch
+protection, exact-main CI references, production Environment reviewer policy and
+the existing production plan artifact. Workflow `39333366228` remains
+`plan=success` with `execute=skipped`; no production Admin mutation occurred.
+
+The protected release adapter still requires an owner-signed
+`ADMIN_STAGING_CERTIFICATION` whose exact-source report has all ST01-ST20 set
+to `PASS`. The current unsigned evidence remains 6 PASS, 6 PARTIAL and 8
+`PENDING_EXTERNAL_EVIDENCE`; the certification secret is absent from the
+production Environment. Therefore no execute dispatch was attempted, because it
+would fail closed before Cloudflare credentials or production mutation.
+
+Checks executed: `gh run view 39333366228`, production Environment policy and
+secret inventory readback, `git diff --check`, and
+`python3 scripts/admin-public-scan.py` (PASS). Next action remains obtaining
+real missing staging evidence, signing the exact-source certificate, then
+running the protected production commissioning sequence.
+
+## Owner session closure - 2026-10-20
+
+The latest owner-authenticated staging session was explicitly logged out and
+returned to `/admin/login`. A follow-up navigation to
+`/api/v1/admin/me` redirected to the Cloudflare Access sign-in page, confirming
+that the session no longer had an authenticated Admin response. No token,
+cookie or credential value was copied into evidence or chat. This closes the
+browser-session limitation only; it does not close the remaining live ST03-ST19
+evidence or create a staging certificate.
+
+## 2026-10-20 QA identity lifecycle continuation
+
+Implemented, but not yet merged or commissioned, a staging-only signed QA identity lifecycle on branch `codex/admin-staging-test-identities-20261020`.
+Migration `0005_admin_staging_test_identities.sql` preserves the runtime schema-4 contract and adds an append-only enrollment/revocation ceremony. The release adapter accepts only `enroll-staging-test` and `revoke-staging-test` in the protected breakglass workflow, rejects production, binds the exact owner signature/run/SHA, limits aliases to the enrolled owner's `+takolio-qa-` mailbox, grants no role/recovery key/password, and atomically revokes roles/sessions with audit on cleanup.
+
+Local verification: 285 focused Admin tests PASS before the current-schema provider rerun; migration matrix 25/25 PASS; admin schema smoke PASS; TypeScript typecheck PASS; Admin production build PASS (three existing font-resolution warnings, emitted fonts verified); public scan and diff check PASS. The full targeted Admin JSON suite completed with exit 0; expected jsdom error logging from the remediation UI test is retained by that existing test.
+
+No Cloudflare Access policy was saved, no OTP was sent, no live identity was enrolled, no staging D1 mutation was executed, and no production mutation/deploy occurred in this continuation. Access expansion is awaiting action-time confirmation; live ST03-ST19 evidence and the exact-source staging certificate remain pending.
+
+## 2026-10-20 staging policy and compatibility checkpoint
+
+The owner-confirmed Cloudflare staging Access policy is saved with the existing
+owner email plus exactly five `+takolio-qa-*` aliases. Production policy was not
+changed. No OTP, cookie, JWT, secret or private key was copied into chat or Git;
+the sanitized screenshot receipt is ignored under `.artifacts/admin-live-20261020/test-identities/`.
+
+The compatibility edits preserve the runtime Admin schema-4 contract while
+requiring the complete five-file migration ledger. Local verification is PASS:
+219 focused tests, migration matrix 25/25, workerd checks 10/10, schema smoke,
+typecheck, Admin build, lint with two pre-existing generated-bundle warnings,
+public scan and diff check. Fresh CI and independent review on the new PR HEAD
+remain required before merge; live Access subject capture, staging QA role
+acceptance, certificate signing and production deployment remain pending.

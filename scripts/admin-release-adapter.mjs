@@ -6,8 +6,9 @@ import { pathToFileURL } from 'node:url';
 import { createProvider } from './admin-release-provider.mjs';
 import { canonical, verifyRecovery } from './admin-recovery.mjs';
 import { buildBootstrapAdminSql } from './admin-local-lib.mjs';
+import { STAGING_TEST_OPERATIONS, validateStagingTestPayload } from './admin-staging-test-identities.mjs';
 
-export const OPERATIONS = ['initialize-disabled', 'restore-initial-disabled', 'deploy-disabled', 'enable', 'migrate', 'provision-hmac', 'enroll-owner', 'bootstrap', 'recover', 'disable', 'rollback-disabled'];
+export const OPERATIONS = ['initialize-disabled', 'restore-initial-disabled', 'deploy-disabled', 'enable', 'migrate', 'provision-hmac', 'enroll-owner', 'bootstrap', 'recover', ...STAGING_TEST_OPERATIONS, 'disable', 'rollback-disabled'];
 export const digest = value => createHash('sha256').update(typeof value === 'string' || Buffer.isBuffer(value) ? value : canonical(value)).digest('hex');
 const exact = (value, keys) => value && canonical(Object.keys(value).sort()) === canonical([...keys].sort());
 const sha = /^[a-f0-9]{40}$/;
@@ -73,6 +74,7 @@ export function validateAuthorization(bundle, policy, context, now = Date.now())
       typeof m.payload.email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m.payload.email) || m.payload.email.length > 254 ||
       typeof m.payload.displayName !== 'string' || !m.payload.displayName.trim() || m.payload.displayName.length > 200 ||
       typeof m.payload.approvalRef !== 'string' || m.payload.approvalRef.length < 8 || m.payload.approvalRef.length > 200)) throw new Error('Invalid owner enrollment payload');
+  if (STAGING_TEST_OPERATIONS.includes(m.operation)) validateStagingTestPayload(m.operation, m.environment, m.payload);
   if (m.operation === 'bootstrap' && (!exact(m.payload, ['userIds', 'approvalRef']) || !Array.isArray(m.payload.userIds) || m.payload.userIds.length !== 1 ||
       new Set(m.payload.userIds).size !== 1 || !m.payload.userIds.every(v => /^[A-Za-z0-9_.:-]{1,128}$/.test(v)) ||
       typeof m.payload.approvalRef !== 'string' || m.payload.approvalRef.length < 8 || m.payload.approvalRef.length > 200)) throw new Error('Invalid bootstrap payload');
@@ -124,7 +126,7 @@ export function validateGitHub(facts, context) {
       environment.deployment_branch_policy?.protected_branches !== true || environment.deployment_branch_policy?.custom_branch_policies !== false) throw new Error('Protected environment policy required');
   const expectedWorkflow = { staging: '.github/workflows/admin-staging-deploy.yml', production: '.github/workflows/admin-production-deploy.yml',
     migrate: '.github/workflows/admin-d1-migrate.yml', recover: '.github/workflows/admin-breakglass.yml' };
-  const expectedPath = context.operation === 'disable' ? '.github/workflows/admin-emergency-disable.yml' : context.operation === 'migrate' ? expectedWorkflow.migrate : ['provision-hmac', 'enroll-owner', 'bootstrap', 'recover'].includes(context.operation) ? expectedWorkflow.recover : expectedWorkflow[context.environment];
+  const expectedPath = context.operation === 'disable' ? '.github/workflows/admin-emergency-disable.yml' : context.operation === 'migrate' ? expectedWorkflow.migrate : ['provision-hmac', 'enroll-owner', 'bootstrap', 'recover', ...STAGING_TEST_OPERATIONS].includes(context.operation) ? expectedWorkflow.recover : expectedWorkflow[context.environment];
   if (String(run.id) !== context.runId || run.run_attempt !== 1 || run.event !== 'workflow_dispatch' || run.head_sha !== context.sourceSha ||
       run.head_branch !== 'main' || run.path !== expectedPath || run.actor?.type !== 'User' || run.triggering_actor?.id !== run.actor.id ||
       run.repository?.id !== 1422954151 || !ci.some(c => c.head_sha === context.sourceSha && c.path === '.github/workflows/admin-ci.yml' &&
@@ -244,6 +246,8 @@ export async function executeRelease(authorized, context, provider) {
       }
     } else if (m.operation === 'enroll-owner') {
       await provider.enrollOwner(m, authorized.signer);
+    } else if (STAGING_TEST_OPERATIONS.includes(m.operation)) {
+      await provider.stagingTestIdentity(m, authorized.signer);
     } else if (m.operation === 'bootstrap') {
       await provider.verifyBootstrapRoster(target, m.payload.userIds, target.issuer);
       await provider.bootstrap(buildBootstrapAdminSql({ userIds: m.payload.userIds, ceremonyId: m.id,
@@ -270,6 +274,7 @@ export const normalizeArtifactDigest = value => /^[a-f0-9]{64}$/.test(value ?? '
 
 export function loadContext(environment, operation, env = process.env) {
   if (!['staging', 'production'].includes(environment) || !OPERATIONS.includes(operation)) throw new Error('Enumerated environment and operation required');
+  if (STAGING_TEST_OPERATIONS.includes(operation) && environment !== 'staging') throw new Error('QA identity operations are staging-only');
   const git = (...args) => execFileSync('git', args, { encoding: 'utf8' }).trim();
   const sourceSha = git('rev-parse', 'HEAD');
   if (!sha.test(sourceSha) || git('status', '--porcelain', '--untracked-files=normal')) throw new Error('Clean exact-SHA checkout required');

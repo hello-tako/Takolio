@@ -91,7 +91,7 @@ function authorizationFixture() {
 
 describe('Admin offline release adapter', () => {
   it('keeps the release operation set finite and explicit', () => {
-    expect(OPERATIONS).toEqual(['initialize-disabled', 'restore-initial-disabled', 'deploy-disabled', 'enable', 'migrate', 'provision-hmac', 'enroll-owner', 'bootstrap', 'recover', 'disable', 'rollback-disabled']);
+    expect(OPERATIONS).toEqual(['initialize-disabled', 'restore-initial-disabled', 'deploy-disabled', 'enable', 'migrate', 'provision-hmac', 'enroll-owner', 'bootstrap', 'recover', 'enroll-staging-test', 'revoke-staging-test', 'disable', 'rollback-disabled']);
   });
 
   it('validates the commissioned targets while keeping rendered consoles disabled', () => {

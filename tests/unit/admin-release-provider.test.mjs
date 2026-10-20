@@ -587,7 +587,7 @@ print(json.dumps([before,c.execute(q).fetchone()[0]]))`;
 
   it('exposes provisioning only in the protected serialized operator ceremony with no secret input', () => {
     const workflow = load(readFileSync('.github/workflows/admin-breakglass.yml', 'utf8'));
-    expect(workflow.on.workflow_dispatch.inputs.operation.options).toEqual(['provision-hmac', 'enroll-owner', 'bootstrap', 'recover']);
+    expect(workflow.on.workflow_dispatch.inputs.operation.options).toEqual(['provision-hmac', 'enroll-owner', 'bootstrap', 'recover', 'enroll-staging-test', 'revoke-staging-test']);
     expect(Object.keys(workflow.on.workflow_dispatch.inputs).sort()).toEqual(['environment', 'execute', 'operation', 'source_sha']);
     expect(workflow.concurrency.group).toBe('admin-release-${{ inputs.environment }}');
   });

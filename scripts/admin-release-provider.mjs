@@ -2,6 +2,7 @@ import { execFileSync } from 'node:child_process';
 import { randomBytes } from 'node:crypto';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
+import { executeStagingTestIdentity } from './admin-staging-test-identities.mjs';
 import { setTimeout as delay } from 'node:timers/promises';
 import { digest, renderConfigs, validateGitHub } from './admin-release-adapter.mjs';
 
@@ -341,6 +342,9 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
       await checkWrite();
       await query('INSERT INTO admin_owner_enrollments(id,user_id,operator_id,access_iss,access_sub,email,display_name,public_key,approval_ref,created_at) VALUES(?,?,?,?,?,?,?,?,?,?)',
         [manifest.id, p.userId, signer.operatorId, target.issuer, p.subject, p.email, p.displayName, signer.publicKey, p.approvalRef, new Date().toISOString()]);
+    },
+    async stagingTestIdentity(manifest, signer) {
+      await executeStagingTestIdentity({ manifest, signer, target, environment: context.environment, checkWrite, query, digest });
     },
     async verifyOwnerReady(t) {
       const rows = await query(`SELECT COUNT(*) AS n FROM admin_active_super_operators WHERE access_iss=?`, [t.issuer]);

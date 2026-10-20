@@ -16,7 +16,7 @@ function fixture(approved = true) {
   const directory = mkdtempSync(path.join(tmpdir(), 'takolio-admin-cli-'));
   directories.push(directory);
   for (const name of ['scripts', 'admin', 'migrations-admin']) mkdirSync(path.join(directory, name));
-  for (const name of ['admin-release-adapter.mjs', 'admin-release-provider.mjs', 'admin-recovery.mjs', 'admin-local-lib.mjs']) {
+  for (const name of ['admin-release-adapter.mjs', 'admin-release-provider.mjs', 'admin-recovery.mjs', 'admin-local-lib.mjs', 'admin-staging-test-identities.mjs']) {
     copyFileSync(`scripts/${name}`, path.join(directory, 'scripts', name));
   }
   for (const name of ['wrangler.admin.jsonc', 'wrangler.admin-facade.jsonc']) copyFileSync(name, path.join(directory, name));
