@@ -101,7 +101,7 @@ describe('UI15 culinary visuals & closed-loop experience', () => {
     expect(formatDifficultyLabel(undefined).label).toBe('Chuẩn bếp nhà');
   });
 
-  it('renders pure SVG technique illustrations (including steam & general), dish illustrations and closed-loop navigation without raw img tags', () => {
+  it('renders SVG technique illustrations with official TakosanIcon badges, dish illustrations and closed-loop navigation', () => {
     for (const sample of [
       resolveStepTechnique('Phi thơm hành tỏi và xào đều.', 'Xào', 1, 3),
       resolveStepTechnique('Hấp cách thủy 15 phút.', 'Hấp', 1, 3),
@@ -114,7 +114,8 @@ describe('UI15 culinary visuals & closed-loop experience', () => {
       expect(techHtml).toContain('Bước 02');
       expect(techHtml).toContain(sample.toolLabel);
       expect(techHtml).toContain('<svg');
-      expect(techHtml).not.toContain('<img');
+      expect(techHtml).toContain('data-takosan-icon="chef"');
+      expect(techHtml).toContain('data-takosan-icon="ingredient"');
     }
 
     const dishHtml = renderToStaticMarkup(<RecipeDishIllustration title="Canh chua" />);

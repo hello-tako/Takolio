@@ -11,7 +11,7 @@ import { api, ApiError } from '../services/api';
 import { queryKeys } from '../lib/queryKeys';
 import { useCookingStore } from '../stores/useCookingStore';
 import { getIngredientImage } from '../lib/ingredient-images';
-import { Clock, Users, ChefHat, Check, ShoppingBag, ArrowRight, SearchX, Sparkles, Flame } from 'lucide-react';
+import { Check, ArrowRight, SearchX } from 'lucide-react';
 import { clsx } from 'clsx';
 import { resolveRecipeImage } from '../lib/recipe-media';
 import {
@@ -22,6 +22,7 @@ import {
 } from '../lib/culinary-visuals';
 import { CookingTechniqueVisual, KitchenLoopStrip } from '../components/cooking/CookingTechniqueVisual';
 import { TakoMascot } from '../components/common/TakoMascot';
+import { TakosanIcon } from '../components/common/TakosanIcon';
 import { RecipeMealDialog } from '../features/favorites/FavoritesCollection';
 import { isMealPlannerEnabled } from '../features/planner/feature';
 import { isMealCompositionEnabled } from '../features/planner/composition';
@@ -263,22 +264,22 @@ export const RecipeDetailPage: React.FC = () => {
             )}
             <div className="recipe-facts flex items-center gap-4 text-sm mt-3 text-semantic-text-secondary">
               <span className="flex items-center gap-1">
-                <Clock aria-hidden="true" className="w-4 h-4 text-takosan-green" />
+                <TakosanIcon name="history" className="w-4 h-4" />
                 <span>{recipe.cookTimeMinutes} phút</span>
               </span>
               <span className="flex items-center gap-1">
-                <Users aria-hidden="true" className="w-4 h-4 text-takosan-green" />
+                <TakosanIcon name="profile" className="w-4 h-4" />
                 <span>{recipe.servings} người</span>
               </span>
               <span className="flex items-center gap-1">
-                <ChefHat aria-hidden="true" className="w-4 h-4 text-takosan-green" />
+                <TakosanIcon name="chef" className="w-4 h-4" />
                 <span>{recipe.steps.length} bước thực hiện</span>
               </span>
             </div>
             {techniqueHighlights.length > 0 && (
               <div className="recipe-technique-summary" aria-label="Kỹ thuật chế biến chính">
                 <span className="recipe-technique-summary-label">
-                  <Flame size={14} aria-hidden="true" />
+                  <TakosanIcon name="chef" className="w-4 h-4" />
                   Kỹ thuật bếp:
                 </span>
                 <div className="recipe-technique-summary-pills">
@@ -325,7 +326,7 @@ export const RecipeDetailPage: React.FC = () => {
                 </div>
                 <TakoMascot
                   pose={inventoryReady && pendingIngredients.length === 0 ? 'cooking' : 'thinking'}
-                  size={64}
+                  size={96}
                   className="recipe-availability-mascot"
                 />
               </div>
@@ -416,7 +417,7 @@ export const RecipeDetailPage: React.FC = () => {
                     disabled={inventoryQuery.isPending || inventoryQuery.isError}
                     className="recipe-inline-cook-btn"
                   >
-                    <ChefHat size={16} aria-hidden="true" />
+                    <TakosanIcon name="chef" className="w-4 h-4" />
                     <span>Mở chế độ nấu từng bước</span>
                   </button>
                 </div>
@@ -478,7 +479,7 @@ export const RecipeDetailPage: React.FC = () => {
                           )}
                           {s.tip && (
                             <div className="recipe-step-tip">
-                              <Sparkles size={15} aria-hidden="true" />
+                              <TakosanIcon name="aiSuggestion" className="w-4 h-4" />
                               <p>
                                 <strong>Mẹo bếp:</strong> {s.tip}
                               </p>
@@ -486,7 +487,7 @@ export const RecipeDetailPage: React.FC = () => {
                           )}
                           {s.timerMinutes && (
                             <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-takosan-green-deep bg-takosan-mint px-2.5 py-1 rounded-lg mt-2.5 border border-takosan-mint-deep/60">
-                              <Clock aria-hidden="true" className="w-3.5 h-3.5" />
+                              <TakosanIcon name="history" className="w-3.5 h-3.5" />
                               <span>Hẹn giờ: {s.timerMinutes} phút</span>
                             </div>
                           )}
@@ -608,7 +609,7 @@ export const RecipeDetailPage: React.FC = () => {
                                 : 'bg-takosan-mint text-takosan-green-deep border border-takosan-mint-deep/80 hover:bg-takosan-mint-hover active:scale-95 shadow-xs',
                             )}
                           >
-                            <ShoppingBag aria-hidden="true" className="w-3.5 h-3.5" />
+                            <TakosanIcon name="shopping" className="w-3.5 h-3.5" />
                             <span>{isAdded ? 'Đã thêm' : 'Mua phần thiếu'}</span>
                           </button>
                         )}
@@ -684,7 +685,7 @@ export const RecipeDetailPage: React.FC = () => {
             disabled={inventoryQuery.isPending || inventoryQuery.isError}
             className="bg-takosan-green hover:bg-takosan-green-hover text-white font-heading font-bold text-base py-3.5 rounded-2xl shadow-md flex items-center justify-center gap-2"
           >
-            <ChefHat className="w-5 h-5" />
+            <TakosanIcon name="chef" className="w-5 h-5" />
             <span>Bắt đầu nấu ({recipe.cookTimeMinutes} phút)</span>
             <ArrowRight className="w-4 h-4 ml-1" />
           </Button>

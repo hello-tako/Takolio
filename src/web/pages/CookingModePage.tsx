@@ -5,7 +5,6 @@ import {
   ArrowLeft,
   ArrowRight,
   Check,
-  Clock,
   Mic,
   MicOff,
   Pause,
@@ -23,6 +22,7 @@ import { ConfirmDialog } from '../components/common/ConfirmDialog';
 import { CookingReview } from '../components/cooking/CookingReview';
 import { CookingTechniqueVisual } from '../components/cooking/CookingTechniqueVisual';
 import { TakoMascot } from '../components/common/TakoMascot';
+import { TakosanIcon } from '../components/common/TakosanIcon';
 import { audioEffects } from '../lib/audio-effects';
 import { matchStepIngredients, resolveStepTechnique } from '../lib/culinary-visuals';
 import { getIngredientImage } from '../lib/ingredient-images';
@@ -327,7 +327,7 @@ function CookingSteps() {
       <div className="cooking-workspace-grid">
         <aside className="cooking-context">
           <div className="cooking-chef-companion">
-            <TakoMascot pose={last ? 'celebrate' : 'cooking'} size={72} className="cooking-chef-mascot" />
+            <TakoMascot pose={last ? 'celebrate' : 'cooking'} size={96} className="cooking-chef-mascot" />
             <div className="cooking-chef-copy">
               <span className="cooking-eyebrow">Đang nấu</span>
               <h1>{recipe.title}</h1>
@@ -507,7 +507,7 @@ function CookingSteps() {
           {Boolean(currentStep.timerMinutes) && (
             <div className="cooking-timer-region">
               <h3>
-                <Clock aria-hidden="true" size={18} /> Hẹn giờ cho bước này
+                <TakosanIcon name="history" className="w-4 h-4" /> Hẹn giờ cho bước này
               </h3>
               {remaining === null ? (
                 <button

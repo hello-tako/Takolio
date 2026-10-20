@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CheckCircle2, Flame, Sparkles, UtensilsCrossed } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import type { CulinaryTechniqueId, CulinaryTechniqueMeta } from '../../lib/culinary-visuals';
 import { TakosanIcon, type TakosanIconName } from '../common/TakosanIcon';
 import { isMealPlannerEnabled } from '../../features/planner/feature';
@@ -25,12 +25,12 @@ export const CookingTechniqueVisual: React.FC<{
       </div>
       <div className="culinary-technique-sub">
         <span className="culinary-sub-item">
-          <UtensilsCrossed size={13} />
+          <TakosanIcon name="chef" className="w-3.5 h-3.5" />
           {technique.toolLabel}
         </span>
         <span className="culinary-sub-dot">·</span>
         <span className="culinary-sub-item">
-          <Flame size={13} />
+          <TakosanIcon name="ingredient" className="w-3.5 h-3.5" />
           {technique.heatLabel}
         </span>
       </div>
@@ -205,7 +205,7 @@ export const KitchenLoopStrip: React.FC<{
   <div className="kitchen-loop-strip" data-loop-stage={activeStage}>
     <div className="kitchen-loop-header">
       <span className="kitchen-loop-badge">
-        <Sparkles size={14} aria-hidden="true" />
+        <TakosanIcon name="aiSuggestion" className="w-4 h-4" />
         Chu trình bếp khép kín Takolio
       </span>
       {summaryText && <span className="kitchen-loop-summary">{summaryText}</span>}

@@ -2,10 +2,10 @@ import { RecipeMedia } from './RecipeMedia';
 import { LegacyRecipeCard } from './LegacyRecipeCard';
 import type { RecipeMatchResult } from '@frigo/recipes';
 import type { DiscoveryItem } from '../../../../packages/recipes/src/discovery-contract';
-import { ChefHat, Clock, Users } from 'lucide-react';
 import { resolveRecipeImage } from '../../lib/recipe-media';
 import { formatDifficultyLabel } from '../../lib/culinary-visuals';
 import { SaveRecipeButton } from './SaveRecipeButton';
+import { TakosanIcon } from './TakosanIcon';
 
 interface RecipeCardProps {
   matchResult: RecipeMatchResult | DiscoveryItem;
@@ -48,7 +48,7 @@ export function RecipeCard(props: RecipeCardProps) {
               {canCookWithoutBuying ? 'Đủ lượng để nấu' : `Cần kiểm tra ${missing} nguyên liệu`}
             </p>
             <span className="kitchen-recipe-difficulty">
-              <ChefHat size={13} aria-hidden="true" />
+              <TakosanIcon name="chef" className="w-3.5 h-3.5" />
               {difficulty.label}
             </span>
           </div>
@@ -56,11 +56,11 @@ export function RecipeCard(props: RecipeCardProps) {
           {!compact && <p className="family-recipe-description kitchen-recipe-description">{recipe.description}</p>}
           <div className="family-recipe-facts kitchen-recipe-facts">
             <span>
-              <Clock size={15} aria-hidden="true" />
+              <TakosanIcon name="history" className="w-4 h-4" />
               {recipe.cookTimeMinutes} phút
             </span>
             <span>
-              <Users size={15} aria-hidden="true" />
+              <TakosanIcon name="profile" className="w-4 h-4" />
               {recipe.servings} người
             </span>
           </div>

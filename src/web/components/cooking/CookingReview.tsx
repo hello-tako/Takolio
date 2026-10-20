@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { RecipeScoringContext } from '@frigo/recipes';
-import { ArrowLeft, Check, Refrigerator, Minus, Plus } from 'lucide-react';
+import { ArrowLeft, Check, Minus, Plus } from 'lucide-react';
 import { useCookingStore } from '../../stores/useCookingStore';
 import { cookingQuantityText, cookingUnitLabel } from '../../lib/cooking-review';
 import { submitCookingCompletion } from '../../lib/cooking-completion';
@@ -9,6 +9,7 @@ import { fetchJson } from '../../services/http';
 import { capturePrivateSession } from '../../lib/private-session';
 import { TAKOSAN_KITCHEN } from '../../lib/takosan-kitchen';
 import { TakoMascot } from '../common/TakoMascot';
+import { TakosanIcon } from '../common/TakosanIcon';
 import { getIngredientImage } from '../../lib/ingredient-images';
 
 
@@ -109,7 +110,7 @@ export function CookingReview() {
       <form onSubmit={submit} noValidate className="cooking-review-grid">
         <div className="cooking-review-intro">
           <div className="cooking-chef-companion">
-            <TakoMascot pose={done ? 'celebrate' : 'cooking'} size={80} className="cooking-chef-mascot" />
+            <TakoMascot pose={done ? 'celebrate' : 'cooking'} size={96} className="cooking-chef-mascot" />
             <div className="cooking-chef-copy">
               <span className="cooking-eyebrow">
                 {done ? 'Ghi nhận bữa nấu' : 'Bước cuối · Kiểm tra lượng'}
@@ -133,7 +134,7 @@ export function CookingReview() {
               : 'Nhập lượng bạn thực sự đã dùng. Tủ lạnh chỉ được cập nhật sau khi bạn xác nhận.'}
           </p>
           <div className="cooking-review-note">
-            <Refrigerator aria-hidden="true" size={24} />
+            <TakosanIcon name="fridge" className="w-6 h-6" />
             <p>
               Lượng còn lại là dự kiến từ dữ liệu lúc mở món. Máy chủ kiểm tra lại số lượng khi nhận
               yêu cầu.

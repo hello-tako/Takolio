@@ -14,7 +14,22 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 // S3: replay queued offline writes automatically when connectivity returns.
 initSync(() => api.retryPendingWrites());
 
-// Register Service Worker for PWA
+// Register Service Worker for PWA in production; in dev, unregister stale SWs so assets stay fresh
+if ('serviceWorker' in navigator && import.meta.env.DEV) {
+  navigator.serviceWorker.getRegistrations().then((registrations) => {
+    for (const registration of registrations) {
+      void registration.unregister();
+    }
+  });
+  if ('caches' in window) {
+    caches.keys().then((keys) => {
+      for (const key of keys) {
+        if (key.startsWith('takosan-pwa-')) void caches.delete(key);
+      }
+    });
+  }
+}
+
 if ('serviceWorker' in navigator && import.meta.env.PROD) {
   window.addEventListener('load', () => {
     const buildId = import.meta.env.VITE_GIT_COMMIT || import.meta.env.VITE_BUILD_TIMESTAMP || 'local';

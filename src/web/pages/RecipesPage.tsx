@@ -134,7 +134,7 @@ export const RecipesPage = () => {
               ? 'Chọn món quen để thêm vào bữa hoặc xem lại công thức.'
               : 'Tìm món Việt quen thuộc và xem nguyên liệu cần cho cả nhà.'
           }
-          action={<TakoMascot pose="recipe" size={64} className="kitchen-heading-mascot" />}
+          action={<TakoMascot pose="recipe" size={96} className="kitchen-heading-mascot" />}
 
         />
         <KitchenLoopStrip
