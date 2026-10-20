@@ -1,12 +1,10 @@
-# Takolio Culinary Visual & Closed-Loop Kitchen Experience Checkpoint - 2026-10-20
+# Takolio Culinary Visual & Closed-Loop Kitchen Experience Checkpoint (Hardened v2) - 2026-10-20
 
-Status: `CULINARY_VISUAL_LOOP_BRANCH_VERIFIED`.
-Branch: `feat/takolio-culinary-experience` (implementation commit `c0831c9ef18d2caaa733f93d3ca09db2338e9d64`; `main` remains untouched at `96c4236e572a94df4977a686e20e31312191a321`).
+Status: `CULINARY_VISUAL_LOOP_V2_HARDENED_VERIFIED`.
+Branch: `feat/takolio-culinary-experience` (hardening v2 commit `efd0089c924e140efe48ae6d193b75743fa8f34c`, initial commit `c0831c9ef18d2caaa733f93d3ca09db2338e9d64`; `main` remains untouched at `96c4236e572a94df4977a686e20e31312191a321`).
 
-- Added `src/web/lib/culinary-visuals.ts` and `src/web/components/cooking/CookingTechniqueVisual.tsx` for 8-technique Vietnamese culinary classification, inline SVG illustrations, dish placeholders, and `KitchenLoopStrip` closed-loop navigation.
-- Upgraded `RecipeCard.tsx`, `RecipeMedia.tsx`, `HomePage.tsx`, `RecipesPage.tsx`, `RecipeDetailPage.tsx`, `CookingModePage.tsx`, `CookingReview.tsx`, `CookingCompletePage.tsx`, and kitchen stylesheets (`kitchen-foundation.css`, `kitchen-recipes.css`, `kitchen-cooking.css`).
-- Added `tests/unit/ui15-culinary-upgrade.test.tsx` and `tests/e2e/t17-ui/takolio-culinary-experience.e2e.ts`.
-- Verified: `pnpm lint`, `pnpm typecheck`, `node scripts/t17/style-residuals.mjs`, `pnpm check:migrations`, `pnpm build`, Vitest `32/32` files (`414/414` tests) PASS, Playwright `12/12` across 6 viewports PASS, and `scripts/takolio-upgrade-check.mjs` `24/24` stress checks PASS.
+- Added `docs/ai/CULINARY_EXPERIENCE_HARDENING_V2_SPEC.md` and hardened `culinary-visuals.ts`, `CookingTechniqueVisual.tsx`, `RecipeDetailPage.tsx`, `CookingModePage.tsx`, `ui15-culinary-upgrade.test.tsx`, and `takolio-culinary-experience.e2e.ts` across review findings R1–R6.
+- Verified: `pnpm lint`, `pnpm typecheck`, `node scripts/t17/style-residuals.mjs`, `pnpm check:migrations`, `pnpm build`, focused UI Vitest `32/32` files (`415/415` tests) PASS, Playwright `12/12` across 6 viewports PASS (0 axe violations across all severities, full timer + completion mutation + idempotent replay), and `scripts/takolio-upgrade-check.mjs` `24/24` stress checks PASS.
 - Next: review `feat/takolio-culinary-experience` and open PR when ready; `main` was not modified.
 
 ---
