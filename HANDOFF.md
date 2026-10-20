@@ -1076,8 +1076,23 @@ evidence or create a staging certificate.
 
 ## QA identity lifecycle handoff - 2026-10-20
 
-Branch `codex/admin-staging-test-identities-20261020` contains the reviewed implementation needed to create owner-controlled staging QA identities without fake D1 rows. It adds migration `0005_admin_staging_test_identities.sql` (Admin schema 5), `scripts/admin-staging-test-identities.mjs`, protected breakglass operations `enroll-staging-test` and `revoke-staging-test`, and focused tests/docs.
+Branch `codex/admin-staging-test-identities-20261020` contains the implementation needed to create owner-controlled staging QA identities without fake D1 rows. It adds migration `0005_admin_staging_test_identities.sql` (runtime schema 4, five-file ledger), `scripts/admin-staging-test-identities.mjs`, protected breakglass operations `enroll-staging-test` and `revoke-staging-test`, and focused tests/docs.
 
 Verified offline: 285 focused Admin tests PASS in the first run; migration matrix 25/25 PASS; schema smoke, typecheck, Admin build, public scan and diff check PASS. The current targeted Admin JSON suite exits 0. Existing font warnings and test-intent jsdom error logging are non-blocking.
 
 Still pending: merge/review exact source; action-time Cloudflare confirmation before saving five staging aliases; real alias OTP/Access subjects; protected staging migration/deploy and role acceptance; QA cleanup; signed all-PASS staging certificate. No OTP, Cloudflare policy save, live D1 mutation or production deploy has been performed.
+
+## Staging QA policy and compatibility continuation - 2026-10-20
+
+The owner-confirmed staging Access policy was saved and re-opened successfully. It
+keeps the existing owner email, adds exactly five owner-controlled aliases
+(`+takolio-qa-unprivileged`, `+takolio-qa-content`, `+takolio-qa-ops`,
+`+takolio-qa-support`, `+takolio-qa-auditor`), keeps the application session
+setting unchanged, and does not modify production policy. The visual receipt is
+kept in ignored `.artifacts/admin-live-20261020/test-identities/`.
+
+The schema-4 compatibility edits are now locally verified: focused lifecycle and
+release tests `219/219`, migration matrix `25/25`, workerd checks `10/10`,
+schema smoke, typecheck, Admin build, lint (0 errors; two existing generated
+bundle warnings), public scan and diff check PASS. These edits are staged for a
+separate commit after the original PR #23 commit; no history was amended.

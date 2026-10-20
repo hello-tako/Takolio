@@ -149,10 +149,10 @@ export function renderConfigs(target, environment, sourceSha, templates) {
   admin.services = [{ binding: 'CUSTOMER_READ', service: target.facadeWorker, entrypoint: 'AdminCustomerReadFacade' }];
   admin.vars = { ...admin.vars, ENVIRONMENT: environment, ADMIN_CONSOLE_ENABLED: 'false', ADMIN_AUTH_MODE: 'cloudflare_access',
     ADMIN_ORIGIN: `https://${target.hostname}`, ADMIN_ACCESS_TEAM_DOMAIN: new URL(target.issuer).hostname, ADMIN_ACCESS_AUD: target.audience,
-    GIT_COMMIT: sourceSha, ADMIN_SCHEMA_VERSION: '5', CUSTOMER_APP_URL: environment === 'production' ? 'https://takolio.app' : 'https://staging.takolio.app' };
+    GIT_COMMIT: sourceSha, ADMIN_SCHEMA_VERSION: '4', CUSTOMER_APP_URL: environment === 'production' ? 'https://takolio.app' : 'https://staging.takolio.app' };
   facade.name = target.facadeWorker;
   facade.routes = [];
-  facade.vars = { ...facade.vars, ENVIRONMENT: environment, GIT_COMMIT: sourceSha, ADMIN_SCHEMA_VERSION: '5' };
+  facade.vars = { ...facade.vars, ENVIRONMENT: environment, GIT_COMMIT: sourceSha, ADMIN_SCHEMA_VERSION: '4' };
   facade.d1_databases = [{ binding: 'DB', database_name: target.customerDatabaseName, database_id: target.customerDatabaseId }];
   return { admin, facade };
 }

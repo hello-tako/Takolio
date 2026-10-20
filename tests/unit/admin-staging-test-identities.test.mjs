@@ -97,7 +97,7 @@ for p in sorted(pathlib.Path('migrations-admin').iterdir()):
  if p.name.endswith('.sql'): c.executescript(p.read_text())
 q="SELECT type,name,tbl_name,sql FROM sqlite_master WHERE sql IS NOT NULL AND name NOT LIKE 'sqlite_%' ORDER BY type,name"
 print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execute(q)]))`], { encoding: 'utf8' }));
-  let version = '5';
+  let version = '4';
   const fetcher = vi.fn(async (url, init) => {
     expect(url).toBe(`https://api.cloudflare.com/client/v4/accounts/${authorized.target.accountId}/d1/database/${authorized.target.adminDatabaseId}/query`);
     const { sql } = JSON.parse(init.body);
@@ -113,6 +113,6 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
   });
   const provider = createProvider(authorized, f.context, { CLOUDFLARE_API_TOKEN: 'synthetic-offline' }, fetcher);
   await expect(provider.verifyLedger(authorized.target, migrations, true)).resolves.toBeUndefined();
-  version = '4';
+  version = '3';
   await expect(provider.verifyLedger(authorized.target, migrations, true)).rejects.toThrow('Admin schema version mismatch');
 });

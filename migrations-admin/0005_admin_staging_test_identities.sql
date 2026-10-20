@@ -68,7 +68,7 @@ CREATE TRIGGER trg_admin_staging_test_no_update BEFORE UPDATE ON admin_staging_t
 BEGIN SELECT RAISE(ABORT,'staging QA ceremonies are immutable'); END;
 CREATE TRIGGER trg_admin_staging_test_no_delete BEFORE DELETE ON admin_staging_test_ceremonies
 BEGIN SELECT RAISE(ABORT,'staging QA ceremonies are retained history'); END;
-UPDATE admin_config_metadata SET value='5' WHERE key='schema_version';
+-- The Worker schema contract stays at 4: this additive ledger is release-tooling only.
 
 -- QA aliases never substitute for the durable owner in last-owner protection.
 DROP VIEW admin_active_super_operators;

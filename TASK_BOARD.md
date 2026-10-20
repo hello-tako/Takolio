@@ -4042,9 +4042,17 @@ evidence or create a staging certificate.
 ## QA identity lifecycle - 2026-10-20
 
 - [x] Add reviewed staging-only `enroll-staging-test` / `revoke-staging-test` ceremony with owner signature, exact run/SHA binding, audit and production rejection.
-- [x] Add schema-5 append-only QA ceremony migration; no passwords, recovery keys, direct role grant or customer D1 access.
+- [x] Add additive append-only QA ceremony migration; no passwords, recovery keys, direct role grant or customer D1 access.
 - [x] Add focused unit/integration coverage for alias ownership, replay, duplicate, five-identity limit, audit atomicity, session/role cleanup and last-owner protection.
 - [x] Run 25/25 migration matrix, schema smoke, typecheck, Admin build, public scan and targeted Admin JSON suite.
 - [ ] Obtain action-time approval to save five owner-controlled aliases in staging Access; do not alter production policy.
 - [ ] Capture real Access issuer/subject for each alias, run protected staging ceremonies and role matrix, revoke all QA identities, then certify ST01-ST20.
 - [ ] Review/merge exact source through normal branch protection before any workflow execution; production remains untouched.
+
+## Staging QA policy and compatibility continuation - 2026-10-20
+
+- [x] Save the owner-confirmed staging Access policy with exactly five `+takolio-qa-*` aliases; production policy unchanged.
+- [x] Re-run schema-4 compatibility checks: focused tests 219/219, migration matrix 25/25, workerd 10/10, schema smoke, typecheck, Admin build, lint, public scan and diff check.
+- [ ] Push the compatibility commit, wait for fresh PR #23 CI, and obtain independent review on the new HEAD.
+- [ ] Capture real Access subjects and complete protected staging QA ceremonies and ST01-ST20 certification.
+- [ ] Dispatch production only after a signed exact-source all-PASS staging certificate.

@@ -11172,8 +11172,23 @@ evidence or create a staging certificate.
 ## 2026-10-20 QA identity lifecycle continuation
 
 Implemented, but not yet merged or commissioned, a staging-only signed QA identity lifecycle on branch `codex/admin-staging-test-identities-20261020`.
-Migration `0005_admin_staging_test_identities.sql` raises Admin schema to 5 and adds an append-only enrollment/revocation ceremony. The release adapter accepts only `enroll-staging-test` and `revoke-staging-test` in the protected breakglass workflow, rejects production, binds the exact owner signature/run/SHA, limits aliases to the enrolled owner's `+takolio-qa-` mailbox, grants no role/recovery key/password, and atomically revokes roles/sessions with audit on cleanup.
+Migration `0005_admin_staging_test_identities.sql` preserves the runtime schema-4 contract and adds an append-only enrollment/revocation ceremony. The release adapter accepts only `enroll-staging-test` and `revoke-staging-test` in the protected breakglass workflow, rejects production, binds the exact owner signature/run/SHA, limits aliases to the enrolled owner's `+takolio-qa-` mailbox, grants no role/recovery key/password, and atomically revokes roles/sessions with audit on cleanup.
 
-Local verification: 285 focused Admin tests PASS before the schema-5 provider rerun; migration matrix 25/25 PASS; admin schema smoke PASS; TypeScript typecheck PASS; Admin production build PASS (three existing font-resolution warnings, emitted fonts verified); public scan and diff check PASS. The full targeted Admin JSON suite completed with exit 0; expected jsdom error logging from the remediation UI test is retained by that existing test.
+Local verification: 285 focused Admin tests PASS before the current-schema provider rerun; migration matrix 25/25 PASS; admin schema smoke PASS; TypeScript typecheck PASS; Admin production build PASS (three existing font-resolution warnings, emitted fonts verified); public scan and diff check PASS. The full targeted Admin JSON suite completed with exit 0; expected jsdom error logging from the remediation UI test is retained by that existing test.
 
 No Cloudflare Access policy was saved, no OTP was sent, no live identity was enrolled, no staging D1 mutation was executed, and no production mutation/deploy occurred in this continuation. Access expansion is awaiting action-time confirmation; live ST03-ST19 evidence and the exact-source staging certificate remain pending.
+
+## 2026-10-20 staging policy and compatibility checkpoint
+
+The owner-confirmed Cloudflare staging Access policy is saved with the existing
+owner email plus exactly five `+takolio-qa-*` aliases. Production policy was not
+changed. No OTP, cookie, JWT, secret or private key was copied into chat or Git;
+the sanitized screenshot receipt is ignored under `.artifacts/admin-live-20261020/test-identities/`.
+
+The compatibility edits preserve the runtime Admin schema-4 contract while
+requiring the complete five-file migration ledger. Local verification is PASS:
+219 focused tests, migration matrix 25/25, workerd checks 10/10, schema smoke,
+typecheck, Admin build, lint with two pre-existing generated-bundle warnings,
+public scan and diff check. Fresh CI and independent review on the new PR HEAD
+remain required before merge; live Access subject capture, staging QA role
+acceptance, certificate signing and production deployment remain pending.

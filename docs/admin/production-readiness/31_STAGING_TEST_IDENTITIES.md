@@ -10,8 +10,9 @@ durable database boundary. They preserve protected main, exact-source CI,
 run-bound owner signatures, Environment approval, pre-action artifacts, exact
 target/schema checks and console OFF. The first-owner ceremony is unchanged.
 
-Migration 0005 raises Admin schema version to 5, adds an append-only QA ceremony
-ledger and atomic enrollment/revocation triggers. One verified owner-controlled
+Migration 0005 adds an append-only QA ceremony ledger and atomic
+enrollment/revocation triggers. The Worker schema contract stays at version 4;
+the exact migration/trigger manifest still requires all five migrations. One verified owner-controlled
 plus alias is bound to one actual Access issuer/subject; at most five may be
 active. Enrollment grants no role, password, local credential or recovery key.
 Ordinary role grants and the explicit SUPER_ADMIN confirmation still use the
@@ -57,12 +58,15 @@ is accepted. Both operations require the Admin console OFF; record and verify
 the version/flag before the ceremony. The workflow's receipt marks FAIL/UNKNOWN
 if a postcondition fails.
 
-## Schema-5 rollout and acceptance
+## Additive rollout and acceptance
 
-Keep the Admin console OFF while migrating 4 to 5 and deploying both schema-5
-Workers. A schema-4 Worker deliberately rejects a schema-5 database. Do not use
-the historical schema-4 rollback as a schema-5 application rollback. Establish a
-new disabled schema-5 pair before enablement; emergency OFF remains available.
+Keep the Admin console OFF while applying migration 0005. It preserves the
+version-4 Worker contract, existing authority/session/audit rows and view columns.
+The release adapter requires the exact five-file migration and schema/trigger
+manifest before QA operations. Record a disabled pair on the new exact source
+before enablement and rehearse rollback/OFF again for certification. An older
+release tool may reject the forward migration ledger even though its runtime
+remains compatible; use the reviewed current release adapter for rollback.
 Customer migrations, database and application release are outside this change.
 
 After real enrollment, enable staging and prove the no-role account is denied.
@@ -87,3 +91,10 @@ Local result details are in the latest checkpoint in
 scope, production rejection, run/SHA binding, alias ownership, duplicate/replay,
 active limit, audit failure atomicity, session/role cleanup and last-owner
 protection. They do not prove live Access identities have been created.
+
+## Policy save checkpoint - 2026-10-20
+
+The five owner-controlled staging aliases were saved in the staging Access
+policy after the owner confirmed the exact change. The production policy was not
+modified. Real Access sign-in and subject capture remain separate steps; no
+identity was invented from the alias strings.
