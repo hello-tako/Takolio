@@ -469,8 +469,13 @@ function CookingSteps() {
             </div>
             <p className="cooking-instruction">{currentStep.instruction}</p>
             {stepIngredients.length > 0 && (
-              <div className="cooking-step-ingredients" aria-label="Nguyên liệu trong bước này">
-                <p className="cooking-step-ingredients-title">Nguyên liệu dùng ở bước này:</p>
+              <div
+                className="cooking-step-ingredients"
+                aria-label="Nguyên liệu nhắc trong bước này (định lượng tổng món)"
+              >
+                <p className="cooking-step-ingredients-title">
+                  Nguyên liệu nhắc ở bước này (lượng tổng món):
+                </p>
                 <div className="cooking-step-ingredients-chips">
                   {stepIngredients.map((ing) => (
                     <span
@@ -485,7 +490,7 @@ function CookingSteps() {
                         loading="lazy"
                       />
                       <strong>{ing.name}</strong>
-                      <span>{formatQty(ing.requiredQuantity, ing.unit)}</span>
+                      <span>Tổng: {formatQty(ing.requiredQuantity, ing.unit)}</span>
                     </span>
                   ))}
                 </div>

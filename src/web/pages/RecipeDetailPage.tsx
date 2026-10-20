@@ -455,7 +455,7 @@ export const RecipeDetailPage: React.FC = () => {
                           {stepIngredients.length > 0 && (
                             <div
                               className="recipe-step-ingredients"
-                              aria-label="Nguyên liệu dùng trong bước này"
+                              aria-label="Nguyên liệu nhắc trong bước này (định lượng tổng món)"
                             >
                               {stepIngredients.map((ing) => (
                                 <span
@@ -470,7 +470,7 @@ export const RecipeDetailPage: React.FC = () => {
                                     loading="lazy"
                                   />
                                   <span>
-                                    {ing.name}: {quantityText(ing.requiredQuantity, ing.unit)}
+                                    {ing.name} (tổng: {quantityText(ing.requiredQuantity, ing.unit)})
                                   </span>
                                 </span>
                               ))}

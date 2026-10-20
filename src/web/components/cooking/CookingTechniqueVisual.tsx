@@ -99,6 +99,18 @@ function renderTechniqueSvg(id: CulinaryTechniqueId) {
           <path d="M46 28C46 23 50 21 50 16M60 26C60 21 64 19 64 14M74 28C74 23 78 21 78 16" stroke="var(--kitchen-pine)" strokeWidth="2.2" strokeLinecap="round" />
         </svg>
       );
+    case 'steam':
+      return (
+        <svg viewBox="0 0 120 88" width="120" height="88" fill="none">
+          <rect x="8" y="12" width="104" height="64" rx="16" fill="var(--takosan-cream)" />
+          <rect x="28" y="44" width="64" height="22" rx="8" fill="var(--kitchen-pine)" />
+          <rect x="30" y="34" width="60" height="12" rx="4" fill="var(--takosan-mint)" stroke="var(--kitchen-pine)" strokeWidth="2" />
+          <circle cx="44" cy="40" r="2" fill="var(--kitchen-pine)" />
+          <circle cx="60" cy="40" r="2" fill="var(--kitchen-pine)" />
+          <circle cx="76" cy="40" r="2" fill="var(--kitchen-pine)" />
+          <path d="M44 28C44 23 48 20 48 15M60 26C60 21 64 18 64 13M76 28C76 23 80 20 80 15" stroke="var(--kitchen-pine)" strokeWidth="2.2" strokeLinecap="round" />
+        </svg>
+      );
     case 'fry':
       return (
         <svg viewBox="0 0 120 88" width="120" height="88" fill="none">
@@ -122,7 +134,6 @@ function renderTechniqueSvg(id: CulinaryTechniqueId) {
         </svg>
       );
     case 'plate':
-    default:
       return (
         <svg viewBox="0 0 120 88" width="120" height="88" fill="none">
           <rect x="8" y="12" width="104" height="64" rx="16" fill="var(--takosan-cream)" />
@@ -131,6 +142,17 @@ function renderTechniqueSvg(id: CulinaryTechniqueId) {
           <circle cx="54" cy="44" r="6" fill="var(--takosan-coral)" />
           <circle cx="66" cy="48" r="5" fill="var(--takosan-yellow)" />
           <path d="M56 38C59 34 65 35 66 40" stroke="var(--kitchen-pine)" strokeWidth="2.5" strokeLinecap="round" />
+        </svg>
+      );
+    case 'general':
+    default:
+      return (
+        <svg viewBox="0 0 120 88" width="120" height="88" fill="none">
+          <rect x="8" y="12" width="104" height="64" rx="16" fill="var(--takosan-cream)" />
+          <rect x="28" y="28" width="64" height="36" rx="12" fill="var(--takosan-mint)" stroke="var(--takosan-navy)" strokeWidth="2.2" />
+          <circle cx="48" cy="46" r="6" fill="var(--takosan-coral)" />
+          <circle cx="64" cy="46" r="5" fill="var(--takosan-yellow)" />
+          <path d="M76 38L84 54" stroke="var(--kitchen-pine)" strokeWidth="2.5" strokeLinecap="round" />
         </svg>
       );
   }
