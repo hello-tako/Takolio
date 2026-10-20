@@ -1,3 +1,34 @@
+# Takolio Culinary Visual & Closed-Loop Kitchen Experience Checkpoint - 2026-10-20
+
+Status: `CULINARY_VISUAL_LOOP_BRANCH_VERIFIED`.
+Branch: `feat/takolio-culinary-experience` (implementation commit `c0831c9ef18d2caaa733f93d3ca09db2338e9d64`; `main` remains untouched at `96c4236e572a94df4977a686e20e31312191a321`).
+
+## Summary of Changes
+
+- Added `src/web/lib/culinary-visuals.ts`: deterministic Vietnamese cooking-step classification across 8 culinary techniques (`prep`, `marinate`, `saute`, `simmer`, `boil`, `fry`, `season`, `plate`), diacritic-tolerant step ingredient matching (`matchStepIngredients`), recipe technique summaries (`summarizeRecipeTechniques`), and difficulty label formatting (`formatDifficultyLabel`).
+- Added `src/web/components/cooking/CookingTechniqueVisual.tsx`: inline semantic-token SVG `CookingTechniqueVisual` (`card` and `stage` variants), `RecipeDishIllustration` fallback for missing recipe media, and `KitchenLoopStrip` closed-loop navigation (`1. Tủ lạnh` → `2. Chọn món` → `3. Thực đơn` → `4. Đi chợ`).
+- Upgraded `RecipeCard.tsx`, `RecipeMedia.tsx`, `HomePage.tsx`, `RecipesPage.tsx`, `RecipeDetailPage.tsx`, `CookingModePage.tsx`, `CookingReview.tsx`, `CookingCompletePage.tsx`, and stylesheets (`kitchen-foundation.css`, `kitchen-recipes.css`, `kitchen-cooking.css`), including explicit `64×64px` sizing on `.kitchen-heading-mascot` so `TakoMascot` never expands to its intrinsic 512px width on tablet viewports (`768px`).
+- Added unit tests in `tests/unit/ui15-culinary-upgrade.test.tsx` and browser E2E coverage in `tests/e2e/t17-ui/takolio-culinary-experience.e2e.ts`.
+- Protected paths & DB state: no PayOS, auth, Worker API, or D1 migration files were modified.
+
+## Verification Executed
+
+- `pnpm lint`: PASS (0 errors).
+- `pnpm typecheck`: PASS (`tsconfig.json` and `tsconfig.worker.json`).
+- `node scripts/t17/style-residuals.mjs`: PASS (`unjustified=0`).
+- `pnpm check:migrations`: PASS (`migration-smoke=ok`, `admin-migration-smoke=ok`).
+- `pnpm build`: PASS (web client, admin console, and worker typecheck).
+- `npx vitest run tests/unit/ui*.test.* tests/unit/takosan-brand.test.tsx tests/unit/takolio-mascot.test.tsx tests/unit/voice-chef-a11y.test.ts`: `32/32` files, `414/414` tests PASS.
+- `PORT=3250 PREVIEW_API_PORT=8892 npx playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-culinary-experience.e2e.ts`: `12/12` tests PASS across `mobile-360`, `mobile-390`, `mobile-430`, `tablet-768`, `desktop-1024`, and `desktop-1440` (including WCAG A/AA axe checks, single `h1`, `main` landmark, zero horizontal overflow, keyboard tab/drawer activation, SVG timer ring, and `prefers-reduced-motion: reduce`).
+- `BRAND_URL=http://127.0.0.1:5248 node scripts/takolio-upgrade-check.mjs`: `24/24` stress checks PASS across `320`, `375`, `390`, `768`, `1024`, and `1440` viewports.
+
+## Next Action
+
+- Review and open a pull request from `feat/takolio-culinary-experience` into `main` when ready; keep `main` untouched until operator review.
+
+---
+
+
 # Latest production request checkpoint - 2026-10-20 JST
 
 Status: `PRODUCTION_NOT_DEPLOYED_STAGING_CERTIFICATE_MISSING`.
