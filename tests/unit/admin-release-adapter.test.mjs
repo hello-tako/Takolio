@@ -445,6 +445,48 @@ describe('Admin release policy failure boundaries', () => {
     expect(provider.applyMigrations).not.toHaveBeenCalled();
   });
 
+  it('migrates the exact Admin database while emergency containment stays active', async () => {
+    const { authorized, context, provider } = operationFixture('migrate');
+    provider.verifyTargets.mockImplementation(async (_target, _environment, allowShutdown) => {
+      if (!allowShutdown) throw new Error('Existing Worker binding mismatch');
+    });
+    await expect(executeRelease(authorized, context, provider)).resolves.toMatchObject({ result: 'PASS', consoleEnabled: false });
+    expect(provider.verifyTargets.mock.calls).toEqual([
+      [authorized.target, context.environment, true],
+      [authorized.target, context.environment, true],
+    ]);
+    expect(provider.verifyExistingDatabaseIdentity.mock.invocationCallOrder[0]).toBeLessThan(provider.applyMigrations.mock.invocationCallOrder[0]);
+    expect(provider.verifyLedger.mock.calls).toEqual([
+      [authorized.target, context.migrations, false],
+      [authorized.target, context.migrations, true],
+    ]);
+    for (const action of ['deploy', 'rollback', 'enable', 'bootstrap', 'provisionHmac']) expect(provider[action]).not.toHaveBeenCalled();
+  });
+
+  it.each(['deploy-disabled', 'enable', 'enroll-owner', 'enroll-staging-test', 'recover'])('does not accept containment for %s', async operation => {
+    const { authorized, context, provider } = operationFixture(operation);
+    provider.verifyTargets.mockImplementation(async (_target, _environment, allowShutdown) => {
+      if (!allowShutdown) throw new Error('Existing Worker binding mismatch');
+    });
+    await expect(executeRelease(authorized, context, provider)).rejects.toThrow('Existing Worker binding mismatch');
+    for (const action of ['applyMigrations', 'deploy', 'enable', 'enrollOwner', 'recover']) expect(provider[action]).not.toHaveBeenCalled();
+  });
+
+  it('rejects an enabled console before a contained migration can write', async () => {
+    const { authorized, context, provider } = operationFixture('migrate');
+    provider.verifyConsoleDisabled.mockRejectedValue(new Error('Disabled Access-only console required'));
+    await expect(executeRelease(authorized, context, provider)).rejects.toThrow('Disabled Access-only console required');
+    expect(provider.applyMigrations).not.toHaveBeenCalled();
+  });
+
+  it('does not report a migration PASS if the contained target changes afterward', async () => {
+    const { authorized, context, provider } = operationFixture('migrate');
+    provider.verifyTargets.mockResolvedValueOnce({}).mockRejectedValueOnce(new Error('Exact shutdown target mapping required'));
+    await expect(executeRelease(authorized, context, provider)).rejects.toThrow('Exact shutdown target mapping required');
+    expect(provider.applyMigrations).toHaveBeenCalledOnce();
+    expect(provider.enable).not.toHaveBeenCalled();
+  });
+
   it('rechecks the migration ledger after apply and stops before identity binding on failure', async () => {
     const { authorized, context, provider } = operationFixture('migrate');
     provider.verifyLedger.mockResolvedValueOnce({}).mockRejectedValueOnce(new Error('partial ledger'));

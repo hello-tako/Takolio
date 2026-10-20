@@ -193,7 +193,10 @@ export async function executeRelease(authorized, context, provider) {
       deploymentVersions: await provider.deploymentVersions(), result: 'PASS', consoleEnabled: false,
       remoteExecuted: true, productionDeployed: context.environment === 'production' };
   }
-  await provider.verifyTargets(target, context.environment, m.operation === 'rollback-disabled');
+  // Migration keeps the shutdown Worker serving; rollback must replace it with
+  // verified full disabled versions before its final target check.
+  const allowContained = m.operation === 'rollback-disabled' || m.operation === 'migrate';
+  await provider.verifyTargets(target, context.environment, allowContained);
   await provider.verifyConsoleDisabled(target);
   if (m.operation === 'migrate') {
     await provider.verifyLedger(target, context.migrations, false);
@@ -261,7 +264,7 @@ export async function executeRelease(authorized, context, provider) {
     }
   }
   if (m.operation !== 'enable') {
-    await provider.verifyTargets(target, context.environment);
+    await provider.verifyTargets(target, context.environment, m.operation === 'migrate');
     await provider.verifyConsoleDisabled(target);
   }
   return { version: 1, sourceSha: m.sourceSha, environment: context.environment, operation: m.operation, runId: m.runId,
