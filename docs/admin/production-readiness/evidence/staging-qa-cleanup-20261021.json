@@ -1,0 +1,947 @@
+{
+  "version": 1,
+  "sourceSha": "c7417120f6226d3a52d25e900af5b82bb8f311b3",
+  "recordedAt": "2026-10-20T18:20:42.543737+00:00",
+  "status": "PRODUCTION_NOT_DEPLOYED_STAGING_CERTIFICATE_MISSING",
+  "isStagingCertificate": false,
+  "productionMutationExecuted": false,
+  "environmentApprovalMode": "owner-delegated automation using vn-taphoanhatung; not independent human code review",
+  "cleanupRuns": [
+    {
+      "runId": "39466213701",
+      "operation": "disable",
+      "result": "PASS",
+      "completedAt": "2026-10-20T17:37:06.789Z",
+      "consoleEnabled": false,
+      "deploymentVersions": {
+        "takosan-admin-staging": "3a9c9a26-06dd-409f-a8da-6f76e55446ea"
+      },
+      "artifacts": [
+        {
+          "id": 12286126745,
+          "name": "admin-pre-action-39466213701",
+          "sha256": "98484bc202a4060a72640146de8fab5dbdef2efeed91104b2da9c49c52220741"
+        },
+        {
+          "id": 12284623818,
+          "name": "admin-operation-39466213701",
+          "sha256": "2f688006170b10cc005ecfbbff7d7cff427eef853ddf4cf295d113a6fd216935"
+        }
+      ],
+      "verificationSha256": "695ad81baee65656c3debfb9a84b7aee3fce004acf436c01742425711cdd5ad1"
+    },
+    {
+      "runId": "39467865294",
+      "operation": "rollback-disabled",
+      "result": "PASS",
+      "completedAt": "2026-10-20T17:45:21.775Z",
+      "consoleEnabled": false,
+      "deploymentVersions": {
+        "takosan-admin-staging": "a7d65a35-f422-4058-a8af-68c263d84f3e",
+        "takosan-admin-read-facade-staging": "9befd457-af17-4503-81be-67cb1a3fe29a"
+      },
+      "artifacts": [
+        {
+          "id": 12286580603,
+          "name": "admin-operation-39467865294",
+          "sha256": "ed82f7201ddef413272b79d5e8d3e803b24983924c8b907fec47bc8d3974a046"
+        },
+        {
+          "id": 12286545230,
+          "name": "admin-offline-plan-39467865294",
+          "sha256": "0fcd0671edc007242da0321d57cfa4380ed63d07d0fcc711a539e041f36974cd"
+        },
+        {
+          "id": 12286311204,
+          "name": "admin-pre-action-39467865294",
+          "sha256": "a080022b635c2e499af985ea12bf05a04534c9b639cecb9b4d4406d1d5cb90a3"
+        }
+      ],
+      "verificationSha256": "69b3728323b9208ee9ed67ae9e83e98dc7dcfc8cf99810e8a88aace7332b0c20"
+    },
+    {
+      "runId": "39469415829",
+      "operation": "revoke-staging-test",
+      "result": "PASS",
+      "completedAt": "2026-10-20T17:52:47.687Z",
+      "consoleEnabled": false,
+      "deploymentVersions": {
+        "takosan-admin-staging": "a7d65a35-f422-4058-a8af-68c263d84f3e",
+        "takosan-admin-read-facade-staging": "9befd457-af17-4503-81be-67cb1a3fe29a"
+      },
+      "artifacts": [
+        {
+          "id": 12286811295,
+          "name": "admin-pre-action-39469415829",
+          "sha256": "386d82ba722d28b9c4a15cceeffcc7a45a43a6c15c02aa938d48a9c6f23ba0d6"
+        },
+        {
+          "id": 12286746481,
+          "name": "admin-operation-39469415829",
+          "sha256": "be697621b5447429532bce72c83c546a4c828fe0e7b09e5f1f091059c7b02b60"
+        },
+        {
+          "id": 12286671204,
+          "name": "admin-offline-plan-39469415829",
+          "sha256": "a2fc4e452aea46ac5ef142caa35da20befa3740be667f9a42253ab1f99e11980"
+        }
+      ],
+      "verificationSha256": "d84dd35e2c903c01113eff79d3c4b3be2c813c2456de406682ab5b1c75a04be5"
+    },
+    {
+      "runId": "39470282640",
+      "operation": "revoke-staging-test",
+      "result": "PASS",
+      "completedAt": "2026-10-20T17:57:54.413Z",
+      "consoleEnabled": false,
+      "deploymentVersions": {
+        "takosan-admin-staging": "a7d65a35-f422-4058-a8af-68c263d84f3e",
+        "takosan-admin-read-facade-staging": "9befd457-af17-4503-81be-67cb1a3fe29a"
+      },
+      "artifacts": [
+        {
+          "id": 12287845134,
+          "name": "admin-pre-action-39470282640",
+          "sha256": "05bb50888ea305d22d9370bf359775e3060eabba1192bf727f42ef1a2ad09015"
+        },
+        {
+          "id": 12287735284,
+          "name": "admin-operation-39470282640",
+          "sha256": "ddb0ec3f98f7b38ad7ccd9750875df94241e4fedfc91c50fb0bad03aa9f48fef"
+        },
+        {
+          "id": 12285638709,
+          "name": "admin-offline-plan-39470282640",
+          "sha256": "1a9a3c262c68d36499538ca037751eb5c96ff3c2f3554378e1f4c34a42b53174"
+        }
+      ],
+      "verificationSha256": "c4008ca018c9b83494a3f9543b35f6ecd3a2a833c6cbe24876bb2e78fc001cae"
+    },
+    {
+      "runId": "39470824179",
+      "operation": "revoke-staging-test",
+      "result": "PASS",
+      "completedAt": "2026-10-20T18:01:53.373Z",
+      "consoleEnabled": false,
+      "deploymentVersions": {
+        "takosan-admin-staging": "a7d65a35-f422-4058-a8af-68c263d84f3e",
+        "takosan-admin-read-facade-staging": "9befd457-af17-4503-81be-67cb1a3fe29a"
+      },
+      "artifacts": [
+        {
+          "id": 12287900365,
+          "name": "admin-offline-plan-39470824179",
+          "sha256": "b2f6d2ab48057129f4f2618ab069ff69b59f448514e8ea6287fa934f13abe3e8"
+        },
+        {
+          "id": 12286916943,
+          "name": "admin-operation-39470824179",
+          "sha256": "4a8e4fccb33f061a3cff3c51cf6f69ddf924b7cee0f536ad3999b5bf18c50ea2"
+        },
+        {
+          "id": 12286533457,
+          "name": "admin-pre-action-39470824179",
+          "sha256": "68668ced59f74bd0ab65f484fb4acad43ace4887b417977ebff84ae88edaf03f"
+        }
+      ],
+      "verificationSha256": "110aad78059443309416ddd5123ba88012963bd42e8cdfafc0e48df8a63e722a"
+    },
+    {
+      "runId": "39471359186",
+      "operation": "revoke-staging-test",
+      "result": "PASS",
+      "completedAt": "2026-10-20T18:06:18.881Z",
+      "consoleEnabled": false,
+      "deploymentVersions": {
+        "takosan-admin-staging": "a7d65a35-f422-4058-a8af-68c263d84f3e",
+        "takosan-admin-read-facade-staging": "9befd457-af17-4503-81be-67cb1a3fe29a"
+      },
+      "artifacts": [
+        {
+          "id": 12287242612,
+          "name": "admin-operation-39471359186",
+          "sha256": "211b267b6c4b84f2099490a269e033cb8c5706f641988ce3a2710d17b43955d1"
+        },
+        {
+          "id": 12287217331,
+          "name": "admin-offline-plan-39471359186",
+          "sha256": "c95d2bc0232d94ba0582e3f397399ddd32569286b43a220f739915ff491b9bf1"
+        },
+        {
+          "id": 12286534084,
+          "name": "admin-pre-action-39471359186",
+          "sha256": "59d74782b2485f54300b262d82b5969189ed5c602274c51055ac82507fd07163"
+        }
+      ],
+      "verificationSha256": "dd01edaa38bb6e5f48d31af031154d313a3cfb4f386dcad3fb434322e1864bdf"
+    },
+    {
+      "runId": "39472092782",
+      "operation": "revoke-staging-test",
+      "result": "PASS",
+      "completedAt": "2026-10-20T18:13:25.284Z",
+      "consoleEnabled": false,
+      "deploymentVersions": {
+        "takosan-admin-staging": "a7d65a35-f422-4058-a8af-68c263d84f3e",
+        "takosan-admin-read-facade-staging": "9befd457-af17-4503-81be-67cb1a3fe29a"
+      },
+      "artifacts": [
+        {
+          "id": 12288290502,
+          "name": "admin-operation-39472092782",
+          "sha256": "4f93ea00f2957296fc326c08cab830676ef724799de8d0f6e8be1b1bac3a53df"
+        },
+        {
+          "id": 12287873201,
+          "name": "admin-pre-action-39472092782",
+          "sha256": "a3f9bb2996da710ffa1f5d6f1942637487376683321d79d24fd774c743072b29"
+        },
+        {
+          "id": 12286784598,
+          "name": "admin-offline-plan-39472092782",
+          "sha256": "aa41070c0ab79f3ef02593a319504f380c6701dbde93b2cf14988d8445e20da9"
+        }
+      ],
+      "verificationSha256": "a5ab6eda8e894e98e518143a032b5d7b7bfc4c46cec355bc16de933e8ec8508c"
+    },
+    {
+      "runId": "39473100906",
+      "operation": "enable",
+      "result": "PASS",
+      "completedAt": "2026-10-20T18:18:27.238Z",
+      "consoleEnabled": true,
+      "deploymentVersions": {
+        "takosan-admin-staging": "e52b9583-e2f3-4ec8-8a1f-7bf3a0a398b7",
+        "takosan-admin-read-facade-staging": "9befd457-af17-4503-81be-67cb1a3fe29a"
+      },
+      "artifacts": [
+        {
+          "id": 12287981704,
+          "name": "admin-operation-39473100906",
+          "sha256": "7aaefccf3d1222c6b65595e9274d69fd7977b106c9fec5c43e97c292e8e2101e"
+        },
+        {
+          "id": 12287303700,
+          "name": "admin-pre-action-39473100906",
+          "sha256": "c4cafd7e2b7653fbe9b8ba0d232446bb3c1dafd14ea6adb1507c68871c9e27f6"
+        },
+        {
+          "id": 12286879997,
+          "name": "admin-offline-plan-39473100906",
+          "sha256": "5e3db56d12d5077108cc24be796dfdfe40c2819902dda788f3de0a5fc504decf"
+        }
+      ],
+      "verificationSha256": "93726d0c3f2b8e3431c973e0b4a4b0118783a42bca8a97d4f195e702aed3db26"
+    }
+  ],
+  "roleChecks": [
+    {
+      "role": "CONTENT_EDITOR",
+      "count": 15,
+      "result": "PASS",
+      "at": "2026-10-20T16:55:48.192Z",
+      "credentialKeysFound": 0,
+      "evidenceSha256": "f5604cd01f740a3a2684f12f373698b4d4511e27d4f1c260be7ddd587c540ea7",
+      "principal": "content identity",
+      "rows": [
+        {
+          "role": "CONTENT_EDITOR",
+          "path": "/overview",
+          "expected": 200,
+          "status": 200,
+          "code": null,
+          "pass": true
+        },
+        {
+          "role": "CONTENT_EDITOR",
+          "path": "/users",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "pass": true
+        },
+        {
+          "role": "CONTENT_EDITOR",
+          "path": "/households",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "pass": true
+        },
+        {
+          "role": "CONTENT_EDITOR",
+          "path": "/billing/summary",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "pass": true
+        },
+        {
+          "role": "CONTENT_EDITOR",
+          "path": "/billing/transactions",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "pass": true
+        },
+        {
+          "role": "CONTENT_EDITOR",
+          "path": "/ai/summary",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "pass": true
+        },
+        {
+          "role": "CONTENT_EDITOR",
+          "path": "/ai/usage",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "pass": true
+        },
+        {
+          "role": "CONTENT_EDITOR",
+          "path": "/recipes",
+          "expected": 200,
+          "status": 200,
+          "code": null,
+          "pass": true
+        },
+        {
+          "role": "CONTENT_EDITOR",
+          "path": "/recipes/summary",
+          "expected": 200,
+          "status": 200,
+          "code": null,
+          "pass": true
+        },
+        {
+          "role": "CONTENT_EDITOR",
+          "path": "/system/status",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "pass": true
+        },
+        {
+          "role": "CONTENT_EDITOR",
+          "path": "/audit",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "pass": true
+        },
+        {
+          "role": "CONTENT_EDITOR",
+          "path": "/sessions",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "pass": true
+        },
+        {
+          "role": "CONTENT_EDITOR",
+          "case": "csrf-missing",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_CSRF_FAILED",
+          "pass": true
+        },
+        {
+          "role": "CONTENT_EDITOR",
+          "case": "csrf-wrong",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_CSRF_FAILED",
+          "pass": true
+        },
+        {
+          "role": "CONTENT_EDITOR",
+          "case": "forbidden-grant",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "pass": true
+        }
+      ],
+      "oracleCrossCheck": "Saved observations cross-checked with the documented role/resource allow list; live harness originally used runtime settings matrix."
+    },
+    {
+      "role": "OPERATIONS_ADMIN",
+      "count": 15,
+      "result": "PASS",
+      "at": "2026-10-20T17:00:38.401Z",
+      "credentialKeysFound": 0,
+      "evidenceSha256": "dc7d8d106007eafd919861dc3ec00c718b8d9e269ab452f4de3471f043635080",
+      "principal": "ops identity",
+      "rows": [
+        {
+          "role": "OPERATIONS_ADMIN",
+          "path": "/overview",
+          "expected": 200,
+          "status": 200,
+          "code": null,
+          "pass": true
+        },
+        {
+          "role": "OPERATIONS_ADMIN",
+          "path": "/users",
+          "expected": 200,
+          "status": 200,
+          "code": null,
+          "pass": true
+        },
+        {
+          "role": "OPERATIONS_ADMIN",
+          "path": "/households",
+          "expected": 200,
+          "status": 200,
+          "code": null,
+          "pass": true
+        },
+        {
+          "role": "OPERATIONS_ADMIN",
+          "path": "/billing/summary",
+          "expected": 200,
+          "status": 200,
+          "code": null,
+          "pass": true
+        },
+        {
+          "role": "OPERATIONS_ADMIN",
+          "path": "/billing/transactions",
+          "expected": 200,
+          "status": 200,
+          "code": null,
+          "pass": true
+        },
+        {
+          "role": "OPERATIONS_ADMIN",
+          "path": "/ai/summary",
+          "expected": 200,
+          "status": 200,
+          "code": null,
+          "pass": true
+        },
+        {
+          "role": "OPERATIONS_ADMIN",
+          "path": "/ai/usage",
+          "expected": 200,
+          "status": 200,
+          "code": null,
+          "pass": true
+        },
+        {
+          "role": "OPERATIONS_ADMIN",
+          "path": "/recipes",
+          "expected": 200,
+          "status": 200,
+          "code": null,
+          "pass": true
+        },
+        {
+          "role": "OPERATIONS_ADMIN",
+          "path": "/recipes/summary",
+          "expected": 200,
+          "status": 200,
+          "code": null,
+          "pass": true
+        },
+        {
+          "role": "OPERATIONS_ADMIN",
+          "path": "/system/status",
+          "expected": 200,
+          "status": 200,
+          "code": null,
+          "pass": true
+        },
+        {
+          "role": "OPERATIONS_ADMIN",
+          "path": "/audit",
+          "expected": 200,
+          "status": 200,
+          "code": null,
+          "pass": true
+        },
+        {
+          "role": "OPERATIONS_ADMIN",
+          "path": "/sessions",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "pass": true
+        },
+        {
+          "role": "OPERATIONS_ADMIN",
+          "case": "csrf-missing",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_CSRF_FAILED",
+          "pass": true
+        },
+        {
+          "role": "OPERATIONS_ADMIN",
+          "case": "csrf-wrong",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_CSRF_FAILED",
+          "pass": true
+        },
+        {
+          "role": "OPERATIONS_ADMIN",
+          "case": "forbidden-grant",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "pass": true
+        }
+      ],
+      "oracleCrossCheck": "Saved observations cross-checked with the documented role/resource allow list; live harness originally used runtime settings matrix."
+    },
+    {
+      "role": "SUPPORT_AGENT",
+      "count": 15,
+      "result": "PASS",
+      "at": "2026-10-20T17:04:21.734Z",
+      "credentialKeysFound": 0,
+      "evidenceSha256": "3d3d8d5cf452f4896255a4bfb639d51780081ba5a1a6f3d0517334a05a2bac5a",
+      "principal": "support identity",
+      "rows": [
+        {
+          "role": "SUPPORT_AGENT",
+          "path": "/overview",
+          "expected": 200,
+          "status": 200,
+          "code": null,
+          "pass": true
+        },
+        {
+          "role": "SUPPORT_AGENT",
+          "path": "/users",
+          "expected": 200,
+          "status": 200,
+          "code": null,
+          "pass": true
+        },
+        {
+          "role": "SUPPORT_AGENT",
+          "path": "/households",
+          "expected": 200,
+          "status": 200,
+          "code": null,
+          "pass": true
+        },
+        {
+          "role": "SUPPORT_AGENT",
+          "path": "/billing/summary",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "pass": true
+        },
+        {
+          "role": "SUPPORT_AGENT",
+          "path": "/billing/transactions",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "pass": true
+        },
+        {
+          "role": "SUPPORT_AGENT",
+          "path": "/ai/summary",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "pass": true
+        },
+        {
+          "role": "SUPPORT_AGENT",
+          "path": "/ai/usage",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "pass": true
+        },
+        {
+          "role": "SUPPORT_AGENT",
+          "path": "/recipes",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "pass": true
+        },
+        {
+          "role": "SUPPORT_AGENT",
+          "path": "/recipes/summary",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "pass": true
+        },
+        {
+          "role": "SUPPORT_AGENT",
+          "path": "/system/status",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "pass": true
+        },
+        {
+          "role": "SUPPORT_AGENT",
+          "path": "/audit",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "pass": true
+        },
+        {
+          "role": "SUPPORT_AGENT",
+          "path": "/sessions",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "pass": true
+        },
+        {
+          "role": "SUPPORT_AGENT",
+          "case": "csrf-missing",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_CSRF_FAILED",
+          "pass": true
+        },
+        {
+          "role": "SUPPORT_AGENT",
+          "case": "csrf-wrong",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_CSRF_FAILED",
+          "pass": true
+        },
+        {
+          "role": "SUPPORT_AGENT",
+          "case": "forbidden-grant",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "pass": true
+        }
+      ],
+      "oracleCrossCheck": "Saved observations cross-checked with the documented role/resource allow list; live harness originally used runtime settings matrix."
+    },
+    {
+      "role": "READ_ONLY_AUDITOR",
+      "count": 15,
+      "result": "PASS",
+      "at": "2026-10-20T17:19:59.822Z",
+      "credentialKeysFound": 0,
+      "evidenceSha256": "6ac873ffe56124d91b7ad29eca86bca01d3b9f69110b717fe6a9957b0acf9b7a",
+      "principal": "content identity after owner role change",
+      "rows": [
+        {
+          "role": "READ_ONLY_AUDITOR",
+          "path": "/overview",
+          "expected": 200,
+          "status": 200,
+          "code": null,
+          "pass": true
+        },
+        {
+          "role": "READ_ONLY_AUDITOR",
+          "path": "/users",
+          "expected": 200,
+          "status": 200,
+          "code": null,
+          "pass": true
+        },
+        {
+          "role": "READ_ONLY_AUDITOR",
+          "path": "/households",
+          "expected": 200,
+          "status": 200,
+          "code": null,
+          "pass": true
+        },
+        {
+          "role": "READ_ONLY_AUDITOR",
+          "path": "/billing/summary",
+          "expected": 200,
+          "status": 200,
+          "code": null,
+          "pass": true
+        },
+        {
+          "role": "READ_ONLY_AUDITOR",
+          "path": "/billing/transactions",
+          "expected": 200,
+          "status": 200,
+          "code": null,
+          "pass": true
+        },
+        {
+          "role": "READ_ONLY_AUDITOR",
+          "path": "/ai/summary",
+          "expected": 200,
+          "status": 200,
+          "code": null,
+          "pass": true
+        },
+        {
+          "role": "READ_ONLY_AUDITOR",
+          "path": "/ai/usage",
+          "expected": 200,
+          "status": 200,
+          "code": null,
+          "pass": true
+        },
+        {
+          "role": "READ_ONLY_AUDITOR",
+          "path": "/recipes",
+          "expected": 200,
+          "status": 200,
+          "code": null,
+          "pass": true
+        },
+        {
+          "role": "READ_ONLY_AUDITOR",
+          "path": "/recipes/summary",
+          "expected": 200,
+          "status": 200,
+          "code": null,
+          "pass": true
+        },
+        {
+          "role": "READ_ONLY_AUDITOR",
+          "path": "/system/status",
+          "expected": 200,
+          "status": 200,
+          "code": null,
+          "pass": true
+        },
+        {
+          "role": "READ_ONLY_AUDITOR",
+          "path": "/audit",
+          "expected": 200,
+          "status": 200,
+          "code": null,
+          "pass": true
+        },
+        {
+          "role": "READ_ONLY_AUDITOR",
+          "path": "/sessions",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "pass": true
+        },
+        {
+          "role": "READ_ONLY_AUDITOR",
+          "case": "csrf-missing",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_CSRF_FAILED",
+          "pass": true
+        },
+        {
+          "role": "READ_ONLY_AUDITOR",
+          "case": "csrf-wrong",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_CSRF_FAILED",
+          "pass": true
+        },
+        {
+          "role": "READ_ONLY_AUDITOR",
+          "case": "forbidden-grant",
+          "expected": 403,
+          "status": 403,
+          "code": "ADMIN_FORBIDDEN",
+          "pass": true
+        }
+      ],
+      "oracleCrossCheck": "Saved observations cross-checked with the documented role/resource allow list; live harness originally used runtime settings matrix."
+    }
+  ],
+  "roleChecksTotal": 60,
+  "accessSessions": [
+    {
+      "qaAliasLabel": "auditor",
+      "activeSessions": 0,
+      "activeDevices": 0,
+      "evidenceSha256": "d9614af422d56e0ef729452486112652ebc6feb09639213ddd0757b199ec0298"
+    },
+    {
+      "qaAliasLabel": "content",
+      "activeSessions": 0,
+      "activeDevices": 0,
+      "evidenceSha256": "75a66f0c28137e3e82da2d266f8d9908cbffdc0bf2f4a90ad84898390f35702d"
+    },
+    {
+      "qaAliasLabel": "ops",
+      "activeSessions": 0,
+      "activeDevices": 0,
+      "evidenceSha256": "339495fa99caa1a1b30d53cf11f8da630395c05f5765d89b90a822ea320ab47a"
+    },
+    {
+      "qaAliasLabel": "support",
+      "activeSessions": 0,
+      "activeDevices": 0,
+      "evidenceSha256": "3894ca0e961da1820aa9a62b9492ea8947df1c876d668015f3c4c8469118474d"
+    },
+    {
+      "qaAliasLabel": "unprivileged",
+      "activeSessions": 0,
+      "activeDevices": 0,
+      "evidenceSha256": "9f04f2ecec85e6bca0df46cc837d471e5e7bde18a0b632a6b9d47d8c03fc9960"
+    }
+  ],
+  "accessPolicy": {
+    "scope": "Admin staging",
+    "allowedPrincipals": "owner only",
+    "qaEntries": 0,
+    "privateReadbackSha256": "8ea7442f7a041cf3831d04768f8c068d72d136e0e033179434aa79672637749a"
+  },
+  "axe": {
+    "savedPages": [
+      {
+        "path": "/admin/audit",
+        "title": "Nhật ký kiểm toán",
+        "violations": [],
+        "serious": 0,
+        "overflow": -15
+      },
+      {
+        "path": "/admin/settings",
+        "title": "Cài đặt",
+        "violations": [],
+        "serious": 0,
+        "overflow": -15
+      },
+      {
+        "path": "/admin/recipes",
+        "title": "Công thức",
+        "violations": [],
+        "serious": 0,
+        "overflow": -15
+      }
+    ],
+    "completeResponsiveMatrix": false,
+    "privateEvidenceSha256": "afa8c0b113b372dfd20502ae6d4eb128916e2bbef50405ff0f1a137dd86654e5"
+  },
+  "customerSmoke": {
+    "command": "bash scripts/post-deploy-smoke.sh https://takolio.app",
+    "exitCode": 0,
+    "readiness": "degraded",
+    "database": "ok",
+    "recipeMode": "d1",
+    "logSha256": "433e98e9b5e65f310ebc11779f5be4a5ff1098c06c5d98af847640c0fbf2cca4"
+  },
+  "knownFailures": [
+    {
+      "case": "auditor Access OTP re-login",
+      "result": "FAIL",
+      "limitation": "Denied by Cloudflare Access despite exact policy entry; cause unresolved. Auditor role API tests used content identity after role change."
+    },
+    {
+      "case": "Python urllib customer API health probe",
+      "result": "FAIL",
+      "limitation": "HTTP 403; separate customer web smoke passed. No outage inferred."
+    }
+  ],
+  "pending": [
+    "ST03/ST04/ST05: valid foreign issuer/audience/expired token exercised at live Worker verifier",
+    "ST06/ST07: complete unauthorized and no-role identity/API evidence; no-role generic UI denial saved",
+    "ST08/ST10/ST13/ST16: complete role/UI, static-bypass, credential-output and audit matrices",
+    "ST09: authenticated hostile-origin negatives; missing/wrong CSRF already passed",
+    "ST12: internal live facade negative operations",
+    "ST15: live approval/revocation concurrency and key recovery",
+    "ST18: complete responsive/axe/load, real JWKS rotation",
+    "ST19: full customer regression"
+  ],
+  "productionPlan": {
+    "runId": "39474465306",
+    "sourceSha": "c7417120f6226d3a52d25e900af5b82bb8f311b3",
+    "mode": "plan-only",
+    "result": "PASS",
+    "execute": "SKIPPED",
+    "productionMutationExecuted": false,
+    "artifact": {
+      "id": 12289305865,
+      "name": "admin-offline-plan-39474465306",
+      "sha256": "4ebd4aa375077af61d69fb35a555e3db3eaa1af5f98098427aaee308b726c319"
+    }
+  },
+  "roleChecksBreakdown": {
+    "getResources": 48,
+    "missingOrWrongCsrf": 8,
+    "forbiddenRoleGrants": 4
+  },
+  "ownerLiveAcceptance": {
+    "sourceSha": "c7417120f6226d3a52d25e900af5b82bb8f311b3",
+    "result": "26/26 PASS",
+    "apiReads": 13,
+    "csrfDenials": 2,
+    "selfPrivilegeDenials": 2,
+    "preferenceRoundTrip": "PASS",
+    "auditCorrespondence": "PASS",
+    "boundedReadLoad": {
+      "requests": 12,
+      "concurrency": 3,
+      "statuses": [
+        200
+      ],
+      "maxMs": 6307,
+      "p95Ms": 6307,
+      "classification": "bounded smoke only"
+    },
+    "credentialFieldFindings": 0,
+    "evidence": "private .artifacts/admin-live-20261020/test-identities/owner-live-acceptance-20261021.json"
+  },
+  "authenticatedStaticBoundary": {
+    "sourceSha": "c7417120f6226d3a52d25e900af5b82bb8f311b3",
+    "result": "10/10 PASS",
+    "evidence": "private .artifacts/admin-live-20261020/test-identities/authenticated-static-20261021.json"
+  },
+  "realHostAxe": {
+    "sourceSha": "c7417120f6226d3a52d25e900af5b82bb8f311b3",
+    "routes": [
+      "/admin/",
+      "/admin/users",
+      "/admin/households",
+      "/admin/billing",
+      "/admin/ai",
+      "/admin/recipes",
+      "/admin/system",
+      "/admin/audit",
+      "/admin/settings"
+    ],
+    "violations": 0,
+    "overflow": "none",
+    "evidence": "private .artifacts/admin-live-20261020/test-identities/real-host-axe.json"
+  },
+  "localValidationContinuation": {
+    "focusedAdminTests": "124/124 PASS",
+    "r2AuthFacadeRace": "19/19 PASS",
+    "workerd": "10/10 PASS",
+    "migrationMatrix": "25/25 PASS",
+    "lint": "PASS; 2 existing warnings in ignored generated bundles",
+    "typecheck": "PASS"
+  },
+  "responsiveRealHostProbe": {
+    "sourceSha": "c7417120f6226d3a52d25e900af5b82bb8f311b3",
+    "completed": "overview requested at a 320px DevTools toolbar",
+    "result": "NOT_CERTIFIED; measured innerWidth=373, clientWidth=320, visualViewport.width=160",
+    "limitation": "DevTools scale made the live probe unsuitable as a 320px real-host certification; remaining live routes/widths are not promoted to PASS",
+    "evidence": "private .artifacts/admin-live-20261020/test-identities/responsive-axe-20261021.json"
+  },
+  "localResponsiveE2E": {
+    "source": "working-tree responsive CSS fix",
+    "screens": 10,
+    "viewports": [320, 390, 820, 1440],
+    "result": "6/6 PASS; zero axe violations and zero client-width overflow",
+    "evidence": ".hoplite/artifacts/admin-e2e/a11y",
+    "limitation": "synthetic local fixture; does not close live ST18"
+  }
+}

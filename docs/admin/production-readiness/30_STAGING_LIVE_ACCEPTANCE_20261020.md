@@ -1,3 +1,30 @@
+## Admin live acceptance continuation - 2026-10-21 JST
+
+The live evidence remains bound to exact source `c7417120f6226d3a52d25e900af5b82bb8f311b3`; no newer source has been deployed. The working tree contains a scoped responsive CSS fix and its local E2E evidence. The owner authenticated through the real Cloudflare Access staging application and completed a read-only smoke over the Admin surface. The owner acceptance harness recorded 26/26 PASS: 13 API reads returned HTTP 200 with `Cache-Control: no-store` and zero forbidden credential-field names, missing/wrong CSRF returned `403 ADMIN_CSRF_FAILED` without state change, self-grant and self-revoke returned `403 ADMIN_FORBIDDEN`, a preference round-trip succeeded and was restored, and the corresponding success/denial audit rows were present. A small read load of 12 requests at concurrency 3 returned 200; max and p95 latency were 6.307s, so this is a bounded smoke measurement rather than a capacity certification.
+
+Authenticated static-boundary checks on the real host passed 10/10: canonical Admin asset served, encoded asset/traversal/unknown route/customer asset variants returned 404, and the responses remained no-store. Real-host axe coverage now includes overview, users, households, billing, AI, recipes, system, audit and settings with zero reported violations and no horizontal overflow. Private cookie metadata confirms the Admin session cookie is HttpOnly, Secure and SameSite=Strict; values remain private.
+
+Local exact-source validation also passed: focused Admin tests 124/124, R2 auth/facade/race tests 19/19, workerd scenarios 10/10, migration matrix 25/25, lint exit 0 with two existing warnings in ignored generated bundles, and TypeScript typecheck passed. These results strengthen ST10, ST13, ST16 and ST18 evidence, but do not close the live foreign issuer/audience/expiry cases, separate unauthorized/no-role identity, authenticated hostile-origin test, internal facade negatives, live recovery/concurrency, or full customer/load/JWKS certification.
+
+The staging Access policy remains owner-only after QA cleanup. Production Admin remains untouched; no all-PASS ST01-ST20 certificate exists, so no production execute dispatch is safe or permitted by the release adapter.
+Responsive real-host coverage remains partial. The earlier DevTools probe requested a 320px toolbar but measured `innerWidth=373`, `clientWidth=320`, and `visualViewport.width=160`; it is not a valid real-host 320px certification. A local synthetic E2E run now passes axe and client-width overflow checks for 10 Admin screens at 320, 390, 820 and 1440px after a scoped CSS fix; this does not promote the live ST18 row.
+
+## Controlled QA cleanup and current release gate - 2026-10-21 JST
+
+Exact source `c7417120f6226d3a52d25e900af5b82bb8f311b3` remained unchanged throughout this continuation. Emergency OFF `39466213701` and disabled rollback restore `39467865294` were approved through the protected `admin-staging` Environment and verified PASS. Five separate signed `revoke-staging-test` operations then passed: auditor `39469415829`, content `39470282640`, ops `39470824179`, support `39471359186`, and unprivileged `39472092782`. Each receipt proves `consoleEnabled=false`, `productionDeployed=false`, zero active Admin roles/sessions after the atomic ceremony, and one success audit.
+
+The five Access identities' active sessions and devices were revoked in Cloudflare Users. The staging Access policy was edited and saved to retain only the enrolled owner email; all five `+takolio-qa-*` entries were removed. Staging was re-enabled owner-only by `39473100906`, verified PASS with productionDeployed=false. The sanitized aggregate and digests are in `evidence/staging-qa-cleanup-20261021.json`; private screenshots/readbacks remain ignored.
+
+The real live role checks captured 60/60 PASS rows across four roles: 48 resource GETs, 8 missing/wrong-CSRF denials and 4 forbidden role-grant denials. Recursive credential-field scans found no forbidden keys in the observed payloads. Saved observations were also cross-checked against the documented role/resource allow list; the live harness originally derived expectations from the runtime settings matrix. The auditor alias later failed Cloudflare OTP re-login despite the policy entry; this remains FAIL and the role evidence explicitly records that the auditor role was tested via the content identity after a role switch. Three saved real-host axe pages have zero violations; this is not a complete responsive matrix.
+
+The staging certificate remains unsigned. ST03/ST04/ST05, ST06/ST07, ST09, ST12 and ST15 are still `PENDING_EXTERNAL_EVIDENCE`; ST08/ST10/ST13/ST16/ST18/ST19 remain partial. Production Admin was not mutated. Do not deploy production until every exact-source ST01-ST20 row is genuinely PASS and the protected certificate is accepted.
+
+Production plan-only run `39474465306` PASS on the same source; execute SKIPPED. Artifact `12289305865` archive SHA256 `4ebd4aa375077af61d69fb35a555e3db3eaa1af5f98098427aaee308b726c319` was verified. JSON syntax, aggregate assertions, `git diff --check` and `python3 scripts/admin-public-scan.py` passed.
+
+This checkpoint supersedes the historical checkpoints below.
+
+---
+
 # QA rollout continuation - 2026-10-20 JST
 
 PR #23 is merged at `96c4236e572a94df4977a686e20e31312191a321`.
