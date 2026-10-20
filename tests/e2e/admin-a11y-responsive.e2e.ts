@@ -11,7 +11,7 @@ const SCREENS: Array<[string, string]> = [
   ['overview', '/admin/'], ['users', '/admin/users'], ['user-detail', '/admin/users/fx_user_001'], ['households', '/admin/households'],
   ['billing', '/admin/billing'], ['ai', '/admin/ai'], ['recipes', '/admin/recipes'], ['system', '/admin/system'], ['audit', '/admin/audit'], ['settings', '/admin/settings'],
 ];
-const VIEWPORTS = [{ name: '1440', width: 1440, height: 900 }, { name: '820', width: 820, height: 1180 }, { name: '390', width: 390, height: 844 }];
+const VIEWPORTS = [{ name: '1440', width: 1440, height: 900 }, { name: '820', width: 820, height: 1180 }, { name: '390', width: 390, height: 844 }, { name: '320', width: 320, height: 844 }];
 
 async function login(page: Page) {
   await page.goto('/admin/login');
@@ -56,14 +56,19 @@ for (const viewport of VIEWPORTS) {
     await page.setViewportSize({ width: viewport.width, height: viewport.height });
     await login(page);
     const overflow: Record<string, number> = {};
+    const accessibility: Record<string, string[]> = {};
     for (const [name, path] of SCREENS) {
       await page.goto(path);
       await settle(page);
-      overflow[name] = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      overflow[name] = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+      const scan = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
+      accessibility[name] = scan.violations.map((violation) => violation.id);
       await page.screenshot({ path: `${OUT}/screens/${viewport.name}-${name}.png`, fullPage: true });
     }
     writeFileSync(`${OUT}/overflow-${viewport.name}.json`, `${JSON.stringify(overflow, null, 2)}\n`);
+    writeFileSync(`${OUT}/axe-${viewport.name}.json`, `${JSON.stringify(accessibility, null, 2)}\n`);
     expect(Object.entries(overflow).filter(([, px]) => px > 0)).toEqual([]);
+    expect(Object.entries(accessibility).filter(([, violations]) => violations.length > 0)).toEqual([]);
   });
 }
 

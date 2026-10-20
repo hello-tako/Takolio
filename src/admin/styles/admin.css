@@ -437,7 +437,7 @@ code,
 
 .two-col,
 .detail-grid {
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
 }
 
 .three-col {
@@ -445,7 +445,7 @@ code,
 }
 
 .chart-grid {
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
 }
 
 .chart-card {
@@ -638,9 +638,15 @@ code,
 }
 
 .incident-item {
+  min-width: 0;
   display: flex;
   gap: 10px;
   align-items: flex-start;
+}
+
+.incident-item > div {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .incident-item p {
