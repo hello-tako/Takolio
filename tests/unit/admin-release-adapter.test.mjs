@@ -91,7 +91,7 @@ function authorizationFixture() {
 
 describe('Admin offline release adapter', () => {
   it('keeps the release operation set finite and explicit', () => {
-    expect(OPERATIONS).toEqual(['initialize-disabled', 'restore-initial-disabled', 'deploy-disabled', 'enable', 'migrate', 'provision-hmac', 'enroll-owner', 'bootstrap', 'recover', 'disable', 'rollback-disabled']);
+    expect(OPERATIONS).toEqual(['initialize-disabled', 'restore-initial-disabled', 'deploy-disabled', 'enable', 'migrate', 'provision-hmac', 'enroll-owner', 'bootstrap', 'recover', 'enroll-staging-test', 'revoke-staging-test', 'disable', 'rollback-disabled']);
   });
 
   it('validates the commissioned targets while keeping rendered consoles disabled', () => {
@@ -212,7 +212,7 @@ describe('Admin offline release adapter', () => {
     expect(configs.admin.name).toBe('takosan-admin-staging');
     expect(configs.admin.vars.ADMIN_CONSOLE_ENABLED).toBe('false');
     expect(configs.admin.vars.CUSTOMER_APP_URL).toBe('https://staging.takolio.app');
-    expect(configs.admin.vars.ADMIN_SCHEMA_VERSION).toBe('4');
+    expect(configs.admin.vars.ADMIN_SCHEMA_VERSION).toBe('5');
     expect(configs.admin.d1_databases[0].database_id).toBe(fixture.policy.environments.staging.adminDatabaseId);
     expect(configs.facade.d1_databases[0].database_id).toBe(fixture.policy.environments.staging.customerDatabaseId);
     expect(configs.admin.d1_databases).not.toEqual(configs.facade.d1_databases);

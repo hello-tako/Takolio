@@ -2,6 +2,7 @@ import { execFileSync } from 'node:child_process';
 import { randomBytes } from 'node:crypto';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
+import { executeStagingTestIdentity } from './admin-staging-test-identities.mjs';
 import { setTimeout as delay } from 'node:timers/promises';
 import { digest, renderConfigs, validateGitHub } from './admin-release-adapter.mjs';
 
@@ -128,7 +129,7 @@ export function createProvider(authorized, context, env = process.env, fetcher =
     const v = await cf(`/workers/scripts/${worker}/versions/${versionId}`);
     const bindings = { bindings: v.resources?.bindings };
     const text = n => binding(bindings, n, 'plain_text')?.text;
-    if (v.id !== versionId || text('ENVIRONMENT') !== context.environment || text('GIT_COMMIT') !== previousSha || text('ADMIN_SCHEMA_VERSION') !== '4' ||
+    if (v.id !== versionId || text('ENVIRONMENT') !== context.environment || text('GIT_COMMIT') !== previousSha || text('ADMIN_SCHEMA_VERSION') !== '5' ||
         (isAdmin && (text('ADMIN_CONSOLE_ENABLED') !== 'false' || text('ADMIN_AUTH_MODE') !== 'cloudflare_access' ||
           binding(bindings, 'ADMIN_DB', 'd1')?.id !== target.adminDatabaseId ||
           binding(bindings, 'CUSTOMER_READ', 'service')?.service !== target.facadeWorker)) ||
@@ -214,7 +215,7 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
       if (text(a, 'ADMIN_SHUTDOWN') !== 'true' || a.bindings?.some(b => b.type !== 'plain_text') ||
           f.bindings?.some(b => !['plain_text', 'd1'].includes(b.type)) || subdomain.enabled !== false || subdomain.previews_enabled !== false ||
           !/^[a-f0-9]{40}$/.test(containedSha ?? '') || ![containedSha, context.sourceSha].includes(text(f, 'GIT_COMMIT')) ||
-          text(f, 'ADMIN_SCHEMA_VERSION') !== '4' || text(f, 'ENVIRONMENT') !== context.environment) {
+          text(f, 'ADMIN_SCHEMA_VERSION') !== '5' || text(f, 'ENVIRONMENT') !== context.environment) {
         throw new Error('Unused exact-source initial containment required');
       }
       try { command('git', ['merge-base', '--is-ancestor', containedSha, context.sourceSha], { stdio: 'ignore' }); }
@@ -255,7 +256,7 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
       if (names.some((n, i) => migrations[i]?.name !== n) || (complete && names.length !== migrations.length)) throw new Error('Admin migration ledger mismatch');
       if (complete) {
         const schema = await query("SELECT value FROM admin_config_metadata WHERE key='schema_version'");
-        if (schema.length !== 1 || schema[0].value !== '4') throw new Error('Admin schema version mismatch');
+        if (schema.length !== 1 || schema[0].value !== '5') throw new Error('Admin schema version mismatch');
         const actual = await query("SELECT type,name,tbl_name,sql FROM sqlite_master WHERE sql IS NOT NULL AND name NOT LIKE 'sqlite_%' AND name NOT LIKE '_cf_%' AND name <> 'd1_migrations' ORDER BY type,name");
         if (digest(actual) !== digest(expectedSchema())) throw new Error('Actual Admin schema/trigger manifest mismatch');
         const health = await query('PRAGMA quick_check');
@@ -342,6 +343,9 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
       await query('INSERT INTO admin_owner_enrollments(id,user_id,operator_id,access_iss,access_sub,email,display_name,public_key,approval_ref,created_at) VALUES(?,?,?,?,?,?,?,?,?,?)',
         [manifest.id, p.userId, signer.operatorId, target.issuer, p.subject, p.email, p.displayName, signer.publicKey, p.approvalRef, new Date().toISOString()]);
     },
+    async stagingTestIdentity(manifest, signer) {
+      await executeStagingTestIdentity({ manifest, signer, target, environment: context.environment, checkWrite, query, digest });
+    },
     async verifyOwnerReady(t) {
       const rows = await query(`SELECT COUNT(*) AS n FROM admin_active_super_operators WHERE access_iss=?`, [t.issuer]);
       const marker = await query("SELECT value FROM admin_config_metadata WHERE key='bootstrap_completed_at'");
@@ -355,8 +359,8 @@ print(json.dumps([dict(zip(['type','name','tbl_name','sql'],r)) for r in c.execu
     async verifyEnabled(t, expectedSha) {
       await provider.verifyOwnerReady(t);
       const [s, f] = await Promise.all([activeSettings(t.adminWorker), activeSettings(t.facadeWorker)]);
-      if (binding(f, 'GIT_COMMIT', 'plain_text')?.text !== expectedSha || binding(f, 'ADMIN_SCHEMA_VERSION', 'plain_text')?.text !== '4' ||
-          binding(s, 'ADMIN_SCHEMA_VERSION', 'plain_text')?.text !== '4' || binding(s, 'ADMIN_CONSOLE_ENABLED', 'plain_text')?.text !== 'true' ||
+      if (binding(f, 'GIT_COMMIT', 'plain_text')?.text !== expectedSha || binding(f, 'ADMIN_SCHEMA_VERSION', 'plain_text')?.text !== '5' ||
+          binding(s, 'ADMIN_SCHEMA_VERSION', 'plain_text')?.text !== '5' || binding(s, 'ADMIN_CONSOLE_ENABLED', 'plain_text')?.text !== 'true' ||
           binding(s, 'ADMIN_AUTH_MODE', 'plain_text')?.text !== 'cloudflare_access' ||
           binding(s, 'GIT_COMMIT', 'plain_text')?.text !== expectedSha) throw new Error('Enabled release metadata mismatch');
       for (const route of ['/admin/', '/api/v1/admin/me', '/admin/favicon.svg']) {

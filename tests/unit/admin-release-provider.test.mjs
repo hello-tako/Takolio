@@ -405,9 +405,9 @@ it('produces only a validated, opt-in, protected staging report in the exact sta
 describe('Enabled Admin release checks', () => {
   function enabledFixture({ ownerCount = 1, marker = true, publicResponse, facadeSha = context.sourceSha } = {}) {
     const base = providerFacts(f => {
-      f.a.bindings.push(...Object.entries({ ADMIN_CONSOLE_ENABLED: 'true', ADMIN_AUTH_MODE: 'cloudflare_access', GIT_COMMIT: context.sourceSha, ADMIN_SCHEMA_VERSION: '4' })
+      f.a.bindings.push(...Object.entries({ ADMIN_CONSOLE_ENABLED: 'true', ADMIN_AUTH_MODE: 'cloudflare_access', GIT_COMMIT: context.sourceSha, ADMIN_SCHEMA_VERSION: '5' })
         .map(([name, text]) => ({ name, text, type: 'plain_text' })));
-      f.f.bindings.push({ name: 'GIT_COMMIT', type: 'plain_text', text: facadeSha }, { name: 'ADMIN_SCHEMA_VERSION', type: 'plain_text', text: '4' });
+      f.f.bindings.push({ name: 'GIT_COMMIT', type: 'plain_text', text: facadeSha }, { name: 'ADMIN_SCHEMA_VERSION', type: 'plain_text', text: '5' });
     });
     return vi.fn((url, options) => {
       if (new URL(url).hostname === target.hostname) return publicResponse ? publicResponse() : new Response(null, { status: 302, headers: { location: `${target.issuer}/cdn-cgi/access/login/${target.hostname}` } });
@@ -525,7 +525,7 @@ describe('Protected initial HMAC provisioning', () => {
     expect(f.writes).toHaveLength(1);
   });
 
-  it('runs the unused-authority guard on real schema-4 and detects pre-enrollment audit history', async () => {
+  it('runs the unused-authority guard on real schema-5 and detects pre-enrollment audit history', async () => {
     const f = fixture();
     await f.provider.provisionHmac();
     const sql = JSON.parse(f.fetcher.mock.calls.find(([url]) => url.endsWith('/query'))[1].body).sql;
@@ -587,7 +587,7 @@ print(json.dumps([before,c.execute(q).fetchone()[0]]))`;
 
   it('exposes provisioning only in the protected serialized operator ceremony with no secret input', () => {
     const workflow = load(readFileSync('.github/workflows/admin-breakglass.yml', 'utf8'));
-    expect(workflow.on.workflow_dispatch.inputs.operation.options).toEqual(['provision-hmac', 'enroll-owner', 'bootstrap', 'recover']);
+    expect(workflow.on.workflow_dispatch.inputs.operation.options).toEqual(['provision-hmac', 'enroll-owner', 'bootstrap', 'recover', 'enroll-staging-test', 'revoke-staging-test']);
     expect(Object.keys(workflow.on.workflow_dispatch.inputs).sort()).toEqual(['environment', 'execute', 'operation', 'source_sha']);
     expect(workflow.concurrency.group).toBe('admin-release-${{ inputs.environment }}');
   });
@@ -597,7 +597,7 @@ describe('First-install restoration from containment', () => {
   function recoveryFixture(change = () => {}) {
     const state = {
       shutdown: true, enabled: false, adminSha: context.sourceSha, facadeSha: context.sourceSha,
-      schema: '4', objects: [], extraAdminBinding: null, extraFacadeBinding: null,
+      schema: '5', objects: [], extraAdminBinding: null, extraFacadeBinding: null,
       adminSubdomain: false, validCi: true,
     };
     change(state);

@@ -7,7 +7,7 @@ db = sqlite3.connect(':memory:')
 db.execute('PRAGMA foreign_keys=ON')
 for migration in sorted((root / 'migrations-admin').glob('*.sql')):
     db.executescript(migration.read_text())
-assert db.execute("SELECT value FROM admin_config_metadata WHERE key='schema_version'").fetchone()[0] == '4'
+assert db.execute("SELECT value FROM admin_config_metadata WHERE key='schema_version'").fetchone()[0] == '5'
 
 
 def refuses(sql):
@@ -45,4 +45,4 @@ refuses("DELETE FROM admin_audit_events")
 refuses("UPDATE operator_identity_bindings SET access_sub='different' WHERE user_id='user_0'")
 assert db.execute('PRAGMA integrity_check').fetchone()[0] == 'ok'
 assert not db.execute('PRAGMA foreign_key_check').fetchall()
-print('admin-migration-smoke=ok (schema v4; atomic bootstrap; minimum; immutable identity; append-only audit)')
+print('admin-migration-smoke=ok (schema v5; atomic bootstrap; minimum; immutable identity; append-only audit)')
