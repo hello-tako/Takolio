@@ -66,3 +66,173 @@
     top: 100px;
   }
 }
+
+/* Closed-loop strip & culinary technique visuals */
+.kitchen-heading-mascot {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+}
+@media (max-width: 639px) {
+  .kitchen-heading-mascot {
+    display: none;
+  }
+}
+.kitchen-loop-strip {
+
+  margin-bottom: 24px;
+  padding: 14px 16px;
+  background: white;
+  border: 1px solid rgb(var(--semantic-border-rgb));
+  border-radius: 16px;
+  box-shadow: var(--takolio-shadow-card, 0 6px 20px rgb(var(--semantic-text-primary-rgb) / 0.05));
+}
+.recipe-loop-wrapper {
+  padding: 20px 16px 0;
+  max-width: 1184px;
+  margin-inline: auto;
+}
+.kitchen-loop-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-bottom: 12px;
+}
+.kitchen-loop-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  background: var(--takosan-mint);
+  color: var(--kitchen-pine);
+  font-size: 12px;
+  font-weight: 700;
+}
+.kitchen-loop-summary {
+  font-size: 13px;
+  color: rgb(var(--semantic-text-secondary-rgb));
+  font-weight: 500;
+}
+.kitchen-loop-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+  gap: 8px;
+}
+.kitchen-loop-step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid rgb(var(--semantic-border-rgb));
+  background: var(--takosan-cream);
+  text-decoration: none;
+}
+.kitchen-loop-step:hover {
+  border-color: var(--kitchen-pine);
+}
+.kitchen-loop-step-active {
+  background: var(--takosan-mint);
+  border-color: var(--kitchen-pine);
+}
+.kitchen-loop-step-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: white;
+  flex-shrink: 0;
+}
+.kitchen-loop-step-copy {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.kitchen-loop-step-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgb(var(--semantic-text-primary-rgb));
+}
+.kitchen-loop-step-sub {
+  font-size: 12px;
+  color: rgb(var(--semantic-text-secondary-rgb));
+}
+
+.culinary-technique-visual {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--takosan-cream);
+  border: 1px solid rgb(var(--semantic-border-rgb));
+}
+.culinary-variant-stage {
+  margin-bottom: 16px;
+  padding: 14px 16px;
+}
+.culinary-technique-artwork {
+  width: 84px;
+  height: 62px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+  border: 1px solid rgb(var(--semantic-border-rgb));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.culinary-technique-artwork svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.culinary-technique-meta {
+  min-width: 0;
+  flex: 1;
+}
+.culinary-technique-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+.culinary-step-pill {
+  padding: 2px 8px;
+  border-radius: 9999px;
+  background: var(--kitchen-pine);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.culinary-technique-pill {
+  font-size: 14px;
+  font-weight: 700;
+  color: rgb(var(--semantic-text-primary-rgb));
+}
+.culinary-technique-sub {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  font-size: 12px;
+  color: rgb(var(--semantic-text-secondary-rgb));
+}
+.culinary-sub-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}

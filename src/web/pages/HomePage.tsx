@@ -7,7 +7,9 @@ import { TopBar } from '../components/common/TopBar';
 import { RecipeCard } from '../components/common/RecipeCard';
 import { RecipeMedia } from '../components/common/RecipeMedia';
 import { TakoMascot } from '../components/common/TakoMascot';
+import { KitchenLoopStrip } from '../components/cooking/CookingTechniqueVisual';
 import { KitchenPageHeading } from '../components/common/KitchenHeader';
+
 import { InlineLoading, InlineError, SkeletonCard } from '../components/common/AsyncState';
 import { Button } from '../components/common/Button';
 import { api } from '../services/api';
@@ -145,7 +147,16 @@ export const HomePage = () => {
           title="Hôm nay ăn gì?"
           description="Xem bữa sắp tới, dùng nguyên liệu đang có và chuẩn bị phần cần mua."
         />
+        <KitchenLoopStrip
+          activeStage="fridge"
+          summaryText={
+            inventory.length > 0
+              ? `Tủ lạnh đang có ${inventory.length} nguyên liệu${useSoon.length > 0 ? ` · ${useSoon.length} nguyên liệu nên dùng sớm` : ''}`
+              : 'Bắt đầu từ tủ lạnh hoặc chọn món yêu thích cho bữa tới'
+          }
+        />
         <div className="home-workspace">
+
           <div data-testid="t18c-home-primary" className="min-w-0 space-y-6">
             {home.requiresAccount ? (
               <section aria-labelledby="home-plan-heading" className="home-plan-card">

@@ -17,7 +17,10 @@ import {
 } from '../lib/recipe-discovery';
 import { Search, ArrowLeft, ArrowRight, Clock, CheckCircle } from 'lucide-react';
 import { FavoritesCollection } from '../features/favorites/FavoritesCollection';
+import { KitchenLoopStrip } from '../components/cooking/CookingTechniqueVisual';
+import { TakoMascot } from '../components/common/TakoMascot';
 import { clsx } from 'clsx';
+
 import { useFamilyPreferences } from '../features/family/useFamilyPreferences';
 import { useAuthStore } from '../stores/useAuthStore';
 
@@ -131,8 +134,15 @@ export const RecipesPage = () => {
               ? 'Chọn món quen để thêm vào bữa hoặc xem lại công thức.'
               : 'Tìm món Việt quen thuộc và xem nguyên liệu cần cho cả nhà.'
           }
+          action={<TakoMascot pose="recipe" size={64} className="kitchen-heading-mascot" />}
+
+        />
+        <KitchenLoopStrip
+          activeStage="recipes"
+          summaryText={`Đang tính định lượng theo khẩu phần ${servings} người`}
         />
         <nav className="family-recipe-tabs" aria-label="Thư viện món">
+
           <Link to="/recipes" aria-current={!savedView ? 'page' : undefined}>
             Tìm món
           </Link>

@@ -21,10 +21,15 @@ import { queryKeys } from '../lib/queryKeys';
 import { InlineError, InlineLoading } from '../components/common/AsyncState';
 import { ConfirmDialog } from '../components/common/ConfirmDialog';
 import { CookingReview } from '../components/cooking/CookingReview';
+import { CookingTechniqueVisual } from '../components/cooking/CookingTechniqueVisual';
+import { TakoMascot } from '../components/common/TakoMascot';
 import { audioEffects } from '../lib/audio-effects';
+import { matchStepIngredients, resolveStepTechnique } from '../lib/culinary-visuals';
+import { getIngredientImage } from '../lib/ingredient-images';
 import { voiceChef } from '../lib/voice-chef';
 import { capturePrivateSession } from '../lib/private-session';
 import { TAKOSAN_KITCHEN } from '../lib/takosan-kitchen';
+
 
 export const CookingModePage: React.FC = () => {
   const { slug, id } = useParams<{ slug?: string; id?: string }>();
@@ -276,6 +281,28 @@ function CookingSteps() {
     remaining === null
       ? ''
       : `${String(Math.floor(remaining / 60)).padStart(2, '0')}:${String(remaining % 60).padStart(2, '0')}`;
+  const stepTitle = (step: unknown) =>
+    step && typeof step === 'object' && 'title' in step && typeof step.title === 'string'
+      ? step.title
+      : undefined;
+  const currentStepTitle = stepTitle(currentStep);
+  const currentTechnique = resolveStepTechnique(
+    currentStep.instruction,
+    currentStepTitle,
+    index,
+    recipe.steps.length,
+  );
+
+  const stepIngredients = matchStepIngredients(currentStep.instruction, recipe.ingredients);
+  const units: Record<string, string> = { piece: 'cái', pack: 'gói', bunch: 'bó', slice: 'lát' };
+  const formatQty = (quantity: number, unit: string) =>
+    `${new Intl.NumberFormat('vi-VN', { maximumSignificantDigits: 15 }).format(quantity)} ${units[unit] ?? unit}`;
+  const totalTimerSeconds = (currentStep.timerMinutes ?? 0) * 60;
+  const timerRatio =
+    remaining !== null && totalTimerSeconds > 0
+      ? Math.max(0, Math.min(1, remaining / totalTimerSeconds))
+      : 0;
+
   return (
     <div className="cooking-workspace">
       <header className="cooking-header">
@@ -287,16 +314,28 @@ function CookingSteps() {
           <ArrowLeft aria-hidden="true" size={20} />
           <span>Thoát</span>
         </button>
-        <img src={TAKOSAN_KITCHEN.compactLogo} width={44} height={44} className="cooking-brand" style={{ width: 44, height: 44 }} alt="Takolio" translate="no" />
-        <span className="cooking-eyebrow">Bếp nhà</span>
+        <div className="cooking-header-brand">
+          <img src={TAKOSAN_KITCHEN.compactLogo} width={44} height={44} className="cooking-brand" style={{ width: 44, height: 44 }} alt="Takolio" translate="no" />
+          <div className="cooking-header-meta">
+            <span className="cooking-eyebrow">Takolio · Bếp nhà</span>
+            <span className="cooking-header-sub">
+              Bước {index + 1}/{recipe.steps.length} · {recipe.servings} người
+            </span>
+          </div>
+        </div>
       </header>
       <div className="cooking-workspace-grid">
         <aside className="cooking-context">
-          <span className="cooking-eyebrow">Đang nấu</span>
-          <h1>{recipe.title}</h1>
-          <p>
-            Bước {index + 1} / {recipe.steps.length} · {recipe.cookTimeMinutes} phút theo công thức
-          </p>
+          <div className="cooking-chef-companion">
+            <TakoMascot pose={last ? 'celebrate' : 'cooking'} size={72} className="cooking-chef-mascot" />
+            <div className="cooking-chef-copy">
+              <span className="cooking-eyebrow">Đang nấu</span>
+              <h1>{recipe.title}</h1>
+              <p>
+                Bước {index + 1} / {recipe.steps.length} · {recipe.cookTimeMinutes} phút theo công thức
+              </p>
+            </div>
+          </div>
           <div
             className="cooking-progress"
             role="progressbar"
@@ -309,16 +348,49 @@ function CookingSteps() {
             <span style={{ transform: `scaleX(${(index + 1) / recipe.steps.length})` }} />
           </div>
           <details className="cooking-outline">
-            <summary>Các bước của món này</summary>
+            <summary>Các bước của món này ({recipe.steps.length})</summary>
             <ol>
-              {recipe.steps.map((step, stepIndex) => (
-                <li key={stepIndex} aria-current={index === stepIndex ? 'step' : undefined}>
-                  <span>{stepIndex + 1}</span>
-                  <p>{step.instruction}</p>
-                </li>
-              ))}
+              {recipe.steps.map((step, stepIndex) => {
+                const tech = resolveStepTechnique(
+                  step.instruction,
+                  stepTitle(step),
+                  stepIndex,
+                  recipe.steps.length,
+                );
+                return (
+
+                  <li key={stepIndex} aria-current={index === stepIndex ? 'step' : undefined}>
+                    <span>{stepIndex + 1}</span>
+                    <div>
+                      <strong className="cooking-outline-tech">{tech.shortLabel}</strong>
+                      <p>{step.instruction}</p>
+                    </div>
+                  </li>
+                );
+              })}
             </ol>
           </details>
+          {recipe.ingredients.length > 0 && (
+            <details className="cooking-outline cooking-ingredients-drawer">
+              <summary>Nguyên liệu cần chuẩn bị ({recipe.ingredients.length})</summary>
+              <ul className="cooking-ingredients-mini-list">
+                {recipe.ingredients.map((ing, i) => (
+                  <li key={`${ing.ingredientId}-${i}`}>
+                    <img
+                      src={getIngredientImage(ing.ingredientId, ing.name)}
+                      alt=""
+                      width={24}
+                      height={24}
+                      loading="lazy"
+                    />
+                    <span className="cooking-ing-name">{ing.name}</span>
+                    <span className="cooking-ing-qty">{formatQty(ing.requiredQuantity, ing.unit)}</span>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          )}
+
           <div className="cooking-voice-controls">
             <button
               className="cooking-control"
@@ -367,9 +439,11 @@ function CookingSteps() {
         <section className="cooking-stage" aria-label="Bước nấu hiện tại">
           <p
             role="status"
+            aria-live="polite"
             className="sr-only"
             data-testid="cooking-step-status"
           >{`Bước ${index + 1} trên ${recipe.steps.length}. ${currentStep.instruction}`}</p>
+
           <p role="status" className="sr-only" data-testid="cooking-timer-status">
             <span key={announcement.sequence}>{announcement.text}</span>
           </p>
@@ -378,11 +452,45 @@ function CookingSteps() {
             key={index}
             style={{ '--step-direction': direction } as React.CSSProperties}
           >
-            <span className="cooking-step-number" aria-hidden="true">
-              {String(index + 1).padStart(2, '0')}
-            </span>
-            <h2>Bước {index + 1}</h2>
+            <CookingTechniqueVisual
+              technique={currentTechnique}
+              stepNumber={index + 1}
+              variant="stage"
+            />
+            <div className="cooking-step-header-row">
+              <span className="cooking-step-number" aria-hidden="true">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <h2>
+                Bước {index + 1}
+                {currentStepTitle ? ` · ${currentStepTitle}` : ''}
+              </h2>
+
+            </div>
             <p className="cooking-instruction">{currentStep.instruction}</p>
+            {stepIngredients.length > 0 && (
+              <div className="cooking-step-ingredients" aria-label="Nguyên liệu trong bước này">
+                <p className="cooking-step-ingredients-title">Nguyên liệu dùng ở bước này:</p>
+                <div className="cooking-step-ingredients-chips">
+                  {stepIngredients.map((ing) => (
+                    <span
+                      key={`${ing.ingredientId}-${ing.unit}`}
+                      className="cooking-step-ingredient-pill"
+                    >
+                      <img
+                        src={getIngredientImage(ing.ingredientId, ing.name)}
+                        alt=""
+                        width={22}
+                        height={22}
+                        loading="lazy"
+                      />
+                      <strong>{ing.name}</strong>
+                      <span>{formatQty(ing.requiredQuantity, ing.unit)}</span>
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
             {currentStep.tip && (
               <p className="cooking-tip">
                 <strong>Mẹo trong công thức</strong>
@@ -398,7 +506,7 @@ function CookingSteps() {
               </h3>
               {remaining === null ? (
                 <button
-                  className="cooking-control"
+                  className="cooking-control cooking-timer-start-btn"
                   onClick={() => {
                     startTimer();
                     requestAnimationFrame(() => toggleRef.current?.focus());
@@ -408,10 +516,41 @@ function CookingSteps() {
                 </button>
               ) : (
                 <div className="cooking-timer">
-                  <span className="cooking-countdown" data-testid="cooking-countdown">
-                    {countdown}
-                  </span>
+                  <div className="cooking-timer-dial">
+                    <svg
+                      className="cooking-timer-ring"
+                      viewBox="0 0 64 64"
+                      width="56"
+                      height="56"
+                      aria-hidden="true"
+                    >
+                      <circle
+                        cx="32"
+                        cy="32"
+                        r="26"
+                        fill="none"
+                        stroke="var(--takosan-mint)"
+                        strokeWidth="6"
+                      />
+                      <circle
+                        cx="32"
+                        cy="32"
+                        r="26"
+                        fill="none"
+                        stroke="var(--kitchen-pine)"
+                        strokeWidth="6"
+                        strokeLinecap="round"
+                        strokeDasharray={2 * Math.PI * 26}
+                        strokeDashoffset={2 * Math.PI * 26 * (1 - timerRatio)}
+                        transform="rotate(-90 32 32)"
+                      />
+                    </svg>
+                    <span className="cooking-countdown" data-testid="cooking-countdown">
+                      {countdown}
+                    </span>
+                  </div>
                   <div className="cooking-timer-controls">
+
                     <button
                       ref={toggleRef}
                       className="cooking-control"
