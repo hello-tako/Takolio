@@ -11252,3 +11252,7 @@ typecheck, Admin build, lint with two pre-existing generated-bundle warnings,
 public scan and diff check. Fresh CI and independent review on the new PR HEAD
 remain required before merge; live Access subject capture, staging QA role
 acceptance, certificate signing and production deployment remain pending.
+
+## Temporary issuer evidence branch - 2026-10-22
+
+The branch-bound manual workflow produces an encrypted real GitHub OIDC input for ST03, without Cloudflare credentials, environments, runtime deployment, or raw JWT artifacts. Actual staging verifier acceptance remains pending until the encrypted artifact is decrypted locally and tested. The target runtime remains exact main 0322a919; this branch is evidence tooling only and must not replace main's normal credential audit.

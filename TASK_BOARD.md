@@ -4123,3 +4123,9 @@ evidence or create a staging certificate.
 - [ ] Push the compatibility commit, wait for fresh PR #23 CI, and obtain independent review on the new HEAD.
 - [ ] Capture real Access subjects and complete protected staging QA ceremonies and ST01-ST20 certification.
 - [ ] Dispatch production only after a signed exact-source all-PASS staging certificate.
+
+## Temporary issuer evidence - 2026-10-22
+
+- [x] Prepare branch-only, no-secret OIDC input workflow and ephemeral public encryption key.
+- [ ] Obtain real assertion, verify locally, exercise actual deployed staging verifier, and retain sanitized result.
+- [ ] Keep this temporary workflow out of main; no production mutation is part of this branch.

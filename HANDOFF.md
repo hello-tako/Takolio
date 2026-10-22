@@ -1165,3 +1165,7 @@ release tests `219/219`, migration matrix `25/25`, workerd checks `10/10`,
 schema smoke, typecheck, Admin build, lint (0 errors; two existing generated
 bundle warnings), public scan and diff check PASS. These edits are staged for a
 separate commit after the original PR #23 commit; no history was amended.
+
+## Temporary foreign-issuer evidence branch - 2026-10-22
+
+This branch changes only the Admin credential-audit workflow into a manual, branch-bound foreign-issuer input producer. It requests a genuine GitHub OIDC assertion with the staging Admin audience, verifies the provider signature and claims, encrypts the short-lived assertion to an ephemeral local public key, and uploads only ciphertext plus sanitized metadata. It has no Cloudflare secrets or Environment access and does not deploy runtime code. Do not merge this temporary workflow over main's audit workflow. The deployed target source remains 0322a9197bee4a4a42d95cc150f8d4fff6d53ba8. The assertion must still be exercised against the actual staging verifier before ST03 can pass.
