@@ -44,7 +44,8 @@ export const InventoryPage: React.FC = () => {
     queryKey: queryKeys.inventory(),
     queryFn: () => api.getInventory(),
   });
-  const items = inventoryQuery.data ?? [];
+  // Retained zero-quantity rows belong to history, not available fridge stock.
+  const items = (inventoryQuery.data ?? []).filter((item) => item.quantity > 0);
   const loading = inventoryQuery.isPending;
 
   // T13R-B P2-4: a conflict-class failure (CONFLICT / IDEMPOTENCY_CONFLICT /
