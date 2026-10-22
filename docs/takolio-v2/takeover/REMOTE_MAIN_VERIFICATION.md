@@ -8,6 +8,6 @@ The first four main-only changes retain Admin migration, PR24 merge, responsive 
 
 The two Codex-only salvage checkpoints were rebased locally, without conflicts, onto verified latest main. They are now `279d8af7` and `752ee35a`; the old tip is preserved by `codex/takolio-v2-rescue-recovery-e4ac2b02`. UI-C5 implementation `89b0a331` follows them. No original WIP branch/history was rewritten.
 
-G2 PASS for source divergence. Protected-scope evidence pins latest main and verifies 5,847 unchanged paths. Runtime results and inherited failures are separated in TEST_BASELINES.md; historical baseline runs pin `0322a919`, while UI-C5 runs use `90b94129` plus the integration commits.
+Saved-recipes continuation rechecked main read-only with `git ls-remote`; it remains `90b94129113b41e34701d99f51175cfa81cb73de`. Saved implementation `f11a244c` follows filter evidence `b7930ad9`. G2 PASS for source divergence. Protected-scope evidence pins latest main and verifies 5,846 unchanged paths; FavoritesCollection is newly allowlisted and explicitly reviewed. Runtime results and inherited failures are separated in TEST_BASELINES.md; historical baseline runs pin `0322a919`, while UI-C5 runs use `90b94129` plus the integration commits.
 
 Environment remains macOS, Node v25.9.0 and pnpm 10.33.2, with unchanged main dependencies/lockfile. Earlier integration installation was `pnpm install --frozen-lockfile --ignore-scripts`, exit 0, 312 packages. Repository SQLite tests require Node >=22.13. No remote write occurred.

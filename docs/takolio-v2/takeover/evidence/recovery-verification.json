@@ -9,6 +9,6 @@
   "index_sha256_match": true,
   "backup_parent_mode": "0o700",
   "worktree_differences": [],
-  "verified_after_implementation_commit": "89b0a3312104a4064ad42462098c6bda2802085e",
+  "verified_after_implementation_commit": "f11a244ca0964a63618c1fc3a3f30b8a670ec90a",
   "git_metadata": "Authorized fetch/worktree/local-commit metadata differs; original source, HEAD, index and WIP status remain unchanged. Full private snapshot includes Git and ignored files. Exact recovery location is retained privately."
 }

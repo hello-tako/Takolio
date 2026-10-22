@@ -1,0 +1,104 @@
+{
+  "implementation_commit": "f11a244ca0964a63618c1fc3a3f30b8a670ec90a",
+  "base_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "environment": "macOS; Node v25.9.0; pnpm 10.33.2; unchanged main dependencies",
+  "full_regression_status": "PARTIAL; five inherited encoded-space CLI path failures remain",
+  "source_sha256": {
+    "src/web/pages/RecipesPage.tsx": "eb3dbb1a202cf9834e286ee94c47f53155b6813e7f371792802cc432a7570e90",
+    "src/web/features/favorites/FavoritesCollection.tsx": "f0d4df24f6518f453286a6f3f097a8c06c8627b10da7eae4b462ec9d0f5ee636",
+    "src/web/styles/kitchen-family.css": "65207061fe3c979437673a781e41fdab738e22c7b1555f4d319f9d9058960ba2",
+    "tests/e2e/t17-ui/takolio-saved-recipes.e2e.ts": "5e24587c5c5cf1d9984ccbf8813b8119a8ce131f7e58283f368a4571995abe4a"
+  },
+  "checks": [
+    {
+      "command": "pnpm lint",
+      "exit_code": 0,
+      "actual_result": "PASS after final CSS",
+      "local_ignored_log": ".artifacts/takeover/saved-recipes/final-lint.log",
+      "log_bytes": 99,
+      "log_sha256": "3f2044fca43a5e60905becf2ebfc3a21ddd85976975841aa1e16bc87b0f40a6d"
+    },
+    {
+      "command": "pnpm typecheck",
+      "exit_code": 0,
+      "actual_result": "PASS web and Worker after final CSS",
+      "local_ignored_log": ".artifacts/takeover/saved-recipes/final-typecheck.log",
+      "log_bytes": 165,
+      "log_sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e"
+    },
+    {
+      "command": "pnpm check:migrations",
+      "exit_code": 0,
+      "actual_result": "PASS customer/Admin local smoke; no migration applied remotely",
+      "local_ignored_log": ".artifacts/takeover/saved-recipes/migrations.log",
+      "log_bytes": 297,
+      "log_sha256": "9616315a9fcbfd77c67784703a16384419539e6a68ccd2838dda07239de25464"
+    },
+    {
+      "command": "pnpm build",
+      "exit_code": 0,
+      "actual_result": "PASS final default build; existing Admin font warnings",
+      "local_ignored_log": ".artifacts/takeover/saved-recipes/final-build-default.log",
+      "log_bytes": 10008,
+      "log_sha256": "29aaa9a4db7fe5d148d599a83e8f677c68cbd87f077a7fcf7a1e435c09c72e5a"
+    },
+    {
+      "command": "VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build",
+      "exit_code": 0,
+      "actual_result": "PASS final paired build; existing Admin font warnings",
+      "local_ignored_log": ".artifacts/takeover/saved-recipes/final-build-paired.log",
+      "log_bytes": 10008,
+      "log_sha256": "15c9a8083b4f22d68cdba784dc82ab6ee2b001075fed6469e962fa3ba794e10e"
+    },
+    {
+      "command": "TMPDIR=/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/ pnpm test",
+      "exit_code": 1,
+      "actual_result": "406/412 files, 9159/9168 tests pass; five inherited encoded-space path failures and four Admin timeouts; before final CSS",
+      "local_ignored_log": ".artifacts/takeover/saved-recipes/full-test.log",
+      "log_bytes": 21571,
+      "log_sha256": "394a21cf65142a2b58220441f750798e869c00ecea137ecdda5088cffdb6a645"
+    },
+    {
+      "command": "TMPDIR=/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/ pnpm test --maxWorkers=4",
+      "exit_code": 1,
+      "actual_result": "410/412 files, 9163/9168 tests pass in 286.03s; five inherited encoded-space path failures only; final source",
+      "local_ignored_log": ".artifacts/takeover/saved-recipes/final-full-test.log",
+      "log_bytes": 17971,
+      "log_sha256": "31add1d4c339edf7ecc7c027e1879bd1798ff9fb1ff779ff532a78cd4b3f8b2e"
+    },
+    {
+      "command": "pnpm exec vitest run tests/unit/family-preferences-favorites-ui.test.tsx tests/unit/family-meal-selection-ui.test.tsx tests/integration/family-preferences-favorites.test.ts tests/integration/family-manual-drafts.test.ts",
+      "exit_code": 0,
+      "actual_result": "4 files / 49 tests; before final CSS",
+      "local_ignored_log": ".artifacts/takeover/saved-recipes/focused-family.log",
+      "log_bytes": 261,
+      "log_sha256": "483da96e3f353cbbf0b2e4c6e9fe03ffa1dd57e5aca6a36ab54ef4f9229dab54"
+    },
+    {
+      "command": "pnpm exec vitest run tests/unit/ui03-discovery.test.ts tests/unit/ui02-presentation.test.ts tests/integration/ui03-discovery-api.test.ts tests/integration/inventory-mutation-d1.test.mjs",
+      "exit_code": 0,
+      "actual_result": "4 files / 88 tests; before final CSS",
+      "local_ignored_log": ".artifacts/takeover/saved-recipes/focused-regressions.log",
+      "log_bytes": 260,
+      "log_sha256": "81356d92a1632e2c2e5a88adefac60a1c0e0b5fd514366c111d68acd6068ff4e"
+    },
+    {
+      "command": "PREVIEW_MEAL_COMPOSITION_V2=true PORT=3282 PREVIEW_API_PORT=8908 pnpm exec playwright test --config=playwright.t17.config.ts --project=mobile-390 tests/e2e/t17-ui/takolio-saved-recipes.e2e.ts tests/e2e/t17-ui/takolio-recipe-discovery.e2e.ts --output=.artifacts/takeover/saved-recipes/verified-paired",
+      "exit_code": 0,
+      "actual_result": "6/6 tests in 49.8s; final source and geometry guards",
+      "local_ignored_log": ".artifacts/takeover/saved-recipes/verified-paired.log",
+      "log_bytes": 34672,
+      "log_sha256": "1cde73c046d15308286989f9b568faa69b59520ea52cd194c254bd3e3036e292"
+    },
+    {
+      "command": "PORT=3282 PREVIEW_API_PORT=8908 pnpm exec playwright test --config=playwright.t17.config.ts --project=mobile-390 tests/e2e/t17-ui/takolio-saved-recipes.e2e.ts --grep 'persist|tabs' --output=.artifacts/takeover/saved-recipes/default-v1",
+      "exit_code": 0,
+      "actual_result": "2/2 tests in 19.0s; default composition V1 persistence/tabs only",
+      "local_ignored_log": ".artifacts/takeover/saved-recipes/default-v1.log",
+      "log_bytes": 11496,
+      "log_sha256": "60a6e5acfa80db70cbd0a53c573d023436e4e3763ce324b233309c73f1518475"
+    }
+  ],
+  "dependency_audit": "Not rerun in this packet; prior filter checkpoint has eight inherited findings.",
+  "production_actions": false
+}

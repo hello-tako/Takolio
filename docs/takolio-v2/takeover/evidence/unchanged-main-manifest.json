@@ -30756,12 +30756,6 @@
     "sha256": "786b066bbd3a390a6a1ccf6d4b764b7bda3d26052a11174580660b27f729da7c"
   },
   {
-    "path": "src/web/features/favorites/FavoritesCollection.tsx",
-    "mode": "100644",
-    "git_blob": "fa985f1700dab3cc7475aa53b5b67616d7b7cf5f",
-    "sha256": "3ca4cb22e3523a05f00efb9db50d9313c3f8b256d3eb635dc751b33a7c2aa112"
-  },
-  {
     "path": "src/web/features/favorites/useRecipeFavorites.ts",
     "mode": "100644",
     "git_blob": "db7873d40fa37d6bb7a35c11a25efe248528fb9a",

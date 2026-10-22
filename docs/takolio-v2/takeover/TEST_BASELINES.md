@@ -77,3 +77,48 @@ PORT=3282 PREVIEW_API_PORT=8908 pnpm exec playwright test --config=playwright.t1
 Recipe-specific rerun used the same ports/config/project, only `tests/e2e/t17-ui/takolio-recipe-discovery.e2e.ts`, and output `.artifacts/takeover/recipe-filters/refined`. Real isolated Worker/SQLite synthetic household, mock AI and external-fetch blocking are retained. No production calls occurred. Eight axe reports have zero violations; manual keyboard/focus, 44px targets, narrow/text200% wrapping and long search were checked. No screen-reader, OS magnifier, Week OFF, live OTP/AI or LCP/CLS/capacity certification is implied.
 
 Inherited dependency audit remains 1 low / 6 moderate / 1 high (Vite GHSA-587h-7wmj-h5pm, patched >=6.4.4). No dependency or protected release-tool changes were included. Build warnings and initial harness failures remain in local logs. Protected-scope, evidence hashes/CSV/token-pattern checks and staged whitespace checks are repeated for the documentation checkpoint.
+
+## UI-C5 saved recipes on main 90b94129
+
+Implementation: `f11a244ca0964a63618c1fc3a3f30b8a670ec90a`. Same macOS, Node v25.9.0, pnpm 10.33.2 and unchanged dependencies. Raw logs below are under ignored `.artifacts/takeover/saved-recipes/`; sanitized command/outcome/log-hash receipt is `evidence/saved-recipes-checks.json`.
+
+| Check | Exit / actual result | Log |
+|---|---|---|
+| `pnpm lint` | 0, final after CSS fix | `final-lint.log` |
+| `pnpm typecheck` | 0, web and Worker, final after CSS fix | `final-typecheck.log` |
+| `pnpm check:migrations` | 0, customer and Admin local smoke | `migrations.log` |
+| `pnpm build` | 0, final default build | `final-build-default.log` |
+| `VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build` | 0, final paired build | `final-build-paired.log` |
+| Canonical-TMPDIR `pnpm test` | 1, 406/412 files; 9,159/9,168 tests pass | `full-test.log` |
+| Canonical-TMPDIR `pnpm test --maxWorkers=4` | 1, 410/412 files; 9,163/9,168 tests pass, 286.03s, final source | `final-full-test.log` |
+| Focused family command below | 0, four files / 49 tests, before final scoped CSS | `focused-family.log` |
+| Focused discovery/inventory command below | 0, four files / 88 tests, before final scoped CSS | `focused-regressions.log` |
+| Final paired browser command below | 0, six tests / 49.8s, after CSS/geometry guards | `verified-paired.log` |
+| Default composition V1 browser subset below | 0, two tests / 19.0s | `default-v1.log` |
+
+Both full runs used `TMPDIR=/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/`. The initial full run (291.91s), concurrent with other checks, failed the inherited five encoded-space CLI cases and four unchanged Admin tests at 5000ms: integration/admin-owner, integration/admin-r2-governance, integration/admin-r2-settings and unit/admin-local-tooling. The complete final run reduces concurrency with --maxWorkers=4, preserves all test source/assertions/timeouts, and leaves only the five path failures. These attempt to load `New%20project/.../scripts/release-check.mjs`, as in the verified main baseline. This is neither an all-PASS result nor proof of an Admin timeout fix. Protected Admin/release scripts and dependencies were not changed. Both final builds retain existing Admin font warnings.
+
+Exact focused commands:
+
+```sh
+pnpm exec vitest run tests/unit/family-preferences-favorites-ui.test.tsx tests/unit/family-meal-selection-ui.test.tsx tests/integration/family-preferences-favorites.test.ts tests/integration/family-manual-drafts.test.ts
+pnpm exec vitest run tests/unit/ui03-discovery.test.ts tests/unit/ui02-presentation.test.ts tests/integration/ui03-discovery-api.test.ts tests/integration/inventory-mutation-d1.test.mjs
+```
+
+Final paired browser command:
+
+```sh
+PREVIEW_MEAL_COMPOSITION_V2=true PORT=3282 PREVIEW_API_PORT=8908 pnpm exec playwright test --config=playwright.t17.config.ts --project=mobile-390 tests/e2e/t17-ui/takolio-saved-recipes.e2e.ts tests/e2e/t17-ui/takolio-recipe-discovery.e2e.ts --output=.artifacts/takeover/saved-recipes/verified-paired
+```
+
+Default composition V1 subset:
+
+```sh
+PORT=3282 PREVIEW_API_PORT=8908 pnpm exec playwright test --config=playwright.t17.config.ts --project=mobile-390 tests/e2e/t17-ui/takolio-saved-recipes.e2e.ts --grep 'persist|tabs' --output=.artifacts/takeover/saved-recipes/default-v1
+```
+
+Browser fixtures use the real isolated local Worker/SQLite with synthetic household data, mock AI and external-fetch blocking. Four saved tests cover persistence/search/removal/resave/reload, servings-preserving tabs/detail/planner-empty handoff, keyboard and eight responsive/text configurations. Seventeen axe reports have zero violations; two summary JSONs verify revisions 1 -> 2 -> 3, servings=4 and unchanged inventory. The paired run also repeats the two discovery tests. These are bounded local checks; Week OFF, live OTP/AI, screen reader, OS zoom, full meal-mutation E2E and performance certification are not implied.
+
+Earlier attempts remain recorded. Parent-level `.artifacts/takeover/saved-recipes-before.log` had one pass/two failures due to initial harness assumptions about the discovery accessible name and the composition flag; `saved-recipes-baseline-paired.log` then confirmed servings losses, while also exposing an incorrect manual-radio label assumption. After harness correction and the servings fix, `saved-recipes-after-focused.log` passed three tests; `saved-recipes-final-paired.log` passed six tests before geometry guards. Its screenshots exposed clipped action text at 200% and a shrunken close icon. In the saved-recipes subdirectory, `layout-before.log` stopped at preview bootstrap routing before UI coverage; `layout-red.log` reached the UI and failed close SVG width 11.140625px against >=20px. The final scoped CSS and text-range/SVG guards pass in `verified-paired.log`. No failed harness run is counted as a successful behavior baseline.
+
+Private snapshot verification, protected-main audit, evidence hashes/dimensions/completeness, 38 screen rows, CSV counts (69/79/12), selected-source hashes, token/private-path pattern scan and whitespace validation pass for this checkpoint. Dependency audit is inherited from the recipe-filter checkpoint (eight findings); it was not rerun here. No remote write or production mutation occurred.

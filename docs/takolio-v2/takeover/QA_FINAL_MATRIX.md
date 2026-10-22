@@ -2,16 +2,19 @@
 
 | Area | Status | Evidence / limit |
 |---|---|---|
-| Recovery | PASS | 22,763 regular files / 772 symlinks match private full snapshot; original HEAD/index/status preserved |
-| Main protection | PASS | Latest main `90b94129`; 5,847 paths outside allowlist unchanged; zero failures |
-| Lint / types / migrations / build | PASS | Exact commands and logs in TEST_BASELINES.md |
-| Focused UI/API regressions | PASS | Final combined run: six files / 116 tests |
-| Browser functional coverage | PASS_BOUNDED | Eight tests, including real local discovery/search/filter/pagination/removal, planner/upload/cooking, keyboard, reduced motion, axe and icon guard |
-| Recipe filter responsive evidence | PASS_BOUNDED | Eight viewport/text-scale combinations, eight axe reports with zero violations, long-search wrap and 44px targets; root-font 200% test only |
-| 38-row screenshot mapping | CAPTURED_FOR_REVIEW | 37 synthetic states + one landing proxy; no full behavioral or owner/pixel-match acceptance |
-| Full regression | PARTIAL | Canonical-TMPDIR rerun: 9,163/9,168; five inherited path failures. Ordinary run: 9,151/9,168; extra temp-path failures and Admin timeout did not recur |
-| Dependency security | OPEN_INHERITED | Eight findings, including high Vite GHSA-587h-7wmj-h5pm; dependencies unchanged |
-| Week flag OFF / live integrations | NOT_CERTIFIED | Protected code retained; browser fixture uses planner ON and mock AI; no live OTP/AI certification |
-| Performance / production readiness | NOT_CLAIMED | Build verified; no packet-specific LCP/CLS/capacity or production certification |
+| Recovery | PASS | 22,763 regular files / 772 symlinks match private snapshot; original HEAD/index/status preserved after saved implementation |
+| Main protection | PASS | Rechecked main `90b94129`; 5,846 paths outside explicit allowlist unchanged; zero failures |
+| Lint / types / migrations / builds | PASS | Current default and paired builds; exact commands/logs in TEST_BASELINES.md |
+| Focused family / favorites / manual drafts | PASS | Four files / 49 tests; final full suite also covers these files |
+| Focused discovery / presentation / inventory | PASS | Four files / 88 tests; final full suite also covers these files |
+| Saved + discovery browser | PASS_BOUNDED | Six final paired tests: persistence/search/removal/resave/reload, servings tabs/detail/empty planner handoff, discovery and keyboard |
+| Default composition V1 browser | PASS_BOUNDED | Two persistence/tab tests; no V2 handoff claim for V1 |
+| Saved responsive/accessibility | PASS_BOUNDED | Eight viewport/text settings, collection/dialog, 17 zero-violation axe reports, text bounds/44px buttons/20px close icon; root-font 200% only |
+| Historical filter browser | PASS_BOUNDED | Eight combined tests at prior filter checkpoint; latest discovery tests repeated in final paired run |
+| 38-row screenshot mapping | CAPTURED_FOR_REVIEW | 37 synthetic states + one landing proxy; full behavioral and owner/pixel acceptance pending |
+| Full regression | PARTIAL | Final canonical TMPDIR and maxWorkers=4: 9,163/9,168; five inherited path failures. Initial: 9,159/9,168, plus four Admin timeouts that did not recur |
+| Dependency security | OPEN_INHERITED | Prior audit: eight findings including high Vite GHSA-587h-7wmj-h5pm; unchanged dependencies, audit not rerun in saved packet |
+| Week OFF / live integrations | NOT_CERTIFIED | Protected code retained; browser planner ON, mock AI and external fetch blocked |
+| Screen reader / performance / production | NOT_CLAIMED | No full screen-reader, LCP/CLS/capacity, meal-mutation E2E or production certification |
 
-The local recipe-filter refinement is reviewable at `89b0a331`. UI-C5 as a whole remains partial; saved-recipe behavior is the next bounded verification target. Owner visual acceptance and publication/release approval remain pending. Production test-path tooling and dependency remediation remain outside this UI scope. Current user authorization covers further local UI work.
+Saved-recipes implementation is reviewable at `f11a244ca0964a63618c1fc3a3f30b8a670ec90a`; full UI-C5 remains partial. Next bounded local target is row 20 recipe-detail readiness, servings and cooking handoff. Owner visual acceptance and publication/release approval remain pending. Path-sensitive production test tooling and dependency remediation stay outside this UI scope. Current authorization covers further local UI continuation.
