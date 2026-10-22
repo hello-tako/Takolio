@@ -424,9 +424,26 @@
 }
 .family-favorite-actions {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
+}
+.family-favorite-actions > button {
+  height: auto;
+  min-height: 44px;
+  max-width: 100%;
+  padding-block: 10px;
+}
+.recipe-meal-dialog .family-dialog-heading {
+  align-items: flex-start;
+}
+.recipe-meal-dialog .family-dialog-heading > button {
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  min-height: 44px;
+  padding: 0;
 }
 .recipe-save-button {
   display: inline-flex;

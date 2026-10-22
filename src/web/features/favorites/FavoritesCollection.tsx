@@ -32,7 +32,7 @@ export type RecipeMealDialogEntry = {
   roles?: MealRole[];
 };
 
-export function FavoritesCollection() {
+export function FavoritesCollection({ servings }: { servings: number }) {
   const { query, guest } = useRecipeFavorites();
   const [search, setSearch] = useState('');
   const [selected, setSelected] = useState<FavoriteEntry | null>(null);
@@ -52,7 +52,7 @@ export function FavoritesCollection() {
         <p>Đăng nhập để lưu và chọn nhanh cho bữa tới.</p>
         <Link
           className="planning-primary-link"
-          to="/auth?mode=login&returnTo=%2Frecipes%3Fview%3Dsaved"
+          to={`/auth?mode=login&returnTo=${encodeURIComponent(`/recipes?view=saved&servings=${servings}`)}`}
         >
           Đăng nhập để lưu món
         </Link>
@@ -96,7 +96,7 @@ export function FavoritesCollection() {
               Xem tất cả món đã lưu
             </Button>
           ) : (
-            <Link className="planning-primary-link" to="/recipes">
+            <Link className="planning-primary-link" to={`/recipes?servings=${servings}`}>
               Tìm món để lưu
             </Link>
           )}
@@ -129,7 +129,7 @@ export function FavoritesCollection() {
                 <div className="family-favorite-actions">
                   <Link
                     className="planning-text-link"
-                    to={`/recipes/id/${encodeURIComponent(entry.recipeId)}`}
+                    to={`/recipes/id/${encodeURIComponent(entry.recipeId)}?servings=${servings}`}
                   >
                     Xem công thức
                   </Link>
@@ -142,7 +142,9 @@ export function FavoritesCollection() {
           ))}
         </div>
       )}
-      {selected && <RecipeMealDialog entry={selected} onClose={() => setSelected(null)} />}
+      {selected && (
+        <RecipeMealDialog entry={selected} defaultServings={servings} onClose={() => setSelected(null)} />
+      )}
     </section>
   );
 }
@@ -324,7 +326,7 @@ export function RecipeMealDialog({
         role="dialog"
         aria-modal="true"
         aria-labelledby="favorite-meal-title"
-        className="family-dialog"
+        className="family-dialog recipe-meal-dialog"
       >
         <div className="family-dialog-heading">
           <h2 id="favorite-meal-title">Đặt {entry.title} vào bữa</h2>

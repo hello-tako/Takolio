@@ -163,15 +163,15 @@ export const RecipesPage = () => {
         />
         <nav className="family-recipe-tabs" aria-label="Thư viện món">
 
-          <Link to="/recipes" aria-current={!savedView ? 'page' : undefined}>
+          <Link to={`/recipes?servings=${servings}`} aria-current={!savedView ? 'page' : undefined}>
             Tìm món
           </Link>
-          <Link to="/recipes?view=saved" aria-current={savedView ? 'page' : undefined}>
+          <Link to={`/recipes?view=saved&servings=${servings}`} aria-current={savedView ? 'page' : undefined}>
             Món đã lưu
           </Link>
         </nav>
         {savedView ? (
-          <FavoritesCollection />
+          <FavoritesCollection servings={servings} />
         ) : (
           <div className="discovery-workspace">
             <aside className="discovery-controls" aria-label="Tìm và lọc công thức">
