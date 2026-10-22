@@ -4131,3 +4131,8 @@ evidence or create a staging certificate.
 - [x] Two baseline-failing real local D1 regressions; focused tests 154/154 PASS.
 - [ ] Hosted CI/review, reviewed customer staging deploy and live transaction rerun.
 - [ ] Complete remaining actual Admin acceptance before production certification.
+
+- [x] Candidate inventory handler + actual staging D1: 113/113 assertions,
+  17/17 cleanup checks; four guest sessions revoked.
+- [x] Correct unit fake to model UPDATE RETURNING; focused suites 168/168 PASS.
+- [ ] Await full canonical-TMPDIR rerun and hosted CI on the final PR HEAD.

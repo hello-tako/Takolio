@@ -30,3 +30,26 @@ This finding must be verified after the customer staging runtime receives the
 reviewed fix. The Admin all-PASS certificate is still absent; existing incomplete
 role/browser, provider rotation and registered-account checks retain their actual
 pending state.
+
+## Candidate preview against actual staging D1
+
+The isolated candidate preview at runtime commit `485bb1218d85b771a7c3234776a0e5ddd74f618d`
+passed 113/113 assertions over 116 requests using four genuine guest cookie
+sessions. Inventory PATCH/DELETE used the candidate handler and actual staging
+D1; other requests exercised the existing customer staging Worker through its
+service binding. Cleanup passed 17/17 checks, removed synthetic shopping items,
+retained the expected zero-quantity inventory tombstone, and revoked all four
+sessions. A separate temporary diagnostic guest was also revoked with a final
+zero-active-session readback.
+
+The 48 read requests ran at concurrency 4: p95 844ms, maximum 913ms. This is a
+bounded measurement, not representative capacity certification. Sanitized
+receipt: `evidence/customer-inventory-cas-preview-20261023.json`.
+
+The first full local test run had 9146 PASS / 12 FAIL. Eleven failures were macOS
+`/var` versus `/private/var` temporary-path expectations; the affected tests pass
+100/100 with `TMPDIR=/private/tmp`. The remaining failure identified an inventory
+unit-test fake that omitted UPDATE RETURNING rows. Its result shape was updated
+without weakening assertions. The initial failed run remains retained; the
+current full-suite outcome must be read separately. No all-green full-suite
+claim is inferred from targeted reruns.

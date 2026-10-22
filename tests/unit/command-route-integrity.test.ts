@@ -188,6 +188,9 @@ class InventoryDatabase extends FakeDatabase {
 
     return statements.map((statement) => ({
       success: true,
+      results: statement === update && changed === 1
+        ? [{ id: this.row.id, version: this.row.version }]
+        : [],
       meta: { changes: statement === fence ? 0 : statement === update || statement === event ? changed : 1 },
     }));
   }

@@ -1176,3 +1176,13 @@ RETURNING row. Two real local D1 regressions fail before the fix and pass after;
 `docs/admin/production-readiness/34_CUSTOMER_INVENTORY_CAS_REGRESSION_20261023.md`.
 Next: run hosted CI and review, deploy the reviewed customer staging build and
 repeat the synthetic transaction; do not label ST19 or production Admin complete.
+
+### Follow-up verification
+
+Candidate preview with actual staging D1 passed 113/113 assertions over 116
+requests and 17/17 cleanup checks. Bounded read load: 48 requests, concurrency 4,
+p95 844ms/max 913ms. No runtime deploy is implied. The full local run returned
+9146 PASS/12 FAIL: eleven temporary-path failures pass with canonical TMPDIR;
+the remaining unit fake needed RETURNING rows. That fake is corrected and the
+expanded six-suite run passes 168/168. Full rerun is in progress; failed evidence
+is retained. Sanitized preview receipt is in readiness evidence.

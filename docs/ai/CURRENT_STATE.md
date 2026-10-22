@@ -11262,3 +11262,9 @@ Household/revision predicates and atomic audits remain unchanged. Two real local
 D1 regressions fail on baseline and pass with the fix; focused suites 154/154 PASS.
 The fix is not yet deployed. Production Admin remains NOT_DEPLOYED and the
 all-PASS exact-source certificate remains absent. See readiness document 34.
+
+Candidate preview against actual staging D1 passed 113/113 assertions, with
+17/17 cleanup checks and no production mutation. The full local run was not
+green (9146 PASS/12 FAIL); eleven temporary-path cases pass with canonical
+TMPDIR and the inventory unit fake was corrected to return CAS rows. Focused
+six-suite verification is now 168/168 PASS; final full and hosted CI are pending.

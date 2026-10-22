@@ -1,0 +1,1486 @@
+{
+  "adminSourceSha": "0322a9197bee4a4a42d95cc150f8d4fff6d53ba8",
+  "startedAt": "2026-10-22T16:42:47.586Z",
+  "scope": "Isolated candidate Worker preview: fixed inventory PATCH/DELETE using actual staging D1 and cookie authentication. Other requests use actual customer staging Worker. Not a deployed customer runtime, public-edge, registered-account or production capacity acceptance.",
+  "candidateSha": "485bb1218d85b771a7c3234776a0e5ddd74f618d",
+  "paidAiCalls": 0,
+  "emailSends": 0,
+  "productionMutations": [],
+  "result": {
+    "checks": [
+      {
+        "name": "health before",
+        "pass": true
+      },
+      {
+        "name": "anonymous profile denied",
+        "pass": true
+      },
+      {
+        "name": "household-0 real guest cookie",
+        "pass": true
+      },
+      {
+        "name": "household-0 authenticated profile",
+        "pass": true
+      },
+      {
+        "name": "household-1 real guest cookie",
+        "pass": true
+      },
+      {
+        "name": "household-1 authenticated profile",
+        "pass": true
+      },
+      {
+        "name": "household-2 real guest cookie",
+        "pass": true
+      },
+      {
+        "name": "household-2 authenticated profile",
+        "pass": true
+      },
+      {
+        "name": "household-3 real guest cookie",
+        "pass": true
+      },
+      {
+        "name": "household-3 authenticated profile",
+        "pass": true
+      },
+      {
+        "name": "four isolated households",
+        "pass": true
+      },
+      {
+        "name": "inventory create persisted",
+        "pass": true
+      },
+      {
+        "name": "inventory version positive",
+        "pass": true
+      },
+      {
+        "name": "inventory create replay",
+        "pass": true
+      },
+      {
+        "name": "inventory create payload conflict",
+        "pass": true
+      },
+      {
+        "name": "inventory cross-household id conflict",
+        "pass": true
+      },
+      {
+        "name": "inventory hidden from foreign household",
+        "pass": true
+      },
+      {
+        "name": "inventory missing revision denied",
+        "pass": true
+      },
+      {
+        "name": "inventory foreign update denied",
+        "pass": true
+      },
+      {
+        "name": "inventory hostile origin denied",
+        "pass": true
+      },
+      {
+        "name": "inventory update increments revision",
+        "pass": true
+      },
+      {
+        "name": "inventory stale revision denied",
+        "pass": true
+      },
+      {
+        "name": "household-0 shopping create",
+        "pass": true
+      },
+      {
+        "name": "household-0 shopping replay",
+        "pass": true
+      },
+      {
+        "name": "household-0 shopping update",
+        "pass": true
+      },
+      {
+        "name": "household-1 shopping create",
+        "pass": true
+      },
+      {
+        "name": "household-1 shopping replay",
+        "pass": true
+      },
+      {
+        "name": "household-1 shopping update",
+        "pass": true
+      },
+      {
+        "name": "household-2 shopping create",
+        "pass": true
+      },
+      {
+        "name": "household-2 shopping replay",
+        "pass": true
+      },
+      {
+        "name": "household-2 shopping update",
+        "pass": true
+      },
+      {
+        "name": "household-3 shopping create",
+        "pass": true
+      },
+      {
+        "name": "household-3 shopping replay",
+        "pass": true
+      },
+      {
+        "name": "household-3 shopping update",
+        "pass": true
+      },
+      {
+        "name": "shopping foreign id conflict",
+        "pass": true
+      },
+      {
+        "name": "shopping foreign mutation denied",
+        "pass": true
+      },
+      {
+        "name": "shopping foreign deletion denied",
+        "pass": true
+      },
+      {
+        "name": "shopping isolated read",
+        "pass": true
+      },
+      {
+        "name": "shopping invalid quantity denied",
+        "pass": true
+      },
+      {
+        "name": "guest plan mutation requires registered user",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 0 household-2",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 0 household-0",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 0 household-1",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 0 household-3",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 1 household-1",
+        "pass": true
+      },
+      {
+        "name": "loaded household isolation 1 household-1",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 1 household-0",
+        "pass": true
+      },
+      {
+        "name": "loaded household isolation 1 household-0",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 1 household-3",
+        "pass": true
+      },
+      {
+        "name": "loaded household isolation 1 household-3",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 1 household-2",
+        "pass": true
+      },
+      {
+        "name": "loaded household isolation 1 household-2",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 2 household-2",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 2 household-0",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 2 household-1",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 2 household-3",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 3 household-1",
+        "pass": true
+      },
+      {
+        "name": "loaded household isolation 3 household-1",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 3 household-3",
+        "pass": true
+      },
+      {
+        "name": "loaded household isolation 3 household-3",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 3 household-2",
+        "pass": true
+      },
+      {
+        "name": "loaded household isolation 3 household-2",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 3 household-0",
+        "pass": true
+      },
+      {
+        "name": "loaded household isolation 3 household-0",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 4 household-1",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 4 household-0",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 4 household-2",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 4 household-3",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 5 household-1",
+        "pass": true
+      },
+      {
+        "name": "loaded household isolation 5 household-1",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 5 household-2",
+        "pass": true
+      },
+      {
+        "name": "loaded household isolation 5 household-2",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 5 household-3",
+        "pass": true
+      },
+      {
+        "name": "loaded household isolation 5 household-3",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 5 household-0",
+        "pass": true
+      },
+      {
+        "name": "loaded household isolation 5 household-0",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 6 household-2",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 6 household-1",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 6 household-3",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 6 household-0",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 7 household-2",
+        "pass": true
+      },
+      {
+        "name": "loaded household isolation 7 household-2",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 7 household-3",
+        "pass": true
+      },
+      {
+        "name": "loaded household isolation 7 household-3",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 7 household-1",
+        "pass": true
+      },
+      {
+        "name": "loaded household isolation 7 household-1",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 7 household-0",
+        "pass": true
+      },
+      {
+        "name": "loaded household isolation 7 household-0",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 8 household-2",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 8 household-0",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 8 household-1",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 8 household-3",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 9 household-1",
+        "pass": true
+      },
+      {
+        "name": "loaded household isolation 9 household-1",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 9 household-2",
+        "pass": true
+      },
+      {
+        "name": "loaded household isolation 9 household-2",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 9 household-3",
+        "pass": true
+      },
+      {
+        "name": "loaded household isolation 9 household-3",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 9 household-0",
+        "pass": true
+      },
+      {
+        "name": "loaded household isolation 9 household-0",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 10 household-3",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 10 household-2",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 10 household-1",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 10 household-0",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 11 household-1",
+        "pass": true
+      },
+      {
+        "name": "loaded household isolation 11 household-1",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 11 household-3",
+        "pass": true
+      },
+      {
+        "name": "loaded household isolation 11 household-3",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 11 household-2",
+        "pass": true
+      },
+      {
+        "name": "loaded household isolation 11 household-2",
+        "pass": true
+      },
+      {
+        "name": "concurrent read 11 household-0",
+        "pass": true
+      },
+      {
+        "name": "loaded household isolation 11 household-0",
+        "pass": true
+      },
+      {
+        "name": "health after",
+        "pass": true
+      }
+    ],
+    "cleanup": [
+      {
+        "name": "household-0 inventory removal",
+        "pass": true
+      },
+      {
+        "name": "household-0 shopping removal",
+        "pass": true
+      },
+      {
+        "name": "household-0 synthetic resources cleaned",
+        "pass": true
+      },
+      {
+        "name": "household-0 logout",
+        "pass": true
+      },
+      {
+        "name": "household-0 revoked cookie denied",
+        "pass": true
+      },
+      {
+        "name": "household-1 shopping removal",
+        "pass": true
+      },
+      {
+        "name": "household-1 synthetic resources cleaned",
+        "pass": true
+      },
+      {
+        "name": "household-1 logout",
+        "pass": true
+      },
+      {
+        "name": "household-1 revoked cookie denied",
+        "pass": true
+      },
+      {
+        "name": "household-2 shopping removal",
+        "pass": true
+      },
+      {
+        "name": "household-2 synthetic resources cleaned",
+        "pass": true
+      },
+      {
+        "name": "household-2 logout",
+        "pass": true
+      },
+      {
+        "name": "household-2 revoked cookie denied",
+        "pass": true
+      },
+      {
+        "name": "household-3 shopping removal",
+        "pass": true
+      },
+      {
+        "name": "household-3 synthetic resources cleaned",
+        "pass": true
+      },
+      {
+        "name": "household-3 logout",
+        "pass": true
+      },
+      {
+        "name": "household-3 revoked cookie denied",
+        "pass": true
+      }
+    ],
+    "rows": [
+      {
+        "client": "anonymous",
+        "path": "/health/ready",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 1080
+      },
+      {
+        "client": "anonymous",
+        "path": "/me",
+        "method": "GET",
+        "status": 401,
+        "code": "UNAUTHORIZED",
+        "ms": 3
+      },
+      {
+        "client": "household-0",
+        "path": "/auth/guest",
+        "method": "POST",
+        "status": 200,
+        "code": null,
+        "ms": 824
+      },
+      {
+        "client": "household-0",
+        "path": "/me",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 268
+      },
+      {
+        "client": "household-1",
+        "path": "/auth/guest",
+        "method": "POST",
+        "status": 200,
+        "code": null,
+        "ms": 587
+      },
+      {
+        "client": "household-1",
+        "path": "/me",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 262
+      },
+      {
+        "client": "household-2",
+        "path": "/auth/guest",
+        "method": "POST",
+        "status": 200,
+        "code": null,
+        "ms": 605
+      },
+      {
+        "client": "household-2",
+        "path": "/me",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 256
+      },
+      {
+        "client": "household-3",
+        "path": "/auth/guest",
+        "method": "POST",
+        "status": 200,
+        "code": null,
+        "ms": 605
+      },
+      {
+        "client": "household-3",
+        "path": "/me",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 252
+      },
+      {
+        "client": "household-0",
+        "path": "/inventory",
+        "method": "POST",
+        "status": 201,
+        "code": null,
+        "ms": 2028
+      },
+      {
+        "client": "household-0",
+        "path": "/inventory",
+        "method": "POST",
+        "status": 200,
+        "code": null,
+        "ms": 1147
+      },
+      {
+        "client": "household-0",
+        "path": "/inventory",
+        "method": "POST",
+        "status": 409,
+        "code": "IDEMPOTENCY_CONFLICT",
+        "ms": 1156
+      },
+      {
+        "client": "household-1",
+        "path": "/inventory",
+        "method": "POST",
+        "status": 409,
+        "code": "CONFLICT",
+        "ms": 1397
+      },
+      {
+        "client": "household-1",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 744
+      },
+      {
+        "client": "household-0",
+        "path": "/inventory/QA_PREFIX_inv_0",
+        "method": "PATCH",
+        "status": 428,
+        "code": "PRECONDITION_REQUIRED",
+        "ms": 122
+      },
+      {
+        "client": "household-1",
+        "path": "/inventory/QA_PREFIX_inv_0",
+        "method": "PATCH",
+        "status": 404,
+        "code": "NOT_FOUND",
+        "ms": 185
+      },
+      {
+        "client": "household-0",
+        "path": "/inventory/QA_PREFIX_inv_0",
+        "method": "PATCH",
+        "status": 403,
+        "code": "CSRF_ORIGIN_DENIED",
+        "ms": 0
+      },
+      {
+        "client": "household-0",
+        "path": "/inventory/QA_PREFIX_inv_0",
+        "method": "PATCH",
+        "status": 200,
+        "code": null,
+        "ms": 405
+      },
+      {
+        "client": "household-0",
+        "path": "/inventory/QA_PREFIX_inv_0",
+        "method": "PATCH",
+        "status": 409,
+        "code": "CONFLICT",
+        "ms": 255
+      },
+      {
+        "client": "household-0",
+        "path": "/shopping-list/items",
+        "method": "POST",
+        "status": 201,
+        "code": null,
+        "ms": 1076
+      },
+      {
+        "client": "household-0",
+        "path": "/shopping-list/items",
+        "method": "POST",
+        "status": 200,
+        "code": null,
+        "ms": 694
+      },
+      {
+        "client": "household-0",
+        "path": "/shopping-list/items/QA_PREFIX_shop_0",
+        "method": "PATCH",
+        "status": 200,
+        "code": null,
+        "ms": 1043
+      },
+      {
+        "client": "household-1",
+        "path": "/shopping-list/items",
+        "method": "POST",
+        "status": 201,
+        "code": null,
+        "ms": 1058
+      },
+      {
+        "client": "household-1",
+        "path": "/shopping-list/items",
+        "method": "POST",
+        "status": 200,
+        "code": null,
+        "ms": 704
+      },
+      {
+        "client": "household-1",
+        "path": "/shopping-list/items/QA_PREFIX_shop_1",
+        "method": "PATCH",
+        "status": 200,
+        "code": null,
+        "ms": 983
+      },
+      {
+        "client": "household-2",
+        "path": "/shopping-list/items",
+        "method": "POST",
+        "status": 201,
+        "code": null,
+        "ms": 1069
+      },
+      {
+        "client": "household-2",
+        "path": "/shopping-list/items",
+        "method": "POST",
+        "status": 200,
+        "code": null,
+        "ms": 744
+      },
+      {
+        "client": "household-2",
+        "path": "/shopping-list/items/QA_PREFIX_shop_2",
+        "method": "PATCH",
+        "status": 200,
+        "code": null,
+        "ms": 1017
+      },
+      {
+        "client": "household-3",
+        "path": "/shopping-list/items",
+        "method": "POST",
+        "status": 201,
+        "code": null,
+        "ms": 1096
+      },
+      {
+        "client": "household-3",
+        "path": "/shopping-list/items",
+        "method": "POST",
+        "status": 200,
+        "code": null,
+        "ms": 691
+      },
+      {
+        "client": "household-3",
+        "path": "/shopping-list/items/QA_PREFIX_shop_3",
+        "method": "PATCH",
+        "status": 200,
+        "code": null,
+        "ms": 1027
+      },
+      {
+        "client": "household-1",
+        "path": "/shopping-list/items",
+        "method": "POST",
+        "status": 409,
+        "code": "CONFLICT",
+        "ms": 690
+      },
+      {
+        "client": "household-1",
+        "path": "/shopping-list/items/QA_PREFIX_shop_0",
+        "method": "PATCH",
+        "status": 404,
+        "code": "NOT_FOUND",
+        "ms": 861
+      },
+      {
+        "client": "household-1",
+        "path": "/shopping-list/items/QA_PREFIX_shop_0",
+        "method": "DELETE",
+        "status": 404,
+        "code": "NOT_FOUND",
+        "ms": 626
+      },
+      {
+        "client": "household-1",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 260
+      },
+      {
+        "client": "household-0",
+        "path": "/shopping-list/items/QA_PREFIX_shop_0",
+        "method": "PATCH",
+        "status": 400,
+        "code": "VALIDATION_ERROR",
+        "ms": 565
+      },
+      {
+        "client": "household-0",
+        "path": "/shopping-list/from-plan",
+        "method": "POST",
+        "status": 403,
+        "code": "REGISTERED_ACCOUNT_REQUIRED",
+        "ms": 825
+      },
+      {
+        "client": "household-2",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 671
+      },
+      {
+        "client": "household-0",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 734
+      },
+      {
+        "client": "household-1",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 834
+      },
+      {
+        "client": "household-3",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 913
+      },
+      {
+        "client": "household-1",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 249
+      },
+      {
+        "client": "household-0",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 263
+      },
+      {
+        "client": "household-3",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 263
+      },
+      {
+        "client": "household-2",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 263
+      },
+      {
+        "client": "household-2",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 704
+      },
+      {
+        "client": "household-0",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 721
+      },
+      {
+        "client": "household-1",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 729
+      },
+      {
+        "client": "household-3",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 754
+      },
+      {
+        "client": "household-1",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 284
+      },
+      {
+        "client": "household-3",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 293
+      },
+      {
+        "client": "household-2",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 294
+      },
+      {
+        "client": "household-0",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 294
+      },
+      {
+        "client": "household-1",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 712
+      },
+      {
+        "client": "household-0",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 736
+      },
+      {
+        "client": "household-2",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 741
+      },
+      {
+        "client": "household-3",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 809
+      },
+      {
+        "client": "household-1",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 272
+      },
+      {
+        "client": "household-2",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 285
+      },
+      {
+        "client": "household-3",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 285
+      },
+      {
+        "client": "household-0",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 285
+      },
+      {
+        "client": "household-2",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 723
+      },
+      {
+        "client": "household-1",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 834
+      },
+      {
+        "client": "household-3",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 844
+      },
+      {
+        "client": "household-0",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 868
+      },
+      {
+        "client": "household-2",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 255
+      },
+      {
+        "client": "household-3",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 276
+      },
+      {
+        "client": "household-1",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 279
+      },
+      {
+        "client": "household-0",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 281
+      },
+      {
+        "client": "household-2",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 740
+      },
+      {
+        "client": "household-0",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 740
+      },
+      {
+        "client": "household-1",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 745
+      },
+      {
+        "client": "household-3",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 778
+      },
+      {
+        "client": "household-1",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 252
+      },
+      {
+        "client": "household-2",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 254
+      },
+      {
+        "client": "household-3",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 261
+      },
+      {
+        "client": "household-0",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 263
+      },
+      {
+        "client": "household-3",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 726
+      },
+      {
+        "client": "household-2",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 742
+      },
+      {
+        "client": "household-1",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 744
+      },
+      {
+        "client": "household-0",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 751
+      },
+      {
+        "client": "household-1",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 260
+      },
+      {
+        "client": "household-3",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 262
+      },
+      {
+        "client": "household-2",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 275
+      },
+      {
+        "client": "household-0",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 277
+      },
+      {
+        "client": "anonymous",
+        "path": "/health/ready",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 603
+      },
+      {
+        "client": "household-0",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 848
+      },
+      {
+        "client": "household-0",
+        "path": "/inventory/QA_PREFIX_inv_0",
+        "method": "DELETE",
+        "status": 200,
+        "code": null,
+        "ms": 372
+      },
+      {
+        "client": "household-0",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 276
+      },
+      {
+        "client": "household-0",
+        "path": "/shopping-list/items/QA_PREFIX_shop_0",
+        "method": "DELETE",
+        "status": 200,
+        "code": null,
+        "ms": 890
+      },
+      {
+        "client": "household-0",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 721
+      },
+      {
+        "client": "household-0",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 268
+      },
+      {
+        "client": "household-0",
+        "path": "/auth/logout",
+        "method": "POST",
+        "status": 200,
+        "code": null,
+        "ms": 762
+      },
+      {
+        "client": "household-0",
+        "path": "/me",
+        "method": "GET",
+        "status": 401,
+        "code": "UNAUTHORIZED",
+        "ms": 68
+      },
+      {
+        "client": "household-1",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 701
+      },
+      {
+        "client": "household-1",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 290
+      },
+      {
+        "client": "household-1",
+        "path": "/shopping-list/items/QA_PREFIX_shop_1",
+        "method": "DELETE",
+        "status": 200,
+        "code": null,
+        "ms": 713
+      },
+      {
+        "client": "household-1",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 730
+      },
+      {
+        "client": "household-1",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 254
+      },
+      {
+        "client": "household-1",
+        "path": "/auth/logout",
+        "method": "POST",
+        "status": 200,
+        "code": null,
+        "ms": 514
+      },
+      {
+        "client": "household-1",
+        "path": "/me",
+        "method": "GET",
+        "status": 401,
+        "code": "UNAUTHORIZED",
+        "ms": 67
+      },
+      {
+        "client": "household-2",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 708
+      },
+      {
+        "client": "household-2",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 252
+      },
+      {
+        "client": "household-2",
+        "path": "/shopping-list/items/QA_PREFIX_shop_2",
+        "method": "DELETE",
+        "status": 200,
+        "code": null,
+        "ms": 732
+      },
+      {
+        "client": "household-2",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 782
+      },
+      {
+        "client": "household-2",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 262
+      },
+      {
+        "client": "household-2",
+        "path": "/auth/logout",
+        "method": "POST",
+        "status": 200,
+        "code": null,
+        "ms": 523
+      },
+      {
+        "client": "household-2",
+        "path": "/me",
+        "method": "GET",
+        "status": 401,
+        "code": "UNAUTHORIZED",
+        "ms": 62
+      },
+      {
+        "client": "household-3",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 992
+      },
+      {
+        "client": "household-3",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 262
+      },
+      {
+        "client": "household-3",
+        "path": "/shopping-list/items/QA_PREFIX_shop_3",
+        "method": "DELETE",
+        "status": 200,
+        "code": null,
+        "ms": 705
+      },
+      {
+        "client": "household-3",
+        "path": "/inventory",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 737
+      },
+      {
+        "client": "household-3",
+        "path": "/shopping-list",
+        "method": "GET",
+        "status": 200,
+        "code": null,
+        "ms": 254
+      },
+      {
+        "client": "household-3",
+        "path": "/auth/logout",
+        "method": "POST",
+        "status": 200,
+        "code": null,
+        "ms": 511
+      },
+      {
+        "client": "household-3",
+        "path": "/me",
+        "method": "GET",
+        "status": 401,
+        "code": "UNAUTHORIZED",
+        "ms": 63
+      }
+    ],
+    "load": {
+      "requests": 48,
+      "concurrency": 4,
+      "totalMs": 6536,
+      "p95Ms": 844,
+      "maxMs": 913,
+      "capacityCertification": false
+    },
+    "error": null,
+    "guestSessionsCreated": 4,
+    "retainedData": "Normal staging guest identity/lifecycle and inventory audit tombstones; synthetic shopping items removed, inventory items soft deleted, sessions revoked.",
+    "pass": true
+  },
+  "pass": true,
+  "completedAt": "2026-10-22T16:43:42.788Z",
+  "privateEvidenceSha256": "5140f4e29069ec784ac15f1f215bb75c73fce226897c7eaa43fbfc495084e73a",
+  "limitations": [
+    "Candidate preview only; no deployment of customer staging or production runtime.",
+    "Four guest identities; no registered-account regression.",
+    "48 concurrent reads at concurrency 4; no representative capacity certification.",
+    "No ST01-ST20 all-PASS certificate is asserted."
+  ]
+}
