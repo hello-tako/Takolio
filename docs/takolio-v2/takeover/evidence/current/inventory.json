@@ -1,0 +1,10 @@
+{
+  "route": "/fridge",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "h1": [
+    "Tủ lạnh của tôi"
+  ]
+}

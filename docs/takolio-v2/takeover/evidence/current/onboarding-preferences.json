@@ -1,0 +1,10 @@
+{
+  "route": "/onboarding/preferences",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "h1": [
+    "Nhà mình thường nấu thế nào?"
+  ]
+}

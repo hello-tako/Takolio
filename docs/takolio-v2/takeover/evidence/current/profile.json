@@ -1,0 +1,10 @@
+{
+  "route": "/me",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "h1": [
+    "Hồ sơ"
+  ]
+}

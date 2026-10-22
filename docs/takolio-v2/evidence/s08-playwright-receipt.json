@@ -1,0 +1,277 @@
+{
+  "executedAtUtc": "2026-10-22T14:45:40.851Z",
+  "packet": "S08",
+  "screenId": "08-home",
+  "loopStageTransitions": {
+    "emptyFridge": "fridge",
+    "inventoryOnlyNoPlan": "recipes",
+    "withPlan": "plan"
+  },
+  "pairedEmptyState": {
+    "loopStage": "recipes",
+    "planHeadingText": "Chưa có thực đơn hiện tại",
+    "setupCtaHref": "/planner/new",
+    "hasMascot": true
+  },
+  "headSha": "5db70a578764ccdb9ad458a21833fec5b6c04741",
+  "baseUrl": "http://127.0.0.1:5263",
+  "viewports": {
+    "mobile-short-320x420": {
+      "hasHomeS08Scope": true,
+      "rootOverflowX": "visible",
+      "loopStage": "plan",
+      "headingText": "Hôm nay ăn gì?",
+      "mealState": "ready",
+      "planHeadingText": "Cơm chiên kim chi Hàn Quốc",
+      "hasPlanSummary": true,
+      "planSummaryText": "Trong thực đơn7/7 bữa đã xếpXem lịch",
+      "primaryCtaHref": "/planner/fb2c1eca-4c48-4d99-ae30-9dcc67ab27ae/meal/2026-10-23%3Adinner%3A0",
+      "primaryCtaHeight": 45,
+      "primaryCtaUnoccluded": true,
+      "interactiveTargetCount": 10,
+      "minInteractiveTargetHeightPx": 44,
+      "childBoundsWithinViewport": true,
+      "expiryChips": [
+        {
+          "kind": "ESTIMATED",
+          "text": "Ước tính còn 2 ngày"
+        }
+      ],
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "noHorizontalOverflow": true
+    },
+    "mobile-360x844": {
+      "hasHomeS08Scope": true,
+      "rootOverflowX": "visible",
+      "loopStage": "plan",
+      "headingText": "Hôm nay ăn gì?",
+      "mealState": "ready",
+      "planHeadingText": "Cơm chiên kim chi Hàn Quốc",
+      "hasPlanSummary": true,
+      "planSummaryText": "Trong thực đơn7/7 bữa đã xếpXem lịch",
+      "primaryCtaHref": "/planner/fb2c1eca-4c48-4d99-ae30-9dcc67ab27ae/meal/2026-10-23%3Adinner%3A0",
+      "primaryCtaHeight": 45,
+      "primaryCtaUnoccluded": true,
+      "interactiveTargetCount": 10,
+      "minInteractiveTargetHeightPx": 44,
+      "childBoundsWithinViewport": true,
+      "expiryChips": [
+        {
+          "kind": "ESTIMATED",
+          "text": "Ước tính còn 2 ngày"
+        }
+      ],
+      "scrollWidth": 360,
+      "innerWidth": 360,
+      "noHorizontalOverflow": true
+    },
+    "mobile-390x844": {
+      "hasHomeS08Scope": true,
+      "rootOverflowX": "visible",
+      "loopStage": "plan",
+      "headingText": "Hôm nay ăn gì?",
+      "mealState": "ready",
+      "planHeadingText": "Cơm chiên kim chi Hàn Quốc",
+      "hasPlanSummary": true,
+      "planSummaryText": "Trong thực đơn7/7 bữa đã xếpXem lịch",
+      "primaryCtaHref": "/planner/fb2c1eca-4c48-4d99-ae30-9dcc67ab27ae/meal/2026-10-23%3Adinner%3A0",
+      "primaryCtaHeight": 45,
+      "primaryCtaUnoccluded": true,
+      "interactiveTargetCount": 10,
+      "minInteractiveTargetHeightPx": 44,
+      "childBoundsWithinViewport": true,
+      "expiryChips": [
+        {
+          "kind": "ESTIMATED",
+          "text": "Ước tính còn 2 ngày"
+        }
+      ],
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "noHorizontalOverflow": true
+    },
+    "mobile-430x932": {
+      "hasHomeS08Scope": true,
+      "rootOverflowX": "visible",
+      "loopStage": "plan",
+      "headingText": "Hôm nay ăn gì?",
+      "mealState": "ready",
+      "planHeadingText": "Cơm chiên kim chi Hàn Quốc",
+      "hasPlanSummary": true,
+      "planSummaryText": "Trong thực đơn7/7 bữa đã xếpXem lịch",
+      "primaryCtaHref": "/planner/fb2c1eca-4c48-4d99-ae30-9dcc67ab27ae/meal/2026-10-23%3Adinner%3A0",
+      "primaryCtaHeight": 45,
+      "primaryCtaUnoccluded": true,
+      "interactiveTargetCount": 10,
+      "minInteractiveTargetHeightPx": 44,
+      "childBoundsWithinViewport": true,
+      "expiryChips": [
+        {
+          "kind": "ESTIMATED",
+          "text": "Ước tính còn 2 ngày"
+        }
+      ],
+      "scrollWidth": 430,
+      "innerWidth": 430,
+      "noHorizontalOverflow": true
+    },
+    "tablet-768x1024": {
+      "hasHomeS08Scope": true,
+      "rootOverflowX": "visible",
+      "loopStage": "plan",
+      "headingText": "Hôm nay ăn gì?",
+      "mealState": "ready",
+      "planHeadingText": "Cơm chiên kim chi Hàn Quốc",
+      "hasPlanSummary": true,
+      "planSummaryText": "Trong thực đơn7/7 bữa đã xếpXem lịch",
+      "primaryCtaHref": "/planner/fb2c1eca-4c48-4d99-ae30-9dcc67ab27ae/meal/2026-10-23%3Adinner%3A0",
+      "primaryCtaHeight": 45,
+      "primaryCtaUnoccluded": true,
+      "interactiveTargetCount": 10,
+      "minInteractiveTargetHeightPx": 44,
+      "childBoundsWithinViewport": true,
+      "expiryChips": [
+        {
+          "kind": "ESTIMATED",
+          "text": "Ước tính còn 2 ngày"
+        }
+      ],
+      "scrollWidth": 768,
+      "innerWidth": 768,
+      "noHorizontalOverflow": true
+    },
+    "laptop-1024x900": {
+      "hasHomeS08Scope": true,
+      "rootOverflowX": "visible",
+      "loopStage": "plan",
+      "headingText": "Hôm nay ăn gì?",
+      "mealState": "ready",
+      "planHeadingText": "Cơm chiên kim chi Hàn Quốc",
+      "hasPlanSummary": true,
+      "planSummaryText": "Trong thực đơn7/7 bữa đã xếpXem lịch",
+      "primaryCtaHref": "/planner/fb2c1eca-4c48-4d99-ae30-9dcc67ab27ae/meal/2026-10-23%3Adinner%3A0",
+      "primaryCtaHeight": 45,
+      "primaryCtaUnoccluded": true,
+      "interactiveTargetCount": 10,
+      "minInteractiveTargetHeightPx": 44,
+      "childBoundsWithinViewport": true,
+      "expiryChips": [
+        {
+          "kind": "ESTIMATED",
+          "text": "Ước tính còn 2 ngày"
+        }
+      ],
+      "scrollWidth": 1024,
+      "innerWidth": 1024,
+      "noHorizontalOverflow": true
+    },
+    "desktop-1440x900": {
+      "hasHomeS08Scope": true,
+      "rootOverflowX": "visible",
+      "loopStage": "plan",
+      "headingText": "Hôm nay ăn gì?",
+      "mealState": "ready",
+      "planHeadingText": "Cơm chiên kim chi Hàn Quốc",
+      "hasPlanSummary": true,
+      "planSummaryText": "Trong thực đơn7/7 bữa đã xếpXem lịch",
+      "primaryCtaHref": "/planner/fb2c1eca-4c48-4d99-ae30-9dcc67ab27ae/meal/2026-10-23%3Adinner%3A0",
+      "primaryCtaHeight": 45,
+      "primaryCtaUnoccluded": true,
+      "interactiveTargetCount": 10,
+      "minInteractiveTargetHeightPx": 44,
+      "childBoundsWithinViewport": true,
+      "expiryChips": [
+        {
+          "kind": "ESTIMATED",
+          "text": "Ước tính còn 2 ngày"
+        }
+      ],
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "noHorizontalOverflow": true
+    }
+  },
+  "textZoom200": {
+    "zoom200-390x844": {
+      "baseRootFontPx": 16,
+      "zoomedRootFontPx": 32,
+      "hasHomeS08Scope": true,
+      "rootOverflowX": "visible",
+      "loopStage": "plan",
+      "headingText": "Hôm nay ăn gì?",
+      "mealState": "ready",
+      "planHeadingText": "Cơm chiên kim chi Hàn Quốc",
+      "hasPlanSummary": true,
+      "planSummaryText": "Trong thực đơn7/7 bữa đã xếpXem lịch",
+      "primaryCtaHref": "/planner/fb2c1eca-4c48-4d99-ae30-9dcc67ab27ae/meal/2026-10-23%3Adinner%3A0",
+      "primaryCtaHeight": 88,
+      "primaryCtaUnoccluded": true,
+      "interactiveTargetCount": 10,
+      "minInteractiveTargetHeightPx": 88,
+      "childBoundsWithinViewport": true,
+      "expiryChips": [
+        {
+          "kind": "ESTIMATED",
+          "text": "Ước tính còn 2 ngày"
+        }
+      ],
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "noHorizontalOverflow": true
+    },
+    "zoom200-320x420": {
+      "baseRootFontPx": 16,
+      "zoomedRootFontPx": 32,
+      "hasHomeS08Scope": true,
+      "rootOverflowX": "visible",
+      "loopStage": "plan",
+      "headingText": "Hôm nay ăn gì?",
+      "mealState": "ready",
+      "planHeadingText": "Cơm chiên kim chi Hàn Quốc",
+      "hasPlanSummary": true,
+      "planSummaryText": "Trong thực đơn7/7 bữa đã xếpXem lịch",
+      "primaryCtaHref": "/planner/fb2c1eca-4c48-4d99-ae30-9dcc67ab27ae/meal/2026-10-23%3Adinner%3A0",
+      "primaryCtaHeight": 88,
+      "primaryCtaUnoccluded": true,
+      "interactiveTargetCount": 10,
+      "minInteractiveTargetHeightPx": 88,
+      "childBoundsWithinViewport": true,
+      "expiryChips": [
+        {
+          "kind": "ESTIMATED",
+          "text": "Ước tính còn 2 ngày"
+        }
+      ],
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "noHorizontalOverflow": true
+    }
+  },
+  "keyboardNavigation": {
+    "sequentialTabCountFromTopToPrimaryCta": 9,
+    "focusedAfterTabAndShiftTab": {
+      "tagName": "A",
+      "href": "/planner/fb2c1eca-4c48-4d99-ae30-9dcc67ab27ae/meal/2026-10-23%3Adinner%3A0",
+      "text": "Xem bữa ăn",
+      "matchesFocusVisible": true,
+      "outlineStyle": "solid",
+      "outlineWidth": "3px",
+      "unoccludedInViewport": true
+    },
+    "enterActivatedPath": "/planner/fb2c1eca-4c48-4d99-ae30-9dcc67ab27ae/meal/2026-10-23%3Adinner%3A0"
+  },
+  "axeViolations": {
+    "mobile-390x844": 0,
+    "desktop-1440x900": 0,
+    "zoom200-390x844": 0,
+    "zoom200-320x420": 0
+  },
+  "screenshots": {
+    "s08-home-390x844.png": "7731072150fee4d542dd813785331229e29f3c050959a62a565571dd7614b162",
+    "s08-home-320x420.png": "b8a58476405ee683c8147583e3e9d72a070ba0a47a3a02640dc1da1de783eb39",
+    "s08-home-768x1024.png": "a5a98bddde337860d81cdb999c7844dd65d83643609cc5f449c59ad46a83927f",
+    "s08-home-1440x900.png": "54dcb05f710e3b6b5b66e745037712191fc1b4d31ca1675da051167b7d59409b",
+    "s08-home-390x844-zoom200.png": "0eb80f3751e695a0172ddfe69714ecfb2c300fd9ae4bd65370ab1a9efed0f23a"
+  }
+}

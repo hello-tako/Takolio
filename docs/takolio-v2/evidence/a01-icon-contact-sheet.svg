@@ -1,0 +1,831 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1140" height="2220" viewBox="0 0 1140 2220" fill="none" role="img" data-contact-sheet="A01-P0-icons-full-matrix">
+  <title>Takolio V2 — A01 Original P0 Navigation Icon Contact Sheet (Full 2 Surfaces x 4 States x 4 Sizes x 6 Icons = 192 Cells)</title>
+  <desc>Complete A01-A evidence matrix covering 20px, 24px, 32px, and 48px across Inactive, Active, Focus, and Disabled states on Cream (#FFF8ED) and Dark Navy (#0F2D46) surfaces.</desc>
+  <rect x="0" y="0" width="1140" height="2220" fill="#F7EFE2"/>
+  <text x="32" y="38" fill="#0F2D46" font-family="Plus Jakarta Sans, Nunito, system-ui, sans-serif" font-size="18" font-weight="700">TAKOLIO V2 — A01 FULL COVERAGE MATRIX (2 SURFACES × 4 STATES × 4 SIZES × 6 ICONS = 192 CELLS)</text>
+  <text x="32" y="60" fill="#4A4741" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11">WCAG 2.2 AA contrast: Cream Inactive #4A4741 (8.79:1) · Active #276F3F/#E8F7EC (5.42:1) · Focus #2E7D5B (5.14:1) | Navy Inactive #C9D6DF (9.58:1) · Active #FFF8ED (13.25:1) · Focus #4CAF6B (5.35:1)</text>
+  <g data-surface-panel="cream">
+    <rect x="20" y="78" width="1100" height="1040" rx="20" fill="#FFF8ED" stroke="#E7E3DA" stroke-width="1.5"/>
+    <text x="44" y="112" fill="#0F2D46" font-family="Plus Jakarta Sans, Nunito, system-ui, sans-serif" font-size="14" font-weight="700">SURFACE 1: CREAM (#FFF8ED) — FULL 4 STATES × 4 SIZES (20px / 24px / 32px / 48px) × 6 ICONS = 96 CELLS</text>
+    <g font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="700" fill="#0F2D46" text-anchor="middle">
+      <text x="270" y="140">icon-home (Trang chủ)</text>
+      <text x="425" y="140">icon-fridge (Tủ lạnh)</text>
+      <text x="580" y="140">icon-recipe (Công thức)</text>
+      <text x="735" y="140">icon-meal-plan (Thực đơn)</text>
+      <text x="890" y="140">icon-profile (Tôi)</text>
+      <text x="1045" y="140">icon-scan (Quét CTA)</text>
+    </g>
+    <line x1="40" y1="156" x2="1100" y2="156" stroke="#EFE7DA" stroke-width="1"/>
+    <g data-matrix-row="cream-inactive-20px" data-surface="cream" data-state="inactive" data-size="20">
+      <text x="44" y="184" fill="#4A4741" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">CREAM · Inactive · 20px</text>
+      <g data-matrix-cell="cream-inactive-20px-icon-home" data-icon-id="icon-home">
+        <g transform="translate(260,170) scale(0.8333)" stroke="#4A4741" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-inactive-20px-icon-fridge" data-icon-id="icon-fridge">
+        <g transform="translate(415,170) scale(0.8333)" stroke="#4A4741" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-inactive-20px-icon-recipe" data-icon-id="icon-recipe">
+        <g transform="translate(570,170) scale(0.8333)" stroke="#4A4741" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="cream-inactive-20px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <g transform="translate(725,170) scale(0.8333)" stroke="#4A4741" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="cream-inactive-20px-icon-profile" data-icon-id="icon-profile">
+        <g transform="translate(880,170) scale(0.8333)" stroke="#4A4741" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="cream-inactive-20px-icon-scan" data-icon-id="icon-scan">
+        <g transform="translate(1035,170) scale(0.8333)" stroke="#4A4741" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+    <line x1="40" y1="204" x2="1100" y2="204" stroke="#EFE7DA" stroke-width="1"/>
+    <g data-matrix-row="cream-inactive-24px" data-surface="cream" data-state="inactive" data-size="24">
+      <text x="44" y="234" fill="#4A4741" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">CREAM · Inactive · 24px</text>
+      <g data-matrix-cell="cream-inactive-24px-icon-home" data-icon-id="icon-home">
+        <g transform="translate(258,218) scale(1)" stroke="#4A4741" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-inactive-24px-icon-fridge" data-icon-id="icon-fridge">
+        <g transform="translate(413,218) scale(1)" stroke="#4A4741" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-inactive-24px-icon-recipe" data-icon-id="icon-recipe">
+        <g transform="translate(568,218) scale(1)" stroke="#4A4741" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="cream-inactive-24px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <g transform="translate(723,218) scale(1)" stroke="#4A4741" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="cream-inactive-24px-icon-profile" data-icon-id="icon-profile">
+        <g transform="translate(878,218) scale(1)" stroke="#4A4741" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="cream-inactive-24px-icon-scan" data-icon-id="icon-scan">
+        <g transform="translate(1033,218) scale(1)" stroke="#4A4741" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+    <line x1="40" y1="256" x2="1100" y2="256" stroke="#EFE7DA" stroke-width="1"/>
+    <g data-matrix-row="cream-inactive-32px" data-surface="cream" data-state="inactive" data-size="32">
+      <text x="44" y="290" fill="#4A4741" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">CREAM · Inactive · 32px</text>
+      <g data-matrix-cell="cream-inactive-32px-icon-home" data-icon-id="icon-home">
+        <g transform="translate(254,270) scale(1.3333)" stroke="#4A4741" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-inactive-32px-icon-fridge" data-icon-id="icon-fridge">
+        <g transform="translate(409,270) scale(1.3333)" stroke="#4A4741" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-inactive-32px-icon-recipe" data-icon-id="icon-recipe">
+        <g transform="translate(564,270) scale(1.3333)" stroke="#4A4741" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="cream-inactive-32px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <g transform="translate(719,270) scale(1.3333)" stroke="#4A4741" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="cream-inactive-32px-icon-profile" data-icon-id="icon-profile">
+        <g transform="translate(874,270) scale(1.3333)" stroke="#4A4741" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="cream-inactive-32px-icon-scan" data-icon-id="icon-scan">
+        <g transform="translate(1029,270) scale(1.3333)" stroke="#4A4741" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+    <line x1="40" y1="316" x2="1100" y2="316" stroke="#EFE7DA" stroke-width="1"/>
+    <g data-matrix-row="cream-inactive-48px" data-surface="cream" data-state="inactive" data-size="48">
+      <text x="44" y="358" fill="#4A4741" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">CREAM · Inactive · 48px</text>
+      <g data-matrix-cell="cream-inactive-48px-icon-home" data-icon-id="icon-home">
+        <g transform="translate(246,330) scale(2)" stroke="#4A4741" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-inactive-48px-icon-fridge" data-icon-id="icon-fridge">
+        <g transform="translate(401,330) scale(2)" stroke="#4A4741" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-inactive-48px-icon-recipe" data-icon-id="icon-recipe">
+        <g transform="translate(556,330) scale(2)" stroke="#4A4741" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="cream-inactive-48px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <g transform="translate(711,330) scale(2)" stroke="#4A4741" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="cream-inactive-48px-icon-profile" data-icon-id="icon-profile">
+        <g transform="translate(866,330) scale(2)" stroke="#4A4741" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="cream-inactive-48px-icon-scan" data-icon-id="icon-scan">
+        <g transform="translate(1021,330) scale(2)" stroke="#4A4741" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+    <line x1="40" y1="392" x2="1100" y2="392" stroke="#EFE7DA" stroke-width="1"/>
+    <g data-matrix-row="cream-active-20px" data-surface="cream" data-state="active" data-size="20">
+      <text x="44" y="420" fill="#4A4741" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">CREAM · Active · 20px</text>
+      <g data-matrix-cell="cream-active-20px-icon-home" data-icon-id="icon-home">
+        <rect x="252" y="398" width="36" height="36" rx="12" fill="#E8F7EC" stroke="#BFE3CC" stroke-width="1.2"/>
+        <g transform="translate(260,406) scale(0.8333)" stroke="#276F3F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-active-20px-icon-fridge" data-icon-id="icon-fridge">
+        <rect x="407" y="398" width="36" height="36" rx="12" fill="#E8F7EC" stroke="#BFE3CC" stroke-width="1.2"/>
+        <g transform="translate(415,406) scale(0.8333)" stroke="#276F3F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-active-20px-icon-recipe" data-icon-id="icon-recipe">
+        <rect x="562" y="398" width="36" height="36" rx="12" fill="#E8F7EC" stroke="#BFE3CC" stroke-width="1.2"/>
+        <g transform="translate(570,406) scale(0.8333)" stroke="#276F3F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="cream-active-20px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <rect x="717" y="398" width="36" height="36" rx="12" fill="#E8F7EC" stroke="#BFE3CC" stroke-width="1.2"/>
+        <g transform="translate(725,406) scale(0.8333)" stroke="#276F3F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="cream-active-20px-icon-profile" data-icon-id="icon-profile">
+        <rect x="872" y="398" width="36" height="36" rx="12" fill="#E8F7EC" stroke="#BFE3CC" stroke-width="1.2"/>
+        <g transform="translate(880,406) scale(0.8333)" stroke="#276F3F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="cream-active-20px-icon-scan" data-icon-id="icon-scan">
+        <rect x="1027" y="398" width="36" height="36" rx="12" fill="#0F2D46" stroke="#BFE3CC" stroke-width="1.2"/>
+        <g transform="translate(1035,406) scale(0.8333)" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+    <line x1="40" y1="440" x2="1100" y2="440" stroke="#EFE7DA" stroke-width="1"/>
+    <g data-matrix-row="cream-active-24px" data-surface="cream" data-state="active" data-size="24">
+      <text x="44" y="470" fill="#4A4741" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">CREAM · Active · 24px</text>
+      <g data-matrix-cell="cream-active-24px-icon-home" data-icon-id="icon-home">
+        <rect x="250" y="446" width="40" height="40" rx="12" fill="#E8F7EC" stroke="#BFE3CC" stroke-width="1.2"/>
+        <g transform="translate(258,454) scale(1)" stroke="#276F3F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-active-24px-icon-fridge" data-icon-id="icon-fridge">
+        <rect x="405" y="446" width="40" height="40" rx="12" fill="#E8F7EC" stroke="#BFE3CC" stroke-width="1.2"/>
+        <g transform="translate(413,454) scale(1)" stroke="#276F3F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-active-24px-icon-recipe" data-icon-id="icon-recipe">
+        <rect x="560" y="446" width="40" height="40" rx="12" fill="#E8F7EC" stroke="#BFE3CC" stroke-width="1.2"/>
+        <g transform="translate(568,454) scale(1)" stroke="#276F3F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="cream-active-24px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <rect x="715" y="446" width="40" height="40" rx="12" fill="#E8F7EC" stroke="#BFE3CC" stroke-width="1.2"/>
+        <g transform="translate(723,454) scale(1)" stroke="#276F3F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="cream-active-24px-icon-profile" data-icon-id="icon-profile">
+        <rect x="870" y="446" width="40" height="40" rx="12" fill="#E8F7EC" stroke="#BFE3CC" stroke-width="1.2"/>
+        <g transform="translate(878,454) scale(1)" stroke="#276F3F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="cream-active-24px-icon-scan" data-icon-id="icon-scan">
+        <rect x="1025" y="446" width="40" height="40" rx="12" fill="#0F2D46" stroke="#BFE3CC" stroke-width="1.2"/>
+        <g transform="translate(1033,454) scale(1)" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+    <line x1="40" y1="492" x2="1100" y2="492" stroke="#EFE7DA" stroke-width="1"/>
+    <g data-matrix-row="cream-active-32px" data-surface="cream" data-state="active" data-size="32">
+      <text x="44" y="526" fill="#4A4741" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">CREAM · Active · 32px</text>
+      <g data-matrix-cell="cream-active-32px-icon-home" data-icon-id="icon-home">
+        <rect x="246" y="498" width="48" height="48" rx="12" fill="#E8F7EC" stroke="#BFE3CC" stroke-width="1.2"/>
+        <g transform="translate(254,506) scale(1.3333)" stroke="#276F3F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-active-32px-icon-fridge" data-icon-id="icon-fridge">
+        <rect x="401" y="498" width="48" height="48" rx="12" fill="#E8F7EC" stroke="#BFE3CC" stroke-width="1.2"/>
+        <g transform="translate(409,506) scale(1.3333)" stroke="#276F3F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-active-32px-icon-recipe" data-icon-id="icon-recipe">
+        <rect x="556" y="498" width="48" height="48" rx="12" fill="#E8F7EC" stroke="#BFE3CC" stroke-width="1.2"/>
+        <g transform="translate(564,506) scale(1.3333)" stroke="#276F3F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="cream-active-32px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <rect x="711" y="498" width="48" height="48" rx="12" fill="#E8F7EC" stroke="#BFE3CC" stroke-width="1.2"/>
+        <g transform="translate(719,506) scale(1.3333)" stroke="#276F3F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="cream-active-32px-icon-profile" data-icon-id="icon-profile">
+        <rect x="866" y="498" width="48" height="48" rx="12" fill="#E8F7EC" stroke="#BFE3CC" stroke-width="1.2"/>
+        <g transform="translate(874,506) scale(1.3333)" stroke="#276F3F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="cream-active-32px-icon-scan" data-icon-id="icon-scan">
+        <rect x="1021" y="498" width="48" height="48" rx="12" fill="#0F2D46" stroke="#BFE3CC" stroke-width="1.2"/>
+        <g transform="translate(1029,506) scale(1.3333)" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+    <line x1="40" y1="552" x2="1100" y2="552" stroke="#EFE7DA" stroke-width="1"/>
+    <g data-matrix-row="cream-active-48px" data-surface="cream" data-state="active" data-size="48">
+      <text x="44" y="594" fill="#4A4741" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">CREAM · Active · 48px</text>
+      <g data-matrix-cell="cream-active-48px-icon-home" data-icon-id="icon-home">
+        <rect x="238" y="558" width="64" height="64" rx="12" fill="#E8F7EC" stroke="#BFE3CC" stroke-width="1.2"/>
+        <g transform="translate(246,566) scale(2)" stroke="#276F3F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-active-48px-icon-fridge" data-icon-id="icon-fridge">
+        <rect x="393" y="558" width="64" height="64" rx="12" fill="#E8F7EC" stroke="#BFE3CC" stroke-width="1.2"/>
+        <g transform="translate(401,566) scale(2)" stroke="#276F3F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-active-48px-icon-recipe" data-icon-id="icon-recipe">
+        <rect x="548" y="558" width="64" height="64" rx="12" fill="#E8F7EC" stroke="#BFE3CC" stroke-width="1.2"/>
+        <g transform="translate(556,566) scale(2)" stroke="#276F3F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="cream-active-48px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <rect x="703" y="558" width="64" height="64" rx="12" fill="#E8F7EC" stroke="#BFE3CC" stroke-width="1.2"/>
+        <g transform="translate(711,566) scale(2)" stroke="#276F3F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="cream-active-48px-icon-profile" data-icon-id="icon-profile">
+        <rect x="858" y="558" width="64" height="64" rx="12" fill="#E8F7EC" stroke="#BFE3CC" stroke-width="1.2"/>
+        <g transform="translate(866,566) scale(2)" stroke="#276F3F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="cream-active-48px-icon-scan" data-icon-id="icon-scan">
+        <rect x="1013" y="558" width="64" height="64" rx="12" fill="#0F2D46" stroke="#BFE3CC" stroke-width="1.2"/>
+        <g transform="translate(1021,566) scale(2)" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+    <line x1="40" y1="628" x2="1100" y2="628" stroke="#EFE7DA" stroke-width="1"/>
+    <g data-matrix-row="cream-focus-20px" data-surface="cream" data-state="focus" data-size="20">
+      <text x="44" y="656" fill="#4A4741" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">CREAM · Focus · 20px</text>
+      <g data-matrix-cell="cream-focus-20px-icon-home" data-icon-id="icon-home">
+        <rect x="252" y="634" width="36" height="36" rx="12" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="2"/>
+        <g transform="translate(260,642) scale(0.8333)" stroke="#0F2D46" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-focus-20px-icon-fridge" data-icon-id="icon-fridge">
+        <rect x="407" y="634" width="36" height="36" rx="12" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="2"/>
+        <g transform="translate(415,642) scale(0.8333)" stroke="#0F2D46" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-focus-20px-icon-recipe" data-icon-id="icon-recipe">
+        <rect x="562" y="634" width="36" height="36" rx="12" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="2"/>
+        <g transform="translate(570,642) scale(0.8333)" stroke="#0F2D46" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="cream-focus-20px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <rect x="717" y="634" width="36" height="36" rx="12" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="2"/>
+        <g transform="translate(725,642) scale(0.8333)" stroke="#0F2D46" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="cream-focus-20px-icon-profile" data-icon-id="icon-profile">
+        <rect x="872" y="634" width="36" height="36" rx="12" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="2"/>
+        <g transform="translate(880,642) scale(0.8333)" stroke="#0F2D46" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="cream-focus-20px-icon-scan" data-icon-id="icon-scan">
+        <rect x="1027" y="634" width="36" height="36" rx="12" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="2"/>
+        <g transform="translate(1035,642) scale(0.8333)" stroke="#0F2D46" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+    <line x1="40" y1="676" x2="1100" y2="676" stroke="#EFE7DA" stroke-width="1"/>
+    <g data-matrix-row="cream-focus-24px" data-surface="cream" data-state="focus" data-size="24">
+      <text x="44" y="706" fill="#4A4741" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">CREAM · Focus · 24px</text>
+      <g data-matrix-cell="cream-focus-24px-icon-home" data-icon-id="icon-home">
+        <rect x="250" y="682" width="40" height="40" rx="12" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="2"/>
+        <g transform="translate(258,690) scale(1)" stroke="#0F2D46" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-focus-24px-icon-fridge" data-icon-id="icon-fridge">
+        <rect x="405" y="682" width="40" height="40" rx="12" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="2"/>
+        <g transform="translate(413,690) scale(1)" stroke="#0F2D46" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-focus-24px-icon-recipe" data-icon-id="icon-recipe">
+        <rect x="560" y="682" width="40" height="40" rx="12" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="2"/>
+        <g transform="translate(568,690) scale(1)" stroke="#0F2D46" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="cream-focus-24px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <rect x="715" y="682" width="40" height="40" rx="12" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="2"/>
+        <g transform="translate(723,690) scale(1)" stroke="#0F2D46" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="cream-focus-24px-icon-profile" data-icon-id="icon-profile">
+        <rect x="870" y="682" width="40" height="40" rx="12" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="2"/>
+        <g transform="translate(878,690) scale(1)" stroke="#0F2D46" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="cream-focus-24px-icon-scan" data-icon-id="icon-scan">
+        <rect x="1025" y="682" width="40" height="40" rx="12" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="2"/>
+        <g transform="translate(1033,690) scale(1)" stroke="#0F2D46" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+    <line x1="40" y1="728" x2="1100" y2="728" stroke="#EFE7DA" stroke-width="1"/>
+    <g data-matrix-row="cream-focus-32px" data-surface="cream" data-state="focus" data-size="32">
+      <text x="44" y="762" fill="#4A4741" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">CREAM · Focus · 32px</text>
+      <g data-matrix-cell="cream-focus-32px-icon-home" data-icon-id="icon-home">
+        <rect x="246" y="734" width="48" height="48" rx="12" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="2"/>
+        <g transform="translate(254,742) scale(1.3333)" stroke="#0F2D46" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-focus-32px-icon-fridge" data-icon-id="icon-fridge">
+        <rect x="401" y="734" width="48" height="48" rx="12" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="2"/>
+        <g transform="translate(409,742) scale(1.3333)" stroke="#0F2D46" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-focus-32px-icon-recipe" data-icon-id="icon-recipe">
+        <rect x="556" y="734" width="48" height="48" rx="12" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="2"/>
+        <g transform="translate(564,742) scale(1.3333)" stroke="#0F2D46" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="cream-focus-32px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <rect x="711" y="734" width="48" height="48" rx="12" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="2"/>
+        <g transform="translate(719,742) scale(1.3333)" stroke="#0F2D46" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="cream-focus-32px-icon-profile" data-icon-id="icon-profile">
+        <rect x="866" y="734" width="48" height="48" rx="12" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="2"/>
+        <g transform="translate(874,742) scale(1.3333)" stroke="#0F2D46" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="cream-focus-32px-icon-scan" data-icon-id="icon-scan">
+        <rect x="1021" y="734" width="48" height="48" rx="12" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="2"/>
+        <g transform="translate(1029,742) scale(1.3333)" stroke="#0F2D46" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+    <line x1="40" y1="788" x2="1100" y2="788" stroke="#EFE7DA" stroke-width="1"/>
+    <g data-matrix-row="cream-focus-48px" data-surface="cream" data-state="focus" data-size="48">
+      <text x="44" y="830" fill="#4A4741" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">CREAM · Focus · 48px</text>
+      <g data-matrix-cell="cream-focus-48px-icon-home" data-icon-id="icon-home">
+        <rect x="238" y="794" width="64" height="64" rx="12" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="2"/>
+        <g transform="translate(246,802) scale(2)" stroke="#0F2D46" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-focus-48px-icon-fridge" data-icon-id="icon-fridge">
+        <rect x="393" y="794" width="64" height="64" rx="12" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="2"/>
+        <g transform="translate(401,802) scale(2)" stroke="#0F2D46" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-focus-48px-icon-recipe" data-icon-id="icon-recipe">
+        <rect x="548" y="794" width="64" height="64" rx="12" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="2"/>
+        <g transform="translate(556,802) scale(2)" stroke="#0F2D46" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="cream-focus-48px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <rect x="703" y="794" width="64" height="64" rx="12" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="2"/>
+        <g transform="translate(711,802) scale(2)" stroke="#0F2D46" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="cream-focus-48px-icon-profile" data-icon-id="icon-profile">
+        <rect x="858" y="794" width="64" height="64" rx="12" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="2"/>
+        <g transform="translate(866,802) scale(2)" stroke="#0F2D46" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="cream-focus-48px-icon-scan" data-icon-id="icon-scan">
+        <rect x="1013" y="794" width="64" height="64" rx="12" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="2"/>
+        <g transform="translate(1021,802) scale(2)" stroke="#0F2D46" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+    <line x1="40" y1="864" x2="1100" y2="864" stroke="#EFE7DA" stroke-width="1"/>
+    <g data-matrix-row="cream-disabled-20px" data-surface="cream" data-state="disabled" data-size="20">
+      <text x="44" y="892" fill="#4A4741" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">CREAM · Disabled · 20px</text>
+      <g data-matrix-cell="cream-disabled-20px-icon-home" data-icon-id="icon-home">
+        <g transform="translate(260,878) scale(0.8333)" stroke="#6F6B64" stroke-width="1.8" stroke-opacity="0.42" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-disabled-20px-icon-fridge" data-icon-id="icon-fridge">
+        <g transform="translate(415,878) scale(0.8333)" stroke="#6F6B64" stroke-width="1.8" stroke-opacity="0.42" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-disabled-20px-icon-recipe" data-icon-id="icon-recipe">
+        <g transform="translate(570,878) scale(0.8333)" stroke="#6F6B64" stroke-width="1.8" stroke-opacity="0.42" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="cream-disabled-20px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <g transform="translate(725,878) scale(0.8333)" stroke="#6F6B64" stroke-width="1.8" stroke-opacity="0.42" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="cream-disabled-20px-icon-profile" data-icon-id="icon-profile">
+        <g transform="translate(880,878) scale(0.8333)" stroke="#6F6B64" stroke-width="1.8" stroke-opacity="0.42" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="cream-disabled-20px-icon-scan" data-icon-id="icon-scan">
+        <g transform="translate(1035,878) scale(0.8333)" stroke="#6F6B64" stroke-width="1.8" stroke-opacity="0.42" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+    <line x1="40" y1="912" x2="1100" y2="912" stroke="#EFE7DA" stroke-width="1"/>
+    <g data-matrix-row="cream-disabled-24px" data-surface="cream" data-state="disabled" data-size="24">
+      <text x="44" y="942" fill="#4A4741" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">CREAM · Disabled · 24px</text>
+      <g data-matrix-cell="cream-disabled-24px-icon-home" data-icon-id="icon-home">
+        <g transform="translate(258,926) scale(1)" stroke="#6F6B64" stroke-width="1.8" stroke-opacity="0.42" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-disabled-24px-icon-fridge" data-icon-id="icon-fridge">
+        <g transform="translate(413,926) scale(1)" stroke="#6F6B64" stroke-width="1.8" stroke-opacity="0.42" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-disabled-24px-icon-recipe" data-icon-id="icon-recipe">
+        <g transform="translate(568,926) scale(1)" stroke="#6F6B64" stroke-width="1.8" stroke-opacity="0.42" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="cream-disabled-24px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <g transform="translate(723,926) scale(1)" stroke="#6F6B64" stroke-width="1.8" stroke-opacity="0.42" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="cream-disabled-24px-icon-profile" data-icon-id="icon-profile">
+        <g transform="translate(878,926) scale(1)" stroke="#6F6B64" stroke-width="1.8" stroke-opacity="0.42" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="cream-disabled-24px-icon-scan" data-icon-id="icon-scan">
+        <g transform="translate(1033,926) scale(1)" stroke="#6F6B64" stroke-width="1.8" stroke-opacity="0.42" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+    <line x1="40" y1="964" x2="1100" y2="964" stroke="#EFE7DA" stroke-width="1"/>
+    <g data-matrix-row="cream-disabled-32px" data-surface="cream" data-state="disabled" data-size="32">
+      <text x="44" y="998" fill="#4A4741" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">CREAM · Disabled · 32px</text>
+      <g data-matrix-cell="cream-disabled-32px-icon-home" data-icon-id="icon-home">
+        <g transform="translate(254,978) scale(1.3333)" stroke="#6F6B64" stroke-width="1.8" stroke-opacity="0.42" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-disabled-32px-icon-fridge" data-icon-id="icon-fridge">
+        <g transform="translate(409,978) scale(1.3333)" stroke="#6F6B64" stroke-width="1.8" stroke-opacity="0.42" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-disabled-32px-icon-recipe" data-icon-id="icon-recipe">
+        <g transform="translate(564,978) scale(1.3333)" stroke="#6F6B64" stroke-width="1.8" stroke-opacity="0.42" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="cream-disabled-32px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <g transform="translate(719,978) scale(1.3333)" stroke="#6F6B64" stroke-width="1.8" stroke-opacity="0.42" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="cream-disabled-32px-icon-profile" data-icon-id="icon-profile">
+        <g transform="translate(874,978) scale(1.3333)" stroke="#6F6B64" stroke-width="1.8" stroke-opacity="0.42" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="cream-disabled-32px-icon-scan" data-icon-id="icon-scan">
+        <g transform="translate(1029,978) scale(1.3333)" stroke="#6F6B64" stroke-width="1.8" stroke-opacity="0.42" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+    <line x1="40" y1="1024" x2="1100" y2="1024" stroke="#EFE7DA" stroke-width="1"/>
+    <g data-matrix-row="cream-disabled-48px" data-surface="cream" data-state="disabled" data-size="48">
+      <text x="44" y="1066" fill="#4A4741" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">CREAM · Disabled · 48px</text>
+      <g data-matrix-cell="cream-disabled-48px-icon-home" data-icon-id="icon-home">
+        <g transform="translate(246,1038) scale(2)" stroke="#6F6B64" stroke-width="1.8" stroke-opacity="0.42" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-disabled-48px-icon-fridge" data-icon-id="icon-fridge">
+        <g transform="translate(401,1038) scale(2)" stroke="#6F6B64" stroke-width="1.8" stroke-opacity="0.42" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="cream-disabled-48px-icon-recipe" data-icon-id="icon-recipe">
+        <g transform="translate(556,1038) scale(2)" stroke="#6F6B64" stroke-width="1.8" stroke-opacity="0.42" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="cream-disabled-48px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <g transform="translate(711,1038) scale(2)" stroke="#6F6B64" stroke-width="1.8" stroke-opacity="0.42" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="cream-disabled-48px-icon-profile" data-icon-id="icon-profile">
+        <g transform="translate(866,1038) scale(2)" stroke="#6F6B64" stroke-width="1.8" stroke-opacity="0.42" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="cream-disabled-48px-icon-scan" data-icon-id="icon-scan">
+        <g transform="translate(1021,1038) scale(2)" stroke="#6F6B64" stroke-width="1.8" stroke-opacity="0.42" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+  </g>
+  <g data-surface-panel="navy">
+    <rect x="20" y="1142" width="1100" height="1040" rx="20" fill="#0F2D46" stroke="#254B6B" stroke-width="1.5"/>
+    <text x="44" y="1176" fill="#FFF8ED" font-family="Plus Jakarta Sans, Nunito, system-ui, sans-serif" font-size="14" font-weight="700">SURFACE 2: DARK NAVY (#0F2D46) — FULL 4 STATES × 4 SIZES (20px / 24px / 32px / 48px) × 6 ICONS = 96 CELLS</text>
+    <g font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="700" fill="#FFF8ED" text-anchor="middle">
+      <text x="270" y="1204">icon-home (Trang chủ)</text>
+      <text x="425" y="1204">icon-fridge (Tủ lạnh)</text>
+      <text x="580" y="1204">icon-recipe (Công thức)</text>
+      <text x="735" y="1204">icon-meal-plan (Thực đơn)</text>
+      <text x="890" y="1204">icon-profile (Tôi)</text>
+      <text x="1045" y="1204">icon-scan (Quét CTA)</text>
+    </g>
+    <line x1="40" y1="1220" x2="1100" y2="1220" stroke="#1B3F5C" stroke-width="1"/>
+    <g data-matrix-row="navy-inactive-20px" data-surface="navy" data-state="inactive" data-size="20">
+      <text x="44" y="1248" fill="#C9D6DF" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">NAVY · Inactive · 20px</text>
+      <g data-matrix-cell="navy-inactive-20px-icon-home" data-icon-id="icon-home">
+        <g transform="translate(260,1234) scale(0.8333)" stroke="#C9D6DF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-inactive-20px-icon-fridge" data-icon-id="icon-fridge">
+        <g transform="translate(415,1234) scale(0.8333)" stroke="#C9D6DF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-inactive-20px-icon-recipe" data-icon-id="icon-recipe">
+        <g transform="translate(570,1234) scale(0.8333)" stroke="#C9D6DF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="navy-inactive-20px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <g transform="translate(725,1234) scale(0.8333)" stroke="#C9D6DF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="navy-inactive-20px-icon-profile" data-icon-id="icon-profile">
+        <g transform="translate(880,1234) scale(0.8333)" stroke="#C9D6DF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="navy-inactive-20px-icon-scan" data-icon-id="icon-scan">
+        <g transform="translate(1035,1234) scale(0.8333)" stroke="#C9D6DF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+    <line x1="40" y1="1268" x2="1100" y2="1268" stroke="#1B3F5C" stroke-width="1"/>
+    <g data-matrix-row="navy-inactive-24px" data-surface="navy" data-state="inactive" data-size="24">
+      <text x="44" y="1298" fill="#C9D6DF" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">NAVY · Inactive · 24px</text>
+      <g data-matrix-cell="navy-inactive-24px-icon-home" data-icon-id="icon-home">
+        <g transform="translate(258,1282) scale(1)" stroke="#C9D6DF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-inactive-24px-icon-fridge" data-icon-id="icon-fridge">
+        <g transform="translate(413,1282) scale(1)" stroke="#C9D6DF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-inactive-24px-icon-recipe" data-icon-id="icon-recipe">
+        <g transform="translate(568,1282) scale(1)" stroke="#C9D6DF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="navy-inactive-24px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <g transform="translate(723,1282) scale(1)" stroke="#C9D6DF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="navy-inactive-24px-icon-profile" data-icon-id="icon-profile">
+        <g transform="translate(878,1282) scale(1)" stroke="#C9D6DF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="navy-inactive-24px-icon-scan" data-icon-id="icon-scan">
+        <g transform="translate(1033,1282) scale(1)" stroke="#C9D6DF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+    <line x1="40" y1="1320" x2="1100" y2="1320" stroke="#1B3F5C" stroke-width="1"/>
+    <g data-matrix-row="navy-inactive-32px" data-surface="navy" data-state="inactive" data-size="32">
+      <text x="44" y="1354" fill="#C9D6DF" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">NAVY · Inactive · 32px</text>
+      <g data-matrix-cell="navy-inactive-32px-icon-home" data-icon-id="icon-home">
+        <g transform="translate(254,1334) scale(1.3333)" stroke="#C9D6DF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-inactive-32px-icon-fridge" data-icon-id="icon-fridge">
+        <g transform="translate(409,1334) scale(1.3333)" stroke="#C9D6DF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-inactive-32px-icon-recipe" data-icon-id="icon-recipe">
+        <g transform="translate(564,1334) scale(1.3333)" stroke="#C9D6DF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="navy-inactive-32px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <g transform="translate(719,1334) scale(1.3333)" stroke="#C9D6DF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="navy-inactive-32px-icon-profile" data-icon-id="icon-profile">
+        <g transform="translate(874,1334) scale(1.3333)" stroke="#C9D6DF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="navy-inactive-32px-icon-scan" data-icon-id="icon-scan">
+        <g transform="translate(1029,1334) scale(1.3333)" stroke="#C9D6DF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+    <line x1="40" y1="1380" x2="1100" y2="1380" stroke="#1B3F5C" stroke-width="1"/>
+    <g data-matrix-row="navy-inactive-48px" data-surface="navy" data-state="inactive" data-size="48">
+      <text x="44" y="1422" fill="#C9D6DF" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">NAVY · Inactive · 48px</text>
+      <g data-matrix-cell="navy-inactive-48px-icon-home" data-icon-id="icon-home">
+        <g transform="translate(246,1394) scale(2)" stroke="#C9D6DF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-inactive-48px-icon-fridge" data-icon-id="icon-fridge">
+        <g transform="translate(401,1394) scale(2)" stroke="#C9D6DF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-inactive-48px-icon-recipe" data-icon-id="icon-recipe">
+        <g transform="translate(556,1394) scale(2)" stroke="#C9D6DF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="navy-inactive-48px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <g transform="translate(711,1394) scale(2)" stroke="#C9D6DF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="navy-inactive-48px-icon-profile" data-icon-id="icon-profile">
+        <g transform="translate(866,1394) scale(2)" stroke="#C9D6DF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="navy-inactive-48px-icon-scan" data-icon-id="icon-scan">
+        <g transform="translate(1021,1394) scale(2)" stroke="#C9D6DF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+    <line x1="40" y1="1456" x2="1100" y2="1456" stroke="#1B3F5C" stroke-width="1"/>
+    <g data-matrix-row="navy-active-20px" data-surface="navy" data-state="active" data-size="20">
+      <text x="44" y="1484" fill="#C9D6DF" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">NAVY · Active · 20px</text>
+      <g data-matrix-cell="navy-active-20px-icon-home" data-icon-id="icon-home">
+        <rect x="252" y="1462" width="36" height="36" rx="12" fill="#1B4363" stroke="#4CAF6B" stroke-width="1.2"/>
+        <g transform="translate(260,1470) scale(0.8333)" stroke="#FFF8ED" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-active-20px-icon-fridge" data-icon-id="icon-fridge">
+        <rect x="407" y="1462" width="36" height="36" rx="12" fill="#1B4363" stroke="#4CAF6B" stroke-width="1.2"/>
+        <g transform="translate(415,1470) scale(0.8333)" stroke="#FFF8ED" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-active-20px-icon-recipe" data-icon-id="icon-recipe">
+        <rect x="562" y="1462" width="36" height="36" rx="12" fill="#1B4363" stroke="#4CAF6B" stroke-width="1.2"/>
+        <g transform="translate(570,1470) scale(0.8333)" stroke="#FFF8ED" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="navy-active-20px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <rect x="717" y="1462" width="36" height="36" rx="12" fill="#1B4363" stroke="#4CAF6B" stroke-width="1.2"/>
+        <g transform="translate(725,1470) scale(0.8333)" stroke="#FFF8ED" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="navy-active-20px-icon-profile" data-icon-id="icon-profile">
+        <rect x="872" y="1462" width="36" height="36" rx="12" fill="#1B4363" stroke="#4CAF6B" stroke-width="1.2"/>
+        <g transform="translate(880,1470) scale(0.8333)" stroke="#FFF8ED" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="navy-active-20px-icon-scan" data-icon-id="icon-scan">
+        <rect x="1027" y="1462" width="36" height="36" rx="12" fill="#FF6B6B" stroke="#4CAF6B" stroke-width="1.2"/>
+        <g transform="translate(1035,1470) scale(0.8333)" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+    <line x1="40" y1="1504" x2="1100" y2="1504" stroke="#1B3F5C" stroke-width="1"/>
+    <g data-matrix-row="navy-active-24px" data-surface="navy" data-state="active" data-size="24">
+      <text x="44" y="1534" fill="#C9D6DF" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">NAVY · Active · 24px</text>
+      <g data-matrix-cell="navy-active-24px-icon-home" data-icon-id="icon-home">
+        <rect x="250" y="1510" width="40" height="40" rx="12" fill="#1B4363" stroke="#4CAF6B" stroke-width="1.2"/>
+        <g transform="translate(258,1518) scale(1)" stroke="#FFF8ED" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-active-24px-icon-fridge" data-icon-id="icon-fridge">
+        <rect x="405" y="1510" width="40" height="40" rx="12" fill="#1B4363" stroke="#4CAF6B" stroke-width="1.2"/>
+        <g transform="translate(413,1518) scale(1)" stroke="#FFF8ED" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-active-24px-icon-recipe" data-icon-id="icon-recipe">
+        <rect x="560" y="1510" width="40" height="40" rx="12" fill="#1B4363" stroke="#4CAF6B" stroke-width="1.2"/>
+        <g transform="translate(568,1518) scale(1)" stroke="#FFF8ED" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="navy-active-24px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <rect x="715" y="1510" width="40" height="40" rx="12" fill="#1B4363" stroke="#4CAF6B" stroke-width="1.2"/>
+        <g transform="translate(723,1518) scale(1)" stroke="#FFF8ED" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="navy-active-24px-icon-profile" data-icon-id="icon-profile">
+        <rect x="870" y="1510" width="40" height="40" rx="12" fill="#1B4363" stroke="#4CAF6B" stroke-width="1.2"/>
+        <g transform="translate(878,1518) scale(1)" stroke="#FFF8ED" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="navy-active-24px-icon-scan" data-icon-id="icon-scan">
+        <rect x="1025" y="1510" width="40" height="40" rx="12" fill="#FF6B6B" stroke="#4CAF6B" stroke-width="1.2"/>
+        <g transform="translate(1033,1518) scale(1)" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+    <line x1="40" y1="1556" x2="1100" y2="1556" stroke="#1B3F5C" stroke-width="1"/>
+    <g data-matrix-row="navy-active-32px" data-surface="navy" data-state="active" data-size="32">
+      <text x="44" y="1590" fill="#C9D6DF" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">NAVY · Active · 32px</text>
+      <g data-matrix-cell="navy-active-32px-icon-home" data-icon-id="icon-home">
+        <rect x="246" y="1562" width="48" height="48" rx="12" fill="#1B4363" stroke="#4CAF6B" stroke-width="1.2"/>
+        <g transform="translate(254,1570) scale(1.3333)" stroke="#FFF8ED" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-active-32px-icon-fridge" data-icon-id="icon-fridge">
+        <rect x="401" y="1562" width="48" height="48" rx="12" fill="#1B4363" stroke="#4CAF6B" stroke-width="1.2"/>
+        <g transform="translate(409,1570) scale(1.3333)" stroke="#FFF8ED" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-active-32px-icon-recipe" data-icon-id="icon-recipe">
+        <rect x="556" y="1562" width="48" height="48" rx="12" fill="#1B4363" stroke="#4CAF6B" stroke-width="1.2"/>
+        <g transform="translate(564,1570) scale(1.3333)" stroke="#FFF8ED" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="navy-active-32px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <rect x="711" y="1562" width="48" height="48" rx="12" fill="#1B4363" stroke="#4CAF6B" stroke-width="1.2"/>
+        <g transform="translate(719,1570) scale(1.3333)" stroke="#FFF8ED" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="navy-active-32px-icon-profile" data-icon-id="icon-profile">
+        <rect x="866" y="1562" width="48" height="48" rx="12" fill="#1B4363" stroke="#4CAF6B" stroke-width="1.2"/>
+        <g transform="translate(874,1570) scale(1.3333)" stroke="#FFF8ED" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="navy-active-32px-icon-scan" data-icon-id="icon-scan">
+        <rect x="1021" y="1562" width="48" height="48" rx="12" fill="#FF6B6B" stroke="#4CAF6B" stroke-width="1.2"/>
+        <g transform="translate(1029,1570) scale(1.3333)" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+    <line x1="40" y1="1616" x2="1100" y2="1616" stroke="#1B3F5C" stroke-width="1"/>
+    <g data-matrix-row="navy-active-48px" data-surface="navy" data-state="active" data-size="48">
+      <text x="44" y="1658" fill="#C9D6DF" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">NAVY · Active · 48px</text>
+      <g data-matrix-cell="navy-active-48px-icon-home" data-icon-id="icon-home">
+        <rect x="238" y="1622" width="64" height="64" rx="12" fill="#1B4363" stroke="#4CAF6B" stroke-width="1.2"/>
+        <g transform="translate(246,1630) scale(2)" stroke="#FFF8ED" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-active-48px-icon-fridge" data-icon-id="icon-fridge">
+        <rect x="393" y="1622" width="64" height="64" rx="12" fill="#1B4363" stroke="#4CAF6B" stroke-width="1.2"/>
+        <g transform="translate(401,1630) scale(2)" stroke="#FFF8ED" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-active-48px-icon-recipe" data-icon-id="icon-recipe">
+        <rect x="548" y="1622" width="64" height="64" rx="12" fill="#1B4363" stroke="#4CAF6B" stroke-width="1.2"/>
+        <g transform="translate(556,1630) scale(2)" stroke="#FFF8ED" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="navy-active-48px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <rect x="703" y="1622" width="64" height="64" rx="12" fill="#1B4363" stroke="#4CAF6B" stroke-width="1.2"/>
+        <g transform="translate(711,1630) scale(2)" stroke="#FFF8ED" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="navy-active-48px-icon-profile" data-icon-id="icon-profile">
+        <rect x="858" y="1622" width="64" height="64" rx="12" fill="#1B4363" stroke="#4CAF6B" stroke-width="1.2"/>
+        <g transform="translate(866,1630) scale(2)" stroke="#FFF8ED" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="navy-active-48px-icon-scan" data-icon-id="icon-scan">
+        <rect x="1013" y="1622" width="64" height="64" rx="12" fill="#FF6B6B" stroke="#4CAF6B" stroke-width="1.2"/>
+        <g transform="translate(1021,1630) scale(2)" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+    <line x1="40" y1="1692" x2="1100" y2="1692" stroke="#1B3F5C" stroke-width="1"/>
+    <g data-matrix-row="navy-focus-20px" data-surface="navy" data-state="focus" data-size="20">
+      <text x="44" y="1720" fill="#C9D6DF" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">NAVY · Focus · 20px</text>
+      <g data-matrix-cell="navy-focus-20px-icon-home" data-icon-id="icon-home">
+        <rect x="252" y="1698" width="36" height="36" rx="12" fill="#13344F" stroke="#4CAF6B" stroke-width="2"/>
+        <g transform="translate(260,1706) scale(0.8333)" stroke="#FFFFFF" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-focus-20px-icon-fridge" data-icon-id="icon-fridge">
+        <rect x="407" y="1698" width="36" height="36" rx="12" fill="#13344F" stroke="#4CAF6B" stroke-width="2"/>
+        <g transform="translate(415,1706) scale(0.8333)" stroke="#FFFFFF" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-focus-20px-icon-recipe" data-icon-id="icon-recipe">
+        <rect x="562" y="1698" width="36" height="36" rx="12" fill="#13344F" stroke="#4CAF6B" stroke-width="2"/>
+        <g transform="translate(570,1706) scale(0.8333)" stroke="#FFFFFF" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="navy-focus-20px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <rect x="717" y="1698" width="36" height="36" rx="12" fill="#13344F" stroke="#4CAF6B" stroke-width="2"/>
+        <g transform="translate(725,1706) scale(0.8333)" stroke="#FFFFFF" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="navy-focus-20px-icon-profile" data-icon-id="icon-profile">
+        <rect x="872" y="1698" width="36" height="36" rx="12" fill="#13344F" stroke="#4CAF6B" stroke-width="2"/>
+        <g transform="translate(880,1706) scale(0.8333)" stroke="#FFFFFF" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="navy-focus-20px-icon-scan" data-icon-id="icon-scan">
+        <rect x="1027" y="1698" width="36" height="36" rx="12" fill="#13344F" stroke="#4CAF6B" stroke-width="2"/>
+        <g transform="translate(1035,1706) scale(0.8333)" stroke="#FF6B6B" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+    <line x1="40" y1="1740" x2="1100" y2="1740" stroke="#1B3F5C" stroke-width="1"/>
+    <g data-matrix-row="navy-focus-24px" data-surface="navy" data-state="focus" data-size="24">
+      <text x="44" y="1770" fill="#C9D6DF" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">NAVY · Focus · 24px</text>
+      <g data-matrix-cell="navy-focus-24px-icon-home" data-icon-id="icon-home">
+        <rect x="250" y="1746" width="40" height="40" rx="12" fill="#13344F" stroke="#4CAF6B" stroke-width="2"/>
+        <g transform="translate(258,1754) scale(1)" stroke="#FFFFFF" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-focus-24px-icon-fridge" data-icon-id="icon-fridge">
+        <rect x="405" y="1746" width="40" height="40" rx="12" fill="#13344F" stroke="#4CAF6B" stroke-width="2"/>
+        <g transform="translate(413,1754) scale(1)" stroke="#FFFFFF" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-focus-24px-icon-recipe" data-icon-id="icon-recipe">
+        <rect x="560" y="1746" width="40" height="40" rx="12" fill="#13344F" stroke="#4CAF6B" stroke-width="2"/>
+        <g transform="translate(568,1754) scale(1)" stroke="#FFFFFF" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="navy-focus-24px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <rect x="715" y="1746" width="40" height="40" rx="12" fill="#13344F" stroke="#4CAF6B" stroke-width="2"/>
+        <g transform="translate(723,1754) scale(1)" stroke="#FFFFFF" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="navy-focus-24px-icon-profile" data-icon-id="icon-profile">
+        <rect x="870" y="1746" width="40" height="40" rx="12" fill="#13344F" stroke="#4CAF6B" stroke-width="2"/>
+        <g transform="translate(878,1754) scale(1)" stroke="#FFFFFF" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="navy-focus-24px-icon-scan" data-icon-id="icon-scan">
+        <rect x="1025" y="1746" width="40" height="40" rx="12" fill="#13344F" stroke="#4CAF6B" stroke-width="2"/>
+        <g transform="translate(1033,1754) scale(1)" stroke="#FF6B6B" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+    <line x1="40" y1="1792" x2="1100" y2="1792" stroke="#1B3F5C" stroke-width="1"/>
+    <g data-matrix-row="navy-focus-32px" data-surface="navy" data-state="focus" data-size="32">
+      <text x="44" y="1826" fill="#C9D6DF" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">NAVY · Focus · 32px</text>
+      <g data-matrix-cell="navy-focus-32px-icon-home" data-icon-id="icon-home">
+        <rect x="246" y="1798" width="48" height="48" rx="12" fill="#13344F" stroke="#4CAF6B" stroke-width="2"/>
+        <g transform="translate(254,1806) scale(1.3333)" stroke="#FFFFFF" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-focus-32px-icon-fridge" data-icon-id="icon-fridge">
+        <rect x="401" y="1798" width="48" height="48" rx="12" fill="#13344F" stroke="#4CAF6B" stroke-width="2"/>
+        <g transform="translate(409,1806) scale(1.3333)" stroke="#FFFFFF" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-focus-32px-icon-recipe" data-icon-id="icon-recipe">
+        <rect x="556" y="1798" width="48" height="48" rx="12" fill="#13344F" stroke="#4CAF6B" stroke-width="2"/>
+        <g transform="translate(564,1806) scale(1.3333)" stroke="#FFFFFF" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="navy-focus-32px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <rect x="711" y="1798" width="48" height="48" rx="12" fill="#13344F" stroke="#4CAF6B" stroke-width="2"/>
+        <g transform="translate(719,1806) scale(1.3333)" stroke="#FFFFFF" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="navy-focus-32px-icon-profile" data-icon-id="icon-profile">
+        <rect x="866" y="1798" width="48" height="48" rx="12" fill="#13344F" stroke="#4CAF6B" stroke-width="2"/>
+        <g transform="translate(874,1806) scale(1.3333)" stroke="#FFFFFF" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="navy-focus-32px-icon-scan" data-icon-id="icon-scan">
+        <rect x="1021" y="1798" width="48" height="48" rx="12" fill="#13344F" stroke="#4CAF6B" stroke-width="2"/>
+        <g transform="translate(1029,1806) scale(1.3333)" stroke="#FF6B6B" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+    <line x1="40" y1="1852" x2="1100" y2="1852" stroke="#1B3F5C" stroke-width="1"/>
+    <g data-matrix-row="navy-focus-48px" data-surface="navy" data-state="focus" data-size="48">
+      <text x="44" y="1894" fill="#C9D6DF" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">NAVY · Focus · 48px</text>
+      <g data-matrix-cell="navy-focus-48px-icon-home" data-icon-id="icon-home">
+        <rect x="238" y="1858" width="64" height="64" rx="12" fill="#13344F" stroke="#4CAF6B" stroke-width="2"/>
+        <g transform="translate(246,1866) scale(2)" stroke="#FFFFFF" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-focus-48px-icon-fridge" data-icon-id="icon-fridge">
+        <rect x="393" y="1858" width="64" height="64" rx="12" fill="#13344F" stroke="#4CAF6B" stroke-width="2"/>
+        <g transform="translate(401,1866) scale(2)" stroke="#FFFFFF" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-focus-48px-icon-recipe" data-icon-id="icon-recipe">
+        <rect x="548" y="1858" width="64" height="64" rx="12" fill="#13344F" stroke="#4CAF6B" stroke-width="2"/>
+        <g transform="translate(556,1866) scale(2)" stroke="#FFFFFF" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="navy-focus-48px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <rect x="703" y="1858" width="64" height="64" rx="12" fill="#13344F" stroke="#4CAF6B" stroke-width="2"/>
+        <g transform="translate(711,1866) scale(2)" stroke="#FFFFFF" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="navy-focus-48px-icon-profile" data-icon-id="icon-profile">
+        <rect x="858" y="1858" width="64" height="64" rx="12" fill="#13344F" stroke="#4CAF6B" stroke-width="2"/>
+        <g transform="translate(866,1866) scale(2)" stroke="#FFFFFF" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="navy-focus-48px-icon-scan" data-icon-id="icon-scan">
+        <rect x="1013" y="1858" width="64" height="64" rx="12" fill="#13344F" stroke="#4CAF6B" stroke-width="2"/>
+        <g transform="translate(1021,1866) scale(2)" stroke="#FF6B6B" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+    <line x1="40" y1="1928" x2="1100" y2="1928" stroke="#1B3F5C" stroke-width="1"/>
+    <g data-matrix-row="navy-disabled-20px" data-surface="navy" data-state="disabled" data-size="20">
+      <text x="44" y="1956" fill="#C9D6DF" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">NAVY · Disabled · 20px</text>
+      <g data-matrix-cell="navy-disabled-20px-icon-home" data-icon-id="icon-home">
+        <g transform="translate(260,1942) scale(0.8333)" stroke="#FFF8ED" stroke-width="1.8" stroke-opacity="0.38" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-disabled-20px-icon-fridge" data-icon-id="icon-fridge">
+        <g transform="translate(415,1942) scale(0.8333)" stroke="#FFF8ED" stroke-width="1.8" stroke-opacity="0.38" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-disabled-20px-icon-recipe" data-icon-id="icon-recipe">
+        <g transform="translate(570,1942) scale(0.8333)" stroke="#FFF8ED" stroke-width="1.8" stroke-opacity="0.38" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="navy-disabled-20px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <g transform="translate(725,1942) scale(0.8333)" stroke="#FFF8ED" stroke-width="1.8" stroke-opacity="0.38" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="navy-disabled-20px-icon-profile" data-icon-id="icon-profile">
+        <g transform="translate(880,1942) scale(0.8333)" stroke="#FFF8ED" stroke-width="1.8" stroke-opacity="0.38" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="navy-disabled-20px-icon-scan" data-icon-id="icon-scan">
+        <g transform="translate(1035,1942) scale(0.8333)" stroke="#FFF8ED" stroke-width="1.8" stroke-opacity="0.38" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+    <line x1="40" y1="1976" x2="1100" y2="1976" stroke="#1B3F5C" stroke-width="1"/>
+    <g data-matrix-row="navy-disabled-24px" data-surface="navy" data-state="disabled" data-size="24">
+      <text x="44" y="2006" fill="#C9D6DF" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">NAVY · Disabled · 24px</text>
+      <g data-matrix-cell="navy-disabled-24px-icon-home" data-icon-id="icon-home">
+        <g transform="translate(258,1990) scale(1)" stroke="#FFF8ED" stroke-width="1.8" stroke-opacity="0.38" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-disabled-24px-icon-fridge" data-icon-id="icon-fridge">
+        <g transform="translate(413,1990) scale(1)" stroke="#FFF8ED" stroke-width="1.8" stroke-opacity="0.38" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-disabled-24px-icon-recipe" data-icon-id="icon-recipe">
+        <g transform="translate(568,1990) scale(1)" stroke="#FFF8ED" stroke-width="1.8" stroke-opacity="0.38" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="navy-disabled-24px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <g transform="translate(723,1990) scale(1)" stroke="#FFF8ED" stroke-width="1.8" stroke-opacity="0.38" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="navy-disabled-24px-icon-profile" data-icon-id="icon-profile">
+        <g transform="translate(878,1990) scale(1)" stroke="#FFF8ED" stroke-width="1.8" stroke-opacity="0.38" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="navy-disabled-24px-icon-scan" data-icon-id="icon-scan">
+        <g transform="translate(1033,1990) scale(1)" stroke="#FFF8ED" stroke-width="1.8" stroke-opacity="0.38" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+    <line x1="40" y1="2028" x2="1100" y2="2028" stroke="#1B3F5C" stroke-width="1"/>
+    <g data-matrix-row="navy-disabled-32px" data-surface="navy" data-state="disabled" data-size="32">
+      <text x="44" y="2062" fill="#C9D6DF" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">NAVY · Disabled · 32px</text>
+      <g data-matrix-cell="navy-disabled-32px-icon-home" data-icon-id="icon-home">
+        <g transform="translate(254,2042) scale(1.3333)" stroke="#FFF8ED" stroke-width="1.8" stroke-opacity="0.38" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-disabled-32px-icon-fridge" data-icon-id="icon-fridge">
+        <g transform="translate(409,2042) scale(1.3333)" stroke="#FFF8ED" stroke-width="1.8" stroke-opacity="0.38" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-disabled-32px-icon-recipe" data-icon-id="icon-recipe">
+        <g transform="translate(564,2042) scale(1.3333)" stroke="#FFF8ED" stroke-width="1.8" stroke-opacity="0.38" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="navy-disabled-32px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <g transform="translate(719,2042) scale(1.3333)" stroke="#FFF8ED" stroke-width="1.8" stroke-opacity="0.38" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="navy-disabled-32px-icon-profile" data-icon-id="icon-profile">
+        <g transform="translate(874,2042) scale(1.3333)" stroke="#FFF8ED" stroke-width="1.8" stroke-opacity="0.38" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="navy-disabled-32px-icon-scan" data-icon-id="icon-scan">
+        <g transform="translate(1029,2042) scale(1.3333)" stroke="#FFF8ED" stroke-width="1.8" stroke-opacity="0.38" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+    <line x1="40" y1="2088" x2="1100" y2="2088" stroke="#1B3F5C" stroke-width="1"/>
+    <g data-matrix-row="navy-disabled-48px" data-surface="navy" data-state="disabled" data-size="48">
+      <text x="44" y="2130" fill="#C9D6DF" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="600">NAVY · Disabled · 48px</text>
+      <g data-matrix-cell="navy-disabled-48px-icon-home" data-icon-id="icon-home">
+        <g transform="translate(246,2102) scale(2)" stroke="#FFF8ED" stroke-width="1.8" stroke-opacity="0.38" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 10.75L11.15 4.2a1.3 1.3 0 0 1 1.7 0L20.5 10.75"/><path d="M16.25 5.25v2.4"/><path d="M5.5 9.5V19a1.5 1.5 0 0 0 1.5 1.5h10a1.5 1.5 0 0 0 1.5-1.5V9.5"/><path d="M9.75 20.5v-5.25a2.25 2.25 0 0 1 4.5 0v5.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-disabled-48px-icon-fridge" data-icon-id="icon-fridge">
+        <g transform="translate(401,2102) scale(2)" stroke="#FFF8ED" stroke-width="1.8" stroke-opacity="0.38" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5"/><path d="M5.5 10.25h13"/><path d="M8.5 5.5v2.5"/><path d="M8.5 12.75v3.75"/><path d="M11.75 14.25h4.25"/><path d="M11.75 17.25h3.25"/></g>
+      </g>
+      <g data-matrix-cell="navy-disabled-48px-icon-recipe" data-icon-id="icon-recipe">
+        <g transform="translate(556,2102) scale(2)" stroke="#FFF8ED" stroke-width="1.8" stroke-opacity="0.38" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M5.5 4.5A2 2 0 0 1 7.5 2.5h10A1.5 1.5 0 0 1 19 4v15.5a1.5 1.5 0 0 1-1.5 1.5h-10A2 2 0 0 1 5.5 19V4.5Z"/><path d="M8.5 2.5v18.5"/><path d="M5.5 18.25A1.75 1.75 0 0 1 7.25 16.5H19"/><path d="M11.25 10.5a2.5 2.5 0 0 0 5 0h-5Z"/><path d="M12.5 7.6c0-.65.55-1.05.55-1.65"/><path d="M15 7.6c0-.65.55-1.05.55-1.65"/></g>
+      </g>
+      <g data-matrix-cell="navy-disabled-48px-icon-meal-plan" data-icon-id="icon-meal-plan">
+        <g transform="translate(711,2102) scale(2)" stroke="#FFF8ED" stroke-width="1.8" stroke-opacity="0.38" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3.5 17.5V6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2V10"/><path d="M3.5 17.5a2 2 0 0 0 2 2H10.5"/><path d="M7.5 2.75v3.25"/><path d="M14.5 2.75v3.25"/><path d="M3.5 8.75h15"/><path d="M7 12h2.25"/><path d="M7 15.25h2.25"/><circle cx="16.25" cy="16.5" r="4.25"/><circle cx="16.25" cy="16.5" r="1.5"/></g>
+      </g>
+      <g data-matrix-cell="navy-disabled-48px-icon-profile" data-icon-id="icon-profile">
+        <g transform="translate(866,2102) scale(2)" stroke="#FFF8ED" stroke-width="1.8" stroke-opacity="0.38" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8.25" r="3.5"/><path d="M5.5 19.5c.9-3.35 3.45-5.25 6.5-5.25s5.6 1.9 6.5 5.25"/><path d="M9.5 14.65c.75.7 1.6 1.05 2.5 1.05s1.75-.35 2.5-1.05"/></g>
+      </g>
+      <g data-matrix-cell="navy-disabled-48px-icon-scan" data-icon-id="icon-scan">
+        <g transform="translate(1021,2102) scale(2)" stroke="#FFF8ED" stroke-width="1.8" stroke-opacity="0.38" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2"/><path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2"/><path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2"/><path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2"/><path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z"/><path d="M8.75 15.75l3-3"/><path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z"/></g>
+      </g>
+    </g>
+  </g>
+</svg>

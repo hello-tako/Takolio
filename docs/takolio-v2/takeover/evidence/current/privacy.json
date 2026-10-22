@@ -1,0 +1,10 @@
+{
+  "route": "/settings/privacy",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "h1": [
+    "Quyền riêng tư & dữ liệu"
+  ]
+}

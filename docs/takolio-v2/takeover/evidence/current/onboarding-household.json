@@ -1,0 +1,10 @@
+{
+  "route": "/onboarding/household",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "h1": [
+    "Nhà mình thường có bao nhiêu người ăn?"
+  ]
+}

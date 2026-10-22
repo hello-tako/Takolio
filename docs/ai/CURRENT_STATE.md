@@ -1,3 +1,19 @@
+## Takolio V2 safe continuation - current checkpoint (2026-10-23 JST)
+
+Status: `LOCAL_CHECKPOINT_READY_FOR_REVIEW`. Integration worktree: `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`; branch `codex/takolio-v2-rescue`; verified main base `0322a9197bee4a4a42d95cc150f8d4fff6d53ba8`. Original WIP remains at `/Users/tunbee27/Documents/New project/Takolio`, unchanged against the full private snapshot.
+
+Changes: selectively retained Argon Home S08, original SVG icons, culinary illustrations, recipe/detail/cooking UI and tests. Scoped the recipe-media CSS so metadata icons stay 14-16px instead of expanding to about 115px. All protected main source remains unchanged; no database migration or dependency change.
+
+Checks: `pnpm lint`, `pnpm typecheck`, `pnpm check:migrations`, `pnpm build` pass. Focused brand/culinary units pass 28/28; final local Playwright run passes 6/6. Full `pnpm test` is 9,159/9,164, with the same five path-sensitive failures as main. A no-space full run has one timeout; focused retries pass and are not a full-suite pass. Dependency audit has eight inherited findings. Exact commands, failures and environment are in `docs/takolio-v2/takeover/TEST_BASELINES.md`.
+
+Evidence: all 38 rows mapped, comprising 37 synthetic captures and one landing proxy. No owner visual or pixel-match acceptance is claimed. See `docs/takolio-v2/takeover/QA_FINAL_MATRIX.md` and `EXISTING_UI_SCREENSHOTS_INDEX.md`.
+
+Limits: Week flag OFF, live AI/OTP/integrations and production readiness are not certified. No push, published PR, merge, deployment or production operation occurred. Local UI continuation is already authorized by the current user request; publication, merge, deployment and production actions require approval.
+
+Next action: continue the next bounded UI refinement from this checkpoint, add assertions for the specific changed screen, and preserve the recorded full-suite/dependency issues for separately scoped remediation. Implementation checkpoint: `13250deccaedf8767d6728f0d43f1b398bd410e4`. Documentation checkpoint follows separately; see `docs/takolio-v2/takeover/CHECKPOINT.md`.
+
+---
+
 ## Admin live acceptance continuation - 2026-10-21 JST
 
 The live evidence remains bound to exact source `c7417120f6226d3a52d25e900af5b82bb8f311b3`; no newer source has been deployed. The working tree contains a scoped responsive CSS fix and its local E2E evidence. The owner authenticated through the real Cloudflare Access staging application and completed a read-only smoke over the Admin surface. The owner acceptance harness recorded 26/26 PASS: 13 API reads returned HTTP 200 with `Cache-Control: no-store` and zero forbidden credential-field names, missing/wrong CSRF returned `403 ADMIN_CSRF_FAILED` without state change, self-grant and self-revoke returned `403 ADMIN_FORBIDDEN`, a preference round-trip succeeded and was restored, and the corresponding success/denial audit rows were present. A small read load of 12 requests at concurrency 3 returned 200; max and p95 latency were 6.307s, so this is a bounded smoke measurement rather than a capacity certification.

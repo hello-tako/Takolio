@@ -1,0 +1,10 @@
+{
+  "route": "/scan/receipt-review",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "h1": [
+    "Kiểm tra hóa đơn"
+  ]
+}

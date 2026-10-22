@@ -1,0 +1,10 @@
+{
+  "route": "/ingredients/preview-stock-egg",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "h1": [
+    "Chi tiết nguyên liệu"
+  ]
+}

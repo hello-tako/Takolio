@@ -1,0 +1,18 @@
+{
+  "result": "PASS",
+  "evidence_files_verified": 101,
+  "screen_rows": 38,
+  "screen_counts": {
+    "CAPTURED_PROXY": 1,
+    "CAPTURED_SYNTHETIC": 37
+  },
+  "selected_source_paths": 54,
+  "csv_rows": {
+    "ARGON_WORK_LEDGER.csv": 69,
+    "FILE_DECISIONS.csv": 76,
+    "WIP_ASSET_PROVENANCE.csv": 12
+  },
+  "reviewed_changed_or_added_paths": 182,
+  "credential_scan": "No private-key, GitHub token, OpenAI token pattern or exact private backup path detected in changed text; pattern scan is not a general security certification.",
+  "failures": []
+}

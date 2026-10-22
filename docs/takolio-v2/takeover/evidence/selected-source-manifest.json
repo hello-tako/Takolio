@@ -1,0 +1,326 @@
+[
+  {
+    "path": "docs/ai/CULINARY_EXPERIENCE_HARDENING_V2_SPEC.md",
+    "argon_sha256": "30628b38290d90475dced41273364e810746df3a4adcb39f8060570a4dd51a35",
+    "integration_sha256": "30628b38290d90475dced41273364e810746df3a4adcb39f8060570a4dd51a35",
+    "matches_argon": true
+  },
+  {
+    "path": "docs/takolio-v2/HANDOFF.md",
+    "argon_sha256": "4cee0c98f94472ebe9b8974ce4733279405d2588c4904dbe5366cc481ac72682",
+    "integration_sha256": "9d04a271a5245f3296b10f9b2c4b059a3e440863b7d21383cbec1780b7acf537",
+    "matches_argon": false
+  },
+  {
+    "path": "docs/takolio-v2/OWNER_DESIGN_DECISIONS.md",
+    "argon_sha256": "f3fde393623a19eec445e055ba33c6fe0311bc2a86a73b49133025f22c056e3a",
+    "integration_sha256": "97032049b933e5e9b2ce99e28d79a729c33866bd2a5d55bd6520a8dbb34c58c8",
+    "matches_argon": false
+  },
+  {
+    "path": "docs/takolio-v2/PLAN_CONTRACT.md",
+    "argon_sha256": "90364b63063242ac7cdecefea1f56b7c30ff611661e29d371260350b05eaf06e",
+    "integration_sha256": "dde91891cb264ace61445fbdd852f6e6c8db68ec5018125886ab32e8b4f84400",
+    "matches_argon": false
+  },
+  {
+    "path": "docs/takolio-v2/asset-registry.json",
+    "argon_sha256": "d3e2743f5df1f01f07f4c1701fb4de544ccf926cfa03c079e79f40649f2ab32f",
+    "integration_sha256": "d38bf1f175cdd918c04432f35a8ce25bb3ca7bd6e5847c8e922402d2bdb00eb5",
+    "matches_argon": false
+  },
+  {
+    "path": "docs/takolio-v2/evidence/a01-icon-contact-sheet.png",
+    "argon_sha256": "a40836d3f87508080b134d02512e2b80d0c5b4cec3af58d466d82dd1222f319d",
+    "integration_sha256": "a40836d3f87508080b134d02512e2b80d0c5b4cec3af58d466d82dd1222f319d",
+    "matches_argon": true
+  },
+  {
+    "path": "docs/takolio-v2/evidence/a01-icon-contact-sheet.svg",
+    "argon_sha256": "7019fdd5032e294f55b89a5712eef0edddfea4a90013a95303ad0190bdb5dcea",
+    "integration_sha256": "7019fdd5032e294f55b89a5712eef0edddfea4a90013a95303ad0190bdb5dcea",
+    "matches_argon": true
+  },
+  {
+    "path": "docs/takolio-v2/evidence/a01-nav-1440x900.png",
+    "argon_sha256": "cf233a4fb2607bfe892dd16a382aca97f2a6d3dde07bbae855666d50ea844337",
+    "integration_sha256": "cf233a4fb2607bfe892dd16a382aca97f2a6d3dde07bbae855666d50ea844337",
+    "matches_argon": true
+  },
+  {
+    "path": "docs/takolio-v2/evidence/a01-nav-320x420.png",
+    "argon_sha256": "c3278c9c8c7418d88d2e02f849354fa1521262dfe83f4b72c0f12f0c2f954cac",
+    "integration_sha256": "c3278c9c8c7418d88d2e02f849354fa1521262dfe83f4b72c0f12f0c2f954cac",
+    "matches_argon": true
+  },
+  {
+    "path": "docs/takolio-v2/evidence/a01-nav-390x844-zoom200.png",
+    "argon_sha256": "0e04de27fc0560ca3e7ab7e51e7184d45357b7498ac823651dca24d0b7c23efb",
+    "integration_sha256": "0e04de27fc0560ca3e7ab7e51e7184d45357b7498ac823651dca24d0b7c23efb",
+    "matches_argon": true
+  },
+  {
+    "path": "docs/takolio-v2/evidence/a01-nav-390x844.png",
+    "argon_sha256": "4057594fbcf2e32509bbdc6d0a792444e49ddab02dc085e4ba0ac431d15f0b75",
+    "integration_sha256": "4057594fbcf2e32509bbdc6d0a792444e49ddab02dc085e4ba0ac431d15f0b75",
+    "matches_argon": true
+  },
+  {
+    "path": "docs/takolio-v2/evidence/a01-playwright-receipt.json",
+    "argon_sha256": "0eff87d3cf4c50416efe6f51335d88e0391faffc88fc631bbd7e9057ecc8e9ef",
+    "integration_sha256": "0eff87d3cf4c50416efe6f51335d88e0391faffc88fc631bbd7e9057ecc8e9ef",
+    "matches_argon": true
+  },
+  {
+    "path": "docs/takolio-v2/evidence/a01-visual-review-receipt.md",
+    "argon_sha256": "7a5932aa42e12f2e1504c3eaf0edb0db5df683b84f6af5be2e8dd8020966894e",
+    "integration_sha256": "854818c1a8748ebd0850864faa77da4028e2bcc199815cc162e9a0cd2180e897",
+    "matches_argon": false
+  },
+  {
+    "path": "docs/takolio-v2/evidence/s08-home-1440x900.png",
+    "argon_sha256": "54dcb05f710e3b6b5b66e745037712191fc1b4d31ca1675da051167b7d59409b",
+    "integration_sha256": "54dcb05f710e3b6b5b66e745037712191fc1b4d31ca1675da051167b7d59409b",
+    "matches_argon": true
+  },
+  {
+    "path": "docs/takolio-v2/evidence/s08-home-320x420.png",
+    "argon_sha256": "b8a58476405ee683c8147583e3e9d72a070ba0a47a3a02640dc1da1de783eb39",
+    "integration_sha256": "b8a58476405ee683c8147583e3e9d72a070ba0a47a3a02640dc1da1de783eb39",
+    "matches_argon": true
+  },
+  {
+    "path": "docs/takolio-v2/evidence/s08-home-390x844-zoom200.png",
+    "argon_sha256": "0eb80f3751e695a0172ddfe69714ecfb2c300fd9ae4bd65370ab1a9efed0f23a",
+    "integration_sha256": "0eb80f3751e695a0172ddfe69714ecfb2c300fd9ae4bd65370ab1a9efed0f23a",
+    "matches_argon": true
+  },
+  {
+    "path": "docs/takolio-v2/evidence/s08-home-390x844.png",
+    "argon_sha256": "7731072150fee4d542dd813785331229e29f3c050959a62a565571dd7614b162",
+    "integration_sha256": "7731072150fee4d542dd813785331229e29f3c050959a62a565571dd7614b162",
+    "matches_argon": true
+  },
+  {
+    "path": "docs/takolio-v2/evidence/s08-home-768x1024.png",
+    "argon_sha256": "a5a98bddde337860d81cdb999c7844dd65d83643609cc5f449c59ad46a83927f",
+    "integration_sha256": "a5a98bddde337860d81cdb999c7844dd65d83643609cc5f449c59ad46a83927f",
+    "matches_argon": true
+  },
+  {
+    "path": "docs/takolio-v2/evidence/s08-playwright-receipt.json",
+    "argon_sha256": "cfb8dce798a8209185996a9713a197868934fcd3e0ab93755f4d4eaaf761cca2",
+    "integration_sha256": "cfb8dce798a8209185996a9713a197868934fcd3e0ab93755f4d4eaaf761cca2",
+    "matches_argon": true
+  },
+  {
+    "path": "docs/takolio-v2/evidence/s08-visual-review-receipt.md",
+    "argon_sha256": "ae16c452e89995140719dd9d3699227e48231b179a988d05e5c6c6503e6cee4e",
+    "integration_sha256": "ae16c452e89995140719dd9d3699227e48231b179a988d05e5c6c6503e6cee4e",
+    "matches_argon": true
+  },
+  {
+    "path": "docs/takolio-v2/packets/A01-original-icons.md",
+    "argon_sha256": "8b2b812c81cbf4aaca42caa092b635164560ce0596e42c1475f2f22ce8bf86ab",
+    "integration_sha256": "335a1abc11fdd337095b5601bd757b085947ed88a24728f833e581d69543e154",
+    "matches_argon": false
+  },
+  {
+    "path": "docs/takolio-v2/packets/S08-home-pilot.md",
+    "argon_sha256": "3b77f437cd047271d8df5e054b4cabd38d2709a1ff48dd372210651cf3a569b5",
+    "integration_sha256": "7940a8b24748c87bebd5eb9ab6a2e8892f87d772f207a1ea81747408a6a7094b",
+    "matches_argon": false
+  },
+  {
+    "path": "src/web/components/common/RecipeCard.tsx",
+    "argon_sha256": "c814aa9ef53a16bc475e0c65bf0c96316fb153c199a03acbde38487118770602",
+    "integration_sha256": "c814aa9ef53a16bc475e0c65bf0c96316fb153c199a03acbde38487118770602",
+    "matches_argon": true
+  },
+  {
+    "path": "src/web/components/common/RecipeMedia.tsx",
+    "argon_sha256": "1cd8e6cc479b0757ad82961e0456a010f30937a42756950c1e2a1bbb840c08c3",
+    "integration_sha256": "1cd8e6cc479b0757ad82961e0456a010f30937a42756950c1e2a1bbb840c08c3",
+    "matches_argon": true
+  },
+  {
+    "path": "src/web/components/common/TakosanIcon.tsx",
+    "argon_sha256": "2fe857ed4051af4558fcca6294f9238d44136bcff9629cf4e93333de55be9d47",
+    "integration_sha256": "2fe857ed4051af4558fcca6294f9238d44136bcff9629cf4e93333de55be9d47",
+    "matches_argon": true
+  },
+  {
+    "path": "src/web/components/cooking/CookingReview.tsx",
+    "argon_sha256": "94e0f9bb3294ef95e0c42da5e2664001d1a2451d78a7838d719e8cf88234f59d",
+    "integration_sha256": "94e0f9bb3294ef95e0c42da5e2664001d1a2451d78a7838d719e8cf88234f59d",
+    "matches_argon": true
+  },
+  {
+    "path": "src/web/components/cooking/CookingTechniqueVisual.tsx",
+    "argon_sha256": "591abbd1684422d74131d6c56bf8fac4a54d99a47a1011b87a7b4d7d20b802cf",
+    "integration_sha256": "591abbd1684422d74131d6c56bf8fac4a54d99a47a1011b87a7b4d7d20b802cf",
+    "matches_argon": true
+  },
+  {
+    "path": "src/web/design-system/assets/icons-src/fridge.svg",
+    "argon_sha256": "be59ba299cc8e196d8f217759d2f8d443ff8c0c95dcb2cb9488317978f4b97a1",
+    "integration_sha256": "be59ba299cc8e196d8f217759d2f8d443ff8c0c95dcb2cb9488317978f4b97a1",
+    "matches_argon": true
+  },
+  {
+    "path": "src/web/design-system/assets/icons-src/home.svg",
+    "argon_sha256": "df0befef769c14da1eb739b9a3b0b9b5b4c04c544de62f0d0e69b27ef9f24186",
+    "integration_sha256": "df0befef769c14da1eb739b9a3b0b9b5b4c04c544de62f0d0e69b27ef9f24186",
+    "matches_argon": true
+  },
+  {
+    "path": "src/web/design-system/assets/icons-src/meal-plan.svg",
+    "argon_sha256": "7ce3ea04954b40785c433219b2d6f3624ef044c18e0401eb7b469f26d08fb070",
+    "integration_sha256": "7ce3ea04954b40785c433219b2d6f3624ef044c18e0401eb7b469f26d08fb070",
+    "matches_argon": true
+  },
+  {
+    "path": "src/web/design-system/assets/icons-src/profile.svg",
+    "argon_sha256": "e301aa93b4f86836b96ed624b7f94174851754bac0181d342ff7a172d6adb888",
+    "integration_sha256": "e301aa93b4f86836b96ed624b7f94174851754bac0181d342ff7a172d6adb888",
+    "matches_argon": true
+  },
+  {
+    "path": "src/web/design-system/assets/icons-src/recipe.svg",
+    "argon_sha256": "018530e69600e71f5867aaae1e5d558c59ed0f3b833944068e71d5fe2bcaee7b",
+    "integration_sha256": "018530e69600e71f5867aaae1e5d558c59ed0f3b833944068e71d5fe2bcaee7b",
+    "matches_argon": true
+  },
+  {
+    "path": "src/web/design-system/assets/icons-src/scan.svg",
+    "argon_sha256": "65786ef396c559f5d9d39ab575b2cd9828b375617ac8217af6d5ffdccc9496d3",
+    "integration_sha256": "65786ef396c559f5d9d39ab575b2cd9828b375617ac8217af6d5ffdccc9496d3",
+    "matches_argon": true
+  },
+  {
+    "path": "src/web/design-system/assets/icons/fridge.svg",
+    "argon_sha256": "63912a608d6b27d0a42ae4ddc162e4a27d8541bca6006ff75f19aa353292a31e",
+    "integration_sha256": "63912a608d6b27d0a42ae4ddc162e4a27d8541bca6006ff75f19aa353292a31e",
+    "matches_argon": true
+  },
+  {
+    "path": "src/web/design-system/assets/icons/home.svg",
+    "argon_sha256": "cf59825b265869370b27742ea4f64f031f2b3f0c134830fe41cf2f80c2113db1",
+    "integration_sha256": "cf59825b265869370b27742ea4f64f031f2b3f0c134830fe41cf2f80c2113db1",
+    "matches_argon": true
+  },
+  {
+    "path": "src/web/design-system/assets/icons/meal-plan.svg",
+    "argon_sha256": "031f11b4393033345e1f49146bedef76ac3a87dc10a4fd333a9a1ffd1b2033a6",
+    "integration_sha256": "031f11b4393033345e1f49146bedef76ac3a87dc10a4fd333a9a1ffd1b2033a6",
+    "matches_argon": true
+  },
+  {
+    "path": "src/web/design-system/assets/icons/profile.svg",
+    "argon_sha256": "a83dfacaee4004d001b314e3185ce7fcab7885d406e89024cd90680b7acab096",
+    "integration_sha256": "a83dfacaee4004d001b314e3185ce7fcab7885d406e89024cd90680b7acab096",
+    "matches_argon": true
+  },
+  {
+    "path": "src/web/design-system/assets/icons/recipe.svg",
+    "argon_sha256": "238722eb3a7041991270b6193f43161b0df4d23e9ab05149117c47eb9261ab59",
+    "integration_sha256": "238722eb3a7041991270b6193f43161b0df4d23e9ab05149117c47eb9261ab59",
+    "matches_argon": true
+  },
+  {
+    "path": "src/web/design-system/assets/icons/scan.svg",
+    "argon_sha256": "fa23f2fb034f31280cdc2f0b09b28ebb9605734d202ee75897ec6cf58f093c38",
+    "integration_sha256": "fa23f2fb034f31280cdc2f0b09b28ebb9605734d202ee75897ec6cf58f093c38",
+    "matches_argon": true
+  },
+  {
+    "path": "src/web/design-system/navigation.tsx",
+    "argon_sha256": "6fd6773821607316c6510d06e3004f53bf3fb3f51a10243c9b72790ababf2247",
+    "integration_sha256": "6fd6773821607316c6510d06e3004f53bf3fb3f51a10243c9b72790ababf2247",
+    "matches_argon": true
+  },
+  {
+    "path": "src/web/lib/culinary-visuals.ts",
+    "argon_sha256": "71dc82c9bbc788b29e4524d02d830b4bd224a8d3a79b66f0f027c4e18820e4bd",
+    "integration_sha256": "71dc82c9bbc788b29e4524d02d830b4bd224a8d3a79b66f0f027c4e18820e4bd",
+    "matches_argon": true
+  },
+  {
+    "path": "src/web/lib/takolio-brand.ts",
+    "argon_sha256": "98647692f5fc99043e797f9e7dd7b395907677e8810ef4831081afe0a3cb39be",
+    "integration_sha256": "98647692f5fc99043e797f9e7dd7b395907677e8810ef4831081afe0a3cb39be",
+    "matches_argon": true
+  },
+  {
+    "path": "src/web/pages/CookingCompletePage.tsx",
+    "argon_sha256": "9df4e5025cb4488ad9fbb76a4d67193ad1faa03bc99107ef5b8c1321d7cd26a6",
+    "integration_sha256": "9df4e5025cb4488ad9fbb76a4d67193ad1faa03bc99107ef5b8c1321d7cd26a6",
+    "matches_argon": true
+  },
+  {
+    "path": "src/web/pages/CookingModePage.tsx",
+    "argon_sha256": "67762c07a7af9ded35c1f0b373ab364055c74ae276e73d817e197261d5dace3f",
+    "integration_sha256": "67762c07a7af9ded35c1f0b373ab364055c74ae276e73d817e197261d5dace3f",
+    "matches_argon": true
+  },
+  {
+    "path": "src/web/pages/HomePage.tsx",
+    "argon_sha256": "ce02fbf7bb5aa289c0c03765760ab8131efad8a492af2a51437573b4b5684288",
+    "integration_sha256": "ce02fbf7bb5aa289c0c03765760ab8131efad8a492af2a51437573b4b5684288",
+    "matches_argon": true
+  },
+  {
+    "path": "src/web/pages/RecipeDetailPage.tsx",
+    "argon_sha256": "563e802e31077d7fc23842c5d073e1214963d6979652093dee95b8f49c2d132f",
+    "integration_sha256": "563e802e31077d7fc23842c5d073e1214963d6979652093dee95b8f49c2d132f",
+    "matches_argon": true
+  },
+  {
+    "path": "src/web/pages/RecipesPage.tsx",
+    "argon_sha256": "caf0b5e7a95e030f1c0fa1bf921e40c2518dd87fb4ea874874e93733644b94a7",
+    "integration_sha256": "caf0b5e7a95e030f1c0fa1bf921e40c2518dd87fb4ea874874e93733644b94a7",
+    "matches_argon": true
+  },
+  {
+    "path": "src/web/styles/kitchen-cooking.css",
+    "argon_sha256": "d6185232a7009ef682590b9a26243156cdc204d5030457e5960f62314ecce2e8",
+    "integration_sha256": "d6185232a7009ef682590b9a26243156cdc204d5030457e5960f62314ecce2e8",
+    "matches_argon": true
+  },
+  {
+    "path": "src/web/styles/kitchen-foundation.css",
+    "argon_sha256": "fad60c5916e6e3c15110dba4f922dcc53da735b189f0e92c1d875478422931ad",
+    "integration_sha256": "fad60c5916e6e3c15110dba4f922dcc53da735b189f0e92c1d875478422931ad",
+    "matches_argon": true
+  },
+  {
+    "path": "src/web/styles/kitchen-recipes.css",
+    "argon_sha256": "2b3e3a842495e9e63653eebdcc2f90fa1aa0c3ce0340071ce20cd4777f85dae2",
+    "integration_sha256": "2b3e3a842495e9e63653eebdcc2f90fa1aa0c3ce0340071ce20cd4777f85dae2",
+    "matches_argon": true
+  },
+  {
+    "path": "src/web/styles/takosan-tokens.css",
+    "argon_sha256": "90bc4eb01ceb96b528038a46025308e66633a00fdd44491d0e9d5f7db1cb18ef",
+    "integration_sha256": "473b9e063135493c3a9d6fef8fd1c4fe342f9a8c271ca80a33839659905a5f54",
+    "matches_argon": false
+  },
+  {
+    "path": "tests/e2e/t17-ui/takolio-culinary-experience.e2e.ts",
+    "argon_sha256": "810b98878c4bfb9f3c383986141947b64f3e639b81da9942e8e866780db15742",
+    "integration_sha256": "c50fb74dc2d4014cc4c7414114c3eff28caad465bcb73801ce15e3682e59e80e",
+    "matches_argon": false
+  },
+  {
+    "path": "tests/unit/takosan-brand.test.tsx",
+    "argon_sha256": "ee80a5ea2f43cd9a7362879aa9ab13498e2850a4f1b8edec12c3ae7c072035ee",
+    "integration_sha256": "ee80a5ea2f43cd9a7362879aa9ab13498e2850a4f1b8edec12c3ae7c072035ee",
+    "matches_argon": true
+  },
+  {
+    "path": "tests/unit/ui15-culinary-upgrade.test.tsx",
+    "argon_sha256": "7afd26aa6ed95bad52c84c157197df45e2c3cc87eddd1f69c6ff7ca6f4d78b41",
+    "integration_sha256": "7afd26aa6ed95bad52c84c157197df45e2c3cc87eddd1f69c6ff7ca6f4d78b41",
+    "matches_argon": true
+  }
+]

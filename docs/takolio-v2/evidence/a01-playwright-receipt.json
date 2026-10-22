@@ -1,0 +1,240 @@
+{
+  "executedAtUtc": "2026-10-22T11:38:36.635Z",
+  "headSha": "5db70a578764ccdb9ad458a21833fec5b6c04741",
+  "baseUrl": "http://127.0.0.1:5253",
+  "viewports": {
+    "mobile-390x844": {
+      "iconIds": [
+        "icon-fridge",
+        "icon-home",
+        "icon-meal-plan",
+        "icon-profile",
+        "icon-recipe",
+        "icon-scan"
+      ],
+      "uniquePrimitiveCount": 6,
+      "homeDistinctFromMealPlan": true,
+      "homeStrokeWidth": "2.2",
+      "fridgeStrokeWidth": "1.8",
+      "scrollWidth": 390,
+      "innerWidth": 390
+    },
+    "mobile-short-320x420": {
+      "iconIds": [
+        "icon-fridge",
+        "icon-home",
+        "icon-meal-plan",
+        "icon-profile",
+        "icon-recipe",
+        "icon-scan"
+      ],
+      "uniquePrimitiveCount": 6,
+      "homeDistinctFromMealPlan": true,
+      "homeStrokeWidth": "2.2",
+      "fridgeStrokeWidth": "1.8",
+      "scrollWidth": 320,
+      "innerWidth": 320
+    },
+    "tablet-768x1024": {
+      "iconIds": [
+        "icon-fridge",
+        "icon-home",
+        "icon-meal-plan",
+        "icon-profile",
+        "icon-recipe",
+        "icon-scan"
+      ],
+      "uniquePrimitiveCount": 6,
+      "homeDistinctFromMealPlan": true,
+      "homeStrokeWidth": "2.2",
+      "fridgeStrokeWidth": "1.8",
+      "scrollWidth": 768,
+      "innerWidth": 768
+    },
+    "desktop-1440x900": {
+      "iconIds": [
+        "icon-fridge",
+        "icon-home",
+        "icon-meal-plan",
+        "icon-profile",
+        "icon-recipe",
+        "icon-scan"
+      ],
+      "uniquePrimitiveCount": 6,
+      "homeDistinctFromMealPlan": true,
+      "homeStrokeWidth": "2.2",
+      "fridgeStrokeWidth": "1.8",
+      "scrollWidth": 1440,
+      "innerWidth": 1440
+    }
+  },
+  "textZoom200": {
+    "zoom200-390x844": {
+      "baseNavLabelPx": 12,
+      "zoomedNavLabelPx": 24,
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "navCount": 5,
+      "minTargetHeight": 64,
+      "rects": [
+        {
+          "text": "Trang chủ",
+          "width": 75,
+          "height": 64
+        },
+        {
+          "text": "Tủ lạnh",
+          "width": 75,
+          "height": 64
+        },
+        {
+          "text": "Công thức",
+          "width": 75,
+          "height": 64
+        },
+        {
+          "text": "Thực đơn",
+          "width": 75,
+          "height": 64
+        },
+        {
+          "text": "Tôi",
+          "width": 75,
+          "height": 64
+        }
+      ]
+    },
+    "zoom200-320x420": {
+      "baseNavLabelPx": 12,
+      "zoomedNavLabelPx": 24,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "navCount": 5,
+      "minTargetHeight": 74,
+      "rects": [
+        {
+          "text": "Trang chủ",
+          "width": 61,
+          "height": 74
+        },
+        {
+          "text": "Tủ lạnh",
+          "width": 61,
+          "height": 74
+        },
+        {
+          "text": "Công thức",
+          "width": 61,
+          "height": 74
+        },
+        {
+          "text": "Thực đơn",
+          "width": 61,
+          "height": 74
+        },
+        {
+          "text": "Tôi",
+          "width": 61,
+          "height": 74
+        }
+      ]
+    }
+  },
+  "keyboardTabNavigation": {
+    "tabOrderIconIds": [
+      "icon-home",
+      "icon-fridge",
+      "icon-recipe",
+      "icon-meal-plan",
+      "icon-profile"
+    ],
+    "steps": [
+      {
+        "href": "/",
+        "label": "Trang chủ",
+        "iconId": "icon-home",
+        "matchesFocusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "boxShadow": "rgb(15, 45, 70) 0px -3px 0px 0px inset"
+      },
+      {
+        "href": "/fridge",
+        "label": "Tủ lạnh",
+        "iconId": "icon-fridge",
+        "matchesFocusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "boxShadow": "none"
+      },
+      {
+        "href": "/recipes",
+        "label": "Công thức",
+        "iconId": "icon-recipe",
+        "matchesFocusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "boxShadow": "none"
+      },
+      {
+        "href": "/week",
+        "label": "Thực đơn",
+        "iconId": "icon-meal-plan",
+        "matchesFocusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "boxShadow": "none"
+      },
+      {
+        "href": "/me",
+        "label": "Tôi",
+        "iconId": "icon-profile",
+        "matchesFocusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "boxShadow": "none"
+      }
+    ],
+    "shiftTabTarget": "icon-meal-plan",
+    "shiftTabHref": "/week",
+    "enterActivatedPath": "/week"
+  },
+  "routeChecks": [
+    {
+      "route": "/",
+      "activeIconId": "icon-home",
+      "activeStroke": "2.2"
+    },
+    {
+      "route": "/fridge",
+      "activeIconId": "icon-fridge",
+      "activeStroke": "2.2"
+    },
+    {
+      "route": "/recipes",
+      "activeIconId": "icon-recipe",
+      "activeStroke": "2.2"
+    },
+    {
+      "route": "/planner",
+      "activeIconId": "icon-meal-plan",
+      "activeStroke": "2.2"
+    },
+    {
+      "route": "/me",
+      "activeIconId": "icon-profile",
+      "activeStroke": "2.2"
+    }
+  ],
+  "axeViolations": {
+    "mobile-390x844": 0,
+    "desktop-1440x900": 0,
+    "zoom200-390x844": 0
+  },
+  "screenshots": {
+    "a01-nav-390x844.png": "4057594fbcf2e32509bbdc6d0a792444e49ddab02dc085e4ba0ac431d15f0b75",
+    "a01-nav-320x420.png": "c3278c9c8c7418d88d2e02f849354fa1521262dfe83f4b72c0f12f0c2f954cac",
+    "a01-nav-1440x900.png": "cf233a4fb2607bfe892dd16a382aca97f2a6d3dde07bbae855666d50ea844337",
+    "a01-nav-390x844-zoom200.png": "0e04de27fc0560ca3e7ab7e51e7184d45357b7498ac823651dca24d0b7c23efb"
+  }
+}
