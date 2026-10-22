@@ -15,7 +15,7 @@ import {
   discoveryRequest,
   type DiscoveryFilters,
 } from '../lib/recipe-discovery';
-import { Search, ArrowLeft, ArrowRight, Clock, CheckCircle } from 'lucide-react';
+import { Search, ArrowLeft, ArrowRight, Clock, CheckCircle, X } from 'lucide-react';
 import { FavoritesCollection } from '../features/favorites/FavoritesCollection';
 import { KitchenLoopStrip } from '../components/cooking/CookingTechniqueVisual';
 import { TakoMascot } from '../components/common/TakoMascot';
@@ -43,6 +43,11 @@ const CUISINES = [
   ['chinese', 'Trung Hoa'],
   ['thai', 'Món Thái'],
   ['italian', 'Món Ý'],
+];
+const REGIONS = [
+  ['bac', 'Miền Bắc'],
+  ['trung', 'Miền Trung'],
+  ['nam', 'Miền Nam'],
 ];
 
 export const RecipesPage = () => {
@@ -111,14 +116,29 @@ export const RecipesPage = () => {
     focusResults.current = true;
     setParams(updateDiscoveryFilters(params, { page: 1 }));
   };
-  const active = !!(
-    filters.q ||
-    filters.cuisine ||
-    filters.category ||
-    filters.region ||
-    filters.noBuy ||
-    filters.fast
-  );
+  const activeFilters: Array<{
+    key: keyof DiscoveryFilters;
+    label: string;
+    clear: Partial<DiscoveryFilters>;
+  }> = [];
+  if (filters.q) activeFilters.push({ key: 'q', label: `Tìm: “${filters.q}”`, clear: { q: '' } });
+  if (filters.cuisine) activeFilters.push({
+    key: 'cuisine',
+    label: CUISINES.find(([id]) => id === filters.cuisine)![1],
+    clear: { cuisine: null },
+  });
+  if (filters.category) activeFilters.push({
+    key: 'category',
+    label: CATEGORIES.find(([id]) => id === filters.category)![1],
+    clear: { category: null },
+  });
+  if (filters.region) activeFilters.push({
+    key: 'region',
+    label: REGIONS.find(([id]) => id === filters.region)![1],
+    clear: { region: null },
+  });
+  if (filters.noBuy) activeFilters.push({ key: 'noBuy', label: 'Không mua thêm', clear: { noBuy: false } });
+  if (filters.fast) activeFilters.push({ key: 'fast', label: 'Tối đa 20 phút', clear: { fast: false } });
   const pagerHref = (page: number, cursor: string | null) =>
     `?${updateDiscoveryFilters(params, { page, cursor: cursor ?? undefined })}`;
 
@@ -250,9 +270,9 @@ export const RecipesPage = () => {
                       }
                     >
                       <option value="">Toàn quốc</option>
-                      <option value="bac">Miền Bắc</option>
-                      <option value="trung">Miền Trung</option>
-                      <option value="nam">Miền Nam</option>
+                      {REGIONS.map(([id, label]) => (
+                        <option value={id} key={id}>{label}</option>
+                      ))}
                     </select>
                   </label>
                 </div>
@@ -281,7 +301,7 @@ export const RecipesPage = () => {
                   kiểm tra.
                 </p>
               </details>
-              {active && (
+              {activeFilters.length > 0 && (
                 <Button variant="outline" className="mt-5" onClick={reset}>
                   Xóa tìm kiếm và bộ lọc
                 </Button>
@@ -298,6 +318,26 @@ export const RecipesPage = () => {
                   </p>
                 )}
               </div>
+              {activeFilters.length > 0 && (
+                <ul className="discovery-active-filters" aria-label="Điều kiện đang dùng">
+                  {activeFilters.map(({ key, label, clear }) => (
+                    <li key={key}>
+                      <button
+                        type="button"
+                        aria-label={`Bỏ ${label}`}
+                        onClick={() => {
+                          update(clear);
+                          // The removed control unmounts; keep keyboard focus at the results.
+                          headingRef.current?.focus();
+                        }}
+                      >
+                        <span>{label}</span>
+                        <X size={16} aria-hidden="true" />
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
               {result?.source === 'device' && (
                 <p role="status" className="text-sm text-semantic-text-secondary">
                   Đang dùng công thức và nguyên liệu lưu trên thiết bị. Kết nối lại để xem danh sách

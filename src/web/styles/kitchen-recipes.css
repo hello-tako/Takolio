@@ -430,3 +430,46 @@
   color: var(--kitchen-pine);
   font-size: 13px;
 }
+
+.takosan-rebuild .discovery-active-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  list-style: none;
+}
+.takosan-rebuild .discovery-active-filters li {
+  min-width: 0;
+  max-width: 100%;
+}
+.takosan-rebuild .discovery-active-filters button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--kitchen-pine);
+  border-radius: 10px;
+  background: var(--kitchen-pine);
+  color: white;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  text-align: start;
+  touch-action: manipulation;
+}
+.takosan-rebuild .discovery-active-filters button:hover {
+  background: var(--takosan-ink);
+  border-color: var(--takosan-ink);
+}
+.takosan-rebuild .discovery-active-filters button:focus-visible {
+  outline: 2px solid var(--semantic-focus);
+  outline-offset: 3px;
+}
+.takosan-rebuild .discovery-active-filters button span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.takosan-rebuild .discovery-active-filters svg {
+  flex-shrink: 0;
+}
