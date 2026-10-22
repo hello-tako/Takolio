@@ -11252,3 +11252,13 @@ typecheck, Admin build, lint with two pre-existing generated-bundle warnings,
 public scan and diff check. Fresh CI and independent review on the new PR HEAD
 remain required before merge; live Access subject capture, staging QA role
 acceptance, certificate signing and production deployment remain pending.
+
+## Admin acceptance: inventory CAS - 2026-10-23 JST
+
+The actual customer staging guest transaction exposed false 409 responses after
+successful legacy inventory PATCH/DELETE commits. D1 counts trigger side effects
+in meta.changes; the route now verifies its conditional UPDATE RETURNING row.
+Household/revision predicates and atomic audits remain unchanged. Two real local
+D1 regressions fail on baseline and pass with the fix; focused suites 154/154 PASS.
+The fix is not yet deployed. Production Admin remains NOT_DEPLOYED and the
+all-PASS exact-source certificate remains absent. See readiness document 34.

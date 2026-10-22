@@ -4123,3 +4123,11 @@ evidence or create a staging certificate.
 - [ ] Push the compatibility commit, wait for fresh PR #23 CI, and obtain independent review on the new HEAD.
 - [ ] Capture real Access subjects and complete protected staging QA ceremonies and ST01-ST20 certification.
 - [ ] Dispatch production only after a signed exact-source all-PASS staging certificate.
+
+## Admin acceptance: inventory CAS - 2026-10-23 JST
+
+- [x] Reproduce committed inventory writes returning false 409 on real staging D1.
+- [x] Replace trigger-sensitive change-count success detection with UPDATE RETURNING.
+- [x] Two baseline-failing real local D1 regressions; focused tests 154/154 PASS.
+- [ ] Hosted CI/review, reviewed customer staging deploy and live transaction rerun.
+- [ ] Complete remaining actual Admin acceptance before production certification.
