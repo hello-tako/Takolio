@@ -3930,6 +3930,18 @@
     "sha256": "409f0723b8ff6590473260470fab1af71491ae979630772ca5d90e1f3903ed66"
   },
   {
+    "path": "docs/admin/production-readiness/34_CUSTOMER_INVENTORY_CAS_REGRESSION_20261023.md",
+    "mode": "100644",
+    "git_blob": "904c8e00eb9348b66fcc8895a83bb62c652bdc80",
+    "sha256": "431d8e36b09cfb2ca0b5dcc1f5f87abb3b213c57068f16c2fa225cee2bba0aea"
+  },
+  {
+    "path": "docs/admin/production-readiness/35_CUSTOMER_TOMBSTONE_UI_20261023.md",
+    "mode": "100644",
+    "git_blob": "551a10e013ad9d5d0ea88681143c34fe797fea20",
+    "sha256": "4accb5093b7d740da6965a21eca218ef5edf27373c6671f712c6621664d4029b"
+  },
+  {
     "path": "docs/admin/production-readiness/evidence/artifacts.json",
     "mode": "100644",
     "git_blob": "878a5f5e04747ae04a0117d9882d47f1c0d34ca8",
@@ -3982,6 +3994,12 @@
     "mode": "100644",
     "git_blob": "31bfea4c67194ec99017fa7bd72eb13b3c05b80c",
     "sha256": "e0aa8ea34154d75d7ff593816d5e861eda3c42d2411315beb6457c00846bda10"
+  },
+  {
+    "path": "docs/admin/production-readiness/evidence/customer-inventory-cas-preview-20261023.json",
+    "mode": "100644",
+    "git_blob": "2d4f698a6ca2d23102cda6b0f775917cf472efb4",
+    "sha256": "077ed769f29f6c1434e6ff868f9e2f210e291f03ac5d64e4c197347d98631ff2"
   },
   {
     "path": "docs/admin/production-readiness/evidence/frontend/a11y/axe-report.json",
@@ -31100,8 +31118,8 @@
   {
     "path": "src/web/pages/InventoryPage.tsx",
     "mode": "100644",
-    "git_blob": "06f42c506fcf120b6206b541324a3f00e2a88786",
-    "sha256": "89b1e97cba5d0bb42ffdb3d7eca12bc49697331c3f6e4654f8a46e57795bff13"
+    "git_blob": "08c97e9740d5314427c153df3a24d20643568640",
+    "sha256": "46c3d80fe3970abef482014c425815353c1842ba563b041d0f686a1bdf3b3d99"
   },
   {
     "path": "src/web/pages/LandingPage.tsx",
@@ -31844,8 +31862,8 @@
   {
     "path": "src/worker/routes/inventory.ts",
     "mode": "100644",
-    "git_blob": "b8786096de353ecbb3805d8ea7f7196a91829282",
-    "sha256": "674600788b9abcc79d2fa16da4d7bf67344311c2e2a8ad6f9df15b38bd03303c"
+    "git_blob": "df41b461152470faadd3bd9f741baeb05e7fccfe",
+    "sha256": "3681cad1b06cdd990c5da7ef13d194568a62db71cef75e068f70aee56b9595d1"
   },
   {
     "path": "src/worker/routes/meal-planning.ts",
@@ -32436,6 +32454,12 @@
     "sha256": "01f1b5cbf03829942f8c2b8f9dfd94affb47bb2b20c92772abff6b9bb6ac6623"
   },
   {
+    "path": "tests/helpers/inventory-mutation-d1-worker.ts",
+    "mode": "100644",
+    "git_blob": "a27473f356db57fc4d8ad25bddb3c095618e323b",
+    "sha256": "88ff6b304ce8827abfa7bebd8e7964defd1d901ef1eea6da7221ae62a5406ed1"
+  },
+  {
     "path": "tests/helpers/local-d1-worker.mjs",
     "mode": "100644",
     "git_blob": "8e9a2dc853ea390e4203f556f658a1ec7d3dea94",
@@ -32842,6 +32866,12 @@
     "mode": "100644",
     "git_blob": "eed2c035206f71c471b541ff585791640912ef1b",
     "sha256": "19275579e2fc7cf9dc762c05b1b51064c27189f3781fbd865e9c20326b7683ce"
+  },
+  {
+    "path": "tests/integration/inventory-mutation-d1.test.mjs",
+    "mode": "100644",
+    "git_blob": "e690437bbdac718f299812ab32a5cb9cf798190c",
+    "sha256": "1ca09d4d05b87dee3717af7437256fa3a2e98438b0c111793d70277dcf4edebe"
   },
   {
     "path": "tests/integration/inventory-observation-concurrency.test.ts",
@@ -33578,8 +33608,8 @@
   {
     "path": "tests/unit/command-route-integrity.test.ts",
     "mode": "100644",
-    "git_blob": "8fa0aed309004dd3c79128649445de025daed47f",
-    "sha256": "3bbac9dd38b3e7b69ee7d5e3d706c70ce494d1ba020264bae99de72e7c73028c"
+    "git_blob": "c02c11c890dc3b2aabd6da7935c20ba23d87588e",
+    "sha256": "08a149d1418771591f46d0a42734ee46b86e2892a4f327d6706d23e5d850daab"
   },
   {
     "path": "tests/unit/composition-flags.test.mjs",
@@ -33872,8 +33902,8 @@
   {
     "path": "tests/unit/inventory-quantity-ui.test.tsx",
     "mode": "100644",
-    "git_blob": "026e6673086c9a85bb9ae7fade3109c70c5ab7b0",
-    "sha256": "44abec64164b38a0ffd635ee6848791be040830da3985c314d3d0e255eb1590e"
+    "git_blob": "fb65de3bd8efb3df33cd8993881831a8c374942f",
+    "sha256": "9929c8ae6213e3fd2525db3f69ec634901c06c8f12a6a9170fec8be9acebb643"
   },
   {
     "path": "tests/unit/inventory-truth.test.ts",

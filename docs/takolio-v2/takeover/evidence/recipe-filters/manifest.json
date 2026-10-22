@@ -1,0 +1,149 @@
+{
+  "base": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "packet": "UI-C5",
+  "capture": "Isolated local Worker, SQLite synthetic household, real discovery DTOs; external requests blocked.",
+  "text_scale_limit": "Root font-size 200%; selected controls measured at 28px. This is not OS-level magnifier or physical-device certification.",
+  "review": "Agent inspected mobile 390, narrow 320 text200%, desktop 1440 and long-search captures. Owner acceptance pending.",
+  "entries": [
+    {
+      "path": "before/filters-320x568-text1.png",
+      "sha256": "28607032e1fc19d39b43c57e7502ef3c535d4620ce41e7c5dcc281b6e2f0f342",
+      "source": ".artifacts/takeover/recipe-filters/before/takolio-recipe-discovery.e-a30e3-n-readable-across-viewports-mobile-390/filters-320x568-text1.png"
+    },
+    {
+      "path": "after/filters-320x568-text1.png",
+      "sha256": "c6c2f4181e9e5cb830c871b680546554f0211cb414a8be18370a83b83c025531",
+      "source": ".artifacts/takeover/recipe-filters/complete-browser/takolio-recipe-discovery.e-a30e3-n-readable-across-viewports-mobile-390/filters-320x568-text1.png"
+    },
+    {
+      "path": "after/axe-320x568-text1.json",
+      "sha256": "7c3870e3a30267a536c4f4adb3105374c48bea93b980c1c5bf0d4feb24786c83",
+      "source": ".artifacts/takeover/recipe-filters/complete-browser/takolio-recipe-discovery.e-a30e3-n-readable-across-viewports-mobile-390/axe-320x568-text1.json"
+    },
+    {
+      "path": "before/filters-320x420-text2.png",
+      "sha256": "ccff3ce4c70b771582a10492f3e599378ee8b757fdd43a05f435043ae52ab21c",
+      "source": ".artifacts/takeover/recipe-filters/before/takolio-recipe-discovery.e-a30e3-n-readable-across-viewports-mobile-390/filters-320x420-text2.png"
+    },
+    {
+      "path": "after/filters-320x420-text2.png",
+      "sha256": "6c7039dad49167eed6e3f6610b52eb3857ba48e041958aa389397b51894d637f",
+      "source": ".artifacts/takeover/recipe-filters/complete-browser/takolio-recipe-discovery.e-a30e3-n-readable-across-viewports-mobile-390/filters-320x420-text2.png"
+    },
+    {
+      "path": "after/axe-320x420-text2.json",
+      "sha256": "80c1eae07ff705c49b81db70d4a2dfcdba63903a9527fe18d5650c718966d369",
+      "source": ".artifacts/takeover/recipe-filters/complete-browser/takolio-recipe-discovery.e-a30e3-n-readable-across-viewports-mobile-390/axe-320x420-text2.json"
+    },
+    {
+      "path": "before/filters-360x800-text1.png",
+      "sha256": "d1dda49dcd55c0a20c7e1c96f36fe1bcea532f4834025264b147a21f9d01e82d",
+      "source": ".artifacts/takeover/recipe-filters/before/takolio-recipe-discovery.e-a30e3-n-readable-across-viewports-mobile-390/filters-360x800-text1.png"
+    },
+    {
+      "path": "after/filters-360x800-text1.png",
+      "sha256": "ffd5c11b24f670d4901a087aaf525f5572746e282ebaebec58bd1e7c25356e30",
+      "source": ".artifacts/takeover/recipe-filters/complete-browser/takolio-recipe-discovery.e-a30e3-n-readable-across-viewports-mobile-390/filters-360x800-text1.png"
+    },
+    {
+      "path": "after/axe-360x800-text1.json",
+      "sha256": "7928977b5da07d705f78f8d05e032f02a72b53b95a5cfee88ba012efdb035c54",
+      "source": ".artifacts/takeover/recipe-filters/complete-browser/takolio-recipe-discovery.e-a30e3-n-readable-across-viewports-mobile-390/axe-360x800-text1.json"
+    },
+    {
+      "path": "before/filters-390x844-text1.png",
+      "sha256": "235d1bf580491f35fa7e5fa1b68f8744055b07f8f8514fb30af2bc6b95245eff",
+      "source": ".artifacts/takeover/recipe-filters/before/takolio-recipe-discovery.e-a30e3-n-readable-across-viewports-mobile-390/filters-390x844-text1.png"
+    },
+    {
+      "path": "after/filters-390x844-text1.png",
+      "sha256": "7962a9ad77ce9581706dc657779d789feb2426fffcf97752fb140b559d200b28",
+      "source": ".artifacts/takeover/recipe-filters/complete-browser/takolio-recipe-discovery.e-a30e3-n-readable-across-viewports-mobile-390/filters-390x844-text1.png"
+    },
+    {
+      "path": "after/axe-390x844-text1.json",
+      "sha256": "703509b430945c2ca4c32af4f5d81d3eb00a8061e5d86e35aca842afeb615c35",
+      "source": ".artifacts/takeover/recipe-filters/complete-browser/takolio-recipe-discovery.e-a30e3-n-readable-across-viewports-mobile-390/axe-390x844-text1.json"
+    },
+    {
+      "path": "before/filters-430x932-text1.png",
+      "sha256": "8009db552761438205211b0ba85ba3bf18b5721d8d7ee8586ba984b40fc87aa2",
+      "source": ".artifacts/takeover/recipe-filters/before/takolio-recipe-discovery.e-a30e3-n-readable-across-viewports-mobile-390/filters-430x932-text1.png"
+    },
+    {
+      "path": "after/filters-430x932-text1.png",
+      "sha256": "3da0d4c93ba20504a598d9588ab6823c84d4b7f8ad8c9b5daeaa08cb996eff51",
+      "source": ".artifacts/takeover/recipe-filters/complete-browser/takolio-recipe-discovery.e-a30e3-n-readable-across-viewports-mobile-390/filters-430x932-text1.png"
+    },
+    {
+      "path": "after/axe-430x932-text1.json",
+      "sha256": "a97d257321231a4d2f19e6f37da1cd29e564630552b8090c18db56fef6ff93c0",
+      "source": ".artifacts/takeover/recipe-filters/complete-browser/takolio-recipe-discovery.e-a30e3-n-readable-across-viewports-mobile-390/axe-430x932-text1.json"
+    },
+    {
+      "path": "before/filters-768x1024-text1.png",
+      "sha256": "1647b21fa3240e7febc37dfe0080a755dbc842f8f5458317bcfca8ea4d8f07f8",
+      "source": ".artifacts/takeover/recipe-filters/before/takolio-recipe-discovery.e-a30e3-n-readable-across-viewports-mobile-390/filters-768x1024-text1.png"
+    },
+    {
+      "path": "after/filters-768x1024-text1.png",
+      "sha256": "34557d1f2e2f035ae33155126e112deed3eb3b93bfeff7257771993d200053b8",
+      "source": ".artifacts/takeover/recipe-filters/complete-browser/takolio-recipe-discovery.e-a30e3-n-readable-across-viewports-mobile-390/filters-768x1024-text1.png"
+    },
+    {
+      "path": "after/axe-768x1024-text1.json",
+      "sha256": "c85a635fa28725b645d562ab1482e58ea99ae01a4801118dafe1a74c46c2866d",
+      "source": ".artifacts/takeover/recipe-filters/complete-browser/takolio-recipe-discovery.e-a30e3-n-readable-across-viewports-mobile-390/axe-768x1024-text1.json"
+    },
+    {
+      "path": "before/filters-1024x768-text1.png",
+      "sha256": "1493c84d7dfead6d68fa8df88c575ee4e28a6735b709f062428d432d21f2d3af",
+      "source": ".artifacts/takeover/recipe-filters/before/takolio-recipe-discovery.e-a30e3-n-readable-across-viewports-mobile-390/filters-1024x768-text1.png"
+    },
+    {
+      "path": "after/filters-1024x768-text1.png",
+      "sha256": "5c7a9804a5084c161cf1f688d2f87bb5991a7cf3c3c397cdaba7fa294ebc2479",
+      "source": ".artifacts/takeover/recipe-filters/complete-browser/takolio-recipe-discovery.e-a30e3-n-readable-across-viewports-mobile-390/filters-1024x768-text1.png"
+    },
+    {
+      "path": "after/axe-1024x768-text1.json",
+      "sha256": "794a1ab93bbb6da1b7add692f478bb5e9fd193b76f6d93c3c506380adce6d295",
+      "source": ".artifacts/takeover/recipe-filters/complete-browser/takolio-recipe-discovery.e-a30e3-n-readable-across-viewports-mobile-390/axe-1024x768-text1.json"
+    },
+    {
+      "path": "before/filters-1440x900-text1.png",
+      "sha256": "9179bd280a2f3298ab03b3da081f04f4aa96f248a5cd60ad2379d66b19913d7e",
+      "source": ".artifacts/takeover/recipe-filters/before/takolio-recipe-discovery.e-a30e3-n-readable-across-viewports-mobile-390/filters-1440x900-text1.png"
+    },
+    {
+      "path": "after/filters-1440x900-text1.png",
+      "sha256": "6d3be7bea2f8819037fd8e12474c0c3a2a2e5d5a3232fd0f106d958d77d6383f",
+      "source": ".artifacts/takeover/recipe-filters/complete-browser/takolio-recipe-discovery.e-a30e3-n-readable-across-viewports-mobile-390/filters-1440x900-text1.png"
+    },
+    {
+      "path": "after/axe-1440x900-text1.json",
+      "sha256": "7fe117747ef7175fc3a36cb26c2c06572789ef5b8b4d0c8ec4d7ef0d66404e50",
+      "source": ".artifacts/takeover/recipe-filters/complete-browser/takolio-recipe-discovery.e-a30e3-n-readable-across-viewports-mobile-390/axe-1440x900-text1.json"
+    },
+    {
+      "path": "after/filters-long-search-text2.png",
+      "sha256": "995074b4f0939fff67aade51c52f977c66f274a3dbdfe7ca19284433215c37cf",
+      "source": ".artifacts/takeover/recipe-filters/complete-browser/takolio-recipe-discovery.e-a30e3-n-readable-across-viewports-mobile-390/filters-long-search-text2.png"
+    },
+    {
+      "path": "after/filters-collapsed.png",
+      "sha256": "449d615569c0d97a3255807148c0008f375ec8ff316064aba1bb684568250efa",
+      "source": ".artifacts/takeover/recipe-filters/complete-browser/takolio-recipe-discovery.e-0cabe-in-real-discovery-semantics-mobile-390/filters-collapsed.png"
+    },
+    {
+      "path": "after/filters-empty.png",
+      "sha256": "30f3b4e8a21278f18c9001970e1786c3c1e45c91d50fcf9e239ddec38833108b",
+      "source": ".artifacts/takeover/recipe-filters/complete-browser/takolio-recipe-discovery.e-0cabe-in-real-discovery-semantics-mobile-390/filters-empty.png"
+    },
+    {
+      "path": "after/behavior-summary.json",
+      "sha256": "625b5a48de2b56647cd031aa7155c74f328f757bf46ca2ecd2d8b8caffe77f6d",
+      "source": ".artifacts/takeover/recipe-filters/complete-browser/takolio-recipe-discovery.e-0cabe-in-real-discovery-semantics-mobile-390/behavior-summary.json"
+    }
+  ]
+}

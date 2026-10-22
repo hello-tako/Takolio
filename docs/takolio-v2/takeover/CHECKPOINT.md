@@ -1,18 +1,22 @@
 # Takolio V2 safe continuation checkpoint - 2026-10-23 JST
 
-- G0 PASS: original worktree bytes, modes, symlinks, HEAD, status and index match the verified private snapshot. The snapshot contains .git and ignored files; fetch/worktree/checkpoint metadata changes are expected only in the original shared Git directory.
-- G1 PASS: all committed, modified and untracked Argon work is inventoried. The original workspace remains at `/Users/tunbee27/Documents/New project/Takolio`.
-- G2 PASS: GitHub main is pinned at `0322a9197bee4a4a42d95cc150f8d4fff6d53ba8`; merge base is `96c4236e572a94df4977a686e20e31312191a321`. Scope audit verifies 5,842 unchanged main paths outside the reviewed UI/test/handoff allowlist.
-- G3 PASS: integration is isolated at `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`, branch `codex/takolio-v2-rescue`; selective Argon UI/vector/test reuse is recorded per file.
-- G4 LOCAL_UI_CONTINUATION_VERIFIED: Home, recipes, detail, cooking and navigation reuse Argon source. A measured recipe icon sizing defect is fixed. All 38 screenshot rows have evidence: 37 synthetic states plus one landing proxy. This does not certify every behavior or owner visual acceptance.
-- G5 PARTIAL: lint, typecheck, migrations, build, 28 focused units and six browser tests pass. Full integration units are 9,159/9,164 with five inherited path-sensitive failures; no-space full run has one timeout. Eight inherited dependency findings remain. See TEST_BASELINES.md.
-- G6 LOCAL_CHECKPOINT_READY_FOR_REVIEW: no push, published PR, merge, deployment or production action. Owner visual acceptance and release approval are pending.
+- G0 PASS: original worktree bytes, modes, symlinks, HEAD, status and index match the verified private snapshot after the UI-C5 implementation commit. The snapshot includes .git and ignored files; only authorized shared Git metadata differs.
+- G1 PASS: committed, modified and untracked Argon work is inventoried. Original source remains at `/Users/tunbee27/Documents/New project/Takolio`.
+- G2 PASS: latest verified GitHub main is `90b94129113b41e34701d99f51175cfa81cb73de`; merge base with Argon is `96c4236e572a94df4977a686e20e31312191a321`. Protected-scope audit verifies 5,847 unchanged main paths outside the explicit UI/test/handoff allowlist.
+- G3 PASS: integration stays isolated at `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`, branch `codex/takolio-v2-rescue`. Main's two newer inventory fixes are retained; selective Argon reuse and subsequent refinements are recorded per file.
+- G4 LOCAL_RECIPE_FILTERS_VERIFIED: selected recipe conditions are visible and individually removable, preserving servings and unrelated URL state. Existing Argon Home, navigation, recipe/detail/cooking components and assets remain. All 38 screenshot rows are mapped: 37 synthetic states and one landing proxy. This is not full behavioral or owner acceptance of every screen.
+- G5 PARTIAL: lint, both typechecks, migrations, build, 116 focused regressions and eight browser tests pass. Canonical-TMPDIR full suite: 9,163/9,168 pass; five inherited encoded-space path failures remain. The first ordinary full run had 17 failures; its additional temp-path errors and Admin timeout did not recur in the canonical rerun. Eight inherited dependency findings remain. See TEST_BASELINES.md.
+- G6 LOCAL_CHECKPOINT_READY_FOR_REVIEW: no push, published PR, merge, deployment or production action. Owner visual acceptance and publication/release approval remain pending.
 
 ## Local commits
 
-Implementation checkpoint: `13250deccaedf8767d6728f0d43f1b398bd410e4` (`feat(ui): continue Argon culinary experience and retain V2 icons`), 34 explicit source/test paths. Only a trailing blank line was normalized after the accepted browser run; executable test code is unchanged.
-Documentation checkpoint: recorded by the subsequent Git commit; this file does not attempt to contain its own commit hash.
+- Salvage implementation: `279d8af7` (`feat(ui): continue Argon culinary experience and retain V2 icons`).
+- Salvage documentation: `752ee35a`.
+- UI-C5 filter implementation: `89b0a3312104a4064ad42462098c6bda2802085e` (`feat(ui): make selected recipe filters visible and removable`), exactly three source/test paths.
+- UI-C5 documentation/evidence: the subsequent Git commit; this file does not attempt to contain its own hash.
+
+The earlier source checkpoint `13250deccaedf8767d6728f0d43f1b398bd410e4` was rebased to `279d8af7` when main advanced from `0322a919` to `90b94129`. The old two-commit checkpoint is retained by `codex/takolio-v2-rescue-recovery-e4ac2b02`. Original Argon source was never rebased or edited.
 
 ## Next action
 
-Continue the next bounded local UI refinement under the existing user authorization. Add behavior assertions for the specific screen being changed; keep Week OFF/live integration gaps explicit. Remediate path-sensitive test tooling and inherited dependencies only under a separately scoped task. Obtain user approval before publication, merge, deployment or production operations.
+Continue UI-C5 with bounded saved-recipe behavior verification for SCREEN_PROGRESS row 19: verify saving/removing, reload and selected-servings handoff against the isolated local API before deciding whether UI changes are needed. Capture baseline and after evidence for any actual refinement. Keep Week OFF, live integration and performance gaps explicit. Path-sensitive production test tooling and dependency remediation remain separate scopes. Obtain approval before publication, merge, deployment or production operations.

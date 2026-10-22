@@ -278,8 +278,9 @@
   {
     "path": "src/web/pages/RecipesPage.tsx",
     "argon_sha256": "caf0b5e7a95e030f1c0fa1bf921e40c2518dd87fb4ea874874e93733644b94a7",
-    "integration_sha256": "caf0b5e7a95e030f1c0fa1bf921e40c2518dd87fb4ea874874e93733644b94a7",
-    "matches_argon": true
+    "integration_sha256": "15ba80fca0dc68d26540cbd5ff78b368e190e9922c53a25d1e148c14a9d38fb4",
+    "matches_argon": false,
+    "refinement": "UI-C5 recipe filters; implementation 89b0a331; original Argon hash retained"
   },
   {
     "path": "src/web/styles/kitchen-cooking.css",
@@ -296,8 +297,9 @@
   {
     "path": "src/web/styles/kitchen-recipes.css",
     "argon_sha256": "2b3e3a842495e9e63653eebdcc2f90fa1aa0c3ce0340071ce20cd4777f85dae2",
-    "integration_sha256": "2b3e3a842495e9e63653eebdcc2f90fa1aa0c3ce0340071ce20cd4777f85dae2",
-    "matches_argon": true
+    "integration_sha256": "6f3b609c33a6be2995770ede868f40fb5ea85fa292cb2df371ed48216f46416b",
+    "matches_argon": false,
+    "refinement": "UI-C5 recipe filters; implementation 89b0a331; original Argon hash retained"
   },
   {
     "path": "src/web/styles/takosan-tokens.css",
