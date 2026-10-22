@@ -1165,3 +1165,24 @@ release tests `219/219`, migration matrix `25/25`, workerd checks `10/10`,
 schema smoke, typecheck, Admin build, lint (0 errors; two existing generated
 bundle warnings), public scan and diff check PASS. These edits are staged for a
 separate commit after the original PR #23 commit; no history was amended.
+
+## Admin acceptance: customer inventory false conflict - 2026-10-23 JST
+
+Synthetic real staging transactions at Admin source 0322a919 found that legacy
+inventory PATCH/DELETE commit successfully but return 409 because D1 change
+counts include household revision triggers. The route now checks the CAS UPDATE
+RETURNING row. Two real local D1 regressions fail before the fix and pass after;
+154/154 focused inventory/shopping tests pass. Scope and limits are in
+`docs/admin/production-readiness/34_CUSTOMER_INVENTORY_CAS_REGRESSION_20261023.md`.
+Next: run hosted CI and review, deploy the reviewed customer staging build and
+repeat the synthetic transaction; do not label ST19 or production Admin complete.
+
+### Follow-up verification
+
+Candidate preview with actual staging D1 passed 113/113 assertions over 116
+requests and 17/17 cleanup checks. Bounded read load: 48 requests, concurrency 4,
+p95 844ms/max 913ms. No runtime deploy is implied. The full local run returned
+9146 PASS/12 FAIL: eleven temporary-path failures pass with canonical TMPDIR;
+the remaining unit fake needed RETURNING rows. That fake is corrected and the
+expanded six-suite run passes 168/168. Full rerun is in progress; failed evidence
+is retained. Sanitized preview receipt is in readiness evidence.

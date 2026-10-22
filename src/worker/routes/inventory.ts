@@ -862,7 +862,8 @@ inventoryRoutes.patch('/inventory/:id', async (c) => {
            SET name = ?, ingredient_id = ?, quantity = ?, unit = ?, category = ?, storage = ?,
                expiry_date = ?, freshness = ?, version = version + 1, updated_at = datetime('now')
            WHERE id = ? AND household_id = ?
-             AND version = ?`
+             AND version = ?
+           RETURNING id, version`
         )
         .bind(
           name,
@@ -897,7 +898,9 @@ inventoryRoutes.patch('/inventory/:id', async (c) => {
     ]);
     assertBatchSucceeded(batchResults);
     const updateResult = batchResults?.[0] as any;
-    if (updateResult?.meta?.changes !== 1) {
+    // D1 may report trigger side effects through `meta.changes`; the
+    // RETURNING row is the authoritative proof that this CAS updated one item.
+    if (updateResult?.results?.length !== 1) {
       if (replayEventId) {
         const replay = await readInventoryReplay(db, replayEventId, id, auth.householdId, requestFingerprint);
         if (replay.kind === 'conflict') {
@@ -1040,7 +1043,8 @@ inventoryRoutes.delete('/inventory/:id', async (c) => {
           `UPDATE inventory_items
            SET quantity = 0, freshness = 'out_of_stock', version = version + 1, updated_at = datetime('now')
            WHERE id = ? AND household_id = ?
-             AND version = ?`
+             AND version = ?
+           RETURNING id, version`
         )
         .bind(id, auth.householdId, expectedVersion),
       db
@@ -1063,7 +1067,8 @@ inventoryRoutes.delete('/inventory/:id', async (c) => {
     ]);
     assertBatchSucceeded(batchResults);
     const deleteResult = batchResults?.[0] as any;
-    if (deleteResult?.meta?.changes !== 1) {
+    // Use the returned CAS row instead of D1's trigger-sensitive change count.
+    if (deleteResult?.results?.length !== 1) {
       if (replayEventId) {
         const replay = await readInventoryReplay(db, replayEventId, id, auth.householdId, requestFingerprint);
         if (replay.kind === 'conflict') {
