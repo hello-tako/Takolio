@@ -4,6 +4,7 @@ import { createRoot, type Root } from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach, beforeEach, expect, it, vi } from 'vitest';
+import { queryKeys } from '../../src/web/lib/queryKeys';
 import { InventoryPage } from '../../src/web/pages/InventoryPage';
 import { IngredientRow } from '../../src/web/components/common/IngredientRow';
 import { adjustedInventoryQuantity, inventoryQuantityStep } from '../../src/web/lib/inventory-quantity';
@@ -89,4 +90,32 @@ it.each(['kg', 'l', 'g', 'ml', 'piece', 'pack', 'bunch'])('keeps a positive rema
   expect(adjustedInventoryQuantity(step / 2, -step)).toBeNull();
   expect(adjustedInventoryQuantity(step, -step)).toBeNull();
   expect(change).not.toHaveBeenCalled();
+});
+
+it('keeps retained zero-quantity history out of the available fridge list and counts', async () => {
+  mocks.inventory.mockResolvedValue([
+    { id: 'kept', name: 'Still available', quantity: 2, unit: 'piece', category: 'vegetable',
+      storage: 'fridge', freshness: 'fresh', version: 1 },
+    { id: 'removed', name: 'Removed fixture', quantity: 0, unit: 'piece', category: 'vegetable',
+      storage: 'fridge', freshness: 'out_of_stock', version: 3 },
+  ]);
+  await mount();
+  await until(() => expect(host.textContent).toContain('Still available'));
+  expect(host.textContent).not.toContain('Removed fixture');
+  expect(host.textContent).toContain('1 nguyên liệu đang có trong tủ');
+  expect(button('Tất cả (1)')).toBeTruthy();
+  expect(button('Rau củ (1)')).toBeTruthy();
+  expect(host.querySelectorAll('button[aria-label="Xóa nguyên liệu"]')).toHaveLength(1);
+});
+
+it('updates the visible fridge when a refreshed row becomes a history tombstone', async () => {
+  const item = { id: 'removed', name: 'Removed fixture', quantity: 2, unit: 'piece',
+    category: 'vegetable', storage: 'fridge', freshness: 'fresh', version: 1 };
+  mocks.inventory.mockResolvedValue([item]);
+  await mount();
+  await until(() => expect(host.textContent).toContain('Removed fixture'));
+  await act(async () => client.setQueryData(queryKeys.inventory(), [{ ...item, quantity: 0,
+    freshness: 'out_of_stock', version: 2 }]));
+  await until(() => expect(host.textContent).not.toContain('Removed fixture'));
+  expect(button('Tất cả (0)')).toBeTruthy();
 });

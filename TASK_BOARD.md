@@ -4136,3 +4136,13 @@ evidence or create a staging certificate.
   17/17 cleanup checks; four guest sessions revoked.
 - [x] Correct unit fake to model UPDATE RETURNING; focused suites 168/168 PASS.
 - [ ] Await full canonical-TMPDIR rerun and hosted CI on the final PR HEAD.
+
+## Registered customer UI regression - 2026-10-23 JST
+
+- [x] Verify exact-main checks and actual customer staging release 39825824660.
+- [x] Deployed customer API regression: 114/114 assertions and 17/17 cleanup.
+- [x] Real owner Google login and synthetic UI create/update/reload/removal command.
+- [x] Reproduce retained zero-quantity history showing/counting as current stock.
+- [x] Restrict only InventoryPage's available view; 54/54 UI checks and static/build/migration gates PASS.
+- [ ] Hosted checks, protected merge, staging deployment and real browser recheck.
+- [ ] Exact-source Admin staging evidence and signed report before production.

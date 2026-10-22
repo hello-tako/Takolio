@@ -11268,3 +11268,19 @@ Candidate preview against actual staging D1 passed 113/113 assertions, with
 green (9146 PASS/12 FAIL); eleven temporary-path cases pass with canonical
 TMPDIR and the inventory unit fake was corrected to return CAS rows. Focused
 six-suite verification is now 168/168 PASS; final full and hosted CI are pending.
+
+## Customer registered-account UI regression - 2026-10-23 JST
+
+Main 01c372b4 push CI/Admin CI succeeded. Customer Domain Staging Release
+39825824660 succeeded; actual deployed API regression passed 114/114 assertions,
+17/17 cleanup checks, four guest sessions revoked. Existing owner Google login
+also succeeded. A synthetic UI ingredient create/increment persisted across
+reload. Deletion committed a zero-quantity history row but the available fridge
+still rendered/counts it; the original five ingredients remained unchanged.
+
+The scoped correction filters positive-quantity rows only in InventoryPage,
+preserving all backend history/authority/cache semantics. Two regressions fail
+before and pass after; relevant UI suites 54/54 PASS, lint/typecheck/build and
+migration smoke PASS. Review, CI, deployment and browser recheck remain separate.
+Admin staging remains 0322a919, production Admin NOT_DEPLOYED; no signed all-PASS
+certificate exists. See readiness document 35.

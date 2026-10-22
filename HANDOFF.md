@@ -1186,3 +1186,19 @@ p95 844ms/max 913ms. No runtime deploy is implied. The full local run returned
 the remaining unit fake needed RETURNING rows. That fake is corrected and the
 expanded six-suite run passes 168/168. Full rerun is in progress; failed evidence
 is retained. Sanitized preview receipt is in readiness evidence.
+
+## Registered customer browser regression - 2026-10-23 JST
+
+Customer staging release 39825824660 succeeded at exact main 01c372b4. Both main
+checks 39821560776 / 39821560836 succeeded. Deployed customer runtime regression
+passed 114/114 assertions, 17/17 cleanup checks and revoked all four guest
+sessions. The bounded 48-read scenario is not capacity certification.
+
+The real owner completed Google login and created/incremented a synthetic
+ingredient through the deployed UI. Reload confirmed quantity 3. Removal set
+quantity to zero but the available-stock page still showed/counts the retained
+history row. All five original ingredients stayed unchanged. This change filters
+only the fridge page's available view to positive quantity. Two baseline-failing
+regressions now pass; four focused UI suites 54/54, lint, typecheck, build and
+migration smoke PASS. Hosted checks and deployed UI verification remain pending.
+Admin staging remains old source 0322a919 and production Admin NOT_DEPLOYED.
