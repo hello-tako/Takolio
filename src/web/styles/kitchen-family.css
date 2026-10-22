@@ -705,7 +705,8 @@
   min-height: 130px;
   object-fit: cover;
 }
-.family-recipe-main img {
+.family-recipe-main > .recipe-media img,
+.family-recipe-main > .kitchen-recipe-media img {
   width: 100%;
   height: 100%;
   object-fit: cover;

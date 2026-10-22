@@ -11,13 +11,23 @@ import { api, ApiError } from '../services/api';
 import { queryKeys } from '../lib/queryKeys';
 import { useCookingStore } from '../stores/useCookingStore';
 import { getIngredientImage } from '../lib/ingredient-images';
-import { Clock, Users, ChefHat, Check, ShoppingBag, ArrowRight, SearchX } from 'lucide-react';
+import { Check, ArrowRight, SearchX } from 'lucide-react';
 import { clsx } from 'clsx';
 import { resolveRecipeImage } from '../lib/recipe-media';
+import {
+  formatDifficultyLabel,
+  matchStepIngredients,
+  resolveStepTechnique,
+  summarizeRecipeTechniques,
+} from '../lib/culinary-visuals';
+import { CookingTechniqueVisual, KitchenLoopStrip } from '../components/cooking/CookingTechniqueVisual';
+import { TakoMascot } from '../components/common/TakoMascot';
+import { TakosanIcon } from '../components/common/TakosanIcon';
 import { RecipeMealDialog } from '../features/favorites/FavoritesCollection';
 import { isMealPlannerEnabled } from '../features/planner/feature';
 import { isMealCompositionEnabled } from '../features/planner/composition';
 import { useAuthStore } from '../stores/useAuthStore';
+
 
 type RecipeTabId = 'steps' | 'ingredients' | 'nutrition';
 
@@ -185,6 +195,12 @@ export const RecipeDetailPage: React.FC = () => {
   const quantityText = (quantity: number, unit: string) =>
     `${new Intl.NumberFormat('vi-VN', { maximumSignificantDigits: 15 }).format(quantity)} ${units[unit] ?? unit}`;
   const image = resolveRecipeImage(recipe);
+  const difficultyInfo = formatDifficultyLabel(recipe.difficulty);
+  const techniqueHighlights = summarizeRecipeTechniques(recipe);
+  const satisfiedCount = availability.filter((item) => item.status === 'satisfied').length;
+  const readinessPercent = inventoryReady
+    ? Math.round((satisfiedCount / Math.max(1, availability.length)) * 100)
+    : 0;
 
   const handleStartCook = () => {
     const attempt = useCookingStore.getState().attempt;
@@ -207,6 +223,19 @@ export const RecipeDetailPage: React.FC = () => {
         <InlineError error={inventoryQuery.error} onRetry={() => inventoryQuery.refetch()} />
       )}
 
+      <div className="recipe-loop-wrapper">
+        <KitchenLoopStrip
+          activeStage="recipes"
+          summaryText={
+            inventoryReady
+              ? pendingIngredients.length === 0
+                ? 'Tủ lạnh đã đủ nguyên liệu — sẵn sàng vào bếp'
+                : `Còn ${pendingIngredients.length} nguyên liệu cần kiểm tra hoặc thêm vào giỏ đi chợ`
+              : 'Đang đồng bộ dữ liệu nguyên liệu với tủ lạnh của bạn'
+          }
+        />
+      </div>
+
       <div className="recipe-workspace">
         <section className="recipe-overview" aria-label="Tổng quan món ăn">
           <RecipeMedia image={image} title={recipe.title} className="recipe-cover" priority />
@@ -214,6 +243,9 @@ export const RecipeDetailPage: React.FC = () => {
             <div className="recipe-badges flex items-center gap-2 mb-1.5 flex-wrap">
               <span className="px-2.5 py-0.5 rounded-full bg-takosan-green text-white text-xs font-bold uppercase tracking-wider">
                 {recipe.cuisine === 'vietnamese' ? 'Món Việt' : recipe.cuisine}
+              </span>
+              <span className="px-2.5 py-0.5 rounded-full bg-takosan-mint text-takosan-green-deep text-xs font-semibold">
+                {difficultyInfo.label}
               </span>
               {typeof matchInfo?.matchPercentage === 'number' && (
                 <span className="px-2.5 py-0.5 rounded-full bg-semantic-background-subtle text-xs font-semibold text-semantic-text-secondary">
@@ -232,14 +264,34 @@ export const RecipeDetailPage: React.FC = () => {
             )}
             <div className="recipe-facts flex items-center gap-4 text-sm mt-3 text-semantic-text-secondary">
               <span className="flex items-center gap-1">
-                <Clock aria-hidden="true" className="w-4 h-4 text-takosan-green" />
+                <TakosanIcon name="history" className="w-4 h-4" />
                 <span>{recipe.cookTimeMinutes} phút</span>
               </span>
               <span className="flex items-center gap-1">
-                <Users aria-hidden="true" className="w-4 h-4 text-takosan-green" />
+                <TakosanIcon name="profile" className="w-4 h-4" />
                 <span>{recipe.servings} người</span>
               </span>
+              <span className="flex items-center gap-1">
+                <TakosanIcon name="chef" className="w-4 h-4" />
+                <span>{recipe.steps.length} bước thực hiện</span>
+              </span>
             </div>
+            {techniqueHighlights.length > 0 && (
+              <div className="recipe-technique-summary" aria-label="Kỹ thuật chế biến chính">
+                <span className="recipe-technique-summary-label">
+                  <TakosanIcon name="chef" className="w-4 h-4" />
+                  Kỹ thuật bếp:
+                </span>
+                <div className="recipe-technique-summary-pills">
+                  {techniqueHighlights.map((tech) => (
+                    <span key={tech.id} className="recipe-technique-chip">
+                      {tech.shortLabel}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
             <label className="discovery-select-label mt-4">
               Nấu cho bao nhiêu người?
               <select value={recipe.servings} onChange={event => {
@@ -257,20 +309,41 @@ export const RecipeDetailPage: React.FC = () => {
             <p className="mt-4 text-base leading-relaxed text-semantic-text-secondary">
               {recipe.description}
             </p>
-            <div className="recipe-availability mt-5" role="status">
-              <p className="font-semibold">
-                {!inventoryReady
-                  ? 'Chưa kiểm tra được lượng trong tủ'
-                  : pendingIngredients.length === 0
-                    ? 'Đủ lượng nguyên liệu để nấu'
-                    : `Cần bổ sung hoặc kiểm tra ${pendingIngredients.length} nguyên liệu`}
-              </p>
-              <p className="mt-1 text-sm text-semantic-text-secondary">
-                Lượng bên dưới dành cho {recipe.servings} người. Kiểm tra độ tươi trước khi nấu.
-              </p>
+            <div className="recipe-availability mt-5" data-testid="recipe-availability" role="status">
+
+              <div className="recipe-availability-head">
+                <div className="min-w-0 flex-1">
+                  <p className="font-semibold">
+                    {!inventoryReady
+                      ? 'Chưa kiểm tra được lượng trong tủ'
+                      : pendingIngredients.length === 0
+                        ? 'Đủ lượng nguyên liệu để nấu'
+                        : `Cần bổ sung hoặc kiểm tra ${pendingIngredients.length} nguyên liệu`}
+                  </p>
+                  <p className="mt-1 text-sm text-semantic-text-secondary">
+                    Lượng bên dưới dành cho {recipe.servings} người. Kiểm tra độ tươi trước khi nấu.
+                  </p>
+                </div>
+                <TakoMascot
+                  pose={inventoryReady && pendingIngredients.length === 0 ? 'cooking' : 'thinking'}
+                  size={96}
+                  className="recipe-availability-mascot"
+                />
+              </div>
+              {inventoryReady && (
+                <div className="recipe-readiness-bar-wrap" aria-hidden="true">
+                  <div className="recipe-readiness-bar">
+                    <span style={{ width: `${readinessPercent}%` }} />
+                  </div>
+                  <span className="recipe-readiness-caption">
+                    {satisfiedCount}/{availability.length} nguyên liệu sẵn sàng trong tủ
+                  </span>
+                </div>
+              )}
             </div>
           </div>
         </section>
+
 
         <div className="recipe-preparation space-y-4 animate-fade-in">
           {/* Tabs: Cách nấu | Nguyên liệu | Dinh dưỡng */}
@@ -326,40 +399,107 @@ export const RecipeDetailPage: React.FC = () => {
             aria-labelledby="recipe-detail-tab-steps"
             tabIndex={0}
             hidden={activeTab !== 'steps'}
-            className="space-y-3 pt-1 focus-visible:outline-none focus-visible:shadow-t17-focus"
+            className="space-y-4 pt-1 focus-visible:outline-none focus-visible:shadow-t17-focus"
           >
             {/* tabIndex provides a direct keyboard entry point for text-only panels. */}
             {activeTab === 'steps' && (
               <>
-                {recipe.steps.map((s: any, idx: number) => (
-                  <div
-                    key={s.stepNumber || idx}
-                    className="bg-white rounded-2xl p-4 flex gap-3.5 border border-semantic-border shadow-xs"
-                  >
-                    <div className="recipe-step-number w-7 h-7 rounded-full bg-takosan-green text-white font-heading font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
-                      {s.stepNumber || idx + 1}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      {s.title && (
-                        <h4 className="font-heading font-bold text-sm text-semantic-text-primary mb-1">
-                          {s.title}
-                        </h4>
-                      )}
-                      <p className="text-base text-semantic-text-secondary leading-relaxed">
-                        {s.instruction}
-                      </p>
-                      {s.timerMinutes && (
-                        <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-takosan-green-deep bg-takosan-mint px-2.5 py-1 rounded-lg mt-2 border border-takosan-mint-deep/60">
-                          <Clock aria-hidden="true" className="w-3.5 h-3.5" />
-                          <span>Hẹn giờ: {s.timerMinutes} phút</span>
-                        </div>
-                      )}
-                    </div>
+                <div className="recipe-steps-banner">
+                  <div>
+                    <p className="recipe-steps-eyebrow">Hướng dẫn từng bước · Takolio Bếp Nhà</p>
+                    <p className="recipe-steps-subtitle">
+                      Mỗi bước đi kèm minh họa kỹ thuật, dụng cụ gợi ý và nguyên liệu cần dùng ngay tại bước đó.
+                    </p>
                   </div>
-                ))}
+                  <button
+                    type="button"
+                    onClick={handleStartCook}
+                    disabled={inventoryQuery.isPending || inventoryQuery.isError}
+                    className="recipe-inline-cook-btn"
+                  >
+                    <TakosanIcon name="chef" className="w-4 h-4" />
+                    <span>Mở chế độ nấu từng bước</span>
+                  </button>
+                </div>
+                {recipe.steps.map((s: any, idx: number) => {
+                  const stepNum = s.stepNumber || idx + 1;
+                  const technique = resolveStepTechnique(
+                    s.instruction,
+                    s.title,
+                    idx,
+                    recipe.steps.length,
+                  );
+                  const stepIngredients = matchStepIngredients(s.instruction, recipe.ingredients);
+                  return (
+                    <div
+                      key={stepNum}
+                      className="recipe-step-card bg-white rounded-2xl p-4 border border-semantic-border shadow-xs"
+                    >
+                      <CookingTechniqueVisual
+                        technique={technique}
+                        stepNumber={stepNum}
+                        variant="card"
+                      />
+                      <div className="recipe-step-body flex gap-3.5 mt-3">
+                        <div className="recipe-step-number w-7 h-7 rounded-full bg-takosan-green text-white font-heading font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                          {stepNum}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          {s.title && (
+                            <h4 className="font-heading font-bold text-sm text-semantic-text-primary mb-1">
+                              {s.title}
+                            </h4>
+                          )}
+                          <p className="text-base text-semantic-text-secondary leading-relaxed">
+                            {s.instruction}
+                          </p>
+                          {stepIngredients.length > 0 && (
+                            <div
+                              className="recipe-step-ingredients"
+                              aria-label="Nguyên liệu nhắc trong bước này (định lượng tổng món)"
+                            >
+                              {stepIngredients.map((ing) => (
+                                <span
+                                  key={`${ing.ingredientId}-${ing.unit}`}
+                                  className="recipe-step-ingredient-chip"
+                                >
+                                  <img
+                                    src={getIngredientImage(ing.ingredientId, ing.name)}
+                                    alt=""
+                                    width={20}
+                                    height={20}
+                                    loading="lazy"
+                                  />
+                                  <span>
+                                    {ing.name} (tổng: {quantityText(ing.requiredQuantity, ing.unit)})
+                                  </span>
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                          {s.tip && (
+                            <div className="recipe-step-tip">
+                              <TakosanIcon name="aiSuggestion" className="w-4 h-4" />
+                              <p>
+                                <strong>Mẹo bếp:</strong> {s.tip}
+                              </p>
+                            </div>
+                          )}
+                          {s.timerMinutes && (
+                            <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-takosan-green-deep bg-takosan-mint px-2.5 py-1 rounded-lg mt-2.5 border border-takosan-mint-deep/60">
+                              <TakosanIcon name="history" className="w-3.5 h-3.5" />
+                              <span>Hẹn giờ: {s.timerMinutes} phút</span>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
               </>
             )}
           </div>
+
 
           {/* Tab 2: Nguyên liệu */}
           <div
@@ -469,7 +609,7 @@ export const RecipeDetailPage: React.FC = () => {
                                 : 'bg-takosan-mint text-takosan-green-deep border border-takosan-mint-deep/80 hover:bg-takosan-mint-hover active:scale-95 shadow-xs',
                             )}
                           >
-                            <ShoppingBag aria-hidden="true" className="w-3.5 h-3.5" />
+                            <TakosanIcon name="shopping" className="w-3.5 h-3.5" />
                             <span>{isAdded ? 'Đã thêm' : 'Mua phần thiếu'}</span>
                           </button>
                         )}
@@ -545,7 +685,7 @@ export const RecipeDetailPage: React.FC = () => {
             disabled={inventoryQuery.isPending || inventoryQuery.isError}
             className="bg-takosan-green hover:bg-takosan-green-hover text-white font-heading font-bold text-base py-3.5 rounded-2xl shadow-md flex items-center justify-center gap-2"
           >
-            <ChefHat className="w-5 h-5" />
+            <TakosanIcon name="chef" className="w-5 h-5" />
             <span>Bắt đầu nấu ({recipe.cookTimeMinutes} phút)</span>
             <ArrowRight className="w-4 h-4 ml-1" />
           </Button>

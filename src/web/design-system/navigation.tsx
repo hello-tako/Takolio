@@ -57,7 +57,7 @@ const NavLinkContent: React.FC<{ item: NavItem; active: boolean; withLabel: bool
       {active && (
         <DeferredNavIndicator indicatorId={indicatorId} />
       )}
-      <TakosanIcon name={item.icon} className={clsx('relative w-6 h-6', active && 'text-semantic-action-primary')} strokeWidth={active ? 2.2 : 1.8} />
+      <TakosanIcon name={item.icon} variant="v2" className={clsx('relative w-6 h-6', active && 'text-semantic-action-primary')} strokeWidth={active ? 2.2 : 1.8} />
     </span>
     {withLabel && (
       <span
@@ -90,7 +90,7 @@ const LegacyBottomNavigationBar: React.FC = () => {
             className="relative -top-4 flex flex-col items-center rounded-feature tap-target focus-visible:outline-none focus-visible:shadow-t17-focus"
           >
             <span className="w-[58px] h-[58px] rounded-[20px] bg-semantic-action-primary shadow-t17-md ring-2 ring-white flex items-center justify-center text-white">
-              <TakosanIcon name="scan" onDark className="w-7 h-7" />
+              <TakosanIcon name="scan" variant="v2" onDark className="w-7 h-7" />
             </span>
             <span className="text-[11px] font-bold text-semantic-text-primary mt-1 tracking-tight">Quét</span>
           </Link>
@@ -159,7 +159,7 @@ const LegacyRailSidebar: React.FC<{ brandLogo?: string; brandSymbol?: string; br
           className="mt-auto flex flex-col items-center gap-1 px-3 py-1.5 rounded-feature tap-target focus-visible:outline-none focus-visible:shadow-t17-focus"
         >
           <span className="flex w-11 h-11 items-center justify-center rounded-card bg-semantic-action-primary text-white">
-            <TakosanIcon name="scan" onDark className="w-6 h-6" />
+            <TakosanIcon name="scan" variant="v2" onDark className="w-6 h-6" />
           </span>
           <span className="text-[10px] font-medium text-semantic-text-muted">Quét</span>
         </Link>
@@ -185,6 +185,7 @@ const LegacyRailSidebar: React.FC<{ brandLogo?: string; brandSymbol?: string; br
                 >
                   <TakosanIcon
                     name={item.icon}
+                    variant="v2"
                     className={clsx('w-6 h-6', active ? 'text-semantic-action-primary' : 'text-semantic-text-muted')}
                     strokeWidth={active ? 2.2 : 1.8}
                   />
@@ -205,7 +206,7 @@ const LegacyRailSidebar: React.FC<{ brandLogo?: string; brandSymbol?: string; br
           to={SCAN_PATH}
           className="mt-auto flex items-center justify-center gap-2 h-12 rounded-card bg-semantic-action-primary text-white text-sm font-bold shadow-t17-md focus-visible:outline-none focus-visible:shadow-t17-focus"
         >
-          <TakosanIcon name="scan" onDark className="w-5 h-5" />
+          <TakosanIcon name="scan" variant="v2" onDark className="w-5 h-5" />
           Quét nguyên liệu
         </Link>
       </nav>
@@ -230,12 +231,15 @@ export function isKitchenNavActive(item: NavItem, pathname: string) {
 function KitchenNavItems() {
   const { pathname } = useLocation();
   return <ul className="kitchen-nav-items">
-    {NAV_ITEMS.map((item) => <li key={item.path}>
-      <Link to={item.path} aria-current={isKitchenNavActive(item, pathname) ? 'page' : undefined}>
-        <TakosanIcon name={item.icon} className="kitchen-nav-icon" />
-        <span className="kitchen-nav-label">{item.label}</span>
-      </Link>
-    </li>)}
+    {NAV_ITEMS.map((item) => {
+      const active = isKitchenNavActive(item, pathname);
+      return <li key={item.path}>
+        <Link to={item.path} aria-current={active ? 'page' : undefined}>
+          <TakosanIcon name={item.icon} variant="v2" strokeWidth={active ? 2.2 : 1.8} className="kitchen-nav-icon" />
+          <span className="kitchen-nav-label">{item.label}</span>
+        </Link>
+      </li>;
+    })}
   </ul>;
 }
 
@@ -243,7 +247,7 @@ export function KitchenScanLink({ className = '' }: { className?: string }) {
   const { pathname } = useLocation();
   return <Link to={SCAN_PATH} className={`kitchen-scan-link ${className}`}
     aria-current={inFamily(pathname, SCAN_PATH) ? 'page' : undefined}>
-    <TakosanIcon name="scan" onDark className="kitchen-nav-icon" />
+    <TakosanIcon name="scan" variant="v2" onDark className="kitchen-nav-icon" />
     <span>Quét nguyên liệu</span>
   </Link>;
 }

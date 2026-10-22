@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" role="img" data-icon-id="icon-scan">
+  <title>Quét nguyên liệu</title>
+  <desc>Takolio V2 original 24x24 header/CTA icon: scanner viewfinder frame with fresh leaf and AI sparkle.</desc>
+  <path d="M4 8.25V6.25A2.25 2.25 0 0 1 6.25 4h2" />
+  <path d="M15.75 4h2A2.25 2.25 0 0 1 20 6.25v2" />
+  <path d="M20 15.75v2A2.25 2.25 0 0 1 17.75 20h-2" />
+  <path d="M8.25 20h-2A2.25 2.25 0 0 1 4 17.75v-2" />
+  <path d="M9.25 15.25c0-3.35 2.5-5.75 6-6-.25 3.5-2.65 6-6 6Z" />
+  <path d="M8.75 15.75l3-3" />
+  <path d="M8 6.5l.4 1.15 1.15.4-1.15.4L8 9.6l-.4-1.15-1.15-.4 1.15-.4Z" />
+</svg>

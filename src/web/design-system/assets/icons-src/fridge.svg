@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" role="img" data-icon-id="icon-fridge">
+  <title>Tủ lạnh</title>
+  <desc>Takolio V2 original 24x24 root navigation icon: two-door refrigerator with twin interior shelves.</desc>
+  <rect x="5.5" y="2.75" width="13" height="18.5" rx="2.5" />
+  <path d="M5.5 10.25h13" />
+  <path d="M8.5 5.5v2.5" />
+  <path d="M8.5 12.75v3.75" />
+  <path d="M11.75 14.25h4.25" />
+  <path d="M11.75 17.25h3.25" />
+</svg>
