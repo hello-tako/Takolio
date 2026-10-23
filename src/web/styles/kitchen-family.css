@@ -540,7 +540,7 @@
   min-height: 44px;
 }
 .shopping-saved-row.is-checked {
-  opacity: 0.72;
+  opacity: 1;
 }
 .shopping-saved-row.is-unavailable {
   background: #fff7ed;
@@ -551,7 +551,7 @@
   min-height: 32px !important;
   font-size: 11px;
   text-decoration: underline;
-  color: #996023;
+  color: #87551f;
   background: transparent;
   border: 0;
 }
