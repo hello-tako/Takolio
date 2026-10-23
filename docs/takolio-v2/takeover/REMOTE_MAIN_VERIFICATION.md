@@ -13,3 +13,5 @@ Saved-recipes continuation rechecked main read-only with `git ls-remote`; it rem
 Environment remains macOS, Node v25.9.0 and pnpm 10.33.2, with unchanged main dependencies/lockfile. Earlier integration installation was `pnpm install --frozen-lockfile --ignore-scripts`, exit 0, 312 packages. Repository SQLite tests require Node >=22.13. No remote write occurred.
 
 Recipe-detail packet rechecked main twice read-only, including after implementation `61150c83e5a97882aaf31d700f01a28f52ed8393`; it remains 90b94129113b41e34701d99f51175cfa81cb73de. No fetch/rebase was needed in this packet.5,846 protected paths remain unchanged; inventory fixes are retained. Implementation follows saved documentation 839aff83. No remote write occurred.
+
+Cooking packet rechecked main read-only after implementation `6276a6b929304c1c207b3355c3827fdd762ef287` and again before the documentation checkpoint; it remains `90b94129113b41e34701d99f51175cfa81cb73de`. No fetch/rebase was needed. The protected audit again verifies 5,846 unchanged paths with zero failures, including both newer inventory fixes. No remote write occurred.

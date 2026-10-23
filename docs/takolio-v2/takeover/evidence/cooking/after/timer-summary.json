@@ -1,0 +1,12 @@
+{
+  "initialSeconds": 480,
+  "elapsedSeconds": 2,
+  "pausedAcrossSeconds": 60,
+  "expiryReached": true,
+  "expiredControlFocusable": true,
+  "resetAndStepClear": true,
+  "exitKeyboardCancelAndConfirm": true,
+  "inventoryUnchanged": true,
+  "writes": [],
+  "localSyntheticApi": true
+}

@@ -152,8 +152,9 @@
   {
     "path": "src/web/components/cooking/CookingReview.tsx",
     "argon_sha256": "94e0f9bb3294ef95e0c42da5e2664001d1a2451d78a7838d719e8cf88234f59d",
-    "integration_sha256": "94e0f9bb3294ef95e0c42da5e2664001d1a2451d78a7838d719e8cf88234f59d",
-    "matches_argon": true
+    "integration_sha256": "7c8b1c3cf9bb4cdd5a95d37cab9c4dedc38139d41b3c15eb64a9d08c196038ad",
+    "matches_argon": false,
+    "refinement": "UI-C5 cooking: preserve servings on review return link after demonstrated reload regression; implementation 6276a6b929304c1c207b3355c3827fdd762ef287; original Argon hash retained"
   },
   {
     "path": "src/web/components/cooking/CookingTechniqueVisual.tsx",

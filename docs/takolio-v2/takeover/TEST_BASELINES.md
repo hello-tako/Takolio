@@ -226,3 +226,34 @@ Retained attempts:
 One local evidence-copy helper initially selected an incorrect directory-name prefix and asserted 0 files; it was corrected to the observed Playwright names, copied 63 after files and verified the66-file manifest. It did not edit product source.
 
 Private snapshot after implementation, protected-main audit, manifests/hash/dimensions/completeness,38 screens, ledger 69/80/12,54 selected-source paths, token/private-path scan and whitespace checks are repeated before documentation commit. Evidence is synthetic; no production/release claim.
+
+
+## UI-C5 cooking continuation on integration `6276a6b9`
+
+Environment: macOS, Node v25.9.0, pnpm 10.33.2, unchanged dependencies, real isolated Worker/SQLite synthetic API, external fetch blocked.
+
+| Check | Exit / actual result | Log / evidence |
+|---|---|---|
+| `pnpm lint` | 0, PASS | `.artifacts/takeover/cooking/checks/lint.log` |
+| `pnpm typecheck` | 0, web and Worker PASS | `.artifacts/takeover/cooking/checks/typecheck.log` |
+| `pnpm check:migrations` | 0, customer/Admin smoke PASS | `.artifacts/takeover/cooking/checks/migrations.log` |
+| `pnpm build` | 0, default web/Admin/Worker PASS; existing Admin font warnings | `.artifacts/takeover/cooking/checks/build-default.log` |
+| paired build flags | 0, `VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build` PASS | `.artifacts/takeover/cooking/checks/build-paired-vite-flags.log` |
+| targeted ESLint | 0, CookingReview and new E2E PASS | `.artifacts/takeover/cooking/checks/targeted-eslint.log` |
+| final paired browser | 0, 10/10 PASS in 1.7m (cooking5, culinary2, detail3) | `evidence/cooking/manifest.json`; `.artifacts/takeover/cooking/checks/verified-paired.log` |
+| default-V1 cooking subset | 0, 4/4 PASS in 21.8s | `.artifacts/takeover/cooking/checks/default-v1.log` |
+| full `TMPDIR=<canonical> pnpm test --maxWorkers=4` | 1, 410/412 files and 9,163/9,168 tests in 447.30s; five inherited encoded-space CLI failures | `.artifacts/takeover/cooking/checks/test.log` |
+| `pnpm audit --audit-level=high` | 1, inherited 1 low / 6 moderate / 1 high; dependencies unchanged | `.artifacts/takeover/cooking/checks/audit.log` |
+
+The first expanded baseline was 4/5 and reproduced the missing servings query; the retained failure remains evidence, not hidden. The private snapshot verification after implementation again reports zero source/snapshot worktree differences. The complete sanitized receipt is `evidence/cooking-checks.json`; cooking screenshots/axe reports are under `evidence/cooking/`.
+
+Exact final browser commands:
+
+```sh
+PREVIEW_MEAL_COMPOSITION_V2=true PORT=3292 PREVIEW_API_PORT=8918 pnpm exec playwright test --config=playwright.t17.config.ts --project=mobile-390 tests/e2e/t17-ui/takolio-cooking-continuation.e2e.ts tests/e2e/t17-ui/takolio-culinary-experience.e2e.ts tests/e2e/t17-ui/takolio-recipe-detail.e2e.ts --output=.artifacts/takeover/cooking/verified-paired
+PORT=3292 PREVIEW_API_PORT=8918 pnpm exec playwright test --config=playwright.t17.config.ts --project=mobile-390 tests/e2e/t17-ui/takolio-cooking-continuation.e2e.ts --grep 'wall-clock timer|review return|actual-use guards|direct completion' --output=.artifacts/takeover/cooking/default-v1
+```
+
+The full test command used the realpath of the local temporary directory for TMPDIR and `pnpm test --maxWorkers=4`; its literal executed command is retained in the check receipt. Retained attempts include the 4/5 product-bug baseline, the initial 7/7 browser run whose nonexistent detail-continuation filename matched no detail file, a successful PREVIEW-only build that did not set Vite flags, the passing baseline typecheck and passing targeted ESLint. Correct final 10/10 browser coverage and actual paired Vite build supersede those narrower attempts. None of these attempts is hidden or counted as broader coverage.
+
+Final documentation checks: `python3 .artifacts/takeover/audit-scope.py` PASS (5,846 unchanged main paths, zero failures); `python3 .artifacts/takeover/verify-evidence.py` PASS (all current and prior manifests/source receipts/log hashes, cooking75 payloads/38PNG/32axe/5summaries/32state-config captures/568 control measurements, ledgers69/81/12, source54, screen38, token/private-path scan); `git diff --check` PASS. The original workspace's private recovery verifier also passed after implementation. No process was listening on the task preview ports3292/8918 at checkpoint cleanup.
