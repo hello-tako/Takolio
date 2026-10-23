@@ -1,3 +1,23 @@
+# Planning settings row34 release note - 2026-10-24 JST
+
+Status:`LOCAL_CHECKPOINT_READY_FOR_REVIEW`; owner/production readiness unclaimed. Implementation `b82701c7ba6ffd561799164cb9506377391126fb` on `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Retained existing UI08 PlanningSettingsPage and family/legacy editors. Replaced the profile link label that implied hard allergy editing with an accurate tastes/spice label, and added one note directing hard allergy/forbidden constraints to the family editor above. No handlers, API, CSS, components, assets or protected systems changed. Added four bounded browser journeys; legacy profile tastes remain separate from family hard safety.
+
+Paired composition-ON browser:6 passed/2 skipped in2.0m; actual composition-OFF after-only:2 passed/6 skipped in20.3s. Focused units:6 files/111 tests in2.67s; integration:4 files/112 tests in7.47s. Targeted ESLint, lint, types, local migration smoke, default and paired builds PASS; targeted lint/types rerun after OFF-only harness correction PASS. Full suite under Node24.16.0:410/412 files,9,164/9,169 tests in209.07s (wall210.03s); same five inherited encoded-space CLI failures remain in production-catalog-continuity/release-check. Audit retains inherited1low/6moderate/1high including Vite GHSA-587h-7wmj-h5pm; dependencies unchanged.
+
+286 bound payloads:136 PNG,136 axe JSON,14 summaries. Paired before/after:four viewport/text configs x eight states x two contexts. Composition-OFF after-only adds eight captures. All72 final axe reports have zero reported violations and incomplete color-contrast;1,264 paired and128 OFF control measurements. Real family PUT/reload, held pending, real409/adopt/retry, shaped500/retry and unknown allergen retention pass. Profile taste PATCH does not change hard safety. Existing plan remains unchanged except legitimate derived requires_revalidation/stale_preferences; inventory, shopping and onboarding unchanged. Read/offline guest journeys make no monitored writes; guest makes no family request. OFF retains real Week priorities and performs one exact preferences PATCH/reload without plan creation.
+
+Post-implementation private recovery verification matches original Argon WIP:22,763 regular files/772 symlinks; bytes, modes, links, HEAD, index and status match; zero worktree differences; private parent0700. Exact backup location stays private. Selected salvage54 paths, Argon ledger69 rows and asset ledger12 rows intact; file decisions97; all38 owner statuses PENDING.
+
+Reduced-motion Chromium/root-font text200 simulations do not certify OS zoom, physical devices, screen readers, live providers, full planner flag-OFF Week, performance or production. Composition-OFF preview still enables planner. Full-page captures follow trial-control/focus scrolling and can include fixed chrome/skip-link artifacts; no pixel or owner acceptance claimed. All72 final contrast checks require manual review.
+
+Exact source/log/command receipts:`docs/takolio-v2/takeover/evidence/planning-settings-checks.json`; report:`UI_C7_PLANNING_SETTINGS.md`. Next bounded packet:row35 notification preferences source/storage/caller/browser baseline, preserving existing local intent and disclosing its actual scope; no delivery/provider promises. Owner/device/manual accessibility review remains open. No push, PR publication, merge, deploy, remote migration or production action.
+
+Finalization executed:protected-main audit PASS with5,838 unchanged base paths outside the explicit UI/test/handoff allowlist; all historical/current evidence and changed-text credential/private-path scans PASS; git diff --check PASS; eight historical tails retained byte-for-byte; only screen row34 changed; FILE_DECISIONS appended95 to97 without changing previous rows.
+
+---
+
 # Food preferences row33 release note - 2026-10-24 JST
 
 Status: `LOCAL_CHECKPOINT_READY_FOR_REVIEW`; owner/production readiness unclaimed. Implementation `793ade743aecc4cafd0c39f8e1bd3e457f75bc50` on `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.

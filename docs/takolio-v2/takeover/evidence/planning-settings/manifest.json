@@ -1,0 +1,2281 @@
+{
+  "base_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "implementation_commit": "b82701c7ba6ffd561799164cb9506377391126fb",
+  "scope": "Synthetic local data only. Paired ON journeys are identical before/after; final harness changes only the skipped OFF case to match the real Week preferences envelope and retained seeded priorities. Composition-OFF evidence is after-only. No customer credentials, IDs or recovery locations. Raw output bytes match every payload.",
+  "entries": [
+    {
+      "path": "before/desktop-1440/axe-offline-guest-1440x900-text1.json",
+      "bytes": 442,
+      "sha256": "179375fa5fe46eef9bb9e53fefce664cbd69053b3bfe8ea9dc2514612ed48552",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--5e883-rying-or-saving-family-data-desktop-1440/axe-offline-guest-1440x900-text1.json",
+      "raw_sha256": "179375fa5fe46eef9bb9e53fefce664cbd69053b3bfe8ea9dc2514612ed48552"
+    },
+    {
+      "path": "before/desktop-1440/axe-offline-guest-320x420-text2.json",
+      "bytes": 439,
+      "sha256": "b00edb7b3880a2e0ec84bac91a3e11f67fd2b8a71bfe8dee98a11e7c66594dec",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--5e883-rying-or-saving-family-data-desktop-1440/axe-offline-guest-320x420-text2.json",
+      "raw_sha256": "b00edb7b3880a2e0ec84bac91a3e11f67fd2b8a71bfe8dee98a11e7c66594dec"
+    },
+    {
+      "path": "before/desktop-1440/axe-offline-guest-320x568-text1.json",
+      "bytes": 439,
+      "sha256": "d3f72e6c52b2b89a6db1a16491543f7689be2a38984a95dc19ad6a15ab70fc7a",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--5e883-rying-or-saving-family-data-desktop-1440/axe-offline-guest-320x568-text1.json",
+      "raw_sha256": "d3f72e6c52b2b89a6db1a16491543f7689be2a38984a95dc19ad6a15ab70fc7a"
+    },
+    {
+      "path": "before/desktop-1440/axe-offline-guest-390x844-text1.json",
+      "bytes": 439,
+      "sha256": "3ecf9a9f54fb1dfb2ba0bd58c7ff92114d57ee4e9769eb387d19bb67eb4add4d",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--5e883-rying-or-saving-family-data-desktop-1440/axe-offline-guest-390x844-text1.json",
+      "raw_sha256": "3ecf9a9f54fb1dfb2ba0bd58c7ff92114d57ee4e9769eb387d19bb67eb4add4d"
+    },
+    {
+      "path": "before/desktop-1440/guest-summary.json",
+      "bytes": 1801,
+      "sha256": "960fa608c835a79f6c2ac65c8f2e36104aa9bd42624372e54079eb852b660724",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--5e883-rying-or-saving-family-data-desktop-1440/guest-summary.json",
+      "raw_sha256": "960fa608c835a79f6c2ac65c8f2e36104aa9bd42624372e54079eb852b660724"
+    },
+    {
+      "path": "before/desktop-1440/offline-guest-1440x900-text1.png",
+      "bytes": 48272,
+      "sha256": "68619ea75c9ab4d528263467d79f3c69c586e2c9dcf2a1506296764bd5ed754c",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--5e883-rying-or-saving-family-data-desktop-1440/offline-guest-1440x900-text1.png",
+      "raw_sha256": "68619ea75c9ab4d528263467d79f3c69c586e2c9dcf2a1506296764bd5ed754c",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "path": "before/desktop-1440/offline-guest-320x420-text2.png",
+      "bytes": 51303,
+      "sha256": "09a16051b2d6d6e8a7f1eb626d277da6a332e8d682195ed9d247bbd5755150be",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--5e883-rying-or-saving-family-data-desktop-1440/offline-guest-320x420-text2.png",
+      "raw_sha256": "09a16051b2d6d6e8a7f1eb626d277da6a332e8d682195ed9d247bbd5755150be",
+      "width": 320,
+      "height": 684
+    },
+    {
+      "path": "before/desktop-1440/offline-guest-320x568-text1.png",
+      "bytes": 30517,
+      "sha256": "a8aa38593581df16acd2c0af3ae4ee13790f0e22e65536ef0193fb1de7b05bd1",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--5e883-rying-or-saving-family-data-desktop-1440/offline-guest-320x568-text1.png",
+      "raw_sha256": "a8aa38593581df16acd2c0af3ae4ee13790f0e22e65536ef0193fb1de7b05bd1",
+      "width": 320,
+      "height": 650
+    },
+    {
+      "path": "before/desktop-1440/offline-guest-390x844-text1.png",
+      "bytes": 35645,
+      "sha256": "c70e2c8f9b1d907a0b8cfc5b4935ebda542d90d551166bc42d1336a565c6d10a",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--5e883-rying-or-saving-family-data-desktop-1440/offline-guest-390x844-text1.png",
+      "raw_sha256": "c70e2c8f9b1d907a0b8cfc5b4935ebda542d90d551166bc42d1336a565c6d10a",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "before/mobile-390/axe-offline-guest-1440x900-text1.json",
+      "bytes": 442,
+      "sha256": "179375fa5fe46eef9bb9e53fefce664cbd69053b3bfe8ea9dc2514612ed48552",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--5e883-rying-or-saving-family-data-mobile-390/axe-offline-guest-1440x900-text1.json",
+      "raw_sha256": "179375fa5fe46eef9bb9e53fefce664cbd69053b3bfe8ea9dc2514612ed48552"
+    },
+    {
+      "path": "before/mobile-390/axe-offline-guest-320x420-text2.json",
+      "bytes": 439,
+      "sha256": "b00edb7b3880a2e0ec84bac91a3e11f67fd2b8a71bfe8dee98a11e7c66594dec",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--5e883-rying-or-saving-family-data-mobile-390/axe-offline-guest-320x420-text2.json",
+      "raw_sha256": "b00edb7b3880a2e0ec84bac91a3e11f67fd2b8a71bfe8dee98a11e7c66594dec"
+    },
+    {
+      "path": "before/mobile-390/axe-offline-guest-320x568-text1.json",
+      "bytes": 439,
+      "sha256": "d3f72e6c52b2b89a6db1a16491543f7689be2a38984a95dc19ad6a15ab70fc7a",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--5e883-rying-or-saving-family-data-mobile-390/axe-offline-guest-320x568-text1.json",
+      "raw_sha256": "d3f72e6c52b2b89a6db1a16491543f7689be2a38984a95dc19ad6a15ab70fc7a"
+    },
+    {
+      "path": "before/mobile-390/axe-offline-guest-390x844-text1.json",
+      "bytes": 439,
+      "sha256": "3ecf9a9f54fb1dfb2ba0bd58c7ff92114d57ee4e9769eb387d19bb67eb4add4d",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--5e883-rying-or-saving-family-data-mobile-390/axe-offline-guest-390x844-text1.json",
+      "raw_sha256": "3ecf9a9f54fb1dfb2ba0bd58c7ff92114d57ee4e9769eb387d19bb67eb4add4d"
+    },
+    {
+      "path": "before/mobile-390/guest-summary.json",
+      "bytes": 1801,
+      "sha256": "960fa608c835a79f6c2ac65c8f2e36104aa9bd42624372e54079eb852b660724",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--5e883-rying-or-saving-family-data-mobile-390/guest-summary.json",
+      "raw_sha256": "960fa608c835a79f6c2ac65c8f2e36104aa9bd42624372e54079eb852b660724"
+    },
+    {
+      "path": "before/mobile-390/offline-guest-1440x900-text1.png",
+      "bytes": 48272,
+      "sha256": "68619ea75c9ab4d528263467d79f3c69c586e2c9dcf2a1506296764bd5ed754c",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--5e883-rying-or-saving-family-data-mobile-390/offline-guest-1440x900-text1.png",
+      "raw_sha256": "68619ea75c9ab4d528263467d79f3c69c586e2c9dcf2a1506296764bd5ed754c",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "path": "before/mobile-390/offline-guest-320x420-text2.png",
+      "bytes": 52600,
+      "sha256": "babd3c8ed16d1ae501b2dffa72b762c67a058a23db7b6067fbcf503ff3777283",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--5e883-rying-or-saving-family-data-mobile-390/offline-guest-320x420-text2.png",
+      "raw_sha256": "babd3c8ed16d1ae501b2dffa72b762c67a058a23db7b6067fbcf503ff3777283",
+      "width": 320,
+      "height": 684
+    },
+    {
+      "path": "before/mobile-390/offline-guest-320x568-text1.png",
+      "bytes": 30517,
+      "sha256": "a8aa38593581df16acd2c0af3ae4ee13790f0e22e65536ef0193fb1de7b05bd1",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--5e883-rying-or-saving-family-data-mobile-390/offline-guest-320x568-text1.png",
+      "raw_sha256": "a8aa38593581df16acd2c0af3ae4ee13790f0e22e65536ef0193fb1de7b05bd1",
+      "width": 320,
+      "height": 650
+    },
+    {
+      "path": "before/mobile-390/offline-guest-390x844-text1.png",
+      "bytes": 35645,
+      "sha256": "c70e2c8f9b1d907a0b8cfc5b4935ebda542d90d551166bc42d1336a565c6d10a",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--5e883-rying-or-saving-family-data-mobile-390/offline-guest-390x844-text1.png",
+      "raw_sha256": "c70e2c8f9b1d907a0b8cfc5b4935ebda542d90d551166bc42d1336a565c6d10a",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "before/desktop-1440/axe-family-loading-1440x900-text1.json",
+      "bytes": 328,
+      "sha256": "2b5ae6720023ca9871f804fcb064c9abf5831ac632e4a3078afc527037ad5464",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/axe-family-loading-1440x900-text1.json",
+      "raw_sha256": "2b5ae6720023ca9871f804fcb064c9abf5831ac632e4a3078afc527037ad5464"
+    },
+    {
+      "path": "before/desktop-1440/axe-family-loading-320x420-text2.json",
+      "bytes": 325,
+      "sha256": "fda4dc9dddb6b783fefe5c836c9a9516ffa175147ba860ca7799b834baf9ac93",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/axe-family-loading-320x420-text2.json",
+      "raw_sha256": "fda4dc9dddb6b783fefe5c836c9a9516ffa175147ba860ca7799b834baf9ac93"
+    },
+    {
+      "path": "before/desktop-1440/axe-family-loading-320x568-text1.json",
+      "bytes": 325,
+      "sha256": "3a70597b0b3032613a84a220c6f65b864964b641e93e1b1118fcb58e7d3b285d",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/axe-family-loading-320x568-text1.json",
+      "raw_sha256": "3a70597b0b3032613a84a220c6f65b864964b641e93e1b1118fcb58e7d3b285d"
+    },
+    {
+      "path": "before/desktop-1440/axe-family-loading-390x844-text1.json",
+      "bytes": 325,
+      "sha256": "1faa30333a689f0ae2cb256d03fb4fe961424d906cd0a8bee85ef33f8ad225ba",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/axe-family-loading-390x844-text1.json",
+      "raw_sha256": "1faa30333a689f0ae2cb256d03fb4fe961424d906cd0a8bee85ef33f8ad225ba"
+    },
+    {
+      "path": "before/desktop-1440/axe-family-read-error-1440x900-text1.json",
+      "bytes": 444,
+      "sha256": "5d414a81a533f0abd7c01d08d1098d73b8be1a106ba2d623e86ab3fce570df33",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/axe-family-read-error-1440x900-text1.json",
+      "raw_sha256": "5d414a81a533f0abd7c01d08d1098d73b8be1a106ba2d623e86ab3fce570df33"
+    },
+    {
+      "path": "before/desktop-1440/axe-family-read-error-320x420-text2.json",
+      "bytes": 441,
+      "sha256": "cab7df5d15b25509a2ce8cdbb4fc0c884d7c22483a18dbc6fb9f72e871c8b6b4",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/axe-family-read-error-320x420-text2.json",
+      "raw_sha256": "cab7df5d15b25509a2ce8cdbb4fc0c884d7c22483a18dbc6fb9f72e871c8b6b4"
+    },
+    {
+      "path": "before/desktop-1440/axe-family-read-error-320x568-text1.json",
+      "bytes": 441,
+      "sha256": "ba4a73ea7c5e0f5b1c8667a51a89eddfac00d27000e0df14c2afc99cff004b86",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/axe-family-read-error-320x568-text1.json",
+      "raw_sha256": "ba4a73ea7c5e0f5b1c8667a51a89eddfac00d27000e0df14c2afc99cff004b86"
+    },
+    {
+      "path": "before/desktop-1440/axe-family-read-error-390x844-text1.json",
+      "bytes": 441,
+      "sha256": "4ace2f852b153eb4ac273fd47550695e72b2864136d8ae9a70c22aa8a252fd04",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/axe-family-read-error-390x844-text1.json",
+      "raw_sha256": "4ace2f852b153eb4ac273fd47550695e72b2864136d8ae9a70c22aa8a252fd04"
+    },
+    {
+      "path": "before/desktop-1440/family-loading-1440x900-text1.png",
+      "bytes": 47373,
+      "sha256": "ea50bf020e9f0adba6ef18baa28ba135708e8ca3c3327c0fa99e417966186f2e",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/family-loading-1440x900-text1.png",
+      "raw_sha256": "ea50bf020e9f0adba6ef18baa28ba135708e8ca3c3327c0fa99e417966186f2e",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "path": "before/desktop-1440/family-loading-320x420-text2.png",
+      "bytes": 52212,
+      "sha256": "0e442e3640ee697f27d1e0b8e1e90b700cf4ce74f5829eafbd8d7b349a2d2749",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/family-loading-320x420-text2.png",
+      "raw_sha256": "0e442e3640ee697f27d1e0b8e1e90b700cf4ce74f5829eafbd8d7b349a2d2749",
+      "width": 320,
+      "height": 836
+    },
+    {
+      "path": "before/desktop-1440/family-loading-320x568-text1.png",
+      "bytes": 28569,
+      "sha256": "397c8c96e90aacd8502024eed2f00a8d55053a671477a7661a82a910e581a132",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/family-loading-320x568-text1.png",
+      "raw_sha256": "397c8c96e90aacd8502024eed2f00a8d55053a671477a7661a82a910e581a132",
+      "width": 320,
+      "height": 650
+    },
+    {
+      "path": "before/desktop-1440/family-loading-390x844-text1.png",
+      "bytes": 33692,
+      "sha256": "efe290df666c07ddfc3451f2d7d02ba92f735356c5a27d926e8f3f724500732d",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/family-loading-390x844-text1.png",
+      "raw_sha256": "efe290df666c07ddfc3451f2d7d02ba92f735356c5a27d926e8f3f724500732d",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "before/desktop-1440/family-read-error-1440x900-text1.png",
+      "bytes": 50648,
+      "sha256": "d7735e7fd9eb02b41395e65e3dcdcecfdd8b9b10ac0ae4e932acfc29552c89d2",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/family-read-error-1440x900-text1.png",
+      "raw_sha256": "d7735e7fd9eb02b41395e65e3dcdcecfdd8b9b10ac0ae4e932acfc29552c89d2",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "path": "before/desktop-1440/family-read-error-320x420-text2.png",
+      "bytes": 52308,
+      "sha256": "2f6e4ba1f0ec552a9cbf6463d4754fc2ac70c9c5c0971555dcfe88cad8a5d07c",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/family-read-error-320x420-text2.png",
+      "raw_sha256": "2f6e4ba1f0ec552a9cbf6463d4754fc2ac70c9c5c0971555dcfe88cad8a5d07c",
+      "width": 320,
+      "height": 864
+    },
+    {
+      "path": "before/desktop-1440/family-read-error-320x568-text1.png",
+      "bytes": 31669,
+      "sha256": "7d3b1d354c2dd5a131ed07275cc9ef2ae78b72c0e29d61ebd370e7f6b8e731a5",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/family-read-error-320x568-text1.png",
+      "raw_sha256": "7d3b1d354c2dd5a131ed07275cc9ef2ae78b72c0e29d61ebd370e7f6b8e731a5",
+      "width": 320,
+      "height": 650
+    },
+    {
+      "path": "before/desktop-1440/family-read-error-390x844-text1.png",
+      "bytes": 36842,
+      "sha256": "9e491cdcd4e346ab523f4736933c3b3e3b09642d56cf40001050d26091ac1ede",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/family-read-error-390x844-text1.png",
+      "raw_sha256": "9e491cdcd4e346ab523f4736933c3b3e3b09642d56cf40001050d26091ac1ede",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "before/desktop-1440/read-summary.json",
+      "bytes": 2869,
+      "sha256": "86a2d9d52c431a53411322d6ff45388c36273d537b48ae0bd5aa771156f4b768",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/read-summary.json",
+      "raw_sha256": "86a2d9d52c431a53411322d6ff45388c36273d537b48ae0bd5aa771156f4b768"
+    },
+    {
+      "path": "before/mobile-390/axe-family-loading-1440x900-text1.json",
+      "bytes": 328,
+      "sha256": "2b5ae6720023ca9871f804fcb064c9abf5831ac632e4a3078afc527037ad5464",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/axe-family-loading-1440x900-text1.json",
+      "raw_sha256": "2b5ae6720023ca9871f804fcb064c9abf5831ac632e4a3078afc527037ad5464"
+    },
+    {
+      "path": "before/mobile-390/axe-family-loading-320x420-text2.json",
+      "bytes": 325,
+      "sha256": "fda4dc9dddb6b783fefe5c836c9a9516ffa175147ba860ca7799b834baf9ac93",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/axe-family-loading-320x420-text2.json",
+      "raw_sha256": "fda4dc9dddb6b783fefe5c836c9a9516ffa175147ba860ca7799b834baf9ac93"
+    },
+    {
+      "path": "before/mobile-390/axe-family-loading-320x568-text1.json",
+      "bytes": 325,
+      "sha256": "3a70597b0b3032613a84a220c6f65b864964b641e93e1b1118fcb58e7d3b285d",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/axe-family-loading-320x568-text1.json",
+      "raw_sha256": "3a70597b0b3032613a84a220c6f65b864964b641e93e1b1118fcb58e7d3b285d"
+    },
+    {
+      "path": "before/mobile-390/axe-family-loading-390x844-text1.json",
+      "bytes": 325,
+      "sha256": "1faa30333a689f0ae2cb256d03fb4fe961424d906cd0a8bee85ef33f8ad225ba",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/axe-family-loading-390x844-text1.json",
+      "raw_sha256": "1faa30333a689f0ae2cb256d03fb4fe961424d906cd0a8bee85ef33f8ad225ba"
+    },
+    {
+      "path": "before/mobile-390/axe-family-read-error-1440x900-text1.json",
+      "bytes": 444,
+      "sha256": "5d414a81a533f0abd7c01d08d1098d73b8be1a106ba2d623e86ab3fce570df33",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/axe-family-read-error-1440x900-text1.json",
+      "raw_sha256": "5d414a81a533f0abd7c01d08d1098d73b8be1a106ba2d623e86ab3fce570df33"
+    },
+    {
+      "path": "before/mobile-390/axe-family-read-error-320x420-text2.json",
+      "bytes": 441,
+      "sha256": "cab7df5d15b25509a2ce8cdbb4fc0c884d7c22483a18dbc6fb9f72e871c8b6b4",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/axe-family-read-error-320x420-text2.json",
+      "raw_sha256": "cab7df5d15b25509a2ce8cdbb4fc0c884d7c22483a18dbc6fb9f72e871c8b6b4"
+    },
+    {
+      "path": "before/mobile-390/axe-family-read-error-320x568-text1.json",
+      "bytes": 441,
+      "sha256": "ba4a73ea7c5e0f5b1c8667a51a89eddfac00d27000e0df14c2afc99cff004b86",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/axe-family-read-error-320x568-text1.json",
+      "raw_sha256": "ba4a73ea7c5e0f5b1c8667a51a89eddfac00d27000e0df14c2afc99cff004b86"
+    },
+    {
+      "path": "before/mobile-390/axe-family-read-error-390x844-text1.json",
+      "bytes": 441,
+      "sha256": "4ace2f852b153eb4ac273fd47550695e72b2864136d8ae9a70c22aa8a252fd04",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/axe-family-read-error-390x844-text1.json",
+      "raw_sha256": "4ace2f852b153eb4ac273fd47550695e72b2864136d8ae9a70c22aa8a252fd04"
+    },
+    {
+      "path": "before/mobile-390/family-loading-1440x900-text1.png",
+      "bytes": 47373,
+      "sha256": "ea50bf020e9f0adba6ef18baa28ba135708e8ca3c3327c0fa99e417966186f2e",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/family-loading-1440x900-text1.png",
+      "raw_sha256": "ea50bf020e9f0adba6ef18baa28ba135708e8ca3c3327c0fa99e417966186f2e",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "path": "before/mobile-390/family-loading-320x420-text2.png",
+      "bytes": 52212,
+      "sha256": "0e442e3640ee697f27d1e0b8e1e90b700cf4ce74f5829eafbd8d7b349a2d2749",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/family-loading-320x420-text2.png",
+      "raw_sha256": "0e442e3640ee697f27d1e0b8e1e90b700cf4ce74f5829eafbd8d7b349a2d2749",
+      "width": 320,
+      "height": 836
+    },
+    {
+      "path": "before/mobile-390/family-loading-320x568-text1.png",
+      "bytes": 28569,
+      "sha256": "397c8c96e90aacd8502024eed2f00a8d55053a671477a7661a82a910e581a132",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/family-loading-320x568-text1.png",
+      "raw_sha256": "397c8c96e90aacd8502024eed2f00a8d55053a671477a7661a82a910e581a132",
+      "width": 320,
+      "height": 650
+    },
+    {
+      "path": "before/mobile-390/family-loading-390x844-text1.png",
+      "bytes": 33692,
+      "sha256": "efe290df666c07ddfc3451f2d7d02ba92f735356c5a27d926e8f3f724500732d",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/family-loading-390x844-text1.png",
+      "raw_sha256": "efe290df666c07ddfc3451f2d7d02ba92f735356c5a27d926e8f3f724500732d",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "before/mobile-390/family-read-error-1440x900-text1.png",
+      "bytes": 50648,
+      "sha256": "d7735e7fd9eb02b41395e65e3dcdcecfdd8b9b10ac0ae4e932acfc29552c89d2",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/family-read-error-1440x900-text1.png",
+      "raw_sha256": "d7735e7fd9eb02b41395e65e3dcdcecfdd8b9b10ac0ae4e932acfc29552c89d2",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "path": "before/mobile-390/family-read-error-320x420-text2.png",
+      "bytes": 56535,
+      "sha256": "934bf2f6a769ff6819c2a204de6284c5b85047982dce0e7280f737ca92c86ffc",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/family-read-error-320x420-text2.png",
+      "raw_sha256": "934bf2f6a769ff6819c2a204de6284c5b85047982dce0e7280f737ca92c86ffc",
+      "width": 320,
+      "height": 864
+    },
+    {
+      "path": "before/mobile-390/family-read-error-320x568-text1.png",
+      "bytes": 31669,
+      "sha256": "7d3b1d354c2dd5a131ed07275cc9ef2ae78b72c0e29d61ebd370e7f6b8e731a5",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/family-read-error-320x568-text1.png",
+      "raw_sha256": "7d3b1d354c2dd5a131ed07275cc9ef2ae78b72c0e29d61ebd370e7f6b8e731a5",
+      "width": 320,
+      "height": 650
+    },
+    {
+      "path": "before/mobile-390/family-read-error-390x844-text1.png",
+      "bytes": 36842,
+      "sha256": "9e491cdcd4e346ab523f4736933c3b3e3b09642d56cf40001050d26091ac1ede",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/family-read-error-390x844-text1.png",
+      "raw_sha256": "9e491cdcd4e346ab523f4736933c3b3e3b09642d56cf40001050d26091ac1ede",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "before/mobile-390/read-summary.json",
+      "bytes": 2869,
+      "sha256": "86a2d9d52c431a53411322d6ff45388c36273d537b48ae0bd5aa771156f4b768",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/read-summary.json",
+      "raw_sha256": "86a2d9d52c431a53411322d6ff45388c36273d537b48ae0bd5aa771156f4b768"
+    },
+    {
+      "path": "before/desktop-1440/axe-family-conflict-1440x900-text1.json",
+      "bytes": 4470,
+      "sha256": "34f57cfebae35438748f02243b9973cf233a702ab93cdfca897a9dc1d8ccec4a",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-conflict-1440x900-text1.json",
+      "raw_sha256": "34f57cfebae35438748f02243b9973cf233a702ab93cdfca897a9dc1d8ccec4a"
+    },
+    {
+      "path": "before/desktop-1440/axe-family-conflict-320x420-text2.json",
+      "bytes": 4467,
+      "sha256": "187ac3ae9c53514fd7cd202d97c3da2591e7b98ba7e0b1fe4b709a7a064f094f",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-conflict-320x420-text2.json",
+      "raw_sha256": "187ac3ae9c53514fd7cd202d97c3da2591e7b98ba7e0b1fe4b709a7a064f094f"
+    },
+    {
+      "path": "before/desktop-1440/axe-family-conflict-320x568-text1.json",
+      "bytes": 4467,
+      "sha256": "2c39664e18abb35ac75077247774ba688f0fb78d724c653fd657ec46022181dc",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-conflict-320x568-text1.json",
+      "raw_sha256": "2c39664e18abb35ac75077247774ba688f0fb78d724c653fd657ec46022181dc"
+    },
+    {
+      "path": "before/desktop-1440/axe-family-conflict-390x844-text1.json",
+      "bytes": 4467,
+      "sha256": "b79eeea79e3abaf263938f4e5362715cdfd3bf809f6f737a3ca27845a56b7122",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-conflict-390x844-text1.json",
+      "raw_sha256": "b79eeea79e3abaf263938f4e5362715cdfd3bf809f6f737a3ca27845a56b7122"
+    },
+    {
+      "path": "before/desktop-1440/axe-family-save-error-1440x900-text1.json",
+      "bytes": 4471,
+      "sha256": "5415aa31b8ae8f1505c028f9b202aba5c703aa708701bc99349717ef65257a58",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-save-error-1440x900-text1.json",
+      "raw_sha256": "5415aa31b8ae8f1505c028f9b202aba5c703aa708701bc99349717ef65257a58"
+    },
+    {
+      "path": "before/desktop-1440/axe-family-save-error-320x420-text2.json",
+      "bytes": 4468,
+      "sha256": "6b05f590ac65f5e260bde41fb4c8af79ee8f9efd634696c5524ff3db2792b0d9",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-save-error-320x420-text2.json",
+      "raw_sha256": "6b05f590ac65f5e260bde41fb4c8af79ee8f9efd634696c5524ff3db2792b0d9"
+    },
+    {
+      "path": "before/desktop-1440/axe-family-save-error-320x568-text1.json",
+      "bytes": 4468,
+      "sha256": "7b0c4b95e23e088ac8e685a35a246b7dd9d6da8e962b375ce5c39a670f86f0ff",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-save-error-320x568-text1.json",
+      "raw_sha256": "7b0c4b95e23e088ac8e685a35a246b7dd9d6da8e962b375ce5c39a670f86f0ff"
+    },
+    {
+      "path": "before/desktop-1440/axe-family-save-error-390x844-text1.json",
+      "bytes": 4468,
+      "sha256": "6146d8373bf486c533fafc03f5452335a0d1c81ac55e4c4128a8a1d31f849b59",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-save-error-390x844-text1.json",
+      "raw_sha256": "6146d8373bf486c533fafc03f5452335a0d1c81ac55e4c4128a8a1d31f849b59"
+    },
+    {
+      "path": "before/desktop-1440/axe-family-saving-1440x900-text1.json",
+      "bytes": 4390,
+      "sha256": "3cdc23b327fb12e0a15ca2a341f2a33dcebcdacbc05494c199d83f4065138caf",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-saving-1440x900-text1.json",
+      "raw_sha256": "3cdc23b327fb12e0a15ca2a341f2a33dcebcdacbc05494c199d83f4065138caf"
+    },
+    {
+      "path": "before/desktop-1440/axe-family-saving-320x420-text2.json",
+      "bytes": 4387,
+      "sha256": "a9804ad01a7c97b238a4db31c53923b4debf5c16874cf9a94f2789ad7e543518",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-saving-320x420-text2.json",
+      "raw_sha256": "a9804ad01a7c97b238a4db31c53923b4debf5c16874cf9a94f2789ad7e543518"
+    },
+    {
+      "path": "before/desktop-1440/axe-family-saving-320x568-text1.json",
+      "bytes": 4387,
+      "sha256": "370b2916ab74e982bb44b32f0a8b32a40f94daad0de178ae9b66e581137bfb70",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-saving-320x568-text1.json",
+      "raw_sha256": "370b2916ab74e982bb44b32f0a8b32a40f94daad0de178ae9b66e581137bfb70"
+    },
+    {
+      "path": "before/desktop-1440/axe-family-saving-390x844-text1.json",
+      "bytes": 4387,
+      "sha256": "f199ee96a440351ef0400cf0f523db4cf45341b68e5664b1ea9f43c753cfb695",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-saving-390x844-text1.json",
+      "raw_sha256": "f199ee96a440351ef0400cf0f523db4cf45341b68e5664b1ea9f43c753cfb695"
+    },
+    {
+      "path": "before/desktop-1440/axe-family-values-1440x900-text1.json",
+      "bytes": 4361,
+      "sha256": "5156366d815a165dd3eaa13242955d81cf985acb6739a02c26842f4f181bbe2c",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-values-1440x900-text1.json",
+      "raw_sha256": "5156366d815a165dd3eaa13242955d81cf985acb6739a02c26842f4f181bbe2c"
+    },
+    {
+      "path": "before/desktop-1440/axe-family-values-320x420-text2.json",
+      "bytes": 4358,
+      "sha256": "af4a65c0aabedaeb80090621a80df075ad7fe792ff7367ef89ec3f2ed7348cda",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-values-320x420-text2.json",
+      "raw_sha256": "af4a65c0aabedaeb80090621a80df075ad7fe792ff7367ef89ec3f2ed7348cda"
+    },
+    {
+      "path": "before/desktop-1440/axe-family-values-320x568-text1.json",
+      "bytes": 4358,
+      "sha256": "a76ff0c5d5f04ee054587f60714ed4b1f6fe38d951f1bdb24b214b37b0421412",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-values-320x568-text1.json",
+      "raw_sha256": "a76ff0c5d5f04ee054587f60714ed4b1f6fe38d951f1bdb24b214b37b0421412"
+    },
+    {
+      "path": "before/desktop-1440/axe-family-values-390x844-text1.json",
+      "bytes": 4358,
+      "sha256": "7015264615a58f505779455e0b5da9d83c80429a4ffd7a09fd3df3ff9b96e630",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-values-390x844-text1.json",
+      "raw_sha256": "7015264615a58f505779455e0b5da9d83c80429a4ffd7a09fd3df3ff9b96e630"
+    },
+    {
+      "path": "before/desktop-1440/axe-legacy-profile-1440x900-text1.json",
+      "bytes": 3096,
+      "sha256": "59fbc7bc1483a896e2b790d466ecf6312df315a4c937629d97c0cbac78411ac2",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-legacy-profile-1440x900-text1.json",
+      "raw_sha256": "59fbc7bc1483a896e2b790d466ecf6312df315a4c937629d97c0cbac78411ac2"
+    },
+    {
+      "path": "before/desktop-1440/axe-legacy-profile-320x420-text2.json",
+      "bytes": 3093,
+      "sha256": "1d6d767780930d8d9697f9fcce4c57e4e5b5ff7a575c11d2135aa5d56b5d52db",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-legacy-profile-320x420-text2.json",
+      "raw_sha256": "1d6d767780930d8d9697f9fcce4c57e4e5b5ff7a575c11d2135aa5d56b5d52db"
+    },
+    {
+      "path": "before/desktop-1440/axe-legacy-profile-320x568-text1.json",
+      "bytes": 3093,
+      "sha256": "fcdd466fd18ca1ddeba11b0e6ee827c49da0243b749d931f544b68907c1feb6c",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-legacy-profile-320x568-text1.json",
+      "raw_sha256": "fcdd466fd18ca1ddeba11b0e6ee827c49da0243b749d931f544b68907c1feb6c"
+    },
+    {
+      "path": "before/desktop-1440/axe-legacy-profile-390x844-text1.json",
+      "bytes": 3093,
+      "sha256": "a4713a23fd918d4bbb4103ed07a50ee46e1fa4578cc210f046b9878f31f30667",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-legacy-profile-390x844-text1.json",
+      "raw_sha256": "a4713a23fd918d4bbb4103ed07a50ee46e1fa4578cc210f046b9878f31f30667"
+    },
+    {
+      "path": "before/desktop-1440/family-conflict-1440x900-text1.png",
+      "bytes": 207883,
+      "sha256": "dfcef98636c11fdd17b519e0ded7cf5c271d8415d7aa9e50b237791d40673200",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-conflict-1440x900-text1.png",
+      "raw_sha256": "dfcef98636c11fdd17b519e0ded7cf5c271d8415d7aa9e50b237791d40673200",
+      "width": 1440,
+      "height": 1832
+    },
+    {
+      "path": "before/desktop-1440/family-conflict-320x420-text2.png",
+      "bytes": 212002,
+      "sha256": "b06f242a29e5be9d38b4a474af67acb1f2241b71303dcb669c28cc43ab21229e",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-conflict-320x420-text2.png",
+      "raw_sha256": "b06f242a29e5be9d38b4a474af67acb1f2241b71303dcb669c28cc43ab21229e",
+      "width": 320,
+      "height": 3080
+    },
+    {
+      "path": "before/desktop-1440/family-conflict-320x568-text1.png",
+      "bytes": 181885,
+      "sha256": "759393d2e0ccfd3c390a5d5b88ff42d6371695decbc2cc8bac752deb89cb4d01",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-conflict-320x568-text1.png",
+      "raw_sha256": "759393d2e0ccfd3c390a5d5b88ff42d6371695decbc2cc8bac752deb89cb4d01",
+      "width": 320,
+      "height": 2609
+    },
+    {
+      "path": "before/desktop-1440/family-conflict-390x844-text1.png",
+      "bytes": 177161,
+      "sha256": "98ace4f506bb4a0cdd648656c1dccc8a5992197a8eba92e7aa60c5752a31b5a0",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-conflict-390x844-text1.png",
+      "raw_sha256": "98ace4f506bb4a0cdd648656c1dccc8a5992197a8eba92e7aa60c5752a31b5a0",
+      "width": 390,
+      "height": 2378
+    },
+    {
+      "path": "before/desktop-1440/family-save-error-1440x900-text1.png",
+      "bytes": 208306,
+      "sha256": "a0e630e33c058f028b797ea9c02b1053d24279df4ecb8151a539645ea4929bee",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-save-error-1440x900-text1.png",
+      "raw_sha256": "a0e630e33c058f028b797ea9c02b1053d24279df4ecb8151a539645ea4929bee",
+      "width": 1440,
+      "height": 1832
+    },
+    {
+      "path": "before/desktop-1440/family-save-error-320x420-text2.png",
+      "bytes": 212126,
+      "sha256": "cdeb26b8976efd6edfb1c9508098120cced435ee111bc16f4cc2a885a9c50d83",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-save-error-320x420-text2.png",
+      "raw_sha256": "cdeb26b8976efd6edfb1c9508098120cced435ee111bc16f4cc2a885a9c50d83",
+      "width": 320,
+      "height": 3080
+    },
+    {
+      "path": "before/desktop-1440/family-save-error-320x568-text1.png",
+      "bytes": 182061,
+      "sha256": "4e33f849822047d6b7886d3943f59c42ee5c8dabb613bea7504659e2d15f3a81",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-save-error-320x568-text1.png",
+      "raw_sha256": "4e33f849822047d6b7886d3943f59c42ee5c8dabb613bea7504659e2d15f3a81",
+      "width": 320,
+      "height": 2609
+    },
+    {
+      "path": "before/desktop-1440/family-save-error-390x844-text1.png",
+      "bytes": 177435,
+      "sha256": "ef590989b00db6cfad125dc140e016041607f6fc293461caefa25a1ed88befcf",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-save-error-390x844-text1.png",
+      "raw_sha256": "ef590989b00db6cfad125dc140e016041607f6fc293461caefa25a1ed88befcf",
+      "width": 390,
+      "height": 2378
+    },
+    {
+      "path": "before/desktop-1440/family-saving-1440x900-text1.png",
+      "bytes": 257425,
+      "sha256": "7f5e1f831cc5677ff0ad319beae35b50f12e0fd933e74a9a890ea83c7ad3cabe",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-saving-1440x900-text1.png",
+      "raw_sha256": "7f5e1f831cc5677ff0ad319beae35b50f12e0fd933e74a9a890ea83c7ad3cabe",
+      "width": 1440,
+      "height": 1731
+    },
+    {
+      "path": "before/desktop-1440/family-saving-320x420-text2.png",
+      "bytes": 225265,
+      "sha256": "34b30aeb2af0400b0ed144a65a0785a57cb194219378c5d11817626abf2eb8cd",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-saving-320x420-text2.png",
+      "raw_sha256": "34b30aeb2af0400b0ed144a65a0785a57cb194219378c5d11817626abf2eb8cd",
+      "width": 320,
+      "height": 2899
+    },
+    {
+      "path": "before/desktop-1440/family-saving-320x568-text1.png",
+      "bytes": 192848,
+      "sha256": "6ff215d753781cd891250a0c2f16b42a43a1dc178d3d1c03b3589cab1e75b168",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-saving-320x568-text1.png",
+      "raw_sha256": "6ff215d753781cd891250a0c2f16b42a43a1dc178d3d1c03b3589cab1e75b168",
+      "width": 320,
+      "height": 2487
+    },
+    {
+      "path": "before/desktop-1440/family-saving-390x844-text1.png",
+      "bytes": 186471,
+      "sha256": "1cbc954bd0a8d1a2208098f63e9e5e9bb1fd8fc407c89c36ecaffe87342bcda1",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-saving-390x844-text1.png",
+      "raw_sha256": "1cbc954bd0a8d1a2208098f63e9e5e9bb1fd8fc407c89c36ecaffe87342bcda1",
+      "width": 390,
+      "height": 2256
+    },
+    {
+      "path": "before/desktop-1440/family-summary.json",
+      "bytes": 102740,
+      "sha256": "b49cd9fa51c54b3bb166e93a48d5cb4a717e19f5548b9438675f76af74918cbb",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-summary.json",
+      "raw_sha256": "b49cd9fa51c54b3bb166e93a48d5cb4a717e19f5548b9438675f76af74918cbb"
+    },
+    {
+      "path": "before/desktop-1440/family-values-1440x900-text1.png",
+      "bytes": 256127,
+      "sha256": "9e22e9131532b4547195b17ed6a45fd1efe69285dc22a9fa34c9248d9d0116f5",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-values-1440x900-text1.png",
+      "raw_sha256": "9e22e9131532b4547195b17ed6a45fd1efe69285dc22a9fa34c9248d9d0116f5",
+      "width": 1440,
+      "height": 1731
+    },
+    {
+      "path": "before/desktop-1440/family-values-320x420-text2.png",
+      "bytes": 223566,
+      "sha256": "89c97424da4bea7a2bcffb57f621abf852b5695cde5ebd11a3d9079f297c1d8a",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-values-320x420-text2.png",
+      "raw_sha256": "89c97424da4bea7a2bcffb57f621abf852b5695cde5ebd11a3d9079f297c1d8a",
+      "width": 320,
+      "height": 2899
+    },
+    {
+      "path": "before/desktop-1440/family-values-320x568-text1.png",
+      "bytes": 192549,
+      "sha256": "32a3d87c2137eb0d6b80be397fe4d4eb2870b7eb1fff0c140309f3e0a66b0133",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-values-320x568-text1.png",
+      "raw_sha256": "32a3d87c2137eb0d6b80be397fe4d4eb2870b7eb1fff0c140309f3e0a66b0133",
+      "width": 320,
+      "height": 2487
+    },
+    {
+      "path": "before/desktop-1440/family-values-390x844-text1.png",
+      "bytes": 186070,
+      "sha256": "fc3e01c452953204e07a2ea344c1407269bd24b093f32b588590f710528ea3c3",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-values-390x844-text1.png",
+      "raw_sha256": "fc3e01c452953204e07a2ea344c1407269bd24b093f32b588590f710528ea3c3",
+      "width": 390,
+      "height": 2256
+    },
+    {
+      "path": "before/desktop-1440/legacy-profile-1440x900-text1.png",
+      "bytes": 100552,
+      "sha256": "c9f5f56a8b196b265f11d5f2e2fe22588c7082d0e65d3623dd1e138755f38a24",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/legacy-profile-1440x900-text1.png",
+      "raw_sha256": "c9f5f56a8b196b265f11d5f2e2fe22588c7082d0e65d3623dd1e138755f38a24",
+      "width": 1440,
+      "height": 1041
+    },
+    {
+      "path": "before/desktop-1440/legacy-profile-320x420-text2.png",
+      "bytes": 151782,
+      "sha256": "f29fab4c438d7b128a0c4978a0b0c7aeb253cd67ae29238b2f7c9a0116bd279c",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/legacy-profile-320x420-text2.png",
+      "raw_sha256": "f29fab4c438d7b128a0c4978a0b0c7aeb253cd67ae29238b2f7c9a0116bd279c",
+      "width": 320,
+      "height": 3285
+    },
+    {
+      "path": "before/desktop-1440/legacy-profile-320x568-text1.png",
+      "bytes": 96145,
+      "sha256": "44ad831e7becc08a5639e29f8e5184c81e61665e03d10e66b160b375f44cc655",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/legacy-profile-320x568-text1.png",
+      "raw_sha256": "44ad831e7becc08a5639e29f8e5184c81e61665e03d10e66b160b375f44cc655",
+      "width": 320,
+      "height": 1565
+    },
+    {
+      "path": "before/desktop-1440/legacy-profile-390x844-text1.png",
+      "bytes": 84950,
+      "sha256": "d9df90cd6641ae4922ae1ef924d1a630377a2179261e164a7dcc670a7558ffa9",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/legacy-profile-390x844-text1.png",
+      "raw_sha256": "d9df90cd6641ae4922ae1ef924d1a630377a2179261e164a7dcc670a7558ffa9",
+      "width": 390,
+      "height": 1375
+    },
+    {
+      "path": "before/mobile-390/axe-family-conflict-1440x900-text1.json",
+      "bytes": 4470,
+      "sha256": "34f57cfebae35438748f02243b9973cf233a702ab93cdfca897a9dc1d8ccec4a",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-conflict-1440x900-text1.json",
+      "raw_sha256": "34f57cfebae35438748f02243b9973cf233a702ab93cdfca897a9dc1d8ccec4a"
+    },
+    {
+      "path": "before/mobile-390/axe-family-conflict-320x420-text2.json",
+      "bytes": 4467,
+      "sha256": "187ac3ae9c53514fd7cd202d97c3da2591e7b98ba7e0b1fe4b709a7a064f094f",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-conflict-320x420-text2.json",
+      "raw_sha256": "187ac3ae9c53514fd7cd202d97c3da2591e7b98ba7e0b1fe4b709a7a064f094f"
+    },
+    {
+      "path": "before/mobile-390/axe-family-conflict-320x568-text1.json",
+      "bytes": 4467,
+      "sha256": "2c39664e18abb35ac75077247774ba688f0fb78d724c653fd657ec46022181dc",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-conflict-320x568-text1.json",
+      "raw_sha256": "2c39664e18abb35ac75077247774ba688f0fb78d724c653fd657ec46022181dc"
+    },
+    {
+      "path": "before/mobile-390/axe-family-conflict-390x844-text1.json",
+      "bytes": 4467,
+      "sha256": "b79eeea79e3abaf263938f4e5362715cdfd3bf809f6f737a3ca27845a56b7122",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-conflict-390x844-text1.json",
+      "raw_sha256": "b79eeea79e3abaf263938f4e5362715cdfd3bf809f6f737a3ca27845a56b7122"
+    },
+    {
+      "path": "before/mobile-390/axe-family-save-error-1440x900-text1.json",
+      "bytes": 4471,
+      "sha256": "5415aa31b8ae8f1505c028f9b202aba5c703aa708701bc99349717ef65257a58",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-save-error-1440x900-text1.json",
+      "raw_sha256": "5415aa31b8ae8f1505c028f9b202aba5c703aa708701bc99349717ef65257a58"
+    },
+    {
+      "path": "before/mobile-390/axe-family-save-error-320x420-text2.json",
+      "bytes": 4468,
+      "sha256": "6b05f590ac65f5e260bde41fb4c8af79ee8f9efd634696c5524ff3db2792b0d9",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-save-error-320x420-text2.json",
+      "raw_sha256": "6b05f590ac65f5e260bde41fb4c8af79ee8f9efd634696c5524ff3db2792b0d9"
+    },
+    {
+      "path": "before/mobile-390/axe-family-save-error-320x568-text1.json",
+      "bytes": 4468,
+      "sha256": "7b0c4b95e23e088ac8e685a35a246b7dd9d6da8e962b375ce5c39a670f86f0ff",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-save-error-320x568-text1.json",
+      "raw_sha256": "7b0c4b95e23e088ac8e685a35a246b7dd9d6da8e962b375ce5c39a670f86f0ff"
+    },
+    {
+      "path": "before/mobile-390/axe-family-save-error-390x844-text1.json",
+      "bytes": 4468,
+      "sha256": "6146d8373bf486c533fafc03f5452335a0d1c81ac55e4c4128a8a1d31f849b59",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-save-error-390x844-text1.json",
+      "raw_sha256": "6146d8373bf486c533fafc03f5452335a0d1c81ac55e4c4128a8a1d31f849b59"
+    },
+    {
+      "path": "before/mobile-390/axe-family-saving-1440x900-text1.json",
+      "bytes": 4390,
+      "sha256": "3cdc23b327fb12e0a15ca2a341f2a33dcebcdacbc05494c199d83f4065138caf",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-saving-1440x900-text1.json",
+      "raw_sha256": "3cdc23b327fb12e0a15ca2a341f2a33dcebcdacbc05494c199d83f4065138caf"
+    },
+    {
+      "path": "before/mobile-390/axe-family-saving-320x420-text2.json",
+      "bytes": 4387,
+      "sha256": "a9804ad01a7c97b238a4db31c53923b4debf5c16874cf9a94f2789ad7e543518",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-saving-320x420-text2.json",
+      "raw_sha256": "a9804ad01a7c97b238a4db31c53923b4debf5c16874cf9a94f2789ad7e543518"
+    },
+    {
+      "path": "before/mobile-390/axe-family-saving-320x568-text1.json",
+      "bytes": 4387,
+      "sha256": "370b2916ab74e982bb44b32f0a8b32a40f94daad0de178ae9b66e581137bfb70",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-saving-320x568-text1.json",
+      "raw_sha256": "370b2916ab74e982bb44b32f0a8b32a40f94daad0de178ae9b66e581137bfb70"
+    },
+    {
+      "path": "before/mobile-390/axe-family-saving-390x844-text1.json",
+      "bytes": 4387,
+      "sha256": "f199ee96a440351ef0400cf0f523db4cf45341b68e5664b1ea9f43c753cfb695",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-saving-390x844-text1.json",
+      "raw_sha256": "f199ee96a440351ef0400cf0f523db4cf45341b68e5664b1ea9f43c753cfb695"
+    },
+    {
+      "path": "before/mobile-390/axe-family-values-1440x900-text1.json",
+      "bytes": 4361,
+      "sha256": "5156366d815a165dd3eaa13242955d81cf985acb6739a02c26842f4f181bbe2c",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-values-1440x900-text1.json",
+      "raw_sha256": "5156366d815a165dd3eaa13242955d81cf985acb6739a02c26842f4f181bbe2c"
+    },
+    {
+      "path": "before/mobile-390/axe-family-values-320x420-text2.json",
+      "bytes": 4358,
+      "sha256": "af4a65c0aabedaeb80090621a80df075ad7fe792ff7367ef89ec3f2ed7348cda",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-values-320x420-text2.json",
+      "raw_sha256": "af4a65c0aabedaeb80090621a80df075ad7fe792ff7367ef89ec3f2ed7348cda"
+    },
+    {
+      "path": "before/mobile-390/axe-family-values-320x568-text1.json",
+      "bytes": 4358,
+      "sha256": "a76ff0c5d5f04ee054587f60714ed4b1f6fe38d951f1bdb24b214b37b0421412",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-values-320x568-text1.json",
+      "raw_sha256": "a76ff0c5d5f04ee054587f60714ed4b1f6fe38d951f1bdb24b214b37b0421412"
+    },
+    {
+      "path": "before/mobile-390/axe-family-values-390x844-text1.json",
+      "bytes": 4358,
+      "sha256": "7015264615a58f505779455e0b5da9d83c80429a4ffd7a09fd3df3ff9b96e630",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-values-390x844-text1.json",
+      "raw_sha256": "7015264615a58f505779455e0b5da9d83c80429a4ffd7a09fd3df3ff9b96e630"
+    },
+    {
+      "path": "before/mobile-390/axe-legacy-profile-1440x900-text1.json",
+      "bytes": 3096,
+      "sha256": "59fbc7bc1483a896e2b790d466ecf6312df315a4c937629d97c0cbac78411ac2",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-legacy-profile-1440x900-text1.json",
+      "raw_sha256": "59fbc7bc1483a896e2b790d466ecf6312df315a4c937629d97c0cbac78411ac2"
+    },
+    {
+      "path": "before/mobile-390/axe-legacy-profile-320x420-text2.json",
+      "bytes": 3093,
+      "sha256": "1d6d767780930d8d9697f9fcce4c57e4e5b5ff7a575c11d2135aa5d56b5d52db",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-legacy-profile-320x420-text2.json",
+      "raw_sha256": "1d6d767780930d8d9697f9fcce4c57e4e5b5ff7a575c11d2135aa5d56b5d52db"
+    },
+    {
+      "path": "before/mobile-390/axe-legacy-profile-320x568-text1.json",
+      "bytes": 3093,
+      "sha256": "fcdd466fd18ca1ddeba11b0e6ee827c49da0243b749d931f544b68907c1feb6c",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-legacy-profile-320x568-text1.json",
+      "raw_sha256": "fcdd466fd18ca1ddeba11b0e6ee827c49da0243b749d931f544b68907c1feb6c"
+    },
+    {
+      "path": "before/mobile-390/axe-legacy-profile-390x844-text1.json",
+      "bytes": 3093,
+      "sha256": "a4713a23fd918d4bbb4103ed07a50ee46e1fa4578cc210f046b9878f31f30667",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-legacy-profile-390x844-text1.json",
+      "raw_sha256": "a4713a23fd918d4bbb4103ed07a50ee46e1fa4578cc210f046b9878f31f30667"
+    },
+    {
+      "path": "before/mobile-390/family-conflict-1440x900-text1.png",
+      "bytes": 208710,
+      "sha256": "53199bfb1833e7264967beaccf35faed6bd7826e8c2774634a1a985ef6add0de",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-conflict-1440x900-text1.png",
+      "raw_sha256": "53199bfb1833e7264967beaccf35faed6bd7826e8c2774634a1a985ef6add0de",
+      "width": 1440,
+      "height": 1832
+    },
+    {
+      "path": "before/mobile-390/family-conflict-320x420-text2.png",
+      "bytes": 212073,
+      "sha256": "bea9ce13d61d42856d7058bc0881340ae89b626374dfd86aa5e770537ed3c051",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-conflict-320x420-text2.png",
+      "raw_sha256": "bea9ce13d61d42856d7058bc0881340ae89b626374dfd86aa5e770537ed3c051",
+      "width": 320,
+      "height": 3080
+    },
+    {
+      "path": "before/mobile-390/family-conflict-320x568-text1.png",
+      "bytes": 181474,
+      "sha256": "b5decfcd440379000b1f4c863b4ec4315bf89c79c61f2c190b220ac60c6d03a0",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-conflict-320x568-text1.png",
+      "raw_sha256": "b5decfcd440379000b1f4c863b4ec4315bf89c79c61f2c190b220ac60c6d03a0",
+      "width": 320,
+      "height": 2609
+    },
+    {
+      "path": "before/mobile-390/family-conflict-390x844-text1.png",
+      "bytes": 177247,
+      "sha256": "9f6141c60cc36ad53a35182dd04a0bedd054eed2cf80973e2b042fb1305c300e",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-conflict-390x844-text1.png",
+      "raw_sha256": "9f6141c60cc36ad53a35182dd04a0bedd054eed2cf80973e2b042fb1305c300e",
+      "width": 390,
+      "height": 2378
+    },
+    {
+      "path": "before/mobile-390/family-save-error-1440x900-text1.png",
+      "bytes": 208799,
+      "sha256": "7b28ec5eb85e59bb8dfcfb2f89cbfb83fa129b70443d123b3d1f928c349b7eba",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-save-error-1440x900-text1.png",
+      "raw_sha256": "7b28ec5eb85e59bb8dfcfb2f89cbfb83fa129b70443d123b3d1f928c349b7eba",
+      "width": 1440,
+      "height": 1832
+    },
+    {
+      "path": "before/mobile-390/family-save-error-320x420-text2.png",
+      "bytes": 212196,
+      "sha256": "ed0e27000453e09b3767aabab6e4aa6a1602ec8af3593fa221183b6bff2736b4",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-save-error-320x420-text2.png",
+      "raw_sha256": "ed0e27000453e09b3767aabab6e4aa6a1602ec8af3593fa221183b6bff2736b4",
+      "width": 320,
+      "height": 3080
+    },
+    {
+      "path": "before/mobile-390/family-save-error-320x568-text1.png",
+      "bytes": 181650,
+      "sha256": "2ff4b4ad5a856eaf372d91113c663cf51d3ca776768c128be2ebae5c3ebba9d3",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-save-error-320x568-text1.png",
+      "raw_sha256": "2ff4b4ad5a856eaf372d91113c663cf51d3ca776768c128be2ebae5c3ebba9d3",
+      "width": 320,
+      "height": 2609
+    },
+    {
+      "path": "before/mobile-390/family-save-error-390x844-text1.png",
+      "bytes": 177551,
+      "sha256": "281a86d4a9aa69d9bc0679abcf46231b254b584ab26198e92ddc358f81aca403",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-save-error-390x844-text1.png",
+      "raw_sha256": "281a86d4a9aa69d9bc0679abcf46231b254b584ab26198e92ddc358f81aca403",
+      "width": 390,
+      "height": 2378
+    },
+    {
+      "path": "before/mobile-390/family-saving-1440x900-text1.png",
+      "bytes": 262552,
+      "sha256": "d2d5a2d0780f46fda5f149961dc161df3411c247cb54d56eb22e6bcad119342f",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-saving-1440x900-text1.png",
+      "raw_sha256": "d2d5a2d0780f46fda5f149961dc161df3411c247cb54d56eb22e6bcad119342f",
+      "width": 1440,
+      "height": 1731
+    },
+    {
+      "path": "before/mobile-390/family-saving-320x420-text2.png",
+      "bytes": 223099,
+      "sha256": "d44864d371f93ba2f2ab3ec96d415a34eec419d2e071dca7bd3bba2c4ef3a01d",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-saving-320x420-text2.png",
+      "raw_sha256": "d44864d371f93ba2f2ab3ec96d415a34eec419d2e071dca7bd3bba2c4ef3a01d",
+      "width": 320,
+      "height": 2899
+    },
+    {
+      "path": "before/mobile-390/family-saving-320x568-text1.png",
+      "bytes": 191635,
+      "sha256": "88214fe1beeaff65a63a11ca88756972c026c59e2b1143cdd2c5409c2b85560f",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-saving-320x568-text1.png",
+      "raw_sha256": "88214fe1beeaff65a63a11ca88756972c026c59e2b1143cdd2c5409c2b85560f",
+      "width": 320,
+      "height": 2487
+    },
+    {
+      "path": "before/mobile-390/family-saving-390x844-text1.png",
+      "bytes": 186804,
+      "sha256": "90630fbf6ed6e4b758d18b321bdfcda3ea46795d56b1c298e508a07b741c6600",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-saving-390x844-text1.png",
+      "raw_sha256": "90630fbf6ed6e4b758d18b321bdfcda3ea46795d56b1c298e508a07b741c6600",
+      "width": 390,
+      "height": 2256
+    },
+    {
+      "path": "before/mobile-390/family-summary.json",
+      "bytes": 102740,
+      "sha256": "b49cd9fa51c54b3bb166e93a48d5cb4a717e19f5548b9438675f76af74918cbb",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-summary.json",
+      "raw_sha256": "b49cd9fa51c54b3bb166e93a48d5cb4a717e19f5548b9438675f76af74918cbb"
+    },
+    {
+      "path": "before/mobile-390/family-values-1440x900-text1.png",
+      "bytes": 261481,
+      "sha256": "db24918640434e4a5fc16c084249d9bdd7903ab2c3ec9216d67543c9b7089648",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-values-1440x900-text1.png",
+      "raw_sha256": "db24918640434e4a5fc16c084249d9bdd7903ab2c3ec9216d67543c9b7089648",
+      "width": 1440,
+      "height": 1731
+    },
+    {
+      "path": "before/mobile-390/family-values-320x420-text2.png",
+      "bytes": 221381,
+      "sha256": "29b25b1fd60d404c7a719f440027d1200a989bd42a14b921b42c3ba3496b7a80",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-values-320x420-text2.png",
+      "raw_sha256": "29b25b1fd60d404c7a719f440027d1200a989bd42a14b921b42c3ba3496b7a80",
+      "width": 320,
+      "height": 2899
+    },
+    {
+      "path": "before/mobile-390/family-values-320x568-text1.png",
+      "bytes": 192547,
+      "sha256": "7d351515a9d820b799be8aac2fb18997049b43b1cfc204a7913ab767b1196560",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-values-320x568-text1.png",
+      "raw_sha256": "7d351515a9d820b799be8aac2fb18997049b43b1cfc204a7913ab767b1196560",
+      "width": 320,
+      "height": 2487
+    },
+    {
+      "path": "before/mobile-390/family-values-390x844-text1.png",
+      "bytes": 186578,
+      "sha256": "4cbb84947d9c29520620579872b36419b9d17eb837ff17012813c9e835ad7902",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-values-390x844-text1.png",
+      "raw_sha256": "4cbb84947d9c29520620579872b36419b9d17eb837ff17012813c9e835ad7902",
+      "width": 390,
+      "height": 2256
+    },
+    {
+      "path": "before/mobile-390/legacy-profile-1440x900-text1.png",
+      "bytes": 100850,
+      "sha256": "6a757ef053f517547b9b3507a4d67f72c0cc4bba0e4457fd46dfe97116ce1737",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/legacy-profile-1440x900-text1.png",
+      "raw_sha256": "6a757ef053f517547b9b3507a4d67f72c0cc4bba0e4457fd46dfe97116ce1737",
+      "width": 1440,
+      "height": 1041
+    },
+    {
+      "path": "before/mobile-390/legacy-profile-320x420-text2.png",
+      "bytes": 151776,
+      "sha256": "2f27981374797534e2322af144a99cbd6daceaee6e24aa262280c430855f92c6",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/legacy-profile-320x420-text2.png",
+      "raw_sha256": "2f27981374797534e2322af144a99cbd6daceaee6e24aa262280c430855f92c6",
+      "width": 320,
+      "height": 3285
+    },
+    {
+      "path": "before/mobile-390/legacy-profile-320x568-text1.png",
+      "bytes": 96087,
+      "sha256": "ea39c2136c6b6bbb504bb6147f5283a719ac0475484b7ad8522b47c76a968768",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/legacy-profile-320x568-text1.png",
+      "raw_sha256": "ea39c2136c6b6bbb504bb6147f5283a719ac0475484b7ad8522b47c76a968768",
+      "width": 320,
+      "height": 1565
+    },
+    {
+      "path": "before/mobile-390/legacy-profile-390x844-text1.png",
+      "bytes": 79176,
+      "sha256": "c58b16132e1bb07cd597882399f0c92e953038eda9dbd7c456aeb16803e5c12d",
+      "raw_source": ".artifacts/takeover/planning-settings/baseline-refined/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/legacy-profile-390x844-text1.png",
+      "raw_sha256": "c58b16132e1bb07cd597882399f0c92e953038eda9dbd7c456aeb16803e5c12d",
+      "width": 390,
+      "height": 1375
+    },
+    {
+      "path": "after/desktop-1440/axe-offline-guest-1440x900-text1.json",
+      "bytes": 442,
+      "sha256": "179375fa5fe46eef9bb9e53fefce664cbd69053b3bfe8ea9dc2514612ed48552",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--5e883-rying-or-saving-family-data-desktop-1440/axe-offline-guest-1440x900-text1.json",
+      "raw_sha256": "179375fa5fe46eef9bb9e53fefce664cbd69053b3bfe8ea9dc2514612ed48552"
+    },
+    {
+      "path": "after/desktop-1440/axe-offline-guest-320x420-text2.json",
+      "bytes": 439,
+      "sha256": "b00edb7b3880a2e0ec84bac91a3e11f67fd2b8a71bfe8dee98a11e7c66594dec",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--5e883-rying-or-saving-family-data-desktop-1440/axe-offline-guest-320x420-text2.json",
+      "raw_sha256": "b00edb7b3880a2e0ec84bac91a3e11f67fd2b8a71bfe8dee98a11e7c66594dec"
+    },
+    {
+      "path": "after/desktop-1440/axe-offline-guest-320x568-text1.json",
+      "bytes": 439,
+      "sha256": "d3f72e6c52b2b89a6db1a16491543f7689be2a38984a95dc19ad6a15ab70fc7a",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--5e883-rying-or-saving-family-data-desktop-1440/axe-offline-guest-320x568-text1.json",
+      "raw_sha256": "d3f72e6c52b2b89a6db1a16491543f7689be2a38984a95dc19ad6a15ab70fc7a"
+    },
+    {
+      "path": "after/desktop-1440/axe-offline-guest-390x844-text1.json",
+      "bytes": 439,
+      "sha256": "3ecf9a9f54fb1dfb2ba0bd58c7ff92114d57ee4e9769eb387d19bb67eb4add4d",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--5e883-rying-or-saving-family-data-desktop-1440/axe-offline-guest-390x844-text1.json",
+      "raw_sha256": "3ecf9a9f54fb1dfb2ba0bd58c7ff92114d57ee4e9769eb387d19bb67eb4add4d"
+    },
+    {
+      "path": "after/desktop-1440/guest-summary.json",
+      "bytes": 1801,
+      "sha256": "960fa608c835a79f6c2ac65c8f2e36104aa9bd42624372e54079eb852b660724",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--5e883-rying-or-saving-family-data-desktop-1440/guest-summary.json",
+      "raw_sha256": "960fa608c835a79f6c2ac65c8f2e36104aa9bd42624372e54079eb852b660724"
+    },
+    {
+      "path": "after/desktop-1440/offline-guest-1440x900-text1.png",
+      "bytes": 48272,
+      "sha256": "68619ea75c9ab4d528263467d79f3c69c586e2c9dcf2a1506296764bd5ed754c",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--5e883-rying-or-saving-family-data-desktop-1440/offline-guest-1440x900-text1.png",
+      "raw_sha256": "68619ea75c9ab4d528263467d79f3c69c586e2c9dcf2a1506296764bd5ed754c",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "path": "after/desktop-1440/offline-guest-320x420-text2.png",
+      "bytes": 51303,
+      "sha256": "09a16051b2d6d6e8a7f1eb626d277da6a332e8d682195ed9d247bbd5755150be",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--5e883-rying-or-saving-family-data-desktop-1440/offline-guest-320x420-text2.png",
+      "raw_sha256": "09a16051b2d6d6e8a7f1eb626d277da6a332e8d682195ed9d247bbd5755150be",
+      "width": 320,
+      "height": 684
+    },
+    {
+      "path": "after/desktop-1440/offline-guest-320x568-text1.png",
+      "bytes": 30517,
+      "sha256": "a8aa38593581df16acd2c0af3ae4ee13790f0e22e65536ef0193fb1de7b05bd1",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--5e883-rying-or-saving-family-data-desktop-1440/offline-guest-320x568-text1.png",
+      "raw_sha256": "a8aa38593581df16acd2c0af3ae4ee13790f0e22e65536ef0193fb1de7b05bd1",
+      "width": 320,
+      "height": 650
+    },
+    {
+      "path": "after/desktop-1440/offline-guest-390x844-text1.png",
+      "bytes": 35645,
+      "sha256": "c70e2c8f9b1d907a0b8cfc5b4935ebda542d90d551166bc42d1336a565c6d10a",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--5e883-rying-or-saving-family-data-desktop-1440/offline-guest-390x844-text1.png",
+      "raw_sha256": "c70e2c8f9b1d907a0b8cfc5b4935ebda542d90d551166bc42d1336a565c6d10a",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "after/mobile-390/axe-offline-guest-1440x900-text1.json",
+      "bytes": 442,
+      "sha256": "179375fa5fe46eef9bb9e53fefce664cbd69053b3bfe8ea9dc2514612ed48552",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--5e883-rying-or-saving-family-data-mobile-390/axe-offline-guest-1440x900-text1.json",
+      "raw_sha256": "179375fa5fe46eef9bb9e53fefce664cbd69053b3bfe8ea9dc2514612ed48552"
+    },
+    {
+      "path": "after/mobile-390/axe-offline-guest-320x420-text2.json",
+      "bytes": 439,
+      "sha256": "b00edb7b3880a2e0ec84bac91a3e11f67fd2b8a71bfe8dee98a11e7c66594dec",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--5e883-rying-or-saving-family-data-mobile-390/axe-offline-guest-320x420-text2.json",
+      "raw_sha256": "b00edb7b3880a2e0ec84bac91a3e11f67fd2b8a71bfe8dee98a11e7c66594dec"
+    },
+    {
+      "path": "after/mobile-390/axe-offline-guest-320x568-text1.json",
+      "bytes": 439,
+      "sha256": "d3f72e6c52b2b89a6db1a16491543f7689be2a38984a95dc19ad6a15ab70fc7a",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--5e883-rying-or-saving-family-data-mobile-390/axe-offline-guest-320x568-text1.json",
+      "raw_sha256": "d3f72e6c52b2b89a6db1a16491543f7689be2a38984a95dc19ad6a15ab70fc7a"
+    },
+    {
+      "path": "after/mobile-390/axe-offline-guest-390x844-text1.json",
+      "bytes": 439,
+      "sha256": "3ecf9a9f54fb1dfb2ba0bd58c7ff92114d57ee4e9769eb387d19bb67eb4add4d",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--5e883-rying-or-saving-family-data-mobile-390/axe-offline-guest-390x844-text1.json",
+      "raw_sha256": "3ecf9a9f54fb1dfb2ba0bd58c7ff92114d57ee4e9769eb387d19bb67eb4add4d"
+    },
+    {
+      "path": "after/mobile-390/guest-summary.json",
+      "bytes": 1801,
+      "sha256": "960fa608c835a79f6c2ac65c8f2e36104aa9bd42624372e54079eb852b660724",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--5e883-rying-or-saving-family-data-mobile-390/guest-summary.json",
+      "raw_sha256": "960fa608c835a79f6c2ac65c8f2e36104aa9bd42624372e54079eb852b660724"
+    },
+    {
+      "path": "after/mobile-390/offline-guest-1440x900-text1.png",
+      "bytes": 48272,
+      "sha256": "68619ea75c9ab4d528263467d79f3c69c586e2c9dcf2a1506296764bd5ed754c",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--5e883-rying-or-saving-family-data-mobile-390/offline-guest-1440x900-text1.png",
+      "raw_sha256": "68619ea75c9ab4d528263467d79f3c69c586e2c9dcf2a1506296764bd5ed754c",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "path": "after/mobile-390/offline-guest-320x420-text2.png",
+      "bytes": 52600,
+      "sha256": "babd3c8ed16d1ae501b2dffa72b762c67a058a23db7b6067fbcf503ff3777283",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--5e883-rying-or-saving-family-data-mobile-390/offline-guest-320x420-text2.png",
+      "raw_sha256": "babd3c8ed16d1ae501b2dffa72b762c67a058a23db7b6067fbcf503ff3777283",
+      "width": 320,
+      "height": 684
+    },
+    {
+      "path": "after/mobile-390/offline-guest-320x568-text1.png",
+      "bytes": 30517,
+      "sha256": "a8aa38593581df16acd2c0af3ae4ee13790f0e22e65536ef0193fb1de7b05bd1",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--5e883-rying-or-saving-family-data-mobile-390/offline-guest-320x568-text1.png",
+      "raw_sha256": "a8aa38593581df16acd2c0af3ae4ee13790f0e22e65536ef0193fb1de7b05bd1",
+      "width": 320,
+      "height": 650
+    },
+    {
+      "path": "after/mobile-390/offline-guest-390x844-text1.png",
+      "bytes": 35645,
+      "sha256": "c70e2c8f9b1d907a0b8cfc5b4935ebda542d90d551166bc42d1336a565c6d10a",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--5e883-rying-or-saving-family-data-mobile-390/offline-guest-390x844-text1.png",
+      "raw_sha256": "c70e2c8f9b1d907a0b8cfc5b4935ebda542d90d551166bc42d1336a565c6d10a",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "after/desktop-1440/axe-family-loading-1440x900-text1.json",
+      "bytes": 328,
+      "sha256": "2b5ae6720023ca9871f804fcb064c9abf5831ac632e4a3078afc527037ad5464",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/axe-family-loading-1440x900-text1.json",
+      "raw_sha256": "2b5ae6720023ca9871f804fcb064c9abf5831ac632e4a3078afc527037ad5464"
+    },
+    {
+      "path": "after/desktop-1440/axe-family-loading-320x420-text2.json",
+      "bytes": 325,
+      "sha256": "fda4dc9dddb6b783fefe5c836c9a9516ffa175147ba860ca7799b834baf9ac93",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/axe-family-loading-320x420-text2.json",
+      "raw_sha256": "fda4dc9dddb6b783fefe5c836c9a9516ffa175147ba860ca7799b834baf9ac93"
+    },
+    {
+      "path": "after/desktop-1440/axe-family-loading-320x568-text1.json",
+      "bytes": 325,
+      "sha256": "3a70597b0b3032613a84a220c6f65b864964b641e93e1b1118fcb58e7d3b285d",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/axe-family-loading-320x568-text1.json",
+      "raw_sha256": "3a70597b0b3032613a84a220c6f65b864964b641e93e1b1118fcb58e7d3b285d"
+    },
+    {
+      "path": "after/desktop-1440/axe-family-loading-390x844-text1.json",
+      "bytes": 325,
+      "sha256": "1faa30333a689f0ae2cb256d03fb4fe961424d906cd0a8bee85ef33f8ad225ba",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/axe-family-loading-390x844-text1.json",
+      "raw_sha256": "1faa30333a689f0ae2cb256d03fb4fe961424d906cd0a8bee85ef33f8ad225ba"
+    },
+    {
+      "path": "after/desktop-1440/axe-family-read-error-1440x900-text1.json",
+      "bytes": 444,
+      "sha256": "5d414a81a533f0abd7c01d08d1098d73b8be1a106ba2d623e86ab3fce570df33",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/axe-family-read-error-1440x900-text1.json",
+      "raw_sha256": "5d414a81a533f0abd7c01d08d1098d73b8be1a106ba2d623e86ab3fce570df33"
+    },
+    {
+      "path": "after/desktop-1440/axe-family-read-error-320x420-text2.json",
+      "bytes": 441,
+      "sha256": "cab7df5d15b25509a2ce8cdbb4fc0c884d7c22483a18dbc6fb9f72e871c8b6b4",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/axe-family-read-error-320x420-text2.json",
+      "raw_sha256": "cab7df5d15b25509a2ce8cdbb4fc0c884d7c22483a18dbc6fb9f72e871c8b6b4"
+    },
+    {
+      "path": "after/desktop-1440/axe-family-read-error-320x568-text1.json",
+      "bytes": 441,
+      "sha256": "ba4a73ea7c5e0f5b1c8667a51a89eddfac00d27000e0df14c2afc99cff004b86",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/axe-family-read-error-320x568-text1.json",
+      "raw_sha256": "ba4a73ea7c5e0f5b1c8667a51a89eddfac00d27000e0df14c2afc99cff004b86"
+    },
+    {
+      "path": "after/desktop-1440/axe-family-read-error-390x844-text1.json",
+      "bytes": 441,
+      "sha256": "4ace2f852b153eb4ac273fd47550695e72b2864136d8ae9a70c22aa8a252fd04",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/axe-family-read-error-390x844-text1.json",
+      "raw_sha256": "4ace2f852b153eb4ac273fd47550695e72b2864136d8ae9a70c22aa8a252fd04"
+    },
+    {
+      "path": "after/desktop-1440/family-loading-1440x900-text1.png",
+      "bytes": 47373,
+      "sha256": "ea50bf020e9f0adba6ef18baa28ba135708e8ca3c3327c0fa99e417966186f2e",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/family-loading-1440x900-text1.png",
+      "raw_sha256": "ea50bf020e9f0adba6ef18baa28ba135708e8ca3c3327c0fa99e417966186f2e",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "path": "after/desktop-1440/family-loading-320x420-text2.png",
+      "bytes": 52212,
+      "sha256": "0e442e3640ee697f27d1e0b8e1e90b700cf4ce74f5829eafbd8d7b349a2d2749",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/family-loading-320x420-text2.png",
+      "raw_sha256": "0e442e3640ee697f27d1e0b8e1e90b700cf4ce74f5829eafbd8d7b349a2d2749",
+      "width": 320,
+      "height": 836
+    },
+    {
+      "path": "after/desktop-1440/family-loading-320x568-text1.png",
+      "bytes": 28569,
+      "sha256": "397c8c96e90aacd8502024eed2f00a8d55053a671477a7661a82a910e581a132",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/family-loading-320x568-text1.png",
+      "raw_sha256": "397c8c96e90aacd8502024eed2f00a8d55053a671477a7661a82a910e581a132",
+      "width": 320,
+      "height": 650
+    },
+    {
+      "path": "after/desktop-1440/family-loading-390x844-text1.png",
+      "bytes": 33692,
+      "sha256": "efe290df666c07ddfc3451f2d7d02ba92f735356c5a27d926e8f3f724500732d",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/family-loading-390x844-text1.png",
+      "raw_sha256": "efe290df666c07ddfc3451f2d7d02ba92f735356c5a27d926e8f3f724500732d",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "after/desktop-1440/family-read-error-1440x900-text1.png",
+      "bytes": 50648,
+      "sha256": "d7735e7fd9eb02b41395e65e3dcdcecfdd8b9b10ac0ae4e932acfc29552c89d2",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/family-read-error-1440x900-text1.png",
+      "raw_sha256": "d7735e7fd9eb02b41395e65e3dcdcecfdd8b9b10ac0ae4e932acfc29552c89d2",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "path": "after/desktop-1440/family-read-error-320x420-text2.png",
+      "bytes": 52308,
+      "sha256": "2f6e4ba1f0ec552a9cbf6463d4754fc2ac70c9c5c0971555dcfe88cad8a5d07c",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/family-read-error-320x420-text2.png",
+      "raw_sha256": "2f6e4ba1f0ec552a9cbf6463d4754fc2ac70c9c5c0971555dcfe88cad8a5d07c",
+      "width": 320,
+      "height": 864
+    },
+    {
+      "path": "after/desktop-1440/family-read-error-320x568-text1.png",
+      "bytes": 31669,
+      "sha256": "7d3b1d354c2dd5a131ed07275cc9ef2ae78b72c0e29d61ebd370e7f6b8e731a5",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/family-read-error-320x568-text1.png",
+      "raw_sha256": "7d3b1d354c2dd5a131ed07275cc9ef2ae78b72c0e29d61ebd370e7f6b8e731a5",
+      "width": 320,
+      "height": 650
+    },
+    {
+      "path": "after/desktop-1440/family-read-error-390x844-text1.png",
+      "bytes": 36842,
+      "sha256": "9e491cdcd4e346ab523f4736933c3b3e3b09642d56cf40001050d26091ac1ede",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/family-read-error-390x844-text1.png",
+      "raw_sha256": "9e491cdcd4e346ab523f4736933c3b3e3b09642d56cf40001050d26091ac1ede",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "after/desktop-1440/read-summary.json",
+      "bytes": 2869,
+      "sha256": "86a2d9d52c431a53411322d6ff45388c36273d537b48ae0bd5aa771156f4b768",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-desktop-1440/read-summary.json",
+      "raw_sha256": "86a2d9d52c431a53411322d6ff45388c36273d537b48ae0bd5aa771156f4b768"
+    },
+    {
+      "path": "after/mobile-390/axe-family-loading-1440x900-text1.json",
+      "bytes": 328,
+      "sha256": "2b5ae6720023ca9871f804fcb064c9abf5831ac632e4a3078afc527037ad5464",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/axe-family-loading-1440x900-text1.json",
+      "raw_sha256": "2b5ae6720023ca9871f804fcb064c9abf5831ac632e4a3078afc527037ad5464"
+    },
+    {
+      "path": "after/mobile-390/axe-family-loading-320x420-text2.json",
+      "bytes": 325,
+      "sha256": "fda4dc9dddb6b783fefe5c836c9a9516ffa175147ba860ca7799b834baf9ac93",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/axe-family-loading-320x420-text2.json",
+      "raw_sha256": "fda4dc9dddb6b783fefe5c836c9a9516ffa175147ba860ca7799b834baf9ac93"
+    },
+    {
+      "path": "after/mobile-390/axe-family-loading-320x568-text1.json",
+      "bytes": 325,
+      "sha256": "3a70597b0b3032613a84a220c6f65b864964b641e93e1b1118fcb58e7d3b285d",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/axe-family-loading-320x568-text1.json",
+      "raw_sha256": "3a70597b0b3032613a84a220c6f65b864964b641e93e1b1118fcb58e7d3b285d"
+    },
+    {
+      "path": "after/mobile-390/axe-family-loading-390x844-text1.json",
+      "bytes": 325,
+      "sha256": "1faa30333a689f0ae2cb256d03fb4fe961424d906cd0a8bee85ef33f8ad225ba",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/axe-family-loading-390x844-text1.json",
+      "raw_sha256": "1faa30333a689f0ae2cb256d03fb4fe961424d906cd0a8bee85ef33f8ad225ba"
+    },
+    {
+      "path": "after/mobile-390/axe-family-read-error-1440x900-text1.json",
+      "bytes": 444,
+      "sha256": "5d414a81a533f0abd7c01d08d1098d73b8be1a106ba2d623e86ab3fce570df33",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/axe-family-read-error-1440x900-text1.json",
+      "raw_sha256": "5d414a81a533f0abd7c01d08d1098d73b8be1a106ba2d623e86ab3fce570df33"
+    },
+    {
+      "path": "after/mobile-390/axe-family-read-error-320x420-text2.json",
+      "bytes": 441,
+      "sha256": "cab7df5d15b25509a2ce8cdbb4fc0c884d7c22483a18dbc6fb9f72e871c8b6b4",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/axe-family-read-error-320x420-text2.json",
+      "raw_sha256": "cab7df5d15b25509a2ce8cdbb4fc0c884d7c22483a18dbc6fb9f72e871c8b6b4"
+    },
+    {
+      "path": "after/mobile-390/axe-family-read-error-320x568-text1.json",
+      "bytes": 441,
+      "sha256": "ba4a73ea7c5e0f5b1c8667a51a89eddfac00d27000e0df14c2afc99cff004b86",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/axe-family-read-error-320x568-text1.json",
+      "raw_sha256": "ba4a73ea7c5e0f5b1c8667a51a89eddfac00d27000e0df14c2afc99cff004b86"
+    },
+    {
+      "path": "after/mobile-390/axe-family-read-error-390x844-text1.json",
+      "bytes": 441,
+      "sha256": "4ace2f852b153eb4ac273fd47550695e72b2864136d8ae9a70c22aa8a252fd04",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/axe-family-read-error-390x844-text1.json",
+      "raw_sha256": "4ace2f852b153eb4ac273fd47550695e72b2864136d8ae9a70c22aa8a252fd04"
+    },
+    {
+      "path": "after/mobile-390/family-loading-1440x900-text1.png",
+      "bytes": 47373,
+      "sha256": "ea50bf020e9f0adba6ef18baa28ba135708e8ca3c3327c0fa99e417966186f2e",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/family-loading-1440x900-text1.png",
+      "raw_sha256": "ea50bf020e9f0adba6ef18baa28ba135708e8ca3c3327c0fa99e417966186f2e",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "path": "after/mobile-390/family-loading-320x420-text2.png",
+      "bytes": 52212,
+      "sha256": "0e442e3640ee697f27d1e0b8e1e90b700cf4ce74f5829eafbd8d7b349a2d2749",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/family-loading-320x420-text2.png",
+      "raw_sha256": "0e442e3640ee697f27d1e0b8e1e90b700cf4ce74f5829eafbd8d7b349a2d2749",
+      "width": 320,
+      "height": 836
+    },
+    {
+      "path": "after/mobile-390/family-loading-320x568-text1.png",
+      "bytes": 28569,
+      "sha256": "397c8c96e90aacd8502024eed2f00a8d55053a671477a7661a82a910e581a132",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/family-loading-320x568-text1.png",
+      "raw_sha256": "397c8c96e90aacd8502024eed2f00a8d55053a671477a7661a82a910e581a132",
+      "width": 320,
+      "height": 650
+    },
+    {
+      "path": "after/mobile-390/family-loading-390x844-text1.png",
+      "bytes": 33692,
+      "sha256": "efe290df666c07ddfc3451f2d7d02ba92f735356c5a27d926e8f3f724500732d",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/family-loading-390x844-text1.png",
+      "raw_sha256": "efe290df666c07ddfc3451f2d7d02ba92f735356c5a27d926e8f3f724500732d",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "after/mobile-390/family-read-error-1440x900-text1.png",
+      "bytes": 50648,
+      "sha256": "d7735e7fd9eb02b41395e65e3dcdcecfdd8b9b10ac0ae4e932acfc29552c89d2",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/family-read-error-1440x900-text1.png",
+      "raw_sha256": "d7735e7fd9eb02b41395e65e3dcdcecfdd8b9b10ac0ae4e932acfc29552c89d2",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "path": "after/mobile-390/family-read-error-320x420-text2.png",
+      "bytes": 56535,
+      "sha256": "934bf2f6a769ff6819c2a204de6284c5b85047982dce0e7280f737ca92c86ffc",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/family-read-error-320x420-text2.png",
+      "raw_sha256": "934bf2f6a769ff6819c2a204de6284c5b85047982dce0e7280f737ca92c86ffc",
+      "width": 320,
+      "height": 864
+    },
+    {
+      "path": "after/mobile-390/family-read-error-320x568-text1.png",
+      "bytes": 31669,
+      "sha256": "7d3b1d354c2dd5a131ed07275cc9ef2ae78b72c0e29d61ebd370e7f6b8e731a5",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/family-read-error-320x568-text1.png",
+      "raw_sha256": "7d3b1d354c2dd5a131ed07275cc9ef2ae78b72c0e29d61ebd370e7f6b8e731a5",
+      "width": 320,
+      "height": 650
+    },
+    {
+      "path": "after/mobile-390/family-read-error-390x844-text1.png",
+      "bytes": 36842,
+      "sha256": "9e491cdcd4e346ab523f4736933c3b3e3b09642d56cf40001050d26091ac1ede",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/family-read-error-390x844-text1.png",
+      "raw_sha256": "9e491cdcd4e346ab523f4736933c3b3e3b09642d56cf40001050d26091ac1ede",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "after/mobile-390/read-summary.json",
+      "bytes": 2869,
+      "sha256": "86a2d9d52c431a53411322d6ff45388c36273d537b48ae0bd5aa771156f4b768",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--898a3--recover-shaped-read-errors-mobile-390/read-summary.json",
+      "raw_sha256": "86a2d9d52c431a53411322d6ff45388c36273d537b48ae0bd5aa771156f4b768"
+    },
+    {
+      "path": "after/desktop-1440/axe-family-conflict-1440x900-text1.json",
+      "bytes": 4451,
+      "sha256": "ad7b1355cba454f8d80eb75544c94395f0e3a3fa2bb390752be896e59211d154",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-conflict-1440x900-text1.json",
+      "raw_sha256": "ad7b1355cba454f8d80eb75544c94395f0e3a3fa2bb390752be896e59211d154"
+    },
+    {
+      "path": "after/desktop-1440/axe-family-conflict-320x420-text2.json",
+      "bytes": 4448,
+      "sha256": "f380350f41e776e9b1bfcd1b7194977ad26eb49893160ffe2d809c05d63c16cf",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-conflict-320x420-text2.json",
+      "raw_sha256": "f380350f41e776e9b1bfcd1b7194977ad26eb49893160ffe2d809c05d63c16cf"
+    },
+    {
+      "path": "after/desktop-1440/axe-family-conflict-320x568-text1.json",
+      "bytes": 4448,
+      "sha256": "df39e96f48c148b0d08918964a39d653ae25e0006bd6adf0ddd417e8b3f6383b",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-conflict-320x568-text1.json",
+      "raw_sha256": "df39e96f48c148b0d08918964a39d653ae25e0006bd6adf0ddd417e8b3f6383b"
+    },
+    {
+      "path": "after/desktop-1440/axe-family-conflict-390x844-text1.json",
+      "bytes": 4448,
+      "sha256": "45497f0113b44f88a611a27ceb916575ccd0b3a715c64bcce2fbd04b67ec423c",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-conflict-390x844-text1.json",
+      "raw_sha256": "45497f0113b44f88a611a27ceb916575ccd0b3a715c64bcce2fbd04b67ec423c"
+    },
+    {
+      "path": "after/desktop-1440/axe-family-save-error-1440x900-text1.json",
+      "bytes": 4452,
+      "sha256": "3a96faecc38145a74f9eb594e9e38dd50fdd11321ecb62060027c797791e651f",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-save-error-1440x900-text1.json",
+      "raw_sha256": "3a96faecc38145a74f9eb594e9e38dd50fdd11321ecb62060027c797791e651f"
+    },
+    {
+      "path": "after/desktop-1440/axe-family-save-error-320x420-text2.json",
+      "bytes": 4449,
+      "sha256": "76d2596865d417dbffe77cc816a7115a5afb84c8ff9b0f851af6806613676d91",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-save-error-320x420-text2.json",
+      "raw_sha256": "76d2596865d417dbffe77cc816a7115a5afb84c8ff9b0f851af6806613676d91"
+    },
+    {
+      "path": "after/desktop-1440/axe-family-save-error-320x568-text1.json",
+      "bytes": 4449,
+      "sha256": "91d28c94e493b76b332daa96d10b277f93dbdad5e2e6ac17cfb93820c63f8d18",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-save-error-320x568-text1.json",
+      "raw_sha256": "91d28c94e493b76b332daa96d10b277f93dbdad5e2e6ac17cfb93820c63f8d18"
+    },
+    {
+      "path": "after/desktop-1440/axe-family-save-error-390x844-text1.json",
+      "bytes": 4449,
+      "sha256": "43f818a4bc6d5437f7028561d2a0e6b04140ab6551e14e344d606db50d77a50d",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-save-error-390x844-text1.json",
+      "raw_sha256": "43f818a4bc6d5437f7028561d2a0e6b04140ab6551e14e344d606db50d77a50d"
+    },
+    {
+      "path": "after/desktop-1440/axe-family-saving-1440x900-text1.json",
+      "bytes": 4371,
+      "sha256": "f6682cf52c5a201220e04c894232cab7de5af243021860356c5fe9c044828e3c",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-saving-1440x900-text1.json",
+      "raw_sha256": "f6682cf52c5a201220e04c894232cab7de5af243021860356c5fe9c044828e3c"
+    },
+    {
+      "path": "after/desktop-1440/axe-family-saving-320x420-text2.json",
+      "bytes": 4368,
+      "sha256": "2b4accbb32127ab3657d1d575347511aae42a713b538759e2dd6904c2c3e10b6",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-saving-320x420-text2.json",
+      "raw_sha256": "2b4accbb32127ab3657d1d575347511aae42a713b538759e2dd6904c2c3e10b6"
+    },
+    {
+      "path": "after/desktop-1440/axe-family-saving-320x568-text1.json",
+      "bytes": 4368,
+      "sha256": "d4461561f899740d361ad61d34b0081b2428f1fd7f06d29037f3835e5eab8e47",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-saving-320x568-text1.json",
+      "raw_sha256": "d4461561f899740d361ad61d34b0081b2428f1fd7f06d29037f3835e5eab8e47"
+    },
+    {
+      "path": "after/desktop-1440/axe-family-saving-390x844-text1.json",
+      "bytes": 4368,
+      "sha256": "439d91a4b8c94653252d33f4dbc073f04f15ad0b0d60da8bf843f1c905c7f0ed",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-saving-390x844-text1.json",
+      "raw_sha256": "439d91a4b8c94653252d33f4dbc073f04f15ad0b0d60da8bf843f1c905c7f0ed"
+    },
+    {
+      "path": "after/desktop-1440/axe-family-values-1440x900-text1.json",
+      "bytes": 4342,
+      "sha256": "0456db9f1b9de4479ac351a7e9008bae21d81478b3a6442898fa98d08836c9aa",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-values-1440x900-text1.json",
+      "raw_sha256": "0456db9f1b9de4479ac351a7e9008bae21d81478b3a6442898fa98d08836c9aa"
+    },
+    {
+      "path": "after/desktop-1440/axe-family-values-320x420-text2.json",
+      "bytes": 4339,
+      "sha256": "3b249062e728cbdaaa4b5b3552c8cd3113a766808a13ebed6086599a6c33dbad",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-values-320x420-text2.json",
+      "raw_sha256": "3b249062e728cbdaaa4b5b3552c8cd3113a766808a13ebed6086599a6c33dbad"
+    },
+    {
+      "path": "after/desktop-1440/axe-family-values-320x568-text1.json",
+      "bytes": 4339,
+      "sha256": "2b1fa832884b2934909bc23114ebfb0c2a7e60b0225c261726e45abd6ae6dc05",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-values-320x568-text1.json",
+      "raw_sha256": "2b1fa832884b2934909bc23114ebfb0c2a7e60b0225c261726e45abd6ae6dc05"
+    },
+    {
+      "path": "after/desktop-1440/axe-family-values-390x844-text1.json",
+      "bytes": 4339,
+      "sha256": "264c542813ce37f81bb0e8c15190d6d8b1d7e3917381ffcce3e5ebb7a115dc72",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-family-values-390x844-text1.json",
+      "raw_sha256": "264c542813ce37f81bb0e8c15190d6d8b1d7e3917381ffcce3e5ebb7a115dc72"
+    },
+    {
+      "path": "after/desktop-1440/axe-legacy-profile-1440x900-text1.json",
+      "bytes": 3096,
+      "sha256": "59fbc7bc1483a896e2b790d466ecf6312df315a4c937629d97c0cbac78411ac2",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-legacy-profile-1440x900-text1.json",
+      "raw_sha256": "59fbc7bc1483a896e2b790d466ecf6312df315a4c937629d97c0cbac78411ac2"
+    },
+    {
+      "path": "after/desktop-1440/axe-legacy-profile-320x420-text2.json",
+      "bytes": 3093,
+      "sha256": "1d6d767780930d8d9697f9fcce4c57e4e5b5ff7a575c11d2135aa5d56b5d52db",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-legacy-profile-320x420-text2.json",
+      "raw_sha256": "1d6d767780930d8d9697f9fcce4c57e4e5b5ff7a575c11d2135aa5d56b5d52db"
+    },
+    {
+      "path": "after/desktop-1440/axe-legacy-profile-320x568-text1.json",
+      "bytes": 3093,
+      "sha256": "fcdd466fd18ca1ddeba11b0e6ee827c49da0243b749d931f544b68907c1feb6c",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-legacy-profile-320x568-text1.json",
+      "raw_sha256": "fcdd466fd18ca1ddeba11b0e6ee827c49da0243b749d931f544b68907c1feb6c"
+    },
+    {
+      "path": "after/desktop-1440/axe-legacy-profile-390x844-text1.json",
+      "bytes": 3093,
+      "sha256": "a4713a23fd918d4bbb4103ed07a50ee46e1fa4578cc210f046b9878f31f30667",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/axe-legacy-profile-390x844-text1.json",
+      "raw_sha256": "a4713a23fd918d4bbb4103ed07a50ee46e1fa4578cc210f046b9878f31f30667"
+    },
+    {
+      "path": "after/desktop-1440/family-conflict-1440x900-text1.png",
+      "bytes": 212248,
+      "sha256": "61cdec1d582c5befd9581cd3bd004fcf8c84f480b7d6ec933c34ccd2c83afd03",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-conflict-1440x900-text1.png",
+      "raw_sha256": "61cdec1d582c5befd9581cd3bd004fcf8c84f480b7d6ec933c34ccd2c83afd03",
+      "width": 1440,
+      "height": 1888
+    },
+    {
+      "path": "after/desktop-1440/family-conflict-320x420-text2.png",
+      "bytes": 249068,
+      "sha256": "54ce1158010c2790437ab085a4da928c5a63e028fdd3fa78b6cfb0f3b2ebc545",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-conflict-320x420-text2.png",
+      "raw_sha256": "54ce1158010c2790437ab085a4da928c5a63e028fdd3fa78b6cfb0f3b2ebc545",
+      "width": 320,
+      "height": 3157
+    },
+    {
+      "path": "after/desktop-1440/family-conflict-320x568-text1.png",
+      "bytes": 212539,
+      "sha256": "18ad6a267e5ddecc6020673c432c015923f6e046873866be6784f17c21504f08",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-conflict-320x568-text1.png",
+      "raw_sha256": "18ad6a267e5ddecc6020673c432c015923f6e046873866be6784f17c21504f08",
+      "width": 320,
+      "height": 2685
+    },
+    {
+      "path": "after/desktop-1440/family-conflict-390x844-text1.png",
+      "bytes": 207431,
+      "sha256": "e03304176e493e98869cf3ad510b816c67ab37eb726c4cc7a556538249356471",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-conflict-390x844-text1.png",
+      "raw_sha256": "e03304176e493e98869cf3ad510b816c67ab37eb726c4cc7a556538249356471",
+      "width": 390,
+      "height": 2433
+    },
+    {
+      "path": "after/desktop-1440/family-save-error-1440x900-text1.png",
+      "bytes": 212661,
+      "sha256": "fd02938a25aa42d1c54da30eb1238656728799392776c4b26137440a905e6ca2",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-save-error-1440x900-text1.png",
+      "raw_sha256": "fd02938a25aa42d1c54da30eb1238656728799392776c4b26137440a905e6ca2",
+      "width": 1440,
+      "height": 1888
+    },
+    {
+      "path": "after/desktop-1440/family-save-error-320x420-text2.png",
+      "bytes": 248252,
+      "sha256": "77c7e506605fe932227f79d07c23824b8bf072ed2af667075d6793df6d2eff95",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-save-error-320x420-text2.png",
+      "raw_sha256": "77c7e506605fe932227f79d07c23824b8bf072ed2af667075d6793df6d2eff95",
+      "width": 320,
+      "height": 3157
+    },
+    {
+      "path": "after/desktop-1440/family-save-error-320x568-text1.png",
+      "bytes": 212264,
+      "sha256": "dde42c05ac7c823be056351ce09798651153d6b36e91c2d06954de2389b637da",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-save-error-320x568-text1.png",
+      "raw_sha256": "dde42c05ac7c823be056351ce09798651153d6b36e91c2d06954de2389b637da",
+      "width": 320,
+      "height": 2685
+    },
+    {
+      "path": "after/desktop-1440/family-save-error-390x844-text1.png",
+      "bytes": 207343,
+      "sha256": "878bda117771feab7dbb37335dc055c5c55ec4c3c31cf33137cefb12156aa67c",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-save-error-390x844-text1.png",
+      "raw_sha256": "878bda117771feab7dbb37335dc055c5c55ec4c3c31cf33137cefb12156aa67c",
+      "width": 390,
+      "height": 2433
+    },
+    {
+      "path": "after/desktop-1440/family-saving-1440x900-text1.png",
+      "bytes": 204815,
+      "sha256": "ec20586e7241913368a0bfd636c099c7ed3476461231424255554df42376163b",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-saving-1440x900-text1.png",
+      "raw_sha256": "ec20586e7241913368a0bfd636c099c7ed3476461231424255554df42376163b",
+      "width": 1440,
+      "height": 1787
+    },
+    {
+      "path": "after/desktop-1440/family-saving-320x420-text2.png",
+      "bytes": 208843,
+      "sha256": "a4edd7f5b8406c3b1f1a952848679ec096eba23e09fee5e78e21fc7ea8295d0f",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-saving-320x420-text2.png",
+      "raw_sha256": "a4edd7f5b8406c3b1f1a952848679ec096eba23e09fee5e78e21fc7ea8295d0f",
+      "width": 320,
+      "height": 2975
+    },
+    {
+      "path": "after/desktop-1440/family-saving-320x568-text1.png",
+      "bytes": 180219,
+      "sha256": "2087910e9a017a0b77d29079182e8f354d769f5e816262f854dbfb5cf31464a5",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-saving-320x568-text1.png",
+      "raw_sha256": "2087910e9a017a0b77d29079182e8f354d769f5e816262f854dbfb5cf31464a5",
+      "width": 320,
+      "height": 2563
+    },
+    {
+      "path": "after/desktop-1440/family-saving-390x844-text1.png",
+      "bytes": 174867,
+      "sha256": "20822848300977212834fbc7d4bd50da5fc47e754cc119154080b2122a699842",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-saving-390x844-text1.png",
+      "raw_sha256": "20822848300977212834fbc7d4bd50da5fc47e754cc119154080b2122a699842",
+      "width": 390,
+      "height": 2312
+    },
+    {
+      "path": "after/desktop-1440/family-summary.json",
+      "bytes": 102417,
+      "sha256": "a066bd5600b95cf6864f6a38fc241b49dea1e2df93c96f1ebdcb3a0109f18ecc",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-summary.json",
+      "raw_sha256": "a066bd5600b95cf6864f6a38fc241b49dea1e2df93c96f1ebdcb3a0109f18ecc"
+    },
+    {
+      "path": "after/desktop-1440/family-values-1440x900-text1.png",
+      "bytes": 204562,
+      "sha256": "a564bd32f2ea09fbe9f8bc16d89718500e697019a60d6f6000c2eefa9bb23b9d",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-values-1440x900-text1.png",
+      "raw_sha256": "a564bd32f2ea09fbe9f8bc16d89718500e697019a60d6f6000c2eefa9bb23b9d",
+      "width": 1440,
+      "height": 1787
+    },
+    {
+      "path": "after/desktop-1440/family-values-320x420-text2.png",
+      "bytes": 208147,
+      "sha256": "022a3c9402c4d9f43f8a9c87ffc3f041761c27acc2c1b78d0beca53d07bdefc0",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-values-320x420-text2.png",
+      "raw_sha256": "022a3c9402c4d9f43f8a9c87ffc3f041761c27acc2c1b78d0beca53d07bdefc0",
+      "width": 320,
+      "height": 2975
+    },
+    {
+      "path": "after/desktop-1440/family-values-320x568-text1.png",
+      "bytes": 180409,
+      "sha256": "63601447fc38a74e7703eabdbbcc52fc338476bd9d1722e660f35e5528dd965e",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-values-320x568-text1.png",
+      "raw_sha256": "63601447fc38a74e7703eabdbbcc52fc338476bd9d1722e660f35e5528dd965e",
+      "width": 320,
+      "height": 2563
+    },
+    {
+      "path": "after/desktop-1440/family-values-390x844-text1.png",
+      "bytes": 175082,
+      "sha256": "2b790f675ba479699b6f8d1ca1be76c6011944ad8bc127ca3bf111ec6d3c6b52",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/family-values-390x844-text1.png",
+      "raw_sha256": "2b790f675ba479699b6f8d1ca1be76c6011944ad8bc127ca3bf111ec6d3c6b52",
+      "width": 390,
+      "height": 2312
+    },
+    {
+      "path": "after/desktop-1440/legacy-profile-1440x900-text1.png",
+      "bytes": 100552,
+      "sha256": "c9f5f56a8b196b265f11d5f2e2fe22588c7082d0e65d3623dd1e138755f38a24",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/legacy-profile-1440x900-text1.png",
+      "raw_sha256": "c9f5f56a8b196b265f11d5f2e2fe22588c7082d0e65d3623dd1e138755f38a24",
+      "width": 1440,
+      "height": 1041
+    },
+    {
+      "path": "after/desktop-1440/legacy-profile-320x420-text2.png",
+      "bytes": 151782,
+      "sha256": "f29fab4c438d7b128a0c4978a0b0c7aeb253cd67ae29238b2f7c9a0116bd279c",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/legacy-profile-320x420-text2.png",
+      "raw_sha256": "f29fab4c438d7b128a0c4978a0b0c7aeb253cd67ae29238b2f7c9a0116bd279c",
+      "width": 320,
+      "height": 3285
+    },
+    {
+      "path": "after/desktop-1440/legacy-profile-320x568-text1.png",
+      "bytes": 96145,
+      "sha256": "44ad831e7becc08a5639e29f8e5184c81e61665e03d10e66b160b375f44cc655",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/legacy-profile-320x568-text1.png",
+      "raw_sha256": "44ad831e7becc08a5639e29f8e5184c81e61665e03d10e66b160b375f44cc655",
+      "width": 320,
+      "height": 1565
+    },
+    {
+      "path": "after/desktop-1440/legacy-profile-390x844-text1.png",
+      "bytes": 84950,
+      "sha256": "d9df90cd6641ae4922ae1ef924d1a630377a2179261e164a7dcc670a7558ffa9",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-desktop-1440/legacy-profile-390x844-text1.png",
+      "raw_sha256": "d9df90cd6641ae4922ae1ef924d1a630377a2179261e164a7dcc670a7558ffa9",
+      "width": 390,
+      "height": 1375
+    },
+    {
+      "path": "after/mobile-390/axe-family-conflict-1440x900-text1.json",
+      "bytes": 4451,
+      "sha256": "ad7b1355cba454f8d80eb75544c94395f0e3a3fa2bb390752be896e59211d154",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-conflict-1440x900-text1.json",
+      "raw_sha256": "ad7b1355cba454f8d80eb75544c94395f0e3a3fa2bb390752be896e59211d154"
+    },
+    {
+      "path": "after/mobile-390/axe-family-conflict-320x420-text2.json",
+      "bytes": 4448,
+      "sha256": "f380350f41e776e9b1bfcd1b7194977ad26eb49893160ffe2d809c05d63c16cf",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-conflict-320x420-text2.json",
+      "raw_sha256": "f380350f41e776e9b1bfcd1b7194977ad26eb49893160ffe2d809c05d63c16cf"
+    },
+    {
+      "path": "after/mobile-390/axe-family-conflict-320x568-text1.json",
+      "bytes": 4448,
+      "sha256": "df39e96f48c148b0d08918964a39d653ae25e0006bd6adf0ddd417e8b3f6383b",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-conflict-320x568-text1.json",
+      "raw_sha256": "df39e96f48c148b0d08918964a39d653ae25e0006bd6adf0ddd417e8b3f6383b"
+    },
+    {
+      "path": "after/mobile-390/axe-family-conflict-390x844-text1.json",
+      "bytes": 4448,
+      "sha256": "45497f0113b44f88a611a27ceb916575ccd0b3a715c64bcce2fbd04b67ec423c",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-conflict-390x844-text1.json",
+      "raw_sha256": "45497f0113b44f88a611a27ceb916575ccd0b3a715c64bcce2fbd04b67ec423c"
+    },
+    {
+      "path": "after/mobile-390/axe-family-save-error-1440x900-text1.json",
+      "bytes": 4452,
+      "sha256": "3a96faecc38145a74f9eb594e9e38dd50fdd11321ecb62060027c797791e651f",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-save-error-1440x900-text1.json",
+      "raw_sha256": "3a96faecc38145a74f9eb594e9e38dd50fdd11321ecb62060027c797791e651f"
+    },
+    {
+      "path": "after/mobile-390/axe-family-save-error-320x420-text2.json",
+      "bytes": 4449,
+      "sha256": "76d2596865d417dbffe77cc816a7115a5afb84c8ff9b0f851af6806613676d91",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-save-error-320x420-text2.json",
+      "raw_sha256": "76d2596865d417dbffe77cc816a7115a5afb84c8ff9b0f851af6806613676d91"
+    },
+    {
+      "path": "after/mobile-390/axe-family-save-error-320x568-text1.json",
+      "bytes": 4449,
+      "sha256": "91d28c94e493b76b332daa96d10b277f93dbdad5e2e6ac17cfb93820c63f8d18",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-save-error-320x568-text1.json",
+      "raw_sha256": "91d28c94e493b76b332daa96d10b277f93dbdad5e2e6ac17cfb93820c63f8d18"
+    },
+    {
+      "path": "after/mobile-390/axe-family-save-error-390x844-text1.json",
+      "bytes": 4449,
+      "sha256": "43f818a4bc6d5437f7028561d2a0e6b04140ab6551e14e344d606db50d77a50d",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-save-error-390x844-text1.json",
+      "raw_sha256": "43f818a4bc6d5437f7028561d2a0e6b04140ab6551e14e344d606db50d77a50d"
+    },
+    {
+      "path": "after/mobile-390/axe-family-saving-1440x900-text1.json",
+      "bytes": 4371,
+      "sha256": "f6682cf52c5a201220e04c894232cab7de5af243021860356c5fe9c044828e3c",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-saving-1440x900-text1.json",
+      "raw_sha256": "f6682cf52c5a201220e04c894232cab7de5af243021860356c5fe9c044828e3c"
+    },
+    {
+      "path": "after/mobile-390/axe-family-saving-320x420-text2.json",
+      "bytes": 4368,
+      "sha256": "2b4accbb32127ab3657d1d575347511aae42a713b538759e2dd6904c2c3e10b6",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-saving-320x420-text2.json",
+      "raw_sha256": "2b4accbb32127ab3657d1d575347511aae42a713b538759e2dd6904c2c3e10b6"
+    },
+    {
+      "path": "after/mobile-390/axe-family-saving-320x568-text1.json",
+      "bytes": 4368,
+      "sha256": "d4461561f899740d361ad61d34b0081b2428f1fd7f06d29037f3835e5eab8e47",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-saving-320x568-text1.json",
+      "raw_sha256": "d4461561f899740d361ad61d34b0081b2428f1fd7f06d29037f3835e5eab8e47"
+    },
+    {
+      "path": "after/mobile-390/axe-family-saving-390x844-text1.json",
+      "bytes": 4368,
+      "sha256": "439d91a4b8c94653252d33f4dbc073f04f15ad0b0d60da8bf843f1c905c7f0ed",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-saving-390x844-text1.json",
+      "raw_sha256": "439d91a4b8c94653252d33f4dbc073f04f15ad0b0d60da8bf843f1c905c7f0ed"
+    },
+    {
+      "path": "after/mobile-390/axe-family-values-1440x900-text1.json",
+      "bytes": 4342,
+      "sha256": "0456db9f1b9de4479ac351a7e9008bae21d81478b3a6442898fa98d08836c9aa",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-values-1440x900-text1.json",
+      "raw_sha256": "0456db9f1b9de4479ac351a7e9008bae21d81478b3a6442898fa98d08836c9aa"
+    },
+    {
+      "path": "after/mobile-390/axe-family-values-320x420-text2.json",
+      "bytes": 4339,
+      "sha256": "3b249062e728cbdaaa4b5b3552c8cd3113a766808a13ebed6086599a6c33dbad",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-values-320x420-text2.json",
+      "raw_sha256": "3b249062e728cbdaaa4b5b3552c8cd3113a766808a13ebed6086599a6c33dbad"
+    },
+    {
+      "path": "after/mobile-390/axe-family-values-320x568-text1.json",
+      "bytes": 4339,
+      "sha256": "2b1fa832884b2934909bc23114ebfb0c2a7e60b0225c261726e45abd6ae6dc05",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-values-320x568-text1.json",
+      "raw_sha256": "2b1fa832884b2934909bc23114ebfb0c2a7e60b0225c261726e45abd6ae6dc05"
+    },
+    {
+      "path": "after/mobile-390/axe-family-values-390x844-text1.json",
+      "bytes": 4339,
+      "sha256": "264c542813ce37f81bb0e8c15190d6d8b1d7e3917381ffcce3e5ebb7a115dc72",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-family-values-390x844-text1.json",
+      "raw_sha256": "264c542813ce37f81bb0e8c15190d6d8b1d7e3917381ffcce3e5ebb7a115dc72"
+    },
+    {
+      "path": "after/mobile-390/axe-legacy-profile-1440x900-text1.json",
+      "bytes": 3096,
+      "sha256": "59fbc7bc1483a896e2b790d466ecf6312df315a4c937629d97c0cbac78411ac2",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-legacy-profile-1440x900-text1.json",
+      "raw_sha256": "59fbc7bc1483a896e2b790d466ecf6312df315a4c937629d97c0cbac78411ac2"
+    },
+    {
+      "path": "after/mobile-390/axe-legacy-profile-320x420-text2.json",
+      "bytes": 3093,
+      "sha256": "1d6d767780930d8d9697f9fcce4c57e4e5b5ff7a575c11d2135aa5d56b5d52db",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-legacy-profile-320x420-text2.json",
+      "raw_sha256": "1d6d767780930d8d9697f9fcce4c57e4e5b5ff7a575c11d2135aa5d56b5d52db"
+    },
+    {
+      "path": "after/mobile-390/axe-legacy-profile-320x568-text1.json",
+      "bytes": 3093,
+      "sha256": "fcdd466fd18ca1ddeba11b0e6ee827c49da0243b749d931f544b68907c1feb6c",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-legacy-profile-320x568-text1.json",
+      "raw_sha256": "fcdd466fd18ca1ddeba11b0e6ee827c49da0243b749d931f544b68907c1feb6c"
+    },
+    {
+      "path": "after/mobile-390/axe-legacy-profile-390x844-text1.json",
+      "bytes": 3093,
+      "sha256": "a4713a23fd918d4bbb4103ed07a50ee46e1fa4578cc210f046b9878f31f30667",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/axe-legacy-profile-390x844-text1.json",
+      "raw_sha256": "a4713a23fd918d4bbb4103ed07a50ee46e1fa4578cc210f046b9878f31f30667"
+    },
+    {
+      "path": "after/mobile-390/family-conflict-1440x900-text1.png",
+      "bytes": 216782,
+      "sha256": "5f1705ddc2ea2ce874ffa5746bc1ef3346e39733771a27293e8e8690263fc361",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-conflict-1440x900-text1.png",
+      "raw_sha256": "5f1705ddc2ea2ce874ffa5746bc1ef3346e39733771a27293e8e8690263fc361",
+      "width": 1440,
+      "height": 1888
+    },
+    {
+      "path": "after/mobile-390/family-conflict-320x420-text2.png",
+      "bytes": 249058,
+      "sha256": "855efd04de815646e12c1da4e3ed118e072bff78c8936f5bd95811860f647991",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-conflict-320x420-text2.png",
+      "raw_sha256": "855efd04de815646e12c1da4e3ed118e072bff78c8936f5bd95811860f647991",
+      "width": 320,
+      "height": 3157
+    },
+    {
+      "path": "after/mobile-390/family-conflict-320x568-text1.png",
+      "bytes": 213510,
+      "sha256": "57e998aa9aa784d32b90bf16280f5bcb0378f2c64e7c394ff84bf3a7ff110e40",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-conflict-320x568-text1.png",
+      "raw_sha256": "57e998aa9aa784d32b90bf16280f5bcb0378f2c64e7c394ff84bf3a7ff110e40",
+      "width": 320,
+      "height": 2685
+    },
+    {
+      "path": "after/mobile-390/family-conflict-390x844-text1.png",
+      "bytes": 206831,
+      "sha256": "5b3ef6886be97b3b2dac373599d68903af6e54955aacfa0c235a99639f48d745",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-conflict-390x844-text1.png",
+      "raw_sha256": "5b3ef6886be97b3b2dac373599d68903af6e54955aacfa0c235a99639f48d745",
+      "width": 390,
+      "height": 2433
+    },
+    {
+      "path": "after/mobile-390/family-save-error-1440x900-text1.png",
+      "bytes": 217169,
+      "sha256": "70656711ff39c48c3ec611567da2b1eb10798a61bcbcd97864128f7de63eada0",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-save-error-1440x900-text1.png",
+      "raw_sha256": "70656711ff39c48c3ec611567da2b1eb10798a61bcbcd97864128f7de63eada0",
+      "width": 1440,
+      "height": 1888
+    },
+    {
+      "path": "after/mobile-390/family-save-error-320x420-text2.png",
+      "bytes": 248241,
+      "sha256": "9fd2075018e1601e10999374c6fd8e10653e0ce2fa6d0d20db0b3ee38001e087",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-save-error-320x420-text2.png",
+      "raw_sha256": "9fd2075018e1601e10999374c6fd8e10653e0ce2fa6d0d20db0b3ee38001e087",
+      "width": 320,
+      "height": 3157
+    },
+    {
+      "path": "after/mobile-390/family-save-error-320x568-text1.png",
+      "bytes": 213232,
+      "sha256": "8ece41fd16b5f40309d3ad9560564e36edd2ee15f672ee6cef359ab44710bef1",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-save-error-320x568-text1.png",
+      "raw_sha256": "8ece41fd16b5f40309d3ad9560564e36edd2ee15f672ee6cef359ab44710bef1",
+      "width": 320,
+      "height": 2685
+    },
+    {
+      "path": "after/mobile-390/family-save-error-390x844-text1.png",
+      "bytes": 206735,
+      "sha256": "6040ce66ac848f129dfc4d8d16bdfe468e012362ca95c1f1d5741fbd3d391ca8",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-save-error-390x844-text1.png",
+      "raw_sha256": "6040ce66ac848f129dfc4d8d16bdfe468e012362ca95c1f1d5741fbd3d391ca8",
+      "width": 390,
+      "height": 2433
+    },
+    {
+      "path": "after/mobile-390/family-saving-1440x900-text1.png",
+      "bytes": 207169,
+      "sha256": "d642c009ed238f3597f033595be0b85b314792d6ee7d1dff45fd4ecf4f529c09",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-saving-1440x900-text1.png",
+      "raw_sha256": "d642c009ed238f3597f033595be0b85b314792d6ee7d1dff45fd4ecf4f529c09",
+      "width": 1440,
+      "height": 1787
+    },
+    {
+      "path": "after/mobile-390/family-saving-320x420-text2.png",
+      "bytes": 208853,
+      "sha256": "feb9f6d48d3681908c36e39df82193af707b11c94a3df204c6bd2b8762996fa4",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-saving-320x420-text2.png",
+      "raw_sha256": "feb9f6d48d3681908c36e39df82193af707b11c94a3df204c6bd2b8762996fa4",
+      "width": 320,
+      "height": 2975
+    },
+    {
+      "path": "after/mobile-390/family-saving-320x568-text1.png",
+      "bytes": 180255,
+      "sha256": "7d477fade8f6b766341274ae6118397c7e88fad367f85d98fdaef1cf6e268e39",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-saving-320x568-text1.png",
+      "raw_sha256": "7d477fade8f6b766341274ae6118397c7e88fad367f85d98fdaef1cf6e268e39",
+      "width": 320,
+      "height": 2563
+    },
+    {
+      "path": "after/mobile-390/family-saving-390x844-text1.png",
+      "bytes": 174369,
+      "sha256": "1a84f4480d909e251c7e20b04c09fae9c402941dc240f425a539ff0fae79c59f",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-saving-390x844-text1.png",
+      "raw_sha256": "1a84f4480d909e251c7e20b04c09fae9c402941dc240f425a539ff0fae79c59f",
+      "width": 390,
+      "height": 2312
+    },
+    {
+      "path": "after/mobile-390/family-summary.json",
+      "bytes": 102417,
+      "sha256": "a066bd5600b95cf6864f6a38fc241b49dea1e2df93c96f1ebdcb3a0109f18ecc",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-summary.json",
+      "raw_sha256": "a066bd5600b95cf6864f6a38fc241b49dea1e2df93c96f1ebdcb3a0109f18ecc"
+    },
+    {
+      "path": "after/mobile-390/family-values-1440x900-text1.png",
+      "bytes": 206898,
+      "sha256": "872831f8ca0d843965c6bf843229c64dd98911b4281d10b21b05324177b3d9a0",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-values-1440x900-text1.png",
+      "raw_sha256": "872831f8ca0d843965c6bf843229c64dd98911b4281d10b21b05324177b3d9a0",
+      "width": 1440,
+      "height": 1787
+    },
+    {
+      "path": "after/mobile-390/family-values-320x420-text2.png",
+      "bytes": 208156,
+      "sha256": "ae197851e73f0247d823b1d487496a0e49037c5f711c1bee7a4044d98fe7ab40",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-values-320x420-text2.png",
+      "raw_sha256": "ae197851e73f0247d823b1d487496a0e49037c5f711c1bee7a4044d98fe7ab40",
+      "width": 320,
+      "height": 2975
+    },
+    {
+      "path": "after/mobile-390/family-values-320x568-text1.png",
+      "bytes": 180409,
+      "sha256": "63601447fc38a74e7703eabdbbcc52fc338476bd9d1722e660f35e5528dd965e",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-values-320x568-text1.png",
+      "raw_sha256": "63601447fc38a74e7703eabdbbcc52fc338476bd9d1722e660f35e5528dd965e",
+      "width": 320,
+      "height": 2563
+    },
+    {
+      "path": "after/mobile-390/family-values-390x844-text1.png",
+      "bytes": 174575,
+      "sha256": "c2b1d2c05b13dc49adbd89242605de404a6241e81542dffa93d60157bcc991d7",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/family-values-390x844-text1.png",
+      "raw_sha256": "c2b1d2c05b13dc49adbd89242605de404a6241e81542dffa93d60157bcc991d7",
+      "width": 390,
+      "height": 2312
+    },
+    {
+      "path": "after/mobile-390/legacy-profile-1440x900-text1.png",
+      "bytes": 100850,
+      "sha256": "6a757ef053f517547b9b3507a4d67f72c0cc4bba0e4457fd46dfe97116ce1737",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/legacy-profile-1440x900-text1.png",
+      "raw_sha256": "6a757ef053f517547b9b3507a4d67f72c0cc4bba0e4457fd46dfe97116ce1737",
+      "width": 1440,
+      "height": 1041
+    },
+    {
+      "path": "after/mobile-390/legacy-profile-320x420-text2.png",
+      "bytes": 151776,
+      "sha256": "2f27981374797534e2322af144a99cbd6daceaee6e24aa262280c430855f92c6",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/legacy-profile-320x420-text2.png",
+      "raw_sha256": "2f27981374797534e2322af144a99cbd6daceaee6e24aa262280c430855f92c6",
+      "width": 320,
+      "height": 3285
+    },
+    {
+      "path": "after/mobile-390/legacy-profile-320x568-text1.png",
+      "bytes": 96087,
+      "sha256": "ea39c2136c6b6bbb504bb6147f5283a719ac0475484b7ad8522b47c76a968768",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/legacy-profile-320x568-text1.png",
+      "raw_sha256": "ea39c2136c6b6bbb504bb6147f5283a719ac0475484b7ad8522b47c76a968768",
+      "width": 320,
+      "height": 1565
+    },
+    {
+      "path": "after/mobile-390/legacy-profile-390x844-text1.png",
+      "bytes": 79176,
+      "sha256": "c58b16132e1bb07cd597882399f0c92e953038eda9dbd7c456aeb16803e5c12d",
+      "raw_source": ".artifacts/takeover/planning-settings/after/takolio-planning-settings--eba3e--describes-its-actual-scope-mobile-390/legacy-profile-390x844-text1.png",
+      "raw_sha256": "c58b16132e1bb07cd597882399f0c92e953038eda9dbd7c456aeb16803e5c12d",
+      "width": 390,
+      "height": 1375
+    },
+    {
+      "path": "composition-off/desktop-1440/axe-legacy-week-reload-1440x900-text1.json",
+      "bytes": 2040,
+      "sha256": "55a1e9c4637f7527b83eb58fdcfc3413b8ca8b0c63d6a245efcd8c93d55ff5f3",
+      "raw_source": ".artifacts/takeover/planning-settings/after-composition-off-verified/takolio-planning-settings--a84a5-es-and-do-not-create-a-plan-desktop-1440/axe-legacy-week-reload-1440x900-text1.json",
+      "raw_sha256": "55a1e9c4637f7527b83eb58fdcfc3413b8ca8b0c63d6a245efcd8c93d55ff5f3"
+    },
+    {
+      "path": "composition-off/desktop-1440/axe-legacy-week-reload-320x420-text2.json",
+      "bytes": 2037,
+      "sha256": "248c8cd927b618423d4b3c685c164f87f866336ba381cb25d259258e1c01ebec",
+      "raw_source": ".artifacts/takeover/planning-settings/after-composition-off-verified/takolio-planning-settings--a84a5-es-and-do-not-create-a-plan-desktop-1440/axe-legacy-week-reload-320x420-text2.json",
+      "raw_sha256": "248c8cd927b618423d4b3c685c164f87f866336ba381cb25d259258e1c01ebec"
+    },
+    {
+      "path": "composition-off/desktop-1440/axe-legacy-week-reload-320x568-text1.json",
+      "bytes": 2037,
+      "sha256": "8e0a011cb5599772460d4d0be86a027c1d80379fb61ca90d49e3d8d1388ac6cd",
+      "raw_source": ".artifacts/takeover/planning-settings/after-composition-off-verified/takolio-planning-settings--a84a5-es-and-do-not-create-a-plan-desktop-1440/axe-legacy-week-reload-320x568-text1.json",
+      "raw_sha256": "8e0a011cb5599772460d4d0be86a027c1d80379fb61ca90d49e3d8d1388ac6cd"
+    },
+    {
+      "path": "composition-off/desktop-1440/axe-legacy-week-reload-390x844-text1.json",
+      "bytes": 2037,
+      "sha256": "3eb9c85c60d9ceb2251eddbc20bf843a6b0519172b6c98f06f48ec705bd239e9",
+      "raw_source": ".artifacts/takeover/planning-settings/after-composition-off-verified/takolio-planning-settings--a84a5-es-and-do-not-create-a-plan-desktop-1440/axe-legacy-week-reload-390x844-text1.json",
+      "raw_sha256": "3eb9c85c60d9ceb2251eddbc20bf843a6b0519172b6c98f06f48ec705bd239e9"
+    },
+    {
+      "path": "composition-off/desktop-1440/legacy-summary.json",
+      "bytes": 10254,
+      "sha256": "399c58c63c485455358918b72f50d2e1716b7af370cc7fece378a2ee0a333314",
+      "raw_source": ".artifacts/takeover/planning-settings/after-composition-off-verified/takolio-planning-settings--a84a5-es-and-do-not-create-a-plan-desktop-1440/legacy-summary.json",
+      "raw_sha256": "399c58c63c485455358918b72f50d2e1716b7af370cc7fece378a2ee0a333314"
+    },
+    {
+      "path": "composition-off/desktop-1440/legacy-week-reload-1440x900-text1.png",
+      "bytes": 129950,
+      "sha256": "734c88b02851ba357ba42d2df940bb307d66a1d47fed5e0c8a5280e9a92837df",
+      "raw_source": ".artifacts/takeover/planning-settings/after-composition-off-verified/takolio-planning-settings--a84a5-es-and-do-not-create-a-plan-desktop-1440/legacy-week-reload-1440x900-text1.png",
+      "raw_sha256": "734c88b02851ba357ba42d2df940bb307d66a1d47fed5e0c8a5280e9a92837df",
+      "width": 1440,
+      "height": 1467
+    },
+    {
+      "path": "composition-off/desktop-1440/legacy-week-reload-320x420-text2.png",
+      "bytes": 201495,
+      "sha256": "131320b7e4fb7795380478a54c7f8341aa554e3a033ce64f5640bfb09cfe9f55",
+      "raw_source": ".artifacts/takeover/planning-settings/after-composition-off-verified/takolio-planning-settings--a84a5-es-and-do-not-create-a-plan-desktop-1440/legacy-week-reload-320x420-text2.png",
+      "raw_sha256": "131320b7e4fb7795380478a54c7f8341aa554e3a033ce64f5640bfb09cfe9f55",
+      "width": 320,
+      "height": 3801
+    },
+    {
+      "path": "composition-off/desktop-1440/legacy-week-reload-320x568-text1.png",
+      "bytes": 105506,
+      "sha256": "689885b1ae058b492330eea1050b59ab136616aaa181a948af9a9c2ca19036c0",
+      "raw_source": ".artifacts/takeover/planning-settings/after-composition-off-verified/takolio-planning-settings--a84a5-es-and-do-not-create-a-plan-desktop-1440/legacy-week-reload-320x568-text1.png",
+      "raw_sha256": "689885b1ae058b492330eea1050b59ab136616aaa181a948af9a9c2ca19036c0",
+      "width": 320,
+      "height": 1721
+    },
+    {
+      "path": "composition-off/desktop-1440/legacy-week-reload-390x844-text1.png",
+      "bytes": 99869,
+      "sha256": "62dbb8e5a84bae89fb8c38dc4ccf2f9e1e47dc8d0dbb345b47333b00ec51e208",
+      "raw_source": ".artifacts/takeover/planning-settings/after-composition-off-verified/takolio-planning-settings--a84a5-es-and-do-not-create-a-plan-desktop-1440/legacy-week-reload-390x844-text1.png",
+      "raw_sha256": "62dbb8e5a84bae89fb8c38dc4ccf2f9e1e47dc8d0dbb345b47333b00ec51e208",
+      "width": 390,
+      "height": 1655
+    },
+    {
+      "path": "composition-off/mobile-390/axe-legacy-week-reload-1440x900-text1.json",
+      "bytes": 2040,
+      "sha256": "55a1e9c4637f7527b83eb58fdcfc3413b8ca8b0c63d6a245efcd8c93d55ff5f3",
+      "raw_source": ".artifacts/takeover/planning-settings/after-composition-off-verified/takolio-planning-settings--a84a5-es-and-do-not-create-a-plan-mobile-390/axe-legacy-week-reload-1440x900-text1.json",
+      "raw_sha256": "55a1e9c4637f7527b83eb58fdcfc3413b8ca8b0c63d6a245efcd8c93d55ff5f3"
+    },
+    {
+      "path": "composition-off/mobile-390/axe-legacy-week-reload-320x420-text2.json",
+      "bytes": 2037,
+      "sha256": "248c8cd927b618423d4b3c685c164f87f866336ba381cb25d259258e1c01ebec",
+      "raw_source": ".artifacts/takeover/planning-settings/after-composition-off-verified/takolio-planning-settings--a84a5-es-and-do-not-create-a-plan-mobile-390/axe-legacy-week-reload-320x420-text2.json",
+      "raw_sha256": "248c8cd927b618423d4b3c685c164f87f866336ba381cb25d259258e1c01ebec"
+    },
+    {
+      "path": "composition-off/mobile-390/axe-legacy-week-reload-320x568-text1.json",
+      "bytes": 2037,
+      "sha256": "8e0a011cb5599772460d4d0be86a027c1d80379fb61ca90d49e3d8d1388ac6cd",
+      "raw_source": ".artifacts/takeover/planning-settings/after-composition-off-verified/takolio-planning-settings--a84a5-es-and-do-not-create-a-plan-mobile-390/axe-legacy-week-reload-320x568-text1.json",
+      "raw_sha256": "8e0a011cb5599772460d4d0be86a027c1d80379fb61ca90d49e3d8d1388ac6cd"
+    },
+    {
+      "path": "composition-off/mobile-390/axe-legacy-week-reload-390x844-text1.json",
+      "bytes": 2037,
+      "sha256": "3eb9c85c60d9ceb2251eddbc20bf843a6b0519172b6c98f06f48ec705bd239e9",
+      "raw_source": ".artifacts/takeover/planning-settings/after-composition-off-verified/takolio-planning-settings--a84a5-es-and-do-not-create-a-plan-mobile-390/axe-legacy-week-reload-390x844-text1.json",
+      "raw_sha256": "3eb9c85c60d9ceb2251eddbc20bf843a6b0519172b6c98f06f48ec705bd239e9"
+    },
+    {
+      "path": "composition-off/mobile-390/legacy-summary.json",
+      "bytes": 10254,
+      "sha256": "399c58c63c485455358918b72f50d2e1716b7af370cc7fece378a2ee0a333314",
+      "raw_source": ".artifacts/takeover/planning-settings/after-composition-off-verified/takolio-planning-settings--a84a5-es-and-do-not-create-a-plan-mobile-390/legacy-summary.json",
+      "raw_sha256": "399c58c63c485455358918b72f50d2e1716b7af370cc7fece378a2ee0a333314"
+    },
+    {
+      "path": "composition-off/mobile-390/legacy-week-reload-1440x900-text1.png",
+      "bytes": 123782,
+      "sha256": "8156c083f5e7186c1a8a87c4518e1ed203337921d5cdd7e606c1174603f293d1",
+      "raw_source": ".artifacts/takeover/planning-settings/after-composition-off-verified/takolio-planning-settings--a84a5-es-and-do-not-create-a-plan-mobile-390/legacy-week-reload-1440x900-text1.png",
+      "raw_sha256": "8156c083f5e7186c1a8a87c4518e1ed203337921d5cdd7e606c1174603f293d1",
+      "width": 1440,
+      "height": 1467
+    },
+    {
+      "path": "composition-off/mobile-390/legacy-week-reload-320x420-text2.png",
+      "bytes": 201511,
+      "sha256": "6cf839c3fed099cd159087e4d0b0ea6ef6a6b05c2e45992fafd6933bdc9505f5",
+      "raw_source": ".artifacts/takeover/planning-settings/after-composition-off-verified/takolio-planning-settings--a84a5-es-and-do-not-create-a-plan-mobile-390/legacy-week-reload-320x420-text2.png",
+      "raw_sha256": "6cf839c3fed099cd159087e4d0b0ea6ef6a6b05c2e45992fafd6933bdc9505f5",
+      "width": 320,
+      "height": 3801
+    },
+    {
+      "path": "composition-off/mobile-390/legacy-week-reload-320x568-text1.png",
+      "bytes": 105503,
+      "sha256": "04a3327e3532ab008b80f28ee710318054709d42742ebb429ed344c49ea60504",
+      "raw_source": ".artifacts/takeover/planning-settings/after-composition-off-verified/takolio-planning-settings--a84a5-es-and-do-not-create-a-plan-mobile-390/legacy-week-reload-320x568-text1.png",
+      "raw_sha256": "04a3327e3532ab008b80f28ee710318054709d42742ebb429ed344c49ea60504",
+      "width": 320,
+      "height": 1721
+    },
+    {
+      "path": "composition-off/mobile-390/legacy-week-reload-390x844-text1.png",
+      "bytes": 103887,
+      "sha256": "9b025384f087d3e0acd4901bce18aa9ea04fb328aaa568156fe1014b973fa511",
+      "raw_source": ".artifacts/takeover/planning-settings/after-composition-off-verified/takolio-planning-settings--a84a5-es-and-do-not-create-a-plan-mobile-390/legacy-week-reload-390x844-text1.png",
+      "raw_sha256": "9b025384f087d3e0acd4901bce18aa9ea04fb328aaa568156fe1014b973fa511",
+      "width": 390,
+      "height": 1655
+    }
+  ]
+}

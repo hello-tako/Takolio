@@ -1,3 +1,15 @@
+## Planning settings row34 source identity - 2026-10-24 JST
+
+Implementation `b82701c7ba6ffd561799164cb9506377391126fb` on `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Two source/test hashes bind Git objects and current bytes in `evidence/planning-settings-checks.json`. Baseline page matches main. Paired baseline-refined and after used the identical full harness SHA256 `5d5c346aa48729c5cddb041d5b10c6a281972657460ab264eb39b24e9be0dc9f`. Final committed harness differs only in the skipped composition-OFF case, correcting the existing API envelope and seeded priority expectation. Active ON prefix remains byte-identical, SHA256 `a6c103efe570b7e6007f5788d383002f5186c3b9b8d00ac152f96d9ee7286a1b`; final full SHA256 `e157f86b0a194c85b4e2218569e8fad2ecdc4d57eaa3a44c2f5cc0955138fb2e`. OFF evidence is after-only.
+
+Older source receipts remain intact. Post-implementation private recovery verification matches original Argon WIP:22,763 regular files/772 symlinks; bytes, modes, links, HEAD, index and status match; zero worktree differences; private parent0700. Exact backup location stays private. Selected salvage54 paths, Argon ledger69 rows and asset ledger12 rows intact; file decisions97; all38 owner statuses PENDING.
+
+Finalization executed:protected-main audit PASS with5,838 unchanged base paths outside the explicit UI/test/handoff allowlist; all historical/current evidence and changed-text credential/private-path scans PASS; git diff --check PASS; eight historical tails retained byte-for-byte; only screen row34 changed; FILE_DECISIONS appended95 to97 without changing previous rows.
+
+---
+
 ## Food preferences row33 source identity - 2026-10-24 JST
 
 Implementation `793ade743aecc4cafd0c39f8e1bd3e457f75bc50` on `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.

@@ -1,3 +1,40 @@
+# UI08 Planning settings row34 baseline - 2026-10-24 JST
+
+Implementation `b82701c7ba6ffd561799164cb9506377391126fb` on `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+| Exact executed command | Actual result |
+|---|---|
+| `pnpm exec eslint src/web/pages/settings/PlanningSettingsPage.tsx tests/e2e/t17-ui/takolio-planning-settings-continuation.e2e.ts` | PASS; existing Admin font warnings apply only to builds (exit0; wall 1.31s) |
+| `pnpm exec vitest run tests/unit/family-preferences-favorites-ui.test.tsx tests/unit/ui08-account.test.tsx tests/unit/frontend-services.test.ts tests/unit/ui08-route-scope.test.tsx tests/unit/ui11-navigation.test.tsx tests/unit/onboarding-contract.test.tsx` | PASS 6 files/111 tests in 2.67s (exit0; wall 3.79s) |
+| `pnpm exec vitest run tests/integration/family-preferences-favorites.test.ts tests/integration/frontend-ui-integration.test.tsx tests/integration/auth-tenant-adversarial.test.ts tests/integration/inventory-closed-loop.test.ts` | PASS 4 files/112 tests in 7.47s (exit0; wall 8.24s) |
+| `pnpm lint` | PASS; existing Admin font warnings apply only to builds (exit0; wall 7.54s) |
+| `pnpm typecheck` | PASS; existing Admin font warnings apply only to builds (exit0; wall 17.31s) |
+| `pnpm check:migrations` | PASS; existing Admin font warnings apply only to builds (exit0; wall 0.52s) |
+| `pnpm build` | PASS; existing Admin font warnings apply only to builds (exit0; wall 9.93s) |
+| `VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build` | PASS; existing Admin font warnings apply only to builds (exit0; wall 9.66s) |
+| `pnpm audit --json` | OPEN_INHERITED 1 low/6 moderate/1 high, including Vite GHSA-587h-7wmj-h5pm; dependencies unchanged (exit1; wall 1.71s) |
+| `PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/ pnpm test` | PARTIAL 410/412 files; 9164/9169 tests in209.07s; same five inherited encoded-space CLI failures in production-catalog-continuity/release-check (exit1; wall 210.03s) |
+| `PREVIEW_MEAL_COMPOSITION_V2=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-planning-settings-continuation.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/planning-settings/after` | PASS 6 passed/2 skipped; composition-ON journeys unchanged before/after; 64 final zero-violation axe reports with incomplete contrast;1264 measured controls; real family PUT/conflict/reload, shaped500/retry, legacy tastes safety separation, offline login gate (exit0; reported 2.0m; shell wall not recorded) |
+| `PORT=3011 PREVIEW_API_PORT=8788 PREVIEW_MEAL_COMPOSITION_V2=false pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-planning-settings-continuation.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/planning-settings/after-composition-off-verified` | PASS 2 passed/6 skipped; actual composition-OFF after-only; real Week PATCH/reload and retained priorities;8 zero-violation axe reports with incomplete contrast;128 measured controls; planner flag remains ON, not full Week-OFF QA (exit0; reported 20.3s; shell wall not recorded) |
+| `pnpm exec eslint src/web/pages/settings/PlanningSettingsPage.tsx tests/e2e/t17-ui/takolio-planning-settings-continuation.e2e.ts` | PASS after OFF-only harness corrections; product and paired active harness unchanged (exit0; shell wall not recorded) |
+| `pnpm typecheck` | PASS after OFF-only harness corrections; product and paired active harness unchanged (exit0; shell wall not recorded) |
+
+Paired baseline-refined and after used the identical full harness SHA256 `5d5c346aa48729c5cddb041d5b10c6a281972657460ab264eb39b24e9be0dc9f`. Final committed harness differs only in the skipped composition-OFF case, correcting the existing API envelope and seeded priority expectation. Active ON prefix remains byte-identical, SHA256 `a6c103efe570b7e6007f5788d383002f5186c3b9b8d00ac152f96d9ee7286a1b`; final full SHA256 `e157f86b0a194c85b4e2218569e8fad2ecdc4d57eaa3a44c2f5cc0955138fb2e`. OFF evidence is after-only.
+
+Initial baseline4failed/2passed/2skipped included a wrong test expectation for derived plan freshness and transient layout measurements. Test-only refinements retain the real requires_revalidation/stale_preferences transition and wait two animation frames after viewport/font changes. Refined baseline2failed/4passed/2skipped in2.1m fails only the product link/note assertions. Two OFF attempts stopped at fixture login:traces showed504 Outdated Optimize Dep for Zustand. Stale ignored node_modules/.vite cache was retained as node_modules/.vite-stale-20261024-planning-off. A subsequent OFF attempt reached the screen but exposed the test envelope/priority assumptions; only that OFF case changed. All five failed browser attempts and final successful logs remain ignored and hash-bound. No config, dependency or product behavior was changed to address runner/test failures.
+
+Paired composition-ON browser:6 passed/2 skipped in2.0m; actual composition-OFF after-only:2 passed/6 skipped in20.3s. Focused units:6 files/111 tests in2.67s; integration:4 files/112 tests in7.47s. Targeted ESLint, lint, types, local migration smoke, default and paired builds PASS; targeted lint/types rerun after OFF-only harness correction PASS. Full suite under Node24.16.0:410/412 files,9,164/9,169 tests in209.07s (wall210.03s); same five inherited encoded-space CLI failures remain in production-catalog-continuity/release-check. Audit retains inherited1low/6moderate/1high including Vite GHSA-587h-7wmj-h5pm; dependencies unchanged.
+
+286 bound payloads:136 PNG,136 axe JSON,14 summaries. Paired before/after:four viewport/text configs x eight states x two contexts. Composition-OFF after-only adds eight captures. All72 final axe reports have zero reported violations and incomplete color-contrast;1,264 paired and128 OFF control measurements. Real family PUT/reload, held pending, real409/adopt/retry, shaped500/retry and unknown allergen retention pass. Profile taste PATCH does not change hard safety. Existing plan remains unchanged except legitimate derived requires_revalidation/stale_preferences; inventory, shopping and onboarding unchanged. Read/offline guest journeys make no monitored writes; guest makes no family request. OFF retains real Week priorities and performs one exact preferences PATCH/reload without plan creation.
+
+Reduced-motion Chromium/root-font text200 simulations do not certify OS zoom, physical devices, screen readers, live providers, full planner flag-OFF Week, performance or production. Composition-OFF preview still enables planner. Full-page captures follow trial-control/focus scrolling and can include fixed chrome/skip-link artifacts; no pixel or owner acceptance claimed. All72 final contrast checks require manual review.
+
+Protected-main/evidence/changed-text credential-private-path/whitespace/historical-tail verification runs before the documentation checkpoint. Next bounded packet:row35 notification preferences source/storage/caller/browser baseline, preserving existing local intent and disclosing its actual scope; no delivery/provider promises. Owner/device/manual accessibility review remains open. No push, PR publication, merge, deploy, remote migration or production action.
+
+Finalization executed:protected-main audit PASS with5,838 unchanged base paths outside the explicit UI/test/handoff allowlist; all historical/current evidence and changed-text credential/private-path scans PASS; git diff --check PASS; eight historical tails retained byte-for-byte; only screen row34 changed; FILE_DECISIONS appended95 to97 without changing previous rows.
+
+---
+
 # UI08 Food preferences row33 baseline - 2026-10-24 JST
 
 Implementation `793ade743aecc4cafd0c39f8e1bd3e457f75bc50` on `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.

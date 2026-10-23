@@ -1,3 +1,24 @@
+# Planning settings row34 QA - 2026-10-24 JST
+
+| Area | Actual result |
+|---|---|
+| Safety editor entry | PASS_BOUNDED; accurate profile taste link/note; hard safety retained |
+| Real family persistence | PASS_BOUNDED; PUT/reload; unknown allergen retained; pending draft locked |
+| Conflict/error | PASS_BOUNDED; real409; explicit reload adopts revision/safety; shaped500/retry |
+| Plan/data boundaries | PASS_BOUNDED; only derived freshness becomes stale_preferences; stock/shopping/onboarding unchanged |
+| Read/offline guest | PASS_BOUNDED; held GET/500/keyboard retry; login return path; no monitored writes |
+| Composition-OFF | PASS_BOUNDED_AFTER_ONLY; real Week PATCH/reload; priorities retained; planner still ON |
+| Reflow/controls | PASS_BOUNDED;72 final captures;1,264 paired+128 OFF measurements |
+| Accessibility | OPEN_MANUAL;72 zero-violation axe reports;72 incomplete contrast |
+| Full suite/audit | PARTIAL;9164/9169;five inherited CLI errors;inherited1low/6moderate/1high |
+| Owner/device/production | PENDING;no certification |
+
+Implementation `b82701c7ba6ffd561799164cb9506377391126fb` on `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`. Reduced-motion Chromium/root-font text200 simulations do not certify OS zoom, physical devices, screen readers, live providers, full planner flag-OFF Week, performance or production. Composition-OFF preview still enables planner. Full-page captures follow trial-control/focus scrolling and can include fixed chrome/skip-link artifacts; no pixel or owner acceptance claimed. All72 final contrast checks require manual review. Next bounded packet:row35 notification preferences source/storage/caller/browser baseline, preserving existing local intent and disclosing its actual scope; no delivery/provider promises. Owner/device/manual accessibility review remains open. No push, PR publication, merge, deploy, remote migration or production action.
+
+Finalization executed:protected-main audit PASS with5,838 unchanged base paths outside the explicit UI/test/handoff allowlist; all historical/current evidence and changed-text credential/private-path scans PASS; git diff --check PASS; eight historical tails retained byte-for-byte; only screen row34 changed; FILE_DECISIONS appended95 to97 without changing previous rows.
+
+---
+
 # Food preferences row33 QA - 2026-10-24 JST
 
 | Area | Actual result |

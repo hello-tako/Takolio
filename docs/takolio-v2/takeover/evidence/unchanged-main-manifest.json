@@ -31218,12 +31218,6 @@
     "sha256": "f00f6c34596c67ee0827c95e256f06763358bec4647bda1f87baf294400a7b45"
   },
   {
-    "path": "src/web/pages/settings/PlanningSettingsPage.tsx",
-    "mode": "100644",
-    "git_blob": "e9126ac762bcfc04765be2c9359ed5a7b0faeac1",
-    "sha256": "f253f5b7c14d5e95e18796c36614f531ea09ed510463c3768f36f1da750339c5"
-  },
-  {
     "path": "src/web/pages/settings/PrivacyDataPage.tsx",
     "mode": "100644",
     "git_blob": "7addea903d1dae7ba5d2db67af8f63875e8cd99b",
