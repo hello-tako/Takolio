@@ -1,3 +1,13 @@
+# Takolio V2 continuation - Notifications row29 checkpoint (2026-10-23 JST)
+
+- `LOCAL_NOTIFICATIONS_REFINEMENT_VERIFIED`: existing notifications/inbox and device-local preference contracts retained; one scoped wrapping rule fixes measured long-content overflow.
+- Implementation `8c1ad40ec5e63587c8b3b2900d0e683b35a3c794` on `codex/takolio-v2-rescue`; original Argon workspace and private snapshot remain byte-for-byte recoverable.
+- Browser 4/4, focused 76 unit + 104 integration, lint/types/migrations/builds pass; full suite remains partial at 9,163/9,168 with five inherited encoded-space CLI failures.
+- Evidence: 143 notification payloads, 60 final zero-violation axe reports, 60 actionable preference-link measurements; contrast/manual and owner review remain pending.
+- Next: row30 profile/account source/runtime baseline. No payment action, merge, push, deploy or production operation.
+
+---
+
 ## Takolio V2 safe continuation - Shopping row28 (2026-10-23 JST)
 
 `LOCAL_SHOPPING_REFINEMENT_VERIFIED`: existing UI06/T24 shopping behavior is verified in the isolated integration worktree. Two CSS values improve checked-row contrast; no backend, inventory, auth, payment, schema, dependency or production infrastructure changed. Focused 61 unit + 53 integration tests, lint/types/migrations/builds and frozen mobile+desktop browser 4/4 pass. Full suite remains partial (9,163/9,168; five inherited encoded-space CLI failures); audit remains inherited 1 low/6 moderate/1 high. Evidence: 195 payloads, 88 final zero-violation axe reports, 154 dialog controls; 38 incomplete contrast checks require manual review. Recovery remains byte-perfect against the private snapshot. Next bounded task: row29 notifications source review and isolated local baseline. Owner acceptance and publication/release approval remain pending.

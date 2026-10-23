@@ -1,3 +1,18 @@
+# Notifications row29 QA update - 2026-10-23 JST
+
+| Area | Status | Evidence / limit |
+|---|---|---|
+| Notifications content/reflow | PASS_BOUNDED | One scoped title/body wrap rule; nine before overflow captures and 60 settled after configurations across mobile/desktop |
+| Real local notifications | PASS_BOUNDED | Native inventory + shopping reminder DTOs match cards; no writes; inventory/shopping unchanged |
+| Loading/error/empty/offline honesty | PASS_BOUNDED | Held GET, HTTP500 with three attempts, keyboard retry, explicit empty and network abort states |
+| Device-local preferences | PASS_BOUNDED | Keyboard Enter/Space, owner-scoped reload persistence; preference does not filter inbox |
+| Accessibility | OPEN_MANUAL | 60 axe reports zero violations; all retain incomplete color-contrast checks; owner review pending |
+| Delivery/production | NOT_CLAIMED | No push permission/background/live provider/production certification |
+
+Implementation `8c1ad40ec5e63587c8b3b2900d0e683b35a3c794`; detailed evidence in `UI_C8_NOTIFICATIONS.md`. Earlier matrix entries remain below unchanged.
+
+---
+
 # QA final matrix
 
 | Area | Status | Evidence / limit |

@@ -1,3 +1,9 @@
+# Takolio V2 notifications continuation handoff - 2026-10-23 JST
+
+Implementation `8c1ad40ec5e63587c8b3b2900d0e683b35a3c794` is isolated on `codex/takolio-v2-rescue`; original Argon WIP and private recovery snapshot remain intact. Row29 preserved UI08 notification contracts and corrected long unbroken title/body wrapping with one scoped CSS rule. New E2E coverage verifies real local inventory/shopping-derived notifications, loading/500/retry/empty/network states, keyboard device-local preferences, long-content reflow and no writes. Final browser 4/4, focused tests and static gates pass. Canonical full suite is partial at 9,163/9,168 with five inherited encoded-space CLI failures. Evidence and receipts are in `docs/takolio-v2/takeover/UI_C8_NOTIFICATIONS.md` and `docs/takolio-v2/takeover/evidence/notifications/`. Owner/manual review remains pending. Next bounded task: row30 profile/account source review; do not touch payment action or merge/push/deploy without approval.
+
+---
+
 # Takolio V2 Shopping continuation handoff - 2026-10-23 JST
 
 Implementation `9dad1494dab2719eb3f787ab161ab49748bd30d4` is isolated on `codex/takolio-v2-rescue`; original Argon WIP and private recovery snapshot remain intact. Row28 preserved UI06/T24 and changed two CSS values for checked-row contrast, with a new real-local E2E covering fractions, pending/offline projection, keyboard/delete, idempotent replay and stale 409 reload. Focused 61 unit + 53 integration tests, static gates/builds and frozen browser 4/4 pass. Full regression is partial (9,163/9,168, five inherited encoded-space CLI failures); audit remains inherited. Evidence and receipts are in `docs/takolio-v2/takeover/UI_C6_SHOPPING.md` and `docs/takolio-v2/takeover/evidence/shopping/`. Owner review remains pending. Next task: row29 notifications source review and isolated baseline; do not touch production or merge/push without approval.

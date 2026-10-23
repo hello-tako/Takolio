@@ -1,3 +1,15 @@
+## Takolio V2 safe continuation - Notifications row29 checkpoint (2026-10-23 JST)
+
+Status: `LOCAL_NOTIFICATIONS_REFINEMENT_VERIFIED`. Integration: `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`, branch `codex/takolio-v2-rescue`; fresh read-only GitHub main `90b94129113b41e34701d99f51175cfa81cb73de`. Original Argon workspace `/Users/tunbee27/Documents/New project/Takolio` remains unchanged and matches the private recovery snapshot: 22,763 regular files / 772 symlinks, bytes/modes/links/HEAD/index/status, zero worktree differences.
+
+Change: preserved UI08 NotificationsPage, NotificationPreferencesPage, service contracts, icon fallback and assets. Added one scoped `overflow-wrap:anywhere` rule for notification title/body after reproducing unbroken ingredient labels that expanded the document and made preferences unreachable. Added isolated real-local/shaped-state E2E coverage. No backend, auth/security, payments, inventory, Week compatibility, schema, dependency, infrastructure or production change. Implementation `8c1ad40ec5e63587c8b3b2900d0e683b35a3c794`.
+
+Checks: final browser 4/4 in 58.9s across separate mobile/desktop contexts; 60 after PNG/axe captures with zero reported violations and 60 incomplete contrast checks; focused existing 76 unit + 104 integration tests pass; lint/types/targeted ESLint/migrations/default and actual paired builds pass. Canonical-TMPDIR full suite PARTIAL 410/412 files and 9,163/9,168 tests in 194.75s: five inherited encoded-space CLI failures, no timeouts. Audit remains inherited 1 low/6 moderate/1 high. Evidence/receipts: `docs/takolio-v2/takeover/UI_C8_NOTIFICATIONS.md` and `evidence/notifications/`.
+
+Next action: bounded row30 profile/account source review and local baseline under UI08/UI-C7. Owner visual/manual accessibility review, live push/background delivery, full Week-OFF, providers and performance remain open. No push, merge, deploy, remote migration or production action.
+
+---
+
 ## Takolio V2 safe continuation - Shopping row28 checkpoint (2026-10-23 JST)
 
 Status: `LOCAL_SHOPPING_REFINEMENT_VERIFIED`. Integration: `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`; branch `codex/takolio-v2-rescue`; fresh read-only GitHub main `90b94129113b41e34701d99f51175cfa81cb73de`. The original Argon workspace at `/Users/tunbee27/Documents/New project/Takolio` remains unchanged and matches the private recovery snapshot: 22,763 regular files / 772 symlinks, bytes/modes/links/HEAD/index/status, zero worktree differences.

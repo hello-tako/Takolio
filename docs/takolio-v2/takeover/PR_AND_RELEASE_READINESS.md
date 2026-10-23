@@ -1,3 +1,9 @@
+# Notifications row29 release note - 2026-10-23 JST
+
+Status: local checkpoint ready for review; production readiness unclaimed. Implementation `8c1ad40ec5e63587c8b3b2900d0e683b35a3c794` is a two-file UI/test continuation on `codex/takolio-v2-rescue`. No push, PR publication, merge, deployment, remote migration or production mutation occurred. Final browser 4/4, focused tests, lint/types/migrations and both builds pass; full suite remains partial with five inherited encoded-space CLI failures. Notification delivery, owner/manual accessibility, live providers, Week-OFF and performance remain open. Next bounded packet is row30 profile/account.
+
+---
+
 # PR and release readiness
 
 Status: `LOCAL_CHECKPOINT_READY_FOR_REVIEW`; production readiness remains unclaimed.

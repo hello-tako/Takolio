@@ -1,0 +1,762 @@
+{
+  "syntheticNotificationResponsesOnly": true,
+  "heldRealLoading": true,
+  "server500Attempts": 3,
+  "keyboardRetryRecoveredRealApi": true,
+  "unknownTypeFallback": true,
+  "explicitEmptyAndNetworkUnavailableHonest": true,
+  "writes": [],
+  "inventoryAndShoppingUnchanged": true,
+  "observations": [
+    {
+      "state": "loading",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "scale": 2,
+      "immediate": {
+        "innerWidth": 320,
+        "scrollWidth": 320
+      },
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": [],
+        "text": []
+      },
+      "reachability": [
+        {
+          "label": "Tùy chỉnh nhắc nhở",
+          "fits": true,
+          "actionable": true,
+          "box": {
+            "x": 14,
+            "y": 136.421875,
+            "width": 292,
+            "height": 138
+          }
+        }
+      ]
+    },
+    {
+      "state": "loading",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scale": 1,
+      "immediate": {
+        "innerWidth": 390,
+        "scrollWidth": 390
+      },
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "brokenImages": [],
+        "text": []
+      },
+      "reachability": [
+        {
+          "label": "Tùy chỉnh nhắc nhở",
+          "fits": true,
+          "actionable": true,
+          "box": {
+            "x": 14,
+            "y": 374.328125,
+            "width": 362,
+            "height": 50
+          }
+        }
+      ]
+    },
+    {
+      "state": "loading",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scale": 1,
+      "immediate": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "brokenImages": [],
+        "text": []
+      },
+      "reachability": [
+        {
+          "label": "Tùy chỉnh nhắc nhở",
+          "fits": true,
+          "actionable": true,
+          "box": {
+            "x": 446,
+            "y": 358.5625,
+            "width": 772,
+            "height": 50
+          }
+        }
+      ]
+    },
+    {
+      "state": "server-error",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "scale": 2,
+      "immediate": {
+        "innerWidth": 320,
+        "scrollWidth": 320
+      },
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": [],
+        "text": []
+      },
+      "reachability": [
+        {
+          "label": "Tùy chỉnh nhắc nhở",
+          "fits": true,
+          "actionable": true,
+          "box": {
+            "x": 14,
+            "y": 136.8125,
+            "width": 292,
+            "height": 138
+          }
+        }
+      ]
+    },
+    {
+      "state": "server-error",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scale": 1,
+      "immediate": {
+        "innerWidth": 390,
+        "scrollWidth": 390
+      },
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "brokenImages": [],
+        "text": []
+      },
+      "reachability": [
+        {
+          "label": "Tùy chỉnh nhắc nhở",
+          "fits": true,
+          "actionable": true,
+          "box": {
+            "x": 14,
+            "y": 392.328125,
+            "width": 362,
+            "height": 50
+          }
+        }
+      ]
+    },
+    {
+      "state": "server-error",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scale": 1,
+      "immediate": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "brokenImages": [],
+        "text": []
+      },
+      "reachability": [
+        {
+          "label": "Tùy chỉnh nhắc nhở",
+          "fits": true,
+          "actionable": true,
+          "box": {
+            "x": 446,
+            "y": 376.5625,
+            "width": 772,
+            "height": 50
+          }
+        }
+      ]
+    },
+    {
+      "state": "long-content",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "scale": 1,
+      "immediate": {
+        "innerWidth": 320,
+        "scrollWidth": 320
+      },
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": [],
+        "text": [
+          {
+            "tag": "H2",
+            "clientWidth": 200,
+            "scrollWidth": 200
+          },
+          {
+            "tag": "P",
+            "clientWidth": 200,
+            "scrollWidth": 200
+          }
+        ]
+      },
+      "reachability": [
+        {
+          "label": "Tùy chỉnh nhắc nhở",
+          "fits": true,
+          "actionable": true,
+          "box": {
+            "x": 14,
+            "y": 388.453125,
+            "width": 292,
+            "height": 50
+          }
+        }
+      ]
+    },
+    {
+      "state": "long-content",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "scale": 2,
+      "immediate": {
+        "innerWidth": 320,
+        "scrollWidth": 320
+      },
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": [],
+        "text": [
+          {
+            "tag": "H2",
+            "clientWidth": 164,
+            "scrollWidth": 164
+          },
+          {
+            "tag": "P",
+            "clientWidth": 164,
+            "scrollWidth": 164
+          }
+        ]
+      },
+      "reachability": [
+        {
+          "label": "Tùy chỉnh nhắc nhở",
+          "fits": true,
+          "actionable": true,
+          "box": {
+            "x": 14,
+            "y": 136.125,
+            "width": 292,
+            "height": 138
+          }
+        }
+      ]
+    },
+    {
+      "state": "long-content",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "scale": 2,
+      "immediate": {
+        "innerWidth": 320,
+        "scrollWidth": 320
+      },
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": [],
+        "text": [
+          {
+            "tag": "H2",
+            "clientWidth": 164,
+            "scrollWidth": 164
+          },
+          {
+            "tag": "P",
+            "clientWidth": 164,
+            "scrollWidth": 164
+          }
+        ]
+      },
+      "reachability": [
+        {
+          "label": "Tùy chỉnh nhắc nhở",
+          "fits": true,
+          "actionable": true,
+          "box": {
+            "x": 14,
+            "y": 285.125,
+            "width": 292,
+            "height": 138
+          }
+        }
+      ]
+    },
+    {
+      "state": "long-content",
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "scale": 1,
+      "immediate": {
+        "innerWidth": 360,
+        "scrollWidth": 360
+      },
+      "metrics": {
+        "innerWidth": 360,
+        "scrollWidth": 360,
+        "brokenImages": [],
+        "text": [
+          {
+            "tag": "H2",
+            "clientWidth": 240,
+            "scrollWidth": 240
+          },
+          {
+            "tag": "P",
+            "clientWidth": 240,
+            "scrollWidth": 240
+          }
+        ]
+      },
+      "reachability": [
+        {
+          "label": "Tùy chỉnh nhắc nhở",
+          "fits": true,
+          "actionable": true,
+          "box": {
+            "x": 14,
+            "y": 654.421875,
+            "width": 332,
+            "height": 50
+          }
+        }
+      ]
+    },
+    {
+      "state": "long-content",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scale": 1,
+      "immediate": {
+        "innerWidth": 390,
+        "scrollWidth": 390
+      },
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "brokenImages": [],
+        "text": [
+          {
+            "tag": "H2",
+            "clientWidth": 270,
+            "scrollWidth": 270
+          },
+          {
+            "tag": "P",
+            "clientWidth": 270,
+            "scrollWidth": 270
+          }
+        ]
+      },
+      "reachability": [
+        {
+          "label": "Tùy chỉnh nhắc nhở",
+          "fits": true,
+          "actionable": true,
+          "box": {
+            "x": 14,
+            "y": 628.515625,
+            "width": 362,
+            "height": 50
+          }
+        }
+      ]
+    },
+    {
+      "state": "long-content",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "scale": 1,
+      "immediate": {
+        "innerWidth": 430,
+        "scrollWidth": 430
+      },
+      "metrics": {
+        "innerWidth": 430,
+        "scrollWidth": 430,
+        "brokenImages": [],
+        "text": [
+          {
+            "tag": "H2",
+            "clientWidth": 310,
+            "scrollWidth": 310
+          },
+          {
+            "tag": "P",
+            "clientWidth": 310,
+            "scrollWidth": 310
+          }
+        ]
+      },
+      "reachability": [
+        {
+          "label": "Tùy chỉnh nhắc nhở",
+          "fits": true,
+          "actionable": true,
+          "box": {
+            "x": 14,
+            "y": 581.484375,
+            "width": 402,
+            "height": 50
+          }
+        }
+      ]
+    },
+    {
+      "state": "long-content",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "scale": 1,
+      "immediate": {
+        "innerWidth": 768,
+        "scrollWidth": 768
+      },
+      "metrics": {
+        "innerWidth": 768,
+        "scrollWidth": 768,
+        "brokenImages": [],
+        "text": [
+          {
+            "tag": "H2",
+            "clientWidth": 552,
+            "scrollWidth": 552
+          },
+          {
+            "tag": "P",
+            "clientWidth": 552,
+            "scrollWidth": 552
+          }
+        ]
+      },
+      "reachability": [
+        {
+          "label": "Tùy chỉnh nhắc nhở",
+          "fits": true,
+          "actionable": true,
+          "box": {
+            "x": 110,
+            "y": 491.359375,
+            "width": 644,
+            "height": 50
+          }
+        }
+      ]
+    },
+    {
+      "state": "long-content",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "scale": 1,
+      "immediate": {
+        "innerWidth": 1024,
+        "scrollWidth": 1024
+      },
+      "metrics": {
+        "innerWidth": 1024,
+        "scrollWidth": 1024,
+        "brokenImages": [],
+        "text": [
+          {
+            "tag": "H2",
+            "clientWidth": 680,
+            "scrollWidth": 680
+          },
+          {
+            "tag": "P",
+            "clientWidth": 680,
+            "scrollWidth": 680
+          }
+        ]
+      },
+      "reachability": [
+        {
+          "label": "Tùy chỉnh nhắc nhở",
+          "fits": true,
+          "actionable": true,
+          "box": {
+            "x": 238,
+            "y": 471.46875,
+            "width": 772,
+            "height": 50
+          }
+        }
+      ]
+    },
+    {
+      "state": "long-content",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scale": 1,
+      "immediate": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "brokenImages": [],
+        "text": [
+          {
+            "tag": "H2",
+            "clientWidth": 680,
+            "scrollWidth": 680
+          },
+          {
+            "tag": "P",
+            "clientWidth": 680,
+            "scrollWidth": 680
+          }
+        ]
+      },
+      "reachability": [
+        {
+          "label": "Tùy chỉnh nhắc nhở",
+          "fits": true,
+          "actionable": true,
+          "box": {
+            "x": 446,
+            "y": 471.65625,
+            "width": 772,
+            "height": 50
+          }
+        }
+      ]
+    },
+    {
+      "state": "explicit-empty",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "scale": 2,
+      "immediate": {
+        "innerWidth": 320,
+        "scrollWidth": 320
+      },
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": [],
+        "text": []
+      },
+      "reachability": [
+        {
+          "label": "Tùy chỉnh nhắc nhở",
+          "fits": true,
+          "actionable": true,
+          "box": {
+            "x": 14,
+            "y": 136.59375,
+            "width": 292,
+            "height": 138
+          }
+        }
+      ]
+    },
+    {
+      "state": "explicit-empty",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scale": 1,
+      "immediate": {
+        "innerWidth": 390,
+        "scrollWidth": 390
+      },
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "brokenImages": [],
+        "text": []
+      },
+      "reachability": [
+        {
+          "label": "Tùy chỉnh nhắc nhở",
+          "fits": true,
+          "actionable": true,
+          "box": {
+            "x": 14,
+            "y": 368.71875,
+            "width": 362,
+            "height": 50
+          }
+        }
+      ]
+    },
+    {
+      "state": "explicit-empty",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scale": 1,
+      "immediate": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "brokenImages": [],
+        "text": []
+      },
+      "reachability": [
+        {
+          "label": "Tùy chỉnh nhắc nhở",
+          "fits": true,
+          "actionable": true,
+          "box": {
+            "x": 446,
+            "y": 330.5625,
+            "width": 772,
+            "height": 50
+          }
+        }
+      ]
+    },
+    {
+      "state": "network-unavailable",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "scale": 2,
+      "immediate": {
+        "innerWidth": 320,
+        "scrollWidth": 320
+      },
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": [],
+        "text": []
+      },
+      "reachability": [
+        {
+          "label": "Tùy chỉnh nhắc nhở",
+          "fits": true,
+          "actionable": true,
+          "box": {
+            "x": 14,
+            "y": 136.59375,
+            "width": 292,
+            "height": 138
+          }
+        }
+      ]
+    },
+    {
+      "state": "network-unavailable",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scale": 1,
+      "immediate": {
+        "innerWidth": 390,
+        "scrollWidth": 390
+      },
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "brokenImages": [],
+        "text": []
+      },
+      "reachability": [
+        {
+          "label": "Tùy chỉnh nhắc nhở",
+          "fits": true,
+          "actionable": true,
+          "box": {
+            "x": 14,
+            "y": 368.71875,
+            "width": 362,
+            "height": 50
+          }
+        }
+      ]
+    },
+    {
+      "state": "network-unavailable",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scale": 1,
+      "immediate": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "brokenImages": [],
+        "text": []
+      },
+      "reachability": [
+        {
+          "label": "Tùy chỉnh nhắc nhở",
+          "fits": true,
+          "actionable": true,
+          "box": {
+            "x": 446,
+            "y": 330.5625,
+            "width": 772,
+            "height": 50
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,3 +1,13 @@
+# Notifications row29 checkpoint - 2026-10-23 JST
+
+- Implementation `8c1ad40ec5e63587c8b3b2900d0e683b35a3c794`: one scoped rule in `src/web/styles/kitchen-account.css` plus `tests/e2e/t17-ui/takolio-notifications-continuation.e2e.ts`; existing UI08 components/services/assets and protected backend contracts retained.
+- Final browser 4/4 in 58.9s; evidence binds 143 payloads (69 PNG, 69 axe including 60 after, 5 summaries), zero reported axe violations, 60 incomplete color-contrast checks and 60 actionable preference-link measurements.
+- Canonical full suite: PARTIAL 410/412 files, 9,163/9,168 tests, five inherited encoded-space CLI failures, no timeout. `/tmp` path/timeout failures are retained as environment-specific and do not recur under canonical TMPDIR.
+- Recovery verifier, protected-main audit (5,844 unchanged paths) and complete evidence/secret/private-path validation PASS. File decisions 86; owner review remains PENDING.
+- Next bounded row30 profile/account; no push, merge, deploy, remote migration or production action.
+
+---
+
 # Safe continuation checkpoint - 2026-10-23 JST
 
 - G0 PASS: after Shopping implementation `9dad1494dab2719eb3f787ab161ab49748bd30d4`, original bytes/modes/links/HEAD/index/status match the full private snapshot:22,763 regular files/772 symlinks;zero worktree differences;private parent0700. Git/ignored files are included;authorized shared Git metadata differs.

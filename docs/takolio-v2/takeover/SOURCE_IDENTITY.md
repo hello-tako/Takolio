@@ -1,3 +1,9 @@
+## Notifications row29 source identity - 2026-10-23 JST
+
+Base main: `90b94129113b41e34701d99f51175cfa81cb73de`; implementation: `8c1ad40ec5e63587c8b3b2900d0e683b35a3c794`. Changed source paths are `src/web/styles/kitchen-account.css` and `tests/e2e/t17-ui/takolio-notifications-continuation.e2e.ts`; their SHA256 values are bound in `evidence/notifications-checks.json` and match the implementation commit. Existing NotificationsPage/NotificationPreferencesPage, service, route/query contracts and assets remain reused. Original Argon workspace is outside this integration worktree and remains snapshot-verified.
+
+---
+
 # Takolio safe continuation - 2026-10-23 JST
 
 Original workspace: `/Users/tunbee27/Documents/New project/Takolio`.

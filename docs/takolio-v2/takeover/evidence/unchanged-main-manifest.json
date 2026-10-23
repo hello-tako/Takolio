@@ -31416,12 +31416,6 @@
     "sha256": "8d3df33776fea8744ef6cac1691e138da1b32b4937e97648d071e4c0c11a9b29"
   },
   {
-    "path": "src/web/styles/kitchen-account.css",
-    "mode": "100644",
-    "git_blob": "cd7a7db25026e56654fe7d67b7db2bcc2b0b5187",
-    "sha256": "63b10b2fdea5ad67b9ba8aead616dcd4a042509433713dff02f7a8ccc37592c1"
-  },
-  {
     "path": "src/web/styles/kitchen-daily.css",
     "mode": "100644",
     "git_blob": "6413d714f6e840392bb7ec52072784a1f391a4c9",

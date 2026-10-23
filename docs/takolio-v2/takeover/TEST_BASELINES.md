@@ -1,3 +1,20 @@
+# UI-C8 notifications baseline - 2026-10-23 JST
+
+Environment: macOS, Node v25.9.0, pnpm 10.33.2, unchanged main lockfile. All results are local.
+
+- Implementation: `8c1ad40ec5e63587c8b3b2900d0e683b35a3c794`; product diff is one scoped `overflow-wrap:anywhere` rule.
+- Focused existing units: `pnpm exec vitest run tests/unit/ui08-account.test.tsx tests/unit/frontend-services.test.ts tests/unit/ui08-route-scope.test.tsx tests/unit/ui11-navigation.test.tsx` -> 4 files / 76 tests PASS in 1.56s.
+- Focused integrations: `pnpm exec vitest run tests/integration/frontend-ui-integration.test.tsx tests/integration/auth-tenant-adversarial.test.ts tests/integration/inventory-closed-loop.test.ts` -> 3 files / 104 tests PASS in 6.86s.
+- Static gates: `pnpm lint`, `pnpm typecheck`, targeted notification E2E ESLint, `pnpm check:migrations`, `pnpm build`, and `VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build` -> PASS.
+- Browser: `PREVIEW_MEAL_COMPOSITION_V2=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-notifications-continuation.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/notifications/final2` -> 4/4 PASS in 58.9s.
+- Full suite: `TMPDIR=/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/ pnpm test` -> exit 1, 410/412 files and 9,163/9,168 tests pass in 194.75s. Five inherited encoded-space CLI failures remain in production-catalog-continuity/release-check; no timeout. An earlier `TMPDIR=/tmp pnpm test` also exposed 11 path-form failures and two 5s timeouts; canonical retry removes those environment effects.
+- Audit: `pnpm audit --json` exits 1 with inherited 1 low / 6 moderate / 1 high (Vite GHSA-587h-7wmj-h5pm); no dependency change.
+- Evidence validation: `python3 .artifacts/takeover/verify-evidence.py` PASS; protected-main audit PASS; private recovery verifier PASS; `git diff --check` PASS.
+
+Evidence limits: local Worker/SQLite and shaped response states do not certify live push, permission prompts, background delivery, OS zoom, physical devices, screen readers, performance or production. All 60 final axe reports retain incomplete color-contrast checks. Raw logs/traces remain ignored.
+
+---
+
 # Test baselines
 
 Environment: macOS, Node v25.9.0, pnpm 10.33.2, unchanged main lockfile. All results are local.
