@@ -30,7 +30,7 @@ Final browser: 6/6 PASS in 19.3s (runner wall 19.99s). All 24 final axe reports 
 
 `evidence/household/manifest.json` binds 108 payloads: 48 PNG, 48 axe JSON and twelve summaries. Before and after each contain 24 PNG, 24 axe and six summaries across both browser contexts. The evidence validator checks hashes/bytes/PNG dimensions, exact state/config coverage, four requested-width failures, final fit, server identity/no-write boundaries and incomplete accessibility findings.
 
-`evidence/household-checks.json` binds the three implementation source hashes and eleven final check logs, four retained logs and one baseline run artifact. The retained logs are the earlier three-test passing layout attempt, pre/post-implementation recovery and read-only main check; debug/debug2 artifact directories have no raw terminal logs. Raw local fixtures, traces, logs and private recovery paths remain ignored.
+`evidence/household-checks.json` binds the three implementation source hashes and eleven final check logs, four retained logs and one baseline run artifact. The retained logs are the earlier passing layout attempt (three definitions across two contexts: 6/6 executions in 19.1s), pre/post-implementation recovery and read-only main check; debug/debug2 artifact directories have no raw terminal logs. Raw local fixtures, traces, logs and private recovery paths remain ignored.
 
 Final targeted ESLint, `pnpm lint`, `pnpm typecheck`, local `pnpm check:migrations`, default build and actual paired build PASS. Existing focused units: four files/76 tests in 1.38s; focused integration: three files/104 tests in 6.67s. Exact commands/exit codes/times/log hashes are in the receipt and `TEST_BASELINES.md`.
 

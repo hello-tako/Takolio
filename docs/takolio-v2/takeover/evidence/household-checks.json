@@ -124,7 +124,7 @@
   "retained_attempts": [
     {
       "name": "after",
-      "outcome": "PASS earlier three-test scoped fix attempt, before final unbroken-name harness refinement; final checks use checks/browser.log",
+      "outcome": "PASS earlier scoped fix attempt: three test definitions across two contexts, 6/6 executions in 19.1s, before final unbroken-name harness refinement; final checks use checks/browser.log",
       "local_ignored_log": ".artifacts/takeover/household/after.log",
       "log_bytes": 10456,
       "log_sha256": "ddceaccdaff73425508b6c74710f37ec2e97ae8c113325d1e56f034013f74fcb"

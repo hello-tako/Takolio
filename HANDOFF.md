@@ -1,5 +1,7 @@
 # Takolio V2 household continuation handoff - 2026-10-24 JST
 
+Evidence wording correction: retained household `after.log` records three test definitions across two browser contexts, 6/6 executions in 19.1s. Final frozen run remains 6/6 in 19.3s. Only receipt/report wording changed; source and log hashes remain intact. Evidence/protected-path/whitespace validation rerun before this documentation-only checkpoint. Next active packet remains row32 Settings.
+
 Status: `LOCAL_HOUSEHOLD_REFLOW_VERIFIED`. Implementation `d9107856888cafd2dc3d0462f4a03595c7b72fa4` on `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`. Original Argon workspace is unchanged; full private snapshot recheck matches 22,763 regular files / 772 symlinks, bytes/modes/links/HEAD/index/status with zero worktree differences and parent permissions 0700.
 
 Actual changes: Reused existing UI08 household components/assets and honest unavailable sharing notes. Reproduced actual guest overflow at both narrow configurations in both contexts; added one min-w-0 and scoped ID/membership text wraps. Added three browser journeys; no sharing capability fabricated. Previous notifications CSS remains a byte-identical prefix; its immutable historical source receipt is retained. Backend, auth/security, payments, inventory authority, Week compatibility, schema, dependencies and production infrastructure remain unchanged.
