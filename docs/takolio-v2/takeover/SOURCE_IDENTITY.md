@@ -1,3 +1,15 @@
+## Computed text contrast identity - 2026-10-24 JST
+
+Implementation `fedf0e7571b659dfdfec916a713b3c9a71be4cf4` (test only), branch `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only GitHub main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Added one reproducible computed-text-contrast browser audit. No runtime, CSS, component, icon, illustration or dependency changes; existing Argon and canonical functionality retained. Thirty existing reviewed source paths match the implementation parent; 26 also match canonical main. No observed text-pair failure justifies a palette change.
+
+Fresh private recovery verification: original Argon worktree and full snapshot match22,763regular files/772symlinks, bytes/modes/links/HEAD/index/preflight status; snapshot worktree also matches stored baseline; zero differences; parent0700. Shared Git metadata changes are authorized and separately disclosed; exact recovery location stays private. Selected salvage54paths, Argon69rows and assets12rows intact; file decisions105; all38owner reviews PENDING.
+
+Finalization executed: protected-main scope PASS with5,837unchanged protected paths; historical and computed-contrast evidence validation PASS; current source objects/logs/captures and all eight historical tails verified; 104 prior file decisions preserved; only rows23,24,26,27,30,36 append contrast notes. Credential/private-recovery-path pattern scan and whitespace check PASS. Private snapshot Git baseline also matches all116regular Git files; full snapshot baseline integrity verified. All38owner reviews remain PENDING. Local documentation checkpoint follows separately.
+
+---
+
 ## Real Week flags-OFF identity - 2026-10-24 JST
 
 Implementation `c91e0747084013e66f1128fafa168984cf46e3bb` (test only), branch `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only GitHub main remains `90b94129113b41e34701d99f51175cfa81cb73de`.

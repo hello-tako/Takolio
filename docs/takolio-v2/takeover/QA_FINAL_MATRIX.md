@@ -1,3 +1,28 @@
+# Computed text contrast QA - 2026-10-24 JST
+
+| Area | Actual result |
+|---|---|
+| Product delta | None; one test added |
+| CSS text evidence | 4,902 solid passes; 516 exact-gradient bound passes separately; six disabled exempt |
+| Axe | 84 zero-violation reports; all84incomplete color-contrast; no full accessibility acceptance |
+| Screenshots | 84 viewport PNG; fourteen states/three configs/two contexts; mobile/text200/desktop contact review |
+| Runtime boundaries | Actual local plan201/alternatives200; inventory snapshot unchanged |
+| Gates | ESLint/lint/types/local migrations/default and correct paired-ON build PASS |
+| Full suite | PARTIAL;410/412files;9164/9169tests;five inherited encoded-space CLI failures |
+| Dependencies | Inherited1low/6moderate/1high; unchanged, not rerun |
+| Recovery | Original/snapshot baseline, HEAD/index/status verified;zero worktree differences |
+| Owner/device/release | All38owner reviews PENDING;no deployment approval |
+
+Implementation `fedf0e7571b659dfdfec916a713b3c9a71be4cf4` (test only), branch `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only GitHub main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Bounded CSS DOM text audit includes offscreen samples; active dialog scope excludes background shell. Exact solid composition and only observed-gradient bounds; raw axe incomplete stays open. No pixel/occlusion, icon/border/focus/hover/placeholder, native zoom/device/screenreader/full-WCAG or all-screen certification. Generation pending and Home are not captured. Home fixture hit onboarding. Initial failed browser attempt2failed/2passed (88.88s) had its log/output destination accidentally reused; original failed-run raw evidence is NOT retained/hash-bound. Passing raw evidence and final harness are retained/bound; explicit disclosure preserved. Partial collector output retained. No stock import, actual swap or export success claimed.
+
+Next unblocked packet: isolated local Week flags-OFF selected-only stock import, actual swap/readback and clipboard success/error verification under existing UI10 commands. Preserve inventory/idempotency/household authority. Home fixture and wider manual control/device review remain open; Week durable offline needs a separate domain packet/ADR. No push, PR publication, merge, deploy, remote migration or production action.
+
+Finalization executed: protected-main scope PASS with5,837unchanged protected paths; historical and computed-contrast evidence validation PASS; current source objects/logs/captures and all eight historical tails verified; 104 prior file decisions preserved; only rows23,24,26,27,30,36 append contrast notes. Credential/private-recovery-path pattern scan and whitespace check PASS. Private snapshot Git baseline also matches all116regular Git files; full snapshot baseline integrity verified. All38owner reviews remain PENDING. Local documentation checkpoint follows separately.
+
+---
+
 # Real Week flags-OFF QA - 2026-10-24 JST
 
 | Area | Actual result |

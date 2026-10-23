@@ -1,0 +1,23 @@
+{
+  "result": "PASS",
+  "payloads": 169,
+  "captures": 84,
+  "solid_text_pass": 4902,
+  "gradient_raw_manual_review": 516,
+  "gradient_exact_CSS_bound_pass": 516,
+  "disabled_exempt": 6,
+  "axe_incomplete": {
+    "color-contrast": 84
+  },
+  "axe_message_keys": {
+    "bgGradient": 798
+  },
+  "source_objects_verified": 31,
+  "logs_verified": 8,
+  "original_recovery_verified": true,
+  "historical_doc_tails": 8,
+  "previous_file_decisions_preserved": 104,
+  "owner_reviews_pending": 38,
+  "first_failed_browser_raw_retention": false,
+  "first_failed_browser_overwrite_disclosed": true
+}

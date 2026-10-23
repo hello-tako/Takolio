@@ -1,3 +1,25 @@
+# Computed text contrast checkpoint - 2026-10-24 JST
+
+Status: `LOCAL_COMPUTED_TEXT_CONTRAST_BOUNDED_VERIFIED`. Implementation `fedf0e7571b659dfdfec916a713b3c9a71be4cf4` (test only), branch `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only GitHub main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Added one reproducible computed-text-contrast browser audit. No runtime, CSS, component, icon, illustration or dependency changes; existing Argon and canonical functionality retained. Thirty existing reviewed source paths match the implementation parent; 26 also match canonical main. No observed text-pair failure justifies a palette change.
+
+Browser 4/4 in 48.1s (wall 48.99s): self-check and actual paired-flags-OFF local Week/account journey in two Chromium contexts. Fourteen states x three viewport/root-text configurations x two contexts produce 84 PNG and 84 JSON. 4,902 solid text samples pass (minimum 6.119203774745377:1). Raw 516 gradient samples remain manual-review; separate exact-CSS conservative bounds pass (minimum 5.178275830766979:1). Six disabled import text samples are exempt. All 84 axe reports have zero reported violations and incomplete color-contrast; 798 checks give bgGradient. Real local generation returns201, alternatives read200; inventory unchanged. Normal mobile, text200 and desktop contact sheets visually inspected.
+
+Targeted ESLint, pnpm lint, pnpm typecheck, local migration smoke, default build and correct paired-ON build PASS. Node v24.16.0 full suite: 410/412 files, 9,164/9,169 tests; reported260.71s/wall262.19s; five inherited encoded-space MODULE_NOT_FOUND CLI failures in production-catalog-continuity/release-check. Existing Admin font warnings remain. Dependencies unchanged; previous audit1low/6moderate/1high including Vite GHSA-587h-7wmj-h5pm remains open, not rerun.
+
+Fresh private recovery verification: original Argon worktree and full snapshot match22,763regular files/772symlinks, bytes/modes/links/HEAD/index/preflight status; snapshot worktree also matches stored baseline; zero differences; parent0700. Shared Git metadata changes are authorized and separately disclosed; exact recovery location stays private. Selected salvage54paths, Argon69rows and assets12rows intact; file decisions105; all38owner reviews PENDING.
+
+Bounded CSS DOM text audit includes offscreen samples; active dialog scope excludes background shell. Exact solid composition and only observed-gradient bounds; raw axe incomplete stays open. No pixel/occlusion, icon/border/focus/hover/placeholder, native zoom/device/screenreader/full-WCAG or all-screen certification. Generation pending and Home are not captured. Home fixture hit onboarding. Initial failed browser attempt2failed/2passed (88.88s) had its log/output destination accidentally reused; original failed-run raw evidence is NOT retained/hash-bound. Passing raw evidence and final harness are retained/bound; explicit disclosure preserved. Partial collector output retained. No stock import, actual swap or export success claimed.
+
+Report: `docs/takolio-v2/takeover/UI_C10_COMPUTED_CONTRAST.md`; exact receipts: `evidence/computed-contrast-checks.json`, `evidence/computed-contrast/manifest.json`, `evidence/computed-contrast-recovery-verification.json`. Next unblocked packet: isolated local Week flags-OFF selected-only stock import, actual swap/readback and clipboard success/error verification under existing UI10 commands. Preserve inventory/idempotency/household authority. Home fixture and wider manual control/device review remain open; Week durable offline needs a separate domain packet/ADR. No push, PR publication, merge, deploy, remote migration or production action.
+
+Implementation and documentation/evidence commits are separate; this checkpoint cannot name its own commit.
+
+Finalization executed: protected-main scope PASS with5,837unchanged protected paths; historical and computed-contrast evidence validation PASS; current source objects/logs/captures and all eight historical tails verified; 104 prior file decisions preserved; only rows23,24,26,27,30,36 append contrast notes. Credential/private-recovery-path pattern scan and whitespace check PASS. Private snapshot Git baseline also matches all116regular Git files; full snapshot baseline integrity verified. All38owner reviews remain PENDING. Local documentation checkpoint follows separately.
+
+---
+
 # Real Week flags-OFF checkpoint - 2026-10-24 JST
 
 Status: `LOCAL_WEEK_REAL_FLAGS_OFF_BOUNDED_VERIFIED`. Implementation `c91e0747084013e66f1128fafa168984cf46e3bb` (test only), branch `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only GitHub main remains `90b94129113b41e34701d99f51175cfa81cb73de`.

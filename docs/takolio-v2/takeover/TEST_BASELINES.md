@@ -1,3 +1,32 @@
+# Computed text contrast baseline - 2026-10-24 JST
+
+Implementation `fedf0e7571b659dfdfec916a713b3c9a71be4cf4` (test only), branch `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only GitHub main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Environment: PATH prefix `/opt/homebrew/opt/node@24/bin`; Node v24.16.0; inherited TMPDIR resolved to realpath by recorded launchers.
+
+| Exact executed command | Result |
+|---|---|
+| `PORT=3297 PREVIEW_API_PORT=8917 PREVIEW_MEAL_PLANNER_ENABLED=false PREVIEW_MEAL_COMPOSITION_V2=false pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-computed-contrast.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/contrast/initial` | 4 passed; two cases in each of two contexts (exit0;wall48.99s) |
+| `pnpm exec eslint tests/e2e/t17-ui/takolio-computed-contrast.e2e.ts` | PASS (exit0;wall1.38s) |
+| `pnpm lint` | PASS (exit0;wall8.09s) |
+| `pnpm typecheck` | PASS (exit0;wall21.82s) |
+| `pnpm test` | PARTIAL: 410/412 files; 9164/9169 tests; five inherited encoded-space MODULE_NOT_FOUND CLI failures in production-catalog-continuity/release-check; reported 260.71s (exit1;wall262.19s) |
+| `pnpm check:migrations` | PASS (exit0;wall0.75s) |
+| `pnpm build` | PASS (exit0;wall11.89s) |
+| `VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build` | PASS (exit0;wall13.2s) |
+
+Browser 4/4 in 48.1s (wall 48.99s): self-check and actual paired-flags-OFF local Week/account journey in two Chromium contexts. Fourteen states x three viewport/root-text configurations x two contexts produce 84 PNG and 84 JSON. 4,902 solid text samples pass (minimum 6.119203774745377:1). Raw 516 gradient samples remain manual-review; separate exact-CSS conservative bounds pass (minimum 5.178275830766979:1). Six disabled import text samples are exempt. All 84 axe reports have zero reported violations and incomplete color-contrast; 798 checks give bgGradient. Real local generation returns201, alternatives read200; inventory unchanged. Normal mobile, text200 and desktop contact sheets visually inspected.
+
+Targeted ESLint, pnpm lint, pnpm typecheck, local migration smoke, default build and correct paired-ON build PASS. Node v24.16.0 full suite: 410/412 files, 9,164/9,169 tests; reported260.71s/wall262.19s; five inherited encoded-space MODULE_NOT_FOUND CLI failures in production-catalog-continuity/release-check. Existing Admin font warnings remain. Dependencies unchanged; previous audit1low/6moderate/1high including Vite GHSA-587h-7wmj-h5pm remains open, not rerun.
+
+Bounded CSS DOM text audit includes offscreen samples; active dialog scope excludes background shell. Exact solid composition and only observed-gradient bounds; raw axe incomplete stays open. No pixel/occlusion, icon/border/focus/hover/placeholder, native zoom/device/screenreader/full-WCAG or all-screen certification. Generation pending and Home are not captured. Home fixture hit onboarding. Initial failed browser attempt2failed/2passed (88.88s) had its log/output destination accidentally reused; original failed-run raw evidence is NOT retained/hash-bound. Passing raw evidence and final harness are retained/bound; explicit disclosure preserved. Partial collector output retained. No stock import, actual swap or export success claimed.
+
+Next unblocked packet: isolated local Week flags-OFF selected-only stock import, actual swap/readback and clipboard success/error verification under existing UI10 commands. Preserve inventory/idempotency/household authority. Home fixture and wider manual control/device review remain open; Week durable offline needs a separate domain packet/ADR. No push, PR publication, merge, deploy, remote migration or production action.
+
+Finalization executed: protected-main scope PASS with5,837unchanged protected paths; historical and computed-contrast evidence validation PASS; current source objects/logs/captures and all eight historical tails verified; 104 prior file decisions preserved; only rows23,24,26,27,30,36 append contrast notes. Credential/private-recovery-path pattern scan and whitespace check PASS. Private snapshot Git baseline also matches all116regular Git files; full snapshot baseline integrity verified. All38owner reviews remain PENDING. Local documentation checkpoint follows separately.
+
+---
+
 # Real Week flags-OFF baseline - 2026-10-24 JST
 
 Implementation `c91e0747084013e66f1128fafa168984cf46e3bb` (test only), branch `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only GitHub main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
