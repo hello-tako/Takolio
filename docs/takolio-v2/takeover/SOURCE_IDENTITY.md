@@ -1,3 +1,21 @@
+## Real Week flags-OFF identity - 2026-10-24 JST
+
+Implementation `c91e0747084013e66f1128fafa168984cf46e3bb` (test only), branch `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only GitHub main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Added one guarded browser journey for the actual paired-flags-OFF preview. All existing runtime code, Week pages/components, icons, assets, API, store and security boundaries remain unchanged. Twenty-two reviewed existing source/config/test paths match canonical main; no new illustration or replacement asset was justified.
+
+All 23 reviewed source paths match implementation Git objects; the 22 existing paths also match implementation parent and canonical main. Correct flag names are source-bound in feature.ts, composition.ts and security-preview.mjs.
+
+Build evidence correction: historical `VITE_FF_MEAL_PLANNER_V2` / `VITE_FF_MEAL_COMPOSITION_V2` names do not drive the actual feature modules. Those successful invocations only prove a default build, not paired-ON. Historical receipts/tails are preserved; the correct-flags final build above supersedes that claim. The real-OFF browser also verifies the actual Worker gates, without feature-module interception.
+
+Retained attempts: initial 1 failed/1 passed from a harness focus-return assertion after capture blurred focus; the harness now reopens the sheet before checking return focus. A later run was interrupted during test-file reload. The next attempt failed both contexts with an empty Vite preview following 504 Outdated Optimize Dep during concurrent Vite activity. Final isolated run passes with the committed harness. Initial invocation-only typecheck has no completed-result claim. Six logs, both harness versions and 213 earlier artifacts remain hash-bound and ignored. Browser reproduction commands are reconstructed where the complete launcher was not recorded; no unrecorded wall time or Node version is invented.
+
+Private full recovery verification after the implementation matches original Argon WIP: 22,763 regular files/772 symlinks; bytes, modes, links, HEAD, index and status match; zero worktree differences; private parent 0700. Authorized shared Git metadata changes are disclosed separately. Recovery location remains private. Selected salvage 54 paths, Argon ledger 69 rows and asset ledger 12 rows remain intact; file decisions 104; all 38 owner statuses PENDING.
+
+Finalization executed: protected-main audit PASS with 5,837 unchanged protected base paths; historical/current evidence, changed-text credential/private-recovery-path and whitespace validation PASS. All eight historical document tails and the previous 103 file decisions are preserved; only SCREEN_PROGRESS rows 23-27 changed, retaining previous field values as prefixes. All 38 owner reviews remain PENDING. These results precede the separate local documentation checkpoint.
+
+---
+
 ## Offline/error row 38 identity - 2026-10-24 JST
 
 Implementation `d44b98ca292b24baf954a7bf3c6b1039661cfd95`, branch `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.

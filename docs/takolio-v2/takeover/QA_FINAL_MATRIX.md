@@ -1,3 +1,30 @@
+# Real Week flags-OFF QA - 2026-10-24 JST
+
+| Area | Actual result |
+|---|---|
+| Product delta | None; one test added; existing Week runtime/assets retained |
+| Actual OFF browser | 2 passed; real Worker; nine states/four configs/two contexts |
+| Domain boundaries | One plan creation/context; two alternatives reads; stock/shopping/family and later plan unchanged |
+| Session settings | SPA retention and document reset; no server settings mutation |
+| Appearance | 72 PNG; no measured horizontal overflow/broken assets; 512 checked targets |
+| Accessibility | 72 zero-violation axe; all 72 incomplete contrast; manual review open |
+| Gates | Lint/types/local migrations/default and correct-flags paired build PASS; focused 131 tests PASS |
+| Full suite | PARTIAL; 410/412 files, 9164/9169 tests; five inherited CLI failures |
+| Dependencies | OPEN_INHERITED; 1 low/6 moderate/1 high |
+| Owner/device/production | All 38 owner reviews PENDING; no release approval |
+
+Implementation `c91e0747084013e66f1128fafa168984cf46e3bb` (test only), branch `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only GitHub main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Build evidence correction: historical `VITE_FF_MEAL_PLANNER_V2` / `VITE_FF_MEAL_COMPOSITION_V2` names do not drive the actual feature modules. Those successful invocations only prove a default build, not paired-ON. Historical receipts/tails are preserved; the correct-flags final build above supersedes that claim. The real-OFF browser also verifies the actual Worker gates, without feature-module interception.
+
+No stock import, actual swap mutation, successful clipboard/native share, Week offline durability, full Tab traversal, native zoom, physical-device, screen-reader, performance, live-provider or production certification. Generation transport is held only for pending appearance, then released to the real local Worker. Root-font scaling and reduced motion are simulations. Full-page capture after control scrolling can show displaced fixed navigation/skip-link/modal framing; screenshots do not prove viewport occlusion or pixel acceptance. Manual contrast review remains open. Existing ON evidence is preserved separately; this packet does not complete all UI10 acceptance.
+
+Next unblocked packet: manual contrast/evidence-gap audit on existing Week and cross-screen text/control colors, using reproducible computed-color pairs and honest treatment of gradients, opacity and capture artifacts. Also queue explicit local-only selected stock import, actual swap and clipboard success/error coverage under UI10 before claiming complete flag-OFF behavior. Week durable offline service risks require their own domain packet/ADR. Owner review, native devices/assistive technology, inherited CLI failures and dependency findings remain open. No push, PR publication, merge, deploy, remote migration or production action.
+
+Finalization executed: protected-main audit PASS with 5,837 unchanged protected base paths; historical/current evidence, changed-text credential/private-recovery-path and whitespace validation PASS. All eight historical document tails and the previous 103 file decisions are preserved; only SCREEN_PROGRESS rows 23-27 changed, retaining previous field values as prefixes. All 38 owner reviews remain PENDING. These results precede the separate local documentation checkpoint.
+
+---
+
 # Offline/error row 38 QA - 2026-10-24 JST
 
 | Area | Actual result |

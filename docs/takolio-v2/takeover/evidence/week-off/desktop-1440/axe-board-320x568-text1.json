@@ -1,0 +1,253 @@
+{
+  "state": "board",
+  "viewport": {
+    "width": 320,
+    "height": 568
+  },
+  "textScale": 1,
+  "metrics": {
+    "innerWidth": 320,
+    "scrollWidth": 320,
+    "textOutsideViewport": [],
+    "brokenImages": []
+  },
+  "targets": [
+    {
+      "text": "Đi chợ (30)",
+      "box": {
+        "x": 14,
+        "y": 202.625,
+        "width": 138.9375,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Chia sẻ thực đơn",
+      "box": {
+        "x": 14,
+        "y": 218.9375,
+        "width": 177.6875,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Đổi món",
+      "box": {
+        "x": 97,
+        "y": 218.859375,
+        "width": 119.59375,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Đổi món",
+      "box": {
+        "x": 97,
+        "y": 219.234375,
+        "width": 119.59375,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Đổi món",
+      "box": {
+        "x": 97,
+        "y": 219.609375,
+        "width": 119.59375,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Đổi món",
+      "box": {
+        "x": 97,
+        "y": 218.78125,
+        "width": 119.59375,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Đổi món",
+      "box": {
+        "x": 97,
+        "y": 219.15625,
+        "width": 119.59375,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Đổi món",
+      "box": {
+        "x": 97,
+        "y": 219.53125,
+        "width": 119.59375,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Đổi món",
+      "box": {
+        "x": 97,
+        "y": 218.703125,
+        "width": 119.59375,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Đổi món",
+      "box": {
+        "x": 97,
+        "y": 219.078125,
+        "width": 119.59375,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Đổi món",
+      "box": {
+        "x": 97,
+        "y": 219.453125,
+        "width": 119.59375,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Đổi món",
+      "box": {
+        "x": 97,
+        "y": 219.625,
+        "width": 119.59375,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Đổi món",
+      "box": {
+        "x": 97,
+        "y": 219,
+        "width": 119.59375,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Đổi món",
+      "box": {
+        "x": 97,
+        "y": 219.375,
+        "width": 119.59375,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Đổi món",
+      "box": {
+        "x": 97,
+        "y": 219.546875,
+        "width": 119.59375,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Đổi món",
+      "box": {
+        "x": 97,
+        "y": 218.921875,
+        "width": 119.59375,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Đổi món",
+      "box": {
+        "x": 97,
+        "y": 219.296875,
+        "width": 119.59375,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Đổi món",
+      "box": {
+        "x": 97,
+        "y": 219.46875,
+        "width": 119.59375,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Đổi món",
+      "box": {
+        "x": 97,
+        "y": 218.84375,
+        "width": 119.59375,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Đổi món",
+      "box": {
+        "x": 97,
+        "y": 219.21875,
+        "width": 119.59375,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Đổi món",
+      "box": {
+        "x": 97,
+        "y": 219.390625,
+        "width": 119.59375,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Đổi món",
+      "box": {
+        "x": 97,
+        "y": 218.765625,
+        "width": 119.59375,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Đổi món",
+      "box": {
+        "x": 97,
+        "y": 371.140625,
+        "width": 119.59375,
+        "height": 48
+      },
+      "fits": true
+    }
+  ],
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "state": "shopping-list",
+  "viewport": {
+    "width": 320,
+    "height": 568
+  },
+  "textScale": 1,
+  "metrics": {
+    "innerWidth": 320,
+    "scrollWidth": 320,
+    "textOutsideViewport": [],
+    "brokenImages": []
+  },
+  "targets": [
+    {
+      "text": "Tất cả (30)",
+      "box": {
+        "x": 14,
+        "y": 413.96875,
+        "width": 108.046875,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Khác (30)",
+      "box": {
+        "x": 130.046875,
+        "y": 413.96875,
+        "width": 103.03125,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Bắt đầu đi chợ",
+      "box": {
+        "x": 36,
+        "y": 348.46875,
+        "width": 132.9375,
+        "height": 48
+      },
+      "fits": true
+    }
+  ],
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ]
+}

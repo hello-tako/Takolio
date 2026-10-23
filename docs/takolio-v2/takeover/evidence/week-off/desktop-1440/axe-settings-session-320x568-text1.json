@@ -1,0 +1,133 @@
+{
+  "state": "settings-session",
+  "viewport": {
+    "width": 320,
+    "height": 568
+  },
+  "textScale": 1,
+  "metrics": {
+    "innerWidth": 320,
+    "scrollWidth": 320,
+    "textOutsideViewport": [],
+    "brokenImages": []
+  },
+  "targets": [
+    {
+      "text": "500.000 ₫",
+      "box": {
+        "x": 31,
+        "y": 211.1875,
+        "width": 258,
+        "height": 64
+      },
+      "fits": true
+    },
+    {
+      "text": "750.000 ₫",
+      "box": {
+        "x": 31,
+        "y": 287.1875,
+        "width": 258,
+        "height": 64
+      },
+      "fits": true
+    },
+    {
+      "text": "1.000.000 ₫",
+      "box": {
+        "x": 31,
+        "y": 363.1875,
+        "width": 258,
+        "height": 64
+      },
+      "fits": true
+    },
+    {
+      "text": "1.500.000 ₫",
+      "box": {
+        "x": 31,
+        "y": 410.1875,
+        "width": 258,
+        "height": 64
+      },
+      "fits": true
+    },
+    {
+      "text": "Không giới hạn ngân sách",
+      "box": {
+        "x": 31,
+        "y": 211.1875,
+        "width": 258,
+        "height": 64
+      },
+      "fits": true
+    },
+    {
+      "text": "1 lần / tuần\nMột chuyến mua sắm đầu tuần.",
+      "box": {
+        "x": 31,
+        "y": 346.1875,
+        "width": 258,
+        "height": 111.578125
+      },
+      "fits": true
+    },
+    {
+      "text": "2 lần / tuần\nChia nhu cầu mua sắm thành hai chuyến.",
+      "box": {
+        "x": 31,
+        "y": 362.765625,
+        "width": 258,
+        "height": 111.578125
+      },
+      "fits": true
+    },
+    {
+      "text": "3 lần trở lên\nMua bổ sung nhiều lần trong tuần.",
+      "box": {
+        "x": 31,
+        "y": 187.34375,
+        "width": 258,
+        "height": 111.578125
+      },
+      "fits": true
+    },
+    {
+      "text": "Không cố định\nChọn thời điểm phù hợp với bạn.",
+      "box": {
+        "x": 31,
+        "y": 310.921875,
+        "width": 258,
+        "height": 111.578125
+      },
+      "fits": true
+    },
+    {
+      "text": "Áp dụng vào bản nháp",
+      "box": {
+        "x": 31,
+        "y": 249.78125,
+        "width": 186.015625,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Về thực đơn hiện tại",
+      "box": {
+        "x": 31,
+        "y": 309.78125,
+        "width": 168.75,
+        "height": 48
+      },
+      "fits": true
+    }
+  ],
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ]
+}

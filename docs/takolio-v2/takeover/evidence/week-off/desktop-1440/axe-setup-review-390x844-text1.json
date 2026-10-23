@@ -1,0 +1,83 @@
+{
+  "state": "setup-review",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "textScale": 1,
+  "metrics": {
+    "innerWidth": 390,
+    "scrollWidth": 390,
+    "textOutsideViewport": [],
+    "brokenImages": []
+  },
+  "targets": [
+    {
+      "text": "1 lần / tuần\nMột chuyến mua sắm đầu tuần.",
+      "box": {
+        "x": 31,
+        "y": 534.78125,
+        "width": 328,
+        "height": 88.484375
+      },
+      "fits": true
+    },
+    {
+      "text": "2 lần / tuần\nChia nhu cầu mua sắm thành hai chuyến.",
+      "box": {
+        "x": 31,
+        "y": 635.265625,
+        "width": 328,
+        "height": 111.578125
+      },
+      "fits": true
+    },
+    {
+      "text": "3 lần trở lên\nMua bổ sung nhiều lần trong tuần.",
+      "box": {
+        "x": 31,
+        "y": 671.84375,
+        "width": 328,
+        "height": 88.484375
+      },
+      "fits": true
+    },
+    {
+      "text": "Không cố định\nChọn thời điểm phù hợp với bạn.",
+      "box": {
+        "x": 31,
+        "y": 385.328125,
+        "width": 328,
+        "height": 88.484375
+      },
+      "fits": true
+    },
+    {
+      "text": "Bước trước",
+      "box": {
+        "x": 31,
+        "y": 700.078125,
+        "width": 141.96875,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Tạo thực đơn tuần",
+      "box": {
+        "x": 31,
+        "y": 655.078125,
+        "width": 185.34375,
+        "height": 48
+      },
+      "fits": true
+    }
+  ],
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ]
+}

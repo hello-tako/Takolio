@@ -1,0 +1,1076 @@
+{
+  "base_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "implementation_commit": "c91e0747084013e66f1128fafa168984cf46e3bb",
+  "checkpoint_kind": "test-only real paired-flags-OFF compatibility; unchanged existing Week UI and domain code",
+  "coverage": {
+    "projects": [
+      "mobile-390",
+      "desktop-1440"
+    ],
+    "states": [
+      "empty",
+      "setup-review",
+      "generating-held",
+      "board",
+      "meal",
+      "swap-read",
+      "shopping-list",
+      "shopping-active",
+      "settings-session"
+    ],
+    "viewport_text_configs": [
+      [
+        320,
+        568,
+        1
+      ],
+      [
+        320,
+        420,
+        2
+      ],
+      [
+        390,
+        844,
+        1
+      ],
+      [
+        1440,
+        900,
+        1
+      ]
+    ]
+  },
+  "measurements": {
+    "axe": 72,
+    "png": 72,
+    "summaries": 2,
+    "captures": 72,
+    "measured_controls": 512,
+    "incomplete": {
+      "color-contrast": 72
+    }
+  },
+  "entries": [
+    {
+      "path": "desktop-1440/axe-board-1440x900-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-board-1440x900-text1.json",
+      "bytes": 4410,
+      "sha256": "65e272990c4cfe05f0c560e6bfe7a87a326aa29f7dcba6c7ebd94b3defc2934f"
+    },
+    {
+      "path": "desktop-1440/axe-board-320x420-text2.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-board-320x420-text2.json",
+      "bytes": 4394,
+      "sha256": "ef467c52e1db62d375f5ab5e08c5d33114b413355a17b4b076319600e7bc56be"
+    },
+    {
+      "path": "desktop-1440/axe-board-320x568-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-board-320x568-text1.json",
+      "bytes": 4384,
+      "sha256": "82d3dfa9bdd1c564d4cf681e24e311289fb489bf8a7cafa5161288af83d2161d"
+    },
+    {
+      "path": "desktop-1440/axe-board-390x844-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-board-390x844-text1.json",
+      "bytes": 4386,
+      "sha256": "9d263ef79f854c79faf703551c1d0c9e21acc49dd8e39623138f731ecee6a948"
+    },
+    {
+      "path": "desktop-1440/axe-empty-1440x900-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-empty-1440x900-text1.json",
+      "bytes": 537,
+      "sha256": "3c73672e24d1048b85c0ced44a499f59cd327a7455d1fedb416977a1de313319"
+    },
+    {
+      "path": "desktop-1440/axe-empty-320x420-text2.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-empty-320x420-text2.json",
+      "bytes": 537,
+      "sha256": "20e9b70e76e44a1c8cc6f2b29e885dba59dff3cc964b76ceb35c5cd468b67094"
+    },
+    {
+      "path": "desktop-1440/axe-empty-320x568-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-empty-320x568-text1.json",
+      "bytes": 537,
+      "sha256": "065ef788c6d0c7fe7000f1d88609047603aae2c617fb5ed378946ba6aa90f874"
+    },
+    {
+      "path": "desktop-1440/axe-empty-390x844-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-empty-390x844-text1.json",
+      "bytes": 537,
+      "sha256": "d322c7a45ab6e56a413ee95c5c49ab568ca6d64a473cd70e9433e21b992148dc"
+    },
+    {
+      "path": "desktop-1440/axe-generating-held-1440x900-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-generating-held-1440x900-text1.json",
+      "bytes": 359,
+      "sha256": "b689462a31421c163264b59260cdfb8f09d3e50a052de23ca8dd30c714c34727"
+    },
+    {
+      "path": "desktop-1440/axe-generating-held-320x420-text2.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-generating-held-320x420-text2.json",
+      "bytes": 356,
+      "sha256": "e4507a1c83cb81cd80bdc005d626f8553a0effd7d002205aedf0e54a91e70633"
+    },
+    {
+      "path": "desktop-1440/axe-generating-held-320x568-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-generating-held-320x568-text1.json",
+      "bytes": 356,
+      "sha256": "bf95430cb03c7987f8aba16d45c5c1bbaf7eea47b66178a85ec5e1665a5c60ee"
+    },
+    {
+      "path": "desktop-1440/axe-generating-held-390x844-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-generating-held-390x844-text1.json",
+      "bytes": 356,
+      "sha256": "4cbda224bf952c49b026732dfe0f7dabc0a54a8980dd8e2bb0c014f5dfb181b0"
+    },
+    {
+      "path": "desktop-1440/axe-meal-1440x900-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-meal-1440x900-text1.json",
+      "bytes": 1237,
+      "sha256": "38478a8beec223c30452745b027ca8b278ef94c8c01955c395913b568a7322e2"
+    },
+    {
+      "path": "desktop-1440/axe-meal-320x420-text2.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-meal-320x420-text2.json",
+      "bytes": 1214,
+      "sha256": "1233950e28d009b1d7461bad52cd97bddb5c31c7d83dc84bea9dd76937d90fb9"
+    },
+    {
+      "path": "desktop-1440/axe-meal-320x568-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-meal-320x568-text1.json",
+      "bytes": 1214,
+      "sha256": "4da1b3738f8be23adf5804d906d7fce849ac4a7ffc0a4f0c0414c649b08c2945"
+    },
+    {
+      "path": "desktop-1440/axe-meal-390x844-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-meal-390x844-text1.json",
+      "bytes": 1230,
+      "sha256": "bf3006a4b8afe69f11863713f1a6a59a70f0d6c71a71cfb88a2bcea80cc2fd57"
+    },
+    {
+      "path": "desktop-1440/axe-settings-session-1440x900-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-settings-session-1440x900-text1.json",
+      "bytes": 2549,
+      "sha256": "0e6f2df6491c21cf4e2c473f10cc8f5ee9550ba490660e225e22b178cca15202"
+    },
+    {
+      "path": "desktop-1440/axe-settings-session-320x420-text2.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-settings-session-320x420-text2.json",
+      "bytes": 2522,
+      "sha256": "bae2ad3c2911e6a61cd1374caed89660d41b65f947d7bf74431829337b6e6cdd"
+    },
+    {
+      "path": "desktop-1440/axe-settings-session-320x568-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-settings-session-320x568-text1.json",
+      "bytes": 2522,
+      "sha256": "382844ded5ae7f02337afc3141bb0979ea3da20d25365d8ba96f39f3512cdb83"
+    },
+    {
+      "path": "desktop-1440/axe-settings-session-390x844-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-settings-session-390x844-text1.json",
+      "bytes": 2532,
+      "sha256": "92180c659f316e391c0b3f593250d72eba14d029e7eff0463f6aac9d40959d27"
+    },
+    {
+      "path": "desktop-1440/axe-setup-review-1440x900-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-setup-review-1440x900-text1.json",
+      "bytes": 1646,
+      "sha256": "85ff6897ce34d34a376ddb8708a299bba2ff18a660afebbdd8bf45c8c114018f"
+    },
+    {
+      "path": "desktop-1440/axe-setup-review-320x420-text2.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-setup-review-320x420-text2.json",
+      "bytes": 1636,
+      "sha256": "42ff2505f74139f36d1aea877b9c651405deafe1abf6c0e400d8473948e36e91"
+    },
+    {
+      "path": "desktop-1440/axe-setup-review-320x568-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-setup-review-320x568-text1.json",
+      "bytes": 1638,
+      "sha256": "9b61fdc6c76a734a98a8cd5a5028c6a355c80932ecb6802d01ef4269b90a85fe"
+    },
+    {
+      "path": "desktop-1440/axe-setup-review-390x844-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-setup-review-390x844-text1.json",
+      "bytes": 1636,
+      "sha256": "4a73af0db7a5bc42ca81855c05325688d8b300ce9f96ac7fdbdfa22280f75f81"
+    },
+    {
+      "path": "desktop-1440/axe-shopping-active-1440x900-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-shopping-active-1440x900-text1.json",
+      "bytes": 1119,
+      "sha256": "e941262c1c337807d84e72492eeb2b90ca3b2897f0d8c222c507a11adda0feed"
+    },
+    {
+      "path": "desktop-1440/axe-shopping-active-320x420-text2.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-shopping-active-320x420-text2.json",
+      "bytes": 1105,
+      "sha256": "ca001fa00910a95bce2847bcdc406ad76758f73952cbe9453b3ef1845548e581"
+    },
+    {
+      "path": "desktop-1440/axe-shopping-active-320x568-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-shopping-active-320x568-text1.json",
+      "bytes": 1105,
+      "sha256": "197e8c64c706100ddc613c1b57d674dee67d03da8f6926d4e4dbbf28c6893cf0"
+    },
+    {
+      "path": "desktop-1440/axe-shopping-active-390x844-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-shopping-active-390x844-text1.json",
+      "bytes": 1110,
+      "sha256": "db3a308ca563553c2387a021e17bc75b6320bc5450f22ecec7f0fad6ee49da57"
+    },
+    {
+      "path": "desktop-1440/axe-shopping-list-1440x900-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-shopping-list-1440x900-text1.json",
+      "bytes": 903,
+      "sha256": "b3721be9b5a3961fe787a42b5969562ba24cebdd8cb8a92140f0b0ec594d0d2c"
+    },
+    {
+      "path": "desktop-1440/axe-shopping-list-320x420-text2.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-shopping-list-320x420-text2.json",
+      "bytes": 905,
+      "sha256": "be9278defca8c3db8e0a76e7e10d020b5ce7cc429a4a68e439ee7d502dca7e1b"
+    },
+    {
+      "path": "desktop-1440/axe-shopping-list-320x568-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-shopping-list-320x568-text1.json",
+      "bytes": 903,
+      "sha256": "d74f5e59bbd0ce2660129b0e17554028c36ea883fd03f5168b56babe8c88aec8"
+    },
+    {
+      "path": "desktop-1440/axe-shopping-list-390x844-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-shopping-list-390x844-text1.json",
+      "bytes": 903,
+      "sha256": "713c58af807323710f31ae7f0fcf4bd6718187724f67585b6354c0e5823d5009"
+    },
+    {
+      "path": "desktop-1440/axe-swap-read-1440x900-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-swap-read-1440x900-text1.json",
+      "bytes": 2280,
+      "sha256": "e76435e281147d424e44f9d42cb7c5dd626770fbff1788988ea8e3c9626a5df7"
+    },
+    {
+      "path": "desktop-1440/axe-swap-read-320x420-text2.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-swap-read-320x420-text2.json",
+      "bytes": 2210,
+      "sha256": "bdb760195004188f5f8e243a25e3ebd2bc0b21a3182a1d1a96bae6296d9317f7"
+    },
+    {
+      "path": "desktop-1440/axe-swap-read-320x568-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-swap-read-320x568-text1.json",
+      "bytes": 2202,
+      "sha256": "f340a4a830804fadbddb5168667a0337b1f594d0ffbf9051832b4cd170e58866"
+    },
+    {
+      "path": "desktop-1440/axe-swap-read-390x844-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/axe-swap-read-390x844-text1.json",
+      "bytes": 2235,
+      "sha256": "808175388e8ae09b68ea5e28082ae9d32fe5b3619e0410dac351bdb417e082a8"
+    },
+    {
+      "path": "desktop-1440/board-1440x900-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/board-1440x900-text1.png",
+      "bytes": 796745,
+      "sha256": "e83f53108ed1e6f9336f78b87307842ad1a16660745aae55994bd8707df56972",
+      "width": 1440,
+      "height": 4203
+    },
+    {
+      "path": "desktop-1440/board-320x420-text2.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/board-320x420-text2.png",
+      "bytes": 624904,
+      "sha256": "5acb6cc13a52aeaeaf8b581ab21f6a0ff47605d48ec57be83d657d53eba9b7f6",
+      "width": 320,
+      "height": 8158
+    },
+    {
+      "path": "desktop-1440/board-320x568-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/board-320x568-text1.png",
+      "bytes": 689036,
+      "sha256": "a4c89d580892f3763cebade27d256734603141a32f3ec96f5f38822c378d94ed",
+      "width": 320,
+      "height": 7879
+    },
+    {
+      "path": "desktop-1440/board-390x844-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/board-390x844-text1.png",
+      "bytes": 726827,
+      "sha256": "55c6ab81c0c68ab12ee77caf2b5ca9408edc8150580487984ede59fae6ea5fb7",
+      "width": 390,
+      "height": 7785
+    },
+    {
+      "path": "desktop-1440/empty-1440x900-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/empty-1440x900-text1.png",
+      "bytes": 158269,
+      "sha256": "5f0f6aa76e5d568b9ade33e39c9522e23901f051ec806c5d460c97c32b169650",
+      "width": 1440,
+      "height": 916
+    },
+    {
+      "path": "desktop-1440/empty-320x420-text2.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/empty-320x420-text2.png",
+      "bytes": 105482,
+      "sha256": "5c3d7fec19714ac7c6eb8d3e43d76cb9e908846ae4d9be8e42f8f6cf56261f7f",
+      "width": 320,
+      "height": 942
+    },
+    {
+      "path": "desktop-1440/empty-320x568-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/empty-320x568-text1.png",
+      "bytes": 58342,
+      "sha256": "e8ce4aba92ef0e559d92b675656f3f3999294520404d4f6ec1a326e8ac393eda",
+      "width": 320,
+      "height": 666
+    },
+    {
+      "path": "desktop-1440/empty-390x844-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/empty-390x844-text1.png",
+      "bytes": 70206,
+      "sha256": "5a3dd0a1fc648a6162e4ae90a8cb6b51ac45fe2fe48e93fbf59fb153b2bf038b",
+      "width": 390,
+      "height": 932
+    },
+    {
+      "path": "desktop-1440/generating-held-1440x900-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/generating-held-1440x900-text1.png",
+      "bytes": 151339,
+      "sha256": "8cde18623e450f03899cd7c49b9eb1a795185a8c88133735ced10eaba3a97e66",
+      "width": 1440,
+      "height": 916
+    },
+    {
+      "path": "desktop-1440/generating-held-320x420-text2.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/generating-held-320x420-text2.png",
+      "bytes": 137630,
+      "sha256": "85c552a4cfa5ca529faa73c998794f4cdde92d19582b1c515d17a64c657dc87d",
+      "width": 320,
+      "height": 1148
+    },
+    {
+      "path": "desktop-1440/generating-held-320x568-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/generating-held-320x568-text1.png",
+      "bytes": 70576,
+      "sha256": "52fcf8c19a7620002657093388061780deede47c988ddf1a1ce9ba1a59304681",
+      "width": 320,
+      "height": 746
+    },
+    {
+      "path": "desktop-1440/generating-held-390x844-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/generating-held-390x844-text1.png",
+      "bytes": 79932,
+      "sha256": "d1c415218fc028f34eed8d8d32b0c102889818dcc7754039ef2749cc68e2d5cc",
+      "width": 390,
+      "height": 932
+    },
+    {
+      "path": "desktop-1440/meal-1440x900-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/meal-1440x900-text1.png",
+      "bytes": 298519,
+      "sha256": "9b07df79a32eef29de79b70d0c02edd602fd545985522d9db4485bcbb4d61cbb",
+      "width": 1440,
+      "height": 1380
+    },
+    {
+      "path": "desktop-1440/meal-320x420-text2.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/meal-320x420-text2.png",
+      "bytes": 210278,
+      "sha256": "9f74b6d305431f77bfd9e5fa9cbfcc13beb42ae265484acd28d82f3f73320e2e",
+      "width": 320,
+      "height": 2706
+    },
+    {
+      "path": "desktop-1440/meal-320x568-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/meal-320x568-text1.png",
+      "bytes": 166527,
+      "sha256": "b084c2b78e80ec60370941b696d448bafb5b793d198e681306f955efcd8de062",
+      "width": 320,
+      "height": 2266
+    },
+    {
+      "path": "desktop-1440/meal-390x844-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/meal-390x844-text1.png",
+      "bytes": 164697,
+      "sha256": "ef1d4b88cbfb0b0adeb58f424748d040d18f99145f6369149ed67da635bd2f32",
+      "width": 390,
+      "height": 2067
+    },
+    {
+      "path": "desktop-1440/settings-session-1440x900-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/settings-session-1440x900-text1.png",
+      "bytes": 214421,
+      "sha256": "b345f704922640dac4b178193070c6d529fa0897c8999a417914170852953ffe",
+      "width": 1440,
+      "height": 1209
+    },
+    {
+      "path": "desktop-1440/settings-session-320x420-text2.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/settings-session-320x420-text2.png",
+      "bytes": 217980,
+      "sha256": "7c0cb41a84bd9579942b97ab9cfb1e281819b0226fba8548acd23045ac9d5a26",
+      "width": 320,
+      "height": 2142
+    },
+    {
+      "path": "desktop-1440/settings-session-320x568-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/settings-session-320x568-text1.png",
+      "bytes": 129091,
+      "sha256": "67b890c2cacb86fd803a0b52328072abf90025d477e811aac63dd57175837602",
+      "width": 320,
+      "height": 1772
+    },
+    {
+      "path": "desktop-1440/settings-session-390x844-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/settings-session-390x844-text1.png",
+      "bytes": 143064,
+      "sha256": "808161518add06c215b6b9915568d6863f064313d6dd2c27d2146a05ece45740",
+      "width": 390,
+      "height": 1648
+    },
+    {
+      "path": "desktop-1440/setup-review-1440x900-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/setup-review-1440x900-text1.png",
+      "bytes": 293956,
+      "sha256": "5b543a13f67dd5f69f186631d1ea5c82f28662ad0a2d07ce4883f3cc4ce4540c",
+      "width": 1440,
+      "height": 1167
+    },
+    {
+      "path": "desktop-1440/setup-review-320x420-text2.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/setup-review-320x420-text2.png",
+      "bytes": 190014,
+      "sha256": "4a9aa00952038da40915efa76f24d6c809040ac3af5ea6d460d7ef1239ed1304",
+      "width": 320,
+      "height": 2087
+    },
+    {
+      "path": "desktop-1440/setup-review-320x568-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/setup-review-320x568-text1.png",
+      "bytes": 151376,
+      "sha256": "5897928bd878c07976d9d7af32f21bbae0e802e59add0aa3336fa9e3cb08895b",
+      "width": 320,
+      "height": 1590
+    },
+    {
+      "path": "desktop-1440/setup-review-390x844-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/setup-review-390x844-text1.png",
+      "bytes": 153548,
+      "sha256": "37f85e087e1e13dba7299e67f27de326a1beb7e9d099cadd1496606095a43376",
+      "width": 390,
+      "height": 1465
+    },
+    {
+      "path": "desktop-1440/shopping-active-1440x900-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/shopping-active-1440x900-text1.png",
+      "bytes": 804665,
+      "sha256": "e984e4a2ac711a42003d59d65aa57736f86ab45f50a2e4195caaca9ae0d9e000",
+      "width": 1440,
+      "height": 3774
+    },
+    {
+      "path": "desktop-1440/shopping-active-320x420-text2.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/shopping-active-320x420-text2.png",
+      "bytes": 607451,
+      "sha256": "7d8655dd85934e4b36f570bdf1016ae8dc690cd9134994b29d97ce8e809af52d",
+      "width": 320,
+      "height": 6280
+    },
+    {
+      "path": "desktop-1440/shopping-active-320x568-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/shopping-active-320x568-text1.png",
+      "bytes": 498571,
+      "sha256": "df8f67e65757559dbee2f14b103ffb1ce74dfc31f55a9c8abac82da8e25a89bd",
+      "width": 320,
+      "height": 5881
+    },
+    {
+      "path": "desktop-1440/shopping-active-390x844-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/shopping-active-390x844-text1.png",
+      "bytes": 546007,
+      "sha256": "25f4c1c223feeb64ed142cbd2d2a8b15b1185a3613354d604a466234ceb069bc",
+      "width": 390,
+      "height": 5152
+    },
+    {
+      "path": "desktop-1440/shopping-list-1440x900-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/shopping-list-1440x900-text1.png",
+      "bytes": 795789,
+      "sha256": "e6965f550613d0fcee9be221f40ac5a1be1f6603eba61ebeaff579a639a07174",
+      "width": 1440,
+      "height": 3774
+    },
+    {
+      "path": "desktop-1440/shopping-list-320x420-text2.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/shopping-list-320x420-text2.png",
+      "bytes": 535477,
+      "sha256": "77f9fa440887abdcbf2f67d9572269136887ec9baf279e418711734581d8414b",
+      "width": 320,
+      "height": 6124
+    },
+    {
+      "path": "desktop-1440/shopping-list-320x568-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/shopping-list-320x568-text1.png",
+      "bytes": 490139,
+      "sha256": "93619361eac99d35c626c641756ce93464d108514844e782ff7ceb6410329a00",
+      "width": 320,
+      "height": 5778
+    },
+    {
+      "path": "desktop-1440/shopping-list-390x844-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/shopping-list-390x844-text1.png",
+      "bytes": 537540,
+      "sha256": "0f2417c9a1a278807eab05e02f8f335431379ad5c40e57d89cb8a3fe898ef12f",
+      "width": 390,
+      "height": 5092
+    },
+    {
+      "path": "desktop-1440/swap-read-1440x900-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/swap-read-1440x900-text1.png",
+      "bytes": 242098,
+      "sha256": "2fb4bc3ab2f90327eb77cf55a98c73f5ac04b1437c9676c4320dfe6f51a71e41",
+      "width": 1440,
+      "height": 1380
+    },
+    {
+      "path": "desktop-1440/swap-read-320x420-text2.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/swap-read-320x420-text2.png",
+      "bytes": 178078,
+      "sha256": "15db53cf9ed2b268574b1b5b19fe8e70d7a2bd28ea6ec430dbb297dfc7b8e79f",
+      "width": 320,
+      "height": 2706
+    },
+    {
+      "path": "desktop-1440/swap-read-320x568-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/swap-read-320x568-text1.png",
+      "bytes": 160188,
+      "sha256": "4476e4a54b61f42bf25c41ae0442c1e0690d727b8f673c45dcb530550eee28d0",
+      "width": 320,
+      "height": 2266
+    },
+    {
+      "path": "desktop-1440/swap-read-390x844-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/swap-read-390x844-text1.png",
+      "bytes": 146311,
+      "sha256": "ca3927a32ce9e1860ddcf675652c2ba1ccc16312bd2c1aed3d3b496dc2df8239",
+      "width": 390,
+      "height": 2067
+    },
+    {
+      "path": "desktop-1440/week-off-summary.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-desktop-1440/week-off-summary.json",
+      "bytes": 69784,
+      "sha256": "c39d68ad13267bed9b71a1dca0fa26e1b985e5c6f89776b50ba541624d1c35c3"
+    },
+    {
+      "path": "mobile-390/axe-board-1440x900-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-board-1440x900-text1.json",
+      "bytes": 4410,
+      "sha256": "65e272990c4cfe05f0c560e6bfe7a87a326aa29f7dcba6c7ebd94b3defc2934f"
+    },
+    {
+      "path": "mobile-390/axe-board-320x420-text2.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-board-320x420-text2.json",
+      "bytes": 4394,
+      "sha256": "ef467c52e1db62d375f5ab5e08c5d33114b413355a17b4b076319600e7bc56be"
+    },
+    {
+      "path": "mobile-390/axe-board-320x568-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-board-320x568-text1.json",
+      "bytes": 4384,
+      "sha256": "82d3dfa9bdd1c564d4cf681e24e311289fb489bf8a7cafa5161288af83d2161d"
+    },
+    {
+      "path": "mobile-390/axe-board-390x844-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-board-390x844-text1.json",
+      "bytes": 4386,
+      "sha256": "9d263ef79f854c79faf703551c1d0c9e21acc49dd8e39623138f731ecee6a948"
+    },
+    {
+      "path": "mobile-390/axe-empty-1440x900-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-empty-1440x900-text1.json",
+      "bytes": 537,
+      "sha256": "3c73672e24d1048b85c0ced44a499f59cd327a7455d1fedb416977a1de313319"
+    },
+    {
+      "path": "mobile-390/axe-empty-320x420-text2.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-empty-320x420-text2.json",
+      "bytes": 537,
+      "sha256": "20e9b70e76e44a1c8cc6f2b29e885dba59dff3cc964b76ceb35c5cd468b67094"
+    },
+    {
+      "path": "mobile-390/axe-empty-320x568-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-empty-320x568-text1.json",
+      "bytes": 537,
+      "sha256": "065ef788c6d0c7fe7000f1d88609047603aae2c617fb5ed378946ba6aa90f874"
+    },
+    {
+      "path": "mobile-390/axe-empty-390x844-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-empty-390x844-text1.json",
+      "bytes": 537,
+      "sha256": "d322c7a45ab6e56a413ee95c5c49ab568ca6d64a473cd70e9433e21b992148dc"
+    },
+    {
+      "path": "mobile-390/axe-generating-held-1440x900-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-generating-held-1440x900-text1.json",
+      "bytes": 359,
+      "sha256": "b689462a31421c163264b59260cdfb8f09d3e50a052de23ca8dd30c714c34727"
+    },
+    {
+      "path": "mobile-390/axe-generating-held-320x420-text2.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-generating-held-320x420-text2.json",
+      "bytes": 356,
+      "sha256": "e4507a1c83cb81cd80bdc005d626f8553a0effd7d002205aedf0e54a91e70633"
+    },
+    {
+      "path": "mobile-390/axe-generating-held-320x568-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-generating-held-320x568-text1.json",
+      "bytes": 356,
+      "sha256": "bf95430cb03c7987f8aba16d45c5c1bbaf7eea47b66178a85ec5e1665a5c60ee"
+    },
+    {
+      "path": "mobile-390/axe-generating-held-390x844-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-generating-held-390x844-text1.json",
+      "bytes": 356,
+      "sha256": "4cbda224bf952c49b026732dfe0f7dabc0a54a8980dd8e2bb0c014f5dfb181b0"
+    },
+    {
+      "path": "mobile-390/axe-meal-1440x900-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-meal-1440x900-text1.json",
+      "bytes": 1237,
+      "sha256": "38478a8beec223c30452745b027ca8b278ef94c8c01955c395913b568a7322e2"
+    },
+    {
+      "path": "mobile-390/axe-meal-320x420-text2.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-meal-320x420-text2.json",
+      "bytes": 1214,
+      "sha256": "1233950e28d009b1d7461bad52cd97bddb5c31c7d83dc84bea9dd76937d90fb9"
+    },
+    {
+      "path": "mobile-390/axe-meal-320x568-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-meal-320x568-text1.json",
+      "bytes": 1213,
+      "sha256": "11745270bb76effe5c281e3287337f949e682fba7f6ad3254d9bbf5da1ac71de"
+    },
+    {
+      "path": "mobile-390/axe-meal-390x844-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-meal-390x844-text1.json",
+      "bytes": 1230,
+      "sha256": "bf3006a4b8afe69f11863713f1a6a59a70f0d6c71a71cfb88a2bcea80cc2fd57"
+    },
+    {
+      "path": "mobile-390/axe-settings-session-1440x900-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-settings-session-1440x900-text1.json",
+      "bytes": 2549,
+      "sha256": "0e6f2df6491c21cf4e2c473f10cc8f5ee9550ba490660e225e22b178cca15202"
+    },
+    {
+      "path": "mobile-390/axe-settings-session-320x420-text2.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-settings-session-320x420-text2.json",
+      "bytes": 2522,
+      "sha256": "bae2ad3c2911e6a61cd1374caed89660d41b65f947d7bf74431829337b6e6cdd"
+    },
+    {
+      "path": "mobile-390/axe-settings-session-320x568-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-settings-session-320x568-text1.json",
+      "bytes": 2522,
+      "sha256": "777fa4790b9678c036e3815e98095aed1ec377663692840eea6e024b1f9c7aa3"
+    },
+    {
+      "path": "mobile-390/axe-settings-session-390x844-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-settings-session-390x844-text1.json",
+      "bytes": 2532,
+      "sha256": "92180c659f316e391c0b3f593250d72eba14d029e7eff0463f6aac9d40959d27"
+    },
+    {
+      "path": "mobile-390/axe-setup-review-1440x900-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-setup-review-1440x900-text1.json",
+      "bytes": 1646,
+      "sha256": "85ff6897ce34d34a376ddb8708a299bba2ff18a660afebbdd8bf45c8c114018f"
+    },
+    {
+      "path": "mobile-390/axe-setup-review-320x420-text2.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-setup-review-320x420-text2.json",
+      "bytes": 1636,
+      "sha256": "42ff2505f74139f36d1aea877b9c651405deafe1abf6c0e400d8473948e36e91"
+    },
+    {
+      "path": "mobile-390/axe-setup-review-320x568-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-setup-review-320x568-text1.json",
+      "bytes": 1638,
+      "sha256": "9b61fdc6c76a734a98a8cd5a5028c6a355c80932ecb6802d01ef4269b90a85fe"
+    },
+    {
+      "path": "mobile-390/axe-setup-review-390x844-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-setup-review-390x844-text1.json",
+      "bytes": 1636,
+      "sha256": "4a73af0db7a5bc42ca81855c05325688d8b300ce9f96ac7fdbdfa22280f75f81"
+    },
+    {
+      "path": "mobile-390/axe-shopping-active-1440x900-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-shopping-active-1440x900-text1.json",
+      "bytes": 1119,
+      "sha256": "e941262c1c337807d84e72492eeb2b90ca3b2897f0d8c222c507a11adda0feed"
+    },
+    {
+      "path": "mobile-390/axe-shopping-active-320x420-text2.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-shopping-active-320x420-text2.json",
+      "bytes": 1105,
+      "sha256": "ca001fa00910a95bce2847bcdc406ad76758f73952cbe9453b3ef1845548e581"
+    },
+    {
+      "path": "mobile-390/axe-shopping-active-320x568-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-shopping-active-320x568-text1.json",
+      "bytes": 1105,
+      "sha256": "99279808a22ef8c57ffa3fb174223f4cdf9bd3e9915b8cff489606cec88d6731"
+    },
+    {
+      "path": "mobile-390/axe-shopping-active-390x844-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-shopping-active-390x844-text1.json",
+      "bytes": 1110,
+      "sha256": "db3a308ca563553c2387a021e17bc75b6320bc5450f22ecec7f0fad6ee49da57"
+    },
+    {
+      "path": "mobile-390/axe-shopping-list-1440x900-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-shopping-list-1440x900-text1.json",
+      "bytes": 903,
+      "sha256": "b3721be9b5a3961fe787a42b5969562ba24cebdd8cb8a92140f0b0ec594d0d2c"
+    },
+    {
+      "path": "mobile-390/axe-shopping-list-320x420-text2.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-shopping-list-320x420-text2.json",
+      "bytes": 905,
+      "sha256": "be9278defca8c3db8e0a76e7e10d020b5ce7cc429a4a68e439ee7d502dca7e1b"
+    },
+    {
+      "path": "mobile-390/axe-shopping-list-320x568-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-shopping-list-320x568-text1.json",
+      "bytes": 903,
+      "sha256": "d74f5e59bbd0ce2660129b0e17554028c36ea883fd03f5168b56babe8c88aec8"
+    },
+    {
+      "path": "mobile-390/axe-shopping-list-390x844-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-shopping-list-390x844-text1.json",
+      "bytes": 903,
+      "sha256": "713c58af807323710f31ae7f0fcf4bd6718187724f67585b6354c0e5823d5009"
+    },
+    {
+      "path": "mobile-390/axe-swap-read-1440x900-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-swap-read-1440x900-text1.json",
+      "bytes": 2280,
+      "sha256": "e76435e281147d424e44f9d42cb7c5dd626770fbff1788988ea8e3c9626a5df7"
+    },
+    {
+      "path": "mobile-390/axe-swap-read-320x420-text2.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-swap-read-320x420-text2.json",
+      "bytes": 2210,
+      "sha256": "bdb760195004188f5f8e243a25e3ebd2bc0b21a3182a1d1a96bae6296d9317f7"
+    },
+    {
+      "path": "mobile-390/axe-swap-read-320x568-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-swap-read-320x568-text1.json",
+      "bytes": 2202,
+      "sha256": "c4c31e11c31cc5e03671e7a5f65714af44b7406fbe45dc633a4b4d8f9325f9e9"
+    },
+    {
+      "path": "mobile-390/axe-swap-read-390x844-text1.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/axe-swap-read-390x844-text1.json",
+      "bytes": 2235,
+      "sha256": "808175388e8ae09b68ea5e28082ae9d32fe5b3619e0410dac351bdb417e082a8"
+    },
+    {
+      "path": "mobile-390/board-1440x900-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/board-1440x900-text1.png",
+      "bytes": 796745,
+      "sha256": "e83f53108ed1e6f9336f78b87307842ad1a16660745aae55994bd8707df56972",
+      "width": 1440,
+      "height": 4203
+    },
+    {
+      "path": "mobile-390/board-320x420-text2.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/board-320x420-text2.png",
+      "bytes": 624904,
+      "sha256": "5acb6cc13a52aeaeaf8b581ab21f6a0ff47605d48ec57be83d657d53eba9b7f6",
+      "width": 320,
+      "height": 8158
+    },
+    {
+      "path": "mobile-390/board-320x568-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/board-320x568-text1.png",
+      "bytes": 689036,
+      "sha256": "a4c89d580892f3763cebade27d256734603141a32f3ec96f5f38822c378d94ed",
+      "width": 320,
+      "height": 7879
+    },
+    {
+      "path": "mobile-390/board-390x844-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/board-390x844-text1.png",
+      "bytes": 726827,
+      "sha256": "55c6ab81c0c68ab12ee77caf2b5ca9408edc8150580487984ede59fae6ea5fb7",
+      "width": 390,
+      "height": 7785
+    },
+    {
+      "path": "mobile-390/empty-1440x900-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/empty-1440x900-text1.png",
+      "bytes": 158269,
+      "sha256": "5f0f6aa76e5d568b9ade33e39c9522e23901f051ec806c5d460c97c32b169650",
+      "width": 1440,
+      "height": 916
+    },
+    {
+      "path": "mobile-390/empty-320x420-text2.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/empty-320x420-text2.png",
+      "bytes": 105482,
+      "sha256": "5c3d7fec19714ac7c6eb8d3e43d76cb9e908846ae4d9be8e42f8f6cf56261f7f",
+      "width": 320,
+      "height": 942
+    },
+    {
+      "path": "mobile-390/empty-320x568-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/empty-320x568-text1.png",
+      "bytes": 58342,
+      "sha256": "e8ce4aba92ef0e559d92b675656f3f3999294520404d4f6ec1a326e8ac393eda",
+      "width": 320,
+      "height": 666
+    },
+    {
+      "path": "mobile-390/empty-390x844-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/empty-390x844-text1.png",
+      "bytes": 70206,
+      "sha256": "5a3dd0a1fc648a6162e4ae90a8cb6b51ac45fe2fe48e93fbf59fb153b2bf038b",
+      "width": 390,
+      "height": 932
+    },
+    {
+      "path": "mobile-390/generating-held-1440x900-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/generating-held-1440x900-text1.png",
+      "bytes": 151339,
+      "sha256": "8cde18623e450f03899cd7c49b9eb1a795185a8c88133735ced10eaba3a97e66",
+      "width": 1440,
+      "height": 916
+    },
+    {
+      "path": "mobile-390/generating-held-320x420-text2.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/generating-held-320x420-text2.png",
+      "bytes": 137630,
+      "sha256": "85c552a4cfa5ca529faa73c998794f4cdde92d19582b1c515d17a64c657dc87d",
+      "width": 320,
+      "height": 1148
+    },
+    {
+      "path": "mobile-390/generating-held-320x568-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/generating-held-320x568-text1.png",
+      "bytes": 70576,
+      "sha256": "52fcf8c19a7620002657093388061780deede47c988ddf1a1ce9ba1a59304681",
+      "width": 320,
+      "height": 746
+    },
+    {
+      "path": "mobile-390/generating-held-390x844-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/generating-held-390x844-text1.png",
+      "bytes": 79932,
+      "sha256": "d1c415218fc028f34eed8d8d32b0c102889818dcc7754039ef2749cc68e2d5cc",
+      "width": 390,
+      "height": 932
+    },
+    {
+      "path": "mobile-390/meal-1440x900-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/meal-1440x900-text1.png",
+      "bytes": 298519,
+      "sha256": "9b07df79a32eef29de79b70d0c02edd602fd545985522d9db4485bcbb4d61cbb",
+      "width": 1440,
+      "height": 1380
+    },
+    {
+      "path": "mobile-390/meal-320x420-text2.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/meal-320x420-text2.png",
+      "bytes": 210278,
+      "sha256": "9f74b6d305431f77bfd9e5fa9cbfcc13beb42ae265484acd28d82f3f73320e2e",
+      "width": 320,
+      "height": 2706
+    },
+    {
+      "path": "mobile-390/meal-320x568-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/meal-320x568-text1.png",
+      "bytes": 166527,
+      "sha256": "b084c2b78e80ec60370941b696d448bafb5b793d198e681306f955efcd8de062",
+      "width": 320,
+      "height": 2266
+    },
+    {
+      "path": "mobile-390/meal-390x844-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/meal-390x844-text1.png",
+      "bytes": 164697,
+      "sha256": "ef1d4b88cbfb0b0adeb58f424748d040d18f99145f6369149ed67da635bd2f32",
+      "width": 390,
+      "height": 2067
+    },
+    {
+      "path": "mobile-390/settings-session-1440x900-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/settings-session-1440x900-text1.png",
+      "bytes": 214421,
+      "sha256": "b345f704922640dac4b178193070c6d529fa0897c8999a417914170852953ffe",
+      "width": 1440,
+      "height": 1209
+    },
+    {
+      "path": "mobile-390/settings-session-320x420-text2.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/settings-session-320x420-text2.png",
+      "bytes": 217980,
+      "sha256": "7c0cb41a84bd9579942b97ab9cfb1e281819b0226fba8548acd23045ac9d5a26",
+      "width": 320,
+      "height": 2142
+    },
+    {
+      "path": "mobile-390/settings-session-320x568-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/settings-session-320x568-text1.png",
+      "bytes": 129091,
+      "sha256": "67b890c2cacb86fd803a0b52328072abf90025d477e811aac63dd57175837602",
+      "width": 320,
+      "height": 1772
+    },
+    {
+      "path": "mobile-390/settings-session-390x844-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/settings-session-390x844-text1.png",
+      "bytes": 143064,
+      "sha256": "808161518add06c215b6b9915568d6863f064313d6dd2c27d2146a05ece45740",
+      "width": 390,
+      "height": 1648
+    },
+    {
+      "path": "mobile-390/setup-review-1440x900-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/setup-review-1440x900-text1.png",
+      "bytes": 293956,
+      "sha256": "5b543a13f67dd5f69f186631d1ea5c82f28662ad0a2d07ce4883f3cc4ce4540c",
+      "width": 1440,
+      "height": 1167
+    },
+    {
+      "path": "mobile-390/setup-review-320x420-text2.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/setup-review-320x420-text2.png",
+      "bytes": 190014,
+      "sha256": "4a9aa00952038da40915efa76f24d6c809040ac3af5ea6d460d7ef1239ed1304",
+      "width": 320,
+      "height": 2087
+    },
+    {
+      "path": "mobile-390/setup-review-320x568-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/setup-review-320x568-text1.png",
+      "bytes": 151376,
+      "sha256": "5897928bd878c07976d9d7af32f21bbae0e802e59add0aa3336fa9e3cb08895b",
+      "width": 320,
+      "height": 1590
+    },
+    {
+      "path": "mobile-390/setup-review-390x844-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/setup-review-390x844-text1.png",
+      "bytes": 153548,
+      "sha256": "37f85e087e1e13dba7299e67f27de326a1beb7e9d099cadd1496606095a43376",
+      "width": 390,
+      "height": 1465
+    },
+    {
+      "path": "mobile-390/shopping-active-1440x900-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/shopping-active-1440x900-text1.png",
+      "bytes": 804665,
+      "sha256": "e984e4a2ac711a42003d59d65aa57736f86ab45f50a2e4195caaca9ae0d9e000",
+      "width": 1440,
+      "height": 3774
+    },
+    {
+      "path": "mobile-390/shopping-active-320x420-text2.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/shopping-active-320x420-text2.png",
+      "bytes": 607451,
+      "sha256": "7d8655dd85934e4b36f570bdf1016ae8dc690cd9134994b29d97ce8e809af52d",
+      "width": 320,
+      "height": 6280
+    },
+    {
+      "path": "mobile-390/shopping-active-320x568-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/shopping-active-320x568-text1.png",
+      "bytes": 498571,
+      "sha256": "df8f67e65757559dbee2f14b103ffb1ce74dfc31f55a9c8abac82da8e25a89bd",
+      "width": 320,
+      "height": 5881
+    },
+    {
+      "path": "mobile-390/shopping-active-390x844-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/shopping-active-390x844-text1.png",
+      "bytes": 546007,
+      "sha256": "25f4c1c223feeb64ed142cbd2d2a8b15b1185a3613354d604a466234ceb069bc",
+      "width": 390,
+      "height": 5152
+    },
+    {
+      "path": "mobile-390/shopping-list-1440x900-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/shopping-list-1440x900-text1.png",
+      "bytes": 795789,
+      "sha256": "e6965f550613d0fcee9be221f40ac5a1be1f6603eba61ebeaff579a639a07174",
+      "width": 1440,
+      "height": 3774
+    },
+    {
+      "path": "mobile-390/shopping-list-320x420-text2.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/shopping-list-320x420-text2.png",
+      "bytes": 535477,
+      "sha256": "77f9fa440887abdcbf2f67d9572269136887ec9baf279e418711734581d8414b",
+      "width": 320,
+      "height": 6124
+    },
+    {
+      "path": "mobile-390/shopping-list-320x568-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/shopping-list-320x568-text1.png",
+      "bytes": 490139,
+      "sha256": "93619361eac99d35c626c641756ce93464d108514844e782ff7ceb6410329a00",
+      "width": 320,
+      "height": 5778
+    },
+    {
+      "path": "mobile-390/shopping-list-390x844-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/shopping-list-390x844-text1.png",
+      "bytes": 537540,
+      "sha256": "0f2417c9a1a278807eab05e02f8f335431379ad5c40e57d89cb8a3fe898ef12f",
+      "width": 390,
+      "height": 5092
+    },
+    {
+      "path": "mobile-390/swap-read-1440x900-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/swap-read-1440x900-text1.png",
+      "bytes": 242098,
+      "sha256": "2fb4bc3ab2f90327eb77cf55a98c73f5ac04b1437c9676c4320dfe6f51a71e41",
+      "width": 1440,
+      "height": 1380
+    },
+    {
+      "path": "mobile-390/swap-read-320x420-text2.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/swap-read-320x420-text2.png",
+      "bytes": 178078,
+      "sha256": "15db53cf9ed2b268574b1b5b19fe8e70d7a2bd28ea6ec430dbb297dfc7b8e79f",
+      "width": 320,
+      "height": 2706
+    },
+    {
+      "path": "mobile-390/swap-read-320x568-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/swap-read-320x568-text1.png",
+      "bytes": 160188,
+      "sha256": "4476e4a54b61f42bf25c41ae0442c1e0690d727b8f673c45dcb530550eee28d0",
+      "width": 320,
+      "height": 2266
+    },
+    {
+      "path": "mobile-390/swap-read-390x844-text1.png",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/swap-read-390x844-text1.png",
+      "bytes": 146311,
+      "sha256": "ca3927a32ce9e1860ddcf675652c2ba1ccc16312bd2c1aed3d3b496dc2df8239",
+      "width": 390,
+      "height": 2067
+    },
+    {
+      "path": "mobile-390/week-off-summary.json",
+      "raw_source": ".artifacts/takeover/week-off/final3/takolio-week-flag-off-real-dcd8f-es-settings-stay-in-session-mobile-390/week-off-summary.json",
+      "bytes": 69783,
+      "sha256": "e033145b8bc7f4ec3845e07c5d5cee7641de569e4451c99457ee6c827fd663f5"
+    }
+  ]
+}

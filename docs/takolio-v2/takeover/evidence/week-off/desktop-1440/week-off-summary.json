@@ -1,0 +1,3186 @@
+{
+  "gates": [
+    {
+      "path": "/api/v1/meal-planning/plans/current",
+      "status": 404,
+      "body": {
+        "code": "MEAL_PLANNER_DISABLED",
+        "error": "Meal planner is not enabled"
+      }
+    },
+    {
+      "path": "/api/v2/meal-planning/plans/current",
+      "status": 404,
+      "body": {
+        "code": "MEAL_COMPOSITION_DISABLED",
+        "error": "Family meal planning is not enabled"
+      }
+    }
+  ],
+  "aliases": [
+    "/planner",
+    "/planner/new",
+    "/planner/compat-plan",
+    "/planner/compat-plan/meal/compat-meal",
+    "/planner/compat-plan/shopping"
+  ],
+  "payload": {
+    "householdId": "planner-preview-household",
+    "startDate": "2026-10-23",
+    "householdSize": 3,
+    "mealSlotsPreset": "all",
+    "budgetTargetVnd": null,
+    "priorities": [
+      "use_fridge",
+      "budget"
+    ],
+    "shoppingFrequency": "twice",
+    "planId": "plan_week_plan_1792788990715_kpelz0",
+    "commandId": "week_plan_1792788990715_kpelz0"
+  },
+  "generationCount": 1,
+  "idempotencyKeyMatches": true,
+  "slotCount": 21,
+  "reloadReadback": true,
+  "inventoryShoppingFamilyUnchanged": true,
+  "currentPlanUnchangedAfterReadsAndSettings": true,
+  "settingsDraftRetainsAcrossNavigationAndResetsOnReload": true,
+  "noShoppingImport": true,
+  "alternativesReadPosts": 2,
+  "mutationCount": 1,
+  "observations": [
+    {
+      "state": "empty",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "Lên thực đơn tuần",
+          "box": {
+            "x": 31,
+            "y": 414.578125,
+            "width": 185.84375,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "empty",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "textScale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "Lên thực đơn tuần",
+          "box": {
+            "x": 31,
+            "y": 205.484375,
+            "width": 185.84375,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "empty",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "Lên thực đơn tuần",
+          "box": {
+            "x": 31,
+            "y": 412.609375,
+            "width": 185.84375,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "empty",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "Lên thực đơn tuần",
+          "box": {
+            "x": 325,
+            "y": 381.75,
+            "width": 185.84375,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "setup-review",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "1 lần / tuần\nMột chuyến mua sắm đầu tuần.",
+          "box": {
+            "x": 31,
+            "y": 187.65625,
+            "width": 258,
+            "height": 111.578125
+          },
+          "fits": true
+        },
+        {
+          "text": "2 lần / tuần\nChia nhu cầu mua sắm thành hai chuyến.",
+          "box": {
+            "x": 31,
+            "y": 311.234375,
+            "width": 258,
+            "height": 111.578125
+          },
+          "fits": true
+        },
+        {
+          "text": "3 lần trở lên\nMua bổ sung nhiều lần trong tuần.",
+          "box": {
+            "x": 31,
+            "y": 362.8125,
+            "width": 258,
+            "height": 111.578125
+          },
+          "fits": true
+        },
+        {
+          "text": "Không cố định\nChọn thời điểm phù hợp với bạn.",
+          "box": {
+            "x": 31,
+            "y": 187.390625,
+            "width": 258,
+            "height": 111.578125
+          },
+          "fits": true
+        },
+        {
+          "text": "Bước trước",
+          "box": {
+            "x": 31,
+            "y": 309.328125,
+            "width": 141.96875,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Tạo thực đơn tuần",
+          "box": {
+            "x": 31,
+            "y": 369.328125,
+            "width": 185.34375,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "setup-review",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "textScale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "1 lần / tuần\nMột chuyến mua sắm đầu tuần.",
+          "box": {
+            "x": 31,
+            "y": 113.234375,
+            "width": 258,
+            "height": 111.578125
+          },
+          "fits": true
+        },
+        {
+          "text": "2 lần / tuần\nChia nhu cầu mua sắm thành hai chuyến.",
+          "box": {
+            "x": 31,
+            "y": 214.8125,
+            "width": 258,
+            "height": 111.578125
+          },
+          "fits": true
+        },
+        {
+          "text": "3 lần trở lên\nMua bổ sung nhiều lần trong tuần.",
+          "box": {
+            "x": 31,
+            "y": 113.390625,
+            "width": 258,
+            "height": 111.578125
+          },
+          "fits": true
+        },
+        {
+          "text": "Không cố định\nChọn thời điểm phù hợp với bạn.",
+          "box": {
+            "x": 31,
+            "y": 214.96875,
+            "width": 258,
+            "height": 111.578125
+          },
+          "fits": true
+        },
+        {
+          "text": "Bước trước",
+          "box": {
+            "x": 31,
+            "y": 144.90625,
+            "width": 141.96875,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Tạo thực đơn tuần",
+          "box": {
+            "x": 31,
+            "y": 204.90625,
+            "width": 185.34375,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "setup-review",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "1 lần / tuần\nMột chuyến mua sắm đầu tuần.",
+          "box": {
+            "x": 31,
+            "y": 534.78125,
+            "width": 328,
+            "height": 88.484375
+          },
+          "fits": true
+        },
+        {
+          "text": "2 lần / tuần\nChia nhu cầu mua sắm thành hai chuyến.",
+          "box": {
+            "x": 31,
+            "y": 635.265625,
+            "width": 328,
+            "height": 111.578125
+          },
+          "fits": true
+        },
+        {
+          "text": "3 lần trở lên\nMua bổ sung nhiều lần trong tuần.",
+          "box": {
+            "x": 31,
+            "y": 671.84375,
+            "width": 328,
+            "height": 88.484375
+          },
+          "fits": true
+        },
+        {
+          "text": "Không cố định\nChọn thời điểm phù hợp với bạn.",
+          "box": {
+            "x": 31,
+            "y": 385.328125,
+            "width": 328,
+            "height": 88.484375
+          },
+          "fits": true
+        },
+        {
+          "text": "Bước trước",
+          "box": {
+            "x": 31,
+            "y": 700.078125,
+            "width": 141.96875,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Tạo thực đơn tuần",
+          "box": {
+            "x": 31,
+            "y": 655.078125,
+            "width": 185.34375,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "setup-review",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "1 lần / tuần\nMột chuyến mua sắm đầu tuần.",
+          "box": {
+            "x": 485,
+            "y": 434.140625,
+            "width": 694,
+            "height": 88.484375
+          },
+          "fits": true
+        },
+        {
+          "text": "2 lần / tuần\nChia nhu cầu mua sắm thành hai chuyến.",
+          "box": {
+            "x": 485,
+            "y": 534.625,
+            "width": 694,
+            "height": 88.484375
+          },
+          "fits": true
+        },
+        {
+          "text": "3 lần trở lên\nMua bổ sung nhiều lần trong tuần.",
+          "box": {
+            "x": 485,
+            "y": 635.109375,
+            "width": 694,
+            "height": 88.484375
+          },
+          "fits": true
+        },
+        {
+          "text": "Không cố định\nChọn thời điểm phù hợp với bạn.",
+          "box": {
+            "x": 485,
+            "y": 735.59375,
+            "width": 694,
+            "height": 88.484375
+          },
+          "fits": true
+        },
+        {
+          "text": "Bước trước",
+          "box": {
+            "x": 485,
+            "y": 779.15625,
+            "width": 141.96875,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Tạo thực đơn tuần",
+          "box": {
+            "x": 993.65625,
+            "y": 779.15625,
+            "width": 185.34375,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "generating-held",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": []
+    },
+    {
+      "state": "generating-held",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "textScale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": []
+    },
+    {
+      "state": "generating-held",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": []
+    },
+    {
+      "state": "generating-held",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": []
+    },
+    {
+      "state": "board",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "Đi chợ (30)",
+          "box": {
+            "x": 14,
+            "y": 202.625,
+            "width": 138.9375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Chia sẻ thực đơn",
+          "box": {
+            "x": 14,
+            "y": 218.9375,
+            "width": 177.6875,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 218.859375,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 219.234375,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 219.609375,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 218.78125,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 219.15625,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 219.53125,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 218.703125,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 219.078125,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 219.453125,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 219.625,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 219,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 219.375,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 219.546875,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 218.921875,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 219.296875,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 219.46875,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 218.84375,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 219.21875,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 219.390625,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 218.765625,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 371.140625,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "board",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "textScale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "Đi chợ (30)",
+          "box": {
+            "x": 14,
+            "y": 145.03125,
+            "width": 138.9375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Chia sẻ thực đơn",
+          "box": {
+            "x": 14,
+            "y": 145.34375,
+            "width": 177.6875,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 145.671875,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 145.046875,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 145.421875,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 145.59375,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 144.96875,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 145.34375,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 145.515625,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 144.890625,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 145.265625,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 145.4375,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 144.8125,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 145.1875,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 145.359375,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 144.734375,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 145.109375,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 145.28125,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 145.65625,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 145.03125,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 145.203125,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 145.578125,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 206.953125,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "board",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "Đi chợ (30)",
+          "box": {
+            "x": 14,
+            "y": 206.140625,
+            "width": 138.9375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Chia sẻ thực đơn",
+          "box": {
+            "x": 14,
+            "y": 405.359375,
+            "width": 177.6875,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 405.1875,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 679.5625,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 405.9375,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 405.109375,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 679.484375,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 405.859375,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 700.03125,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 405.40625,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 679.78125,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 405.953125,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 680.328125,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 405.703125,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 699.875,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 405.25,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 699.625,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 405.796875,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 680.171875,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 405.546875,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 699.71875,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 405.09375,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 97,
+            "y": 679.46875,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "board",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "Đi chợ (30)",
+          "box": {
+            "x": 1217.0625,
+            "y": 92,
+            "width": 138.9375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Chia sẻ thực đơn",
+          "box": {
+            "x": 308,
+            "y": 445.546875,
+            "width": 177.6875,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 431,
+            "y": 458.09375,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 431,
+            "y": 717.375,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 431,
+            "y": 457.65625,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 967,
+            "y": 458.09375,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 967,
+            "y": 717.375,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 967,
+            "y": 457.65625,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 431,
+            "y": 778.734375,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 431,
+            "y": 458.015625,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 431,
+            "y": 717.296875,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 967,
+            "y": 241.734375,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 967,
+            "y": 501.015625,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 967,
+            "y": 760.296875,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 431,
+            "y": 458.375,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 431,
+            "y": 717.65625,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 431,
+            "y": 457.9375,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 967,
+            "y": 458.375,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 967,
+            "y": 717.65625,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 967,
+            "y": 457.9375,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 431,
+            "y": 822.015625,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 431,
+            "y": 517.296875,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 431,
+            "y": 776.578125,
+            "width": 119.59375,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "meal",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 31,
+            "y": 146.375,
+            "width": 121.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Bắt đầu nấu",
+          "box": {
+            "x": 31,
+            "y": 206.375,
+            "width": 144.359375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Nguyên liệu",
+          "box": {
+            "x": 14,
+            "y": 219.03125,
+            "width": 142,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Cách nấu",
+          "box": {
+            "x": 164,
+            "y": 219.03125,
+            "width": 142,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Dinh dưỡng",
+          "box": {
+            "x": 14,
+            "y": 275.03125,
+            "width": 292,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "meal",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "textScale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 31,
+            "y": 145.171875,
+            "width": 121.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Bắt đầu nấu",
+          "box": {
+            "x": 31,
+            "y": 205.171875,
+            "width": 144.359375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Nguyên liệu",
+          "box": {
+            "x": 14,
+            "y": 145.625,
+            "width": 142,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Cách nấu",
+          "box": {
+            "x": 164,
+            "y": 145.625,
+            "width": 142,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Dinh dưỡng",
+          "box": {
+            "x": 14,
+            "y": 201.625,
+            "width": 292,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "meal",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 31,
+            "y": 405.796875,
+            "width": 121.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Bắt đầu nấu",
+          "box": {
+            "x": 164.59375,
+            "y": 405.796875,
+            "width": 144.359375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Nguyên liệu",
+          "box": {
+            "x": 14,
+            "y": 665.265625,
+            "width": 177,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Cách nấu",
+          "box": {
+            "x": 199,
+            "y": 665.265625,
+            "width": 177,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Dinh dưỡng",
+          "box": {
+            "x": 14,
+            "y": 700.265625,
+            "width": 362,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "meal",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 885.375,
+            "y": 554.03125,
+            "width": 121.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Bắt đầu nấu",
+          "box": {
+            "x": 1018.96875,
+            "y": 554.03125,
+            "width": 144.359375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Nguyên liệu",
+          "box": {
+            "x": 308,
+            "y": 790.40625,
+            "width": 344,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Cách nấu",
+          "box": {
+            "x": 660,
+            "y": 790.40625,
+            "width": 344,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Dinh dưỡng",
+          "box": {
+            "x": 1012,
+            "y": 790.40625,
+            "width": 344,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "swap-read",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 31,
+            "y": 405.375,
+            "width": 121.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Bắt đầu nấu",
+          "box": {
+            "x": 31,
+            "y": 414.375,
+            "width": 144.359375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Nguyên liệu",
+          "box": {
+            "x": 14,
+            "y": 219.03125,
+            "width": 142,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Cách nấu",
+          "box": {
+            "x": 164,
+            "y": 219.03125,
+            "width": 142,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Dinh dưỡng",
+          "box": {
+            "x": 14,
+            "y": 275.03125,
+            "width": 292,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "",
+          "box": {
+            "x": 238,
+            "y": 34,
+            "width": 48,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Chọn món",
+          "box": {
+            "x": 34,
+            "y": 400.625,
+            "width": 252,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Chọn món",
+          "box": {
+            "x": 34,
+            "y": 259.5,
+            "width": 252,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Chọn món",
+          "box": {
+            "x": 34,
+            "y": 492.375,
+            "width": 252,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Chọn món",
+          "box": {
+            "x": 34,
+            "y": 260.25,
+            "width": 252,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Chọn món",
+          "box": {
+            "x": 34,
+            "y": 492.125,
+            "width": 252,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "swap-read",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "textScale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 31,
+            "y": 145.171875,
+            "width": 121.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Bắt đầu nấu",
+          "box": {
+            "x": 31,
+            "y": 205.171875,
+            "width": 144.359375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Nguyên liệu",
+          "box": {
+            "x": 14,
+            "y": 145.625,
+            "width": 142,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Cách nấu",
+          "box": {
+            "x": 164,
+            "y": 145.625,
+            "width": 142,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Dinh dưỡng",
+          "box": {
+            "x": 14,
+            "y": 201.625,
+            "width": 292,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "",
+          "box": {
+            "x": 238,
+            "y": 34,
+            "width": 48,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Chọn món",
+          "box": {
+            "x": 34,
+            "y": 185.8125,
+            "width": 252,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Chọn món",
+          "box": {
+            "x": 34,
+            "y": 185.6875,
+            "width": 252,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Chọn món",
+          "box": {
+            "x": 34,
+            "y": 185.5625,
+            "width": 252,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Chọn món",
+          "box": {
+            "x": 34,
+            "y": 186.4375,
+            "width": 252,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Chọn món",
+          "box": {
+            "x": 34,
+            "y": 313.3125,
+            "width": 252,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "swap-read",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 31,
+            "y": 405.796875,
+            "width": 121.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Bắt đầu nấu",
+          "box": {
+            "x": 164.59375,
+            "y": 405.796875,
+            "width": 144.359375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Nguyên liệu",
+          "box": {
+            "x": 14,
+            "y": 665.265625,
+            "width": 177,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Cách nấu",
+          "box": {
+            "x": 199,
+            "y": 665.265625,
+            "width": 177,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Dinh dưỡng",
+          "box": {
+            "x": 14,
+            "y": 700.265625,
+            "width": 362,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "",
+          "box": {
+            "x": 308,
+            "y": 34,
+            "width": 48,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Chọn món",
+          "box": {
+            "x": 34,
+            "y": 330.640625,
+            "width": 322,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Chọn món",
+          "box": {
+            "x": 34,
+            "y": 590.421875,
+            "width": 322,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Chọn món",
+          "box": {
+            "x": 34,
+            "y": 768.203125,
+            "width": 322,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Chọn món",
+          "box": {
+            "x": 34,
+            "y": 500.984375,
+            "width": 322,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Chọn món",
+          "box": {
+            "x": 34,
+            "y": 736.96875,
+            "width": 322,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "swap-read",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "Đổi món",
+          "box": {
+            "x": 885.375,
+            "y": 554.03125,
+            "width": 121.59375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Bắt đầu nấu",
+          "box": {
+            "x": 1018.96875,
+            "y": 554.03125,
+            "width": 144.359375,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Nguyên liệu",
+          "box": {
+            "x": 308,
+            "y": 790.40625,
+            "width": 344,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Cách nấu",
+          "box": {
+            "x": 660,
+            "y": 790.40625,
+            "width": 344,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Dinh dưỡng",
+          "box": {
+            "x": 1012,
+            "y": 790.40625,
+            "width": 344,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "",
+          "box": {
+            "x": 948,
+            "y": 40,
+            "width": 48,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Chọn món",
+          "box": {
+            "x": 548,
+            "y": 327.453125,
+            "width": 107.078125,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Chọn món",
+          "box": {
+            "x": 548,
+            "y": 567.4375,
+            "width": 107.078125,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Chọn món",
+          "box": {
+            "x": 548,
+            "y": 774.421875,
+            "width": 107.078125,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Chọn món",
+          "box": {
+            "x": 548,
+            "y": 547.40625,
+            "width": 107.078125,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Chọn món",
+          "box": {
+            "x": 548,
+            "y": 787.390625,
+            "width": 107.078125,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "shopping-list",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "Tất cả (30)",
+          "box": {
+            "x": 14,
+            "y": 413.96875,
+            "width": 108.046875,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Khác (30)",
+          "box": {
+            "x": 130.046875,
+            "y": 413.96875,
+            "width": 103.03125,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Bắt đầu đi chợ",
+          "box": {
+            "x": 36,
+            "y": 348.46875,
+            "width": 132.9375,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "shopping-list",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "textScale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "Tất cả (30)",
+          "box": {
+            "x": 14,
+            "y": 144.984375,
+            "width": 108.046875,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Khác (30)",
+          "box": {
+            "x": 130.046875,
+            "y": 144.984375,
+            "width": 103.03125,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Bắt đầu đi chợ",
+          "box": {
+            "x": 36,
+            "y": 184.59375,
+            "width": 132.9375,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "shopping-list",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "Tất cả (30)",
+          "box": {
+            "x": 14,
+            "y": 453.09375,
+            "width": 108.046875,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Khác (30)",
+          "box": {
+            "x": 130.046875,
+            "y": 453.09375,
+            "width": 103.03125,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Bắt đầu đi chợ",
+          "box": {
+            "x": 36,
+            "y": 634.15625,
+            "width": 132.9375,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "shopping-list",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "Tất cả (30)",
+          "box": {
+            "x": 308,
+            "y": 356.75,
+            "width": 108.046875,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Khác (30)",
+          "box": {
+            "x": 424.046875,
+            "y": 356.75,
+            "width": 103.03125,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Bắt đầu đi chợ",
+          "box": {
+            "x": 330,
+            "y": 758.421875,
+            "width": 132.9375,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "shopping-active",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "Tất cả (30)",
+          "box": {
+            "x": 14,
+            "y": 218.96875,
+            "width": 108.046875,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Khác (30)",
+          "box": {
+            "x": 130.046875,
+            "y": 218.96875,
+            "width": 103.03125,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Nhập 0 nguyên liệu đã chọn vào tủ",
+          "box": {
+            "x": 36,
+            "y": 268.671875,
+            "width": 252,
+            "height": 68
+          },
+          "fits": true
+        },
+        {
+          "text": "Về danh sách",
+          "box": {
+            "x": 36,
+            "y": 348.671875,
+            "width": 126.140625,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "shopping-active",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "textScale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "Tất cả (30)",
+          "box": {
+            "x": 14,
+            "y": 144.78125,
+            "width": 108.046875,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Khác (30)",
+          "box": {
+            "x": 130.046875,
+            "y": 144.78125,
+            "width": 103.03125,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Nhập 0 nguyên liệu đã chọn vào tủ",
+          "box": {
+            "x": 36,
+            "y": 135.484375,
+            "width": 252,
+            "height": 68
+          },
+          "fits": true
+        },
+        {
+          "text": "Về danh sách",
+          "box": {
+            "x": 36,
+            "y": 215.484375,
+            "width": 126.140625,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "shopping-active",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "Tất cả (30)",
+          "box": {
+            "x": 14,
+            "y": 453.09375,
+            "width": 108.046875,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Khác (30)",
+          "box": {
+            "x": 130.046875,
+            "y": 453.09375,
+            "width": 103.03125,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Nhập 0 nguyên liệu đã chọn vào tủ",
+          "box": {
+            "x": 36,
+            "y": 574.15625,
+            "width": 265.015625,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Về danh sách",
+          "box": {
+            "x": 36,
+            "y": 634.15625,
+            "width": 126.140625,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "shopping-active",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "Tất cả (30)",
+          "box": {
+            "x": 308,
+            "y": 356.75,
+            "width": 108.046875,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Khác (30)",
+          "box": {
+            "x": 424.046875,
+            "y": 356.75,
+            "width": 103.03125,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Nhập 0 nguyên liệu đã chọn vào tủ",
+          "box": {
+            "x": 330,
+            "y": 758.421875,
+            "width": 265.015625,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Về danh sách",
+          "box": {
+            "x": 607.015625,
+            "y": 758.421875,
+            "width": 126.140625,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "settings-session",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "500.000 ₫",
+          "box": {
+            "x": 31,
+            "y": 211.1875,
+            "width": 258,
+            "height": 64
+          },
+          "fits": true
+        },
+        {
+          "text": "750.000 ₫",
+          "box": {
+            "x": 31,
+            "y": 287.1875,
+            "width": 258,
+            "height": 64
+          },
+          "fits": true
+        },
+        {
+          "text": "1.000.000 ₫",
+          "box": {
+            "x": 31,
+            "y": 363.1875,
+            "width": 258,
+            "height": 64
+          },
+          "fits": true
+        },
+        {
+          "text": "1.500.000 ₫",
+          "box": {
+            "x": 31,
+            "y": 410.1875,
+            "width": 258,
+            "height": 64
+          },
+          "fits": true
+        },
+        {
+          "text": "Không giới hạn ngân sách",
+          "box": {
+            "x": 31,
+            "y": 211.1875,
+            "width": 258,
+            "height": 64
+          },
+          "fits": true
+        },
+        {
+          "text": "1 lần / tuần\nMột chuyến mua sắm đầu tuần.",
+          "box": {
+            "x": 31,
+            "y": 346.1875,
+            "width": 258,
+            "height": 111.578125
+          },
+          "fits": true
+        },
+        {
+          "text": "2 lần / tuần\nChia nhu cầu mua sắm thành hai chuyến.",
+          "box": {
+            "x": 31,
+            "y": 362.765625,
+            "width": 258,
+            "height": 111.578125
+          },
+          "fits": true
+        },
+        {
+          "text": "3 lần trở lên\nMua bổ sung nhiều lần trong tuần.",
+          "box": {
+            "x": 31,
+            "y": 187.34375,
+            "width": 258,
+            "height": 111.578125
+          },
+          "fits": true
+        },
+        {
+          "text": "Không cố định\nChọn thời điểm phù hợp với bạn.",
+          "box": {
+            "x": 31,
+            "y": 310.921875,
+            "width": 258,
+            "height": 111.578125
+          },
+          "fits": true
+        },
+        {
+          "text": "Áp dụng vào bản nháp",
+          "box": {
+            "x": 31,
+            "y": 249.78125,
+            "width": 186.015625,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Về thực đơn hiện tại",
+          "box": {
+            "x": 31,
+            "y": 309.78125,
+            "width": 168.75,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "settings-session",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "textScale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "500.000 ₫",
+          "box": {
+            "x": 31,
+            "y": 136.8125,
+            "width": 258,
+            "height": 64
+          },
+          "fits": true
+        },
+        {
+          "text": "750.000 ₫",
+          "box": {
+            "x": 31,
+            "y": 212.8125,
+            "width": 258,
+            "height": 64
+          },
+          "fits": true
+        },
+        {
+          "text": "1.000.000 ₫",
+          "box": {
+            "x": 31,
+            "y": 262.8125,
+            "width": 258,
+            "height": 64
+          },
+          "fits": true
+        },
+        {
+          "text": "1.500.000 ₫",
+          "box": {
+            "x": 31,
+            "y": 136.8125,
+            "width": 258,
+            "height": 64
+          },
+          "fits": true
+        },
+        {
+          "text": "Không giới hạn ngân sách",
+          "box": {
+            "x": 31,
+            "y": 212.8125,
+            "width": 258,
+            "height": 64
+          },
+          "fits": true
+        },
+        {
+          "text": "1 lần / tuần\nMột chuyến mua sắm đầu tuần.",
+          "box": {
+            "x": 31,
+            "y": 113.8125,
+            "width": 258,
+            "height": 111.578125
+          },
+          "fits": true
+        },
+        {
+          "text": "2 lần / tuần\nChia nhu cầu mua sắm thành hai chuyến.",
+          "box": {
+            "x": 31,
+            "y": 214.390625,
+            "width": 258,
+            "height": 111.578125
+          },
+          "fits": true
+        },
+        {
+          "text": "3 lần trở lên\nMua bổ sung nhiều lần trong tuần.",
+          "box": {
+            "x": 31,
+            "y": 112.96875,
+            "width": 258,
+            "height": 111.578125
+          },
+          "fits": true
+        },
+        {
+          "text": "Không cố định\nChọn thời điểm phù hợp với bạn.",
+          "box": {
+            "x": 31,
+            "y": 214.546875,
+            "width": 258,
+            "height": 111.578125
+          },
+          "fits": true
+        },
+        {
+          "text": "Áp dụng vào bản nháp",
+          "box": {
+            "x": 31,
+            "y": 145.40625,
+            "width": 186.015625,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Về thực đơn hiện tại",
+          "box": {
+            "x": 31,
+            "y": 205.40625,
+            "width": 168.75,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "settings-session",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "500.000 ₫",
+          "box": {
+            "x": 31,
+            "y": 341.921875,
+            "width": 328,
+            "height": 64
+          },
+          "fits": true
+        },
+        {
+          "text": "750.000 ₫",
+          "box": {
+            "x": 31,
+            "y": 417.921875,
+            "width": 328,
+            "height": 64
+          },
+          "fits": true
+        },
+        {
+          "text": "1.000.000 ₫",
+          "box": {
+            "x": 31,
+            "y": 493.921875,
+            "width": 328,
+            "height": 64
+          },
+          "fits": true
+        },
+        {
+          "text": "1.500.000 ₫",
+          "box": {
+            "x": 31,
+            "y": 569.921875,
+            "width": 328,
+            "height": 64
+          },
+          "fits": true
+        },
+        {
+          "text": "Không giới hạn ngân sách",
+          "box": {
+            "x": 31,
+            "y": 645.921875,
+            "width": 328,
+            "height": 64
+          },
+          "fits": true
+        },
+        {
+          "text": "1 lần / tuần\nMột chuyến mua sắm đầu tuần.",
+          "box": {
+            "x": 31,
+            "y": 384.921875,
+            "width": 328,
+            "height": 88.484375
+          },
+          "fits": true
+        },
+        {
+          "text": "2 lần / tuần\nChia nhu cầu mua sắm thành hai chuyến.",
+          "box": {
+            "x": 31,
+            "y": 485.40625,
+            "width": 328,
+            "height": 111.578125
+          },
+          "fits": true
+        },
+        {
+          "text": "3 lần trở lên\nMua bổ sung nhiều lần trong tuần.",
+          "box": {
+            "x": 31,
+            "y": 608.984375,
+            "width": 328,
+            "height": 88.484375
+          },
+          "fits": true
+        },
+        {
+          "text": "Không cố định\nChọn thời điểm phù hợp với bạn.",
+          "box": {
+            "x": 31,
+            "y": 671.46875,
+            "width": 328,
+            "height": 88.484375
+          },
+          "fits": true
+        },
+        {
+          "text": "Áp dụng vào bản nháp",
+          "box": {
+            "x": 31,
+            "y": 535.234375,
+            "width": 186.015625,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Về thực đơn hiện tại",
+          "box": {
+            "x": 31,
+            "y": 595.234375,
+            "width": 168.75,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "settings-session",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "textOutsideViewport": [],
+        "brokenImages": []
+      },
+      "targets": [
+        {
+          "text": "500.000 ₫",
+          "box": {
+            "x": 485,
+            "y": 311.765625,
+            "width": 341,
+            "height": 64
+          },
+          "fits": true
+        },
+        {
+          "text": "750.000 ₫",
+          "box": {
+            "x": 838,
+            "y": 311.765625,
+            "width": 341,
+            "height": 64
+          },
+          "fits": true
+        },
+        {
+          "text": "1.000.000 ₫",
+          "box": {
+            "x": 485,
+            "y": 387.765625,
+            "width": 341,
+            "height": 64
+          },
+          "fits": true
+        },
+        {
+          "text": "1.500.000 ₫",
+          "box": {
+            "x": 838,
+            "y": 387.765625,
+            "width": 341,
+            "height": 64
+          },
+          "fits": true
+        },
+        {
+          "text": "Không giới hạn ngân sách",
+          "box": {
+            "x": 485,
+            "y": 463.765625,
+            "width": 341,
+            "height": 64
+          },
+          "fits": true
+        },
+        {
+          "text": "1 lần / tuần\nMột chuyến mua sắm đầu tuần.",
+          "box": {
+            "x": 485,
+            "y": 598.765625,
+            "width": 694,
+            "height": 88.484375
+          },
+          "fits": true
+        },
+        {
+          "text": "2 lần / tuần\nChia nhu cầu mua sắm thành hai chuyến.",
+          "box": {
+            "x": 485,
+            "y": 699.25,
+            "width": 694,
+            "height": 88.484375
+          },
+          "fits": true
+        },
+        {
+          "text": "3 lần trở lên\nMua bổ sung nhiều lần trong tuần.",
+          "box": {
+            "x": 485,
+            "y": 799.734375,
+            "width": 694,
+            "height": 88.484375
+          },
+          "fits": true
+        },
+        {
+          "text": "Không cố định\nChọn thời điểm phù hợp với bạn.",
+          "box": {
+            "x": 485,
+            "y": 591.21875,
+            "width": 694,
+            "height": 88.484375
+          },
+          "fits": true
+        },
+        {
+          "text": "Áp dụng vào bản nháp",
+          "box": {
+            "x": 485,
+            "y": 778.796875,
+            "width": 186.015625,
+            "height": 48
+          },
+          "fits": true
+        },
+        {
+          "text": "Về thực đơn hiện tại",
+          "box": {
+            "x": 683.015625,
+            "y": 778.796875,
+            "width": 168.75,
+            "height": 48
+          },
+          "fits": true
+        }
+      ]
+    }
+  ],
+  "heldGeneration": "Only transport is held for pending appearance; released to the actual local Worker, no response replacement."
+}

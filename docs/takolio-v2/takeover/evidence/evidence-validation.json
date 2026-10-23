@@ -156,6 +156,16 @@
   "offline_retained_logs": 2,
   "offline_initial_artifacts": 79,
   "offline_recovery_verified": true,
+  "week_off_payloads": 146,
+  "week_off_captures": 72,
+  "week_off_measured_controls": 512,
+  "week_off_incomplete": {
+    "color-contrast": 72
+  },
+  "week_off_checks": 17,
+  "week_off_retained_logs": 6,
+  "week_off_retained_artifacts": 213,
+  "week_off_recovery_verified": true,
   "screen_rows": 38,
   "screen_counts": {
     "CAPTURED_PROXY": 1,
@@ -164,10 +174,10 @@
   "selected_source_paths": 54,
   "csv_rows": {
     "ARGON_WORK_LEDGER.csv": 69,
-    "FILE_DECISIONS.csv": 103,
+    "FILE_DECISIONS.csv": 104,
     "WIP_ASSET_PROVENANCE.csv": 12
   },
-  "reviewed_changed_or_added_paths": 2345,
+  "reviewed_changed_or_added_paths": 2496,
   "credential_scan": "No private-key, GitHub token, OpenAI token pattern or exact private backup path detected in changed text; pattern scan is not a general security certification.",
   "failures": []
 }
