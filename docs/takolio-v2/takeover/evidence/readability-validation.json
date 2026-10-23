@@ -1,0 +1,162 @@
+{
+  "result": "PASS",
+  "scope": "Immutable C11 packet integrity, raw equality, derived reproducibility, source Git/current bindings, recovery receipt and historical preservation; no global product or production certification.",
+  "base_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "implementation_commit": "6bf58f3a0d7c0909b777958fa9cdd5fda4426ddc",
+  "documentation_parent": "1f36db5d89da13d88706871a3e135bb9991bda4a",
+  "public_packet_files": 368,
+  "payloads": 367,
+  "byte_exact_png": 212,
+  "parsed_equal_raw_json": 152,
+  "reproduced_derived_json": 3,
+  "raw_source_bindings_verified": 1072,
+  "raw_bindings_current_byte_exact": 1071,
+  "append_only_generated_log_prefix_binding": {
+    "raw_source": ".artifacts/takeover/week-commands/fridge-diagnostic-server.log",
+    "original_bound_bytes": 2858,
+    "original_bound_sha256": "33428cc77bc26723ce0c7a67d674988f15efcccc41c36aecdd16deb7a35f1948",
+    "preserved_prefix_path": ".artifacts/takeover/readability-final/fridge-diagnostic-log-bound-prefix-preserved.log",
+    "preserved_prefix_bytes": 2858,
+    "preserved_prefix_sha256": "33428cc77bc26723ce0c7a67d674988f15efcccc41c36aecdd16deb7a35f1948",
+    "preserved_observation_path": ".artifacts/takeover/readability-final/fridge-diagnostic-log-current-preserved.log",
+    "preserved_observation_bytes": 4653,
+    "preserved_observation_sha256": "70754bb2d3ad9f47a61502a8a23572c0f2fef1bd5f94f0f6a66b082315b4e605",
+    "appended_bytes_observed": 1795,
+    "basis": "Authorized generated diagnostic server appended after evidence collection. Frozen bound bytes remain a byte-exact prefix. Original source-binding and collector remain unchanged; current log may keep appending."
+  },
+  "derived_reproduction_exception": "source-bindings.json is reproduced using the preserved exact bound prefix for one authorized generated diagnostic log; its later append observation is separately preserved and reported. Original packet and collector remain unchanged.",
+  "failed_paired_on_attempt9_private_bindings_verified": 7,
+  "collector_sha256": "1dde0c19c299396117ed59cac59511c5dbc5fb039eff0bd11b816d6cb4b6c05e",
+  "implementation_git_and_current_blobs_verified": 8,
+  "gate_logs_verified": 8,
+  "full_suite": {
+    "result": "PARTIAL",
+    "exit_code": 1,
+    "files_passed": 407,
+    "files_total": 412,
+    "tests_passed": 9161,
+    "tests_total": 9169,
+    "failures": 8,
+    "inherited_path_cli_failures": 5,
+    "timing_failures": 3
+  },
+  "unchanged_isolated_timing_recheck": {
+    "result": "PASS",
+    "files": 3,
+    "tests": 46,
+    "does_not_convert_full_suite_to_pass": true
+  },
+  "home_computed_contrast": {
+    "states": 20,
+    "pairs": 1358,
+    "pair_status": {
+      "pass": 1358
+    },
+    "minimum_solid_contrast": 5.313493755827672,
+    "scope": "Computed solid text/background pairs on Home empty/populated only; no global accessibility certification"
+  },
+  "axe": {
+    "home-paired-on": {
+      "reports": 20,
+      "violation_entries": 0,
+      "violations_by_rule": {},
+      "incomplete_reports": 2,
+      "incomplete_entries": 2,
+      "incomplete_by_rule": {
+        "color-contrast": 2
+      }
+    },
+    "week-commands-off": {
+      "reports": 52,
+      "violation_entries": 0,
+      "violations_by_rule": {},
+      "incomplete_reports": 36,
+      "incomplete_entries": 36,
+      "incomplete_by_rule": {
+        "color-contrast": 36
+      }
+    },
+    "short-motion-mixed-7": {
+      "reports": 20,
+      "violation_entries": 0,
+      "violations_by_rule": {},
+      "incomplete_reports": 10,
+      "incomplete_entries": 12,
+      "incomplete_by_rule": {
+        "aria-prohibited-attr": 10,
+        "color-contrast": 2
+      }
+    },
+    "short-motion-off-8": {
+      "reports": 20,
+      "violation_entries": 0,
+      "violations_by_rule": {},
+      "incomplete_reports": 10,
+      "incomplete_entries": 12,
+      "incomplete_by_rule": {
+        "aria-prohibited-attr": 10,
+        "color-contrast": 2
+      }
+    },
+    "short-motion-paired-on-10": {
+      "reports": 20,
+      "violation_entries": 0,
+      "violations_by_rule": {},
+      "incomplete_reports": 10,
+      "incomplete_entries": 12,
+      "incomplete_by_rule": {
+        "aria-prohibited-attr": 10,
+        "color-contrast": 2
+      }
+    }
+  },
+  "original_workspace_recovery_receipt_verified": true,
+  "recovery_regular_files": 22763,
+  "recovery_symlinks": 772,
+  "snapshot_git_baseline_files": 116,
+  "historical_receipts_byte_preserved": 30,
+  "historical_document_tails_preserved": 8,
+  "historical_task_prefixes_preserved": 2,
+  "previous_file_decisions_preserved": 105,
+  "new_file_decisions": 7,
+  "screen_rows": 38,
+  "screen_suffix_updates": [
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    13,
+    17,
+    20,
+    23,
+    26,
+    27
+  ],
+  "owner_reviews_pending": 38,
+  "selected_source_paths_preserved": 54,
+  "approved_selected_source_current_hash_changes": [
+    "src/web/pages/HomePage.tsx",
+    "src/web/pages/RecipeDetailPage.tsx",
+    "src/web/pages/RecipesPage.tsx"
+  ],
+  "argon_ledger_rows_unchanged": 69,
+  "asset_ledger_rows_unchanged": 12,
+  "historical_main_evidence_validation": "PASS",
+  "historical_contrast_compatibility_validation": "PASS",
+  "validation_script": {
+    "path": ".artifacts/takeover/readability-final/validate-readability.py",
+    "sha256": "b4d3339f563c1fba07b2e4fb4b6dd0671814625e4d3c11208bab40a16a8b5c21"
+  },
+  "production_actions": false,
+  "limitations": [
+    "All runs are local Chromium with synthetic registered household and local Worker/in-memory SQLite.",
+    "Root font scale 2 is synthetic text scaling, not native device zoom.",
+    "Motion seeking/sampling does not certify device frame delivery.",
+    "Fridge geometry was measured before full-page capture; JSON and PNG are separate observations, not exact coordinate equivalents.",
+    "Full-page screenshots retain fixed overlays at capture viewport position.",
+    "Owner acceptance, physical devices, Safari, screen reader and production validation remain pending.",
+    "Axe incomplete entries remain unresolved manual-review evidence. Zero automated violations is not full accessibility certification."
+  ]
+}

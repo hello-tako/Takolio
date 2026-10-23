@@ -1,3 +1,21 @@
+# Takolio V2 Week/Home readability handoff - 2026-10-24 JST
+
+Status: `LOCAL_WEEK_HOME_READABILITY_BOUNDED_VERIFIED`. Implementation `6bf58f3a0d7c0909b777958fa9cdd5fda4426ddc`, branch `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only official main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Retained Argon layout, assets and handlers. ADR-063 removes primary-content opacity fades from Home/discovery/preparation and intrinsically wraps stock identity/status. Actual Week import exposed width343px at320/text200; final title/chip bounds pass. Current short-screen shell already uses document-flow navigation below600px; no shell rewrite. Navigation remains at the end of the document on short screens.
+
+Home real onboarding/generation/readback 2/2, Week commands/reflow 4/4, short motion actual paired OFF 2/2 and paired ON 2/2 PASS. Supplemental mixed Planner ON/composition OFF 2/2 is labeled separately. Home measures1,358solid text pairs PASS (minimum5.31349:1),20states and normal/reduced opacity1. Week real swap200/reload keeps inventory unchanged; native Chromium clipboard succeeds, rejection/unsupported are synthetic. Selected-only import200 adds exactly one row, preserves all old rows, reads back, and exact-key/body replay returns idempotentReplay:true without another event. No durable swap-replay/offline claim.
+
+Targeted ESLint,14files/274focused tests, pnpm lint/typecheck/migrations, default and correct paired-ON builds PASS. Full pnpm test:407/412files,9,161/9,169tests; eight failures. Five inherited New%20project MODULE_NOT_FOUND CLI failures remain; three timing failures pass unchanged in a separate --maxWorkers=1 rerun:3files/46tests,18.96s reported/20.03s wall. This does not convert the full run into PASS. Inherited dependency findings remain1low/6moderate/1high; audit not rerun, dependencies unchanged.
+
+Evidence:212PNG +152raw JSON equivalents +3derived JSON under evidence/readability; PNG exact bytes, JSON parsed equality, separate raw/public hashes. All automated axe violations are zero; incomplete checks stay manual-review. Failed attempts/logs and available harness revisions remain separately bound; traces stay private. Home and short-screen contact sheets and final stock320/text200 image visually inspected. Native zoom/devices/Safari/screenreader/owner/hosted acceptance remains pending; all38owner reviews PENDING.
+
+Recovery after implementation:22,763regular files/772symlinks match original/full private snapshot in bytes,modes,links,HEAD,index,status; snapshot baseline and all116regular Git baseline files match; zero differences,private parent0700. Historical recovery receipt accidentally targeted during finalization was restored byte-exact from its committed object; unique current receipt rerun verifies the full baseline. Private paths stay unpublished.
+
+Report: docs/takolio-v2/takeover/UI_C11_WEEK_HOME_READABILITY.md. Next local packet: measured control-state contrast, prioritizing discovery placeholder and notification OFF switch; retain solid focus outlines. Week offline durability needs a separate domain packet/ADR. Full-suite path tooling, dependency changes, media rights/owner review and real devices remain separately scoped or external. No push, PR publication, merge, deploy, remote migration or production action.
+
+---
+
 # Takolio V2 computed contrast handoff - 2026-10-24 JST
 
 Status: `LOCAL_COMPUTED_TEXT_CONTRAST_BOUNDED_VERIFIED`. Implementation `fedf0e7571b659dfdfec916a713b3c9a71be4cf4` (test only), branch `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only GitHub main remains `90b94129113b41e34701d99f51175cfa81cb73de`.

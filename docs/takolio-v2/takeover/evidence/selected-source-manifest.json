@@ -268,19 +268,19 @@
   {
     "path": "src/web/pages/HomePage.tsx",
     "argon_sha256": "ce02fbf7bb5aa289c0c03765760ab8131efad8a492af2a51437573b4b5684288",
-    "integration_sha256": "ce02fbf7bb5aa289c0c03765760ab8131efad8a492af2a51437573b4b5684288",
-    "matches_argon": true
+    "integration_sha256": "0030020fbf729ff18c0bba1e0396491ad30c6e5cb7e6f8dabf363dade9395964",
+    "matches_argon": false
   },
   {
     "path": "src/web/pages/RecipeDetailPage.tsx",
     "argon_sha256": "563e802e31077d7fc23842c5d073e1214963d6979652093dee95b8f49c2d132f",
-    "integration_sha256": "563e802e31077d7fc23842c5d073e1214963d6979652093dee95b8f49c2d132f",
-    "matches_argon": true
+    "integration_sha256": "33a1c38ee0e5cf118c006b7011845430a90b6499b20b1c44c955b4f3f106f6b9",
+    "matches_argon": false
   },
   {
     "path": "src/web/pages/RecipesPage.tsx",
     "argon_sha256": "caf0b5e7a95e030f1c0fa1bf921e40c2518dd87fb4ea874874e93733644b94a7",
-    "integration_sha256": "eb3dbb1a202cf9834e286ee94c47f53155b6813e7f371792802cc432a7570e90",
+    "integration_sha256": "ca3fb55b826de24ca74efb3fee4313e2fffb3cd1ee6cfb0e1db88f679dca1334",
     "matches_argon": false,
     "refinement": "UI-C5 filters 89b0a331 and saved-recipes servings f11a244c; original Argon hash retained"
   },

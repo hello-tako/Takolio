@@ -142,3 +142,10 @@ Protected-path diff từ base đến implementation rỗng; tree sạch ngay sau
 `git diff --check` PASS. Documentation checkpoint theo sau, không ghi hash của chính nó.
 Next packet: UI11-navigation-responsive.md; UI11 runtime has not started. Reports
 and two contact sheets: docs/ui-rebuild/round-10.
+
+
+## Takolio local continuation result - 2026-10-24 JST
+
+Implementation `6bf58f3a0d7c0909b777958fa9cdd5fda4426ddc`; ADR-063. Real flagsOFF Week command/reflow4/4: native Chromium clipboard success, synthetic rejection/unsupported safe feedback, actual swap200/readback stock unchanged, selected-only import200 one exact row, old rows unchanged, exact-key/body replay has no extra inventory event. Imported unknown-expiry row now wraps at320/text200. Header/body swap identity is observed; no durable swap replay/offline claim.
+
+Lint/typecheck/migrations/default+actual pairedON builds and274focused tests PASS. Full suite9161/9169 with5inherited path CLI failures plus3timing failures; unchanged isolated3file/46test rerun PASS. Report/evidence: docs/takolio-v2/takeover/UI_C11_WEEK_HOME_READABILITY.md and evidence/readability. All historical results remain intact. Control-state contrast,owner/devices/Safari/screenreader/hosted review remain separate; no production actions.

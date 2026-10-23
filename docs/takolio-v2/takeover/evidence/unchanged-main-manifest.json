@@ -6036,12 +6036,6 @@
     "sha256": "56d7e0f4131a4cacf7dfa1c51eddfc5fd5e82b14473fac12917915a2ff9e1e62"
   },
   {
-    "path": "docs/ai/DECISIONS.md",
-    "mode": "100644",
-    "git_blob": "58af33e662ae1d608fca1452ee11fbf16db5c665",
-    "sha256": "976f19c8ac91fcce42bffbab81fba747ae2c4df6806137ae6306d524f774a81d"
-  },
-  {
     "path": "docs/ai/DOMAIN_MODEL.md",
     "mode": "100644",
     "git_blob": "e3d17c1c9adfa6768a6235b5b5072b7c7048ae72",
@@ -7260,12 +7254,6 @@
     "sha256": "8502f467e56ddab288d56650f617bb40a1f72a7e59c442916bb775a455878ddc"
   },
   {
-    "path": "docs/ai/tasks/UI10-week-compatibility.md",
-    "mode": "100644",
-    "git_blob": "2416e876bc055930a81c6533442a6b4cad772969",
-    "sha256": "1620717a7b367e5e4e7d71ab08a1112b9a1b192bad882ca1c6eb1151fb43d475"
-  },
-  {
     "path": "docs/ai/tasks/UI11-navigation-responsive.md",
     "mode": "100644",
     "git_blob": "15d869b4a22b6cee3ec13b2b046b4976d51ffddf",
@@ -7288,12 +7276,6 @@
     "mode": "100644",
     "git_blob": "a7ba881827b7c6e7507d9e14e5d101d248eee80b",
     "sha256": "2e713f0de30345bd0b8bc1e42cc9b8fb64b99b8a1cb3ae989c4c24058c949cd7"
-  },
-  {
-    "path": "docs/ai/tasks/UI15-short-viewport-motion-readability.md",
-    "mode": "100644",
-    "git_blob": "fa4f4d8df370d8f7a866b70ca85bf8dff8ebe3a1",
-    "sha256": "042cf511fdcc3e19be57e28fff1a53e8f162eaf66634d38021333d55dd1888b1"
   },
   {
     "path": "docs/backend-upgrade/GAP_REGISTER.md",
@@ -30484,12 +30466,6 @@
     "mode": "100644",
     "git_blob": "7798060b64d5fd0b48a9eac50318e217e07130be",
     "sha256": "8e66dc9920f58cf367a24a5793b01637ec309a2534a837a6f8d86986a682efc2"
-  },
-  {
-    "path": "src/web/components/common/IngredientRow.tsx",
-    "mode": "100644",
-    "git_blob": "b03126d7fcd0ad8fed051cf89d1711bc12edbab0",
-    "sha256": "edda57353ab25e753c7c34732469f88f4682c5550fbcff4ad090c24b70437af8"
   },
   {
     "path": "src/web/components/common/KitchenDetailPage.tsx",
