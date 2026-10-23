@@ -101,7 +101,10 @@ export function CookingReview() {
     <div className="cooking-review">
       <header className="cooking-review-header">
         {!locked && (
-          <Link className="cooking-control" to={`/cook/${recipe.slug}`}>
+          <Link
+            className="cooking-control"
+            to={`/cook/${recipe.slug}${recipe.servings ? `?servings=${recipe.servings}` : ''}`}
+          >
             <ArrowLeft aria-hidden="true" size={18} /> Quay lại bước nấu
           </Link>
         )}
