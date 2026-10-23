@@ -1,0 +1,14 @@
+{
+  "source_regular_files": 22763,
+  "snapshot_regular_files": 22763,
+  "source_symlinks": 772,
+  "snapshot_symlinks": 772,
+  "all_worktree_bytes_modes_links_match": true,
+  "status_preflight_source_snapshot_match": true,
+  "head_match": true,
+  "index_sha256_match": true,
+  "backup_parent_mode": "0o700",
+  "worktree_differences": [],
+  "verified_after_implementation_commit": "9dad1494dab2719eb3f787ab161ab49748bd30d4",
+  "git_metadata": "Authorized fetch/worktree/local-commit metadata differs;original source,HEAD,index and WIP status remain unchanged.Full private snapshot includes Git and ignored files.Exact recovery location is retained privately."
+}

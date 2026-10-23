@@ -1,24 +1,22 @@
 # Safe continuation checkpoint - 2026-10-23 JST
 
-- G0 PASS: original workspace bytes, modes, symlinks, HEAD, status and index match the full private snapshot after Planner implementation `30693884c3b66ebe3d4fcd48fb57100853703826`: 22,763 regular files / 772 symlinks, zero worktree differences. Includes .git and ignored files; only authorized shared Git metadata differs.
-- G1 PASS: committed, modified and untracked Argon work is inventoried; original 11 modified / 42 untracked remain recoverable in the unchanged source workspace.
-- G2 PASS: latest read-only GitHub main remains `90b94129113b41e34701d99f51175cfa81cb73de`; Argon merge base `96c4236e572a94df4977a686e20e31312191a321`. Audit verifies 5,845 unchanged main paths outside the explicit UI/test/handoff allowlist, zero failures. The count decreases by one from cooking because Planner CSS is newly allowlisted.
-- G3 PASS: integration is isolated at `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`, branch `codex/takolio-v2-rescue`. Both newer main inventory fixes remain; Argon reuse/refinements are recorded per file.
-- G4 LOCAL_PLANNER_REFINEMENT_VERIFIED: the existing picker now scrolls as one panel, fixing measured inaccessible controls at enlarged text. Automatic seven-slot generation/reload, manual one-slot component revision 1->2/reload and explicit three-day shopping share/reload pass bounded local checks without inventory changes. Nine picker configurations yield 36 reachable controls. Full UI-C6 and owner acceptance remain partial/pending.
-- G5 PARTIAL: final lint, web/Worker types, migrations, default/paired builds and targeted ESLint pass; focused planner units 43/43 and final browser 2/2 pass. Full suite 9,157/9,168 in 466.01s has five inherited CLI path failures and six timeouts; unchanged subset retry resolves six timeouts, retains five failures. Repeated audit retains eight inherited findings. All 24 zero-violation axe reports still have incomplete contrast; 12 have incomplete ARIA. See TEST_BASELINES.md.
-- G6 LOCAL_CHECKPOINT_READY_FOR_REVIEW: no push, PR publication, merge, deployment or production action. Local continuation authorized; owner visual acceptance and publication/release approval pending.
+- G0 PASS: after Shopping implementation `9dad1494dab2719eb3f787ab161ab49748bd30d4`, original bytes/modes/links/HEAD/index/status match the full private snapshot:22,763 regular files/772 symlinks;zero worktree differences;private parent0700. Git/ignored files are included;authorized shared Git metadata differs.
+- G1 PASS: Argon committed/WIP assets/components remain inventoried;original11modified/42untracked are recoverable in unchanged source workspace.
+- G2 PASS: fresh read-only GitHub main remains `90b94129113b41e34701d99f51175cfa81cb73de`;Argon merge base96c4236e. Audit verifies5,845 unchanged main paths outside explicit UI/test/handoff allowlist;zero failures. Count is unchanged from Planner.
+- G3 PASS: integration remains isolated at `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`, branch `codex/takolio-v2-rescue`. Both newer inventory fixes remain. Provenance69Argon/84file decisions/12assets/54selected-source paths is retained.
+- G4 LOCAL_SHOPPING_REFINEMENT_VERIFIED: existing UI06/T24 retained;two CSS values fix measured checked-row contrast. Real local fractions/persistence/keyboard/delete/offline projection/unknown-demand retry replay/stale409 pass;inventory unchanged. Frozen mobile+desktop browser4/4;88captures/zero-violation axe;154enabled dialog controls reachable. Full V2 and owner acceptance remain partial/pending.
+- G5 PARTIAL: lint/types/targeted ESLint/local migrations/default+paired builds PASS;focused61unit+53integration tests PASS. Full suite9,163/9,168 in360.97s;five inherited encoded-space CLI failures;no timeouts. Audit retains1low/6moderate/1high. Thirty-eight final Shopping axe reports retain incomplete contrast. See TEST_BASELINES.md and shopping-checks.json.
+- G6 LOCAL_CHECKPOINT_READY_FOR_REVIEW: no push,PR publication,merge,deploy,remote migration or production action. Local continuation authorized;owner visual acceptance/publication/release approval pending.
 
 ## Local commits
 
-- Salvage implementation/docs: `279d8af7` / `752ee35a`.
-- UI-C5 filters implementation/evidence: `89b0a3312104a4064ad42462098c6bda2802085e` / `b7930ad9`.
-- UI-C5 saved-recipes implementation/docs: `f11a244ca0964a63618c1fc3a3f30b8a670ec90a` / `839aff83`.
-- UI-C5 recipe-detail implementation/docs: `61150c83e5a97882aaf31d700f01a28f52ed8393` / `dc1e87db`.
-- UI-C5 cooking implementation/docs: `6276a6b929304c1c207b3355c3827fdd762ef287` / `36a3e34d`; historical evidence preserved.
-- UI-C6 Planner implementation: `30693884c3b66ebe3d4fcd48fb57100853703826`; exactly one product CSS path and one E2E file. Documentation/evidence follows separately; this file does not contain its own commit hash.
+- Salvage implementation/docs:279d8af7/752ee35a.
+- UI-C5 filters:89b0a331/b7930ad9; saved:f11a244c/839aff83; detail:61150c83/dc1e87db; cooking:6276a6b9/36a3e34d.
+- UI-C6 Planner implementation/docs:30693884/3ae6e206; historical61payloads retained.
+- UI-C6 Shopping implementation: `9dad1494dab2719eb3f787ab161ab49748bd30d4`;one CSS path with two value changes plus one E2E file. Separate documentation/evidence checkpoint follows;this file cannot contain its own commit hash.
 
-Earlier source 13250dec was locally rebased to 279d8af7 when main advanced 0322a919 -> 90b94129. The old tip is retained by `codex/takolio-v2-rescue-recovery-e4ac2b02`. Original Argon history/WIP was never rewritten or edited.
+Earlier source13250dec was locally rebased to279d8af7 when main advanced0322a919->90b94129;old tip retained by `codex/takolio-v2-rescue-recovery-e4ac2b02`. Original Argon history/WIP was never rewritten or edited. Prior source/receipt hashes remain historical;new Shopping receipt binds current kitchen-family CSS without replacing saved-recipes history.
 
 ## Next action
 
-Begin bounded row28 saved shopping with a read-only source review and isolated local API/browser baseline of quantity validation, pending/offline/conflict behavior and keyboard/reflow. Reuse current UI06/T24, preserve stock versus purchase demand, revision/idempotency, household isolation and Week compatibility. Full Week OFF, manual accessibility, live integrations, screen-reader and performance gaps remain open. Inherited release-tool/dependency remediation is separate. Publication, merge, deployment and production operations require approval; local continuation is already authorized.
+Begin bounded row29 notifications with read-only source review and isolated local API/browser baseline of existing notification state/actions/keyboard/reflow. Inspect current contracts before edits;reuse current source/assets. Synthetic checks do not certify live push/permissions/background delivery. Full Week-OFF, manual accessibility, live providers and performance gaps remain open. Inherited release-tool/dependency remediation is separate. Publication,merge,deploy,remote migrations and production require approval;local continuation already authorized.

@@ -1,0 +1,150 @@
+{
+  "state": "delete",
+  "viewport": {
+    "width": 320,
+    "height": 420
+  },
+  "textScale": 2,
+  "violations": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143",
+        "TTv5",
+        "TT13.c",
+        "EN-301-549",
+        "EN-9.1.4.3",
+        "ACT"
+      ],
+      "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=playwright",
+      "nodes": [
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8d918a",
+                "bgColor": "#f3f1e7",
+                "contrastRatio": 2.83,
+                "fontSize": "21.0pt (28px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "3:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<li class=\"shopping-saved-row is-checked \">",
+                  "target": [
+                    ".shopping-saved-row"
+                  ]
+                },
+                {
+                  "html": "<div class=\"shopping-workspace\">",
+                  "target": [
+                    ".shopping-workspace"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 2.83 (foreground color: #8d918a, background color: #f3f1e7, font size: 21.0pt (28px), font weight: normal). Expected contrast ratio of 3:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<strong>Gạo cho bữa cơm gia đình và những ngày cùng nhau nấu món ngon tại nhà</strong>",
+          "target": [
+            "strong"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.83 (foreground color: #8d918a, background color: #f3f1e7, font size: 21.0pt (28px), font weight: normal). Expected contrast ratio of 3:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#7d877d",
+                "bgColor": "#f3f1e7",
+                "contrastRatio": 3.29,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<li class=\"shopping-saved-row is-checked \">",
+                  "target": [
+                    ".shopping-saved-row"
+                  ]
+                },
+                {
+                  "html": "<div class=\"shopping-workspace\">",
+                  "target": [
+                    ".shopping-workspace"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.29 (foreground color: #7d877d, background color: #f3f1e7, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"shopping-row-quantity\">1/2 gói</span>",
+          "target": [
+            ".shopping-row-quantity"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.29 (foreground color: #7d877d, background color: #f3f1e7, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#b68b5c",
+                "bgColor": "#f3f1e7",
+                "contrastRatio": 2.71,
+                "fontSize": "8.3pt (11px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<li class=\"shopping-saved-row is-checked \">",
+                  "target": [
+                    ".shopping-saved-row"
+                  ]
+                },
+                {
+                  "html": "<div class=\"shopping-workspace\">",
+                  "target": [
+                    ".shopping-workspace"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 2.71 (foreground color: #b68b5c, background color: #f3f1e7, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<button type=\"button\" class=\"shopping-cannot-buy\">Chưa mua được</button>",
+          "target": [
+            ".shopping-cannot-buy"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.71 (foreground color: #b68b5c, background color: #f3f1e7, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        }
+      ]
+    }
+  ],
+  "incomplete": []
+}

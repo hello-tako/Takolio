@@ -301,3 +301,39 @@ Retained attempts preserve the initial selector/loading/timestamp/accessible-nam
 The private recovery receipt remains bound separately to Planner implementation. Prior cooking source, recovery receipt, reports and logs remain historical and unchanged. No production action occurred.
 
 Final Planner documentation validation: `python3 .artifacts/takeover/audit-scope.py` PASS (5,845 unchanged main paths, zero failures); `python3 .artifacts/takeover/verify-evidence.py` PASS (all earlier manifests retained; Planner 61 payloads / 33 PNG / 24 axe with incomplete rule counts preserved / 4 summaries / 24 state-config captures / 36 controls / 13 check logs / 13 retained logs / recovery binding; ledgers69/83/12, selected source54, screens38, credential/private-path scan); `git diff --check` PASS. Three handoff files retain their prior historical tails byte-for-byte.
+
+## UI-C6 saved Shopping continuation on integration9dad1494
+
+Environment:macOS,Node25.9.0,pnpm10.33.2;unchanged main dependencies;isolated Worker/SQLite synthetic household;external fetch/service workers blocked. Implementation:`9dad1494dab2719eb3f787ab161ab49748bd30d4`. Receipt `evidence/shopping-checks.json` binds14check logs/12retained logs and two source hashes. Raw output stays under ignored `.artifacts/takeover/shopping/`.
+
+| Check | Actual result |
+|---|---|
+| `pnpm lint`;`pnpm typecheck`;targeted E2E ESLint | PASS;repeated final lint/types after final harness adaptations |
+| `pnpm check:migrations` | PASS local customer/Admin smoke;no schema or remote apply |
+| `pnpm build` | PASS final product CSS;existing Admin font warnings |
+| `VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build` | PASS actual paired Vite build |
+| Focused existing units | PASS4files/61tests,2.62s |
+| Focused existing integration | PASS3files/53tests,8.12s |
+| Frozen final browser | PASS4/4,reported1.4m;separate mobile/desktop contexts |
+| Full unit suite | PARTIAL410/412files;9,163/9,168tests;360.97s test duration(361.98s runner wall time) |
+| `pnpm audit --audit-level=high` | Exit1;inherited1low/6moderate/1high;Vite GHSA-587h-7wmj-h5pm |
+
+Exact focused/full/browser commands:
+
+```sh
+pnpm test tests/unit/ui06-shopping.test.ts tests/unit/shopping-demand-review-ui.test.tsx tests/unit/shopping-demand-review-service.test.ts tests/unit/shopping-hardening.test.ts --maxWorkers=4
+pnpm test tests/integration/shopping-demand-review.test.ts tests/integration/family-shopping-input-fences.test.ts tests/integration/family-shopping-reconciliation.test.ts --maxWorkers=4
+TMPDIR=/private/tmp pnpm test --maxWorkers=4
+pnpm exec eslint tests/e2e/t17-ui/takolio-shopping-continuation.e2e.ts
+PREVIEW_MEAL_COMPOSITION_V2=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-shopping-continuation.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/shopping/final3
+```
+
+The full run has five inherited encoded-space CLI failures (one production-catalog-continuity/four release-check),again attempting `New%20project/.../scripts/release-check.mjs`. No timeouts occurred;protected scripts/tests unchanged. Builds/full suite use final product CSS before last E2E-only locator/comment/measurement adaptations;final lint/types/ESLint/browser cover committed source. No full-suite or dependency-security pass is claimed.
+
+The real local flows retain fractions/invalid guards/pending controls/edit/reload,keyboard check/delete cancel/confirm,durable125.5g offline projection and honest device/pending labels. Unknown demand retains contributions and no aggregate quantity. Committed first0.5pack response loss followed by identical key/payload returns actual200/200 receipt replay and one purchase row;concurrent same-household revision yields real409 and explicit reload. Inventory unchanged throughout.
+
+Final evidence:195payloads(95PNG/95axe/5summaries),including seven before screenshots/seven failing contrast reports/one saved summary. After:88captures/88zero-violation axe/four summaries across mobile/desktop. Seven configs for five states plus three compact configs for offline/uncertain/stale yield44captures per context.154enabled dialog controls are measured reachable/actionable after scrolling.38after axe reports retain incomplete contrast;manual accessibility remains pending. Synthetic root-font scaling is not OS zoom;viewport changes within mobile context retain mobile emulation. Full-page modal screenshots precede per-control scrolling.
+
+Retained raw attempts:interrupted hung select(no complete counts);port3000 startup failure(no tests);two selector failures;baseline two failures(actual checked-row contrast and incorrect unknown-aggregate harness assumption);1pass/1fail42.6s with insufficient initial CSS(4.44:1 action contrast);narrower2/2mobile pass40.6s;3pass/1fail1.9m desktop extension interrupted when report writes triggered Vite page reload;earlier static gates/ESLint. Frozen final4/4 supersedes the interrupted capture. An exploratory ESLint invocation including CSS produced ignored-file warning;it is not CSS lint certification. Logs are preserved without altering old receipts.
+
+Private recovery was reverified after implementation:22,763regular files/772symlinks,bytes/modes/links/HEAD/index/status,zero worktree differences,parent0700. Prior saved-recipe CSS receipt stays historically bound to its implementation;the Shopping receipt binds current CSS. Earlier source/evidence/three handoff historical tails remain intact. No production or remote write occurred.

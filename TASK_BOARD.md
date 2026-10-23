@@ -1,3 +1,8 @@
+## Takolio V2 safe continuation - Shopping row28 (2026-10-23 JST)
+
+`LOCAL_SHOPPING_REFINEMENT_VERIFIED`: existing UI06/T24 shopping behavior is verified in the isolated integration worktree. Two CSS values improve checked-row contrast; no backend, inventory, auth, payment, schema, dependency or production infrastructure changed. Focused 61 unit + 53 integration tests, lint/types/migrations/builds and frozen mobile+desktop browser 4/4 pass. Full suite remains partial (9,163/9,168; five inherited encoded-space CLI failures); audit remains inherited 1 low/6 moderate/1 high. Evidence: 195 payloads, 88 final zero-violation axe reports, 154 dialog controls; 38 incomplete contrast checks require manual review. Recovery remains byte-perfect against the private snapshot. Next bounded task: row29 notifications source review and isolated local baseline. Owner acceptance and publication/release approval remain pending.
+
+---
 ## Takolio V2 safe continuation - Planner checkpoint (2026-10-23 JST)
 
 Status: `LOCAL_PLANNER_REFINEMENT_VERIFIED`. Integration: `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`; branch `codex/takolio-v2-rescue`; latest read-only GitHub main `90b94129113b41e34701d99f51175cfa81cb73de`. Original Argon workspace remains unchanged and matches the full private snapshot: 22,763 regular files / 772 symlinks, bytes/modes/links/HEAD/index/status, zero worktree differences. Protected audit covers 5,845 unchanged main paths; the one-path decrease from cooking is newly allowlisted Planner CSS. Original WIP, components, assets and prior evidence remain recoverable.
