@@ -61,3 +61,6 @@
 
 .account-body .family-membership-copy,
 .account-body .family-household-id { overflow-wrap: anywhere; }
+
+/* Keep the switch thumb inside its fixed 48px account hit target when text scales. */
+.account-switch-row button[role='switch'] > span { width: 24px; height: 24px; }
