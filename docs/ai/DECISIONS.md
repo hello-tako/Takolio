@@ -3311,3 +3311,50 @@ Bounded Chromium/local Worker fixtures and synthetic root-font scale do not
 certify native zoom, devices, Safari, screen readers, owner usability or hosted
 release. No backend, service, store, public asset, dependency or protected payment
 change is authorized by this decision.
+
+## ADR-064 - Scoped control contrast for placeholders and notification OFF state (2026-10-24)
+
+Status: accepted for isolated local continuation; owner/device review pending.
+
+C12 settled Chromium measurements found the existing muted placeholder on discovery,
+saved recipes, family preferences and shopping inputs at approximately 2.41-2.54:1
+against their surfaces. The notification OFF switch track measured 1.768:1 against
+its white thumb. Existing solid green focus outlines meet the measured keyboard
+focus requirement and remain unchanged.
+
+Apply the existing semantic muted text color only to the affected placeholder
+selectors under `.takosan-rebuild`, with full opacity. Apply the same muted color
+only to enabled notification OFF switch tracks under `.takosan-rebuild`; checked,
+disabled and unrelated switch primitives retain their current contracts. Do not
+define the missing global border token or alter decorative separators, auth,
+payment, Plus, backend, APIs, stores, assets, dependencies or production config.
+
+Verify normal, focus, hover and reduced-motion states at 390px, 320px with root
+text scale 2, and desktop; preserve 44px reachability, keyboard activation,
+local preference reload behavior, zero domain writes and unchanged domain snapshots.
+This bounded Chromium/root-font audit does not certify native zoom, devices,
+Safari, screen readers, hosted behavior or production.
+
+## ADR-065 - Scoped inset boundaries for measured kitchen controls (2026-10-24)
+
+Status: accepted for isolated local continuation; owner/device review pending.
+
+C13 measured 44 controls in four viewport/text configurations. The undefined
+`--semantic-border-rgb` leaves their computed borders at 0px/none; adjacent fill
+contrast is only about 1.00-1.06:1. Existing solid green focus outlines remain.
+Defining the missing token globally would also change unmeasured decorative
+surfaces, so this packet does not define it.
+
+Add a 1px inset stroke using existing semantic muted text RGB only to the measured
+kitchen search, discovery select/filter disclosure, planner locale/date/number,
+and shopping form input/select selectors under `.takosan-rebuild`. These controls
+have no existing box shadow. The inset stroke must preserve geometry, input and
+select behavior, focus outline and all domain authority. Exclude native radios,
+checkboxes, unrelated controls, auth, payment, Plus and decorative cards.
+
+Verify stroke contrast against both fill and surrounding surface, normal/focus/
+hover states, 44px reachability, horizontal bounds and baseline geometry at
+320x568, 320x420 with root-font200, 390x844 and desktop1440x1000. Use the actual
+isolated Worker fixture; no submitted domain writes. Chromium/root-font evidence
+does not certify native zoom, physical devices, Safari, assistive technology,
+owner acceptance or hosted production.
