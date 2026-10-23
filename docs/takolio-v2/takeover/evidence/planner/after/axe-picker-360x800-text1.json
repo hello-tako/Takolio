@@ -1,0 +1,19 @@
+{
+  "state": "picker",
+  "viewport": {
+    "width": 360,
+    "height": 800
+  },
+  "textScale": 1,
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "aria-prohibited-attr",
+      "impact": "serious"
+    },
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ]
+}

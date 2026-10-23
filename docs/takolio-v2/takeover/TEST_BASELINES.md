@@ -257,3 +257,47 @@ PORT=3292 PREVIEW_API_PORT=8918 pnpm exec playwright test --config=playwright.t1
 The full test command used the realpath of the local temporary directory for TMPDIR and `pnpm test --maxWorkers=4`; its literal executed command is retained in the check receipt. Retained attempts include the 4/5 product-bug baseline, the initial 7/7 browser run whose nonexistent detail-continuation filename matched no detail file, a successful PREVIEW-only build that did not set Vite flags, the passing baseline typecheck and passing targeted ESLint. Correct final 10/10 browser coverage and actual paired Vite build supersede those narrower attempts. None of these attempts is hidden or counted as broader coverage.
 
 Final documentation checks: `python3 .artifacts/takeover/audit-scope.py` PASS (5,846 unchanged main paths, zero failures); `python3 .artifacts/takeover/verify-evidence.py` PASS (all current and prior manifests/source receipts/log hashes, cooking75 payloads/38PNG/32axe/5summaries/32state-config captures/568 control measurements, ledgers69/81/12, source54, screen38, token/private-path scan); `git diff --check` PASS. The original workspace's private recovery verifier also passed after implementation. No process was listening on the task preview ports3292/8918 at checkpoint cleanup.
+
+## UI-C6 planner continuation on integration `30693884`
+
+Environment: macOS, Node v25.9.0, pnpm 10.33.2, unchanged main dependencies, isolated local Worker/SQLite synthetic household, external fetch/service workers blocked. Final source is `30693884c3b66ebe3d4fcd48fb57100853703826`. The sanitized `evidence/planner-checks.json` binds two source hashes, 13 checks and 13 retained attempts to exact local log sizes/hashes.
+
+| Check | Actual result |
+|---|---|
+| `pnpm lint`; `pnpm typecheck`; targeted E2E ESLint | Final source PASS |
+| `pnpm check:migrations` | Local customer/Admin migration smoke PASS; no schema or remote change |
+| `pnpm build` | Default web/Admin/Worker PASS; existing Admin font warnings |
+| `VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build` | Actual paired Vite build PASS |
+| Focused planner units | 4 files / 43 tests PASS, 2.21s |
+| Final paired browser | 2/2 PASS, 38.3s; nine picker configurations / 36 reachable controls |
+| Full unit suite | PARTIAL, 404/412 files, 9,157/9,168 tests, 466.01s |
+| Unchanged failed subset retry | PARTIAL, 6/8 files, 413/418 tests, 13.76s; six timeout cases pass; five inherited CLI failures remain |
+| `pnpm audit --audit-level=high` | Exit 1; inherited 1 low / 6 moderate / 1 high including Vite GHSA-587h-7wmj-h5pm |
+| Canonical Week ON redirect | 1/1 PASS, 45.8s; before final picker specificity correction; routing source unchanged |
+| Synthetic Week feature-module OFF keyboard setup | 1/1 PASS, 14.1s; does not certify compiled flag OFF or Week generation |
+
+Exact focused, full-suite and retry commands:
+
+```sh
+TMPDIR=/private/tmp pnpm test tests/unit/planner-shopping-share-ui.test.tsx tests/unit/ui06-planner-lifecycle.test.tsx tests/unit/planner-weekly-continuation.test.tsx tests/unit/family-planner-client.test.tsx --maxWorkers=4
+TMPDIR=/private/tmp pnpm test --maxWorkers=4
+TMPDIR=/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/ pnpm test tests/integration/admin-owner.test.ts tests/integration/admin-r2-governance.test.ts tests/integration/admin-r2-settings.test.ts tests/integration/admin-staging-test-identities.test.ts tests/unit/production-catalog-continuity.test.mjs tests/unit/release-check.test.mjs tests/unit/staging-d1-catchup-check.test.mjs tests/unit/t21rc2-classification-diagnostics.test.mjs --maxWorkers=2
+```
+
+The full run had five inherited encoded-space CLI path failures plus six 5000ms timeouts. Every timeout case passed on retry without source, protected-test or timeout changes. Five CLI cases still resolve `New%20project` incorrectly. A subset retry is not full-suite PASS. The full run preceded the final CSS specificity correction; final browser/lint/types/builds bind to final source. CSS and this E2E file are outside the unit test graph.
+
+Exact final browser and Week commands:
+
+```sh
+PREVIEW_MEAL_COMPOSITION_V2=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-planner-continuation.e2e.ts --project=mobile-390 --output=.artifacts/takeover/planner/final
+PREVIEW_MEAL_COMPOSITION_V2=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/t17-ui.e2e.ts --grep 'week compatibility' --project=mobile-390 --output=.artifacts/takeover/planner/week-compat
+pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/t18c-week-compatibility.e2e.ts --project=mobile-390 --output=.artifacts/takeover/planner/week-off
+```
+
+Final evidence has 61 payloads (33 PNG, 24 axe reports, 4 summaries). Automatic generation persists seven slots at revision 1; explicit three-day shopping sharing survives reload. Manual setup persists one slot, accepts a component at revision 2 and preserves keyboard focus/escape behavior. Inventory remains unchanged. Nine picker configurations include both 320x420/text200 and 320x568/text200; 36 controls are reachable/actionable after scrolling. Five other states each have three configurations. All 24 axe reports record zero violations while retaining incomplete color-contrast in 24 and aria-prohibited-attr in 12. Manual accessibility and owner visual acceptance remain pending.
+
+Retained attempts preserve the initial selector/loading/timestamp/accessible-name harness failures, the real before failure, an eight-configuration pass under superseded short-height CSS, the later 320x568/text200 failure, and geometry evidence showing Tailwind utilities still overriding nested result overflow. Final selector specificity fixes the measured issue. Five earlier static/build checks also remain hashed. The stopped legacy attempt used a stale Takosan onboarding selector and has no recoverable complete counts; no additional legacy cases are claimed PASS. All 13 retained logs and all 13 check logs must verify without changing historical evidence.
+
+The private recovery receipt remains bound separately to Planner implementation. Prior cooking source, recovery receipt, reports and logs remain historical and unchanged. No production action occurred.
+
+Final Planner documentation validation: `python3 .artifacts/takeover/audit-scope.py` PASS (5,845 unchanged main paths, zero failures); `python3 .artifacts/takeover/verify-evidence.py` PASS (all earlier manifests retained; Planner 61 payloads / 33 PNG / 24 axe with incomplete rule counts preserved / 4 summaries / 24 state-config captures / 36 controls / 13 check logs / 13 retained logs / recovery binding; ledgers69/83/12, selected source54, screens38, credential/private-path scan); `git diff --check` PASS. Three handoff files retain their prior historical tails byte-for-byte.

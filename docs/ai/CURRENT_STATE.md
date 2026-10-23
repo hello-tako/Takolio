@@ -1,3 +1,21 @@
+## Takolio V2 safe continuation - Planner checkpoint (2026-10-23 JST)
+
+Status: `LOCAL_PLANNER_REFINEMENT_VERIFIED`. Integration: `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`; branch `codex/takolio-v2-rescue`; latest read-only GitHub main `90b94129113b41e34701d99f51175cfa81cb73de`. Original Argon workspace remains unchanged and matches the full private snapshot: 22,763 regular files / 772 symlinks, bytes/modes/links/HEAD/index/status, zero worktree differences. Protected audit covers 5,845 unchanged main paths; the one-path decrease from cooking is newly allowlisted Planner CSS. Original WIP, components, assets and prior evidence remain recoverable.
+
+Changes: refined the existing UI06 picker in `src/web/styles/kitchen-planning.css` after reproducing inaccessible role/choose controls at 320x420/text200 and additional 320x568/text200 overflow. The panel now scrolls as one container with scoped specificity over nested result utilities. Added local browser coverage; no route, API, store, backend, stock, auth, security, payment, schema, dependency or infrastructure change. Implementation: `30693884c3b66ebe3d4fcd48fb57100853703826`; prior cooking implementation/docs: `6276a6b9` / `36a3e34d`.
+
+Checks: final lint, web/Worker types, targeted E2E ESLint, local migration smoke, default build and actual paired Vite build PASS. Focused planner units 4 files / 43 tests PASS. Final browser 2/2 PASS in 38.3s: automatic seven-slot revision1/reload, manual one-slot component revision1->2/reload, explicit three-day shared shopping/reload and unchanged inventory. Nine picker viewport/text configurations verify 36 reachable/actionable controls. Canonical Week ON redirects passed before the final picker specificity correction; synthetic feature-module OFF keyboard setup passed, without full Week-OFF certification.
+
+Failures/limits: full suite PARTIAL at 404/412 files, 9,157/9,168 tests in 466.01s: five inherited encoded-space CLI path failures plus six 5000ms timeouts. Unchanged subset retry passed all six timeout cases, retains five CLI failures (6/8 files, 413/418 tests, 13.76s); not full-suite PASS. Audit remains 1 low / 6 moderate / 1 high including Vite GHSA-587h-7wmj-h5pm. Dependencies/protected tests unchanged. Browser evidence is synthetic local Worker/SQLite and root-font simulation, not physical-device, OS zoom, live-provider, screen-reader or production certification.
+
+Evidence: `docs/takolio-v2/takeover/UI_C5_PLANNER.md` records the kit's UI-C6 packet; `evidence/planner/manifest.json` binds 61 payloads (33 PNG, 24 axe reports, 4 summaries). All 24 axe reports have zero violations but retain incomplete contrast; 12 retain incomplete ARIA checks. Manual accessibility and owner visual review remain pending. Exact commands, source/log hashes and 13 retained attempts are in `evidence/planner-checks.json` and `TEST_BASELINES.md`; recovery has a separate Planner receipt. Screen rows23-27 and file decisions83 are updated; cooking evidence remains historical and unchanged.
+
+Documentation validation: protected-main audit, complete evidence/source/log validation, ledger/screen counts, credential/private-path scan and `git diff --check` all PASS. Earlier historical tails are preserved byte-for-byte.
+
+Next action: bounded row28 saved shopping source review and isolated API/browser baseline for quantity validation, pending/offline/conflict states and keyboard/reflow, reusing UI06/T24 and preserving stock versus purchase demand, revisions/idempotency, tenancy and Week compatibility. Local continuation is authorized. Publication, merge, deploy, remote migrations and production require explicit approval; none occurred. Historical entries below remain unchanged.
+
+---
+
 ## Takolio V2 safe continuation - cooking checkpoint (2026-10-23 JST)
 
 Status: `LOCAL_COOKING_REFINEMENT_VERIFIED`. Integration: `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`; branch `codex/takolio-v2-rescue`; read-only GitHub main `90b94129113b41e34701d99f51175cfa81cb73de`. Original Argon WIP at `/Users/tunbee27/Documents/New project/Takolio` remains unchanged and matches the full private snapshot: 22,763 regular files, 772 symlinks, bytes/modes/links/HEAD/index/status and zero worktree differences.

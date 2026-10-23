@@ -1,0 +1,536 @@
+{
+  "observations": [
+    {
+      "state": "picker",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": []
+      },
+      "reachability": [
+        {
+          "label": "Đóng",
+          "box": {
+            "x": 246,
+            "y": 84.171875,
+            "width": 58,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        },
+        {
+          "label": "dish-search",
+          "box": {
+            "x": 16,
+            "y": 224.671875,
+            "width": 288,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        },
+        {
+          "label": "control-2",
+          "box": {
+            "x": 16,
+            "y": 276.671875,
+            "width": 140,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        },
+        {
+          "label": "Chọn: Tôm hấp nước dừa tươi ngọt lịm",
+          "box": {
+            "x": 232.484375,
+            "y": 445.171875,
+            "width": 57.515625,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        }
+      ]
+    },
+    {
+      "state": "picker",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "scale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": []
+      },
+      "reachability": [
+        {
+          "label": "Đóng",
+          "box": {
+            "x": 197.484375,
+            "y": 82.40625,
+            "width": 90.515625,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        },
+        {
+          "label": "dish-search",
+          "box": {
+            "x": 32,
+            "y": 364.40625,
+            "width": 256,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        },
+        {
+          "label": "control-2",
+          "box": {
+            "x": 32,
+            "y": 212.90625,
+            "width": 120,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        },
+        {
+          "label": "Chọn: Tôm hấp nước dừa tươi ngọt lịm",
+          "box": {
+            "x": 160.96875,
+            "y": 206.40625,
+            "width": 113.03125,
+            "height": 58
+          },
+          "fitsViewport": true,
+          "actionable": true
+        }
+      ]
+    },
+    {
+      "state": "picker",
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 360,
+        "scrollWidth": 360,
+        "brokenImages": []
+      },
+      "reachability": [
+        {
+          "label": "Đóng",
+          "box": {
+            "x": 286,
+            "y": 112,
+            "width": 58,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        },
+        {
+          "label": "dish-search",
+          "box": {
+            "x": 16,
+            "y": 252.5,
+            "width": 328,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        },
+        {
+          "label": "control-2",
+          "box": {
+            "x": 16,
+            "y": 304.5,
+            "width": 160,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        },
+        {
+          "label": "Chọn: Tôm hấp nước dừa tươi ngọt lịm",
+          "box": {
+            "x": 272.484375,
+            "y": 473,
+            "width": 57.515625,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        }
+      ]
+    },
+    {
+      "state": "picker",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "brokenImages": []
+      },
+      "reachability": [
+        {
+          "label": "Đóng",
+          "box": {
+            "x": 316,
+            "y": 117.28125,
+            "width": 58,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        },
+        {
+          "label": "dish-search",
+          "box": {
+            "x": 16,
+            "y": 257.78125,
+            "width": 358,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        },
+        {
+          "label": "control-2",
+          "box": {
+            "x": 16,
+            "y": 309.78125,
+            "width": 175,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        },
+        {
+          "label": "Chọn: Tôm hấp nước dừa tươi ngọt lịm",
+          "box": {
+            "x": 302.484375,
+            "y": 478.28125,
+            "width": 57.515625,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        }
+      ]
+    },
+    {
+      "state": "picker",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "scale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": []
+      },
+      "reachability": [
+        {
+          "label": "Đóng",
+          "box": {
+            "x": 197.484375,
+            "y": 100.171875,
+            "width": 90.515625,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        },
+        {
+          "label": "dish-search",
+          "box": {
+            "x": 32,
+            "y": 426.171875,
+            "width": 256,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        },
+        {
+          "label": "control-2",
+          "box": {
+            "x": 32,
+            "y": 491.671875,
+            "width": 120,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        },
+        {
+          "label": "Chọn: Tôm hấp nước dừa tươi ngọt lịm",
+          "box": {
+            "x": 160.96875,
+            "y": 289.171875,
+            "width": 113.03125,
+            "height": 58
+          },
+          "fitsViewport": true,
+          "actionable": true
+        }
+      ]
+    },
+    {
+      "state": "picker",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 430,
+        "scrollWidth": 430,
+        "brokenImages": []
+      },
+      "reachability": [
+        {
+          "label": "Đóng",
+          "box": {
+            "x": 356,
+            "y": 127.84375,
+            "width": 58,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        },
+        {
+          "label": "dish-search",
+          "box": {
+            "x": 16,
+            "y": 268.34375,
+            "width": 398,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        },
+        {
+          "label": "control-2",
+          "box": {
+            "x": 16,
+            "y": 320.34375,
+            "width": 195,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        },
+        {
+          "label": "Chọn: Tôm hấp nước dừa tươi ngọt lịm",
+          "box": {
+            "x": 342.484375,
+            "y": 488.84375,
+            "width": 57.515625,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        }
+      ]
+    },
+    {
+      "state": "picker",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 768,
+        "scrollWidth": 768,
+        "brokenImages": []
+      },
+      "reachability": [
+        {
+          "label": "Đóng",
+          "box": {
+            "x": 562,
+            "y": 81.4375,
+            "width": 58,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        },
+        {
+          "label": "dish-search",
+          "box": {
+            "x": 148,
+            "y": 221.9375,
+            "width": 472,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        },
+        {
+          "label": "control-2",
+          "box": {
+            "x": 148,
+            "y": 273.9375,
+            "width": 232,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        },
+        {
+          "label": "Chọn: Tôm hấp nước dừa tươi ngọt lịm",
+          "box": {
+            "x": 548.484375,
+            "y": 450.4375,
+            "width": 57.515625,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        }
+      ]
+    },
+    {
+      "state": "picker",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 1024,
+        "scrollWidth": 1024,
+        "brokenImages": []
+      },
+      "reachability": [
+        {
+          "label": "Đóng",
+          "box": {
+            "x": 690,
+            "y": 66.078125,
+            "width": 58,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        },
+        {
+          "label": "dish-search",
+          "box": {
+            "x": 276,
+            "y": 206.578125,
+            "width": 472,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        },
+        {
+          "label": "control-2",
+          "box": {
+            "x": 276,
+            "y": 258.578125,
+            "width": 232,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        },
+        {
+          "label": "Chọn: Tôm hấp nước dừa tươi ngọt lịm",
+          "box": {
+            "x": 676.484375,
+            "y": 435.078125,
+            "width": 57.515625,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        }
+      ]
+    },
+    {
+      "state": "picker",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "brokenImages": []
+      },
+      "reachability": [
+        {
+          "label": "Đóng",
+          "box": {
+            "x": 898,
+            "y": 74,
+            "width": 58,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        },
+        {
+          "label": "dish-search",
+          "box": {
+            "x": 484,
+            "y": 214.5,
+            "width": 472,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        },
+        {
+          "label": "control-2",
+          "box": {
+            "x": 484,
+            "y": 266.5,
+            "width": 232,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        },
+        {
+          "label": "Chọn: Tôm hấp nước dừa tươi ngọt lịm",
+          "box": {
+            "x": 884.484375,
+            "y": 443,
+            "width": 57.515625,
+            "height": 44
+          },
+          "fitsViewport": true,
+          "actionable": true
+        }
+      ]
+    }
+  ],
+  "localSyntheticApi": true
+}

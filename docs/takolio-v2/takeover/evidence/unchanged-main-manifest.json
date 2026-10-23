@@ -31446,12 +31446,6 @@
     "sha256": "8e266dcf00b05af0cee5a6179a8ebece893e9f2829953ff77ef4486861fad6cf"
   },
   {
-    "path": "src/web/styles/kitchen-planning.css",
-    "mode": "100644",
-    "git_blob": "f630826b8125bb154995a114a367731202a4d52a",
-    "sha256": "77203a6d0594ab889206742b959a76ad97edc58439c272e18575b1cd6c15775b"
-  },
-  {
     "path": "src/web/styles/kitchen-scan.css",
     "mode": "100644",
     "git_blob": "41ac60aba84c60dbd9ee4f2263b45d286e39add1",
