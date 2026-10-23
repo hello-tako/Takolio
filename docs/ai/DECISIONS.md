@@ -3282,3 +3282,32 @@ Takolio/V3 assets remain additive and rollback is a feature-branch revert. The
 result remains a 3D candidate until fresh screenshots, asset checks and independent
 review confirm the visual result; premium concept fidelity and legal clearance are
 not asserted.
+
+## ADR-063 - Preserve readable primary text and wrap unknown-expiry stock (2026-10-24)
+
+Status: accepted for isolated local continuation; owner/device review pending.
+
+Current-source UI15 audit reproduces Home, discovery and recipe preparation CSS
+opacity from 0 through 1 during the existing 200ms fade. Reduced motion already
+keeps opacity1. Remove the fade class only from those three primary reading
+containers; preserve all decorative, dialog, auth and payment animation contracts.
+No replacement animation is needed for reading content.
+
+Actual Week flags-OFF shopping import/replay exposes unknown-expiry stock. At
+320x420/root text200, IngredientRow's enlarged image/gap and nonwrapping status
+force document width343px. Allow the existing identity/title/status layout to
+wrap within the row. Preserve status text, expiry truth, controls, callback,
+quantity, mutation, idempotency, household and inventory authority unchanged.
+Use intrinsic layout; no clipped status, smaller text or global overflow hiding.
+
+The old UI15 navigation237px baseline does not reproduce. Current Argon compact
+CSS already puts mobile navigation and fixed actions into document flow below
+600px height; the static header scrolls away. Preserve this tradeoff, measure
+keyboard reachability and report the loss of always-visible navigation on short
+screens. Do not replace the shell or add measurement machinery. ADR058 is already
+the family-meal decision; this continuation uses the next unused number063.
+
+Bounded Chromium/local Worker fixtures and synthetic root-font scale do not
+certify native zoom, devices, Safari, screen readers, owner usability or hosted
+release. No backend, service, store, public asset, dependency or protected payment
+change is authorized by this decision.

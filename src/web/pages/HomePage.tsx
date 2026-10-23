@@ -150,7 +150,7 @@ export const HomePage = () => {
       data-page="home-s08"
     >
       <TopBar kitchen />
-      <div className="kitchen-page-body animate-fade-in">
+      <div className="kitchen-page-body">
         <KitchenPageHeading
           eyebrow={firstName ? `Chào ${firstName}` : 'Căn bếp của bạn'}
           title="Hôm nay ăn gì?"

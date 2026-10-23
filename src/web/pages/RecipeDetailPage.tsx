@@ -345,7 +345,7 @@ export const RecipeDetailPage: React.FC = () => {
         </section>
 
 
-        <div className="recipe-preparation space-y-4 animate-fade-in">
+        <div className="recipe-preparation space-y-4">
           {/* Tabs: Cách nấu | Nguyên liệu | Dinh dưỡng */}
           {/* Arrow-key navigation uses automatic activation and follows focus. */}
           <div

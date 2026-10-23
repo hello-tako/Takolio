@@ -145,7 +145,7 @@ export const RecipesPage = () => {
   return (
     <div className="takosan-rebuild min-h-screen bg-semantic-background pb-12">
       <TopBar kitchen />
-      <div className="kitchen-page-body animate-fade-in">
+      <div className="kitchen-page-body">
         <KitchenPageHeading
           eyebrow="Công thức mỗi ngày"
           title={savedView ? 'Món đã lưu' : 'Hôm nay nhà mình nấu gì?'}
