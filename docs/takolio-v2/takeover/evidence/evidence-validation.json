@@ -95,6 +95,13 @@
   "settings_check_logs_verified": 11,
   "settings_retained_logs_verified": 5,
   "settings_recovery_verified": true,
+  "food_evidence_files_verified": 268,
+  "food_after_measured_controls": 1256,
+  "food_after_incomplete_contrast": {
+    "color-contrast": 64
+  },
+  "food_check_logs_verified": 11,
+  "food_retained_logs_verified": 8,
   "screen_rows": 38,
   "screen_counts": {
     "CAPTURED_PROXY": 1,
@@ -103,10 +110,10 @@
   "selected_source_paths": 54,
   "csv_rows": {
     "ARGON_WORK_LEDGER.csv": 69,
-    "FILE_DECISIONS.csv": 92,
+    "FILE_DECISIONS.csv": 95,
     "WIP_ASSET_PROVENANCE.csv": 12
   },
-  "reviewed_changed_or_added_paths": 1386,
+  "reviewed_changed_or_added_paths": 1661,
   "credential_scan": "No private-key, GitHub token, OpenAI token pattern or exact private backup path detected in changed text; pattern scan is not a general security certification.",
   "failures": []
 }

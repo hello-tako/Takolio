@@ -1,3 +1,33 @@
+# UI08 Food preferences row33 baseline - 2026-10-24 JST
+
+Implementation `793ade743aecc4cafd0c39f8e1bd3e457f75bc50` on `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+| Exact executed command | Actual result |
+|---|---|
+| `pnpm exec eslint src/web/pages/settings/FoodPreferencesPage.tsx tests/unit/ui08-account.test.tsx tests/e2e/t17-ui/takolio-food-preferences-continuation.e2e.ts` | PASS; existing Admin font warnings apply only to builds (exit0; wall 1.08s) |
+| `pnpm exec vitest run tests/unit/ui08-account.test.tsx tests/unit/frontend-services.test.ts tests/unit/ui08-route-scope.test.tsx tests/unit/ui11-navigation.test.tsx tests/unit/onboarding-contract.test.tsx tests/unit/family-preferences-api.test.ts` | PASS 5 files/103 tests in 2.19s; executed filter also included nonexistent family-preferences-api.test.ts, which selected no file; not six files (exit0; wall 2.9s) |
+| `pnpm exec vitest run tests/integration/frontend-ui-integration.test.tsx tests/integration/auth-tenant-adversarial.test.ts tests/integration/inventory-closed-loop.test.ts` | PASS 3 files/104 tests in 7.63s (exit0; wall 8.31s) |
+| `pnpm lint` | PASS; existing Admin font warnings apply only to builds (exit0; wall 7.65s) |
+| `pnpm typecheck` | PASS; existing Admin font warnings apply only to builds (exit0; wall 18.97s) |
+| `pnpm check:migrations` | PASS; existing Admin font warnings apply only to builds (exit0; wall 0.55s) |
+| `pnpm build` | PASS; existing Admin font warnings apply only to builds (exit0; wall 11.44s) |
+| `VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build` | PASS; existing Admin font warnings apply only to builds (exit0; wall 11.27s) |
+| `pnpm audit --json` | OPEN_INHERITED 1 low/6 moderate/1 high, including Vite GHSA-587h-7wmj-h5pm; dependencies unchanged (exit1; wall 1.24s) |
+| `PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/ pnpm test` | PARTIAL 410/412 files; 9164/9169 tests; same five inherited encoded-space CLI failures in production-catalog-continuity/release-check; Node24 rerun after Node25 child stalled; see log for test duration (exit1; wall 198.76s) |
+| `PREVIEW_MEAL_COMPOSITION_V2=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-food-preferences-continuation.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/food-preferences/after` | PASS 6/6; exact four configs x eight states x two contexts; 64 zero-violation final axe reports with incomplete contrast; 1256 measured controls; real local API roundtrip and offline guest reload (exit0; reported2.4m; shell wall not recorded) |
+
+Browser 6/6 in 2.4m; focused 5 files/103 unit tests (2.19s) and 3 files/104 integration tests (7.63s); targeted ESLint, lint/types, local migrations and default/paired builds PASS. Full suite rerun under v24.16.0: 410/412 files, 9,164/9,169 tests; duration 197.54s (transform 15.86s, setup 4.53s, import 95.05s, tests 1175.07s, environment 24.69s), wall 198.76s. Same five inherited encoded-space CLI failures remain. Initial Node25 suite was interrupted after a stalled synchronous Python child; no completed count claimed for that attempt. Audit retains inherited 1 low/6 moderate/1 high including Vite GHSA-587h-7wmj-h5pm.
+
+268 bound payloads: 128 PNG, 128 axe JSON and twelve summaries. Four viewport/text configs x eight states x two contexts per phase. All 64 final axe reports have zero reported violations with incomplete color-contrast; 1,256 measured controls including disabled actions. Real local PATCH/reload preserves size7, unknown vocabulary and language; pending lock, shaped500 retry and unsaved-discard checks pass. Hard safety, inventory, shopping and onboarding snapshots unchanged. Read/offline monitored journeys make no writes; offline selections survive navigation and reset on reload.
+
+Baseline browser uses identical command with output`.artifacts/takeover/food-preferences/baseline`:4 PASS/2 FAIL in2.1m, offline disclosure only. Harness unchanged; page baseline matches main. Node25 initial `pnpm test` with resolved TMPDIR was interrupted after a child stalled; no complete count claimed. Read-only1s Python/Node samples retained. Focused filter includes one nonexistent path and selects five actual files/103 tests. Exact log/source hashes and environment overrides are in the receipt.
+
+Root-font text200/reduced-motion Chromium and shaped read/write500 do not certify OS zoom, physical devices, screen readers, live providers, full Week-OFF, performance or production. Full-page captures follow trial-control/focus scrolling and can include fixed chrome/skip links; no pixel or owner acceptance claimed.
+
+Recovery, protected-main/evidence/changed-text credential-private-path/whitespace/historical-tail verification run before documentation checkpoint. Next bounded packet: row34 planning settings source/API/browser baseline; preserve revision conflict handling, hard allergen/exclusion authority, current meal plans, household isolation and legacy flag compatibility. Owner/device/manual accessibility review remains open. No push, PR publication, merge, deploy, remote migration or production action.
+
+---
+
 # UI08 Settings row32 baseline - 2026-10-24 JST
 
 Implementation `b7a32b69f19f06bac4dbf7bc6d61ecd3bcce1969` on `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Fresh read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.

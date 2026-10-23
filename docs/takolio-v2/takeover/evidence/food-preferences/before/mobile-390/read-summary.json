@@ -1,0 +1,149 @@
+{
+  "heldActualGET": true,
+  "shaped500": true,
+  "draftHiddenDuringLoadingAndError": true,
+  "keyboardRetryRecoveredRealApi": true,
+  "writes": [],
+  "observations": [
+    {
+      "state": "loading",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": []
+      },
+      "controls": []
+    },
+    {
+      "state": "loading",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "textScale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": []
+      },
+      "controls": []
+    },
+    {
+      "state": "loading",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "brokenImages": []
+      },
+      "controls": []
+    },
+    {
+      "state": "loading",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "brokenImages": []
+      },
+      "controls": []
+    },
+    {
+      "state": "read-error",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": []
+      },
+      "controls": [
+        {
+          "label": "Thử lại",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "read-error",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "textScale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": []
+      },
+      "controls": [
+        {
+          "label": "Thử lại",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "read-error",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "brokenImages": []
+      },
+      "controls": [
+        {
+          "label": "Thử lại",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "read-error",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "brokenImages": []
+      },
+      "controls": [
+        {
+          "label": "Thử lại",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    }
+  ]
+}

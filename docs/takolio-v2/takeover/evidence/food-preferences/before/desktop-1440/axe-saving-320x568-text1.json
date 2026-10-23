@@ -1,0 +1,178 @@
+{
+  "state": "saving",
+  "viewport": {
+    "width": 320,
+    "height": 568
+  },
+  "textScale": 1,
+  "metrics": {
+    "innerWidth": 320,
+    "scrollWidth": 320,
+    "brokenImages": []
+  },
+  "controls": [
+    {
+      "label": "1",
+      "enabled": false,
+      "actionable": null,
+      "fits": true
+    },
+    {
+      "label": "2",
+      "enabled": false,
+      "actionable": null,
+      "fits": true
+    },
+    {
+      "label": "3",
+      "enabled": false,
+      "actionable": null,
+      "fits": true
+    },
+    {
+      "label": "4",
+      "enabled": false,
+      "actionable": null,
+      "fits": true
+    },
+    {
+      "label": "5+",
+      "enabled": false,
+      "actionable": null,
+      "fits": true
+    },
+    {
+      "label": "Việt Nam",
+      "enabled": false,
+      "actionable": null,
+      "fits": true
+    },
+    {
+      "label": "Hàn Quốc",
+      "enabled": false,
+      "actionable": null,
+      "fits": true
+    },
+    {
+      "label": "Nhật Bản",
+      "enabled": false,
+      "actionable": null,
+      "fits": true
+    },
+    {
+      "label": "Âu - Mỹ",
+      "enabled": false,
+      "actionable": null,
+      "fits": true
+    },
+    {
+      "label": "Trung Hoa",
+      "enabled": false,
+      "actionable": null,
+      "fits": true
+    },
+    {
+      "label": "Thái Lan",
+      "enabled": false,
+      "actionable": null,
+      "fits": true
+    },
+    {
+      "label": "Khác",
+      "enabled": false,
+      "actionable": null,
+      "fits": true
+    },
+    {
+      "label": "Thịt bò",
+      "enabled": false,
+      "actionable": null,
+      "fits": true
+    },
+    {
+      "label": "Hải sản",
+      "enabled": false,
+      "actionable": null,
+      "fits": true
+    },
+    {
+      "label": "Đậu phộng",
+      "enabled": false,
+      "actionable": null,
+      "fits": true
+    },
+    {
+      "label": "Đồ cay",
+      "enabled": false,
+      "actionable": null,
+      "fits": true
+    },
+    {
+      "label": "Nấm",
+      "enabled": false,
+      "actionable": null,
+      "fits": true
+    },
+    {
+      "label": "Hành tỏi",
+      "enabled": false,
+      "actionable": null,
+      "fits": true
+    },
+    {
+      "label": "Sữa",
+      "enabled": false,
+      "actionable": null,
+      "fits": true
+    },
+    {
+      "label": "Gluten",
+      "enabled": false,
+      "actionable": null,
+      "fits": true
+    },
+    {
+      "label": "Khác",
+      "enabled": false,
+      "actionable": null,
+      "fits": true
+    },
+    {
+      "label": "Không cay",
+      "enabled": false,
+      "actionable": null,
+      "fits": true
+    },
+    {
+      "label": "Ít cay",
+      "enabled": false,
+      "actionable": null,
+      "fits": true
+    },
+    {
+      "label": "Trung bình",
+      "enabled": false,
+      "actionable": null,
+      "fits": true
+    },
+    {
+      "label": "Rất cay",
+      "enabled": false,
+      "actionable": null,
+      "fits": true
+    },
+    {
+      "label": "Đang xử lý...",
+      "enabled": false,
+      "actionable": null,
+      "fits": true
+    }
+  ],
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ]
+}

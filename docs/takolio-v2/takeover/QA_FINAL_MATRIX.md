@@ -1,3 +1,22 @@
+# Food preferences row33 QA - 2026-10-24 JST
+
+| Area | Actual result |
+|---|---|
+| Registered tastes | PASS_BOUNDED; exact PATCH/reload, size7, unknown values, language retained |
+| Pending/error | PASS_BOUNDED; held real PATCH locks draft, shaped500 focused error/retry |
+| Read loading/error | PASS_BOUNDED; editor hidden; keyboard retry; no writes |
+| Offline guest | PASS_BOUNDED; navigation retains selections, reload resets; honest session disclosure |
+| Data boundaries | PASS_BOUNDED; hard safety, inventory, shopping, onboarding unchanged |
+| Reflow/controls | PASS_BOUNDED;64 final configs,1256 controls including disabled actions |
+| Accessibility | OPEN_MANUAL;64 zero-violation axe reports,64 incomplete contrast |
+| Full suite/audit | PARTIAL;9164/9169;five inherited CLI errors;inherited1low/6moderate/1high |
+| Runner attempt | INCOMPLETE_RETAINED;Node25 child stalled;Node24 rerun completed |
+| Owner/device/production | PENDING;no certification |
+
+Implementation `793ade743aecc4cafd0c39f8e1bd3e457f75bc50` on `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`. Next bounded packet: row34 planning settings source/API/browser baseline; preserve revision conflict handling, hard allergen/exclusion authority, current meal plans, household isolation and legacy flag compatibility. Owner/device/manual accessibility review remains open. No push, PR publication, merge, deploy, remote migration or production action.
+
+---
+
 # Settings row32 QA - 2026-10-24 JST
 
 | Area | Actual status / evidence |

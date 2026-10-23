@@ -1,3 +1,11 @@
+## Food preferences row33 source identity - 2026-10-24 JST
+
+Implementation `793ade743aecc4cafd0c39f8e1bd3e457f75bc50` on `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Three source/test hashes in `evidence/food-preferences-checks.json` bind Git objects and current bytes. Baseline FoodPreferencesPage matches main; browser harness unchanged before/after. Older source receipts remain intact. Post-implementation private recovery verification matches original Argon WIP: 22,763 regular files / 772 symlinks, bytes/modes/links/HEAD/index/status, zero worktree differences, private parent0700. Exact backup location stays private. Selected source54 paths, Argon ledger69 rows and asset ledger12 rows intact; file decisions95; all38 owner statuses PENDING.
+
+---
+
 ## Settings row32 source identity - 2026-10-24 JST
 
 Implementation `b7a32b69f19f06bac4dbf7bc6d61ecd3bcce1969` on `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Fresh read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.

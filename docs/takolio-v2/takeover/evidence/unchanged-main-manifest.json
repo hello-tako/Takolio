@@ -31206,12 +31206,6 @@
     "sha256": "dd82413c31c8b64777a045095fb6692a2198462d86f4ad44689667fdcda40e52"
   },
   {
-    "path": "src/web/pages/settings/FoodPreferencesPage.tsx",
-    "mode": "100644",
-    "git_blob": "0640e1f62fe3e1995f7f0cff7e3da1bed9acf042",
-    "sha256": "dd6fb763192125576bdcd3fe78e5db7614b0556f19cbd3128eb53ce49fe47157"
-  },
-  {
     "path": "src/web/pages/settings/LegacyPlanningSettingsPage.tsx",
     "mode": "100644",
     "git_blob": "c93858a2b1591fa242d1447a57d2682fbcbe54db",
@@ -34828,12 +34822,6 @@
     "mode": "100644",
     "git_blob": "6bae233da1683f3de0cfd9e9d2a54f27e5df2558",
     "sha256": "7e44c9c8a555c77674231702d14fd0fec1b3e451a1106f9a129a972a06ee0a02"
-  },
-  {
-    "path": "tests/unit/ui08-account.test.tsx",
-    "mode": "100644",
-    "git_blob": "d6240d66f73fbf13259b5ab59d5383cf5be578b0",
-    "sha256": "997cd9c06739b6cc5c851879beac4c2ae2e6447438ec0729cf910b772ee7a4de"
   },
   {
     "path": "tests/unit/ui08-onboarding-navigation.test.tsx",

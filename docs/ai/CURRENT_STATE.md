@@ -1,3 +1,21 @@
+## Takolio V2 safe continuation - Food preferences row33 (2026-10-24 JST)
+
+Status: `LOCAL_FOOD_PREFERENCES_SESSION_VERIFIED`. Implementation `793ade743aecc4cafd0c39f8e1bd3e457f75bc50` on `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Existing UI08 FoodPreferencesPage retained. Corrected two offline-only messages to disclose that choices apply to this session and disappear on reload. Added one unit case and three browser journeys across two contexts. No persistence/API/store/handler/CSS/component/asset or protected system changes. Legacy tastes `/preferences` remain separate from hard safety `/family-preferences`.
+
+Browser 6/6 in 2.4m; focused 5 files/103 unit tests (2.19s) and 3 files/104 integration tests (7.63s); targeted ESLint, lint/types, local migrations and default/paired builds PASS. Full suite rerun under v24.16.0: 410/412 files, 9,164/9,169 tests; duration 197.54s (transform 15.86s, setup 4.53s, import 95.05s, tests 1175.07s, environment 24.69s), wall 198.76s. Same five inherited encoded-space CLI failures remain. Initial Node25 suite was interrupted after a stalled synchronous Python child; no completed count claimed for that attempt. Audit retains inherited 1 low/6 moderate/1 high including Vite GHSA-587h-7wmj-h5pm.
+
+268 bound payloads: 128 PNG, 128 axe JSON and twelve summaries. Four viewport/text configs x eight states x two contexts per phase. All 64 final axe reports have zero reported violations with incomplete color-contrast; 1,256 measured controls including disabled actions. Real local PATCH/reload preserves size7, unknown vocabulary and language; pending lock, shaped500 retry and unsaved-discard checks pass. Hard safety, inventory, shopping and onboarding snapshots unchanged. Read/offline monitored journeys make no writes; offline selections survive navigation and reset on reload.
+
+Post-implementation private recovery verification matches original Argon WIP: 22,763 regular files / 772 symlinks, bytes/modes/links/HEAD/index/status, zero worktree differences, private parent0700. Exact backup location stays private. Selected source54 paths, Argon ledger69 rows and asset ledger12 rows intact; file decisions95; all38 owner statuses PENDING.
+
+Root-font text200/reduced-motion Chromium and shaped read/write500 do not certify OS zoom, physical devices, screen readers, live providers, full Week-OFF, performance or production. Full-page captures follow trial-control/focus scrolling and can include fixed chrome/skip links; no pixel or owner acceptance claimed.
+
+Exact commands/source/log hashes: `docs/takolio-v2/takeover/evidence/food-preferences-checks.json`. Report: `UI_C7_FOOD_PREFERENCES.md`. Next bounded packet: row34 planning settings source/API/browser baseline; preserve revision conflict handling, hard allergen/exclusion authority, current meal plans, household isolation and legacy flag compatibility. Owner/device/manual accessibility review remains open. No push, PR publication, merge, deploy, remote migration or production action.
+
+---
+
 ## Takolio V2 safe continuation - Settings row32 checkpoint (2026-10-24 JST)
 
 Status: `LOCAL_SETTINGS_PENDING_VERIFIED`. Implementation `b7a32b69f19f06bac4dbf7bc6d61ecd3bcce1969` on `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Fresh read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
