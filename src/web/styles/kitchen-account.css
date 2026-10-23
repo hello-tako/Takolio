@@ -58,3 +58,6 @@
 
 /* Plus hero and payment dialog headings keep their explicit light text. */
 .takosan-rebuild .plus-page h2.text-white { color: white; }
+
+.account-body .family-membership-copy,
+.account-body .family-household-id { overflow-wrap: anywhere; }

@@ -15,8 +15,7 @@ export const FamilySharingPage: React.FC = () => {
 
   return (
     <AccountPage title="Hộ gia đình & chia sẻ" description="Tủ lạnh này thuộc về hộ của bạn.">
-
-      <div className="space-y-4 pb-8">
+      <div className="space-y-4 pb-8 min-w-0">
         <Section title="Hộ gia đình hiện tại">
           <Surface className="p-4 space-y-3">
             <div className="flex items-center justify-between gap-3 flex-wrap">
@@ -26,14 +25,14 @@ export const FamilySharingPage: React.FC = () => {
                 </span>
                 <div className="min-w-0">
                   <h3 className="text-sm font-bold text-semantic-text-primary break-words">Tủ lạnh nhà tôi</h3>
-                  <p className="text-xs text-semantic-text-muted break-words">Mã hộ: {householdId}</p>
+                  <p className="family-household-id text-xs text-semantic-text-muted break-words">Mã hộ: {householdId}</p>
                 </div>
               </div>
               {/* Only the session-derived fact is asserted: this account
                   belongs to the household. No server status is invented. */}
               <StatusBadge tone="info">Hộ của bạn</StatusBadge>
             </div>
-            <p className="text-sm text-semantic-text-secondary leading-relaxed">
+            <p className="family-membership-copy text-sm text-semantic-text-secondary leading-relaxed">
               Dữ liệu tủ lạnh, lịch sử quét và thực đơn được phân tách theo hộ. Tài khoản của bạn
               ({displayName || 'bạn'}) là thành viên của hộ này.
             </p>
