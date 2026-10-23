@@ -1,0 +1,37 @@
+{
+  "state": "server-error",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "textScale": 1,
+  "metrics": {
+    "innerWidth": 1440,
+    "scrollWidth": 1440,
+    "textOutsideViewport": [],
+    "textOverlappingRetry": [],
+    "bannerHeight": 0,
+    "headerTop": 0,
+    "bannerBottom": null,
+    "measuredBannerHeight": 0,
+    "liveStatus": false,
+    "brokenImages": []
+  },
+  "retryTarget": {
+    "box": {
+      "x": 784.375,
+      "y": 291.5625,
+      "width": 95.25,
+      "height": 48
+    },
+    "enabled": true,
+    "fits": true
+  },
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ]
+}

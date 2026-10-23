@@ -1,0 +1,198 @@
+{
+  "base_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "implementation_commit": "d44b98ca292b24baf954a7bf3c6b1039661cfd95",
+  "checkpoint_kind": "OfflineBanner presentation fix plus bounded offline/error browser tests",
+  "production_actions": false,
+  "environment": "macOS Node25.9.0/pnpm10.33.2 static/build/browser;focused and full suite Node24.16.0 with resolved TMPDIR;isolated local Worker/SQLite;external APIs/serviceworkers blocked;Chromium reduced motion/root-font scaling",
+  "source_sha256": {
+    "src/web/components/common/OfflineBanner.tsx": "3f9a5b2f46018f57d23b6764bc6dd3ee8812c08c298972e07090797817dbee48",
+    "tests/e2e/t17-ui/takolio-offline-continuation.e2e.ts": "528925d284cdb210f5d5aa5b54c8423f8db66e7d47e279513001f37b8beac3a5",
+    "src/web/components/common/AsyncState.tsx": "7acf96720d3e76dd1b81420ae7e2deb9c17f11b3d2f3d8c7cc2ca9a290af1cba",
+    "src/web/lib/sync.ts": "78b9203ef29009a00c7e775c4d275f7ac30eb28a91505e2128cef81c91761afb",
+    "src/web/services/api.ts": "b63eba4c1f7e8e8e3725be7a6873d405d375ca8d50a6fbc27f3b1c7c0552f746",
+    "src/web/services/http.ts": "ddb6c4deb274c30e5015299c8b36ebf04417c9b13af02f1e564a63aaaeb87e95",
+    "src/web/services/shopping.ts": "590d16e48f81b981bffa09193f732121de7d4e769ea2b20464612a5b864da04f",
+    "src/web/services/notifications.ts": "54558761ec628af6c45ea220af917c170640feaa8e5a3607ac3b8a12fee98ffd",
+    "src/web/pages/NotificationsPage.tsx": "e51b1d603b06158b33d9d40f39ad42e2c6a711584f9eafedac7fd9293f3f0543",
+    "src/web/components/layout/use-kitchen-shell.ts": "35e2e0219bfff9685c14137ede665d0c567274d0a39b5c218bb8687ece83ad46",
+    "src/web/styles/index.css": "8d3df33776fea8744ef6cac1691e138da1b32b4937e97648d071e4c0c11a9b29"
+  },
+  "protected_sources_byte_identical_to_main": [
+    "src/web/components/common/AsyncState.tsx",
+    "src/web/lib/sync.ts",
+    "src/web/services/api.ts",
+    "src/web/services/http.ts",
+    "src/web/services/shopping.ts",
+    "src/web/services/notifications.ts",
+    "src/web/pages/NotificationsPage.tsx",
+    "src/web/components/layout/use-kitchen-shell.ts",
+    "src/web/styles/index.css"
+  ],
+  "baseline_source_copy": {
+    "path": ".artifacts/takeover/offline/OfflineBanner.tsx.baseline",
+    "bytes": 2128,
+    "sha256": "b61b28d7eb620af474c2b71fe4bec627d7fea9a233ba286884d3337f7e9c08b6",
+    "source_identity": {
+      "path": "src/web/components/common/OfflineBanner.tsx",
+      "sha256": "b61b28d7eb620af474c2b71fe4bec627d7fea9a233ba286884d3337f7e9c08b6",
+      "base_head": "b8bdc1bdb160f5d8563df48bd56b65eb2732cc3d"
+    }
+  },
+  "checks": [
+    {
+      "name": "targeted-eslint",
+      "command": "pnpm exec eslint src/web/components/common/OfflineBanner.tsx tests/e2e/t17-ui/takolio-offline-continuation.e2e.ts",
+      "exit_code": 0,
+      "seconds": 1.09,
+      "outcome": "PASS",
+      "local_ignored_log": ".artifacts/takeover/offline/targeted-eslint.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "focused-regressions",
+      "command": "pnpm exec vitest run tests/unit/sync.test.ts tests/unit/query-client.test.ts tests/unit/frontend-services.test.ts tests/unit/week-query-sync.test.ts tests/unit/ui11-navigation.test.tsx tests/unit/ui11-shell-measurement.test.tsx",
+      "PATH_prefix": "/opt/homebrew/opt/node@24/bin",
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/",
+      "node": "v24.16.0",
+      "exit_code": 0,
+      "seconds": 2.42,
+      "outcome": "PASS;6files/160tests;1.57s (transform 1.80s, setup 119ms, import 1.47s, tests 2.30s, environment 438ms)",
+      "local_ignored_log": ".artifacts/takeover/offline/focused-regressions.log",
+      "log_bytes": 259,
+      "log_sha256": "e693078b2f206a6caf95c86a862d3f49b6bdf3df21909a19ce02a904e4a6af47"
+    },
+    {
+      "name": "lint",
+      "command": "pnpm lint",
+      "exit_code": 0,
+      "seconds": 7.09,
+      "outcome": "PASS",
+      "local_ignored_log": ".artifacts/takeover/offline/lint.log",
+      "log_bytes": 99,
+      "log_sha256": "3f2044fca43a5e60905becf2ebfc3a21ddd85976975841aa1e16bc87b0f40a6d"
+    },
+    {
+      "name": "typecheck",
+      "command": "pnpm typecheck",
+      "exit_code": 0,
+      "seconds": 17.27,
+      "outcome": "PASS",
+      "local_ignored_log": ".artifacts/takeover/offline/typecheck.log",
+      "log_bytes": 165,
+      "log_sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e"
+    },
+    {
+      "name": "migrations",
+      "command": "pnpm check:migrations",
+      "exit_code": 0,
+      "seconds": 0.54,
+      "outcome": "PASS",
+      "local_ignored_log": ".artifacts/takeover/offline/migrations.log",
+      "log_bytes": 297,
+      "log_sha256": "9616315a9fcbfd77c67784703a16384419539e6a68ccd2838dda07239de25464"
+    },
+    {
+      "name": "build",
+      "command": "pnpm build",
+      "exit_code": 0,
+      "seconds": 10.22,
+      "outcome": "PASS; inherited Admin font warnings",
+      "local_ignored_log": ".artifacts/takeover/offline/build.log",
+      "log_bytes": 10008,
+      "log_sha256": "c6eeb6d34b0486c21d07d527987b1ae26089d54b3529d147ecc35b9055f59223"
+    },
+    {
+      "name": "paired-build",
+      "command": "VITE_FF_MEAL_PLANNER_V2=true VITE_FF_MEAL_COMPOSITION_V2=true pnpm build",
+      "exit_code": 0,
+      "seconds": 9.81,
+      "outcome": "PASS; inherited Admin font warnings",
+      "local_ignored_log": ".artifacts/takeover/offline/paired-build.log",
+      "log_bytes": 10008,
+      "log_sha256": "3e7884b9060cba1a73741c9e9426b814e06fe5482a29070863231568cf2fc127"
+    },
+    {
+      "name": "audit",
+      "command": "pnpm audit --json",
+      "exit_code": 1,
+      "seconds": 1.46,
+      "outcome": "OPEN_INHERITED;1low/6moderate/1high including Vite GHSA-587h-7wmj-h5pm; dependencies unchanged",
+      "local_ignored_log": ".artifacts/takeover/offline/audit.log",
+      "log_bytes": 43734,
+      "log_sha256": "3256cc0c6e0545751f2cfdb3223b90a27a32043a364bb025bc5047465d90103f"
+    },
+    {
+      "name": "remote-main",
+      "command": "git ls-remote https://github.com/hello-tako/Takolio.git refs/heads/main",
+      "exit_code": 0,
+      "seconds": 1.11,
+      "outcome": "PASS",
+      "local_ignored_log": ".artifacts/takeover/offline/remote-main.log",
+      "log_bytes": 57,
+      "log_sha256": "74b0b5609784df7a5fddf1241a9179b9e62a61f3d3671f7fc0a075210071e212"
+    },
+    {
+      "name": "full-suite-node24",
+      "command": "pnpm test",
+      "PATH_prefix": "/opt/homebrew/opt/node@24/bin",
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/",
+      "node": "v24.16.0",
+      "exit_code": 1,
+      "seconds": 203.32,
+      "outcome": "PARTIAL;410/412files;9164/9169tests;same five inherited encoded-space CLI failures;202.40s (transform 16.56s, setup 4.50s, import 97.31s, tests 1203.88s, environment 25.87s)",
+      "local_ignored_log": ".artifacts/takeover/offline/full-suite-node24.log",
+      "log_bytes": 17961,
+      "log_sha256": "b489679fa910022e82219a600373a7c8cca7b57af8e77aa70469599823d48295"
+    },
+    {
+      "name": "browser-after",
+      "command": "PREVIEW_MEAL_COMPOSITION_V2=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-offline-continuation.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/offline/after",
+      "exit_code": 0,
+      "reported_duration": "30.3s",
+      "outcome": "PASS4/4;32captures;zero reported axe violations;8incomplete contrast;44px retry;no text overlap;one exact server replay;unchanged other domains",
+      "local_ignored_log": ".artifacts/takeover/offline/after.log",
+      "log_bytes": 22147,
+      "log_sha256": "e7f714fbc602298e55574095d7c7e66408df968669bcfa9f1a0832c11f5b3d3d"
+    }
+  ],
+  "retained_attempts": [
+    {
+      "name": "browser-baseline",
+      "command": "PREVIEW_MEAL_COMPOSITION_V2=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-offline-continuation.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/offline/baseline",
+      "exit_code": 1,
+      "reported_duration": "34.7s",
+      "outcome": "2failed/2passed;refined final harness on unchanged product;24missing live status/12short retries/2text overlaps;behavior summaries still complete;32zero-violation axe reports/8incomplete contrast",
+      "local_ignored_log": ".artifacts/takeover/offline/baseline.log",
+      "log_bytes": 67597,
+      "log_sha256": "a09f6556c3b9995304fce2abe5e958a63c083969f2de255a529fb1db15ebf72a"
+    },
+    {
+      "name": "browser-initial",
+      "command": "PREVIEW_MEAL_COMPOSITION_V2=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-offline-continuation.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/offline/before",
+      "exit_code": 1,
+      "outcome": "4failed;UI defects plus harness measured shell before ResizeObserver settled and incorrectly assumed empty notifications;recovery journeys complete;initial harness and artifacts retained;not the comparable baseline",
+      "local_ignored_log": ".artifacts/takeover/offline/before.log",
+      "log_bytes": 71760,
+      "log_sha256": "a862a0f1848f093893bd5ebeb497e12ecdc62c46e839bff8a671950cab102adf"
+    }
+  ],
+  "harness_initial": {
+    "path": ".artifacts/takeover/offline/harness-initial.ts",
+    "bytes": 12868,
+    "sha256": "b0ac9d7e7af0cb1104c63dc1aba722c36e0f1e464685ec8287dc8dcb51ec24df"
+  },
+  "harness_refined": {
+    "path": ".artifacts/takeover/offline/harness-refined.ts",
+    "bytes": 14160,
+    "sha256": "528925d284cdb210f5d5aa5b54c8423f8db66e7d47e279513001f37b8beac3a5"
+  },
+  "harness_refinement": "Await shell ResizeObserver height; measure real text-range/button intersection; recover expected actual notifications instead of assuming empty. Baseline and after use identical refined harness.",
+  "initial_artifacts_binding": {
+    "path": ".artifacts/takeover/offline/initial-artifacts-binding.json",
+    "bytes": 20436,
+    "sha256": "4661f37402f354c323856d104c63912a7e43337c9c4d714a488420ff208b506d",
+    "entries": 79
+  },
+  "scope": "Existing OfflineBanner flex-wrap/status text/44px shared tap-target only. Retry handler, online/offline subscriptions, outbox storage/ownership/serialization/retry and replay API unchanged. Shaped navigator/events and500;API network abort, durable queue, actual local replay and server DB are real. InlineError retained;real notifications recovery. No AppErrorBoundary crash test, live network/hardware/screenreader or cross-tenant certification. No new asset evidenced."
+}

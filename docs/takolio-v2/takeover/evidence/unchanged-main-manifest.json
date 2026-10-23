@@ -30516,12 +30516,6 @@
     "sha256": "f8607456e3373ca4e230556f2cec71e8f255591d1a12de55edd27fbb2cce54f2"
   },
   {
-    "path": "src/web/components/common/OfflineBanner.tsx",
-    "mode": "100644",
-    "git_blob": "24651860f7ff74267c5ac567c5b8cf87da17b5b0",
-    "sha256": "b61b28d7eb620af474c2b71fe4bec627d7fea9a233ba286884d3337f7e9c08b6"
-  },
-  {
     "path": "src/web/components/common/QuantityStepper.tsx",
     "mode": "100644",
     "git_blob": "07937b5d22f12c4fa253e51fcc81a7ca56a8f217",

@@ -1,3 +1,29 @@
+# Offline/error row 38 QA - 2026-10-24 JST
+
+| Area | Actual result |
+|---|---|
+| Product delta | Narrow banner flex-wrap/shared44px/status semantics only |
+| Comparable baseline | 2failed/2passed; 24missing status, 12 short retries, 2text overlaps |
+| Final browser | 4/4; 32captures; 24retry measurements meet 44px |
+| Durable outbox | PASS_BOUNDED; real abort/reload; automatic500/manual 500; exact owned replay; one server item |
+| Read error | PASS_BOUNDED; existing InlineError/keyboard retry recovers actual local notifications |
+| Boundaries | PASS_BOUNDED; unchanged inventory/family/current-plan/onboarding; no writes in read-error journey |
+| Accessibility | OPEN_MANUAL; 32zero-violation axe reports; 8incomplete contrast; screenreader unverified |
+| Gates | lint/types/migrations/default and paired builds PASS; focused6files/160tests PASS |
+| Full suite | PARTIAL; 410/412files; 9, 164/9, 169 tests; five inherited CLI failures |
+| Dependencies | OPEN_INHERITED; 1low/6moderate/1high |
+| Owner/device/production | PENDING; 38rows have bounded evidence; no acceptance or release certification |
+
+Implementation `d44b98ca292b24baf954a7bf3c6b1039661cfd95`, branch `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Isolated Chromium/local Worker/SQLite with reduced motion and root-font scaling; not OS zoom, physical-device, screenreader, performance, live-provider or production certification. navigator.onLine/events and 500 responses are explicitly shaped; API abort, durable storage, owned queue and local server replay are real. Keyboard coverage uses focus+Enter and does not certify full Tab traversal or announcements in assistive technology. Eight final incomplete contrast results require manual review. Full-page mobile capture can show fixed-navigation artifacts. No AppErrorBoundary crash or adversarial cross-tenant certification; full planner flag-OFF Week remains open.
+
+Next bounded packet: cross-screen regression and evidence-gap audit, prioritizing true planner flag-OFF Week compatibility and manual accessibility/device review. All 38 screen rows now have bounded runtime evidence, including protected Plus presentation, while all 38 owner reviews remain PENDING; this is not product completion or release approval. Inherited CLI/dependency findings remain open. No push, PR publication, merge, deploy, remote migration or production action.
+
+Finalization executed: protected-main audit PASS with 5, 837 unchanged protected base paths; evidence, credential/private-recovery-path and whitespace validation PASS. All eight historical document tails and the previous 101 file decisions are preserved; only SCREEN_PROGRESS row 38 changed. These results precede the separate local documentation checkpoint.
+
+---
+
 # Privacy/Data row36 QA - 2026-10-24 JST
 
 | Area | Actual result |

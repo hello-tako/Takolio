@@ -1,0 +1,23 @@
+{
+  "state": "offline",
+  "viewport": {
+    "width": 320,
+    "height": 568
+  },
+  "textScale": 1,
+  "metrics": {
+    "innerWidth": 320,
+    "scrollWidth": 320,
+    "textOutsideViewport": [],
+    "textOverlappingRetry": [],
+    "bannerHeight": 48,
+    "headerTop": 48,
+    "bannerBottom": 48,
+    "measuredBannerHeight": 48,
+    "liveStatus": true,
+    "brokenImages": []
+  },
+  "retryTarget": null,
+  "violations": [],
+  "incomplete": []
+}

@@ -1,3 +1,27 @@
+# Offline/error row 38 checkpoint - 2026-10-24 JST
+
+Status:`LOCAL_OFFLINE_ERROR_REFLOW_VERIFIED`. Implementation `d44b98ca292b24baf954a7bf3c6b1039661cfd95`, branch `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Retained the existing OfflineBanner, WifiOff/RefreshCw icons, copy, subscriptions and retry handler. Added flex wrapping with a flexible status span, the existing 44px tap-target token and a polite atomic status region. The previous retry measured 24px at normal text and pending text intersected the button at 320px/text200. No new illustration was evidenced; no asset replacement or frontend rebuild.
+
+Final browser 4/4 in 30.3s; focused sync/query/services/Week/navigation/shell regression: 6 files / 160 tests in 1.57s (wall 2.42s). Targeted ESLint, pnpm lint, typecheck, local migration smoke, default build and paired planner/composition build PASS. Full suite Node 24.16.0/resolved TMPDIR: 410/412 files; 9, 164/9, 169 tests in 202.40s (wall 203.32s); same five inherited encoded-space CLI failures in production-catalog-continuity/release-check. Dependency audit retains 1 low / 6 moderate / 1 high including Vite GHSA-587h-7wmj-h5pm; dependencies unchanged. Existing Admin font warnings remain on builds.
+
+136 bound payloads: 64 PNG, 64 axe JSON and 8 behavior summaries. Comparable baseline and final each cover four states at 320x568, 320x420/root text200, 390x844 and 1440x900 in both mobile-390 and desktop-1440 contexts. Baseline: 2 failed / 2 passed in 34.7s: 24 missing status semantics, 12 short retries and 2 text overlaps; final zero instances of these defects. All 32 final axe reports have zero reported violations; 8 have incomplete color-contrast. All 24 final retry measurements meet 44px and viewport reachability; disabled pending state and measured shell offset pass.
+
+Actual local network abort queues one shopping write; reload retains its owner, operationId and exact body. Automatic online 500 and held manual 500 preserve that queue and an empty server list. Focus+Enter retry disables the button and prevents duplicate activation; next retry reaches the real local Worker and stores exactly one item with its original ID/body. Queue and banner clear, and reload retains that one server item. Inventory, family, current-plan and onboarding snapshots remain unchanged. Separate shaped notifications 500 shows the existing InlineError, distinct from offline; keyboard retry recovers actual local notifications with no monitored API writes and unchanged domain snapshots. InlineError requires no source change.
+
+Post-implementation private recovery verification matches original Argon WIP: 22, 763 regular files / 772 symlinks; bytes, modes, links, HEAD, index, status; zero worktree differences; private parent 0700. Authorized shared Git metadata changes are disclosed separately; exact recovery location remains private. Selected salvage 54 paths, Argon ledger 69 rows, asset ledger 12 rows intact; file decisions 103; all 38 owner statuses PENDING.
+
+Isolated Chromium/local Worker/SQLite with reduced motion and root-font scaling; not OS zoom, physical-device, screenreader, performance, live-provider or production certification. navigator.onLine/events and 500 responses are explicitly shaped; API abort, durable storage, owned queue and local server replay are real. Keyboard coverage uses focus+Enter and does not certify full Tab traversal or announcements in assistive technology. Eight final incomplete contrast results require manual review. Full-page mobile capture can show fixed-navigation artifacts. No AppErrorBoundary crash or adversarial cross-tenant certification; full planner flag-OFF Week remains open.
+
+Report:`UI_C8_OFFLINE_ERROR.md`; receipts:`docs/takolio-v2/takeover/evidence/offline-checks.json`. Next bounded packet: cross-screen regression and evidence-gap audit, prioritizing true planner flag-OFF Week compatibility and manual accessibility/device review. All 38 screen rows now have bounded runtime evidence, including protected Plus presentation, while all 38 owner reviews remain PENDING; this is not product completion or release approval. Inherited CLI/dependency findings remain open. No push, PR publication, merge, deploy, remote migration or production action.
+
+Implementation and documentation/evidence commits are separate; this checkpoint cannot name its own commit.
+
+Finalization executed: protected-main audit PASS with 5, 837 unchanged protected base paths; evidence, credential/private-recovery-path and whitespace validation PASS. All eight historical document tails and the previous 101 file decisions are preserved; only SCREEN_PROGRESS row 38 changed. These results precede the separate local documentation checkpoint.
+
+---
+
 # Privacy/Data row36 checkpoint - 2026-10-24 JST
 
 Status: `LOCAL_PRIVACY_DATA_AUDIT_VERIFIED`. Implementation `23585223c3c6747cce3dd132a2985cb75580947a` (test only), branch `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main: `90b94129113b41e34701d99f51175cfa81cb73de`.

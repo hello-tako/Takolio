@@ -1,0 +1,32 @@
+{
+  "state": "syncing",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "textScale": 1,
+  "metrics": {
+    "innerWidth": 390,
+    "scrollWidth": 390,
+    "textOutsideViewport": [],
+    "textOverlappingRetry": [],
+    "bannerHeight": 40,
+    "headerTop": 128,
+    "bannerBottom": 40,
+    "measuredBannerHeight": 40,
+    "liveStatus": false,
+    "brokenImages": []
+  },
+  "retryTarget": {
+    "box": {
+      "x": 296.375,
+      "y": 8,
+      "width": 77.625,
+      "height": 24
+    },
+    "enabled": false,
+    "fits": false
+  },
+  "violations": [],
+  "incomplete": []
+}

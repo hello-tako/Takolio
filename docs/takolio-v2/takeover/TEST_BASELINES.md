@@ -1,3 +1,37 @@
+# Offline/error row 38 baseline - 2026-10-24 JST
+
+Implementation `d44b98ca292b24baf954a7bf3c6b1039661cfd95`, branch `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+| Exact executed command | Actual result |
+|---|---|
+| `pnpm exec eslint src/web/components/common/OfflineBanner.tsx tests/e2e/t17-ui/takolio-offline-continuation.e2e.ts` | PASS (exit0; wall 1.09s) |
+| `PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/ pnpm exec vitest run tests/unit/sync.test.ts tests/unit/query-client.test.ts tests/unit/frontend-services.test.ts tests/unit/week-query-sync.test.ts tests/unit/ui11-navigation.test.tsx tests/unit/ui11-shell-measurement.test.tsx` | PASS; 6files/160tests; 1.57s (transform 1.80s, setup 119ms, import 1.47s, tests 2.30s, environment 438ms) (exit0; wall 2.42s) |
+| `pnpm lint` | PASS (exit0; wall 7.09s) |
+| `pnpm typecheck` | PASS (exit0; wall 17.27s) |
+| `pnpm check:migrations` | PASS (exit0; wall 0.54s) |
+| `pnpm build` | PASS; inherited Admin font warnings (exit0; wall 10.22s) |
+| `VITE_FF_MEAL_PLANNER_V2=true VITE_FF_MEAL_COMPOSITION_V2=true pnpm build` | PASS; inherited Admin font warnings (exit0; wall 9.81s) |
+| `pnpm audit --json` | OPEN_INHERITED; 1low/6moderate/1high including Vite GHSA-587h-7wmj-h5pm; dependencies unchanged (exit1; wall 1.46s) |
+| `git ls-remote https://github.com/hello-tako/Takolio.git refs/heads/main` | PASS (exit0; wall 1.11s) |
+| `PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/ pnpm test` | PARTIAL; 410/412files; 9164/9169tests; same five inherited encoded-space CLI failures; 202.40s (transform 16.56s, setup 4.50s, import 97.31s, tests 1203.88s, environment 25.87s) (exit1; wall 203.32s) |
+| `PREVIEW_MEAL_COMPOSITION_V2=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-offline-continuation.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/offline/after` | PASS4/4; 32captures; zero reported axe violations; 8incomplete contrast; 44px retry; no text overlap; one exact server replay; unchanged other domains (exit0; reported 30.3s; shell wall unrecorded) |
+| `PREVIEW_MEAL_COMPOSITION_V2=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-offline-continuation.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/offline/baseline` | 2failed/2passed; refined final harness on unchanged product; 24missing live status/12 short retries/2text overlaps; behavior summaries still complete; 32zero-violation axe reports/8incomplete contrast (exit1; reported 34.7s; shell wall unrecorded) |
+| `PREVIEW_MEAL_COMPOSITION_V2=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-offline-continuation.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/offline/before` | 4failed; UI defects plus harness measured shell before ResizeObserver settled and incorrectly assumed empty notifications; recovery journeys complete; initial harness and artifacts retained; not the comparable baseline (exit1; shell wall unrecorded) |
+
+Initial browser attempt: 4 failed: real target/status/layout defects plus harness measuring shell before ResizeObserver settled and incorrectly assuming empty notifications. Refined only the harness to await measured height, detect text-range/button intersections and compare recovery against actual server notifications. The unchanged banner was rerun with that refined harness as the comparable baseline; the identical harness passes after the narrow fix. Initial harness, 79 raw artifacts and complete logs remain bound and ignored. No failure evidence was discarded.
+
+Final browser 4/4 in 30.3s; focused sync/query/services/Week/navigation/shell regression: 6 files / 160 tests in 1.57s (wall 2.42s). Targeted ESLint, pnpm lint, typecheck, local migration smoke, default build and paired planner/composition build PASS. Full suite Node 24.16.0/resolved TMPDIR: 410/412 files; 9, 164/9, 169 tests in 202.40s (wall 203.32s); same five inherited encoded-space CLI failures in production-catalog-continuity/release-check. Dependency audit retains 1 low / 6 moderate / 1 high including Vite GHSA-587h-7wmj-h5pm; dependencies unchanged. Existing Admin font warnings remain on builds.
+
+136 bound payloads: 64 PNG, 64 axe JSON and 8 behavior summaries. Comparable baseline and final each cover four states at 320x568, 320x420/root text200, 390x844 and 1440x900 in both mobile-390 and desktop-1440 contexts. Baseline: 2 failed / 2 passed in 34.7s: 24 missing status semantics, 12 short retries and 2 text overlaps; final zero instances of these defects. All 32 final axe reports have zero reported violations; 8 have incomplete color-contrast. All 24 final retry measurements meet 44px and viewport reachability; disabled pending state and measured shell offset pass.
+
+Isolated Chromium/local Worker/SQLite with reduced motion and root-font scaling; not OS zoom, physical-device, screenreader, performance, live-provider or production certification. navigator.onLine/events and 500 responses are explicitly shaped; API abort, durable storage, owned queue and local server replay are real. Keyboard coverage uses focus+Enter and does not certify full Tab traversal or announcements in assistive technology. Eight final incomplete contrast results require manual review. Full-page mobile capture can show fixed-navigation artifacts. No AppErrorBoundary crash or adversarial cross-tenant certification; full planner flag-OFF Week remains open.
+
+Next bounded packet: cross-screen regression and evidence-gap audit, prioritizing true planner flag-OFF Week compatibility and manual accessibility/device review. All 38 screen rows now have bounded runtime evidence, including protected Plus presentation, while all 38 owner reviews remain PENDING; this is not product completion or release approval. Inherited CLI/dependency findings remain open. No push, PR publication, merge, deploy, remote migration or production action.
+
+Finalization executed: protected-main audit PASS with 5, 837 unchanged protected base paths; evidence, credential/private-recovery-path and whitespace validation PASS. All eight historical document tails and the previous 101 file decisions are preserved; only SCREEN_PROGRESS row 38 changed. These results precede the separate local documentation checkpoint.
+
+---
+
 # UI08 Privacy/Data row36 baseline - 2026-10-24 JST
 
 Implementation `23585223c3c6747cce3dd132a2985cb75580947a` (test only), branch `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main: `90b94129113b41e34701d99f51175cfa81cb73de`.

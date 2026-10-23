@@ -1,0 +1,970 @@
+{
+  "base_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "implementation_commit": "d44b98ca292b24baf954a7bf3c6b1039661cfd95",
+  "baseline_head": "b8bdc1bdb160f5d8563df48bd56b65eb2732cc3d",
+  "checkpoint_kind": "narrow OfflineBanner layout/target/status semantics; same refined browser harness before and after",
+  "measurements": {
+    "baseline_axe": 32,
+    "baseline_png": 32,
+    "baseline_summaries": 4,
+    "after_axe": 32,
+    "after_png": 32,
+    "after_summaries": 4,
+    "captures": 64,
+    "defects": {
+      "baseline:missing_status": 24,
+      "baseline:small_retry": 12,
+      "baseline:text_overlap": 2
+    },
+    "incomplete": {
+      "baseline:color-contrast": 8,
+      "after:color-contrast": 8
+    }
+  },
+  "entries": [
+    {
+      "path": "baseline/desktop-1440/axe-offline-1440x900-text1.json",
+      "bytes": 444,
+      "sha256": "c6380c9e7e3eef7ac26241b10eb34ac067b399721cea861f8b00fd7c033c5f14",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/axe-offline-1440x900-text1.json"
+    },
+    {
+      "path": "baseline/desktop-1440/axe-offline-320x420-text2.json",
+      "bytes": 441,
+      "sha256": "a2354ab6b40220f30eb67afa6c01a67c46e7c00614c7a93824cb009c052fee6f",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/axe-offline-320x420-text2.json"
+    },
+    {
+      "path": "baseline/desktop-1440/axe-offline-320x568-text1.json",
+      "bytes": 441,
+      "sha256": "1b144bcd05d8c712052225addc0b0254d8f00abdd0f2b312c5cecd5129f9908f",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/axe-offline-320x568-text1.json"
+    },
+    {
+      "path": "baseline/desktop-1440/axe-offline-390x844-text1.json",
+      "bytes": 442,
+      "sha256": "710f6c3a06bddea08637227113f4e4770428e2405de5522462e031ea749797c0",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/axe-offline-390x844-text1.json"
+    },
+    {
+      "path": "baseline/desktop-1440/axe-pending-1440x900-text1.json",
+      "bytes": 586,
+      "sha256": "a04ed20a726da4e5ebfa30caa588e3686272b1dea99c4993b6d417ac9f9ff139",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/axe-pending-1440x900-text1.json"
+    },
+    {
+      "path": "baseline/desktop-1440/axe-pending-320x420-text2.json",
+      "bytes": 579,
+      "sha256": "def29214194fe6615d4e1f684c9404a73b85295fb5c9d0d35842e568c0c7dfc1",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/axe-pending-320x420-text2.json"
+    },
+    {
+      "path": "baseline/desktop-1440/axe-pending-320x568-text1.json",
+      "bytes": 583,
+      "sha256": "4d1b2ec2aad8e6812627dd86876b2a525fae821ce1d818eac8ac9354b212ec98",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/axe-pending-320x568-text1.json"
+    },
+    {
+      "path": "baseline/desktop-1440/axe-pending-390x844-text1.json",
+      "bytes": 582,
+      "sha256": "626ee31687e424522f23e40b236192459e57833ccf6baea6e663fe4105a6eb50",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/axe-pending-390x844-text1.json"
+    },
+    {
+      "path": "baseline/desktop-1440/axe-syncing-1440x900-text1.json",
+      "bytes": 582,
+      "sha256": "36f0fe49cda6f05422ef3dc0ae63504a365b51e76c333dce1bbd6358e3ed0481",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/axe-syncing-1440x900-text1.json"
+    },
+    {
+      "path": "baseline/desktop-1440/axe-syncing-320x420-text2.json",
+      "bytes": 644,
+      "sha256": "86aefc9b2d78f8fa05f601a5aa9fd9344c62189f5848dbd04bf3af8c09244f3b",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/axe-syncing-320x420-text2.json"
+    },
+    {
+      "path": "baseline/desktop-1440/axe-syncing-320x568-text1.json",
+      "bytes": 578,
+      "sha256": "247f103eb533831132aad5e18258df2d782ab026f5297848794b6687dad90d09",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/axe-syncing-320x568-text1.json"
+    },
+    {
+      "path": "baseline/desktop-1440/axe-syncing-390x844-text1.json",
+      "bytes": 578,
+      "sha256": "00684f7177f34fa8139306fc04dfc275cf576b07512fa6cbc7caef9534c2a9fe",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/axe-syncing-390x844-text1.json"
+    },
+    {
+      "path": "baseline/desktop-1440/offline-1440x900-text1.png",
+      "bytes": 104509,
+      "sha256": "98de4636ae531032e1b5336cc6c5098e1fdc9710e9160150dd5601397ee84c4a",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/offline-1440x900-text1.png",
+      "width": 1440,
+      "height": 948
+    },
+    {
+      "path": "baseline/desktop-1440/offline-320x420-text2.png",
+      "bytes": 110125,
+      "sha256": "fc7095c79cb845a8153a9fa7075f9576a47c3f33b1ca49a3ff5e94ba2e5f962e",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/offline-320x420-text2.png",
+      "width": 320,
+      "height": 1798
+    },
+    {
+      "path": "baseline/desktop-1440/offline-320x568-text1.png",
+      "bytes": 81989,
+      "sha256": "99dbd03610982a7da9aee516d7ae4633713df32a0190cae2c3363e11fe87eff0",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/offline-320x568-text1.png",
+      "width": 320,
+      "height": 1352
+    },
+    {
+      "path": "baseline/desktop-1440/offline-390x844-text1.png",
+      "bytes": 83297,
+      "sha256": "fbeb5ffea52f641e956df40a2f78d70acf4290f9687bf21265489a2673a4bb54",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/offline-390x844-text1.png",
+      "width": 390,
+      "height": 1313
+    },
+    {
+      "path": "baseline/desktop-1440/pending-1440x900-text1.png",
+      "bytes": 72115,
+      "sha256": "ecec52914145d94ea3121709269f0e77d5e32319d1575bc67a9fbc483b26b297",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/pending-1440x900-text1.png",
+      "width": 1440,
+      "height": 956
+    },
+    {
+      "path": "baseline/desktop-1440/pending-320x420-text2.png",
+      "bytes": 78598,
+      "sha256": "0d775695f80fa094840beb76f6f6da8f848f62a02ba70817033f25832e0b63c7",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/pending-320x420-text2.png",
+      "width": 320,
+      "height": 1336
+    },
+    {
+      "path": "baseline/desktop-1440/pending-320x568-text1.png",
+      "bytes": 51744,
+      "sha256": "efacceb15570e25a44d6e8234ee2c527ad9215da3439fdb7af13b4b2badc37de",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/pending-320x568-text1.png",
+      "width": 320,
+      "height": 843
+    },
+    {
+      "path": "baseline/desktop-1440/pending-390x844-text1.png",
+      "bytes": 56459,
+      "sha256": "31068dd5ca923b8839dcac3a2704f26626f26d4b75291dd712a77c06e6d5a043",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/pending-390x844-text1.png",
+      "width": 390,
+      "height": 972
+    },
+    {
+      "path": "baseline/desktop-1440/recovery-summary.json",
+      "bytes": 7786,
+      "sha256": "8f9a3963e0192448556af29de8af13a99c10287db9cb1969a440e6af9263ab6f",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/recovery-summary.json"
+    },
+    {
+      "path": "baseline/desktop-1440/syncing-1440x900-text1.png",
+      "bytes": 71384,
+      "sha256": "dc4b44b4298446dbc45d0d9e2f44a446ece11891a233a6cf789fc254717064b9",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/syncing-1440x900-text1.png",
+      "width": 1440,
+      "height": 956
+    },
+    {
+      "path": "baseline/desktop-1440/syncing-320x420-text2.png",
+      "bytes": 77150,
+      "sha256": "9fa8e083e5c6d765c9ee93628eb08eaac7940d75df08aaea2ffaaac3b18e1a52",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/syncing-320x420-text2.png",
+      "width": 320,
+      "height": 1336
+    },
+    {
+      "path": "baseline/desktop-1440/syncing-320x568-text1.png",
+      "bytes": 50757,
+      "sha256": "f9f4b8d86ce0207f8b514611288e45772dc1085c527c62233cacdd08e428af7d",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/syncing-320x568-text1.png",
+      "width": 320,
+      "height": 835
+    },
+    {
+      "path": "baseline/desktop-1440/syncing-390x844-text1.png",
+      "bytes": 55738,
+      "sha256": "306927d9a112f5be336705a02f3958af81a61e728fbe0c5eb6757519eac387ea",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/syncing-390x844-text1.png",
+      "width": 390,
+      "height": 972
+    },
+    {
+      "path": "baseline/mobile-390/axe-offline-1440x900-text1.json",
+      "bytes": 444,
+      "sha256": "c6380c9e7e3eef7ac26241b10eb34ac067b399721cea861f8b00fd7c033c5f14",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/axe-offline-1440x900-text1.json"
+    },
+    {
+      "path": "baseline/mobile-390/axe-offline-320x420-text2.json",
+      "bytes": 441,
+      "sha256": "a2354ab6b40220f30eb67afa6c01a67c46e7c00614c7a93824cb009c052fee6f",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/axe-offline-320x420-text2.json"
+    },
+    {
+      "path": "baseline/mobile-390/axe-offline-320x568-text1.json",
+      "bytes": 441,
+      "sha256": "1b144bcd05d8c712052225addc0b0254d8f00abdd0f2b312c5cecd5129f9908f",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/axe-offline-320x568-text1.json"
+    },
+    {
+      "path": "baseline/mobile-390/axe-offline-390x844-text1.json",
+      "bytes": 441,
+      "sha256": "d0ac71b5b8b1128de177b03e367cef01366b0ffa3ccd494a352635ebc8947429",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/axe-offline-390x844-text1.json"
+    },
+    {
+      "path": "baseline/mobile-390/axe-pending-1440x900-text1.json",
+      "bytes": 586,
+      "sha256": "a04ed20a726da4e5ebfa30caa588e3686272b1dea99c4993b6d417ac9f9ff139",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/axe-pending-1440x900-text1.json"
+    },
+    {
+      "path": "baseline/mobile-390/axe-pending-320x420-text2.json",
+      "bytes": 579,
+      "sha256": "def29214194fe6615d4e1f684c9404a73b85295fb5c9d0d35842e568c0c7dfc1",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/axe-pending-320x420-text2.json"
+    },
+    {
+      "path": "baseline/mobile-390/axe-pending-320x568-text1.json",
+      "bytes": 583,
+      "sha256": "4d1b2ec2aad8e6812627dd86876b2a525fae821ce1d818eac8ac9354b212ec98",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/axe-pending-320x568-text1.json"
+    },
+    {
+      "path": "baseline/mobile-390/axe-pending-390x844-text1.json",
+      "bytes": 583,
+      "sha256": "701a5b580d54963cd18b131909d4404b5139493af66b875f734306f9fb3d2d59",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/axe-pending-390x844-text1.json"
+    },
+    {
+      "path": "baseline/mobile-390/axe-syncing-1440x900-text1.json",
+      "bytes": 582,
+      "sha256": "36f0fe49cda6f05422ef3dc0ae63504a365b51e76c333dce1bbd6358e3ed0481",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/axe-syncing-1440x900-text1.json"
+    },
+    {
+      "path": "baseline/mobile-390/axe-syncing-320x420-text2.json",
+      "bytes": 644,
+      "sha256": "86aefc9b2d78f8fa05f601a5aa9fd9344c62189f5848dbd04bf3af8c09244f3b",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/axe-syncing-320x420-text2.json"
+    },
+    {
+      "path": "baseline/mobile-390/axe-syncing-320x568-text1.json",
+      "bytes": 578,
+      "sha256": "247f103eb533831132aad5e18258df2d782ab026f5297848794b6687dad90d09",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/axe-syncing-320x568-text1.json"
+    },
+    {
+      "path": "baseline/mobile-390/axe-syncing-390x844-text1.json",
+      "bytes": 579,
+      "sha256": "95a66ff80307c48bd585d7bfbaaeb014bb600df7823d895d68370a0b8aa9a36f",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/axe-syncing-390x844-text1.json"
+    },
+    {
+      "path": "baseline/mobile-390/offline-1440x900-text1.png",
+      "bytes": 81641,
+      "sha256": "5c589b52694bfbd91c6e6b8e85e52c7ae83f47a3966ce9d69377fb38fb196ed5",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/offline-1440x900-text1.png",
+      "width": 1440,
+      "height": 948
+    },
+    {
+      "path": "baseline/mobile-390/offline-320x420-text2.png",
+      "bytes": 83889,
+      "sha256": "cec49900b14a9a2574decb30b323c915b0feeeeff2cefb8ef347510a35f632fb",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/offline-320x420-text2.png",
+      "width": 320,
+      "height": 1305
+    },
+    {
+      "path": "baseline/mobile-390/offline-320x568-text1.png",
+      "bytes": 59435,
+      "sha256": "f50e81d14062be349308564b0a641b2d077a51457d7c2d21d678edd7c730a474",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/offline-320x568-text1.png",
+      "width": 320,
+      "height": 924
+    },
+    {
+      "path": "baseline/mobile-390/offline-390x844-text1.png",
+      "bytes": 64245,
+      "sha256": "58e467e1e29814a2f69cd6a5f2e9dd26d8d06e1df0bda64336bc6369c49f6d3e",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/offline-390x844-text1.png",
+      "width": 390,
+      "height": 980
+    },
+    {
+      "path": "baseline/mobile-390/pending-1440x900-text1.png",
+      "bytes": 72115,
+      "sha256": "ecec52914145d94ea3121709269f0e77d5e32319d1575bc67a9fbc483b26b297",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/pending-1440x900-text1.png",
+      "width": 1440,
+      "height": 956
+    },
+    {
+      "path": "baseline/mobile-390/pending-320x420-text2.png",
+      "bytes": 78598,
+      "sha256": "0d775695f80fa094840beb76f6f6da8f848f62a02ba70817033f25832e0b63c7",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/pending-320x420-text2.png",
+      "width": 320,
+      "height": 1336
+    },
+    {
+      "path": "baseline/mobile-390/pending-320x568-text1.png",
+      "bytes": 51744,
+      "sha256": "efacceb15570e25a44d6e8234ee2c527ad9215da3439fdb7af13b4b2badc37de",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/pending-320x568-text1.png",
+      "width": 320,
+      "height": 843
+    },
+    {
+      "path": "baseline/mobile-390/pending-390x844-text1.png",
+      "bytes": 56459,
+      "sha256": "31068dd5ca923b8839dcac3a2704f26626f26d4b75291dd712a77c06e6d5a043",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/pending-390x844-text1.png",
+      "width": 390,
+      "height": 972
+    },
+    {
+      "path": "baseline/mobile-390/recovery-summary.json",
+      "bytes": 7787,
+      "sha256": "b8e7c3e9f6402b3fc49acbdb81e3465a60e39709310ae513ca85735cff57a5de",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/recovery-summary.json"
+    },
+    {
+      "path": "baseline/mobile-390/syncing-1440x900-text1.png",
+      "bytes": 71384,
+      "sha256": "dc4b44b4298446dbc45d0d9e2f44a446ece11891a233a6cf789fc254717064b9",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/syncing-1440x900-text1.png",
+      "width": 1440,
+      "height": 956
+    },
+    {
+      "path": "baseline/mobile-390/syncing-320x420-text2.png",
+      "bytes": 77150,
+      "sha256": "9fa8e083e5c6d765c9ee93628eb08eaac7940d75df08aaea2ffaaac3b18e1a52",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/syncing-320x420-text2.png",
+      "width": 320,
+      "height": 1336
+    },
+    {
+      "path": "baseline/mobile-390/syncing-320x568-text1.png",
+      "bytes": 50757,
+      "sha256": "f9f4b8d86ce0207f8b514611288e45772dc1085c527c62233cacdd08e428af7d",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/syncing-320x568-text1.png",
+      "width": 320,
+      "height": 835
+    },
+    {
+      "path": "baseline/mobile-390/syncing-390x844-text1.png",
+      "bytes": 55738,
+      "sha256": "306927d9a112f5be336705a02f3958af81a61e728fbe0c5eb6757519eac387ea",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/syncing-390x844-text1.png",
+      "width": 390,
+      "height": 972
+    },
+    {
+      "path": "baseline/desktop-1440/axe-server-error-1440x900-text1.json",
+      "bytes": 660,
+      "sha256": "0ac35350c326957ff37ab7d879da2e2dc5169c773c573feac75c9636b813376e",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-91af4-try-returns-real-local-data-desktop-1440/axe-server-error-1440x900-text1.json"
+    },
+    {
+      "path": "baseline/desktop-1440/axe-server-error-320x420-text2.json",
+      "bytes": 655,
+      "sha256": "953081939b77c9cea6bfa59b32f7636e0e5e11a886717b78b3bfb6a495d9b356",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-91af4-try-returns-real-local-data-desktop-1440/axe-server-error-320x420-text2.json"
+    },
+    {
+      "path": "baseline/desktop-1440/axe-server-error-320x568-text1.json",
+      "bytes": 657,
+      "sha256": "0438ce6fd1d7d024adeacdee59309e75682bd1ab381fa28c62da9488c9df8182",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-91af4-try-returns-real-local-data-desktop-1440/axe-server-error-320x568-text1.json"
+    },
+    {
+      "path": "baseline/desktop-1440/axe-server-error-390x844-text1.json",
+      "bytes": 659,
+      "sha256": "cf5132b3970fffba841b5c855cdbd7c04eebe24be0d818cf9b728ce25eddc6a9",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-91af4-try-returns-real-local-data-desktop-1440/axe-server-error-390x844-text1.json"
+    },
+    {
+      "path": "baseline/desktop-1440/error-summary.json",
+      "bytes": 2901,
+      "sha256": "1c6a5e2dcf73d1dbef6d583fbc5dd7e846425df80799b4a1f83b0d8c36ebb782",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-91af4-try-returns-real-local-data-desktop-1440/error-summary.json"
+    },
+    {
+      "path": "baseline/desktop-1440/server-error-1440x900-text1.png",
+      "bytes": 50794,
+      "sha256": "cf4ac40a46cb301e7024b0c0578fdcc669519882dae46cd55fd15e67689288a7",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-91af4-try-returns-real-local-data-desktop-1440/server-error-1440x900-text1.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "path": "baseline/desktop-1440/server-error-320x420-text2.png",
+      "bytes": 45281,
+      "sha256": "eb74496528d4c95d880a0ae61b95389291ffa2e57b3ca42040d216cb764ebcea",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-91af4-try-returns-real-local-data-desktop-1440/server-error-320x420-text2.png",
+      "width": 320,
+      "height": 944
+    },
+    {
+      "path": "baseline/desktop-1440/server-error-320x568-text1.png",
+      "bytes": 31783,
+      "sha256": "b2e8c0be70b981a5f1430dbf291e110829c40593dd2de60771f9cc9ec8b4accf",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-91af4-try-returns-real-local-data-desktop-1440/server-error-320x568-text1.png",
+      "width": 320,
+      "height": 650
+    },
+    {
+      "path": "baseline/desktop-1440/server-error-390x844-text1.png",
+      "bytes": 37114,
+      "sha256": "80f498cbfd6bf1009ad89a466e936eb483346a69e573410b48b070a7cd4f60a7",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-91af4-try-returns-real-local-data-desktop-1440/server-error-390x844-text1.png",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "baseline/mobile-390/axe-server-error-1440x900-text1.json",
+      "bytes": 660,
+      "sha256": "0ac35350c326957ff37ab7d879da2e2dc5169c773c573feac75c9636b813376e",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-91af4-try-returns-real-local-data-mobile-390/axe-server-error-1440x900-text1.json"
+    },
+    {
+      "path": "baseline/mobile-390/axe-server-error-320x420-text2.json",
+      "bytes": 655,
+      "sha256": "953081939b77c9cea6bfa59b32f7636e0e5e11a886717b78b3bfb6a495d9b356",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-91af4-try-returns-real-local-data-mobile-390/axe-server-error-320x420-text2.json"
+    },
+    {
+      "path": "baseline/mobile-390/axe-server-error-320x568-text1.json",
+      "bytes": 657,
+      "sha256": "0438ce6fd1d7d024adeacdee59309e75682bd1ab381fa28c62da9488c9df8182",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-91af4-try-returns-real-local-data-mobile-390/axe-server-error-320x568-text1.json"
+    },
+    {
+      "path": "baseline/mobile-390/axe-server-error-390x844-text1.json",
+      "bytes": 659,
+      "sha256": "cf5132b3970fffba841b5c855cdbd7c04eebe24be0d818cf9b728ce25eddc6a9",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-91af4-try-returns-real-local-data-mobile-390/axe-server-error-390x844-text1.json"
+    },
+    {
+      "path": "baseline/mobile-390/error-summary.json",
+      "bytes": 2901,
+      "sha256": "1c6a5e2dcf73d1dbef6d583fbc5dd7e846425df80799b4a1f83b0d8c36ebb782",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-91af4-try-returns-real-local-data-mobile-390/error-summary.json"
+    },
+    {
+      "path": "baseline/mobile-390/server-error-1440x900-text1.png",
+      "bytes": 50794,
+      "sha256": "cf4ac40a46cb301e7024b0c0578fdcc669519882dae46cd55fd15e67689288a7",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-91af4-try-returns-real-local-data-mobile-390/server-error-1440x900-text1.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "path": "baseline/mobile-390/server-error-320x420-text2.png",
+      "bytes": 45281,
+      "sha256": "eb74496528d4c95d880a0ae61b95389291ffa2e57b3ca42040d216cb764ebcea",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-91af4-try-returns-real-local-data-mobile-390/server-error-320x420-text2.png",
+      "width": 320,
+      "height": 944
+    },
+    {
+      "path": "baseline/mobile-390/server-error-320x568-text1.png",
+      "bytes": 31783,
+      "sha256": "b2e8c0be70b981a5f1430dbf291e110829c40593dd2de60771f9cc9ec8b4accf",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-91af4-try-returns-real-local-data-mobile-390/server-error-320x568-text1.png",
+      "width": 320,
+      "height": 650
+    },
+    {
+      "path": "baseline/mobile-390/server-error-390x844-text1.png",
+      "bytes": 37114,
+      "sha256": "80f498cbfd6bf1009ad89a466e936eb483346a69e573410b48b070a7cd4f60a7",
+      "raw_source": ".artifacts/takeover/offline/baseline/takolio-offline-continuati-91af4-try-returns-real-local-data-mobile-390/server-error-390x844-text1.png",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "after/desktop-1440/axe-offline-1440x900-text1.json",
+      "bytes": 443,
+      "sha256": "9126808ec655dfcd093055b2987f62663e847cb051ebcaa9555f9318a9b0fd03",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/axe-offline-1440x900-text1.json"
+    },
+    {
+      "path": "after/desktop-1440/axe-offline-320x420-text2.json",
+      "bytes": 440,
+      "sha256": "24c12105ca0307127a79e497b231418f723d6b325df2a362008401be9aacba5c",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/axe-offline-320x420-text2.json"
+    },
+    {
+      "path": "after/desktop-1440/axe-offline-320x568-text1.json",
+      "bytes": 440,
+      "sha256": "154e3c26eacebb1fba58a0a0bc179cc09918397b42f1a685e8febd17be3a080a",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/axe-offline-320x568-text1.json"
+    },
+    {
+      "path": "after/desktop-1440/axe-offline-390x844-text1.json",
+      "bytes": 441,
+      "sha256": "7466ca72a90259c0a84e91bf2ea15f505ae077280d69de00c57a707e3a822f90",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/axe-offline-390x844-text1.json"
+    },
+    {
+      "path": "after/desktop-1440/axe-pending-1440x900-text1.json",
+      "bytes": 584,
+      "sha256": "7e14eaa3dd34bb41348267f0a8f9d5a7f42e6911bb11877ec1ca97e928a11893",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/axe-pending-1440x900-text1.json"
+    },
+    {
+      "path": "after/desktop-1440/axe-pending-320x420-text2.json",
+      "bytes": 573,
+      "sha256": "7dbc5370c6efd00e7634045e034db0284378d9d52647af479856d9ea44965b51",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/axe-pending-320x420-text2.json"
+    },
+    {
+      "path": "after/desktop-1440/axe-pending-320x568-text1.json",
+      "bytes": 574,
+      "sha256": "4531e37c5b17351031cb375227b26743e46e41c27db14a38dee2fded87cee95e",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/axe-pending-320x568-text1.json"
+    },
+    {
+      "path": "after/desktop-1440/axe-pending-390x844-text1.json",
+      "bytes": 580,
+      "sha256": "a7ac6aaefc4b6521824e9e5cdc0d26cd55ee920635f20c426e45d7d7b94c7d77",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/axe-pending-390x844-text1.json"
+    },
+    {
+      "path": "after/desktop-1440/axe-syncing-1440x900-text1.json",
+      "bytes": 580,
+      "sha256": "aab8294b36da5cbd350b57dfdda8a695168aed53c59f64532e01887079b35d39",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/axe-syncing-1440x900-text1.json"
+    },
+    {
+      "path": "after/desktop-1440/axe-syncing-320x420-text2.json",
+      "bytes": 580,
+      "sha256": "c30b9584e9b46383939bd0a7787dce51f9ea84092b1f14725ab8061578ac2046",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/axe-syncing-320x420-text2.json"
+    },
+    {
+      "path": "after/desktop-1440/axe-syncing-320x568-text1.json",
+      "bytes": 576,
+      "sha256": "dd764909d9a55614a3653a80ec10d4bc947f8e0ab52314f620bad7729167609e",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/axe-syncing-320x568-text1.json"
+    },
+    {
+      "path": "after/desktop-1440/axe-syncing-390x844-text1.json",
+      "bytes": 577,
+      "sha256": "cecf784d4beb9c185d417704a024ae474c106ca8bdf2c8dfb2386f7dfc626dd1",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/axe-syncing-390x844-text1.json"
+    },
+    {
+      "path": "after/desktop-1440/offline-1440x900-text1.png",
+      "bytes": 104509,
+      "sha256": "98de4636ae531032e1b5336cc6c5098e1fdc9710e9160150dd5601397ee84c4a",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/offline-1440x900-text1.png",
+      "width": 1440,
+      "height": 948
+    },
+    {
+      "path": "after/desktop-1440/offline-320x420-text2.png",
+      "bytes": 110125,
+      "sha256": "fc7095c79cb845a8153a9fa7075f9576a47c3f33b1ca49a3ff5e94ba2e5f962e",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/offline-320x420-text2.png",
+      "width": 320,
+      "height": 1798
+    },
+    {
+      "path": "after/desktop-1440/offline-320x568-text1.png",
+      "bytes": 81989,
+      "sha256": "99dbd03610982a7da9aee516d7ae4633713df32a0190cae2c3363e11fe87eff0",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/offline-320x568-text1.png",
+      "width": 320,
+      "height": 1352
+    },
+    {
+      "path": "after/desktop-1440/offline-390x844-text1.png",
+      "bytes": 83297,
+      "sha256": "fbeb5ffea52f641e956df40a2f78d70acf4290f9687bf21265489a2673a4bb54",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/offline-390x844-text1.png",
+      "width": 390,
+      "height": 1313
+    },
+    {
+      "path": "after/desktop-1440/pending-1440x900-text1.png",
+      "bytes": 73143,
+      "sha256": "deb662de22c43fdb6696be523c136adfc03bb03f0a87417ea563fd10131b6ac5",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/pending-1440x900-text1.png",
+      "width": 1440,
+      "height": 976
+    },
+    {
+      "path": "after/desktop-1440/pending-320x420-text2.png",
+      "bytes": 77972,
+      "sha256": "5be3dad33b9b0d8d11cf927d0bdd56f30124330a36d675b11c764a0777cd199e",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/pending-320x420-text2.png",
+      "width": 320,
+      "height": 1272
+    },
+    {
+      "path": "after/desktop-1440/pending-320x568-text1.png",
+      "bytes": 52225,
+      "sha256": "7336b6b70cecfb3c01177276307d1c8f1a7f5203a43e6709b59122ab9103511c",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/pending-320x568-text1.png",
+      "width": 320,
+      "height": 879
+    },
+    {
+      "path": "after/desktop-1440/pending-390x844-text1.png",
+      "bytes": 56910,
+      "sha256": "2d20681587a8c2fe991ce09a698babf9c471e5449593716a879521360136ce03",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/pending-390x844-text1.png",
+      "width": 390,
+      "height": 992
+    },
+    {
+      "path": "after/desktop-1440/recovery-summary.json",
+      "bytes": 7686,
+      "sha256": "378ee37ac928902b2f4c39cc5bb14dbdd6048731ff6727da1f99252d361cf363",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/recovery-summary.json"
+    },
+    {
+      "path": "after/desktop-1440/syncing-1440x900-text1.png",
+      "bytes": 72370,
+      "sha256": "2d8ea044dd1d71c88fc324434591a2a895ccf00d0f3e92d3ccc483196de6d200",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/syncing-1440x900-text1.png",
+      "width": 1440,
+      "height": 976
+    },
+    {
+      "path": "after/desktop-1440/syncing-320x420-text2.png",
+      "bytes": 76096,
+      "sha256": "6e958b075224288f810a5ee898b67e2f81995fe11ce1d5f8578a292860ad018f",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/syncing-320x420-text2.png",
+      "width": 320,
+      "height": 1272
+    },
+    {
+      "path": "after/desktop-1440/syncing-320x568-text1.png",
+      "bytes": 51149,
+      "sha256": "a8518218c1a160f127df43e98a4b6a172bfb3054e77b3e728b2bd14b11c5faee",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/syncing-320x568-text1.png",
+      "width": 320,
+      "height": 855
+    },
+    {
+      "path": "after/desktop-1440/syncing-390x844-text1.png",
+      "bytes": 56126,
+      "sha256": "3cfacf0a97b8d4b13f92d6faa3b1342741228a37acae1d17fddb4e854cf39412",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-desktop-1440/syncing-390x844-text1.png",
+      "width": 390,
+      "height": 992
+    },
+    {
+      "path": "after/mobile-390/axe-offline-1440x900-text1.json",
+      "bytes": 443,
+      "sha256": "9126808ec655dfcd093055b2987f62663e847cb051ebcaa9555f9318a9b0fd03",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/axe-offline-1440x900-text1.json"
+    },
+    {
+      "path": "after/mobile-390/axe-offline-320x420-text2.json",
+      "bytes": 440,
+      "sha256": "24c12105ca0307127a79e497b231418f723d6b325df2a362008401be9aacba5c",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/axe-offline-320x420-text2.json"
+    },
+    {
+      "path": "after/mobile-390/axe-offline-320x568-text1.json",
+      "bytes": 440,
+      "sha256": "154e3c26eacebb1fba58a0a0bc179cc09918397b42f1a685e8febd17be3a080a",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/axe-offline-320x568-text1.json"
+    },
+    {
+      "path": "after/mobile-390/axe-offline-390x844-text1.json",
+      "bytes": 440,
+      "sha256": "38fab27bab2b7f41c312bc11e843b08b99d30fdf38ecab3f23d5461be5e5ff37",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/axe-offline-390x844-text1.json"
+    },
+    {
+      "path": "after/mobile-390/axe-pending-1440x900-text1.json",
+      "bytes": 584,
+      "sha256": "7e14eaa3dd34bb41348267f0a8f9d5a7f42e6911bb11877ec1ca97e928a11893",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/axe-pending-1440x900-text1.json"
+    },
+    {
+      "path": "after/mobile-390/axe-pending-320x420-text2.json",
+      "bytes": 573,
+      "sha256": "7dbc5370c6efd00e7634045e034db0284378d9d52647af479856d9ea44965b51",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/axe-pending-320x420-text2.json"
+    },
+    {
+      "path": "after/mobile-390/axe-pending-320x568-text1.json",
+      "bytes": 574,
+      "sha256": "4531e37c5b17351031cb375227b26743e46e41c27db14a38dee2fded87cee95e",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/axe-pending-320x568-text1.json"
+    },
+    {
+      "path": "after/mobile-390/axe-pending-390x844-text1.json",
+      "bytes": 581,
+      "sha256": "331e17049aceeff9d01028c8244032823a1012622972f5a1472745b4a4a80a7a",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/axe-pending-390x844-text1.json"
+    },
+    {
+      "path": "after/mobile-390/axe-syncing-1440x900-text1.json",
+      "bytes": 580,
+      "sha256": "aab8294b36da5cbd350b57dfdda8a695168aed53c59f64532e01887079b35d39",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/axe-syncing-1440x900-text1.json"
+    },
+    {
+      "path": "after/mobile-390/axe-syncing-320x420-text2.json",
+      "bytes": 580,
+      "sha256": "c30b9584e9b46383939bd0a7787dce51f9ea84092b1f14725ab8061578ac2046",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/axe-syncing-320x420-text2.json"
+    },
+    {
+      "path": "after/mobile-390/axe-syncing-320x568-text1.json",
+      "bytes": 576,
+      "sha256": "dd764909d9a55614a3653a80ec10d4bc947f8e0ab52314f620bad7729167609e",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/axe-syncing-320x568-text1.json"
+    },
+    {
+      "path": "after/mobile-390/axe-syncing-390x844-text1.json",
+      "bytes": 577,
+      "sha256": "cecf784d4beb9c185d417704a024ae474c106ca8bdf2c8dfb2386f7dfc626dd1",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/axe-syncing-390x844-text1.json"
+    },
+    {
+      "path": "after/mobile-390/offline-1440x900-text1.png",
+      "bytes": 81641,
+      "sha256": "5c589b52694bfbd91c6e6b8e85e52c7ae83f47a3966ce9d69377fb38fb196ed5",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/offline-1440x900-text1.png",
+      "width": 1440,
+      "height": 948
+    },
+    {
+      "path": "after/mobile-390/offline-320x420-text2.png",
+      "bytes": 83889,
+      "sha256": "cec49900b14a9a2574decb30b323c915b0feeeeff2cefb8ef347510a35f632fb",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/offline-320x420-text2.png",
+      "width": 320,
+      "height": 1305
+    },
+    {
+      "path": "after/mobile-390/offline-320x568-text1.png",
+      "bytes": 59435,
+      "sha256": "f50e81d14062be349308564b0a641b2d077a51457d7c2d21d678edd7c730a474",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/offline-320x568-text1.png",
+      "width": 320,
+      "height": 924
+    },
+    {
+      "path": "after/mobile-390/offline-390x844-text1.png",
+      "bytes": 64245,
+      "sha256": "58e467e1e29814a2f69cd6a5f2e9dd26d8d06e1df0bda64336bc6369c49f6d3e",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/offline-390x844-text1.png",
+      "width": 390,
+      "height": 980
+    },
+    {
+      "path": "after/mobile-390/pending-1440x900-text1.png",
+      "bytes": 73143,
+      "sha256": "deb662de22c43fdb6696be523c136adfc03bb03f0a87417ea563fd10131b6ac5",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/pending-1440x900-text1.png",
+      "width": 1440,
+      "height": 976
+    },
+    {
+      "path": "after/mobile-390/pending-320x420-text2.png",
+      "bytes": 77972,
+      "sha256": "5be3dad33b9b0d8d11cf927d0bdd56f30124330a36d675b11c764a0777cd199e",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/pending-320x420-text2.png",
+      "width": 320,
+      "height": 1272
+    },
+    {
+      "path": "after/mobile-390/pending-320x568-text1.png",
+      "bytes": 52225,
+      "sha256": "7336b6b70cecfb3c01177276307d1c8f1a7f5203a43e6709b59122ab9103511c",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/pending-320x568-text1.png",
+      "width": 320,
+      "height": 879
+    },
+    {
+      "path": "after/mobile-390/pending-390x844-text1.png",
+      "bytes": 56910,
+      "sha256": "2d20681587a8c2fe991ce09a698babf9c471e5449593716a879521360136ce03",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/pending-390x844-text1.png",
+      "width": 390,
+      "height": 992
+    },
+    {
+      "path": "after/mobile-390/recovery-summary.json",
+      "bytes": 7686,
+      "sha256": "4707c84bf8a90f53130772198bc0c53b5ab44881d4902d80aae32f1b29078f30",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/recovery-summary.json"
+    },
+    {
+      "path": "after/mobile-390/syncing-1440x900-text1.png",
+      "bytes": 72370,
+      "sha256": "2d8ea044dd1d71c88fc324434591a2a895ccf00d0f3e92d3ccc483196de6d200",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/syncing-1440x900-text1.png",
+      "width": 1440,
+      "height": 976
+    },
+    {
+      "path": "after/mobile-390/syncing-320x420-text2.png",
+      "bytes": 76096,
+      "sha256": "6e958b075224288f810a5ee898b67e2f81995fe11ce1d5f8578a292860ad018f",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/syncing-320x420-text2.png",
+      "width": 320,
+      "height": 1272
+    },
+    {
+      "path": "after/mobile-390/syncing-320x568-text1.png",
+      "bytes": 51149,
+      "sha256": "a8518218c1a160f127df43e98a4b6a172bfb3054e77b3e728b2bd14b11c5faee",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/syncing-320x568-text1.png",
+      "width": 320,
+      "height": 855
+    },
+    {
+      "path": "after/mobile-390/syncing-390x844-text1.png",
+      "bytes": 56126,
+      "sha256": "3cfacf0a97b8d4b13f92d6faa3b1342741228a37acae1d17fddb4e854cf39412",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-06f14-t-owned-replay-and-recovery-mobile-390/syncing-390x844-text1.png",
+      "width": 390,
+      "height": 992
+    },
+    {
+      "path": "after/desktop-1440/axe-server-error-1440x900-text1.json",
+      "bytes": 660,
+      "sha256": "0ac35350c326957ff37ab7d879da2e2dc5169c773c573feac75c9636b813376e",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-91af4-try-returns-real-local-data-desktop-1440/axe-server-error-1440x900-text1.json"
+    },
+    {
+      "path": "after/desktop-1440/axe-server-error-320x420-text2.json",
+      "bytes": 655,
+      "sha256": "953081939b77c9cea6bfa59b32f7636e0e5e11a886717b78b3bfb6a495d9b356",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-91af4-try-returns-real-local-data-desktop-1440/axe-server-error-320x420-text2.json"
+    },
+    {
+      "path": "after/desktop-1440/axe-server-error-320x568-text1.json",
+      "bytes": 657,
+      "sha256": "0438ce6fd1d7d024adeacdee59309e75682bd1ab381fa28c62da9488c9df8182",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-91af4-try-returns-real-local-data-desktop-1440/axe-server-error-320x568-text1.json"
+    },
+    {
+      "path": "after/desktop-1440/axe-server-error-390x844-text1.json",
+      "bytes": 659,
+      "sha256": "cf5132b3970fffba841b5c855cdbd7c04eebe24be0d818cf9b728ce25eddc6a9",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-91af4-try-returns-real-local-data-desktop-1440/axe-server-error-390x844-text1.json"
+    },
+    {
+      "path": "after/desktop-1440/error-summary.json",
+      "bytes": 2901,
+      "sha256": "1c6a5e2dcf73d1dbef6d583fbc5dd7e846425df80799b4a1f83b0d8c36ebb782",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-91af4-try-returns-real-local-data-desktop-1440/error-summary.json"
+    },
+    {
+      "path": "after/desktop-1440/server-error-1440x900-text1.png",
+      "bytes": 50794,
+      "sha256": "cf4ac40a46cb301e7024b0c0578fdcc669519882dae46cd55fd15e67689288a7",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-91af4-try-returns-real-local-data-desktop-1440/server-error-1440x900-text1.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "path": "after/desktop-1440/server-error-320x420-text2.png",
+      "bytes": 45281,
+      "sha256": "eb74496528d4c95d880a0ae61b95389291ffa2e57b3ca42040d216cb764ebcea",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-91af4-try-returns-real-local-data-desktop-1440/server-error-320x420-text2.png",
+      "width": 320,
+      "height": 944
+    },
+    {
+      "path": "after/desktop-1440/server-error-320x568-text1.png",
+      "bytes": 31783,
+      "sha256": "b2e8c0be70b981a5f1430dbf291e110829c40593dd2de60771f9cc9ec8b4accf",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-91af4-try-returns-real-local-data-desktop-1440/server-error-320x568-text1.png",
+      "width": 320,
+      "height": 650
+    },
+    {
+      "path": "after/desktop-1440/server-error-390x844-text1.png",
+      "bytes": 37114,
+      "sha256": "80f498cbfd6bf1009ad89a466e936eb483346a69e573410b48b070a7cd4f60a7",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-91af4-try-returns-real-local-data-desktop-1440/server-error-390x844-text1.png",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "after/mobile-390/axe-server-error-1440x900-text1.json",
+      "bytes": 660,
+      "sha256": "0ac35350c326957ff37ab7d879da2e2dc5169c773c573feac75c9636b813376e",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-91af4-try-returns-real-local-data-mobile-390/axe-server-error-1440x900-text1.json"
+    },
+    {
+      "path": "after/mobile-390/axe-server-error-320x420-text2.json",
+      "bytes": 655,
+      "sha256": "953081939b77c9cea6bfa59b32f7636e0e5e11a886717b78b3bfb6a495d9b356",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-91af4-try-returns-real-local-data-mobile-390/axe-server-error-320x420-text2.json"
+    },
+    {
+      "path": "after/mobile-390/axe-server-error-320x568-text1.json",
+      "bytes": 657,
+      "sha256": "0438ce6fd1d7d024adeacdee59309e75682bd1ab381fa28c62da9488c9df8182",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-91af4-try-returns-real-local-data-mobile-390/axe-server-error-320x568-text1.json"
+    },
+    {
+      "path": "after/mobile-390/axe-server-error-390x844-text1.json",
+      "bytes": 659,
+      "sha256": "cf5132b3970fffba841b5c855cdbd7c04eebe24be0d818cf9b728ce25eddc6a9",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-91af4-try-returns-real-local-data-mobile-390/axe-server-error-390x844-text1.json"
+    },
+    {
+      "path": "after/mobile-390/error-summary.json",
+      "bytes": 2901,
+      "sha256": "1c6a5e2dcf73d1dbef6d583fbc5dd7e846425df80799b4a1f83b0d8c36ebb782",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-91af4-try-returns-real-local-data-mobile-390/error-summary.json"
+    },
+    {
+      "path": "after/mobile-390/server-error-1440x900-text1.png",
+      "bytes": 50794,
+      "sha256": "cf4ac40a46cb301e7024b0c0578fdcc669519882dae46cd55fd15e67689288a7",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-91af4-try-returns-real-local-data-mobile-390/server-error-1440x900-text1.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "path": "after/mobile-390/server-error-320x420-text2.png",
+      "bytes": 45281,
+      "sha256": "eb74496528d4c95d880a0ae61b95389291ffa2e57b3ca42040d216cb764ebcea",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-91af4-try-returns-real-local-data-mobile-390/server-error-320x420-text2.png",
+      "width": 320,
+      "height": 944
+    },
+    {
+      "path": "after/mobile-390/server-error-320x568-text1.png",
+      "bytes": 31783,
+      "sha256": "b2e8c0be70b981a5f1430dbf291e110829c40593dd2de60771f9cc9ec8b4accf",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-91af4-try-returns-real-local-data-mobile-390/server-error-320x568-text1.png",
+      "width": 320,
+      "height": 650
+    },
+    {
+      "path": "after/mobile-390/server-error-390x844-text1.png",
+      "bytes": 37114,
+      "sha256": "80f498cbfd6bf1009ad89a466e936eb483346a69e573410b48b070a7cd4f60a7",
+      "raw_source": ".artifacts/takeover/offline/after/takolio-offline-continuati-91af4-try-returns-real-local-data-mobile-390/server-error-390x844-text1.png",
+      "width": 390,
+      "height": 844
+    }
+  ]
+}
