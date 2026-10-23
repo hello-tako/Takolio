@@ -1,3 +1,25 @@
+# Notification preferences row35 checkpoint - 2026-10-24 JST
+
+Status:`LOCAL_NOTIFICATION_PREFERENCES_REFLOW_VERIFIED`. Implementation `b8248ca40781620b7eb78a970c3314e8dc12e779` on `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Retained existing UI08 NotificationPreferencesPage, AccountPage, Switch, icons and storage handlers. Root text200 enlarged rem-based thumbs to48px inside the fixed52x48 account switch, visibly escaping it. Appended one notification-row-only CSS rule fixing thumb dimensions at24px. Existing defaults, boolean validation, encoded per-user local key, honest storage/delivery disclosures and all handlers remain unchanged. The selector occurs only on this page; legacy planning switches and the global primitive are unchanged. No missing SVG/illustration was evidenced.
+
+Final browser6/6 in36.9s. Identical final harness on pre-row35 CSS fails6/6 and records39 overflowing thumbs among160 measurements; final160/160 fit. Focused units5files/103tests in2.25s and integration3files/104tests in6.68s ran before the CSS/geometry refinement. Final targeted ESLint, lint, types, local migration smoke, default and paired builds PASS. Final full suite Node24.16.0:410/412files;9164/9169tests in207.77s (wall208.58s), the same five inherited encoded-space CLI failures in production-catalog-continuity/release-check. Audit retains inherited1low/6moderate/1high including Vite GHSA-587h-7wmj-h5pm; dependencies unchanged.
+
+140 bound payloads:64PNG,64axe JSON,12summaries;four viewport/text configs x four captured states x two contexts in each phase. All32final axe reports show zero reported violations and incomplete color-contrast. Each phase measures160controls and160track/thumb pairs. All five Space/Enter choices persist through route remount/reload;invalid types/corrupt JSON fall back safely;genuine retry after shaped quota failure saves. No monitored API writes;family,inventory,shopping,current plan and onboarding snapshots unchanged in the local/retry journeys.
+
+Post-implementation private recovery verification:22,763regular files/772symlinks;original bytes,modes,links,HEAD,index,status match the full private snapshot;zero worktree differences;parent0700. Exact recovery location stays private. Selected salvage54paths,Argon ledger69rows and asset ledger12rows intact;file decisions99;all38owner statuses PENDING.
+
+Reduced-motion Chromium/root-font text200 is bounded simulation, not OS zoom,physical-device,screenreader,live-provider,performance or production certification. Other-owner key retention does not certify a real account switch. Notification denied/quota states are shaped;no real delivery/filter capability is claimed. Full-page captures follow focus/trial scrolling and can include fixed chrome/skip-link artifacts. All32final contrast checks require manual review.
+
+Exact source/log/command receipts:`docs/takolio-v2/takeover/evidence/notification-preferences-checks.json`;report:`UI_C7_NOTIFICATION_PREFERENCES.md`. Next bounded packet:row36 privacy/data source/caller/browser audit, preserving honest unavailable export/delete states and household separation. Row37 Plus remains protected. Owner/device/manual accessibility review remains open. No push,PR publication,merge,deploy,remote migration or production action.
+
+Implementation and documentation/evidence commits remain separate;this checkpoint cannot contain its own hash.
+
+Finalization executed:protected-main audit PASS with5,838unchanged protected base paths;historical/current evidence and changed-text credential/private-path scans PASS;git diff --check PASS;eight historical tails retained byte-for-byte;only row35 changed;FILE_DECISIONS appended97to99. Initial ad-hoc row-difference check used a nonexistent CSV field and was corrected to screen_slug;no product/evidence mutation resulted.
+
+---
+
 # Planning settings row34 checkpoint - 2026-10-24 JST
 
 Implementation `b82701c7ba6ffd561799164cb9506377391126fb` on `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.

@@ -1,3 +1,24 @@
+# Notification preferences row35 QA - 2026-10-24 JST
+
+| Area | Actual result |
+|---|---|
+| Thumb containment | PASS_BOUNDED;before39/160overflow;after160/160fit;identical final harness |
+| Local choices | PASS_BOUNDED;five keyboard toggles;exact JSON;route remount/reload |
+| Invalid storage | PASS_BOUNDED;booleans only;corrupt fallback;real persistence recovery |
+| Failure/retry | PASS_BOUNDED;shaped quota;honest temporary draft;remount discard;genuine retry |
+| Data boundaries | PASS_BOUNDED;no monitored writes;family/stock/shopping/plan/onboarding retained |
+| Browser permission | SHAPED_DENIED_ONLY;descriptive;no request/provider certification |
+| Reflow/controls | PASS_BOUNDED;four configs;32final captures;160controls/160thumbs |
+| Accessibility | OPEN_MANUAL;32zero-violation axe;32incomplete contrast |
+| Full suite/audit | PARTIAL;9164/9169;five inherited CLI errors;inherited1low/6moderate/1high |
+| Owner/device/production | PENDING;no certification |
+
+Implementation `b8248ca40781620b7eb78a970c3314e8dc12e779` on `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`. Reduced-motion Chromium/root-font text200 is bounded simulation, not OS zoom,physical-device,screenreader,live-provider,performance or production certification. Other-owner key retention does not certify a real account switch. Notification denied/quota states are shaped;no real delivery/filter capability is claimed. Full-page captures follow focus/trial scrolling and can include fixed chrome/skip-link artifacts. All32final contrast checks require manual review. Next bounded packet:row36 privacy/data source/caller/browser audit, preserving honest unavailable export/delete states and household separation. Row37 Plus remains protected. Owner/device/manual accessibility review remains open. No push,PR publication,merge,deploy,remote migration or production action.
+
+Finalization executed:protected-main audit PASS with5,838unchanged protected base paths;historical/current evidence and changed-text credential/private-path scans PASS;git diff --check PASS;eight historical tails retained byte-for-byte;only row35 changed;FILE_DECISIONS appended97to99. Initial ad-hoc row-difference check used a nonexistent CSV field and was corrected to screen_slug;no product/evidence mutation resulted.
+
+---
+
 # Planning settings row34 QA - 2026-10-24 JST
 
 | Area | Actual result |

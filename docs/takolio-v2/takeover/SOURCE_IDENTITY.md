@@ -1,3 +1,15 @@
+## Notification preferences row35 source identity - 2026-10-24 JST
+
+Implementation `b8248ca40781620b7eb78a970c3314e8dc12e779` on `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Three source receipt hashes bind retained main TSX,scoped CSS refinement and the new browser harness to committed Git objects. Earlier baseline and verified runs passed6/6 but measured only the button, missing thumb overflow;they are retained as historical attempts. Initial typecheck failed a test-only Window cast;unknown intermediate corrected it. One interrupted browser run encountered React504 Outdated Optimize Dep while Vitest and preview overlapped;exit130 after2failures/third pending is retained without a completed-run claim. Ignored stale Vite cache was preserved. Intermediate thumb sizing ran3failed/3passed because separate awaited bounding boxes mixed scroll offsets;the final harness samples both rectangles synchronously and narrows the CSS selector. Paired final runs use byte-identical complete harness SHA256 `e968ffba2487b19f6ca14ca7ff1d175d48993ef9a64c5bdd47c090bb87699d26`;baseline CSS is bound to the previous committed Git object. Earlier logs,source copies and bindings remain hash-bound;they are not substituted for final regression evidence.
+
+Post-implementation private recovery verification:22,763regular files/772symlinks;original bytes,modes,links,HEAD,index,status match the full private snapshot;zero worktree differences;parent0700. Exact recovery location stays private. Selected salvage54paths,Argon ledger69rows and asset ledger12rows intact;file decisions99;all38owner statuses PENDING.
+
+Finalization executed:protected-main audit PASS with5,838unchanged protected base paths;historical/current evidence and changed-text credential/private-path scans PASS;git diff --check PASS;eight historical tails retained byte-for-byte;only row35 changed;FILE_DECISIONS appended97to99. Initial ad-hoc row-difference check used a nonexistent CSV field and was corrected to screen_slug;no product/evidence mutation resulted.
+
+---
+
 ## Planning settings row34 source identity - 2026-10-24 JST
 
 Implementation `b82701c7ba6ffd561799164cb9506377391126fb` on `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.

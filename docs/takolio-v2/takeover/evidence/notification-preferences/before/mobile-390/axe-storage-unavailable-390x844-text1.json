@@ -1,0 +1,129 @@
+{
+  "state": "storage-unavailable",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "textScale": 1,
+  "metrics": {
+    "innerWidth": 390,
+    "scrollWidth": 390,
+    "brokenImages": []
+  },
+  "switches": [
+    {
+      "track": {
+        "x": 307,
+        "y": -212.421875,
+        "width": 52,
+        "height": 48
+      },
+      "thumb": {
+        "x": 331,
+        "y": -200.421875,
+        "width": 24,
+        "height": 24
+      },
+      "fits": true
+    },
+    {
+      "track": {
+        "x": 307,
+        "y": -115.421875,
+        "width": 52,
+        "height": 48
+      },
+      "thumb": {
+        "x": 331,
+        "y": -103.421875,
+        "width": 24,
+        "height": 24
+      },
+      "fits": true
+    },
+    {
+      "track": {
+        "x": 307,
+        "y": -18.421875,
+        "width": 52,
+        "height": 48
+      },
+      "thumb": {
+        "x": 311,
+        "y": -6.421875,
+        "width": 24,
+        "height": 24
+      },
+      "fits": true
+    },
+    {
+      "track": {
+        "x": 307,
+        "y": 78.578125,
+        "width": 52,
+        "height": 48
+      },
+      "thumb": {
+        "x": 331,
+        "y": 90.578125,
+        "width": 24,
+        "height": 24
+      },
+      "fits": true
+    },
+    {
+      "track": {
+        "x": 307,
+        "y": 175.578125,
+        "width": 52,
+        "height": 48
+      },
+      "thumb": {
+        "x": 311,
+        "y": 187.578125,
+        "width": 24,
+        "height": 24
+      },
+      "fits": true
+    }
+  ],
+  "controls": [
+    {
+      "label": "button",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "button",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "button",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "button",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "button",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    }
+  ],
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ]
+}

@@ -1,3 +1,43 @@
+# UI08 Notification preferences row35 baseline - 2026-10-24 JST
+
+Implementation `b8248ca40781620b7eb78a970c3314e8dc12e779` on `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+| Exact executed command | Actual result |
+|---|---|
+| `pnpm exec eslint src/web/pages/settings/NotificationPreferencesPage.tsx tests/e2e/t17-ui/takolio-notification-preferences-continuation.e2e.ts` | PASS before final CSS/geometry refinement; inherited Admin font build warnings (exit0;wall1.02s) |
+| `pnpm exec vitest run tests/unit/ui08-account.test.tsx tests/unit/frontend-services.test.ts tests/unit/ui08-route-scope.test.tsx tests/unit/ui11-navigation.test.tsx tests/unit/onboarding-contract.test.tsx` | PASS 5 files/103 tests in2.25s; before final CSS/geometry refinement (exit0;wall3.02s) |
+| `pnpm exec vitest run tests/integration/frontend-ui-integration.test.tsx tests/integration/auth-tenant-adversarial.test.ts tests/integration/inventory-closed-loop.test.ts` | PASS 3 files/104 tests in6.68s; before final CSS/geometry refinement (exit0;wall7.37s) |
+| `pnpm lint` | PASS before final CSS/geometry refinement; inherited Admin font build warnings (exit0;wall7.21s) |
+| `pnpm typecheck` | INITIAL FAIL test-only Window assertion; corrected with erased unknown intermediate; final typecheck PASS (exit2;wall13.11s) |
+| `pnpm check:migrations` | PASS before final CSS/geometry refinement; inherited Admin font build warnings (exit0;wall0.54s) |
+| `pnpm build` | PASS before final CSS/geometry refinement; inherited Admin font build warnings (exit0;wall10.03s) |
+| `pnpm audit --json` | OPEN_INHERITED 1low/6moderate/1high including Vite GHSA-587h-7wmj-h5pm; dependencies unchanged (exit1;wall1.21s) |
+| `PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/ pnpm test` | PARTIAL before CSS/geometry refinement;410/412 files;9164/9169 tests in215.73s;wall216.66s;same five inherited encoded-space CLI failures (exit1;wall216.66s) |
+| `git ls-remote https://github.com/hello-tako/Takolio.git refs/heads/main` | PASS read-only canonical main unchanged (exit0;wall1.04s) |
+| `pnpm exec eslint tests/e2e/t17-ui/takolio-notification-preferences-continuation.e2e.ts` | PASS final source/harness; inherited Admin font warnings on builds (exit0;wall1.1s) |
+| `pnpm lint` | PASS final source/harness; inherited Admin font warnings on builds (exit0;wall7.02s) |
+| `pnpm typecheck` | PASS final source/harness; inherited Admin font warnings on builds (exit0;wall17.53s) |
+| `pnpm check:migrations` | PASS final source/harness; inherited Admin font warnings on builds (exit0;wall0.54s) |
+| `pnpm build` | PASS final source/harness; inherited Admin font warnings on builds (exit0;wall9.99s) |
+| `VITE_FF_MEAL_PLANNER_V2=true VITE_FF_MEAL_COMPOSITION_V2=true pnpm build` | PASS final source/harness; inherited Admin font warnings on builds (exit0;wall9.82s) |
+| `PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/ pnpm test` | PARTIAL final source;410/412 files;9164/9169 tests;same five inherited encoded-space CLI failures;207.77s (transform 16.09s, setup 4.30s, import 96.24s, tests 1228.27s, environment 25.16s) (exit1;wall208.58s) |
+| `PREVIEW_MEAL_COMPOSITION_V2=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-notification-preferences-continuation.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/notification-preferences/thumb-baseline` | EXPECTED_REGRESSION 6failed; all complete journeys;39/160 thumb measurements overflow at root-font200; no axe violations (exit1;shell wall unrecorded) |
+| `PREVIEW_MEAL_COMPOSITION_V2=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-notification-preferences-continuation.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/notification-preferences/after` | PASS6/6;160/160 thumbs fit;160controls actionable/fit;32zero-violation axe with32incomplete contrast (exit0;reported36.9s;shell wall unrecorded) |
+
+Earlier baseline and verified runs passed6/6 but measured only the button, missing thumb overflow;they are retained as historical attempts. Initial typecheck failed a test-only Window cast;unknown intermediate corrected it. One interrupted browser run encountered React504 Outdated Optimize Dep while Vitest and preview overlapped;exit130 after2failures/third pending is retained without a completed-run claim. Ignored stale Vite cache was preserved. Intermediate thumb sizing ran3failed/3passed because separate awaited bounding boxes mixed scroll offsets;the final harness samples both rectangles synchronously and narrows the CSS selector. Paired final runs use byte-identical complete harness SHA256 `e968ffba2487b19f6ca14ca7ff1d175d48993ef9a64c5bdd47c090bb87699d26`;baseline CSS is bound to the previous committed Git object. Earlier logs,source copies and bindings remain hash-bound;they are not substituted for final regression evidence.
+
+Final browser6/6 in36.9s. Identical final harness on pre-row35 CSS fails6/6 and records39 overflowing thumbs among160 measurements; final160/160 fit. Focused units5files/103tests in2.25s and integration3files/104tests in6.68s ran before the CSS/geometry refinement. Final targeted ESLint, lint, types, local migration smoke, default and paired builds PASS. Final full suite Node24.16.0:410/412files;9164/9169tests in207.77s (wall208.58s), the same five inherited encoded-space CLI failures in production-catalog-continuity/release-check. Audit retains inherited1low/6moderate/1high including Vite GHSA-587h-7wmj-h5pm; dependencies unchanged.
+
+140 bound payloads:64PNG,64axe JSON,12summaries;four viewport/text configs x four captured states x two contexts in each phase. All32final axe reports show zero reported violations and incomplete color-contrast. Each phase measures160controls and160track/thumb pairs. All five Space/Enter choices persist through route remount/reload;invalid types/corrupt JSON fall back safely;genuine retry after shaped quota failure saves. No monitored API writes;family,inventory,shopping,current plan and onboarding snapshots unchanged in the local/retry journeys.
+
+Reduced-motion Chromium/root-font text200 is bounded simulation, not OS zoom,physical-device,screenreader,live-provider,performance or production certification. Other-owner key retention does not certify a real account switch. Notification denied/quota states are shaped;no real delivery/filter capability is claimed. Full-page captures follow focus/trial scrolling and can include fixed chrome/skip-link artifacts. All32final contrast checks require manual review.
+
+Next bounded packet:row36 privacy/data source/caller/browser audit, preserving honest unavailable export/delete states and household separation. Row37 Plus remains protected. Owner/device/manual accessibility review remains open. No push,PR publication,merge,deploy,remote migration or production action.
+
+Finalization executed:protected-main audit PASS with5,838unchanged protected base paths;historical/current evidence and changed-text credential/private-path scans PASS;git diff --check PASS;eight historical tails retained byte-for-byte;only row35 changed;FILE_DECISIONS appended97to99. Initial ad-hoc row-difference check used a nonexistent CSV field and was corrected to screen_slug;no product/evidence mutation resulted.
+
+---
+
 # UI08 Planning settings row34 baseline - 2026-10-24 JST
 
 Implementation `b82701c7ba6ffd561799164cb9506377391126fb` on `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.

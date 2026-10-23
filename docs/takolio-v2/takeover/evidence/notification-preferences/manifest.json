@@ -1,0 +1,1131 @@
+{
+  "base_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "implementation_commit": "b8248ca40781620b7eb78a970c3314e8dc12e779",
+  "scope": "Paired identical final harness on pre-row35 CSS and final notification-row-only thumb sizing. Synthetic values only; exact raw parity. Same product TSX/handlers/keys/contracts. Reduced-motion Chromium/root-font simulation; no OS/device/owner certification.",
+  "measurements": {
+    "controls": {
+      "before": 160,
+      "after": 160
+    },
+    "switches": {
+      "before": 160,
+      "after": 160
+    },
+    "thumb_overflows": {
+      "before": 39
+    },
+    "after_incomplete": {
+      "color-contrast": 32
+    }
+  },
+  "entries": [
+    {
+      "path": "before/desktop-1440/axe-local-defaults-1440x900-text1.json",
+      "bytes": 2140,
+      "sha256": "3c0d886b52808066163b3856fc818102b2d478efede65eb0d42cecffb5412f11",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/axe-local-defaults-1440x900-text1.json",
+      "raw_sha256": "3c0d886b52808066163b3856fc818102b2d478efede65eb0d42cecffb5412f11"
+    },
+    {
+      "path": "before/desktop-1440/axe-local-defaults-320x420-text2.json",
+      "bytes": 2142,
+      "sha256": "e9b27dc2bfac77b9367b465f87eee5fb904c3c0aeb1308f0aa0d723bc89ff495",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/axe-local-defaults-320x420-text2.json",
+      "raw_sha256": "e9b27dc2bfac77b9367b465f87eee5fb904c3c0aeb1308f0aa0d723bc89ff495"
+    },
+    {
+      "path": "before/desktop-1440/axe-local-defaults-320x568-text1.json",
+      "bytes": 2127,
+      "sha256": "de8604aeef28d4f07e124ad9ea3d7d8e1aab17c735b50c5cde9a40a2fc15e67c",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/axe-local-defaults-320x568-text1.json",
+      "raw_sha256": "de8604aeef28d4f07e124ad9ea3d7d8e1aab17c735b50c5cde9a40a2fc15e67c"
+    },
+    {
+      "path": "before/desktop-1440/axe-local-defaults-390x844-text1.json",
+      "bytes": 2147,
+      "sha256": "b6a86e2d1f1f1815396af65965db7110bf0377692fd7c0752989b19a9f9ad5aa",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/axe-local-defaults-390x844-text1.json",
+      "raw_sha256": "b6a86e2d1f1f1815396af65965db7110bf0377692fd7c0752989b19a9f9ad5aa"
+    },
+    {
+      "path": "before/desktop-1440/axe-local-reload-1440x900-text1.json",
+      "bytes": 2138,
+      "sha256": "b8b8385a31ea9c4fdfbb1b6b02676250e8511be654088b3ccfba37f8234b5c41",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/axe-local-reload-1440x900-text1.json",
+      "raw_sha256": "b8b8385a31ea9c4fdfbb1b6b02676250e8511be654088b3ccfba37f8234b5c41"
+    },
+    {
+      "path": "before/desktop-1440/axe-local-reload-320x420-text2.json",
+      "bytes": 2140,
+      "sha256": "6e22b73a2cbbc8065e829d653904d3e6593d8897fefc8e0986d89cf0389dfac9",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/axe-local-reload-320x420-text2.json",
+      "raw_sha256": "6e22b73a2cbbc8065e829d653904d3e6593d8897fefc8e0986d89cf0389dfac9"
+    },
+    {
+      "path": "before/desktop-1440/axe-local-reload-320x568-text1.json",
+      "bytes": 2125,
+      "sha256": "e6e1e8f683680a0c554cb560a80968ad2baf6637aa10fd9f105387306635a64d",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/axe-local-reload-320x568-text1.json",
+      "raw_sha256": "e6e1e8f683680a0c554cb560a80968ad2baf6637aa10fd9f105387306635a64d"
+    },
+    {
+      "path": "before/desktop-1440/axe-local-reload-390x844-text1.json",
+      "bytes": 2145,
+      "sha256": "c67286861caa0510f56a4b64dc26a8fb72a75c890282759783805c679f3fe224",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/axe-local-reload-390x844-text1.json",
+      "raw_sha256": "c67286861caa0510f56a4b64dc26a8fb72a75c890282759783805c679f3fe224"
+    },
+    {
+      "path": "before/desktop-1440/local-defaults-1440x900-text1.png",
+      "bytes": 166855,
+      "sha256": "c10ae5ce9d692763525a6d34aa63f725905532418741deadf81c6fd983a468ab",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/local-defaults-1440x900-text1.png",
+      "raw_sha256": "c10ae5ce9d692763525a6d34aa63f725905532418741deadf81c6fd983a468ab",
+      "width": 1440,
+      "height": 1106
+    },
+    {
+      "path": "before/desktop-1440/local-defaults-320x420-text2.png",
+      "bytes": 115307,
+      "sha256": "a341b6f80b23e3e3a931986d5c0a972ccfff2d21f14290615424e6e1b1d62a1e",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/local-defaults-320x420-text2.png",
+      "raw_sha256": "a341b6f80b23e3e3a931986d5c0a972ccfff2d21f14290615424e6e1b1d62a1e",
+      "width": 320,
+      "height": 1912
+    },
+    {
+      "path": "before/desktop-1440/local-defaults-320x568-text1.png",
+      "bytes": 109936,
+      "sha256": "28a5da2021396e11ba3e6383332be3282beb12d2470baa424c1c988c3cdab81d",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/local-defaults-320x568-text1.png",
+      "raw_sha256": "28a5da2021396e11ba3e6383332be3282beb12d2470baa424c1c988c3cdab81d",
+      "width": 320,
+      "height": 1378
+    },
+    {
+      "path": "before/desktop-1440/local-defaults-390x844-text1.png",
+      "bytes": 97737,
+      "sha256": "4950ed82bbf1e735a788844866d177e8310536cf7ee34e91f73d22d22622cef2",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/local-defaults-390x844-text1.png",
+      "raw_sha256": "4950ed82bbf1e735a788844866d177e8310536cf7ee34e91f73d22d22622cef2",
+      "width": 390,
+      "height": 1283
+    },
+    {
+      "path": "before/desktop-1440/local-reload-1440x900-text1.png",
+      "bytes": 166501,
+      "sha256": "45e834db0b9303e5698ec9ec761554301c77f24943cdb5d13d42b84c88697121",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/local-reload-1440x900-text1.png",
+      "raw_sha256": "45e834db0b9303e5698ec9ec761554301c77f24943cdb5d13d42b84c88697121",
+      "width": 1440,
+      "height": 1106
+    },
+    {
+      "path": "before/desktop-1440/local-reload-320x420-text2.png",
+      "bytes": 115102,
+      "sha256": "2c33418c1909116b97031a489bcb5b086281ced250f3c27f452c76f5c06a1307",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/local-reload-320x420-text2.png",
+      "raw_sha256": "2c33418c1909116b97031a489bcb5b086281ced250f3c27f452c76f5c06a1307",
+      "width": 320,
+      "height": 1912
+    },
+    {
+      "path": "before/desktop-1440/local-reload-320x568-text1.png",
+      "bytes": 109790,
+      "sha256": "bcf8e5f7d177b8235dd149c04ac618cb268161ad5c6f40d3baf11628598a5045",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/local-reload-320x568-text1.png",
+      "raw_sha256": "bcf8e5f7d177b8235dd149c04ac618cb268161ad5c6f40d3baf11628598a5045",
+      "width": 320,
+      "height": 1378
+    },
+    {
+      "path": "before/desktop-1440/local-reload-390x844-text1.png",
+      "bytes": 97646,
+      "sha256": "d1e373cf8ba4ff30e5ecc9bb2c860cd2bff7fb2c41a47d8be8bef85a2929dc75",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/local-reload-390x844-text1.png",
+      "raw_sha256": "d1e373cf8ba4ff30e5ecc9bb2c860cd2bff7fb2c41a47d8be8bef85a2929dc75",
+      "width": 390,
+      "height": 1283
+    },
+    {
+      "path": "before/desktop-1440/local-summary.json",
+      "bytes": 20521,
+      "sha256": "1a0b9b3232abf35a4eeb2e404308c0f45f5e9778da4bb54f790d57ba666ddaec",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/local-summary.json",
+      "raw_sha256": "1a0b9b3232abf35a4eeb2e404308c0f45f5e9778da4bb54f790d57ba666ddaec"
+    },
+    {
+      "path": "before/mobile-390/axe-local-defaults-1440x900-text1.json",
+      "bytes": 2140,
+      "sha256": "3c0d886b52808066163b3856fc818102b2d478efede65eb0d42cecffb5412f11",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/axe-local-defaults-1440x900-text1.json",
+      "raw_sha256": "3c0d886b52808066163b3856fc818102b2d478efede65eb0d42cecffb5412f11"
+    },
+    {
+      "path": "before/mobile-390/axe-local-defaults-320x420-text2.json",
+      "bytes": 2142,
+      "sha256": "eefb8e756190345af463f1a09abc916755e4ed75958a647a58ec6ab68f7b0e4b",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/axe-local-defaults-320x420-text2.json",
+      "raw_sha256": "eefb8e756190345af463f1a09abc916755e4ed75958a647a58ec6ab68f7b0e4b"
+    },
+    {
+      "path": "before/mobile-390/axe-local-defaults-320x568-text1.json",
+      "bytes": 2127,
+      "sha256": "de8604aeef28d4f07e124ad9ea3d7d8e1aab17c735b50c5cde9a40a2fc15e67c",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/axe-local-defaults-320x568-text1.json",
+      "raw_sha256": "de8604aeef28d4f07e124ad9ea3d7d8e1aab17c735b50c5cde9a40a2fc15e67c"
+    },
+    {
+      "path": "before/mobile-390/axe-local-defaults-390x844-text1.json",
+      "bytes": 2147,
+      "sha256": "b6a86e2d1f1f1815396af65965db7110bf0377692fd7c0752989b19a9f9ad5aa",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/axe-local-defaults-390x844-text1.json",
+      "raw_sha256": "b6a86e2d1f1f1815396af65965db7110bf0377692fd7c0752989b19a9f9ad5aa"
+    },
+    {
+      "path": "before/mobile-390/axe-local-reload-1440x900-text1.json",
+      "bytes": 2138,
+      "sha256": "b8b8385a31ea9c4fdfbb1b6b02676250e8511be654088b3ccfba37f8234b5c41",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/axe-local-reload-1440x900-text1.json",
+      "raw_sha256": "b8b8385a31ea9c4fdfbb1b6b02676250e8511be654088b3ccfba37f8234b5c41"
+    },
+    {
+      "path": "before/mobile-390/axe-local-reload-320x420-text2.json",
+      "bytes": 2140,
+      "sha256": "c9304347e7727a36bacb8af61767d7082af9537ff5853702aa57930be118e6b4",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/axe-local-reload-320x420-text2.json",
+      "raw_sha256": "c9304347e7727a36bacb8af61767d7082af9537ff5853702aa57930be118e6b4"
+    },
+    {
+      "path": "before/mobile-390/axe-local-reload-320x568-text1.json",
+      "bytes": 2125,
+      "sha256": "e6e1e8f683680a0c554cb560a80968ad2baf6637aa10fd9f105387306635a64d",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/axe-local-reload-320x568-text1.json",
+      "raw_sha256": "e6e1e8f683680a0c554cb560a80968ad2baf6637aa10fd9f105387306635a64d"
+    },
+    {
+      "path": "before/mobile-390/axe-local-reload-390x844-text1.json",
+      "bytes": 2145,
+      "sha256": "c67286861caa0510f56a4b64dc26a8fb72a75c890282759783805c679f3fe224",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/axe-local-reload-390x844-text1.json",
+      "raw_sha256": "c67286861caa0510f56a4b64dc26a8fb72a75c890282759783805c679f3fe224"
+    },
+    {
+      "path": "before/mobile-390/local-defaults-1440x900-text1.png",
+      "bytes": 166855,
+      "sha256": "c10ae5ce9d692763525a6d34aa63f725905532418741deadf81c6fd983a468ab",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/local-defaults-1440x900-text1.png",
+      "raw_sha256": "c10ae5ce9d692763525a6d34aa63f725905532418741deadf81c6fd983a468ab",
+      "width": 1440,
+      "height": 1106
+    },
+    {
+      "path": "before/mobile-390/local-defaults-320x420-text2.png",
+      "bytes": 112990,
+      "sha256": "3dca29472b9d262374a96407cee8a7661e705a8d324031e3d5f8f518f46b4ad0",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/local-defaults-320x420-text2.png",
+      "raw_sha256": "3dca29472b9d262374a96407cee8a7661e705a8d324031e3d5f8f518f46b4ad0",
+      "width": 320,
+      "height": 1912
+    },
+    {
+      "path": "before/mobile-390/local-defaults-320x568-text1.png",
+      "bytes": 110106,
+      "sha256": "43320f451332c41586bc9cdc11c490f92127b6ad11cd3c4707a14f39a1be52c1",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/local-defaults-320x568-text1.png",
+      "raw_sha256": "43320f451332c41586bc9cdc11c490f92127b6ad11cd3c4707a14f39a1be52c1",
+      "width": 320,
+      "height": 1378
+    },
+    {
+      "path": "before/mobile-390/local-defaults-390x844-text1.png",
+      "bytes": 97737,
+      "sha256": "4950ed82bbf1e735a788844866d177e8310536cf7ee34e91f73d22d22622cef2",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/local-defaults-390x844-text1.png",
+      "raw_sha256": "4950ed82bbf1e735a788844866d177e8310536cf7ee34e91f73d22d22622cef2",
+      "width": 390,
+      "height": 1283
+    },
+    {
+      "path": "before/mobile-390/local-reload-1440x900-text1.png",
+      "bytes": 166501,
+      "sha256": "45e834db0b9303e5698ec9ec761554301c77f24943cdb5d13d42b84c88697121",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/local-reload-1440x900-text1.png",
+      "raw_sha256": "45e834db0b9303e5698ec9ec761554301c77f24943cdb5d13d42b84c88697121",
+      "width": 1440,
+      "height": 1106
+    },
+    {
+      "path": "before/mobile-390/local-reload-320x420-text2.png",
+      "bytes": 112796,
+      "sha256": "5914ad38bd3171b4ea9eec4dbb36021ca0140c3e427ae6efdb8715cbe689a2df",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/local-reload-320x420-text2.png",
+      "raw_sha256": "5914ad38bd3171b4ea9eec4dbb36021ca0140c3e427ae6efdb8715cbe689a2df",
+      "width": 320,
+      "height": 1912
+    },
+    {
+      "path": "before/mobile-390/local-reload-320x568-text1.png",
+      "bytes": 109836,
+      "sha256": "22c1c33bcd2640ea28fef297a5c1c30756f139faa89aabfb6f0f622a8ab9ac8c",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/local-reload-320x568-text1.png",
+      "raw_sha256": "22c1c33bcd2640ea28fef297a5c1c30756f139faa89aabfb6f0f622a8ab9ac8c",
+      "width": 320,
+      "height": 1378
+    },
+    {
+      "path": "before/mobile-390/local-reload-390x844-text1.png",
+      "bytes": 97646,
+      "sha256": "d1e373cf8ba4ff30e5ecc9bb2c860cd2bff7fb2c41a47d8be8bef85a2929dc75",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/local-reload-390x844-text1.png",
+      "raw_sha256": "d1e373cf8ba4ff30e5ecc9bb2c860cd2bff7fb2c41a47d8be8bef85a2929dc75",
+      "width": 390,
+      "height": 1283
+    },
+    {
+      "path": "before/mobile-390/local-summary.json",
+      "bytes": 20521,
+      "sha256": "0dd5f3d9f0b2492e86736f93637029147337cf5b92e9935647babf9672f1a349",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/local-summary.json",
+      "raw_sha256": "0dd5f3d9f0b2492e86736f93637029147337cf5b92e9935647babf9672f1a349"
+    },
+    {
+      "path": "before/desktop-1440/axe-storage-unavailable-1440x900-text1.json",
+      "bytes": 2145,
+      "sha256": "67521e4845353f71321fdeb41f8498c4739f71962704cf4b3d5a8be59ba98ef6",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-desktop-1440/axe-storage-unavailable-1440x900-text1.json",
+      "raw_sha256": "67521e4845353f71321fdeb41f8498c4739f71962704cf4b3d5a8be59ba98ef6"
+    },
+    {
+      "path": "before/desktop-1440/axe-storage-unavailable-320x420-text2.json",
+      "bytes": 2143,
+      "sha256": "149e9463f2d609a7f365ac6efdc900a9645dd0f646c78e0c17b5b62ca0264575",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-desktop-1440/axe-storage-unavailable-320x420-text2.json",
+      "raw_sha256": "149e9463f2d609a7f365ac6efdc900a9645dd0f646c78e0c17b5b62ca0264575"
+    },
+    {
+      "path": "before/desktop-1440/axe-storage-unavailable-320x568-text1.json",
+      "bytes": 2132,
+      "sha256": "8745fdb369aa4c2ccac7cee0a28eedc5e87741da02c17615a77ec1581fe85cc8",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-desktop-1440/axe-storage-unavailable-320x568-text1.json",
+      "raw_sha256": "8745fdb369aa4c2ccac7cee0a28eedc5e87741da02c17615a77ec1581fe85cc8"
+    },
+    {
+      "path": "before/desktop-1440/axe-storage-unavailable-390x844-text1.json",
+      "bytes": 2153,
+      "sha256": "94ed7a68a2698a6795c19947e2d855993d4bede07bf04fa73a3cad656e0fe45f",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-desktop-1440/axe-storage-unavailable-390x844-text1.json",
+      "raw_sha256": "94ed7a68a2698a6795c19947e2d855993d4bede07bf04fa73a3cad656e0fe45f"
+    },
+    {
+      "path": "before/desktop-1440/failure-summary.json",
+      "bytes": 10316,
+      "sha256": "a8ab221ae711c701fb258d6d1c7776d894981e9ed938de5af90ba3668ad18c25",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-desktop-1440/failure-summary.json",
+      "raw_sha256": "a8ab221ae711c701fb258d6d1c7776d894981e9ed938de5af90ba3668ad18c25"
+    },
+    {
+      "path": "before/desktop-1440/storage-unavailable-1440x900-text1.png",
+      "bytes": 139035,
+      "sha256": "74022a8749dabc6038db4d472ef3dbc9f1b656e898b327ff164576deda438e1f",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-desktop-1440/storage-unavailable-1440x900-text1.png",
+      "raw_sha256": "74022a8749dabc6038db4d472ef3dbc9f1b656e898b327ff164576deda438e1f",
+      "width": 1440,
+      "height": 1147
+    },
+    {
+      "path": "before/desktop-1440/storage-unavailable-320x420-text2.png",
+      "bytes": 140848,
+      "sha256": "621756aec7e839631c8b2f130850d6e9c4b186680c74a18cdb54138520c324c3",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-desktop-1440/storage-unavailable-320x420-text2.png",
+      "raw_sha256": "621756aec7e839631c8b2f130850d6e9c4b186680c74a18cdb54138520c324c3",
+      "width": 320,
+      "height": 1975
+    },
+    {
+      "path": "before/desktop-1440/storage-unavailable-320x568-text1.png",
+      "bytes": 105935,
+      "sha256": "37c8402a4966a88834687be9f59847fac4d15533c67a91a1f05d92cb9c3770a7",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-desktop-1440/storage-unavailable-320x568-text1.png",
+      "raw_sha256": "37c8402a4966a88834687be9f59847fac4d15533c67a91a1f05d92cb9c3770a7",
+      "width": 320,
+      "height": 1440
+    },
+    {
+      "path": "before/desktop-1440/storage-unavailable-390x844-text1.png",
+      "bytes": 105635,
+      "sha256": "aed5d3b0fbe20975ed7c33de7aeefdcb548f8d50b33562a06812a4a416048eac",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-desktop-1440/storage-unavailable-390x844-text1.png",
+      "raw_sha256": "aed5d3b0fbe20975ed7c33de7aeefdcb548f8d50b33562a06812a4a416048eac",
+      "width": 390,
+      "height": 1346
+    },
+    {
+      "path": "before/mobile-390/axe-storage-unavailable-1440x900-text1.json",
+      "bytes": 2145,
+      "sha256": "67521e4845353f71321fdeb41f8498c4739f71962704cf4b3d5a8be59ba98ef6",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-mobile-390/axe-storage-unavailable-1440x900-text1.json",
+      "raw_sha256": "67521e4845353f71321fdeb41f8498c4739f71962704cf4b3d5a8be59ba98ef6"
+    },
+    {
+      "path": "before/mobile-390/axe-storage-unavailable-320x420-text2.json",
+      "bytes": 2147,
+      "sha256": "e1688db10c2c29c4685edc22bf3343bef2817e0cae61d7d08e6965dc1bcaa340",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-mobile-390/axe-storage-unavailable-320x420-text2.json",
+      "raw_sha256": "e1688db10c2c29c4685edc22bf3343bef2817e0cae61d7d08e6965dc1bcaa340"
+    },
+    {
+      "path": "before/mobile-390/axe-storage-unavailable-320x568-text1.json",
+      "bytes": 2132,
+      "sha256": "8745fdb369aa4c2ccac7cee0a28eedc5e87741da02c17615a77ec1581fe85cc8",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-mobile-390/axe-storage-unavailable-320x568-text1.json",
+      "raw_sha256": "8745fdb369aa4c2ccac7cee0a28eedc5e87741da02c17615a77ec1581fe85cc8"
+    },
+    {
+      "path": "before/mobile-390/axe-storage-unavailable-390x844-text1.json",
+      "bytes": 2153,
+      "sha256": "94ed7a68a2698a6795c19947e2d855993d4bede07bf04fa73a3cad656e0fe45f",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-mobile-390/axe-storage-unavailable-390x844-text1.json",
+      "raw_sha256": "94ed7a68a2698a6795c19947e2d855993d4bede07bf04fa73a3cad656e0fe45f"
+    },
+    {
+      "path": "before/mobile-390/failure-summary.json",
+      "bytes": 10320,
+      "sha256": "3f87480457dfe9b5133a88961c4893190de0cd245ba78d96c4f61ef35e75c5de",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-mobile-390/failure-summary.json",
+      "raw_sha256": "3f87480457dfe9b5133a88961c4893190de0cd245ba78d96c4f61ef35e75c5de"
+    },
+    {
+      "path": "before/mobile-390/storage-unavailable-1440x900-text1.png",
+      "bytes": 139035,
+      "sha256": "74022a8749dabc6038db4d472ef3dbc9f1b656e898b327ff164576deda438e1f",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-mobile-390/storage-unavailable-1440x900-text1.png",
+      "raw_sha256": "74022a8749dabc6038db4d472ef3dbc9f1b656e898b327ff164576deda438e1f",
+      "width": 1440,
+      "height": 1147
+    },
+    {
+      "path": "before/mobile-390/storage-unavailable-320x420-text2.png",
+      "bytes": 137862,
+      "sha256": "9edc43d67ff1e9b8540640111187e8b9bd1a327b6eeadf63dcf9351dc098a756",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-mobile-390/storage-unavailable-320x420-text2.png",
+      "raw_sha256": "9edc43d67ff1e9b8540640111187e8b9bd1a327b6eeadf63dcf9351dc098a756",
+      "width": 320,
+      "height": 1975
+    },
+    {
+      "path": "before/mobile-390/storage-unavailable-320x568-text1.png",
+      "bytes": 105784,
+      "sha256": "be77cc96917b8ca7ab93c93d81314a931605fcf9146c9f19202e0bbc6321faf4",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-mobile-390/storage-unavailable-320x568-text1.png",
+      "raw_sha256": "be77cc96917b8ca7ab93c93d81314a931605fcf9146c9f19202e0bbc6321faf4",
+      "width": 320,
+      "height": 1440
+    },
+    {
+      "path": "before/mobile-390/storage-unavailable-390x844-text1.png",
+      "bytes": 105635,
+      "sha256": "aed5d3b0fbe20975ed7c33de7aeefdcb548f8d50b33562a06812a4a416048eac",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-mobile-390/storage-unavailable-390x844-text1.png",
+      "raw_sha256": "aed5d3b0fbe20975ed7c33de7aeefdcb548f8d50b33562a06812a4a416048eac",
+      "width": 390,
+      "height": 1346
+    },
+    {
+      "path": "before/desktop-1440/axe-validated-storage-1440x900-text1.json",
+      "bytes": 2143,
+      "sha256": "0786f5cfa0b62321c631119c1f16e3e13425bebd14ff5cce2944e446d20437c7",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-a11a8-ability-remains-descriptive-desktop-1440/axe-validated-storage-1440x900-text1.json",
+      "raw_sha256": "0786f5cfa0b62321c631119c1f16e3e13425bebd14ff5cce2944e446d20437c7"
+    },
+    {
+      "path": "before/desktop-1440/axe-validated-storage-320x420-text2.json",
+      "bytes": 2145,
+      "sha256": "b12ba5312c1319766fdc8f00c20a751ceef44cfa43e77262304e176eb21febe0",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-a11a8-ability-remains-descriptive-desktop-1440/axe-validated-storage-320x420-text2.json",
+      "raw_sha256": "b12ba5312c1319766fdc8f00c20a751ceef44cfa43e77262304e176eb21febe0"
+    },
+    {
+      "path": "before/desktop-1440/axe-validated-storage-320x568-text1.json",
+      "bytes": 2130,
+      "sha256": "25c7739329ed38b124015b17390391fbee0ed70f0ab85cb80a5771922ac8c50e",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-a11a8-ability-remains-descriptive-desktop-1440/axe-validated-storage-320x568-text1.json",
+      "raw_sha256": "25c7739329ed38b124015b17390391fbee0ed70f0ab85cb80a5771922ac8c50e"
+    },
+    {
+      "path": "before/desktop-1440/axe-validated-storage-390x844-text1.json",
+      "bytes": 2150,
+      "sha256": "3ae54ab3a3c0020051e126bda61c2808eacfa114c983320a02cae225aaf841f9",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-a11a8-ability-remains-descriptive-desktop-1440/axe-validated-storage-390x844-text1.json",
+      "raw_sha256": "3ae54ab3a3c0020051e126bda61c2808eacfa114c983320a02cae225aaf841f9"
+    },
+    {
+      "path": "before/desktop-1440/storage-summary.json",
+      "bytes": 10309,
+      "sha256": "45bb1441c968aebe809faac007f0dc93dff37c347d38d8956b4757a3fa6c54e0",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-a11a8-ability-remains-descriptive-desktop-1440/storage-summary.json",
+      "raw_sha256": "45bb1441c968aebe809faac007f0dc93dff37c347d38d8956b4757a3fa6c54e0"
+    },
+    {
+      "path": "before/desktop-1440/validated-storage-1440x900-text1.png",
+      "bytes": 166748,
+      "sha256": "dca2b8bd108c4bd36f0d46c1c59142af1c93fa16604bde8b3e6b6584d5048cb2",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-a11a8-ability-remains-descriptive-desktop-1440/validated-storage-1440x900-text1.png",
+      "raw_sha256": "dca2b8bd108c4bd36f0d46c1c59142af1c93fa16604bde8b3e6b6584d5048cb2",
+      "width": 1440,
+      "height": 1106
+    },
+    {
+      "path": "before/desktop-1440/validated-storage-320x420-text2.png",
+      "bytes": 115363,
+      "sha256": "a8676458055017a898011bafa13cea23091bc7bb5de73e829f715815de88403c",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-a11a8-ability-remains-descriptive-desktop-1440/validated-storage-320x420-text2.png",
+      "raw_sha256": "a8676458055017a898011bafa13cea23091bc7bb5de73e829f715815de88403c",
+      "width": 320,
+      "height": 1912
+    },
+    {
+      "path": "before/desktop-1440/validated-storage-320x568-text1.png",
+      "bytes": 109840,
+      "sha256": "7ff3cedf94cea487af5b7f993cd5453bb57c5b4492fe7754e15ba1269145f15d",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-a11a8-ability-remains-descriptive-desktop-1440/validated-storage-320x568-text1.png",
+      "raw_sha256": "7ff3cedf94cea487af5b7f993cd5453bb57c5b4492fe7754e15ba1269145f15d",
+      "width": 320,
+      "height": 1378
+    },
+    {
+      "path": "before/desktop-1440/validated-storage-390x844-text1.png",
+      "bytes": 97677,
+      "sha256": "6736a346ef143a00610bc8cfae6dcae3f259e47a5d2227b03315418a1e95b138",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-a11a8-ability-remains-descriptive-desktop-1440/validated-storage-390x844-text1.png",
+      "raw_sha256": "6736a346ef143a00610bc8cfae6dcae3f259e47a5d2227b03315418a1e95b138",
+      "width": 390,
+      "height": 1283
+    },
+    {
+      "path": "before/mobile-390/axe-validated-storage-1440x900-text1.json",
+      "bytes": 2143,
+      "sha256": "0786f5cfa0b62321c631119c1f16e3e13425bebd14ff5cce2944e446d20437c7",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-a11a8-ability-remains-descriptive-mobile-390/axe-validated-storage-1440x900-text1.json",
+      "raw_sha256": "0786f5cfa0b62321c631119c1f16e3e13425bebd14ff5cce2944e446d20437c7"
+    },
+    {
+      "path": "before/mobile-390/axe-validated-storage-320x420-text2.json",
+      "bytes": 2145,
+      "sha256": "798d1efcdfd27a5a9d6be38c27b41a1d4b71212be24f2650869b781f907993df",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-a11a8-ability-remains-descriptive-mobile-390/axe-validated-storage-320x420-text2.json",
+      "raw_sha256": "798d1efcdfd27a5a9d6be38c27b41a1d4b71212be24f2650869b781f907993df"
+    },
+    {
+      "path": "before/mobile-390/axe-validated-storage-320x568-text1.json",
+      "bytes": 2130,
+      "sha256": "25c7739329ed38b124015b17390391fbee0ed70f0ab85cb80a5771922ac8c50e",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-a11a8-ability-remains-descriptive-mobile-390/axe-validated-storage-320x568-text1.json",
+      "raw_sha256": "25c7739329ed38b124015b17390391fbee0ed70f0ab85cb80a5771922ac8c50e"
+    },
+    {
+      "path": "before/mobile-390/axe-validated-storage-390x844-text1.json",
+      "bytes": 2150,
+      "sha256": "3ae54ab3a3c0020051e126bda61c2808eacfa114c983320a02cae225aaf841f9",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-a11a8-ability-remains-descriptive-mobile-390/axe-validated-storage-390x844-text1.json",
+      "raw_sha256": "3ae54ab3a3c0020051e126bda61c2808eacfa114c983320a02cae225aaf841f9"
+    },
+    {
+      "path": "before/mobile-390/storage-summary.json",
+      "bytes": 10309,
+      "sha256": "dd09b3e1519160c97c129f22531a4da9560256ea25b2706cbd5e3bdaf2b14075",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-a11a8-ability-remains-descriptive-mobile-390/storage-summary.json",
+      "raw_sha256": "dd09b3e1519160c97c129f22531a4da9560256ea25b2706cbd5e3bdaf2b14075"
+    },
+    {
+      "path": "before/mobile-390/validated-storage-1440x900-text1.png",
+      "bytes": 166748,
+      "sha256": "dca2b8bd108c4bd36f0d46c1c59142af1c93fa16604bde8b3e6b6584d5048cb2",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-a11a8-ability-remains-descriptive-mobile-390/validated-storage-1440x900-text1.png",
+      "raw_sha256": "dca2b8bd108c4bd36f0d46c1c59142af1c93fa16604bde8b3e6b6584d5048cb2",
+      "width": 1440,
+      "height": 1106
+    },
+    {
+      "path": "before/mobile-390/validated-storage-320x420-text2.png",
+      "bytes": 112973,
+      "sha256": "ae7f40e1b78c9a63f3cb55237e8c9740bb5f5ce179986f36b74063fd7af578bb",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-a11a8-ability-remains-descriptive-mobile-390/validated-storage-320x420-text2.png",
+      "raw_sha256": "ae7f40e1b78c9a63f3cb55237e8c9740bb5f5ce179986f36b74063fd7af578bb",
+      "width": 320,
+      "height": 1912
+    },
+    {
+      "path": "before/mobile-390/validated-storage-320x568-text1.png",
+      "bytes": 109996,
+      "sha256": "3b7eab21e73c619cf097e596f402a835f2e879ab80598a1dfaf0ce488158e351",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-a11a8-ability-remains-descriptive-mobile-390/validated-storage-320x568-text1.png",
+      "raw_sha256": "3b7eab21e73c619cf097e596f402a835f2e879ab80598a1dfaf0ce488158e351",
+      "width": 320,
+      "height": 1378
+    },
+    {
+      "path": "before/mobile-390/validated-storage-390x844-text1.png",
+      "bytes": 97677,
+      "sha256": "6736a346ef143a00610bc8cfae6dcae3f259e47a5d2227b03315418a1e95b138",
+      "raw_source": ".artifacts/takeover/notification-preferences/thumb-baseline/takolio-notification-prefe-a11a8-ability-remains-descriptive-mobile-390/validated-storage-390x844-text1.png",
+      "raw_sha256": "6736a346ef143a00610bc8cfae6dcae3f259e47a5d2227b03315418a1e95b138",
+      "width": 390,
+      "height": 1283
+    },
+    {
+      "path": "after/desktop-1440/axe-local-defaults-1440x900-text1.json",
+      "bytes": 2140,
+      "sha256": "3c0d886b52808066163b3856fc818102b2d478efede65eb0d42cecffb5412f11",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/axe-local-defaults-1440x900-text1.json",
+      "raw_sha256": "3c0d886b52808066163b3856fc818102b2d478efede65eb0d42cecffb5412f11"
+    },
+    {
+      "path": "after/desktop-1440/axe-local-defaults-320x420-text2.json",
+      "bytes": 2134,
+      "sha256": "a0d5c54071708c47e05e2917b85a078d58d0870df3779f4810e419deb023f914",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/axe-local-defaults-320x420-text2.json",
+      "raw_sha256": "a0d5c54071708c47e05e2917b85a078d58d0870df3779f4810e419deb023f914"
+    },
+    {
+      "path": "after/desktop-1440/axe-local-defaults-320x568-text1.json",
+      "bytes": 2127,
+      "sha256": "de8604aeef28d4f07e124ad9ea3d7d8e1aab17c735b50c5cde9a40a2fc15e67c",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/axe-local-defaults-320x568-text1.json",
+      "raw_sha256": "de8604aeef28d4f07e124ad9ea3d7d8e1aab17c735b50c5cde9a40a2fc15e67c"
+    },
+    {
+      "path": "after/desktop-1440/axe-local-defaults-390x844-text1.json",
+      "bytes": 2147,
+      "sha256": "b6a86e2d1f1f1815396af65965db7110bf0377692fd7c0752989b19a9f9ad5aa",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/axe-local-defaults-390x844-text1.json",
+      "raw_sha256": "b6a86e2d1f1f1815396af65965db7110bf0377692fd7c0752989b19a9f9ad5aa"
+    },
+    {
+      "path": "after/desktop-1440/axe-local-reload-1440x900-text1.json",
+      "bytes": 2138,
+      "sha256": "b8b8385a31ea9c4fdfbb1b6b02676250e8511be654088b3ccfba37f8234b5c41",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/axe-local-reload-1440x900-text1.json",
+      "raw_sha256": "b8b8385a31ea9c4fdfbb1b6b02676250e8511be654088b3ccfba37f8234b5c41"
+    },
+    {
+      "path": "after/desktop-1440/axe-local-reload-320x420-text2.json",
+      "bytes": 2132,
+      "sha256": "2bd882646d46e707458888e8fa4c37fb2249b3829d09c9bb3895bc78697d3502",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/axe-local-reload-320x420-text2.json",
+      "raw_sha256": "2bd882646d46e707458888e8fa4c37fb2249b3829d09c9bb3895bc78697d3502"
+    },
+    {
+      "path": "after/desktop-1440/axe-local-reload-320x568-text1.json",
+      "bytes": 2125,
+      "sha256": "e6e1e8f683680a0c554cb560a80968ad2baf6637aa10fd9f105387306635a64d",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/axe-local-reload-320x568-text1.json",
+      "raw_sha256": "e6e1e8f683680a0c554cb560a80968ad2baf6637aa10fd9f105387306635a64d"
+    },
+    {
+      "path": "after/desktop-1440/axe-local-reload-390x844-text1.json",
+      "bytes": 2145,
+      "sha256": "c67286861caa0510f56a4b64dc26a8fb72a75c890282759783805c679f3fe224",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/axe-local-reload-390x844-text1.json",
+      "raw_sha256": "c67286861caa0510f56a4b64dc26a8fb72a75c890282759783805c679f3fe224"
+    },
+    {
+      "path": "after/desktop-1440/local-defaults-1440x900-text1.png",
+      "bytes": 166855,
+      "sha256": "c10ae5ce9d692763525a6d34aa63f725905532418741deadf81c6fd983a468ab",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/local-defaults-1440x900-text1.png",
+      "raw_sha256": "c10ae5ce9d692763525a6d34aa63f725905532418741deadf81c6fd983a468ab",
+      "width": 1440,
+      "height": 1106
+    },
+    {
+      "path": "after/desktop-1440/local-defaults-320x420-text2.png",
+      "bytes": 114751,
+      "sha256": "b659bb799cc1df2464b4258713aed47b92b17ae5e269d3233f11b8b1c4efe631",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/local-defaults-320x420-text2.png",
+      "raw_sha256": "b659bb799cc1df2464b4258713aed47b92b17ae5e269d3233f11b8b1c4efe631",
+      "width": 320,
+      "height": 1912
+    },
+    {
+      "path": "after/desktop-1440/local-defaults-320x568-text1.png",
+      "bytes": 109936,
+      "sha256": "28a5da2021396e11ba3e6383332be3282beb12d2470baa424c1c988c3cdab81d",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/local-defaults-320x568-text1.png",
+      "raw_sha256": "28a5da2021396e11ba3e6383332be3282beb12d2470baa424c1c988c3cdab81d",
+      "width": 320,
+      "height": 1378
+    },
+    {
+      "path": "after/desktop-1440/local-defaults-390x844-text1.png",
+      "bytes": 97737,
+      "sha256": "4950ed82bbf1e735a788844866d177e8310536cf7ee34e91f73d22d22622cef2",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/local-defaults-390x844-text1.png",
+      "raw_sha256": "4950ed82bbf1e735a788844866d177e8310536cf7ee34e91f73d22d22622cef2",
+      "width": 390,
+      "height": 1283
+    },
+    {
+      "path": "after/desktop-1440/local-reload-1440x900-text1.png",
+      "bytes": 166501,
+      "sha256": "45e834db0b9303e5698ec9ec761554301c77f24943cdb5d13d42b84c88697121",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/local-reload-1440x900-text1.png",
+      "raw_sha256": "45e834db0b9303e5698ec9ec761554301c77f24943cdb5d13d42b84c88697121",
+      "width": 1440,
+      "height": 1106
+    },
+    {
+      "path": "after/desktop-1440/local-reload-320x420-text2.png",
+      "bytes": 114939,
+      "sha256": "e5e3eb95cf2d2a63721a36506004eea786a8af9a4c99a068acd93e9116967fcb",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/local-reload-320x420-text2.png",
+      "raw_sha256": "e5e3eb95cf2d2a63721a36506004eea786a8af9a4c99a068acd93e9116967fcb",
+      "width": 320,
+      "height": 1912
+    },
+    {
+      "path": "after/desktop-1440/local-reload-320x568-text1.png",
+      "bytes": 109790,
+      "sha256": "bcf8e5f7d177b8235dd149c04ac618cb268161ad5c6f40d3baf11628598a5045",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/local-reload-320x568-text1.png",
+      "raw_sha256": "bcf8e5f7d177b8235dd149c04ac618cb268161ad5c6f40d3baf11628598a5045",
+      "width": 320,
+      "height": 1378
+    },
+    {
+      "path": "after/desktop-1440/local-reload-390x844-text1.png",
+      "bytes": 97646,
+      "sha256": "d1e373cf8ba4ff30e5ecc9bb2c860cd2bff7fb2c41a47d8be8bef85a2929dc75",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/local-reload-390x844-text1.png",
+      "raw_sha256": "d1e373cf8ba4ff30e5ecc9bb2c860cd2bff7fb2c41a47d8be8bef85a2929dc75",
+      "width": 390,
+      "height": 1283
+    },
+    {
+      "path": "after/desktop-1440/local-summary.json",
+      "bytes": 20505,
+      "sha256": "8be974bded7ad496c3a5f6ed5b877bfa059d3093210d40f05c363fc2d310ae3c",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-desktop-1440/local-summary.json",
+      "raw_sha256": "8be974bded7ad496c3a5f6ed5b877bfa059d3093210d40f05c363fc2d310ae3c"
+    },
+    {
+      "path": "after/mobile-390/axe-local-defaults-1440x900-text1.json",
+      "bytes": 2140,
+      "sha256": "3c0d886b52808066163b3856fc818102b2d478efede65eb0d42cecffb5412f11",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/axe-local-defaults-1440x900-text1.json",
+      "raw_sha256": "3c0d886b52808066163b3856fc818102b2d478efede65eb0d42cecffb5412f11"
+    },
+    {
+      "path": "after/mobile-390/axe-local-defaults-320x420-text2.json",
+      "bytes": 2136,
+      "sha256": "c1eb74db738769ca678b136c618d38e69673c8fff758dde51a9d36c85ff79532",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/axe-local-defaults-320x420-text2.json",
+      "raw_sha256": "c1eb74db738769ca678b136c618d38e69673c8fff758dde51a9d36c85ff79532"
+    },
+    {
+      "path": "after/mobile-390/axe-local-defaults-320x568-text1.json",
+      "bytes": 2127,
+      "sha256": "de8604aeef28d4f07e124ad9ea3d7d8e1aab17c735b50c5cde9a40a2fc15e67c",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/axe-local-defaults-320x568-text1.json",
+      "raw_sha256": "de8604aeef28d4f07e124ad9ea3d7d8e1aab17c735b50c5cde9a40a2fc15e67c"
+    },
+    {
+      "path": "after/mobile-390/axe-local-defaults-390x844-text1.json",
+      "bytes": 2147,
+      "sha256": "b6a86e2d1f1f1815396af65965db7110bf0377692fd7c0752989b19a9f9ad5aa",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/axe-local-defaults-390x844-text1.json",
+      "raw_sha256": "b6a86e2d1f1f1815396af65965db7110bf0377692fd7c0752989b19a9f9ad5aa"
+    },
+    {
+      "path": "after/mobile-390/axe-local-reload-1440x900-text1.json",
+      "bytes": 2138,
+      "sha256": "b8b8385a31ea9c4fdfbb1b6b02676250e8511be654088b3ccfba37f8234b5c41",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/axe-local-reload-1440x900-text1.json",
+      "raw_sha256": "b8b8385a31ea9c4fdfbb1b6b02676250e8511be654088b3ccfba37f8234b5c41"
+    },
+    {
+      "path": "after/mobile-390/axe-local-reload-320x420-text2.json",
+      "bytes": 2134,
+      "sha256": "d9cd8b2b5e5bfc420107c51aa53e05ca25968c4776b9afad4c71d962008eb266",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/axe-local-reload-320x420-text2.json",
+      "raw_sha256": "d9cd8b2b5e5bfc420107c51aa53e05ca25968c4776b9afad4c71d962008eb266"
+    },
+    {
+      "path": "after/mobile-390/axe-local-reload-320x568-text1.json",
+      "bytes": 2125,
+      "sha256": "e6e1e8f683680a0c554cb560a80968ad2baf6637aa10fd9f105387306635a64d",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/axe-local-reload-320x568-text1.json",
+      "raw_sha256": "e6e1e8f683680a0c554cb560a80968ad2baf6637aa10fd9f105387306635a64d"
+    },
+    {
+      "path": "after/mobile-390/axe-local-reload-390x844-text1.json",
+      "bytes": 2145,
+      "sha256": "c67286861caa0510f56a4b64dc26a8fb72a75c890282759783805c679f3fe224",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/axe-local-reload-390x844-text1.json",
+      "raw_sha256": "c67286861caa0510f56a4b64dc26a8fb72a75c890282759783805c679f3fe224"
+    },
+    {
+      "path": "after/mobile-390/local-defaults-1440x900-text1.png",
+      "bytes": 166855,
+      "sha256": "c10ae5ce9d692763525a6d34aa63f725905532418741deadf81c6fd983a468ab",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/local-defaults-1440x900-text1.png",
+      "raw_sha256": "c10ae5ce9d692763525a6d34aa63f725905532418741deadf81c6fd983a468ab",
+      "width": 1440,
+      "height": 1106
+    },
+    {
+      "path": "after/mobile-390/local-defaults-320x420-text2.png",
+      "bytes": 112235,
+      "sha256": "a9f212ccd619abfda96355379ec5459408b77e9bbaa46d65b6f8d09acce74931",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/local-defaults-320x420-text2.png",
+      "raw_sha256": "a9f212ccd619abfda96355379ec5459408b77e9bbaa46d65b6f8d09acce74931",
+      "width": 320,
+      "height": 1912
+    },
+    {
+      "path": "after/mobile-390/local-defaults-320x568-text1.png",
+      "bytes": 110106,
+      "sha256": "43320f451332c41586bc9cdc11c490f92127b6ad11cd3c4707a14f39a1be52c1",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/local-defaults-320x568-text1.png",
+      "raw_sha256": "43320f451332c41586bc9cdc11c490f92127b6ad11cd3c4707a14f39a1be52c1",
+      "width": 320,
+      "height": 1378
+    },
+    {
+      "path": "after/mobile-390/local-defaults-390x844-text1.png",
+      "bytes": 97737,
+      "sha256": "4950ed82bbf1e735a788844866d177e8310536cf7ee34e91f73d22d22622cef2",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/local-defaults-390x844-text1.png",
+      "raw_sha256": "4950ed82bbf1e735a788844866d177e8310536cf7ee34e91f73d22d22622cef2",
+      "width": 390,
+      "height": 1283
+    },
+    {
+      "path": "after/mobile-390/local-reload-1440x900-text1.png",
+      "bytes": 166501,
+      "sha256": "45e834db0b9303e5698ec9ec761554301c77f24943cdb5d13d42b84c88697121",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/local-reload-1440x900-text1.png",
+      "raw_sha256": "45e834db0b9303e5698ec9ec761554301c77f24943cdb5d13d42b84c88697121",
+      "width": 1440,
+      "height": 1106
+    },
+    {
+      "path": "after/mobile-390/local-reload-320x420-text2.png",
+      "bytes": 112450,
+      "sha256": "78648fb78bc435d19ddf05faf52792d155eef485be9fb7c28cf8235e62d39380",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/local-reload-320x420-text2.png",
+      "raw_sha256": "78648fb78bc435d19ddf05faf52792d155eef485be9fb7c28cf8235e62d39380",
+      "width": 320,
+      "height": 1912
+    },
+    {
+      "path": "after/mobile-390/local-reload-320x568-text1.png",
+      "bytes": 109836,
+      "sha256": "22c1c33bcd2640ea28fef297a5c1c30756f139faa89aabfb6f0f622a8ab9ac8c",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/local-reload-320x568-text1.png",
+      "raw_sha256": "22c1c33bcd2640ea28fef297a5c1c30756f139faa89aabfb6f0f622a8ab9ac8c",
+      "width": 320,
+      "height": 1378
+    },
+    {
+      "path": "after/mobile-390/local-reload-390x844-text1.png",
+      "bytes": 97646,
+      "sha256": "d1e373cf8ba4ff30e5ecc9bb2c860cd2bff7fb2c41a47d8be8bef85a2929dc75",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/local-reload-390x844-text1.png",
+      "raw_sha256": "d1e373cf8ba4ff30e5ecc9bb2c860cd2bff7fb2c41a47d8be8bef85a2929dc75",
+      "width": 390,
+      "height": 1283
+    },
+    {
+      "path": "after/mobile-390/local-summary.json",
+      "bytes": 20509,
+      "sha256": "79c870c8ac015a7ac0cae48144d5cb174823bc84677cff5d29448289e2ddde93",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-81eae-r-key-without-server-writes-mobile-390/local-summary.json",
+      "raw_sha256": "79c870c8ac015a7ac0cae48144d5cb174823bc84677cff5d29448289e2ddde93"
+    },
+    {
+      "path": "after/desktop-1440/axe-storage-unavailable-1440x900-text1.json",
+      "bytes": 2145,
+      "sha256": "67521e4845353f71321fdeb41f8498c4739f71962704cf4b3d5a8be59ba98ef6",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-desktop-1440/axe-storage-unavailable-1440x900-text1.json",
+      "raw_sha256": "67521e4845353f71321fdeb41f8498c4739f71962704cf4b3d5a8be59ba98ef6"
+    },
+    {
+      "path": "after/desktop-1440/axe-storage-unavailable-320x420-text2.json",
+      "bytes": 2139,
+      "sha256": "5f21ba0d34e6e22af9a9211f68bf4c5f89c082d1e59dbee3c7d5d568a2f33846",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-desktop-1440/axe-storage-unavailable-320x420-text2.json",
+      "raw_sha256": "5f21ba0d34e6e22af9a9211f68bf4c5f89c082d1e59dbee3c7d5d568a2f33846"
+    },
+    {
+      "path": "after/desktop-1440/axe-storage-unavailable-320x568-text1.json",
+      "bytes": 2132,
+      "sha256": "8745fdb369aa4c2ccac7cee0a28eedc5e87741da02c17615a77ec1581fe85cc8",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-desktop-1440/axe-storage-unavailable-320x568-text1.json",
+      "raw_sha256": "8745fdb369aa4c2ccac7cee0a28eedc5e87741da02c17615a77ec1581fe85cc8"
+    },
+    {
+      "path": "after/desktop-1440/axe-storage-unavailable-390x844-text1.json",
+      "bytes": 2153,
+      "sha256": "94ed7a68a2698a6795c19947e2d855993d4bede07bf04fa73a3cad656e0fe45f",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-desktop-1440/axe-storage-unavailable-390x844-text1.json",
+      "raw_sha256": "94ed7a68a2698a6795c19947e2d855993d4bede07bf04fa73a3cad656e0fe45f"
+    },
+    {
+      "path": "after/desktop-1440/failure-summary.json",
+      "bytes": 10312,
+      "sha256": "d5fbe9e92de6743996055d1f78ce4125ad3d89bbc03589b8dc91591db59cec79",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-desktop-1440/failure-summary.json",
+      "raw_sha256": "d5fbe9e92de6743996055d1f78ce4125ad3d89bbc03589b8dc91591db59cec79"
+    },
+    {
+      "path": "after/desktop-1440/storage-unavailable-1440x900-text1.png",
+      "bytes": 139035,
+      "sha256": "74022a8749dabc6038db4d472ef3dbc9f1b656e898b327ff164576deda438e1f",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-desktop-1440/storage-unavailable-1440x900-text1.png",
+      "raw_sha256": "74022a8749dabc6038db4d472ef3dbc9f1b656e898b327ff164576deda438e1f",
+      "width": 1440,
+      "height": 1147
+    },
+    {
+      "path": "after/desktop-1440/storage-unavailable-320x420-text2.png",
+      "bytes": 140938,
+      "sha256": "ca705f876976311778dfa0c523f770ebdb1b294cc66667eac18c8e062537296e",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-desktop-1440/storage-unavailable-320x420-text2.png",
+      "raw_sha256": "ca705f876976311778dfa0c523f770ebdb1b294cc66667eac18c8e062537296e",
+      "width": 320,
+      "height": 1975
+    },
+    {
+      "path": "after/desktop-1440/storage-unavailable-320x568-text1.png",
+      "bytes": 105935,
+      "sha256": "37c8402a4966a88834687be9f59847fac4d15533c67a91a1f05d92cb9c3770a7",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-desktop-1440/storage-unavailable-320x568-text1.png",
+      "raw_sha256": "37c8402a4966a88834687be9f59847fac4d15533c67a91a1f05d92cb9c3770a7",
+      "width": 320,
+      "height": 1440
+    },
+    {
+      "path": "after/desktop-1440/storage-unavailable-390x844-text1.png",
+      "bytes": 105635,
+      "sha256": "aed5d3b0fbe20975ed7c33de7aeefdcb548f8d50b33562a06812a4a416048eac",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-desktop-1440/storage-unavailable-390x844-text1.png",
+      "raw_sha256": "aed5d3b0fbe20975ed7c33de7aeefdcb548f8d50b33562a06812a4a416048eac",
+      "width": 390,
+      "height": 1346
+    },
+    {
+      "path": "after/mobile-390/axe-storage-unavailable-1440x900-text1.json",
+      "bytes": 2145,
+      "sha256": "67521e4845353f71321fdeb41f8498c4739f71962704cf4b3d5a8be59ba98ef6",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-mobile-390/axe-storage-unavailable-1440x900-text1.json",
+      "raw_sha256": "67521e4845353f71321fdeb41f8498c4739f71962704cf4b3d5a8be59ba98ef6"
+    },
+    {
+      "path": "after/mobile-390/axe-storage-unavailable-320x420-text2.json",
+      "bytes": 2142,
+      "sha256": "1399dd6b260199a8cf9ac1864ad255a12e8616b1a3ff19fabc0a0a11ae33e9ab",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-mobile-390/axe-storage-unavailable-320x420-text2.json",
+      "raw_sha256": "1399dd6b260199a8cf9ac1864ad255a12e8616b1a3ff19fabc0a0a11ae33e9ab"
+    },
+    {
+      "path": "after/mobile-390/axe-storage-unavailable-320x568-text1.json",
+      "bytes": 2132,
+      "sha256": "8745fdb369aa4c2ccac7cee0a28eedc5e87741da02c17615a77ec1581fe85cc8",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-mobile-390/axe-storage-unavailable-320x568-text1.json",
+      "raw_sha256": "8745fdb369aa4c2ccac7cee0a28eedc5e87741da02c17615a77ec1581fe85cc8"
+    },
+    {
+      "path": "after/mobile-390/axe-storage-unavailable-390x844-text1.json",
+      "bytes": 2153,
+      "sha256": "94ed7a68a2698a6795c19947e2d855993d4bede07bf04fa73a3cad656e0fe45f",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-mobile-390/axe-storage-unavailable-390x844-text1.json",
+      "raw_sha256": "94ed7a68a2698a6795c19947e2d855993d4bede07bf04fa73a3cad656e0fe45f"
+    },
+    {
+      "path": "after/mobile-390/failure-summary.json",
+      "bytes": 10315,
+      "sha256": "86a443318ba93e1e0f79ac35427d2af40640e81c6a3df64fb656e75c432c30c3",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-mobile-390/failure-summary.json",
+      "raw_sha256": "86a443318ba93e1e0f79ac35427d2af40640e81c6a3df64fb656e75c432c30c3"
+    },
+    {
+      "path": "after/mobile-390/storage-unavailable-1440x900-text1.png",
+      "bytes": 139035,
+      "sha256": "74022a8749dabc6038db4d472ef3dbc9f1b656e898b327ff164576deda438e1f",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-mobile-390/storage-unavailable-1440x900-text1.png",
+      "raw_sha256": "74022a8749dabc6038db4d472ef3dbc9f1b656e898b327ff164576deda438e1f",
+      "width": 1440,
+      "height": 1147
+    },
+    {
+      "path": "after/mobile-390/storage-unavailable-320x420-text2.png",
+      "bytes": 137268,
+      "sha256": "0300c262906136cef8d853efb57b56987620d20ebfdec8fee241cbbc658e62be",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-mobile-390/storage-unavailable-320x420-text2.png",
+      "raw_sha256": "0300c262906136cef8d853efb57b56987620d20ebfdec8fee241cbbc658e62be",
+      "width": 320,
+      "height": 1975
+    },
+    {
+      "path": "after/mobile-390/storage-unavailable-320x568-text1.png",
+      "bytes": 105784,
+      "sha256": "be77cc96917b8ca7ab93c93d81314a931605fcf9146c9f19202e0bbc6321faf4",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-mobile-390/storage-unavailable-320x568-text1.png",
+      "raw_sha256": "be77cc96917b8ca7ab93c93d81314a931605fcf9146c9f19202e0bbc6321faf4",
+      "width": 320,
+      "height": 1440
+    },
+    {
+      "path": "after/mobile-390/storage-unavailable-390x844-text1.png",
+      "bytes": 105635,
+      "sha256": "aed5d3b0fbe20975ed7c33de7aeefdcb548f8d50b33562a06812a4a416048eac",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-9dbd3-nt-until-a-real-retry-saves-mobile-390/storage-unavailable-390x844-text1.png",
+      "raw_sha256": "aed5d3b0fbe20975ed7c33de7aeefdcb548f8d50b33562a06812a4a416048eac",
+      "width": 390,
+      "height": 1346
+    },
+    {
+      "path": "after/desktop-1440/axe-validated-storage-1440x900-text1.json",
+      "bytes": 2143,
+      "sha256": "0786f5cfa0b62321c631119c1f16e3e13425bebd14ff5cce2944e446d20437c7",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-a11a8-ability-remains-descriptive-desktop-1440/axe-validated-storage-1440x900-text1.json",
+      "raw_sha256": "0786f5cfa0b62321c631119c1f16e3e13425bebd14ff5cce2944e446d20437c7"
+    },
+    {
+      "path": "after/desktop-1440/axe-validated-storage-320x420-text2.json",
+      "bytes": 2140,
+      "sha256": "bbf110ff593d0676ee439d05a7cc03734eab46c4d60ce9bcf48ae3be5b2d0ef0",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-a11a8-ability-remains-descriptive-desktop-1440/axe-validated-storage-320x420-text2.json",
+      "raw_sha256": "bbf110ff593d0676ee439d05a7cc03734eab46c4d60ce9bcf48ae3be5b2d0ef0"
+    },
+    {
+      "path": "after/desktop-1440/axe-validated-storage-320x568-text1.json",
+      "bytes": 2130,
+      "sha256": "25c7739329ed38b124015b17390391fbee0ed70f0ab85cb80a5771922ac8c50e",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-a11a8-ability-remains-descriptive-desktop-1440/axe-validated-storage-320x568-text1.json",
+      "raw_sha256": "25c7739329ed38b124015b17390391fbee0ed70f0ab85cb80a5771922ac8c50e"
+    },
+    {
+      "path": "after/desktop-1440/axe-validated-storage-390x844-text1.json",
+      "bytes": 2150,
+      "sha256": "3ae54ab3a3c0020051e126bda61c2808eacfa114c983320a02cae225aaf841f9",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-a11a8-ability-remains-descriptive-desktop-1440/axe-validated-storage-390x844-text1.json",
+      "raw_sha256": "3ae54ab3a3c0020051e126bda61c2808eacfa114c983320a02cae225aaf841f9"
+    },
+    {
+      "path": "after/desktop-1440/storage-summary.json",
+      "bytes": 10304,
+      "sha256": "90f8e155db3311764233ac2602408fd09ac08587b296853e5c0a88d61e5d1909",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-a11a8-ability-remains-descriptive-desktop-1440/storage-summary.json",
+      "raw_sha256": "90f8e155db3311764233ac2602408fd09ac08587b296853e5c0a88d61e5d1909"
+    },
+    {
+      "path": "after/desktop-1440/validated-storage-1440x900-text1.png",
+      "bytes": 166748,
+      "sha256": "dca2b8bd108c4bd36f0d46c1c59142af1c93fa16604bde8b3e6b6584d5048cb2",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-a11a8-ability-remains-descriptive-desktop-1440/validated-storage-1440x900-text1.png",
+      "raw_sha256": "dca2b8bd108c4bd36f0d46c1c59142af1c93fa16604bde8b3e6b6584d5048cb2",
+      "width": 1440,
+      "height": 1106
+    },
+    {
+      "path": "after/desktop-1440/validated-storage-320x420-text2.png",
+      "bytes": 114699,
+      "sha256": "140397c4c2b052237ce1351189f90853e057f3df5290a5db7915d3183b1c5f89",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-a11a8-ability-remains-descriptive-desktop-1440/validated-storage-320x420-text2.png",
+      "raw_sha256": "140397c4c2b052237ce1351189f90853e057f3df5290a5db7915d3183b1c5f89",
+      "width": 320,
+      "height": 1912
+    },
+    {
+      "path": "after/desktop-1440/validated-storage-320x568-text1.png",
+      "bytes": 109840,
+      "sha256": "7ff3cedf94cea487af5b7f993cd5453bb57c5b4492fe7754e15ba1269145f15d",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-a11a8-ability-remains-descriptive-desktop-1440/validated-storage-320x568-text1.png",
+      "raw_sha256": "7ff3cedf94cea487af5b7f993cd5453bb57c5b4492fe7754e15ba1269145f15d",
+      "width": 320,
+      "height": 1378
+    },
+    {
+      "path": "after/desktop-1440/validated-storage-390x844-text1.png",
+      "bytes": 97677,
+      "sha256": "6736a346ef143a00610bc8cfae6dcae3f259e47a5d2227b03315418a1e95b138",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-a11a8-ability-remains-descriptive-desktop-1440/validated-storage-390x844-text1.png",
+      "raw_sha256": "6736a346ef143a00610bc8cfae6dcae3f259e47a5d2227b03315418a1e95b138",
+      "width": 390,
+      "height": 1283
+    },
+    {
+      "path": "after/mobile-390/axe-validated-storage-1440x900-text1.json",
+      "bytes": 2143,
+      "sha256": "0786f5cfa0b62321c631119c1f16e3e13425bebd14ff5cce2944e446d20437c7",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-a11a8-ability-remains-descriptive-mobile-390/axe-validated-storage-1440x900-text1.json",
+      "raw_sha256": "0786f5cfa0b62321c631119c1f16e3e13425bebd14ff5cce2944e446d20437c7"
+    },
+    {
+      "path": "after/mobile-390/axe-validated-storage-320x420-text2.json",
+      "bytes": 2140,
+      "sha256": "ef942c4fd159962eb686c7a690865cbb0a1f1c039182dc1e7f23e4d7ba0bca19",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-a11a8-ability-remains-descriptive-mobile-390/axe-validated-storage-320x420-text2.json",
+      "raw_sha256": "ef942c4fd159962eb686c7a690865cbb0a1f1c039182dc1e7f23e4d7ba0bca19"
+    },
+    {
+      "path": "after/mobile-390/axe-validated-storage-320x568-text1.json",
+      "bytes": 2130,
+      "sha256": "25c7739329ed38b124015b17390391fbee0ed70f0ab85cb80a5771922ac8c50e",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-a11a8-ability-remains-descriptive-mobile-390/axe-validated-storage-320x568-text1.json",
+      "raw_sha256": "25c7739329ed38b124015b17390391fbee0ed70f0ab85cb80a5771922ac8c50e"
+    },
+    {
+      "path": "after/mobile-390/axe-validated-storage-390x844-text1.json",
+      "bytes": 2150,
+      "sha256": "3ae54ab3a3c0020051e126bda61c2808eacfa114c983320a02cae225aaf841f9",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-a11a8-ability-remains-descriptive-mobile-390/axe-validated-storage-390x844-text1.json",
+      "raw_sha256": "3ae54ab3a3c0020051e126bda61c2808eacfa114c983320a02cae225aaf841f9"
+    },
+    {
+      "path": "after/mobile-390/storage-summary.json",
+      "bytes": 10304,
+      "sha256": "6296b5bfd5b5e5496557c8549eafafe3965bf44d1585afdfa74d38c72ed2866e",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-a11a8-ability-remains-descriptive-mobile-390/storage-summary.json",
+      "raw_sha256": "6296b5bfd5b5e5496557c8549eafafe3965bf44d1585afdfa74d38c72ed2866e"
+    },
+    {
+      "path": "after/mobile-390/validated-storage-1440x900-text1.png",
+      "bytes": 166748,
+      "sha256": "dca2b8bd108c4bd36f0d46c1c59142af1c93fa16604bde8b3e6b6584d5048cb2",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-a11a8-ability-remains-descriptive-mobile-390/validated-storage-1440x900-text1.png",
+      "raw_sha256": "dca2b8bd108c4bd36f0d46c1c59142af1c93fa16604bde8b3e6b6584d5048cb2",
+      "width": 1440,
+      "height": 1106
+    },
+    {
+      "path": "after/mobile-390/validated-storage-320x420-text2.png",
+      "bytes": 112242,
+      "sha256": "ee046c564216636a0c49ac9f8e483a367978da65be52471e582fb1736c7297e7",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-a11a8-ability-remains-descriptive-mobile-390/validated-storage-320x420-text2.png",
+      "raw_sha256": "ee046c564216636a0c49ac9f8e483a367978da65be52471e582fb1736c7297e7",
+      "width": 320,
+      "height": 1912
+    },
+    {
+      "path": "after/mobile-390/validated-storage-320x568-text1.png",
+      "bytes": 109996,
+      "sha256": "3b7eab21e73c619cf097e596f402a835f2e879ab80598a1dfaf0ce488158e351",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-a11a8-ability-remains-descriptive-mobile-390/validated-storage-320x568-text1.png",
+      "raw_sha256": "3b7eab21e73c619cf097e596f402a835f2e879ab80598a1dfaf0ce488158e351",
+      "width": 320,
+      "height": 1378
+    },
+    {
+      "path": "after/mobile-390/validated-storage-390x844-text1.png",
+      "bytes": 97677,
+      "sha256": "6736a346ef143a00610bc8cfae6dcae3f259e47a5d2227b03315418a1e95b138",
+      "raw_source": ".artifacts/takeover/notification-preferences/after/takolio-notification-prefe-a11a8-ability-remains-descriptive-mobile-390/validated-storage-390x844-text1.png",
+      "raw_sha256": "6736a346ef143a00610bc8cfae6dcae3f259e47a5d2227b03315418a1e95b138",
+      "width": 390,
+      "height": 1283
+    }
+  ]
+}

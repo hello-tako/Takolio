@@ -1,0 +1,316 @@
+{
+  "base_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "implementation_commit": "b8248ca40781620b7eb78a970c3314e8dc12e779",
+  "checkpoint_kind": "scoped notification thumb CSS correction plus browser regressions",
+  "production_actions": false,
+  "environment": "macOS Node25.9.0/pnpm10.33.2 focused/static/build/browser;full suites Node24.16.0 with resolved TMPDIR;isolated Worker/SQLite;external APIs/service workers blocked;Chromium reduced motion/root-font simulation",
+  "source_sha256": {
+    "src/web/pages/settings/NotificationPreferencesPage.tsx": "f00f6c34596c67ee0827c95e256f06763358bec4647bda1f87baf294400a7b45",
+    "src/web/styles/kitchen-account.css": "72ec00d9b23dfd8989a307bc4c62497391a3cb75b689ca0ee2dd9450248cbcea",
+    "tests/e2e/t17-ui/takolio-notification-preferences-continuation.e2e.ts": "e968ffba2487b19f6ca14ca7ff1d175d48993ef9a64c5bdd47c090bb87699d26"
+  },
+  "baseline_source_copies": [
+    {
+      "path": "src/web/pages/settings/NotificationPreferencesPage.tsx",
+      "sha256": "f00f6c34596c67ee0827c95e256f06763358bec4647bda1f87baf294400a7b45",
+      "local_ignored_copy": ".artifacts/takeover/notification-preferences/NotificationPreferencesPage.tsx.baseline"
+    },
+    {
+      "path": "src/web/styles/kitchen-account.css",
+      "sha256": "a5b2ce0e767a461a083b34641ead32d949446c05e02bef6b09d51e670b97dc35",
+      "local_ignored_copy": ".artifacts/takeover/notification-preferences/kitchen-account.css.baseline"
+    }
+  ],
+  "product_tsx_byte_identical_to_main": true,
+  "harness_binding": {
+    "baseline_harness_copy": ".artifacts/takeover/notification-preferences/harness-baseline.ts",
+    "baseline_harness_sha256": "efe6cd6a1a544798b84e59747692371c58d46bb87e1e1e2a7241b9ad0defa9dd",
+    "final_harness_sha256": "e6abcda96c9e5f415ad0168cd4b924b70de1aa3734a88d4dcfb510a96fadae7f",
+    "change": "TypeScript-only unknown intermediate assertion for explicitly shaped test storage control; no runtime test or product change.",
+    "historical_binding_scope": "Earlier pre-thumb baseline/verified runs only; retained unchanged. Not the paired final regression evidence.",
+    "paired_thumb_measurements": {
+      "harness_copy": ".artifacts/takeover/notification-preferences/harness-thumb.ts",
+      "harness_sha256": "e968ffba2487b19f6ca14ca7ff1d175d48993ef9a64c5bdd47c090bb87699d26",
+      "before_output": ".artifacts/takeover/notification-preferences/thumb-baseline",
+      "after_output": ".artifacts/takeover/notification-preferences/after",
+      "baseline_css_copy": ".artifacts/takeover/notification-preferences/kitchen-account.css.baseline",
+      "baseline_css_sha256": "a5b2ce0e767a461a083b34641ead32d949446c05e02bef6b09d51e670b97dc35",
+      "baseline_css_commit": "94a1f341f89662034dec04721932fb4ce3bbba1d",
+      "final_css_sha256": "72ec00d9b23dfd8989a307bc4c62497391a3cb75b689ca0ee2dd9450248cbcea",
+      "same_full_harness": true,
+      "refinement": "Track and thumb rectangles sampled synchronously in one evaluate; prior separate awaits could mix scroll offsets."
+    }
+  },
+  "checks": [
+    {
+      "name": "targeted-eslint",
+      "command": "pnpm exec eslint src/web/pages/settings/NotificationPreferencesPage.tsx tests/e2e/t17-ui/takolio-notification-preferences-continuation.e2e.ts",
+      "exit_code": 0,
+      "seconds": 1.02,
+      "outcome": "PASS before final CSS/geometry refinement; inherited Admin font build warnings",
+      "local_ignored_log": ".artifacts/takeover/notification-preferences/checks/targeted-eslint.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "focused-units",
+      "command": "pnpm exec vitest run tests/unit/ui08-account.test.tsx tests/unit/frontend-services.test.ts tests/unit/ui08-route-scope.test.tsx tests/unit/ui11-navigation.test.tsx tests/unit/onboarding-contract.test.tsx",
+      "exit_code": 0,
+      "seconds": 3.02,
+      "outcome": "PASS 5 files/103 tests in2.25s; before final CSS/geometry refinement",
+      "local_ignored_log": ".artifacts/takeover/notification-preferences/checks/focused-units.log",
+      "log_bytes": 259,
+      "log_sha256": "9fa5af62d76386bb68c41cc11e718ec8c64df32889a09b97d0871e6273e20923"
+    },
+    {
+      "name": "focused-integration",
+      "command": "pnpm exec vitest run tests/integration/frontend-ui-integration.test.tsx tests/integration/auth-tenant-adversarial.test.ts tests/integration/inventory-closed-loop.test.ts",
+      "exit_code": 0,
+      "seconds": 7.37,
+      "outcome": "PASS 3 files/104 tests in6.68s; before final CSS/geometry refinement",
+      "local_ignored_log": ".artifacts/takeover/notification-preferences/checks/focused-integration.log",
+      "log_bytes": 256,
+      "log_sha256": "1677e298e8609c5af6349ffad9845e2441713afd93fe4f4e93cd1c72039fa4c9"
+    },
+    {
+      "name": "lint",
+      "command": "pnpm lint",
+      "exit_code": 0,
+      "seconds": 7.21,
+      "outcome": "PASS before final CSS/geometry refinement; inherited Admin font build warnings",
+      "local_ignored_log": ".artifacts/takeover/notification-preferences/checks/lint.log",
+      "log_bytes": 99,
+      "log_sha256": "3f2044fca43a5e60905becf2ebfc3a21ddd85976975841aa1e16bc87b0f40a6d"
+    },
+    {
+      "name": "typecheck",
+      "command": "pnpm typecheck",
+      "exit_code": 2,
+      "seconds": 13.11,
+      "outcome": "INITIAL FAIL test-only Window assertion; corrected with erased unknown intermediate; final typecheck PASS",
+      "local_ignored_log": ".artifacts/takeover/notification-preferences/checks/typecheck.log",
+      "log_bytes": 707,
+      "log_sha256": "57c450857cae26b5e76264a239b5f480fb5d873f47f5bbfebe1fa93d7d4195c1"
+    },
+    {
+      "name": "migrations",
+      "command": "pnpm check:migrations",
+      "exit_code": 0,
+      "seconds": 0.54,
+      "outcome": "PASS before final CSS/geometry refinement; inherited Admin font build warnings",
+      "local_ignored_log": ".artifacts/takeover/notification-preferences/checks/migrations.log",
+      "log_bytes": 297,
+      "log_sha256": "9616315a9fcbfd77c67784703a16384419539e6a68ccd2838dda07239de25464"
+    },
+    {
+      "name": "build",
+      "command": "pnpm build",
+      "exit_code": 0,
+      "seconds": 10.03,
+      "outcome": "PASS before final CSS/geometry refinement; inherited Admin font build warnings",
+      "local_ignored_log": ".artifacts/takeover/notification-preferences/checks/build.log",
+      "log_bytes": 10008,
+      "log_sha256": "9a486c156110b27924039ba838458e53cbc05a99b708261d831cd9398e9f6bb6"
+    },
+    {
+      "name": "audit",
+      "command": "pnpm audit --json",
+      "exit_code": 1,
+      "seconds": 1.21,
+      "outcome": "OPEN_INHERITED 1low/6moderate/1high including Vite GHSA-587h-7wmj-h5pm; dependencies unchanged",
+      "local_ignored_log": ".artifacts/takeover/notification-preferences/checks/audit.log",
+      "log_bytes": 43734,
+      "log_sha256": "3256cc0c6e0545751f2cfdb3223b90a27a32043a364bb025bc5047465d90103f"
+    },
+    {
+      "name": "full-suite-node24",
+      "command": "pnpm test",
+      "exit_code": 1,
+      "seconds": 216.66,
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/",
+      "node": "v24.16.0",
+      "PATH_prefix": "/opt/homebrew/opt/node@24/bin",
+      "outcome": "PARTIAL before CSS/geometry refinement;410/412 files;9164/9169 tests in215.73s;wall216.66s;same five inherited encoded-space CLI failures",
+      "local_ignored_log": ".artifacts/takeover/notification-preferences/checks/full-suite-node24.log",
+      "log_bytes": 17961,
+      "log_sha256": "4103dc9fd080f17dbd520212ae7f57f1287f60f987c559d8a91a614fdcd14d67"
+    },
+    {
+      "name": "remote-main",
+      "command": "git ls-remote https://github.com/hello-tako/Takolio.git refs/heads/main",
+      "exit_code": 0,
+      "seconds": 1.04,
+      "outcome": "PASS read-only canonical main unchanged",
+      "local_ignored_log": ".artifacts/takeover/notification-preferences/checks/remote-main.log",
+      "log_bytes": 57,
+      "log_sha256": "74b0b5609784df7a5fddf1241a9179b9e62a61f3d3671f7fc0a075210071e212"
+    },
+    {
+      "name": "targeted-eslint-final-thumb",
+      "command": "pnpm exec eslint tests/e2e/t17-ui/takolio-notification-preferences-continuation.e2e.ts",
+      "exit_code": 0,
+      "seconds": 1.1,
+      "outcome": "PASS final source/harness; inherited Admin font warnings on builds",
+      "local_ignored_log": ".artifacts/takeover/notification-preferences/targeted-eslint-final-thumb.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "lint-final",
+      "command": "pnpm lint",
+      "exit_code": 0,
+      "seconds": 7.02,
+      "outcome": "PASS final source/harness; inherited Admin font warnings on builds",
+      "local_ignored_log": ".artifacts/takeover/notification-preferences/lint-final.log",
+      "log_bytes": 99,
+      "log_sha256": "3f2044fca43a5e60905becf2ebfc3a21ddd85976975841aa1e16bc87b0f40a6d"
+    },
+    {
+      "name": "typecheck-final-thumb",
+      "command": "pnpm typecheck",
+      "exit_code": 0,
+      "seconds": 17.53,
+      "outcome": "PASS final source/harness; inherited Admin font warnings on builds",
+      "local_ignored_log": ".artifacts/takeover/notification-preferences/typecheck-final-thumb.log",
+      "log_bytes": 165,
+      "log_sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e"
+    },
+    {
+      "name": "migrations-final",
+      "command": "pnpm check:migrations",
+      "exit_code": 0,
+      "seconds": 0.54,
+      "outcome": "PASS final source/harness; inherited Admin font warnings on builds",
+      "local_ignored_log": ".artifacts/takeover/notification-preferences/migrations-final.log",
+      "log_bytes": 297,
+      "log_sha256": "9616315a9fcbfd77c67784703a16384419539e6a68ccd2838dda07239de25464"
+    },
+    {
+      "name": "build-final",
+      "command": "pnpm build",
+      "exit_code": 0,
+      "seconds": 9.99,
+      "outcome": "PASS final source/harness; inherited Admin font warnings on builds",
+      "local_ignored_log": ".artifacts/takeover/notification-preferences/build-final.log",
+      "log_bytes": 10008,
+      "log_sha256": "20ae0cdea6ef7c6d51d697f5577dc92d9f4fd7cc11fd81ada49d9fbe8015c990"
+    },
+    {
+      "name": "paired-build-final",
+      "command": "VITE_FF_MEAL_PLANNER_V2=true VITE_FF_MEAL_COMPOSITION_V2=true pnpm build",
+      "exit_code": 0,
+      "seconds": 9.82,
+      "outcome": "PASS final source/harness; inherited Admin font warnings on builds",
+      "local_ignored_log": ".artifacts/takeover/notification-preferences/paired-build-final.log",
+      "log_bytes": 10008,
+      "log_sha256": "6ab7832f82a5e930218db5491daf7e96185991b86e44926bc74639a37f30ea95"
+    },
+    {
+      "name": "full-suite-final-node24",
+      "command": "pnpm test",
+      "exit_code": 1,
+      "seconds": 208.58,
+      "node": "v24.16.0",
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/",
+      "PATH_prefix": "/opt/homebrew/opt/node@24/bin",
+      "outcome": "PARTIAL final source;410/412 files;9164/9169 tests;same five inherited encoded-space CLI failures;207.77s (transform 16.09s, setup 4.30s, import 96.24s, tests 1228.27s, environment 25.16s)",
+      "local_ignored_log": ".artifacts/takeover/notification-preferences/full-suite-final-node24.log",
+      "log_bytes": 17961,
+      "log_sha256": "83ec5f527fb942231e42783b3bff1e25f4d7c0bad3d2abd846cd6ea7d7bb570c"
+    },
+    {
+      "name": "browser-paired-before",
+      "command": "PREVIEW_MEAL_COMPOSITION_V2=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-notification-preferences-continuation.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/notification-preferences/thumb-baseline",
+      "exit_code": 1,
+      "outcome": "EXPECTED_REGRESSION 6failed; all complete journeys;39/160 thumb measurements overflow at root-font200; no axe violations",
+      "local_ignored_log": ".artifacts/takeover/notification-preferences/thumb-baseline.log",
+      "log_bytes": 74908,
+      "log_sha256": "f8615dcde9620a968240d6d41acf03a0609f779b724f9fc5b214468be0417f11"
+    },
+    {
+      "name": "browser-paired-after",
+      "command": "PREVIEW_MEAL_COMPOSITION_V2=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-notification-preferences-continuation.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/notification-preferences/after",
+      "exit_code": 0,
+      "test_duration_reported": "36.9s",
+      "outcome": "PASS6/6;160/160 thumbs fit;160controls actionable/fit;32zero-violation axe with32incomplete contrast",
+      "local_ignored_log": ".artifacts/takeover/notification-preferences/after.log",
+      "log_bytes": 18149,
+      "log_sha256": "a4ada9a8951f43951010fff37aa4fd97d173208169a5beacf3285a27dc4462e0"
+    }
+  ],
+  "retained_attempts": [
+    {
+      "name": "baseline",
+      "exit_code": 0,
+      "outcome": "PASS6/6 in36.4s; earlier harness lacked thumb measurements; not paired final regression evidence",
+      "local_ignored_log": ".artifacts/takeover/notification-preferences/baseline.log",
+      "log_bytes": 17646,
+      "log_sha256": "72cb6f7b50768a20895d6e2f3ea73597d153a1d58e282b35fcc73912b206bc11"
+    },
+    {
+      "name": "verified",
+      "exit_code": 0,
+      "outcome": "PASS6/6 in36.4s; test-only cast correction; earlier harness lacked thumb measurements",
+      "local_ignored_log": ".artifacts/takeover/notification-preferences/verified.log",
+      "log_bytes": 17647,
+      "log_sha256": "8046324a04f90895e18542f56b44afe978512ad1c6e2667e9856730a2a2b4dc4"
+    },
+    {
+      "name": "final",
+      "exit_code": 130,
+      "outcome": "INTERRUPTED after2failed/third pending; trace React504 Outdated Optimize Dep while Vitest/preview overlapped; no complete run claimed",
+      "local_ignored_log": ".artifacts/takeover/notification-preferences/final.log",
+      "log_bytes": 14109,
+      "log_sha256": "ce3db768082f69b2875d02ac41f90304e53721b626681d3b50256b02c7761f81"
+    },
+    {
+      "name": "ui-fix",
+      "exit_code": 1,
+      "outcome": "3failed/3passed in41.4s; intermediate shared selector and separate awaited bounding boxes mixed scroll offsets; superseded by scoped selector and synchronous measurements",
+      "local_ignored_log": ".artifacts/takeover/notification-preferences/ui-fix.log",
+      "log_bytes": 27501,
+      "log_sha256": "f92600c4208da822be6199f4a73d487000d1dab59e7ab77f5a411544e3859510"
+    },
+    {
+      "name": "targeted-eslint",
+      "exit_code": 0,
+      "outcome": "PASS initial harness",
+      "local_ignored_log": ".artifacts/takeover/notification-preferences/targeted-eslint.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "targeted-eslint-final",
+      "exit_code": 0,
+      "outcome": "PASS cast correction before thumb measurements",
+      "local_ignored_log": ".artifacts/takeover/notification-preferences/targeted-eslint-final.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "typecheck-final",
+      "exit_code": 0,
+      "outcome": "PASS cast correction before thumb measurements",
+      "local_ignored_log": ".artifacts/takeover/notification-preferences/typecheck-final.log",
+      "log_bytes": 165,
+      "log_sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e"
+    },
+    {
+      "name": "targeted-eslint-ui-fix",
+      "exit_code": 0,
+      "outcome": "PASS intermediate thumb harness",
+      "local_ignored_log": ".artifacts/takeover/notification-preferences/targeted-eslint-ui-fix.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "typecheck-ui-fix",
+      "exit_code": 0,
+      "outcome": "PASS intermediate thumb harness",
+      "local_ignored_log": ".artifacts/takeover/notification-preferences/typecheck-ui-fix.log",
+      "log_bytes": 165,
+      "log_sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e"
+    }
+  ],
+  "scope": "Only .account-switch-row thumb width/height fixed24px within existing52x48 track. Selector used solely by notification page; legacy planning unaffected. Existing UI08 copy/icons/keys/defaults/boolean validation/storage/delivery disclosures and handlers retained. Other-owner key retention is not real account-switch certification. Simulated denied permission/quota do not certify OS/device behavior. No delivery/filter capability, API/backend/security/payments/household/inventory/Week/schema/config/dependency/infrastructure change."
+}
