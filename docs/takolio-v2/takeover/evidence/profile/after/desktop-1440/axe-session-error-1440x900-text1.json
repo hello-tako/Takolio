@@ -1,0 +1,21 @@
+{
+  "state": "session-error",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "textScale": 1,
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ],
+  "metrics": {
+    "innerWidth": 1440,
+    "scrollWidth": 1440,
+    "brokenImages": [],
+    "links": []
+  }
+}

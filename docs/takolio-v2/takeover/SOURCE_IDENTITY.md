@@ -1,3 +1,11 @@
+## Profile row30 source identity - 2026-10-23 JST
+
+Implementation `6cb0d462813482b8137d975b207d8b530fc55776` on `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`. Original Argon workspace is unchanged; the full private snapshot recheck matches 22,763 regular files / 772 symlinks, bytes/modes/links/HEAD/index/status with zero worktree differences and parent permissions 0700.
+
+Changed paths: `src/web/pages/ProfilePage.tsx` and `tests/e2e/t17-ui/takolio-profile-continuation.e2e.ts`. Their exact SHA256 values in `evidence/profile-checks.json` match the implementation commit and current source. Product diff is one metadata string. Existing UI08 account components/assets, Plus JSX/targets, logout behavior and protected contracts retain their implementation. Prior source/evidence receipts remain historical.
+
+---
+
 ## Notifications row29 source identity - 2026-10-23 JST
 
 Base main: `90b94129113b41e34701d99f51175cfa81cb73de`; implementation: `8c1ad40ec5e63587c8b3b2900d0e683b35a3c794`. Changed source paths are `src/web/styles/kitchen-account.css` and `tests/e2e/t17-ui/takolio-notifications-continuation.e2e.ts`; their SHA256 values are bound in `evidence/notifications-checks.json` and match the implementation commit. Existing NotificationsPage/NotificationPreferencesPage, service, route/query contracts and assets remain reused. Original Argon workspace is outside this integration worktree and remains snapshot-verified.

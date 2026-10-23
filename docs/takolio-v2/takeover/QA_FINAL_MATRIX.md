@@ -1,3 +1,21 @@
+# Profile row30 QA update - 2026-10-23 JST
+
+| Area | Status | Evidence / limit |
+|---|---|---|
+| Existing account presentation | PASS_BOUNDED | One notification metadata correction; existing UI08 assets/components retained |
+| Registered and guest identity | PASS_BOUNDED | Actual isolated local sessions; `/profile` alias; guest fallback; long cached identity explicitly shaped |
+| Navigation and protected targets | PASS_BOUNDED | Six keyboard destinations/back; registered/guest Plus href preserved without activation; destination forms not certified |
+| Logout dialog | PASS_BOUNDED | Registered focus/Tab/Escape and guest keyboard cancel; no actual logout commit |
+| Session loading/error/retry | PASS_BOUNDED | Held real GET and shaped HTTP500; private profile hidden; keyboard retry recovers local API |
+| Reflow and keyboard | PASS_BOUNDED | 48 final state/config captures; 192 actionable measured account-link/dialog controls; root-font simulation |
+| Accessibility and owner review | OPEN_MANUAL | 48 axe reports zero violations; 48 incomplete contrast checks; owner review PENDING |
+| Full regression and dependencies | PARTIAL | 9,163/9,168 tests; five inherited CLI path failures; audit 1 low/6 moderate/1 high |
+| Live/device/performance/production | NOT_CLAIMED | Physical devices, screen readers, OS zoom, full Week-OFF, providers and production remain open |
+
+Implementation `6cb0d462813482b8137d975b207d8b530fc55776`; exact commands and evidence in `UI_C7_PROFILE.md` and `evidence/profile-checks.json`. Next bounded packet: row31 household/family baseline.
+
+---
+
 # Notifications row29 QA update - 2026-10-23 JST
 
 | Area | Status | Evidence / limit |

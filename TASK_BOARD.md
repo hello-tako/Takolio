@@ -1,3 +1,13 @@
+# Takolio V2 continuation - Profile row30 checkpoint (2026-10-23 JST)
+
+- `LOCAL_PROFILE_REFINEMENT_VERIFIED`: UI08 profile reused; one honest notification metadata correction plus three local browser journeys.
+- Implementation `6cb0d462813482b8137d975b207d8b530fc55776` on `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`. Original Argon workspace is unchanged; the full private snapshot recheck matches 22,763 regular files / 772 symlinks, bytes/modes/links/HEAD/index/status with zero worktree differences and parent permissions 0700.
+- Final browser 6/6 in 42.2s; focused 76 unit + 104 integration tests; targeted ESLint, lint/types, local migration smoke, default and actual paired builds PASS. Full suite remains PARTIAL: 410/412 files, 9,163/9,168 tests in 185.62s; five inherited encoded-space CLI failures, no timeout. Audit remains inherited 1 low / 6 moderate / 1 high. Profile evidence binds 153 payloads (72 PNG, 72 axe, nine summaries), including 48 final zero-violation axe reports with 48 incomplete contrast checks and 192 actionable measured controls.
+- Evidence: `docs/takolio-v2/takeover/UI_C7_PROFILE.md`; row30 and file decisions 88 updated. Owner review remains PENDING.
+- Next action: bounded row31 household/family source review and isolated local baseline, preserving membership/role/server authority. Owner visual/manual accessibility review, complete destination mutation/permission cases, actual logout commit, live providers, full Week-OFF, physical devices and performance remain open. No push, merge, deploy, remote migration or production action.
+
+---
+
 # Takolio V2 continuation - Notifications row29 checkpoint (2026-10-23 JST)
 
 - `LOCAL_NOTIFICATIONS_REFINEMENT_VERIFIED`: existing notifications/inbox and device-local preference contracts retained; one scoped wrapping rule fixes measured long-content overflow.

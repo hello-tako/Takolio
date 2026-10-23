@@ -31152,12 +31152,6 @@
     "sha256": "dc4738aa86a02c92ba57cee3612b9ad98cdc39f639670c06bc11ac872465eab4"
   },
   {
-    "path": "src/web/pages/ProfilePage.tsx",
-    "mode": "100644",
-    "git_blob": "90375d7f63caa972496da37b9691e0e936a5588e",
-    "sha256": "581cc067e45500339e82189357d97ac912c114469b89e9ed5cdff7fc5efaa337"
-  },
-  {
     "path": "src/web/pages/ReceiptReviewPage.tsx",
     "mode": "100644",
     "git_blob": "89f7448d8848cdb17357921db0ca90c2e78253bb",

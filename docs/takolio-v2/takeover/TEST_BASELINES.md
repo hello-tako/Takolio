@@ -1,3 +1,33 @@
+# UI-C7 profile baseline - 2026-10-23 JST
+
+Implementation `6cb0d462813482b8137d975b207d8b530fc55776` on `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`. Original Argon workspace is unchanged; the full private snapshot recheck matches 22,763 regular files / 772 symlinks, bytes/modes/links/HEAD/index/status with zero worktree differences and parent permissions 0700.
+
+Environment: macOS, Node 25.9.0, pnpm 10.33.2, unchanged main dependencies, isolated Worker/SQLite synthetic households and actual local guest session. External fetch/service workers blocked. Product copy and E2E source match the implementation's source hashes in `evidence/profile-checks.json`.
+
+| Exact executed command | Actual result |
+|---|---|
+| `pnpm exec eslint src/web/pages/ProfilePage.tsx tests/e2e/t17-ui/takolio-profile-continuation.e2e.ts` | PASS final source; existing Admin font build warnings when applicable (exit 0) |
+| `pnpm exec vitest run tests/unit/ui08-account.test.tsx tests/unit/frontend-services.test.ts tests/unit/ui08-route-scope.test.tsx tests/unit/ui11-navigation.test.tsx` | PASS 4 files/76 tests in 1.30s (exit 0) |
+| `pnpm exec vitest run tests/integration/frontend-ui-integration.test.tsx tests/integration/auth-tenant-adversarial.test.ts tests/integration/inventory-closed-loop.test.ts` | PASS 3 files/104 tests in 6.64s (exit 0) |
+| `pnpm lint` | PASS final source; existing Admin font build warnings when applicable (exit 0) |
+| `pnpm typecheck` | PASS final source; existing Admin font build warnings when applicable (exit 0) |
+| `pnpm check:migrations` | PASS final source; existing Admin font build warnings when applicable (exit 0) |
+| `pnpm build` | PASS final source; existing Admin font build warnings when applicable (exit 0) |
+| `VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build` | PASS final source; existing Admin font build warnings when applicable (exit 0) |
+| `pnpm audit --json` | OPEN_INHERITED 1 low/6 moderate/1 high; Vite GHSA-587h-7wmj-h5pm; no dependency change (exit 1) |
+| `PREVIEW_MEAL_COMPOSITION_V2=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-profile-continuation.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/profile/final` | PASS 6/6 in 42.2s; 48 after PNG/48 zero-violation axe with incomplete contrast; 192 actionable measured controls; no API writes after setup (exit 0) |
+| `TMPDIR=/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/ pnpm test` | PARTIAL 410/412 files; 9163/9168 tests in 185.62s; five inherited encoded-space CLI failures; no timeouts (exit 1) |
+
+Full-suite test duration is 185.62s (runner wall 186.5s); browser test duration 42.2s (runner wall 42.82s). Five inherited encoded-space CLI failures remain in production-catalog-continuity/release-check; no timeout. Audit retains Vite GHSA-587h-7wmj-h5pm; dependencies/protected scripts/tests unchanged. Existing Admin font build warnings remain.
+
+The receipt binds 11 check logs and seven retained logs, including narrower baseline, two heading-expectation harness failures, corrected 3/3 pre-copy baseline, pre/post-implementation recovery and read-only main check. Final evidence: 153 payloads; 48 after PNG/axe and six after summaries, 192 actionable measured controls. All 48 final axe reports retain incomplete contrast; owner/manual review remains pending. Session states do not explicitly set reduced motion. No actual logout commit or payment invocation; destination forms/role/persistence matrices remain subsequent work.
+
+Documentation finalization checks: `python3 .artifacts/takeover/verify-evidence.py`, `python3 .artifacts/takeover/audit-scope.py`, full private snapshot verifier (outside the repository), `git diff --check`, source/log hash checks, changed-text credential/private-path scan and historical-tail checks PASS. Raw outputs and private recovery location remain ignored/local. Prior evidence is unchanged.
+
+Next bounded packet: row31 household/family source/runtime baseline. Device/OS zoom/screen readers/live providers/full Week-OFF/performance/production remain unclaimed.
+
+---
+
 # UI-C8 notifications baseline - 2026-10-23 JST
 
 Environment: macOS, Node v25.9.0, pnpm 10.33.2, unchanged main lockfile. All results are local.
