@@ -40,6 +40,7 @@
 .account-notification { display: flex; gap: 14px; padding: 20px; }
 .account-notification > div:first-child { flex-shrink: 0; }
 .account-notification h2 { font-size: 16px; }
+.account-notification :is(h2, p) { overflow-wrap: anywhere; }
 .account-notification-time { display: block; margin-top: 10px; font-size: 12px; color: rgb(var(--semantic-text-muted-rgb)); }
 .account-text-link { color: var(--kitchen-pine); text-decoration: underline; text-underline-offset: 4px; display: inline-flex; align-items: center; min-height: 48px; font-size: 16px; }
 .account-build-info { border-top: 1px solid rgb(var(--semantic-border-rgb)); padding-top: 12px; }
