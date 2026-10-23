@@ -1,3 +1,37 @@
+# UI08 Settings row32 baseline - 2026-10-24 JST
+
+Implementation `b7a32b69f19f06bac4dbf7bc6d61ecd3bcce1969` on `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Fresh read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Environment: macOS, Node 25.9.0, pnpm 10.33.2, unchanged dependencies, isolated local Worker/SQLite fixture; external API fetch and service workers blocked. Reduced motion; root-font text simulation.
+
+| Exact executed command | Actual result |
+|---|---|
+| `pnpm exec eslint src/web/pages/SettingsPage.tsx tests/e2e/t17-ui/takolio-settings-continuation.e2e.ts` | PASS; existing Admin font warnings apply only to builds (exit 0; wall 1.12s) |
+| `pnpm exec vitest run tests/unit/ui08-account.test.tsx tests/unit/frontend-services.test.ts tests/unit/ui08-route-scope.test.tsx tests/unit/ui11-navigation.test.tsx` | PASS 4 files/76 tests in 1.38s (exit 0; wall 2.15s) |
+| `pnpm exec vitest run tests/integration/frontend-ui-integration.test.tsx tests/integration/auth-tenant-adversarial.test.ts tests/integration/inventory-closed-loop.test.ts` | PASS 3 files/104 tests in 6.85s (exit 0; wall 7.54s) |
+| `pnpm lint` | PASS; existing Admin font warnings apply only to builds (exit 0; wall 6.87s) |
+| `pnpm typecheck` | PASS; existing Admin font warnings apply only to builds (exit 0; wall 17.2s) |
+| `pnpm check:migrations` | PASS; existing Admin font warnings apply only to builds (exit 0; wall 0.54s) |
+| `pnpm build` | PASS; existing Admin font warnings apply only to builds (exit 0; wall 10.24s) |
+| `VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build` | PASS; existing Admin font warnings apply only to builds (exit 0; wall 9.89s) |
+| `pnpm audit --json` | OPEN_INHERITED 1 low/6 moderate/1 high, including Vite GHSA-587h-7wmj-h5pm; dependencies unchanged (exit 1; wall 1.28s) |
+| `TMPDIR=/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/ pnpm test` | PARTIAL 410/412 files; 9163/9168 tests in 200.86s; five inherited encoded-space CLI failures in production-catalog-continuity/release-check; no timeout (exit 1; wall 201.7s) |
+| `PREVIEW_MEAL_COMPOSITION_V2=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-settings-continuation.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/settings/after` | PASS 6/6; 64 zero-violation after axe reports retain incomplete contrast; accepted/dismissed one prompt call with disabled pending action; cache/outbox/reload and failure checks pass (exit 0; test duration 51.4s, shell wall not recorded) |
+
+Initial identical browser command with `--output=.artifacts/takeover/settings/baseline` produced 2 PASS / 4 FAIL in 1.4m. Two harness problems: the generic navigation helper asserted /settings before its valid immediate redirect; synthetic PWA event dispatched before the lazy page listener mounted. Both were corrected before editing product source. Initial harness/log/error contexts/traces remain ignored.
+
+Corrected pre-fix command uses `--output=.artifacts/takeover/settings/baseline-corrected`: 4 PASS / 2 FAIL in 54.3s, only the pending/duplicate PWA assertions. Accepted/dismissed both invoke prompt twice while remaining enabled; rejected once. Corrected harness SHA256 `93105441d5211130c392ea85c60fc211f82fab3b6fec0bd91a08f0a9ace2f9a3` is unchanged in the final 6/6 run. Pre-fix Settings source matches GitHub main. Copy/log hashes are retained in the receipt.
+
+268 bound payloads: 128 PNG, 128 axe JSON, twelve summaries. All 64 final axe reports show zero violations and incomplete contrast; 232 controls measured (including disabled actions). Four viewport/text configs across two contexts and eight states. Accepted/dismissed calls change from two to one with pending action disabled. CacheStorage clears while private localStorage data/outbox and pending shopping projection survive reload; server inventory/shopping snapshots equal. Two automatic queue POST retries per context stay aborted; zero writes is not claimed.
+
+Synthetic PWA events/choice/rejection/standalone test client handling only; service workers blocked. Cache success uses actual CacheStorage; deletion denial is shaped. Root-font scaling/reduced-motion Chromium does not certify native installation, physical devices, OS zoom, screen readers, full Week-OFF, live providers, performance or production. Full-page capture follows focus/trial scrolling, so fixed navigation/skip-link placement is not a pixel acceptance claim.
+
+Full suite duration 200.86s (wall 201.70s); focused units 1.38s, integration 6.85s. Same five inherited encoded-space CLI failures remain in production-catalog-continuity/release-check; no timeout. Existing Admin font build warnings and dependencies/protected release tests/scripts unchanged. Audit remains inherited, not PASS.
+
+Recovery after implementation, `git ls-remote` canonical main, `python3 .artifacts/takeover/audit-scope.py`, `python3 .artifacts/takeover/verify-evidence.py`, changed-text credential/private-path scan, `git diff --check` and historical-tail verification PASS. Eleven final logs and five retained logs bound by `evidence/settings-checks.json`; raw logs and private recovery paths ignored. Next bounded packet: row33 food preferences source/API/browser baseline under UI08, preserving wire fields, allergy/diet/exclusion semantics, household isolation and persistence. Owner/manual accessibility/device review remains open. No push, PR publication, merge, deploy, remote migration or production action.
+
+---
+
 # UI-C7 household baseline - 2026-10-24 JST
 
 Implementation `d9107856888cafd2dc3d0462f4a03595c7b72fa4` on `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`. Original Argon workspace is unchanged; full private snapshot recheck matches 22,763 regular files / 772 symlinks, bytes/modes/links/HEAD/index/status with zero worktree differences and parent permissions 0700.

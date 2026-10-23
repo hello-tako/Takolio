@@ -1,0 +1,685 @@
+{
+  "cacheStorageCleared": true,
+  "offlineOutboxRetained": true,
+  "privateDataUnchangedAfterClearAndReload": true,
+  "pendingShoppingProjectionSurvivedReload": true,
+  "serverInventoryAndShoppingUnchanged": true,
+  "cacheFailureShownWithoutSuccess": true,
+  "failureCacheEntryRetained": true,
+  "cacheFailureProviderShaped": true,
+  "attemptedRequests": [
+    "POST /api/v1/shopping-list/items",
+    "POST /api/v1/shopping-list/items"
+  ],
+  "routeRedirect": "/settings -> /settings/app",
+  "privacyLink": "/settings/privacy",
+  "observationsBefore": [
+    {
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": [],
+        "buttons": 2,
+        "links": 1,
+        "summaries": 1
+      },
+      "controls": [
+        {
+          "label": "C\u00e0i \u0111\u1eb7t l\u00ean m\u00e0n h\u00ecnh ch\u00ednh",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": " X\u00f3a b\u1ed9 nh\u1edb \u0111\u1ec7m \u1ee9ng d\u1ee5ng",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Xem quy\u1ec1n ri\u00eang t\u01b0 & d\u1eef li\u1ec7u",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Th\u00f4ng tin phi\u00ean b\u1ea3n",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "textScale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": [],
+        "buttons": 2,
+        "links": 1,
+        "summaries": 1
+      },
+      "controls": [
+        {
+          "label": "C\u00e0i \u0111\u1eb7t l\u00ean m\u00e0n h\u00ecnh ch\u00ednh",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": " X\u00f3a b\u1ed9 nh\u1edb \u0111\u1ec7m \u1ee9ng d\u1ee5ng",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Xem quy\u1ec1n ri\u00eang t\u01b0 & d\u1eef li\u1ec7u",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Th\u00f4ng tin phi\u00ean b\u1ea3n",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "brokenImages": [],
+        "buttons": 2,
+        "links": 1,
+        "summaries": 1
+      },
+      "controls": [
+        {
+          "label": "C\u00e0i \u0111\u1eb7t l\u00ean m\u00e0n h\u00ecnh ch\u00ednh",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": " X\u00f3a b\u1ed9 nh\u1edb \u0111\u1ec7m \u1ee9ng d\u1ee5ng",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Xem quy\u1ec1n ri\u00eang t\u01b0 & d\u1eef li\u1ec7u",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Th\u00f4ng tin phi\u00ean b\u1ea3n",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "brokenImages": [],
+        "buttons": 2,
+        "links": 1,
+        "summaries": 1
+      },
+      "controls": [
+        {
+          "label": "C\u00e0i \u0111\u1eb7t l\u00ean m\u00e0n h\u00ecnh ch\u00ednh",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": " X\u00f3a b\u1ed9 nh\u1edb \u0111\u1ec7m \u1ee9ng d\u1ee5ng",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Xem quy\u1ec1n ri\u00eang t\u01b0 & d\u1eef li\u1ec7u",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Th\u00f4ng tin phi\u00ean b\u1ea3n",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    }
+  ],
+  "pendingObservations": [
+    {
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": [],
+        "buttons": 2,
+        "links": 1,
+        "summaries": 1
+      },
+      "controls": [
+        {
+          "label": "C\u00e0i \u0111\u1eb7t l\u00ean m\u00e0n h\u00ecnh ch\u00ednh",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "\u0110ang x\u1eed l\u00fd...",
+          "enabled": false,
+          "actionable": null,
+          "fits": true
+        },
+        {
+          "label": "Xem quy\u1ec1n ri\u00eang t\u01b0 & d\u1eef li\u1ec7u",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Th\u00f4ng tin phi\u00ean b\u1ea3n",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "textScale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": [],
+        "buttons": 2,
+        "links": 1,
+        "summaries": 1
+      },
+      "controls": [
+        {
+          "label": "C\u00e0i \u0111\u1eb7t l\u00ean m\u00e0n h\u00ecnh ch\u00ednh",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "\u0110ang x\u1eed l\u00fd...",
+          "enabled": false,
+          "actionable": null,
+          "fits": true
+        },
+        {
+          "label": "Xem quy\u1ec1n ri\u00eang t\u01b0 & d\u1eef li\u1ec7u",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Th\u00f4ng tin phi\u00ean b\u1ea3n",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "brokenImages": [],
+        "buttons": 2,
+        "links": 1,
+        "summaries": 1
+      },
+      "controls": [
+        {
+          "label": "C\u00e0i \u0111\u1eb7t l\u00ean m\u00e0n h\u00ecnh ch\u00ednh",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "\u0110ang x\u1eed l\u00fd...",
+          "enabled": false,
+          "actionable": null,
+          "fits": true
+        },
+        {
+          "label": "Xem quy\u1ec1n ri\u00eang t\u01b0 & d\u1eef li\u1ec7u",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Th\u00f4ng tin phi\u00ean b\u1ea3n",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "brokenImages": [],
+        "buttons": 2,
+        "links": 1,
+        "summaries": 1
+      },
+      "controls": [
+        {
+          "label": "C\u00e0i \u0111\u1eb7t l\u00ean m\u00e0n h\u00ecnh ch\u00ednh",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "\u0110ang x\u1eed l\u00fd...",
+          "enabled": false,
+          "actionable": null,
+          "fits": true
+        },
+        {
+          "label": "Xem quy\u1ec1n ri\u00eang t\u01b0 & d\u1eef li\u1ec7u",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Th\u00f4ng tin phi\u00ean b\u1ea3n",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    }
+  ],
+  "observationsAfter": [
+    {
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": [],
+        "buttons": 2,
+        "links": 1,
+        "summaries": 1
+      },
+      "controls": [
+        {
+          "label": "C\u00e0i \u0111\u1eb7t l\u00ean m\u00e0n h\u00ecnh ch\u00ednh",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": " X\u00f3a b\u1ed9 nh\u1edb \u0111\u1ec7m \u1ee9ng d\u1ee5ng",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Xem quy\u1ec1n ri\u00eang t\u01b0 & d\u1eef li\u1ec7u",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Th\u00f4ng tin phi\u00ean b\u1ea3n",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "textScale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": [],
+        "buttons": 2,
+        "links": 1,
+        "summaries": 1
+      },
+      "controls": [
+        {
+          "label": "C\u00e0i \u0111\u1eb7t l\u00ean m\u00e0n h\u00ecnh ch\u00ednh",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": " X\u00f3a b\u1ed9 nh\u1edb \u0111\u1ec7m \u1ee9ng d\u1ee5ng",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Xem quy\u1ec1n ri\u00eang t\u01b0 & d\u1eef li\u1ec7u",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Th\u00f4ng tin phi\u00ean b\u1ea3n",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "brokenImages": [],
+        "buttons": 2,
+        "links": 1,
+        "summaries": 1
+      },
+      "controls": [
+        {
+          "label": "C\u00e0i \u0111\u1eb7t l\u00ean m\u00e0n h\u00ecnh ch\u00ednh",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": " X\u00f3a b\u1ed9 nh\u1edb \u0111\u1ec7m \u1ee9ng d\u1ee5ng",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Xem quy\u1ec1n ri\u00eang t\u01b0 & d\u1eef li\u1ec7u",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Th\u00f4ng tin phi\u00ean b\u1ea3n",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "brokenImages": [],
+        "buttons": 2,
+        "links": 1,
+        "summaries": 1
+      },
+      "controls": [
+        {
+          "label": "C\u00e0i \u0111\u1eb7t l\u00ean m\u00e0n h\u00ecnh ch\u00ednh",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": " X\u00f3a b\u1ed9 nh\u1edb \u0111\u1ec7m \u1ee9ng d\u1ee5ng",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Xem quy\u1ec1n ri\u00eang t\u01b0 & d\u1eef li\u1ec7u",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Th\u00f4ng tin phi\u00ean b\u1ea3n",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    }
+  ],
+  "errorObservations": [
+    {
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": [],
+        "buttons": 2,
+        "links": 1,
+        "summaries": 1
+      },
+      "controls": [
+        {
+          "label": "C\u00e0i \u0111\u1eb7t l\u00ean m\u00e0n h\u00ecnh ch\u00ednh",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": " X\u00f3a b\u1ed9 nh\u1edb \u0111\u1ec7m \u1ee9ng d\u1ee5ng",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Xem quy\u1ec1n ri\u00eang t\u01b0 & d\u1eef li\u1ec7u",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Th\u00f4ng tin phi\u00ean b\u1ea3n",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "textScale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": [],
+        "buttons": 2,
+        "links": 1,
+        "summaries": 1
+      },
+      "controls": [
+        {
+          "label": "C\u00e0i \u0111\u1eb7t l\u00ean m\u00e0n h\u00ecnh ch\u00ednh",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": " X\u00f3a b\u1ed9 nh\u1edb \u0111\u1ec7m \u1ee9ng d\u1ee5ng",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Xem quy\u1ec1n ri\u00eang t\u01b0 & d\u1eef li\u1ec7u",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Th\u00f4ng tin phi\u00ean b\u1ea3n",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "brokenImages": [],
+        "buttons": 2,
+        "links": 1,
+        "summaries": 1
+      },
+      "controls": [
+        {
+          "label": "C\u00e0i \u0111\u1eb7t l\u00ean m\u00e0n h\u00ecnh ch\u00ednh",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": " X\u00f3a b\u1ed9 nh\u1edb \u0111\u1ec7m \u1ee9ng d\u1ee5ng",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Xem quy\u1ec1n ri\u00eang t\u01b0 & d\u1eef li\u1ec7u",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Th\u00f4ng tin phi\u00ean b\u1ea3n",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "brokenImages": [],
+        "buttons": 2,
+        "links": 1,
+        "summaries": 1
+      },
+      "controls": [
+        {
+          "label": "C\u00e0i \u0111\u1eb7t l\u00ean m\u00e0n h\u00ecnh ch\u00ednh",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": " X\u00f3a b\u1ed9 nh\u1edb \u0111\u1ec7m \u1ee9ng d\u1ee5ng",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Xem quy\u1ec1n ri\u00eang t\u01b0 & d\u1eef li\u1ec7u",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Th\u00f4ng tin phi\u00ean b\u1ea3n",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    }
+  ],
+  "pendingCountBefore": 1,
+  "pendingCountAfter": 1,
+  "pendingSnapshotsEqual": true,
+  "pendingSnapshotSHA256": "03c1cc6ab3c80c112c9ffb676cb7af6346263e0b47e1769bcd9d9d445036cb55",
+  "sanitization": "Synthetic queued payload/IDs retained only in ignored raw summary; counts, equality and canonical snapshot hash published."
+}

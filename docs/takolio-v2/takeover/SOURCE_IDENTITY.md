@@ -1,3 +1,11 @@
+## Settings row32 source identity - 2026-10-24 JST
+
+Implementation `b7a32b69f19f06bac4dbf7bc6d61ecd3bcce1969` on `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Fresh read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Two source hashes in `evidence/settings-checks.json` match the implementation Git object and current source: `src/web/pages/SettingsPage.tsx`, `tests/e2e/t17-ui/takolio-settings-continuation.e2e.ts`. Baseline Settings matches main. Corrected baseline and final harness are byte-identical; initial harness retained separately. Existing CSS/assets/components and all historical receipts remain intact. Full private recovery recheck after implementation matches the original Argon workspace: 22,763 regular files / 772 symlinks, bytes/modes/links/HEAD/index/status, zero worktree differences and parent 0700. Recovery path stays private. Selected source 54 paths, Argon ledger 69 and assets twelve remain intact; file decisions 92; all 38 owner statuses PENDING.
+
+---
+
 ## Household row31 source identity - 2026-10-24 JST
 
 Implementation `d9107856888cafd2dc3d0462f4a03595c7b72fa4` on `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`. Original Argon workspace is unchanged; full private snapshot recheck matches 22,763 regular files / 772 symlinks, bytes/modes/links/HEAD/index/status with zero worktree differences and parent permissions 0700.

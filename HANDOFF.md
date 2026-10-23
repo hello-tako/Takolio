@@ -1,3 +1,21 @@
+# Takolio V2 settings continuation handoff - 2026-10-24 JST
+
+Status: `LOCAL_SETTINGS_PENDING_VERIFIED`. Implementation `b7a32b69f19f06bac4dbf7bc6d61ecd3bcce1969` on `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Fresh read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Actual changes: Existing UI08 SettingsPage retained. Reproduced duplicate PWA prompt calls while userChoice is pending; added one installing state/guard and existing Button isLoading. Cache/outbox handlers, route, copy, components, CSS and assets unchanged. No backend, auth/security, payments, stock authority, Week compatibility, schema, dependencies or infrastructure change.
+
+Browser 6/6 in 51.4s; focused 76 unit + 104 integration tests; targeted ESLint, lint/types, local migrations, default and paired builds PASS. Full suite PARTIAL: 410/412 files, 9,163/9,168 tests in 200.86s; five inherited encoded-space CLI failures, no timeout. Audit retains inherited 1 low / 6 moderate / 1 high, including Vite GHSA-587h-7wmj-h5pm.
+
+268 bound payloads: 128 PNG, 128 axe JSON, twelve summaries. All 64 final axe reports show zero violations and incomplete contrast; 232 controls measured (including disabled actions). Four viewport/text configs across two contexts and eight states. Accepted/dismissed calls change from two to one with pending action disabled. CacheStorage clears while private localStorage data/outbox and pending shopping projection survive reload; server inventory/shopping snapshots equal. Two automatic queue POST retries per context stay aborted; zero writes is not claimed.
+
+Full private recovery recheck after implementation matches the original Argon workspace: 22,763 regular files / 772 symlinks, bytes/modes/links/HEAD/index/status, zero worktree differences and parent 0700. Recovery path stays private. Selected source 54 paths, Argon ledger 69 and assets twelve remain intact; file decisions 92; all 38 owner statuses PENDING.
+
+Synthetic PWA events/choice/rejection/standalone test client handling only; service workers blocked. Cache success uses actual CacheStorage; deletion denial is shaped. Root-font scaling/reduced-motion Chromium does not certify native installation, physical devices, OS zoom, screen readers, full Week-OFF, live providers, performance or production. Full-page capture follows focus/trial scrolling, so fixed navigation/skip-link placement is not a pixel acceptance claim.
+
+Reports/commands/source/log hashes: `docs/takolio-v2/takeover/UI_C7_SETTINGS.md`, `evidence/settings-checks.json`, `TEST_BASELINES.md`. Initial harness failures, corrected product baseline and final run are distinguished; same corrected harness bytes used before/after. Evidence/protected-main/credential/whitespace/tail validation PASS. Next bounded packet: row33 food preferences source/API/browser baseline under UI08, preserving wire fields, allergy/diet/exclusion semantics, household isolation and persistence. Owner/manual accessibility/device review remains open. No push, PR publication, merge, deploy, remote migration or production action.
+
+---
+
 # Takolio V2 household continuation handoff - 2026-10-24 JST
 
 Evidence wording correction: retained household `after.log` records three test definitions across two browser contexts, 6/6 executions in 19.1s. Final frozen run remains 6/6 in 19.3s. Only receipt/report wording changed; source and log hashes remain intact. Evidence/protected-path/whitespace validation rerun before this documentation-only checkpoint. Next active packet remains row32 Settings.

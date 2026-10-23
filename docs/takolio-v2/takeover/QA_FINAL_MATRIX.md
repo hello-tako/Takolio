@@ -1,3 +1,22 @@
+# Settings row32 QA - 2026-10-24 JST
+
+| Area | Actual status / evidence |
+|---|---|
+| PWA pending | PASS_BOUNDED; baseline accepted/dismissed call twice; final disabled action and one call |
+| PWA outcomes | PASS_SYNTHETIC; accepted/dismissed/rejected consume prompt, then manual help; shaped standalone hides action |
+| Manual help | PASS_BOUNDED; initial cancel focus, Escape return focus, iPhone/Android copy and reachable controls |
+| CacheStorage | PASS_BOUNDED; actual clear; gated pending; shaped deletion error retains cache/data without false success |
+| Private data | PASS_BOUNDED; actual offline queue and private cache unchanged through clear/reload; pending shopping row retained |
+| Server data | PASS_BOUNDED; stock/shopping snapshots equal; two automatic POST retries remain aborted |
+| Reflow / assets | PASS_BOUNDED; 64 after configs, requested widths 320/390/1440 and text200/short viewport; 232 measured controls |
+| Accessibility / owner | OPEN_MANUAL; 64 zero-violation axe reports retain incomplete contrast; owner PENDING |
+| Full suite / audit | PARTIAL; 9,163/9,168, five inherited CLI path failures; inherited 1 low/6 moderate/1 high |
+| Native/device/live | NOT_CERTIFIED; service workers blocked and synthetic PWA provider; see detailed limits |
+
+Implementation `b7a32b69f19f06bac4dbf7bc6d61ecd3bcce1969` on `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Fresh read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`. Detailed evidence/commands: `UI_C7_SETTINGS.md`, `evidence/settings-checks.json`. Next bounded packet: row33 food preferences source/API/browser baseline under UI08, preserving wire fields, allergy/diet/exclusion semantics, household isolation and persistence. Owner/manual accessibility/device review remains open. No push, PR publication, merge, deploy, remote migration or production action.
+
+---
+
 # Household row31 QA update - 2026-10-24 JST
 
 | Area | Status | Evidence / limit |

@@ -1,0 +1,2139 @@
+{
+  "base_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "implementation_commit": "b7a32b69f19f06bac4dbf7bc6d61ecd3bcce1969",
+  "scope": "Existing UI08 app settings. Corrected identical pre/post harness; four viewport/text configs in mobile/desktop contexts. Real local queued shopping write remains aborted during reload; actual CacheStorage success and shaped failure. Synthetic PWA event/userChoice/standalone only; no native installation or service-worker certification. Synthetic pending payloads/IDs removed from published summaries with equality/count/hash retained.",
+  "entries": [
+    {
+      "path": "before/desktop-1440/axe-install-error-1440x900-text1.json",
+      "bytes": 912,
+      "sha256": "21fe5118acb0b79ff19d1b32be16c83937699dddfc0c8db06dad06db42836b9b",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/axe-install-error-1440x900-text1.json",
+      "raw_sha256": "21fe5118acb0b79ff19d1b32be16c83937699dddfc0c8db06dad06db42836b9b"
+    },
+    {
+      "path": "before/desktop-1440/axe-install-error-320x420-text2.json",
+      "bytes": 909,
+      "sha256": "22367241ae4894b81e8004fc26751fad952ac7fdec698869e76d92615cb2bbac",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/axe-install-error-320x420-text2.json",
+      "raw_sha256": "22367241ae4894b81e8004fc26751fad952ac7fdec698869e76d92615cb2bbac"
+    },
+    {
+      "path": "before/desktop-1440/axe-install-error-320x568-text1.json",
+      "bytes": 909,
+      "sha256": "52e687b77783be04c18655a6de2bc1f0fea271eafc7110f59896c325725b9156",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/axe-install-error-320x568-text1.json",
+      "raw_sha256": "52e687b77783be04c18655a6de2bc1f0fea271eafc7110f59896c325725b9156"
+    },
+    {
+      "path": "before/desktop-1440/axe-install-error-390x844-text1.json",
+      "bytes": 909,
+      "sha256": "c85884b0f4ae4cf41c52d7377fcb2ffe9ddc14fb1bb77fc38e7939798e2aadd8",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/axe-install-error-390x844-text1.json",
+      "raw_sha256": "c85884b0f4ae4cf41c52d7377fcb2ffe9ddc14fb1bb77fc38e7939798e2aadd8"
+    },
+    {
+      "path": "before/desktop-1440/axe-install-pending-1440x900-text1.json",
+      "bytes": 914,
+      "sha256": "2c17028103088c6892518ed7d3eefefb0de79f01bfeb2624d263a74d0ded6752",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/axe-install-pending-1440x900-text1.json",
+      "raw_sha256": "2c17028103088c6892518ed7d3eefefb0de79f01bfeb2624d263a74d0ded6752"
+    },
+    {
+      "path": "before/desktop-1440/axe-install-pending-320x420-text2.json",
+      "bytes": 911,
+      "sha256": "38cfd11ed3a94cf3f298c128485e6eb4fac1dbbe0468215268b052ed4d770147",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/axe-install-pending-320x420-text2.json",
+      "raw_sha256": "38cfd11ed3a94cf3f298c128485e6eb4fac1dbbe0468215268b052ed4d770147"
+    },
+    {
+      "path": "before/desktop-1440/axe-install-pending-320x568-text1.json",
+      "bytes": 911,
+      "sha256": "00719a44795689103078ca4a19c6f32ca3ad419d4b6289b94e5f913d61fcfa8b",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/axe-install-pending-320x568-text1.json",
+      "raw_sha256": "00719a44795689103078ca4a19c6f32ca3ad419d4b6289b94e5f913d61fcfa8b"
+    },
+    {
+      "path": "before/desktop-1440/axe-install-pending-390x844-text1.json",
+      "bytes": 911,
+      "sha256": "26d5965af1e70bd3880e8754283b1b655d01432ce8c8024a97a44fd0345948a9",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/axe-install-pending-390x844-text1.json",
+      "raw_sha256": "26d5965af1e70bd3880e8754283b1b655d01432ce8c8024a97a44fd0345948a9"
+    },
+    {
+      "path": "before/desktop-1440/axe-standalone-1440x900-text1.json",
+      "bytes": 775,
+      "sha256": "56144c58db09e82acad8813e97122ea75be0733f0355d45c1d98bb3b838198fe",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/axe-standalone-1440x900-text1.json",
+      "raw_sha256": "56144c58db09e82acad8813e97122ea75be0733f0355d45c1d98bb3b838198fe"
+    },
+    {
+      "path": "before/desktop-1440/axe-standalone-320x420-text2.json",
+      "bytes": 772,
+      "sha256": "c048cafe9f73b339b31631c1e4a44bf05c468f854b093602f016daed27b4c920",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/axe-standalone-320x420-text2.json",
+      "raw_sha256": "c048cafe9f73b339b31631c1e4a44bf05c468f854b093602f016daed27b4c920"
+    },
+    {
+      "path": "before/desktop-1440/axe-standalone-320x568-text1.json",
+      "bytes": 772,
+      "sha256": "51c39c5afbaa436573a76e258821e359527eb463de3c283c61429ca2c456f427",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/axe-standalone-320x568-text1.json",
+      "raw_sha256": "51c39c5afbaa436573a76e258821e359527eb463de3c283c61429ca2c456f427"
+    },
+    {
+      "path": "before/desktop-1440/axe-standalone-390x844-text1.json",
+      "bytes": 772,
+      "sha256": "87c41f5556eacb6ebd18d05c8122491783dc5eccdce1ac46329174a8f7cef7cb",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/axe-standalone-390x844-text1.json",
+      "raw_sha256": "87c41f5556eacb6ebd18d05c8122491783dc5eccdce1ac46329174a8f7cef7cb"
+    },
+    {
+      "path": "before/desktop-1440/install-error-1440x900-text1.png",
+      "bytes": 137138,
+      "sha256": "f72401b6f21bad83b4d2db8697a170c0707cf4419f56190dd55a275d6a8619ec",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/install-error-1440x900-text1.png",
+      "raw_sha256": "f72401b6f21bad83b4d2db8697a170c0707cf4419f56190dd55a275d6a8619ec",
+      "width": 1440,
+      "height": 952
+    },
+    {
+      "path": "before/desktop-1440/install-error-320x420-text2.png",
+      "bytes": 133169,
+      "sha256": "7860994af0e2a0b4d10dc448ceb0389a6a81371803410801eb90d120dd4402d6",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/install-error-320x420-text2.png",
+      "raw_sha256": "7860994af0e2a0b4d10dc448ceb0389a6a81371803410801eb90d120dd4402d6",
+      "width": 320,
+      "height": 2035
+    },
+    {
+      "path": "before/desktop-1440/install-error-320x568-text1.png",
+      "bytes": 93175,
+      "sha256": "8d69eea886bb1cc360901fac421de99fb2878f1d0073f0a5c7f989b9985ab7ca",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/install-error-320x568-text1.png",
+      "raw_sha256": "8d69eea886bb1cc360901fac421de99fb2878f1d0073f0a5c7f989b9985ab7ca",
+      "width": 320,
+      "height": 1203
+    },
+    {
+      "path": "before/desktop-1440/install-error-390x844-text1.png",
+      "bytes": 79537,
+      "sha256": "e352f483ae95a3bb7c08a748768f5292653ce15ad4bb6eda5e949394ddb44ec2",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/install-error-390x844-text1.png",
+      "raw_sha256": "e352f483ae95a3bb7c08a748768f5292653ce15ad4bb6eda5e949394ddb44ec2",
+      "width": 390,
+      "height": 1130
+    },
+    {
+      "path": "before/desktop-1440/install-pending-1440x900-text1.png",
+      "bytes": 130581,
+      "sha256": "0ef1f39d1f60a5a54e93572fefeeb2b21ee63968e91b0ef0308a13b67ac0a639",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/install-pending-1440x900-text1.png",
+      "raw_sha256": "0ef1f39d1f60a5a54e93572fefeeb2b21ee63968e91b0ef0308a13b67ac0a639",
+      "width": 1440,
+      "height": 912
+    },
+    {
+      "path": "before/desktop-1440/install-pending-320x420-text2.png",
+      "bytes": 109942,
+      "sha256": "4ed9cf7b535c594f2861155d2511cf9299743510bffc37a4af61e1e3a712f299",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/install-pending-320x420-text2.png",
+      "raw_sha256": "4ed9cf7b535c594f2861155d2511cf9299743510bffc37a4af61e1e3a712f299",
+      "width": 320,
+      "height": 1972
+    },
+    {
+      "path": "before/desktop-1440/install-pending-320x568-text1.png",
+      "bytes": 76815,
+      "sha256": "f41f14cc6cf5fc45b7a2f680fceef5ebfb619d4f5c072297fc6fd033d143a3e7",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/install-pending-320x568-text1.png",
+      "raw_sha256": "f41f14cc6cf5fc45b7a2f680fceef5ebfb619d4f5c072297fc6fd033d143a3e7",
+      "width": 320,
+      "height": 1140
+    },
+    {
+      "path": "before/desktop-1440/install-pending-390x844-text1.png",
+      "bytes": 74484,
+      "sha256": "7b62f0d26469539512ab1857c19318843dd3e899c11b7f5869e0821ed21be09e",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/install-pending-390x844-text1.png",
+      "raw_sha256": "7b62f0d26469539512ab1857c19318843dd3e899c11b7f5869e0821ed21be09e",
+      "width": 390,
+      "height": 1067
+    },
+    {
+      "path": "before/desktop-1440/pwa-summary.json",
+      "bytes": 11266,
+      "sha256": "24d7141187a17b8a3efaf5c4aa6fb14898583f817deb7152c72b602b4ed62de6",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/pwa-summary.json",
+      "raw_sha256": "24d7141187a17b8a3efaf5c4aa6fb14898583f817deb7152c72b602b4ed62de6"
+    },
+    {
+      "path": "before/desktop-1440/standalone-1440x900-text1.png",
+      "bytes": 90291,
+      "sha256": "4989e008643a8ecac867b090872de757c9eb4d169797514796af7141bbfa387f",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/standalone-1440x900-text1.png",
+      "raw_sha256": "4989e008643a8ecac867b090872de757c9eb4d169797514796af7141bbfa387f",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "path": "before/desktop-1440/standalone-320x420-text2.png",
+      "bytes": 111785,
+      "sha256": "7ae094058fa37f0c0f9a0786163cae32824b896d9f7c44ce5fef5233f63c09d6",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/standalone-320x420-text2.png",
+      "raw_sha256": "7ae094058fa37f0c0f9a0786163cae32824b896d9f7c44ce5fef5233f63c09d6",
+      "width": 320,
+      "height": 1729
+    },
+    {
+      "path": "before/desktop-1440/standalone-320x568-text1.png",
+      "bytes": 68574,
+      "sha256": "ba7f6fc89512ce8eb8a8963b1895ace8428cbfc5e8e321d47231628b62751ac8",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/standalone-320x568-text1.png",
+      "raw_sha256": "ba7f6fc89512ce8eb8a8963b1895ace8428cbfc5e8e321d47231628b62751ac8",
+      "width": 320,
+      "height": 1035
+    },
+    {
+      "path": "before/desktop-1440/standalone-390x844-text1.png",
+      "bytes": 68165,
+      "sha256": "93cb2018c77c138d46b4047004be139222275859dde3f979cd289bb8ce7d6f45",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/standalone-390x844-text1.png",
+      "raw_sha256": "93cb2018c77c138d46b4047004be139222275859dde3f979cd289bb8ce7d6f45",
+      "width": 390,
+      "height": 985
+    },
+    {
+      "path": "before/mobile-390/axe-install-error-1440x900-text1.json",
+      "bytes": 912,
+      "sha256": "21fe5118acb0b79ff19d1b32be16c83937699dddfc0c8db06dad06db42836b9b",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/axe-install-error-1440x900-text1.json",
+      "raw_sha256": "21fe5118acb0b79ff19d1b32be16c83937699dddfc0c8db06dad06db42836b9b"
+    },
+    {
+      "path": "before/mobile-390/axe-install-error-320x420-text2.json",
+      "bytes": 909,
+      "sha256": "22367241ae4894b81e8004fc26751fad952ac7fdec698869e76d92615cb2bbac",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/axe-install-error-320x420-text2.json",
+      "raw_sha256": "22367241ae4894b81e8004fc26751fad952ac7fdec698869e76d92615cb2bbac"
+    },
+    {
+      "path": "before/mobile-390/axe-install-error-320x568-text1.json",
+      "bytes": 909,
+      "sha256": "52e687b77783be04c18655a6de2bc1f0fea271eafc7110f59896c325725b9156",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/axe-install-error-320x568-text1.json",
+      "raw_sha256": "52e687b77783be04c18655a6de2bc1f0fea271eafc7110f59896c325725b9156"
+    },
+    {
+      "path": "before/mobile-390/axe-install-error-390x844-text1.json",
+      "bytes": 909,
+      "sha256": "c85884b0f4ae4cf41c52d7377fcb2ffe9ddc14fb1bb77fc38e7939798e2aadd8",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/axe-install-error-390x844-text1.json",
+      "raw_sha256": "c85884b0f4ae4cf41c52d7377fcb2ffe9ddc14fb1bb77fc38e7939798e2aadd8"
+    },
+    {
+      "path": "before/mobile-390/axe-install-pending-1440x900-text1.json",
+      "bytes": 914,
+      "sha256": "2c17028103088c6892518ed7d3eefefb0de79f01bfeb2624d263a74d0ded6752",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/axe-install-pending-1440x900-text1.json",
+      "raw_sha256": "2c17028103088c6892518ed7d3eefefb0de79f01bfeb2624d263a74d0ded6752"
+    },
+    {
+      "path": "before/mobile-390/axe-install-pending-320x420-text2.json",
+      "bytes": 911,
+      "sha256": "38cfd11ed3a94cf3f298c128485e6eb4fac1dbbe0468215268b052ed4d770147",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/axe-install-pending-320x420-text2.json",
+      "raw_sha256": "38cfd11ed3a94cf3f298c128485e6eb4fac1dbbe0468215268b052ed4d770147"
+    },
+    {
+      "path": "before/mobile-390/axe-install-pending-320x568-text1.json",
+      "bytes": 911,
+      "sha256": "00719a44795689103078ca4a19c6f32ca3ad419d4b6289b94e5f913d61fcfa8b",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/axe-install-pending-320x568-text1.json",
+      "raw_sha256": "00719a44795689103078ca4a19c6f32ca3ad419d4b6289b94e5f913d61fcfa8b"
+    },
+    {
+      "path": "before/mobile-390/axe-install-pending-390x844-text1.json",
+      "bytes": 911,
+      "sha256": "26d5965af1e70bd3880e8754283b1b655d01432ce8c8024a97a44fd0345948a9",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/axe-install-pending-390x844-text1.json",
+      "raw_sha256": "26d5965af1e70bd3880e8754283b1b655d01432ce8c8024a97a44fd0345948a9"
+    },
+    {
+      "path": "before/mobile-390/axe-standalone-1440x900-text1.json",
+      "bytes": 775,
+      "sha256": "56144c58db09e82acad8813e97122ea75be0733f0355d45c1d98bb3b838198fe",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/axe-standalone-1440x900-text1.json",
+      "raw_sha256": "56144c58db09e82acad8813e97122ea75be0733f0355d45c1d98bb3b838198fe"
+    },
+    {
+      "path": "before/mobile-390/axe-standalone-320x420-text2.json",
+      "bytes": 772,
+      "sha256": "c048cafe9f73b339b31631c1e4a44bf05c468f854b093602f016daed27b4c920",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/axe-standalone-320x420-text2.json",
+      "raw_sha256": "c048cafe9f73b339b31631c1e4a44bf05c468f854b093602f016daed27b4c920"
+    },
+    {
+      "path": "before/mobile-390/axe-standalone-320x568-text1.json",
+      "bytes": 772,
+      "sha256": "51c39c5afbaa436573a76e258821e359527eb463de3c283c61429ca2c456f427",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/axe-standalone-320x568-text1.json",
+      "raw_sha256": "51c39c5afbaa436573a76e258821e359527eb463de3c283c61429ca2c456f427"
+    },
+    {
+      "path": "before/mobile-390/axe-standalone-390x844-text1.json",
+      "bytes": 772,
+      "sha256": "87c41f5556eacb6ebd18d05c8122491783dc5eccdce1ac46329174a8f7cef7cb",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/axe-standalone-390x844-text1.json",
+      "raw_sha256": "87c41f5556eacb6ebd18d05c8122491783dc5eccdce1ac46329174a8f7cef7cb"
+    },
+    {
+      "path": "before/mobile-390/install-error-1440x900-text1.png",
+      "bytes": 139895,
+      "sha256": "c4dffb71b05ededcca848835bdeed5bf394dc7eebf20665da4b29936400c61d5",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/install-error-1440x900-text1.png",
+      "raw_sha256": "c4dffb71b05ededcca848835bdeed5bf394dc7eebf20665da4b29936400c61d5",
+      "width": 1440,
+      "height": 952
+    },
+    {
+      "path": "before/mobile-390/install-error-320x420-text2.png",
+      "bytes": 133169,
+      "sha256": "7860994af0e2a0b4d10dc448ceb0389a6a81371803410801eb90d120dd4402d6",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/install-error-320x420-text2.png",
+      "raw_sha256": "7860994af0e2a0b4d10dc448ceb0389a6a81371803410801eb90d120dd4402d6",
+      "width": 320,
+      "height": 2035
+    },
+    {
+      "path": "before/mobile-390/install-error-320x568-text1.png",
+      "bytes": 93164,
+      "sha256": "b27816666811ceb610564152c617920282f18700eec8385a184783cc1eae446f",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/install-error-320x568-text1.png",
+      "raw_sha256": "b27816666811ceb610564152c617920282f18700eec8385a184783cc1eae446f",
+      "width": 320,
+      "height": 1203
+    },
+    {
+      "path": "before/mobile-390/install-error-390x844-text1.png",
+      "bytes": 78557,
+      "sha256": "4c6fdf75b7ac3d9bca5bfd7f7a23dca9715f4244ef1908f999476f33a98791b9",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/install-error-390x844-text1.png",
+      "raw_sha256": "4c6fdf75b7ac3d9bca5bfd7f7a23dca9715f4244ef1908f999476f33a98791b9",
+      "width": 390,
+      "height": 1130
+    },
+    {
+      "path": "before/mobile-390/install-pending-1440x900-text1.png",
+      "bytes": 130576,
+      "sha256": "07e1cb1fcd21110608adafc99b9364f1bd3a620cb1ccaf25888bb3fbd7a355e8",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/install-pending-1440x900-text1.png",
+      "raw_sha256": "07e1cb1fcd21110608adafc99b9364f1bd3a620cb1ccaf25888bb3fbd7a355e8",
+      "width": 1440,
+      "height": 912
+    },
+    {
+      "path": "before/mobile-390/install-pending-320x420-text2.png",
+      "bytes": 109942,
+      "sha256": "4ed9cf7b535c594f2861155d2511cf9299743510bffc37a4af61e1e3a712f299",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/install-pending-320x420-text2.png",
+      "raw_sha256": "4ed9cf7b535c594f2861155d2511cf9299743510bffc37a4af61e1e3a712f299",
+      "width": 320,
+      "height": 1972
+    },
+    {
+      "path": "before/mobile-390/install-pending-320x568-text1.png",
+      "bytes": 76815,
+      "sha256": "f41f14cc6cf5fc45b7a2f680fceef5ebfb619d4f5c072297fc6fd033d143a3e7",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/install-pending-320x568-text1.png",
+      "raw_sha256": "f41f14cc6cf5fc45b7a2f680fceef5ebfb619d4f5c072297fc6fd033d143a3e7",
+      "width": 320,
+      "height": 1140
+    },
+    {
+      "path": "before/mobile-390/install-pending-390x844-text1.png",
+      "bytes": 78371,
+      "sha256": "5e1549c115325d826410c4f936a28314891210cec0cf1f06f4c1219d6da81360",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/install-pending-390x844-text1.png",
+      "raw_sha256": "5e1549c115325d826410c4f936a28314891210cec0cf1f06f4c1219d6da81360",
+      "width": 390,
+      "height": 1067
+    },
+    {
+      "path": "before/mobile-390/pwa-summary.json",
+      "bytes": 11266,
+      "sha256": "24d7141187a17b8a3efaf5c4aa6fb14898583f817deb7152c72b602b4ed62de6",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/pwa-summary.json",
+      "raw_sha256": "24d7141187a17b8a3efaf5c4aa6fb14898583f817deb7152c72b602b4ed62de6"
+    },
+    {
+      "path": "before/mobile-390/standalone-1440x900-text1.png",
+      "bytes": 90291,
+      "sha256": "4989e008643a8ecac867b090872de757c9eb4d169797514796af7141bbfa387f",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/standalone-1440x900-text1.png",
+      "raw_sha256": "4989e008643a8ecac867b090872de757c9eb4d169797514796af7141bbfa387f",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "path": "before/mobile-390/standalone-320x420-text2.png",
+      "bytes": 111785,
+      "sha256": "7ae094058fa37f0c0f9a0786163cae32824b896d9f7c44ce5fef5233f63c09d6",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/standalone-320x420-text2.png",
+      "raw_sha256": "7ae094058fa37f0c0f9a0786163cae32824b896d9f7c44ce5fef5233f63c09d6",
+      "width": 320,
+      "height": 1729
+    },
+    {
+      "path": "before/mobile-390/standalone-320x568-text1.png",
+      "bytes": 68574,
+      "sha256": "ba7f6fc89512ce8eb8a8963b1895ace8428cbfc5e8e321d47231628b62751ac8",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/standalone-320x568-text1.png",
+      "raw_sha256": "ba7f6fc89512ce8eb8a8963b1895ace8428cbfc5e8e321d47231628b62751ac8",
+      "width": 320,
+      "height": 1035
+    },
+    {
+      "path": "before/mobile-390/standalone-390x844-text1.png",
+      "bytes": 70686,
+      "sha256": "7ec27161ffc47d8faefd73f498490f7f063a89bc17ba784db8106f76cd1e87ef",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/standalone-390x844-text1.png",
+      "raw_sha256": "7ec27161ffc47d8faefd73f498490f7f063a89bc17ba784db8106f76cd1e87ef",
+      "width": 390,
+      "height": 985
+    },
+    {
+      "path": "before/desktop-1440/after-clear-1440x900-text1.png",
+      "bytes": 133007,
+      "sha256": "50cca8404a1283408927bf791daaf7e502a052a38437009d171a26f9a74448b9",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/after-clear-1440x900-text1.png",
+      "raw_sha256": "50cca8404a1283408927bf791daaf7e502a052a38437009d171a26f9a74448b9",
+      "width": 1440,
+      "height": 986
+    },
+    {
+      "path": "before/desktop-1440/after-clear-320x420-text2.png",
+      "bytes": 132522,
+      "sha256": "cc77cb249811b0bfc5adaf2044c1c0fc3bf52480e82def259897f66f6e6f57a2",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/after-clear-320x420-text2.png",
+      "raw_sha256": "cc77cb249811b0bfc5adaf2044c1c0fc3bf52480e82def259897f66f6e6f57a2",
+      "width": 320,
+      "height": 2243
+    },
+    {
+      "path": "before/desktop-1440/after-clear-320x568-text1.png",
+      "bytes": 89483,
+      "sha256": "8ff570c7f35611ac16d311eb9de933dd77dc07163c7b6ce6b112ab46f2f67ae3",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/after-clear-320x568-text1.png",
+      "raw_sha256": "8ff570c7f35611ac16d311eb9de933dd77dc07163c7b6ce6b112ab46f2f67ae3",
+      "width": 320,
+      "height": 1223
+    },
+    {
+      "path": "before/desktop-1440/after-clear-390x844-text1.png",
+      "bytes": 86895,
+      "sha256": "3ae6dd543ad44a3978b14177faeef0579ce708ae75424a6cc92eee615183f2b8",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/after-clear-390x844-text1.png",
+      "raw_sha256": "3ae6dd543ad44a3978b14177faeef0579ce708ae75424a6cc92eee615183f2b8",
+      "width": 390,
+      "height": 1141
+    },
+    {
+      "path": "before/desktop-1440/axe-after-clear-1440x900-text1.json",
+      "bytes": 910,
+      "sha256": "286e57c953a80daf09b943ce6b5728ea174cfb68f666b7601cf51c026911654f",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-after-clear-1440x900-text1.json",
+      "raw_sha256": "286e57c953a80daf09b943ce6b5728ea174cfb68f666b7601cf51c026911654f"
+    },
+    {
+      "path": "before/desktop-1440/axe-after-clear-320x420-text2.json",
+      "bytes": 907,
+      "sha256": "188a77302626102a0752b860a032aebb9eb1c4b8527e6fdbe1e9a7f7539f9c1b",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-after-clear-320x420-text2.json",
+      "raw_sha256": "188a77302626102a0752b860a032aebb9eb1c4b8527e6fdbe1e9a7f7539f9c1b"
+    },
+    {
+      "path": "before/desktop-1440/axe-after-clear-320x568-text1.json",
+      "bytes": 907,
+      "sha256": "c1d63a71f8da14d1db96b9c67c77ab3099fd7435245df367b36e323e35b3444a",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-after-clear-320x568-text1.json",
+      "raw_sha256": "c1d63a71f8da14d1db96b9c67c77ab3099fd7435245df367b36e323e35b3444a"
+    },
+    {
+      "path": "before/desktop-1440/axe-after-clear-390x844-text1.json",
+      "bytes": 907,
+      "sha256": "54ad1caae86fd440b3a0682c5e0ac3c8993442f2e039efe71da9e17e976ea8b1",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-after-clear-390x844-text1.json",
+      "raw_sha256": "54ad1caae86fd440b3a0682c5e0ac3c8993442f2e039efe71da9e17e976ea8b1"
+    },
+    {
+      "path": "before/desktop-1440/axe-before-clear-1440x900-text1.json",
+      "bytes": 911,
+      "sha256": "6169c9359052750fe5be54d92e99f36297dadfba580e795b66d084e935da0879",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-before-clear-1440x900-text1.json",
+      "raw_sha256": "6169c9359052750fe5be54d92e99f36297dadfba580e795b66d084e935da0879"
+    },
+    {
+      "path": "before/desktop-1440/axe-before-clear-320x420-text2.json",
+      "bytes": 908,
+      "sha256": "99d9ac56f9e902b97ddd805f272c23e20695100907ef20d4c07cc313374c8b8f",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-before-clear-320x420-text2.json",
+      "raw_sha256": "99d9ac56f9e902b97ddd805f272c23e20695100907ef20d4c07cc313374c8b8f"
+    },
+    {
+      "path": "before/desktop-1440/axe-before-clear-320x568-text1.json",
+      "bytes": 908,
+      "sha256": "3f04858fb39e17733f9a53126040d250bfa5de1c65393eb12bc176985db1ff88",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-before-clear-320x568-text1.json",
+      "raw_sha256": "3f04858fb39e17733f9a53126040d250bfa5de1c65393eb12bc176985db1ff88"
+    },
+    {
+      "path": "before/desktop-1440/axe-before-clear-390x844-text1.json",
+      "bytes": 908,
+      "sha256": "e1b9d97c9cbf6805e220645f7ea002f72e025a37d89051b27467bd66e1b79264",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-before-clear-390x844-text1.json",
+      "raw_sha256": "e1b9d97c9cbf6805e220645f7ea002f72e025a37d89051b27467bd66e1b79264"
+    },
+    {
+      "path": "before/desktop-1440/axe-cache-error-1440x900-text1.json",
+      "bytes": 910,
+      "sha256": "91a001c8e80ee13414653636959ef207720fdb0dc7a9691f05be183af4388c4a",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-cache-error-1440x900-text1.json",
+      "raw_sha256": "91a001c8e80ee13414653636959ef207720fdb0dc7a9691f05be183af4388c4a"
+    },
+    {
+      "path": "before/desktop-1440/axe-cache-error-320x420-text2.json",
+      "bytes": 907,
+      "sha256": "69b2715f5e8cc5a329fa234371e16545515fac64bda4dd1ddc50f5e6825f94c1",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-cache-error-320x420-text2.json",
+      "raw_sha256": "69b2715f5e8cc5a329fa234371e16545515fac64bda4dd1ddc50f5e6825f94c1"
+    },
+    {
+      "path": "before/desktop-1440/axe-cache-error-320x568-text1.json",
+      "bytes": 907,
+      "sha256": "2cca13777203fb7b1b6756f8a62c48e591a14b413241254df9a8f3fae49f8af9",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-cache-error-320x568-text1.json",
+      "raw_sha256": "2cca13777203fb7b1b6756f8a62c48e591a14b413241254df9a8f3fae49f8af9"
+    },
+    {
+      "path": "before/desktop-1440/axe-cache-error-390x844-text1.json",
+      "bytes": 907,
+      "sha256": "40de6def05d519d5dcd62efd22dae6ebae487c0f5032e08865cc949322041c29",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-cache-error-390x844-text1.json",
+      "raw_sha256": "40de6def05d519d5dcd62efd22dae6ebae487c0f5032e08865cc949322041c29"
+    },
+    {
+      "path": "before/desktop-1440/axe-clearing-cache-1440x900-text1.json",
+      "bytes": 895,
+      "sha256": "48b8e9d7a16cfc0258dede3ebe7696b76b2398a9e6993956ab7273f862ac5adc",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-clearing-cache-1440x900-text1.json",
+      "raw_sha256": "48b8e9d7a16cfc0258dede3ebe7696b76b2398a9e6993956ab7273f862ac5adc"
+    },
+    {
+      "path": "before/desktop-1440/axe-clearing-cache-320x420-text2.json",
+      "bytes": 892,
+      "sha256": "5501e2edb225234ddf6e62bdef9c7c941b9d47454f202ab96cea6feb506ee938",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-clearing-cache-320x420-text2.json",
+      "raw_sha256": "5501e2edb225234ddf6e62bdef9c7c941b9d47454f202ab96cea6feb506ee938"
+    },
+    {
+      "path": "before/desktop-1440/axe-clearing-cache-320x568-text1.json",
+      "bytes": 892,
+      "sha256": "128d55adfd8f1d7c812a6257ef50f8f020231a3a8152355034e5c099f9d5558e",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-clearing-cache-320x568-text1.json",
+      "raw_sha256": "128d55adfd8f1d7c812a6257ef50f8f020231a3a8152355034e5c099f9d5558e"
+    },
+    {
+      "path": "before/desktop-1440/axe-clearing-cache-390x844-text1.json",
+      "bytes": 892,
+      "sha256": "2212b0691848e4fe022a73900cbc11838932564c3681b09a6fb89012aa0a85da",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-clearing-cache-390x844-text1.json",
+      "raw_sha256": "2212b0691848e4fe022a73900cbc11838932564c3681b09a6fb89012aa0a85da"
+    },
+    {
+      "path": "before/desktop-1440/before-clear-1440x900-text1.png",
+      "bytes": 133630,
+      "sha256": "28318b54cfa5c87554e187f1d9b4adc3b31bd38ae15a26c7219da5c988fc2833",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/before-clear-1440x900-text1.png",
+      "raw_sha256": "28318b54cfa5c87554e187f1d9b4adc3b31bd38ae15a26c7219da5c988fc2833",
+      "width": 1440,
+      "height": 952
+    },
+    {
+      "path": "before/desktop-1440/before-clear-320x420-text2.png",
+      "bytes": 115568,
+      "sha256": "d6d2ca5cc7ce8d881cd1356d704e00e3f0d26c0431063dd68fe52cbcf9ff0620",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/before-clear-320x420-text2.png",
+      "raw_sha256": "d6d2ca5cc7ce8d881cd1356d704e00e3f0d26c0431063dd68fe52cbcf9ff0620",
+      "width": 320,
+      "height": 2196
+    },
+    {
+      "path": "before/desktop-1440/before-clear-320x568-text1.png",
+      "bytes": 77407,
+      "sha256": "f9fe610549185bf3249c993c851c0b1a27f0ca125e654a3d6e6862461233cd63",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/before-clear-320x568-text1.png",
+      "raw_sha256": "f9fe610549185bf3249c993c851c0b1a27f0ca125e654a3d6e6862461233cd63",
+      "width": 320,
+      "height": 1188
+    },
+    {
+      "path": "before/desktop-1440/before-clear-390x844-text1.png",
+      "bytes": 77965,
+      "sha256": "9b535108c9faef5c70aaabe3c873e17b4509fbc3679aa3f302899e5c5702a3b6",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/before-clear-390x844-text1.png",
+      "raw_sha256": "9b535108c9faef5c70aaabe3c873e17b4509fbc3679aa3f302899e5c5702a3b6",
+      "width": 390,
+      "height": 1107
+    },
+    {
+      "path": "before/desktop-1440/cache-error-1440x900-text1.png",
+      "bytes": 139342,
+      "sha256": "9fc2face3307844b6b08b38e7024c9da32484ac82b956a070070ed29cd8f642e",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/cache-error-1440x900-text1.png",
+      "raw_sha256": "9fc2face3307844b6b08b38e7024c9da32484ac82b956a070070ed29cd8f642e",
+      "width": 1440,
+      "height": 992
+    },
+    {
+      "path": "before/desktop-1440/cache-error-320x420-text2.png",
+      "bytes": 138681,
+      "sha256": "cfcfae6b04f1c3fe840332557f3348c424efdc8f1ed238bc29282a59fca3d7a3",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/cache-error-320x420-text2.png",
+      "raw_sha256": "cfcfae6b04f1c3fe840332557f3348c424efdc8f1ed238bc29282a59fca3d7a3",
+      "width": 320,
+      "height": 2259
+    },
+    {
+      "path": "before/desktop-1440/cache-error-320x568-text1.png",
+      "bytes": 98019,
+      "sha256": "96299824752dd961644e03118bbec49fb15d9e1b326ce50918f32b597e4f520e",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/cache-error-320x568-text1.png",
+      "raw_sha256": "96299824752dd961644e03118bbec49fb15d9e1b326ce50918f32b597e4f520e",
+      "width": 320,
+      "height": 1251
+    },
+    {
+      "path": "before/desktop-1440/cache-error-390x844-text1.png",
+      "bytes": 82279,
+      "sha256": "43dea8fe4c88fa8b56a6f90e2b183910fdc0eded6f29768e65a18cd97f36e18e",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/cache-error-390x844-text1.png",
+      "raw_sha256": "43dea8fe4c88fa8b56a6f90e2b183910fdc0eded6f29768e65a18cd97f36e18e",
+      "width": 390,
+      "height": 1170
+    },
+    {
+      "path": "before/desktop-1440/clearing-cache-1440x900-text1.png",
+      "bytes": 132355,
+      "sha256": "d8735214a95c50953723e91eadc8d2664ac85d3a19d192814944649382b75863",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/clearing-cache-1440x900-text1.png",
+      "raw_sha256": "d8735214a95c50953723e91eadc8d2664ac85d3a19d192814944649382b75863",
+      "width": 1440,
+      "height": 952
+    },
+    {
+      "path": "before/desktop-1440/clearing-cache-320x420-text2.png",
+      "bytes": 111906,
+      "sha256": "00ea3f736e6de425158e272f1d5409d9270b079b27d9e05830207d26e3ce72cd",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/clearing-cache-320x420-text2.png",
+      "raw_sha256": "00ea3f736e6de425158e272f1d5409d9270b079b27d9e05830207d26e3ce72cd",
+      "width": 320,
+      "height": 2154
+    },
+    {
+      "path": "before/desktop-1440/clearing-cache-320x568-text1.png",
+      "bytes": 76213,
+      "sha256": "7b123b0a63bbd4854498e8868a3a916f7abf39cd3753a47d2ecaf9ecad6acf13",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/clearing-cache-320x568-text1.png",
+      "raw_sha256": "7b123b0a63bbd4854498e8868a3a916f7abf39cd3753a47d2ecaf9ecad6acf13",
+      "width": 320,
+      "height": 1188
+    },
+    {
+      "path": "before/desktop-1440/clearing-cache-390x844-text1.png",
+      "bytes": 71265,
+      "sha256": "7bb5295fa6f22b3a3b0af20b64d61bd52dcb07e38fc52194652aac8acf0abc9a",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/clearing-cache-390x844-text1.png",
+      "raw_sha256": "7bb5295fa6f22b3a3b0af20b64d61bd52dcb07e38fc52194652aac8acf0abc9a",
+      "width": 390,
+      "height": 1107
+    },
+    {
+      "path": "before/desktop-1440/settings-summary.json",
+      "bytes": 17090,
+      "sha256": "a8a7e6be8a1581c6cbd7ee4cf1ea2635318035db3177b3f486a0841ca4f4e56d",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/settings-summary.json",
+      "raw_sha256": "e392555012bee8e54aaeaf17d48ed5e5e6360f2bcad7eef84ba5a64f5376a74e"
+    },
+    {
+      "path": "before/mobile-390/after-clear-1440x900-text1.png",
+      "bytes": 139996,
+      "sha256": "69926e1ec5f7717350fbf0b00d24a3a810f617dfc0c7425be97aaa144ba027a9",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/after-clear-1440x900-text1.png",
+      "raw_sha256": "69926e1ec5f7717350fbf0b00d24a3a810f617dfc0c7425be97aaa144ba027a9",
+      "width": 1440,
+      "height": 986
+    },
+    {
+      "path": "before/mobile-390/after-clear-320x420-text2.png",
+      "bytes": 132522,
+      "sha256": "cc77cb249811b0bfc5adaf2044c1c0fc3bf52480e82def259897f66f6e6f57a2",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/after-clear-320x420-text2.png",
+      "raw_sha256": "cc77cb249811b0bfc5adaf2044c1c0fc3bf52480e82def259897f66f6e6f57a2",
+      "width": 320,
+      "height": 2243
+    },
+    {
+      "path": "before/mobile-390/after-clear-320x568-text1.png",
+      "bytes": 89483,
+      "sha256": "8ff570c7f35611ac16d311eb9de933dd77dc07163c7b6ce6b112ab46f2f67ae3",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/after-clear-320x568-text1.png",
+      "raw_sha256": "8ff570c7f35611ac16d311eb9de933dd77dc07163c7b6ce6b112ab46f2f67ae3",
+      "width": 320,
+      "height": 1223
+    },
+    {
+      "path": "before/mobile-390/after-clear-390x844-text1.png",
+      "bytes": 86895,
+      "sha256": "3ae6dd543ad44a3978b14177faeef0579ce708ae75424a6cc92eee615183f2b8",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/after-clear-390x844-text1.png",
+      "raw_sha256": "3ae6dd543ad44a3978b14177faeef0579ce708ae75424a6cc92eee615183f2b8",
+      "width": 390,
+      "height": 1141
+    },
+    {
+      "path": "before/mobile-390/axe-after-clear-1440x900-text1.json",
+      "bytes": 910,
+      "sha256": "286e57c953a80daf09b943ce6b5728ea174cfb68f666b7601cf51c026911654f",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-after-clear-1440x900-text1.json",
+      "raw_sha256": "286e57c953a80daf09b943ce6b5728ea174cfb68f666b7601cf51c026911654f"
+    },
+    {
+      "path": "before/mobile-390/axe-after-clear-320x420-text2.json",
+      "bytes": 907,
+      "sha256": "188a77302626102a0752b860a032aebb9eb1c4b8527e6fdbe1e9a7f7539f9c1b",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-after-clear-320x420-text2.json",
+      "raw_sha256": "188a77302626102a0752b860a032aebb9eb1c4b8527e6fdbe1e9a7f7539f9c1b"
+    },
+    {
+      "path": "before/mobile-390/axe-after-clear-320x568-text1.json",
+      "bytes": 907,
+      "sha256": "c1d63a71f8da14d1db96b9c67c77ab3099fd7435245df367b36e323e35b3444a",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-after-clear-320x568-text1.json",
+      "raw_sha256": "c1d63a71f8da14d1db96b9c67c77ab3099fd7435245df367b36e323e35b3444a"
+    },
+    {
+      "path": "before/mobile-390/axe-after-clear-390x844-text1.json",
+      "bytes": 907,
+      "sha256": "54ad1caae86fd440b3a0682c5e0ac3c8993442f2e039efe71da9e17e976ea8b1",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-after-clear-390x844-text1.json",
+      "raw_sha256": "54ad1caae86fd440b3a0682c5e0ac3c8993442f2e039efe71da9e17e976ea8b1"
+    },
+    {
+      "path": "before/mobile-390/axe-before-clear-1440x900-text1.json",
+      "bytes": 911,
+      "sha256": "6169c9359052750fe5be54d92e99f36297dadfba580e795b66d084e935da0879",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-before-clear-1440x900-text1.json",
+      "raw_sha256": "6169c9359052750fe5be54d92e99f36297dadfba580e795b66d084e935da0879"
+    },
+    {
+      "path": "before/mobile-390/axe-before-clear-320x420-text2.json",
+      "bytes": 908,
+      "sha256": "99d9ac56f9e902b97ddd805f272c23e20695100907ef20d4c07cc313374c8b8f",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-before-clear-320x420-text2.json",
+      "raw_sha256": "99d9ac56f9e902b97ddd805f272c23e20695100907ef20d4c07cc313374c8b8f"
+    },
+    {
+      "path": "before/mobile-390/axe-before-clear-320x568-text1.json",
+      "bytes": 908,
+      "sha256": "3f04858fb39e17733f9a53126040d250bfa5de1c65393eb12bc176985db1ff88",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-before-clear-320x568-text1.json",
+      "raw_sha256": "3f04858fb39e17733f9a53126040d250bfa5de1c65393eb12bc176985db1ff88"
+    },
+    {
+      "path": "before/mobile-390/axe-before-clear-390x844-text1.json",
+      "bytes": 908,
+      "sha256": "e1b9d97c9cbf6805e220645f7ea002f72e025a37d89051b27467bd66e1b79264",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-before-clear-390x844-text1.json",
+      "raw_sha256": "e1b9d97c9cbf6805e220645f7ea002f72e025a37d89051b27467bd66e1b79264"
+    },
+    {
+      "path": "before/mobile-390/axe-cache-error-1440x900-text1.json",
+      "bytes": 910,
+      "sha256": "91a001c8e80ee13414653636959ef207720fdb0dc7a9691f05be183af4388c4a",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-cache-error-1440x900-text1.json",
+      "raw_sha256": "91a001c8e80ee13414653636959ef207720fdb0dc7a9691f05be183af4388c4a"
+    },
+    {
+      "path": "before/mobile-390/axe-cache-error-320x420-text2.json",
+      "bytes": 907,
+      "sha256": "69b2715f5e8cc5a329fa234371e16545515fac64bda4dd1ddc50f5e6825f94c1",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-cache-error-320x420-text2.json",
+      "raw_sha256": "69b2715f5e8cc5a329fa234371e16545515fac64bda4dd1ddc50f5e6825f94c1"
+    },
+    {
+      "path": "before/mobile-390/axe-cache-error-320x568-text1.json",
+      "bytes": 907,
+      "sha256": "2cca13777203fb7b1b6756f8a62c48e591a14b413241254df9a8f3fae49f8af9",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-cache-error-320x568-text1.json",
+      "raw_sha256": "2cca13777203fb7b1b6756f8a62c48e591a14b413241254df9a8f3fae49f8af9"
+    },
+    {
+      "path": "before/mobile-390/axe-cache-error-390x844-text1.json",
+      "bytes": 907,
+      "sha256": "40de6def05d519d5dcd62efd22dae6ebae487c0f5032e08865cc949322041c29",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-cache-error-390x844-text1.json",
+      "raw_sha256": "40de6def05d519d5dcd62efd22dae6ebae487c0f5032e08865cc949322041c29"
+    },
+    {
+      "path": "before/mobile-390/axe-clearing-cache-1440x900-text1.json",
+      "bytes": 895,
+      "sha256": "48b8e9d7a16cfc0258dede3ebe7696b76b2398a9e6993956ab7273f862ac5adc",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-clearing-cache-1440x900-text1.json",
+      "raw_sha256": "48b8e9d7a16cfc0258dede3ebe7696b76b2398a9e6993956ab7273f862ac5adc"
+    },
+    {
+      "path": "before/mobile-390/axe-clearing-cache-320x420-text2.json",
+      "bytes": 892,
+      "sha256": "5501e2edb225234ddf6e62bdef9c7c941b9d47454f202ab96cea6feb506ee938",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-clearing-cache-320x420-text2.json",
+      "raw_sha256": "5501e2edb225234ddf6e62bdef9c7c941b9d47454f202ab96cea6feb506ee938"
+    },
+    {
+      "path": "before/mobile-390/axe-clearing-cache-320x568-text1.json",
+      "bytes": 892,
+      "sha256": "128d55adfd8f1d7c812a6257ef50f8f020231a3a8152355034e5c099f9d5558e",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-clearing-cache-320x568-text1.json",
+      "raw_sha256": "128d55adfd8f1d7c812a6257ef50f8f020231a3a8152355034e5c099f9d5558e"
+    },
+    {
+      "path": "before/mobile-390/axe-clearing-cache-390x844-text1.json",
+      "bytes": 892,
+      "sha256": "2212b0691848e4fe022a73900cbc11838932564c3681b09a6fb89012aa0a85da",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-clearing-cache-390x844-text1.json",
+      "raw_sha256": "2212b0691848e4fe022a73900cbc11838932564c3681b09a6fb89012aa0a85da"
+    },
+    {
+      "path": "before/mobile-390/before-clear-1440x900-text1.png",
+      "bytes": 136284,
+      "sha256": "337339a0a58959c413853f1cf6db5136a8ef1e053f165e65ed75af8aadeb2111",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/before-clear-1440x900-text1.png",
+      "raw_sha256": "337339a0a58959c413853f1cf6db5136a8ef1e053f165e65ed75af8aadeb2111",
+      "width": 1440,
+      "height": 952
+    },
+    {
+      "path": "before/mobile-390/before-clear-320x420-text2.png",
+      "bytes": 115568,
+      "sha256": "d6d2ca5cc7ce8d881cd1356d704e00e3f0d26c0431063dd68fe52cbcf9ff0620",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/before-clear-320x420-text2.png",
+      "raw_sha256": "d6d2ca5cc7ce8d881cd1356d704e00e3f0d26c0431063dd68fe52cbcf9ff0620",
+      "width": 320,
+      "height": 2196
+    },
+    {
+      "path": "before/mobile-390/before-clear-320x568-text1.png",
+      "bytes": 77407,
+      "sha256": "f9fe610549185bf3249c993c851c0b1a27f0ca125e654a3d6e6862461233cd63",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/before-clear-320x568-text1.png",
+      "raw_sha256": "f9fe610549185bf3249c993c851c0b1a27f0ca125e654a3d6e6862461233cd63",
+      "width": 320,
+      "height": 1188
+    },
+    {
+      "path": "before/mobile-390/before-clear-390x844-text1.png",
+      "bytes": 77965,
+      "sha256": "9b535108c9faef5c70aaabe3c873e17b4509fbc3679aa3f302899e5c5702a3b6",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/before-clear-390x844-text1.png",
+      "raw_sha256": "9b535108c9faef5c70aaabe3c873e17b4509fbc3679aa3f302899e5c5702a3b6",
+      "width": 390,
+      "height": 1107
+    },
+    {
+      "path": "before/mobile-390/cache-error-1440x900-text1.png",
+      "bytes": 146002,
+      "sha256": "4675f420aa53bc7cfecdf2d5577ea31db09f27d76d64f34c98500432fa19f894",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/cache-error-1440x900-text1.png",
+      "raw_sha256": "4675f420aa53bc7cfecdf2d5577ea31db09f27d76d64f34c98500432fa19f894",
+      "width": 1440,
+      "height": 992
+    },
+    {
+      "path": "before/mobile-390/cache-error-320x420-text2.png",
+      "bytes": 138681,
+      "sha256": "cfcfae6b04f1c3fe840332557f3348c424efdc8f1ed238bc29282a59fca3d7a3",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/cache-error-320x420-text2.png",
+      "raw_sha256": "cfcfae6b04f1c3fe840332557f3348c424efdc8f1ed238bc29282a59fca3d7a3",
+      "width": 320,
+      "height": 2259
+    },
+    {
+      "path": "before/mobile-390/cache-error-320x568-text1.png",
+      "bytes": 98019,
+      "sha256": "96299824752dd961644e03118bbec49fb15d9e1b326ce50918f32b597e4f520e",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/cache-error-320x568-text1.png",
+      "raw_sha256": "96299824752dd961644e03118bbec49fb15d9e1b326ce50918f32b597e4f520e",
+      "width": 320,
+      "height": 1251
+    },
+    {
+      "path": "before/mobile-390/cache-error-390x844-text1.png",
+      "bytes": 82279,
+      "sha256": "43dea8fe4c88fa8b56a6f90e2b183910fdc0eded6f29768e65a18cd97f36e18e",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/cache-error-390x844-text1.png",
+      "raw_sha256": "43dea8fe4c88fa8b56a6f90e2b183910fdc0eded6f29768e65a18cd97f36e18e",
+      "width": 390,
+      "height": 1170
+    },
+    {
+      "path": "before/mobile-390/clearing-cache-1440x900-text1.png",
+      "bytes": 132355,
+      "sha256": "d8735214a95c50953723e91eadc8d2664ac85d3a19d192814944649382b75863",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/clearing-cache-1440x900-text1.png",
+      "raw_sha256": "d8735214a95c50953723e91eadc8d2664ac85d3a19d192814944649382b75863",
+      "width": 1440,
+      "height": 952
+    },
+    {
+      "path": "before/mobile-390/clearing-cache-320x420-text2.png",
+      "bytes": 111906,
+      "sha256": "00ea3f736e6de425158e272f1d5409d9270b079b27d9e05830207d26e3ce72cd",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/clearing-cache-320x420-text2.png",
+      "raw_sha256": "00ea3f736e6de425158e272f1d5409d9270b079b27d9e05830207d26e3ce72cd",
+      "width": 320,
+      "height": 2154
+    },
+    {
+      "path": "before/mobile-390/clearing-cache-320x568-text1.png",
+      "bytes": 76213,
+      "sha256": "7b123b0a63bbd4854498e8868a3a916f7abf39cd3753a47d2ecaf9ecad6acf13",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/clearing-cache-320x568-text1.png",
+      "raw_sha256": "7b123b0a63bbd4854498e8868a3a916f7abf39cd3753a47d2ecaf9ecad6acf13",
+      "width": 320,
+      "height": 1188
+    },
+    {
+      "path": "before/mobile-390/clearing-cache-390x844-text1.png",
+      "bytes": 71265,
+      "sha256": "7bb5295fa6f22b3a3b0af20b64d61bd52dcb07e38fc52194652aac8acf0abc9a",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/clearing-cache-390x844-text1.png",
+      "raw_sha256": "7bb5295fa6f22b3a3b0af20b64d61bd52dcb07e38fc52194652aac8acf0abc9a",
+      "width": 390,
+      "height": 1107
+    },
+    {
+      "path": "before/mobile-390/settings-summary.json",
+      "bytes": 17090,
+      "sha256": "875e92a8fb5a03aed3087312e917756ab613e2014478193d8edd67a29532020f",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/settings-summary.json",
+      "raw_sha256": "879a974c9c1514e769441927142145d5b50452225b4431266c4b453f78a9ba10"
+    },
+    {
+      "path": "before/desktop-1440/axe-manual-help-1440x900-text1.json",
+      "bytes": 598,
+      "sha256": "9a823ebdf2da3a00866db1e4e4abdbcecad45c6bd19c41533ba8763f74011a2a",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-93938--native-prompt-is-available-desktop-1440/axe-manual-help-1440x900-text1.json",
+      "raw_sha256": "9a823ebdf2da3a00866db1e4e4abdbcecad45c6bd19c41533ba8763f74011a2a"
+    },
+    {
+      "path": "before/desktop-1440/axe-manual-help-320x420-text2.json",
+      "bytes": 595,
+      "sha256": "6f223f35ed4f30a1a47f30eb7a59c1d082a663956fe1dea241ac55e2c2e8a7a4",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-93938--native-prompt-is-available-desktop-1440/axe-manual-help-320x420-text2.json",
+      "raw_sha256": "6f223f35ed4f30a1a47f30eb7a59c1d082a663956fe1dea241ac55e2c2e8a7a4"
+    },
+    {
+      "path": "before/desktop-1440/axe-manual-help-320x568-text1.json",
+      "bytes": 595,
+      "sha256": "d7d6eaf3b241e8a94a20996ec41a7db8ae472e079b3e90a0a596977b09a116b6",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-93938--native-prompt-is-available-desktop-1440/axe-manual-help-320x568-text1.json",
+      "raw_sha256": "d7d6eaf3b241e8a94a20996ec41a7db8ae472e079b3e90a0a596977b09a116b6"
+    },
+    {
+      "path": "before/desktop-1440/axe-manual-help-390x844-text1.json",
+      "bytes": 595,
+      "sha256": "81f75150f8915d2966bd725b75f9ec07c50ae2c5a6bdb98979113ffb8e61dca1",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-93938--native-prompt-is-available-desktop-1440/axe-manual-help-390x844-text1.json",
+      "raw_sha256": "81f75150f8915d2966bd725b75f9ec07c50ae2c5a6bdb98979113ffb8e61dca1"
+    },
+    {
+      "path": "before/desktop-1440/manual-help-1440x900-text1.png",
+      "bytes": 134544,
+      "sha256": "524b783755c9bafeba794d9593c3b68b38076c06b9e42be1f909e2c41de65d89",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-93938--native-prompt-is-available-desktop-1440/manual-help-1440x900-text1.png",
+      "raw_sha256": "524b783755c9bafeba794d9593c3b68b38076c06b9e42be1f909e2c41de65d89",
+      "width": 1440,
+      "height": 912
+    },
+    {
+      "path": "before/desktop-1440/manual-help-320x420-text2.png",
+      "bytes": 116168,
+      "sha256": "5b9b765a21f2439960d676d9f4f70a66ab309763e34a6520f181b2940b6a5b79",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-93938--native-prompt-is-available-desktop-1440/manual-help-320x420-text2.png",
+      "raw_sha256": "5b9b765a21f2439960d676d9f4f70a66ab309763e34a6520f181b2940b6a5b79",
+      "width": 320,
+      "height": 1972
+    },
+    {
+      "path": "before/desktop-1440/manual-help-320x568-text1.png",
+      "bytes": 89366,
+      "sha256": "73c716a38c6f318b9f64a832f1cc458ccb7923c2009bdf4034db6be168376613",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-93938--native-prompt-is-available-desktop-1440/manual-help-320x568-text1.png",
+      "raw_sha256": "73c716a38c6f318b9f64a832f1cc458ccb7923c2009bdf4034db6be168376613",
+      "width": 320,
+      "height": 1140
+    },
+    {
+      "path": "before/desktop-1440/manual-help-390x844-text1.png",
+      "bytes": 93872,
+      "sha256": "8d0e378a465208bc4ec31ec934102b1ddac38f84379167bdad31283d8b738a8d",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-93938--native-prompt-is-available-desktop-1440/manual-help-390x844-text1.png",
+      "raw_sha256": "8d0e378a465208bc4ec31ec934102b1ddac38f84379167bdad31283d8b738a8d",
+      "width": 390,
+      "height": 1067
+    },
+    {
+      "path": "before/desktop-1440/manual-install-summary.json",
+      "bytes": 2434,
+      "sha256": "a408fb7c2bf2698921b339fcee94f372093539c05cd1ebee05218d2af4e34e0d",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-93938--native-prompt-is-available-desktop-1440/manual-install-summary.json",
+      "raw_sha256": "a408fb7c2bf2698921b339fcee94f372093539c05cd1ebee05218d2af4e34e0d"
+    },
+    {
+      "path": "before/mobile-390/axe-manual-help-1440x900-text1.json",
+      "bytes": 598,
+      "sha256": "9a823ebdf2da3a00866db1e4e4abdbcecad45c6bd19c41533ba8763f74011a2a",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-93938--native-prompt-is-available-mobile-390/axe-manual-help-1440x900-text1.json",
+      "raw_sha256": "9a823ebdf2da3a00866db1e4e4abdbcecad45c6bd19c41533ba8763f74011a2a"
+    },
+    {
+      "path": "before/mobile-390/axe-manual-help-320x420-text2.json",
+      "bytes": 595,
+      "sha256": "6f223f35ed4f30a1a47f30eb7a59c1d082a663956fe1dea241ac55e2c2e8a7a4",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-93938--native-prompt-is-available-mobile-390/axe-manual-help-320x420-text2.json",
+      "raw_sha256": "6f223f35ed4f30a1a47f30eb7a59c1d082a663956fe1dea241ac55e2c2e8a7a4"
+    },
+    {
+      "path": "before/mobile-390/axe-manual-help-320x568-text1.json",
+      "bytes": 595,
+      "sha256": "d7d6eaf3b241e8a94a20996ec41a7db8ae472e079b3e90a0a596977b09a116b6",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-93938--native-prompt-is-available-mobile-390/axe-manual-help-320x568-text1.json",
+      "raw_sha256": "d7d6eaf3b241e8a94a20996ec41a7db8ae472e079b3e90a0a596977b09a116b6"
+    },
+    {
+      "path": "before/mobile-390/axe-manual-help-390x844-text1.json",
+      "bytes": 595,
+      "sha256": "81f75150f8915d2966bd725b75f9ec07c50ae2c5a6bdb98979113ffb8e61dca1",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-93938--native-prompt-is-available-mobile-390/axe-manual-help-390x844-text1.json",
+      "raw_sha256": "81f75150f8915d2966bd725b75f9ec07c50ae2c5a6bdb98979113ffb8e61dca1"
+    },
+    {
+      "path": "before/mobile-390/manual-help-1440x900-text1.png",
+      "bytes": 134544,
+      "sha256": "524b783755c9bafeba794d9593c3b68b38076c06b9e42be1f909e2c41de65d89",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-93938--native-prompt-is-available-mobile-390/manual-help-1440x900-text1.png",
+      "raw_sha256": "524b783755c9bafeba794d9593c3b68b38076c06b9e42be1f909e2c41de65d89",
+      "width": 1440,
+      "height": 912
+    },
+    {
+      "path": "before/mobile-390/manual-help-320x420-text2.png",
+      "bytes": 116168,
+      "sha256": "5b9b765a21f2439960d676d9f4f70a66ab309763e34a6520f181b2940b6a5b79",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-93938--native-prompt-is-available-mobile-390/manual-help-320x420-text2.png",
+      "raw_sha256": "5b9b765a21f2439960d676d9f4f70a66ab309763e34a6520f181b2940b6a5b79",
+      "width": 320,
+      "height": 1972
+    },
+    {
+      "path": "before/mobile-390/manual-help-320x568-text1.png",
+      "bytes": 89366,
+      "sha256": "73c716a38c6f318b9f64a832f1cc458ccb7923c2009bdf4034db6be168376613",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-93938--native-prompt-is-available-mobile-390/manual-help-320x568-text1.png",
+      "raw_sha256": "73c716a38c6f318b9f64a832f1cc458ccb7923c2009bdf4034db6be168376613",
+      "width": 320,
+      "height": 1140
+    },
+    {
+      "path": "before/mobile-390/manual-help-390x844-text1.png",
+      "bytes": 93872,
+      "sha256": "8d0e378a465208bc4ec31ec934102b1ddac38f84379167bdad31283d8b738a8d",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-93938--native-prompt-is-available-mobile-390/manual-help-390x844-text1.png",
+      "raw_sha256": "8d0e378a465208bc4ec31ec934102b1ddac38f84379167bdad31283d8b738a8d",
+      "width": 390,
+      "height": 1067
+    },
+    {
+      "path": "before/mobile-390/manual-install-summary.json",
+      "bytes": 2434,
+      "sha256": "a408fb7c2bf2698921b339fcee94f372093539c05cd1ebee05218d2af4e34e0d",
+      "raw_source": ".artifacts/takeover/settings/baseline-corrected/takolio-settings-continuat-93938--native-prompt-is-available-mobile-390/manual-install-summary.json",
+      "raw_sha256": "a408fb7c2bf2698921b339fcee94f372093539c05cd1ebee05218d2af4e34e0d"
+    },
+    {
+      "path": "after/desktop-1440/axe-install-error-1440x900-text1.json",
+      "bytes": 912,
+      "sha256": "21fe5118acb0b79ff19d1b32be16c83937699dddfc0c8db06dad06db42836b9b",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/axe-install-error-1440x900-text1.json",
+      "raw_sha256": "21fe5118acb0b79ff19d1b32be16c83937699dddfc0c8db06dad06db42836b9b"
+    },
+    {
+      "path": "after/desktop-1440/axe-install-error-320x420-text2.json",
+      "bytes": 909,
+      "sha256": "22367241ae4894b81e8004fc26751fad952ac7fdec698869e76d92615cb2bbac",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/axe-install-error-320x420-text2.json",
+      "raw_sha256": "22367241ae4894b81e8004fc26751fad952ac7fdec698869e76d92615cb2bbac"
+    },
+    {
+      "path": "after/desktop-1440/axe-install-error-320x568-text1.json",
+      "bytes": 909,
+      "sha256": "52e687b77783be04c18655a6de2bc1f0fea271eafc7110f59896c325725b9156",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/axe-install-error-320x568-text1.json",
+      "raw_sha256": "52e687b77783be04c18655a6de2bc1f0fea271eafc7110f59896c325725b9156"
+    },
+    {
+      "path": "after/desktop-1440/axe-install-error-390x844-text1.json",
+      "bytes": 909,
+      "sha256": "c85884b0f4ae4cf41c52d7377fcb2ffe9ddc14fb1bb77fc38e7939798e2aadd8",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/axe-install-error-390x844-text1.json",
+      "raw_sha256": "c85884b0f4ae4cf41c52d7377fcb2ffe9ddc14fb1bb77fc38e7939798e2aadd8"
+    },
+    {
+      "path": "after/desktop-1440/axe-install-pending-1440x900-text1.json",
+      "bytes": 898,
+      "sha256": "af4e581ca0ab79410bd04152e4f24de7bb110d491fd4862a7e5c42b1cf8ec7ce",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/axe-install-pending-1440x900-text1.json",
+      "raw_sha256": "af4e581ca0ab79410bd04152e4f24de7bb110d491fd4862a7e5c42b1cf8ec7ce"
+    },
+    {
+      "path": "after/desktop-1440/axe-install-pending-320x420-text2.json",
+      "bytes": 895,
+      "sha256": "c468d7d1c0d08c9ab41c9850b65be21b71f5602a2c9607151ae74e512d82a2fc",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/axe-install-pending-320x420-text2.json",
+      "raw_sha256": "c468d7d1c0d08c9ab41c9850b65be21b71f5602a2c9607151ae74e512d82a2fc"
+    },
+    {
+      "path": "after/desktop-1440/axe-install-pending-320x568-text1.json",
+      "bytes": 895,
+      "sha256": "b76e8555f092d5823da326a0ba543114f325da1346445b50ec164c5eaf71c0eb",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/axe-install-pending-320x568-text1.json",
+      "raw_sha256": "b76e8555f092d5823da326a0ba543114f325da1346445b50ec164c5eaf71c0eb"
+    },
+    {
+      "path": "after/desktop-1440/axe-install-pending-390x844-text1.json",
+      "bytes": 895,
+      "sha256": "1826e2bde23ec195aa7fdd4991006514e3cc591820073ec3f9bdb23a9662206a",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/axe-install-pending-390x844-text1.json",
+      "raw_sha256": "1826e2bde23ec195aa7fdd4991006514e3cc591820073ec3f9bdb23a9662206a"
+    },
+    {
+      "path": "after/desktop-1440/axe-standalone-1440x900-text1.json",
+      "bytes": 775,
+      "sha256": "56144c58db09e82acad8813e97122ea75be0733f0355d45c1d98bb3b838198fe",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/axe-standalone-1440x900-text1.json",
+      "raw_sha256": "56144c58db09e82acad8813e97122ea75be0733f0355d45c1d98bb3b838198fe"
+    },
+    {
+      "path": "after/desktop-1440/axe-standalone-320x420-text2.json",
+      "bytes": 772,
+      "sha256": "c048cafe9f73b339b31631c1e4a44bf05c468f854b093602f016daed27b4c920",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/axe-standalone-320x420-text2.json",
+      "raw_sha256": "c048cafe9f73b339b31631c1e4a44bf05c468f854b093602f016daed27b4c920"
+    },
+    {
+      "path": "after/desktop-1440/axe-standalone-320x568-text1.json",
+      "bytes": 772,
+      "sha256": "51c39c5afbaa436573a76e258821e359527eb463de3c283c61429ca2c456f427",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/axe-standalone-320x568-text1.json",
+      "raw_sha256": "51c39c5afbaa436573a76e258821e359527eb463de3c283c61429ca2c456f427"
+    },
+    {
+      "path": "after/desktop-1440/axe-standalone-390x844-text1.json",
+      "bytes": 772,
+      "sha256": "87c41f5556eacb6ebd18d05c8122491783dc5eccdce1ac46329174a8f7cef7cb",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/axe-standalone-390x844-text1.json",
+      "raw_sha256": "87c41f5556eacb6ebd18d05c8122491783dc5eccdce1ac46329174a8f7cef7cb"
+    },
+    {
+      "path": "after/desktop-1440/install-error-1440x900-text1.png",
+      "bytes": 137138,
+      "sha256": "f72401b6f21bad83b4d2db8697a170c0707cf4419f56190dd55a275d6a8619ec",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/install-error-1440x900-text1.png",
+      "raw_sha256": "f72401b6f21bad83b4d2db8697a170c0707cf4419f56190dd55a275d6a8619ec",
+      "width": 1440,
+      "height": 952
+    },
+    {
+      "path": "after/desktop-1440/install-error-320x420-text2.png",
+      "bytes": 133169,
+      "sha256": "7860994af0e2a0b4d10dc448ceb0389a6a81371803410801eb90d120dd4402d6",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/install-error-320x420-text2.png",
+      "raw_sha256": "7860994af0e2a0b4d10dc448ceb0389a6a81371803410801eb90d120dd4402d6",
+      "width": 320,
+      "height": 2035
+    },
+    {
+      "path": "after/desktop-1440/install-error-320x568-text1.png",
+      "bytes": 93175,
+      "sha256": "8d69eea886bb1cc360901fac421de99fb2878f1d0073f0a5c7f989b9985ab7ca",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/install-error-320x568-text1.png",
+      "raw_sha256": "8d69eea886bb1cc360901fac421de99fb2878f1d0073f0a5c7f989b9985ab7ca",
+      "width": 320,
+      "height": 1203
+    },
+    {
+      "path": "after/desktop-1440/install-error-390x844-text1.png",
+      "bytes": 79537,
+      "sha256": "e352f483ae95a3bb7c08a748768f5292653ce15ad4bb6eda5e949394ddb44ec2",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/install-error-390x844-text1.png",
+      "raw_sha256": "e352f483ae95a3bb7c08a748768f5292653ce15ad4bb6eda5e949394ddb44ec2",
+      "width": 390,
+      "height": 1130
+    },
+    {
+      "path": "after/desktop-1440/install-pending-1440x900-text1.png",
+      "bytes": 130272,
+      "sha256": "0a4e43bdb8e7cf8074b133960a8bbc697adf75ca870230c110f36b3d1b93af51",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/install-pending-1440x900-text1.png",
+      "raw_sha256": "0a4e43bdb8e7cf8074b133960a8bbc697adf75ca870230c110f36b3d1b93af51",
+      "width": 1440,
+      "height": 912
+    },
+    {
+      "path": "after/desktop-1440/install-pending-320x420-text2.png",
+      "bytes": 108937,
+      "sha256": "6e66f920e9c6244f0d07da8a175f8a11ffb3acc519a45928ed555e5720b489d8",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/install-pending-320x420-text2.png",
+      "raw_sha256": "6e66f920e9c6244f0d07da8a175f8a11ffb3acc519a45928ed555e5720b489d8",
+      "width": 320,
+      "height": 1972
+    },
+    {
+      "path": "after/desktop-1440/install-pending-320x568-text1.png",
+      "bytes": 76284,
+      "sha256": "98c14f5df6c65bc2c8f5b486b5aad94b5e9cc27da47533a97e3a1663a473a7e7",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/install-pending-320x568-text1.png",
+      "raw_sha256": "98c14f5df6c65bc2c8f5b486b5aad94b5e9cc27da47533a97e3a1663a473a7e7",
+      "width": 320,
+      "height": 1140
+    },
+    {
+      "path": "after/desktop-1440/install-pending-390x844-text1.png",
+      "bytes": 71529,
+      "sha256": "bb1c95c95c6357e680c23e6ccc202d00414d9cae8c7781de642a01c14411beae",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/install-pending-390x844-text1.png",
+      "raw_sha256": "bb1c95c95c6357e680c23e6ccc202d00414d9cae8c7781de642a01c14411beae",
+      "width": 390,
+      "height": 1067
+    },
+    {
+      "path": "after/desktop-1440/pwa-summary.json",
+      "bytes": 11200,
+      "sha256": "34673866e43d3cb773f4a56d1d19f617275b556cf704f19d32695f7608dcf1ae",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/pwa-summary.json",
+      "raw_sha256": "34673866e43d3cb773f4a56d1d19f617275b556cf704f19d32695f7608dcf1ae"
+    },
+    {
+      "path": "after/desktop-1440/standalone-1440x900-text1.png",
+      "bytes": 90291,
+      "sha256": "4989e008643a8ecac867b090872de757c9eb4d169797514796af7141bbfa387f",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/standalone-1440x900-text1.png",
+      "raw_sha256": "4989e008643a8ecac867b090872de757c9eb4d169797514796af7141bbfa387f",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "path": "after/desktop-1440/standalone-320x420-text2.png",
+      "bytes": 111785,
+      "sha256": "7ae094058fa37f0c0f9a0786163cae32824b896d9f7c44ce5fef5233f63c09d6",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/standalone-320x420-text2.png",
+      "raw_sha256": "7ae094058fa37f0c0f9a0786163cae32824b896d9f7c44ce5fef5233f63c09d6",
+      "width": 320,
+      "height": 1729
+    },
+    {
+      "path": "after/desktop-1440/standalone-320x568-text1.png",
+      "bytes": 68574,
+      "sha256": "ba7f6fc89512ce8eb8a8963b1895ace8428cbfc5e8e321d47231628b62751ac8",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/standalone-320x568-text1.png",
+      "raw_sha256": "ba7f6fc89512ce8eb8a8963b1895ace8428cbfc5e8e321d47231628b62751ac8",
+      "width": 320,
+      "height": 1035
+    },
+    {
+      "path": "after/desktop-1440/standalone-390x844-text1.png",
+      "bytes": 68165,
+      "sha256": "93cb2018c77c138d46b4047004be139222275859dde3f979cd289bb8ce7d6f45",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-desktop-1440/standalone-390x844-text1.png",
+      "raw_sha256": "93cb2018c77c138d46b4047004be139222275859dde3f979cd289bb8ce7d6f45",
+      "width": 390,
+      "height": 985
+    },
+    {
+      "path": "after/mobile-390/axe-install-error-1440x900-text1.json",
+      "bytes": 912,
+      "sha256": "21fe5118acb0b79ff19d1b32be16c83937699dddfc0c8db06dad06db42836b9b",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/axe-install-error-1440x900-text1.json",
+      "raw_sha256": "21fe5118acb0b79ff19d1b32be16c83937699dddfc0c8db06dad06db42836b9b"
+    },
+    {
+      "path": "after/mobile-390/axe-install-error-320x420-text2.json",
+      "bytes": 909,
+      "sha256": "22367241ae4894b81e8004fc26751fad952ac7fdec698869e76d92615cb2bbac",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/axe-install-error-320x420-text2.json",
+      "raw_sha256": "22367241ae4894b81e8004fc26751fad952ac7fdec698869e76d92615cb2bbac"
+    },
+    {
+      "path": "after/mobile-390/axe-install-error-320x568-text1.json",
+      "bytes": 909,
+      "sha256": "52e687b77783be04c18655a6de2bc1f0fea271eafc7110f59896c325725b9156",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/axe-install-error-320x568-text1.json",
+      "raw_sha256": "52e687b77783be04c18655a6de2bc1f0fea271eafc7110f59896c325725b9156"
+    },
+    {
+      "path": "after/mobile-390/axe-install-error-390x844-text1.json",
+      "bytes": 909,
+      "sha256": "c85884b0f4ae4cf41c52d7377fcb2ffe9ddc14fb1bb77fc38e7939798e2aadd8",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/axe-install-error-390x844-text1.json",
+      "raw_sha256": "c85884b0f4ae4cf41c52d7377fcb2ffe9ddc14fb1bb77fc38e7939798e2aadd8"
+    },
+    {
+      "path": "after/mobile-390/axe-install-pending-1440x900-text1.json",
+      "bytes": 898,
+      "sha256": "af4e581ca0ab79410bd04152e4f24de7bb110d491fd4862a7e5c42b1cf8ec7ce",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/axe-install-pending-1440x900-text1.json",
+      "raw_sha256": "af4e581ca0ab79410bd04152e4f24de7bb110d491fd4862a7e5c42b1cf8ec7ce"
+    },
+    {
+      "path": "after/mobile-390/axe-install-pending-320x420-text2.json",
+      "bytes": 895,
+      "sha256": "c468d7d1c0d08c9ab41c9850b65be21b71f5602a2c9607151ae74e512d82a2fc",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/axe-install-pending-320x420-text2.json",
+      "raw_sha256": "c468d7d1c0d08c9ab41c9850b65be21b71f5602a2c9607151ae74e512d82a2fc"
+    },
+    {
+      "path": "after/mobile-390/axe-install-pending-320x568-text1.json",
+      "bytes": 895,
+      "sha256": "b76e8555f092d5823da326a0ba543114f325da1346445b50ec164c5eaf71c0eb",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/axe-install-pending-320x568-text1.json",
+      "raw_sha256": "b76e8555f092d5823da326a0ba543114f325da1346445b50ec164c5eaf71c0eb"
+    },
+    {
+      "path": "after/mobile-390/axe-install-pending-390x844-text1.json",
+      "bytes": 895,
+      "sha256": "1826e2bde23ec195aa7fdd4991006514e3cc591820073ec3f9bdb23a9662206a",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/axe-install-pending-390x844-text1.json",
+      "raw_sha256": "1826e2bde23ec195aa7fdd4991006514e3cc591820073ec3f9bdb23a9662206a"
+    },
+    {
+      "path": "after/mobile-390/axe-standalone-1440x900-text1.json",
+      "bytes": 775,
+      "sha256": "56144c58db09e82acad8813e97122ea75be0733f0355d45c1d98bb3b838198fe",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/axe-standalone-1440x900-text1.json",
+      "raw_sha256": "56144c58db09e82acad8813e97122ea75be0733f0355d45c1d98bb3b838198fe"
+    },
+    {
+      "path": "after/mobile-390/axe-standalone-320x420-text2.json",
+      "bytes": 772,
+      "sha256": "c048cafe9f73b339b31631c1e4a44bf05c468f854b093602f016daed27b4c920",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/axe-standalone-320x420-text2.json",
+      "raw_sha256": "c048cafe9f73b339b31631c1e4a44bf05c468f854b093602f016daed27b4c920"
+    },
+    {
+      "path": "after/mobile-390/axe-standalone-320x568-text1.json",
+      "bytes": 772,
+      "sha256": "51c39c5afbaa436573a76e258821e359527eb463de3c283c61429ca2c456f427",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/axe-standalone-320x568-text1.json",
+      "raw_sha256": "51c39c5afbaa436573a76e258821e359527eb463de3c283c61429ca2c456f427"
+    },
+    {
+      "path": "after/mobile-390/axe-standalone-390x844-text1.json",
+      "bytes": 772,
+      "sha256": "87c41f5556eacb6ebd18d05c8122491783dc5eccdce1ac46329174a8f7cef7cb",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/axe-standalone-390x844-text1.json",
+      "raw_sha256": "87c41f5556eacb6ebd18d05c8122491783dc5eccdce1ac46329174a8f7cef7cb"
+    },
+    {
+      "path": "after/mobile-390/install-error-1440x900-text1.png",
+      "bytes": 139895,
+      "sha256": "c4dffb71b05ededcca848835bdeed5bf394dc7eebf20665da4b29936400c61d5",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/install-error-1440x900-text1.png",
+      "raw_sha256": "c4dffb71b05ededcca848835bdeed5bf394dc7eebf20665da4b29936400c61d5",
+      "width": 1440,
+      "height": 952
+    },
+    {
+      "path": "after/mobile-390/install-error-320x420-text2.png",
+      "bytes": 133169,
+      "sha256": "7860994af0e2a0b4d10dc448ceb0389a6a81371803410801eb90d120dd4402d6",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/install-error-320x420-text2.png",
+      "raw_sha256": "7860994af0e2a0b4d10dc448ceb0389a6a81371803410801eb90d120dd4402d6",
+      "width": 320,
+      "height": 2035
+    },
+    {
+      "path": "after/mobile-390/install-error-320x568-text1.png",
+      "bytes": 93164,
+      "sha256": "b27816666811ceb610564152c617920282f18700eec8385a184783cc1eae446f",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/install-error-320x568-text1.png",
+      "raw_sha256": "b27816666811ceb610564152c617920282f18700eec8385a184783cc1eae446f",
+      "width": 320,
+      "height": 1203
+    },
+    {
+      "path": "after/mobile-390/install-error-390x844-text1.png",
+      "bytes": 78557,
+      "sha256": "4c6fdf75b7ac3d9bca5bfd7f7a23dca9715f4244ef1908f999476f33a98791b9",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/install-error-390x844-text1.png",
+      "raw_sha256": "4c6fdf75b7ac3d9bca5bfd7f7a23dca9715f4244ef1908f999476f33a98791b9",
+      "width": 390,
+      "height": 1130
+    },
+    {
+      "path": "after/mobile-390/install-pending-1440x900-text1.png",
+      "bytes": 130150,
+      "sha256": "212cc3880a666682adcad617e92bdf43539fe3120c157c5ae675f72bbe4d26bc",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/install-pending-1440x900-text1.png",
+      "raw_sha256": "212cc3880a666682adcad617e92bdf43539fe3120c157c5ae675f72bbe4d26bc",
+      "width": 1440,
+      "height": 912
+    },
+    {
+      "path": "after/mobile-390/install-pending-320x420-text2.png",
+      "bytes": 108937,
+      "sha256": "6e66f920e9c6244f0d07da8a175f8a11ffb3acc519a45928ed555e5720b489d8",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/install-pending-320x420-text2.png",
+      "raw_sha256": "6e66f920e9c6244f0d07da8a175f8a11ffb3acc519a45928ed555e5720b489d8",
+      "width": 320,
+      "height": 1972
+    },
+    {
+      "path": "after/mobile-390/install-pending-320x568-text1.png",
+      "bytes": 76284,
+      "sha256": "98c14f5df6c65bc2c8f5b486b5aad94b5e9cc27da47533a97e3a1663a473a7e7",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/install-pending-320x568-text1.png",
+      "raw_sha256": "98c14f5df6c65bc2c8f5b486b5aad94b5e9cc27da47533a97e3a1663a473a7e7",
+      "width": 320,
+      "height": 1140
+    },
+    {
+      "path": "after/mobile-390/install-pending-390x844-text1.png",
+      "bytes": 77818,
+      "sha256": "23b3c640046631d5dbf0a39ffeebd38fe59c947c91caf5faa6b8da3501c38fdf",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/install-pending-390x844-text1.png",
+      "raw_sha256": "23b3c640046631d5dbf0a39ffeebd38fe59c947c91caf5faa6b8da3501c38fdf",
+      "width": 390,
+      "height": 1067
+    },
+    {
+      "path": "after/mobile-390/pwa-summary.json",
+      "bytes": 11200,
+      "sha256": "34673866e43d3cb773f4a56d1d19f617275b556cf704f19d32695f7608dcf1ae",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/pwa-summary.json",
+      "raw_sha256": "34673866e43d3cb773f4a56d1d19f617275b556cf704f19d32695f7608dcf1ae"
+    },
+    {
+      "path": "after/mobile-390/standalone-1440x900-text1.png",
+      "bytes": 90291,
+      "sha256": "4989e008643a8ecac867b090872de757c9eb4d169797514796af7141bbfa387f",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/standalone-1440x900-text1.png",
+      "raw_sha256": "4989e008643a8ecac867b090872de757c9eb4d169797514796af7141bbfa387f",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "path": "after/mobile-390/standalone-320x420-text2.png",
+      "bytes": 111785,
+      "sha256": "7ae094058fa37f0c0f9a0786163cae32824b896d9f7c44ce5fef5233f63c09d6",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/standalone-320x420-text2.png",
+      "raw_sha256": "7ae094058fa37f0c0f9a0786163cae32824b896d9f7c44ce5fef5233f63c09d6",
+      "width": 320,
+      "height": 1729
+    },
+    {
+      "path": "after/mobile-390/standalone-320x568-text1.png",
+      "bytes": 68574,
+      "sha256": "ba7f6fc89512ce8eb8a8963b1895ace8428cbfc5e8e321d47231628b62751ac8",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/standalone-320x568-text1.png",
+      "raw_sha256": "ba7f6fc89512ce8eb8a8963b1895ace8428cbfc5e8e321d47231628b62751ac8",
+      "width": 320,
+      "height": 1035
+    },
+    {
+      "path": "after/mobile-390/standalone-390x844-text1.png",
+      "bytes": 70686,
+      "sha256": "7ec27161ffc47d8faefd73f498490f7f063a89bc17ba784db8106f76cd1e87ef",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-431b6--identifies-standalone-mode-mobile-390/standalone-390x844-text1.png",
+      "raw_sha256": "7ec27161ffc47d8faefd73f498490f7f063a89bc17ba784db8106f76cd1e87ef",
+      "width": 390,
+      "height": 985
+    },
+    {
+      "path": "after/desktop-1440/after-clear-1440x900-text1.png",
+      "bytes": 133007,
+      "sha256": "50cca8404a1283408927bf791daaf7e502a052a38437009d171a26f9a74448b9",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/after-clear-1440x900-text1.png",
+      "raw_sha256": "50cca8404a1283408927bf791daaf7e502a052a38437009d171a26f9a74448b9",
+      "width": 1440,
+      "height": 986
+    },
+    {
+      "path": "after/desktop-1440/after-clear-320x420-text2.png",
+      "bytes": 132522,
+      "sha256": "cc77cb249811b0bfc5adaf2044c1c0fc3bf52480e82def259897f66f6e6f57a2",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/after-clear-320x420-text2.png",
+      "raw_sha256": "cc77cb249811b0bfc5adaf2044c1c0fc3bf52480e82def259897f66f6e6f57a2",
+      "width": 320,
+      "height": 2243
+    },
+    {
+      "path": "after/desktop-1440/after-clear-320x568-text1.png",
+      "bytes": 89483,
+      "sha256": "8ff570c7f35611ac16d311eb9de933dd77dc07163c7b6ce6b112ab46f2f67ae3",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/after-clear-320x568-text1.png",
+      "raw_sha256": "8ff570c7f35611ac16d311eb9de933dd77dc07163c7b6ce6b112ab46f2f67ae3",
+      "width": 320,
+      "height": 1223
+    },
+    {
+      "path": "after/desktop-1440/after-clear-390x844-text1.png",
+      "bytes": 86895,
+      "sha256": "3ae6dd543ad44a3978b14177faeef0579ce708ae75424a6cc92eee615183f2b8",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/after-clear-390x844-text1.png",
+      "raw_sha256": "3ae6dd543ad44a3978b14177faeef0579ce708ae75424a6cc92eee615183f2b8",
+      "width": 390,
+      "height": 1141
+    },
+    {
+      "path": "after/desktop-1440/axe-after-clear-1440x900-text1.json",
+      "bytes": 910,
+      "sha256": "286e57c953a80daf09b943ce6b5728ea174cfb68f666b7601cf51c026911654f",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-after-clear-1440x900-text1.json",
+      "raw_sha256": "286e57c953a80daf09b943ce6b5728ea174cfb68f666b7601cf51c026911654f"
+    },
+    {
+      "path": "after/desktop-1440/axe-after-clear-320x420-text2.json",
+      "bytes": 907,
+      "sha256": "188a77302626102a0752b860a032aebb9eb1c4b8527e6fdbe1e9a7f7539f9c1b",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-after-clear-320x420-text2.json",
+      "raw_sha256": "188a77302626102a0752b860a032aebb9eb1c4b8527e6fdbe1e9a7f7539f9c1b"
+    },
+    {
+      "path": "after/desktop-1440/axe-after-clear-320x568-text1.json",
+      "bytes": 907,
+      "sha256": "c1d63a71f8da14d1db96b9c67c77ab3099fd7435245df367b36e323e35b3444a",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-after-clear-320x568-text1.json",
+      "raw_sha256": "c1d63a71f8da14d1db96b9c67c77ab3099fd7435245df367b36e323e35b3444a"
+    },
+    {
+      "path": "after/desktop-1440/axe-after-clear-390x844-text1.json",
+      "bytes": 907,
+      "sha256": "54ad1caae86fd440b3a0682c5e0ac3c8993442f2e039efe71da9e17e976ea8b1",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-after-clear-390x844-text1.json",
+      "raw_sha256": "54ad1caae86fd440b3a0682c5e0ac3c8993442f2e039efe71da9e17e976ea8b1"
+    },
+    {
+      "path": "after/desktop-1440/axe-before-clear-1440x900-text1.json",
+      "bytes": 911,
+      "sha256": "6169c9359052750fe5be54d92e99f36297dadfba580e795b66d084e935da0879",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-before-clear-1440x900-text1.json",
+      "raw_sha256": "6169c9359052750fe5be54d92e99f36297dadfba580e795b66d084e935da0879"
+    },
+    {
+      "path": "after/desktop-1440/axe-before-clear-320x420-text2.json",
+      "bytes": 908,
+      "sha256": "99d9ac56f9e902b97ddd805f272c23e20695100907ef20d4c07cc313374c8b8f",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-before-clear-320x420-text2.json",
+      "raw_sha256": "99d9ac56f9e902b97ddd805f272c23e20695100907ef20d4c07cc313374c8b8f"
+    },
+    {
+      "path": "after/desktop-1440/axe-before-clear-320x568-text1.json",
+      "bytes": 908,
+      "sha256": "3f04858fb39e17733f9a53126040d250bfa5de1c65393eb12bc176985db1ff88",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-before-clear-320x568-text1.json",
+      "raw_sha256": "3f04858fb39e17733f9a53126040d250bfa5de1c65393eb12bc176985db1ff88"
+    },
+    {
+      "path": "after/desktop-1440/axe-before-clear-390x844-text1.json",
+      "bytes": 908,
+      "sha256": "e1b9d97c9cbf6805e220645f7ea002f72e025a37d89051b27467bd66e1b79264",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-before-clear-390x844-text1.json",
+      "raw_sha256": "e1b9d97c9cbf6805e220645f7ea002f72e025a37d89051b27467bd66e1b79264"
+    },
+    {
+      "path": "after/desktop-1440/axe-cache-error-1440x900-text1.json",
+      "bytes": 910,
+      "sha256": "91a001c8e80ee13414653636959ef207720fdb0dc7a9691f05be183af4388c4a",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-cache-error-1440x900-text1.json",
+      "raw_sha256": "91a001c8e80ee13414653636959ef207720fdb0dc7a9691f05be183af4388c4a"
+    },
+    {
+      "path": "after/desktop-1440/axe-cache-error-320x420-text2.json",
+      "bytes": 907,
+      "sha256": "69b2715f5e8cc5a329fa234371e16545515fac64bda4dd1ddc50f5e6825f94c1",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-cache-error-320x420-text2.json",
+      "raw_sha256": "69b2715f5e8cc5a329fa234371e16545515fac64bda4dd1ddc50f5e6825f94c1"
+    },
+    {
+      "path": "after/desktop-1440/axe-cache-error-320x568-text1.json",
+      "bytes": 907,
+      "sha256": "2cca13777203fb7b1b6756f8a62c48e591a14b413241254df9a8f3fae49f8af9",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-cache-error-320x568-text1.json",
+      "raw_sha256": "2cca13777203fb7b1b6756f8a62c48e591a14b413241254df9a8f3fae49f8af9"
+    },
+    {
+      "path": "after/desktop-1440/axe-cache-error-390x844-text1.json",
+      "bytes": 907,
+      "sha256": "40de6def05d519d5dcd62efd22dae6ebae487c0f5032e08865cc949322041c29",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-cache-error-390x844-text1.json",
+      "raw_sha256": "40de6def05d519d5dcd62efd22dae6ebae487c0f5032e08865cc949322041c29"
+    },
+    {
+      "path": "after/desktop-1440/axe-clearing-cache-1440x900-text1.json",
+      "bytes": 895,
+      "sha256": "48b8e9d7a16cfc0258dede3ebe7696b76b2398a9e6993956ab7273f862ac5adc",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-clearing-cache-1440x900-text1.json",
+      "raw_sha256": "48b8e9d7a16cfc0258dede3ebe7696b76b2398a9e6993956ab7273f862ac5adc"
+    },
+    {
+      "path": "after/desktop-1440/axe-clearing-cache-320x420-text2.json",
+      "bytes": 892,
+      "sha256": "5501e2edb225234ddf6e62bdef9c7c941b9d47454f202ab96cea6feb506ee938",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-clearing-cache-320x420-text2.json",
+      "raw_sha256": "5501e2edb225234ddf6e62bdef9c7c941b9d47454f202ab96cea6feb506ee938"
+    },
+    {
+      "path": "after/desktop-1440/axe-clearing-cache-320x568-text1.json",
+      "bytes": 892,
+      "sha256": "128d55adfd8f1d7c812a6257ef50f8f020231a3a8152355034e5c099f9d5558e",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-clearing-cache-320x568-text1.json",
+      "raw_sha256": "128d55adfd8f1d7c812a6257ef50f8f020231a3a8152355034e5c099f9d5558e"
+    },
+    {
+      "path": "after/desktop-1440/axe-clearing-cache-390x844-text1.json",
+      "bytes": 892,
+      "sha256": "2212b0691848e4fe022a73900cbc11838932564c3681b09a6fb89012aa0a85da",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/axe-clearing-cache-390x844-text1.json",
+      "raw_sha256": "2212b0691848e4fe022a73900cbc11838932564c3681b09a6fb89012aa0a85da"
+    },
+    {
+      "path": "after/desktop-1440/before-clear-1440x900-text1.png",
+      "bytes": 133630,
+      "sha256": "28318b54cfa5c87554e187f1d9b4adc3b31bd38ae15a26c7219da5c988fc2833",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/before-clear-1440x900-text1.png",
+      "raw_sha256": "28318b54cfa5c87554e187f1d9b4adc3b31bd38ae15a26c7219da5c988fc2833",
+      "width": 1440,
+      "height": 952
+    },
+    {
+      "path": "after/desktop-1440/before-clear-320x420-text2.png",
+      "bytes": 115568,
+      "sha256": "d6d2ca5cc7ce8d881cd1356d704e00e3f0d26c0431063dd68fe52cbcf9ff0620",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/before-clear-320x420-text2.png",
+      "raw_sha256": "d6d2ca5cc7ce8d881cd1356d704e00e3f0d26c0431063dd68fe52cbcf9ff0620",
+      "width": 320,
+      "height": 2196
+    },
+    {
+      "path": "after/desktop-1440/before-clear-320x568-text1.png",
+      "bytes": 77407,
+      "sha256": "f9fe610549185bf3249c993c851c0b1a27f0ca125e654a3d6e6862461233cd63",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/before-clear-320x568-text1.png",
+      "raw_sha256": "f9fe610549185bf3249c993c851c0b1a27f0ca125e654a3d6e6862461233cd63",
+      "width": 320,
+      "height": 1188
+    },
+    {
+      "path": "after/desktop-1440/before-clear-390x844-text1.png",
+      "bytes": 77965,
+      "sha256": "9b535108c9faef5c70aaabe3c873e17b4509fbc3679aa3f302899e5c5702a3b6",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/before-clear-390x844-text1.png",
+      "raw_sha256": "9b535108c9faef5c70aaabe3c873e17b4509fbc3679aa3f302899e5c5702a3b6",
+      "width": 390,
+      "height": 1107
+    },
+    {
+      "path": "after/desktop-1440/cache-error-1440x900-text1.png",
+      "bytes": 139342,
+      "sha256": "9fc2face3307844b6b08b38e7024c9da32484ac82b956a070070ed29cd8f642e",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/cache-error-1440x900-text1.png",
+      "raw_sha256": "9fc2face3307844b6b08b38e7024c9da32484ac82b956a070070ed29cd8f642e",
+      "width": 1440,
+      "height": 992
+    },
+    {
+      "path": "after/desktop-1440/cache-error-320x420-text2.png",
+      "bytes": 138681,
+      "sha256": "cfcfae6b04f1c3fe840332557f3348c424efdc8f1ed238bc29282a59fca3d7a3",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/cache-error-320x420-text2.png",
+      "raw_sha256": "cfcfae6b04f1c3fe840332557f3348c424efdc8f1ed238bc29282a59fca3d7a3",
+      "width": 320,
+      "height": 2259
+    },
+    {
+      "path": "after/desktop-1440/cache-error-320x568-text1.png",
+      "bytes": 98019,
+      "sha256": "96299824752dd961644e03118bbec49fb15d9e1b326ce50918f32b597e4f520e",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/cache-error-320x568-text1.png",
+      "raw_sha256": "96299824752dd961644e03118bbec49fb15d9e1b326ce50918f32b597e4f520e",
+      "width": 320,
+      "height": 1251
+    },
+    {
+      "path": "after/desktop-1440/cache-error-390x844-text1.png",
+      "bytes": 82279,
+      "sha256": "43dea8fe4c88fa8b56a6f90e2b183910fdc0eded6f29768e65a18cd97f36e18e",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/cache-error-390x844-text1.png",
+      "raw_sha256": "43dea8fe4c88fa8b56a6f90e2b183910fdc0eded6f29768e65a18cd97f36e18e",
+      "width": 390,
+      "height": 1170
+    },
+    {
+      "path": "after/desktop-1440/clearing-cache-1440x900-text1.png",
+      "bytes": 132355,
+      "sha256": "d8735214a95c50953723e91eadc8d2664ac85d3a19d192814944649382b75863",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/clearing-cache-1440x900-text1.png",
+      "raw_sha256": "d8735214a95c50953723e91eadc8d2664ac85d3a19d192814944649382b75863",
+      "width": 1440,
+      "height": 952
+    },
+    {
+      "path": "after/desktop-1440/clearing-cache-320x420-text2.png",
+      "bytes": 111906,
+      "sha256": "00ea3f736e6de425158e272f1d5409d9270b079b27d9e05830207d26e3ce72cd",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/clearing-cache-320x420-text2.png",
+      "raw_sha256": "00ea3f736e6de425158e272f1d5409d9270b079b27d9e05830207d26e3ce72cd",
+      "width": 320,
+      "height": 2154
+    },
+    {
+      "path": "after/desktop-1440/clearing-cache-320x568-text1.png",
+      "bytes": 76213,
+      "sha256": "7b123b0a63bbd4854498e8868a3a916f7abf39cd3753a47d2ecaf9ecad6acf13",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/clearing-cache-320x568-text1.png",
+      "raw_sha256": "7b123b0a63bbd4854498e8868a3a916f7abf39cd3753a47d2ecaf9ecad6acf13",
+      "width": 320,
+      "height": 1188
+    },
+    {
+      "path": "after/desktop-1440/clearing-cache-390x844-text1.png",
+      "bytes": 71265,
+      "sha256": "7bb5295fa6f22b3a3b0af20b64d61bd52dcb07e38fc52194652aac8acf0abc9a",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/clearing-cache-390x844-text1.png",
+      "raw_sha256": "7bb5295fa6f22b3a3b0af20b64d61bd52dcb07e38fc52194652aac8acf0abc9a",
+      "width": 390,
+      "height": 1107
+    },
+    {
+      "path": "after/desktop-1440/settings-summary.json",
+      "bytes": 17090,
+      "sha256": "ecef9f311d8212b9102c77434a63d38b45bc85fce178ddb8fb61a9325e0dcaf1",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-desktop-1440/settings-summary.json",
+      "raw_sha256": "fb9fcb1fa1800993706908dc59d15246bc7fb51967807dd9cee416a097938809"
+    },
+    {
+      "path": "after/mobile-390/after-clear-1440x900-text1.png",
+      "bytes": 139996,
+      "sha256": "69926e1ec5f7717350fbf0b00d24a3a810f617dfc0c7425be97aaa144ba027a9",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/after-clear-1440x900-text1.png",
+      "raw_sha256": "69926e1ec5f7717350fbf0b00d24a3a810f617dfc0c7425be97aaa144ba027a9",
+      "width": 1440,
+      "height": 986
+    },
+    {
+      "path": "after/mobile-390/after-clear-320x420-text2.png",
+      "bytes": 132522,
+      "sha256": "cc77cb249811b0bfc5adaf2044c1c0fc3bf52480e82def259897f66f6e6f57a2",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/after-clear-320x420-text2.png",
+      "raw_sha256": "cc77cb249811b0bfc5adaf2044c1c0fc3bf52480e82def259897f66f6e6f57a2",
+      "width": 320,
+      "height": 2243
+    },
+    {
+      "path": "after/mobile-390/after-clear-320x568-text1.png",
+      "bytes": 89483,
+      "sha256": "8ff570c7f35611ac16d311eb9de933dd77dc07163c7b6ce6b112ab46f2f67ae3",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/after-clear-320x568-text1.png",
+      "raw_sha256": "8ff570c7f35611ac16d311eb9de933dd77dc07163c7b6ce6b112ab46f2f67ae3",
+      "width": 320,
+      "height": 1223
+    },
+    {
+      "path": "after/mobile-390/after-clear-390x844-text1.png",
+      "bytes": 86895,
+      "sha256": "3ae6dd543ad44a3978b14177faeef0579ce708ae75424a6cc92eee615183f2b8",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/after-clear-390x844-text1.png",
+      "raw_sha256": "3ae6dd543ad44a3978b14177faeef0579ce708ae75424a6cc92eee615183f2b8",
+      "width": 390,
+      "height": 1141
+    },
+    {
+      "path": "after/mobile-390/axe-after-clear-1440x900-text1.json",
+      "bytes": 910,
+      "sha256": "286e57c953a80daf09b943ce6b5728ea174cfb68f666b7601cf51c026911654f",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-after-clear-1440x900-text1.json",
+      "raw_sha256": "286e57c953a80daf09b943ce6b5728ea174cfb68f666b7601cf51c026911654f"
+    },
+    {
+      "path": "after/mobile-390/axe-after-clear-320x420-text2.json",
+      "bytes": 907,
+      "sha256": "188a77302626102a0752b860a032aebb9eb1c4b8527e6fdbe1e9a7f7539f9c1b",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-after-clear-320x420-text2.json",
+      "raw_sha256": "188a77302626102a0752b860a032aebb9eb1c4b8527e6fdbe1e9a7f7539f9c1b"
+    },
+    {
+      "path": "after/mobile-390/axe-after-clear-320x568-text1.json",
+      "bytes": 907,
+      "sha256": "c1d63a71f8da14d1db96b9c67c77ab3099fd7435245df367b36e323e35b3444a",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-after-clear-320x568-text1.json",
+      "raw_sha256": "c1d63a71f8da14d1db96b9c67c77ab3099fd7435245df367b36e323e35b3444a"
+    },
+    {
+      "path": "after/mobile-390/axe-after-clear-390x844-text1.json",
+      "bytes": 907,
+      "sha256": "54ad1caae86fd440b3a0682c5e0ac3c8993442f2e039efe71da9e17e976ea8b1",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-after-clear-390x844-text1.json",
+      "raw_sha256": "54ad1caae86fd440b3a0682c5e0ac3c8993442f2e039efe71da9e17e976ea8b1"
+    },
+    {
+      "path": "after/mobile-390/axe-before-clear-1440x900-text1.json",
+      "bytes": 911,
+      "sha256": "6169c9359052750fe5be54d92e99f36297dadfba580e795b66d084e935da0879",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-before-clear-1440x900-text1.json",
+      "raw_sha256": "6169c9359052750fe5be54d92e99f36297dadfba580e795b66d084e935da0879"
+    },
+    {
+      "path": "after/mobile-390/axe-before-clear-320x420-text2.json",
+      "bytes": 908,
+      "sha256": "99d9ac56f9e902b97ddd805f272c23e20695100907ef20d4c07cc313374c8b8f",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-before-clear-320x420-text2.json",
+      "raw_sha256": "99d9ac56f9e902b97ddd805f272c23e20695100907ef20d4c07cc313374c8b8f"
+    },
+    {
+      "path": "after/mobile-390/axe-before-clear-320x568-text1.json",
+      "bytes": 908,
+      "sha256": "3f04858fb39e17733f9a53126040d250bfa5de1c65393eb12bc176985db1ff88",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-before-clear-320x568-text1.json",
+      "raw_sha256": "3f04858fb39e17733f9a53126040d250bfa5de1c65393eb12bc176985db1ff88"
+    },
+    {
+      "path": "after/mobile-390/axe-before-clear-390x844-text1.json",
+      "bytes": 908,
+      "sha256": "e1b9d97c9cbf6805e220645f7ea002f72e025a37d89051b27467bd66e1b79264",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-before-clear-390x844-text1.json",
+      "raw_sha256": "e1b9d97c9cbf6805e220645f7ea002f72e025a37d89051b27467bd66e1b79264"
+    },
+    {
+      "path": "after/mobile-390/axe-cache-error-1440x900-text1.json",
+      "bytes": 910,
+      "sha256": "91a001c8e80ee13414653636959ef207720fdb0dc7a9691f05be183af4388c4a",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-cache-error-1440x900-text1.json",
+      "raw_sha256": "91a001c8e80ee13414653636959ef207720fdb0dc7a9691f05be183af4388c4a"
+    },
+    {
+      "path": "after/mobile-390/axe-cache-error-320x420-text2.json",
+      "bytes": 907,
+      "sha256": "69b2715f5e8cc5a329fa234371e16545515fac64bda4dd1ddc50f5e6825f94c1",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-cache-error-320x420-text2.json",
+      "raw_sha256": "69b2715f5e8cc5a329fa234371e16545515fac64bda4dd1ddc50f5e6825f94c1"
+    },
+    {
+      "path": "after/mobile-390/axe-cache-error-320x568-text1.json",
+      "bytes": 907,
+      "sha256": "2cca13777203fb7b1b6756f8a62c48e591a14b413241254df9a8f3fae49f8af9",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-cache-error-320x568-text1.json",
+      "raw_sha256": "2cca13777203fb7b1b6756f8a62c48e591a14b413241254df9a8f3fae49f8af9"
+    },
+    {
+      "path": "after/mobile-390/axe-cache-error-390x844-text1.json",
+      "bytes": 907,
+      "sha256": "40de6def05d519d5dcd62efd22dae6ebae487c0f5032e08865cc949322041c29",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-cache-error-390x844-text1.json",
+      "raw_sha256": "40de6def05d519d5dcd62efd22dae6ebae487c0f5032e08865cc949322041c29"
+    },
+    {
+      "path": "after/mobile-390/axe-clearing-cache-1440x900-text1.json",
+      "bytes": 895,
+      "sha256": "48b8e9d7a16cfc0258dede3ebe7696b76b2398a9e6993956ab7273f862ac5adc",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-clearing-cache-1440x900-text1.json",
+      "raw_sha256": "48b8e9d7a16cfc0258dede3ebe7696b76b2398a9e6993956ab7273f862ac5adc"
+    },
+    {
+      "path": "after/mobile-390/axe-clearing-cache-320x420-text2.json",
+      "bytes": 892,
+      "sha256": "5501e2edb225234ddf6e62bdef9c7c941b9d47454f202ab96cea6feb506ee938",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-clearing-cache-320x420-text2.json",
+      "raw_sha256": "5501e2edb225234ddf6e62bdef9c7c941b9d47454f202ab96cea6feb506ee938"
+    },
+    {
+      "path": "after/mobile-390/axe-clearing-cache-320x568-text1.json",
+      "bytes": 892,
+      "sha256": "128d55adfd8f1d7c812a6257ef50f8f020231a3a8152355034e5c099f9d5558e",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-clearing-cache-320x568-text1.json",
+      "raw_sha256": "128d55adfd8f1d7c812a6257ef50f8f020231a3a8152355034e5c099f9d5558e"
+    },
+    {
+      "path": "after/mobile-390/axe-clearing-cache-390x844-text1.json",
+      "bytes": 892,
+      "sha256": "2212b0691848e4fe022a73900cbc11838932564c3681b09a6fb89012aa0a85da",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/axe-clearing-cache-390x844-text1.json",
+      "raw_sha256": "2212b0691848e4fe022a73900cbc11838932564c3681b09a6fb89012aa0a85da"
+    },
+    {
+      "path": "after/mobile-390/before-clear-1440x900-text1.png",
+      "bytes": 136284,
+      "sha256": "337339a0a58959c413853f1cf6db5136a8ef1e053f165e65ed75af8aadeb2111",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/before-clear-1440x900-text1.png",
+      "raw_sha256": "337339a0a58959c413853f1cf6db5136a8ef1e053f165e65ed75af8aadeb2111",
+      "width": 1440,
+      "height": 952
+    },
+    {
+      "path": "after/mobile-390/before-clear-320x420-text2.png",
+      "bytes": 115568,
+      "sha256": "d6d2ca5cc7ce8d881cd1356d704e00e3f0d26c0431063dd68fe52cbcf9ff0620",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/before-clear-320x420-text2.png",
+      "raw_sha256": "d6d2ca5cc7ce8d881cd1356d704e00e3f0d26c0431063dd68fe52cbcf9ff0620",
+      "width": 320,
+      "height": 2196
+    },
+    {
+      "path": "after/mobile-390/before-clear-320x568-text1.png",
+      "bytes": 77407,
+      "sha256": "f9fe610549185bf3249c993c851c0b1a27f0ca125e654a3d6e6862461233cd63",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/before-clear-320x568-text1.png",
+      "raw_sha256": "f9fe610549185bf3249c993c851c0b1a27f0ca125e654a3d6e6862461233cd63",
+      "width": 320,
+      "height": 1188
+    },
+    {
+      "path": "after/mobile-390/before-clear-390x844-text1.png",
+      "bytes": 77965,
+      "sha256": "9b535108c9faef5c70aaabe3c873e17b4509fbc3679aa3f302899e5c5702a3b6",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/before-clear-390x844-text1.png",
+      "raw_sha256": "9b535108c9faef5c70aaabe3c873e17b4509fbc3679aa3f302899e5c5702a3b6",
+      "width": 390,
+      "height": 1107
+    },
+    {
+      "path": "after/mobile-390/cache-error-1440x900-text1.png",
+      "bytes": 146002,
+      "sha256": "4675f420aa53bc7cfecdf2d5577ea31db09f27d76d64f34c98500432fa19f894",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/cache-error-1440x900-text1.png",
+      "raw_sha256": "4675f420aa53bc7cfecdf2d5577ea31db09f27d76d64f34c98500432fa19f894",
+      "width": 1440,
+      "height": 992
+    },
+    {
+      "path": "after/mobile-390/cache-error-320x420-text2.png",
+      "bytes": 138681,
+      "sha256": "cfcfae6b04f1c3fe840332557f3348c424efdc8f1ed238bc29282a59fca3d7a3",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/cache-error-320x420-text2.png",
+      "raw_sha256": "cfcfae6b04f1c3fe840332557f3348c424efdc8f1ed238bc29282a59fca3d7a3",
+      "width": 320,
+      "height": 2259
+    },
+    {
+      "path": "after/mobile-390/cache-error-320x568-text1.png",
+      "bytes": 98019,
+      "sha256": "96299824752dd961644e03118bbec49fb15d9e1b326ce50918f32b597e4f520e",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/cache-error-320x568-text1.png",
+      "raw_sha256": "96299824752dd961644e03118bbec49fb15d9e1b326ce50918f32b597e4f520e",
+      "width": 320,
+      "height": 1251
+    },
+    {
+      "path": "after/mobile-390/cache-error-390x844-text1.png",
+      "bytes": 82279,
+      "sha256": "43dea8fe4c88fa8b56a6f90e2b183910fdc0eded6f29768e65a18cd97f36e18e",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/cache-error-390x844-text1.png",
+      "raw_sha256": "43dea8fe4c88fa8b56a6f90e2b183910fdc0eded6f29768e65a18cd97f36e18e",
+      "width": 390,
+      "height": 1170
+    },
+    {
+      "path": "after/mobile-390/clearing-cache-1440x900-text1.png",
+      "bytes": 132355,
+      "sha256": "d8735214a95c50953723e91eadc8d2664ac85d3a19d192814944649382b75863",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/clearing-cache-1440x900-text1.png",
+      "raw_sha256": "d8735214a95c50953723e91eadc8d2664ac85d3a19d192814944649382b75863",
+      "width": 1440,
+      "height": 952
+    },
+    {
+      "path": "after/mobile-390/clearing-cache-320x420-text2.png",
+      "bytes": 111906,
+      "sha256": "00ea3f736e6de425158e272f1d5409d9270b079b27d9e05830207d26e3ce72cd",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/clearing-cache-320x420-text2.png",
+      "raw_sha256": "00ea3f736e6de425158e272f1d5409d9270b079b27d9e05830207d26e3ce72cd",
+      "width": 320,
+      "height": 2154
+    },
+    {
+      "path": "after/mobile-390/clearing-cache-320x568-text1.png",
+      "bytes": 76213,
+      "sha256": "7b123b0a63bbd4854498e8868a3a916f7abf39cd3753a47d2ecaf9ecad6acf13",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/clearing-cache-320x568-text1.png",
+      "raw_sha256": "7b123b0a63bbd4854498e8868a3a916f7abf39cd3753a47d2ecaf9ecad6acf13",
+      "width": 320,
+      "height": 1188
+    },
+    {
+      "path": "after/mobile-390/clearing-cache-390x844-text1.png",
+      "bytes": 71265,
+      "sha256": "7bb5295fa6f22b3a3b0af20b64d61bd52dcb07e38fc52194652aac8acf0abc9a",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/clearing-cache-390x844-text1.png",
+      "raw_sha256": "7bb5295fa6f22b3a3b0af20b64d61bd52dcb07e38fc52194652aac8acf0abc9a",
+      "width": 390,
+      "height": 1107
+    },
+    {
+      "path": "after/mobile-390/settings-summary.json",
+      "bytes": 17090,
+      "sha256": "cdc31b253af238cf7347f87e68face8fb0d899d930534cb318764962f4192c4e",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-66a1f-and-keeps-route-copy-honest-mobile-390/settings-summary.json",
+      "raw_sha256": "d5675faa97bc3a4fc2ab77d5a381e0a860b7d9afef7e6b486c055cd29e494fa3"
+    },
+    {
+      "path": "after/desktop-1440/axe-manual-help-1440x900-text1.json",
+      "bytes": 598,
+      "sha256": "9a823ebdf2da3a00866db1e4e4abdbcecad45c6bd19c41533ba8763f74011a2a",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-93938--native-prompt-is-available-desktop-1440/axe-manual-help-1440x900-text1.json",
+      "raw_sha256": "9a823ebdf2da3a00866db1e4e4abdbcecad45c6bd19c41533ba8763f74011a2a"
+    },
+    {
+      "path": "after/desktop-1440/axe-manual-help-320x420-text2.json",
+      "bytes": 595,
+      "sha256": "6f223f35ed4f30a1a47f30eb7a59c1d082a663956fe1dea241ac55e2c2e8a7a4",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-93938--native-prompt-is-available-desktop-1440/axe-manual-help-320x420-text2.json",
+      "raw_sha256": "6f223f35ed4f30a1a47f30eb7a59c1d082a663956fe1dea241ac55e2c2e8a7a4"
+    },
+    {
+      "path": "after/desktop-1440/axe-manual-help-320x568-text1.json",
+      "bytes": 595,
+      "sha256": "d7d6eaf3b241e8a94a20996ec41a7db8ae472e079b3e90a0a596977b09a116b6",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-93938--native-prompt-is-available-desktop-1440/axe-manual-help-320x568-text1.json",
+      "raw_sha256": "d7d6eaf3b241e8a94a20996ec41a7db8ae472e079b3e90a0a596977b09a116b6"
+    },
+    {
+      "path": "after/desktop-1440/axe-manual-help-390x844-text1.json",
+      "bytes": 595,
+      "sha256": "81f75150f8915d2966bd725b75f9ec07c50ae2c5a6bdb98979113ffb8e61dca1",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-93938--native-prompt-is-available-desktop-1440/axe-manual-help-390x844-text1.json",
+      "raw_sha256": "81f75150f8915d2966bd725b75f9ec07c50ae2c5a6bdb98979113ffb8e61dca1"
+    },
+    {
+      "path": "after/desktop-1440/manual-help-1440x900-text1.png",
+      "bytes": 134544,
+      "sha256": "524b783755c9bafeba794d9593c3b68b38076c06b9e42be1f909e2c41de65d89",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-93938--native-prompt-is-available-desktop-1440/manual-help-1440x900-text1.png",
+      "raw_sha256": "524b783755c9bafeba794d9593c3b68b38076c06b9e42be1f909e2c41de65d89",
+      "width": 1440,
+      "height": 912
+    },
+    {
+      "path": "after/desktop-1440/manual-help-320x420-text2.png",
+      "bytes": 116168,
+      "sha256": "5b9b765a21f2439960d676d9f4f70a66ab309763e34a6520f181b2940b6a5b79",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-93938--native-prompt-is-available-desktop-1440/manual-help-320x420-text2.png",
+      "raw_sha256": "5b9b765a21f2439960d676d9f4f70a66ab309763e34a6520f181b2940b6a5b79",
+      "width": 320,
+      "height": 1972
+    },
+    {
+      "path": "after/desktop-1440/manual-help-320x568-text1.png",
+      "bytes": 89366,
+      "sha256": "73c716a38c6f318b9f64a832f1cc458ccb7923c2009bdf4034db6be168376613",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-93938--native-prompt-is-available-desktop-1440/manual-help-320x568-text1.png",
+      "raw_sha256": "73c716a38c6f318b9f64a832f1cc458ccb7923c2009bdf4034db6be168376613",
+      "width": 320,
+      "height": 1140
+    },
+    {
+      "path": "after/desktop-1440/manual-help-390x844-text1.png",
+      "bytes": 93872,
+      "sha256": "8d0e378a465208bc4ec31ec934102b1ddac38f84379167bdad31283d8b738a8d",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-93938--native-prompt-is-available-desktop-1440/manual-help-390x844-text1.png",
+      "raw_sha256": "8d0e378a465208bc4ec31ec934102b1ddac38f84379167bdad31283d8b738a8d",
+      "width": 390,
+      "height": 1067
+    },
+    {
+      "path": "after/desktop-1440/manual-install-summary.json",
+      "bytes": 2434,
+      "sha256": "a408fb7c2bf2698921b339fcee94f372093539c05cd1ebee05218d2af4e34e0d",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-93938--native-prompt-is-available-desktop-1440/manual-install-summary.json",
+      "raw_sha256": "a408fb7c2bf2698921b339fcee94f372093539c05cd1ebee05218d2af4e34e0d"
+    },
+    {
+      "path": "after/mobile-390/axe-manual-help-1440x900-text1.json",
+      "bytes": 598,
+      "sha256": "9a823ebdf2da3a00866db1e4e4abdbcecad45c6bd19c41533ba8763f74011a2a",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-93938--native-prompt-is-available-mobile-390/axe-manual-help-1440x900-text1.json",
+      "raw_sha256": "9a823ebdf2da3a00866db1e4e4abdbcecad45c6bd19c41533ba8763f74011a2a"
+    },
+    {
+      "path": "after/mobile-390/axe-manual-help-320x420-text2.json",
+      "bytes": 595,
+      "sha256": "6f223f35ed4f30a1a47f30eb7a59c1d082a663956fe1dea241ac55e2c2e8a7a4",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-93938--native-prompt-is-available-mobile-390/axe-manual-help-320x420-text2.json",
+      "raw_sha256": "6f223f35ed4f30a1a47f30eb7a59c1d082a663956fe1dea241ac55e2c2e8a7a4"
+    },
+    {
+      "path": "after/mobile-390/axe-manual-help-320x568-text1.json",
+      "bytes": 595,
+      "sha256": "d7d6eaf3b241e8a94a20996ec41a7db8ae472e079b3e90a0a596977b09a116b6",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-93938--native-prompt-is-available-mobile-390/axe-manual-help-320x568-text1.json",
+      "raw_sha256": "d7d6eaf3b241e8a94a20996ec41a7db8ae472e079b3e90a0a596977b09a116b6"
+    },
+    {
+      "path": "after/mobile-390/axe-manual-help-390x844-text1.json",
+      "bytes": 595,
+      "sha256": "81f75150f8915d2966bd725b75f9ec07c50ae2c5a6bdb98979113ffb8e61dca1",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-93938--native-prompt-is-available-mobile-390/axe-manual-help-390x844-text1.json",
+      "raw_sha256": "81f75150f8915d2966bd725b75f9ec07c50ae2c5a6bdb98979113ffb8e61dca1"
+    },
+    {
+      "path": "after/mobile-390/manual-help-1440x900-text1.png",
+      "bytes": 134544,
+      "sha256": "524b783755c9bafeba794d9593c3b68b38076c06b9e42be1f909e2c41de65d89",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-93938--native-prompt-is-available-mobile-390/manual-help-1440x900-text1.png",
+      "raw_sha256": "524b783755c9bafeba794d9593c3b68b38076c06b9e42be1f909e2c41de65d89",
+      "width": 1440,
+      "height": 912
+    },
+    {
+      "path": "after/mobile-390/manual-help-320x420-text2.png",
+      "bytes": 116168,
+      "sha256": "5b9b765a21f2439960d676d9f4f70a66ab309763e34a6520f181b2940b6a5b79",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-93938--native-prompt-is-available-mobile-390/manual-help-320x420-text2.png",
+      "raw_sha256": "5b9b765a21f2439960d676d9f4f70a66ab309763e34a6520f181b2940b6a5b79",
+      "width": 320,
+      "height": 1972
+    },
+    {
+      "path": "after/mobile-390/manual-help-320x568-text1.png",
+      "bytes": 89366,
+      "sha256": "73c716a38c6f318b9f64a832f1cc458ccb7923c2009bdf4034db6be168376613",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-93938--native-prompt-is-available-mobile-390/manual-help-320x568-text1.png",
+      "raw_sha256": "73c716a38c6f318b9f64a832f1cc458ccb7923c2009bdf4034db6be168376613",
+      "width": 320,
+      "height": 1140
+    },
+    {
+      "path": "after/mobile-390/manual-help-390x844-text1.png",
+      "bytes": 93872,
+      "sha256": "8d0e378a465208bc4ec31ec934102b1ddac38f84379167bdad31283d8b738a8d",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-93938--native-prompt-is-available-mobile-390/manual-help-390x844-text1.png",
+      "raw_sha256": "8d0e378a465208bc4ec31ec934102b1ddac38f84379167bdad31283d8b738a8d",
+      "width": 390,
+      "height": 1067
+    },
+    {
+      "path": "after/mobile-390/manual-install-summary.json",
+      "bytes": 2434,
+      "sha256": "a408fb7c2bf2698921b339fcee94f372093539c05cd1ebee05218d2af4e34e0d",
+      "raw_source": ".artifacts/takeover/settings/after/takolio-settings-continuat-93938--native-prompt-is-available-mobile-390/manual-install-summary.json",
+      "raw_sha256": "a408fb7c2bf2698921b339fcee94f372093539c05cd1ebee05218d2af4e34e0d"
+    }
+  ]
+}

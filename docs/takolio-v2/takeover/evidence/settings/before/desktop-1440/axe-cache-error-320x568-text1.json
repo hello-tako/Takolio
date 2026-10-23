@@ -1,0 +1,49 @@
+{
+  "state": "cache-error",
+  "viewport": {
+    "width": 320,
+    "height": 568
+  },
+  "textScale": 1,
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ],
+  "metrics": {
+    "innerWidth": 320,
+    "scrollWidth": 320,
+    "brokenImages": [],
+    "buttons": 2,
+    "links": 1,
+    "summaries": 1
+  },
+  "controls": [
+    {
+      "label": "Cài đặt lên màn hình chính",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": " Xóa bộ nhớ đệm ứng dụng",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "Xem quyền riêng tư & dữ liệu",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "Thông tin phiên bản",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    }
+  ]
+}

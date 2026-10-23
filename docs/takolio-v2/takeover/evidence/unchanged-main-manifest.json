@@ -31170,12 +31170,6 @@
     "sha256": "a631b7778833510b68438b6cfb029525423494ee98485c58f477113fe37c5d61"
   },
   {
-    "path": "src/web/pages/SettingsPage.tsx",
-    "mode": "100644",
-    "git_blob": "68cea53d29e10f46619cd4d39a0ef684555d3aa2",
-    "sha256": "2a19445f3f5b9ad01fadace1f84bd5dc310240a3040267406c33167442dca326"
-  },
-  {
     "path": "src/web/pages/ShoppingPage.tsx",
     "mode": "100644",
     "git_blob": "96db9ec8136c3cb30f550d83ab1626f7454108b8",
