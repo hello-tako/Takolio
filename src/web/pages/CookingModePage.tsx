@@ -263,12 +263,13 @@ function CookingSteps() {
     navigate('/cooking/complete');
   };
   if (!recipe) return null;
+  const recipeHref = `/recipes/${recipe.slug}${recipe.servings ? `?servings=${recipe.servings}` : ''}`;
   if (!currentStep)
     return (
       <div className="cooking-empty">
         <h1>Công thức chưa có bước nấu</h1>
         <p>Bạn có thể xem lại công thức hoặc kiểm tra lượng thực dùng nếu đã nấu món này.</p>
-        <Link className="cooking-control" to={`/recipes/${recipe.slug}`}>
+        <Link className="cooking-control" to={recipeHref}>
           Xem lại công thức
         </Link>
         <button className="cooking-primary" onClick={complete}>
@@ -617,7 +618,7 @@ function CookingSteps() {
         onCancel={() => setConfirmExit(false)}
         onConfirm={() => {
           state.resetCooking();
-          navigate(`/recipes/${recipe.slug}`);
+          navigate(recipeHref);
         }}
       />
     </div>

@@ -473,3 +473,14 @@
 .takosan-rebuild .discovery-active-filters svg {
   flex-shrink: 0;
 }
+
+/* Leave room for whole words when the recipe action text grows on narrow screens. */
+.takosan-rebuild.recipe-page .kitchen-recipe-action button {
+  padding-inline: 12px;
+  column-gap: 8px;
+}
+.takosan-rebuild.recipe-page .kitchen-recipe-action button svg {
+  width: 20px;
+  height: 20px;
+  margin-inline: 0;
+}
