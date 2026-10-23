@@ -1,0 +1,15 @@
+{
+  "viewport": {
+    "width": 360,
+    "height": 800
+  },
+  "textScale": 1,
+  "state": "nutrition",
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "aria-prohibited-attr",
+      "impact": "serious"
+    }
+  ]
+}

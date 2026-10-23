@@ -260,8 +260,9 @@
   {
     "path": "src/web/pages/CookingModePage.tsx",
     "argon_sha256": "67762c07a7af9ded35c1f0b373ab364055c74ae276e73d817e197261d5dace3f",
-    "integration_sha256": "67762c07a7af9ded35c1f0b373ab364055c74ae276e73d817e197261d5dace3f",
-    "matches_argon": true
+    "integration_sha256": "f62b8a7af36741414683992c1474ee50c055bde261f22f3896a442d310605e6c",
+    "matches_argon": false,
+    "refinement": "UI-C5 recipe detail: preserve servings in cooking exit and shared zero-step return URL; implementation 61150c83e5a97882aaf31d700f01a28f52ed8393; original Argon hash retained"
   },
   {
     "path": "src/web/pages/HomePage.tsx",
@@ -297,9 +298,9 @@
   {
     "path": "src/web/styles/kitchen-recipes.css",
     "argon_sha256": "2b3e3a842495e9e63653eebdcc2f90fa1aa0c3ce0340071ce20cd4777f85dae2",
-    "integration_sha256": "6f3b609c33a6be2995770ede868f40fb5ea85fa292cb2df371ed48216f46416b",
+    "integration_sha256": "1328a4035ecc51ccb653da61fa3204029c5a918cb8829338d6e902f8b3b92e5d",
     "matches_argon": false,
-    "refinement": "UI-C5 recipe filters; implementation 89b0a331; original Argon hash retained"
+    "refinement": "UI-C5 recipe detail: keep action words whole at 320/text200%; implementation 61150c83e5a97882aaf31d700f01a28f52ed8393; prior filter refinement 89b0a331; original Argon hash retained"
   },
   {
     "path": "src/web/styles/takosan-tokens.css",

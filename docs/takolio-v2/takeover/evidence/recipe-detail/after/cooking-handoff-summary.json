@@ -1,0 +1,8 @@
+{
+  "recipe": "tomato-egg-stir-fry",
+  "selectedServings": 4,
+  "returnedQuery": "?servings=4",
+  "inventoryUnchanged": true,
+  "mutationRequests": [],
+  "localSyntheticApi": true
+}

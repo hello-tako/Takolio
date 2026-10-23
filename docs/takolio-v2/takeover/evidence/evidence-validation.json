@@ -6,6 +6,11 @@
   "saved_recipes_pngs_verified": 37,
   "saved_recipes_zero_violation_axe_reports": 17,
   "saved_recipes_check_logs_verified": 11,
+  "recipe_detail_evidence_files_verified": 66,
+  "recipe_detail_pngs_verified": 38,
+  "recipe_detail_zero_violation_axe_reports": 24,
+  "recipe_detail_check_logs_verified": 9,
+  "recipe_detail_retained_attempt_logs_verified": 5,
   "screen_rows": 38,
   "screen_counts": {
     "CAPTURED_PROXY": 1,
@@ -14,10 +19,10 @@
   "selected_source_paths": 54,
   "csv_rows": {
     "ARGON_WORK_LEDGER.csv": 69,
-    "FILE_DECISIONS.csv": 79,
+    "FILE_DECISIONS.csv": 80,
     "WIP_ASSET_PROVENANCE.csv": 12
   },
-  "reviewed_changed_or_added_paths": 274,
+  "reviewed_changed_or_added_paths": 344,
   "credential_scan": "No private-key, GitHub token, OpenAI token pattern or exact private backup path detected in changed text; pattern scan is not a general security certification.",
   "failures": []
 }

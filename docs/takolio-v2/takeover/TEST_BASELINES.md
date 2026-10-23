@@ -122,3 +122,107 @@ Browser fixtures use the real isolated local Worker/SQLite with synthetic househ
 Earlier attempts remain recorded. Parent-level `.artifacts/takeover/saved-recipes-before.log` had one pass/two failures due to initial harness assumptions about the discovery accessible name and the composition flag; `saved-recipes-baseline-paired.log` then confirmed servings losses, while also exposing an incorrect manual-radio label assumption. After harness correction and the servings fix, `saved-recipes-after-focused.log` passed three tests; `saved-recipes-final-paired.log` passed six tests before geometry guards. Its screenshots exposed clipped action text at 200% and a shrunken close icon. In the saved-recipes subdirectory, `layout-before.log` stopped at preview bootstrap routing before UI coverage; `layout-red.log` reached the UI and failed close SVG width 11.140625px against >=20px. The final scoped CSS and text-range/SVG guards pass in `verified-paired.log`. No failed harness run is counted as a successful behavior baseline.
 
 Private snapshot verification, protected-main audit, evidence hashes/dimensions/completeness, 38 screen rows, CSV counts (69/79/12), selected-source hashes, token/private-path pattern scan and whitespace validation pass for this checkpoint. Dependency audit is inherited from the recipe-filter checkpoint (eight findings); it was not rerun here. No remote write or production mutation occurred.
+
+## UI-C5 recipe detail on main 90b94129
+
+Implementation:`61150c83e5a97882aaf31d700f01a28f52ed8393`. Same macOS / Node v25.9.0 / pnpm 10.33.2 and unchanged dependencies. Raw logs under ignored `.artifacts/takeover/recipe-detail/`; exact command/outcome/source/log-hash receipt: `evidence/recipe-detail-checks.json`.
+
+Command:
+
+```sh
+pnpm lint
+```
+
+Exit 0: PASS final source. Log: `lint-final.log`.
+
+Command:
+
+```sh
+pnpm typecheck
+```
+
+Exit 0: PASS web and Worker final source. Log: `typecheck-final.log`.
+
+Command:
+
+```sh
+pnpm check:migrations
+```
+
+Exit 0: PASS customer/Admin local smoke; no schema or migration changes. Log: `migrations.log`.
+
+Command:
+
+```sh
+pnpm build
+```
+
+Exit 0: PASS product source final; existing Admin font warnings; later test-only measurement key correction does not affect build graph. Log: `build-default.log`.
+
+Command:
+
+```sh
+VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build
+```
+
+Exit 0: PASS product source final; existing Admin font warnings; later test-only measurement key correction does not affect build graph. Log: `build-paired.log`.
+
+Command:
+
+```sh
+TMPDIR=/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/ pnpm test --maxWorkers=4
+```
+
+Exit 1: PARTIAL: 410/412 files; 9163/9168 tests pass in 267.91s; five inherited encoded-space CLI path failures only. Log: `full-test.log`.
+
+Command:
+
+```sh
+pnpm audit --audit-level=high --json
+```
+
+Exit 1: OPEN_INHERITED: 1 low / 6 moderate / 1 high; Vite GHSA-587h-7wmj-h5pm fixed >=6.4.4; dependencies unchanged. Log: `audit.json`.
+
+Command:
+
+```sh
+PREVIEW_MEAL_COMPOSITION_V2=true PORT=3292 PREVIEW_API_PORT=8918 pnpm exec playwright test --config=playwright.t17.config.ts --project=mobile-390 tests/e2e/t17-ui/takolio-recipe-detail.e2e.ts tests/e2e/t17-ui/takolio-culinary-experience.e2e.ts --output=.artifacts/takeover/recipe-detail/verified-paired
+```
+
+Exit 0: 5/5 PASS, 30.9s; final product/test source; three new recipe tests and two existing culinary tests. Log: `verified-paired.log`.
+
+Command:
+
+```sh
+PORT=3292 PREVIEW_API_PORT=8918 pnpm exec playwright test --config=playwright.t17.config.ts --project=mobile-390 tests/e2e/t17-ui/takolio-recipe-detail.e2e.ts --grep 'exact quantities|confirmed exit' --output=.artifacts/takeover/recipe-detail/default-v1
+```
+
+Exit 0: 2/2 PASS, 8.1s; default composition V1; quantity/reload and cooking exit. Log: `default-v1.log`.
+
+Focused checks below are transcript-only supporting evidence; their files are also in the final full regression.
+
+```sh
+pnpm exec vitest run tests/unit/ui-rebuild-surfaces.test.tsx tests/unit/ui-rebuild-availability.test.ts tests/unit/recipe-servings.test.ts tests/unit/cooking-store.test.ts
+```
+
+4 files /27 tests PASS,3.34s; tool transcript only, not independently hashed log.
+
+```sh
+pnpm exec vitest run tests/integration/ui03-discovery-api.test.ts tests/integration/meal-planning-presentation-http.test.ts tests/integration/t20-meal-composition-flows.test.ts
+```
+
+3 files /69 tests PASS,20.91s; tool transcript only, not independently hashed log.
+
+The full run keeps exactly five inherited failures: one production-catalog-continuity and four release-check cases resolve New%20project instead of the filesystem space, then MODULE_NOT_FOUND. No Admin timeout recurred; no protected tooling was edited. Full suite is PARTIAL. Build/font warnings and dependency findings remain inherited. Builds/full unit graph preceded only the test measurement serialization correction, which is outside that graph; final lint/types/browser repeat the final test source.
+
+Retained attempts:
+
+- `baseline.log`: 2 pass / 1 fail (1.4m); initial harness queried dialog instead of actual alertdialog; not counted as product reproduction.
+- `baseline-corrected.log`: 1 fail; corrected alertdialog selector; detail4 -> cooking4 -> reload -> exit returned no servings query and base2; zero API mutations.
+- `layout-red.log`: 1 fail; after navigation fix, before CSS fix; nonspace-word range assertion catches split phut) word at 320/text 200.
+- `typecheck.log`: exit2 TS2783: duplicate height in test measurements; fixed by viewport object; interactions/assertions/product source unchanged.
+- `final-paired.log`: 5/5 PASS,29.8s; before measurement key correction; superseded by final verified-paired evidence.
+
+One local evidence-copy helper initially selected an incorrect directory-name prefix and asserted 0 files; it was corrected to the observed Playwright names, copied 63 after files and verified the66-file manifest. It did not edit product source.
+
+Private snapshot after implementation, protected-main audit, manifests/hash/dimensions/completeness,38 screens, ledger 69/80/12,54 selected-source paths, token/private-path scan and whitespace checks are repeated before documentation commit. Evidence is synthetic; no production/release claim.

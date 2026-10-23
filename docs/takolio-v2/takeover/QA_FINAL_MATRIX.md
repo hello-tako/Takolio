@@ -2,19 +2,20 @@
 
 | Area | Status | Evidence / limit |
 |---|---|---|
-| Recovery | PASS | 22,763 regular files / 772 symlinks match private snapshot; original HEAD/index/status preserved after saved implementation |
-| Main protection | PASS | Rechecked main `90b94129`; 5,846 paths outside explicit allowlist unchanged; zero failures |
-| Lint / types / migrations / builds | PASS | Current default and paired builds; exact commands/logs in TEST_BASELINES.md |
-| Focused family / favorites / manual drafts | PASS | Four files / 49 tests; final full suite also covers these files |
-| Focused discovery / presentation / inventory | PASS | Four files / 88 tests; final full suite also covers these files |
-| Saved + discovery browser | PASS_BOUNDED | Six final paired tests: persistence/search/removal/resave/reload, servings tabs/detail/empty planner handoff, discovery and keyboard |
-| Default composition V1 browser | PASS_BOUNDED | Two persistence/tab tests; no V2 handoff claim for V1 |
-| Saved responsive/accessibility | PASS_BOUNDED | Eight viewport/text settings, collection/dialog, 17 zero-violation axe reports, text bounds/44px buttons/20px close icon; root-font 200% only |
-| Historical filter browser | PASS_BOUNDED | Eight combined tests at prior filter checkpoint; latest discovery tests repeated in final paired run |
-| 38-row screenshot mapping | CAPTURED_FOR_REVIEW | 37 synthetic states + one landing proxy; full behavioral and owner/pixel acceptance pending |
-| Full regression | PARTIAL | Final canonical TMPDIR and maxWorkers=4: 9,163/9,168; five inherited path failures. Initial: 9,159/9,168, plus four Admin timeouts that did not recur |
-| Dependency security | OPEN_INHERITED | Prior audit: eight findings including high Vite GHSA-587h-7wmj-h5pm; unchanged dependencies, audit not rerun in saved packet |
-| Week OFF / live integrations | NOT_CERTIFIED | Protected code retained; browser planner ON, mock AI and external fetch blocked |
-| Screen reader / performance / production | NOT_CLAIMED | No full screen-reader, LCP/CLS/capacity, meal-mutation E2E or production certification |
+| Recovery | PASS | 22,763 regular files / 772 symlinks and original bytes/modes/links/HEAD/index/status match full private snapshot after 61150c83 |
+| Main protection | PASS |Read-only main 90b94129; 5,846 paths outside explicit allowlist unchanged; zero failures |
+| Lint/types/migrations/builds | PASS |Final source lint/web+Worker types; unchanged schema; default/paired product build passes |
+| Recipe quantity/readiness | PASS_BOUNDED |Exact servings 1/2/4/20; reload 20; real isolated API inventory unchanged |
+| Cooking handoff/exit | PASS_BOUNDED |Detail4->cook4->reload->exit->detail4; six eggs; zero mutation requests; zero-step return link not independently exercised |
+| Recipe planner handoff | PASS_BOUNDED |Existing manual-first setup retains recipe + servings 4; no stock write |
+| Recipe responsive/accessibility | PASS_BOUNDED |Eight viewport/text settings; three tabs/dialog ; 24 zero-violation axe; whole words/text bounds/44px actions; keyboard/focus |
+| Final detail+culinary browser | PASS_BOUNDED | 5/5 paired 30.9s; 2/2 default-V1 subset 8.1s; existing culinary completion mutates only synthetic stock/replays idempotently |
+| Focused regression | PASS_SUPPORTING | 27 unit / 69 integration transcript-only; full suite includes their files |
+| Earlier saved/filter evidence | RETAINED | 56 saved / 28 filter files, manifests intact; saved 6/6 paired + 2/2 V1 and filter 8/8 are prior packet results |
+| 38-row capture mapping | CAPTURED_FOR_REVIEW |37 synthetic/one landing proxy; owner/pixel/full behavior acceptance pending |
+| Full regression | PARTIAL | 410/412 files; 9,163/9,168 tests; 267.91s; five inherited encoded-space CLI path failures; no Admin timeout this run |
+| Dependency security | OPEN_INHERITED |Repeated audit 1 low / 6 moderate / 1 high; Vite GHSA-587h-7wmj-h5pm; dependencies unchanged |
+| Week OFF/live integrations | NOT_CERTIFIED |Protected code retained; browser planner ON, mock AI/external fetch blocked |
+| Screen reader/performance/production | NOT_CLAIMED |Physical-device/OS zoom, full meal-mutation E2E and LCP/CLS/load/production certification remain open |
 
-Saved-recipes implementation is reviewable at `f11a244ca0964a63618c1fc3a3f30b8a670ec90a`; full UI-C5 remains partial. Next bounded local target is row 20 recipe-detail readiness, servings and cooking handoff. Owner visual acceptance and publication/release approval remain pending. Path-sensitive production test tooling and dependency remediation stay outside this UI scope. Current authorization covers further local UI continuation.
+Implementation:`61150c83e5a97882aaf31d700f01a28f52ed8393`. Full UI-C5 remains partial. Next bounded local packet:rows 21-22 cooking controls/timer/cancellation/confirmation/completion, baseline first. Owner visual acceptance and publication/release approval pending; inherited tooling/dependency fixes stay separate.

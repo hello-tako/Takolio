@@ -35,3 +35,11 @@ Useful review files relative to evidence/:
 - `saved-recipes/after/persistence-summary.json`, `saved-recipes/after/handoff-summary.json`
 
 The narrow text200% before/after pair shows the clipped action corrected by flexible button height and the close icon protected from shrinking. SCREEN_PROGRESS row 19 points to the new mobile capture, with actual save/remove/reload/search/servings, keyboard and responsive coverage. Owner visual acceptance remains pending; the captures use synthetic data and root-font scaling.
+
+## UI-C5 recipe detail
+
+`evidence/recipe-detail/manifest.json` hashes66files: 38PNGs, 24 zero-violation axe reports and4summaryJSONs. Before exit capture uses corrected alertdialog harness; before narrow image is after navigation fix and before scoped action CSS. All after evidence is from final verified-paired source. Exact phase semantics are in the manifest.
+
+Review relative to evidence/: `recipe-detail/after/ingredients-390x844-text1.png`, `recipe-detail/after/ingredients-320x420-text2.png`, `recipe-detail/after/steps-1440x900-text1.png`, `recipe-detail/after/handoff-320x420-text2.png`, `recipe-detail/after/detail-after-exit.png`. Summaries record exact 1/2/4/20 quantities, returned ?servings=4, unchanged inventory, zero exit mutations and action text bounds/whole words. SCREEN_PROGRESS row 20 points to the mobile ingredient capture; row 21 also records verified exit/reload servings preservation.
+
+Full-page captures keep fixed overlays at the original viewport position; images are evidence only, never app assets. Synthetic root-font 200% is not OS zoom/physical-device certification. Owner acceptance remains pending.

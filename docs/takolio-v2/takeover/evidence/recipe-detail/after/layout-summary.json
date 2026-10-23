@@ -1,0 +1,581 @@
+{
+  "localSyntheticApi": true,
+  "measurements": [
+    {
+      "state": "ingredients",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "scale": 1,
+      "control": "Xếp món vào bữa",
+      "height": 44,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "ingredients",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "scale": 1,
+      "control": "Bắt đầu nấu (10 phút)",
+      "height": 48,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "steps",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "scale": 1,
+      "control": "Xếp món vào bữa",
+      "height": 44,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "steps",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "scale": 1,
+      "control": "Bắt đầu nấu (10 phút)",
+      "height": 48,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "nutrition",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "scale": 1,
+      "control": "Xếp món vào bữa",
+      "height": 44,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "nutrition",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "scale": 1,
+      "control": "Bắt đầu nấu (10 phút)",
+      "height": 48,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "ingredients",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "scale": 2,
+      "control": "Xếp món vào bữa",
+      "height": 88,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "ingredients",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "scale": 2,
+      "control": "Bắt đầu nấu (10 phút)",
+      "height": 158.390625,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "steps",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "scale": 2,
+      "control": "Xếp món vào bữa",
+      "height": 88,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "steps",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "scale": 2,
+      "control": "Bắt đầu nấu (10 phút)",
+      "height": 158.390625,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "nutrition",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "scale": 2,
+      "control": "Xếp món vào bữa",
+      "height": 88,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "nutrition",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "scale": 2,
+      "control": "Bắt đầu nấu (10 phút)",
+      "height": 158.390625,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "ingredients",
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "scale": 1,
+      "control": "Xếp món vào bữa",
+      "height": 44,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "ingredients",
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "scale": 1,
+      "control": "Bắt đầu nấu (10 phút)",
+      "height": 48,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "steps",
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "scale": 1,
+      "control": "Xếp món vào bữa",
+      "height": 44,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "steps",
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "scale": 1,
+      "control": "Bắt đầu nấu (10 phút)",
+      "height": 48,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "nutrition",
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "scale": 1,
+      "control": "Xếp món vào bữa",
+      "height": 44,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "nutrition",
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "scale": 1,
+      "control": "Bắt đầu nấu (10 phút)",
+      "height": 48,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "ingredients",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scale": 1,
+      "control": "Xếp món vào bữa",
+      "height": 44,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "ingredients",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scale": 1,
+      "control": "Bắt đầu nấu (10 phút)",
+      "height": 48,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "steps",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scale": 1,
+      "control": "Xếp món vào bữa",
+      "height": 44,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "steps",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scale": 1,
+      "control": "Bắt đầu nấu (10 phút)",
+      "height": 48,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "nutrition",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scale": 1,
+      "control": "Xếp món vào bữa",
+      "height": 44,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "nutrition",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scale": 1,
+      "control": "Bắt đầu nấu (10 phút)",
+      "height": 48,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "ingredients",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "scale": 1,
+      "control": "Xếp món vào bữa",
+      "height": 44,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "ingredients",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "scale": 1,
+      "control": "Bắt đầu nấu (10 phút)",
+      "height": 48,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "steps",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "scale": 1,
+      "control": "Xếp món vào bữa",
+      "height": 44,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "steps",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "scale": 1,
+      "control": "Bắt đầu nấu (10 phút)",
+      "height": 48,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "nutrition",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "scale": 1,
+      "control": "Xếp món vào bữa",
+      "height": 44,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "nutrition",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "scale": 1,
+      "control": "Bắt đầu nấu (10 phút)",
+      "height": 48,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "ingredients",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "scale": 1,
+      "control": "Xếp món vào bữa",
+      "height": 44,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "ingredients",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "scale": 1,
+      "control": "Bắt đầu nấu (10 phút)",
+      "height": 48,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "steps",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "scale": 1,
+      "control": "Xếp món vào bữa",
+      "height": 44,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "steps",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "scale": 1,
+      "control": "Bắt đầu nấu (10 phút)",
+      "height": 48,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "nutrition",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "scale": 1,
+      "control": "Xếp món vào bữa",
+      "height": 44,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "nutrition",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "scale": 1,
+      "control": "Bắt đầu nấu (10 phút)",
+      "height": 48,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "ingredients",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "scale": 1,
+      "control": "Xếp món vào bữa",
+      "height": 44,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "ingredients",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "scale": 1,
+      "control": "Bắt đầu nấu (10 phút)",
+      "height": 48,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "steps",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "scale": 1,
+      "control": "Xếp món vào bữa",
+      "height": 44,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "steps",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "scale": 1,
+      "control": "Bắt đầu nấu (10 phút)",
+      "height": 48,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "nutrition",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "scale": 1,
+      "control": "Xếp món vào bữa",
+      "height": 44,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "nutrition",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "scale": 1,
+      "control": "Bắt đầu nấu (10 phút)",
+      "height": 48,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "ingredients",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scale": 1,
+      "control": "Xếp món vào bữa",
+      "height": 44,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "ingredients",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scale": 1,
+      "control": "Bắt đầu nấu (10 phút)",
+      "height": 48,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "steps",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scale": 1,
+      "control": "Xếp món vào bữa",
+      "height": 44,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "steps",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scale": 1,
+      "control": "Bắt đầu nấu (10 phút)",
+      "height": 48,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "nutrition",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scale": 1,
+      "control": "Xếp món vào bữa",
+      "height": 44,
+      "fits": true,
+      "splitWords": []
+    },
+    {
+      "state": "nutrition",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scale": 1,
+      "control": "Bắt đầu nấu (10 phút)",
+      "height": 48,
+      "fits": true,
+      "splitWords": []
+    }
+  ]
+}
