@@ -61,6 +61,22 @@ describe('UI08 account forms retain real preference contracts', () => {
     await click('Ít cay');
     expect(host.textContent).not.toContain('Đã lưu sở thích.');
   });
+  it('applies offline guest tastes only for this session and discloses reload loss', async () => {
+    localStorage.setItem('frigo_guest_offline', 'true');
+    useAuthStore.setState({ isGuest: true, isOnboarded: false });
+    await mount(<FoodPreferencesPage />);
+    await until(() => expect(host.querySelector('.account-editor')).toBeTruthy());
+    expect(host.textContent).toContain('sẽ mất khi tải lại ứng dụng');
+    await click('Ít cay');
+    await click('Lưu sở thích');
+    expect(host.querySelector('[role=status]')?.textContent).toBe('Đã áp dụng sở thích cho phiên dùng thử này.');
+    expect(host.textContent).not.toContain('Đã lưu sở thích.');
+    expect(mocks.food).not.toHaveBeenCalled();
+    expect(mocks.saveFood).not.toHaveBeenCalled();
+    expect(useAuthStore.getState()).toMatchObject({ ...food, spicyLevel: 'mild', isOnboarded: false });
+    await click('Không cay');
+    expect(host.querySelector('[role=status]')).toBeNull();
+  });
   it('locks the food draft while its exact request is saving', async () => {
     let done!: () => void;
     mocks.saveFood.mockReturnValue(new Promise<void>((resolve) => { done = resolve; }));
