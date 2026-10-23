@@ -71,6 +71,19 @@
   "profile_check_logs_verified": 11,
   "profile_retained_attempt_logs_verified": 7,
   "profile_recovery_verified": true,
+  "household_evidence_files_verified": 108,
+  "household_pngs_verified": 48,
+  "household_zero_violation_axe_reports": 24,
+  "household_incomplete_axe_reports_by_rule": {
+    "color-contrast": 24
+  },
+  "household_before_requested_width_failures": 4,
+  "household_summaries_verified": 12,
+  "household_state_config_captures_verified": 24,
+  "household_check_logs_verified": 11,
+  "household_retained_logs_verified": 4,
+  "household_retained_baseline_artifacts_verified": 1,
+  "household_recovery_verified": true,
   "screen_rows": 38,
   "screen_counts": {
     "CAPTURED_PROXY": 1,
@@ -79,10 +92,10 @@
   "selected_source_paths": 54,
   "csv_rows": {
     "ARGON_WORK_LEDGER.csv": 69,
-    "FILE_DECISIONS.csv": 88,
+    "FILE_DECISIONS.csv": 90,
     "WIP_ASSET_PROVENANCE.csv": 12
   },
-  "reviewed_changed_or_added_paths": 998,
+  "reviewed_changed_or_added_paths": 1112,
   "credential_scan": "No private-key, GitHub token, OpenAI token pattern or exact private backup path detected in changed text; pattern scan is not a general security certification.",
   "failures": []
 }

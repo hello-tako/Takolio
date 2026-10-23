@@ -1,3 +1,14 @@
+# Takolio V2 continuation - Household row31 checkpoint (2026-10-24 JST)
+
+- `LOCAL_HOUSEHOLD_REFLOW_VERIFIED`: existing UI08 screen retained; bounded grid/text wraps fix four baseline requested-width failures. No fabricated sharing actions.
+- Implementation `d9107856888cafd2dc3d0462f4a03595c7b72fa4` on `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`. Original Argon workspace is unchanged; full private snapshot recheck matches 22,763 regular files / 772 symlinks, bytes/modes/links/HEAD/index/status with zero worktree differences and parent permissions 0700.
+- Final browser 6/6 in 19.3s; focused 76 unit + 104 integration tests; targeted ESLint, lint/types, local migration smoke, default and actual paired builds PASS. Full suite remains PARTIAL: 410/412 files, 9,163/9,168 tests in 192.21s; five inherited encoded-space CLI failures, no timeout. Audit remains inherited 1 low / 6 moderate / 1 high. Household evidence binds 108 payloads (48 PNG, 48 axe, twelve summaries), including 24 final zero-violation axe reports with incomplete contrast and four failing baseline requested-width captures.
+- Evidence: `docs/takolio-v2/takeover/UI_C7_HOUSEHOLD.md`; row31 and ninety file decisions updated. All owner review remains PENDING.
+- Registered and guest monitored journeys issue no writes after setup; registered inventory/shopping snapshots remain equal. Long-name journey shapes cache and retains after-only stock/shopping reads. Baseline long name has spaces; final is unbroken, so no matched unbroken-name baseline is claimed. Root-font checks do not certify OS zoom, devices or screen readers.
+- Next action: bounded row32 App Settings source/API/browser baseline under UI08, preserving cache/outbox/data semantics. Family invite/join/member-list APIs remain unavailable. Owner visual/manual accessibility review, full Week-OFF, physical devices, providers, performance and production remain open. No push, merge, deploy, remote migration or production action.
+
+---
+
 # Takolio V2 continuation - Profile row30 checkpoint (2026-10-23 JST)
 
 - `LOCAL_PROFILE_REFINEMENT_VERIFIED`: UI08 profile reused; one honest notification metadata correction plus three local browser journeys.

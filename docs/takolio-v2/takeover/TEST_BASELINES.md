@@ -1,3 +1,35 @@
+# UI-C7 household baseline - 2026-10-24 JST
+
+Implementation `d9107856888cafd2dc3d0462f4a03595c7b72fa4` on `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`. Original Argon workspace is unchanged; full private snapshot recheck matches 22,763 regular files / 772 symlinks, bytes/modes/links/HEAD/index/status with zero worktree differences and parent permissions 0700.
+
+Environment: macOS; Node 25.9.0; pnpm 10.33.2; unchanged dependencies; existing isolated Worker/SQLite fixtures and actual local guest. External API fetch/service workers blocked. Three final source hashes bind to implementation in `evidence/household-checks.json`.
+
+| Exact executed command | Actual result |
+|---|---|
+| `pnpm exec eslint src/web/pages/FamilySharingPage.tsx tests/e2e/t17-ui/takolio-family-continuation.e2e.ts` | PASS final source; existing Admin font warnings where applicable (exit 0; wall 1.11s) |
+| `pnpm exec vitest run tests/unit/ui08-account.test.tsx tests/unit/frontend-services.test.ts tests/unit/ui08-route-scope.test.tsx tests/unit/ui11-navigation.test.tsx` | PASS 4 files/76 tests in 1.38s (exit 0; wall 2.14s) |
+| `pnpm exec vitest run tests/integration/frontend-ui-integration.test.tsx tests/integration/auth-tenant-adversarial.test.ts tests/integration/inventory-closed-loop.test.ts` | PASS 3 files/104 tests in 6.67s (exit 0; wall 7.34s) |
+| `pnpm lint` | PASS final source; existing Admin font warnings where applicable (exit 0; wall 6.76s) |
+| `pnpm typecheck` | PASS final source; existing Admin font warnings where applicable (exit 0; wall 16.88s) |
+| `pnpm check:migrations` | PASS final source; existing Admin font warnings where applicable (exit 0; wall 0.52s) |
+| `pnpm build` | PASS final source; existing Admin font warnings where applicable (exit 0; wall 9.82s) |
+| `VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build` | PASS final source; existing Admin font warnings where applicable (exit 0; wall 9.58s) |
+| `pnpm audit --json` | OPEN_INHERITED 1 low/6 moderate/1 high including Vite GHSA-587h-7wmj-h5pm; dependencies unchanged (exit 1; wall 2.58s) |
+| `PREVIEW_MEAL_COMPOSITION_V2=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-family-continuation.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/household/final` | PASS 6/6 in 19.3s; 24 final zero-violation axe reports retain incomplete contrast; registered/guest monitored journeys have no writes; registered stock/shopping unchanged (exit 0; wall 19.99s) |
+| `TMPDIR=/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/ pnpm test` | PARTIAL 410/412 files; 9163/9168 tests in 192.21s; same five inherited encoded-space CLI failures; no timeout (exit 1; wall 193.09s) |
+
+Test duration: full suite 192.21s (runner wall 193.09s), browser 19.3s (wall 19.99s), focused units 1.38s, integration 6.67s. Five inherited encoded-space CLI failures in production-catalog-continuity/release-check remain, with no timeout; protected release scripts/tests unchanged. Audit retains Vite GHSA-587h-7wmj-h5pm and unchanged dependencies. Existing Admin font build warnings remain.
+
+Baseline had four passing/two failing tests and four guest requested-width failures at 320. Mobile innerWidth expands to 330; desktop scrollWidth reaches 340. Both are measured against requested 320, not just innerWidth. Before PNG/axe/summaries are bound; raw baseline terminal log was not retained. `.last-run.json`, error contexts/traces and debug/debug2 directories remain local without fabricated logs. Earlier passing three-test layout attempt is retained in after.log. Final unbroken cached name differs from spaced baseline input; its comparison is after-only.
+
+The receipt binds eleven final logs, four retained logs and one baseline artifact. Manifest binds 108 payloads: 48 PNG, 48 axe, twelve summaries. Twenty-four final axe reports have zero violations and incomplete color-contrast. Registered and guest monitored journeys issue no writes after setup; registered inventory/shopping snapshots remain equal. Long-name journey shapes cache and retains after-only stock/shopping reads. Baseline long name has spaces; final is unbroken, so no matched unbroken-name baseline is claimed. Root-font checks do not certify OS zoom, devices or screen readers.
+
+Documentation finalization: `python3 .artifacts/takeover/audit-scope.py`, `python3 .artifacts/takeover/verify-evidence.py`, full private snapshot verifier outside repository, `git diff --check`, source/log hash checks, changed-text credential/private-path scan and historical-tail verification PASS. Historical receipt validation uses immutable Git objects for changed shared CSS; previous CSS retained verbatim. Raw logs/private locations stay ignored.
+
+Next action: bounded row32 App Settings source/API/browser baseline under UI08, preserving cache/outbox/data semantics. Family invite/join/member-list APIs remain unavailable. Owner visual/manual accessibility review, full Week-OFF, physical devices, providers, performance and production remain open. No push, merge, deploy, remote migration or production action.
+
+---
+
 # UI-C7 profile baseline - 2026-10-23 JST
 
 Implementation `6cb0d462813482b8137d975b207d8b530fc55776` on `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`. Original Argon workspace is unchanged; the full private snapshot recheck matches 22,763 regular files / 772 symlinks, bytes/modes/links/HEAD/index/status with zero worktree differences and parent permissions 0700.

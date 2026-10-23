@@ -1,3 +1,11 @@
+## Household row31 source identity - 2026-10-24 JST
+
+Implementation `d9107856888cafd2dc3d0462f4a03595c7b72fa4` on `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`. Original Argon workspace is unchanged; full private snapshot recheck matches 22,763 regular files / 772 symlinks, bytes/modes/links/HEAD/index/status with zero worktree differences and parent permissions 0700.
+
+Changed paths: `src/web/pages/FamilySharingPage.tsx`, `src/web/styles/kitchen-account.css`, `tests/e2e/t17-ui/takolio-family-continuation.e2e.ts`. Exact SHA256 values in `evidence/household-checks.json` match the implementation Git object and current source. Prior notifications CSS remains a byte-identical prefix with exactly the reviewed Family append; historical notification receipt stays bound to `8c1ad40ec5e63587c8b3b2900d0e683b35a3c794`. Prior evidence is not relabeled as current tests.
+
+---
+
 ## Profile row30 source identity - 2026-10-23 JST
 
 Implementation `6cb0d462813482b8137d975b207d8b530fc55776` on `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`. Original Argon workspace is unchanged; the full private snapshot recheck matches 22,763 regular files / 772 symlinks, bytes/modes/links/HEAD/index/status with zero worktree differences and parent permissions 0700.

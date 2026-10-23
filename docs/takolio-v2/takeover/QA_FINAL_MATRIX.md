@@ -1,3 +1,21 @@
+# Household row31 QA update - 2026-10-24 JST
+
+| Area | Status | Evidence / limit |
+|---|---|---|
+| Existing UI08 presentation | PASS_BOUNDED | One min-w-0 and scoped text wraps; components/assets/copy reused |
+| Server identity / alias | PASS_BOUNDED | Actual local registered/guest session ID; /family -> /me/household |
+| Sharing capabilities | HONESTLY_UNAVAILABLE | Three unavailable notes; no invented invite/join/member actions |
+| Navigation / no-write | PASS_BOUNDED | Registered keyboard back/return; registered/guest no writes after setup; registered stock/shopping equal |
+| Cached long name | PASS_BOUNDED_AFTER | Final unbroken name; baseline has spaces; after-only stock/shopping reads |
+| Reflow | PASS_BOUNDED | Four requested-width baseline failures corrected; 24 final state/config captures fit |
+| Accessibility / owner | OPEN_MANUAL | 24 zero-violation axe reports retain incomplete contrast; owner PENDING |
+| Full regression / audit | PARTIAL | 9,163/9,168; five inherited CLI path failures; 1 low/6 moderate/1 high |
+| Live/device/performance | NOT_CLAIMED | Root-font simulation; no physical-device, OS zoom, screen-reader or production certification |
+
+Implementation `d9107856888cafd2dc3d0462f4a03595c7b72fa4`; exact commands/evidence in `UI_C7_HOUSEHOLD.md` and `evidence/household-checks.json`. Next bounded packet: row32 App Settings baseline.
+
+---
+
 # Profile row30 QA update - 2026-10-23 JST
 
 | Area | Status | Evidence / limit |

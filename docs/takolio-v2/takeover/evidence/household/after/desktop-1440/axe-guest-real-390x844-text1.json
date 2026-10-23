@@ -1,0 +1,32 @@
+{
+  "state": "guest-real",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "textScale": 1,
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ],
+  "metrics": {
+    "innerWidth": 390,
+    "scrollWidth": 390,
+    "brokenImages": [],
+    "membership": {
+      "clientWidth": 328,
+      "scrollWidth": 328,
+      "text": "Dữ liệu tủ lạnh, lịch sử quét và thực đơn được phân tách theo hộ. Tài khoản của bạn (Người dùng Takolio) là thành viên của hộ này."
+    },
+    "householdId": {
+      "clientWidth": 276,
+      "scrollWidth": 276,
+      "text": "Mã hộ: hh_guest_1792769457452ulzbf724"
+    },
+    "bodyLinks": 0,
+    "bodyButtons": 0
+  }
+}

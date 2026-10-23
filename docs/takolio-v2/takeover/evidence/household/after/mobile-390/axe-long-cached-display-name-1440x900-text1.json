@@ -1,0 +1,32 @@
+{
+  "state": "long-cached-display-name",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "textScale": 1,
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ],
+  "metrics": {
+    "innerWidth": 1440,
+    "scrollWidth": 1440,
+    "brokenImages": [],
+    "membership": {
+      "clientWidth": 738,
+      "scrollWidth": 738,
+      "text": "Dữ liệu tủ lạnh, lịch sử quét và thực đơn được phân tách theo hộ. Tài khoản của bạn (TênThànhViênĐượcLưuCụcBộTênThànhViênĐượcLưuCụcBộTênThànhViênĐượcLưuCụcBộTênThànhViênĐượcLưuCụcBộTênThànhViênĐượcLưuCụcBộTênThànhViênĐượcLưuCụcBộTênThànhViênĐượcLưuCụcBộTênThànhViênĐượcLưuCụcBộTênThànhViênĐượcLưuCụcBộTênThànhViênĐượcLưuCụcBộTênThànhViênĐượcLưuCụcBộTênThànhViênĐượcLưuCụcBộ) là thành viên của hộ này."
+    },
+    "householdId": {
+      "clientWidth": 233,
+      "scrollWidth": 233,
+      "text": "Mã hộ: planner-preview-household"
+    },
+    "bodyLinks": 0,
+    "bodyButtons": 0
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "routeAlias": "/family -> /me/household",
+  "serverHouseholdId": "planner-preview-household",
+  "cachedHouseholdId": "planner-preview-household",
+  "honestUnavailableNotes": 3,
+  "fabricatedInviteJoinMemberControls": false,
+  "keyboardBackAndReturn": true,
+  "inventoryAndShoppingUnchanged": true,
+  "writes": [],
+  "observations": [
+    {
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": [],
+        "membership": {
+          "clientWidth": 258,
+          "scrollWidth": 258,
+          "text": "Dữ liệu tủ lạnh, lịch sử quét và thực đơn được phân tách theo hộ. Tài khoản của bạn (Frigo Preview) là thành viên của hộ này."
+        },
+        "householdId": {
+          "clientWidth": 208,
+          "scrollWidth": 208,
+          "text": "Mã hộ: planner-preview-household"
+        },
+        "bodyLinks": 0,
+        "bodyButtons": 0
+      }
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "textScale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": [],
+        "membership": {
+          "clientWidth": 226,
+          "scrollWidth": 226,
+          "text": "Dữ liệu tủ lạnh, lịch sử quét và thực đơn được phân tách theo hộ. Tài khoản của bạn (Frigo Preview) là thành viên của hộ này."
+        },
+        "householdId": {
+          "clientWidth": 126,
+          "scrollWidth": 126,
+          "text": "Mã hộ: planner-preview-household"
+        },
+        "bodyLinks": 0,
+        "bodyButtons": 0
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "brokenImages": [],
+        "membership": {
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "text": "Dữ liệu tủ lạnh, lịch sử quét và thực đơn được phân tách theo hộ. Tài khoản của bạn (Frigo Preview) là thành viên của hộ này."
+        },
+        "householdId": {
+          "clientWidth": 196,
+          "scrollWidth": 196,
+          "text": "Mã hộ: planner-preview-household"
+        },
+        "bodyLinks": 0,
+        "bodyButtons": 0
+      }
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "brokenImages": [],
+        "membership": {
+          "clientWidth": 738,
+          "scrollWidth": 738,
+          "text": "Dữ liệu tủ lạnh, lịch sử quét và thực đơn được phân tách theo hộ. Tài khoản của bạn (Frigo Preview) là thành viên của hộ này."
+        },
+        "householdId": {
+          "clientWidth": 233,
+          "scrollWidth": 233,
+          "text": "Mã hộ: planner-preview-household"
+        },
+        "bodyLinks": 0,
+        "bodyButtons": 0
+      }
+    }
+  ]
+}

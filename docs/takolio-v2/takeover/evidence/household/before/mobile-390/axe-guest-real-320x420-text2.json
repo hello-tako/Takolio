@@ -1,0 +1,24 @@
+{
+  "state": "guest-real",
+  "viewport": {
+    "width": 320,
+    "height": 420
+  },
+  "textScale": 2,
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ],
+  "metrics": {
+    "innerWidth": 412,
+    "scrollWidth": 412,
+    "brokenImages": [],
+    "membership": null,
+    "householdId": null,
+    "bodyLinks": 0,
+    "bodyButtons": 0
+  }
+}

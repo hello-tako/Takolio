@@ -1,3 +1,17 @@
+# Takolio V2 household continuation handoff - 2026-10-24 JST
+
+Status: `LOCAL_HOUSEHOLD_REFLOW_VERIFIED`. Implementation `d9107856888cafd2dc3d0462f4a03595c7b72fa4` on `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`. Original Argon workspace is unchanged; full private snapshot recheck matches 22,763 regular files / 772 symlinks, bytes/modes/links/HEAD/index/status with zero worktree differences and parent permissions 0700.
+
+Actual changes: Reused existing UI08 household components/assets and honest unavailable sharing notes. Reproduced actual guest overflow at both narrow configurations in both contexts; added one min-w-0 and scoped ID/membership text wraps. Added three browser journeys; no sharing capability fabricated. Previous notifications CSS remains a byte-identical prefix; its immutable historical source receipt is retained. Backend, auth/security, payments, inventory authority, Week compatibility, schema, dependencies and production infrastructure remain unchanged.
+
+Final browser 6/6 in 19.3s; focused 76 unit + 104 integration tests; targeted ESLint, lint/types, local migration smoke, default and actual paired builds PASS. Full suite remains PARTIAL: 410/412 files, 9,163/9,168 tests in 192.21s; five inherited encoded-space CLI failures, no timeout. Audit remains inherited 1 low / 6 moderate / 1 high. Household evidence binds 108 payloads (48 PNG, 48 axe, twelve summaries), including 24 final zero-violation axe reports with incomplete contrast and four failing baseline requested-width captures.
+
+Registered and guest monitored journeys issue no writes after setup; registered inventory/shopping snapshots remain equal. Long-name journey shapes cache and retains after-only stock/shopping reads. Baseline long name has spaces; final is unbroken, so no matched unbroken-name baseline is claimed. Root-font checks do not certify OS zoom, devices or screen readers.
+
+Exact commands/log hashes: `docs/takolio-v2/takeover/evidence/household-checks.json` and `docs/takolio-v2/takeover/TEST_BASELINES.md`. Detailed evidence: `docs/takolio-v2/takeover/UI_C7_HOUSEHOLD.md`. Evidence/protected-main/credential validation and private recovery recheck PASS; historical tails retained. Next action: bounded row32 App Settings source/API/browser baseline under UI08, preserving cache/outbox/data semantics. Family invite/join/member-list APIs remain unavailable. Owner visual/manual accessibility review, full Week-OFF, physical devices, providers, performance and production remain open. No push, merge, deploy, remote migration or production action.
+
+---
+
 # Takolio V2 profile continuation handoff - 2026-10-23 JST
 
 Status: `LOCAL_PROFILE_REFINEMENT_VERIFIED`. Implementation `6cb0d462813482b8137d975b207d8b530fc55776` on `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`. Original Argon workspace is unchanged; the full private snapshot recheck matches 22,763 regular files / 772 symlinks, bytes/modes/links/HEAD/index/status with zero worktree differences and parent permissions 0700.
