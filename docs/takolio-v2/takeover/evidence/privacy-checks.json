@@ -1,0 +1,149 @@
+{
+  "base_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "implementation_commit": "23585223c3c6747cce3dd132a2985cb75580947a",
+  "checkpoint_kind": "test-only privacy audit; zero product source changes",
+  "production_actions": false,
+  "environment": "macOS Node25.9.0/pnpm10.33.2 static/build/browser;full suite Node24.16.0 with resolved TMPDIR;isolated local Worker/SQLite;external APIs/serviceworkers blocked;Chromium reduced-motion/root-font simulation",
+  "source_sha256": {
+    "src/web/pages/settings/PrivacyDataPage.tsx": "9790e30c32fb1225bab036e50e2e5be5c8f5dc28a2007460ee81b5d4488e3248",
+    "src/web/components/common/AccountPage.tsx": "5297f51bad8c33b9bccba1b587cf63c56de621c1d264de74dd54913c5d06e544",
+    "src/web/components/common/KitchenHeader.tsx": "354696ee968d880b8d84ca49e37902dc3bf309cb609f8370c2eafaf78b42e576",
+    "src/web/styles/kitchen-account.css": "72ec00d9b23dfd8989a307bc4c62497391a3cb75b689ca0ee2dd9450248cbcea",
+    "tests/e2e/t17-ui/takolio-privacy-continuation.e2e.ts": "1311be5e84c138f9ad18a2ce8a14a036d43ce8a88039362f697b07c4e7dc4202"
+  },
+  "product_tsx_byte_identical_to_main": true,
+  "baseline_source_copy": {
+    "path": "src/web/pages/settings/PrivacyDataPage.tsx",
+    "sha256": "9790e30c32fb1225bab036e50e2e5be5c8f5dc28a2007460ee81b5d4488e3248",
+    "byte_identical_to_main": true,
+    "local_ignored_copy": ".artifacts/takeover/privacy/PrivacyDataPage.tsx.baseline"
+  },
+  "checks": [
+    {
+      "name": "targeted-eslint",
+      "command": "pnpm exec eslint tests/e2e/t17-ui/takolio-privacy-continuation.e2e.ts",
+      "exit_code": 0,
+      "seconds": 1.04,
+      "outcome": "PASS",
+      "local_ignored_log": ".artifacts/takeover/privacy/targeted-eslint.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "lint",
+      "command": "pnpm lint",
+      "exit_code": 0,
+      "seconds": 6.94,
+      "outcome": "PASS",
+      "local_ignored_log": ".artifacts/takeover/privacy/lint.log",
+      "log_bytes": 99,
+      "log_sha256": "3f2044fca43a5e60905becf2ebfc3a21ddd85976975841aa1e16bc87b0f40a6d"
+    },
+    {
+      "name": "typecheck",
+      "command": "pnpm typecheck",
+      "exit_code": 0,
+      "seconds": 17.93,
+      "outcome": "PASS",
+      "local_ignored_log": ".artifacts/takeover/privacy/typecheck.log",
+      "log_bytes": 165,
+      "log_sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e"
+    },
+    {
+      "name": "migrations",
+      "command": "pnpm check:migrations",
+      "exit_code": 0,
+      "seconds": 0.51,
+      "outcome": "PASS",
+      "local_ignored_log": ".artifacts/takeover/privacy/migrations.log",
+      "log_bytes": 297,
+      "log_sha256": "9616315a9fcbfd77c67784703a16384419539e6a68ccd2838dda07239de25464"
+    },
+    {
+      "name": "build",
+      "command": "pnpm build",
+      "exit_code": 0,
+      "seconds": 10.34,
+      "outcome": "PASS; inherited Admin font warnings on builds",
+      "local_ignored_log": ".artifacts/takeover/privacy/build.log",
+      "log_bytes": 10008,
+      "log_sha256": "540d18807777020a812dc1e0979c7beaad8fa394508ae14955ae1c2ea204fa12"
+    },
+    {
+      "name": "paired-build",
+      "command": "VITE_FF_MEAL_PLANNER_V2=true VITE_FF_MEAL_COMPOSITION_V2=true pnpm build",
+      "exit_code": 0,
+      "seconds": 9.74,
+      "outcome": "PASS; inherited Admin font warnings on builds",
+      "local_ignored_log": ".artifacts/takeover/privacy/paired-build.log",
+      "log_bytes": 10008,
+      "log_sha256": "3accb1d1635c6365d58f59e58fc6932107b1fcd6e97696fc8082cba1caf2205a"
+    },
+    {
+      "name": "audit",
+      "command": "pnpm audit --json",
+      "exit_code": 1,
+      "seconds": 1.14,
+      "outcome": "OPEN_INHERITED 1low/6moderate/1high including Vite GHSA-587h-7wmj-h5pm; dependencies unchanged",
+      "local_ignored_log": ".artifacts/takeover/privacy/audit.log",
+      "log_bytes": 43734,
+      "log_sha256": "3256cc0c6e0545751f2cfdb3223b90a27a32043a364bb025bc5047465d90103f"
+    },
+    {
+      "name": "remote-main",
+      "command": "git ls-remote https://github.com/hello-tako/Takolio.git refs/heads/main",
+      "exit_code": 0,
+      "seconds": 1.14,
+      "outcome": "PASS",
+      "local_ignored_log": ".artifacts/takeover/privacy/remote-main.log",
+      "log_bytes": 57,
+      "log_sha256": "74b0b5609784df7a5fddf1241a9179b9e62a61f3d3671f7fc0a075210071e212"
+    },
+    {
+      "name": "full-suite-node24",
+      "command": "pnpm test",
+      "PATH_prefix": "/opt/homebrew/opt/node@24/bin",
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/",
+      "node": "v24.16.0",
+      "exit_code": 1,
+      "seconds": 199.62,
+      "outcome": "PARTIAL;410/412files;9164/9169tests;same five inherited encoded-space CLI failures;198.72s (transform 15.48s, setup 4.30s, import 93.24s, tests 1186.64s, environment 24.37s)",
+      "local_ignored_log": ".artifacts/takeover/privacy/full-suite-node24.log",
+      "log_bytes": 17961,
+      "log_sha256": "3759db6f0a92cc80e28c929e9785a15f620e65f62afe2f3cbc198c6fd5962afa"
+    },
+    {
+      "name": "browser-verified",
+      "command": "PREVIEW_MEAL_COMPOSITION_V2=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-privacy-continuation.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/privacy/verified",
+      "exit_code": 0,
+      "reported_duration": "31.8s",
+      "outcome": "PASS4/4;48captures;zero reported axe violations;48incomplete contrast;no writes/downloads;family/inventory/shopping/plan/onboarding snapshots unchanged",
+      "local_ignored_log": ".artifacts/takeover/privacy/verified.log",
+      "log_bytes": 16670,
+      "log_sha256": "8d49122de8691cc2acc69411a2902c212a3c4838ad26ab326b3211cd40dd1d42"
+    }
+  ],
+  "retained_attempts": [
+    {
+      "name": "initial-browser",
+      "command": "PREVIEW_MEAL_COMPOSITION_V2=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-privacy-continuation.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/privacy/after",
+      "exit_code": 1,
+      "outcome": "4failed solely because harness wrongly required48px for44px shared header links;ADR-TAKOLIO-002/ADR-063 preserve44px;all48axe reports zero;complete journeys/no domain writes;product unchanged",
+      "log_capture": "Output after first startup warning; no complete stdout claim",
+      "local_ignored_log": ".artifacts/takeover/privacy/initial-output.log",
+      "log_bytes": 46827,
+      "log_sha256": "f782d58518ce78dbd0da6f5486a5ef70a61ca432085fac8b6158229caa159f18"
+    }
+  ],
+  "initial_harness": {
+    "path": ".artifacts/takeover/privacy/harness-initial.ts",
+    "sha256": "95ae098eda0c69b693e69a8ef0372e4ae38cde0b53776b9e21021dc697695af1",
+    "correction": "Only header target threshold48to44 per current ADR. No product edits."
+  },
+  "initial_artifacts_binding": {
+    "path": ".artifacts/takeover/privacy/initial-artifacts-binding.json",
+    "sha256": "ff3042b127eb3272141060091c68e19cf672b34fce536020be14e1909e2495a8",
+    "entries": 113
+  },
+  "scope": "Existing UI08 PrivacyDataPage retained. Honest unavailable export/delete and AI image disclosures;five shaped Notification states including unsupported/unknown;each reloads before capture;no live permission-change claim. Two genuine keyboard entry paths/back/reload. No export/download/API mutation or permission request in shaped journeys. Household snapshots unchanged;not cross-tenant security certification. No CSS/component/assets/API/backend/auth/payment/schema/config/dependency/infrastructure edits. No before-after visual improvement claimed."
+}

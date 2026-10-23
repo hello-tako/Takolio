@@ -1,3 +1,28 @@
+# Privacy/Data row36 QA - 2026-10-24 JST
+
+| Area | Actual result |
+|---|---|
+| Product source | KEEP_MAIN; PrivacyDataPage is byte-identical to canonical main |
+| Navigation | PASS_BOUNDED; two keyboard entry paths, Enter return to /me, real reload |
+| Disclosure | PASS_BOUNDED; data/AI precautions, unavailable export/delete, honest sign-out |
+| Permission | PASS_SHAPED; granted, denied, default, unsupported, unknown; zero permission requests |
+| Domain boundaries | PASS_BOUNDED; zero monitored writes/downloads; five domain snapshots retained |
+| Layout/assets | PASS_BOUNDED; 48 captures; four configs; no horizontal text/document overflow; 44px back target |
+| Accessibility | OPEN_MANUAL; 48 zero-violation axe reports, 48 incomplete contrast |
+| Full suite | PARTIAL; 410/412 files, 9,164/9,169 tests; five inherited CLI failures |
+| Dependencies | OPEN_INHERITED; 1 low / 6 moderate / 1 high |
+| Owner/device/production | PENDING; no certification |
+
+Implementation `23585223c3c6747cce3dd132a2985cb75580947a` (test only), branch `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main: `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+These are isolated Chromium/local Worker/SQLite checks with reduced motion and root-font scaling. They do not certify physical devices, OS zoom, screen readers, live notification permissions/providers, cross-household access control, performance or production. Permission states are shaped and reload before observation; no live permission-change claim. Full-page mobile screenshots can show fixed-navigation positioning from the browser capture process. All 48 incomplete contrast results require manual review; no before/after visual improvement or owner acceptance is claimed.
+
+Next bounded packet: row38 global offline/error source, caller and isolated browser recovery audit; preserve outbox, idempotency, inventory revisions, household isolation and existing Week behavior. Row37 Plus remains protected and its existing presentation evidence is retained. Owner/manual accessibility/device review, inherited full-suite failures and dependency findings remain open. No push, PR publication, merge, deploy, remote migration or production action.
+
+Finalization executed: protected-main audit PASS (5,838 protected paths unchanged); evidence, credential/private-recovery-path and whitespace validation PASS. All eight historical document tails and the previous 99 file decisions are preserved; only SCREEN_PROGRESS row36 changed. These results precede the separate local documentation checkpoint commit.
+
+---
+
 # Notification preferences row35 QA - 2026-10-24 JST
 
 | Area | Actual result |

@@ -1,3 +1,34 @@
+# UI08 Privacy/Data row36 baseline - 2026-10-24 JST
+
+Implementation `23585223c3c6747cce3dd132a2985cb75580947a` (test only), branch `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main: `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+| Exact executed command | Actual result |
+|---|---|
+| `pnpm exec eslint tests/e2e/t17-ui/takolio-privacy-continuation.e2e.ts` | PASS (exit 0; wall 1.04s) |
+| `pnpm lint` | PASS (exit 0; wall 6.94s) |
+| `pnpm typecheck` | PASS (exit 0; wall 17.93s) |
+| `pnpm check:migrations` | PASS (exit 0; wall 0.51s) |
+| `pnpm build` | PASS; inherited Admin font warnings on builds (exit 0; wall 10.34s) |
+| `VITE_FF_MEAL_PLANNER_V2=true VITE_FF_MEAL_COMPOSITION_V2=true pnpm build` | PASS; inherited Admin font warnings on builds (exit 0; wall 9.74s) |
+| `pnpm audit --json` | OPEN_INHERITED 1low/6moderate/1high including Vite GHSA-587h-7wmj-h5pm; dependencies unchanged (exit 1; wall 1.14s) |
+| `git ls-remote https://github.com/hello-tako/Takolio.git refs/heads/main` | PASS (exit 0; wall 1.14s) |
+| `PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/ pnpm test` | PARTIAL;410/412files;9164/9169tests;same five inherited encoded-space CLI failures;198.72s (transform 15.48s, setup 4.30s, import 93.24s, tests 1186.64s, environment 24.37s) (exit 1; wall 199.62s) |
+| `PREVIEW_MEAL_COMPOSITION_V2=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-privacy-continuation.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/privacy/verified` | PASS4/4;48captures;zero reported axe violations;48incomplete contrast;no writes/downloads;family/inventory/shopping/plan/onboarding snapshots unchanged (exit 0; reported 31.8s; shell wall unrecorded) |
+
+Initial browser attempt failed 4/4 because the harness required a 48px shared-header target; ADR-TAKOLIO-002 and ADR-063 retain the existing 44px header contract. Only that assertion changed to 44px; product source remained unchanged. The initial harness, 113 initial artifacts and captured output are retained with hashes. The ignored gate runner completed and saved all nine command results, then raised NameError on a stray heredoc marker PY; the marker was removed and py_compile passed. No gate result was discarded or rerun solely for that orchestration error.
+
+Browser: 4/4 passed in 31.8s. Targeted ESLint, pnpm lint, pnpm typecheck, local migration smoke, default build and paired planner/composition build PASS. Full suite with Node v24.16.0 and resolved TMPDIR: 410/412 files and 9,164/9,169 tests passed in 198.72s (wall 199.62s); the same five inherited production-catalog-continuity/release-check CLI failures remain. pnpm audit retains 1 low / 6 moderate / 1 high, including Vite GHSA-587h-7wmj-h5pm; dependencies are unchanged. Existing Admin font warnings remain on builds.
+
+100 bound payloads: 48 PNG, 48 axe JSON and four behavior summaries. Each of six states is captured at 320x568, 320x420/root text200, 390x844 and 1440x900 in mobile-390 and desktop-1440 contexts. All 48 axe reports have zero reported violations and incomplete color-contrast; all text bounds, document width, assets and 44px back targets pass. Genuine keyboard activation enters from Profile and App Settings and returns to Profile; reload retains disclosures. Five shaped Notification states remain descriptive and never request permission. No monitored API write or download; inventory, shopping, family, current-plan and onboarding snapshots remain unchanged.
+
+These are isolated Chromium/local Worker/SQLite checks with reduced motion and root-font scaling. They do not certify physical devices, OS zoom, screen readers, live notification permissions/providers, cross-household access control, performance or production. Permission states are shaped and reload before observation; no live permission-change claim. Full-page mobile screenshots can show fixed-navigation positioning from the browser capture process. All 48 incomplete contrast results require manual review; no before/after visual improvement or owner acceptance is claimed.
+
+Next bounded packet: row38 global offline/error source, caller and isolated browser recovery audit; preserve outbox, idempotency, inventory revisions, household isolation and existing Week behavior. Row37 Plus remains protected and its existing presentation evidence is retained. Owner/manual accessibility/device review, inherited full-suite failures and dependency findings remain open. No push, PR publication, merge, deploy, remote migration or production action.
+
+Finalization executed: protected-main audit PASS (5,838 protected paths unchanged); evidence, credential/private-recovery-path and whitespace validation PASS. All eight historical document tails and the previous 99 file decisions are preserved; only SCREEN_PROGRESS row36 changed. These results precede the separate local documentation checkpoint commit.
+
+---
+
 # UI08 Notification preferences row35 baseline - 2026-10-24 JST
 
 Implementation `b8248ca40781620b7eb78a970c3314e8dc12e779` on `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.

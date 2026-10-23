@@ -1,3 +1,17 @@
+## Privacy/Data row36 source identity - 2026-10-24 JST
+
+Implementation `23585223c3c6747cce3dd132a2985cb75580947a` (test only), branch `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main: `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Retained the existing UI08 PrivacyDataPage byte-for-byte from canonical main, including its existing components, icons and truthful unavailable export/delete states. Reviewed Profile and App Settings entry links, route wiring, shared account/header presentation and the local /api/v1/me boundary. Added two browser tests across two contexts; no runtime source, CSS, asset, API or backend change was justified by the observed behavior.
+
+Five source hashes bind main PrivacyDataPage, retained AccountPage/KitchenHeader/account CSS and the new browser test to the implementation Git objects. Initial browser attempt failed 4/4 because the harness required a 48px shared-header target; ADR-TAKOLIO-002 and ADR-063 retain the existing 44px header contract. Only that assertion changed to 44px; product source remained unchanged. The initial harness, 113 initial artifacts and captured output are retained with hashes. The ignored gate runner completed and saved all nine command results, then raised NameError on a stray heredoc marker PY; the marker was removed and py_compile passed. No gate result was discarded or rerun solely for that orchestration error.
+
+Post-implementation full private verification matches the original Argon source: 22,763 regular files / 772 symlinks, bytes, modes, links, HEAD, index and status; zero worktree differences, private parent 0700. Authorized shared Git metadata changes are disclosed separately. Exact recovery location stays private. Selected salvage remains 54 paths; Argon ledger 69 rows and asset ledger 12 rows are intact. File decisions now contain 101 rows; all 38 owner-review statuses remain PENDING.
+
+Finalization executed: protected-main audit PASS (5,838 protected paths unchanged); evidence, credential/private-recovery-path and whitespace validation PASS. All eight historical document tails and the previous 99 file decisions are preserved; only SCREEN_PROGRESS row36 changed. These results precede the separate local documentation checkpoint commit.
+
+---
+
 ## Notification preferences row35 source identity - 2026-10-24 JST
 
 Implementation `b8248ca40781620b7eb78a970c3314e8dc12e779` on `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.

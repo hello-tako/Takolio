@@ -1,0 +1,30 @@
+{
+  "state": "permission-unexpected",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "textScale": 1,
+  "metrics": {
+    "innerWidth": 390,
+    "scrollWidth": 390,
+    "textOutsideViewport": [],
+    "brokenImages": []
+  },
+  "backTarget": {
+    "box": {
+      "x": 12,
+      "y": 21.484375,
+      "width": 44,
+      "height": 44
+    },
+    "fits": true
+  },
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "state": "permission-unsupported",
+  "viewport": {
+    "width": 320,
+    "height": 568
+  },
+  "textScale": 1,
+  "metrics": {
+    "innerWidth": 320,
+    "scrollWidth": 320,
+    "textOutsideViewport": [],
+    "brokenImages": []
+  },
+  "backTarget": {
+    "box": {
+      "x": 12,
+      "y": 19.71875,
+      "width": 44,
+      "height": 44
+    },
+    "fits": true
+  },
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ]
+}
