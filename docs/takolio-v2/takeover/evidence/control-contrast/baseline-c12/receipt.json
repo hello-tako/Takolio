@@ -1,0 +1,253 @@
+{
+  "command": "node .artifacts/takeover/control-contrast/audit.mjs",
+  "previewCommand": "PORT=3301 PREVIEW_API_PORT=8921 PREVIEW_MEAL_PLANNER_ENABLED=true PREVIEW_MEAL_COMPOSITION_V2=true PREVIEW_MEAL_COMPOSITION_V2_SERVER=true PREVIEW_T20_D1=true node scripts/security-preview.mjs",
+  "cwd": "/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration",
+  "startedAt": "2026-10-23T22:58:13.253Z",
+  "endedAt": "2026-10-23T22:58:56.197Z",
+  "runnerSha256": "4d5c775995ffc5bdc619c253972634d848646ac5c7978ab7cc45abea699e710b",
+  "payloads": [
+    {
+      "path": "account-settings-link-focus.png",
+      "bytes": 111501,
+      "sha256": "cc64cb7b1cb14a9997c15c268bbc3314f576adf55d9f8e4733480793938b9776"
+    },
+    {
+      "path": "account-settings-link-hover.png",
+      "bytes": 111390,
+      "sha256": "65bad16f21edf8c908666031b542ed687eded006bf7596f0b59234debe3f3a5e"
+    },
+    {
+      "path": "account-switch-off-focus.png",
+      "bytes": 149836,
+      "sha256": "1d8788c50c6ef0e0ee8dc09cc280a14ef38e539d449ff9fc97ded39d5e5e18a9"
+    },
+    {
+      "path": "account-switch-off-hover.png",
+      "bytes": 147935,
+      "sha256": "0ee569d775a9342d24cb15ad6c04d7334d807d9e347f4346e3cf462dcbf7b211"
+    },
+    {
+      "path": "account-switch-on-focus.png",
+      "bytes": 150091,
+      "sha256": "23b3a3782b1da754425d82d2e9c27d192284f7a577b995595c5f576a4cdf40da"
+    },
+    {
+      "path": "account-switch-on-hover.png",
+      "bytes": 147935,
+      "sha256": "0ee569d775a9342d24cb15ad6c04d7334d807d9e347f4346e3cf462dcbf7b211"
+    },
+    {
+      "path": "detail-meal-focus.png",
+      "bytes": 184726,
+      "sha256": "2cb09bf7268062e9a219cd2e49f880a204f6667f4c8c2e803008a7ce7b303f69"
+    },
+    {
+      "path": "detail-meal-hover.png",
+      "bytes": 183514,
+      "sha256": "73737b2383aa5dc83f2fe88eaa52b3750c1b4e4e859bb72d4699a6e7dc1d473e"
+    },
+    {
+      "path": "detail-save-focus.png",
+      "bytes": 184479,
+      "sha256": "28e342309d487978b3e71c3ce70167b3d25551daa6923308a03e4ad1f8bba546"
+    },
+    {
+      "path": "detail-save-hover.png",
+      "bytes": 183460,
+      "sha256": "3272359911a4971814c6b54e6622790a0d35ae6c716eab8db562c4eabaa1d8fd"
+    },
+    {
+      "path": "detail-servings-focus.png",
+      "bytes": 184646,
+      "sha256": "f8006ae9be91cbc4541988a1fa76cf885c9e97da8d65fc0f049a70b169f6d492"
+    },
+    {
+      "path": "detail-servings-hover.png",
+      "bytes": 183460,
+      "sha256": "3272359911a4971814c6b54e6622790a0d35ae6c716eab8db562c4eabaa1d8fd"
+    },
+    {
+      "path": "discovery-filter-focus.png",
+      "bytes": 256217,
+      "sha256": "6c2dc8127687e8167abbdaa9c2863c8248311c941b51e6a015696ce57a34aad7"
+    },
+    {
+      "path": "discovery-filter-hover.png",
+      "bytes": 254900,
+      "sha256": "9010533ae998fa31a18e73703f6be8893b5d42597c2eb064da2b53c96c7b6b1b"
+    },
+    {
+      "path": "discovery-search-focus.png",
+      "bytes": 255886,
+      "sha256": "1e96c6a14c04cd4ead998a618dedb36425097c1fd6ebae3307f367dd73089011"
+    },
+    {
+      "path": "discovery-search-hover.png",
+      "bytes": 254900,
+      "sha256": "9010533ae998fa31a18e73703f6be8893b5d42597c2eb064da2b53c96c7b6b1b"
+    },
+    {
+      "path": "discovery-servings-focus.png",
+      "bytes": 256075,
+      "sha256": "47f1d84d172f21f593bf2d852e1e7fcc62151b55bbc6ca4bdf3d2d27caa01e81"
+    },
+    {
+      "path": "discovery-servings-hover.png",
+      "bytes": 254900,
+      "sha256": "9010533ae998fa31a18e73703f6be8893b5d42597c2eb064da2b53c96c7b6b1b"
+    },
+    {
+      "path": "measurement.json",
+      "bytes": 842676,
+      "sha256": "ad73cb95072d81e20cf9e4df7b8f3c87d7f04beba18307cdda9a2d8a460fdf0d"
+    },
+    {
+      "path": "planner-control-0-focus.png",
+      "bytes": 163019,
+      "sha256": "6e8fc2ffc8588f25018d6deea1b31bc48518a902fc4a5d355f40a42b3f55f180"
+    },
+    {
+      "path": "planner-control-0-hover.png",
+      "bytes": 161764,
+      "sha256": "aeb46f378d304213b7edcba7b1cfeef3e8ebb7e2e19f7e053e7e99d10ebe31de"
+    },
+    {
+      "path": "planner-control-1-focus.png",
+      "bytes": 161810,
+      "sha256": "a3facd191a8185315963172883e5b21f410508e28e550c812820d41be8510523"
+    },
+    {
+      "path": "planner-control-1-hover.png",
+      "bytes": 161756,
+      "sha256": "d0ae43d9361adad01b99418d012d4165db33a0db1d76cc2f27f0697b01aedb15"
+    },
+    {
+      "path": "planner-control-2-focus.png",
+      "bytes": 161823,
+      "sha256": "cdf4c7f2cb1200d55cdb741dd33e7c67d37dcb0673eed84f962e8e673d4fff55"
+    },
+    {
+      "path": "planner-control-2-hover.png",
+      "bytes": 161777,
+      "sha256": "fe7427e2a195e9b55413ed4356d17e10a7d597096a7b7deb62f884b5ff944ea8"
+    },
+    {
+      "path": "planner-control-3-focus.png",
+      "bytes": 162909,
+      "sha256": "18656c2cacf7ce94af2e2e3c04c975581626e8b50c3cef2e206dac0f249a6641"
+    },
+    {
+      "path": "planner-control-3-hover.png",
+      "bytes": 161757,
+      "sha256": "644c4d8debd8f53465e6f40bab7794defa2a53515f9c1406c3b15e248ff2793e"
+    },
+    {
+      "path": "planner-control-4-focus.png",
+      "bytes": 162673,
+      "sha256": "7a1c1227fdc4c7c5fb1f85575f3cccb2ad234afb7c3cfd0bade58a93f0e84bc1"
+    },
+    {
+      "path": "planner-control-4-hover.png",
+      "bytes": 161879,
+      "sha256": "d445fb419901325cf4b18310f807352bd1e323ce49728a04f7c7d84660890eb1"
+    },
+    {
+      "path": "planner-control-5-focus.png",
+      "bytes": 162774,
+      "sha256": "7e71e65d82c3aa67155f75dc9e4069e3e45f1bfd9cb00890fa671495a725455b"
+    },
+    {
+      "path": "planner-control-5-hover.png",
+      "bytes": 161859,
+      "sha256": "d153fdc7900057b881f419038da3b1a8f5f4b441630f4d3a0386c6dc0794c3ec"
+    },
+    {
+      "path": "planner-control-6-focus.png",
+      "bytes": 161789,
+      "sha256": "b4177fac6935d0e9639ee0774a26fba0a97410026963cdd0267ad730afefc338"
+    },
+    {
+      "path": "planner-control-6-hover.png",
+      "bytes": 161891,
+      "sha256": "0a9d0e252c5587eb8c3c24747ba06a70d0962e852e4b5233f9f6c2a9cfc8c820"
+    },
+    {
+      "path": "planner-control-7-focus.png",
+      "bytes": 161887,
+      "sha256": "6bed48cf3c7b46a692536212910c27f547de456b5531e7c50b889380494706fd"
+    },
+    {
+      "path": "planner-control-7-hover.png",
+      "bytes": 162079,
+      "sha256": "10a544d865efb05550f9f9fba2ee86a0808730818e827dd94dee2a6dd41caf05"
+    },
+    {
+      "path": "saved-search-focus.png",
+      "bytes": 100155,
+      "sha256": "0fb536595b384cb27b870ba8ec77f454edd1db230c6fddd09fdf199484eb03b0"
+    },
+    {
+      "path": "saved-search-hover.png",
+      "bytes": 99003,
+      "sha256": "7bfe3b48fc35702da6e23e68023485640e63c7924b85e09224dc3a4f07bf36dc"
+    },
+    {
+      "path": "shopping-name-focus.png",
+      "bytes": 98669,
+      "sha256": "09ca58ddc09991f7b40a0723f3fdacc9996410fffdc35cf6bf2425c1532d45cc"
+    },
+    {
+      "path": "shopping-name-hover.png",
+      "bytes": 97591,
+      "sha256": "9a295614dadd2c2ad248b749ab33e4fda8573e7857d4996ee9dc7e781425016a"
+    },
+    {
+      "path": "stock-add-name-focus.png",
+      "bytes": 217596,
+      "sha256": "e78a4cf43badeb09338a11869a49e544c4153f1de5a46b0d315dfcec8d1e558e"
+    },
+    {
+      "path": "stock-add-name-hover.png",
+      "bytes": 216997,
+      "sha256": "635ba3af181998c401c7df4a0d2e53d7322b9563490c7b7adc2e1f2a7ed5d5d9"
+    },
+    {
+      "path": "stock-add-quantity-focus.png",
+      "bytes": 217880,
+      "sha256": "98dca1aa9957828858d1161e2890120ead688ad233ef435f338189d5cd437c55"
+    },
+    {
+      "path": "stock-add-quantity-hover.png",
+      "bytes": 217162,
+      "sha256": "214ea5de3f282a97c8f9d1ee628841b2b83bb8e17d1c17057c2b1f60837eddc5"
+    },
+    {
+      "path": "stock-search-focus.png",
+      "bytes": 127330,
+      "sha256": "6f56a4cab71459260ba081a677df1389dbe408e18763d4137a23a4ddd9e7f919"
+    },
+    {
+      "path": "stock-search-hover.png",
+      "bytes": 126777,
+      "sha256": "e9fa895119a45ae8935e4e42dbbfaecc4b160178ca6e65e5a39a46bcdca0482b"
+    },
+    {
+      "path": "assessment.json",
+      "bytes": 15641,
+      "sha256": "43c21a9057f3dbf78fa58419ca624276c65379dc1567c7fb28652a9960d4c470"
+    }
+  ],
+  "supplements": [
+    {
+      "path": "../supplement.json",
+      "bytes": 47021,
+      "sha256": "95213e5f4078b32170c6ca6288c92481c5b644cec2e549b7a48d84faceb6ac2c"
+    },
+    {
+      "path": "../stock-focus.json",
+      "bytes": 6906,
+      "sha256": "fb0bfa528d126c59484a739b54a3d26f870a70fab65f4ad288852e3c85e4a0e0"
+    }
+  ],
+  "assessorSha256": "dfd1a15e6d11576cebea2974fc50dd3bc752ae017c877a43bb15050543679740"
+}

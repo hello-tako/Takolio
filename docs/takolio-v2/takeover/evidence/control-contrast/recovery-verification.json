@@ -1,0 +1,18 @@
+{
+  "source_regular_files": 22763,
+  "snapshot_regular_files": 22763,
+  "source_symlinks": 772,
+  "snapshot_symlinks": 772,
+  "all_worktree_bytes_modes_links_match": true,
+  "snapshot_worktree_baseline_integrity": true,
+  "status_preflight_source_snapshot_match": true,
+  "head_match": true,
+  "index_sha256_match": true,
+  "backup_parent_mode": "0o700",
+  "worktree_differences": [],
+  "verified_after_implementation_commit": "4afc85804478fa9508b15b1c035da0e10f964822",
+  "snapshot_git_baseline_regular_files": 116,
+  "snapshot_git_baseline_integrity": true,
+  "seconds": 12.47,
+  "git_metadata": "Authorized integration fetch/worktree/commits change shared Git metadata; original worktree bytes/modes/links/HEAD/index/status match full private snapshot. Snapshot worktree also matches its baseline manifest. Exact recovery location remains private."
+}

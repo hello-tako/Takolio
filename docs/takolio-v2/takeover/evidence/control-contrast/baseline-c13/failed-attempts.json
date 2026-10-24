@@ -1,0 +1,191 @@
+{
+  "attempts": [
+    {
+      "directory": "boundary-2026-10-23T230829292Z",
+      "error": "shopping-name invisible: mobile default collapsed disclosure not opened",
+      "partialScreenshots": 5,
+      "payloads": [
+        {
+          "path": "320x568-detail-focus.png",
+          "bytes": 170259,
+          "sha256": "35690ed25e20693d3fad4a8e9261e247dcaa02bb0caf64429fdaf98e5e6343ba"
+        },
+        {
+          "path": "320x568-detail-normal.png",
+          "bytes": 169741,
+          "sha256": "86d0f2b3a5ee7ffbc0e11fcbb2999e8f5562be7304f5d6e50d038fc814e3bba6"
+        },
+        {
+          "path": "320x568-discovery-focus.png",
+          "bytes": 888734,
+          "sha256": "9244418815e3cb2ba5790c95b976113f680cbcfb29daec4c5da838fbcf3cb778"
+        },
+        {
+          "path": "320x568-discovery-normal.png",
+          "bytes": 887859,
+          "sha256": "9c478abb09e9c1d7962cf8a00b5c9da12004c9f0ff2741eafb5581ca3fa094c7"
+        },
+        {
+          "path": "320x568-shopping-normal.png",
+          "bytes": 53099,
+          "sha256": "c223fa2d89ec2a1a7ec64bbb61ed98526e1af30ecc7fa7de0b0440ad11a1688c"
+        }
+      ],
+      "limitation": "Failure before final measurement/receipt; raw screenshots retained. Original failed runner revision/stdout was not persisted to file; no claim of complete failure provenance."
+    },
+    {
+      "directory": "boundary-2026-10-23T230921207Z",
+      "error": "shopping-name invisible: desktop open attribute empty string misread as closed; runner closed disclosure",
+      "partialScreenshots": 29,
+      "payloads": [
+        {
+          "path": "1440x1000-detail-focus.png",
+          "bytes": 189965,
+          "sha256": "e035dfac9d361275dac5c3e5ca19906c7951eaba600d53e9b7f33549cd0aeee5"
+        },
+        {
+          "path": "1440x1000-detail-normal.png",
+          "bytes": 188781,
+          "sha256": "eff73dd321b29603c3ab422977467e2738e64570f964ee6e4b94d140c78c26a9"
+        },
+        {
+          "path": "1440x1000-discovery-focus.png",
+          "bytes": 1024931,
+          "sha256": "60faaa1b1e6937b07521b63bd9c6df0c7256a7f3a0fd9ed3a7822b96a4b17d17"
+        },
+        {
+          "path": "1440x1000-discovery-normal.png",
+          "bytes": 1023834,
+          "sha256": "5ea1207e5c62c9bc27e64d0035bb490bb7e7b8217a36c6a51f3b26a2cc551ce9"
+        },
+        {
+          "path": "1440x1000-shopping-normal.png",
+          "bytes": 74918,
+          "sha256": "dca7d2c3d573d7e2e9578300a20365afd4fdfd7d1a4a6faf725bbbc2f49dcafc"
+        },
+        {
+          "path": "320x420-text200-detail-focus.png",
+          "bytes": 294291,
+          "sha256": "240f02595c28916505c29bb98f66c0d3165bfcc6cfae2993c2a8c2afffb63a0f"
+        },
+        {
+          "path": "320x420-text200-detail-normal.png",
+          "bytes": 290583,
+          "sha256": "5f9ebd76f1d276ffbd78e15c0ff3ec5f461408a1b568403f5370077eae98baab"
+        },
+        {
+          "path": "320x420-text200-discovery-focus.png",
+          "bytes": 1148749,
+          "sha256": "6a3f0b8099883421d793f3e427703df0ee5b93d113abc3727093771a246d6084"
+        },
+        {
+          "path": "320x420-text200-discovery-normal.png",
+          "bytes": 1147676,
+          "sha256": "e7f9b04604b5a54dc98ae38811a166d72b8f4a41623a39b72a6704b4d20791bb"
+        },
+        {
+          "path": "320x420-text200-planner-focus.png",
+          "bytes": 266680,
+          "sha256": "1486cc27b2c0f864131804959f2268367db37382dc41f99a05e90f09ad3973d2"
+        },
+        {
+          "path": "320x420-text200-planner-normal.png",
+          "bytes": 264010,
+          "sha256": "63e498755970e94774ecc42dc8b287a510ae8c56254a9568beb15738a8ae628e"
+        },
+        {
+          "path": "320x420-text200-shopping-focus.png",
+          "bytes": 94765,
+          "sha256": "2e71cb6d1c4cfc23f3428a636e6a0448b15486c9b6446b48b94dbfef9f4a5607"
+        },
+        {
+          "path": "320x420-text200-shopping-normal.png",
+          "bytes": 92771,
+          "sha256": "1065832ec9d71f9540d683cd448920d0bcf1c23b5fc4819fd59d5685faf8cfb5"
+        },
+        {
+          "path": "320x568-detail-focus.png",
+          "bytes": 170259,
+          "sha256": "35690ed25e20693d3fad4a8e9261e247dcaa02bb0caf64429fdaf98e5e6343ba"
+        },
+        {
+          "path": "320x568-detail-normal.png",
+          "bytes": 169741,
+          "sha256": "86d0f2b3a5ee7ffbc0e11fcbb2999e8f5562be7304f5d6e50d038fc814e3bba6"
+        },
+        {
+          "path": "320x568-discovery-focus.png",
+          "bytes": 888734,
+          "sha256": "9244418815e3cb2ba5790c95b976113f680cbcfb29daec4c5da838fbcf3cb778"
+        },
+        {
+          "path": "320x568-discovery-normal.png",
+          "bytes": 887859,
+          "sha256": "9c478abb09e9c1d7962cf8a00b5c9da12004c9f0ff2741eafb5581ca3fa094c7"
+        },
+        {
+          "path": "320x568-planner-focus.png",
+          "bytes": 212822,
+          "sha256": "2fc21625dc711a8b261e0bd75af4df1af0862dcbc1e9e00d05b5091ce7d95904"
+        },
+        {
+          "path": "320x568-planner-normal.png",
+          "bytes": 212793,
+          "sha256": "54de172c179922fc9fbd3ab4e59dd14b723d45248c0f3d4dc4284bcfff8ac828"
+        },
+        {
+          "path": "320x568-shopping-focus.png",
+          "bytes": 76253,
+          "sha256": "2a1977a8ba37bf1c19a4cb3fdc4388e3903049aaf65a109094c99f343681d4de"
+        },
+        {
+          "path": "320x568-shopping-normal.png",
+          "bytes": 75594,
+          "sha256": "b257185ff953cb987bd4936f47232e42db23773145dc50422885216755651946"
+        },
+        {
+          "path": "390x844-detail-focus.png",
+          "bytes": 160810,
+          "sha256": "92d5cec2d8348c338fa95f237bad2ebf5ff656b7f17f1407c5004b25f9efdcb9"
+        },
+        {
+          "path": "390x844-detail-normal.png",
+          "bytes": 157521,
+          "sha256": "a6b9e65fea633049edeb5c1eb9b5217aa6c3443ae4f9f3cafaa3f648d3ade6ea"
+        },
+        {
+          "path": "390x844-discovery-focus.png",
+          "bytes": 920166,
+          "sha256": "f4cb9318bfc281d50622e3ab0e3a3d4ed1b0fe19a09a590030853900d5715553"
+        },
+        {
+          "path": "390x844-discovery-normal.png",
+          "bytes": 925511,
+          "sha256": "577927c29545d50b8d7916f1bc4de68e471bc80e74f7e5edb39063a249fcf47b"
+        },
+        {
+          "path": "390x844-planner-focus.png",
+          "bytes": 211612,
+          "sha256": "2ad779eac5b7018258b2314bb1df331eb1b3a13d28def2a9ee7cf35ab3641993"
+        },
+        {
+          "path": "390x844-planner-normal.png",
+          "bytes": 210708,
+          "sha256": "a2ddcb9a47661a0b30dcb2e7f371ba9c3cdd9011cf2720667b127c0e92276bc7"
+        },
+        {
+          "path": "390x844-shopping-focus.png",
+          "bytes": 76341,
+          "sha256": "bdee3c28d2c6414ba8c9bdc8c4af657bb4ac119a520ee7b7decf99eea19c8955"
+        },
+        {
+          "path": "390x844-shopping-normal.png",
+          "bytes": 79352,
+          "sha256": "3b00c5f79dfb93cb969c37184af86cbfdac0e962b620994a313f62de7c18e1bc"
+        }
+      ],
+      "limitation": "Failure before final measurement/receipt; raw screenshots retained. Original failed runner revision/stdout was not persisted to file; no claim of complete failure provenance."
+    }
+  ],
+  "canonicalFix": "Use getAttribute(open) === null to open shopping disclosure only when closed; no form submission."
+}

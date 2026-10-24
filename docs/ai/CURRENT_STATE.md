@@ -1,3 +1,19 @@
+## Takolio V2 - C12/C13 and finite frontend plan checkpoint (2026-10-24 JST)
+
+Status: `LOCAL_FRONTEND_PLAN_BOUNDED_COMPLETE_REVIEW_REQUIRED`. Implementation `4afc85804478fa9508b15b1c035da0e10f964822`, branch `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Official main remains `90b94129113b41e34701d99f51175cfa81cb73de` (read-only verification).
+
+ADR-064/065 preserve Argon components/assets/handlers;31scoped CSS lines restore placeholder/OFF-switch contrast and1px inset control strokes. C12/C13 browser4/4PASS; targeted ESLint,6files/125focused tests, lint/typecheck/local migrations/default and correct paired-ON builds PASS. Full `pnpm test --maxWorkers=1` remains PARTIAL410/412files,9164/9169tests: five inherited encoded-space CLI failures. Fresh dependency audit FAIL:11findings,1low/8moderate/2high (Vite and Zod high); supersedes older counts. Dependencies unchanged; Admin font warnings remain.
+
+Finite UI01-UI15 local frontend sequence and C12/C13 executed. Recertification A/UI09 PARTIAL exit1:51snapshots/10journeys/52PNG; category spice reads back other. Actual canonical adoption, metadata retry/reload, reconciliation and AppErrorBoundary crash/reload pass. B/UI04 bounded harness PASS exit0:29snapshots/8journeys/51PNG; real photo/receipt confirm200/reopen. Additional verified gap: manual0.25pack item enters inventory but is absent from scan history. Scan fields do not certify every merged inventory field. No backend fix or inventory data-loss claim. Six receipts verified;1104source entries/run stable; recorded runtime HEAD remains c50c737d, final CSS hash bound. Older row38 crash-unverified and next-C11/C12/Week wording is explicitly superseded for this measured scope.
+
+Current packet retains67exact-byte selected payloads/37PNG and374raw bindings; supplemental checks/reports/recovery/protected proofs have a separate finalization receipt. Complete gate logs/traces/full capture sets remain ignored/private, with recorded hashes. Both Chromium projects repeat viewport loops under reduced motion; targeted focus, root-font200 and per-shadow geometry are bounded. No natural full-Tab, native zoom/device/Safari/screenreader/all-instance/production certification. Axe incomplete remains manual review.
+
+After implementation, original Argon workspace/private full snapshot match22763regular files/772symlinks,bytes/modes/links/HEAD/index/status and stored workspace baseline; all116regular Git baseline files match;zero differences,parent0700. Shared Git metadata changes from integration are disclosed separately. Private recovery location unpublished. Protected-main audit, historical tails/ledgers/evidence and whitespace verification are recorded in the finalization receipt. All38owner reviews remain PENDING.
+
+Report: `docs/takolio-v2/takeover/UI_C12_C13_CONTROL_CONTRAST.md`; finite status: `FRONTEND_PLAN_STATUS.md`; exact checks: `evidence/control-contrast/final-checks.json`. No further reproduced frontend defect justifies new cosmetic scope. Next: owner/media/device/live-provider/hosted acceptance; separate bounded packets for category readback, scan manual history/merge semantics, Week offline durability, CLI path tests and dependency advisories. No push, published PR, merge, deploy, remote migration or production action. Historical content follows unchanged.
+
+---
+
 ## Takolio V2 safe continuation - Week/Home readability (2026-10-24 JST)
 
 Status: `LOCAL_WEEK_HOME_READABILITY_BOUNDED_VERIFIED`. Implementation `6bf58f3a0d7c0909b777958fa9cdd5fda4426ddc`, branch `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only official main remains `90b94129113b41e34701d99f51175cfa81cb73de`.

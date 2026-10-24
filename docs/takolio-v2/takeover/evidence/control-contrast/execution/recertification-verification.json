@@ -1,0 +1,65 @@
+{
+  "result": "PASS",
+  "runnerSha256": "c6bc7eb90aa8b227ad474dcb275227b7886a8d857a3f346879bca98280b44dea",
+  "runs": [
+    {
+      "run": "group-a-attempt1",
+      "exitCode": 1,
+      "payloads": 7,
+      "pngs": 1,
+      "sourceCount": 1104,
+      "receiptSha256": "d9654cc302932fc828235aa432d11db61bb9048ab0714a5cbec1447e64d3d89d",
+      "harnessSha256": "b9651963449d17977ed63b296abce940dd5823fbe00aacb02e1d6a23d3ecc7d3"
+    },
+    {
+      "run": "group-a-attempt2",
+      "exitCode": 1,
+      "payloads": 8,
+      "pngs": 2,
+      "sourceCount": 1104,
+      "receiptSha256": "ae17db22a7addf51f50e64b2ddd3acf108ab0dab9ea4a5c3ba7772434a16f0da",
+      "harnessSha256": "62f4862420f536c87d1ce22101b79455a72900ac6a75eabf9194e7a54e9dcfa3"
+    },
+    {
+      "run": "group-a-attempt3",
+      "exitCode": 1,
+      "payloads": 6,
+      "pngs": 0,
+      "sourceCount": 1104,
+      "receiptSha256": "14643949e17b15478abcafa359521f29127fb16093c88c7f3d7055ab436d3c2c",
+      "harnessSha256": "ad754e427aa5b4ef0825ef0655b334b5cb944a3e5d3a0ebdbf51d82ba2e51dcc"
+    },
+    {
+      "run": "group-a-attempt4",
+      "exitCode": 1,
+      "payloads": 6,
+      "pngs": 0,
+      "sourceCount": 1104,
+      "receiptSha256": "782b85f56b4064e90f46083787ac2d544e8cdc992ed0a99f7a73ce91c312075b",
+      "harnessSha256": "e7446eb2300ef5f9cf95aad61a96ad8b46bbb32b03fb102271ac42b1fcea03de"
+    },
+    {
+      "run": "group-a-attempt5",
+      "exitCode": 1,
+      "payloads": 60,
+      "pngs": 52,
+      "sourceCount": 1104,
+      "receiptSha256": "aa7c53ca504338892d74fdb7fb402ec5b93692a96f708c06bfe379e2ba3aae77",
+      "harnessSha256": "0c760316aeccf8dbffacc014c9502de2bc84f7a97add747d95a7d8f725c9c528"
+    },
+    {
+      "run": "group-b-attempt1",
+      "exitCode": 0,
+      "payloads": 59,
+      "pngs": 51,
+      "sourceCount": 1104,
+      "receiptSha256": "a63a848670300d7193ab023d2a177bae0f1ffc38f0ef4b06f847636ddd89f384",
+      "harnessSha256": "b957afcf84b5cb0874a1c9abc25dffcccad8e20c46462f8860b463d1260a11c4"
+    }
+  ],
+  "extraReadbackAssertions": {
+    "manualInventoryImported": true,
+    "manualMissingFromScanReadback": true
+  },
+  "scope": "Stored evidence bytes/hashes and before/after source equality; no runtime replay."
+}

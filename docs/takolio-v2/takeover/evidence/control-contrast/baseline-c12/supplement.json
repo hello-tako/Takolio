@@ -1,0 +1,1605 @@
+{
+  "pages": [
+    {
+      "path": "/recipes",
+      "actual": "/recipes",
+      "inputs": [
+        {
+          "tag": "INPUT",
+          "type": "search",
+          "name": "Tìm món hoặc nguyên liệu",
+          "placeholder": "Ví dụ: thịt kho, trứng, canh chua…",
+          "classes": "kitchen-search-input",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(156, 163, 175)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "kitchen-search-input",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "SELECT",
+          "type": "select-one",
+          "name": "Nấu cho bao nhiêu người?1 người2 người3 người4 người5 người6 người7 người8 người9 người10 người11 người12 người13 người14 người15 người16 người17 người18 người19 người20 người",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(15, 45, 70)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "SELECT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "SELECT",
+          "type": "select-one",
+          "name": "Ẩm thựcTất cả ẩm thựcMón ViệtMón HànMón NhậtTrung HoaMón TháiMón Ý",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(15, 45, 70)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "SELECT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "SELECT",
+          "type": "select-one",
+          "name": "Cách nấuTất cả cách nấuCanhKho / rimXàoChiên / ránHấp / luộcCuốn / nộmBún / phởChayĂn sángLẩu / tiệc",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(15, 45, 70)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "SELECT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "SELECT",
+          "type": "select-one",
+          "name": "Vùng miềnToàn quốcMiền BắcMiền TrungMiền Nam",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(15, 45, 70)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "SELECT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/recipes?view=saved",
+      "actual": "/recipes",
+      "inputs": [
+        {
+          "tag": "INPUT",
+          "type": "search",
+          "name": "Tìm món đã lưu",
+          "placeholder": "Tìm trong món đã lưu…",
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "borderWidth": "1px",
+            "borderStyle": "solid",
+            "borderColor": "rgb(207, 217, 204)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(156, 163, 175)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "color": "rgba(0, 0, 0, 0)",
+              "image": "none",
+              "opacity": "1"
+            },
+            {
+              "tag": "LABEL",
+              "cls": "",
+              "color": "rgba(0, 0, 0, 0)",
+              "image": "none",
+              "opacity": "1"
+            },
+            {
+              "tag": "DIV",
+              "cls": "family-collection-heading",
+              "color": "rgba(0, 0, 0, 0)",
+              "image": "none",
+              "opacity": "1"
+            },
+            {
+              "tag": "SECTION",
+              "cls": "family-favorites",
+              "color": "rgba(0, 0, 0, 0)",
+              "image": "none",
+              "opacity": "1"
+            },
+            {
+              "tag": "DIV",
+              "cls": "kitchen-page-body",
+              "color": "rgba(0, 0, 0, 0)",
+              "image": "none",
+              "opacity": "1"
+            },
+            {
+              "tag": "DIV",
+              "cls": "takosan-rebuild min-h-screen bg-semantic-background pb-12",
+              "color": "rgb(255, 248, 237)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/me/preferences",
+      "actual": "/me/preferences",
+      "inputs": []
+    },
+    {
+      "path": "/me/household",
+      "actual": "/me/household",
+      "inputs": []
+    },
+    {
+      "path": "/settings/planning",
+      "actual": "/settings/planning",
+      "inputs": [
+        {
+          "tag": "INPUT",
+          "type": "number",
+          "name": "Số người thường ăn",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(48, 66, 57)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "1px",
+            "borderStyle": "solid",
+            "borderColor": "rgb(207, 217, 204)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(48, 66, 57)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "checkbox",
+          "name": "Miền Bắc",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(15, 45, 70)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "checkbox",
+          "name": "Miền Trung",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(15, 45, 70)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "checkbox",
+          "name": "Miền Nam",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(15, 45, 70)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "SELECT",
+          "type": "select-one",
+          "name": "Kiểu bữa thường nấuBữa nhà · chính, rau/phụ, canh, cơmNhanh gọn · ít món hơnMột món trọn bữa · bún, cháo, cơm trộn",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(48, 66, 57)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "1px",
+            "borderStyle": "solid",
+            "borderColor": "rgb(207, 217, 204)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(48, 66, 57)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "SELECT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "SELECT",
+          "type": "select-one",
+          "name": "Thời gian muốn dành cho bữa ăn15 phút30 phút45 phút60 phút90 phút120 phút180 phút",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(48, 66, 57)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "1px",
+            "borderStyle": "solid",
+            "borderColor": "rgb(207, 217, 204)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(48, 66, 57)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "SELECT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "checkbox",
+          "name": "Bữa sáng",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(15, 45, 70)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "checkbox",
+          "name": "Bữa trưa",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(15, 45, 70)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "checkbox",
+          "name": "Bữa tối",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(15, 45, 70)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "checkbox",
+          "name": "Tự nấu Chủ nhật",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(15, 45, 70)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "checkbox",
+          "name": "Tự nấu Thứ 2",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(15, 45, 70)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "checkbox",
+          "name": "Tự nấu Thứ 3",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(15, 45, 70)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "checkbox",
+          "name": "Tự nấu Thứ 4",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(15, 45, 70)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "checkbox",
+          "name": "Tự nấu Thứ 5",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(15, 45, 70)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "checkbox",
+          "name": "Tự nấu Thứ 6",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(15, 45, 70)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "checkbox",
+          "name": "Tự nấu Thứ 7",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(15, 45, 70)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "SELECT",
+          "type": "select-one",
+          "name": "Đi chợ theo nhịp nào?Mỗi ngày · đồ tươi cho bữa gần nhất2–3 ngày một lầnMột lần cho cả tuần",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(48, 66, 57)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "1px",
+            "borderStyle": "solid",
+            "borderColor": "rgb(207, 217, 204)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(48, 66, 57)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "SELECT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "SELECT",
+          "type": "select-one",
+          "name": "Số bữa đổi vị quốc tế mỗi tuầnƯu tiên món ViệtTối đa 1 bữaTối đa 2 bữaTối đa 3 bữaTối đa 4 bữaTối đa 5 bữaTối đa 6 bữaTối đa 7 bữa",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(48, 66, 57)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "1px",
+            "borderStyle": "solid",
+            "borderColor": "rgb(207, 217, 204)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(48, 66, 57)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "SELECT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "checkbox",
+          "name": "Hàn",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(15, 45, 70)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "checkbox",
+          "name": "Nhật",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(15, 45, 70)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "checkbox",
+          "name": "Trung Hoa",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(15, 45, 70)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "checkbox",
+          "name": "Thái",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(15, 45, 70)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "checkbox",
+          "name": "Ý",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(15, 45, 70)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "search",
+          "name": "Tìm nguyên liệu không thích",
+          "placeholder": "Tìm nguyên liệu…",
+          "classes": "",
+          "style": {
+            "color": "rgb(48, 66, 57)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "1px",
+            "borderStyle": "solid",
+            "borderColor": "rgb(207, 217, 204)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(156, 163, 175)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "checkbox",
+          "name": "Đậu phộng",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(15, 45, 70)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "checkbox",
+          "name": "Sữa",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(15, 45, 70)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "checkbox",
+          "name": "Trứng",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(15, 45, 70)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "checkbox",
+          "name": "Đậu nành",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(15, 45, 70)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "checkbox",
+          "name": "Lúa mì",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(15, 45, 70)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "checkbox",
+          "name": "Giáp xác / nhuyễn thể",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(15, 45, 70)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "checkbox",
+          "name": "Cá",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(15, 45, 70)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "search",
+          "name": "Tìm nguyên liệu không ăn",
+          "placeholder": "Tìm nguyên liệu…",
+          "classes": "",
+          "style": {
+            "color": "rgb(48, 66, 57)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "1px",
+            "borderStyle": "solid",
+            "borderColor": "rgb(207, 217, 204)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(156, 163, 175)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/shopping",
+      "actual": "/shopping",
+      "inputs": [
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "name": "Tên nguyên liệu",
+          "placeholder": "Ví dụ: trái cây, sữa…",
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 254, 251)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(156, 163, 175)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "color": "rgb(255, 254, 251)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "INPUT",
+          "type": "number",
+          "name": "Số lượng",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 254, 251)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(15, 45, 70)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "",
+              "color": "rgb(255, 254, 251)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        },
+        {
+          "tag": "SELECT",
+          "type": "select-one",
+          "name": "Đơn vịCái / quả / bìaGam (g)Kilôgam (kg)Mililít (ml)Lít (l)BóGóiLát",
+          "placeholder": null,
+          "classes": "",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 254, 251)",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "borderColor": "rgb(15, 45, 70)",
+            "boxShadow": "none",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(15, 45, 70)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "SELECT",
+              "cls": "",
+              "color": "rgb(255, 254, 251)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/fridge",
+      "actual": "/fridge",
+      "inputs": [
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "name": "Tìm nguyên liệu trong tủ",
+          "placeholder": "Tìm theo tên nguyên liệu…",
+          "classes": "w-full min-w-0 h-12 pl-11 pr-4 bg-white rounded-2xl border border-semantic-border focus:outline-none focus:ring-2 focus:ring-takosan-green/20 focus:border-takosan-green text-sm font-medium text-semantic-text-primary placeholder:text-semantic-text-muted shadow-card transition-tap",
+          "style": {
+            "color": "rgb(15, 45, 70)",
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderWidth": "1px",
+            "borderStyle": "solid",
+            "borderColor": "rgb(231, 227, 218)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(15, 23, 42, 0.04) 0px 1px 3px 0px, rgba(15, 23, 42, 0.05) 0px 4px 12px -2px",
+            "outlineStyle": "none",
+            "outlineWidth": "3px"
+          },
+          "placeholderStyle": {
+            "color": "rgb(77, 94, 108)",
+            "opacity": "1"
+          },
+          "tokens": {
+            "borderRGB": "",
+            "focus": "#2E7D5B",
+            "mutedRGB": "77 94 108",
+            "muted": "#6F6B64"
+          },
+          "backgrounds": [
+            {
+              "tag": "INPUT",
+              "cls": "w-full min-w-0 h-12 pl-11 pr-4 bg-white rounded-2xl border border-semantic-border focus:outline-none focus:ring-2 focus:ring-takosan-green/20 focus:border-takosan-green text-sm font-medium text-semantic-text-primary placeholder:text-semantic-text-muted shadow-card transition-tap",
+              "color": "rgb(255, 255, 255)",
+              "image": "none",
+              "opacity": "1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "stock-search-focus",
+      "style": {
+        "borderWidth": "1px",
+        "borderColor": "rgb(231, 227, 218)",
+        "outlineStyle": "solid",
+        "outlineWidth": "2px",
+        "outlineColor": "rgba(0, 0, 0, 0)",
+        "outlineOffset": "2px",
+        "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(15, 23, 42, 0.04) 0px 1px 3px 0px, rgba(15, 23, 42, 0.05) 0px 4px 12px -2px",
+        "focusVisible": true
+      }
+    }
+  ],
+  "writes": []
+}
