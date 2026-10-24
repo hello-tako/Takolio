@@ -5,7 +5,8 @@ import { api } from '../../services/api';
 
 export const OfflineBanner: React.FC = () => {
   const [isOffline, setIsOffline] = useState(!navigator.onLine);
-  const [pending, setPending] = useState(0);
+  const [pending, setPending] = useState<number | null>(0);
+  const [syncError, setSyncError] = useState(false);
   const [syncing, setSyncing] = useState(false);
 
   useEffect(() => {
@@ -15,7 +16,10 @@ export const OfflineBanner: React.FC = () => {
     window.addEventListener('online', handleOnline);
     window.addEventListener('offline', handleOffline);
 
-    const unsub = subscribe(setPending);
+    const unsub = subscribe((count) => {
+      setPending(count);
+      if (count === 0) setSyncError(false);
+    });
 
     return () => {
       window.removeEventListener('online', handleOnline);
@@ -27,26 +31,34 @@ export const OfflineBanner: React.FC = () => {
   const handleSyncNow = async () => {
     if (syncing || isOffline) return;
     setSyncing(true);
+    setSyncError(false);
     try {
-      await api.retryPendingWrites();
+      const result = await api.retryPendingWrites();
+      setPending(result.remaining);
+    } catch {
+      setSyncError(true);
     } finally {
       setSyncing(false);
     }
   };
 
-  if (!isOffline && pending === 0) return null;
+  if (!isOffline && pending === 0 && !syncError) return null;
 
   return (
     <div className="bg-takosan-navy text-white px-4 py-2 text-xs flex flex-wrap items-center justify-between gap-2 sticky top-0 z-50 animate-slide-up shadow-md">
       <span role="status" aria-live="polite" aria-atomic="true" className="font-medium flex flex-1 basis-48 items-center gap-2 min-w-0">
         <WifiOff className="w-3.5 h-3.5 text-takosan-yellow shrink-0" />
         <span>
-          {isOffline
-            ? 'Đang ở chế độ Ngoại tuyến. Thay đổi sẽ được tự đồng bộ khi có mạng.'
-            : `Đang chờ đồng bộ (${pending} thay đổi).`}
+          {syncError
+            ? 'Không thể đồng bộ. Hãy kiểm tra kết nối và bộ nhớ trình duyệt, rồi thử lại.'
+            : pending === null
+              ? 'Không thể xác định trạng thái đồng bộ. Hãy kiểm tra bộ nhớ trình duyệt trước khi tiếp tục.'
+              : isOffline
+                ? 'Đang ở chế độ Ngoại tuyến. Thay đổi đã lưu sẽ được đồng bộ khi có mạng.'
+                : `Đang chờ đồng bộ (${pending} thay đổi).`}
         </span>
       </span>
-      {!isOffline && pending > 0 && (
+      {!isOffline && (pending === null || pending > 0 || syncError) && (
         <button
           type="button"
           onClick={handleSyncNow}

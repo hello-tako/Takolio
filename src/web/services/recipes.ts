@@ -97,6 +97,7 @@ export const recipesApi = {
     }
     const assertCurrent = guardPrivateSession();
     const hhId = getHouseholdId();
+    const cacheKey = privateCacheKey('inventory', hhId);
     const scope = currentPrivateScope();
     const path = `/recipes/${encodeURIComponent(recipeId)}/cook/complete`;
     const init = {
@@ -115,7 +116,10 @@ export const recipesApi = {
     if (prior) {
       if (prior.body !== init.body || prior.path !== path)
         throw new ApiError('http', 'HTTP 409: {"code":"IDEMPOTENCY_CONFLICT"}', 409);
-      const inventory = await inventoryApi.getInventory();
+      let inventory = stockBeforeAttempt ?? [];
+      try { inventory = JSON.parse(localStorage.getItem(cacheKey) || '[]'); } catch {
+        // Existing receipt remains pending if its projection is unavailable.
+      }
       assertCurrent();
       return { success: true as const, inventory, pendingSync: true };
     }
@@ -157,17 +161,26 @@ export const recipesApi = {
       if (concurrent) {
         if (concurrent.body !== init.body || concurrent.path !== path)
           throw new ApiError('http', 'HTTP 409: {"code":"IDEMPOTENCY_CONFLICT"}', 409);
-        const inventory = await inventoryApi.getInventory();
+        let inventory = baseline;
+        try { inventory = JSON.parse(localStorage.getItem(cacheKey) || '[]'); } catch {
+          // The concurrent command is already durable.
+        }
         assertCurrent();
         return { success: true as const, inventory, pendingSync: true };
       }
-      queueWrite(path, 'POST', init.body, 'Hoàn tất bữa nấu', `cooking:${commandId}`, init.headers);
-      if (!queued()) throw new Error('Cooking operation could not be saved locally');
       const updated = projectCookingInventory(
         baseline.filter((lot): lot is typeof lot & { id: string } => typeof lot.id === 'string'),
         deductions,
       );
-      localStorage.setItem(privateCacheKey('inventory', hhId), JSON.stringify(updated));
+      const receipt = queueWrite(path, 'POST', init.body, 'Hoàn tất bữa nấu', `cooking:${commandId}`, init.headers);
+      if (receipt.path !== path || receipt.method !== 'POST' || receipt.body !== init.body ||
+          receipt.userId !== scope.userId || receipt.householdId !== scope.householdId) {
+        throw new ApiError('http', 'HTTP 409: {"code":"IDEMPOTENCY_CONFLICT"}', 409);
+      }
+      try { localStorage.setItem(cacheKey, JSON.stringify(updated)); } catch {
+        // Optional projection cannot revoke a durable cooking command.
+      }
+      assertCurrent();
       return { success: true as const, inventory: updated, pendingSync: true };
     }
   },

@@ -80,3 +80,8 @@ bounded; owner/media/device/Safari/screenreader/live/hosted acceptance unchanged
 WKD01 durable offline queue then WKD02 swap replay remain next. All38owner reviews
 PENDING. Recovery has ten authorized platform-file deltas,not zero differences.
 No production operation.
+
+
+## WKD01 follow-up supersession - 2026-10-25 JST
+
+UI10 pending shopping now reflects a durably accepted request and never adds guessed stock. Outbox unknown/error recovery is visible; exact receipt survives optional cache failure. Full416files/9319tests, focused8files/280tests and four browser width/flow cases/32PNG PASS. Audit remains0low/3moderate/2high. See WKD01_DURABLE_OFFLINE_QUEUE.md and hash-bound evidence; failures/authorized recovery drift remain disclosed. WKD02 swap replay remains next. Finite UI01-UI15+C12/C13 and all38PENDING owner reviews unchanged; device/Safari/screenreader/media/live/hosted acceptance pending. No production operation.

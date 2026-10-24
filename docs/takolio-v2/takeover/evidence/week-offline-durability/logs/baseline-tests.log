@@ -1,0 +1,268 @@
+
+ RUN  v4.1.12 /Users/tunbee27/Documents/New project/Takolio-v2-codex-integration
+
+ ❯ tests/unit/client-session.test.ts (33 tests | 1 failed) 1295ms
+     × preserves unknown outbox bytes and blocks use instead of adopting them 17ms
+ ❯ tests/unit/sync.test.ts (36 tests | 15 failed) 157ms
+     × does not claim pending Week completion when the outbox write fails 7ms
+     × keeps confirmed stock unchanged across repeated offline Week completion 2ms
+     × keeps the same queued Week command through a module/document reload 14ms
+     × fails closed for malformed JSON without replacing outbox bytes 1ms
+     × fails closed for existing empty bytes without replacing outbox bytes 0ms
+     × fails closed for wrong header type without replacing outbox bytes 0ms
+     × fails closed for non-array JSON without replacing outbox bytes 0ms
+     × fails closed for unowned sibling without replacing outbox bytes 0ms
+     × refuses unavailable reads and replay without reporting an empty queue 0ms
+     × accepts a durable enqueue even when post-write diagnostics fail 0ms
+     × retains a replayed operation when removal persistence fails 1ms
+     × does not claim guest-operation rebinding when its write fails 0ms
+     × returns the generated inventory id after durable enqueue even when its cache write fails 1ms
+     × queues Week plan creation before its optional cache update fails 5ms
+     × reconciles accepted paths in finally when local removal fails 1ms
+ ❯ tests/unit/offline-banner.test.tsx (1 test | 1 failed) 20ms
+   × renders unavailable outbox status and contains retry failure 19ms
+ ❯ tests/unit/logout-dialog.test.tsx (2 tests | 1 failed) 11ms
+     × renders conservative copy when pending count is unavailable 7ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 18 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/client-session.test.ts > server-confirmed logout and private session isolation > preserves unknown outbox bytes and blocks use instead of adopting them
+AssertionError: expected [Function] to throw an error
+ ❯ tests/unit/client-session.test.ts:277:47
+    275|     expect(localStorage.getItem('frigo_shopping_list_house-a')).toBeNu…
+    276|     expect(localStorage.getItem('frigo_sync_outbox_v1')).toBe(raw);
+    277|     expect(() => client.sync.getPendingOps()).toThrow();
+       |                                               ^
+    278|     expect(client.sync.pendingCount()).toBeNull();
+    279|     vi.stubGlobal('fetch', vi.fn());
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/18]⎯
+
+ FAIL  tests/unit/logout-dialog.test.tsx > LogoutDialog > renders conservative copy when pending count is unavailable
+AssertionError: expected '<div class="fixed inset-0 z-50 flex i…' to contain 'Không thể xác định số thay đổi chưa đ…'
+
+Expected: "Không thể xác định số thay đổi chưa đồng bộ"
+Received: "<div class="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-4 bg-semantic-overlay/50 backdrop-blur-sm animate-fade-in" role="presentation"><div role="alertdialog" aria-modal="true" aria-labelledby=":R0:" aria-describedby=":R0H1:" class="bg-white rounded-2xl shadow-elevated w-full max-w-sm p-5 space-y-3"><h2 id=":R0:" class="font-heading font-bold text-base text-semantic-text-primary">Đăng xuất tài khoản?</h2><p id=":R0H1:" class="text-sm text-semantic-text-secondary leading-relaxed">Takolio sẽ xóa dữ liệu riêng tư khỏi thiết bị này trước khi yêu cầu máy chủ thu hồi phiên. Nếu máy chủ chưa xác nhận, bạn cần kết nối mạng và thử lại.</p><div class="flex gap-2.5 pt-1"><button type="button" class="flex-1 py-2.5 rounded-xl bg-semantic-border/60 text-semantic-text-secondary font-heading font-bold text-sm hover:bg-semantic-border active:scale-95 transition-tap tap-target">Hủy</button><button type="button" class="flex-1 py-2.5 rounded-xl font-heading font-bold text-sm text-white active:scale-95 transition-tap tap-target bg-semantic-danger hover:bg-semantic-danger-strong">Đăng xuất</button></div></div></div>"
+
+ ❯ tests/unit/logout-dialog.test.tsx:48:18
+     46|     pendingCountMock.mockReturnValue(null);
+     47|     const html = renderToStaticMarkup(<LogoutDialog open onCancel={vi.…
+     48|     expect(html).toContain('Không thể xác định số thay đổi chưa đồng b…
+       |                  ^
+     49|     expect(html).toContain('Đăng xuất');
+     50|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/18]⎯
+
+ FAIL  tests/unit/offline-banner.test.tsx > renders unavailable outbox status and contains retry failure
+AssertionError: expected 'Đang chờ đồng bộ (null thay đổi).' to contain 'Không thể xác định trạng thái đồng bộ'
+
+Expected: "Không thể xác định trạng thái đồng bộ"
+Received: "Đang chờ đồng bộ (null thay đổi)."
+
+ ❯ tests/unit/offline-banner.test.tsx:34:30
+     32|   try {
+     33|     await act(async () => root.render(<OfflineBanner />));
+     34|     expect(host.textContent).toContain('Không thể xác định trạng thái …
+       |                              ^
+     35|     expect(host.textContent).not.toContain('(0 thay đổi)');
+     36|     const retry = host.querySelector<HTMLButtonElement>('button');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/18]⎯
+
+ FAIL  tests/unit/sync.test.ts > offline outbox and scan persistence contract > does not claim pending Week completion when the outbox write fails
+AssertionError: promise resolved "{ success: true, …(3) }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "importedItemsCount": 1,
++   "message": "Đã lưu 1 nguyên liệu vào tủ lạnh (sẽ đồng bộ khi có mạng).",
++   "pendingSync": true,
++   "success": true,
+  }
+
+ ❯ tests/unit/sync.test.ts:471:8
+    469|       ingredientId: 'CHICKEN_EGG', name: 'Trứng gà', missingQuantity: …
+    470|       recommendedPurchaseQuantity: 6, unit: 'piece', category: 'egg',
+    471|     }])).rejects.toBeInstanceOf(Error);
+       |        ^
+    472|
+    473|     expect(storage.peek(OUTBOX_KEY)).toBeNull();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/18]⎯
+
+ FAIL  tests/unit/sync.test.ts > offline outbox and scan persistence contract > keeps confirmed stock unchanged across repeated offline Week completion
+AssertionError: expected '[{"id":"egg-1","ingredientId":"CHICKE…' to be '[{"id":"egg-1","ingredientId":"CHICKE…' // Object.is equality
+
+Expected: "[{"id":"egg-1","ingredientId":"CHICKEN_EGG","name":"Trứng gà","quantity":2,"unit":"piece"}]"
+Received: "[{"id":"egg-1","ingredientId":"CHICKEN_EGG","name":"Trứng gà","quantity":14,"unit":"piece","freshness":"fresh","updatedAt":"2026-10-24T20:00:13.152Z","pendingSync":true}]"
+
+ ❯ tests/unit/sync.test.ts:498:39
+    496|     expect(getPendingOps()).toHaveLength(1);
+    497|     expect(secondOp).toEqual(firstOp);
+    498|     expect(storage.getItem(cacheKey)).toBe(before);
+       |                                       ^
+    499|     expect(JSON.parse(storage.getItem(cacheKey)!)[0].quantity).toBe(2);
+    500|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/18]⎯
+
+ FAIL  tests/unit/sync.test.ts > offline outbox and scan persistence contract > keeps the same queued Week command through a module/document reload
+AssertionError: expected '[{"id":"egg-1","ingredientId":"CHICKE…' to be '[{"id":"egg-1","ingredientId":"CHICKE…' // Object.is equality
+
+Expected: "[{"id":"egg-1","ingredientId":"CHICKEN_EGG","name":"Trứng gà","quantity":2,"unit":"piece"}]"
+Received: "[{"id":"egg-1","ingredientId":"CHICKEN_EGG","name":"Trứng gà","quantity":14,"unit":"piece","freshness":"fresh","updatedAt":"2026-10-24T20:00:13.167Z","pendingSync":true}]"
+
+ ❯ tests/unit/sync.test.ts:519:39
+    517|
+    518|     expect(reloadedGetPendingOps()).toEqual([frozen]);
+    519|     expect(storage.getItem(cacheKey)).toBe(before);
+       |                                       ^
+    520|   });
+    521|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/18]⎯
+
+ FAIL  tests/unit/sync.test.ts > offline outbox and scan persistence contract > fails closed for malformed JSON without replacing outbox bytes
+ FAIL  tests/unit/sync.test.ts > offline outbox and scan persistence contract > fails closed for existing empty bytes without replacing outbox bytes
+ FAIL  tests/unit/sync.test.ts > offline outbox and scan persistence contract > fails closed for wrong header type without replacing outbox bytes
+ FAIL  tests/unit/sync.test.ts > offline outbox and scan persistence contract > fails closed for non-array JSON without replacing outbox bytes
+ FAIL  tests/unit/sync.test.ts > offline outbox and scan persistence contract > fails closed for unowned sibling without replacing outbox bytes
+AssertionError: expected [Function] to throw an error
+ ❯ tests/unit/sync.test.ts:530:35
+    528|   ])('fails closed for %s without replacing outbox bytes', (_label, ra…
+    529|     storage.setItem(OUTBOX_KEY, raw);
+    530|     expect(() => getPendingOps()).toThrow();
+       |                                   ^
+    531|     expect(pendingCount()).toBeNull();
+    532|     expect(storage.peek(OUTBOX_KEY)).toBe(raw);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/18]⎯
+
+ FAIL  tests/unit/sync.test.ts > offline outbox and scan persistence contract > refuses unavailable reads and replay without reporting an empty queue
+AssertionError: expected [Function] to throw an error
+ ❯ tests/unit/sync.test.ts:543:35
+    541|     const raw = storage.peek(OUTBOX_KEY);
+    542|     storage.failNextGet();
+    543|     expect(() => getPendingOps()).toThrow();
+       |                                   ^
+    544|     storage.failNextGet();
+    545|     expect(pendingCount()).toBeNull();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/18]⎯
+
+ FAIL  tests/unit/sync.test.ts > offline outbox and scan persistence contract > accepts a durable enqueue even when post-write diagnostics fail
+AssertionError: expected +0 to be null
+
+- Expected:
+null
+
++ Received:
+0
+
+ ❯ tests/unit/sync.test.ts:563:25
+    561|     expect(accepted.operationId).toBeTruthy();
+    562|     expect(storage.peek(OUTBOX_KEY)).toContain('"label":"A"');
+    563|     expect(seen.at(-1)).toBeNull();
+       |                         ^
+    564|   });
+    565|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/18]⎯
+
+ FAIL  tests/unit/sync.test.ts > offline outbox and scan persistence contract > retains a replayed operation when removal persistence fails
+AssertionError: promise resolved "{ attempted: 1, remaining: 1 }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "attempted": 1,
++   "remaining": 1,
+  }
+
+ ❯ tests/unit/sync.test.ts:572:100
+    570|     const replay = vi.fn(async () => undefined);
+    571|     const classifier = vi.fn(() => true);
+    572|     await expect(flush(replay, classifier, { scope: { userId: 'user-a'…
+       |                                                                                                    ^
+    573|     expect(replay).toHaveBeenCalledOnce();
+    574|     expect(classifier).not.toHaveBeenCalled();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/18]⎯
+
+ FAIL  tests/unit/sync.test.ts > offline outbox and scan persistence contract > does not claim guest-operation rebinding when its write fails
+AssertionError: expected [Function] to throw an error
+ ❯ tests/unit/sync.test.ts:587:8
+    585|       { userId: 'guest', householdId: 'guest-house' },
+    586|       { userId: 'user-a', householdId: 'house-a' },
+    587|     )).toThrow();
+       |        ^
+    588|     expect(storage.peek(OUTBOX_KEY)).toBe(raw);
+    589|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/18]⎯
+
+ FAIL  tests/unit/sync.test.ts > offline outbox and scan persistence contract > returns the generated inventory id after durable enqueue even when its cache write fails
+Error: storage write unavailable
+ ❯ MemoryStorage.setItem tests/unit/sync.test.ts:47:13
+     45|     if (failures > 0) {
+     46|       this.setFailures.set(key, failures - 1);
+     47|       throw new Error('storage write unavailable');
+       |             ^
+     48|     }
+     49|     this.values.set(key, String(value));
+ ❯ Object.addInventoryItem src/web/services/inventory.ts:74:20
+ ❯ tests/unit/sync.test.ts:600:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/18]⎯
+
+ FAIL  tests/unit/sync.test.ts > offline outbox and scan persistence contract > queues Week plan creation before its optional cache update fails
+Error: storage write unavailable
+ ❯ MemoryStorage.setItem tests/unit/sync.test.ts:47:13
+     45|     if (failures > 0) {
+     46|       this.setFailures.set(key, failures - 1);
+     47|       throw new Error('storage write unavailable');
+       |             ^
+     48|     }
+     49|     this.values.set(key, String(value));
+ ❯ Object.createWeekPlan src/web/services/week.ts:67:20
+ ❯ tests/unit/sync.test.ts:615:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/18]⎯
+
+ FAIL  tests/unit/sync.test.ts > offline outbox and scan persistence contract > reconciles accepted paths in finally when local removal fails
+AssertionError: promise resolved "{ attempted: 1, remaining: 1 }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "attempted": 1,
++   "remaining": 1,
+  }
+
+ ❯ tests/unit/sync.test.ts:659:44
+    657|     ];
+    658|     try {
+    659|       await expect(api.retryPendingWrites()).rejects.toThrow();
+       |                                            ^
+    660|       expect(fetchMock.mock.calls.map(([path]) => path)).toEqual(['/ap…
+    661|       for (const read of reads) expect(read).toHaveBeenCalledOnce();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/18]⎯
+
+
+ Test Files  4 failed (4)
+      Tests  18 failed | 54 passed (72)
+   Start at  05:00:11
+   Duration  2.92s (transform 685ms, setup 50ms, import 326ms, tests 1.48s, environment 419ms)
+

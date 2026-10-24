@@ -40,4 +40,12 @@ describe('LogoutDialog', () => {
     expect(html).toContain('Đăng xuất và bỏ thay đổi');
     expect(html).toContain('Ở lại');
   });
+
+
+  it('renders conservative copy when pending count is unavailable', () => {
+    pendingCountMock.mockReturnValue(null);
+    const html = renderToStaticMarkup(<LogoutDialog open onCancel={vi.fn()} onLoggedOut={vi.fn()} />);
+    expect(html).toContain('Không thể xác định số thay đổi chưa đồng bộ');
+    expect(html).toContain('Đăng xuất');
+  });
 });

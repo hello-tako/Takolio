@@ -1,11 +1,6 @@
 # WKD01 - Durable offline receipts and truthful Week shopping stock
 
-Status: DRAFT TASK PACKET; implementation pending; no new ADR accepted.
-Date: 2026-10-24 JST. CAT01 / ADR-066 remains the active implementation until its
-final gates. SCAN01 is queued separately. This draft authorizes no source, test,
-schema, migration, backfill, release or production changes.
-Worktree: `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`.
-The original Argon workspace remains read-only; retain all private recovery proof.
+Status: LOCAL_WKD01_VERIFIED, 2026-10-25 JST; ADR-068. Local implementation and bounded acceptance completed; implementation SHA follows checkpoint. The sections below retain the original proposal/regression recipe as historical task scope, not current unexecuted status. Exact results: `../../takolio-v2/takeover/WKD01_DURABLE_OFFLINE_QUEUE.md` and `../../takolio-v2/takeover/evidence/week-offline-durability/checks.json`.
 
 ## Problem and bounded result
 
@@ -136,5 +131,4 @@ and hosted owner acceptance remain separate. No PayOS/payment/billing/checkout/
 webhook, unrelated auth/production, pull/reset/clean/destructive checkout, push,
 merge, deploy or remote operation. Release requires the user's approval.
 
-Draft verification: read-only source/caller/test inspection only. No executable
-reproduction, test, browser check, ADR, runtime or schema change was made here.
+Historical draft-only verification is superseded by the verified local result above. No schema/migration/dependency change; audit and external acceptance remain unresolved.

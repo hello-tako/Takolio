@@ -1,0 +1,24 @@
+{
+  "schema": "wkd01-browser-evidence-index-v1",
+  "flows": [
+    {
+      "name": "full-api-outage",
+      "manifest": "full-api-outage/manifest.json",
+      "manifestSha256": "fa3a4253aeda3e9b568c3412d62055852a89a41a1eef72f7f2daba625a44aba9",
+      "readbackSha256": "72b2900617f03b3e8738d2b309d3384ba1c0f6bc543f2d7990b0e693eadc54d5",
+      "screenshots": 16
+    },
+    {
+      "name": "partial-domain-outage",
+      "manifest": "partial-domain-outage/manifest.json",
+      "manifestSha256": "3aa11468dc3f2eb0e91c1c9331cfc476d05c1ef9c7d1590ae16f3a91ade1d57e",
+      "readbackSha256": "871c527cf13886995b9781a52f5abfd1a9a937db568573778230f5181d78ad26",
+      "screenshots": 16
+    }
+  ],
+  "summary": {
+    "file": "summary.json",
+    "sha256": "a1b33050e91fd7fad61972ece2b47c5ae0a1055b571c5843536eb1611c3be678"
+  },
+  "rawBrowserInventorySha256": "eb8ee507f8bd776ea659caef8a7cbc724ce60bd9b59d12e79b05cebe376fdfa5"
+}

@@ -3472,3 +3472,58 @@ See SCAN01 report and frozen evidence. WKD01/WKD02 require separate ADRs.
 
 ADR-067 implementation verified at `a4e405508453908cd6f7b7b677f98156ccbdcdd7`;
 post-implementation scope PASS. Verbatim logs preserve six trailing-blank warnings.
+
+## ADR-068 - Durable local outbox acceptance and truthful pending stock (2026-10-25)
+
+Status: accepted for isolated local WKD01 implementation. SCAN01 verified at
+implementation a4e405508453908cd6f7b7b677f98156ccbdcdd7 and documentation
+4d330940c328d70ca49384fa54792e95637a3dd5. User authorized sequential local work.
+Active packet: tasks/WKD01-durable-offline-queue.md.
+
+Preserve frigo_sync_outbox_v1, JSON record format, owner scope, operationId,
+dedupeKey and exact body/header bytes. Strict load rejects unreadable, corrupt,
+unowned or invalid records with OutboxPersistenceError, preserving original bytes;
+only missing key means empty. Validate stored/new records without a schema layer.
+Native localStorage.setItem success is the durable acceptance boundary. Do not
+reclassify a successful write through post-write diagnostic readback. queueWrite
+returns the accepted PendingOp, including an existing scoped dedupe receipt.
+
+Emit/listeners never reject accepted writes. Diagnostic pendingCount/subscription
+uses number|null; null means unavailable, never empty. Automatic retry consumes
+rejection and emits diagnostics; manual retry shows a recoverable warning. Logout
+warns conservatively on unknown pending data, retaining explicit discard/auth flow.
+Unowned historical records are preserved and block mutation/replay; this explicitly
+supersedes only the prior client-session test expecting their automatic deletion.
+Explicit logout deletion remains authorized user behavior; auth source unchanged.
+
+Flush separates network classification from durable removal. A successful replay
+counts before removal; removal persistence failure throws and retains the op.
+API finally reconciles accepted paths even when removal fails, without masking
+the persistence error or crossing the private-session fence. Keep auth/409 retention,
+permanent-error behavior and in-tab serialization. Failed owner rebind preserves
+all source/target bytes and throws. No cross-tab transaction claim.
+
+Delete Week shopping's optimistic stock addition; pending commands do not represent
+imported stock. Keep numeric importedItemsCount compatibility as queued-line count
+when pendingSync is true, with explicit pending-only message. Reconcile server
+inventory after replay. No guessed repair of previously inflated caches.
+
+Every enqueue caller must persist before cache projection. Post-acceptance cache
+failure returns accepted pending result/ID rather than inviting another generated
+command. Identity/session assertions remain outside/before final returns: never
+swallow identity uncertainty as a harmless cache failure. Two distinct add calls
+without the same supplied ID remain distinct actions. Cooking/shopping retain
+strong body/path/owner receipt checks via returned receipt, avoiding post-acceptance
+storage readback. Local-only scan partial enqueue remains an explicit ceiling.
+
+No new storage service, dependency, migration/backfill, generic offline framework,
+payment/auth/infrastructure change, push/merge/deploy/remote production operation.
+Require baseline-failing regression, corruption/quota/reload/rebind/removal/session/
+caller tests, actual Worker browser320/desktop with SQL readback, full local gates,
+recovery/scope proof and state/report updates. WKD02 keyed swap receipts remain a
+separate ADR and transaction contract.
+
+
+### ADR-068 verified local result - 2026-10-25 JST
+
+WKD01 bounded implementation verified: full416files/9319tests PASS, focused8/280, backend2/149, lint/types/migrations/default/paired-ON builds PASS.1184frozen source/test/config hashes unchanged. Audit remains FAIL(0low/3moderate/2high).32PNG over4viewport/flow cases prove exact queued request and stock2 pending/reconnect8 once; replay SQL/GET unchanged. Actual Worker-router/synthetic Node SQLite,not native D1/workerd/hosted/device certification. Review-found concurrent-shopping marker race fixed with RED/GREEN regression. Failed attempts and authorized recovery platform drift retained. See WKD01 report and evidence. No all-endpoint replay or cross-tab atomicity claim; WKD02 needs its own ADR.

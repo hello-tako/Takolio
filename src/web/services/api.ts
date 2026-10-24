@@ -1,6 +1,6 @@
 // Compatibility facade; domain modules retain ownership-fenced server and offline operations.
 import { ApiError, fetchJson, isNonRetryable, getCurrentScope } from './http';
-import { flush, pendingCount, getPendingOps } from '../lib/sync';
+import { flush, getPendingOps } from '../lib/sync';
 import { capturePrivateSession, privateSessionBlocked } from '../lib/private-session';
 import { authApi } from './auth';
 import { inventoryApi } from './inventory';
@@ -31,36 +31,43 @@ export const api = {
 
   retryPendingWrites: async (): Promise<{ attempted: number; remaining: number }> => {
     const scope = getCurrentScope();
+    const pending = getPendingOps();
     if (privateSessionBlocked() || !scope.userId || !scope.householdId ||
-      !getPendingOps().some((op) => op.userId === scope.userId && op.householdId === scope.householdId)) {
-      return { attempted: 0, remaining: pendingCount() };
+      !pending.some((op) => op.userId === scope.userId && op.householdId === scope.householdId)) {
+      return { attempted: 0, remaining: pending.length };
     }
     const isCurrent = capturePrivateSession();
     const replayedPaths: string[] = [];
-    const result = await flush(
-      async (op) => {
-        if (!isCurrent()) throw new ApiError('auth', 'Đồng bộ riêng tư đã tạm dừng.');
-        // The cookie may have changed in another tab. Local storage is not authorization.
-        const me = await api.getMe({ requireServer: true });
-        if (!isCurrent() || me.user?.id !== op.userId || me.user?.household?.id !== op.householdId) {
-          throw new ApiError('auth', 'Chủ sở hữu thao tác không khớp với phiên máy chủ.');
+    try {
+      return await flush(
+        async (op) => {
+          if (!isCurrent()) throw new ApiError('auth', 'Đồng bộ riêng tư đã tạm dừng.');
+          // The cookie may have changed in another tab. Local storage is not authorization.
+          const me = await api.getMe({ requireServer: true });
+          if (!isCurrent() || me.user?.id !== op.userId || me.user?.household?.id !== op.householdId) {
+            throw new ApiError('auth', 'Chủ sở hữu thao tác không khớp với phiên máy chủ.');
+          }
+          await fetchJson(op.path, { method: op.method, body: op.body, headers: op.headers });
+          if (isCurrent()) replayedPaths.push(op.path);
+        },
+        isNonRetryable,
+        { scope: getCurrentScope, canReplay: isCurrent }
+      );
+    } finally {
+      if (replayedPaths.length > 0) {
+        try {
+          if (isCurrent()) await api.getInventory();
+          if (isCurrent()) await api.getShoppingList();
+          if (isCurrent()) await api.getCurrentWeekPlan();
+        } catch {
+          // Reconciliation is best-effort; do not mask replay/persistence results.
         }
-        await fetchJson(op.path, { method: op.method, body: op.body, headers: op.headers });
-        if (isCurrent()) replayedPaths.push(op.path);
-      },
-      isNonRetryable,
-      { scope: getCurrentScope, canReplay: isCurrent }
-    );
-    if (result.attempted > 0 && isCurrent()) {
-      try {
-        await api.getInventory();
-        await api.getShoppingList();
-        await api.getCurrentWeekPlan();
-      } catch {
-        // reconcile best-effort
+        try {
+          if (isCurrent()) await invalidateReplayedQueries(replayedPaths);
+        } catch {
+          // Query invalidation is best-effort after authoritative reads.
+        }
       }
-      if (isCurrent()) await invalidateReplayedQueries(replayedPaths);
     }
-    return result;
   },
 };

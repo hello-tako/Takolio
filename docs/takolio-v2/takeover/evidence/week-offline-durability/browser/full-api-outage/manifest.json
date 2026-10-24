@@ -1,0 +1,201 @@
+{
+  "schema": "wkd01-browser-evidence-public-v1",
+  "sourceRun": "full-api-outage",
+  "rawReadbackSha256": "77b0b7cd94d31366df4a69aed2ee23d176563cf0af8c1bc190049e2226893d5f",
+  "rawManifestSha256": "c695ae5222e86d82c7e56e0cbee528961b9c5ae6e8d0249ff374aa78af6e2eab",
+  "publicReadbackSha256": "72b2900617f03b3e8738d2b309d3384ba1c0f6bc543f2d7990b0e693eadc54d5",
+  "scriptSha256": "cd935ce2542e8e23725bb428446c206b1d7b0bd8d66346855854cb6b3645d743",
+  "screenshots": [
+    {
+      "file": "320-stock-before.png",
+      "sha256": "b7b769749a94059cb18883a7f2461017512ae8686f4e029a495ffdf8a4550857",
+      "bytes": 91937,
+      "width": 320,
+      "height": 1490,
+      "viewport": {
+        "width": 320,
+        "scrollWidth": 320
+      }
+    },
+    {
+      "file": "320-queued-completion.png",
+      "sha256": "7dae114364062d4f532a8a29c2cf9ede73fb3c9dd9853d25956502efa8ccd116",
+      "bytes": 77986,
+      "width": 320,
+      "height": 990,
+      "viewport": {
+        "width": 320,
+        "scrollWidth": 320
+      }
+    },
+    {
+      "file": "320-pending-stock-unchanged.png",
+      "sha256": "7b62755972b270f29a3f52e5c4f1e180d405e647d3b1844f66f975c958549ea4",
+      "bytes": 101158,
+      "width": 320,
+      "height": 1538,
+      "viewport": {
+        "width": 320,
+        "scrollWidth": 320
+      }
+    },
+    {
+      "file": "320-offline-repeat.png",
+      "sha256": "0a6d65180f60f532e1325f7720b90bea32192fdd97e348287b020cf14157ac3b",
+      "bytes": 58303,
+      "width": 320,
+      "height": 990,
+      "viewport": {
+        "width": 320,
+        "scrollWidth": 320
+      }
+    },
+    {
+      "file": "320-fresh-document-auth-gate-queue-retained.png",
+      "sha256": "821680f76b5e20992077a486d31accdb5d73dd759c24becbbbe34324388f74f4",
+      "bytes": 79414,
+      "width": 320,
+      "height": 844,
+      "viewport": {
+        "width": 320,
+        "scrollWidth": 320
+      }
+    },
+    {
+      "file": "320-reconnected-queue-cleared.png",
+      "sha256": "642e4c15085aa73b2462c47c5834010011337b03ca6614cc88cbda48e31f2037",
+      "bytes": 90004,
+      "width": 320,
+      "height": 1014,
+      "viewport": {
+        "width": 320,
+        "scrollWidth": 320
+      }
+    },
+    {
+      "file": "320-final-stock-eight.png",
+      "sha256": "b7b769749a94059cb18883a7f2461017512ae8686f4e029a495ffdf8a4550857",
+      "bytes": 91937,
+      "width": 320,
+      "height": 1490,
+      "viewport": {
+        "width": 320,
+        "scrollWidth": 320
+      }
+    },
+    {
+      "file": "320-final-stock-eight-egg-filter.png",
+      "sha256": "4386cbf27efd5ba0d94ceae3f4a1fc3f1d39e7aacffd8aa2e71c5eac353f6278",
+      "bytes": 53546,
+      "width": 320,
+      "height": 1490,
+      "viewport": {
+        "width": 320,
+        "scrollWidth": 320
+      }
+    },
+    {
+      "file": "1440-stock-before.png",
+      "sha256": "46e85b9f003cf21fc63ff5313afa942a79ed745371e3e20bfe2c2115d4ec7c36",
+      "bytes": 123322,
+      "width": 1440,
+      "height": 1134,
+      "viewport": {
+        "width": 1440,
+        "scrollWidth": 1440
+      }
+    },
+    {
+      "file": "1440-queued-completion.png",
+      "sha256": "0de5593a0e57873ac653ca1fa28879c57260505ac4f37161759c21e47d2eb3ce",
+      "bytes": 167558,
+      "width": 1440,
+      "height": 1048,
+      "viewport": {
+        "width": 1440,
+        "scrollWidth": 1440
+      }
+    },
+    {
+      "file": "1440-pending-stock-unchanged.png",
+      "sha256": "ae8cd9053a69cc60cfce53bb33edd711d09ae869224de9f76a4f6e44d37117b3",
+      "bytes": 131238,
+      "width": 1440,
+      "height": 1166,
+      "viewport": {
+        "width": 1440,
+        "scrollWidth": 1440
+      }
+    },
+    {
+      "file": "1440-offline-repeat.png",
+      "sha256": "0de5593a0e57873ac653ca1fa28879c57260505ac4f37161759c21e47d2eb3ce",
+      "bytes": 167558,
+      "width": 1440,
+      "height": 1048,
+      "viewport": {
+        "width": 1440,
+        "scrollWidth": 1440
+      }
+    },
+    {
+      "file": "1440-fresh-document-auth-gate-queue-retained.png",
+      "sha256": "49b0aee6a598045db029824f9c1165ddc83d5b18ab5e1727b35b4bc2207d8874",
+      "bytes": 241988,
+      "width": 1440,
+      "height": 1000,
+      "viewport": {
+        "width": 1440,
+        "scrollWidth": 1440
+      }
+    },
+    {
+      "file": "1440-reconnected-queue-cleared.png",
+      "sha256": "3a7321dc15e729b3710b0f1e41a4c80597cb1167ba37e2b37b37043d8924906d",
+      "bytes": 173487,
+      "width": 1440,
+      "height": 1016,
+      "viewport": {
+        "width": 1440,
+        "scrollWidth": 1440
+      }
+    },
+    {
+      "file": "1440-final-stock-eight.png",
+      "sha256": "0d141f72b572d24a3893698465b72e78e4fd6e5d889fc73cee3fa4fe5bbdc0e3",
+      "bytes": 123422,
+      "width": 1440,
+      "height": 1134,
+      "viewport": {
+        "width": 1440,
+        "scrollWidth": 1440
+      }
+    },
+    {
+      "file": "1440-final-stock-eight-egg-filter.png",
+      "sha256": "2aec8e3281d3e67f78af9f8369e0203e2e014741dfc63969490627960e3fa28f",
+      "bytes": 75780,
+      "width": 1440,
+      "height": 1134,
+      "viewport": {
+        "width": 1440,
+        "scrollWidth": 1440
+      }
+    }
+  ],
+  "sanitization": {
+    "credentialLikeKeysRedacted": [
+      "lock_token"
+    ],
+    "privateAbsolutePathsRemoved": true,
+    "cookiesTokensStorageStateRemoved": true,
+    "pngBytesCopiedWithoutReencoding": true
+  },
+  "runLog": {
+    "file": "run.log",
+    "rawSha256": "bf07ea543b70222a3fd92de83637b4f64918f9c8df54f0a64022fdd9cd3a7926",
+    "publicSha256": "4b4e467edc26b6be49d7e7a44a0a7710a22328566f2badd15bd93906faf14e6c",
+    "result": "PASS",
+    "exitCode": 0
+  }
+}

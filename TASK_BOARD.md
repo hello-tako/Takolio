@@ -1,3 +1,19 @@
+## Takolio V2 - WKD01 durable offline queue (2026-10-25 JST)
+
+Status: LOCAL_WKD01_VERIFIED; ADR-068. Parent `4d330940c328d70ca49384fa54792e95637a3dd5`; official main read-only `90b94129113b41e34701d99f51175cfa81cb73de`. Implementation checkpoint follows verified source; documentation checkpoint will record its SHA.
+
+Native outbox persistence now gates pending success; corrupt/unreadable data stays intact. Unknown pending count/retry recovery is visible. Every enqueue caller persists before cache projection; accepted IDs survive optional cache failure. Replay removal failure retains the exact request and still reconciles accepted server state under session fences. Week shopping pending completion never inflates stock. No Worker/schema/migration/dependency/assets/auth implementation change; generated `.artifacts/**` ESLint ignore only.
+
+Full `416/416` files, `9319/9319` tests PASS; `pnpm test --maxWorkers=1 --testTimeout=15000`, reported974.99s/wall976.03s, Node24.16.0. Focused8files/280tests and backend2files/149tests PASS. Lint/types/migrations/default and actual paired-ON builds PASS;1184frozen hashes unchanged. Audit FAIL:0low/3moderate/2high,Hono/Zod/Undici remain. RED18FAIL/54PASS, generated-dependency lint failure, concurrent-shopping RED/GREEN and interrupted exit130 full attempt retained; no assertion/config weakening. Independent final review found no unresolved concrete scoped defect.
+
+Browser4width/flow cases,32PNG at320/1440: exact one queued request across repeat/reload; stock2 remains offline, reconnect8 once; existing lot version+1, no extra lot; replay SQL/GET unchanged. Full outage fresh document reaches existing auth gate; partial domain outage keeps me online and renders/repeats Week. Actual Worker-router/synthetic Node SQLite, not native D1/workerd/device/Safari/screenreader/hosted certification. Zero page errors/external requests/overflow. Sanitized exact PNG/hash-bound JSON retained.
+
+Recovery PASS_WITH_AUTHORIZED_PLATFORM_DRIFT: private snapshot22763regular/772symlinks,116Git files exact; current source22772regular/772symlinks differs only at ten authorized .DS_Store paths separately backed up. Other bytes/modes/links and HEAD/index/status match; source index/stored manifest unchanged. Prior authorized snapshot-index restoration disclosed in CAT01. No zero-difference claim/private paths published. Strict scope proofs follow checkpoint;54salvage and69Argon/12asset/38screen rows preserved;38owner reviews PENDING.
+
+Report: `docs/takolio-v2/takeover/WKD01_DURABLE_OFFLINE_QUEUE.md`; exact checks/log/source hashes under `evidence/week-offline-durability/`. Next: activate WKD02 with receipt transaction/current-plan replay/visible409 ADR before implementation. UI01-UI15+C12/C13 remains locally bounded complete; owner/media/device/Safari/screenreader/live/hosted acceptance pending. No production operation. Historical content follows unchanged.
+
+---
+
 ## Takolio V2 - SCAN01 durable manual review history (2026-10-25 JST)
 
 Status: `LOCAL_SCAN01_VERIFIED`. Parent `a4fa573a53580f187f86b35bad7127bba042000e`; official main observed read-only `90b94129113b41e34701d99f51175cfa81cb73de`. Implementation checkpoint: `a4e405508453908cd6f7b7b677f98156ccbdcdd7`; documentation checkpoint follows this verified implementation.

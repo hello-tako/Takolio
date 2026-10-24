@@ -257,30 +257,28 @@ describe('server-confirmed logout and private session isolation', () => {
     await expect(client.api.retryPendingWrites()).resolves.toEqual({ attempted: 0, remaining: 1 });
   });
 
-  it('deletes unowned legacy cache and outbox entries instead of adopting them', async () => {
+  it('preserves unknown outbox bytes and blocks use instead of adopting them', async () => {
     localStorage.setItem('frigo_token', 'old-reusable-token');
     localStorage.setItem('frigo_active_meal_plan', JSON.stringify(plan()));
     localStorage.setItem('frigo_inventory_house-a', '[{"name":"unknown owner"}]');
     localStorage.setItem('frigo_shopping_list_house-a', '[{"name":"unknown owner"}]');
-    localStorage.setItem(
-      'frigo_sync_outbox_v1',
-      JSON.stringify([
-        { id: 'old-1', path: '/inventory', method: 'POST' },
-        {
-          id: 'old-2',
-          userId: 'user-a',
-          householdId: 'house-a',
-          path: '/inventory',
-          method: 'POST',
-        },
-      ]),
-    );
+    const raw = JSON.stringify([
+      { id: 'old-1', path: '/inventory', method: 'POST' },
+      { id: 'old-2', userId: 'user-a', householdId: 'house-a', path: '/inventory', method: 'POST' },
+    ]);
+    localStorage.setItem('frigo_sync_outbox_v1', raw);
+
     const client = await loadClient();
     expect(localStorage.getItem('frigo_token')).toBeNull();
     expect(localStorage.getItem('frigo_active_meal_plan')).toBeNull();
     expect(localStorage.getItem('frigo_inventory_house-a')).toBeNull();
     expect(localStorage.getItem('frigo_shopping_list_house-a')).toBeNull();
-    expect(client.sync.getPendingOps()).toEqual([]);
+    expect(localStorage.getItem('frigo_sync_outbox_v1')).toBe(raw);
+    expect(() => client.sync.getPendingOps()).toThrow();
+    expect(client.sync.pendingCount()).toBeNull();
+    vi.stubGlobal('fetch', vi.fn());
+    await expect(client.api.retryPendingWrites()).rejects.toThrow();
+    expect(fetch).not.toHaveBeenCalled();
   });
 
   it('discards a late private HTTP response and an old 401 without clearing the new identity', async () => {
@@ -326,6 +324,29 @@ describe('server-confirmed logout and private session isolation', () => {
     response.resolve('private A inventory');
     await result;
     expect(client.queryClient.getQueryCache().getAll()).toHaveLength(0);
+  });
+
+  it('keeps all accepted shopping rows pending during concurrent offline additions', async () => {
+    const client = await loadClient();
+    signIn(client);
+    vi.stubGlobal('fetch', vi.fn().mockRejectedValue(new TypeError('offline')));
+
+    const receipts = await Promise.all([
+      client.api.addShoppingItem({ name: 'Gạo', quantity: 1, unit: 'kg' }),
+      client.api.addShoppingItem({ name: 'Trứng gà', quantity: 6, unit: 'piece' }),
+    ]);
+    const operations = client.sync.getPendingOps();
+    expect(operations).toHaveLength(2);
+    expect(operations.map((op) => JSON.parse(op.body!).id).sort()).toEqual(
+      receipts.map((receipt) => receipt.id).sort(),
+    );
+    const cached = JSON.parse(
+      localStorage.getItem(client.session.privateCacheKey('shopping_list'))!,
+    ) as Array<{ id: string; pendingSync?: boolean }>;
+    expect(cached).toHaveLength(2);
+    expect(cached.filter((item) => item.pendingSync).map((item) => item.id).sort()).toEqual(
+      receipts.map((receipt) => receipt.id).sort(),
+    );
   });
 
   it('does not enqueue an offline result after its identity was reset', async () => {
@@ -547,14 +568,23 @@ describe('server-confirmed logout and private session isolation', () => {
           ...client.sync.getPendingOps()[0],
           headers: headers as unknown as Record<string, string>,
         });
-        return { attempted: 0, remaining: 1 };
+        return { attempted: 1, remaining: 1 };
       });
-      const fetchMock = vi.fn(async (_path: string, _init?: RequestInit) =>
-        json({ user: { id: 'user-a', household: { id: 'house-a' } } }),
-      );
+      const fetchMock = vi.fn(async (path: string, _init?: RequestInit) => {
+        if (path.endsWith('/me'))
+          return json({ user: { id: 'user-a', household: { id: 'house-a' } } });
+        if (path.endsWith('/week/current')) return json({ plan: null });
+        return json({ items: [] });
+      });
       vi.stubGlobal('fetch', fetchMock);
       await client.api.retryPendingWrites();
-      expect(fetchMock).toHaveBeenCalledTimes(2);
+      expect(fetchMock.mock.calls.map(([path]) => path)).toEqual([
+        '/api/v1/me',
+        '/api/v1/inventory/item-a',
+        '/api/v1/inventory',
+        '/api/v1/shopping-list',
+        '/api/v1/week/current',
+      ]);
       const forwarded = new Headers(fetchMock.mock.calls[1][1]?.headers);
       expect(Object.fromEntries(forwarded)).toEqual({
         'content-type': 'application/json; charset=utf-8',

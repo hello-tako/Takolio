@@ -1,18 +1,6 @@
-// Persistent write-outbox for offline-safe mutations (S3 fix).
-//
-// Problem it solves: previously every failed write (including real server
-// rejections like 401/5xx) was silently swallowed and replaced with a fabricated
-// "success" + fake local id, so users believed data was saved when it was not,
-// and offline writes were never pushed to the server (lost on next refresh).
-//
-// New behaviour (see services/api.ts):
-//   - Genuinely offline  -> optimistic local apply + enqueue the raw request here
-//                           so it can be replayed when connectivity returns.
-//   - Server rejects     -> the caller throws a real error (never fabricates).
-//
-// The queue stores a minimal, serializable description of the original request
-// (path + method + body). Replaying it via the API client re-attaches fresh auth
-// headers, so we do not persist tokens here.
+// Persistent write-outbox for offline-safe mutations.
+// The queue stores the exact request and owner scope, without auth tokens.
+// A native localStorage write must succeed before callers report pending sync.
 
 const STORAGE_KEY = 'frigo_sync_outbox_v1';
 
@@ -44,41 +32,75 @@ export interface PendingScope {
   householdId: string;
 }
 
-type Listener = (count: number) => void;
+export class OutboxPersistenceError extends Error {
+  constructor(message: string, options?: { cause?: unknown }) {
+    super(message, options);
+    this.name = 'OutboxPersistenceError';
+  }
+}
+
+type Listener = (count: number | null) => void;
 const listeners = new Set<Listener>();
+
+function nonEmptyString(value: unknown): value is string {
+  return typeof value === 'string' && value.length > 0;
+}
+
+function validateRecord(value: unknown): asserts value is PendingOp {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    throw new OutboxPersistenceError('Invalid offline outbox record');
+  }
+  const op = value as Record<string, unknown>;
+  if (!nonEmptyString(op.id) || !nonEmptyString(op.operationId) ||
+      !nonEmptyString(op.userId) || !nonEmptyString(op.householdId) ||
+      typeof op.ts !== 'number' || !Number.isFinite(op.ts) ||
+      !nonEmptyString(op.path) || !nonEmptyString(op.method) || typeof op.label !== 'string' ||
+      (op.body !== undefined && typeof op.body !== 'string') ||
+      (op.dedupeKey !== undefined && typeof op.dedupeKey !== 'string') ||
+      (op.headers !== undefined && (!op.headers || typeof op.headers !== 'object' ||
+        Array.isArray(op.headers) || Object.values(op.headers).some((value) => typeof value !== 'string')))) {
+    throw new OutboxPersistenceError('Invalid offline outbox record');
+  }
+}
 
 function load(): PendingOp[] {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    const arr = raw ? JSON.parse(raw) : [];
-    if (!Array.isArray(arr)) return [];
-    const owned = arr.filter((op) => op && typeof op.userId === 'string' && op.userId &&
-      typeof op.householdId === 'string' && op.householdId && typeof op.operationId === 'string' && op.operationId);
-    if (owned.length !== arr.length) localStorage.setItem(STORAGE_KEY, JSON.stringify(owned));
-    return owned;
-  } catch {
-    return [];
+    if (raw === null) return [];
+    const arr: unknown = JSON.parse(raw);
+    if (!Array.isArray(arr)) throw new OutboxPersistenceError('Offline outbox must contain an array');
+    arr.forEach(validateRecord);
+    return arr as PendingOp[];
+  } catch (cause) {
+    if (cause instanceof OutboxPersistenceError) throw cause;
+    throw new OutboxPersistenceError('Cannot read offline outbox', { cause });
   }
 }
 
-function save(ops: PendingOp[]): void {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(ops));
-  } catch {
-    // storage full / unavailable — nothing sensible to do; keep in-memory only
-  }
-  emit();
+function notify(count: number | null): void {
+  listeners.forEach((fn) => {
+    try {
+      fn(count);
+    } catch {
+      // Listener failures must not change the durable write result.
+    }
+  });
 }
 
 function emit(): void {
-  const n = load().length;
-  listeners.forEach((fn) => {
-    try {
-      fn(n);
-    } catch {
-      // ignore listener errors
-    }
-  });
+  notify(pendingCount());
+}
+
+function save(ops: PendingOp[]): void {
+  ops.forEach(validateRecord);
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(ops));
+  } catch (cause) {
+    notify(null);
+    throw new OutboxPersistenceError('Cannot persist offline outbox', { cause });
+  }
+  // Native setItem success accepts the write; diagnostic reads cannot reject it.
+  emit();
 }
 
 export function pushOp(op: Omit<PendingOp, 'id' | 'ts'>): PendingOp {
@@ -92,6 +114,7 @@ export function pushOp(op: Omit<PendingOp, 'id' | 'ts'>): PendingOp {
     id: operationId,
     ts: Date.now(),
   };
+  validateRecord(full);
   const ops = load();
 
   // Only callers that explicitly opt in may coalesce operations. Blindly
@@ -117,7 +140,7 @@ export function pushOp(op: Omit<PendingOp, 'id' | 'ts'>): PendingOp {
 
 /** Return a snapshot for diagnostics/UI without exposing the mutable queue. */
 export function getPendingOps(): PendingOp[] {
-  return load().map((op) => ({ ...op }));
+  return load().map((op) => ({ ...op, headers: op.headers ? { ...op.headers } : undefined }));
 }
 
 /**
@@ -168,17 +191,22 @@ export function removeOp(id: string): void {
   if (next.length !== ops.length) save(next);
 }
 
-export function pendingCount(scope?: PendingScope): number {
-  const ops = load();
-  if (!scope) return ops.length;
-  return ops.filter((op) => op.userId === scope.userId && op.householdId === scope.householdId).length;
+/** null means the queue cannot be read; it must never be shown as empty. */
+export function pendingCount(scope?: PendingScope): number | null {
+  try {
+    const ops = load();
+    if (!scope) return ops.length;
+    return ops.filter((op) => op.userId === scope.userId && op.householdId === scope.householdId).length;
+  } catch {
+    return null;
+  }
 }
 
 export function subscribe(fn: Listener): () => void {
   listeners.add(fn);
   // fire immediately with current count
   try {
-    fn(load().length);
+    fn(pendingCount());
   } catch {
     /* ignore */
   }
@@ -188,10 +216,8 @@ export function subscribe(fn: Listener): () => void {
 }
 
 /**
- * Replay all queued writes. `replay` performs the actual network request for one
- * op and must resolve on success / reject on failure. A rejected replay stops the
- * flush (we preserve ordering and try again next time). A non-retryable HTTP error
- * (4xx that is not 401/403) drops that op so the queue cannot deadlock on bad input.
+ * Replay all queued writes. A rejected replay stops the flush unless the HTTP
+ * classifier permits dropping it. Persistence errors reject and retain the op.
  */
 async function flushOnce(
   replay: (op: PendingOp) => Promise<void>,
@@ -214,22 +240,23 @@ async function flushOnce(
 
     try {
       await replay(op);
-      removeOp(op.id);
-      attempted++;
     } catch (err) {
       if (isNonRetryable && isNonRetryable(err)) {
-        // Server definitively rejected this op — drop it to avoid a stuck queue.
+        // Server definitively rejected this op; removal failures must escape.
         removeOp(op.id);
         continue;
       }
-      // Still offline or transient error — stop, keep the rest queued.
+      // Still offline or transient error - stop, keep the rest queued.
       break;
     }
+    attempted++;
+    // Storage failure after replay must not enter the HTTP classifier.
+    removeOp(op.id);
   }
   return { attempted, remaining: load().length };
 }
 
-// Serialize flushes in this tab. Without a mutex, `online`, `load`, and the
+// Serialize flushes in this tab. Without a mutex, online, load, and the
 // manual retry action can all observe the same operation before it is removed.
 let flushChain: Promise<void> = Promise.resolve();
 
@@ -256,12 +283,12 @@ export function initSync(retry: () => Promise<unknown>): void {
   if (initialized) return;
   initialized = true;
   const onUp = () => {
-    void retry();
+    void retry().catch(() => emit());
   };
   window.addEventListener('online', onUp);
   // Opportunistic flush shortly after load too (covers already-online restarts).
   window.addEventListener('load', () => {
-    if (navigator.onLine) void retry();
+    if (navigator.onLine) onUp();
   });
 }
 

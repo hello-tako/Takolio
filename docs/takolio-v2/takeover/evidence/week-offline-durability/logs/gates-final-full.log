@@ -1,0 +1,8 @@
+
+> frigo@0.1.0 test /Users/tunbee27/Documents/New project/Takolio-v2-codex-integration
+> vitest run --maxWorkers=1 --testTimeout=15000
+
+
+ RUN  v4.1.12 /Users/tunbee27/Documents/New project/Takolio-v2-codex-integration
+
+ ELIFECYCLE  Test failed. See above for more details.

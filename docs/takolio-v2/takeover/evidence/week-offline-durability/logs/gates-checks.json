@@ -1,0 +1,19 @@
+[
+  {
+    "name": "lint",
+    "command": [
+      "pnpm",
+      "lint"
+    ],
+    "environment": {
+      "node_path": "/opt/homebrew/opt/node@24/bin",
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T"
+    },
+    "started_at_utc": "2026-10-24T20:08:37.619767+00:00",
+    "exit_code": 1,
+    "seconds": 9.24,
+    "log": ".artifacts/takeover/wkd01/gates/lint.log",
+    "log_sha256": "6985d32b00c48bde196cea64fea677a95d8091a49a93b6c38e9387a98269cc78",
+    "source_unchanged": true
+  }
+]

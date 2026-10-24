@@ -2,12 +2,10 @@ import { ALL_RECIPES } from '@frigo/recipes';
 import {
   type MealPlan, type MealPlanSetupInput, type MealSwapAlternative,
   generateWeeklyMealPlan, swapMealInPlan, getSwapAlternatives,
-  findCanonicalIngredient, computeFreshness, tryConvertUnit,
 } from '@frigo/domain';
-import { privateCacheKey } from '../lib/private-session';
 import {
-  fetchJson, isOffline, queueWrite, getHouseholdId, createClientItemId,
-  createDeterministicKey, readCachedInventory, guardPrivateSession, weekPlanCacheKey,
+  fetchJson, isOffline, queueWrite, createClientItemId,
+  createDeterministicKey, guardPrivateSession, weekPlanCacheKey,
 } from './http';
 import { inventoryApi } from './inventory';
 
@@ -64,7 +62,7 @@ export const weekApi = {
       const currentInv = await inventoryApi.getInventory();
       assertCurrent();
       const plan = generateWeeklyMealPlan(planInput, currentInv, ALL_RECIPES);
-      localStorage.setItem(weekPlanCacheKey(), JSON.stringify(plan));
+      const cacheKey = weekPlanCacheKey();
       queueWrite(
         '/week/plans',
         'POST',
@@ -73,6 +71,12 @@ export const weekApi = {
         `week-plan:${commandId}`,
         headers
       );
+      try {
+        localStorage.setItem(cacheKey, JSON.stringify(plan));
+      } catch {
+        // The durable command retains the generated plan ID if its cache is full.
+      }
+      assertCurrent();
       return plan;
     }
   },
@@ -125,48 +129,36 @@ export const weekApi = {
     } catch (err) {
       assertCurrent();
       if (!isOffline(err)) throw err; // surface real server errors
-      if (recipeId) {
-        // Preserve an offline user choice for the next reconnect. The plan
-        // snapshot is still updated optimistically below.
-        queueWrite(
-          `/week/plans/${planId}/meals/${mealId}/swap`,
-          'POST',
-          body,
-          'Đổi món trong thực đơn tuần',
-          `week-swap:${planId}:${mealId}:${commandId}`,
-          headers
-        );
-      }
-      // Standalone client fallback (offline): apply the deterministic swap locally.
-      const cached = localStorage.getItem(weekPlanCacheKey());
+      const cacheKey = weekPlanCacheKey();
+      const cached = localStorage.getItem(cacheKey);
+      let updated: MealPlan | undefined;
       if (cached) {
         const plan: MealPlan = JSON.parse(cached);
-        let targetSlot: any;
-        for (const day of plan.days) {
-          const s = day.slots.find((slot) => slot.id === mealId);
-          if (s) {
-            targetSlot = s;
-            break;
-          }
-        }
-
+        const targetSlot = plan.days.flatMap((day) => day.slots).find((slot) => slot.id === mealId);
         if (!recipeId && targetSlot) {
-          const alternatives = getSwapAlternatives(targetSlot, [], ALL_RECIPES);
-          return { alternatives };
+          return { alternatives: getSwapAlternatives(targetSlot, [], ALL_RECIPES) };
         }
-
-        if (recipeId) {
-          const newRec = ALL_RECIPES.find((r) => r.id === recipeId || r.slug === recipeId);
-          if (newRec) {
-            const currentInv = await inventoryApi.getInventory();
-            assertCurrent();
-            const updated = swapMealInPlan(plan, mealId, newRec, currentInv);
-            localStorage.setItem(weekPlanCacheKey(), JSON.stringify(updated));
-            return { plan: updated };
+        const recipe = ALL_RECIPES.find((r) => r.id === recipeId || r.slug === recipeId);
+        if (recipeId && recipe) {
+          const inventory = await inventoryApi.getInventory();
+          assertCurrent();
+          updated = swapMealInPlan(plan, mealId, recipe, inventory);
+        }
+      }
+      if (recipeId) {
+        queueWrite(
+          `/week/plans/${planId}/meals/${mealId}/swap`,
+          'POST', body, 'Đổi món trong thực đơn tuần',
+          `week-swap:${planId}:${mealId}:${commandId}`, headers
+        );
+        if (updated) {
+          try { localStorage.setItem(cacheKey, JSON.stringify(updated)); } catch {
+            // A cache failure cannot revoke the accepted command.
           }
         }
       }
-      return {};
+      assertCurrent();
+      return updated ? { plan: updated } : {};
     }
   },
 
@@ -187,6 +179,7 @@ export const weekApi = {
     } catch (err) {
       assertCurrent();
       if (!isOffline(err)) throw err;
+      const cacheKey = weekPlanCacheKey();
       queueWrite(
         `/week/plans/${planId}/meals/${mealId}`,
         'PATCH',
@@ -195,21 +188,27 @@ export const weekApi = {
         `week-slot:${planId}:${mealId}:${commandId}`,
         headers
       );
-      const cached = localStorage.getItem(weekPlanCacheKey());
-      if (cached) {
-        const plan: MealPlan = JSON.parse(cached);
-        for (const day of plan.days) {
-          const s = day.slots.find((slot) => slot.id === mealId);
-          if (s) {
-            Object.assign(s, updates);
-            s.source = 'USER';
-            break;
+      let updated: MealPlan | null = null;
+      try {
+        const cached = localStorage.getItem(cacheKey);
+        if (cached) {
+          const plan: MealPlan = JSON.parse(cached);
+          for (const day of plan.days) {
+            const s = day.slots.find((slot) => slot.id === mealId);
+            if (s) {
+              Object.assign(s, updates);
+              s.source = 'USER';
+              break;
+            }
           }
+          localStorage.setItem(cacheKey, JSON.stringify(plan));
+          updated = plan;
         }
-        localStorage.setItem(weekPlanCacheKey(), JSON.stringify(plan));
-        return plan;
+      } catch {
+        // Replay owns the accepted change even when its cache is unavailable.
       }
-      return null;
+      assertCurrent();
+      return updated;
     }
   },
 
@@ -251,6 +250,7 @@ export const weekApi = {
     } catch (err) {
       assertCurrent();
       if (!isOffline(err)) throw err;
+      const cacheKey = weekPlanCacheKey();
       queueWrite(
         `/week/plans/${planId}/shopping/items/${itemId}`,
         'PATCH',
@@ -259,14 +259,19 @@ export const weekApi = {
         `week-shopping-toggle:${planId}:${itemId}:${commandId}`,
         headers
       );
-      // Local storage fallback (offline)
-      const cached = localStorage.getItem(weekPlanCacheKey());
-      if (cached) {
-        const plan: MealPlan = JSON.parse(cached);
-        const item = plan.shoppingItems.find((i) => i.ingredientId === itemId);
-        if (item) item.checked = checked;
-        localStorage.setItem(weekPlanCacheKey(), JSON.stringify(plan));
+      try {
+        // Local storage fallback (offline)
+        const cached = localStorage.getItem(cacheKey);
+        if (cached) {
+          const plan: MealPlan = JSON.parse(cached);
+          const item = plan.shoppingItems.find((i) => i.ingredientId === itemId);
+          if (item) item.checked = checked;
+          localStorage.setItem(cacheKey, JSON.stringify(plan));
+        }
+      } catch {
+        // The checkbox cache is optional after durable acceptance.
       }
+      assertCurrent();
     }
   },
 
@@ -317,62 +322,13 @@ export const weekApi = {
         headers
       );
 
-      // Apply one deterministic optimistic projection. The queued command is
-      // the only server mutation, so replay cannot create one row per item.
-      if (selectedItems.length > 0) {
-        const householdId = getHouseholdId();
-        const currentInventory = readCachedInventory(householdId);
-        const nextInventory = [...currentInventory];
-        selectedItems.forEach((item: any) => {
-          const stableIngredient = String(item.ingredientId || item.name)
-            .replace(/[^A-Za-z0-9_-]/g, '_')
-            .slice(0, 80);
-          const quantity = Number(item.recommendedPurchaseQuantity || item.missingQuantity || 1);
-          const canonical = findCanonicalIngredient(String(item.ingredientId || item.name));
-          const unit = item.unit || canonical?.defaultUnit || 'piece';
-          const id = `shop_import_${planId}_${stableIngredient}`;
-          const existingIndex = nextInventory.findIndex((entry: any) => {
-            const sameIngredient =
-              (entry.ingredientId && (entry.ingredientId === (canonical?.id || item.ingredientId))) ||
-              String(entry.name || '').trim().toLowerCase() === String(item.name || '').trim().toLowerCase();
-            return Boolean(sameIngredient) && tryConvertUnit(quantity, unit, entry.unit) !== null;
-          });
-          const projection = {
-            id,
-            householdId,
-            ingredientId: canonical?.id || item.ingredientId || '',
-            name: item.name,
-            quantity,
-            unit,
-            category: item.category || canonical?.category || 'other',
-            storage: item.storage || 'fridge',
-            freshness: computeFreshness(undefined),
-            addedDate: new Date().toISOString(),
-            updatedAt: new Date().toISOString(),
-            dataSource: 'shopping',
-            pendingSync: true,
-          };
-          if (existingIndex >= 0) {
-            const existing = nextInventory[existingIndex];
-            const converted = tryConvertUnit(quantity, unit, existing.unit);
-            nextInventory[existingIndex] = {
-              ...existing,
-              quantity: Number(existing.quantity || 0) + (converted ?? quantity),
-              freshness: 'fresh',
-              updatedAt: projection.updatedAt,
-              pendingSync: true,
-            };
-          } else {
-            nextInventory.unshift(projection);
-          }
-        });
-        localStorage.setItem(privateCacheKey('inventory', householdId), JSON.stringify(nextInventory));
-      }
+      assertCurrent();
       return {
         success: true,
+        // Pending-only compatibility count: queued lines, not imported stock.
         importedItemsCount: selectedItems.length,
         pendingSync: true,
-        message: `Đã lưu ${selectedItems.length} nguyên liệu vào tủ lạnh (sẽ đồng bộ khi có mạng).`,
+        message: `Đã lưu yêu cầu nhập ${selectedItems.length} nguyên liệu, đang chờ đồng bộ. Tồn kho chưa thay đổi.`,
       };
     }
   },

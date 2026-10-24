@@ -15,7 +15,9 @@ export function isOfflineScanId(scanId: string): boolean {
 }
 
 function queueOfflineScanConfirmation(scanId: string, items: any[]) {
+  const assertCurrent = guardPrivateSession();
   const householdId = getHouseholdId();
+  const cacheKey = privateCacheKey('inventory', householdId);
   const now = new Date().toISOString();
   const source = scanId.startsWith('receipt_') ? 'receipt' : 'scan';
   const current = readCachedInventory(householdId);
@@ -30,6 +32,7 @@ function queueOfflineScanConfirmation(scanId: string, items: any[]) {
   ) {
     throw new ApiError('http', 'HTTP 400: {"code":"INVALID_QUANTITY"}', 400);
   }
+  // ponytail: per-item enqueue can partially succeed; atomic scan acceptance needs a server command.
   acceptedItems.forEach((item: any, index: number) => {
     const name = String(item.rawName || item.name || 'Nguyên liệu mới').trim();
     const canonical = findCanonicalIngredient(name);
@@ -75,7 +78,10 @@ function queueOfflineScanConfirmation(scanId: string, items: any[]) {
 
   const importedById = new Map(imported.map((item) => [item.id, item]));
   const updated = [...imported, ...current.filter((item) => !importedById.has(item.id))];
-  localStorage.setItem(privateCacheKey('inventory', householdId), JSON.stringify(updated));
+  try { localStorage.setItem(cacheKey, JSON.stringify(updated)); } catch {
+    // Optional projection cannot revoke the durable item commands.
+  }
+  assertCurrent();
   return {
     success: true,
     items: updated,
@@ -160,6 +166,8 @@ export const scansApi = {
         err instanceof TypeError || (err instanceof Error && err.name === 'AbortError');
       if (!isOffline(err) && !bodyTransportFailure) throw err;
       // Confirmation may commit before fetch or its response body fails.
+      const cachedInventory = readCachedInventory(hhId);
+      assertCurrent();
       queueWrite(
         path,
         init.method,
@@ -170,7 +178,7 @@ export const scansApi = {
       return {
         success: true,
         pendingSync: true,
-        items: readCachedInventory(hhId),
+        items: cachedInventory,
       };
     }
     assertCurrent();

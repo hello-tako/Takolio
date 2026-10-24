@@ -1,0 +1,35 @@
+
+ RUN  v4.1.12 /Users/tunbee27/Documents/New project/Takolio-v2-codex-integration
+
+ ❯ tests/unit/client-session.test.ts (34 tests | 1 failed | 33 skipped) 730ms
+     × keeps all accepted shopping rows pending during concurrent offline additions 728ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/client-session.test.ts > server-confirmed logout and private session isolation > keeps all accepted shopping rows pending during concurrent offline additions
+AssertionError: expected [ 'shop_1792872763823_cmw3k5' ] to deeply equal [ 'shop_1792872763795_usmneg', …(1) ]
+
+- Expected
++ Received
+
+  [
+-   "shop_1792872763795_usmneg",
+    "shop_1792872763823_cmw3k5",
+  ]
+
+ ❯ tests/unit/client-session.test.ts:347:85
+    345|     ) as Array<{ id: string; pendingSync?: boolean }>;
+    346|     expect(cached).toHaveLength(2);
+    347|     expect(cached.filter((item) => item.pendingSync).map((item) => ite…
+       |                                                                                     ^
+    348|       receipts.map((receipt) => receipt.id).sort(),
+    349|     );
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 33 skipped (34)
+   Start at  05:12:42
+   Duration  977ms (transform 594ms, setup 22ms, import 44ms, tests 730ms, environment 0ms)
+
