@@ -45,3 +45,13 @@ historical interruption retained in evidence/cli-path/checks.json. This replaces
 only the five inherited CLI failures. Fresh dependency audit is12findings
 (1low/8moderate/3high); dependencies unchanged. Frontend owner/media/device/live/
 hosted limits and domain gaps remain. Next local packet: bounded DEP01 patch.
+
+## DEP01 supersession - 2026-10-24 JST
+
+Implementation `0da750f8fa25ddf8de01345c26a38cacc6d90937` patches only Vite/Vitest dependency families.
+Full local serial suite: 412/412 files, 9169/9169 tests PASS; exit 0; wall 971.04s; reported 969.76s. Nine registry/lock/tarball checks and
+frozen install/lint/types/local migrations/default/paired-ON builds PASS.
+The fresh dependency audit is now 5 findings (0 low / 3 moderate / 2 high),
+remaining Hono/Zod/Undici work stays separate; overall audit FAIL. Exact evidence
+is under evidence/dependency-patch. Prior frontend screenshots and finite
+owner/media/device/live/hosted limits remain unchanged.

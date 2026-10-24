@@ -1,0 +1,23 @@
+{
+  "parent": "24d191b2cf90373fe0a2107772a6e1d7b4593fc0",
+  "head": "0da750f8fa25ddf8de01345c26a38cacc6d90937",
+  "unchanged_parent_paths": 8963,
+  "reviewed_changed_paths": [
+    "docs/ai/tasks/DEP01-vite-vitest-patch.md",
+    "docs/takolio-v2/takeover/evidence/dependency-patch/protected-main-audit.json",
+    "docs/takolio-v2/takeover/evidence/dependency-patch/recovery-verification.json",
+    "package.json",
+    "pnpm-lock.yaml"
+  ],
+  "historical_documents_preserved": true,
+  "selected_salvage_paths_unchanged": 54,
+  "unchanged_ledger_rows": {
+    "ARGON_WORK_LEDGER.csv": 69,
+    "WIP_ASSET_PROVENANCE.csv": 12,
+    "FILE_DECISIONS.csv": 115,
+    "SCREEN_PROGRESS.csv": 38
+  },
+  "owner_reviews_pending": 38,
+  "failures": [],
+  "result": "PASS"
+}

@@ -1,3 +1,15 @@
+## Takolio V2 - DEP01 bounded dependency patches (2026-10-24 JST)
+
+Status: `LOCAL_DEP01_VERIFIED`. Implementation `0da750f8fa25ddf8de01345c26a38cacc6d90937`; parent `24d191b2cf90373fe0a2107772a6e1d7b4593fc0`; official main `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Vite 6.4.3 to 6.4.4; Vitest and seven internals 4.1.11 to 4.1.12. Vite range unchanged; only exact Vitest manifest pin and bounded lock graph change. Rollup 4.63.1/plugin-react 4.7.0 retained. All nine registry/lock/tarball integrity checks PASS. Frozen install, lint, types, local migrations, default and actual paired-ON builds PASS. Full serial suite: 412/412 files, 9169/9169 tests PASS; exit 0; wall 971.04s; reported 969.76s. First lock minimization exit 1 and corrected preparation are preserved separately; gates bind exact implementation source hashes.
+
+Fresh audit exit 1: 5 findings, 0 low / 3 moderate / 2 high. Hono/Zod/Undici remain; overall audit FAIL. Recovery and official-main/strict-parent proofs accompany `docs/takolio-v2/takeover/DEP01_VITE_VITEST_PATCH.md` and `evidence/dependency-patch/checks.json`. Original Argon work, selected 54 paths, ledger bytes, prior screenshots and 38 PENDING owner reviews stay preserved.
+
+Next: separately scoped category readback/replay, scan manual history, Week offline durability. Finite frontend evidence remains bounded; owner/media/device/live/hosted acceptance stays pending. No push, merge, deploy, remote migration or production operation. Historical content follows unchanged.
+
+---
+
 ## Takolio V2 - CLI01 local path correction (2026-10-24 JST)
 
 Status: `LOCAL_CLI01_VERIFIED`. Implementation `c7f7b5510c3f23d7f3d59b66b556d13afd358a9b`, branch `codex/takolio-v2-rescue`; parent `7d0e539281ab6d8261ef416ef1978b90bba8e486`. Integration is the existing Takolio-v2-codex-integration worktree. Official main read-only reference remains `90b94129113b41e34701d99f51175cfa81cb73de`.
