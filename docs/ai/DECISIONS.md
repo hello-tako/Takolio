@@ -3527,3 +3527,5 @@ separate ADR and transaction contract.
 ### ADR-068 verified local result - 2026-10-25 JST
 
 WKD01 bounded implementation verified: full416files/9319tests PASS, focused8/280, backend2/149, lint/types/migrations/default/paired-ON builds PASS.1184frozen source/test/config hashes unchanged. Audit remains FAIL(0low/3moderate/2high).32PNG over4viewport/flow cases prove exact queued request and stock2 pending/reconnect8 once; replay SQL/GET unchanged. Actual Worker-router/synthetic Node SQLite,not native D1/workerd/hosted/device certification. Review-found concurrent-shopping marker race fixed with RED/GREEN regression. Failed attempts and authorized recovery platform drift retained. See WKD01 report and evidence. No all-endpoint replay or cross-tab atomicity claim; WKD02 needs its own ADR.
+
+ADR-068 implementation verified at `cc426b04baa84cb4bb3a861b0d606764675b4d20`; post-implementation scope PASS. Public evidence independently reviewed; ten verbatim-log EOF blank-line warnings retained, source/docs whitespace PASS.
