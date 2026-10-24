@@ -1,3 +1,33 @@
+## Takolio V2 - CAT01 category authority and immutable CREATE (2026-10-25 JST)
+
+Status: `LOCAL_CAT01_VERIFIED`. Implementation `820b0bd486aa17adc9a3cb3cba886b3ee7b62e3c`; parent `e90bcfda35b3deeee8efc9647ab2c8f72f6520ee`; official main observed read-only `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Optional lot displayCategory survives create/read/PATCH/USE/MOVE; canonical category remains authoritative. Manual CREATE replays its frozen original response after edits, conflicts on changed intent and fails closed for historical native receipts without retained intent. Adoption category is fenced; adopted NULL never borrows mutable projection. Additive0044; no backfill or historical receipt/event rewrite; canonical0030 reverse proof byte-identical.
+
+Full `pnpm test --maxWorkers=1 --testTimeout=15000`: 414/414 files, 9228/9228 tests PASS; exit0; reported877.15s/wall877.97s. Default attempts retained: seven fixture failures, then one Wrangler5000ms timeout (9227/9228PASS); unchanged focused32/32PASS. No assertion/config weakening; CLI15s disclosed.1260 frozen source/test/config hashes unchanged. Lint/types/local migrations/default and actual paired-ON builds PASS. Isolated actual local D1 all44 migrations/schema/positive, three expected forged-write rejections/readback PASS. Default schema:check:local failed; cause unproven. Audit FAIL:0low/3moderate/2high,Hono/Zod/Undici remain.
+
+Local Chromium390 covers create/filter/reload/detail/PATCH/MOVE and immutable CREATE replay/three409s; USE via synthetic local control, no product UI USE claim. Four PNG and authoritative readback retained. Independent scoped review found no concrete runtime/security defect. Protected-main/strict-parent checks PASS;54salvage paths, prior ledgers/evidence,38PENDING owner reviews preserved.
+
+The private snapshot retains22,763 regular files/772 symlinks and116 Git
+baseline files, exact bytes/modes/links against its stored baseline. Source now
+has22,772 regular files/772 symlinks and differs only in ten explicitly authorized
+.DS_Store paths: one modified, nine added. Each current delta is separately copied
+and verified by path/bytes/SHA256/mode under private0700; every other worktree
+path matches exactly. This is not a zero-difference source/snapshot claim.
+Snapshot index ef70 was preserved separately, then restored to baseline05d8 from
+verified unchanged source bytes with explicit user authorization on2026-10-25.
+Source index and original baseline manifest remain unchanged; HEAD/index/status
+match. Exact-difference and first supplemental attempts failed before these proofs;
+all failures remain disclosed. Stat-cache refresh cause is unproven. Optional
+Git locks are disabled for all further source/snapshot checks.
+54 selected salvage paths, prior ledgers/evidence and38 PENDING owner reviews
+remain unchanged. Shared integration Git metadata changes are disclosed separately.
+Private recovery locations stay unpublished.
+
+Report: `docs/takolio-v2/takeover/CAT01_DISPLAY_CATEGORY_AUTHORITY.md`; exact commands/source/log hashes: `evidence/category-authority/checks.json`. Next: SCAN01 manual review history, then WKD01 durable offline queue and WKD02 Week swap replay, each with separate ADR/gates. Finite UI01-UI15+C12/C13 remains locally bounded complete; owner/media/device/Safari/screenreader/live/hosted acceptance pending.0044 must precede new Worker; mixed-writer/rollback needs separate release review. No push,merge,deploy,remote migration or production operation. Historical content follows unchanged.
+
+---
+
 # Admin restore guard correction - 2026-10-19 JST
 
 The first protected restore attempt `39252519153` on main `e18b12e1` was approved by `vn-taphoanhatung` and failed before any Worker upload because the D1 empty-schema guard rejected Cloudflare's internal `_cf_KV` table. Cloudflare D1 Studio read-only evidence shows `_cf_KV` is exactly `CREATE TABLE _cf_KV ( key TEXT PRIMARY KEY, value BLOB ) WITHOUT ROWID`; no application table was observed. The receipt remains `FAIL / UNKNOWN_REQUIRES_OPERATOR_INSPECTION`; no migration, HMAC, owner enrollment, bootstrap, enablement or production mutation occurred.

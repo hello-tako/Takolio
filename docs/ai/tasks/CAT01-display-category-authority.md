@@ -1,6 +1,9 @@
 # CAT01 - Authoritative display category and immutable manual CREATE replay
 
-Status: LOCALLY IMPLEMENTED; FOCUSED VERIFIED; D1/full gates pending. ADR-066.
+Status: LOCAL_CAT01_VERIFIED. ADR-066.
+Implementation: `820b0bd486aa17adc9a3cb3cba886b3ee7b62e3c`. Full CLI15s suite, actual local D1,
+browser, independent review, protected scope and recovery with authorized drift
+verified. Dependency audit FAIL. See CAT01 takeover report and exact evidence.
 Baseline: DEP01 documentation checkpoint `e90bcfda`; original Argon workspace
 remains read-only. Work only in
 `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`.

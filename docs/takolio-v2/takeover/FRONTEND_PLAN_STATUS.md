@@ -55,3 +55,14 @@ The fresh dependency audit is now 5 findings (0 low / 3 moderate / 2 high),
 remaining Hono/Zod/Undici work stays separate; overall audit FAIL. Exact evidence
 is under evidence/dependency-patch. Prior frontend screenshots and finite
 owner/media/device/live/hosted limits remain unchanged.
+
+
+## CAT01 follow-up supersession - 2026-10-25 JST
+
+Category authority/immutable CREATE repaired at `820b0bd486aa17adc9a3cb3cba886b3ee7b62e3c`.
+CAT01 report/evidence retain full CLI15s PASS, default5000ms timeout and audit
+FAIL. Recovery preserves the exact original snapshot baseline after authorized
+index restoration; ten authorized .DS_Store deltas have a separate private copy.
+No zero-difference claim. Earlier spice-to-other remains historical evidence.
+SCAN01, WKD01/WKD02 remain next; owner/media/device/Safari/screenreader/live/hosted
+acceptance unchanged, all38 owner reviews PENDING. No production operation.

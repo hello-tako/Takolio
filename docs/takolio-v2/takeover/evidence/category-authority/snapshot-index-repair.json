@@ -1,0 +1,44 @@
+{
+  "result": "PASS",
+  "date_jst": "2026-10-25",
+  "verified_at_utc": "2026-10-24T19:20:39.056384+00:00",
+  "authorization": "User explicitly authorized preserving the current snapshot index separately, then restoring snapshot index from verified source baseline bytes.",
+  "before_sha256": "ef70f7a9fd7dafaecbf3bd765b2ad482c56fa1cd776a1ac5cd8eac7d65abad60",
+  "restored_sha256": "05d8ac20430d9e13a93348403e74d580c739171a33656d013deaf880a4f05b53",
+  "baseline_sha256": "05d8ac20430d9e13a93348403e74d580c739171a33656d013deaf880a4f05b53",
+  "bytes": 730760,
+  "baseline_mode_restored": true,
+  "previous_index_preserved_and_verified": true,
+  "private_parent_mode": "0o700",
+  "source_index_unchanged": true,
+  "baseline_manifest_unchanged": true,
+  "semantic_comparisons_before_repair": {
+    "stage_entries": {
+      "equal": true,
+      "sha256": "43fc71b5b23e509c91b4451196188b2dd19c3fb5576e6faba51afa7c045da663",
+      "bytes": 627053
+    },
+    "entry_flags": {
+      "equal": true,
+      "sha256": "e0436813019b652ab6723da8e3b78a3cd6ab26726aae08534e976cfc164a0510",
+      "bytes": 345485
+    },
+    "head": {
+      "equal": true,
+      "sha256": "c63d2bb70cd147158bbf8fd8c54794d121e3d74d3532479a026bc2c28064a23d",
+      "bytes": 41
+    },
+    "status": {
+      "equal": true,
+      "sha256": "2366d5587f0d21fb93b31194d466d4fe7578fdc060747f738369a33c217502f4",
+      "bytes": 2250
+    },
+    "staged_diff": {
+      "equal": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  },
+  "audit_limit": "An audit git status without GIT_OPTIONAL_LOCKS=0 could refresh stat cache. Snapshot mismatch was measured before that latest call; exact earlier cause is unproven. Current audit subprocesses disable optional locks.",
+  "scope": "Only snapshot .git/index restored; original source and original snapshot manifest untouched. Full baseline verification follows separately."
+}

@@ -3361,8 +3361,10 @@ owner acceptance or hosted production.
 
 ## ADR-066 - Lot-owned display category and immutable manual CREATE response (2026-10-24)
 
-Status: accepted for isolated local implementation; implemented in the integration
-worktree; focused verification passed; D1/full gates pending.
+Status: accepted; locally implemented and verified at `820b0bd486aa17adc9a3cb3cba886b3ee7b62e3c`.
+Full CLI15s suite, actual local D1, browser, independent review, protected scope
+and recovery with authorized platform drift verified. Default timeout and audit
+FAIL remain disclosed in the CAT01 report. No release authorization.
 Active packet: `tasks/CAT01-display-category-authority.md`.
 
 The bounded inventory audit confirms an unmapped spice item reads back as other:

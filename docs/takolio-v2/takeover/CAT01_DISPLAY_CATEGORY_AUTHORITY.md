@@ -1,7 +1,7 @@
 # CAT01 - Authoritative display category and immutable CREATE replay
 
-Status: LOCAL_CAT01_GATES_VERIFIED; recovery/protected-scope checkpoint pending.
-Implementation: PENDING_IMPLEMENTATION_COMMIT. Parent `e90bcfda35b3deeee8efc9647ab2c8f72f6520ee`.
+Status: LOCAL_CAT01_VERIFIED; local gates and recovery with authorized platform drift verified.
+Implementation: `820b0bd486aa17adc9a3cb3cba886b3ee7b62e3c`. Parent `e90bcfda35b3deeee8efc9647ab2c8f72f6520ee`.
 Official main observed read-only: `90b94129113b41e34701d99f51175cfa81cb73de`.
 
 ## Result
@@ -86,10 +86,25 @@ They do not certify the default namespace, hosted D1 or production.
 
 ## Recovery, scope and release limits
 
-Final recovery/protected-scope results: PENDING_FINALIZATION.
-Original Argon workspace remains read-only. Full private snapshot and selected
-salvage/assets/ledgers/prior evidence must pass the separate post-commit receipts.
-Private recovery location is never published.38 owner reviews remain PENDING.
+Final recovery/protected-scope results: PASS with authorized platform drift after
+implementation `820b0bd486aa17adc9a3cb3cba886b3ee7b62e3c`; checkpoint2026-10-25 JST.
+The private snapshot retains22,763 regular files/772 symlinks and116 Git
+baseline files, exact bytes/modes/links against its stored baseline. Source now
+has22,772 regular files/772 symlinks and differs only in ten explicitly authorized
+.DS_Store paths: one modified, nine added. Each current delta is separately copied
+and verified by path/bytes/SHA256/mode under private0700; every other worktree
+path matches exactly. This is not a zero-difference source/snapshot claim.
+Snapshot index ef70 was preserved separately, then restored to baseline05d8 from
+verified unchanged source bytes with explicit user authorization on2026-10-25.
+Source index and original baseline manifest remain unchanged; HEAD/index/status
+match. Exact-difference and first supplemental attempts failed before these proofs;
+all failures remain disclosed. Stat-cache refresh cause is unproven. Optional
+Git locks are disabled for all further source/snapshot checks.
+54 selected salvage paths, prior ledgers/evidence and38 PENDING owner reviews
+remain unchanged. Shared integration Git metadata changes are disclosed separately.
+Private recovery locations stay unpublished.
+See recovery-verification.json, snapshot-index-repair.json, protected-main-audit.json
+and parent-scope-verification.json. Original Argon source remains read-only.
 Independent diff/guard review found no concrete CAT01 runtime/security defect;
 its receipt does not certify unresolved dependency advisories or external gates.
 

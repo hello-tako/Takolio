@@ -1,0 +1,148 @@
+{
+  "result": "PASS_WITH_AUTHORIZED_PLATFORM_DRIFT",
+  "verified_after_implementation_commit": "820b0bd486aa17adc9a3cb3cba886b3ee7b62e3c",
+  "verified_at_utc": "2026-10-24T19:21:13.455641+00:00",
+  "source_regular_files": 22772,
+  "snapshot_regular_files": 22763,
+  "source_symlinks": 772,
+  "snapshot_symlinks": 772,
+  "all_worktree_bytes_modes_links_match": false,
+  "all_other_worktree_bytes_modes_links_match": true,
+  "snapshot_worktree_baseline_integrity": true,
+  "snapshot_git_baseline_regular_files": 116,
+  "snapshot_git_baseline_integrity": true,
+  "status_preflight_source_snapshot_match": true,
+  "head_match": true,
+  "index_sha256_match": true,
+  "backup_parent_mode": "0o700",
+  "supplemental_backup_mode": "0o700",
+  "supplemental_backup_files": 10,
+  "supplemental_bytes_modes_paths_verified": true,
+  "worktree_differences": [
+    {
+      "path": ".DS_Store",
+      "source": {
+        "kind": "file",
+        "mode": 420,
+        "path": ".DS_Store",
+        "size": 14340,
+        "sha256": "dbcb1c07a95e181038ba30ccba5c565e78b74a95b2b112dbd1f26010c94b9866"
+      },
+      "original_snapshot": {
+        "kind": "file",
+        "mode": 420,
+        "path": ".DS_Store",
+        "size": 12292,
+        "sha256": "3fd96ecf3762b7a4bd9846934d37a581a1ffea0c9a3b04f5c09e475fdaa2dd52"
+      }
+    },
+    {
+      "path": "data/.DS_Store",
+      "source": {
+        "kind": "file",
+        "mode": 420,
+        "path": "data/.DS_Store",
+        "size": 6148,
+        "sha256": "a66bab7b93ca3e83b9343247690bae5c1d6753935e499e7357d50a4a7cec06ef"
+      },
+      "original_snapshot": null
+    },
+    {
+      "path": "docs/.DS_Store",
+      "source": {
+        "kind": "file",
+        "mode": 420,
+        "path": "docs/.DS_Store",
+        "size": 8196,
+        "sha256": "5192ace867816a57644ae808321b0f816473682214c8b80aaabf460cba6f79d6"
+      },
+      "original_snapshot": null
+    },
+    {
+      "path": "frigo_frontend_prompt_kit_v1/.DS_Store",
+      "source": {
+        "kind": "file",
+        "mode": 420,
+        "path": "frigo_frontend_prompt_kit_v1/.DS_Store",
+        "size": 6148,
+        "sha256": "f73c719128f99ee48a4dc633b7e76e279cebd51df214b8566a16e3952b073967"
+      },
+      "original_snapshot": null
+    },
+    {
+      "path": "node_modules/.DS_Store",
+      "source": {
+        "kind": "file",
+        "mode": 420,
+        "path": "node_modules/.DS_Store",
+        "size": 8196,
+        "sha256": "762301379f2703cd83d999e2f09e018deeb912511a000dc911b76c599d1506b3"
+      },
+      "original_snapshot": null
+    },
+    {
+      "path": "packages/.DS_Store",
+      "source": {
+        "kind": "file",
+        "mode": 420,
+        "path": "packages/.DS_Store",
+        "size": 6148,
+        "sha256": "df6ff0daafb70c15414cb424a273c62d03031479284ea9866e84004290f39c13"
+      },
+      "original_snapshot": null
+    },
+    {
+      "path": "public/.DS_Store",
+      "source": {
+        "kind": "file",
+        "mode": 420,
+        "path": "public/.DS_Store",
+        "size": 6148,
+        "sha256": "b9e7ce49a404576b10eec0a57e1328a20be3555e681db52826ad37e59955f8d7"
+      },
+      "original_snapshot": null
+    },
+    {
+      "path": "scripts/.DS_Store",
+      "source": {
+        "kind": "file",
+        "mode": 420,
+        "path": "scripts/.DS_Store",
+        "size": 6148,
+        "sha256": "cb08aa618c3fd96cf48f2f6709660b27c1acc06988d4512509a0e43f2852f618"
+      },
+      "original_snapshot": null
+    },
+    {
+      "path": "src/.DS_Store",
+      "source": {
+        "kind": "file",
+        "mode": 420,
+        "path": "src/.DS_Store",
+        "size": 6148,
+        "sha256": "56d0e8599eaebcf4fc35e9ee3764c880f0cccc86eb02d83000d04e5e23ccebca"
+      },
+      "original_snapshot": null
+    },
+    {
+      "path": "tests/.DS_Store",
+      "source": {
+        "kind": "file",
+        "mode": 420,
+        "path": "tests/.DS_Store",
+        "size": 6148,
+        "sha256": "bc33dfb874da60396c68d690d7e8010ca2ef7c19841d0963ddf1efe261056e7e"
+      },
+      "original_snapshot": null
+    }
+  ],
+  "unexpected_differences": [],
+  "authorization": "User explicitly allowed a separate backup of the reported ten .DS_Store differences, preserving the original snapshot, then continuation.",
+  "cause": "Unknown; no Finder attribution established.",
+  "previous_attempt": "Exact source/snapshot equality verifier failed; this receipt preserves and discloses that failure rather than claiming zero differences.",
+  "git_metadata": "Authorized integration fetch/worktree/commits change shared Git metadata; original HEAD/index/status and original snapshot Git baseline remain verified. Private recovery locations are unpublished.",
+  "seconds": 27.24,
+  "snapshot_worktree_unmodified": true,
+  "snapshot_unchanged_during_this_verification": true,
+  "prior_authorized_index_restoration": "snapshot-index-repair.json"
+}
