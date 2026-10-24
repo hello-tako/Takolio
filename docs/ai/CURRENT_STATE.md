@@ -1,3 +1,15 @@
+## Takolio V2 - CLI01 local path correction (2026-10-24 JST)
+
+Status: `LOCAL_CLI01_VERIFIED`. Implementation `c7f7b5510c3f23d7f3d59b66b556d13afd358a9b`, branch `codex/takolio-v2-rescue`; parent `7d0e539281ab6d8261ef416ef1978b90bba8e486`. Integration is the existing Takolio-v2-codex-integration worktree. Official main read-only reference remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Two existing CLI test paths now use Node fileURLToPath. Two imports/two expressions only; assertions, fixtures, production script, app, assets, backend, security, schema and dependencies unchanged. Targeted baseline293/298PASS+5FAIL; fixed298/298PASS. Full `pnpm test --maxWorkers=1`:412/412files,9169/9169tests PASS, Node24.16.0/canonical TMPDIR. Lint/typecheck/local migrations/default and actual paired-ON builds PASS; inherited Admin font warnings retained. First full attempt interrupted130 at120.03s after ignored draft tests were discovered; bytes kept as .txt, clean full rerun PASS. No assertion/config weakening.
+
+Fresh dependency audit exit1:12findings,1low/8moderate/3high. Supersedes older counts; CLI fix does not repair advisories. Original Argon workspace/private full snapshot recovery and strict-parent/protected-main proofs are under evidence/cli-path. Selected54salvage paths, all existing ledger/evidence bytes and38PENDING owner reviews preserved. No test-only screenshots; prior UI evidence unchanged.
+
+Report: `docs/takolio-v2/takeover/CLI01_LOCAL_FILE_URL.md`; exact commands/source/log bindings: `evidence/cli-path/checks.json`. Next local task: DEP01 minimal compatible Vite/Vitest patch; category readback/replay, scan manual history and Week offline durability remain separate packets/ADRs. Finite frontend scope remains bounded; owner/media/native-device/live-provider/hosted acceptance stays pending. No push, merge, deploy, remote migration or production action. Historical content follows unchanged.
+
+---
+
 ## Takolio V2 - C12/C13 and finite frontend plan checkpoint (2026-10-24 JST)
 
 Status: `LOCAL_FRONTEND_PLAN_BOUNDED_COMPLETE_REVIEW_REQUIRED`. Implementation `4afc85804478fa9508b15b1c035da0e10f964822`, branch `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Official main remains `90b94129113b41e34701d99f51175cfa81cb73de` (read-only verification).

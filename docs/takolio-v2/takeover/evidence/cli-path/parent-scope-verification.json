@@ -1,0 +1,30 @@
+{
+  "parent": "7d0e539281ab6d8261ef416ef1978b90bba8e486",
+  "head": "c7f7b5510c3f23d7f3d59b66b556d13afd358a9b",
+  "unchanged_parent_paths": 8956,
+  "reviewed_changed_paths": [
+    "HANDOFF.md",
+    "TASK_BOARD.md",
+    "docs/ai/CURRENT_STATE.md",
+    "docs/ai/tasks/CLI01-local-file-url.md",
+    "docs/takolio-v2/takeover/CLI01_LOCAL_FILE_URL.md",
+    "docs/takolio-v2/takeover/FRONTEND_PLAN_STATUS.md",
+    "docs/takolio-v2/takeover/evidence/cli-path/checks.json",
+    "docs/takolio-v2/takeover/evidence/cli-path/parent-scope-verification.json",
+    "docs/takolio-v2/takeover/evidence/cli-path/protected-main-audit.json",
+    "docs/takolio-v2/takeover/evidence/cli-path/recovery-verification.json",
+    "tests/unit/production-catalog-continuity.test.mjs",
+    "tests/unit/release-check.test.mjs"
+  ],
+  "historical_documents_preserved": true,
+  "selected_salvage_paths_unchanged": 54,
+  "unchanged_ledger_rows": {
+    "ARGON_WORK_LEDGER.csv": 69,
+    "WIP_ASSET_PROVENANCE.csv": 12,
+    "FILE_DECISIONS.csv": 115,
+    "SCREEN_PROGRESS.csv": 38
+  },
+  "owner_reviews_pending": 38,
+  "failures": [],
+  "result": "PASS"
+}

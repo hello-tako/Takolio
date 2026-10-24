@@ -36,3 +36,12 @@ All38screen rows have bounded local evidence; **all38owner reviews remain PENDIN
 5. Push, published PR, merge, deploy, remote migrations and production remain subject to the user's explicit restriction. No such operation has occurred in this continuation.
 
 No additional cosmetic sequence is queued. Reuse current components/assets and act only on a reproduced defect or an accepted product decision. Historical report tails and receipts remain intact.
+
+## CLI01 supersession - 2026-10-24 JST
+
+Implementation `c7f7b5510c3f23d7f3d59b66b556d13afd358a9b` fixes the two URL.pathname test paths. Full
+local serial suite now412/412files and9169/9169tests PASS; exact commands and
+historical interruption retained in evidence/cli-path/checks.json. This replaces
+only the five inherited CLI failures. Fresh dependency audit is12findings
+(1low/8moderate/3high); dependencies unchanged. Frontend owner/media/device/live/
+hosted limits and domain gaps remain. Next local packet: bounded DEP01 patch.
