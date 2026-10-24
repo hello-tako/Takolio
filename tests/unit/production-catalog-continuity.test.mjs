@@ -1,6 +1,7 @@
 import { execFileSync } from 'node:child_process';
 import { mkdtempSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
+import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import {
@@ -113,7 +114,7 @@ describe('complete unchanged production D1 continuity', () => {
       writeFileSync(path.join(cwd, 'release.json'), JSON.stringify(manifest({ sha: candidate })));
       writeFileSync(path.join(cwd, 'authority.json'), JSON.stringify(evidence({ commit: before })));
       writeFileSync(path.join(cwd, 'version.json'), JSON.stringify(version({ GIT_COMMIT: before })));
-      execFileSync(process.execPath, [new URL('../../scripts/release-check.mjs', import.meta.url).pathname,
+      execFileSync(process.execPath, [fileURLToPath(new URL('../../scripts/release-check.mjs', import.meta.url)),
         'transition', 'release.json', 'authority.json', 'version.json'], { cwd, stdio: ['ignore', 'pipe', 'pipe'] });
       return JSON.parse(readFileSync(path.join(cwd, 'release.json'), 'utf8'));
     };
