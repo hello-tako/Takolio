@@ -1,0 +1,110 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "reason": "Preview bootstrap timeout; shared Vite dependency cache subsequently identified as 504 Outdated Optimize Dep.",
+      "rawEvidencePreserved": true,
+      "artifacts": [
+        {
+          "path": ".artifacts/takeover/scan-manual-history/browser-2026-10-24T19-36-45.378Z/failure-0.png",
+          "sha256": "92f3445271bcae22e19a8d5b5a8aff48108d660525dd7ad3b0c2fc7a6f001cf3",
+          "bytes": 5758
+        },
+        {
+          "path": ".artifacts/takeover/scan-manual-history/browser-2026-10-24T19-36-45.378Z/manifest.json",
+          "sha256": "572e4e4c76167b8fe2cb063e27cc666c1d2c9751006757107808e3cce984a71d",
+          "bytes": 397
+        },
+        {
+          "path": ".artifacts/takeover/scan-manual-history/browser-2026-10-24T19-36-45.378Z/readback.json",
+          "sha256": "a8baa4e45f0488f5565064059376f6d5b689b8f7a610c15d46463564fdc60f72",
+          "bytes": 2051
+        },
+        {
+          "path": ".artifacts/takeover/scan-manual-history/browser-attempt-1.log",
+          "sha256": "b5977a44a1fc1c6a566743d939e0c05e50acdfbf9bd52bfc4f67e978d130275f",
+          "bytes": 2012
+        },
+        {
+          "path": ".artifacts/takeover/scan-manual-history/browser-attempt-1.mjs",
+          "sha256": "ada0822104c219a6d0aa41e1aa23d04ec0be1ca3423b589d151176eb0e824e28",
+          "bytes": 14332
+        }
+      ]
+    },
+    {
+      "attempt": 2,
+      "reason": "Confirmed /node_modules/.vite/deps/zustand.js 504 Outdated Optimize Dep; isolated preview restarted with private cacheDir.",
+      "rawEvidencePreserved": true,
+      "artifacts": [
+        {
+          "path": ".artifacts/takeover/scan-manual-history/browser-2026-10-24T19-37-07.123Z/failure-0.png",
+          "sha256": "92f3445271bcae22e19a8d5b5a8aff48108d660525dd7ad3b0c2fc7a6f001cf3",
+          "bytes": 5758
+        },
+        {
+          "path": ".artifacts/takeover/scan-manual-history/browser-2026-10-24T19-37-07.123Z/manifest.json",
+          "sha256": "eb03612d1382ec091ebba6b8b96c9fee0d8bf0101a40c6cf6fd7301e7e71ed67",
+          "bytes": 397
+        },
+        {
+          "path": ".artifacts/takeover/scan-manual-history/browser-2026-10-24T19-37-07.123Z/readback.json",
+          "sha256": "4d00a92abfc45dafe0a1546046fd1380d81620e91f0ef99b947b62d828497068",
+          "bytes": 2522
+        },
+        {
+          "path": ".artifacts/takeover/scan-manual-history/browser-attempt-2.log",
+          "sha256": "d21158ac4080549bad0d760f0029567cde4d657e7e2284af4a244fd9ab07bafb",
+          "bytes": 2018
+        },
+        {
+          "path": ".artifacts/takeover/scan-manual-history/browser-attempt-2.mjs",
+          "sha256": "ec8593c2ac0d1e901e38a2cce1264ae1ecb0a442d309fd98783dea788084cb54",
+          "bytes": 14699
+        }
+      ]
+    },
+    {
+      "attempt": 3,
+      "reason": "Browser helper asserted nonexistent lot.storage; SQL schema uses storage_location_id. Application confirmation succeeded; helper corrected only.",
+      "rawEvidencePreserved": true,
+      "artifacts": [
+        {
+          "path": ".artifacts/takeover/scan-manual-history/browser-2026-10-24T19-38-47.406Z/320-photo-manual-draft.png",
+          "sha256": "67a1986588ce11246cc6fdc57bece85146f491f722bee97539fe41049658b932",
+          "bytes": 244441
+        },
+        {
+          "path": ".artifacts/takeover/scan-manual-history/browser-2026-10-24T19-38-47.406Z/320-photo-manual-form.png",
+          "sha256": "54633380d75be8cc81317ee753781501ffe433d5270c8fca45055aeb24664b55",
+          "bytes": 206968
+        },
+        {
+          "path": ".artifacts/takeover/scan-manual-history/browser-2026-10-24T19-38-47.406Z/failure-2.png",
+          "sha256": "71a7edc958ba7bd1e7e2cf2d24f82f59e471948f508925b637e96156a4a917d3",
+          "bytes": 81742
+        },
+        {
+          "path": ".artifacts/takeover/scan-manual-history/browser-2026-10-24T19-38-47.406Z/manifest.json",
+          "sha256": "499cffe4225207a3f70c961f93555576d9773310432dfb598f5f99e652577579",
+          "bytes": 822
+        },
+        {
+          "path": ".artifacts/takeover/scan-manual-history/browser-2026-10-24T19-38-47.406Z/readback.json",
+          "sha256": "a73ba5af99479b11ccc389578faf54d073efd66ed213925ae01682d7104e7388",
+          "bytes": 2300
+        },
+        {
+          "path": ".artifacts/takeover/scan-manual-history/browser-attempt-3.log",
+          "sha256": "11ea35a8090935aa03f84eeda6a057aea73cdd81bdd104699b326168fdf661d3",
+          "bytes": 636
+        },
+        {
+          "path": ".artifacts/takeover/scan-manual-history/browser-attempt-3.mjs",
+          "sha256": "ec8593c2ac0d1e901e38a2cce1264ae1ecb0a442d309fd98783dea788084cb54",
+          "bytes": 14699
+        }
+      ]
+    }
+  ]
+}

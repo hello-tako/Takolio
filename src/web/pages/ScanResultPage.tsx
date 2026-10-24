@@ -419,6 +419,7 @@ const ScanReview: React.FC<{ effectiveScanId: string }> = ({ effectiveScanId }) 
             {items.map((item, index) => {
               const confidence = presentConfidence(item.confidence);
               const persisted = item.sourceItemId !== undefined;
+              const manual = item.isManual === true || !persisted;
               const raw = item.rawEvidence;
               const corrected =
                 raw &&
@@ -444,16 +445,16 @@ const ScanReview: React.FC<{ effectiveScanId: string }> = ({ effectiveScanId }) 
                       <h2 className="font-heading font-semibold text-sm text-semantic-text-primary break-words">
                         {item.rawName}
                       </h2>
-                      {persisted ? (
+                      {manual ? (
+                        <span className="text-xs text-semantic-text-secondary">Nhập thủ công</span>
+                      ) : (
                         <span
                           className={`inline-block text-xs px-1.5 py-0.5 rounded font-semibold ${confidenceClass[confidence.tone]}`}
                         >
                           {confidence.label}
                         </span>
-                      ) : (
-                        <span className="text-xs text-semantic-text-secondary">Nhập thủ công</span>
                       )}
-                      {persisted && (
+                      {!manual && (
                         <p
                           className="text-xs text-semantic-text-secondary mt-1 break-words"
                           data-raw-evidence

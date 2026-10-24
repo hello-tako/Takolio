@@ -1,0 +1,53 @@
+
+> frigo@0.1.0 test /Users/tunbee27/Documents/New project/Takolio-v2-codex-integration
+> vitest run tests/integration/scan-manual-history.test.ts --maxWorkers=1
+
+
+ RUN  v4.1.12 /Users/tunbee27/Documents/New project/Takolio-v2-codex-integration
+
+stderr | tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > rolls back manual history when prepared inventory becomes stale: 'native'/'fridge'
+Adopted scan confirmation failed:
+
+stderr | tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > rolls back manual history when prepared inventory becomes stale: 'native'/'receipt'
+Adopted scan confirmation failed:
+
+ ❯ tests/integration/scan-manual-history.test.ts (37 tests | 2 failed) 4949ms
+     × rolls back manual history when prepared inventory becomes stale: 'native'/'fridge' 142ms
+     × rolls back manual history when prepared inventory becomes stale: 'native'/'receipt' 138ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > rolls back manual history when prepared inventory becomes stale: 'native'/'fridge'
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > rolls back manual history when prepared inventory becomes stale: 'native'/'receipt'
+AssertionError: expected { status: 500, json: { …(2) } } to match object { status: 409, …(1) }
+(1 matching property omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "json": {
+-     "code": "INVENTORY_CONFLICT",
++     "code": "DATABASE_ERROR",
+    },
+-   "status": 409,
++   "status": 500,
+  }
+
+ ❯ tests/integration/scan-manual-history.test.ts:333:27
+    331|     const winner = facts();
+    332|     release();
+    333|     expect(await pending).toMatchObject({ status: 409, json: { code: '…
+       |                           ^
+    334|     db.hooks = {};
+    335|     expect(facts()).toEqual(winner);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 35 passed (37)
+   Start at  04:31:04
+   Duration  5.90s (transform 582ms, setup 27ms, import 719ms, tests 4.95s, environment 0ms)
+
+ ELIFECYCLE  Test failed. See above for more details.

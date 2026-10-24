@@ -66,3 +66,17 @@ index restoration; ten authorized .DS_Store deltas have a separate private copy.
 No zero-difference claim. Earlier spice-to-other remains historical evidence.
 SCAN01, WKD01/WKD02 remain next; owner/media/device/Safari/screenreader/live/hosted
 acceptance unchanged, all38 owner reviews PENDING. No production operation.
+
+
+## SCAN01 follow-up supersession - 2026-10-25 JST
+
+The UI04 manual-history gap is repaired for newly accepted confirmations. Existing
+photo/receipt reviews show durable reviewed values and truthful manual labels;
+no OCR/prices invented,no historical backfill. Browser4flows/8PNG and full
+415files/9279tests PASS; lint/types/migrations/default/paired-ON builds PASS.
+Audit remains0low/3moderate/2high. Frozen evidence and prior failed attempts are
+in SCAN01_MANUAL_REVIEW_HISTORY.md. Node Worker-router/SQLite evidence remains
+bounded; owner/media/device/Safari/screenreader/live/hosted acceptance unchanged.
+WKD01 durable offline queue then WKD02 swap replay remain next. All38owner reviews
+PENDING. Recovery has ten authorized platform-file deltas,not zero differences.
+No production operation.

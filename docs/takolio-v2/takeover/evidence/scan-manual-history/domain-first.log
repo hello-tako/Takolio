@@ -1,0 +1,62 @@
+
+> frigo@0.1.0 test /Users/tunbee27/Documents/New project/Takolio-v2-codex-integration
+> vitest run tests/integration/scan-manual-history.test.ts --maxWorkers=1
+
+
+ RUN  v4.1.12 /Users/tunbee27/Documents/New project/Takolio-v2-codex-integration
+
+ ❯ tests/integration/scan-manual-history.test.ts (31 tests | 4 failed) 4551ms
+     × fences concurrent manual twins at the actual commit barrier: 'legacy'/'fridge' 136ms
+     × fences concurrent manual twins at the actual commit barrier: 'legacy'/'receipt' 132ms
+     × fences concurrent manual twins at the actual commit barrier: 'native'/'fridge' 132ms
+     × fences concurrent manual twins at the actual commit barrier: 'native'/'receipt' 139ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > fences concurrent manual twins at the actual commit barrier: 'legacy'/'fridge'
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > fences concurrent manual twins at the actual commit barrier: 'legacy'/'receipt'
+AssertionError: expected [ { id: 'evt_01' }, …(5) ] to have a length of 1 but got 6
+
+- Expected
++ Received
+
+- 1
++ 6
+
+ ❯ tests/integration/scan-manual-history.test.ts:301:57
+    299|     expect(history('concurrent')).toHaveLength(1);
+    300|     expect(stock()).toEqual([expect.objectContaining({ quantity: 0.25 …
+    301|     expect(db.query('SELECT id FROM inventory_events')).toHaveLength(1…
+       |                                                         ^
+    302|     if (mode === 'native') {
+    303|       expect(db.query('SELECT id FROM inventory_observations')).toHave…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > fences concurrent manual twins at the actual commit barrier: 'native'/'fridge'
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > fences concurrent manual twins at the actual commit barrier: 'native'/'receipt'
+AssertionError: expected [ …(6) ] to have a length of 1 but got 6
+
+- Expected
++ Received
+
+- 1
++ 6
+
+ ❯ tests/integration/scan-manual-history.test.ts:301:57
+    299|     expect(history('concurrent')).toHaveLength(1);
+    300|     expect(stock()).toEqual([expect.objectContaining({ quantity: 0.25 …
+    301|     expect(db.query('SELECT id FROM inventory_events')).toHaveLength(1…
+       |                                                         ^
+    302|     if (mode === 'native') {
+    303|       expect(db.query('SELECT id FROM inventory_observations')).toHave…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 27 passed (31)
+   Start at  04:28:13
+   Duration  5.58s (transform 637ms, setup 24ms, import 791ms, tests 4.55s, environment 0ms)
+
+ ELIFECYCLE  Test failed. See above for more details.

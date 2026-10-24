@@ -1,3 +1,19 @@
+## Takolio V2 - SCAN01 durable manual review history (2026-10-25 JST)
+
+Status: `LOCAL_SCAN01_VERIFIED`. Parent `a4fa573a53580f187f86b35bad7127bba042000e`; official main observed read-only `90b94129113b41e34701d99f51175cfa81cb73de`. Implementation checkpoint follows frozen evidence; its verified hash is recorded by the documentation checkpoint.
+
+Accepted manual scan lines now persist atomically with confirmation and reopen as read-only review history. Reviewed fractional quantity, mapping, category, storage and expiry remain independent of mutable stock. Manual OCR/prices stay NULL; UI labels manual origin without inventing extraction facts. Existing native/legacy stock merges, household guards, source evidence, confirmedItemIds and status-based replay remain. No schema, dependency, backfill, receipt manual-add UI or frontend rebuild.
+
+Full `pnpm test --maxWorkers=1 --testTimeout=15000`:415/415files,9279/9279tests PASS; exit0; reported1072.07s/wall1073.04s. Focused8files/178tests PASS. Lint/types/local migrations/default and actual paired-ON builds PASS.1182frozen source/test/config hashes unchanged. Audit exit1:0low/3moderate/2high,Hono/Zod/Undici remain. Baseline27FAIL/4PASS, fixture27PASS/4FAIL, refined35PASS/2FAIL and initial DOM typecheck failure remain disclosed; final manual37/37 and DOM6/6PASS. No assertion/config weakening.
+
+Browser photo/receipt at320/1440:4flows PASS,8PNG. Photo uses actual manual-add/removal/confirm; receipt manual addition uses existing API. Fresh document/read-only labels, SQL/GET facts and zero-mutation replay PASS; zero page/console/failed/external requests. Real Worker router with synthetic Node SQLite; not native D1/workerd/hosted/live OCR/device/Safari/screenreader certification. Two Vite504 bootstrap failures and one helper-column assertion failure retained before successful run. Independent scoped review found no concrete runtime/security finding.
+
+Recovery `PASS_WITH_AUTHORIZED_PLATFORM_DRIFT`:private snapshot22,763regular/772symlinks and116Git baseline files exact. Source22,772regular/772symlinks differs only at ten authorized .DS_Store paths(one changed,nine added), separately privately copied/verified. Every other source path exact; source index/stored manifest unchanged,HEAD/index/status match. Previous authorized snapshot-index restoration remains disclosed in CAT01. No zero-difference claim; private recovery locations unpublished. Precommit scope PASS:8990parent/5798protected-main paths unchanged,54salvage exact,69Argon/12asset/38screen rows exact,115old file decisions preserved,38owner reviews PENDING.
+
+Report:`docs/takolio-v2/takeover/SCAN01_MANUAL_REVIEW_HISTORY.md`; exact commands/log/source bindings:`evidence/scan-manual-history/checks.json`. Next:activate WKD01 durable offline queue under its own ADR/gates,then WKD02 Week swap replay. Finite UI01-UI15+C12/C13 remains locally bounded complete; owner/media/device/Safari/screenreader/live/hosted acceptance pending. No push,merge,deploy,remote migration or production operation. Historical content follows unchanged.
+
+---
+
 ## Takolio V2 - CAT01 category authority and immutable CREATE (2026-10-25 JST)
 
 Status: `LOCAL_CAT01_VERIFIED`. Implementation `820b0bd486aa17adc9a3cb3cba886b3ee7b62e3c`; parent `e90bcfda35b3deeee8efc9647ab2c8f72f6520ee`; official main observed read-only `90b94129113b41e34701d99f51175cfa81cb73de`.

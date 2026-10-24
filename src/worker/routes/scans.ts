@@ -550,6 +550,14 @@ export function scanItemDto(row: any, scanId: string) {
   // CONFIRMED line and in the exact shape the review UI submits, so a
   // reopened review hydrates KNOWN/ESTIMATED/UNKNOWN faithfully.
   const reviewedExpiry = reviewState === 'CONFIRMED' ? reviewedScanExpiry(row) : null;
+  // ponytail: Reserved IDs mark manual origin; add a schema field before importing this namespace.
+  const isManual = /^scan_manual_[a-f0-9]{64}$/.test(row.id)
+    && reviewState === 'CONFIRMED'
+    && Number(row.is_confirmed) === 1
+    && rawEvidenceAbsent(raw)
+    && row.ocr_confidence == null
+    && row.unit_price_vnd == null
+    && row.total_price_vnd == null;
   return {
     id: row.id,
     scanId: row.scan_id ?? scanId,
@@ -563,6 +571,7 @@ export function scanItemDto(row: any, scanId: string) {
     storage: row.storage,
     isConfirmed: Boolean(row.is_confirmed),
     reviewState,
+    ...(isManual ? { isManual: true } : {}),
     unitPriceVnd: row.unit_price_vnd == null ? undefined : Number(row.unit_price_vnd),
     totalPriceVnd: row.total_price_vnd == null ? undefined : Number(row.total_price_vnd),
     ...(reviewedExpiry ?? {}),
@@ -1709,6 +1718,46 @@ scanRoutes.post('/scans/:id/confirm', async (c) => {
             )
         );
       }
+    }
+
+    // Accepted manual lines retain reviewed values, never OCR or price evidence.
+    for (const [submissionIndex, item] of allResolvedItems.entries()) {
+      if (!item.isManual || item.rejected) continue;
+      const historyId = `scan_manual_${await sha256Hex(
+        JSON.stringify([id, item.clientId ?? null, submissionIndex])
+      )}`;
+      const reviewed = lotExpiryFromEvidence(item.expiryDate, item.expiryBasis);
+      batchStatements.push(
+        db
+          .prepare(
+            `INSERT INTO scan_items (
+               id, scan_id, raw_name, canonical_id, estimated_quantity, unit,
+               confidence, category, storage, is_confirmed, review_state,
+               reviewed_expiry_date, reviewed_expiry_kind,
+               unit_price_vnd, total_price_vnd,
+               ocr_raw_name, ocr_quantity, ocr_unit, ocr_confidence,
+               ocr_canonical_id, ocr_category, ocr_storage
+             )
+             SELECT ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, 'CONFIRMED', ?, ?,
+                    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
+             WHERE ${readyScanPredicate}`
+          )
+          .bind(
+            historyId,
+            id,
+            item.name,
+            item.canonicalId,
+            item.quantity,
+            item.unit,
+            LEGACY_CONFIDENCE_FILLER,
+            item.category,
+            item.storage,
+            reviewed.expiryAt ?? reviewed.estimatedExpiryAt ?? null,
+            reviewed.expiryKind,
+            id,
+            auth.householdId
+          )
+      );
     }
 
     // T13: an explicitly rejected line is recorded as durable review evidence.

@@ -38,6 +38,7 @@ import { scanErrorMessage } from '../lib/scan-errors';
 
 interface ReceiptItemState {
   id: string;
+  isManual?: boolean;
   rawName: string;
   canonicalId?: string | null;
   estimatedQuantity: number | '';
@@ -403,7 +404,7 @@ const ReceiptReview: React.FC<{ receiptScanId: string | null }> = ({ receiptScan
           {/* Extracted Items Count */}
           <div className="flex items-center justify-between px-1">
             <h4 className="font-heading font-semibold text-sm text-semantic-text-primary">
-              Hàng hóa nhận diện ({items.length} món)
+              Các dòng nguyên liệu ({items.length} món)
             </h4>
             <span className="text-xs text-semantic-text-muted">Kiểm tra từng dòng</span>
           </div>
@@ -411,6 +412,7 @@ const ReceiptReview: React.FC<{ receiptScanId: string | null }> = ({ receiptScan
           {/* Items List */}
           <div className="space-y-2.5">
             {items.map((item) => {
+              const manual = item.isManual === true;
               const confidence = presentConfidence(item.confidence);
               const raw = item.rawEvidence;
               const corrected =
@@ -438,31 +440,37 @@ const ReceiptReview: React.FC<{ receiptScanId: string | null }> = ({ receiptScan
                       <div className="min-w-0 flex-1">
                         <h2 className="break-words">{item.rawName || 'Chưa có tên'}</h2>
                         <div className="flex items-center gap-2 mt-1 flex-wrap">
-                          <span
-                            className="text-xs font-semibold text-takosan-green"
-                            data-testid="receipt-price"
-                          >
-                            Thành tiền OCR: {presentPrice(item.totalPriceVnd)}
-                          </span>
-                          <span
-                            data-testid="receipt-confidence"
-                            className={clsx(
-                              'text-xs px-1.5 py-0.5 rounded font-semibold border',
-                              confidence.tone === 'unknown'
-                                ? 'bg-semantic-border/60 text-semantic-text-secondary border-semantic-border'
-                                : confidence.tone === 'low'
-                                  ? 'bg-semantic-danger-soft text-semantic-danger-strong border-semantic-danger/30'
-                                  : confidence.tone === 'medium'
-                                    ? 'bg-semantic-warning-soft text-semantic-warning-strong border-semantic-warning/30'
-                                    : 'bg-takosan-mint text-takosan-green-deep border-takosan-mint-deep/60',
-                            )}
-                          >
-                            {confidence.label}
-                          </span>
+                          {manual ? (
+                            <span className="text-xs text-semantic-text-secondary">Nhập thủ công</span>
+                          ) : (
+                            <>
+                              <span
+                                className="text-xs font-semibold text-takosan-green"
+                                data-testid="receipt-price"
+                              >
+                                Thành tiền OCR: {presentPrice(item.totalPriceVnd)}
+                              </span>
+                              <span
+                                data-testid="receipt-confidence"
+                                className={clsx(
+                                  'text-xs px-1.5 py-0.5 rounded font-semibold border',
+                                  confidence.tone === 'unknown'
+                                    ? 'bg-semantic-border/60 text-semantic-text-secondary border-semantic-border'
+                                    : confidence.tone === 'low'
+                                      ? 'bg-semantic-danger-soft text-semantic-danger-strong border-semantic-danger/30'
+                                      : confidence.tone === 'medium'
+                                        ? 'bg-semantic-warning-soft text-semantic-warning-strong border-semantic-warning/30'
+                                        : 'bg-takosan-mint text-takosan-green-deep border-takosan-mint-deep/60',
+                                )}
+                              >
+                                {confidence.label}
+                              </span>
+                            </>
+                          )}
                         </div>
                         {!item.canonicalId && (
                           <p className="text-sm text-semantic-warning-strong mt-1">
-                            Chưa nhận diện nguyên liệu chuẩn
+                            {manual ? 'Chưa liên kết nguyên liệu chuẩn' : 'Chưa nhận diện nguyên liệu chuẩn'}
                           </p>
                         )}
                       </div>
@@ -532,20 +540,24 @@ const ReceiptReview: React.FC<{ receiptScanId: string | null }> = ({ receiptScan
                             : 'Hạn dùng đã lưu: xem chi tiết lô trong tủ lạnh.'}
                     </p>
                   )}
-                  {item.unitPriceVnd != null && (
+                  {!manual && item.unitPriceVnd != null && (
                     <p className="text-sm text-semantic-text-muted">
                       Đơn giá OCR: {presentPrice(item.unitPriceVnd)}
                     </p>
                   )}
                   <details className="text-xs text-semantic-text-secondary break-words">
                     <summary className="cursor-pointer py-1 font-medium">
-                      Xem OCR gốc và giá trị xác nhận{corrected ? ' · Đã chỉnh sửa' : ''}
+                      {manual
+                        ? 'Xem giá trị nhập thủ công đã xác nhận'
+                        : `Xem OCR gốc và giá trị xác nhận${corrected ? ' · Đã chỉnh sửa' : ''}`}
                     </summary>
-                    <p data-testid="receipt-raw-evidence" className="mt-1">
-                      OCR gốc: {raw?.rawName ?? 'Chưa rõ tên'} ·{' '}
-                      {raw?.estimatedQuantity ?? 'Chưa rõ số lượng'} ·{' '}
-                      {raw?.unit ?? 'Chưa rõ đơn vị'}
-                    </p>
+                    {!manual && (
+                      <p data-testid="receipt-raw-evidence" className="mt-1">
+                        OCR gốc: {raw?.rawName ?? 'Chưa rõ tên'} ·{' '}
+                        {raw?.estimatedQuantity ?? 'Chưa rõ số lượng'} ·{' '}
+                        {raw?.unit ?? 'Chưa rõ đơn vị'}
+                      </p>
+                    )}
                     <p data-testid="receipt-confirmed-evidence" className="mt-1">
                       {item.rejected ? 'Đã bỏ qua' : isConfirmed ? 'Đã xác nhận' : 'Bạn xác nhận'}:{' '}
                       {item.rawName || 'Chưa có tên'} · {item.estimatedQuantity} · {item.unit}

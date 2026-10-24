@@ -1,0 +1,24 @@
+{
+  "raw_attempts": [
+    {
+      "path": ".artifacts/takeover/scan-manual-history/typecheck.log",
+      "sha256": "41c27a5f6b8475f255c4552445fc1e19154f70bb5e95887f18e13a1757538da9",
+      "bytes": 798
+    },
+    {
+      "path": ".artifacts/takeover/scan-manual-history/run-gates.py",
+      "sha256": "b73743f7d226f82571da05c0a8764b59f2e2ffdb5367be24ec90df9dc6738ac5",
+      "bytes": 2040
+    },
+    {
+      "path": ".artifacts/takeover/scan-manual-history/run-gates-final.py",
+      "sha256": "d689a7f52f01d609e11597e3afccc425835f79ad9b35dc03667b8348ab5ff220",
+      "bytes": 2078
+    }
+  ],
+  "notes": [
+    "Baseline old runtime failed desired history checks; first new domain fixture counts corrected; native stale batch retains inherited500 rather than invented409.",
+    "Initial TypeScript DOM union failed; query matches(:disabled) corrected before final gates.",
+    "Browser failed attempts retained separately in browser/failed-attempts."
+  ]
+}

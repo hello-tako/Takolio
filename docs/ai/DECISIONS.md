@@ -3419,3 +3419,53 @@ Before completion require populated upgrade/forgery/rollback tests, immutable re
 coverage, full local checks and actual Worker browser/readback evidence. Preserve
 Argon work and all0024-0043 bytes. Scan manual-history and Week offline durability,
 owner/device/hosted acceptance remain separately scoped.
+
+## ADR-067 - Atomic accepted manual scan history and explicit presentation (2026-10-25)
+
+Status: accepted for isolated local implementation. Active packet:
+`tasks/SCAN01-manual-review-history.md`. CAT01 is verified at implementation
+`820b0bd486aa17adc9a3cb3cba886b3ee7b62e3c`, documentation checkpoint `a4fa573a`.
+
+Confirmed manual photo-review additions currently enter stock but are absent from
+fresh scan history. Retain accepted manual lines in existing scan_items through
+plain INSERT SELECT statements using the exact household/READY predicate and
+existing atomic batch. Keep status last. Reuse reviewed expiry conversion and
+SHA-256 over JSON [scanId, clientId-or-null, originalSubmissionIndex]; reserve
+`scan_manual_` plus 64 lowercase hex digits for server-created manual history.
+No migration, dependency, historical backfill or frontend rebuild.
+
+Store reviewed name, quantity, unit, mapping, category, storage and explicit
+KNOWN/ESTIMATED/UNKNOWN expiry independently of mutable stock. All OCR and price
+columns remain NULL; legacy NOT NULL confidence is schema filler only. Keep
+manual sourceId absent for stock evidence, receipt attribution and observations.
+Do not invent OCR source links or change existing confirmedItemIds semantics.
+The existing status-based replay contract remains: confirmed retries ignore
+changed valid payloads and cannot repeat mutations. Stronger intent replay is
+outside this task. Preserve existing native/legacy merge and receipt-lot rules.
+
+GET may emit optional isManual:true only for confirmed reserved-namespace rows
+with absent OCR/confidence/prices. Unknown legacy OCR remains unknown OCR.
+Persisted manual rows retain sourceItemId membership/read-only behavior. Existing
+photo/receipt reviews label them Nhap thu cong (localized UI text), suppress OCR
+claims and use neutral history copy; no receipt manual-add affordance is added.
+The namespace is a deliberate ceiling: an imported historical row intentionally
+using it cannot be distinguished without a future schema field. Document this in
+one ponytail comment; introduce a schema origin field before such imports.
+
+Require baseline-failing real SQLite HTTP regression, both authority modes and
+scan types, fresh UI reopen, actual transport/body/outbox replay, race/collision/
+rollback/security/metadata tests, full local gates and actual Worker browser
+screenshots at320 and desktop. No payment/auth/infrastructure changes. Preserve
+Argon source, snapshots, existing ledgers/evidence and authorized platform drift.
+No push, merge, deploy, remote migration or production authorization follows.
+
+
+### ADR-067 verified local result - 2026-10-25 JST
+
+SCAN01 implementation and bounded checks complete. Four runtime files; no schema
+or dependency change. Full415/415files,9279/9279tests PASS with explicit CLI15s;
+focused8files/178tests,lint,types,migrations,default/paired-ON builds PASS.
+Audit remains FAIL(0low/3moderate/2high). Actual Worker-router browser4flows at
+320/1440,8PNG,SQL/GET/read-only/replay PASS; synthetic Node SQLite,not native
+D1/workerd/hosted. Failures and recovery platform drift remain disclosed.
+See SCAN01 report and frozen evidence. WKD01/WKD02 require separate ADRs.

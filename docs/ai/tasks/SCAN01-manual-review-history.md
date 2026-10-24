@@ -1,9 +1,9 @@
 # SCAN01 - Retain accepted manual scan lines in review history
 
-Status: DRAFT TASK PACKET; implementation not started; no new ADR accepted.
-Date: 2026-10-24 JST. CAT01 / ADR-066 remains the active implementation until its
-independent review and final gates finish. This packet queues the next bounded
-local task; it does not change ADR-066 or certify the scanner fix.
+Status: LOCAL_SCAN01_VERIFIED; ADR-067 accepted2026-10-25 JST.
+CAT01 / ADR-066 completed at implementation820b0bd4 and documentation checkpoint
+a4fa573a. SCAN01 implementation, focused/full gates and bounded browser verification
+completed locally. No release claim.
 Worktree: `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`.
 The original Argon workspace remains read-only; preserve its recovery evidence.
 
@@ -109,7 +109,7 @@ unrelated inventory metadata. Existing stock races and authority fences remain.
 
 1. After CAT01 gates/review, recheck status/diff/current callers and baseline.
    Record the SCAN01 decision in DECISIONS.md before source edits, retaining
-   ADR-066 ownership/history. Do not reserve or edit a new ADR during this draft.
+   ADR-066 ownership/history. ADR-067 records the accepted SCAN01 scope.
 2. Add a baseline-failing SQLite HTTP test for manual 0.25 pack confirmation and
    fresh GET. Extend existing absent-raw tests to expect the additional confirmed
    history row with NULL OCR, retaining their original command/observation proof.
@@ -213,3 +213,25 @@ manual rows show no AI/OCR claim; unknown legacy OCR rows remain unknown OCR;
 confirmed review remains disabled and cannot mutate. These proposed assertions
 were not executed in this draft; implementation remains pending the SCAN01 ADR,
 source changes, gates and independent review.
+
+## Executed result - 2026-10-25 JST
+
+Four runtime files retain accepted manual history and truthful photo/receipt labels.
+Four test files cover real SQLite HTTP confirmation, replay/rollback/races, native
+and legacy authority, expiry/metadata/OCR, transport/outbox replay and fresh DOM.
+Focused8files/178tests PASS. Full `pnpm test --maxWorkers=1 --testTimeout=15000`: 415/415 files, 9279/9279 tests PASS; exit0; reported 1072.07s / wall 1073.04s.
+Lint/typecheck/local migration smoke/default and actual paired-ON builds PASS.
+Audit exit1: inherited0low/3moderate/2high; Hono/Zod/Undici remain unresolved.
+
+Four local Chromium flows (photo/receipt,320/1440),8PNG, fresh-document read-only
+reopen, exact SQL/GET and zero-delta replay PASS. Real photo manual-add/remove/
+confirm UI exercised; receipt manual addition used API only. Node Worker with
+synthetic SQLite; no native D1/hosted/device/OCR-provider acceptance implied.
+Browser retries and baseline/domain/type failures remain preserved.
+
+Recovery PASS_WITH_AUTHORIZED_PLATFORM_DRIFT: stored snapshot baseline exact;
+source differs solely in ten authorized .DS_Store paths separately preserved.
+No zero-difference claim. Strict-parent/protected-main,54salvage,ledger/evidence
+and38PENDING owner rows preserved. See SCAN01_MANUAL_REVIEW_HISTORY.md and
+`docs/takolio-v2/takeover/evidence/scan-manual-history/`. Next WKD01 then WKD02;
+no push,merge,deploy,remote migration or production action.

@@ -1,0 +1,470 @@
+
+> frigo@0.1.0 test /Users/tunbee27/Documents/New project/Takolio-v2-codex-integration
+> vitest run tests/integration/scan-manual-history.test.ts --maxWorkers=1
+
+
+ RUN  v4.1.12 /Users/tunbee27/Documents/New project/Takolio-v2-codex-integration
+
+stderr | tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > rolls back history, stock and receipts on the final status failure, then retries once: legacy
+D1 confirmScan items insert failed:
+
+stderr | tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > rolls back history, stock and receipts on the final status failure, then retries once: native
+Adopted scan confirmation failed:
+
+stderr | tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > retains each manual review while preserving existing stock merge semantics: 'legacy'/'fridge'
+{"level":"warn","limiter":"rl_inv_w","reason":"kv-unbound","message":"Rate limiter degraded to isolate-local counters; enforcement is not globally reliable."}
+
+ ❯ tests/integration/scan-manual-history.test.ts (31 tests | 27 failed) 4731ms
+     × persists fractional review once through fresh GET: 'legacy'/'fridge' 174ms
+     × persists fractional review once through fresh GET: 'legacy'/'receipt' 122ms
+     × persists fractional review once through fresh GET: 'native'/'fridge' 138ms
+     × persists fractional review once through fresh GET: 'native'/'receipt' 139ms
+     × keeps expiry, rejection, omission and original input indices: 'legacy'/'fridge' 122ms
+     × keeps expiry, rejection, omission and original input indices: 'legacy'/'receipt' 127ms
+     × keeps expiry, rejection, omission and original input indices: 'native'/'fridge' 169ms
+     × keeps expiry, rejection, omission and original input indices: 'native'/'receipt' 155ms
+     × scopes long draft IDs by scan, distinguishes no-ID rows, rejects duplicate input IDs atomically 132ms
+     × rejects a global history ID collision without replacing another scan: legacy 137ms
+     × rejects a global history ID collision without replacing another scan: native 138ms
+     × rolls back history, stock and receipts on the final status failure, then retries once: legacy 133ms
+     × rolls back history, stock and receipts on the final status failure, then retries once: native 147ms
+     × retains each manual review while preserving existing stock merge semantics: 'legacy'/'fridge' 142ms
+     × retains each manual review while preserving existing stock merge semantics: 'legacy'/'receipt' 128ms
+     × retains each manual review while preserving existing stock merge semantics: 'native'/'fridge' 152ms
+     × retains each manual review while preserving existing stock merge semantics: 'native'/'receipt' 158ms
+     × fences concurrent manual twins at the actual commit barrier: 'legacy'/'fridge' 121ms
+     × fences concurrent manual twins at the actual commit barrier: 'legacy'/'receipt' 130ms
+     × fences concurrent manual twins at the actual commit barrier: 'native'/'fridge' 132ms
+     × fences concurrent manual twins at the actual commit barrier: 'native'/'receipt' 157ms
+     × recovers a lost acknowledgement after COMMIT with immutable manual history: 'legacy'/'fridge' 115ms
+     × recovers a lost acknowledgement after COMMIT with immutable manual history: 'legacy'/'receipt' 114ms
+     × recovers a lost acknowledgement after COMMIT with immutable manual history: 'native'/'fridge' 129ms
+     × recovers a lost acknowledgement after COMMIT with immutable manual history: 'native'/'receipt' 138ms
+     × keeps manual fridge history immutable after stock edit, MOVE and USE 174ms
+     × keeps manual receipt history immutable after stock edit, MOVE and USE 165ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 27 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > persists fractional review once through fresh GET: 'legacy'/'fridge'
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > persists fractional review once through fresh GET: 'legacy'/'receipt'
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > persists fractional review once through fresh GET: 'native'/'fridge'
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > persists fractional review once through fresh GET: 'native'/'receipt'
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ tests/integration/scan-manual-history.test.ts:102:18
+    100|       unit: 'pack', category: 'other', storage: 'pantry' })]);
+    101|     const rows = history(scanId);
+    102|     expect(rows).toHaveLength(1);
+       |                  ^
+    103|     expect(rows[0]).toMatchObject({ id: historyId(scanId, 'draft_manua…
+    104|       raw_name: 'SCAN01 manual salt', canonical_id: null, estimated_qu…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/27]⎯
+
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > keeps expiry, rejection, omission and original input indices: 'legacy'/'fridge'
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > keeps expiry, rejection, omission and original input indices: 'legacy'/'receipt'
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > keeps expiry, rejection, omission and original input indices: 'native'/'fridge'
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > keeps expiry, rejection, omission and original input indices: 'native'/'receipt'
+AssertionError: expected [ { …(23) }, { …(23) }, { …(23) } ] to have a length of 6 but got 3
+
+- Expected
++ Received
+
+- 6
++ 3
+
+ ❯ tests/integration/scan-manual-history.test.ts:152:18
+    150|     expect(result.json.confirmedItemIds).toEqual(['accepted-prediction…
+    151|     const rows = history(scanId);
+    152|     expect(rows).toHaveLength(6);
+       |                  ^
+    153|     const manualRows = rows.filter((row) => String(row.id).startsWith(…
+    154|     expect(manualRows).toHaveLength(3);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/27]⎯
+
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > scopes long draft IDs by scan, distinguishes no-ID rows, rejects duplicate input IDs atomically
+AssertionError: expected [] to deeply equal [ …(3) ]
+
+- Expected
++ Received
+
+- [
+-   "scan_manual_9988f09d9d3bb8d637e36b76226d70a8128f4d6f6d594da8b689474e91f68a36",
+-   "scan_manual_9c0cdbaadedbd12babd50b96a0cb78a73075883332c3095dcb916a0796c1367d",
+-   "scan_manual_ea0cb95bd12e9ac2fb0f3b98f8fe1f15fd1c3c0b6de8c8c39a12ff1496beb336",
+- ]
++ []
+
+ ❯ tests/integration/scan-manual-history.test.ts:189:19
+    187|         manual({ id: undefined, rawName: 'No ID one' }), manual({ id: …
+    188|       const ids = history(scanId).map((row) => row.id);
+    189|       expect(ids).toEqual([historyId(scanId, clientId, 0), historyId(s…
+       |                   ^
+    190|       for (const id of ids) expect(id).toMatch(/^scan_manual_[a-f0-9]{…
+    191|     }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/27]⎯
+
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > rejects a global history ID collision without replacing another scan: legacy
+AssertionError: expected { status: 200, json: { …(5) } } to match object { status: 500, …(1) }
+(5 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "json": {
+-     "code": "DATABASE_ERROR",
++     "confirmedItemIds": [],
++     "inventoryCount": 1,
++     "items": [
++       {
++         "addedDate": "2026-10-24T19:27:28.095Z",
++         "category": "other",
++         "dataSource": "scan",
++         "expiryDate": "2026-10-31",
++         "freshness": "fresh",
++         "householdId": "manual-history-home",
++         "id": "item_collision-target_draft_manual_salt",
++         "ingredientId": "",
++         "name": "SCAN01 manual salt",
++         "normalizationStatus": "unmapped",
++         "quantity": 0.25,
++         "storage": "pantry",
++         "unit": "pack",
++         "updatedAt": "2026-10-24 19:27:28",
++         "version": 1,
++       },
++     ],
++     "message": "Đã cập nhật nguyên liệu vào tủ lạnh thành công",
++     "success": true,
+    },
+-   "status": 500,
++   "status": 200,
+  }
+
+ ❯ tests/integration/scan-manual-history.test.ts:209:8
+    207|     const before = facts();
+    208|     expect(await request('POST', '/scans/collision-target/confirm', { …
+    209|       .toMatchObject({ status: 500, json: { code: 'DATABASE_ERROR' } }…
+       |        ^
+    210|     expect(facts()).toEqual(before);
+    211|     expect(history('collision-other')).toEqual(before.scan_items);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/27]⎯
+
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > rejects a global history ID collision without replacing another scan: native
+AssertionError: expected { status: 200, json: { …(5) } } to match object { status: 500, …(1) }
+(5 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "json": {
+-     "code": "DATABASE_ERROR",
++     "confirmedItemIds": [],
++     "inventoryCount": 1,
++     "items": [
++       {
++         "addedDate": "2026-10-24T19:27:28.228Z",
++         "canonicalUnit": "pack",
++         "category": "other",
++         "dataSource": "scan",
++         "estimatedExpiryDate": "2026-10-31",
++         "expiryDate": "2026-10-31",
++         "expiryKind": "ESTIMATED",
++         "freshness": "fresh",
++         "householdId": "manual-history-home",
++         "id": "item_collision-target_draft_manual_salt",
++         "ingredientId": "",
++         "inventoryVersion": 7,
++         "legacyItemId": "item_collision-target_draft_manual_salt",
++         "lotId": "item_collision-target_draft_manual_salt",
++         "lotVersion": 1,
++         "name": "SCAN01 manual salt",
++         "normalizationStatus": "unmapped",
++         "quantity": 0.25,
++         "quantityMilli": 250,
++         "state": "ACTIVE",
++         "storage": "pantry",
++         "unit": "pack",
++         "updatedAt": "2026-10-24T19:27:28.228Z",
++         "version": 1,
+        },
+-   "status": 500,
++     ],
++     "message": "Đã cập nhật nguyên liệu vào tủ lạnh thành công",
++     "success": true,
++   },
++   "status": 200,
+  }
+
+ ❯ tests/integration/scan-manual-history.test.ts:209:8
+    207|     const before = facts();
+    208|     expect(await request('POST', '/scans/collision-target/confirm', { …
+    209|       .toMatchObject({ status: 500, json: { code: 'DATABASE_ERROR' } }…
+       |        ^
+    210|     expect(facts()).toEqual(before);
+    211|     expect(history('collision-other')).toEqual(before.scan_items);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/27]⎯
+
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > rolls back history, stock and receipts on the final status failure, then retries once: legacy
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > rolls back history, stock and receipts on the final status failure, then retries once: native
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ tests/integration/scan-manual-history.test.ts:226:33
+    224|     db.seed('DROP TRIGGER scan01_injected_status_failure');
+    225|     expect((await request('POST', '/scans/rollback/confirm', { items: …
+    226|     expect(history('rollback')).toHaveLength(1);
+       |                                 ^
+    227|     expect(stock()).toEqual([expect.objectContaining({ quantity: 0.25 …
+    228|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/27]⎯
+
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > retains each manual review while preserving existing stock merge semantics: 'legacy'/'fridge'
+AssertionError: expected [] to deeply equal ArrayContaining{…}
+
+- Expected
++ Received
+
+- ArrayContaining [
+-   ObjectContaining {
+-     "canonical_id": "TOMATO",
+-     "category": "spice",
+-     "estimated_quantity": 2,
+-     "id": "scan_manual_6abe8f9c6e040784a3347cd2810d4d88fe81798656ddf1a6421ee6ea8fc38d2e",
+-     "reviewed_expiry_date": "2030-10-12",
+-     "reviewed_expiry_kind": "KNOWN",
+-     "storage": "freezer",
+-   },
+-   ObjectContaining {
+-     "canonical_id": "TOMATO",
+-     "category": "other",
+-     "estimated_quantity": 1,
+-     "id": "scan_manual_c9e5e8531a8f31fb01bea6f6fbb35b187cd422a017c0af87dd7ba4fa719aa1d4",
+-     "reviewed_expiry_date": "2030-10-13",
+-     "reviewed_expiry_kind": "ESTIMATED",
+-     "storage": "fridge",
+-   },
+- ]
++ []
+
+ ❯ tests/integration/scan-manual-history.test.ts:242:29
+    240|       category: 'other', storage: 'fridge', expiryDate: '2030-10-13', …
+    241|     expect((await request('POST', `/scans/${scanId}/confirm`, payload)…
+    242|     expect(history(scanId)).toEqual(expect.arrayContaining([
+       |                             ^
+    243|       expect.objectContaining({ id: historyId(scanId, 'draft_tomato_a'…
+    244|         estimated_quantity: 2, category: 'spice', storage: 'freezer', …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/27]⎯
+
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > retains each manual review while preserving existing stock merge semantics: 'legacy'/'receipt'
+AssertionError: expected [] to deeply equal ArrayContaining{…}
+
+- Expected
++ Received
+
+- ArrayContaining [
+-   ObjectContaining {
+-     "canonical_id": "TOMATO",
+-     "category": "spice",
+-     "estimated_quantity": 2,
+-     "id": "scan_manual_52b608f61d0e283bece096fe57a673ba36b95d344104d2d81d50b80df9335fa9",
+-     "reviewed_expiry_date": "2030-10-12",
+-     "reviewed_expiry_kind": "KNOWN",
+-     "storage": "freezer",
+-   },
+-   ObjectContaining {
+-     "canonical_id": "TOMATO",
+-     "category": "other",
+-     "estimated_quantity": 1,
+-     "id": "scan_manual_28dd23a483b183056683c8663b81deccf6d08538c3a530f41feb756cf4ab93a9",
+-     "reviewed_expiry_date": "2030-10-13",
+-     "reviewed_expiry_kind": "ESTIMATED",
+-     "storage": "fridge",
+-   },
+- ]
++ []
+
+ ❯ tests/integration/scan-manual-history.test.ts:242:29
+    240|       category: 'other', storage: 'fridge', expiryDate: '2030-10-13', …
+    241|     expect((await request('POST', `/scans/${scanId}/confirm`, payload)…
+    242|     expect(history(scanId)).toEqual(expect.arrayContaining([
+       |                             ^
+    243|       expect.objectContaining({ id: historyId(scanId, 'draft_tomato_a'…
+    244|         estimated_quantity: 2, category: 'spice', storage: 'freezer', …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/27]⎯
+
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > retains each manual review while preserving existing stock merge semantics: 'native'/'fridge'
+AssertionError: expected [] to deeply equal ArrayContaining{…}
+
+- Expected
++ Received
+
+- ArrayContaining [
+-   ObjectContaining {
+-     "canonical_id": "TOMATO",
+-     "category": "spice",
+-     "estimated_quantity": 2,
+-     "id": "scan_manual_f81609f1a4fc3736de34d0f2027e8b84ed3dcc3f3d453f1918b397ba2065d7b6",
+-     "reviewed_expiry_date": "2030-10-12",
+-     "reviewed_expiry_kind": "KNOWN",
+-     "storage": "freezer",
+-   },
+-   ObjectContaining {
+-     "canonical_id": "TOMATO",
+-     "category": "other",
+-     "estimated_quantity": 1,
+-     "id": "scan_manual_e104cab4535129d19d3a0974094b5db81591073de425b97118345045ecd0a3a6",
+-     "reviewed_expiry_date": "2030-10-13",
+-     "reviewed_expiry_kind": "ESTIMATED",
+-     "storage": "fridge",
+-   },
+- ]
++ []
+
+ ❯ tests/integration/scan-manual-history.test.ts:242:29
+    240|       category: 'other', storage: 'fridge', expiryDate: '2030-10-13', …
+    241|     expect((await request('POST', `/scans/${scanId}/confirm`, payload)…
+    242|     expect(history(scanId)).toEqual(expect.arrayContaining([
+       |                             ^
+    243|       expect.objectContaining({ id: historyId(scanId, 'draft_tomato_a'…
+    244|         estimated_quantity: 2, category: 'spice', storage: 'freezer', …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/27]⎯
+
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > retains each manual review while preserving existing stock merge semantics: 'native'/'receipt'
+AssertionError: expected [] to deeply equal ArrayContaining{…}
+
+- Expected
++ Received
+
+- ArrayContaining [
+-   ObjectContaining {
+-     "canonical_id": "TOMATO",
+-     "category": "spice",
+-     "estimated_quantity": 2,
+-     "id": "scan_manual_04b0d000c1592466555bdcd4dd282841b8e6f3fa3279a521603613bcec1417b1",
+-     "reviewed_expiry_date": "2030-10-12",
+-     "reviewed_expiry_kind": "KNOWN",
+-     "storage": "freezer",
+-   },
+-   ObjectContaining {
+-     "canonical_id": "TOMATO",
+-     "category": "other",
+-     "estimated_quantity": 1,
+-     "id": "scan_manual_8b576ac2809177b9dacdd5a8c4295f9344ad2df2c902fcce40109142850127e9",
+-     "reviewed_expiry_date": "2030-10-13",
+-     "reviewed_expiry_kind": "ESTIMATED",
+-     "storage": "fridge",
+-   },
+- ]
++ []
+
+ ❯ tests/integration/scan-manual-history.test.ts:242:29
+    240|       category: 'other', storage: 'fridge', expiryDate: '2030-10-13', …
+    241|     expect((await request('POST', `/scans/${scanId}/confirm`, payload)…
+    242|     expect(history(scanId)).toEqual(expect.arrayContaining([
+       |                             ^
+    243|       expect.objectContaining({ id: historyId(scanId, 'draft_tomato_a'…
+    244|         estimated_quantity: 2, category: 'spice', storage: 'freezer', …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/27]⎯
+
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > fences concurrent manual twins at the actual commit barrier: 'legacy'/'fridge'
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > fences concurrent manual twins at the actual commit barrier: 'legacy'/'receipt'
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > fences concurrent manual twins at the actual commit barrier: 'native'/'fridge'
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > fences concurrent manual twins at the actual commit barrier: 'native'/'receipt'
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ tests/integration/scan-manual-history.test.ts:299:35
+    297|     expect(results.filter((result) => result.json.idempotentReplay ===…
+    298|     expect(results[0].json.items).toEqual(results[1].json.items);
+    299|     expect(history('concurrent')).toHaveLength(1);
+       |                                   ^
+    300|     expect(stock()).toEqual([expect.objectContaining({ quantity: 0.25 …
+    301|     expect(db.query('SELECT id FROM inventory_events')).toHaveLength(1…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/27]⎯
+
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > recovers a lost acknowledgement after COMMIT with immutable manual history: 'legacy'/'fridge'
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > recovers a lost acknowledgement after COMMIT with immutable manual history: 'legacy'/'receipt'
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > recovers a lost acknowledgement after COMMIT with immutable manual history: 'native'/'fridge'
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > recovers a lost acknowledgement after COMMIT with immutable manual history: 'native'/'receipt'
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ tests/integration/scan-manual-history.test.ts:357:33
+    355|     expect(committed).toBeDefined();
+    356|     expect(facts()).toEqual(committed);
+    357|     expect(history('lost-ack')).toHaveLength(1);
+       |                                 ^
+    358|     expect(stock()).toEqual([expect.objectContaining({ quantity: 0.25 …
+    359|     expect(await request('POST', '/scans/lost-ack/confirm', payload))
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/27]⎯
+
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > keeps manual fridge history immutable after stock edit, MOVE and USE
+ FAIL  tests/integration/scan-manual-history.test.ts > SCAN01 accepted manual scan review history > keeps manual receipt history immutable after stock edit, MOVE and USE
+AssertionError: expected [] to deeply equal [ ObjectContaining{…} ]
+
+- Expected
++ Received
+
+- [
+-   ObjectContaining {
+-     "category": "other",
+-     "estimated_quantity": 0.25,
+-     "reviewed_expiry_date": "2030-10-25",
+-     "reviewed_expiry_kind": "ESTIMATED",
+-     "storage": "pantry",
+-   },
+- ]
++ []
+
+ ❯ tests/integration/scan-manual-history.test.ts:390:18
+    388|     expect(await readInventoryLot(db, scope, { lotId: created.id }))
+    389|       .toMatchObject({ quantityMilli: 200, storage: 'freezer', categor…
+    390|     expect(rows).toEqual([expect.objectContaining({ estimated_quantity…
+       |                  ^
+    391|       reviewed_expiry_date: '2030-10-25', reviewed_expiry_kind: 'ESTIM…
+    392|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/27]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  27 failed | 4 passed (31)
+   Start at  04:27:25
+   Duration  5.90s (transform 695ms, setup 38ms, import 853ms, tests 4.73s, environment 0ms)
+
+ ELIFECYCLE  Test failed. See above for more details.
