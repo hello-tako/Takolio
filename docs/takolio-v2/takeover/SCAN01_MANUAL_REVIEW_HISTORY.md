@@ -2,7 +2,7 @@
 
 Status: LOCAL_SCAN01_VERIFIED, 2026-10-25 JST. Local implementation and bounded checks complete. No release, merge, deploy or production claim.
 
-Parent: a4fa573a53580f187f86b35bad7127bba042000e. Official main observed read-only:90b94129113b41e34701d99f51175cfa81cb73de. Implementation checkpoint follows this frozen evidence; verified hash is recorded by the documentation checkpoint.
+Parent: a4fa573a53580f187f86b35bad7127bba042000e. Official main observed read-only:90b94129113b41e34701d99f51175cfa81cb73de. Implementation checkpoint: `a4e405508453908cd6f7b7b677f98156ccbdcdd7`; documentation checkpoint follows this verified implementation.
 
 ## Result
 
@@ -44,3 +44,12 @@ Recovery verification: PASS_WITH_AUTHORIZED_PLATFORM_DRIFT. Private snapshot22,7
 Precommit scope PASS:8990parent paths and5798protected-main paths unchanged;54salvage paths exact;69Argon/12asset/38screen rows unchanged,115old file decisions preserved; all38owner reviews PENDING. Post-implementation/post-documentation proofs record their actual HEAD separately.
 
 Next: activate WKD01 durable offline queue under its own ADR/gates, then WKD02 swap replay. Frontend UI01-UI15+C12/C13 stays locally bounded complete; owner/media/device/Safari/screenreader/live/hosted acceptance remains pending. No push,merge,deploy,remote migration or production operation. Production actions require separate user approval.
+
+## Verified checkpoint
+
+Implementation `a4e405508453908cd6f7b7b677f98156ccbdcdd7`; post-implementation scope
+PASS. Its staged whitespace check exited2 only for trailing blank lines in six
+verbatim execution logs (focused,full,lint,typecheck,DOM,typecheck-after-fix).
+Source/test/documentation whitespace is clean. Exact log bytes and bound hashes
+are preserved deliberately; no execution-log normalization. The preceding
+unstaged check omitted new files,so it did not discover these warnings.

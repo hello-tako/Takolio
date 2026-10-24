@@ -1,6 +1,6 @@
 ## Takolio V2 - SCAN01 durable manual review history (2026-10-25 JST)
 
-Status: `LOCAL_SCAN01_VERIFIED`. Parent `a4fa573a53580f187f86b35bad7127bba042000e`; official main observed read-only `90b94129113b41e34701d99f51175cfa81cb73de`. Implementation checkpoint follows frozen evidence; its verified hash is recorded by the documentation checkpoint.
+Status: `LOCAL_SCAN01_VERIFIED`. Parent `a4fa573a53580f187f86b35bad7127bba042000e`; official main observed read-only `90b94129113b41e34701d99f51175cfa81cb73de`. Implementation checkpoint: `a4e405508453908cd6f7b7b677f98156ccbdcdd7`; documentation checkpoint follows this verified implementation.
 
 Accepted manual scan lines now persist atomically with confirmation and reopen as read-only review history. Reviewed fractional quantity, mapping, category, storage and expiry remain independent of mutable stock. Manual OCR/prices stay NULL; UI labels manual origin without inventing extraction facts. Existing native/legacy stock merges, household guards, source evidence, confirmedItemIds and status-based replay remain. No schema, dependency, backfill, receipt manual-add UI or frontend rebuild.
 

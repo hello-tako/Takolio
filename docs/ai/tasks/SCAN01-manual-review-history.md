@@ -235,3 +235,7 @@ No zero-difference claim. Strict-parent/protected-main,54salvage,ledger/evidence
 and38PENDING owner rows preserved. See SCAN01_MANUAL_REVIEW_HISTORY.md and
 `docs/takolio-v2/takeover/evidence/scan-manual-history/`. Next WKD01 then WKD02;
 no push,merge,deploy,remote migration or production action.
+
+Verified implementation checkpoint: `a4e405508453908cd6f7b7b677f98156ccbdcdd7`.
+Post-implementation scope PASS. Six verbatim evidence logs retain trailing blank
+line whitespace warnings; source/tests/docs clean. See final report for details.

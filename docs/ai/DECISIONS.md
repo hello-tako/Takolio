@@ -3469,3 +3469,6 @@ Audit remains FAIL(0low/3moderate/2high). Actual Worker-router browser4flows at
 320/1440,8PNG,SQL/GET/read-only/replay PASS; synthetic Node SQLite,not native
 D1/workerd/hosted. Failures and recovery platform drift remain disclosed.
 See SCAN01 report and frozen evidence. WKD01/WKD02 require separate ADRs.
+
+ADR-067 implementation verified at `a4e405508453908cd6f7b7b677f98156ccbdcdd7`;
+post-implementation scope PASS. Verbatim logs preserve six trailing-blank warnings.
