@@ -30,7 +30,7 @@ beforeEach(async () => {
   await executeInventoryAdoption(db, { householdId: 'patch-other', actorId: 'patch-foreign' }, {});
   const location = db.query<{ id: string }>("SELECT id FROM storage_locations WHERE household_id = 'patch-home' AND type = 'PANTRY'")[0];
   await executeInventoryLotCommand(db, scope, 'patch-seed-key', { type: 'CREATE', lotId: 'patch-rice',
-    ingredientId: 'RICE', rawName: 'Rice', quantity: 2000, unit: 'g', storageLocationId: location.id,
+    ingredientId: null, rawName: 'Custom stock', displayCategory: 'grain', quantity: 2000, unit: 'g', storageLocationId: location.id,
     sourceType: 'MANUAL' }, new Date().toISOString());
   const exp = Math.floor(Date.now() / 1000) + 3600;
   token = await signJwt({ sub: scope.actorId, hid: scope.householdId, typ: 'access', exp }, secret);

@@ -1,7 +1,10 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { afterEach, describe, expect, it } from 'vitest';
 import { executeInventoryAdoption } from '../../packages/db/src/inventory-adoption-executor';
-import { executeInventoryFefoCommand, executeInventoryLotCommand } from '../../packages/db/src/inventory-lot-commands';
+import { executeInventoryFefoCommand, executeInventoryLotCommand, replayLotCommandReceipt, sortedJson } from '../../packages/db/src/inventory-lot-commands';
+import { InventoryLotCommandSchema, planSingleLotCommand, type SingleLotCommandPlan } from '../../packages/domain/src/inventory-lot-commands';
+import { parseInventoryFefoCommand, planInventoryFefo } from '../../packages/domain/src/inventory-fefo';
+import type { InventoryLot } from '../../packages/domain/src/inventory-truth';
 import { SqliteD1, type SqliteStatementEvent } from '../helpers/sqlite-d1';
 
 const scope = { householdId: 'fefo-schema-household', actorId: 'fefo-schema-owner' };
@@ -42,6 +45,97 @@ const create = (db: SqliteD1, id: string, quantity: number, patch: JsonObject = 
   }, now);
 const use = (db: SqliteD1, key: string, quantity = 0.3) => executeInventoryFefoCommand(db, scope, key,
   { type: 'USE', mode: 'FEFO', ingredientId: 'RICE', quantity, unit: 'g', reason: 'Schema proof' }, now);
+
+// Frozen pre-0044 SQL keeps the populated upgrade fixture independent of current DB columns.
+async function historicalWrite(db: SqliteD1, key: string, command: object,
+  result: { commandId: string; commandType: string; effects: SingleLotCommandPlan[] }, fefo = false) {
+  const fingerprint = sortedJson({ ...scope, command });
+  const statements = [db.prepare(`INSERT INTO inventory_commands
+    (id, household_id, actor_id, client_key, fingerprint, command_type, result_json, created_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)`).bind(result.commandId, scope.householdId, scope.actorId,
+    key, fingerprint, result.commandType, JSON.stringify(result), now)];
+  for (const { before, after: lot } of result.effects) {
+    expect(Object.keys(lot)).toHaveLength(24);
+    const values = [lot.ingredientId, lot.rawName, lot.quantityMilli / 1000, lot.canonicalUnit,
+      lot.expiryAt, lot.expiryKind.toLowerCase(), lot.legacyVersion, now];
+    if (before) {
+      statements.push(db.prepare(`UPDATE inventory_items SET ingredient_id = ?, name = ?, quantity = ?, unit = ?,
+        expiry_date = ?, expiry_kind = ?, version = ?, updated_at = ?,
+        freshness = CASE WHEN ? = 0 THEN 'out_of_stock' ELSE freshness END WHERE id = ?`)
+        .bind(...values, lot.quantityMilli, lot.id));
+      statements.push(db.prepare(`UPDATE inventory_lots SET quantity_milli = ?, state = ?, version = ?, legacy_version = ?,
+        updated_at = ? WHERE id = ?`).bind(lot.quantityMilli, lot.state, lot.version, lot.legacyVersion, now, lot.id));
+    } else {
+      const hours = (Date.parse(lot.expiryAt!) - Date.parse(now)) / 3_600_000;
+      statements.push(db.prepare(`INSERT INTO inventory_items
+        (ingredient_id, name, quantity, unit, expiry_date, expiry_kind, version, updated_at,
+         id, household_id, category, storage, expiry_source, freshness, data_source, added_date, created_at)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'grain', 'fridge', 'user', ?, 'manual', ?, ?)`)
+        .bind(...values, lot.id, scope.householdId, hours <= 24 ? 'expiring' : hours <= 72 ? 'use_soon' : 'fresh', now, now));
+      statements.push(db.prepare(`INSERT INTO inventory_lots
+        (id, household_id, ingredient_id, raw_name, quantity_milli, canonical_unit, storage_location_id,
+         state, purchased_at, opened_at, expiry_at, estimated_expiry_at, expiry_kind, source_type, source_id,
+         version, created_at, updated_at, currency, amount_minor, minor_digits,
+         legacy_expiry_at, legacy_expiry_kind, legacy_expiry_source, legacy_opened_at, legacy_version, legacy_item_id)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, NULL, NULL, NULL, NULL, NULL, NULL, ?, ?)`)
+        .bind(lot.id, lot.householdId, lot.ingredientId, lot.rawName, lot.quantityMilli, lot.canonicalUnit, lot.storageLocationId,
+          lot.state, lot.purchasedAt, lot.openedAt, lot.expiryAt, lot.estimatedExpiryAt, lot.expiryKind, lot.sourceType, lot.sourceId,
+          lot.version, lot.createdAt, lot.updatedAt, lot.legacyVersion, lot.id));
+    }
+  }
+  for (const [ordinal, effect] of result.effects.entries()) {
+    const lot = effect.after;
+    const metadata = { schemaVersion: fefo ? 2 : 1, ...(fefo ? { mode: 'FEFO', ordinal, effectCount: result.effects.length } : {}),
+      ...scope, commandId: result.commandId, commandType: result.commandType,
+      before: effect.before, after: lot, deltaMilli: effect.deltaMilli,
+      source: { type: lot.sourceType, id: lot.sourceId }, timestamp: now, clientKey: key, fingerprint,
+      allocation: [{ lotId: lot.id, deltaMilli: effect.deltaMilli, canonicalUnit: lot.canonicalUnit }] };
+    statements.push(db.prepare(`INSERT INTO inventory_events
+      (id, household_id, inventory_item_id, event_type, quantity_delta, unit, reason, metadata, created_at, command_id)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`)
+      .bind(`historical-event-${key}-${ordinal}`, scope.householdId, lot.id, result.commandType === 'CREATE' ? 'ADD' : 'MANUAL_UPDATE',
+        effect.deltaMilli / 1000, lot.canonicalUnit, 'reason' in command ? command.reason : null,
+        JSON.stringify(metadata), now, result.commandId));
+  }
+  await db.batch(statements);
+}
+
+function historicalCommands(db: SqliteD1) {
+  const lots: InventoryLot[] = [];
+  const context = { householdId: scope.householdId, now, ingredientIds: ['RICE'], locations: [{
+    id: 'fefo-schema-fridge', householdId: scope.householdId, type: 'FRIDGE' as const,
+    name: 'Fridge', sortOrder: 0, isDefault: true, createdAt: now, updatedAt: now,
+  }] };
+  const remember = (effects: SingleLotCommandPlan[]) => {
+    for (const { after } of effects) {
+      const index = lots.findIndex((lot) => lot.id === after.id);
+      if (index < 0) lots.push(after); else lots[index] = after;
+    }
+  };
+  return {
+    async lot(key: string, input: unknown) {
+      const command = InventoryLotCommandSchema.parse(input);
+      const before = lots.find((lot) => lot.id === command.lotId) ?? null;
+      const effect = planSingleLotCommand(command, before, context);
+      effect.after = { ...effect.after, legacyVersion: (before?.legacyVersion ?? 0) + 1 };
+      const result = { commandId: `historical-${key}`, commandType: command.type, lotId: command.lotId,
+        version: effect.after.version, effects: [effect] };
+      await historicalWrite(db, key, command, result);
+      remember(result.effects);
+      return { result, replayed: false };
+    },
+    async fefo(key: string, quantity: number) {
+      const command = parseInventoryFefoCommand({ type: 'USE', mode: 'FEFO', ingredientId: 'RICE', quantity, unit: 'g', reason: 'Schema proof' });
+      const effects = planInventoryFefo(command, lots, context).map((effect, ordinal) => ({ ...effect,
+        after: { ...effect.after, legacyVersion: effect.before!.legacyVersion! + 1 }, ordinal, legacyItemId: effect.after.id }));
+      const result = { schemaVersion: 2 as const, commandId: `historical-${key}`, commandType: 'USE' as const, mode: 'FEFO' as const,
+        ingredientId: 'RICE', quantityMilli: command.quantityMilli, canonicalUnit: command.canonicalUnit, effects };
+      await historicalWrite(db, key, command, result, true);
+      remember(effects);
+      return { result, replayed: false };
+    },
+  };
+}
 
 function state(db: SqliteD1): string {
   return JSON.stringify(['users', 'households', 'household_members', 'storage_locations', 'inventory_items', 'inventory_lots', 'inventory_commands', 'inventory_events']
@@ -298,26 +392,29 @@ describe('T09E SQLite FEFO authority guards', () => {
     for (const file of readdirSync('migrations').filter((name) => /^\d+.*\.sql$/.test(name) && name <= '0027_inventory_event_poststate.sql').sort()) {
       db.seed(readFileSync(`migrations/${file}`, 'utf8'));
     }
-    // Executor reads adoption evidence (additive 0028) before the 0027 upgrade.
+    // The retained v1 fixture uses old 24-field SQL, not the current column-aware executor.
     db.seed(readFileSync('migrations/0029_inventory_adoption_authority.sql', 'utf8'));
     seedFixture(db);
-    await create(db, 'v1-rice-early', 0.1, { expiryKind: 'USE_BY', expiryAt: '2026-09-12' });
-    await create(db, 'v1-rice-later', 0.5, { expiryKind: 'USE_BY', expiryAt: '2026-09-13' });
-    const old = await executeInventoryLotCommand(db, scope, 'v1-use', {
+    const historical = historicalCommands(db);
+    const historicalCreate = (id: string, quantity: number, expiryAt: string) => historical.lot(`create-${id}`, {
+      type: 'CREATE', lotId: id, ingredientId: 'RICE', rawName: `Rice ${id}`, quantity, unit: 'g',
+      storageLocationId: 'fefo-schema-fridge', sourceType: 'MANUAL', expiryKind: 'USE_BY', expiryAt,
+    });
+    await historicalCreate('v1-rice-early', 0.1, '2026-09-12');
+    await historicalCreate('v1-rice-later', 0.5, '2026-09-13');
+    const old = await historical.lot('v1-use', {
       type: 'USE', lotId: 'v1-rice-early', expectedVersion: 1, quantity: 0.01, unit: 'g', reason: 'v1 proof',
-    }, now);
+    });
     const tables = ['households', 'household_members', 'storage_locations', 'inventory_items', 'inventory_lots', 'inventory_commands', 'inventory_events'];
     const bytes = () => JSON.stringify(tables.map((table) => db.query(`SELECT * FROM ${table} ORDER BY id`)));
     const before = bytes();
     db.seed(readFileSync('migrations/0028_inventory_fefo_authority.sql', 'utf8'));
     expect(bytes()).toBe(before);
-    await expect(executeInventoryLotCommand(db, scope, 'v1-use', {
-      type: 'USE', lotId: 'v1-rice-early', expectedVersion: 1, quantity: 0.01, unit: 'g', reason: 'v1 proof',
-    }, now)).resolves.toMatchObject({ replayed: true, result: old.result });
-    await expect(create(db, 'v1-native-after-upgrade', 0.01, {
-      expiryKind: 'USE_BY', expiryAt: '2026-10-01',
-    })).resolves.toMatchObject({ replayed: false, result: { commandType: 'CREATE', effects: [{ changed: true }] } });
-    const next = await use(db, 'v2-after-upgrade', 0.2);
+    await expect(replayLotCommandReceipt(db, scope, 'v1-use'))
+      .resolves.toMatchObject({ replayed: true, result: old.result });
+    await expect(historicalCreate('v1-native-after-upgrade', 0.01, '2026-10-01'))
+      .resolves.toMatchObject({ replayed: false, result: { commandType: 'CREATE', effects: [{ changed: true }] } });
+    const next = await historical.fefo('v2-after-upgrade', 0.2);
     expect(next.replayed).toBe(false);
     expect(next.result.schemaVersion).toBe(2);
     expect(next.result.effects.map((effect) => effect.ordinal)).toEqual([0, 1]);
@@ -332,11 +429,35 @@ describe('T09E SQLite FEFO authority guards', () => {
       ('trg_inventory_events_command_authority_insert', 'trg_inventory_events_command_poststate_insert',
        'trg_inventory_commands_fefo_authority_insert', 'trg_inventory_commands_fefo_envelope_insert',
        'trg_inventory_events_command_fefo_authority_insert')`)).toEqual([{ n: 5 }]);
+    await expect(replayLotCommandReceipt(db, scope, 'v1-use'))
+      .resolves.toMatchObject({ replayed: true, result: old.result });
+    const after0029 = await historical.fefo('v2-after-0029', 0.2);
+    expect(after0029.result.schemaVersion).toBe(2);
+    for (const file of readdirSync('migrations').filter((name) => /^\d+.*\.sql$/.test(name)
+      && name > '0030_inventory_fefo_backfill_compatibility.sql' && name < '0044').sort()) {
+      db.seed(readFileSync(`migrations/${file}`, 'utf8'));
+    }
+    const preCategory = JSON.parse(bytes()) as Array<Array<Record<string, unknown>>>;
+    const evidence = JSON.stringify(['inventory_commands', 'inventory_events']
+      .map((table) => db.query(`SELECT * FROM ${table} ORDER BY id`)));
+    db.seed(readFileSync('migrations/0044_inventory_display_category.sql', 'utf8'));
+    const postCategory = JSON.parse(bytes()) as Array<Array<Record<string, unknown>>>;
+    postCategory[tables.indexOf('inventory_lots')] = postCategory[tables.indexOf('inventory_lots')]
+      .map(({ display_category, ...lot }) => { expect(display_category).toBeNull(); return lot; });
+    expect(postCategory).toEqual(preCategory);
+    expect(JSON.stringify(['inventory_commands', 'inventory_events']
+      .map((table) => db.query(`SELECT * FROM ${table} ORDER BY id`)))).toBe(evidence);
+    // Only the fully migrated schema calls the current executor.
+    const afterMigration = bytes();
     await expect(executeInventoryLotCommand(db, scope, 'v1-use', {
       type: 'USE', lotId: 'v1-rice-early', expectedVersion: 1, quantity: 0.01, unit: 'g', reason: 'v1 proof',
     }, now)).resolves.toMatchObject({ replayed: true, result: old.result });
-    const after0029 = await use(db, 'v2-after-0029', 0.2);
-    expect(after0029.result.schemaVersion).toBe(2);
+    expect(bytes()).toBe(afterMigration);
+    await expect(use(db, 'v2-after-0029', 0.2)).resolves.toMatchObject({ replayed: true, result: after0029.result });
+    expect(bytes()).toBe(afterMigration);
+    await expect(create(db, 'native-after-category', 0.01, { expiryKind: 'USE_BY', expiryAt: '2026-10-01' }))
+      .resolves.toMatchObject({ replayed: false, result: { commandType: 'CREATE', effects: [{ changed: true }] } });
+    await expect(use(db, 'v2-after-category', 0.01)).resolves.toMatchObject({ replayed: false, result: { schemaVersion: 2 } });
     expect(db.query('PRAGMA foreign_key_check')).toEqual([]);
     expect(db.query('PRAGMA integrity_check')).toEqual([{ integrity_check: 'ok' }]);
   });

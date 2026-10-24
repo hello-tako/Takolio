@@ -54,7 +54,7 @@ function toReadItem(snapshot: MappedLotSnapshot, mapped: { lot: InventoryLot; le
     throw new InventoryReadAuthorityError('MAPPING_CORRUPT', `Lot ${lot.id} lacks authoritative mapping evidence`);
   }
   const expiry = expiryProjection(lot);
-  const category = snapshot.ingredients.find((ingredient) => ingredient.id === lot.ingredientId)?.category ?? 'other';
+  const category = snapshot.ingredients.find((ingredient) => ingredient.id === lot.ingredientId)?.category ?? lot.displayCategory ?? 'other';
   let freshness: InventoryReadItem['freshness'];
   try {
     freshness = computeReadFreshness(expiry.expiry_date, lot.state, now);

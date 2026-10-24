@@ -134,7 +134,7 @@ function validateReceipt(receipt: AdoptionReceiptRow, scope: InventoryLotCommand
 
 const LEGACY_COLUMNS = [
   'id', 'household_id', 'ingredient_id', 'name', 'quantity', 'unit', 'storage',
-  'expiry_date', 'opened_at', 'expiry_kind', 'expiry_source', 'version', 'created_at', 'updated_at',
+  'expiry_date', 'opened_at', 'expiry_kind', 'expiry_source', 'version', 'created_at', 'updated_at', 'category',
 ] as const;
 
 // Native commands require the canonical expiry projection to reproduce the
@@ -157,7 +157,7 @@ function poststateFence(db: D1DatabaseBinding, householdId: string, receiptId: s
   const lotFields: Record<string, string> = {
     'after.version': 'version', 'after.state': 'state', 'after.quantityMilli': 'quantity_milli',
     'after.canonicalUnit': 'canonical_unit', 'after.storageLocationId': 'storage_location_id',
-    'after.ingredientId': 'ingredient_id', 'after.rawName': 'raw_name', 'after.expiryAt': 'expiry_at',
+    'after.ingredientId': 'ingredient_id', 'after.rawName': 'raw_name', 'after.displayCategory': 'display_category', 'after.expiryAt': 'expiry_at',
     'after.estimatedExpiryAt': 'estimated_expiry_at', 'after.expiryKind': 'expiry_kind',
     'after.legacyVersion': 'legacy_version', 'after.updatedAt': 'updated_at',
     'after.legacyExpiryAt': 'legacy_expiry_at', 'after.legacyExpiryKind': 'legacy_expiry_kind',
@@ -167,7 +167,7 @@ function poststateFence(db: D1DatabaseBinding, householdId: string, receiptId: s
     `json_extract(e.value, '$.${path}') IS l.${column}`).join(' AND ');
   const projectionFields: Record<string, string> = {
     'projectionAfter.version': 'version', 'projectionAfter.quantity': 'quantity',
-    'projectionAfter.unit': 'unit', 'projectionAfter.name': 'name',
+    'projectionAfter.unit': 'unit', 'projectionAfter.name': 'name', 'projectionAfter.category': 'category',
     'projectionAfter.ingredient_id': 'ingredient_id', 'projectionAfter.storage': 'storage',
     'projectionAfter.expiry_date': 'expiry_date', 'projectionAfter.opened_at': 'opened_at',
     'projectionAfter.expiry_kind': 'expiry_kind', 'projectionAfter.expiry_source': 'expiry_source',
@@ -269,24 +269,24 @@ export async function executeInventoryAdoption(db: D1DatabaseBinding, inputScope
       (id, household_id, ingredient_id, raw_name, quantity_milli, canonical_unit, storage_location_id,
        state, purchased_at, opened_at, expiry_at, estimated_expiry_at, expiry_kind, source_type, source_id,
        version, created_at, updated_at, currency, amount_minor, minor_digits,
-       legacy_expiry_at, legacy_expiry_kind, legacy_expiry_source, legacy_opened_at, legacy_version)
-      VALUES (?, ?, ?, ?, ${sourceGuard}, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+       legacy_expiry_at, legacy_expiry_kind, legacy_expiry_source, legacy_opened_at, legacy_version, display_category)
+      VALUES (?, ?, ?, ?, ${sourceGuard}, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       ON CONFLICT(source_id) WHERE source_type = 'LEGACY_BACKFILL' DO NOTHING`).bind(
       lot.id, scope.householdId, lot.ingredientId, lot.rawName,
       ...LEGACY_COLUMNS.map((column) => row[column as keyof typeof row]), lot.quantityMilli,
       lot.canonicalUnit, lot.storageLocationId, lot.state, lot.purchasedAt, lot.openedAt,
       lot.expiryAt, lot.estimatedExpiryAt, lot.expiryKind, lot.sourceType, lot.sourceId,
       lot.version, lot.createdAt, lot.updatedAt, null, null, null,
-      lot.legacyExpiryAt, lot.legacyExpiryKind, lot.legacyExpirySource, lot.legacyOpenedAt, lot.legacyVersion,
+      lot.legacyExpiryAt, lot.legacyExpiryKind, lot.legacyExpirySource, lot.legacyOpenedAt, lot.legacyVersion, lot.displayCategory ?? null,
     ), adoptionGuard(db, scope.householdId, 'quantity_delta'));
   }
   // One atomic transition: mapping, terminal evidence and lot versions commit
   // with the receipt, or none of them do.
   for (const effect of plan.effects) {
     statements.push(db.prepare(`UPDATE inventory_lots
-      SET legacy_item_id = ?, state = ?, version = ?, updated_at = ?
+      SET legacy_item_id = ?, state = ?, version = ?, updated_at = ?, display_category = ?
       WHERE id = ? AND household_id = ? AND version = ? AND legacy_item_id IS NULL`)
-      .bind(effect.legacyItemId, effect.after.state, effect.after.version, effect.after.updatedAt,
+      .bind(effect.legacyItemId, effect.after.state, effect.after.version, effect.after.updatedAt, effect.after.displayCategory ?? null,
         effect.lotId, scope.householdId, effect.before.version),
       adoptionGuard(db, scope.householdId, 'quantity_delta'));
   }

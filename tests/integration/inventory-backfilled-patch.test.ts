@@ -65,7 +65,8 @@ describe('T09 legitimate adopted backfilled PATCH', () => {
     await adopt(preBackfill);
     const response = await patch({ version: 1, category: 'vegetable' });
     expect(response, JSON.stringify(response)).toMatchObject({ status: 200 });
-    expect(row()).toMatchObject({ category: 'vegetable', quantity: 2000, version: 2 });
+    expect(row()).toMatchObject({ category: 'grain', quantity: 2000, version: 2 });
+    expect(lot()).toMatchObject({ display_category: 'vegetable' });
     expect(lot()).toMatchObject({ id: 't08-legacy:patch-rice', legacy_item_id: 'patch-rice',
       quantity_milli: 2000000, version: 3, legacy_version: 2 });
     const receipt = db.query('SELECT * FROM inventory_commands')[0];
@@ -79,7 +80,7 @@ describe('T09 legitimate adopted backfilled PATCH', () => {
     [{ quantity: 500 }, { quantity: 500, storage: 'pantry', category: 'grain', expiry_date: null }, 2],
     [{ storage: 'freezer' }, { quantity: 2000, storage: 'freezer', category: 'grain', expiry_date: null }, 3],
     [{ quantity: 500, category: 'vegetable', storage: 'freezer', expiryDate: '2026-09-30' },
-      { quantity: 500, storage: 'freezer', category: 'vegetable', expiry_date: '2026-09-30' }, 3],
+      { quantity: 500, storage: 'freezer', category: 'grain', expiry_date: '2026-09-30' }, 3],
   ])('persists quantity/storage/combined intent %j atomically', async (changes, expected, version) => {
     await adopt();
     expect((await patch({ version: 1, ...changes })).status).toBe(200);
@@ -139,11 +140,11 @@ describe('T09 legitimate adopted backfilled PATCH', () => {
   it.each(['category', 'move', 'poststate'])('rolls back all mapped effects when %s fails', async (failure) => {
     await adopt();
     if (failure === 'category') db.seed(`CREATE TRIGGER fail_backfill_category BEFORE UPDATE OF category ON inventory_items
-      WHEN NEW.id = 'patch-rice' AND NEW.category = 'vegetable' BEGIN SELECT RAISE(IGNORE); END;`);
+      WHEN NEW.id = 'patch-rice' AND NEW.category = 'grain' BEGIN SELECT RAISE(IGNORE); END;`);
     if (failure === 'move') db.seed(`CREATE TRIGGER fail_backfill_move BEFORE INSERT ON inventory_commands
       WHEN NEW.command_type = 'MOVE' BEGIN SELECT RAISE(ABORT, 'Injected MOVE failure'); END;`);
     if (failure === 'poststate') db.seed(`CREATE TRIGGER corrupt_backfill_category AFTER UPDATE ON inventory_items
-      WHEN NEW.id = 'patch-rice' AND NEW.category = 'vegetable' BEGIN
+      WHEN NEW.id = 'patch-rice' AND NEW.category = 'grain' BEGIN
       UPDATE inventory_items SET category = 'unexpected' WHERE id = NEW.id; END;`);
     const before = facts();
     expect((await patch(combined)).status).not.toBe(200);

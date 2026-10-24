@@ -3358,3 +3358,62 @@ hover states, 44px reachability, horizontal bounds and baseline geometry at
 isolated Worker fixture; no submitted domain writes. Chromium/root-font evidence
 does not certify native zoom, physical devices, Safari, assistive technology,
 owner acceptance or hosted production.
+
+## ADR-066 - Lot-owned display category and immutable manual CREATE response (2026-10-24)
+
+Status: accepted for isolated local implementation; implemented in the integration
+worktree; focused verification passed; D1/full gates pending.
+Active packet: `tasks/CAT01-display-category-authority.md`.
+
+The bounded inventory audit confirms an unmapped spice item reads back as other:
+current lot authority retains no display category. The inventory POST route also
+checks mutable current projection state before native receipt replay, so a later
+PATCH can cause false CREATE conflicts or falsely accept changed retry intent.
+Category persistence and receipt-first CREATE replay share one acceptance gate;
+the previously proposed CAT02 is included in CAT01 rather than left as an interim
+idempotency regression.
+
+Add optional lot `displayCategory`, backed by nullable `display_category` in
+additive migration0044. Validate string/max30/noNUL at input and SQL boundaries;
+retain empty-string compatibility. Omit the field for SQL NULL; explicit JSON null
+is invalid. Effective category is canonical ingredient category, then lot-owned
+displayCategory, then other. A user category never overrides canonical identity.
+Never borrow category from mutable inventory_items after adoption/authority.
+Preserve request intent independently from the effective compatibility projection.
+
+No migration data backfill, receipt/event rewrite or invented historical intent.
+Existing NULL lots retain catalog/other behavior until explicit metadata correction.
+New adoption can capture current validated legacy category as its own fenced
+transition, preserving truthful before even for an old unlinked backfill without
+the field. Include category in full source/revision/poststate fences. Already
+adopted lots cannot recapture projection category. Invalid historical values fail
+closed without automatic repair. This nullable ceiling is deliberate.
+
+Manual CREATE adds optional manualCreate requestFingerprint/projectionAfter to the
+existing immutable fingerprint envelope, mirroring manualPatch; no new table.
+Fingerprint validated original request, including category, expiryEstimated and
+dataSource, before catalog/default derivation. Owned receipt lookup precedes
+mutable row comparison, preserves tenancy/membership and replays the original
+response after later stock/category changes. Changed intent conflicts. Historical
+native receipts lacking original intent fail closed409 rather than inferring it
+from current projection. Preserve non-native legacy idempotency. ManualPatch keeps
+its original request fingerprint but stores effective projected category so strict
+receipt decoding remains consistent. Scan category propagation is narrow; review
+history/merge semantics remain a separate packet.
+
+Retain all existing0028 v1 guards,0030 FEFO compatibility/mapping/version-offset
+predicates, immutable receipts/events and household/quantity/revision boundaries.
+Add shallow v1 category guards; recreate active0030 FEFO triggers only for optional
+25th-field shape, category type/presence/prestate/preservation/poststate validation.
+Require canonical reverse-diff proof and actual local D1 expression-depth testing.
+Old24 snapshots remain decodable and unchanged; new field cannot be silently
+dropped or changed by USE/DISCARD/OPEN/MOVE/FEFO. No-op receipts remain valid.
+
+Apply0044 before the new Worker. Old writers remain valid for NULL lots but fail
+closed if they drop a retained category; mixed-worker writes to categorized lots
+are not certified. Application rollback keeps additive schema and needs separate
+operator review. No production/remote migration/deployment authorization follows.
+Before completion require populated upgrade/forgery/rollback tests, immutable retry
+coverage, full local checks and actual Worker browser/readback evidence. Preserve
+Argon work and all0024-0043 bytes. Scan manual-history and Week offline durability,
+owner/device/hosted acceptance remain separately scoped.

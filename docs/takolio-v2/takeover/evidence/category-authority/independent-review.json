@@ -1,0 +1,85 @@
+{
+  "reviewer": "/root/ui10_next_audit",
+  "review_kind": "independent_read_only_CAT01_review",
+  "workspace": "/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration",
+  "branch": "codex/takolio-v2-rescue",
+  "baseline_head": "e90bcfda35b3deeee8efc9647ab2c8f72f6520ee",
+  "implementation_commit": "PENDING",
+  "result": "No concrete runtime, security, migration, fixture, or audit-harness defect identified in reviewed scope; final integration gates remain pending.",
+  "findings": [],
+  "reviewed_scope": [
+    "Optional lot displayCategory decoding, CREATE/CORRECT validation, UTF-16 maximum 30, NUL and explicit JSON null rejection",
+    "Catalog-first effective category; lot display label fallback; other fallback; USE/MOVE and other commands preserve optional value and presence",
+    "Truthful adoption before snapshot, validated new-adoption category capture, source/revision/poststate fences, immutable historical adopted NULL behavior",
+    "Immutable manual CREATE intent fingerprint and projection; receipt-first replay; category, expiryEstimated, dataSource conflict checks; historical native intent fails closed",
+    "Scan CREATE category propagation without unrelated scan policy or security changes",
+    "Additive migration0044 category guards and canonical0030 reverse proof preserving existing FEFO guards",
+    "Schema ledger fixtures, bounded staging fixtures, real local D1 native/adopted and mapped/unmapped category expectations",
+    "Ignored audit-protected.py, verify-scope.py, verify-recovery.py actual current files, including exclusive output creation and private recovery-path redaction"
+  ],
+  "adoption_regressions_reviewed": [
+    "Category-only concurrent source change aborts without partial adoption writes",
+    "Historical NUL category fails INVALID_ADOPTION_SNAPSHOT without repair",
+    "Authentic through0043 unlinked NULL backfill preserves omitted before field and captures valid new category after0044",
+    "Authentic historical adopted NULL remains other despite mutable legacy projection changes; immutable receipt retained; reads do not write"
+  ],
+  "sha256": {
+    "migrations/0044_inventory_display_category.sql": "d80c7f88b5097c43d20c6da59f853110fbdb06bd215bdbcd2b648ddce985ee59",
+    "migrations/0030_inventory_fefo_backfill_compatibility.sql": "eb5e6fc959ad96f3127540578b0d40972fb4b40f450bfdccb5bf7afda3662316",
+    ".artifacts/takeover/category-authority/audit-protected.py": "10857394cdcdce8590faba8da76c76190b42a356d33b5ffdb4895987ed10c66e",
+    ".artifacts/takeover/category-authority/verify-scope.py": "37690939fba34bd84201a4a65f000b2a8125e2981398cb27e8991d304cbff822",
+    ".artifacts/takeover/category-authority/verify-recovery.py": "65d13dd5905010cedb358f119b5c626a8ad344e47c6f606d045865037df591f2"
+  },
+  "existing_evidence_verified": {
+    "method": "Reviewed existing command receipts and logs; verified log byte counts and SHA-256. Reviewer did not rerun full gates.",
+    "passing_receipt_stems": [
+      "adoption-category-final",
+      "d1-category-fixture-final",
+      "d1-category-fixture-eslint",
+      "fixtures-unit-final",
+      "final-focused",
+      "corrected-lint-final",
+      "corrected-typecheck-final",
+      "frozen-build-default",
+      "final-build-on",
+      "migration-final",
+      "browser-final",
+      "d1-final2-apply",
+      "d1-final2-schema",
+      "d1-final2-positive",
+      "d1-final2-attack-readback",
+      "official-main-final"
+    ],
+    "expected_rejection_receipt_stems": [
+      "d1-final2-negative-column",
+      "d1-final2-negative-receipt",
+      "d1-final2-negative-event"
+    ],
+    "preserved_nonpassing_receipt_stems": [
+      "d1-schema-gate",
+      "d1-final-apply",
+      "full-final",
+      "audit"
+    ]
+  },
+  "pending_parent_completion": [
+    "full-corrected-final complete receipt and full-suite result",
+    "implementation commit and source-freeze verification",
+    "protected scope, historical docs, selected salvage, acceptance ledger and recovery checks at implementation commit",
+    "final public report and CURRENT_STATE/TASK_BOARD/HANDOFF updates"
+  ],
+  "limits": [
+    "Default local schema command failed with D1 schema query failed; its namespace cause is unproven. Explicit isolated final2 namespace schema passed.",
+    "Browser evidence is local Chromium. USE exercised through synthetic local control, not certified UI USE.",
+    "No Safari, native-device, assistive-technology, hosted, owner or production acceptance claimed; 38 owner reviews remain pending.",
+    "Dependency audit remains 3 moderate and 2 high findings, 0 critical; no CAT01 dependency change.",
+    "Recovery/protected checks must not be described as complete before parent receipts exist."
+  ],
+  "reviewer_writes": [
+    ".artifacts/takeover/category-authority/independent-review.json",
+    ".artifacts/takeover/category-authority/report-draft.md"
+  ],
+  "tracked_edits_by_reviewer": false,
+  "original_workspace_writes_by_reviewer": false,
+  "production_operations_by_reviewer": false
+}

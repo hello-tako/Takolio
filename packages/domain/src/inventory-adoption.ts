@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { CanonicalIngredientIdSchema } from './foundation';
 import { LotCommandError } from './inventory-lot-commands';
 import {
-  InventoryLotSchema, StorageLocationSchema, checkLegacyLotParity, defaultStorageLocations,
+  DisplayCategorySchema, InventoryLotSchema, StorageLocationSchema, checkLegacyLotParity, defaultStorageLocations,
   legacyInventoryToLot, type InventoryLot, type StorageLocation,
 } from './inventory-truth';
 
@@ -118,6 +118,7 @@ export function planInventoryAdoption(
   const locations = [...snapshot.locations, ...missingLocations];
   if (locations.length > MAX_INVENTORY_ADOPTION_SNAPSHOT_ROWS) fail('ADOPTION_LIMIT_EXCEEDED');
   const existingLots = snapshot.lots.map(({ lot }) => lot);
+  if (snapshot.legacyRows.some((row) => !DisplayCategorySchema.safeParse(row.category).success)) fail('INVALID_ADOPTION_SNAPSHOT');
   const rows = [...snapshot.legacyRows].sort((a, b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
   const missingSnapshots: InventoryLot[] = [];
   for (const row of rows) {
@@ -150,7 +151,8 @@ export function planInventoryAdoption(
     const evidence = terminalEvidence.get(row.id) ?? null;
     if (before.quantityMilli === 0 && evidence === null) fail('TERMINAL_EVIDENCE_REQUIRED');
     const after = InventoryLotSchema.parse({
-      ...before, state: evidence?.state ?? before.state, version: before.version + 1, updatedAt: intent.now,
+      ...before, displayCategory: row.category,
+      state: evidence?.state ?? before.state, version: before.version + 1, updatedAt: intent.now,
     });
     return {
       ordinal, lotId: before.id, legacyItemId: row.id,

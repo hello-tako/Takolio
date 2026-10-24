@@ -61,7 +61,7 @@ export const InventoryCreateSchema = z.object({
   name: z.string().trim().min(1, 'Tên nguyên liệu không được để trống').max(100, 'Tên nguyên liệu tối đa 100 ký tự'),
   quantity: z.coerce.number().positive('Số lượng phải lớn hơn 0').max(10000, 'Số lượng quá lớn'),
   unit: z.enum(['g', 'kg', 'ml', 'l', 'piece', 'pack', 'bunch', 'slice']).default('piece'),
-  category: z.string().trim().max(30).default('other'),
+  category: z.string().trim().max(30).refine((value) => !value.includes('\0'), 'Category cannot contain NUL').default('other'),
   storage: z.enum(['fridge', 'freezer', 'pantry']).default('fridge'),
   expiryDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Định dạng ngày hết hạn phải là YYYY-MM-DD').nullable().optional(),
   // T13: a day-chip estimate is ESTIMATED evidence; only an explicitly picked
@@ -78,7 +78,7 @@ export const InventoryUpdateSchema = z
     name: z.string().trim().min(1).max(100).optional(),
     quantity: z.coerce.number().positive().max(10000).optional(),
     unit: z.enum(['g', 'kg', 'ml', 'l', 'piece', 'pack', 'bunch', 'slice']).optional(),
-    category: z.string().trim().max(30).optional(),
+    category: z.string().trim().max(30).refine((value) => !value.includes('\0'), 'Category cannot contain NUL').optional(),
     storage: z.enum(['fridge', 'freezer', 'pantry']).optional(),
     expiryDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable().optional(),
     expiryEstimated: z.boolean().optional(),
@@ -100,7 +100,7 @@ export const ScanConfirmSchema = z.object({
     quantity: z.coerce.number().positive().max(10000).optional(),
     estimatedQuantity: z.coerce.number().positive().max(10000).optional(),
     unit: z.enum(['g', 'kg', 'ml', 'l', 'piece', 'pack', 'bunch', 'slice']).optional(),
-    category: z.string().trim().max(30).optional(),
+    category: z.string().trim().max(30).refine((value) => !value.includes('\0'), 'Category cannot contain NUL').optional(),
     storage: z.enum(['fridge', 'freezer', 'pantry']).optional(),
     expiryDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
     // T13: the client states how the date was chosen. A day-chip estimate is

@@ -1,0 +1,22 @@
+{
+  "scope": "tests/integration/inventory-lot-d1.test.mjs",
+  "result": "PASS",
+  "change": "Parameterized native and adopted local-D1 category PATCH fixtures across mapped/unmapped ingredients and MOVE replay paths; retained version/event/receipt/idempotency assertions.",
+  "focused_tests": {
+    "tests": 48,
+    "passed": 48,
+    "command": "pnpm exec vitest run tests/integration/inventory-lot-d1.test.mjs --maxWorkers=1",
+    "node": "v24.16.0",
+    "log_sha256": "c37120b54b20f0bfdf3fd86b9cf3048f7d8f02294e6744311660193d616c81bb"
+  },
+  "lint": {
+    "command": "pnpm exec eslint tests/integration/inventory-lot-d1.test.mjs",
+    "exit_code": 0,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "review": {
+    "confirmed_runtime_findings": [],
+    "residual_gap": "Adoption-specific category source race, malformed legacy category, old unlinked NULL before snapshot and already-adopted NULL fallback cases assigned to domain test owner.",
+    "limits": "Local D1 only; no remote or production operations."
+  }
+}

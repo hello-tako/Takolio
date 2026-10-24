@@ -11,6 +11,9 @@ const StorageType = z.enum(['FRIDGE', 'FREEZER', 'PANTRY']);
 const CanonicalUnit = z.enum(['g', 'ml', 'piece', 'pack', 'bunch', 'slice']);
 const SourceType = z.enum(['LEGACY_BACKFILL', 'MANUAL', 'SCAN', 'SHOPPING', 'RECEIPT']);
 const Currency = z.enum(['VND', 'JPY', 'USD', 'EUR']);
+
+// Optional manual display label; empty is a compatible legacy value.
+export const DisplayCategorySchema = z.string().max(30).refine((value) => !value.includes('\0'), 'Category cannot contain NUL');
 // Kept local to avoid a domain -> recipes runtime dependency; tests enforce T05 parity.
 const CURRENCY_MINOR_DIGITS = { VND: 0, JPY: 0, USD: 2, EUR: 2 } as const;
 const PurchasePrice = z.object({
@@ -38,6 +41,7 @@ export const InventoryLotSchema = z.object({
   householdId: Identity,
   ingredientId: CanonicalIngredientIdSchema.nullable(),
   rawName: z.string(),
+  displayCategory: DisplayCategorySchema.optional(),
   quantityMilli: NonnegativeInteger,
   canonicalUnit: CanonicalUnit,
   storageLocationId: Identity,
@@ -91,6 +95,7 @@ export interface LegacyInventoryRow {
   version: number;
   created_at: string;
   updated_at: string;
+  category?: string;
 }
 
 const LegacyRowSchema = z.object({
@@ -108,6 +113,7 @@ const LegacyRowSchema = z.object({
   version: z.number().int().safe().positive(),
   created_at: z.string().min(1),
   updated_at: z.string().min(1),
+  category: DisplayCategorySchema.optional(),
 });
 
 export function defaultStorageLocationId(householdId: string, type: StorageLocation['type']): string {
@@ -161,7 +167,7 @@ export function legacyInventoryToLot(input: LegacyInventoryRow): InventoryLot {
   }
   return InventoryLotSchema.parse({
     id: legacyLotId(row.id), householdId: row.household_id, ingredientId: row.ingredient_id,
-    rawName: row.name, ...quantity,
+    rawName: row.name, ...(row.category === undefined ? {} : { displayCategory: DisplayCategorySchema.parse(row.category) }), ...quantity,
     storageLocationId: defaultStorageLocationId(row.household_id, StorageType.parse(row.storage.toUpperCase())),
     state: 'ACTIVE', purchasedAt: null, openedAt: opened.success ? opened.data : null,
     expiryAt: date.success && expiryKind !== 'UNKNOWN' && expiryKind !== 'ESTIMATED' ? date.data : null,
@@ -344,6 +350,9 @@ export function checkLegacyLotParity(
       if (expiryFields.some((field) => lot[field] !== expected[field])) report('EXPIRY_MISMATCH', 'Legacy expiry/opened evidence differs', row.id, lotId);
       if (lot.purchasedAt !== null || lot.purchasePrice !== null) report('INVALID_PROVENANCE', 'Legacy backfill cannot supply purchase facts', row.id, lotId);
       if (lot.legacyVersion !== expected.legacyVersion) report('LEGACY_VERSION_MISMATCH', 'Legacy source revision differs', row.id, lotId);
+      if (lot.displayCategory !== undefined && row.category !== undefined && lot.displayCategory !== expected.displayCategory) {
+        report('CATEGORY_MISMATCH', 'Display category differs from legacy projection', row.id, lotId);
+      }
       if (lot.rawName !== expected.rawName || lot.createdAt !== expected.createdAt || lot.updatedAt !== expected.updatedAt || lot.version !== 1) {
         report('LEGACY_METADATA_MISMATCH', 'Legacy name, timestamps or initial lot version differ', row.id, lotId);
       }

@@ -9,6 +9,9 @@ import { MIGRATION_LEDGER, SqliteD1 } from '../helpers/sqlite-d1';
 // can never silently accept a database that is behind (or ahead of) the release it guards.
 describe('D1 schema gate — migration ledger equality derived from migrations/', () => {
   const familyTables = ['family_meal_preferences', 'generated_family_meal_plans', 'saved_recipe_entries', 'shopping_demand_review_commands', 'shopping_demand_reviews', 'shopping_generated_item_state', 'shopping_item_metadata', 'shopping_plan_commands', 'shopping_plan_demands', 'shopping_plan_item_dismissals', 'shopping_plan_sources'];
+  const categoryTriggers = ['trg_inventory_adoption_category_authority_insert',
+    'trg_inventory_commands_category_authority_insert', 'trg_inventory_events_category_authority_insert',
+    'trg_inventory_lots_display_category_insert', 'trg_inventory_lots_display_category_update'];
   const databases: SqliteD1[] = [];
   const gate = renderSchemaGateSql();
   const withLedger = (names: readonly string[], through?: string) => {
@@ -112,8 +115,23 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
     expect(issues.filter(row=>row.issue==='missing_table').map(row=>row.detail)).toEqual(['shopping_demand_review_commands', 'shopping_demand_reviews']);
     expect(issues.filter(row=>row.issue==='missing_index').map(row=>row.detail)).toEqual(['idx_shopping_demand_reviews_item']);
     expect(issues.filter(row=>row.issue==='missing_trigger').map(row=>row.detail)).toEqual([
-      'trg_shopping_demand_review_commands_immutable_delete', 'trg_shopping_demand_review_commands_immutable_update',
+      ...categoryTriggers, 'trg_shopping_demand_review_commands_immutable_delete', 'trg_shopping_demand_review_commands_immutable_update',
     ]);
+  });
+  it('rejects a 0043 database until authoritative category storage and guards exist', () => {
+    const tip = '0043_shopping_demand_review.sql'; const names = listMigrations();
+    const db = withLedger(names.slice(0, names.indexOf(tip) + 1), tip);
+    const issues = db.query<{ issue: string; detail: string }>(gate);
+    expect(issues.filter(row => row.issue === 'missing_migration')).toEqual(missingMigrationsAfter(tip));
+    expect(issues.filter(row => row.issue === 'missing_column')).toEqual([
+      { issue: 'missing_column', detail: 'inventory_lots.display_category' },
+    ]);
+    expect(issues.filter(row => row.issue === 'missing_trigger').map(row => row.detail)).toEqual(categoryTriggers);
+  });
+  it.each(categoryTriggers)('rejects a complete ledger with missing category guard %s', (trigger) => {
+    const db = withLedger(listMigrations());
+    db.seed(`DROP TRIGGER ${trigger}`);
+    expect(db.query(gate)).toEqual([{ issue: 'missing_trigger', detail: trigger }]);
   });
   it('fails closed when the ledger stops at 0034 or 0035 (legacy production tips)', () => {
     for (const tip of ['0034_global_recipe_catalog_parity.sql', '0035_recipe_media_layer.sql']) {

@@ -14,14 +14,14 @@ import {
 const HouseholdId = z.string().min(1).refine((id) => id === id.trim() && !id.includes('\0'));
 const LEGACY_COLUMNS = [
   'id', 'household_id', 'ingredient_id', 'name', 'quantity', 'unit', 'storage',
-  'expiry_date', 'opened_at', 'expiry_kind', 'expiry_source', 'version', 'created_at', 'updated_at',
+  'expiry_date', 'opened_at', 'expiry_kind', 'expiry_source', 'version', 'created_at', 'updated_at', 'category',
 ] as const;
 const LEGACY_SELECT = `SELECT ${LEGACY_COLUMNS.join(', ')} FROM inventory_items WHERE household_id = ? ORDER BY id`;
 const LOCATION_SELECT = `SELECT id, household_id AS householdId, type, name, sort_order AS sortOrder,
   is_default AS isDefault, created_at AS createdAt, updated_at AS updatedAt
   FROM storage_locations WHERE household_id = ? ORDER BY sort_order, id`;
 const LOT_SELECT = `SELECT id, household_id AS householdId, ingredient_id AS ingredientId,
-  raw_name AS rawName, quantity_milli AS quantityMilli, canonical_unit AS canonicalUnit,
+  raw_name AS rawName, display_category AS displayCategory, quantity_milli AS quantityMilli, canonical_unit AS canonicalUnit,
   storage_location_id AS storageLocationId, state, purchased_at AS purchasedAt, opened_at AS openedAt,
   expiry_at AS expiryAt, estimated_expiry_at AS estimatedExpiryAt, expiry_kind AS expiryKind,
   source_type AS sourceType, source_id AS sourceId, version, created_at AS createdAt, updated_at AS updatedAt,
@@ -31,7 +31,8 @@ const LOT_SELECT = `SELECT id, household_id AS householdId, ingredient_id AS ing
   FROM inventory_lots WHERE household_id = ? ORDER BY id`;
 
 type LocationRow = Omit<StorageLocation, 'isDefault'> & { isDefault: number };
-type LotRow = Omit<InventoryLot, 'purchasePrice'> & {
+type LotRow = Omit<InventoryLot, 'purchasePrice' | 'displayCategory'> & {
+  displayCategory: string | null;
   currency: string | null;
   amountMinor: number | null;
   minorDigits: number | null;
@@ -47,9 +48,9 @@ function decodeLocation(row: LocationRow): StorageLocation {
 }
 
 function decodeLot(row: LotRow): InventoryLot {
-  const { currency, amountMinor, minorDigits, ...lot } = row;
+  const { currency, amountMinor, minorDigits, displayCategory, ...lot } = row;
   return InventoryLotSchema.parse({
-    ...lot,
+    ...lot, ...(displayCategory == null ? {} : { displayCategory }),
     purchasePrice: currency === null && amountMinor === null && minorDigits === null
       ? null : { currency, amountMinor, minorDigits },
   });
@@ -125,15 +126,15 @@ export async function backfillLegacyInventory(db: D1DatabaseBinding, householdId
       (id, household_id, ingredient_id, raw_name, quantity_milli, canonical_unit, storage_location_id,
        state, purchased_at, opened_at, expiry_at, estimated_expiry_at, expiry_kind, source_type, source_id,
        version, created_at, updated_at, currency, amount_minor, minor_digits,
-       legacy_expiry_at, legacy_expiry_kind, legacy_expiry_source, legacy_opened_at, legacy_version)
-      VALUES (?, ?, ?, ?, ${sourceGuard}, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+       legacy_expiry_at, legacy_expiry_kind, legacy_expiry_source, legacy_opened_at, legacy_version, display_category)
+      VALUES (?, ?, ?, ?, ${sourceGuard}, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       ON CONFLICT(source_id) WHERE source_type = 'LEGACY_BACKFILL' DO NOTHING`).bind(
       lot.id, lot.householdId, lot.ingredientId, lot.rawName,
       ...LEGACY_COLUMNS.map((column) => row[column]), lot.quantityMilli,
       lot.canonicalUnit, lot.storageLocationId, lot.state, lot.purchasedAt, lot.openedAt,
       lot.expiryAt, lot.estimatedExpiryAt, lot.expiryKind, lot.sourceType, lot.sourceId,
       lot.version, lot.createdAt, lot.updatedAt, null, null, null,
-      lot.legacyExpiryAt, lot.legacyExpiryKind, lot.legacyExpirySource, lot.legacyOpenedAt, lot.legacyVersion,
+      lot.legacyExpiryAt, lot.legacyExpiryKind, lot.legacyExpirySource, lot.legacyOpenedAt, lot.legacyVersion, lot.displayCategory ?? null,
     ));
   });
   const results = await db.batch(statements);

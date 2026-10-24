@@ -1,0 +1,11 @@
+{
+  "source_entries": 1260,
+  "differences": [],
+  "result": "PASS",
+  "suite": "full-final",
+  "exit_code": 1,
+  "files_passed": 411,
+  "files_failed": 3,
+  "tests_passed": 9213,
+  "tests_failed": 7
+}

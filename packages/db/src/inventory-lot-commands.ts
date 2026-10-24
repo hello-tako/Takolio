@@ -6,7 +6,7 @@ import {
   type InventoryLotCommand, type SingleLotCommandPlan,
 } from '../../domain/src/inventory-lot-commands';
 import {
-  InventoryLotSchema, StorageLocationSchema, legacyLotId, toLotQuantity,
+  DisplayCategorySchema, InventoryLotSchema, StorageLocationSchema, legacyLotId, toLotQuantity,
   type InventoryLot, type LegacyInventoryRow, type StorageLocation,
 } from '../../domain/src/inventory-truth';
 import {
@@ -31,14 +31,18 @@ export interface StoredLotCommandReceipt {
   command: InventoryLotCommand;
   execution: InventoryLotCommandExecution;
   manualPatch?: z.infer<typeof ManualPatchReceipt>;
+  manualCreate?: z.infer<typeof ManualCreateReceipt>;
 }
 
 const ManualPatchIntent = z.object({
-  requestFingerprint: z.string().min(1), category: z.string().max(30), freshness: z.string(),
+  requestFingerprint: z.string().min(1), category: DisplayCategorySchema, freshness: z.string(),
   moveClientKey: z.string().max(200).nullable(),
 }).strict();
 const ManualPatchReceipt = ManualPatchIntent.extend({ projectionAfter: InventoryAdoptionProjectionSchema });
 export type ManualPatchIntent = z.infer<typeof ManualPatchIntent>;
+const ManualCreateIntent = z.object({ requestFingerprint: z.string().min(1) }).strict();
+const ManualCreateReceipt = ManualCreateIntent.extend({ projectionAfter: InventoryAdoptionProjectionSchema });
+export type ManualCreateIntent = z.infer<typeof ManualCreateIntent>;
 
 interface IngredientRow { id: string; category: string }
 interface ProjectionRow extends LegacyInventoryRow {
@@ -56,7 +60,8 @@ export interface MappedLotSnapshot {
   locations: StorageLocation[];
   ingredients: IngredientRow[];
 }
-type LotRow = Omit<InventoryLot, 'purchasePrice'> & {
+type LotRow = Omit<InventoryLot, 'purchasePrice' | 'displayCategory'> & {
+  displayCategory: string | null;
   legacyItemId: string | null; currency: string | null; amountMinor: number | null; minorDigits: number | null;
 };
 type LocationRow = Omit<StorageLocation, 'isDefault'> & { isDefault: number };
@@ -175,7 +180,7 @@ export async function readMappedLotSnapshot(db: D1DatabaseBinding, input: Invent
     db.prepare(`SELECT id, household_id, ingredient_id, name, quantity, unit, storage, expiry_date,
       opened_at, expiry_kind, expiry_source, version, created_at, updated_at, added_date, category,
       data_source, freshness FROM inventory_items WHERE household_id = ? ORDER BY id${bound}`).bind(scope.householdId),
-    db.prepare(`SELECT id, household_id AS householdId, ingredient_id AS ingredientId, raw_name AS rawName,
+    db.prepare(`SELECT id, household_id AS householdId, ingredient_id AS ingredientId, raw_name AS rawName, display_category AS displayCategory,
       quantity_milli AS quantityMilli, canonical_unit AS canonicalUnit, storage_location_id AS storageLocationId,
       state, purchased_at AS purchasedAt, opened_at AS openedAt, expiry_at AS expiryAt,
       estimated_expiry_at AS estimatedExpiryAt, expiry_kind AS expiryKind, source_type AS sourceType,
@@ -207,9 +212,9 @@ export async function readMappedLotSnapshot(db: D1DatabaseBinding, input: Invent
       householdUpdatedAt: authorization.updatedAt,
       legacyRows: results[2].results as ProjectionRow[],
       lots: (results[3].results as LotRow[]).map((row) => {
-        const { currency, amountMinor, minorDigits, legacyItemId, ...lot } = row;
+        const { currency, amountMinor, minorDigits, legacyItemId, displayCategory, ...lot } = row;
         return { legacyItemId, lot: InventoryLotSchema.parse({
-          ...lot, purchasePrice: currency === null && amountMinor === null && minorDigits === null
+          ...lot, ...(displayCategory == null ? {} : { displayCategory }), purchasePrice: currency === null && amountMinor === null && minorDigits === null
             ? null : { currency, amountMinor, minorDigits },
         }) };
       }),
@@ -307,7 +312,7 @@ function replay(receipt: ReceiptRow, fingerprint: string, scope: InventoryLotCom
         const quantity = toLotQuantity(command.quantity, command.unit);
         valid(after.quantityMilli === quantity.quantityMilli && after.canonicalUnit === quantity.canonicalUnit);
         const declared = ['ingredientId', 'rawName', 'storageLocationId', 'expiryAt', 'estimatedExpiryAt', 'expiryKind',
-          'purchasedAt', 'openedAt', 'purchasePrice', 'sourceType', 'sourceId'] as const;
+          'purchasedAt', 'openedAt', 'purchasePrice', 'sourceType', 'sourceId', 'displayCategory'] as const;
         valid(declared.every((field) => sortedJson(after[field]) === sortedJson(command[field])));
       } else {
         valid(before !== null);
@@ -317,6 +322,9 @@ function replay(receipt: ReceiptRow, fingerprint: string, scope: InventoryLotCom
         const preserved = ['canonicalUnit', 'sourceType', 'sourceId', 'createdAt', 'legacyExpiryAt',
           'legacyExpiryKind', 'legacyExpirySource', 'legacyOpenedAt'] as const;
         valid(preserved.every((field) => before[field] === after[field]));
+        if (command.type !== 'CORRECT' || command.changes.displayCategory === undefined) {
+          valid(before.displayCategory === after.displayCategory);
+        }
         if (command.type === 'USE' || command.type === 'DISCARD') {
           const quantity = toLotQuantity(command.quantity, command.unit);
           valid(quantity.canonicalUnit === after.canonicalUnit && deltaMilli === -quantity.quantityMilli
@@ -418,7 +426,7 @@ function projectionWrites(db: D1DatabaseBinding, plan: SingleLotCommandPlan, row
     && before.expiryAt === after.expiryAt && before.estimatedExpiryAt === after.estimatedExpiryAt;
   const expiry = unchangedExpiry && row ? row : expiryProjection(after);
   const openedAt = before && row && before.openedAt === after.openedAt ? row.opened_at : after.openedAt;
-  const category = manualPatch?.category ?? snapshot.ingredients.find((ingredient) => ingredient.id === after.ingredientId)?.category ?? 'other';
+  const category = snapshot.ingredients.find((ingredient) => ingredient.id === after.ingredientId)?.category ?? after.displayCategory ?? 'other';
   const storage = snapshot.locations.find((location) => location.id === after.storageLocationId)!.type.toLowerCase();
   const projectedFreshness = after.quantityMilli === 0 ? 'out_of_stock'
     : row && before && before.quantityMilli > 0 && unchangedExpiry ? row.freshness
@@ -441,17 +449,17 @@ function lotWrite(db: D1DatabaseBinding, plan: SingleLotCommandPlan, legacyItemI
   const { before, after: lot } = plan;
   const values = [lot.ingredientId, lot.rawName, lot.quantityMilli, lot.canonicalUnit, lot.storageLocationId, lot.state,
     lot.purchasedAt, lot.openedAt, lot.expiryAt, lot.estimatedExpiryAt, lot.expiryKind, lot.version, lot.updatedAt,
-    lot.purchasePrice?.currency ?? null, lot.purchasePrice?.amountMinor ?? null, lot.purchasePrice?.minorDigits ?? null, lot.legacyVersion];
+    lot.purchasePrice?.currency ?? null, lot.purchasePrice?.amountMinor ?? null, lot.purchasePrice?.minorDigits ?? null, lot.legacyVersion, lot.displayCategory ?? null];
   if (before) return db.prepare(`UPDATE inventory_lots SET ingredient_id = ?, raw_name = ?, quantity_milli = ?,
     canonical_unit = ?, storage_location_id = ?, state = ?, purchased_at = ?, opened_at = ?, expiry_at = ?,
     estimated_expiry_at = ?, expiry_kind = ?, version = ?, updated_at = ?, currency = ?, amount_minor = ?, minor_digits = ?,
-    legacy_version = ? WHERE id = ? AND household_id = ? AND version = ? AND legacy_item_id = ? RETURNING id, version`)
+    legacy_version = ?, display_category = ? WHERE id = ? AND household_id = ? AND version = ? AND legacy_item_id = ? RETURNING id, version`)
     .bind(...values, lot.id, lot.householdId, before.version, legacyItemId);
   return db.prepare(`INSERT INTO inventory_lots (ingredient_id, raw_name, quantity_milli, canonical_unit,
     storage_location_id, state, purchased_at, opened_at, expiry_at, estimated_expiry_at, expiry_kind, version,
-    updated_at, currency, amount_minor, minor_digits, legacy_version, id, household_id, source_type, source_id,
+    updated_at, currency, amount_minor, minor_digits, legacy_version, display_category, id, household_id, source_type, source_id,
     created_at, legacy_item_id, legacy_expiry_at, legacy_expiry_kind, legacy_expiry_source, legacy_opened_at)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id, version`)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id, version`)
     .bind(...values, lot.id, lot.householdId, lot.sourceType, lot.sourceId, lot.createdAt, lot.id,
       lot.legacyExpiryAt, lot.legacyExpiryKind, lot.legacyExpirySource, lot.legacyOpenedAt);
 }
@@ -485,19 +493,24 @@ function requireParsableLotCommand(clientKey: string, input: unknown): void {
 // Plans one canonical command against the given snapshot without executing.
 export async function prepareInventoryLotCommand(db: D1DatabaseBinding, scope: InventoryLotCommandScope,
   clientKey: string, input: unknown, now: string, snapshot: MappedLotSnapshot,
-  skipHouseholdVersionCas = false, manualPatch?: ManualPatchIntent): Promise<PreparedLotCommand> {
+  skipHouseholdVersionCas = false, manualPatch?: ManualPatchIntent, manualCreate?: ManualCreateIntent): Promise<PreparedLotCommand> {
   const key = ClientKey.safeParse(clientKey);
   const parsed = InventoryLotCommandSchema.safeParse(input);
   if (!key.success || !parsed.success) throw new LotCommandError('INVALID_COMMAND');
   const command = parsed.data;
   if (manualPatch && (!ManualPatchIntent.safeParse(manualPatch).success
     || (command.type !== 'CORRECT' && command.type !== 'MOVE'))) throw new LotCommandError('INVALID_COMMAND');
+  if (manualCreate && (!ManualCreateIntent.safeParse(manualCreate).success
+    || command.type !== 'CREATE' || manualPatch)) throw new LotCommandError('INVALID_COMMAND');
   let fingerprint = sortedJson({ ...scope, command });
   const prior = await readReceipt(db, scope, key.data);
   if (prior) {
-    if (manualPatch) {
+    if (manualPatch || manualCreate) {
       const stored = decodeLotCommandReceipt(prior, scope, key.data);
-      if (stored.manualPatch?.requestFingerprint !== manualPatch.requestFingerprint) throw new LotCommandError('IDEMPOTENCY_CONFLICT');
+      if (manualPatch && stored.manualPatch?.requestFingerprint !== manualPatch.requestFingerprint
+        || manualCreate && stored.manualCreate?.requestFingerprint !== manualCreate.requestFingerprint) {
+        throw new LotCommandError('IDEMPOTENCY_CONFLICT');
+      }
       return { kind: 'replay', clientKey: key.data, command, fingerprint: prior.fingerprint, execution: stored.execution };
     }
     return { kind: 'replay', clientKey: key.data, command, fingerprint, execution: replay(prior, fingerprint, scope, key.data, command) };
@@ -526,12 +539,20 @@ export async function prepareInventoryLotCommand(db: D1DatabaseBinding, scope: I
     version: plan.after.version, effects: plan.changed ? [plan] : [],
   };
   let patchReceipt: z.infer<typeof ManualPatchReceipt> | undefined;
+  let createReceipt: z.infer<typeof ManualCreateReceipt> | undefined;
   if (manualPatch) {
     const projected = structuredClone(snapshot);
     advanceSnapshotWithResult(projected, result, now, manualPatch);
-    patchReceipt = ManualPatchReceipt.parse({ ...manualPatch,
-      projectionAfter: projected.legacyRows.find((entry) => entry.id === row?.id) });
+    const projectionAfter = projected.legacyRows.find((entry) => entry.id === row?.id)!;
+    patchReceipt = ManualPatchReceipt.parse({ ...manualPatch, category: projectionAfter.category, projectionAfter });
     fingerprint = sortedJson({ ...scope, command, manualPatch: patchReceipt });
+  }
+  if (manualCreate) {
+    const projected = structuredClone(snapshot);
+    advanceSnapshotWithResult(projected, result, now);
+    createReceipt = ManualCreateReceipt.parse({ ...manualCreate,
+      projectionAfter: projected.legacyRows.find((entry) => entry.id === command.lotId) });
+    fingerprint = sortedJson({ ...scope, command, manualCreate: createReceipt });
   }
   const statements = [
     db.prepare(`INSERT INTO inventory_commands (id, household_id, actor_id, client_key, fingerprint, command_type, result_json, created_at)
@@ -558,8 +579,8 @@ export async function prepareInventoryLotCommand(db: D1DatabaseBinding, scope: I
       'reason' in command ? command.reason ?? null : null, JSON.stringify(metadata), now, result.commandId),
     writeGuard(db, scope, 'inventory_item_id'));
   }
-  if (patchReceipt) {
-    const entries = Object.entries(patchReceipt.projectionAfter);
+  if (patchReceipt || createReceipt) {
+    const entries = Object.entries((patchReceipt ?? createReceipt)!.projectionAfter);
     statements.push(db.prepare(`INSERT INTO inventory_events
       (id, household_id, inventory_item_id, event_type, quantity_delta, unit)
       SELECT ?, ?, NULL, 'T09_PATCH_POSTSTATE', 0, 'piece' WHERE NOT EXISTS
@@ -591,9 +612,11 @@ export async function readLotCommandReceipt(db: D1DatabaseBinding, scope: Invent
 function decodeLotCommandReceipt(receipt: ReceiptRow, scope: InventoryLotCommandScope,
   key: string): StoredLotCommandReceipt {
   try {
-    const envelope = JSON.parse(receipt.fingerprint) as { command?: unknown; manualPatch?: unknown };
+    const envelope = JSON.parse(receipt.fingerprint) as { command?: unknown; manualPatch?: unknown; manualCreate?: unknown };
     const command = InventoryLotCommandSchema.parse(envelope.command);
     const manualPatch = envelope.manualPatch === undefined ? undefined : ManualPatchReceipt.parse(envelope.manualPatch);
+    const manualCreate = envelope.manualCreate === undefined ? undefined : ManualCreateReceipt.parse(envelope.manualCreate);
+    if (manualPatch && manualCreate || manualCreate && command.type !== 'CREATE') throw new Error('Invalid adapter receipt');
     const execution = replay(receipt, receipt.fingerprint, scope, key, command);
     if (manualPatch) {
       const after = execution.result.effects[0]?.after;
@@ -603,7 +626,24 @@ function decodeLotCommandReceipt(receipt: ReceiptRow, scope: InventoryLotCommand
         || row.name !== after.rawName || toLotQuantity(row.quantity, row.unit).quantityMilli !== after.quantityMilli
         || row.unit !== after.canonicalUnit || row.updated_at !== after.updatedAt) throw new Error('Invalid PATCH result');
     }
-    return { command, execution, manualPatch };
+    if (manualCreate) {
+      const after = execution.result.effects[0]?.after;
+      const row = manualCreate.projectionAfter;
+      const expiry = after && expiryProjection(after);
+      if (!after || row.id !== after.id || row.household_id !== after.householdId
+        || row.ingredient_id !== after.ingredientId || row.version !== after.legacyVersion
+        || row.name !== after.rawName || row.unit !== after.canonicalUnit
+        || (after.ingredientId === null && row.category !== (after.displayCategory ?? 'other'))
+        || toLotQuantity(row.quantity, row.unit).quantityMilli !== after.quantityMilli
+        || row.created_at !== after.createdAt || row.added_date !== after.createdAt || row.updated_at !== after.updatedAt
+        || row.opened_at !== after.openedAt || row.expiry_date !== expiry?.expiry_date
+        || row.expiry_kind !== expiry?.expiry_kind || row.expiry_source !== expiry?.expiry_source
+        || row.data_source !== (after.sourceType === 'SCAN' || after.sourceType === 'RECEIPT' ? 'scan'
+          : after.sourceType === 'SHOPPING' ? 'shopping' : 'manual')
+        || row.freshness !== freshness(row.expiry_date, receipt.created_at)) throw new Error('Invalid CREATE result');
+      DisplayCategorySchema.parse(row.category);
+    }
+    return { command, execution, manualPatch, manualCreate };
   } catch {
     throw new LotCommandError('CORRUPT_RECEIPT');
   }
@@ -755,7 +795,7 @@ function replayFefo(receipt: ReceiptRow, fingerprint: string, scope: InventoryLo
 
 function fefoCompletionFence(db: D1DatabaseBinding, scope: InventoryLotCommandScope, result: InventoryFefoCommandResult) {
   const fields: Record<string, string> = {
-    id: 'id', householdId: 'household_id', ingredientId: 'ingredient_id', rawName: 'raw_name',
+    id: 'id', householdId: 'household_id', ingredientId: 'ingredient_id', rawName: 'raw_name', displayCategory: 'display_category',
     quantityMilli: 'quantity_milli', canonicalUnit: 'canonical_unit', storageLocationId: 'storage_location_id',
     state: 'state', purchasedAt: 'purchased_at', openedAt: 'opened_at', expiryAt: 'expiry_at',
     estimatedExpiryAt: 'estimated_expiry_at', expiryKind: 'expiry_kind', sourceType: 'source_type', sourceId: 'source_id',
@@ -933,7 +973,7 @@ function advanceSnapshotWithResult(snapshot: MappedLotSnapshot, result: AnyLotCo
       : row && before && before.quantityMilli > 0 && unchangedExpiry ? row.freshness
         : freshness(expiry.expiry_date, now);
     const openedAt = before && row && before.openedAt === after.openedAt ? row.opened_at : after.openedAt;
-    const category = manualPatch?.category ?? snapshot.ingredients.find((ingredient) => ingredient.id === after.ingredientId)?.category ?? 'other';
+    const category = snapshot.ingredients.find((ingredient) => ingredient.id === after.ingredientId)?.category ?? after.displayCategory ?? 'other';
     if (row) {
       row.ingredient_id = after.ingredientId;
       row.name = after.rawName;

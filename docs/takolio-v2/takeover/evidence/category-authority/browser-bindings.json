@@ -1,0 +1,28 @@
+{
+  "raw_readback_sha256": "e27d4cb4d41930195c52645748b5c6d903a6bc5ef02bfa0e3d1f8b51886406e1",
+  "public_readback_sha256": "72168678f1ced474780ce60d5195bc73fa33f48b4637d550fb8e7f6b60b8fc82",
+  "transformation": "Only screenshot paths become basenames; synthetic local record values preserved",
+  "screenshots": [
+    {
+      "file": "create-form.png",
+      "sha256": "3910608c6e78bd8d9160254e620c0b1f1cd0f2fc205b47ce7474104139fed011",
+      "bytes": 98016
+    },
+    {
+      "file": "spice-filter-reload.png",
+      "sha256": "b0ae5bc3ec9eedccc572d9337bf980f7d85d26dd4e7f77c2656bba4d72b4430e",
+      "bytes": 62882
+    },
+    {
+      "file": "detail-spice.png",
+      "sha256": "2211606d84a9c19b9bc1e7b4360ea0af481bff4d40cf6d5cb1214abc92c3c2f5",
+      "bytes": 104280
+    },
+    {
+      "file": "detail-after-use-move.png",
+      "sha256": "389c87f6a1d105e04dd928c23bc432294d6d783c20e2000b32bc7c9b403f2024",
+      "bytes": 104852
+    }
+  ],
+  "scope": "Actual local Worker + Chromium390; USE via synthetic local control; no page errors; no external calls"
+}

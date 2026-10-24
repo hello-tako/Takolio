@@ -105,7 +105,7 @@ async function confirmAdoptedScan(c: Context<{ Bindings: Env; Variables: { auth:
     selectedIds: string[];
     batchStatements: any[];
     updates: Map<string, { id: string; quantityDelta: number; unit: string }>;
-    inserts: Array<{ id: string; quantity: number; unit: string; expiryDate: string; ingredientId: string | null; name: string; storage: string; expiryBasis: ExpiryBasis; lineIds: string[] }>;
+    inserts: Array<{ id: string; quantity: number; unit: string; expiryDate: string; ingredientId: string | null; name: string; category: string; storage: string; expiryBasis: ExpiryBasis; lineIds: string[] }>;
     provenance: ScanProvenanceType;
     evidenceByItemId: Map<string, InventoryScanEvidence>;
     purchase: { purchasedAt: string | null; purchasePriceFor: (lineIds: string[]) => { currency: 'VND'; amountMinor: number; minorDigits: 0 } | null };
@@ -145,7 +145,7 @@ async function confirmAdoptedScan(c: Context<{ Bindings: Env; Variables: { auth:
         clientKey: await scanCommandKey(scanId, insert.id, 'create'),
         input: {
           type: 'CREATE', lotId: insert.id, ingredientId: insert.ingredientId, rawName: insert.name,
-          quantity: insert.quantity, unit: insert.unit, storageLocationId: location.id,
+          quantity: insert.quantity, unit: insert.unit, displayCategory: insert.category, storageLocationId: location.id,
           expiryAt: expiry.expiryAt, estimatedExpiryAt: expiry.estimatedExpiryAt,
           expiryKind: expiry.expiryKind,
           // Real receipt facts only; absent facts stay null rather than

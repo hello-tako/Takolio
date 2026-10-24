@@ -87,6 +87,7 @@ const CorrectionChanges = z.object({
   purchasedAt: CalendarDate.nullable().optional(),
   openedAt: Instant.nullable().optional(),
   purchasePrice: LotFields.purchasePrice.optional(),
+  displayCategory: LotFields.displayCategory.optional(),
 }).strict().refine((changes) => Object.values(changes).some((value) => value !== undefined), 'Correction requires an explicit change');
 
 export const InventoryLotCommandSchema = z.discriminatedUnion('type', [
@@ -95,6 +96,7 @@ export const InventoryLotCommandSchema = z.discriminatedUnion('type', [
     lotId: LotFields.id,
     ingredientId: LotFields.ingredientId.default(null),
     rawName: RawName,
+    displayCategory: LotFields.displayCategory.optional(),
     quantity: z.number().finite().positive(),
     unit: Unit,
     storageLocationId: LotFields.storageLocationId,
@@ -194,7 +196,7 @@ function samePrice(a: InventoryLot['purchasePrice'], b: InventoryLot['purchasePr
 function sameEffect(before: InventoryLot, after: InventoryLot): boolean {
   const fields = [
     'quantityMilli', 'canonicalUnit', 'state', 'storageLocationId', 'ingredientId', 'rawName',
-    'expiryAt', 'estimatedExpiryAt', 'expiryKind', 'purchasedAt', 'openedAt',
+    'expiryAt', 'estimatedExpiryAt', 'expiryKind', 'purchasedAt', 'openedAt', 'displayCategory',
   ] as const;
   return fields.every((field) => before[field] === after[field]) && samePrice(before.purchasePrice, after.purchasePrice);
 }
@@ -249,6 +251,7 @@ export function planSingleLotCommand(
       householdId: scope.householdId,
       ingredientId: command.ingredientId,
       rawName: command.rawName,
+      ...(command.displayCategory === undefined ? {} : { displayCategory: command.displayCategory }),
       ...normalizeQuantity(command.quantity, command.unit),
       storageLocationId: command.storageLocationId,
       state: 'ACTIVE',
@@ -309,6 +312,7 @@ export function planSingleLotCommand(
       }
       if (changes.ingredientId !== undefined) after.ingredientId = changes.ingredientId;
       if (changes.rawName !== undefined) after.rawName = changes.rawName;
+      if (changes.displayCategory !== undefined) after.displayCategory = changes.displayCategory;
       if (changes.expiryAt !== undefined) after.expiryAt = changes.expiryAt;
       if (changes.estimatedExpiryAt !== undefined) after.estimatedExpiryAt = changes.estimatedExpiryAt;
       if (changes.expiryKind !== undefined) after.expiryKind = changes.expiryKind;

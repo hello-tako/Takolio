@@ -1,0 +1,19 @@
+{
+  "source_entries": 1260,
+  "differences": [],
+  "result": "PASS",
+  "suite": "full-timeout15-final",
+  "command": [
+    "pnpm",
+    "test",
+    "--maxWorkers=1",
+    "--testTimeout=15000"
+  ],
+  "exit_code": 0,
+  "files_passed": 414,
+  "files_total": 414,
+  "tests_passed": 9228,
+  "tests_total": 9228,
+  "log_sha256": "207221342d464b18310e926d6a8e0445b1f43390549d4f0a771a429fdd9876e4",
+  "timeout_disclosure": "Explicit CLI testTimeout=15000; corrected default-timeout suite failed one Wrangler 5000ms timeout; no assertion/test/config change"
+}
