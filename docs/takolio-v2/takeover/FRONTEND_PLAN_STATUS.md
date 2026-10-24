@@ -85,3 +85,7 @@ No production operation.
 ## WKD01 follow-up supersession - 2026-10-25 JST
 
 UI10 pending shopping now reflects a durably accepted request and never adds guessed stock. Outbox unknown/error recovery is visible; exact receipt survives optional cache failure. Full416files/9319tests, focused8files/280tests and four browser width/flow cases/32PNG PASS. Audit remains0low/3moderate/2high. See WKD01_DURABLE_OFFLINE_QUEUE.md and hash-bound evidence; failures/authorized recovery drift remain disclosed. WKD02 swap replay remains next. Finite UI01-UI15+C12/C13 and all38PENDING owner reviews unchanged; device/Safari/screenreader/media/live/hosted acceptance pending. No production operation.
+
+## WKD02 activated - 2026-10-25 JST
+
+WKD01 implementationcc426b04/documentation2cde9235 verified; post-docs scope PASS. ADR-069 activates bounded keyed Week swap replay/current-plan response and explicit conflict recovery. Runtime/schema/testing still in progress. Finite UI plan remains locally bounded complete;38owner reviews and device/media/Safari/screenreader/hosted acceptance PENDING. No production operation.

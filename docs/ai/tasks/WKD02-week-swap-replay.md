@@ -1,3 +1,11 @@
+# WKD02 activation - 2026-10-25 JST
+
+Status: ACTIVE LOCAL IMPLEMENTATION; ADR-069 supersedes the historical draft below. User authorized sequential local execution. WKD01 implementationcc426b04/documentation2cde9235 and post-docs scope PASS. Choose additive0045;0001-0044 remain immutable. Accepted response is current owned plan; exact409 remains visible until explicit confirmed recovery. Use existing outbox/banner/dialog/flush. No WKD02 executable PASS claimed at activation.
+
+Execute the acceptance sequence below against ADR-069. Preserve raw failed attempts, exact commands, source hashes and local/hosted limits. No push/merge/deploy/remote migration/production. Historical draft follows unchanged as problem/design context; ADR-069 is the accepted decision.
+
+---
+
 # WKD02 - Durable Week swap replay without restoring stale plans
 
 Status: DRAFT TASK PACKET; implementation pending; no new ADR accepted.

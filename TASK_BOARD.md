@@ -1,3 +1,13 @@
+## Takolio V2 - WKD02 keyed Week swap replay (2026-10-25 JST)
+
+Status: LOCAL_WKD02_IN_PROGRESS; ADR-069 accepted. WKD01 verified implementation `cc426b04baa84cb4bb3a861b0d606764675b4d20`, documentation `2cde9235f5088b416fbe74935a7bcd801fa8c2ed`; post-docs scope PASS. Full416files/9319tests, lint/types/migrations/default/paired-ON builds PASS. Audit remains FAIL(0low/3moderate/2high); ten verbatim-log whitespace warnings retained.
+
+Active: `docs/ai/tasks/WKD02-week-swap-replay.md`. Implement immutable target-scoped swap receipt in additive0045 and existing legacy/dual batch; replay returns current owned plan. Narrow successful-response transport loss retention and visible exact409 recovery reuse durable outbox/banner/dialog. Distinct fresh commands retain full-snapshot concurrency ceiling. Baseline/focused/schema/local D1/browser/full gates not yet executed for WKD02; no completion claim.
+
+Original Argon/private recovery,54salvage paths, ledgers and38PENDING owner reviews remain preserved. Next: executable baseline RED before bounded backend/client implementation, then gates/evidence/recovery/review. No push/merge/deploy/remote migration/production action. Historical content follows unchanged.
+
+---
+
 ## Takolio V2 - WKD01 durable offline queue (2026-10-25 JST)
 
 Status: LOCAL_WKD01_VERIFIED; ADR-068. Parent `4d330940c328d70ca49384fa54792e95637a3dd5`; official main read-only `90b94129113b41e34701d99f51175cfa81cb73de`. Implementation checkpoint `cc426b04baa84cb4bb3a861b0d606764675b4d20`; implementation scope PASS. Documentation checkpoint follows this verified implementation.
