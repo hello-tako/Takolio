@@ -451,3 +451,143 @@
   width: 128px;
   height: auto;
 }
+
+.takosan-rebuild .cooking-header-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.takosan-rebuild .cooking-header-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.takosan-rebuild .cooking-header-sub {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgb(var(--semantic-text-secondary-rgb));
+}
+.takosan-rebuild .cooking-chef-companion {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.takosan-rebuild .cooking-chef-mascot {
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+}
+.takosan-rebuild .cooking-chef-copy {
+  min-width: 0;
+  flex: 1;
+}
+.takosan-rebuild .cooking-outline-tech {
+  display: inline-block;
+  margin-bottom: 4px;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  background: var(--takosan-mint);
+  color: var(--kitchen-pine);
+  font-size: 11px;
+  font-weight: 700;
+}
+.takosan-rebuild .cooking-ingredients-mini-list {
+  display: grid;
+  gap: 8px;
+  margin: 10px 0 20px;
+  padding: 0;
+  list-style: none;
+}
+.takosan-rebuild .cooking-ingredients-mini-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: white;
+  border: 1px solid rgb(var(--semantic-border-rgb));
+  font-size: 13px;
+}
+.takosan-rebuild .cooking-ingredients-mini-list img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.takosan-rebuild .cooking-ing-name {
+  font-weight: 600;
+  flex: 1;
+  min-width: 0;
+}
+.takosan-rebuild .cooking-ing-qty {
+  font-weight: 700;
+  color: var(--kitchen-pine);
+  font-variant-numeric: tabular-nums;
+}
+.takosan-rebuild .cooking-step-header-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.takosan-rebuild .cooking-step-header-row h2 {
+  margin: 0;
+}
+.takosan-rebuild .cooking-step-ingredients {
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: 14px;
+  background: var(--takosan-cream);
+  border: 1px solid rgb(var(--semantic-border-rgb));
+}
+.takosan-rebuild .cooking-step-ingredients-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--kitchen-pine);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+.takosan-rebuild .cooking-step-ingredients-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.takosan-rebuild .cooking-step-ingredient-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  background: white;
+  border: 1px solid rgb(var(--semantic-border-rgb));
+  font-size: 13px;
+}
+.takosan-rebuild .cooking-step-ingredient-pill img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+.takosan-rebuild .cooking-timer-dial {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.takosan-rebuild .cooking-timer-ring {
+  flex-shrink: 0;
+}
+.takosan-rebuild .cooking-use-item-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.takosan-rebuild .cooking-use-item-icon {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  flex-shrink: 0;
+  padding: 4px;
+  border-radius: 10px;
+  background: var(--takosan-cream);
+  border: 1px solid rgb(var(--semantic-border-rgb));
+}

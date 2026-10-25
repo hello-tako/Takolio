@@ -1,0 +1,414 @@
+{
+  "base_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "before_semantics": "baseline-corrected reproduces selected servings 4 -> base 2 after confirmed cooking exit; alertdialog selector corrected first. layout-red is after navigation fix and before scoped action layout fix.",
+  "after_semantics": "verified-paired runs the final product and test source against the real isolated Worker/SQLite synthetic API; 5 tests pass (30.9s). Default composition-V1 subset passes 2/2 (8.1s).",
+  "captures": "Full-page screenshots retain fixed action/navigation overlays at the capture viewport position. Narrow root-font scaling is synthetic and not OS zoom certification. Images are evidence only, never application assets.",
+  "entries": [
+    {
+      "path": "after/axe-ingredients-1024x768-text1.json",
+      "bytes": 221,
+      "sha256": "9639d6db3cca7e038da01a0a2b1d285914411db7f4be1a25968cff86f7167532"
+    },
+    {
+      "path": "after/axe-ingredients-1440x900-text1.json",
+      "bytes": 221,
+      "sha256": "d9f1fe8eeba72f87b4cb431b1a1169db8ad68a21220a616799a011437412e200"
+    },
+    {
+      "path": "after/axe-ingredients-320x420-text2.json",
+      "bytes": 220,
+      "sha256": "d2738d967154240534312cd8e6587a622a9fed0732f1a2d1cbe9b63d54d57179"
+    },
+    {
+      "path": "after/axe-ingredients-320x568-text1.json",
+      "bytes": 220,
+      "sha256": "bd4f93d5e13aa9ad76a87b46312793015412612ce54340491d8b51017964b5c0"
+    },
+    {
+      "path": "after/axe-ingredients-360x800-text1.json",
+      "bytes": 220,
+      "sha256": "f99419c52cf1585bb1de4d4c4428b6b97854579959da2c863dd3795af301ad6c"
+    },
+    {
+      "path": "after/axe-ingredients-390x844-text1.json",
+      "bytes": 220,
+      "sha256": "deed4ece1cecc2e8cba926493c1fe03854f64fd854c6eb3278ab444f80ea3f60"
+    },
+    {
+      "path": "after/axe-ingredients-430x932-text1.json",
+      "bytes": 220,
+      "sha256": "01eb97e44c9f454c870186fb0c807ad5fe7b12d33e8003621045bd28d8c20934"
+    },
+    {
+      "path": "after/axe-ingredients-768x1024-text1.json",
+      "bytes": 290,
+      "sha256": "4bb640e74a6cc0a59f26b00eb20c45363a44a807e30f387391574f06f3e6af86"
+    },
+    {
+      "path": "after/axe-nutrition-1024x768-text1.json",
+      "bytes": 219,
+      "sha256": "08f89c5b474e6d491529fe201d9dd14fbae5b191fde8f7c2fd64708a699e32dd"
+    },
+    {
+      "path": "after/axe-nutrition-1440x900-text1.json",
+      "bytes": 219,
+      "sha256": "9bf309269da039a4f7e6d28c6661d32a5a781d940faa9acf3278f1c95f9bb60c"
+    },
+    {
+      "path": "after/axe-nutrition-320x420-text2.json",
+      "bytes": 218,
+      "sha256": "ae9a076e92b991a7b8493a3aeceb3f0fc2098eeda13b34c799a4a5def6e6b7e9"
+    },
+    {
+      "path": "after/axe-nutrition-320x568-text1.json",
+      "bytes": 218,
+      "sha256": "7927a210f485b881f2068b3af9820b40f43032e80f42fffec0c30d653316f40e"
+    },
+    {
+      "path": "after/axe-nutrition-360x800-text1.json",
+      "bytes": 218,
+      "sha256": "3316f4b9839ca229d0161753221a17b4ae4d4875c11a79066a09e61f896b612e"
+    },
+    {
+      "path": "after/axe-nutrition-390x844-text1.json",
+      "bytes": 218,
+      "sha256": "f19c70a867a0d00d11dfe8f6f8cb8ad00379adbffaad7067520f67b3008b0b3f"
+    },
+    {
+      "path": "after/axe-nutrition-430x932-text1.json",
+      "bytes": 218,
+      "sha256": "6503ad18520115f3a8227c29560d7959598e5cca4dfef8a1178359bf0a89daf1"
+    },
+    {
+      "path": "after/axe-nutrition-768x1024-text1.json",
+      "bytes": 288,
+      "sha256": "18fabfe63b5f16eef02a8d6d3e124a6e746a6368246e29a0c6fe63affd0f24d4"
+    },
+    {
+      "path": "after/axe-steps-1024x768-text1.json",
+      "bytes": 215,
+      "sha256": "9d27ab2047abd8f29c8e07e26a7e9d8c9b7b5ae8ce2ebb2c3c5f49d9a389b055"
+    },
+    {
+      "path": "after/axe-steps-1440x900-text1.json",
+      "bytes": 284,
+      "sha256": "074741e01768f50fc6e0a73650095c9ffa97c44d3d0bc5e8fd37d0eacde2daee"
+    },
+    {
+      "path": "after/axe-steps-320x420-text2.json",
+      "bytes": 214,
+      "sha256": "2d2f65d3e4c7f97ea81c116a256de0564cba6cb5347d2736daa2f0235b21214a"
+    },
+    {
+      "path": "after/axe-steps-320x568-text1.json",
+      "bytes": 214,
+      "sha256": "b35161cb8282e0edf363c08dfff52791120c37f10afe1c534249d971d4a76419"
+    },
+    {
+      "path": "after/axe-steps-360x800-text1.json",
+      "bytes": 214,
+      "sha256": "6a4fb455ef1b351f8912886bb2f45a61a58f7002eb2730eda2c6cdb512585d5c"
+    },
+    {
+      "path": "after/axe-steps-390x844-text1.json",
+      "bytes": 214,
+      "sha256": "4350f613d480cde5034b0b11e550805ca42aaccef6a880104fb542e48226484d"
+    },
+    {
+      "path": "after/axe-steps-430x932-text1.json",
+      "bytes": 214,
+      "sha256": "ecdd69c2ab3c497b2971d88969e2c51481747011e6f462fdb94f9c9aba72226f"
+    },
+    {
+      "path": "after/axe-steps-768x1024-text1.json",
+      "bytes": 284,
+      "sha256": "5b055bbd595ef895137fd54b62e4023fd19dfb17ba014123f506f6761441a89e"
+    },
+    {
+      "path": "after/cooking-exit.png",
+      "bytes": 105073,
+      "sha256": "68ac249c2607a8298dd84678d5a07819e11b474734f7ad5bb382de21bac7c613",
+      "width": 390,
+      "height": 1185
+    },
+    {
+      "path": "after/cooking-handoff-summary.json",
+      "bytes": 181,
+      "sha256": "71943cac4d9b0fcfed863f09d0677a8e06ff146f3079f9fdfe2fde0abe23324c"
+    },
+    {
+      "path": "after/cooking-servings4.png",
+      "bytes": 165312,
+      "sha256": "9db3a91678b344258d54d5437e0488d20a490c502da8c213cfcf0efb23d01ac9",
+      "width": 390,
+      "height": 1185
+    },
+    {
+      "path": "after/detail-after-exit.png",
+      "bytes": 279798,
+      "sha256": "db79870cf2cefa5021db6807c6f8f2f2848c19c7831ac73f8d484df6440ff4d7",
+      "width": 390,
+      "height": 2516
+    },
+    {
+      "path": "after/detail-servings20.png",
+      "bytes": 281474,
+      "sha256": "c0d25ceea02074e71e4470426bf75854101a10f8a83f7a4427359d7f5c292902",
+      "width": 390,
+      "height": 2516
+    },
+    {
+      "path": "after/handoff-1024x768-text1.png",
+      "bytes": 727996,
+      "sha256": "6a44901a4479fd6c5935be93370894b9b446ac54d1445caf896c76aed5da70a2",
+      "width": 1024,
+      "height": 1881
+    },
+    {
+      "path": "after/handoff-1440x900-text1.png",
+      "bytes": 323763,
+      "sha256": "49e96dd2e01f84335eebd4362b4db4ac88e37bd59f25504940e16e5cdaf96442",
+      "width": 1440,
+      "height": 1464
+    },
+    {
+      "path": "after/handoff-320x420-text2.png",
+      "bytes": 315608,
+      "sha256": "4fc47baa6b8184eb9bbca12726c975de3f5b1e49a06b958bde53fff9bb43e801",
+      "width": 320,
+      "height": 3444
+    },
+    {
+      "path": "after/handoff-320x568-text1.png",
+      "bytes": 256928,
+      "sha256": "0b94162bfde7643a56737fdabbad64ad9ed6259c0e8be1d7d3a13e64ae5f9001",
+      "width": 320,
+      "height": 2198
+    },
+    {
+      "path": "after/handoff-360x800-text1.png",
+      "bytes": 272947,
+      "sha256": "7fcc936fe073ae6b603a259c4733d3b6066083929534bed8bb9eac67d3e0faec",
+      "width": 360,
+      "height": 2127
+    },
+    {
+      "path": "after/handoff-390x844-text1.png",
+      "bytes": 301067,
+      "sha256": "1566970ad185a1688716bb8f6217d3ebb558bf3351ef4dc4c0fcecba0bcfb8d0",
+      "width": 390,
+      "height": 2061
+    },
+    {
+      "path": "after/handoff-430x932-text1.png",
+      "bytes": 326960,
+      "sha256": "f92b8cc2167a2ebaf845aad2a859e009bcff99a846084aef7c47b589338844da",
+      "width": 430,
+      "height": 1860
+    },
+    {
+      "path": "after/handoff-768x1024-text1.png",
+      "bytes": 436476,
+      "sha256": "848f08a48a44159a5f8be2939d2fb515d34bfbdbbd0189bc3b18a729364d116f",
+      "width": 768,
+      "height": 1849
+    },
+    {
+      "path": "after/ingredients-1024x768-text1.png",
+      "bytes": 675009,
+      "sha256": "2b22a02bda93442b1ed33b23a5026a1352e1daca1500859700cd2835b5046fa4",
+      "width": 1024,
+      "height": 2202
+    },
+    {
+      "path": "after/ingredients-1440x900-text1.png",
+      "bytes": 482691,
+      "sha256": "17b012574a71b3f198885095fc38c733bac8069d681d2d75949e5de8f11665f9",
+      "width": 1440,
+      "height": 1464
+    },
+    {
+      "path": "after/ingredients-320x420-text2.png",
+      "bytes": 389159,
+      "sha256": "29256c31c03e8d8157fa99466bfd664dcf783ddd59a878ec37c08661f6d5ba0a",
+      "width": 320,
+      "height": 5739
+    },
+    {
+      "path": "after/ingredients-320x568-text1.png",
+      "bytes": 285187,
+      "sha256": "0e3921c1bab60bd43c4cd028d2d634e8f370ffa98e7ba0ef0bbdf08a36271c17",
+      "width": 320,
+      "height": 2653
+    },
+    {
+      "path": "after/ingredients-360x800-text1.png",
+      "bytes": 250366,
+      "sha256": "f88c75c77affcab0b16a3e36b8035a1915604c9bb76e9240d4379f12e17606a0",
+      "width": 360,
+      "height": 2582
+    },
+    {
+      "path": "after/ingredients-390x844-text1.png",
+      "bytes": 280294,
+      "sha256": "f14e1036d4f1ba67181ca0630f3f222ec144336e8291a1ebae8d2ce523c7c84b",
+      "width": 390,
+      "height": 2516
+    },
+    {
+      "path": "after/ingredients-430x932-text1.png",
+      "bytes": 358125,
+      "sha256": "955d1262c4aa22f7c4971d24cee8fe97bc8b37be69d9234c0c29c4051d3e870b",
+      "width": 430,
+      "height": 2421
+    },
+    {
+      "path": "after/ingredients-768x1024-text1.png",
+      "bytes": 606899,
+      "sha256": "60c5d9c428d5069820b119280e354e550b94bec82a6fe9669f941382887604a1",
+      "width": 768,
+      "height": 2170
+    },
+    {
+      "path": "after/layout-summary.json",
+      "bytes": 11633,
+      "sha256": "f64732911e5170f255982b417e25e27c7be7dff74b73bc782bd396b00f41286e"
+    },
+    {
+      "path": "after/nutrition-1024x768-text1.png",
+      "bytes": 638066,
+      "sha256": "07354b0ad5e5d5264be0e42471d567ec17fa621fa03b3455e6137cad23bff1dc",
+      "width": 1024,
+      "height": 1881
+    },
+    {
+      "path": "after/nutrition-1440x900-text1.png",
+      "bytes": 447331,
+      "sha256": "384b8f2744576b78c2f23c1796bde018443b21d49117c01fe60a8c5b1b2560ec",
+      "width": 1440,
+      "height": 1464
+    },
+    {
+      "path": "after/nutrition-320x420-text2.png",
+      "bytes": 303415,
+      "sha256": "b4a9923905882ca21c458ad310e5b94eca69c51a216e79a9ff2de941f665a2d0",
+      "width": 320,
+      "height": 3444
+    },
+    {
+      "path": "after/nutrition-320x568-text1.png",
+      "bytes": 250503,
+      "sha256": "0ef89133f1e2bdb2b0b3770875dc8c53673364c327526c75354baabc9e8e45cc",
+      "width": 320,
+      "height": 2198
+    },
+    {
+      "path": "after/nutrition-360x800-text1.png",
+      "bytes": 215737,
+      "sha256": "7eeec451739a7b9ea2ba12f452df3dc33c892d760b92588c811172c7fd1dd30d",
+      "width": 360,
+      "height": 2127
+    },
+    {
+      "path": "after/nutrition-390x844-text1.png",
+      "bytes": 246121,
+      "sha256": "bd59035e4d587e146de7db1ef442fad03fbe2df3d7d3616680813aabb0be9301",
+      "width": 390,
+      "height": 2061
+    },
+    {
+      "path": "after/nutrition-430x932-text1.png",
+      "bytes": 321907,
+      "sha256": "dc859fc23059351853e3a806cbe6c996020e441e0e9c8bbcf0729fe088f90a9c",
+      "width": 430,
+      "height": 1860
+    },
+    {
+      "path": "after/nutrition-768x1024-text1.png",
+      "bytes": 570812,
+      "sha256": "36a94c3da13e393731b5e1ebaf93fc739659c9413708cf570520a870762846b7",
+      "width": 768,
+      "height": 1849
+    },
+    {
+      "path": "after/quantity-summary.json",
+      "bytes": 518,
+      "sha256": "fbbb838bb0f53e6c649178787cc1c6dd5a388f9469b41110ed085d2936e8843d"
+    },
+    {
+      "path": "after/steps-1024x768-text1.png",
+      "bytes": 732818,
+      "sha256": "f6197ea59d3f74715102f4c548f6f4472daf8aba87dc8d58f07c97a5f3f7dea9",
+      "width": 1024,
+      "height": 2686
+    },
+    {
+      "path": "after/steps-1440x900-text1.png",
+      "bytes": 534495,
+      "sha256": "71e2c1c4fdf5d84d94073a8791602f1eae0d7184e80bc859ccf530203c2382e2",
+      "width": 1440,
+      "height": 1560
+    },
+    {
+      "path": "after/steps-320x420-text2.png",
+      "bytes": 406810,
+      "sha256": "6a7d7e1c494fd5e10e2caa0f7e8af50bf1ce3d79f042399f1313a09f47290d47",
+      "width": 320,
+      "height": 5068
+    },
+    {
+      "path": "after/steps-320x568-text1.png",
+      "bytes": 341338,
+      "sha256": "742e110fa5c1e3b511d28a03a86fd38a18aa7fe1e8c4ce0e2b89b9cc32b6d470",
+      "width": 320,
+      "height": 3287
+    },
+    {
+      "path": "after/steps-360x800-text1.png",
+      "bytes": 306285,
+      "sha256": "7cd2c908fe5b25d6a9013b274174bd7fb34977b529f08f2907599638a52d0fd3",
+      "width": 360,
+      "height": 3075
+    },
+    {
+      "path": "after/steps-390x844-text1.png",
+      "bytes": 337126,
+      "sha256": "1e28a770cfb9669aed4d37cec672649d09829a0ac0db8b0552fb213d5fd371c2",
+      "width": 390,
+      "height": 2982
+    },
+    {
+      "path": "after/steps-430x932-text1.png",
+      "bytes": 412335,
+      "sha256": "fc92f399dcf8095bd844219aa3952a17ee322c261bd3e566732c14eb0f21072b",
+      "width": 430,
+      "height": 2793
+    },
+    {
+      "path": "after/steps-768x1024-text1.png",
+      "bytes": 663563,
+      "sha256": "41985bbe119600084154e0bd9e118c64c1fe4d324c5ae702824605b12c2c5559",
+      "width": 768,
+      "height": 2654
+    },
+    {
+      "path": "before/cooking-handoff-summary.json",
+      "bytes": 171,
+      "sha256": "b48f380540ccd7afd9d3c4b527d7fe33bd1c943ab4904a5de6e51fcfefcc4982"
+    },
+    {
+      "path": "before/detail-after-exit.png",
+      "bytes": 278961,
+      "sha256": "f6662b3431e24fabb060c7dcb6517231e7feddd66337501bb8776729ec1acf40",
+      "width": 390,
+      "height": 2516
+    },
+    {
+      "path": "before/ingredients-320x420-text2.png",
+      "bytes": 390102,
+      "sha256": "905fe77011afb3191d535ceab9d88a7e202d405cf69a8f93301d1544a8d40e96",
+      "width": 320,
+      "height": 5874
+    }
+  ]
+}

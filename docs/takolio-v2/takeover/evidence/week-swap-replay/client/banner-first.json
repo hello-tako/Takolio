@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "pnpm",
+    "exec",
+    "vitest",
+    "run",
+    "tests/unit/week-swap-client.test.ts",
+    "tests/unit/offline-banner.test.tsx",
+    "--maxWorkers=1"
+  ],
+  "cwd": "[WORKTREE]",
+  "startedUtc": "2026-10-24T20:49:47.206591+00:00",
+  "elapsedSeconds": 3.023,
+  "exitCode": 0,
+  "log": "[WORKTREE]/.artifacts/takeover/wkd02/client/banner-first.log",
+  "sha256": "30026632eb7825152d21fb7e9a8e00fcae3af7ccd572686c89609b54334a10c3"
+}

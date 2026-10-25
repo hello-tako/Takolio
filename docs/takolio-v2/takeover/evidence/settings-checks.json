@@ -1,0 +1,178 @@
+{
+  "base_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "implementation_commit": "b7a32b69f19f06bac4dbf7bc6d61ecd3bcce1969",
+  "production_actions": false,
+  "environment": "macOS; Node 25.9.0; pnpm 10.33.2; unchanged dependencies; isolated local Worker/SQLite registered fixture; external API fetch and service workers blocked; reduced motion; root-font simulation",
+  "source_sha256": {
+    "src/web/pages/SettingsPage.tsx": "bc26bf0fe9b43ace4ad1d07f4400462ac076dd31ef13090d06bfff4cdb828dee",
+    "tests/e2e/t17-ui/takolio-settings-continuation.e2e.ts": "93105441d5211130c392ea85c60fc211f82fab3b6fec0bd91a08f0a9ace2f9a3"
+  },
+  "baseline_source_copies": {
+    "src/web/pages/SettingsPage.tsx": {
+      "copy": ".artifacts/takeover/settings/before-SettingsPage.tsx",
+      "bytes": 5075,
+      "sha256": "2a19445f3f5b9ad01fadace1f84bd5dc310240a3040267406c33167442dca326"
+    },
+    "tests/e2e/t17-ui/takolio-settings-continuation.e2e.ts": {
+      "copy": ".artifacts/takeover/settings/corrected-baseline-harness.ts",
+      "bytes": 17400,
+      "sha256": "93105441d5211130c392ea85c60fc211f82fab3b6fec0bd91a08f0a9ace2f9a3"
+    }
+  },
+  "checks": [
+    {
+      "name": "targeted-eslint",
+      "command": "pnpm exec eslint src/web/pages/SettingsPage.tsx tests/e2e/t17-ui/takolio-settings-continuation.e2e.ts",
+      "exit_code": 0,
+      "seconds": 1.12,
+      "outcome": "PASS; existing Admin font warnings apply only to builds",
+      "local_ignored_log": ".artifacts/takeover/settings/checks/targeted-eslint.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "focused-units",
+      "command": "pnpm exec vitest run tests/unit/ui08-account.test.tsx tests/unit/frontend-services.test.ts tests/unit/ui08-route-scope.test.tsx tests/unit/ui11-navigation.test.tsx",
+      "exit_code": 0,
+      "seconds": 2.15,
+      "outcome": "PASS 4 files/76 tests in 1.38s",
+      "local_ignored_log": ".artifacts/takeover/settings/checks/focused-units.log",
+      "log_bytes": 256,
+      "log_sha256": "695efe780eeddaa0dbef0d17c794bbab74fc0afcad95e5a71e67b2a308742c2b"
+    },
+    {
+      "name": "focused-integration",
+      "command": "pnpm exec vitest run tests/integration/frontend-ui-integration.test.tsx tests/integration/auth-tenant-adversarial.test.ts tests/integration/inventory-closed-loop.test.ts",
+      "exit_code": 0,
+      "seconds": 7.54,
+      "outcome": "PASS 3 files/104 tests in 6.85s",
+      "local_ignored_log": ".artifacts/takeover/settings/checks/focused-integration.log",
+      "log_bytes": 256,
+      "log_sha256": "5c40e4ea8c79572673ef0fbe15d98dac231d81745b1a08dc6f4b3906b1dc1ddc"
+    },
+    {
+      "name": "lint",
+      "command": "pnpm lint",
+      "exit_code": 0,
+      "seconds": 6.87,
+      "outcome": "PASS; existing Admin font warnings apply only to builds",
+      "local_ignored_log": ".artifacts/takeover/settings/checks/lint.log",
+      "log_bytes": 99,
+      "log_sha256": "3f2044fca43a5e60905becf2ebfc3a21ddd85976975841aa1e16bc87b0f40a6d"
+    },
+    {
+      "name": "typecheck",
+      "command": "pnpm typecheck",
+      "exit_code": 0,
+      "seconds": 17.2,
+      "outcome": "PASS; existing Admin font warnings apply only to builds",
+      "local_ignored_log": ".artifacts/takeover/settings/checks/typecheck.log",
+      "log_bytes": 165,
+      "log_sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e"
+    },
+    {
+      "name": "migrations",
+      "command": "pnpm check:migrations",
+      "exit_code": 0,
+      "seconds": 0.54,
+      "outcome": "PASS; existing Admin font warnings apply only to builds",
+      "local_ignored_log": ".artifacts/takeover/settings/checks/migrations.log",
+      "log_bytes": 297,
+      "log_sha256": "9616315a9fcbfd77c67784703a16384419539e6a68ccd2838dda07239de25464"
+    },
+    {
+      "name": "build",
+      "command": "pnpm build",
+      "exit_code": 0,
+      "seconds": 10.24,
+      "outcome": "PASS; existing Admin font warnings apply only to builds",
+      "local_ignored_log": ".artifacts/takeover/settings/checks/build.log",
+      "log_bytes": 10008,
+      "log_sha256": "bf8cc15fe77cd6bc094a42a497c8f92e1d02f34dd4a566e0f5f83f7d08308a22"
+    },
+    {
+      "name": "paired-build",
+      "command": "VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build",
+      "exit_code": 0,
+      "seconds": 9.89,
+      "outcome": "PASS; existing Admin font warnings apply only to builds",
+      "local_ignored_log": ".artifacts/takeover/settings/checks/paired-build.log",
+      "log_bytes": 10008,
+      "log_sha256": "79055751e186603e0f64109fd23a7c008531ef0666523f7e8e06af46b2446b98"
+    },
+    {
+      "name": "audit",
+      "command": "pnpm audit --json",
+      "exit_code": 1,
+      "seconds": 1.28,
+      "outcome": "OPEN_INHERITED 1 low/6 moderate/1 high, including Vite GHSA-587h-7wmj-h5pm; dependencies unchanged",
+      "local_ignored_log": ".artifacts/takeover/settings/checks/audit.log",
+      "log_bytes": 43734,
+      "log_sha256": "3256cc0c6e0545751f2cfdb3223b90a27a32043a364bb025bc5047465d90103f"
+    },
+    {
+      "name": "full-suite",
+      "command": "pnpm test",
+      "exit_code": 1,
+      "seconds": 201.7,
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/",
+      "outcome": "PARTIAL 410/412 files; 9163/9168 tests in 200.86s; five inherited encoded-space CLI failures in production-catalog-continuity/release-check; no timeout",
+      "local_ignored_log": ".artifacts/takeover/settings/checks/full-suite.log",
+      "log_bytes": 17955,
+      "log_sha256": "ea464820fe9a721d80f2d89c4bfba4877429754f81f7913b9dfed3b9f93fdb80"
+    },
+    {
+      "name": "browser",
+      "command": "PREVIEW_MEAL_COMPOSITION_V2=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-settings-continuation.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/settings/after",
+      "exit_code": 0,
+      "test_duration_seconds": 51.4,
+      "outcome": "PASS 6/6; 64 zero-violation after axe reports retain incomplete contrast; accepted/dismissed one prompt call with disabled pending action; cache/outbox/reload and failure checks pass",
+      "local_ignored_log": ".artifacts/takeover/settings/after.log",
+      "log_bytes": 10046,
+      "log_sha256": "ab8b4e9823f5233fe8bda8b59e1a4e7f1ee1980b180c84778e3096164791446b"
+    }
+  ],
+  "retained_attempts": [
+    {
+      "name": "baseline",
+      "exit_code": 1,
+      "outcome": "HARNESS_FAILURE 2 passed/4 failed in 1.4m; redirect helper asserted pre-redirect URL and synthetic PWA event fired before lazy effect; product not edited",
+      "local_ignored_log": ".artifacts/takeover/settings/baseline.log",
+      "log_bytes": 20628,
+      "log_sha256": "89257ea73276cdc443ecd594b634cc093f23585b8c54fbb8c1f20ff734ff90f7"
+    },
+    {
+      "name": "baseline-corrected",
+      "exit_code": 1,
+      "outcome": "PRODUCT_BASELINE 4 passed/2 failed in 54.3s; accepted/dismissed prompt called twice and pending action not disabled in both contexts",
+      "local_ignored_log": ".artifacts/takeover/settings/baseline-corrected.log",
+      "log_bytes": 21722,
+      "log_sha256": "d5780caea702054e053adaa753bf48b4596f84a690842bf9ef1b2015c89b52ff"
+    },
+    {
+      "name": "recovery",
+      "exit_code": 0,
+      "outcome": "PASS complete private snapshot/original comparison before implementation commit",
+      "local_ignored_log": ".artifacts/takeover/settings/recovery.log",
+      "log_bytes": 624,
+      "log_sha256": "e61816444a1db81719cd1fcc00e94003f3b71f552bd2d00f07da9e233d6df3e6"
+    },
+    {
+      "name": "recovery-after-implementation",
+      "exit_code": 0,
+      "outcome": "PASS complete private snapshot/original comparison after implementation commit",
+      "local_ignored_log": ".artifacts/takeover/settings/recovery-after-implementation.log",
+      "log_bytes": 624,
+      "log_sha256": "3126bb84ec6536e00bf8e9e6abf756b0a4c8b125fefa20d0d18f17620582115f"
+    },
+    {
+      "name": "remote-main",
+      "exit_code": 0,
+      "outcome": "PASS read-only canonical main remains base; no remote mutation",
+      "local_ignored_log": ".artifacts/takeover/settings/remote-main.log",
+      "log_bytes": 57,
+      "log_sha256": "74b0b5609784df7a5fddf1241a9179b9e62a61f3d3671f7fc0a075210071e212"
+    }
+  ],
+  "scope": "Existing UI08 SettingsPage; installing state/guard and existing Button loading only. No cache, outbox, API, route, CSS, asset, backend/security/payment/schema/dependency/infrastructure change. Genuine offline queue creation/retry POST is aborted throughout; two automatic attempts per context are allowed only for that endpoint, so zero writes is not claimed. Stock/shopping server snapshots unchanged. Synthetic PWA event/choice/rejection/standalone verifies client handling, not native OS installation. Rejected prompt has no held pending phase; blockedDuplicate field only measures accepted/dismissed. Root-font/device/screen-reader/Week-OFF/provider/performance/production limits remain."
+}

@@ -1,0 +1,21 @@
+{
+  "state": "session-loading",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "textScale": 1,
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ],
+  "metrics": {
+    "innerWidth": 390,
+    "scrollWidth": 390,
+    "brokenImages": [],
+    "links": []
+  }
+}

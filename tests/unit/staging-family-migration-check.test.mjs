@@ -13,7 +13,7 @@ import {
 
 const { load } = createRequire(createRequire(import.meta.url).resolve('eslint/package.json'))('js-yaml');
 const result = (rows) => [{ success: true, results: rows }];
-const names = listMigrations();
+const names = listMigrations().filter((name) => name <= TIP);
 const directories = [];
 afterEach(() => {
   for (const directory of directories.splice(0)) rmSync(directory, { recursive: true, force: true });
@@ -227,6 +227,8 @@ describe('bounded staging 0041->0042->0043 family migration', () => {
     await expect(run('pre-ledger', receipt, [write('partial.json', result(names.slice(0, -1).map((name) => ({ name })) ))]))
       .rejects.toThrow(/ledger/);
     await expect(run('pre-ledger', receipt, [write('later.json', result([...names, '0044_unreviewed.sql'].map((name) => ({ name })) ))]))
+      .rejects.toThrow(/ledger/);
+    await expect(run('pre-ledger', receipt, [write('current.json', result(listMigrations().map((name) => ({ name })) ))]))
       .rejects.toThrow(/ledger/);
     await run('pre-ledger', receipt, [pre]);
     expect(read().preLedger).toMatchObject({ mode: 'apply', tip: PRE_TIP, chain: CHAIN });

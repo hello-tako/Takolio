@@ -1,0 +1,133 @@
+{
+  "implementation_commit": "61150c83e5a97882aaf31d700f01a28f52ed8393",
+  "base_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "environment": "macOS; Node v25.9.0; pnpm 10.33.2; unchanged main dependencies",
+  "full_regression_status": "PARTIAL; five inherited encoded-space CLI path failures remain",
+  "source_sha256": {
+    "src/web/pages/CookingModePage.tsx": "f62b8a7af36741414683992c1474ee50c055bde261f22f3896a442d310605e6c",
+    "src/web/styles/kitchen-recipes.css": "1328a4035ecc51ccb653da61fa3204029c5a918cb8829338d6e902f8b3b92e5d",
+    "tests/e2e/t17-ui/takolio-recipe-detail.e2e.ts": "8616c10ca9be2694ce320d46c02ece03e725526e83934f0d7f8551834d46a361"
+  },
+  "checks": [
+    {
+      "command": "pnpm lint",
+      "exit_code": 0,
+      "actual_result": "PASS final source",
+      "local_ignored_log": ".artifacts/takeover/recipe-detail/lint-final.log",
+      "log_bytes": 99,
+      "log_sha256": "3f2044fca43a5e60905becf2ebfc3a21ddd85976975841aa1e16bc87b0f40a6d"
+    },
+    {
+      "command": "pnpm typecheck",
+      "exit_code": 0,
+      "actual_result": "PASS web and Worker final source",
+      "local_ignored_log": ".artifacts/takeover/recipe-detail/typecheck-final.log",
+      "log_bytes": 165,
+      "log_sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e"
+    },
+    {
+      "command": "pnpm check:migrations",
+      "exit_code": 0,
+      "actual_result": "PASS customer/Admin local smoke; no schema or migration changes",
+      "local_ignored_log": ".artifacts/takeover/recipe-detail/migrations.log",
+      "log_bytes": 297,
+      "log_sha256": "9616315a9fcbfd77c67784703a16384419539e6a68ccd2838dda07239de25464"
+    },
+    {
+      "command": "pnpm build",
+      "exit_code": 0,
+      "actual_result": "PASS product source final; existing Admin font warnings; later test-only measurement key correction does not affect build graph",
+      "local_ignored_log": ".artifacts/takeover/recipe-detail/build-default.log",
+      "log_bytes": 10008,
+      "log_sha256": "0753d98a2360d8a1dd902d0ba82a642d3f9d4fc59e005f7251cd51fd9c5a8b55"
+    },
+    {
+      "command": "VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build",
+      "exit_code": 0,
+      "actual_result": "PASS product source final; existing Admin font warnings; later test-only measurement key correction does not affect build graph",
+      "local_ignored_log": ".artifacts/takeover/recipe-detail/build-paired.log",
+      "log_bytes": 10008,
+      "log_sha256": "6e1f9789869d8af87e38bcbe0d61d30df46a56619d0c6a378a0da10138379050"
+    },
+    {
+      "command": "TMPDIR=/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/ pnpm test --maxWorkers=4",
+      "exit_code": 1,
+      "actual_result": "PARTIAL: 410/412 files; 9163/9168 tests pass in 267.91s; five inherited encoded-space CLI path failures only",
+      "local_ignored_log": ".artifacts/takeover/recipe-detail/full-test.log",
+      "log_bytes": 17968,
+      "log_sha256": "04bbd14c58067c64e3df0226194dafda752e357a94b91ce09b1c262d61898048"
+    },
+    {
+      "command": "pnpm audit --audit-level=high --json",
+      "exit_code": 1,
+      "actual_result": "OPEN_INHERITED: 1 low / 6 moderate / 1 high; Vite GHSA-587h-7wmj-h5pm fixed >=6.4.4; dependencies unchanged",
+      "local_ignored_log": ".artifacts/takeover/recipe-detail/audit.json",
+      "log_bytes": 3143,
+      "log_sha256": "65e3428e19392cb48bf9243ea9590af6ba794093b223ba3a7520a48085564e41"
+    },
+    {
+      "command": "PREVIEW_MEAL_COMPOSITION_V2=true PORT=3292 PREVIEW_API_PORT=8918 pnpm exec playwright test --config=playwright.t17.config.ts --project=mobile-390 tests/e2e/t17-ui/takolio-recipe-detail.e2e.ts tests/e2e/t17-ui/takolio-culinary-experience.e2e.ts --output=.artifacts/takeover/recipe-detail/verified-paired",
+      "exit_code": 0,
+      "actual_result": "5/5 PASS, 30.9s; final product/test source; three new recipe tests and two existing culinary tests",
+      "local_ignored_log": ".artifacts/takeover/recipe-detail/verified-paired.log",
+      "log_bytes": 16552,
+      "log_sha256": "9e01a9a5b936456dfd6f8025bb49eb35d538ed869a99379fbbcc24c4ba076969"
+    },
+    {
+      "command": "PORT=3292 PREVIEW_API_PORT=8918 pnpm exec playwright test --config=playwright.t17.config.ts --project=mobile-390 tests/e2e/t17-ui/takolio-recipe-detail.e2e.ts --grep 'exact quantities|confirmed exit' --output=.artifacts/takeover/recipe-detail/default-v1",
+      "exit_code": 0,
+      "actual_result": "2/2 PASS, 8.1s; default composition V1; quantity/reload and cooking exit",
+      "local_ignored_log": ".artifacts/takeover/recipe-detail/default-v1.log",
+      "log_bytes": 6721,
+      "log_sha256": "e1a4205d0c8a279f5dc2e22d67e401cb057d34b0ef642b494ae2df521ea331d9"
+    }
+  ],
+  "retained_attempts": [
+    {
+      "log": "baseline.log",
+      "outcome": "2 pass / 1 fail (1.4m); initial harness queried dialog instead of actual alertdialog; not counted as product reproduction",
+      "local_ignored_log": ".artifacts/takeover/recipe-detail/baseline.log",
+      "log_bytes": 13292,
+      "log_sha256": "9bfb225287b5e6dfd59862d9a2afcee3b0b6e68f5647ae1ba2ac7e69d14ece5b"
+    },
+    {
+      "log": "baseline-corrected.log",
+      "outcome": "1 fail; corrected alertdialog selector; detail4 -> cooking4 -> reload -> exit returned no servings query and base2; zero API mutations",
+      "local_ignored_log": ".artifacts/takeover/recipe-detail/baseline-corrected.log",
+      "log_bytes": 9363,
+      "log_sha256": "768033b9e946a2c9c7f5e954e7798a8a9ca4c6fd40c3248282eadceb70d17287"
+    },
+    {
+      "log": "layout-red.log",
+      "outcome": "1 fail; after navigation fix, before CSS fix; nonspace-word range assertion catches split phut) word at320/text200",
+      "local_ignored_log": ".artifacts/takeover/recipe-detail/layout-red.log",
+      "log_bytes": 9830,
+      "log_sha256": "f14fe30e4d3ce3774b3b5e29918194ada0f3fcafa95cafef952eb61d315a8951"
+    },
+    {
+      "log": "typecheck.log",
+      "outcome": "exit2 TS2783: duplicate height in test measurements; fixed by viewport object; interactions/assertions/product source unchanged",
+      "local_ignored_log": ".artifacts/takeover/recipe-detail/typecheck.log",
+      "log_bytes": 357,
+      "log_sha256": "0bb8926a85f0962aae846873521c3728ab4e6b1a0993491c22f9361d29d8ff2a"
+    },
+    {
+      "log": "final-paired.log",
+      "outcome": "5/5 PASS,29.8s; before measurement key correction; superseded by final verified-paired evidence",
+      "local_ignored_log": ".artifacts/takeover/recipe-detail/final-paired.log",
+      "log_bytes": 16231,
+      "log_sha256": "13e948077b22291135b6833a4e344daee4def8a0990a6e001524439da8ea7ce2"
+    }
+  ],
+  "transcript_only_focused_checks": [
+    {
+      "command": "pnpm exec vitest run tests/unit/ui-rebuild-surfaces.test.tsx tests/unit/ui-rebuild-availability.test.ts tests/unit/recipe-servings.test.ts tests/unit/cooking-store.test.ts",
+      "result": "4 files /27 tests PASS,3.34s; tool transcript only, not independently hashed log"
+    },
+    {
+      "command": "pnpm exec vitest run tests/integration/ui03-discovery-api.test.ts tests/integration/meal-planning-presentation-http.test.ts tests/integration/t20-meal-composition-flows.test.ts",
+      "result": "3 files /69 tests PASS,20.91s; tool transcript only, not independently hashed log"
+    }
+  ],
+  "production_actions": false
+}

@@ -1,0 +1,1151 @@
+{
+  "observations": [
+    {
+      "width": 320,
+      "height": 420,
+      "rootTextScale": 2,
+      "geometry": {
+        "width": 320,
+        "scrollWidth": 320,
+        "rows": [
+          {
+            "name": "Ức gà",
+            "row": {
+              "x": 32,
+              "y": 810.34375,
+              "right": 288,
+              "bottom": 1296.84375,
+              "width": 256,
+              "height": 486.5
+            },
+            "chip": {
+              "x": 61,
+              "y": 1039.34375,
+              "right": 186.59375,
+              "bottom": 1065.84375,
+              "width": 125.59375,
+              "height": 26.5
+            },
+            "label": {
+              "x": 106,
+              "y": 1044.34375,
+              "right": 165.59375,
+              "bottom": 1060.84375,
+              "width": 59.59375,
+              "height": 16.5
+            },
+            "heading": {
+              "x": 61,
+              "y": 979.34375,
+              "right": 259,
+              "bottom": 1023.34375,
+              "width": 198,
+              "height": 44
+            },
+            "titleLines": [
+              {
+                "x": 61,
+                "y": 991.09375,
+                "right": 98.984375,
+                "bottom": 1011.09375
+              }
+            ]
+          },
+          {
+            "name": "Đậu phụ",
+            "row": {
+              "x": 32,
+              "y": 1312.84375,
+              "right": 288,
+              "bottom": 1799.34375,
+              "width": 256,
+              "height": 486.5
+            },
+            "chip": {
+              "x": 61,
+              "y": 1541.84375,
+              "right": 186.59375,
+              "bottom": 1568.34375,
+              "width": 125.59375,
+              "height": 26.5
+            },
+            "label": {
+              "x": 106,
+              "y": 1546.84375,
+              "right": 165.59375,
+              "bottom": 1563.34375,
+              "width": 59.59375,
+              "height": 16.5
+            },
+            "heading": {
+              "x": 61,
+              "y": 1481.84375,
+              "right": 259,
+              "bottom": 1525.84375,
+              "width": 198,
+              "height": 44
+            },
+            "titleLines": [
+              {
+                "x": 61,
+                "y": 1493.59375,
+                "right": 117.75,
+                "bottom": 1513.59375
+              }
+            ]
+          },
+          {
+            "name": "Trứng",
+            "row": {
+              "x": 32,
+              "y": 1815.34375,
+              "right": 288,
+              "bottom": 2301.84375,
+              "width": 256,
+              "height": 486.5
+            },
+            "chip": {
+              "x": 61,
+              "y": 2044.34375,
+              "right": 186.59375,
+              "bottom": 2070.84375,
+              "width": 125.59375,
+              "height": 26.5
+            },
+            "label": {
+              "x": 106,
+              "y": 2049.34375,
+              "right": 165.59375,
+              "bottom": 2065.84375,
+              "width": 59.59375,
+              "height": 16.5
+            },
+            "heading": {
+              "x": 61,
+              "y": 1984.34375,
+              "right": 259,
+              "bottom": 2028.34375,
+              "width": 198,
+              "height": 44
+            },
+            "titleLines": [
+              {
+                "x": 61,
+                "y": 1996.09375,
+                "right": 100.046875,
+                "bottom": 2016.09375
+              }
+            ]
+          },
+          {
+            "name": "Phô mai",
+            "row": {
+              "x": 32,
+              "y": 2317.84375,
+              "right": 288,
+              "bottom": 2804.34375,
+              "width": 256,
+              "height": 486.5
+            },
+            "chip": {
+              "x": 61,
+              "y": 2546.84375,
+              "right": 186.59375,
+              "bottom": 2573.34375,
+              "width": 125.59375,
+              "height": 26.5
+            },
+            "label": {
+              "x": 106,
+              "y": 2551.84375,
+              "right": 165.59375,
+              "bottom": 2568.34375,
+              "width": 59.59375,
+              "height": 16.5
+            },
+            "heading": {
+              "x": 61,
+              "y": 2486.84375,
+              "right": 259,
+              "bottom": 2530.84375,
+              "width": 198,
+              "height": 44
+            },
+            "titleLines": [
+              {
+                "x": 61,
+                "y": 2498.59375,
+                "right": 115.359375,
+                "bottom": 2518.59375
+              }
+            ]
+          },
+          {
+            "name": "Rau muống",
+            "row": {
+              "x": 32,
+              "y": 2820.34375,
+              "right": 288,
+              "bottom": 3306.84375,
+              "width": 256,
+              "height": 486.5
+            },
+            "chip": {
+              "x": 61,
+              "y": 3049.34375,
+              "right": 186.59375,
+              "bottom": 3075.84375,
+              "width": 125.59375,
+              "height": 26.5
+            },
+            "label": {
+              "x": 106,
+              "y": 3054.34375,
+              "right": 165.59375,
+              "bottom": 3070.84375,
+              "width": 59.59375,
+              "height": 16.5
+            },
+            "heading": {
+              "x": 61,
+              "y": 2989.34375,
+              "right": 259,
+              "bottom": 3033.34375,
+              "width": 198,
+              "height": 44
+            },
+            "titleLines": [
+              {
+                "x": 61,
+                "y": 3001.09375,
+                "right": 137.796875,
+                "bottom": 3021.09375
+              }
+            ]
+          }
+        ]
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "width": 390,
+      "height": 420,
+      "rootTextScale": 1,
+      "geometry": {
+        "width": 390,
+        "scrollWidth": 390,
+        "rows": [
+          {
+            "name": "Ức gà",
+            "row": {
+              "x": 16,
+              "y": 415.9375,
+              "right": 374,
+              "bottom": 563.9375,
+              "width": 358,
+              "height": 148
+            },
+            "chip": {
+              "x": 265.40625,
+              "y": 441.6875,
+              "right": 359,
+              "bottom": 464.1875,
+              "width": 93.59375,
+              "height": 22.5
+            },
+            "label": {
+              "x": 288.40625,
+              "y": 444.6875,
+              "right": 348,
+              "bottom": 461.1875,
+              "width": 59.59375,
+              "height": 16.5
+            },
+            "heading": {
+              "x": 101,
+              "y": 430.9375,
+              "right": 257.40625,
+              "bottom": 474.9375,
+              "width": 156.40625,
+              "height": 44
+            },
+            "titleLines": [
+              {
+                "x": 101,
+                "y": 442.6875,
+                "right": 138.984375,
+                "bottom": 462.6875
+              }
+            ]
+          },
+          {
+            "name": "Đậu phụ",
+            "row": {
+              "x": 16,
+              "y": 571.9375,
+              "right": 374,
+              "bottom": 719.9375,
+              "width": 358,
+              "height": 148
+            },
+            "chip": {
+              "x": 265.40625,
+              "y": 597.6875,
+              "right": 359,
+              "bottom": 620.1875,
+              "width": 93.59375,
+              "height": 22.5
+            },
+            "label": {
+              "x": 288.40625,
+              "y": 600.6875,
+              "right": 348,
+              "bottom": 617.1875,
+              "width": 59.59375,
+              "height": 16.5
+            },
+            "heading": {
+              "x": 101,
+              "y": 586.9375,
+              "right": 257.40625,
+              "bottom": 630.9375,
+              "width": 156.40625,
+              "height": 44
+            },
+            "titleLines": [
+              {
+                "x": 101,
+                "y": 598.6875,
+                "right": 157.75,
+                "bottom": 618.6875
+              }
+            ]
+          },
+          {
+            "name": "Trứng",
+            "row": {
+              "x": 16,
+              "y": 727.9375,
+              "right": 374,
+              "bottom": 875.9375,
+              "width": 358,
+              "height": 148
+            },
+            "chip": {
+              "x": 265.40625,
+              "y": 753.6875,
+              "right": 359,
+              "bottom": 776.1875,
+              "width": 93.59375,
+              "height": 22.5
+            },
+            "label": {
+              "x": 288.40625,
+              "y": 756.6875,
+              "right": 348,
+              "bottom": 773.1875,
+              "width": 59.59375,
+              "height": 16.5
+            },
+            "heading": {
+              "x": 101,
+              "y": 742.9375,
+              "right": 257.40625,
+              "bottom": 786.9375,
+              "width": 156.40625,
+              "height": 44
+            },
+            "titleLines": [
+              {
+                "x": 101,
+                "y": 754.6875,
+                "right": 140.046875,
+                "bottom": 774.6875
+              }
+            ]
+          },
+          {
+            "name": "Phô mai",
+            "row": {
+              "x": 16,
+              "y": 883.9375,
+              "right": 374,
+              "bottom": 1031.9375,
+              "width": 358,
+              "height": 148
+            },
+            "chip": {
+              "x": 265.40625,
+              "y": 909.6875,
+              "right": 359,
+              "bottom": 932.1875,
+              "width": 93.59375,
+              "height": 22.5
+            },
+            "label": {
+              "x": 288.40625,
+              "y": 912.6875,
+              "right": 348,
+              "bottom": 929.1875,
+              "width": 59.59375,
+              "height": 16.5
+            },
+            "heading": {
+              "x": 101,
+              "y": 898.9375,
+              "right": 257.40625,
+              "bottom": 942.9375,
+              "width": 156.40625,
+              "height": 44
+            },
+            "titleLines": [
+              {
+                "x": 101,
+                "y": 910.6875,
+                "right": 155.359375,
+                "bottom": 930.6875
+              }
+            ]
+          },
+          {
+            "name": "Rau muống",
+            "row": {
+              "x": 16,
+              "y": 1039.9375,
+              "right": 374,
+              "bottom": 1187.9375,
+              "width": 358,
+              "height": 148
+            },
+            "chip": {
+              "x": 265.40625,
+              "y": 1065.6875,
+              "right": 359,
+              "bottom": 1088.1875,
+              "width": 93.59375,
+              "height": 22.5
+            },
+            "label": {
+              "x": 288.40625,
+              "y": 1068.6875,
+              "right": 348,
+              "bottom": 1085.1875,
+              "width": 59.59375,
+              "height": 16.5
+            },
+            "heading": {
+              "x": 101,
+              "y": 1054.9375,
+              "right": 257.40625,
+              "bottom": 1098.9375,
+              "width": 156.40625,
+              "height": 44
+            },
+            "titleLines": [
+              {
+                "x": 101,
+                "y": 1066.6875,
+                "right": 177.796875,
+                "bottom": 1086.6875
+              }
+            ]
+          }
+        ]
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "width": 768,
+      "height": 420,
+      "rootTextScale": 1,
+      "geometry": {
+        "width": 768,
+        "scrollWidth": 768,
+        "rows": [
+          {
+            "name": "Ức gà",
+            "row": {
+              "x": 112,
+              "y": 419.875,
+              "right": 752,
+              "bottom": 513.875,
+              "width": 640,
+              "height": 94
+            },
+            "chip": {
+              "x": 449.40625,
+              "y": 445.625,
+              "right": 543,
+              "bottom": 468.125,
+              "width": 93.59375,
+              "height": 22.5
+            },
+            "label": {
+              "x": 472.40625,
+              "y": 448.625,
+              "right": 532,
+              "bottom": 465.125,
+              "width": 59.59375,
+              "height": 16.5
+            },
+            "heading": {
+              "x": 197,
+              "y": 434.875,
+              "right": 441.40625,
+              "bottom": 478.875,
+              "width": 244.40625,
+              "height": 44
+            },
+            "titleLines": [
+              {
+                "x": 197,
+                "y": 446.625,
+                "right": 234.984375,
+                "bottom": 466.625
+              }
+            ]
+          },
+          {
+            "name": "Đậu phụ",
+            "row": {
+              "x": 112,
+              "y": 521.875,
+              "right": 752,
+              "bottom": 615.875,
+              "width": 640,
+              "height": 94
+            },
+            "chip": {
+              "x": 449.40625,
+              "y": 547.625,
+              "right": 543,
+              "bottom": 570.125,
+              "width": 93.59375,
+              "height": 22.5
+            },
+            "label": {
+              "x": 472.40625,
+              "y": 550.625,
+              "right": 532,
+              "bottom": 567.125,
+              "width": 59.59375,
+              "height": 16.5
+            },
+            "heading": {
+              "x": 197,
+              "y": 536.875,
+              "right": 441.40625,
+              "bottom": 580.875,
+              "width": 244.40625,
+              "height": 44
+            },
+            "titleLines": [
+              {
+                "x": 197,
+                "y": 548.625,
+                "right": 253.75,
+                "bottom": 568.625
+              }
+            ]
+          },
+          {
+            "name": "Trứng",
+            "row": {
+              "x": 112,
+              "y": 623.875,
+              "right": 752,
+              "bottom": 717.875,
+              "width": 640,
+              "height": 94
+            },
+            "chip": {
+              "x": 444.125,
+              "y": 649.625,
+              "right": 537.71875,
+              "bottom": 672.125,
+              "width": 93.59375,
+              "height": 22.5
+            },
+            "label": {
+              "x": 467.125,
+              "y": 652.625,
+              "right": 526.71875,
+              "bottom": 669.125,
+              "width": 59.59375,
+              "height": 16.5
+            },
+            "heading": {
+              "x": 197,
+              "y": 638.875,
+              "right": 436.125,
+              "bottom": 682.875,
+              "width": 239.125,
+              "height": 44
+            },
+            "titleLines": [
+              {
+                "x": 197,
+                "y": 650.625,
+                "right": 236.046875,
+                "bottom": 670.625
+              }
+            ]
+          },
+          {
+            "name": "Phô mai",
+            "row": {
+              "x": 112,
+              "y": 725.875,
+              "right": 752,
+              "bottom": 819.875,
+              "width": 640,
+              "height": 94
+            },
+            "chip": {
+              "x": 449.40625,
+              "y": 751.625,
+              "right": 543,
+              "bottom": 774.125,
+              "width": 93.59375,
+              "height": 22.5
+            },
+            "label": {
+              "x": 472.40625,
+              "y": 754.625,
+              "right": 532,
+              "bottom": 771.125,
+              "width": 59.59375,
+              "height": 16.5
+            },
+            "heading": {
+              "x": 197,
+              "y": 740.875,
+              "right": 441.40625,
+              "bottom": 784.875,
+              "width": 244.40625,
+              "height": 44
+            },
+            "titleLines": [
+              {
+                "x": 197,
+                "y": 752.625,
+                "right": 251.359375,
+                "bottom": 772.625
+              }
+            ]
+          },
+          {
+            "name": "Rau muống",
+            "row": {
+              "x": 112,
+              "y": 827.875,
+              "right": 752,
+              "bottom": 921.875,
+              "width": 640,
+              "height": 94
+            },
+            "chip": {
+              "x": 439.078125,
+              "y": 853.625,
+              "right": 532.671875,
+              "bottom": 876.125,
+              "width": 93.59375,
+              "height": 22.5
+            },
+            "label": {
+              "x": 462.078125,
+              "y": 856.625,
+              "right": 521.671875,
+              "bottom": 873.125,
+              "width": 59.59375,
+              "height": 16.5
+            },
+            "heading": {
+              "x": 197,
+              "y": 842.875,
+              "right": 431.078125,
+              "bottom": 886.875,
+              "width": 234.078125,
+              "height": 44
+            },
+            "titleLines": [
+              {
+                "x": 197,
+                "y": 854.625,
+                "right": 273.796875,
+                "bottom": 874.625
+              }
+            ]
+          }
+        ]
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "rootTextScale": 1,
+      "geometry": {
+        "width": 390,
+        "scrollWidth": 390,
+        "rows": [
+          {
+            "name": "Ức gà",
+            "row": {
+              "x": 16,
+              "y": 415.9375,
+              "right": 374,
+              "bottom": 563.9375,
+              "width": 358,
+              "height": 148
+            },
+            "chip": {
+              "x": 265.40625,
+              "y": 441.6875,
+              "right": 359,
+              "bottom": 464.1875,
+              "width": 93.59375,
+              "height": 22.5
+            },
+            "label": {
+              "x": 288.40625,
+              "y": 444.6875,
+              "right": 348,
+              "bottom": 461.1875,
+              "width": 59.59375,
+              "height": 16.5
+            },
+            "heading": {
+              "x": 101,
+              "y": 430.9375,
+              "right": 257.40625,
+              "bottom": 474.9375,
+              "width": 156.40625,
+              "height": 44
+            },
+            "titleLines": [
+              {
+                "x": 101,
+                "y": 442.6875,
+                "right": 138.984375,
+                "bottom": 462.6875
+              }
+            ]
+          },
+          {
+            "name": "Đậu phụ",
+            "row": {
+              "x": 16,
+              "y": 571.9375,
+              "right": 374,
+              "bottom": 719.9375,
+              "width": 358,
+              "height": 148
+            },
+            "chip": {
+              "x": 265.40625,
+              "y": 597.6875,
+              "right": 359,
+              "bottom": 620.1875,
+              "width": 93.59375,
+              "height": 22.5
+            },
+            "label": {
+              "x": 288.40625,
+              "y": 600.6875,
+              "right": 348,
+              "bottom": 617.1875,
+              "width": 59.59375,
+              "height": 16.5
+            },
+            "heading": {
+              "x": 101,
+              "y": 586.9375,
+              "right": 257.40625,
+              "bottom": 630.9375,
+              "width": 156.40625,
+              "height": 44
+            },
+            "titleLines": [
+              {
+                "x": 101,
+                "y": 598.6875,
+                "right": 157.75,
+                "bottom": 618.6875
+              }
+            ]
+          },
+          {
+            "name": "Trứng",
+            "row": {
+              "x": 16,
+              "y": 727.9375,
+              "right": 374,
+              "bottom": 875.9375,
+              "width": 358,
+              "height": 148
+            },
+            "chip": {
+              "x": 265.40625,
+              "y": 753.6875,
+              "right": 359,
+              "bottom": 776.1875,
+              "width": 93.59375,
+              "height": 22.5
+            },
+            "label": {
+              "x": 288.40625,
+              "y": 756.6875,
+              "right": 348,
+              "bottom": 773.1875,
+              "width": 59.59375,
+              "height": 16.5
+            },
+            "heading": {
+              "x": 101,
+              "y": 742.9375,
+              "right": 257.40625,
+              "bottom": 786.9375,
+              "width": 156.40625,
+              "height": 44
+            },
+            "titleLines": [
+              {
+                "x": 101,
+                "y": 754.6875,
+                "right": 140.046875,
+                "bottom": 774.6875
+              }
+            ]
+          },
+          {
+            "name": "Phô mai",
+            "row": {
+              "x": 16,
+              "y": 883.9375,
+              "right": 374,
+              "bottom": 1031.9375,
+              "width": 358,
+              "height": 148
+            },
+            "chip": {
+              "x": 265.40625,
+              "y": 909.6875,
+              "right": 359,
+              "bottom": 932.1875,
+              "width": 93.59375,
+              "height": 22.5
+            },
+            "label": {
+              "x": 288.40625,
+              "y": 912.6875,
+              "right": 348,
+              "bottom": 929.1875,
+              "width": 59.59375,
+              "height": 16.5
+            },
+            "heading": {
+              "x": 101,
+              "y": 898.9375,
+              "right": 257.40625,
+              "bottom": 942.9375,
+              "width": 156.40625,
+              "height": 44
+            },
+            "titleLines": [
+              {
+                "x": 101,
+                "y": 910.6875,
+                "right": 155.359375,
+                "bottom": 930.6875
+              }
+            ]
+          },
+          {
+            "name": "Rau muống",
+            "row": {
+              "x": 16,
+              "y": 1039.9375,
+              "right": 374,
+              "bottom": 1187.9375,
+              "width": 358,
+              "height": 148
+            },
+            "chip": {
+              "x": 265.40625,
+              "y": 1065.6875,
+              "right": 359,
+              "bottom": 1088.1875,
+              "width": 93.59375,
+              "height": 22.5
+            },
+            "label": {
+              "x": 288.40625,
+              "y": 1068.6875,
+              "right": 348,
+              "bottom": 1085.1875,
+              "width": 59.59375,
+              "height": 16.5
+            },
+            "heading": {
+              "x": 101,
+              "y": 1054.9375,
+              "right": 257.40625,
+              "bottom": 1098.9375,
+              "width": 156.40625,
+              "height": 44
+            },
+            "titleLines": [
+              {
+                "x": 101,
+                "y": 1066.6875,
+                "right": 177.796875,
+                "bottom": 1086.6875
+              }
+            ]
+          }
+        ]
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "rootTextScale": 1,
+      "geometry": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "rows": [
+          {
+            "name": "Ức gà",
+            "row": {
+              "x": 248,
+              "y": 400.171875,
+              "right": 1416,
+              "bottom": 494.171875,
+              "width": 1168,
+              "height": 94
+            },
+            "chip": {
+              "x": 1113.40625,
+              "y": 425.921875,
+              "right": 1207,
+              "bottom": 448.421875,
+              "width": 93.59375,
+              "height": 22.5
+            },
+            "label": {
+              "x": 1136.40625,
+              "y": 428.921875,
+              "right": 1196,
+              "bottom": 445.421875,
+              "width": 59.59375,
+              "height": 16.5
+            },
+            "heading": {
+              "x": 333,
+              "y": 415.171875,
+              "right": 1105.40625,
+              "bottom": 459.171875,
+              "width": 772.40625,
+              "height": 44
+            },
+            "titleLines": [
+              {
+                "x": 333,
+                "y": 426.921875,
+                "right": 370.984375,
+                "bottom": 446.921875
+              }
+            ]
+          },
+          {
+            "name": "Đậu phụ",
+            "row": {
+              "x": 248,
+              "y": 502.171875,
+              "right": 1416,
+              "bottom": 596.171875,
+              "width": 1168,
+              "height": 94
+            },
+            "chip": {
+              "x": 1113.40625,
+              "y": 527.921875,
+              "right": 1207,
+              "bottom": 550.421875,
+              "width": 93.59375,
+              "height": 22.5
+            },
+            "label": {
+              "x": 1136.40625,
+              "y": 530.921875,
+              "right": 1196,
+              "bottom": 547.421875,
+              "width": 59.59375,
+              "height": 16.5
+            },
+            "heading": {
+              "x": 333,
+              "y": 517.171875,
+              "right": 1105.40625,
+              "bottom": 561.171875,
+              "width": 772.40625,
+              "height": 44
+            },
+            "titleLines": [
+              {
+                "x": 333,
+                "y": 528.921875,
+                "right": 389.75,
+                "bottom": 548.921875
+              }
+            ]
+          },
+          {
+            "name": "Trứng",
+            "row": {
+              "x": 248,
+              "y": 604.171875,
+              "right": 1416,
+              "bottom": 698.171875,
+              "width": 1168,
+              "height": 94
+            },
+            "chip": {
+              "x": 1108.125,
+              "y": 629.921875,
+              "right": 1201.71875,
+              "bottom": 652.421875,
+              "width": 93.59375,
+              "height": 22.5
+            },
+            "label": {
+              "x": 1131.125,
+              "y": 632.921875,
+              "right": 1190.71875,
+              "bottom": 649.421875,
+              "width": 59.59375,
+              "height": 16.5
+            },
+            "heading": {
+              "x": 333,
+              "y": 619.171875,
+              "right": 1100.125,
+              "bottom": 663.171875,
+              "width": 767.125,
+              "height": 44
+            },
+            "titleLines": [
+              {
+                "x": 333,
+                "y": 630.921875,
+                "right": 372.046875,
+                "bottom": 650.921875
+              }
+            ]
+          },
+          {
+            "name": "Phô mai",
+            "row": {
+              "x": 248,
+              "y": 706.171875,
+              "right": 1416,
+              "bottom": 800.171875,
+              "width": 1168,
+              "height": 94
+            },
+            "chip": {
+              "x": 1113.40625,
+              "y": 731.921875,
+              "right": 1207,
+              "bottom": 754.421875,
+              "width": 93.59375,
+              "height": 22.5
+            },
+            "label": {
+              "x": 1136.40625,
+              "y": 734.921875,
+              "right": 1196,
+              "bottom": 751.421875,
+              "width": 59.59375,
+              "height": 16.5
+            },
+            "heading": {
+              "x": 333,
+              "y": 721.171875,
+              "right": 1105.40625,
+              "bottom": 765.171875,
+              "width": 772.40625,
+              "height": 44
+            },
+            "titleLines": [
+              {
+                "x": 333,
+                "y": 732.921875,
+                "right": 387.359375,
+                "bottom": 752.921875
+              }
+            ]
+          },
+          {
+            "name": "Rau muống",
+            "row": {
+              "x": 248,
+              "y": 808.171875,
+              "right": 1416,
+              "bottom": 902.171875,
+              "width": 1168,
+              "height": 94
+            },
+            "chip": {
+              "x": 1103.078125,
+              "y": 833.921875,
+              "right": 1196.671875,
+              "bottom": 856.421875,
+              "width": 93.59375,
+              "height": 22.5
+            },
+            "label": {
+              "x": 1126.078125,
+              "y": 836.921875,
+              "right": 1185.671875,
+              "bottom": 853.421875,
+              "width": 59.59375,
+              "height": 16.5
+            },
+            "heading": {
+              "x": 333,
+              "y": 823.171875,
+              "right": 1095.078125,
+              "bottom": 867.171875,
+              "width": 762.078125,
+              "height": 44
+            },
+            "titleLines": [
+              {
+                "x": 333,
+                "y": 834.921875,
+                "right": 409.796875,
+                "bottom": 854.921875
+              }
+            ]
+          }
+        ]
+      },
+      "violations": [],
+      "incomplete": []
+    }
+  ],
+  "writes": [],
+  "domainSnapshotsUnchanged": true,
+  "limitations": [
+    "Isolated Chromium/local Worker/SQLite",
+    "Root-font scaling is synthetic, not native browser zoom",
+    "No physical device, Safari or screen-reader certification"
+  ]
+}

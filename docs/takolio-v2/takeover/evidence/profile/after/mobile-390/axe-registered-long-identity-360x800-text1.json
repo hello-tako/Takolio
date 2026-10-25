@@ -1,0 +1,52 @@
+{
+  "state": "registered-long-identity",
+  "viewport": {
+    "width": 360,
+    "height": 800
+  },
+  "textScale": 1,
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ],
+  "metrics": {
+    "innerWidth": 360,
+    "scrollWidth": 360,
+    "brokenImages": [],
+    "links": [
+      {
+        "href": "/me/preferences",
+        "clientWidth": 332,
+        "scrollWidth": 332
+      },
+      {
+        "href": "/me/household",
+        "clientWidth": 332,
+        "scrollWidth": 332
+      },
+      {
+        "href": "/settings/planning",
+        "clientWidth": 332,
+        "scrollWidth": 332
+      },
+      {
+        "href": "/settings/notifications",
+        "clientWidth": 332,
+        "scrollWidth": 332
+      },
+      {
+        "href": "/settings/app",
+        "clientWidth": 332,
+        "scrollWidth": 332
+      },
+      {
+        "href": "/settings/privacy",
+        "clientWidth": 332,
+        "scrollWidth": 332
+      }
+    ]
+  }
+}

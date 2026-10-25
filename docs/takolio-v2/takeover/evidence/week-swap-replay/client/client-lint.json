@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "pnpm",
+    "lint"
+  ],
+  "cwd": "[WORKTREE]",
+  "startedUtc": "2026-10-24T20:51:22.495798+00:00",
+  "elapsedSeconds": 9.069,
+  "exitCode": 0,
+  "log": "[WORKTREE]/.artifacts/takeover/wkd02/client/client-lint.log",
+  "sha256": "3f2044fca43a5e60905becf2ebfc3a21ddd85976975841aa1e16bc87b0f40a6d"
+}

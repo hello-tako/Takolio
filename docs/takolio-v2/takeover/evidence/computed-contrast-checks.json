@@ -1,0 +1,303 @@
+{
+  "base_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "implementation_commit": "fedf0e7571b659dfdfec916a713b3c9a71be4cf4",
+  "checkpoint_kind": "TEST_ONLY_COMPUTED_TEXT_CONTRAST_AUDIT",
+  "production_actions": false,
+  "environment": {
+    "node": "v24.16.0",
+    "PATH_prefix": "/opt/homebrew/opt/node@24/bin",
+    "TMPDIR": "realpath of inherited TMPDIR; launcher source retained",
+    "browser": "Chromium, mobile-390 and desktop-1440 contexts; each resized to all three configurations",
+    "preview": "isolated local Worker/SQLite; actual paired preview flags OFF"
+  },
+  "source_sha256": {
+    "src/web/App.tsx": "abc2b48d2f00a20db054c38082280a2b56059078b488cdbc87ee70120284ebb4",
+    "src/web/pages/WeekDashboardPage.tsx": "20d55bc5262ab8dc86cecbf9d5b1dfe988a354f10db4c10df3a78eb6dfd4fde9",
+    "src/web/pages/WeekSetupPage.tsx": "6fe4fd63d160e639a7e551ad1c61515ba84239370a56556e0cc807dadf9f2d54",
+    "src/web/pages/WeekGeneratingPage.tsx": "b0c051adb047266b6b314c43cf780d9626a97e760608596e6feeb263133a5b29",
+    "src/web/pages/MealDetailPage.tsx": "13c422c3a7d028a1a018474285ad2b9c6d664d816ff1fbfe522653162165437a",
+    "src/web/pages/WeekShoppingPage.tsx": "dd82413c31c8b64777a045095fb6692a2198462d86f4ad44689667fdcda40e52",
+    "src/web/pages/WeekSettingsPage.tsx": "73a2c45fccefde9613ad260645c54c5a1a422c75f7edc14311dd6a15101dfe86",
+    "src/web/services/week.ts": "f1beee446f1266d5896e19623f5d56cbcc40605653400ddac90b11fe28baf6ec",
+    "src/web/stores/useWeekStore.ts": "60cf69c080ea365700547910df3bff36095f63c41c6e8aa1f24b7341907ce131",
+    "src/web/styles/kitchen-week.css": "f889d9a79b67f265bfa64d5e76c7f8f48c58e8c37ae14b626cfde31fe2f692ea",
+    "src/web/features/planner/feature.ts": "996ccb90d67e08bd51391f985a0e23d3716e034e7280ffdaa78c061dd961db93",
+    "src/web/features/planner/composition.ts": "b8e2516bde34180df18e3beb9a2d94e0c8ab7bd0f9c9cb124ecc397b87bf5c6e",
+    "playwright.t17.config.ts": "6a108e172e79a3a47921cf51ef6c31242678848e3ab12d81c6013254463ca98b",
+    "scripts/security-preview.mjs": "a94681507089253650fc6e5371e9188edf459b6a5fcd69e085ca179cc659b528",
+    "tests/e2e/t13b/fixtures.ts": "708e4613f60e7319363abc4fc1dadd42d830580b5da2238a2b7af2e734834847",
+    "tests/e2e/t17-ui/t18c-week-compatibility.e2e.ts": "fde6e55513e32a1e0801a983831b39989ecc2929b48e0db54bbb008c51f7b17e",
+    "src/web/features/week/MealCard.tsx": "817c5aaf5d0d9604fba266b6843b16439a75b5e3dc66cacbc06ff250ee057c32",
+    "src/web/features/week/MealSwapSheet.tsx": "b21c29f165ecc513a215c75382b21cdc72da6438c20fd44109e8cef8487ed91f",
+    "src/web/features/week/WeekExportModal.tsx": "dba3913741851b362360958c55dd14e38fef56749a3a34d33801152cd22d9969",
+    "src/web/features/week/WeekSetupChoices.tsx": "922f5eb920fa7a2f756a59ab48bd607e072ca6c87b543282fa2d43463d6413fc",
+    "src/web/features/week/WeekSummaryCards.tsx": "48ea6198033b9c0bf314275f41f0f0e81ebabb0b8c7acf524f9558a51a3fae9d",
+    "src/web/features/week/WeekWorkspace.tsx": "7bb938efde578c50827d550497948746ed96eb02513f59ece1f852f8b3cb4095",
+    "src/web/pages/ProfilePage.tsx": "306441e9604c0c40a3e88e820505e1e85b391dfb27d8774fed1066fdd72538c6",
+    "src/web/pages/settings/PrivacyDataPage.tsx": "9790e30c32fb1225bab036e50e2e5be5c8f5dc28a2007460ee81b5d4488e3248",
+    "src/web/components/common/AccountPage.tsx": "5297f51bad8c33b9bccba1b587cf63c56de621c1d264de74dd54913c5d06e544",
+    "src/web/styles/kitchen-account.css": "72ec00d9b23dfd8989a307bc4c62497391a3cb75b689ca0ee2dd9450248cbcea",
+    "src/web/styles/kitchen-foundation.css": "fad60c5916e6e3c15110dba4f922dcc53da735b189f0e92c1d875478422931ad",
+    "src/web/styles/kitchen-upgrade.css": "228be243ba0f7db39789eb45ace654f7c7cca6d0088310f202f39146d29a577a",
+    "src/web/styles/takosan-tokens.css": "473b9e063135493c3a9d6fef8fd1c4fe342f9a8c271ca80a33839659905a5f54",
+    "src/web/styles/frigo-tokens.css": "c2571185eccd7c6cab10a317491961387c2f07255bde040ea1eda5204b795cd9",
+    "tests/e2e/t17-ui/takolio-computed-contrast.e2e.ts": "d41cbd8f67dfabea32af8d3d57720fc2256dc90b93416ef02490154a5716f2bf"
+  },
+  "protected_sources_byte_identical_to_main": [
+    "src/web/App.tsx",
+    "src/web/pages/WeekDashboardPage.tsx",
+    "src/web/pages/WeekSetupPage.tsx",
+    "src/web/pages/WeekGeneratingPage.tsx",
+    "src/web/pages/MealDetailPage.tsx",
+    "src/web/pages/WeekShoppingPage.tsx",
+    "src/web/pages/WeekSettingsPage.tsx",
+    "src/web/services/week.ts",
+    "src/web/stores/useWeekStore.ts",
+    "src/web/styles/kitchen-week.css",
+    "src/web/features/planner/feature.ts",
+    "src/web/features/planner/composition.ts",
+    "playwright.t17.config.ts",
+    "scripts/security-preview.mjs",
+    "tests/e2e/t13b/fixtures.ts",
+    "tests/e2e/t17-ui/t18c-week-compatibility.e2e.ts",
+    "src/web/features/week/MealCard.tsx",
+    "src/web/features/week/MealSwapSheet.tsx",
+    "src/web/features/week/WeekExportModal.tsx",
+    "src/web/features/week/WeekSetupChoices.tsx",
+    "src/web/features/week/WeekSummaryCards.tsx",
+    "src/web/features/week/WeekWorkspace.tsx",
+    "src/web/pages/settings/PrivacyDataPage.tsx",
+    "src/web/components/common/AccountPage.tsx",
+    "src/web/styles/kitchen-upgrade.css",
+    "src/web/styles/frigo-tokens.css"
+  ],
+  "all_existing_sources_unchanged_from_implementation_parent": true,
+  "implementation_changes": [
+    "tests/e2e/t17-ui/takolio-computed-contrast.e2e.ts"
+  ],
+  "checks": [
+    {
+      "command": "PORT=3297 PREVIEW_API_PORT=8917 PREVIEW_MEAL_PLANNER_ENABLED=false PREVIEW_MEAL_COMPOSITION_V2=false pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-computed-contrast.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/contrast/initial",
+      "exit_code": 0,
+      "seconds": 48.99,
+      "node": "v24.16.0",
+      "name": "actual-off-computed-contrast-browser",
+      "log_path": ".artifacts/takeover/contrast/initial-browser.log",
+      "log_bytes": 7912,
+      "log_sha256": "d6f56a3cb224091d2690977931bd7f1dd6eb23a226041ec3b2ba9d39f5942e93",
+      "reported_duration": "48.1s",
+      "outcome": "4 passed; two cases in each of two contexts"
+    },
+    {
+      "name": "targeted-eslint",
+      "command": "pnpm exec eslint tests/e2e/t17-ui/takolio-computed-contrast.e2e.ts",
+      "exit_code": 0,
+      "seconds": 1.38,
+      "node": "v24.16.0",
+      "log_path": ".artifacts/takeover/contrast/targeted-eslint.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "outcome": "PASS"
+    },
+    {
+      "name": "lint",
+      "command": "pnpm lint",
+      "exit_code": 0,
+      "seconds": 8.09,
+      "node": "v24.16.0",
+      "log_path": ".artifacts/takeover/contrast/lint.log",
+      "log_bytes": 99,
+      "log_sha256": "3f2044fca43a5e60905becf2ebfc3a21ddd85976975841aa1e16bc87b0f40a6d",
+      "outcome": "PASS"
+    },
+    {
+      "name": "typecheck",
+      "command": "pnpm typecheck",
+      "exit_code": 0,
+      "seconds": 21.82,
+      "node": "v24.16.0",
+      "log_path": ".artifacts/takeover/contrast/typecheck.log",
+      "log_bytes": 165,
+      "log_sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e",
+      "outcome": "PASS"
+    },
+    {
+      "name": "full-suite",
+      "command": "pnpm test",
+      "exit_code": 1,
+      "seconds": 262.19,
+      "node": "v24.16.0",
+      "log_path": ".artifacts/takeover/contrast/full-suite.log",
+      "log_bytes": 17966,
+      "log_sha256": "08ef953e4dc5bf9157652161b6696a028567278490b7945d80b74b2b4dc41da5",
+      "outcome": "PARTIAL: 410/412 files; 9164/9169 tests; five inherited encoded-space MODULE_NOT_FOUND CLI failures in production-catalog-continuity/release-check; reported 260.71s"
+    },
+    {
+      "name": "migrations",
+      "command": "pnpm check:migrations",
+      "exit_code": 0,
+      "seconds": 0.75,
+      "node": "v24.16.0",
+      "log_path": ".artifacts/takeover/contrast/migrations.log",
+      "log_bytes": 297,
+      "log_sha256": "9616315a9fcbfd77c67784703a16384419539e6a68ccd2838dda07239de25464",
+      "outcome": "PASS"
+    },
+    {
+      "name": "default-build",
+      "command": "pnpm build",
+      "exit_code": 0,
+      "seconds": 11.89,
+      "node": "v24.16.0",
+      "log_path": ".artifacts/takeover/contrast/default-build.log",
+      "log_bytes": 10008,
+      "log_sha256": "c0e87fe7e94eab9b92a3ac3f5b6076b1d2d79598c9beff3d600c68928255b7ae",
+      "outcome": "PASS"
+    },
+    {
+      "name": "paired-on-build",
+      "command": "VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build",
+      "exit_code": 0,
+      "seconds": 13.2,
+      "node": "v24.16.0",
+      "log_path": ".artifacts/takeover/contrast/paired-on-build.log",
+      "log_bytes": 10008,
+      "log_sha256": "48230e00b99c81a10a61206303816f370d60ec267f16d9285c74ab58e7d06e95",
+      "outcome": "PASS"
+    }
+  ],
+  "input_receipts": [
+    {
+      "path": ".artifacts/takeover/contrast/run-browser.py",
+      "bytes": 1095,
+      "sha256": "a6806b2d282213797806e4cac1cfcddcad85af10b205347521c05a2757841bf5"
+    },
+    {
+      "path": ".artifacts/takeover/contrast/run-gates.py",
+      "bytes": 1295,
+      "sha256": "ba1f4e2098ac954f81ba943adcaab4e8a44ebc80651218eac6fbcb1c85b581f4"
+    },
+    {
+      "path": ".artifacts/takeover/contrast/initial-browser-receipt.json",
+      "bytes": 374,
+      "sha256": "5c199ed711e6534e54826deb9a03c7e32bb8b23a045432827653b8a17b4ba333"
+    },
+    {
+      "path": ".artifacts/takeover/contrast/gates.json",
+      "bytes": 2253,
+      "sha256": "1cc3bb3b8ac77c78eb2ba0f4eafa370f30717f826861527b8b09bb60a2281941"
+    },
+    {
+      "path": ".artifacts/takeover/contrast/collect.py",
+      "bytes": 6276,
+      "sha256": "7cf2a3de6be210f36f7cfa71367e52ad03747e0f4a0f972b3896912fdbd3bbfb"
+    },
+    {
+      "path": ".artifacts/takeover/contrast/finish-collect.py",
+      "bytes": 409,
+      "sha256": "554bfedaaaaab64c8ed22f0e1881b9f871518b7f62f15675ea7b11b43c1bda83"
+    },
+    {
+      "path": ".artifacts/takeover/contrast/first-attempt-disclosure.json",
+      "bytes": 788,
+      "sha256": "8f6676d378b992fd51e19b04662be0c65cabca5936abc683b0a629fece169afc"
+    },
+    {
+      "path": ".artifacts/takeover/contrast/harness-final.ts",
+      "bytes": 11065,
+      "sha256": "d41cbd8f67dfabea32af8d3d57720fc2256dc90b93416ef02490154a5716f2bf"
+    },
+    {
+      "path": ".artifacts/takeover/contrast/verify-recovery.py",
+      "bytes": 3153,
+      "sha256": "3395328b52141c79f60590fba742ad3914e84c8a11fa158febe3b365d476df2f"
+    },
+    {
+      "path": ".artifacts/takeover/contrast/recovery-after-implementation.json",
+      "bytes": 765,
+      "sha256": "d6419db302f2b28a13f6e043a1da82f1fbbc7532bad963654e85ab377d646b7e"
+    },
+    {
+      "path": ".artifacts/takeover/contrast/remote-main-check.json",
+      "bytes": 147,
+      "sha256": "81e2d942e9c72676736b691f993548651bd121ac54d209f8c68580f862ec7b2d"
+    },
+    {
+      "path": ".artifacts/takeover/contrast/contact.mjs",
+      "bytes": 1131,
+      "sha256": "bd8243cfd4ff7e29f27a7ead81619022272e29f7149eb4ec4d826e4cab0694e1"
+    },
+    {
+      "path": ".artifacts/takeover/contrast/mobile-contact.png",
+      "bytes": 509818,
+      "sha256": "82b25475518dbfeef54882cb663a10a9e0b53d0c6321e2faae5f606f932ab4aa"
+    },
+    {
+      "path": ".artifacts/takeover/contrast/text200-contact.png",
+      "bytes": 468803,
+      "sha256": "4539d474fef68a5c831de072c5dfd3e123aa01f38789199b9d7b17cdd5ce9d0f"
+    },
+    {
+      "path": ".artifacts/takeover/contrast/desktop-contact.png",
+      "bytes": 155463,
+      "sha256": "15b856a2994564c25444d258b4dc5a6b36dca6aa72798cea39a9c658f401ead5"
+    },
+    {
+      "path": ".artifacts/takeover/contrast/partial-collector-artifacts.json",
+      "bytes": 2876,
+      "sha256": "a9f1685bde4a555ed2f122d3cc3cecf35ced0f1099016545af0d56f1a026b8a4"
+    },
+    {
+      "path": ".artifacts/takeover/contrast/validate.py",
+      "bytes": 8506,
+      "sha256": "feb1b08d3638087b73662dfbb93a2f39e29b73ad6c2568936d608b5d6842ced8"
+    },
+    {
+      "path": ".artifacts/takeover/contrast/update-docs.py",
+      "bytes": 9489,
+      "sha256": "d42f6120179bfbc98770144125ff1ca4641be7e5e6e7df397d178e6801fe23ac"
+    },
+    {
+      "path": ".artifacts/takeover/contrast/finalize.py",
+      "bytes": 2958,
+      "sha256": "17311d2ddae2f4112dfafa4f5616443af5e215faac687530ca75d4db2376b6e6"
+    },
+    {
+      "path": ".artifacts/takeover/contrast/snapshot-git-baseline-verification.json",
+      "bytes": 228,
+      "sha256": "24131e95c95ea7ee149472d3d0491a88e136d6f27cd60ace6b284c235009a12c"
+    },
+    {
+      "path": ".artifacts/takeover/contrast/documentation-tail-verification.json",
+      "bytes": 1516,
+      "sha256": "d8cde8eb1b0fbb62f320a9b125dd664dfb3bdbaa1c291f22996f136bf4de23bd"
+    },
+    {
+      "path": ".artifacts/takeover/contrast/compact-evidence.py",
+      "bytes": 2716,
+      "sha256": "fa359538a25c05337e17dbd7dabd8872145956d112371e4977bbef5e5ede5727"
+    }
+  ],
+  "partial_collector_artifacts": {
+    "binding": ".artifacts/takeover/contrast/partial-collector-artifacts.json",
+    "entries": 13
+  },
+  "first_attempt": {
+    "command": "PORT=3297 PREVIEW_API_PORT=8917 PREVIEW_MEAL_PLANNER_ENABLED=false PREVIEW_MEAL_COMPOSITION_V2=false pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-computed-contrast.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/contrast/initial",
+    "exit_code": 1,
+    "seconds": 88.88,
+    "passed": 2,
+    "failed": 2,
+    "failure": "Home .home-workspace absent because fixture entered onboarding; final bounded scope excludes Home.",
+    "evidence_limit": "Original failed run log/output directory was accidentally reused by the successful run. Only tool-transcript results and this explicit disclosure remain; no original raw-log/hash retention claim. Successful run raw files/log and final harness are retained separately."
+  },
+  "attempt_notes": [
+    "Initial collector failed on an over-strict exactly-one-gradient-ancestor assertion; nearest opaque base blocks lower gradients. Partial output retained privately; corrected collector verifies all observed chains.",
+    "First recovery verifier used dir while baseline used directory; corrected schema comparison gives zero worktree differences. Initial diagnostic retained privately.",
+    "PIL was unavailable for contact sheets; installed Sharp generated review aids. No dependency added."
+  ],
+  "limits": "CSS DOM text only; offscreen samples included; dialog root excludes background shell when modal open. Solid pairs and conservative bounds only for exact observed gradients. All axe color-contrast incomplete results retained; no pixel/occlusion/icon/border/focus/hover/placeholder/full-WCAG/device certification. Home excluded after onboarding fixture guard. No stock import, actual swap or export success claimed. Dependencies unchanged; inherited audit findings not rerun.",
+  "snapshot_git_baseline_integrity": true,
+  "snapshot_git_regular_files_verified": 116,
+  "public_json_serialization": "Compact JSON; raw captures immutable; parsed-content parity and both hashes verified"
+}

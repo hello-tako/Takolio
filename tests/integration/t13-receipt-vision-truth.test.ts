@@ -453,8 +453,14 @@ describe('T13B-A receipt lot truth and authoritative correction evidence', () =>
       expect(observation.legacy_item_id).not.toBeNull();
       expect(fullLots().some((lot) => lot.legacy_item_id === observation.legacy_item_id)).toBe(true);
     }
-    expect(db.query('SELECT ocr_raw_name, ocr_quantity, ocr_unit FROM scan_items'))
-      .toEqual([{ ocr_raw_name: null, ocr_quantity: null, ocr_unit: null }]);
+    expect(db.query(`SELECT id, raw_name, estimated_quantity, unit, is_confirmed, review_state,
+      ocr_raw_name, ocr_quantity, ocr_unit FROM scan_items ORDER BY id`)).toEqual([
+      { id: 'legacy-line', raw_name: 'T13B unknown reviewed food', estimated_quantity: 2, unit: 'piece',
+        is_confirmed: 1, review_state: 'CONFIRMED', ocr_raw_name: null, ocr_quantity: null, ocr_unit: null },
+      { id: expect.stringMatching(/^scan_manual_[a-f0-9]{64}$/), raw_name: 'T13B unknown manual food',
+        estimated_quantity: 1, unit: 'piece', is_confirmed: 1, review_state: 'CONFIRMED',
+        ocr_raw_name: null, ocr_quantity: null, ocr_unit: null },
+    ]);
   });
 
   it('keeps absent OCR and manual-line evidence null when fridge review groups them into CORRECT', async () => {
@@ -482,8 +488,14 @@ describe('T13B-A receipt lot truth and authoritative correction evidence', () =>
     expect(db.query('SELECT raw_name, quantity, unit, ingredient_id, legacy_item_id FROM inventory_observations ORDER BY quantity'))
       .toEqual([{ raw_name: null, quantity: 1, unit: 'piece', ingredient_id: 'TOMATO', legacy_item_id: null },
         { raw_name: null, quantity: 2, unit: 'piece', ingredient_id: 'TOMATO', legacy_item_id: null }]);
-    expect(db.query('SELECT ocr_raw_name, ocr_quantity, ocr_unit FROM scan_items'))
-      .toEqual([{ ocr_raw_name: null, ocr_quantity: null, ocr_unit: null }]);
+    expect(db.query(`SELECT id, raw_name, estimated_quantity, unit, is_confirmed, review_state,
+      ocr_raw_name, ocr_quantity, ocr_unit FROM scan_items ORDER BY id`)).toEqual([
+      { id: 'absent-line', raw_name: 'Cà chua', estimated_quantity: 2, unit: 'piece', is_confirmed: 1,
+        review_state: 'CONFIRMED', ocr_raw_name: null, ocr_quantity: null, ocr_unit: null },
+      { id: expect.stringMatching(/^scan_manual_[a-f0-9]{64}$/), raw_name: 'Cà chua', estimated_quantity: 1,
+        unit: 'piece', is_confirmed: 1, review_state: 'CONFIRMED',
+        ocr_raw_name: null, ocr_quantity: null, ocr_unit: null },
+    ]);
     const committed = snapshot();
     const replay = await request('POST', '/scans/absent-correct/confirm', payload);
     expect(replay.status).toBe(200);

@@ -1,0 +1,9 @@
+
+ RUN  v4.1.12 /Users/tunbee27/Documents/New project/Takolio-v2-codex-integration
+
+
+ Test Files  2 passed (2)
+      Tests  149 passed (149)
+   Start at  05:07:34
+   Duration  10.16s (transform 787ms, setup 28ms, import 841ms, tests 8.96s, environment 0ms)
+

@@ -1,0 +1,76 @@
+
+> frigo@0.1.0 test [WORKTREE]
+> vitest run --maxWorkers=1 --testTimeout=15000
+
+
+ RUN  v4.1.12 [WORKTREE]
+
+FAMILY_BOUNDS {"count":7,"milliseconds":964,"evaluations":822,"poolBuilds":137,"complete":7,"candidateEvaluations":4273,"candidateWork":4273,"searchLimited":false}
+FAMILY_BOUNDS {"count":14,"milliseconds":2037,"evaluations":1746,"poolBuilds":325,"complete":14,"candidateEvaluations":9898,"candidateWork":9898,"searchLimited":false}
+FAMILY_BOUNDS {"count":42,"milliseconds":4631,"evaluations":3211,"poolBuilds":813,"complete":42,"candidateEvaluations":24438,"candidateWork":24438,"searchLimited":false}
+NATIVE_FAMILY_WEEK {"slots":14,"milliseconds":2007,"catalog":500,"replay":true,"stockUnchanged":true}
+ ❯ .artifacts/takeover/wkd02/backend/week-replay.refined.test.ts (0 test)
+Error: Uncaught [Error: secret stack detail]
+    at reportException ([WORKTREE]/node_modules/.pnpm/jsdom@26.1.0/node_modules/jsdom/lib/jsdom/living/helpers/runtime-script-errors.js:66:24)
+    at innerInvokeEventListeners ([WORKTREE]/node_modules/.pnpm/jsdom@26.1.0/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:353:9)
+    at invokeEventListeners ([WORKTREE]/node_modules/.pnpm/jsdom@26.1.0/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:286:3)
+    at HTMLUnknownElementImpl._dispatch ([WORKTREE]/node_modules/.pnpm/jsdom@26.1.0/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:233:9)
+    at HTMLUnknownElementImpl.dispatchEvent ([WORKTREE]/node_modules/.pnpm/jsdom@26.1.0/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:104:17)
+    at HTMLUnknownElement.dispatchEvent ([WORKTREE]/node_modules/.pnpm/jsdom@26.1.0/node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:241:34)
+    at Object.invokeGuardedCallbackDev ([WORKTREE]/node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:4213:16)
+    at invokeGuardedCallback ([WORKTREE]/node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:4277:31)
+    at beginWork$1 ([WORKTREE]/node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:27490:7)
+    at performUnitOfWork ([WORKTREE]/node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26599:12) Error: secret stack detail
+    at Flaky ([WORKTREE]/tests/unit/admin-remediation-ui.test.tsx:84:30)
+    at renderWithHooks ([WORKTREE]/node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:15486:18)
+    at mountIndeterminateComponent ([WORKTREE]/node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:20103:13)
+    at beginWork ([WORKTREE]/node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:21626:16)
+    at HTMLUnknownElement.callCallback ([WORKTREE]/node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:4164:14)
+    at HTMLUnknownElement.callTheUserObjectsOperation ([WORKTREE]/node_modules/.pnpm/jsdom@26.1.0/node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+    at innerInvokeEventListeners ([WORKTREE]/node_modules/.pnpm/jsdom@26.1.0/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:350:25)
+    at invokeEventListeners ([WORKTREE]/node_modules/.pnpm/jsdom@26.1.0/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:286:3)
+    at HTMLUnknownElementImpl._dispatch ([WORKTREE]/node_modules/.pnpm/jsdom@26.1.0/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:233:9)
+    at HTMLUnknownElementImpl.dispatchEvent ([WORKTREE]/node_modules/.pnpm/jsdom@26.1.0/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:104:17)
+Error: Uncaught [Error: secret stack detail]
+    at reportException ([WORKTREE]/node_modules/.pnpm/jsdom@26.1.0/node_modules/jsdom/lib/jsdom/living/helpers/runtime-script-errors.js:66:24)
+    at innerInvokeEventListeners ([WORKTREE]/node_modules/.pnpm/jsdom@26.1.0/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:353:9)
+    at invokeEventListeners ([WORKTREE]/node_modules/.pnpm/jsdom@26.1.0/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:286:3)
+    at HTMLUnknownElementImpl._dispatch ([WORKTREE]/node_modules/.pnpm/jsdom@26.1.0/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:233:9)
+    at HTMLUnknownElementImpl.dispatchEvent ([WORKTREE]/node_modules/.pnpm/jsdom@26.1.0/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:104:17)
+    at HTMLUnknownElement.dispatchEvent ([WORKTREE]/node_modules/.pnpm/jsdom@26.1.0/node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:241:34)
+    at Object.invokeGuardedCallbackDev ([WORKTREE]/node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:4213:16)
+    at invokeGuardedCallback ([WORKTREE]/node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:4277:31)
+    at beginWork$1 ([WORKTREE]/node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:27490:7)
+    at performUnitOfWork ([WORKTREE]/node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:26599:12) Error: secret stack detail
+    at Flaky ([WORKTREE]/tests/unit/admin-remediation-ui.test.tsx:84:30)
+    at renderWithHooks ([WORKTREE]/node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:15486:18)
+    at mountIndeterminateComponent ([WORKTREE]/node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:20103:13)
+    at beginWork ([WORKTREE]/node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:21626:16)
+    at HTMLUnknownElement.callCallback ([WORKTREE]/node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/cjs/react-dom.development.js:4164:14)
+    at HTMLUnknownElement.callTheUserObjectsOperation ([WORKTREE]/node_modules/.pnpm/jsdom@26.1.0/node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+    at innerInvokeEventListeners ([WORKTREE]/node_modules/.pnpm/jsdom@26.1.0/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:350:25)
+    at invokeEventListeners ([WORKTREE]/node_modules/.pnpm/jsdom@26.1.0/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:286:3)
+    at HTMLUnknownElementImpl._dispatch ([WORKTREE]/node_modules/.pnpm/jsdom@26.1.0/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:233:9)
+    at HTMLUnknownElementImpl.dispatchEvent ([WORKTREE]/node_modules/.pnpm/jsdom@26.1.0/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:104:17)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  .artifacts/takeover/wkd02/backend/week-replay.refined.test.ts [ .artifacts/takeover/wkd02/backend/week-replay.refined.test.ts ]
+Error: Cannot find module '../../src/worker/middleware/auth' imported from [WORKTREE]/.artifacts/takeover/wkd02/backend/week-replay.refined.test.ts
+ ❯ .artifacts/takeover/wkd02/backend/week-replay.refined.test.ts:4:1
+      2| import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+      3| import type { MealPlan } from '../../packages/domain/src';
+      4| import { authMiddleware } from '../../src/worker/middleware/auth';
+       | ^
+      5| import { weekRoutes } from '../../src/worker/routes/week';
+      6| import type { AuthContext, Env } from '../../src/worker/types';
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 420 passed (421)
+      Tests  9430 passed (9430)
+   Start at  05:53:12
+   Duration  951.78s (transform 7.53s, setup 2.43s, import 52.24s, tests 822.94s, environment 16.19s)
+
+ ELIFECYCLE  Test failed. See above for more details.

@@ -1,0 +1,72 @@
+{
+  "realGuestSession": true,
+  "serverHouseholdId": "hh_guest_1792768071409zy2ljm4z",
+  "honestUnavailableNotes": 3,
+  "writes": [],
+  "observations": [
+    {
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 330,
+        "scrollWidth": 330,
+        "brokenImages": [],
+        "membership": null,
+        "householdId": null,
+        "bodyLinks": 0,
+        "bodyButtons": 0
+      }
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "textScale": 2,
+      "metrics": {
+        "innerWidth": 412,
+        "scrollWidth": 412,
+        "brokenImages": [],
+        "membership": null,
+        "householdId": null,
+        "bodyLinks": 0,
+        "bodyButtons": 0
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "brokenImages": [],
+        "membership": null,
+        "householdId": null,
+        "bodyLinks": 0,
+        "bodyButtons": 0
+      }
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "brokenImages": [],
+        "membership": null,
+        "householdId": null,
+        "bodyLinks": 0,
+        "bodyButtons": 0
+      }
+    }
+  ]
+}

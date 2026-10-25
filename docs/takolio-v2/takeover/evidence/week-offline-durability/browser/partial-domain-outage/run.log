@@ -1,0 +1,4 @@
+PASS WKD01 320: stock2 retained through three offline completions including authenticated fresh document with /me online; exact queued request; real native import once to8; exact replay zero SQL/GET delta
+PASS WKD01 1440: stock2 retained through three offline completions including authenticated fresh document with /me online; exact queued request; real native import once to8; exact replay zero SQL/GET delta
+PASS WKD01 partial-domain browser: 320/1440; /me online; local-only; zero uncaught page errors
+EVIDENCE raw capture retained locally; public readback.json and manifest.json accompany this log

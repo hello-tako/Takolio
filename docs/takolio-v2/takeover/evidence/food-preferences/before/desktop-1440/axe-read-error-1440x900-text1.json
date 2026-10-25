@@ -1,0 +1,28 @@
+{
+  "state": "read-error",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "textScale": 1,
+  "metrics": {
+    "innerWidth": 1440,
+    "scrollWidth": 1440,
+    "brokenImages": []
+  },
+  "controls": [
+    {
+      "label": "Thử lại",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    }
+  ],
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ]
+}

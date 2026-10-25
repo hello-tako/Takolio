@@ -1,0 +1,752 @@
+{
+  "head": "6bf58f3a0d7c0909b777958fa9cdd5fda4426ddc",
+  "sourceHashes": [
+    {
+      "path": "src/web/styles/kitchen-daily.css",
+      "sha256": "493d441fcf4d38b2fbe0007ef2b7423e504586962d1d20fcd27abb2a3280073f"
+    },
+    {
+      "path": "src/web/styles/kitchen-planning.css",
+      "sha256": "de1fa46855d9d423735f8cc848095e1b6edf63ab3e36c322ca3f5e14ef5686b0"
+    },
+    {
+      "path": "src/web/styles/kitchen-foundation.css",
+      "sha256": "fad60c5916e6e3c15110dba4f922dcc53da735b189f0e92c1d875478422931ad"
+    },
+    {
+      "path": "src/web/styles/kitchen-family.css",
+      "sha256": "e8395fe3965aee913982c67873cd9baad70b2ca50e65eace9b069ff717edc2b3"
+    },
+    {
+      "path": "src/web/styles/takosan-tokens.css",
+      "sha256": "473b9e063135493c3a9d6fef8fd1c4fe342f9a8c271ca80a33839659905a5f54"
+    },
+    {
+      "path": "src/web/pages/ShoppingPage.tsx",
+      "sha256": "76528374b3c86c7b69e3e79056fb561fcc33810e8873a4132042dbcbab734e63"
+    },
+    {
+      "path": "src/web/features/planner/PlannerSetup.tsx",
+      "sha256": "e6423c8fccfced9808ebd630fa152bcb41b50bf327ffb8b45f4306b60e42f35f"
+    }
+  ],
+  "commands": [
+    {
+      "command": "rg -n -- --semantic-border-rgb: src",
+      "exit": 1,
+      "meaning": "No RGB border token definition in src."
+    }
+  ],
+  "references": [
+    {
+      "path": "src/web/styles/kitchen-daily.css",
+      "line": 219,
+      "note": "Search declares invalid RGB border at224."
+    },
+    {
+      "path": "src/web/styles/kitchen-daily.css",
+      "line": 235,
+      "note": "Discovery and detail select invalid RGB border at239."
+    },
+    {
+      "path": "src/web/styles/kitchen-daily.css",
+      "line": 376,
+      "note": "Filter disclosure invalid RGB border at379; hover changes border-color but width/style remain0/none."
+    },
+    {
+      "path": "src/web/styles/kitchen-planning.css",
+      "line": 51,
+      "note": "Planning/shopping broad declaration uses missing RGB token at58. Existing selector also catches radios; exclude from corrective scope."
+    },
+    {
+      "path": "src/web/styles/kitchen-family.css",
+      "line": 61,
+      "note": "Nested preference controls have an existing explicit #CFD9CC border. Not certified by this narrow border audit."
+    },
+    {
+      "path": "src/web/styles/takosan-tokens.css",
+      "line": 66,
+      "note": "Hex semantic-border exists; no matching RGB definition."
+    },
+    {
+      "path": "src/web/styles/takosan-tokens.css",
+      "line": 139,
+      "note": "Existing text-muted RGB 77 94 108 provides6.35196:1 minimum vs sampled surfaces."
+    },
+    {
+      "path": "src/web/pages/ShoppingPage.tsx",
+      "line": 263,
+      "note": "Existing add form; field names shopping-name, shopping-quantity, shopping-unit."
+    },
+    {
+      "path": "src/web/features/planner/PlannerSetup.tsx",
+      "line": 219,
+      "note": "Existing form; selection-mode radio excluded from proposal, date/number controls targeted."
+    }
+  ],
+  "geometry": [
+    {
+      "config": "320x568",
+      "route": "discovery",
+      "id": "search",
+      "width": 288,
+      "height": 48,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "320x568",
+      "route": "discovery",
+      "id": "servings",
+      "width": 288,
+      "height": 44,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "320x568",
+      "route": "discovery",
+      "id": "filter",
+      "width": 288,
+      "height": 44,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "320x568",
+      "route": "detail",
+      "id": "servings",
+      "width": 288,
+      "height": 44,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "320x568",
+      "route": "shopping",
+      "id": "name",
+      "width": 258,
+      "height": 48,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "320x568",
+      "route": "shopping",
+      "id": "quantity",
+      "width": 258,
+      "height": 48,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "320x568",
+      "route": "shopping",
+      "id": "unit",
+      "width": 258,
+      "height": 48,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "320x568",
+      "route": "planner",
+      "id": "locale",
+      "width": 112,
+      "height": 44,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "320x568",
+      "route": "planner",
+      "id": "date",
+      "width": 156.140625,
+      "height": 44,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "320x568",
+      "route": "planner",
+      "id": "days",
+      "width": 91.859375,
+      "height": 44,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "320x568",
+      "route": "planner",
+      "id": "servings",
+      "width": 258,
+      "height": 44,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "320x420-text200",
+      "route": "discovery",
+      "id": "search",
+      "width": 256,
+      "height": 48,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "320x420-text200",
+      "route": "discovery",
+      "id": "servings",
+      "width": 256,
+      "height": 44,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "320x420-text200",
+      "route": "discovery",
+      "id": "filter",
+      "width": 256,
+      "height": 44,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "320x420-text200",
+      "route": "detail",
+      "id": "servings",
+      "width": 288,
+      "height": 44,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "320x420-text200",
+      "route": "shopping",
+      "id": "name",
+      "width": 258,
+      "height": 48,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "320x420-text200",
+      "route": "shopping",
+      "id": "quantity",
+      "width": 258,
+      "height": 48,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "320x420-text200",
+      "route": "shopping",
+      "id": "unit",
+      "width": 258,
+      "height": 48,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "320x420-text200",
+      "route": "planner",
+      "id": "locale",
+      "width": 112,
+      "height": 44,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "320x420-text200",
+      "route": "planner",
+      "id": "date",
+      "width": 156.140625,
+      "height": 44,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "320x420-text200",
+      "route": "planner",
+      "id": "days",
+      "width": 91.859375,
+      "height": 44,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "320x420-text200",
+      "route": "planner",
+      "id": "servings",
+      "width": 258,
+      "height": 44,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "390x844",
+      "route": "discovery",
+      "id": "search",
+      "width": 358,
+      "height": 48,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "390x844",
+      "route": "discovery",
+      "id": "servings",
+      "width": 358,
+      "height": 44,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "390x844",
+      "route": "discovery",
+      "id": "filter",
+      "width": 358,
+      "height": 44,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "390x844",
+      "route": "detail",
+      "id": "servings",
+      "width": 358,
+      "height": 44,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "390x844",
+      "route": "shopping",
+      "id": "name",
+      "width": 328,
+      "height": 48,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "390x844",
+      "route": "shopping",
+      "id": "quantity",
+      "width": 328,
+      "height": 48,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "390x844",
+      "route": "shopping",
+      "id": "unit",
+      "width": 328,
+      "height": 48,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "390x844",
+      "route": "planner",
+      "id": "locale",
+      "width": 112,
+      "height": 44,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "390x844",
+      "route": "planner",
+      "id": "date",
+      "width": 200.21875,
+      "height": 44,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "390x844",
+      "route": "planner",
+      "id": "days",
+      "width": 117.78125,
+      "height": 44,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "390x844",
+      "route": "planner",
+      "id": "servings",
+      "width": 328,
+      "height": 44,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "1440x1000",
+      "route": "discovery",
+      "id": "search",
+      "width": 220,
+      "height": 48,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "1440x1000",
+      "route": "discovery",
+      "id": "servings",
+      "width": 220,
+      "height": 44,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "1440x1000",
+      "route": "discovery",
+      "id": "filter",
+      "width": 220,
+      "height": 44,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "1440x1000",
+      "route": "detail",
+      "id": "servings",
+      "width": 496.796875,
+      "height": 44,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "1440x1000",
+      "route": "shopping",
+      "id": "name",
+      "width": 364.484375,
+      "height": 48,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "1440x1000",
+      "route": "shopping",
+      "id": "quantity",
+      "width": 135.5625,
+      "height": 48,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "1440x1000",
+      "route": "shopping",
+      "id": "unit",
+      "width": 216.921875,
+      "height": 48,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "1440x1000",
+      "route": "planner",
+      "id": "locale",
+      "width": 112,
+      "height": 44,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "1440x1000",
+      "route": "planner",
+      "id": "date",
+      "width": 377.515625,
+      "height": 44,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "1440x1000",
+      "route": "planner",
+      "id": "days",
+      "width": 222.078125,
+      "height": 44,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    },
+    {
+      "config": "1440x1000",
+      "route": "planner",
+      "id": "servings",
+      "width": 609.59375,
+      "height": 44,
+      "normalFocusRectEqual": true,
+      "normalBoxShadow": "none",
+      "normalBorderWidth": "0px",
+      "normalBorderStyle": "none"
+    }
+  ],
+  "pages": [
+    {
+      "config": "320x568",
+      "routeId": "discovery",
+      "requested": "/recipes",
+      "actual": "/recipes",
+      "document": {
+        "width": 320,
+        "scrollWidth": 320,
+        "rootFont": "16px"
+      }
+    },
+    {
+      "config": "320x568",
+      "routeId": "detail",
+      "requested": "/recipes/ga-parmigiana-nuong?servings=2",
+      "actual": "/recipes/ga-parmigiana-nuong",
+      "document": {
+        "width": 320,
+        "scrollWidth": 320,
+        "rootFont": "16px"
+      }
+    },
+    {
+      "config": "320x568",
+      "routeId": "shopping",
+      "requested": "/shopping",
+      "actual": "/shopping",
+      "document": {
+        "width": 320,
+        "scrollWidth": 320,
+        "rootFont": "16px"
+      }
+    },
+    {
+      "config": "320x568",
+      "routeId": "planner",
+      "requested": "/planner/new",
+      "actual": "/planner/new",
+      "document": {
+        "width": 320,
+        "scrollWidth": 320,
+        "rootFont": "16px"
+      }
+    },
+    {
+      "config": "320x420-text200",
+      "routeId": "discovery",
+      "requested": "/recipes",
+      "actual": "/recipes",
+      "document": {
+        "width": 320,
+        "scrollWidth": 320,
+        "rootFont": "32px"
+      }
+    },
+    {
+      "config": "320x420-text200",
+      "routeId": "detail",
+      "requested": "/recipes/ga-parmigiana-nuong?servings=2",
+      "actual": "/recipes/ga-parmigiana-nuong",
+      "document": {
+        "width": 320,
+        "scrollWidth": 320,
+        "rootFont": "32px"
+      }
+    },
+    {
+      "config": "320x420-text200",
+      "routeId": "shopping",
+      "requested": "/shopping",
+      "actual": "/shopping",
+      "document": {
+        "width": 320,
+        "scrollWidth": 320,
+        "rootFont": "32px"
+      }
+    },
+    {
+      "config": "320x420-text200",
+      "routeId": "planner",
+      "requested": "/planner/new",
+      "actual": "/planner/new",
+      "document": {
+        "width": 320,
+        "scrollWidth": 320,
+        "rootFont": "32px"
+      }
+    },
+    {
+      "config": "390x844",
+      "routeId": "discovery",
+      "requested": "/recipes",
+      "actual": "/recipes",
+      "document": {
+        "width": 390,
+        "scrollWidth": 390,
+        "rootFont": "16px"
+      }
+    },
+    {
+      "config": "390x844",
+      "routeId": "detail",
+      "requested": "/recipes/ga-parmigiana-nuong?servings=2",
+      "actual": "/recipes/ga-parmigiana-nuong",
+      "document": {
+        "width": 390,
+        "scrollWidth": 390,
+        "rootFont": "16px"
+      }
+    },
+    {
+      "config": "390x844",
+      "routeId": "shopping",
+      "requested": "/shopping",
+      "actual": "/shopping",
+      "document": {
+        "width": 390,
+        "scrollWidth": 390,
+        "rootFont": "16px"
+      }
+    },
+    {
+      "config": "390x844",
+      "routeId": "planner",
+      "requested": "/planner/new",
+      "actual": "/planner/new",
+      "document": {
+        "width": 390,
+        "scrollWidth": 390,
+        "rootFont": "16px"
+      }
+    },
+    {
+      "config": "1440x1000",
+      "routeId": "discovery",
+      "requested": "/recipes",
+      "actual": "/recipes",
+      "document": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "rootFont": "16px"
+      }
+    },
+    {
+      "config": "1440x1000",
+      "routeId": "detail",
+      "requested": "/recipes/ga-parmigiana-nuong?servings=2",
+      "actual": "/recipes/ga-parmigiana-nuong",
+      "document": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "rootFont": "16px"
+      }
+    },
+    {
+      "config": "1440x1000",
+      "routeId": "shopping",
+      "requested": "/shopping",
+      "actual": "/shopping",
+      "document": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "rootFont": "16px"
+      }
+    },
+    {
+      "config": "1440x1000",
+      "routeId": "planner",
+      "requested": "/planner/new",
+      "actual": "/planner/new",
+      "document": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "rootFont": "16px"
+      }
+    }
+  ],
+  "conclusion": "No source changed during canonical measurement. All44controls retain exact normal/focus rects; all16pages have no horizontal document overflow. Existing focus outlines are visible2–3px green with3px offset. Proposed inset stroke is not runtime-implemented or geometry-tested in this audit."
+}

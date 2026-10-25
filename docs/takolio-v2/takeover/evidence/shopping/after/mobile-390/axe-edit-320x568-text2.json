@@ -1,0 +1,15 @@
+{
+  "state": "edit",
+  "viewport": {
+    "width": 320,
+    "height": 568
+  },
+  "textScale": 2,
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "state": "manual-help",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "textScale": 1,
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ],
+  "metrics": {
+    "innerWidth": 1440,
+    "scrollWidth": 1440,
+    "brokenImages": [],
+    "buttons": 4,
+    "links": 1,
+    "summaries": 1
+  },
+  "controls": [
+    {
+      "label": "Đóng",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "Đã hiểu",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    }
+  ]
+}

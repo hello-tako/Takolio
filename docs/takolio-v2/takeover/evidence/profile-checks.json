@@ -1,0 +1,175 @@
+{
+  "base_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "implementation_commit": "6cb0d462813482b8137d975b207d8b530fc55776",
+  "production_actions": false,
+  "environment": "macOS; Node 25.9.0; pnpm 10.33.2; unchanged main dependencies; isolated local Worker/SQLite synthetic registered household and actual local guest session; external API fetch and service workers blocked",
+  "source_sha256": {
+    "src/web/pages/ProfilePage.tsx": "306441e9604c0c40a3e88e820505e1e85b391dfb27d8774fed1066fdd72538c6",
+    "tests/e2e/t17-ui/takolio-profile-continuation.e2e.ts": "a01ecd0f47c344f997106ddd7462992c2bb2486c5173395a6a8926c78569dbf8"
+  },
+  "checks": [
+    {
+      "name": "targeted-eslint",
+      "command": "pnpm exec eslint src/web/pages/ProfilePage.tsx tests/e2e/t17-ui/takolio-profile-continuation.e2e.ts",
+      "exit_code": 0,
+      "seconds": 1.04,
+      "outcome": "PASS final source; existing Admin font build warnings when applicable",
+      "local_ignored_log": ".artifacts/takeover/profile/checks/targeted-eslint.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "focused-units",
+      "command": "pnpm exec vitest run tests/unit/ui08-account.test.tsx tests/unit/frontend-services.test.ts tests/unit/ui08-route-scope.test.tsx tests/unit/ui11-navigation.test.tsx",
+      "exit_code": 0,
+      "seconds": 2.06,
+      "outcome": "PASS 4 files/76 tests in 1.30s",
+      "local_ignored_log": ".artifacts/takeover/profile/checks/focused-units.log",
+      "log_bytes": 256,
+      "log_sha256": "1bcbdb6ef61e72f3f28df45caab39cee98f196a6fa65f1b1ae37e515bd7549e3"
+    },
+    {
+      "name": "focused-integration",
+      "command": "pnpm exec vitest run tests/integration/frontend-ui-integration.test.tsx tests/integration/auth-tenant-adversarial.test.ts tests/integration/inventory-closed-loop.test.ts",
+      "exit_code": 0,
+      "seconds": 7.32,
+      "outcome": "PASS 3 files/104 tests in 6.64s",
+      "local_ignored_log": ".artifacts/takeover/profile/checks/focused-integration.log",
+      "log_bytes": 256,
+      "log_sha256": "3d2c7503d48e128031ff96a669c7bb1b44973f58f5d5cde546e1846042626c79"
+    },
+    {
+      "name": "lint",
+      "command": "pnpm lint",
+      "exit_code": 0,
+      "seconds": 6.51,
+      "outcome": "PASS final source; existing Admin font build warnings when applicable",
+      "local_ignored_log": ".artifacts/takeover/profile/checks/lint.log",
+      "log_bytes": 99,
+      "log_sha256": "3f2044fca43a5e60905becf2ebfc3a21ddd85976975841aa1e16bc87b0f40a6d"
+    },
+    {
+      "name": "typecheck",
+      "command": "pnpm typecheck",
+      "exit_code": 0,
+      "seconds": 16.67,
+      "outcome": "PASS final source; existing Admin font build warnings when applicable",
+      "local_ignored_log": ".artifacts/takeover/profile/checks/typecheck.log",
+      "log_bytes": 165,
+      "log_sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e"
+    },
+    {
+      "name": "migrations",
+      "command": "pnpm check:migrations",
+      "exit_code": 0,
+      "seconds": 0.52,
+      "outcome": "PASS final source; existing Admin font build warnings when applicable",
+      "local_ignored_log": ".artifacts/takeover/profile/checks/migrations.log",
+      "log_bytes": 297,
+      "log_sha256": "9616315a9fcbfd77c67784703a16384419539e6a68ccd2838dda07239de25464"
+    },
+    {
+      "name": "build",
+      "command": "pnpm build",
+      "exit_code": 0,
+      "seconds": 9.7,
+      "outcome": "PASS final source; existing Admin font build warnings when applicable",
+      "local_ignored_log": ".artifacts/takeover/profile/checks/build.log",
+      "log_bytes": 10008,
+      "log_sha256": "4f0e76cb0e69d523eb28f8e7d12dfc846b3da60c46a16bf5a5b7713e2522e113"
+    },
+    {
+      "name": "paired-build",
+      "command": "VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build",
+      "exit_code": 0,
+      "seconds": 9.52,
+      "outcome": "PASS final source; existing Admin font build warnings when applicable",
+      "local_ignored_log": ".artifacts/takeover/profile/checks/paired-build.log",
+      "log_bytes": 10008,
+      "log_sha256": "2c38140923675c0e8aaca315c121a630a5980a9a6d4ab7248dcd5226fb71a5a5"
+    },
+    {
+      "name": "audit",
+      "command": "pnpm audit --json",
+      "exit_code": 1,
+      "seconds": 3.22,
+      "outcome": "OPEN_INHERITED 1 low/6 moderate/1 high; Vite GHSA-587h-7wmj-h5pm; no dependency change",
+      "local_ignored_log": ".artifacts/takeover/profile/checks/audit.log",
+      "log_bytes": 43734,
+      "log_sha256": "3256cc0c6e0545751f2cfdb3223b90a27a32043a364bb025bc5047465d90103f"
+    },
+    {
+      "name": "browser",
+      "command": "PREVIEW_MEAL_COMPOSITION_V2=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-profile-continuation.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/profile/final",
+      "exit_code": 0,
+      "seconds": 42.82,
+      "outcome": "PASS 6/6 in 42.2s; 48 after PNG/48 zero-violation axe with incomplete contrast; 192 actionable measured controls; no API writes after setup",
+      "local_ignored_log": ".artifacts/takeover/profile/checks/browser.log",
+      "log_bytes": 10751,
+      "log_sha256": "418c1f8bb72f603c4394b96c5f41f55d82e04ea0cc6ce447fd1b5c2c3a12db6f"
+    },
+    {
+      "name": "full-suite",
+      "command": "pnpm test",
+      "exit_code": 1,
+      "seconds": 186.5,
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/",
+      "outcome": "PARTIAL 410/412 files; 9163/9168 tests in 185.62s; five inherited encoded-space CLI failures; no timeouts",
+      "local_ignored_log": ".artifacts/takeover/profile/checks/full-suite.log",
+      "log_bytes": 17955,
+      "log_sha256": "bfc18ae8a4b1095e2660b4e383162c2728611c023854e4654297be463447342d"
+    }
+  ],
+  "retained_attempts": [
+    {
+      "name": "baseline",
+      "outcome": "PASS initial one-test registered identity/long-name baseline before expanded scenarios",
+      "local_ignored_log": ".artifacts/takeover/profile/baseline.log",
+      "log_bytes": 1273,
+      "log_sha256": "fcfd29f88a899ed87181138e1e49b7aa7114fe95f26a069c386dab3a3b878948"
+    },
+    {
+      "name": "baseline2",
+      "outcome": "PARTIAL 2 passed/1 failed; harness expected Gia \u0111\u00ecnh & chia s\u1ebb instead of actual H\u1ed9 gia \u0111\u00ecnh & chia s\u1ebb",
+      "local_ignored_log": ".artifacts/takeover/profile/baseline2.log",
+      "log_bytes": 8021,
+      "log_sha256": "5cce98492b7100fa8b0821fea263c52fbc864889e6c7dc2368e540a7489d307e"
+    },
+    {
+      "name": "before",
+      "outcome": "PARTIAL 2 passed/1 failed; harness expected legacy planning title while paired flag selects Th\u00f3i quen b\u1eefa nh\u00e0; navigation worked",
+      "local_ignored_log": ".artifacts/takeover/profile/before.log",
+      "log_bytes": 8170,
+      "log_sha256": "3866944a38108619c5da9e6d7ff147d97255ffb7395125219ea0e11a70eee77d"
+    },
+    {
+      "name": "before-corrected",
+      "outcome": "PASS 3/3 in 22.8s after harness title corrections; final pre-product-copy baseline",
+      "local_ignored_log": ".artifacts/takeover/profile/before-corrected.log",
+      "log_bytes": 5452,
+      "log_sha256": "73fd4bfba581cd397d9a23da56516c4840b374d8748816473c10dc7f0d374a2d"
+    },
+    {
+      "name": "recovery",
+      "outcome": "PASS full original/private snapshot comparison before implementation commit; private locations retained in ignored log only",
+      "local_ignored_log": ".artifacts/takeover/profile/recovery.log",
+      "log_bytes": 624,
+      "log_sha256": "c9aae64779d15bdd2c538d31558a6661920cc39ebde32428439b59604c82577a"
+    },
+    {
+      "name": "recovery-after-implementation",
+      "outcome": "PASS full original/private snapshot comparison after implementation commit; private locations retained in ignored log only",
+      "local_ignored_log": ".artifacts/takeover/profile/recovery-after-implementation.log",
+      "log_bytes": 624,
+      "log_sha256": "83db2307a0769008d767e09a4b61eae4bf30b24c06cd14adb6747b83ac093f52"
+    },
+    {
+      "name": "remote-main",
+      "outcome": "PASS read-only ls-remote confirms unchanged canonical main; no fetch or remote mutation",
+      "local_ignored_log": ".artifacts/takeover/profile/remote-main.log",
+      "log_bytes": 57,
+      "log_sha256": "74b0b5609784df7a5fddf1241a9179b9e62a61f3d3671f7fc0a075210071e212"
+    }
+  ],
+  "scope": "One notification metadata string changed. Existing profile/account components and assets retained. Plus link JSX/targets and logout behavior unchanged. Registered identity is read from actual local API; long cached identity and session loading/500 reads explicitly shaped. Six destination links verified by keyboard without saves. Logout cancel/focus only; no real logout or payment invocation. Root-font and local browser checks do not certify physical devices, OS zoom, screen readers, providers, full Week-OFF, performance or production."
+}

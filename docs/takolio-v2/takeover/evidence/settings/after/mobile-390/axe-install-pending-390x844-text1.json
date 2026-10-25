@@ -1,0 +1,49 @@
+{
+  "state": "install-pending",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "textScale": 1,
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ],
+  "metrics": {
+    "innerWidth": 390,
+    "scrollWidth": 390,
+    "brokenImages": [],
+    "buttons": 2,
+    "links": 1,
+    "summaries": 1
+  },
+  "controls": [
+    {
+      "label": "Đang xử lý...",
+      "enabled": false,
+      "actionable": null,
+      "fits": true
+    },
+    {
+      "label": " Xóa bộ nhớ đệm ứng dụng",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "Xem quyền riêng tư & dữ liệu",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "Thông tin phiên bản",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    }
+  ]
+}

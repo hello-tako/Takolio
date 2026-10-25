@@ -1,3 +1,449 @@
+## Recovery-compatible release local validation - 2026-10-25 JST
+
+Status: LOCAL_RECOVERY_VALIDATED_PUBLICATION_PENDING. Complete Node 24 test run finished successfully: 425 files / 9501 tests PASS, 956.62s. Command: `PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp pnpm test --maxWorkers=1 --testTimeout=15000`; log `.artifacts/takeover/release-20261025/recovery-full-node24.log`. This local discovery includes the retained one-test reviewer reproduction under ignored `.artifacts/`; hosted discovery will omit that private reproduction. Focused recovery/release suite: six files / 111 tests PASS. Lint, typecheck, migration check, build and `git diff --check` PASS. Admin preflight configuration PASS, `readyForDeployment=false`, `remoteExecuted=false`. Earlier interrupted Node 25 run remains incomplete, never PASS.
+
+Full current diff and new recovery/test files reviewed. Only domain release adapters, the existing asset-record verifier export, recovery tests, ADR-071 and release handoff documentation changed. Original Argon workspace, private backup, application source, assets, migrations, payments, unrelated auth and infrastructure remain preserved. Recovery uses the exact candidate source with server/UI planner-composition flags OFF, strict immutable version/build commitments, traffic/host/operational fences, exact served OFF assets and staging rehearsal. No new concrete finding in this correction; real same-SHA staging behavior remains unverified.
+
+Next: normal commit/push to PR #28, fresh final-head CI/Admin CI, Chrome reviewer examination/approval, normal merge, exact-main CI/Admin CI, protected staging0045 migration and release/recovery rehearsal, nine genuine acceptance evidence rows, production recovery/ledger/migration/certification/Environment review and monitored rollout. No merge, remote migration, staging deployment or production deployment has occurred. Earlier checkpoints below are historical; pending test/publication statements there describe their observation time.
+
+## Recovery-compatible release correction - 2026-10-25 JST
+
+Status: LOCAL_RECOVERY_CORRECTED_REVIEW_PENDING. Reviewer `vn-taphoanhatung` submitted `CHANGES_REQUESTED` on PR #28 at 2026-10-25T10:06:22Z after confirming the old production source `571f3c229696d6bc766de89f552a36f48ca92e58` rejects a V2 USE receipt with `displayCategory` as `CORRUPT_RECEIPT`. This correction adds exact-source inactive OFF recovery, strict metadata and asset verification, and staging recovery rehearsal. No merge, migration, staging deploy, traffic mutation, or production deploy occurred.
+
+Changed: `scripts/domain/compatible-recovery.mjs` and `tests/unit/domain-compatible-recovery.test.mjs` are new. Production and staging providers prepare/upload a distinct compatible recovery version before the normal ON candidate, restore only that verified same-source OFF version, and prove exact OFF compiled bytes, runtime, audit, ledger, authority and host fences. Staging reactivates the same candidate after rehearsal; uncertain reactivation before/after traffic mutation stays fail-closed. Fake deployment IDs are distinct. PayOS, billing, checkout, webhooks, unrelated auth and production infrastructure remain untouched.
+
+Checks: focused recovery/release suite `6 files / 111 tests PASS`, log `.artifacts/takeover/release-20261025/recovery-focused-final-six.log`; lint PASS, log `.artifacts/takeover/release-20261025/recovery-lint-final.log`; typecheck, migrations and build PASS in existing logs; Admin preflight `configurationValidation PASS`, customer baseline correct, `readyForDeployment=false`, `remoteExecuted=false`. Full Node 24 suite remains in progress at the time of this checkpoint in `.artifacts/takeover/release-20261025/recovery-full-node24.log`; no PASS is claimed until it exits successfully. An earlier Node 25 attempt was interrupted and is retained only as a failed/incomplete attempt.
+
+Current deployment state: published PR #28 still points to `846dd5f9915fef7f2be4d38c75b85fb73d3dd82b`; main is `90b94129113b41e34701d99f51175cfa81cb73de`. The working tree is intentionally dirty with implementation and documentation changes. Original Argon workspace and private backup remain preserved.
+
+Next action: finish the Node 24 full suite, review the complete diff, commit and push normally, obtain fresh exact-head CI/Admin CI, then use the logged-in Chrome reviewer to inspect and approve the final patch. Only after normal merge may the protected exact-main staging migration, staging release/rehearsal, genuine nine-check acceptance, production certification, Environment approval and production release proceed. Never fabricate acceptance or bypass reviewer/environment gates.
+
+## Release hosted gates PASS; independent review blocked - 2026-10-25 JST
+
+Status: HOSTED_PASS_REVIEW_REQUIRED. Published PR #28 HEAD is `846dd5f9915fef7f2be4d38c75b85fb73d3dd82b`; main remains `90b94129113b41e34701d99f51175cfa81cb73de`. Production deployment is authorized, but no merge, remote migration, staging deployment or production deployment occurred. Original Argon workspace and private recovery remain preserved.
+
+Executed: `gh run view 40157096926 --json status,conclusion,jobs` and `gh run view 40157096931 --json status,conclusion,jobs` confirm both required checks SUCCESS. Downloaded and inspected both full logs with `gh run view <run-id> --log`. CI: 423 files / 9484 tests PASS, 1250.61s. Admin CI: 423 files / 9484 tests PASS, 1367.47s; Workerd 10/10, migration matrix 31/31, browser 13/13, keyboard 10/10, public scan, lint/types/migrations/build/preflight and screenshot reference guard PASS. Actions tested synthetic PR merge `a1de1ab9e62ac9ed9a4ab6ee034cfeedfe9189f2`; these are PR checks, not merged-main push checks. Downloaded Admin artifact 12584928992; matrix and Workerd reports both pass. Exact hosted receipts and sanitized handoff: `.artifacts/takeover/release-20261025/hosted-final/` (ignored local evidence). PR description now links both successful runs and the artifact.
+
+Repeated read-only baseline: `PATH=/opt/homebrew/opt/node@24/bin:$PATH bash scripts/post-deploy-smoke.sh https://takolio.app` PASS: landing/liveness HTTP200, auth/SW no-store, immutable hashed asset, DB/queue OK, 500 D1 recipes, release `rel-bd00a4f53fcaeee4`; readiness remains degraded with email delivery unverified. This checks existing production only. Prior dependency audit failure (0 low / 3 moderate / 2 high) and all historical failures remain retained.
+
+Current blocking action: `gh pr view 28 --json headRefOid,reviewDecision,mergeStateStatus,reviews,statusCheckRollup` reports REVIEW_REQUIRED/BLOCKED and no review. Branch protection requires one independent last-push approval, strict validate/validate-admin, stale-review dismissal and administrator enforcement. Auto-merge is disabled. Production Environment separately requires `vn-taphoanhatung` and prevents self-review. No protection or credential was changed.
+
+- [x] Final published PR-head hosted CI and Admin CI PASS; inspect and retain actual counts/artifacts.
+- [x] Update PR description and local CURRENT_STATE/TASK_BOARD/HANDOFF with actual evidence.
+- [ ] Independent last-push PR approval; normal merge; exact merged-main CI/Admin CI.
+- [ ] Same-SHA staging0045 migration, deployment and nine real acceptance checks; mixed-worker/rollback compatibility remains UNPROVEN.
+- [ ] Production ledger and fresh recovery proof, protected migration/certification, independent Environment review, activation and 15-minute observation.
+
+Next action: an independent reviewer approves PR #28 at the published HEAD. Then continue the exact-main protected release sequence in `docs/takolio-v2/takeover/RELEASE_20261025.md`. Never invent acceptance PASS, use the historical staging receipt for this candidate, or fall back to the legacy release workflow. Retain0044/0045 on rollback.
+
+This checkpoint is a local uncommitted documentation update; PR HEAD remains the already-tested846dd5f9. Runtime/source/assets/migrations/dependencies are unchanged. Committing/pushing this checkpoint later requires new final-head checks and applicable last-push review. No completion or deployment claim is made.
+
+---
+## Release publication - 2026-10-25
+
+- [x] Commit sanitized release evidence; push candidate normally to PR #28; update PR scope/checks/blockers.
+- [x] Verify branch/Environment protection and current-main SHA through GitHub API.
+- [x] Run read-only smoke against existing production: PASS; degraded email-delivery readiness retained.
+- [ ] Wait for full CI/Admin CI on final PR head; fix actual failures without weakening gates.
+- [ ] Obtain independent last-push approval; merge normally; pass exact-main CI/Admin CI.
+- [ ] Complete exact-main staging0045/deploy/real acceptance and mixed-worker rollback compatibility.
+- [ ] Complete protected production ledger/recovery/migration/certification/Environment approval, rollout and observation.
+
+---
+## Release checkpoint - 2026-10-25
+
+- [x] Pin immutable V2 customer release baseline and add 45-file migration guard scenarios.
+- [x] Run final local guard, Admin Workerd/browser/keyboard, lint, types, migration, build and public-scan checks.
+- [x] Save release report and sanitized evidence.
+- [ ] Push final candidate and wait for hosted `validate` / `validate-admin`.
+- [ ] Obtain independent approval, merge normally, then execute exact-main staging and protected production gates.
+
+---
+## Takolio V2 - WKD02 implementation checkpoint verified (2026-10-25 JST)
+
+Status: LOCAL_WKD02_VERIFIED; ADR-069. Implementation `89d0ea243d08e98670a512ef797da4f64ac516f4`; implementation scope PASS at that exact HEAD. This documentation checkpoint follows the verified implementation. Keyed swap replay preserves later current plan; response-loss requests remain durable; exact409 recovery requires confirmation. Existing keyless/alternatives/inventory/tenancy/security behavior preserved.
+
+Full420files/9430tests PASS; backend6/114,client6/251,response-loss6cases,existing Playwright2tests PASS. Lint/types/migrations/default/actual paired-ON builds PASS;local D1 preserves94tables/9920old rows;44PNG;1233source hashes unchanged. Audit remains FAIL0low/3moderate/2high,Hono/Zod/Undici.26verbatim evidence whitespace warnings retained;source/docs clean. Failed attempts and local/hosted concurrency ceilings remain explicit in `docs/takolio-v2/takeover/WKD02_WEEK_SWAP_REPLAY.md`.
+
+Scope PASS:9112parent/5782protected-main paths unchanged;44old migrations,54salvage paths and69Argon/12asset/38screen rows preserved;38owner reviews PENDING. Recovery reverified PASS_WITH_AUTHORIZED_PLATFORM_DRIFT,only ten authorized .DS_Store deltas privately copied;all other worktree bytes/modes/links and HEAD/index/status exact. Original source index/stored manifest unchanged during check.
+
+Next:external owner/media/device/Safari/nativezoom/screenreader/live-provider/hosted acceptance and separate dependency remediation. Finite UI01-UI15+C12/C13 and CLI01/DEP01/CAT01/SCAN01/WKD01/WKD02 locally bounded complete. Post-docs scope proof is written after this documentation commit to ignored `.artifacts/takeover/wkd02/post-docs-scope.json`;verify its HEAD before resuming. No push/merge/deploy/remote migration/production action. Historical content follows unchanged.
+
+---
+
+## Takolio V2 - WKD02 verified local result (2026-10-25 JST)
+
+Status: LOCAL_WKD02_VERIFIED; ADR-069. Parent `4c5f8ce85b90edfb9d8f6f8183014471947a3c72`; official main observed read-only `90b94129113b41e34701d99f51175cfa81cb73de`. Implementation checkpoint prepared; bind verified SHA in the following documentation checkpoint.
+
+Changed: immutable target-scoped keyed swap receipt in additive0045, first in existing atomic legacy/dual batch. ReplayA afterB returns currentB without plan/receipt/cache writes; different intent exact409. Client durably retains exact request after response loss. Existing banner/dialog offers explicit confirmed recovery; cancel/failure/session change retains bytes. Keyless/alternatives/inventory/security compatibility preserved; distinct fresh commands retain full-snapshot/CAS ceiling.
+
+Verification: full `pnpm test --maxWorkers=1 --testTimeout=15000`420files/9430tests PASS, reported1141.80s/wall1143.22s,Node24.16.0. Backend6/114,client6/251,response-loss6cases,existing Playwright2tests PASS. Lint/types/migrations/default and actual paired-ON builds PASS.1233frozen hashes unchanged. Actual local D1 preserves94tables/9920old rows,zero backfill; immutable attacks/rollback/cascades PASS. Browser4flows at320/1440,44PNG total; zero page errors/external requests/overflow/broken images. Static independent reviews no concrete finding. Exact commands/failures: report/evidence below.
+
+Failures retained: baseline stale replay/transport RED, intermediate fixture/type errors,D1 unsupported pragma,browser selector,validator manifest shape,first full generated-snapshot discovery failure. Corrected suite changed only ignored snapshot suffix,not source/assertions/config. Audit FAIL exit1:0low/3moderate/2high,Hono/Zod/Undici. Source/docs whitespace PASS;26verbatim evidence warnings(22EOF blank lines/4trailing spaces)retained.
+
+Recovery precommit reverified PASS_WITH_AUTHORIZED_PLATFORM_DRIFT: snapshot22763regular/772symlinks,116Git baseline files exact; source22772regular/772symlinks. Only ten authorized .DS_Store deltas,separately copied/verified; other bytes/modes/links,HEAD/index/status exact. Source index/stored manifest unchanged during check; private locations unpublished. Precommit scope PASS:9112parent/5782protected-main paths,54salvage,69Argon/12asset/38screen rows unchanged;115prior file decisions preserved,38owner reviews PENDING.
+
+Report:`docs/takolio-v2/takeover/WKD02_WEEK_SWAP_REPLAY.md`; hash-bound evidence:`evidence/week-swap-replay/`. Next:implementation checkpoint/scope,then SHA-bound documentation checkpoint/post-docs scope. Finite UI01-UI15+C12/C13 and CLI01/DEP01/CAT01/SCAN01/WKD01/WKD02 locally bounded complete. Remaining owner/media/device/Safari/native zoom/screenreader/live/hosted acceptance and separate dependency remediation. No push/merge/deploy/remote migration/production action. Historical content follows unchanged.
+
+---
+
+## Takolio V2 - WKD02 keyed Week swap replay (2026-10-25 JST)
+
+Status: LOCAL_WKD02_IN_PROGRESS; ADR-069 accepted. WKD01 verified implementation `cc426b04baa84cb4bb3a861b0d606764675b4d20`, documentation `2cde9235f5088b416fbe74935a7bcd801fa8c2ed`; post-docs scope PASS. Full416files/9319tests, lint/types/migrations/default/paired-ON builds PASS. Audit remains FAIL(0low/3moderate/2high); ten verbatim-log whitespace warnings retained.
+
+Active: `docs/ai/tasks/WKD02-week-swap-replay.md`. Implement immutable target-scoped swap receipt in additive0045 and existing legacy/dual batch; replay returns current owned plan. Narrow successful-response transport loss retention and visible exact409 recovery reuse durable outbox/banner/dialog. Distinct fresh commands retain full-snapshot concurrency ceiling. Baseline/focused/schema/local D1/browser/full gates not yet executed for WKD02; no completion claim.
+
+Original Argon/private recovery,54salvage paths, ledgers and38PENDING owner reviews remain preserved. Next: executable baseline RED before bounded backend/client implementation, then gates/evidence/recovery/review. No push/merge/deploy/remote migration/production action. Historical content follows unchanged.
+
+---
+
+## Takolio V2 - WKD01 durable offline queue (2026-10-25 JST)
+
+Status: LOCAL_WKD01_VERIFIED; ADR-068. Parent `4d330940c328d70ca49384fa54792e95637a3dd5`; official main read-only `90b94129113b41e34701d99f51175cfa81cb73de`. Implementation checkpoint `cc426b04baa84cb4bb3a861b0d606764675b4d20`; implementation scope PASS. Documentation checkpoint follows this verified implementation.
+
+Native outbox persistence now gates pending success; corrupt/unreadable data stays intact. Unknown pending count/retry recovery is visible. Every enqueue caller persists before cache projection; accepted IDs survive optional cache failure. Replay removal failure retains the exact request and still reconciles accepted server state under session fences. Week shopping pending completion never inflates stock. No Worker/schema/migration/dependency/assets/auth implementation change; generated `.artifacts/**` ESLint ignore only.
+
+Full `416/416` files, `9319/9319` tests PASS; `pnpm test --maxWorkers=1 --testTimeout=15000`, reported974.99s/wall976.03s, Node24.16.0. Focused8files/280tests and backend2files/149tests PASS. Lint/types/migrations/default and actual paired-ON builds PASS;1184frozen hashes unchanged. Audit FAIL:0low/3moderate/2high,Hono/Zod/Undici remain. RED18FAIL/54PASS, generated-dependency lint failure, concurrent-shopping RED/GREEN and interrupted exit130 full attempt retained; no assertion/config weakening. Independent final review found no unresolved concrete scoped defect.
+
+Browser4width/flow cases,32PNG at320/1440: exact one queued request across repeat/reload; stock2 remains offline, reconnect8 once; existing lot version+1, no extra lot; replay SQL/GET unchanged. Full outage fresh document reaches existing auth gate; partial domain outage keeps me online and renders/repeats Week. Actual Worker-router/synthetic Node SQLite, not native D1/workerd/device/Safari/screenreader/hosted certification. Zero page errors/external requests/overflow. Sanitized exact PNG/hash-bound JSON retained.
+
+Recovery PASS_WITH_AUTHORIZED_PLATFORM_DRIFT: private snapshot22763regular/772symlinks,116Git files exact; current source22772regular/772symlinks differs only at ten authorized .DS_Store paths separately backed up. Other bytes/modes/links and HEAD/index/status match; source index/stored manifest unchanged. Prior authorized snapshot-index restoration disclosed in CAT01. No zero-difference claim/private paths published. Implementation scope PASS:9023parent/5783protected-main paths unchanged; ten verbatim-log EOF blank-line warnings retained;54salvage and69Argon/12asset/38screen rows preserved;38owner reviews PENDING.
+
+Report: `docs/takolio-v2/takeover/WKD01_DURABLE_OFFLINE_QUEUE.md`; exact checks/log/source hashes under `evidence/week-offline-durability/`. Next: activate WKD02 with receipt transaction/current-plan replay/visible409 ADR before implementation. UI01-UI15+C12/C13 remains locally bounded complete; owner/media/device/Safari/screenreader/live/hosted acceptance pending. No production operation. Historical content follows unchanged.
+
+---
+
+## Takolio V2 - SCAN01 durable manual review history (2026-10-25 JST)
+
+Status: `LOCAL_SCAN01_VERIFIED`. Parent `a4fa573a53580f187f86b35bad7127bba042000e`; official main observed read-only `90b94129113b41e34701d99f51175cfa81cb73de`. Implementation checkpoint: `a4e405508453908cd6f7b7b677f98156ccbdcdd7`; documentation checkpoint follows this verified implementation.
+
+Accepted manual scan lines now persist atomically with confirmation and reopen as read-only review history. Reviewed fractional quantity, mapping, category, storage and expiry remain independent of mutable stock. Manual OCR/prices stay NULL; UI labels manual origin without inventing extraction facts. Existing native/legacy stock merges, household guards, source evidence, confirmedItemIds and status-based replay remain. No schema, dependency, backfill, receipt manual-add UI or frontend rebuild.
+
+Full `pnpm test --maxWorkers=1 --testTimeout=15000`:415/415files,9279/9279tests PASS; exit0; reported1072.07s/wall1073.04s. Focused8files/178tests PASS. Lint/types/local migrations/default and actual paired-ON builds PASS.1182frozen source/test/config hashes unchanged. Audit exit1:0low/3moderate/2high,Hono/Zod/Undici remain. Baseline27FAIL/4PASS, fixture27PASS/4FAIL, refined35PASS/2FAIL and initial DOM typecheck failure remain disclosed; final manual37/37 and DOM6/6PASS. No assertion/config weakening.
+
+Browser photo/receipt at320/1440:4flows PASS,8PNG. Photo uses actual manual-add/removal/confirm; receipt manual addition uses existing API. Fresh document/read-only labels, SQL/GET facts and zero-mutation replay PASS; zero page/console/failed/external requests. Real Worker router with synthetic Node SQLite; not native D1/workerd/hosted/live OCR/device/Safari/screenreader certification. Two Vite504 bootstrap failures and one helper-column assertion failure retained before successful run. Independent scoped review found no concrete runtime/security finding.
+
+Recovery `PASS_WITH_AUTHORIZED_PLATFORM_DRIFT`:private snapshot22,763regular/772symlinks and116Git baseline files exact. Source22,772regular/772symlinks differs only at ten authorized .DS_Store paths(one changed,nine added), separately privately copied/verified. Every other source path exact; source index/stored manifest unchanged,HEAD/index/status match. Previous authorized snapshot-index restoration remains disclosed in CAT01. No zero-difference claim; private recovery locations unpublished. Precommit scope PASS:8990parent/5798protected-main paths unchanged,54salvage exact,69Argon/12asset/38screen rows exact,115old file decisions preserved,38owner reviews PENDING.
+
+Report:`docs/takolio-v2/takeover/SCAN01_MANUAL_REVIEW_HISTORY.md`; exact commands/log/source bindings:`evidence/scan-manual-history/checks.json`. Next:activate WKD01 durable offline queue under its own ADR/gates,then WKD02 Week swap replay. Finite UI01-UI15+C12/C13 remains locally bounded complete; owner/media/device/Safari/screenreader/live/hosted acceptance pending. No push,merge,deploy,remote migration or production operation. Historical content follows unchanged.
+
+---
+
+## Takolio V2 - CAT01 category authority and immutable CREATE (2026-10-25 JST)
+
+Status: `LOCAL_CAT01_VERIFIED`. Implementation `820b0bd486aa17adc9a3cb3cba886b3ee7b62e3c`; parent `e90bcfda35b3deeee8efc9647ab2c8f72f6520ee`; official main observed read-only `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Optional lot displayCategory survives create/read/PATCH/USE/MOVE; canonical category remains authoritative. Manual CREATE replays its frozen original response after edits, conflicts on changed intent and fails closed for historical native receipts without retained intent. Adoption category is fenced; adopted NULL never borrows mutable projection. Additive0044; no backfill or historical receipt/event rewrite; canonical0030 reverse proof byte-identical.
+
+Full `pnpm test --maxWorkers=1 --testTimeout=15000`: 414/414 files, 9228/9228 tests PASS; exit0; reported877.15s/wall877.97s. Default attempts retained: seven fixture failures, then one Wrangler5000ms timeout (9227/9228PASS); unchanged focused32/32PASS. No assertion/config weakening; CLI15s disclosed.1260 frozen source/test/config hashes unchanged. Lint/types/local migrations/default and actual paired-ON builds PASS. Isolated actual local D1 all44 migrations/schema/positive, three expected forged-write rejections/readback PASS. Default schema:check:local failed; cause unproven. Audit FAIL:0low/3moderate/2high,Hono/Zod/Undici remain.
+
+Local Chromium390 covers create/filter/reload/detail/PATCH/MOVE and immutable CREATE replay/three409s; USE via synthetic local control, no product UI USE claim. Four PNG and authoritative readback retained. Independent scoped review found no concrete runtime/security defect. Protected-main/strict-parent checks PASS;54salvage paths, prior ledgers/evidence,38PENDING owner reviews preserved.
+
+The private snapshot retains22,763 regular files/772 symlinks and116 Git
+baseline files, exact bytes/modes/links against its stored baseline. Source now
+has22,772 regular files/772 symlinks and differs only in ten explicitly authorized
+.DS_Store paths: one modified, nine added. Each current delta is separately copied
+and verified by path/bytes/SHA256/mode under private0700; every other worktree
+path matches exactly. This is not a zero-difference source/snapshot claim.
+Snapshot index ef70 was preserved separately, then restored to baseline05d8 from
+verified unchanged source bytes with explicit user authorization on2026-10-25.
+Source index and original baseline manifest remain unchanged; HEAD/index/status
+match. Exact-difference and first supplemental attempts failed before these proofs;
+all failures remain disclosed. Stat-cache refresh cause is unproven. Optional
+Git locks are disabled for all further source/snapshot checks.
+54 selected salvage paths, prior ledgers/evidence and38 PENDING owner reviews
+remain unchanged. Shared integration Git metadata changes are disclosed separately.
+Private recovery locations stay unpublished.
+
+Report: `docs/takolio-v2/takeover/CAT01_DISPLAY_CATEGORY_AUTHORITY.md`; exact commands/source/log hashes: `evidence/category-authority/checks.json`. Next: SCAN01 manual review history, then WKD01 durable offline queue and WKD02 Week swap replay, each with separate ADR/gates. Finite UI01-UI15+C12/C13 remains locally bounded complete; owner/media/device/Safari/screenreader/live/hosted acceptance pending.0044 must precede new Worker; mixed-writer/rollback needs separate release review. No push,merge,deploy,remote migration or production operation. Historical content follows unchanged.
+
+---
+
+## Takolio V2 - DEP01 bounded dependency patches (2026-10-24 JST)
+
+Status: `LOCAL_DEP01_VERIFIED`. Implementation `0da750f8fa25ddf8de01345c26a38cacc6d90937`; parent `24d191b2cf90373fe0a2107772a6e1d7b4593fc0`; official main `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Vite 6.4.3 to 6.4.4; Vitest and seven internals 4.1.11 to 4.1.12. Vite range unchanged; only exact Vitest manifest pin and bounded lock graph change. Rollup 4.63.1/plugin-react 4.7.0 retained. All nine registry/lock/tarball integrity checks PASS. Frozen install, lint, types, local migrations, default and actual paired-ON builds PASS. Full serial suite: 412/412 files, 9169/9169 tests PASS; exit 0; wall 971.04s; reported 969.76s. First lock minimization exit 1 and corrected preparation are preserved separately; gates bind exact implementation source hashes.
+
+Fresh audit exit 1: 5 findings, 0 low / 3 moderate / 2 high. Hono/Zod/Undici remain; overall audit FAIL. Recovery and official-main/strict-parent proofs accompany `docs/takolio-v2/takeover/DEP01_VITE_VITEST_PATCH.md` and `evidence/dependency-patch/checks.json`. Original Argon work, selected 54 paths, ledger bytes, prior screenshots and 38 PENDING owner reviews stay preserved.
+
+Next: separately scoped category readback/replay, scan manual history, Week offline durability. Finite frontend evidence remains bounded; owner/media/device/live/hosted acceptance stays pending. No push, merge, deploy, remote migration or production operation. Historical content follows unchanged.
+
+---
+
+## Takolio V2 - CLI01 local path correction (2026-10-24 JST)
+
+Status: `LOCAL_CLI01_VERIFIED`. Implementation `c7f7b5510c3f23d7f3d59b66b556d13afd358a9b`, branch `codex/takolio-v2-rescue`; parent `7d0e539281ab6d8261ef416ef1978b90bba8e486`. Integration is the existing Takolio-v2-codex-integration worktree. Official main read-only reference remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Two existing CLI test paths now use Node fileURLToPath. Two imports/two expressions only; assertions, fixtures, production script, app, assets, backend, security, schema and dependencies unchanged. Targeted baseline293/298PASS+5FAIL; fixed298/298PASS. Full `pnpm test --maxWorkers=1`:412/412files,9169/9169tests PASS, Node24.16.0/canonical TMPDIR. Lint/typecheck/local migrations/default and actual paired-ON builds PASS; inherited Admin font warnings retained. First full attempt interrupted130 at120.03s after ignored draft tests were discovered; bytes kept as .txt, clean full rerun PASS. No assertion/config weakening.
+
+Fresh dependency audit exit1:12findings,1low/8moderate/3high. Supersedes older counts; CLI fix does not repair advisories. Original Argon workspace/private full snapshot recovery and strict-parent/protected-main proofs are under evidence/cli-path. Selected54salvage paths, all existing ledger/evidence bytes and38PENDING owner reviews preserved. No test-only screenshots; prior UI evidence unchanged.
+
+Report: `docs/takolio-v2/takeover/CLI01_LOCAL_FILE_URL.md`; exact commands/source/log bindings: `evidence/cli-path/checks.json`. Next local task: DEP01 minimal compatible Vite/Vitest patch; category readback/replay, scan manual history and Week offline durability remain separate packets/ADRs. Finite frontend scope remains bounded; owner/media/native-device/live-provider/hosted acceptance stays pending. No push, merge, deploy, remote migration or production action. Historical content follows unchanged.
+
+---
+
+## Takolio V2 - C12/C13 and finite frontend plan checkpoint (2026-10-24 JST)
+
+Status: `LOCAL_FRONTEND_PLAN_BOUNDED_COMPLETE_REVIEW_REQUIRED`. Implementation `4afc85804478fa9508b15b1c035da0e10f964822`, branch `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Official main remains `90b94129113b41e34701d99f51175cfa81cb73de` (read-only verification).
+
+ADR-064/065 preserve Argon components/assets/handlers;31scoped CSS lines restore placeholder/OFF-switch contrast and1px inset control strokes. C12/C13 browser4/4PASS; targeted ESLint,6files/125focused tests, lint/typecheck/local migrations/default and correct paired-ON builds PASS. Full `pnpm test --maxWorkers=1` remains PARTIAL410/412files,9164/9169tests: five inherited encoded-space CLI failures. Fresh dependency audit FAIL:11findings,1low/8moderate/2high (Vite and Zod high); supersedes older counts. Dependencies unchanged; Admin font warnings remain.
+
+Finite UI01-UI15 local frontend sequence and C12/C13 executed. Recertification A/UI09 PARTIAL exit1:51snapshots/10journeys/52PNG; category spice reads back other. Actual canonical adoption, metadata retry/reload, reconciliation and AppErrorBoundary crash/reload pass. B/UI04 bounded harness PASS exit0:29snapshots/8journeys/51PNG; real photo/receipt confirm200/reopen. Additional verified gap: manual0.25pack item enters inventory but is absent from scan history. Scan fields do not certify every merged inventory field. No backend fix or inventory data-loss claim. Six receipts verified;1104source entries/run stable; recorded runtime HEAD remains c50c737d, final CSS hash bound. Older row38 crash-unverified and next-C11/C12/Week wording is explicitly superseded for this measured scope.
+
+Current packet retains67exact-byte selected payloads/37PNG and374raw bindings; supplemental checks/reports/recovery/protected proofs have a separate finalization receipt. Complete gate logs/traces/full capture sets remain ignored/private, with recorded hashes. Both Chromium projects repeat viewport loops under reduced motion; targeted focus, root-font200 and per-shadow geometry are bounded. No natural full-Tab, native zoom/device/Safari/screenreader/all-instance/production certification. Axe incomplete remains manual review.
+
+After implementation, original Argon workspace/private full snapshot match22763regular files/772symlinks,bytes/modes/links/HEAD/index/status and stored workspace baseline; all116regular Git baseline files match;zero differences,parent0700. Shared Git metadata changes from integration are disclosed separately. Private recovery location unpublished. Protected-main audit, historical tails/ledgers/evidence and whitespace verification are recorded in the finalization receipt. All38owner reviews remain PENDING.
+
+Report: `docs/takolio-v2/takeover/UI_C12_C13_CONTROL_CONTRAST.md`; finite status: `FRONTEND_PLAN_STATUS.md`; exact checks: `evidence/control-contrast/final-checks.json`. No further reproduced frontend defect justifies new cosmetic scope. Next: owner/media/device/live-provider/hosted acceptance; separate bounded packets for category readback, scan manual history/merge semantics, Week offline durability, CLI path tests and dependency advisories. No push, published PR, merge, deploy, remote migration or production action. Historical content follows unchanged.
+
+---
+
+# Takolio V2 continuation - Week/Home readability (2026-10-24 JST)
+
+Status: `LOCAL_WEEK_HOME_READABILITY_BOUNDED_VERIFIED`. Implementation `6bf58f3a0d7c0909b777958fa9cdd5fda4426ddc`, branch `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only official main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Retained Argon layout, assets and handlers. ADR-063 removes primary-content opacity fades from Home/discovery/preparation and intrinsically wraps stock identity/status. Actual Week import exposed width343px at320/text200; final title/chip bounds pass. Current short-screen shell already uses document-flow navigation below600px; no shell rewrite. Navigation remains at the end of the document on short screens.
+
+Home real onboarding/generation/readback 2/2, Week commands/reflow 4/4, short motion actual paired OFF 2/2 and paired ON 2/2 PASS. Supplemental mixed Planner ON/composition OFF 2/2 is labeled separately. Home measures1,358solid text pairs PASS (minimum5.31349:1),20states and normal/reduced opacity1. Week real swap200/reload keeps inventory unchanged; native Chromium clipboard succeeds, rejection/unsupported are synthetic. Selected-only import200 adds exactly one row, preserves all old rows, reads back, and exact-key/body replay returns idempotentReplay:true without another event. No durable swap-replay/offline claim.
+
+Targeted ESLint,14files/274focused tests, pnpm lint/typecheck/migrations, default and correct paired-ON builds PASS. Full pnpm test:407/412files,9,161/9,169tests; eight failures. Five inherited New%20project MODULE_NOT_FOUND CLI failures remain; three timing failures pass unchanged in a separate --maxWorkers=1 rerun:3files/46tests,18.96s reported/20.03s wall. This does not convert the full run into PASS. Inherited dependency findings remain1low/6moderate/1high; audit not rerun, dependencies unchanged.
+
+Evidence:212PNG +152raw JSON equivalents +3derived JSON under evidence/readability; PNG exact bytes, JSON parsed equality, separate raw/public hashes. All automated axe violations are zero; incomplete checks stay manual-review. Failed attempts/logs and available harness revisions remain separately bound; traces stay private. Home and short-screen contact sheets and final stock320/text200 image visually inspected. Native zoom/devices/Safari/screenreader/owner/hosted acceptance remains pending; all38owner reviews PENDING.
+
+Recovery after implementation:22,763regular files/772symlinks match original/full private snapshot in bytes,modes,links,HEAD,index,status; snapshot baseline and all116regular Git baseline files match; zero differences,private parent0700. Historical recovery receipt accidentally targeted during finalization was restored byte-exact from its committed object; unique current receipt rerun verifies the full baseline. Private paths stay unpublished.
+
+Report: docs/takolio-v2/takeover/UI_C11_WEEK_HOME_READABILITY.md. Next local packet: measured control-state contrast, prioritizing discovery placeholder and notification OFF switch; retain solid focus outlines. Week offline durability needs a separate domain packet/ADR. Full-suite path tooling, dependency changes, media rights/owner review and real devices remain separately scoped or external. No push, PR publication, merge, deploy, remote migration or production action.
+
+---
+
+# Takolio V2 continuation - Computed text contrast (2026-10-24 JST)
+
+Status: `LOCAL_COMPUTED_TEXT_CONTRAST_BOUNDED_VERIFIED`. Implementation `fedf0e7571b659dfdfec916a713b3c9a71be4cf4` (test only), branch `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only GitHub main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Added one reproducible computed-text-contrast browser audit. No runtime, CSS, component, icon, illustration or dependency changes; existing Argon and canonical functionality retained. Thirty existing reviewed source paths match the implementation parent; 26 also match canonical main. No observed text-pair failure justifies a palette change.
+
+Browser 4/4 in 48.1s (wall 48.99s): self-check and actual paired-flags-OFF local Week/account journey in two Chromium contexts. Fourteen states x three viewport/root-text configurations x two contexts produce 84 PNG and 84 JSON. 4,902 solid text samples pass (minimum 6.119203774745377:1). Raw 516 gradient samples remain manual-review; separate exact-CSS conservative bounds pass (minimum 5.178275830766979:1). Six disabled import text samples are exempt. All 84 axe reports have zero reported violations and incomplete color-contrast; 798 checks give bgGradient. Real local generation returns201, alternatives read200; inventory unchanged. Normal mobile, text200 and desktop contact sheets visually inspected.
+
+Targeted ESLint, pnpm lint, pnpm typecheck, local migration smoke, default build and correct paired-ON build PASS. Node v24.16.0 full suite: 410/412 files, 9,164/9,169 tests; reported260.71s/wall262.19s; five inherited encoded-space MODULE_NOT_FOUND CLI failures in production-catalog-continuity/release-check. Existing Admin font warnings remain. Dependencies unchanged; previous audit1low/6moderate/1high including Vite GHSA-587h-7wmj-h5pm remains open, not rerun.
+
+Fresh private recovery verification: original Argon worktree and full snapshot match22,763regular files/772symlinks, bytes/modes/links/HEAD/index/preflight status; snapshot worktree also matches stored baseline; zero differences; parent0700. Shared Git metadata changes are authorized and separately disclosed; exact recovery location stays private. Selected salvage54paths, Argon69rows and assets12rows intact; file decisions105; all38owner reviews PENDING.
+
+Bounded CSS DOM text audit includes offscreen samples; active dialog scope excludes background shell. Exact solid composition and only observed-gradient bounds; raw axe incomplete stays open. No pixel/occlusion, icon/border/focus/hover/placeholder, native zoom/device/screenreader/full-WCAG or all-screen certification. Generation pending and Home are not captured. Home fixture hit onboarding. Initial failed browser attempt2failed/2passed (88.88s) had its log/output destination accidentally reused; original failed-run raw evidence is NOT retained/hash-bound. Passing raw evidence and final harness are retained/bound; explicit disclosure preserved. Partial collector output retained. No stock import, actual swap or export success claimed.
+
+Report: `docs/takolio-v2/takeover/UI_C10_COMPUTED_CONTRAST.md`; exact receipts: `evidence/computed-contrast-checks.json`, `evidence/computed-contrast/manifest.json`, `evidence/computed-contrast-recovery-verification.json`. Next unblocked packet: isolated local Week flags-OFF selected-only stock import, actual swap/readback and clipboard success/error verification under existing UI10 commands. Preserve inventory/idempotency/household authority. Home fixture and wider manual control/device review remain open; Week durable offline needs a separate domain packet/ADR. No push, PR publication, merge, deploy, remote migration or production action.
+
+Finalization executed: protected-main scope PASS with5,837unchanged protected paths; historical and computed-contrast evidence validation PASS; current source objects/logs/captures and all eight historical tails verified; 104 prior file decisions preserved; only rows23,24,26,27,30,36 append contrast notes. Credential/private-recovery-path pattern scan and whitespace check PASS. Private snapshot Git baseline also matches all116regular Git files; full snapshot baseline integrity verified. All38owner reviews remain PENDING. Local documentation checkpoint follows separately.
+
+---
+
+# Takolio V2 continuation - Real Week flags OFF (2026-10-24 JST)
+
+Status: `LOCAL_WEEK_REAL_FLAGS_OFF_BOUNDED_VERIFIED`. Implementation `c91e0747084013e66f1128fafa168984cf46e3bb` (test only), branch `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only GitHub main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Added one guarded browser journey for the actual paired-flags-OFF preview. All existing runtime code, Week pages/components, icons, assets, API, store and security boundaries remain unchanged. Twenty-two reviewed existing source/config/test paths match canonical main; no new illustration or replacement asset was justified.
+
+Both planner APIs return their disabled 404 codes; five planner aliases reach Week. Four setup stages retain values through back/next. Generation preserves unlimited budget as null and the command/idempotency key, then the actual local Worker returns 201 with seven days/21 slots. Reload/readback, meal tabs, share/swap Escape and return focus, read-only alternatives, shopping list/active zero-selection guard, and session-only settings pass. Per context: one plan creation plus two read-only alternatives POSTs; inventory/shopping/family snapshots and the generated plan after reads/settings remain unchanged. Session settings survive SPA navigation and reset after full-document navigation.
+
+Real-OFF browser: 2 passed (1.4m). Existing synthetic setup compatibility: 2 passed (9.3s); absent-OFF-variable guard: 2 skipped. Focused Week regressions: 7 files/131 tests in 3.91s (wall 4.80s). Final targeted ESLint, pnpm lint and pnpm typecheck PASS; local migration smoke and default build PASS. Correct actual paired-ON build (`VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build`) PASS, final wall 11.23s. Full suite Node v24.16.0: 410/412 files, 9,164/9,169 tests in 234.01s (wall 235.01s); same five inherited encoded-space CLI failures in production-catalog-continuity/release-check. Audit remains 1 low/6 moderate/1 high including Vite GHSA-587h-7wmj-h5pm; dependencies unchanged. Existing Admin font build warnings remain.
+
+Build evidence correction: historical `VITE_FF_MEAL_PLANNER_V2` / `VITE_FF_MEAL_COMPOSITION_V2` names do not drive the actual feature modules. Those successful invocations only prove a default build, not paired-ON. Historical receipts/tails are preserved; the correct-flags final build above supersedes that claim. The real-OFF browser also verifies the actual Worker gates, without feature-module interception.
+
+146 bound payloads: 72 PNG, 72 axe JSON, two behavior summaries. Nine states x four viewport/text configurations x two Chromium contexts (mobile-390, desktop-1440). Configurations: 320x568/text1, 320x420/root text200, 390x844/text1, 1440x900/text1. All 512 measured buttons/choices meet the checked 44px and horizontal bounds. All 72 axe reports have zero reported violations; all 72 have incomplete color-contrast. No horizontal document/text overflow or broken image was observed. This is bounded evidence, not complete accessibility acceptance.
+
+Private full recovery verification after the implementation matches original Argon WIP: 22,763 regular files/772 symlinks; bytes, modes, links, HEAD, index and status match; zero worktree differences; private parent 0700. Authorized shared Git metadata changes are disclosed separately. Recovery location remains private. Selected salvage 54 paths, Argon ledger 69 rows and asset ledger 12 rows remain intact; file decisions 104; all 38 owner statuses PENDING.
+
+No stock import, actual swap mutation, successful clipboard/native share, Week offline durability, full Tab traversal, native zoom, physical-device, screen-reader, performance, live-provider or production certification. Generation transport is held only for pending appearance, then released to the real local Worker. Root-font scaling and reduced motion are simulations. Full-page capture after control scrolling can show displaced fixed navigation/skip-link/modal framing; screenshots do not prove viewport occlusion or pixel acceptance. Manual contrast review remains open. Existing ON evidence is preserved separately; this packet does not complete all UI10 acceptance.
+
+Report: `docs/takolio-v2/takeover/UI_C9_WEEK_FLAG_OFF.md`; exact receipts: `evidence/week-off-checks.json`. Next unblocked packet: manual contrast/evidence-gap audit on existing Week and cross-screen text/control colors, using reproducible computed-color pairs and honest treatment of gradients, opacity and capture artifacts. Also queue explicit local-only selected stock import, actual swap and clipboard success/error coverage under UI10 before claiming complete flag-OFF behavior. Week durable offline service risks require their own domain packet/ADR. Owner review, native devices/assistive technology, inherited CLI failures and dependency findings remain open. No push, PR publication, merge, deploy, remote migration or production action.
+
+Finalization executed: protected-main audit PASS with 5,837 unchanged protected base paths; historical/current evidence, changed-text credential/private-recovery-path and whitespace validation PASS. All eight historical document tails and the previous 103 file decisions are preserved; only SCREEN_PROGRESS rows 23-27 changed, retaining previous field values as prefixes. All 38 owner reviews remain PENDING. These results precede the separate local documentation checkpoint.
+
+---
+
+# Takolio V2 continuation - Offline/error row 38 (2026-10-24 JST)
+
+Status:`LOCAL_OFFLINE_ERROR_REFLOW_VERIFIED`. Implementation `d44b98ca292b24baf954a7bf3c6b1039661cfd95`, branch `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Retained the existing OfflineBanner, WifiOff/RefreshCw icons, copy, subscriptions and retry handler. Added flex wrapping with a flexible status span, the existing 44px tap-target token and a polite atomic status region. The previous retry measured 24px at normal text and pending text intersected the button at 320px/text200. No new illustration was evidenced; no asset replacement or frontend rebuild.
+
+Final browser 4/4 in 30.3s; focused sync/query/services/Week/navigation/shell regression: 6 files / 160 tests in 1.57s (wall 2.42s). Targeted ESLint, pnpm lint, typecheck, local migration smoke, default build and paired planner/composition build PASS. Full suite Node 24.16.0/resolved TMPDIR: 410/412 files; 9, 164/9, 169 tests in 202.40s (wall 203.32s); same five inherited encoded-space CLI failures in production-catalog-continuity/release-check. Dependency audit retains 1 low / 6 moderate / 1 high including Vite GHSA-587h-7wmj-h5pm; dependencies unchanged. Existing Admin font warnings remain on builds.
+
+136 bound payloads: 64 PNG, 64 axe JSON and 8 behavior summaries. Comparable baseline and final each cover four states at 320x568, 320x420/root text200, 390x844 and 1440x900 in both mobile-390 and desktop-1440 contexts. Baseline: 2 failed / 2 passed in 34.7s: 24 missing status semantics, 12 short retries and 2 text overlaps; final zero instances of these defects. All 32 final axe reports have zero reported violations; 8 have incomplete color-contrast. All 24 final retry measurements meet 44px and viewport reachability; disabled pending state and measured shell offset pass.
+
+Actual local network abort queues one shopping write; reload retains its owner, operationId and exact body. Automatic online 500 and held manual 500 preserve that queue and an empty server list. Focus+Enter retry disables the button and prevents duplicate activation; next retry reaches the real local Worker and stores exactly one item with its original ID/body. Queue and banner clear, and reload retains that one server item. Inventory, family, current-plan and onboarding snapshots remain unchanged. Separate shaped notifications 500 shows the existing InlineError, distinct from offline; keyboard retry recovers actual local notifications with no monitored API writes and unchanged domain snapshots. InlineError requires no source change.
+
+Post-implementation private recovery verification matches original Argon WIP: 22, 763 regular files / 772 symlinks; bytes, modes, links, HEAD, index, status; zero worktree differences; private parent 0700. Authorized shared Git metadata changes are disclosed separately; exact recovery location remains private. Selected salvage 54 paths, Argon ledger 69 rows, asset ledger 12 rows intact; file decisions 103; all 38 owner statuses PENDING.
+
+Isolated Chromium/local Worker/SQLite with reduced motion and root-font scaling; not OS zoom, physical-device, screenreader, performance, live-provider or production certification. navigator.onLine/events and 500 responses are explicitly shaped; API abort, durable storage, owned queue and local server replay are real. Keyboard coverage uses focus+Enter and does not certify full Tab traversal or announcements in assistive technology. Eight final incomplete contrast results require manual review. Full-page mobile capture can show fixed-navigation artifacts. No AppErrorBoundary crash or adversarial cross-tenant certification; full planner flag-OFF Week remains open.
+
+Report:`UI_C8_OFFLINE_ERROR.md`; receipts:`docs/takolio-v2/takeover/evidence/offline-checks.json`. Next bounded packet: cross-screen regression and evidence-gap audit, prioritizing true planner flag-OFF Week compatibility and manual accessibility/device review. All 38 screen rows now have bounded runtime evidence, including protected Plus presentation, while all 38 owner reviews remain PENDING; this is not product completion or release approval. Inherited CLI/dependency findings remain open. No push, PR publication, merge, deploy, remote migration or production action.
+
+Finalization executed: protected-main audit PASS with 5, 837 unchanged protected base paths; evidence, credential/private-recovery-path and whitespace validation PASS. All eight historical document tails and the previous 101 file decisions are preserved; only SCREEN_PROGRESS row 38 changed. These results precede the separate local documentation checkpoint.
+
+---
+
+# Takolio V2 continuation - Privacy/Data row36 (2026-10-24 JST)
+
+Status: `LOCAL_PRIVACY_DATA_AUDIT_VERIFIED`. Implementation `23585223c3c6747cce3dd132a2985cb75580947a` (test only), branch `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main: `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Retained the existing UI08 PrivacyDataPage byte-for-byte from canonical main, including its existing components, icons and truthful unavailable export/delete states. Reviewed Profile and App Settings entry links, route wiring, shared account/header presentation and the local /api/v1/me boundary. Added two browser tests across two contexts; no runtime source, CSS, asset, API or backend change was justified by the observed behavior.
+
+Browser: 4/4 passed in 31.8s. Targeted ESLint, pnpm lint, pnpm typecheck, local migration smoke, default build and paired planner/composition build PASS. Full suite with Node v24.16.0 and resolved TMPDIR: 410/412 files and 9,164/9,169 tests passed in 198.72s (wall 199.62s); the same five inherited production-catalog-continuity/release-check CLI failures remain. pnpm audit retains 1 low / 6 moderate / 1 high, including Vite GHSA-587h-7wmj-h5pm; dependencies are unchanged. Existing Admin font warnings remain on builds.
+
+100 bound payloads: 48 PNG, 48 axe JSON and four behavior summaries. Each of six states is captured at 320x568, 320x420/root text200, 390x844 and 1440x900 in mobile-390 and desktop-1440 contexts. All 48 axe reports have zero reported violations and incomplete color-contrast; all text bounds, document width, assets and 44px back targets pass. Genuine keyboard activation enters from Profile and App Settings and returns to Profile; reload retains disclosures. Five shaped Notification states remain descriptive and never request permission. No monitored API write or download; inventory, shopping, family, current-plan and onboarding snapshots remain unchanged.
+
+Post-implementation full private verification matches the original Argon source: 22,763 regular files / 772 symlinks, bytes, modes, links, HEAD, index and status; zero worktree differences, private parent 0700. Authorized shared Git metadata changes are disclosed separately. Exact recovery location stays private. Selected salvage remains 54 paths; Argon ledger 69 rows and asset ledger 12 rows are intact. File decisions now contain 101 rows; all 38 owner-review statuses remain PENDING.
+
+These are isolated Chromium/local Worker/SQLite checks with reduced motion and root-font scaling. They do not certify physical devices, OS zoom, screen readers, live notification permissions/providers, cross-household access control, performance or production. Permission states are shaped and reload before observation; no live permission-change claim. Full-page mobile screenshots can show fixed-navigation positioning from the browser capture process. All 48 incomplete contrast results require manual review; no before/after visual improvement or owner acceptance is claimed.
+
+Exact receipts: `docs/takolio-v2/takeover/evidence/privacy-checks.json`; report: `UI_C7_PRIVACY_DATA.md`. Next bounded packet: row38 global offline/error source, caller and isolated browser recovery audit; preserve outbox, idempotency, inventory revisions, household isolation and existing Week behavior. Row37 Plus remains protected and its existing presentation evidence is retained. Owner/manual accessibility/device review, inherited full-suite failures and dependency findings remain open. No push, PR publication, merge, deploy, remote migration or production action.
+
+Finalization executed: protected-main audit PASS (5,838 protected paths unchanged); evidence, credential/private-recovery-path and whitespace validation PASS. All eight historical document tails and the previous 99 file decisions are preserved; only SCREEN_PROGRESS row36 changed. These results precede the separate local documentation checkpoint commit.
+
+---
+
+# Takolio V2 continuation - Notification preferences row35 (2026-10-24 JST)
+
+Status:`LOCAL_NOTIFICATION_PREFERENCES_REFLOW_VERIFIED`. Implementation `b8248ca40781620b7eb78a970c3314e8dc12e779` on `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Retained existing UI08 NotificationPreferencesPage, AccountPage, Switch, icons and storage handlers. Root text200 enlarged rem-based thumbs to48px inside the fixed52x48 account switch, visibly escaping it. Appended one notification-row-only CSS rule fixing thumb dimensions at24px. Existing defaults, boolean validation, encoded per-user local key, honest storage/delivery disclosures and all handlers remain unchanged. The selector occurs only on this page; legacy planning switches and the global primitive are unchanged. No missing SVG/illustration was evidenced.
+
+Final browser6/6 in36.9s. Identical final harness on pre-row35 CSS fails6/6 and records39 overflowing thumbs among160 measurements; final160/160 fit. Focused units5files/103tests in2.25s and integration3files/104tests in6.68s ran before the CSS/geometry refinement. Final targeted ESLint, lint, types, local migration smoke, default and paired builds PASS. Final full suite Node24.16.0:410/412files;9164/9169tests in207.77s (wall208.58s), the same five inherited encoded-space CLI failures in production-catalog-continuity/release-check. Audit retains inherited1low/6moderate/1high including Vite GHSA-587h-7wmj-h5pm; dependencies unchanged.
+
+140 bound payloads:64PNG,64axe JSON,12summaries;four viewport/text configs x four captured states x two contexts in each phase. All32final axe reports show zero reported violations and incomplete color-contrast. Each phase measures160controls and160track/thumb pairs. All five Space/Enter choices persist through route remount/reload;invalid types/corrupt JSON fall back safely;genuine retry after shaped quota failure saves. No monitored API writes;family,inventory,shopping,current plan and onboarding snapshots unchanged in the local/retry journeys.
+
+Post-implementation private recovery verification:22,763regular files/772symlinks;original bytes,modes,links,HEAD,index,status match the full private snapshot;zero worktree differences;parent0700. Exact recovery location stays private. Selected salvage54paths,Argon ledger69rows and asset ledger12rows intact;file decisions99;all38owner statuses PENDING.
+
+Reduced-motion Chromium/root-font text200 is bounded simulation, not OS zoom,physical-device,screenreader,live-provider,performance or production certification. Other-owner key retention does not certify a real account switch. Notification denied/quota states are shaped;no real delivery/filter capability is claimed. Full-page captures follow focus/trial scrolling and can include fixed chrome/skip-link artifacts. All32final contrast checks require manual review.
+
+Exact source/log/command receipts:`docs/takolio-v2/takeover/evidence/notification-preferences-checks.json`;report:`UI_C7_NOTIFICATION_PREFERENCES.md`. Next bounded packet:row36 privacy/data source/caller/browser audit, preserving honest unavailable export/delete states and household separation. Row37 Plus remains protected. Owner/device/manual accessibility review remains open. No push,PR publication,merge,deploy,remote migration or production action.
+
+Finalization executed:protected-main audit PASS with5,838unchanged protected base paths;historical/current evidence and changed-text credential/private-path scans PASS;git diff --check PASS;eight historical tails retained byte-for-byte;only row35 changed;FILE_DECISIONS appended97to99. Initial ad-hoc row-difference check used a nonexistent CSV field and was corrected to screen_slug;no product/evidence mutation resulted.
+
+---
+
+# Takolio V2 continuation - Planning settings row34 (2026-10-24 JST)
+
+Status:`LOCAL_PLANNING_SETTINGS_SAFETY_SCOPE_VERIFIED`. Implementation `b82701c7ba6ffd561799164cb9506377391126fb` on `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Retained existing UI08 PlanningSettingsPage and family/legacy editors. Replaced the profile link label that implied hard allergy editing with an accurate tastes/spice label, and added one note directing hard allergy/forbidden constraints to the family editor above. No handlers, API, CSS, components, assets or protected systems changed. Added four bounded browser journeys; legacy profile tastes remain separate from family hard safety.
+
+Paired composition-ON browser:6 passed/2 skipped in2.0m; actual composition-OFF after-only:2 passed/6 skipped in20.3s. Focused units:6 files/111 tests in2.67s; integration:4 files/112 tests in7.47s. Targeted ESLint, lint, types, local migration smoke, default and paired builds PASS; targeted lint/types rerun after OFF-only harness correction PASS. Full suite under Node24.16.0:410/412 files,9,164/9,169 tests in209.07s (wall210.03s); same five inherited encoded-space CLI failures remain in production-catalog-continuity/release-check. Audit retains inherited1low/6moderate/1high including Vite GHSA-587h-7wmj-h5pm; dependencies unchanged.
+
+286 bound payloads:136 PNG,136 axe JSON,14 summaries. Paired before/after:four viewport/text configs x eight states x two contexts. Composition-OFF after-only adds eight captures. All72 final axe reports have zero reported violations and incomplete color-contrast;1,264 paired and128 OFF control measurements. Real family PUT/reload, held pending, real409/adopt/retry, shaped500/retry and unknown allergen retention pass. Profile taste PATCH does not change hard safety. Existing plan remains unchanged except legitimate derived requires_revalidation/stale_preferences; inventory, shopping and onboarding unchanged. Read/offline guest journeys make no monitored writes; guest makes no family request. OFF retains real Week priorities and performs one exact preferences PATCH/reload without plan creation.
+
+Post-implementation private recovery verification matches original Argon WIP:22,763 regular files/772 symlinks; bytes, modes, links, HEAD, index and status match; zero worktree differences; private parent0700. Exact backup location stays private. Selected salvage54 paths, Argon ledger69 rows and asset ledger12 rows intact; file decisions97; all38 owner statuses PENDING.
+
+Reduced-motion Chromium/root-font text200 simulations do not certify OS zoom, physical devices, screen readers, live providers, full planner flag-OFF Week, performance or production. Composition-OFF preview still enables planner. Full-page captures follow trial-control/focus scrolling and can include fixed chrome/skip-link artifacts; no pixel or owner acceptance claimed. All72 final contrast checks require manual review.
+
+Exact source/log/command receipts:`docs/takolio-v2/takeover/evidence/planning-settings-checks.json`; report:`UI_C7_PLANNING_SETTINGS.md`. Next bounded packet:row35 notification preferences source/storage/caller/browser baseline, preserving existing local intent and disclosing its actual scope; no delivery/provider promises. Owner/device/manual accessibility review remains open. No push, PR publication, merge, deploy, remote migration or production action.
+
+Finalization executed:protected-main audit PASS with5,838 unchanged base paths outside the explicit UI/test/handoff allowlist; all historical/current evidence and changed-text credential/private-path scans PASS; git diff --check PASS; eight historical tails retained byte-for-byte; only screen row34 changed; FILE_DECISIONS appended95 to97 without changing previous rows.
+
+---
+
+# Takolio V2 continuation - Food preferences row33 (2026-10-24 JST)
+
+Status: `LOCAL_FOOD_PREFERENCES_SESSION_VERIFIED`. Implementation `793ade743aecc4cafd0c39f8e1bd3e457f75bc50` on `codex/takolio-v2-rescue`; integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Existing UI08 FoodPreferencesPage retained. Corrected two offline-only messages to disclose that choices apply to this session and disappear on reload. Added one unit case and three browser journeys across two contexts. No persistence/API/store/handler/CSS/component/asset or protected system changes. Legacy tastes `/preferences` remain separate from hard safety `/family-preferences`.
+
+Browser 6/6 in 2.4m; focused 5 files/103 unit tests (2.19s) and 3 files/104 integration tests (7.63s); targeted ESLint, lint/types, local migrations and default/paired builds PASS. Full suite rerun under v24.16.0: 410/412 files, 9,164/9,169 tests; duration 197.54s (transform 15.86s, setup 4.53s, import 95.05s, tests 1175.07s, environment 24.69s), wall 198.76s. Same five inherited encoded-space CLI failures remain. Initial Node25 suite was interrupted after a stalled synchronous Python child; no completed count claimed for that attempt. Audit retains inherited 1 low/6 moderate/1 high including Vite GHSA-587h-7wmj-h5pm.
+
+268 bound payloads: 128 PNG, 128 axe JSON and twelve summaries. Four viewport/text configs x eight states x two contexts per phase. All 64 final axe reports have zero reported violations with incomplete color-contrast; 1,256 measured controls including disabled actions. Real local PATCH/reload preserves size7, unknown vocabulary and language; pending lock, shaped500 retry and unsaved-discard checks pass. Hard safety, inventory, shopping and onboarding snapshots unchanged. Read/offline monitored journeys make no writes; offline selections survive navigation and reset on reload.
+
+Post-implementation private recovery verification matches original Argon WIP: 22,763 regular files / 772 symlinks, bytes/modes/links/HEAD/index/status, zero worktree differences, private parent0700. Exact backup location stays private. Selected source54 paths, Argon ledger69 rows and asset ledger12 rows intact; file decisions95; all38 owner statuses PENDING.
+
+Root-font text200/reduced-motion Chromium and shaped read/write500 do not certify OS zoom, physical devices, screen readers, live providers, full Week-OFF, performance or production. Full-page captures follow trial-control/focus scrolling and can include fixed chrome/skip links; no pixel or owner acceptance claimed.
+
+Exact commands/source/log hashes: `docs/takolio-v2/takeover/evidence/food-preferences-checks.json`. Report: `UI_C7_FOOD_PREFERENCES.md`. Next bounded packet: row34 planning settings source/API/browser baseline; preserve revision conflict handling, hard allergen/exclusion authority, current meal plans, household isolation and legacy flag compatibility. Owner/device/manual accessibility review remains open. No push, PR publication, merge, deploy, remote migration or production action.
+
+---
+
+# Takolio V2 continuation - Settings row32 (2026-10-24 JST)
+
+- `LOCAL_SETTINGS_PENDING_VERIFIED`: duplicate prompt reproduced; existing install action now disabled while choice is pending.
+- Implementation `b7a32b69f19f06bac4dbf7bc6d61ecd3bcce1969` on `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Fresh read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`.
+- Browser 6/6 in 51.4s; focused 76 unit + 104 integration tests; targeted ESLint, lint/types, local migrations, default and paired builds PASS. Full suite PARTIAL: 410/412 files, 9,163/9,168 tests in 200.86s; five inherited encoded-space CLI failures, no timeout. Audit retains inherited 1 low / 6 moderate / 1 high, including Vite GHSA-587h-7wmj-h5pm.
+- 268 bound payloads: 128 PNG, 128 axe JSON, twelve summaries. All 64 final axe reports show zero violations and incomplete contrast; 232 controls measured (including disabled actions). Four viewport/text configs across two contexts and eight states. Accepted/dismissed calls change from two to one with pending action disabled. CacheStorage clears while private localStorage data/outbox and pending shopping projection survive reload; server inventory/shopping snapshots equal. Two automatic queue POST retries per context stay aborted; zero writes is not claimed.
+- Full private recovery recheck after implementation matches the original Argon workspace: 22,763 regular files / 772 symlinks, bytes/modes/links/HEAD/index/status, zero worktree differences and parent 0700. Recovery path stays private. Selected source 54 paths, Argon ledger 69 and assets twelve remain intact; file decisions 92; all 38 owner statuses PENDING.
+- Detailed report `docs/takolio-v2/takeover/UI_C7_SETTINGS.md`; exact commands and limits in `TEST_BASELINES.md` and settings receipts. Next bounded packet: row33 food preferences source/API/browser baseline under UI08, preserving wire fields, allergy/diet/exclusion semantics, household isolation and persistence. Owner/manual accessibility/device review remains open. No push, PR publication, merge, deploy, remote migration or production action.
+
+---
+
+# Takolio V2 continuation - Household row31 checkpoint (2026-10-24 JST)
+
+Evidence wording correction: retained household `after.log` records three test definitions across two browser contexts, 6/6 executions in 19.1s. Final frozen run remains 6/6 in 19.3s. Only receipt/report wording changed; source and log hashes remain intact. Evidence/protected-path/whitespace validation rerun before this documentation-only checkpoint. Next active packet remains row32 Settings.
+
+- `LOCAL_HOUSEHOLD_REFLOW_VERIFIED`: existing UI08 screen retained; bounded grid/text wraps fix four baseline requested-width failures. No fabricated sharing actions.
+- Implementation `d9107856888cafd2dc3d0462f4a03595c7b72fa4` on `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`. Original Argon workspace is unchanged; full private snapshot recheck matches 22,763 regular files / 772 symlinks, bytes/modes/links/HEAD/index/status with zero worktree differences and parent permissions 0700.
+- Final browser 6/6 in 19.3s; focused 76 unit + 104 integration tests; targeted ESLint, lint/types, local migration smoke, default and actual paired builds PASS. Full suite remains PARTIAL: 410/412 files, 9,163/9,168 tests in 192.21s; five inherited encoded-space CLI failures, no timeout. Audit remains inherited 1 low / 6 moderate / 1 high. Household evidence binds 108 payloads (48 PNG, 48 axe, twelve summaries), including 24 final zero-violation axe reports with incomplete contrast and four failing baseline requested-width captures.
+- Evidence: `docs/takolio-v2/takeover/UI_C7_HOUSEHOLD.md`; row31 and ninety file decisions updated. All owner review remains PENDING.
+- Registered and guest monitored journeys issue no writes after setup; registered inventory/shopping snapshots remain equal. Long-name journey shapes cache and retains after-only stock/shopping reads. Baseline long name has spaces; final is unbroken, so no matched unbroken-name baseline is claimed. Root-font checks do not certify OS zoom, devices or screen readers.
+- Next action: bounded row32 App Settings source/API/browser baseline under UI08, preserving cache/outbox/data semantics. Family invite/join/member-list APIs remain unavailable. Owner visual/manual accessibility review, full Week-OFF, physical devices, providers, performance and production remain open. No push, merge, deploy, remote migration or production action.
+
+---
+
+# Takolio V2 continuation - Profile row30 checkpoint (2026-10-23 JST)
+
+- `LOCAL_PROFILE_REFINEMENT_VERIFIED`: UI08 profile reused; one honest notification metadata correction plus three local browser journeys.
+- Implementation `6cb0d462813482b8137d975b207d8b530fc55776` on `codex/takolio-v2-rescue`, integration `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`. Read-only canonical main remains `90b94129113b41e34701d99f51175cfa81cb73de`. Original Argon workspace is unchanged; the full private snapshot recheck matches 22,763 regular files / 772 symlinks, bytes/modes/links/HEAD/index/status with zero worktree differences and parent permissions 0700.
+- Final browser 6/6 in 42.2s; focused 76 unit + 104 integration tests; targeted ESLint, lint/types, local migration smoke, default and actual paired builds PASS. Full suite remains PARTIAL: 410/412 files, 9,163/9,168 tests in 185.62s; five inherited encoded-space CLI failures, no timeout. Audit remains inherited 1 low / 6 moderate / 1 high. Profile evidence binds 153 payloads (72 PNG, 72 axe, nine summaries), including 48 final zero-violation axe reports with 48 incomplete contrast checks and 192 actionable measured controls.
+- Evidence: `docs/takolio-v2/takeover/UI_C7_PROFILE.md`; row30 and file decisions 88 updated. Owner review remains PENDING.
+- Next action: bounded row31 household/family source review and isolated local baseline, preserving membership/role/server authority. Owner visual/manual accessibility review, complete destination mutation/permission cases, actual logout commit, live providers, full Week-OFF, physical devices and performance remain open. No push, merge, deploy, remote migration or production action.
+
+---
+
+# Takolio V2 continuation - Notifications row29 checkpoint (2026-10-23 JST)
+
+- `LOCAL_NOTIFICATIONS_REFINEMENT_VERIFIED`: existing notifications/inbox and device-local preference contracts retained; one scoped wrapping rule fixes measured long-content overflow.
+- Implementation `8c1ad40ec5e63587c8b3b2900d0e683b35a3c794` on `codex/takolio-v2-rescue`; original Argon workspace and private snapshot remain byte-for-byte recoverable.
+- Browser 4/4, focused 76 unit + 104 integration, lint/types/migrations/builds pass; full suite remains partial at 9,163/9,168 with five inherited encoded-space CLI failures.
+- Evidence: 143 notification payloads, 60 final zero-violation axe reports, 60 actionable preference-link measurements; contrast/manual and owner review remain pending.
+- Next: row30 profile/account source/runtime baseline. No payment action, merge, push, deploy or production operation.
+
+---
+
+## Takolio V2 safe continuation - Shopping row28 (2026-10-23 JST)
+
+`LOCAL_SHOPPING_REFINEMENT_VERIFIED`: existing UI06/T24 shopping behavior is verified in the isolated integration worktree. Two CSS values improve checked-row contrast; no backend, inventory, auth, payment, schema, dependency or production infrastructure changed. Focused 61 unit + 53 integration tests, lint/types/migrations/builds and frozen mobile+desktop browser 4/4 pass. Full suite remains partial (9,163/9,168; five inherited encoded-space CLI failures); audit remains inherited 1 low/6 moderate/1 high. Evidence: 195 payloads, 88 final zero-violation axe reports, 154 dialog controls; 38 incomplete contrast checks require manual review. Recovery remains byte-perfect against the private snapshot. Next bounded task: row29 notifications source review and isolated local baseline. Owner acceptance and publication/release approval remain pending.
+
+---
+## Takolio V2 safe continuation - Planner checkpoint (2026-10-23 JST)
+
+Status: `LOCAL_PLANNER_REFINEMENT_VERIFIED`. Integration: `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`; branch `codex/takolio-v2-rescue`; latest read-only GitHub main `90b94129113b41e34701d99f51175cfa81cb73de`. Original Argon workspace remains unchanged and matches the full private snapshot: 22,763 regular files / 772 symlinks, bytes/modes/links/HEAD/index/status, zero worktree differences. Protected audit covers 5,845 unchanged main paths; the one-path decrease from cooking is newly allowlisted Planner CSS. Original WIP, components, assets and prior evidence remain recoverable.
+
+Changes: refined the existing UI06 picker in `src/web/styles/kitchen-planning.css` after reproducing inaccessible role/choose controls at 320x420/text200 and additional 320x568/text200 overflow. The panel now scrolls as one container with scoped specificity over nested result utilities. Added local browser coverage; no route, API, store, backend, stock, auth, security, payment, schema, dependency or infrastructure change. Implementation: `30693884c3b66ebe3d4fcd48fb57100853703826`; prior cooking implementation/docs: `6276a6b9` / `36a3e34d`.
+
+Checks: final lint, web/Worker types, targeted E2E ESLint, local migration smoke, default build and actual paired Vite build PASS. Focused planner units 4 files / 43 tests PASS. Final browser 2/2 PASS in 38.3s: automatic seven-slot revision1/reload, manual one-slot component revision1->2/reload, explicit three-day shared shopping/reload and unchanged inventory. Nine picker viewport/text configurations verify 36 reachable/actionable controls. Canonical Week ON redirects passed before the final picker specificity correction; synthetic feature-module OFF keyboard setup passed, without full Week-OFF certification.
+
+Failures/limits: full suite PARTIAL at 404/412 files, 9,157/9,168 tests in 466.01s: five inherited encoded-space CLI path failures plus six 5000ms timeouts. Unchanged subset retry passed all six timeout cases, retains five CLI failures (6/8 files, 413/418 tests, 13.76s); not full-suite PASS. Audit remains 1 low / 6 moderate / 1 high including Vite GHSA-587h-7wmj-h5pm. Dependencies/protected tests unchanged. Browser evidence is synthetic local Worker/SQLite and root-font simulation, not physical-device, OS zoom, live-provider, screen-reader or production certification.
+
+Evidence: `docs/takolio-v2/takeover/UI_C5_PLANNER.md` records the kit's UI-C6 packet; `evidence/planner/manifest.json` binds 61 payloads (33 PNG, 24 axe reports, 4 summaries). All 24 axe reports have zero violations but retain incomplete contrast; 12 retain incomplete ARIA checks. Manual accessibility and owner visual review remain pending. Exact commands, source/log hashes and 13 retained attempts are in `evidence/planner-checks.json` and `TEST_BASELINES.md`; recovery has a separate Planner receipt. Screen rows23-27 and file decisions83 are updated; cooking evidence remains historical and unchanged.
+
+Documentation validation: protected-main audit, complete evidence/source/log validation, ledger/screen counts, credential/private-path scan and `git diff --check` all PASS. Earlier historical tails are preserved byte-for-byte.
+
+Next action: bounded row28 saved shopping source review and isolated API/browser baseline for quantity validation, pending/offline/conflict states and keyboard/reflow, reusing UI06/T24 and preserving stock versus purchase demand, revisions/idempotency, tenancy and Week compatibility. Local continuation is authorized. Publication, merge, deploy, remote migrations and production require explicit approval; none occurred. Historical entries below remain unchanged.
+
+---
+
+## Takolio V2 safe continuation - cooking checkpoint (2026-10-23 JST)
+
+Status: `LOCAL_COOKING_REFINEMENT_VERIFIED`. Integration: `/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration`; branch `codex/takolio-v2-rescue`; read-only GitHub main `90b94129113b41e34701d99f51175cfa81cb73de`. Original Argon WIP at `/Users/tunbee27/Documents/New project/Takolio` remains unchanged and matches the full private snapshot: 22,763 regular files, 772 symlinks, bytes/modes/links/HEAD/index/status and zero worktree differences.
+
+Changes: preserved Argon cooking mode, review, timer, completion and all existing assets/components. Fixed only the evidenced review return link so `recipe.servings` survives back-navigation and reload. Added Codex-authored browser coverage for timer deadlines, exit dialog focus/cancel, serving persistence, explicit actual-use guards, committed-response-loss retry/replay, empty completion recovery and eight viewport/text configurations. No backend, inventory, auth, security, payment, migration, dependency or production infrastructure changed.
+
+Checks: `pnpm lint`, `pnpm typecheck`, `pnpm check:migrations`, default build, paired build with planner/composition flags, targeted ESLint and final paired browser 10/10 pass. Default-V1 bounded cooking subset 4/4 pass. Full canonical-TMPDIR suite remains partial at 9,163/9,168 in 447.30s with five inherited encoded-space CLI path failures. Audit retains eight inherited findings (1 low / 6 moderate / 1 high), including Vite GHSA-587h-7wmj-h5pm. Exact commands, hashes and retained failures are in `docs/takolio-v2/takeover/evidence/cooking-checks.json` and `TEST_BASELINES.md`.
+
+Evidence: cooking manifest has 75 files (38 PNG, 32 zero-violation axe reports and 5 sanitized summaries). The before evidence reproduces the missing servings query; after evidence confirms zero writes before explicit confirmation and same-key idempotent replay after a committed response loss. Screen rows 21-22 are updated; owner visual acceptance remains pending.
+
+Limits: synthetic local API/root-font checks do not certify physical devices, OS zoom, screen readers, speech/background alarms, Week-OFF, live integrations, performance or production. No push, PR publication, merge, deployment, remote migration or production action occurred.
+
+Next action: begin bounded planner rows 23-27 with a read-only source review and isolated local API/browser baseline, using existing UI06/current contracts and preserving Week compatibility, paired flags, revision/idempotency and stock boundaries. Local continuation is already authorized. Publication, merge, deployment and production remain approval-gated. Implementation commit: `6276a6b929304c1c207b3355c3827fdd762ef287`; prior recipe-detail commit: `61150c83e5a97882aaf31d700f01a28f52ed8393`.
+
+---
+
 ## Admin live acceptance continuation - 2026-10-21 JST
 
 The live evidence remains bound to exact source `c7417120f6226d3a52d25e900af5b82bb8f311b3`; no newer source has been deployed. The working tree contains a scoped responsive CSS fix and its local E2E evidence. The owner authenticated through the real Cloudflare Access staging application and completed a read-only smoke over the Admin surface. The owner acceptance harness recorded 26/26 PASS: 13 API reads returned HTTP 200 with `Cache-Control: no-store` and zero forbidden credential-field names, missing/wrong CSRF returned `403 ADMIN_CSRF_FAILED` without state change, self-grant and self-revoke returned `403 ADMIN_FORBIDDEN`, a preference round-trip succeeded and was restored, and the corresponding success/denial audit rows were present. A small read load of 12 requests at concurrency 3 returned 200; max and p95 latency were 6.307s, so this is a bounded smoke measurement rather than a capacity certification.

@@ -1,4 +1,4 @@
-import { pushOp, type PendingScope } from '../lib/sync';
+import { pushOp, type PendingOp, type PendingScope } from '../lib/sync';
 import {
   capturePrivateSession, clearPrivateIdentity, currentPrivateScope, isOfflineGuestSession,
   privateCacheKey, privateSessionBlocked, removePrivateCaches,
@@ -148,9 +148,9 @@ export function queueWrite(
   label: string,
   dedupeKey?: string,
   headers?: Record<string, string>
-): void {
+): PendingOp {
   if (privateSessionBlocked()) throw new ApiError('auth', 'Đồng bộ riêng tư đã tạm dừng.');
-  pushOp({ path, method, body, label, dedupeKey, headers, ...getCurrentScope() });
+  return pushOp({ path, method, body, label, dedupeKey, headers, ...getCurrentScope() });
 }
 
 export function getHouseholdId(): string {

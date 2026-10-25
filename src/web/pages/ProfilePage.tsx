@@ -17,7 +17,7 @@ const GROUPS = [
   {
     title: 'Ứng dụng & dữ liệu',
     items: [
-      { label: 'Tùy chỉnh thông báo', icon: Bell, path: '/settings/notifications', meta: 'Lựa chọn trên thiết bị và kênh gửi' },
+      { label: 'Tùy chỉnh thông báo', icon: Bell, path: '/settings/notifications', meta: 'Lựa chọn nhắc nhở trên thiết bị' },
       { label: 'Cài đặt ứng dụng', icon: Globe, path: '/settings/app', meta: 'Cài lên màn hình chính, ngôn ngữ và bộ nhớ đệm' },
       { label: 'Quyền riêng tư & dữ liệu', icon: PackageCheck, path: '/settings/privacy', meta: 'Dữ liệu đã lưu, AI và quyền trình duyệt' },
     ],

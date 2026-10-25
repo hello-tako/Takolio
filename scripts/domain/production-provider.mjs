@@ -5,11 +5,13 @@ import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
 import { confirmDeploymentMutation } from './deployments.mjs';
-import { ACCOUNT, ZONE, REPOSITORY, REPOSITORY_ID, audit, cloudflareRead } from './audit-cloud.mjs';
+import { ACCOUNT, ZONE, REPOSITORY, REPOSITORY_ID, audit, cloudflareRead, sanitizeRuntime } from './audit-cloud.mjs';
 import { prepareReleaseConfig, configHash } from './release-config.mjs';
 import { privateDomainReceipt, restorePrivateDomains, hasPrivateDomains } from './receipt-privacy.mjs';
 import { planHosts, attachHosts, detachCreatedHosts, validateDomains } from './hosts.mjs';
-import { unchangedAudit, verifyUploadedVersion, recoveryAction } from './staging-release.mjs';
+import { unchangedAudit, verifyUploadedVersion } from './staging-release.mjs';
+import { compatibleRecoveryPlan, compatibleRecoveryVersionId, verifyCompatibleRecoveryVersion, compatibleRecoveryAction } from './compatible-recovery.mjs';
+import { captureRecoveryBuild, verifyServedRecoveryAssets } from '../family-meal-release.mjs';
 import { verifyEvidenceRun, verifyStagingAcceptance, verifyProductionCertification,
   isProductionMutation, validateProductionRecovery, observeProduction, productionUploadVersion, productionRecoveryIdentity } from './production-release.mjs';
 import { capturedCommand } from '../cloudflare-deploy-retry.mjs';
@@ -125,15 +127,19 @@ async function fenced(context) {
   if (!isDeepStrictEqual(current.operational, context.audit.operational)) throw new Error('Production operational settings changed');
 }
 async function verifyRestored(context, mutation) {
+  const versionId = compatibleRecoveryVersionId(context);
+  const version = await read(`${script}/versions/${versionId}`);
+  verifyCompatibleRecoveryVersion(context, version);
   const restored = await capture(context.manifest.schema);
   const expected = structuredClone(context.audit);
-  expected.worker.deploymentId = restored.worker.deploymentId;
+  expected.worker = { name: context.audit.worker.name, ...sanitizeRuntime(version, {
+    id: mutation.deploymentId, strategy: 'percentage', versions: [{ version_id: versionId, percentage: 100 }],
+  }) };
   unchangedAudit(expected, restored);
-  const previous = await authority(profiles.production.legacy);
-  for (const key of ['commit', 'environment', 'configuredMode', 'servedFingerprint', 'servedRecipeCount', 'releaseId', 'fallbackReason']) {
-    if (!isDeepStrictEqual(previous[key], context.manifest.previousRecipeAuthority[key])) throw new Error('Restored production authority differs');
-  }
-  context.recovery = { state: 'previous-version-restored', ...mutation };
+  const proof = await prove(profiles.production.legacy, context);
+  const compiledAssets = await verifyServedRecoveryAssets(context.compatibleRecovery.build, { url: profiles.production.legacy });
+  unchangedAudit(restored, await capture(context.manifest.schema));
+  context.recovery = { state: 'compatible-version-restored', ...mutation, proof, compiledAssets };
   context.state = 'rolled-back'; persist(context);
 }
 
@@ -170,6 +176,30 @@ export const productionProvider = {
     writeFileSync(configFile, plan.bytes); writeFileSync(uploadFile, ''); persist(context);
     return context;
   },
+  async prepareRecovery(context) {
+    await gate(context.manifest.sha);
+    unchangedAudit(context.audit, await capture(context.manifest.schema));
+    const plan = compatibleRecoveryPlan(context);
+    await run('pnpm', ['build'], plan.buildEnvironment);
+    const build = captureRecoveryBuild(readJson('dist/composition-flags.json'));
+    context.compatibleRecovery = { sha: context.manifest.sha, plan, build, buildSha256: configHash(JSON.stringify(build)) };
+    const recoveryConfig = resolve(output, 'recovery-wrangler.json');
+    const recoveryUpload = resolve(output, 'recovery-upload.jsonl');
+    writeFileSync(recoveryConfig, plan.bytes); writeFileSync(recoveryUpload, '');
+    context.state = 'recovery-upload-intent'; persist(context);
+    await gate(context.manifest.sha);
+    unchangedAudit(context.audit, await capture(context.manifest.schema));
+    if (configHash(readFileSync(recoveryConfig)) !== plan.sha256 ||
+        !isDeepStrictEqual(captureRecoveryBuild(readJson('dist/composition-flags.json')), build)) {
+      throw new Error('Compatible recovery config or compiled assets changed before upload');
+    }
+    await run('pnpm', ['exec', 'wrangler', 'versions', 'upload', '--config', recoveryConfig, '--strict'], { WRANGLER_OUTPUT_FILE_PATH: recoveryUpload });
+    const records = readFileSync(recoveryUpload, 'utf8').trim().split('\n').map((line) => JSON.parse(line));
+    context.compatibleRecovery.versionId = productionUploadVersion(records);
+    verifyCompatibleRecoveryVersion(context, await read(`${script}/versions/${context.compatibleRecovery.versionId}`));
+    unchangedAudit(context.audit, await capture(context.manifest.schema));
+    context.state = 'recovery-prepared'; persist(context);
+  },
   async build(context) {
     await run('pnpm', ['build'], context.plan.buildEnvironment);
     const vars = context.plan.config.vars;
@@ -184,17 +214,22 @@ export const productionProvider = {
   },
   async upload(context) {
     await gate(context.manifest.sha);
+    const recoveryId = compatibleRecoveryVersionId(context);
+    verifyCompatibleRecoveryVersion(context, await read(`${script}/versions/${recoveryId}`));
     unchangedAudit(context.audit, await capture(context.manifest.schema));
     if (configHash(readFileSync(configFile)) !== context.plan.sha256) throw new Error('Production candidate config changed');
     context.state = 'upload-intent'; persist(context);
     await run('pnpm', ['exec', 'wrangler', 'versions', 'upload', '--config', configFile, '--strict'], { WRANGLER_OUTPUT_FILE_PATH: uploadFile });
     const records = readFileSync(uploadFile, 'utf8').trim().split('\n').map((line) => JSON.parse(line));
     const versionId = productionUploadVersion(records);
+    if (versionId === context.compatibleRecovery.versionId) throw new Error('Normal candidate and compatible recovery must be distinct versions');
     context.uploadedVersionId = verifyUploadedVersion(await read(`${script}/versions/${versionId}`), context.plan, context.audit.worker);
     context.state = 'uploaded'; persist(context);
   },
   async activate(context) {
     await gate(context.manifest.sha);
+    const recoveryId = compatibleRecoveryVersionId(context);
+    verifyCompatibleRecoveryVersion(context, await read(`${script}/versions/${recoveryId}`));
     unchangedAudit(context.audit, await capture(context.manifest.schema));
     context.state = 'activation-intent'; context.mutationAttempted = true; persist(context);
     const response = await mutate(`${script}/deployments`, 'POST', {
@@ -247,21 +282,25 @@ export const productionProvider = {
     persist(context);
     if (!context.mutationAttempted) { context.recovery = 'No traffic or hostname mutation attempted'; persist(context); return; }
     validateProductionRecovery(context, env);
+    const recoveryId = compatibleRecoveryVersionId(context);
+    verifyCompatibleRecoveryVersion(context, await read(`${script}/versions/${recoveryId}`));
     if (hasPrivateDomains(context)) restorePrivateDomains(context, await domainList());
     const active = await currentDeployment();
-    if (recoveryAction(context, active) === 'verify-previous') { await verifyRestored(context, active); return; }
+    if (compatibleRecoveryAction(context, active) === 'verify-recovery') { await verifyRestored(context, active); return; }
     context.activeDeploymentId = active.deploymentId;
     const rollbackGate = async () => {
       const current = await currentDeployment();
       if (current.versionId !== context.uploadedVersionId || current.deploymentId !== context.activeDeploymentId) throw new Error('Production rollback traffic fence changed');
+      verifyCompatibleRecoveryVersion(context, await read(`${script}/versions/${recoveryId}`));
+      verifyUploadedVersion(await read(`${script}/versions/${current.versionId}`), context.plan, context.audit.worker);
       if (!isDeepStrictEqual((await capture(context.manifest.schema)).operational, context.audit.operational)) throw new Error('Production rollback operational fence changed');
     };
     if (context.hosts) await detachCreatedHosts(context.hosts, { list: domainList,
       remove: (id) => mutate(`${base}/workers/domains/${id}`, 'DELETE'), gate: rollbackGate, persist: () => persist(context) });
     await rollbackGate(); context.state = 'rollback-intent'; persist(context);
     const response = await mutate(`${script}/deployments`, 'POST', {
-      strategy: 'percentage', versions: [{ version_id: context.audit.worker.versionId, percentage: 100 }] });
-    const mutation = await confirmDeploymentMutation(response, context.audit.worker.versionId, {
+      strategy: 'percentage', versions: [{ version_id: recoveryId, percentage: 100 }] });
+    const mutation = await confirmDeploymentMutation(response, recoveryId, {
       recordId: (id) => { context.rollbackDeploymentId = id; persist(context); },
       readDeployment: (id) => read(`${script}/deployments/${id}`), readCurrent: currentDeployment,
     });
@@ -272,7 +311,7 @@ export const productionProvider = {
 export async function releaseProduction(provider = productionProvider) {
   const context = await provider.prepare();
   try {
-    for (const step of ['build', 'upload', 'activate', 'proveLegacy', 'attach', 'proveHosts', 'finish']) await provider[step](context);
+    for (const step of ['prepareRecovery', 'build', 'upload', 'activate', 'proveLegacy', 'attach', 'proveHosts', 'finish']) await provider[step](context);
     return context;
   } catch (error) {
     context.failure = error instanceof Error ? error.message : 'Production release failed';

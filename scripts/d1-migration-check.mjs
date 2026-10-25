@@ -18,6 +18,7 @@ const POST_MEDIA_TIPS = new Set([
   '0038_auth_onboarding_completion.sql', '0039_meal_composition_v2.sql',
   '0040_strict_otp_foundation.sql', '0041_checkout_admission.sql',
   '0042_family_meals_preferences_saved_shopping.sql', '0043_shopping_demand_review.sql',
+  '0044_inventory_display_category.sql', '0045_week_swap_receipts.sql',
 ]);
 const SHA = /^[a-f0-9]{40}$/;
 const SHA256 = /^[a-f0-9]{64}$/;

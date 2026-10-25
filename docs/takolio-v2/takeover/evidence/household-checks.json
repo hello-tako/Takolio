@@ -1,0 +1,190 @@
+{
+  "base_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "implementation_commit": "d9107856888cafd2dc3d0462f4a03595c7b72fa4",
+  "production_actions": false,
+  "environment": "macOS; Node 25.9.0; pnpm 10.33.2; unchanged dependencies; existing isolated Worker/SQLite synthetic registered household and actual local guest; external API fetch and service workers blocked",
+  "source_sha256": {
+    "src/web/pages/FamilySharingPage.tsx": "9cf0c747c176e211c5057052a67d6e2972070594c712142b69dd5555406667e0",
+    "src/web/styles/kitchen-account.css": "a5b2ce0e767a461a083b34641ead32d949446c05e02bef6b09d51e670b97dc35",
+    "tests/e2e/t17-ui/takolio-family-continuation.e2e.ts": "ad8e419f066e787d123e75f3bb6ce278f8e145ffd594681a4388b842bf71f8b0"
+  },
+  "checks": [
+    {
+      "name": "targeted-eslint",
+      "command": "pnpm exec eslint src/web/pages/FamilySharingPage.tsx tests/e2e/t17-ui/takolio-family-continuation.e2e.ts",
+      "exit_code": 0,
+      "seconds": 1.11,
+      "outcome": "PASS final source; existing Admin font warnings where applicable",
+      "local_ignored_log": ".artifacts/takeover/household/checks/targeted-eslint.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "focused-units",
+      "command": "pnpm exec vitest run tests/unit/ui08-account.test.tsx tests/unit/frontend-services.test.ts tests/unit/ui08-route-scope.test.tsx tests/unit/ui11-navigation.test.tsx",
+      "exit_code": 0,
+      "seconds": 2.14,
+      "outcome": "PASS 4 files/76 tests in 1.38s",
+      "local_ignored_log": ".artifacts/takeover/household/checks/focused-units.log",
+      "log_bytes": 256,
+      "log_sha256": "3fa1ecd09a944b5ed65bd76f031fa175b7d546ab7b5801c50e838a6730fc957b"
+    },
+    {
+      "name": "focused-integration",
+      "command": "pnpm exec vitest run tests/integration/frontend-ui-integration.test.tsx tests/integration/auth-tenant-adversarial.test.ts tests/integration/inventory-closed-loop.test.ts",
+      "exit_code": 0,
+      "seconds": 7.34,
+      "outcome": "PASS 3 files/104 tests in 6.67s",
+      "local_ignored_log": ".artifacts/takeover/household/checks/focused-integration.log",
+      "log_bytes": 256,
+      "log_sha256": "c9390fea03e2b5fc6e081ceab38bd598eac0185a4d0d4ccbdc2f31714016cba5"
+    },
+    {
+      "name": "lint",
+      "command": "pnpm lint",
+      "exit_code": 0,
+      "seconds": 6.76,
+      "outcome": "PASS final source; existing Admin font warnings where applicable",
+      "local_ignored_log": ".artifacts/takeover/household/checks/lint.log",
+      "log_bytes": 99,
+      "log_sha256": "3f2044fca43a5e60905becf2ebfc3a21ddd85976975841aa1e16bc87b0f40a6d"
+    },
+    {
+      "name": "typecheck",
+      "command": "pnpm typecheck",
+      "exit_code": 0,
+      "seconds": 16.88,
+      "outcome": "PASS final source; existing Admin font warnings where applicable",
+      "local_ignored_log": ".artifacts/takeover/household/checks/typecheck.log",
+      "log_bytes": 165,
+      "log_sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e"
+    },
+    {
+      "name": "migrations",
+      "command": "pnpm check:migrations",
+      "exit_code": 0,
+      "seconds": 0.52,
+      "outcome": "PASS final source; existing Admin font warnings where applicable",
+      "local_ignored_log": ".artifacts/takeover/household/checks/migrations.log",
+      "log_bytes": 297,
+      "log_sha256": "9616315a9fcbfd77c67784703a16384419539e6a68ccd2838dda07239de25464"
+    },
+    {
+      "name": "build",
+      "command": "pnpm build",
+      "exit_code": 0,
+      "seconds": 9.82,
+      "outcome": "PASS final source; existing Admin font warnings where applicable",
+      "local_ignored_log": ".artifacts/takeover/household/checks/build.log",
+      "log_bytes": 10008,
+      "log_sha256": "6535606aa0e2276c9885af7d42ff0b0716fd2923654e1cf29086d2ce91de4927"
+    },
+    {
+      "name": "paired-build",
+      "command": "VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build",
+      "exit_code": 0,
+      "seconds": 9.58,
+      "outcome": "PASS final source; existing Admin font warnings where applicable",
+      "local_ignored_log": ".artifacts/takeover/household/checks/paired-build.log",
+      "log_bytes": 10008,
+      "log_sha256": "37276232c08e14583350a33f376c65348b501aab395c87ec3d464ae12e35f7c4"
+    },
+    {
+      "name": "audit",
+      "command": "pnpm audit --json",
+      "exit_code": 1,
+      "seconds": 2.58,
+      "outcome": "OPEN_INHERITED 1 low/6 moderate/1 high including Vite GHSA-587h-7wmj-h5pm; dependencies unchanged",
+      "local_ignored_log": ".artifacts/takeover/household/checks/audit.log",
+      "log_bytes": 43734,
+      "log_sha256": "3256cc0c6e0545751f2cfdb3223b90a27a32043a364bb025bc5047465d90103f"
+    },
+    {
+      "name": "browser",
+      "command": "PREVIEW_MEAL_COMPOSITION_V2=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-family-continuation.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/household/final",
+      "exit_code": 0,
+      "seconds": 19.99,
+      "outcome": "PASS 6/6 in 19.3s; 24 final zero-violation axe reports retain incomplete contrast; registered/guest monitored journeys have no writes; registered stock/shopping unchanged",
+      "local_ignored_log": ".artifacts/takeover/household/checks/browser.log",
+      "log_bytes": 10683,
+      "log_sha256": "f54e54a681f5bf5849b7a754f93fa2c8f164b7b5fc7b0feba0450903a85876b5"
+    },
+    {
+      "name": "full-suite",
+      "command": "pnpm test",
+      "exit_code": 1,
+      "seconds": 193.09,
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/",
+      "outcome": "PARTIAL 410/412 files; 9163/9168 tests in 192.21s; same five inherited encoded-space CLI failures; no timeout",
+      "local_ignored_log": ".artifacts/takeover/household/checks/full-suite.log",
+      "log_bytes": 17955,
+      "log_sha256": "4be8923a058779dc59802a81e686f7ba3f91f27ec7ae0cd1d997b5557e38b903"
+    }
+  ],
+  "retained_attempts": [
+    {
+      "name": "after",
+      "outcome": "PASS earlier scoped fix attempt: three test definitions across two contexts, 6/6 executions in 19.1s, before final unbroken-name harness refinement; final checks use checks/browser.log",
+      "local_ignored_log": ".artifacts/takeover/household/after.log",
+      "log_bytes": 10456,
+      "log_sha256": "ddceaccdaff73425508b6c74710f37ec2e97ae8c113325d1e56f034013f74fcb"
+    },
+    {
+      "name": "recovery",
+      "outcome": "PASS full original/private snapshot comparison before implementation commit; private locations retained only in ignored log",
+      "local_ignored_log": ".artifacts/takeover/household/recovery.log",
+      "log_bytes": 624,
+      "log_sha256": "c8528e52d16e55148c65e9254dc85e9884b8ed5e36d6d4ce0a887ab233cc04f3"
+    },
+    {
+      "name": "recovery-after-implementation",
+      "outcome": "PASS full original/private snapshot comparison after implementation commit",
+      "local_ignored_log": ".artifacts/takeover/household/recovery-after-implementation.log",
+      "log_bytes": 624,
+      "log_sha256": "9e8f36b0ea7a09367db724332badaf7836c7e50b7bc1ee4b351866f6ac9e9dd1"
+    },
+    {
+      "name": "remote-main",
+      "outcome": "PASS read-only ls-remote unchanged canonical main; no remote mutation",
+      "local_ignored_log": ".artifacts/takeover/household/remote-main.log",
+      "log_bytes": 57,
+      "log_sha256": "74b0b5609784df7a5fddf1241a9179b9e62a61f3d3671f7fc0a075210071e212"
+    }
+  ],
+  "retained_baseline_artifacts": [
+    {
+      "name": "baseline-last-run",
+      "outcome": "Original baseline artifact records failed run and two failed tests; 4/6 passed, two guest requested-width failures. Raw terminal output was not retained. Before PNG/axe/summaries are manifest-bound; debug directories retained locally without fabricated logs.",
+      "local_ignored_log": ".artifacts/takeover/household/before/.last-run.json",
+      "log_bytes": 145,
+      "log_sha256": "f850fa8fa9da33e46a3b19eeab43be2cc6e67cea08c1454956731e67be5a7a65"
+    }
+  ],
+  "before_requested_width_failures": [
+    {
+      "path": "before/desktop-1440/axe-guest-real-320x420-text2.json",
+      "requestedWidth": 320,
+      "innerWidth": 320,
+      "scrollWidth": 340
+    },
+    {
+      "path": "before/desktop-1440/axe-guest-real-320x568-text1.json",
+      "requestedWidth": 320,
+      "innerWidth": 320,
+      "scrollWidth": 340
+    },
+    {
+      "path": "before/mobile-390/axe-guest-real-320x420-text2.json",
+      "requestedWidth": 320,
+      "innerWidth": 412,
+      "scrollWidth": 412
+    },
+    {
+      "path": "before/mobile-390/axe-guest-real-320x568-text1.json",
+      "requestedWidth": 320,
+      "innerWidth": 330,
+      "scrollWidth": 330
+    }
+  ],
+  "scope": "Existing UI08 read-only household surface; min-w-0 and two scoped text wraps only. No sharing API or fabricated controls added. Registered and guest write monitoring starts after local setup; registered stock/shopping compared before/after. Long-name journey shapes cache and retains after-only stock/shopping reads; no mutation/equality claim for that journey. Baseline long cached name contained spaces; final uses an unbroken name, so no matched unbroken-name baseline comparison. Root-font simulation does not certify physical devices, OS zoom, screen readers, full Week-OFF, providers, performance or production."
+}

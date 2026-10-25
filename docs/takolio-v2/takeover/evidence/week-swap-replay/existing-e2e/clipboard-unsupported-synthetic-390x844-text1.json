@@ -1,0 +1,21 @@
+{
+  "state": "clipboard-unsupported-synthetic",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "rootTextScale": 1,
+  "metrics": {
+    "width": 390,
+    "scrollWidth": 390,
+    "brokenImages": [],
+    "dialogContainsFocus": true
+  },
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ]
+}

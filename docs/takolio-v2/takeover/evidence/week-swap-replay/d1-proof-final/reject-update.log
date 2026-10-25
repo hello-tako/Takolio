@@ -1,0 +1,5 @@
+{
+  "error": {
+    "text": "Week swap receipts are immutable: SQLITE_CONSTRAINT (extended: SQLITE_CONSTRAINT_TRIGGER)"
+  }
+}

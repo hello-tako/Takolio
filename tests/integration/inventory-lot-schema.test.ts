@@ -2,6 +2,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { afterEach, describe, expect, it } from 'vitest';
 import { backfillLegacyInventory, readInventoryTruthSnapshot } from '../../packages/db/src/inventory-truth';
 import { InventoryLotCommandSchema, planSingleLotCommand } from '../../packages/domain/src/inventory-lot-commands';
+import { defaultStorageLocations, legacyInventoryToLot, type LegacyInventoryRow } from '../../packages/domain/src/inventory-truth';
 import { SqliteD1 } from '../helpers/sqlite-d1';
 
 const household = 'demo_household_01';
@@ -16,10 +17,41 @@ const database = (migrate = true) => {
 };
 afterEach(() => databases.splice(0).forEach((db) => db.close()));
 
-async function mapped(db: SqliteD1, owner = household, item = 'item_01') {
-  await backfillLegacyInventory(db, owner);
+// Captured pre-0044 insert shape: historical upgrades must not call the current DB adapter.
+function historicalBackfill(db: SqliteD1, owner: string) {
+  const timestamps = db.query<{ created_at: string; updated_at: string }>(
+    'SELECT created_at, updated_at FROM households WHERE id = ?', owner)[0];
+  const locations = defaultStorageLocations(owner, timestamps.created_at, timestamps.updated_at);
+  const rows = db.query<LegacyInventoryRow>(`SELECT id, household_id, ingredient_id, name, quantity, unit, storage,
+    expiry_date, opened_at, expiry_kind, expiry_source, version, created_at, updated_at
+    FROM inventory_items WHERE household_id = ? ORDER BY id`, owner);
+  const lots = rows.map(legacyInventoryToLot);
+  for (const location of locations) {
+    db.execute(`INSERT INTO storage_locations
+      (id, household_id, type, name, sort_order, is_default, created_at, updated_at)
+      VALUES (?, ?, ?, ?, ?, 1, ?, ?)`,
+    [location.id, owner, location.type, location.name, location.sortOrder, location.createdAt, location.updatedAt]);
+  }
+  for (const lot of lots) {
+    expect(Object.keys(lot)).toHaveLength(24);
+    db.execute(`INSERT INTO inventory_lots
+      (id, household_id, ingredient_id, raw_name, quantity_milli, canonical_unit, storage_location_id,
+       state, purchased_at, opened_at, expiry_at, estimated_expiry_at, expiry_kind, source_type, source_id,
+       version, created_at, updated_at, currency, amount_minor, minor_digits,
+       legacy_expiry_at, legacy_expiry_kind, legacy_expiry_source, legacy_opened_at, legacy_version)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    [lot.id, lot.householdId, lot.ingredientId, lot.rawName, lot.quantityMilli, lot.canonicalUnit, lot.storageLocationId,
+      lot.state, lot.purchasedAt, lot.openedAt, lot.expiryAt, lot.estimatedExpiryAt, lot.expiryKind, lot.sourceType, lot.sourceId,
+      lot.version, lot.createdAt, lot.updatedAt, null, null, null,
+      lot.legacyExpiryAt, lot.legacyExpiryKind, lot.legacyExpirySource, lot.legacyOpenedAt, lot.legacyVersion]);
+  }
+  return { lots, locations };
+}
+
+async function mapped(db: SqliteD1, owner = household, item = 'item_01', historical = false) {
+  const snapshot = historical ? historicalBackfill(db, owner)
+    : await backfillLegacyInventory(db, owner).then(() => readInventoryTruthSnapshot(db, owner));
   db.execute('UPDATE inventory_lots SET legacy_item_id = source_id WHERE source_id = ?', [item]);
-  const snapshot = await readInventoryTruthSnapshot(db, owner);
   const before = snapshot.lots.find((lot) => lot.sourceId === item)!;
   const now = '2026-09-10T00:00:00Z';
   const command = InventoryLotCommandSchema.parse({ type: 'CORRECT', lotId: before.id, expectedVersion: before.version,
@@ -57,7 +89,7 @@ describe('T09 additive schema and immutable command evidence', () => {
       db.seed(readFileSync(`migrations/${file}`, 'utf8'));
     }
     db.seed(readFileSync('migrations/0029_inventory_adoption_authority.sql', 'utf8'));
-    await mapped(db);
+    await mapped(db, household, 'item_01', true);
     db.execute(`INSERT INTO inventory_commands
       (id, household_id, actor_id, client_key, fingerprint, command_type, result_json, created_at)
       VALUES ('retained-corrupt', ?, 'demo_user_01', 'retained-key', 'old-fingerprint', 'CREATE', '{}', '2026-09-09')`, [household]);
@@ -97,7 +129,7 @@ describe('T09 additive schema and immutable command evidence', () => {
       db.seed(readFileSync(`migrations/${file}`, 'utf8'));
     }
     db.seed(readFileSync('migrations/0029_inventory_adoption_authority.sql', 'utf8'));
-    await backfillLegacyInventory(db, household);
+    historicalBackfill(db, household);
     const items = db.query('SELECT * FROM inventory_items ORDER BY id');
     const lots = db.query('SELECT * FROM inventory_lots ORDER BY id');
     const events = db.query('SELECT * FROM inventory_events ORDER BY id');

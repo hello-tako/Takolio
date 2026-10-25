@@ -1,0 +1,11 @@
+
+> frigo@0.1.0 typecheck [WORKTREE]
+> tsc -p tsconfig.json --noEmit && tsc -p tsconfig.worker.json --noEmit
+
+tests/unit/week-swap-client.test.ts(258,26): error TS2345: Argument of type '{ path: string; method?: undefined; body?: undefined; headers?: undefined; } | { method: string; path?: undefined; body?: undefined; headers?: undefined; } | { body: string; path?: undefined; method?: undefined; headers?: undefined; } | { ...; } | { ...; } | { ...; }' is not assignable to parameter of type 'Partial<PendingOp> | undefined'.
+  Type '{ body: string; headers: { 'Idempotency-Key': string; 'idempotency-key'?: undefined; }; path?: undefined; method?: undefined; }' is not assignable to type 'Partial<PendingOp>'.
+    Types of property 'headers' are incompatible.
+      Type '{ 'Idempotency-Key': string; 'idempotency-key'?: undefined; }' is not assignable to type 'Record<string, string>'.
+        Property ''idempotency-key'' is incompatible with index signature.
+          Type 'undefined' is not assignable to type 'string'.
+ ELIFECYCLE  Command failed with exit code 2.

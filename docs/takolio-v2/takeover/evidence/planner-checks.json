@@ -1,0 +1,260 @@
+{
+  "base_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "implementation_commit": "30693884c3b66ebe3d4fcd48fb57100853703826",
+  "production_actions": false,
+  "environment": "macOS;Node25.9.0;pnpm10.33.2;unchanged main dependencies;isolated Worker/SQLite synthetic household;external fetch/service workers blocked",
+  "source_sha256": {
+    "src/web/styles/kitchen-planning.css": "de1fa46855d9d423735f8cc848095e1b6edf63ab3e36c322ca3f5e14ef5686b0",
+    "tests/e2e/t17-ui/takolio-planner-continuation.e2e.ts": "680e7c2cb8418d46894e9d998b3cb63515c4c460b65d3ee6268398a26a9bbb27"
+  },
+  "checks": [
+    {
+      "name": "migrations",
+      "command": "pnpm check:migrations",
+      "exit_code": 0,
+      "seconds": 0.62,
+      "outcome": "PASS local customer/Admin smoke; no migration changes or remote apply",
+      "local_ignored_log": ".artifacts/takeover/planner/checks/migrations.log",
+      "log_bytes": 297,
+      "log_sha256": "9616315a9fcbfd77c67784703a16384419539e6a68ccd2838dda07239de25464"
+    },
+    {
+      "name": "focused-units",
+      "command": "TMPDIR=/private/tmp pnpm test tests/unit/planner-shopping-share-ui.test.tsx tests/unit/ui06-planner-lifecycle.test.tsx tests/unit/planner-weekly-continuation.test.tsx tests/unit/family-planner-client.test.tsx --maxWorkers=4",
+      "exit_code": 0,
+      "seconds": 3.16,
+      "outcome": "PASS 4 files /43 tests in2.21s",
+      "local_ignored_log": ".artifacts/takeover/planner/checks/focused-units.log",
+      "log_bytes": 552,
+      "log_sha256": "3bbf0658202d3c7f86e4c405572549f8f7b864fdab67951a6184a7ea06929fbe"
+    },
+    {
+      "name": "test",
+      "command": "TMPDIR=/private/tmp pnpm test --maxWorkers=4",
+      "exit_code": 1,
+      "seconds": 467.13,
+      "outcome": "PARTIAL 404/412 files;9157/9168 tests;466.01s;five inherited encoded-space CLI failures plus six5000ms timeouts",
+      "local_ignored_log": ".artifacts/takeover/planner/checks/test.log",
+      "log_bytes": 23403,
+      "log_sha256": "79519ad86b213020b3df8811347b72399890cc516b3def437bdc9535c1b45290"
+    },
+    {
+      "name": "audit",
+      "command": "pnpm audit --audit-level=high",
+      "exit_code": 1,
+      "seconds": 1.67,
+      "outcome": "OPEN_INHERITED 8 findings:1 low/6 moderate/1 high;Vite GHSA-587h-7wmj-h5pm",
+      "local_ignored_log": ".artifacts/takeover/planner/checks/audit.log",
+      "log_bytes": 2358,
+      "log_sha256": "6691d6cdd355ba892d7cc7951a0dd83253eab167c079d243d10191cd3c1b547f"
+    },
+    {
+      "name": "failed-subset-retry",
+      "command": "TMPDIR=/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/ pnpm test tests/integration/admin-owner.test.ts tests/integration/admin-r2-governance.test.ts tests/integration/admin-r2-settings.test.ts tests/integration/admin-staging-test-identities.test.ts tests/unit/production-catalog-continuity.test.mjs tests/unit/release-check.test.mjs tests/unit/staging-d1-catchup-check.test.mjs tests/unit/t21rc2-classification-diagnostics.test.mjs --maxWorkers=2",
+      "exit_code": 1,
+      "seconds": 14.8,
+      "outcome": "PARTIAL 6/8 files;413/418 tests in13.76s;only five inherited encoded-space CLI failures;all six timeout cases passed;not a full-suite pass",
+      "local_ignored_log": ".artifacts/takeover/planner/checks/failed-subset-retry.log",
+      "log_bytes": 9437,
+      "log_sha256": "4031bdfa550b0e4967546099d6e6f2f6045ec85adcc8bc84af5d0ebedf31ccce"
+    },
+    {
+      "name": "lint-final",
+      "command": "pnpm lint",
+      "exit_code": 0,
+      "seconds": 9.44,
+      "outcome": "PASS final source; existing Admin font warnings in builds",
+      "local_ignored_log": ".artifacts/takeover/planner/checks/lint-final.log",
+      "log_bytes": 99,
+      "log_sha256": "3f2044fca43a5e60905becf2ebfc3a21ddd85976975841aa1e16bc87b0f40a6d"
+    },
+    {
+      "name": "typecheck-final",
+      "command": "pnpm typecheck",
+      "exit_code": 0,
+      "seconds": 24.03,
+      "outcome": "PASS final source; existing Admin font warnings in builds",
+      "local_ignored_log": ".artifacts/takeover/planner/checks/typecheck-final.log",
+      "log_bytes": 165,
+      "log_sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e"
+    },
+    {
+      "name": "targeted-eslint-final",
+      "command": "pnpm exec eslint tests/e2e/t17-ui/takolio-planner-continuation.e2e.ts",
+      "exit_code": 0,
+      "seconds": 1.32,
+      "outcome": "PASS final source; existing Admin font warnings in builds",
+      "local_ignored_log": ".artifacts/takeover/planner/checks/targeted-eslint-final.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "build-default-final",
+      "command": "pnpm build",
+      "exit_code": 0,
+      "seconds": 13.75,
+      "outcome": "PASS final source; existing Admin font warnings in builds",
+      "local_ignored_log": ".artifacts/takeover/planner/checks/build-default-final.log",
+      "log_bytes": 10008,
+      "log_sha256": "8f6312dd4c0e051aeaa13948aff185c35cc60c2a1fdc5ffd0517bcbdbe576ce8"
+    },
+    {
+      "name": "build-paired-final",
+      "command": "VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build",
+      "exit_code": 0,
+      "seconds": 13.01,
+      "outcome": "PASS final source; existing Admin font warnings in builds",
+      "local_ignored_log": ".artifacts/takeover/planner/checks/build-paired-final.log",
+      "log_bytes": 10008,
+      "log_sha256": "efdd1e5493053846583124fbb5a583d0aca34eb63c9f78ecd30356eded1c3451"
+    },
+    {
+      "name": "final-browser",
+      "command": "PREVIEW_MEAL_COMPOSITION_V2=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-planner-continuation.e2e.ts --project=mobile-390 --output=.artifacts/takeover/planner/final",
+      "exit_code": 0,
+      "seconds": 38.3,
+      "outcome": "PASS 2/2;9 picker configurations/36reachable controls;24zero-violation axe",
+      "local_ignored_log": ".artifacts/takeover/planner/final.log",
+      "log_bytes": 13227,
+      "log_sha256": "956538a78791e22e2aeca9ab52126a5621323a30b5f476d66b6189414d606f48"
+    },
+    {
+      "name": "week-compat",
+      "command": "PREVIEW_MEAL_COMPOSITION_V2=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/t17-ui.e2e.ts --grep 'week compatibility' --project=mobile-390 --output=.artifacts/takeover/planner/week-compat",
+      "exit_code": 0,
+      "seconds": 45.8,
+      "outcome": "PASS 1/1 canonical redirects preserve params;before final picker CSS specificity correction;routing source unchanged",
+      "local_ignored_log": ".artifacts/takeover/planner/week-compat.log",
+      "log_bytes": 1691,
+      "log_sha256": "7f0bee28c560d8facc2bb5e451e3b23bcae52c9f4f6c230ea4e348a5ad42b173"
+    },
+    {
+      "name": "week-off",
+      "command": "pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/t18c-week-compatibility.e2e.ts --project=mobile-390 --output=.artifacts/takeover/planner/week-off",
+      "exit_code": 0,
+      "seconds": 14.1,
+      "outcome": "PASS 1/1 synthetic feature-module OFF override;keyboard setup progression only;no Week generation or full OFF certification",
+      "local_ignored_log": ".artifacts/takeover/planner/week-off.log",
+      "log_bytes": 1266,
+      "log_sha256": "9d686bbbe7693b93633fb06aea35e95d7e4cfec27f36029fb38135d3d8685e87"
+    }
+  ],
+  "retained_attempts": [
+    {
+      "name": "lint",
+      "command": "pnpm lint",
+      "exit_code": 0,
+      "seconds": 16.98,
+      "outcome": "PASS earlier source;superseded by final static/build checks",
+      "local_ignored_log": ".artifacts/takeover/planner/checks/lint.log",
+      "log_bytes": 99,
+      "log_sha256": "3f2044fca43a5e60905becf2ebfc3a21ddd85976975841aa1e16bc87b0f40a6d"
+    },
+    {
+      "name": "typecheck",
+      "command": "pnpm typecheck",
+      "exit_code": 0,
+      "seconds": 24.75,
+      "outcome": "PASS earlier source;superseded by final static/build checks",
+      "local_ignored_log": ".artifacts/takeover/planner/checks/typecheck.log",
+      "log_bytes": 165,
+      "log_sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e"
+    },
+    {
+      "name": "targeted-eslint",
+      "command": "pnpm exec eslint tests/e2e/t17-ui/takolio-planner-continuation.e2e.ts",
+      "exit_code": 0,
+      "seconds": 1.28,
+      "outcome": "PASS earlier source;superseded by final static/build checks",
+      "local_ignored_log": ".artifacts/takeover/planner/checks/targeted-eslint.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "build-default",
+      "command": "pnpm build",
+      "exit_code": 0,
+      "seconds": 14.35,
+      "outcome": "PASS earlier source;superseded by final static/build checks",
+      "local_ignored_log": ".artifacts/takeover/planner/checks/build-default.log",
+      "log_bytes": 10008,
+      "log_sha256": "78c03a5423a0b79e2cf87cfcd2d85ab0d8715667f9ffe737b8ef74a0c74f1b39"
+    },
+    {
+      "name": "build-paired",
+      "command": "VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build",
+      "exit_code": 0,
+      "seconds": 13.92,
+      "outcome": "PASS earlier source;superseded by final static/build checks",
+      "local_ignored_log": ".artifacts/takeover/planner/checks/build-paired.log",
+      "log_bytes": 10008,
+      "log_sha256": "6fc81e419814d0ca6048ef4b5ca21fbc3b5a29b4974709a2202fc932ca02634b"
+    },
+    {
+      "name": "baseline",
+      "exit_code": 1,
+      "outcome": "2 failures:initial nested summary selector harness error;not a product baseline",
+      "local_ignored_log": ".artifacts/takeover/planner/baseline.log",
+      "log_bytes": 9545,
+      "log_sha256": "a08d91fc431e3655a7b2c43e46f95a81d45cae9889c2dd0b021d091c442066bd"
+    },
+    {
+      "name": "baseline-2",
+      "exit_code": 1,
+      "outcome": "2 failures:loading label/dynamic timestamp harness assumptions and real picker reachability bug",
+      "local_ignored_log": ".artifacts/takeover/planner/baseline-2.log",
+      "log_bytes": 17332,
+      "log_sha256": "9d867e7d010b2c9371c0d64a216a0e6d0b746c9df3c36d8388967e6514b4409e"
+    },
+    {
+      "name": "before",
+      "exit_code": 1,
+      "outcome": "2 failures:shopping accessible-name harness timeout and reproduced inaccessible role/choose at320x420/text200;manual mutation/reload completed",
+      "local_ignored_log": ".artifacts/takeover/planner/before.log",
+      "log_bytes": 21478,
+      "log_sha256": "b30851677a8115d386a107295c6bb9090cfad8576b4269e0da561e99e88fe1f1"
+    },
+    {
+      "name": "after",
+      "exit_code": 0,
+      "outcome": "2/2 pass40.2s under superseded max-height480CSS and8configs;not final-source evidence",
+      "local_ignored_log": ".artifacts/takeover/planner/after.log",
+      "log_bytes": 12760,
+      "log_sha256": "ddb3a58b278f1749965a6f988a4e005e8a7f3c0ff2d75704d269afb938351ef0"
+    },
+    {
+      "name": "text-height-probe",
+      "exit_code": 1,
+      "outcome": "manual1failure37.6s:320x568/text200 still inaccessible under short-height-onlyCSS",
+      "local_ignored_log": ".artifacts/takeover/planner/text-height-probe.log",
+      "log_bytes": 10406,
+      "log_sha256": "d718c7720e9fc128899950f38389fc1a9e4ec16a26f5b4b8de200ca3143de970"
+    },
+    {
+      "name": "verified",
+      "exit_code": 1,
+      "outcome": "1pass/1fail under global panel overflow;initially suspected boundingBox timing;later geometry proves nested scroll container remains",
+      "local_ignored_log": ".artifacts/takeover/planner/verified.log",
+      "log_bytes": 16001,
+      "log_sha256": "47d5794e8e6c9e655530dfdcea885c35bf59c62eae3b944f9c3bcd02e05330b1"
+    },
+    {
+      "name": "frozen",
+      "exit_code": 1,
+      "outcome": "1pass/1fail34.7s:boundingBox-after-trial still catches5px overflow at320x568/text200;pointer actionability true",
+      "local_ignored_log": ".artifacts/takeover/planner/frozen.log",
+      "log_bytes": 15644,
+      "log_sha256": "4aa19b561719209c6beaee358775b582dfbf2c785fd7088be007cb620e45a00c"
+    },
+    {
+      "name": "geometry",
+      "exit_code": 1,
+      "outcome": "manual1fail:ancestor geometry confirms Tailwind utilities win result overflow/flex;nested64px scroll area;temporary diagnostics removed",
+      "local_ignored_log": ".artifacts/takeover/planner/geometry.log",
+      "log_bytes": 9141,
+      "log_sha256": "a7fc2faafd184be5f2074e599a8e2d7541ef4abdfb555fc13684f4b8477bc55b"
+    }
+  ],
+  "legacy_attempt_limit": "Legacy browser attempt stopped on stale Takosan onboarding selector;complete raw counts/output not recovered,so no other cases claimed PASS.",
+  "test_scope": "Full suite executed before final CSS specificity correction;CSS and E2E are outside unit test graph.Final browser/lint/types/builds exercise frozen final source. Retry changes only worker concurrency/TMPDIR,not protected tests/source/timeouts."
+}

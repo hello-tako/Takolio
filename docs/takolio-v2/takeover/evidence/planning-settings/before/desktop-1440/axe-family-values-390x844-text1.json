@@ -1,0 +1,214 @@
+{
+  "state": "family-values",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "textScale": 1,
+  "metrics": {
+    "innerWidth": 390,
+    "scrollWidth": 390,
+    "brokenImages": []
+  },
+  "controls": [
+    {
+      "label": "number",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "checkbox",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "checkbox",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "checkbox",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "Bữa nhà · chính, rau/phụ, canh, cơmNhanh gọn · ít món hơnMột món trọn bữa · bún, cháo, cơm trộn",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "15 phút30 phút45 phút60 phút90 phút120 phút180 phút",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "checkbox",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "checkbox",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "checkbox",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "Tự nấu Chủ nhật",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "Tự nấu Thứ 2",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "Tự nấu Thứ 3",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "Tự nấu Thứ 4",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "Tự nấu Thứ 5",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "Tự nấu Thứ 6",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "Tự nấu Thứ 7",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "Mỗi ngày · đồ tươi cho bữa gần nhất2–3 ngày một lầnMột lần cho cả tuần",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "Ưu tiên món ViệtTối đa 1 bữaTối đa 2 bữaTối đa 3 bữaTối đa 4 bữaTối đa 5 bữaTối đa 6 bữaTối đa 7 bữa",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "Khẩu vị & món quốc tế muốn thử",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "Dị ứng & nguyên liệu bắt buộc tránh",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "checkbox",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "checkbox",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "checkbox",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "checkbox",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "checkbox",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "checkbox",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "checkbox",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "checkbox",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "checkbox",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "search",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "Dị ứng & hạn chế thực phẩm trong hồ sơ",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "submit",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    }
+  ],
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ]
+}

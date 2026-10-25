@@ -1,0 +1,205 @@
+{
+  "base_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "implementation_commit": "793ade743aecc4cafd0c39f8e1bd3e457f75bc50",
+  "production_actions": false,
+  "environment": "macOS; Node25.9.0/pnpm10.33.2 existing dependencies for focused/static/build/browser; full-suite rerun uses Node24 from /opt/homebrew/opt/node@24/bin; isolated local Worker/SQLite registered fixture; external API fetch and service workers blocked; reduced motion/root-font simulation",
+  "source_sha256": {
+    "src/web/pages/settings/FoodPreferencesPage.tsx": "ced16ef8f1ef5ce3951eeafdac77dfdc9d231a4f5e068d665f9e6441b197549f",
+    "tests/unit/ui08-account.test.tsx": "bb61907562c4ac88e02e743d0cfdfafba56ce8cb8ca7cc0672cb859f05d072c8",
+    "tests/e2e/t17-ui/takolio-food-preferences-continuation.e2e.ts": "9a3ac3ae0d106849d6447fde1862ad36e6bb800e8cea6e0ae76ad7806c0a7b53"
+  },
+  "baseline_source_copies": {
+    "src/web/pages/settings/FoodPreferencesPage.tsx": {
+      "copy": ".artifacts/takeover/food-preferences/before-FoodPreferencesPage.tsx",
+      "bytes": 10617,
+      "sha256": "dd6fb763192125576bdcd3fe78e5db7614b0556f19cbd3128eb53ce49fe47157"
+    },
+    "tests/e2e/t17-ui/takolio-food-preferences-continuation.e2e.ts": {
+      "copy": ".artifacts/takeover/food-preferences/baseline-harness.ts",
+      "bytes": 14439,
+      "sha256": "9a3ac3ae0d106849d6447fde1862ad36e6bb800e8cea6e0ae76ad7806c0a7b53"
+    }
+  },
+  "checks": [
+    {
+      "name": "targeted-eslint",
+      "command": "pnpm exec eslint src/web/pages/settings/FoodPreferencesPage.tsx tests/unit/ui08-account.test.tsx tests/e2e/t17-ui/takolio-food-preferences-continuation.e2e.ts",
+      "exit_code": 0,
+      "seconds": 1.08,
+      "outcome": "PASS; existing Admin font warnings apply only to builds",
+      "local_ignored_log": ".artifacts/takeover/food-preferences/checks/targeted-eslint.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "focused-units",
+      "command": "pnpm exec vitest run tests/unit/ui08-account.test.tsx tests/unit/frontend-services.test.ts tests/unit/ui08-route-scope.test.tsx tests/unit/ui11-navigation.test.tsx tests/unit/onboarding-contract.test.tsx tests/unit/family-preferences-api.test.ts",
+      "exit_code": 0,
+      "seconds": 2.9,
+      "outcome": "PASS 5 files/103 tests in 2.19s; executed filter also included nonexistent family-preferences-api.test.ts, which selected no file; not six files",
+      "local_ignored_log": ".artifacts/takeover/food-preferences/checks/focused-units.log",
+      "log_bytes": 259,
+      "log_sha256": "b059c925bf44ad817617429814989df7e5af856cfddf00acb212b70fcf9301ae"
+    },
+    {
+      "name": "focused-integration",
+      "command": "pnpm exec vitest run tests/integration/frontend-ui-integration.test.tsx tests/integration/auth-tenant-adversarial.test.ts tests/integration/inventory-closed-loop.test.ts",
+      "exit_code": 0,
+      "seconds": 8.31,
+      "outcome": "PASS 3 files/104 tests in 7.63s",
+      "local_ignored_log": ".artifacts/takeover/food-preferences/checks/focused-integration.log",
+      "log_bytes": 256,
+      "log_sha256": "d8c5681448411c838475fcf2052a88f17f2595a30055bf7f6ad2f701c5a16b14"
+    },
+    {
+      "name": "lint",
+      "command": "pnpm lint",
+      "exit_code": 0,
+      "seconds": 7.65,
+      "outcome": "PASS; existing Admin font warnings apply only to builds",
+      "local_ignored_log": ".artifacts/takeover/food-preferences/checks/lint.log",
+      "log_bytes": 99,
+      "log_sha256": "3f2044fca43a5e60905becf2ebfc3a21ddd85976975841aa1e16bc87b0f40a6d"
+    },
+    {
+      "name": "typecheck",
+      "command": "pnpm typecheck",
+      "exit_code": 0,
+      "seconds": 18.97,
+      "outcome": "PASS; existing Admin font warnings apply only to builds",
+      "local_ignored_log": ".artifacts/takeover/food-preferences/checks/typecheck.log",
+      "log_bytes": 165,
+      "log_sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e"
+    },
+    {
+      "name": "migrations",
+      "command": "pnpm check:migrations",
+      "exit_code": 0,
+      "seconds": 0.55,
+      "outcome": "PASS; existing Admin font warnings apply only to builds",
+      "local_ignored_log": ".artifacts/takeover/food-preferences/checks/migrations.log",
+      "log_bytes": 297,
+      "log_sha256": "9616315a9fcbfd77c67784703a16384419539e6a68ccd2838dda07239de25464"
+    },
+    {
+      "name": "build",
+      "command": "pnpm build",
+      "exit_code": 0,
+      "seconds": 11.44,
+      "outcome": "PASS; existing Admin font warnings apply only to builds",
+      "local_ignored_log": ".artifacts/takeover/food-preferences/checks/build.log",
+      "log_bytes": 10008,
+      "log_sha256": "1b2bcf155477c6140cc6bb0c9840eee81942e079e5eb6f9bb66792e138a48a41"
+    },
+    {
+      "name": "paired-build",
+      "command": "VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build",
+      "exit_code": 0,
+      "seconds": 11.27,
+      "outcome": "PASS; existing Admin font warnings apply only to builds",
+      "local_ignored_log": ".artifacts/takeover/food-preferences/checks/paired-build.log",
+      "log_bytes": 10008,
+      "log_sha256": "9d5109ecf4aa22d878dfbfa8cb775e3aa92d26eac92c0e851370cb02f9b22b75"
+    },
+    {
+      "name": "audit",
+      "command": "pnpm audit --json",
+      "exit_code": 1,
+      "seconds": 1.24,
+      "outcome": "OPEN_INHERITED 1 low/6 moderate/1 high, including Vite GHSA-587h-7wmj-h5pm; dependencies unchanged",
+      "local_ignored_log": ".artifacts/takeover/food-preferences/checks/audit.log",
+      "log_bytes": 43734,
+      "log_sha256": "3256cc0c6e0545751f2cfdb3223b90a27a32043a364bb025bc5047465d90103f"
+    },
+    {
+      "name": "full-suite-node24",
+      "command": "pnpm test",
+      "PATH_prefix": "/opt/homebrew/opt/node@24/bin",
+      "node": "v24.16.0",
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/",
+      "exit_code": 1,
+      "seconds": 198.76,
+      "outcome": "PARTIAL 410/412 files; 9164/9169 tests; same five inherited encoded-space CLI failures in production-catalog-continuity/release-check; Node24 rerun after Node25 child stalled; see log for test duration",
+      "local_ignored_log": ".artifacts/takeover/food-preferences/checks/full-suite-node24.log",
+      "log_bytes": 17961,
+      "log_sha256": "94cd600936878fc45b1fa71338ef970b30fbd06c08aa5539c67942c115c52475"
+    },
+    {
+      "name": "browser",
+      "command": "PREVIEW_MEAL_COMPOSITION_V2=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-food-preferences-continuation.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/food-preferences/after",
+      "exit_code": 0,
+      "test_duration_reported": "2.4m",
+      "outcome": "PASS 6/6; exact four configs x eight states x two contexts; 64 zero-violation final axe reports with incomplete contrast; 1256 measured controls; real local API roundtrip and offline guest reload",
+      "local_ignored_log": ".artifacts/takeover/food-preferences/after.log",
+      "log_bytes": 16832,
+      "log_sha256": "0ee9426893a5091b8c90871370c7b6917a2709c4089412bd3a79e251109a2d06"
+    }
+  ],
+  "retained_attempts": [
+    {
+      "name": "baseline",
+      "exit_code": 1,
+      "outcome": "PRODUCT_BASELINE 4 passed/2 failed in 2.1m; only offline disclosure assertions fail in both contexts; exact same harness before/after",
+      "local_ignored_log": ".artifacts/takeover/food-preferences/baseline.log",
+      "log_bytes": 25636,
+      "log_sha256": "07e88db563ba7f724466a05fce37367601dfa28c1b05dcad60ac5a2ec908665f"
+    },
+    {
+      "name": "focused-initial",
+      "exit_code": 0,
+      "outcome": "PASS initial focused UI08 unit run after adding offline case",
+      "local_ignored_log": ".artifacts/takeover/food-preferences/focused-initial.log",
+      "log_bytes": 256,
+      "log_sha256": "1930a574711be07380bfeb78fbaeb35a0aff12da22fdd5fa58ee676251aa9706"
+    },
+    {
+      "name": "checks/full-suite",
+      "exit_code": 130,
+      "outcome": "INTERRUPTED; no complete suite count claimed; same five inherited CLI failures printed before Node25 synchronous child stalled; Python waiting read and Node waiting spawnSync loop; process group stopped with Ctrl-C",
+      "local_ignored_log": ".artifacts/takeover/food-preferences/checks/full-suite.log",
+      "log_bytes": 9734,
+      "log_sha256": "361bdd4ea4e0c39a9c0e9808dcf461beae5ddae3146ff5b33ba14fa21e29f683"
+    },
+    {
+      "name": "checks/stalled-python-sample",
+      "exit_code": 0,
+      "outcome": "Read-only 1s process sample: child Python blocked at read; ignored diagnostic only",
+      "local_ignored_log": ".artifacts/takeover/food-preferences/checks/stalled-python-sample.log",
+      "log_bytes": 68861,
+      "log_sha256": "73bd34cdf78a3a71b4e2f0f42640edb980fc1f61d3b77bfc495e3535f1b6e3fa"
+    },
+    {
+      "name": "checks/stalled-node-sample",
+      "exit_code": 0,
+      "outcome": "Read-only 1s process sample: Node25 blocked in SyncProcessRunner uv loop; ignored diagnostic only",
+      "local_ignored_log": ".artifacts/takeover/food-preferences/checks/stalled-node-sample.log",
+      "log_bytes": 83738,
+      "log_sha256": "cb2160ceb06854f4110dace80f3945600b6ea31f1adb1be2e612798d9011504d"
+    },
+    {
+      "name": "recovery-before",
+      "exit_code": 0,
+      "outcome": "PASS private snapshot/original verification before product edits",
+      "local_ignored_log": ".artifacts/takeover/food-preferences/recovery-before.log",
+      "log_bytes": 624,
+      "log_sha256": "07dd7d9d1a087d3ba635daed3a25330f5527511e1cf01093cef9a1e5daa458b1"
+    },
+    {
+      "name": "recovery-after-implementation",
+      "exit_code": 0,
+      "outcome": "PASS private snapshot/original verification after implementation commit",
+      "local_ignored_log": ".artifacts/takeover/food-preferences/recovery-after-implementation.log",
+      "log_bytes": 624,
+      "log_sha256": "fa5937edc19ce380b6888ae452a53eb261561122a18d6d6b97d4533eaa776a4d"
+    },
+    {
+      "name": "remote-main",
+      "exit_code": 0,
+      "outcome": "PASS read-only canonical main remains base; no remote mutation",
+      "local_ignored_log": ".artifacts/takeover/food-preferences/remote-main.log",
+      "log_bytes": 57,
+      "log_sha256": "74b0b5609784df7a5fddf1241a9179b9e62a61f3d3671f7fc0a075210071e212"
+    }
+  ],
+  "scope": "Two offline-only display strings; no persistence, API, store, handler, CSS, component, asset, backend/security, household/inventory, hard safety, Week, schema, dependency or production infrastructure change. /preferences legacy tastes remain separate from /family-preferences hard safety. UI08 unit adds one offline contract case; browser uses actual local PATCH/reload with held pending and shaped500; no writes in read/offline journeys after setup. Root-font/reduced-motion Chromium does not certify devices, OS zoom, screen readers, full Week-OFF, live providers, performance or production."
+}

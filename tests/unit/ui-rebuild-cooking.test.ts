@@ -138,9 +138,12 @@ it('does not claim pendingSync if the outbox cannot be persisted', async () => {
     original.call(this, key, value);
   });
   try {
-    await expect(recipesApi.completeCooking(recipe.id, [], 'storage-failed-cook')).rejects.toThrow(
-      /saved locally/,
-    );
+    await expect(recipesApi.completeCooking(recipe.id, [], 'storage-failed-cook')).rejects.toMatchObject({
+      name: 'OutboxPersistenceError',
+      cause: expect.objectContaining({ message: 'Quota' }),
+    });
+    expect(getPendingOps()).toEqual([]);
+    expect(localStorage.getItem('frigo_cache_v2:user:household:inventory')).toBeNull();
   } finally {
     spy.mockRestore();
   }

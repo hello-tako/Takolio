@@ -1,0 +1,26 @@
+[
+  {
+    "path": "src/worker/routes/week.ts",
+    "sha256": "9d8b84d7044e8e35ed430d0121291a7b3aff6ab005f7f82ffaa1ab3118303e58"
+  },
+  {
+    "path": "migrations/0045_week_swap_receipts.sql",
+    "sha256": "39a90b5d63b472e8e24b9536370ba5765d01815c2d3a37ca32a604dfa72774b6"
+  },
+  {
+    "path": "scripts/migration-smoke.sh",
+    "sha256": "a1ac1d52b43adebb058b61e8cb05e2cabf88f575a92f7d22a16177d1f4d712fd"
+  },
+  {
+    "path": "tests/helpers/sqlite-d1.ts",
+    "sha256": "96ecd8ccccdcbd3a187d7d4cded6b3d6307b130051630d5c7f5c859107780caa"
+  },
+  {
+    "path": "tests/integration/week-swap-replay.test.ts",
+    "sha256": "ff69865998e5f8edf63dcc004fb7cf8fe7307f050513dbab61b0f1678dfbdbc5"
+  },
+  {
+    "path": "tests/integration/week-swap-schema.test.ts",
+    "sha256": "80661d67c367c59569d849fed884be8f671dfe944c9e764c1da97f7007df4cd1"
+  }
+]

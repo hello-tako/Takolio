@@ -1,3 +1,158 @@
+## Recovery-compatible release local validation - 2026-10-25 JST
+
+Status: LOCAL_RECOVERY_VALIDATED_PUBLICATION_PENDING. Complete Node 24 test run finished successfully: 425 files / 9501 tests PASS, 956.62s. Command: `PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp pnpm test --maxWorkers=1 --testTimeout=15000`; log `.artifacts/takeover/release-20261025/recovery-full-node24.log`. This local discovery includes the retained one-test reviewer reproduction under ignored `.artifacts/`; hosted discovery will omit that private reproduction. Focused recovery/release suite: six files / 111 tests PASS. Lint, typecheck, migration check, build and `git diff --check` PASS. Admin preflight configuration PASS, `readyForDeployment=false`, `remoteExecuted=false`. Earlier interrupted Node 25 run remains incomplete, never PASS.
+
+Full current diff and new recovery/test files reviewed. Only domain release adapters, the existing asset-record verifier export, recovery tests, ADR-071 and release handoff documentation changed. Original Argon workspace, private backup, application source, assets, migrations, payments, unrelated auth and infrastructure remain preserved. Recovery uses the exact candidate source with server/UI planner-composition flags OFF, strict immutable version/build commitments, traffic/host/operational fences, exact served OFF assets and staging rehearsal. No new concrete finding in this correction; real same-SHA staging behavior remains unverified.
+
+Next: normal commit/push to PR #28, fresh final-head CI/Admin CI, Chrome reviewer examination/approval, normal merge, exact-main CI/Admin CI, protected staging0045 migration and release/recovery rehearsal, nine genuine acceptance evidence rows, production recovery/ledger/migration/certification/Environment review and monitored rollout. No merge, remote migration, staging deployment or production deployment has occurred. Earlier checkpoints below are historical; pending test/publication statements there describe their observation time.
+
+## Recovery-compatible release correction - 2026-10-25 JST
+
+Status: LOCAL_RECOVERY_CORRECTED_REVIEW_PENDING. Reviewer `vn-taphoanhatung` submitted `CHANGES_REQUESTED` on PR #28 at 2026-10-25T10:06:22Z after confirming the old production source `571f3c229696d6bc766de89f552a36f48ca92e58` rejects a V2 USE receipt with `displayCategory` as `CORRUPT_RECEIPT`. This correction adds exact-source inactive OFF recovery, strict metadata and asset verification, and staging recovery rehearsal. No merge, migration, staging deploy, traffic mutation, or production deploy occurred.
+
+Changed: `scripts/domain/compatible-recovery.mjs` and `tests/unit/domain-compatible-recovery.test.mjs` are new. Production and staging providers prepare/upload a distinct compatible recovery version before the normal ON candidate, restore only that verified same-source OFF version, and prove exact OFF compiled bytes, runtime, audit, ledger, authority and host fences. Staging reactivates the same candidate after rehearsal; uncertain reactivation before/after traffic mutation stays fail-closed. Fake deployment IDs are distinct. PayOS, billing, checkout, webhooks, unrelated auth and production infrastructure remain untouched.
+
+Checks: focused recovery/release suite `6 files / 111 tests PASS`, log `.artifacts/takeover/release-20261025/recovery-focused-final-six.log`; lint PASS, log `.artifacts/takeover/release-20261025/recovery-lint-final.log`; typecheck, migrations and build PASS in existing logs; Admin preflight `configurationValidation PASS`, customer baseline correct, `readyForDeployment=false`, `remoteExecuted=false`. Full Node 24 suite remains in progress at the time of this checkpoint in `.artifacts/takeover/release-20261025/recovery-full-node24.log`; no PASS is claimed until it exits successfully. An earlier Node 25 attempt was interrupted and is retained only as a failed/incomplete attempt.
+
+Current deployment state: published PR #28 still points to `846dd5f9915fef7f2be4d38c75b85fb73d3dd82b`; main is `90b94129113b41e34701d99f51175cfa81cb73de`. The working tree is intentionally dirty with implementation and documentation changes. Original Argon workspace and private backup remain preserved.
+
+Next action: finish the Node 24 full suite, review the complete diff, commit and push normally, obtain fresh exact-head CI/Admin CI, then use the logged-in Chrome reviewer to inspect and approve the final patch. Only after normal merge may the protected exact-main staging migration, staging release/rehearsal, genuine nine-check acceptance, production certification, Environment approval and production release proceed. Never fabricate acceptance or bypass reviewer/environment gates.
+
+## Release hosted gates PASS; independent review blocked - 2026-10-25 JST
+
+Status: HOSTED_PASS_REVIEW_REQUIRED. Published PR #28 HEAD is `846dd5f9915fef7f2be4d38c75b85fb73d3dd82b`; main remains `90b94129113b41e34701d99f51175cfa81cb73de`. Production deployment is authorized, but no merge, remote migration, staging deployment or production deployment occurred. Original Argon workspace and private recovery remain preserved.
+
+Executed: `gh run view 40157096926 --json status,conclusion,jobs` and `gh run view 40157096931 --json status,conclusion,jobs` confirm both required checks SUCCESS. Downloaded and inspected both full logs with `gh run view <run-id> --log`. CI: 423 files / 9484 tests PASS, 1250.61s. Admin CI: 423 files / 9484 tests PASS, 1367.47s; Workerd 10/10, migration matrix 31/31, browser 13/13, keyboard 10/10, public scan, lint/types/migrations/build/preflight and screenshot reference guard PASS. Actions tested synthetic PR merge `a1de1ab9e62ac9ed9a4ab6ee034cfeedfe9189f2`; these are PR checks, not merged-main push checks. Downloaded Admin artifact 12584928992; matrix and Workerd reports both pass. Exact hosted receipts and sanitized handoff: `.artifacts/takeover/release-20261025/hosted-final/` (ignored local evidence). PR description now links both successful runs and the artifact.
+
+Repeated read-only baseline: `PATH=/opt/homebrew/opt/node@24/bin:$PATH bash scripts/post-deploy-smoke.sh https://takolio.app` PASS: landing/liveness HTTP200, auth/SW no-store, immutable hashed asset, DB/queue OK, 500 D1 recipes, release `rel-bd00a4f53fcaeee4`; readiness remains degraded with email delivery unverified. This checks existing production only. Prior dependency audit failure (0 low / 3 moderate / 2 high) and all historical failures remain retained.
+
+Current blocking action: `gh pr view 28 --json headRefOid,reviewDecision,mergeStateStatus,reviews,statusCheckRollup` reports REVIEW_REQUIRED/BLOCKED and no review. Branch protection requires one independent last-push approval, strict validate/validate-admin, stale-review dismissal and administrator enforcement. Auto-merge is disabled. Production Environment separately requires `vn-taphoanhatung` and prevents self-review. No protection or credential was changed.
+
+- [x] Final published PR-head hosted CI and Admin CI PASS; inspect and retain actual counts/artifacts.
+- [x] Update PR description and local CURRENT_STATE/TASK_BOARD/HANDOFF with actual evidence.
+- [ ] Independent last-push PR approval; normal merge; exact merged-main CI/Admin CI.
+- [ ] Same-SHA staging0045 migration, deployment and nine real acceptance checks; mixed-worker/rollback compatibility remains UNPROVEN.
+- [ ] Production ledger and fresh recovery proof, protected migration/certification, independent Environment review, activation and 15-minute observation.
+
+Next action: an independent reviewer approves PR #28 at the published HEAD. Then continue the exact-main protected release sequence in `docs/takolio-v2/takeover/RELEASE_20261025.md`. Never invent acceptance PASS, use the historical staging receipt for this candidate, or fall back to the legacy release workflow. Retain0044/0045 on rollback.
+
+This checkpoint is a local uncommitted documentation update; PR HEAD remains the already-tested846dd5f9. Runtime/source/assets/migrations/dependencies are unchanged. Committing/pushing this checkpoint later requires new final-head checks and applicable last-push review. No completion or deployment claim is made.
+
+---
+## Release published handoff - 2026-10-25
+
+Implementation `fb2a1cf4` and release evidence are published to PR #28; normal push reached documentation checkpoint `6e9751e9`. Final PR-head checks and independent last-push approval are required. Main remains `90b94129`; no merge or remote mutation occurred. Existing production public smoke PASS with degraded readiness (email delivery unverified), DB/queue OK, 500 D1 recipes; existing SW SHA `571f3c229696d6bc766de89f552a36f48ca92e58`.
+
+Hosted CI/Admin CI on the published checkpoint passed install/lint/types and scanner (Admin); full tests were still running. Do not treat those partial results or the existing live smoke as candidate deployment evidence. Next: verify final-head check results, resolve actual failures, independent review, normal merge, exact-main CI, staging0045/deploy/real acceptance, rollback compatibility, production ledger/migration/certification and Environment approval by `vn-taphoanhatung`. Preserve all earlier retained failures/evidence and Argon recovery.
+
+---
+## Release handoff - 2026-10-25
+
+Candidate `fb2a1cf4240e25196e8f090d35c9c5b7198a6480` is ready for protected PR review. Local evidence is in `docs/takolio-v2/takeover/RELEASE_20261025.md` and `docs/takolio-v2/takeover/evidence/release-20261025.json`. No remote D1, merge, staging deploy or production deploy occurred.
+
+Required next action: push branch, wait for final-head CI, obtain independent approval, merge normally, then run exact-main staging migration/deploy/smoke and production certification/Environment approval. Keep mixed-worker rollback as a release gate.
+
+---
+## Takolio V2 - WKD02 implementation checkpoint verified (2026-10-25 JST)
+
+Status: LOCAL_WKD02_VERIFIED; ADR-069. Implementation `89d0ea243d08e98670a512ef797da4f64ac516f4`; implementation scope PASS at that exact HEAD. This documentation checkpoint follows the verified implementation. Keyed swap replay preserves later current plan; response-loss requests remain durable; exact409 recovery requires confirmation. Existing keyless/alternatives/inventory/tenancy/security behavior preserved.
+
+Full420files/9430tests PASS; backend6/114,client6/251,response-loss6cases,existing Playwright2tests PASS. Lint/types/migrations/default/actual paired-ON builds PASS;local D1 preserves94tables/9920old rows;44PNG;1233source hashes unchanged. Audit remains FAIL0low/3moderate/2high,Hono/Zod/Undici.26verbatim evidence whitespace warnings retained;source/docs clean. Failed attempts and local/hosted concurrency ceilings remain explicit in `docs/takolio-v2/takeover/WKD02_WEEK_SWAP_REPLAY.md`.
+
+Scope PASS:9112parent/5782protected-main paths unchanged;44old migrations,54salvage paths and69Argon/12asset/38screen rows preserved;38owner reviews PENDING. Recovery reverified PASS_WITH_AUTHORIZED_PLATFORM_DRIFT,only ten authorized .DS_Store deltas privately copied;all other worktree bytes/modes/links and HEAD/index/status exact. Original source index/stored manifest unchanged during check.
+
+Next:external owner/media/device/Safari/nativezoom/screenreader/live-provider/hosted acceptance and separate dependency remediation. Finite UI01-UI15+C12/C13 and CLI01/DEP01/CAT01/SCAN01/WKD01/WKD02 locally bounded complete. Post-docs scope proof is written after this documentation commit to ignored `.artifacts/takeover/wkd02/post-docs-scope.json`;verify its HEAD before resuming. No push/merge/deploy/remote migration/production action. Historical content follows unchanged.
+
+---
+
+## Takolio V2 - WKD02 verified local result (2026-10-25 JST)
+
+Status: LOCAL_WKD02_VERIFIED; ADR-069. Parent `4c5f8ce85b90edfb9d8f6f8183014471947a3c72`; official main observed read-only `90b94129113b41e34701d99f51175cfa81cb73de`. Implementation checkpoint prepared; bind verified SHA in the following documentation checkpoint.
+
+Changed: immutable target-scoped keyed swap receipt in additive0045, first in existing atomic legacy/dual batch. ReplayA afterB returns currentB without plan/receipt/cache writes; different intent exact409. Client durably retains exact request after response loss. Existing banner/dialog offers explicit confirmed recovery; cancel/failure/session change retains bytes. Keyless/alternatives/inventory/security compatibility preserved; distinct fresh commands retain full-snapshot/CAS ceiling.
+
+Verification: full `pnpm test --maxWorkers=1 --testTimeout=15000`420files/9430tests PASS, reported1141.80s/wall1143.22s,Node24.16.0. Backend6/114,client6/251,response-loss6cases,existing Playwright2tests PASS. Lint/types/migrations/default and actual paired-ON builds PASS.1233frozen hashes unchanged. Actual local D1 preserves94tables/9920old rows,zero backfill; immutable attacks/rollback/cascades PASS. Browser4flows at320/1440,44PNG total; zero page errors/external requests/overflow/broken images. Static independent reviews no concrete finding. Exact commands/failures: report/evidence below.
+
+Failures retained: baseline stale replay/transport RED, intermediate fixture/type errors,D1 unsupported pragma,browser selector,validator manifest shape,first full generated-snapshot discovery failure. Corrected suite changed only ignored snapshot suffix,not source/assertions/config. Audit FAIL exit1:0low/3moderate/2high,Hono/Zod/Undici. Source/docs whitespace PASS;26verbatim evidence warnings(22EOF blank lines/4trailing spaces)retained.
+
+Recovery precommit reverified PASS_WITH_AUTHORIZED_PLATFORM_DRIFT: snapshot22763regular/772symlinks,116Git baseline files exact; source22772regular/772symlinks. Only ten authorized .DS_Store deltas,separately copied/verified; other bytes/modes/links,HEAD/index/status exact. Source index/stored manifest unchanged during check; private locations unpublished. Precommit scope PASS:9112parent/5782protected-main paths,54salvage,69Argon/12asset/38screen rows unchanged;115prior file decisions preserved,38owner reviews PENDING.
+
+Report:`docs/takolio-v2/takeover/WKD02_WEEK_SWAP_REPLAY.md`; hash-bound evidence:`evidence/week-swap-replay/`. Next:implementation checkpoint/scope,then SHA-bound documentation checkpoint/post-docs scope. Finite UI01-UI15+C12/C13 and CLI01/DEP01/CAT01/SCAN01/WKD01/WKD02 locally bounded complete. Remaining owner/media/device/Safari/native zoom/screenreader/live/hosted acceptance and separate dependency remediation. No push/merge/deploy/remote migration/production action. Historical content follows unchanged.
+
+---
+
+## Takolio V2 - WKD02 keyed Week swap replay (2026-10-25 JST)
+
+Status: LOCAL_WKD02_IN_PROGRESS; ADR-069 accepted. WKD01 verified implementation `cc426b04baa84cb4bb3a861b0d606764675b4d20`, documentation `2cde9235f5088b416fbe74935a7bcd801fa8c2ed`; post-docs scope PASS. Full416files/9319tests, lint/types/migrations/default/paired-ON builds PASS. Audit remains FAIL(0low/3moderate/2high); ten verbatim-log whitespace warnings retained.
+
+Active: `docs/ai/tasks/WKD02-week-swap-replay.md`. Implement immutable target-scoped swap receipt in additive0045 and existing legacy/dual batch; replay returns current owned plan. Narrow successful-response transport loss retention and visible exact409 recovery reuse durable outbox/banner/dialog. Distinct fresh commands retain full-snapshot concurrency ceiling. Baseline/focused/schema/local D1/browser/full gates not yet executed for WKD02; no completion claim.
+
+Original Argon/private recovery,54salvage paths, ledgers and38PENDING owner reviews remain preserved. Next: executable baseline RED before bounded backend/client implementation, then gates/evidence/recovery/review. No push/merge/deploy/remote migration/production action. Historical content follows unchanged.
+
+---
+
+## Takolio V2 - WKD01 durable offline queue (2026-10-25 JST)
+
+Status: LOCAL_WKD01_VERIFIED; ADR-068. Parent `4d330940c328d70ca49384fa54792e95637a3dd5`; official main read-only `90b94129113b41e34701d99f51175cfa81cb73de`. Implementation checkpoint `cc426b04baa84cb4bb3a861b0d606764675b4d20`; implementation scope PASS. Documentation checkpoint follows this verified implementation.
+
+Native outbox persistence now gates pending success; corrupt/unreadable data stays intact. Unknown pending count/retry recovery is visible. Every enqueue caller persists before cache projection; accepted IDs survive optional cache failure. Replay removal failure retains the exact request and still reconciles accepted server state under session fences. Week shopping pending completion never inflates stock. No Worker/schema/migration/dependency/assets/auth implementation change; generated `.artifacts/**` ESLint ignore only.
+
+Full `416/416` files, `9319/9319` tests PASS; `pnpm test --maxWorkers=1 --testTimeout=15000`, reported974.99s/wall976.03s, Node24.16.0. Focused8files/280tests and backend2files/149tests PASS. Lint/types/migrations/default and actual paired-ON builds PASS;1184frozen hashes unchanged. Audit FAIL:0low/3moderate/2high,Hono/Zod/Undici remain. RED18FAIL/54PASS, generated-dependency lint failure, concurrent-shopping RED/GREEN and interrupted exit130 full attempt retained; no assertion/config weakening. Independent final review found no unresolved concrete scoped defect.
+
+Browser4width/flow cases,32PNG at320/1440: exact one queued request across repeat/reload; stock2 remains offline, reconnect8 once; existing lot version+1, no extra lot; replay SQL/GET unchanged. Full outage fresh document reaches existing auth gate; partial domain outage keeps me online and renders/repeats Week. Actual Worker-router/synthetic Node SQLite, not native D1/workerd/device/Safari/screenreader/hosted certification. Zero page errors/external requests/overflow. Sanitized exact PNG/hash-bound JSON retained.
+
+Recovery PASS_WITH_AUTHORIZED_PLATFORM_DRIFT: private snapshot22763regular/772symlinks,116Git files exact; current source22772regular/772symlinks differs only at ten authorized .DS_Store paths separately backed up. Other bytes/modes/links and HEAD/index/status match; source index/stored manifest unchanged. Prior authorized snapshot-index restoration disclosed in CAT01. No zero-difference claim/private paths published. Implementation scope PASS:9023parent/5783protected-main paths unchanged; ten verbatim-log EOF blank-line warnings retained;54salvage and69Argon/12asset/38screen rows preserved;38owner reviews PENDING.
+
+Report: `docs/takolio-v2/takeover/WKD01_DURABLE_OFFLINE_QUEUE.md`; exact checks/log/source hashes under `evidence/week-offline-durability/`. Next: activate WKD02 with receipt transaction/current-plan replay/visible409 ADR before implementation. UI01-UI15+C12/C13 remains locally bounded complete; owner/media/device/Safari/screenreader/live/hosted acceptance pending. No production operation. Historical content follows unchanged.
+
+---
+
+## Takolio V2 - SCAN01 durable manual review history (2026-10-25 JST)
+
+Status: `LOCAL_SCAN01_VERIFIED`. Parent `a4fa573a53580f187f86b35bad7127bba042000e`; official main observed read-only `90b94129113b41e34701d99f51175cfa81cb73de`. Implementation checkpoint: `a4e405508453908cd6f7b7b677f98156ccbdcdd7`; documentation checkpoint follows this verified implementation.
+
+Accepted manual scan lines now persist atomically with confirmation and reopen as read-only review history. Reviewed fractional quantity, mapping, category, storage and expiry remain independent of mutable stock. Manual OCR/prices stay NULL; UI labels manual origin without inventing extraction facts. Existing native/legacy stock merges, household guards, source evidence, confirmedItemIds and status-based replay remain. No schema, dependency, backfill, receipt manual-add UI or frontend rebuild.
+
+Full `pnpm test --maxWorkers=1 --testTimeout=15000`:415/415files,9279/9279tests PASS; exit0; reported1072.07s/wall1073.04s. Focused8files/178tests PASS. Lint/types/local migrations/default and actual paired-ON builds PASS.1182frozen source/test/config hashes unchanged. Audit exit1:0low/3moderate/2high,Hono/Zod/Undici remain. Baseline27FAIL/4PASS, fixture27PASS/4FAIL, refined35PASS/2FAIL and initial DOM typecheck failure remain disclosed; final manual37/37 and DOM6/6PASS. No assertion/config weakening.
+
+Browser photo/receipt at320/1440:4flows PASS,8PNG. Photo uses actual manual-add/removal/confirm; receipt manual addition uses existing API. Fresh document/read-only labels, SQL/GET facts and zero-mutation replay PASS; zero page/console/failed/external requests. Real Worker router with synthetic Node SQLite; not native D1/workerd/hosted/live OCR/device/Safari/screenreader certification. Two Vite504 bootstrap failures and one helper-column assertion failure retained before successful run. Independent scoped review found no concrete runtime/security finding.
+
+Recovery `PASS_WITH_AUTHORIZED_PLATFORM_DRIFT`:private snapshot22,763regular/772symlinks and116Git baseline files exact. Source22,772regular/772symlinks differs only at ten authorized .DS_Store paths(one changed,nine added), separately privately copied/verified. Every other source path exact; source index/stored manifest unchanged,HEAD/index/status match. Previous authorized snapshot-index restoration remains disclosed in CAT01. No zero-difference claim; private recovery locations unpublished. Precommit scope PASS:8990parent/5798protected-main paths unchanged,54salvage exact,69Argon/12asset/38screen rows exact,115old file decisions preserved,38owner reviews PENDING.
+
+Report:`docs/takolio-v2/takeover/SCAN01_MANUAL_REVIEW_HISTORY.md`; exact commands/log/source bindings:`evidence/scan-manual-history/checks.json`. Next:activate WKD01 durable offline queue under its own ADR/gates,then WKD02 Week swap replay. Finite UI01-UI15+C12/C13 remains locally bounded complete; owner/media/device/Safari/screenreader/live/hosted acceptance pending. No push,merge,deploy,remote migration or production operation. Historical content follows unchanged.
+
+---
+
+## Takolio V2 - CAT01 category authority and immutable CREATE (2026-10-25 JST)
+
+Status: `LOCAL_CAT01_VERIFIED`. Implementation `820b0bd486aa17adc9a3cb3cba886b3ee7b62e3c`; parent `e90bcfda35b3deeee8efc9647ab2c8f72f6520ee`; official main observed read-only `90b94129113b41e34701d99f51175cfa81cb73de`.
+
+Optional lot displayCategory survives create/read/PATCH/USE/MOVE; canonical category remains authoritative. Manual CREATE replays its frozen original response after edits, conflicts on changed intent and fails closed for historical native receipts without retained intent. Adoption category is fenced; adopted NULL never borrows mutable projection. Additive0044; no backfill or historical receipt/event rewrite; canonical0030 reverse proof byte-identical.
+
+Full `pnpm test --maxWorkers=1 --testTimeout=15000`: 414/414 files, 9228/9228 tests PASS; exit0; reported877.15s/wall877.97s. Default attempts retained: seven fixture failures, then one Wrangler5000ms timeout (9227/9228PASS); unchanged focused32/32PASS. No assertion/config weakening; CLI15s disclosed.1260 frozen source/test/config hashes unchanged. Lint/types/local migrations/default and actual paired-ON builds PASS. Isolated actual local D1 all44 migrations/schema/positive, three expected forged-write rejections/readback PASS. Default schema:check:local failed; cause unproven. Audit FAIL:0low/3moderate/2high,Hono/Zod/Undici remain.
+
+Local Chromium390 covers create/filter/reload/detail/PATCH/MOVE and immutable CREATE replay/three409s; USE via synthetic local control, no product UI USE claim. Four PNG and authoritative readback retained. Independent scoped review found no concrete runtime/security defect. Protected-main/strict-parent checks PASS;54salvage paths, prior ledgers/evidence,38PENDING owner reviews preserved.
+
+The private snapshot retains22,763 regular files/772 symlinks and116 Git
+baseline files, exact bytes/modes/links against its stored baseline. Source now
+has22,772 regular files/772 symlinks and differs only in ten explicitly authorized
+.DS_Store paths: one modified, nine added. Each current delta is separately copied
+and verified by path/bytes/SHA256/mode under private0700; every other worktree
+path matches exactly. This is not a zero-difference source/snapshot claim.
+Snapshot index ef70 was preserved separately, then restored to baseline05d8 from
+verified unchanged source bytes with explicit user authorization on2026-10-25.
+Source index and original baseline manifest remain unchanged; HEAD/index/status
+match. Exact-difference and first supplemental attempts failed before these proofs;
+all failures remain disclosed. Stat-cache refresh cause is unproven. Optional
+Git locks are disabled for all further source/snapshot checks.
+54 selected salvage paths, prior ledgers/evidence and38 PENDING owner reviews
+remain unchanged. Shared integration Git metadata changes are disclosed separately.
+Private recovery locations stay unpublished.
+
+Report: `docs/takolio-v2/takeover/CAT01_DISPLAY_CATEGORY_AUTHORITY.md`; exact commands/source/log hashes: `evidence/category-authority/checks.json`. Next: SCAN01 manual review history, then WKD01 durable offline queue and WKD02 Week swap replay, each with separate ADR/gates. Finite UI01-UI15+C12/C13 remains locally bounded complete; owner/media/device/Safari/screenreader/live/hosted acceptance pending.0044 must precede new Worker; mixed-writer/rollback needs separate release review. No push,merge,deploy,remote migration or production operation. Historical content follows unchanged.
+
+---
+
 # Admin restore guard correction - 2026-10-19 JST
 
 The first protected restore attempt `39252519153` on main `e18b12e1` was approved by `vn-taphoanhatung` and failed before any Worker upload because the D1 empty-schema guard rejected Cloudflare's internal `_cf_KV` table. Cloudflare D1 Studio read-only evidence shows `_cf_KV` is exactly `CREATE TABLE _cf_KV ( key TEXT PRIMARY KEY, value BLOB ) WITHOUT ROWID`; no application table was observed. The receipt remains `FAIL / UNKNOWN_REQUIRES_OPERATOR_INSPECTION`; no migration, HMAC, owner enrollment, bootstrap, enablement or production mutation occurred.

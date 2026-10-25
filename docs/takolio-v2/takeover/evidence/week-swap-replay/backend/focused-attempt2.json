@@ -1,0 +1,15 @@
+{
+  "label": "focused-attempt2",
+  "argv": [
+    "pnpm",
+    "test",
+    "tests/integration/week-swap-replay.test.ts",
+    "tests/integration/week-swap-schema.test.ts",
+    "--maxWorkers=1"
+  ],
+  "cwd": "[WORKTREE]",
+  "started_at": "2026-10-24T20:46:00.757428+00:00",
+  "wall_seconds": 4.567,
+  "exit_code": 0,
+  "node": "/opt/homebrew/opt/node@24/bin/node"
+}

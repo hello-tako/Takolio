@@ -1,0 +1,13 @@
+
+> frigo@0.1.0 test /Users/tunbee27/Documents/New project/Takolio-v2-codex-integration
+> vitest run tests/integration/scan-manual-history.test.ts tests/unit/scans.test.ts tests/integration/scan-response-loss.test.ts tests/integration/t13-receipt-vision-truth.test.ts tests/integration/t13r-a-evidence-completeness.test.ts tests/integration/t13b-review-roundtrip.test.tsx tests/integration/inventory-writer-fence.test.ts tests/integration/scan-cancellation.test.ts --maxWorkers=1
+
+
+ RUN  v4.1.12 /Users/tunbee27/Documents/New project/Takolio-v2-codex-integration
+
+
+ Test Files  8 passed (8)
+      Tests  178 passed (178)
+   Start at  04:31:54
+   Duration  29.20s (transform 2.34s, setup 76ms, import 3.88s, tests 23.45s, environment 447ms)
+

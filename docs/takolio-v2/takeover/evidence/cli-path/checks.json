@@ -1,0 +1,311 @@
+{
+  "implementation_commit": "c7f7b5510c3f23d7f3d59b66b556d13afd358a9b",
+  "parent_checkpoint": "7d0e539281ab6d8261ef416ef1978b90bba8e486",
+  "official_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "result": "LOCAL_CLI01_VERIFIED",
+  "targeted_before": {
+    "passed": 293,
+    "failed": 5,
+    "total": 298
+  },
+  "targeted_after": {
+    "passed": 298,
+    "failed": 0,
+    "total": 298
+  },
+  "full_suite": {
+    "passed_files": 412,
+    "total_files": 412,
+    "passed_tests": 9169,
+    "total_tests": 9169
+  },
+  "checks": {
+    "baseline": {
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/unit/release-check.test.mjs",
+        "tests/unit/production-catalog-continuity.test.mjs",
+        "--maxWorkers=1"
+      ],
+      "exit_code": 1,
+      "wall_seconds": 3.69,
+      "head": "7d0e539281ab6d8261ef416ef1978b90bba8e486",
+      "node": "v24.16.0",
+      "source_before": {
+        "tests/unit/release-check.test.mjs": "6d0b922ac4ba36b127f20c10f2848d3626aad628d7442361f7e495f6e0a35da0",
+        "tests/unit/production-catalog-continuity.test.mjs": "326fa114178acfd010f64bc815253a5893e7df614767c90c8a5026983b1fddb3"
+      },
+      "source_after": {
+        "tests/unit/release-check.test.mjs": "6d0b922ac4ba36b127f20c10f2848d3626aad628d7442361f7e495f6e0a35da0",
+        "tests/unit/production-catalog-continuity.test.mjs": "326fa114178acfd010f64bc815253a5893e7df614767c90c8a5026983b1fddb3"
+      },
+      "log_path": ".artifacts/takeover/cli-path/baseline.log",
+      "log_bytes": 8887,
+      "log_sha256": "83d7591aeb38eb4c83a2b8db098ef4f7a6e8b335eec94c52f7cf63f0638e8ce4"
+    },
+    "fixed": {
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/unit/release-check.test.mjs",
+        "tests/unit/production-catalog-continuity.test.mjs",
+        "--maxWorkers=1"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 4.78,
+      "head": "7d0e539281ab6d8261ef416ef1978b90bba8e486",
+      "node": "v24.16.0",
+      "source_before": {
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "source_after": {
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "log_path": ".artifacts/takeover/cli-path/fixed.log",
+      "log_bytes": 254,
+      "log_sha256": "ae6cbe05d7528689be8398d91c9e8b456585e2813d701af8c98e8e3093d53458"
+    },
+    "lint": {
+      "command": [
+        "pnpm",
+        "lint"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 8.12,
+      "head": "7d0e539281ab6d8261ef416ef1978b90bba8e486",
+      "node": "v24.16.0",
+      "source_before": {
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "source_after": {
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "log_path": ".artifacts/takeover/cli-path/lint.log",
+      "log_bytes": 99,
+      "log_sha256": "3f2044fca43a5e60905becf2ebfc3a21ddd85976975841aa1e16bc87b0f40a6d"
+    },
+    "typecheck": {
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 17.9,
+      "head": "7d0e539281ab6d8261ef416ef1978b90bba8e486",
+      "node": "v24.16.0",
+      "source_before": {
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "source_after": {
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "log_path": ".artifacts/takeover/cli-path/typecheck.log",
+      "log_bytes": 165,
+      "log_sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e"
+    },
+    "migrations": {
+      "command": [
+        "pnpm",
+        "check:migrations"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.54,
+      "head": "7d0e539281ab6d8261ef416ef1978b90bba8e486",
+      "node": "v24.16.0",
+      "source_before": {
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "source_after": {
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "log_path": ".artifacts/takeover/cli-path/migrations.log",
+      "log_bytes": 297,
+      "log_sha256": "9616315a9fcbfd77c67784703a16384419539e6a68ccd2838dda07239de25464"
+    },
+    "default-build": {
+      "command": [
+        "pnpm",
+        "build"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 10.7,
+      "head": "7d0e539281ab6d8261ef416ef1978b90bba8e486",
+      "node": "v24.16.0",
+      "source_before": {
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "source_after": {
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "log_path": ".artifacts/takeover/cli-path/default-build.log",
+      "log_bytes": 10008,
+      "log_sha256": "e77267c2b410a30e5f05e14e7a7d81c1d04e78f00e428c9d9d61bd77881dbdb1"
+    },
+    "paired-on-build": {
+      "command": [
+        "env",
+        "VITE_MEAL_PLANNER_ENABLED=true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED=true",
+        "pnpm",
+        "build"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 11.15,
+      "head": "7d0e539281ab6d8261ef416ef1978b90bba8e486",
+      "node": "v24.16.0",
+      "source_before": {
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "source_after": {
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "log_path": ".artifacts/takeover/cli-path/paired-on-build.log",
+      "log_bytes": 10008,
+      "log_sha256": "d279c76822abbfbc0092e96254dfaf92123e9e7480e475d72f474764a19f9b22"
+    },
+    "full-suite": {
+      "command": [
+        "pnpm",
+        "test",
+        "--maxWorkers=1"
+      ],
+      "exit_code": 130,
+      "wall_seconds": 120.03,
+      "head": "7d0e539281ab6d8261ef416ef1978b90bba8e486",
+      "node": "v24.16.0",
+      "source_before": {
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "source_after": {
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "log_path": ".artifacts/takeover/cli-path/full-suite.log",
+      "log_bytes": 323,
+      "log_sha256": "1f4bd5af98b75900fe4540b11b94503190eb639d8d530dde4451425cbf0c0591"
+    },
+    "full-suite-clean": {
+      "command": [
+        "pnpm",
+        "test",
+        "--maxWorkers=1"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 937.99,
+      "head": "7d0e539281ab6d8261ef416ef1978b90bba8e486",
+      "node": "v24.16.0",
+      "source_before": {
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "source_after": {
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "log_path": ".artifacts/takeover/cli-path/full-suite-clean.log",
+      "log_bytes": 9271,
+      "log_sha256": "33fe92369441e697647b25edde1620ac8755c4b7027b24672149191fadd30b5d"
+    },
+    "dependency-audit": {
+      "command": [
+        "pnpm",
+        "audit",
+        "--json"
+      ],
+      "exit_code": 1,
+      "wall_seconds": 0.72,
+      "head": "7d0e539281ab6d8261ef416ef1978b90bba8e486",
+      "node": "v24.16.0",
+      "source_before": {
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "source_after": {
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "log_path": ".artifacts/takeover/cli-path/dependency-audit.log",
+      "log_bytes": 54325,
+      "log_sha256": "ccee8f03a4729adb738103de50a1a1862d9e10fd552da3b780bc034cb6d3cc9b"
+    }
+  },
+  "audit": {
+    "result": "FAIL",
+    "total": 12,
+    "low": 1,
+    "moderate": 8,
+    "high": 3,
+    "dependencies_changed": false
+  },
+  "interrupted_attempt": "First full-suite attempt interrupted (130) after intermediate ignored .test.mjs draft artifacts were discovered. Draft bytes retained with .txt suffix; clean rerun includes no extra test files. Assertions and Vitest configuration unchanged.",
+  "production_sources_unchanged": true,
+  "screenshots": "Not applicable: test-only path correction; prior frontend screenshots retained unchanged.",
+  "logs": "Complete command logs retained ignored/private; exact log paths, bytes and SHA256 recorded here. Receipt HEAD is the precommit checkpoint; exact before/after test source hashes bind the implementation.",
+  "source_bindings": [
+    {
+      "path": "tests/unit/release-check.test.mjs",
+      "bytes": 85182,
+      "sha256": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb"
+    },
+    {
+      "path": "tests/unit/production-catalog-continuity.test.mjs",
+      "bytes": 8374,
+      "sha256": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+    },
+    {
+      "path": "scripts/release-check.mjs",
+      "bytes": 53674,
+      "sha256": "f29d5ad4bbfa9762a859c1290cab246abcac44f90df779f6e19dbf30f8452820"
+    },
+    {
+      "path": "package.json",
+      "bytes": 3929,
+      "sha256": "dd7904ea6c8d2d82eb7b030e3d2b80d919f487a06d573c0abdfcab6e87ea7290"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "bytes": 135385,
+      "sha256": "4998dc372e0beb023700b754b9fce55901caffb211dd2c4e2280ac623d9ce69d"
+    }
+  ],
+  "evidence_tooling": [
+    {
+      "path": ".artifacts/takeover/cli-path/run-check.py",
+      "bytes": 1304,
+      "sha256": "394cfb0364b84db2feadd4ffc7862ce793d6cee1daa70add623144c8ba7753f6"
+    },
+    {
+      "path": ".artifacts/takeover/cli-path/verify-scope.py",
+      "bytes": 3896,
+      "sha256": "72eb416e06eca983ea19955220603db7b53323f272d50e6c1442f40deaf5c267"
+    },
+    {
+      "path": ".artifacts/takeover/cli-path/verify-recovery.py",
+      "bytes": 3485,
+      "sha256": "c8bfe827460fbf19d327fa3118e70c36d6a4e4808fbde66386457f9cb9ed389a"
+    },
+    {
+      "path": ".artifacts/takeover/cli-path/audit-protected.py",
+      "bytes": 5679,
+      "sha256": "ba0d937c216a56add7976348581b01f1266f86840c072308f9e39199d1d3eb02"
+    }
+  ]
+}

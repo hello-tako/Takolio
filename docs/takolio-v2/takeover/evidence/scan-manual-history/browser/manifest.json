@@ -1,0 +1,97 @@
+{
+  "runtime": "Isolated local Worker router; synthetic in-memory SQLite; not native D1 or production",
+  "scriptSha256": "be034cb5786377117e78b582b7aa2aa58964100462f69049e53f9d8ec52c5835",
+  "rawReadbackSha256": "d2b3cfeac97b00b286d224ed46c9ccb3a47e6e6971c2db88f84bd2fe99247c61",
+  "compactReadbackSha256": "3d3cd346a8b7a69b7d400f91e34b0f61408cb29536ae5f811733f91ab02f0423",
+  "snapshotContentPreserved": true,
+  "flows": 4,
+  "screenshots": 8,
+  "credentialContainerCheck": "PASS",
+  "files": [
+    {
+      "path": "browser/1440-photo-fresh-readonly.png",
+      "sha256": "4a96a520dbc48a03dd630a65e73aaccfa7f3081d0c78feec3c1e01b9936e6455",
+      "bytes": 258932
+    },
+    {
+      "path": "browser/1440-photo-manual-draft.png",
+      "sha256": "1a9da42acf03071c3a1073ebe6c986fa18f1e2d3f91264a4966744aefe5fdadc",
+      "bytes": 261544
+    },
+    {
+      "path": "browser/1440-photo-manual-form.png",
+      "sha256": "48f2803ecb5af01b130cc51acbf0bfd083b37e139fd1f5384a473c9e441ff3c9",
+      "bytes": 270156
+    },
+    {
+      "path": "browser/1440-receipt-fresh-readonly.png",
+      "sha256": "9d1953347fae68093da7d82d551146b17c57694db0e74afec84bdd76c5181dd4",
+      "bytes": 276124
+    },
+    {
+      "path": "browser/320-photo-fresh-readonly.png",
+      "sha256": "2906473a820e25d66b9d068c1fb09096034aa68f1d9801b9bb235b6450496178",
+      "bytes": 242981
+    },
+    {
+      "path": "browser/320-photo-manual-draft.png",
+      "sha256": "2961147cb105e7762b506e1599b1bdf97c66b2aac7b5f80e79923b0061d3f04f",
+      "bytes": 233261
+    },
+    {
+      "path": "browser/320-photo-manual-form.png",
+      "sha256": "54633380d75be8cc81317ee753781501ffe433d5270c8fca45055aeb24664b55",
+      "bytes": 206968
+    },
+    {
+      "path": "browser/320-receipt-fresh-readonly.png",
+      "sha256": "111b651faa1ff8a70ec3fc31ccf782bcd5b544ab04526a8be3da2325745dddde",
+      "bytes": 240330
+    },
+    {
+      "path": "browser/browser-attempt-4.log",
+      "sha256": "3f6ac5454c400f4e6a9f985779dcf0a85193b437976b19a970f40d78a870ad8b",
+      "bytes": 625
+    },
+    {
+      "path": "browser/browser-result.md",
+      "sha256": "cae747a0d64a9c49991e8045d7421da8dba0fd71368943011e8d36212951e91d",
+      "bytes": 1624
+    },
+    {
+      "path": "browser/browser.mjs",
+      "sha256": "be034cb5786377117e78b582b7aa2aa58964100462f69049e53f9d8ec52c5835",
+      "bytes": 14812
+    },
+    {
+      "path": "browser/failed-attempts/browser-attempt-1.log",
+      "sha256": "b5977a44a1fc1c6a566743d939e0c05e50acdfbf9bd52bfc4f67e978d130275f",
+      "bytes": 2012
+    },
+    {
+      "path": "browser/failed-attempts/browser-attempt-2.log",
+      "sha256": "d21158ac4080549bad0d760f0029567cde4d657e7e2284af4a244fd9ab07bafb",
+      "bytes": 2018
+    },
+    {
+      "path": "browser/failed-attempts/browser-attempt-3.log",
+      "sha256": "11ea35a8090935aa03f84eeda6a057aea73cdd81bdd104699b326168fdf661d3",
+      "bytes": 636
+    },
+    {
+      "path": "browser/failed-attempts/manifest.json",
+      "sha256": "443a8a8ec80e536293603c93bd23957a2b17b980205429a720d22e27d563b486",
+      "bytes": 4725
+    },
+    {
+      "path": "browser/independent-review.md",
+      "sha256": "a36c048da8c3bfb4e06df4ea492100248594ff830827d9924c544be67c50667c",
+      "bytes": 725
+    },
+    {
+      "path": "browser/readback.json",
+      "sha256": "3d3cd346a8b7a69b7d400f91e34b0f61408cb29536ae5f811733f91ab02f0423",
+      "bytes": 1180518
+    }
+  ]
+}

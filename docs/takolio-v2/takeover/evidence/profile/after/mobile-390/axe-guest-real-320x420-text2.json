@@ -1,0 +1,52 @@
+{
+  "state": "guest-real",
+  "viewport": {
+    "width": 320,
+    "height": 420
+  },
+  "textScale": 2,
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ],
+  "metrics": {
+    "innerWidth": 320,
+    "scrollWidth": 320,
+    "brokenImages": [],
+    "links": [
+      {
+        "href": "/me/preferences",
+        "clientWidth": 292,
+        "scrollWidth": 292
+      },
+      {
+        "href": "/me/household",
+        "clientWidth": 292,
+        "scrollWidth": 292
+      },
+      {
+        "href": "/settings/planning",
+        "clientWidth": 292,
+        "scrollWidth": 292
+      },
+      {
+        "href": "/settings/notifications",
+        "clientWidth": 292,
+        "scrollWidth": 292
+      },
+      {
+        "href": "/settings/app",
+        "clientWidth": 292,
+        "scrollWidth": 292
+      },
+      {
+        "href": "/settings/privacy",
+        "clientWidth": 292,
+        "scrollWidth": 292
+      }
+    ]
+  }
+}

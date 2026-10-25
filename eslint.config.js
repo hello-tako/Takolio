@@ -21,6 +21,6 @@ export default [
     },
   },
   {
-    ignores: ['dist/**', 'node_modules/**', '.wrangler/**', 'public/**', '*.config.js', '*.config.ts'],
+    ignores: ['.artifacts/**', 'dist/**', 'node_modules/**', '.wrangler/**', 'public/**', '*.config.js', '*.config.ts'],
   },
 ];

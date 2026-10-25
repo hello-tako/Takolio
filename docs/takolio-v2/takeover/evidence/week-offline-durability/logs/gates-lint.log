@@ -1,0 +1,34 @@
+
+> frigo@0.1.0 lint /Users/tunbee27/Documents/New project/Takolio-v2-codex-integration
+> eslint .
+
+
+/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration/.artifacts/takeover/scan-manual-history/vite-cache/deps/chunk-VMNUFUOW.js
+   1984:15  warning  Unused eslint-disable directive (no problems were reported)
+   5585:13  warning  Unused eslint-disable directive (no problems were reported from 'no-fallthrough')
+   5593:13  warning  Unused eslint-disable directive (no problems were reported from 'no-fallthrough')
+   5597:13  warning  Unused eslint-disable directive (no problems were reported from 'no-fallthrough')
+   5623:13  warning  Unused eslint-disable directive (no problems were reported from 'no-fallthrough')
+  20457:15  warning  Unused eslint-disable directive (no problems were reported from 'no-fallthrough')
+  20459:15  warning  Unused eslint-disable directive (no problems were reported from 'no-fallthrough')
+  20461:15  warning  Unused eslint-disable directive (no problems were reported from 'no-fallthrough')
+  20463:15  warning  Unused eslint-disable directive (no problems were reported from 'no-fallthrough')
+  20465:15  warning  Unused eslint-disable directive (no problems were reported from 'no-fallthrough')
+
+/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration/.artifacts/takeover/scan-manual-history/vite-cache/deps/chunk-ZU67YUHI.js
+  684:21  error  Definition for rule 'react-internal/safe-string-coercion' was not found  react-internal/safe-string-coercion
+
+/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration/.artifacts/takeover/scan-manual-history/vite-cache/deps/motion_react.js
+   3516:3  error  Definition for rule 'redos-detector/no-unsafe-regex' was not found  redos-detector/no-unsafe-regex
+  12760:5  error  Definition for rule 'react-hooks/exhaustive-deps' was not found     react-hooks/exhaustive-deps
+
+/Users/tunbee27/Documents/New project/Takolio-v2-codex-integration/.artifacts/takeover/scan-manual-history/vite-cache/deps/react-router-dom.js
+   5776:3  warning  Unused eslint-disable directive (no problems were reported from 'no-script-url')
+  11123:7  error    Definition for rule 'jsx-a11y/anchor-has-content' was not found                   jsx-a11y/anchor-has-content
+  11158:5  error    Definition for rule 'react-hooks/rules-of-hooks' was not found                    react-hooks/rules-of-hooks
+  11289:5  error    Definition for rule 'react-hooks/exhaustive-deps' was not found                   react-hooks/exhaustive-deps
+
+✖ 17 problems (6 errors, 11 warnings)
+  0 errors and 11 warnings potentially fixable with the `--fix` option.
+
+ ELIFECYCLE  Command failed with exit code 1.

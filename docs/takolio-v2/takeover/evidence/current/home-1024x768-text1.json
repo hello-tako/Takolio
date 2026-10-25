@@ -1,0 +1,10 @@
+{
+  "route": "/",
+  "viewport": {
+    "width": 1024,
+    "height": 768
+  },
+  "h1": [
+    "Hôm nay ăn gì?"
+  ]
+}

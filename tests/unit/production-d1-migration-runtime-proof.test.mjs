@@ -6,7 +6,8 @@ const workflow = readFileSync('.github/workflows/production-d1-migrate.yml', 'ut
 const require = createRequire(import.meta.url);
 const { load } = createRequire(require.resolve('eslint/package.json'))('js-yaml');
 const policy = load(workflow);
-const familyTips = ['0042_family_meals_preferences_saved_shopping.sql', '0043_shopping_demand_review.sql'];
+const familyTips = ['0042_family_meals_preferences_saved_shopping.sql', '0043_shopping_demand_review.sql',
+  '0044_inventory_display_category.sql', '0045_week_swap_receipts.sql'];
 
 describe('production D1 migration runtime proof', () => {
   it('keeps production approval and actual 0041 constraint certification', () => {

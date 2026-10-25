@@ -30,6 +30,7 @@ export const inventoryApi = {
   addInventoryItem: async (item: any) => {
     const assertCurrent = guardPrivateSession();
     const hhId = getHouseholdId();
+    const cacheKey = privateCacheKey('inventory', hhId);
     const path = '/inventory';
     // Give the mutation a stable id before the first request. If the response
     // is lost after a successful insert, replaying the same id is idempotent at
@@ -68,10 +69,14 @@ export const inventoryApi = {
         updatedAt: new Date().toISOString(),
         pendingSync: true,
       };
-      const existing = await inventoryApi.getInventory();
+      try {
+        const existing = JSON.parse(localStorage.getItem(cacheKey) || '[]');
+        const updated = [newItem, ...existing.filter((i: any) => i.id !== newItem.id)];
+        localStorage.setItem(cacheKey, JSON.stringify(updated));
+      } catch {
+        // Keep the accepted ID available even if the optional cache fails.
+      }
       assertCurrent();
-      const updated = [newItem, ...existing.filter((i: any) => i.id !== newItem.id)];
-      localStorage.setItem(privateCacheKey('inventory', hhId), JSON.stringify(updated));
       return newItem;
     }
   },
@@ -79,6 +84,7 @@ export const inventoryApi = {
   updateInventoryItem: async (id: string, updates: any, currentVersion: number) => {
     const assertCurrent = guardPrivateSession();
     const hhId = getHouseholdId();
+    const cacheKey = privateCacheKey('inventory', hhId);
     const path = `/inventory/${id}`;
     const commandId = createClientItemId('inventory_update');
     const expectedVersion = inventoryVersion(currentVersion);
@@ -109,27 +115,31 @@ export const inventoryApi = {
         `inventory-update:${id}:${commandId}`,
         init.headers
       );
-      const existing = await inventoryApi.getInventory();
+      let item = { id, ...updates, version: expectedVersion + 1, pendingSync: true };
+      try {
+        const existing = JSON.parse(localStorage.getItem(cacheKey) || '[]');
+        const updated = existing.map((entry: any) => entry.id === id ? { ...entry, ...item } : entry);
+        item = updated.find((entry: any) => entry.id === id) ?? item;
+        localStorage.setItem(cacheKey, JSON.stringify(updated));
+      } catch {
+        // Replay retains the mutation when its cache cannot be updated.
+      }
       assertCurrent();
-      const updated = existing.map((i: any) =>
-        i.id === id
-          ? { ...i, ...updates, version: expectedVersion + 1, pendingSync: true }
-          : i
-      );
-      localStorage.setItem(privateCacheKey('inventory', hhId), JSON.stringify(updated));
-      return updated.find((i: any) => i.id === id);
+      return item;
     }
   },
 
   deleteInventoryItem: async (id: string, currentVersion: number) => {
     const assertCurrent = guardPrivateSession();
     const hhId = getHouseholdId();
+    const cacheKey = privateCacheKey('inventory', hhId);
     const path = `/inventory/${id}`;
     const commandId = createClientItemId('inventory_delete');
     const headers = {
       'Idempotency-Key': commandId,
       'If-Match': String(inventoryVersion(currentVersion)),
     };
+    let pendingSync = false;
     try {
       await fetchJson(path, { method: 'DELETE', headers });
     } catch (err) {
@@ -143,11 +153,21 @@ export const inventoryApi = {
         `inventory-delete:${id}:${commandId}`,
         headers
       );
+      pendingSync = true;
     }
     assertCurrent();
-    const existing = await inventoryApi.getInventory();
+    if (pendingSync) {
+      try {
+        const existing = JSON.parse(localStorage.getItem(cacheKey) || '[]');
+        localStorage.setItem(cacheKey, JSON.stringify(existing.filter((item: any) => item.id !== id)));
+      } catch {
+        // A durable delete does not depend on its optional cache projection.
+      }
+    } else {
+      const existing = await inventoryApi.getInventory();
+      assertCurrent();
+      localStorage.setItem(cacheKey, JSON.stringify(existing.filter((item: any) => item.id !== id)));
+    }
     assertCurrent();
-    const updated = existing.filter((i: any) => i.id !== id);
-    localStorage.setItem(privateCacheKey('inventory', hhId), JSON.stringify(updated));
   },
 };

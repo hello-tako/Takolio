@@ -1,6 +1,7 @@
 import { execFileSync } from 'node:child_process';
 import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
+import { fileURLToPath } from 'node:url';
 import { runInNewContext } from 'node:vm';
 import path from 'node:path';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
@@ -1165,7 +1166,7 @@ describe('T20-R1 staging recipe authority convergence (Deploy run 36285175574)',
   });
 
   describe('previous-authority CLI against real Git history', () => {
-    const script = new URL('../../scripts/release-check.mjs', import.meta.url).pathname;
+    const script = fileURLToPath(new URL('../../scripts/release-check.mjs', import.meta.url));
     let cwd, bareSha, ancestorSha, releaseSha, siblingSha;
     const git = (...args) =>
       execFileSync('git', args, { cwd, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim();

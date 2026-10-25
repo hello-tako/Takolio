@@ -3282,3 +3282,373 @@ Takolio/V3 assets remain additive and rollback is a feature-branch revert. The
 result remains a 3D candidate until fresh screenshots, asset checks and independent
 review confirm the visual result; premium concept fidelity and legal clearance are
 not asserted.
+
+## ADR-063 - Preserve readable primary text and wrap unknown-expiry stock (2026-10-24)
+
+Status: accepted for isolated local continuation; owner/device review pending.
+
+Current-source UI15 audit reproduces Home, discovery and recipe preparation CSS
+opacity from 0 through 1 during the existing 200ms fade. Reduced motion already
+keeps opacity1. Remove the fade class only from those three primary reading
+containers; preserve all decorative, dialog, auth and payment animation contracts.
+No replacement animation is needed for reading content.
+
+Actual Week flags-OFF shopping import/replay exposes unknown-expiry stock. At
+320x420/root text200, IngredientRow's enlarged image/gap and nonwrapping status
+force document width343px. Allow the existing identity/title/status layout to
+wrap within the row. Preserve status text, expiry truth, controls, callback,
+quantity, mutation, idempotency, household and inventory authority unchanged.
+Use intrinsic layout; no clipped status, smaller text or global overflow hiding.
+
+The old UI15 navigation237px baseline does not reproduce. Current Argon compact
+CSS already puts mobile navigation and fixed actions into document flow below
+600px height; the static header scrolls away. Preserve this tradeoff, measure
+keyboard reachability and report the loss of always-visible navigation on short
+screens. Do not replace the shell or add measurement machinery. ADR058 is already
+the family-meal decision; this continuation uses the next unused number063.
+
+Bounded Chromium/local Worker fixtures and synthetic root-font scale do not
+certify native zoom, devices, Safari, screen readers, owner usability or hosted
+release. No backend, service, store, public asset, dependency or protected payment
+change is authorized by this decision.
+
+## ADR-064 - Scoped control contrast for placeholders and notification OFF state (2026-10-24)
+
+Status: accepted for isolated local continuation; owner/device review pending.
+
+C12 settled Chromium measurements found the existing muted placeholder on discovery,
+saved recipes, family preferences and shopping inputs at approximately 2.41-2.54:1
+against their surfaces. The notification OFF switch track measured 1.768:1 against
+its white thumb. Existing solid green focus outlines meet the measured keyboard
+focus requirement and remain unchanged.
+
+Apply the existing semantic muted text color only to the affected placeholder
+selectors under `.takosan-rebuild`, with full opacity. Apply the same muted color
+only to enabled notification OFF switch tracks under `.takosan-rebuild`; checked,
+disabled and unrelated switch primitives retain their current contracts. Do not
+define the missing global border token or alter decorative separators, auth,
+payment, Plus, backend, APIs, stores, assets, dependencies or production config.
+
+Verify normal, focus, hover and reduced-motion states at 390px, 320px with root
+text scale 2, and desktop; preserve 44px reachability, keyboard activation,
+local preference reload behavior, zero domain writes and unchanged domain snapshots.
+This bounded Chromium/root-font audit does not certify native zoom, devices,
+Safari, screen readers, hosted behavior or production.
+
+## ADR-065 - Scoped inset boundaries for measured kitchen controls (2026-10-24)
+
+Status: accepted for isolated local continuation; owner/device review pending.
+
+C13 measured 44 controls in four viewport/text configurations. The undefined
+`--semantic-border-rgb` leaves their computed borders at 0px/none; adjacent fill
+contrast is only about 1.00-1.06:1. Existing solid green focus outlines remain.
+Defining the missing token globally would also change unmeasured decorative
+surfaces, so this packet does not define it.
+
+Add a 1px inset stroke using existing semantic muted text RGB only to the measured
+kitchen search, discovery select/filter disclosure, planner locale/date/number,
+and shopping form input/select selectors under `.takosan-rebuild`. These controls
+have no existing box shadow. The inset stroke must preserve geometry, input and
+select behavior, focus outline and all domain authority. Exclude native radios,
+checkboxes, unrelated controls, auth, payment, Plus and decorative cards.
+
+Verify stroke contrast against both fill and surrounding surface, normal/focus/
+hover states, 44px reachability, horizontal bounds and baseline geometry at
+320x568, 320x420 with root-font200, 390x844 and desktop1440x1000. Use the actual
+isolated Worker fixture; no submitted domain writes. Chromium/root-font evidence
+does not certify native zoom, physical devices, Safari, assistive technology,
+owner acceptance or hosted production.
+
+## ADR-066 - Lot-owned display category and immutable manual CREATE response (2026-10-24)
+
+Status: accepted; locally implemented and verified at `820b0bd486aa17adc9a3cb3cba886b3ee7b62e3c`.
+Full CLI15s suite, actual local D1, browser, independent review, protected scope
+and recovery with authorized platform drift verified. Default timeout and audit
+FAIL remain disclosed in the CAT01 report. No release authorization.
+Active packet: `tasks/CAT01-display-category-authority.md`.
+
+The bounded inventory audit confirms an unmapped spice item reads back as other:
+current lot authority retains no display category. The inventory POST route also
+checks mutable current projection state before native receipt replay, so a later
+PATCH can cause false CREATE conflicts or falsely accept changed retry intent.
+Category persistence and receipt-first CREATE replay share one acceptance gate;
+the previously proposed CAT02 is included in CAT01 rather than left as an interim
+idempotency regression.
+
+Add optional lot `displayCategory`, backed by nullable `display_category` in
+additive migration0044. Validate string/max30/noNUL at input and SQL boundaries;
+retain empty-string compatibility. Omit the field for SQL NULL; explicit JSON null
+is invalid. Effective category is canonical ingredient category, then lot-owned
+displayCategory, then other. A user category never overrides canonical identity.
+Never borrow category from mutable inventory_items after adoption/authority.
+Preserve request intent independently from the effective compatibility projection.
+
+No migration data backfill, receipt/event rewrite or invented historical intent.
+Existing NULL lots retain catalog/other behavior until explicit metadata correction.
+New adoption can capture current validated legacy category as its own fenced
+transition, preserving truthful before even for an old unlinked backfill without
+the field. Include category in full source/revision/poststate fences. Already
+adopted lots cannot recapture projection category. Invalid historical values fail
+closed without automatic repair. This nullable ceiling is deliberate.
+
+Manual CREATE adds optional manualCreate requestFingerprint/projectionAfter to the
+existing immutable fingerprint envelope, mirroring manualPatch; no new table.
+Fingerprint validated original request, including category, expiryEstimated and
+dataSource, before catalog/default derivation. Owned receipt lookup precedes
+mutable row comparison, preserves tenancy/membership and replays the original
+response after later stock/category changes. Changed intent conflicts. Historical
+native receipts lacking original intent fail closed409 rather than inferring it
+from current projection. Preserve non-native legacy idempotency. ManualPatch keeps
+its original request fingerprint but stores effective projected category so strict
+receipt decoding remains consistent. Scan category propagation is narrow; review
+history/merge semantics remain a separate packet.
+
+Retain all existing0028 v1 guards,0030 FEFO compatibility/mapping/version-offset
+predicates, immutable receipts/events and household/quantity/revision boundaries.
+Add shallow v1 category guards; recreate active0030 FEFO triggers only for optional
+25th-field shape, category type/presence/prestate/preservation/poststate validation.
+Require canonical reverse-diff proof and actual local D1 expression-depth testing.
+Old24 snapshots remain decodable and unchanged; new field cannot be silently
+dropped or changed by USE/DISCARD/OPEN/MOVE/FEFO. No-op receipts remain valid.
+
+Apply0044 before the new Worker. Old writers remain valid for NULL lots but fail
+closed if they drop a retained category; mixed-worker writes to categorized lots
+are not certified. Application rollback keeps additive schema and needs separate
+operator review. No production/remote migration/deployment authorization follows.
+Before completion require populated upgrade/forgery/rollback tests, immutable retry
+coverage, full local checks and actual Worker browser/readback evidence. Preserve
+Argon work and all0024-0043 bytes. Scan manual-history and Week offline durability,
+owner/device/hosted acceptance remain separately scoped.
+
+## ADR-067 - Atomic accepted manual scan history and explicit presentation (2026-10-25)
+
+Status: accepted for isolated local implementation. Active packet:
+`tasks/SCAN01-manual-review-history.md`. CAT01 is verified at implementation
+`820b0bd486aa17adc9a3cb3cba886b3ee7b62e3c`, documentation checkpoint `a4fa573a`.
+
+Confirmed manual photo-review additions currently enter stock but are absent from
+fresh scan history. Retain accepted manual lines in existing scan_items through
+plain INSERT SELECT statements using the exact household/READY predicate and
+existing atomic batch. Keep status last. Reuse reviewed expiry conversion and
+SHA-256 over JSON [scanId, clientId-or-null, originalSubmissionIndex]; reserve
+`scan_manual_` plus 64 lowercase hex digits for server-created manual history.
+No migration, dependency, historical backfill or frontend rebuild.
+
+Store reviewed name, quantity, unit, mapping, category, storage and explicit
+KNOWN/ESTIMATED/UNKNOWN expiry independently of mutable stock. All OCR and price
+columns remain NULL; legacy NOT NULL confidence is schema filler only. Keep
+manual sourceId absent for stock evidence, receipt attribution and observations.
+Do not invent OCR source links or change existing confirmedItemIds semantics.
+The existing status-based replay contract remains: confirmed retries ignore
+changed valid payloads and cannot repeat mutations. Stronger intent replay is
+outside this task. Preserve existing native/legacy merge and receipt-lot rules.
+
+GET may emit optional isManual:true only for confirmed reserved-namespace rows
+with absent OCR/confidence/prices. Unknown legacy OCR remains unknown OCR.
+Persisted manual rows retain sourceItemId membership/read-only behavior. Existing
+photo/receipt reviews label them Nhap thu cong (localized UI text), suppress OCR
+claims and use neutral history copy; no receipt manual-add affordance is added.
+The namespace is a deliberate ceiling: an imported historical row intentionally
+using it cannot be distinguished without a future schema field. Document this in
+one ponytail comment; introduce a schema origin field before such imports.
+
+Require baseline-failing real SQLite HTTP regression, both authority modes and
+scan types, fresh UI reopen, actual transport/body/outbox replay, race/collision/
+rollback/security/metadata tests, full local gates and actual Worker browser
+screenshots at320 and desktop. No payment/auth/infrastructure changes. Preserve
+Argon source, snapshots, existing ledgers/evidence and authorized platform drift.
+No push, merge, deploy, remote migration or production authorization follows.
+
+
+### ADR-067 verified local result - 2026-10-25 JST
+
+SCAN01 implementation and bounded checks complete. Four runtime files; no schema
+or dependency change. Full415/415files,9279/9279tests PASS with explicit CLI15s;
+focused8files/178tests,lint,types,migrations,default/paired-ON builds PASS.
+Audit remains FAIL(0low/3moderate/2high). Actual Worker-router browser4flows at
+320/1440,8PNG,SQL/GET/read-only/replay PASS; synthetic Node SQLite,not native
+D1/workerd/hosted. Failures and recovery platform drift remain disclosed.
+See SCAN01 report and frozen evidence. WKD01/WKD02 require separate ADRs.
+
+ADR-067 implementation verified at `a4e405508453908cd6f7b7b677f98156ccbdcdd7`;
+post-implementation scope PASS. Verbatim logs preserve six trailing-blank warnings.
+
+## ADR-068 - Durable local outbox acceptance and truthful pending stock (2026-10-25)
+
+Status: accepted for isolated local WKD01 implementation. SCAN01 verified at
+implementation a4e405508453908cd6f7b7b677f98156ccbdcdd7 and documentation
+4d330940c328d70ca49384fa54792e95637a3dd5. User authorized sequential local work.
+Active packet: tasks/WKD01-durable-offline-queue.md.
+
+Preserve frigo_sync_outbox_v1, JSON record format, owner scope, operationId,
+dedupeKey and exact body/header bytes. Strict load rejects unreadable, corrupt,
+unowned or invalid records with OutboxPersistenceError, preserving original bytes;
+only missing key means empty. Validate stored/new records without a schema layer.
+Native localStorage.setItem success is the durable acceptance boundary. Do not
+reclassify a successful write through post-write diagnostic readback. queueWrite
+returns the accepted PendingOp, including an existing scoped dedupe receipt.
+
+Emit/listeners never reject accepted writes. Diagnostic pendingCount/subscription
+uses number|null; null means unavailable, never empty. Automatic retry consumes
+rejection and emits diagnostics; manual retry shows a recoverable warning. Logout
+warns conservatively on unknown pending data, retaining explicit discard/auth flow.
+Unowned historical records are preserved and block mutation/replay; this explicitly
+supersedes only the prior client-session test expecting their automatic deletion.
+Explicit logout deletion remains authorized user behavior; auth source unchanged.
+
+Flush separates network classification from durable removal. A successful replay
+counts before removal; removal persistence failure throws and retains the op.
+API finally reconciles accepted paths even when removal fails, without masking
+the persistence error or crossing the private-session fence. Keep auth/409 retention,
+permanent-error behavior and in-tab serialization. Failed owner rebind preserves
+all source/target bytes and throws. No cross-tab transaction claim.
+
+Delete Week shopping's optimistic stock addition; pending commands do not represent
+imported stock. Keep numeric importedItemsCount compatibility as queued-line count
+when pendingSync is true, with explicit pending-only message. Reconcile server
+inventory after replay. No guessed repair of previously inflated caches.
+
+Every enqueue caller must persist before cache projection. Post-acceptance cache
+failure returns accepted pending result/ID rather than inviting another generated
+command. Identity/session assertions remain outside/before final returns: never
+swallow identity uncertainty as a harmless cache failure. Two distinct add calls
+without the same supplied ID remain distinct actions. Cooking/shopping retain
+strong body/path/owner receipt checks via returned receipt, avoiding post-acceptance
+storage readback. Local-only scan partial enqueue remains an explicit ceiling.
+
+No new storage service, dependency, migration/backfill, generic offline framework,
+payment/auth/infrastructure change, push/merge/deploy/remote production operation.
+Require baseline-failing regression, corruption/quota/reload/rebind/removal/session/
+caller tests, actual Worker browser320/desktop with SQL readback, full local gates,
+recovery/scope proof and state/report updates. WKD02 keyed swap receipts remain a
+separate ADR and transaction contract.
+
+
+### ADR-068 verified local result - 2026-10-25 JST
+
+WKD01 bounded implementation verified: full416files/9319tests PASS, focused8/280, backend2/149, lint/types/migrations/default/paired-ON builds PASS.1184frozen source/test/config hashes unchanged. Audit remains FAIL(0low/3moderate/2high).32PNG over4viewport/flow cases prove exact queued request and stock2 pending/reconnect8 once; replay SQL/GET unchanged. Actual Worker-router/synthetic Node SQLite,not native D1/workerd/hosted/device certification. Review-found concurrent-shopping marker race fixed with RED/GREEN regression. Failed attempts and authorized recovery platform drift retained. See WKD01 report and evidence. No all-endpoint replay or cross-tab atomicity claim; WKD02 needs its own ADR.
+
+ADR-068 implementation verified at `cc426b04baa84cb4bb3a861b0d606764675b4d20`; post-implementation scope PASS. Public evidence independently reviewed; ten verbatim-log EOF blank-line warnings retained, source/docs whitespace PASS.
+
+## ADR-069 - Durable keyed Week swap receipts and explicit conflict recovery (2026-10-25)
+
+Status: accepted for isolated local WKD02 implementation. User authorized sequential local work. Active packet: tasks/WKD02-week-swap-replay.md. WKD01 implementation cc426b04baa84cb4bb3a861b0d606764675b4d20, documentation2cde9235f5088b416fbe74935a7bcd801fa8c2ed, post-docs scope PASS. No WKD02 runtime/schema acceptance claimed before executable gates.
+
+Observed swap ignores a supplied stable key and rewrites old A after later B. Add one immutable week_swap_receipts table in next unused migration0045. Identity UNIQUE(household_id,plan_id,meal_id,client_key); same key on a different target is independent. Auth supplies actor/household. Fingerprint is the normalized requested recipe token, never mutable catalog. Bounded key grammar/equality applies across all supplied commandId/idempotencyKey/header keys; keyless legacy writes and alternatives remain compatible. No old plan snapshot, plan-child FK or inferred receipt backfill. Household-lifetime FK/immutable INSERT/UPDATE/DELETE guards follow existing receipt conventions; additive migration must preserve populated rows and permit household cleanup.
+
+For a keyed explicit swap, read owned relational plan without plan KV publication, then lookup receipt before target-slot/catalog validation. Match returns current owned plan plus idempotentReplay:true; changed fingerprint returns409 IDEMPOTENCY_CONFLICT. Missing/deleted plan remains404; receipt cannot recreate it. Catalog authority remains lazy for stored snapshots. Insert the receipt first in the exact existing D1 batch containing every legacy/dual plan statement. Pass one optional typed D1 prepared statement through existing persistence helpers. Never INSERT OR IGNORE/upsert a receipt or commit plan separately. After batch error reread exact receipt; winner match replays current state, mismatch409, absent503. Domain cache publishes only after winning commit. Replay/conflict makes zero relational/plan-cache writes; existing rl_swap/rl_week_w counters remain authorized middleware behavior.
+
+Narrow client response-loss retention to explicit keyed swap fetch/body transport TypeError or uncancelled AbortError. Freeze exact body/header/key once; session and explicit cancellation fences win. Enqueue durably before optional cache projection under WKD01. Keep fetch catch separate from known-success/cache handling. HTTP/auth, SyntaxError, malformed success/application/cache failures never become pending transport success. Optional AbortSignal preserves three-argument callers. Accepted pending response exposes pendingSync. Direct/replayed response uses current plan, preserving B after replayA.
+
+Retain precise swap409 conflict in outbox. A transient owned exact-op snapshot in existing API and existing sync notification exposes fixed safe banner copy. No new queue format/error bus. Existing ConfirmDialog explicitly offers reload and discard of this one request; cancel retains bytes. Recovery runs in existing flush mutex: authenticate, replay original; if the same precise409 and approved exact snapshot remain, fetch/validate/cache authoritative owned plan and refresh matching existing queries before permitting only that operation's durable removal. GET/cache/removal/session failure retains request. No global409/auth drop or silent queue discard. Missing plan remains visibly blocked; broader queue administration is outside scope.
+
+One ponytail comment records the existing full-snapshot concurrency ceiling: receipts prevent duplicate keyed writes, not lost updates among distinct fresh commands; add shared revision/CAS across every Week writer in a separate packet. Existing single-tab localStorage mutex does not provide cross-tab transactions. Create/regenerate/slot/shopping/preferences commands, V2 composition, inventory/security/tenancy, PayOS/auth/infrastructure, applied0001-0044 bytes remain protected. No dependency, release configuration or frontend rebuild.
+
+Require baseline-failing actual Hono+SQLite A/B/replay and service transport/body regressions; exact conflict/key/tenancy/retirement/slot replacement, atomic rollback/deterministic commit races, immutable/populated migration and local D1 apply; legacy/dual plus inventory-mode invariance; focused/full lint/types/tests/migrations/default and paired-ON builds; actual320/desktop browser offline/reload/reconnect/conflict recovery; private recovery and scope evidence plus independent review. No push/merge/deploy/remote migration/production operation.0045 must precede a future new Worker; retained schema and mixed-worker replay limits need separate operator release review. Device/Safari/screenreader/hosted/owner acceptance remains pending.
+
+
+### ADR-069 verified local result - 2026-10-25 JST
+
+WKD02 acceptance executed: full420files/9430tests PASS,backend6/114,client6/251,response-loss6cases;lint/types/migrations/default/actual paired-ON builds PASS. Local D1 preserves94tables/9920old rows,zero backfill,immutable attacks/rollback/cascades PASS. Browser4flows320/1440,44PNG including existing Playwright2tests.1233source hashes unchanged;independent static reviews no concrete unresolved finding. Baseline/intermediate/full-artifact-discovery/validator failures retained. Audit FAIL0low/3moderate/2high;26verbatim evidence whitespace warnings retained. See WKD02 report/evidence. Recovery precommit PASS_WITH_AUTHORIZED_PLATFORM_DRIFT;ten authorized .DS_Store deltas separately backed up. Keyed deduplication/current-plan replay/explicit exact409 recovery verified locally; no distinct-command CAS,cross-tab,hosted/device or production claim. Implementation checkpoint/scope binding follows separately.
+
+
+ADR-069 implementation verified at `89d0ea243d08e98670a512ef797da4f64ac516f4`;implementation scope PASS:9112unchanged-parent/5782protected-main paths,44old migrations,54salvage,1233source hashes unchanged. Exact proof:`evidence/week-swap-replay/implementation-scope.json`. This documentation checkpoint binds that verified implementation;post-docs proof is generated after commit and kept locally. Remaining external acceptance/dependency and full-snapshot concurrency ceilings unchanged.
+
+
+# ADR-070: bounded V2 release migration certification - 2026-10-25 JST
+
+Status: release preparation authorized by the operator request to deploy production;
+independent GitHub reviews and all release acceptance gates remain binding.
+
+Current main has migration0043. The successful canonical staging receipt from run
+39833771432 independently records the same43-entry ledger on2026-10-22; this is
+historical evidence, not a fresh remote inspection. The inherited family migration
+workflow is bound to the retired repository identity and its0041->0043 contract.
+Do not rewrite that historical contract or broaden protected auth/payment paths.
+
+Add a separate manual staging0043->0044->0045 adapter using the existing migration
+runner and pinned staging D1 identity, with canonical Takolio repository ID, trusted
+current-main/workflow SHA, hosted CI, fresh bookmark, exact ledger/plan and health
+gates. Capture counts of all94pre-existing tables plus catalog/media diagnostics
+in two bounded SELECTs; compare exact changed table/index/trigger SQL against the
+source migration chain. Partial, unexpected or future ledgers fail closed. Retain
+the protected production migration workflow; include0044/0045 in both immediate
+main/CI fences and certify the exact V2 schema at0045. Add receipt objects to the
+shared schema gate without exceeding D1's five-compound-SELECT limit. Accept
+operational ready media at reviewed0045 only; unknown future tips stay rejected.
+
+Migrations must precede the new Worker. Retain0044/0045 on code rollback; do not
+replay or down-migrate them. Old workers cannot provide keyed swap deduplication
+and may reject category-bearing inventory receipts: see WKD02/CAT01 compatibility
+evidence. Prefer the current-candidate recovery validated by the domain release
+flow. Mixed-worker and rollback acceptance remain operator release gates, not
+claims established by local tests. No production deployment, remote D1 mutation,
+review bypass, credential change or auth/payment modification is implied by this ADR.
+
+Validation runtime: hosted Node22.23.3 stores embedded NUL bytes but truncates
+TEXT results while reading `node:sqlite`. The unchanged CAT01 historical-invalid
+category assertion then receives PERSISTENCE_FAILED instead of
+INVALID_ADOPTION_SNAPSHOT. Reproduced with native SELECT and CAT01; Node24.16.0
+preserves the complete string. Pin only the three full-test jobs (CI, Admin CI,
+Deploy production local gates) to24.16.0 and retain a real SQLite round-trip
+regression. No Worker runtime or input-validation change. Re-review and update
+the schema-gate SQL fingerprint after the additive0045 read-only checks; retain
+the existing exact fingerprint and mutation-negative assertions.
+
+Admin release compatibility: the existing preflight freezes the reviewed domain
+customer surface and the SQL matrix freezes the earlier43-migration baseline.
+Both correctly reject this V2 candidate before review. Preserve those immutable
+baselines and every historical R1/43 scenario. Create a separate immutable V2
+source checkpoint covering the exact reviewed migration/workflow/schema bytes;
+select it only when it is in HEAD ancestry. Keep main-history drift checks and
+exact working-tree diffs. Extend the matrix with45-file fresh/incremental gates,
+missing/future-ledger rejection and explicit old43-gate rollback rejection. Add
+real temporary-Git regression cases for V2 selection, post-pin changes, normal
+merge and parallel-main drift. This checkpoint remains a candidate for independent
+PR review, not evidence that review or deployment occurred. Never select moving
+HEAD/main as an automatic accepted baseline or disable the guard.
+
+## ADR-071 - Receipt-compatible production recovery before V2 traffic (2026-10-25)
+
+Status: authorized release correction; independent exact-head review and real
+same-SHA staging acceptance remain required. Supersedes ADR-070's unverified
+assumption that the domain adapter already prepares current-candidate recovery.
+
+Reviewer reproduction against exact production source571f3c229696d6bc766de89f552a36f48ca92e58
+shows a V2 category-bearing USE receipt replays on the candidate but fails with
+CORRUPT_RECEIPT on that previous binary. The existing production adapter blindly
+restores that binary. Additive0044/0045 retention alone does not make it safe.
+
+Before normal candidate compilation/upload/activation, build and strictly upload
+an inactive recovery version from the exact candidate source with both planner
+and composition disabled in server and compiled UI. Derive its config from the
+fresh audited candidate; change only those two feature flags and their two build
+flags. Preserve security settings including STRICT_OTP_FAIL_CLOSED, complete
+bindings/secrets, catalog, exposure, queue/cron/observability and all host fences.
+Record source/config/build asset commitments and verify immutable uploaded metadata
+before activation and recovery. Rebuild the ordinary candidate after recovery
+upload, so its UI retains the audited normal feature state.
+
+After any candidate activation intent, never automatically return to the old
+binary. Recover only to the recorded compatible version. Retain owned host detach
+and traffic/operational fences, reconcile interrupted activation by exact owned
+version, verify a completed recovery idempotently, reject foreign deployments and
+ambiguous mutation retries. Verify restored runtime, ledger0044/0045, original
+infrastructure, candidate recipe authority, readiness/service worker and exact
+flags-OFF HTML/module bytes. No data rollback, schema rewrite, payment/auth change,
+protection bypass or acceptance attestation is implied. Stage rollback rehearsal
+and final-head hosted checks remain release requirements.
+
+ADR-071 staging scope: use the same compatible recovery preparation and verifier
+for staging, preserving its Access transport and private restricted email policy.
+A real staging rollback must exercise this named flags-OFF version, never the
+pre-V2 binary. Keep the normal protected workflow and acceptance evidence gates.
+
+ADR-071 rehearsal: every protected staging release now exercises compatible
+recovery after initial host proof, retaining the exact OFF asset/runtime result.
+Only after fresh exact-main CI, unchanged full recovery audit, owned deployment
+and both immutable version metadata checks may it reactivate the already uploaded
+normal candidate. Persist reactivation intent before POST; re-prove legacy and
+hosts before finishing. Interrupted reactivation may reconcile only the recorded
+recovery deployment or exact candidate; unrelated traffic still fails closed.
+Infrastructure rehearsal does not attest Google/OTP/payment/user/device checks.

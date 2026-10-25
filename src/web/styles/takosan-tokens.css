@@ -158,3 +158,62 @@
 .takosan-rebuild :is(h1, h2, h3, h4, h5, h6, .font-heading) {
   font-family: var(--takolio-font-heading);
 }
+
+/* S08 Home Pilot scoped presentation & accessibility refinements */
+.takosan-rebuild[data-page='home-s08'] {
+  padding-bottom: calc(var(--nav-mobile, 4.25rem) + env(safe-area-inset-bottom, 0px) + 1.5rem);
+}
+.takosan-rebuild[data-page='home-s08'] .home-plan-card {
+  align-items: stretch;
+  min-width: 0;
+  max-width: 100%;
+}
+.takosan-rebuild[data-page='home-s08']
+  :is(.home-plan-copy, .home-plan-summary, .kitchen-loop-strip, .kitchen-loop-step-copy) {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.takosan-rebuild[data-page='home-s08'] .home-meal-media {
+  flex: 1 1 13rem;
+  min-width: 0;
+  max-width: 100%;
+  align-self: stretch;
+}
+.takosan-rebuild[data-page='home-s08']
+  :is(
+    .kitchen-primary-link,
+    .kitchen-text-link,
+    .kitchen-discovery-link,
+    .home-stock-item,
+    .kitchen-loop-step,
+    button
+  ) {
+  min-height: var(--touch-target, 2.75rem);
+  scroll-margin-top: 5.5rem;
+  scroll-margin-bottom: calc(var(--nav-mobile, 4.25rem) + 1.5rem);
+}
+.takosan-rebuild[data-page='home-s08']
+  :is(
+    .kitchen-primary-link,
+    .kitchen-text-link,
+    .kitchen-discovery-link,
+    .home-stock-item,
+    .kitchen-loop-step,
+    button
+  ):focus-visible {
+  outline: 3px solid var(--semantic-focus);
+  outline-offset: 3px;
+}
+@media (min-width: 768px) {
+  .takosan-rebuild[data-page='home-s08'] {
+    padding-bottom: 3rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .takosan-rebuild[data-page='home-s08'] *,
+  .takosan-rebuild[data-page='home-s08'] .animate-fade-in {
+    animation: none !important;
+    transition: none !important;
+  }
+}

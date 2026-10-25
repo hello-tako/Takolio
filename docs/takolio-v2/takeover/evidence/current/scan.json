@@ -1,0 +1,10 @@
+{
+  "route": "/scan",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "h1": [
+    "Chụp ảnh, rồi kiểm tra"
+  ]
+}

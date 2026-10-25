@@ -1,0 +1,11 @@
+
+> frigo@0.1.0 typecheck /Users/tunbee27/Documents/New project/Takolio-v2-codex-integration
+> tsc -p tsconfig.json --noEmit && tsc -p tsconfig.worker.json --noEmit
+
+tests/integration/t13b-review-roundtrip.test.tsx(424,51): error TS2344: Type 'HTMLButtonElement | HTMLInputElement | HTMLSelectElement' does not satisfy the constraint 'Element'.
+  Type 'HTMLSelectElement' is not assignable to type 'Element'.
+    The types returned by 'remove()' are incompatible between these types.
+      Type 'void' is not assignable to type 'Element'.
+tests/integration/t13b-review-roundtrip.test.tsx(425,14): error TS18046: 'control' is of type 'unknown'.
+tests/integration/t13b-review-roundtrip.test.tsx(425,34): error TS18046: 'control' is of type 'unknown'.
+ ELIFECYCLE  Command failed with exit code 2.

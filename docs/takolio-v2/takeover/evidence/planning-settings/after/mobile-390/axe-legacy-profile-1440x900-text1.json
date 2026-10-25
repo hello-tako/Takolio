@@ -1,0 +1,178 @@
+{
+  "state": "legacy-profile",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "textScale": 1,
+  "metrics": {
+    "innerWidth": 1440,
+    "scrollWidth": 1440,
+    "brokenImages": []
+  },
+  "controls": [
+    {
+      "label": "button",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "button",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "button",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "button",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "button",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "button",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "button",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "button",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "button",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "button",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "button",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "button",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "button",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "button",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "button",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "button",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "button",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "button",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "button",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "button",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "button",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "button",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "button",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "button",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "button",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "Lưu sở thích",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    }
+  ],
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ]
+}

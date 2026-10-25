@@ -407,10 +407,15 @@
 .planning-picker-panel {
   background: #fffefb;
   min-width: 0;
-}
-.planning-picker-results {
-  min-height: 0;
+  /* Scroll filters with results when enlarged text leaves little room for dishes. */
+  overflow-y: auto;
   overscroll-behavior: contain;
+}
+.planning-picker-panel .planning-picker-results {
+  min-height: 0;
+  /* Keep one scroll container so enlarged text can expose each result fully. */
+  flex: none;
+  overflow: visible;
 }
 .planning-picker-count {
   font-size: 13px;

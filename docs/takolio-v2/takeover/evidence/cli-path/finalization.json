@@ -1,0 +1,72 @@
+{
+  "result": "PASS",
+  "implementation_commit": "c7f7b5510c3f23d7f3d59b66b556d13afd358a9b",
+  "full_suite": {
+    "files": 412,
+    "tests": 9169,
+    "exit_code": 0,
+    "wall_seconds": 937.99,
+    "reported_seconds": 936.93
+  },
+  "protected_main_unchanged_paths": 5830,
+  "strict_parent_unchanged_paths": 8956,
+  "recovery_verified": true,
+  "owner_pending": 38,
+  "privacy_pattern_findings": [],
+  "whitespace": "PASS",
+  "packet_files": [
+    {
+      "path": "docs/takolio-v2/takeover/evidence/cli-path/checks.json",
+      "bytes": 12902,
+      "sha256": "5caae53eff348f0d482f653429de8a1bb2c4874d8885465403ef917c370b050b"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/cli-path/parent-scope-verification.json",
+      "bytes": 1120,
+      "sha256": "43afe1d06bce66809bf3212401b3bb0139ce56738f1c1b672c813a67084cabcd"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/cli-path/protected-main-audit.json",
+      "bytes": 317225,
+      "sha256": "9723749498193c4b601bfe1711d48c5bdb47cc82516ef1fd6c2aaa1a18d2272e"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/cli-path/recovery-verification.json",
+      "bytes": 854,
+      "sha256": "ff5158385d8dcd337282035602b103a3eb94c1449f6c564a0c2e85dbb0261fba"
+    }
+  ],
+  "checkpoint_documents": [
+    {
+      "path": "docs/ai/CURRENT_STATE.md",
+      "bytes": 827403,
+      "sha256": "9c6d4f1c83aaebfeb4532322e58977223d3d29aa78e0da96d41a5377b8a8988c"
+    },
+    {
+      "path": "TASK_BOARD.md",
+      "bytes": 337315,
+      "sha256": "f35a33731ba21268e9ecbe37abf5b86eb0f42b0851a6ee740cda90ea8208dc9d"
+    },
+    {
+      "path": "HANDOFF.md",
+      "bytes": 139818,
+      "sha256": "678c054d5d8f9d73789391a265030a9fd21b5a51bc93542ba1a697c8bea488bf"
+    },
+    {
+      "path": "docs/ai/tasks/CLI01-local-file-url.md",
+      "bytes": 2242,
+      "sha256": "dd5b7893912e4628e74f2c53cc0dec8d2a0149f085c56875e07b75e99b29db4f"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/CLI01_LOCAL_FILE_URL.md",
+      "bytes": 2311,
+      "sha256": "73945c2c9052d66528a8195bbb40561a7e677308832470528aa03a6db5eda42f"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/FRONTEND_PLAN_STATUS.md",
+      "bytes": 5196,
+      "sha256": "430432b43c6559e4fa5817e7588ed327b1df9ce7da5410e43245cd5e2588a2c7"
+    }
+  ],
+  "receipt_scope": "Local CLI01 only; historical source/evidence preserved. Own receipt bytes and later documentation commit excluded."
+}

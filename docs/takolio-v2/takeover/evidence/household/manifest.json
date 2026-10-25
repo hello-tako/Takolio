@@ -1,0 +1,643 @@
+{
+  "base_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "implementation_commit": "d9107856888cafd2dc3d0462f4a03595c7b72fa4",
+  "scope": "Existing UI08 household read-only screen. Isolated local Worker/SQLite registered and actual guest sessions; cached unbroken display name explicitly shaped only after baseline. Four viewport/text configurations in separate mobile/desktop contexts. No invite, join, role or member-list capability fabricated. Root-font simulation; physical devices, OS zoom, screen readers and production not certified.",
+  "entries": [
+    {
+      "path": "after/desktop-1440/axe-guest-real-1440x900-text1.json",
+      "bytes": 756,
+      "sha256": "4dbaee610afa69bb85706b11e00eed84ab34f74aabf14b941eac8e1248c8dff9"
+    },
+    {
+      "path": "after/desktop-1440/axe-guest-real-320x420-text2.json",
+      "bytes": 753,
+      "sha256": "76b0a42f9978943659e0ac2cbfa88ba40ef729f09cd5cc60fca00bceaad9bf75"
+    },
+    {
+      "path": "after/desktop-1440/axe-guest-real-320x568-text1.json",
+      "bytes": 753,
+      "sha256": "2b99e7c533ca0c29dc44dedaf558292b85ee21d304fb0738bb72881e84c64fa1"
+    },
+    {
+      "path": "after/desktop-1440/axe-guest-real-390x844-text1.json",
+      "bytes": 753,
+      "sha256": "165518ebca012599fed8b449c78a9097e785ebc056bfcdbae2875ebc134bb49d"
+    },
+    {
+      "path": "after/desktop-1440/axe-long-cached-display-name-1440x900-text1.json",
+      "bytes": 1175,
+      "sha256": "6db742044b06da3b46a4d2dc7425eb95cb713da3a166b86adbe0402b986a0fe2"
+    },
+    {
+      "path": "after/desktop-1440/axe-long-cached-display-name-320x420-text2.json",
+      "bytes": 1172,
+      "sha256": "e955daadb96c903b7c043efadfdb6707c1f28f2bbbfbf6d6e6e525d8e1780afe"
+    },
+    {
+      "path": "after/desktop-1440/axe-long-cached-display-name-320x568-text1.json",
+      "bytes": 1172,
+      "sha256": "a0e0eb8e38b7bdcc21ea129e54fcfe2d40007761a156d43a3038166bdfd8bb32"
+    },
+    {
+      "path": "after/desktop-1440/axe-long-cached-display-name-390x844-text1.json",
+      "bytes": 1172,
+      "sha256": "bcbca2ffc0b47ea3f1959450f1f5409c0930e2e77a9d0f7ac07cb9448a9d1807"
+    },
+    {
+      "path": "after/desktop-1440/axe-registered-real-1440x900-text1.json",
+      "bytes": 747,
+      "sha256": "e1a40b4a63f244ea46688f2a434f6ac55d68b4d396e0cc1725cca6797e718a7b"
+    },
+    {
+      "path": "after/desktop-1440/axe-registered-real-320x420-text2.json",
+      "bytes": 744,
+      "sha256": "0eaefce2025d85c7d249916deb50dcc8f3ba9c2f41e1e2862d621d369d06396f"
+    },
+    {
+      "path": "after/desktop-1440/axe-registered-real-320x568-text1.json",
+      "bytes": 744,
+      "sha256": "b5e229fc43d4c086cc52871f2118c911737ad5366ef72259bee0f1d5e0a1b09e"
+    },
+    {
+      "path": "after/desktop-1440/axe-registered-real-390x844-text1.json",
+      "bytes": 744,
+      "sha256": "1ede63f799482f8fa8856e4bcd4f54b28a2b147f5bfe6fe5aa4b86ae88e264ea"
+    },
+    {
+      "path": "after/desktop-1440/guest-real-1440x900-text1.png",
+      "bytes": 115759,
+      "sha256": "caf3128175b360d2c8da22e2038d7312eb6c744c4ad25041834702d1854c23b8",
+      "width": 1440,
+      "height": 908
+    },
+    {
+      "path": "after/desktop-1440/guest-real-320x420-text2.png",
+      "bytes": 111248,
+      "sha256": "40c0ffe09fa6862e081c3da1f5e76f1fdd7c76d578cc2858c14e75814421546e",
+      "width": 320,
+      "height": 1838
+    },
+    {
+      "path": "after/desktop-1440/guest-real-320x568-text1.png",
+      "bytes": 94837,
+      "sha256": "01e363a9235071d89b9bc641f8b6c5d79f156aeb00490f7aba41e5cd886203e0",
+      "width": 320,
+      "height": 1258
+    },
+    {
+      "path": "after/desktop-1440/guest-real-390x844-text1.png",
+      "bytes": 103854,
+      "sha256": "2df27903d0f3d1faab72608bffd662cf2da698cf0d653c18b45ffd4b787a5687",
+      "width": 390,
+      "height": 1139
+    },
+    {
+      "path": "after/desktop-1440/guest-summary.json",
+      "bytes": 3021,
+      "sha256": "e18b66cf8d54b0d35590b2969bfb74a99be0e0401032ac02eabd9e4b426c0875"
+    },
+    {
+      "path": "after/desktop-1440/long-cached-display-name-1440x900-text1.png",
+      "bytes": 141366,
+      "sha256": "1006e0018e52debbb224a05dccf59cf105f0d0b3e7ff3e5639a46e8a9ca24fa5",
+      "width": 1440,
+      "height": 975
+    },
+    {
+      "path": "after/desktop-1440/long-cached-display-name-320x420-text2.png",
+      "bytes": 129949,
+      "sha256": "2e99f92f3bf70ba073c2ac061f529269327d197c18a9172474da0ea025e3f25e",
+      "width": 320,
+      "height": 2085
+    },
+    {
+      "path": "after/desktop-1440/long-cached-display-name-320x568-text1.png",
+      "bytes": 126043,
+      "sha256": "e8c981ff0bebf49c5e836101572bcd55791b8d8239d566f09c21d95a532458e2",
+      "width": 320,
+      "height": 1437
+    },
+    {
+      "path": "after/desktop-1440/long-cached-display-name-390x844-text1.png",
+      "bytes": 122222,
+      "sha256": "b4f5d5fa364c88549d18c3c6f87a67a2063aadbf3dce65e33543e1237d612d01",
+      "width": 390,
+      "height": 1296
+    },
+    {
+      "path": "after/desktop-1440/long-name-summary.json",
+      "bytes": 7592,
+      "sha256": "f31a4932bd08d2bded57a3c91d41ad40a9cc4c2fe8dbb09d1ef7e71077e15525"
+    },
+    {
+      "path": "after/desktop-1440/registered-real-1440x900-text1.png",
+      "bytes": 114818,
+      "sha256": "10f3dfc9e0c707c359986450534d14c52eb415f165e3e38e6905b2c2fa258a44",
+      "width": 1440,
+      "height": 908
+    },
+    {
+      "path": "after/desktop-1440/registered-real-320x420-text2.png",
+      "bytes": 109793,
+      "sha256": "23945e5c2df4e77543a5476016b00a95d0236d981353246f84f21dd855164dd4",
+      "width": 320,
+      "height": 1838
+    },
+    {
+      "path": "after/desktop-1440/registered-real-320x568-text1.png",
+      "bytes": 92932,
+      "sha256": "eb7531644e4151bd25a67ebc8c53e17eb13fd891fb4c62b3768b48830e1b1a42",
+      "width": 320,
+      "height": 1235
+    },
+    {
+      "path": "after/desktop-1440/registered-real-390x844-text1.png",
+      "bytes": 102308,
+      "sha256": "0483de38cca7f790e6d15092d0aaf719805b96fa7839733ddc3385b024bf7ddc",
+      "width": 390,
+      "height": 1139
+    },
+    {
+      "path": "after/desktop-1440/registered-summary.json",
+      "bytes": 3149,
+      "sha256": "8c789fb34780dc0f3642dbb34f43390ecb34c33bc3d83a70c3317a4be6da57ae"
+    },
+    {
+      "path": "after/mobile-390/axe-guest-real-1440x900-text1.json",
+      "bytes": 756,
+      "sha256": "789ed541c01e988b4327704147a1793ee58edb2786bfdcbc1da8c2499d438c3c"
+    },
+    {
+      "path": "after/mobile-390/axe-guest-real-320x420-text2.json",
+      "bytes": 753,
+      "sha256": "ba1ec0df5aaa4b1938df7e615deb997b3407a9815e22f33bd7ae2cb70e01cd43"
+    },
+    {
+      "path": "after/mobile-390/axe-guest-real-320x568-text1.json",
+      "bytes": 753,
+      "sha256": "a204fc1befde66c639c70679d4812eebf2946a6c2ff0a6fa01d1bdf40ca4c058"
+    },
+    {
+      "path": "after/mobile-390/axe-guest-real-390x844-text1.json",
+      "bytes": 753,
+      "sha256": "713392960a32560b4adfe6034d9fb1c9a745f865008f530773820b1f1e48278b"
+    },
+    {
+      "path": "after/mobile-390/axe-long-cached-display-name-1440x900-text1.json",
+      "bytes": 1175,
+      "sha256": "6db742044b06da3b46a4d2dc7425eb95cb713da3a166b86adbe0402b986a0fe2"
+    },
+    {
+      "path": "after/mobile-390/axe-long-cached-display-name-320x420-text2.json",
+      "bytes": 1172,
+      "sha256": "e2295618efeb8ad1b69894feef0ca5fbe8e20e19fa6818ad5f23f74245cf7544"
+    },
+    {
+      "path": "after/mobile-390/axe-long-cached-display-name-320x568-text1.json",
+      "bytes": 1172,
+      "sha256": "a0e0eb8e38b7bdcc21ea129e54fcfe2d40007761a156d43a3038166bdfd8bb32"
+    },
+    {
+      "path": "after/mobile-390/axe-long-cached-display-name-390x844-text1.json",
+      "bytes": 1172,
+      "sha256": "bcbca2ffc0b47ea3f1959450f1f5409c0930e2e77a9d0f7ac07cb9448a9d1807"
+    },
+    {
+      "path": "after/mobile-390/axe-registered-real-1440x900-text1.json",
+      "bytes": 747,
+      "sha256": "e1a40b4a63f244ea46688f2a434f6ac55d68b4d396e0cc1725cca6797e718a7b"
+    },
+    {
+      "path": "after/mobile-390/axe-registered-real-320x420-text2.json",
+      "bytes": 744,
+      "sha256": "c9c7a44108f7c7ebf5b54edb035b01464842bb8881cd091c5be73b4258669580"
+    },
+    {
+      "path": "after/mobile-390/axe-registered-real-320x568-text1.json",
+      "bytes": 744,
+      "sha256": "b5e229fc43d4c086cc52871f2118c911737ad5366ef72259bee0f1d5e0a1b09e"
+    },
+    {
+      "path": "after/mobile-390/axe-registered-real-390x844-text1.json",
+      "bytes": 744,
+      "sha256": "bd26a21c95cdbc38288f1f2e1718374304b11e83c72089547c1c93e7b1c473a5"
+    },
+    {
+      "path": "after/mobile-390/guest-real-1440x900-text1.png",
+      "bytes": 115595,
+      "sha256": "75a8d99bc43158f648f1b9ab5086e471c22a0cced331c642415a6cb2e89e1efe",
+      "width": 1440,
+      "height": 908
+    },
+    {
+      "path": "after/mobile-390/guest-real-320x420-text2.png",
+      "bytes": 111250,
+      "sha256": "9ddf7fac651ae67a7875fa60c8d360cc3b7c23b1409d03081eb54e07f651530b",
+      "width": 320,
+      "height": 1838
+    },
+    {
+      "path": "after/mobile-390/guest-real-320x568-text1.png",
+      "bytes": 94644,
+      "sha256": "9e91d3cc0bfb53026361d8497efc8bd18769ad190d432f5856ce41948409bdf4",
+      "width": 320,
+      "height": 1258
+    },
+    {
+      "path": "after/mobile-390/guest-real-390x844-text1.png",
+      "bytes": 103708,
+      "sha256": "8506aa62f29ffb1ff5ce742141567f14e7fd83bc895932557f2f60a49328ad75",
+      "width": 390,
+      "height": 1139
+    },
+    {
+      "path": "after/mobile-390/guest-summary.json",
+      "bytes": 3021,
+      "sha256": "68d26b8704566b2b768d7ff2725b25a5fc9456641de829918146230aaeee78b9"
+    },
+    {
+      "path": "after/mobile-390/long-cached-display-name-1440x900-text1.png",
+      "bytes": 141366,
+      "sha256": "1006e0018e52debbb224a05dccf59cf105f0d0b3e7ff3e5639a46e8a9ca24fa5",
+      "width": 1440,
+      "height": 975
+    },
+    {
+      "path": "after/mobile-390/long-cached-display-name-320x420-text2.png",
+      "bytes": 129949,
+      "sha256": "2e99f92f3bf70ba073c2ac061f529269327d197c18a9172474da0ea025e3f25e",
+      "width": 320,
+      "height": 2085
+    },
+    {
+      "path": "after/mobile-390/long-cached-display-name-320x568-text1.png",
+      "bytes": 126043,
+      "sha256": "e8c981ff0bebf49c5e836101572bcd55791b8d8239d566f09c21d95a532458e2",
+      "width": 320,
+      "height": 1437
+    },
+    {
+      "path": "after/mobile-390/long-cached-display-name-390x844-text1.png",
+      "bytes": 122222,
+      "sha256": "b4f5d5fa364c88549d18c3c6f87a67a2063aadbf3dce65e33543e1237d612d01",
+      "width": 390,
+      "height": 1296
+    },
+    {
+      "path": "after/mobile-390/long-name-summary.json",
+      "bytes": 7592,
+      "sha256": "8a8d75e874c10487226eac3b1271a83cf1b97a4a8c490e522366b7d8531b3a28"
+    },
+    {
+      "path": "after/mobile-390/registered-real-1440x900-text1.png",
+      "bytes": 114818,
+      "sha256": "10f3dfc9e0c707c359986450534d14c52eb415f165e3e38e6905b2c2fa258a44",
+      "width": 1440,
+      "height": 908
+    },
+    {
+      "path": "after/mobile-390/registered-real-320x420-text2.png",
+      "bytes": 109793,
+      "sha256": "23945e5c2df4e77543a5476016b00a95d0236d981353246f84f21dd855164dd4",
+      "width": 320,
+      "height": 1838
+    },
+    {
+      "path": "after/mobile-390/registered-real-320x568-text1.png",
+      "bytes": 92932,
+      "sha256": "eb7531644e4151bd25a67ebc8c53e17eb13fd891fb4c62b3768b48830e1b1a42",
+      "width": 320,
+      "height": 1235
+    },
+    {
+      "path": "after/mobile-390/registered-real-390x844-text1.png",
+      "bytes": 102308,
+      "sha256": "0483de38cca7f790e6d15092d0aaf719805b96fa7839733ddc3385b024bf7ddc",
+      "width": 390,
+      "height": 1139
+    },
+    {
+      "path": "after/mobile-390/registered-summary.json",
+      "bytes": 3149,
+      "sha256": "d6f49f8c9d83e6fb68d9cac3c5b9b5995feb8b12783a8e8d85c24a06a794594d"
+    },
+    {
+      "path": "before/desktop-1440/axe-guest-real-1440x900-text1.json",
+      "bytes": 397,
+      "sha256": "82463764d0236e1d2bdfaf283b9ca7876396166206dcc4ddaa6a6f98705eb5fa"
+    },
+    {
+      "path": "before/desktop-1440/axe-guest-real-320x420-text2.json",
+      "bytes": 394,
+      "sha256": "ff893edc254e92575d30a41d2c0f31519b966e06880105b374fac5910ff9707a"
+    },
+    {
+      "path": "before/desktop-1440/axe-guest-real-320x568-text1.json",
+      "bytes": 394,
+      "sha256": "434f8f7dd6261b3e93560c9d6ec7fec9341f76fff90d4078f46e367153f327c9"
+    },
+    {
+      "path": "before/desktop-1440/axe-guest-real-390x844-text1.json",
+      "bytes": 394,
+      "sha256": "8924f14ae6c56a35593d607cbb70987937636ab6ef0915b6cfd5d1deb330d562"
+    },
+    {
+      "path": "before/desktop-1440/axe-long-cached-display-name-1440x900-text1.json",
+      "bytes": 411,
+      "sha256": "a2198337ee915199de2baa223c881b76e9d94625d3868c7087877dfb48bd7cd8"
+    },
+    {
+      "path": "before/desktop-1440/axe-long-cached-display-name-320x420-text2.json",
+      "bytes": 408,
+      "sha256": "5bcf3d45bcfb18c7198ca19e61bc5b44c8d9cd5f8e3f8ef3722ac8543a7117c0"
+    },
+    {
+      "path": "before/desktop-1440/axe-long-cached-display-name-320x568-text1.json",
+      "bytes": 408,
+      "sha256": "2bc17deae6f65eb662264ed2d3efbc3fc0d9ad76c8a73def1fa83df9eaee4caa"
+    },
+    {
+      "path": "before/desktop-1440/axe-long-cached-display-name-390x844-text1.json",
+      "bytes": 408,
+      "sha256": "6cf8c73e9939bda3757e59681df7e487250d87e146816a31658b3bafa3e30751"
+    },
+    {
+      "path": "before/desktop-1440/axe-registered-real-1440x900-text1.json",
+      "bytes": 402,
+      "sha256": "21f3f70673bcb82bff0281c3b085ceeb0b09ee79edc09b2bfa681ac0b4db9709"
+    },
+    {
+      "path": "before/desktop-1440/axe-registered-real-320x420-text2.json",
+      "bytes": 399,
+      "sha256": "9e488a4697b9c7f3bba54b65f60f27d55f292c9d97bb055aaad1ba05198cd5b6"
+    },
+    {
+      "path": "before/desktop-1440/axe-registered-real-320x568-text1.json",
+      "bytes": 399,
+      "sha256": "d92ef4e1877aa23ff3b529172cadd719825c5e79662c7830ad1268b7eead7a65"
+    },
+    {
+      "path": "before/desktop-1440/axe-registered-real-390x844-text1.json",
+      "bytes": 399,
+      "sha256": "4d514880b1e5d575394b9ce38b358569897abca98cb47bbf6dcc4107963ab542"
+    },
+    {
+      "path": "before/desktop-1440/guest-real-1440x900-text1.png",
+      "bytes": 115513,
+      "sha256": "72592c241154c6884ba3fb0bb15e1fbc7982efc4419493c46f7041934a535992",
+      "width": 1440,
+      "height": 908
+    },
+    {
+      "path": "before/desktop-1440/guest-real-320x420-text2.png",
+      "bytes": 111557,
+      "sha256": "d8641c1388158d99e24fbf518b257da4e1a35f0390264a6bc19d56afb3f95460",
+      "width": 422,
+      "height": 1738
+    },
+    {
+      "path": "before/desktop-1440/guest-real-320x568-text1.png",
+      "bytes": 107585,
+      "sha256": "6ddcd951c26da9e484a6b07697ecc1372e72403242e8c28472e95685ea7af471",
+      "width": 340,
+      "height": 1213
+    },
+    {
+      "path": "before/desktop-1440/guest-real-390x844-text1.png",
+      "bytes": 93565,
+      "sha256": "cca3cff6d0853f61bd05908422c57a3f025d4afa4e7c5ddb40722a82a8532cac",
+      "width": 390,
+      "height": 1162
+    },
+    {
+      "path": "before/desktop-1440/guest-summary.json",
+      "bytes": 1457,
+      "sha256": "147eb650466b6ee83d72e3f224da4e6af1d78cc31846582789cb0ac903d764bf"
+    },
+    {
+      "path": "before/desktop-1440/long-cached-display-name-1440x900-text1.png",
+      "bytes": 128587,
+      "sha256": "a8157bd09d4a91613864bb9a392d71260ae8c7b534c979cf7cfb4fa855f9b8eb",
+      "width": 1440,
+      "height": 953
+    },
+    {
+      "path": "before/desktop-1440/long-cached-display-name-320x420-text2.png",
+      "bytes": 113805,
+      "sha256": "22669636a2ca4d27c7448881462e50a0bb448859e6dd40d28ce3ba28db99887d",
+      "width": 320,
+      "height": 2017
+    },
+    {
+      "path": "before/desktop-1440/long-cached-display-name-320x568-text1.png",
+      "bytes": 104699,
+      "sha256": "f5147767636a211b3e4468a4277b114739222d165fd3dd0abe490358c65211e7",
+      "width": 320,
+      "height": 1369
+    },
+    {
+      "path": "before/desktop-1440/long-cached-display-name-390x844-text1.png",
+      "bytes": 115197,
+      "sha256": "f700b2db097d75b06a4c2c2f6d6836065789279107a88ff5148a3a6ff64a7a45",
+      "width": 390,
+      "height": 1251
+    },
+    {
+      "path": "before/desktop-1440/long-name-summary.json",
+      "bytes": 4408,
+      "sha256": "abc6266e43da376831ed46e64af80a23700520da6c1122220b2a5a083eade5b7"
+    },
+    {
+      "path": "before/desktop-1440/registered-real-1440x900-text1.png",
+      "bytes": 114818,
+      "sha256": "10f3dfc9e0c707c359986450534d14c52eb415f165e3e38e6905b2c2fa258a44",
+      "width": 1440,
+      "height": 908
+    },
+    {
+      "path": "before/desktop-1440/registered-real-320x420-text2.png",
+      "bytes": 109793,
+      "sha256": "23945e5c2df4e77543a5476016b00a95d0236d981353246f84f21dd855164dd4",
+      "width": 320,
+      "height": 1838
+    },
+    {
+      "path": "before/desktop-1440/registered-real-320x568-text1.png",
+      "bytes": 92932,
+      "sha256": "eb7531644e4151bd25a67ebc8c53e17eb13fd891fb4c62b3768b48830e1b1a42",
+      "width": 320,
+      "height": 1235
+    },
+    {
+      "path": "before/desktop-1440/registered-real-390x844-text1.png",
+      "bytes": 102308,
+      "sha256": "0483de38cca7f790e6d15092d0aaf719805b96fa7839733ddc3385b024bf7ddc",
+      "width": 390,
+      "height": 1139
+    },
+    {
+      "path": "before/desktop-1440/registered-summary.json",
+      "bytes": 1641,
+      "sha256": "921a99f7f38fde0493d89c7007c55cad5a1c6e9077b0ee3cada7f4a0d766df89"
+    },
+    {
+      "path": "before/mobile-390/axe-guest-real-1440x900-text1.json",
+      "bytes": 397,
+      "sha256": "82463764d0236e1d2bdfaf283b9ca7876396166206dcc4ddaa6a6f98705eb5fa"
+    },
+    {
+      "path": "before/mobile-390/axe-guest-real-320x420-text2.json",
+      "bytes": 394,
+      "sha256": "53f7fd65316d67f7691c04955e3f74abab1dbfb9a1fa06357120e24bcd76daf9"
+    },
+    {
+      "path": "before/mobile-390/axe-guest-real-320x568-text1.json",
+      "bytes": 394,
+      "sha256": "54da70b18cd474f1e3a51de1b58fec095a8093ef0e73b6644ff0b19d4668373d"
+    },
+    {
+      "path": "before/mobile-390/axe-guest-real-390x844-text1.json",
+      "bytes": 394,
+      "sha256": "8924f14ae6c56a35593d607cbb70987937636ab6ef0915b6cfd5d1deb330d562"
+    },
+    {
+      "path": "before/mobile-390/axe-long-cached-display-name-1440x900-text1.json",
+      "bytes": 411,
+      "sha256": "a2198337ee915199de2baa223c881b76e9d94625d3868c7087877dfb48bd7cd8"
+    },
+    {
+      "path": "before/mobile-390/axe-long-cached-display-name-320x420-text2.json",
+      "bytes": 408,
+      "sha256": "5bcf3d45bcfb18c7198ca19e61bc5b44c8d9cd5f8e3f8ef3722ac8543a7117c0"
+    },
+    {
+      "path": "before/mobile-390/axe-long-cached-display-name-320x568-text1.json",
+      "bytes": 408,
+      "sha256": "2bc17deae6f65eb662264ed2d3efbc3fc0d9ad76c8a73def1fa83df9eaee4caa"
+    },
+    {
+      "path": "before/mobile-390/axe-long-cached-display-name-390x844-text1.json",
+      "bytes": 408,
+      "sha256": "6cf8c73e9939bda3757e59681df7e487250d87e146816a31658b3bafa3e30751"
+    },
+    {
+      "path": "before/mobile-390/axe-registered-real-1440x900-text1.json",
+      "bytes": 402,
+      "sha256": "21f3f70673bcb82bff0281c3b085ceeb0b09ee79edc09b2bfa681ac0b4db9709"
+    },
+    {
+      "path": "before/mobile-390/axe-registered-real-320x420-text2.json",
+      "bytes": 399,
+      "sha256": "9e488a4697b9c7f3bba54b65f60f27d55f292c9d97bb055aaad1ba05198cd5b6"
+    },
+    {
+      "path": "before/mobile-390/axe-registered-real-320x568-text1.json",
+      "bytes": 399,
+      "sha256": "d92ef4e1877aa23ff3b529172cadd719825c5e79662c7830ad1268b7eead7a65"
+    },
+    {
+      "path": "before/mobile-390/axe-registered-real-390x844-text1.json",
+      "bytes": 399,
+      "sha256": "4d514880b1e5d575394b9ce38b358569897abca98cb47bbf6dcc4107963ab542"
+    },
+    {
+      "path": "before/mobile-390/guest-real-1440x900-text1.png",
+      "bytes": 115602,
+      "sha256": "7821f981788b4587c8350d7ffe3fd9dd25f0b261755f5b2048afe0782f1a1c1e",
+      "width": 1440,
+      "height": 908
+    },
+    {
+      "path": "before/mobile-390/guest-real-320x420-text2.png",
+      "bytes": 111265,
+      "sha256": "6edb5a45223d08c226e6a47371c2881661546ac60eab04f296b293ce661c266f",
+      "width": 412,
+      "height": 1738
+    },
+    {
+      "path": "before/mobile-390/guest-real-320x568-text1.png",
+      "bytes": 95701,
+      "sha256": "2812edbb565f0f87a2294a21d86be92ac84ff48698aa3381dd5f1e4db5e93415",
+      "width": 330,
+      "height": 1235
+    },
+    {
+      "path": "before/mobile-390/guest-real-390x844-text1.png",
+      "bytes": 103764,
+      "sha256": "03e9115b943fd4efe8b42658197cfd01b6910e5ea5d95ba8b0678b3d6a92a945",
+      "width": 390,
+      "height": 1139
+    },
+    {
+      "path": "before/mobile-390/guest-summary.json",
+      "bytes": 1457,
+      "sha256": "c4c031d8f10a45d8d689336c31559d9141d73a3156397723aaa210f1c016f020"
+    },
+    {
+      "path": "before/mobile-390/long-cached-display-name-1440x900-text1.png",
+      "bytes": 128587,
+      "sha256": "a8157bd09d4a91613864bb9a392d71260ae8c7b534c979cf7cfb4fa855f9b8eb",
+      "width": 1440,
+      "height": 953
+    },
+    {
+      "path": "before/mobile-390/long-cached-display-name-320x420-text2.png",
+      "bytes": 113805,
+      "sha256": "22669636a2ca4d27c7448881462e50a0bb448859e6dd40d28ce3ba28db99887d",
+      "width": 320,
+      "height": 2017
+    },
+    {
+      "path": "before/mobile-390/long-cached-display-name-320x568-text1.png",
+      "bytes": 104699,
+      "sha256": "f5147767636a211b3e4468a4277b114739222d165fd3dd0abe490358c65211e7",
+      "width": 320,
+      "height": 1369
+    },
+    {
+      "path": "before/mobile-390/long-cached-display-name-390x844-text1.png",
+      "bytes": 115197,
+      "sha256": "f700b2db097d75b06a4c2c2f6d6836065789279107a88ff5148a3a6ff64a7a45",
+      "width": 390,
+      "height": 1251
+    },
+    {
+      "path": "before/mobile-390/long-name-summary.json",
+      "bytes": 4408,
+      "sha256": "8626a95ae9fd663bd4b074cf3278e1bdc0bbeefd05f70cc315b04ff27a94af74"
+    },
+    {
+      "path": "before/mobile-390/registered-real-1440x900-text1.png",
+      "bytes": 114818,
+      "sha256": "10f3dfc9e0c707c359986450534d14c52eb415f165e3e38e6905b2c2fa258a44",
+      "width": 1440,
+      "height": 908
+    },
+    {
+      "path": "before/mobile-390/registered-real-320x420-text2.png",
+      "bytes": 109793,
+      "sha256": "23945e5c2df4e77543a5476016b00a95d0236d981353246f84f21dd855164dd4",
+      "width": 320,
+      "height": 1838
+    },
+    {
+      "path": "before/mobile-390/registered-real-320x568-text1.png",
+      "bytes": 92932,
+      "sha256": "eb7531644e4151bd25a67ebc8c53e17eb13fd891fb4c62b3768b48830e1b1a42",
+      "width": 320,
+      "height": 1235
+    },
+    {
+      "path": "before/mobile-390/registered-real-390x844-text1.png",
+      "bytes": 102308,
+      "sha256": "0483de38cca7f790e6d15092d0aaf719805b96fa7839733ddc3385b024bf7ddc",
+      "width": 390,
+      "height": 1139
+    },
+    {
+      "path": "before/mobile-390/registered-summary.json",
+      "bytes": 1641,
+      "sha256": "921a99f7f38fde0493d89c7007c55cad5a1c6e9077b0ee3cada7f4a0d766df89"
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "result": "PASS",
+  "evidence_files_verified": 101,
+  "recipe_filter_evidence_files_verified": 28,
+  "saved_recipes_evidence_files_verified": 56,
+  "saved_recipes_pngs_verified": 37,
+  "saved_recipes_zero_violation_axe_reports": 17,
+  "saved_recipes_check_logs_verified": 11,
+  "recipe_detail_evidence_files_verified": 66,
+  "recipe_detail_pngs_verified": 38,
+  "recipe_detail_zero_violation_axe_reports": 24,
+  "recipe_detail_check_logs_verified": 9,
+  "recipe_detail_retained_attempt_logs_verified": 5,
+  "cooking_evidence_files_verified": 75,
+  "cooking_pngs_verified": 38,
+  "cooking_zero_violation_axe_reports": 32,
+  "cooking_summaries_verified": 5,
+  "cooking_state_config_captures_verified": 32,
+  "cooking_control_measurements_verified": 568,
+  "cooking_check_logs_verified": 9,
+  "cooking_retained_attempt_logs_verified": 5,
+  "planner_evidence_files_verified": 61,
+  "planner_pngs_verified": 33,
+  "planner_zero_violation_axe_reports": 24,
+  "planner_incomplete_axe_reports_by_rule": {
+    "color-contrast": 24,
+    "aria-prohibited-attr": 12
+  },
+  "planner_summaries_verified": 4,
+  "planner_state_config_captures_verified": 24,
+  "planner_picker_configs_verified": 9,
+  "planner_reachable_control_measurements_verified": 36,
+  "planner_check_logs_verified": 13,
+  "planner_retained_attempt_logs_verified": 13,
+  "planner_recovery_verified": true,
+  "shopping_evidence_files_verified": 195,
+  "shopping_pngs_verified": 95,
+  "shopping_zero_violation_axe_reports": 88,
+  "shopping_incomplete_axe_reports_by_rule": {
+    "color-contrast": 38
+  },
+  "shopping_failing_before_axe_reports": 7,
+  "shopping_summaries_verified": 5,
+  "shopping_state_config_captures_verified": 88,
+  "shopping_reachable_dialog_controls_verified": 154,
+  "shopping_check_logs_verified": 14,
+  "shopping_retained_attempt_logs_verified": 12,
+  "shopping_recovery_verified": true,
+  "notifications_evidence_files_verified": 143,
+  "notifications_pngs_verified": 69,
+  "notifications_zero_violation_axe_reports": 60,
+  "notifications_incomplete_axe_reports_by_rule": {
+    "color-contrast": 60
+  },
+  "notifications_before_overflow_captures": 9,
+  "notifications_summaries_verified": 5,
+  "notifications_state_config_captures_verified": 60,
+  "notifications_reachable_preferences_links_verified": 60,
+  "notifications_check_logs_verified": 14,
+  "notifications_retained_attempt_logs_verified": 9,
+  "notifications_recovery_verified": true,
+  "profile_evidence_files_verified": 153,
+  "profile_pngs_verified": 72,
+  "profile_zero_violation_axe_reports": 48,
+  "profile_incomplete_axe_reports_by_rule": {
+    "color-contrast": 48
+  },
+  "profile_summaries_verified": 9,
+  "profile_state_config_captures_verified": 48,
+  "profile_actionable_controls_verified": 192,
+  "profile_check_logs_verified": 11,
+  "profile_retained_attempt_logs_verified": 7,
+  "profile_recovery_verified": true,
+  "household_evidence_files_verified": 108,
+  "household_pngs_verified": 48,
+  "household_zero_violation_axe_reports": 24,
+  "household_incomplete_axe_reports_by_rule": {
+    "color-contrast": 24
+  },
+  "household_before_requested_width_failures": 4,
+  "household_summaries_verified": 12,
+  "household_state_config_captures_verified": 24,
+  "household_check_logs_verified": 11,
+  "household_retained_logs_verified": 4,
+  "household_retained_baseline_artifacts_verified": 1,
+  "household_recovery_verified": true,
+  "settings_evidence_files_verified": 268,
+  "settings_pngs_verified": 128,
+  "settings_after_zero_violation_axe_reports": 64,
+  "settings_summaries_verified": 12,
+  "settings_incomplete_axe_reports_by_rule": {
+    "color-contrast": 64
+  },
+  "settings_measured_controls_verified": 232,
+  "settings_check_logs_verified": 11,
+  "settings_retained_logs_verified": 5,
+  "settings_recovery_verified": true,
+  "food_evidence_files_verified": 268,
+  "food_after_measured_controls": 1256,
+  "food_after_incomplete_contrast": {
+    "color-contrast": 64
+  },
+  "food_check_logs_verified": 11,
+  "food_retained_logs_verified": 8,
+  "planning_evidence_files_verified": 286,
+  "planning_measured_controls": {
+    "after": 1264,
+    "composition-off": 128
+  },
+  "planning_incomplete_contrast": {
+    "color-contrast": 72
+  },
+  "planning_check_logs_verified": 14,
+  "planning_retained_logs_verified": 11,
+  "notification_preferences_payloads": 140,
+  "notification_preferences_controls": {
+    "before": 160,
+    "after": 160
+  },
+  "notification_preferences_switches": {
+    "before": 160,
+    "after": 160
+  },
+  "notification_preferences_thumb_overflows": {
+    "before": 39
+  },
+  "notification_preferences_final_incomplete": {
+    "color-contrast": 32
+  },
+  "notification_preferences_checks": 19,
+  "notification_preferences_retained_logs": 9,
+  "privacy_payloads": 100,
+  "privacy_captures": 48,
+  "privacy_incomplete": {
+    "color-contrast": 48
+  },
+  "privacy_checks": 10,
+  "privacy_retained_logs": 1,
+  "privacy_initial_artifacts": 113,
+  "offline_payloads": 136,
+  "offline_captures": 64,
+  "offline_defects": {
+    "baseline:missing_status": 24,
+    "baseline:small_retry": 12,
+    "baseline:text_overlap": 2
+  },
+  "offline_incomplete": {
+    "baseline:color-contrast": 8,
+    "after:color-contrast": 8
+  },
+  "offline_targets": {
+    "baseline": 24,
+    "after": 24
+  },
+  "offline_checks": 11,
+  "offline_retained_logs": 2,
+  "offline_initial_artifacts": 79,
+  "offline_recovery_verified": true,
+  "week_off_payloads": 146,
+  "week_off_captures": 72,
+  "week_off_measured_controls": 512,
+  "week_off_incomplete": {
+    "color-contrast": 72
+  },
+  "week_off_checks": 17,
+  "week_off_retained_logs": 6,
+  "week_off_retained_artifacts": 213,
+  "week_off_recovery_verified": true,
+  "screen_rows": 38,
+  "screen_counts": {
+    "CAPTURED_PROXY": 1,
+    "CAPTURED_SYNTHETIC": 37
+  },
+  "selected_source_paths": 54,
+  "csv_rows": {
+    "ARGON_WORK_LEDGER.csv": 69,
+    "FILE_DECISIONS.csv": 112,
+    "WIP_ASSET_PROVENANCE.csv": 12
+  },
+  "reviewed_changed_or_added_paths": 3048,
+  "credential_scan": "No private-key, GitHub token, OpenAI token pattern or exact private backup path detected in changed text; pattern scan is not a general security certification.",
+  "failures": []
+}

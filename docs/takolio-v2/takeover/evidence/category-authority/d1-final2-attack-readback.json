@@ -1,0 +1,70 @@
+[
+  {
+    "results": [
+      {
+        "id": "cat01-d1-lot",
+        "display_category": "spice",
+        "quantity_milli": 250,
+        "version": 1
+      }
+    ],
+    "success": true,
+    "meta": {
+      "duration": 1
+    }
+  },
+  {
+    "results": [
+      {
+        "id": "cat01-d1-lot",
+        "category": "spice",
+        "quantity": 0.25,
+        "version": 1
+      }
+    ],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [
+      {
+        "forged_commands": 0
+      }
+    ],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [
+      {
+        "forged_events": 0
+      }
+    ],
+    "success": true,
+    "meta": {
+      "duration": 0
+    }
+  },
+  {
+    "results": [],
+    "success": true,
+    "meta": {
+      "duration": 3
+    }
+  },
+  {
+    "results": [
+      {
+        "quick_check": "ok"
+      }
+    ],
+    "success": true,
+    "meta": {
+      "duration": 6
+    }
+  }
+]

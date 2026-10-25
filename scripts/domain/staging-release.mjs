@@ -36,12 +36,14 @@ export function unchangedAudit(before, after) {
 export async function releaseStaging(provider) {
   const context = await provider.prepare();
   try {
+    await provider.prepareRecovery(context);
     await provider.build(context);
     await provider.upload(context);
     await provider.activate(context);
     await provider.proveLegacy(context);
     await provider.attach(context);
     await provider.proveHosts(context);
+    await provider.rehearseRecovery(context);
     await provider.finish(context);
     return context;
   } catch (error) {
@@ -54,21 +56,6 @@ export async function releaseStaging(provider) {
     }
     throw error;
   }
-}
-
-export function recoveryAction(context, active) {
-  if (!context.mutationAttempted) return 'none';
-  if (active.versionId === context.audit.worker.versionId) {
-    if (context.state === 'activation-intent' || context.hosts &&
-        (context.hosts.state !== 'detached' || context.hosts.created.length !== 0)) {
-      throw new Error('Activation or hostname outcome is uncertain; operator reconciliation required');
-    }
-    return 'verify-previous';
-  }
-  if (active.versionId !== context.uploadedVersionId || context.activeDeploymentId && active.deploymentId !== context.activeDeploymentId) {
-    throw new Error('Manual reconciliation required: traffic ownership changed');
-  }
-  return 'restore';
 }
 
 export function validateRecoveryContext(context, env) {

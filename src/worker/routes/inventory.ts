@@ -130,17 +130,19 @@ function inventoryCreateFingerprint(item: {
 
 const storedInventoryCommandFingerprint = inventoryMutationFingerprintFromMetadata;
 
-// Adopted households keep the legacy response contract; the mutation itself
-// goes through the canonical lot authority.
-async function adoptedItemResponse(c: any, db: any, kv: any, auth: AuthContext,
-  itemId: string, replayed: boolean) {
-  const persisted = await db.prepare(SQL.GET_INVENTORY_ITEM).bind(itemId, auth.householdId).first();
-  if (!persisted) throw new Error('Adopted inventory command did not produce a durable row');
-  if (kv) await kv.delete(`inv_${auth.householdId}`).catch(() => {});
-  return c.json(
-    { success: true, ...(replayed ? { idempotentReplay: true } : {}), item: mapInventoryRow(persisted) },
-    replayed ? 200 : 201
-  );
+async function replayAdoptedManualCreate(c: any, db: any, auth: AuthContext,
+  itemId: string, requestFingerprint: string) {
+  const receipt = await readLotCommandReceipt(db,
+    { householdId: auth.householdId, actorId: auth.userId }, `manual-create:${itemId}`);
+  if (!receipt) return null;
+  // Historical receipts lack original request intent; mutable rows cannot recover it.
+  if (receipt.manualCreate?.requestFingerprint !== requestFingerprint) {
+    return c.json({ error: 'ID nguyên liệu đã được dùng cho dữ liệu khác', code: 'IDEMPOTENCY_CONFLICT' }, 409);
+  }
+  if (receipt.command.type !== 'CREATE' || receipt.command.lotId !== itemId
+    || receipt.manualCreate.projectionAfter.id !== itemId) throw new LotCommandError('CORRUPT_RECEIPT');
+  return c.json({ success: true, idempotentReplay: true,
+    item: mapInventoryRow(receipt.manualCreate.projectionAfter) });
 }
 
 async function replayAdoptedManualUpdate(c: any, db: any, auth: AuthContext, itemId: string,
@@ -210,6 +212,7 @@ async function adoptManualInventoryUpdate(c: any, db: any, kv: any, auth: AuthCo
       rawName: input.rawName,
       ingredientId: input.ingredientId,
     };
+    if (input.body.category !== undefined) changes.displayCategory = input.body.category;
     if (input.expirySubmitted) {
       // T13 expiry truth: a date the user explicitly submits through the edit
       // sheet is supplied dated evidence and becomes KNOWN. Carrying the lot's
@@ -318,8 +321,8 @@ async function adoptManualInventoryDiscard(c: any, db: any, kv: any, auth: AuthC
 }
 
 async function adoptManualInventoryCreate(c: any, db: any, kv: any, auth: AuthContext,
-  item: { id: string; ingredientId: string | null; name: string; quantity: number; storage: string; expiryDate: string | null; expiryEstimated?: boolean },
-  unit: string) {
+  item: { id: string; ingredientId: string | null; name: string; quantity: number; category: string; storage: string; expiryDate: string | null; expiryEstimated?: boolean },
+  unit: string, requestFingerprint: string) {
   const scope = { householdId: auth.householdId, actorId: auth.userId };
   try {
     const snapshot = await readAdoptedLotSnapshot(db, scope);
@@ -333,15 +336,26 @@ async function adoptManualInventoryCreate(c: any, db: any, kv: any, auth: AuthCo
       : lotExpiryFromEvidence(item.expiryDate, item.expiryDate ? 'supplied' : 'absent');
     const command = {
       type: 'CREATE' as const, lotId: item.id, ingredientId: item.ingredientId, rawName: item.name,
-      quantity: item.quantity, unit, storageLocationId: location.id,
+      quantity: item.quantity, unit, displayCategory: item.category, storageLocationId: location.id,
       expiryAt: expiry.expiryAt, estimatedExpiryAt: expiry.estimatedExpiryAt, expiryKind: expiry.expiryKind,
       purchasedAt: null, openedAt: null, purchasePrice: null, sourceType: 'MANUAL' as const, sourceId: null,
     };
     const prepared = await prepareInventoryLotCommand(db, scope, `manual-create:${item.id}`, command,
-      new Date().toISOString(), snapshot);
-    if (prepared.kind === 'replay') return adoptedItemResponse(c, db, kv, auth, item.id, true);
-    await db.batch(prepared.statements);
-    return adoptedItemResponse(c, db, kv, auth, item.id, false);
+      new Date().toISOString(), snapshot, false, undefined, { requestFingerprint });
+    if (prepared.kind === 'prepared') {
+      try {
+        assertBatchSucceeded(await db.batch(prepared.statements));
+      } catch (error) {
+        const replay = await replayAdoptedManualCreate(c, db, auth, item.id, requestFingerprint);
+        if (replay) return replay;
+        throw classifyLotCommandBatchFailure(error);
+      }
+    }
+    const receipt = await readLotCommandReceipt(db, scope, `manual-create:${item.id}`);
+    if (!receipt?.manualCreate) throw new LotCommandError('CORRUPT_RECEIPT');
+    if (kv) await kv.delete(`inv_${auth.householdId}`).catch(() => {});
+    return c.json({ success: true, ...(prepared.kind === 'replay' ? { idempotentReplay: true } : {}),
+      item: mapInventoryRow(receipt.manualCreate.projectionAfter) }, prepared.kind === 'replay' ? 200 : 201);
   } catch (error: any) {
     if (error instanceof LotCommandError) return lotFailureResponse(c, error);
     console.error('Adopted manual create failed:');
@@ -607,6 +621,12 @@ inventoryRoutes.post('/inventory', async (c) => {
   }
 
   try {
+    const native = await readInventoryAuthorityMode(db, auth.householdId) === 'native';
+    const requestFingerprint = inventoryMutationFingerprint('CREATE', newItem.id, body as Record<string, unknown>);
+    if (native && body.id) {
+      const replay = await replayAdoptedManualCreate(c, db, auth, newItem.id, requestFingerprint);
+      if (replay) return replay;
+    }
     // Client-generated IDs make offline POST replay idempotent. Never allow
     // an existing resource ID from another household to be overwritten.
     if (body.id) {
@@ -618,6 +638,7 @@ inventoryRoutes.post('/inventory', async (c) => {
         return c.json({ error: 'ID nguyên liệu đã thuộc hộ gia đình khác', code: 'CONFLICT' }, 409);
       }
       if (existingById) {
+        if (native) return c.json({ error: 'ID nguyên liệu đã được dùng cho dữ liệu khác', code: 'IDEMPOTENCY_CONFLICT' }, 409);
         const addEvent = await db
           .prepare('SELECT metadata FROM inventory_events WHERE id = ? AND household_id = ? LIMIT 1')
           .bind(`evt_add_${newItem.id}`, auth.householdId)
@@ -647,9 +668,9 @@ inventoryRoutes.post('/inventory', async (c) => {
     // Atomic insert of item and inventory audit event. Adopted households run
     // the same user intent through the lot authority instead of the legacy
     // projection; the native receipt keeps replay idempotent.
-    if (await readInventoryAuthorityMode(db, auth.householdId) === 'native') {
+    if (native) {
       return adoptManualInventoryCreate(c, db, kv, auth,
-        { ...newItem, expiryEstimated: body.expiryEstimated === true }, unit);
+        { ...newItem, category: body.category, expiryEstimated: body.expiryEstimated === true }, unit, requestFingerprint);
     }
 
     const batchResults = await runLegacyInventoryBatch(db, auth.householdId, [
@@ -711,6 +732,7 @@ inventoryRoutes.post('/inventory', async (c) => {
       idempotentReplay ? 200 : 201
     );
   } catch (err: any) {
+    if (err instanceof LotCommandError) return lotFailureResponse(c, err);
     if (err instanceof InventoryWriterAuthorityError) return c.json({ error: err.message, code: err.code }, 409);
     console.error('D1 INSERT_INVENTORY_ITEM error:');
     return c.json({ error: 'Không thể thêm nguyên liệu vào cơ sở dữ liệu', code: 'DATABASE_ERROR' }, 500);

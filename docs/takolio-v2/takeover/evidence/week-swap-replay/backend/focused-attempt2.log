@@ -1,0 +1,13 @@
+
+> frigo@0.1.0 test [WORKTREE]
+> vitest run tests/integration/week-swap-replay.test.ts tests/integration/week-swap-schema.test.ts --maxWorkers=1
+
+
+ RUN  v4.1.12 [WORKTREE]
+
+
+ Test Files  2 passed (2)
+      Tests  25 passed (25)
+   Start at  05:46:01
+   Duration  3.68s (transform 488ms, setup 29ms, import 614ms, tests 2.74s, environment 0ms)
+

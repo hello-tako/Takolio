@@ -7,7 +7,9 @@ import { TopBar } from '../components/common/TopBar';
 import { RecipeCard } from '../components/common/RecipeCard';
 import { RecipeMedia } from '../components/common/RecipeMedia';
 import { TakoMascot } from '../components/common/TakoMascot';
+import { KitchenLoopStrip } from '../components/cooking/CookingTechniqueVisual';
 import { KitchenPageHeading } from '../components/common/KitchenHeader';
+
 import { InlineLoading, InlineError, SkeletonCard } from '../components/common/AsyncState';
 import { Button } from '../components/common/Button';
 import { api } from '../services/api';
@@ -26,7 +28,11 @@ function PlannedMeal({ plan, onRetry }: { plan: HomePlan; onRetry: () => void })
   const label = meal ? calendarLabel(meal.date, plan.today) : null;
   const image = meal?.recipe ? resolveRecipeImage(meal.recipe) : null;
   return (
-    <section aria-labelledby="home-plan-heading" className="home-plan-card">
+    <section
+      aria-labelledby="home-plan-heading"
+      className="home-plan-card"
+      data-meal-state={meal?.state ?? 'no-upcoming'}
+    >
       <div className="home-plan-copy">
         <p className="kitchen-eyebrow">
           <CalendarDays size={16} aria-hidden="true" />
@@ -124,8 +130,10 @@ export const HomePage = () => {
     queryFn: () => api.getRecipeDiscovery({ pageSize: 3 }),
   });
   const inventory = inventoryQuery.data ?? [];
-  const useSoon = inventory
-    .filter((item) => item.freshness === 'use_soon' || item.freshness === 'expiring')
+  const useSoonAll = inventory.filter(
+    (item) => item.freshness === 'use_soon' || item.freshness === 'expiring',
+  );
+  const useSoon = [...useSoonAll]
     .sort(
       (a, b) =>
         (daysUntil(presentExpiry(a).date ?? undefined) ?? 99) -
@@ -137,15 +145,27 @@ export const HomePage = () => {
   const recommendations = recommendationsQuery.data?.items ?? [];
 
   return (
-    <div className="takosan-rebuild min-h-screen bg-semantic-background pb-12">
+    <div
+      className="takosan-rebuild min-h-screen bg-semantic-background pb-12"
+      data-page="home-s08"
+    >
       <TopBar kitchen />
-      <div className="kitchen-page-body animate-fade-in">
+      <div className="kitchen-page-body">
         <KitchenPageHeading
           eyebrow={firstName ? `Chào ${firstName}` : 'Căn bếp của bạn'}
           title="Hôm nay ăn gì?"
           description="Xem bữa sắp tới, dùng nguyên liệu đang có và chuẩn bị phần cần mua."
         />
+        <KitchenLoopStrip
+          activeStage={plan ? 'plan' : inventory.length > 0 ? 'recipes' : 'fridge'}
+          summaryText={
+            inventory.length > 0
+              ? `Tủ lạnh đang có ${inventory.length} nguyên liệu${useSoonAll.length > 0 ? ` · ${useSoonAll.length} nguyên liệu nên dùng sớm` : ''}`
+              : 'Bắt đầu từ tủ lạnh hoặc chọn món yêu thích cho bữa tới'
+          }
+        />
         <div className="home-workspace">
+
           <div data-testid="t18c-home-primary" className="min-w-0 space-y-6">
             {home.requiresAccount ? (
               <section aria-labelledby="home-plan-heading" className="home-plan-card">

@@ -15,9 +15,12 @@ import {
   discoveryRequest,
   type DiscoveryFilters,
 } from '../lib/recipe-discovery';
-import { Search, ArrowLeft, ArrowRight, Clock, CheckCircle } from 'lucide-react';
+import { Search, ArrowLeft, ArrowRight, Clock, CheckCircle, X } from 'lucide-react';
 import { FavoritesCollection } from '../features/favorites/FavoritesCollection';
+import { KitchenLoopStrip } from '../components/cooking/CookingTechniqueVisual';
+import { TakoMascot } from '../components/common/TakoMascot';
 import { clsx } from 'clsx';
+
 import { useFamilyPreferences } from '../features/family/useFamilyPreferences';
 import { useAuthStore } from '../stores/useAuthStore';
 
@@ -40,6 +43,11 @@ const CUISINES = [
   ['chinese', 'Trung Hoa'],
   ['thai', 'Món Thái'],
   ['italian', 'Món Ý'],
+];
+const REGIONS = [
+  ['bac', 'Miền Bắc'],
+  ['trung', 'Miền Trung'],
+  ['nam', 'Miền Nam'],
 ];
 
 export const RecipesPage = () => {
@@ -108,21 +116,36 @@ export const RecipesPage = () => {
     focusResults.current = true;
     setParams(updateDiscoveryFilters(params, { page: 1 }));
   };
-  const active = !!(
-    filters.q ||
-    filters.cuisine ||
-    filters.category ||
-    filters.region ||
-    filters.noBuy ||
-    filters.fast
-  );
+  const activeFilters: Array<{
+    key: keyof DiscoveryFilters;
+    label: string;
+    clear: Partial<DiscoveryFilters>;
+  }> = [];
+  if (filters.q) activeFilters.push({ key: 'q', label: `Tìm: “${filters.q}”`, clear: { q: '' } });
+  if (filters.cuisine) activeFilters.push({
+    key: 'cuisine',
+    label: CUISINES.find(([id]) => id === filters.cuisine)![1],
+    clear: { cuisine: null },
+  });
+  if (filters.category) activeFilters.push({
+    key: 'category',
+    label: CATEGORIES.find(([id]) => id === filters.category)![1],
+    clear: { category: null },
+  });
+  if (filters.region) activeFilters.push({
+    key: 'region',
+    label: REGIONS.find(([id]) => id === filters.region)![1],
+    clear: { region: null },
+  });
+  if (filters.noBuy) activeFilters.push({ key: 'noBuy', label: 'Không mua thêm', clear: { noBuy: false } });
+  if (filters.fast) activeFilters.push({ key: 'fast', label: 'Tối đa 20 phút', clear: { fast: false } });
   const pagerHref = (page: number, cursor: string | null) =>
     `?${updateDiscoveryFilters(params, { page, cursor: cursor ?? undefined })}`;
 
   return (
     <div className="takosan-rebuild min-h-screen bg-semantic-background pb-12">
       <TopBar kitchen />
-      <div className="kitchen-page-body animate-fade-in">
+      <div className="kitchen-page-body">
         <KitchenPageHeading
           eyebrow="Công thức mỗi ngày"
           title={savedView ? 'Món đã lưu' : 'Hôm nay nhà mình nấu gì?'}
@@ -131,17 +154,24 @@ export const RecipesPage = () => {
               ? 'Chọn món quen để thêm vào bữa hoặc xem lại công thức.'
               : 'Tìm món Việt quen thuộc và xem nguyên liệu cần cho cả nhà.'
           }
+          action={<TakoMascot pose="recipe" size={96} className="kitchen-heading-mascot" />}
+
+        />
+        <KitchenLoopStrip
+          activeStage="recipes"
+          summaryText={`Đang tính định lượng theo khẩu phần ${servings} người`}
         />
         <nav className="family-recipe-tabs" aria-label="Thư viện món">
-          <Link to="/recipes" aria-current={!savedView ? 'page' : undefined}>
+
+          <Link to={`/recipes?servings=${servings}`} aria-current={!savedView ? 'page' : undefined}>
             Tìm món
           </Link>
-          <Link to="/recipes?view=saved" aria-current={savedView ? 'page' : undefined}>
+          <Link to={`/recipes?view=saved&servings=${servings}`} aria-current={savedView ? 'page' : undefined}>
             Món đã lưu
           </Link>
         </nav>
         {savedView ? (
-          <FavoritesCollection />
+          <FavoritesCollection servings={servings} />
         ) : (
           <div className="discovery-workspace">
             <aside className="discovery-controls" aria-label="Tìm và lọc công thức">
@@ -240,9 +270,9 @@ export const RecipesPage = () => {
                       }
                     >
                       <option value="">Toàn quốc</option>
-                      <option value="bac">Miền Bắc</option>
-                      <option value="trung">Miền Trung</option>
-                      <option value="nam">Miền Nam</option>
+                      {REGIONS.map(([id, label]) => (
+                        <option value={id} key={id}>{label}</option>
+                      ))}
                     </select>
                   </label>
                 </div>
@@ -271,7 +301,7 @@ export const RecipesPage = () => {
                   kiểm tra.
                 </p>
               </details>
-              {active && (
+              {activeFilters.length > 0 && (
                 <Button variant="outline" className="mt-5" onClick={reset}>
                   Xóa tìm kiếm và bộ lọc
                 </Button>
@@ -288,6 +318,26 @@ export const RecipesPage = () => {
                   </p>
                 )}
               </div>
+              {activeFilters.length > 0 && (
+                <ul className="discovery-active-filters" aria-label="Điều kiện đang dùng">
+                  {activeFilters.map(({ key, label, clear }) => (
+                    <li key={key}>
+                      <button
+                        type="button"
+                        aria-label={`Bỏ ${label}`}
+                        onClick={() => {
+                          update(clear);
+                          // The removed control unmounts; keep keyboard focus at the results.
+                          headingRef.current?.focus();
+                        }}
+                      >
+                        <span>{label}</span>
+                        <X size={16} aria-hidden="true" />
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
               {result?.source === 'device' && (
                 <p role="status" className="text-sm text-semantic-text-secondary">
                   Đang dùng công thức và nguyên liệu lưu trên thiết bị. Kết nối lại để xem danh sách

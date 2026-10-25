@@ -1,0 +1,114 @@
+{
+  "reviewer": "ui10_next_audit (backend author, independent of client implementation)",
+  "completed_utc": "2026-10-24T20:54:22.864243+00:00",
+  "verdict": "PASS_STATIC_NO_CONCRETE_FINDINGS",
+  "findings": [],
+  "scope": "WKD02 direct transport-loss retention, precise conflict recovery, exact-confirmed queue removal, private owner/generation fences, cache/query coherence, banner confirmation/accessibility and service-router response-loss tests",
+  "files": [
+    {
+      "path": "src/web/services/week.ts",
+      "sha256": "ec4ecce722bae7ddd86d3b823838311070ba6a12fd60767da84dbb5f05a65664"
+    },
+    {
+      "path": "src/web/services/api.ts",
+      "sha256": "6fdff41fb237164bb92686170bdde08e9aebb4c967e825acb4e7e344e74e536e"
+    },
+    {
+      "path": "src/web/lib/sync.ts",
+      "sha256": "0972e8f0bbbb392b5148a9f02aa0f5387c434ac60cfe9b1625a8ab245eb8f17b"
+    },
+    {
+      "path": "src/web/components/common/OfflineBanner.tsx",
+      "sha256": "93d59ae5e434246d11452fabcf147a6e8d6b03869077c1f67963d5b97f229bd6"
+    },
+    {
+      "path": "tests/unit/week-swap-client.test.ts",
+      "sha256": "c1ebda50d25fcd1ce41c218b2fa70e91042da2a73d17f50c2a622f99eda51e0a"
+    },
+    {
+      "path": "tests/unit/offline-banner.test.tsx",
+      "sha256": "c8d622bcaffef0b0838f1d30bc2995dc576b0bbacd053fa87996c816a176bdd6"
+    },
+    {
+      "path": "tests/integration/week-swap-response-loss.test.ts",
+      "sha256": "52f064dfa640cb1c4293646f62e361a440819ebe6bb9b27eaa388da4ec29355b"
+    },
+    {
+      "path": "src/web/services/http.ts",
+      "sha256": "f3a528db219202901127a827f5c0e0c9f7e4821334f42fa874895c1d0dbdfa45"
+    },
+    {
+      "path": "src/web/lib/private-session.ts",
+      "sha256": "1c3b44de9f3d9f75b25f678eafd23d9ee59777e1a7c2266b4e8ad83df02aac64"
+    },
+    {
+      "path": "src/web/lib/queryKeys.ts",
+      "sha256": "36112d97b4c3e72c0ff42182a9281782755917d2b701efc0eaf4cbb1dd286373"
+    },
+    {
+      "path": "src/web/lib/query-invalidation.ts",
+      "sha256": "f03dcdf26c55218581d25f9b47049d3116f0a3f765962f12c86e2926c60448df"
+    },
+    {
+      "path": "src/web/components/common/ConfirmDialog.tsx",
+      "sha256": "b212bb74bc61de1ba03a27f3b1fffc89099df2dac5d3a2224002d127f3fbf5da"
+    },
+    {
+      "path": "src/web/design-system/use-modal-focus.ts",
+      "sha256": "f562184e47bc4035f22c5c606022ae7083905574ef3b7593fb15f5be93264479"
+    }
+  ],
+  "review_angles": [
+    "Exact frozen body/key is queued only for network/explicit keyed successful-body transport loss; durable enqueue precedes optional projection",
+    "HTTP/auth/SyntaxError/application errors and explicit AbortSignal cancellation remain rejected",
+    "Known-success cache errors stay outside transport retention; malformed direct/recovery success rejected before cache/queue acknowledgement",
+    "Specialized conflict requires exact POST swap path plus valid command/header equality and precise HTTP409 IDEMPOTENCY_CONFLICT",
+    "Conflict retained until already-visible exact op snapshot is explicitly approved, fresh server owner verified, owned plan GET validated and caches reconciled",
+    "Owner/generation/logout/op changes, failed authoritative GET, cache/storage failures retain conflicting command; generic409 remains retained",
+    "Existing ConfirmDialog safely handles focus/Escape/cancel; safe fixed copy avoids exposing queued private identifiers",
+    "Actual Hono/auth/SQLite service test covers committed fetch/TypeError/AbortError loss, reload, laterB, exactA replay in both Week modes"
+  ],
+  "executed_checks_by_implementing_agent_verified_from_raw_logs": [
+    {
+      "metadata": ".artifacts/takeover/wkd02/client/client-focused.json",
+      "log_sha256": "176cb1417f4ab1cf66884dc45cb38135fad08d84344b97f6e1ec3b3a78991861",
+      "exit_code": 0,
+      "argv": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "tests/unit/week-swap-client.test.ts",
+        "tests/unit/offline-banner.test.tsx",
+        "tests/unit/sync.test.ts",
+        "tests/unit/client-session.test.ts",
+        "tests/unit/week-query-sync.test.ts",
+        "tests/integration/week-swap-response-loss.test.ts",
+        "--maxWorkers=1"
+      ]
+    },
+    {
+      "metadata": ".artifacts/takeover/wkd02/client/client-typecheck-final.json",
+      "log_sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e",
+      "exit_code": 0,
+      "argv": [
+        "pnpm",
+        "typecheck"
+      ]
+    },
+    {
+      "metadata": ".artifacts/takeover/wkd02/client/client-lint.json",
+      "log_sha256": "3f2044fca43a5e60905becf2ebfc3a21ddd85976975841aa1e16bc87b0f40a6d",
+      "exit_code": 0,
+      "argv": [
+        "pnpm",
+        "lint"
+      ]
+    }
+  ],
+  "limitations": [
+    "Independent review is static plus verification of implementing-agent raw logs; canonical full/browser/localD1 gates owned by root",
+    "This packet does not serialize distinct fresh Week snapshot commands; existing deliberate ceiling retained",
+    "No hosted/device/Safari/assistive-technology or production certification"
+  ]
+}

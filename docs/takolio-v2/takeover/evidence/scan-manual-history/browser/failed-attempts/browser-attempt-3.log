@@ -1,0 +1,16 @@
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ undefined
+- 'pantry'
+
+    at manualFacts (file:///Users/tunbee27/Documents/New%20project/Takolio-v2-codex-integration/.artifacts/takeover/scan-manual-history/browser.mjs:73:10)
+    at file:///Users/tunbee27/Documents/New%20project/Takolio-v2-codex-integration/.artifacts/takeover/scan-manual-history/browser.mjs:177:21 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: undefined,
+  expected: 'pantry',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+EVIDENCE .artifacts/takeover/scan-manual-history/browser-2026-10-24T19-38-47.406Z

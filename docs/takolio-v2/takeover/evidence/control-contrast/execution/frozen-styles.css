@@ -1,0 +1,453 @@
+/* Takolio follow-up polish: semantic rhythm and readable states on compact routes. */
+[data-kitchen-density='compact'],
+.onboarding-page {
+  --takolio-space-1: 0.5rem;
+  --takolio-space-2: 0.75rem;
+  --takolio-space-3: 1rem;
+  --takolio-space-4: 1.5rem;
+  --takolio-space-5: 2rem;
+  --takolio-radius-card: 1rem;
+  --takolio-shadow-card: 0 10px 30px rgb(var(--semantic-text-primary-rgb) / 0.07);
+}
+
+[data-kitchen-density='compact'] .kitchen-shell-main {
+  background:
+    linear-gradient(
+      180deg,
+      rgb(var(--takosan-cream-color-rgb) / 0.96),
+      rgb(var(--takosan-cream-color-rgb) / 0.72) 18rem
+    ),
+    var(--kitchen-canvas);
+}
+
+[data-kitchen-density='compact'] .kitchen-page-body {
+  width: min(100%, 74rem);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 2.5rem);
+  padding-block: clamp(1.25rem, 3vw, 2.25rem);
+}
+
+[data-kitchen-density='compact'] .kitchen-page-heading {
+  align-items: flex-start;
+  margin-bottom: var(--takolio-space-4);
+  padding-bottom: var(--takolio-space-3);
+  border-bottom: 1px solid rgb(var(--semantic-text-primary-rgb) / 0.1);
+}
+
+[data-kitchen-density='compact'] .kitchen-page-heading h1,
+[data-kitchen-density='compact'] .home-meal-title,
+[data-kitchen-density='compact'] .planning-heading h1 {
+  text-wrap: balance;
+  letter-spacing: -0.025em;
+}
+
+[data-kitchen-density='compact']
+  :is(
+    .home-plan-card,
+    .home-plan-summary,
+    .discovery-controls,
+    .discovery-results,
+    .planning-paper,
+    .planning-setup-form,
+    .shopping-workspace,
+    .account-workspace,
+    .family-dialog,
+    .kitchen-empty-state
+  ) {
+  border-color: rgb(var(--semantic-text-primary-rgb) / 0.12);
+  box-shadow: var(--takolio-shadow-card);
+}
+
+[data-kitchen-density='compact'] .home-plan-card,
+[data-kitchen-density='compact'] .home-plan-summary,
+[data-kitchen-density='compact'] .kitchen-empty-state {
+  border-radius: var(--takolio-radius-card);
+}
+
+[data-kitchen-density='compact'] :is(button, a, summary, select) {
+  transition:
+    background-color var(--motion-fast) var(--motion-easing-standard),
+    border-color var(--motion-fast) var(--motion-easing-standard),
+    color var(--motion-fast) var(--motion-easing-standard),
+    transform var(--motion-fast) var(--motion-easing-standard);
+}
+
+[data-kitchen-density='compact'] :is(button, a, summary, select):focus-visible,
+.onboarding-page :is(button, a, summary, select):focus-visible {
+  outline: 3px solid var(--semantic-focus);
+  outline-offset: 3px;
+}
+
+[data-kitchen-density='compact'] .kitchen-recipe-card {
+  border-radius: var(--takolio-radius-card);
+  box-shadow: 0 4px 16px rgb(var(--semantic-text-primary-rgb) / 0.045);
+}
+
+[data-kitchen-density='compact'] .kitchen-recipe-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgb(var(--semantic-text-primary-rgb) / 0.09);
+}
+
+/* Missing media is a compact visual tile, while the parent keeps its full label. */
+[data-kitchen-density='compact'] .family-recipe-main > .recipe-media[data-recipe-media='missing'] {
+  min-height: 7rem;
+  display: grid;
+  place-items: center;
+}
+[data-kitchen-density='compact'] .recipe-media-missing {
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 100%;
+  padding: 0.6rem;
+  text-align: center;
+}
+[data-kitchen-density='compact'] .recipe-media-missing span {
+  line-height: 1.2;
+}
+
+/* Empty states keep both actions readable on short screens. */
+[data-kitchen-density='compact'] .kitchen-empty-state {
+  margin-block: 1.5rem;
+  padding: 1.5rem;
+}
+
+@media (max-width: 430px) {
+  [data-kitchen-density='compact']
+    .family-recipe-main
+    > .recipe-media[data-recipe-media='missing'] {
+    min-height: 5.625rem;
+  }
+  [data-kitchen-density='compact']
+    .family-recipe-main
+    > .recipe-media[data-recipe-media='missing']
+    .recipe-media-missing
+    span {
+    display: none;
+  }
+  [data-kitchen-density='compact']
+    .family-recipe-main
+    > .recipe-media[data-recipe-media='missing']
+    .recipe-media-missing::after {
+    content: 'Chưa có ảnh';
+    color: rgb(var(--semantic-text-muted-rgb));
+    font-size: 0.6875rem;
+    line-height: 1.2;
+  }
+  [data-kitchen-density='compact'] .kitchen-empty-state {
+    margin-block: 1rem;
+    padding: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-kitchen-density='compact'] :is(button, a, summary, select) {
+    transition: none;
+  }
+  [data-kitchen-density='compact'] .kitchen-recipe-card:hover {
+    transform: none;
+  }
+}
+
+[data-kitchen-density='compact'] .kitchen-page-heading p,
+[data-kitchen-density='compact'] .account-workspace p,
+.onboarding-page p {
+  line-height: 1.6;
+}
+
+[data-kitchen-density='compact'] .kitchen-nav-items a[aria-current='page'] {
+  background: var(--semantic-accent-soft);
+  color: rgb(var(--semantic-text-primary-rgb));
+  box-shadow: inset 0 -3px var(--takosan-navy);
+}
+[data-kitchen-density='compact'] .kitchen-sidebar {
+  background: var(--semantic-surface);
+}
+[data-kitchen-density='compact'] .kitchen-sidebar .kitchen-nav-items a[aria-current='page'] {
+  box-shadow: inset 3px 0 var(--takosan-navy);
+}
+[data-kitchen-density='compact'] .kitchen-header {
+  background: var(--kitchen-canvas);
+}
+[data-kitchen-density='compact'] .home-plan-card {
+  border-left: 4px solid var(--kitchen-coral);
+  background: var(--semantic-surface);
+}
+[data-kitchen-density='compact'] .home-plan-copy {
+  display: flow-root;
+  padding: clamp(1rem, 2.5vw, 1.75rem);
+}
+[data-kitchen-density='compact'] .family-recipe-body {
+  gap: 0.5rem;
+  padding-block: 1rem;
+}
+[data-kitchen-density='compact'] .family-recipe-body :is(h2, h3) {
+  line-height: 1.35;
+}
+[data-kitchen-density='compact'] .family-recipe-facts {
+  row-gap: 0.5rem;
+}
+[data-kitchen-density='compact'] .recipe-media-missing span {
+  overflow-wrap: normal;
+}
+[data-kitchen-density='compact'] :is(.planning-workspace, .shopping-workspace) {
+  background: var(--kitchen-canvas);
+}
+[data-kitchen-density='compact'] .planning-heading {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgb(var(--semantic-border-rgb));
+}
+[data-kitchen-density='compact'] .account-link-list {
+  border: 1px solid rgb(var(--semantic-border-rgb));
+  border-radius: var(--takolio-radius-card);
+  overflow: hidden;
+}
+[data-kitchen-density='compact'] .account-nav-link {
+  padding-inline: 1rem;
+}
+[data-kitchen-density='compact'] .account-icon {
+  border-radius: 0.75rem;
+  background: var(--semantic-success-soft);
+}
+
+.landing-page {
+  display: block;
+  max-width: 1400px;
+  margin-inline: auto;
+}
+.landing-page .entry-brand-header {
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgb(var(--semantic-border-rgb));
+}
+.landing-hero {
+  display: grid;
+  align-items: center;
+  gap: 1.5rem;
+  padding-block: 2rem;
+}
+.landing-hero .landing-intro {
+  padding: 0;
+}
+.landing-hero h1 {
+  font-size: clamp(2.5rem, 5.4vw, 4.75rem);
+  line-height: 1.08;
+  max-width: 15ch;
+  letter-spacing: -0.035em;
+}
+.landing-hero .landing-description {
+  max-width: 48ch;
+}
+.landing-hero .landing-actions {
+  margin-top: 1.5rem;
+}
+.landing-hero .landing-actions p[role='alert'] {
+  color: var(--semantic-danger-strong);
+}
+.landing-scene {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  padding: 1.25rem;
+  isolation: isolate;
+}
+.landing-scene::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 88%;
+  aspect-ratio: 1;
+  max-width: 26rem;
+  border-radius: 45% 55% 56% 44%;
+  background: var(--semantic-accent-soft);
+  border: 1px solid rgb(var(--semantic-accent-rgb) / 0.14);
+  transform: rotate(-8deg);
+}
+.landing-scene .landing-mascot {
+  width: min(100%, 24rem);
+  height: auto;
+  aspect-ratio: 1;
+  margin: 0;
+}
+.landing-scene figcaption {
+  text-align: center;
+  font-family: var(--takolio-font-heading);
+  font-weight: 800;
+  color: var(--takosan-navy);
+  line-height: 1.5;
+}
+.landing-scene figcaption span {
+  display: block;
+  font-family: var(--takolio-font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgb(var(--semantic-text-secondary-rgb));
+}
+.landing-page .landing-flow {
+  margin-top: 0;
+  padding: 1.5rem 0;
+  border-radius: 0;
+  border-top: 2px solid var(--kitchen-coral);
+  background: transparent;
+}
+.landing-page .landing-flow h2 {
+  max-width: none;
+  margin-bottom: 1.5rem;
+}
+.landing-page .landing-flow li {
+  padding: 1.25rem 0;
+  align-content: start;
+}
+.landing-page .landing-flow li p {
+  line-height: 1.6;
+}
+.landing-page .landing-step-number {
+  color: rgb(var(--semantic-text-secondary-rgb));
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.landing-page .entry-footer {
+  margin-top: 0;
+}
+.onboarding-page .onboarding-mascot {
+  background: var(--semantic-accent-soft);
+  border-radius: 40% 60% 55% 45%;
+}
+
+@media (min-width: 768px) {
+  .landing-hero {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: 2rem;
+    padding-block: 3rem;
+  }
+  .landing-page .landing-flow ol {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+  }
+}
+@media (max-width: 767px) {
+  .landing-scene {
+    padding-block: 0;
+  }
+  .landing-scene .landing-mascot {
+    width: 15rem;
+  }
+  .landing-scene::before {
+    width: 15rem;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .landing-scene {
+    animation: takolio-scene-enter 420ms var(--motion-easing-enter) both;
+  }
+  @keyframes takolio-scene-enter {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+[data-kitchen-density='compact'] .kitchen-page-heading > .min-w-0 > .text-sm {
+  line-height: 1.6;
+  max-width: 65ch;
+}
+[data-kitchen-density='compact'] .home-plan-copy:has(.home-plan-mascot) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 6rem;
+  gap: 0.75rem;
+  align-items: center;
+}
+[data-kitchen-density='compact'] .home-plan-mascot {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  width: 6rem;
+  height: 6rem;
+  margin: 0;
+  float: none;
+}
+[data-kitchen-density='compact']
+  .home-plan-copy:has(.home-plan-mascot)
+  > :is(.mt-3, .kitchen-primary-link) {
+  grid-column: 1 / -1;
+  margin-top: 0;
+}
+[data-kitchen-density='compact'] .home-plan-copy:has(.home-plan-mascot) > .kitchen-primary-link {
+  justify-self: start;
+}
+[data-kitchen-density='compact'] .home-plan-copy:has(.home-plan-mascot) .kitchen-eyebrow {
+  margin: 0;
+}
+[data-kitchen-density='compact'] .home-plan-copy:has(.home-plan-mascot) .home-meal-title {
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+}
+[data-kitchen-density='compact'] .family-recipe-main > .recipe-media {
+  container: takolio-recipe-media / inline-size;
+}
+@container takolio-recipe-media (max-width: 110px) {
+  .recipe-media-missing span {
+    display: none;
+  }
+  .recipe-media-missing::after {
+    content: 'Chưa có ảnh';
+    font-size: 0.6875rem;
+    line-height: 1.4;
+  }
+}
+[data-kitchen-density='compact'] .kitchen-empty-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* The empty-state block includes the existing add action beside its scan action. */
+[data-kitchen-density='compact']
+  .takosan-rebuild:has(.kitchen-stock-action):has(.kitchen-empty-state)
+  > .kitchen-stock-action {
+  display: none;
+}
+
+@media (max-height: 600px) {
+  /* Short viewports keep the bottom navigation in document flow so enlarged text cannot hide behind it. */
+  [data-kitchen-density='compact'][data-kitchen-navigation='persistent'] .kitchen-bottom-nav {
+    position: static;
+  }
+  [data-kitchen-density='compact'][data-kitchen-navigation='persistent'] .kitchen-shell-main {
+    padding-bottom: 1rem;
+  }
+}
+
+/* Keep low-contrast control states readable without changing shared primitives. */
+.takosan-rebuild :is(
+  .kitchen-search-input,
+  .family-collection-heading input,
+  .family-ingredient-field input[type='search'],
+  .shopping-add-form input[name='shopping-name']
+)::placeholder {
+  color: rgb(var(--semantic-text-muted-rgb));
+  opacity: 1;
+}
+
+.takosan-rebuild
+  .account-switch-row
+  button[role='switch'][aria-checked='false']:not(:disabled) {
+  background-color: rgb(var(--semantic-text-muted-rgb));
+}
+
+/* Inset strokes restore measured control boundaries without changing geometry. */
+.takosan-rebuild :is(
+  .kitchen-search-input,
+  .discovery-select-label select,
+  .discovery-filter-panel summary,
+  .planning-locale select,
+  .planning-setup-form input[type='date'],
+  .planning-setup-form input[type='number'],
+  .shopping-add-form input,
+  .shopping-add-form select
+) {
+  box-shadow: inset 0 0 0 1px rgb(var(--semantic-text-muted-rgb));
+}

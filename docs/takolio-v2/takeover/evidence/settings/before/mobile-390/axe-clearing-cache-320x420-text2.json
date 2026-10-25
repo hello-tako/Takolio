@@ -1,0 +1,49 @@
+{
+  "state": "clearing-cache",
+  "viewport": {
+    "width": 320,
+    "height": 420
+  },
+  "textScale": 2,
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ],
+  "metrics": {
+    "innerWidth": 320,
+    "scrollWidth": 320,
+    "brokenImages": [],
+    "buttons": 2,
+    "links": 1,
+    "summaries": 1
+  },
+  "controls": [
+    {
+      "label": "Cài đặt lên màn hình chính",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "Đang xử lý...",
+      "enabled": false,
+      "actionable": null,
+      "fits": true
+    },
+    {
+      "label": "Xem quyền riêng tư & dữ liệu",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    },
+    {
+      "label": "Thông tin phiên bản",
+      "enabled": true,
+      "actionable": true,
+      "fits": true
+    }
+  ]
+}

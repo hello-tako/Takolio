@@ -1,0 +1,10 @@
+{
+  "route": "/planner/new",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "h1": [
+    "Tạo thực đơn"
+  ]
+}

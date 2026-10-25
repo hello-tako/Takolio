@@ -1,0 +1,712 @@
+{
+  "base_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "implementation_commit": "23585223c3c6747cce3dd132a2985cb75580947a",
+  "checkpoint_kind": "audit plus new browser tests; no runtime product edits; no before-after improvement claimed",
+  "measurements": {
+    "axe": 48,
+    "summaries": 4,
+    "png": 48,
+    "captures": 48,
+    "incomplete": {
+      "color-contrast": 48
+    }
+  },
+  "entries": [
+    {
+      "path": "desktop-1440/axe-native-1440x900-text1.json",
+      "bytes": 462,
+      "sha256": "17daefc89ebf500343e81f986b1e3f954b4c3bd02f3f7f07670cce3e5ddc0d38",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-4ca8d-out-changing-household-data-desktop-1440/axe-native-1440x900-text1.json"
+    },
+    {
+      "path": "desktop-1440/axe-native-320x420-text2.json",
+      "bytes": 464,
+      "sha256": "1b1d10454e7d16413573be41b3e78049f5097933928011a148204cff6db2d1d2",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-4ca8d-out-changing-household-data-desktop-1440/axe-native-320x420-text2.json"
+    },
+    {
+      "path": "desktop-1440/axe-native-320x568-text1.json",
+      "bytes": 464,
+      "sha256": "f5d30dc991946081ce6ebc6fbc663fd8b83876092e39e0418e40fdc23e42e3c2",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-4ca8d-out-changing-household-data-desktop-1440/axe-native-320x568-text1.json"
+    },
+    {
+      "path": "desktop-1440/axe-native-390x844-text1.json",
+      "bytes": 465,
+      "sha256": "f0303263c5f19a84eaefd070d24facc7f2f6a8421b23f3c813c1920460e4b1b0",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-4ca8d-out-changing-household-data-desktop-1440/axe-native-390x844-text1.json"
+    },
+    {
+      "path": "desktop-1440/entry-summary.json",
+      "bytes": 2070,
+      "sha256": "594e189b18e13d482e5a3c2198f464352ae294cb6cb6be35924ef0a49a043529",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-4ca8d-out-changing-household-data-desktop-1440/entry-summary.json"
+    },
+    {
+      "path": "desktop-1440/native-1440x900-text1.png",
+      "bytes": 135862,
+      "sha256": "84c9beb3e70e027d363de1134fa3b151bb02763dc220e8d55626c04add8a940a",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-4ca8d-out-changing-household-data-desktop-1440/native-1440x900-text1.png",
+      "width": 1440,
+      "height": 1078
+    },
+    {
+      "path": "desktop-1440/native-320x420-text2.png",
+      "bytes": 134661,
+      "sha256": "335138650a53c2eb7399cb599fd9bd2fc410b4edbcca8842f2c34732986088cd",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-4ca8d-out-changing-household-data-desktop-1440/native-320x420-text2.png",
+      "width": 320,
+      "height": 2267
+    },
+    {
+      "path": "desktop-1440/native-320x568-text1.png",
+      "bytes": 113977,
+      "sha256": "33394ea8cb7271721161755ec465806cf8a93e9d24a9e9c9d92f29cfb5806bf2",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-4ca8d-out-changing-household-data-desktop-1440/native-320x568-text1.png",
+      "width": 320,
+      "height": 1509
+    },
+    {
+      "path": "desktop-1440/native-390x844-text1.png",
+      "bytes": 106312,
+      "sha256": "a09612503216991a9693a7c5f5751e3fc14dc462ce6a9fc037c70cd9a006ee38",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-4ca8d-out-changing-household-data-desktop-1440/native-390x844-text1.png",
+      "width": 390,
+      "height": 1413
+    },
+    {
+      "path": "mobile-390/axe-native-1440x900-text1.json",
+      "bytes": 462,
+      "sha256": "17daefc89ebf500343e81f986b1e3f954b4c3bd02f3f7f07670cce3e5ddc0d38",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-4ca8d-out-changing-household-data-mobile-390/axe-native-1440x900-text1.json"
+    },
+    {
+      "path": "mobile-390/axe-native-320x420-text2.json",
+      "bytes": 464,
+      "sha256": "1b1d10454e7d16413573be41b3e78049f5097933928011a148204cff6db2d1d2",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-4ca8d-out-changing-household-data-mobile-390/axe-native-320x420-text2.json"
+    },
+    {
+      "path": "mobile-390/axe-native-320x568-text1.json",
+      "bytes": 464,
+      "sha256": "f5d30dc991946081ce6ebc6fbc663fd8b83876092e39e0418e40fdc23e42e3c2",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-4ca8d-out-changing-household-data-mobile-390/axe-native-320x568-text1.json"
+    },
+    {
+      "path": "mobile-390/axe-native-390x844-text1.json",
+      "bytes": 465,
+      "sha256": "f0303263c5f19a84eaefd070d24facc7f2f6a8421b23f3c813c1920460e4b1b0",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-4ca8d-out-changing-household-data-mobile-390/axe-native-390x844-text1.json"
+    },
+    {
+      "path": "mobile-390/entry-summary.json",
+      "bytes": 2070,
+      "sha256": "594e189b18e13d482e5a3c2198f464352ae294cb6cb6be35924ef0a49a043529",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-4ca8d-out-changing-household-data-mobile-390/entry-summary.json"
+    },
+    {
+      "path": "mobile-390/native-1440x900-text1.png",
+      "bytes": 135862,
+      "sha256": "84c9beb3e70e027d363de1134fa3b151bb02763dc220e8d55626c04add8a940a",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-4ca8d-out-changing-household-data-mobile-390/native-1440x900-text1.png",
+      "width": 1440,
+      "height": 1078
+    },
+    {
+      "path": "mobile-390/native-320x420-text2.png",
+      "bytes": 134661,
+      "sha256": "335138650a53c2eb7399cb599fd9bd2fc410b4edbcca8842f2c34732986088cd",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-4ca8d-out-changing-household-data-mobile-390/native-320x420-text2.png",
+      "width": 320,
+      "height": 2267
+    },
+    {
+      "path": "mobile-390/native-320x568-text1.png",
+      "bytes": 113977,
+      "sha256": "33394ea8cb7271721161755ec465806cf8a93e9d24a9e9c9d92f29cfb5806bf2",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-4ca8d-out-changing-household-data-mobile-390/native-320x568-text1.png",
+      "width": 320,
+      "height": 1509
+    },
+    {
+      "path": "mobile-390/native-390x844-text1.png",
+      "bytes": 106312,
+      "sha256": "a09612503216991a9693a7c5f5751e3fc14dc462ce6a9fc037c70cd9a006ee38",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-4ca8d-out-changing-household-data-mobile-390/native-390x844-text1.png",
+      "width": 390,
+      "height": 1413
+    },
+    {
+      "path": "desktop-1440/axe-permission-default-1440x900-text1.json",
+      "bytes": 474,
+      "sha256": "24e992e4d34476ee867a1d7a284c0959cbbb8554ffeb83491dafcac79fad0300",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/axe-permission-default-1440x900-text1.json"
+    },
+    {
+      "path": "desktop-1440/axe-permission-default-320x420-text2.json",
+      "bytes": 476,
+      "sha256": "c80a742adeed9cf42d070374dd2b72faf0d831d41165a65116e891652d051b78",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/axe-permission-default-320x420-text2.json"
+    },
+    {
+      "path": "desktop-1440/axe-permission-default-320x568-text1.json",
+      "bytes": 476,
+      "sha256": "e5721a9aaef86d8618f3139147487f249e582e1babaa73109039155ba71d5826",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/axe-permission-default-320x568-text1.json"
+    },
+    {
+      "path": "desktop-1440/axe-permission-default-390x844-text1.json",
+      "bytes": 477,
+      "sha256": "151c79b8ab8bb416fd5efb18aaf3fd8e7977ce1b8ad3dc1d41b8f60aaebb87d0",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/axe-permission-default-390x844-text1.json"
+    },
+    {
+      "path": "desktop-1440/axe-permission-denied-1440x900-text1.json",
+      "bytes": 473,
+      "sha256": "de107b02499fae4fcf8d970d9555aff8f76066467641eec9409e289bfe6288ba",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/axe-permission-denied-1440x900-text1.json"
+    },
+    {
+      "path": "desktop-1440/axe-permission-denied-320x420-text2.json",
+      "bytes": 475,
+      "sha256": "a64acedb4658076d37f1bf20815869fabe0dcaa3839e7a518a4e2ed64cf280cc",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/axe-permission-denied-320x420-text2.json"
+    },
+    {
+      "path": "desktop-1440/axe-permission-denied-320x568-text1.json",
+      "bytes": 475,
+      "sha256": "7e560fa4d02828952b743bd184f02310100ca38200bcdc4fbd32b5d6d72d8834",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/axe-permission-denied-320x568-text1.json"
+    },
+    {
+      "path": "desktop-1440/axe-permission-denied-390x844-text1.json",
+      "bytes": 476,
+      "sha256": "ef9fdf353cbd3c479b6091f523951194145bb9e7131e7907ba72439cabe193b3",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/axe-permission-denied-390x844-text1.json"
+    },
+    {
+      "path": "desktop-1440/axe-permission-granted-1440x900-text1.json",
+      "bytes": 474,
+      "sha256": "1422a9d95276188c7c3c8cb1e58f549a3bef49e054b49189296040ac2311223c",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/axe-permission-granted-1440x900-text1.json"
+    },
+    {
+      "path": "desktop-1440/axe-permission-granted-320x420-text2.json",
+      "bytes": 476,
+      "sha256": "c812c5f4042cd1b41d66b7bb3d79bf2019a1ab0ec6e9ce01f34df5c2c6dccf57",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/axe-permission-granted-320x420-text2.json"
+    },
+    {
+      "path": "desktop-1440/axe-permission-granted-320x568-text1.json",
+      "bytes": 476,
+      "sha256": "f92d0063a2f180d418764f7a3221c515e2250314f98684da8e821285d15fb085",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/axe-permission-granted-320x568-text1.json"
+    },
+    {
+      "path": "desktop-1440/axe-permission-granted-390x844-text1.json",
+      "bytes": 477,
+      "sha256": "107f684cd09e93cdbd179f59b45d12a3dcb91f6f7793e86dd14cfdf130d1aee3",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/axe-permission-granted-390x844-text1.json"
+    },
+    {
+      "path": "desktop-1440/axe-permission-unexpected-1440x900-text1.json",
+      "bytes": 477,
+      "sha256": "4dc2fb527dc3c4577bb8cf95b793e07a97d41b99c6d7ef2ad0217f7a8f41db1c",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/axe-permission-unexpected-1440x900-text1.json"
+    },
+    {
+      "path": "desktop-1440/axe-permission-unexpected-320x420-text2.json",
+      "bytes": 479,
+      "sha256": "5324a8073bc3358a081f1782edc72504b32ce7a753f0102a8fd31a7e689acca4",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/axe-permission-unexpected-320x420-text2.json"
+    },
+    {
+      "path": "desktop-1440/axe-permission-unexpected-320x568-text1.json",
+      "bytes": 479,
+      "sha256": "aa05e6ebe56364aff108445fdba185777088ec689c606c12ccf6f11773119e50",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/axe-permission-unexpected-320x568-text1.json"
+    },
+    {
+      "path": "desktop-1440/axe-permission-unexpected-390x844-text1.json",
+      "bytes": 480,
+      "sha256": "0479150a9a950fd96086a354a5487dd150e483f4af96a129d6c1e69d13d61557",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/axe-permission-unexpected-390x844-text1.json"
+    },
+    {
+      "path": "desktop-1440/axe-permission-unsupported-1440x900-text1.json",
+      "bytes": 478,
+      "sha256": "d7a45903ae05f2a808f4162514efe80343abd5da1d47d075d6ac2f34ab1072b6",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/axe-permission-unsupported-1440x900-text1.json"
+    },
+    {
+      "path": "desktop-1440/axe-permission-unsupported-320x420-text2.json",
+      "bytes": 480,
+      "sha256": "f7660da993fb56688f24efb53707aa42d66d058e3d2651a34662988678f62559",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/axe-permission-unsupported-320x420-text2.json"
+    },
+    {
+      "path": "desktop-1440/axe-permission-unsupported-320x568-text1.json",
+      "bytes": 480,
+      "sha256": "9ceed4ab292146c4dc37740c780347bccec8233edc115c3f0c595c5189cf2179",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/axe-permission-unsupported-320x568-text1.json"
+    },
+    {
+      "path": "desktop-1440/axe-permission-unsupported-390x844-text1.json",
+      "bytes": 481,
+      "sha256": "880816485542b5c7ed77521f5db6796a3f0725022235f3c0f82a09336f73a538",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/axe-permission-unsupported-390x844-text1.json"
+    },
+    {
+      "path": "desktop-1440/permission-default-1440x900-text1.png",
+      "bytes": 137924,
+      "sha256": "0eb757b9de96f7727cbcb4a73a926feba2c5bd18eed2b4da14da371d2fa5d2dd",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/permission-default-1440x900-text1.png",
+      "width": 1440,
+      "height": 1101
+    },
+    {
+      "path": "desktop-1440/permission-default-320x420-text2.png",
+      "bytes": 136606,
+      "sha256": "8e50f67aa726f8bc9975c7d112215a0c160793721242710cb55ffae325fe191e",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/permission-default-320x420-text2.png",
+      "width": 320,
+      "height": 2267
+    },
+    {
+      "path": "desktop-1440/permission-default-320x568-text1.png",
+      "bytes": 115120,
+      "sha256": "384fb07a992fbdf89da3deb10705390e6f80bd7cef790f4dbd939385e4064486",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/permission-default-320x568-text1.png",
+      "width": 320,
+      "height": 1509
+    },
+    {
+      "path": "desktop-1440/permission-default-390x844-text1.png",
+      "bytes": 106578,
+      "sha256": "eaa029928cd8ecfa7bdc671221d0e1e81be56f6c1cea591619d1b11c7bb37b85",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/permission-default-390x844-text1.png",
+      "width": 390,
+      "height": 1413
+    },
+    {
+      "path": "desktop-1440/permission-denied-1440x900-text1.png",
+      "bytes": 135862,
+      "sha256": "84c9beb3e70e027d363de1134fa3b151bb02763dc220e8d55626c04add8a940a",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/permission-denied-1440x900-text1.png",
+      "width": 1440,
+      "height": 1078
+    },
+    {
+      "path": "desktop-1440/permission-denied-320x420-text2.png",
+      "bytes": 134661,
+      "sha256": "335138650a53c2eb7399cb599fd9bd2fc410b4edbcca8842f2c34732986088cd",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/permission-denied-320x420-text2.png",
+      "width": 320,
+      "height": 2267
+    },
+    {
+      "path": "desktop-1440/permission-denied-320x568-text1.png",
+      "bytes": 113977,
+      "sha256": "33394ea8cb7271721161755ec465806cf8a93e9d24a9e9c9d92f29cfb5806bf2",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/permission-denied-320x568-text1.png",
+      "width": 320,
+      "height": 1509
+    },
+    {
+      "path": "desktop-1440/permission-denied-390x844-text1.png",
+      "bytes": 106312,
+      "sha256": "a09612503216991a9693a7c5f5751e3fc14dc462ce6a9fc037c70cd9a006ee38",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/permission-denied-390x844-text1.png",
+      "width": 390,
+      "height": 1413
+    },
+    {
+      "path": "desktop-1440/permission-granted-1440x900-text1.png",
+      "bytes": 136820,
+      "sha256": "e1003568d27d64da4e2227033dca5a46c968abd48aab65259ceb50d496651017",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/permission-granted-1440x900-text1.png",
+      "width": 1440,
+      "height": 1078
+    },
+    {
+      "path": "desktop-1440/permission-granted-320x420-text2.png",
+      "bytes": 135851,
+      "sha256": "e5bef1ac41b2a28c5edb5bb6d84af750fb227ff015d78b4cdfc06189befc25e3",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/permission-granted-320x420-text2.png",
+      "width": 320,
+      "height": 2267
+    },
+    {
+      "path": "desktop-1440/permission-granted-320x568-text1.png",
+      "bytes": 113956,
+      "sha256": "ede841437613ce4356bd36ece12d599e19057c7a2d168016eb73f862ff84c96f",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/permission-granted-320x568-text1.png",
+      "width": 320,
+      "height": 1509
+    },
+    {
+      "path": "desktop-1440/permission-granted-390x844-text1.png",
+      "bytes": 106312,
+      "sha256": "a09612503216991a9693a7c5f5751e3fc14dc462ce6a9fc037c70cd9a006ee38",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/permission-granted-390x844-text1.png",
+      "width": 390,
+      "height": 1413
+    },
+    {
+      "path": "desktop-1440/permission-summary.json",
+      "bytes": 9508,
+      "sha256": "a6fbd55a05c01f9bbbea49564f9b84b5fc2a0e8d064be19949dcceebd07eca26",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/permission-summary.json"
+    },
+    {
+      "path": "desktop-1440/permission-unexpected-1440x900-text1.png",
+      "bytes": 137318,
+      "sha256": "9666264a507b301df36423ba92577f2b2ac2bb18b5e2d1c29d37a5e1a73107cd",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/permission-unexpected-1440x900-text1.png",
+      "width": 1440,
+      "height": 1101
+    },
+    {
+      "path": "desktop-1440/permission-unexpected-320x420-text2.png",
+      "bytes": 136134,
+      "sha256": "1d600e47bae11549d8439bb0bffdd46edc4764fef708df8f58f80a68e5e3299f",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/permission-unexpected-320x420-text2.png",
+      "width": 320,
+      "height": 2267
+    },
+    {
+      "path": "desktop-1440/permission-unexpected-320x568-text1.png",
+      "bytes": 114654,
+      "sha256": "0d5f092bfb77f8964eba337b1098c2e5765d77ed4257cca980067774a67ee291",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/permission-unexpected-320x568-text1.png",
+      "width": 320,
+      "height": 1509
+    },
+    {
+      "path": "desktop-1440/permission-unexpected-390x844-text1.png",
+      "bytes": 106578,
+      "sha256": "eaa029928cd8ecfa7bdc671221d0e1e81be56f6c1cea591619d1b11c7bb37b85",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/permission-unexpected-390x844-text1.png",
+      "width": 390,
+      "height": 1413
+    },
+    {
+      "path": "desktop-1440/permission-unsupported-1440x900-text1.png",
+      "bytes": 138549,
+      "sha256": "9fbfa44cbe2d681bce917d7cd2e876524ae4964f7ddbbbab5939bdd45cf8f27e",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/permission-unsupported-1440x900-text1.png",
+      "width": 1440,
+      "height": 1101
+    },
+    {
+      "path": "desktop-1440/permission-unsupported-320x420-text2.png",
+      "bytes": 136542,
+      "sha256": "4903e9d076ebce05cb0cffa1bab623adfab7f8ca917d067d244da2f6bd87a21d",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/permission-unsupported-320x420-text2.png",
+      "width": 320,
+      "height": 2267
+    },
+    {
+      "path": "desktop-1440/permission-unsupported-320x568-text1.png",
+      "bytes": 115708,
+      "sha256": "9befd6adf24bb2827ca7140c872c0644cf28f047ac825726ea948b1299348473",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/permission-unsupported-320x568-text1.png",
+      "width": 320,
+      "height": 1509
+    },
+    {
+      "path": "desktop-1440/permission-unsupported-390x844-text1.png",
+      "bytes": 107282,
+      "sha256": "b4815b565309a94770ce0a3a8e003962142e9afd7c718bb63532f059ddbdcd2c",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-desktop-1440/permission-unsupported-390x844-text1.png",
+      "width": 390,
+      "height": 1413
+    },
+    {
+      "path": "mobile-390/axe-permission-default-1440x900-text1.json",
+      "bytes": 474,
+      "sha256": "24e992e4d34476ee867a1d7a284c0959cbbb8554ffeb83491dafcac79fad0300",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/axe-permission-default-1440x900-text1.json"
+    },
+    {
+      "path": "mobile-390/axe-permission-default-320x420-text2.json",
+      "bytes": 476,
+      "sha256": "c80a742adeed9cf42d070374dd2b72faf0d831d41165a65116e891652d051b78",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/axe-permission-default-320x420-text2.json"
+    },
+    {
+      "path": "mobile-390/axe-permission-default-320x568-text1.json",
+      "bytes": 476,
+      "sha256": "e5721a9aaef86d8618f3139147487f249e582e1babaa73109039155ba71d5826",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/axe-permission-default-320x568-text1.json"
+    },
+    {
+      "path": "mobile-390/axe-permission-default-390x844-text1.json",
+      "bytes": 477,
+      "sha256": "151c79b8ab8bb416fd5efb18aaf3fd8e7977ce1b8ad3dc1d41b8f60aaebb87d0",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/axe-permission-default-390x844-text1.json"
+    },
+    {
+      "path": "mobile-390/axe-permission-denied-1440x900-text1.json",
+      "bytes": 473,
+      "sha256": "de107b02499fae4fcf8d970d9555aff8f76066467641eec9409e289bfe6288ba",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/axe-permission-denied-1440x900-text1.json"
+    },
+    {
+      "path": "mobile-390/axe-permission-denied-320x420-text2.json",
+      "bytes": 475,
+      "sha256": "a64acedb4658076d37f1bf20815869fabe0dcaa3839e7a518a4e2ed64cf280cc",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/axe-permission-denied-320x420-text2.json"
+    },
+    {
+      "path": "mobile-390/axe-permission-denied-320x568-text1.json",
+      "bytes": 475,
+      "sha256": "7e560fa4d02828952b743bd184f02310100ca38200bcdc4fbd32b5d6d72d8834",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/axe-permission-denied-320x568-text1.json"
+    },
+    {
+      "path": "mobile-390/axe-permission-denied-390x844-text1.json",
+      "bytes": 476,
+      "sha256": "ef9fdf353cbd3c479b6091f523951194145bb9e7131e7907ba72439cabe193b3",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/axe-permission-denied-390x844-text1.json"
+    },
+    {
+      "path": "mobile-390/axe-permission-granted-1440x900-text1.json",
+      "bytes": 474,
+      "sha256": "1422a9d95276188c7c3c8cb1e58f549a3bef49e054b49189296040ac2311223c",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/axe-permission-granted-1440x900-text1.json"
+    },
+    {
+      "path": "mobile-390/axe-permission-granted-320x420-text2.json",
+      "bytes": 476,
+      "sha256": "c812c5f4042cd1b41d66b7bb3d79bf2019a1ab0ec6e9ce01f34df5c2c6dccf57",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/axe-permission-granted-320x420-text2.json"
+    },
+    {
+      "path": "mobile-390/axe-permission-granted-320x568-text1.json",
+      "bytes": 476,
+      "sha256": "f92d0063a2f180d418764f7a3221c515e2250314f98684da8e821285d15fb085",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/axe-permission-granted-320x568-text1.json"
+    },
+    {
+      "path": "mobile-390/axe-permission-granted-390x844-text1.json",
+      "bytes": 477,
+      "sha256": "107f684cd09e93cdbd179f59b45d12a3dcb91f6f7793e86dd14cfdf130d1aee3",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/axe-permission-granted-390x844-text1.json"
+    },
+    {
+      "path": "mobile-390/axe-permission-unexpected-1440x900-text1.json",
+      "bytes": 477,
+      "sha256": "4dc2fb527dc3c4577bb8cf95b793e07a97d41b99c6d7ef2ad0217f7a8f41db1c",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/axe-permission-unexpected-1440x900-text1.json"
+    },
+    {
+      "path": "mobile-390/axe-permission-unexpected-320x420-text2.json",
+      "bytes": 479,
+      "sha256": "5324a8073bc3358a081f1782edc72504b32ce7a753f0102a8fd31a7e689acca4",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/axe-permission-unexpected-320x420-text2.json"
+    },
+    {
+      "path": "mobile-390/axe-permission-unexpected-320x568-text1.json",
+      "bytes": 479,
+      "sha256": "aa05e6ebe56364aff108445fdba185777088ec689c606c12ccf6f11773119e50",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/axe-permission-unexpected-320x568-text1.json"
+    },
+    {
+      "path": "mobile-390/axe-permission-unexpected-390x844-text1.json",
+      "bytes": 480,
+      "sha256": "0479150a9a950fd96086a354a5487dd150e483f4af96a129d6c1e69d13d61557",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/axe-permission-unexpected-390x844-text1.json"
+    },
+    {
+      "path": "mobile-390/axe-permission-unsupported-1440x900-text1.json",
+      "bytes": 478,
+      "sha256": "d7a45903ae05f2a808f4162514efe80343abd5da1d47d075d6ac2f34ab1072b6",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/axe-permission-unsupported-1440x900-text1.json"
+    },
+    {
+      "path": "mobile-390/axe-permission-unsupported-320x420-text2.json",
+      "bytes": 480,
+      "sha256": "f7660da993fb56688f24efb53707aa42d66d058e3d2651a34662988678f62559",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/axe-permission-unsupported-320x420-text2.json"
+    },
+    {
+      "path": "mobile-390/axe-permission-unsupported-320x568-text1.json",
+      "bytes": 480,
+      "sha256": "9ceed4ab292146c4dc37740c780347bccec8233edc115c3f0c595c5189cf2179",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/axe-permission-unsupported-320x568-text1.json"
+    },
+    {
+      "path": "mobile-390/axe-permission-unsupported-390x844-text1.json",
+      "bytes": 481,
+      "sha256": "880816485542b5c7ed77521f5db6796a3f0725022235f3c0f82a09336f73a538",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/axe-permission-unsupported-390x844-text1.json"
+    },
+    {
+      "path": "mobile-390/permission-default-1440x900-text1.png",
+      "bytes": 137924,
+      "sha256": "0eb757b9de96f7727cbcb4a73a926feba2c5bd18eed2b4da14da371d2fa5d2dd",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/permission-default-1440x900-text1.png",
+      "width": 1440,
+      "height": 1101
+    },
+    {
+      "path": "mobile-390/permission-default-320x420-text2.png",
+      "bytes": 136606,
+      "sha256": "8e50f67aa726f8bc9975c7d112215a0c160793721242710cb55ffae325fe191e",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/permission-default-320x420-text2.png",
+      "width": 320,
+      "height": 2267
+    },
+    {
+      "path": "mobile-390/permission-default-320x568-text1.png",
+      "bytes": 115120,
+      "sha256": "384fb07a992fbdf89da3deb10705390e6f80bd7cef790f4dbd939385e4064486",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/permission-default-320x568-text1.png",
+      "width": 320,
+      "height": 1509
+    },
+    {
+      "path": "mobile-390/permission-default-390x844-text1.png",
+      "bytes": 106578,
+      "sha256": "eaa029928cd8ecfa7bdc671221d0e1e81be56f6c1cea591619d1b11c7bb37b85",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/permission-default-390x844-text1.png",
+      "width": 390,
+      "height": 1413
+    },
+    {
+      "path": "mobile-390/permission-denied-1440x900-text1.png",
+      "bytes": 135862,
+      "sha256": "84c9beb3e70e027d363de1134fa3b151bb02763dc220e8d55626c04add8a940a",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/permission-denied-1440x900-text1.png",
+      "width": 1440,
+      "height": 1078
+    },
+    {
+      "path": "mobile-390/permission-denied-320x420-text2.png",
+      "bytes": 134661,
+      "sha256": "335138650a53c2eb7399cb599fd9bd2fc410b4edbcca8842f2c34732986088cd",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/permission-denied-320x420-text2.png",
+      "width": 320,
+      "height": 2267
+    },
+    {
+      "path": "mobile-390/permission-denied-320x568-text1.png",
+      "bytes": 113977,
+      "sha256": "33394ea8cb7271721161755ec465806cf8a93e9d24a9e9c9d92f29cfb5806bf2",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/permission-denied-320x568-text1.png",
+      "width": 320,
+      "height": 1509
+    },
+    {
+      "path": "mobile-390/permission-denied-390x844-text1.png",
+      "bytes": 106312,
+      "sha256": "a09612503216991a9693a7c5f5751e3fc14dc462ce6a9fc037c70cd9a006ee38",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/permission-denied-390x844-text1.png",
+      "width": 390,
+      "height": 1413
+    },
+    {
+      "path": "mobile-390/permission-granted-1440x900-text1.png",
+      "bytes": 136820,
+      "sha256": "e1003568d27d64da4e2227033dca5a46c968abd48aab65259ceb50d496651017",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/permission-granted-1440x900-text1.png",
+      "width": 1440,
+      "height": 1078
+    },
+    {
+      "path": "mobile-390/permission-granted-320x420-text2.png",
+      "bytes": 135851,
+      "sha256": "e5bef1ac41b2a28c5edb5bb6d84af750fb227ff015d78b4cdfc06189befc25e3",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/permission-granted-320x420-text2.png",
+      "width": 320,
+      "height": 2267
+    },
+    {
+      "path": "mobile-390/permission-granted-320x568-text1.png",
+      "bytes": 113956,
+      "sha256": "ede841437613ce4356bd36ece12d599e19057c7a2d168016eb73f862ff84c96f",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/permission-granted-320x568-text1.png",
+      "width": 320,
+      "height": 1509
+    },
+    {
+      "path": "mobile-390/permission-granted-390x844-text1.png",
+      "bytes": 106312,
+      "sha256": "a09612503216991a9693a7c5f5751e3fc14dc462ce6a9fc037c70cd9a006ee38",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/permission-granted-390x844-text1.png",
+      "width": 390,
+      "height": 1413
+    },
+    {
+      "path": "mobile-390/permission-summary.json",
+      "bytes": 9508,
+      "sha256": "a6fbd55a05c01f9bbbea49564f9b84b5fc2a0e8d064be19949dcceebd07eca26",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/permission-summary.json"
+    },
+    {
+      "path": "mobile-390/permission-unexpected-1440x900-text1.png",
+      "bytes": 137318,
+      "sha256": "9666264a507b301df36423ba92577f2b2ac2bb18b5e2d1c29d37a5e1a73107cd",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/permission-unexpected-1440x900-text1.png",
+      "width": 1440,
+      "height": 1101
+    },
+    {
+      "path": "mobile-390/permission-unexpected-320x420-text2.png",
+      "bytes": 136134,
+      "sha256": "1d600e47bae11549d8439bb0bffdd46edc4764fef708df8f58f80a68e5e3299f",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/permission-unexpected-320x420-text2.png",
+      "width": 320,
+      "height": 2267
+    },
+    {
+      "path": "mobile-390/permission-unexpected-320x568-text1.png",
+      "bytes": 114654,
+      "sha256": "0d5f092bfb77f8964eba337b1098c2e5765d77ed4257cca980067774a67ee291",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/permission-unexpected-320x568-text1.png",
+      "width": 320,
+      "height": 1509
+    },
+    {
+      "path": "mobile-390/permission-unexpected-390x844-text1.png",
+      "bytes": 106578,
+      "sha256": "eaa029928cd8ecfa7bdc671221d0e1e81be56f6c1cea591619d1b11c7bb37b85",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/permission-unexpected-390x844-text1.png",
+      "width": 390,
+      "height": 1413
+    },
+    {
+      "path": "mobile-390/permission-unsupported-1440x900-text1.png",
+      "bytes": 138549,
+      "sha256": "9fbfa44cbe2d681bce917d7cd2e876524ae4964f7ddbbbab5939bdd45cf8f27e",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/permission-unsupported-1440x900-text1.png",
+      "width": 1440,
+      "height": 1101
+    },
+    {
+      "path": "mobile-390/permission-unsupported-320x420-text2.png",
+      "bytes": 136542,
+      "sha256": "4903e9d076ebce05cb0cffa1bab623adfab7f8ca917d067d244da2f6bd87a21d",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/permission-unsupported-320x420-text2.png",
+      "width": 320,
+      "height": 2267
+    },
+    {
+      "path": "mobile-390/permission-unsupported-320x568-text1.png",
+      "bytes": 115708,
+      "sha256": "9befd6adf24bb2827ca7140c872c0644cf28f047ac825726ea948b1299348473",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/permission-unsupported-320x568-text1.png",
+      "width": 320,
+      "height": 1509
+    },
+    {
+      "path": "mobile-390/permission-unsupported-390x844-text1.png",
+      "bytes": 107282,
+      "sha256": "b4815b565309a94770ce0a3a8e003962142e9afd7c718bb63532f059ddbdcd2c",
+      "raw_source": ".artifacts/takeover/privacy/verified/takolio-privacy-continuati-8f778-permission-or-export-delete-mobile-390/permission-unsupported-390x844-text1.png",
+      "width": 390,
+      "height": 1413
+    }
+  ]
+}

@@ -1,0 +1,528 @@
+{
+  "baseline": "Before C12; no runtime edits by auditor",
+  "controls": 22,
+  "states": 66,
+  "screenshots": 44,
+  "placeholderPairs": [
+    {
+      "id": "discovery-search",
+      "route": "/recipes",
+      "color": "rgb(156, 163, 175)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 2.5388412065932826,
+      "required": 4.5,
+      "pass": false,
+      "unresolvedGradient": false
+    },
+    {
+      "id": "saved-search",
+      "route": "/recipes",
+      "color": "rgb(156, 163, 175)",
+      "background": [
+        255,
+        248,
+        237
+      ],
+      "ratio": 2.406077414865772,
+      "required": 4.5,
+      "pass": false,
+      "unresolvedGradient": false
+    },
+    {
+      "id": "stock-search",
+      "route": "/fridge",
+      "color": "rgb(77, 94, 108)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 6.702456770841178,
+      "required": 4.5,
+      "pass": true,
+      "unresolvedGradient": false
+    },
+    {
+      "id": "stock-add-name",
+      "route": "/fridge",
+      "color": "rgb(77, 94, 108)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 6.702456770841178,
+      "required": 4.5,
+      "pass": true,
+      "unresolvedGradient": false
+    },
+    {
+      "id": "shopping-name",
+      "route": "/shopping",
+      "color": "rgb(156, 163, 175)",
+      "background": [
+        255,
+        254,
+        251
+      ],
+      "ratio": 2.517289024583831,
+      "required": 4.5,
+      "pass": false,
+      "unresolvedGradient": false
+    }
+  ],
+  "familySupplement": [
+    {
+      "route": "/settings/planning",
+      "name": "Tìm nguyên liệu không thích",
+      "color": "rgb(156, 163, 175)",
+      "background": "rgb(255, 255, 255)",
+      "ratio": 2.5388412065932826,
+      "required": 4.5,
+      "pass": false,
+      "source": "../supplement.json; computed normal state only, focus/hover not captured"
+    },
+    {
+      "route": "/settings/planning",
+      "name": "Tìm nguyên liệu không ăn",
+      "color": "rgb(156, 163, 175)",
+      "background": "rgb(255, 255, 255)",
+      "ratio": 2.5388412065932826,
+      "required": 4.5,
+      "pass": false,
+      "source": "../supplement.json; computed normal state only, focus/hover not captured"
+    }
+  ],
+  "offSwitch": {
+    "id": "account-switch-off",
+    "route": "/settings/notifications",
+    "track": [
+      201,
+      194,
+      182
+    ],
+    "background": [
+      255,
+      255,
+      255
+    ],
+    "thumb": [
+      255,
+      255,
+      255
+    ],
+    "trackBackgroundRatio": 1.7683174336543541,
+    "thumbTrackRatio": 1.7683174336543541,
+    "borderWidth": "0px",
+    "required": 3,
+    "pass": false
+  },
+  "focusIndicators": [
+    {
+      "id": "discovery-search",
+      "focusVisible": true,
+      "indicator": "solid outline",
+      "color": "rgb(46, 125, 91)",
+      "width": "2px",
+      "offset": "3px",
+      "adjacentParent": [
+        255,
+        248,
+        237
+      ],
+      "parentContrast": 4.7377666089308,
+      "shadow": "none",
+      "unresolvedGradient": false,
+      "note": "Outline offset separates it from control fill; do not compare offset outline directly against track fill."
+    },
+    {
+      "id": "discovery-servings",
+      "focusVisible": true,
+      "indicator": "solid outline",
+      "color": "rgb(46, 125, 91)",
+      "width": "3px",
+      "offset": "3px",
+      "adjacentParent": [
+        255,
+        248,
+        237
+      ],
+      "parentContrast": 4.7377666089308,
+      "shadow": "none",
+      "unresolvedGradient": false,
+      "note": "Outline offset separates it from control fill; do not compare offset outline directly against track fill."
+    },
+    {
+      "id": "discovery-filter",
+      "focusVisible": true,
+      "indicator": "solid outline",
+      "color": "rgb(46, 125, 91)",
+      "width": "3px",
+      "offset": "3px",
+      "adjacentParent": [
+        255,
+        248,
+        237
+      ],
+      "parentContrast": 4.7377666089308,
+      "shadow": "none",
+      "unresolvedGradient": false,
+      "note": "Outline offset separates it from control fill; do not compare offset outline directly against track fill."
+    },
+    {
+      "id": "detail-servings",
+      "focusVisible": true,
+      "indicator": "solid outline",
+      "color": "rgb(46, 125, 91)",
+      "width": "3px",
+      "offset": "3px",
+      "adjacentParent": [
+        255,
+        248,
+        237
+      ],
+      "parentContrast": 4.7377666089308,
+      "shadow": "none",
+      "unresolvedGradient": false,
+      "note": "Outline offset separates it from control fill; do not compare offset outline directly against track fill."
+    },
+    {
+      "id": "detail-meal",
+      "focusVisible": true,
+      "indicator": "solid outline",
+      "color": "rgb(46, 125, 91)",
+      "width": "3px",
+      "offset": "3px",
+      "adjacentParent": [
+        255,
+        248,
+        237
+      ],
+      "parentContrast": 4.7377666089308,
+      "shadow": "none",
+      "unresolvedGradient": false,
+      "note": "Outline offset separates it from control fill; do not compare offset outline directly against track fill."
+    },
+    {
+      "id": "detail-save",
+      "focusVisible": true,
+      "indicator": "solid outline",
+      "color": "rgb(46, 125, 91)",
+      "width": "3px",
+      "offset": "3px",
+      "adjacentParent": [
+        255,
+        248,
+        237
+      ],
+      "parentContrast": 4.7377666089308,
+      "shadow": "none",
+      "unresolvedGradient": false,
+      "note": "Outline offset separates it from control fill; do not compare offset outline directly against track fill."
+    },
+    {
+      "id": "saved-search",
+      "focusVisible": true,
+      "indicator": "solid outline",
+      "color": "rgb(46, 125, 91)",
+      "width": "2px",
+      "offset": "3px",
+      "adjacentParent": [
+        255,
+        248,
+        237
+      ],
+      "parentContrast": 4.7377666089308,
+      "shadow": "none",
+      "unresolvedGradient": false,
+      "note": "Outline offset separates it from control fill; do not compare offset outline directly against track fill."
+    },
+    {
+      "id": "account-switch-off",
+      "focusVisible": true,
+      "indicator": "solid outline",
+      "color": "rgb(46, 125, 91)",
+      "width": "3px",
+      "offset": "3px",
+      "adjacentParent": [
+        255,
+        255,
+        255
+      ],
+      "parentContrast": 4.999189560426621,
+      "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(46, 125, 91, 0.28) 0px 0px 0px 3px",
+      "unresolvedGradient": false,
+      "note": "Outline offset separates it from control fill; do not compare offset outline directly against track fill."
+    },
+    {
+      "id": "account-switch-on",
+      "focusVisible": true,
+      "indicator": "solid outline",
+      "color": "rgb(46, 125, 91)",
+      "width": "3px",
+      "offset": "3px",
+      "adjacentParent": [
+        255,
+        255,
+        255
+      ],
+      "parentContrast": 4.999189560426621,
+      "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(46, 125, 91, 0.28) 0px 0px 0px 3px",
+      "unresolvedGradient": false,
+      "note": "Outline offset separates it from control fill; do not compare offset outline directly against track fill."
+    },
+    {
+      "id": "account-settings-link",
+      "focusVisible": true,
+      "indicator": "solid outline",
+      "color": "rgb(46, 125, 91)",
+      "width": "3px",
+      "offset": "3px",
+      "adjacentParent": [
+        255,
+        255,
+        255
+      ],
+      "parentContrast": 4.999189560426621,
+      "shadow": "none",
+      "unresolvedGradient": false,
+      "note": "Outline offset separates it from control fill; do not compare offset outline directly against track fill."
+    },
+    {
+      "id": "stock-search",
+      "focusVisible": true,
+      "indicator": "solid border",
+      "color": "rgb(39, 111, 63)",
+      "width": "1px",
+      "offset": "0px",
+      "adjacentParent": [
+        255,
+        248,
+        237
+      ],
+      "parentContrast": 5.799211845601208,
+      "shadow": "rgb(255, 255, 255) 0px 0px 0px 0px, rgba(39, 111, 63, 0.2) 0px 0px 0px 2px, rgba(15, 23, 42, 0.04) 0px 1px 3px 0px, rgba(15, 23, 42, 0.05) 0px 4px 12px -2px",
+      "unresolvedGradient": false,
+      "note": "Focus green border remains after transition; pale alpha ring alone is not the indicator."
+    },
+    {
+      "id": "stock-add-name",
+      "focusVisible": true,
+      "indicator": "solid border",
+      "color": "rgb(39, 111, 63)",
+      "width": "1px",
+      "offset": "0px",
+      "adjacentParent": [
+        255,
+        255,
+        255
+      ],
+      "parentContrast": 6.119203774745377,
+      "shadow": "rgb(255, 255, 255) 0px 0px 0px 0px, rgba(39, 111, 63, 0.2) 0px 0px 0px 2px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+      "unresolvedGradient": false,
+      "note": "Focus green border remains after transition; pale alpha ring alone is not the indicator."
+    },
+    {
+      "id": "stock-add-quantity",
+      "focusVisible": true,
+      "indicator": "solid border",
+      "color": "rgb(39, 111, 63)",
+      "width": "1px",
+      "offset": "0px",
+      "adjacentParent": [
+        255,
+        255,
+        255
+      ],
+      "parentContrast": 6.119203774745377,
+      "shadow": "rgb(255, 255, 255) 0px 0px 0px 0px, rgba(39, 111, 63, 0.2) 0px 0px 0px 2px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+      "unresolvedGradient": false,
+      "note": "Focus green border remains after transition; pale alpha ring alone is not the indicator."
+    },
+    {
+      "id": "shopping-name",
+      "focusVisible": true,
+      "indicator": "solid outline",
+      "color": "rgb(46, 125, 91)",
+      "width": "2px",
+      "offset": "3px",
+      "adjacentParent": [
+        255,
+        254,
+        251
+      ],
+      "parentContrast": 4.956751520967413,
+      "shadow": "none",
+      "unresolvedGradient": false,
+      "note": "Outline offset separates it from control fill; do not compare offset outline directly against track fill."
+    },
+    {
+      "id": "planner-control-0",
+      "focusVisible": true,
+      "indicator": "solid outline",
+      "color": "rgb(46, 125, 91)",
+      "width": "3px",
+      "offset": "3px",
+      "adjacentParent": [
+        255,
+        248,
+        237
+      ],
+      "parentContrast": 4.7377666089308,
+      "shadow": "none",
+      "unresolvedGradient": false,
+      "note": "Outline offset separates it from control fill; do not compare offset outline directly against track fill."
+    },
+    {
+      "id": "planner-control-1",
+      "focusVisible": true,
+      "indicator": "solid outline",
+      "color": "rgb(46, 125, 91)",
+      "width": "2px",
+      "offset": "3px",
+      "adjacentParent": [
+        238,
+        245,
+        233
+      ],
+      "parentContrast": 4.4928502488521715,
+      "shadow": "none",
+      "unresolvedGradient": false,
+      "note": "Outline offset separates it from control fill; do not compare offset outline directly against track fill."
+    },
+    {
+      "id": "planner-control-2",
+      "focusVisible": true,
+      "indicator": "solid outline",
+      "color": "rgb(46, 125, 91)",
+      "width": "2px",
+      "offset": "3px",
+      "adjacentParent": [
+        255,
+        254,
+        251
+      ],
+      "parentContrast": 4.956751520967413,
+      "shadow": "none",
+      "unresolvedGradient": false,
+      "note": "Outline offset separates it from control fill; do not compare offset outline directly against track fill."
+    },
+    {
+      "id": "planner-control-3",
+      "focusVisible": true,
+      "indicator": "solid outline",
+      "color": "rgb(46, 125, 91)",
+      "width": "2px",
+      "offset": "3px",
+      "adjacentParent": [
+        255,
+        255,
+        255
+      ],
+      "parentContrast": 4.999189560426621,
+      "shadow": "none",
+      "unresolvedGradient": false,
+      "note": "Outline offset separates it from control fill; do not compare offset outline directly against track fill."
+    },
+    {
+      "id": "planner-control-4",
+      "focusVisible": true,
+      "indicator": "solid outline",
+      "color": "rgb(46, 125, 91)",
+      "width": "2px",
+      "offset": "3px",
+      "adjacentParent": [
+        255,
+        255,
+        255
+      ],
+      "parentContrast": 4.999189560426621,
+      "shadow": "none",
+      "unresolvedGradient": false,
+      "note": "Outline offset separates it from control fill; do not compare offset outline directly against track fill."
+    },
+    {
+      "id": "planner-control-5",
+      "focusVisible": true,
+      "indicator": "solid outline",
+      "color": "rgb(46, 125, 91)",
+      "width": "2px",
+      "offset": "3px",
+      "adjacentParent": [
+        255,
+        255,
+        255
+      ],
+      "parentContrast": 4.999189560426621,
+      "shadow": "none",
+      "unresolvedGradient": false,
+      "note": "Outline offset separates it from control fill; do not compare offset outline directly against track fill."
+    },
+    {
+      "id": "planner-control-6",
+      "focusVisible": true,
+      "indicator": "solid outline",
+      "color": "rgb(46, 125, 91)",
+      "width": "2px",
+      "offset": "3px",
+      "adjacentParent": [
+        255,
+        255,
+        255
+      ],
+      "parentContrast": 4.999189560426621,
+      "shadow": "none",
+      "unresolvedGradient": false,
+      "note": "Outline offset separates it from control fill; do not compare offset outline directly against track fill."
+    },
+    {
+      "id": "planner-control-7",
+      "focusVisible": true,
+      "indicator": "solid outline",
+      "color": "rgb(46, 125, 91)",
+      "width": "2px",
+      "offset": "3px",
+      "adjacentParent": [
+        255,
+        255,
+        255
+      ],
+      "parentContrast": 4.999189560426621,
+      "shadow": "none",
+      "unresolvedGradient": false,
+      "note": "Outline offset separates it from control fill; do not compare offset outline directly against track fill."
+    }
+  ],
+  "writes": [],
+  "external": [],
+  "errors": [],
+  "boundaryAssessment": {
+    "confirmedSourceDefect": "--semantic-border-rgb is undefined. Declarations rgb(var(--semantic-border-rgb)) without fallback become invalid at computed value time.",
+    "renderedEffect": "Discovery search and serving/filter selects: border 0px/none. Shopping fields and planner day/serving controls also 0px/none. Stock utility border remains #E7E3DA 1px.",
+    "contrastClaim": "Essential input-boundary remediation requires scoped manual review. No low decorative separator ratio is reported as a failure.",
+    "doNot": "Do not add global border token solely for C12; changes many surfaces and decorative borders."
+  },
+  "recommendations": {
+    "placeholder": ".takosan-rebuild :is(input, textarea)::placeholder { color: rgb(var(--semantic-text-muted-rgb)); opacity: 1; }",
+    "offSwitch": ".takosan-rebuild button[role=\"switch\"][aria-checked=\"false\"]:not(:disabled) { background-color: rgb(var(--semantic-text-muted-rgb)); }",
+    "existingMutedRGB": "77 94 108",
+    "expectedPlaceholderRatios": {
+      "white": 6.702456770841178,
+      "cream": 6.351964754059778,
+      "offWhite": 6.645559723534511
+    },
+    "expectedOffSwitchRatio": 6.702456770841178
+  },
+  "limitations": [
+    "Home redirects /onboarding/household; no bypass used.",
+    "Legacy Week pairedOFF not measured.",
+    "22 sampled controls, not whole-app certification.",
+    "Family search controls captured in normal computed supplement only.",
+    "Native radio/checkbox glyph appearance is not inferred from their element background CSS.",
+    "Focus parent contrast describes adjacent outer background; shadow inner edges bounded separately."
+  ]
+}

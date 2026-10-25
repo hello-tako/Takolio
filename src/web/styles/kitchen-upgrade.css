@@ -420,3 +420,34 @@
     padding-bottom: 1rem;
   }
 }
+
+/* Keep low-contrast control states readable without changing shared primitives. */
+.takosan-rebuild :is(
+  .kitchen-search-input,
+  .family-collection-heading input,
+  .family-ingredient-field input[type='search'],
+  .shopping-add-form input[name='shopping-name']
+)::placeholder {
+  color: rgb(var(--semantic-text-muted-rgb));
+  opacity: 1;
+}
+
+.takosan-rebuild
+  .account-switch-row
+  button[role='switch'][aria-checked='false']:not(:disabled) {
+  background-color: rgb(var(--semantic-text-muted-rgb));
+}
+
+/* Inset strokes restore measured control boundaries without changing geometry. */
+.takosan-rebuild :is(
+  .kitchen-search-input,
+  .discovery-select-label select,
+  .discovery-filter-panel summary,
+  .planning-locale select,
+  .planning-setup-form input[type='date'],
+  .planning-setup-form input[type='number'],
+  .shopping-add-form input,
+  .shopping-add-form select
+) {
+  box-shadow: inset 0 0 0 1px rgb(var(--semantic-text-muted-rgb));
+}

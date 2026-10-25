@@ -1,0 +1,40 @@
+{
+  "result": "PASS",
+  "implementation": "820b0bd486aa17adc9a3cb3cba886b3ee7b62e3c",
+  "frozen_source_entries": 1260,
+  "frozen_source_differences": [],
+  "documentation_and_evidence_sha256": {
+    "HANDOFF.md": "cf1a2dc5ce201ba8e1dc908997db1ae399d5969452c2c32bfb87c3c8f8fcf1cb",
+    "TASK_BOARD.md": "943d4ce62392dbc18ea18694c49635448f1e039032d47d75121de6f2c5663846",
+    "docs/ai/CURRENT_STATE.md": "2cfcc050acb208d74075d107b2f765c782bb564ab106d9cdf1f7bed42adfd511",
+    "docs/ai/DECISIONS.md": "711a2810d37ecbecba1a8d45ebc8c59cb2161642c0f4beb63aed0d1c32111920",
+    "docs/ai/HANDOFF.md": "3cd5a3dbe7231fbfbc749be754dd025ce1c82ee285c3bcd8b34169a88f3447bb",
+    "docs/ai/TASK_BOARD.md": "4d367e25c7d0afc514f6ba56ba5064e5f6788abd33bf91f8d45a22e4edce3ee9",
+    "docs/ai/tasks/CAT01-display-category-authority.md": "95213b3fd6f4c1fea952a3b08b6237fef863134b53e625d8577235f03d5ff590",
+    "docs/takolio-v2/takeover/CAT01_DISPLAY_CATEGORY_AUTHORITY.md": "e7882d1e00614b0182b348147227ed07810bc970618e1088ed0cdb348d073298",
+    "docs/takolio-v2/takeover/FRONTEND_PLAN_STATUS.md": "4ee3709a198fb328e8c033c6491c81db714bcc4266d8612585bd75772dd95ecc",
+    "docs/takolio-v2/takeover/evidence/category-authority/parent-scope-verification.json": "97b7e78024508c4dbc7166f588bc189f269d4000267a2772b09333eefbe77f4e",
+    "docs/takolio-v2/takeover/evidence/category-authority/post-docs-parent-scope-verification.json": "fdbd8ed4db4ed57d92d25fd2a0405c79ae2374c9a0aa35adb3093c705e216620",
+    "docs/takolio-v2/takeover/evidence/category-authority/post-docs-protected-main-audit.json": "507d659e810bbe1960c98994cf7bd9df6ba8b7a4cc4c4a0c3728dc6c844720f4",
+    "docs/takolio-v2/takeover/evidence/category-authority/protected-main-audit.json": "b41a2923159ce550b0c93ff08af2ac37230373768eda7ad9a9134de727e665e6",
+    "docs/takolio-v2/takeover/evidence/category-authority/recovery-verification.json": "84a38527eed18c996ccc7d7e41899cd5f6f9d3eba8f6b62643d736a9399ee3c8",
+    "docs/takolio-v2/takeover/evidence/category-authority/snapshot-index-repair.json": "ade19f79eb5f0fa347f9ebd31479ad4d2e9b742421e445580ad393b1a600c44f"
+  },
+  "recovery_result": "PASS_WITH_AUTHORIZED_PLATFORM_DRIFT",
+  "authorized_platform_drift_paths": [
+    ".DS_Store",
+    "data/.DS_Store",
+    "docs/.DS_Store",
+    "frigo_frontend_prompt_kit_v1/.DS_Store",
+    "node_modules/.DS_Store",
+    "packages/.DS_Store",
+    "public/.DS_Store",
+    "scripts/.DS_Store",
+    "src/.DS_Store",
+    "tests/.DS_Store"
+  ],
+  "snapshot_index_repair_sha256": "ade19f79eb5f0fa347f9ebd31479ad4d2e9b742421e445580ad393b1a600c44f",
+  "scope_proof": "post-docs-parent-scope-verification.json",
+  "protected_proof": "post-docs-protected-main-audit.json",
+  "limits": "Documentation-only postcheck. Existing implementation gates remain bound to all 1260 unchanged source/test/config hashes. Original source and snapshot not accessed by this check."
+}

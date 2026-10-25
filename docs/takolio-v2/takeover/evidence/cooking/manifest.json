@@ -1,0 +1,459 @@
+{
+  "base_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "before_semantics": "Expanded baseline: 4 pass / 1 fail. Review return loses servings query; reload changes four servings to base two. Preserved screenshot and summary reproduce it with zero API writes and unchanged inventory.",
+  "after_semantics": "Final verified-paired run: cooking 5 + culinary 2 + recipe-detail 3 = 10 pass (1.7m). These after files are the five cooking tests only. Default composition V1 bounded subset: 4 pass (21.8s).",
+  "captures": "Full-page evidence retains fixed overlays at the capture viewport position. Eight synthetic viewport/root-font settings, not physical-device or OS zoom certification. Screenshots are QA evidence, never application assets.",
+  "entries": [
+    {
+      "path": "after/axe-cooking-1024x768-text1.json",
+      "bytes": 287,
+      "sha256": "ca6c2fd321446e32f088ee16e8d6ba99661a31358631dc54c4326eb6a1512f7d"
+    },
+    {
+      "path": "after/axe-cooking-1440x900-text1.json",
+      "bytes": 287,
+      "sha256": "911f1c6b747317150b1a341936783725782f3d40036b7765ace1bb4eda314631"
+    },
+    {
+      "path": "after/axe-cooking-320x420-text2.json",
+      "bytes": 286,
+      "sha256": "21668c6e570be46527ee6ea91dd523d6f276ae4d17838692f5c4fda151f31cd8"
+    },
+    {
+      "path": "after/axe-cooking-320x568-text1.json",
+      "bytes": 286,
+      "sha256": "0e3415c20f5f3cfa9a8df6c8d7f8f9db4b4e7d9de775d548a83326f6509607bc"
+    },
+    {
+      "path": "after/axe-cooking-360x800-text1.json",
+      "bytes": 286,
+      "sha256": "855b2c47cf9452ad80353d9c259ec73777fe52dd4feed891dd800813f7be9061"
+    },
+    {
+      "path": "after/axe-cooking-390x844-text1.json",
+      "bytes": 286,
+      "sha256": "33e171e4c07909a52155975014c4f47a8f6a6ec88e0b508b11bed54126abf6fd"
+    },
+    {
+      "path": "after/axe-cooking-430x932-text1.json",
+      "bytes": 286,
+      "sha256": "040f5a7c80f7273f49379ef605ad962b4b1882a47a1915fff00e353efe39b5d4"
+    },
+    {
+      "path": "after/axe-cooking-768x1024-text1.json",
+      "bytes": 287,
+      "sha256": "e4a5e1df2cfab57c7b5fc55453f0c6591378ddd2f14baeafaab129a977a1d8ee"
+    },
+    {
+      "path": "after/axe-exit-1024x768-text1.json",
+      "bytes": 284,
+      "sha256": "dc7f7c0c1ffa8fe34464003fad53e91d0a185228cf7ae98e5d212d5e6f34bbbc"
+    },
+    {
+      "path": "after/axe-exit-1440x900-text1.json",
+      "bytes": 284,
+      "sha256": "4e318a5064d37a0bfc49a37ea260528a089fb01c5666266f223cc04029493d39"
+    },
+    {
+      "path": "after/axe-exit-320x420-text2.json",
+      "bytes": 283,
+      "sha256": "680a00aabd98bb477826dfcc115e34d59e265e5264312a64b636f019333f505c"
+    },
+    {
+      "path": "after/axe-exit-320x568-text1.json",
+      "bytes": 283,
+      "sha256": "e609e322820e4ee64a9f6aa8207f786f95a876c06313f5dbd3e1777221982f84"
+    },
+    {
+      "path": "after/axe-exit-360x800-text1.json",
+      "bytes": 283,
+      "sha256": "623213272ecd3ad841e9ded201db685cec5cfd8dc6496e4c2b2ad77ca98ffaee"
+    },
+    {
+      "path": "after/axe-exit-390x844-text1.json",
+      "bytes": 283,
+      "sha256": "ad2649ef01c60f7029517315a353a76e67cd0129211d928e8135182442549c70"
+    },
+    {
+      "path": "after/axe-exit-430x932-text1.json",
+      "bytes": 283,
+      "sha256": "0da19372522c9d86000640ad9100d763723f3208861dcabc95ef07b5cc554066"
+    },
+    {
+      "path": "after/axe-exit-768x1024-text1.json",
+      "bytes": 284,
+      "sha256": "cb6fa275b63c0e073cd802c8f612537843b155c72027b3d1ea1ed78f0d2d990b"
+    },
+    {
+      "path": "after/axe-review-1024x768-text1.json",
+      "bytes": 211,
+      "sha256": "0939f96052e366bd4ebcac929e83d2403dc87f2e86d7c6bb8f4e47cbd62ee6bd"
+    },
+    {
+      "path": "after/axe-review-1440x900-text1.json",
+      "bytes": 211,
+      "sha256": "9a3df71e7692399b0c59ec1a49ad10d329831c3213f913e3801cc212d2681c07"
+    },
+    {
+      "path": "after/axe-review-320x420-text2.json",
+      "bytes": 210,
+      "sha256": "b6f68f351cd00cdd868a255c99c007332e1fc21aaa61078208a2be40b4417eb9"
+    },
+    {
+      "path": "after/axe-review-320x568-text1.json",
+      "bytes": 210,
+      "sha256": "85e652b5770dbff9db58961e9ff137f703733b9473dcf6e72f1eac28eacefdbd"
+    },
+    {
+      "path": "after/axe-review-360x800-text1.json",
+      "bytes": 210,
+      "sha256": "469cf41e4340be16cfb3009a671c880532ffea129efa971141b4228c1431d45f"
+    },
+    {
+      "path": "after/axe-review-390x844-text1.json",
+      "bytes": 210,
+      "sha256": "8162fd0b027c6a516e1f6a0937cef8d58efd8bb6419a7704e15460a241f0cfd9"
+    },
+    {
+      "path": "after/axe-review-430x932-text1.json",
+      "bytes": 210,
+      "sha256": "43711a90d467a13dcf00fc748f1a1c4ef553203dbcec0240e42b15b20a66bd8d"
+    },
+    {
+      "path": "after/axe-review-768x1024-text1.json",
+      "bytes": 211,
+      "sha256": "e96e99668f63d95276ab1b519154222c22741b48bcb0beaeee9add8f9020d03a"
+    },
+    {
+      "path": "after/axe-saved-1024x768-text1.json",
+      "bytes": 210,
+      "sha256": "4e3908acb2478c8672275ae5ebc52fa86d9e66cc7b6dd63c5cf8aa1cc3acb0f6"
+    },
+    {
+      "path": "after/axe-saved-1440x900-text1.json",
+      "bytes": 210,
+      "sha256": "d4c6ac08fa8aaa5d073c3a41170153b83ff5a2ba508bee89e1c10b7946ae8be6"
+    },
+    {
+      "path": "after/axe-saved-320x420-text2.json",
+      "bytes": 209,
+      "sha256": "a9c7aa8cfb0e6a6e1010e2b85cea224c0a1d31bd30be9def482008bd81a4f7d8"
+    },
+    {
+      "path": "after/axe-saved-320x568-text1.json",
+      "bytes": 209,
+      "sha256": "d3af89e8310e7c367fe8bc07d54ecdca67e2c57682e0a3e01cf8ddf328775bd2"
+    },
+    {
+      "path": "after/axe-saved-360x800-text1.json",
+      "bytes": 209,
+      "sha256": "8ab6600ef1372b1d7d0085e0eca8b10ea983d12adad97d9669746832084b7908"
+    },
+    {
+      "path": "after/axe-saved-390x844-text1.json",
+      "bytes": 209,
+      "sha256": "9ce180c58ae83c84fd1156403327cd5af80bad6270ffc2f5476ad2835dbf93a3"
+    },
+    {
+      "path": "after/axe-saved-430x932-text1.json",
+      "bytes": 209,
+      "sha256": "8825eb66b7f5bb93a5554b8bb331adb2caa5245242775d93967902d065ad87f4"
+    },
+    {
+      "path": "after/axe-saved-768x1024-text1.json",
+      "bytes": 210,
+      "sha256": "38ef1fd16ae94f93ae5426baa0169062f8a692236123d8b3ea982464886f7d00"
+    },
+    {
+      "path": "after/completion-empty.png",
+      "bytes": 32064,
+      "sha256": "dc9bb09b851d83e69164b74dc5446863d88dc815805a88d4f0bbc289e1692660",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "after/completion-replayed-saved.png",
+      "bytes": 129477,
+      "sha256": "40724707e96d1206f9c0886c9ff1d80803c225319bbae5976c24bb334fe192d1",
+      "width": 390,
+      "height": 1365
+    },
+    {
+      "path": "after/completion-summary.json",
+      "bytes": 390,
+      "sha256": "06ed7bcda3f64bfcbc792a7a5b62522c0da48e4d64f5651cc6371c7f6c19040f"
+    },
+    {
+      "path": "after/completion-uncertain.png",
+      "bytes": 149043,
+      "sha256": "ef7dd0d839fb994d323152201a037286ebd46b9182ef8820d248af0935040e7b",
+      "width": 390,
+      "height": 1440
+    },
+    {
+      "path": "after/cooking-1024x768-text1.png",
+      "bytes": 171399,
+      "sha256": "261ab482f7e4f16a1e3daaf26d4dd9f7f1f5b848604e1b88b7ed96a688506fc2",
+      "width": 1024,
+      "height": 887
+    },
+    {
+      "path": "after/cooking-1440x900-text1.png",
+      "bytes": 200124,
+      "sha256": "c6f9a05c559b949f386420c974b106320997daba519e52f6bfaacda3106de4fa",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "path": "after/cooking-320x420-text2.png",
+      "bytes": 204679,
+      "sha256": "7c13343e1f98915acdee57f44556d9c2cb1411aadec042810d984f648065f1e3",
+      "width": 320,
+      "height": 2277
+    },
+    {
+      "path": "after/cooking-320x568-text1.png",
+      "bytes": 175857,
+      "sha256": "ef719518e97d05376efaf2e08f0bc1a9402499d268d62b471036da70671994d7",
+      "width": 320,
+      "height": 1905
+    },
+    {
+      "path": "after/cooking-360x800-text1.png",
+      "bytes": 216231,
+      "sha256": "46a03f49bbfac7f47c15d380d4b436b3d028c03a3f7dd00613966cd39b9293e1",
+      "width": 360,
+      "height": 1724
+    },
+    {
+      "path": "after/cooking-390x844-text1.png",
+      "bytes": 170745,
+      "sha256": "1e72977c68b43bd8df985a9e55e5eb429227716b9bc2f88f0a1f2ea654e67ead",
+      "width": 390,
+      "height": 1638
+    },
+    {
+      "path": "after/cooking-430x932-text1.png",
+      "bytes": 173483,
+      "sha256": "e6e1dd50d9b49f6f49f639002c3af25d5fc6da4a7c7edec2b4e4ebc0963fb60e",
+      "width": 430,
+      "height": 1607
+    },
+    {
+      "path": "after/cooking-768x1024-text1.png",
+      "bytes": 164933,
+      "sha256": "76d797e17364aaf4dfb698c745da270843ff249e9ead790642d8fc522056f649",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "path": "after/exit-1024x768-text1.png",
+      "bytes": 171400,
+      "sha256": "0b0831c07d319b8661ffb47c1a0ccaa967f7ca51e09a0e38106c2e5c0145694b",
+      "width": 1024,
+      "height": 887
+    },
+    {
+      "path": "after/exit-1440x900-text1.png",
+      "bytes": 188054,
+      "sha256": "871c1a3deac7f3f83c7c19414ba70e3d4540e5f2acb0bb2a43a6d7b823885bd8",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "path": "after/exit-320x420-text2.png",
+      "bytes": 177545,
+      "sha256": "c8ea9a209fe8184cb93e9b31f4b6579cd7637139e1c9b92fe011b486aacbab66",
+      "width": 320,
+      "height": 2277
+    },
+    {
+      "path": "after/exit-320x568-text1.png",
+      "bytes": 149507,
+      "sha256": "38a36dc0950bf7dd0f8f4c51c4a75dee5fc6548662dca2d6bc858464a2fa2414",
+      "width": 320,
+      "height": 1905
+    },
+    {
+      "path": "after/exit-360x800-text1.png",
+      "bytes": 153029,
+      "sha256": "69ee460590159ac11900fd060442007a377a70596027802369f267d0a605abc7",
+      "width": 360,
+      "height": 1724
+    },
+    {
+      "path": "after/exit-390x844-text1.png",
+      "bytes": 146864,
+      "sha256": "ce3d5fcd15f5c49f5547373e82caa5cdddbe3ece6ae9ca02357cc86bf3ef1c90",
+      "width": 390,
+      "height": 1638
+    },
+    {
+      "path": "after/exit-430x932-text1.png",
+      "bytes": 147130,
+      "sha256": "d638c403249aad2f0aa4f72a31a751fa87daab0fd7c168cfb9731b805f49965f",
+      "width": 430,
+      "height": 1607
+    },
+    {
+      "path": "after/exit-768x1024-text1.png",
+      "bytes": 162154,
+      "sha256": "fe0786a8d55627e3d5ad035145195204474cd828af7edbea7bdd599e304dc2a8",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "path": "after/layout-summary.json",
+      "bytes": 124225,
+      "sha256": "f529a59a4417efac58f4109b5272a408ad0d10b647e4607cf4978d8d65c2f2e8"
+    },
+    {
+      "path": "after/review-1024x768-text1.png",
+      "bytes": 215975,
+      "sha256": "cd14f36947e2b6e5c44d7eab94c4a78576ded95238cf0c1384cdb4dbb0a6b0f7",
+      "width": 1024,
+      "height": 1777
+    },
+    {
+      "path": "after/review-1440x900-text1.png",
+      "bytes": 260334,
+      "sha256": "9ea05c0825c47e855faca0815c52b94a63a7fcb927d75b4628082263dc80db79",
+      "width": 1440,
+      "height": 1777
+    },
+    {
+      "path": "after/review-320x420-text2.png",
+      "bytes": 312247,
+      "sha256": "8f860802959bbd9c0c3f7cbfd902e472592a1fc9fba6dbfbfe6140c47fdd1633",
+      "width": 320,
+      "height": 3853
+    },
+    {
+      "path": "after/review-320x568-text1.png",
+      "bytes": 238604,
+      "sha256": "a6e8a007abea6f7d9a6f68247067a0b70cfd59d87e2999c97b49517f9a54b657",
+      "width": 320,
+      "height": 2951
+    },
+    {
+      "path": "after/review-360x800-text1.png",
+      "bytes": 231012,
+      "sha256": "0c9a09de6fb6f9f5920c67940560107f7d4c6294f967b15d96b30d7be3e5948c",
+      "width": 360,
+      "height": 2125
+    },
+    {
+      "path": "after/review-390x844-text1.png",
+      "bytes": 235382,
+      "sha256": "4e2ecffb18993da0267ca5b35942e67339742b2071d08267ae22e8f194ea5a1a",
+      "width": 390,
+      "height": 2125
+    },
+    {
+      "path": "after/review-430x932-text1.png",
+      "bytes": 242384,
+      "sha256": "44461c0faa2f794672fc81b299b13ee51180fbd6de13af1870677edc27c1fe81",
+      "width": 430,
+      "height": 2083
+    },
+    {
+      "path": "after/review-768x1024-text1.png",
+      "bytes": 212080,
+      "sha256": "0610b8d8e1dd89cc8d1ed9b3070a8251f495997b4fcf56d4573f2179ae83c6c2",
+      "width": 768,
+      "height": 1777
+    },
+    {
+      "path": "after/review-return-reloaded.png",
+      "bytes": 165312,
+      "sha256": "9db3a91678b344258d54d5437e0488d20a490c502da8c213cfcf0efb23d01ac9",
+      "width": 390,
+      "height": 1185
+    },
+    {
+      "path": "after/review-return-summary.json",
+      "bytes": 242,
+      "sha256": "79e8c37672703d18383a64ae2551e8867819bd573e843e85f532fcf26f706dd1"
+    },
+    {
+      "path": "after/saved-1024x768-text1.png",
+      "bytes": 201258,
+      "sha256": "fdf31a46e35f6c86acdf4f1165c63e0d6d8eb0997be3ee61beb43cc69025f0e6",
+      "width": 1024,
+      "height": 1668
+    },
+    {
+      "path": "after/saved-1440x900-text1.png",
+      "bytes": 243507,
+      "sha256": "b21772151db33f4eaee8ba2a634115bcddde6a701724cd0333d4869c4be1fa99",
+      "width": 1440,
+      "height": 1668
+    },
+    {
+      "path": "after/saved-320x420-text2.png",
+      "bytes": 309637,
+      "sha256": "2984ef50d2b1a25d322829505ad85ec2d22c6548a76c515afbc4bc65e3c7e5c8",
+      "width": 320,
+      "height": 3776
+    },
+    {
+      "path": "after/saved-320x568-text1.png",
+      "bytes": 190773,
+      "sha256": "3505701ce25d71eab5f36599758481af4031fb3cdbd17a9e23645d528dabcd58",
+      "width": 320,
+      "height": 2849
+    },
+    {
+      "path": "after/saved-360x800-text1.png",
+      "bytes": 184968,
+      "sha256": "6626dafe4a227ec55ab9562aabf1f1ca8913ee78f4248a2d5d1da5195104242c",
+      "width": 360,
+      "height": 2065
+    },
+    {
+      "path": "after/saved-390x844-text1.png",
+      "bytes": 188522,
+      "sha256": "6b2daca7a5ff0f01ad676d4acc26662a77fcf71e38a4ea928f8269b9925a67cc",
+      "width": 390,
+      "height": 2065
+    },
+    {
+      "path": "after/saved-430x932-text1.png",
+      "bytes": 188234,
+      "sha256": "08fedfd3e8dc8d995bf5c7cb55349f0841998d396ed2d04a3d95de0a4cfb1d31",
+      "width": 430,
+      "height": 2002
+    },
+    {
+      "path": "after/saved-768x1024-text1.png",
+      "bytes": 197866,
+      "sha256": "29e476ad9f26f611b905ca9824016fb5be4519cdf2c5a0d8a1415a478b063266",
+      "width": 768,
+      "height": 1668
+    },
+    {
+      "path": "after/timer-expired.png",
+      "bytes": 166470,
+      "sha256": "ee1d7cbd60eff5e29a6b292b2b92cfb14ee0ecfebb26f93e2280853c730e5779",
+      "width": 390,
+      "height": 1212
+    },
+    {
+      "path": "after/timer-summary.json",
+      "bytes": 284,
+      "sha256": "4118c33f0e2d0b8635e7691cbadb4179ba2379483804fc47065c379e60d850ac"
+    },
+    {
+      "path": "before/review-return-reloaded.png",
+      "bytes": 165101,
+      "sha256": "ef92521c538a6d6e36373d6d3c3663a12bf1a3269631df92d516e9cd91176393",
+      "width": 390,
+      "height": 1185
+    },
+    {
+      "path": "before/review-return-summary.json",
+      "bytes": 231,
+      "sha256": "1e743e76ed8cbf980f82f17a4312b1f5d4b8f3990cfdfa00e3392948de80add4"
+    }
+  ]
+}

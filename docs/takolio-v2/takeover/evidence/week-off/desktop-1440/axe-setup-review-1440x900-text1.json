@@ -1,0 +1,83 @@
+{
+  "state": "setup-review",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "textScale": 1,
+  "metrics": {
+    "innerWidth": 1440,
+    "scrollWidth": 1440,
+    "textOutsideViewport": [],
+    "brokenImages": []
+  },
+  "targets": [
+    {
+      "text": "1 lần / tuần\nMột chuyến mua sắm đầu tuần.",
+      "box": {
+        "x": 485,
+        "y": 434.140625,
+        "width": 694,
+        "height": 88.484375
+      },
+      "fits": true
+    },
+    {
+      "text": "2 lần / tuần\nChia nhu cầu mua sắm thành hai chuyến.",
+      "box": {
+        "x": 485,
+        "y": 534.625,
+        "width": 694,
+        "height": 88.484375
+      },
+      "fits": true
+    },
+    {
+      "text": "3 lần trở lên\nMua bổ sung nhiều lần trong tuần.",
+      "box": {
+        "x": 485,
+        "y": 635.109375,
+        "width": 694,
+        "height": 88.484375
+      },
+      "fits": true
+    },
+    {
+      "text": "Không cố định\nChọn thời điểm phù hợp với bạn.",
+      "box": {
+        "x": 485,
+        "y": 735.59375,
+        "width": 694,
+        "height": 88.484375
+      },
+      "fits": true
+    },
+    {
+      "text": "Bước trước",
+      "box": {
+        "x": 485,
+        "y": 779.15625,
+        "width": 141.96875,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Tạo thực đơn tuần",
+      "box": {
+        "x": 993.65625,
+        "y": 779.15625,
+        "width": 185.34375,
+        "height": 48
+      },
+      "fits": true
+    }
+  ],
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ]
+}

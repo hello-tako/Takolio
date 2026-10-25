@@ -1,0 +1,133 @@
+{
+  "state": "swap-read",
+  "viewport": {
+    "width": 320,
+    "height": 568
+  },
+  "textScale": 1,
+  "metrics": {
+    "innerWidth": 320,
+    "scrollWidth": 320,
+    "textOutsideViewport": [],
+    "brokenImages": []
+  },
+  "targets": [
+    {
+      "text": "Đổi món",
+      "box": {
+        "x": 31,
+        "y": 405.375,
+        "width": 121.59375,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Bắt đầu nấu",
+      "box": {
+        "x": 31,
+        "y": 414.375,
+        "width": 144.359375,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Nguyên liệu",
+      "box": {
+        "x": 14,
+        "y": 219.03125,
+        "width": 142,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Cách nấu",
+      "box": {
+        "x": 164,
+        "y": 219.03125,
+        "width": 142,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Dinh dưỡng",
+      "box": {
+        "x": 14,
+        "y": 275.03125,
+        "width": 292,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "",
+      "box": {
+        "x": 238,
+        "y": 34,
+        "width": 48,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Chọn món",
+      "box": {
+        "x": 34,
+        "y": 400.625,
+        "width": 252,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Chọn món",
+      "box": {
+        "x": 34,
+        "y": 259.5,
+        "width": 252,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Chọn món",
+      "box": {
+        "x": 34,
+        "y": 492.375,
+        "width": 252,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Chọn món",
+      "box": {
+        "x": 34,
+        "y": 260.25,
+        "width": 252,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Chọn món",
+      "box": {
+        "x": 34,
+        "y": 492.125,
+        "width": 252,
+        "height": 48
+      },
+      "fits": true
+    }
+  ],
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ]
+}

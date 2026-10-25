@@ -1,0 +1,537 @@
+{
+  "result": "PASS",
+  "implementation_commit": "4afc85804478fa9508b15b1c035da0e10f964822",
+  "official_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "validation_command": "python3 .artifacts/takeover/control-contrast/finalize-checkpoint.py",
+  "original_manifest": {
+    "selected_exact": 67,
+    "raw_exact": 374,
+    "pngs": 37,
+    "manifest_sha256": "8ad735feb8c7d8e80971a4ef544991c3a0b296503ff5a66914705bc1b1a3b90a"
+  },
+  "runtime_source_stability": [
+    {
+      "run": "group-a-attempt5",
+      "entries": 1104,
+      "current_source_hashes_match": true
+    },
+    {
+      "run": "group-b-attempt1",
+      "entries": 1104,
+      "current_source_hashes_match": true
+    }
+  ],
+  "previous_document_tails": [
+    {
+      "path": "docs/ai/CURRENT_STATE.md",
+      "previous_bytes": 822098,
+      "previous_sha256": "27e5e9c90527237bcfba4bce8c2215c3bb281f4ed1f9ef79e432d8f1536f7c16",
+      "unchanged_suffix": true
+    },
+    {
+      "path": "TASK_BOARD.md",
+      "previous_bytes": 332010,
+      "previous_sha256": "94284be0ec9ea298a63ba9bdb5214810917b5544b066720b9b4f6087f2504f03",
+      "unchanged_suffix": true
+    },
+    {
+      "path": "HANDOFF.md",
+      "previous_bytes": 134513,
+      "previous_sha256": "8dfba8d4c7efefa4763beda33d95fe974cd9ce4c02f4981e412f91ef2a47a058",
+      "unchanged_suffix": true
+    },
+    {
+      "path": "docs/takolio-v2/takeover/CHECKPOINT.md",
+      "previous_bytes": 44200,
+      "previous_sha256": "2e9ac39d870e1ea44565dedf0161e4810eb95d19199a21768b8bbfe9f4c39834",
+      "unchanged_suffix": true
+    },
+    {
+      "path": "docs/takolio-v2/takeover/QA_FINAL_MATRIX.md",
+      "previous_bytes": 30730,
+      "previous_sha256": "f3e409a8cf201dbefb373d70f487330aa711a9630a487f3a269680468342e12e",
+      "unchanged_suffix": true
+    },
+    {
+      "path": "docs/takolio-v2/takeover/PR_AND_RELEASE_READINESS.md",
+      "previous_bytes": 41574,
+      "previous_sha256": "dc8cb67066eafa5011e244a9c2d71c6c6837fe21ed5df8112d3eec8cde379244",
+      "unchanged_suffix": true
+    },
+    {
+      "path": "docs/takolio-v2/takeover/TEST_BASELINES.md",
+      "previous_bytes": 99381,
+      "previous_sha256": "2ffc2a9023870e6787c623b835765ce8b03d1f5c5eb4de2f1aca2826483b0902",
+      "unchanged_suffix": true
+    },
+    {
+      "path": "docs/takolio-v2/takeover/SOURCE_IDENTITY.md",
+      "previous_bytes": 23413,
+      "previous_sha256": "4f9f7107b6f446ce088bc652dd8d1f2674c36eacfcf2e7d54b19230fda08e1d4",
+      "unchanged_suffix": true
+    }
+  ],
+  "ledgers": {
+    "file_decisions_previous_exact_byte_prefix": 112,
+    "file_decisions_current": 115,
+    "screen_rows": 38,
+    "owner_pending": 38,
+    "prior_screen_cells_preserved_as_prefixes": true,
+    "selected_sources": 54,
+    "argon_ledger_rows": 69,
+    "asset_ledger_rows": 12
+  },
+  "protected_main": {
+    "result": "PASS",
+    "unchanged_base_paths": 5832
+  },
+  "recovery_verified_after_implementation": true,
+  "credential_private_path_pattern_findings": [],
+  "whitespace": "PASS",
+  "corrected_finalization_attempt": "CSV writer initially emitted CRLF; restored LF before final whitespace and historical-prefix validation.",
+  "receipt_scope": "Current checkpoint validation, not whole-product acceptance. Original67-payload manifest and historical receipts are unchanged. This receipt excludes its own bytes and makes no later documentation-commit hash claim.",
+  "packet_files": [
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/after/desktop-1440/c13-control-contrast-summary.json",
+      "bytes": 100037,
+      "sha256": "e998d136f3a09ab714d7d0737b13ca3cf306424c1fe0ba18fcd778a1a2a802bf"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/after/desktop-1440/control-contrast-summary.json",
+      "bytes": 54538,
+      "sha256": "c60d6852d94bd8212e46d7b4a942740b3b3e12e4de2b03493e1383e79f712e27"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/after/mobile-390/c13-control-contrast-summary.json",
+      "bytes": 100037,
+      "sha256": "e998d136f3a09ab714d7d0737b13ca3cf306424c1fe0ba18fcd778a1a2a802bf"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/after/mobile-390/control-contrast-summary.json",
+      "bytes": 54538,
+      "sha256": "c60d6852d94bd8212e46d7b4a942740b3b3e12e4de2b03493e1383e79f712e27"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/after/mobile-390/detail-servings-320x420-text200-text2-focus.png",
+      "bytes": 33730,
+      "sha256": "907767134315366f97c157bfb17bd43084262a1c81a3ba407ca6a8982d0d5a7e"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/after/mobile-390/discovery-1440x900-text1-focus.png",
+      "bytes": 163690,
+      "sha256": "f95363cfb009e99aa35cd097cf849b1225f75d9a4f5892d5b4bc04c3cbe6a965"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/after/mobile-390/discovery-390x844-text1-focus.png",
+      "bytes": 73146,
+      "sha256": "38c196eb5f986ae05ba0f7cbd290b15b056df75c925e14ba4f98ce61e9be0dc0"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/after/mobile-390/discovery-filter-320x420-text200-text2-focus.png",
+      "bytes": 30122,
+      "sha256": "2dbdc3a8bb682ca2081d561ebeece122c1530d87ec26902cbcc0adb23af4b6fa"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/after/mobile-390/discovery-search-320x568-text1-focus.png",
+      "bytes": 41658,
+      "sha256": "a0c0f0795f5b40d24b18d9853f1fe7552efacc74fd6abb3072044fd42c896f59"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/after/mobile-390/dislikes-320x420-text2-focus.png",
+      "bytes": 33339,
+      "sha256": "fc411fdab3d858c88a96bbde87fcc7e4ebb02deee1bd43160a24c38d249a9d7e"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/after/mobile-390/excluded-390x844-text1-focus.png",
+      "bytes": 69289,
+      "sha256": "7f5aa3cc6ed95bb0719997f6f95fc87e0f90565c979b1fc45242ad265f8ff539"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/after/mobile-390/planner-date-320x420-text200-text2-focus.png",
+      "bytes": 29431,
+      "sha256": "e44efddf7ad3b83c6921a234b6886ea32b97a24346d405e67975999c18da5777"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/after/mobile-390/planner-locale-390x844-text1-focus.png",
+      "bytes": 75099,
+      "sha256": "c0362c7a38705dadca2a596d3bd9a5f2f103f2cb4ea92774edd21931bbc96bf6"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/after/mobile-390/planner-servings-1440x1000-text1-focus.png",
+      "bytes": 163249,
+      "sha256": "9f54a8fd638c9740bd2633f24f52d70ef9dbfc078a30727a933cd788b5280360"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/after/mobile-390/saved-320x420-text2-focus.png",
+      "bytes": 28764,
+      "sha256": "33a52aafd96ca60b74f026b29f149e58c8bdac4486e6add58dadf77b896e1538"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/after/mobile-390/shopping-320x420-text2-focus.png",
+      "bytes": 24163,
+      "sha256": "2dd2b08f04aca0ce6fd713b3fc74cd4e2a485ea5667934fe555d47005c135043"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/after/mobile-390/shopping-name-320x420-text200-text2-focus.png",
+      "bytes": 24168,
+      "sha256": "e865b30d3509025df90c5ae5214d949f75bc3e0dd60945e5d3db8fd83602b9ca"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/after/mobile-390/shopping-quantity-390x844-text1-focus.png",
+      "bytes": 57831,
+      "sha256": "0ee9a71967896491e950cb905885519689a5dde46bba5ec99d5914f3277596ae"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/after/mobile-390/switch-off-390x844-text1-focus.png",
+      "bytes": 70626,
+      "sha256": "0085571a3005fb49d6bc483a96047271e0ac130c0038328907e8dc93b10b7ebc"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/after/mobile-390/switch-on-390x844-text1-focus.png",
+      "bytes": 75687,
+      "sha256": "43201cc92bab345ecd6dc92542c51678930dde9255a219886b77e277d3813493"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/baseline-c12/account-switch-off-focus.png",
+      "bytes": 149836,
+      "sha256": "1d8788c50c6ef0e0ee8dc09cc280a14ef38e539d449ff9fc97ded39d5e5e18a9"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/baseline-c12/assessment.json",
+      "bytes": 15641,
+      "sha256": "43c21a9057f3dbf78fa58419ca624276c65379dc1567c7fb28652a9960d4c470"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/baseline-c12/discovery-search-focus.png",
+      "bytes": 255886,
+      "sha256": "1e96c6a14c04cd4ead998a618dedb36425097c1fd6ebae3307f367dd73089011"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/baseline-c12/receipt.json",
+      "bytes": 8440,
+      "sha256": "b5bd50f35548fdde0c076926c1c4f54ec03a917c14c11228eefd6678ce2be6a3"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/baseline-c12/saved-search-focus.png",
+      "bytes": 100155,
+      "sha256": "0fb536595b384cb27b870ba8ec77f454edd1db230c6fddd09fdf199484eb03b0"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/baseline-c12/shopping-name-focus.png",
+      "bytes": 98669,
+      "sha256": "09ca58ddc09991f7b40a0723f3fdacc9996410fffdc35cf6bf2425c1532d45cc"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/baseline-c12/stock-focus.json",
+      "bytes": 6906,
+      "sha256": "fb0bfa528d126c59484a739b54a3d26f870a70fab65f4ad288852e3c85e4a0e0"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/baseline-c12/supplement.json",
+      "bytes": 47021,
+      "sha256": "95213e5f4078b32170c6ca6288c92481c5b644cec2e549b7a48d84faceb6ac2c"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/baseline-c13/assessment.json",
+      "bytes": 47105,
+      "sha256": "013aebde603b6acf6e887618512a793dfd811f1e8a0b9e6b294be5efedbe7977"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/baseline-c13/desktop-controls-contact.png",
+      "bytes": 722987,
+      "sha256": "f57eca576ae757d11ecb46769a7d7a88e88185a62cad7b2309125d670e0df65e"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/baseline-c13/failed-attempts.json",
+      "bytes": 7294,
+      "sha256": "047879031aa28a15dfaaa0d5956b5a53ef285ae968c02b612f2c8c8be0768f1d"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/baseline-c13/manual-review.json",
+      "bytes": 1171,
+      "sha256": "a8b4af371745e45f4f644656f0c775a4def8cdf524e6bd942d87f4c79200d6da"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/baseline-c13/mobile-controls-contact.png",
+      "bytes": 284064,
+      "sha256": "5961a7f2bbea0487fbcab33ef9b038147c186e9bba26eeb8061d07bf810afeb0"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/baseline-c13/receipt.json",
+      "bytes": 5940,
+      "sha256": "b4a68b2cd1f36e8ec6425d5dbe2ec2d1e6d874ae8aa7199ecb995faf7aca6caa"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/baseline-c13/source-review.json",
+      "bytes": 19196,
+      "sha256": "019567a4838ac4863141dc31821e7ceab171fc74140f4ed0377fd9a23e8e81f1"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/baseline-c13/supplementary-receipt.json",
+      "bytes": 1748,
+      "sha256": "39dd047adcb5fffe4b507489a985ce0fd138813642c57d677875b35e8a9f1943"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/baseline-c13/text200-controls-contact.png",
+      "bytes": 287358,
+      "sha256": "51d0ee887edca95acc109eee3c3e12a4e296b557f028eb01f45551119ac3a2de"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/execution/c12-after-1-receipt.json",
+      "bytes": 527,
+      "sha256": "52bf5c0136fb012c720010233298b3802e34aa8e46cb962131f0ed2864cb13d2"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/execution/c12-after-2-receipt.json",
+      "bytes": 527,
+      "sha256": "7904881c8819c45d54fc780186d2a88bb259744402e229ec39e4af3399ead5f8"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/execution/c12-after-3-receipt.json",
+      "bytes": 527,
+      "sha256": "72ec078696329abe7c855b1fe8a143ecbd451ce39d022673f44f85ed1851fca6"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/execution/c12-c13-final-1-receipt.json",
+      "bytes": 763,
+      "sha256": "c59185323039febf5b9f3de20b966f6efcfd9c90a807f24a646712565f437062"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/execution/evidence-audit.md",
+      "bytes": 9263,
+      "sha256": "f2b00de99a7debd3f5d1e472e18b6728da7cfb155f1854547308d98e633b0b9e"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/execution/frozen-styles.css",
+      "bytes": 12456,
+      "sha256": "129e6fcd738661a54a1fe501e3d0f044dc1565c93528be0e43a36573ba510a14"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/execution/frozen-test.ts",
+      "bytes": 21122,
+      "sha256": "e864f5b180e3a42004f3390a9729e5f9006bece192ee60b98e516d93044cb124"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/execution/independent-review.md",
+      "bytes": 6537,
+      "sha256": "0d908b37074f4fe1023baab4d302cbb8cac79992ad7b6c06a76a86aea8fd082e"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/execution/recertification-report.md",
+      "bytes": 9459,
+      "sha256": "3b13c5128aa3bb97f4c9fe3af15f946de4475f80be636efe02390861540d802a"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/execution/recertification-verification.json",
+      "bytes": 2218,
+      "sha256": "97b9bd4c32426fc37d6361f398e9f4afb7c32374e71df21e1ade4a71c021437f"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/execution/remaining-plan-audit.md",
+      "bytes": 12329,
+      "sha256": "e2c94a36739e9def4ba45e260abd779867d85a7c55e3189beffecff98cd62dfe"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/execution/selective-packet-audit.md",
+      "bytes": 4369,
+      "sha256": "3be724c792136849d1b7cbca4062355742f33b08e90d14ce11f2e7718c5b0e4b"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/execution/targeted-checks.json",
+      "bytes": 450,
+      "sha256": "583e1ad742b5f9cd3d99821793ced641373548d51864689d0c35144d9edc98ef"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/final-checks.json",
+      "bytes": 9319,
+      "sha256": "8310689433ba251a5d59cea4d962661fc1c162885fc040ca8d000fef9ee1e455"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/manifest.json",
+      "bytes": 118291,
+      "sha256": "8ad735feb8c7d8e80971a4ef544991c3a0b296503ff5a66914705bc1b1a3b90a"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/protected-main-audit.json",
+      "bytes": 316632,
+      "sha256": "ecdb6b1795b86be02ae1f1ba4d90311c57a360c63bcd3b33910f0e3a0a7dfca2"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/recertify-a/application-error-enlarged-320.png",
+      "bytes": 92259,
+      "sha256": "7e16466e342254089a3cbbecff9e38c39f03d206c7abd217898c9b3407eb1cfe"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/recertify-a/application-render-error.png",
+      "bytes": 75967,
+      "sha256": "42d9f947f51872ea3591a5b153935a02f7d4828452f38162ca837a1b81fb0d2b"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/recertify-a/checks.json",
+      "bytes": 23173,
+      "sha256": "ba6fb496949310110f941d2725721103ae8ba03ade1b1e6a2f60c283285ba066"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/recertify-a/detail-enlarged-320.png",
+      "bytes": 544124,
+      "sha256": "2a822911cf096d8ec0accbc150e388f6639a1f91869c68ebae60bb2e99e495b8"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/recertify-a/edit-enlarged-320.png",
+      "bytes": 612678,
+      "sha256": "0e920052cc4f7ba2864fe0c4a3e47914cfd45dd6e8e1fffb282996cd4a1eb63a"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/recertify-a/manual-add-390.png",
+      "bytes": 106644,
+      "sha256": "925670fcf5bdd7b0fca0828cf2ed082979ec2eb5cada4864bb6e591ed8f1cb18"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/recertify-a/manual-add-readback.json",
+      "bytes": 700,
+      "sha256": "13043d6f83cd4ea138af6640f4cd5b55ad5798aabc89305e16e9a0a64f5a7bd8"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/recertify-a/manual-add-saved-390.png",
+      "bytes": 121671,
+      "sha256": "5d11c8fd296ea4c6c66ec74dd91d3ae9b723e684fce5282ffb7ca7e5245b5358"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/recertify-a/metadata-save-error.png",
+      "bytes": 319418,
+      "sha256": "578feb015f3fcb2c3baa736f4c233798d8a6cc6815ec08563ddc3b7e132153ae"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/recertify-a/receipt.json",
+      "bytes": 11167,
+      "sha256": "aa7c53ca504338892d74fdb7fb402ec5b93692a96f708c06bfe379e2ba3aae77"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/recertify-b/observations.json",
+      "bytes": 37781,
+      "sha256": "6b9b342bb932d3b4659685beacd7cbd58849a88809013f4176168d89ff59d1ec"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/recertify-b/photo-confirmed-390-viewport.png",
+      "bytes": 79514,
+      "sha256": "75b7ddf41fc4d04a4d66d68962254611f0a90a62b1babe2aa0730274c9e286ec"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/recertify-b/photo-edited-390-viewport.png",
+      "bytes": 52113,
+      "sha256": "5802c0696f3795e77bd4da80d9e81f04f77faaf125fb4875c1abab4ff709d774"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/recertify-b/photo-server-readback.json",
+      "bytes": 8255,
+      "sha256": "7c090753cec5ff7b482307eaf9de359e5fe1e204ad6fb8eef8ae29b648e98eef"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/recertify-b/photo-text-enlarged-320.png",
+      "bytes": 403642,
+      "sha256": "5f04d4d602a42f035cf36ef39f94f1af0a996148b9b09fd05ef2929156f7a91e"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/recertify-b/receipt-confirmed-390-viewport.png",
+      "bytes": 71122,
+      "sha256": "876b15d331ab2264a2cdfbb7fa87061773207c10dfb996c603ea2fac9fc98bf9"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/recertify-b/receipt-edited-390-viewport.png",
+      "bytes": 63136,
+      "sha256": "c7912b77a17e036fe266d3e99cbeb130b2ca865fade4bb0004a8d7b7bbc2fdd6"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/recertify-b/receipt-keyboard-height-390-viewport.png",
+      "bytes": 37668,
+      "sha256": "cba4cc7e25bfd56c4bd76bb703de9cd4dfc1075eec3d02df51c89997babb03ed"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/recertify-b/receipt-server-readback.json",
+      "bytes": 8417,
+      "sha256": "aab455f76c01d6839a923bd13480aa70494eea754785a7ee8718ce7cb9bb6c85"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/recertify-b/receipt.json",
+      "bytes": 11108,
+      "sha256": "a63a848670300d7193ab023d2a177bae0f1ffc38f0ef4b06f847636ddd89f384"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/recertify-b/scan-camera-390-viewport.png",
+      "bytes": 67300,
+      "sha256": "3b2becf1d4b0c981a3c5819c5588714c09dc4bd06a56be189a6495327d6e8550"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/recovery-verification.json",
+      "bytes": 854,
+      "sha256": "23ba29c9921c6afdf21289679470f61457d1e8f19e27c9c2ef996853adee71ed"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/evidence/control-contrast/unchanged-main-manifest.json",
+      "bytes": 1423331,
+      "sha256": "ae786fb6e9a2cd1b61c39221536e528ca9d71bad706269817a4970a8319bddc2"
+    }
+  ],
+  "checkpoint_documents": [
+    {
+      "path": "docs/ai/CURRENT_STATE.md",
+      "bytes": 825472,
+      "sha256": "7ab5030e58faa2ab7ddac2aba5bddf5698b86bd6facb2d26d7e4a9030d091659"
+    },
+    {
+      "path": "TASK_BOARD.md",
+      "bytes": 335384,
+      "sha256": "94f51be31523251096195186c5ef9636c6593137a374dea84b7d58b60cf6ef14"
+    },
+    {
+      "path": "HANDOFF.md",
+      "bytes": 137887,
+      "sha256": "58c2faed355bb3c9652f28719432b8d47dc4838535feb57c2d55ef78f140fec3"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/CHECKPOINT.md",
+      "bytes": 47574,
+      "sha256": "a96a3ae721be0473df87fa02285af718dc87e1fec301b06af107bb5a80a0bac1"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/QA_FINAL_MATRIX.md",
+      "bytes": 34104,
+      "sha256": "d766b21720e0e713bf47d2eb05dd3e86777ebe2448217f770f5dd560194401e3"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/PR_AND_RELEASE_READINESS.md",
+      "bytes": 44948,
+      "sha256": "c261a1a550208a1cf96af394683e32fd83bc2c2b8c188afcbf71298f41ddc504"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/TEST_BASELINES.md",
+      "bytes": 102755,
+      "sha256": "f91bc8d72ca7657fe54ca2522c2f862e76e1567f9b3f886191f54199596f3191"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/SOURCE_IDENTITY.md",
+      "bytes": 26787,
+      "sha256": "fddb09f8935fc5293b7814a3b75e59f6d38f1edd80a0f332ff2d5911a416c1f7"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/SCREEN_PROGRESS.csv",
+      "bytes": 41814,
+      "sha256": "1226426c46662bce9319e8cebc8e8a6990c72f36576cb38a21dff1caafa0b238"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/FILE_DECISIONS.csv",
+      "bytes": 52392,
+      "sha256": "7aecc36b9c0144386064a2047c218f4653aafc67b66125efdfb6ffbe77cf0821"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/UI_C12_C13_CONTROL_CONTRAST.md",
+      "bytes": 9182,
+      "sha256": "587ac1a958c9ac506b9db40c72cd1430da76f115c102b87c9e527a63a4161a43"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/FRONTEND_PLAN_STATUS.md",
+      "bytes": 4660,
+      "sha256": "8d8167f2b7fb41b5996b9bf716f1edd67d5ca8cc92eb3424e4c5c8ec0a30eef7"
+    }
+  ]
+}

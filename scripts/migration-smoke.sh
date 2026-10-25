@@ -567,5 +567,61 @@ INSERT INTO assert_zero SELECT COUNT(*) FROM checkout_admissions;
 INSERT INTO assert_zero SELECT COUNT(*) FROM payment_reconciliation_records;
 INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_foreign_key_check;
 INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_integrity_check WHERE integrity_check <> 'ok';
+-- CAT01 expands nullable metadata without inferring intent or rewriting evidence.
+CREATE TEMP TABLE smoke_pre_category_lots AS SELECT id, legacy_item_id, household_id, ingredient_id,
+ raw_name, quantity_milli, canonical_unit, storage_location_id, state, purchased_at, opened_at,
+ expiry_at, estimated_expiry_at, expiry_kind, source_type, source_id, version, created_at, updated_at
+ FROM inventory_lots;
+CREATE TEMP TABLE smoke_pre_category_commands AS SELECT * FROM inventory_commands;
+CREATE TEMP TABLE smoke_pre_category_events AS SELECT * FROM inventory_events;
+CREATE TEMP TABLE smoke_pre_category_adoptions AS SELECT * FROM inventory_adoption_receipts;
+.read migrations/0044_inventory_display_category.sql
+INSERT INTO assert_one SELECT COUNT(*) FROM pragma_table_info('inventory_lots') WHERE name = 'display_category';
+INSERT INTO assert_one SELECT COUNT(*) = 5 FROM sqlite_master WHERE type = 'trigger' AND name IN
+ ('trg_inventory_lots_display_category_insert','trg_inventory_lots_display_category_update',
+  'trg_inventory_commands_category_authority_insert','trg_inventory_events_category_authority_insert',
+  'trg_inventory_adoption_category_authority_insert');
+INSERT INTO assert_zero SELECT COUNT(*) FROM inventory_lots WHERE display_category IS NOT NULL;
+INSERT INTO assert_zero SELECT COUNT(*) FROM (SELECT * FROM smoke_pre_category_lots EXCEPT
+ SELECT id, legacy_item_id, household_id, ingredient_id, raw_name, quantity_milli, canonical_unit,
+ storage_location_id, state, purchased_at, opened_at, expiry_at, estimated_expiry_at, expiry_kind,
+ source_type, source_id, version, created_at, updated_at FROM inventory_lots);
+INSERT INTO assert_zero SELECT COUNT(*) FROM (SELECT * FROM inventory_commands EXCEPT SELECT * FROM smoke_pre_category_commands);
+INSERT INTO assert_zero SELECT COUNT(*) FROM (SELECT * FROM smoke_pre_category_commands EXCEPT SELECT * FROM inventory_commands);
+INSERT INTO assert_zero SELECT COUNT(*) FROM (SELECT * FROM inventory_events EXCEPT SELECT * FROM smoke_pre_category_events);
+INSERT INTO assert_zero SELECT COUNT(*) FROM (SELECT * FROM smoke_pre_category_events EXCEPT SELECT * FROM inventory_events);
+INSERT INTO assert_zero SELECT COUNT(*) FROM (SELECT * FROM inventory_adoption_receipts EXCEPT SELECT * FROM smoke_pre_category_adoptions);
+INSERT INTO assert_zero SELECT COUNT(*) FROM (SELECT * FROM smoke_pre_category_adoptions EXCEPT SELECT * FROM inventory_adoption_receipts);
+INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_foreign_key_check;
+INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_integrity_check WHERE integrity_check <> 'ok';
+-- WKD02 adds acceptance tombstones without rewriting existing Week or stock rows.
+CREATE TEMP TABLE smoke_pre_swap_plans AS SELECT * FROM meal_plans;
+CREATE TEMP TABLE smoke_pre_swap_slots AS SELECT * FROM meal_plan_slots;
+CREATE TEMP TABLE smoke_pre_swap_lots AS SELECT * FROM inventory_lots;
+CREATE TEMP TABLE smoke_pre_swap_commands AS SELECT * FROM inventory_commands;
+CREATE TEMP TABLE smoke_pre_swap_events AS SELECT * FROM inventory_events;
+CREATE TEMP TABLE smoke_pre_swap_households AS SELECT * FROM households;
+.read migrations/0045_week_swap_receipts.sql
+INSERT INTO assert_one SELECT COUNT(*) FROM sqlite_master WHERE type = 'table' AND name = 'week_swap_receipts';
+INSERT INTO assert_one SELECT COUNT(*) = 3 FROM sqlite_master WHERE type = 'trigger' AND tbl_name = 'week_swap_receipts';
+INSERT INTO assert_zero SELECT COUNT(*) FROM week_swap_receipts;
+INSERT INTO assert_zero SELECT COUNT(*) FROM (SELECT * FROM smoke_pre_swap_plans EXCEPT SELECT * FROM meal_plans);
+INSERT INTO assert_zero SELECT COUNT(*) FROM (SELECT * FROM meal_plans EXCEPT SELECT * FROM smoke_pre_swap_plans);
+INSERT INTO assert_zero SELECT COUNT(*) FROM (SELECT * FROM smoke_pre_swap_slots EXCEPT SELECT * FROM meal_plan_slots);
+INSERT INTO assert_zero SELECT COUNT(*) FROM (SELECT * FROM meal_plan_slots EXCEPT SELECT * FROM smoke_pre_swap_slots);
+INSERT INTO assert_zero SELECT COUNT(*) FROM (SELECT * FROM smoke_pre_swap_lots EXCEPT SELECT * FROM inventory_lots);
+INSERT INTO assert_zero SELECT COUNT(*) FROM (SELECT * FROM inventory_lots EXCEPT SELECT * FROM smoke_pre_swap_lots);
+INSERT INTO assert_zero SELECT COUNT(*) FROM (SELECT * FROM smoke_pre_swap_commands EXCEPT SELECT * FROM inventory_commands);
+INSERT INTO assert_zero SELECT COUNT(*) FROM (SELECT * FROM inventory_commands EXCEPT SELECT * FROM smoke_pre_swap_commands);
+INSERT INTO assert_zero SELECT COUNT(*) FROM (SELECT * FROM smoke_pre_swap_events EXCEPT SELECT * FROM inventory_events);
+INSERT INTO assert_zero SELECT COUNT(*) FROM (SELECT * FROM inventory_events EXCEPT SELECT * FROM smoke_pre_swap_events);
+INSERT INTO assert_zero SELECT COUNT(*) FROM (SELECT * FROM smoke_pre_swap_households EXCEPT SELECT * FROM households);
+INSERT INTO assert_zero SELECT COUNT(*) FROM (SELECT * FROM households EXCEPT SELECT * FROM smoke_pre_swap_households);
+INSERT INTO week_swap_receipts(id,household_id,actor_id,plan_id,meal_id,client_key,fingerprint,created_at)
+VALUES ('migration_smoke_swap','demo_household_01','demo_user_01','removed-plan','replaced-slot','smoke-swap-key','recipe-request-token','2030-01-02T00:00:00Z');
+INSERT INTO assert_one SELECT COUNT(*) FROM week_swap_receipts;
+INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_foreign_key_list('week_swap_receipts') WHERE "table" IN ('meal_plans','meal_plan_slots');
+INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_foreign_key_check;
+INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_integrity_check WHERE integrity_check <> 'ok';
 SELECT 'migration-smoke=ok';
 SQL

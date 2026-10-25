@@ -41,3 +41,10 @@ independent. No remote DB/media/push/PR/merge/deploy. Domain catalog lazy fallba
 hosted cache/preload/CWV and production auth require distinct delivery packets.
 Device/Safari/nativezoom/screenreader/virtualkeyboard and owner usability/brand
 approval remain separate. Successful tests do not complete the entire rebuild.
+
+
+## Takolio local continuation result - 2026-10-24 JST
+
+Implementation `6bf58f3a0d7c0909b777958fa9cdd5fda4426ddc`; ADR-063. Current compact short-screen navigation already uses document flow; historical237px obstruction does not reproduce. Discovery/detail pairedOFF2/2 and pairedON2/2 pass; primary content now stays opacity1 normal/reduced. Home actual onboarding/pairedON generation/readback2/2 pass. Five roots retain full labels/current state/44px targets; Scan/Back and detail arrow tabs pass. Synthetic text200 is not native zoom; short-screen navigation remains at document end. ADR058 already belongs to family meals; ADR063 supersedes the old packet number suggestion.
+
+Lint/typecheck/migrations/default+actual pairedON builds and274focused tests PASS. Full suite9161/9169 with5inherited path CLI failures plus3timing failures; unchanged isolated3file/46test rerun PASS. Report/evidence: docs/takolio-v2/takeover/UI_C11_WEEK_HOME_READABILITY.md and evidence/readability. All historical results remain intact. Control-state contrast,owner/devices/Safari/screenreader/hosted review remain separate; no production actions.

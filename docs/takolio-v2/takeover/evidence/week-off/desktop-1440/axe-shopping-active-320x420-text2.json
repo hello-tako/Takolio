@@ -1,0 +1,63 @@
+{
+  "state": "shopping-active",
+  "viewport": {
+    "width": 320,
+    "height": 420
+  },
+  "textScale": 2,
+  "metrics": {
+    "innerWidth": 320,
+    "scrollWidth": 320,
+    "textOutsideViewport": [],
+    "brokenImages": []
+  },
+  "targets": [
+    {
+      "text": "Tất cả (30)",
+      "box": {
+        "x": 14,
+        "y": 144.78125,
+        "width": 108.046875,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Khác (30)",
+      "box": {
+        "x": 130.046875,
+        "y": 144.78125,
+        "width": 103.03125,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Nhập 0 nguyên liệu đã chọn vào tủ",
+      "box": {
+        "x": 36,
+        "y": 135.484375,
+        "width": 252,
+        "height": 68
+      },
+      "fits": true
+    },
+    {
+      "text": "Về danh sách",
+      "box": {
+        "x": 36,
+        "y": 215.484375,
+        "width": 126.140625,
+        "height": 48
+      },
+      "fits": true
+    }
+  ],
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ]
+}

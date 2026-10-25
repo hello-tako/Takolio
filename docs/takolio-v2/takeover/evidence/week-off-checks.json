@@ -1,0 +1,346 @@
+{
+  "base_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "implementation_commit": "c91e0747084013e66f1128fafa168984cf46e3bb",
+  "checkpoint_kind": "test-only real paired-flags-OFF Week compatibility",
+  "production_actions": false,
+  "environment": "Isolated local preview; real Worker with in-memory SQLite; synthetic local login/data reset; external API fetch disabled; service workers blocked; reduced-motion Chromium; root font scaling. Static/unit/full-suite gates recorded Node v24.16.0; browser launcher Node version not independently recorded.",
+  "source_sha256": {
+    "tests/e2e/t17-ui/takolio-week-flag-off-real.e2e.ts": "28ed4a0e6b3841300fcdfef172cfc5e9c8b982f381a71a70a944294a50eaceb4",
+    "src/web/App.tsx": "abc2b48d2f00a20db054c38082280a2b56059078b488cdbc87ee70120284ebb4",
+    "src/web/pages/WeekDashboardPage.tsx": "20d55bc5262ab8dc86cecbf9d5b1dfe988a354f10db4c10df3a78eb6dfd4fde9",
+    "src/web/pages/WeekSetupPage.tsx": "6fe4fd63d160e639a7e551ad1c61515ba84239370a56556e0cc807dadf9f2d54",
+    "src/web/pages/WeekGeneratingPage.tsx": "b0c051adb047266b6b314c43cf780d9626a97e760608596e6feeb263133a5b29",
+    "src/web/pages/MealDetailPage.tsx": "13c422c3a7d028a1a018474285ad2b9c6d664d816ff1fbfe522653162165437a",
+    "src/web/pages/WeekShoppingPage.tsx": "dd82413c31c8b64777a045095fb6692a2198462d86f4ad44689667fdcda40e52",
+    "src/web/pages/WeekSettingsPage.tsx": "73a2c45fccefde9613ad260645c54c5a1a422c75f7edc14311dd6a15101dfe86",
+    "src/web/services/week.ts": "f1beee446f1266d5896e19623f5d56cbcc40605653400ddac90b11fe28baf6ec",
+    "src/web/stores/useWeekStore.ts": "60cf69c080ea365700547910df3bff36095f63c41c6e8aa1f24b7341907ce131",
+    "src/web/styles/kitchen-week.css": "f889d9a79b67f265bfa64d5e76c7f8f48c58e8c37ae14b626cfde31fe2f692ea",
+    "src/web/features/planner/feature.ts": "996ccb90d67e08bd51391f985a0e23d3716e034e7280ffdaa78c061dd961db93",
+    "src/web/features/planner/composition.ts": "b8e2516bde34180df18e3beb9a2d94e0c8ab7bd0f9c9cb124ecc397b87bf5c6e",
+    "playwright.t17.config.ts": "6a108e172e79a3a47921cf51ef6c31242678848e3ab12d81c6013254463ca98b",
+    "scripts/security-preview.mjs": "a94681507089253650fc6e5371e9188edf459b6a5fcd69e085ca179cc659b528",
+    "tests/e2e/t13b/fixtures.ts": "708e4613f60e7319363abc4fc1dadd42d830580b5da2238a2b7af2e734834847",
+    "tests/e2e/t17-ui/t18c-week-compatibility.e2e.ts": "fde6e55513e32a1e0801a983831b39989ecc2929b48e0db54bbb008c51f7b17e",
+    "src/web/features/week/MealCard.tsx": "817c5aaf5d0d9604fba266b6843b16439a75b5e3dc66cacbc06ff250ee057c32",
+    "src/web/features/week/MealSwapSheet.tsx": "b21c29f165ecc513a215c75382b21cdc72da6438c20fd44109e8cef8487ed91f",
+    "src/web/features/week/WeekExportModal.tsx": "dba3913741851b362360958c55dd14e38fef56749a3a34d33801152cd22d9969",
+    "src/web/features/week/WeekSetupChoices.tsx": "922f5eb920fa7a2f756a59ab48bd607e072ca6c87b543282fa2d43463d6413fc",
+    "src/web/features/week/WeekSummaryCards.tsx": "48ea6198033b9c0bf314275f41f0f0e81ebabb0b8c7acf524f9558a51a3fae9d",
+    "src/web/features/week/WeekWorkspace.tsx": "7bb938efde578c50827d550497948746ed96eb02513f59ece1f852f8b3cb4095"
+  },
+  "protected_sources_byte_identical_to_main": [
+    "src/web/App.tsx",
+    "src/web/pages/WeekDashboardPage.tsx",
+    "src/web/pages/WeekSetupPage.tsx",
+    "src/web/pages/WeekGeneratingPage.tsx",
+    "src/web/pages/MealDetailPage.tsx",
+    "src/web/pages/WeekShoppingPage.tsx",
+    "src/web/pages/WeekSettingsPage.tsx",
+    "src/web/services/week.ts",
+    "src/web/stores/useWeekStore.ts",
+    "src/web/styles/kitchen-week.css",
+    "src/web/features/planner/feature.ts",
+    "src/web/features/planner/composition.ts",
+    "playwright.t17.config.ts",
+    "scripts/security-preview.mjs",
+    "tests/e2e/t13b/fixtures.ts",
+    "tests/e2e/t17-ui/t18c-week-compatibility.e2e.ts",
+    "src/web/features/week/MealCard.tsx",
+    "src/web/features/week/MealSwapSheet.tsx",
+    "src/web/features/week/WeekExportModal.tsx",
+    "src/web/features/week/WeekSetupChoices.tsx",
+    "src/web/features/week/WeekSummaryCards.tsx",
+    "src/web/features/week/WeekWorkspace.tsx"
+  ],
+  "all_existing_sources_unchanged_from_implementation_parent": true,
+  "checks": [
+    {
+      "name": "targeted-eslint",
+      "command": "pnpm exec eslint tests/e2e/t17-ui/takolio-week-flag-off-real.e2e.ts",
+      "PATH_prefix": "/opt/homebrew/opt/node@24/bin",
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/",
+      "node": "v24.16.0",
+      "exit_code": 0,
+      "seconds": 1.69,
+      "outcome": "PASS",
+      "local_ignored_log": ".artifacts/takeover/week-off/targeted-eslint.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "week-regressions",
+      "command": "pnpm exec vitest run tests/unit/ui10-week-presentation.test.tsx tests/unit/ui10-week-routes.test.tsx tests/unit/week-query-sync.test.ts tests/unit/week-route-serialization.test.ts tests/unit/week-shopping-route-policy.test.ts tests/integration/week-core-flow.test.ts tests/integration/backend-week-read-contract.test.ts",
+      "PATH_prefix": "/opt/homebrew/opt/node@24/bin",
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/",
+      "node": "v24.16.0",
+      "exit_code": 0,
+      "seconds": 4.8,
+      "outcome": "PASS; 7 files/131 tests; 3.91s (transform 7.19s, setup 190ms, import 8.79s, tests 5.46s, environment 2.04s)",
+      "local_ignored_log": ".artifacts/takeover/week-off/week-regressions.log",
+      "log_bytes": 259,
+      "log_sha256": "6644ea7d748abf7c4a81533dc748021e4cb86fe03d6f563e9330b1e8a413cd43"
+    },
+    {
+      "name": "lint",
+      "command": "pnpm lint",
+      "PATH_prefix": "/opt/homebrew/opt/node@24/bin",
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/",
+      "node": "v24.16.0",
+      "exit_code": 0,
+      "seconds": 7.76,
+      "outcome": "PASS",
+      "local_ignored_log": ".artifacts/takeover/week-off/lint.log",
+      "log_bytes": 99,
+      "log_sha256": "3f2044fca43a5e60905becf2ebfc3a21ddd85976975841aa1e16bc87b0f40a6d"
+    },
+    {
+      "name": "typecheck",
+      "command": "pnpm typecheck",
+      "PATH_prefix": "/opt/homebrew/opt/node@24/bin",
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/",
+      "node": "v24.16.0",
+      "exit_code": 0,
+      "seconds": 22.22,
+      "outcome": "PASS",
+      "local_ignored_log": ".artifacts/takeover/week-off/typecheck.log",
+      "log_bytes": 165,
+      "log_sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e"
+    },
+    {
+      "name": "migrations",
+      "command": "pnpm check:migrations",
+      "PATH_prefix": "/opt/homebrew/opt/node@24/bin",
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/",
+      "node": "v24.16.0",
+      "exit_code": 0,
+      "seconds": 0.74,
+      "outcome": "PASS",
+      "local_ignored_log": ".artifacts/takeover/week-off/migrations.log",
+      "log_bytes": 297,
+      "log_sha256": "9616315a9fcbfd77c67784703a16384419539e6a68ccd2838dda07239de25464"
+    },
+    {
+      "name": "build",
+      "command": "pnpm build",
+      "PATH_prefix": "/opt/homebrew/opt/node@24/bin",
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/",
+      "node": "v24.16.0",
+      "exit_code": 0,
+      "seconds": 13.06,
+      "outcome": "PASS",
+      "local_ignored_log": ".artifacts/takeover/week-off/build.log",
+      "log_bytes": 10008,
+      "log_sha256": "e93a1a8a5c75a35a704d88373a32c09f69090afb9541450c724bfee4c7402c6f"
+    },
+    {
+      "name": "paired-build",
+      "command": "VITE_FF_MEAL_PLANNER_V2=true VITE_FF_MEAL_COMPOSITION_V2=true pnpm build",
+      "PATH_prefix": "/opt/homebrew/opt/node@24/bin",
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/",
+      "node": "v24.16.0",
+      "exit_code": 0,
+      "seconds": 12.96,
+      "outcome": "PASS_DEFAULT_BUILD_ONLY; VITE_FF_MEAL_PLANNER_V2/VITE_FF_MEAL_COMPOSITION_V2 are ineffective; not paired-ON evidence; superseded by final-paired-build",
+      "local_ignored_log": ".artifacts/takeover/week-off/paired-build.log",
+      "log_bytes": 10008,
+      "log_sha256": "d55afc04b13212b436bd188ef9a0914c09da3ae7220c3167ea7111063549588e"
+    },
+    {
+      "name": "audit",
+      "command": "pnpm audit --json",
+      "PATH_prefix": "/opt/homebrew/opt/node@24/bin",
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/",
+      "node": "v24.16.0",
+      "exit_code": 1,
+      "seconds": 0.73,
+      "outcome": "OPEN_INHERITED; 1 low/6 moderate/1 high including Vite GHSA-587h-7wmj-h5pm; dependencies unchanged",
+      "local_ignored_log": ".artifacts/takeover/week-off/audit.log",
+      "log_bytes": 43734,
+      "log_sha256": "3256cc0c6e0545751f2cfdb3223b90a27a32043a364bb025bc5047465d90103f"
+    },
+    {
+      "name": "full-suite-node24",
+      "command": "pnpm test",
+      "PATH_prefix": "/opt/homebrew/opt/node@24/bin",
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/",
+      "node": "v24.16.0",
+      "exit_code": 1,
+      "seconds": 235.01,
+      "outcome": "PARTIAL; 410/412 files; 9164/9169 tests; five inherited encoded-space CLI failures; 234.01s (transform 18.10s, setup 5.26s, import 108.95s, tests 1399.43s, environment 30.10s)",
+      "local_ignored_log": ".artifacts/takeover/week-off/full-suite-node24.log",
+      "log_bytes": 17965,
+      "log_sha256": "bec566b1b1279f3602d0ea21bc452234cc6256452baa10b0f0586a6a8257dcfb"
+    },
+    {
+      "name": "final-targeted-eslint",
+      "command": "pnpm exec eslint tests/e2e/t17-ui/takolio-week-flag-off-real.e2e.ts",
+      "node": "v24.16.0",
+      "PATH_prefix": "/opt/homebrew/opt/node@24/bin",
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/",
+      "exit_code": 0,
+      "seconds": 1.46,
+      "outcome": "PASS",
+      "local_ignored_log": ".artifacts/takeover/week-off/final-targeted-eslint.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "final-lint",
+      "command": "pnpm lint",
+      "node": "v24.16.0",
+      "PATH_prefix": "/opt/homebrew/opt/node@24/bin",
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/",
+      "exit_code": 0,
+      "seconds": 8.55,
+      "outcome": "PASS",
+      "local_ignored_log": ".artifacts/takeover/week-off/final-lint.log",
+      "log_bytes": 99,
+      "log_sha256": "3f2044fca43a5e60905becf2ebfc3a21ddd85976975841aa1e16bc87b0f40a6d"
+    },
+    {
+      "name": "final-typecheck",
+      "command": "pnpm typecheck",
+      "node": "v24.16.0",
+      "PATH_prefix": "/opt/homebrew/opt/node@24/bin",
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/",
+      "exit_code": 0,
+      "seconds": 18.89,
+      "outcome": "PASS",
+      "local_ignored_log": ".artifacts/takeover/week-off/final-typecheck.log",
+      "log_bytes": 165,
+      "log_sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e"
+    },
+    {
+      "name": "final-paired-build",
+      "command": "VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build",
+      "node": "v24.16.0",
+      "PATH_prefix": "/opt/homebrew/opt/node@24/bin",
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/",
+      "exit_code": 0,
+      "seconds": 11.23,
+      "outcome": "PASS",
+      "local_ignored_log": ".artifacts/takeover/week-off/final-paired-build.log",
+      "log_bytes": 10008,
+      "log_sha256": "4fe96ec43d81cedc4a986b9d88ec02409c8028940662f719699e87c47f09874a"
+    },
+    {
+      "name": "final-remote-main",
+      "command": "git ls-remote https://github.com/hello-tako/Takolio.git refs/heads/main",
+      "node": "v24.16.0",
+      "PATH_prefix": "/opt/homebrew/opt/node@24/bin",
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/",
+      "exit_code": 0,
+      "seconds": 0.74,
+      "outcome": "PASS",
+      "local_ignored_log": ".artifacts/takeover/week-off/final-remote-main.log",
+      "log_bytes": 57,
+      "log_sha256": "74b0b5609784df7a5fddf1241a9179b9e62a61f3d3671f7fc0a075210071e212"
+    },
+    {
+      "name": "browser-real-off",
+      "command": "PORT=3296 PREVIEW_API_PORT=8916 PREVIEW_MEAL_PLANNER_ENABLED=false PREVIEW_MEAL_COMPOSITION_V2=false pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-week-flag-off-real.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/week-off/final3",
+      "command_provenance": "Reproduction command reconstructed from run config/log and retained task record; original complete launcher environment/wall time was not recorded.",
+      "exit_code": 0,
+      "reported_duration": "1.4m",
+      "outcome": "PASS; 2 contexts; 72 captures; 512 measured controls; 72 zero-violation axe reports with incomplete contrast",
+      "local_ignored_log": ".artifacts/takeover/week-off/final3-browser.log",
+      "log_bytes": 19513,
+      "log_sha256": "470cda27e62a748dade07cbaf1751c1c192f884041811a360641d939a529e1cd"
+    },
+    {
+      "name": "existing-week-compatibility",
+      "command": "pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/t18c-week-compatibility.e2e.ts --project=mobile-390 --project=desktop-1440",
+      "command_provenance": "Test/project selection verified from log; preview launcher port/environment and wall time not separately recorded. Existing test intercepts the feature module.",
+      "exit_code": 0,
+      "reported_duration": "9.3s",
+      "outcome": "PASS; 2 tests; existing synthetic feature-module setup compatibility, separate from actual OFF test",
+      "local_ignored_log": ".artifacts/takeover/week-off/existing.log",
+      "log_bytes": 2051,
+      "log_sha256": "7fbe0ab7ebbd3c901559f076b8e2bd3c69211c04d9e91e6ab92c4efc4805c9e9"
+    },
+    {
+      "name": "default-env-guard",
+      "command": "PORT=3297 PREVIEW_API_PORT=8917 pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-week-flag-off-real.e2e.ts --project=mobile-390 --project=desktop-1440",
+      "command_provenance": "Reproduction selection/ports from retained record; OFF variables absent; no browser behavior pass claimed.",
+      "exit_code": 0,
+      "outcome": "PASS_GUARD_ONLY; 2 skipped; both actual OFF environment variables required",
+      "local_ignored_log": ".artifacts/takeover/week-off/default-guard.log",
+      "log_bytes": 1049,
+      "log_sha256": "a8efff7a2787b990df0f53e7a92758514097a776aeaf2c0ac51d5f8f3f2be307"
+    }
+  ],
+  "retained_attempts": [
+    {
+      "name": "initial",
+      "outcome": "1 failed/1 passed; initial harness focus-return assertion after capture blurred focus; harness corrected; not a runtime-source defect",
+      "local_ignored_log": ".artifacts/takeover/week-off/initial.log",
+      "log_bytes": 21052,
+      "log_sha256": "52b602d47495ecb9aac1ebbd53a97c4de366a4e118f5ffd8999035895731e000"
+    },
+    {
+      "name": "final-browser",
+      "outcome": "Interrupted/incomplete; test source reloaded during execution; no completed suite claim",
+      "local_ignored_log": ".artifacts/takeover/week-off/final-browser.log",
+      "log_bytes": 8896,
+      "log_sha256": "e6eb418ffbaaa039a69010f79011781e76f5f02be4e94cf540b69e2a30b2f8fb"
+    },
+    {
+      "name": "final2-browser",
+      "outcome": "2 failed; empty preview entry after Vite 504 Outdated Optimize Dep during concurrent Vite activity; transient environment diagnosis, no application regression claimed",
+      "local_ignored_log": ".artifacts/takeover/week-off/final2-browser.log",
+      "log_bytes": 7301,
+      "log_sha256": "1ec12bc1e1e7a9e83b366465edbacd30649a77591a6b66a44aebb84a572256bc"
+    },
+    {
+      "name": "typecheck-initial",
+      "outcome": "Invocation only; no completed result",
+      "local_ignored_log": ".artifacts/takeover/week-off/typecheck-initial.log",
+      "log_bytes": 165,
+      "log_sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e"
+    },
+    {
+      "name": "paired-build-correct-flags",
+      "outcome": "Supplementary correct-flags paired build succeeded; final-paired-build is the timed final source gate",
+      "local_ignored_log": ".artifacts/takeover/week-off/paired-build-correct-flags.log",
+      "log_bytes": 10008,
+      "log_sha256": "fabc7eabda8e5668cfa6cbb8e55b96ea7612437438ee15934b002896b47bb486"
+    },
+    {
+      "name": "targeted-eslint-recheck",
+      "outcome": "Supplementary targeted lint output; final-targeted-eslint is authoritative",
+      "local_ignored_log": ".artifacts/takeover/week-off/targeted-eslint-recheck.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "harness_initial": {
+    "path": ".artifacts/takeover/week-off/harness-initial.ts",
+    "bytes": 14228,
+    "sha256": "ab70eb73d0e002a0e660cb036a7431bf6f70c217425f637fe2b7b19bd0254a31"
+  },
+  "harness_final": {
+    "path": ".artifacts/takeover/week-off/harness-final.ts",
+    "bytes": 14421,
+    "sha256": "28ed4a0e6b3841300fcdfef172cfc5e9c8b982f381a71a70a944294a50eaceb4"
+  },
+  "retained_artifacts_binding": {
+    "path": ".artifacts/takeover/week-off/retained-artifacts-binding.json",
+    "bytes": 56161,
+    "sha256": "8fef29dfa1b99e84b01b1b91f48405e0b21f90c0b19b3652f955bdcb5c07bc55",
+    "entries": 213
+  },
+  "input_receipts": [
+    {
+      "path": ".artifacts/takeover/week-off/check-results.json",
+      "bytes": 2753,
+      "sha256": "222be197266f8411ff845e0a27d1973174ae457feda72435569eb22dd0960837"
+    },
+    {
+      "path": ".artifacts/takeover/week-off/final-gates.json",
+      "bytes": 1501,
+      "sha256": "b1fcee3e95d2cc37310fe6d24aad4256b6aa33fd8e5b45ad5f569afeac364a9f"
+    }
+  ],
+  "limits": "Bounded generation/read/session-draft test only; no stock import, actual swap mutation, successful clipboard/native share, Week offline durability, full Tab traversal, native zoom, physical device, screen-reader, performance, live-provider or production certification. All 72 contrast reports incomplete. Held generation delays transport only; actual Worker creates plan after release. Existing ON evidence retained separately. No replacement asset justified."
+}

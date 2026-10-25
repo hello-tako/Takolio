@@ -1,0 +1,993 @@
+{
+  "allFiveKeyboardChoices": true,
+  "realLocalStorageReload": true,
+  "routeRemountRetainsChoices": true,
+  "otherOwnerKeyUnchanged": true,
+  "serverBoundariesUnchanged": true,
+  "writes": [],
+  "preferences": {
+    "remindWeekPlan": false,
+    "remindExpiring": false,
+    "remindShopping": false,
+    "remindTodayMeal": false,
+    "promoUpdates": true
+  },
+  "observations": [
+    {
+      "state": "local-defaults",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": []
+      },
+      "switches": [
+        {
+          "track": {
+            "x": 237,
+            "y": 286.0625,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 261,
+            "y": 298.0625,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 237,
+            "y": 404.9375,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 261,
+            "y": 416.9375,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 237,
+            "y": 501.9375,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 261,
+            "y": 513.9375,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 237,
+            "y": 620.8125,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 261,
+            "y": 632.8125,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 237,
+            "y": 717.8125,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 241,
+            "y": 729.8125,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        }
+      ],
+      "controls": [
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "local-defaults",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "textScale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": []
+      },
+      "switches": [
+        {
+          "track": {
+            "x": 237,
+            "y": -103.9375,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 261,
+            "y": -91.9375,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 237,
+            "y": 255.34375,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 265,
+            "y": 267.34375,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 237,
+            "y": 400.21875,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 265,
+            "y": 412.21875,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 237,
+            "y": 545.09375,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 265,
+            "y": 557.09375,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 237,
+            "y": 689.96875,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 245,
+            "y": 701.96875,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        }
+      ],
+      "controls": [
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "local-defaults",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "brokenImages": []
+      },
+      "switches": [
+        {
+          "track": {
+            "x": 307,
+            "y": -149.421875,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 331,
+            "y": -137.421875,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 307,
+            "y": -52.421875,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 331,
+            "y": -40.421875,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 307,
+            "y": 44.578125,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 331,
+            "y": 56.578125,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 307,
+            "y": 141.578125,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 331,
+            "y": 153.578125,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 307,
+            "y": 238.578125,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 311,
+            "y": 250.578125,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        }
+      ],
+      "controls": [
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "local-defaults",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "brokenImages": []
+      },
+      "switches": [
+        {
+          "track": {
+            "x": 1149,
+            "y": 273.8125,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 1173,
+            "y": 285.8125,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 1149,
+            "y": 370.8125,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 1173,
+            "y": 382.8125,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 1149,
+            "y": 467.8125,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 1173,
+            "y": 479.8125,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 1149,
+            "y": 564.8125,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 1173,
+            "y": 576.8125,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 1149,
+            "y": 661.8125,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 1153,
+            "y": 673.8125,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        }
+      ],
+      "controls": [
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "local-reload",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": []
+      },
+      "switches": [
+        {
+          "track": {
+            "x": 237,
+            "y": 286.0625,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 241,
+            "y": 298.0625,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 237,
+            "y": 404.9375,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 241,
+            "y": 416.9375,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 237,
+            "y": 501.9375,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 241,
+            "y": 513.9375,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 237,
+            "y": 620.8125,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 241,
+            "y": 632.8125,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 237,
+            "y": 717.8125,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 261,
+            "y": 729.8125,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        }
+      ],
+      "controls": [
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "local-reload",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "textScale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": []
+      },
+      "switches": [
+        {
+          "track": {
+            "x": 237,
+            "y": -103.9375,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 241,
+            "y": -91.9375,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 237,
+            "y": 255.34375,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 245,
+            "y": 267.34375,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 237,
+            "y": 400.21875,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 245,
+            "y": 412.21875,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 237,
+            "y": 545.09375,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 245,
+            "y": 557.09375,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 237,
+            "y": 689.96875,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 265,
+            "y": 701.96875,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        }
+      ],
+      "controls": [
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "local-reload",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "brokenImages": []
+      },
+      "switches": [
+        {
+          "track": {
+            "x": 307,
+            "y": -149.421875,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 311,
+            "y": -137.421875,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 307,
+            "y": -52.421875,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 311,
+            "y": -40.421875,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 307,
+            "y": 44.578125,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 311,
+            "y": 56.578125,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 307,
+            "y": 141.578125,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 311,
+            "y": 153.578125,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 307,
+            "y": 238.578125,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 331,
+            "y": 250.578125,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        }
+      ],
+      "controls": [
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "local-reload",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "brokenImages": []
+      },
+      "switches": [
+        {
+          "track": {
+            "x": 1149,
+            "y": 273.8125,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 1153,
+            "y": 285.8125,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 1149,
+            "y": 370.8125,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 1153,
+            "y": 382.8125,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 1149,
+            "y": 467.8125,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 1153,
+            "y": 479.8125,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 1149,
+            "y": 564.8125,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 1153,
+            "y": 576.8125,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        },
+        {
+          "track": {
+            "x": 1149,
+            "y": 661.8125,
+            "width": 52,
+            "height": 48
+          },
+          "thumb": {
+            "x": 1173,
+            "y": 673.8125,
+            "width": 24,
+            "height": 24
+          },
+          "fits": true
+        }
+      ],
+      "controls": [
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "button",
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    }
+  ]
+}

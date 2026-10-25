@@ -1,0 +1,314 @@
+{
+  "realGuestSession": true,
+  "guestLabel": true,
+  "emailFallback": true,
+  "plusHref": "/auth?mode=login&returnTo=%2Fplus",
+  "paymentActionInvoked": false,
+  "logoutCancelledWithKeyboard": true,
+  "writes": [],
+  "observations": [
+    {
+      "state": "guest-real",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "textScale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": [],
+        "links": [
+          {
+            "href": "/me/preferences",
+            "clientWidth": 292,
+            "scrollWidth": 292
+          },
+          {
+            "href": "/me/household",
+            "clientWidth": 292,
+            "scrollWidth": 292
+          },
+          {
+            "href": "/settings/planning",
+            "clientWidth": 292,
+            "scrollWidth": 292
+          },
+          {
+            "href": "/settings/notifications",
+            "clientWidth": 292,
+            "scrollWidth": 292
+          },
+          {
+            "href": "/settings/app",
+            "clientWidth": 292,
+            "scrollWidth": 292
+          },
+          {
+            "href": "/settings/privacy",
+            "clientWidth": 292,
+            "scrollWidth": 292
+          }
+        ]
+      },
+      "controls": [
+        {
+          "box": {
+            "x": 14,
+            "y": 96,
+            "width": 292,
+            "height": 147.375
+          },
+          "actionable": true
+        },
+        {
+          "box": {
+            "x": 14,
+            "y": 167.375,
+            "width": 292,
+            "height": 147.375
+          },
+          "actionable": true
+        },
+        {
+          "box": {
+            "x": 14,
+            "y": 166.75,
+            "width": 292,
+            "height": 147.375
+          },
+          "actionable": true
+        },
+        {
+          "box": {
+            "x": 14,
+            "y": 95.765625,
+            "width": 292,
+            "height": 147.375
+          },
+          "actionable": true
+        },
+        {
+          "box": {
+            "x": 14,
+            "y": 167.140625,
+            "width": 292,
+            "height": 147.375
+          },
+          "actionable": true
+        },
+        {
+          "box": {
+            "x": 14,
+            "y": 125.515625,
+            "width": 292,
+            "height": 189.375
+          },
+          "actionable": true
+        }
+      ]
+    },
+    {
+      "state": "guest-real",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "brokenImages": [],
+        "links": [
+          {
+            "href": "/me/preferences",
+            "clientWidth": 362,
+            "scrollWidth": 362
+          },
+          {
+            "href": "/me/household",
+            "clientWidth": 362,
+            "scrollWidth": 362
+          },
+          {
+            "href": "/settings/planning",
+            "clientWidth": 362,
+            "scrollWidth": 362
+          },
+          {
+            "href": "/settings/notifications",
+            "clientWidth": 362,
+            "scrollWidth": 362
+          },
+          {
+            "href": "/settings/app",
+            "clientWidth": 362,
+            "scrollWidth": 362
+          },
+          {
+            "href": "/settings/privacy",
+            "clientWidth": 362,
+            "scrollWidth": 362
+          }
+        ]
+      },
+      "controls": [
+        {
+          "box": {
+            "x": 14,
+            "y": 470.1875,
+            "width": 362,
+            "height": 66.1875
+          },
+          "actionable": true
+        },
+        {
+          "box": {
+            "x": 14,
+            "y": 536.375,
+            "width": 362,
+            "height": 66.1875
+          },
+          "actionable": true
+        },
+        {
+          "box": {
+            "x": 14,
+            "y": 602.5625,
+            "width": 362,
+            "height": 66.1875
+          },
+          "actionable": true
+        },
+        {
+          "box": {
+            "x": 14,
+            "y": 681.390625,
+            "width": 362,
+            "height": 66.1875
+          },
+          "actionable": true
+        },
+        {
+          "box": {
+            "x": 14,
+            "y": 663.578125,
+            "width": 362,
+            "height": 84.375
+          },
+          "actionable": true
+        },
+        {
+          "box": {
+            "x": 14,
+            "y": 681.953125,
+            "width": 362,
+            "height": 66.1875
+          },
+          "actionable": true
+        }
+      ]
+    },
+    {
+      "state": "guest-real",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "brokenImages": [],
+        "links": [
+          {
+            "href": "/me/preferences",
+            "clientWidth": 772,
+            "scrollWidth": 772
+          },
+          {
+            "href": "/me/household",
+            "clientWidth": 772,
+            "scrollWidth": 772
+          },
+          {
+            "href": "/settings/planning",
+            "clientWidth": 772,
+            "scrollWidth": 772
+          },
+          {
+            "href": "/settings/notifications",
+            "clientWidth": 772,
+            "scrollWidth": 772
+          },
+          {
+            "href": "/settings/app",
+            "clientWidth": 772,
+            "scrollWidth": 772
+          },
+          {
+            "href": "/settings/privacy",
+            "clientWidth": 772,
+            "scrollWidth": 772
+          }
+        ]
+      },
+      "controls": [
+        {
+          "box": {
+            "x": 446,
+            "y": 376.03125,
+            "width": 772,
+            "height": 66.1875
+          },
+          "actionable": true
+        },
+        {
+          "box": {
+            "x": 446,
+            "y": 442.21875,
+            "width": 772,
+            "height": 66.1875
+          },
+          "actionable": true
+        },
+        {
+          "box": {
+            "x": 446,
+            "y": 508.40625,
+            "width": 772,
+            "height": 66.1875
+          },
+          "actionable": true
+        },
+        {
+          "box": {
+            "x": 446,
+            "y": 629.234375,
+            "width": 772,
+            "height": 66.1875
+          },
+          "actionable": true
+        },
+        {
+          "box": {
+            "x": 446,
+            "y": 695.421875,
+            "width": 772,
+            "height": 66.1875
+          },
+          "actionable": true
+        },
+        {
+          "box": {
+            "x": 446,
+            "y": 761.609375,
+            "width": 772,
+            "height": 66.1875
+          },
+          "actionable": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+
+> frigo@0.1.0 typecheck [WORKTREE]
+> tsc -p tsconfig.json --noEmit && tsc -p tsconfig.worker.json --noEmit
+
+tests/integration/week-swap-response-loss.test.ts(100,7): error TS2322: Type 'string' is not assignable to type 'WeekSchemaMode | undefined'.
+ ELIFECYCLE  Command failed with exit code 2.

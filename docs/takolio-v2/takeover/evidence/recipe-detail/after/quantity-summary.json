@@ -1,0 +1,31 @@
+{
+  "recipe": "tomato-egg-stir-fry",
+  "observations": [
+    {
+      "servings": 1,
+      "required": "1,5",
+      "shortfall": null,
+      "ready": 1
+    },
+    {
+      "servings": 2,
+      "required": "3",
+      "shortfall": "1",
+      "ready": 0
+    },
+    {
+      "servings": 4,
+      "required": "6",
+      "shortfall": "4",
+      "ready": 0
+    },
+    {
+      "servings": 20,
+      "required": "30",
+      "shortfall": "28",
+      "ready": 0
+    }
+  ],
+  "inventoryUnchanged": true,
+  "localSyntheticApi": true
+}

@@ -1,0 +1,5 @@
+{
+  "error": {
+    "text": "Week swap receipt already exists: SQLITE_CONSTRAINT (extended: SQLITE_CONSTRAINT_TRIGGER)"
+  }
+}

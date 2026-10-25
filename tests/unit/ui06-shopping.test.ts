@@ -70,16 +70,26 @@ it('offline check and delete expose durable receipts and do not resurrect rows o
   fetchMock.mockResolvedValue(response({ items: [item] }));
   expect(await shoppingApi.getShoppingList()).toEqual([]);
 });
-it('does not report pending sync when durable storage rejects a command', async () => {
+it('does not report pending sync or change its cache when durable storage rejects a command', async () => {
+  const cacheKey = privateCacheKey('shopping_list', 'house-a');
+  const before = JSON.stringify([item]);
+  localStorage.setItem(cacheKey, before);
   fetchMock.mockRejectedValue(new TypeError('Failed to fetch'));
-  vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
-    throw new Error('Quota exceeded');
+  const original = Storage.prototype.setItem;
+  vi.spyOn(Storage.prototype, 'setItem').mockImplementation(function (this: Storage, key, value) {
+    if (key === 'frigo_sync_outbox_v1') throw new Error('Quota exceeded');
+    original.call(this, key, value);
   });
-  await expect(shoppingApi.toggleShoppingItem(item.id, true)).rejects.toThrow(
-    'Không thể lưu thay đổi',
-  );
-  expect(getPendingOps()).toEqual([]);
-  vi.restoreAllMocks();
+  try {
+    await expect(shoppingApi.toggleShoppingItem(item.id, true)).rejects.toMatchObject({
+      name: 'OutboxPersistenceError',
+      cause: expect.objectContaining({ message: 'Quota exceeded' }),
+    });
+    expect(getPendingOps()).toEqual([]);
+    expect(localStorage.getItem(cacheKey)).toBe(before);
+  } finally {
+    vi.restoreAllMocks();
+  }
 });
 it('retains scope fences and rejects malformed server success rather than fabricating an empty list', async () => {
   fetchMock.mockResolvedValue(response({ items: 'wrong' }));

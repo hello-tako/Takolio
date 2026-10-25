@@ -1,0 +1,19 @@
+{
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "textScale": 1,
+  "state": "steps",
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "aria-prohibited-attr",
+      "impact": "serious"
+    },
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ]
+}

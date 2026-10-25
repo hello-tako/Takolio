@@ -1,0 +1,249 @@
+{
+  "implementation_commit": "4afc85804478fa9508b15b1c035da0e10f964822",
+  "official_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "node": "v24.16.0",
+  "browser": {
+    "command": "PORT=3303 PREVIEW_API_PORT=8923 PREVIEW_MEAL_PLANNER_ENABLED=true PREVIEW_MEAL_COMPOSITION_V2=true PREVIEW_MEAL_COMPOSITION_V2_SERVER=true PREVIEW_T20_D1=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-control-contrast.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/control-contrast/c12-c13-final-1",
+    "exit_code": 0,
+    "seconds": 249.59,
+    "log_sha256": "6a9f4df9a45bf5756cf50988e59e488c5905f36dda079203122b57b4efc29fd0",
+    "sources": {
+      "tests/e2e/t17-ui/takolio-control-contrast.e2e.ts": "e864f5b180e3a42004f3390a9729e5f9006bece192ee60b98e516d93044cb124",
+      "src/web/styles/kitchen-upgrade.css": "129e6fcd738661a54a1fe501e3d0f044dc1565c93528be0e43a36573ba510a14"
+    }
+  },
+  "focused_counts": {
+    "files": 6,
+    "tests": 125,
+    "reported_seconds": 2.18
+  },
+  "full_suite": {
+    "status": "PARTIAL",
+    "files_passed": 410,
+    "files_total": 412,
+    "tests_passed": 9164,
+    "tests_total": 9169,
+    "reported_seconds": 1083.38,
+    "failures": {
+      "tests/unit/release-check.test.mjs": 4,
+      "tests/unit/production-catalog-continuity.test.mjs": 1
+    },
+    "cause": "CLI uses URL.pathname and passes New%20project instead of the filesystem space; inherited failures retained"
+  },
+  "gates": [
+    {
+      "name": "focused",
+      "command": "pnpm exec vitest run tests/unit/ui03-discovery.test.ts tests/unit/ui06-shopping.test.ts tests/unit/ui08-account.test.tsx tests/unit/family-preferences-favorites-ui.test.tsx tests/unit/planner-ui.test.tsx tests/unit/ui15-culinary-upgrade.test.tsx",
+      "exit_code": 0,
+      "seconds": 3.14,
+      "node": "v24.16.0",
+      "log_path": ".artifacts/takeover/control-contrast/final-gates/focused.log",
+      "log_bytes": 259,
+      "log_sha256": "44505991b1862d1dd81559996222780fa1d2c6546ebe0e0b8398790833cbf8ae",
+      "status": "PASS"
+    },
+    {
+      "name": "lint",
+      "command": "pnpm lint",
+      "exit_code": 0,
+      "seconds": 8.55,
+      "node": "v24.16.0",
+      "log_path": ".artifacts/takeover/control-contrast/final-gates/lint.log",
+      "log_bytes": 99,
+      "log_sha256": "3f2044fca43a5e60905becf2ebfc3a21ddd85976975841aa1e16bc87b0f40a6d",
+      "status": "PASS"
+    },
+    {
+      "name": "typecheck",
+      "command": "pnpm typecheck",
+      "exit_code": 0,
+      "seconds": 20.63,
+      "node": "v24.16.0",
+      "log_path": ".artifacts/takeover/control-contrast/final-gates/typecheck.log",
+      "log_bytes": 165,
+      "log_sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e",
+      "status": "PASS"
+    },
+    {
+      "name": "full-suite",
+      "command": "pnpm test --maxWorkers=1",
+      "exit_code": 1,
+      "seconds": 1084.56,
+      "node": "v24.16.0",
+      "log_path": ".artifacts/takeover/control-contrast/final-gates/full-suite.log",
+      "log_bytes": 17975,
+      "log_sha256": "8a6f925ed6ffbb14140f74d6202622c51222cb884d953b48dfbdac711d94c7f9",
+      "status": "PARTIAL"
+    },
+    {
+      "name": "migrations",
+      "command": "pnpm check:migrations",
+      "exit_code": 0,
+      "seconds": 0.78,
+      "node": "v24.16.0",
+      "log_path": ".artifacts/takeover/control-contrast/final-gates/migrations.log",
+      "log_bytes": 297,
+      "log_sha256": "9616315a9fcbfd77c67784703a16384419539e6a68ccd2838dda07239de25464",
+      "status": "PASS"
+    },
+    {
+      "name": "default-build",
+      "command": "pnpm build",
+      "exit_code": 0,
+      "seconds": 15.13,
+      "node": "v24.16.0",
+      "log_path": ".artifacts/takeover/control-contrast/final-gates/default-build.log",
+      "log_bytes": 10008,
+      "log_sha256": "e9be39fd12b8b6120b6e378406249c70eb6d7c1894e27a6bd7b5bc4d3b5a212b",
+      "status": "PASS"
+    },
+    {
+      "name": "paired-on-build",
+      "command": "VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build",
+      "exit_code": 0,
+      "seconds": 13.14,
+      "node": "v24.16.0",
+      "log_path": ".artifacts/takeover/control-contrast/final-gates/paired-on-build.log",
+      "log_bytes": 10008,
+      "log_sha256": "87814dca8bf9638815319a33de69c8441c9ec7d1d66070ac2a9e0cf04bd9d57b",
+      "status": "PASS"
+    }
+  ],
+  "dependency_audit": {
+    "command": "pnpm audit --audit-level high",
+    "exit_code": 1,
+    "seconds": 2.22,
+    "log_path": ".artifacts/takeover/control-contrast/final-gates/dependency-audit.log",
+    "log_sha256": "0758fe12195981db0d0cfceb8ea87fd6041f51411d2d252e6009f24785f9de2e",
+    "status": "FAIL",
+    "vulnerabilities": {
+      "total": 11,
+      "low": 1,
+      "moderate": 8,
+      "high": 2
+    },
+    "high_advisories": [
+      "GHSA-587h-7wmj-h5pm",
+      "GHSA-mrhx-c7xc-m3w5"
+    ],
+    "dependencies_changed": false
+  },
+  "targeted": [
+    {
+      "name": "final-test-eslint",
+      "command": "pnpm exec eslint tests/e2e/t17-ui/takolio-control-contrast.e2e.ts",
+      "exit_code": 0,
+      "seconds": 1.4,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "diff-check",
+      "command": "git diff --check",
+      "exit_code": 0,
+      "seconds": 0.05,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "recertification": {
+    "group_a": "PARTIAL_EXIT1",
+    "group_b": "BOUNDED_HARNESS_PASS_EXIT0_WITH_HISTORY_GAP",
+    "verification": {
+      "result": "PASS",
+      "runnerSha256": "c6bc7eb90aa8b227ad474dcb275227b7886a8d857a3f346879bca98280b44dea",
+      "runs": [
+        {
+          "run": "group-a-attempt1",
+          "exitCode": 1,
+          "payloads": 7,
+          "pngs": 1,
+          "sourceCount": 1104,
+          "receiptSha256": "d9654cc302932fc828235aa432d11db61bb9048ab0714a5cbec1447e64d3d89d",
+          "harnessSha256": "b9651963449d17977ed63b296abce940dd5823fbe00aacb02e1d6a23d3ecc7d3"
+        },
+        {
+          "run": "group-a-attempt2",
+          "exitCode": 1,
+          "payloads": 8,
+          "pngs": 2,
+          "sourceCount": 1104,
+          "receiptSha256": "ae17db22a7addf51f50e64b2ddd3acf108ab0dab9ea4a5c3ba7772434a16f0da",
+          "harnessSha256": "62f4862420f536c87d1ce22101b79455a72900ac6a75eabf9194e7a54e9dcfa3"
+        },
+        {
+          "run": "group-a-attempt3",
+          "exitCode": 1,
+          "payloads": 6,
+          "pngs": 0,
+          "sourceCount": 1104,
+          "receiptSha256": "14643949e17b15478abcafa359521f29127fb16093c88c7f3d7055ab436d3c2c",
+          "harnessSha256": "ad754e427aa5b4ef0825ef0655b334b5cb944a3e5d3a0ebdbf51d82ba2e51dcc"
+        },
+        {
+          "run": "group-a-attempt4",
+          "exitCode": 1,
+          "payloads": 6,
+          "pngs": 0,
+          "sourceCount": 1104,
+          "receiptSha256": "782b85f56b4064e90f46083787ac2d544e8cdc992ed0a99f7a73ce91c312075b",
+          "harnessSha256": "e7446eb2300ef5f9cf95aad61a96ad8b46bbb32b03fb102271ac42b1fcea03de"
+        },
+        {
+          "run": "group-a-attempt5",
+          "exitCode": 1,
+          "payloads": 60,
+          "pngs": 52,
+          "sourceCount": 1104,
+          "receiptSha256": "aa7c53ca504338892d74fdb7fb402ec5b93692a96f708c06bfe379e2ba3aae77",
+          "harnessSha256": "0c760316aeccf8dbffacc014c9502de2bc84f7a97add747d95a7d8f725c9c528"
+        },
+        {
+          "run": "group-b-attempt1",
+          "exitCode": 0,
+          "payloads": 59,
+          "pngs": 51,
+          "sourceCount": 1104,
+          "receiptSha256": "a63a848670300d7193ab023d2a177bae0f1ffc38f0ef4b06f847636ddd89f384",
+          "harnessSha256": "b957afcf84b5cb0874a1c9abc25dffcccad8e20c46462f8860b463d1260a11c4"
+        }
+      ],
+      "extraReadbackAssertions": {
+        "manualInventoryImported": true,
+        "manualMissingFromScanReadback": true
+      },
+      "scope": "Stored evidence bytes/hashes and before/after source equality; no runtime replay."
+    }
+  },
+  "raw_log_policy": "Complete gate logs remain ignored/private; paths/bytes/hashes bind retained logs, not public copies.",
+  "supplemental_sources": [
+    {
+      "path": ".artifacts/takeover/recertify/REPORT.md",
+      "bytes": 9459,
+      "sha256": "3b13c5128aa3bb97f4c9fe3af15f946de4475f80be636efe02390861540d802a"
+    },
+    {
+      "path": ".artifacts/takeover/recertify/verification.json",
+      "bytes": 2218,
+      "sha256": "97b9bd4c32426fc37d6361f398e9f4afb7c32374e71df21e1ade4a71c021437f"
+    },
+    {
+      "path": ".artifacts/takeover/control-contrast/selective-packet-audit.md",
+      "bytes": 4369,
+      "sha256": "3be724c792136849d1b7cbca4062355742f33b08e90d14ce11f2e7718c5b0e4b"
+    },
+    {
+      "path": ".artifacts/takeover/remaining-plan-audit.md",
+      "bytes": 12329,
+      "sha256": "e2c94a36739e9def4ba45e260abd779867d85a7c55e3189beffecff98cd62dfe"
+    },
+    {
+      "path": ".artifacts/takeover/control-contrast/final-gates/gates.json",
+      "bytes": 2575,
+      "sha256": "adb4ec4b406cf29c2536c4d331a2ad6e2ad8101939e2a097235a05b591eca832"
+    },
+    {
+      "path": ".artifacts/takeover/control-contrast/final-gates/dependency-audit.json",
+      "bytes": 257,
+      "sha256": "ffefce31a2ec7c7a469a44b7f2b5e7cbba97584cee554f8c77b7fda8348894a4"
+    }
+  ]
+}

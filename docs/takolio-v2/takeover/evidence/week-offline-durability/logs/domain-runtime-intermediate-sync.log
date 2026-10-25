@@ -1,0 +1,15 @@
+TRANSCRIBED INTERMEDIATE RESULT SUMMARY; raw terminal output remains in task tool history.
+Command: node --version && pnpm exec vitest run tests/unit/sync.test.ts --maxWorkers=1 --testTimeout=15000
+Default Node v25.9.0. Run preceded other caller edits; NOT final Node24 evidence.
+Vitest v4.1.12: 1 file / 36 tests, 32 passed / 4 failed, exit1.
+Failures:
+1. keeps confirmed stock unchanged across repeated offline Week completion
+   sync.test.ts:498 inventory expected quantity2; received quantity14.
+2. keeps the same queued Week command through a module/document reload
+   sync.test.ts:519 inventory expected quantity2; received quantity14.
+3. returns the generated inventory id after durable enqueue even when its cache write fails
+   Error: storage write unavailable, inventory.ts:74, sync.test.ts:600.
+4. queues Week plan creation before its optional cache update fails
+   Error: storage write unavailable, week.ts:67, sync.test.ts:615.
+Start05:02:14; Duration1.04s (transform558ms, setup23ms, import687ms, tests158ms).
+Runtime candidates were active; root-owned inventory/week callers still original.

@@ -1,0 +1,21 @@
+{
+  "state": "import-complete",
+  "viewport": {
+    "width": 320,
+    "height": 420
+  },
+  "rootTextScale": 2,
+  "metrics": {
+    "width": 320,
+    "scrollWidth": 320,
+    "brokenImages": [],
+    "dialogContainsFocus": null
+  },
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "state": "cooking",
+  "viewport": {
+    "width": 430,
+    "height": 932
+  },
+  "textScale": 1,
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "aria-prohibited-attr",
+      "impact": "serious"
+    },
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ]
+}

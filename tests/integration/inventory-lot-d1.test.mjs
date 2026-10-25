@@ -23,7 +23,7 @@ async function requestCommand(pathname, body) {
   return { status: response.status, ...await response.json() };
 }
 
-async function raceFixture(type) {
+async function raceFixture(type, ingredientId = 'CHICKEN_EGG') {
   const id = randomUUID();
   const scope = { householdId: `household-${id}`, actorId: `actor-${id}` };
   const now = '2026-09-10T10:00:00Z';
@@ -37,7 +37,7 @@ async function raceFixture(type) {
         VALUES (?, ?, ?, ?, 0, 0, ?, ?)`, values: [`${storage}-${id}`, scope.householdId, storage, storage, now, now],
     })),
   ])).toMatchObject({ status: 200 });
-  const create = { type: 'CREATE', lotId: `lot-${id}`, rawName: 'D1 race eggs', ingredientId: 'CHICKEN_EGG',
+  const create = { type: 'CREATE', lotId: `lot-${id}`, rawName: 'D1 race eggs', ingredientId,
     quantity: 10, unit: 'piece', storageLocationId: `FRIDGE-${id}`, sourceType: 'MANUAL',
     ...(type === 'OPEN_NOOP' ? { openedAt: now } : {}) };
   if (type !== 'CREATE') expect(await requestCommand('command', { scope, key: 'seed', input: create, now }))
@@ -467,21 +467,27 @@ describe('T09F actual local D1 legacy writer fences', () => {
 });
 
 describe('T09 targeted manual PATCH on real local D1', () => {
-  it.each([false, true])('retains metadata, versions and replay with MOVE=%s', async (move) => {
-    const { scope, input, now, facts } = await raceFixture('CORRECT');
+  it.each([
+    [false, 'CHICKEN_EGG', 'egg'], [true, 'CHICKEN_EGG', 'egg'],
+    [false, null, 'vegetable'], [true, null, 'vegetable'],
+  ])('retains metadata, versions and replay with MOVE=%s ingredient=%s category=%s', async (move, ingredientId, category) => {
+    const { scope, input, now, facts } = await raceFixture('CORRECT', ingredientId);
     const moveKey = move ? 'patch-move' : null;
     const intent = { requestFingerprint: JSON.stringify({ version: 1, category: 'vegetable', storage: move ? 'pantry' : undefined }),
       category: 'vegetable', freshness: 'fresh', moveClientKey: moveKey };
-    const specs = [{ clientKey: 'patch-correct', input: { ...input, changes: { quantity: 10 } }, manualPatch: intent }];
+    const specs = [{ clientKey: 'patch-correct', input: { ...input, changes: { quantity: 10, displayCategory: 'vegetable' } }, manualPatch: intent }];
     if (move) specs.push({ clientKey: moveKey, input: { type: 'MOVE', lotId: input.lotId, expectedVersion: 1,
       storageLocationId: `PANTRY-${scope.householdId.slice('household-'.length)}` },
       useCurrentLotVersion: { lotId: input.lotId }, manualPatch: { ...intent, moveClientKey: null } });
     const first = await requestCommand('patch-compose', { scope, specs, now });
     expect(first, first.error).toMatchObject({ status: 200 });
     const committed = await facts();
-    expect(committed[1][0]).toMatchObject({ quantity_milli: 10000, legacy_version: move ? 3 : 2, version: move ? 3 : 2 });
-    expect(committed[2][0]).toMatchObject({ category: 'vegetable', storage: move ? 'pantry' : 'fridge', version: move ? 3 : 2 });
-    expect(first.receipts.at(-1).manualPatch.projectionAfter).toMatchObject({ category: 'vegetable', version: move ? 3 : 2 });
+    expect(committed[1][0]).toMatchObject({ ingredient_id: ingredientId, display_category: 'vegetable',
+      quantity_milli: 10000, legacy_version: move ? 3 : 2, version: move ? 3 : 2 });
+    expect(committed[2][0]).toMatchObject({ category, storage: move ? 'pantry' : 'fridge', version: move ? 3 : 2 });
+    expect(committed[3]).toHaveLength(move ? 3 : 2);
+    expect(committed[4]).toHaveLength(move ? 3 : 2);
+    expect(first.receipts.at(-1).manualPatch.projectionAfter).toMatchObject({ category, version: move ? 3 : 2 });
     const replay = await requestCommand('patch-compose', { scope, specs, now: '2026-09-11T11:00:00Z' });
     expect(replay, replay.error).toEqual(first);
     expect(await facts()).toEqual(committed);
@@ -489,11 +495,14 @@ describe('T09 targeted manual PATCH on real local D1', () => {
 });
 
 describe('T09 receipt-backed synthetic mappings on real local D1', () => {
-  it.each([false, true])('writes and replays real adopted backfill with MOVE=%s', async (move) => {
+  it.each([
+    [false, 'RICE', 'grain'], [true, 'RICE', 'grain'],
+    [false, null, 'vegetable'], [true, null, 'vegetable'],
+  ])('writes and replays real adopted backfill with MOVE=%s ingredient=%s category=%s', async (move, ingredientId, category) => {
     const { scope, input, now, facts } = await raceFixture('CREATE');
     const itemId = `legacy-${scope.householdId}`;
     expect(await batch([{ sql: `INSERT INTO inventory_items(id,household_id,ingredient_id,name,quantity,unit,category,storage)
-      VALUES (?, ?, 'RICE', 'Rice', 2000, 'g', 'grain', 'pantry')`, values: [itemId, scope.householdId] }]))
+      VALUES (?, ?, ?, 'Rice', 2000, 'g', 'grain', 'pantry')`, values: [itemId, scope.householdId, ingredientId] }]))
       .toMatchObject({ status: 200 });
     const adoption = await requestCommand('adopt', { scope, now });
     expect(adoption, adoption.error).toMatchObject({ status: 200, result: { mappedLotCount: 1 } });
@@ -506,7 +515,8 @@ describe('T09 receipt-backed synthetic mappings on real local D1', () => {
     const intent = { requestFingerprint: JSON.stringify({ itemId, version: 1, category: 'vegetable', storage: move ? 'freezer' : undefined }),
       category: 'vegetable', freshness: 'fresh', moveClientKey: moveKey };
     const specs = [{ clientKey: 'adopted-correct', input: { type: 'CORRECT', lotId, expectedVersion: 2,
-      changes: { quantity: move ? 500 : 2000, unit: 'g', ...(move ? { expiryAt: '2026-09-30', expiryKind: 'KNOWN' } : {}) },
+      changes: { quantity: move ? 500 : 2000, unit: 'g', displayCategory: 'vegetable',
+        ...(move ? { expiryAt: '2026-09-30', expiryKind: 'KNOWN' } : {}) },
       reason: 'Real adopted PATCH' }, manualPatch: intent }];
     if (move) specs.push({ clientKey: moveKey, input: { type: 'MOVE', lotId, expectedVersion: 3,
       storageLocationId: locations.results[0].results[0].id }, useCurrentLotVersion: { lotId },
@@ -516,14 +526,15 @@ describe('T09 receipt-backed synthetic mappings on real local D1', () => {
     const committed = await facts();
     expect(committed[1]).toHaveLength(1);
     expect(committed[2]).toHaveLength(1);
-    expect(committed[1][0]).toMatchObject({ id: lotId, legacy_item_id: itemId, quantity_milli: move ? 500000 : 2000000,
+    expect(committed[1][0]).toMatchObject({ id: lotId, legacy_item_id: itemId, ingredient_id: ingredientId,
+      display_category: 'vegetable', quantity_milli: move ? 500000 : 2000000,
       version: move ? 4 : 3, legacy_version: move ? 3 : 2 });
-    expect(committed[2][0]).toMatchObject({ id: itemId, category: 'vegetable', storage: move ? 'freezer' : 'pantry',
+    expect(committed[2][0]).toMatchObject({ id: itemId, category, storage: move ? 'freezer' : 'pantry',
       quantity: move ? 500 : 2000, expiry_date: move ? '2026-09-30' : null });
     expect(committed[3]).toHaveLength(move ? 2 : 1);
     expect(committed[4]).toHaveLength(move ? 2 : 1);
     expect(committed[4].every((event) => event.inventory_item_id === itemId)).toBe(true);
-    expect(first.receipts.at(-1).manualPatch.projectionAfter.id).toBe(itemId);
+    expect(first.receipts.at(-1).manualPatch.projectionAfter).toMatchObject({ id: itemId, category });
     expect(await requestCommand('patch-compose', { scope, specs, now: '2026-09-11T12:00:00Z' })).toEqual(first);
     expect(await facts()).toEqual(committed);
     // The fixture's unrelated native ID must never become a duplicate projection.

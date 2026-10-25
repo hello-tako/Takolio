@@ -124,12 +124,15 @@ function enqueue(
   label: string,
   dedupeKey?: string,
 ) {
-  queueWrite(path, method, body, label, dedupeKey);
-  if (!ownedOps().some((op) => op.path === path && op.method === method && op.body === body)) {
+  const scope = currentPrivateScope();
+  const op = queueWrite(path, method, body, label, dedupeKey);
+  if (op.path !== path || op.method !== method || op.body !== body ||
+      op.userId !== scope.userId || op.householdId !== scope.householdId) {
     throw new Error(
       'Không thể lưu thay đổi để đồng bộ. Hãy kiểm tra bộ nhớ trình duyệt và thử lại.',
     );
   }
+  return op;
 }
 
 export const shoppingApi = {
@@ -164,6 +167,8 @@ export const shoppingApi = {
     const assertCurrent = guardPrivateSession();
     const householdId = getHouseholdId();
     const path = '/shopping-list/items';
+    const cacheKey = privateCacheKey('shopping_list', householdId);
+    let receipt: PendingOp | undefined;
     const requestItem = z
       .object({
         id: z.string().min(8).max(160),
@@ -187,15 +192,22 @@ export const shoppingApi = {
     } catch (error) {
       assertCurrent();
       if (!isOffline(error)) throw error;
-      enqueue(path, 'POST', body, `Thêm ${requestItem.name}`, `shopping:${requestItem.id}`);
+      receipt = enqueue(path, 'POST', body, `Thêm ${requestItem.name}`, `shopping:${requestItem.id}`);
       result = itemSchema.parse({ ...requestItem, isChecked: false, pendingSync: true });
     }
     assertCurrent();
-    const prior = cachedItems(householdId);
-    saveItems(
-      projectShoppingList([result, ...prior.filter((entry) => entry.id !== result.id)], ownedOps()),
-      householdId,
-    );
+    try {
+      const prior = itemsSchema.parse(JSON.parse(localStorage.getItem(cacheKey) || '[]'));
+      const projected = projectShoppingList(
+        [result, ...prior.filter((entry) => entry.id !== result.id)],
+        ownedOps(),
+      );
+      localStorage.setItem(cacheKey, JSON.stringify(projected));
+    } catch (error) {
+      if (!receipt) throw error;
+      // Return the accepted generated ID when only its cache failed.
+    }
+    assertCurrent();
     return result;
   },
 
@@ -224,20 +236,35 @@ export const shoppingApi = {
     }
     return result;
   },
-  updateShoppingItem: async (id:string,patch:z.input<typeof updateSchema>):Promise<{pendingSync:boolean}> => {
-    const assertCurrent=guardPrivateSession();const householdId=getHouseholdId();
-    const change=updateSchema.parse(patch);const path=`/shopping-list/items/${encodeURIComponent(id)}`;
-    const body=JSON.stringify(change);let pendingSync=false;
+  updateShoppingItem: async (id: string, patch: z.input<typeof updateSchema>): Promise<{ pendingSync: boolean }> => {
+    const assertCurrent = guardPrivateSession();
+    const householdId = getHouseholdId();
+    const cacheKey = privateCacheKey('shopping_list', householdId);
+    const change = updateSchema.parse(patch);
+    const path = `/shopping-list/items/${encodeURIComponent(id)}`;
+    const body = JSON.stringify(change);
+    let receipt: PendingOp | undefined;
     try {
-      if(hasPendingItem(id)) throw new ApiError('offline','Thay đổi trước đang chờ đồng bộ.');
-      await fetchJson(path,{method:'PATCH',body});
-    }catch(error){
-      assertCurrent();if(!isOffline(error))throw error;
-      enqueue(path,'PATCH',body,'Cập nhật danh sách đi chợ');pendingSync=true;
+      if (hasPendingItem(id)) throw new ApiError('offline', 'Thay đổi trước đang chờ đồng bộ.');
+      await fetchJson(path, { method: 'PATCH', body });
+    } catch (error) {
+      assertCurrent();
+      if (!isOffline(error)) throw error;
+      receipt = enqueue(path, 'PATCH', body, 'Cập nhật danh sách đi chợ');
     }
     assertCurrent();
-    saveItems(projectShoppingList(cachedItems(householdId).map(item=>item.id===id?{...item,...change}:item),ownedOps()),householdId);
-    return {pendingSync};
+    try {
+      const items = itemsSchema.parse(JSON.parse(localStorage.getItem(cacheKey) || '[]'));
+      const projected = projectShoppingList(
+        items.map((item) => item.id === id ? { ...item, ...change } : item),
+        ownedOps(),
+      );
+      localStorage.setItem(cacheKey, JSON.stringify(projected));
+    } catch (error) {
+      if (!receipt) throw error;
+    }
+    assertCurrent();
+    return { pendingSync: Boolean(receipt) };
   },
   toggleShoppingItem: async (id:string,isChecked:boolean):Promise<{pendingSync:boolean}> => shoppingApi.updateShoppingItem(id,{isChecked}),
 
@@ -245,24 +272,27 @@ export const shoppingApi = {
     const assertCurrent = guardPrivateSession();
     const householdId = getHouseholdId();
     const path = `/shopping-list/items/${encodeURIComponent(id)}`;
-    let pendingSync = false;
+    const cacheKey = privateCacheKey('shopping_list', householdId);
+    let receipt: PendingOp | undefined;
     try {
       if (hasPendingItem(id)) throw new ApiError('offline', 'Thay đổi trước đang chờ đồng bộ.');
       await fetchJson(path, { method: 'DELETE' });
     } catch (error) {
       assertCurrent();
       if (!isOffline(error)) throw error;
-      enqueue(path, 'DELETE', undefined, 'Xóa khỏi danh sách đi chợ');
-      pendingSync = true;
+      receipt = enqueue(path, 'DELETE', undefined, 'Xóa khỏi danh sách đi chợ');
     }
     assertCurrent();
-    saveItems(
-      projectShoppingList(
-        cachedItems(householdId).filter((item) => item.id !== id),
-        ownedOps(),
-      ),
-      householdId,
-    );
-    return { pendingSync };
+    try {
+      const items = itemsSchema.parse(JSON.parse(localStorage.getItem(cacheKey) || '[]'));
+      const projected = projectShoppingList(
+        items.filter((item) => item.id !== id), ownedOps(),
+      );
+      localStorage.setItem(cacheKey, JSON.stringify(projected));
+    } catch (error) {
+      if (!receipt) throw error;
+    }
+    assertCurrent();
+    return { pendingSync: Boolean(receipt) };
   },
 };

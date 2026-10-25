@@ -324,3 +324,90 @@ it('keeps legacy imports identical and renders detailed kit icons without alpha 
   expect(fridge).not.toContain('mask');
   expect(renderToStaticMarkup(<TakosanIcon name="scan" onDark />)).toContain(TAKOLIO_BRAND.scanIconOnDark);
 });
+
+describe('Takolio V2 original navigation icon contract (A01)', () => {
+  const navNames = ['home', 'fridge', 'recipe', 'mealPlan', 'profile', 'scan'] as const;
+  const extractInnerPrimitives = (svgMarkup: string) =>
+    [...svgMarkup.matchAll(/<(path|rect|circle)\b[^>]*>/g)].map((m) => m[0]).join('');
+
+  it('renders variant="v2" as inline 24x24 SVG with pairwise-distinct inner vector geometry, strokeWidth, onDark, and accessible title semantics', () => {
+    const innerGeometryById = new Map<string, string>();
+    for (const name of navNames) {
+      const inactive = renderToStaticMarkup(<TakosanIcon name={name} variant="v2" />);
+      const expectedId = TAKOLIO_BRAND.v2NavIcons[name].id;
+      expect(inactive).toContain('<svg');
+      expect(inactive).toContain('viewBox="0 0 24 24"');
+      expect(inactive).toContain(`data-takosan-icon="${name}"`);
+      expect(inactive).toContain(`data-icon-id="${expectedId}"`);
+      expect(inactive).toContain('stroke="currentColor"');
+      expect(inactive).toContain('stroke-width="1.8"');
+      expect(inactive).toContain('aria-hidden="true"');
+      const inner = extractInnerPrimitives(inactive);
+      expect(inner.length).toBeGreaterThan(10);
+      innerGeometryById.set(expectedId, inner);
+    }
+    expect(innerGeometryById.size).toBe(6);
+    expect(new Set(innerGeometryById.values()).size).toBe(6);
+    expect(innerGeometryById.get('icon-home')).not.toBe(innerGeometryById.get('icon-meal-plan'));
+
+    const activeHome = renderToStaticMarkup(
+      <TakosanIcon name="home" variant="v2" strokeWidth={2.2} title="Trang chủ" />,
+    );
+    expect(activeHome).toContain('stroke-width="2.2"');
+    expect(activeHome).toContain('role="img"');
+    expect(activeHome).toContain('aria-label="Trang chủ"');
+    expect(activeHome).toContain('<title>Trang chủ</title>');
+    expect(activeHome).not.toContain('aria-hidden="true"');
+
+    const scanDark = renderToStaticMarkup(<TakosanIcon name="scan" variant="v2" onDark />);
+    expect(scanDark).toContain('stroke="#FFFFFF"');
+  });
+
+  it('forwards width, height, id, data-*, aria-*, and event handler props onto the variant="v2" SVG element', () => {
+    const onClick = vi.fn();
+    const custom = renderToStaticMarkup(
+      <TakosanIcon
+        name="home"
+        variant="v2"
+        width={32}
+        height={32}
+        id="nav-home-svg"
+        data-testid="custom-v2-home"
+        aria-describedby="home-hint"
+        onClick={onClick}
+      />,
+    );
+    expect(custom).toContain('width="32"');
+    expect(custom).toContain('height="32"');
+    expect(custom).toContain('id="nav-home-svg"');
+    expect(custom).toContain('data-testid="custom-v2-home"');
+    expect(custom).toContain('aria-describedby="home-hint"');
+
+    const el = TakosanIcon({ name: 'home', variant: 'v2', onClick }) as React.ReactElement<{
+      onClick?: () => void;
+    }>;
+    expect(el.props.onClick).toBe(onClick);
+  });
+
+  it('keeps TAKOLIO_BRAND.v2NavIcons elements in exact 1:1 parity with the authored SVG master and export files on disk', () => {
+    const parsePrimitives = (svgText: string) =>
+      [...svgText.matchAll(/<(path|rect|circle)\s+([^/>]+?)\s*\/>/g)].map(([, tag, attrText]) => {
+        const attrs: Record<string, string> = {};
+        for (const [, k, v] of attrText.matchAll(/([a-zA-Z-]+)="([^"]*)"/g)) {
+          attrs[k] = v;
+        }
+        return { tag, attrs };
+      });
+
+    const canonicalGeometries = new Set<string>();
+    for (const name of navNames) {
+      const entry = TAKOLIO_BRAND.v2NavIcons[name];
+      const masterSvg = readFileSync(resolve(root, entry.sourceMaster), 'utf8');
+      const exportSvg = readFileSync(resolve(root, entry.exportAsset), 'utf8');
+      expect(parsePrimitives(masterSvg)).toEqual(entry.elements);
+      expect(parsePrimitives(exportSvg)).toEqual(entry.elements);
+      canonicalGeometries.add(JSON.stringify(entry.elements));
+    }
+    expect(canonicalGeometries.size).toBe(6);
+  });
+});

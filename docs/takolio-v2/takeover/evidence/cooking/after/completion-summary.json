@@ -1,0 +1,23 @@
+{
+  "guards": [
+    "blank",
+    "negative",
+    "max",
+    "overstock",
+    "zero",
+    "fractional"
+  ],
+  "noWritesBeforeConfirm": true,
+  "requestCount": 2,
+  "servings": 4,
+  "sameBody": true,
+  "sameKey": true,
+  "replay": true,
+  "serverStatuses": [
+    200,
+    200
+  ],
+  "remainingTomato": 2.5,
+  "localSyntheticApi": true,
+  "firstResponseReplacedWith503AfterRealCommit": true
+}

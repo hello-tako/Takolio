@@ -1,0 +1,14 @@
+{
+  "source_regular_files": 22763,
+  "snapshot_regular_files": 22763,
+  "source_symlinks": 772,
+  "snapshot_symlinks": 772,
+  "all_worktree_bytes_modes_links_match": true,
+  "status_preflight_source_snapshot_match": true,
+  "head_match": true,
+  "index_sha256_match": true,
+  "backup_parent_mode": "0o700",
+  "worktree_differences": [],
+  "verified_after_implementation_commit": "d44b98ca292b24baf954a7bf3c6b1039661cfd95",
+  "git_metadata": "Authorized integration fetch/worktree/commits differ;original bytes/modes/links/HEAD/index/status match private full snapshot. Exact recovery location remains private."
+}

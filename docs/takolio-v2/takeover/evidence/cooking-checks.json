@@ -1,0 +1,128 @@
+{
+  "implementation_commit": "6276a6b929304c1c207b3355c3827fdd762ef287",
+  "base_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "environment": "macOS; Node v25.9.0; pnpm10.33.2; unchanged main dependencies; real isolated Worker/SQLite synthetic API; external fetch blocked",
+  "full_regression_status": "PARTIAL; five inherited encoded-space CLI path failures remain",
+  "source_sha256": {
+    "src/web/components/cooking/CookingReview.tsx": "7c8b1c3cf9bb4cdd5a95d37cab9c4dedc38139d41b3c15eb64a9d08c196038ad",
+    "tests/e2e/t17-ui/takolio-cooking-continuation.e2e.ts": "6493bdf39d7240cf6bcd72ade843b0fd3e32b9b20cccea9e316dc046706e5f5f"
+  },
+  "checks": [
+    {
+      "command": "pnpm lint",
+      "exit_code": 0,
+      "actual_result": "PASS final source",
+      "local_ignored_log": ".artifacts/takeover/cooking/checks/lint.log",
+      "log_bytes": 99,
+      "log_sha256": "3f2044fca43a5e60905becf2ebfc3a21ddd85976975841aa1e16bc87b0f40a6d"
+    },
+    {
+      "command": "pnpm typecheck",
+      "exit_code": 0,
+      "actual_result": "PASS web and Worker final source",
+      "local_ignored_log": ".artifacts/takeover/cooking/checks/typecheck.log",
+      "log_bytes": 165,
+      "log_sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e"
+    },
+    {
+      "command": "pnpm check:migrations",
+      "exit_code": 0,
+      "actual_result": "PASS customer/Admin local smoke; schema unchanged",
+      "local_ignored_log": ".artifacts/takeover/cooking/checks/migrations.log",
+      "log_bytes": 297,
+      "log_sha256": "9616315a9fcbfd77c67784703a16384419539e6a68ccd2838dda07239de25464"
+    },
+    {
+      "command": "pnpm build",
+      "exit_code": 0,
+      "actual_result": "PASS web/Admin/Worker; existing Admin font warnings",
+      "local_ignored_log": ".artifacts/takeover/cooking/checks/build-default.log",
+      "log_bytes": 10008,
+      "log_sha256": "9300eca8cd814e8f3441c5250253adbb433636ccc1f6ff8ae926b7188f44282f"
+    },
+    {
+      "command": "VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build",
+      "exit_code": 0,
+      "actual_result": "PASS web/Admin/Worker with paired build flags; existing Admin font warnings",
+      "local_ignored_log": ".artifacts/takeover/cooking/checks/build-paired-vite-flags.log",
+      "log_bytes": 10009,
+      "log_sha256": "2b5fb5c6180269f8e63b2088013668d03925bce4d13d4aee3c31cc65e023e32b"
+    },
+    {
+      "command": "TMPDIR=/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/ pnpm test --maxWorkers=4",
+      "exit_code": 1,
+      "actual_result": "PARTIAL: 410/412 files; 9163/9168 tests pass in 447.30s; same five inherited encoded-space CLI failures only",
+      "local_ignored_log": ".artifacts/takeover/cooking/checks/test.log",
+      "log_bytes": 17975,
+      "log_sha256": "9ab93817ddd1f448666438a96aac164c99f25eceacfe36ef1dd1a04329b46a3a"
+    },
+    {
+      "command": "pnpm audit --audit-level=high",
+      "exit_code": 1,
+      "actual_result": "OPEN_INHERITED: 1 low / 6 moderate / 1 high; unchanged dependencies; Vite GHSA-587h-7wmj-h5pm fixed >=6.4.4",
+      "local_ignored_log": ".artifacts/takeover/cooking/checks/audit.log",
+      "log_bytes": 2358,
+      "log_sha256": "6691d6cdd355ba892d7cc7951a0dd83253eab167c079d243d10191cd3c1b547f"
+    },
+    {
+      "command": "PREVIEW_MEAL_COMPOSITION_V2=true PORT=3292 PREVIEW_API_PORT=8918 pnpm exec playwright test --config=playwright.t17.config.ts --project=mobile-390 tests/e2e/t17-ui/takolio-cooking-continuation.e2e.ts tests/e2e/t17-ui/takolio-culinary-experience.e2e.ts tests/e2e/t17-ui/takolio-recipe-detail.e2e.ts --output=.artifacts/takeover/cooking/verified-paired",
+      "exit_code": 0,
+      "actual_result": "10/10 PASS (1.7m): cooking5, culinary2, detail3; final source",
+      "local_ignored_log": ".artifacts/takeover/cooking/checks/verified-paired.log",
+      "log_bytes": 25080,
+      "log_sha256": "4f374fcea220076a38a61cfa5c00e56012e8b631ec05cb48e22685e3dd33b814"
+    },
+    {
+      "command": "PORT=3292 PREVIEW_API_PORT=8918 pnpm exec playwright test --config=playwright.t17.config.ts --project=mobile-390 tests/e2e/t17-ui/takolio-cooking-continuation.e2e.ts --grep 'wall-clock timer|review return|actual-use guards|direct completion' --output=.artifacts/takeover/cooking/default-v1",
+      "exit_code": 0,
+      "actual_result": "4/4 PASS (21.8s); default composition V1 bounded behavioral subset",
+      "local_ignored_log": ".artifacts/takeover/cooking/checks/default-v1.log",
+      "log_bytes": 8308,
+      "log_sha256": "400cf29312b0b615127f807f6f929b2673c5d0f50ca84420393a766d7b0e4fa7"
+    }
+  ],
+  "retained_attempts": [
+    {
+      "log": "baseline-browser.log",
+      "exit_code": 1,
+      "outcome": "4 pass /1 fail in57.0s before product fix: missing servings query; after reload base2/six-to-three eggs; zero writes/unchanged inventory",
+      "local_ignored_log": ".artifacts/takeover/cooking/checks/baseline-browser.log",
+      "log_bytes": 14910,
+      "log_sha256": "70c09addc70b893d2be57e43e0050728b85f74847baca73b2c420e90f309d780"
+    },
+    {
+      "log": "paired-browser.log",
+      "exit_code": 0,
+      "outcome": "7/7 PASS (40.4s); initial detail-continuation filename filter matched no file; no recipe-detail coverage claimed from this run; superseded by correct final10",
+      "local_ignored_log": ".artifacts/takeover/cooking/checks/paired-browser.log",
+      "log_bytes": 14566,
+      "log_sha256": "ffe45db1fef2fdb2d0f12f025b7108cc9d80444f6bd3b0fe9a17cd9f565d849a"
+    },
+    {
+      "log": "build-paired.log",
+      "exit_code": 0,
+      "outcome": "PREVIEW_MEAL_COMPOSITION_V2=true pnpm build succeeds, but PREVIEW variable does not set Vite build flags; not counted as paired build; superseded by build-paired-vite-flags.log",
+      "local_ignored_log": ".artifacts/takeover/cooking/checks/build-paired.log",
+      "log_bytes": 10008,
+      "log_sha256": "e59ca630ad95a31f5e35a1dc9293496c9f66139db3965d23ded11208659bbb9a"
+    },
+    {
+      "log": "baseline-typecheck.log",
+      "exit_code": 0,
+      "outcome": "PASS baseline web/Worker typechecks",
+      "local_ignored_log": ".artifacts/takeover/cooking/checks/baseline-typecheck.log",
+      "log_bytes": 165,
+      "log_sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e"
+    },
+    {
+      "log": "targeted-eslint.log",
+      "exit_code": 0,
+      "outcome": "PASS targeted CookingReview and new cooking E2E ESLint",
+      "local_ignored_log": ".artifacts/takeover/cooking/checks/targeted-eslint.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "transcript_only_baseline": "Existing culinary baseline before extension:2/2 PASS (14.2s); command and tool output retained in task transcript, not independently hashed log.",
+  "production_actions": false
+}

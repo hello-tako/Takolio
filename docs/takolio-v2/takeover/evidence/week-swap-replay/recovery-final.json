@@ -1,0 +1,32 @@
+{
+  "result": "PASS_WITH_AUTHORIZED_PLATFORM_DRIFT",
+  "verified_at_utc": "2026-10-24T20:55:19.889787+00:00",
+  "source_regular_files": 22772,
+  "snapshot_regular_files": 22763,
+  "source_symlinks": 772,
+  "snapshot_symlinks": 772,
+  "snapshot_git_regular_files": 116,
+  "snapshot_baseline_integrity": true,
+  "snapshot_git_baseline_integrity": true,
+  "authorized_drift_paths": [
+    ".DS_Store",
+    "data/.DS_Store",
+    "docs/.DS_Store",
+    "frigo_frontend_prompt_kit_v1/.DS_Store",
+    "node_modules/.DS_Store",
+    "packages/.DS_Store",
+    "public/.DS_Store",
+    "scripts/.DS_Store",
+    "src/.DS_Store",
+    "tests/.DS_Store"
+  ],
+  "authorized_drift_separate_backup_verified": true,
+  "all_other_worktree_bytes_modes_links_match": true,
+  "head_index_status_match": true,
+  "optional_git_locks": false,
+  "unexpected_differences": [],
+  "source_index_unchanged_during_check": true,
+  "stored_manifest_unchanged": true,
+  "private_paths_published": false,
+  "seconds": 13.23
+}

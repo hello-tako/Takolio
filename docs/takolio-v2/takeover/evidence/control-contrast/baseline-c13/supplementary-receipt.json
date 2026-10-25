@@ -1,0 +1,54 @@
+{
+  "verifiedAt": "2026-10-23T23:14:35.376Z",
+  "originalReceiptPayloadsVerified": 34,
+  "originalReceiptSha256": "b4a68b2cd1f36e8ec6425d5dbe2ec2d1e6d874ae8aa7199ecb995faf7aca6caa",
+  "payloads": [
+    {
+      "path": "mobile-controls-contact.png",
+      "bytes": 284064,
+      "sha256": "5961a7f2bbea0487fbcab33ef9b038147c186e9bba26eeb8061d07bf810afeb0"
+    },
+    {
+      "path": "text200-controls-contact.png",
+      "bytes": 287358,
+      "sha256": "51d0ee887edca95acc109eee3c3e12a4e296b557f028eb01f45551119ac3a2de"
+    },
+    {
+      "path": "desktop-controls-contact.png",
+      "bytes": 722987,
+      "sha256": "f57eca576ae757d11ecb46769a7d7a88e88185a62cad7b2309125d670e0df65e"
+    },
+    {
+      "path": "source-review.json",
+      "bytes": 19196,
+      "sha256": "019567a4838ac4863141dc31821e7ceab171fc74140f4ed0377fd9a23e8e81f1"
+    },
+    {
+      "path": "manual-review.json",
+      "bytes": 1171,
+      "sha256": "a8b4af371745e45f4f644656f0c775a4def8cdf524e6bd942d87f4c79200d6da"
+    },
+    {
+      "path": "failed-attempts.json",
+      "bytes": 7294,
+      "sha256": "047879031aa28a15dfaaa0d5956b5a53ef285ae968c02b612f2c8c8be0768f1d"
+    }
+  ],
+  "runners": [
+    {
+      "path": ".artifacts/takeover/control-contrast/boundary.mjs",
+      "bytes": 10701,
+      "sha256": "0ed57dd002670e808edc1f090710d2791b575527615ecb7efcd0090426a7742e"
+    },
+    {
+      "path": ".artifacts/takeover/control-contrast/boundary-contact.mjs",
+      "bytes": 1313,
+      "sha256": "11bc1f41db087a17afd4048afab16e5f86c741edc5994cf57918e8a65f725ca5"
+    },
+    {
+      "path": ".artifacts/takeover/control-contrast/boundary-finalize.mjs",
+      "bytes": 6463,
+      "sha256": "6cf69a7b0b54d450dca3078c887aef198cdfbc791f69da325d09c1253486a811"
+    }
+  ]
+}

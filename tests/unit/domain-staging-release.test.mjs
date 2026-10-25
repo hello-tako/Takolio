@@ -53,17 +53,17 @@ describe('staging domain release fences', () => {
     const context = { uploadedVersionId: 'owned-version' };
     const events = [];
     const fake = { prepare: async () => context };
-    for (const step of ['build', 'upload', 'activate', 'proveLegacy', 'attach', 'finish', 'recover']) {
+    for (const step of ['prepareRecovery', 'build', 'upload', 'activate', 'proveLegacy', 'attach', 'finish', 'recover']) {
       fake[step] = vi.fn(async (value) => { expect(value).toBe(context); events.push(step); });
     }
     fake.proveHosts = async () => { events.push('proveHosts'); throw new Error('TLS failed'); };
     await expect(releaseStaging(fake)).rejects.toThrow('TLS failed');
-    expect(events).toEqual(['build', 'upload', 'activate', 'proveLegacy', 'attach', 'proveHosts', 'recover']);
+    expect(events).toEqual(['prepareRecovery', 'build', 'upload', 'activate', 'proveLegacy', 'attach', 'proveHosts', 'recover']);
     expect(fake.finish).not.toHaveBeenCalled();
   });
 
   it('stops before upload, traffic and host operations when build fails', async () => {
-    const fake = { prepare: async () => ({}), build: async () => { throw new Error('build failed'); },
+    const fake = { prepare: async () => ({}), prepareRecovery: vi.fn(), build: async () => { throw new Error('build failed'); },
       upload: vi.fn(), activate: vi.fn(), attach: vi.fn(), recover: vi.fn() };
     await expect(releaseStaging(fake)).rejects.toThrow('build failed');
     expect(fake.upload).not.toHaveBeenCalled();
@@ -85,22 +85,6 @@ it('uses trusted main and verifies the requested/workflow SHA before dependency 
   expect(workflow).toContain('environment: staging');
   expect(workflow).not.toContain('environment: production');
   expect(workflow).toContain('group: frigo-deploy-staging');
-});
-
-it('never treats an uncertain activation or changed traffic owner as a safe rollback', async () => {
-  const { recoveryAction } = await import('../../scripts/domain/staging-release.mjs');
-  const context = { mutationAttempted: true, state: 'activation-intent', audit: { worker: { versionId: 'previous' } },
-    uploadedVersionId: 'owned' };
-  expect(() => recoveryAction(context, { versionId: 'previous' })).toThrow('uncertain');
-  expect(recoveryAction(context, { versionId: 'owned', deploymentId: 'recordable' })).toBe('restore');
-  context.activeDeploymentId = 'original';
-  expect(() => recoveryAction(context, { versionId: 'owned', deploymentId: 'another' })).toThrow('ownership');
-  expect(() => recoveryAction(context, { versionId: 'unrelated' })).toThrow('ownership');
-  context.state = 'rolled-back';
-  expect(recoveryAction(context, { versionId: 'previous' })).toBe('verify-previous');
-  context.hosts = { state: 'attaching', created: [] };
-  expect(() => recoveryAction(context, { versionId: 'previous' })).toThrow('uncertain');
-  expect(recoveryAction({ mutationAttempted: false }, {})).toBe('none');
 });
 
 it('rejects a recovery receipt for production or another workflow source', async () => {

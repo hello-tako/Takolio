@@ -1,0 +1,220 @@
+{
+  "base_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "implementation_commit": "8c1ad40ec5e63587c8b3b2900d0e683b35a3c794",
+  "production_actions": false,
+  "environment": "macOS;Node25.9.0;pnpm10.33.2;unchanged main dependencies;isolated local Worker/SQLite synthetic household;external fetch and service workers blocked",
+  "source_sha256": {
+    "src/web/styles/kitchen-account.css": "f80ee43cff607cd031ec100718648d2d9238744dce3b545c446537060f222d9f",
+    "tests/e2e/t17-ui/takolio-notifications-continuation.e2e.ts": "23bd41c3dd4dea3c1b5f01656e52282d5ccaa51c6848721ab82c85fecc8b1efa"
+  },
+  "checks": [
+    {
+      "name": "focused-units",
+      "command": "pnpm exec vitest run tests/unit/ui08-account.test.tsx tests/unit/frontend-services.test.ts tests/unit/ui08-route-scope.test.tsx tests/unit/ui11-navigation.test.tsx",
+      "exit_code": 0,
+      "seconds": 2.43,
+      "outcome": "PASS 4 files/76 tests in1.56s",
+      "local_ignored_log": ".artifacts/takeover/notifications/checks/focused-units.log",
+      "log_bytes": 256,
+      "log_sha256": "986f94c7dc647e57602c81dde3175b2716b26791e2170f1f12f3447b8330dfaf"
+    },
+    {
+      "name": "focused-integration",
+      "command": "pnpm exec vitest run tests/integration/frontend-ui-integration.test.tsx tests/integration/auth-tenant-adversarial.test.ts tests/integration/inventory-closed-loop.test.ts",
+      "exit_code": 0,
+      "seconds": 7.55,
+      "outcome": "PASS 3 files/104 tests in6.86s",
+      "local_ignored_log": ".artifacts/takeover/notifications/checks/focused-integration.log",
+      "log_bytes": 256,
+      "log_sha256": "eb50b007b890285df4d10f6304482beeaf70ee9a4d2aaa35109d3554a2c285b8"
+    },
+    {
+      "name": "lint",
+      "command": "pnpm lint",
+      "exit_code": 0,
+      "seconds": 7.97,
+      "outcome": "PASS final product CSS before last two-animation-frame browser measurement adaptation",
+      "local_ignored_log": ".artifacts/takeover/notifications/final-gates/lint.log",
+      "log_bytes": 99,
+      "log_sha256": "3f2044fca43a5e60905becf2ebfc3a21ddd85976975841aa1e16bc87b0f40a6d"
+    },
+    {
+      "name": "typecheck",
+      "command": "pnpm typecheck",
+      "exit_code": 0,
+      "seconds": 19.44,
+      "outcome": "PASS final product CSS before last two-animation-frame browser measurement adaptation",
+      "local_ignored_log": ".artifacts/takeover/notifications/final-gates/typecheck.log",
+      "log_bytes": 165,
+      "log_sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e"
+    },
+    {
+      "name": "targeted-eslint",
+      "command": "pnpm exec eslint tests/e2e/t17-ui/takolio-notifications-continuation.e2e.ts",
+      "exit_code": 0,
+      "seconds": 1.01,
+      "outcome": "PASS final product CSS before last two-animation-frame browser measurement adaptation",
+      "local_ignored_log": ".artifacts/takeover/notifications/final-gates/targeted-eslint.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "migrations",
+      "command": "pnpm check:migrations",
+      "exit_code": 0,
+      "seconds": 0.54,
+      "outcome": "PASS final product CSS before last two-animation-frame browser measurement adaptation",
+      "local_ignored_log": ".artifacts/takeover/notifications/final-gates/migrations.log",
+      "log_bytes": 297,
+      "log_sha256": "9616315a9fcbfd77c67784703a16384419539e6a68ccd2838dda07239de25464"
+    },
+    {
+      "name": "build",
+      "command": "pnpm build",
+      "exit_code": 0,
+      "seconds": 10.03,
+      "outcome": "PASS default web/Admin/Worker build;existing Admin font warnings",
+      "local_ignored_log": ".artifacts/takeover/notifications/final-gates/build.log",
+      "log_bytes": 10008,
+      "log_sha256": "ec89e7e68f7f0fd128610965d43c19c6b938a8a18e297fb5406c2a732d0e1062"
+    },
+    {
+      "name": "audit",
+      "command": "pnpm audit --json",
+      "exit_code": 1,
+      "seconds": 1.41,
+      "outcome": "OPEN_INHERITED 1 low/6 moderate/1 high;Vite GHSA-587h-7wmj-h5pm",
+      "local_ignored_log": ".artifacts/takeover/notifications/final-gates/audit.log",
+      "log_bytes": 43734,
+      "log_sha256": "3256cc0c6e0545751f2cfdb3223b90a27a32043a364bb025bc5047465d90103f"
+    },
+    {
+      "name": "frozen-lint",
+      "command": "pnpm lint",
+      "exit_code": 0,
+      "outcome": "PASS final committed source",
+      "local_ignored_log": ".artifacts/takeover/notifications/frozen-lint.log",
+      "log_bytes": 99,
+      "log_sha256": "3f2044fca43a5e60905becf2ebfc3a21ddd85976975841aa1e16bc87b0f40a6d"
+    },
+    {
+      "name": "frozen-typecheck",
+      "command": "pnpm typecheck",
+      "exit_code": 0,
+      "outcome": "PASS final committed source",
+      "local_ignored_log": ".artifacts/takeover/notifications/frozen-typecheck.log",
+      "log_bytes": 165,
+      "log_sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e"
+    },
+    {
+      "name": "frozen-targeted-eslint",
+      "command": "pnpm exec eslint tests/e2e/t17-ui/takolio-notifications-continuation.e2e.ts",
+      "exit_code": 0,
+      "outcome": "PASS final committed source",
+      "local_ignored_log": ".artifacts/takeover/notifications/frozen-eslint.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "actual-paired-build",
+      "command": "VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build",
+      "exit_code": 0,
+      "outcome": "PASS actual paired web/Admin/Worker build;existing Admin font warnings",
+      "local_ignored_log": ".artifacts/takeover/notifications/actual-paired-build.log",
+      "log_bytes": 10009,
+      "log_sha256": "74c570aa17bcbea1f0e76be44d4c8f841502ca76052600b246631da12610c07b"
+    },
+    {
+      "name": "canonical-full-suite",
+      "command": "TMPDIR=/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/ pnpm test",
+      "exit_code": 1,
+      "reported_duration_seconds": 194.75,
+      "outcome": "PARTIAL410/412files;9163/9168tests;five inherited encoded-space CLI failures;no timeouts;protected tests/scripts unchanged",
+      "local_ignored_log": ".artifacts/takeover/notifications/canonical-test.log",
+      "log_bytes": 17955,
+      "log_sha256": "aa3fb6d04552170cd5041ac83166feaf35edbcff54bb0aca920b2f2e1b99059b"
+    },
+    {
+      "name": "frozen-browser",
+      "command": "PREVIEW_MEAL_COMPOSITION_V2=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-notifications-continuation.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/notifications/final2",
+      "exit_code": 0,
+      "reported_duration_seconds": 58.9,
+      "outcome": "PASS4/4;60PNG/60zero-violation axe;60incomplete contrast;60preferences-link measurements reachable;stock/shopping unchanged;noAPIwrites",
+      "local_ignored_log": ".artifacts/takeover/notifications/final2.log",
+      "log_bytes": 15711,
+      "log_sha256": "362e9fe1535f7ebaeebd552d90a032783dccb1922654134fdac012018118fe19"
+    }
+  ],
+  "retained_attempts": [
+    {
+      "name": "paired-build",
+      "command": "VITE_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build:web",
+      "exit_code": 0,
+      "seconds": 4.16,
+      "outcome": "Exit0 but wrong planner variable VITE_PLANNER_ENABLED;not paired-build evidence;correct actual build recorded separately",
+      "local_ignored_log": ".artifacts/takeover/notifications/final-gates/paired-build.log",
+      "log_bytes": 8571,
+      "log_sha256": "e667d76646aa75110f9e0b7b8ab4cd2c334fb7aacd9e293b79adcf918408ae96"
+    },
+    {
+      "name": "test",
+      "command": "TMPDIR=/tmp pnpm test",
+      "exit_code": 1,
+      "seconds": 217.31,
+      "outcome": "PARTIAL406/412files;9150/9168tests;216.44s;five inherited encoded-space CLI failures,eleven /tmp versus /private/tmp path failures,two5000ms timeouts;superseded canonical-TMPDIR full run",
+      "local_ignored_log": ".artifacts/takeover/notifications/final-gates/test.log",
+      "log_bytes": 28852,
+      "log_sha256": "a5c25088866d2049d237c5841e089e8dd728f4fa9cd755a00110507d671fe594"
+    },
+    {
+      "name": "baseline",
+      "outcome": "FAIL2;real-flow harness expected home instead of existing onboarding guard;state test reproduces long-content overflow then180s timeout on unreachable preferences link",
+      "local_ignored_log": ".artifacts/takeover/notifications/baseline.log",
+      "log_bytes": 19275,
+      "log_sha256": "e415099c762cfd184d5916006085c7a78804f84ca0d01d6e8364b50f7092c950"
+    },
+    {
+      "name": "baseline2",
+      "outcome": "PARTIAL1pass/1fail32.2s;guard harness corrected;long-content overflow/reachability failure retained across nineconfigs;subsequent empty-state actionability affected by huge layout",
+      "local_ignored_log": ".artifacts/takeover/notifications/baseline2.log",
+      "log_bytes": 40430,
+      "log_sha256": "cfcbb3f96212fd757570a0dc4086e5ca2dc016b5dac5d47954f967b51366f39c"
+    },
+    {
+      "name": "final",
+      "outcome": "PARTIAL3pass/1fail42.7s;final product CSS;first desktop1440-to320 resize measured transient408px overflow before existing ResizeObserver/rAF shell settled;screenshot already correct;final harness retains immediate metrics and asserts after two animation frames",
+      "local_ignored_log": ".artifacts/takeover/notifications/final.log",
+      "log_bytes": 19501,
+      "log_sha256": "7de4cdfc64bcaf0944ea534fe987200fce15d967b4e34753d198cc067b507311"
+    },
+    {
+      "name": "baseline-eslint",
+      "outcome": "PASS before product correction",
+      "local_ignored_log": ".artifacts/takeover/notifications/baseline-eslint.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "final-eslint",
+      "outcome": "PASS before final two-animation-frame harness refinement",
+      "local_ignored_log": ".artifacts/takeover/notifications/final-eslint.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "recovery",
+      "outcome": "PASS full original-source/private-snapshot verifier before implementation commit;exact private paths remain ignored",
+      "local_ignored_log": ".artifacts/takeover/notifications/recovery.log",
+      "log_bytes": 624,
+      "log_sha256": "43f2a0a0cd62b2a40c647e724d44cc5eab291bb9b2553976d15e7d36176a21ca"
+    },
+    {
+      "name": "recovery-after-implementation",
+      "outcome": "PASS full original-source/private-snapshot verifier after implementation commit;exact private paths remain ignored",
+      "local_ignored_log": ".artifacts/takeover/notifications/recovery-after-implementation.log",
+      "log_bytes": 624,
+      "log_sha256": "3cccb4a2a3c6a9bd18669569d44dc8508e054182169480cfc2abe743c311ed0a"
+    }
+  ],
+  "scope": "One scoped CSS rule only in product. Frozen browser/lint/types/ESLint and canonical full suite cover final source. Builds/migration/focused tests use final product CSS before last E2E-only timing adaptation. No protected test/script/assertion/timeout/dependency changes. Actual API cases are distinct from notification-only shaped responses. Root-font and two-frame settled layout checks do not certify browser/OS zoom,physical devices,screen readers,live push or production."
+}

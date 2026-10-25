@@ -1,0 +1,2139 @@
+{
+  "base_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "implementation_commit": "793ade743aecc4cafd0c39f8e1bd3e457f75bc50",
+  "scope": "Existing UI08 legacy taste editor; identical before/after browser harness; real local preference API and offline guest fallback. Synthetic values only; no customer IDs, credentials or recovery locations. Shaped read/write500 failures. All payload bytes match ignored raw outputs.",
+  "entries": [
+    {
+      "path": "before/desktop-1440/axe-save-error-1440x900-text1.json",
+      "bytes": 3127,
+      "sha256": "4aa06d47f0d2a21664fdf562f1a1c348e685dd9ba555480fe189a5601fa6a2db",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-save-error-1440x900-text1.json",
+      "raw_sha256": "4aa06d47f0d2a21664fdf562f1a1c348e685dd9ba555480fe189a5601fa6a2db"
+    },
+    {
+      "path": "before/desktop-1440/axe-save-error-320x420-text2.json",
+      "bytes": 3124,
+      "sha256": "5aece17341883dd1bacfde9a78c1ca068999d4470c7a140ddb1722cb165a82de",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-save-error-320x420-text2.json",
+      "raw_sha256": "5aece17341883dd1bacfde9a78c1ca068999d4470c7a140ddb1722cb165a82de"
+    },
+    {
+      "path": "before/desktop-1440/axe-save-error-320x568-text1.json",
+      "bytes": 3124,
+      "sha256": "6ccb6cf6b0df52c0a6fea2f21f6d4b027967287a1f98549c4fcb3affd5cd81a7",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-save-error-320x568-text1.json",
+      "raw_sha256": "6ccb6cf6b0df52c0a6fea2f21f6d4b027967287a1f98549c4fcb3affd5cd81a7"
+    },
+    {
+      "path": "before/desktop-1440/axe-save-error-390x844-text1.json",
+      "bytes": 3124,
+      "sha256": "7b95e72dc7f64aa6a5de59af90b51f6c9ff2e9ac6fc8d249b5c29b434d80e3f6",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-save-error-390x844-text1.json",
+      "raw_sha256": "7b95e72dc7f64aa6a5de59af90b51f6c9ff2e9ac6fc8d249b5c29b434d80e3f6"
+    },
+    {
+      "path": "before/desktop-1440/axe-saved-reload-1440x900-text1.json",
+      "bytes": 3129,
+      "sha256": "18f2f5046b45b7ce60eed561c0db6d20a6bfe70036c54a967e72bb803f571106",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-saved-reload-1440x900-text1.json",
+      "raw_sha256": "18f2f5046b45b7ce60eed561c0db6d20a6bfe70036c54a967e72bb803f571106"
+    },
+    {
+      "path": "before/desktop-1440/axe-saved-reload-320x420-text2.json",
+      "bytes": 3126,
+      "sha256": "5f711920d870e55b86f2fb1d4205389d59e83af1601c77d0224764df573b989b",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-saved-reload-320x420-text2.json",
+      "raw_sha256": "5f711920d870e55b86f2fb1d4205389d59e83af1601c77d0224764df573b989b"
+    },
+    {
+      "path": "before/desktop-1440/axe-saved-reload-320x568-text1.json",
+      "bytes": 3126,
+      "sha256": "596856f850d0755ba957dddc4b9c8d3708f7370b5132a1ffada2794c75966ba8",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-saved-reload-320x568-text1.json",
+      "raw_sha256": "596856f850d0755ba957dddc4b9c8d3708f7370b5132a1ffada2794c75966ba8"
+    },
+    {
+      "path": "before/desktop-1440/axe-saved-reload-390x844-text1.json",
+      "bytes": 3126,
+      "sha256": "fc23ca45831afd8260fb145df9137b79d99f8c0c48678a22047f14a21df769cf",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-saved-reload-390x844-text1.json",
+      "raw_sha256": "fc23ca45831afd8260fb145df9137b79d99f8c0c48678a22047f14a21df769cf"
+    },
+    {
+      "path": "before/desktop-1440/axe-saving-1440x900-text1.json",
+      "bytes": 3150,
+      "sha256": "20d44cf6f580676c3232535974cc613228c900a1c254b3d95a50688e000ca6a8",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-saving-1440x900-text1.json",
+      "raw_sha256": "20d44cf6f580676c3232535974cc613228c900a1c254b3d95a50688e000ca6a8"
+    },
+    {
+      "path": "before/desktop-1440/axe-saving-320x420-text2.json",
+      "bytes": 3147,
+      "sha256": "85ae2f6010718d06f2cec5b9e34d60a7edf43ee7b300cf614fda1eb34dc479ec",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-saving-320x420-text2.json",
+      "raw_sha256": "85ae2f6010718d06f2cec5b9e34d60a7edf43ee7b300cf614fda1eb34dc479ec"
+    },
+    {
+      "path": "before/desktop-1440/axe-saving-320x568-text1.json",
+      "bytes": 3147,
+      "sha256": "c8fd717619f16bcb5424baa93395acf0b2902d66067a76fa6b5cadd02f620aa7",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-saving-320x568-text1.json",
+      "raw_sha256": "c8fd717619f16bcb5424baa93395acf0b2902d66067a76fa6b5cadd02f620aa7"
+    },
+    {
+      "path": "before/desktop-1440/axe-saving-390x844-text1.json",
+      "bytes": 3147,
+      "sha256": "05ae1cef2e17467ab0234b7c77edb9da28c76c0add7b56505f41ee647db23e90",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-saving-390x844-text1.json",
+      "raw_sha256": "05ae1cef2e17467ab0234b7c77edb9da28c76c0add7b56505f41ee647db23e90"
+    },
+    {
+      "path": "before/desktop-1440/axe-server-values-1440x900-text1.json",
+      "bytes": 3130,
+      "sha256": "89ac67b3f61a454eebbce6f9418646c00b4ea9146e4c12a3f906cd8987f4a14c",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-server-values-1440x900-text1.json",
+      "raw_sha256": "89ac67b3f61a454eebbce6f9418646c00b4ea9146e4c12a3f906cd8987f4a14c"
+    },
+    {
+      "path": "before/desktop-1440/axe-server-values-320x420-text2.json",
+      "bytes": 3127,
+      "sha256": "3ad16fbc8f4cbee03ac1d28adcf596100062197f093537a6349d447e637f17ee",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-server-values-320x420-text2.json",
+      "raw_sha256": "3ad16fbc8f4cbee03ac1d28adcf596100062197f093537a6349d447e637f17ee"
+    },
+    {
+      "path": "before/desktop-1440/axe-server-values-320x568-text1.json",
+      "bytes": 3127,
+      "sha256": "045f4ade7277fc54fd5dcd84682464e2b2d3e5fe84abb27c502bfaf6eb716d8e",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-server-values-320x568-text1.json",
+      "raw_sha256": "045f4ade7277fc54fd5dcd84682464e2b2d3e5fe84abb27c502bfaf6eb716d8e"
+    },
+    {
+      "path": "before/desktop-1440/axe-server-values-390x844-text1.json",
+      "bytes": 3127,
+      "sha256": "e1fffb1d308b9dfc6f019aee0f2d7b7cf623b2b358df162d2eb30c24a740d637",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-server-values-390x844-text1.json",
+      "raw_sha256": "e1fffb1d308b9dfc6f019aee0f2d7b7cf623b2b358df162d2eb30c24a740d637"
+    },
+    {
+      "path": "before/desktop-1440/roundtrip-summary.json",
+      "bytes": 61075,
+      "sha256": "64e9d616f1470aa05e335b96b15a6e10b5520cdd58d71d8d23e33c35b28c7eb2",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/roundtrip-summary.json",
+      "raw_sha256": "64e9d616f1470aa05e335b96b15a6e10b5520cdd58d71d8d23e33c35b28c7eb2"
+    },
+    {
+      "path": "before/desktop-1440/save-error-1440x900-text1.png",
+      "bytes": 103232,
+      "sha256": "6aed554a1025acdadfd68cd83ed9d50fe88e47e94622b9aaf5486842fae2cc06",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/save-error-1440x900-text1.png",
+      "raw_sha256": "6aed554a1025acdadfd68cd83ed9d50fe88e47e94622b9aaf5486842fae2cc06",
+      "width": 1440,
+      "height": 1041
+    },
+    {
+      "path": "before/desktop-1440/save-error-320x420-text2.png",
+      "bytes": 174548,
+      "sha256": "f291d77c5a4520825a39d3f97225dfa351a6710661594ed76e914bae82d6cf65",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/save-error-320x420-text2.png",
+      "raw_sha256": "f291d77c5a4520825a39d3f97225dfa351a6710661594ed76e914bae82d6cf65",
+      "width": 320,
+      "height": 3307
+    },
+    {
+      "path": "before/desktop-1440/save-error-320x568-text1.png",
+      "bytes": 90552,
+      "sha256": "62c9e991c153d38d19ad483184d0d927b753d5eefd9fabb3dc32297017d1db9b",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/save-error-320x568-text1.png",
+      "raw_sha256": "62c9e991c153d38d19ad483184d0d927b753d5eefd9fabb3dc32297017d1db9b",
+      "width": 320,
+      "height": 1587
+    },
+    {
+      "path": "before/desktop-1440/save-error-390x844-text1.png",
+      "bytes": 82334,
+      "sha256": "b756cda10782c1c8562c501f00891c81446a2a59e1622e2071ec6b55d7b57317",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/save-error-390x844-text1.png",
+      "raw_sha256": "b756cda10782c1c8562c501f00891c81446a2a59e1622e2071ec6b55d7b57317",
+      "width": 390,
+      "height": 1375
+    },
+    {
+      "path": "before/desktop-1440/saved-reload-1440x900-text1.png",
+      "bytes": 129986,
+      "sha256": "cf9077fecad7c10be6e24fb40e62e8fdc9ca28814e92fc49c5828d342d2c15b3",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/saved-reload-1440x900-text1.png",
+      "raw_sha256": "cf9077fecad7c10be6e24fb40e62e8fdc9ca28814e92fc49c5828d342d2c15b3",
+      "width": 1440,
+      "height": 1002
+    },
+    {
+      "path": "before/desktop-1440/saved-reload-320x420-text2.png",
+      "bytes": 147650,
+      "sha256": "6661cf54d7a025e02d3976e1182e132a01680c93b54ee84bdd88cb90c29d322d",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/saved-reload-320x420-text2.png",
+      "raw_sha256": "6661cf54d7a025e02d3976e1182e132a01680c93b54ee84bdd88cb90c29d322d",
+      "width": 320,
+      "height": 3230
+    },
+    {
+      "path": "before/desktop-1440/saved-reload-320x568-text1.png",
+      "bytes": 84807,
+      "sha256": "68e1a5899c25171cbb739a8e9f5f526ff5bb9c6ba7d7a21a0015e808323bc8d2",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/saved-reload-320x568-text1.png",
+      "raw_sha256": "68e1a5899c25171cbb739a8e9f5f526ff5bb9c6ba7d7a21a0015e808323bc8d2",
+      "width": 320,
+      "height": 1526
+    },
+    {
+      "path": "before/desktop-1440/saved-reload-390x844-text1.png",
+      "bytes": 91295,
+      "sha256": "9dff0df4658f573cc7d4ed77717aeb6c27d06e9b63b29ba8da0163d1dd1613b2",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/saved-reload-390x844-text1.png",
+      "raw_sha256": "9dff0df4658f573cc7d4ed77717aeb6c27d06e9b63b29ba8da0163d1dd1613b2",
+      "width": 390,
+      "height": 1336
+    },
+    {
+      "path": "before/desktop-1440/saving-1440x900-text1.png",
+      "bytes": 125707,
+      "sha256": "cf466d180051ff82bbb8107270567782e33a00c61d87ff3f321aff1443fdd907",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/saving-1440x900-text1.png",
+      "raw_sha256": "cf466d180051ff82bbb8107270567782e33a00c61d87ff3f321aff1443fdd907",
+      "width": 1440,
+      "height": 1002
+    },
+    {
+      "path": "before/desktop-1440/saving-320x420-text2.png",
+      "bytes": 151310,
+      "sha256": "f91a6b399dac69e937410677ee4d1b3b25ce7a7879778ae077315628ac87012f",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/saving-320x420-text2.png",
+      "raw_sha256": "f91a6b399dac69e937410677ee4d1b3b25ce7a7879778ae077315628ac87012f",
+      "width": 320,
+      "height": 3269
+    },
+    {
+      "path": "before/desktop-1440/saving-320x568-text1.png",
+      "bytes": 85433,
+      "sha256": "c59f0c5cd6c93d7cc1ea788b06e087634655e62b41ea1d464b6ec410aafffadf",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/saving-320x568-text1.png",
+      "raw_sha256": "c59f0c5cd6c93d7cc1ea788b06e087634655e62b41ea1d464b6ec410aafffadf",
+      "width": 320,
+      "height": 1526
+    },
+    {
+      "path": "before/desktop-1440/saving-390x844-text1.png",
+      "bytes": 91108,
+      "sha256": "6c46098d68b666a5f87b12902dfc2678688266c0607c63bbe4493651467d51f0",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/saving-390x844-text1.png",
+      "raw_sha256": "6c46098d68b666a5f87b12902dfc2678688266c0607c63bbe4493651467d51f0",
+      "width": 390,
+      "height": 1336
+    },
+    {
+      "path": "before/desktop-1440/server-values-1440x900-text1.png",
+      "bytes": 126384,
+      "sha256": "b83f6f335199f69718c3ae4120c1f8df11cf23fdefb56d69d0843ccc8e94d41b",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/server-values-1440x900-text1.png",
+      "raw_sha256": "b83f6f335199f69718c3ae4120c1f8df11cf23fdefb56d69d0843ccc8e94d41b",
+      "width": 1440,
+      "height": 1002
+    },
+    {
+      "path": "before/desktop-1440/server-values-320x420-text2.png",
+      "bytes": 146584,
+      "sha256": "3572e1b1cd32bc6755ce15252785c5cd7267cb7e0d61ba7728163de750dc3f8d",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/server-values-320x420-text2.png",
+      "raw_sha256": "3572e1b1cd32bc6755ce15252785c5cd7267cb7e0d61ba7728163de750dc3f8d",
+      "width": 320,
+      "height": 3230
+    },
+    {
+      "path": "before/desktop-1440/server-values-320x568-text1.png",
+      "bytes": 82560,
+      "sha256": "95b116cd36fce705049ef4702e2602ae6d69d8edf8c72d79970e5ecca2ac54a2",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/server-values-320x568-text1.png",
+      "raw_sha256": "95b116cd36fce705049ef4702e2602ae6d69d8edf8c72d79970e5ecca2ac54a2",
+      "width": 320,
+      "height": 1526
+    },
+    {
+      "path": "before/desktop-1440/server-values-390x844-text1.png",
+      "bytes": 87270,
+      "sha256": "a81f96f4d7bd5e91a6cf3e8a64d7c25492631e6a1afb26f84c52b2cc021dcc2f",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/server-values-390x844-text1.png",
+      "raw_sha256": "a81f96f4d7bd5e91a6cf3e8a64d7c25492631e6a1afb26f84c52b2cc021dcc2f",
+      "width": 390,
+      "height": 1336
+    },
+    {
+      "path": "before/mobile-390/axe-save-error-1440x900-text1.json",
+      "bytes": 3127,
+      "sha256": "4aa06d47f0d2a21664fdf562f1a1c348e685dd9ba555480fe189a5601fa6a2db",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-save-error-1440x900-text1.json",
+      "raw_sha256": "4aa06d47f0d2a21664fdf562f1a1c348e685dd9ba555480fe189a5601fa6a2db"
+    },
+    {
+      "path": "before/mobile-390/axe-save-error-320x420-text2.json",
+      "bytes": 3124,
+      "sha256": "5aece17341883dd1bacfde9a78c1ca068999d4470c7a140ddb1722cb165a82de",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-save-error-320x420-text2.json",
+      "raw_sha256": "5aece17341883dd1bacfde9a78c1ca068999d4470c7a140ddb1722cb165a82de"
+    },
+    {
+      "path": "before/mobile-390/axe-save-error-320x568-text1.json",
+      "bytes": 3124,
+      "sha256": "6ccb6cf6b0df52c0a6fea2f21f6d4b027967287a1f98549c4fcb3affd5cd81a7",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-save-error-320x568-text1.json",
+      "raw_sha256": "6ccb6cf6b0df52c0a6fea2f21f6d4b027967287a1f98549c4fcb3affd5cd81a7"
+    },
+    {
+      "path": "before/mobile-390/axe-save-error-390x844-text1.json",
+      "bytes": 3124,
+      "sha256": "7b95e72dc7f64aa6a5de59af90b51f6c9ff2e9ac6fc8d249b5c29b434d80e3f6",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-save-error-390x844-text1.json",
+      "raw_sha256": "7b95e72dc7f64aa6a5de59af90b51f6c9ff2e9ac6fc8d249b5c29b434d80e3f6"
+    },
+    {
+      "path": "before/mobile-390/axe-saved-reload-1440x900-text1.json",
+      "bytes": 3129,
+      "sha256": "18f2f5046b45b7ce60eed561c0db6d20a6bfe70036c54a967e72bb803f571106",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-saved-reload-1440x900-text1.json",
+      "raw_sha256": "18f2f5046b45b7ce60eed561c0db6d20a6bfe70036c54a967e72bb803f571106"
+    },
+    {
+      "path": "before/mobile-390/axe-saved-reload-320x420-text2.json",
+      "bytes": 3126,
+      "sha256": "5f711920d870e55b86f2fb1d4205389d59e83af1601c77d0224764df573b989b",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-saved-reload-320x420-text2.json",
+      "raw_sha256": "5f711920d870e55b86f2fb1d4205389d59e83af1601c77d0224764df573b989b"
+    },
+    {
+      "path": "before/mobile-390/axe-saved-reload-320x568-text1.json",
+      "bytes": 3126,
+      "sha256": "596856f850d0755ba957dddc4b9c8d3708f7370b5132a1ffada2794c75966ba8",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-saved-reload-320x568-text1.json",
+      "raw_sha256": "596856f850d0755ba957dddc4b9c8d3708f7370b5132a1ffada2794c75966ba8"
+    },
+    {
+      "path": "before/mobile-390/axe-saved-reload-390x844-text1.json",
+      "bytes": 3126,
+      "sha256": "fc23ca45831afd8260fb145df9137b79d99f8c0c48678a22047f14a21df769cf",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-saved-reload-390x844-text1.json",
+      "raw_sha256": "fc23ca45831afd8260fb145df9137b79d99f8c0c48678a22047f14a21df769cf"
+    },
+    {
+      "path": "before/mobile-390/axe-saving-1440x900-text1.json",
+      "bytes": 3150,
+      "sha256": "20d44cf6f580676c3232535974cc613228c900a1c254b3d95a50688e000ca6a8",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-saving-1440x900-text1.json",
+      "raw_sha256": "20d44cf6f580676c3232535974cc613228c900a1c254b3d95a50688e000ca6a8"
+    },
+    {
+      "path": "before/mobile-390/axe-saving-320x420-text2.json",
+      "bytes": 3147,
+      "sha256": "85ae2f6010718d06f2cec5b9e34d60a7edf43ee7b300cf614fda1eb34dc479ec",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-saving-320x420-text2.json",
+      "raw_sha256": "85ae2f6010718d06f2cec5b9e34d60a7edf43ee7b300cf614fda1eb34dc479ec"
+    },
+    {
+      "path": "before/mobile-390/axe-saving-320x568-text1.json",
+      "bytes": 3147,
+      "sha256": "c8fd717619f16bcb5424baa93395acf0b2902d66067a76fa6b5cadd02f620aa7",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-saving-320x568-text1.json",
+      "raw_sha256": "c8fd717619f16bcb5424baa93395acf0b2902d66067a76fa6b5cadd02f620aa7"
+    },
+    {
+      "path": "before/mobile-390/axe-saving-390x844-text1.json",
+      "bytes": 3147,
+      "sha256": "05ae1cef2e17467ab0234b7c77edb9da28c76c0add7b56505f41ee647db23e90",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-saving-390x844-text1.json",
+      "raw_sha256": "05ae1cef2e17467ab0234b7c77edb9da28c76c0add7b56505f41ee647db23e90"
+    },
+    {
+      "path": "before/mobile-390/axe-server-values-1440x900-text1.json",
+      "bytes": 3130,
+      "sha256": "89ac67b3f61a454eebbce6f9418646c00b4ea9146e4c12a3f906cd8987f4a14c",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-server-values-1440x900-text1.json",
+      "raw_sha256": "89ac67b3f61a454eebbce6f9418646c00b4ea9146e4c12a3f906cd8987f4a14c"
+    },
+    {
+      "path": "before/mobile-390/axe-server-values-320x420-text2.json",
+      "bytes": 3127,
+      "sha256": "3ad16fbc8f4cbee03ac1d28adcf596100062197f093537a6349d447e637f17ee",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-server-values-320x420-text2.json",
+      "raw_sha256": "3ad16fbc8f4cbee03ac1d28adcf596100062197f093537a6349d447e637f17ee"
+    },
+    {
+      "path": "before/mobile-390/axe-server-values-320x568-text1.json",
+      "bytes": 3127,
+      "sha256": "045f4ade7277fc54fd5dcd84682464e2b2d3e5fe84abb27c502bfaf6eb716d8e",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-server-values-320x568-text1.json",
+      "raw_sha256": "045f4ade7277fc54fd5dcd84682464e2b2d3e5fe84abb27c502bfaf6eb716d8e"
+    },
+    {
+      "path": "before/mobile-390/axe-server-values-390x844-text1.json",
+      "bytes": 3127,
+      "sha256": "e1fffb1d308b9dfc6f019aee0f2d7b7cf623b2b358df162d2eb30c24a740d637",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-server-values-390x844-text1.json",
+      "raw_sha256": "e1fffb1d308b9dfc6f019aee0f2d7b7cf623b2b358df162d2eb30c24a740d637"
+    },
+    {
+      "path": "before/mobile-390/roundtrip-summary.json",
+      "bytes": 61075,
+      "sha256": "64e9d616f1470aa05e335b96b15a6e10b5520cdd58d71d8d23e33c35b28c7eb2",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/roundtrip-summary.json",
+      "raw_sha256": "64e9d616f1470aa05e335b96b15a6e10b5520cdd58d71d8d23e33c35b28c7eb2"
+    },
+    {
+      "path": "before/mobile-390/save-error-1440x900-text1.png",
+      "bytes": 99979,
+      "sha256": "80825f325c0c22d108f12917f7020c79a16b350dbfb9c56580b635e34d5676ee",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/save-error-1440x900-text1.png",
+      "raw_sha256": "80825f325c0c22d108f12917f7020c79a16b350dbfb9c56580b635e34d5676ee",
+      "width": 1440,
+      "height": 1041
+    },
+    {
+      "path": "before/mobile-390/save-error-320x420-text2.png",
+      "bytes": 174480,
+      "sha256": "b94b395de2e0e153f36fb98753678f1fab064ab7a2d4dcb5610f62336b03b821",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/save-error-320x420-text2.png",
+      "raw_sha256": "b94b395de2e0e153f36fb98753678f1fab064ab7a2d4dcb5610f62336b03b821",
+      "width": 320,
+      "height": 3307
+    },
+    {
+      "path": "before/mobile-390/save-error-320x568-text1.png",
+      "bytes": 90480,
+      "sha256": "395c5e7fcd90c922f698f1cac7afe425ab5f946e116519f4e9a677caaecd2b36",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/save-error-320x568-text1.png",
+      "raw_sha256": "395c5e7fcd90c922f698f1cac7afe425ab5f946e116519f4e9a677caaecd2b36",
+      "width": 320,
+      "height": 1587
+    },
+    {
+      "path": "before/mobile-390/save-error-390x844-text1.png",
+      "bytes": 81438,
+      "sha256": "9fc45fa8e7ab482bbce9d870852fc18937c8e1ed6ca4a9c3e935449dbe7f5298",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/save-error-390x844-text1.png",
+      "raw_sha256": "9fc45fa8e7ab482bbce9d870852fc18937c8e1ed6ca4a9c3e935449dbe7f5298",
+      "width": 390,
+      "height": 1375
+    },
+    {
+      "path": "before/mobile-390/saved-reload-1440x900-text1.png",
+      "bytes": 131298,
+      "sha256": "6d02af02de0f6502f7283cf334d6f2a92468b724de26fb0c21d79844f5b1539b",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/saved-reload-1440x900-text1.png",
+      "raw_sha256": "6d02af02de0f6502f7283cf334d6f2a92468b724de26fb0c21d79844f5b1539b",
+      "width": 1440,
+      "height": 1002
+    },
+    {
+      "path": "before/mobile-390/saved-reload-320x420-text2.png",
+      "bytes": 147722,
+      "sha256": "8cd21db65b36b4cab49ba7565be65470517127b08e4abd0d5991854aedf5c7fb",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/saved-reload-320x420-text2.png",
+      "raw_sha256": "8cd21db65b36b4cab49ba7565be65470517127b08e4abd0d5991854aedf5c7fb",
+      "width": 320,
+      "height": 3230
+    },
+    {
+      "path": "before/mobile-390/saved-reload-320x568-text1.png",
+      "bytes": 86044,
+      "sha256": "979dfc4bc533eeb0fa57226cc91dfadc6dedc6bcae004b611eaa7413932e39db",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/saved-reload-320x568-text1.png",
+      "raw_sha256": "979dfc4bc533eeb0fa57226cc91dfadc6dedc6bcae004b611eaa7413932e39db",
+      "width": 320,
+      "height": 1526
+    },
+    {
+      "path": "before/mobile-390/saved-reload-390x844-text1.png",
+      "bytes": 83929,
+      "sha256": "edce8ec990d1e359ca71bebd45bb314f6fd94676f2c37ad1379bc1e061161016",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/saved-reload-390x844-text1.png",
+      "raw_sha256": "edce8ec990d1e359ca71bebd45bb314f6fd94676f2c37ad1379bc1e061161016",
+      "width": 390,
+      "height": 1336
+    },
+    {
+      "path": "before/mobile-390/saving-1440x900-text1.png",
+      "bytes": 132135,
+      "sha256": "b550cd020da0037eaec6a0a40c51ad0e52cd046894e9acb8167886e34db21ee2",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/saving-1440x900-text1.png",
+      "raw_sha256": "b550cd020da0037eaec6a0a40c51ad0e52cd046894e9acb8167886e34db21ee2",
+      "width": 1440,
+      "height": 1002
+    },
+    {
+      "path": "before/mobile-390/saving-320x420-text2.png",
+      "bytes": 151375,
+      "sha256": "f34c5b61c36b201203b9b281e61c53f294ac0053f651beb0e4889ea2fa2aa2ee",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/saving-320x420-text2.png",
+      "raw_sha256": "f34c5b61c36b201203b9b281e61c53f294ac0053f651beb0e4889ea2fa2aa2ee",
+      "width": 320,
+      "height": 3269
+    },
+    {
+      "path": "before/mobile-390/saving-320x568-text1.png",
+      "bytes": 85372,
+      "sha256": "ed03ae056a97e05b61657c52672eb221506baa71a2b295b6b4aed7c522e7ec9f",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/saving-320x568-text1.png",
+      "raw_sha256": "ed03ae056a97e05b61657c52672eb221506baa71a2b295b6b4aed7c522e7ec9f",
+      "width": 320,
+      "height": 1526
+    },
+    {
+      "path": "before/mobile-390/saving-390x844-text1.png",
+      "bytes": 85039,
+      "sha256": "ccafd913c18674275cd7c29b0e6eeb240bc1ea3176e0b8b3994bb2f4484bec73",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/saving-390x844-text1.png",
+      "raw_sha256": "ccafd913c18674275cd7c29b0e6eeb240bc1ea3176e0b8b3994bb2f4484bec73",
+      "width": 390,
+      "height": 1336
+    },
+    {
+      "path": "before/mobile-390/server-values-1440x900-text1.png",
+      "bytes": 127757,
+      "sha256": "63ff354eb5f0cfb0f9104ee91b6d2970779d6bbe82ecc672e74f5f61482224ca",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/server-values-1440x900-text1.png",
+      "raw_sha256": "63ff354eb5f0cfb0f9104ee91b6d2970779d6bbe82ecc672e74f5f61482224ca",
+      "width": 1440,
+      "height": 1002
+    },
+    {
+      "path": "before/mobile-390/server-values-320x420-text2.png",
+      "bytes": 146697,
+      "sha256": "55538e727f71e9602d7220dd615fa54c046cb4908782c8bc8672a953edde1c58",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/server-values-320x420-text2.png",
+      "raw_sha256": "55538e727f71e9602d7220dd615fa54c046cb4908782c8bc8672a953edde1c58",
+      "width": 320,
+      "height": 3230
+    },
+    {
+      "path": "before/mobile-390/server-values-320x568-text1.png",
+      "bytes": 83805,
+      "sha256": "1e531cb363bfe08ba9350c0e691aed3350147d3dc78ff8faa15cc9641ac90dc0",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/server-values-320x568-text1.png",
+      "raw_sha256": "1e531cb363bfe08ba9350c0e691aed3350147d3dc78ff8faa15cc9641ac90dc0",
+      "width": 320,
+      "height": 1526
+    },
+    {
+      "path": "before/mobile-390/server-values-390x844-text1.png",
+      "bytes": 80928,
+      "sha256": "125f58449dbcb2b3d1ed6e19c9db0253145d2a214a52d2a6711b5eec20a7b499",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/server-values-390x844-text1.png",
+      "raw_sha256": "125f58449dbcb2b3d1ed6e19c9db0253145d2a214a52d2a6711b5eec20a7b499",
+      "width": 390,
+      "height": 1336
+    },
+    {
+      "path": "before/desktop-1440/axe-offline-applied-1440x900-text1.json",
+      "bytes": 3132,
+      "sha256": "a6d58a7050635c874d77cb9cefbb65a25f844d92b9554dcd9e0c76b027dd835c",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/axe-offline-applied-1440x900-text1.json",
+      "raw_sha256": "a6d58a7050635c874d77cb9cefbb65a25f844d92b9554dcd9e0c76b027dd835c"
+    },
+    {
+      "path": "before/desktop-1440/axe-offline-applied-320x420-text2.json",
+      "bytes": 3129,
+      "sha256": "bba7c8a91f4decc950415fb3fd1dae282ea7a1618af60c514463fc281a4ae23e",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/axe-offline-applied-320x420-text2.json",
+      "raw_sha256": "bba7c8a91f4decc950415fb3fd1dae282ea7a1618af60c514463fc281a4ae23e"
+    },
+    {
+      "path": "before/desktop-1440/axe-offline-applied-320x568-text1.json",
+      "bytes": 3129,
+      "sha256": "c672600bb5b6bb733cbcf8dbcfd1e3f331c5475812ee61d49e32fe5d1565839e",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/axe-offline-applied-320x568-text1.json",
+      "raw_sha256": "c672600bb5b6bb733cbcf8dbcfd1e3f331c5475812ee61d49e32fe5d1565839e"
+    },
+    {
+      "path": "before/desktop-1440/axe-offline-applied-390x844-text1.json",
+      "bytes": 3129,
+      "sha256": "0cb0e546ce7090a411a990919721001f094fde4b7226fdb3490c040e37c13993",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/axe-offline-applied-390x844-text1.json",
+      "raw_sha256": "0cb0e546ce7090a411a990919721001f094fde4b7226fdb3490c040e37c13993"
+    },
+    {
+      "path": "before/desktop-1440/axe-offline-reload-1440x900-text1.json",
+      "bytes": 3131,
+      "sha256": "6033a0b5117c7b175c49045e6e51dc00403aae134ff5fd01676193c40215838f",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/axe-offline-reload-1440x900-text1.json",
+      "raw_sha256": "6033a0b5117c7b175c49045e6e51dc00403aae134ff5fd01676193c40215838f"
+    },
+    {
+      "path": "before/desktop-1440/axe-offline-reload-320x420-text2.json",
+      "bytes": 3128,
+      "sha256": "2393679bfe7b567ee11c45abb4bffafc21f4efd795db368aa95dd773ebd87091",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/axe-offline-reload-320x420-text2.json",
+      "raw_sha256": "2393679bfe7b567ee11c45abb4bffafc21f4efd795db368aa95dd773ebd87091"
+    },
+    {
+      "path": "before/desktop-1440/axe-offline-reload-320x568-text1.json",
+      "bytes": 3128,
+      "sha256": "4c9f8fab2f5e942914fa1c97a2f962e9c62eea417375bc81932bf52db69c5d3c",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/axe-offline-reload-320x568-text1.json",
+      "raw_sha256": "4c9f8fab2f5e942914fa1c97a2f962e9c62eea417375bc81932bf52db69c5d3c"
+    },
+    {
+      "path": "before/desktop-1440/axe-offline-reload-390x844-text1.json",
+      "bytes": 3128,
+      "sha256": "ea38d71ca06d13928a7883cd12aff43d891b1317aee2814fce2a6b67f4372507",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/axe-offline-reload-390x844-text1.json",
+      "raw_sha256": "ea38d71ca06d13928a7883cd12aff43d891b1317aee2814fce2a6b67f4372507"
+    },
+    {
+      "path": "before/desktop-1440/offline-applied-1440x900-text1.png",
+      "bytes": 101981,
+      "sha256": "7c0c456cdb6ed58af1add58548f639b163d51081a635d379c22cb8681114e2e1",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/offline-applied-1440x900-text1.png",
+      "raw_sha256": "7c0c456cdb6ed58af1add58548f639b163d51081a635d379c22cb8681114e2e1",
+      "width": 1440,
+      "height": 1093
+    },
+    {
+      "path": "before/desktop-1440/offline-applied-320x420-text2.png",
+      "bytes": 159429,
+      "sha256": "9d8da2f519be5448cee6a6cb7725945931828bd328d07b77c0519d15c95d1f0f",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/offline-applied-320x420-text2.png",
+      "raw_sha256": "9d8da2f519be5448cee6a6cb7725945931828bd328d07b77c0519d15c95d1f0f",
+      "width": 320,
+      "height": 3371
+    },
+    {
+      "path": "before/desktop-1440/offline-applied-320x568-text1.png",
+      "bytes": 94815,
+      "sha256": "1901fe4f2e6abb1090df22d39aa841beea38adcf7cbbaee27de9feb3f01905bb",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/offline-applied-320x568-text1.png",
+      "raw_sha256": "1901fe4f2e6abb1090df22d39aa841beea38adcf7cbbaee27de9feb3f01905bb",
+      "width": 320,
+      "height": 1640
+    },
+    {
+      "path": "before/desktop-1440/offline-applied-390x844-text1.png",
+      "bytes": 98055,
+      "sha256": "80ae8aab68652158e8ec87de1040e17e09741889f2d9c894b06b5c943d0d381c",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/offline-applied-390x844-text1.png",
+      "raw_sha256": "80ae8aab68652158e8ec87de1040e17e09741889f2d9c894b06b5c943d0d381c",
+      "width": 390,
+      "height": 1449
+    },
+    {
+      "path": "before/desktop-1440/offline-reload-1440x900-text1.png",
+      "bytes": 98070,
+      "sha256": "aae5b44dd9f0fd3a692a6d781d8f653091faf1e7b532117e179ebfd6e554e23c",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/offline-reload-1440x900-text1.png",
+      "raw_sha256": "aae5b44dd9f0fd3a692a6d781d8f653091faf1e7b532117e179ebfd6e554e23c",
+      "width": 1440,
+      "height": 1055
+    },
+    {
+      "path": "before/desktop-1440/offline-reload-320x420-text2.png",
+      "bytes": 172860,
+      "sha256": "862bcca876188756747fb9383f4fe4313194210375297184f8639bfe3b9dbc26",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/offline-reload-320x420-text2.png",
+      "raw_sha256": "862bcca876188756747fb9383f4fe4313194210375297184f8639bfe3b9dbc26",
+      "width": 320,
+      "height": 3317
+    },
+    {
+      "path": "before/desktop-1440/offline-reload-320x568-text1.png",
+      "bytes": 89744,
+      "sha256": "d50168e00bbcc343213e935c05a57b4b8de71eeb7c3d936d2f8fec19605e6258",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/offline-reload-320x568-text1.png",
+      "raw_sha256": "d50168e00bbcc343213e935c05a57b4b8de71eeb7c3d936d2f8fec19605e6258",
+      "width": 320,
+      "height": 1601
+    },
+    {
+      "path": "before/desktop-1440/offline-reload-390x844-text1.png",
+      "bytes": 97056,
+      "sha256": "89a9633c29b86944629cf48eb83ae50f6c0f61ba51e4ed091aa49df517bc1e5d",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/offline-reload-390x844-text1.png",
+      "raw_sha256": "89a9633c29b86944629cf48eb83ae50f6c0f61ba51e4ed091aa49df517bc1e5d",
+      "width": 390,
+      "height": 1411
+    },
+    {
+      "path": "before/desktop-1440/offline-summary.json",
+      "bytes": 30013,
+      "sha256": "ea74df40f9e7a496929417d45abdc51471c6390780c37ecace9fe9bb9813dabc",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/offline-summary.json",
+      "raw_sha256": "ea74df40f9e7a496929417d45abdc51471c6390780c37ecace9fe9bb9813dabc"
+    },
+    {
+      "path": "before/mobile-390/axe-offline-applied-1440x900-text1.json",
+      "bytes": 3132,
+      "sha256": "a6d58a7050635c874d77cb9cefbb65a25f844d92b9554dcd9e0c76b027dd835c",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/axe-offline-applied-1440x900-text1.json",
+      "raw_sha256": "a6d58a7050635c874d77cb9cefbb65a25f844d92b9554dcd9e0c76b027dd835c"
+    },
+    {
+      "path": "before/mobile-390/axe-offline-applied-320x420-text2.json",
+      "bytes": 3129,
+      "sha256": "bba7c8a91f4decc950415fb3fd1dae282ea7a1618af60c514463fc281a4ae23e",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/axe-offline-applied-320x420-text2.json",
+      "raw_sha256": "bba7c8a91f4decc950415fb3fd1dae282ea7a1618af60c514463fc281a4ae23e"
+    },
+    {
+      "path": "before/mobile-390/axe-offline-applied-320x568-text1.json",
+      "bytes": 3129,
+      "sha256": "c672600bb5b6bb733cbcf8dbcfd1e3f331c5475812ee61d49e32fe5d1565839e",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/axe-offline-applied-320x568-text1.json",
+      "raw_sha256": "c672600bb5b6bb733cbcf8dbcfd1e3f331c5475812ee61d49e32fe5d1565839e"
+    },
+    {
+      "path": "before/mobile-390/axe-offline-applied-390x844-text1.json",
+      "bytes": 3129,
+      "sha256": "0cb0e546ce7090a411a990919721001f094fde4b7226fdb3490c040e37c13993",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/axe-offline-applied-390x844-text1.json",
+      "raw_sha256": "0cb0e546ce7090a411a990919721001f094fde4b7226fdb3490c040e37c13993"
+    },
+    {
+      "path": "before/mobile-390/axe-offline-reload-1440x900-text1.json",
+      "bytes": 3131,
+      "sha256": "6033a0b5117c7b175c49045e6e51dc00403aae134ff5fd01676193c40215838f",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/axe-offline-reload-1440x900-text1.json",
+      "raw_sha256": "6033a0b5117c7b175c49045e6e51dc00403aae134ff5fd01676193c40215838f"
+    },
+    {
+      "path": "before/mobile-390/axe-offline-reload-320x420-text2.json",
+      "bytes": 3128,
+      "sha256": "2393679bfe7b567ee11c45abb4bffafc21f4efd795db368aa95dd773ebd87091",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/axe-offline-reload-320x420-text2.json",
+      "raw_sha256": "2393679bfe7b567ee11c45abb4bffafc21f4efd795db368aa95dd773ebd87091"
+    },
+    {
+      "path": "before/mobile-390/axe-offline-reload-320x568-text1.json",
+      "bytes": 3128,
+      "sha256": "4c9f8fab2f5e942914fa1c97a2f962e9c62eea417375bc81932bf52db69c5d3c",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/axe-offline-reload-320x568-text1.json",
+      "raw_sha256": "4c9f8fab2f5e942914fa1c97a2f962e9c62eea417375bc81932bf52db69c5d3c"
+    },
+    {
+      "path": "before/mobile-390/axe-offline-reload-390x844-text1.json",
+      "bytes": 3128,
+      "sha256": "ea38d71ca06d13928a7883cd12aff43d891b1317aee2814fce2a6b67f4372507",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/axe-offline-reload-390x844-text1.json",
+      "raw_sha256": "ea38d71ca06d13928a7883cd12aff43d891b1317aee2814fce2a6b67f4372507"
+    },
+    {
+      "path": "before/mobile-390/offline-applied-1440x900-text1.png",
+      "bytes": 102034,
+      "sha256": "7edd5e6789665cae1f032c8d8fbe2603db7fcf4e0e14f18765ed709ac5de6e06",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/offline-applied-1440x900-text1.png",
+      "raw_sha256": "7edd5e6789665cae1f032c8d8fbe2603db7fcf4e0e14f18765ed709ac5de6e06",
+      "width": 1440,
+      "height": 1093
+    },
+    {
+      "path": "before/mobile-390/offline-applied-320x420-text2.png",
+      "bytes": 159457,
+      "sha256": "456ec5df622528540ed14f49595f28609bb1428e4051e7982543d61c20be1fb8",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/offline-applied-320x420-text2.png",
+      "raw_sha256": "456ec5df622528540ed14f49595f28609bb1428e4051e7982543d61c20be1fb8",
+      "width": 320,
+      "height": 3371
+    },
+    {
+      "path": "before/mobile-390/offline-applied-320x568-text1.png",
+      "bytes": 95434,
+      "sha256": "ef6384f8b2555631ad580a6e53f48b5f32f5accb5fd115b18c5d22760e49fd1a",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/offline-applied-320x568-text1.png",
+      "raw_sha256": "ef6384f8b2555631ad580a6e53f48b5f32f5accb5fd115b18c5d22760e49fd1a",
+      "width": 320,
+      "height": 1640
+    },
+    {
+      "path": "before/mobile-390/offline-applied-390x844-text1.png",
+      "bytes": 93803,
+      "sha256": "62246449e6c89cb1aff75fab9cf548eea57c410059367ae5bdd69c04b839d211",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/offline-applied-390x844-text1.png",
+      "raw_sha256": "62246449e6c89cb1aff75fab9cf548eea57c410059367ae5bdd69c04b839d211",
+      "width": 390,
+      "height": 1449
+    },
+    {
+      "path": "before/mobile-390/offline-reload-1440x900-text1.png",
+      "bytes": 95280,
+      "sha256": "35afaec9298c36cc7fbfb27dfce8c720aa259d53480c1d1b1e74798960fba8d2",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/offline-reload-1440x900-text1.png",
+      "raw_sha256": "35afaec9298c36cc7fbfb27dfce8c720aa259d53480c1d1b1e74798960fba8d2",
+      "width": 1440,
+      "height": 1055
+    },
+    {
+      "path": "before/mobile-390/offline-reload-320x420-text2.png",
+      "bytes": 172871,
+      "sha256": "f6715eac44b4e39d61d38d9e30a5c9ccb35f3170e4a03aafece5d8ec141867eb",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/offline-reload-320x420-text2.png",
+      "raw_sha256": "f6715eac44b4e39d61d38d9e30a5c9ccb35f3170e4a03aafece5d8ec141867eb",
+      "width": 320,
+      "height": 3317
+    },
+    {
+      "path": "before/mobile-390/offline-reload-320x568-text1.png",
+      "bytes": 91056,
+      "sha256": "354caaeca12da6c943112908dee85e62fb28a58198655588b1a6ac17921e588b",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/offline-reload-320x568-text1.png",
+      "raw_sha256": "354caaeca12da6c943112908dee85e62fb28a58198655588b1a6ac17921e588b",
+      "width": 320,
+      "height": 1601
+    },
+    {
+      "path": "before/mobile-390/offline-reload-390x844-text1.png",
+      "bytes": 90411,
+      "sha256": "5db853ecc9178ddb3c692f47b99303fc3df20642ae2c1289493398e9585fee11",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/offline-reload-390x844-text1.png",
+      "raw_sha256": "5db853ecc9178ddb3c692f47b99303fc3df20642ae2c1289493398e9585fee11",
+      "width": 390,
+      "height": 1411
+    },
+    {
+      "path": "before/mobile-390/offline-summary.json",
+      "bytes": 30013,
+      "sha256": "ea74df40f9e7a496929417d45abdc51471c6390780c37ecace9fe9bb9813dabc",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/offline-summary.json",
+      "raw_sha256": "ea74df40f9e7a496929417d45abdc51471c6390780c37ecace9fe9bb9813dabc"
+    },
+    {
+      "path": "before/desktop-1440/axe-loading-1440x900-text1.json",
+      "bytes": 321,
+      "sha256": "7294a0e5b18a634639fac960cabff47b9cff0e25ac3f236a4ed16bb37dd9e23f",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/axe-loading-1440x900-text1.json",
+      "raw_sha256": "7294a0e5b18a634639fac960cabff47b9cff0e25ac3f236a4ed16bb37dd9e23f"
+    },
+    {
+      "path": "before/desktop-1440/axe-loading-320x420-text2.json",
+      "bytes": 318,
+      "sha256": "e1263bbb78b4e6c5c98c963add2fbabbb38af048fe6f8ed2fe9460e567948df8",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/axe-loading-320x420-text2.json",
+      "raw_sha256": "e1263bbb78b4e6c5c98c963add2fbabbb38af048fe6f8ed2fe9460e567948df8"
+    },
+    {
+      "path": "before/desktop-1440/axe-loading-320x568-text1.json",
+      "bytes": 318,
+      "sha256": "7bfecbc76dbfcbde96ef4e19aab5377eacc3b030daa2b0c8b3397bc0d2561c3e",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/axe-loading-320x568-text1.json",
+      "raw_sha256": "7bfecbc76dbfcbde96ef4e19aab5377eacc3b030daa2b0c8b3397bc0d2561c3e"
+    },
+    {
+      "path": "before/desktop-1440/axe-loading-390x844-text1.json",
+      "bytes": 318,
+      "sha256": "dcc94848847345538d33af72c062b59ad04aa14a2a8ee262e2337fe5f714c579",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/axe-loading-390x844-text1.json",
+      "raw_sha256": "dcc94848847345538d33af72c062b59ad04aa14a2a8ee262e2337fe5f714c579"
+    },
+    {
+      "path": "before/desktop-1440/axe-read-error-1440x900-text1.json",
+      "bytes": 437,
+      "sha256": "56ecbb3c62a05c77a8eff733609cd8fbb253750237319266ca83cd10103998ba",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/axe-read-error-1440x900-text1.json",
+      "raw_sha256": "56ecbb3c62a05c77a8eff733609cd8fbb253750237319266ca83cd10103998ba"
+    },
+    {
+      "path": "before/desktop-1440/axe-read-error-320x420-text2.json",
+      "bytes": 434,
+      "sha256": "d4c46ef35d9ef389f293f921f9076c0e73a5b768ae0b3205f645ae080103fbe8",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/axe-read-error-320x420-text2.json",
+      "raw_sha256": "d4c46ef35d9ef389f293f921f9076c0e73a5b768ae0b3205f645ae080103fbe8"
+    },
+    {
+      "path": "before/desktop-1440/axe-read-error-320x568-text1.json",
+      "bytes": 434,
+      "sha256": "484810cc07c0e26a36714910ccc58c91b1fa21b05b3a499880a9f21fee430694",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/axe-read-error-320x568-text1.json",
+      "raw_sha256": "484810cc07c0e26a36714910ccc58c91b1fa21b05b3a499880a9f21fee430694"
+    },
+    {
+      "path": "before/desktop-1440/axe-read-error-390x844-text1.json",
+      "bytes": 434,
+      "sha256": "3d2df2521478009d48d09de5b071ced63173d45fafcb20c8eb799525bb93ac5c",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/axe-read-error-390x844-text1.json",
+      "raw_sha256": "3d2df2521478009d48d09de5b071ced63173d45fafcb20c8eb799525bb93ac5c"
+    },
+    {
+      "path": "before/desktop-1440/loading-1440x900-text1.png",
+      "bytes": 45752,
+      "sha256": "9cdc7fc034ab44f053e44a15ef15419a241b7398de3395e8dab8990975afaf44",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/loading-1440x900-text1.png",
+      "raw_sha256": "9cdc7fc034ab44f053e44a15ef15419a241b7398de3395e8dab8990975afaf44",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "path": "before/desktop-1440/loading-320x420-text2.png",
+      "bytes": 47721,
+      "sha256": "2784757607fd602857259a376ad143a12734720313a7d0f4b753b715d9df8696",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/loading-320x420-text2.png",
+      "raw_sha256": "2784757607fd602857259a376ad143a12734720313a7d0f4b753b715d9df8696",
+      "width": 320,
+      "height": 836
+    },
+    {
+      "path": "before/desktop-1440/loading-320x568-text1.png",
+      "bytes": 26784,
+      "sha256": "27b6064b9af08e20203bd72fb8f8b2f193b75d8010d2824339996a9b73aa1964",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/loading-320x568-text1.png",
+      "raw_sha256": "27b6064b9af08e20203bd72fb8f8b2f193b75d8010d2824339996a9b73aa1964",
+      "width": 320,
+      "height": 650
+    },
+    {
+      "path": "before/desktop-1440/loading-390x844-text1.png",
+      "bytes": 32000,
+      "sha256": "282a23f3796fc680dbd2b92533e7edc0bb0a9e1831b4a0151a4adfc19b934bd7",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/loading-390x844-text1.png",
+      "raw_sha256": "282a23f3796fc680dbd2b92533e7edc0bb0a9e1831b4a0151a4adfc19b934bd7",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "before/desktop-1440/read-error-1440x900-text1.png",
+      "bytes": 49816,
+      "sha256": "c247f5ea36dc44a679f72bcd020d920131c025ac802f9989e3c3b0613796f972",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/read-error-1440x900-text1.png",
+      "raw_sha256": "c247f5ea36dc44a679f72bcd020d920131c025ac802f9989e3c3b0613796f972",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "path": "before/desktop-1440/read-error-320x420-text2.png",
+      "bytes": 52819,
+      "sha256": "ef69f1a42d61a5159316be3cc1a8300149eb2fe37c06e1b827b265233e76cca5",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/read-error-320x420-text2.png",
+      "raw_sha256": "ef69f1a42d61a5159316be3cc1a8300149eb2fe37c06e1b827b265233e76cca5",
+      "width": 320,
+      "height": 864
+    },
+    {
+      "path": "before/desktop-1440/read-error-320x568-text1.png",
+      "bytes": 30687,
+      "sha256": "4c3c7b15d6518c37f3b9c241658b61c46a6ad06ff12e830ba9992d18026c008c",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/read-error-320x568-text1.png",
+      "raw_sha256": "4c3c7b15d6518c37f3b9c241658b61c46a6ad06ff12e830ba9992d18026c008c",
+      "width": 320,
+      "height": 650
+    },
+    {
+      "path": "before/desktop-1440/read-error-390x844-text1.png",
+      "bytes": 36000,
+      "sha256": "67691651c2a4bccae0c593727467be993f49efd4e09d6e5b08793507516dd7aa",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/read-error-390x844-text1.png",
+      "raw_sha256": "67691651c2a4bccae0c593727467be993f49efd4e09d6e5b08793507516dd7aa",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "before/desktop-1440/read-summary.json",
+      "bytes": 2875,
+      "sha256": "e5ba24009a907893a3a87f29f75de11a85b7fabd2f894ead6ece278bddd52b2a",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/read-summary.json",
+      "raw_sha256": "e5ba24009a907893a3a87f29f75de11a85b7fabd2f894ead6ece278bddd52b2a"
+    },
+    {
+      "path": "before/mobile-390/axe-loading-1440x900-text1.json",
+      "bytes": 321,
+      "sha256": "7294a0e5b18a634639fac960cabff47b9cff0e25ac3f236a4ed16bb37dd9e23f",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/axe-loading-1440x900-text1.json",
+      "raw_sha256": "7294a0e5b18a634639fac960cabff47b9cff0e25ac3f236a4ed16bb37dd9e23f"
+    },
+    {
+      "path": "before/mobile-390/axe-loading-320x420-text2.json",
+      "bytes": 318,
+      "sha256": "e1263bbb78b4e6c5c98c963add2fbabbb38af048fe6f8ed2fe9460e567948df8",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/axe-loading-320x420-text2.json",
+      "raw_sha256": "e1263bbb78b4e6c5c98c963add2fbabbb38af048fe6f8ed2fe9460e567948df8"
+    },
+    {
+      "path": "before/mobile-390/axe-loading-320x568-text1.json",
+      "bytes": 318,
+      "sha256": "7bfecbc76dbfcbde96ef4e19aab5377eacc3b030daa2b0c8b3397bc0d2561c3e",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/axe-loading-320x568-text1.json",
+      "raw_sha256": "7bfecbc76dbfcbde96ef4e19aab5377eacc3b030daa2b0c8b3397bc0d2561c3e"
+    },
+    {
+      "path": "before/mobile-390/axe-loading-390x844-text1.json",
+      "bytes": 318,
+      "sha256": "dcc94848847345538d33af72c062b59ad04aa14a2a8ee262e2337fe5f714c579",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/axe-loading-390x844-text1.json",
+      "raw_sha256": "dcc94848847345538d33af72c062b59ad04aa14a2a8ee262e2337fe5f714c579"
+    },
+    {
+      "path": "before/mobile-390/axe-read-error-1440x900-text1.json",
+      "bytes": 437,
+      "sha256": "56ecbb3c62a05c77a8eff733609cd8fbb253750237319266ca83cd10103998ba",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/axe-read-error-1440x900-text1.json",
+      "raw_sha256": "56ecbb3c62a05c77a8eff733609cd8fbb253750237319266ca83cd10103998ba"
+    },
+    {
+      "path": "before/mobile-390/axe-read-error-320x420-text2.json",
+      "bytes": 434,
+      "sha256": "d4c46ef35d9ef389f293f921f9076c0e73a5b768ae0b3205f645ae080103fbe8",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/axe-read-error-320x420-text2.json",
+      "raw_sha256": "d4c46ef35d9ef389f293f921f9076c0e73a5b768ae0b3205f645ae080103fbe8"
+    },
+    {
+      "path": "before/mobile-390/axe-read-error-320x568-text1.json",
+      "bytes": 434,
+      "sha256": "484810cc07c0e26a36714910ccc58c91b1fa21b05b3a499880a9f21fee430694",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/axe-read-error-320x568-text1.json",
+      "raw_sha256": "484810cc07c0e26a36714910ccc58c91b1fa21b05b3a499880a9f21fee430694"
+    },
+    {
+      "path": "before/mobile-390/axe-read-error-390x844-text1.json",
+      "bytes": 434,
+      "sha256": "3d2df2521478009d48d09de5b071ced63173d45fafcb20c8eb799525bb93ac5c",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/axe-read-error-390x844-text1.json",
+      "raw_sha256": "3d2df2521478009d48d09de5b071ced63173d45fafcb20c8eb799525bb93ac5c"
+    },
+    {
+      "path": "before/mobile-390/loading-1440x900-text1.png",
+      "bytes": 45752,
+      "sha256": "9cdc7fc034ab44f053e44a15ef15419a241b7398de3395e8dab8990975afaf44",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/loading-1440x900-text1.png",
+      "raw_sha256": "9cdc7fc034ab44f053e44a15ef15419a241b7398de3395e8dab8990975afaf44",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "path": "before/mobile-390/loading-320x420-text2.png",
+      "bytes": 47721,
+      "sha256": "2784757607fd602857259a376ad143a12734720313a7d0f4b753b715d9df8696",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/loading-320x420-text2.png",
+      "raw_sha256": "2784757607fd602857259a376ad143a12734720313a7d0f4b753b715d9df8696",
+      "width": 320,
+      "height": 836
+    },
+    {
+      "path": "before/mobile-390/loading-320x568-text1.png",
+      "bytes": 26784,
+      "sha256": "27b6064b9af08e20203bd72fb8f8b2f193b75d8010d2824339996a9b73aa1964",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/loading-320x568-text1.png",
+      "raw_sha256": "27b6064b9af08e20203bd72fb8f8b2f193b75d8010d2824339996a9b73aa1964",
+      "width": 320,
+      "height": 650
+    },
+    {
+      "path": "before/mobile-390/loading-390x844-text1.png",
+      "bytes": 32000,
+      "sha256": "282a23f3796fc680dbd2b92533e7edc0bb0a9e1831b4a0151a4adfc19b934bd7",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/loading-390x844-text1.png",
+      "raw_sha256": "282a23f3796fc680dbd2b92533e7edc0bb0a9e1831b4a0151a4adfc19b934bd7",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "before/mobile-390/read-error-1440x900-text1.png",
+      "bytes": 49816,
+      "sha256": "c247f5ea36dc44a679f72bcd020d920131c025ac802f9989e3c3b0613796f972",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/read-error-1440x900-text1.png",
+      "raw_sha256": "c247f5ea36dc44a679f72bcd020d920131c025ac802f9989e3c3b0613796f972",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "path": "before/mobile-390/read-error-320x420-text2.png",
+      "bytes": 50998,
+      "sha256": "dbf6fef03ce806cdbfb159ca1e9b4e9a9b65a083f4bf2c0ac05ab4f1fed30834",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/read-error-320x420-text2.png",
+      "raw_sha256": "dbf6fef03ce806cdbfb159ca1e9b4e9a9b65a083f4bf2c0ac05ab4f1fed30834",
+      "width": 320,
+      "height": 864
+    },
+    {
+      "path": "before/mobile-390/read-error-320x568-text1.png",
+      "bytes": 30687,
+      "sha256": "4c3c7b15d6518c37f3b9c241658b61c46a6ad06ff12e830ba9992d18026c008c",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/read-error-320x568-text1.png",
+      "raw_sha256": "4c3c7b15d6518c37f3b9c241658b61c46a6ad06ff12e830ba9992d18026c008c",
+      "width": 320,
+      "height": 650
+    },
+    {
+      "path": "before/mobile-390/read-error-390x844-text1.png",
+      "bytes": 36000,
+      "sha256": "67691651c2a4bccae0c593727467be993f49efd4e09d6e5b08793507516dd7aa",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/read-error-390x844-text1.png",
+      "raw_sha256": "67691651c2a4bccae0c593727467be993f49efd4e09d6e5b08793507516dd7aa",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "before/mobile-390/read-summary.json",
+      "bytes": 2875,
+      "sha256": "e5ba24009a907893a3a87f29f75de11a85b7fabd2f894ead6ece278bddd52b2a",
+      "raw_source": ".artifacts/takeover/food-preferences/baseline/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/read-summary.json",
+      "raw_sha256": "e5ba24009a907893a3a87f29f75de11a85b7fabd2f894ead6ece278bddd52b2a"
+    },
+    {
+      "path": "after/desktop-1440/axe-save-error-1440x900-text1.json",
+      "bytes": 3127,
+      "sha256": "4aa06d47f0d2a21664fdf562f1a1c348e685dd9ba555480fe189a5601fa6a2db",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-save-error-1440x900-text1.json",
+      "raw_sha256": "4aa06d47f0d2a21664fdf562f1a1c348e685dd9ba555480fe189a5601fa6a2db"
+    },
+    {
+      "path": "after/desktop-1440/axe-save-error-320x420-text2.json",
+      "bytes": 3124,
+      "sha256": "5aece17341883dd1bacfde9a78c1ca068999d4470c7a140ddb1722cb165a82de",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-save-error-320x420-text2.json",
+      "raw_sha256": "5aece17341883dd1bacfde9a78c1ca068999d4470c7a140ddb1722cb165a82de"
+    },
+    {
+      "path": "after/desktop-1440/axe-save-error-320x568-text1.json",
+      "bytes": 3124,
+      "sha256": "6ccb6cf6b0df52c0a6fea2f21f6d4b027967287a1f98549c4fcb3affd5cd81a7",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-save-error-320x568-text1.json",
+      "raw_sha256": "6ccb6cf6b0df52c0a6fea2f21f6d4b027967287a1f98549c4fcb3affd5cd81a7"
+    },
+    {
+      "path": "after/desktop-1440/axe-save-error-390x844-text1.json",
+      "bytes": 3124,
+      "sha256": "7b95e72dc7f64aa6a5de59af90b51f6c9ff2e9ac6fc8d249b5c29b434d80e3f6",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-save-error-390x844-text1.json",
+      "raw_sha256": "7b95e72dc7f64aa6a5de59af90b51f6c9ff2e9ac6fc8d249b5c29b434d80e3f6"
+    },
+    {
+      "path": "after/desktop-1440/axe-saved-reload-1440x900-text1.json",
+      "bytes": 3129,
+      "sha256": "18f2f5046b45b7ce60eed561c0db6d20a6bfe70036c54a967e72bb803f571106",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-saved-reload-1440x900-text1.json",
+      "raw_sha256": "18f2f5046b45b7ce60eed561c0db6d20a6bfe70036c54a967e72bb803f571106"
+    },
+    {
+      "path": "after/desktop-1440/axe-saved-reload-320x420-text2.json",
+      "bytes": 3126,
+      "sha256": "5f711920d870e55b86f2fb1d4205389d59e83af1601c77d0224764df573b989b",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-saved-reload-320x420-text2.json",
+      "raw_sha256": "5f711920d870e55b86f2fb1d4205389d59e83af1601c77d0224764df573b989b"
+    },
+    {
+      "path": "after/desktop-1440/axe-saved-reload-320x568-text1.json",
+      "bytes": 3126,
+      "sha256": "596856f850d0755ba957dddc4b9c8d3708f7370b5132a1ffada2794c75966ba8",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-saved-reload-320x568-text1.json",
+      "raw_sha256": "596856f850d0755ba957dddc4b9c8d3708f7370b5132a1ffada2794c75966ba8"
+    },
+    {
+      "path": "after/desktop-1440/axe-saved-reload-390x844-text1.json",
+      "bytes": 3126,
+      "sha256": "fc23ca45831afd8260fb145df9137b79d99f8c0c48678a22047f14a21df769cf",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-saved-reload-390x844-text1.json",
+      "raw_sha256": "fc23ca45831afd8260fb145df9137b79d99f8c0c48678a22047f14a21df769cf"
+    },
+    {
+      "path": "after/desktop-1440/axe-saving-1440x900-text1.json",
+      "bytes": 3150,
+      "sha256": "20d44cf6f580676c3232535974cc613228c900a1c254b3d95a50688e000ca6a8",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-saving-1440x900-text1.json",
+      "raw_sha256": "20d44cf6f580676c3232535974cc613228c900a1c254b3d95a50688e000ca6a8"
+    },
+    {
+      "path": "after/desktop-1440/axe-saving-320x420-text2.json",
+      "bytes": 3147,
+      "sha256": "85ae2f6010718d06f2cec5b9e34d60a7edf43ee7b300cf614fda1eb34dc479ec",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-saving-320x420-text2.json",
+      "raw_sha256": "85ae2f6010718d06f2cec5b9e34d60a7edf43ee7b300cf614fda1eb34dc479ec"
+    },
+    {
+      "path": "after/desktop-1440/axe-saving-320x568-text1.json",
+      "bytes": 3147,
+      "sha256": "c8fd717619f16bcb5424baa93395acf0b2902d66067a76fa6b5cadd02f620aa7",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-saving-320x568-text1.json",
+      "raw_sha256": "c8fd717619f16bcb5424baa93395acf0b2902d66067a76fa6b5cadd02f620aa7"
+    },
+    {
+      "path": "after/desktop-1440/axe-saving-390x844-text1.json",
+      "bytes": 3147,
+      "sha256": "05ae1cef2e17467ab0234b7c77edb9da28c76c0add7b56505f41ee647db23e90",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-saving-390x844-text1.json",
+      "raw_sha256": "05ae1cef2e17467ab0234b7c77edb9da28c76c0add7b56505f41ee647db23e90"
+    },
+    {
+      "path": "after/desktop-1440/axe-server-values-1440x900-text1.json",
+      "bytes": 3130,
+      "sha256": "89ac67b3f61a454eebbce6f9418646c00b4ea9146e4c12a3f906cd8987f4a14c",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-server-values-1440x900-text1.json",
+      "raw_sha256": "89ac67b3f61a454eebbce6f9418646c00b4ea9146e4c12a3f906cd8987f4a14c"
+    },
+    {
+      "path": "after/desktop-1440/axe-server-values-320x420-text2.json",
+      "bytes": 3127,
+      "sha256": "3ad16fbc8f4cbee03ac1d28adcf596100062197f093537a6349d447e637f17ee",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-server-values-320x420-text2.json",
+      "raw_sha256": "3ad16fbc8f4cbee03ac1d28adcf596100062197f093537a6349d447e637f17ee"
+    },
+    {
+      "path": "after/desktop-1440/axe-server-values-320x568-text1.json",
+      "bytes": 3127,
+      "sha256": "045f4ade7277fc54fd5dcd84682464e2b2d3e5fe84abb27c502bfaf6eb716d8e",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-server-values-320x568-text1.json",
+      "raw_sha256": "045f4ade7277fc54fd5dcd84682464e2b2d3e5fe84abb27c502bfaf6eb716d8e"
+    },
+    {
+      "path": "after/desktop-1440/axe-server-values-390x844-text1.json",
+      "bytes": 3127,
+      "sha256": "e1fffb1d308b9dfc6f019aee0f2d7b7cf623b2b358df162d2eb30c24a740d637",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/axe-server-values-390x844-text1.json",
+      "raw_sha256": "e1fffb1d308b9dfc6f019aee0f2d7b7cf623b2b358df162d2eb30c24a740d637"
+    },
+    {
+      "path": "after/desktop-1440/roundtrip-summary.json",
+      "bytes": 61075,
+      "sha256": "64e9d616f1470aa05e335b96b15a6e10b5520cdd58d71d8d23e33c35b28c7eb2",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/roundtrip-summary.json",
+      "raw_sha256": "64e9d616f1470aa05e335b96b15a6e10b5520cdd58d71d8d23e33c35b28c7eb2"
+    },
+    {
+      "path": "after/desktop-1440/save-error-1440x900-text1.png",
+      "bytes": 103232,
+      "sha256": "6aed554a1025acdadfd68cd83ed9d50fe88e47e94622b9aaf5486842fae2cc06",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/save-error-1440x900-text1.png",
+      "raw_sha256": "6aed554a1025acdadfd68cd83ed9d50fe88e47e94622b9aaf5486842fae2cc06",
+      "width": 1440,
+      "height": 1041
+    },
+    {
+      "path": "after/desktop-1440/save-error-320x420-text2.png",
+      "bytes": 174548,
+      "sha256": "f291d77c5a4520825a39d3f97225dfa351a6710661594ed76e914bae82d6cf65",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/save-error-320x420-text2.png",
+      "raw_sha256": "f291d77c5a4520825a39d3f97225dfa351a6710661594ed76e914bae82d6cf65",
+      "width": 320,
+      "height": 3307
+    },
+    {
+      "path": "after/desktop-1440/save-error-320x568-text1.png",
+      "bytes": 90552,
+      "sha256": "62c9e991c153d38d19ad483184d0d927b753d5eefd9fabb3dc32297017d1db9b",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/save-error-320x568-text1.png",
+      "raw_sha256": "62c9e991c153d38d19ad483184d0d927b753d5eefd9fabb3dc32297017d1db9b",
+      "width": 320,
+      "height": 1587
+    },
+    {
+      "path": "after/desktop-1440/save-error-390x844-text1.png",
+      "bytes": 82334,
+      "sha256": "b756cda10782c1c8562c501f00891c81446a2a59e1622e2071ec6b55d7b57317",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/save-error-390x844-text1.png",
+      "raw_sha256": "b756cda10782c1c8562c501f00891c81446a2a59e1622e2071ec6b55d7b57317",
+      "width": 390,
+      "height": 1375
+    },
+    {
+      "path": "after/desktop-1440/saved-reload-1440x900-text1.png",
+      "bytes": 129986,
+      "sha256": "cf9077fecad7c10be6e24fb40e62e8fdc9ca28814e92fc49c5828d342d2c15b3",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/saved-reload-1440x900-text1.png",
+      "raw_sha256": "cf9077fecad7c10be6e24fb40e62e8fdc9ca28814e92fc49c5828d342d2c15b3",
+      "width": 1440,
+      "height": 1002
+    },
+    {
+      "path": "after/desktop-1440/saved-reload-320x420-text2.png",
+      "bytes": 147650,
+      "sha256": "6661cf54d7a025e02d3976e1182e132a01680c93b54ee84bdd88cb90c29d322d",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/saved-reload-320x420-text2.png",
+      "raw_sha256": "6661cf54d7a025e02d3976e1182e132a01680c93b54ee84bdd88cb90c29d322d",
+      "width": 320,
+      "height": 3230
+    },
+    {
+      "path": "after/desktop-1440/saved-reload-320x568-text1.png",
+      "bytes": 84807,
+      "sha256": "68e1a5899c25171cbb739a8e9f5f526ff5bb9c6ba7d7a21a0015e808323bc8d2",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/saved-reload-320x568-text1.png",
+      "raw_sha256": "68e1a5899c25171cbb739a8e9f5f526ff5bb9c6ba7d7a21a0015e808323bc8d2",
+      "width": 320,
+      "height": 1526
+    },
+    {
+      "path": "after/desktop-1440/saved-reload-390x844-text1.png",
+      "bytes": 91295,
+      "sha256": "9dff0df4658f573cc7d4ed77717aeb6c27d06e9b63b29ba8da0163d1dd1613b2",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/saved-reload-390x844-text1.png",
+      "raw_sha256": "9dff0df4658f573cc7d4ed77717aeb6c27d06e9b63b29ba8da0163d1dd1613b2",
+      "width": 390,
+      "height": 1336
+    },
+    {
+      "path": "after/desktop-1440/saving-1440x900-text1.png",
+      "bytes": 125707,
+      "sha256": "cf466d180051ff82bbb8107270567782e33a00c61d87ff3f321aff1443fdd907",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/saving-1440x900-text1.png",
+      "raw_sha256": "cf466d180051ff82bbb8107270567782e33a00c61d87ff3f321aff1443fdd907",
+      "width": 1440,
+      "height": 1002
+    },
+    {
+      "path": "after/desktop-1440/saving-320x420-text2.png",
+      "bytes": 151310,
+      "sha256": "f91a6b399dac69e937410677ee4d1b3b25ce7a7879778ae077315628ac87012f",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/saving-320x420-text2.png",
+      "raw_sha256": "f91a6b399dac69e937410677ee4d1b3b25ce7a7879778ae077315628ac87012f",
+      "width": 320,
+      "height": 3269
+    },
+    {
+      "path": "after/desktop-1440/saving-320x568-text1.png",
+      "bytes": 85433,
+      "sha256": "c59f0c5cd6c93d7cc1ea788b06e087634655e62b41ea1d464b6ec410aafffadf",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/saving-320x568-text1.png",
+      "raw_sha256": "c59f0c5cd6c93d7cc1ea788b06e087634655e62b41ea1d464b6ec410aafffadf",
+      "width": 320,
+      "height": 1526
+    },
+    {
+      "path": "after/desktop-1440/saving-390x844-text1.png",
+      "bytes": 91108,
+      "sha256": "6c46098d68b666a5f87b12902dfc2678688266c0607c63bbe4493651467d51f0",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/saving-390x844-text1.png",
+      "raw_sha256": "6c46098d68b666a5f87b12902dfc2678688266c0607c63bbe4493651467d51f0",
+      "width": 390,
+      "height": 1336
+    },
+    {
+      "path": "after/desktop-1440/server-values-1440x900-text1.png",
+      "bytes": 126384,
+      "sha256": "b83f6f335199f69718c3ae4120c1f8df11cf23fdefb56d69d0843ccc8e94d41b",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/server-values-1440x900-text1.png",
+      "raw_sha256": "b83f6f335199f69718c3ae4120c1f8df11cf23fdefb56d69d0843ccc8e94d41b",
+      "width": 1440,
+      "height": 1002
+    },
+    {
+      "path": "after/desktop-1440/server-values-320x420-text2.png",
+      "bytes": 146584,
+      "sha256": "3572e1b1cd32bc6755ce15252785c5cd7267cb7e0d61ba7728163de750dc3f8d",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/server-values-320x420-text2.png",
+      "raw_sha256": "3572e1b1cd32bc6755ce15252785c5cd7267cb7e0d61ba7728163de750dc3f8d",
+      "width": 320,
+      "height": 3230
+    },
+    {
+      "path": "after/desktop-1440/server-values-320x568-text1.png",
+      "bytes": 82560,
+      "sha256": "95b116cd36fce705049ef4702e2602ae6d69d8edf8c72d79970e5ecca2ac54a2",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/server-values-320x568-text1.png",
+      "raw_sha256": "95b116cd36fce705049ef4702e2602ae6d69d8edf8c72d79970e5ecca2ac54a2",
+      "width": 320,
+      "height": 1526
+    },
+    {
+      "path": "after/desktop-1440/server-values-390x844-text1.png",
+      "bytes": 87270,
+      "sha256": "a81f96f4d7bd5e91a6cf3e8a64d7c25492631e6a1afb26f84c52b2cc021dcc2f",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-desktop-1440/server-values-390x844-text1.png",
+      "raw_sha256": "a81f96f4d7bd5e91a6cf3e8a64d7c25492631e6a1afb26f84c52b2cc021dcc2f",
+      "width": 390,
+      "height": 1336
+    },
+    {
+      "path": "after/mobile-390/axe-save-error-1440x900-text1.json",
+      "bytes": 3127,
+      "sha256": "4aa06d47f0d2a21664fdf562f1a1c348e685dd9ba555480fe189a5601fa6a2db",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-save-error-1440x900-text1.json",
+      "raw_sha256": "4aa06d47f0d2a21664fdf562f1a1c348e685dd9ba555480fe189a5601fa6a2db"
+    },
+    {
+      "path": "after/mobile-390/axe-save-error-320x420-text2.json",
+      "bytes": 3124,
+      "sha256": "5aece17341883dd1bacfde9a78c1ca068999d4470c7a140ddb1722cb165a82de",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-save-error-320x420-text2.json",
+      "raw_sha256": "5aece17341883dd1bacfde9a78c1ca068999d4470c7a140ddb1722cb165a82de"
+    },
+    {
+      "path": "after/mobile-390/axe-save-error-320x568-text1.json",
+      "bytes": 3124,
+      "sha256": "6ccb6cf6b0df52c0a6fea2f21f6d4b027967287a1f98549c4fcb3affd5cd81a7",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-save-error-320x568-text1.json",
+      "raw_sha256": "6ccb6cf6b0df52c0a6fea2f21f6d4b027967287a1f98549c4fcb3affd5cd81a7"
+    },
+    {
+      "path": "after/mobile-390/axe-save-error-390x844-text1.json",
+      "bytes": 3124,
+      "sha256": "7b95e72dc7f64aa6a5de59af90b51f6c9ff2e9ac6fc8d249b5c29b434d80e3f6",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-save-error-390x844-text1.json",
+      "raw_sha256": "7b95e72dc7f64aa6a5de59af90b51f6c9ff2e9ac6fc8d249b5c29b434d80e3f6"
+    },
+    {
+      "path": "after/mobile-390/axe-saved-reload-1440x900-text1.json",
+      "bytes": 3129,
+      "sha256": "18f2f5046b45b7ce60eed561c0db6d20a6bfe70036c54a967e72bb803f571106",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-saved-reload-1440x900-text1.json",
+      "raw_sha256": "18f2f5046b45b7ce60eed561c0db6d20a6bfe70036c54a967e72bb803f571106"
+    },
+    {
+      "path": "after/mobile-390/axe-saved-reload-320x420-text2.json",
+      "bytes": 3126,
+      "sha256": "5f711920d870e55b86f2fb1d4205389d59e83af1601c77d0224764df573b989b",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-saved-reload-320x420-text2.json",
+      "raw_sha256": "5f711920d870e55b86f2fb1d4205389d59e83af1601c77d0224764df573b989b"
+    },
+    {
+      "path": "after/mobile-390/axe-saved-reload-320x568-text1.json",
+      "bytes": 3126,
+      "sha256": "596856f850d0755ba957dddc4b9c8d3708f7370b5132a1ffada2794c75966ba8",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-saved-reload-320x568-text1.json",
+      "raw_sha256": "596856f850d0755ba957dddc4b9c8d3708f7370b5132a1ffada2794c75966ba8"
+    },
+    {
+      "path": "after/mobile-390/axe-saved-reload-390x844-text1.json",
+      "bytes": 3126,
+      "sha256": "fc23ca45831afd8260fb145df9137b79d99f8c0c48678a22047f14a21df769cf",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-saved-reload-390x844-text1.json",
+      "raw_sha256": "fc23ca45831afd8260fb145df9137b79d99f8c0c48678a22047f14a21df769cf"
+    },
+    {
+      "path": "after/mobile-390/axe-saving-1440x900-text1.json",
+      "bytes": 3150,
+      "sha256": "20d44cf6f580676c3232535974cc613228c900a1c254b3d95a50688e000ca6a8",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-saving-1440x900-text1.json",
+      "raw_sha256": "20d44cf6f580676c3232535974cc613228c900a1c254b3d95a50688e000ca6a8"
+    },
+    {
+      "path": "after/mobile-390/axe-saving-320x420-text2.json",
+      "bytes": 3147,
+      "sha256": "85ae2f6010718d06f2cec5b9e34d60a7edf43ee7b300cf614fda1eb34dc479ec",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-saving-320x420-text2.json",
+      "raw_sha256": "85ae2f6010718d06f2cec5b9e34d60a7edf43ee7b300cf614fda1eb34dc479ec"
+    },
+    {
+      "path": "after/mobile-390/axe-saving-320x568-text1.json",
+      "bytes": 3147,
+      "sha256": "c8fd717619f16bcb5424baa93395acf0b2902d66067a76fa6b5cadd02f620aa7",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-saving-320x568-text1.json",
+      "raw_sha256": "c8fd717619f16bcb5424baa93395acf0b2902d66067a76fa6b5cadd02f620aa7"
+    },
+    {
+      "path": "after/mobile-390/axe-saving-390x844-text1.json",
+      "bytes": 3147,
+      "sha256": "05ae1cef2e17467ab0234b7c77edb9da28c76c0add7b56505f41ee647db23e90",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-saving-390x844-text1.json",
+      "raw_sha256": "05ae1cef2e17467ab0234b7c77edb9da28c76c0add7b56505f41ee647db23e90"
+    },
+    {
+      "path": "after/mobile-390/axe-server-values-1440x900-text1.json",
+      "bytes": 3130,
+      "sha256": "89ac67b3f61a454eebbce6f9418646c00b4ea9146e4c12a3f906cd8987f4a14c",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-server-values-1440x900-text1.json",
+      "raw_sha256": "89ac67b3f61a454eebbce6f9418646c00b4ea9146e4c12a3f906cd8987f4a14c"
+    },
+    {
+      "path": "after/mobile-390/axe-server-values-320x420-text2.json",
+      "bytes": 3127,
+      "sha256": "3ad16fbc8f4cbee03ac1d28adcf596100062197f093537a6349d447e637f17ee",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-server-values-320x420-text2.json",
+      "raw_sha256": "3ad16fbc8f4cbee03ac1d28adcf596100062197f093537a6349d447e637f17ee"
+    },
+    {
+      "path": "after/mobile-390/axe-server-values-320x568-text1.json",
+      "bytes": 3127,
+      "sha256": "045f4ade7277fc54fd5dcd84682464e2b2d3e5fe84abb27c502bfaf6eb716d8e",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-server-values-320x568-text1.json",
+      "raw_sha256": "045f4ade7277fc54fd5dcd84682464e2b2d3e5fe84abb27c502bfaf6eb716d8e"
+    },
+    {
+      "path": "after/mobile-390/axe-server-values-390x844-text1.json",
+      "bytes": 3127,
+      "sha256": "e1fffb1d308b9dfc6f019aee0f2d7b7cf623b2b358df162d2eb30c24a740d637",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/axe-server-values-390x844-text1.json",
+      "raw_sha256": "e1fffb1d308b9dfc6f019aee0f2d7b7cf623b2b358df162d2eb30c24a740d637"
+    },
+    {
+      "path": "after/mobile-390/roundtrip-summary.json",
+      "bytes": 61075,
+      "sha256": "64e9d616f1470aa05e335b96b15a6e10b5520cdd58d71d8d23e33c35b28c7eb2",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/roundtrip-summary.json",
+      "raw_sha256": "64e9d616f1470aa05e335b96b15a6e10b5520cdd58d71d8d23e33c35b28c7eb2"
+    },
+    {
+      "path": "after/mobile-390/save-error-1440x900-text1.png",
+      "bytes": 99979,
+      "sha256": "80825f325c0c22d108f12917f7020c79a16b350dbfb9c56580b635e34d5676ee",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/save-error-1440x900-text1.png",
+      "raw_sha256": "80825f325c0c22d108f12917f7020c79a16b350dbfb9c56580b635e34d5676ee",
+      "width": 1440,
+      "height": 1041
+    },
+    {
+      "path": "after/mobile-390/save-error-320x420-text2.png",
+      "bytes": 174480,
+      "sha256": "b94b395de2e0e153f36fb98753678f1fab064ab7a2d4dcb5610f62336b03b821",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/save-error-320x420-text2.png",
+      "raw_sha256": "b94b395de2e0e153f36fb98753678f1fab064ab7a2d4dcb5610f62336b03b821",
+      "width": 320,
+      "height": 3307
+    },
+    {
+      "path": "after/mobile-390/save-error-320x568-text1.png",
+      "bytes": 90480,
+      "sha256": "395c5e7fcd90c922f698f1cac7afe425ab5f946e116519f4e9a677caaecd2b36",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/save-error-320x568-text1.png",
+      "raw_sha256": "395c5e7fcd90c922f698f1cac7afe425ab5f946e116519f4e9a677caaecd2b36",
+      "width": 320,
+      "height": 1587
+    },
+    {
+      "path": "after/mobile-390/save-error-390x844-text1.png",
+      "bytes": 81438,
+      "sha256": "9fc45fa8e7ab482bbce9d870852fc18937c8e1ed6ca4a9c3e935449dbe7f5298",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/save-error-390x844-text1.png",
+      "raw_sha256": "9fc45fa8e7ab482bbce9d870852fc18937c8e1ed6ca4a9c3e935449dbe7f5298",
+      "width": 390,
+      "height": 1375
+    },
+    {
+      "path": "after/mobile-390/saved-reload-1440x900-text1.png",
+      "bytes": 131298,
+      "sha256": "6d02af02de0f6502f7283cf334d6f2a92468b724de26fb0c21d79844f5b1539b",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/saved-reload-1440x900-text1.png",
+      "raw_sha256": "6d02af02de0f6502f7283cf334d6f2a92468b724de26fb0c21d79844f5b1539b",
+      "width": 1440,
+      "height": 1002
+    },
+    {
+      "path": "after/mobile-390/saved-reload-320x420-text2.png",
+      "bytes": 147722,
+      "sha256": "8cd21db65b36b4cab49ba7565be65470517127b08e4abd0d5991854aedf5c7fb",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/saved-reload-320x420-text2.png",
+      "raw_sha256": "8cd21db65b36b4cab49ba7565be65470517127b08e4abd0d5991854aedf5c7fb",
+      "width": 320,
+      "height": 3230
+    },
+    {
+      "path": "after/mobile-390/saved-reload-320x568-text1.png",
+      "bytes": 86044,
+      "sha256": "979dfc4bc533eeb0fa57226cc91dfadc6dedc6bcae004b611eaa7413932e39db",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/saved-reload-320x568-text1.png",
+      "raw_sha256": "979dfc4bc533eeb0fa57226cc91dfadc6dedc6bcae004b611eaa7413932e39db",
+      "width": 320,
+      "height": 1526
+    },
+    {
+      "path": "after/mobile-390/saved-reload-390x844-text1.png",
+      "bytes": 83929,
+      "sha256": "edce8ec990d1e359ca71bebd45bb314f6fd94676f2c37ad1379bc1e061161016",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/saved-reload-390x844-text1.png",
+      "raw_sha256": "edce8ec990d1e359ca71bebd45bb314f6fd94676f2c37ad1379bc1e061161016",
+      "width": 390,
+      "height": 1336
+    },
+    {
+      "path": "after/mobile-390/saving-1440x900-text1.png",
+      "bytes": 132135,
+      "sha256": "b550cd020da0037eaec6a0a40c51ad0e52cd046894e9acb8167886e34db21ee2",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/saving-1440x900-text1.png",
+      "raw_sha256": "b550cd020da0037eaec6a0a40c51ad0e52cd046894e9acb8167886e34db21ee2",
+      "width": 1440,
+      "height": 1002
+    },
+    {
+      "path": "after/mobile-390/saving-320x420-text2.png",
+      "bytes": 151375,
+      "sha256": "f34c5b61c36b201203b9b281e61c53f294ac0053f651beb0e4889ea2fa2aa2ee",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/saving-320x420-text2.png",
+      "raw_sha256": "f34c5b61c36b201203b9b281e61c53f294ac0053f651beb0e4889ea2fa2aa2ee",
+      "width": 320,
+      "height": 3269
+    },
+    {
+      "path": "after/mobile-390/saving-320x568-text1.png",
+      "bytes": 85372,
+      "sha256": "ed03ae056a97e05b61657c52672eb221506baa71a2b295b6b4aed7c522e7ec9f",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/saving-320x568-text1.png",
+      "raw_sha256": "ed03ae056a97e05b61657c52672eb221506baa71a2b295b6b4aed7c522e7ec9f",
+      "width": 320,
+      "height": 1526
+    },
+    {
+      "path": "after/mobile-390/saving-390x844-text1.png",
+      "bytes": 85039,
+      "sha256": "ccafd913c18674275cd7c29b0e6eeb240bc1ea3176e0b8b3994bb2f4484bec73",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/saving-390x844-text1.png",
+      "raw_sha256": "ccafd913c18674275cd7c29b0e6eeb240bc1ea3176e0b8b3994bb2f4484bec73",
+      "width": 390,
+      "height": 1336
+    },
+    {
+      "path": "after/mobile-390/server-values-1440x900-text1.png",
+      "bytes": 127757,
+      "sha256": "63ff354eb5f0cfb0f9104ee91b6d2970779d6bbe82ecc672e74f5f61482224ca",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/server-values-1440x900-text1.png",
+      "raw_sha256": "63ff354eb5f0cfb0f9104ee91b6d2970779d6bbe82ecc672e74f5f61482224ca",
+      "width": 1440,
+      "height": 1002
+    },
+    {
+      "path": "after/mobile-390/server-values-320x420-text2.png",
+      "bytes": 146697,
+      "sha256": "55538e727f71e9602d7220dd615fa54c046cb4908782c8bc8672a953edde1c58",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/server-values-320x420-text2.png",
+      "raw_sha256": "55538e727f71e9602d7220dd615fa54c046cb4908782c8bc8672a953edde1c58",
+      "width": 320,
+      "height": 3230
+    },
+    {
+      "path": "after/mobile-390/server-values-320x568-text1.png",
+      "bytes": 83805,
+      "sha256": "1e531cb363bfe08ba9350c0e691aed3350147d3dc78ff8faa15cc9641ac90dc0",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/server-values-320x568-text1.png",
+      "raw_sha256": "1e531cb363bfe08ba9350c0e691aed3350147d3dc78ff8faa15cc9641ac90dc0",
+      "width": 320,
+      "height": 1526
+    },
+    {
+      "path": "after/mobile-390/server-values-390x844-text1.png",
+      "bytes": 80928,
+      "sha256": "125f58449dbcb2b3d1ed6e19c9db0253145d2a214a52d2a6711b5eec20a7b499",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-48466-d-separate-hard-safety-data-mobile-390/server-values-390x844-text1.png",
+      "raw_sha256": "125f58449dbcb2b3d1ed6e19c9db0253145d2a214a52d2a6711b5eec20a7b499",
+      "width": 390,
+      "height": 1336
+    },
+    {
+      "path": "after/desktop-1440/axe-offline-applied-1440x900-text1.json",
+      "bytes": 3132,
+      "sha256": "a6d58a7050635c874d77cb9cefbb65a25f844d92b9554dcd9e0c76b027dd835c",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/axe-offline-applied-1440x900-text1.json",
+      "raw_sha256": "a6d58a7050635c874d77cb9cefbb65a25f844d92b9554dcd9e0c76b027dd835c"
+    },
+    {
+      "path": "after/desktop-1440/axe-offline-applied-320x420-text2.json",
+      "bytes": 3129,
+      "sha256": "bba7c8a91f4decc950415fb3fd1dae282ea7a1618af60c514463fc281a4ae23e",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/axe-offline-applied-320x420-text2.json",
+      "raw_sha256": "bba7c8a91f4decc950415fb3fd1dae282ea7a1618af60c514463fc281a4ae23e"
+    },
+    {
+      "path": "after/desktop-1440/axe-offline-applied-320x568-text1.json",
+      "bytes": 3129,
+      "sha256": "c672600bb5b6bb733cbcf8dbcfd1e3f331c5475812ee61d49e32fe5d1565839e",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/axe-offline-applied-320x568-text1.json",
+      "raw_sha256": "c672600bb5b6bb733cbcf8dbcfd1e3f331c5475812ee61d49e32fe5d1565839e"
+    },
+    {
+      "path": "after/desktop-1440/axe-offline-applied-390x844-text1.json",
+      "bytes": 3129,
+      "sha256": "0cb0e546ce7090a411a990919721001f094fde4b7226fdb3490c040e37c13993",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/axe-offline-applied-390x844-text1.json",
+      "raw_sha256": "0cb0e546ce7090a411a990919721001f094fde4b7226fdb3490c040e37c13993"
+    },
+    {
+      "path": "after/desktop-1440/axe-offline-reload-1440x900-text1.json",
+      "bytes": 3131,
+      "sha256": "6033a0b5117c7b175c49045e6e51dc00403aae134ff5fd01676193c40215838f",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/axe-offline-reload-1440x900-text1.json",
+      "raw_sha256": "6033a0b5117c7b175c49045e6e51dc00403aae134ff5fd01676193c40215838f"
+    },
+    {
+      "path": "after/desktop-1440/axe-offline-reload-320x420-text2.json",
+      "bytes": 3128,
+      "sha256": "2393679bfe7b567ee11c45abb4bffafc21f4efd795db368aa95dd773ebd87091",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/axe-offline-reload-320x420-text2.json",
+      "raw_sha256": "2393679bfe7b567ee11c45abb4bffafc21f4efd795db368aa95dd773ebd87091"
+    },
+    {
+      "path": "after/desktop-1440/axe-offline-reload-320x568-text1.json",
+      "bytes": 3128,
+      "sha256": "4c9f8fab2f5e942914fa1c97a2f962e9c62eea417375bc81932bf52db69c5d3c",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/axe-offline-reload-320x568-text1.json",
+      "raw_sha256": "4c9f8fab2f5e942914fa1c97a2f962e9c62eea417375bc81932bf52db69c5d3c"
+    },
+    {
+      "path": "after/desktop-1440/axe-offline-reload-390x844-text1.json",
+      "bytes": 3128,
+      "sha256": "ea38d71ca06d13928a7883cd12aff43d891b1317aee2814fce2a6b67f4372507",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/axe-offline-reload-390x844-text1.json",
+      "raw_sha256": "ea38d71ca06d13928a7883cd12aff43d891b1317aee2814fce2a6b67f4372507"
+    },
+    {
+      "path": "after/desktop-1440/offline-applied-1440x900-text1.png",
+      "bytes": 107384,
+      "sha256": "c7777aaa7e6595b764eb67c01223cf1961e3a504e2669b3117b1f43a308c26c1",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/offline-applied-1440x900-text1.png",
+      "raw_sha256": "c7777aaa7e6595b764eb67c01223cf1961e3a504e2669b3117b1f43a308c26c1",
+      "width": 1440,
+      "height": 1093
+    },
+    {
+      "path": "after/desktop-1440/offline-applied-320x420-text2.png",
+      "bytes": 185576,
+      "sha256": "dd79fa6e4fc52685827eabe8891090cc76ef679dd4d4c232f58e0a931cefa0b1",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/offline-applied-320x420-text2.png",
+      "raw_sha256": "dd79fa6e4fc52685827eabe8891090cc76ef679dd4d4c232f58e0a931cefa0b1",
+      "width": 320,
+      "height": 3394
+    },
+    {
+      "path": "after/desktop-1440/offline-applied-320x568-text1.png",
+      "bytes": 112186,
+      "sha256": "24ef2731de8a85638c3a84715e913cf33a42d4c9e22476c7fb74a77da300b845",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/offline-applied-320x568-text1.png",
+      "raw_sha256": "24ef2731de8a85638c3a84715e913cf33a42d4c9e22476c7fb74a77da300b845",
+      "width": 320,
+      "height": 1662
+    },
+    {
+      "path": "after/desktop-1440/offline-applied-390x844-text1.png",
+      "bytes": 101363,
+      "sha256": "f533a1ab2db51bc4875832301f080fb9539563da682eaeedd53712142fd5fcb8",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/offline-applied-390x844-text1.png",
+      "raw_sha256": "f533a1ab2db51bc4875832301f080fb9539563da682eaeedd53712142fd5fcb8",
+      "width": 390,
+      "height": 1449
+    },
+    {
+      "path": "after/desktop-1440/offline-reload-1440x900-text1.png",
+      "bytes": 100236,
+      "sha256": "9096f144c9fb429fed97ed0686c697d32834df5213ecc5a6b1908b00ab3c949e",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/offline-reload-1440x900-text1.png",
+      "raw_sha256": "9096f144c9fb429fed97ed0686c697d32834df5213ecc5a6b1908b00ab3c949e",
+      "width": 1440,
+      "height": 1055
+    },
+    {
+      "path": "after/desktop-1440/offline-reload-320x420-text2.png",
+      "bytes": 156260,
+      "sha256": "bc12ac6b35c21453a9b7d92cdbdf45da91fa8f38e3208f9c7e4390ec89094bff",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/offline-reload-320x420-text2.png",
+      "raw_sha256": "bc12ac6b35c21453a9b7d92cdbdf45da91fa8f38e3208f9c7e4390ec89094bff",
+      "width": 320,
+      "height": 3339
+    },
+    {
+      "path": "after/desktop-1440/offline-reload-320x568-text1.png",
+      "bytes": 91855,
+      "sha256": "98da257d065788556a1cf9ea9ab6ff040371c70df06bbe80e7253f15cd2b5e76",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/offline-reload-320x568-text1.png",
+      "raw_sha256": "98da257d065788556a1cf9ea9ab6ff040371c70df06bbe80e7253f15cd2b5e76",
+      "width": 320,
+      "height": 1624
+    },
+    {
+      "path": "after/desktop-1440/offline-reload-390x844-text1.png",
+      "bytes": 100014,
+      "sha256": "364c74a05d52e46394274becd90533f440fbc0f4a1f9b63fbf19ffcf810b4672",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/offline-reload-390x844-text1.png",
+      "raw_sha256": "364c74a05d52e46394274becd90533f440fbc0f4a1f9b63fbf19ffcf810b4672",
+      "width": 390,
+      "height": 1411
+    },
+    {
+      "path": "after/desktop-1440/offline-summary.json",
+      "bytes": 30087,
+      "sha256": "734ddead29cb75a6b5adbdde44ebf5e5d9d3c40b18082bb44bbc0dd53bf10fc4",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-desktop-1440/offline-summary.json",
+      "raw_sha256": "734ddead29cb75a6b5adbdde44ebf5e5d9d3c40b18082bb44bbc0dd53bf10fc4"
+    },
+    {
+      "path": "after/mobile-390/axe-offline-applied-1440x900-text1.json",
+      "bytes": 3132,
+      "sha256": "a6d58a7050635c874d77cb9cefbb65a25f844d92b9554dcd9e0c76b027dd835c",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/axe-offline-applied-1440x900-text1.json",
+      "raw_sha256": "a6d58a7050635c874d77cb9cefbb65a25f844d92b9554dcd9e0c76b027dd835c"
+    },
+    {
+      "path": "after/mobile-390/axe-offline-applied-320x420-text2.json",
+      "bytes": 3129,
+      "sha256": "bba7c8a91f4decc950415fb3fd1dae282ea7a1618af60c514463fc281a4ae23e",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/axe-offline-applied-320x420-text2.json",
+      "raw_sha256": "bba7c8a91f4decc950415fb3fd1dae282ea7a1618af60c514463fc281a4ae23e"
+    },
+    {
+      "path": "after/mobile-390/axe-offline-applied-320x568-text1.json",
+      "bytes": 3129,
+      "sha256": "c672600bb5b6bb733cbcf8dbcfd1e3f331c5475812ee61d49e32fe5d1565839e",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/axe-offline-applied-320x568-text1.json",
+      "raw_sha256": "c672600bb5b6bb733cbcf8dbcfd1e3f331c5475812ee61d49e32fe5d1565839e"
+    },
+    {
+      "path": "after/mobile-390/axe-offline-applied-390x844-text1.json",
+      "bytes": 3129,
+      "sha256": "0cb0e546ce7090a411a990919721001f094fde4b7226fdb3490c040e37c13993",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/axe-offline-applied-390x844-text1.json",
+      "raw_sha256": "0cb0e546ce7090a411a990919721001f094fde4b7226fdb3490c040e37c13993"
+    },
+    {
+      "path": "after/mobile-390/axe-offline-reload-1440x900-text1.json",
+      "bytes": 3131,
+      "sha256": "6033a0b5117c7b175c49045e6e51dc00403aae134ff5fd01676193c40215838f",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/axe-offline-reload-1440x900-text1.json",
+      "raw_sha256": "6033a0b5117c7b175c49045e6e51dc00403aae134ff5fd01676193c40215838f"
+    },
+    {
+      "path": "after/mobile-390/axe-offline-reload-320x420-text2.json",
+      "bytes": 3128,
+      "sha256": "2393679bfe7b567ee11c45abb4bffafc21f4efd795db368aa95dd773ebd87091",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/axe-offline-reload-320x420-text2.json",
+      "raw_sha256": "2393679bfe7b567ee11c45abb4bffafc21f4efd795db368aa95dd773ebd87091"
+    },
+    {
+      "path": "after/mobile-390/axe-offline-reload-320x568-text1.json",
+      "bytes": 3128,
+      "sha256": "4c9f8fab2f5e942914fa1c97a2f962e9c62eea417375bc81932bf52db69c5d3c",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/axe-offline-reload-320x568-text1.json",
+      "raw_sha256": "4c9f8fab2f5e942914fa1c97a2f962e9c62eea417375bc81932bf52db69c5d3c"
+    },
+    {
+      "path": "after/mobile-390/axe-offline-reload-390x844-text1.json",
+      "bytes": 3128,
+      "sha256": "ea38d71ca06d13928a7883cd12aff43d891b1317aee2814fce2a6b67f4372507",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/axe-offline-reload-390x844-text1.json",
+      "raw_sha256": "ea38d71ca06d13928a7883cd12aff43d891b1317aee2814fce2a6b67f4372507"
+    },
+    {
+      "path": "after/mobile-390/offline-applied-1440x900-text1.png",
+      "bytes": 107412,
+      "sha256": "1c2912c04fded944e56fd2a095315de81a17fae41da6b59e53a9c58870b2dde0",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/offline-applied-1440x900-text1.png",
+      "raw_sha256": "1c2912c04fded944e56fd2a095315de81a17fae41da6b59e53a9c58870b2dde0",
+      "width": 1440,
+      "height": 1093
+    },
+    {
+      "path": "after/mobile-390/offline-applied-320x420-text2.png",
+      "bytes": 185611,
+      "sha256": "ee8e3bb2bc2dd556cd6d582a445d1b8cfa90e3a637202878cca9bbaa8190a0ad",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/offline-applied-320x420-text2.png",
+      "raw_sha256": "ee8e3bb2bc2dd556cd6d582a445d1b8cfa90e3a637202878cca9bbaa8190a0ad",
+      "width": 320,
+      "height": 3394
+    },
+    {
+      "path": "after/mobile-390/offline-applied-320x568-text1.png",
+      "bytes": 112763,
+      "sha256": "52a9bdf589dcc49577936bae92847f1b0bde16e13bfc3a68e86bd12c457182fd",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/offline-applied-320x568-text1.png",
+      "raw_sha256": "52a9bdf589dcc49577936bae92847f1b0bde16e13bfc3a68e86bd12c457182fd",
+      "width": 320,
+      "height": 1662
+    },
+    {
+      "path": "after/mobile-390/offline-applied-390x844-text1.png",
+      "bytes": 100352,
+      "sha256": "62b9b083d0583d4b86f3e78af66fb9d419b1688edf9099b5f8db924bbb08697b",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/offline-applied-390x844-text1.png",
+      "raw_sha256": "62b9b083d0583d4b86f3e78af66fb9d419b1688edf9099b5f8db924bbb08697b",
+      "width": 390,
+      "height": 1449
+    },
+    {
+      "path": "after/mobile-390/offline-reload-1440x900-text1.png",
+      "bytes": 97334,
+      "sha256": "63d489d27fca9f88b9985b48fa9ca301509a0cec7a3066ece7f702a1ae476f4f",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/offline-reload-1440x900-text1.png",
+      "raw_sha256": "63d489d27fca9f88b9985b48fa9ca301509a0cec7a3066ece7f702a1ae476f4f",
+      "width": 1440,
+      "height": 1055
+    },
+    {
+      "path": "after/mobile-390/offline-reload-320x420-text2.png",
+      "bytes": 156276,
+      "sha256": "4138dc32ca0f7940abe6c158a80f3e22fdffba9c6839dee5917c1cddc274719c",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/offline-reload-320x420-text2.png",
+      "raw_sha256": "4138dc32ca0f7940abe6c158a80f3e22fdffba9c6839dee5917c1cddc274719c",
+      "width": 320,
+      "height": 3339
+    },
+    {
+      "path": "after/mobile-390/offline-reload-320x568-text1.png",
+      "bytes": 93178,
+      "sha256": "cdc4a2db390e126fdceff4c6765501fad297c4a68905f768b1032108364a00d9",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/offline-reload-320x568-text1.png",
+      "raw_sha256": "cdc4a2db390e126fdceff4c6765501fad297c4a68905f768b1032108364a00d9",
+      "width": 320,
+      "height": 1624
+    },
+    {
+      "path": "after/mobile-390/offline-reload-390x844-text1.png",
+      "bytes": 93382,
+      "sha256": "81071008fd9c807d5e2f109b2b4123af5b82b7b7ba3692fed0696b8905ffeb64",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/offline-reload-390x844-text1.png",
+      "raw_sha256": "81071008fd9c807d5e2f109b2b4123af5b82b7b7ba3692fed0696b8905ffeb64",
+      "width": 390,
+      "height": 1411
+    },
+    {
+      "path": "after/mobile-390/offline-summary.json",
+      "bytes": 30087,
+      "sha256": "734ddead29cb75a6b5adbdde44ebf5e5d9d3c40b18082bb44bbc0dd53bf10fc4",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-f2910-fetime-without-server-saves-mobile-390/offline-summary.json",
+      "raw_sha256": "734ddead29cb75a6b5adbdde44ebf5e5d9d3c40b18082bb44bbc0dd53bf10fc4"
+    },
+    {
+      "path": "after/desktop-1440/axe-loading-1440x900-text1.json",
+      "bytes": 321,
+      "sha256": "7294a0e5b18a634639fac960cabff47b9cff0e25ac3f236a4ed16bb37dd9e23f",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/axe-loading-1440x900-text1.json",
+      "raw_sha256": "7294a0e5b18a634639fac960cabff47b9cff0e25ac3f236a4ed16bb37dd9e23f"
+    },
+    {
+      "path": "after/desktop-1440/axe-loading-320x420-text2.json",
+      "bytes": 318,
+      "sha256": "e1263bbb78b4e6c5c98c963add2fbabbb38af048fe6f8ed2fe9460e567948df8",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/axe-loading-320x420-text2.json",
+      "raw_sha256": "e1263bbb78b4e6c5c98c963add2fbabbb38af048fe6f8ed2fe9460e567948df8"
+    },
+    {
+      "path": "after/desktop-1440/axe-loading-320x568-text1.json",
+      "bytes": 318,
+      "sha256": "7bfecbc76dbfcbde96ef4e19aab5377eacc3b030daa2b0c8b3397bc0d2561c3e",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/axe-loading-320x568-text1.json",
+      "raw_sha256": "7bfecbc76dbfcbde96ef4e19aab5377eacc3b030daa2b0c8b3397bc0d2561c3e"
+    },
+    {
+      "path": "after/desktop-1440/axe-loading-390x844-text1.json",
+      "bytes": 318,
+      "sha256": "dcc94848847345538d33af72c062b59ad04aa14a2a8ee262e2337fe5f714c579",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/axe-loading-390x844-text1.json",
+      "raw_sha256": "dcc94848847345538d33af72c062b59ad04aa14a2a8ee262e2337fe5f714c579"
+    },
+    {
+      "path": "after/desktop-1440/axe-read-error-1440x900-text1.json",
+      "bytes": 437,
+      "sha256": "56ecbb3c62a05c77a8eff733609cd8fbb253750237319266ca83cd10103998ba",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/axe-read-error-1440x900-text1.json",
+      "raw_sha256": "56ecbb3c62a05c77a8eff733609cd8fbb253750237319266ca83cd10103998ba"
+    },
+    {
+      "path": "after/desktop-1440/axe-read-error-320x420-text2.json",
+      "bytes": 434,
+      "sha256": "d4c46ef35d9ef389f293f921f9076c0e73a5b768ae0b3205f645ae080103fbe8",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/axe-read-error-320x420-text2.json",
+      "raw_sha256": "d4c46ef35d9ef389f293f921f9076c0e73a5b768ae0b3205f645ae080103fbe8"
+    },
+    {
+      "path": "after/desktop-1440/axe-read-error-320x568-text1.json",
+      "bytes": 434,
+      "sha256": "484810cc07c0e26a36714910ccc58c91b1fa21b05b3a499880a9f21fee430694",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/axe-read-error-320x568-text1.json",
+      "raw_sha256": "484810cc07c0e26a36714910ccc58c91b1fa21b05b3a499880a9f21fee430694"
+    },
+    {
+      "path": "after/desktop-1440/axe-read-error-390x844-text1.json",
+      "bytes": 434,
+      "sha256": "3d2df2521478009d48d09de5b071ced63173d45fafcb20c8eb799525bb93ac5c",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/axe-read-error-390x844-text1.json",
+      "raw_sha256": "3d2df2521478009d48d09de5b071ced63173d45fafcb20c8eb799525bb93ac5c"
+    },
+    {
+      "path": "after/desktop-1440/loading-1440x900-text1.png",
+      "bytes": 45752,
+      "sha256": "9cdc7fc034ab44f053e44a15ef15419a241b7398de3395e8dab8990975afaf44",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/loading-1440x900-text1.png",
+      "raw_sha256": "9cdc7fc034ab44f053e44a15ef15419a241b7398de3395e8dab8990975afaf44",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "path": "after/desktop-1440/loading-320x420-text2.png",
+      "bytes": 47721,
+      "sha256": "2784757607fd602857259a376ad143a12734720313a7d0f4b753b715d9df8696",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/loading-320x420-text2.png",
+      "raw_sha256": "2784757607fd602857259a376ad143a12734720313a7d0f4b753b715d9df8696",
+      "width": 320,
+      "height": 836
+    },
+    {
+      "path": "after/desktop-1440/loading-320x568-text1.png",
+      "bytes": 26784,
+      "sha256": "27b6064b9af08e20203bd72fb8f8b2f193b75d8010d2824339996a9b73aa1964",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/loading-320x568-text1.png",
+      "raw_sha256": "27b6064b9af08e20203bd72fb8f8b2f193b75d8010d2824339996a9b73aa1964",
+      "width": 320,
+      "height": 650
+    },
+    {
+      "path": "after/desktop-1440/loading-390x844-text1.png",
+      "bytes": 32000,
+      "sha256": "282a23f3796fc680dbd2b92533e7edc0bb0a9e1831b4a0151a4adfc19b934bd7",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/loading-390x844-text1.png",
+      "raw_sha256": "282a23f3796fc680dbd2b92533e7edc0bb0a9e1831b4a0151a4adfc19b934bd7",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "after/desktop-1440/read-error-1440x900-text1.png",
+      "bytes": 49816,
+      "sha256": "c247f5ea36dc44a679f72bcd020d920131c025ac802f9989e3c3b0613796f972",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/read-error-1440x900-text1.png",
+      "raw_sha256": "c247f5ea36dc44a679f72bcd020d920131c025ac802f9989e3c3b0613796f972",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "path": "after/desktop-1440/read-error-320x420-text2.png",
+      "bytes": 52819,
+      "sha256": "ef69f1a42d61a5159316be3cc1a8300149eb2fe37c06e1b827b265233e76cca5",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/read-error-320x420-text2.png",
+      "raw_sha256": "ef69f1a42d61a5159316be3cc1a8300149eb2fe37c06e1b827b265233e76cca5",
+      "width": 320,
+      "height": 864
+    },
+    {
+      "path": "after/desktop-1440/read-error-320x568-text1.png",
+      "bytes": 30687,
+      "sha256": "4c3c7b15d6518c37f3b9c241658b61c46a6ad06ff12e830ba9992d18026c008c",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/read-error-320x568-text1.png",
+      "raw_sha256": "4c3c7b15d6518c37f3b9c241658b61c46a6ad06ff12e830ba9992d18026c008c",
+      "width": 320,
+      "height": 650
+    },
+    {
+      "path": "after/desktop-1440/read-error-390x844-text1.png",
+      "bytes": 36000,
+      "sha256": "67691651c2a4bccae0c593727467be993f49efd4e09d6e5b08793507516dd7aa",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/read-error-390x844-text1.png",
+      "raw_sha256": "67691651c2a4bccae0c593727467be993f49efd4e09d6e5b08793507516dd7aa",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "after/desktop-1440/read-summary.json",
+      "bytes": 2875,
+      "sha256": "e5ba24009a907893a3a87f29f75de11a85b7fabd2f894ead6ece278bddd52b2a",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-desktop-1440/read-summary.json",
+      "raw_sha256": "e5ba24009a907893a3a87f29f75de11a85b7fabd2f894ead6ece278bddd52b2a"
+    },
+    {
+      "path": "after/mobile-390/axe-loading-1440x900-text1.json",
+      "bytes": 321,
+      "sha256": "7294a0e5b18a634639fac960cabff47b9cff0e25ac3f236a4ed16bb37dd9e23f",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/axe-loading-1440x900-text1.json",
+      "raw_sha256": "7294a0e5b18a634639fac960cabff47b9cff0e25ac3f236a4ed16bb37dd9e23f"
+    },
+    {
+      "path": "after/mobile-390/axe-loading-320x420-text2.json",
+      "bytes": 318,
+      "sha256": "e1263bbb78b4e6c5c98c963add2fbabbb38af048fe6f8ed2fe9460e567948df8",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/axe-loading-320x420-text2.json",
+      "raw_sha256": "e1263bbb78b4e6c5c98c963add2fbabbb38af048fe6f8ed2fe9460e567948df8"
+    },
+    {
+      "path": "after/mobile-390/axe-loading-320x568-text1.json",
+      "bytes": 318,
+      "sha256": "7bfecbc76dbfcbde96ef4e19aab5377eacc3b030daa2b0c8b3397bc0d2561c3e",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/axe-loading-320x568-text1.json",
+      "raw_sha256": "7bfecbc76dbfcbde96ef4e19aab5377eacc3b030daa2b0c8b3397bc0d2561c3e"
+    },
+    {
+      "path": "after/mobile-390/axe-loading-390x844-text1.json",
+      "bytes": 318,
+      "sha256": "dcc94848847345538d33af72c062b59ad04aa14a2a8ee262e2337fe5f714c579",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/axe-loading-390x844-text1.json",
+      "raw_sha256": "dcc94848847345538d33af72c062b59ad04aa14a2a8ee262e2337fe5f714c579"
+    },
+    {
+      "path": "after/mobile-390/axe-read-error-1440x900-text1.json",
+      "bytes": 437,
+      "sha256": "56ecbb3c62a05c77a8eff733609cd8fbb253750237319266ca83cd10103998ba",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/axe-read-error-1440x900-text1.json",
+      "raw_sha256": "56ecbb3c62a05c77a8eff733609cd8fbb253750237319266ca83cd10103998ba"
+    },
+    {
+      "path": "after/mobile-390/axe-read-error-320x420-text2.json",
+      "bytes": 434,
+      "sha256": "d4c46ef35d9ef389f293f921f9076c0e73a5b768ae0b3205f645ae080103fbe8",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/axe-read-error-320x420-text2.json",
+      "raw_sha256": "d4c46ef35d9ef389f293f921f9076c0e73a5b768ae0b3205f645ae080103fbe8"
+    },
+    {
+      "path": "after/mobile-390/axe-read-error-320x568-text1.json",
+      "bytes": 434,
+      "sha256": "484810cc07c0e26a36714910ccc58c91b1fa21b05b3a499880a9f21fee430694",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/axe-read-error-320x568-text1.json",
+      "raw_sha256": "484810cc07c0e26a36714910ccc58c91b1fa21b05b3a499880a9f21fee430694"
+    },
+    {
+      "path": "after/mobile-390/axe-read-error-390x844-text1.json",
+      "bytes": 434,
+      "sha256": "3d2df2521478009d48d09de5b071ced63173d45fafcb20c8eb799525bb93ac5c",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/axe-read-error-390x844-text1.json",
+      "raw_sha256": "3d2df2521478009d48d09de5b071ced63173d45fafcb20c8eb799525bb93ac5c"
+    },
+    {
+      "path": "after/mobile-390/loading-1440x900-text1.png",
+      "bytes": 45752,
+      "sha256": "9cdc7fc034ab44f053e44a15ef15419a241b7398de3395e8dab8990975afaf44",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/loading-1440x900-text1.png",
+      "raw_sha256": "9cdc7fc034ab44f053e44a15ef15419a241b7398de3395e8dab8990975afaf44",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "path": "after/mobile-390/loading-320x420-text2.png",
+      "bytes": 47721,
+      "sha256": "2784757607fd602857259a376ad143a12734720313a7d0f4b753b715d9df8696",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/loading-320x420-text2.png",
+      "raw_sha256": "2784757607fd602857259a376ad143a12734720313a7d0f4b753b715d9df8696",
+      "width": 320,
+      "height": 836
+    },
+    {
+      "path": "after/mobile-390/loading-320x568-text1.png",
+      "bytes": 26784,
+      "sha256": "27b6064b9af08e20203bd72fb8f8b2f193b75d8010d2824339996a9b73aa1964",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/loading-320x568-text1.png",
+      "raw_sha256": "27b6064b9af08e20203bd72fb8f8b2f193b75d8010d2824339996a9b73aa1964",
+      "width": 320,
+      "height": 650
+    },
+    {
+      "path": "after/mobile-390/loading-390x844-text1.png",
+      "bytes": 32000,
+      "sha256": "282a23f3796fc680dbd2b92533e7edc0bb0a9e1831b4a0151a4adfc19b934bd7",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/loading-390x844-text1.png",
+      "raw_sha256": "282a23f3796fc680dbd2b92533e7edc0bb0a9e1831b4a0151a4adfc19b934bd7",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "after/mobile-390/read-error-1440x900-text1.png",
+      "bytes": 49816,
+      "sha256": "c247f5ea36dc44a679f72bcd020d920131c025ac802f9989e3c3b0613796f972",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/read-error-1440x900-text1.png",
+      "raw_sha256": "c247f5ea36dc44a679f72bcd020d920131c025ac802f9989e3c3b0613796f972",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "path": "after/mobile-390/read-error-320x420-text2.png",
+      "bytes": 50998,
+      "sha256": "dbf6fef03ce806cdbfb159ca1e9b4e9a9b65a083f4bf2c0ac05ab4f1fed30834",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/read-error-320x420-text2.png",
+      "raw_sha256": "dbf6fef03ce806cdbfb159ca1e9b4e9a9b65a083f4bf2c0ac05ab4f1fed30834",
+      "width": 320,
+      "height": 864
+    },
+    {
+      "path": "after/mobile-390/read-error-320x568-text1.png",
+      "bytes": 30687,
+      "sha256": "4c3c7b15d6518c37f3b9c241658b61c46a6ad06ff12e830ba9992d18026c008c",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/read-error-320x568-text1.png",
+      "raw_sha256": "4c3c7b15d6518c37f3b9c241658b61c46a6ad06ff12e830ba9992d18026c008c",
+      "width": 320,
+      "height": 650
+    },
+    {
+      "path": "after/mobile-390/read-error-390x844-text1.png",
+      "bytes": 36000,
+      "sha256": "67691651c2a4bccae0c593727467be993f49efd4e09d6e5b08793507516dd7aa",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/read-error-390x844-text1.png",
+      "raw_sha256": "67691651c2a4bccae0c593727467be993f49efd4e09d6e5b08793507516dd7aa",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "after/mobile-390/read-summary.json",
+      "bytes": 2875,
+      "sha256": "e5ba24009a907893a3a87f29f75de11a85b7fabd2f894ead6ece278bddd52b2a",
+      "raw_source": ".artifacts/takeover/food-preferences/after/takolio-food-preferences-c-fef97-ecover-shaped-read-failures-mobile-390/read-summary.json",
+      "raw_sha256": "e5ba24009a907893a3a87f29f75de11a85b7fabd2f894ead6ece278bddd52b2a"
+    }
+  ]
+}

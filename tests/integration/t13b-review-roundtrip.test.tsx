@@ -329,4 +329,118 @@ describe('T13B actual review DOM → authenticated scan route → T09/T10/T11', 
     // Nothing was mutated by reopening.
     expect(captured.filter((call) => call.method === 'POST')).toEqual([]);
   });
+
+  it.each(['receipt', 'fridge'] as const)('%s fresh review retains manual origin without relabelling unknown OCR', async (type) => {
+    const scanId = `scan01-ui-${type}`;
+    const manualName = 'Gia vị thủ công SCAN01';
+    await seedScan(scanId, type);
+    await db.prepare(`UPDATE scan_items SET ocr_raw_name = NULL, ocr_quantity = NULL,
+      ocr_unit = NULL, ocr_confidence = NULL, ocr_canonical_id = NULL,
+      ocr_category = NULL, ocr_storage = NULL, unit_price_vnd = NULL, total_price_vnd = NULL
+      WHERE id = ?`).bind(`${scanId}-accepted`).run();
+    await mount(scanId, type);
+
+    if (type === 'fridge') {
+      for (const name of [manualName, 'Dòng đã xóa SCAN01']) {
+        await click('Thêm nguyên liệu AI còn thiếu');
+        const sheet = container.querySelector<HTMLElement>('[role="dialog"]')!;
+        await fill(field(sheet, 'Tên nguyên liệu'), name);
+        await fill(field(sheet, 'Số lượng'), '0.25');
+        await fill(field(sheet, 'Đơn vị'), 'pack');
+        await click('Thêm vào danh sách', sheet);
+      }
+      const removed = rows(type).find((row) => row.textContent?.includes('Dòng đã xóa SCAN01'))!;
+      await click('Xóa dòng thủ công', removed);
+      const manual = rows(type).find((row) => row.textContent?.includes(manualName))!;
+      await fill(field(manual, 'Bảo quản'), 'pantry');
+      await fill(field(manual, 'Hạn dùng'), '2030-12-31');
+      const rejected = rows(type).find((row) => row.textContent?.includes('OCR spurious item'))!;
+      await click('Từ chối dòng này', rejected);
+      await click('Xác nhận nguyên liệu (2 món)');
+      expect(captured.filter((call) => call.method === 'POST')).toMatchObject([
+        { path: `/api/v1/scans/${scanId}/confirm`, status: 200 },
+      ]);
+    } else {
+      const response = await request(`/api/v1/scans/${scanId}/confirm`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items: [
+          { id: `${scanId}-accepted` },
+          { id: `${scanId}-rejected`, rejected: true },
+          { id: 'draft_scan01_receipt', rawName: manualName, estimatedQuantity: 0.25,
+            unit: 'pack', storage: 'pantry', expiryDate: '2030-12-31', expiryEstimated: false },
+        ] }),
+      });
+      expect(response.status).toBe(200);
+      expect(await response.json()).toMatchObject({ success: true });
+    }
+
+    const history = db.query('SELECT * FROM scan_items WHERE scan_id = ? ORDER BY id', scanId);
+    const manualHistory = history.find((row) => row.raw_name === manualName);
+    expect(manualHistory).toMatchObject({ raw_name: manualName, canonical_id: null,
+      estimated_quantity: 0.25, unit: 'pack', category: 'other', storage: 'pantry',
+      is_confirmed: 1, review_state: 'CONFIRMED', reviewed_expiry_date: '2030-12-31',
+      reviewed_expiry_kind: 'KNOWN', ocr_raw_name: null, ocr_quantity: null, ocr_unit: null,
+      ocr_confidence: null, ocr_canonical_id: null, ocr_category: null, ocr_storage: null,
+      unit_price_vnd: null, total_price_vnd: null });
+    const historyId = String(manualHistory!.id);
+    expect(historyId).toMatch(/^scan_manual_[a-f0-9]{64}$/);
+    expect(history).toHaveLength(3);
+    expect(history.some((row) => row.raw_name === 'Dòng đã xóa SCAN01')).toBe(false);
+    const stock = db.query('SELECT * FROM inventory_lots WHERE household_id = ? ORDER BY id', scope.householdId);
+    expect(stock.find((row) => row.raw_name === manualName)).toMatchObject({
+      quantity_milli: 250, canonical_unit: 'pack', expiry_kind: 'KNOWN', expiry_at: '2030-12-31',
+    });
+
+    await act(async () => { root!.unmount(); });
+    root = undefined;
+    container.remove();
+    container = document.createElement('div');
+    document.body.appendChild(container);
+    useScanStore.getState().reset();
+    captured.length = 0;
+    await mount(scanId, type);
+    const response = captured.find((call) => call.path === `/api/v1/scans/${scanId}`)!.responseBody as {
+      scan: { items: Array<Record<string, unknown>> };
+    };
+    const dto = response.scan;
+    const manualDto = dto.items.find((item) => item.id === historyId);
+    expect(manualDto).toMatchObject({ isManual: true, rawName: manualName,
+      estimatedQuantity: 0.25, unit: 'pack', canonicalId: null, category: 'other',
+      storage: 'pantry', expiryDate: '2030-12-31', expiryEstimated: false, expiryKind: 'KNOWN' });
+    for (const key of ['rawEvidence', 'confidence', 'unitPriceVnd', 'totalPriceVnd']) {
+      expect(manualDto).not.toHaveProperty(key);
+    }
+    expect(dto.items.find((item) => item.id === `${scanId}-accepted`)).not.toHaveProperty('isManual');
+
+    const manual = rows(type).find((row) => row.textContent?.includes(manualName))!;
+    expect(manual.textContent).toContain('Nhập thủ công');
+    expect(manual.textContent).not.toMatch(/AI đọc|OCR|Độ tin cậy|Đơn giá/);
+    expect(manual.querySelector('[data-raw-evidence], [data-testid="receipt-raw-evidence"], [data-testid="receipt-price"], [data-testid="receipt-confidence"]')).toBeNull();
+    expect(field(manual, type === 'receipt' ? 'Tên sản phẩm' : 'Tên nguyên liệu').value).toBe(manualName);
+    expect(field(manual, 'Số lượng').value).toBe('0.25');
+    expect(field(manual, 'Đơn vị').value).toBe('pack');
+    expect(field(manual, type === 'receipt' ? 'Nơi bảo quản' : 'Bảo quản').value).toBe('pantry');
+    expect(field(manual, 'Hạn dùng').value).toBe('2030-12-31');
+    for (const control of manual.querySelectorAll('input,select,button')) {
+      expect(control.matches(':disabled')).toBe(true);
+    }
+    await act(async () => { manual.querySelector('button')!.click(); });
+    await settleTransport();
+    const unknownOcr = rows(type).find((row) => row.textContent?.includes('CA CHUA OCR'))!;
+    expect(unknownOcr.textContent).toContain('Độ tin cậy: chưa rõ');
+    expect(unknownOcr.textContent).not.toContain('Nhập thủ công');
+    expect(unknownOcr.querySelector(type === 'receipt' ? '[data-testid="receipt-raw-evidence"]' : '[data-raw-evidence]')).not.toBeNull();
+    if (type === 'receipt') {
+      expect(container.textContent).toContain('Các dòng nguyên liệu (3 món)');
+      expect(manual.querySelector('summary')?.textContent).toContain('Xem giá trị nhập thủ công đã xác nhận');
+    } else {
+      expect(useScanStore.getState().items.find((item) => item.id === historyId)).toMatchObject({
+        sourceItemId: historyId, isManual: true,
+      });
+    }
+    expect(captured.every((call) => call.method === 'GET')).toBe(true);
+    expect(db.query('SELECT * FROM scan_items WHERE scan_id = ? ORDER BY id', scanId)).toEqual(history);
+    expect(db.query('SELECT * FROM inventory_lots WHERE household_id = ? ORDER BY id', scope.householdId)).toEqual(stock);
+  });
+
 });

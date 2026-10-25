@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.0",
+  "brand": "Takolio",
+  "stage": "A01_IMPLEMENTED_AND_VERIFIED",
+  "assets": [
+    {
+      "id": "icon-home",
+      "kind": "svg-icon",
+      "display_name": "Trang chủ",
+      "source_master": "src/web/design-system/assets/icons-src/home.svg",
+      "export_asset": "src/web/design-system/assets/icons/home.svg",
+      "source_sha256": "df0befef769c14da1eb739b9a3b0b9b5b4c04c544de62f0d0e69b27ef9f24186",
+      "export_sha256": "cf59825b265869370b27742ea4f64f031f2b3f0c134830fe41cf2f80c2113db1",
+      "authorship": "newly authored from vector primitives",
+      "reference_used_as": "mood/layout only, no crop",
+      "license_status": "APPROVED",
+      "license_evidence": "docs/takolio-v2/OWNER_DESIGN_DECISIONS.md (Owner approved Gate 00 + A01 newly authored 24x24 SVG masters on 2026-10-22)",
+      "approval": "APPROVED",
+      "components": [
+        "navigation"
+      ]
+    },
+    {
+      "id": "icon-fridge",
+      "kind": "svg-icon",
+      "display_name": "Tủ lạnh",
+      "source_master": "src/web/design-system/assets/icons-src/fridge.svg",
+      "export_asset": "src/web/design-system/assets/icons/fridge.svg",
+      "source_sha256": "be59ba299cc8e196d8f217759d2f8d443ff8c0c95dcb2cb9488317978f4b97a1",
+      "export_sha256": "63912a608d6b27d0a42ae4ddc162e4a27d8541bca6006ff75f19aa353292a31e",
+      "authorship": "newly authored from vector primitives",
+      "reference_used_as": "mood/layout only, no crop",
+      "license_status": "APPROVED",
+      "license_evidence": "docs/takolio-v2/OWNER_DESIGN_DECISIONS.md (Owner approved Gate 00 + A01 newly authored 24x24 SVG masters on 2026-10-22)",
+      "approval": "APPROVED",
+      "components": [
+        "navigation"
+      ]
+    },
+    {
+      "id": "icon-recipe",
+      "kind": "svg-icon",
+      "display_name": "Công thức",
+      "source_master": "src/web/design-system/assets/icons-src/recipe.svg",
+      "export_asset": "src/web/design-system/assets/icons/recipe.svg",
+      "source_sha256": "018530e69600e71f5867aaae1e5d558c59ed0f3b833944068e71d5fe2bcaee7b",
+      "export_sha256": "238722eb3a7041991270b6193f43161b0df4d23e9ab05149117c47eb9261ab59",
+      "authorship": "newly authored from vector primitives",
+      "reference_used_as": "mood/layout only, no crop",
+      "license_status": "APPROVED",
+      "license_evidence": "docs/takolio-v2/OWNER_DESIGN_DECISIONS.md (Owner approved Gate 00 + A01 newly authored 24x24 SVG masters on 2026-10-22)",
+      "approval": "APPROVED",
+      "components": [
+        "navigation"
+      ]
+    },
+    {
+      "id": "icon-meal-plan",
+      "kind": "svg-icon",
+      "display_name": "Thực đơn",
+      "source_master": "src/web/design-system/assets/icons-src/meal-plan.svg",
+      "export_asset": "src/web/design-system/assets/icons/meal-plan.svg",
+      "source_sha256": "7ce3ea04954b40785c433219b2d6f3624ef044c18e0401eb7b469f26d08fb070",
+      "export_sha256": "031f11b4393033345e1f49146bedef76ac3a87dc10a4fd333a9a1ffd1b2033a6",
+      "authorship": "newly authored from vector primitives",
+      "reference_used_as": "mood/layout only, no crop",
+      "license_status": "APPROVED",
+      "license_evidence": "docs/takolio-v2/OWNER_DESIGN_DECISIONS.md (Owner approved Gate 00 + A01 newly authored 24x24 SVG masters on 2026-10-22)",
+      "approval": "APPROVED",
+      "components": [
+        "navigation"
+      ]
+    },
+    {
+      "id": "icon-profile",
+      "kind": "svg-icon",
+      "display_name": "Tôi",
+      "source_master": "src/web/design-system/assets/icons-src/profile.svg",
+      "export_asset": "src/web/design-system/assets/icons/profile.svg",
+      "source_sha256": "e301aa93b4f86836b96ed624b7f94174851754bac0181d342ff7a172d6adb888",
+      "export_sha256": "a83dfacaee4004d001b314e3185ce7fcab7885d406e89024cd90680b7acab096",
+      "authorship": "newly authored from vector primitives",
+      "reference_used_as": "mood/layout only, no crop",
+      "license_status": "APPROVED",
+      "license_evidence": "docs/takolio-v2/OWNER_DESIGN_DECISIONS.md (Owner approved Gate 00 + A01 newly authored 24x24 SVG masters on 2026-10-22)",
+      "approval": "APPROVED",
+      "components": [
+        "navigation"
+      ]
+    },
+    {
+      "id": "icon-scan",
+      "kind": "svg-icon",
+      "display_name": "Quét nguyên liệu",
+      "source_master": "src/web/design-system/assets/icons-src/scan.svg",
+      "export_asset": "src/web/design-system/assets/icons/scan.svg",
+      "source_sha256": "65786ef396c559f5d9d39ab575b2cd9828b375617ac8217af6d5ffdccc9496d3",
+      "export_sha256": "fa23f2fb034f31280cdc2f0b09b28ebb9605734d202ee75897ec6cf58f093c38",
+      "authorship": "newly authored from vector primitives",
+      "reference_used_as": "mood/layout only, no crop",
+      "license_status": "APPROVED",
+      "license_evidence": "docs/takolio-v2/OWNER_DESIGN_DECISIONS.md (Owner approved Gate 00 + A01 newly authored 24x24 SVG masters on 2026-10-22)",
+      "approval": "APPROVED",
+      "components": [
+        "navigation"
+      ]
+    }
+  ]
+}

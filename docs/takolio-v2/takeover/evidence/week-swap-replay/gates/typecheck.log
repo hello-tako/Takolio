@@ -1,0 +1,4 @@
+
+> frigo@0.1.0 typecheck [WORKTREE]
+> tsc -p tsconfig.json --noEmit && tsc -p tsconfig.worker.json --noEmit
+

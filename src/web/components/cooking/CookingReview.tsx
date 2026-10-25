@@ -1,13 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { RecipeScoringContext } from '@frigo/recipes';
-import { ArrowLeft, Check, Refrigerator, Minus, Plus } from 'lucide-react';
+import { ArrowLeft, Check, Minus, Plus } from 'lucide-react';
 import { useCookingStore } from '../../stores/useCookingStore';
 import { cookingQuantityText, cookingUnitLabel } from '../../lib/cooking-review';
 import { submitCookingCompletion } from '../../lib/cooking-completion';
 import { fetchJson } from '../../services/http';
 import { capturePrivateSession } from '../../lib/private-session';
 import { TAKOSAN_KITCHEN } from '../../lib/takosan-kitchen';
+import { TakoMascot } from '../common/TakoMascot';
+import { TakosanIcon } from '../common/TakosanIcon';
+import { getIngredientImage } from '../../lib/ingredient-images';
+
 
 export function CookingReview() {
   const state = useCookingStore();
@@ -97,7 +101,10 @@ export function CookingReview() {
     <div className="cooking-review">
       <header className="cooking-review-header">
         {!locked && (
-          <Link className="cooking-control" to={`/cook/${recipe.slug}`}>
+          <Link
+            className="cooking-control"
+            to={`/cook/${recipe.slug}${recipe.servings ? `?servings=${recipe.servings}` : ''}`}
+          >
             <ArrowLeft aria-hidden="true" size={18} /> Quay lại bước nấu
           </Link>
         )}
@@ -105,17 +112,23 @@ export function CookingReview() {
       </header>
       <form onSubmit={submit} noValidate className="cooking-review-grid">
         <div className="cooking-review-intro">
-          <span className="cooking-eyebrow">
-            {done ? 'Ghi nhận bữa nấu' : 'Bước cuối · Kiểm tra lượng'}
-          </span>
-          <h1 ref={heading} tabIndex={-1}>
-            {done
-              ? attempt.status === 'queued'
-                ? 'Đã lưu trên thiết bị'
-                : 'Đã cập nhật tủ lạnh'
-              : 'Món ăn hoàn tất'}
-          </h1>
+          <div className="cooking-chef-companion">
+            <TakoMascot pose={done ? 'celebrate' : 'cooking'} size={96} className="cooking-chef-mascot" />
+            <div className="cooking-chef-copy">
+              <span className="cooking-eyebrow">
+                {done ? 'Ghi nhận bữa nấu' : 'Bước cuối · Kiểm tra lượng'}
+              </span>
+              <h1 ref={heading} tabIndex={-1}>
+                {done
+                  ? attempt.status === 'queued'
+                    ? 'Đã lưu trên thiết bị'
+                    : 'Đã cập nhật tủ lạnh'
+                  : 'Món ăn hoàn tất'}
+              </h1>
+            </div>
+          </div>
           <p className="cooking-dish-title">{recipe.title}</p>
+
           <p>
             {done
               ? attempt.status === 'queued'
@@ -124,7 +137,7 @@ export function CookingReview() {
               : 'Nhập lượng bạn thực sự đã dùng. Tủ lạnh chỉ được cập nhật sau khi bạn xác nhận.'}
           </p>
           <div className="cooking-review-note">
-            <Refrigerator aria-hidden="true" size={24} />
+            <TakosanIcon name="fridge" className="w-6 h-6" />
             <p>
               Lượng còn lại là dự kiến từ dữ liệu lúc mở món. Máy chủ kiểm tra lại số lượng khi nhận
               yêu cầu.
@@ -178,14 +191,27 @@ export function CookingReview() {
           )}
           {deductions.map((line, index) => (
             <div className="cooking-use-row" key={`${line.ingredientId}-${index}`}>
-              <label htmlFor={`cooking-use-${index}`}>{line.name}</label>
-              <p>
-                Trong tủ: {cookingQuantityText(line.currentQuantity, line.unit)} · Còn dự kiến:{' '}
-                {deductionErrors[index]
-                  ? 'Chưa xác định'
-                  : cookingQuantityText(line.remainingQuantity, line.unit)}
-              </p>
+              <div className="cooking-use-item-head">
+                <img
+                  src={getIngredientImage(line.ingredientId, line.name)}
+                  alt=""
+                  width={36}
+                  height={36}
+                  loading="lazy"
+                  className="cooking-use-item-icon"
+                />
+                <div className="min-w-0 flex-1">
+                  <label htmlFor={`cooking-use-${index}`}>{line.name}</label>
+                  <p>
+                    Trong tủ: {cookingQuantityText(line.currentQuantity, line.unit)} · Còn dự kiến:{' '}
+                    {deductionErrors[index]
+                      ? 'Chưa xác định'
+                      : cookingQuantityText(line.remainingQuantity, line.unit)}
+                  </p>
+                </div>
+              </div>
               <div className="cooking-use-controls">
+
                 <button
                   type="button"
                   aria-label={`Giảm lượng ${line.name}`}

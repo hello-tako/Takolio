@@ -1,0 +1,377 @@
+{
+  "base_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "scope": "Isolated local Worker/SQLite synthetic household; external fetch blocked; root-font scale simulates enlarged text, not OS/browser zoom; no production or owner acceptance claim.",
+  "entries": [
+    {
+      "path": "after/axe-board-1440x900-text1.json",
+      "bytes": 209,
+      "sha256": "8acc67252295cbbc2ca5aec788921e2b9fbb063ec3dd0139d46f393298665aee"
+    },
+    {
+      "path": "after/axe-board-320x420-text2.json",
+      "bytes": 208,
+      "sha256": "c58914302950dbb11450df2cf4bbba15fb6dfd45cb0adac8497c7e4c4ee2307b"
+    },
+    {
+      "path": "after/axe-board-390x844-text1.json",
+      "bytes": 208,
+      "sha256": "0a24c7f2f3a56c64cc68f2d3d1fdb0a536a6115b4d5559967c41eccdf783e700"
+    },
+    {
+      "path": "after/axe-meal-1440x900-text1.json",
+      "bytes": 283,
+      "sha256": "00125c914031cedd6e8c6d36f0331d2eca55384767435394d0f23c389854f106"
+    },
+    {
+      "path": "after/axe-meal-320x420-text2.json",
+      "bytes": 282,
+      "sha256": "1752c0ff9fbb6536348484286c8c801c901609913f580cc05ad103dc62d6ee16"
+    },
+    {
+      "path": "after/axe-meal-390x844-text1.json",
+      "bytes": 282,
+      "sha256": "daf535306eac716f3d2c7623064fecffafc630cf347ae57c697eaa2ca87c98cf"
+    },
+    {
+      "path": "after/axe-pending-1440x900-text1.json",
+      "bytes": 211,
+      "sha256": "a228da4f15af4ce78482f3c6bbf6f6a5aed9e30302f0acdb7e4fb0ba7fd648b6"
+    },
+    {
+      "path": "after/axe-pending-320x420-text2.json",
+      "bytes": 210,
+      "sha256": "1f30b2bda24571ee6bbcd2d5154a95c58f50b90e9d0382ea80021afbd2bc18c2"
+    },
+    {
+      "path": "after/axe-pending-390x844-text1.json",
+      "bytes": 210,
+      "sha256": "f0edfe43f2aa31ad5254afff8c47c429772e6b045f9b61bb2c7efece49fde2dc"
+    },
+    {
+      "path": "after/axe-picker-1024x768-text1.json",
+      "bytes": 285,
+      "sha256": "197e1dc264eee313d84242705f62c3f929dfc5547a112254de3affd33473bfaf"
+    },
+    {
+      "path": "after/axe-picker-1440x900-text1.json",
+      "bytes": 285,
+      "sha256": "604532fa936c43503583fd0b24483b4f6c1bdb0a6ad5c677de1a9fe457beb6d0"
+    },
+    {
+      "path": "after/axe-picker-320x420-text2.json",
+      "bytes": 284,
+      "sha256": "1889226d22562a35d814a2be4d211180c733a51bcd56345940f143e3200f526d"
+    },
+    {
+      "path": "after/axe-picker-320x568-text1.json",
+      "bytes": 284,
+      "sha256": "d8eb906bda75e0028b8db705eb7ebbabcaf8c927516fd3520ce34425bbf060fe"
+    },
+    {
+      "path": "after/axe-picker-320x568-text2.json",
+      "bytes": 284,
+      "sha256": "063cbb3b53aca938845c815755292fa3e4ab36912a0b90464e9a63653dfae4f3"
+    },
+    {
+      "path": "after/axe-picker-360x800-text1.json",
+      "bytes": 284,
+      "sha256": "7ee49db0b724a3373e2c8d94cf58bf5c20d6b909266599f06ad89ff6b3a35efe"
+    },
+    {
+      "path": "after/axe-picker-390x844-text1.json",
+      "bytes": 284,
+      "sha256": "9dfca20523216e3f953209bf39bfa8e79ba2547b6aef8a07297a8889dc94199f"
+    },
+    {
+      "path": "after/axe-picker-430x932-text1.json",
+      "bytes": 284,
+      "sha256": "6dc70b3bda0af90b8ac9ad1b881b3fbda0c371a38f5e7fd1e81fd6aac4962d31"
+    },
+    {
+      "path": "after/axe-picker-768x1024-text1.json",
+      "bytes": 285,
+      "sha256": "c427378d0ac8b98030d99634265530a53ef585801d23144b5a9d7957417acb48"
+    },
+    {
+      "path": "after/axe-setup-1440x900-text1.json",
+      "bytes": 209,
+      "sha256": "7a152413bddd9050e72d0311af6ddb657725388a6a7f8646790be26e2a08b027"
+    },
+    {
+      "path": "after/axe-setup-320x420-text2.json",
+      "bytes": 208,
+      "sha256": "22e7f251564aff52ccd6a771714037a12e1e224fa9a1d63d5bc8822884678471"
+    },
+    {
+      "path": "after/axe-setup-390x844-text1.json",
+      "bytes": 208,
+      "sha256": "cc8f601f2b16e084ec61610a4c1e6060efa57e7e98c27d44ad713951f79be11f"
+    },
+    {
+      "path": "after/axe-shopping-1440x900-text1.json",
+      "bytes": 212,
+      "sha256": "083595db3a459b4dd595d5127c3c2d177864730ed9b6f9b86ad1b50461deb046"
+    },
+    {
+      "path": "after/axe-shopping-320x420-text2.json",
+      "bytes": 211,
+      "sha256": "5d523556bb34481eba1ec84fe3d0e333bf660ca6896b3f28e0bd859a77f24311"
+    },
+    {
+      "path": "after/axe-shopping-390x844-text1.json",
+      "bytes": 211,
+      "sha256": "8fc7a836a5c6b75bc6edf18ea8f68f68a39952b465107fbc6659cfdee9e28e17"
+    },
+    {
+      "path": "after/board-1440x900-text1.png",
+      "bytes": 300554,
+      "sha256": "929f5cc50f102c15fdd9ed38da902c7af5155ac4551c994328a2425f92d6e182",
+      "width": 1440,
+      "height": 2563
+    },
+    {
+      "path": "after/board-320x420-text2.png",
+      "bytes": 363212,
+      "sha256": "3dc55ded74fa13efec749f2443e0f5e8df7b22f4f392d9ac24428852aab9a4ea",
+      "width": 320,
+      "height": 6187
+    },
+    {
+      "path": "after/board-390x844-text1.png",
+      "bytes": 341003,
+      "sha256": "50981cad51ef84e31017e941bd32b516edb9f511ecddfa77cd603e9a40f439d0",
+      "width": 390,
+      "height": 4411
+    },
+    {
+      "path": "after/generated-summary.json",
+      "bytes": 4323,
+      "sha256": "83c9d7b143098806cbf0523be4d2c1f780f2525380b578dba631d8d29743a736"
+    },
+    {
+      "path": "after/manual-summary.json",
+      "bytes": 355,
+      "sha256": "09575917e78bc61a221b231597f51f48f3ced99a993a33aaf808245438543a48"
+    },
+    {
+      "path": "after/meal-1440x900-text1.png",
+      "bytes": 173313,
+      "sha256": "da654b62a2971bd9d13f63cdb4dc93095a6108d7522d4f1634d77ca7087f6631",
+      "width": 1440,
+      "height": 2082
+    },
+    {
+      "path": "after/meal-320x420-text2.png",
+      "bytes": 285452,
+      "sha256": "11e3afa31522a44007a9a6f049cd07b655efd9a386ccf2acc15a8c1c6489f1cc",
+      "width": 320,
+      "height": 6004
+    },
+    {
+      "path": "after/meal-390x844-text1.png",
+      "bytes": 147743,
+      "sha256": "4c75639972e7349ad6bfe24f7c537908a2110122d301c1772b6f8a4a3b4d7ce6",
+      "width": 390,
+      "height": 2360
+    },
+    {
+      "path": "after/pending-1440x900-text1.png",
+      "bytes": 162719,
+      "sha256": "ae2a29d7c1e0803c61cc32e3cefdad8a38f7dc66fa7d659df71eade4287c00ee",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "path": "after/pending-320x420-text2.png",
+      "bytes": 166717,
+      "sha256": "474aa285a1d319fc2d1275ec7c7b78fc73f6bc7a81e5fa034ea2768caf4ba288",
+      "width": 320,
+      "height": 2466
+    },
+    {
+      "path": "after/pending-390x844-text1.png",
+      "bytes": 134207,
+      "sha256": "b80b45396b8902b2a6a50b719894d577c793506ee1074d803141217d6238f288",
+      "width": 390,
+      "height": 1671
+    },
+    {
+      "path": "after/picker-1024x768-text1.png",
+      "bytes": 128479,
+      "sha256": "d90d9247142b58ced8ae709c151f2f4bc513613298a22487f967da8682c78dec",
+      "width": 1024,
+      "height": 1287
+    },
+    {
+      "path": "after/picker-1440x900-text1.png",
+      "bytes": 170812,
+      "sha256": "44ca820e6e09d3c47a2eb91a6be16760d8d1c0acdcd0174996d3ad60a042295e",
+      "width": 1440,
+      "height": 1288
+    },
+    {
+      "path": "after/picker-320x420-text2-control-0.png",
+      "bytes": 20865,
+      "sha256": "952c201a82bc9c0e45652fb710a2d3f50e1b6204558cc35a0cf1208e427f5ac6",
+      "width": 320,
+      "height": 420
+    },
+    {
+      "path": "after/picker-320x420-text2-control-1.png",
+      "bytes": 22023,
+      "sha256": "eb38eed1daea613943fee726fdfebb404afb22ff195888746225686b08b52f27",
+      "width": 320,
+      "height": 420
+    },
+    {
+      "path": "after/picker-320x420-text2-control-2.png",
+      "bytes": 17762,
+      "sha256": "4ddd0947d92b26e5d95be7483d45eb49fcd2d6c5c2dc02d8ede225626cd45f5c",
+      "width": 320,
+      "height": 420
+    },
+    {
+      "path": "after/picker-320x420-text2-control-3.png",
+      "bytes": 20690,
+      "sha256": "2e01df8f29b3ea7863c45052631897bb4fdd08124fb0fd7d6d4f77ce62d0728b",
+      "width": 320,
+      "height": 420
+    },
+    {
+      "path": "after/picker-320x420-text2.png",
+      "bytes": 205626,
+      "sha256": "e3da2af046c46f2ed923ac65cbcf3a34c6b52f673ab3e06a163f399d55c776b8",
+      "width": 320,
+      "height": 4323
+    },
+    {
+      "path": "after/picker-320x568-text1.png",
+      "bytes": 105589,
+      "sha256": "1e5e736580e46a9bccdb3c914c354ea8b3f60c00338b86832ec1319081208955",
+      "width": 320,
+      "height": 1748
+    },
+    {
+      "path": "after/picker-320x568-text2.png",
+      "bytes": 206514,
+      "sha256": "5d40a68f2d61f55477b83a5d8e8410eb5d988a55ff07a156cd54a954dc7fc34c",
+      "width": 320,
+      "height": 4323
+    },
+    {
+      "path": "after/picker-360x800-text1.png",
+      "bytes": 107240,
+      "sha256": "d6d64d1efc3ea66e4a3afb77b4097801e5091a8099f1d99c54cd09bbff0874de",
+      "width": 360,
+      "height": 1739
+    },
+    {
+      "path": "after/picker-390x844-text1.png",
+      "bytes": 104011,
+      "sha256": "729108a25d0a74d868b29c8348c9515018dd65d9a915663bcd791e97a7e21fe0",
+      "width": 390,
+      "height": 1646
+    },
+    {
+      "path": "after/picker-430x932-text1.png",
+      "bytes": 119261,
+      "sha256": "698f379b440c7db4a78055f6547829c20cc013ea4509596e15f8d01f1fb49aef",
+      "width": 430,
+      "height": 1626
+    },
+    {
+      "path": "after/picker-768x1024-text1.png",
+      "bytes": 135382,
+      "sha256": "1e5c5fd27ef2c5f56a6a59ae7e83b9d0ea9ffd1d1d1f45626447379ff065522c",
+      "width": 768,
+      "height": 1327
+    },
+    {
+      "path": "after/picker-layout-summary.json",
+      "bytes": 11847,
+      "sha256": "5fae98b9b81e5cfffdbd4be525bc4ab3abaebe916133554e1fdee1a63bf8c739"
+    },
+    {
+      "path": "after/setup-1440x900-text1.png",
+      "bytes": 158106,
+      "sha256": "4803705cced40d4f2fe42ca7241913e741c9cf5b10d99c9d055f15ea26986077",
+      "width": 1440,
+      "height": 1047
+    },
+    {
+      "path": "after/setup-320x420-text2.png",
+      "bytes": 161812,
+      "sha256": "8d3e898b35fa5770ce4d17aba5b4b7f9028e4338f61caabb8010650af2315740",
+      "width": 320,
+      "height": 2371
+    },
+    {
+      "path": "after/setup-390x844-text1.png",
+      "bytes": 130019,
+      "sha256": "62ae53572ae1135b4ef4094aa294c3e0786a72a8fb449e230f97b64f4573ac08",
+      "width": 390,
+      "height": 1638
+    },
+    {
+      "path": "after/shopping-1440x900-text1.png",
+      "bytes": 85101,
+      "sha256": "1808f3c9534ac1ee9b614501ec4258d86947cf1b4889b6bce7a4cca153ddf178",
+      "width": 1440,
+      "height": 916
+    },
+    {
+      "path": "after/shopping-320x420-text2.png",
+      "bytes": 77837,
+      "sha256": "1c2c93617421314ebb840eb1077d0255e81b526a8b517c6794a07d435b5be2d2",
+      "width": 320,
+      "height": 1439
+    },
+    {
+      "path": "after/shopping-390x844-text1.png",
+      "bytes": 65544,
+      "sha256": "442ab37bfb0087b3f5f83900e7346548ffde0c0c03b4f85cc208f42561e921e6",
+      "width": 390,
+      "height": 1023
+    },
+    {
+      "path": "before/picker-320x420-text2-control-0.png",
+      "bytes": 20893,
+      "sha256": "6dd6016187b15953af0288f08a7b2a9fabc728ca02783c79d87bc32491911bbb",
+      "width": 320,
+      "height": 420
+    },
+    {
+      "path": "before/picker-320x420-text2-control-1.png",
+      "bytes": 20520,
+      "sha256": "8eeab95a24aeaaddc1ae813349f27a569eaf41039a155d78ca244e269074a86d",
+      "width": 320,
+      "height": 420
+    },
+    {
+      "path": "before/picker-320x420-text2-control-2.png",
+      "bytes": 20520,
+      "sha256": "8eeab95a24aeaaddc1ae813349f27a569eaf41039a155d78ca244e269074a86d",
+      "width": 320,
+      "height": 420
+    },
+    {
+      "path": "before/picker-320x420-text2-control-3.png",
+      "bytes": 20520,
+      "sha256": "8eeab95a24aeaaddc1ae813349f27a569eaf41039a155d78ca244e269074a86d",
+      "width": 320,
+      "height": 420
+    },
+    {
+      "path": "before/picker-320x420-text2.png",
+      "bytes": 211215,
+      "sha256": "4c30c494563bc3e0ef2e85d34891ed7561be046ccc65e733c2060a07482ebf9e",
+      "width": 320,
+      "height": 4323
+    },
+    {
+      "path": "before/picker-layout-summary.json",
+      "bytes": 10525,
+      "sha256": "984efede870a6d13cb01716e77b9daa6c29130700483c9ef179c3f6ec7897e0b"
+    }
+  ]
+}

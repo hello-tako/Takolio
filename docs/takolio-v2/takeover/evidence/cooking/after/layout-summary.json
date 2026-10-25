@@ -1,0 +1,4462 @@
+{
+  "localSyntheticApi": true,
+  "rootFontScalingIsSynthetic": true,
+  "captures": [
+    {
+      "state": "cooking",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Tho\u00e1t ch\u1ebf \u0111\u1ed9 n\u1ea5u",
+          "width": 100.40625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "C\u00e1c b\u01b0\u1edbc c\u1ee7a m\u00f3n n\u00e0y (5)",
+          "width": 288,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Nguy\u00ean li\u1ec7u c\u1ea7n chu\u1ea9n b\u1ecb (8)",
+          "width": 288,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u1eadt tr\u1ee3 l\u00fd r\u1ea3nh tay",
+          "width": 149.046875,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1ecdc to b\u01b0\u1edbc n\u00e0y",
+          "width": 153.078125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Ti\u1ebfp t\u1ee5c h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1eb7t l\u1ea1i h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc tr\u01b0\u1edbc",
+          "width": 101.65625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc ti\u1ebfp theo",
+          "width": 142.34375,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    },
+    {
+      "state": "exit",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Tho\u00e1t ch\u1ebf \u0111\u1ed9 n\u1ea5u",
+          "width": 100.40625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "C\u00e1c b\u01b0\u1edbc c\u1ee7a m\u00f3n n\u00e0y (5)",
+          "width": 288,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Nguy\u00ean li\u1ec7u c\u1ea7n chu\u1ea9n b\u1ecb (8)",
+          "width": 288,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u1eadt tr\u1ee3 l\u00fd r\u1ea3nh tay",
+          "width": 149.046875,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1ecdc to b\u01b0\u1edbc n\u00e0y",
+          "width": 153.078125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Ti\u1ebfp t\u1ee5c h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1eb7t l\u1ea1i h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc tr\u01b0\u1edbc",
+          "width": 101.65625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc ti\u1ebfp theo",
+          "width": 142.34375,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "H\u1ee7y",
+          "width": 119,
+          "height": 44,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Tho\u00e1t",
+          "width": 119,
+          "height": 44,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    },
+    {
+      "state": "cooking",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "scale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Tho\u00e1t ch\u1ebf \u0111\u1ed9 n\u1ea5u",
+          "width": 100.40625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "C\u00e1c b\u01b0\u1edbc c\u1ee7a m\u00f3n n\u00e0y (5)",
+          "width": 288,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Nguy\u00ean li\u1ec7u c\u1ea7n chu\u1ea9n b\u1ecb (8)",
+          "width": 288,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u1eadt tr\u1ee3 l\u00fd r\u1ea3nh tay",
+          "width": 149.046875,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1ecdc to b\u01b0\u1edbc n\u00e0y",
+          "width": 153.078125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Ti\u1ebfp t\u1ee5c h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1eb7t l\u1ea1i h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc tr\u01b0\u1edbc",
+          "width": 88.328125,
+          "height": 68,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc ti\u1ebfp theo",
+          "width": 123.65625,
+          "height": 68,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    },
+    {
+      "state": "exit",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "scale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Tho\u00e1t ch\u1ebf \u0111\u1ed9 n\u1ea5u",
+          "width": 100.40625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "C\u00e1c b\u01b0\u1edbc c\u1ee7a m\u00f3n n\u00e0y (5)",
+          "width": 288,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Nguy\u00ean li\u1ec7u c\u1ea7n chu\u1ea9n b\u1ecb (8)",
+          "width": 288,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u1eadt tr\u1ee3 l\u00fd r\u1ea3nh tay",
+          "width": 149.046875,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1ecdc to b\u01b0\u1edbc n\u00e0y",
+          "width": 153.078125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Ti\u1ebfp t\u1ee5c h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1eb7t l\u1ea1i h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc tr\u01b0\u1edbc",
+          "width": 88.328125,
+          "height": 68,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc ti\u1ebfp theo",
+          "width": 123.65625,
+          "height": 68,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "H\u1ee7y",
+          "width": 78,
+          "height": 80,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Tho\u00e1t",
+          "width": 78,
+          "height": 80,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    },
+    {
+      "state": "cooking",
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 360,
+        "scrollWidth": 360,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Tho\u00e1t ch\u1ebf \u0111\u1ed9 n\u1ea5u",
+          "width": 100.40625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "C\u00e1c b\u01b0\u1edbc c\u1ee7a m\u00f3n n\u00e0y (5)",
+          "width": 328,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Nguy\u00ean li\u1ec7u c\u1ea7n chu\u1ea9n b\u1ecb (8)",
+          "width": 328,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u1eadt tr\u1ee3 l\u00fd r\u1ea3nh tay",
+          "width": 149.046875,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1ecdc to b\u01b0\u1edbc n\u00e0y",
+          "width": 153.078125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Ti\u1ebfp t\u1ee5c h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1eb7t l\u1ea1i h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc tr\u01b0\u1edbc",
+          "width": 118.328125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc ti\u1ebfp theo",
+          "width": 165.65625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    },
+    {
+      "state": "exit",
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 360,
+        "scrollWidth": 360,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Tho\u00e1t ch\u1ebf \u0111\u1ed9 n\u1ea5u",
+          "width": 100.40625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "C\u00e1c b\u01b0\u1edbc c\u1ee7a m\u00f3n n\u00e0y (5)",
+          "width": 328,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Nguy\u00ean li\u1ec7u c\u1ea7n chu\u1ea9n b\u1ecb (8)",
+          "width": 328,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u1eadt tr\u1ee3 l\u00fd r\u1ea3nh tay",
+          "width": 149.046875,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1ecdc to b\u01b0\u1edbc n\u00e0y",
+          "width": 153.078125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Ti\u1ebfp t\u1ee5c h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1eb7t l\u1ea1i h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc tr\u01b0\u1edbc",
+          "width": 118.328125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc ti\u1ebfp theo",
+          "width": 165.65625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "H\u1ee7y",
+          "width": 139,
+          "height": 44,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Tho\u00e1t",
+          "width": 139,
+          "height": 44,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    },
+    {
+      "state": "cooking",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Tho\u00e1t ch\u1ebf \u0111\u1ed9 n\u1ea5u",
+          "width": 100.40625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "C\u00e1c b\u01b0\u1edbc c\u1ee7a m\u00f3n n\u00e0y (5)",
+          "width": 358,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Nguy\u00ean li\u1ec7u c\u1ea7n chu\u1ea9n b\u1ecb (8)",
+          "width": 358,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u1eadt tr\u1ee3 l\u00fd r\u1ea3nh tay",
+          "width": 149.046875,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1ecdc to b\u01b0\u1edbc n\u00e0y",
+          "width": 153.078125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Ti\u1ebfp t\u1ee5c h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1eb7t l\u1ea1i h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc tr\u01b0\u1edbc",
+          "width": 130.828125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc ti\u1ebfp theo",
+          "width": 183.15625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    },
+    {
+      "state": "exit",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Tho\u00e1t ch\u1ebf \u0111\u1ed9 n\u1ea5u",
+          "width": 100.40625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "C\u00e1c b\u01b0\u1edbc c\u1ee7a m\u00f3n n\u00e0y (5)",
+          "width": 358,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Nguy\u00ean li\u1ec7u c\u1ea7n chu\u1ea9n b\u1ecb (8)",
+          "width": 358,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u1eadt tr\u1ee3 l\u00fd r\u1ea3nh tay",
+          "width": 149.046875,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1ecdc to b\u01b0\u1edbc n\u00e0y",
+          "width": 153.078125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Ti\u1ebfp t\u1ee5c h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1eb7t l\u1ea1i h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc tr\u01b0\u1edbc",
+          "width": 130.828125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc ti\u1ebfp theo",
+          "width": 183.15625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "H\u1ee7y",
+          "width": 154,
+          "height": 44,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Tho\u00e1t",
+          "width": 154,
+          "height": 44,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    },
+    {
+      "state": "cooking",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 430,
+        "scrollWidth": 430,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Tho\u00e1t ch\u1ebf \u0111\u1ed9 n\u1ea5u",
+          "width": 100.40625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "C\u00e1c b\u01b0\u1edbc c\u1ee7a m\u00f3n n\u00e0y (5)",
+          "width": 398,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Nguy\u00ean li\u1ec7u c\u1ea7n chu\u1ea9n b\u1ecb (8)",
+          "width": 398,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u1eadt tr\u1ee3 l\u00fd r\u1ea3nh tay",
+          "width": 149.046875,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1ecdc to b\u01b0\u1edbc n\u00e0y",
+          "width": 153.078125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Ti\u1ebfp t\u1ee5c h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1eb7t l\u1ea1i h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc tr\u01b0\u1edbc",
+          "width": 147.5,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc ti\u1ebfp theo",
+          "width": 206.5,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    },
+    {
+      "state": "exit",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 430,
+        "scrollWidth": 430,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Tho\u00e1t ch\u1ebf \u0111\u1ed9 n\u1ea5u",
+          "width": 100.40625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "C\u00e1c b\u01b0\u1edbc c\u1ee7a m\u00f3n n\u00e0y (5)",
+          "width": 398,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Nguy\u00ean li\u1ec7u c\u1ea7n chu\u1ea9n b\u1ecb (8)",
+          "width": 398,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u1eadt tr\u1ee3 l\u00fd r\u1ea3nh tay",
+          "width": 149.046875,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1ecdc to b\u01b0\u1edbc n\u00e0y",
+          "width": 153.078125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Ti\u1ebfp t\u1ee5c h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1eb7t l\u1ea1i h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc tr\u01b0\u1edbc",
+          "width": 147.5,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc ti\u1ebfp theo",
+          "width": 206.5,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "H\u1ee7y",
+          "width": 167,
+          "height": 44,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Tho\u00e1t",
+          "width": 167,
+          "height": 44,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    },
+    {
+      "state": "cooking",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 768,
+        "scrollWidth": 768,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Tho\u00e1t ch\u1ebf \u0111\u1ed9 n\u1ea5u",
+          "width": 100.40625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "C\u00e1c b\u01b0\u1edbc c\u1ee7a m\u00f3n n\u00e0y (5)",
+          "width": 243.59375,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Nguy\u00ean li\u1ec7u c\u1ea7n chu\u1ea9n b\u1ecb (8)",
+          "width": 243.59375,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u1eadt tr\u1ee3 l\u00fd r\u1ea3nh tay",
+          "width": 149.046875,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1ecdc to b\u01b0\u1edbc n\u00e0y",
+          "width": 153.078125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Ti\u1ebfp t\u1ee5c h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1eb7t l\u1ea1i h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc tr\u01b0\u1edbc",
+          "width": 170.15625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc ti\u1ebfp theo",
+          "width": 238.234375,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    },
+    {
+      "state": "exit",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 768,
+        "scrollWidth": 768,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Tho\u00e1t ch\u1ebf \u0111\u1ed9 n\u1ea5u",
+          "width": 100.40625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "C\u00e1c b\u01b0\u1edbc c\u1ee7a m\u00f3n n\u00e0y (5)",
+          "width": 243.59375,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Nguy\u00ean li\u1ec7u c\u1ea7n chu\u1ea9n b\u1ecb (8)",
+          "width": 243.59375,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u1eadt tr\u1ee3 l\u00fd r\u1ea3nh tay",
+          "width": 149.046875,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1ecdc to b\u01b0\u1edbc n\u00e0y",
+          "width": 153.078125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Ti\u1ebfp t\u1ee5c h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1eb7t l\u1ea1i h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc tr\u01b0\u1edbc",
+          "width": 170.15625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc ti\u1ebfp theo",
+          "width": 238.234375,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "H\u1ee7y",
+          "width": 167,
+          "height": 44,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Tho\u00e1t",
+          "width": 167,
+          "height": 44,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    },
+    {
+      "state": "cooking",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 1024,
+        "scrollWidth": 1024,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Tho\u00e1t ch\u1ebf \u0111\u1ed9 n\u1ea5u",
+          "width": 100.40625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "C\u00e1c b\u01b0\u1edbc c\u1ee7a m\u00f3n n\u00e0y (5)",
+          "width": 333.1875,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Nguy\u00ean li\u1ec7u c\u1ea7n chu\u1ea9n b\u1ecb (8)",
+          "width": 333.1875,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u1eadt tr\u1ee3 l\u00fd r\u1ea3nh tay",
+          "width": 149.046875,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1ecdc to b\u01b0\u1edbc n\u00e0y",
+          "width": 153.078125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Ti\u1ebfp t\u1ee5c h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1eb7t l\u1ea1i h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc tr\u01b0\u1edbc",
+          "width": 239.5,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc ti\u1ebfp theo",
+          "width": 335.3125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    },
+    {
+      "state": "exit",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 1024,
+        "scrollWidth": 1024,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Tho\u00e1t ch\u1ebf \u0111\u1ed9 n\u1ea5u",
+          "width": 100.40625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "C\u00e1c b\u01b0\u1edbc c\u1ee7a m\u00f3n n\u00e0y (5)",
+          "width": 333.1875,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Nguy\u00ean li\u1ec7u c\u1ea7n chu\u1ea9n b\u1ecb (8)",
+          "width": 333.1875,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u1eadt tr\u1ee3 l\u00fd r\u1ea3nh tay",
+          "width": 149.046875,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1ecdc to b\u01b0\u1edbc n\u00e0y",
+          "width": 153.078125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Ti\u1ebfp t\u1ee5c h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1eb7t l\u1ea1i h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc tr\u01b0\u1edbc",
+          "width": 239.5,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc ti\u1ebfp theo",
+          "width": 335.3125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "H\u1ee7y",
+          "width": 167,
+          "height": 44,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Tho\u00e1t",
+          "width": 167,
+          "height": 44,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    },
+    {
+      "state": "cooking",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Tho\u00e1t ch\u1ebf \u0111\u1ed9 n\u1ea5u",
+          "width": 100.40625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "C\u00e1c b\u01b0\u1edbc c\u1ee7a m\u00f3n n\u00e0y (5)",
+          "width": 378,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Nguy\u00ean li\u1ec7u c\u1ea7n chu\u1ea9n b\u1ecb (8)",
+          "width": 378,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u1eadt tr\u1ee3 l\u00fd r\u1ea3nh tay",
+          "width": 149.046875,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1ecdc to b\u01b0\u1edbc n\u00e0y",
+          "width": 153.078125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Ti\u1ebfp t\u1ee5c h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1eb7t l\u1ea1i h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc tr\u01b0\u1edbc",
+          "width": 274.15625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc ti\u1ebfp theo",
+          "width": 383.828125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    },
+    {
+      "state": "exit",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Tho\u00e1t ch\u1ebf \u0111\u1ed9 n\u1ea5u",
+          "width": 100.40625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "C\u00e1c b\u01b0\u1edbc c\u1ee7a m\u00f3n n\u00e0y (5)",
+          "width": 378,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Nguy\u00ean li\u1ec7u c\u1ea7n chu\u1ea9n b\u1ecb (8)",
+          "width": 378,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u1eadt tr\u1ee3 l\u00fd r\u1ea3nh tay",
+          "width": 149.046875,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1ecdc to b\u01b0\u1edbc n\u00e0y",
+          "width": 153.078125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Ti\u1ebfp t\u1ee5c h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "\u0110\u1eb7t l\u1ea1i h\u1eb9n gi\u1edd",
+          "width": 54,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc tr\u01b0\u1edbc",
+          "width": 274.15625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "B\u01b0\u1edbc ti\u1ebfp theo",
+          "width": 383.828125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "H\u1ee7y",
+          "width": 167,
+          "height": 44,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Tho\u00e1t",
+          "width": 167,
+          "height": 44,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    },
+    {
+      "state": "review",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Quay l\u1ea1i b\u01b0\u1edbc n\u1ea5u",
+          "width": 179.265625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 198,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e0 chua",
+          "width": 198,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 198,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 198,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 198,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: \u1edat s\u1eebng cay",
+          "width": 198,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 198,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 198,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "X\u00e1c nh\u1eadn & C\u1eadp nh\u1eadt t\u1ee7 l\u1ea1nh",
+          "width": 254,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    },
+    {
+      "state": "review",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "scale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Quay l\u1ea1i b\u01b0\u1edbc n\u1ea5u",
+          "width": 179.265625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 166,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e0 chua",
+          "width": 166,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 166,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 166,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 166,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: \u1edat s\u1eebng cay",
+          "width": 166,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 166,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 166,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "X\u00e1c nh\u1eadn & C\u1eadp nh\u1eadt t\u1ee7 l\u1ea1nh",
+          "width": 222,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    },
+    {
+      "state": "review",
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 360,
+        "scrollWidth": 360,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Quay l\u1ea1i b\u01b0\u1edbc n\u1ea5u",
+          "width": 179.265625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 150,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e0 chua",
+          "width": 150,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 150,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 150,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 150,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: \u1edat s\u1eebng cay",
+          "width": 150,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 150,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 150,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "X\u00e1c nh\u1eadn & C\u1eadp nh\u1eadt t\u1ee7 l\u1ea1nh",
+          "width": 294,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    },
+    {
+      "state": "review",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Quay l\u1ea1i b\u01b0\u1edbc n\u1ea5u",
+          "width": 179.265625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e0 chua",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: \u1edat s\u1eebng cay",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "X\u00e1c nh\u1eadn & C\u1eadp nh\u1eadt t\u1ee7 l\u1ea1nh",
+          "width": 324,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    },
+    {
+      "state": "review",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 430,
+        "scrollWidth": 430,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Quay l\u1ea1i b\u01b0\u1edbc n\u1ea5u",
+          "width": 179.265625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e0 chua",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: \u1edat s\u1eebng cay",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "X\u00e1c nh\u1eadn & C\u1eadp nh\u1eadt t\u1ee7 l\u1ea1nh",
+          "width": 364,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    },
+    {
+      "state": "review",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 768,
+        "scrollWidth": 768,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Quay l\u1ea1i b\u01b0\u1edbc n\u1ea5u",
+          "width": 179.265625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e0 chua",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: \u1edat s\u1eebng cay",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "X\u00e1c nh\u1eadn & C\u1eadp nh\u1eadt t\u1ee7 l\u1ea1nh",
+          "width": 418.40625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    },
+    {
+      "state": "review",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 1024,
+        "scrollWidth": 1024,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Quay l\u1ea1i b\u01b0\u1edbc n\u1ea5u",
+          "width": 179.265625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e0 chua",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: \u1edat s\u1eebng cay",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "X\u00e1c nh\u1eadn & C\u1eadp nh\u1eadt t\u1ee7 l\u1ea1nh",
+          "width": 584.8125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    },
+    {
+      "state": "review",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Quay l\u1ea1i b\u01b0\u1edbc n\u1ea5u",
+          "width": 179.265625,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e0 chua",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: \u1edat s\u1eebng cay",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "X\u00e1c nh\u1eadn & C\u1eadp nh\u1eadt t\u1ee7 l\u1ea1nh",
+          "width": 668,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    },
+    {
+      "state": "saved",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Xem T\u1ee7 l\u1ea1nh",
+          "width": 140.03125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 198,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e0 chua",
+          "width": 198,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 198,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 198,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 198,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: \u1edat s\u1eebng cay",
+          "width": 198,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 198,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 198,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    },
+    {
+      "state": "saved",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "scale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Xem T\u1ee7 l\u1ea1nh",
+          "width": 140.03125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 166,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e0 chua",
+          "width": 166,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 166,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 166,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 166,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: \u1edat s\u1eebng cay",
+          "width": 166,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 166,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 166,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    },
+    {
+      "state": "saved",
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 360,
+        "scrollWidth": 360,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Xem T\u1ee7 l\u1ea1nh",
+          "width": 140.03125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 150,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e0 chua",
+          "width": 150,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 150,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 150,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 150,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: \u1edat s\u1eebng cay",
+          "width": 150,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 150,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 150,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    },
+    {
+      "state": "saved",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Xem T\u1ee7 l\u1ea1nh",
+          "width": 140.03125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e0 chua",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: \u1edat s\u1eebng cay",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    },
+    {
+      "state": "saved",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 430,
+        "scrollWidth": 430,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Xem T\u1ee7 l\u1ea1nh",
+          "width": 140.03125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e0 chua",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: \u1edat s\u1eebng cay",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    },
+    {
+      "state": "saved",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 768,
+        "scrollWidth": 768,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Xem T\u1ee7 l\u1ea1nh",
+          "width": 140.03125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e0 chua",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: \u1edat s\u1eebng cay",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    },
+    {
+      "state": "saved",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 1024,
+        "scrollWidth": 1024,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Xem T\u1ee7 l\u1ea1nh",
+          "width": 140.03125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e0 chua",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: \u1edat s\u1eebng cay",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    },
+    {
+      "state": "saved",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "brokenImages": []
+      },
+      "measurements": [
+        {
+          "label": "Xem T\u1ee7 l\u1ea1nh",
+          "width": 140.03125,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e1 l\u00f3c t\u01b0\u01a1i (c\u1eaft kh\u00fac)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: C\u00e0 chua",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng C\u00e0 chua",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng D\u1ee9a / Th\u01a1m (th\u00e1i l\u00e1t)",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Gi\u00e1 \u0111\u1ed7 s\u1ed1ng",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng Ng\u00f2 gai & ng\u00f2 \u00f4m",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: \u1edat s\u1eebng cay",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng \u1edat s\u1eebng cay",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng N\u01b0\u1edbc m\u1eafm ngon",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "Gi\u1ea3m l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "L\u01b0\u1ee3ng \u0111\u00e3 d\u00f9ng: T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 180,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        },
+        {
+          "label": "T\u0103ng l\u01b0\u1ee3ng T\u1ecfi phi & d\u1ea7u \u0103n",
+          "width": 48,
+          "height": 48,
+          "splitWords": [],
+          "clippedWords": []
+        }
+      ]
+    }
+  ]
+}

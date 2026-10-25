@@ -1,0 +1,257 @@
+{
+  "base_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "implementation_commit": "9dad1494dab2719eb3f787ab161ab49748bd30d4",
+  "production_actions": false,
+  "environment": "macOS;Node25.9.0;pnpm10.33.2;unchanged main dependencies;isolated Worker/SQLite synthetic household;external fetch and service workers blocked",
+  "source_sha256": {
+    "src/web/styles/kitchen-family.css": "e8395fe3965aee913982c67873cd9baad70b2ca50e65eace9b069ff717edc2b3",
+    "tests/e2e/t17-ui/takolio-shopping-continuation.e2e.ts": "eb27c5cc5371b83b6410a1b4ac8362bd1ea527aa7440cc5d815942c870317539"
+  },
+  "checks": [
+    {
+      "name": "focused-units",
+      "command": "pnpm test tests/unit/ui06-shopping.test.ts tests/unit/shopping-demand-review-ui.test.tsx tests/unit/shopping-demand-review-service.test.ts tests/unit/shopping-hardening.test.ts --maxWorkers=4",
+      "exit_code": 0,
+      "seconds": 2.62,
+      "outcome": "PASS 4 files /61 tests in2.62s",
+      "local_ignored_log": ".artifacts/takeover/shopping/checks/focused-units.log",
+      "log_bytes": 540,
+      "log_sha256": "a5904971cb3c588f1cb86854adb464985c017ced2fd2f18d750b5b395cdc49e4"
+    },
+    {
+      "name": "focused-integration",
+      "command": "pnpm test tests/integration/shopping-demand-review.test.ts tests/integration/family-shopping-input-fences.test.ts tests/integration/family-shopping-reconciliation.test.ts --maxWorkers=4",
+      "exit_code": 0,
+      "seconds": 8.12,
+      "outcome": "PASS 3 files /53 tests in8.12s",
+      "local_ignored_log": ".artifacts/takeover/shopping/checks/focused-integration.log",
+      "log_bytes": 532,
+      "log_sha256": "a98c5d6aa8e50cfecfae2930161a69c64a2cd6f0025026f9d14e09f1d0e74dd8"
+    },
+    {
+      "name": "lint",
+      "command": "pnpm lint",
+      "exit_code": 0,
+      "seconds": 8.51,
+      "outcome": "PASS; final product CSS; last harness adaptations covered by final lint/types/browser",
+      "local_ignored_log": ".artifacts/takeover/shopping/checks-final/lint.log",
+      "log_bytes": 99,
+      "log_sha256": "3f2044fca43a5e60905becf2ebfc3a21ddd85976975841aa1e16bc87b0f40a6d"
+    },
+    {
+      "name": "typecheck",
+      "command": "pnpm typecheck",
+      "exit_code": 0,
+      "seconds": 19.97,
+      "outcome": "PASS; final product CSS; last harness adaptations covered by final lint/types/browser",
+      "local_ignored_log": ".artifacts/takeover/shopping/checks-final/typecheck.log",
+      "log_bytes": 165,
+      "log_sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e"
+    },
+    {
+      "name": "targeted-eslint",
+      "command": "pnpm exec eslint tests/e2e/t17-ui/takolio-shopping-continuation.e2e.ts",
+      "exit_code": 0,
+      "seconds": 1.11,
+      "outcome": "PASS; final product CSS; last harness adaptations covered by final lint/types/browser",
+      "local_ignored_log": ".artifacts/takeover/shopping/checks-final/targeted-eslint.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "migrations",
+      "command": "pnpm check:migrations",
+      "exit_code": 0,
+      "seconds": 0.56,
+      "outcome": "PASS; final product CSS; last harness adaptations covered by final lint/types/browser",
+      "local_ignored_log": ".artifacts/takeover/shopping/checks-final/migrations.log",
+      "log_bytes": 297,
+      "log_sha256": "9616315a9fcbfd77c67784703a16384419539e6a68ccd2838dda07239de25464"
+    },
+    {
+      "name": "build-default",
+      "command": "pnpm build",
+      "exit_code": 0,
+      "seconds": 11.23,
+      "outcome": "PASS final product CSS; existing Admin font warnings; no dependencies or config changes",
+      "local_ignored_log": ".artifacts/takeover/shopping/checks-final/build-default.log",
+      "log_bytes": 10008,
+      "log_sha256": "f1d9a17c1f00e2f72a3316260749cc6c9c22ca506e2d14fde77c49627cb46f4e"
+    },
+    {
+      "name": "build-paired",
+      "command": "VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build",
+      "exit_code": 0,
+      "seconds": 10.7,
+      "outcome": "PASS final product CSS; existing Admin font warnings; no dependencies or config changes",
+      "local_ignored_log": ".artifacts/takeover/shopping/checks-final/build-paired.log",
+      "log_bytes": 10008,
+      "log_sha256": "9be7bda188c5486d426f8bf7b8faa2f69c18973545df52de95291c04dc6fba75"
+    },
+    {
+      "name": "test",
+      "command": "TMPDIR=/private/tmp pnpm test --maxWorkers=4",
+      "exit_code": 1,
+      "seconds": 361.98,
+      "outcome": "PARTIAL 410/412 files;9163/9168 tests;360.97s test duration;five inherited encoded-space CLI path failures;no timeouts",
+      "local_ignored_log": ".artifacts/takeover/shopping/checks-final/test.log",
+      "log_bytes": 17972,
+      "log_sha256": "562c780eb5edd25993413abecbdf34954777e970530bb5c8f6db2dcf59330898"
+    },
+    {
+      "name": "audit",
+      "command": "pnpm audit --audit-level=high",
+      "exit_code": 1,
+      "seconds": 1.55,
+      "outcome": "OPEN_INHERITED 8 findings:1 low/6 moderate/1 high;Vite GHSA-587h-7wmj-h5pm",
+      "local_ignored_log": ".artifacts/takeover/shopping/checks-final/audit.log",
+      "log_bytes": 2358,
+      "log_sha256": "6691d6cdd355ba892d7cc7951a0dd83253eab167c079d243d10191cd3c1b547f"
+    },
+    {
+      "name": "final-lint",
+      "command": "pnpm lint",
+      "exit_code": 0,
+      "outcome": "PASS final committed source",
+      "local_ignored_log": ".artifacts/takeover/shopping/final-lint.log",
+      "log_bytes": 99,
+      "log_sha256": "3f2044fca43a5e60905becf2ebfc3a21ddd85976975841aa1e16bc87b0f40a6d"
+    },
+    {
+      "name": "final-typecheck",
+      "command": "pnpm typecheck",
+      "exit_code": 0,
+      "outcome": "PASS final committed source",
+      "local_ignored_log": ".artifacts/takeover/shopping/final-typecheck.log",
+      "log_bytes": 165,
+      "log_sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e"
+    },
+    {
+      "name": "final-targeted-eslint",
+      "command": "pnpm exec eslint tests/e2e/t17-ui/takolio-shopping-continuation.e2e.ts",
+      "exit_code": 0,
+      "outcome": "PASS final committed source",
+      "local_ignored_log": ".artifacts/takeover/shopping/final2-targeted-eslint.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "final-browser",
+      "command": "PREVIEW_MEAL_COMPOSITION_V2=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-shopping-continuation.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/shopping/final3",
+      "exit_code": 0,
+      "reported_duration": "1.4m",
+      "outcome": "PASS 4/4 across separate mobile/desktop contexts;88 captures/zero-violation axe;154 enabled dialog controls reachable",
+      "local_ignored_log": ".artifacts/takeover/shopping/final3.log",
+      "log_bytes": 27404,
+      "log_sha256": "b3dd71c06a126e022fd37b5581fdb599243c3419f3f5433fc174ce676367d854"
+    }
+  ],
+  "retained_attempts": [
+    {
+      "name": "lint",
+      "command": "pnpm lint",
+      "exit_code": 0,
+      "seconds": 9.22,
+      "outcome": "PASS earlier harness; superseded final gates",
+      "local_ignored_log": ".artifacts/takeover/shopping/checks/lint.log",
+      "log_bytes": 99,
+      "log_sha256": "3f2044fca43a5e60905becf2ebfc3a21ddd85976975841aa1e16bc87b0f40a6d"
+    },
+    {
+      "name": "typecheck",
+      "command": "pnpm typecheck",
+      "exit_code": 0,
+      "seconds": 22.96,
+      "outcome": "PASS earlier harness; superseded final gates",
+      "local_ignored_log": ".artifacts/takeover/shopping/checks/typecheck.log",
+      "log_bytes": 165,
+      "log_sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e"
+    },
+    {
+      "name": "targeted-eslint",
+      "command": "pnpm exec eslint tests/e2e/t17-ui/takolio-shopping-continuation.e2e.ts",
+      "exit_code": 0,
+      "seconds": 1.2,
+      "outcome": "PASS earlier harness; superseded final gates",
+      "local_ignored_log": ".artifacts/takeover/shopping/checks/targeted-eslint.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "migrations",
+      "command": "pnpm check:migrations",
+      "exit_code": 0,
+      "seconds": 0.56,
+      "outcome": "PASS earlier harness; superseded final gates",
+      "local_ignored_log": ".artifacts/takeover/shopping/checks/migrations.log",
+      "log_bytes": 297,
+      "log_sha256": "9616315a9fcbfd77c67784703a16384419539e6a68ccd2838dda07239de25464"
+    },
+    {
+      "name": "baseline",
+      "status": "INTERRUPTED",
+      "outcome": "Stopped hung unit-select locator; no complete counts; verified own orphan preview server later terminated",
+      "local_ignored_log": ".artifacts/takeover/shopping/baseline.log",
+      "log_bytes": 1549,
+      "log_sha256": "d3147962d6df9020c178dd8897cffd3ec232ac5611c4c0be000954d0e6b1e5b2"
+    },
+    {
+      "name": "baseline-2",
+      "status": "STARTUP_FAILED",
+      "outcome": "Port3000 occupied; no tests executed",
+      "local_ignored_log": ".artifacts/takeover/shopping/baseline-2.log",
+      "log_bytes": 160,
+      "log_sha256": "f7f8ec357d64d8c62f11a8716d738dbb6c8cd87e1445c685fa21cd797347d174"
+    },
+    {
+      "name": "baseline-3",
+      "status": "FAIL",
+      "outcome": "Two failures from getByLabel unit-select locator; harness changed to named combobox",
+      "local_ignored_log": ".artifacts/takeover/shopping/baseline-3.log",
+      "log_bytes": 11424,
+      "log_sha256": "0cbd0ecc41da70f57c161251125e8f5fe001d218a77796e6595f110f0bf5830f"
+    },
+    {
+      "name": "baseline-4",
+      "status": "FAIL",
+      "outcome": "Two failures:seven real checked-row contrast failures behind delete dialog; unrelated harness assumption incorrectly required null source quantity in unknown aggregate",
+      "local_ignored_log": ".artifacts/takeover/shopping/baseline-4.log",
+      "log_bytes": 22145,
+      "log_sha256": "bc26cec52550aaf553b72459df4e49d8dd5b6a7bf560ff29c07e11e0497a6742"
+    },
+    {
+      "name": "after-1",
+      "status": "PARTIAL",
+      "outcome": "1pass/1fail42.6s;actual retry/replay/409 flow passes;opacity fix alone leaves unavailable action contrast4.44:1",
+      "local_ignored_log": ".artifacts/takeover/shopping/after-1.log",
+      "log_bytes": 22934,
+      "log_sha256": "769e5bd7e89cdd4ebf08c41d4f7a46ee03bd3397a8db63b250806ea08c817d22"
+    },
+    {
+      "name": "final",
+      "status": "PASS_SUPERSEDED",
+      "outcome": "2/2 pass40.6s;final CSS;before final harness refinements and added desktop context",
+      "local_ignored_log": ".artifacts/takeover/shopping/final.log",
+      "log_bytes": 13842,
+      "log_sha256": "ba64840485f0a0e2b292f28e3c8a863a5ed74f618b63cd38c5a33b02e0b11e2b"
+    },
+    {
+      "name": "final2",
+      "status": "PARTIAL",
+      "outcome": "3pass/1fail1.9m;desktop409 reached then screenshot timeout after evidence JSON writes triggered Vite reload;frozen final3 supersedes",
+      "local_ignored_log": ".artifacts/takeover/shopping/final2.log",
+      "log_bytes": 30303,
+      "log_sha256": "a9d6b0fd06b9cbcb639abb85c455aab8b97b362071bc7c3099cf28660ea8dbac"
+    },
+    {
+      "name": "earlier-final-targeted-eslint",
+      "command": "pnpm exec eslint tests/e2e/t17-ui/takolio-shopping-continuation.e2e.ts",
+      "exit_code": 0,
+      "outcome": "PASS before final desktop harness refinements",
+      "local_ignored_log": ".artifacts/takeover/shopping/final-targeted-eslint.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "scope": "Two CSS values only in product. Final browser/lint/types/ESLint bind to committed source. Both builds/full suite ran with final product CSS before comment/locator/disabled-control harness refinements;the E2E is outside the unit/build graph. No protected assertion/source/timeout/dependency changes. Earlier exploratory ESLint invocation also targeted CSS and emitted ignored-file warning;no CSS lint certification."
+}

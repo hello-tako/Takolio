@@ -1,0 +1,6 @@
+PASS SCAN01 photo 320: manual 0.25 pack; durable SQL/GET; new-document read-only; no false OCR; replay zero delta
+PASS SCAN01 receipt 320: manual 0.25 pack; durable SQL/GET; new-document read-only; no false OCR; replay zero delta
+PASS SCAN01 photo 1440: manual 0.25 pack; durable SQL/GET; new-document read-only; no false OCR; replay zero delta
+PASS SCAN01 receipt 1440: manual 0.25 pack; durable SQL/GET; new-document read-only; no false OCR; replay zero delta
+PASS SCAN01 browser: four flows; eight screenshots; local-only; zero page errors
+EVIDENCE .artifacts/takeover/scan-manual-history/browser-2026-10-24T19-39-33.888Z

@@ -1,0 +1,10 @@
+{
+  "route": "/shopping",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "h1": [
+    "Danh sách mua sắm"
+  ]
+}

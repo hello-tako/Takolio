@@ -1,0 +1,959 @@
+{
+  "invalidBlocked": [
+    "",
+    "0",
+    "-1"
+  ],
+  "addRequests": 1,
+  "persistedFractions": [
+    0.125,
+    0.5
+  ],
+  "pendingDisabled": true,
+  "keyboardEditAndDeleteCancel": true,
+  "confirmedDelete": true,
+  "offlineQuantity": 125.5,
+  "offlineOverlaySurvivedServerReadAndReload": true,
+  "inventoryUnchanged": true,
+  "localSyntheticApi": true,
+  "observations": [
+    {
+      "state": "saved",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": []
+      },
+      "reachability": []
+    },
+    {
+      "state": "saved",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "scale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": []
+      },
+      "reachability": []
+    },
+    {
+      "state": "saved",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "scale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": []
+      },
+      "reachability": []
+    },
+    {
+      "state": "saved",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "brokenImages": []
+      },
+      "reachability": []
+    },
+    {
+      "state": "saved",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 768,
+        "scrollWidth": 768,
+        "brokenImages": []
+      },
+      "reachability": []
+    },
+    {
+      "state": "saved",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 1024,
+        "scrollWidth": 1024,
+        "brokenImages": []
+      },
+      "reachability": []
+    },
+    {
+      "state": "saved",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "brokenImages": []
+      },
+      "reachability": []
+    },
+    {
+      "state": "edit",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": []
+      },
+      "reachability": [
+        {
+          "label": "Đóng",
+          "box": {
+            "x": 246,
+            "y": 286,
+            "width": 60,
+            "height": 44
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "",
+          "box": {
+            "x": 14,
+            "y": 366.5,
+            "width": 292,
+            "height": 46
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "",
+          "box": {
+            "x": 14,
+            "y": 446,
+            "width": 177.546875,
+            "height": 46
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Cái / quả / bìaGam (g)Kilôgam (kg)Mililít (ml)Lít (l)BóGóiLát",
+          "box": {
+            "x": 201.546875,
+            "y": 446,
+            "width": 104.453125,
+            "height": 46
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Lưu lượng cần mua",
+          "box": {
+            "x": 14,
+            "y": 510,
+            "width": 292,
+            "height": 44
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "edit",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "scale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": []
+      },
+      "reachability": [
+        {
+          "label": "Đóng",
+          "box": {
+            "x": 214.21875,
+            "y": 68.796875,
+            "width": 91.78125,
+            "height": 44
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "",
+          "box": {
+            "x": 14,
+            "y": 197.984375,
+            "width": 292,
+            "height": 46
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "",
+          "box": {
+            "x": 14,
+            "y": 277.484375,
+            "width": 177.546875,
+            "height": 46
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Cái / quả / bìaGam (g)Kilôgam (kg)Mililít (ml)Lít (l)BóGóiLát",
+          "box": {
+            "x": 201.546875,
+            "y": 277.484375,
+            "width": 104.453125,
+            "height": 46
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Lưu lượng cần mua",
+          "box": {
+            "x": 14,
+            "y": 304.484375,
+            "width": 292,
+            "height": 104
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "edit",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "scale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": []
+      },
+      "reachability": [
+        {
+          "label": "Đóng",
+          "box": {
+            "x": 214.21875,
+            "y": 177.3125,
+            "width": 91.78125,
+            "height": 44
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "",
+          "box": {
+            "x": 14,
+            "y": 306.5,
+            "width": 292,
+            "height": 46
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "",
+          "box": {
+            "x": 14,
+            "y": 386,
+            "width": 177.546875,
+            "height": 46
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Cái / quả / bìaGam (g)Kilôgam (kg)Mililít (ml)Lít (l)BóGóiLát",
+          "box": {
+            "x": 201.546875,
+            "y": 386,
+            "width": 104.453125,
+            "height": 46
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Lưu lượng cần mua",
+          "box": {
+            "x": 14,
+            "y": 450,
+            "width": 292,
+            "height": 104
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "edit",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "brokenImages": []
+      },
+      "reachability": [
+        {
+          "label": "Đóng",
+          "box": {
+            "x": 316,
+            "y": 562,
+            "width": 60,
+            "height": 44
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "",
+          "box": {
+            "x": 14,
+            "y": 642.5,
+            "width": 362,
+            "height": 46
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "",
+          "box": {
+            "x": 14,
+            "y": 722,
+            "width": 221.625,
+            "height": 46
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Cái / quả / bìaGam (g)Kilôgam (kg)Mililít (ml)Lít (l)BóGóiLát",
+          "box": {
+            "x": 245.625,
+            "y": 722,
+            "width": 130.359375,
+            "height": 46
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Lưu lượng cần mua",
+          "box": {
+            "x": 14,
+            "y": 786,
+            "width": 362,
+            "height": 44
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "edit",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 768,
+        "scrollWidth": 768,
+        "brokenImages": []
+      },
+      "reachability": [
+        {
+          "label": "Đóng",
+          "box": {
+            "x": 565,
+            "y": 378,
+            "width": 60,
+            "height": 44
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "",
+          "box": {
+            "x": 143,
+            "y": 458.5,
+            "width": 482,
+            "height": 46
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "",
+          "box": {
+            "x": 143,
+            "y": 538,
+            "width": 297.171875,
+            "height": 46
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Cái / quả / bìaGam (g)Kilôgam (kg)Mililít (ml)Lít (l)BóGóiLát",
+          "box": {
+            "x": 450.171875,
+            "y": 538,
+            "width": 174.828125,
+            "height": 46
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Lưu lượng cần mua",
+          "box": {
+            "x": 143,
+            "y": 602,
+            "width": 482,
+            "height": 44
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "edit",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 1024,
+        "scrollWidth": 1024,
+        "brokenImages": []
+      },
+      "reachability": [
+        {
+          "label": "Đóng",
+          "box": {
+            "x": 693,
+            "y": 250,
+            "width": 60,
+            "height": 44
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "",
+          "box": {
+            "x": 271,
+            "y": 330.5,
+            "width": 482,
+            "height": 46
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "",
+          "box": {
+            "x": 271,
+            "y": 410,
+            "width": 297.171875,
+            "height": 46
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Cái / quả / bìaGam (g)Kilôgam (kg)Mililít (ml)Lít (l)BóGóiLát",
+          "box": {
+            "x": 578.171875,
+            "y": 410,
+            "width": 174.828125,
+            "height": 46
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Lưu lượng cần mua",
+          "box": {
+            "x": 271,
+            "y": 474,
+            "width": 482,
+            "height": 44
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "edit",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "brokenImages": []
+      },
+      "reachability": [
+        {
+          "label": "Đóng",
+          "box": {
+            "x": 901,
+            "y": 316,
+            "width": 60,
+            "height": 44
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "",
+          "box": {
+            "x": 479,
+            "y": 396.5,
+            "width": 482,
+            "height": 46
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "",
+          "box": {
+            "x": 479,
+            "y": 476,
+            "width": 297.171875,
+            "height": 46
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Cái / quả / bìaGam (g)Kilôgam (kg)Mililít (ml)Lít (l)BóGóiLát",
+          "box": {
+            "x": 786.171875,
+            "y": 476,
+            "width": 174.828125,
+            "height": 46
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Lưu lượng cần mua",
+          "box": {
+            "x": 479,
+            "y": 540,
+            "width": 482,
+            "height": 44
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "delete",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": []
+      },
+      "reachability": [
+        {
+          "label": "Giữ lại",
+          "box": {
+            "x": 36,
+            "y": 488,
+            "width": 119,
+            "height": 44
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Xóa món",
+          "box": {
+            "x": 165,
+            "y": 488,
+            "width": 119,
+            "height": 44
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "delete",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "scale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": []
+      },
+      "reachability": [
+        {
+          "label": "Giữ lại",
+          "box": {
+            "x": 72,
+            "y": 243.5,
+            "width": 78,
+            "height": 104
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Xóa món",
+          "box": {
+            "x": 170,
+            "y": 243.5,
+            "width": 78,
+            "height": 104
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "delete",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "scale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": []
+      },
+      "reachability": [
+        {
+          "label": "Giữ lại",
+          "box": {
+            "x": 72,
+            "y": 391.5,
+            "width": 78,
+            "height": 104
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Xóa món",
+          "box": {
+            "x": 170,
+            "y": 391.5,
+            "width": 78,
+            "height": 104
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "delete",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "brokenImages": []
+      },
+      "reachability": [
+        {
+          "label": "Giữ lại",
+          "box": {
+            "x": 36,
+            "y": 764,
+            "width": 154,
+            "height": 44
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Xóa món",
+          "box": {
+            "x": 200,
+            "y": 764,
+            "width": 154,
+            "height": 44
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "delete",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 768,
+        "scrollWidth": 768,
+        "brokenImages": []
+      },
+      "reachability": [
+        {
+          "label": "Giữ lại",
+          "box": {
+            "x": 212,
+            "y": 550.125,
+            "width": 167,
+            "height": 44
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Xóa món",
+          "box": {
+            "x": 389,
+            "y": 550.125,
+            "width": 167,
+            "height": 44
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "delete",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 1024,
+        "scrollWidth": 1024,
+        "brokenImages": []
+      },
+      "reachability": [
+        {
+          "label": "Giữ lại",
+          "box": {
+            "x": 340,
+            "y": 422.125,
+            "width": 167,
+            "height": 44
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Xóa món",
+          "box": {
+            "x": 517,
+            "y": 422.125,
+            "width": 167,
+            "height": 44
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "delete",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "brokenImages": []
+      },
+      "reachability": [
+        {
+          "label": "Giữ lại",
+          "box": {
+            "x": 548,
+            "y": 488.125,
+            "width": 167,
+            "height": 44
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        },
+        {
+          "label": "Xóa món",
+          "box": {
+            "x": 725,
+            "y": 488.125,
+            "width": 167,
+            "height": 44
+          },
+          "enabled": true,
+          "actionable": true,
+          "fits": true
+        }
+      ]
+    },
+    {
+      "state": "offline",
+      "viewport": {
+        "width": 320,
+        "height": 420
+      },
+      "scale": 2,
+      "metrics": {
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "brokenImages": []
+      },
+      "reachability": []
+    },
+    {
+      "state": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "brokenImages": []
+      },
+      "reachability": []
+    },
+    {
+      "state": "offline",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scale": 1,
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "brokenImages": []
+      },
+      "reachability": []
+    }
+  ]
+}

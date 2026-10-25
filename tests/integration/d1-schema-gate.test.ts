@@ -9,6 +9,12 @@ import { MIGRATION_LEDGER, SqliteD1 } from '../helpers/sqlite-d1';
 // can never silently accept a database that is behind (or ahead of) the release it guards.
 describe('D1 schema gate — migration ledger equality derived from migrations/', () => {
   const familyTables = ['family_meal_preferences', 'generated_family_meal_plans', 'saved_recipe_entries', 'shopping_demand_review_commands', 'shopping_demand_reviews', 'shopping_generated_item_state', 'shopping_item_metadata', 'shopping_plan_commands', 'shopping_plan_demands', 'shopping_plan_item_dismissals', 'shopping_plan_sources'];
+  const categoryTriggers = ['trg_inventory_adoption_category_authority_insert',
+    'trg_inventory_commands_category_authority_insert', 'trg_inventory_events_category_authority_insert',
+    'trg_inventory_lots_display_category_insert', 'trg_inventory_lots_display_category_update'];
+  const receiptColumns = ['id', 'household_id', 'actor_id', 'plan_id', 'meal_id', 'client_key', 'fingerprint', 'created_at'];
+  const missingReceiptColumns = receiptColumns.map(column => ({ issue: 'missing_column', detail: `week_swap_receipts.${column}` })).sort((a, b) => a.detail.localeCompare(b.detail));
+  const receiptTriggers = ['trg_week_swap_receipts_immutable_delete', 'trg_week_swap_receipts_immutable_insert', 'trg_week_swap_receipts_immutable_update'];
   const databases: SqliteD1[] = [];
   const gate = renderSchemaGateSql();
   const withLedger = (names: readonly string[], through?: string) => {
@@ -77,7 +83,7 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
     expect(issues.filter((row) => row.issue === 'missing_table').map((row) => row.detail)).toEqual([
       'auth_otp_assertions', 'auth_otp_claims', 'auth_otp_issuances',
       'auth_otp_requests', 'auth_otp_scopes', 'auth_otp_tickets',
-      'checkout_admissions', 'payment_reconciliation_records', ...familyTables,
+      'checkout_admissions', 'payment_reconciliation_records', ...familyTables, 'week_swap_receipts',
     ].sort());
     expect(issues.some((row) => row.issue === 'unexpected_migration')).toBe(false);
   });
@@ -89,7 +95,7 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
     const issues = db.query<{ issue: string; detail: string }>(gate);
     expect(issues.filter((row) => row.issue === 'missing_migration')).toEqual(missingMigrationsAfter(tip));
     expect(issues.filter((row) => row.issue === 'missing_table').map((row) => row.detail)).toEqual([
-      'checkout_admissions', 'payment_reconciliation_records', ...familyTables,
+      'checkout_admissions', 'payment_reconciliation_records', ...familyTables, 'week_swap_receipts',
     ].sort());
     expect(issues.filter((row) => row.issue === 'missing_index').map((row) => row.detail)).toEqual([
       'idx_checkout_admissions_user_state', 'idx_saved_recipe_entries_recent', 'idx_shopping_demand_reviews_item',
@@ -101,7 +107,7 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
     const db = withLedger(names.slice(0, names.indexOf(tip) + 1), tip);
     const issues = db.query<{issue:string;detail:string}>(gate);
     expect(issues.filter(row=>row.issue==='missing_migration')).toEqual(missingMigrationsAfter(tip));
-    expect(issues.filter(row=>row.issue==='missing_table').map(row=>row.detail)).toEqual(familyTables);
+    expect(issues.filter(row=>row.issue==='missing_table').map(row=>row.detail)).toEqual([...familyTables, 'week_swap_receipts']);
     expect(issues.filter(row=>row.issue==='missing_index').map(row=>row.detail)).toEqual(['idx_saved_recipe_entries_recent', 'idx_shopping_demand_reviews_item']);
   });
   it('rejects a 0042 database until unknown shopping demand review persistence exists', () => {
@@ -109,11 +115,40 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
     const db = withLedger(names.slice(0, names.indexOf(tip) + 1), tip);
     const issues = db.query<{issue:string;detail:string}>(gate);
     expect(issues.filter(row=>row.issue==='missing_migration')).toEqual(missingMigrationsAfter(tip));
-    expect(issues.filter(row=>row.issue==='missing_table').map(row=>row.detail)).toEqual(['shopping_demand_review_commands', 'shopping_demand_reviews']);
+    expect(issues.filter(row=>row.issue==='missing_table').map(row=>row.detail)).toEqual(['shopping_demand_review_commands', 'shopping_demand_reviews', 'week_swap_receipts']);
     expect(issues.filter(row=>row.issue==='missing_index').map(row=>row.detail)).toEqual(['idx_shopping_demand_reviews_item']);
     expect(issues.filter(row=>row.issue==='missing_trigger').map(row=>row.detail)).toEqual([
-      'trg_shopping_demand_review_commands_immutable_delete', 'trg_shopping_demand_review_commands_immutable_update',
+      ...categoryTriggers, 'trg_shopping_demand_review_commands_immutable_delete', 'trg_shopping_demand_review_commands_immutable_update', ...receiptTriggers,
     ]);
+  });
+  it('rejects a 0043 database until authoritative category storage and guards exist', () => {
+    const tip = '0043_shopping_demand_review.sql'; const names = listMigrations();
+    const db = withLedger(names.slice(0, names.indexOf(tip) + 1), tip);
+    const issues = db.query<{ issue: string; detail: string }>(gate);
+    expect(issues.filter(row => row.issue === 'missing_migration')).toEqual(missingMigrationsAfter(tip));
+    expect(issues.filter(row => row.issue === 'missing_column')).toEqual([
+      { issue: 'missing_column', detail: 'inventory_lots.display_category' }, ...missingReceiptColumns,
+    ]);
+    expect(issues.filter(row => row.issue === 'missing_trigger').map(row => row.detail)).toEqual([...categoryTriggers, ...receiptTriggers]);
+  });
+  it('rejects a 0044 database until immutable keyed swap receipts exist', () => {
+    const tip = '0044_inventory_display_category.sql'; const names = listMigrations();
+    const db = withLedger(names.slice(0, names.indexOf(tip) + 1), tip);
+    const issues = db.query<{ issue: string; detail: string }>(gate);
+    expect(issues.filter(row => row.issue === 'missing_migration')).toEqual(missingMigrationsAfter(tip));
+    expect(issues.filter(row => row.issue === 'missing_table')).toEqual([{ issue: 'missing_table', detail: 'week_swap_receipts' }]);
+    expect(issues.filter(row => row.issue === 'missing_column')).toEqual(missingReceiptColumns);
+    expect(issues.filter(row => row.issue === 'missing_trigger').map(row => row.detail)).toEqual(receiptTriggers);
+  });
+  it.each(receiptColumns)('rejects a complete ledger with missing receipt column %s', (column) => {
+    const db = withLedger(listMigrations());
+    db.seed(`ALTER TABLE week_swap_receipts RENAME COLUMN ${column} TO missing_${column}`);
+    expect(db.query(gate)).toEqual([{ issue: 'missing_column', detail: `week_swap_receipts.${column}` }]);
+  });
+  it.each([...categoryTriggers, ...receiptTriggers])('rejects a complete ledger with missing category guard %s', (trigger) => {
+    const db = withLedger(listMigrations());
+    db.seed(`DROP TRIGGER ${trigger}`);
+    expect(db.query(gate)).toEqual([{ issue: 'missing_trigger', detail: trigger }]);
   });
   it('fails closed when the ledger stops at 0034 or 0035 (legacy production tips)', () => {
     for (const tip of ['0034_global_recipe_catalog_parity.sql', '0035_recipe_media_layer.sql']) {

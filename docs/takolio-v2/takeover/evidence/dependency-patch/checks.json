@@ -1,0 +1,652 @@
+{
+  "implementation_commit": "0da750f8fa25ddf8de01345c26a38cacc6d90937",
+  "parent_checkpoint": "24d191b2cf90373fe0a2107772a6e1d7b4593fc0",
+  "official_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "result": "LOCAL_DEP01_VERIFIED",
+  "full_suite": {
+    "passed_files": 412,
+    "total_files": 412,
+    "passed_tests": 9169,
+    "total_tests": 9169,
+    "exit_code": 0,
+    "wall_seconds": 971.04,
+    "reported_duration": "Duration  969.76s",
+    "reported_seconds": 969.76
+  },
+  "checks": {
+    "vite-lock": {
+      "command": [
+        "pnpm",
+        "update",
+        "-D",
+        "--depth",
+        "0",
+        "--no-save",
+        "--lockfile-only",
+        "vite@6.4.4"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 5.39,
+      "head": "24d191b2cf90373fe0a2107772a6e1d7b4593fc0",
+      "node": "v24.16.0",
+      "source_before": {
+        "package.json": "dd7904ea6c8d2d82eb7b030e3d2b80d919f487a06d573c0abdfcab6e87ea7290",
+        "pnpm-lock.yaml": "4998dc372e0beb023700b754b9fce55901caffb211dd2c4e2280ac623d9ce69d",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "source_after": {
+        "package.json": "dd7904ea6c8d2d82eb7b030e3d2b80d919f487a06d573c0abdfcab6e87ea7290",
+        "pnpm-lock.yaml": "46d368866203249155ee2944d3c343c02a3c6930fa559e81e37072e2ea570eb7",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "log_path": ".artifacts/takeover/dependency-patch/vite-lock.log",
+      "log_bytes": 580,
+      "log_sha256": "306ee3470aaf5d1c3b640d45f342b7e10c8a27fc5440919b92a03074bbceccc3"
+    },
+    "vitest-lock": {
+      "command": [
+        "pnpm",
+        "update",
+        "-D",
+        "--depth",
+        "0",
+        "--save-exact",
+        "--lockfile-only",
+        "vitest@4.1.12"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 8.95,
+      "head": "24d191b2cf90373fe0a2107772a6e1d7b4593fc0",
+      "node": "v24.16.0",
+      "source_before": {
+        "package.json": "dd7904ea6c8d2d82eb7b030e3d2b80d919f487a06d573c0abdfcab6e87ea7290",
+        "pnpm-lock.yaml": "46d368866203249155ee2944d3c343c02a3c6930fa559e81e37072e2ea570eb7",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "source_after": {
+        "package.json": "0ec0df257acf75755e16956ce356b5733bd073420f4b2565038b4407c4969070",
+        "pnpm-lock.yaml": "630661283986efeedf951cd2dcbab007c86536f2f2f9b26c690c88fa324fef50",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "log_path": ".artifacts/takeover/dependency-patch/vitest-lock.log",
+      "log_bytes": 577,
+      "log_sha256": "8e364ca171f0614ba01b7cadba6a525eed06cd74f2759ea98d230aba10a345bf"
+    },
+    "minimize-lock": {
+      "command": [
+        "python3",
+        ".artifacts/takeover/dependency-patch/minimize-lock.py"
+      ],
+      "exit_code": 1,
+      "wall_seconds": 0.1,
+      "head": "24d191b2cf90373fe0a2107772a6e1d7b4593fc0",
+      "node": "v24.16.0",
+      "source_before": {
+        "package.json": "0ec0df257acf75755e16956ce356b5733bd073420f4b2565038b4407c4969070",
+        "pnpm-lock.yaml": "630661283986efeedf951cd2dcbab007c86536f2f2f9b26c690c88fa324fef50",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "source_after": {
+        "package.json": "4b1edb777556e8a4c61cf3c5b134da2cc4a21f8f70c7e6b2d4906bbfe453bc63",
+        "pnpm-lock.yaml": "630661283986efeedf951cd2dcbab007c86536f2f2f9b26c690c88fa324fef50",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "log_path": ".artifacts/takeover/dependency-patch/minimize-lock.log",
+      "log_bytes": 240,
+      "log_sha256": "d5aa26603b7bafd98b2175d6e7de7db5a631daa852dd5ff5c46cdd551a0004dc"
+    },
+    "minimize-lock-v2": {
+      "command": [
+        "python3",
+        ".artifacts/takeover/dependency-patch/minimize-lock-v2.py"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.07,
+      "head": "24d191b2cf90373fe0a2107772a6e1d7b4593fc0",
+      "node": "v24.16.0",
+      "source_before": {
+        "package.json": "4b1edb777556e8a4c61cf3c5b134da2cc4a21f8f70c7e6b2d4906bbfe453bc63",
+        "pnpm-lock.yaml": "630661283986efeedf951cd2dcbab007c86536f2f2f9b26c690c88fa324fef50",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "source_after": {
+        "package.json": "4b1edb777556e8a4c61cf3c5b134da2cc4a21f8f70c7e6b2d4906bbfe453bc63",
+        "pnpm-lock.yaml": "f6cbd0ed27aaaae114e519b76d7ca4c17b167742e393b97c98ba572394def542",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "log_path": ".artifacts/takeover/dependency-patch/minimize-lock-v2.log",
+      "log_bytes": 95,
+      "log_sha256": "5289dc9ff9896c8583aabb6d92bbc4a8c8a5d593802d2fecf137a2052e923263"
+    },
+    "frozen-install": {
+      "command": [
+        "pnpm",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 1.24,
+      "head": "24d191b2cf90373fe0a2107772a6e1d7b4593fc0",
+      "node": "v24.16.0",
+      "source_before": {
+        "package.json": "4b1edb777556e8a4c61cf3c5b134da2cc4a21f8f70c7e6b2d4906bbfe453bc63",
+        "pnpm-lock.yaml": "f6cbd0ed27aaaae114e519b76d7ca4c17b167742e393b97c98ba572394def542",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "source_after": {
+        "package.json": "4b1edb777556e8a4c61cf3c5b134da2cc4a21f8f70c7e6b2d4906bbfe453bc63",
+        "pnpm-lock.yaml": "f6cbd0ed27aaaae114e519b76d7ca4c17b167742e393b97c98ba572394def542",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "log_path": ".artifacts/takeover/dependency-patch/frozen-install.log",
+      "log_bytes": 316,
+      "log_sha256": "8225455a21154f3e70158be59e001d4c6ce47aa8ba34c225829c323a29b2ca8b"
+    },
+    "installed-versions": {
+      "command": [
+        "pnpm",
+        "list",
+        "vite",
+        "vitest",
+        "rollup",
+        "--depth",
+        "2",
+        "--json"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.3,
+      "head": "24d191b2cf90373fe0a2107772a6e1d7b4593fc0",
+      "node": "v24.16.0",
+      "source_before": {
+        "package.json": "4b1edb777556e8a4c61cf3c5b134da2cc4a21f8f70c7e6b2d4906bbfe453bc63",
+        "pnpm-lock.yaml": "f6cbd0ed27aaaae114e519b76d7ca4c17b167742e393b97c98ba572394def542",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "source_after": {
+        "package.json": "4b1edb777556e8a4c61cf3c5b134da2cc4a21f8f70c7e6b2d4906bbfe453bc63",
+        "pnpm-lock.yaml": "f6cbd0ed27aaaae114e519b76d7ca4c17b167742e393b97c98ba572394def542",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "log_path": ".artifacts/takeover/dependency-patch/installed-versions.log",
+      "log_bytes": 3897,
+      "log_sha256": "dda4478dfd484ed02c0cdb39653c537a06e85e3e89ed5fb95f836d1c7ddd86cd"
+    },
+    "lock-scope": {
+      "command": [
+        "python3",
+        ".artifacts/takeover/dependency-patch/verify-lock.py"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.1,
+      "head": "24d191b2cf90373fe0a2107772a6e1d7b4593fc0",
+      "node": "v24.16.0",
+      "source_before": {
+        "package.json": "4b1edb777556e8a4c61cf3c5b134da2cc4a21f8f70c7e6b2d4906bbfe453bc63",
+        "pnpm-lock.yaml": "f6cbd0ed27aaaae114e519b76d7ca4c17b167742e393b97c98ba572394def542",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "source_after": {
+        "package.json": "4b1edb777556e8a4c61cf3c5b134da2cc4a21f8f70c7e6b2d4906bbfe453bc63",
+        "pnpm-lock.yaml": "f6cbd0ed27aaaae114e519b76d7ca4c17b167742e393b97c98ba572394def542",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "log_path": ".artifacts/takeover/dependency-patch/lock-scope.log",
+      "log_bytes": 380,
+      "log_sha256": "d435b32b97896cc73f62d117e5fa41adaf5c1424e1d4dbebdc50983c1dac801e"
+    },
+    "registry-check": {
+      "command": [
+        "python3",
+        ".artifacts/takeover/dependency-patch/registry-check.py"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 1.29,
+      "head": "24d191b2cf90373fe0a2107772a6e1d7b4593fc0",
+      "node": "v24.16.0",
+      "source_before": {
+        "package.json": "4b1edb777556e8a4c61cf3c5b134da2cc4a21f8f70c7e6b2d4906bbfe453bc63",
+        "pnpm-lock.yaml": "f6cbd0ed27aaaae114e519b76d7ca4c17b167742e393b97c98ba572394def542",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "source_after": {
+        "package.json": "4b1edb777556e8a4c61cf3c5b134da2cc4a21f8f70c7e6b2d4906bbfe453bc63",
+        "pnpm-lock.yaml": "f6cbd0ed27aaaae114e519b76d7ca4c17b167742e393b97c98ba572394def542",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "log_path": ".artifacts/takeover/dependency-patch/registry-check.log",
+      "log_bytes": 125,
+      "log_sha256": "635942ed2e7b64f5be58e28d24585b24135115c36daf990a837665199890e3ac"
+    },
+    "official-main": {
+      "command": [
+        "git",
+        "ls-remote",
+        "origin",
+        "refs/heads/main"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.97,
+      "head": "24d191b2cf90373fe0a2107772a6e1d7b4593fc0",
+      "node": "v24.16.0",
+      "source_before": {
+        "package.json": "4b1edb777556e8a4c61cf3c5b134da2cc4a21f8f70c7e6b2d4906bbfe453bc63",
+        "pnpm-lock.yaml": "f6cbd0ed27aaaae114e519b76d7ca4c17b167742e393b97c98ba572394def542",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "source_after": {
+        "package.json": "4b1edb777556e8a4c61cf3c5b134da2cc4a21f8f70c7e6b2d4906bbfe453bc63",
+        "pnpm-lock.yaml": "f6cbd0ed27aaaae114e519b76d7ca4c17b167742e393b97c98ba572394def542",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "log_path": ".artifacts/takeover/dependency-patch/official-main.log",
+      "log_bytes": 57,
+      "log_sha256": "74b0b5609784df7a5fddf1241a9179b9e62a61f3d3671f7fc0a075210071e212"
+    },
+    "lint": {
+      "command": [
+        "pnpm",
+        "lint"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 9.48,
+      "head": "24d191b2cf90373fe0a2107772a6e1d7b4593fc0",
+      "node": "v24.16.0",
+      "source_before": {
+        "package.json": "4b1edb777556e8a4c61cf3c5b134da2cc4a21f8f70c7e6b2d4906bbfe453bc63",
+        "pnpm-lock.yaml": "f6cbd0ed27aaaae114e519b76d7ca4c17b167742e393b97c98ba572394def542",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "source_after": {
+        "package.json": "4b1edb777556e8a4c61cf3c5b134da2cc4a21f8f70c7e6b2d4906bbfe453bc63",
+        "pnpm-lock.yaml": "f6cbd0ed27aaaae114e519b76d7ca4c17b167742e393b97c98ba572394def542",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "log_path": ".artifacts/takeover/dependency-patch/lint.log",
+      "log_bytes": 99,
+      "log_sha256": "3f2044fca43a5e60905becf2ebfc3a21ddd85976975841aa1e16bc87b0f40a6d"
+    },
+    "typecheck": {
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 20.47,
+      "head": "24d191b2cf90373fe0a2107772a6e1d7b4593fc0",
+      "node": "v24.16.0",
+      "source_before": {
+        "package.json": "4b1edb777556e8a4c61cf3c5b134da2cc4a21f8f70c7e6b2d4906bbfe453bc63",
+        "pnpm-lock.yaml": "f6cbd0ed27aaaae114e519b76d7ca4c17b167742e393b97c98ba572394def542",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "source_after": {
+        "package.json": "4b1edb777556e8a4c61cf3c5b134da2cc4a21f8f70c7e6b2d4906bbfe453bc63",
+        "pnpm-lock.yaml": "f6cbd0ed27aaaae114e519b76d7ca4c17b167742e393b97c98ba572394def542",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "log_path": ".artifacts/takeover/dependency-patch/typecheck.log",
+      "log_bytes": 165,
+      "log_sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e"
+    },
+    "migrations": {
+      "command": [
+        "pnpm",
+        "check:migrations"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.56,
+      "head": "24d191b2cf90373fe0a2107772a6e1d7b4593fc0",
+      "node": "v24.16.0",
+      "source_before": {
+        "package.json": "4b1edb777556e8a4c61cf3c5b134da2cc4a21f8f70c7e6b2d4906bbfe453bc63",
+        "pnpm-lock.yaml": "f6cbd0ed27aaaae114e519b76d7ca4c17b167742e393b97c98ba572394def542",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "source_after": {
+        "package.json": "4b1edb777556e8a4c61cf3c5b134da2cc4a21f8f70c7e6b2d4906bbfe453bc63",
+        "pnpm-lock.yaml": "f6cbd0ed27aaaae114e519b76d7ca4c17b167742e393b97c98ba572394def542",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "log_path": ".artifacts/takeover/dependency-patch/migrations.log",
+      "log_bytes": 297,
+      "log_sha256": "9616315a9fcbfd77c67784703a16384419539e6a68ccd2838dda07239de25464"
+    },
+    "default-build": {
+      "command": [
+        "pnpm",
+        "build"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 11.48,
+      "head": "24d191b2cf90373fe0a2107772a6e1d7b4593fc0",
+      "node": "v24.16.0",
+      "source_before": {
+        "package.json": "4b1edb777556e8a4c61cf3c5b134da2cc4a21f8f70c7e6b2d4906bbfe453bc63",
+        "pnpm-lock.yaml": "f6cbd0ed27aaaae114e519b76d7ca4c17b167742e393b97c98ba572394def542",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "source_after": {
+        "package.json": "4b1edb777556e8a4c61cf3c5b134da2cc4a21f8f70c7e6b2d4906bbfe453bc63",
+        "pnpm-lock.yaml": "f6cbd0ed27aaaae114e519b76d7ca4c17b167742e393b97c98ba572394def542",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "log_path": ".artifacts/takeover/dependency-patch/default-build.log",
+      "log_bytes": 10008,
+      "log_sha256": "ef9e58e9e6d70b325d36e087fbedf03cc571b007882ccdb95ee335105ee04d05"
+    },
+    "paired-on-build": {
+      "command": [
+        "env",
+        "VITE_MEAL_PLANNER_ENABLED=true",
+        "VITE_MEAL_COMPOSITION_V2_ENABLED=true",
+        "pnpm",
+        "build"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 11.26,
+      "head": "24d191b2cf90373fe0a2107772a6e1d7b4593fc0",
+      "node": "v24.16.0",
+      "source_before": {
+        "package.json": "4b1edb777556e8a4c61cf3c5b134da2cc4a21f8f70c7e6b2d4906bbfe453bc63",
+        "pnpm-lock.yaml": "f6cbd0ed27aaaae114e519b76d7ca4c17b167742e393b97c98ba572394def542",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "source_after": {
+        "package.json": "4b1edb777556e8a4c61cf3c5b134da2cc4a21f8f70c7e6b2d4906bbfe453bc63",
+        "pnpm-lock.yaml": "f6cbd0ed27aaaae114e519b76d7ca4c17b167742e393b97c98ba572394def542",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "log_path": ".artifacts/takeover/dependency-patch/paired-on-build.log",
+      "log_bytes": 10008,
+      "log_sha256": "daa6c1144f6bdbfdf24b9b914f1830fdffdb82ab32804a5c8a13cb10d51ae43a"
+    },
+    "dependency-audit": {
+      "command": [
+        "pnpm",
+        "audit",
+        "--json"
+      ],
+      "exit_code": 1,
+      "wall_seconds": 0.97,
+      "head": "24d191b2cf90373fe0a2107772a6e1d7b4593fc0",
+      "node": "v24.16.0",
+      "source_before": {
+        "package.json": "4b1edb777556e8a4c61cf3c5b134da2cc4a21f8f70c7e6b2d4906bbfe453bc63",
+        "pnpm-lock.yaml": "f6cbd0ed27aaaae114e519b76d7ca4c17b167742e393b97c98ba572394def542",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "source_after": {
+        "package.json": "4b1edb777556e8a4c61cf3c5b134da2cc4a21f8f70c7e6b2d4906bbfe453bc63",
+        "pnpm-lock.yaml": "f6cbd0ed27aaaae114e519b76d7ca4c17b167742e393b97c98ba572394def542",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "log_path": ".artifacts/takeover/dependency-patch/dependency-audit.log",
+      "log_bytes": 13327,
+      "log_sha256": "63562913e45e3d7204d1ece3b24f59e192f65dc8c8c2cec78bdd98cf427c6c69"
+    },
+    "full-suite": {
+      "command": [
+        "pnpm",
+        "test",
+        "--maxWorkers=1"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 971.04,
+      "head": "24d191b2cf90373fe0a2107772a6e1d7b4593fc0",
+      "node": "v24.16.0",
+      "source_before": {
+        "package.json": "4b1edb777556e8a4c61cf3c5b134da2cc4a21f8f70c7e6b2d4906bbfe453bc63",
+        "pnpm-lock.yaml": "f6cbd0ed27aaaae114e519b76d7ca4c17b167742e393b97c98ba572394def542",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "source_after": {
+        "package.json": "4b1edb777556e8a4c61cf3c5b134da2cc4a21f8f70c7e6b2d4906bbfe453bc63",
+        "pnpm-lock.yaml": "f6cbd0ed27aaaae114e519b76d7ca4c17b167742e393b97c98ba572394def542",
+        "tests/unit/release-check.test.mjs": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb",
+        "tests/unit/production-catalog-continuity.test.mjs": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+      },
+      "log_path": ".artifacts/takeover/dependency-patch/full-suite.log",
+      "log_bytes": 9272,
+      "log_sha256": "5db037e1ff2e79f697b6c9fce23c8c5295ed4decc19f977bceed6a3272d2ac9c"
+    }
+  },
+  "audit": {
+    "result": "FAIL",
+    "total": 5,
+    "info": 0,
+    "low": 0,
+    "moderate": 3,
+    "high": 2,
+    "critical": 0,
+    "advisories": [
+      {
+        "module": "hono",
+        "severity": "moderate",
+        "title": "Hono: `serveStatic` decodes the request path a second time, leading to bypass of middleware on static paths",
+        "url": "https://github.com/advisories/GHSA-5r4p-p66f-jhc7"
+      },
+      {
+        "module": "zod",
+        "severity": "high",
+        "title": "Zod can exhaust memory while validating oversized constrained collections",
+        "url": "https://github.com/advisories/GHSA-mrhx-c7xc-m3w5"
+      },
+      {
+        "module": "undici",
+        "severity": "moderate",
+        "title": "undici vulnerable to Denial of Service via unbounded memory in the EventSource parser",
+        "url": "https://github.com/advisories/GHSA-4qv8-2p9j-2685"
+      },
+      {
+        "module": "undici",
+        "severity": "moderate",
+        "title": "undici vulnerable to Subresource Integrity bypass via non-lowercase algorithm tokens",
+        "url": "https://github.com/advisories/GHSA-f72v-6w45-q472"
+      },
+      {
+        "module": "undici",
+        "severity": "high",
+        "title": "undici vulnerable to Denial of Service via unhandled error on excessive content-encodings",
+        "url": "https://github.com/advisories/GHSA-xjj6-f33q-929c"
+      }
+    ]
+  },
+  "dependency_change": {
+    "vite": [
+      "6.4.3",
+      "6.4.4"
+    ],
+    "vitest": [
+      "4.1.11",
+      "4.1.12"
+    ],
+    "vite_manifest_range": "^6.2.1 unchanged",
+    "rollup": "4.63.1 unchanged",
+    "updated_packages": [
+      "vite",
+      "vitest",
+      "@vitest/expect",
+      "@vitest/mocker",
+      "@vitest/pretty-format",
+      "@vitest/runner",
+      "@vitest/snapshot",
+      "@vitest/spy",
+      "@vitest/utils"
+    ],
+    "all_other_lock_bytes_unchanged": true,
+    "registry_integrity_packages": 9
+  },
+  "registry_metadata": {
+    "path": ".artifacts/takeover/dependency-patch/registry-metadata.json",
+    "bytes": 7740,
+    "sha256": "eaa85bbf73fd78ccc3a5e0f57deac52a32e6161d6c4247109f7d29de002977fe"
+  },
+  "preparation_note": "Initial pnpm resolution changes were bounded before installation; first minimization exit1 retained, corrected attempt restores 52 Rollup blocks. Preparation source transitions are intentional; all validation gates use immutable final bytes.",
+  "production_sources_unchanged": true,
+  "screenshots": "Dependency-only change; previous frontend screenshots retained unchanged.",
+  "logs": "Complete logs and intermediate generated bytes retained ignored/private; exact receipt HEADs, before/after source hashes, log bytes and SHA256 bind every attempt.",
+  "source_bindings": [
+    {
+      "path": "package.json",
+      "bytes": 3929,
+      "sha256": "4b1edb777556e8a4c61cf3c5b134da2cc4a21f8f70c7e6b2d4906bbfe453bc63"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "bytes": 135386,
+      "sha256": "f6cbd0ed27aaaae114e519b76d7ca4c17b167742e393b97c98ba572394def542"
+    },
+    {
+      "path": "tests/unit/release-check.test.mjs",
+      "bytes": 85182,
+      "sha256": "dada0c19a3f928df0540a78a2d823821de80426359a1cdc29044a287af7832bb"
+    },
+    {
+      "path": "tests/unit/production-catalog-continuity.test.mjs",
+      "bytes": 8374,
+      "sha256": "0d8433177ee0de3bf949a8c52cc4d8f35f417e851337719e25dcfa0500fd44fc"
+    }
+  ],
+  "evidence_tooling": [
+    {
+      "path": ".artifacts/takeover/dependency-patch/run-check.py",
+      "bytes": 1237,
+      "sha256": "0ec7ed1bdf9b1b1442b05eccc011cad2af97ea66686c1a81b8e60d767142aed6"
+    },
+    {
+      "path": ".artifacts/takeover/dependency-patch/run-gates.py",
+      "bytes": 837,
+      "sha256": "616eaac58fa0e8fa02b9a3c36e57062ec48eed719672a6545e5958a0a89dc261"
+    },
+    {
+      "path": ".artifacts/takeover/dependency-patch/verify-lock.py",
+      "bytes": 1738,
+      "sha256": "f5c28f7bfdfa02762d6a8a8bbcc56157f41af091c91c0a6ee5dbc0134d962126"
+    },
+    {
+      "path": ".artifacts/takeover/dependency-patch/registry-check.py",
+      "bytes": 2184,
+      "sha256": "ae9daca4d9b30d3c1592ed315dab44d07247bfc099e8e971513bf84a40052487"
+    },
+    {
+      "path": ".artifacts/takeover/dependency-patch/minimize-lock.py",
+      "bytes": 1820,
+      "sha256": "03171ad24bb1228864343b8f7eba7843b41a0f91a9f33d2a867c00d1c0d660cb"
+    },
+    {
+      "path": ".artifacts/takeover/dependency-patch/minimize-lock-v2.py",
+      "bytes": 1270,
+      "sha256": "b69b8721fc7692867c2e0ac515797df007297571f659797743ad5d7377fb4bee"
+    },
+    {
+      "path": ".artifacts/takeover/dependency-patch/prepare-verifiers.py",
+      "bytes": 2560,
+      "sha256": "79bda7f876987aabea4c0e4dabbef965d0c8e69ca251af92b15e253d43968e35"
+    },
+    {
+      "path": ".artifacts/takeover/dependency-patch/harden-verifier-outputs.py",
+      "bytes": 536,
+      "sha256": "5f9f440b58f1c684536f57b1cd5d8f6ad413b698a0367d2f4b43bfabeae619aa"
+    },
+    {
+      "path": ".artifacts/takeover/dependency-patch/verify-scope.py",
+      "bytes": 3927,
+      "sha256": "f6e720cd8eb5b0f252226c61882588a8b6022d40473e13f6108c1e4189b19564"
+    },
+    {
+      "path": ".artifacts/takeover/dependency-patch/verify-recovery.py",
+      "bytes": 3663,
+      "sha256": "5799228b2257f7db2651e3410f965ebda9f33ac7a10216631d794437fb319da4"
+    },
+    {
+      "path": ".artifacts/takeover/dependency-patch/audit-protected.py",
+      "bytes": 5999,
+      "sha256": "f6733aab75d9d85a9c959a24c5ee9c8dd4a17332dd3cd6a281517915bbf5f851"
+    },
+    {
+      "path": ".artifacts/takeover/dependency-patch/finalize-docs.py",
+      "bytes": 15228,
+      "sha256": "67bf1143da86c02c91bbf38a17900bbf8ec464ad3992706cd6e26f7699f2eff3"
+    },
+    {
+      "path": ".artifacts/takeover/dependency-patch/finalize-checkpoint.py",
+      "bytes": 11449,
+      "sha256": "35f95845d091ad6ffd98d64c39a100bb69b9dc1da0e6fcf904e2364aa3aa5c36"
+    }
+  ],
+  "intermediate_artifacts": [
+    {
+      "path": ".artifacts/takeover/dependency-patch/generated-package.json.txt",
+      "bytes": 3929,
+      "sha256": "0ec0df257acf75755e16956ce356b5733bd073420f4b2565038b4407c4969070"
+    },
+    {
+      "path": ".artifacts/takeover/dependency-patch/generated-lock.yaml.txt",
+      "bytes": 135386,
+      "sha256": "630661283986efeedf951cd2dcbab007c86536f2f2f9b26c690c88fa324fef50"
+    }
+  ],
+  "prepared_documents": [
+    {
+      "path": "docs/ai/CURRENT_STATE.md",
+      "bytes": 828919,
+      "sha256": "e036be0f0f6028674470f7d89da6f2c0300c0a9dfc80ed9ce6d2ad1b4b663eb3"
+    },
+    {
+      "path": "TASK_BOARD.md",
+      "bytes": 338831,
+      "sha256": "c221ded7d9aeed3241977a3a3ffce866bb5db5d3ec70809dc1e2d8aa392aa07a"
+    },
+    {
+      "path": "HANDOFF.md",
+      "bytes": 141334,
+      "sha256": "edde91b3648ef698627c654d097c790926fe5910651252bad80bcc3a37128831"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/FRONTEND_PLAN_STATUS.md",
+      "bytes": 5843,
+      "sha256": "4622a26c547d280a0dbe21fb2747f6492d225a1d22c5358d12b58e42cd63323b"
+    },
+    {
+      "path": "docs/ai/tasks/DEP01-vite-vitest-patch.md",
+      "bytes": 2352,
+      "sha256": "0516a8d10e2c8cff216884f0b9a8fc134b50336eedcfed1fb3dca3eb8507b66c"
+    },
+    {
+      "path": "docs/takolio-v2/takeover/DEP01_VITE_VITEST_PATCH.md",
+      "bytes": 2757,
+      "sha256": "ac2c6ca84b17966abfcb2a03b396c4edcf4ae2087a3a8221c20f2f8cd7ac58d6"
+    }
+  ]
+}

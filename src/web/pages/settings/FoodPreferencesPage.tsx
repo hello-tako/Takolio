@@ -137,7 +137,7 @@ export const FoodPreferencesPage: React.FC = () => {
 
       {isGuestOffline && (
         <p className="text-xs text-semantic-text-muted mb-3">
-          Phiên dùng thử ngoại tuyến: thay đổi chỉ áp dụng cho thiết bị này.
+          Phiên dùng thử ngoại tuyến: thay đổi chỉ áp dụng trong phiên này và sẽ mất khi tải lại ứng dụng.
         </p>
       )}
 
@@ -239,7 +239,7 @@ export const FoodPreferencesPage: React.FC = () => {
           )}
           {savedAt && !error && (
             <p role="status" className="text-sm text-semantic-success">
-              Đã lưu sở thích.
+              {isGuestOffline ? 'Đã áp dụng sở thích cho phiên dùng thử này.' : 'Đã lưu sở thích.'}
             </p>
           )}
 

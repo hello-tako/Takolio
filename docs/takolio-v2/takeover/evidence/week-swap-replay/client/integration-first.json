@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "pnpm",
+    "exec",
+    "vitest",
+    "run",
+    "tests/integration/week-swap-response-loss.test.ts",
+    "--maxWorkers=1"
+  ],
+  "cwd": "[WORKTREE]",
+  "startedUtc": "2026-10-24T20:43:27.032209+00:00",
+  "elapsedSeconds": 3.112,
+  "exitCode": 0,
+  "log": "[WORKTREE]/.artifacts/takeover/wkd02/client/integration-first.log",
+  "sha256": "3a52a79f47e19ab103131c91883a71985a7b20a8304e303d2d95f031f1d39edb"
+}

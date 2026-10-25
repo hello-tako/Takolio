@@ -1,0 +1,10 @@
+{
+  "route": "/settings/planning",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "h1": [
+    "Cài đặt lập thực đơn"
+  ]
+}

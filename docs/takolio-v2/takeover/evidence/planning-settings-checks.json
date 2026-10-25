@@ -1,0 +1,264 @@
+{
+  "base_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "implementation_commit": "b82701c7ba6ffd561799164cb9506377391126fb",
+  "production_actions": false,
+  "environment": "macOS; existing Node25.9.0/pnpm10.33.2 for focused/static/build/browser; full suite Node24.16.0 from /opt/homebrew/opt/node@24/bin with resolved TMPDIR; isolated local Worker/SQLite registered fixture; external API and service workers blocked; Chromium reduced motion/root-font simulation",
+  "source_sha256": {
+    "src/web/pages/settings/PlanningSettingsPage.tsx": "1360ad9a63b48f9b333c95a61c497963cfdd3effd360f9ccfbb16ed1e8b644af",
+    "tests/e2e/t17-ui/takolio-planning-settings-continuation.e2e.ts": "e157f86b0a194c85b4e2218569e8fad2ecdc4d57eaa3a44c2f5cc0955138fb2e"
+  },
+  "baseline_source_copies": [
+    {
+      "path": "src/web/pages/settings/PlanningSettingsPage.tsx",
+      "sha256": "f253f5b7c14d5e95e18796c36614f531ea09ed510463c3768f36f1da750339c5",
+      "local_ignored_copy": ".artifacts/takeover/planning-settings/PlanningSettingsPage.tsx.baseline"
+    },
+    {
+      "path": "tests/e2e/t17-ui/takolio-planning-settings-continuation.e2e.ts",
+      "sha256": "022a4afbce75e516c86d5cb5e8a82a83a27d1c5a75515eabaabc0d618520bd98",
+      "local_ignored_copy": ".artifacts/takeover/planning-settings/takolio-planning-settings-continuation.e2e.ts.baseline"
+    }
+  ],
+  "harness_binding": {
+    "paired_before_after_harness_sha256": "5d5c346aa48729c5cddb041d5b10c6a281972657460ab264eb39b24e9be0dc9f",
+    "paired_harness_copy": ".artifacts/takeover/planning-settings/harness-paired-verified.ts",
+    "final_harness_sha256": "e157f86b0a194c85b4e2218569e8fad2ecdc4d57eaa3a44c2f5cc0955138fb2e",
+    "paired_active_prefix_sha256": "a6c103efe570b7e6007f5788d383002f5186c3b9b8d00ac152f96d9ee7286a1b",
+    "paired_active_prefix_identical": true,
+    "after_only_extension": "Composition-OFF case reads the existing preferences envelope and retains actual seeded priorities; the paired ON test body is byte-identical across both captured phases and final source."
+  },
+  "checks": [
+    {
+      "name": "targeted-eslint",
+      "command": "pnpm exec eslint src/web/pages/settings/PlanningSettingsPage.tsx tests/e2e/t17-ui/takolio-planning-settings-continuation.e2e.ts",
+      "exit_code": 0,
+      "seconds": 1.31,
+      "outcome": "PASS; existing Admin font warnings apply only to builds",
+      "local_ignored_log": ".artifacts/takeover/planning-settings/checks/targeted-eslint.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "focused-units",
+      "command": "pnpm exec vitest run tests/unit/family-preferences-favorites-ui.test.tsx tests/unit/ui08-account.test.tsx tests/unit/frontend-services.test.ts tests/unit/ui08-route-scope.test.tsx tests/unit/ui11-navigation.test.tsx tests/unit/onboarding-contract.test.tsx",
+      "exit_code": 0,
+      "seconds": 3.79,
+      "outcome": "PASS 6 files/111 tests in 2.67s",
+      "local_ignored_log": ".artifacts/takeover/planning-settings/checks/focused-units.log",
+      "log_bytes": 258,
+      "log_sha256": "0e6ddec355896aa23c88c8aa064935d006cd4cec2ed42d1d257bd969940d40b3"
+    },
+    {
+      "name": "focused-integration",
+      "command": "pnpm exec vitest run tests/integration/family-preferences-favorites.test.ts tests/integration/frontend-ui-integration.test.tsx tests/integration/auth-tenant-adversarial.test.ts tests/integration/inventory-closed-loop.test.ts",
+      "exit_code": 0,
+      "seconds": 8.24,
+      "outcome": "PASS 4 files/112 tests in 7.47s",
+      "local_ignored_log": ".artifacts/takeover/planning-settings/checks/focused-integration.log",
+      "log_bytes": 256,
+      "log_sha256": "6a363df96e5fcc7bfdfd3a1509082de5d0a866acd6cc02f8914cdb2836a8d9ac"
+    },
+    {
+      "name": "lint",
+      "command": "pnpm lint",
+      "exit_code": 0,
+      "seconds": 7.54,
+      "outcome": "PASS; existing Admin font warnings apply only to builds",
+      "local_ignored_log": ".artifacts/takeover/planning-settings/checks/lint.log",
+      "log_bytes": 99,
+      "log_sha256": "3f2044fca43a5e60905becf2ebfc3a21ddd85976975841aa1e16bc87b0f40a6d"
+    },
+    {
+      "name": "typecheck",
+      "command": "pnpm typecheck",
+      "exit_code": 0,
+      "seconds": 17.31,
+      "outcome": "PASS; existing Admin font warnings apply only to builds",
+      "local_ignored_log": ".artifacts/takeover/planning-settings/checks/typecheck.log",
+      "log_bytes": 165,
+      "log_sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e"
+    },
+    {
+      "name": "migrations",
+      "command": "pnpm check:migrations",
+      "exit_code": 0,
+      "seconds": 0.52,
+      "outcome": "PASS; existing Admin font warnings apply only to builds",
+      "local_ignored_log": ".artifacts/takeover/planning-settings/checks/migrations.log",
+      "log_bytes": 297,
+      "log_sha256": "9616315a9fcbfd77c67784703a16384419539e6a68ccd2838dda07239de25464"
+    },
+    {
+      "name": "build",
+      "command": "pnpm build",
+      "exit_code": 0,
+      "seconds": 9.93,
+      "outcome": "PASS; existing Admin font warnings apply only to builds",
+      "local_ignored_log": ".artifacts/takeover/planning-settings/checks/build.log",
+      "log_bytes": 10008,
+      "log_sha256": "d5e18e08062006363ff8b00da8ee5465d6713d5cff2874ff010a09eff6db11ee"
+    },
+    {
+      "name": "paired-build",
+      "command": "VITE_MEAL_PLANNER_ENABLED=true VITE_MEAL_COMPOSITION_V2_ENABLED=true pnpm build",
+      "exit_code": 0,
+      "seconds": 9.66,
+      "outcome": "PASS; existing Admin font warnings apply only to builds",
+      "local_ignored_log": ".artifacts/takeover/planning-settings/checks/paired-build.log",
+      "log_bytes": 10008,
+      "log_sha256": "631136ee99fbf6c539390499540795655fe127f19980c0cc241934840cdb54c5"
+    },
+    {
+      "name": "audit",
+      "command": "pnpm audit --json",
+      "exit_code": 1,
+      "seconds": 1.71,
+      "outcome": "OPEN_INHERITED 1 low/6 moderate/1 high, including Vite GHSA-587h-7wmj-h5pm; dependencies unchanged",
+      "local_ignored_log": ".artifacts/takeover/planning-settings/checks/audit.log",
+      "log_bytes": 43734,
+      "log_sha256": "3256cc0c6e0545751f2cfdb3223b90a27a32043a364bb025bc5047465d90103f"
+    },
+    {
+      "name": "full-suite-node24",
+      "command": "pnpm test",
+      "exit_code": 1,
+      "seconds": 210.03,
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/",
+      "node": "v24.16.0",
+      "PATH_prefix": "/opt/homebrew/opt/node@24/bin",
+      "outcome": "PARTIAL 410/412 files; 9164/9169 tests in209.07s; same five inherited encoded-space CLI failures in production-catalog-continuity/release-check",
+      "local_ignored_log": ".artifacts/takeover/planning-settings/checks/full-suite-node24.log",
+      "log_bytes": 17961,
+      "log_sha256": "faca5a2126a3f0a401f53e00e5aa4e622b6c386f79e6358c26cfb1984f511091"
+    },
+    {
+      "name": "browser-paired",
+      "command": "PREVIEW_MEAL_COMPOSITION_V2=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-planning-settings-continuation.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/planning-settings/after",
+      "exit_code": 0,
+      "test_duration_reported": "2.0m",
+      "outcome": "PASS 6 passed/2 skipped; composition-ON journeys unchanged before/after; 64 final zero-violation axe reports with incomplete contrast;1264 measured controls; real family PUT/conflict/reload, shaped500/retry, legacy tastes safety separation, offline login gate",
+      "local_ignored_log": ".artifacts/takeover/planning-settings/after.log",
+      "log_bytes": 19783,
+      "log_sha256": "157c02e6dbf9a17fb6b19fbaccfaeffb8a27cfba80f41e7f220030843c90d7df"
+    },
+    {
+      "name": "browser-composition-off",
+      "command": "PORT=3011 PREVIEW_API_PORT=8788 PREVIEW_MEAL_COMPOSITION_V2=false pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-planning-settings-continuation.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/planning-settings/after-composition-off-verified",
+      "exit_code": 0,
+      "test_duration_reported": "20.3s",
+      "outcome": "PASS 2 passed/6 skipped; actual composition-OFF after-only; real Week PATCH/reload and retained priorities;8 zero-violation axe reports with incomplete contrast;128 measured controls; planner flag remains ON, not full Week-OFF QA",
+      "local_ignored_log": ".artifacts/takeover/planning-settings/after-composition-off-verified.log",
+      "log_bytes": 10647,
+      "log_sha256": "d122adc7d9a02654b0ebaf28982c7adadd2248ccfa4a5d6935176177d4218528"
+    },
+    {
+      "name": "targeted-eslint-final",
+      "command": "pnpm exec eslint src/web/pages/settings/PlanningSettingsPage.tsx tests/e2e/t17-ui/takolio-planning-settings-continuation.e2e.ts",
+      "exit_code": 0,
+      "outcome": "PASS after OFF-only harness corrections; product and paired active harness unchanged",
+      "local_ignored_log": ".artifacts/takeover/planning-settings/targeted-eslint-final.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "typecheck-final",
+      "command": "pnpm typecheck",
+      "exit_code": 0,
+      "outcome": "PASS after OFF-only harness corrections; product and paired active harness unchanged",
+      "local_ignored_log": ".artifacts/takeover/planning-settings/typecheck-final.log",
+      "log_bytes": 165,
+      "log_sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e"
+    }
+  ],
+  "retained_attempts": [
+    {
+      "name": "baseline",
+      "exit_code": 1,
+      "outcome": "INITIAL 4failed/2passed/2skipped; product wording plus wrong test expectation for derived plan freshness and transient geometry; retained; test refinements precede paired baseline",
+      "local_ignored_log": ".artifacts/takeover/planning-settings/baseline.log",
+      "log_bytes": 40301,
+      "log_sha256": "6b4e06a6ecefef1e6874cf3f81f05d4c25916f8b344b274fb0e8031fe80257e1"
+    },
+    {
+      "name": "baseline-refined",
+      "exit_code": 1,
+      "outcome": "PRODUCT_BASELINE 2failed/4passed/2skipped in2.1m; only expected wording assertions; active composition-ON harness identical to passing paired after run",
+      "local_ignored_log": ".artifacts/takeover/planning-settings/baseline-refined.log",
+      "log_bytes": 32495,
+      "log_sha256": "2eff0728191db2ea6ff6d24f7efb9317f0a550dee12e26e0e8e84401ecf0dcbb"
+    },
+    {
+      "name": "after-composition-off",
+      "exit_code": 1,
+      "outcome": "FAILED 2failed/6skipped; fixture login blocked before screen by local Vite504 Outdated Optimize Dep for Zustand",
+      "local_ignored_log": ".artifacts/takeover/planning-settings/after-composition-off.log",
+      "log_bytes": 8587,
+      "log_sha256": "2abb927dd044975b8de66dd4c00ee866454acf1c01f15b4e406a122e184a4fb7"
+    },
+    {
+      "name": "after-composition-off-final",
+      "exit_code": 1,
+      "outcome": "FAILED 2failed/6skipped; same stale Vite dependency cache at fixture login",
+      "local_ignored_log": ".artifacts/takeover/planning-settings/after-composition-off-final.log",
+      "log_bytes": 8635,
+      "log_sha256": "78b99361b23f74f727dfdc8cfe01bf4dbe151e39d4e84fdd1660d6c98d04b281"
+    },
+    {
+      "name": "after-composition-off-clean",
+      "exit_code": 1,
+      "outcome": "FAILED 2failed/6skipped; after retaining and moving stale ignored Vite cache, actual legacy screen loaded; test misread existing preferences envelope and omitted seeded budget priority; fixed OFF case only",
+      "local_ignored_log": ".artifacts/takeover/planning-settings/after-composition-off-clean.log",
+      "log_bytes": 14819,
+      "log_sha256": "ffb04b2a802d2a295628a56f5a0e379e80c6c017649aa0ba2902979411805e0f"
+    },
+    {
+      "name": "recovery-before",
+      "exit_code": 0,
+      "outcome": "PASS private snapshot/original verification before product edits",
+      "local_ignored_log": ".artifacts/takeover/planning-settings/recovery-before.log",
+      "log_bytes": 624,
+      "log_sha256": "eb6e43c7333fcfc8356022f20607daff726988b07097f64982db616a64c34cf0"
+    },
+    {
+      "name": "recovery-resume",
+      "exit_code": 0,
+      "outcome": "PASS private snapshot/original verification during continuation",
+      "local_ignored_log": ".artifacts/takeover/planning-settings/recovery-resume.log",
+      "log_bytes": 624,
+      "log_sha256": "eb6e43c7333fcfc8356022f20607daff726988b07097f64982db616a64c34cf0"
+    },
+    {
+      "name": "recovery-after-implementation",
+      "exit_code": 0,
+      "outcome": "PASS private snapshot/original verification after implementation commit",
+      "local_ignored_log": ".artifacts/takeover/planning-settings/recovery-after-implementation.log",
+      "log_bytes": 624,
+      "log_sha256": "f035cc5057d6e4907be36a6b0d82606435341d524f8248ccfc548fb08be2c0d3"
+    },
+    {
+      "name": "remote-main",
+      "exit_code": 0,
+      "outcome": "PASS read-only canonical main unchanged; no remote mutation",
+      "local_ignored_log": ".artifacts/takeover/planning-settings/remote-main.log",
+      "log_bytes": 57,
+      "log_sha256": "74b0b5609784df7a5fddf1241a9179b9e62a61f3d3671f7fc0a075210071e212"
+    },
+    {
+      "name": "remote-main-resume",
+      "exit_code": 0,
+      "outcome": "PASS read-only canonical main unchanged; no remote mutation",
+      "local_ignored_log": ".artifacts/takeover/planning-settings/remote-main-resume.log",
+      "log_bytes": 57,
+      "log_sha256": "74b0b5609784df7a5fddf1241a9179b9e62a61f3d3671f7fc0a075210071e212"
+    },
+    {
+      "name": "remote-main-final",
+      "exit_code": 0,
+      "outcome": "PASS read-only canonical main unchanged; no remote mutation",
+      "local_ignored_log": ".artifacts/takeover/planning-settings/remote-main-final.log",
+      "log_bytes": 57,
+      "log_sha256": "74b0b5609784df7a5fddf1241a9179b9e62a61f3d3671f7fc0a075210071e212"
+    }
+  ],
+  "scope": "One explanatory note and one profile-link label; no handlers, API, CSS, components, assets, backend/security, household/inventory authority, Week contracts, schema, dependencies or production infrastructure changes. Hard allergy/forbidden family constraints remain separate from legacy profile tastes. Derived plan freshness legitimately becomes requires_revalidation/stale_preferences; other seeded plan fields unchanged. Composition-OFF after-only preserves Week preferences with planner ON. Root-font/reduced-motion Chromium does not certify devices, OS zoom, screen readers, full Week-OFF, live providers, performance or production."
+}

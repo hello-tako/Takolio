@@ -1,0 +1,10 @@
+{
+  "command": "PORT=3303 PREVIEW_API_PORT=8923 PREVIEW_MEAL_PLANNER_ENABLED=true PREVIEW_MEAL_COMPOSITION_V2=true PREVIEW_MEAL_COMPOSITION_V2_SERVER=true PREVIEW_T20_D1=true pnpm exec playwright test -c playwright.t17.config.ts tests/e2e/t17-ui/takolio-control-contrast.e2e.ts --project=mobile-390 --project=desktop-1440 --output=.artifacts/takeover/control-contrast/c12-c13-final-1",
+  "exit_code": 0,
+  "seconds": 249.59,
+  "log_sha256": "6a9f4df9a45bf5756cf50988e59e488c5905f36dda079203122b57b4efc29fd0",
+  "sources": {
+    "tests/e2e/t17-ui/takolio-control-contrast.e2e.ts": "e864f5b180e3a42004f3390a9729e5f9006bece192ee60b98e516d93044cb124",
+    "src/web/styles/kitchen-upgrade.css": "129e6fcd738661a54a1fe501e3d0f044dc1565c93528be0e43a36573ba510a14"
+  }
+}

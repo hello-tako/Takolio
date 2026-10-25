@@ -14,6 +14,7 @@ interface InstallPrompt extends Event {
 export const SettingsPage: React.FC = () => {
   const [deferredPrompt, setDeferredPrompt] = useState<InstallPrompt | null>(null);
   const [isStandalone, setIsStandalone] = useState(false);
+  const [installing, setInstalling] = useState(false);
   const [cacheCleared, setCacheCleared] = useState(false);
   const [clearing, setClearing] = useState(false);
   const [actionError, setActionError] = useState<string | null>(null);
@@ -31,8 +32,10 @@ export const SettingsPage: React.FC = () => {
   }, []);
 
   const handleInstallPwa = async () => {
+    if (installing) return;
     setActionError(null);
     if (!deferredPrompt) { setShowInstallHelp(true); return; }
+    setInstalling(true);
     try {
       await deferredPrompt.prompt();
       await deferredPrompt.userChoice;
@@ -40,7 +43,7 @@ export const SettingsPage: React.FC = () => {
     } catch {
       setActionError('Chưa mở được cửa sổ cài đặt. Hãy thử hướng dẫn cài thủ công.');
       setDeferredPrompt(null);
-    }
+    } finally { setInstalling(false); }
   };
 
   const handleClearCache = async () => {
@@ -64,7 +67,7 @@ export const SettingsPage: React.FC = () => {
         <p>{isStandalone
           ? 'Bạn đang mở Takolio từ ứng dụng đã cài trên màn hình chính.'
           : 'Thêm Takolio vào màn hình chính để mở nhanh. Một số dữ liệu đã lưu có thể xem khi mất mạng; tính năng cần máy chủ vẫn cần kết nối.'}</p>
-        {!isStandalone && <Button variant="outline" fullWidth onClick={handleInstallPwa}>Cài đặt lên màn hình chính</Button>}
+        {!isStandalone && <Button variant="outline" fullWidth onClick={handleInstallPwa} isLoading={installing}>Cài đặt lên màn hình chính</Button>}
       </Card>
       <Card className="p-5 space-y-3">
         <h2 className="flex items-center gap-2"><Wifi size={20} aria-hidden="true" /> Bộ nhớ đệm ứng dụng</h2>

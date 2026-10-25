@@ -1,0 +1,10 @@
+{
+  "route": "/me/preferences",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "h1": [
+    "Sở thích & hạn chế"
+  ]
+}

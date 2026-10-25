@@ -1,0 +1,32 @@
+{
+  "result": "PASS",
+  "phase": "precommit",
+  "head": "a4fa573a53580f187f86b35bad7127bba042000e",
+  "parent": "a4fa573a53580f187f86b35bad7127bba042000e",
+  "official_main": "90b94129113b41e34701d99f51175cfa81cb73de",
+  "unchanged_parent_paths": 8990,
+  "protected_main_paths_unchanged": 5798,
+  "reviewed_changed_paths": [
+    "docs/ai/DECISIONS.md",
+    "docs/ai/tasks/SCAN01-manual-review-history.md",
+    "src/web/pages/ReceiptReviewPage.tsx",
+    "src/web/pages/ScanResultPage.tsx",
+    "src/web/stores/useScanStore.ts",
+    "src/worker/routes/scans.ts",
+    "tests/integration/scan-manual-history.test.ts",
+    "tests/integration/scan-response-loss.test.ts",
+    "tests/integration/t13-receipt-vision-truth.test.ts",
+    "tests/integration/t13b-review-roundtrip.test.tsx"
+  ],
+  "selected_salvage_paths_unchanged": 54,
+  "unchanged_ledger_rows": {
+    "ARGON_WORK_LEDGER.csv": 69,
+    "WIP_ASSET_PROVENANCE.csv": 12,
+    "SCREEN_PROGRESS.csv": 38
+  },
+  "previous_file_decision_rows_preserved": 115,
+  "owner_reviews_pending": 38,
+  "frozen_source_entries": 1182,
+  "frozen_source_differences": [],
+  "failures": []
+}

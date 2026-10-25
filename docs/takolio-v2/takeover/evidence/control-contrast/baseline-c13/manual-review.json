@@ -1,0 +1,22 @@
+{
+  "reviewedAt": "2026-10-23T23:14:35.340Z",
+  "images": [
+    "mobile-controls-contact.png",
+    "text200-controls-contact.png",
+    "desktop-controls-contact.png"
+  ],
+  "findings": [
+    "Discovery fields have a weak white/cream fill distinction; no stroke.",
+    "Shopping name/quantity/unit merge with their off-white panel; field extents are unclear.",
+    "Planner main date/day count/servings blend with the white form; no stroke.",
+    "Native radios/checkboxes visibly render glyphs; no defect inferred from their computed element fill.",
+    "Nested preference selects visibly retain existing pale borders; outside narrow minimum scope.",
+    "Full-page captures can place fixed bottom navigation over an artificial mid-document position; these contact crops are appearance evidence, not occlusion certification."
+  ],
+  "limitations": [
+    "Desktop contact resized by viewer; raw full-size PNG remains available.",
+    "Root text200 simulates root-font enlargement, not browser zoom.",
+    "No full WCAG,screenreader,Safari,physical device,owner acceptance or pixel comparison claim.",
+    "No DOM-mutated proposed CSS or new runtime patch included."
+  ]
+}

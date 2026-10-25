@@ -245,3 +245,242 @@
 .takosan-rebuild .kitchen-recipe-card {
   touch-action: manipulation;
 }
+
+.takosan-rebuild .recipe-dish-illustration {
+  display: block;
+  width: min(100%, 180px);
+  height: auto;
+  margin-inline: auto;
+}
+.takosan-rebuild .kitchen-recipe-badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.takosan-rebuild .kitchen-recipe-difficulty {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 8px;
+  border-radius: 9999px;
+  background: var(--takosan-cream);
+  color: rgb(var(--semantic-text-secondary-rgb));
+  font-size: 12px;
+  font-weight: 600;
+}
+.takosan-rebuild .kitchen-recipe-coverage-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.takosan-rebuild .kitchen-coverage-meter {
+  height: 5px;
+  width: 100%;
+  border-radius: 9999px;
+  background: rgb(var(--semantic-border-rgb));
+  overflow: hidden;
+}
+.takosan-rebuild .kitchen-coverage-meter span {
+  display: block;
+  height: 100%;
+  border-radius: 9999px;
+  background: var(--kitchen-pine);
+}
+.takosan-rebuild .recipe-technique-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: white;
+  border: 1px solid rgb(var(--semantic-border-rgb));
+}
+.takosan-rebuild .recipe-technique-summary-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--kitchen-pine);
+}
+.takosan-rebuild .recipe-technique-summary-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.takosan-rebuild .recipe-technique-chip {
+  padding: 3px 9px;
+  border-radius: 9999px;
+  background: var(--takosan-mint);
+  color: var(--kitchen-pine);
+  font-size: 12px;
+  font-weight: 600;
+}
+.takosan-rebuild .recipe-availability-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+.takosan-rebuild .recipe-availability-mascot {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+}
+.takosan-rebuild .recipe-readiness-bar-wrap {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgb(var(--semantic-border-rgb));
+}
+.takosan-rebuild .recipe-readiness-bar {
+  height: 6px;
+  width: 100%;
+  border-radius: 9999px;
+  background: rgb(var(--semantic-border-rgb));
+  overflow: hidden;
+}
+.takosan-rebuild .recipe-readiness-bar span {
+  display: block;
+  height: 100%;
+  border-radius: 9999px;
+  background: var(--kitchen-pine);
+}
+.takosan-rebuild .recipe-readiness-caption {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: rgb(var(--semantic-text-secondary-rgb));
+  font-weight: 600;
+}
+.takosan-rebuild .recipe-steps-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 16px;
+  background: white;
+  border: 1px solid rgb(var(--semantic-border-rgb));
+  border-left: 4px solid var(--kitchen-pine);
+}
+.takosan-rebuild .recipe-steps-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--kitchen-pine);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.takosan-rebuild .recipe-steps-subtitle {
+  margin-top: 4px;
+  font-size: 13px;
+  color: rgb(var(--semantic-text-secondary-rgb));
+}
+.takosan-rebuild .recipe-inline-cook-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: var(--takosan-mint);
+  color: var(--kitchen-pine);
+  font-size: 13px;
+  font-weight: 700;
+}
+.takosan-rebuild .recipe-inline-cook-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.takosan-rebuild .recipe-step-ingredients {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+.takosan-rebuild .recipe-step-ingredient-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  background: var(--takosan-cream);
+  border: 1px solid rgb(var(--semantic-border-rgb));
+  font-size: 12px;
+  font-weight: 600;
+  color: rgb(var(--semantic-text-primary-rgb));
+}
+.takosan-rebuild .recipe-step-ingredient-chip img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+.takosan-rebuild .recipe-step-tip {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--takosan-mint);
+  color: var(--kitchen-pine);
+  font-size: 13px;
+}
+
+.takosan-rebuild .discovery-active-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  list-style: none;
+}
+.takosan-rebuild .discovery-active-filters li {
+  min-width: 0;
+  max-width: 100%;
+}
+.takosan-rebuild .discovery-active-filters button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--kitchen-pine);
+  border-radius: 10px;
+  background: var(--kitchen-pine);
+  color: white;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  text-align: start;
+  touch-action: manipulation;
+}
+.takosan-rebuild .discovery-active-filters button:hover {
+  background: var(--takosan-ink);
+  border-color: var(--takosan-ink);
+}
+.takosan-rebuild .discovery-active-filters button:focus-visible {
+  outline: 2px solid var(--semantic-focus);
+  outline-offset: 3px;
+}
+.takosan-rebuild .discovery-active-filters button span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.takosan-rebuild .discovery-active-filters svg {
+  flex-shrink: 0;
+}
+
+/* Leave room for whole words when the recipe action text grows on narrow screens. */
+.takosan-rebuild.recipe-page .kitchen-recipe-action button {
+  padding-inline: 12px;
+  column-gap: 8px;
+}
+.takosan-rebuild.recipe-page .kitchen-recipe-action button svg {
+  width: 20px;
+  height: 20px;
+  margin-inline: 0;
+}

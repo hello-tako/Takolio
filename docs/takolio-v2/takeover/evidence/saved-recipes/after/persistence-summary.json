@@ -1,0 +1,20 @@
+{
+  "recipeId": "vn-sang-06",
+  "saved": {
+    "recipeId": "vn-sang-06",
+    "revision": 1,
+    "isSaved": true
+  },
+  "removed": {
+    "recipeId": "vn-sang-06",
+    "revision": 2,
+    "isSaved": false
+  },
+  "resaved": {
+    "recipeId": "vn-sang-06",
+    "revision": 3,
+    "isSaved": true
+  },
+  "inventoryUnchanged": true,
+  "localSyntheticApi": true
+}

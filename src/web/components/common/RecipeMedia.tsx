@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Utensils } from 'lucide-react';
 import { RECIPE_IMAGE_PLACEHOLDER, type ResolvedRecipeImage } from '../../lib/recipe-media';
+import { RecipeDishIllustration } from '../cooking/CookingTechniqueVisual';
 
 type RecipeMediaProps = {
   image: ResolvedRecipeImage;
@@ -50,7 +50,7 @@ function MediaView({ image, title, className = '', priority = false }: RecipeMed
         />
       ) : (
         <div className="recipe-media-missing" role="img" aria-label="Chưa có ảnh món ăn">
-          <Utensils size={24} aria-hidden="true" />
+          <RecipeDishIllustration title={title} />
           <span>Chưa có ảnh món ăn</span>
         </div>
       )}

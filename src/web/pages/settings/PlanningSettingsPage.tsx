@@ -95,8 +95,12 @@ function FamilyPlanningSettingsPage() {
                   setDraft(next);
                 }}
               />
+              <p className="planning-note">
+                Chỉnh dị ứng và nguyên liệu bắt buộc tránh ở mục phía trên. Sở thích trong hồ sơ
+                không thay thế các ràng buộc này.
+              </p>
               <Link className="planning-text-link" to="/me/preferences">
-                Dị ứng & hạn chế thực phẩm trong hồ sơ
+                Gu món & độ cay trong hồ sơ
               </Link>
               {save.isError && (
                 <p role="alert" className="planning-error">

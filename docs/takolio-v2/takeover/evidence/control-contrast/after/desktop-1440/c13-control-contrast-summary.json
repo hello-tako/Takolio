@@ -1,0 +1,4006 @@
+{
+  "observations": [
+    {
+      "id": "discovery-search-320x568-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 16,
+        "y": 218.71875,
+        "width": 288,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 16,
+        "y": 218.71875,
+        "width": 288,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "discovery-search-320x568-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 16,
+        "y": 218.71875,
+        "width": 288,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 16,
+        "y": 218.71875,
+        "width": 288,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 2,
+        "ratio": 4.7377666089308
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "discovery-search-320x568-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 16,
+        "y": 218.71875,
+        "width": 288,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 16,
+        "y": 218.71875,
+        "width": 288,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "discovery-servings-320x568-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 16,
+        "y": 310.21875,
+        "width": 288,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 16,
+        "y": 310.21875,
+        "width": 288,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "discovery-servings-320x568-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 16,
+        "y": 290.21875,
+        "width": 288,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 16,
+        "y": 290.21875,
+        "width": 288,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 3,
+        "ratio": 4.7377666089308
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "discovery-servings-320x568-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 16,
+        "y": 290.21875,
+        "width": 288,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 16,
+        "y": 290.21875,
+        "width": 288,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "discovery-filter-320x568-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 16,
+        "y": 418.21875,
+        "width": 288,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 16,
+        "y": 418.21875,
+        "width": 288,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 5.799211845601208
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "discovery-filter-320x568-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 16,
+        "y": 221.21875,
+        "width": 288,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 16,
+        "y": 221.21875,
+        "width": 288,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 3,
+        "ratio": 4.7377666089308
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "discovery-filter-320x568-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 16,
+        "y": 221.21875,
+        "width": 288,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 16,
+        "y": 221.21875,
+        "width": 288,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 5.799211845601208
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "detail-servings-320x568-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 16,
+        "y": 220.9375,
+        "width": 288,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 16,
+        "y": 220.9375,
+        "width": 288,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "detail-servings-320x568-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 16,
+        "y": 220.9375,
+        "width": 288,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 16,
+        "y": 220.9375,
+        "width": 288,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 3,
+        "ratio": 4.7377666089308
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "detail-servings-320x568-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 16,
+        "y": 220.9375,
+        "width": 288,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 16,
+        "y": 220.9375,
+        "width": 288,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "shopping-name-320x568-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 31,
+        "y": 414.3125,
+        "width": 258,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 414.3125,
+        "width": 258,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.029820314481173
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "shopping-name-320x568-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 31,
+        "y": 414.3125,
+        "width": 258,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 414.3125,
+        "width": 258,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 2,
+        "ratio": 4.956751520967413
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "shopping-name-320x568-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 31,
+        "y": 414.3125,
+        "width": 258,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 414.3125,
+        "width": 258,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.029820314481173
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "shopping-quantity-320x568-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 31,
+        "y": 219.3125,
+        "width": 258,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 219.3125,
+        "width": 258,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.029820314481173
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "shopping-quantity-320x568-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 31,
+        "y": 219.3125,
+        "width": 258,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 219.3125,
+        "width": 258,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 2,
+        "ratio": 4.956751520967413
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "shopping-quantity-320x568-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 31,
+        "y": 219.3125,
+        "width": 258,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 219.3125,
+        "width": 258,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.029820314481173
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "shopping-unit-320x568-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 31,
+        "y": 306.3125,
+        "width": 258,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 306.3125,
+        "width": 258,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.029820314481173
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "shopping-unit-320x568-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 31,
+        "y": 306.3125,
+        "width": 258,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 306.3125,
+        "width": 258,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 3,
+        "ratio": 4.956751520967413
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "shopping-unit-320x568-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 31,
+        "y": 306.3125,
+        "width": 258,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 306.3125,
+        "width": 258,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.029820314481173
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "planner-locale-320x568-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 194,
+        "y": 103.453125,
+        "width": 112,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 194,
+        "y": 103.453125,
+        "width": 112,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "planner-locale-320x568-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 194,
+        "y": 103.453125,
+        "width": 112,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 194,
+        "y": 103.453125,
+        "width": 112,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 3,
+        "ratio": 4.7377666089308
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "planner-locale-320x568-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 194,
+        "y": 103.453125,
+        "width": 112,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 194,
+        "y": 103.453125,
+        "width": 112,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "planner-date-320x568-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 31,
+        "y": 220.84375,
+        "width": 156.140625,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 220.84375,
+        "width": 156.140625,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.149938917480124
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "planner-date-320x568-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 31,
+        "y": 220.84375,
+        "width": 156.140625,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 220.84375,
+        "width": 156.140625,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 2,
+        "ratio": 4.999189560426621
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "planner-date-320x568-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 31,
+        "y": 220.84375,
+        "width": 156.140625,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 220.84375,
+        "width": 156.140625,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.149938917480124
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "planner-days-320x568-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 197.140625,
+        "y": 220.84375,
+        "width": 91.859375,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 197.140625,
+        "y": 220.84375,
+        "width": 91.859375,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.149938917480124
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "planner-days-320x568-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 197.140625,
+        "y": 220.84375,
+        "width": 91.859375,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 197.140625,
+        "y": 220.84375,
+        "width": 91.859375,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 2,
+        "ratio": 4.999189560426621
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "planner-days-320x568-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 197.140625,
+        "y": 220.84375,
+        "width": 91.859375,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 197.140625,
+        "y": 220.84375,
+        "width": 91.859375,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.149938917480124
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "planner-servings-320x568-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 31,
+        "y": 295.34375,
+        "width": 258,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 295.34375,
+        "width": 258,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.149938917480124
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "planner-servings-320x568-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 31,
+        "y": 295.34375,
+        "width": 258,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 295.34375,
+        "width": 258,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 2,
+        "ratio": 4.999189560426621
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "planner-servings-320x568-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 31,
+        "y": 295.34375,
+        "width": 258,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 295.34375,
+        "width": 258,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.149938917480124
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "discovery-search-320x420-text200-text2",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 32,
+        "y": 145.328125,
+        "width": 256,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 32,
+        "y": 145.328125,
+        "width": 256,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "discovery-search-320x420-text200-text2",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 32,
+        "y": 145.328125,
+        "width": 256,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 32,
+        "y": 145.328125,
+        "width": 256,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 2,
+        "ratio": 4.7377666089308
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "discovery-search-320x420-text200-text2",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 32,
+        "y": 145.328125,
+        "width": 256,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 32,
+        "y": 145.328125,
+        "width": 256,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "discovery-servings-320x420-text200-text2",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 32,
+        "y": 252.828125,
+        "width": 256,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 32,
+        "y": 252.828125,
+        "width": 256,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "discovery-servings-320x420-text200-text2",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 32,
+        "y": 146.828125,
+        "width": 256,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 32,
+        "y": 146.828125,
+        "width": 256,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 3,
+        "ratio": 4.7377666089308
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "discovery-servings-320x420-text200-text2",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 32,
+        "y": 146.828125,
+        "width": 256,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 32,
+        "y": 146.828125,
+        "width": 256,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "discovery-filter-320x420-text200-text2",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 32,
+        "y": 146.828125,
+        "width": 256,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 32,
+        "y": 146.828125,
+        "width": 256,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 5.799211845601208
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "discovery-filter-320x420-text200-text2",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 32,
+        "y": 146.828125,
+        "width": 256,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 32,
+        "y": 146.828125,
+        "width": 256,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 3,
+        "ratio": 4.7377666089308
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "discovery-filter-320x420-text200-text2",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 32,
+        "y": 146.828125,
+        "width": 256,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 32,
+        "y": 146.828125,
+        "width": 256,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 5.799211845601208
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "detail-servings-320x420-text200-text2",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 16,
+        "y": 147.21875,
+        "width": 288,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 16,
+        "y": 147.21875,
+        "width": 288,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "detail-servings-320x420-text200-text2",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 16,
+        "y": 147.21875,
+        "width": 288,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 16,
+        "y": 147.21875,
+        "width": 288,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 3,
+        "ratio": 4.7377666089308
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "detail-servings-320x420-text200-text2",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 16,
+        "y": 147.21875,
+        "width": 288,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 16,
+        "y": 147.21875,
+        "width": 288,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "shopping-name-320x420-text200-text2",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 31,
+        "y": 266.625,
+        "width": 258,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 266.625,
+        "width": 258,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.029820314481173
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "shopping-name-320x420-text200-text2",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 31,
+        "y": 266.625,
+        "width": 258,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 266.625,
+        "width": 258,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 2,
+        "ratio": 4.956751520967413
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "shopping-name-320x420-text200-text2",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 31,
+        "y": 266.625,
+        "width": 258,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 266.625,
+        "width": 258,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.029820314481173
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "shopping-quantity-320x420-text200-text2",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 31,
+        "y": 145.625,
+        "width": 258,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 145.625,
+        "width": 258,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.029820314481173
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "shopping-quantity-320x420-text200-text2",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 31,
+        "y": 145.625,
+        "width": 258,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 145.625,
+        "width": 258,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 2,
+        "ratio": 4.956751520967413
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "shopping-quantity-320x420-text200-text2",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 31,
+        "y": 145.625,
+        "width": 258,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 145.625,
+        "width": 258,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.029820314481173
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "shopping-unit-320x420-text200-text2",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 31,
+        "y": 232.625,
+        "width": 258,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 232.625,
+        "width": 258,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.029820314481173
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "shopping-unit-320x420-text200-text2",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 31,
+        "y": 150.625,
+        "width": 258,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 150.625,
+        "width": 258,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 3,
+        "ratio": 4.956751520967413
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "shopping-unit-320x420-text200-text2",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 31,
+        "y": 150.625,
+        "width": 258,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 150.625,
+        "width": 258,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.029820314481173
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "planner-locale-320x420-text200-text2",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 194,
+        "y": 103.453125,
+        "width": 112,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 194,
+        "y": 103.453125,
+        "width": 112,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "planner-locale-320x420-text200-text2",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 194,
+        "y": 103.453125,
+        "width": 112,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 194,
+        "y": 103.453125,
+        "width": 112,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 3,
+        "ratio": 4.7377666089308
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "planner-locale-320x420-text200-text2",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 194,
+        "y": 103.453125,
+        "width": 112,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 194,
+        "y": 103.453125,
+        "width": 112,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "planner-date-320x420-text200-text2",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 31,
+        "y": 147.34375,
+        "width": 156.140625,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 147.34375,
+        "width": 156.140625,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.149938917480124
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "planner-date-320x420-text200-text2",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 31,
+        "y": 147.34375,
+        "width": 156.140625,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 147.34375,
+        "width": 156.140625,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 2,
+        "ratio": 4.999189560426621
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "planner-date-320x420-text200-text2",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 31,
+        "y": 147.34375,
+        "width": 156.140625,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 147.34375,
+        "width": 156.140625,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.149938917480124
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "planner-days-320x420-text200-text2",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 197.140625,
+        "y": 147.34375,
+        "width": 91.859375,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 197.140625,
+        "y": 147.34375,
+        "width": 91.859375,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.149938917480124
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "planner-days-320x420-text200-text2",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 197.140625,
+        "y": 147.34375,
+        "width": 91.859375,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 197.140625,
+        "y": 147.34375,
+        "width": 91.859375,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 2,
+        "ratio": 4.999189560426621
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "planner-days-320x420-text200-text2",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 197.140625,
+        "y": 147.34375,
+        "width": 91.859375,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 197.140625,
+        "y": 147.34375,
+        "width": 91.859375,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.149938917480124
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "planner-servings-320x420-text200-text2",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 31,
+        "y": 250.34375,
+        "width": 258,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 250.34375,
+        "width": 258,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.149938917480124
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "planner-servings-320x420-text200-text2",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 31,
+        "y": 91.34375,
+        "width": 258,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 91.34375,
+        "width": 258,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 2,
+        "ratio": 4.999189560426621
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "planner-servings-320x420-text200-text2",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 31,
+        "y": 91.34375,
+        "width": 258,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 91.34375,
+        "width": 258,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.149938917480124
+      },
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "id": "discovery-search-390x844-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 16,
+        "y": 699.828125,
+        "width": 358,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 16,
+        "y": 699.828125,
+        "width": 358,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "discovery-search-390x844-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 16,
+        "y": 315.828125,
+        "width": 358,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 16,
+        "y": 315.828125,
+        "width": 358,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 2,
+        "ratio": 4.7377666089308
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "discovery-search-390x844-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 16,
+        "y": 315.828125,
+        "width": 358,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 16,
+        "y": 315.828125,
+        "width": 358,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "discovery-servings-390x844-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 16,
+        "y": 407.328125,
+        "width": 358,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 16,
+        "y": 407.328125,
+        "width": 358,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "discovery-servings-390x844-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 16,
+        "y": 407.328125,
+        "width": 358,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 16,
+        "y": 407.328125,
+        "width": 358,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 3,
+        "ratio": 4.7377666089308
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "discovery-servings-390x844-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 16,
+        "y": 407.328125,
+        "width": 358,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 16,
+        "y": 407.328125,
+        "width": 358,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "discovery-filter-390x844-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 16,
+        "y": 515.328125,
+        "width": 358,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 16,
+        "y": 515.328125,
+        "width": 358,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 5.799211845601208
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "discovery-filter-390x844-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 16,
+        "y": 242.328125,
+        "width": 358,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 16,
+        "y": 242.328125,
+        "width": 358,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 3,
+        "ratio": 4.7377666089308
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "discovery-filter-390x844-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 16,
+        "y": 242.328125,
+        "width": 358,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 16,
+        "y": 242.328125,
+        "width": 358,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 5.799211845601208
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "detail-servings-390x844-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 16,
+        "y": 369.453125,
+        "width": 358,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 16,
+        "y": 369.453125,
+        "width": 358,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "detail-servings-390x844-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 16,
+        "y": 369.453125,
+        "width": 358,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 16,
+        "y": 369.453125,
+        "width": 358,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 3,
+        "ratio": 4.7377666089308
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "detail-servings-390x844-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 16,
+        "y": 369.453125,
+        "width": 358,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 16,
+        "y": 369.453125,
+        "width": 358,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "shopping-name-390x844-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 31,
+        "y": 699.828125,
+        "width": 328,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 699.828125,
+        "width": 328,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.029820314481173
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "shopping-name-390x844-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 31,
+        "y": 699.828125,
+        "width": 328,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 699.828125,
+        "width": 328,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 2,
+        "ratio": 4.956751520967413
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "shopping-name-390x844-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 31,
+        "y": 699.828125,
+        "width": 328,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 699.828125,
+        "width": 328,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.029820314481173
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "shopping-quantity-390x844-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 31,
+        "y": 408.828125,
+        "width": 328,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 408.828125,
+        "width": 328,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.029820314481173
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "shopping-quantity-390x844-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 31,
+        "y": 408.828125,
+        "width": 328,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 408.828125,
+        "width": 328,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 2,
+        "ratio": 4.956751520967413
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "shopping-quantity-390x844-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 31,
+        "y": 408.828125,
+        "width": 328,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 408.828125,
+        "width": 328,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.029820314481173
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "shopping-unit-390x844-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 31,
+        "y": 495.828125,
+        "width": 328,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 495.828125,
+        "width": 328,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.029820314481173
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "shopping-unit-390x844-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 31,
+        "y": 495.828125,
+        "width": 328,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 495.828125,
+        "width": 328,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 3,
+        "ratio": 4.956751520967413
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "shopping-unit-390x844-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 31,
+        "y": 495.828125,
+        "width": 328,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 495.828125,
+        "width": 328,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.029820314481173
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "planner-locale-390x844-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 264,
+        "y": 106.96875,
+        "width": 112,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 264,
+        "y": 106.96875,
+        "width": 112,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "planner-locale-390x844-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 264,
+        "y": 106.96875,
+        "width": 112,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 264,
+        "y": 106.96875,
+        "width": 112,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 3,
+        "ratio": 4.7377666089308
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "planner-locale-390x844-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 264,
+        "y": 106.96875,
+        "width": 112,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 264,
+        "y": 106.96875,
+        "width": 112,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "planner-date-390x844-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 31,
+        "y": 543.859375,
+        "width": 200.21875,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 543.859375,
+        "width": 200.21875,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.149938917480124
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "planner-date-390x844-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 31,
+        "y": 543.859375,
+        "width": 200.21875,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 543.859375,
+        "width": 200.21875,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 2,
+        "ratio": 4.999189560426621
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "planner-date-390x844-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 31,
+        "y": 543.859375,
+        "width": 200.21875,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 543.859375,
+        "width": 200.21875,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.149938917480124
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "planner-days-390x844-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 241.21875,
+        "y": 543.859375,
+        "width": 117.78125,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 241.21875,
+        "y": 543.859375,
+        "width": 117.78125,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.149938917480124
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "planner-days-390x844-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 241.21875,
+        "y": 543.859375,
+        "width": 117.78125,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 241.21875,
+        "y": 543.859375,
+        "width": 117.78125,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 2,
+        "ratio": 4.999189560426621
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "planner-days-390x844-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 241.21875,
+        "y": 543.859375,
+        "width": 117.78125,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 241.21875,
+        "y": 543.859375,
+        "width": 117.78125,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.149938917480124
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "planner-servings-390x844-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 31,
+        "y": 618.359375,
+        "width": 328,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 618.359375,
+        "width": 328,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.149938917480124
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "planner-servings-390x844-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 31,
+        "y": 603.359375,
+        "width": 328,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 603.359375,
+        "width": 328,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 2,
+        "ratio": 4.999189560426621
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "planner-servings-390x844-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 31,
+        "y": 603.359375,
+        "width": 328,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 31,
+        "y": 603.359375,
+        "width": 328,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.149938917480124
+      },
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "id": "discovery-search-1440x1000-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 280,
+        "y": 483.671875,
+        "width": 220,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 280,
+        "y": 483.671875,
+        "width": 220,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "discovery-search-1440x1000-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 280,
+        "y": 483.671875,
+        "width": 220,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 280,
+        "y": 483.671875,
+        "width": 220,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 2,
+        "ratio": 4.7377666089308
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "discovery-search-1440x1000-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 280,
+        "y": 483.671875,
+        "width": 220,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 280,
+        "y": 483.671875,
+        "width": 220,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "discovery-servings-1440x1000-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 280,
+        "y": 575.171875,
+        "width": 220,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 280,
+        "y": 575.171875,
+        "width": 220,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "discovery-servings-1440x1000-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 280,
+        "y": 575.171875,
+        "width": 220,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 280,
+        "y": 575.171875,
+        "width": 220,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 3,
+        "ratio": 4.7377666089308
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "discovery-servings-1440x1000-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 280,
+        "y": 575.171875,
+        "width": 220,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 280,
+        "y": 575.171875,
+        "width": 220,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "discovery-filter-1440x1000-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 280,
+        "y": 703.171875,
+        "width": 220,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 280,
+        "y": 703.171875,
+        "width": 220,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 5.799211845601208
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "discovery-filter-1440x1000-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 280,
+        "y": 703.171875,
+        "width": 220,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 280,
+        "y": 703.171875,
+        "width": 220,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 3,
+        "ratio": 4.7377666089308
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "discovery-filter-1440x1000-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 280,
+        "y": 703.171875,
+        "width": 220,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 280,
+        "y": 703.171875,
+        "width": 220,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 5.799211845601208
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "detail-servings-1440x1000-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 264,
+        "y": 694.484375,
+        "width": 496.796875,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 264,
+        "y": 694.484375,
+        "width": 496.796875,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "detail-servings-1440x1000-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 264,
+        "y": 694.484375,
+        "width": 496.796875,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 264,
+        "y": 694.484375,
+        "width": 496.796875,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 3,
+        "ratio": 4.7377666089308
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "detail-servings-1440x1000-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.702456770841178,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 264,
+        "y": 694.484375,
+        "width": 496.796875,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 264,
+        "y": 694.484375,
+        "width": 496.796875,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "shopping-name-1440x1000-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 299,
+        "y": 332.171875,
+        "width": 364.484375,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 299,
+        "y": 332.171875,
+        "width": 364.484375,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.029820314481173
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "shopping-name-1440x1000-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 299,
+        "y": 332.171875,
+        "width": 364.484375,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 299,
+        "y": 332.171875,
+        "width": 364.484375,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 2,
+        "ratio": 4.956751520967413
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "shopping-name-1440x1000-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 299,
+        "y": 332.171875,
+        "width": 364.484375,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 299,
+        "y": 332.171875,
+        "width": 364.484375,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.029820314481173
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "shopping-quantity-1440x1000-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 299,
+        "y": 419.171875,
+        "width": 135.5625,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 299,
+        "y": 419.171875,
+        "width": 135.5625,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.029820314481173
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "shopping-quantity-1440x1000-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 299,
+        "y": 419.171875,
+        "width": 135.5625,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 299,
+        "y": 419.171875,
+        "width": 135.5625,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 2,
+        "ratio": 4.956751520967413
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "shopping-quantity-1440x1000-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 299,
+        "y": 419.171875,
+        "width": 135.5625,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 299,
+        "y": 419.171875,
+        "width": 135.5625,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.029820314481173
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "shopping-unit-1440x1000-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 446.5625,
+        "y": 419.171875,
+        "width": 216.921875,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 446.5625,
+        "y": 419.171875,
+        "width": 216.921875,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.029820314481173
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "shopping-unit-1440x1000-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 446.5625,
+        "y": 419.171875,
+        "width": 216.921875,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 446.5625,
+        "y": 419.171875,
+        "width": 216.921875,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 3,
+        "ratio": 4.956751520967413
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "shopping-unit-1440x1000-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.645559723534511,
+      "rect": {
+        "x": 446.5625,
+        "y": 419.171875,
+        "width": 216.921875,
+        "height": 48
+      },
+      "baselineRect": {
+        "x": 446.5625,
+        "y": 419.171875,
+        "width": 216.921875,
+        "height": 48
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.029820314481173
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "planner-locale-1440x1000-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 1274,
+        "y": 92,
+        "width": 112,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 1274,
+        "y": 92,
+        "width": 112,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "planner-locale-1440x1000-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 1274,
+        "y": 92,
+        "width": 112,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 1274,
+        "y": 92,
+        "width": 112,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 3,
+        "ratio": 4.7377666089308
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "planner-locale-1440x1000-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.351964754059778,
+      "rect": {
+        "x": 1274,
+        "y": 92,
+        "width": 112,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 1274,
+        "y": 92,
+        "width": 112,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 13.40999522249098
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "planner-date-1440x1000-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 299,
+        "y": 436.09375,
+        "width": 377.515625,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 299,
+        "y": 436.09375,
+        "width": 377.515625,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.149938917480124
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "planner-date-1440x1000-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 299,
+        "y": 436.09375,
+        "width": 377.515625,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 299,
+        "y": 436.09375,
+        "width": 377.515625,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 2,
+        "ratio": 4.999189560426621
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "planner-date-1440x1000-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 299,
+        "y": 436.09375,
+        "width": 377.515625,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 299,
+        "y": 436.09375,
+        "width": 377.515625,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.149938917480124
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "planner-days-1440x1000-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 686.515625,
+        "y": 436.09375,
+        "width": 222.078125,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 686.515625,
+        "y": 436.09375,
+        "width": 222.078125,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.149938917480124
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "planner-days-1440x1000-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 686.515625,
+        "y": 436.09375,
+        "width": 222.078125,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 686.515625,
+        "y": 436.09375,
+        "width": 222.078125,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 2,
+        "ratio": 4.999189560426621
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "planner-days-1440x1000-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 686.515625,
+        "y": 436.09375,
+        "width": 222.078125,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 686.515625,
+        "y": 436.09375,
+        "width": 222.078125,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.149938917480124
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "planner-servings-1440x1000-text1",
+      "state": "normal",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 299,
+        "y": 510.59375,
+        "width": 609.59375,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 299,
+        "y": 510.59375,
+        "width": 609.59375,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.149938917480124
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "planner-servings-1440x1000-text1",
+      "state": "focus",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 299,
+        "y": 510.59375,
+        "width": 609.59375,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 299,
+        "y": 510.59375,
+        "width": 609.59375,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": true,
+      "outline": {
+        "style": "solid",
+        "width": 2,
+        "ratio": 4.999189560426621
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "id": "planner-servings-1440x1000-text1",
+      "state": "hover",
+      "boxShadow": "rgb(77, 94, 108) 0px 0px 0px 1px inset",
+      "insetStroke1px": true,
+      "strokeColor": "rgb(77, 94, 108)",
+      "strokeRatioFill": 6.645559723534511,
+      "strokeRatioParent": 6.702456770841178,
+      "rect": {
+        "x": 299,
+        "y": 510.59375,
+        "width": 609.59375,
+        "height": 44
+      },
+      "baselineRect": {
+        "x": 299,
+        "y": 510.59375,
+        "width": 609.59375,
+        "height": 44
+      },
+      "geometryEqual": true,
+      "focusVisible": false,
+      "outline": {
+        "style": "none",
+        "width": 3,
+        "ratio": 14.149938917480124
+      },
+      "width": 1440,
+      "scrollWidth": 1440
+    }
+  ],
+  "controlCount": 44,
+  "configurations": [
+    {
+      "id": "320x568",
+      "width": 320,
+      "height": 568,
+      "text": 1
+    },
+    {
+      "id": "320x420-text200",
+      "width": 320,
+      "height": 420,
+      "text": 2
+    },
+    {
+      "id": "390x844",
+      "width": 390,
+      "height": 844,
+      "text": 1
+    },
+    {
+      "id": "1440x1000",
+      "width": 1440,
+      "height": 1000,
+      "text": 1
+    }
+  ],
+  "states": [
+    "normal",
+    "focus",
+    "hover"
+  ],
+  "domainSnapshotsEqual": true,
+  "writes": [],
+  "externalRequests": [],
+  "pageErrors": [],
+  "geometryBaseline": "Per-control computed rect with box-shadow disabled inline, then restored.",
+  "limitations": [
+    "Chromium only; root font 200% is synthetic, not native zoom.",
+    "Targeted keyboard focus, not complete Tab traversal or screenreader certification.",
+    "No domain action submitted; fixture checks remain authoritative for external network."
+  ]
+}

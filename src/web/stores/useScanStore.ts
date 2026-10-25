@@ -5,6 +5,7 @@ import { onPrivateSessionReset } from '../lib/private-session';
 export interface ScanDraftItem {
   id: string;
   sourceItemId?: string;
+  isManual?: boolean;
   rawName: string;
   canonicalId?: string | null;
   estimatedQuantity: number | '';

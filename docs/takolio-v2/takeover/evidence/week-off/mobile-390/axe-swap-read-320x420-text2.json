@@ -1,0 +1,133 @@
+{
+  "state": "swap-read",
+  "viewport": {
+    "width": 320,
+    "height": 420
+  },
+  "textScale": 2,
+  "metrics": {
+    "innerWidth": 320,
+    "scrollWidth": 320,
+    "textOutsideViewport": [],
+    "brokenImages": []
+  },
+  "targets": [
+    {
+      "text": "Đổi món",
+      "box": {
+        "x": 31,
+        "y": 145.171875,
+        "width": 121.59375,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Bắt đầu nấu",
+      "box": {
+        "x": 31,
+        "y": 205.171875,
+        "width": 144.359375,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Nguyên liệu",
+      "box": {
+        "x": 14,
+        "y": 145.625,
+        "width": 142,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Cách nấu",
+      "box": {
+        "x": 164,
+        "y": 145.625,
+        "width": 142,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Dinh dưỡng",
+      "box": {
+        "x": 14,
+        "y": 201.625,
+        "width": 292,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "",
+      "box": {
+        "x": 238,
+        "y": 34,
+        "width": 48,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Chọn món",
+      "box": {
+        "x": 34,
+        "y": 185.8125,
+        "width": 252,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Chọn món",
+      "box": {
+        "x": 34,
+        "y": 185.6875,
+        "width": 252,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Chọn món",
+      "box": {
+        "x": 34,
+        "y": 185.5625,
+        "width": 252,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Chọn món",
+      "box": {
+        "x": 34,
+        "y": 186.4375,
+        "width": 252,
+        "height": 48
+      },
+      "fits": true
+    },
+    {
+      "text": "Chọn món",
+      "box": {
+        "x": 34,
+        "y": 313.3125,
+        "width": 252,
+        "height": 48
+      },
+      "fits": true
+    }
+  ],
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ]
+}
