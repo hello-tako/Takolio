@@ -29,9 +29,22 @@ function assetFingerprint(assetPath, bytes, limit) {
 }
 
 // Same-SHA on/off builds need byte evidence: the service worker SHA alone cannot distinguish them.
-export function captureRecoveryBuild(record, directory = 'dist/client') {
+export function captureRecoveryBuild(record, directory = 'dist/client', { appOrigin } = {}) {
   verifyRecoveryBuild(record);
-  const html = readFileSync(path.join(directory, 'index.html'));
+  let html = readFileSync(path.join(directory, 'index.html'));
+  if (appOrigin !== undefined) {
+    const origin = new URL(appOrigin);
+    if (origin.protocol !== 'https:' || origin.origin !== appOrigin) throw new Error('Family recovery app URL must be an exact HTTPS origin');
+    // Match publicDomainRouting's root response; never normalize the served bytes.
+    const document = html.toString('utf8');
+    if (!document.includes('</head>')) throw new Error('Family recovery domain HTML must contain a head');
+    const metadata = `<link rel="canonical" href="${appOrigin}/" />` +
+      '<meta name="twitter:card" content="summary_large_image" />' +
+      `<meta name="twitter:image" content="${appOrigin}/takolio/v1/social/og-1200x630.png" />`;
+    html = Buffer.from(document.replace(/<meta property="og:(image|url)" content="[^"]*"/g, (_tag, key) =>
+      `<meta property="og:${key}" content="${appOrigin}${key === 'image' ? '/takolio/v1/social/og-1200x630.png' : ''}"`)
+      .replace('</head>', `${metadata}</head>`));
+  }
   const modules = [...html.toString('utf8').matchAll(/<script\b([^>]*)>/gi)]
     .map((match) => match[1])
     .filter((attributes) => /\btype\s*=\s*["']module["']/i.test(attributes))

@@ -181,7 +181,7 @@ export const productionProvider = {
     unchangedAudit(context.audit, await capture(context.manifest.schema));
     const plan = compatibleRecoveryPlan(context);
     await run('pnpm', ['build'], plan.buildEnvironment);
-    const build = captureRecoveryBuild(readJson('dist/composition-flags.json'));
+    const build = captureRecoveryBuild(readJson('dist/composition-flags.json'), 'dist/client', { appOrigin: profiles.production.app });
     context.compatibleRecovery = { sha: context.manifest.sha, plan, build, buildSha256: configHash(JSON.stringify(build)) };
     const recoveryConfig = resolve(output, 'recovery-wrangler.json');
     const recoveryUpload = resolve(output, 'recovery-upload.jsonl');
@@ -190,7 +190,7 @@ export const productionProvider = {
     await gate(context.manifest.sha);
     unchangedAudit(context.audit, await capture(context.manifest.schema));
     if (configHash(readFileSync(recoveryConfig)) !== plan.sha256 ||
-        !isDeepStrictEqual(captureRecoveryBuild(readJson('dist/composition-flags.json')), build)) {
+        !isDeepStrictEqual(captureRecoveryBuild(readJson('dist/composition-flags.json'), 'dist/client', { appOrigin: profiles.production.app }), build)) {
       throw new Error('Compatible recovery config or compiled assets changed before upload');
     }
     await run('pnpm', ['exec', 'wrangler', 'versions', 'upload', '--config', recoveryConfig, '--strict'], { WRANGLER_OUTPUT_FILE_PATH: recoveryUpload });

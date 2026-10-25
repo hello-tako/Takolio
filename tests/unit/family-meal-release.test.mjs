@@ -106,6 +106,14 @@ describe('family recovery live assets identify the flags-off build within the sa
     expect(record.assets.modules[0]).toMatchObject({ path: '/assets/index-off.js', bytes: Buffer.byteLength(module) });
     expect(record.assets.modules[0].sha256).toMatch(/^[a-f0-9]{64}$/);
   });
+  it.each(['http://example.test', 'https://example.test/', 'https://example.test/path', 'https://example.test?x=1'])('rejects unsafe domain metadata origin %s', (appOrigin) => {
+    capture();
+    expect(() => captureRecoveryBuild(build, directory, { appOrigin })).toThrow('exact HTTPS origin');
+  });
+  it('rejects domain HTML without a head instead of recording an untransformed shell', () => {
+    capture();
+    expect(() => captureRecoveryBuild(build, directory, { appOrigin: origin })).toThrow('must contain a head');
+  });
   it('CLI captures and certifies the uploaded build evidence using the workflow arguments', () => {
     const record = capture();
     const flagsFile = path.join(directory, 'composition-flags.json');

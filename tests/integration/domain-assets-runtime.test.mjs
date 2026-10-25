@@ -3,6 +3,8 @@ import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { createRequire } from 'node:module';
 import { beforeAll, afterAll, expect, it } from 'vitest';
+import { captureRecoveryBuild, verifyServedRecoveryAssets } from '../../scripts/family-meal-release.mjs';
+import profiles from '../../config/domain-profiles.json' with { type: 'json' };
 
 const runtimeRequire = createRequire(realpathSync(resolve('node_modules/wrangler/package.json')));
 const { Miniflare, convertV4MiniflareOptions } = runtimeRequire('miniflare');
@@ -13,7 +15,9 @@ const runtimes = {};
 
 beforeAll(async () => {
   directory = mkdtempSync(join(tmpdir(), 'takolio-domain-assets-'));
-  writeFileSync(join(directory, 'index.html'), readFileSync('index.html'));
+  writeFileSync(join(directory, 'index.html'), readFileSync('index.html', 'utf8').replace('/src/web/main.tsx', '/assets/recovery.js'));
+  mkdirSync(join(directory, 'assets'));
+  writeFileSync(join(directory, 'assets/recovery.js'), 'export const planner = false;');
   writeFileSync(join(directory, 'manifest.json'), readFileSync('public/manifest.json'));
   mkdirSync(join(directory, 'api/v1'), { recursive: true });
   writeFileSync(join(directory, 'api/v1/health'), 'must not bypass Worker');
@@ -73,3 +77,30 @@ it('applies staging noindex to real manifest assets as well as nested SPA respon
     expect(response.headers.get('X-Robots-Tag')).toBe('noindex, nofollow');
   }
 });
+
+for (const environment of ['staging', 'production']) {
+  it(`proves exact OFF assets after real ${environment} domain middleware rewriting`, async () => {
+    const flags = { VITE_MEAL_PLANNER_ENABLED: 'false', VITE_MEAL_COMPOSITION_V2_ENABLED: 'false' };
+    const raw = captureRecoveryBuild(flags, directory);
+    const record = captureRecoveryBuild(flags, directory, { appOrigin: profiles[environment].app });
+    expect(record.assets.modules).toEqual(raw.assets.modules);
+    expect(record.assets.html).not.toEqual(raw.assets.html);
+    const origin = profiles[environment].legacy;
+    const fetch = (url, options) => runtimes[environment].dispatchFetch(url, options);
+    await expect(verifyServedRecoveryAssets(raw, { url: origin, fetch })).rejects.toThrow('recorded size');
+    await expect(verifyServedRecoveryAssets(record, { url: origin, fetch })).resolves.toMatchObject({ result: 'exact-flags-off-assets' });
+    for (const mutate of [
+      (html) => html.replace('summary_large_image', 'summary_small_image'),
+      (html) => html.replace('</body>', '<script src="https://unexpected.test/x.js"></script></body>'),
+      (html) => html.replace('/assets/recovery.js', '/assets/other-on.js'),
+    ]) {
+      await expect(verifyServedRecoveryAssets(record, { url: origin, fetch: async (url, options) => {
+        const response = await fetch(url, options);
+        return url.pathname === '/' ? new Response(mutate(await response.text()), { headers: response.headers }) : response;
+      } })).rejects.toThrow(/recorded size|different compiled assets/);
+    }
+    await expect(verifyServedRecoveryAssets(record, { url: origin, fetch: async (url, options) =>
+      url.pathname === '/' ? fetch(url, options) : new Response('export const planner = true; ', { headers: { 'Content-Type': 'text/javascript' } }),
+    })).rejects.toThrow(/recorded size|different compiled assets/);
+  });
+}
