@@ -1,3 +1,10 @@
+## Release handoff - 2026-10-25
+
+Candidate `fb2a1cf4240e25196e8f090d35c9c5b7198a6480` is ready for protected PR review. Local evidence is in `docs/takolio-v2/takeover/RELEASE_20261025.md` and `docs/takolio-v2/takeover/evidence/release-20261025.json`. No remote D1, merge, staging deploy or production deploy occurred.
+
+Required next action: push branch, wait for final-head CI, obtain independent approval, merge normally, then run exact-main staging migration/deploy/smoke and production certification/Environment approval. Keep mixed-worker rollback as a release gate.
+
+---
 ## Takolio V2 - WKD02 implementation checkpoint verified (2026-10-25 JST)
 
 Status: LOCAL_WKD02_VERIFIED; ADR-069. Implementation `89d0ea243d08e98670a512ef797da4f64ac516f4`; implementation scope PASS at that exact HEAD. This documentation checkpoint follows the verified implementation. Keyed swap replay preserves later current plan; response-loss requests remain durable; exact409 recovery requires confirmation. Existing keyless/alternatives/inventory/tenancy/security behavior preserved.

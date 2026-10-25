@@ -1,3 +1,12 @@
+## Release checkpoint - 2026-10-25
+
+- [x] Pin immutable V2 customer release baseline and add 45-file migration guard scenarios.
+- [x] Run final local guard, Admin Workerd/browser/keyboard, lint, types, migration, build and public-scan checks.
+- [x] Save release report and sanitized evidence.
+- [ ] Push final candidate and wait for hosted `validate` / `validate-admin`.
+- [ ] Obtain independent approval, merge normally, then execute exact-main staging and protected production gates.
+
+---
 ## Takolio V2 - WKD02 implementation checkpoint verified (2026-10-25 JST)
 
 Status: LOCAL_WKD02_VERIFIED; ADR-069. Implementation `89d0ea243d08e98670a512ef797da4f64ac516f4`; implementation scope PASS at that exact HEAD. This documentation checkpoint follows the verified implementation. Keyed swap replay preserves later current plan; response-loss requests remain durable; exact409 recovery requires confirmation. Existing keyless/alternatives/inventory/tenancy/security behavior preserved.

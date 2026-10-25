@@ -1,3 +1,12 @@
+## Takolio V2 - production release checkpoint (2026-10-25 JST)
+
+Status: RELEASE_PREPARED_REVIEW_REQUIRED. Candidate `fb2a1cf4240e25196e8f090d35c9c5b7198a6480` is locally validated and not deployed. PR #28 remains open; hosted final-head checks, independent approval, exact-main staging acceptance, production ledger/migration, Environment approval and rollout remain pending.
+
+Executed: full 423/9477 suite PASS before guard edits; final guard 282/282, admin matrix 31/31, Workerd 10/10, Admin browser 13/13, keyboard 10/10, lint/typecheck/migrations/build/public scan/diff PASS. Local D1 0001->0045 preserves 94 tables and 114 aggregates. Audit remains 0 low / 3 moderate / 2 high. No remote mutation.
+
+Next: push final commits, wait for `validate` and `validate-admin`, obtain independent last-push approval, then follow `DEPLOYMENT.md` exact-main staging and protected production sequence. See `docs/takolio-v2/takeover/RELEASE_20261025.md`.
+
+---
 ## Takolio V2 - WKD02 implementation checkpoint verified (2026-10-25 JST)
 
 Status: LOCAL_WKD02_VERIFIED; ADR-069. Implementation `89d0ea243d08e98670a512ef797da4f64ac516f4`; implementation scope PASS at that exact HEAD. This documentation checkpoint follows the verified implementation. Keyed swap replay preserves later current plan; response-loss requests remain durable; exact409 recovery requires confirmation. Existing keyless/alternatives/inventory/tenancy/security behavior preserved.

@@ -1,0 +1,301 @@
+{
+  "schemaVersion": 1,
+  "status": "RELEASE_PREPARED_REVIEW_REQUIRED",
+  "candidate": {
+    "branch": "codex/takolio-v2-rescue",
+    "head": "fb2a1cf4240e25196e8f090d35c9c5b7198a6480",
+    "tree": "d6706f3c22978dd7ab007cae414aaec13befd4ec",
+    "pullRequest": "https://github.com/hello-tako/Takolio/pull/28",
+    "observedMain": "90b94129113b41e34701d99f51175cfa81cb73de",
+    "v2ReleaseBaseline": "9b031f05c34a3f27f7a5d9958c65eb8a4405d227",
+    "role": "Verified implementation checkpoint; documentation commit follows. Final PR head must independently pass hosted checks."
+  },
+  "localChecks": {
+    "fullSuite": {
+      "files": 423,
+      "tests": 9477,
+      "pass": true,
+      "node": "24.16.0",
+      "command": "PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp pnpm test --maxWorkers=1 --testTimeout=15000",
+      "reportedSeconds": 1013.54,
+      "scope": "Before the four Admin guard files changed; final focused guard suite covers those changes. Hosted full suite pending."
+    },
+    "guardSuite": {
+      "files": 9,
+      "tests": 282,
+      "pass": true,
+      "command": "PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp pnpm exec vitest run tests/unit/admin-customer-baseline.test.mjs tests/unit/staging-v2-migration-check.test.mjs tests/unit/d1-migration-check.test.mjs tests/unit/production-d1-migration-runtime-proof.test.mjs tests/unit/production-migration-preflight.test.mjs tests/unit/production-certify-workflow.test.mjs tests/unit/admin-public-scan.test.mjs tests/integration/d1-schema-gate.test.ts tests/integration/sqlite-text-roundtrip.test.ts --maxWorkers=1",
+      "exitCode": 0,
+      "reportedSeconds": 40.62
+    },
+    "adminBaselineRegression": {
+      "tests": 16,
+      "pass": true,
+      "command": "pnpm exec vitest run tests/unit/admin-customer-baseline.test.mjs --maxWorkers=1"
+    },
+    "adminMigrationMatrix": {
+      "rows": 31,
+      "pass": true,
+      "command": "node scripts/admin-migration-matrix.mjs --out .artifacts/takeover/release-20261025/admin-migration-matrix.json"
+    },
+    "adminWorkerd": {
+      "scenarios": 10,
+      "pass": true,
+      "command": "node scripts/admin-workerd-check.mjs --out .artifacts/takeover/release-20261025/admin-workerd.json"
+    },
+    "adminBrowser": {
+      "tests": 13,
+      "pass": true,
+      "command": "pnpm test:admin:e2e"
+    },
+    "adminKeyboard": {
+      "tests": 10,
+      "pass": true,
+      "command": "pnpm exec playwright test -c playwright.admin.config.ts -g 'scrollable tables' --repeat-each 10"
+    },
+    "lint": {
+      "pass": true,
+      "command": "pnpm lint",
+      "exitCode": 0
+    },
+    "typecheck": {
+      "pass": true,
+      "command": "pnpm typecheck",
+      "exitCode": 0
+    },
+    "migrationSmoke": {
+      "pass": true,
+      "command": "pnpm check:migrations",
+      "exitCode": 0
+    },
+    "build": {
+      "pass": true,
+      "command": "pnpm build",
+      "exitCode": 0
+    },
+    "publicScan": {
+      "pass": true,
+      "command": "python3 scripts/admin-public-scan.py",
+      "exitCode": 0
+    },
+    "diffCheck": {
+      "pass": true,
+      "command": "git diff --check",
+      "exitCode": 0
+    },
+    "localD1": {
+      "migrationTip": "0045_week_swap_receipts.sql",
+      "priorTables": 94,
+      "aggregates": 114,
+      "pass": true
+    },
+    "adminPreflight": {
+      "configurationValidation": "PASS",
+      "readyForDeployment": false,
+      "remoteExecuted": false,
+      "command": "node scripts/admin-release-preflight.mjs --json"
+    }
+  },
+  "scope": {
+    "migrationsUnchangedFromVerifiedCheckpoint": 45,
+    "applicationAssetsDependenciesBindingsUnchanged": true,
+    "argonRecoveryPreserved": true,
+    "productionMutation": false,
+    "remoteMigration": false,
+    "productionDeployed": false
+  },
+  "audit": {
+    "low": 0,
+    "moderate": 3,
+    "high": 2,
+    "critical": 0,
+    "pass": false
+  },
+  "hostedGates": {
+    "validate": "PENDING_FINAL_HEAD",
+    "validate-admin": "PENDING_FINAL_HEAD",
+    "independentApproval": "REQUIRED",
+    "stagingAcceptance": "PENDING",
+    "productionEnvironmentApproval": "REQUIRED",
+    "mixedWorkerRollbackCompatibility": "UNPROVEN"
+  },
+  "logHashes": [
+    {
+      "name": "full-normalized",
+      "bytes": 9292,
+      "sha256": "a340dc14685d036b09d8c9409daa0c7e3b1067bfd1a7d900a85a3efb32218ead"
+    },
+    {
+      "name": "focused-final",
+      "bytes": 258,
+      "sha256": "a58a3d766fe27cacac2f94ba019b3729bb39a7c8f710d14d2d2c61c98ab38f93"
+    },
+    {
+      "name": "admin-workerd",
+      "bytes": 826,
+      "sha256": "65624f150521034ada78eff2e0cf8186752add584f767094a6824f9b15710f7b"
+    },
+    {
+      "name": "admin-matrix",
+      "bytes": 3732,
+      "sha256": "430cbc6bcba6c124d6663e9a6f1bc6906a3fe269342a5020277167803c37bbef"
+    },
+    {
+      "name": "admin-e2e",
+      "bytes": 149900,
+      "sha256": "e6aef19e55968253225e85cdf784ea5c051c7bb03640d800415ee10ffd05c20a"
+    },
+    {
+      "name": "admin-keyboard",
+      "bytes": 45709,
+      "sha256": "401fee065404ed21b59414520e82953e66662bd7036c1f5b6578bbe963a68d5b"
+    },
+    {
+      "name": "local-d1",
+      "bytes": 2808,
+      "sha256": "dffa63b549f1059f03462212bed9734c3c1851f782f27a42e2156ed988349c1b"
+    },
+    {
+      "name": "migrations-final",
+      "bytes": 297,
+      "sha256": "9616315a9fcbfd77c67784703a16384419539e6a68ccd2838dda07239de25464"
+    },
+    {
+      "name": "types-final",
+      "bytes": 165,
+      "sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e"
+    },
+    {
+      "name": "build-final",
+      "bytes": 9788,
+      "sha256": "e3af71eefa2216c5d46c095ab9d266faa1490b29f197fbadb860ad7aaa3cfef5"
+    },
+    {
+      "name": "final-guard-tests",
+      "bytes": 258,
+      "sha256": "d4ddea7730f9e83a49fd682f91f8551a354158a9b6fb70f9e028cf053dacd858"
+    },
+    {
+      "name": "final-guard-lint",
+      "bytes": 99,
+      "sha256": "3f2044fca43a5e60905becf2ebfc3a21ddd85976975841aa1e16bc87b0f40a6d"
+    },
+    {
+      "name": "final-guard-scan",
+      "bytes": 109,
+      "sha256": "cb0bb7a54a243fa6e61a65de3678d5044aa81ac9fa211bdc0d558a34759d8aee"
+    },
+    {
+      "name": "clean-preflight",
+      "bytes": 336,
+      "sha256": "6354c64fc9b69e01aeead81707e9022ecae5b979a8f3b98db4cf39ca841f5c03"
+    },
+    {
+      "name": "red",
+      "bytes": 27079,
+      "sha256": "d12b8b58b8b48ca0047d246dc64345ec27c9c406d7463cb5304d02ff79ae2279"
+    },
+    {
+      "name": "full",
+      "bytes": 21458,
+      "sha256": "17e44bdbd16601621ce06f2ae33592ecccd6f5ee76d100a841df05b11e051c3a"
+    },
+    {
+      "name": "admin-preflight",
+      "bytes": 821,
+      "sha256": "5e359e92fd705c717dc1887c3106b4357ae13cbda5f016353a6cac65a30be882"
+    },
+    {
+      "name": "node22-text-red",
+      "bytes": 1446,
+      "sha256": "008cc698be8cb5c46d7552376415d2c875e3102fc81c7ee75e862d070ae1c80a"
+    },
+    {
+      "name": "node22-category-red",
+      "bytes": 1759,
+      "sha256": "e4aaa58ccba4cb99245a6e8a8ff457792b3f7954dec34bb8b1f9866aeb707135"
+    }
+  ],
+  "sourceFreeze": {
+    "head": "fb2a1cf4240e25196e8f090d35c9c5b7198a6480",
+    "files": 2438,
+    "sha256": "77169fbfb6619162382489b5032c48d891c00c277aa350f03955d1d2b3dd4d4c",
+    "allExact": true,
+    "previousFreeze": {
+      "unchanged": 17,
+      "documentationDrift": [
+        "docs/ai/DECISIONS.md"
+      ],
+      "reason": "ADR-070 Admin guard rationale committed in 9b031f05; historical freeze retained."
+    }
+  },
+  "recovery": {
+    "result": "PASS_WITH_AUTHORIZED_PLATFORM_DRIFT",
+    "verified_at_utc": "2026-10-25T02:33:17.470989+00:00",
+    "source_regular_files": 22772,
+    "snapshot_regular_files": 22763,
+    "source_symlinks": 772,
+    "snapshot_symlinks": 772,
+    "snapshot_git_regular_files": 116,
+    "snapshot_baseline_integrity": true,
+    "snapshot_git_baseline_integrity": true,
+    "authorized_drift_paths": [
+      ".DS_Store",
+      "data/.DS_Store",
+      "docs/.DS_Store",
+      "frigo_frontend_prompt_kit_v1/.DS_Store",
+      "node_modules/.DS_Store",
+      "packages/.DS_Store",
+      "public/.DS_Store",
+      "scripts/.DS_Store",
+      "src/.DS_Store",
+      "tests/.DS_Store"
+    ],
+    "authorized_drift_separate_backup_verified": true,
+    "all_other_worktree_bytes_modes_links_match": true,
+    "head_index_status_match": true,
+    "optional_git_locks": false,
+    "unexpected_differences": [],
+    "source_index_unchanged_during_check": true,
+    "stored_manifest_unchanged": true,
+    "private_paths_published": false,
+    "seconds": 15.02
+  },
+  "retainedFailures": [
+    {
+      "name": "hosted Admin CI false-positive public scanner",
+      "runId": "40152224281",
+      "result": "FAILURE before fix"
+    },
+    {
+      "name": "hosted Node22 embedded-NUL SQLite TEXT readback",
+      "runId": "40152224334",
+      "result": "FAILURE before fix"
+    },
+    {
+      "name": "old local full suite",
+      "filesPassed": 418,
+      "filesTotal": 422,
+      "testsPassed": 9463,
+      "testsTotal": 9476,
+      "result": "FAILURE; two stale workflow/fingerprint assertions and eleven macOS TMPDIR alias failures"
+    },
+    {
+      "name": "Admin release preflight rejected previous customer freeze",
+      "result": "FAILURE; explicit immutable V2 checkpoint and regression coverage added"
+    }
+  ],
+  "releaseProtection": {
+    "requiredChecks": [
+      "validate",
+      "validate-admin"
+    ],
+    "strict": true,
+    "requiredApprovals": 1,
+    "requireLastPushApproval": true,
+    "dismissStaleReviews": true,
+    "enforceAdministrators": true,
+    "productionPreventSelfReview": true,
+    "productionReviewer": "vn-taphoanhatung"
+  }
+}
