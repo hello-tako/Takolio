@@ -25,7 +25,9 @@ export function verifyUploadedVersion(version, plan, previous) {
 
 export function unchangedAudit(before, after) {
   for (const key of ['worker', 'operational', 'customDomains', 'dns', 'routes']) {
-    if (!isDeepStrictEqual(before[key], after[key])) throw new Error(`Staging infrastructure drift: ${key}`);
+    const inventory = ['customDomains', 'dns', 'routes'].includes(key);
+    const ordered = (entries) => inventory ? [...entries].sort((a, b) => a.id.localeCompare(b.id)) : entries;
+    if (!isDeepStrictEqual(ordered(before[key]), ordered(after[key]))) throw new Error(`Staging infrastructure drift: ${key}`);
   }
   if (!isDeepStrictEqual(before.ledger.names, after.ledger.names) || before.ledger.version !== after.ledger.version) {
     throw new Error('Staging migration ledger drift');

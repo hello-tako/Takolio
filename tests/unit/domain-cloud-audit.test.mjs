@@ -205,3 +205,50 @@ it.each(['staging', 'production'])('keeps %s audits identical across receipt ser
   const settingsChanged = await audit(environment, { ...source, schema, baseline });
   expect(() => unchangedAudit(saved, settingsChanged)).toThrow('operational');
 });
+
+it('retries only a transient failed deployment page, retaining complete pagination', async () => {
+  const path = `/accounts/${ACCOUNT}/workers/scripts/frigo/deployments?per_page=100`;
+  const calls = [];
+  const waits = [];
+  const history = await cloudflareRead(path, 'private-fixture-token', {
+    sleepImpl: async (ms) => waits.push(ms),
+    fetchImpl: async (url) => {
+      calls.push(url);
+      if (calls.length === 2) return new Response('transient private response', { status: 500 });
+      const page = calls.length === 1 ? 1 : 2;
+      return Response.json({ success: true,
+        result: { deployments: Array.from({ length: page === 1 ? 100 : 1 }, (_, i) => ({ id: String((page - 1) * 100 + i) })) },
+        result_info: { page, per_page: 100, total_pages: 2, total_count: 101 } });
+    },
+  });
+  expect(history.deployments).toHaveLength(101);
+  expect(calls).toEqual([`https://api.cloudflare.com/client/v4${path}`,
+    `https://api.cloudflare.com/client/v4${path}&page=2`, `https://api.cloudflare.com/client/v4${path}&page=2`]);
+  expect(waits).toEqual([1000]);
+});
+
+it.each([429, 500, 502, 503, 504])('bounds transient HTTP%s retries and sanitizes exhausted failures', async (status) => {
+  let calls = 0;
+  const waits = [];
+  await expect(cloudflareRead(`/zones/${ZONE}`, 'private-fixture-token', {
+    sleepImpl: async (ms) => waits.push(ms),
+    fetchImpl: async () => {
+      calls += 1;
+      return Response.json({ success: false, errors: [{ code: 10500, message: 'private provider response' }] }, { status });
+    },
+  })).rejects.toThrow(`Cloudflare read failed: HTTP ${status} /zones/${ZONE}; codes=10500`);
+  expect(calls).toBe(3);
+  expect(waits).toEqual([1000, 2000]);
+});
+
+it.each([401, 403, 404])('never retries permanent HTTP%s read failures', async (status) => {
+  let calls = 0;
+  await expect(cloudflareRead(`/zones/${ZONE}`, 'fixture', {
+    sleepImpl: async () => { throw new Error('unexpected retry'); },
+    fetchImpl: async () => {
+      calls += 1;
+      return Response.json({ success: false, errors: [{ code: 10000 }] }, { status });
+    },
+  })).rejects.toThrow(`HTTP ${status}`);
+  expect(calls).toBe(1);
+});

@@ -3,6 +3,7 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
+import { setTimeout as sleep } from 'node:timers/promises';
 import { captureBindings } from './bindings.mjs';
 import { expectedStagingBindings, serializeStagingReceipt } from './staging-email-policy.mjs';
 import { hostedCi, migrationManifest, requireCurrentHostedMain, verifyMigrationLedger, verifyStableWorkerDeployment } from '../release-check.mjs';
@@ -14,24 +15,31 @@ export const REPOSITORY_ID = '1422954151';
 const targets = { production: 'frigo', staging: 'frigo-staging' };
 
 // API failures expose only the endpoint, HTTP status and numeric error codes.
-export async function cloudflareRead(path, token, { fetchImpl = fetch, sql } = {}) {
+export async function cloudflareRead(path, token, { fetchImpl = fetch, sql, sleepImpl = sleep } = {}) {
   if (!path.startsWith(`/accounts/${ACCOUNT}/`) && path !== `/zones/${ZONE}` && !path.startsWith(`/zones/${ZONE}/`)) throw new Error('Unapproved Cloudflare target');
   const query = sql !== undefined;
   if (query && (path !== `/accounts/${ACCOUNT}/d1/database/${sql.databaseId}/query` || sql.sql !== 'SELECT name FROM d1_migrations ORDER BY name')) throw new Error('Only the fixed migration-ledger query is allowed');
   const readPage = async (requestPath) => {
-    const response = await fetchImpl(`https://api.cloudflare.com/client/v4${requestPath}`, {
-      method: query ? 'POST' : 'GET',
-      headers: { Authorization: `Bearer ${token}`, ...(query ? { 'Content-Type': 'application/json' } : {}) },
-      ...(query ? { body: JSON.stringify({ sql: sql.sql }) } : {}),
-      redirect: 'error', signal: AbortSignal.timeout(30000),
-    });
-    let body;
-    try { body = await response.json(); } catch { throw new Error(`Cloudflare returned invalid JSON: ${response.status} ${requestPath}`); }
-    if (!response.ok || body.success !== true) {
-      const codes = (body.errors || []).map((error) => error.code).filter(Number.isInteger);
-      throw new Error(`Cloudflare read failed: HTTP ${response.status} ${requestPath}; codes=${codes.join(',')}`);
+    for (let attempt = 0; attempt < 3; attempt += 1) {
+      const response = await fetchImpl(`https://api.cloudflare.com/client/v4${requestPath}`, {
+        method: query ? 'POST' : 'GET',
+        headers: { Authorization: `Bearer ${token}`, ...(query ? { 'Content-Type': 'application/json' } : {}) },
+        ...(query ? { body: JSON.stringify({ sql: sql.sql }) } : {}),
+        redirect: 'error', signal: AbortSignal.timeout(30000),
+      });
+      if ([429, 500, 502, 503, 504].includes(response.status) && attempt < 2) {
+        await response.body?.cancel();
+        await sleepImpl(1000 * (attempt + 1));
+        continue;
+      }
+      let body;
+      try { body = await response.json(); } catch { throw new Error(`Cloudflare returned invalid JSON: ${response.status} ${requestPath}`); }
+      if (!response.ok || body.success !== true) {
+        const codes = (body.errors || []).map((error) => error.code).filter(Number.isInteger);
+        throw new Error(`Cloudflare read failed: HTTP ${response.status} ${requestPath}; codes=${codes.join(',')}`);
+      }
+      return body;
     }
-    return body;
   };
   const body = await readPage(path);
   const deploymentsPath = new URL(`https://api.cloudflare.com${path}`);
