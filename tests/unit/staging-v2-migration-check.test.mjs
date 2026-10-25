@@ -10,7 +10,7 @@ import { STAGING_D1, familyStagingConfig } from '../../scripts/staging-family-mi
 import { REPOSITORY, REPOSITORY_ID } from '../../scripts/domain/audit-cloud.mjs';
 import {
   baselineQuery, CHAIN, gate, PRE_TIP, requireDispatch, run, schemaQuery, TIP,
-  verifyBaseline, verifyBaselinePreserved, verifyCandidateChain, verifySchema,
+  normalizeSchemaSql, verifyBaseline, verifyBaselinePreserved, verifyCandidateChain, verifySchema,
 } from '../../scripts/staging-v2-migration-check.mjs';
 
 const { load } = createRequire(createRequire(import.meta.url).resolve('eslint/package.json'))('js-yaml');
@@ -133,21 +133,40 @@ describe('bounded canonical staging 0043->0044->0045 certification', () => {
     } finally { db.close(); }
   });
 
-  it('rejects added or weakened V2 schema and accepts only whitespace normalization', () => {
+  it('rejects added or weakened V2 schema and accepts cosmetic comments and spacing', () => {
     const db = databaseAt(TIP);
     try {
       const rows = db.prepare(schemaQuery()).all();
       expect(verifySchema(result(rows)).constraints).toBe('PASS');
-      expect(verifySchema(result(rows.map(row => ({ ...row, sql: row.sql?.replaceAll('\n', '  ') ?? null })))).constraints).toBe('PASS');
+      const historical = rows.map(row => ({ ...row, sql: row.sql?.replace(/--[^\r\n]*/g, '') ?? null }));
+      expect(rows.find(row => row.name === 'inventory_events').sql).toContain('event_type TEXT NOT NULL, --');
+      expect(verifySchema(result(historical)).constraints).toBe('PASS');
+      expect(verifySchema(result(historical.map(row => ({ ...row, sql: row.sql?.replaceAll('\n', '  ') ?? null })))).constraints).toBe('PASS');
+      expect(verifySchema(result(historical.map(row => ({ ...row, sql: row.sql?.replace('CREATE ', 'CREATE /* cosmetic -- note */ ') ?? null })))).constraints).toBe('PASS');
       expect(() => verifySchema(result([...rows, { name: 'unexpected', type: 'trigger', sql: 'SELECT 1' }]))).toThrow(/differs/);
       expect(() => verifySchema([{ success: false, results: rows }])).toThrow(/successful/);
       for (const [before, after] of [['ON DELETE CASCADE', 'ON DELETE SET NULL'],
         ['length(client_key) BETWEEN 8 AND 200', 'length(client_key) > 0'],
-        ['SELECT RAISE(ABORT', 'SELECT RAISE(IGNORE'], ['length(display_category) <= 30', 'length(display_category) <= 300']]) {
+        ['SELECT RAISE(ABORT', 'SELECT RAISE(IGNORE'], ['length(display_category) <= 30', 'length(display_category) <= 300'],
+        ["'Inventory display category is invalid'", "'Inventory  display category is invalid'"],
+        ["'Week swap receipts are immutable'", "'Week swap receipts -- are immutable'"],
+        ["'USE'", "'USE/* changed */'"]]) {
         expect(rows.some(row => row.sql?.includes(before)), before).toBe(true);
         expect(() => verifySchema(result(rows.map(row => ({ ...row, sql: row.sql?.replaceAll(before, after) ?? null }))))).toThrow(/differs/);
       }
     } finally { db.close(); }
+  });
+
+  it.each([
+    ["  SELECT -- removed\n 'it''s  -- data /* retained */'  ", "SELECT 'it''s  -- data /* retained */'"],
+    ['SELECT /* removed */ "a""--  b", `a``/*  b */`, [a--  b]', 'SELECT "a""--  b", `a``/*  b */`, [a--  b]'],
+    ['SELECT\t/* one */ -- two\r\n/* three */ 1', 'SELECT 1'],
+    ['SELECT 1 -- final comment', 'SELECT 1'],
+    ['SELECT 1 -- carriage return\r stays comment\n', 'SELECT 1'],
+    ['SELECT\u00a01', 'SELECT\u00a01'],
+    [null, null],
+  ])('normalizes only SQL comments and unquoted spacing: %j', (sql, expected) => {
+    expect(normalizeSchemaSql(sql)).toBe(expected);
   });
 
   it.each(['apply', 'certify'])('rehearses all receipt stages in %s mode, rejects identity/ledger/plan/data/schema drift', async mode => {
