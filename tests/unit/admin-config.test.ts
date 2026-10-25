@@ -75,7 +75,7 @@ describe('admin deployment configuration', () => {
       expect(shallow, 'origin/main missing from a full clone').toBe('true');
       return;
     }
-    const reviewedDomain = '352a4211afe7f70bf75115e0688ff9f4e1e232ee';
+    const reviewedDomain = '860a5554811791f88cad8191e570b0e7035f69a3';
     try {
       execFileSync('git', ['merge-base', '--is-ancestor', reviewedDomain, 'HEAD'], { stdio: 'ignore' });
       const common = execFileSync('git', ['merge-base', baseline, reviewedDomain], { encoding: 'utf8' }).trim();

@@ -1,3 +1,13 @@
+## Reviewed static-cache baseline correction - 2026-10-26 JST
+
+PR32 head860a5554 was approved by the authorized Chrome reviewer, but CI40242026406 failed solely because the Admin customer-file guard still pinned the older service worker (424 files/9536 tests passed; one assertion failed). The exact reviewed baseline now pins860a5554811791f88cad8191e570b0e7035f69a3. All eight guarded paths remain byte-for-byte assertions with the existing ancestry and parallel-history fences. The other seven guarded paths are unchanged from352a4211; no production/application change in this correction.
+
+Executed: `CI=1 PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp pnpm test tests/unit/admin-config.test.ts tests/unit/service-worker-static-cache.test.mjs tests/unit/domain-cloud-audit.test.mjs tests/unit/domain-staging-release.test.mjs tests/unit/domain-production-release.test.mjs tests/unit/service-worker-smoke-release.test.mjs tests/unit/production-catalog-continuity.test.mjs` PASS,7files/126tests,3.87s. The older full local check recorded the same baseline failure and is still running; not PASS. Admin CI40242026412 still pending at readback. Historical failures remain retained.
+
+Next: final checks and fresh exact-head reviewer approval, normal merge, exact-main CI/Admin CI, staging/certification and monitored production release. Production0044/0045 are already applied; D1 Edit revoked. PayOS remains OWNER_WAIVED. Original Argon checkout and private recovery preserved.
+
+---
+
 ## Production cache repair; migrations complete - 2026-10-26 JST
 
 Status: `CACHE_REPAIR_LOCAL_VALIDATION`. Production is serving reviewed main `f5895354c82279a2e1c34c9d10d10d43cded75ea`, ON version `2b2760b3-9870-4334-8575-3295c3df52ab`, deployment `a4a5dc19-e347-487f-b51b-702b6f611e3a`. This is live traffic, not a completed observed release. Migration run40238176292 SUCCESS applied0044/0045; ledger45, FK empty, quick_check ok, catalog/media500. Production token D1 Edit was revoked after migration, restored to D1 Read. PayOS remains `OWNER_WAIVED` under explicit owner authorization, never PASS.
