@@ -3553,3 +3553,57 @@ WKD02 acceptance executed: full420files/9430tests PASS,backend6/114,client6/251,
 
 
 ADR-069 implementation verified at `89d0ea243d08e98670a512ef797da4f64ac516f4`;implementation scope PASS:9112unchanged-parent/5782protected-main paths,44old migrations,54salvage,1233source hashes unchanged. Exact proof:`evidence/week-swap-replay/implementation-scope.json`. This documentation checkpoint binds that verified implementation;post-docs proof is generated after commit and kept locally. Remaining external acceptance/dependency and full-snapshot concurrency ceilings unchanged.
+
+
+# ADR-070: bounded V2 release migration certification - 2026-10-25 JST
+
+Status: release preparation authorized by the operator request to deploy production;
+independent GitHub reviews and all release acceptance gates remain binding.
+
+Current main has migration0043. The successful canonical staging receipt from run
+39833771432 independently records the same43-entry ledger on2026-10-22; this is
+historical evidence, not a fresh remote inspection. The inherited family migration
+workflow is bound to the retired repository identity and its0041->0043 contract.
+Do not rewrite that historical contract or broaden protected auth/payment paths.
+
+Add a separate manual staging0043->0044->0045 adapter using the existing migration
+runner and pinned staging D1 identity, with canonical Takolio repository ID, trusted
+current-main/workflow SHA, hosted CI, fresh bookmark, exact ledger/plan and health
+gates. Capture counts of all94pre-existing tables plus catalog/media diagnostics
+in two bounded SELECTs; compare exact changed table/index/trigger SQL against the
+source migration chain. Partial, unexpected or future ledgers fail closed. Retain
+the protected production migration workflow; include0044/0045 in both immediate
+main/CI fences and certify the exact V2 schema at0045. Add receipt objects to the
+shared schema gate without exceeding D1's five-compound-SELECT limit. Accept
+operational ready media at reviewed0045 only; unknown future tips stay rejected.
+
+Migrations must precede the new Worker. Retain0044/0045 on code rollback; do not
+replay or down-migrate them. Old workers cannot provide keyed swap deduplication
+and may reject category-bearing inventory receipts: see WKD02/CAT01 compatibility
+evidence. Prefer the current-candidate recovery validated by the domain release
+flow. Mixed-worker and rollback acceptance remain operator release gates, not
+claims established by local tests. No production deployment, remote D1 mutation,
+review bypass, credential change or auth/payment modification is implied by this ADR.
+
+Validation runtime: hosted Node22.23.3 stores embedded NUL bytes but truncates
+TEXT results while reading `node:sqlite`. The unchanged CAT01 historical-invalid
+category assertion then receives PERSISTENCE_FAILED instead of
+INVALID_ADOPTION_SNAPSHOT. Reproduced with native SELECT and CAT01; Node24.16.0
+preserves the complete string. Pin only the three full-test jobs (CI, Admin CI,
+Deploy production local gates) to24.16.0 and retain a real SQLite round-trip
+regression. No Worker runtime or input-validation change. Re-review and update
+the schema-gate SQL fingerprint after the additive0045 read-only checks; retain
+the existing exact fingerprint and mutation-negative assertions.
+
+Admin release compatibility: the existing preflight freezes the reviewed domain
+customer surface and the SQL matrix freezes the earlier43-migration baseline.
+Both correctly reject this V2 candidate before review. Preserve those immutable
+baselines and every historical R1/43 scenario. Create a separate immutable V2
+source checkpoint covering the exact reviewed migration/workflow/schema bytes;
+select it only when it is in HEAD ancestry. Keep main-history drift checks and
+exact working-tree diffs. Extend the matrix with45-file fresh/incremental gates,
+missing/future-ledger rejection and explicit old43-gate rollback rejection. Add
+real temporary-Git regression cases for V2 selection, post-pin changes, normal
+merge and parallel-main drift. This checkpoint remains a candidate for independent
+PR review, not evidence that review or deployment occurred. Never select moving
+HEAD/main as an automatic accepted baseline or disable the guard.

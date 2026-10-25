@@ -81,6 +81,7 @@ required_tables(name) AS (
     ,('shopping_plan_item_dismissals')
     ,('shopping_demand_reviews')
     ,('shopping_demand_review_commands')
+    ,('week_swap_receipts')
 ),
 required_columns(table_name, column_name) AS (
   VALUES
@@ -271,6 +272,14 @@ required_columns(table_name, column_name) AS (
     ,('shopping_demand_reviews', 'item_id')
     ,('shopping_demand_review_commands', 'request_fingerprint')
     ,('shopping_demand_review_commands', 'response_json')
+    ,('week_swap_receipts', 'id')
+    ,('week_swap_receipts', 'household_id')
+    ,('week_swap_receipts', 'actor_id')
+    ,('week_swap_receipts', 'plan_id')
+    ,('week_swap_receipts', 'meal_id')
+    ,('week_swap_receipts', 'client_key')
+    ,('week_swap_receipts', 'fingerprint')
+    ,('week_swap_receipts', 'created_at')
 ),
 -- Indexes and triggers share one sqlite_master lookup: D1 (workerd) caps compound SELECTs at
 -- 5 terms (SQLITE_LIMIT_COMPOUND_SELECT), so the gate must stay at five UNION ALL branches.
@@ -280,6 +289,9 @@ required_schema_objects(type, name) AS (
     ('index', 'idx_shopping_demand_reviews_item'),
     ('trigger', 'trg_shopping_demand_review_commands_immutable_update'),
     ('trigger', 'trg_shopping_demand_review_commands_immutable_delete'),
+    ('trigger', 'trg_week_swap_receipts_immutable_insert'),
+    ('trigger', 'trg_week_swap_receipts_immutable_update'),
+    ('trigger', 'trg_week_swap_receipts_immutable_delete'),
     ('index', 'idx_auth_otp_tickets_scope_admitted'),
     ('index', 'idx_auth_otp_requests_retained_until'),
     ('index', 'idx_checkout_admissions_user_state'),
