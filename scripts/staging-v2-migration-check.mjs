@@ -68,6 +68,13 @@ export function verifyBaselinePreserved(pre, post) {
   return { drift: 'none' };
 }
 
+export function normalizeSchemaSql(sql) {
+  if (typeof sql !== 'string') return sql;
+  // Preserve quoted values/identifiers; only comments and unquoted spacing are cosmetic.
+  return sql.replace(/'(?:[^']|'')*'|"(?:[^"]|"")*"|`(?:[^`]|``)*`|\[[^\]]*\]|(?:[ \t\n\r\f]+|--[^\n]*|\/\*[\s\S]*?(?:\*\/|$))+/g,
+    token => ["'", '"', '`', '['].includes(token[0]) ? token : ' ').trim();
+}
+
 export function verifySchema(statements) {
   if (!Array.isArray(statements) || statements.length !== 1 || statements[0]?.success !== true || !Array.isArray(statements[0].results)) {
     throw new Error('Expected one successful V2 migration schema result');
@@ -75,9 +82,7 @@ export function verifySchema(statements) {
   const database = databaseAt(TIP);
   try {
     const expected = database.prepare(schemaQuery()).all();
-    const normalize = rows => rows.map(({ type, name, sql }) => ({ type, name,
-      sql: typeof sql === 'string' ? sql.replace(/\s+/g, ' ').trim() : sql,
-    }));
+    const normalize = rows => rows.map(({ type, name, sql }) => ({ type, name, sql: normalizeSchemaSql(sql) }));
     if (JSON.stringify(normalize(statements[0].results)) !== JSON.stringify(normalize(expected))) {
       throw new Error('V2 inventory and swap receipt schema differs from reviewed 0044/0045');
     }
