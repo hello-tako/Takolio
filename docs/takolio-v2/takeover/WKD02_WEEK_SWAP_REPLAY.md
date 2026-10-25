@@ -1,6 +1,6 @@
 # WKD02 - Durable Week swap replay
 
-Status: `LOCAL_WKD02_VERIFIED`, 2026-10-25 JST; ADR-069. Local implementation checkpoint prepared from parent `4c5f8ce85b90edfb9d8f6f8183014471947a3c72`; its verified SHA will be bound by a separate documentation checkpoint. Official GitHub `main` observed read-only at `90b94129113b41e34701d99f51175cfa81cb73de`.
+Status: `LOCAL_WKD02_VERIFIED`, 2026-10-25 JST; ADR-069. Implementation checkpoint `89d0ea243d08e98670a512ef797da4f64ac516f4` verified by `implementation-scope.json`; parent `4c5f8ce85b90edfb9d8f6f8183014471947a3c72`. This separate documentation checkpoint binds the verified implementation. Official GitHub `main` observed read-only at `90b94129113b41e34701d99f51175cfa81cb73de`.
 
 ## Result
 
@@ -33,10 +33,10 @@ Initial local D1 unsupported pragma and initial browser selector attempt failed;
 
 Final precommit recheck: `PASS_WITH_AUTHORIZED_PLATFORM_DRIFT`. Snapshot22763regular/772symlinks, source22772regular/772symlinks;116Git baseline files exact. Only ten previously authorized `.DS_Store` deltas differ; separately privately copied/verified. All other bytes/modes/links and HEAD/index/status match. Source index and stored manifest unchanged during check. No zero-difference claim; private recovery locations unpublished. Earlier authorized snapshot-index restoration remains disclosed in CAT01.
 
-Precommit scope PASS:9112 unchanged parent paths,5782 protected-main paths,54salvage paths,69Argon/12asset/38screen rows unchanged;115prior FILE_DECISIONS rows preserved; all38owner reviews PENDING. Source freezes1233entries/zero differences. See `precommit-scope.json`, `recovery-precommit.json`; implementation/post-docs proofs follow the local checkpoint.
+Precommit scope PASS:9112 unchanged parent paths,5782 protected-main paths,54salvage paths,69Argon/12asset/38screen rows unchanged;115prior FILE_DECISIONS rows preserved; all38owner reviews PENDING. Source freezes1233entries/zero differences. See `precommit-scope.json`, `recovery-precommit.json`; `implementation-scope.json` verifies `89d0ea243d08e98670a512ef797da4f64ac516f4` with the same preserved counts and zero failures. Post-docs proof is produced after the separate documentation commit in ignored `.artifacts/takeover/wkd02/post-docs-scope.json`,bound to its actual HEAD.
 
 ## Explicit ceilings and next action
 
 Distinct fresh Week commands still rewrite full snapshots: no shared revision/CAS or cross-tab atomicity. Keyless commands, create/regenerate/slot/shopping/preferences remain outside receipt deduplication. Actual Node SQLite/Worker-router browser evidence does not certify hosted D1/workerd concurrency, physical devices, Safari, native zoom, screen readers, live providers or owner acceptance. Migration0045 must precede any future Worker using the schema; retained-schema/mixed-worker limits require separately approved rollout review.
 
-Finite UI01-UI15+C12/C13 and CLI01/DEP01/CAT01/SCAN01/WKD01/WKD02 are locally bounded complete. Remaining:38owner reviews, media rights/mapping, device/Safari/assistive-technology, live-provider/hosted acceptance and a separately scoped dependency remediation. No speculative UI rebuild. Next:local implementation scope proof, SHA-bound documentation checkpoint, post-docs scope proof; then external acceptance/explicit release approval. No push, merge, deploy, remote migration, production, PayOS/payment/billing/checkout/webhook or unrelated auth/infrastructure change.
+Finite UI01-UI15+C12/C13 and CLI01/DEP01/CAT01/SCAN01/WKD01/WKD02 are locally bounded complete. Remaining:38owner reviews, media rights/mapping, device/Safari/assistive-technology, live-provider/hosted acceptance and a separately scoped dependency remediation. No speculative UI rebuild. Next:external acceptance and separately scoped dependency remediation; release requires explicit approval. Final post-docs scope verification follows this documentation checkpoint and records its actual HEAD in the local proof path above. No push, merge, deploy, remote migration, production, PayOS/payment/billing/checkout/webhook or unrelated auth/infrastructure change.

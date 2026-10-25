@@ -1,3 +1,15 @@
+## Takolio V2 - WKD02 implementation checkpoint verified (2026-10-25 JST)
+
+Status: LOCAL_WKD02_VERIFIED; ADR-069. Implementation `89d0ea243d08e98670a512ef797da4f64ac516f4`; implementation scope PASS at that exact HEAD. This documentation checkpoint follows the verified implementation. Keyed swap replay preserves later current plan; response-loss requests remain durable; exact409 recovery requires confirmation. Existing keyless/alternatives/inventory/tenancy/security behavior preserved.
+
+Full420files/9430tests PASS; backend6/114,client6/251,response-loss6cases,existing Playwright2tests PASS. Lint/types/migrations/default/actual paired-ON builds PASS;local D1 preserves94tables/9920old rows;44PNG;1233source hashes unchanged. Audit remains FAIL0low/3moderate/2high,Hono/Zod/Undici.26verbatim evidence whitespace warnings retained;source/docs clean. Failed attempts and local/hosted concurrency ceilings remain explicit in `docs/takolio-v2/takeover/WKD02_WEEK_SWAP_REPLAY.md`.
+
+Scope PASS:9112parent/5782protected-main paths unchanged;44old migrations,54salvage paths and69Argon/12asset/38screen rows preserved;38owner reviews PENDING. Recovery reverified PASS_WITH_AUTHORIZED_PLATFORM_DRIFT,only ten authorized .DS_Store deltas privately copied;all other worktree bytes/modes/links and HEAD/index/status exact. Original source index/stored manifest unchanged during check.
+
+Next:external owner/media/device/Safari/nativezoom/screenreader/live-provider/hosted acceptance and separate dependency remediation. Finite UI01-UI15+C12/C13 and CLI01/DEP01/CAT01/SCAN01/WKD01/WKD02 locally bounded complete. Post-docs scope proof is written after this documentation commit to ignored `.artifacts/takeover/wkd02/post-docs-scope.json`;verify its HEAD before resuming. No push/merge/deploy/remote migration/production action. Historical content follows unchanged.
+
+---
+
 ## Takolio V2 - WKD02 verified local result (2026-10-25 JST)
 
 Status: LOCAL_WKD02_VERIFIED; ADR-069. Parent `4c5f8ce85b90edfb9d8f6f8183014471947a3c72`; official main observed read-only `90b94129113b41e34701d99f51175cfa81cb73de`. Implementation checkpoint prepared; bind verified SHA in the following documentation checkpoint.

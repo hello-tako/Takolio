@@ -2119,6 +2119,15 @@
       "raw_bytes": 315,
       "published_bytes": 259,
       "redacted_keys": []
+    },
+    {
+      "raw": ".artifacts/takeover/wkd02/implementation-scope.json",
+      "published": "implementation-scope.json",
+      "raw_sha256": "3308602301bb8dcd410d786141e642d2c6fec0c80bee1651d0698666fe3a653a",
+      "published_sha256": "3308602301bb8dcd410d786141e642d2c6fec0c80bee1651d0698666fe3a653a",
+      "raw_bytes": 23540,
+      "published_bytes": 23540,
+      "redacted_keys": []
     }
   ],
   "redacted_keys": [

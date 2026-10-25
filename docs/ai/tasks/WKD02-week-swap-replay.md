@@ -1,3 +1,9 @@
+# WKD02 verified implementation checkpoint - 2026-10-25 JST
+
+Implementation `89d0ea243d08e98670a512ef797da4f64ac516f4`;implementation scope PASS. Current report:`docs/takolio-v2/takeover/WKD02_WEEK_SWAP_REPLAY.md`. Local acceptance complete;external owner/media/device/hosted and dependency follow-ups remain. Post-docs proof follows the documentation commit in ignored `.artifacts/takeover/wkd02/post-docs-scope.json`. No production operation. Historical packet follows unchanged.
+
+---
+
 # WKD02 accepted local result - 2026-10-25 JST
 
 Status: LOCAL_WKD02_VERIFIED; ADR-069 acceptance executed. Full420files/9430tests PASS; lint/types/migrations/default/paired-ON builds, focused/backend/client, populated local D1 and browser PASS. Audit remains0low/3moderate/2high;26verbatim evidence whitespace warnings retained. Recovery/scope,exact commands,failed attempts and concurrency/hosted ceilings: `docs/takolio-v2/takeover/WKD02_WEEK_SWAP_REPLAY.md`. Local checkpoint/scope binding follows; external owner/device/media/hosted acceptance remains pending. No production operation. Historical activation/draft follows unchanged.
