@@ -3652,3 +3652,16 @@ normal candidate. Persist reactivation intent before POST; re-prove legacy and
 hosts before finishing. Interrupted reactivation may reconcile only the recorded
 recovery deployment or exact candidate; unrelated traffic still fails closed.
 Infrastructure rehearsal does not attest Google/OTP/payment/user/device checks.
+
+ADR-071 HTML evidence amendment (2026-10-25 JST): staging release40201806613
+reached the exact same-source OFF recovery but failed byte verification because
+publicDomainRouting adds OG/canonical/Twitter metadata to raw index.html. Domain
+providers now commit the expected root HTML after that existing deterministic
+transform, using the verified environment app origin. Live responses still require
+exact byte count and SHA256, with unchanged module fingerprints. No normalization,
+script stripping, analytics allowlist or runtime/security change is accepted.
+Actual Worker/StaticAssets regressions cover staging and production and reject
+unexpected metadata/scripts/modules. Local full suite425files/9515tests PASS;
+real staging recovery/rehearsal remains unverified. Current staging OFF state must
+be reconciled to its recorded same-source ON version before a new V2 release;
+provider flag preservation must never be mistaken for enabling V2.
