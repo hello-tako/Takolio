@@ -1,3 +1,14 @@
+## Release publication - 2026-10-25
+
+- [x] Commit sanitized release evidence; push candidate normally to PR #28; update PR scope/checks/blockers.
+- [x] Verify branch/Environment protection and current-main SHA through GitHub API.
+- [x] Run read-only smoke against existing production: PASS; degraded email-delivery readiness retained.
+- [ ] Wait for full CI/Admin CI on final PR head; fix actual failures without weakening gates.
+- [ ] Obtain independent last-push approval; merge normally; pass exact-main CI/Admin CI.
+- [ ] Complete exact-main staging0045/deploy/real acceptance and mixed-worker rollback compatibility.
+- [ ] Complete protected production ledger/recovery/migration/certification/Environment approval, rollout and observation.
+
+---
 ## Release checkpoint - 2026-10-25
 
 - [x] Pin immutable V2 customer release baseline and add 45-file migration guard scenarios.

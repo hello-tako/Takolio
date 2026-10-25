@@ -1,3 +1,14 @@
+## Takolio V2 - release published, protected review pending (2026-10-25 JST)
+
+Status: RELEASE_PUSHED_REVIEW_REQUIRED; production remains on its existing release. Implementation checkpoint `fb2a1cf4240e25196e8f090d35c9c5b7198a6480` and release evidence were pushed normally to PR #28 (`6e9751e9` documentation checkpoint); no force push. The following documentation checkpoint records the observed remote state. Final PR-head CI/Admin CI and independent last-push approval remain mandatory.
+
+Executed after publication: `gh pr view 28 --repo hello-tako/Takolio --json headRefOid,mergeStateStatus,reviewDecision,statusCheckRollup` confirmed REVIEW_REQUIRED/BLOCKED. Main remains `90b94129113b41e34701d99f51175cfa81cb73de`. Hosted runs 40156891159/40156888915 passed install/lint/types; Admin public scan PASS; both full suites were running when this checkpoint was written. No hosted full-suite PASS is claimed.
+
+Read-only public production baseline: `PATH=/opt/homebrew/opt/node@24/bin:$PATH bash scripts/post-deploy-smoke.sh https://takolio.app` PASS. Landing/liveness HTTP200, auth/SW no-store, hashed assets immutable, database/queue OK, D1 catalog 500 recipes. Readiness is degraded because email delivery is not verified; SW identifies existing release `571f3c229696d6bc766de89f552a36f48ca92e58`. This is existing production evidence, not a V2 deployment.
+
+Next: require final-head green checks and independent review; then normal merge and exact-main protected staging/migration/certification/production flow. Mixed-worker rollback compatibility and genuine same-SHA staging acceptance remain release blockers. Production Environment requires `vn-taphoanhatung`, prevents self-review. No merge, remote migration, upload, traffic or production mutation occurred. See `docs/takolio-v2/takeover/RELEASE_20261025.md`.
+
+---
 ## Takolio V2 - production release checkpoint (2026-10-25 JST)
 
 Status: RELEASE_PREPARED_REVIEW_REQUIRED. Candidate `fb2a1cf4240e25196e8f090d35c9c5b7198a6480` is locally validated and not deployed. PR #28 remains open; hosted final-head checks, independent approval, exact-main staging acceptance, production ledger/migration, Environment approval and rollout remain pending.

@@ -1,3 +1,10 @@
+## Release published handoff - 2026-10-25
+
+Implementation `fb2a1cf4` and release evidence are published to PR #28; normal push reached documentation checkpoint `6e9751e9`. Final PR-head checks and independent last-push approval are required. Main remains `90b94129`; no merge or remote mutation occurred. Existing production public smoke PASS with degraded readiness (email delivery unverified), DB/queue OK, 500 D1 recipes; existing SW SHA `571f3c229696d6bc766de89f552a36f48ca92e58`.
+
+Hosted CI/Admin CI on the published checkpoint passed install/lint/types and scanner (Admin); full tests were still running. Do not treat those partial results or the existing live smoke as candidate deployment evidence. Next: verify final-head check results, resolve actual failures, independent review, normal merge, exact-main CI, staging0045/deploy/real acceptance, rollback compatibility, production ledger/migration/certification and Environment approval by `vn-taphoanhatung`. Preserve all earlier retained failures/evidence and Argon recovery.
+
+---
 ## Release handoff - 2026-10-25
 
 Candidate `fb2a1cf4240e25196e8f090d35c9c5b7198a6480` is ready for protected PR review. Local evidence is in `docs/takolio-v2/takeover/RELEASE_20261025.md` and `docs/takolio-v2/takeover/evidence/release-20261025.json`. No remote D1, merge, staging deploy or production deploy occurred.
