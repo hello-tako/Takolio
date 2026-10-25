@@ -6,13 +6,15 @@ import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
 import { confirmDeploymentMutation } from './deployments.mjs';
-import { ACCOUNT, ZONE, REPOSITORY, REPOSITORY_ID, audit, cloudflareRead } from './audit-cloud.mjs';
+import { ACCOUNT, ZONE, REPOSITORY, REPOSITORY_ID, audit, cloudflareRead, sanitizeRuntime } from './audit-cloud.mjs';
 import { prepareReleaseConfig, configHash } from './release-config.mjs';
 import { uploadedWorkerVersion } from './upload-output.mjs';
 import { privateDomainReceipt, restorePrivateDomains, hasPrivateDomains } from './receipt-privacy.mjs';
 import { stagingFetch, stagingCurlExecute } from './access-http.mjs';
 import { planHosts, attachHosts, detachCreatedHosts, validateDomains, isDomainId } from './hosts.mjs';
-import { STAGING_GOOGLE_CLIENT_ID, unchangedAudit, verifyUploadedVersion, releaseStaging, recoveryAction, validateRecoveryContext } from './staging-release.mjs';
+import { STAGING_GOOGLE_CLIENT_ID, unchangedAudit, verifyUploadedVersion, releaseStaging, validateRecoveryContext } from './staging-release.mjs';
+import { compatibleRecoveryPlan, compatibleRecoveryVersionId, verifyCompatibleRecoveryVersion, compatibleRecoveryAction } from './compatible-recovery.mjs';
+import { captureRecoveryBuild, verifyServedRecoveryAssets } from '../family-meal-release.mjs';
 import { capturedCommand } from '../cloudflare-deploy-retry.mjs';
 import { addStagingEmail, serializeStagingReceipt, hydrateStagingReceipt } from './staging-email-policy.mjs';
 import { validateReleaseSource, migrationManifest, hostedCi, requireCurrentHostedMain,
@@ -125,16 +127,21 @@ async function fenced(context) {
 }
 
 async function verifyRestored(context, mutation) {
+  const versionId = compatibleRecoveryVersionId(context);
+  const version = await read(`${script}/versions/${versionId}`);
+  verifyCompatibleRecoveryVersion(context, version);
   const restored = await capture(context.manifest.schema);
   const expected = structuredClone(context.audit);
-  expected.worker.deploymentId = restored.worker.deploymentId;
+  expected.worker = { name: worker, ...sanitizeRuntime(version, {
+    id: mutation.deploymentId, strategy: 'percentage', versions: [{ version_id: versionId, percentage: 100 }],
+  }) };
   unchangedAudit(expected, restored);
-  const previous = await authority(profiles.staging.legacy);
-  for (const key of ['commit', 'environment', 'configuredMode', 'servedFingerprint', 'servedRecipeCount', 'releaseId', 'fallbackReason']) {
-    if (!isDeepStrictEqual(previous[key], context.manifest.previousRecipeAuthority[key])) throw new Error('Rollback authority differs from previous evidence');
-  }
-  context.recovery = { state: 'previous-version-restored', deploymentId: mutation.deploymentId, versionId: mutation.versionId };
+  const proof = await prove(profiles.staging.legacy, context);
+  const compiledAssets = await verifyServedRecoveryAssets(context.compatibleRecovery.build, { url: profiles.staging.legacy, fetch: stagingFetch });
+  unchangedAudit(restored, await capture(context.manifest.schema));
+  context.recovery = { state: 'compatible-version-restored', ...mutation, proof, compiledAssets };
   context.state = 'rolled-back'; persist(context);
+  return restored;
 }
 
 export const provider = {
@@ -172,23 +179,52 @@ export const provider = {
     persist(context);
     return context;
   },
+  async prepareRecovery(context) {
+    await gate(context.manifest.sha);
+    unchangedAudit(context.audit, await capture(context.manifest.schema));
+    const plan = compatibleRecoveryPlan(context);
+    await run('pnpm', ['build'], plan.buildEnvironment);
+    const build = captureRecoveryBuild(readJson('dist/composition-flags.json'));
+    context.compatibleRecovery = { sha: context.manifest.sha, plan, build, buildSha256: configHash(JSON.stringify(build)) };
+    const recoveryConfig = resolve(output, 'recovery-wrangler.json');
+    const recoveryUpload = resolve(output, 'recovery-upload.jsonl');
+    writeFileSync(recoveryConfig, plan.bytes); writeFileSync(recoveryUpload, '');
+    context.state = 'recovery-upload-intent'; persist(context);
+    await gate(context.manifest.sha);
+    unchangedAudit(context.audit, await capture(context.manifest.schema));
+    if (configHash(readFileSync(recoveryConfig)) !== plan.sha256 ||
+        !isDeepStrictEqual(captureRecoveryBuild(readJson('dist/composition-flags.json')), build)) {
+      throw new Error('Compatible recovery config or compiled assets changed before upload');
+    }
+    await run('pnpm', ['exec', 'wrangler', 'versions', 'upload', '--config', recoveryConfig, '--strict'], { WRANGLER_OUTPUT_FILE_PATH: recoveryUpload });
+    const records = readFileSync(recoveryUpload, 'utf8').trim().split('\n').map((line) => JSON.parse(line));
+    context.compatibleRecovery.versionId = uploadedWorkerVersion(records, worker);
+    verifyCompatibleRecoveryVersion(context, await read(`${script}/versions/${context.compatibleRecovery.versionId}`));
+    unchangedAudit(context.audit, await capture(context.manifest.schema));
+    context.state = 'recovery-prepared'; persist(context);
+  },
   async build(context) {
     await run('pnpm', ['build'], context.plan.buildEnvironment);
     await run('node', ['scripts/composition-flags.mjs', 'verify', resolve(output, 'manifest.json'), 'dist/composition-flags.json', configFile], { ...context.plan.buildEnvironment, MEAL_COMPOSITION_V2_ENABLED: String(context.manifest.mealCompositionV2Enabled) });
   },
   async upload(context) {
     await gate(context.manifest.sha);
+    const recoveryId = compatibleRecoveryVersionId(context);
+    verifyCompatibleRecoveryVersion(context, await read(`${script}/versions/${recoveryId}`));
     unchangedAudit(context.audit, await capture(context.manifest.schema));
     if (configHash(readFileSync(configFile)) !== context.plan.sha256) throw new Error('Prepared config bytes changed');
     context.state = 'upload-intent'; persist(context);
     await run('pnpm', ['exec', 'wrangler', 'versions', 'upload', '--config', configFile, '--strict'], { WRANGLER_OUTPUT_FILE_PATH: uploadFile });
     const records = readFileSync(uploadFile, 'utf8').trim().split('\n').map((line) => JSON.parse(line));
     const versionId = uploadedWorkerVersion(records, worker);
+    if (versionId === recoveryId) throw new Error('Normal candidate and compatible recovery must be distinct versions');
     context.uploadedVersionId = verifyUploadedVersion(await read(`${script}/versions/${versionId}`), context.plan, context.audit.worker);
     context.state = 'uploaded'; persist(context);
   },
   async activate(context) {
     await gate(context.manifest.sha);
+    const recoveryId = compatibleRecoveryVersionId(context);
+    verifyCompatibleRecoveryVersion(context, await read(`${script}/versions/${recoveryId}`));
     unchangedAudit(context.audit, await capture(context.manifest.schema));
     context.state = 'activation-intent'; context.mutationAttempted = true; persist(context);
     const deployment = await mutate(`${script}/deployments`, 'POST', {
@@ -240,9 +276,40 @@ export const provider = {
     context.hostProof = { apiStatus: api.status, apiSpaStatus: spa.status, corsStatus: cors.status, cors: corsProof, httpsVerified: true };
     await fenced(context);
   },
+  async rehearseRecovery(context) {
+    await fenced(context);
+    const restored = await this.recover(context);
+    context.rollbackRehearsal = { sha: context.manifest.sha, recovery: structuredClone(context.recovery) };
+    persist(context);
+    await gate(context.manifest.sha);
+    unchangedAudit(restored, await capture(context.manifest.schema));
+    const active = await currentDeployment();
+    if (compatibleRecoveryAction(context, active) !== 'verify-recovery') throw new Error('Rehearsal recovery traffic changed');
+    verifyCompatibleRecoveryVersion(context, await read(`${script}/versions/${active.versionId}`));
+    verifyUploadedVersion(await read(`${script}/versions/${context.uploadedVersionId}`), context.plan, context.audit.worker);
+    // Persist the uncertain interval before restoring the already uploaded candidate.
+    context.state = 'reactivation-intent'; delete context.activeDeploymentId; persist(context);
+    const response = await mutate(`${script}/deployments`, 'POST', {
+      strategy: 'percentage', versions: [{ version_id: context.uploadedVersionId, percentage: 100 }],
+    });
+    context.activationProof = await confirmDeploymentMutation(response, context.uploadedVersionId, {
+      recordId: (id) => { context.activeDeploymentId = id; persist(context); },
+      readDeployment: (id) => read(`${script}/deployments/${id}`), readCurrent: currentDeployment,
+    });
+    context.state = 'activated'; persist(context);
+    await fenced(context);
+    await this.proveLegacy(context);
+    await this.attach(context);
+    await this.proveHosts(context);
+    context.rollbackRehearsal.result = 'PASS';
+    context.rollbackRehearsal.candidateVersionId = context.uploadedVersionId;
+    context.rollbackRehearsal.deploymentId = context.activeDeploymentId;
+    context.rollbackRehearsal.checkedAt = new Date().toISOString();
+    persist(context);
+  },
   async finish(context) {
     context.state = 'infrastructure-verified';
-    context.acceptance = 'Real browser Google/OTP/PayOS sandbox, user journeys and live rollback rehearsal remain pending';
+    context.acceptance = 'Real browser Google/OTP/PayOS sandbox and user journeys remain pending; see rollbackRehearsal for infrastructure recovery proof';
     persist(context);
   },
   persist,
@@ -250,16 +317,19 @@ export const provider = {
     persist(context);
     if (!context.mutationAttempted) { context.recovery = 'No traffic or hostname mutation attempted'; persist(context); return; }
     validateRecoveryContext(context, env);
+    const recoveryId = compatibleRecoveryVersionId(context);
+    verifyCompatibleRecoveryVersion(context, await read(`${script}/versions/${recoveryId}`));
     if (hasPrivateDomains(context)) restorePrivateDomains(context, await domainList());
     const active = await currentDeployment();
-    if (recoveryAction(context, active) === 'verify-previous') {
-      await verifyRestored(context, active);
-      return;
+    if (compatibleRecoveryAction(context, active) === 'verify-recovery') {
+      return verifyRestored(context, active);
     }
     context.activeDeploymentId = active.deploymentId;
     const rollbackGate = async () => {
       const latest = await currentDeployment();
       if (latest.versionId !== context.uploadedVersionId || latest.deploymentId !== context.activeDeploymentId) throw new Error('Rollback traffic fence changed');
+      verifyCompatibleRecoveryVersion(context, await read(`${script}/versions/${recoveryId}`));
+      verifyUploadedVersion(await read(`${script}/versions/${latest.versionId}`), context.plan, context.audit.worker);
       const snapshot = await capture(context.manifest.schema);
       if (!isDeepStrictEqual(snapshot.operational, context.audit.operational)) throw new Error('Rollback operational fence changed');
     };
@@ -268,13 +338,13 @@ export const provider = {
     await rollbackGate();
     context.state = 'rollback-intent'; persist(context);
     const response = await mutate(`${script}/deployments`, 'POST', {
-      strategy: 'percentage', versions: [{ version_id: context.audit.worker.versionId, percentage: 100 }],
+      strategy: 'percentage', versions: [{ version_id: recoveryId, percentage: 100 }],
     });
-    const mutation = await confirmDeploymentMutation(response, context.audit.worker.versionId, {
+    const mutation = await confirmDeploymentMutation(response, recoveryId, {
       recordId: (id) => { context.rollbackDeploymentId = id; persist(context); },
       readDeployment: (id) => read(`${script}/deployments/${id}`), readCurrent: currentDeployment,
     });
-    await verifyRestored(context, mutation);
+    return verifyRestored(context, mutation);
   },
 };
 

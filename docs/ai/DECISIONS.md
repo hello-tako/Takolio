@@ -3607,3 +3607,48 @@ real temporary-Git regression cases for V2 selection, post-pin changes, normal
 merge and parallel-main drift. This checkpoint remains a candidate for independent
 PR review, not evidence that review or deployment occurred. Never select moving
 HEAD/main as an automatic accepted baseline or disable the guard.
+
+## ADR-071 - Receipt-compatible production recovery before V2 traffic (2026-10-25)
+
+Status: authorized release correction; independent exact-head review and real
+same-SHA staging acceptance remain required. Supersedes ADR-070's unverified
+assumption that the domain adapter already prepares current-candidate recovery.
+
+Reviewer reproduction against exact production source571f3c229696d6bc766de89f552a36f48ca92e58
+shows a V2 category-bearing USE receipt replays on the candidate but fails with
+CORRUPT_RECEIPT on that previous binary. The existing production adapter blindly
+restores that binary. Additive0044/0045 retention alone does not make it safe.
+
+Before normal candidate compilation/upload/activation, build and strictly upload
+an inactive recovery version from the exact candidate source with both planner
+and composition disabled in server and compiled UI. Derive its config from the
+fresh audited candidate; change only those two feature flags and their two build
+flags. Preserve security settings including STRICT_OTP_FAIL_CLOSED, complete
+bindings/secrets, catalog, exposure, queue/cron/observability and all host fences.
+Record source/config/build asset commitments and verify immutable uploaded metadata
+before activation and recovery. Rebuild the ordinary candidate after recovery
+upload, so its UI retains the audited normal feature state.
+
+After any candidate activation intent, never automatically return to the old
+binary. Recover only to the recorded compatible version. Retain owned host detach
+and traffic/operational fences, reconcile interrupted activation by exact owned
+version, verify a completed recovery idempotently, reject foreign deployments and
+ambiguous mutation retries. Verify restored runtime, ledger0044/0045, original
+infrastructure, candidate recipe authority, readiness/service worker and exact
+flags-OFF HTML/module bytes. No data rollback, schema rewrite, payment/auth change,
+protection bypass or acceptance attestation is implied. Stage rollback rehearsal
+and final-head hosted checks remain release requirements.
+
+ADR-071 staging scope: use the same compatible recovery preparation and verifier
+for staging, preserving its Access transport and private restricted email policy.
+A real staging rollback must exercise this named flags-OFF version, never the
+pre-V2 binary. Keep the normal protected workflow and acceptance evidence gates.
+
+ADR-071 rehearsal: every protected staging release now exercises compatible
+recovery after initial host proof, retaining the exact OFF asset/runtime result.
+Only after fresh exact-main CI, unchanged full recovery audit, owned deployment
+and both immutable version metadata checks may it reactivate the already uploaded
+normal candidate. Persist reactivation intent before POST; re-prove legacy and
+hosts before finishing. Interrupted reactivation may reconcile only the recorded
+recovery deployment or exact candidate; unrelated traffic still fails closed.
+Infrastructure rehearsal does not attest Google/OTP/payment/user/device checks.

@@ -151,12 +151,12 @@ describe('production observation and recovery', () => {
     const context = {};
     const order = [];
     const fake = { prepare: async () => context, persist: vi.fn() };
-    for (const step of ['build', 'upload', 'activate', 'proveLegacy', 'attach', 'finish', 'recover']) {
+    for (const step of ['prepareRecovery', 'build', 'upload', 'activate', 'proveLegacy', 'attach', 'finish', 'recover']) {
       fake[step] = vi.fn(async () => { order.push(step); });
     }
     fake.proveHosts = async () => { throw new Error('TLS failed'); };
     await expect(releaseProduction(fake)).rejects.toThrow('TLS failed');
-    expect(order).toEqual(['build', 'upload', 'activate', 'proveLegacy', 'attach', 'recover']);
+    expect(order).toEqual(['prepareRecovery', 'build', 'upload', 'activate', 'proveLegacy', 'attach', 'recover']);
     expect(fake.finish).not.toHaveBeenCalled();
   });
 });

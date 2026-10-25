@@ -46,7 +46,7 @@ export function captureRecoveryBuild(record, directory = 'dist/client') {
   } };
 }
 
-function verifyAssetRecord(record) {
+export function verifyAssetRecord(record) {
   verifyRecoveryBuild(record);
   const html = record.assets?.html;
   const modules = record.assets?.modules;

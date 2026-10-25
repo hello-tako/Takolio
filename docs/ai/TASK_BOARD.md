@@ -1,3 +1,44 @@
+## Recovery-compatible release local validation - 2026-10-25 JST
+
+Status: LOCAL_RECOVERY_VALIDATED_PUBLICATION_PENDING. Complete Node 24 test run finished successfully: 425 files / 9501 tests PASS, 956.62s. Command: `PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp pnpm test --maxWorkers=1 --testTimeout=15000`; log `.artifacts/takeover/release-20261025/recovery-full-node24.log`. This local discovery includes the retained one-test reviewer reproduction under ignored `.artifacts/`; hosted discovery will omit that private reproduction. Focused recovery/release suite: six files / 111 tests PASS. Lint, typecheck, migration check, build and `git diff --check` PASS. Admin preflight configuration PASS, `readyForDeployment=false`, `remoteExecuted=false`. Earlier interrupted Node 25 run remains incomplete, never PASS.
+
+Full current diff and new recovery/test files reviewed. Only domain release adapters, the existing asset-record verifier export, recovery tests, ADR-071 and release handoff documentation changed. Original Argon workspace, private backup, application source, assets, migrations, payments, unrelated auth and infrastructure remain preserved. Recovery uses the exact candidate source with server/UI planner-composition flags OFF, strict immutable version/build commitments, traffic/host/operational fences, exact served OFF assets and staging rehearsal. No new concrete finding in this correction; real same-SHA staging behavior remains unverified.
+
+Next: normal commit/push to PR #28, fresh final-head CI/Admin CI, Chrome reviewer examination/approval, normal merge, exact-main CI/Admin CI, protected staging0045 migration and release/recovery rehearsal, nine genuine acceptance evidence rows, production recovery/ledger/migration/certification/Environment review and monitored rollout. No merge, remote migration, staging deployment or production deployment has occurred. Earlier checkpoints below are historical; pending test/publication statements there describe their observation time.
+
+## Recovery-compatible release correction - 2026-10-25 JST
+
+Status: LOCAL_RECOVERY_CORRECTED_REVIEW_PENDING. Reviewer `vn-taphoanhatung` submitted `CHANGES_REQUESTED` on PR #28 at 2026-10-25T10:06:22Z after confirming the old production source `571f3c229696d6bc766de89f552a36f48ca92e58` rejects a V2 USE receipt with `displayCategory` as `CORRUPT_RECEIPT`. This correction adds exact-source inactive OFF recovery, strict metadata and asset verification, and staging recovery rehearsal. No merge, migration, staging deploy, traffic mutation, or production deploy occurred.
+
+Changed: `scripts/domain/compatible-recovery.mjs` and `tests/unit/domain-compatible-recovery.test.mjs` are new. Production and staging providers prepare/upload a distinct compatible recovery version before the normal ON candidate, restore only that verified same-source OFF version, and prove exact OFF compiled bytes, runtime, audit, ledger, authority and host fences. Staging reactivates the same candidate after rehearsal; uncertain reactivation before/after traffic mutation stays fail-closed. Fake deployment IDs are distinct. PayOS, billing, checkout, webhooks, unrelated auth and production infrastructure remain untouched.
+
+Checks: focused recovery/release suite `6 files / 111 tests PASS`, log `.artifacts/takeover/release-20261025/recovery-focused-final-six.log`; lint PASS, log `.artifacts/takeover/release-20261025/recovery-lint-final.log`; typecheck, migrations and build PASS in existing logs; Admin preflight `configurationValidation PASS`, customer baseline correct, `readyForDeployment=false`, `remoteExecuted=false`. Full Node 24 suite remains in progress at the time of this checkpoint in `.artifacts/takeover/release-20261025/recovery-full-node24.log`; no PASS is claimed until it exits successfully. An earlier Node 25 attempt was interrupted and is retained only as a failed/incomplete attempt.
+
+Current deployment state: published PR #28 still points to `846dd5f9915fef7f2be4d38c75b85fb73d3dd82b`; main is `90b94129113b41e34701d99f51175cfa81cb73de`. The working tree is intentionally dirty with implementation and documentation changes. Original Argon workspace and private backup remain preserved.
+
+Next action: finish the Node 24 full suite, review the complete diff, commit and push normally, obtain fresh exact-head CI/Admin CI, then use the logged-in Chrome reviewer to inspect and approve the final patch. Only after normal merge may the protected exact-main staging migration, staging release/rehearsal, genuine nine-check acceptance, production certification, Environment approval and production release proceed. Never fabricate acceptance or bypass reviewer/environment gates.
+
+## Release hosted gates PASS; independent review blocked - 2026-10-25 JST
+
+Status: HOSTED_PASS_REVIEW_REQUIRED. Published PR #28 HEAD is `846dd5f9915fef7f2be4d38c75b85fb73d3dd82b`; main remains `90b94129113b41e34701d99f51175cfa81cb73de`. Production deployment is authorized, but no merge, remote migration, staging deployment or production deployment occurred. Original Argon workspace and private recovery remain preserved.
+
+Executed: `gh run view 40157096926 --json status,conclusion,jobs` and `gh run view 40157096931 --json status,conclusion,jobs` confirm both required checks SUCCESS. Downloaded and inspected both full logs with `gh run view <run-id> --log`. CI: 423 files / 9484 tests PASS, 1250.61s. Admin CI: 423 files / 9484 tests PASS, 1367.47s; Workerd 10/10, migration matrix 31/31, browser 13/13, keyboard 10/10, public scan, lint/types/migrations/build/preflight and screenshot reference guard PASS. Actions tested synthetic PR merge `a1de1ab9e62ac9ed9a4ab6ee034cfeedfe9189f2`; these are PR checks, not merged-main push checks. Downloaded Admin artifact 12584928992; matrix and Workerd reports both pass. Exact hosted receipts and sanitized handoff: `.artifacts/takeover/release-20261025/hosted-final/` (ignored local evidence). PR description now links both successful runs and the artifact.
+
+Repeated read-only baseline: `PATH=/opt/homebrew/opt/node@24/bin:$PATH bash scripts/post-deploy-smoke.sh https://takolio.app` PASS: landing/liveness HTTP200, auth/SW no-store, immutable hashed asset, DB/queue OK, 500 D1 recipes, release `rel-bd00a4f53fcaeee4`; readiness remains degraded with email delivery unverified. This checks existing production only. Prior dependency audit failure (0 low / 3 moderate / 2 high) and all historical failures remain retained.
+
+Current blocking action: `gh pr view 28 --json headRefOid,reviewDecision,mergeStateStatus,reviews,statusCheckRollup` reports REVIEW_REQUIRED/BLOCKED and no review. Branch protection requires one independent last-push approval, strict validate/validate-admin, stale-review dismissal and administrator enforcement. Auto-merge is disabled. Production Environment separately requires `vn-taphoanhatung` and prevents self-review. No protection or credential was changed.
+
+- [x] Final published PR-head hosted CI and Admin CI PASS; inspect and retain actual counts/artifacts.
+- [x] Update PR description and local CURRENT_STATE/TASK_BOARD/HANDOFF with actual evidence.
+- [ ] Independent last-push PR approval; normal merge; exact merged-main CI/Admin CI.
+- [ ] Same-SHA staging0045 migration, deployment and nine real acceptance checks; mixed-worker/rollback compatibility remains UNPROVEN.
+- [ ] Production ledger and fresh recovery proof, protected migration/certification, independent Environment review, activation and 15-minute observation.
+
+Next action: an independent reviewer approves PR #28 at the published HEAD. Then continue the exact-main protected release sequence in `docs/takolio-v2/takeover/RELEASE_20261025.md`. Never invent acceptance PASS, use the historical staging receipt for this candidate, or fall back to the legacy release workflow. Retain0044/0045 on rollback.
+
+This checkpoint is a local uncommitted documentation update; PR HEAD remains the already-tested846dd5f9. Runtime/source/assets/migrations/dependencies are unchanged. Committing/pushing this checkpoint later requires new final-head checks and applicable last-push review. No completion or deployment claim is made.
+
+---
 ## Release publication - 2026-10-25
 
 - [x] Commit sanitized release evidence; push candidate normally to PR #28; update PR scope/checks/blockers.
