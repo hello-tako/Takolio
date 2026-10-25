@@ -4,7 +4,7 @@ import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { readFileSync, readdirSync, mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
-import { CUSTOMER_BASELINE, REVIEWED_DOMAIN_BASELINE, selectGuardedCustomerBaseline } from './admin-customer-baseline.mjs';
+import { CUSTOMER_BASELINE, REVIEWED_DOMAIN_BASELINE, V2_RELEASE_BASELINE, selectGuardedCustomerBaseline } from './admin-customer-baseline.mjs';
 
 const args = process.argv.slice(2);
 const get = (key, fallback) => args.includes(key) ? args[args.indexOf(key) + 1] : fallback;
@@ -35,7 +35,8 @@ const migrations = readdirSync('migrations-admin').filter(file => /^[0-9]{4}_[a-
 const protectedPaths = ['migrations', 'src/worker/index.ts', 'src/worker/types.ts', 'wrangler.jsonc', 'wrangler.staging.jsonc',
   '.github/workflows/ci.yml', '.github/workflows/deploy.yml', '.github/workflows/production-d1-migrate.yml'];
 const { baseline: customerBaseline } = selectGuardedCustomerBaseline({
-  git, originalBaseline: CUSTOMER_BASELINE, reviewedBaseline: REVIEWED_DOMAIN_BASELINE, guardedPaths: protectedPaths,
+  git, originalBaseline: CUSTOMER_BASELINE, reviewedBaseline: REVIEWED_DOMAIN_BASELINE,
+  releaseBaseline: V2_RELEASE_BASELINE, guardedPaths: protectedPaths,
 });
 const changed = git('diff', '--name-only', customerBaseline, '--', ...protectedPaths);
 if (changed) throw new Error('Customer release surface changed: ' + changed);

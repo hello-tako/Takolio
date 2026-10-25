@@ -3,7 +3,7 @@ import { execFileSync } from 'node:child_process';
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import { CUSTOMER_BASELINE, REVIEWED_DOMAIN_BASELINE, selectGuardedCustomerBaseline } from '../../scripts/admin-customer-baseline.mjs';
+import { CUSTOMER_BASELINE, REVIEWED_DOMAIN_BASELINE, V2_RELEASE_BASELINE, selectGuardedCustomerBaseline } from '../../scripts/admin-customer-baseline.mjs';
 
 const directories = [];
 afterEach(() => {
@@ -36,9 +36,15 @@ describe('immutable customer release baselines', () => {
   it('keeps the exact production and reviewed domain commits pinned in preflight', () => {
     expect(CUSTOMER_BASELINE).toBe('526596a8cd857984ad2b69901a8c7b0e9d6bccc2');
     expect(REVIEWED_DOMAIN_BASELINE).toBe('352a4211afe7f70bf75115e0688ff9f4e1e232ee');
+    expect(V2_RELEASE_BASELINE).toBe('9b031f05c34a3f27f7a5d9958c65eb8a4405d227');
     const preflight = readFileSync('scripts/admin-release-preflight.mjs', 'utf8');
     expect(preflight).toContain('originalBaseline: CUSTOMER_BASELINE, reviewedBaseline: REVIEWED_DOMAIN_BASELINE');
     expect(preflight).toContain("git('diff', '--name-only', customerBaseline, '--', ...protectedPaths)");
+    expect(preflight).toContain('releaseBaseline: V2_RELEASE_BASELINE');
+    const matrix = readFileSync('scripts/admin-migration-matrix.mjs', 'utf8');
+    expect(matrix).toContain('releaseBaseline: V2_RELEASE_BASELINE');
+    expect(matrix).toContain('headManifest.sha256 === candidateManifest.sha256 && workingManifest.sha256 === candidateManifest.sha256');
+    expect(matrix).toContain("git('diff', '--name-only', customerBaseline, '--', 'migrations', 'scripts/d1-schema-gate.sql')");
   });
 
   it('accepts reviewed domain bytes across a parallel metadata-only main merge', () => {
@@ -103,5 +109,74 @@ describe('immutable customer release baselines', () => {
     expect(() => f.select({ originalBaseline: 'a'.repeat(40) })).toThrow();
     f.git('update-ref', '-d', 'refs/remotes/origin/main');
     expect(() => f.select()).toThrow();
+  });
+});
+
+
+describe('immutable V2 release checkpoint', () => {
+  function releaseFixture() {
+    const f = fixture();
+    const releaseBaseline = f.commit('worker.ts', 'frozen V2 candidate\n');
+    const select = () => f.select({ releaseBaseline });
+    const changed = () => f.git('diff', '--name-only', select().baseline, '--', 'worker.ts');
+    return { ...f, releaseBaseline, selectRelease: select, changedRelease: changed };
+  }
+
+  it('selects the exact V2 checkpoint across a parallel metadata-only main merge', () => {
+    const f = releaseFixture();
+    f.git('checkout', 'main');
+    const advancedMain = f.commit('admin.txt', 'disabled admin\n');
+    f.git('update-ref', 'refs/remotes/origin/main', advancedMain);
+    f.git('checkout', 'domain');
+    f.git('merge', '--no-edit', 'main');
+    expect(f.selectRelease()).toEqual({ baseline: f.releaseBaseline, mainBase: advancedMain });
+    expect(f.changedRelease()).toBe('');
+  });
+
+  it('retains the same immutable checkpoint after a normal merge onto main', () => {
+    const f = releaseFixture();
+    f.git('checkout', 'main');
+    f.git('merge', '--no-ff', '--no-edit', 'domain');
+    f.git('update-ref', 'refs/remotes/origin/main', 'HEAD');
+    expect(f.selectRelease().baseline).toBe(f.releaseBaseline);
+    expect(f.changedRelease()).toBe('');
+  });
+
+  it.each(['working', 'committed'])('rejects post-checkpoint %s customer bytes', (mode) => {
+    const f = releaseFixture();
+    if (mode === 'committed') f.commit('worker.ts', 'unreviewed later change\n');
+    else writeFileSync(path.join(f.cwd, 'worker.ts'), 'unreviewed later change\n');
+    expect(f.selectRelease().baseline).toBe(f.releaseBaseline);
+    expect(f.changedRelease()).toBe('worker.ts');
+  });
+
+  it('rejects parallel main history drift even when the merge restores pinned V2 bytes', () => {
+    const f = releaseFixture();
+    f.git('checkout', 'main');
+    const advancedMain = f.commit('worker.ts', 'unreviewed main change\n');
+    f.git('update-ref', 'refs/remotes/origin/main', advancedMain);
+    f.git('checkout', 'domain');
+    try { f.git('merge', '--no-commit', 'main'); } catch { /* Expected fixture conflict. */ }
+    f.commit('worker.ts', 'frozen V2 candidate\n');
+    expect(() => f.selectRelease()).toThrow('Protected customer history changed on main: worker.ts');
+  });
+
+  it('rejects main changes after a normal V2 merge', () => {
+    const f = releaseFixture();
+    f.git('checkout', 'main');
+    f.git('merge', '--no-ff', '--no-edit', 'domain');
+    const changedMain = f.commit('worker.ts', 'unreviewed future main\n');
+    f.git('update-ref', 'refs/remotes/origin/main', changedMain);
+    expect(() => f.selectRelease()).toThrow('Protected customer history changed on main');
+  });
+
+  it('never selects a V2 checkpoint absent from HEAD ancestry', () => {
+    const f = fixture();
+    f.git('checkout', '-b', 'v2');
+    const releaseBaseline = f.commit('worker.ts', 'frozen V2 candidate\n');
+    f.git('checkout', 'domain');
+    expect(f.select({ releaseBaseline }).baseline).toBe(f.reviewedBaseline);
+    f.git('checkout', 'main');
+    expect(f.select({ releaseBaseline }).baseline).toBe(f.originalBaseline);
   });
 });

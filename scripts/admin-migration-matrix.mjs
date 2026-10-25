@@ -8,7 +8,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildAdminFixtureSql, localWranglerEnv } from './admin-local-lib.mjs';
-import { CUSTOMER_BASELINE, selectGuardedCustomerBaseline } from './admin-customer-baseline.mjs';
+import { CUSTOMER_BASELINE, V2_RELEASE_BASELINE, selectGuardedCustomerBaseline } from './admin-customer-baseline.mjs';
 import { migrationManifest, verifyMigrationLedger } from './release-check.mjs';
 import { renderSchemaGateCommand } from './d1-schema-gate.mjs';
 
@@ -22,7 +22,7 @@ const ORIGINAL_ADMIN = '3e865d009ee62a92ed1d9c8d225a36893035670b';
 const R1 = '25140baa99ef0aecc5e8d0e53206132e01e0f765';
 const MAIN_BASELINE = CUSTOMER_BASELINE;
 const runEvidence = {
-  head: null, tree: null, mergeBase: null, dirtyScopedPaths: null,
+  head: null, tree: null, mergeBase: null, customerBaseline: null, dirtyScopedPaths: null,
   adminManifest: null, workerVersion: null, workerSourceSha256: null,
 };
 
@@ -140,10 +140,11 @@ function row(scenario, expectation, observed, pass) {
 
 try {
   const head = git('rev-parse', 'HEAD');
-  const { mainBase: mergeBase } = selectGuardedCustomerBaseline({
-    git, originalBaseline: MAIN_BASELINE, guardedPaths: ['migrations', 'scripts/d1-schema-gate.sql'],
+  const { mainBase: mergeBase, baseline: customerBaseline } = selectGuardedCustomerBaseline({
+    git, originalBaseline: MAIN_BASELINE, releaseBaseline: V2_RELEASE_BASELINE, guardedPaths: ['migrations', 'scripts/d1-schema-gate.sql'],
   });
   runEvidence.head = head;
+  runEvidence.customerBaseline = customerBaseline;
   runEvidence.tree = git('rev-parse', head + '^{tree}');
   runEvidence.mergeBase = mergeBase;
   runEvidence.dirtyScopedPaths = git('status', '--porcelain', '--', 'scripts/admin-migration-matrix.mjs', 'scripts/admin-customer-baseline.mjs', 'migrations', 'migrations-admin', 'src/worker/routes/admin/auth.ts');
@@ -151,11 +152,13 @@ try {
   const preFiles = filesAt(PRE_ADMIN, 'migrations');
   const originalFiles = filesAt(ORIGINAL_ADMIN, 'migrations');
   const mainFiles = filesAt(MAIN_BASELINE, 'migrations');
+  const candidateFiles = filesAt(customerBaseline, 'migrations');
   const r1AdminFiles = filesAt(R1, 'migrations-admin');
   const currentAdminFiles = filesOnDisk(path.join(root, 'migrations-admin'));
   const r1Manifest = migrationManifest(root, R1);
   const preManifest = migrationManifest(root, PRE_ADMIN);
   const mainManifest = migrationManifest(root, MAIN_BASELINE);
+  const candidateManifest = migrationManifest(root, customerBaseline);
   const headManifest = migrationManifest(root, head);
   const workingManifest = manifest(filesOnDisk(path.join(root, 'migrations')));
   const adminManifest = manifest(currentAdminFiles);
@@ -245,11 +248,17 @@ try {
     mainManifest.count === 43 &&
     mainFiles.some((file) => file.name === '0042_family_meals_preferences_saved_shopping.sql') &&
     mainFiles.some((file) => file.name === '0043_shopping_demand_review.sql') &&
-    headManifest.sha256 === mainManifest.sha256 && workingManifest.sha256 === mainManifest.sha256;
-  row('current-main customer ledger identity', 'HEAD and working migrations match pinned 43-file current main (names + SHA-256)',
+    JSON.stringify(candidateManifest.migrations.slice(0, mainManifest.count)) === JSON.stringify(mainManifest.migrations);
+  const candidateIdentity = customerBaseline === V2_RELEASE_BASELINE && candidateManifest.count === 45 &&
+    headManifest.sha256 === candidateManifest.sha256 && workingManifest.sha256 === candidateManifest.sha256 &&
+    !git('diff', '--name-only', customerBaseline, '--', 'migrations', 'scripts/d1-schema-gate.sql');
+  row('pinned 43-file customer ledger identity', 'all historical main migrations remain byte-identical in the candidate',
     { head, baseline: MAIN_BASELINE, currentMain: mainManifest.sha256, headManifest: headManifest.sha256,
       workingManifest: workingManifest.sha256, count: mainManifest.count,
       status: git('status', '--porcelain', '--', 'migrations') || 'clean' }, mainIdentity);
+  row('pinned V2 customer release identity', 'HEAD and working migrations/schema match the immutable 45-file V2 checkpoint',
+    { baseline: customerBaseline, count: candidateManifest.count, candidate: candidateManifest.sha256,
+      head: headManifest.sha256, working: workingManifest.sha256 }, candidateIdentity);
 
   const fresh = database('main-fresh', mainFiles);
   const freshApply = apply(fresh), freshLedger = ledger(fresh);
@@ -314,6 +323,60 @@ try {
   row('current-main additive legacy customer schema', 'all R1 table, index, trigger and view definitions remain unchanged',
     { comparison: additive, r1SchemaSha256: hash(JSON.stringify(r1Objects)),
       currentMainSchemaSha256: hash(JSON.stringify(mainObjects)) }, additive.pass);
+
+  const candidateTemplate = path.join(work, 'v2-schema-gate.sql');
+  const candidateMigrationDirectory = path.join(work, 'v2-migrations');
+  writeFiles(candidateMigrationDirectory, candidateFiles);
+  writeFileSync(candidateTemplate, git('show', customerBaseline + ':scripts/d1-schema-gate.sql'));
+  const candidateFresh = database('v2-fresh', candidateFiles);
+  const candidateApply = apply(candidateFresh), candidateLedger = ledger(candidateFresh);
+  const candidateGate = schemaGate(candidateFresh, candidateMigrationDirectory, candidateTemplate);
+  row('V2 45-file fresh apply + strict gates', 'all45 apply; exact candidate ledger and shared schema gate pass',
+    { apply: candidateApply.status, ledger: releaseGate(customerBaseline, candidateLedger), schema: candidateGate },
+    candidateApply.status === 0 && releaseGate(customerBaseline, candidateLedger).pass && candidateGate.pass);
+
+  const v2Additions = candidateFiles.slice(mainFiles.length);
+  writeFiles(upgrade.migrationDirectory, v2Additions);
+  const candidateUpgrade = apply(upgrade), candidateReapply = apply(upgrade), upgrade45Ledger = ledger(upgrade);
+  const upgrade45Gate = schemaGate(upgrade, upgrade.migrationDirectory, candidateTemplate);
+  row('V2 0043 -> 0045 upgrade + re-apply', 'only44/45 apply after the historical upgrade; re-apply is idempotent',
+    { additions: v2Additions.map(file => file.name), apply: candidateUpgrade.status, reapply: candidateReapply.status,
+      ledger: releaseGate(customerBaseline, upgrade45Ledger), schema: upgrade45Gate },
+    JSON.stringify(v2Additions.map(file => file.name)) === JSON.stringify([
+      '0044_inventory_display_category.sql', '0045_week_swap_receipts.sql',
+    ]) && candidateUpgrade.status === 0 && candidateReapply.status === 0 &&
+      releaseGate(customerBaseline, upgrade45Ledger).pass && upgrade45Gate.pass);
+
+  const candidateMissing = database('v2-missing-0045', candidateFiles);
+  const candidateMissingApply = apply(candidateMissing);
+  const candidateMissingDelete = sql(candidateMissing, "DELETE FROM d1_migrations WHERE name = '0045_week_swap_receipts.sql'");
+  const candidateMissingLedger = ledger(candidateMissing);
+  const candidateMissingGate = schemaGate(candidateMissing, candidateMigrationDirectory, candidateTemplate);
+  row('V2 missing0045 drift', 'both candidate gates reject a missing0045 ledger entry',
+    { ledger: releaseGate(customerBaseline, candidateMissingLedger), schema: candidateMissingGate },
+    candidateMissingApply.status === 0 && candidateMissingDelete.status === 0 &&
+      !releaseGate(customerBaseline, candidateMissingLedger).pass && !candidateMissingGate.pass &&
+      candidateMissingGate.issues.some(issue => issue.issue === 'missing_migration' &&
+        issue.detail === '0045_week_swap_receipts.sql'));
+
+  const futureName = '0046_unexpected_drift.sql';
+  const candidateUnknown = database('v2-unknown-0046', [...candidateFiles, {
+    name: futureName, content: 'CREATE TABLE unexpected_v2_drift (id TEXT PRIMARY KEY);\n',
+  }]);
+  const candidateUnknownApply = apply(candidateUnknown), candidateUnknownLedger = ledger(candidateUnknown);
+  const candidateUnknownGate = schemaGate(candidateUnknown, candidateMigrationDirectory, candidateTemplate);
+  row('V2 unknown0046 drift', 'both candidate gates reject an unexpected future migration',
+    { ledger: releaseGate(customerBaseline, candidateUnknownLedger), schema: candidateUnknownGate },
+    candidateUnknownApply.status === 0 && !releaseGate(customerBaseline, candidateUnknownLedger).pass &&
+      !candidateUnknownGate.pass && candidateUnknownGate.issues.some(issue =>
+        issue.issue === 'unexpected_migration' && issue.detail === futureName));
+
+  const rollback43Gate = schemaGate(candidateFresh, mainMigrationDirectory, mainTemplate);
+  row('strict43 release rejects V2 ledger on binary rollback', 'old release requires separate recovery certification',
+    { ledger: releaseGate(MAIN_BASELINE, candidateLedger), schema: rollback43Gate },
+    !releaseGate(MAIN_BASELINE, candidateLedger).pass && !rollback43Gate.pass &&
+      v2Additions.every(file => rollback43Gate.issues.some(issue =>
+        issue.issue === 'unexpected_migration' && issue.detail === file.name)));
 
   // SQL-only D1 evidence; this section does not infer Worker runtime or flags-OFF recovery.
   const r1AdminManifest = manifest(r1AdminFiles);
@@ -422,6 +485,7 @@ try {
       customerBaselineGuardSha256: hash(readFileSync(new URL('./admin-customer-baseline.mjs', import.meta.url))),
       historicalR1: R1,
       currentMainBaseline: MAIN_BASELINE,
+      v2ReleaseBaseline: runEvidence.customerBaseline,
       currentMainMergeBase: runEvidence.mergeBase,
       dirtyScopedPaths: runEvidence.dirtyScopedPaths,
     },
