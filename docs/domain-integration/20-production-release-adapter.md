@@ -1,3 +1,13 @@
+## Owner-authorized PayOS test waiver; protected release continuation - 2026-10-26 JST
+
+Status: `OWNER_WAIVER_IMPLEMENTED_REVIEW_PENDING`. The owner explicitly waived repeating PayOS settlement/callback testing because existing production PayOS works, and authorized completing the remaining work and production deployment. This supersedes the earlier production hold below. PayOS is `OWNER_WAIVED`, never PASS; the expired unpaid test order proves no settlement/callback/Plus grant. Payment implementation remains unchanged.
+
+The release adapter now accepts only the `payos-sandbox` row with result `OWNER_WAIVED`, reason `existing-production-payos-owner-accepted`, canonical repository evidence, and a separate boolean owner-waiver confirmation. It preserves the actual result in receipts. Every other acceptance row still requires PASS. Existing exact-source CI, staging, fresh production certification, independent Environment review, compatible recovery, and 15-minute observation gates remain mandatory. No security protection or payment/auth/application/migration/asset/dependency file changed.
+
+Executed: `PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp pnpm test tests/unit/domain-production-release.test.mjs tests/unit/domain-production-build.test.mjs tests/unit/production-certify-workflow.test.mjs` PASS (3 files / 74 tests); `pnpm lint` PASS; fresh `pnpm typecheck` PASS. Waiver regressions reject missing/false/string authorization, wrong reason, NOT_RUN, external/query-string evidence, and waiving any other check. Hosted exact-head checks and live deployment are still pending; no production mutation occurred at this checkpoint.
+
+Next: normal protected PR/reviewer approval and exact-head CI/Admin CI, normal merge and exact-main checks; new same-SHA staging certification/release and bounded browser refresh, truthful canonical acceptance with OWNER_WAIVED; protected production ledger/bookmark/migration, fresh certification, Environment approval and monitored release. Original Argon workspace and verified private recovery remain preserved. Historical checkpoints retain their original observation-time claims.
+
 # Current operational checkpoint - 2026-10-18
 
 The adapter is merged and staging is accepted on d5f2e726. Production attempt
@@ -18,7 +28,7 @@ Staging acceptance is still pending. Do not dispatch it with invented PASS field
 
 ## Required source and evidence
 
-`Domain Production Release` is manual and both confirmation inputs default false.
+`Domain Production Release` is manual and all confirmation inputs default false.
 It uses the existing protected production Environment and production deployment
 concurrency group. Trusted main must equal the dispatched workflow SHA and full
 requested SHA before dependency installation. The provider rechecks canonical
@@ -43,7 +53,12 @@ hours old, bound to the same SHA, staging run and uploaded version. It contains
 exactly the required check names: dns-tls, access, google-login, otp-delivery,
 session-lifecycle, payos-sandbox, user-journeys, mobile-pwa and rollback-rehearsal.
 Every check requires PASS and a canonical repository Actions/artifact or PR
-comment evidence URL. Query strings and external evidence destinations are rejected.
+comment evidence URL, except an explicitly owner-waived `payos-sandbox` check.
+That exception requires `OWNER_WAIVED`, fixed reason
+`existing-production-payos-owner-accepted`, canonical evidence, and the separate
+`confirm_payos_owner_waiver=true` input. The receipt retains OWNER_WAIVED; it is
+never converted to PASS. No other check can be waived. Query strings and external
+evidence destinations are rejected.
 Only these public fields are retained; arbitrary supplied fields are discarded.
 
 The adapter does not perform these browser/provider checks or infer their truth

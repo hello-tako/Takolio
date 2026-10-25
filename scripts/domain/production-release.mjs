@@ -22,7 +22,7 @@ export function verifyEvidenceRun(run, { id, sha, path }) {
   return { id, attempt: run.run_attempt, sha, path, url: run.html_url };
 }
 
-export function verifyStagingAcceptance(acceptance, receipt, { sha, runId, now = Date.now() }) {
+export function verifyStagingAcceptance(acceptance, receipt, { sha, runId, allowPayosWaiver = false, now = Date.now() }) {
   if (receipt?.state !== 'infrastructure-verified' || receipt.manifest?.sha !== sha ||
       receipt.manifest.repository !== REPOSITORY || receipt.manifest.environment !== 'staging' ||
       receipt.plan?.config?.name !== 'frigo-staging' || !receipt.uploadedVersionId ||
@@ -45,11 +45,13 @@ export function verifyStagingAcceptance(acceptance, receipt, { sha, runId, now =
   const checks = {};
   for (const check of ACCEPTANCE_CHECKS) {
     const proof = acceptance.checks[check];
-    if (proof?.result !== 'PASS' || typeof proof.evidence !== 'string' ||
+    const waived = check === 'payos-sandbox' && allowPayosWaiver === true &&
+      proof?.result === 'OWNER_WAIVED' && proof.reason === 'existing-production-payos-owner-accepted';
+    if (!(proof?.result === 'PASS' || waived) || typeof proof.evidence !== 'string' ||
         !/^https:\/\/github\.com\/hello-tako\/Takolio\/(?:actions\/runs\/[1-9][0-9]*(?:\/artifacts\/[1-9][0-9]*)?|pull\/[1-9][0-9]*#issuecomment-[1-9][0-9]*)$/.test(proof.evidence)) {
       throw new Error(`Staging acceptance evidence missing: ${check}`);
     }
-    checks[check] = { result: 'PASS', evidence: proof.evidence };
+    checks[check] = { result: proof.result, evidence: proof.evidence, ...(waived ? { reason: proof.reason } : {}) };
   }
   // Retain only reviewed public fields, never arbitrary operator input.
   return { schema: acceptance.schema, repository: REPOSITORY, sha, releaseRunId: runId,

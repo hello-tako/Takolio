@@ -1,3 +1,96 @@
+## Owner-authorized PayOS test waiver; protected release continuation - 2026-10-26 JST
+
+Status: `OWNER_WAIVER_IMPLEMENTED_REVIEW_PENDING`. The owner explicitly waived repeating PayOS settlement/callback testing because existing production PayOS works, and authorized completing the remaining work and production deployment. This supersedes the earlier production hold below. PayOS is `OWNER_WAIVED`, never PASS; the expired unpaid test order proves no settlement/callback/Plus grant. Payment implementation remains unchanged.
+
+The release adapter now accepts only the `payos-sandbox` row with result `OWNER_WAIVED`, reason `existing-production-payos-owner-accepted`, canonical repository evidence, and a separate boolean owner-waiver confirmation. It preserves the actual result in receipts. Every other acceptance row still requires PASS. Existing exact-source CI, staging, fresh production certification, independent Environment review, compatible recovery, and 15-minute observation gates remain mandatory. No security protection or payment/auth/application/migration/asset/dependency file changed.
+
+Executed: `PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp pnpm test tests/unit/domain-production-release.test.mjs tests/unit/domain-production-build.test.mjs tests/unit/production-certify-workflow.test.mjs` PASS (3 files / 74 tests); `pnpm lint` PASS; fresh `pnpm typecheck` PASS. Waiver regressions reject missing/false/string authorization, wrong reason, NOT_RUN, external/query-string evidence, and waiving any other check. Hosted exact-head checks and live deployment are still pending; no production mutation occurred at this checkpoint.
+
+Next: normal protected PR/reviewer approval and exact-head CI/Admin CI, normal merge and exact-main checks; new same-SHA staging certification/release and bounded browser refresh, truthful canonical acceptance with OWNER_WAIVED; protected production ledger/bookmark/migration, fresh certification, Environment approval and monitored release. Original Argon workspace and verified private recovery remain preserved. Historical checkpoints retain their original observation-time claims.
+
+## Mobile 390x844 verification complete - 2026-10-26 05:24 JST
+
+Status: `STAGING_VERIFIED_BROWSER_ACCEPTANCE_PARTIAL`; eight bounded PASS, one incomplete. Candidate/main remains `e30521c19ada3eb97e19ebfa591705d47e2dba49`; staging release/version remain `40208481665` / `2d287a09-6626-4406-999b-901f229af641`. The owner explicitly requested production remain on hold without payment. This supersedes the earlier locked-Mac blocker; older checkpoints remain historical. No production mutation, payment, callback, or source change.
+
+Chrome DevTools Responsive verification used the live staging app at exact `390x844`: `window.innerWidth=390`, `window.innerHeight=844`, `document.documentElement.scrollWidth=390`, `devicePixelRatio=2`. Fridge search for `Trứng`, recipe catalog/detail with four listed steps and the `Cach nau` tab, saved planner with past-date guards, nested planner refresh/session retention, profile/settings/PWA guidance, and five-item navigation were exercised. All five mobile navigation touch regions measured 64px high within the 390px viewport. No horizontal overflow observed. Evidence: `staging-release-e30521c1/mobile-390x844-recipes.jpg`, `mobile-390x844-recipe-detail.jpg`, `mobile-390x844-planner.jpg`, `mobile-390x844-planner-refresh.jpg`, `mobile-390x844-pwa-guidance.jpg`, `mobile-390x844-app-settings.jpg`. Device toolbar was closed and the temporary viewport override reset after verification.
+
+Acceptance rows: dns-tls PASS; access PASS (bounded); google-login PASS; otp-delivery PASS; session-lifecycle PASS; user-journeys PASS (bounded, including controlled synthetic scan confirmation); mobile-pwa PASS (browser 390x844 scope); rollback-rehearsal PASS. `payos-sandbox` remains PARTIAL/BLOCKED: no genuine settlement, provider callback, or Plus grant. The prior 49,000 VND order expired without payment; no new order was created. Native install, offline mode, physical-device behavior, and OCR accuracy remain unproven.
+
+Private acceptance remains incomplete; no `acceptedAt` or all-PASS attestation. Production stays blocked until genuine payment evidence, canonical same-SHA evidence, protected production migration/certification, independent review, and monitored release gates complete. D1 Edit remains revoked. Original Argon WIP/assets remain preserved.
+
+Executed after documentation update: `git diff --check`; `python3 scripts/admin-public-scan.py`; four-document integrity check. Full runtime suite not repeated because this checkpoint changes documentation only; exact-main hosted results remain recorded below.
+
+Next release action: keep production on hold per owner instruction. Any later release requires genuine approved payment evidence, fresh canonical acceptance and all protected gates; never pay the expired QR or synthesize a callback.
+
+---
+
+## Synthetic scan confirmation complete - 2026-10-26 01:35 JST
+
+Status: `STAGING_VERIFIED_BROWSER_ACCEPTANCE_PARTIAL`; seven bounded PASS, two incomplete. This checkpoint supersedes the earlier scan-unconfirmed/six-PASS statements below. Candidate/main remains `e30521c19ada3eb97e19ebfa591705d47e2dba49`; staging release/version remain `40208481665` / `2d287a09-6626-4406-999b-901f229af641`. No production mutation or source change.
+
+Actual staging browser scan: renamed one mock line `QA synthetic scan e30521c1`, quantity 1 g, left expiry unknown, excluded the other three mock lines, then clicked `Nhập 1 món vào Tủ lạnh`. The owned staging fridge changed from five to six ingredients with exactly that labeled QA item; all five prior names/quantities stayed unchanged. Reload retained exactly one QA item at 1 g. Reopening the same receipt displayed `Bản quét đã xác nhận · Chỉ xem`, one accepted/three excluded, disabled editing and `Xem tủ lạnh`, with no confirm button. No deletion/cleanup or real OCR accuracy claim; AI_MOCK_MODE remains true. `user-journeys` is now PASS within the documented catalog/cook-step/planner/shopping/settings/queue/mock-scan scope. Existing stock was not consumed or replaced.
+
+Remaining gates: `payos-sandbox` has no genuine settlement/callback/grant; 01:35 JST app reload still showed the owned 49k order pending with expiry 01:36 JST and unchanged Plus expiry. Owner alone performs any transfer; never use an expired QR. `mobile-pwa` remains blocked by the locked Mac, with no actual 390x844 interaction proof. Production requires both genuine gate completions, canonical same-SHA evidence, then the protected migration/certification/review/release sequence. No all-PASS attestation was issued.
+
+Follow-up 01:38 JST: after `Cập nhật trạng thái`, the app reconciled the same order to `Hết hạn`, removed QR-reopen/pending controls and re-enabled plan selection. Plus expiry stayed unchanged. No new order was created. The old QR must not be paid. Private redacted text and financial screenshot retained; financial screenshot must not be embedded or published.
+
+Private evidence: `staging-release-e30521c1/scan-confirmed-qa.jpg`, `scan-receipt-readonly-qa.jpg`, `scan-confirmation-readback-redacted.txt`; incomplete private acceptance record updated. Executed local documentation checks: `git diff --check` PASS; `python3 scripts/admin-public-scan.py` PASS (added text only; binary/manual review still required). Full runtime tests were not repeated for documentation-only edits; exact-main hosted results remain those recorded below. Four tracked documentation files only; local uncommitted checkpoint, no push/HEAD movement. Original Argon WIP/assets preserved.
+
+Next: owner unlocks macOS for verified mobile interaction. If payment is completed through the approved provider flow, independently verify provider paid, app history paid and persisted Plus extension. Record only redacted canonical evidence; do not synthesize settlement, alter billing or bypass release gates.
+
+---
+
+## Browser handoff readback - 2026-10-26 01:30 JST
+
+Status remains `STAGING_VERIFIED_BROWSER_ACCEPTANCE_PARTIAL`; no production migration, deployment, payment, callback or source mutation. Chrome readback after reload shows the owned 49,000 VND staging order still `Chờ thanh toán`, provider paid state not observed, Plus expiry unchanged; owner must verify and perform any transfer personally before expiry, and no expired QR or synthetic settlement is allowed. Scan draft remains unconfirmed, so fridge contents remain unchanged. Actual 390x844 mobile evidence remains blocked because macOS is locked; no desktop screenshot is relabeled as mobile. Native Chrome reports the lock state. No credentials, OTP, bank details or private IDs are recorded here.
+
+Checks after this readback: `git diff --check` and `python3 scripts/admin-public-scan.py` are the next required local documentation checks; source/runtime files remain untouched. Production stays gated by all nine real same-SHA acceptance rows.
+
+---
+
+## Exact-main staging acceptance - 2026-10-26 JST
+
+Status: STAGING_VERIFIED_BROWSER_ACCEPTANCE_PARTIAL. Candidate/main is `e30521c19ada3eb97e19ebfa591705d47e2dba49`; local branch `codex/release-e30521c1`. Production is authorized but has not been migrated or deployed. This checkpoint supersedes the in-progress statuses below; historical failures remain unchanged.
+
+Exact-main CI `40205875207` and Admin CI `40205875197` SUCCESS: 424 files / 9514 tests each; Admin Workerd 10/10, migration matrix 31/31, browser 13/13, keyboard 10/10. Staging certification `40208335789` SUCCESS, `STAGING_0045_V2_CERTIFIED`: isolated `frigo-db-staging-v3`, ledger 45/tip 0045, already-applied mode, empty migration plan, FK `[]`, quick check `ok`, no aggregate drift and 50 schema objects PASS. D1 Edit remains revoked; no permission expansion.
+
+Canonical staging release `40208481665` SUCCESS, receipt `infrastructure-verified`; version `2d287a09-6626-4406-999b-901f229af641`, active deployment `cdeff57f-067a-4698-aeaf-963799c29287`. Exact SHA/assets/HTTPS/API200/API-SPA404/credentialed CORS/unapproved-origin rejection and D1 authority 500/no fallback PASS. Same-source OFF recovery `0e12f33f-bd47-4e0c-83c7-861c97f168f8` restored with exact HTML/module hashes, then exact ON candidate reactivated; rollback rehearsal PASS. Planner/composition stay true; operational resources and restricted email preserved. Artifact 12604643076 ZIP SHA256 `47c7c207212a8779979b2848ad7dfedc8c8a37c768ff748633519e359667e780`.
+
+Browser acceptance has six PASS rows within stated scope: dns-tls, access, google-login, otp-delivery, session-lifecycle, rollback-rehearsal. Access evidence includes anonymous/no-cookie 302 to Cloudflare Access on both staging `/api/v1/me` hosts, authorized owned household, isolated bindings and CORS. Actual GIS sign-in, refresh/logout/revocation/fresh sign-in and approved-inbox OTP delivery at 00:55 JST 26 October were observed. No password reset or OTP publication.
+
+Three rows remain incomplete:
+- payos-sandbox PARTIAL/BLOCKED: authenticated provider, exact owned monthly 49,000 VND pending order, correct isolated channel/callback, QR close/reload/reopen recovery and duplicate-creation guard observed. Existing Plus expiry unchanged. No transfer, genuine settlement/callback or grant proved. Staging uses a real linked bank account. Owner handoff is pending; never pay an expired QR or fabricate a callback/subscription. Private order/bank data stay private.
+- user-journeys PARTIAL: catalog 500/24-per-page, recipe and cook step 1->2/exit, saved planner/past-date guards, shopping list, fridge search, same-value preferences save, household/planning/privacy/notifications views and PWA guidance observed. Fresh non-personal synthetic receipt upload reached async queue, review and retained draft after reload. `AI_MOCK_MODE=true`; no OCR-accuracy claim. Scan confirmation/import is NOT RUN, so the full checklist is not PASS. Fridge readback after leaving the unconfirmed draft remains 5 ingredients. No cooking completion, stock mutation, plan replacement, membership change or notification permission grant.
+- mobile-pwa PARTIAL/BLOCKED: manifest/standalone/icons/install guidance checked; actual 390x844 interaction blocked by locked Mac. The earlier `mobile-fridge-filter.jpg` is desktop width 1091 and is not mobile evidence. Viewport override was reset; native/mobile/offline-device behavior remains unverified.
+
+Private evidence: `.artifacts/takeover/release-20261025/staging-release-e30521c1/` contains receipt/log, redacted Access/OTP records, synthetic SVG/PNG and screenshots. Private draft `candidate-e30521c1-acceptance.md` stays incomplete; no all-PASS attestation was issued or published. Historical d5f2 acceptance, earlier failed 40201806613 and cancelled 40206059912 are not current acceptance evidence. Dependency audit remains inherited 0 low / 3 moderate / 2 high; no clean audit claim.
+
+Executed/read back: `gh run view` for all four exact-main runs with `--json headSha,status,conclusion,url`; retained full main CI/Admin logs and both receipts inspected; Chrome app/provider pending-order and scan/fridge readbacks; native Chrome access reports Mac locked. Local read-only `git status --short`, `git diff --numstat`, `git log --oneline -10` confirm only four existing documentation edits in integration before this checkpoint. Original Argon workspace remains at 5db70a57 with its WIP/untracked assets preserved. Prior recovery result remains PASS_WITH_AUTHORIZED_PLATFORM_DRIFT (ten authorized .DS_Store deltas), not a fresh zero-difference claim.
+
+Next: owner unlocks Mac; execute verified 390x844 interactions, reset override. Finish synthetic scan confirmation only in suitable controlled staging data. If owner chooses a real acceptance transfer, owner checks amount/destination/content and performs it before expiry; independently read provider paid, owned app history and extended Plus after refresh. Then publish sanitized same-SHA/version nine-PASS acceptance with canonical evidence URLs. Only afterward capture fresh production ledger/bookmark, protected 0044/0045 migration, <=45-minute read-only certification, independent Environment review and production release with 15 real minutes observation. Preserve applied 0044/0045 on rollback. No production mutation or protected payment/auth/source edit occurred.
+
+This is a local uncommitted documentation checkpoint on the release branch; candidate HEAD/main stays e30521c1. No checkpoint push, new CI, or release eligibility is implied.
+
+---
+
+## PR30 merged; exact-main validation - 2026-10-26 JST
+
+Status: MERGED_EXACT_MAIN_CI_IN_PROGRESS. PR #30 was normally approved by the authorized Chrome reviewer `vn-taphoanhatung` on exact head `b2e14318944c1fe31c7a6a828ac770cbaa839769` (review 5643810783), then merged without bypass as `e30521c19ada3eb97e19ebfa591705d47e2dba49` at 2026-10-25T15:12:56Z. Exact-main CI `40205875207` and Admin CI `40205875197` are still in progress. No production migration/deployment occurred. Original Argon workspace and verified private recovery remain preserved.
+
+PR-head CI `40203828307` and Admin CI `40203828317` SUCCESS: 424 files / 9514 tests in each; Admin Workerd 10/10, migration matrix 31/31, browser 13/13, keyboard 10/10. Downloaded artifact 12603751984, digest `sha256:d1aaae6bc081be38cdab6269e31b80c4ad7c74a0a03456f8487a189680758b0d`; Workerd and matrix pass. PR checks executed synthetic merge `4564a0821008a43f0bcff8ef02aaa3e1aed9da35`, whose tree `641b115daff2b00f33e46c1ee92df32ca32622da` matches PR head and actual main. This does not replace required main push checks. Full implementation review found no additional concrete issue. Application/assets/migrations/payment/auth/infrastructure source unchanged in this checkpoint.
+
+Staging was reconciled from recorded OFF `ababebad-5e4a-4778-82f3-2ab9c545d3a0` to recorded same-source ON `dfa2f33d-b603-4305-8d83-960e2936562f` using normal Cloudflare Promote, deployment `c60d831d-cf8a-4691-bc1f-6260eb9221c2`, message `Reconcile recorded V2 ON after recovery failure`. Audits `40203825761` and `40204118691` SUCCESS: only active deployment/version and paired planner/composition flags false-to-true changed; bindings, secret names, operational resources, custom domains/DNS/routes and ledger 0045 unchanged. Original failed run `40201806613` remains FAILED/rollback-intent, not a successful rehearsal. D1 Edit remains revoked.
+
+Premature certification dispatch `40206059912` was cancelled; its CI prerequisite failed before credentials, D1 identity, ledger or mutation steps. All Cloudflare/D1 steps skipped. It is not certification evidence. Re-run only after both exact-main checks succeed. Production Catalog V1 Recovery run `40205875208` merely registered the new commit; recovery/gate jobs skipped, no production mutation.
+
+PayOS Chrome login is available; existing isolated staging channel is active and callback unchanged. No genuine candidate callback/settlement evidence exists. The runbook confirms staging uses a real linked bank account, not a bank sandbox. No transfer, fabricated webhook, subscription write, credential extraction or provider setting change is authorized. Approved inbox Chrome session is available for future same-candidate OTP delivery. Historical d5f2 acceptance is not relabeled.
+
+Executed: `gh run view`/logs for both PR runs; artifact download and report inspection; `gh pr view` exact head/review/merge readback; `gh pr merge 30 --merge --match-head-commit b2e14318944c1fe31c7a6a828ac770cbaa839769`; `git fetch origin main --no-tags`; commit/tree identity; new clean local branch `codex/release-e30521c1` from `origin/main`; protected premature staging dispatch/cancellation readback. Private logs/screenshots/reconciliation JSON and downloaded artifact remain under `.artifacts/takeover/release-20261025/`.
+
+Next action: require exact-main CI/Admin CI SUCCESS; run exact-main staging0045 certification in read-only already-applied mode, then canonical staging release/recovery rehearsal and all nine real same-SHA/version acceptance rows. Only genuine complete staging acceptance permits fresh production ledger/bookmark, protected migration/certification, normal Environment review and deployment with 15 real minutes observation. No gate bypass or legacy pre-V2 recovery.
+
+---
+
 ## Staging recovery HTML correction - 2026-10-25 JST
 
 Status: LOCAL_RECOVERY_HTML_VERIFIED_PUBLICATION_PENDING. PR #29 merged normally as main `5d39e4f95668cbc3f6d38fd85cda84e9de361a9b`; exact-main CI `40198952071` and Admin CI `40198952072` SUCCESS (424 files / 9507 tests; Admin Workerd 10/10, matrix 31/31, browser 13/13, keyboard 10/10). Protected staging certification `40201676499` SUCCESS: ledger 45 / tip 0045, already-applied certification only, empty migration plan, clean FK/quick checks, 50 schema objects verified. Staging D1 Edit remains revoked; Chrome readback confirms D1 Read. No production migration or deployment occurred.
