@@ -1,3 +1,16 @@
+## Exact-main merge and staging blocker - 2026-10-25 JST
+
+- [x] PR #28 merged normally; exact main `4b6239967c436d4db2cf127581422635c3ce8193`.
+- [x] Exact-main CI `40189292993` and Admin CI `40189293034` SUCCESS; 424 files / 9500 tests; Admin boundaries PASS.
+- [x] Protected staging run `40191488734` reached identity, pre-ledger 43, health, baseline, plan and fresh bookmark.
+- [x] Chrome SELECT-only post-failure readback: staging ledger remains 43 at `0043_shopping_demand_review.sql`.
+- [ ] Staging apply 0044/0045: blocked by workflow token D1 Read-only / Cloudflare code 7500.
+- [ ] Staging release, nine same-SHA acceptance rows, production certification and production release.
+
+Evidence: `.artifacts/takeover/release-20261025/staging-migrate-40191488734.log`, `.artifacts/takeover/release-20261025/staging-ledger-post-failure.jpg`, artifact `12598222190`.
+
+Next action: action-time confirmation for temporary account-wide D1 Edit; if granted, enable only that permission, rerun, certify, revoke and verify. No broader credential substitution.
+
 ## Recovery-compatible release local validation - 2026-10-25 JST
 
 Status: LOCAL_RECOVERY_VALIDATED_PUBLICATION_PENDING. Complete Node 24 test run finished successfully: 425 files / 9501 tests PASS, 956.62s. Command: `PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp pnpm test --maxWorkers=1 --testTimeout=15000`; log `.artifacts/takeover/release-20261025/recovery-full-node24.log`. This local discovery includes the retained one-test reviewer reproduction under ignored `.artifacts/`; hosted discovery will omit that private reproduction. Focused recovery/release suite: six files / 111 tests PASS. Lint, typecheck, migration check, build and `git diff --check` PASS. Admin preflight configuration PASS, `readyForDeployment=false`, `remoteExecuted=false`. Earlier interrupted Node 25 run remains incomplete, never PASS.

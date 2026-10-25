@@ -1,3 +1,11 @@
+## Exact-main merge and staging blocker - 2026-10-25 JST
+
+Merged main is `4b6239967c436d4db2cf127581422635c3ce8193`; PR #28 was merged normally after independent reviewer approval. Exact-main CI `40189292993` and Admin CI `40189293034` are SUCCESS. The protected staging migration run `40191488734` failed only at Wrangler D1 apply with Cloudflare code 7500 because the mapped token `takolio-github-staging-20261017` has D1 Read, not D1 Edit. Read-only Chrome D1 Console confirms staging remains at 43 migrations, tip `0043_shopping_demand_review.sql`. No staging release or production action occurred.
+
+The only safe continuation is explicit action-time approval for temporary account-wide D1 Edit on the exact staging token, followed by migration, schema/health certification, immediate D1 Edit revocation and policy verification. Cloudflare's UI has no database-specific scope; another token must not be substituted. If approval is absent, leave the tree recoverable and blocked.
+
+Evidence: `.artifacts/takeover/release-20261025/staging-migrate-40191488734.log`, `.artifacts/takeover/release-20261025/staging-ledger-post-failure.jpg`, artifact `12598222190`, zip SHA-256 `644ae405a1e705014f6c74d0578d8d5b76634b067941e80b9b06df39396b78eb`.
+
 ## Recovery-compatible release local validation - 2026-10-25 JST
 
 Status: LOCAL_RECOVERY_VALIDATED_PUBLICATION_PENDING. Complete Node 24 test run finished successfully: 425 files / 9501 tests PASS, 956.62s. Command: `PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp pnpm test --maxWorkers=1 --testTimeout=15000`; log `.artifacts/takeover/release-20261025/recovery-full-node24.log`. This local discovery includes the retained one-test reviewer reproduction under ignored `.artifacts/`; hosted discovery will omit that private reproduction. Focused recovery/release suite: six files / 111 tests PASS. Lint, typecheck, migration check, build and `git diff --check` PASS. Admin preflight configuration PASS, `readyForDeployment=false`, `remoteExecuted=false`. Earlier interrupted Node 25 run remains incomplete, never PASS.
