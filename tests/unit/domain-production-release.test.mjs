@@ -230,3 +230,33 @@ it('accepts Access HTTP 200 staging preflight only with matching credentialed CO
     expect(() => verifyStagingAcceptance(acceptance, changed, options)).toThrow('infrastructure');
   }
 });
+
+it('allows only an explicitly confirmed, evidenced PayOS owner waiver and preserves its result', () => {
+  const { receipt, acceptance } = staging();
+  const options = { sha, runId: 123, now, allowPayosWaiver: true };
+  acceptance.checks['payos-sandbox'] = { result: 'OWNER_WAIVED',
+    reason: 'existing-production-payos-owner-accepted',
+    evidence: 'https://github.com/hello-tako/Takolio/pull/31#issuecomment-123' };
+  expect(verifyStagingAcceptance(acceptance, receipt, options).checks['payos-sandbox'])
+    .toEqual(acceptance.checks['payos-sandbox']);
+  for (const allowPayosWaiver of [undefined, false, 'true']) {
+    expect(() => verifyStagingAcceptance(acceptance, receipt, { ...options, allowPayosWaiver }))
+      .toThrow('payos-sandbox');
+  }
+  for (const change of [{ reason: '' }, { reason: 'other' }, { result: 'NOT_RUN' },
+    { evidence: 'https://outside.example/waiver' }, { evidence: 'https://github.com/hello-tako/Takolio/pull/31#issuecomment-123?secret=x' }]) {
+    const changed = structuredClone(acceptance);
+    Object.assign(changed.checks['payos-sandbox'], change);
+    expect(() => verifyStagingAcceptance(changed, receipt, options)).toThrow('payos-sandbox');
+  }
+  for (const name of ACCEPTANCE_CHECKS.filter((name) => name !== 'payos-sandbox')) {
+    const changed = structuredClone(acceptance);
+    changed.checks[name] = { ...acceptance.checks['payos-sandbox'] };
+    expect(() => verifyStagingAcceptance(changed, receipt, options)).toThrow(name);
+  }
+  const workflow = readFileSync('.github/workflows/domain-production-release.yml', 'utf8');
+  expect(workflow).toContain('confirm_payos_owner_waiver:');
+  expect(workflow).toContain('CONFIRM_PAYOS_OWNER_WAIVER: ${{ inputs.confirm_payos_owner_waiver }}');
+  const provider = readFileSync('scripts/domain/production-provider.mjs', 'utf8');
+  expect(provider).toContain("allowPayosWaiver: env.CONFIRM_PAYOS_OWNER_WAIVER === 'true'");
+});

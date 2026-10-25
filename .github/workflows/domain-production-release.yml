@@ -24,7 +24,11 @@ on:
         type: string
         required: true
       confirm_staging_acceptance:
-        description: Real Google, OTP, sessions, sandbox PayOS, user/mobile/PWA and rollback acceptance are evidenced
+        description: Staging checks are evidenced; PayOS may be explicitly owner-waived with the separate confirmation
+        type: boolean
+        default: false
+      confirm_payos_owner_waiver:
+        description: Owner explicitly accepts existing production PayOS without repeating settlement; inspect the waiver evidence before approval
         type: boolean
         default: false
       confirm_production:
@@ -75,6 +79,7 @@ jobs:
           STAGING_RUN_ID: ${{ inputs.staging_run_id }}
           CERTIFICATION_RUN_ID: ${{ inputs.certification_run_id }}
           STAGING_ACCEPTANCE_JSON: ${{ inputs.staging_acceptance_json }}
+          CONFIRM_PAYOS_OWNER_WAIVER: ${{ inputs.confirm_payos_owner_waiver }}
           CONFIRM_PRODUCTION: ${{ inputs.confirm_production }}
           CONFIRM_STAGING_ACCEPTANCE: ${{ inputs.confirm_staging_acceptance }}
           GH_TOKEN: ${{ github.token }}

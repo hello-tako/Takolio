@@ -151,7 +151,8 @@ export const productionProvider = {
     const staging = await evidence(env.STAGING_RUN_ID, sha, 'domain-staging-release.yml', 'domain-staging-release', 'receipt.json');
     let acceptance;
     try { acceptance = JSON.parse(env.STAGING_ACCEPTANCE_JSON); } catch { throw new Error('Structured public staging acceptance required'); }
-    acceptance = verifyStagingAcceptance(acceptance, staging.receipt, { sha, runId: staging.proof.id });
+    acceptance = verifyStagingAcceptance(acceptance, staging.receipt, { sha, runId: staging.proof.id,
+      allowPayosWaiver: env.CONFIRM_PAYOS_OWNER_WAIVER === 'true' });
     const certification = await evidence(env.CERTIFICATION_RUN_ID, sha, 'production-certify.yml', 'production-certification', 'release-manifest.json');
     const certified = verifyProductionCertification(certification.receipt, sha);
     const schema = migrationManifest(process.cwd(), sha);
