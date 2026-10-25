@@ -87,11 +87,16 @@ self.addEventListener('fetch', (event) => {
     url.pathname.startsWith('/takolio/') ||
     url.pathname.startsWith('/assets/')
   ) {
+    // Recovery can serve the SPA shell at a missing chunk URL; never retain it as code.
+    const expectedType = /\.m?js$/i.test(url.pathname)
+      ? /^(?:text|application)\/(?:java|ecma)script(?:;|$)/i
+      : /\.css$/i.test(url.pathname) ? /^text\/css(?:;|$)/i : null;
+    const usable = (response) => response && (!expectedType || expectedType.test(response.headers.get('Content-Type') || ''));
     event.respondWith(
       caches.match(request).then((cached) => {
-        if (cached) return cached;
+        if (usable(cached)) return cached;
         return fetch(request).then((networkResponse) => {
-          if (networkResponse && networkResponse.status === 200) {
+          if (networkResponse && networkResponse.status === 200 && usable(networkResponse)) {
             const copy = networkResponse.clone();
             return caches.open(CACHE_NAME)
               .then((cache) => cache.put(request, copy))

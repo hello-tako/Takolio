@@ -1,3 +1,15 @@
+# ADR-TAKOLIO-004: reject poisoned static cache and tolerate transient audit reads - 2026-10-26 JST
+
+**Status:** accepted narrow release repair. Production Chrome reproduced module MIME failures; Cache Storage contained four JavaScript URLs with `text/html` in the f5895354 cache after same-SHA ON/OFF recovery. Current network assets are valid JavaScript. Production observation 40238763799 also failed on Cloudflare HTTP500/code10500 page2; recovery equality falsely rejected reordered custom domains. Read-only audit40239761525 confirmed identical domain membership/content.
+
+**Decision:** validate JavaScript/CSS MIME before serving or storing static cache responses; refetch invalid cache entries and replace only with valid content. Preserve release cache naming, activation/client refresh, origin bypass, navigation and offline data. Bound retries to three attempts for transient HTTP read failures only (including the fixed read-only ledger query); retain pagination completeness and sanitized errors. Compare domain/DNS/route inventories by sorted stable identity while retaining every entry, duplicate and full projected metadata. Worker/operational/ledger comparisons remain strict.
+
+**Compatibility:** no schema, application API, authentication, payment, dependency or infrastructure configuration changes. Existing clients receive a new release cache; poisoned entries can also recover within one cache. Invalid offline JavaScript fails rather than executing HTML. Mutation requests are never retried. Same-SHA production catalog continuity remains deliberately strict; deploy a new reviewed SHA through normal CI/staging/certification/Environment review.
+
+**Verification:** runtime fetch-handler regression, transient-page retry/exhaustion/privacy cases and order/duplicate/content drift cases required, followed by full repository gates. Hosted release and production recovery remain pending until recorded separately. Original Argon checkout and private backup remain preserved.
+
+---
+
 # ADR-TAKOLIO-003: render the reviewed 3D candidate as lightweight illustrations - 2026-10-16 JST
 
 **Status:** accepted implementation scope after operator feedback on the genuine Blender candidate. Design acceptance is provisional; premium production approval, concept fidelity and legal clearance are not asserted.

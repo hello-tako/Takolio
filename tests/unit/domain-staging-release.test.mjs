@@ -104,3 +104,18 @@ it('rejects a recovery receipt for production or another workflow source', async
   }
   expect(() => validateRecoveryContext(context, { ...env, GITHUB_SHA: 'b'.repeat(40) })).toThrow('canonical staging');
 });
+
+it.each(['customDomains', 'dns', 'routes'])('ignores only %s inventory ordering; retains exact membership and content', (key) => {
+  const before = { worker: {}, operational: {}, customDomains: [], dns: [], routes: [], ledger: { version: '0045.sql', names: ['0045.sql'] } };
+  before[key] = [{ id: 'a', hostname: 'first', service: 'frigo' }, { id: 'b', hostname: 'second', service: 'frigo' }];
+  const after = structuredClone(before);
+  after[key].reverse();
+  expect(() => unchangedAudit(before, after)).not.toThrow();
+  expect(before[key].map((entry) => entry.id)).toEqual(['a', 'b']);
+  after[key][0].service = 'other';
+  expect(() => unchangedAudit(before, after)).toThrow(key);
+  after[key] = [structuredClone(before[key][0]), structuredClone(before[key][0])];
+  expect(() => unchangedAudit(before, after)).toThrow(key);
+  after[key] = [structuredClone(before[key][0])];
+  expect(() => unchangedAudit(before, after)).toThrow(key);
+});
