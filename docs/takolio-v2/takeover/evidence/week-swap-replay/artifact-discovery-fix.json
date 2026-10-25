@@ -1,0 +1,7 @@
+{
+  "action": "rename generated historical test snapshot to non-discoverable .txt; source/tests/config unchanged",
+  "before": ".artifacts/takeover/wkd02/backend/week-replay.refined.test.ts",
+  "after": ".artifacts/takeover/wkd02/backend/week-replay.refined.test.ts.txt",
+  "sha256": "ff69865998e5f8edf63dcc004fb7cf8fe7307f050513dbab61b0f1678dfbdbc5",
+  "bytes": 17746
+}

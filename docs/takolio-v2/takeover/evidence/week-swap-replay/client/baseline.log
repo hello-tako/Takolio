@@ -1,0 +1,47 @@
+
+ RUN  v4.1.12 [WORKTREE]
+
+ ❯ tests/unit/week-swap-client.test.ts (2 tests | 2 failed) 605ms
+     × durably retains the exact committed request after TypeError: body lost, including reload 590ms
+     × durably retains the exact committed request after AbortError: body lost, including reload 15ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/week-swap-client.test.ts > keyed Week swap successful-body transport loss > durably retains the exact committed request after TypeError: body lost, including reload
+AssertionError: promise rejected "TypeError: body lost" instead of resolving
+ ❯ tests/unit/week-swap-client.test.ts:60:71
+     58|       const fetchMock = vi.fn().mockResolvedValue(response);
+     59|       vi.stubGlobal('fetch', fetchMock);
+     60|       await expect(client.api.swapMeal('plan-a', 'meal-a', 'recipe-a')…
+       |                                                                       ^
+     61|       const [op] = client.sync.getPendingOps();
+     62|       const [path, options] = fetchMock.mock.calls[0] as [string, Requ…
+
+Caused by: TypeError: body lost
+ ❯ tests/unit/week-swap-client.test.ts:54:12
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/unit/week-swap-client.test.ts > keyed Week swap successful-body transport loss > durably retains the exact committed request after AbortError: body lost, including reload
+AssertionError: promise rejected "DOMException{ stack: 'AbortError: bo…' }" instead of resolving
+ ❯ tests/unit/week-swap-client.test.ts:60:71
+     58|       const fetchMock = vi.fn().mockResolvedValue(response);
+     59|       vi.stubGlobal('fetch', fetchMock);
+     60|       await expect(client.api.swapMeal('plan-a', 'meal-a', 'recipe-a')…
+       |                                                                       ^
+     61|       const [op] = client.sync.getPendingOps();
+     62|       const [path, options] = fetchMock.mock.calls[0] as [string, Requ…
+
+Caused by: AbortError: body lost
+ ❯ tests/unit/week-swap-client.test.ts:54:40
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 20, INDEX_SIZE_ERR: 1, DOMSTRING_SIZE_ERR: 2, HIERARCHY_REQUEST_ERR: 3, WRONG_DOCUMENT_ERR: 4, INVALID_CHARACTER_ERR: 5, NO_DATA_ALLOWED_ERR: 6, NO_MODIFICATION_ALLOWED_ERR: 7, NOT_FOUND_ERR: 8, NOT_SUPPORTED_ERR: 9, INUSE_ATTRIBUTE_ERR: 10, INVALID_STATE_ERR: 11, SYNTAX_ERR: 12, INVALID_MODIFICATION_ERR: 13, NAMESPACE_ERR: 14, INVALID_ACCESS_ERR: 15, VALIDATION_ERR: 16, TYPE_MISMATCH_ERR: 17, SECURITY_ERR: 18, NETWORK_ERR: 19, ABORT_ERR: 20, URL_MISMATCH_ERR: 21, QUOTA_EXCEEDED_ERR: 22, TIMEOUT_ERR: 23, INVALID_NODE_TYPE_ERR: 24, DATA_CLONE_ERR: 25 }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed (2)
+   Start at  05:40:55
+   Duration  798ms (transform 458ms, setup 22ms, import 12ms, tests 605ms, environment 0ms)
+

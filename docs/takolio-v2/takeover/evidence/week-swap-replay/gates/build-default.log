@@ -1,0 +1,104 @@
+
+> frigo@0.1.0 build [WORKTREE]
+> vite build && vite build -c vite.admin.config.ts && tsc -p tsconfig.worker.json
+
+vite v6.4.4 building for production...
+transforming...
+✓ 2579 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/client/index.html                                        2.66 kB │ gzip:  1.04 kB
+dist/client/assets/index-Y0loy0bw.css                       236.21 kB │ gzip: 38.45 kB
+dist/client/assets/feature-DcGAzR1_.js                        0.08 kB │ gzip:  0.10 kB │ map:     0.29 kB
+dist/client/assets/useFamilyPreferences-CeHOrriP.js           0.37 kB │ gzip:  0.28 kB │ map:     1.14 kB
+dist/client/assets/Card-B1Ptnesd.js                           0.41 kB │ gzip:  0.32 kB │ map:     0.97 kB
+dist/client/assets/motion-CHo8dD6B.js                         0.45 kB │ gzip:  0.32 kB │ map:     4.72 kB
+dist/client/assets/legacy-nav-indicator-t3NLt07R.js           0.46 kB │ gzip:  0.34 kB │ map:     0.77 kB
+dist/client/assets/AccountPage-ChONIGup.js                    0.49 kB │ gzip:  0.33 kB │ map:     1.28 kB
+dist/client/assets/KitchenDetailPage-fh1KAhbb.js              0.52 kB │ gzip:  0.34 kB │ map:     1.27 kB
+dist/client/assets/TakoMascot-DWQsc1vP.js                     0.63 kB │ gzip:  0.46 kB │ map:     1.87 kB
+dist/client/assets/recipe-favorites-api-BRUzURKu.js           0.67 kB │ gzip:  0.43 kB │ map:     2.09 kB
+dist/client/assets/format-zRZ7DBjT.js                         0.71 kB │ gzip:  0.43 kB │ map:     2.88 kB
+dist/client/assets/WeekWorkspace-BMcsWTKe.js                  0.85 kB │ gzip:  0.58 kB │ map:     2.31 kB
+dist/client/assets/CookingCompletePage-DA8N22-k.js            0.96 kB │ gzip:  0.60 kB │ map:     1.56 kB
+dist/client/assets/WeekSetupChoices-C3gTV70e.js               1.59 kB │ gzip:  0.75 kB │ map:     3.97 kB
+dist/client/assets/AsyncState-DUndEnz7.js                     1.65 kB │ gzip:  0.88 kB │ map:     3.47 kB
+dist/client/assets/recipe-media-owfFASKo.js                   1.68 kB │ gzip:  0.87 kB │ map:     6.33 kB
+dist/client/assets/family-preferences-jk932fVb.js             1.72 kB │ gzip:  0.86 kB │ map:     5.37 kB
+dist/client/assets/WeekSettingsPage-Q4Ht9-cQ.js               1.73 kB │ gzip:  0.94 kB │ map:     4.13 kB
+dist/client/assets/KitchenHeader-BKnBctFp.js                  1.84 kB │ gzip:  0.84 kB │ map:     4.54 kB
+dist/client/assets/WeekGeneratingPage-3JfAwYZn.js             2.00 kB │ gzip:  1.19 kB │ map:     4.97 kB
+dist/client/assets/inventory-quantity-B96CGpvo.js             2.03 kB │ gzip:  0.86 kB │ map:     5.10 kB
+dist/client/assets/meal-planning-DsfLQwJp.js                  2.55 kB │ gzip:  1.14 kB │ map:    10.65 kB
+dist/client/assets/FamilySharingPage-lzwm0aNl.js              2.65 kB │ gzip:  1.19 kB │ map:     4.99 kB
+dist/client/assets/MealSwapSheet-BBD3Q2wS.js                  2.71 kB │ gzip:  1.36 kB │ map:     7.15 kB
+dist/client/assets/TopBar-CgkAJDep.js                         2.95 kB │ gzip:  1.11 kB │ map:     6.46 kB
+dist/client/assets/NotificationsPage-BB5AvcTK.js              2.99 kB │ gzip:  1.41 kB │ map:     6.68 kB
+dist/client/assets/PrivacyDataPage-CRtY7aT9.js                3.14 kB │ gzip:  1.35 kB │ map:     5.43 kB
+dist/client/assets/LandingPage-CPqIm0h-.js                    3.49 kB │ gzip:  1.61 kB │ map:     7.66 kB
+dist/client/assets/RecipeMedia-FUKO5N8h.js                    3.57 kB │ gzip:  1.81 kB │ map:    11.46 kB
+dist/client/assets/NotificationPreferencesPage-B3It8m1i.js    3.79 kB │ gzip:  1.85 kB │ map:     8.90 kB
+dist/client/assets/SettingsPage-DRHYBnjk.js                   3.82 kB │ gzip:  1.79 kB │ map:     8.48 kB
+dist/client/assets/inventory-truth-BHprnlBW.js                3.88 kB │ gzip:  1.68 kB │ map:    11.89 kB
+dist/client/assets/primitives-M-meggAy.js                     4.81 kB │ gzip:  1.86 kB │ map:    16.94 kB
+dist/client/assets/ReviewSource-B-WLhUD2.js                   4.88 kB │ gzip:  1.98 kB │ map:    12.84 kB
+dist/client/assets/ProfilePage-C2vJWd3J.js                    5.27 kB │ gzip:  2.33 kB │ map:    12.21 kB
+dist/client/assets/WeekSetupPage-iLxmypcg.js                  5.29 kB │ gzip:  2.29 kB │ map:    13.87 kB
+dist/client/assets/useCookingStore-DqHxGiCG.js                5.42 kB │ gzip:  2.38 kB │ map:    18.25 kB
+dist/client/assets/useWeekStore-CNOK0XDZ.js                   5.59 kB │ gzip:  1.86 kB │ map:    18.23 kB
+dist/client/assets/ReconciliationPage-By-bCMEq.js             5.77 kB │ gzip:  2.54 kB │ map:    14.23 kB
+dist/client/assets/MealDetailPage-Ca8mnKO4.js                 5.98 kB │ gzip:  2.46 kB │ map:    15.23 kB
+dist/client/assets/planner-http-BNOOtuI7.js                   6.19 kB │ gzip:  2.41 kB │ map:    23.67 kB
+dist/client/assets/FoodPreferencesPage-CLeaC_pq.js            6.54 kB │ gzip:  2.40 kB │ map:    16.80 kB
+dist/client/assets/WeekShoppingPage-Cmcepyvs.js               6.69 kB │ gzip:  2.67 kB │ map:    19.15 kB
+dist/client/assets/scan-errors-B6PpMyIn.js                    7.24 kB │ gzip:  3.06 kB │ map:    18.16 kB
+dist/client/assets/composition-D8iznrH5.js                    7.96 kB │ gzip:  3.45 kB │ map:    20.36 kB
+dist/client/assets/CookingReview-DYYK_Ydl.js                  7.96 kB │ gzip:  3.16 kB │ map:    21.73 kB
+dist/client/assets/PlanningSettingsPage-Co5Qlt0q.js           7.98 kB │ gzip:  2.76 kB │ map:    24.45 kB
+dist/client/assets/FavoritesCollection-DE76SoiP.js           11.49 kB │ gzip:  4.31 kB │ map:    35.51 kB
+dist/client/assets/RecipesPage-C-rp29nt.js                   12.41 kB │ gzip:  4.80 kB │ map:    37.24 kB
+dist/client/assets/WeekDashboardPage-CTHUK-Bg.js             12.51 kB │ gzip:  4.70 kB │ map:    32.74 kB
+dist/client/assets/HomePage-D9gCrqjr.js                      12.56 kB │ gzip:  4.61 kB │ map:    40.31 kB
+dist/client/assets/RecipeCard-DaNxBWpa.js                    13.46 kB │ gzip:  2.83 kB │ map:    28.29 kB
+dist/client/assets/ScanResultPage-DX4KCjlN.js                13.56 kB │ gzip:  4.94 kB │ map:    41.78 kB
+dist/client/assets/ScanPage-CZTGod-r.js                      13.61 kB │ gzip:  5.22 kB │ map:    39.81 kB
+dist/client/assets/ReceiptReviewPage-CE8ocCOA.js             13.85 kB │ gzip:  4.71 kB │ map:    40.42 kB
+dist/client/assets/IngredientDetailPage-zBYaqn4p.js          16.72 kB │ gzip:  5.08 kB │ map:    41.87 kB
+dist/client/assets/culinary-visuals-Sp_ct_k7.js              16.87 kB │ gzip:  5.00 kB │ map:    40.83 kB
+dist/client/assets/CookingModePage-C-EIsLMp.js               18.47 kB │ gzip:  6.45 kB │ map:    54.44 kB
+dist/client/assets/RecipeDetailPage-DLoc1R0p.js              19.11 kB │ gzip:  6.24 kB │ map:    49.67 kB
+dist/client/assets/ingredient-images-DMUMQtkM.js             20.22 kB │ gzip:  4.97 kB │ map:    19.75 kB
+dist/client/assets/OnboardingPage-C0fJKkFO.js                20.47 kB │ gzip:  6.71 kB │ map:    56.72 kB
+dist/client/assets/InventoryPage-BfE_SQo0.js                 22.15 kB │ gzip:  7.69 kB │ map:    73.77 kB
+dist/client/assets/ShoppingPage-D2Qb8Rcs.js                  26.25 kB │ gzip:  8.14 kB │ map:    76.33 kB
+dist/client/assets/PlusPaywallPage-BJ2wdVWk.js               27.59 kB │ gzip:  8.09 kB │ map:    69.20 kB
+dist/client/assets/Button-C5sdh0So.js                        29.01 kB │ gzip:  9.34 kB │ map:   152.63 kB
+dist/client/assets/vendor-icons-Bte6gQqk.js                  33.93 kB │ gzip:  7.34 kB │ map:    90.38 kB
+dist/client/assets/AuthPage-CHL8NWiz.js                      36.10 kB │ gzip: 10.63 kB │ map:   112.31 kB
+dist/client/assets/vendor-query-QBjVy4CQ.js                  42.42 kB │ gzip: 12.92 kB │ map:   155.73 kB
+dist/client/assets/family-meal-planning-api-8QLgSUg2.js      46.72 kB │ gzip: 14.30 kB │ map:    88.21 kB
+dist/client/assets/PlannerPage-Dd_85mnm.js                   62.17 kB │ gzip: 19.53 kB │ map:   213.42 kB
+dist/client/assets/react-CAvjxZ0Z.js                        127.21 kB │ gzip: 41.57 kB │ map:   712.36 kB
+dist/client/assets/vendor-react-8_e6pVwi.js                 181.96 kB │ gzip: 59.96 kB │ map:   794.35 kB
+dist/client/assets/index-COJZopjI.js                        357.87 kB │ gzip: 94.34 kB │ map: 1,104.63 kB
+✓ built in 6.47s
+vite v6.4.4 building for production...
+transforming...
+
+/admin/fonts/nunito-vietnamese-wght-normal.woff2 referenced in /admin/fonts/nunito-vietnamese-wght-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/admin/fonts/nunito-latin-ext-wght-normal.woff2 referenced in /admin/fonts/nunito-latin-ext-wght-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/admin/fonts/nunito-latin-wght-normal.woff2 referenced in /admin/fonts/nunito-latin-wght-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+✓ 1934 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/admin/admin/index.html                                   0.64 kB │ gzip:  0.36 kB
+dist/admin/admin/favicon.svg                                  1.18 kB │ gzip:  0.56 kB
+dist/admin/admin/fonts/OFL.txt                                4.49 kB │ gzip:  1.98 kB
+dist/admin/admin/fonts/nunito-vietnamese-wght-normal.woff2   13.10 kB
+dist/admin/admin/fonts/nunito-latin-ext-wght-normal.woff2    35.59 kB
+dist/admin/admin/fonts/nunito-latin-wght-normal.woff2        39.13 kB
+dist/admin/admin/assets/admin-BDxB3-0z.css                   20.97 kB │ gzip:  5.55 kB
+dist/admin/admin/assets/admin-CU-KEW-B.js                   336.94 kB │ gzip: 99.29 kB
+✓ built in 1.94s

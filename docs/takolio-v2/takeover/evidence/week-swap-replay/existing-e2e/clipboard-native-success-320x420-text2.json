@@ -1,0 +1,21 @@
+{
+  "state": "clipboard-native-success",
+  "viewport": {
+    "width": 320,
+    "height": 420
+  },
+  "rootTextScale": 2,
+  "metrics": {
+    "width": 320,
+    "scrollWidth": 320,
+    "brokenImages": [],
+    "dialogContainsFocus": true
+  },
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious"
+    }
+  ]
+}

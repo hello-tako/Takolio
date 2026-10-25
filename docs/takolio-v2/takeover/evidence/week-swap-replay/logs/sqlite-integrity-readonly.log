@@ -1,0 +1,13 @@
+{
+  "result": "PASS",
+  "boundary": "underlying local SQLite read-only; D1 API rejects integrity_check with SQLITE_AUTH",
+  "databaseFile": "5613715fdf2b2b7614269934b4f772d652c6ece31290a9bf16c289e4cca811ef.sqlite",
+  "databaseSha256": "caee71c92549c19f43a68a5a30586d1a18aaa843eb31f1438aef2631ad0aaa48",
+  "unchanged": true,
+  "integrity_check": [
+    [
+      "ok"
+    ]
+  ],
+  "foreign_key_check": []
+}

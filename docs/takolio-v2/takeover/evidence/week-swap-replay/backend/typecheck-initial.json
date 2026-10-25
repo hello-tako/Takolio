@@ -1,0 +1,12 @@
+{
+  "label": "typecheck-initial",
+  "argv": [
+    "pnpm",
+    "typecheck"
+  ],
+  "cwd": "[WORKTREE]",
+  "started_at": "2026-10-24T20:43:11.006722+00:00",
+  "wall_seconds": 16.013,
+  "exit_code": 2,
+  "node": "/opt/homebrew/opt/node@24/bin/node"
+}

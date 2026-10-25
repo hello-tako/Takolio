@@ -89,3 +89,8 @@ UI10 pending shopping now reflects a durably accepted request and never adds gue
 ## WKD02 activated - 2026-10-25 JST
 
 WKD01 implementationcc426b04/documentation2cde9235 verified; post-docs scope PASS. ADR-069 activates bounded keyed Week swap replay/current-plan response and explicit conflict recovery. Runtime/schema/testing still in progress. Finite UI plan remains locally bounded complete;38owner reviews and device/media/Safari/screenreader/hosted acceptance PENDING. No production operation.
+
+
+## WKD02 follow-up supersession - 2026-10-25 JST
+
+UI10 keyed swap replay now preserves laterB after lost responseA,reload and retry. Exact409 stays visible; cancel retains bytes; confirmed reload removes only the approved exact request. Full420files/9430tests,focused/backend/client,local D1,lint/types/migrations/default/paired-ON builds PASS;44PNG retained. Source freezes1233unchanged. Audit remains0low/3moderate/2high;failed attempts and26verbatim evidence whitespace warnings disclosed in WKD02_WEEK_SWAP_REPLAY.md. Finite UI01-UI15+C12/C13 plus CLI01/DEP01/CAT01/SCAN01/WKD01/WKD02 locally bounded complete. All38owner reviews remain PENDING;media/device/Safari/nativezoom/screenreader/live/hosted acceptance and dependency remediation remain. Recovery has ten authorized platform-file deltas,privately verified. No production operation.

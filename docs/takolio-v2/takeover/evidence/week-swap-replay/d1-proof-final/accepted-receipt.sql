@@ -1,0 +1,1 @@
+INSERT INTO week_swap_receipts(id,household_id,actor_id,plan_id,meal_id,client_key,fingerprint,created_at) VALUES ('wkd02-receipt','cat01-d1-home','cat01-d1-owner','wkd02-plan','wkd02-meal','wkd02-key-A','recipe-A','2030-01-02');

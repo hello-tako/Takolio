@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "pnpm",
+    "typecheck"
+  ],
+  "cwd": "[WORKTREE]",
+  "startedUtc": "2026-10-24T20:51:50.133662+00:00",
+  "elapsedSeconds": 18.373,
+  "exitCode": 0,
+  "log": "[WORKTREE]/.artifacts/takeover/wkd02/client/client-typecheck-final.log",
+  "sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e"
+}

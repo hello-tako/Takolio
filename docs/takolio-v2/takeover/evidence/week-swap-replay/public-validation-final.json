@@ -1,0 +1,19 @@
+{
+  "result": "PASS",
+  "published_entries": 225,
+  "frozen_source_entries": 1233,
+  "targeted_browser_png": 18,
+  "all_png": 44,
+  "raw_and_public_hashes_match": true,
+  "source_and_agent_freezes_match": true,
+  "private_path_literals": [],
+  "credential_literals": [],
+  "removed_dictionary_keys": [
+    "scripts/t17/migrate-semantic-tokens.mjs",
+    "src/web/features/auth/ForgotPasswordMode.tsx",
+    "src/web/styles/frigo-tokens.css",
+    "src/web/styles/takosan-tokens.css",
+    "src/worker/utils/password.ts"
+  ],
+  "limits": "credential scan is bounded pattern/key review,not a production secret scanner"
+}

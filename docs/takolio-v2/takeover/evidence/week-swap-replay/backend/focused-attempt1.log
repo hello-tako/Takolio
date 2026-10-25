@@ -1,0 +1,82 @@
+
+> frigo@0.1.0 test [WORKTREE]
+> vitest run tests/integration/week-swap-replay.test.ts tests/integration/week-swap-schema.test.ts --maxWorkers=1
+
+
+ RUN  v4.1.12 [WORKTREE]
+
+stderr | tests/integration/week-swap-replay.test.ts > WKD02 actual Hono + SQLite keyed swap replay > rolls back receipt and all plan rows on receipt-stage batch failure
+Failed swapping weekly meal:
+
+stderr | tests/integration/week-swap-replay.test.ts > WKD02 actual Hono + SQLite keyed swap replay > rolls back receipt and all plan rows on children-stage batch failure
+Failed swapping weekly meal:
+
+ ❯ tests/integration/week-swap-replay.test.ts (19 tests | 3 failed) 2153ms
+     × does not resurrect deleted plans or expose receipts to another household or removed member 109ms
+     × rolls back receipt and all plan rows on receipt-stage batch failure 101ms
+     × rolls back receipt and all plan rows on children-stage batch failure 106ms
+ ❯ tests/integration/week-swap-schema.test.ts (6 tests | 1 failed) 591ms
+     × upgrades all populated prior tables without changing a row or inventing receipts 107ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/week-swap-replay.test.ts > WKD02 actual Hono + SQLite keyed swap replay > does not resurrect deleted plans or expose receipts to another household or removed member
+AssertionError: expected 403 to be 401 // Object.is equality
+
+- Expected
++ Received
+
+- 401
++ 403
+
+ ❯ tests/integration/week-swap-replay.test.ts:156:50
+    154|     db.execute('UPDATE sessions_v2 SET household_id = ?, user_id = ? W…
+    155|     db.execute('DELETE FROM household_members WHERE household_id = ? A…
+    156|     expect((await swap(A, 'swap-key-A')).status).toBe(401);
+       |                                                  ^
+    157|     db.seed(`INSERT INTO household_members(id,household_id,user_id,rol…
+    158|     db.execute('DELETE FROM meal_plans WHERE id = ?', [PLAN]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  tests/integration/week-swap-replay.test.ts > WKD02 actual Hono + SQLite keyed swap replay > rolls back receipt and all plan rows on receipt-stage batch failure
+ FAIL  tests/integration/week-swap-replay.test.ts > WKD02 actual Hono + SQLite keyed swap replay > rolls back receipt and all plan rows on children-stage batch failure
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/integration/week-swap-replay.test.ts:173:93
+    171|     expect(state()).toEqual(before);
+    172|     expect(db.query('SELECT * FROM week_swap_receipts')).toEqual([]);
+    173|     expect(puts.every((key) => key.startsWith('rl_swap:') || key.start…
+       |                                                                                             ^
+    174|   });
+    175|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  tests/integration/week-swap-schema.test.ts > WKD02 additive immutable Week swap acceptance schema > upgrades all populated prior tables without changing a row or inventing receipts
+LotCommandError: ADOPTION_REQUIRED
+ ❯ assertAdoptionAdmission packages/db/src/inventory-lot-commands.ts:479:11
+    477|   if (snapshot.lots.some(({ legacyItemId }) => legacyItemId === null)
+    478|     || snapshot.legacyRows.some(({ id }) => !representedRows.has(id)))…
+    479|     throw new LotCommandError('ADOPTION_REQUIRED');
+       |           ^
+    480|   }
+    481|   if (snapshot.activationCommandId === null
+ ❯ executeInventoryLotCommand packages/db/src/inventory-lot-commands.ts:689:3
+ ❯ tests/integration/week-swap-schema.test.ts:32:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  4 failed | 21 passed (25)
+   Start at  05:45:22
+   Duration  3.67s (transform 478ms, setup 27ms, import 604ms, tests 2.74s, environment 0ms)
+
+ ELIFECYCLE  Test failed. See above for more details.

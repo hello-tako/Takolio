@@ -1,3 +1,19 @@
+## Takolio V2 - WKD02 verified local result (2026-10-25 JST)
+
+Status: LOCAL_WKD02_VERIFIED; ADR-069. Parent `4c5f8ce85b90edfb9d8f6f8183014471947a3c72`; official main observed read-only `90b94129113b41e34701d99f51175cfa81cb73de`. Implementation checkpoint prepared; bind verified SHA in the following documentation checkpoint.
+
+Changed: immutable target-scoped keyed swap receipt in additive0045, first in existing atomic legacy/dual batch. ReplayA afterB returns currentB without plan/receipt/cache writes; different intent exact409. Client durably retains exact request after response loss. Existing banner/dialog offers explicit confirmed recovery; cancel/failure/session change retains bytes. Keyless/alternatives/inventory/security compatibility preserved; distinct fresh commands retain full-snapshot/CAS ceiling.
+
+Verification: full `pnpm test --maxWorkers=1 --testTimeout=15000`420files/9430tests PASS, reported1141.80s/wall1143.22s,Node24.16.0. Backend6/114,client6/251,response-loss6cases,existing Playwright2tests PASS. Lint/types/migrations/default and actual paired-ON builds PASS.1233frozen hashes unchanged. Actual local D1 preserves94tables/9920old rows,zero backfill; immutable attacks/rollback/cascades PASS. Browser4flows at320/1440,44PNG total; zero page errors/external requests/overflow/broken images. Static independent reviews no concrete finding. Exact commands/failures: report/evidence below.
+
+Failures retained: baseline stale replay/transport RED, intermediate fixture/type errors,D1 unsupported pragma,browser selector,validator manifest shape,first full generated-snapshot discovery failure. Corrected suite changed only ignored snapshot suffix,not source/assertions/config. Audit FAIL exit1:0low/3moderate/2high,Hono/Zod/Undici. Source/docs whitespace PASS;26verbatim evidence warnings(22EOF blank lines/4trailing spaces)retained.
+
+Recovery precommit reverified PASS_WITH_AUTHORIZED_PLATFORM_DRIFT: snapshot22763regular/772symlinks,116Git baseline files exact; source22772regular/772symlinks. Only ten authorized .DS_Store deltas,separately copied/verified; other bytes/modes/links,HEAD/index/status exact. Source index/stored manifest unchanged during check; private locations unpublished. Precommit scope PASS:9112parent/5782protected-main paths,54salvage,69Argon/12asset/38screen rows unchanged;115prior file decisions preserved,38owner reviews PENDING.
+
+Report:`docs/takolio-v2/takeover/WKD02_WEEK_SWAP_REPLAY.md`; hash-bound evidence:`evidence/week-swap-replay/`. Next:implementation checkpoint/scope,then SHA-bound documentation checkpoint/post-docs scope. Finite UI01-UI15+C12/C13 and CLI01/DEP01/CAT01/SCAN01/WKD01/WKD02 locally bounded complete. Remaining owner/media/device/Safari/native zoom/screenreader/live/hosted acceptance and separate dependency remediation. No push/merge/deploy/remote migration/production action. Historical content follows unchanged.
+
+---
+
 ## Takolio V2 - WKD02 keyed Week swap replay (2026-10-25 JST)
 
 Status: LOCAL_WKD02_IN_PROGRESS; ADR-069 accepted. WKD01 verified implementation `cc426b04baa84cb4bb3a861b0d606764675b4d20`, documentation `2cde9235f5088b416fbe74935a7bcd801fa8c2ed`; post-docs scope PASS. Full416files/9319tests, lint/types/migrations/default/paired-ON builds PASS. Audit remains FAIL(0low/3moderate/2high); ten verbatim-log whitespace warnings retained.

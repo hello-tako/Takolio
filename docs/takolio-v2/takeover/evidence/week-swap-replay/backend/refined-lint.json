@@ -1,0 +1,12 @@
+{
+  "label": "refined-lint",
+  "argv": [
+    "pnpm",
+    "lint"
+  ],
+  "cwd": "[WORKTREE]",
+  "started_at": "2026-10-24T20:50:21.071385+00:00",
+  "wall_seconds": 8.836,
+  "exit_code": 0,
+  "node": "/opt/homebrew/opt/node@24/bin/node"
+}

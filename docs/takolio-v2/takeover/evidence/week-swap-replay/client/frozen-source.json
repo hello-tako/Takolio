@@ -1,0 +1,26 @@
+[
+  {
+    "path": "src/web/services/week.ts",
+    "sha256": "ec4ecce722bae7ddd86d3b823838311070ba6a12fd60767da84dbb5f05a65664"
+  },
+  {
+    "path": "src/web/services/api.ts",
+    "sha256": "6fdff41fb237164bb92686170bdde08e9aebb4c967e825acb4e7e344e74e536e"
+  },
+  {
+    "path": "src/web/lib/sync.ts",
+    "sha256": "0972e8f0bbbb392b5148a9f02aa0f5387c434ac60cfe9b1625a8ab245eb8f17b"
+  },
+  {
+    "path": "src/web/components/common/OfflineBanner.tsx",
+    "sha256": "93d59ae5e434246d11452fabcf147a6e8d6b03869077c1f67963d5b97f229bd6"
+  },
+  {
+    "path": "tests/unit/week-swap-client.test.ts",
+    "sha256": "c1ebda50d25fcd1ce41c218b2fa70e91042da2a73d17f50c2a622f99eda51e0a"
+  },
+  {
+    "path": "tests/unit/offline-banner.test.tsx",
+    "sha256": "c8d622bcaffef0b0838f1d30bc2995dc576b0bbacd053fa87996c816a176bdd6"
+  }
+]

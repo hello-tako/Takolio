@@ -1,3 +1,4 @@
+import type { D1PreparedStatement } from '../../../packages/db/src';
 import { WeekReadRepository } from '../../../packages/db/src/week-read-repository';
 import { WeekDatabaseError, readWeekPlan, serializeMealPlanSnapshot } from '../services/week-read';
 export { serializeMealPlanSnapshot, parseMealPlanSnapshot, normalizeWeekDayOfWeek } from '../services/week-read';
@@ -97,6 +98,8 @@ weekRoutes.onError((err, c) => {
 });
 
 const WeekSwapSchema = z.object({
+  commandId: z.string().trim().regex(/^[A-Za-z0-9._:-]{8,200}$/).optional(),
+  idempotencyKey: z.string().trim().regex(/^[A-Za-z0-9._:-]{8,200}$/).optional(),
   recipeId: z.string().trim().min(1).max(160).optional(),
 });
 const WeekPlanCreateSchema = z.object({
@@ -196,12 +199,10 @@ function assertBatchSucceeded(results: any[] | undefined): void {
 }
 
 function resolveWeekCommandKey(c: any, body: { commandId?: string; idempotencyKey?: string }): string | null {
-  const headerKey = c.req.header('Idempotency-Key')?.trim();
-  const bodyKey = (body.commandId || body.idempotencyKey)?.trim();
-  if (headerKey && bodyKey && headerKey !== bodyKey) return null;
-  const key = headerKey || bodyKey;
-  if (!key) return null;
-  return /^[A-Za-z0-9._:-]{8,200}$/.test(key) ? key : null;
+  const keys = [c.req.header('Idempotency-Key'), body.commandId, body.idempotencyKey]
+    .filter((key): key is string => key !== undefined).map((key) => key.trim());
+  if (!keys.length || keys.some((key) => !/^[A-Za-z0-9._:-]{8,200}$/.test(key) || key !== keys[0])) return null;
+  return keys[0];
 }
 
 // Helper to save full relational meal plan into D1
@@ -210,7 +211,8 @@ export async function persistPlanRelational(
   plan: MealPlan,
   householdId: string,
   userId: string,
-  schemaMode: WeekSchemaMode = 'legacy'
+  schemaMode: WeekSchemaMode = 'legacy',
+  firstStatement?: D1PreparedStatement
 ): Promise<void> {
   if (!db) throw new Error('Database service unavailable');
   if (schemaMode === 'dual') await assertWeekV2Capability(db);
@@ -229,7 +231,7 @@ export async function persistPlanRelational(
     .bind(householdId, plan.id)
     .all();
   const oldIds: string[] = (oldPlans?.results || []).map((row: any) => row.id);
-  const statements: any[] = [];
+  const statements: D1PreparedStatement[] = firstStatement ? [firstStatement] : [];
 
   if (oldIds.length > 0) {
     const placeholders = oldIds.map(() => '?').join(',');
@@ -475,9 +477,9 @@ async function publishPlanCache(c: any, plan: MealPlan): Promise<void> {
   }
 }
 
-async function commitPlan(c: any, plan: MealPlan, householdId: string, userId: string): Promise<void> {
+async function commitPlan(c: any, plan: MealPlan, householdId: string, userId: string, firstStatement?: D1PreparedStatement): Promise<void> {
   const schemaMode = resolveWeekSchemaMode(c.env.WEEK_SCHEMA_MODE);
-  await persistPlanRelational(c.env.DB, plan, householdId, userId, schemaMode);
+  await persistPlanRelational(c.env.DB, plan, householdId, userId, schemaMode, firstStatement);
   await publishPlanCache(c, plan);
 }
 
@@ -847,9 +849,51 @@ weekRoutes.post('/week/plans/:id/meals/:mealId/swap', async (c) => {
   const auth = c.get('auth');
   const planId = c.req.param('id');
   const mealId = c.req.param('mealId');
-  const authority = weekRecipeAuthority(c);
-  const plan = await getMealPlan(c, planId, auth.householdId, authority);
+  const rawBody = await c.req.json().catch(() => ({}));
+  const parsedBody = WeekSwapSchema.safeParse(rawBody);
+  if (!parsedBody.success) {
+    return c.json(
+      { error: parsedBody.error.errors[0]?.message || 'Dữ liệu đổi món không hợp lệ', code: 'VALIDATION_ERROR' },
+      400
+    );
+  }
+  const body = parsedBody.data;
+  const recipeId = body.recipeId;
+  const commandKey = resolveWeekCommandKey(c, body);
+  if ((c.req.header('Idempotency-Key') !== undefined || body.commandId !== undefined || body.idempotencyKey !== undefined) && !commandKey) {
+    return c.json({ error: 'Idempotency-Key không hợp lệ hoặc không khớp', code: 'IDEMPOTENCY_CONFLICT' }, 409);
+  }
 
+  let authority: Promise<RecipeAuthoritySnapshot> | undefined;
+  const getAuthority = () => authority ??= weekRecipeAuthority(c);
+  const repository = new WeekReadRepository(c.env.DB);
+  const readOwnedPlan = () => readWeekPlan(repository, planId, auth.householdId, getAuthority);
+  const readReceipt = async () => {
+    try {
+      return await c.env.DB.prepare(`SELECT fingerprint FROM week_swap_receipts
+        WHERE household_id = ? AND plan_id = ? AND meal_id = ? AND client_key = ? LIMIT 1`)
+        .bind(auth.householdId, planId, mealId, commandKey).first<{ fingerprint: string }>();
+    } catch {
+      throw new WeekDatabaseError('Week swap receipt unavailable');
+    }
+  };
+  if (commandKey && recipeId) {
+    const owned = await repository.findPlan(planId, auth.householdId).catch(() => {
+      throw new WeekDatabaseError();
+    });
+    if (!owned) return c.json({ error: 'Thực đơn không tồn tại', code: 'NOT_FOUND' }, 404);
+    const receipt = await readReceipt();
+    if (receipt) {
+      if (receipt.fingerprint !== recipeId) {
+        return c.json({ error: 'Idempotency-Key đã được dùng cho yêu cầu đổi món khác', code: 'IDEMPOTENCY_CONFLICT' }, 409);
+      }
+      const current = await readOwnedPlan();
+      if (!current) return c.json({ error: 'Thực đơn không tồn tại', code: 'NOT_FOUND' }, 404);
+      return c.json({ plan: current, idempotentReplay: true });
+    }
+  }
+  const plan = commandKey && recipeId ? await readOwnedPlan()
+    : await readWeekPlan(repository, planId, auth.householdId, getAuthority, c.env.CACHE);
   if (!plan || plan.householdId !== auth.householdId) {
     return c.json({ error: 'Thực đơn không tồn tại', code: 'NOT_FOUND' }, 404);
   }
@@ -862,23 +906,10 @@ weekRoutes.post('/week/plans/:id/meals/:mealId/swap', async (c) => {
       break;
     }
   }
-
   if (!targetSlot) {
     return c.json({ error: 'Bữa ăn không tồn tại trong thực đơn', code: 'NOT_FOUND' }, 404);
   }
 
-  const rawBody = await c.req.json().catch(() => ({}));
-  const parsedBody = WeekSwapSchema.safeParse(rawBody);
-  if (!parsedBody.success) {
-    return c.json(
-      { error: parsedBody.error.errors[0]?.message || 'Dữ liệu đổi món không hợp lệ', code: 'VALIDATION_ERROR' },
-      400
-    );
-  }
-  const body = parsedBody.data;
-  const recipeId = body.recipeId;
-
-  // If no recipeId provided, return swap alternatives list
   if (!recipeId) {
     let inventory: any[];
     try {
@@ -887,28 +918,43 @@ weekRoutes.post('/week/plans/:id/meals/:mealId/swap', async (c) => {
       console.error('Failed loading inventory for meal alternatives:');
       return c.json({ error: 'Database service unavailable', code: 'DATABASE_UNAVAILABLE' }, 503);
     }
-    const alternatives = getSwapAlternatives(targetSlot, inventory, (await authority).list());
+    const alternatives = getSwapAlternatives(targetSlot, inventory, (await getAuthority()).list());
     return c.json({ alternatives });
   }
 
-  // Execute swap
-  const newRecipe = (await authority).findByIdOrSlug(recipeId);
+  const newRecipe = (await getAuthority()).findByIdOrSlug(recipeId);
   if (!newRecipe) {
     return c.json({ error: 'Công thức nấu ăn không tồn tại', code: 'NOT_FOUND' }, 404);
   }
 
   let inventory: any[];
   try {
-    inventory = await fetchWeekInventory(c.env.DB, auth.householdId, c.env.CACHE, auth.userId);
+    inventory = await fetchWeekInventory(c.env.DB, auth.householdId, commandKey ? undefined : c.env.CACHE, auth.userId);
   } catch (err) {
     console.error('Failed loading inventory for meal swap:');
     return c.json({ error: 'Database service unavailable', code: 'DATABASE_UNAVAILABLE' }, 503);
   }
   const updatedPlan = swapMealInPlan(plan, mealId, newRecipe, inventory);
+  const receipt = commandKey ? c.env.DB.prepare(`INSERT INTO week_swap_receipts
+    (id, household_id, actor_id, plan_id, meal_id, client_key, fingerprint, created_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)`).bind(crypto.randomUUID(), auth.householdId, auth.userId,
+    planId, mealId, commandKey, recipeId, new Date().toISOString()) : undefined;
 
+  // ponytail: distinct fresh commands still rewrite full snapshots; add shared Week revision/CAS in a separate packet.
   try {
-    await commitPlan(c, updatedPlan, auth.householdId, auth.userId);
+    await commitPlan(c, updatedPlan, auth.householdId, auth.userId, receipt);
   } catch (err) {
+    if (commandKey) {
+      const winner = await readReceipt();
+      if (winner) {
+        if (winner.fingerprint !== recipeId) {
+          return c.json({ error: 'Idempotency-Key đã được dùng cho yêu cầu đổi món khác', code: 'IDEMPOTENCY_CONFLICT' }, 409);
+        }
+        const current = await readOwnedPlan();
+        if (!current) return c.json({ error: 'Thực đơn không tồn tại', code: 'NOT_FOUND' }, 404);
+        return c.json({ plan: current, idempotentReplay: true });
+      }
+    }
     console.error('Failed swapping weekly meal:');
     return c.json({ error: 'Không thể lưu thay đổi món ăn', code: 'DATABASE_ERROR' }, 503);
   }

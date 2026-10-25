@@ -1,0 +1,182 @@
+[
+  {
+    "name": "apply-0001-0044",
+    "command": [
+      "pnpm",
+      "exec",
+      "wrangler",
+      "d1",
+      "migrations",
+      "apply",
+      "wkd02-private-local-db",
+      "--local",
+      "--config",
+      "[WORKTREE]/.artifacts/takeover/wkd02/d1-proof/wrangler-before.json",
+      "--persist-to",
+      "[WORKTREE]/.artifacts/takeover/wkd02/d1-proof/state"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 10.3,
+    "log_sha256": "9f8f1b4ec2626d073677e395fb346af468420d03120bc5129cee4a323900b306"
+  },
+  {
+    "name": "seed-populated-0044",
+    "command": [
+      "pnpm",
+      "exec",
+      "wrangler",
+      "d1",
+      "execute",
+      "wkd02-private-local-db",
+      "--local",
+      "--config",
+      "[WORKTREE]/.artifacts/takeover/wkd02/d1-proof/wrangler-before.json",
+      "--persist-to",
+      "[WORKTREE]/.artifacts/takeover/wkd02/d1-proof/state",
+      "--file",
+      "[WORKTREE]/.artifacts/takeover/wkd02/d1-proof/seed-populated-0044.sql",
+      "--json"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 1.38,
+    "log_sha256": "f4a392348fb5b6e6ed32f6c8cb2f74cb93b0d191e1759e98eaa1427ddb23b2f2"
+  },
+  {
+    "name": "table-list",
+    "command": [
+      "pnpm",
+      "exec",
+      "wrangler",
+      "d1",
+      "execute",
+      "wkd02-private-local-db",
+      "--local",
+      "--config",
+      "[WORKTREE]/.artifacts/takeover/wkd02/d1-proof/wrangler-before.json",
+      "--persist-to",
+      "[WORKTREE]/.artifacts/takeover/wkd02/d1-proof/state",
+      "--file",
+      "[WORKTREE]/.artifacts/takeover/wkd02/d1-proof/table-list.sql",
+      "--json"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 1.23,
+    "log_sha256": "0f50ab5f4efddc04c73e4a7c0951595fc08a900849d70b5c4e54ed295768844b"
+  },
+  {
+    "name": "rows-before",
+    "command": [
+      "pnpm",
+      "exec",
+      "wrangler",
+      "d1",
+      "execute",
+      "wkd02-private-local-db",
+      "--local",
+      "--config",
+      "[WORKTREE]/.artifacts/takeover/wkd02/d1-proof/wrangler-before.json",
+      "--persist-to",
+      "[WORKTREE]/.artifacts/takeover/wkd02/d1-proof/state",
+      "--file",
+      "[WORKTREE]/.artifacts/takeover/wkd02/d1-proof/rows-before.sql",
+      "--json"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 1.44,
+    "log_sha256": "cdce973097a9c28a2050a8dc383079e54b8e2c8cb8b3046390e472f4945af60c"
+  },
+  {
+    "name": "apply-0045",
+    "command": [
+      "pnpm",
+      "exec",
+      "wrangler",
+      "d1",
+      "migrations",
+      "apply",
+      "wkd02-private-local-db",
+      "--local",
+      "--config",
+      "[WORKTREE]/.artifacts/takeover/wkd02/d1-proof/wrangler-after.json",
+      "--persist-to",
+      "[WORKTREE]/.artifacts/takeover/wkd02/d1-proof/state"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 1.58,
+    "log_sha256": "720dbd193870c03bcd90fc61ea41b8da748043f5f7503ee9ff8b1159f67205f5"
+  },
+  {
+    "name": "rows-after",
+    "command": [
+      "pnpm",
+      "exec",
+      "wrangler",
+      "d1",
+      "execute",
+      "wkd02-private-local-db",
+      "--local",
+      "--config",
+      "[WORKTREE]/.artifacts/takeover/wkd02/d1-proof/wrangler-after.json",
+      "--persist-to",
+      "[WORKTREE]/.artifacts/takeover/wkd02/d1-proof/state",
+      "--file",
+      "[WORKTREE]/.artifacts/takeover/wkd02/d1-proof/rows-after.sql",
+      "--json"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 1.4,
+    "log_sha256": "1f278f16af79f0ea6edba63834478cfdcb588320693583ff4129cfa1ead99937"
+  },
+  {
+    "name": "empty-receipts",
+    "command": [
+      "pnpm",
+      "exec",
+      "wrangler",
+      "d1",
+      "execute",
+      "wkd02-private-local-db",
+      "--local",
+      "--config",
+      "[WORKTREE]/.artifacts/takeover/wkd02/d1-proof/wrangler-after.json",
+      "--persist-to",
+      "[WORKTREE]/.artifacts/takeover/wkd02/d1-proof/state",
+      "--file",
+      "[WORKTREE]/.artifacts/takeover/wkd02/d1-proof/empty-receipts.sql",
+      "--json"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 1.17,
+    "log_sha256": "fc456e0f54e14096015866a2238d62e3a3bfa6ea1bfbf1ead743a657b3e9a2c3"
+  },
+  {
+    "name": "integrity",
+    "command": [
+      "pnpm",
+      "exec",
+      "wrangler",
+      "d1",
+      "execute",
+      "wkd02-private-local-db",
+      "--local",
+      "--config",
+      "[WORKTREE]/.artifacts/takeover/wkd02/d1-proof/wrangler-after.json",
+      "--persist-to",
+      "[WORKTREE]/.artifacts/takeover/wkd02/d1-proof/state",
+      "--file",
+      "[WORKTREE]/.artifacts/takeover/wkd02/d1-proof/integrity.sql",
+      "--json"
+    ],
+    "exit_code": 1,
+    "expected_exit": 0,
+    "seconds": 1.17,
+    "log_sha256": "36466051eb409faf7c70d4b2c3ef02b98f2e489769a31a800d5a946a50ba5cac"
+  }
+]

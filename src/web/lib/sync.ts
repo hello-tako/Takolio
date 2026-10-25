@@ -246,7 +246,8 @@ async function flushOnce(
         removeOp(op.id);
         continue;
       }
-      // Still offline or transient error - stop, keep the rest queued.
+      // Retained failures also notify the existing banner (including automatic replay).
+      emit();
       break;
     }
     attempted++;

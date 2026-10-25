@@ -1,0 +1,292 @@
+[
+  {
+    "results": [
+      {
+        "name": "ai_requests"
+      },
+      {
+        "name": "auth_accounts"
+      },
+      {
+        "name": "auth_otp_assertions"
+      },
+      {
+        "name": "auth_otp_claims"
+      },
+      {
+        "name": "auth_otp_issuances"
+      },
+      {
+        "name": "auth_otp_requests"
+      },
+      {
+        "name": "auth_otp_scopes"
+      },
+      {
+        "name": "auth_otp_tickets"
+      },
+      {
+        "name": "auth_otps"
+      },
+      {
+        "name": "checkout_admissions"
+      },
+      {
+        "name": "cooked_meals"
+      },
+      {
+        "name": "cuisines"
+      },
+      {
+        "name": "family_meal_preferences"
+      },
+      {
+        "name": "favorites"
+      },
+      {
+        "name": "generated_family_meal_plans"
+      },
+      {
+        "name": "generated_meal_plan_annotations"
+      },
+      {
+        "name": "generated_meal_plan_components"
+      },
+      {
+        "name": "generated_meal_plan_compositions"
+      },
+      {
+        "name": "generated_meal_plans"
+      },
+      {
+        "name": "household_members"
+      },
+      {
+        "name": "household_ranking_preferences"
+      },
+      {
+        "name": "households"
+      },
+      {
+        "name": "ingredient_aliases"
+      },
+      {
+        "name": "ingredient_nutrition"
+      },
+      {
+        "name": "ingredient_package_sizes"
+      },
+      {
+        "name": "ingredient_prices"
+      },
+      {
+        "name": "ingredient_storage_guidelines"
+      },
+      {
+        "name": "ingredient_tags"
+      },
+      {
+        "name": "ingredient_translations"
+      },
+      {
+        "name": "ingredients"
+      },
+      {
+        "name": "inventory_adoption_receipts"
+      },
+      {
+        "name": "inventory_commands"
+      },
+      {
+        "name": "inventory_events"
+      },
+      {
+        "name": "inventory_items"
+      },
+      {
+        "name": "inventory_lots"
+      },
+      {
+        "name": "inventory_observations"
+      },
+      {
+        "name": "inventory_reconciliation_decisions"
+      },
+      {
+        "name": "meal_plan_days"
+      },
+      {
+        "name": "meal_plan_days_v2"
+      },
+      {
+        "name": "meal_plan_ingredient_requirements"
+      },
+      {
+        "name": "meal_plan_shopping_items"
+      },
+      {
+        "name": "meal_plan_shopping_items_v2"
+      },
+      {
+        "name": "meal_plan_slots"
+      },
+      {
+        "name": "meal_plan_slots_v2"
+      },
+      {
+        "name": "meal_plans"
+      },
+      {
+        "name": "meal_slots"
+      },
+      {
+        "name": "measurement_units"
+      },
+      {
+        "name": "member_ranking_preferences"
+      },
+      {
+        "name": "notifications"
+      },
+      {
+        "name": "nutrition_profiles"
+      },
+      {
+        "name": "pantry_staples"
+      },
+      {
+        "name": "payment_intents"
+      },
+      {
+        "name": "payment_reconciliation_records"
+      },
+      {
+        "name": "profiles"
+      },
+      {
+        "name": "recipe_classifications"
+      },
+      {
+        "name": "recipe_families"
+      },
+      {
+        "name": "recipe_family_options"
+      },
+      {
+        "name": "recipe_family_slots"
+      },
+      {
+        "name": "recipe_feedback_events"
+      },
+      {
+        "name": "recipe_ingredients"
+      },
+      {
+        "name": "recipe_media"
+      },
+      {
+        "name": "recipe_nutrition"
+      },
+      {
+        "name": "recipe_role_assignments"
+      },
+      {
+        "name": "recipe_runtime_fields"
+      },
+      {
+        "name": "recipe_runtime_ingredient_order"
+      },
+      {
+        "name": "recipe_steps"
+      },
+      {
+        "name": "recipe_translations"
+      },
+      {
+        "name": "recipes"
+      },
+      {
+        "name": "saved_recipe_entries"
+      },
+      {
+        "name": "scan_items"
+      },
+      {
+        "name": "scan_queue_jobs"
+      },
+      {
+        "name": "scan_quota_ledger"
+      },
+      {
+        "name": "scan_quota_periods"
+      },
+      {
+        "name": "scans"
+      },
+      {
+        "name": "sessions"
+      },
+      {
+        "name": "sessions_v2"
+      },
+      {
+        "name": "shopping_demand_review_commands"
+      },
+      {
+        "name": "shopping_demand_reviews"
+      },
+      {
+        "name": "shopping_generated_item_state"
+      },
+      {
+        "name": "shopping_import_commands"
+      },
+      {
+        "name": "shopping_item_metadata"
+      },
+      {
+        "name": "shopping_items"
+      },
+      {
+        "name": "shopping_lists"
+      },
+      {
+        "name": "shopping_plan_commands"
+      },
+      {
+        "name": "shopping_plan_demands"
+      },
+      {
+        "name": "shopping_plan_item_dismissals"
+      },
+      {
+        "name": "shopping_plan_sources"
+      },
+      {
+        "name": "shopping_run_items"
+      },
+      {
+        "name": "shopping_runs"
+      },
+      {
+        "name": "storage_locations"
+      },
+      {
+        "name": "subscriptions"
+      },
+      {
+        "name": "user_preferences"
+      },
+      {
+        "name": "users"
+      },
+      {
+        "name": "weekly_planner_preferences"
+      }
+    ],
+    "success": true,
+    "meta": {
+      "duration": 1
+    }
+  }
+]

@@ -1,0 +1,72 @@
+
+ RUN  v4.1.12 [WORKTREE]
+
+ ❯ tests/unit/week-swap-client.test.ts (61 tests | 2 failed) 2395ms
+     × does not queue HTTP 401 with an unreadable error body 21ms
+     × keeps the request when the server cookie owner no longer matches 13ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/week-swap-client.test.ts > Week swap retention boundaries > does not queue HTTP 401 with an unreadable error body
+AssertionError: expected ApiError: Phiên làm việc đã thay đổi. Vui… { …(5) } to match object { status: 401 }
+(5 matching properties omitted from actual)
+
+- Expected
++ Received
+
+- {
+-   "status": 401,
++ ApiError {
++   "status": undefined,
+  }
+
+ ❯ tests/unit/week-swap-client.test.ts:139:69
+    137|     vi.spyOn(response, 'text').mockRejectedValue(new TypeError('body l…
+    138|     vi.stubGlobal('fetch', vi.fn().mockResolvedValue(response));
+    139|     await expect(client.api.swapMeal('plan-a', 'meal-a', 'recipe-a')).…
+       |                                                                     ^
+    140|     expect(client.sync.getPendingOps()).toEqual([]);
+    141|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/unit/week-swap-client.test.ts > explicit Week swap conflict recovery > keeps the request when the server cookie owner no longer matches
+AssertionError: expected [] to deeply equal [ { …(10) } ]
+
+- Expected
++ Received
+
+- [
+-   {
+-     "body": "{\"recipeId\":\"recipe-a\",\"commandId\":\"week_swap_original\"}",
+-     "headers": {
+-       "Idempotency-Key": "week_swap_original",
+-     },
+-     "householdId": "house-a",
+-     "id": "op_1792874835858_ruyrt",
+-     "label": "Đổi món",
+-     "method": "POST",
+-     "operationId": "op_1792874835858_ruyrt",
+-     "path": "/week/plans/plan-a/meals/meal-a/swap",
+-     "ts": 1792874835858,
+-     "userId": "user-a",
+-   },
+- ]
++ []
+
+ ❯ tests/unit/week-swap-client.test.ts:442:41
+    440|     await client.api.retryPendingWrites({ discardWeekSwapConflict: op …
+    441|     expect(fetchMock.mock.calls).toHaveLength(1);
+    442|     expect(client.sync.getPendingOps()).toEqual([op]);
+       |                                         ^
+    443|   });
+    444| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 59 passed (61)
+   Start at  05:47:12
+   Duration  3.19s (transform 1.18s, setup 150ms, import 84ms, tests 2.39s, environment 0ms)
+

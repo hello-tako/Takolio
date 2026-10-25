@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "pnpm",
+    "exec",
+    "vitest",
+    "run",
+    "tests/unit/week-swap-client.test.ts",
+    "tests/unit/sync.test.ts",
+    "tests/unit/client-session.test.ts",
+    "tests/unit/week-query-sync.test.ts",
+    "--maxWorkers=1"
+  ],
+  "cwd": "[WORKTREE]",
+  "startedUtc": "2026-10-24T20:44:49.568289+00:00",
+  "elapsedSeconds": 4.305,
+  "exitCode": 0,
+  "log": "[WORKTREE]/.artifacts/takeover/wkd02/client/source-first.log",
+  "sha256": "42164997822a9353e47b72a24233b46385cd946f4fc929d022ca2da4e3036076"
+}

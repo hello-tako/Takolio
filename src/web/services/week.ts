@@ -5,9 +5,31 @@ import {
 } from '@frigo/domain';
 import {
   fetchJson, isOffline, queueWrite, createClientItemId,
-  createDeterministicKey, guardPrivateSession, weekPlanCacheKey,
+  createDeterministicKey, guardPrivateSession, weekPlanCacheKey, getCurrentScope,
 } from './http';
 import { inventoryApi } from './inventory';
+
+export function isOwnedWeekPlan(value: unknown, planId: string, householdId: string): value is MealPlan {
+  if (!value || typeof value !== 'object') return false;
+  const plan = value as Partial<MealPlan>;
+  return plan.id === planId && plan.householdId === householdId &&
+    typeof plan.startDate === 'string' && typeof plan.endDate === 'string' &&
+    typeof plan.createdAt === 'string' && typeof plan.updatedAt === 'string' &&
+    typeof plan.status === 'string' && typeof plan.shoppingFrequency === 'string' &&
+    Array.isArray(plan.priorities) && plan.priorities.every((priority) => typeof priority === 'string') &&
+    !!plan.budget && typeof plan.budget.displayText === 'string' &&
+    (plan.budget.targetVnd === null || Number.isFinite(plan.budget.targetVnd)) &&
+    Number.isFinite(plan.budget.estimatedMinVnd) && Number.isFinite(plan.budget.estimatedMaxVnd) &&
+    !!plan.utilization && Number.isFinite(plan.utilization.utilizationPercent) &&
+    Number.isFinite(plan.utilization.plannedItemsCount) && Number.isFinite(plan.utilization.totalUsableItemsCount) &&
+    !!plan.wasteRisk && typeof plan.wasteRisk.level === 'string' &&
+    Number.isFinite(plan.wasteRisk.rescuedItemsCount) && Number.isFinite(plan.wasteRisk.expiringItemsCount) &&
+    Array.isArray(plan.days) && plan.days.every((day) => day && typeof day.id === 'string' &&
+      day.planId === planId && typeof day.date === 'string' && Array.isArray(day.slots) &&
+      day.slots.every((slot) => slot && typeof slot.id === 'string' && slot.planId === planId &&
+        typeof slot.status === 'string' && Array.isArray(slot.badges) && Array.isArray(slot.ingredients) &&
+        Array.isArray(slot.rescuedExpiringIngredients))) && Array.isArray(plan.shoppingItems);
+}
 
 export const weekApi = {
   getCurrentWeekPlan: async (): Promise<MealPlan | null> => {
@@ -106,60 +128,65 @@ export const weekApi = {
   swapMeal: async (
     planId: string,
     mealId: string,
-    recipeId?: string
-  ): Promise<{ plan?: MealPlan; alternatives?: MealSwapAlternative[] }> => {
+    recipeId?: string,
+    signal?: AbortSignal
+  ): Promise<{ plan?: MealPlan; alternatives?: MealSwapAlternative[]; pendingSync?: boolean; idempotentReplay?: boolean }> => {
     const assertCurrent = guardPrivateSession();
     const commandId = recipeId ? createClientItemId('week_swap') : undefined;
     const body = JSON.stringify({ recipeId, ...(commandId ? { commandId } : {}) });
     const headers = commandId ? { 'Idempotency-Key': commandId } : undefined;
+    let res: { plan?: MealPlan; alternatives?: MealSwapAlternative[]; idempotentReplay?: boolean };
     try {
-      const res = await fetchJson<{ plan?: MealPlan; alternatives?: MealSwapAlternative[] }>(
-        `/week/plans/${planId}/meals/${mealId}/swap`,
-        {
-          method: 'POST',
-          body,
-          headers,
-        }
-      );
-      assertCurrent();
-      if (res.plan) {
-        localStorage.setItem(weekPlanCacheKey(), JSON.stringify(res.plan));
-      }
-      return res;
+      res = await fetchJson(`/week/plans/${planId}/meals/${mealId}/swap`, {
+        method: 'POST', body, headers, signal,
+      });
     } catch (err) {
       assertCurrent();
-      if (!isOffline(err)) throw err; // surface real server errors
-      const cacheKey = weekPlanCacheKey();
-      const cached = localStorage.getItem(cacheKey);
-      let updated: MealPlan | undefined;
-      if (cached) {
-        const plan: MealPlan = JSON.parse(cached);
-        const targetSlot = plan.days.flatMap((day) => day.slots).find((slot) => slot.id === mealId);
-        if (!recipeId && targetSlot) {
-          return { alternatives: getSwapAlternatives(targetSlot, [], ALL_RECIPES) };
-        }
-        const recipe = ALL_RECIPES.find((r) => r.id === recipeId || r.slug === recipeId);
-        if (recipeId && recipe) {
-          const inventory = await inventoryApi.getInventory();
-          assertCurrent();
-          updated = swapMealInPlan(plan, mealId, recipe, inventory);
-        }
-      }
+      if (signal?.aborted) throw signal.reason ?? err;
+      const bodyTransportLost = commandId && (err instanceof TypeError ||
+        (err instanceof Error && err.name === 'AbortError'));
+      if (!isOffline(err) && !bodyTransportLost) throw err;
       if (recipeId) {
         queueWrite(
           `/week/plans/${planId}/meals/${mealId}/swap`,
           'POST', body, 'Đổi món trong thực đơn tuần',
           `week-swap:${planId}:${mealId}:${commandId}`, headers
         );
-        if (updated) {
-          try { localStorage.setItem(cacheKey, JSON.stringify(updated)); } catch {
-            // A cache failure cannot revoke the accepted command.
+      }
+      let updated: MealPlan | undefined;
+      try {
+        const cacheKey = weekPlanCacheKey();
+        const cached = localStorage.getItem(cacheKey);
+        if (cached) {
+          const plan: unknown = JSON.parse(cached);
+          if (!isOwnedWeekPlan(plan, planId, getCurrentScope().householdId)) throw new Error('Invalid cached plan');
+          const targetSlot = plan.days.flatMap((day) => day.slots).find((slot) => slot.id === mealId);
+          if (!recipeId && targetSlot) {
+            return { alternatives: getSwapAlternatives(targetSlot, [], ALL_RECIPES) };
+          }
+          const recipe = ALL_RECIPES.find((r) => r.id === recipeId || r.slug === recipeId);
+          if (recipeId && recipe) {
+            const inventory = await inventoryApi.getInventory();
+            assertCurrent();
+            if (signal?.aborted) throw signal.reason ?? err;
+            updated = swapMealInPlan(plan, mealId, recipe, inventory);
+            assertCurrent();
+            localStorage.setItem(cacheKey, JSON.stringify(updated));
           }
         }
+      } catch {
+        // The exact durable request survives an unavailable optional projection.
       }
       assertCurrent();
-      return updated ? { plan: updated } : {};
+      if (signal?.aborted) throw signal.reason ?? err;
+      return { ...(updated ? { plan: updated } : {}), ...(recipeId ? { pendingSync: true } : {}) };
     }
+    assertCurrent();
+    if (recipeId && !isOwnedWeekPlan(res?.plan, planId, getCurrentScope().householdId)) {
+      throw new Error('Invalid Week swap response');
+    }
+    if (res.plan) localStorage.setItem(weekPlanCacheKey(), JSON.stringify(res.plan));
+    return res;
   },
 
   updateMealSlot: async (planId: string, mealId: string, updates: any): Promise<MealPlan | null> => {

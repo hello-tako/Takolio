@@ -1,0 +1,126 @@
+[
+  {
+    "name": "lint",
+    "command": [
+      "pnpm",
+      "lint"
+    ],
+    "environment": {
+      "node_path": "/opt/homebrew/opt/node@24/bin",
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/"
+    },
+    "started_at_utc": "2026-10-24T20:52:13.057857+00:00",
+    "exit_code": 0,
+    "seconds": 7.55,
+    "log": ".artifacts/takeover/wkd02/gates/lint.log",
+    "log_sha256": "3f2044fca43a5e60905becf2ebfc3a21ddd85976975841aa1e16bc87b0f40a6d",
+    "source_unchanged": true
+  },
+  {
+    "name": "typecheck",
+    "command": [
+      "pnpm",
+      "typecheck"
+    ],
+    "environment": {
+      "node_path": "/opt/homebrew/opt/node@24/bin",
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/"
+    },
+    "started_at_utc": "2026-10-24T20:52:20.680841+00:00",
+    "exit_code": 0,
+    "seconds": 23.81,
+    "log": ".artifacts/takeover/wkd02/gates/typecheck.log",
+    "log_sha256": "5f4468d37dab2f6f369b5ca0cbd05aabb894945949268315be5c0aa50fed643e",
+    "source_unchanged": true
+  },
+  {
+    "name": "migrations",
+    "command": [
+      "pnpm",
+      "check:migrations"
+    ],
+    "environment": {
+      "node_path": "/opt/homebrew/opt/node@24/bin",
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/"
+    },
+    "started_at_utc": "2026-10-24T20:52:44.611818+00:00",
+    "exit_code": 0,
+    "seconds": 0.76,
+    "log": ".artifacts/takeover/wkd02/gates/migrations.log",
+    "log_sha256": "9616315a9fcbfd77c67784703a16384419539e6a68ccd2838dda07239de25464",
+    "source_unchanged": true
+  },
+  {
+    "name": "build-default",
+    "command": [
+      "pnpm",
+      "build"
+    ],
+    "environment": {
+      "node_path": "/opt/homebrew/opt/node@24/bin",
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/"
+    },
+    "started_at_utc": "2026-10-24T20:52:45.463301+00:00",
+    "exit_code": 0,
+    "seconds": 14.27,
+    "log": ".artifacts/takeover/wkd02/gates/build-default.log",
+    "log_sha256": "062b52c4c1bff083d62f9478f01304a645856448c4267f8070180793a4ce4a24",
+    "source_unchanged": true
+  },
+  {
+    "name": "build-paired-on",
+    "command": [
+      "pnpm",
+      "build"
+    ],
+    "environment": {
+      "node_path": "/opt/homebrew/opt/node@24/bin",
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/",
+      "VITE_MEAL_PLANNER_ENABLED": "true",
+      "VITE_MEAL_COMPOSITION_V2_ENABLED": "true"
+    },
+    "started_at_utc": "2026-10-24T20:52:59.816140+00:00",
+    "exit_code": 0,
+    "seconds": 11.31,
+    "log": ".artifacts/takeover/wkd02/gates/build-paired-on.log",
+    "log_sha256": "bfcea893a6f96e7deb5d076c11159131e8b5a90e5de71e10d026d7b47d929760",
+    "source_unchanged": true
+  },
+  {
+    "name": "audit",
+    "command": [
+      "pnpm",
+      "audit",
+      "--audit-level=high"
+    ],
+    "environment": {
+      "node_path": "/opt/homebrew/opt/node@24/bin",
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/"
+    },
+    "started_at_utc": "2026-10-24T20:53:11.201971+00:00",
+    "exit_code": 1,
+    "seconds": 0.73,
+    "log": ".artifacts/takeover/wkd02/gates/audit.log",
+    "log_sha256": "34ba6b6fe473f3af95c02ba41788cba06022ab2930cd70e68a8a08e03e27167f",
+    "source_unchanged": true
+  },
+  {
+    "name": "full",
+    "command": [
+      "pnpm",
+      "test",
+      "--maxWorkers=1",
+      "--testTimeout=15000"
+    ],
+    "environment": {
+      "node_path": "/opt/homebrew/opt/node@24/bin",
+      "TMPDIR": "/private/var/folders/m4/1tyb0d41399gbt62vgxhhsph0000gn/T/"
+    },
+    "started_at_utc": "2026-10-24T20:53:12.010759+00:00",
+    "exit_code": 1,
+    "seconds": 952.69,
+    "log": ".artifacts/takeover/wkd02/gates/full.log",
+    "log_sha256": "474551c7ae548174e2b19d963f3127f4b2e454057ce0b37c186db2bda2129c25",
+    "source_unchanged": true
+  }
+]

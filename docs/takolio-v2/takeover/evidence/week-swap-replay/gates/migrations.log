@@ -1,0 +1,6 @@
+
+> frigo@0.1.0 check:migrations [WORKTREE]
+> bash scripts/migration-smoke.sh && bash scripts/admin-migration-smoke.sh
+
+migration-smoke=ok
+admin-migration-smoke=ok (schema v4; atomic bootstrap; minimum; immutable identity; append-only audit)

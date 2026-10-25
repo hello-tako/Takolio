@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "pnpm",
+    "exec",
+    "vitest",
+    "run",
+    "tests/unit/week-swap-client.test.ts",
+    "--maxWorkers=1"
+  ],
+  "cwd": "[WORKTREE]",
+  "startedUtc": "2026-10-24T20:47:10.723600+00:00",
+  "elapsedSeconds": 5.23,
+  "exitCode": 1,
+  "log": "[WORKTREE]/.artifacts/takeover/wkd02/client/expanded-first.log",
+  "sha256": "ddac1b1f36c5bd5b5e2856184b6c790445a441b8d76b443f931e795b6b59ec0e"
+}

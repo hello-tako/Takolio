@@ -1,0 +1,14 @@
+{
+  "label": "baseline-red",
+  "argv": [
+    "pnpm",
+    "test",
+    "tests/integration/week-swap-replay.test.ts",
+    "--maxWorkers=1"
+  ],
+  "cwd": "[WORKTREE]",
+  "started_at": "2026-10-24T20:41:47.753128+00:00",
+  "wall_seconds": 1.853,
+  "exit_code": 1,
+  "node": "/opt/homebrew/opt/node@24/bin/node"
+}

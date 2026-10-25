@@ -1,0 +1,121 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+ExpectError: expect(locator).toBeVisible() failed
+
+Locator: getByRole('dialog', { name: 'Bỏ yêu cầu đổi món bị xung đột?', exact: true })
+Expected: visible
+Timeout: 5000ms
+Error: element(s) not found
+
+Call log:
+  - Expect "toBeVisible" getByRole('dialog', { name: 'Bỏ yêu cầu đổi món bị xung đột?', exact: true }) with timeout 5000ms
+  - waiting for getByRole('dialog', { name: 'Bỏ yêu cầu đổi món bị xung đột?', exact: true })
+
+    at captureRawStack ([WORKTREE]/node_modules/.pnpm/playwright-core@1.63.0/node_modules/playwright-core/lib/coreBundle.js:8588:17)
+    at callMatcherAsStep ([WORKTREE]/node_modules/.pnpm/playwright@1.63.0/node_modules/playwright/lib/matchers/expect.js:13310:57)
+    at Object.toBeVisible ([WORKTREE]/node_modules/.pnpm/playwright@1.63.0/node_modules/playwright/lib/matchers/expect.js:13302:23)
+    at [WORKTREE]/.artifacts/takeover/wkd02/browser.mjs:136:28 {
+  matcherResult: {
+    message: 'expect(locator).toBeVisible() failed\n' +
+      '\n' +
+      "Locator: getByRole('dialog', { name: 'Bỏ yêu cầu đổi món bị xung đột?', exact: true })\n" +
+      'Expected: visible\n' +
+      'Timeout: 5000ms\n' +
+      'Error: element(s) not found\n' +
+      '\n' +
+      'Call log:\n' +
+      `  - Expect "toBeVisible" getByRole('dialog', { name: 'Bỏ yêu cầu đổi món bị xung đột?', exact: true }) with timeout 5000ms\n` +
+      "  - waiting for getByRole('dialog', { name: 'Bỏ yêu cầu đổi món bị xung đột?', exact: true })\n",
+    pass: false,
+    actual: undefined,
+    name: 'toBeVisible',
+    expected: 'visible',
+    log: [
+      `  - Expect "toBeVisible" getByRole('dialog', { name: 'Bỏ yêu cầu đổi món bị xung đột?', exact: true }) with timeout 5000ms`,
+      "  - waiting for getByRole('dialog', { name: 'Bỏ yêu cầu đổi món bị xung đột?', exact: true })"
+    ],
+    timeout: 5000,
+    ariaSnapshot: '- link "Đến nội dung chính":\n' +
+      '  - /url: "#kitchen-main"\n' +
+      '- status: Yêu cầu đổi món xung đột với dữ liệu đã lưu. Yêu cầu vẫn được giữ trên thiết bị.\n' +
+      '- button "Đồng bộ ngay"\n' +
+      '- button "Tải lại và bỏ yêu cầu đổi món"\n' +
+      '- alertdialog "Bỏ yêu cầu đổi món bị xung đột?":\n' +
+      '  - heading "Bỏ yêu cầu đổi món bị xung đột?" [level=2]\n' +
+      '  - paragraph: Takolio sẽ tải thực đơn hiện tại và chỉ bỏ yêu cầu đổi món này khỏi hàng chờ. Các thay đổi khác vẫn được giữ. Bạn có thể chọn món lại sau đó.\n' +
+      '  - button "Giữ yêu cầu"\n' +
+      '  - button "Tải lại và bỏ yêu cầu"\n' +
+      '- main:\n' +
+      '  - link "Quay lại thực đơn tuần":\n' +
+      '    - /url: /week/plan_week_plan_1792874922346_uxq8j1\n' +
+      '  - link "Takolio — Trang chủ":\n' +
+      '    - /url: /\n' +
+      '  - link "Thông báo":\n' +
+      '    - /url: /notifications\n' +
+      '  - link "Quét nguyên liệu":\n' +
+      '    - /url: /scan\n' +
+      '  - paragraph: BẾP NHÀ / THỰC ĐƠN TUẦN\n' +
+      '  - heading "Rau muống xào tỏi xanh giòn" [level=1]\n' +
+      '  - text: Chủ nhật · Bữa tối · 3 phần ăn\n' +
+      '  - img "Rau muống xào tỏi xanh giòn"\n' +
+      '  - heading "Chuẩn bị bữa ăn" [level=2]\n' +
+      '  - term: Thời gian theo công thức\n' +
+      '  - definition: 10 phút\n' +
+      '  - term: Theo kế hoạch · có sẵn\n' +
+      '  - definition: 25%\n' +
+      '  - term: Mua thêm · ước tính\n' +
+      '  - definition: ~6.000 ₫\n' +
+      '  - paragraph: Kiểm tra lại số lượng và hạn dùng thực tế trước khi nấu. Chi phí dự kiến có thể thiếu dữ liệu giá.\n' +
+      '  - button "Đổi món"\n' +
+      '  - link "Bắt đầu nấu":\n' +
+      '    - /url: /cook/rau-muong-xao-toi\n' +
+      '  - complementary:\n' +
+      '    - heading "Ưu tiên nguyên liệu sắp hết hạn" [level=2]\n' +
+      '    - paragraph: Rau muống ngọn non nhặt sạch\n' +
+      '    - paragraph: Được xếp vào kế hoạch; chưa phải nguyên liệu đã sử dụng.\n' +
+      '  - group "Nội dung công thức":\n' +
+      '    - button "Nguyên liệu" [pressed]\n' +
+      '    - button "Cách nấu"\n' +
+      '    - button "Dinh dưỡng"\n' +
+      '  - heading "Nguyên liệu (4)" [level=2]\n' +
+      '  - paragraph: Số lượng dự kiến cho 3 phần ăn, theo dữ liệu của thực đơn.\n' +
+      '  - list:\n' +
+      '    - listitem:\n' +
+      '      - heading "Rau muống ngọn non nhặt sạch" [level=3]\n' +
+      '      - paragraph: Cần 1 bunch · dự kiến có 1 bunch\n' +
+      '      - paragraph: Dự kiến đủ\n' +
+      '    - listitem:\n' +
+      '      - heading "Tỏi ta đập dập nguyên tép" [level=3]\n' +
+      '      - paragraph: Cần 2 piece · dự kiến có 0 piece\n' +
+      '      - paragraph: Cần mua 2 piece\n' +
+      '    - listitem:\n' +
+      '      - heading "Dầu ăn" [level=3]\n' +
+      '      - paragraph: Cần 20 ml · dự kiến có 0 ml\n' +
+      '      - paragraph: Cần mua 20 ml\n' +
+      '    - listitem:\n' +
+      '      - heading "Nước mắm ngon" [level=3]\n' +
+      '      - paragraph: Cần 15 ml · dự kiến có 0 ml\n' +
+      '      - paragraph: Cần mua 15 ml\n' +
+      '- navigation "Điều hướng chính":\n' +
+      '  - list:\n' +
+      '    - listitem:\n' +
+      '      - link "Trang chủ":\n' +
+      '        - /url: /\n' +
+      '    - listitem:\n' +
+      '      - link "Tủ lạnh":\n' +
+      '        - /url: /fridge\n' +
+      '    - listitem:\n' +
+      '      - link "Công thức":\n' +
+      '        - /url: /recipes\n' +
+      '    - listitem:\n' +
+      '      - link "Thực đơn":\n' +
+      '        - /url: /week\n' +
+      '    - listitem:\n' +
+      '      - link "Tôi":\n' +
+      '        - /url: /me'
+  }
+}
+
+Node.js v24.16.0

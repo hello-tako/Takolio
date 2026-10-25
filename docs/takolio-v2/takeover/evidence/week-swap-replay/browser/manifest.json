@@ -1,0 +1,244 @@
+{
+  "schema": "wkd02-browser-public-v1",
+  "rawSummarySha256": "7e2f1d80aab9ce9f16dd58e75da73243ac727b567b03222e1b793565f70e3e50",
+  "publicSummarySha256": "666f83fb6133e9eb03575cbdcf54f5fb1957a31f77a7d99dcdb0d71c97ae3a2a",
+  "scriptSha256": "50d737f42f6ff01b2e01b715aee85bb5daf2389b531dadd71a6a224668212ccd",
+  "screenshots": [
+    {
+      "file": "320-response-loss-queued.png",
+      "sha256": "647bc4771d3ba2bd7d23858e1481ed401072c5f176db56a158042bbe6582b7fa",
+      "bytes": 210364,
+      "width": 320,
+      "height": 2860,
+      "metrics": {
+        "width": 320,
+        "scrollWidth": 320,
+        "dialogContainsFocus": null,
+        "brokenImages": []
+      }
+    },
+    {
+      "file": "320-response-loss-fresh-document.png",
+      "sha256": "5f079cfa7747f3da0fdb6ee1377d7ed12db9674924cb631d54a0424404651964",
+      "bytes": 215270,
+      "width": 320,
+      "height": 2860,
+      "metrics": {
+        "width": 320,
+        "scrollWidth": 320,
+        "dialogContainsFocus": null,
+        "brokenImages": []
+      }
+    },
+    {
+      "file": "320-response-loss-reconnected-current-b.png",
+      "sha256": "231262939a6ec7de82524d815115682d04c6e340b20d39febd8923565cd89aae",
+      "bytes": 181630,
+      "width": 320,
+      "height": 2407,
+      "metrics": {
+        "width": 320,
+        "scrollWidth": 320,
+        "dialogContainsFocus": null,
+        "brokenImages": []
+      }
+    },
+    {
+      "file": "320-conflict-queued.png",
+      "sha256": "834bb67c56e2811a11c87a4eab5eabcd60e2825027c1b2ac04b91c4b621fb055",
+      "bytes": 164891,
+      "width": 320,
+      "height": 2314,
+      "metrics": {
+        "width": 320,
+        "scrollWidth": 320,
+        "dialogContainsFocus": null,
+        "brokenImages": []
+      }
+    },
+    {
+      "file": "320-conflict-fresh-document.png",
+      "sha256": "f2402778a59ffc4da22ebe2adafd99d07db6bd9f900172dab132263aecb93b1e",
+      "bytes": 169224,
+      "width": 320,
+      "height": 2314,
+      "metrics": {
+        "width": 320,
+        "scrollWidth": 320,
+        "dialogContainsFocus": null,
+        "brokenImages": []
+      }
+    },
+    {
+      "file": "320-conflict-blocked.png",
+      "sha256": "3a375ec3d500efac9dffafd2dbac4b24d30f5da23283c9a76cb5f1cc6209bdbc",
+      "bytes": 174953,
+      "width": 320,
+      "height": 2418,
+      "metrics": {
+        "width": 320,
+        "scrollWidth": 320,
+        "dialogContainsFocus": null,
+        "brokenImages": []
+      }
+    },
+    {
+      "file": "320-conflict-confirmation.png",
+      "sha256": "256e030a6fd63f9b1a20fbf0b5049d91fb0ae98056619531ce3b960f34dc2896",
+      "bytes": 177540,
+      "width": 320,
+      "height": 2418,
+      "metrics": {
+        "width": 320,
+        "scrollWidth": 320,
+        "dialogContainsFocus": true,
+        "brokenImages": []
+      }
+    },
+    {
+      "file": "320-conflict-cancel-keeps-request.png",
+      "sha256": "9542bbbe76a3ee26328a9743e467d2f5472e7194fa0de4fe8da37130a39c7bb6",
+      "bytes": 177175,
+      "width": 320,
+      "height": 2418,
+      "metrics": {
+        "width": 320,
+        "scrollWidth": 320,
+        "dialogContainsFocus": null,
+        "brokenImages": []
+      }
+    },
+    {
+      "file": "320-conflict-confirmed-current-b.png",
+      "sha256": "231262939a6ec7de82524d815115682d04c6e340b20d39febd8923565cd89aae",
+      "bytes": 181630,
+      "width": 320,
+      "height": 2407,
+      "metrics": {
+        "width": 320,
+        "scrollWidth": 320,
+        "dialogContainsFocus": null,
+        "brokenImages": []
+      }
+    },
+    {
+      "file": "1440-response-loss-queued.png",
+      "sha256": "40e1ad8ac1f34c1e9339272cd0bc0b9c8a51d8388f2ca0e856f3244a4915575d",
+      "bytes": 310712,
+      "width": 1440,
+      "height": 1760,
+      "metrics": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "dialogContainsFocus": null,
+        "brokenImages": []
+      }
+    },
+    {
+      "file": "1440-response-loss-fresh-document.png",
+      "sha256": "40e1ad8ac1f34c1e9339272cd0bc0b9c8a51d8388f2ca0e856f3244a4915575d",
+      "bytes": 310712,
+      "width": 1440,
+      "height": 1760,
+      "metrics": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "dialogContainsFocus": null,
+        "brokenImages": []
+      }
+    },
+    {
+      "file": "1440-response-loss-reconnected-current-b.png",
+      "sha256": "a2bff06515b99934d43e92ad8c89b455039e560ada1256ba9ba4ae97415629d0",
+      "bytes": 336108,
+      "width": 1440,
+      "height": 1498,
+      "metrics": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "dialogContainsFocus": null,
+        "brokenImages": []
+      }
+    },
+    {
+      "file": "1440-conflict-queued.png",
+      "sha256": "bdb8277b8e6b350b1c7dcdf689a7cf2195f74b1ddee7c33412991b2f3573f2b2",
+      "bytes": 303371,
+      "width": 1440,
+      "height": 1412,
+      "metrics": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "dialogContainsFocus": null,
+        "brokenImages": []
+      }
+    },
+    {
+      "file": "1440-conflict-fresh-document.png",
+      "sha256": "bdb8277b8e6b350b1c7dcdf689a7cf2195f74b1ddee7c33412991b2f3573f2b2",
+      "bytes": 303371,
+      "width": 1440,
+      "height": 1412,
+      "metrics": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "dialogContainsFocus": null,
+        "brokenImages": []
+      }
+    },
+    {
+      "file": "1440-conflict-blocked.png",
+      "sha256": "2ba4bdbab071f6758521b2649f2a069f59760af6d350a85bb7d98f940dc3b044",
+      "bytes": 311811,
+      "width": 1440,
+      "height": 1440,
+      "metrics": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "dialogContainsFocus": null,
+        "brokenImages": []
+      }
+    },
+    {
+      "file": "1440-conflict-confirmation.png",
+      "sha256": "eb0bba4da7166284c251e7d91743a1e0882e1cefe2f43687498b432b6a65a492",
+      "bytes": 240949,
+      "width": 1440,
+      "height": 1440,
+      "metrics": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "dialogContainsFocus": true,
+        "brokenImages": []
+      }
+    },
+    {
+      "file": "1440-conflict-cancel-keeps-request.png",
+      "sha256": "954b3cc3ae1c298a8cc0baa3620f5e3b67555e53c1f3428a67f6c7fcabb3185e",
+      "bytes": 313524,
+      "width": 1440,
+      "height": 1440,
+      "metrics": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "dialogContainsFocus": null,
+        "brokenImages": []
+      }
+    },
+    {
+      "file": "1440-conflict-confirmed-current-b.png",
+      "sha256": "a2bff06515b99934d43e92ad8c89b455039e560ada1256ba9ba4ae97415629d0",
+      "bytes": 336108,
+      "width": 1440,
+      "height": 1498,
+      "metrics": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "dialogContainsFocus": null,
+        "brokenImages": []
+      }
+    }
+  ],
+  "pngBytesUnchanged": true,
+  "credentialsAndPrivatePathsRemoved": true
+}
