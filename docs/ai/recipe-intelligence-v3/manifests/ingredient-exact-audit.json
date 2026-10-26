@@ -1,0 +1,424 @@
+{
+  "schemaVersion": 1,
+  "scope": "CANDIDATE_ONLY_EXACT_EXISTING_REGISTRY_AUDIT",
+  "humanReview": "PENDING",
+  "promotion": false,
+  "approvedDecisions": 0,
+  "normalization": "Unicode NFKC; casefold; whitespace collapse only",
+  "excludedTransforms": [
+    "accent stripping",
+    "context stripping",
+    "punctuation stripping",
+    "species/form substitution",
+    "fuzzy matching",
+    "invented synonyms"
+  ],
+  "conclusion": "No exact canonical name/alias matches. All 1395 provisional IDs remain unresolved; no mappings proposed.",
+  "counts": {
+    "registryIngredients": 45,
+    "registryNormalizedKeys": 204,
+    "recipes": 500,
+    "ingredientLines": 6766,
+    "provisionalIds": 1395,
+    "provisionalIngredientLines": 4233,
+    "recipesWithProvisionalIngredients": 500,
+    "reconciliationRows": 2515,
+    "provisionalIdReconciliationRows": 2004,
+    "provisionalNewReconciliationRows": 1642,
+    "provisionalDuplicateAliasReconciliationRows": 362,
+    "exactMatches": 0,
+    "ambiguousExactMatches": 0,
+    "noExactMatchIds": 1395
+  },
+  "sourceHashes": {
+    "packages/domain/src/index.ts": "731b8a9710313eb9ae554670f2f941a213b8e4891ac5499218b795853647e558",
+    "data/recipe-refresh/v2/manifest.json": "adf1784bb32b5b4fac7e9942dcc85d63339674282565b1dfa8e20c099ad7ea22",
+    "data/recipe-refresh/v2/ingredient-reconciliation.json": "95f7d680ab2bedafebb39595341b55ba5d278a5c98fb14851ab116105f7d0ca5"
+  },
+  "transitiveSourceHashes": {
+    "pointer": "data/recipe-refresh/v2/manifest.json#/fileHashes",
+    "verifiedFileCount": 503,
+    "verifiedRecipes": 500,
+    "expandedPathHashListSha256": "c34f514eaf29799823f9498f8377f2d1954d4eb51cff45edd5975f9afd2c3b58"
+  },
+  "coverage": {
+    "sortedProvisionalIdsSha256": "515745647ee18b7a820428ae55a882c3fd63d550520ee648359634cbffcc889a",
+    "perIdNamesOccurrencesRecipesAndPointersSha256": "7166a17366cefcca9a7d2efd02737856b799bb345800aca9bd3a4a417a787177",
+    "description": "Self-check reconstructs every ID, exact source name, canonical name, reconciliation pointer, recipe ingredient pointer and impact count in memory; all source bytes pinned by the hashes above.",
+    "ingredientLineHistogram": {
+      "1": 1031,
+      "2": 150,
+      "3": 56,
+      "4": 37,
+      "5": 16,
+      "6": 9,
+      "7": 13,
+      "8": 16,
+      "9": 8,
+      "10": 13,
+      "11": 6,
+      "12": 5,
+      "13": 5,
+      "14": 6,
+      "16": 1,
+      "17": 1,
+      "19": 1,
+      "20": 2,
+      "21": 1,
+      "23": 2,
+      "24": 3,
+      "26": 1,
+      "27": 1,
+      "38": 1,
+      "39": 1,
+      "58": 2,
+      "108": 1,
+      "115": 1,
+      "118": 1,
+      "130": 1,
+      "204": 1,
+      "298": 1,
+      "306": 1
+    }
+  },
+  "largestImpacts": [
+    {
+      "provisionalId": "ING_ENR_D2E694F210DAC2E6",
+      "sourceNames": [
+        "Duong",
+        "Duong (pha cham)",
+        "Duong cat trang",
+        "Đường",
+        "Đường (cho ssamjang)",
+        "Đường (làm đồ chua)",
+        "Đường (ngâm hành tây)",
+        "Đường (nêm nhân)",
+        "Đường (nước chấm)",
+        "Đường (nước dùng)",
+        "Đường (pha mắm chấm)",
+        "Đường (pha mắm tôm)",
+        "Đường (pha nước chấm)",
+        "Đường (pha sốt yakisoba)",
+        "Đường (pha sốt)",
+        "Đường (sốt ướp)",
+        "Đường (xốt ngâm trứng ajitama)",
+        "Đường (ướp nem)",
+        "Đường (ướp thịt bò)",
+        "Đường (ướp thịt)",
+        "Đường cát",
+        "Đường cát (nước chấm)",
+        "Đường cát (pha mắm nêm)",
+        "Đường cát (pha sốt)",
+        "Đường cát (ướp thịt)",
+        "Đường cát trắng",
+        "Đường kính",
+        "Đường trắng",
+        "Đường trắng (ngâm đồ chua)",
+        "Đường trắng (pha sốt chấm)",
+        "Đường trắng (ướp cá)",
+        "đường"
+      ],
+      "ingredientLines": 306,
+      "recipes": 292,
+      "reconciliationRows": 48
+    },
+    {
+      "provisionalId": "ING_ENR_A67011E859722CB0",
+      "sourceNames": [
+        "Muối",
+        "Muối (cho nước luộc mì và nêm)",
+        "Muối (cho nước luộc mì)",
+        "Muối (cho nước luộc)",
+        "Muối (không nêm thêm)",
+        "Muối (ngâm đồ chua)",
+        "Muối (nêm nhân + ướp củ đậu)",
+        "Muối (nêm nước dùng)",
+        "Muối (nêm sốt)",
+        "Muối (nêm)",
+        "Muối (nước chần bông cải)",
+        "Muối (nước luộc mực)",
+        "Muối (để bóp bắp cải)",
+        "Muối (để chần rau)",
+        "Muối (để luộc rau)",
+        "Muối (để sơ chế tôm)",
+        "Muối (để ướp cá)",
+        "Muối (ướp gà)",
+        "Muối (ướp thịt)",
+        "Muối (ướp tôm)"
+      ],
+      "ingredientLines": 298,
+      "recipes": 295,
+      "reconciliationRows": 31
+    },
+    {
+      "provisionalId": "ING_ENR_572914FFD2108D59",
+      "sourceNames": [
+        "Nuoc loc",
+        "Nuoc loc (pha cham)",
+        "Nước",
+        "Nước (chần rau)",
+        "Nước (hoặc nước dùng rau củ)",
+        "Nước (luộc mì và chần rau)",
+        "Nước (luộc mì)",
+        "Nước (luộc trứng)",
+        "Nước (làm sốt)",
+        "Nước (ngâm dưa leo và lê)",
+        "Nước (ngâm đồ chua)",
+        "Nước (nước luộc gà + nước lọc)",
+        "Nước (nấu nước dùng)",
+        "Nước (pha bột bắp)",
+        "Nước (pha bột ngô)",
+        "Nước (pha bột sệt)",
+        "Nước (pha nước ướp)",
+        "Nước (pha sốt)",
+        "Nước (để hòa bột bắp)",
+        "Nước (để luộc đậu phụ)",
+        "Nước (để ngâm nấm hương)",
+        "Nước (để nấu dashi)",
+        "Nước (để om bông cải)",
+        "Nước (để om)",
+        "Nước (để trụng mì)",
+        "Nước (để ướp gà)",
+        "Nước (ướp thịt bò)",
+        "Nước lọc",
+        "Nước lọc (cho sốt)",
+        "Nước lọc (hoặc nước dùng gà)",
+        "Nước lọc (hoặc nước dùng rau củ)",
+        "Nước lọc (hấp)",
+        "Nước lọc (luộc gà)",
+        "Nước lọc (làm sốt)",
+        "Nước lọc (nước chấm)",
+        "Nước lọc (nước dùng canh)",
+        "Nước lọc (nước dùng)",
+        "Nước lọc (nấu nước dùng)",
+        "Nước lọc (nấu sốt)",
+        "Nước lọc (pha bột bắp)",
+        "Nước lọc (pha bột năng)",
+        "Nước lọc (pha nước chấm)",
+        "Nước lọc (pha nước mắm trộn)",
+        "Nước lọc (pha nước trộn gỏi)",
+        "Nước lọc (pha sốt chấm)",
+        "Nước lọc (pha sốt)",
+        "Nước lọc (thêm khi xào đậu)",
+        "Nước lọc (để nấu gà)",
+        "Nước lọc (để trộn muối trát)",
+        "Nước lọc (ướp thịt bò)",
+        "Nước lọc (ướp thịt cho mềm)",
+        "Nước lọc (ướp thịt)"
+      ],
+      "ingredientLines": 204,
+      "recipes": 198,
+      "reconciliationRows": 57
+    },
+    {
+      "provisionalId": "ING_ENR_645CFFD89E2FD64E",
+      "sourceNames": [
+        "Tiêu đen xay",
+        "Tiêu đen xay (nước chấm)",
+        "Tiêu đen xay (pha sốt)",
+        "tiêu đen xay"
+      ],
+      "ingredientLines": 130,
+      "recipes": 129,
+      "reconciliationRows": 10
+    },
+    {
+      "provisionalId": "ING_ENR_9ED41AF1DDD06BAD",
+      "sourceNames": [
+        "Hạt nêm",
+        "Hạt nêm (bột nêm)",
+        "Hạt nêm (nêm nước dùng)",
+        "Hạt nêm (để ướp thịt)",
+        "Hạt nêm (ướp cá)",
+        "Hạt nêm (ướp gà)",
+        "Hạt nêm (ướp thịt)"
+      ],
+      "ingredientLines": 118,
+      "recipes": 117,
+      "reconciliationRows": 10
+    },
+    {
+      "provisionalId": "ING_ENR_AE334AA98E2ADBDD",
+      "sourceNames": [
+        "Tiêu xay",
+        "Tiêu xay (ướp cá)",
+        "Tiêu xay (ướp gà)",
+        "Tiêu xay (ướp thịt)"
+      ],
+      "ingredientLines": 115,
+      "recipes": 115,
+      "reconciliationRows": 5
+    },
+    {
+      "provisionalId": "ING_ENR_8A591F6DEC9664A5",
+      "sourceNames": [
+        "Hanh tim",
+        "Hành khô",
+        "Hành khô (làm hành phi)",
+        "Hành khô (nướng)",
+        "Hành khô thái lát",
+        "Hành tím",
+        "Hành tím (luộc gà)",
+        "Hành tím (phi xào gà)",
+        "Hành tím (thái lát mỏng)",
+        "Hành tím (để phi)",
+        "Hành tím băm",
+        "Hành tím băm (ướp thịt)",
+        "Hành tím băm nhỏ",
+        "Hành tím thái lát"
+      ],
+      "ingredientLines": 108,
+      "recipes": 108,
+      "reconciliationRows": 17
+    },
+    {
+      "provisionalId": "ING_ENR_0A4564D231578559",
+      "sourceNames": [
+        "Bột ngọt",
+        "Bột ngọt (nêm nước lẩu)",
+        "Bột ngọt (ướp thịt)"
+      ],
+      "ingredientLines": 58,
+      "recipes": 58,
+      "reconciliationRows": 4
+    },
+    {
+      "provisionalId": "ING_ENR_7BB44CA507E12348",
+      "sourceNames": [
+        "Dầu hào",
+        "Dầu hào (ướp thịt)"
+      ],
+      "ingredientLines": 58,
+      "recipes": 58,
+      "reconciliationRows": 6
+    },
+    {
+      "provisionalId": "ING_ENR_CE0F576CB30DCEBE",
+      "sourceNames": [
+        "Tiêu trắng xay",
+        "Tiêu trắng xay (tùy chọn)",
+        "Tiêu trắng xay (để ướp cá)",
+        "Tiêu trắng xay (ướp tôm)"
+      ],
+      "ingredientLines": 39,
+      "recipes": 39,
+      "reconciliationRows": 6
+    }
+  ],
+  "ambiguityExample": {
+    "provisionalId": "ING_ENR_0121EB2200008912",
+    "state": "NEEDS_HUMAN_REVIEW",
+    "reason": "One provisional ID contains labels Thai basil and holy basil. Preserve the labels and review their species identities before any grouping decision.",
+    "sourceNames": [
+      "Lá húng quế (để xay cùng curry paste)",
+      "Lá húng quế Thái (Thai basil, để cho vào cuối)",
+      "Lá húng quế Thái (holy basil, đã nhặt lá)",
+      "Lá húng quế tươi",
+      "Lá húng quế tươi (trang trí)"
+    ],
+    "ingredients": [
+      {
+        "recipeId": "gl-01",
+        "sourceName": "Lá húng quế tươi",
+        "pointer": "data/recipe-refresh/v2/recipes/gl-01.json#/ingredients/5"
+      },
+      {
+        "recipeId": "gl-10",
+        "sourceName": "Lá húng quế (để xay cùng curry paste)",
+        "pointer": "data/recipe-refresh/v2/recipes/gl-10.json#/ingredients/5"
+      },
+      {
+        "recipeId": "gl-10",
+        "sourceName": "Lá húng quế Thái (Thai basil, để cho vào cuối)",
+        "pointer": "data/recipe-refresh/v2/recipes/gl-10.json#/ingredients/10"
+      },
+      {
+        "recipeId": "imp-a60814a4aca4143b",
+        "sourceName": "Lá húng quế tươi",
+        "pointer": "data/recipe-refresh/v2/recipes/imp-a60814a4aca4143b.json#/ingredients/13"
+      },
+      {
+        "recipeId": "imp-a0ed6c762f7dceba",
+        "sourceName": "Lá húng quế tươi (trang trí)",
+        "pointer": "data/recipe-refresh/v2/recipes/imp-a0ed6c762f7dceba.json#/ingredients/7"
+      },
+      {
+        "recipeId": "imp-2865ee57783628d7",
+        "sourceName": "Lá húng quế tươi",
+        "pointer": "data/recipe-refresh/v2/recipes/imp-2865ee57783628d7.json#/ingredients/5"
+      },
+      {
+        "recipeId": "imp-f9481ae10c0cc62a",
+        "sourceName": "Lá húng quế tươi",
+        "pointer": "data/recipe-refresh/v2/recipes/imp-f9481ae10c0cc62a.json#/ingredients/8"
+      },
+      {
+        "recipeId": "imp-d005aca18d138bfe",
+        "sourceName": "Lá húng quế Thái (holy basil, đã nhặt lá)",
+        "pointer": "data/recipe-refresh/v2/recipes/imp-d005aca18d138bfe.json#/ingredients/3"
+      },
+      {
+        "recipeId": "imp-cc5f58548e934d9e",
+        "sourceName": "Lá húng quế tươi",
+        "pointer": "data/recipe-refresh/v2/recipes/imp-cc5f58548e934d9e.json#/ingredients/9"
+      },
+      {
+        "recipeId": "imp-8fdcddab058d5f65",
+        "sourceName": "Lá húng quế tươi",
+        "pointer": "data/recipe-refresh/v2/recipes/imp-8fdcddab058d5f65.json#/ingredients/4"
+      },
+      {
+        "recipeId": "imp-f4c5afa7ccc2a9ed",
+        "sourceName": "Lá húng quế tươi",
+        "pointer": "data/recipe-refresh/v2/recipes/imp-f4c5afa7ccc2a9ed.json#/ingredients/8"
+      }
+    ],
+    "reconciliation": [
+      {
+        "sourceName": "Lá húng quế (để xay cùng curry paste)",
+        "canonicalName": "Lá húng quế tươi",
+        "resolution": "duplicate_alias",
+        "pointer": "data/recipe-refresh/v2/ingredient-reconciliation.json#/296"
+      },
+      {
+        "sourceName": "Lá húng quế Thái (Thai basil, để cho vào cuối)",
+        "canonicalName": "Lá húng quế tươi",
+        "resolution": "duplicate_alias",
+        "pointer": "data/recipe-refresh/v2/ingredient-reconciliation.json#/297"
+      },
+      {
+        "sourceName": "Lá húng quế Thái (holy basil, đã nhặt lá)",
+        "canonicalName": "Lá húng quế tươi",
+        "resolution": "duplicate_alias",
+        "pointer": "data/recipe-refresh/v2/ingredient-reconciliation.json#/298"
+      },
+      {
+        "sourceName": "Lá húng quế tươi",
+        "canonicalName": "Lá húng quế tươi",
+        "resolution": "provisional_new_canonical_id",
+        "pointer": "data/recipe-refresh/v2/ingredient-reconciliation.json#/299"
+      },
+      {
+        "sourceName": "Lá húng quế tươi",
+        "canonicalName": "Lá húng quế tươi",
+        "resolution": "provisional_new_canonical_id",
+        "pointer": "data/recipe-refresh/v2/ingredient-reconciliation.json#/300"
+      },
+      {
+        "sourceName": "Lá húng quế tươi",
+        "canonicalName": "Lá húng quế tươi",
+        "resolution": "provisional_new_canonical_id",
+        "pointer": "data/recipe-refresh/v2/ingredient-reconciliation.json#/301"
+      },
+      {
+        "sourceName": "Lá húng quế tươi (trang trí)",
+        "canonicalName": "Lá húng quế tươi",
+        "resolution": "duplicate_alias",
+        "pointer": "data/recipe-refresh/v2/ingredient-reconciliation.json#/302"
+      }
+    ],
+    "humanReview": "PENDING",
+    "promotion": false
+  },
+  "candidates": []
+}
