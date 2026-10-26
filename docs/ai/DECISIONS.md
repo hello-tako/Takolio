@@ -3677,3 +3677,36 @@ unexpected metadata/scripts/modules. Local full suite425files/9515tests PASS;
 real staging recovery/rehearsal remains unverified. Current staging OFF state must
 be reconciled to its recorded same-source ON version before a new V2 release;
 provider flag preservation must never be mistaken for enabling V2.
+
+## ADR-072 - V3 lossless candidates before runtime promotion (2026-10-26 JST)
+
+Status: accepted for isolated local candidate tooling; runtime publication blocked.
+
+The approved 500-ID V1 release remains the runtime authority. V2 preserves 6,766
+ingredient lines and 4,938 steps, but its provisional projection excludes 2,996
+lines and retains four independently derived release blockers. Cooking start does
+not persist a content version; completion resolves the current catalog. Composition
+components retain recipe IDs; shopping has existing catalog-fingerprint fences.
+See `recipe-intelligence-v3/audit/RECIPE_V3_CONSUMER_MAP.md` for path-level evidence.
+
+Choose a versioned candidate sidecar using immutable V2 file references, exact
+old/new editorial patches, V1/V2/content hashes and explicit review outcomes.
+Reconstruct and validate the complete payload with the existing strict V2 schema;
+never serve a partial sidecar to runtime consumers. Preserve every ingredient,
+quantity, step, nutrition state and provisional identity. Editorial edits cannot
+change identities, quantities, shopping roles, nutrition roles or servings.
+Evidence-backed structural/quantity changes need a separately reviewed compiler
+extension and consistency tests. Candidate compilation confers no human approval.
+
+Alternative: promote a full versioned RuntimeRecipe now. Rejected because source,
+ingredient and nutrition evidence and historical snapshot compatibility are not
+established. An immediate D1 content-version table would add an unused authority.
+No migration is needed for review artifacts. No recipe API, planner, shopping,
+cooking, inventory, offline, payment, auth, Admin or release-workflow change is
+part of this checkpoint. Existing consumers continue to read their current source.
+
+Promotion prerequisites: reviewed ingredient transformations and nutrition,
+URL-specific claim evidence, preserved hard restrictions, explicit plan/cooking
+version pinning with old-snapshot readers, deterministic final projection,
+independent review, same-source staging and operator release approval. Rollback of
+this tooling is branch/code rollback; no user data is written or restored.

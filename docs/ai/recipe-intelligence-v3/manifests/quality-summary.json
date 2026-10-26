@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "status": "UNASSESSED",
+  "scoreWeights": null,
+  "explanation": "No calibrated culinary scoring. Priority is a conservative rule-based review queue, not a quality score.",
+  "proposedWeightsPendingPilotCalibration": {
+    "ingredientCompleteness": 20,
+    "quantityUnitCorrectness": 20,
+    "instructions": 20,
+    "provenance": 15,
+    "metadata": 10,
+    "feasibility": 10,
+    "nutrition": 5
+  }
+}
