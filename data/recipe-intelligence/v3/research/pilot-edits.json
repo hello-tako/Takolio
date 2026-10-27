@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "edits": [
+    {
+      "recipeId": "vn-canh-01",
+      "path": "/ingredients/2/note",
+      "oldValue": "Helen's: 50g cơm me ngâm 250ml nước rồi lọc; Netspace dùng 120g nước cốt me nhưng không ghi số khẩu phần — chênh lệch, ghi nhận.",
+      "newValue": "Netspace ghi rõ 4 người và 120g nước cốt me. Chưa có căn cứ quy đổi 50g cơm me sang 120g nước cốt; nội dung video Helen's Recipes chưa đọc được trong đợt đối chiếu này.",
+      "reason": "Clarify bounded source evidence and unresolved provenance; preserve quantity, identity, role and shopping/nutrition flags pending independent review.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/pilot-evidence.json#/recipes/0/claims/0"
+      ]
+    },
+    {
+      "recipeId": "vn-hap-04",
+      "path": "/ingredients/4/note",
+      "oldValue": "Không phải nguyên liệu mua riêng; lượng thu được phụ thuộc độ béo của miếng thịt.",
+      "newValue": "Tóp mỡ là thành phẩm từ thịt ba chỉ ở dòng trên, không phải phần mua thêm. Cookpad dùng tóp mỡ đã thắng sẵn, không xác nhận hiệu suất 200g thịt thành 80g tóp mỡ. Cần duyệt quan hệ nguyên liệu - thành phẩm trước khi cộng lượng mua hoặc dinh dưỡng.",
+      "reason": "Clarify bounded source evidence and unresolved provenance; preserve quantity, identity, role and shopping/nutrition flags pending independent review.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/pilot-evidence.json#/recipes/8/claims/0",
+        "data/recipe-intelligence/v3/research/pilot-evidence.json#/recipes/8/claims/1"
+      ]
+    },
+    {
+      "recipeId": "vn-hap-04",
+      "path": "/ingredients/16/note",
+      "oldValue": "VnExpress: 'phi thơm hành, tỏi băm với dầu ăn'. Vì đã thắng tóp mỡ, dùng luôn 1-2 thìa mỡ nước trong nồi thay dầu ăn.",
+      "newValue": "Mỡ nước giữ lại là thành phần phát sinh khi thắng thịt ba chỉ, không phải lượng mua thêm. Chưa xác minh lượng giữ lại; không cộng đồng thời toàn bộ thịt sống, tóp mỡ và mỡ nước như ba nguồn dinh dưỡng độc lập.",
+      "reason": "Clarify bounded source evidence and unresolved provenance; preserve quantity, identity, role and shopping/nutrition flags pending independent review.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/pilot-evidence.json#/recipes/8/claims/0",
+        "data/recipe-intelligence/v3/research/pilot-evidence.json#/recipes/8/claims/1"
+      ]
+    },
+    {
+      "recipeId": "vn-chay-05",
+      "path": "/ingredients/5/note",
+      "oldValue": "Điện Máy Xanh: 1 muỗng cà phê cho 2 người (→ 1,5 tsp cho 3 người); Saigonese Baguette: 2-3 muỗng canh — mâu thuẫn lớn, lấy 1,5 muỗng canh ở giữa để sốt vừa đậm.",
+      "newValue": "Saigonese Baguette dùng 2-3 muỗng canh cho bản đậu hũ chiên rồi kho; không xác nhận lượng cho bản đậu hũ non hấp này. Nguồn Điện Máy Xanh chưa đọc được. Mức 1,5 muỗng canh hiện tại chưa được duyệt; không coi trung bình giữa hai biến thể là định lượng đã xác minh.",
+      "reason": "Clarify bounded source evidence and unresolved provenance; preserve quantity, identity, role and shopping/nutrition flags pending independent review.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/pilot-evidence.json#/recipes/10/claims/0",
+        "data/recipe-intelligence/v3/research/pilot-evidence.json#/recipes/10/claims/1"
+      ]
+    },
+    {
+      "recipeId": "gl-05",
+      "path": "/ingredients/5/note",
+      "oldValue": "Korean Bapsang dùng 1/2 củ hành tây cho 2 phần; Maangchi dùng 1/2 củ hành tây cho bản của cô.",
+      "newValue": "Korean Bapsang ghi 1/4 củ hành tây nhỏ cho 2 phần, không phải 1/2 củ. Lượng 1/2 củ vừa hiện tại chưa được nguồn này xác nhận; nguồn Maangchi trả HTTP 403 trong đợt đối chiếu.",
+      "reason": "Clarify bounded source evidence and unresolved provenance; preserve quantity, identity, role and shopping/nutrition flags pending independent review.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/pilot-evidence.json#/recipes/17/claims/0"
+      ]
+    },
+    {
+      "recipeId": "gl-06",
+      "path": "/ingredients/11/note",
+      "oldValue": "Kavey Eats: 'a very large handful, the more the merrier'; Rachel Cooks Thai: 1 cup nén cho công thức 2 phần. MÂU THUẪN KỸ THUẬT: Kavey cho gần hết basil vào chảo đảo cho héo; Hot Thai Kitchen và No Recipes TẮT BẾP rồi mới cho basil vào để giữ hương. Kay lưu ý holy basil và Thai sweet basil khác biệt rõ về hương vị — không thay bằng húng quế thường nếu muốn đúng vị.",
+      "newValue": "Dùng holy basil (Ocimum tenuiflorum); Thai sweet basil là loại khác. Kavey Eats dùng một nắm rất lớn, chưa có căn cứ quy đổi thành 25g. Kavey và Rachel đảo basil vừa héo rồi nhấc bếp; Hot Thai Kitchen cho basil sau khi nhấc bếp. Đây là khác biệt biến thể cần chọn rõ khi duyệt.",
+      "reason": "Clarify bounded source evidence and unresolved provenance; preserve quantity, identity, role and shopping/nutrition flags pending independent review.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/pilot-evidence.json#/recipes/18/claims/0",
+        "data/recipe-intelligence/v3/research/pilot-evidence.json#/recipes/18/claims/1"
+      ]
+    },
+    {
+      "recipeId": "gl-10",
+      "path": "/ingredients/8/note",
+      "oldValue": "Hot Thai Kitchen dùng 5 lá cho 4 phần, xé nhỏ cho vào khi om gà; No Recipes cũng dùng lá makrut. Không thay bằng lá chanh thường vì hương khác hẳn.",
+      "newValue": "Hot Thai Kitchen dùng lá makrut để tạo hương; mảnh lá lớn không dùng để ăn. Vớt mảnh lá lớn trước khi dọn, hoặc nhắc người ăn bỏ lá nếu giữ trong bát theo cách truyền thống. Vai trò consumed và cách tính dinh dưỡng của dòng này vẫn cần duyệt; chưa xác minh quy đổi khối lượng lá.",
+      "reason": "Clarify bounded source evidence and unresolved provenance; preserve quantity, identity, role and shopping/nutrition flags pending independent review.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/pilot-evidence.json#/recipes/19/claims/0"
+      ]
+    }
+  ]
+}

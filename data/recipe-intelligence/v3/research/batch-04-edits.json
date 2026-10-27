@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "edits": [
+    {
+      "recipeId": "vn-sang-02",
+      "path": "/ingredients/5/note",
+      "oldValue": "Cả 3 nguồn đều dùng rau mùi/ngò rí ăn kèm nhưng không nguồn nào định lượng; ghi lượng trang trí vừa ăn 10 g cho 2 ổ. (USDA fdcId 169997: 9 nhánh rau mùi = 20 g → ~2.2 g/nhánh)",
+      "newValue": "Kingfoodmart dùng rau răm; ETV liệt kê rau mùi, còn đoạn rau mùi của Saigonese thuộc biến thể xúc xích-pate. Không có đồng thuận cả ba nguồn về ngò rí. Lượng trang trí 10 g hiện tại chưa được các đoạn nguồn này xác nhận; cần duyệt riêng.",
+      "reason": "Correct a bounded source attribution or translation; retain all quantities, identities, roles, servings and nutrition pending independent review.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-04-evidence.json#/recipes/0/claims/0",
+        "data/recipe-intelligence/v3/research/batch-04-evidence.json#/recipes/0/claims/1",
+        "data/recipe-intelligence/v3/research/batch-04-evidence.json#/recipes/0/claims/2"
+      ]
+    },
+    {
+      "recipeId": "vn-sang-03",
+      "path": "/ingredients/3/note",
+      "oldValue": "Hai nguồn đồng thuận: cachnaungon và marrybaby đều dùng 200 g thịt xay cho 4 người → 150 g cho 3 người. Marrybaby ghi rõ 'thịt lợn băm nhuyễn'. Hint ghi 'thịt heo nạc băm nhỏ'.",
+      "newValue": "Cachnaungon ghi 200 g thịt cho 4 người; mục cháo thịt bằm tía tô của MarryBaby có 200 g thịt nhưng không nêu khẩu phần. Phép tính 150 g cho 3 người chỉ dựa trên khẩu phần của cachnaungon, chưa phải đồng thuận định lượng của hai nguồn.",
+      "reason": "Correct a bounded source attribution or translation; retain all quantities, identities, roles, servings and nutrition pending independent review.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-04-evidence.json#/recipes/1/claims/0",
+        "data/recipe-intelligence/v3/research/batch-04-evidence.json#/recipes/1/claims/1"
+      ]
+    },
+    {
+      "recipeId": "gl-12",
+      "path": "/ingredients/5/note",
+      "oldValue": "daigasikfaan cho 1 muỗng canh sữa đặc vào trứng để trứng mềm mượt hơn (mẹo riêng của nguồn này); WOL không dùng.",
+      "newValue": "Daigasikfaan ghi 1 muỗng canh evaporated milk (sữa cô đặc không đường), không phải sữa đặc có đường. Giữ nguyên lượng hiện tại chờ duyệt danh tính và dữ liệu dinh dưỡng; nguồn WOL chưa đọc được trong đợt này.",
+      "reason": "Correct a bounded source attribution or translation; retain all quantities, identities, roles, servings and nutrition pending independent review.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-04-evidence.json#/recipes/13/claims/0"
+      ]
+    },
+    {
+      "recipeId": "gl-12",
+      "path": "/steps/1/instruction",
+      "oldValue": "Đập 3 quả trứng vào tô, thêm một ít sữa đặc (khoảng 1 muỗng canh), đánh đều.",
+      "newValue": "Đập 3 quả trứng vào tô, thêm một ít sữa cô đặc không đường (evaporated milk, khoảng 1 muỗng canh), đánh đều.",
+      "reason": "Correct a bounded source attribution or translation; retain all quantities, identities, roles, servings and nutrition pending independent review.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-04-evidence.json#/recipes/13/claims/0"
+      ]
+    },
+    {
+      "recipeId": "vn-lau-04",
+      "path": "/ingredients/0/note",
+      "oldValue": "Hai nguồn thống nhất: 1 con gà ta 1.8–2 kg cho 4–6 người. Số liệu USDA là gà broiler thịt + da, sống — gà ta thả vườn thực tế nạc hơn, số liệu chỉ tương đương gần đúng.",
+      "newValue": "Chưa xác minh được nhận định hai nguồn gốc cùng dùng 1 con gà 1.8–2 kg: cả hai URL không đọc được trong lượt này. Biến thể lẩu gà thuốc bắc của Bếp Mina ghi 1 con 1.5–2 kg, nhưng không xác nhận công thức, khẩu phần hoặc định lượng chính xác của bản này. Giữ 1.8 kg ở trạng thái chờ duyệt. Số liệu dinh dưỡng đang dùng là proxy gà broiler thịt và da sống, không phải số liệu riêng cho gà ta.",
+      "reason": "Remove unverified consensus; preserve quantity and qualify the alternate source.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-04-evidence.json#/recipes/7/claims/2"
+      ]
+    },
+    {
+      "recipeId": "imp-26a36c69306143bc",
+      "path": "/ingredients/0/note",
+      "oldValue": "MÂU THUẪN ĐỊNH LƯỢNG: FPT Shop dùng 300 g tôm tươi; Knorr (đúng 3 người) chỉ dùng 6-8 con tôm lột. Chọn 300 g theo FPT Shop vì tên món là 'tôm xào' — tôm là nguyên liệu chính, 6-8 con quá ít cho 3 người. Sau khi bóc vỏ, bỏ đầu và chỉ lưng còn khoảng 180-200 g thịt tôm.",
+      "newValue": "Knorr ghi 6–8 con tôm đã lột cho 3 phần. URL FPT Shop không đọc được trong lượt này nên chưa xác nhận 300 g tôm tươi. Số con tôm lột không quy đổi được thành 300 g tôm nguyên con hoặc 180–200 g thịt nếu thiếu cỡ tôm và tỷ lệ thu hồi đã đo. Giữ định lượng hiện tại ở trạng thái chờ duyệt.",
+      "reason": "Separate count, whole mass and edible yield; avoid declaring variants contradictory.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-04-evidence.json#/recipes/16/claims/2"
+      ]
+    },
+    {
+      "recipeId": "imp-b87b71d57128cc07",
+      "path": "/ingredients/0/note",
+      "oldValue": "MÂU THUẪN ĐỊNH LƯỢNG: naungon dùng 1 con cá lóc đồng ~400 g; vnexpress dùng 'một con' không ghi cân nặng (kèm 100 g sả, 50 g tỏi — quy mô gia đình 4-5 người); dayhocnghe dùng 300 g phi lê cho ~2-3 người. Quy về 4 khẩu phần: 1 con cá lóc ~700 g (hoặc 700 g phi lê).",
+      "newValue": "VnExpress ghi một con cá lóc nhưng không có khối lượng hoặc số phần. Chưa đọc được nội dung hai nguồn còn lại trong lượt này. 700 g cá nguyên con và 700 g phi lê không tương đương về phần ăn được; chưa có căn cứ nguồn để quy về 4 phần. Giữ 700 g ở trạng thái chờ duyệt dạng cá và tỷ lệ thu hồi.",
+      "reason": "Remove invented yield and whole/fillet equivalence.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-04-evidence.json#/recipes/17/claims/3"
+      ]
+    },
+    {
+      "recipeId": "imp-b87b71d57128cc07",
+      "path": "/ingredients/4/note",
+      "oldValue": "MÂU THUẪN: vnexpress dùng 50 g tỏi; naungon chỉ dùng 'tỏi băm' không định lượng. Lấy 30 g (~10 tép) ở giữa.",
+      "newValue": "VnExpress ghi 50 g tỏi cho một con cá không rõ khối lượng hoặc khẩu phần. Chưa xác minh được lượng tỏi ở nguồn NauNgon; không thể lấy trung bình với một lượng không định lượng. 30 g là lựa chọn biên soạn cần duyệt, chưa được hai nguồn xác nhận.",
+      "reason": "An unquantified value cannot justify a numerical midpoint.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-04-evidence.json#/recipes/17/claims/3"
+      ]
+    }
+  ]
+}

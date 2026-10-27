@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "edits": [
+    {
+      "recipeId": "vn-kho-06",
+      "path": "/ingredients/5/note",
+      "oldValue": "VnExpress: ướp 2–3 muỗng canh; baohaiphong: 2 muỗng canh (ướp) + 1 muỗng canh (nêm cuối) = 3. Lấy 3 muỗng canh (ướp 2 + nêm cuối 1).",
+      "newValue": "Báo Hải Phòng liệt kê 2 muỗng canh nước mắm, nhưng bước ướp không có nước mắm và bước nêm cuối chỉ thêm 1 muỗng canh; nguồn chưa nhất quán giữa danh sách và cách làm. Nội dung VnExpress chưa đọc được trong đợt đối chiếu. Tổng 3 muỗng canh hiện tại và cách chia 2 muỗng khi ướp + 1 muỗng cuối chưa được xác minh; cần duyệt trước khi thay đổi định lượng.",
+      "reason": "Correct the bounded source attribution only; preserve the existing quantity, identity, roles and shopping/nutrition flags pending independent review.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-02-evidence.json#/recipes/9/claims/1"
+      ]
+    }
+  ]
+}
