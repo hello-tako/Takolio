@@ -1,3 +1,39 @@
+# Autonomous product research checks - 2026-10-28 JST
+
+Documentation only, relative to `56d077e172e14aa3505afd4d9f4aec1272f14c05`:
+user directions plus six public product/context pages, bounded summaries,
+retrieval times, 12 snapshot hashes and source locators. No canonical data,
+source-status, candidate, dependency or runtime changes. Candidate SHA256 remains
+`0f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4`.
+The full supplement07 gate covers unchanged code/data; not repeated for docs.
+No current application-browser, staging or release acceptance. Research browser
+inspection is source reading, not application acceptance or safety validation.
+
+| Exact executed command | Observed result |
+|---|---|
+| `python3 /private/tmp/takolio-v3-product-research.py` | Four publisher pages cached HTTP200; strict decoding, raw/text hashes and locators |
+| `python3 /private/tmp/takolio-v3-product-research-astra.py` | Two Astra pages cached HTTP200, preserving four earlier snapshots; certificate page says Updating data |
+| `python3 /private/tmp/takolio-v3-product-research-check.py` | PASS 6 public pages / 12 snapshot hashes / 17 locator ranges / 14 Markdown files; candidate/canonical/protected paths unchanged; safety pending |
+| `python3 /private/tmp/takolio-v3-supp08-culinary/check-packet.py` | PASS prior 2 cases / 5 observations / 14 cache hashes and exact description locators; its unavailable product is the historical suspended shop |
+| `python3 /private/tmp/takolio-v3-seafood-decisions-check.py` | PASS 2 cases / 26 JSON pointers / 6 options, source hashes and Markdown links / 14 documentation files; its PENDING decisions refer to the historical unselected packet, not the later user research choices |
+| `PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp node scripts/recipe-intelligence-v3-audit.mjs --check` | PASS 500 recipes / 44 edits / 25 packets, four release blockers retained |
+| `python3 /private/tmp/takolio-v3-review-artifacts.py` | PASS 125 changed/untracked artifacts, 500 recipes / 1,188 sources / 1,326 claims, protected drift 0, four historical tails preserved |
+| `python3 scripts/admin-public-scan.py` | PASS added text; binary/manual scope limits retained |
+| `git diff --check b49f3e6c4fc2f1485b77623ed7257d0f8bd31f9a` | PASS |
+
+Initial product checker ran before this 14th Markdown file was updated; its
+14-file assertion failed while only 13 files were changed. No provenance or
+candidate assertion failed; rerun after completing documentation PASS.
+The search-service connector was unavailable, not successful; browser plus
+stdlib retrieval provided the fallback. An unavailable `bs4` import was replaced
+with stdlib `HTMLParser`; no dependency added. Product/process marketing and the
+historical 2001 MHLW report do not establish validated raw-shrimp service, current
+law, exact crab grilling instructions or human culinary approval. Full raw source
+files remain private; only hashes/locators and bounded summaries are published.
+
+The following documentation checks describe the prior checkpoint; their independent
+agent review does not cover the later user-direction/product-research delta.
+
 # Documentation continuation - 2026-10-28 JST
 
 Changes: RAW_SEAFOOD_DECISIONS.md and status/review links only, relative to

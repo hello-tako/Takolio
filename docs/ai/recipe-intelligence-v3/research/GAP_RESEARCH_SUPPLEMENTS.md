@@ -64,7 +64,7 @@ No reviewer identity, timestamp or approval is fabricated. Human decisions must 
 
 ## 2026-10-28 decision clarification
 
-The [raw seafood decision packet](RAW_SEAFOOD_DECISIONS.md) records exact source locators, V2/candidate hashes, coupled-field contradictions and three unresolved choices per shrimp/crab case. The YouTube preboiled phrase belongs to merchandise; its product link reaches a suspension page. Written description read; video/captions unread. No canonical claim/source count or status changed. Both P0 cases and all human decisions remain pending.
+The [raw seafood decision packet](RAW_SEAFOOD_DECISIONS.md) records exact source locators, V2/candidate hashes, coupled-field contradictions and three unresolved choices per shrimp/crab case. The YouTube preboiled phrase belongs to merchandise; its product link reaches a suspension page. Written description read; video/captions unread. No canonical claim/source count or status changed. The later user reply selects PROVIDE_RAW_PRODUCT_PROTOCOL for shrimp and SELECT_RAW_PATH for crab, recorded in the decision packet at 2026-10-27T21:06:10Z. The follow-up "tự tìm kiếm đi" authorizes autonomous research: six publisher pages now supply product comparators and historical context, with hashes/locators in that packet. Alpex/Astra marketing does not validate raw-shrimp control; Marine Foods half-thaw instructions conflict with the archival crab wording; Nissui is a separate product. Exact package/process validation and both P0 safety decisions remain pending.
 
 ## Remaining formulation review
 

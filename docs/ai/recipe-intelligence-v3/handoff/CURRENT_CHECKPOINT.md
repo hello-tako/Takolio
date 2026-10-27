@@ -4,7 +4,7 @@ BASE_SHA: b49f3e6c4fc2f1485b77623ed7257d0f8bd31f9a
 WORKING_BRANCH: codex/recipe-intelligence-v3
 WORKTREE: /Users/tunbee27/Documents/New project/Takolio-recipe-v3
 VERIFIED_IMPLEMENTATION_HEAD: a578b5696389cdb6afeca7530e33b1f4e384690e
-PRIOR_DOCUMENTATION_HEAD: 90c5b221b3c4e3c1d878c4edb5dab7f5f07465cb
+PRIOR_DOCUMENTATION_HEAD: 56d077e172e14aa3505afd4d9f4aec1272f14c05
 CURRENT_HEAD: resolve subsequent decision-documentation HEAD from git log/PR; it cannot name itself
 PHASE: A baseline checked; B/C/D/E/F partial; G compiler checked; H deferred; I current07 full gate PASS, human review pending; J blocked
 STATUS: RECIPE_V3_RESEARCH_IN_PROGRESS
@@ -34,10 +34,12 @@ KNOWN_FAILURES: Historical V2 release-check exits1 on RUNTIME_PROJECTION_LOSS, I
 CURRENT_BLOCKERS: four inherited release blockers;human decisions;ingredient/nutrition evidence;runtime snapshots/compatibility;dependency audit;hosted stack/browser/staging/operator acceptance
 PRODUCTION_MUTATIONS: 0
 PROTECTED_PATH_DRIFT: 0
-DECISION_PACKET: research/RAW_SEAFOOD_DECISIONS.md;2P0cases/3options each;PENDING;0canonical additions or approvals
+DECISION_PACKET: research/RAW_SEAFOOD_DECISIONS.md;2P0cases/3options each;selected PROVIDE_RAW_PRODUCT_PROTOCOL + SELECT_RAW_PATH;6public pages read/12snapshot hashes;package/process validation+safety review PENDING;0canonical additions or approvals
+PRODUCT_RESEARCH_CHECK: PASS6pages/12hashes/17locator ranges;14Markdown files;candidate/canonical unchanged;artifact125/protected0/history4/public/diffPASS;exact commands14_TEST_STRATEGY.md
+PRODUCT_RESEARCH: Alpex/Astra shrimp marketing;Marine Foods/Nissui frozen raw-crab comparators;MHLW2001 historical report;half-thaw/full-thaw conflict;0canonical changes;see RAW_SEAFOOD_DECISIONS.md
 CONTINUATION_CHECKS: packet provenance/locators PASS2cases/5observations/14cache hashes; audit --check PASS500/44/25; public/protected/history/diff PASS; full supplement07 gate not repeated for docs
-CONTINUATION_REVIEW: independent agent found no concrete issues across 14 Markdown files; four historical tails/candidate hash/26pointers/6options/14cache hashes checked; no code/data drift; not human culinary approval or video/caption review
-NEXT_ACTION: Record the fingerprint-bound human formulation/product choices in research/RAW_SEAFOOD_DECISIONS.md: raw-shrimp archival/cooked-adaptation/product-protocol path, and raw/preboiled/conditional crab path with exact package evidence. Both remain FAIL_UNRESOLVED; a preference is not culinary approval. Complete the remaining four critical reviews, ingredient/quantity/nutrition evidence and runtime snapshot prerequisites before any V3 promotion. Staging/production require separate authority.
+PRIOR_CONTINUATION_REVIEW: at 56d077e172e14aa3505afd4d9f4aec1272f14c05, independent agent found no concrete issues across 14 Markdown files; four historical tails/candidate hash/26pointers/6options/14cache hashes checked; no code/data drift; not human culinary approval or video/caption review
+NEXT_ACTION: Use the six located product/context pages in research/RAW_SEAFOOD_DECISIONS.md for the next bounded proposal. Shrimp still needs exact raw-use package and validated hazard-control evidence; Alpex/Astra marketing is insufficient. For raw-to-cook crab, resolve the Marine Foods package/manual, scientific species and supported grill endpoint; reconcile its half-thaw instructions with the archival fully-thawed-center wording. Nissui is a separate comparator, not an interchangeable protocol. Independent fingerprint-bound safety review remains required; both cases remain FAIL_UNRESOLVED. No request for user-supplied URLs remains outstanding. Continue the other four critical reviews and ingredient/quantity/nutrition/runtime prerequisites; staging/production require separate authority.
 
 Draft stack33-44 remains open. Supplement07 Draft #44 uses codex/recipe-v3-safety-07, based on #43 (d7ed5cf8900212915246d151d8095602a40a225e); its Draft PR status and remote-head lookup are recorded in docs/ai/recipe-intelligence-v3/handoff/PULL_REQUESTS.md. PR33 historical hosted validate40385562918 and validate-admin40385562692 SUCCESS apply only to its audit/spec head. Later bases are not main; absent hosted checks grant no acceptance. No merge or deployment.
 V1fingerprint f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37. Supplement07 preserves all previous claims/sources/edits/history; no raw-cache publication. Exact commands/failures:14_TEST_STRATEGY.md. No V3runtime/staging/production certification.
