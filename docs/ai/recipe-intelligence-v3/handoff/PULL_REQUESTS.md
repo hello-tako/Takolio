@@ -1,6 +1,6 @@
 # Draft PR stack
 
-Repository hello-tako/Takolio, ID1422954151. Freshly fetched main remains b49f3e6c4fc2f1485b77623ed7257d0f8bd31f9a. Every PR below is Draft and open at this checkpoint. Merge order follows the base column; do not merge or bypass review from this record. Local full-check scope and final focused results are in ../14_TEST_STRATEGY.md.
+Repository hello-tako/Takolio, ID1422954151. Freshly fetched main remains b49f3e6c4fc2f1485b77623ed7257d0f8bd31f9a. Every numbered PR below is Draft and open at this checkpoint. Merge order follows the base column; this record grants no merge authority. Current local checks and retained failures: ../14_TEST_STRATEGY.md.
 
 | PR | Scope | Base | Head branch | Verified head SHA |
 |---|---|---|---|---|
@@ -14,10 +14,11 @@ Repository hello-tako/Takolio, ID1422954151. Freshly fetched main remains b49f3e
 | [40](https://github.com/hello-tako/Takolio/pull/40) | Recipe V3: bounded research batches 15-19 | codex/recipe-v3-research-11-14 | codex/recipe-v3-research-15-19 | 6a5edda340acef9cf53cc6515f4d2e009dc9fcba |
 | [41](https://github.com/hello-tako/Takolio/pull/41) | Recipe V3: bounded research batches 20-25 | codex/recipe-v3-research-15-19 | codex/recipe-v3-research-20-25 | 78f3ffda0a1327a0c79b6917646d96055a2cccac |
 | [42](https://github.com/hello-tako/Takolio/pull/42) | Validate all 500 V3 candidate artifacts without runtime promotion | codex/recipe-v3-research-20-25 | codex/recipe-v3-artifacts | 73bfbf5fe4dc2f3a927d09e735f3ddcc76e0afa9 |
-| [43](https://github.com/hello-tako/Takolio/pull/43) | Record SHA-bound V3 review and continuation checkpoint | codex/recipe-v3-artifacts | codex/recipe-v3-checkpoint | Resolve current documentation head from PR/Git |
+| [43](https://github.com/hello-tako/Takolio/pull/43) | Record SHA-bound V3 review and continuation checkpoint | codex/recipe-v3-artifacts | codex/recipe-v3-checkpoint | d7ed5cf8900212915246d151d8095602a40a225e |
+| [44](https://github.com/hello-tako/Takolio/pull/44) | Recipe V3: bounded food-safety corrections and review checkpoint | codex/recipe-v3-checkpoint | codex/recipe-v3-safety-07 | Resolve current documentation head from PR/Git |
 
-Implementation candidate artifact SHA256:16d8f05ae328184dcaa5797c733271692fa5d804b4d7c7ab9fd8dffc32f09838. Verified implementation commit:73bfbf5fe4dc2f3a927d09e735f3ddcc76e0afa9 (#42). The documentation checkpoint uses codex/recipe-v3-checkpoint; its own documentation SHA is resolved from Git/PR state, never embedded in its own handoff.
+Supplement07 implementation: a578b5696389cdb6afeca7530e33b1f4e384690e. Candidate artifact SHA256: 0f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4. Draft #44 contains the safety evidence/candidate changes and subsequent documentation checkpoint; resolve its current documentation head from Git/PR state. Its handoff cannot contain its own final commit SHA. Prior checkpoint #43 remains d7ed5cf8900212915246d151d8095602a40a225e; its previous candidate hash and test scope remain historical.
 
-PR33 historical hosted validate40385562918 and validate-admin40385562692 are SUCCESS on its audit/spec head only. Later stack bases are not main; no hosted CI acceptance is inferred from absent checks. Refresh checks and required reviewer decisions for each exact head after restacking/integration. Main protection requires one approval, stale-review dismissal, last-push approval, strict validate/validate-admin and administrator enforcement; force pushes/deletions are disabled. No protections were changed.
+PR33 historical hosted validate40385562918 and validate-admin40385562692 SUCCESS apply only to its audit/spec head. Later stack bases are not main; absent checks confer no hosted acceptance. Refresh exact-head checks and reviewer decisions after integration. Main protection requires one approval, stale-review dismissal, last-push approval, strict validate/validate-admin and administrator enforcement; force pushes/deletions are disabled. No protections changed.
 
-All500 candidates remain NEEDS_REVIEW; human approval0/500; full culinary verification0/500. Four inherited release blockers and six critical safety cases remain. This stack does not certify V3 runtime/browser/staging/production acceptance. No merge, deployment or database mutation occurred.
+All 500 candidates remain NEEDS_REVIEW; human approval0/500, full culinary verification0/500. Four inherited release blockers and six critical safety cases remain. Raw-shrimp acid/freezing and crab product identity remain unresolved. No V3 runtime/browser/staging/production certification, merge, deployment or remote database mutation.

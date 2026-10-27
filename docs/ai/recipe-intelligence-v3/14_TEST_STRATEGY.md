@@ -1,3 +1,31 @@
+# Current supplement07 checks
+
+Environment: macOS, Node24.16.0, Python3; isolated V3 worktree; TMPDIR=/private/tmp. Verified data implementation `a578b5696389cdb6afeca7530e33b1f4e384690e`, candidate SHA256 `0f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4`. Documentation-only changes follow this tested data snapshot.
+
+Current supplement07 full local gate: PASS, exit0 observed; Test Files  427 passed (427); Tests  9566 passed (9566); Duration  924.13s (transform 6.86s, setup 2.35s, import 48.82s, tests 800.62s, environment 15.33s); typecheck/lint, Main/Admin local migration smoke, Client/Admin/Worker builds PASS. Command `CI=1 PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp pnpm check`; log `/private/tmp/takolio-v3-full-check-supp07.log`. This gate includes the persistent artifact test and supplements04-07. Existing Admin font build warnings retain their original scope; see actual log.
+
+| Exact executed command | Observed result |
+|---|---|
+| `PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp node scripts/recipe-intelligence-v3-audit.mjs` | PASS500recipes/44edits/25batches; four inherited blockers retained |
+| `PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp node scripts/recipe-intelligence-v3-audit.mjs --check` | PASS exact generated outputs/source hashes/claim ownership/candidate fingerprints |
+| `python3 /private/tmp/takolio-v3-supp07-agent/check-proposal.py` | PASS3V2 hashes/5official raw-text hashes/10locators/5proposed edits/32retrieval attempts; proposal-only scope |
+| `python3 /private/tmp/takolio-v3-supplement07-review.py` | PASS canonical500V1/500V2,1,319 prior claims/1,180 sources/36 prior edits-history;7incoming claims/208metadata fields/1,190links/5caches/13locators |
+| `PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp node /private/tmp/takolio-v3-independent-review.mjs` | PASS500recompiled/44reversals;1,500provenance/3,937claim pointers/755facts/559frozen inputs |
+| `python3 /private/tmp/takolio-v3-review-artifacts.py` | PASS full changed/untracked text/JSON/bounded summaries; protected drift0; four historical tails preserved |
+| `python3 scripts/admin-public-scan.py` | PASS added text; binary/manual limits retained |
+| `git diff --check b49f3e6c4fc2f1485b77623ed7257d0f8bd31f9a` | PASS full base-to-worktree diff |
+
+Independent technical review PASS on candidate SHA256 `0f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4`: 500 candidates recompiled with complete metadata; 503 V2 files/51 evidence inputs; 1,500 provenance pointers/3,937 claim pointers/755 fact references; 44 exact reversals across29 recipes; 559 frozen inputs unchanged. No concrete findings; human culinary approval0/500. Historical V2 release-check exits1 on RUNTIME_PROJECTION_LOSS, INGREDIENT_RECONCILIATION_INCOMPLETE, SOURCE_CONTENT_VERIFICATION_INCOMPLETE and NUTRITION_EVIDENCE_INCOMPLETE. Historical dependency audit exits1:2high/3moderate, including Zod GHSA-mrhx-c7xc-m3w5 and undici GHSA-xjj6-f33q-929c. Dependencies unchanged; these failures remain open. GitHub push additionally reported48 default-branch advisories (8high/37moderate/3low); this hosted warning is separate from the historical local audit and was not independently re-audited. No additional focused rerun is necessary when the current full gate passes; its29 V3 tests are included.
+
+Supplement07 checker first looked for replaced chicken edit history in the edits packet; corrected to its owning evidence recipe without canonical change. Earlier urllib FDA404 was abuse detection; complete curlHTTP200 was subsequently read. No publisher outage claimed. Raw caches remain private; repository packets retain hashes, summaries and locators.
+
+Source-cache01-06 checks and the full gates below are historical. They do not supersede current07 results. No V3 browser, staging, runtime compatibility or production certification. All four release blockers and human review remain open.
+
+---
+
+The following supplement06 record is historical; its current/final wording applies only to that earlier snapshot.
+
+<!-- supplement06-history -->
 # Test strategy and observed results
 
 Environment: macOS, Node24.16.0 (`/opt/homebrew/opt/node@24/bin`), Python3, TMPDIR=/private/tmp, isolated V3 worktree. No remote database or deployment checks.

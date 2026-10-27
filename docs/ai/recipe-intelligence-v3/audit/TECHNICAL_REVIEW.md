@@ -1,3 +1,24 @@
+# Current supplement07 technical review
+
+No concrete findings in independent agent review. Human culinary approval remains0/500; release blocked. Verified data implementation `a578b5696389cdb6afeca7530e33b1f4e384690e` follows documentation checkpoint d7ed5cf8900212915246d151d8095602a40a225e. Candidate SHA256 `0f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4`.
+
+Independent technical review PASS on candidate SHA256 `0f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4`: 500 candidates recompiled with complete metadata; 503 V2 files/51 evidence inputs; 1,500 provenance pointers/3,937 claim pointers/755 fact references; 44 exact reversals across29 recipes; 559 frozen inputs unchanged. No concrete findings; human culinary approval0/500.
+
+Canonical preservation review PASS:500V1/500V2 unchanged;1,319 prior claim prefixes/1,180 prior source objects/36 prior edits-history preserved;7incoming claims/208metadata fields/1,190reciprocal links/5official caches/13exact fact locators checked. Source ownership follows actual recipe.sourceIds. Current totals: 1,188 source rows / 1,150 distinct URLs / 1,326 claims; 500/500 recipes with bounded external-content claims; 44 reversible edits across 29 recipes; 676 bounded reads; 199 reachable-only/unread; 309 unavailable-only; 4 reachable-and-unavailable; claims {"FACT_SUPPORTED": 405, "SOURCE_CONFLICT": 8, "SOURCE_CONTENT_READ": 592, "SOURCE_UNAVAILABLE": 321}.
+
+Semantic review coordinated salmon instruction/tip, sprouts instruction/tip/garnish, grilled-shrimp instruction/tip and chicken instruction/revised tip. FDA145F is rounded upward to63C; poultry165F converts to approximately74C. Salmon sake top-up and chicken no-reuse marinade caution remain. Prior chicken tip is retained in previousCandidateEdits on its owning evidence recipe. The initial review checker searched the wrong packet; correcting it passed without canonical changes. No private excerpts/cache paths or unused oyster citation are published. FDA line113 fish cue was excluded; general oyster lemon advice was not transferred to shrimp.
+
+Six critical cases remain pending. Raw shrimp acid/freezing and crab raw/pre-cooked identity remain FAIL_UNRESOLVED. Bounded endpoint guidance does not certify exact time, handling, quantity, oil retention or complete formulation. Human decisions must bind the candidate fingerprints in ../research/GAP_RESEARCH_SUPPLEMENTS.md.
+
+Current supplement07 full local gate: PASS, exit0 observed; Test Files  427 passed (427); Tests  9566 passed (9566); Duration  924.13s (transform 6.86s, setup 2.35s, import 48.82s, tests 800.62s, environment 15.33s); typecheck/lint, Main/Admin local migration smoke, Client/Admin/Worker builds PASS. Command `CI=1 PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp pnpm check`; log `/private/tmp/takolio-v3-full-check-supp07.log`. Exact commands and logs: ../14_TEST_STRATEGY.md. Public/protected/history and full base diff checks PASS. V1 fingerprint unchanged; ingredient lines6,766/steps4,938 conserved; no migration, runtime/source promotion, browser/staging certification, remote D1 or production mutation.
+
+Historical V2 release-check exits1 on RUNTIME_PROJECTION_LOSS, INGREDIENT_RECONCILIATION_INCOMPLETE, SOURCE_CONTENT_VERIFICATION_INCOMPLETE and NUTRITION_EVIDENCE_INCOMPLETE. Historical dependency audit exits1:2high/3moderate, including Zod GHSA-mrhx-c7xc-m3w5 and undici GHSA-xjj6-f33q-929c. Dependencies unchanged; these failures remain open. GitHub push additionally reported48 default-branch advisories (8high/37moderate/3low); this hosted warning is separate from the historical local audit and was not independently re-audited. Historical CI-gap reproduction and supplement06 review below retain their earlier snapshot scope. Current review evidence: /private/tmp/takolio-v3-supplement07-review.json (+.md), /private/tmp/takolio-v3-independent-review.json (+.md). Temporary caches may expire; canonical packets and persistent audit test remain.
+
+---
+
+The following supplement06 record is historical; its current/final wording applies only to that earlier snapshot.
+
+<!-- supplement06-history -->
 # V3 technical review checkpoint
 
 Result: no unresolved concrete tooling or artifact-integrity findings on the snapshot below. This is an independent agent technical review, not human culinary approval. All 500 candidates remain NEEDS_REVIEW; full culinary verification and human approval are 0/500. Release remains blocked.

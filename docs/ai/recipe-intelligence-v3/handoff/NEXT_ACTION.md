@@ -1,7 +1,7 @@
 # Next action
 
-1. Implementation and research are committed in Draft stack33-42. Draft #43 binds implementation73bfbf5fe4dc2f3a927d09e735f3ddcc76e0afa9 and is published separately from codex/recipe-v3-checkpoint. Verify fresh remote heads, Draft state and exact-head checks using PULL_REQUESTS.md before continuation. Keep all PRs Draft until independent human review.
-2. Review exact source/formulation matches and 6 critical safety findings; independently review exact candidates, ingredient identities and quantity/step/nutrition evidence. Complete scoped Draft PR review. Runtime version pinning/compatibility follows evidence closure; staging and production require separate authority.
-3. Review source variants separately. Preserve quantities/yields when evidence differs; structural/quantity changes require compiler scope review. Do not infer species, edible portion, oil absorption or allergy safety.
-4. Obtain real independent human decisions bound to candidate fingerprints. Internal agent technical review cannot set HUMAN_APPROVED.
-5. Before any runtime promotion, implement and test version-pinned content/saved-plan/shopping/cooking/offline/rollback behavior. No production credentials, mutation, deployment, merge bypass or protected auth/payment/infrastructure edits.
+1. Verify fresh Git/remote/main/PR state. Supplement07 implementation is `a578b5696389cdb6afeca7530e33b1f4e384690e`; documentation follows it. See PULL_REQUESTS.md for Draft stack bases and current remote heads.
+2. Obtain independent human decisions on the six fingerprint-bound safety cases in research/GAP_RESEARCH_SUPPLEMENTS.md, especially raw-shrimp formulation and raw/pre-cooked crab identity. Review remaining formulation, ingredient, quantity and nutrition evidence. Runtime version pinning/saved-plan/shopping/cooking/offline/rollback integration follows evidence closure; staging and production require separate authority.
+3. Human decisions must include reviewer identity, timestamp, exact evidence, candidate fingerprint and unresolved-risk disposition. Internal agent review cannot set HUMAN_APPROVED.
+4. Preserve source variants, quantities/yields, identity/allergen uncertainty, null/blocked nutrition, historical claims and exact reversibility. No automatic mapping or source promotion.
+5. Complete exact-head hosted review after stack integration. No production credentials/mutation/deploy/merge bypass or unrelated payment/auth/infrastructure changes.
