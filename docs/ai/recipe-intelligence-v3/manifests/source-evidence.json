@@ -1,0 +1,870 @@
+{
+  "schemaVersion": 1,
+  "declaredContentVerifiedRows": 0,
+  "sourceAttempts": {
+    "recipeCount": 500,
+    "attemptedRecipeCount": 500,
+    "uniqueUrlAttemptCount": 488,
+    "recipeStatusCounts": {
+      "URL_REACHABLE": 196,
+      "SOURCE_CONTENT_READ": 164,
+      "SOURCE_UNAVAILABLE": 140
+    },
+    "sourceStatusCounts": {
+      "URL_REACHABLE": 195,
+      "SOURCE_CONTENT_READ": 159,
+      "SOURCE_UNAVAILABLE": 134
+    },
+    "humanApprovedCount": 0,
+    "contentVerifiedRecipeCount": 0,
+    "productionMutations": 0
+  },
+  "boundedResearch": [
+    {
+      "batchId": "v3-01",
+      "evidencePath": "data/recipe-intelligence/v3/research/pilot-evidence.json",
+      "editsPath": "data/recipe-intelligence/v3/research/pilot-edits.json",
+      "summary": {
+        "recipeCount": 20,
+        "sourceAttemptCount": 46,
+        "sourceStatusCounts": {
+          "SOURCE_CONTENT_READ": 30,
+          "SOURCE_RELEVANCE_VERIFIED": 30,
+          "SOURCE_UNAVAILABLE": 16,
+          "URL_DISCOVERED": 46,
+          "URL_REACHABLE": 32
+        },
+        "claimCount": 55,
+        "claimStatusCounts": {
+          "FACT_SUPPORTED": 21,
+          "SOURCE_CONFLICT": 4,
+          "SOURCE_CONTENT_READ": 18,
+          "SOURCE_UNAVAILABLE": 12
+        },
+        "findingTypeCounts": {
+          "BOUNDED_IDENTITY_SUPPORT": 1,
+          "BOUNDED_METHOD_SUPPORT": 6,
+          "BOUNDED_PROCESS_ROLE_SUPPORT": 1,
+          "DIRECT_SOURCE_FACT": 3,
+          "INTERNAL_V2_DERIVED_COMPONENT_RISK": 1,
+          "INTERNAL_V2_IDENTITY_INCONSISTENCY": 1,
+          "INTERNAL_V2_INCONSISTENCY": 3,
+          "INTERNAL_V2_MISSING_INGREDIENT": 3,
+          "INTERNAL_V2_ROLE_INCONSISTENCY": 2,
+          "SOURCE_ACCESS_LIMIT": 12,
+          "SOURCE_INTERNAL_QUANTITY_CONFLICT": 2,
+          "SOURCE_INTERNAL_UNIT_CONFLICT": 2,
+          "UNSUPPORTED_DERIVATION": 6,
+          "VARIANT_DIFFERENCE": 12
+        },
+        "humanApprovedCount": 0,
+        "fullRecipeVerificationCompleted": 0,
+        "productionMutations": 0
+      }
+    },
+    {
+      "batchId": "v3-02",
+      "evidencePath": "data/recipe-intelligence/v3/research/batch-02-evidence.json",
+      "editsPath": "data/recipe-intelligence/v3/research/batch-02-edits.json",
+      "summary": {
+        "recipeCount": 20,
+        "sourceAttemptCount": 45,
+        "sourceStatusCounts": {
+          "SOURCE_CONTENT_READ": 37,
+          "SOURCE_RELEVANCE_VERIFIED": 37,
+          "SOURCE_UNAVAILABLE": 8,
+          "URL_DISCOVERED": 45,
+          "URL_REACHABLE": 39
+        },
+        "claimCount": 35,
+        "claimStatusCounts": {
+          "FACT_SUPPORTED": 5,
+          "SOURCE_CONFLICT": 3,
+          "SOURCE_CONTENT_READ": 20,
+          "SOURCE_UNAVAILABLE": 7
+        },
+        "findingTypeCounts": {
+          "INTERNAL_V2_DERIVED_COMPONENT_RISK": 1,
+          "INTERNAL_V2_INCONSISTENCY": 1,
+          "INTERNAL_V2_MISSING_INGREDIENT": 3,
+          "SOURCE_ACCESS_LIMIT": 7,
+          "SOURCE_INTERNAL_MISSING_INGREDIENT": 1,
+          "SOURCE_INTERNAL_QUANTITY_CONFLICT": 2,
+          "UNSUPPORTED_DERIVATION": 8,
+          "VARIANT_DIFFERENCE": 12
+        },
+        "humanApprovedCount": 0,
+        "fullRecipeVerificationCompleted": 0,
+        "productionMutations": 0
+      }
+    },
+    {
+      "batchId": "v3-03",
+      "evidencePath": "data/recipe-intelligence/v3/research/batch-03-evidence.json",
+      "editsPath": "data/recipe-intelligence/v3/research/batch-03-edits.json",
+      "summary": {
+        "recipeCount": 20,
+        "sourceAttemptCount": 47,
+        "sourceStatusCounts": {
+          "SOURCE_CONTENT_READ": 38,
+          "SOURCE_RELEVANCE_VERIFIED": 38,
+          "SOURCE_UNAVAILABLE": 9,
+          "URL_DISCOVERED": 47,
+          "URL_REACHABLE": 38
+        },
+        "claimCount": 48,
+        "claimStatusCounts": {
+          "FACT_SUPPORTED": 20,
+          "SOURCE_CONTENT_READ": 20,
+          "SOURCE_UNAVAILABLE": 8
+        },
+        "findingTypeCounts": {
+          "INTERNAL_V2_MISSING_INGREDIENT": 1,
+          "INTERNAL_V2_MISSING_LIQUID_AND_COMPONENT_BASIS": 1,
+          "INTERNAL_V2_OIL_RETENTION_AND_MISSING_WATER": 1,
+          "INTERNAL_V2_QUANTITY_AND_ROLE_CONFLICT": 1,
+          "INTERNAL_V2_QUANTITY_BUDGET_CONFLICT": 1,
+          "INTERNAL_V2_RAW_COOKED_BASIS_CONFLICT": 1,
+          "INTERNAL_V2_RETENTION_UNRESOLVED": 5,
+          "INTERNAL_V2_ROLE_AND_MISSING_OIL": 1,
+          "INTERNAL_V2_ROLE_AND_TIMING_CONFLICT": 1,
+          "INTERNAL_V2_ROLE_CONFLICT": 1,
+          "INTERNAL_V2_TIMING_AND_QUANTITY_CONFLICT": 1,
+          "INTERNAL_V2_TIMING_CONFLICT": 1,
+          "INTERNAL_V2_UNIT_BASIS_UNRESOLVED": 1,
+          "INTERNAL_V2_UNUSED_COMPONENT": 1,
+          "INTERNAL_V2_UNUSED_INGREDIENT_AND_EDIBLE_YIELD": 1,
+          "INTERNAL_V2_UNUSED_INGREDIENT_AND_ROLE_CONFLICT": 1,
+          "SOURCE_ACCESS_LIMIT": 8,
+          "VARIANT_DIFFERENCE": 20
+        },
+        "humanApprovedCount": 0,
+        "fullRecipeVerificationCompleted": 0,
+        "productionMutations": 0
+      }
+    },
+    {
+      "batchId": "v3-04",
+      "evidencePath": "data/recipe-intelligence/v3/research/batch-04-evidence.json",
+      "editsPath": "data/recipe-intelligence/v3/research/batch-04-edits.json",
+      "summary": {
+        "recipeCount": 20,
+        "sourceAttemptCount": 47,
+        "sourceStatusCounts": {
+          "SOURCE_CONTENT_READ": 29,
+          "SOURCE_RELEVANCE_VERIFIED": 29,
+          "SOURCE_UNAVAILABLE": 17,
+          "URL_DISCOVERED": 47,
+          "URL_REACHABLE": 30
+        },
+        "claimCount": 52,
+        "claimStatusCounts": {
+          "FACT_SUPPORTED": 5,
+          "SOURCE_CONTENT_READ": 27,
+          "SOURCE_UNAVAILABLE": 20
+        },
+        "findingTypeCounts": {
+          "BOUNDED_SOURCE_READ": 1,
+          "DIRECT_SOURCE_FACT": 3,
+          "INTERNAL_CONSISTENCY": 1,
+          "INTERNAL_V2_OBSERVATION": 1,
+          "SOURCE_ACCESS_LIMIT": 20,
+          "SOURCE_INGREDIENT_FACT": 25,
+          "VARIANT_DIFFERENCE": 1
+        },
+        "humanApprovedCount": 0,
+        "fullRecipeVerificationCompleted": 0,
+        "productionMutations": 0
+      }
+    },
+    {
+      "batchId": "v3-05",
+      "evidencePath": "data/recipe-intelligence/v3/research/batch-05-evidence.json",
+      "editsPath": "data/recipe-intelligence/v3/research/batch-05-edits.json",
+      "summary": {
+        "recipeCount": 20,
+        "sourceAttemptCount": 46,
+        "sourceStatusCounts": {
+          "SOURCE_CONTENT_READ": 25,
+          "SOURCE_RELEVANCE_VERIFIED": 25,
+          "SOURCE_UNAVAILABLE": 19,
+          "URL_DISCOVERED": 46,
+          "URL_REACHABLE": 27
+        },
+        "claimCount": 47,
+        "claimStatusCounts": {
+          "FACT_SUPPORTED": 8,
+          "SOURCE_CONTENT_READ": 19,
+          "SOURCE_UNAVAILABLE": 20
+        },
+        "findingTypeCounts": {
+          "ALLERGEN_REVIEW_LIMIT": 1,
+          "BOUNDED_METHOD_SUPPORT": 2,
+          "BOUNDED_SOURCE_FACT": 17,
+          "BOUNDED_SOURCE_READ": 1,
+          "DIRECT_SOURCE_FACT": 3,
+          "FOOD_SAFETY_REVIEW": 2,
+          "INTERNAL_V2_OBSERVATION": 1,
+          "SOURCE_ACCESS_LIMIT": 19,
+          "VARIANT_DIFFERENCE": 1
+        },
+        "humanApprovedCount": 0,
+        "fullRecipeVerificationCompleted": 0,
+        "productionMutations": 0
+      }
+    },
+    {
+      "batchId": "v3-06",
+      "evidencePath": "data/recipe-intelligence/v3/research/batch-06-evidence.json",
+      "editsPath": "data/recipe-intelligence/v3/research/batch-06-edits.json",
+      "summary": {
+        "recipeCount": 20,
+        "sourceAttemptCount": 44,
+        "sourceStatusCounts": {
+          "SOURCE_CONTENT_READ": 30,
+          "SOURCE_RELEVANCE_VERIFIED": 30,
+          "SOURCE_UNAVAILABLE": 11,
+          "URL_DISCOVERED": 44,
+          "URL_REACHABLE": 33
+        },
+        "claimCount": 47,
+        "claimStatusCounts": {
+          "FACT_SUPPORTED": 9,
+          "SOURCE_CONTENT_READ": 25,
+          "SOURCE_UNAVAILABLE": 13
+        },
+        "findingTypeCounts": {
+          "BOUNDED_METHOD_SUPPORT": 1,
+          "BOUNDED_SOURCE_COMPARISON": 5,
+          "BOUNDED_SOURCE_FACT": 25,
+          "DIRECT_SOURCE_FACT": 2,
+          "INTERNAL_CONSISTENCY": 1,
+          "SOURCE_ACCESS_LIMIT": 13
+        },
+        "humanApprovedCount": 0,
+        "fullRecipeVerificationCompleted": 0,
+        "productionMutations": 0
+      }
+    },
+    {
+      "batchId": "v3-07",
+      "evidencePath": "data/recipe-intelligence/v3/research/batch-07-evidence.json",
+      "editsPath": "data/recipe-intelligence/v3/research/batch-07-edits.json",
+      "summary": {
+        "recipeCount": 20,
+        "sourceAttemptCount": 46,
+        "sourceStatusCounts": {
+          "SOURCE_CONTENT_READ": 27,
+          "SOURCE_RELEVANCE_VERIFIED": 27,
+          "SOURCE_UNAVAILABLE": 13,
+          "URL_DISCOVERED": 46,
+          "URL_REACHABLE": 33
+        },
+        "claimCount": 42,
+        "claimStatusCounts": {
+          "FACT_SUPPORTED": 3,
+          "SOURCE_CONTENT_READ": 27,
+          "SOURCE_UNAVAILABLE": 12
+        },
+        "findingTypeCounts": {
+          "BOUNDED_SOURCE_COMPARISON": 2,
+          "BOUNDED_SOURCE_FACT": 25,
+          "BOUNDED_SOURCE_READ": 1,
+          "INTERNAL_V2_OBSERVATION": 1,
+          "SOURCE_ACCESS_LIMIT": 12,
+          "VARIANT_DIFFERENCE": 1
+        },
+        "humanApprovedCount": 0,
+        "fullRecipeVerificationCompleted": 0,
+        "productionMutations": 0
+      }
+    },
+    {
+      "batchId": "v3-08",
+      "evidencePath": "data/recipe-intelligence/v3/research/batch-08-evidence.json",
+      "editsPath": "data/recipe-intelligence/v3/research/batch-08-edits.json",
+      "summary": {
+        "recipeCount": 20,
+        "sourceAttemptCount": 56,
+        "sourceStatusCounts": {
+          "SOURCE_CONTENT_READ": 24,
+          "SOURCE_RELEVANCE_VERIFIED": 24,
+          "SOURCE_UNAVAILABLE": 29,
+          "URL_DISCOVERED": 56,
+          "URL_REACHABLE": 27
+        },
+        "claimCount": 46,
+        "claimStatusCounts": {
+          "FACT_SUPPORTED": 12,
+          "SOURCE_CONTENT_READ": 16,
+          "SOURCE_UNAVAILABLE": 18
+        },
+        "findingTypeCounts": {
+          "BOUNDED_SOURCE_COMPARISON": 9,
+          "BOUNDED_SOURCE_FACT": 16,
+          "INTERNAL_CONSISTENCY": 3,
+          "SOURCE_ACCESS_LIMIT": 18
+        },
+        "humanApprovedCount": 0,
+        "fullRecipeVerificationCompleted": 0,
+        "productionMutations": 0
+      }
+    },
+    {
+      "batchId": "v3-09",
+      "evidencePath": "data/recipe-intelligence/v3/research/batch-09-evidence.json",
+      "editsPath": "data/recipe-intelligence/v3/research/batch-09-edits.json",
+      "summary": {
+        "recipeCount": 20,
+        "sourceAttemptCount": 46,
+        "sourceStatusCounts": {
+          "SOURCE_CONTENT_READ": 28,
+          "SOURCE_RELEVANCE_VERIFIED": 28,
+          "SOURCE_UNAVAILABLE": 18,
+          "URL_DISCOVERED": 46,
+          "URL_REACHABLE": 28
+        },
+        "claimCount": 43,
+        "claimStatusCounts": {
+          "FACT_SUPPORTED": 4,
+          "SOURCE_CONTENT_READ": 24,
+          "SOURCE_UNAVAILABLE": 15
+        },
+        "findingTypeCounts": {
+          "BOUNDED_SOURCE_COMPARISON": 3,
+          "BOUNDED_SOURCE_FACT": 24,
+          "INTERNAL_CONSISTENCY": 1,
+          "SOURCE_ACCESS_LIMIT": 15
+        },
+        "humanApprovedCount": 0,
+        "fullRecipeVerificationCompleted": 0,
+        "productionMutations": 0
+      }
+    },
+    {
+      "batchId": "v3-10",
+      "evidencePath": "data/recipe-intelligence/v3/research/batch-10-evidence.json",
+      "editsPath": "data/recipe-intelligence/v3/research/batch-10-edits.json",
+      "summary": {
+        "recipeCount": 20,
+        "sourceAttemptCount": 45,
+        "sourceStatusCounts": {
+          "SOURCE_CONTENT_READ": 30,
+          "SOURCE_RELEVANCE_VERIFIED": 30,
+          "SOURCE_UNAVAILABLE": 12,
+          "URL_DISCOVERED": 45,
+          "URL_REACHABLE": 33
+        },
+        "claimCount": 45,
+        "claimStatusCounts": {
+          "FACT_SUPPORTED": 5,
+          "SOURCE_CONTENT_READ": 28,
+          "SOURCE_UNAVAILABLE": 12
+        },
+        "findingTypeCounts": {
+          "BOUNDED_SOURCE_COMPARISON": 4,
+          "BOUNDED_SOURCE_FACT": 28,
+          "INTERNAL_CONSISTENCY": 1,
+          "SOURCE_ACCESS_LIMIT": 12
+        },
+        "humanApprovedCount": 0,
+        "fullRecipeVerificationCompleted": 0,
+        "productionMutations": 0
+      }
+    },
+    {
+      "batchId": "v3-11",
+      "evidencePath": "data/recipe-intelligence/v3/research/batch-11-evidence.json",
+      "editsPath": "data/recipe-intelligence/v3/research/batch-11-edits.json",
+      "summary": {
+        "recipeCount": 20,
+        "sourceAttemptCount": 49,
+        "sourceStatusCounts": {
+          "SOURCE_CONTENT_READ": 33,
+          "SOURCE_RELEVANCE_VERIFIED": 33,
+          "SOURCE_UNAVAILABLE": 13,
+          "URL_DISCOVERED": 49,
+          "URL_REACHABLE": 36
+        },
+        "claimCount": 47,
+        "claimStatusCounts": {
+          "FACT_SUPPORTED": 1,
+          "SOURCE_CONTENT_READ": 35,
+          "SOURCE_UNAVAILABLE": 11
+        },
+        "findingTypeCounts": {
+          "BOUNDED_SOURCE_FACT": 31,
+          "BOUNDED_SOURCE_READ": 3,
+          "INTERNAL_V2_OBSERVATION": 1,
+          "SOURCE_ACCESS_LIMIT": 11,
+          "VARIANT_DIFFERENCE": 1
+        },
+        "humanApprovedCount": 0,
+        "fullRecipeVerificationCompleted": 0,
+        "productionMutations": 0
+      }
+    },
+    {
+      "batchId": "v3-12",
+      "evidencePath": "data/recipe-intelligence/v3/research/batch-12-evidence.json",
+      "editsPath": "data/recipe-intelligence/v3/research/batch-12-edits.json",
+      "summary": {
+        "recipeCount": 20,
+        "sourceAttemptCount": 44,
+        "sourceStatusCounts": {
+          "SOURCE_CONTENT_READ": 28,
+          "SOURCE_RELEVANCE_VERIFIED": 28,
+          "SOURCE_UNAVAILABLE": 15,
+          "URL_DISCOVERED": 44,
+          "URL_REACHABLE": 29
+        },
+        "claimCount": 41,
+        "claimStatusCounts": {
+          "FACT_SUPPORTED": 1,
+          "SOURCE_CONTENT_READ": 27,
+          "SOURCE_UNAVAILABLE": 13
+        },
+        "findingTypeCounts": {
+          "BOUNDED_SOURCE_COMPARISON": 1,
+          "BOUNDED_SOURCE_FACT": 27,
+          "SOURCE_ACCESS_LIMIT": 13
+        },
+        "humanApprovedCount": 0,
+        "fullRecipeVerificationCompleted": 0,
+        "productionMutations": 0
+      }
+    },
+    {
+      "batchId": "v3-13",
+      "evidencePath": "data/recipe-intelligence/v3/research/batch-13-evidence.json",
+      "editsPath": "data/recipe-intelligence/v3/research/batch-13-edits.json",
+      "summary": {
+        "recipeCount": 20,
+        "sourceAttemptCount": 44,
+        "sourceStatusCounts": {
+          "SOURCE_CONTENT_READ": 27,
+          "SOURCE_RELEVANCE_VERIFIED": 27,
+          "SOURCE_UNAVAILABLE": 16,
+          "URL_DISCOVERED": 44,
+          "URL_REACHABLE": 28
+        },
+        "claimCount": 57,
+        "claimStatusCounts": {
+          "FACT_SUPPORTED": 20,
+          "SOURCE_CONFLICT": 1,
+          "SOURCE_CONTENT_READ": 16,
+          "SOURCE_UNAVAILABLE": 20
+        },
+        "findingTypeCounts": {
+          "BOUNDED_SOURCE_COMPARISON": 14,
+          "BOUNDED_SOURCE_FACT": 6,
+          "BOUNDED_SOURCE_READ": 10,
+          "INTERNAL_CONSISTENCY": 1,
+          "INTERNAL_V2_OBSERVATION": 5,
+          "SOURCE_ACCESS_LIMIT": 20,
+          "SOURCE_INTERNAL_UNIT_CONFLICT": 1
+        },
+        "humanApprovedCount": 0,
+        "fullRecipeVerificationCompleted": 0,
+        "productionMutations": 0
+      }
+    },
+    {
+      "batchId": "v3-14",
+      "evidencePath": "data/recipe-intelligence/v3/research/batch-14-evidence.json",
+      "editsPath": "data/recipe-intelligence/v3/research/batch-14-edits.json",
+      "summary": {
+        "recipeCount": 20,
+        "sourceAttemptCount": 48,
+        "sourceStatusCounts": {
+          "SOURCE_CONTENT_READ": 34,
+          "SOURCE_RELEVANCE_VERIFIED": 34,
+          "SOURCE_UNAVAILABLE": 10,
+          "URL_DISCOVERED": 48,
+          "URL_REACHABLE": 38
+        },
+        "claimCount": 59,
+        "claimStatusCounts": {
+          "FACT_SUPPORTED": 8,
+          "SOURCE_CONTENT_READ": 36,
+          "SOURCE_UNAVAILABLE": 15
+        },
+        "findingTypeCounts": {
+          "BOUNDED_SOURCE_FACT": 18,
+          "BOUNDED_SOURCE_READ": 16,
+          "INTERNAL_V2_OBSERVATION": 8,
+          "SOURCE_ACCESS_LIMIT": 15,
+          "VARIANT_DIFFERENCE": 2
+        },
+        "humanApprovedCount": 0,
+        "fullRecipeVerificationCompleted": 0,
+        "productionMutations": 0
+      }
+    },
+    {
+      "batchId": "v3-15",
+      "evidencePath": "data/recipe-intelligence/v3/research/batch-15-evidence.json",
+      "editsPath": "data/recipe-intelligence/v3/research/batch-15-edits.json",
+      "summary": {
+        "recipeCount": 20,
+        "sourceAttemptCount": 58,
+        "sourceStatusCounts": {
+          "SOURCE_CONTENT_READ": 24,
+          "SOURCE_RELEVANCE_VERIFIED": 24,
+          "SOURCE_UNAVAILABLE": 23,
+          "URL_DISCOVERED": 58,
+          "URL_REACHABLE": 35
+        },
+        "claimCount": 83,
+        "claimStatusCounts": {
+          "FACT_SUPPORTED": 31,
+          "SOURCE_CONTENT_READ": 28,
+          "SOURCE_UNAVAILABLE": 24
+        },
+        "findingTypeCounts": {
+          "BOUNDED_SOURCE_READ": 11,
+          "INTERNAL_V2_OBSERVATION": 11,
+          "INTERNAL_V2_UNIT_BASIS_UNRESOLVED": 20,
+          "SOURCE_ACCESS_LIMIT": 24,
+          "SOURCE_INGREDIENT_FACT": 13,
+          "VARIANT_DIFFERENCE": 4
+        },
+        "humanApprovedCount": 0,
+        "fullRecipeVerificationCompleted": 0,
+        "productionMutations": 0
+      }
+    },
+    {
+      "batchId": "v3-16",
+      "evidencePath": "data/recipe-intelligence/v3/research/batch-16-evidence.json",
+      "editsPath": "data/recipe-intelligence/v3/research/batch-16-edits.json",
+      "summary": {
+        "recipeCount": 20,
+        "sourceAttemptCount": 45,
+        "sourceStatusCounts": {
+          "SOURCE_CONTENT_READ": 20,
+          "SOURCE_RELEVANCE_VERIFIED": 20,
+          "SOURCE_UNAVAILABLE": 5,
+          "URL_DISCOVERED": 45,
+          "URL_REACHABLE": 40
+        },
+        "claimCount": 45,
+        "claimStatusCounts": {
+          "FACT_SUPPORTED": 20,
+          "SOURCE_CONTENT_READ": 20,
+          "SOURCE_UNAVAILABLE": 5
+        },
+        "findingTypeCounts": {
+          "INTERNAL_V2_UNIT_BASIS_UNRESOLVED": 20,
+          "SOURCE_ACCESS_LIMIT": 5,
+          "SOURCE_INGREDIENT_FACT": 20
+        },
+        "humanApprovedCount": 0,
+        "fullRecipeVerificationCompleted": 0,
+        "productionMutations": 0
+      }
+    },
+    {
+      "batchId": "v3-17",
+      "evidencePath": "data/recipe-intelligence/v3/research/batch-17-evidence.json",
+      "editsPath": "data/recipe-intelligence/v3/research/batch-17-edits.json",
+      "summary": {
+        "recipeCount": 20,
+        "sourceAttemptCount": 45,
+        "sourceStatusCounts": {
+          "SOURCE_CONTENT_READ": 21,
+          "SOURCE_RELEVANCE_VERIFIED": 21,
+          "SOURCE_UNAVAILABLE": 6,
+          "URL_DISCOVERED": 45,
+          "URL_REACHABLE": 39
+        },
+        "claimCount": 52,
+        "claimStatusCounts": {
+          "FACT_SUPPORTED": 23,
+          "SOURCE_CONTENT_READ": 22,
+          "SOURCE_UNAVAILABLE": 7
+        },
+        "findingTypeCounts": {
+          "BOUNDED_SOURCE_READ": 3,
+          "INTERNAL_V2_OBSERVATION": 3,
+          "INTERNAL_V2_UNIT_BASIS_UNRESOLVED": 20,
+          "SOURCE_ACCESS_LIMIT": 7,
+          "SOURCE_INGREDIENT_FACT": 18,
+          "VARIANT_DIFFERENCE": 1
+        },
+        "humanApprovedCount": 0,
+        "fullRecipeVerificationCompleted": 0,
+        "productionMutations": 0
+      }
+    },
+    {
+      "batchId": "v3-18",
+      "evidencePath": "data/recipe-intelligence/v3/research/batch-18-evidence.json",
+      "editsPath": "data/recipe-intelligence/v3/research/batch-18-edits.json",
+      "summary": {
+        "recipeCount": 20,
+        "sourceAttemptCount": 60,
+        "sourceStatusCounts": {
+          "SOURCE_CONTENT_READ": 22,
+          "SOURCE_RELEVANCE_VERIFIED": 22,
+          "SOURCE_UNAVAILABLE": 15,
+          "URL_DISCOVERED": 60,
+          "URL_REACHABLE": 45
+        },
+        "claimCount": 65,
+        "claimStatusCounts": {
+          "FACT_SUPPORTED": 27,
+          "SOURCE_CONTENT_READ": 23,
+          "SOURCE_UNAVAILABLE": 15
+        },
+        "findingTypeCounts": {
+          "BOUNDED_SOURCE_READ": 8,
+          "INTERNAL_V2_OBSERVATION": 7,
+          "INTERNAL_V2_UNIT_BASIS_UNRESOLVED": 20,
+          "SOURCE_ACCESS_LIMIT": 15,
+          "SOURCE_INGREDIENT_FACT": 14,
+          "VARIANT_DIFFERENCE": 1
+        },
+        "humanApprovedCount": 0,
+        "fullRecipeVerificationCompleted": 0,
+        "productionMutations": 0
+      }
+    },
+    {
+      "batchId": "v3-19",
+      "evidencePath": "data/recipe-intelligence/v3/research/batch-19-evidence.json",
+      "editsPath": "data/recipe-intelligence/v3/research/batch-19-edits.json",
+      "summary": {
+        "recipeCount": 20,
+        "sourceAttemptCount": 51,
+        "sourceStatusCounts": {
+          "SOURCE_CONTENT_READ": 25,
+          "SOURCE_RELEVANCE_VERIFIED": 25,
+          "SOURCE_UNAVAILABLE": 13,
+          "URL_DISCOVERED": 51,
+          "URL_REACHABLE": 38
+        },
+        "claimCount": 64,
+        "claimStatusCounts": {
+          "FACT_SUPPORTED": 26,
+          "SOURCE_CONTENT_READ": 25,
+          "SOURCE_UNAVAILABLE": 13
+        },
+        "findingTypeCounts": {
+          "BOUNDED_SOURCE_READ": 7,
+          "FOOD_SAFETY_REVIEW": 1,
+          "FOOD_SAFETY_REVIEW_REQUIRED": 1,
+          "INTERNAL_V2_OBSERVATION": 5,
+          "INTERNAL_V2_UNIT_BASIS_UNRESOLVED": 20,
+          "SOURCE_ACCESS_LIMIT": 13,
+          "SOURCE_INGREDIENT_FACT": 16,
+          "VARIANT_DIFFERENCE": 1
+        },
+        "humanApprovedCount": 0,
+        "fullRecipeVerificationCompleted": 0,
+        "productionMutations": 0
+      }
+    },
+    {
+      "batchId": "v3-20",
+      "evidencePath": "data/recipe-intelligence/v3/research/batch-20-evidence.json",
+      "editsPath": "data/recipe-intelligence/v3/research/batch-20-edits.json",
+      "summary": {
+        "recipeCount": 20,
+        "sourceAttemptCount": 42,
+        "sourceStatusCounts": {
+          "SOURCE_CONTENT_READ": 21,
+          "SOURCE_RELEVANCE_VERIFIED": 21,
+          "SOURCE_UNAVAILABLE": 6,
+          "URL_DISCOVERED": 42,
+          "URL_REACHABLE": 36
+        },
+        "claimCount": 51,
+        "claimStatusCounts": {
+          "FACT_SUPPORTED": 22,
+          "SOURCE_CONTENT_READ": 22,
+          "SOURCE_UNAVAILABLE": 7
+        },
+        "findingTypeCounts": {
+          "BOUNDED_SOURCE_READ": 3,
+          "INTERNAL_V2_OBSERVATION": 2,
+          "INTERNAL_V2_UNIT_BASIS_UNRESOLVED": 20,
+          "SOURCE_ACCESS_LIMIT": 7,
+          "SOURCE_INGREDIENT_FACT": 18,
+          "VARIANT_DIFFERENCE": 1
+        },
+        "humanApprovedCount": 0,
+        "fullRecipeVerificationCompleted": 0,
+        "productionMutations": 0
+      }
+    },
+    {
+      "batchId": "v3-21",
+      "evidencePath": "data/recipe-intelligence/v3/research/batch-21-evidence.json",
+      "editsPath": "data/recipe-intelligence/v3/research/batch-21-edits.json",
+      "summary": {
+        "recipeCount": 20,
+        "sourceAttemptCount": 49,
+        "sourceStatusCounts": {
+          "SOURCE_CONTENT_READ": 25,
+          "SOURCE_RELEVANCE_VERIFIED": 25,
+          "SOURCE_UNAVAILABLE": 7,
+          "URL_DISCOVERED": 49,
+          "URL_REACHABLE": 42
+        },
+        "claimCount": 67,
+        "claimStatusCounts": {
+          "FACT_SUPPORTED": 29,
+          "SOURCE_CONTENT_READ": 24,
+          "SOURCE_UNAVAILABLE": 14
+        },
+        "findingTypeCounts": {
+          "BOUNDED_SOURCE_READ": 9,
+          "FOOD_SAFETY_REVIEW": 2,
+          "FOOD_SAFETY_REVIEW_REQUIRED": 2,
+          "INTERNAL_V2_OBSERVATION": 7,
+          "INTERNAL_V2_UNIT_BASIS_UNRESOLVED": 20,
+          "SOURCE_ACCESS_LIMIT": 14,
+          "SOURCE_INGREDIENT_FACT": 13
+        },
+        "humanApprovedCount": 0,
+        "fullRecipeVerificationCompleted": 0,
+        "productionMutations": 0
+      }
+    },
+    {
+      "batchId": "v3-22",
+      "evidencePath": "data/recipe-intelligence/v3/research/batch-22-evidence.json",
+      "editsPath": "data/recipe-intelligence/v3/research/batch-22-edits.json",
+      "summary": {
+        "recipeCount": 20,
+        "sourceAttemptCount": 43,
+        "sourceStatusCounts": {
+          "SOURCE_CONTENT_READ": 22,
+          "SOURCE_RELEVANCE_VERIFIED": 22,
+          "SOURCE_UNAVAILABLE": 9,
+          "URL_DISCOVERED": 43,
+          "URL_REACHABLE": 34
+        },
+        "claimCount": 59,
+        "claimStatusCounts": {
+          "FACT_SUPPORTED": 25,
+          "SOURCE_CONTENT_READ": 22,
+          "SOURCE_UNAVAILABLE": 12
+        },
+        "findingTypeCounts": {
+          "BOUNDED_SOURCE_READ": 7,
+          "INTERNAL_V2_OBSERVATION": 5,
+          "INTERNAL_V2_UNIT_BASIS_UNRESOLVED": 20,
+          "SOURCE_ACCESS_LIMIT": 12,
+          "SOURCE_INGREDIENT_FACT": 15
+        },
+        "humanApprovedCount": 0,
+        "fullRecipeVerificationCompleted": 0,
+        "productionMutations": 0
+      }
+    },
+    {
+      "batchId": "v3-23",
+      "evidencePath": "data/recipe-intelligence/v3/research/batch-23-evidence.json",
+      "editsPath": "data/recipe-intelligence/v3/research/batch-23-edits.json",
+      "summary": {
+        "recipeCount": 20,
+        "sourceAttemptCount": 49,
+        "sourceStatusCounts": {
+          "SOURCE_CONTENT_READ": 22,
+          "SOURCE_RELEVANCE_VERIFIED": 22,
+          "SOURCE_UNAVAILABLE": 13,
+          "URL_DISCOVERED": 49,
+          "URL_REACHABLE": 36
+        },
+        "claimCount": 60,
+        "claimStatusCounts": {
+          "FACT_SUPPORTED": 24,
+          "SOURCE_CONTENT_READ": 22,
+          "SOURCE_UNAVAILABLE": 14
+        },
+        "findingTypeCounts": {
+          "BOUNDED_SOURCE_READ": 4,
+          "FOOD_SAFETY_REVIEW": 1,
+          "FOOD_SAFETY_REVIEW_REQUIRED": 1,
+          "INTERNAL_V2_OBSERVATION": 3,
+          "INTERNAL_V2_UNIT_BASIS_UNRESOLVED": 20,
+          "SOURCE_ACCESS_LIMIT": 14,
+          "SOURCE_INGREDIENT_FACT": 17
+        },
+        "humanApprovedCount": 0,
+        "fullRecipeVerificationCompleted": 0,
+        "productionMutations": 0
+      }
+    },
+    {
+      "batchId": "v3-24",
+      "evidencePath": "data/recipe-intelligence/v3/research/batch-24-evidence.json",
+      "editsPath": "data/recipe-intelligence/v3/research/batch-24-edits.json",
+      "summary": {
+        "recipeCount": 20,
+        "sourceAttemptCount": 44,
+        "sourceStatusCounts": {
+          "SOURCE_CONTENT_READ": 21,
+          "SOURCE_RELEVANCE_VERIFIED": 21,
+          "SOURCE_UNAVAILABLE": 5,
+          "URL_DISCOVERED": 44,
+          "URL_REACHABLE": 39
+        },
+        "claimCount": 49,
+        "claimStatusCounts": {
+          "FACT_SUPPORTED": 22,
+          "SOURCE_CONTENT_READ": 20,
+          "SOURCE_UNAVAILABLE": 7
+        },
+        "findingTypeCounts": {
+          "BOUNDED_SOURCE_READ": 2,
+          "INTERNAL_V2_OBSERVATION": 2,
+          "INTERNAL_V2_UNIT_BASIS_UNRESOLVED": 20,
+          "SOURCE_ACCESS_LIMIT": 7,
+          "SOURCE_INGREDIENT_FACT": 18
+        },
+        "humanApprovedCount": 0,
+        "fullRecipeVerificationCompleted": 0,
+        "productionMutations": 0
+      }
+    },
+    {
+      "batchId": "v3-25",
+      "evidencePath": "data/recipe-intelligence/v3/research/batch-25-evidence.json",
+      "editsPath": "data/recipe-intelligence/v3/research/batch-25-edits.json",
+      "summary": {
+        "recipeCount": 20,
+        "sourceAttemptCount": 41,
+        "sourceStatusCounts": {
+          "SOURCE_CONTENT_READ": 25,
+          "SOURCE_RELEVANCE_VERIFIED": 25,
+          "SOURCE_UNAVAILABLE": 5,
+          "URL_DISCOVERED": 41,
+          "URL_REACHABLE": 36
+        },
+        "claimCount": 60,
+        "claimStatusCounts": {
+          "FACT_SUPPORTED": 27,
+          "SOURCE_CONTENT_READ": 26,
+          "SOURCE_UNAVAILABLE": 7
+        },
+        "findingTypeCounts": {
+          "BOUNDED_SOURCE_READ": 12,
+          "INTERNAL_V2_OBSERVATION": 7,
+          "INTERNAL_V2_UNIT_BASIS_UNRESOLVED": 20,
+          "SOURCE_ACCESS_LIMIT": 7,
+          "SOURCE_INGREDIENT_FACT": 13,
+          "VARIANT_DIFFERENCE": 1
+        },
+        "humanApprovedCount": 0,
+        "fullRecipeVerificationCompleted": 0,
+        "productionMutations": 0
+      }
+    }
+  ],
+  "boundedResearchRecipeCount": 500,
+  "scanPath": "data/recipe-intelligence/v3/research/source-scan.json",
+  "sourceContentPromotionAllowed": false
+}

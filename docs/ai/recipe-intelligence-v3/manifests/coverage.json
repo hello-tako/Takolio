@@ -7,14 +7,15 @@
     "exactSetMatch": true
   },
   "candidateSchemaValidated": 500,
-  "candidateEditoriallyChanged": 10,
+  "candidateEditoriallyChanged": 29,
   "sourceAttempts": 500,
   "boundedPilotResearch": 20,
   "boundedSourceInventory": 500,
   "fullCulinaryReviewCompleted": 0,
   "humanApproved": 0,
   "priorityCounts": {
-    "P1": 500
+    "P0": 6,
+    "P1": 494
   },
   "nutritionCounts": {
     "blocked": 288,
