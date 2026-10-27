@@ -43,11 +43,11 @@
     },
     {
       "path": "data/recipe-intelligence/v3/research/batch-05-evidence.json",
-      "sha256": "8bf201e7cb1a42a1a7638dbec076a842d2fd02d88216fc8b7be70842f1bcf3df"
+      "sha256": "e19fab7228be6671b1d3ae27551b7b43f42a4242ac1308a305eaae9ab2fa5fec"
     },
     {
       "path": "data/recipe-intelligence/v3/research/batch-05-edits.json",
-      "sha256": "5b2d9e8d0efb25892b375cb415ee0f7d44236cde58af646824edef93c06f0afd"
+      "sha256": "72e826ce87b4b385dcc75d9ba3deddfde43df7b28bb71b98e7616416657be858"
     },
     {
       "path": "data/recipe-intelligence/v3/research/batch-06-evidence.json",
@@ -155,11 +155,11 @@
     },
     {
       "path": "data/recipe-intelligence/v3/research/batch-19-evidence.json",
-      "sha256": "93ea7d74473d47f6e5cc05941955da9c65d0a6d9b55a277028db3d9627b5b7c5"
+      "sha256": "b22f8dc458adfeab19930be5119040352ca78fdbfb5865dda6295ed963504789"
     },
     {
       "path": "data/recipe-intelligence/v3/research/batch-19-edits.json",
-      "sha256": "3313bc2dff72bd2d1e4ccc0f1f1382188682b48052a727718e1fc6aff21f8b1b"
+      "sha256": "c048e02337be7871edd8f191f28f8012d977bbcb3bfb0e6931cfc44f1eedc618"
     },
     {
       "path": "data/recipe-intelligence/v3/research/batch-20-evidence.json",
@@ -171,11 +171,11 @@
     },
     {
       "path": "data/recipe-intelligence/v3/research/batch-21-evidence.json",
-      "sha256": "fbeabb80f4679b80a7a4460401bd883241469c0309ca093c89891574c24f7379"
+      "sha256": "1734c8696bf03fd5f823926ba345b387882c385f8c0d50549ee4150bdbacb040"
     },
     {
       "path": "data/recipe-intelligence/v3/research/batch-21-edits.json",
-      "sha256": "84da42a866b824546e0fde23bfb8dd25b14d8d9ab94bda28efd8406b030dd70c"
+      "sha256": "da0ea96f67a621790f70be96a7750d230c3a9fdad7a61bdad090910871b2331c"
     },
     {
       "path": "data/recipe-intelligence/v3/research/batch-22-evidence.json",
@@ -187,7 +187,7 @@
     },
     {
       "path": "data/recipe-intelligence/v3/research/batch-23-evidence.json",
-      "sha256": "6b4fbe03f6fa44d97e46dacea69b02debcf70f8d7a98f1d7f5782865126c65ea"
+      "sha256": "b1ceeb7d4c3620db773671d2e669150796687bed185c9553b283621d17568d6c"
     },
     {
       "path": "data/recipe-intelligence/v3/research/batch-23-edits.json",
@@ -10234,9 +10234,9 @@
       "slug": "ca-hoi-ap-chao-sot-teriyaki-bong-dep",
       "sourceV1Fingerprint": "af29067c47fc0d3f08283d309c6c8d585696b784f8cc4c8cd485eaf53e77bdd2",
       "sourceV2Fingerprint": "20032350fb8b5239f464e57bd9b8a2732e32672517eabbaf8ebeacb9b81b9bd0",
-      "candidateVersion": "v3-candidate-41bba7c0dc53412bca83d6930b6d39b94105d5f9e463a043f6ccd953c0ca6fa4",
+      "candidateVersion": "v3-candidate-7bd474bc81520ab16a8222d396f5651d77525f2dc7355b7587bf1dd2724c035e",
       "previousVersion": "v2-source-20032350fb8b5239f464e57bd9b8a2732e32672517eabbaf8ebeacb9b81b9bd0",
-      "candidateContentFingerprint": "41bba7c0dc53412bca83d6930b6d39b94105d5f9e463a043f6ccd953c0ca6fa4",
+      "candidateContentFingerprint": "7bd474bc81520ab16a8222d396f5651d77525f2dc7355b7587bf1dd2724c035e",
       "sourceReference": "data/recipe-refresh/v2/recipes/imp-ac255bcc36d1324e.json",
       "sourcePreserved": true,
       "state": "NEEDS_REVIEW",
@@ -10310,6 +10310,26 @@
           "evidenceReferences": [
             "data/recipe-intelligence/v3/research/batch-05-evidence.json#/recipes/10/claims/1"
           ]
+        },
+        {
+          "recipeId": "imp-ac255bcc36d1324e",
+          "path": "/steps/5/instruction",
+          "oldValue": "Rót 30 ml sake vào chảo, đậy nắp, hạ lửa nhỏ; hấp 3–5 phút cho đến khi nhiệt độ lõi cá đạt 52–54 °C (đo ở chỗ dày nhất bằng nhiệt kế). Gắp cá ra đĩa, để riêng.",
+          "newValue": "Rót 30 ml sake vào chảo, đậy nắp, hạ lửa nhỏ; hấp khoảng 3–5 phút rồi kiểm tra bằng nhiệt kế ở chỗ dày nhất. Tiếp tục nấu đến khi nhiệt độ lõi cá đạt ít nhất 63 °C (145 °F theo FDA), không lấy cá ra chỉ vì đã hết thời gian. Gắp cá đã chín ra đĩa sạch, để riêng.",
+          "reason": "Replace52-54 C removal advice with the independently read FDA145 F endpoint, conservatively rounded upward to63 C; time remains an estimate and cannot override measurement.",
+          "evidenceReferences": [
+            "data/recipe-intelligence/v3/research/batch-05-evidence.json#/recipes/10/claims/4"
+          ]
+        },
+        {
+          "recipeId": "imp-ac255bcc36d1324e",
+          "path": "/steps/5/tip",
+          "oldValue": "Nếu sake đã cạn mà cá chưa chín thì thêm 1 muỗng canh sake và hấp tiếp. Lấy cá ra ở 52–54 °C để tránh quá chín vì nhiệt dư còn nấu tiếp.",
+          "newValue": "Nếu sake đã cạn mà cá chưa chín thì thêm 1 muỗng canh sake và hấp tiếp. Kiểm tra nhiệt độ lõi trước khi gắp cá ra; nếu chưa đạt 63 °C thì nấu tiếp và đo lại. Không dựa vào nhiệt dư để lấy cá ra ở 52–54 °C. Dùng đĩa và dụng cụ sạch cho cá đã chín.",
+          "reason": "Remove the conflicting carryover instruction alongside the main instruction; preserve a paired endpoint correction and raw/cooked utensil separation.",
+          "evidenceReferences": [
+            "data/recipe-intelligence/v3/research/batch-05-evidence.json#/recipes/10/claims/4"
+          ]
         }
       ],
       "sourceFileSha256": "045a8c482be0a614ac650c3c134a74b9934c17b2c6367ff84e1be41275a4a459",
@@ -10324,6 +10344,26 @@
             "reason": "Correct measurable source ratios without changing the chosen formula.",
             "evidenceReferences": [
               "data/recipe-intelligence/v3/research/batch-05-evidence.json#/recipes/10/claims/1"
+            ]
+          },
+          {
+            "recipeId": "imp-ac255bcc36d1324e",
+            "path": "/steps/5/instruction",
+            "oldValue": "Rót 30 ml sake vào chảo, đậy nắp, hạ lửa nhỏ; hấp 3–5 phút cho đến khi nhiệt độ lõi cá đạt 52–54 °C (đo ở chỗ dày nhất bằng nhiệt kế). Gắp cá ra đĩa, để riêng.",
+            "newValue": "Rót 30 ml sake vào chảo, đậy nắp, hạ lửa nhỏ; hấp khoảng 3–5 phút rồi kiểm tra bằng nhiệt kế ở chỗ dày nhất. Tiếp tục nấu đến khi nhiệt độ lõi cá đạt ít nhất 63 °C (145 °F theo FDA), không lấy cá ra chỉ vì đã hết thời gian. Gắp cá đã chín ra đĩa sạch, để riêng.",
+            "reason": "Replace52-54 C removal advice with the independently read FDA145 F endpoint, conservatively rounded upward to63 C; time remains an estimate and cannot override measurement.",
+            "evidenceReferences": [
+              "data/recipe-intelligence/v3/research/batch-05-evidence.json#/recipes/10/claims/4"
+            ]
+          },
+          {
+            "recipeId": "imp-ac255bcc36d1324e",
+            "path": "/steps/5/tip",
+            "oldValue": "Nếu sake đã cạn mà cá chưa chín thì thêm 1 muỗng canh sake và hấp tiếp. Lấy cá ra ở 52–54 °C để tránh quá chín vì nhiệt dư còn nấu tiếp.",
+            "newValue": "Nếu sake đã cạn mà cá chưa chín thì thêm 1 muỗng canh sake và hấp tiếp. Kiểm tra nhiệt độ lõi trước khi gắp cá ra; nếu chưa đạt 63 °C thì nấu tiếp và đo lại. Không dựa vào nhiệt dư để lấy cá ra ở 52–54 °C. Dùng đĩa và dụng cụ sạch cho cá đã chín.",
+            "reason": "Remove the conflicting carryover instruction alongside the main instruction; preserve a paired endpoint correction and raw/cooked utensil separation.",
+            "evidenceReferences": [
+              "data/recipe-intelligence/v3/research/batch-05-evidence.json#/recipes/10/claims/4"
             ]
           }
         ],
@@ -10353,6 +10393,34 @@
               "recipe editorial content on future promotion"
             ],
             "reviewStatus": "NEEDS_REVIEW"
+          },
+          {
+            "recipeId": "imp-ac255bcc36d1324e",
+            "path": "/steps/5/instruction",
+            "oldValue": "Rót 30 ml sake vào chảo, đậy nắp, hạ lửa nhỏ; hấp 3–5 phút cho đến khi nhiệt độ lõi cá đạt 52–54 °C (đo ở chỗ dày nhất bằng nhiệt kế). Gắp cá ra đĩa, để riêng.",
+            "newValue": "Rót 30 ml sake vào chảo, đậy nắp, hạ lửa nhỏ; hấp khoảng 3–5 phút rồi kiểm tra bằng nhiệt kế ở chỗ dày nhất. Tiếp tục nấu đến khi nhiệt độ lõi cá đạt ít nhất 63 °C (145 °F theo FDA), không lấy cá ra chỉ vì đã hết thời gian. Gắp cá đã chín ra đĩa sạch, để riêng.",
+            "reason": "Replace52-54 C removal advice with the independently read FDA145 F endpoint, conservatively rounded upward to63 C; time remains an estimate and cannot override measurement.",
+            "evidenceReferences": [
+              "data/recipe-intelligence/v3/research/batch-05-evidence.json#/recipes/10/claims/4"
+            ],
+            "impactedConsumers": [
+              "recipe editorial content on future promotion"
+            ],
+            "reviewStatus": "NEEDS_REVIEW"
+          },
+          {
+            "recipeId": "imp-ac255bcc36d1324e",
+            "path": "/steps/5/tip",
+            "oldValue": "Nếu sake đã cạn mà cá chưa chín thì thêm 1 muỗng canh sake và hấp tiếp. Lấy cá ra ở 52–54 °C để tránh quá chín vì nhiệt dư còn nấu tiếp.",
+            "newValue": "Nếu sake đã cạn mà cá chưa chín thì thêm 1 muỗng canh sake và hấp tiếp. Kiểm tra nhiệt độ lõi trước khi gắp cá ra; nếu chưa đạt 63 °C thì nấu tiếp và đo lại. Không dựa vào nhiệt dư để lấy cá ra ở 52–54 °C. Dùng đĩa và dụng cụ sạch cho cá đã chín.",
+            "reason": "Remove the conflicting carryover instruction alongside the main instruction; preserve a paired endpoint correction and raw/cooked utensil separation.",
+            "evidenceReferences": [
+              "data/recipe-intelligence/v3/research/batch-05-evidence.json#/recipes/10/claims/4"
+            ],
+            "impactedConsumers": [
+              "recipe editorial content on future promotion"
+            ],
+            "reviewStatus": "NEEDS_REVIEW"
           }
         ]
       },
@@ -10375,6 +10443,7 @@
         "RESEARCH:gap01-salmon-sauce-ratios",
         "RESEARCH:source-access-limit",
         "RESEARCH:supp06-safety-review",
+        "RESEARCH:supp07-safety-review",
         "RUNTIME_PROJECTION_LOSS",
         "SOURCE_CONTENT_UNVERIFIED",
         "UNSUPPORTED_OR_QUALITATIVE_RUNTIME_QUANTITY",
@@ -11275,9 +11344,9 @@
       "slug": "mi-xao-pad-thai-tom-gia-do",
       "sourceV1Fingerprint": "e82d0bf33faec508e3fd138d8a59650acce601d95843f9275ccf3b1a4522b01f",
       "sourceV2Fingerprint": "81fbe48b3d61a6820ae38704835b70989b12c0f3fc0d05c939824cc9231beee7",
-      "candidateVersion": "v3-candidate-76889a0cbc61528157c7109e9ae52b29a5f4bad71782e2da40ec6f8de47532c5",
+      "candidateVersion": "v3-candidate-1cb5dd00fa44a46a9ab4a0b736bc50d44db0d09cc5eceb2beb279377715bc872",
       "previousVersion": "v2-source-81fbe48b3d61a6820ae38704835b70989b12c0f3fc0d05c939824cc9231beee7",
-      "candidateContentFingerprint": "76889a0cbc61528157c7109e9ae52b29a5f4bad71782e2da40ec6f8de47532c5",
+      "candidateContentFingerprint": "1cb5dd00fa44a46a9ab4a0b736bc50d44db0d09cc5eceb2beb279377715bc872",
       "sourceReference": "data/recipe-refresh/v2/recipes/imp-f729957329cd75f5.json",
       "sourcePreserved": true,
       "state": "NEEDS_REVIEW",
@@ -11345,6 +11414,36 @@
           "evidenceReferences": [
             "data/recipe-intelligence/v3/research/batch-05-evidence.json#/recipes/19/claims/2"
           ]
+        },
+        {
+          "recipeId": "imp-f729957329cd75f5",
+          "path": "/steps/9/instruction",
+          "oldValue": "Cho tôm đã áp chảo trở lại chảo cùng nước tôm tiết ra, thêm một nửa đậu phộng, giá đỗ và hẹ. Tắt bếp, đảo nhanh tay cho giá đỗ vừa chín tới, quyện đều.",
+          "newValue": "Cho tôm đã áp chảo trở lại chảo cùng nước tôm tiết ra, thêm một nửa đậu phộng, giá đỗ và hẹ. Tiếp tục xào khi bếp còn bật đến khi giá đỗ chín và bốc hơi nóng đều, rồi tắt bếp, đảo đều.",
+          "reason": "Coordinate official safety guidance across actionable instruction and tip; no quantity, duration, servings or nutrition change.",
+          "evidenceReferences": [
+            "data/recipe-intelligence/v3/research/batch-05-evidence.json#/recipes/19/claims/4"
+          ]
+        },
+        {
+          "recipeId": "imp-f729957329cd75f5",
+          "path": "/steps/9/tip",
+          "oldValue": "Tắt bếp trước khi cho giá đỗ để giá giữ được độ giòn, tươi.",
+          "newValue": "Nấu giá đỗ đến khi bốc hơi nóng; không chỉ đảo bằng nhiệt dư sau khi tắt bếp. Không dùng giá đỗ sống làm phần ăn kèm.",
+          "reason": "Coordinate official safety guidance across actionable instruction and tip; no quantity, duration, servings or nutrition change.",
+          "evidenceReferences": [
+            "data/recipe-intelligence/v3/research/batch-05-evidence.json#/recipes/19/claims/4"
+          ]
+        },
+        {
+          "recipeId": "imp-f729957329cd75f5",
+          "path": "/steps/10/instruction",
+          "oldValue": "Dọn ngay ra đĩa, đặt tôm lên trên, rắc thêm đậu phộng. Ăn kèm múi chanh, giá đỗ sống, hẹ tươi và ớt khô. Vắt chanh lên trước khi ăn.",
+          "newValue": "Dọn ngay ra đĩa, đặt tôm lên trên, rắc thêm đậu phộng. Ăn kèm múi chanh, hẹ tươi và ớt khô. Vắt chanh lên trước khi ăn.",
+          "reason": "Coordinate official safety guidance across actionable instruction and tip; no quantity, duration, servings or nutrition change.",
+          "evidenceReferences": [
+            "data/recipe-intelligence/v3/research/batch-05-evidence.json#/recipes/19/claims/4"
+          ]
         }
       ],
       "sourceFileSha256": "53c8c3cac646056883acf6c09e3a58d1df92608f2b9991a1260afaed5a13bb81",
@@ -11369,6 +11468,36 @@
             "reason": "Retained fresh shrimp makes the original dried-shrimp omission advice misleading for shrimp allergy; no allergen-safe substitution is approved.",
             "evidenceReferences": [
               "data/recipe-intelligence/v3/research/batch-05-evidence.json#/recipes/19/claims/2"
+            ]
+          },
+          {
+            "recipeId": "imp-f729957329cd75f5",
+            "path": "/steps/9/instruction",
+            "oldValue": "Cho tôm đã áp chảo trở lại chảo cùng nước tôm tiết ra, thêm một nửa đậu phộng, giá đỗ và hẹ. Tắt bếp, đảo nhanh tay cho giá đỗ vừa chín tới, quyện đều.",
+            "newValue": "Cho tôm đã áp chảo trở lại chảo cùng nước tôm tiết ra, thêm một nửa đậu phộng, giá đỗ và hẹ. Tiếp tục xào khi bếp còn bật đến khi giá đỗ chín và bốc hơi nóng đều, rồi tắt bếp, đảo đều.",
+            "reason": "Coordinate official safety guidance across actionable instruction and tip; no quantity, duration, servings or nutrition change.",
+            "evidenceReferences": [
+              "data/recipe-intelligence/v3/research/batch-05-evidence.json#/recipes/19/claims/4"
+            ]
+          },
+          {
+            "recipeId": "imp-f729957329cd75f5",
+            "path": "/steps/9/tip",
+            "oldValue": "Tắt bếp trước khi cho giá đỗ để giá giữ được độ giòn, tươi.",
+            "newValue": "Nấu giá đỗ đến khi bốc hơi nóng; không chỉ đảo bằng nhiệt dư sau khi tắt bếp. Không dùng giá đỗ sống làm phần ăn kèm.",
+            "reason": "Coordinate official safety guidance across actionable instruction and tip; no quantity, duration, servings or nutrition change.",
+            "evidenceReferences": [
+              "data/recipe-intelligence/v3/research/batch-05-evidence.json#/recipes/19/claims/4"
+            ]
+          },
+          {
+            "recipeId": "imp-f729957329cd75f5",
+            "path": "/steps/10/instruction",
+            "oldValue": "Dọn ngay ra đĩa, đặt tôm lên trên, rắc thêm đậu phộng. Ăn kèm múi chanh, giá đỗ sống, hẹ tươi và ớt khô. Vắt chanh lên trước khi ăn.",
+            "newValue": "Dọn ngay ra đĩa, đặt tôm lên trên, rắc thêm đậu phộng. Ăn kèm múi chanh, hẹ tươi và ớt khô. Vắt chanh lên trước khi ăn.",
+            "reason": "Coordinate official safety guidance across actionable instruction and tip; no quantity, duration, servings or nutrition change.",
+            "evidenceReferences": [
+              "data/recipe-intelligence/v3/research/batch-05-evidence.json#/recipes/19/claims/4"
             ]
           }
         ],
@@ -11412,6 +11541,48 @@
               "recipe editorial content on future promotion"
             ],
             "reviewStatus": "NEEDS_REVIEW"
+          },
+          {
+            "recipeId": "imp-f729957329cd75f5",
+            "path": "/steps/9/instruction",
+            "oldValue": "Cho tôm đã áp chảo trở lại chảo cùng nước tôm tiết ra, thêm một nửa đậu phộng, giá đỗ và hẹ. Tắt bếp, đảo nhanh tay cho giá đỗ vừa chín tới, quyện đều.",
+            "newValue": "Cho tôm đã áp chảo trở lại chảo cùng nước tôm tiết ra, thêm một nửa đậu phộng, giá đỗ và hẹ. Tiếp tục xào khi bếp còn bật đến khi giá đỗ chín và bốc hơi nóng đều, rồi tắt bếp, đảo đều.",
+            "reason": "Coordinate official safety guidance across actionable instruction and tip; no quantity, duration, servings or nutrition change.",
+            "evidenceReferences": [
+              "data/recipe-intelligence/v3/research/batch-05-evidence.json#/recipes/19/claims/4"
+            ],
+            "impactedConsumers": [
+              "recipe editorial content on future promotion"
+            ],
+            "reviewStatus": "NEEDS_REVIEW"
+          },
+          {
+            "recipeId": "imp-f729957329cd75f5",
+            "path": "/steps/9/tip",
+            "oldValue": "Tắt bếp trước khi cho giá đỗ để giá giữ được độ giòn, tươi.",
+            "newValue": "Nấu giá đỗ đến khi bốc hơi nóng; không chỉ đảo bằng nhiệt dư sau khi tắt bếp. Không dùng giá đỗ sống làm phần ăn kèm.",
+            "reason": "Coordinate official safety guidance across actionable instruction and tip; no quantity, duration, servings or nutrition change.",
+            "evidenceReferences": [
+              "data/recipe-intelligence/v3/research/batch-05-evidence.json#/recipes/19/claims/4"
+            ],
+            "impactedConsumers": [
+              "recipe editorial content on future promotion"
+            ],
+            "reviewStatus": "NEEDS_REVIEW"
+          },
+          {
+            "recipeId": "imp-f729957329cd75f5",
+            "path": "/steps/10/instruction",
+            "oldValue": "Dọn ngay ra đĩa, đặt tôm lên trên, rắc thêm đậu phộng. Ăn kèm múi chanh, giá đỗ sống, hẹ tươi và ớt khô. Vắt chanh lên trước khi ăn.",
+            "newValue": "Dọn ngay ra đĩa, đặt tôm lên trên, rắc thêm đậu phộng. Ăn kèm múi chanh, hẹ tươi và ớt khô. Vắt chanh lên trước khi ăn.",
+            "reason": "Coordinate official safety guidance across actionable instruction and tip; no quantity, duration, servings or nutrition change.",
+            "evidenceReferences": [
+              "data/recipe-intelligence/v3/research/batch-05-evidence.json#/recipes/19/claims/4"
+            ],
+            "impactedConsumers": [
+              "recipe editorial content on future promotion"
+            ],
+            "reviewStatus": "NEEDS_REVIEW"
           }
         ]
       },
@@ -11433,6 +11604,7 @@
         "RESEARCH:gap01-pad-thai-oil",
         "RESEARCH:source-access-limit",
         "RESEARCH:supp06-safety-review",
+        "RESEARCH:supp07-sprouts-safety",
         "RUNTIME_PROJECTION_LOSS",
         "SOURCE_CONTENT_UNVERIFIED",
         "UNSUPPORTED_OR_QUALITATIVE_RUNTIME_QUANTITY",
@@ -39142,9 +39314,9 @@
       "slug": "ga-chien-ot-kho",
       "sourceV1Fingerprint": "eb257e9598ec771477d268af069dc62a77fd4a41a46a3f854ebe0d63b80e3f27",
       "sourceV2Fingerprint": "2943bd5af4dd515686c791b609cedbdc5a66afd1263f74c85d0fd00441bf79db",
-      "candidateVersion": "v3-candidate-f52f71303c2c207d5b1979cf803204292c6f44afa27961f458caaf71dbd4738e",
+      "candidateVersion": "v3-candidate-26439831dcb619cd75484f0b64656f1bbe6a9b3c345e3b8f5b3408673a1fa9be",
       "previousVersion": "v2-source-2943bd5af4dd515686c791b609cedbdc5a66afd1263f74c85d0fd00441bf79db",
-      "candidateContentFingerprint": "f52f71303c2c207d5b1979cf803204292c6f44afa27961f458caaf71dbd4738e",
+      "candidateContentFingerprint": "26439831dcb619cd75484f0b64656f1bbe6a9b3c345e3b8f5b3408673a1fa9be",
       "sourceReference": "data/recipe-refresh/v2/recipes/imp-0efe9204d9dbdb3e.json",
       "sourcePreserved": true,
       "state": "NEEDS_REVIEW",
@@ -39228,10 +39400,21 @@
           "recipeId": "imp-0efe9204d9dbdb3e",
           "path": "/steps/2/tip",
           "oldValue": "CSF: chiên nông tiết kiệm dầu hơn chiên ngập; chiên từng mẻ để gà tiếp xúc đáy chảo, chín nhanh và giòn. Sau khi cho gà vào, để yên 40 giây-1 phút cho một mặt vàng rồi mới đảo mặt còn lại.",
-          "newValue": "CSF: chiên nông tiết kiệm dầu hơn chiên ngập; chiên từng mẻ để gà tiếp xúc đáy chảo, chín nhanh và giòn. Sau khi cho gà vào, để yên 40 giây-1 phút cho một mặt vàng rồi mới đảo mặt còn lại. Màu vàng giòn bên ngoài và thời gian chiên không tự bảo đảm thịt gà đã chín bên trong; dùng nhiệt kế thực phẩm sạch kiểm tra thịt đã chín kỹ. Không dùng phần nước ướp đã tiếp xúc gà sống để rưới lên món đã chín.",
-          "reason": "Add bounded poultry/marinade caution without choosing a recipe-specific temperature-time endpoint.",
+          "newValue": "CSF: chiên nông tiết kiệm dầu hơn chiên ngập; chiên từng mẻ để gà tiếp xúc đáy chảo, chín nhanh và giòn. Sau khi cho gà vào, để yên 40 giây-1 phút cho một mặt vàng rồi mới đảo mặt còn lại. Màu vàng giòn và thời gian chiên không tự bảo đảm thịt gà đã chín bên trong; dùng nhiệt kế thực phẩm sạch kiểm tra đạt ít nhất 165°F (khoảng 74°C). Không dùng phần nước ướp đã tiếp xúc gà sống để rưới lên món đã chín.",
+          "reason": "Coordinate official safety guidance across actionable instruction and tip; no quantity, duration, servings or nutrition change.",
           "evidenceReferences": [
-            "data/recipe-intelligence/v3/research/batch-19-evidence.json#/recipes/3/claims/10"
+            "data/recipe-intelligence/v3/research/batch-19-evidence.json#/recipes/3/claims/10",
+            "data/recipe-intelligence/v3/research/batch-19-evidence.json#/recipes/3/claims/11"
+          ]
+        },
+        {
+          "recipeId": "imp-0efe9204d9dbdb3e",
+          "path": "/steps/2/instruction",
+          "oldValue": "Đun nóng dầu chiên nông trong chảo hoặc wok cho thật nóng (cắm đũa vào thấy sủi bọt). Cho gà vào chiên từng mẻ đến vàng giòn rồi vớt ra để ráo dầu.",
+          "newValue": "Đun nóng dầu chiên nông trong chảo hoặc wok cho thật nóng (cắm đũa vào thấy sủi bọt). Cho gà vào chiên từng mẻ đến vàng giòn; dùng nhiệt kế thực phẩm sạch kiểm tra nhiệt độ bên trong thịt gà đạt ít nhất 165°F (khoảng 74°C), rồi mới vớt ra để ráo dầu.",
+          "reason": "Coordinate official safety guidance across actionable instruction and tip; no quantity, duration, servings or nutrition change.",
+          "evidenceReferences": [
+            "data/recipe-intelligence/v3/research/batch-19-evidence.json#/recipes/3/claims/11"
           ]
         }
       ],
@@ -39243,10 +39426,21 @@
             "recipeId": "imp-0efe9204d9dbdb3e",
             "path": "/steps/2/tip",
             "oldValue": "CSF: chiên nông tiết kiệm dầu hơn chiên ngập; chiên từng mẻ để gà tiếp xúc đáy chảo, chín nhanh và giòn. Sau khi cho gà vào, để yên 40 giây-1 phút cho một mặt vàng rồi mới đảo mặt còn lại.",
-            "newValue": "CSF: chiên nông tiết kiệm dầu hơn chiên ngập; chiên từng mẻ để gà tiếp xúc đáy chảo, chín nhanh và giòn. Sau khi cho gà vào, để yên 40 giây-1 phút cho một mặt vàng rồi mới đảo mặt còn lại. Màu vàng giòn bên ngoài và thời gian chiên không tự bảo đảm thịt gà đã chín bên trong; dùng nhiệt kế thực phẩm sạch kiểm tra thịt đã chín kỹ. Không dùng phần nước ướp đã tiếp xúc gà sống để rưới lên món đã chín.",
-            "reason": "Add bounded poultry/marinade caution without choosing a recipe-specific temperature-time endpoint.",
+            "newValue": "CSF: chiên nông tiết kiệm dầu hơn chiên ngập; chiên từng mẻ để gà tiếp xúc đáy chảo, chín nhanh và giòn. Sau khi cho gà vào, để yên 40 giây-1 phút cho một mặt vàng rồi mới đảo mặt còn lại. Màu vàng giòn và thời gian chiên không tự bảo đảm thịt gà đã chín bên trong; dùng nhiệt kế thực phẩm sạch kiểm tra đạt ít nhất 165°F (khoảng 74°C). Không dùng phần nước ướp đã tiếp xúc gà sống để rưới lên món đã chín.",
+            "reason": "Coordinate official safety guidance across actionable instruction and tip; no quantity, duration, servings or nutrition change.",
             "evidenceReferences": [
-              "data/recipe-intelligence/v3/research/batch-19-evidence.json#/recipes/3/claims/10"
+              "data/recipe-intelligence/v3/research/batch-19-evidence.json#/recipes/3/claims/10",
+              "data/recipe-intelligence/v3/research/batch-19-evidence.json#/recipes/3/claims/11"
+            ]
+          },
+          {
+            "recipeId": "imp-0efe9204d9dbdb3e",
+            "path": "/steps/2/instruction",
+            "oldValue": "Đun nóng dầu chiên nông trong chảo hoặc wok cho thật nóng (cắm đũa vào thấy sủi bọt). Cho gà vào chiên từng mẻ đến vàng giòn rồi vớt ra để ráo dầu.",
+            "newValue": "Đun nóng dầu chiên nông trong chảo hoặc wok cho thật nóng (cắm đũa vào thấy sủi bọt). Cho gà vào chiên từng mẻ đến vàng giòn; dùng nhiệt kế thực phẩm sạch kiểm tra nhiệt độ bên trong thịt gà đạt ít nhất 165°F (khoảng 74°C), rồi mới vớt ra để ráo dầu.",
+            "reason": "Coordinate official safety guidance across actionable instruction and tip; no quantity, duration, servings or nutrition change.",
+            "evidenceReferences": [
+              "data/recipe-intelligence/v3/research/batch-19-evidence.json#/recipes/3/claims/11"
             ]
           }
         ],
@@ -39266,10 +39460,25 @@
             "recipeId": "imp-0efe9204d9dbdb3e",
             "path": "/steps/2/tip",
             "oldValue": "CSF: chiên nông tiết kiệm dầu hơn chiên ngập; chiên từng mẻ để gà tiếp xúc đáy chảo, chín nhanh và giòn. Sau khi cho gà vào, để yên 40 giây-1 phút cho một mặt vàng rồi mới đảo mặt còn lại.",
-            "newValue": "CSF: chiên nông tiết kiệm dầu hơn chiên ngập; chiên từng mẻ để gà tiếp xúc đáy chảo, chín nhanh và giòn. Sau khi cho gà vào, để yên 40 giây-1 phút cho một mặt vàng rồi mới đảo mặt còn lại. Màu vàng giòn bên ngoài và thời gian chiên không tự bảo đảm thịt gà đã chín bên trong; dùng nhiệt kế thực phẩm sạch kiểm tra thịt đã chín kỹ. Không dùng phần nước ướp đã tiếp xúc gà sống để rưới lên món đã chín.",
-            "reason": "Add bounded poultry/marinade caution without choosing a recipe-specific temperature-time endpoint.",
+            "newValue": "CSF: chiên nông tiết kiệm dầu hơn chiên ngập; chiên từng mẻ để gà tiếp xúc đáy chảo, chín nhanh và giòn. Sau khi cho gà vào, để yên 40 giây-1 phút cho một mặt vàng rồi mới đảo mặt còn lại. Màu vàng giòn và thời gian chiên không tự bảo đảm thịt gà đã chín bên trong; dùng nhiệt kế thực phẩm sạch kiểm tra đạt ít nhất 165°F (khoảng 74°C). Không dùng phần nước ướp đã tiếp xúc gà sống để rưới lên món đã chín.",
+            "reason": "Coordinate official safety guidance across actionable instruction and tip; no quantity, duration, servings or nutrition change.",
             "evidenceReferences": [
-              "data/recipe-intelligence/v3/research/batch-19-evidence.json#/recipes/3/claims/10"
+              "data/recipe-intelligence/v3/research/batch-19-evidence.json#/recipes/3/claims/10",
+              "data/recipe-intelligence/v3/research/batch-19-evidence.json#/recipes/3/claims/11"
+            ],
+            "impactedConsumers": [
+              "recipe editorial content on future promotion"
+            ],
+            "reviewStatus": "NEEDS_REVIEW"
+          },
+          {
+            "recipeId": "imp-0efe9204d9dbdb3e",
+            "path": "/steps/2/instruction",
+            "oldValue": "Đun nóng dầu chiên nông trong chảo hoặc wok cho thật nóng (cắm đũa vào thấy sủi bọt). Cho gà vào chiên từng mẻ đến vàng giòn rồi vớt ra để ráo dầu.",
+            "newValue": "Đun nóng dầu chiên nông trong chảo hoặc wok cho thật nóng (cắm đũa vào thấy sủi bọt). Cho gà vào chiên từng mẻ đến vàng giòn; dùng nhiệt kế thực phẩm sạch kiểm tra nhiệt độ bên trong thịt gà đạt ít nhất 165°F (khoảng 74°C), rồi mới vớt ra để ráo dầu.",
+            "reason": "Coordinate official safety guidance across actionable instruction and tip; no quantity, duration, servings or nutrition change.",
+            "evidenceReferences": [
+              "data/recipe-intelligence/v3/research/batch-19-evidence.json#/recipes/3/claims/11"
             ],
             "impactedConsumers": [
               "recipe editorial content on future promotion"
@@ -39300,6 +39509,7 @@
         "RESEARCH:supp04-source-access-limit",
         "RESEARCH:supp04-variant-difference",
         "RESEARCH:supp06-safety-review",
+        "RESEARCH:supp07-poultry-safety",
         "RUNTIME_PROJECTION_LOSS",
         "SOURCE_CONTENT_UNVERIFIED",
         "UNSUPPORTED_OR_QUALITATIVE_RUNTIME_QUANTITY",
@@ -43770,6 +43980,8 @@
         "RESEARCH:supp03-safety-review",
         "RESEARCH:supp03-source-access-limit",
         "RESEARCH:supp06-safety-review",
+        "RESEARCH:supp07-raw-shrimp-review",
+        "RESEARCH:supp07-safety-review",
         "RUNTIME_PROJECTION_LOSS",
         "SOURCE_CONTENT_UNVERIFIED",
         "UNSUPPORTED_OR_QUALITATIVE_RUNTIME_QUANTITY",
@@ -44448,9 +44660,9 @@
       "slug": "tom-nuong-toi-chanh-y",
       "sourceV1Fingerprint": "4c179f0b80c464935656779b82649ebce128e7297bd8fcdd5faf6b28e6fa0f07",
       "sourceV2Fingerprint": "8050f56ee971f309f05d5d2f821a407a96063cfb83143d3abee748d4a636e9c9",
-      "candidateVersion": "v3-candidate-c2d08f5e0fb3742c70e0acaabff4cbe779f932154d75e8969aa6d1952b63717a",
+      "candidateVersion": "v3-candidate-aa3284630f24d7b16efe42d9294fcf59537cb6665feb52dff5489a3a9bead492",
       "previousVersion": "v2-source-8050f56ee971f309f05d5d2f821a407a96063cfb83143d3abee748d4a636e9c9",
-      "candidateContentFingerprint": "c2d08f5e0fb3742c70e0acaabff4cbe779f932154d75e8969aa6d1952b63717a",
+      "candidateContentFingerprint": "aa3284630f24d7b16efe42d9294fcf59537cb6665feb52dff5489a3a9bead492",
       "sourceReference": "data/recipe-refresh/v2/recipes/imp-c398c169dc196c4e.json",
       "sourcePreserved": true,
       "state": "NEEDS_REVIEW",
@@ -44481,6 +44693,26 @@
           "evidenceReferences": [
             "data/recipe-intelligence/v3/research/batch-21-evidence.json#/recipes/13/claims/6"
           ]
+        },
+        {
+          "recipeId": "imp-c398c169dc196c4e",
+          "path": "/steps/7/instruction",
+          "oldValue": "Kiểm tra độ chín: vỏ chuyển hồng cam, thịt đục, thân tôm cong hình chữ C và hơi xém cạnh là đạt.",
+          "newValue": "Kiểm tra thịt tôm bằng nhiệt kế thực phẩm: nấu đến khi nhiệt độ bên trong đạt ít nhất 63 °C (145 °F theo FDA). Thịt tôm chín có màu trắng ngọc, đục và săn chắc; không chỉ dựa vào màu vỏ hoặc thân cong hình chữ C.",
+          "reason": "Use FDA general seafood endpoint and shrimp flesh signs instead of shell color or curl as a sufficient doneness test; duration remains unverified.",
+          "evidenceReferences": [
+            "data/recipe-intelligence/v3/research/batch-21-evidence.json#/recipes/13/claims/7"
+          ]
+        },
+        {
+          "recipeId": "imp-c398c169dc196c4e",
+          "path": "/steps/7/tip",
+          "oldValue": "Tôm cong thành hình chữ O (cuộn tròn) thường là đã quá chín.",
+          "newValue": "FDA mô tả thịt tôm chín là săn chắc, trắng ngọc và đục. Hình chữ C hay chữ O không thay thế việc kiểm tra độ chín của thịt.",
+          "reason": "Replace unsupported curl-only tip with the same independently read FDA flesh checks; no safety certification implied.",
+          "evidenceReferences": [
+            "data/recipe-intelligence/v3/research/batch-21-evidence.json#/recipes/13/claims/7"
+          ]
         }
       ],
       "sourceFileSha256": "4b08b02f32633da516f00f24591e5c1d7782d8ecaf69245fe0548456e33fef30",
@@ -44495,6 +44727,26 @@
             "reason": "Clarify existing clean-sauce boundary using official marinade/cross-contamination advice; no reused-marinade treatment invented.",
             "evidenceReferences": [
               "data/recipe-intelligence/v3/research/batch-21-evidence.json#/recipes/13/claims/6"
+            ]
+          },
+          {
+            "recipeId": "imp-c398c169dc196c4e",
+            "path": "/steps/7/instruction",
+            "oldValue": "Kiểm tra độ chín: vỏ chuyển hồng cam, thịt đục, thân tôm cong hình chữ C và hơi xém cạnh là đạt.",
+            "newValue": "Kiểm tra thịt tôm bằng nhiệt kế thực phẩm: nấu đến khi nhiệt độ bên trong đạt ít nhất 63 °C (145 °F theo FDA). Thịt tôm chín có màu trắng ngọc, đục và săn chắc; không chỉ dựa vào màu vỏ hoặc thân cong hình chữ C.",
+            "reason": "Use FDA general seafood endpoint and shrimp flesh signs instead of shell color or curl as a sufficient doneness test; duration remains unverified.",
+            "evidenceReferences": [
+              "data/recipe-intelligence/v3/research/batch-21-evidence.json#/recipes/13/claims/7"
+            ]
+          },
+          {
+            "recipeId": "imp-c398c169dc196c4e",
+            "path": "/steps/7/tip",
+            "oldValue": "Tôm cong thành hình chữ O (cuộn tròn) thường là đã quá chín.",
+            "newValue": "FDA mô tả thịt tôm chín là săn chắc, trắng ngọc và đục. Hình chữ C hay chữ O không thay thế việc kiểm tra độ chín của thịt.",
+            "reason": "Replace unsupported curl-only tip with the same independently read FDA flesh checks; no safety certification implied.",
+            "evidenceReferences": [
+              "data/recipe-intelligence/v3/research/batch-21-evidence.json#/recipes/13/claims/7"
             ]
           }
         ],
@@ -44523,6 +44775,34 @@
               "recipe editorial content on future promotion"
             ],
             "reviewStatus": "NEEDS_REVIEW"
+          },
+          {
+            "recipeId": "imp-c398c169dc196c4e",
+            "path": "/steps/7/instruction",
+            "oldValue": "Kiểm tra độ chín: vỏ chuyển hồng cam, thịt đục, thân tôm cong hình chữ C và hơi xém cạnh là đạt.",
+            "newValue": "Kiểm tra thịt tôm bằng nhiệt kế thực phẩm: nấu đến khi nhiệt độ bên trong đạt ít nhất 63 °C (145 °F theo FDA). Thịt tôm chín có màu trắng ngọc, đục và săn chắc; không chỉ dựa vào màu vỏ hoặc thân cong hình chữ C.",
+            "reason": "Use FDA general seafood endpoint and shrimp flesh signs instead of shell color or curl as a sufficient doneness test; duration remains unverified.",
+            "evidenceReferences": [
+              "data/recipe-intelligence/v3/research/batch-21-evidence.json#/recipes/13/claims/7"
+            ],
+            "impactedConsumers": [
+              "recipe editorial content on future promotion"
+            ],
+            "reviewStatus": "NEEDS_REVIEW"
+          },
+          {
+            "recipeId": "imp-c398c169dc196c4e",
+            "path": "/steps/7/tip",
+            "oldValue": "Tôm cong thành hình chữ O (cuộn tròn) thường là đã quá chín.",
+            "newValue": "FDA mô tả thịt tôm chín là săn chắc, trắng ngọc và đục. Hình chữ C hay chữ O không thay thế việc kiểm tra độ chín của thịt.",
+            "reason": "Replace unsupported curl-only tip with the same independently read FDA flesh checks; no safety certification implied.",
+            "evidenceReferences": [
+              "data/recipe-intelligence/v3/research/batch-21-evidence.json#/recipes/13/claims/7"
+            ],
+            "impactedConsumers": [
+              "recipe editorial content on future promotion"
+            ],
+            "reviewStatus": "NEEDS_REVIEW"
           }
         ]
       },
@@ -44546,6 +44826,7 @@
         "RESEARCH:supp03-safety-review",
         "RESEARCH:supp03-source-access-limit",
         "RESEARCH:supp06-safety-review",
+        "RESEARCH:supp07-safety-review",
         "SOURCE_CONTENT_UNVERIFIED",
         "USER_SNAPSHOT_COMPATIBILITY_RISK"
       ]
@@ -48841,6 +49122,7 @@
         "RESEARCH:supp03-safety-review",
         "RESEARCH:supp03-source-access-limit",
         "RESEARCH:supp06-safety-review",
+        "RESEARCH:supp07-safety-review",
         "RUNTIME_PROJECTION_LOSS",
         "SOURCE_CONTENT_UNVERIFIED",
         "UNSUPPORTED_OR_QUALITATIVE_RUNTIME_QUANTITY",

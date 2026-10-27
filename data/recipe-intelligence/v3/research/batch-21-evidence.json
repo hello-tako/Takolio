@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "program": "TAKOLIO_RECIPE_INTELLIGENCE_V3",
   "dataset": "recipe-refresh-v2-bounded-batch-21",
-  "generatedAt": "2026-10-26T20:06:17.778010Z",
+  "generatedAt": "2026-10-27T13:50:08.291712+00:00",
   "status": "RECIPE_V3_RESEARCH_IN_PROGRESS",
   "pilotStatus": "BOUNDED_SOURCE_INVENTORY_REVIEW_PENDING",
   "scope": {
@@ -17,23 +17,23 @@
   "interpretation": "FACT_SUPPORTED labels reproducible internal V2 observations only. EXTERNAL_SOURCE_FACT supports only a linked source ingredient fact, not a V2 comparison. No whole-recipe verification, human approval, source/runtime promotion, nutrition certification or image reuse rights.",
   "summary": {
     "recipeCount": 20,
-    "sourceAttemptCount": 49,
+    "sourceAttemptCount": 51,
     "sourceStatusCounts": {
-      "SOURCE_CONTENT_READ": 25,
-      "SOURCE_RELEVANCE_VERIFIED": 25,
+      "SOURCE_CONTENT_READ": 27,
+      "SOURCE_RELEVANCE_VERIFIED": 27,
       "SOURCE_UNAVAILABLE": 7,
-      "URL_DISCOVERED": 49,
-      "URL_REACHABLE": 42
+      "URL_DISCOVERED": 51,
+      "URL_REACHABLE": 44
     },
-    "claimCount": 67,
+    "claimCount": 70,
     "claimStatusCounts": {
-      "FACT_SUPPORTED": 29,
+      "FACT_SUPPORTED": 32,
       "SOURCE_CONTENT_READ": 24,
       "SOURCE_UNAVAILABLE": 14
     },
     "findingTypeCounts": {
       "BOUNDED_SOURCE_READ": 9,
-      "FOOD_SAFETY_REVIEW": 2,
+      "FOOD_SAFETY_REVIEW": 5,
       "FOOD_SAFETY_REVIEW_REQUIRED": 2,
       "INTERNAL_V2_OBSERVATION": 7,
       "INTERNAL_V2_UNIT_BASIS_UNRESOLVED": 20,
@@ -2064,6 +2064,153 @@
         "reviewerSummary": "Official general household food-safety guidance; not a recipe source.",
         "supportLimits": "Bounded UK FSA household guidance; jurisdiction and scope retained. No recipe-specific endpoint validation, complete safety assessment, numerical transfer to a recipe, human approval, or promotion."
       }
+    },
+    {
+      "url": "https://www.fda.gov/food/buy-store-serve-safe-food/selecting-and-serving-fresh-and-frozen-seafood-safely",
+      "retrievedAt": "2026-10-27T13:45:05.697309Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.fda.gov/food/buy-store-serve-safe-food/selecting-and-serving-fresh-and-frozen-seafood-safely",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "909fa7955fea507afa01422389f0de85281e40ecdc53d2d4b378173d8c85bace",
+      "byteLength": 46209,
+      "title": "Selecting and Serving Fresh and Frozen Seafood Safely | FDA",
+      "visibleTextSha256": "8613c505a4607e1c4f524d9298c968df096a2a6ea49398f5db184858ac715176",
+      "completeResponse": true,
+      "retrievalMethod": "curl default User-Agent; full response, no body transform",
+      "sourceId": "source-c50a20b03f414ee2",
+      "recipeIds": [
+        "imp-a71f6ef791b463ea",
+        "imp-c398c169dc196c4e"
+      ],
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "author": null,
+      "publishedAt": null,
+      "publisher": "U.S. Food and Drug Administration",
+      "metadataBasis": "Official publisher domain, page title and full HTTP response; no publication date inferred.",
+      "reviewedFacts": [
+        {
+          "factId": "supp07-seafood-temperature",
+          "locator": "visibleText lines 111-112",
+          "visibleTextLineStart": 111,
+          "visibleTextLineEnd": 112,
+          "anchors": [
+            "145°F"
+          ],
+          "reviewerSummary": "FDA advises cooking most seafood to an internal temperature of 145 F and identifies a food thermometer as a means of checking doneness.",
+          "supportLimits": "US FDA general household seafood guidance, not species/product/formulation certification. 145 F converts to 62.777... C; candidate rounds upward to 63 C. No time, freezing protocol, quantity, nutrition, human approval or runtime promotion inferred."
+        },
+        {
+          "factId": "supp07-shellfish-doneness",
+          "locator": "visibleText lines 114-114",
+          "visibleTextLineStart": 114,
+          "visibleTextLineEnd": 114,
+          "anchors": [
+            "Shrimp, Scallops, Crab, and Lobster"
+          ],
+          "reviewerSummary": "FDA lists firm, pearly and opaque flesh as doneness signs for shrimp, scallops, crab and lobster; shell color and curled shape are not its stated test.",
+          "supportLimits": "US FDA general household seafood guidance, not species/product/formulation certification. 145 F converts to 62.777... C; candidate rounds upward to 63 C. No time, freezing protocol, quantity, nutrition, human approval or runtime promotion inferred."
+        },
+        {
+          "factId": "supp07-raw-seafood-limit",
+          "locator": "visibleText lines 126-129",
+          "visibleTextLineStart": 126,
+          "visibleTextLineEnd": 129,
+          "anchors": [
+            "freezing doesn't kill all harmful germs"
+          ],
+          "reviewerSummary": "FDA advises thorough cooking to minimize seafood foodborne illness; freezing does not eliminate all harmful germs. No shrimp-specific freezing or acid treatment protocol is provided.",
+          "supportLimits": "US FDA general household seafood guidance, not species/product/formulation certification. 145 F converts to 62.777... C; candidate rounds upward to 63 C. No time, freezing protocol, quantity, nutrition, human approval or runtime promotion inferred."
+        },
+        {
+          "factId": "supp07-separate-utensils",
+          "locator": "visibleText lines 98-102",
+          "visibleTextLineStart": 98,
+          "visibleTextLineEnd": 102,
+          "anchors": [
+            "Wash cutting boards, dishes, utensils"
+          ],
+          "reviewerSummary": "FDA calls for separation of raw seafood from ready-to-eat food and washing hands, boards, dishes and utensils between raw and cooked-food preparation.",
+          "supportLimits": "US FDA general household seafood guidance, not species/product/formulation certification. 145 F converts to 62.777... C; candidate rounds upward to 63 C. No time, freezing protocol, quantity, nutrition, human approval or runtime promotion inferred."
+        }
+      ],
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "visibleText lines 111-112; visibleText lines 114-114; visibleText lines 126-129; visibleText lines 98-102",
+        "reviewerSummary": "General FDA consumer seafood safety guidance; selected endpoint and handling facts only.",
+        "supportLimits": "US FDA general household seafood guidance, not species/product/formulation certification. 145 F converts to 62.777... C; candidate rounds upward to 63 C. No time, freezing protocol, quantity, nutrition, human approval or runtime promotion inferred."
+      },
+      "retrievalNotes": "An earlier urllib request returned an abuse-detection 404. A later default-curl request returned this complete HTTP200 response; the failed request is not publisher-outage evidence."
+    },
+    {
+      "url": "https://www.cdc.gov/food-safety/foods/safer-food-choices.html",
+      "sourceId": "source-f69cb1f8874915d9",
+      "attempt": "curl-default-UA",
+      "retrievedAt": "2026-10-27T13:48:14.201341+00:00",
+      "completeResponse": true,
+      "curlExitCode": 0,
+      "httpStatus": 200,
+      "finalUrl": "https://www.cdc.gov/food-safety/foods/safer-food-choices.html",
+      "contentType": "text/html",
+      "title": "Safer Food Choices | Food Safety | CDC",
+      "byteLength": 62422,
+      "contentSha256": "9471c25f120324ab5637ed61132aff5da29b85da4e0d134b5361993f68d32552",
+      "visibleTextSha256": "1e3ff396cd252c200c726a46a261053990be50e30fb4b63470158ca14a6b582f",
+      "extraction": "stdlib HTMLParser; scripts/styles/noscript omitted; block-separated lines; UTF-8 replacement decode",
+      "recipeIds": [
+        "imp-a71f6ef791b463ea"
+      ],
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "runtimePromotionAllowed": false,
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "reviewedFacts": [
+        {
+          "factId": "supp07-sprouts-steaming-hot",
+          "locator": "visibleText lines 104-110",
+          "reviewerSummary": "CDC identifies raw or undercooked alfalfa/bean sprouts as a riskier choice and sprouts cooked until steaming hot as a safer choice.",
+          "supportLimits": "General consumer food-safety guidance. No recipe-specific duration, numeric sprout temperature, quantity, texture, serving yield or complete Pad Thai validation.",
+          "visibleTextLineStart": 104,
+          "visibleTextLineEnd": 110
+        },
+        {
+          "factId": "supp07-raw-seafood-ceviche",
+          "locator": "visibleText lines 143-148",
+          "reviewerSummary": "CDC identifies raw or undercooked fish or shellfish, including ceviche, as a riskier choice; cooked shellfish flesh should be pearly or white and opaque.",
+          "supportLimits": "Supports retaining a critical review for raw/acid-treated shrimp. Does not validate lemon concentration, soak duration, freezing, shrimp parasite controls or a cooked replacement variant.",
+          "visibleTextLineStart": 143,
+          "visibleTextLineEnd": 148
+        },
+        {
+          "factId": "supp07-poultry-165",
+          "locator": "visibleText lines 95-101",
+          "reviewerSummary": "CDC advises cooking all poultry, including chicken, to 165 degrees Fahrenheit and checking with a food thermometer.",
+          "supportLimits": "General minimum internal endpoint; does not validate the recipe oil temperature, frying duration, marinade handling or culinary quality.",
+          "visibleTextLineStart": 95,
+          "visibleTextLineEnd": 101
+        }
+      ],
+      "author": null,
+      "publishedAt": null,
+      "publisher": "U.S. Centers for Disease Control and Prevention",
+      "metadataBasis": "Official publisher domain, page title and full HTTP response; no publication date inferred.",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "visibleText lines 104-110; visibleText lines 143-148; visibleText lines 95-101",
+        "reviewerSummary": "Selected official consumer food-safety facts; not a recipe source.",
+        "supportLimits": "General US household guidance only. No complete formulation, identity, time, quantity, nutrition, human approval or runtime promotion inferred."
+      }
     }
   ],
   "recipes": [
@@ -2645,7 +2792,9 @@
         "source-245df51a4906974c",
         "source-a0f06fbab356605e",
         "source-f09a8006a958bbdb",
-        "source-de2ee2f8378d520f"
+        "source-de2ee2f8378d520f",
+        "source-c50a20b03f414ee2",
+        "source-f69cb1f8874915d9"
       ],
       "evidenceStatus": "BOUNDED_SOURCE_INVENTORY_REVIEW_PENDING",
       "humanReview": "PENDING",
@@ -2819,16 +2968,88 @@
           ],
           "reviewerSummary": "General official guidance says freezer bacteria are paused rather than killed and prawns should become firm and opaque when cooked. It does not verify lemon-acid treatment or a shrimp freezing protocol.",
           "supportLimits": "Independent safety review remains required. General official guidance is not recipe safety certification. No quantity, servings, endpoint or structural variant selected."
+        },
+        {
+          "id": "supp07-safety-review",
+          "status": "FACT_SUPPORTED",
+          "findingType": "FOOD_SAFETY_REVIEW",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "critical",
+          "sourceIds": [
+            "source-c50a20b03f414ee2"
+          ],
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-c50a20b03f414ee2",
+              "factId": "supp07-raw-seafood-limit"
+            }
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [
+            1,
+            3
+          ],
+          "v2Pointers": [
+            "/steps/0/instruction",
+            "/steps/2/instruction",
+            "/steps/2/tip"
+          ],
+          "reviewerSummary": "FDA general guidance favors thoroughly cooked seafood and warns freezing does not kill all harmful germs. It does not establish that five minutes of lemon treatment or30minutes freezing makes this raw shrimp safe.",
+          "supportLimits": "US FDA general household seafood guidance, not species/product/formulation certification. 145 F converts to 62.777... C; candidate rounds upward to 63 C. No time, freezing protocol, quantity, nutrition, human approval or runtime promotion inferred."
+        },
+        {
+          "id": "supp07-raw-shrimp-review",
+          "status": "FACT_SUPPORTED",
+          "findingType": "FOOD_SAFETY_REVIEW",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "critical",
+          "sourceIds": [
+            "source-f69cb1f8874915d9"
+          ],
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-f69cb1f8874915d9",
+              "factId": "supp07-raw-seafood-ceviche"
+            }
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [
+            1,
+            3,
+            7,
+            9
+          ],
+          "v2Pointers": [
+            "/steps/0/instruction",
+            "/steps/0/tip",
+            "/steps/2/instruction",
+            "/steps/2/tip",
+            "/steps/6/instruction",
+            "/steps/6/tip",
+            "/steps/8/instruction",
+            "/steps/8/tip"
+          ],
+          "reviewerSummary": "V2 serves shrimp after a five-minute lemon soak without a heat-cooking step. CDC classifies raw or undercooked fish/shellfish, including ceviche, as riskier; this supports retaining the critical blocker.",
+          "supportLimits": "No shrimp/acid concentration-time or freezing protocol established. Oyster lemon guidance is separately bounded and must not be generalized. No cooked variant proposed; recipe identity/process decision and independent human safety review remain pending."
         }
       ],
-      "nextAction": "Read exact acid-treated/raw seafood guidance and review recipe identity before structural cooked-variant changes; no edit proposed.",
+      "nextAction": "FAIL_UNRESOLVED: raw shrimp and acid treatment remain in the source. No validated shrimp acid/freezing procedure; cooked substitution would change formulation and requires separate review. No append-only warning claimed as remediation. CDC also classifies raw/undercooked seafood including ceviche as riskier; it does not validate the lemon/freezing process.",
       "supplementalResearch": {
-        "dataset": "gap-research-06",
-        "reviewedAt": "2026-10-26T20:06:17.778010Z",
+        "dataset": "gap-research-07",
+        "reviewedAt": "2026-10-27T13:50:08.291712+00:00",
         "humanReview": "PENDING",
         "fullRecipeVerification": "NOT_COMPLETE",
         "decision": "CRITICAL_SAFETY_REVIEW_REQUIRED"
-      }
+      },
+      "previousSupplementalResearch": [
+        {
+          "dataset": "gap-research-06",
+          "reviewedAt": "2026-10-26T20:06:17.778010Z",
+          "humanReview": "PENDING",
+          "fullRecipeVerification": "NOT_COMPLETE",
+          "decision": "CRITICAL_SAFETY_REVIEW_REQUIRED"
+        }
+      ]
     },
     {
       "recipeId": "imp-9236740e2b55e8a1",
@@ -3642,7 +3863,8 @@
       "sourceIds": [
         "source-83e32bab41bcd58a",
         "source-a58d15e9fefeaeb9",
-        "source-c76abb2b408a94a0"
+        "source-c76abb2b408a94a0",
+        "source-c50a20b03f414ee2"
       ],
       "evidenceStatus": "BOUNDED_SOURCE_INVENTORY_REVIEW_PENDING",
       "humanReview": "PENDING",
@@ -3802,16 +4024,55 @@
           ],
           "reviewerSummary": "V2 reserves clean sauce but safety depends on keeping it separate from raw shrimp and utensils. FSA explicitly distinguishes untouched marinade from marinade used on raw food.",
           "supportLimits": "Independent safety review remains required. General official guidance is not recipe safety certification. No quantity, servings, endpoint or structural variant selected."
+        },
+        {
+          "id": "supp07-safety-review",
+          "status": "FACT_SUPPORTED",
+          "findingType": "FOOD_SAFETY_REVIEW",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "critical",
+          "sourceIds": [
+            "source-c50a20b03f414ee2"
+          ],
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-c50a20b03f414ee2",
+              "factId": "supp07-seafood-temperature"
+            },
+            {
+              "sourceId": "source-c50a20b03f414ee2",
+              "factId": "supp07-shellfish-doneness"
+            }
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [
+            8
+          ],
+          "v2Pointers": [
+            "/steps/7/instruction",
+            "/steps/7/tip"
+          ],
+          "reviewerSummary": "FDA endpoint and flesh signs support replacing shell-color/curled-shape tests. A C or O shape alone is not the reviewed FDA test; no fixed grilling duration is certified.",
+          "supportLimits": "US FDA general household seafood guidance, not species/product/formulation certification. 145 F converts to 62.777... C; candidate rounds upward to 63 C. No time, freezing protocol, quantity, nutrition, human approval or runtime promotion inferred."
         }
       ],
-      "nextAction": "Independent culinary and food-safety review of exact proposed warning; keep critical blocker until approved.",
+      "nextAction": "Review paired doneness corrections and existing reserved-sauce edit. Raw handling, consumed oil, full formulation and human safety approval remain open.",
       "supplementalResearch": {
-        "dataset": "gap-research-06",
-        "reviewedAt": "2026-10-26T20:06:17.778010Z",
+        "dataset": "gap-research-07",
+        "reviewedAt": "2026-10-27T13:50:08.291712+00:00",
         "humanReview": "PENDING",
         "fullRecipeVerification": "NOT_COMPLETE",
         "decision": "CRITICAL_SAFETY_REVIEW_REQUIRED"
-      }
+      },
+      "previousSupplementalResearch": [
+        {
+          "dataset": "gap-research-06",
+          "reviewedAt": "2026-10-26T20:06:17.778010Z",
+          "humanReview": "PENDING",
+          "fullRecipeVerification": "NOT_COMPLETE",
+          "decision": "CRITICAL_SAFETY_REVIEW_REQUIRED"
+        }
+      ]
     },
     {
       "recipeId": "imp-8fcc592ab7250a38",

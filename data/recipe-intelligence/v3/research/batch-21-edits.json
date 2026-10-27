@@ -10,6 +10,26 @@
       "evidenceReferences": [
         "data/recipe-intelligence/v3/research/batch-21-evidence.json#/recipes/13/claims/6"
       ]
+    },
+    {
+      "recipeId": "imp-c398c169dc196c4e",
+      "path": "/steps/7/instruction",
+      "oldValue": "Kiểm tra độ chín: vỏ chuyển hồng cam, thịt đục, thân tôm cong hình chữ C và hơi xém cạnh là đạt.",
+      "newValue": "Kiểm tra thịt tôm bằng nhiệt kế thực phẩm: nấu đến khi nhiệt độ bên trong đạt ít nhất 63 °C (145 °F theo FDA). Thịt tôm chín có màu trắng ngọc, đục và săn chắc; không chỉ dựa vào màu vỏ hoặc thân cong hình chữ C.",
+      "reason": "Use FDA general seafood endpoint and shrimp flesh signs instead of shell color or curl as a sufficient doneness test; duration remains unverified.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-21-evidence.json#/recipes/13/claims/7"
+      ]
+    },
+    {
+      "recipeId": "imp-c398c169dc196c4e",
+      "path": "/steps/7/tip",
+      "oldValue": "Tôm cong thành hình chữ O (cuộn tròn) thường là đã quá chín.",
+      "newValue": "FDA mô tả thịt tôm chín là săn chắc, trắng ngọc và đục. Hình chữ C hay chữ O không thay thế việc kiểm tra độ chín của thịt.",
+      "reason": "Replace unsupported curl-only tip with the same independently read FDA flesh checks; no safety certification implied.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-21-evidence.json#/recipes/13/claims/7"
+      ]
     }
   ]
 }
