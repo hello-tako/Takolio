@@ -14,4 +14,3 @@ Required before staging:
 - planner, shopping, cooking, offline, and rollback rehearsal;
 - read-only catalog and migration evidence;
 - explicit operator authorization.
-

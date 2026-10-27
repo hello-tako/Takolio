@@ -14,6 +14,7 @@ Repository hello-tako/Takolio, ID1422954151. Freshly fetched main remains b49f3e
 | [40](https://github.com/hello-tako/Takolio/pull/40) | Recipe V3: bounded research batches 15-19 | codex/recipe-v3-research-11-14 | codex/recipe-v3-research-15-19 | 6a5edda340acef9cf53cc6515f4d2e009dc9fcba |
 | [41](https://github.com/hello-tako/Takolio/pull/41) | Recipe V3: bounded research batches 20-25 | codex/recipe-v3-research-15-19 | codex/recipe-v3-research-20-25 | 78f3ffda0a1327a0c79b6917646d96055a2cccac |
 | [42](https://github.com/hello-tako/Takolio/pull/42) | Validate all 500 V3 candidate artifacts without runtime promotion | codex/recipe-v3-research-20-25 | codex/recipe-v3-artifacts | 73bfbf5fe4dc2f3a927d09e735f3ddcc76e0afa9 |
+| [43](https://github.com/hello-tako/Takolio/pull/43) | Record SHA-bound V3 review and continuation checkpoint | codex/recipe-v3-artifacts | codex/recipe-v3-checkpoint | Resolve current documentation head from PR/Git |
 
 Implementation candidate artifact SHA256:16d8f05ae328184dcaa5797c733271692fa5d804b4d7c7ab9fd8dffc32f09838. Verified implementation commit:73bfbf5fe4dc2f3a927d09e735f3ddcc76e0afa9 (#42). The documentation checkpoint uses codex/recipe-v3-checkpoint; its own documentation SHA is resolved from Git/PR state, never embedded in its own handoff.
 
