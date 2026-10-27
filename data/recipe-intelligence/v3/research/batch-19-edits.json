@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "edits": [
+    {
+      "recipeId": "imp-0efe9204d9dbdb3e",
+      "path": "/steps/2/tip",
+      "oldValue": "CSF: chiên nông tiết kiệm dầu hơn chiên ngập; chiên từng mẻ để gà tiếp xúc đáy chảo, chín nhanh và giòn. Sau khi cho gà vào, để yên 40 giây-1 phút cho một mặt vàng rồi mới đảo mặt còn lại.",
+      "newValue": "CSF: chiên nông tiết kiệm dầu hơn chiên ngập; chiên từng mẻ để gà tiếp xúc đáy chảo, chín nhanh và giòn. Sau khi cho gà vào, để yên 40 giây-1 phút cho một mặt vàng rồi mới đảo mặt còn lại. Màu vàng giòn bên ngoài và thời gian chiên không tự bảo đảm thịt gà đã chín bên trong; dùng nhiệt kế thực phẩm sạch kiểm tra thịt đã chín kỹ. Không dùng phần nước ướp đã tiếp xúc gà sống để rưới lên món đã chín.",
+      "reason": "Add bounded poultry/marinade caution without choosing a recipe-specific temperature-time endpoint.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-19-evidence.json#/recipes/3/claims/10"
+      ]
+    }
+  ]
+}
