@@ -1,0 +1,4026 @@
+{
+  "schemaVersion": 1,
+  "program": "TAKOLIO_RECIPE_INTELLIGENCE_V3",
+  "dataset": "recipe-refresh-v2-bounded-batch-25",
+  "generatedAt": "2026-10-26T19:46:20.312160Z",
+  "status": "RECIPE_V3_RESEARCH_IN_PROGRESS",
+  "pilotStatus": "BOUNDED_SOURCE_INVENTORY_REVIEW_PENDING",
+  "scope": {
+    "pilotRecipeCount": 20,
+    "catalogRecipeCount": 500,
+    "fullRecipeVerificationCompleted": 0,
+    "description": "Batch v3-25 source inventory and selected ingredient facts only. This packet does not complete recipe-by-recipe culinary research or V1/V2 reconciliation."
+  },
+  "humanReview": "PENDING",
+  "sourcePromotionAllowed": false,
+  "runtimePromotionAllowed": false,
+  "interpretation": "FACT_SUPPORTED labels reproducible internal V2 observations only. EXTERNAL_SOURCE_FACT supports only a linked source ingredient fact, not a V2 comparison. No whole-recipe verification, human approval, source/runtime promotion, nutrition certification or image reuse rights.",
+  "summary": {
+    "recipeCount": 20,
+    "sourceAttemptCount": 41,
+    "sourceStatusCounts": {
+      "SOURCE_CONTENT_READ": 25,
+      "SOURCE_RELEVANCE_VERIFIED": 25,
+      "SOURCE_UNAVAILABLE": 5,
+      "URL_DISCOVERED": 41,
+      "URL_REACHABLE": 36
+    },
+    "claimCount": 60,
+    "claimStatusCounts": {
+      "FACT_SUPPORTED": 27,
+      "SOURCE_CONTENT_READ": 26,
+      "SOURCE_UNAVAILABLE": 7
+    },
+    "findingTypeCounts": {
+      "BOUNDED_SOURCE_READ": 12,
+      "INTERNAL_V2_OBSERVATION": 7,
+      "INTERNAL_V2_UNIT_BASIS_UNRESOLVED": 20,
+      "SOURCE_ACCESS_LIMIT": 7,
+      "SOURCE_INGREDIENT_FACT": 13,
+      "VARIANT_DIFFERENCE": 1
+    },
+    "humanApprovedCount": 0,
+    "fullRecipeVerificationCompleted": 0,
+    "productionMutations": 0
+  },
+  "sources": [
+    {
+      "sourceId": "source-16cadd6a3803bf41",
+      "url": "https://cookpad.com/eng/recipes/24699129",
+      "recipeIds": [
+        "imp-0e9c9740a6232263"
+      ],
+      "retrievedAt": "2026-10-26T13:01:01.481828Z",
+      "httpStatus": 200,
+      "finalUrl": "https://cookpad.com/eng/recipes/24699129",
+      "contentType": "text/html; charset=utf-8",
+      "contentSha256": "bb4256244f9d09245463a19510d3934ca7a0d2bb9bac486cfe153c9c6ec25a66",
+      "byteLength": 299522,
+      "title": "Pad Krapow Moo Sap (Thai Basil Pork Stir Fry) Recipe By Witita P.",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "visibleTextSha256": "540c7bc9914c0ce3af4861cd8d8e418ff427d122e00eba9a7cdf0375918d36ff",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Bounded ingredient facts only; no reviewed cooking method or complete V2 comparison",
+        "reviewerSummary": "The source lists 300 g ground pork and one handful Thai basil leaves.",
+        "supportLimits": "Related cited source only, not equivalence to the V2 dish. Recipe identity, complete formulation, safety, authority and every unmentioned field remain unverified."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Recipe JSON-LD recipeIngredient opening entries 1-4; ingredient facts only",
+          "reviewerSummary": "The source lists 300 g ground pork and one handful Thai basil leaves.",
+          "supportLimits": "Only the named ingredient facts are supported. No normalization, conversion, retention, method, nutritional or full-recipe verification is established."
+        }
+      ]
+    },
+    {
+      "sourceId": "source-3fabf5965917303c",
+      "url": "https://www.kaveyeats.com/thai-recipe-pad-krapow-moo-pork-stir-fried-with-holy-basil",
+      "recipeIds": [
+        "imp-0e9c9740a6232263"
+      ],
+      "retrievedAt": "2026-10-26T13:01:02.297660Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.kaveyeats.com/thai-recipe-pad-krapow-moo-pork-stir-fried-with-holy-basil",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "08c7c65bf3548099b6d62c7458c71e67ff8ed9149971c6be818d93c0c282c1c8",
+      "byteLength": 102834,
+      "title": "Kavey Eats » Thai Recipe | Pad Krapow Moo (Pork Stir-fried with Holy Basil)",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE"
+      ],
+      "humanReview": "PENDING",
+      "visibleTextSha256": "96a740c8ee1ab71b72648fbb470196b44b1342fe929b4d90b6fdf59d86de80c4",
+      "contentReviewLimit": "No accepted bounded ingredient fact from the inspected selection; HTTP success alone is not culinary verification."
+    },
+    {
+      "sourceId": "source-778619da98499707",
+      "url": "https://talardthai.com/pad-krapow/",
+      "recipeIds": [
+        "imp-0e9c9740a6232263"
+      ],
+      "retrievedAt": "2026-10-26T13:01:02.673728Z",
+      "httpStatus": 200,
+      "finalUrl": "https://talardthai.com/pad-krapow/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "174eaa82c858f10a982c1ed7d5a734b7c4a89f5b1c98fa575880658ccc8188df",
+      "byteLength": 102957,
+      "title": "Thai Holy Basil Stir-Fry (Pad Krapow) - Gluten Free - Talard Thai Food Service",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE"
+      ],
+      "humanReview": "PENDING",
+      "visibleTextSha256": "53e0a0c56257d7fb54fce2712afc73a1d8094d79b0b08d3486a98c91a0a32650",
+      "contentReviewLimit": "No accepted bounded ingredient fact from the inspected selection; HTTP success alone is not culinary verification."
+    },
+    {
+      "sourceId": "source-09830c59698fc728",
+      "url": "https://importfood.com/recipes/seafood/recipe/214-thai-crispy-fish-topped-with-chili-sauce-pla-rad-prik",
+      "recipeIds": [
+        "imp-b6d6788784da6342"
+      ],
+      "retrievedAt": "2026-10-26T13:01:03.137980Z",
+      "httpStatus": 200,
+      "finalUrl": "https://importfood.com/recipes/seafood/recipe/214-thai-crispy-fish-topped-with-chili-sauce-pla-rad-prik",
+      "contentType": "text/html; charset=utf-8",
+      "contentSha256": "62c7007a32fc8df25819e684e22d237302525014e4c426c812c6117536f2c08e",
+      "byteLength": 70353,
+      "title": "Recipe Thai Crispy Fish Topped with Chili Sauce, 'Pla Rad Prik'",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE"
+      ],
+      "humanReview": "PENDING",
+      "visibleTextSha256": "81bb1344527e24bfc177a4b7c6beb6566c08de195546c45d6e4d5151352182f6",
+      "contentReviewLimit": "No accepted bounded ingredient fact from the inspected selection; HTTP success alone is not culinary verification."
+    },
+    {
+      "sourceId": "source-ab7f3c82605cc72c",
+      "url": "https://delishglobe.com/recipe/thai-pla-rad-prik/",
+      "recipeIds": [
+        "imp-b6d6788784da6342"
+      ],
+      "retrievedAt": "2026-10-26T13:01:03.156496Z",
+      "httpStatus": 200,
+      "finalUrl": "https://delishglobe.com/recipe/thai-pla-rad-prik/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "6cfddbb270fe8a84dcd3d1b5dc40d167535cac6d6ee718331121a0dae2a8681c",
+      "byteLength": 411643,
+      "title": "Thai Pla Rad Prik (Fried Fish with Chili Sauce) | DelishGlobe",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "visibleTextSha256": "83652312fd416c75697c638f026486213ba243836b04fb9f33813bfce04d2199",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Bounded ingredient facts only; no reviewed cooking method or complete V2 comparison",
+        "reviewerSummary": "The source lists one whole sea bass or snapper, approximately 1.2 kg, and one tablespoon fish sauce.",
+        "supportLimits": "Related cited source only, not equivalence to the V2 dish. Recipe identity, complete formulation, safety, authority and every unmentioned field remain unverified."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Recipe JSON-LD recipeIngredient opening entries 1-4; ingredient facts only",
+          "reviewerSummary": "The source lists one whole sea bass or snapper, approximately 1.2 kg, and one tablespoon fish sauce.",
+          "supportLimits": "Only the named ingredient facts are supported. No normalization, conversion, retention, method, nutritional or full-recipe verification is established."
+        }
+      ]
+    },
+    {
+      "sourceId": "source-50c298574cc1f300",
+      "url": "https://atasteofthai.com/thai-recipes/pineapple-chicken/",
+      "recipeIds": [
+        "imp-71cac2085659d819"
+      ],
+      "retrievedAt": "2026-10-26T13:01:03.340558Z",
+      "httpStatus": 200,
+      "finalUrl": "https://atasteofthai.com/thai-recipes/pineapple-chicken/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "99c04745a221129932c332729c09b42f7dcb1fe063f4e0709bc3fd0b390aede8",
+      "byteLength": 167559,
+      "title": "Pineapple Chicken – A Taste of Thai",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "visibleTextSha256": "a5b87b269343766616e1a03356b4fcf30e70fe7e8bbfcffd8dbaea4a3e5bb11e",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Bounded ingredient facts only; no reviewed cooking method or complete V2 comparison",
+        "reviewerSummary": "The visible ingredient list specifies two tablespoons olive oil for divided use and one medium onion.",
+        "supportLimits": "Related cited source only, not equivalence to the V2 dish. Recipe identity, complete formulation, safety, authority and every unmentioned field remain unverified."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Visible text lines 45-59, ingredient section opening",
+          "reviewerSummary": "The visible ingredient list specifies two tablespoons olive oil for divided use and one medium onion.",
+          "supportLimits": "Only the named ingredient facts are supported. No normalization, conversion, retention, method, nutritional or full-recipe verification is established."
+        }
+      ]
+    },
+    {
+      "sourceId": "source-f23db09dd00aa15c",
+      "url": "https://snapedny.org/wp-content/uploads/2022/12/Thai-Pineapple-Chicken.pdf",
+      "recipeIds": [
+        "imp-71cac2085659d819"
+      ],
+      "retrievedAt": "2026-10-26T13:01:03.341228Z",
+      "httpStatus": 200,
+      "finalUrl": "https://snapedny.org/wp-content/uploads/2022/12/Thai-Pineapple-Chicken.pdf",
+      "contentType": "application/pdf",
+      "contentSha256": "240d9489f8aa864b668f130f783348e57ea353dab91a4c5eb24cc7ebb7adb48c",
+      "byteLength": 1228025,
+      "title": null,
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE"
+      ],
+      "humanReview": "PENDING",
+      "visibleTextSha256": "7f3b082f777f924857419dfd07ad3a20f617dbe1bddab9bc7f4c68f53d8a8479",
+      "contentReviewLimit": "No accepted bounded ingredient fact from the inspected selection; HTTP success alone is not culinary verification."
+    },
+    {
+      "sourceId": "source-cfaa34937309b250",
+      "url": "https://recipewise.net/recipe/thai-ish-cabbage-soup/",
+      "recipeIds": [
+        "imp-b398545ca76325f1"
+      ],
+      "retrievedAt": "2026-10-26T13:01:03.470823Z",
+      "httpStatus": 200,
+      "finalUrl": "https://recipewise.net/recipe/thai-ish-cabbage-soup/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "1a69eb8565e14593a22bc66a4f33037302bd45d2850502432fcffef90370c7d1",
+      "byteLength": 110014,
+      "title": "Thai -Ish Cabbage Soup – Recipe Wise",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "visibleTextSha256": "f977aabbc73fccdebcdbfd860eb43bbd8b223f1bc530df489e1c1eb227acc91a",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Bounded ingredient facts only; no reviewed cooking method or complete V2 comparison",
+        "reviewerSummary": "The visible ingredient list specifies 9 oz ground beef and half an onion.",
+        "supportLimits": "Related cited source only, not equivalence to the V2 dish. Recipe identity, complete formulation, safety, authority and every unmentioned field remain unverified."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Visible text lines 28-42, ingredient section opening",
+          "reviewerSummary": "The visible ingredient list specifies 9 oz ground beef and half an onion.",
+          "supportLimits": "Only the named ingredient facts are supported. No normalization, conversion, retention, method, nutritional or full-recipe verification is established."
+        }
+      ]
+    },
+    {
+      "sourceId": "source-b79e918edc079f28",
+      "url": "https://www.katebarnes.com.au/recipe/coriander-lemongrass-cabbage-soup/",
+      "recipeIds": [
+        "imp-b398545ca76325f1"
+      ],
+      "retrievedAt": "2026-10-26T13:01:03.492239Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.katebarnes.com.au/recipe/coriander-lemongrass-cabbage-soup/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "f456e97e83bbb8d6a8c9ebf91b0aaa5923ab21fd24642a3d4b6ad2934a22bff8",
+      "byteLength": 141500,
+      "title": null,
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE"
+      ],
+      "humanReview": "PENDING",
+      "visibleTextSha256": "b0f6a13c7f3f02bf10e00d3bbf36a7256d8239eb452d9145da074cae3090b878",
+      "contentReviewLimit": "No accepted bounded ingredient fact from the inspected selection; HTTP success alone is not culinary verification."
+    },
+    {
+      "sourceId": "source-b06050859a01e42d",
+      "url": "https://www.wongnai.com/recipes/ugc/bd72b139cd1145bc9c0e8e7156ee8e1a",
+      "retrievedAt": "2026-10-26T19:28:47.848075Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.wongnai.com/recipes/ugc/bd72b139cd1145bc9c0e8e7156ee8e1a",
+      "contentType": "text/html; charset=utf-8",
+      "contentSha256": "c7b6972559bbb31f7db79fec8c5dc974068e6c4d09ec860eec9a2acebead4219",
+      "byteLength": 316196,
+      "title": "สูตร ปูนิ่มคั่วพริกเกลือ พร้อมวิธีทำโดย MoonZz",
+      "visibleTextSha256": "abceea596bf159ce5ad488bcf2976c4844fcdcc2013b1bf493dcaf3aa87a73d9",
+      "recipeIds": [
+        "imp-9f9a3f24b4141acb"
+      ],
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTTP metadata and HTML title only; unreviewed author/date remains null.",
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Recipe JSON-LD /jsonLd/0/recipeIngredient; /jsonLd/0/recipeYield",
+        "reviewerSummary": "The Thai crab source lists two soft-shell crabs and 200 g seasoned frying flour for two diners; its JSON-LD method contains object placeholders, so only ingredients and yield are supported.",
+        "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Recipe JSON-LD /jsonLd/0/recipeIngredient; /jsonLd/0/recipeYield",
+          "reviewerSummary": "The Thai crab source lists two soft-shell crabs and 200 g seasoned frying flour for two diners; its JSON-LD method contains object placeholders, so only ingredients and yield are supported.",
+          "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved."
+        }
+      ],
+      "previousRetrievals": [
+        {
+          "sourceId": "source-b06050859a01e42d",
+          "url": "https://www.wongnai.com/recipes/ugc/bd72b139cd1145bc9c0e8e7156ee8e1a",
+          "retrievedAt": "2026-10-26T13:01:03.703712Z",
+          "httpStatus": 200,
+          "finalUrl": "https://www.wongnai.com/recipes/ugc/bd72b139cd1145bc9c0e8e7156ee8e1a",
+          "contentType": "text/html; charset=utf-8",
+          "contentSha256": "396e7beb211ff018c3a38717434f5ebd479c04a17f5b17b75d92a586392ffa79",
+          "byteLength": 317436,
+          "title": "สูตร ปูนิ่มคั่วพริกเกลือ พร้อมวิธีทำโดย MoonZz",
+          "author": null,
+          "publishedAt": null,
+          "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+          "evidenceStatus": [
+            "URL_DISCOVERED",
+            "URL_REACHABLE"
+          ],
+          "humanReview": "PENDING",
+          "visibleTextSha256": "65b0b7be15afae93f1c262425b8fcbabe1f09548666a182b56240d94484874b1",
+          "contentReviewLimit": "No accepted bounded ingredient fact from the inspected selection; HTTP success alone is not culinary verification."
+        }
+      ]
+    },
+    {
+      "sourceId": "source-49814980d762c4e7",
+      "url": "https://www.pim.in.th/side-dish-by-seafood-and-aquatic-food/801-fried-soft-shell-crabs-with-pepper-and-garlic",
+      "retrievedAt": "2026-10-26T19:28:47.848196Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.pim.in.th/side-dish-by-seafood-and-aquatic-food/801-fried-soft-shell-crabs-with-pepper-and-garlic",
+      "contentType": "text/html; charset=utf-8",
+      "contentSha256": "5dff1d6008961ce2b1bcb6c584c55a1dbb7d02ff2ed05d858532778475ee2c45",
+      "byteLength": 44581,
+      "title": "ครัวบ้านพิม - ปูนิ่มผัดพริกเกลือ",
+      "visibleTextSha256": "c9f9eef1b3a77114e2d35f1e947c9dd9e214efb75441a4fc232dd7d5b5f2a161",
+      "recipeIds": [
+        "imp-9f9a3f24b4141acb"
+      ],
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTTP metadata and HTML title only; unreviewed author/date remains null.",
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "visibleText lines 30-40",
+        "reviewerSummary": "A separate soft-shell-crab variant lists two crabs weighing about 400 g total, three tablespoons frying flour, one and a half cups frying oil and two tablespoons stir-fry oil. Frying-oil supply is not consumed-oil retention.",
+        "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "visibleText lines 30-40",
+          "reviewerSummary": "A separate soft-shell-crab variant lists two crabs weighing about 400 g total, three tablespoons frying flour, one and a half cups frying oil and two tablespoons stir-fry oil. Frying-oil supply is not consumed-oil retention.",
+          "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved."
+        }
+      ],
+      "previousRetrievals": [
+        {
+          "sourceId": "source-49814980d762c4e7",
+          "url": "https://www.pim.in.th/side-dish-by-seafood-and-aquatic-food/801-fried-soft-shell-crabs-with-pepper-and-garlic",
+          "retrievedAt": "2026-10-26T13:01:05.149776Z",
+          "httpStatus": 200,
+          "finalUrl": "https://www.pim.in.th/side-dish-by-seafood-and-aquatic-food/801-fried-soft-shell-crabs-with-pepper-and-garlic",
+          "contentType": "text/html; charset=utf-8",
+          "contentSha256": "b8ea254011195dda4d2a123c12be4b181f6df071f01c5832f7f471eaf773c0b1",
+          "byteLength": 44581,
+          "title": "ครัวบ้านพิม - ปูนิ่มผัดพริกเกลือ",
+          "author": null,
+          "publishedAt": null,
+          "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+          "evidenceStatus": [
+            "URL_DISCOVERED",
+            "URL_REACHABLE"
+          ],
+          "humanReview": "PENDING",
+          "visibleTextSha256": "10159408de530138259a58d7ae60646502093dd8a241c03732593ec3b19c7577",
+          "contentReviewLimit": "No accepted bounded ingredient fact from the inspected selection; HTTP success alone is not culinary verification."
+        }
+      ]
+    },
+    {
+      "sourceId": "source-fe0018d98761af87",
+      "url": "https://www.youtube.com/shorts/Vqwz_zUebyg",
+      "recipeIds": [
+        "imp-8fecebfe6dc0f0a2"
+      ],
+      "retrievedAt": "2026-10-26T13:01:07.107243Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.youtube.com/shorts/Vqwz_zUebyg",
+      "contentType": "text/html; charset=utf-8",
+      "contentSha256": "3b9bee379bf26768e2c253ad18deedf4c38bba28cdfc23d9251f6f800c091396",
+      "byteLength": 1478795,
+      "title": "PASTA AL PESTO DI SPINACI E MANDORLE: ricetta facilissima! #shorts - YouTube",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE"
+      ],
+      "humanReview": "PENDING",
+      "visibleTextSha256": "7d80f2ced8578154e3079217466db7eb6923645299ef97c7b37f081f97f6351b",
+      "contentReviewLimit": "No accepted bounded ingredient fact from the inspected selection; HTTP success alone is not culinary verification."
+    },
+    {
+      "sourceId": "source-010970e05b0ad9a9",
+      "url": "https://www.carlottaeilbassotto.com/fusillotti-con-pesto-di-spinaci/",
+      "recipeIds": [
+        "imp-8fecebfe6dc0f0a2"
+      ],
+      "retrievedAt": "2026-10-26T13:01:07.157220Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.carlottaeilbassotto.com/fusillotti-con-pesto-di-spinaci/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "9ecafae74a23c53ae6ad7f54b73a98af05902bb9c93f0a8d51fa9910923a815b",
+      "byteLength": 694472,
+      "title": "Fusillotti con pesto di spinaci - Carlotta e il bassotto",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "visibleTextSha256": "70243fb6eec2c6463a4f7f3c16111074fb0eca29f56f7946f026dde4dba87150",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Bounded ingredient facts only; no reviewed cooking method or complete V2 comparison",
+        "reviewerSummary": "The source lists 200 g fresh spinach and one garlic clove.",
+        "supportLimits": "Related cited source only, not equivalence to the V2 dish. Recipe identity, complete formulation, safety, authority and every unmentioned field remain unverified."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Recipe JSON-LD recipeIngredient opening entries 1-4; ingredient facts only",
+          "reviewerSummary": "The source lists 200 g fresh spinach and one garlic clove.",
+          "supportLimits": "Only the named ingredient facts are supported. No normalization, conversion, retention, method, nutritional or full-recipe verification is established."
+        }
+      ]
+    },
+    {
+      "sourceId": "source-9c666dc26ebd1809",
+      "url": "https://gustour.it/ricette/pasta-con-pollo-e-funghi-scelteperte",
+      "recipeIds": [
+        "imp-20d3992a65cb17fd"
+      ],
+      "retrievedAt": "2026-10-26T13:01:07.777761Z",
+      "httpStatus": 200,
+      "finalUrl": "https://gustour.it/ricette/pasta-con-pollo-e-funghi-scelteperte",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "01e5cba5780e2863974d051089a5979bb53570f4cac1fc81e2f570147e022c90",
+      "byteLength": 80994,
+      "title": "Pasta con pollo e funghi - Gustour Conad",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "visibleTextSha256": "6183e57b6df7b92263d2da745f78d427669c1337dabf703cd3880c207b7af504",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Bounded ingredient facts only; no reviewed cooking method or complete V2 comparison",
+        "reviewerSummary": "The source lists 300 g pennette and three chicken thighs.",
+        "supportLimits": "Related cited source only, not equivalence to the V2 dish. Recipe identity, complete formulation, safety, authority and every unmentioned field remain unverified."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Recipe JSON-LD recipeIngredient opening entries 1-4; ingredient facts only",
+          "reviewerSummary": "The source lists 300 g pennette and three chicken thighs.",
+          "supportLimits": "Only the named ingredient facts are supported. No normalization, conversion, retention, method, nutritional or full-recipe verification is established."
+        }
+      ]
+    },
+    {
+      "sourceId": "source-03a2a67afc36c5da",
+      "url": "https://www.petitchef.it/ricette/portata-principale/maccheroncini-con-funghi-porcini-pollo-rucola-e-pomodorini-e-foto--marine-fid-390960",
+      "recipeIds": [
+        "imp-20d3992a65cb17fd"
+      ],
+      "retrievedAt": "2026-10-26T13:01:07.937628Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.petitchef.it/ricette/portata-principale/maccheroncini-con-funghi-porcini-pollo-rucola-e-pomodorini-e-foto--marine-fid-390960",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "42ea22e1ad86c16464ed7b382bfeb8d80cbbe350a7556c679a24d34d5b515af7",
+      "byteLength": 92033,
+      "title": "Maccheroncini con funghi porcini e pollo: ricetta semplice",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE"
+      ],
+      "humanReview": "PENDING",
+      "visibleTextSha256": "b1ed55727e5e7b51fdfeb629bceaf0b2a6062b7e77bd3822bbdf8a0e7f43eef3",
+      "contentReviewLimit": "No accepted bounded ingredient fact from the inspected selection; HTTP success alone is not culinary verification."
+    },
+    {
+      "sourceId": "source-a54895de60012225",
+      "url": "https://www.fattoincasadabenedetta.it/ricetta/risotto-con-gamberoni/",
+      "recipeIds": [
+        "imp-38137393c32d70d7"
+      ],
+      "retrievedAt": "2026-10-26T13:01:07.937859Z",
+      "httpStatus": 403,
+      "finalUrl": "https://www.fattoincasadabenedetta.it/ricetta/risotto-con-gamberoni/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "252d4fb0b3710f2e5b4898f3fc3ddc6f97ffe996c6f939d9737c5998d41e0a17",
+      "byteLength": 5571,
+      "title": "Just a moment...",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "visibleTextSha256": "301dc171e5fa8c5fdeb69592a92a5c378f5f758f68d2338200235d60eb04b9ad",
+      "contentReviewLimit": "No accepted bounded ingredient fact from the inspected selection; HTTP success alone is not culinary verification."
+    },
+    {
+      "sourceId": "source-819f6c32f2cace26",
+      "url": "https://www.paginainizio.com/public/ricette/recipe.php?recipe=00018363",
+      "recipeIds": [
+        "imp-38137393c32d70d7"
+      ],
+      "retrievedAt": "2026-10-26T13:01:08.025312Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.paginainizio.com/public/ricette/recipe.php?recipe=00018363",
+      "contentType": "text/html; charset=latin1",
+      "contentSha256": "5201e39ca12170102f1ac6630524592d060dfc3f0fc1c8b3cea0f029f7ff852f",
+      "byteLength": 22908,
+      "title": "Ricetta Risotto con Gamberi e Sedano",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "visibleTextSha256": "c57525a3b76f564f42e6490aeb35a59c3e099d257fd05efec82d3c2a1aa72e31",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Bounded ingredient facts only; no reviewed cooking method or complete V2 comparison",
+        "reviewerSummary": "The source lists 350 g rice and 600 g shrimp; shell removal and edible yield are outside this ingredient check.",
+        "supportLimits": "Related cited source only, not equivalence to the V2 dish. Recipe identity, complete formulation, safety, authority and every unmentioned field remain unverified."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Recipe JSON-LD recipeIngredient opening entries 1-4; ingredient facts only",
+          "reviewerSummary": "The source lists 350 g rice and 600 g shrimp; shell removal and edible yield are outside this ingredient check.",
+          "supportLimits": "Only the named ingredient facts are supported. No normalization, conversion, retention, method, nutritional or full-recipe verification is established."
+        }
+      ]
+    },
+    {
+      "sourceId": "source-4e7e22f347649bef",
+      "url": "https://primochef.it/calamari-in-umido/ricette/amp/",
+      "recipeIds": [
+        "imp-e61010e240534690"
+      ],
+      "retrievedAt": "2026-10-26T13:01:08.154889Z",
+      "httpStatus": 200,
+      "finalUrl": "https://primochef.it/calamari-in-umido/ricette/amp/",
+      "contentType": "text/html; charset=utf-8",
+      "contentSha256": "e3706d6fc7a7ae8fa60c8e40c80e5e3d8eafe296569d3e12fdcde54296c8c646",
+      "byteLength": 129717,
+      "title": "Come fare i calamari in umido: la ricetta sfiziosa",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "visibleTextSha256": "879f51a4a8a86f5385bf8b20b5c8cf172fcee75ad7700e835da910422f228096",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Bounded ingredient facts only; no reviewed cooking method or complete V2 comparison",
+        "reviewerSummary": "The source lists 1 kg squid and half a glass dry white wine.",
+        "supportLimits": "Related cited source only, not equivalence to the V2 dish. Recipe identity, complete formulation, safety, authority and every unmentioned field remain unverified."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Recipe JSON-LD recipeIngredient opening entries 1-4; ingredient facts only",
+          "reviewerSummary": "The source lists 1 kg squid and half a glass dry white wine.",
+          "supportLimits": "Only the named ingredient facts are supported. No normalization, conversion, retention, method, nutritional or full-recipe verification is established."
+        }
+      ]
+    },
+    {
+      "sourceId": "source-d79bfb543e09889b",
+      "url": "https://ricettein30minuti.it/calamari-in-umido-ricetta-veloce/",
+      "recipeIds": [
+        "imp-e61010e240534690"
+      ],
+      "retrievedAt": "2026-10-26T13:01:08.179221Z",
+      "httpStatus": 403,
+      "finalUrl": "https://ricettein30minuti.it/calamari-in-umido-ricetta-veloce/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "91ca967f51425e94dc73e2611c64196595b3b86b6663811ff64d556efc89fe46",
+      "byteLength": 4917,
+      "title": "Attention Required! | Cloudflare",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "visibleTextSha256": "cdce942dff9f8141836245792c36ebb330ad234f61351d6b10ce147001a2a834",
+      "contentReviewLimit": "No accepted bounded ingredient fact from the inspected selection; HTTP success alone is not culinary verification."
+    },
+    {
+      "sourceId": "source-e7963b6b5b110852",
+      "url": "https://pomionline.it/it/ricette/rubrica-gluten-free/gamberetti-al-pomodoro/pdf/",
+      "retrievedAt": "2026-10-26T19:28:59.083201Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.pomionline.it:443/it/ricette/rubrica-gluten-free/gamberetti-al-pomodoro/pdf/",
+      "contentType": "application/pdf",
+      "contentSha256": "143c0f9d5033972c49a26151b24aea091afd9d218ec69f9ddc5763b56d75c472",
+      "byteLength": 293497,
+      "title": null,
+      "visibleTextSha256": "0c1bf89a92d73bd51d9ab820de79c8607e31c5d6290a6ac63d4a9128c38b1986",
+      "recipeIds": [
+        "imp-452ef6d0f8ec0de9"
+      ],
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTTP metadata and HTML title only; unreviewed author/date remains null.",
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "pdfPageCount": 1,
+      "pdfTextSha256": "a9cb938f909793fd623e353a0a825dd64a7420e1bec430108d7ebcb68109bfc0",
+      "pdfTextExtractor": "pypdf 6.10.0",
+      "pdfTextPath": "/private/tmp/takolio-v3-gap-research-cache-03/e7963b6b5b110852.pdf.txt",
+      "pdfPagesPath": "/private/tmp/takolio-v3-gap-research-cache-03/e7963b6b5b110852.pdf-pages.json",
+      "pdfPagesSha256": "69e884a3c92ad40964dd60770fcdc2823312bc2a8c4967bed957039c2911576c",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "PDF pages 1-1",
+        "reviewerSummary": "The PDF lists 400 g peeled shrimp, 400 g tomato passata, two tablespoons oil, garlic, chili and basil, then a five-minute shrimp cook; timing and thawing advice still require safety review.",
+        "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "PDF pages 1-1",
+          "reviewerSummary": "The PDF lists 400 g peeled shrimp, 400 g tomato passata, two tablespoons oil, garlic, chili and basil, then a five-minute shrimp cook; timing and thawing advice still require safety review.",
+          "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved."
+        }
+      ],
+      "previousRetrievals": [
+        {
+          "sourceId": "source-e7963b6b5b110852",
+          "url": "https://pomionline.it/it/ricette/rubrica-gluten-free/gamberetti-al-pomodoro/pdf/",
+          "retrievedAt": "2026-10-26T13:01:08.678540Z",
+          "httpStatus": 200,
+          "finalUrl": "https://www.pomionline.it:443/it/ricette/rubrica-gluten-free/gamberetti-al-pomodoro/pdf/",
+          "contentType": "application/pdf",
+          "contentSha256": "143c0f9d5033972c49a26151b24aea091afd9d218ec69f9ddc5763b56d75c472",
+          "byteLength": 293497,
+          "title": null,
+          "author": null,
+          "publishedAt": null,
+          "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+          "evidenceStatus": [
+            "URL_DISCOVERED",
+            "URL_REACHABLE"
+          ],
+          "humanReview": "PENDING",
+          "visibleTextSha256": "0c1bf89a92d73bd51d9ab820de79c8607e31c5d6290a6ac63d4a9128c38b1986",
+          "contentReviewLimit": "No accepted bounded ingredient fact from the inspected selection; HTTP success alone is not culinary verification."
+        }
+      ]
+    },
+    {
+      "sourceId": "source-ec7697b1a341c68c",
+      "url": "https://www.agrodolce.it/ricette/gamberoni-in-guazzetto",
+      "retrievedAt": "2026-10-26T19:28:59.477478Z",
+      "httpStatus": 403,
+      "finalUrl": "https://www.agrodolce.it/ricette/gamberoni-in-guazzetto",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "642c5ecf0810039237f154fd1d578ab0f01bec201aa6cea3b61dac14613b2642",
+      "byteLength": 5528,
+      "title": "Just a moment...",
+      "visibleTextSha256": "301dc171e5fa8c5fdeb69592a92a5c378f5f758f68d2338200235d60eb04b9ad",
+      "recipeIds": [
+        "imp-452ef6d0f8ec0de9"
+      ],
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTTP metadata and HTML title only; unreviewed author/date remains null.",
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "unavailabilityReason": "HTTP_403",
+      "reviewedFacts": [],
+      "previousRetrievals": [
+        {
+          "sourceId": "source-ec7697b1a341c68c",
+          "url": "https://www.agrodolce.it/ricette/gamberoni-in-guazzetto",
+          "retrievedAt": "2026-10-26T13:01:08.678659Z",
+          "httpStatus": 403,
+          "finalUrl": "https://www.agrodolce.it/ricette/gamberoni-in-guazzetto",
+          "contentType": "text/html; charset=UTF-8",
+          "contentSha256": "a1258a2a75468af6a1d751f0f7f1b4054b65b2cd34efc06509ed3ff6c4daa022",
+          "byteLength": 5528,
+          "title": "Just a moment...",
+          "author": null,
+          "publishedAt": null,
+          "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+          "evidenceStatus": [
+            "URL_DISCOVERED",
+            "SOURCE_UNAVAILABLE"
+          ],
+          "humanReview": "PENDING",
+          "visibleTextSha256": "301dc171e5fa8c5fdeb69592a92a5c378f5f758f68d2338200235d60eb04b9ad",
+          "contentReviewLimit": "No accepted bounded ingredient fact from the inspected selection; HTTP success alone is not culinary verification."
+        }
+      ]
+    },
+    {
+      "sourceId": "source-344894c0cfea4d3a",
+      "url": "https://www.buttalapasta.it/ricette/ricetta-per-la-zuppa-di-panna-e-salmone/24165/",
+      "recipeIds": [
+        "imp-f44be7e8c88c20d3"
+      ],
+      "retrievedAt": "2026-10-26T13:01:10.022084Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.buttalapasta.it/ricette/ricetta-per-la-zuppa-di-panna-e-salmone/24165/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "10b66f8c65fac73114c9bbb0255ebd5b0dc9bf4f82b21e6612833b0937e8dfbe",
+      "byteLength": 56068,
+      "title": "Zuppa di panna e salmone | Buttalapasta",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "visibleTextSha256": "64aaa657ed01a795ac84b78197a70f2e8bc91ea8d889de44d417e03f1df75741",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Bounded ingredient facts only; no reviewed cooking method or complete V2 comparison",
+        "reviewerSummary": "The source lists 200 g salmon or white-fish fillet and 600 g potatoes. No method is accepted from the extracted instruction value of 1.",
+        "supportLimits": "Related cited source only, not equivalence to the V2 dish. Recipe identity, complete formulation, safety, authority and every unmentioned field remain unverified."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Recipe JSON-LD recipeIngredient opening entries 1-4; ingredient facts only",
+          "reviewerSummary": "The source lists 200 g salmon or white-fish fillet and 600 g potatoes. No method is accepted from the extracted instruction value of 1.",
+          "supportLimits": "Only the named ingredient facts are supported. No normalization, conversion, retention, method, nutritional or full-recipe verification is established."
+        }
+      ]
+    },
+    {
+      "sourceId": "source-aab2681bbb75903c",
+      "url": "https://www.unafamigliaincucina.com/zuppa-di-salmone-finlandese/",
+      "recipeIds": [
+        "imp-f44be7e8c88c20d3"
+      ],
+      "retrievedAt": "2026-10-26T13:01:11.475079Z",
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "contentSha256": null,
+      "byteLength": 0,
+      "title": null,
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "contentReviewLimit": "No accepted bounded ingredient fact from the inspected selection; HTTP success alone is not culinary verification."
+    },
+    {
+      "sourceId": "source-e22e1b19cec5db21",
+      "url": "https://www.buttalapasta.it/articolo/insalata-di-cetrioli-e-salmone-affumicato-ricetta/201821",
+      "retrievedAt": "2026-10-26T19:28:48.303245Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.buttalapasta.it/articolo/insalata-di-cetrioli-e-salmone-affumicato-ricetta/201821/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "59405e1ed432ebe4fe7115a82638bdf73fea67ade06adb04a5bb49ade1c8d93b",
+      "byteLength": 63454,
+      "title": "Insalata di cetrioli e salmone affumicato leggerissima | Buttalapasta",
+      "visibleTextSha256": "60ac5a84d6df74259d097a3ba930a69e997219c14e6cec2abde4b2042dafdd85",
+      "recipeIds": [
+        "imp-e748a717f7250188"
+      ],
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTTP metadata and HTML title only; unreviewed author/date remains null.",
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "visibleText lines 68-81",
+        "reviewerSummary": "The four-person cucumber salad uses 200 g smoked salmon, cucumber and lemon; its smoked salmon differs from the grilled fillet in the other source.",
+        "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "visibleText lines 68-81",
+          "reviewerSummary": "The four-person cucumber salad uses 200 g smoked salmon, cucumber and lemon; its smoked salmon differs from the grilled fillet in the other source.",
+          "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved."
+        }
+      ],
+      "previousRetrievals": [
+        {
+          "sourceId": "source-e22e1b19cec5db21",
+          "url": "https://www.buttalapasta.it/articolo/insalata-di-cetrioli-e-salmone-affumicato-ricetta/201821",
+          "retrievedAt": "2026-10-26T13:01:11.707082Z",
+          "httpStatus": 200,
+          "finalUrl": "https://www.buttalapasta.it/articolo/insalata-di-cetrioli-e-salmone-affumicato-ricetta/201821/",
+          "contentType": "text/html; charset=UTF-8",
+          "contentSha256": "59405e1ed432ebe4fe7115a82638bdf73fea67ade06adb04a5bb49ade1c8d93b",
+          "byteLength": 63454,
+          "title": "Insalata di cetrioli e salmone affumicato leggerissima | Buttalapasta",
+          "author": null,
+          "publishedAt": null,
+          "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+          "evidenceStatus": [
+            "URL_DISCOVERED",
+            "URL_REACHABLE"
+          ],
+          "humanReview": "PENDING",
+          "visibleTextSha256": "60ac5a84d6df74259d097a3ba930a69e997219c14e6cec2abde4b2042dafdd85",
+          "contentReviewLimit": "No accepted bounded ingredient fact from the inspected selection; HTTP success alone is not culinary verification."
+        }
+      ]
+    },
+    {
+      "sourceId": "source-2f7a86c8a573f145",
+      "url": "https://ostariaallatorre.it/post/insalata-con-salmone-grigliato/",
+      "retrievedAt": "2026-10-26T19:28:48.342745Z",
+      "httpStatus": 200,
+      "finalUrl": "https://ostariaallatorre.it/post/insalata-con-salmone-grigliato/",
+      "contentType": "text/html; charset=utf-8",
+      "contentSha256": "6f47f0f36dc344aa5cc14adff1b2cd8d8a4768ab78e72511a81a9c33a56160a1",
+      "byteLength": 30455,
+      "title": "Scopri la Ricetta Perfetta dell'Insalata con Salmone Grigliato: Fresca, Leggera e Irresistibile! | Ostaria alla Torre",
+      "visibleTextSha256": "48feb0aa6620cc8e169db87b3b20302217a621963e198727e804c71a3cdfbc06",
+      "recipeIds": [
+        "imp-e748a717f7250188"
+      ],
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTTP metadata and HTML title only; unreviewed author/date remains null.",
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "visibleText lines 30-52",
+        "reviewerSummary": "This source describes grilled salmon fillet with mixed salad but supplies no salmon quantity in the inspected section; it is distinct from smoked-salmon cucumber salad.",
+        "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "visibleText lines 30-52",
+          "reviewerSummary": "This source describes grilled salmon fillet with mixed salad but supplies no salmon quantity in the inspected section; it is distinct from smoked-salmon cucumber salad.",
+          "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved."
+        }
+      ],
+      "previousRetrievals": [
+        {
+          "sourceId": "source-2f7a86c8a573f145",
+          "url": "https://ostariaallatorre.it/post/insalata-con-salmone-grigliato/",
+          "retrievedAt": "2026-10-26T13:01:12.236866Z",
+          "httpStatus": 200,
+          "finalUrl": "https://ostariaallatorre.it/post/insalata-con-salmone-grigliato/",
+          "contentType": "text/html; charset=utf-8",
+          "contentSha256": "998895a5cb7a5f776cc0fdf602322ab1f57be6128426a564c3f870096cc74ae4",
+          "byteLength": 30460,
+          "title": "Scopri la Ricetta Perfetta dell'Insalata con Salmone Grigliato: Fresca, Leggera e Irresistibile! | Ostaria alla Torre",
+          "author": null,
+          "publishedAt": null,
+          "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+          "evidenceStatus": [
+            "URL_DISCOVERED",
+            "URL_REACHABLE"
+          ],
+          "humanReview": "PENDING",
+          "visibleTextSha256": "3b35c4044f6664f92ff8dfa41dc5ffd2bed095cd9ef33d7a5d619a07437ef4eb",
+          "contentReviewLimit": "No accepted bounded ingredient fact from the inspected selection; HTTP success alone is not culinary verification."
+        }
+      ]
+    },
+    {
+      "sourceId": "source-e8626036c5a9fd7e",
+      "url": "https://ricettadioggi.it/broccoletti-con-pomodorini/",
+      "recipeIds": [
+        "imp-957396bc647d3798"
+      ],
+      "retrievedAt": "2026-10-26T13:01:12.454769Z",
+      "httpStatus": 200,
+      "finalUrl": "https://ricettadioggi.it/broccoletti-con-pomodorini/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "6d448578ed459b5d4b6c54fb56f4e2d03478227f13d0f217c7cf9d9caa2a3580",
+      "byteLength": 252732,
+      "title": "Broccoletti con pomodorini e acciughe: un contorno saporito e salutare per ogni occasione - Ricetta di Oggi",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "visibleTextSha256": "2fb0ebbdf3fa9a1043351beeb1bb82b50488905f50686c8a109efe39002ffe5b",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Bounded ingredient facts only; no reviewed cooking method or complete V2 comparison",
+        "reviewerSummary": "The source lists 800 g broccoletti and 200 g cherry or datterini tomatoes.",
+        "supportLimits": "Related cited source only, not equivalence to the V2 dish. Recipe identity, complete formulation, safety, authority and every unmentioned field remain unverified."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Recipe JSON-LD recipeIngredient opening entries 1-4; ingredient facts only",
+          "reviewerSummary": "The source lists 800 g broccoletti and 200 g cherry or datterini tomatoes.",
+          "supportLimits": "Only the named ingredient facts are supported. No normalization, conversion, retention, method, nutritional or full-recipe verification is established."
+        }
+      ]
+    },
+    {
+      "sourceId": "source-98e17addf7b25eb9",
+      "url": "https://www.ricettasprint.it/pasta-broccoli-sugo-pomodoro/",
+      "recipeIds": [
+        "imp-957396bc647d3798"
+      ],
+      "retrievedAt": "2026-10-26T13:01:13.297111Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.ricettasprint.it/pasta-broccoli-sugo-pomodoro/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "7b24760db3cd3d15763f1ac70959ac61e76f6dff5846c465f869a915b484f6d2",
+      "byteLength": 127112,
+      "title": "Pasta con broccoli e sugo: particolare e molto invitante, prova e vedrai che successo! - RicettaSprint.it",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE"
+      ],
+      "humanReview": "PENDING",
+      "visibleTextSha256": "ab18644903fc638ca1f70903e69a385e6293aa66b7afb2a55a2747f0d1262b65",
+      "contentReviewLimit": "No accepted bounded ingredient fact from the inspected selection; HTTP success alone is not culinary verification."
+    },
+    {
+      "sourceId": "source-72cd0448ab6296ef",
+      "url": "https://www.lavialla.com/en/recipes/562/rosticciana-in-umido-/?frommenu=113",
+      "retrievedAt": "2026-10-26T19:28:47.848458Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.lavialla.com/en/recipes/562/rosticciana-in-umido-/?frommenu=113",
+      "contentType": "text/html; charset=utf-8",
+      "contentSha256": "859ae518761f912fea9962bbaa34851fddef51ccf6ad67b9c1dfcf4d51d674f8",
+      "byteLength": 796344,
+      "title": "Rosticciana in umido  | Fattoria La Vialla",
+      "visibleTextSha256": "8042db3462a8c03161cf51e4ee7bce89d0f01b79efdfd037baf5dca4a3551b57",
+      "recipeIds": [
+        "imp-c98aa0f1ffe2f469"
+      ],
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTTP metadata and HTML title only; unreviewed author/date remains null.",
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "visibleText lines 1109-1112",
+        "reviewerSummary": "The Tuscan rib braise declares five people with one to two kilograms pork ribs, 500 g tomatoes, 150 g olives, rosemary and bay leaf.",
+        "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "visibleText lines 1109-1112",
+          "reviewerSummary": "The Tuscan rib braise declares five people with one to two kilograms pork ribs, 500 g tomatoes, 150 g olives, rosemary and bay leaf.",
+          "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved."
+        }
+      ],
+      "previousRetrievals": [
+        {
+          "sourceId": "source-72cd0448ab6296ef",
+          "url": "https://www.lavialla.com/en/recipes/562/rosticciana-in-umido-/?frommenu=113",
+          "retrievedAt": "2026-10-26T13:01:13.470603Z",
+          "httpStatus": 200,
+          "finalUrl": "https://www.lavialla.com/en/recipes/562/rosticciana-in-umido-/?frommenu=113",
+          "contentType": "text/html; charset=utf-8",
+          "contentSha256": "9306da9cb798f129c44e90b8d97045cdf8bba6b0e68fcc133359d745f674b5ad",
+          "byteLength": 796344,
+          "title": "Rosticciana in umido  | Fattoria La Vialla",
+          "author": null,
+          "publishedAt": null,
+          "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+          "evidenceStatus": [
+            "URL_DISCOVERED",
+            "URL_REACHABLE"
+          ],
+          "humanReview": "PENDING",
+          "visibleTextSha256": "8042db3462a8c03161cf51e4ee7bce89d0f01b79efdfd037baf5dca4a3551b57",
+          "contentReviewLimit": "No accepted bounded ingredient fact from the inspected selection; HTTP success alone is not culinary verification."
+        }
+      ]
+    },
+    {
+      "sourceId": "source-3efb0fb287d49138",
+      "url": "https://www.youtube.com/shorts/G5AuHpz_WZo",
+      "retrievedAt": "2026-10-26T19:28:47.849389Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.youtube.com/shorts/G5AuHpz_WZo",
+      "contentType": "text/html; charset=utf-8",
+      "contentSha256": "163fe1084acd8130cacd8f6ca90f2a35cba0b55c79d85bd490a884812682a043",
+      "byteLength": 1602639,
+      "title": "Costine di Maiale in Umido Ricetta Facilissima POCHI INGREDIENTI E TANTO SAPORE #shorts - YouTube",
+      "visibleTextSha256": "f0ce4dd756317251dcbb60299fea8fe10e7113b4259c0952fd7b8e737af5882e",
+      "recipeIds": [
+        "imp-c98aa0f1ffe2f469"
+      ],
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTTP metadata and HTML title only; unreviewed author/date remains null.",
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE"
+      ],
+      "contentReviewLimit": "HTTP reachability/title or shell only. No bounded culinary fact was established; video content was not watched.",
+      "reviewedFacts": [],
+      "previousRetrievals": [
+        {
+          "sourceId": "source-3efb0fb287d49138",
+          "url": "https://www.youtube.com/shorts/G5AuHpz_WZo",
+          "retrievedAt": "2026-10-26T13:01:13.506614Z",
+          "httpStatus": 200,
+          "finalUrl": "https://www.youtube.com/shorts/G5AuHpz_WZo",
+          "contentType": "text/html; charset=utf-8",
+          "contentSha256": "3041f0f30189e9018d6963da880d2f37a8497022888e21e1966c2d46d325b9f4",
+          "byteLength": 1500168,
+          "title": "Costine di Maiale in Umido Ricetta Facilissima POCHI INGREDIENTI E TANTO SAPORE #shorts - YouTube",
+          "author": null,
+          "publishedAt": null,
+          "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+          "evidenceStatus": [
+            "URL_DISCOVERED",
+            "URL_REACHABLE"
+          ],
+          "humanReview": "PENDING",
+          "visibleTextSha256": "f0ce4dd756317251dcbb60299fea8fe10e7113b4259c0952fd7b8e737af5882e",
+          "contentReviewLimit": "No accepted bounded ingredient fact from the inspected selection; HTTP success alone is not culinary verification."
+        }
+      ]
+    },
+    {
+      "sourceId": "source-8a1517ed343b9642",
+      "url": "https://www.williams-sonoma.com/m/recipe/tomato-basil-and-mozzarella-salad.html",
+      "recipeIds": [
+        "imp-a286f8724d79a504"
+      ],
+      "retrievedAt": "2026-10-26T13:01:13.720303Z",
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "contentSha256": null,
+      "byteLength": 0,
+      "title": null,
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "contentReviewLimit": "No accepted bounded ingredient fact from the inspected selection; HTTP success alone is not culinary verification."
+    },
+    {
+      "sourceId": "source-e2d1df572bbca7ac",
+      "url": "https://www.acouplecooks.com/caprese-salad/",
+      "recipeIds": [
+        "imp-a286f8724d79a504"
+      ],
+      "retrievedAt": "2026-10-26T13:01:16.256182Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.acouplecooks.com/caprese-salad/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "b9060fdc51e83beda8f0d53175581f46de3c254a7e7cae1144d42d0a6a69f197",
+      "byteLength": 443527,
+      "title": "Classic Caprese Salad – A Couple Cooks",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "visibleTextSha256": "cc698f88b5b21ef9a713e6248c46ee1cec2fb6e2165b15852863a9fa8d438671",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Bounded ingredient facts only; no reviewed cooking method or complete V2 comparison",
+        "reviewerSummary": "The source lists six to eight tomatoes and 4 oz fresh mozzarella or burrata.",
+        "supportLimits": "Related cited source only, not equivalence to the V2 dish. Recipe identity, complete formulation, safety, authority and every unmentioned field remain unverified."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Recipe JSON-LD recipeIngredient opening entries 1-4; ingredient facts only",
+          "reviewerSummary": "The source lists six to eight tomatoes and 4 oz fresh mozzarella or burrata.",
+          "supportLimits": "Only the named ingredient facts are supported. No normalization, conversion, retention, method, nutritional or full-recipe verification is established."
+        }
+      ]
+    },
+    {
+      "sourceId": "source-3179478db303d886",
+      "url": "https://www.ricettecucinare.com/ricette/involtini-di-manzo-agli-spinaci/24667",
+      "retrievedAt": "2026-10-26T19:28:57.505751Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.ricettecucinare.com/ricette/involtini-di-manzo-agli-spinaci/24667",
+      "contentType": "text/html; charset=utf-8",
+      "contentSha256": "3dd13b96b3d576b5511e07c15d5cd3ecaf98b712ff3437cc228457e531d7c710",
+      "byteLength": 228340,
+      "title": "Involtini Di Manzo Agli Spinaci | Ricette Cucinare, Ricetta, Cucina, Ricettario",
+      "visibleTextSha256": "6b243facb3b86282c6cb232b11a2623c9db792383e62a061f258596f8222a3d7",
+      "recipeIds": [
+        "imp-83ed31fc537569a6"
+      ],
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTTP metadata and HTML title only; unreviewed author/date remains null.",
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "visibleText lines 102-104",
+        "reviewerSummary": "This beef-roll source lists eight beef slices, 400 g spinach, cheese, carrots, wine and butter.",
+        "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "visibleText lines 102-104",
+          "reviewerSummary": "This beef-roll source lists eight beef slices, 400 g spinach, cheese, carrots, wine and butter.",
+          "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved."
+        }
+      ],
+      "previousRetrievals": [
+        {
+          "sourceId": "source-3179478db303d886",
+          "url": "https://www.ricettecucinare.com/ricette/involtini-di-manzo-agli-spinaci/24667",
+          "retrievedAt": "2026-10-26T13:01:16.327995Z",
+          "httpStatus": 200,
+          "finalUrl": "https://www.ricettecucinare.com/ricette/involtini-di-manzo-agli-spinaci/24667",
+          "contentType": "text/html; charset=utf-8",
+          "contentSha256": "edbbca0695e90f468d892feba6862daf13fcddab9a3448d7f1f6a4184f471549",
+          "byteLength": 228417,
+          "title": "Involtini Di Manzo Agli Spinaci | Ricette Cucinare, Ricetta, Cucina, Ricettario",
+          "author": null,
+          "publishedAt": null,
+          "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+          "evidenceStatus": [
+            "URL_DISCOVERED",
+            "URL_REACHABLE"
+          ],
+          "humanReview": "PENDING",
+          "visibleTextSha256": "096cbbc6d075c51488de55ba314b9d06e7117aee9b45018d30aae48c23156b00",
+          "contentReviewLimit": "No accepted bounded ingredient fact from the inspected selection; HTTP success alone is not culinary verification."
+        }
+      ]
+    },
+    {
+      "sourceId": "source-91836019d2835300",
+      "url": "https://www.ricettasprint.it/involtini-carne-ricotta-spinaci/",
+      "retrievedAt": "2026-10-26T19:28:57.761087Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.ricettasprint.it/involtini-carne-ricotta-spinaci/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "446d3dc548a496a2f89f0372b14fa12457c56dca32a66b4b599e1f2945e5d21c",
+      "byteLength": 127841,
+      "title": "involtini di carne ripieni di ricotta e spinaci ricetta preparazione",
+      "visibleTextSha256": "d9329c3ce18a54564305eba227f84186c734c139f9d74097cf1f4f4ba30ef475",
+      "recipeIds": [
+        "imp-83ed31fc537569a6"
+      ],
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTTP metadata and HTML title only; unreviewed author/date remains null.",
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "visibleText lines 47-63",
+        "reviewerSummary": "A distinct four-person baked beef-roll variant lists eight slices, 300 g spinach, 250 g ricotta, 200 g pancetta and honey.",
+        "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "visibleText lines 47-63",
+          "reviewerSummary": "A distinct four-person baked beef-roll variant lists eight slices, 300 g spinach, 250 g ricotta, 200 g pancetta and honey.",
+          "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved."
+        }
+      ],
+      "previousRetrievals": [
+        {
+          "sourceId": "source-91836019d2835300",
+          "url": "https://www.ricettasprint.it/involtini-carne-ricotta-spinaci/",
+          "retrievedAt": "2026-10-26T13:01:16.908586Z",
+          "httpStatus": 200,
+          "finalUrl": "https://www.ricettasprint.it/involtini-carne-ricotta-spinaci/",
+          "contentType": "text/html; charset=UTF-8",
+          "contentSha256": "134778a4e85440a01c406196b84fa8aa499d7859d6b736365b7bd877f04e1978",
+          "byteLength": 127132,
+          "title": "involtini di carne ripieni di ricotta e spinaci ricetta preparazione",
+          "author": null,
+          "publishedAt": null,
+          "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+          "evidenceStatus": [
+            "URL_DISCOVERED",
+            "URL_REACHABLE"
+          ],
+          "humanReview": "PENDING",
+          "visibleTextSha256": "f4adb80aa83cb8c4a32aa5d73245e579e0f94b7d139f81044aa567a97c5a65a8",
+          "contentReviewLimit": "No accepted bounded ingredient fact from the inspected selection; HTTP success alone is not culinary verification."
+        }
+      ]
+    },
+    {
+      "sourceId": "source-27a9981c69cf327d",
+      "url": "https://www.amalfilemonexperience.it/it/pollo-al-limone/",
+      "retrievedAt": "2026-10-26T19:28:53.972292Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.amalfilemonexperience.it/it/pollo-al-limone/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "320d1b370854814863fb00f8ef76d9112db17c6b9fe47c720a44e0d59e49a6bb",
+      "byteLength": 81914,
+      "title": "Pollo al limone – Amalfi Lemon Experience",
+      "visibleTextSha256": "e86925504059bfbd97f15c1b7270434eb207402ed4dcceb7c496d8b356e3b0b7",
+      "recipeIds": [
+        "imp-a92103c19952bcf0"
+      ],
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTTP metadata and HTML title only; unreviewed author/date remains null.",
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "visibleText lines 40-54",
+        "reviewerSummary": "The lemon-marinated chicken source declares eight to nine servings, 300 g breadcrumbs and 100 g Parmesan; these quantities belong to this variant.",
+        "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "visibleText lines 40-54",
+          "reviewerSummary": "The lemon-marinated chicken source declares eight to nine servings, 300 g breadcrumbs and 100 g Parmesan; these quantities belong to this variant.",
+          "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved."
+        }
+      ],
+      "previousRetrievals": [
+        {
+          "sourceId": "source-27a9981c69cf327d",
+          "url": "https://www.amalfilemonexperience.it/it/pollo-al-limone/",
+          "retrievedAt": "2026-10-26T13:01:17.079911Z",
+          "httpStatus": 200,
+          "finalUrl": "https://www.amalfilemonexperience.it/it/pollo-al-limone/",
+          "contentType": "text/html; charset=UTF-8",
+          "contentSha256": "942c4da71c024094461d5f1a1fb9b684edef59395d8cf1522bc51dfa855634c7",
+          "byteLength": 81513,
+          "title": "Pollo al limone – Amalfi Lemon Experience",
+          "author": null,
+          "publishedAt": null,
+          "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+          "evidenceStatus": [
+            "URL_DISCOVERED",
+            "URL_REACHABLE"
+          ],
+          "humanReview": "PENDING",
+          "visibleTextSha256": "1057ba16c0dfbbe7724d72ea4a325b0889787cb18b7cc0b3f18d7bcd7cab2596",
+          "contentReviewLimit": "No accepted bounded ingredient fact from the inspected selection; HTTP success alone is not culinary verification."
+        }
+      ]
+    },
+    {
+      "sourceId": "source-9854f69d4d0fdca7",
+      "url": "https://www.chiarapassion.com/2016/04/pollo-al-limone-e-parmigiano.html",
+      "retrievedAt": "2026-10-26T19:28:54.213135Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.chiarapassion.com/2016/04/pollo-al-limone-e-parmigiano.html",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "ef578b23c96825844867ab70f3ae6397396d2652479087186d0c70129bc0063c",
+      "byteLength": 686656,
+      "title": "Pollo al limone, parmigiano e pangrattato",
+      "visibleTextSha256": "0f2730b2e106f351477c45320baf369ef088e0038d94ffcf67db62443a98a59e",
+      "recipeIds": [
+        "imp-a92103c19952bcf0"
+      ],
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTTP metadata and HTML title only; unreviewed author/date remains null.",
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "visibleText lines 130-144",
+        "reviewerSummary": "The inspected chicken section uses skinless thighs with Parmesan, breadcrumbs and lemon, then bakes at 200 C; this is a baked variant rather than evidence for a frying method.",
+        "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "visibleText lines 130-144",
+          "reviewerSummary": "The inspected chicken section uses skinless thighs with Parmesan, breadcrumbs and lemon, then bakes at 200 C; this is a baked variant rather than evidence for a frying method.",
+          "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved."
+        }
+      ],
+      "previousRetrievals": [
+        {
+          "sourceId": "source-9854f69d4d0fdca7",
+          "url": "https://www.chiarapassion.com/2016/04/pollo-al-limone-e-parmigiano.html",
+          "retrievedAt": "2026-10-26T13:01:17.307140Z",
+          "httpStatus": 200,
+          "finalUrl": "https://www.chiarapassion.com/2016/04/pollo-al-limone-e-parmigiano.html",
+          "contentType": "text/html; charset=UTF-8",
+          "contentSha256": "cdad4d8b5ad3a6556562889da6e1e5aab7b336c85c4d94d7e2570feb81715755",
+          "byteLength": 686653,
+          "title": "Pollo al limone, parmigiano e pangrattato",
+          "author": null,
+          "publishedAt": null,
+          "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+          "evidenceStatus": [
+            "URL_DISCOVERED",
+            "URL_REACHABLE"
+          ],
+          "humanReview": "PENDING",
+          "visibleTextSha256": "0f2730b2e106f351477c45320baf369ef088e0038d94ffcf67db62443a98a59e",
+          "contentReviewLimit": "No accepted bounded ingredient fact from the inspected selection; HTTP success alone is not culinary verification."
+        }
+      ]
+    },
+    {
+      "sourceId": "source-6fe06b5f5ac364f0",
+      "url": "https://memoriediangelina.com/2014/09/26/pesce-allacqua-pazza-fish-poached-in-crazy-water/",
+      "recipeIds": [
+        "imp-afdcd866c1f92192"
+      ],
+      "retrievedAt": "2026-10-26T13:01:17.321894Z",
+      "httpStatus": 200,
+      "finalUrl": "https://memoriediangelina.com/2014/09/26/pesce-allacqua-pazza-fish-poached-in-crazy-water/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "f3b4814fc667a5e0842cc19aa375cae4adc4aa72f2ed5f67e0d229101d4c2170",
+      "byteLength": 525417,
+      "title": "Pesce all'acqua pazza (Fish Poached in \"Crazy Water\") - Memorie di Angelina",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "visibleTextSha256": "1f23ff8be1ae57b9a40b61a768520dfc66a821c9c7cff310df79fc683d57ae37",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Bounded ingredient facts only; no reviewed cooking method or complete V2 comparison",
+        "reviewerSummary": "The source lists at least six white-fish fillets and three or four garlic cloves.",
+        "supportLimits": "Related cited source only, not equivalence to the V2 dish. Recipe identity, complete formulation, safety, authority and every unmentioned field remain unverified."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Recipe JSON-LD recipeIngredient opening entries 1-4; ingredient facts only",
+          "reviewerSummary": "The source lists at least six white-fish fillets and three or four garlic cloves.",
+          "supportLimits": "Only the named ingredient facts are supported. No normalization, conversion, retention, method, nutritional or full-recipe verification is established."
+        }
+      ]
+    },
+    {
+      "sourceId": "source-72bfe9bd3b9b5045",
+      "url": "https://www.americastestkitchen.com/recipes/13987-pesce-all-acqua-pazza-southern-italian-poached-fish",
+      "recipeIds": [
+        "imp-afdcd866c1f92192"
+      ],
+      "retrievedAt": "2026-10-26T13:01:18.549705Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.americastestkitchen.com/recipes/13987-pesce-all-acqua-pazza-southern-italian-poached-fish",
+      "contentType": "text/html; charset=utf-8",
+      "contentSha256": "c0beb63d786a1ec83ed91defedfba3b63db680c357270361c34dcb036c9c30e3",
+      "byteLength": 424873,
+      "title": "Pesce All'Acqua Pazza (Southern Italian Poached Fish) | America's Test Kitchen",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE"
+      ],
+      "humanReview": "PENDING",
+      "visibleTextSha256": "7d1bbc4639f7bb3110dafe51ca826060baa57f6bb5fc3c16901749aec083df54",
+      "contentReviewLimit": "No accepted bounded ingredient fact from the inspected selection; HTTP success alone is not culinary verification."
+    },
+    {
+      "sourceId": "source-28eb21a8f2e13003",
+      "url": "http://houdelier.com/pdfs/ricette/GZRic-Spinaci-ricchi-con-besciamella.pdf",
+      "retrievedAt": "2026-10-26T19:28:47.849580Z",
+      "httpStatus": 200,
+      "finalUrl": "http://houdelier.com/pdfs/ricette/GZRic-Spinaci-ricchi-con-besciamella.pdf",
+      "contentType": "application/pdf",
+      "contentSha256": "56b8e86e38e0a0f36b68acd508381be80365fcca9c9166dc04a1440a3dd90c28",
+      "byteLength": 1005905,
+      "title": null,
+      "visibleTextSha256": "6a19ac7e0406b7d4aa9e0c91128d42c19a621923683d82f9bf5dd5f9811b48e0",
+      "recipeIds": [
+        "imp-6d26ce6b0af4fb79"
+      ],
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTTP metadata and HTML title only; unreviewed author/date remains null.",
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "pdfPageCount": 2,
+      "pdfTextSha256": "52f3a33812d9e105a90a2cbb1d4b02783076c5f5d53ff48e32886d5a53d5d993",
+      "pdfTextExtractor": "pypdf 6.10.0",
+      "pdfTextPath": "/private/tmp/takolio-v3-gap-research-cache-03/28eb21a8f2e13003.pdf.txt",
+      "pdfPagesPath": "/private/tmp/takolio-v3-gap-research-cache-03/28eb21a8f2e13003.pdf-pages.json",
+      "pdfPagesSha256": "7ce9376cc544314fc6b441b7faf3a2af1776908d2e08966eab5a8377cefaa1d2",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "PDF pages 1-2",
+        "reviewerSummary": "The six-person spinach bechamel PDF lists 1.5 kg spinach, 50 g each butter and flour, 500 ml milk and Parmesan.",
+        "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "PDF pages 1-2",
+          "reviewerSummary": "The six-person spinach bechamel PDF lists 1.5 kg spinach, 50 g each butter and flour, 500 ml milk and Parmesan.",
+          "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved."
+        }
+      ],
+      "previousRetrievals": [
+        {
+          "sourceId": "source-28eb21a8f2e13003",
+          "url": "http://houdelier.com/pdfs/ricette/GZRic-Spinaci-ricchi-con-besciamella.pdf",
+          "retrievedAt": "2026-10-26T13:01:18.651110Z",
+          "httpStatus": 200,
+          "finalUrl": "http://houdelier.com/pdfs/ricette/GZRic-Spinaci-ricchi-con-besciamella.pdf",
+          "contentType": "application/pdf",
+          "contentSha256": "56b8e86e38e0a0f36b68acd508381be80365fcca9c9166dc04a1440a3dd90c28",
+          "byteLength": 1005905,
+          "title": null,
+          "author": null,
+          "publishedAt": null,
+          "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+          "evidenceStatus": [
+            "URL_DISCOVERED",
+            "URL_REACHABLE"
+          ],
+          "humanReview": "PENDING",
+          "visibleTextSha256": "6a19ac7e0406b7d4aa9e0c91128d42c19a621923683d82f9bf5dd5f9811b48e0",
+          "contentReviewLimit": "No accepted bounded ingredient fact from the inspected selection; HTTP success alone is not culinary verification."
+        }
+      ]
+    },
+    {
+      "sourceId": "source-28621f9d47eefc2b",
+      "url": "https://gemuese.stage.campfire.ch/media/rezepte/spinaci-gratinati-con-briciole-di-pane-fritte.pdf",
+      "retrievedAt": "2026-10-26T19:28:47.849740Z",
+      "httpStatus": 200,
+      "finalUrl": "https://gemuese.stage.campfire.ch/media/rezepte/spinaci-gratinati-con-briciole-di-pane-fritte.pdf",
+      "contentType": "application/pdf",
+      "contentSha256": "36322e3d6badc34ea147d8e40d1b1648866feb79d54d9fc46eff71f15634620b",
+      "byteLength": 293599,
+      "title": null,
+      "visibleTextSha256": "77195da9c2122f31cb9f65b2254b5dfa42f3ef80958b484aeee2bc187b305913",
+      "recipeIds": [
+        "imp-6d26ce6b0af4fb79"
+      ],
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTTP metadata and HTML title only; unreviewed author/date remains null.",
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "pdfPageCount": 3,
+      "pdfTextSha256": "502e8a2aff7c27b123404295eae47df24f6d1ec9c0b8650b93d5a29f35a7d73c",
+      "pdfTextExtractor": "pypdf 6.10.0",
+      "pdfTextPath": "/private/tmp/takolio-v3-gap-research-cache-03/28621f9d47eefc2b.pdf.txt",
+      "pdfPagesPath": "/private/tmp/takolio-v3-gap-research-cache-03/28621f9d47eefc2b.pdf-pages.json",
+      "pdfPagesSha256": "28644dd3f45bdd71f2ec0be737241334c1d58dd69a8060742272a0f4c5cdab62",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "PDF pages 2-2",
+        "reviewerSummary": "A separate four-person spinach gratin lists 800 g spinach, 100 ml cream, Vacherin cheese and a breadcrumb topping; it differs from spinach bechamel.",
+        "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "PDF pages 2-2",
+          "reviewerSummary": "A separate four-person spinach gratin lists 800 g spinach, 100 ml cream, Vacherin cheese and a breadcrumb topping; it differs from spinach bechamel.",
+          "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved."
+        }
+      ],
+      "previousRetrievals": [
+        {
+          "sourceId": "source-28621f9d47eefc2b",
+          "url": "https://gemuese.stage.campfire.ch/media/rezepte/spinaci-gratinati-con-briciole-di-pane-fritte.pdf",
+          "retrievedAt": "2026-10-26T13:01:18.965708Z",
+          "httpStatus": 200,
+          "finalUrl": "https://gemuese.stage.campfire.ch/media/rezepte/spinaci-gratinati-con-briciole-di-pane-fritte.pdf",
+          "contentType": "application/pdf",
+          "contentSha256": "36322e3d6badc34ea147d8e40d1b1648866feb79d54d9fc46eff71f15634620b",
+          "byteLength": 293599,
+          "title": null,
+          "author": null,
+          "publishedAt": null,
+          "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+          "evidenceStatus": [
+            "URL_DISCOVERED",
+            "URL_REACHABLE"
+          ],
+          "humanReview": "PENDING",
+          "visibleTextSha256": "77195da9c2122f31cb9f65b2254b5dfa42f3ef80958b484aeee2bc187b305913",
+          "contentReviewLimit": "No accepted bounded ingredient fact from the inspected selection; HTTP success alone is not culinary verification."
+        }
+      ]
+    },
+    {
+      "sourceId": "source-bdb2b4f977e24a65",
+      "url": "https://cookingitalians.com/italian-cabbage-soup-zuppa-di-cavolo/",
+      "recipeIds": [
+        "imp-bd34e8ea2eaa1cd4"
+      ],
+      "retrievedAt": "2026-10-26T13:01:20.200908Z",
+      "httpStatus": 200,
+      "finalUrl": "https://cookingitalians.com/italian-cabbage-soup-zuppa-di-cavolo/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "f966395cf24e8534b1543a8a07d34f08d475b995242ea150b7a3d209d805023c",
+      "byteLength": 229657,
+      "title": "ITALIAN CABBAGE SOUP (ZUPPA DI CAVOLO) - Cooking Italians",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "visibleTextSha256": "fab70acecdd1a9b068ed66b1e4e42247a0e45f33a3f6d979a69ac2a9db0cff90",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Bounded ingredient facts only; no reviewed cooking method or complete V2 comparison",
+        "reviewerSummary": "The visible ingredient list specifies three-quarters of a butter stick and one-quarter cup extra-virgin olive oil; butter-stick mass is not assumed.",
+        "supportLimits": "Related cited source only, not equivalence to the V2 dish. Recipe identity, complete formulation, safety, authority and every unmentioned field remain unverified."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Visible text lines 30-44, ingredient section opening",
+          "reviewerSummary": "The visible ingredient list specifies three-quarters of a butter stick and one-quarter cup extra-virgin olive oil; butter-stick mass is not assumed.",
+          "supportLimits": "Only the named ingredient facts are supported. No normalization, conversion, retention, method, nutritional or full-recipe verification is established."
+        }
+      ]
+    },
+    {
+      "sourceId": "source-cb989327c3b5e555",
+      "url": "http://www.lemis.com/grog/recipes/zuppa-di-cavolo.php",
+      "recipeIds": [
+        "imp-bd34e8ea2eaa1cd4"
+      ],
+      "retrievedAt": "2026-10-26T13:01:20.932692Z",
+      "httpStatus": 200,
+      "finalUrl": "http://www.lemis.com/grog/recipes/zuppa-di-cavolo.php",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "8461c363400a811bc8ea01c23eae3aa39c9c24bc6b05489c0ef9c4ee35bb4e77",
+      "byteLength": 16335,
+      "title": "Greg's zuppa di cavolo",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "HTML title only unless a reviewed fact explicitly records byline or date. Unknown remains null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE"
+      ],
+      "humanReview": "PENDING",
+      "visibleTextSha256": "826f03a570eb249c63918c36422a93b07566a020a6b3478d61b701fa3619d2a8",
+      "contentReviewLimit": "No accepted bounded ingredient fact from the inspected selection; HTTP success alone is not culinary verification."
+    }
+  ],
+  "recipes": [
+    {
+      "recipeId": "imp-0e9c9740a6232263",
+      "title": "Heo xào húng quế",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "80e3399ee3e7f63201fe4da968c9880c27b79da14cef576f462c2874db41bd68",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma, colon)) encoded as UTF-8; research snapshot hash, not runtime fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-0e9c9740a6232263.json",
+        "fileSha256": "0a29d98d010923ad6234aefd785c916f180fe395a8cbe5b69ea05f2f635dca91"
+      },
+      "sourceIds": [
+        "source-16cadd6a3803bf41",
+        "source-3fabf5965917303c",
+        "source-778619da98499707"
+      ],
+      "evidenceStatus": "BOUNDED_SOURCE_INVENTORY_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "internal-v2-observation",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_UNIT_BASIS_UNRESOLVED",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "medium",
+          "sourceIds": [],
+          "ingredientPositions": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "stepNumbers": [
+            1
+          ],
+          "v2Pointers": [
+            "/ingredients/1/quantity",
+            "/ingredients/2/quantity",
+            "/ingredients/3/quantity",
+            "/ingredients/4/quantity",
+            "/ingredients/5/quantity",
+            "/ingredients/6/quantity",
+            "/ingredients/7/quantity",
+            "/ingredients/8/quantity",
+            "/steps/0/instruction"
+          ],
+          "reviewerSummary": "V2 retains 8 ingredient line(s) with estimated, qualitative or runtime-unresolved quantity basis at positions [1, 2, 3, 4, 5, 6, 7, 8]; no replacement amount is established.",
+          "supportLimits": "Reproducible internal V2 observation only. Source comparison, edible retention, exact conversion, nutrition, safety and full recipe verification remain unverified.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "bounded-source-ingredient-fact",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "SOURCE_INGREDIENT_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "low",
+          "sourceIds": [
+            "source-16cadd6a3803bf41"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "The source lists 300 g ground pork and one handful Thai basil leaves.",
+          "supportLimits": "Source ingredient observation only; this claim makes no V2 identity, quantity or variant comparison. Unmentioned ingredients, methods, edible yield, safety, nutrition and allergens remain unverified.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-16cadd6a3803bf41",
+              "factId": "reviewed-1"
+            }
+          ]
+        }
+      ],
+      "nextAction": "Compare each source ingredient/method with V1 and V2; resolve identity, quantity, retention and source-authority gaps; obtain independent culinary review before any promotion."
+    },
+    {
+      "recipeId": "imp-b6d6788784da6342",
+      "title": "Cá chiên sốt cay Thái",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "efd63d2791fd81f02688ec4807e7db8944b6d6482d965aef392fa09419ae7118",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma, colon)) encoded as UTF-8; research snapshot hash, not runtime fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-b6d6788784da6342.json",
+        "fileSha256": "9ba6dfa5147cbabdc52ae114d27e5074f2bc4bc6d5a2728523d6153d5c89a57a"
+      },
+      "sourceIds": [
+        "source-09830c59698fc728",
+        "source-ab7f3c82605cc72c"
+      ],
+      "evidenceStatus": "BOUNDED_SOURCE_INVENTORY_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "internal-v2-observation",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_UNIT_BASIS_UNRESOLVED",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "medium",
+          "sourceIds": [],
+          "ingredientPositions": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "stepNumbers": [
+            1
+          ],
+          "v2Pointers": [
+            "/ingredients/1/quantity",
+            "/ingredients/2/quantity",
+            "/ingredients/3/quantity",
+            "/ingredients/4/quantity",
+            "/ingredients/5/quantity",
+            "/ingredients/6/quantity",
+            "/ingredients/7/quantity",
+            "/ingredients/8/quantity",
+            "/ingredients/9/quantity",
+            "/ingredients/10/quantity",
+            "/ingredients/11/quantity",
+            "/ingredients/12/quantity",
+            "/ingredients/13/quantity",
+            "/steps/0/instruction"
+          ],
+          "reviewerSummary": "V2 retains 13 ingredient line(s) with estimated, qualitative or runtime-unresolved quantity basis at positions [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]; no replacement amount is established.",
+          "supportLimits": "Reproducible internal V2 observation only. Source comparison, edible retention, exact conversion, nutrition, safety and full recipe verification remain unverified.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "bounded-source-ingredient-fact",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "SOURCE_INGREDIENT_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "low",
+          "sourceIds": [
+            "source-ab7f3c82605cc72c"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "The source lists one whole sea bass or snapper, approximately 1.2 kg, and one tablespoon fish sauce.",
+          "supportLimits": "Source ingredient observation only; this claim makes no V2 identity, quantity or variant comparison. Unmentioned ingredients, methods, edible yield, safety, nutrition and allergens remain unverified.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-ab7f3c82605cc72c",
+              "factId": "reviewed-1"
+            }
+          ]
+        }
+      ],
+      "nextAction": "Compare each source ingredient/method with V1 and V2; resolve identity, quantity, retention and source-authority gaps; obtain independent culinary review before any promotion."
+    },
+    {
+      "recipeId": "imp-71cac2085659d819",
+      "title": "Gà xào dứa Thái",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "1c4ee0028516b03ff1e5e3bb99c9caab4a1cf1cd3462fd6b1fb3cdc4d8e30d66",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma, colon)) encoded as UTF-8; research snapshot hash, not runtime fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-71cac2085659d819.json",
+        "fileSha256": "3464df55053f46d473a5b62dd7e6373d1190fab945683a26001f404b86cdb784"
+      },
+      "sourceIds": [
+        "source-50c298574cc1f300",
+        "source-f23db09dd00aa15c"
+      ],
+      "evidenceStatus": "BOUNDED_SOURCE_INVENTORY_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "internal-v2-observation",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_UNIT_BASIS_UNRESOLVED",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "medium",
+          "sourceIds": [],
+          "ingredientPositions": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "stepNumbers": [
+            1
+          ],
+          "v2Pointers": [
+            "/ingredients/2/quantity",
+            "/ingredients/3/quantity",
+            "/ingredients/4/quantity",
+            "/ingredients/5/quantity",
+            "/ingredients/6/quantity",
+            "/ingredients/7/quantity",
+            "/ingredients/8/quantity",
+            "/ingredients/9/quantity",
+            "/ingredients/10/quantity",
+            "/ingredients/11/quantity",
+            "/ingredients/12/quantity",
+            "/ingredients/13/quantity",
+            "/ingredients/14/quantity",
+            "/ingredients/15/quantity",
+            "/steps/0/instruction"
+          ],
+          "reviewerSummary": "V2 retains 14 ingredient line(s) with estimated, qualitative or runtime-unresolved quantity basis at positions [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]; no replacement amount is established.",
+          "supportLimits": "Reproducible internal V2 observation only. Source comparison, edible retention, exact conversion, nutrition, safety and full recipe verification remain unverified.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "bounded-source-ingredient-fact",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "SOURCE_INGREDIENT_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "low",
+          "sourceIds": [
+            "source-50c298574cc1f300"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "The visible ingredient list specifies two tablespoons olive oil for divided use and one medium onion.",
+          "supportLimits": "Source ingredient observation only; this claim makes no V2 identity, quantity or variant comparison. Unmentioned ingredients, methods, edible yield, safety, nutrition and allergens remain unverified.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-50c298574cc1f300",
+              "factId": "reviewed-1"
+            }
+          ]
+        }
+      ],
+      "nextAction": "Compare each source ingredient/method with V1 and V2; resolve identity, quantity, retention and source-authority gaps; obtain independent culinary review before any promotion."
+    },
+    {
+      "recipeId": "imp-b398545ca76325f1",
+      "title": "Canh bắp cải sả Thái",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "fc80fd075890acb457b82f91bad5b53ae68ecbc199d61e2a24d01aa3b7b014a8",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma, colon)) encoded as UTF-8; research snapshot hash, not runtime fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-b398545ca76325f1.json",
+        "fileSha256": "8d073ab3731c90ebf1b65ec8b717314dc6721ef42e80062f16ce6218c0cf31fd"
+      },
+      "sourceIds": [
+        "source-cfaa34937309b250",
+        "source-b79e918edc079f28"
+      ],
+      "evidenceStatus": "BOUNDED_SOURCE_INVENTORY_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "internal-v2-observation",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_UNIT_BASIS_UNRESOLVED",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "medium",
+          "sourceIds": [],
+          "ingredientPositions": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "stepNumbers": [
+            1
+          ],
+          "v2Pointers": [
+            "/ingredients/0/quantity",
+            "/ingredients/1/quantity",
+            "/ingredients/2/quantity",
+            "/ingredients/3/quantity",
+            "/ingredients/4/quantity",
+            "/ingredients/5/quantity",
+            "/ingredients/6/quantity",
+            "/ingredients/7/quantity",
+            "/ingredients/8/quantity",
+            "/ingredients/9/quantity",
+            "/ingredients/10/quantity",
+            "/ingredients/11/quantity",
+            "/ingredients/12/quantity",
+            "/ingredients/13/quantity",
+            "/ingredients/14/quantity",
+            "/ingredients/15/quantity",
+            "/steps/0/instruction"
+          ],
+          "reviewerSummary": "V2 retains 16 ingredient line(s) with estimated, qualitative or runtime-unresolved quantity basis at positions [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]; no replacement amount is established.",
+          "supportLimits": "Reproducible internal V2 observation only. Source comparison, edible retention, exact conversion, nutrition, safety and full recipe verification remain unverified.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "bounded-source-ingredient-fact",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "SOURCE_INGREDIENT_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "low",
+          "sourceIds": [
+            "source-cfaa34937309b250"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "The visible ingredient list specifies 9 oz ground beef and half an onion.",
+          "supportLimits": "Source ingredient observation only; this claim makes no V2 identity, quantity or variant comparison. Unmentioned ingredients, methods, edible yield, safety, nutrition and allergens remain unverified.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-cfaa34937309b250",
+              "factId": "reviewed-1"
+            }
+          ]
+        }
+      ],
+      "nextAction": "Compare each source ingredient/method with V1 and V2; resolve identity, quantity, retention and source-authority gaps; obtain independent culinary review before any promotion."
+    },
+    {
+      "recipeId": "imp-9f9a3f24b4141acb",
+      "title": "Cua chiên tỏi ớt Thái",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "1f73d274606a58614b1ed98dd068e51e060204eb979b8f3b15672ff5ec26df51",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma, colon)) encoded as UTF-8; research snapshot hash, not runtime fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-9f9a3f24b4141acb.json",
+        "fileSha256": "02f63ea26f3754e265c320d123779d763c90535d0b47c2f75ecbbbc9a7674707"
+      },
+      "sourceIds": [
+        "source-b06050859a01e42d",
+        "source-49814980d762c4e7"
+      ],
+      "evidenceStatus": "BOUNDED_SOURCE_INVENTORY_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "internal-v2-observation",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_UNIT_BASIS_UNRESOLVED",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "medium",
+          "sourceIds": [],
+          "ingredientPositions": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            9,
+            10,
+            11
+          ],
+          "stepNumbers": [
+            1
+          ],
+          "v2Pointers": [
+            "/ingredients/0/quantity",
+            "/ingredients/2/quantity",
+            "/ingredients/3/quantity",
+            "/ingredients/4/quantity",
+            "/ingredients/5/quantity",
+            "/ingredients/6/quantity",
+            "/ingredients/8/quantity",
+            "/ingredients/9/quantity",
+            "/ingredients/10/quantity",
+            "/ingredients/11/quantity",
+            "/steps/0/instruction"
+          ],
+          "reviewerSummary": "V2 retains 10 ingredient line(s) with estimated, qualitative or runtime-unresolved quantity basis at positions [0, 2, 3, 4, 5, 6, 8, 9, 10, 11]; no replacement amount is established.",
+          "supportLimits": "Reproducible internal V2 observation only. Source comparison, edible retention, exact conversion, nutrition, safety and full recipe verification remain unverified.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "supp03-internal-v2-observation",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_OBSERVATION",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "info",
+          "sourceIds": [],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "sourceFactReferences": [],
+          "v2Pointers": [
+            "/ingredients",
+            "/steps",
+            "/content/servings"
+          ],
+          "reviewerSummary": "V2 contains 12 ingredient lines and 9 numbered steps for 4 servings.",
+          "supportLimits": "Internal shape/count observation only; does not verify culinary correctness or approve promotion."
+        },
+        {
+          "id": "supp03-source-b06050859a01e42d",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_READ",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "info",
+          "sourceIds": [
+            "source-b06050859a01e42d"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [],
+          "reviewerSummary": "The Thai crab source lists two soft-shell crabs and 200 g seasoned frying flour for two diners; its JSON-LD method contains object placeholders, so only ingredients and yield are supported.",
+          "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-b06050859a01e42d",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "supp03-source-49814980d762c4e7",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_READ",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "info",
+          "sourceIds": [
+            "source-49814980d762c4e7"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [],
+          "reviewerSummary": "A separate soft-shell-crab variant lists two crabs weighing about 400 g total, three tablespoons frying flour, one and a half cups frying oil and two tablespoons stir-fry oil. Frying-oil supply is not consumed-oil retention.",
+          "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-49814980d762c4e7",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "supp03-variant-difference",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "VARIANT_DIFFERENCE",
+          "evidenceBasis": "EXTERNAL_VARIANT_COMPARISON",
+          "severity": "medium",
+          "sourceIds": [
+            "source-b06050859a01e42d",
+            "source-49814980d762c4e7"
+          ],
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-b06050859a01e42d",
+              "factId": "reviewed-1"
+            },
+            {
+              "sourceId": "source-49814980d762c4e7",
+              "factId": "reviewed-1"
+            }
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "The inspected soft-shell-crab variants supply 200 g seasoned flour versus three tablespoons flour and different oil supplies. These are variant differences, not a source-internal contradiction or consumed-oil measurement.",
+          "supportLimits": "Variants remain separate. Independent culinary review required before any candidate edit or promotion."
+        }
+      ],
+      "nextAction": "Complete independent culinary, quantity, allergen, nutrition and safety review before promotion.",
+      "supplementalResearch": {
+        "dataset": "gap-research-03",
+        "reviewedAt": "2026-10-26T19:46:20.312160Z",
+        "humanReview": "PENDING",
+        "fullRecipeVerification": "NOT_COMPLETE",
+        "decision": "VARIANT_REVIEW_REQUIRED"
+      }
+    },
+    {
+      "recipeId": "imp-8fecebfe6dc0f0a2",
+      "title": "Mì Ý rau bina",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "112f10b6a184a691862f183cd61ad0667bc99a251371ce3a7ebbb00dce1f0b23",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma, colon)) encoded as UTF-8; research snapshot hash, not runtime fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-8fecebfe6dc0f0a2.json",
+        "fileSha256": "31b88d7e364bec9ae16906a541f8d564b7a4c8a5bfac39802bc1cb2c7d2926a2"
+      },
+      "sourceIds": [
+        "source-fe0018d98761af87",
+        "source-010970e05b0ad9a9"
+      ],
+      "evidenceStatus": "BOUNDED_SOURCE_INVENTORY_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "internal-v2-observation",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_UNIT_BASIS_UNRESOLVED",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "medium",
+          "sourceIds": [],
+          "ingredientPositions": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "stepNumbers": [
+            1
+          ],
+          "v2Pointers": [
+            "/ingredients/3/quantity",
+            "/ingredients/4/quantity",
+            "/ingredients/5/quantity",
+            "/ingredients/6/quantity",
+            "/steps/0/instruction"
+          ],
+          "reviewerSummary": "V2 retains 4 ingredient line(s) with estimated, qualitative or runtime-unresolved quantity basis at positions [3, 4, 5, 6]; no replacement amount is established.",
+          "supportLimits": "Reproducible internal V2 observation only. Source comparison, edible retention, exact conversion, nutrition, safety and full recipe verification remain unverified.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "bounded-source-ingredient-fact",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "SOURCE_INGREDIENT_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "low",
+          "sourceIds": [
+            "source-010970e05b0ad9a9"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "The source lists 200 g fresh spinach and one garlic clove.",
+          "supportLimits": "Source ingredient observation only; this claim makes no V2 identity, quantity or variant comparison. Unmentioned ingredients, methods, edible yield, safety, nutrition and allergens remain unverified.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-010970e05b0ad9a9",
+              "factId": "reviewed-1"
+            }
+          ]
+        }
+      ],
+      "nextAction": "Compare each source ingredient/method with V1 and V2; resolve identity, quantity, retention and source-authority gaps; obtain independent culinary review before any promotion."
+    },
+    {
+      "recipeId": "imp-20d3992a65cb17fd",
+      "title": "Mì Ý gà nấm",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "a1d0c5d05b6ad89adca98c7b1cafa18680c7f70fe65a4e99d066352ed22b44a1",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma, colon)) encoded as UTF-8; research snapshot hash, not runtime fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-20d3992a65cb17fd.json",
+        "fileSha256": "119f7667d3e2058ed0f50eb80457a71b0316772ff4de2c1904a407d035865648"
+      },
+      "sourceIds": [
+        "source-9c666dc26ebd1809",
+        "source-03a2a67afc36c5da"
+      ],
+      "evidenceStatus": "BOUNDED_SOURCE_INVENTORY_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "internal-v2-observation",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_UNIT_BASIS_UNRESOLVED",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "medium",
+          "sourceIds": [],
+          "ingredientPositions": [
+            1,
+            3,
+            4,
+            5,
+            8,
+            9
+          ],
+          "stepNumbers": [
+            1
+          ],
+          "v2Pointers": [
+            "/ingredients/1/quantity",
+            "/ingredients/3/quantity",
+            "/ingredients/4/quantity",
+            "/ingredients/5/quantity",
+            "/ingredients/8/quantity",
+            "/ingredients/9/quantity",
+            "/steps/0/instruction"
+          ],
+          "reviewerSummary": "V2 retains 6 ingredient line(s) with estimated, qualitative or runtime-unresolved quantity basis at positions [1, 3, 4, 5, 8, 9]; no replacement amount is established.",
+          "supportLimits": "Reproducible internal V2 observation only. Source comparison, edible retention, exact conversion, nutrition, safety and full recipe verification remain unverified.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "bounded-source-ingredient-fact",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "SOURCE_INGREDIENT_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "low",
+          "sourceIds": [
+            "source-9c666dc26ebd1809"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "The source lists 300 g pennette and three chicken thighs.",
+          "supportLimits": "Source ingredient observation only; this claim makes no V2 identity, quantity or variant comparison. Unmentioned ingredients, methods, edible yield, safety, nutrition and allergens remain unverified.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-9c666dc26ebd1809",
+              "factId": "reviewed-1"
+            }
+          ]
+        }
+      ],
+      "nextAction": "Compare each source ingredient/method with V1 and V2; resolve identity, quantity, retention and source-authority gaps; obtain independent culinary review before any promotion."
+    },
+    {
+      "recipeId": "imp-38137393c32d70d7",
+      "title": "Risotto tôm",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "9090eb63691f2c24c577b63479866038fe290fc9e876fc280a0250c8e07427c5",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma, colon)) encoded as UTF-8; research snapshot hash, not runtime fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-38137393c32d70d7.json",
+        "fileSha256": "d24203fcf893aaebbd07109ecffe013bb9e94c97fa9e782f74321c84c3a3cc8d"
+      },
+      "sourceIds": [
+        "source-a54895de60012225",
+        "source-819f6c32f2cace26"
+      ],
+      "evidenceStatus": "BOUNDED_SOURCE_INVENTORY_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "internal-v2-observation",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_UNIT_BASIS_UNRESOLVED",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "medium",
+          "sourceIds": [],
+          "ingredientPositions": [
+            2,
+            3,
+            4,
+            6,
+            7,
+            8,
+            10,
+            11,
+            12,
+            13
+          ],
+          "stepNumbers": [
+            1
+          ],
+          "v2Pointers": [
+            "/ingredients/2/quantity",
+            "/ingredients/3/quantity",
+            "/ingredients/4/quantity",
+            "/ingredients/6/quantity",
+            "/ingredients/7/quantity",
+            "/ingredients/8/quantity",
+            "/ingredients/10/quantity",
+            "/ingredients/11/quantity",
+            "/ingredients/12/quantity",
+            "/ingredients/13/quantity",
+            "/steps/0/instruction"
+          ],
+          "reviewerSummary": "V2 retains 10 ingredient line(s) with estimated, qualitative or runtime-unresolved quantity basis at positions [2, 3, 4, 6, 7, 8, 10, 11, 12, 13]; no replacement amount is established.",
+          "supportLimits": "Reproducible internal V2 observation only. Source comparison, edible retention, exact conversion, nutrition, safety and full recipe verification remain unverified.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "bounded-source-ingredient-fact",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "SOURCE_INGREDIENT_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "low",
+          "sourceIds": [
+            "source-819f6c32f2cace26"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "The source lists 350 g rice and 600 g shrimp; shell removal and edible yield are outside this ingredient check.",
+          "supportLimits": "Source ingredient observation only; this claim makes no V2 identity, quantity or variant comparison. Unmentioned ingredients, methods, edible yield, safety, nutrition and allergens remain unverified.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-819f6c32f2cace26",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "source-access-limit",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-a54895de60012225"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Declared source retrieval did not provide readable recipe content during this session; no culinary fact was inferred from the failed attempt.",
+          "supportLimits": "Availability only. Retrieval failure does not establish correctness, irrelevance or verification of any V2 field.",
+          "sourceFactReferences": []
+        }
+      ],
+      "nextAction": "Compare each source ingredient/method with V1 and V2; resolve identity, quantity, retention and source-authority gaps; obtain independent culinary review before any promotion."
+    },
+    {
+      "recipeId": "imp-e61010e240534690",
+      "title": "Mực om cà chua Ý",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "59300b5bba823286ea98349a68ca12c9f9ba25a927c14492da0dbb31015ca215",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma, colon)) encoded as UTF-8; research snapshot hash, not runtime fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-e61010e240534690.json",
+        "fileSha256": "ada91f4fd6a3961a21cc41c3ce5a9e586904edbc79969a4727db1755aa20cea0"
+      },
+      "sourceIds": [
+        "source-4e7e22f347649bef",
+        "source-d79bfb543e09889b"
+      ],
+      "evidenceStatus": "BOUNDED_SOURCE_INVENTORY_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "internal-v2-observation",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_UNIT_BASIS_UNRESOLVED",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "medium",
+          "sourceIds": [],
+          "ingredientPositions": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "stepNumbers": [
+            1
+          ],
+          "v2Pointers": [
+            "/ingredients/1/quantity",
+            "/ingredients/2/quantity",
+            "/ingredients/3/quantity",
+            "/ingredients/4/quantity",
+            "/ingredients/5/quantity",
+            "/ingredients/6/quantity",
+            "/ingredients/7/quantity",
+            "/steps/0/instruction"
+          ],
+          "reviewerSummary": "V2 retains 7 ingredient line(s) with estimated, qualitative or runtime-unresolved quantity basis at positions [1, 2, 3, 4, 5, 6, 7]; no replacement amount is established.",
+          "supportLimits": "Reproducible internal V2 observation only. Source comparison, edible retention, exact conversion, nutrition, safety and full recipe verification remain unverified.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "bounded-source-ingredient-fact",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "SOURCE_INGREDIENT_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "low",
+          "sourceIds": [
+            "source-4e7e22f347649bef"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "The source lists 1 kg squid and half a glass dry white wine.",
+          "supportLimits": "Source ingredient observation only; this claim makes no V2 identity, quantity or variant comparison. Unmentioned ingredients, methods, edible yield, safety, nutrition and allergens remain unverified.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-4e7e22f347649bef",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "source-access-limit",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-d79bfb543e09889b"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Declared source retrieval did not provide readable recipe content during this session; no culinary fact was inferred from the failed attempt.",
+          "supportLimits": "Availability only. Retrieval failure does not establish correctness, irrelevance or verification of any V2 field.",
+          "sourceFactReferences": []
+        }
+      ],
+      "nextAction": "Compare each source ingredient/method with V1 and V2; resolve identity, quantity, retention and source-authority gaps; obtain independent culinary review before any promotion."
+    },
+    {
+      "recipeId": "imp-452ef6d0f8ec0de9",
+      "title": "Tôm om cà chua Ý",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "ab3619b5b28352a1a664c47a3a0985acc3c62f1a3bb547c11f18634604dff34e",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma, colon)) encoded as UTF-8; research snapshot hash, not runtime fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-452ef6d0f8ec0de9.json",
+        "fileSha256": "55efd411512ec44b3b3026e755a3a2050aa7d946b03bf9bafdff1162d3f71f2c"
+      },
+      "sourceIds": [
+        "source-e7963b6b5b110852",
+        "source-ec7697b1a341c68c"
+      ],
+      "evidenceStatus": "BOUNDED_SOURCE_INVENTORY_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "internal-v2-observation",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_UNIT_BASIS_UNRESOLVED",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "medium",
+          "sourceIds": [],
+          "ingredientPositions": [
+            0,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "stepNumbers": [
+            1
+          ],
+          "v2Pointers": [
+            "/ingredients/0/quantity",
+            "/ingredients/3/quantity",
+            "/ingredients/4/quantity",
+            "/ingredients/5/quantity",
+            "/ingredients/6/quantity",
+            "/ingredients/7/quantity",
+            "/steps/0/instruction"
+          ],
+          "reviewerSummary": "V2 retains 6 ingredient line(s) with estimated, qualitative or runtime-unresolved quantity basis at positions [0, 3, 4, 5, 6, 7]; no replacement amount is established.",
+          "supportLimits": "Reproducible internal V2 observation only. Source comparison, edible retention, exact conversion, nutrition, safety and full recipe verification remain unverified.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "source-access-limit",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-ec7697b1a341c68c"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Declared source retrieval did not provide readable recipe content during this session; no culinary fact was inferred from the failed attempt.",
+          "supportLimits": "Availability only. Retrieval failure does not establish correctness, irrelevance or verification of any V2 field.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "supp03-internal-v2-observation",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_OBSERVATION",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "info",
+          "sourceIds": [],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "sourceFactReferences": [],
+          "v2Pointers": [
+            "/ingredients",
+            "/steps",
+            "/content/servings"
+          ],
+          "reviewerSummary": "V2 contains 8 ingredient lines and 8 numbered steps for 3 servings.",
+          "supportLimits": "Internal shape/count observation only; does not verify culinary correctness or approve promotion."
+        },
+        {
+          "id": "supp03-source-e7963b6b5b110852",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_READ",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "info",
+          "sourceIds": [
+            "source-e7963b6b5b110852"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [],
+          "reviewerSummary": "The PDF lists 400 g peeled shrimp, 400 g tomato passata, two tablespoons oil, garlic, chili and basil, then a five-minute shrimp cook; timing and thawing advice still require safety review.",
+          "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-e7963b6b5b110852",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "supp03-source-access-limit",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-ec7697b1a341c68c"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "sourceFactReferences": [],
+          "reviewerSummary": "These source attempts provided failed retrievals, access blocks, video shells or title-only content rather than an inspected culinary section. Per-source evidenceStatus distinguishes HTTP failure from reachability.",
+          "supportLimits": "Access/content limit only; no culinary facts or V2 corrections inferred from unavailable or unread content."
+        }
+      ],
+      "nextAction": "Complete independent culinary, quantity, allergen, nutrition and safety review before promotion.",
+      "supplementalResearch": {
+        "dataset": "gap-research-03",
+        "reviewedAt": "2026-10-26T19:46:20.312160Z",
+        "humanReview": "PENDING",
+        "fullRecipeVerification": "NOT_COMPLETE",
+        "decision": "BOUNDED_SOURCE_READ_PENDING_REVIEW"
+      }
+    },
+    {
+      "recipeId": "imp-f44be7e8c88c20d3",
+      "title": "Súp cá hồi kem Ý",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "024aa3a1562d7609437a7a5239adca40729edc6b1d30ec07ee511973179b1f3b",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma, colon)) encoded as UTF-8; research snapshot hash, not runtime fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-f44be7e8c88c20d3.json",
+        "fileSha256": "c9b165fa61aa6ca0616f630827ac7392da3e42006513ce245f712ae5b89c60e7"
+      },
+      "sourceIds": [
+        "source-344894c0cfea4d3a",
+        "source-aab2681bbb75903c"
+      ],
+      "evidenceStatus": "BOUNDED_SOURCE_INVENTORY_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "internal-v2-observation",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_UNIT_BASIS_UNRESOLVED",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "medium",
+          "sourceIds": [],
+          "ingredientPositions": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            8,
+            9
+          ],
+          "stepNumbers": [
+            1
+          ],
+          "v2Pointers": [
+            "/ingredients/1/quantity",
+            "/ingredients/2/quantity",
+            "/ingredients/3/quantity",
+            "/ingredients/4/quantity",
+            "/ingredients/6/quantity",
+            "/ingredients/7/quantity",
+            "/ingredients/8/quantity",
+            "/ingredients/9/quantity",
+            "/steps/0/instruction"
+          ],
+          "reviewerSummary": "V2 retains 8 ingredient line(s) with estimated, qualitative or runtime-unresolved quantity basis at positions [1, 2, 3, 4, 6, 7, 8, 9]; no replacement amount is established.",
+          "supportLimits": "Reproducible internal V2 observation only. Source comparison, edible retention, exact conversion, nutrition, safety and full recipe verification remain unverified.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "bounded-source-ingredient-fact",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "SOURCE_INGREDIENT_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "low",
+          "sourceIds": [
+            "source-344894c0cfea4d3a"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "The source lists 200 g salmon or white-fish fillet and 600 g potatoes. No method is accepted from the extracted instruction value of 1.",
+          "supportLimits": "Source ingredient observation only; this claim makes no V2 identity, quantity or variant comparison. Unmentioned ingredients, methods, edible yield, safety, nutrition and allergens remain unverified.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-344894c0cfea4d3a",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "source-access-limit",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-aab2681bbb75903c"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Declared source retrieval did not provide readable recipe content during this session; no culinary fact was inferred from the failed attempt.",
+          "supportLimits": "Availability only. Retrieval failure does not establish correctness, irrelevance or verification of any V2 field.",
+          "sourceFactReferences": []
+        }
+      ],
+      "nextAction": "Compare each source ingredient/method with V1 and V2; resolve identity, quantity, retention and source-authority gaps; obtain independent culinary review before any promotion."
+    },
+    {
+      "recipeId": "imp-e748a717f7250188",
+      "title": "Salad cá hồi dưa leo",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "0d6cfeac371851f9e4a32051f87cd4bf7eeb96c0508ffc029ce830e43498e7a7",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma, colon)) encoded as UTF-8; research snapshot hash, not runtime fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-e748a717f7250188.json",
+        "fileSha256": "9d1d3ff34d0e9345ea631f5e5ca3adcb61fbb07c791469d72bbab4c83eb9c5fd"
+      },
+      "sourceIds": [
+        "source-e22e1b19cec5db21",
+        "source-2f7a86c8a573f145"
+      ],
+      "evidenceStatus": "BOUNDED_SOURCE_INVENTORY_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "internal-v2-observation",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_UNIT_BASIS_UNRESOLVED",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "medium",
+          "sourceIds": [],
+          "ingredientPositions": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            7
+          ],
+          "stepNumbers": [
+            1
+          ],
+          "v2Pointers": [
+            "/ingredients/1/quantity",
+            "/ingredients/2/quantity",
+            "/ingredients/3/quantity",
+            "/ingredients/5/quantity",
+            "/ingredients/6/quantity",
+            "/ingredients/7/quantity",
+            "/steps/0/instruction"
+          ],
+          "reviewerSummary": "V2 retains 6 ingredient line(s) with estimated, qualitative or runtime-unresolved quantity basis at positions [1, 2, 3, 5, 6, 7]; no replacement amount is established.",
+          "supportLimits": "Reproducible internal V2 observation only. Source comparison, edible retention, exact conversion, nutrition, safety and full recipe verification remain unverified.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "supp03-internal-v2-observation",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_OBSERVATION",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "info",
+          "sourceIds": [],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "sourceFactReferences": [],
+          "v2Pointers": [
+            "/ingredients",
+            "/steps",
+            "/content/servings"
+          ],
+          "reviewerSummary": "V2 contains 9 ingredient lines and 10 numbered steps for 3 servings.",
+          "supportLimits": "Internal shape/count observation only; does not verify culinary correctness or approve promotion."
+        },
+        {
+          "id": "supp03-source-e22e1b19cec5db21",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_READ",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "info",
+          "sourceIds": [
+            "source-e22e1b19cec5db21"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [],
+          "reviewerSummary": "The four-person cucumber salad uses 200 g smoked salmon, cucumber and lemon; its smoked salmon differs from the grilled fillet in the other source.",
+          "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-e22e1b19cec5db21",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "supp03-source-2f7a86c8a573f145",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_READ",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "info",
+          "sourceIds": [
+            "source-2f7a86c8a573f145"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [],
+          "reviewerSummary": "This source describes grilled salmon fillet with mixed salad but supplies no salmon quantity in the inspected section; it is distinct from smoked-salmon cucumber salad.",
+          "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-2f7a86c8a573f145",
+              "factId": "reviewed-1"
+            }
+          ]
+        }
+      ],
+      "nextAction": "Complete independent culinary, quantity, allergen, nutrition and safety review before promotion.",
+      "supplementalResearch": {
+        "dataset": "gap-research-03",
+        "reviewedAt": "2026-10-26T19:46:20.312160Z",
+        "humanReview": "PENDING",
+        "fullRecipeVerification": "NOT_COMPLETE",
+        "decision": "BOUNDED_SOURCE_READ_PENDING_REVIEW"
+      }
+    },
+    {
+      "recipeId": "imp-957396bc647d3798",
+      "title": "Bông cải om cà chua Ý",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "2b360ea83402dd43ebd6fac3c384d57adecd2180099c1f467ca540f3fa45dd8a",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma, colon)) encoded as UTF-8; research snapshot hash, not runtime fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-957396bc647d3798.json",
+        "fileSha256": "ca002c567928b3784aa667400854bb69c814de9194e4e0a16debfabc12ba6e85"
+      },
+      "sourceIds": [
+        "source-e8626036c5a9fd7e",
+        "source-98e17addf7b25eb9"
+      ],
+      "evidenceStatus": "BOUNDED_SOURCE_INVENTORY_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "internal-v2-observation",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_UNIT_BASIS_UNRESOLVED",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "medium",
+          "sourceIds": [],
+          "ingredientPositions": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "stepNumbers": [
+            1
+          ],
+          "v2Pointers": [
+            "/ingredients/2/quantity",
+            "/ingredients/3/quantity",
+            "/ingredients/4/quantity",
+            "/ingredients/5/quantity",
+            "/ingredients/6/quantity",
+            "/ingredients/7/quantity",
+            "/steps/0/instruction"
+          ],
+          "reviewerSummary": "V2 retains 6 ingredient line(s) with estimated, qualitative or runtime-unresolved quantity basis at positions [2, 3, 4, 5, 6, 7]; no replacement amount is established.",
+          "supportLimits": "Reproducible internal V2 observation only. Source comparison, edible retention, exact conversion, nutrition, safety and full recipe verification remain unverified.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "bounded-source-ingredient-fact",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "SOURCE_INGREDIENT_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "low",
+          "sourceIds": [
+            "source-e8626036c5a9fd7e"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "The source lists 800 g broccoletti and 200 g cherry or datterini tomatoes.",
+          "supportLimits": "Source ingredient observation only; this claim makes no V2 identity, quantity or variant comparison. Unmentioned ingredients, methods, edible yield, safety, nutrition and allergens remain unverified.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-e8626036c5a9fd7e",
+              "factId": "reviewed-1"
+            }
+          ]
+        }
+      ],
+      "nextAction": "Compare each source ingredient/method with V1 and V2; resolve identity, quantity, retention and source-authority gaps; obtain independent culinary review before any promotion."
+    },
+    {
+      "recipeId": "imp-c98aa0f1ffe2f469",
+      "title": "Sườn om cà chua Ý",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "5dfebfa68c94e80744eecc029cc36626d49b374a5d7af290519db0fc32543f86",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma, colon)) encoded as UTF-8; research snapshot hash, not runtime fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-c98aa0f1ffe2f469.json",
+        "fileSha256": "012219587ed4d63cfbd5f2040b330ff3c153da37953afe545851c53e75571da2"
+      },
+      "sourceIds": [
+        "source-72cd0448ab6296ef",
+        "source-3efb0fb287d49138"
+      ],
+      "evidenceStatus": "BOUNDED_SOURCE_INVENTORY_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "internal-v2-observation",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_UNIT_BASIS_UNRESOLVED",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "medium",
+          "sourceIds": [],
+          "ingredientPositions": [
+            2,
+            4,
+            5,
+            6,
+            7,
+            8,
+            10,
+            11
+          ],
+          "stepNumbers": [
+            1
+          ],
+          "v2Pointers": [
+            "/ingredients/2/quantity",
+            "/ingredients/4/quantity",
+            "/ingredients/5/quantity",
+            "/ingredients/6/quantity",
+            "/ingredients/7/quantity",
+            "/ingredients/8/quantity",
+            "/ingredients/10/quantity",
+            "/ingredients/11/quantity",
+            "/steps/0/instruction"
+          ],
+          "reviewerSummary": "V2 retains 8 ingredient line(s) with estimated, qualitative or runtime-unresolved quantity basis at positions [2, 4, 5, 6, 7, 8, 10, 11]; no replacement amount is established.",
+          "supportLimits": "Reproducible internal V2 observation only. Source comparison, edible retention, exact conversion, nutrition, safety and full recipe verification remain unverified.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "supp03-internal-v2-observation",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_OBSERVATION",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "info",
+          "sourceIds": [],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "sourceFactReferences": [],
+          "v2Pointers": [
+            "/ingredients",
+            "/steps",
+            "/content/servings"
+          ],
+          "reviewerSummary": "V2 contains 12 ingredient lines and 10 numbered steps for 5 servings.",
+          "supportLimits": "Internal shape/count observation only; does not verify culinary correctness or approve promotion."
+        },
+        {
+          "id": "supp03-source-72cd0448ab6296ef",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_READ",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "info",
+          "sourceIds": [
+            "source-72cd0448ab6296ef"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [],
+          "reviewerSummary": "The Tuscan rib braise declares five people with one to two kilograms pork ribs, 500 g tomatoes, 150 g olives, rosemary and bay leaf.",
+          "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-72cd0448ab6296ef",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "supp03-source-access-limit",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-3efb0fb287d49138"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "sourceFactReferences": [],
+          "reviewerSummary": "These source attempts provided failed retrievals, access blocks, video shells or title-only content rather than an inspected culinary section. Per-source evidenceStatus distinguishes HTTP failure from reachability.",
+          "supportLimits": "Access/content limit only; no culinary facts or V2 corrections inferred from unavailable or unread content."
+        }
+      ],
+      "nextAction": "Complete independent culinary, quantity, allergen, nutrition and safety review before promotion.",
+      "supplementalResearch": {
+        "dataset": "gap-research-03",
+        "reviewedAt": "2026-10-26T19:46:20.312160Z",
+        "humanReview": "PENDING",
+        "fullRecipeVerification": "NOT_COMPLETE",
+        "decision": "BOUNDED_SOURCE_READ_PENDING_REVIEW"
+      }
+    },
+    {
+      "recipeId": "imp-a286f8724d79a504",
+      "title": "Cà chua trộn phô mai",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "60cc447e982eb12bf250ea3d4ed841cda69b29f53ce19e5b8286876e9857473f",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma, colon)) encoded as UTF-8; research snapshot hash, not runtime fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-a286f8724d79a504.json",
+        "fileSha256": "19680b1799d0cdc621bef1dfe169c386b719ccfe2a2854302b7714b9c33131e8"
+      },
+      "sourceIds": [
+        "source-8a1517ed343b9642",
+        "source-e2d1df572bbca7ac"
+      ],
+      "evidenceStatus": "BOUNDED_SOURCE_INVENTORY_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "internal-v2-observation",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_UNIT_BASIS_UNRESOLVED",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "medium",
+          "sourceIds": [],
+          "ingredientPositions": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "stepNumbers": [
+            1
+          ],
+          "v2Pointers": [
+            "/ingredients/0/quantity",
+            "/ingredients/2/quantity",
+            "/ingredients/3/quantity",
+            "/ingredients/4/quantity",
+            "/ingredients/5/quantity",
+            "/ingredients/6/quantity",
+            "/ingredients/7/quantity",
+            "/steps/0/instruction"
+          ],
+          "reviewerSummary": "V2 retains 7 ingredient line(s) with estimated, qualitative or runtime-unresolved quantity basis at positions [0, 2, 3, 4, 5, 6, 7]; no replacement amount is established.",
+          "supportLimits": "Reproducible internal V2 observation only. Source comparison, edible retention, exact conversion, nutrition, safety and full recipe verification remain unverified.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "bounded-source-ingredient-fact",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "SOURCE_INGREDIENT_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "low",
+          "sourceIds": [
+            "source-e2d1df572bbca7ac"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "The source lists six to eight tomatoes and 4 oz fresh mozzarella or burrata.",
+          "supportLimits": "Source ingredient observation only; this claim makes no V2 identity, quantity or variant comparison. Unmentioned ingredients, methods, edible yield, safety, nutrition and allergens remain unverified.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-e2d1df572bbca7ac",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "source-access-limit",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-8a1517ed343b9642"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Declared source retrieval did not provide readable recipe content during this session; no culinary fact was inferred from the failed attempt.",
+          "supportLimits": "Availability only. Retrieval failure does not establish correctness, irrelevance or verification of any V2 field.",
+          "sourceFactReferences": []
+        }
+      ],
+      "nextAction": "Compare each source ingredient/method with V1 and V2; resolve identity, quantity, retention and source-authority gaps; obtain independent culinary review before any promotion."
+    },
+    {
+      "recipeId": "imp-83ed31fc537569a6",
+      "title": "Bò cuộn rau bina Ý",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "e671e8f16daa3f0cf326dd79c7a9d13048dd0febc7eb076168b827f261faf56a",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma, colon)) encoded as UTF-8; research snapshot hash, not runtime fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-83ed31fc537569a6.json",
+        "fileSha256": "47cc012efdf360aea669448a002b166bc6887d580d48f3fb865de6e9eab290ca"
+      },
+      "sourceIds": [
+        "source-3179478db303d886",
+        "source-91836019d2835300"
+      ],
+      "evidenceStatus": "BOUNDED_SOURCE_INVENTORY_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "internal-v2-observation",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_UNIT_BASIS_UNRESOLVED",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "medium",
+          "sourceIds": [],
+          "ingredientPositions": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            9,
+            11
+          ],
+          "stepNumbers": [
+            1
+          ],
+          "v2Pointers": [
+            "/ingredients/0/quantity",
+            "/ingredients/2/quantity",
+            "/ingredients/3/quantity",
+            "/ingredients/4/quantity",
+            "/ingredients/5/quantity",
+            "/ingredients/6/quantity",
+            "/ingredients/8/quantity",
+            "/ingredients/9/quantity",
+            "/ingredients/11/quantity",
+            "/steps/0/instruction"
+          ],
+          "reviewerSummary": "V2 retains 9 ingredient line(s) with estimated, qualitative or runtime-unresolved quantity basis at positions [0, 2, 3, 4, 5, 6, 8, 9, 11]; no replacement amount is established.",
+          "supportLimits": "Reproducible internal V2 observation only. Source comparison, edible retention, exact conversion, nutrition, safety and full recipe verification remain unverified.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "supp03-internal-v2-observation",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_OBSERVATION",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "info",
+          "sourceIds": [],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "sourceFactReferences": [],
+          "v2Pointers": [
+            "/ingredients",
+            "/steps",
+            "/content/servings"
+          ],
+          "reviewerSummary": "V2 contains 12 ingredient lines and 10 numbered steps for 4 servings.",
+          "supportLimits": "Internal shape/count observation only; does not verify culinary correctness or approve promotion."
+        },
+        {
+          "id": "supp03-source-3179478db303d886",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_READ",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "info",
+          "sourceIds": [
+            "source-3179478db303d886"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [],
+          "reviewerSummary": "This beef-roll source lists eight beef slices, 400 g spinach, cheese, carrots, wine and butter.",
+          "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-3179478db303d886",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "supp03-source-91836019d2835300",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_READ",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "info",
+          "sourceIds": [
+            "source-91836019d2835300"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [],
+          "reviewerSummary": "A distinct four-person baked beef-roll variant lists eight slices, 300 g spinach, 250 g ricotta, 200 g pancetta and honey.",
+          "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-91836019d2835300",
+              "factId": "reviewed-1"
+            }
+          ]
+        }
+      ],
+      "nextAction": "Complete independent culinary, quantity, allergen, nutrition and safety review before promotion.",
+      "supplementalResearch": {
+        "dataset": "gap-research-03",
+        "reviewedAt": "2026-10-26T19:46:20.312160Z",
+        "humanReview": "PENDING",
+        "fullRecipeVerification": "NOT_COMPLETE",
+        "decision": "BOUNDED_SOURCE_READ_PENDING_REVIEW"
+      }
+    },
+    {
+      "recipeId": "imp-a92103c19952bcf0",
+      "title": "Gà chiên chanh Ý",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "714714394973d0fb238dbbbb674d7133c7643a85e3821246c5171d2820a68d31",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma, colon)) encoded as UTF-8; research snapshot hash, not runtime fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-a92103c19952bcf0.json",
+        "fileSha256": "4e0a8ae6b51b98cf31b2a88b41f746d343613accaae7e4e564903bdee360309f"
+      },
+      "sourceIds": [
+        "source-27a9981c69cf327d",
+        "source-9854f69d4d0fdca7"
+      ],
+      "evidenceStatus": "BOUNDED_SOURCE_INVENTORY_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "internal-v2-observation",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_UNIT_BASIS_UNRESOLVED",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "medium",
+          "sourceIds": [],
+          "ingredientPositions": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "stepNumbers": [
+            1
+          ],
+          "v2Pointers": [
+            "/ingredients/1/quantity",
+            "/ingredients/2/quantity",
+            "/ingredients/3/quantity",
+            "/ingredients/4/quantity",
+            "/ingredients/5/quantity",
+            "/ingredients/8/quantity",
+            "/ingredients/9/quantity",
+            "/ingredients/10/quantity",
+            "/ingredients/11/quantity",
+            "/ingredients/12/quantity",
+            "/ingredients/13/quantity",
+            "/steps/0/instruction"
+          ],
+          "reviewerSummary": "V2 retains 11 ingredient line(s) with estimated, qualitative or runtime-unresolved quantity basis at positions [1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]; no replacement amount is established.",
+          "supportLimits": "Reproducible internal V2 observation only. Source comparison, edible retention, exact conversion, nutrition, safety and full recipe verification remain unverified.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "supp03-internal-v2-observation",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_OBSERVATION",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "info",
+          "sourceIds": [],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "sourceFactReferences": [],
+          "v2Pointers": [
+            "/ingredients",
+            "/steps",
+            "/content/servings"
+          ],
+          "reviewerSummary": "V2 contains 14 ingredient lines and 10 numbered steps for 4 servings.",
+          "supportLimits": "Internal shape/count observation only; does not verify culinary correctness or approve promotion."
+        },
+        {
+          "id": "supp03-source-27a9981c69cf327d",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_READ",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "info",
+          "sourceIds": [
+            "source-27a9981c69cf327d"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [],
+          "reviewerSummary": "The lemon-marinated chicken source declares eight to nine servings, 300 g breadcrumbs and 100 g Parmesan; these quantities belong to this variant.",
+          "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-27a9981c69cf327d",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "supp03-source-9854f69d4d0fdca7",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_READ",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "info",
+          "sourceIds": [
+            "source-9854f69d4d0fdca7"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [],
+          "reviewerSummary": "The inspected chicken section uses skinless thighs with Parmesan, breadcrumbs and lemon, then bakes at 200 C; this is a baked variant rather than evidence for a frying method.",
+          "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-9854f69d4d0fdca7",
+              "factId": "reviewed-1"
+            }
+          ]
+        }
+      ],
+      "nextAction": "Complete independent culinary, quantity, allergen, nutrition and safety review before promotion.",
+      "supplementalResearch": {
+        "dataset": "gap-research-03",
+        "reviewedAt": "2026-10-26T19:46:20.312160Z",
+        "humanReview": "PENDING",
+        "fullRecipeVerification": "NOT_COMPLETE",
+        "decision": "BOUNDED_SOURCE_READ_PENDING_REVIEW"
+      }
+    },
+    {
+      "recipeId": "imp-afdcd866c1f92192",
+      "title": "Cá om cà chua Ý",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "920baab2129728eb7d536d1cde0cedfebe10bc50771254679b770632eae4ac77",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma, colon)) encoded as UTF-8; research snapshot hash, not runtime fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-afdcd866c1f92192.json",
+        "fileSha256": "6a00f89aa89b3fb8744b2e00469f65843991cb83f8208492b22afbd5a8af892d"
+      },
+      "sourceIds": [
+        "source-6fe06b5f5ac364f0",
+        "source-72bfe9bd3b9b5045"
+      ],
+      "evidenceStatus": "BOUNDED_SOURCE_INVENTORY_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "internal-v2-observation",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_UNIT_BASIS_UNRESOLVED",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "medium",
+          "sourceIds": [],
+          "ingredientPositions": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13
+          ],
+          "stepNumbers": [
+            1
+          ],
+          "v2Pointers": [
+            "/ingredients/0/quantity",
+            "/ingredients/2/quantity",
+            "/ingredients/3/quantity",
+            "/ingredients/4/quantity",
+            "/ingredients/5/quantity",
+            "/ingredients/6/quantity",
+            "/ingredients/7/quantity",
+            "/ingredients/8/quantity",
+            "/ingredients/9/quantity",
+            "/ingredients/10/quantity",
+            "/ingredients/11/quantity",
+            "/ingredients/13/quantity",
+            "/steps/0/instruction"
+          ],
+          "reviewerSummary": "V2 retains 12 ingredient line(s) with estimated, qualitative or runtime-unresolved quantity basis at positions [0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13]; no replacement amount is established.",
+          "supportLimits": "Reproducible internal V2 observation only. Source comparison, edible retention, exact conversion, nutrition, safety and full recipe verification remain unverified.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "bounded-source-ingredient-fact",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "SOURCE_INGREDIENT_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "low",
+          "sourceIds": [
+            "source-6fe06b5f5ac364f0"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "The source lists at least six white-fish fillets and three or four garlic cloves.",
+          "supportLimits": "Source ingredient observation only; this claim makes no V2 identity, quantity or variant comparison. Unmentioned ingredients, methods, edible yield, safety, nutrition and allergens remain unverified.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-6fe06b5f5ac364f0",
+              "factId": "reviewed-1"
+            }
+          ]
+        }
+      ],
+      "nextAction": "Compare each source ingredient/method with V1 and V2; resolve identity, quantity, retention and source-authority gaps; obtain independent culinary review before any promotion."
+    },
+    {
+      "recipeId": "imp-6d26ce6b0af4fb79",
+      "title": "Rau bina om kem Ý",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "e0a4797fb637c2b3915d6a86e370de98fdda29c37466c2bbb2c231f0668f1003",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma, colon)) encoded as UTF-8; research snapshot hash, not runtime fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-6d26ce6b0af4fb79.json",
+        "fileSha256": "52adc251baac5e19a044a0cfb1eaa0313c91300c85fccae387c8e5708fcadf02"
+      },
+      "sourceIds": [
+        "source-28eb21a8f2e13003",
+        "source-28621f9d47eefc2b"
+      ],
+      "evidenceStatus": "BOUNDED_SOURCE_INVENTORY_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "internal-v2-observation",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_UNIT_BASIS_UNRESOLVED",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "medium",
+          "sourceIds": [],
+          "ingredientPositions": [
+            1,
+            4,
+            6
+          ],
+          "stepNumbers": [
+            1
+          ],
+          "v2Pointers": [
+            "/ingredients/1/quantity",
+            "/ingredients/4/quantity",
+            "/ingredients/6/quantity",
+            "/steps/0/instruction"
+          ],
+          "reviewerSummary": "V2 retains 3 ingredient line(s) with estimated, qualitative or runtime-unresolved quantity basis at positions [1, 4, 6]; no replacement amount is established.",
+          "supportLimits": "Reproducible internal V2 observation only. Source comparison, edible retention, exact conversion, nutrition, safety and full recipe verification remain unverified.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "supp03-internal-v2-observation",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_OBSERVATION",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "info",
+          "sourceIds": [],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "sourceFactReferences": [],
+          "v2Pointers": [
+            "/ingredients",
+            "/steps",
+            "/content/servings"
+          ],
+          "reviewerSummary": "V2 contains 9 ingredient lines and 10 numbered steps for 3 servings.",
+          "supportLimits": "Internal shape/count observation only; does not verify culinary correctness or approve promotion."
+        },
+        {
+          "id": "supp03-source-28eb21a8f2e13003",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_READ",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "info",
+          "sourceIds": [
+            "source-28eb21a8f2e13003"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [],
+          "reviewerSummary": "The six-person spinach bechamel PDF lists 1.5 kg spinach, 50 g each butter and flour, 500 ml milk and Parmesan.",
+          "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-28eb21a8f2e13003",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "supp03-source-28621f9d47eefc2b",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_READ",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "info",
+          "sourceIds": [
+            "source-28621f9d47eefc2b"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [],
+          "reviewerSummary": "A separate four-person spinach gratin lists 800 g spinach, 100 ml cream, Vacherin cheese and a breadcrumb topping; it differs from spinach bechamel.",
+          "supportLimits": "Only the named source-specific facts are supported. Canonical identity, unmentioned ingredients, scaling, retained amounts, allergens, nutrition, safety, source authority and full V2 verification remain unresolved.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-28621f9d47eefc2b",
+              "factId": "reviewed-1"
+            }
+          ]
+        }
+      ],
+      "nextAction": "Complete independent culinary, quantity, allergen, nutrition and safety review before promotion.",
+      "supplementalResearch": {
+        "dataset": "gap-research-03",
+        "reviewedAt": "2026-10-26T19:46:20.312160Z",
+        "humanReview": "PENDING",
+        "fullRecipeVerification": "NOT_COMPLETE",
+        "decision": "BOUNDED_SOURCE_READ_PENDING_REVIEW"
+      }
+    },
+    {
+      "recipeId": "imp-bd34e8ea2eaa1cd4",
+      "title": "Súp bắp cải Ý",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "914119ac0787beeaa9dc33d1a22f82cfab30bc0269be9386e5bdb0d2ebd9b4a3",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma, colon)) encoded as UTF-8; research snapshot hash, not runtime fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-bd34e8ea2eaa1cd4.json",
+        "fileSha256": "d03297a6273f63b2e84a6ec276b8df7d20e587f28465cbd3605edddcf18c1a1e"
+      },
+      "sourceIds": [
+        "source-bdb2b4f977e24a65",
+        "source-cb989327c3b5e555"
+      ],
+      "evidenceStatus": "BOUNDED_SOURCE_INVENTORY_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "internal-v2-observation",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_UNIT_BASIS_UNRESOLVED",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "medium",
+          "sourceIds": [],
+          "ingredientPositions": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17
+          ],
+          "stepNumbers": [
+            1
+          ],
+          "v2Pointers": [
+            "/ingredients/0/quantity",
+            "/ingredients/1/quantity",
+            "/ingredients/2/quantity",
+            "/ingredients/3/quantity",
+            "/ingredients/4/quantity",
+            "/ingredients/6/quantity",
+            "/ingredients/7/quantity",
+            "/ingredients/8/quantity",
+            "/ingredients/9/quantity",
+            "/ingredients/10/quantity",
+            "/ingredients/11/quantity",
+            "/ingredients/12/quantity",
+            "/ingredients/13/quantity",
+            "/ingredients/14/quantity",
+            "/ingredients/15/quantity",
+            "/ingredients/16/quantity",
+            "/ingredients/17/quantity",
+            "/steps/0/instruction"
+          ],
+          "reviewerSummary": "V2 retains 17 ingredient line(s) with estimated, qualitative or runtime-unresolved quantity basis at positions [0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]; no replacement amount is established.",
+          "supportLimits": "Reproducible internal V2 observation only. Source comparison, edible retention, exact conversion, nutrition, safety and full recipe verification remain unverified.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "bounded-source-ingredient-fact",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "SOURCE_INGREDIENT_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "low",
+          "sourceIds": [
+            "source-bdb2b4f977e24a65"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "The visible ingredient list specifies three-quarters of a butter stick and one-quarter cup extra-virgin olive oil; butter-stick mass is not assumed.",
+          "supportLimits": "Source ingredient observation only; this claim makes no V2 identity, quantity or variant comparison. Unmentioned ingredients, methods, edible yield, safety, nutrition and allergens remain unverified.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-bdb2b4f977e24a65",
+              "factId": "reviewed-1"
+            }
+          ]
+        }
+      ],
+      "nextAction": "Compare each source ingredient/method with V1 and V2; resolve identity, quantity, retention and source-authority gaps; obtain independent culinary review before any promotion."
+    }
+  ]
+}
