@@ -3164,7 +3164,7 @@
             "v1": "af29067c47fc0d3f08283d309c6c8d585696b784f8cc4c8cd485eaf53e77bdd2",
             "v2": "20032350fb8b5239f464e57bd9b8a2732e32672517eabbaf8ebeacb9b81b9bd0"
           },
-          "candidateFingerprint": "41bba7c0dc53412bca83d6930b6d39b94105d5f9e463a043f6ccd953c0ca6fa4",
+          "candidateFingerprint": "7bd474bc81520ab16a8222d396f5651d77525f2dc7355b7587bf1dd2724c035e",
           "sourceEvidence": {
             "urlAttempt": "data/recipe-intelligence/v3/research/source-scan.json#/recipes/87",
             "researchEvidence": "data/recipe-intelligence/v3/research/batch-05-evidence.json#/recipes/10"
@@ -3181,6 +3181,7 @@
             "RESEARCH:gap01-salmon-sauce-ratios",
             "RESEARCH:source-access-limit",
             "RESEARCH:supp06-safety-review",
+            "RESEARCH:supp07-safety-review",
             "RUNTIME_PROJECTION_LOSS",
             "SOURCE_CONTENT_UNVERIFIED",
             "UNSUPPORTED_OR_QUALITATIVE_RUNTIME_QUANTITY",
@@ -3474,7 +3475,7 @@
             "v1": "e82d0bf33faec508e3fd138d8a59650acce601d95843f9275ccf3b1a4522b01f",
             "v2": "81fbe48b3d61a6820ae38704835b70989b12c0f3fc0d05c939824cc9231beee7"
           },
-          "candidateFingerprint": "76889a0cbc61528157c7109e9ae52b29a5f4bad71782e2da40ec6f8de47532c5",
+          "candidateFingerprint": "1cb5dd00fa44a46a9ab4a0b736bc50d44db0d09cc5eceb2beb279377715bc872",
           "sourceEvidence": {
             "urlAttempt": "data/recipe-intelligence/v3/research/source-scan.json#/recipes/96",
             "researchEvidence": "data/recipe-intelligence/v3/research/batch-05-evidence.json#/recipes/19"
@@ -3490,6 +3491,7 @@
             "RESEARCH:gap01-pad-thai-oil",
             "RESEARCH:source-access-limit",
             "RESEARCH:supp06-safety-review",
+            "RESEARCH:supp07-sprouts-safety",
             "RUNTIME_PROJECTION_LOSS",
             "SOURCE_CONTENT_UNVERIFIED",
             "UNSUPPORTED_OR_QUALITATIVE_RUNTIME_QUANTITY",
@@ -12750,7 +12752,7 @@
             "v1": "eb257e9598ec771477d268af069dc62a77fd4a41a46a3f854ebe0d63b80e3f27",
             "v2": "2943bd5af4dd515686c791b609cedbdc5a66afd1263f74c85d0fd00441bf79db"
           },
-          "candidateFingerprint": "f52f71303c2c207d5b1979cf803204292c6f44afa27961f458caaf71dbd4738e",
+          "candidateFingerprint": "26439831dcb619cd75484f0b64656f1bbe6a9b3c345e3b8f5b3408673a1fa9be",
           "sourceEvidence": {
             "urlAttempt": "data/recipe-intelligence/v3/research/source-scan.json#/recipes/361",
             "researchEvidence": "data/recipe-intelligence/v3/research/batch-19-evidence.json#/recipes/3"
@@ -12770,6 +12772,7 @@
             "RESEARCH:supp04-source-access-limit",
             "RESEARCH:supp04-variant-difference",
             "RESEARCH:supp06-safety-review",
+            "RESEARCH:supp07-poultry-safety",
             "RUNTIME_PROJECTION_LOSS",
             "SOURCE_CONTENT_UNVERIFIED",
             "UNSUPPORTED_OR_QUALITATIVE_RUNTIME_QUANTITY",
@@ -14233,6 +14236,8 @@
             "RESEARCH:supp03-safety-review",
             "RESEARCH:supp03-source-access-limit",
             "RESEARCH:supp06-safety-review",
+            "RESEARCH:supp07-raw-shrimp-review",
+            "RESEARCH:supp07-safety-review",
             "RUNTIME_PROJECTION_LOSS",
             "SOURCE_CONTENT_UNVERIFIED",
             "UNSUPPORTED_OR_QUALITATIVE_RUNTIME_QUANTITY",
@@ -14498,7 +14503,7 @@
             "v1": "4c179f0b80c464935656779b82649ebce128e7297bd8fcdd5faf6b28e6fa0f07",
             "v2": "8050f56ee971f309f05d5d2f821a407a96063cfb83143d3abee748d4a636e9c9"
           },
-          "candidateFingerprint": "c2d08f5e0fb3742c70e0acaabff4cbe779f932154d75e8969aa6d1952b63717a",
+          "candidateFingerprint": "aa3284630f24d7b16efe42d9294fcf59537cb6665feb52dff5489a3a9bead492",
           "sourceEvidence": {
             "urlAttempt": "data/recipe-intelligence/v3/research/source-scan.json#/recipes/412",
             "researchEvidence": "data/recipe-intelligence/v3/research/batch-21-evidence.json#/recipes/13"
@@ -14516,6 +14521,7 @@
             "RESEARCH:supp03-safety-review",
             "RESEARCH:supp03-source-access-limit",
             "RESEARCH:supp06-safety-review",
+            "RESEARCH:supp07-safety-review",
             "SOURCE_CONTENT_UNVERIFIED",
             "USER_SNAPSHOT_COMPATIBILITY_RISK"
           ],
@@ -15967,6 +15973,7 @@
             "RESEARCH:supp03-safety-review",
             "RESEARCH:supp03-source-access-limit",
             "RESEARCH:supp06-safety-review",
+            "RESEARCH:supp07-safety-review",
             "RUNTIME_PROJECTION_LOSS",
             "SOURCE_CONTENT_UNVERIFIED",
             "UNSUPPORTED_OR_QUALITATIVE_RUNTIME_QUANTITY",

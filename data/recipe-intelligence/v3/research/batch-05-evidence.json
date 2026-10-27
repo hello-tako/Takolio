@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "program": "TAKOLIO_RECIPE_INTELLIGENCE_V3",
   "dataset": "recipe-refresh-v2-bounded-batch-05",
-  "generatedAt": "2026-10-26T20:06:17.778010Z",
+  "generatedAt": "2026-10-27T13:50:08.291712+00:00",
   "status": "RECIPE_V3_RESEARCH_IN_PROGRESS",
   "pilotStatus": "BOUNDED_RESEARCH_REVIEW_PENDING",
   "scope": {
@@ -17,17 +17,17 @@
   "interpretation": "Agent-reviewed source-specific bounded claims. Source facts never establish complete external recipe verification. Variant differences are separate. No human approval, nutrition certification, image reuse rights or content_verified promotion.",
   "summary": {
     "recipeCount": 20,
-    "sourceAttemptCount": 46,
+    "sourceAttemptCount": 49,
     "sourceStatusCounts": {
-      "SOURCE_CONTENT_READ": 25,
-      "SOURCE_RELEVANCE_VERIFIED": 25,
+      "SOURCE_CONTENT_READ": 28,
+      "SOURCE_RELEVANCE_VERIFIED": 28,
       "SOURCE_UNAVAILABLE": 19,
-      "URL_DISCOVERED": 46,
-      "URL_REACHABLE": 27
+      "URL_DISCOVERED": 49,
+      "URL_REACHABLE": 30
     },
-    "claimCount": 47,
+    "claimCount": 49,
     "claimStatusCounts": {
-      "FACT_SUPPORTED": 8,
+      "FACT_SUPPORTED": 10,
       "SOURCE_CONTENT_READ": 19,
       "SOURCE_UNAVAILABLE": 20
     },
@@ -37,7 +37,7 @@
       "BOUNDED_SOURCE_FACT": 17,
       "BOUNDED_SOURCE_READ": 1,
       "DIRECT_SOURCE_FACT": 3,
-      "FOOD_SAFETY_REVIEW": 2,
+      "FOOD_SAFETY_REVIEW": 4,
       "INTERNAL_V2_OBSERVATION": 1,
       "SOURCE_ACCESS_LIMIT": 19,
       "VARIANT_DIFFERENCE": 1
@@ -1746,6 +1746,208 @@
         "reviewerSummary": "Official general household food-safety guidance; not a recipe source.",
         "supportLimits": "Bounded UK FSA household guidance; jurisdiction and scope retained. No recipe-specific endpoint validation, complete safety assessment, numerical transfer to a recipe, human approval, or promotion."
       }
+    },
+    {
+      "url": "https://www.fda.gov/food/buy-store-serve-safe-food/selecting-and-serving-fresh-and-frozen-seafood-safely",
+      "retrievedAt": "2026-10-27T13:45:05.697309Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.fda.gov/food/buy-store-serve-safe-food/selecting-and-serving-fresh-and-frozen-seafood-safely",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "909fa7955fea507afa01422389f0de85281e40ecdc53d2d4b378173d8c85bace",
+      "byteLength": 46209,
+      "title": "Selecting and Serving Fresh and Frozen Seafood Safely | FDA",
+      "visibleTextSha256": "8613c505a4607e1c4f524d9298c968df096a2a6ea49398f5db184858ac715176",
+      "completeResponse": true,
+      "retrievalMethod": "curl default User-Agent; full response, no body transform",
+      "sourceId": "source-c50a20b03f414ee2",
+      "recipeIds": [
+        "imp-ac255bcc36d1324e"
+      ],
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "author": null,
+      "publishedAt": null,
+      "publisher": "U.S. Food and Drug Administration",
+      "metadataBasis": "Official publisher domain, page title and full HTTP response; no publication date inferred.",
+      "reviewedFacts": [
+        {
+          "factId": "supp07-seafood-temperature",
+          "locator": "visibleText lines 111-112",
+          "visibleTextLineStart": 111,
+          "visibleTextLineEnd": 112,
+          "anchors": [
+            "145°F"
+          ],
+          "reviewerSummary": "FDA advises cooking most seafood to an internal temperature of 145 F and identifies a food thermometer as a means of checking doneness.",
+          "supportLimits": "US FDA general household seafood guidance, not species/product/formulation certification. 145 F converts to 62.777... C; candidate rounds upward to 63 C. No time, freezing protocol, quantity, nutrition, human approval or runtime promotion inferred."
+        },
+        {
+          "factId": "supp07-shellfish-doneness",
+          "locator": "visibleText lines 114-114",
+          "visibleTextLineStart": 114,
+          "visibleTextLineEnd": 114,
+          "anchors": [
+            "Shrimp, Scallops, Crab, and Lobster"
+          ],
+          "reviewerSummary": "FDA lists firm, pearly and opaque flesh as doneness signs for shrimp, scallops, crab and lobster; shell color and curled shape are not its stated test.",
+          "supportLimits": "US FDA general household seafood guidance, not species/product/formulation certification. 145 F converts to 62.777... C; candidate rounds upward to 63 C. No time, freezing protocol, quantity, nutrition, human approval or runtime promotion inferred."
+        },
+        {
+          "factId": "supp07-raw-seafood-limit",
+          "locator": "visibleText lines 126-129",
+          "visibleTextLineStart": 126,
+          "visibleTextLineEnd": 129,
+          "anchors": [
+            "freezing doesn't kill all harmful germs"
+          ],
+          "reviewerSummary": "FDA advises thorough cooking to minimize seafood foodborne illness; freezing does not eliminate all harmful germs. No shrimp-specific freezing or acid treatment protocol is provided.",
+          "supportLimits": "US FDA general household seafood guidance, not species/product/formulation certification. 145 F converts to 62.777... C; candidate rounds upward to 63 C. No time, freezing protocol, quantity, nutrition, human approval or runtime promotion inferred."
+        },
+        {
+          "factId": "supp07-separate-utensils",
+          "locator": "visibleText lines 98-102",
+          "visibleTextLineStart": 98,
+          "visibleTextLineEnd": 102,
+          "anchors": [
+            "Wash cutting boards, dishes, utensils"
+          ],
+          "reviewerSummary": "FDA calls for separation of raw seafood from ready-to-eat food and washing hands, boards, dishes and utensils between raw and cooked-food preparation.",
+          "supportLimits": "US FDA general household seafood guidance, not species/product/formulation certification. 145 F converts to 62.777... C; candidate rounds upward to 63 C. No time, freezing protocol, quantity, nutrition, human approval or runtime promotion inferred."
+        }
+      ],
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "visibleText lines 111-112; visibleText lines 114-114; visibleText lines 126-129; visibleText lines 98-102",
+        "reviewerSummary": "General FDA consumer seafood safety guidance; selected endpoint and handling facts only.",
+        "supportLimits": "US FDA general household seafood guidance, not species/product/formulation certification. 145 F converts to 62.777... C; candidate rounds upward to 63 C. No time, freezing protocol, quantity, nutrition, human approval or runtime promotion inferred."
+      },
+      "retrievalNotes": "An earlier urllib request returned an abuse-detection 404. A later default-curl request returned this complete HTTP200 response; the failed request is not publisher-outage evidence."
+    },
+    {
+      "url": "https://www.fda.gov/food/buy-store-serve-safe-food/selecting-and-serving-produce-safely",
+      "sourceId": "source-e89ffb909cb37372",
+      "attempt": "curl-default-UA",
+      "retrievedAt": "2026-10-27T13:45:07.667363+00:00",
+      "completeResponse": true,
+      "curlExitCode": 0,
+      "httpStatus": 200,
+      "finalUrl": "https://www.fda.gov/food/buy-store-serve-safe-food/selecting-and-serving-produce-safely",
+      "contentType": "text/html; charset=UTF-8",
+      "title": "Selecting and Serving Produce Safely | FDA",
+      "byteLength": 40167,
+      "contentSha256": "e089b60ed6701222824a9766638dfe1d505b22ab56e3316b3fc74e5c26259de2",
+      "visibleTextSha256": "1b081d55b056227e8ed60fbaa00fe2d7b6fc29bd635549e8dd4bdd66ad121280",
+      "extraction": "stdlib HTMLParser; scripts/styles/noscript omitted; block-separated lines; UTF-8 replacement decode",
+      "recipeIds": [
+        "imp-f729957329cd75f5"
+      ],
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "runtimePromotionAllowed": false,
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "reviewedFacts": [
+        {
+          "factId": "supp07-sprouts-risk",
+          "locator": "visibleText lines 77-79",
+          "reviewerSummary": "FDA explains that raw or lightly cooked sprouts, including mung bean sprouts, can carry foodborne bacteria and that sprouting conditions promote bacterial growth.",
+          "supportLimits": "General produce risk; does not identify contamination in this recipe or validate a specific sprout cooking time.",
+          "visibleTextLineStart": 77,
+          "visibleTextLineEnd": 79
+        },
+        {
+          "factId": "supp07-sprouts-vulnerable",
+          "locator": "visibleText lines 108-113",
+          "reviewerSummary": "FDA advises people more vulnerable to foodborne illness to avoid raw or lightly cooked sprouts, including mung bean sprouts.",
+          "supportLimits": "Vulnerable-population advice; does not certify this recipe for any population or allergen restriction.",
+          "visibleTextLineStart": 108,
+          "visibleTextLineEnd": 113
+        }
+      ],
+      "author": null,
+      "publishedAt": null,
+      "publisher": "U.S. Food and Drug Administration",
+      "metadataBasis": "Official publisher domain, page title and full HTTP response; no publication date inferred.",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "visibleText lines 77-79; visibleText lines 108-113",
+        "reviewerSummary": "Selected official consumer food-safety facts; not a recipe source.",
+        "supportLimits": "General US household guidance only. No complete formulation, identity, time, quantity, nutrition, human approval or runtime promotion inferred."
+      }
+    },
+    {
+      "url": "https://www.cdc.gov/food-safety/foods/safer-food-choices.html",
+      "sourceId": "source-f69cb1f8874915d9",
+      "attempt": "curl-default-UA",
+      "retrievedAt": "2026-10-27T13:48:14.201341+00:00",
+      "completeResponse": true,
+      "curlExitCode": 0,
+      "httpStatus": 200,
+      "finalUrl": "https://www.cdc.gov/food-safety/foods/safer-food-choices.html",
+      "contentType": "text/html",
+      "title": "Safer Food Choices | Food Safety | CDC",
+      "byteLength": 62422,
+      "contentSha256": "9471c25f120324ab5637ed61132aff5da29b85da4e0d134b5361993f68d32552",
+      "visibleTextSha256": "1e3ff396cd252c200c726a46a261053990be50e30fb4b63470158ca14a6b582f",
+      "extraction": "stdlib HTMLParser; scripts/styles/noscript omitted; block-separated lines; UTF-8 replacement decode",
+      "recipeIds": [
+        "imp-f729957329cd75f5"
+      ],
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "runtimePromotionAllowed": false,
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "reviewedFacts": [
+        {
+          "factId": "supp07-sprouts-steaming-hot",
+          "locator": "visibleText lines 104-110",
+          "reviewerSummary": "CDC identifies raw or undercooked alfalfa/bean sprouts as a riskier choice and sprouts cooked until steaming hot as a safer choice.",
+          "supportLimits": "General consumer food-safety guidance. No recipe-specific duration, numeric sprout temperature, quantity, texture, serving yield or complete Pad Thai validation.",
+          "visibleTextLineStart": 104,
+          "visibleTextLineEnd": 110
+        },
+        {
+          "factId": "supp07-raw-seafood-ceviche",
+          "locator": "visibleText lines 143-148",
+          "reviewerSummary": "CDC identifies raw or undercooked fish or shellfish, including ceviche, as a riskier choice; cooked shellfish flesh should be pearly or white and opaque.",
+          "supportLimits": "Supports retaining a critical review for raw/acid-treated shrimp. Does not validate lemon concentration, soak duration, freezing, shrimp parasite controls or a cooked replacement variant.",
+          "visibleTextLineStart": 143,
+          "visibleTextLineEnd": 148
+        },
+        {
+          "factId": "supp07-poultry-165",
+          "locator": "visibleText lines 95-101",
+          "reviewerSummary": "CDC advises cooking all poultry, including chicken, to 165 degrees Fahrenheit and checking with a food thermometer.",
+          "supportLimits": "General minimum internal endpoint; does not validate the recipe oil temperature, frying duration, marinade handling or culinary quality.",
+          "visibleTextLineStart": 95,
+          "visibleTextLineEnd": 101
+        }
+      ],
+      "author": null,
+      "publishedAt": null,
+      "publisher": "U.S. Centers for Disease Control and Prevention",
+      "metadataBasis": "Official publisher domain, page title and full HTTP response; no publication date inferred.",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "visibleText lines 104-110; visibleText lines 143-148; visibleText lines 95-101",
+        "reviewerSummary": "Selected official consumer food-safety facts; not a recipe source.",
+        "supportLimits": "General US household guidance only. No complete formulation, identity, time, quantity, nutrition, human approval or runtime promotion inferred."
+      }
     }
   ],
   "recipes": [
@@ -2594,7 +2796,8 @@
       "sourceIds": [
         "source-6d15e67f085b91b7",
         "source-2361f9c14a21c3c7",
-        "source-de2ee2f8378d520f"
+        "source-de2ee2f8378d520f",
+        "source-c50a20b03f414ee2"
       ],
       "evidenceStatus": "BOUNDED_RESEARCH_REVIEW_PENDING",
       "humanReview": "PENDING",
@@ -2705,16 +2908,55 @@
           ],
           "reviewerSummary": "JOC exact recipe carries both 52-54 C removal advice and explicit 63 C USDA attribution. V2 omits the latter. Official UK guidance is independent general seafood guidance, not confirmation of either JOC temperature.",
           "supportLimits": "Independent safety review remains required. General official guidance is not recipe safety certification. No quantity, servings, endpoint or structural variant selected."
+        },
+        {
+          "id": "supp07-safety-review",
+          "status": "FACT_SUPPORTED",
+          "findingType": "FOOD_SAFETY_REVIEW",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "critical",
+          "sourceIds": [
+            "source-c50a20b03f414ee2"
+          ],
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-c50a20b03f414ee2",
+              "factId": "supp07-seafood-temperature"
+            },
+            {
+              "sourceId": "source-c50a20b03f414ee2",
+              "factId": "supp07-separate-utensils"
+            }
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [
+            6
+          ],
+          "v2Pointers": [
+            "/steps/5/instruction",
+            "/steps/5/tip"
+          ],
+          "reviewerSummary": "The independently read FDA numeric endpoint supports replacing both 52-54 C instructions together; 145 F is rounded upward to 63 C. A clean plate avoids raw/cooked cross-contamination. No complete formulation approval.",
+          "supportLimits": "US FDA general household seafood guidance, not species/product/formulation certification. 145 F converts to 62.777... C; candidate rounds upward to 63 C. No time, freezing protocol, quantity, nutrition, human approval or runtime promotion inferred."
         }
       ],
-      "nextAction": "FAIL_UNRESOLVED: both instruction and tip prescribe 52-54 C. Obtain and review an exact independently read official numeric fish endpoint, then replace both conflicting pointers together; no salmon edit proposed here.",
+      "nextAction": "Review paired 63 C replacement against exact candidate and source; historical52-54 C findings remain recorded. Other handling, storage, ingredients, quantities, source and nutrition review remain open.",
       "supplementalResearch": {
-        "dataset": "gap-research-06",
-        "reviewedAt": "2026-10-26T20:06:17.778010Z",
+        "dataset": "gap-research-07",
+        "reviewedAt": "2026-10-27T13:50:08.291712+00:00",
         "humanReview": "PENDING",
         "fullRecipeVerification": "NOT_COMPLETE",
         "decision": "CRITICAL_SAFETY_REVIEW_REQUIRED"
-      }
+      },
+      "previousSupplementalResearch": [
+        {
+          "dataset": "gap-research-06",
+          "reviewedAt": "2026-10-26T20:06:17.778010Z",
+          "humanReview": "PENDING",
+          "fullRecipeVerification": "NOT_COMPLETE",
+          "decision": "CRITICAL_SAFETY_REVIEW_REQUIRED"
+        }
+      ]
     },
     {
       "recipeId": "imp-bb07db73fb381724",
@@ -3334,7 +3576,9 @@
       },
       "sourceIds": [
         "source-eaa4e178dffa315c",
-        "source-b8d2bc05fb47ef26"
+        "source-b8d2bc05fb47ef26",
+        "source-e89ffb909cb37372",
+        "source-f69cb1f8874915d9"
       ],
       "evidenceStatus": "BOUNDED_RESEARCH_REVIEW_PENDING",
       "humanReview": "PENDING",
@@ -3421,16 +3665,58 @@
           ],
           "reviewerSummary": "Raw/briefly warmed bean sprouts remain in V2. No official sprout-specific source was content-read in this bounded search; general vegetable handling is insufficient to certify these steps.",
           "supportLimits": "Independent safety review remains required. General official guidance is not recipe safety certification. No quantity, servings, endpoint or structural variant selected."
+        },
+        {
+          "id": "supp07-sprouts-safety",
+          "status": "FACT_SUPPORTED",
+          "findingType": "FOOD_SAFETY_REVIEW",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "critical",
+          "sourceIds": [
+            "source-e89ffb909cb37372",
+            "source-f69cb1f8874915d9"
+          ],
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-f69cb1f8874915d9",
+              "factId": "supp07-sprouts-steaming-hot"
+            },
+            {
+              "sourceId": "source-e89ffb909cb37372",
+              "factId": "supp07-sprouts-risk"
+            }
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [
+            10,
+            11
+          ],
+          "v2Pointers": [
+            "/steps/9/instruction",
+            "/steps/9/tip",
+            "/steps/10/instruction"
+          ],
+          "reviewerSummary": "V2 turns off heat before briefly tossing sprouts and serves additional raw sprouts. CDC names sprouts cooked until steaming hot as the safer choice; coordinated candidate edits keep heat on through that endpoint and remove the raw garnish instruction.",
+          "supportLimits": "Bounded authoritative guidance only; full recipe review, ingredient quantities, servings, allergen safety, all other endpoints and human approval remain pending."
         }
       ],
-      "nextAction": "Read exact official sprout advice and independently review raw garnish and cooking method; no edit proposed.",
+      "nextAction": "Review coordinated heat-on sprout cooking and removal of raw sprout garnish. No numeric sprout duration/temperature or complete Pad Thai validation. Allergen, quantity, source, nutrition and human review remain open.",
       "supplementalResearch": {
-        "dataset": "gap-research-06",
-        "reviewedAt": "2026-10-26T20:06:17.778010Z",
+        "dataset": "gap-research-07",
+        "reviewedAt": "2026-10-27T13:50:08.291712+00:00",
         "humanReview": "PENDING",
         "fullRecipeVerification": "NOT_COMPLETE",
         "decision": "CRITICAL_SAFETY_REVIEW_REQUIRED"
-      }
+      },
+      "previousSupplementalResearch": [
+        {
+          "dataset": "gap-research-06",
+          "reviewedAt": "2026-10-26T20:06:17.778010Z",
+          "humanReview": "PENDING",
+          "fullRecipeVerification": "NOT_COMPLETE",
+          "decision": "CRITICAL_SAFETY_REVIEW_REQUIRED"
+        }
+      ]
     }
   ]
 }

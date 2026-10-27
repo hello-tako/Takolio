@@ -16,3 +16,5 @@ AI output, automated validation, and self-review cannot mark a row
 `HUMAN_APPROVED`. Every approved row needs a reviewer identity, evidence
 references, decision timestamp, candidate fingerprint, and unresolved-risk
 disposition.
+
+Two unresolved P0 cases have a concrete decision packet: [raw shrimp and crab](research/RAW_SEAFOOD_DECISIONS.md). It records current fingerprints, source limits, coupled field conflicts and three options per case. The user selected PROVIDE_RAW_PRODUCT_PROTOCOL for shrimp and SELECT_RAW_PATH for crab; six public product/context pages are now read; exact package/process validation and independent safety review remain PENDING. Marine Foods half-thaw directions conflict with archival full-thaw wording; no universal thaw/grill protocol inferred. User choices recorded at 2026-10-27T21:06:10Z; subsequent retrieval times are bound in the packet. No reviewer identity or safety approval supplied. Formulation/product selection permits follow-up work; it does not establish safety or HUMAN_APPROVED. The other four critical cases remain in research/GAP_RESEARCH_SUPPLEMENTS.md.

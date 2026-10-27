@@ -1,3 +1,98 @@
+# Autonomous product research checks - 2026-10-28 JST
+
+Documentation only, relative to `56d077e172e14aa3505afd4d9f4aec1272f14c05`:
+user directions plus six public product/context pages, bounded summaries,
+retrieval times, 12 snapshot hashes and source locators. No canonical data,
+source-status, candidate, dependency or runtime changes. Candidate SHA256 remains
+`0f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4`.
+The full supplement07 gate covers unchanged code/data; not repeated for docs.
+No current application-browser, staging or release acceptance. Research browser
+inspection is source reading, not application acceptance or safety validation.
+
+| Exact executed command | Observed result |
+|---|---|
+| `python3 /private/tmp/takolio-v3-product-research.py` | Four publisher pages cached HTTP200; strict decoding, raw/text hashes and locators |
+| `python3 /private/tmp/takolio-v3-product-research-astra.py` | Two Astra pages cached HTTP200, preserving four earlier snapshots; certificate page says Updating data |
+| `python3 /private/tmp/takolio-v3-product-research-check.py` | PASS 6 public pages / 12 snapshot hashes / 17 locator ranges / 14 Markdown files; candidate/canonical/protected paths unchanged; safety pending |
+| `python3 /private/tmp/takolio-v3-supp08-culinary/check-packet.py` | PASS prior 2 cases / 5 observations / 14 cache hashes and exact description locators; its unavailable product is the historical suspended shop |
+| `python3 /private/tmp/takolio-v3-seafood-decisions-check.py` | PASS 2 cases / 26 JSON pointers / 6 options, source hashes and Markdown links / 14 documentation files; its PENDING decisions refer to the historical unselected packet, not the later user research choices |
+| `PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp node scripts/recipe-intelligence-v3-audit.mjs --check` | PASS 500 recipes / 44 edits / 25 packets, four release blockers retained |
+| `python3 /private/tmp/takolio-v3-review-artifacts.py` | PASS 125 changed/untracked artifacts, 500 recipes / 1,188 sources / 1,326 claims, protected drift 0, four historical tails preserved |
+| `python3 scripts/admin-public-scan.py` | PASS added text; binary/manual scope limits retained |
+| `git diff --check b49f3e6c4fc2f1485b77623ed7257d0f8bd31f9a` | PASS |
+
+Initial product checker ran before this 14th Markdown file was updated; its
+14-file assertion failed while only 13 files were changed. No provenance or
+candidate assertion failed; rerun after completing documentation PASS.
+The search-service connector was unavailable, not successful; browser plus
+stdlib retrieval provided the fallback. An unavailable `bs4` import was replaced
+with stdlib `HTMLParser`; no dependency added. Product/process marketing and the
+historical 2001 MHLW report do not establish validated raw-shrimp service, current
+law, exact crab grilling instructions or human culinary approval. Full raw source
+files remain private; only hashes/locators and bounded summaries are published.
+
+The following documentation checks describe the prior checkpoint; their independent
+agent review does not cover the later user-direction/product-research delta.
+
+# Documentation continuation - 2026-10-28 JST
+
+Changes: RAW_SEAFOOD_DECISIONS.md and status/review links only, relative to
+`90c5b221b3c4e3c1d878c4edb5dab7f5f07465cb`. Candidate SHA256 remains
+`0f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4`.
+The full supplement07 gate below covers unchanged code/data; it was not rerun
+for this documentation continuation. No current browser/staging/release claim.
+
+| Exact executed command | Observed result |
+|---|---|
+| `python3 /private/tmp/takolio-v3-supp08-culinary/check-packet.py` | PASS 2 cases / 5 bounded observations / 14 cache hashes, V2/candidate snapshots and exact description locators; video/captions unread; product unavailable |
+| `PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp node scripts/recipe-intelligence-v3-audit.mjs --check` | PASS 500 recipes / 44 edits / 25 batches; four genuine release blockers retained |
+| `python3 /private/tmp/takolio-v3-seafood-decisions-check.py` | PASS 2 cases / 26 existing JSON pointers / 6 options, source hashes, Markdown links; 14 documentation-only files; candidate unchanged |
+| `python3 /private/tmp/takolio-v3-review-artifacts.py` | PASS changed/untracked text/JSON, protected drift 0, four historical tails preserved |
+| `python3 scripts/admin-public-scan.py` | PASS added text; binary/manual limits retained |
+| `git diff --check b49f3e6c4fc2f1485b77623ed7257d0f8bd31f9a` | PASS |
+
+The temporary culinary packet is research provenance, not human review. Its five
+observations are bounded decision evidence in the document; no canonical claims,
+source statuses, candidate edits or approvals were added. All historical failures
+and open dependency advisories below remain open. The initial temporary documentation
+writer failed with `IndentationError: unexpected indent` before any repository write;
+parenthesizing the multiline string corrected the writer. Documentation checks pass.
+
+Independent agent documentation review found no concrete issues across all 14
+Markdown changes: four historical tails byte-identical, candidate hash unchanged,
+26 JSON pointers, six options and 14 cache hashes checked; no code/data drift.
+Review included bounded PDF/Iwamoto/YouTube-description/suspension text and both
+temporary checkers. Video/captions, human culinary approval and a repeated full
+gate remain outside that review.
+
+# Current supplement07 checks
+
+Environment: macOS, Node24.16.0, Python3; isolated V3 worktree; TMPDIR=/private/tmp. Verified data implementation `a578b5696389cdb6afeca7530e33b1f4e384690e`, candidate SHA256 `0f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4`. Documentation-only changes follow this tested data snapshot.
+
+Current supplement07 full local gate: PASS, exit0 observed; Test Files  427 passed (427); Tests  9566 passed (9566); Duration  924.13s (transform 6.86s, setup 2.35s, import 48.82s, tests 800.62s, environment 15.33s); typecheck/lint, Main/Admin local migration smoke, Client/Admin/Worker builds PASS. Command `CI=1 PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp pnpm check`; log `/private/tmp/takolio-v3-full-check-supp07.log`. This gate includes the persistent artifact test and supplements04-07. Existing Admin font build warnings retain their original scope; see actual log.
+
+| Exact executed command | Observed result |
+|---|---|
+| `PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp node scripts/recipe-intelligence-v3-audit.mjs` | PASS500recipes/44edits/25batches; four inherited blockers retained |
+| `PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp node scripts/recipe-intelligence-v3-audit.mjs --check` | PASS exact generated outputs/source hashes/claim ownership/candidate fingerprints |
+| `python3 /private/tmp/takolio-v3-supp07-agent/check-proposal.py` | PASS3V2 hashes/5official raw-text hashes/10locators/5proposed edits/32retrieval attempts; proposal-only scope |
+| `python3 /private/tmp/takolio-v3-supplement07-review.py` | PASS canonical500V1/500V2,1,319 prior claims/1,180 sources/36 prior edits-history;7incoming claims/208metadata fields/1,190links/5caches/13locators |
+| `PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp node /private/tmp/takolio-v3-independent-review.mjs` | PASS500recompiled/44reversals;1,500provenance/3,937claim pointers/755facts/559frozen inputs |
+| `python3 /private/tmp/takolio-v3-review-artifacts.py` | PASS full changed/untracked text/JSON/bounded summaries; protected drift0; four historical tails preserved |
+| `python3 scripts/admin-public-scan.py` | PASS added text; binary/manual limits retained |
+| `git diff --check b49f3e6c4fc2f1485b77623ed7257d0f8bd31f9a` | PASS full base-to-worktree diff |
+
+Independent technical review PASS on candidate SHA256 `0f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4`: 500 candidates recompiled with complete metadata; 503 V2 files/51 evidence inputs; 1,500 provenance pointers/3,937 claim pointers/755 fact references; 44 exact reversals across29 recipes; 559 frozen inputs unchanged. No concrete findings; human culinary approval0/500. Historical V2 release-check exits1 on RUNTIME_PROJECTION_LOSS, INGREDIENT_RECONCILIATION_INCOMPLETE, SOURCE_CONTENT_VERIFICATION_INCOMPLETE and NUTRITION_EVIDENCE_INCOMPLETE. Historical dependency audit exits1:2high/3moderate, including Zod GHSA-mrhx-c7xc-m3w5 and undici GHSA-xjj6-f33q-929c. Dependencies unchanged; these failures remain open. GitHub push additionally reported48 default-branch advisories (8high/37moderate/3low); this hosted warning is separate from the historical local audit and was not independently re-audited. No additional focused rerun is necessary when the current full gate passes; its29 V3 tests are included.
+
+Supplement07 checker first looked for replaced chicken edit history in the edits packet; corrected to its owning evidence recipe without canonical change. Earlier urllib FDA404 was abuse detection; complete curlHTTP200 was subsequently read. No publisher outage claimed. Raw caches remain private; repository packets retain hashes, summaries and locators.
+
+Source-cache01-06 checks and the full gates below are historical. They do not supersede current07 results. No V3 browser, staging, runtime compatibility or production certification. All four release blockers and human review remain open.
+
+---
+
+The following supplement06 record is historical; its current/final wording applies only to that earlier snapshot.
+
+<!-- supplement06-history -->
 # Test strategy and observed results
 
 Environment: macOS, Node24.16.0 (`/opt/homebrew/opt/node@24/bin`), Python3, TMPDIR=/private/tmp, isolated V3 worktree. No remote database or deployment checks.

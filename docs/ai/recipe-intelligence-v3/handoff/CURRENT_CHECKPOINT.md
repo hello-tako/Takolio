@@ -3,36 +3,43 @@ REPOSITORY: hello-tako/Takolio (1422954151)
 BASE_SHA: b49f3e6c4fc2f1485b77623ed7257d0f8bd31f9a
 WORKING_BRANCH: codex/recipe-intelligence-v3
 WORKTREE: /Users/tunbee27/Documents/New project/Takolio-recipe-v3
-VERIFIED_IMPLEMENTATION_HEAD: 73bfbf5fe4dc2f3a927d09e735f3ddcc76e0afa9
-CURRENT_HEAD: inspect git log; this handoff cannot name its own documentation commit
-PHASE: A baseline checked; B/C/D/E/F partial; G candidate compiler checked; H deferred; I full gate PASS on earlier snapshot plus final focused29; human review pending; J blocked
+VERIFIED_IMPLEMENTATION_HEAD: a578b5696389cdb6afeca7530e33b1f4e384690e
+PRIOR_DOCUMENTATION_HEAD: 56d077e172e14aa3505afd4d9f4aec1272f14c05
+CURRENT_HEAD: resolve subsequent decision-documentation HEAD from git log/PR; it cannot name itself
+PHASE: A baseline checked; B/C/D/E/F partial; G compiler checked; H deferred; I current07 full gate PASS, human review pending; J blocked
 STATUS: RECIPE_V3_RESEARCH_IN_PROGRESS
 REVIEW_STATUS: RECIPE_V3_INDEPENDENT_REVIEW_REQUIRED
 RELEASE_STATUS: RECIPE_V3_BLOCKED
 RECIPES_TOTAL: 500
 RECIPES_AUDITED: 500
-RECIPES_RESEARCHED: 500 bounded inventories; 500 recipes with bounded external-content claims; full culinary verification0
-RECIPES_AUTOMATED_VALIDATED: 500 candidate schemas
-RECIPES_EDITORIALLY_CHANGED: 29recipes/36reversible edits
+RECIPES_RESEARCHED: 500 bounded inventories/external claims; full culinary verification0
+RECIPES_AUTOMATED_VALIDATED: 500 schemas
+RECIPES_EDITORIALLY_CHANGED: 29recipes/44reversible edits
 RECIPES_HUMAN_APPROVED: 0
 RECIPES_BLOCKED: 500
-INGREDIENT_IDENTITIES_RESOLVED: inherited existing-canonical reconciliation505rows; V3 approved0; provisional exact matches0
-INGREDIENT_IDENTITIES_PENDING: 1395distinct provisional IDs/4233lines; provisional-new1642rows+duplicate-alias362rows
-INGREDIENT_LINES: 6766 conserved;2996 runtime-excluded;2860 need reviewed transformations
-STEPS: 4938 conserved
-SOURCE_CONTENT_VERIFIED: 0 V2 promotions
-RESEARCH_SOURCES: 1180rows/1145URLs;668 bounded reads; 199 reachable-only/unread; 309 unavailable-only; 4 reachable-and-unavailable
-RESEARCH_CLAIMS: 1319; {"FACT_SUPPORTED": 398, "SOURCE_CONFLICT": 8, "SOURCE_CONTENT_READ": 592, "SOURCE_UNAVAILABLE": 321}
-CRITICAL_REVIEW: 6 P0;494 P1; scoresUNASSESSED
-NUTRITION_EVIDENCE_COMPLETE: inherited publishable1;blocked288;null211;V3certifications0
-TEST_RESULTS: full gate before supplements04-06 and persistent artifact test: PASS, exit 0 observed; Test Files  427 passed (427); Tests  9565 passed (9565); typecheck/lint, Main/Admin migration smoke, Client/Admin/Worker builds PASS; focused2files/29tests; scanner/audit/ingredient-exact/supplement checkersPASS
-FULL_GATE_LOG: /private/tmp/takolio-v3-current-full-check.log;session52723
-INTERNAL_TECHNICAL_REVIEW: No concrete technical findings on current snapshot 16d8f05ae328184dcaa5797c733271692fa5d804b4d7c7ab9fd8dffc32f09838; recompiled500, provenance1500, claim pointers3914, fact refs741, reversed36 edits. Human culinary approval remains0.
-KNOWN_FAILURES: V2 release-check exits1 correctly on four inherited blockers. Dependency audit exits1: 2 high/3 moderate; high Zod GHSA-mrhx-c7xc-m3w5 and undici GHSA-xjj6-f33q-929c. Dependencies unchanged. Earlier incomplete full-check evidence retained.
-CURRENT_BLOCKERS: RUNTIME_PROJECTION_LOSS; INGREDIENT_RECONCILIATION_INCOMPLETE; SOURCE_CONTENT_VERIFICATION_INCOMPLETE; NUTRITION_EVIDENCE_INCOMPLETE; content snapshots;human review;dependency audit;staging/operator approval
+INGREDIENT_IDENTITIES_RESOLVED: inherited existing-canonical505rows; V3approved0; provisional exact0
+INGREDIENT_IDENTITIES_PENDING: 1395distinct IDs/4233lines;1642provisional-new/362duplicate-alias rows
+INGREDIENT_LINES: 6766conserved;2996runtime-excluded;2860transformations need review
+STEPS: 4938conserved
+SOURCE_CONTENT_VERIFIED: 0V2promotions
+RESEARCH_SOURCES: 1188rows/1150URLs;676 bounded reads; 199 reachable-only/unread; 309 unavailable-only; 4 reachable-and-unavailable
+RESEARCH_CLAIMS: 1326;{"FACT_SUPPORTED": 405, "SOURCE_CONFLICT": 8, "SOURCE_CONTENT_READ": 592, "SOURCE_UNAVAILABLE": 321}
+CRITICAL_REVIEW: 6P0/494P1; scoresUNASSESSED; raw shrimp/crab FAIL_UNRESOLVED
+NUTRITION_EVIDENCE_COMPLETE: 1inherited publishable/288blocked/211null;V3certifications0
+CANDIDATE_SHA256: 0f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4
+TEST_RESULTS: PASS, exit0 observed; Test Files  427 passed (427); Tests  9566 passed (9566); Duration  924.13s (transform 6.86s, setup 2.35s, import 48.82s, tests 800.62s, environment 15.33s); typecheck/lint, Main/Admin local migration smoke, Client/Admin/Worker builds PASS; audit500/44/25; canonical supplement07/recompile/public/protected/history/diff checksPASS
+FULL_GATE_LOG: /private/tmp/takolio-v3-full-check-supp07.log;session23066
+INTERNAL_TECHNICAL_REVIEW: Independent technical review PASS on candidate SHA256 `0f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4`: 500 candidates recompiled with complete metadata; 503 V2 files/51 evidence inputs; 1,500 provenance pointers/3,937 claim pointers/755 fact references; 44 exact reversals across29 recipes; 559 frozen inputs unchanged. No concrete findings; human culinary approval0/500.
+KNOWN_FAILURES: Historical V2 release-check exits1 on RUNTIME_PROJECTION_LOSS, INGREDIENT_RECONCILIATION_INCOMPLETE, SOURCE_CONTENT_VERIFICATION_INCOMPLETE and NUTRITION_EVIDENCE_INCOMPLETE. Historical dependency audit exits1:2high/3moderate, including Zod GHSA-mrhx-c7xc-m3w5 and undici GHSA-xjj6-f33q-929c. Dependencies unchanged; these failures remain open. GitHub push additionally reported48 default-branch advisories (8high/37moderate/3low); this hosted warning is separate from the historical local audit and was not independently re-audited.
+CURRENT_BLOCKERS: four inherited release blockers;human decisions;ingredient/nutrition evidence;runtime snapshots/compatibility;dependency audit;hosted stack/browser/staging/operator acceptance
 PRODUCTION_MUTATIONS: 0
 PROTECTED_PATH_DRIFT: 0
-NEXT_ACTION: Review exact source/formulation matches and 6 critical safety findings; independently review exact candidates, ingredient identities and quantity/step/nutrition evidence. Complete scoped Draft PR review. Runtime version pinning/compatibility follows evidence closure; staging and production require separate authority.
+DECISION_PACKET: research/RAW_SEAFOOD_DECISIONS.md;2P0cases/3options each;selected PROVIDE_RAW_PRODUCT_PROTOCOL + SELECT_RAW_PATH;6public pages read/12snapshot hashes;package/process validation+safety review PENDING;0canonical additions or approvals
+PRODUCT_RESEARCH_CHECK: PASS6pages/12hashes/17locator ranges;14Markdown files;candidate/canonical unchanged;artifact125/protected0/history4/public/diffPASS;exact commands14_TEST_STRATEGY.md
+PRODUCT_RESEARCH: Alpex/Astra shrimp marketing;Marine Foods/Nissui frozen raw-crab comparators;MHLW2001 historical report;half-thaw/full-thaw conflict;0canonical changes;see RAW_SEAFOOD_DECISIONS.md
+CONTINUATION_CHECKS: packet provenance/locators PASS2cases/5observations/14cache hashes; audit --check PASS500/44/25; public/protected/history/diff PASS; full supplement07 gate not repeated for docs
+PRIOR_CONTINUATION_REVIEW: at 56d077e172e14aa3505afd4d9f4aec1272f14c05, independent agent found no concrete issues across 14 Markdown files; four historical tails/candidate hash/26pointers/6options/14cache hashes checked; no code/data drift; not human culinary approval or video/caption review
+NEXT_ACTION: Use the six located product/context pages in research/RAW_SEAFOOD_DECISIONS.md for the next bounded proposal. Shrimp still needs exact raw-use package and validated hazard-control evidence; Alpex/Astra marketing is insufficient. For raw-to-cook crab, resolve the Marine Foods package/manual, scientific species and supported grill endpoint; reconcile its half-thaw instructions with the archival fully-thawed-center wording. Nissui is a separate comparator, not an interchangeable protocol. Independent fingerprint-bound safety review remains required; both cases remain FAIL_UNRESOLVED. No request for user-supplied URLs remains outstanding. Continue the other four critical reviews and ingredient/quantity/nutrition/runtime prerequisites; staging/production require separate authority.
 
-Draft stack: #33 audit/spec, #34 scanner, #35 compiler, #36 ingredient exact audit, #37 research01-05, #38 research06-10, #39 research11-14, #40 research15-19, #41 research20-25, #42 deterministic artifacts/test. Draft #43 is the SHA-bound documentation checkpoint on codex/recipe-v3-checkpoint. PR33 validate40385562918 and validate-admin40385562692 SUCCESS; REVIEW_REQUIRED. PR34-43 have no hosted CI acceptance because their bases are not main; check fresh exact heads after stack integration. PR index: docs/ai/recipe-intelligence-v3/handoff/PULL_REQUESTS.md.
-V1 release rel-bd00a4f53fcaeee4; fingerprint f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37. Exact commands/failures in14_TEST_STRATEGY. Raw research caches must not be published. No V3 runtime/staging/production certification.
+Draft stack33-44 remains open. Supplement07 Draft #44 uses codex/recipe-v3-safety-07, based on #43 (d7ed5cf8900212915246d151d8095602a40a225e); its Draft PR status and remote-head lookup are recorded in docs/ai/recipe-intelligence-v3/handoff/PULL_REQUESTS.md. PR33 historical hosted validate40385562918 and validate-admin40385562692 SUCCESS apply only to its audit/spec head. Later bases are not main; absent hosted checks grant no acceptance. No merge or deployment.
+V1fingerprint f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37. Supplement07 preserves all previous claims/sources/edits/history; no raw-cache publication. Exact commands/failures:14_TEST_STRATEGY.md. No V3runtime/staging/production certification.

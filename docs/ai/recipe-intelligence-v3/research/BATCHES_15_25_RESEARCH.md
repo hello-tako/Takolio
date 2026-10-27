@@ -1,6 +1,6 @@
 # Current integrated research checkpoint
 
-Current canonical packets: batch-15, batch-16, batch-17, batch-18, batch-19, batch-20, batch-21, batch-22, batch-23, batch-24, batch-25. 220 recipes; 527 source rows; 248 bounded content reads; 655 claims; 220 recipes with external-content claims; 4 candidate edits across 3 recipes. Human approval and full culinary verification remain zero. Source/runtime promotion remains false.
+Current canonical packets: batch-15, batch-16, batch-17, batch-18, batch-19, batch-20, batch-21, batch-22, batch-23, batch-24, batch-25. 220 recipes; 532 source rows; 253 bounded content reads; 660 claims; 220 recipes with external-content claims; 7 candidate edits across 3 recipes. Human approval and full culinary verification remain zero. Source/runtime promotion remains false.
 
 Current validation from the repository root:
 
@@ -18,11 +18,11 @@ Current packet hashes:
 | batch-16 | `a4edc72f415417cf863ad41c18335147892f95eb1b0db395ce1d3fc314ef5c7a` | `bcc3b7038d7f5a0795a33a8bead0419a91581d699b33e29a33759b60495a2f45` |
 | batch-17 | `5822ee5e1d4b817a8bba6724d416ddc9f2f4c26a3095bb6726c3796a14a34511` | `bcc3b7038d7f5a0795a33a8bead0419a91581d699b33e29a33759b60495a2f45` |
 | batch-18 | `94676c6310db233a9a7f6902f5530dbadd0a0869d41d1e46539f591c24d46731` | `bcc3b7038d7f5a0795a33a8bead0419a91581d699b33e29a33759b60495a2f45` |
-| batch-19 | `93ea7d74473d47f6e5cc05941955da9c65d0a6d9b55a277028db3d9627b5b7c5` | `3313bc2dff72bd2d1e4ccc0f1f1382188682b48052a727718e1fc6aff21f8b1b` |
+| batch-19 | `b22f8dc458adfeab19930be5119040352ca78fdbfb5865dda6295ed963504789` | `c048e02337be7871edd8f191f28f8012d977bbcb3bfb0e6931cfc44f1eedc618` |
 | batch-20 | `74ec67acab1abe9f151761538e4f4c6b8370663cb2e30d4ba19d88c3077a5814` | `bcc3b7038d7f5a0795a33a8bead0419a91581d699b33e29a33759b60495a2f45` |
-| batch-21 | `fbeabb80f4679b80a7a4460401bd883241469c0309ca093c89891574c24f7379` | `84da42a866b824546e0fde23bfb8dd25b14d8d9ab94bda28efd8406b030dd70c` |
+| batch-21 | `1734c8696bf03fd5f823926ba345b387882c385f8c0d50549ee4150bdbacb040` | `da0ea96f67a621790f70be96a7750d230c3a9fdad7a61bdad090910871b2331c` |
 | batch-22 | `3a6e8459975a22170f73dcad4dc6570486addbd3567cb8729681c2c19762830f` | `bcc3b7038d7f5a0795a33a8bead0419a91581d699b33e29a33759b60495a2f45` |
-| batch-23 | `6b4fbe03f6fa44d97e46dacea69b02debcf70f8d7a98f1d7f5782865126c65ea` | `9cd4c0a953d35d7f9a18805a36d2f95bcdaf934a486f8d1839eff1f61e623e5d` |
+| batch-23 | `b1ceeb7d4c3620db773671d2e669150796687bed185c9553b283621d17568d6c` | `9cd4c0a953d35d7f9a18805a36d2f95bcdaf934a486f8d1839eff1f61e623e5d` |
 | batch-24 | `11b57f3187968b3a52ef9349aa7fe88e10a2af381b515f4dcc8a8c6526efea39` | `bcc3b7038d7f5a0795a33a8bead0419a91581d699b33e29a33759b60495a2f45` |
 | batch-25 | `357ea68a0f10e54473f68b7ef5258b125d6b7334894d3c7ebc49a14047c5bbe6` | `bcc3b7038d7f5a0795a33a8bead0419a91581d699b33e29a33759b60495a2f45` |
 
