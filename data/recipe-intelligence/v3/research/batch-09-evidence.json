@@ -1,0 +1,3320 @@
+{
+  "schemaVersion": 1,
+  "program": "TAKOLIO_RECIPE_INTELLIGENCE_V3",
+  "dataset": "recipe-refresh-v2-bounded-batch-09",
+  "generatedAt": "2026-10-26T19:44:23.973831Z",
+  "status": "RECIPE_V3_RESEARCH_IN_PROGRESS",
+  "pilotStatus": "BOUNDED_RESEARCH_REVIEW_PENDING",
+  "scope": {
+    "pilotRecipeCount": 20,
+    "catalogRecipeCount": 500,
+    "fullRecipeVerificationCompleted": 0,
+    "description": "Selected bounded findings for batch v3-09 only. Unmentioned identities, ingredients, quantities, steps, metadata, nutrition and allergens remain unverified."
+  },
+  "humanReview": "PENDING",
+  "sourcePromotionAllowed": false,
+  "runtimePromotionAllowed": false,
+  "interpretation": "Agent-reviewed source-specific bounded claims. Source facts never establish complete external recipe verification. Variant differences are separate. No human approval, nutrition certification, image reuse rights or content_verified promotion.",
+  "summary": {
+    "recipeCount": 20,
+    "sourceAttemptCount": 46,
+    "sourceStatusCounts": {
+      "SOURCE_CONTENT_READ": 28,
+      "SOURCE_RELEVANCE_VERIFIED": 28,
+      "SOURCE_UNAVAILABLE": 18,
+      "URL_DISCOVERED": 46,
+      "URL_REACHABLE": 28
+    },
+    "claimCount": 43,
+    "claimStatusCounts": {
+      "FACT_SUPPORTED": 4,
+      "SOURCE_CONTENT_READ": 24,
+      "SOURCE_UNAVAILABLE": 15
+    },
+    "findingTypeCounts": {
+      "BOUNDED_SOURCE_COMPARISON": 3,
+      "BOUNDED_SOURCE_FACT": 24,
+      "INTERNAL_CONSISTENCY": 1,
+      "SOURCE_ACCESS_LIMIT": 15
+    },
+    "humanApprovedCount": 0,
+    "fullRecipeVerificationCompleted": 0,
+    "productionMutations": 0
+  },
+  "sources": [
+    {
+      "sourceId": "source-dd9e97cba163f571",
+      "url": "https://thewoksoflife.com/hot-sour-soup/",
+      "recipeIds": [
+        "imp-03577e7fa7667ab8"
+      ],
+      "retrievedAt": "2026-10-26T12:44:57.109741Z",
+      "httpStatus": 403,
+      "finalUrl": "https://thewoksoflife.com/hot-sour-soup/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "e648642d0bd024fd628e90cb3f02a22bfca84d7af1f1f593a4023f07b2cfa2fb",
+      "byteLength": 18288,
+      "title": "Security Verification",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "4719b3d815874200726de4999c28b133a19acd8b4579a8c2b539fdb19c77702b",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "unavailabilityReason": "HTTP_403",
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-c63f91d78016f9bc",
+      "url": "https://www.theseasonedwok.com/hot-and-sour-soup/",
+      "recipeIds": [
+        "imp-03577e7fa7667ab8"
+      ],
+      "retrievedAt": "2026-10-26T12:44:57.207193Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.theseasonedwok.com/hot-and-sour-soup/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "6a4853660ffdf8d4018d8a7f4df554a98405ec19fd895a75f58c1c6ef29feed0",
+      "byteLength": 488168,
+      "title": "Chinese Hot and Sour Soup Recipemenu iconsearch icon",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "9181628ffb30759f0b1102abd012fe872d10706808622b76e9f6fcf25a4c7e15",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "JSON-LD /0/@graph/7 recipeIngredient",
+        "reviewerSummary": "Lists one-quarter pound pork, eight ounces soft tofu, two eggs, dried shiitake and four cups chicken stock.",
+        "supportLimits": "This soft-tofu/pork/dried-mushroom formulation does not verify V2 firm tofu/king oyster quantities; full conversion and yield remain pending."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "JSON-LD /0/@graph/7 recipeIngredient",
+          "reviewerSummary": "Lists one-quarter pound pork, eight ounces soft tofu, two eggs, dried shiitake and four cups chicken stock.",
+          "supportLimits": "This soft-tofu/pork/dried-mushroom formulation does not verify V2 firm tofu/king oyster quantities; full conversion and yield remain pending."
+        }
+      ],
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-fd0194af49a53ddf",
+      "url": "https://curatedkitchenware.com/en-sg/blogs/soupeduprecipes/squid-stir-fry",
+      "recipeIds": [
+        "imp-62ebe8dd18b15b5e"
+      ],
+      "retrievedAt": "2026-10-26T12:44:57.508291Z",
+      "httpStatus": 200,
+      "finalUrl": "https://curatedkitchenware.com/en-sg/blogs/soupeduprecipes/squid-stir-fry",
+      "contentType": "text/html; charset=utf-8",
+      "contentSha256": "e9ce895a6ddc77023d66a63887d2fdb527867e4ac6321fb2e5aced28f426645d",
+      "byteLength": 162037,
+      "title": "Squid Stir FrySquid Stir-Fry Recipe | Chinese-StyleHow to cook squid for a stir-frySquid cooks quickly, which makes it ideal for a hot, fast stir-fry. The goal is a tender bite and bright seafood flavor, balanced with vegetables and aromatic seasonings.Choosing and preparing squidFresh and properly thawed frozen squid can both work well. For another technique-focused dish, see how Chinese people stir-fry squid.More Chinese seafood recipesEasy shrimp fried riceChinese fish broth\n – Curated Kitchenware",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "cc15430d3440aae9ebb5efb1fda2c0837072c3cf5df8dc29c4e72041327542e9",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "JSON-LD /0 recipeIngredient",
+        "reviewerSummary": "Lists 12 ounces squid, two tablespoons oyster sauce, blanching ginger and two tablespoons stir-fry oil.",
+        "supportLimits": "V2 500g squid/30g ginger and its exact sauce allocation are not established; blanching and edible aromatics remain distinct."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "JSON-LD /0 recipeIngredient",
+          "reviewerSummary": "Lists 12 ounces squid, two tablespoons oyster sauce, blanching ginger and two tablespoons stir-fry oil.",
+          "supportLimits": "V2 500g squid/30g ginger and its exact sauce allocation are not established; blanching and edible aromatics remain distinct."
+        }
+      ],
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-00fab6c8424d19d5",
+      "url": "https://pyskitchen.com/pyskitchen-recipe/chinese-pepper-squid-stir-fry-better-than-take-out",
+      "recipeIds": [
+        "imp-62ebe8dd18b15b5e"
+      ],
+      "retrievedAt": "2026-10-26T12:44:57.645270Z",
+      "httpStatus": 200,
+      "finalUrl": "https://pyskitchen.com/pyskitchen-recipe/chinese-pepper-squid-stir-fry-better-than-take-out",
+      "contentType": "text/html;charset=utf-8",
+      "contentSha256": "0e769fce74af07ee4f47719790427d7851bb377a1e8dc6d7c64cd61991260e56",
+      "byteLength": 594323,
+      "title": "Chinese Squid Stir Fry Recipe | 双椒鱿鱼花 — PY's Kitchen | Homemade Recipes",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "a1d45528b74f5e4ad432c9a696ed37c3e536982143172a52e4800f72dfeabeb5",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Visible text lines 52-67, squid stir-fry ingredients",
+        "reviewerSummary": "Lists 340g squid, one-half to one onion, one to two peppers and three garlic cloves.",
+        "supportLimits": "Pepper/onion variant differs from V2 ginger-scallion emphasis; counted aromatics and yield remain unknown."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Visible text lines 52-67, squid stir-fry ingredients",
+          "reviewerSummary": "Lists 340g squid, one-half to one onion, one to two peppers and three garlic cloves.",
+          "supportLimits": "Pepper/onion variant differs from V2 ginger-scallion emphasis; counted aromatics and yield remain unknown."
+        }
+      ],
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-5b42391223746db3",
+      "url": "https://www.youtube.com/watch?v=cTlfodjRjtI",
+      "recipeIds": [
+        "imp-d283a9225d6ece09"
+      ],
+      "retrievedAt": "2026-10-26T12:44:57.651358Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.youtube.com/watch?v=cTlfodjRjtI",
+      "contentType": "text/html; charset=utf-8",
+      "contentSha256": "f5cdd10ce67959f8c66d5b80bd73753c42c63d919a1d064e429e1cf950be30c9",
+      "byteLength": 1275522,
+      "title": "Salmon zuke don [Rice bowl topped with Soy-marinated salmon] - YouTube",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "ae5b7968c16fc1b03c830a74d601fd73679edd7073f4474944255fcf1137e65d",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "unavailabilityReason": "HTTP_200_BUT_NO_RELIABLE_READABLE_RECIPE_TEXT",
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-2d8cd667b43bb7e9",
+      "url": "https://www.hirokoliston.com/sashimi-zuke-don/",
+      "recipeIds": [
+        "imp-d283a9225d6ece09"
+      ],
+      "retrievedAt": "2026-10-26T12:44:57.656143Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.hirokoliston.com/sashimi-zuke-don/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "3f20da3176d7d8eed98c1f86eb06b5866708c528b052dca6694a8a5a832ba1e5",
+      "byteLength": 77008,
+      "title": "Sashimi ‘Zuké’ Don – Hiroko's Recipes",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "6770fe608b6f3491e22d6d05f2d195ea6857b9dbdf2598e201a14d19626b57f1",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Visible text lines 14-29, sashimi don ingredients and marinade",
+        "reviewerSummary": "One-serving bowl uses 100g fish, one serving rice, one teaspoon mirin and two to three teaspoons soy; marination is refrigerated for at least one hour.",
+        "supportLimits": "Fish species are alternatives. This is no raw-fish safety certification; V2 300g salmon/500g rice/two-serving scaling is unverified."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Visible text lines 14-29, sashimi don ingredients and marinade",
+          "reviewerSummary": "One-serving bowl uses 100g fish, one serving rice, one teaspoon mirin and two to three teaspoons soy; marination is refrigerated for at least one hour.",
+          "supportLimits": "Fish species are alternatives. This is no raw-fish safety certification; V2 300g salmon/500g rice/two-serving scaling is unverified."
+        }
+      ],
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-ec8be595b82287f0",
+      "url": "https://www.justonecookbook.com/pan-fried-ginger-pork-belly/",
+      "recipeIds": [
+        "imp-7ed24282981e96f6"
+      ],
+      "retrievedAt": "2026-10-26T12:44:57.925372Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.justonecookbook.com/pan-fried-ginger-pork-belly/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "52dc04ee3c45a691b7feb4bfb081d0bf74765a05520e6bd8e8c3e85aba95b71c",
+      "byteLength": 533150,
+      "title": "Pan-Fried Ginger Pork Belly from Kodoku no Gurume 豚バラ生姜焼き • Just One CookbookToggle SearchToggle MenuClose MenuToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle SearchClose SearchSearchFacebookInstagramPinterestYouTubeFacebookInstagramPinterestYouTubeFacebookInstagramPinterestYouTubeClose",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "eb45aa39513b810980eac72d30ba4f9514ee7edb66f2f0bae0804a8024f64c77",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "JSON-LD /0/@graph/7 recipeIngredient and recipeYield",
+        "reviewerSummary": "Two-serving card lists eight ounces pork belly, 312g cabbage, one Tokyo negi and two teaspoons grated ginger.",
+        "supportLimits": "V2 three-serving amounts need independent conversion/allocation; no teaspoon-to-gram ginger assumption."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "JSON-LD /0/@graph/7 recipeIngredient and recipeYield",
+          "reviewerSummary": "Two-serving card lists eight ounces pork belly, 312g cabbage, one Tokyo negi and two teaspoons grated ginger.",
+          "supportLimits": "V2 three-serving amounts need independent conversion/allocation; no teaspoon-to-gram ginger assumption."
+        }
+      ],
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-e2795b0adce6e7e5",
+      "url": "https://www.youtube.com/watch?v=JAOT9vdgZOM",
+      "recipeIds": [
+        "imp-7ed24282981e96f6"
+      ],
+      "retrievedAt": "2026-10-26T12:44:57.993534Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.youtube.com/watch?v=JAOT9vdgZOM",
+      "contentType": "text/html; charset=utf-8",
+      "contentSha256": "e527029d8e0ba57e0412c40cc1b02fe4a150b35b944dbe7b7d67f4da0e525361",
+      "byteLength": 1427100,
+      "title": "【秘密公開】一番美味しくて簡単なプロの「生姜焼き」を家庭で料理する方法！ - YouTube",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "02ac2ce0a0528c06f1df753624bececf4daf5c6db124de209aa6d3cafbe9251a",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "unavailabilityReason": "HTTP_200_BUT_NO_RELIABLE_READABLE_RECIPE_TEXT",
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-b829dbe30e7bbb16",
+      "url": "https://www.justonecookbook.com/braised-pork-belly-kakuni/comment-page-6/",
+      "recipeIds": [
+        "imp-c6e706b483805e44"
+      ],
+      "retrievedAt": "2026-10-26T12:44:58.973634Z",
+      "httpStatus": 403,
+      "finalUrl": "https://www.justonecookbook.com/braised-pork-belly-kakuni/comment-page-6/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "73f68b266e52b9ee76399bcf78dc5546205a3437cbebac483fa2336f18b9eef1",
+      "byteLength": 4938,
+      "title": "Attention Required! | Cloudflare",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "a34c858e28baa8b46ea2ca7627b9a578e142f629dfc5c96569a29dc55f3514cf",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "unavailabilityReason": "HTTP_403",
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-45820bcaf0bcc186",
+      "url": "https://aaronandclaire.com/buta-no-kakuni-japanese-braised-pork-belly-recipe/",
+      "recipeIds": [
+        "imp-c6e706b483805e44"
+      ],
+      "retrievedAt": "2026-10-26T12:44:59.144335Z",
+      "httpStatus": 200,
+      "finalUrl": "https://aaronandclaire.com/buta-no-kakuni-japanese-braised-pork-belly-recipe/",
+      "contentType": "text/html; charset=utf-8",
+      "contentSha256": "1bd94d04e20a1a3a9e6975e39d48eaae947e71ef49594129af6455da265b536f",
+      "byteLength": 538376,
+      "title": "Buta No Kakuni (Japanese Braised Pork Belly)",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "ae2dd943a856caa7275b3f30ec0a2f950a72bcacfbff768f9615ee1a4c924701",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "JSON-LD /0/@graph/6 recipeIngredient and recipeYield",
+        "reviewerSummary": "Seven-serving kakuni lists 3.3 pounds skin-on pork belly, 15g ginger and 90g green onions.",
+        "supportLimits": "V2 skinless pork and 50g ginger/130g negi are separate choices; no raw-to-cooked yield or five-serving scaling is established."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "JSON-LD /0/@graph/6 recipeIngredient and recipeYield",
+          "reviewerSummary": "Seven-serving kakuni lists 3.3 pounds skin-on pork belly, 15g ginger and 90g green onions.",
+          "supportLimits": "V2 skinless pork and 50g ginger/130g negi are separate choices; no raw-to-cooked yield or five-serving scaling is established."
+        }
+      ],
+      "humanReview": "PENDING"
+    },
+    {
+      "url": "https://www.justonecookbook.com/wprm_print/spinach-and-mushroom-miso-soup",
+      "retrievedAt": "2026-10-26T19:22:36.599841Z",
+      "httpStatus": 403,
+      "finalUrl": "https://www.justonecookbook.com/wprm_print/spinach-and-mushroom-miso-soup",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "782c82dbde30c2a4175192e8468efe13a2cd3d145bb27822fa2ec11e38603722",
+      "byteLength": 4916,
+      "title": "Attention Required! | Cloudflare",
+      "visibleTextSha256": "a8792bf6ca7047dac33fa910e73e457419b4406a1d1988e6502dc79cc056ee22",
+      "completeResponse": true,
+      "error": null,
+      "sourceId": "source-54df08de00a5394b",
+      "recipeIds": [
+        "imp-324e0ea2e2f068bf"
+      ],
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "reviewedFacts": [],
+      "relevanceReview": {
+        "status": "UNRESOLVED",
+        "scope": "HTTP retrieval only",
+        "reviewerSummary": "JOC mushroom-miso print page blocked.",
+        "supportLimits": "No culinary claim inferred from status code, shell, search page, unparsed PDF or excluded background page."
+      },
+      "previousRetrievals": [
+        {
+          "sourceId": "source-54df08de00a5394b",
+          "url": "https://www.justonecookbook.com/wprm_print/spinach-and-mushroom-miso-soup",
+          "retrievedAt": "2026-10-26T12:44:59.181503Z",
+          "httpStatus": 403,
+          "finalUrl": "https://www.justonecookbook.com/wprm_print/spinach-and-mushroom-miso-soup",
+          "contentType": "text/html; charset=UTF-8",
+          "contentSha256": "402fba22dbf29067ab362f245d4a2ee487ad9ae254beced2a366f8c80c4a3563",
+          "byteLength": 4938,
+          "title": "Attention Required! | Cloudflare",
+          "author": null,
+          "publishedAt": null,
+          "mediaType": "HTML",
+          "visibleTextSha256": "d159bb94aa5d1770e06f279f2ed8dc68a2703e96a1bc413745341977389a6b20",
+          "evidenceStatus": [
+            "URL_DISCOVERED",
+            "SOURCE_UNAVAILABLE"
+          ],
+          "unavailabilityReason": "HTTP_403",
+          "humanReview": "PENDING"
+        }
+      ]
+    },
+    {
+      "sourceId": "source-ffed53d447fe70f3",
+      "url": "https://juliadunaway.substack.com/api/v1/file/afd697ec-70eb-4535-99be-eea17687d52b.pdf",
+      "recipeIds": [
+        "imp-324e0ea2e2f068bf"
+      ],
+      "retrievedAt": "2026-10-26T12:44:59.895746Z",
+      "httpStatus": 200,
+      "finalUrl": "https://substack-post-media.s3.us-east-1.amazonaws.com/post-files/187435253/afd697ec-70eb-4535-99be-eea17687d52b.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAUM3FPD6B4W7UINMR%2F20261026%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20261026T124500Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEAsaCXVzLWVhc3QtMSJGMEQCIGoJ0f0sysJWjRH3AJrYDXoZ1vP%2BPfK4c6MEVd0dukftAiBH%2FnEs3MqA0wJSSEWijHSn3Ek1nMAow%2BVdqOGjNuIAjCqCBAjT%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAQaDDMwMjQ3MTEyNjkxNSIM%2BHC6m8BzgUTgHHDkKtYD1LIetIQjicRQLCnreuINXpm6SVHorJSgTEmBk3UHic5ywL8slmRnB8EkvKb6XRb4%2FqSltMm%2F8%2FSj0jSpD4nVI%2B5iQdHMi06cAAHsv2USrbbWFbB57Eo0eO6Pn7XfjisqFblc3i0V1fwL02nqmJswGOqIwqrAeHpgRWLEq1OnEcWEeZDYe7%2FTTaMdw5frFfkliyg2jMnRZ8FTVFOb064xUBHafgEZG7%2FliqZQRXtzFN%2BgP80lpG7jHUJNPGwcM%2FG4gUJooxOUY1V9v5Wj6n8%2FMP2OzT0jG6BumXhzRZTyM1omHbjTFGt2KHKntGrS6PXTgI0bmsfwnm1Px9c3TcqpQsQ49zMexAP9zY%2B0EJ%2B8X0qTZdn2XYmT4Qn%2FkdqIcLeuDvlunQgu9JeRpx5eak7LircDxRJj0YDJBqWe%2B2atRTuTVmo8z0RoPeRJImPaGPNBydDCt98v%2BBR7xn0xYwPzQAlECu%2FqCkwnZGGSP%2BEq9loOQY3PAAvyQKGvYrYpEWs7q7Zhfzjmhu%2B6261Y0ObbkJwnHNdYBuh41FDJ4aaGvle0Q4%2FwupKe1v7sZD7Q7pcCExFuqETQyGDQtIOmKUuHGGJT49XL5c3%2BmzEriIr1BVTlkarBqPEw39D81gY6pgEG6WGB5cVrxrEOlWlBGCD1eHaWgZUnmc0eyUILjxq5Zyi%2FSPf4YqvYTzqFZHWlZzuLLhUM1BhA9fjGeKHViQ0L2CX61vMvW87DsvIg8%2F%2B5XlQPh8UMsnE3v2k9lubxH238ftK2YYh7PV%2BxVnutIONmp7FZ5yuRieuFHjoge75XFhjhB3y%2FrKKKUicErJPpQ3bzg%2F6Ij%2FsPPUW7FidLZr8OJWvjJfwe&X-Amz-Signature=32bbba5f281e99bfe9d068b71a69ae5e5b1465554f6b55bc5ed19e4d27772dee&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3D%22Japanese_Miso_Soup.pdf%22&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+      "contentType": "application/pdf",
+      "contentSha256": "bf50df8867cddc07c88dd5d2bfaab6371a87531cf56114e0c9ce9adbcdae21b1",
+      "byteLength": 66190,
+      "title": null,
+      "author": null,
+      "publishedAt": null,
+      "error": "ModuleNotFoundError: No module named 'pypdf'",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "unavailabilityReason": "HTTP_200_BUT_NO_RELIABLE_READABLE_RECIPE_TEXT",
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-b5e28b8968e73030",
+      "url": "https://www.allrecipes.com/recipe/208297/miso-soup-with-shiitake-mushrooms/",
+      "recipeIds": [
+        "imp-324e0ea2e2f068bf"
+      ],
+      "retrievedAt": "2026-10-26T12:44:59.909362Z",
+      "httpStatus": 402,
+      "finalUrl": "https://www.allrecipes.com/recipe/208297/miso-soup-with-shiitake-mushrooms/",
+      "contentType": "text/html",
+      "contentSha256": "ca9bc48f27d79d3db3443542466ffda1267c584e3888b839f66c167cf0bea61e",
+      "byteLength": 612,
+      "title": "",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "c95983f3668f3d8976197d62ffcedf81abbdbec86f3be79442fe48f70e5344f7",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "unavailabilityReason": "HTTP_402",
+      "humanReview": "PENDING"
+    },
+    {
+      "url": "https://www.justonecookbook.com/wprm_print/56948",
+      "retrievedAt": "2026-10-26T19:22:36.792178Z",
+      "httpStatus": 403,
+      "finalUrl": "https://www.justonecookbook.com/wprm_print/56948",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "8898e0ed69c24483cb1f0c3877790e25195b11540fedc9528c4d2ad2cbc5b134",
+      "byteLength": 4916,
+      "title": "Attention Required! | Cloudflare",
+      "visibleTextSha256": "d74f632782624ca6411fce16f09b77769779fd7854cdcbd841918b685e639175",
+      "completeResponse": true,
+      "error": null,
+      "sourceId": "source-aad04254e0309391",
+      "recipeIds": [
+        "imp-5507103398040565"
+      ],
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "reviewedFacts": [],
+      "relevanceReview": {
+        "status": "UNRESOLVED",
+        "scope": "HTTP retrieval only",
+        "reviewerSummary": "JOC print page blocked.",
+        "supportLimits": "No culinary claim inferred from status code, shell, search page, unparsed PDF or excluded background page."
+      },
+      "previousRetrievals": [
+        {
+          "sourceId": "source-aad04254e0309391",
+          "url": "https://www.justonecookbook.com/wprm_print/56948",
+          "retrievedAt": "2026-10-26T12:45:00.069256Z",
+          "httpStatus": 403,
+          "finalUrl": "https://www.justonecookbook.com/wprm_print/56948",
+          "contentType": "text/html; charset=UTF-8",
+          "contentSha256": "d54a33c68025321d07223466ea4170a928251f0ca65ac03b47a3968729ef3a05",
+          "byteLength": 4938,
+          "title": "Attention Required! | Cloudflare",
+          "author": null,
+          "publishedAt": null,
+          "mediaType": "HTML",
+          "visibleTextSha256": "d8a7c038a1bb3219b0677d94f1d0ba51124008723f2af9a19875f0c395a7d14c",
+          "evidenceStatus": [
+            "URL_DISCOVERED",
+            "SOURCE_UNAVAILABLE"
+          ],
+          "unavailabilityReason": "HTTP_403",
+          "humanReview": "PENDING"
+        }
+      ]
+    },
+    {
+      "url": "https://japanesecooking101.com/yakisoba-recipe/",
+      "retrievedAt": "2026-10-26T19:22:36.901746Z",
+      "httpStatus": 200,
+      "finalUrl": "https://japanesecooking101.com/yakisoba-recipe/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "20110978c7015a5fcac5f4059cbfff580313e0f30640dc90f11e1f7a05437d81",
+      "byteLength": 460588,
+      "title": "Yakisoba Recipe – Japanese Cooking 101FacebookInstagramYouTubeSearchExpandExpandExpandExpandSearchToggle MenuPreviousContinueContinueContinueContinueContinueContinueContinueFacebookInstagramYouTubeScroll to topScroll to topExpandExpandExpandExpandToggle Menu CloseSearch",
+      "visibleTextSha256": "8dcd8b6af4acef98befbf4cf09c2048fecdf118d3c94f0d37af038a272f71448",
+      "sourceId": "source-b106fae9b44176c7",
+      "recipeIds": [
+        "imp-5507103398040565"
+      ],
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "/jsonLd/0",
+        "reviewerSummary": "Japanese Cooking 101 lists two servings with 5 oz pork, two packages Chuka Men, two cups each cabbage and sprouts. Sauce has three tablespoons tonkatsu, two tablespoons Worcester and half tablespoon each soy and mirin. Covered low-heat cooking softens noodles about two minutes.",
+        "supportLimits": "Package noodle mass is unspecified. This differs from V2 chosen JOC formula; no source consensus, package mass inference or replacement recipe. JOC retrieval was blocked."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "/jsonLd/0",
+          "reviewerSummary": "Japanese Cooking 101 lists two servings with 5 oz pork, two packages Chuka Men, two cups each cabbage and sprouts. Sauce has three tablespoons tonkatsu, two tablespoons Worcester and half tablespoon each soy and mirin. Covered low-heat cooking softens noodles about two minutes.",
+          "supportLimits": "Package noodle mass is unspecified. This differs from V2 chosen JOC formula; no source consensus, package mass inference or replacement recipe. JOC retrieval was blocked."
+        }
+      ],
+      "previousRetrievals": [
+        {
+          "sourceId": "source-b106fae9b44176c7",
+          "url": "https://japanesecooking101.com/yakisoba-recipe/",
+          "retrievedAt": "2026-10-26T12:45:00.111074Z",
+          "httpStatus": 403,
+          "finalUrl": "https://japanesecooking101.com/yakisoba-recipe/",
+          "contentType": "text/html",
+          "contentSha256": "ac4f780358ba4326a07c3a9bb83dff5a70cbb95a22be0f4c9385efe182cd722f",
+          "byteLength": 75193,
+          "title": "403 - Forbiddenbg_error_linescircle_dotsclouds_shape",
+          "author": null,
+          "publishedAt": null,
+          "mediaType": "HTML",
+          "visibleTextSha256": "c2c250dd928bf29ab9ed6e8a60834ea9b59303232e5553b551a51411ce089c3e",
+          "evidenceStatus": [
+            "URL_DISCOVERED",
+            "SOURCE_UNAVAILABLE"
+          ],
+          "unavailabilityReason": "HTTP_403",
+          "humanReview": "PENDING"
+        }
+      ]
+    },
+    {
+      "sourceId": "source-d3897df6d46e9764",
+      "url": "https://www.justonecookbook.com/wprm_print/omurice-japanese-omelette-rice",
+      "recipeIds": [
+        "imp-710fd476f2dddd56"
+      ],
+      "retrievedAt": "2026-10-26T12:45:00.221456Z",
+      "httpStatus": 403,
+      "finalUrl": "https://www.justonecookbook.com/wprm_print/omurice-japanese-omelette-rice",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "f58aac6e175d9d91c585e258a557c8a9d0703c019d995134e28c60047bb65b20",
+      "byteLength": 4938,
+      "title": "Attention Required! | Cloudflare",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "41ec6e012612d97361ac4d659a25c88f310b8f71cf7732d801a502af93404b72",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "unavailabilityReason": "HTTP_403",
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-52c9dc6bf66536a1",
+      "url": "https://food-in-japan.com/2013/03/omelet-rice-omu-rice/amp/",
+      "recipeIds": [
+        "imp-710fd476f2dddd56"
+      ],
+      "retrievedAt": "2026-10-26T12:45:00.255587Z",
+      "httpStatus": 200,
+      "finalUrl": "https://food-in-japan.com/2013/03/omelet-rice-omu-rice/amp/",
+      "contentType": "text/html; charset=utf-8",
+      "contentSha256": "d3719c155501404531f59fe6da5f8ea37cb2b608b654922ad55494478007d325",
+      "byteLength": 31117,
+      "title": "Omelet Rice (Omu-rice) – Food in Japan",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "e74713b365f613cca3d5024fddb3f02b899e08faaed87e7b48516162d687884a",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Visible text lines 8-23, one-dish omurice ingredients",
+        "reviewerSummary": "One-dish recipe lists 70g chicken, 50g onion, 50g mushroom, 150g cooked rice and two eggs.",
+        "supportLimits": "V2 mushroom-free formulation and two-serving ingredient quantities are adaptations; complete butter budget remains unverified."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Visible text lines 8-23, one-dish omurice ingredients",
+          "reviewerSummary": "One-dish recipe lists 70g chicken, 50g onion, 50g mushroom, 150g cooked rice and two eggs.",
+          "supportLimits": "V2 mushroom-free formulation and two-serving ingredient quantities are adaptations; complete butter budget remains unverified."
+        }
+      ],
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-c15e58f23e8b5bce",
+      "url": "https://www.justonecookbook.com/tamagoyaki/",
+      "recipeIds": [
+        "imp-14c8ef999fe47b8f"
+      ],
+      "retrievedAt": "2026-10-26T12:45:00.310614Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.justonecookbook.com/tamagoyaki/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "1a3c4aa77595254d76f2af5703534ba0b05b1530f12de13d216a37902f3871fd",
+      "byteLength": 615719,
+      "title": "Classic Tamagoyaki (Japanese Rolled Omelette)(Video) 卵焼き • Just One CookbookToggle SearchToggle MenuClose MenuToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle SearchClose SearchSearchFacebookInstagramPinterestYouTubeFacebookInstagramPinterestYouTubeFacebookInstagramPinterestYouTubeClose",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "a8f710424c950046ffeaf87cd4b881c01625d7d7e20a0c39572f1799e9b55329",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "JSON-LD /0/@graph/7 recipeIngredient and recipeYield",
+        "reviewerSummary": "Two-serving tamagoyaki uses three large eggs, half a tablespoon sugar and optional one tablespoon water.",
+        "supportLimits": "Milk and scallion in V2 are separate variant choices; no complete formulation or oil-retention verification."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "JSON-LD /0/@graph/7 recipeIngredient and recipeYield",
+          "reviewerSummary": "Two-serving tamagoyaki uses three large eggs, half a tablespoon sugar and optional one tablespoon water.",
+          "supportLimits": "Milk and scallion in V2 are separate variant choices; no complete formulation or oil-retention verification."
+        }
+      ],
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-a45260e6ea14e1c7",
+      "url": "https://www.japanesecooking101.com/tamagoyaki-with-green-onions-recipe/",
+      "recipeIds": [
+        "imp-14c8ef999fe47b8f"
+      ],
+      "retrievedAt": "2026-10-26T12:45:00.413092Z",
+      "httpStatus": 403,
+      "finalUrl": "https://www.japanesecooking101.com/tamagoyaki-with-green-onions-recipe/",
+      "contentType": "text/html",
+      "contentSha256": "ac4f780358ba4326a07c3a9bb83dff5a70cbb95a22be0f4c9385efe182cd722f",
+      "byteLength": 75193,
+      "title": "403 - Forbiddenbg_error_linescircle_dotsclouds_shape",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "c2c250dd928bf29ab9ed6e8a60834ea9b59303232e5553b551a51411ce089c3e",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "unavailabilityReason": "HTTP_403",
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-2bcd8811f1e4ca9a",
+      "url": "https://www.hwcmagazine.com/recipe/japanese-egg-roll-tomagoyaki/",
+      "recipeIds": [
+        "imp-14c8ef999fe47b8f"
+      ],
+      "retrievedAt": "2026-10-26T12:45:00.493296Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.hwcmagazine.com/recipe/japanese-egg-roll-tomagoyaki/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "b9182b90f7b8e5a2caf09820cbad9d65b5fabd49a47c7504e8994e8fdcf6a3b3",
+      "byteLength": 271844,
+      "title": "Japanese Egg Roll (Tamagoyaki) - Healthy World CuisineFacebookInstagramPinterestRSSTwitterYouTubemenu iconsubscribesearch iconFacebookInstagramPinterestRSSTwitterYouTube",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "815388be4fa1043b55338c29483d23951265d93f5dcf29ebc056e0794a1c8038",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "JSON-LD /0/@graph/7 recipeIngredient and recipeYield",
+        "reviewerSummary": "Four-serving egg roll lists three eggs, one tablespoon milk and dashi powder mixed into three tablespoons water; method uses one tablespoon of that broth.",
+        "supportLimits": "Prepared-broth input differs from consumed allocation. V2 two-serving yield and soy/scallion additions remain unverified."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "JSON-LD /0/@graph/7 recipeIngredient and recipeYield",
+          "reviewerSummary": "Four-serving egg roll lists three eggs, one tablespoon milk and dashi powder mixed into three tablespoons water; method uses one tablespoon of that broth.",
+          "supportLimits": "Prepared-broth input differs from consumed allocation. V2 two-serving yield and soy/scallion additions remain unverified."
+        }
+      ],
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-ad266496e93ee3cf",
+      "url": "https://www.justonecookbook.com/chicken-teriyaki/comment-page-4/",
+      "recipeIds": [
+        "imp-0841a517e823e3b6"
+      ],
+      "retrievedAt": "2026-10-26T12:45:00.498329Z",
+      "httpStatus": 403,
+      "finalUrl": "https://www.justonecookbook.com/chicken-teriyaki/comment-page-4/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "b48285496e96feaf2bcc8aad9649200a83e9b33dda85b6b978079f46c5ec09c5",
+      "byteLength": 4938,
+      "title": "Attention Required! | Cloudflare",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "03d5c106e4bbdca3bd2f684cba5b382963a7aa9d3a54dfaa88e180c0f38b634a",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "unavailabilityReason": "HTTP_403",
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-f264193c433766bc",
+      "url": "https://www.chopstickchronicles.com/basic-teriyaki-sauce/",
+      "recipeIds": [
+        "imp-0841a517e823e3b6"
+      ],
+      "retrievedAt": "2026-10-26T12:45:01.348132Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.chopstickchronicles.com/basic-teriyaki-sauce/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "ea020dcf183a4a84b50f7956025e2543ee67ef7e9caacb2f2968925ca1090f53",
+      "byteLength": 501011,
+      "title": "Basic Teriyaki Sauce - Chopstick Chronicles",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "38a062ab76e51f3ae0347bb94e58cadaa3a4c85e49214701a4be2640a79a68fc",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "JSON-LD /0/@graph/7 recipeIngredient and recipeInstructions",
+        "reviewerSummary": "Basic sauce uses two tablespoons each soy sauce, mirin and sake plus one tablespoon sugar; simmers about five minutes to reduce.",
+        "supportLimits": "Sauce-only source does not verify chicken amount, cooking endpoint or total retained sauce in V2."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "JSON-LD /0/@graph/7 recipeIngredient and recipeInstructions",
+          "reviewerSummary": "Basic sauce uses two tablespoons each soy sauce, mirin and sake plus one tablespoon sugar; simmers about five minutes to reduce.",
+          "supportLimits": "Sauce-only source does not verify chicken amount, cooking endpoint or total retained sauce in V2."
+        }
+      ],
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-3ca681c346292b06",
+      "url": "https://www.justonecookbook.com/yakitori/comment-page-6/?awt_l=7QJnA&awt_m=3agJLD835fjMMw9",
+      "recipeIds": [
+        "imp-6ae7feae7ec0d517"
+      ],
+      "retrievedAt": "2026-10-26T12:45:01.352682Z",
+      "httpStatus": 403,
+      "finalUrl": "https://www.justonecookbook.com/yakitori/comment-page-6/?awt_l=7QJnA&awt_m=3agJLD835fjMMw9",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "ad78000212bc8c9e9ccd41f527a4654d994e715ffcd84bbd8b556aa674fd73b4",
+      "byteLength": 4938,
+      "title": "Attention Required! | Cloudflare",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "f54e08c7b092a48e5da922329c27a13aff18830f7fa669e1e7e61f77fb400780",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "unavailabilityReason": "HTTP_403",
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-96e5aab3590c1f01",
+      "url": "https://japan.recipetineats.com/yakitori-japanese-skewered-chicken/comment-page-3/",
+      "recipeIds": [
+        "imp-6ae7feae7ec0d517"
+      ],
+      "retrievedAt": "2026-10-26T12:45:01.490171Z",
+      "httpStatus": 200,
+      "finalUrl": "https://japan.recipetineats.com/yakitori-japanese-skewered-chicken/comment-page-3/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "6ffc69eca02d85c49868bc6eda36026a536811d3c20f7ce8e212c64ff5500811",
+      "byteLength": 248134,
+      "title": "Yakitori (Japanese Skewered Chicken) - RecipeTin Japan",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "77b4ef8b7041153bcebada808d19116e9c141c7db44d27a67bd304e8f4303614",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "JSON-LD /0/@graph/6 recipeIngredient and recipeYield",
+        "reviewerSummary": "Structured collection contains separately grouped chicken, chicken-onion, onion-ring and bacon-asparagus skewers, with a total 48-skewer yield.",
+        "supportLimits": "Groups cannot be combined into one V2 chicken-onion recipe; 340g chicken and seven scallions need independent review."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "JSON-LD /0/@graph/6 recipeIngredient and recipeYield",
+          "reviewerSummary": "Structured collection contains separately grouped chicken, chicken-onion, onion-ring and bacon-asparagus skewers, with a total 48-skewer yield.",
+          "supportLimits": "Groups cannot be combined into one V2 chicken-onion recipe; 340g chicken and seven scallions need independent review."
+        }
+      ],
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-798807c4f6b2211b",
+      "url": "https://www.thedailymeal.com/recipes/sake-shioyaki-salt-grilled-salmon-recipe/",
+      "recipeIds": [
+        "imp-7facaaeafc40dac2"
+      ],
+      "retrievedAt": "2026-10-26T12:45:01.843117Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.thedailymeal.com/recipes/sake-shioyaki-salt-grilled-salmon-recipe/",
+      "contentType": "text/html;charset=UTF-8",
+      "contentSha256": "981c238b190b3ad7d5940d41f5c5f59f250e81ea977a5911ee00d2f2eb292630",
+      "byteLength": 51871,
+      "title": "Sake Shioyaki (Salt-Grilled Salmon)",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "6f3e79ee9062431d90eae60f174f1bdb09ad8098eda1a44e7becbec6c29894d5",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "JSON-LD /1 recipeIngredient and recipeInstructions",
+        "reviewerSummary": "Uses one and a half pounds salmon divided into four portions and two tablespoons kosher salt; chills one hour then rinses salt away.",
+        "supportLimits": "Input salt is not retained intake. V2 18g salt cannot be treated as consumed or verified without retention review."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "JSON-LD /1 recipeIngredient and recipeInstructions",
+          "reviewerSummary": "Uses one and a half pounds salmon divided into four portions and two tablespoons kosher salt; chills one hour then rinses salt away.",
+          "supportLimits": "Input salt is not retained intake. V2 18g salt cannot be treated as consumed or verified without retention review."
+        }
+      ],
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-991fdf8a85333fea",
+      "url": "https://www.foodrepublic.com/recipes/salt-grilled-fish-salmon-shioyaki-recipe/",
+      "recipeIds": [
+        "imp-7facaaeafc40dac2"
+      ],
+      "retrievedAt": "2026-10-26T12:45:01.881706Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.foodrepublic.com/recipes/salt-grilled-fish-salmon-shioyaki-recipe/",
+      "contentType": "text/html;charset=UTF-8",
+      "contentSha256": "d9b4b72379de1db17b8effb46743a85f30fc3cd715278a816ac86f5477703b0b",
+      "byteLength": 58390,
+      "title": "Salt-Grilled Fish: Salmon Shioyaki Recipe",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "708e945be6261f137c772decef4a03cc6c96732d8b4bd3b18ee9c6543e88f6d8",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "JSON-LD /1 recipeIngredient and recipeInstructions",
+        "reviewerSummary": "Four-fillets variant uses one and a half teaspoons sea salt and chills for two to five hours before grilling.",
+        "supportLimits": "A different salting method cannot be merged with the rinse-away variant; V2 amounts and salt retention remain open."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "JSON-LD /1 recipeIngredient and recipeInstructions",
+          "reviewerSummary": "Four-fillets variant uses one and a half teaspoons sea salt and chills for two to five hours before grilling.",
+          "supportLimits": "A different salting method cannot be merged with the rinse-away variant; V2 amounts and salt retention remain open."
+        }
+      ],
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-324fc6faec0f8d55",
+      "url": "https://foreverfeeding.com/sunomono-salad-japanese-cucumber/",
+      "recipeIds": [
+        "imp-70379b3f30b48438"
+      ],
+      "retrievedAt": "2026-10-26T12:45:02.080520Z",
+      "httpStatus": 200,
+      "finalUrl": "https://foreverfeeding.com/sunomono-salad-japanese-cucumber/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "8ba93f483e25a8010b773652bc2e2d24ae0a69726800a9b58e857657c98aae5a",
+      "byteLength": 342191,
+      "title": "Sunomono Salad – 5-Minute Refreshing Japanese Recipe - Forever FeedingSearchToggle MenuPreviousContinueToggle Menu CloseSearch",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "0f94eadf4de4712032854c7c3e29104a5d2fed730e90e06b6870209616ea6222",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "JSON-LD /1 recipeIngredient and recipeInstructions",
+        "reviewerSummary": "Four-serving salad lists one cucumber and half a pound peeled shrimp; cucumbers are salted and rested about ten minutes.",
+        "supportLimits": "Counted cucumber mass and retained salting/dressing amounts remain unverified; V2 three-serving scaling is incomplete."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "JSON-LD /1 recipeIngredient and recipeInstructions",
+          "reviewerSummary": "Four-serving salad lists one cucumber and half a pound peeled shrimp; cucumbers are salted and rested about ten minutes.",
+          "supportLimits": "Counted cucumber mass and retained salting/dressing amounts remain unverified; V2 three-serving scaling is incomplete."
+        }
+      ],
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-b2596971e5ab46db",
+      "url": "https://www.justonecookbook.com/sunomono-with-cucumber-and-wakame/comment-page-2/",
+      "recipeIds": [
+        "imp-70379b3f30b48438"
+      ],
+      "retrievedAt": "2026-10-26T12:45:03.181229Z",
+      "httpStatus": 403,
+      "finalUrl": "https://www.justonecookbook.com/sunomono-with-cucumber-and-wakame/comment-page-2/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "d2da0254114aa1ee11e6a91bf9a9043d9c075397034dcfee6248689949fc3c5f",
+      "byteLength": 4938,
+      "title": "Attention Required! | Cloudflare",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "f6d51db8d7ab7012e522f58a4c5f7527a54f67e675947f36915d688d5d2802d6",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "unavailabilityReason": "HTTP_403",
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-e93c4ee0ec82def0",
+      "url": "https://www.justonecookbook.com/chawanmushi-savory-steamed-egg-custard/",
+      "recipeIds": [
+        "imp-49262ac40836045a"
+      ],
+      "retrievedAt": "2026-10-26T12:45:03.353456Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.justonecookbook.com/chawanmushi-savory-steamed-egg-custard/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "1267bf9214f440a51ecfab23f66d6c136cfdfd298c50fb52faf5217ca439b8a7",
+      "byteLength": 608831,
+      "title": "Chawanmushi (Japanese Steamed Egg Custard) • Just One CookbookToggle SearchToggle MenuClose MenuToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle SearchClose SearchSearchFacebookInstagramPinterestYouTubeFacebookInstagramPinterestYouTubeFacebookInstagramPinterestYouTubeClose",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "946a1c7962031da378977b50756af416a71082236c9cd3af6205ec088c8206be",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "JSON-LD /0/@graph/7 recipeIngredient and recipeYield",
+        "reviewerSummary": "Four 200ml cups use three eggs, one and three-quarter cups dashi, chicken tenders, shimeji and fish cake.",
+        "supportLimits": "V2 two eggs/250ml dashi with king oyster mushrooms is a variant; no exact custard ratio or full safety verification."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "JSON-LD /0/@graph/7 recipeIngredient and recipeYield",
+          "reviewerSummary": "Four 200ml cups use three eggs, one and three-quarter cups dashi, chicken tenders, shimeji and fish cake.",
+          "supportLimits": "V2 two eggs/250ml dashi with king oyster mushrooms is a variant; no exact custard ratio or full safety verification."
+        }
+      ],
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-021ae1912ccbd38c",
+      "url": "https://www.japanesecooking101.com/chawanmushi/",
+      "recipeIds": [
+        "imp-49262ac40836045a"
+      ],
+      "retrievedAt": "2026-10-26T12:45:03.774035Z",
+      "httpStatus": 403,
+      "finalUrl": "https://www.japanesecooking101.com/chawanmushi/",
+      "contentType": "text/html",
+      "contentSha256": "ac4f780358ba4326a07c3a9bb83dff5a70cbb95a22be0f4c9385efe182cd722f",
+      "byteLength": 75193,
+      "title": "403 - Forbiddenbg_error_linescircle_dotsclouds_shape",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "c2c250dd928bf29ab9ed6e8a60834ea9b59303232e5553b551a51411ce089c3e",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "unavailabilityReason": "HTTP_403",
+      "humanReview": "PENDING"
+    },
+    {
+      "url": "https://www.justonecookbook.com/shoyu-ramen/comment-page-2/",
+      "retrievedAt": "2026-10-26T19:22:36.906066Z",
+      "httpStatus": 403,
+      "finalUrl": "https://www.justonecookbook.com/shoyu-ramen/comment-page-2/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "49822d365de9e6cc4219a3e49d04e447cccf239a02671e6e20e4fdb9b5045866",
+      "byteLength": 4916,
+      "title": "Attention Required! | Cloudflare",
+      "visibleTextSha256": "d36860b26f9e852bc34224698ffc61645c58b020c69b514edb1848d7799fff9f",
+      "completeResponse": true,
+      "error": null,
+      "sourceId": "source-503afb10711ae994",
+      "recipeIds": [
+        "imp-e26d04bf95bcede8"
+      ],
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "reviewedFacts": [],
+      "relevanceReview": {
+        "status": "UNRESOLVED",
+        "scope": "HTTP retrieval only",
+        "reviewerSummary": "JOC shoyu-ramen page blocked.",
+        "supportLimits": "No culinary claim inferred from status code, shell, search page, unparsed PDF or excluded background page."
+      },
+      "previousRetrievals": [
+        {
+          "sourceId": "source-503afb10711ae994",
+          "url": "https://www.justonecookbook.com/shoyu-ramen/comment-page-2/",
+          "retrievedAt": "2026-10-26T12:45:05.362992Z",
+          "httpStatus": 403,
+          "finalUrl": "https://www.justonecookbook.com/shoyu-ramen/comment-page-2/",
+          "contentType": "text/html; charset=UTF-8",
+          "contentSha256": "c41ddb9312d83939f93dbfb8f76133e195cb10ab7f297b804f4e494fe5d0cd23",
+          "byteLength": 4938,
+          "title": "Attention Required! | Cloudflare",
+          "author": null,
+          "publishedAt": null,
+          "mediaType": "HTML",
+          "visibleTextSha256": "261d23c3ca30f0b78d822abf1ba0f2c67e66545fa98364c4fb2c0e07b2c383c9",
+          "evidenceStatus": [
+            "URL_DISCOVERED",
+            "SOURCE_UNAVAILABLE"
+          ],
+          "unavailabilityReason": "HTTP_403",
+          "humanReview": "PENDING"
+        }
+      ]
+    },
+    {
+      "url": "https://japanesecooking101.com/ramen-recipe/",
+      "retrievedAt": "2026-10-26T19:22:37.038838Z",
+      "httpStatus": 200,
+      "finalUrl": "https://japanesecooking101.com/ramen-recipe/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "9a8264835f97728c9bd712819d0516565bef7417fc7c9f87f717b8297cbb35ef",
+      "byteLength": 712981,
+      "title": "Ramen Recipe – Japanese Cooking 101FacebookInstagramYouTubeSearchExpandExpandExpandExpandSearchToggle MenuPreviousContinueContinueContinueContinueContinueContinueContinueFacebookInstagramYouTubeScroll to topScroll to topExpandExpandExpandExpandToggle Menu CloseSearch",
+      "visibleTextSha256": "94604465533c66a88a953393f52b7b5728de585947932991aa718614dc8efa28",
+      "sourceId": "source-73ffb849c2123774",
+      "recipeIds": [
+        "imp-e26d04bf95bcede8"
+      ],
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "/jsonLd/0",
+        "reviewerSummary": "Japanese Cooking 101 ramen salts pork overnight refrigerated, simmers stock and pork 1.5-2 hours, then cools and refrigerates broth at least several hours or overnight. Its card has no recipe yield.",
+        "supportLimits": "Alternative simple ramen does not validate V2 six-hour JOC broth or its 55-minute display total. Cooling statements are source attribution only; no independent cooling or food-safety approval."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "/jsonLd/0",
+          "reviewerSummary": "Japanese Cooking 101 ramen salts pork overnight refrigerated, simmers stock and pork 1.5-2 hours, then cools and refrigerates broth at least several hours or overnight. Its card has no recipe yield.",
+          "supportLimits": "Alternative simple ramen does not validate V2 six-hour JOC broth or its 55-minute display total. Cooling statements are source attribution only; no independent cooling or food-safety approval."
+        }
+      ],
+      "previousRetrievals": [
+        {
+          "sourceId": "source-73ffb849c2123774",
+          "url": "https://japanesecooking101.com/ramen-recipe/",
+          "retrievedAt": "2026-10-26T12:45:05.913044Z",
+          "httpStatus": 403,
+          "finalUrl": "https://japanesecooking101.com/ramen-recipe/",
+          "contentType": "text/html",
+          "contentSha256": "ac4f780358ba4326a07c3a9bb83dff5a70cbb95a22be0f4c9385efe182cd722f",
+          "byteLength": 75193,
+          "title": "403 - Forbiddenbg_error_linescircle_dotsclouds_shape",
+          "author": null,
+          "publishedAt": null,
+          "mediaType": "HTML",
+          "visibleTextSha256": "c2c250dd928bf29ab9ed6e8a60834ea9b59303232e5553b551a51411ce089c3e",
+          "evidenceStatus": [
+            "URL_DISCOVERED",
+            "SOURCE_UNAVAILABLE"
+          ],
+          "unavailabilityReason": "HTTP_403",
+          "humanReview": "PENDING"
+        }
+      ]
+    },
+    {
+      "url": "https://japanesecooking101.com/ajitama-recipe/",
+      "retrievedAt": "2026-10-26T19:22:37.476182Z",
+      "httpStatus": 200,
+      "finalUrl": "https://japanesecooking101.com/ajitama-recipe/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "f594c971d0d958fb86b944ee13b08532e7a0aef0e840aed5e4e5dde383abdfcd",
+      "byteLength": 414796,
+      "title": "Ajitama Recipe – Japanese Cooking 101FacebookInstagramYouTubeSearchExpandExpandExpandExpandSearchToggle MenuPreviousContinueContinueContinueContinueContinueContinueContinueFacebookInstagramYouTubeScroll to topScroll to topExpandExpandExpandExpandToggle Menu CloseSearch",
+      "visibleTextSha256": "5451b7ec39bc7370a9818c76014e30aefd85dbab48cda75598a823753609e182",
+      "sourceId": "source-bd9bf22604db0ecb",
+      "recipeIds": [
+        "imp-e26d04bf95bcede8"
+      ],
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "/jsonLd/0",
+        "reviewerSummary": "Japanese Cooking 101 ajitama lists three to four eggs, three tablespoons each soy sauce and sake, two tablespoons mirin and one tablespoon sugar. Eggs boil seven to eight minutes; boiled sauce cools before eggs marinate refrigerated for hours or overnight.",
+        "supportLimits": "Bounded egg-method attribution only. This does not certify a universally safe egg temperature, storage period, whole-ramen yield or the V2 total time."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "/jsonLd/0",
+          "reviewerSummary": "Japanese Cooking 101 ajitama lists three to four eggs, three tablespoons each soy sauce and sake, two tablespoons mirin and one tablespoon sugar. Eggs boil seven to eight minutes; boiled sauce cools before eggs marinate refrigerated for hours or overnight.",
+          "supportLimits": "Bounded egg-method attribution only. This does not certify a universally safe egg temperature, storage period, whole-ramen yield or the V2 total time."
+        }
+      ],
+      "previousRetrievals": [
+        {
+          "sourceId": "source-bd9bf22604db0ecb",
+          "url": "https://japanesecooking101.com/ajitama-recipe/",
+          "retrievedAt": "2026-10-26T12:45:06.764923Z",
+          "httpStatus": 403,
+          "finalUrl": "https://japanesecooking101.com/ajitama-recipe/",
+          "contentType": "text/html",
+          "contentSha256": "ac4f780358ba4326a07c3a9bb83dff5a70cbb95a22be0f4c9385efe182cd722f",
+          "byteLength": 75193,
+          "title": "403 - Forbiddenbg_error_linescircle_dotsclouds_shape",
+          "author": null,
+          "publishedAt": null,
+          "mediaType": "HTML",
+          "visibleTextSha256": "c2c250dd928bf29ab9ed6e8a60834ea9b59303232e5553b551a51411ce089c3e",
+          "evidenceStatus": [
+            "URL_DISCOVERED",
+            "SOURCE_UNAVAILABLE"
+          ],
+          "unavailabilityReason": "HTTP_403",
+          "humanReview": "PENDING"
+        }
+      ]
+    },
+    {
+      "sourceId": "source-7624ec06ef289e4e",
+      "url": "https://www.americastestkitchen.com/recipes/15953-kare-raisu-japanese-curry-rice-with-chicken?extcode=NSCIB10FB",
+      "recipeIds": [
+        "imp-b808fb03d1e8ede6"
+      ],
+      "retrievedAt": "2026-10-26T12:45:07.137117Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.americastestkitchen.com/recipes/15953-kare-raisu-japanese-curry-rice-with-chicken?extcode=NSCIB10FB",
+      "contentType": "text/html; charset=utf-8",
+      "contentSha256": "8261a510121d17db02495e270ce02254b7bcb6a67f969f98520efb5f8d430536",
+      "byteLength": 441930,
+      "title": "Kare Raisu (Japanese Curry Rice with Chicken) | America's Test KitchenAmerica's Test Kitchen LogoCook's Country LogoCook's Illustrated LogoAmerica's Test Kitchen LogoCook's Country LogoCook's Illustrated Logo",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "5092c06869d59d76ba3ef1eee15868753d0d2b57b724839f4bbb2d4cd013c2ef",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "JSON-LD /1/1 recipeIngredient and recipeInstructions",
+        "reviewerSummary": "Four-serving curry uses one pound chicken and one and a quarter teaspoons salt divided between chicken and onion; uses half a recipe of curry-roux bricks.",
+        "supportLimits": "A prepared roux component needs its own amount/composition review; V2 whole formulation and nutrition remain unverified."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "JSON-LD /1/1 recipeIngredient and recipeInstructions",
+          "reviewerSummary": "Four-serving curry uses one pound chicken and one and a quarter teaspoons salt divided between chicken and onion; uses half a recipe of curry-roux bricks.",
+          "supportLimits": "A prepared roux component needs its own amount/composition review; V2 whole formulation and nutrition remain unverified."
+        }
+      ],
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-d20589a84c45aa03",
+      "url": "https://www.justonecookbook.com/simple-chicken-curry/",
+      "recipeIds": [
+        "imp-b808fb03d1e8ede6"
+      ],
+      "retrievedAt": "2026-10-26T12:45:07.177049Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.justonecookbook.com/simple-chicken-curry/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "c202a46e69a2cab5c1f1937d5e75b85948df2633f68c629fdf3219f1d5a2588e",
+      "byteLength": 608465,
+      "title": "Japanese Chicken Curry (Video) From Scratch • Just One CookbookToggle SearchToggle MenuClose MenuToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle SearchClose SearchSearchFacebookInstagramPinterestYouTubeFacebookInstagramPinterestYouTubeFacebookInstagramPinterestYouTubeClose",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "217f5d871e86a889c332c18a4732fe8e7f5dc3d378a637545d0913dbc376a8bf",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "JSON-LD /0/@graph/7 recipeIngredient and recipeYield",
+        "reviewerSummary": "Eight-serving curry uses one and a half pounds chicken, two onions, three potatoes, half an apple and one package curry roux.",
+        "supportLimits": "Package composition/mass and V2 four-serving scaling remain unresolved; this is a separate formulation from ATK."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "JSON-LD /0/@graph/7 recipeIngredient and recipeYield",
+          "reviewerSummary": "Eight-serving curry uses one and a half pounds chicken, two onions, three potatoes, half an apple and one package curry roux.",
+          "supportLimits": "Package composition/mass and V2 four-serving scaling remain unresolved; this is a separate formulation from ATK."
+        }
+      ],
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-4a0e77ad890edbf6",
+      "url": "https://www.justonecookbook.com/beef-udon/",
+      "recipeIds": [
+        "imp-46c2a1c4cc7a8bb5"
+      ],
+      "retrievedAt": "2026-10-26T12:45:08.107219Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.justonecookbook.com/beef-udon/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "91780dabfea85bdcbb502745b29cf07bb439654dd9793cd65c1bcbd46ebe52a6",
+      "byteLength": 593564,
+      "title": "Beef Udon (Niku Udon) 肉うどん • Just One CookbookToggle SearchToggle MenuClose MenuToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle SearchClose SearchSearchFacebookInstagramPinterestYouTubeFacebookInstagramPinterestYouTubeFacebookInstagramPinterestYouTubeClose",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "d570da227396555a20b1d2d48d3912ca47a95cba4465f5c931730158524cde1f",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "JSON-LD /0/@graph/10 recipeIngredient and recipeYield",
+        "reviewerSummary": "Two-serving beef udon has a dashi broth option and a separately labelled mentsuyu option, with six to eight ounces beef.",
+        "supportLimits": "Broth alternatives must remain distinct; counted noodle servings and V2 ginger/onion masses are not established."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "JSON-LD /0/@graph/10 recipeIngredient and recipeYield",
+          "reviewerSummary": "Two-serving beef udon has a dashi broth option and a separately labelled mentsuyu option, with six to eight ounces beef.",
+          "supportLimits": "Broth alternatives must remain distinct; counted noodle servings and V2 ginger/onion masses are not established."
+        }
+      ],
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-45312fd48f3d896b",
+      "url": "https://japanesecooking101.com/niku-udon-recipe/",
+      "recipeIds": [
+        "imp-46c2a1c4cc7a8bb5"
+      ],
+      "retrievedAt": "2026-10-26T12:45:08.186987Z",
+      "httpStatus": 403,
+      "finalUrl": "https://japanesecooking101.com/niku-udon-recipe/",
+      "contentType": "text/html",
+      "contentSha256": "ac4f780358ba4326a07c3a9bb83dff5a70cbb95a22be0f4c9385efe182cd722f",
+      "byteLength": 75193,
+      "title": "403 - Forbiddenbg_error_linescircle_dotsclouds_shape",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "c2c250dd928bf29ab9ed6e8a60834ea9b59303232e5553b551a51411ce089c3e",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "unavailabilityReason": "HTTP_403",
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-08b9cfd2df210a35",
+      "url": "https://ayana-gohan.com/recipes/salmon-meuniere/",
+      "recipeIds": [
+        "imp-38fb8569664d1f3b"
+      ],
+      "retrievedAt": "2026-10-26T12:45:08.696758Z",
+      "httpStatus": 200,
+      "finalUrl": "https://ayana-gohan.com/recipes/salmon-meuniere/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "d4d77887ad4d61eb3d637f0baa170a4e149df50fbe9773659058b1b58cc046da",
+      "byteLength": 215013,
+      "title": "Healthy Salmon Meunière with Lemon Butter Sauce – AYANA GOHAN",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "0995c61c34b9e474d4cf03ae1464eac26bdb950a37ceda0016371de496403c4c",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "JSON-LD /0 recipeIngredient and recipeInstructions",
+        "reviewerSummary": "Card lists 110g salmon and salt at 0.5 percent of salmon; method adds salt again to skin then later wipes surface liquid.",
+        "supportLimits": "The list/method salt basis is unresolved. V2 200g salmon and exact salt intake are not verified."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "JSON-LD /0 recipeIngredient and recipeInstructions",
+          "reviewerSummary": "Card lists 110g salmon and salt at 0.5 percent of salmon; method adds salt again to skin then later wipes surface liquid.",
+          "supportLimits": "The list/method salt basis is unresolved. V2 200g salmon and exact salt intake are not verified."
+        }
+      ],
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-54c27f101417d721",
+      "url": "https://japannews.yomiuri.co.jp/features/delicious/20250302-240814/",
+      "recipeIds": [
+        "imp-38fb8569664d1f3b"
+      ],
+      "retrievedAt": "2026-10-26T12:45:08.929211Z",
+      "httpStatus": 200,
+      "finalUrl": "https://japannews.yomiuri.co.jp/features/delicious/20250302-240814/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "7d0d36a676b0adc6a4335dca43fa9b7113dc9d4b105744817f2c032d7fd304c2",
+      "byteLength": 163266,
+      "title": "Salmon Meuniere, Restaurant Style Dish Made at Home; Aroma of Butter, Lemon Whet Appetite - The Japan News",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "c73d914845d5aa55146c26b8e0dedc60ecb6827b2910ae1af77fc1c6b4bbaaff",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Visible text lines 435-450, salmon ingredients",
+        "reviewerSummary": "Two-serving recipe lists two 100g salmon fillets, 50g butter, 20g shallot, wine and capers.",
+        "supportLimits": "This restaurant-style sauce differs from V2 rice-flour/soy preparation and cannot validate all V2 quantities."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Visible text lines 435-450, salmon ingredients",
+          "reviewerSummary": "Two-serving recipe lists two 100g salmon fillets, 50g butter, 20g shallot, wine and capers.",
+          "supportLimits": "This restaurant-style sauce differs from V2 rice-flour/soy preparation and cannot validate all V2 quantities."
+        }
+      ],
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-2e3d107d0a1aacb9",
+      "url": "https://debzdelicious.com/wprm_print/pan-seared-salmon-with-lemon-garlic-butter-sauce-garlic-butter-salmon-pan",
+      "recipeIds": [
+        "imp-38fb8569664d1f3b"
+      ],
+      "retrievedAt": "2026-10-26T12:45:08.982684Z",
+      "httpStatus": 200,
+      "finalUrl": "https://debzdelicious.com/wprm_print/pan-seared-salmon-with-lemon-garlic-butter-sauce-garlic-butter-salmon-pan",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "5acf97bcf182571c59ecb333436f607da958d82da1aac8f8563a58f4646ff5db",
+      "byteLength": 46718,
+      "title": "Pan Seared Salmon With Lemon Garlic Butter Sauce, Garlic Butter Salmon Pan - Debz Delicious",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "622355bfc8451f5e13e8daa951ea66a255e8ba71df4fdf0a85c9ecf3629cb286",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Visible text lines 19-34, salmon ingredient section",
+        "reviewerSummary": "Lists four skinless salmon fillets of approximately six ounces each, two tablespoons olive oil and three tablespoons butter.",
+        "supportLimits": "Skinless garlic-butter variant differs from V2 skin-on salmon; no two-serving scaling or room-temperature safety inference."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Visible text lines 19-34, salmon ingredient section",
+          "reviewerSummary": "Lists four skinless salmon fillets of approximately six ounces each, two tablespoons olive oil and three tablespoons butter.",
+          "supportLimits": "Skinless garlic-butter variant differs from V2 skin-on salmon; no two-serving scaling or room-temperature safety inference."
+        }
+      ],
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-aa590099f5737a9a",
+      "url": "https://www.justonecookbook.com/spinach-with-sesame-sauce/",
+      "recipeIds": [
+        "imp-eae128801c2c7f96"
+      ],
+      "retrievedAt": "2026-10-26T12:45:09.553318Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.justonecookbook.com/spinach-with-sesame-sauce/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "dd0d4be6c45dcb6ebed8e07d1f87f85b18d360e455a9f1361b403f66aba88f84",
+      "byteLength": 521295,
+      "title": "Japanese Spinach Salad with Sesame Dressing 胡麻和え • Just One CookbookToggle SearchToggle MenuClose MenuToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle SearchClose SearchSearchFacebookInstagramPinterestYouTubeFacebookInstagramPinterestYouTubeFacebookInstagramPinterestYouTubeClose",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "1bcbd8bef9abf58d8ad004d2ed43648e50cbb873825d13685c00d7699cb19eb3",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "JSON-LD /0/@graph/7 recipeIngredient and recipeYield",
+        "reviewerSummary": "Four-serving spinach salad uses 227g spinach, three tablespoons sesame and one tablespoon each soy sauce and sugar; salt is for blanching.",
+        "supportLimits": "V2 three-serving scaling is a bounded adaptation; blanching salt retention and complete intake remain unverified."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "JSON-LD /0/@graph/7 recipeIngredient and recipeYield",
+          "reviewerSummary": "Four-serving spinach salad uses 227g spinach, three tablespoons sesame and one tablespoon each soy sauce and sugar; salt is for blanching.",
+          "supportLimits": "V2 three-serving scaling is a bounded adaptation; blanching salt retention and complete intake remain unverified."
+        }
+      ],
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-fe179b0b51032eb8",
+      "url": "http://japanagram.me/2022/02/27/japanagram-japanese-spinach-recipe-horenso-gomaae/",
+      "recipeIds": [
+        "imp-eae128801c2c7f96"
+      ],
+      "retrievedAt": "2026-10-26T12:45:10.158756Z",
+      "httpStatus": 200,
+      "finalUrl": "https://japanagram.me/2022/02/27/japanagram-japanese-spinach-recipe-horenso-gomaae/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "929ac741c9b8fb8ed5bd47e883dd3a8ee668ccfca9852ce5d79df392bfd1dd4c",
+      "byteLength": 116483,
+      "title": "Sweet Sesame Greens – Japanagram",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "22cb8f5a4d5c60e951985aa85643c01e71dd78bc92c3ec2d19217e2f1ca69058",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Visible text lines 15-30, sweet sesame greens",
+        "reviewerSummary": "Four-serving variant lists 227g spinach, 35g sesame and 45ml dashi and squeezes blanched greens before dressing.",
+        "supportLimits": "The source's two teaspoons labelled 20ml soy is an unresolved unit inconsistency; V2 does not gain a conversion from it."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Visible text lines 15-30, sweet sesame greens",
+          "reviewerSummary": "Four-serving variant lists 227g spinach, 35g sesame and 45ml dashi and squeezes blanched greens before dressing.",
+          "supportLimits": "The source's two teaspoons labelled 20ml soy is an unresolved unit inconsistency; V2 does not gain a conversion from it."
+        }
+      ],
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-f4f91a9616d0c9d2",
+      "url": "https://www.okawarirecipes.com/recipes/napa-sesame-salad",
+      "recipeIds": [
+        "imp-56ec9eae817af509"
+      ],
+      "retrievedAt": "2026-10-26T12:45:10.333801Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.okawarirecipes.com/recipes/napa-sesame-salad",
+      "contentType": "text/html;charset=utf-8",
+      "contentSha256": "af695aa2731040e7f78900a2c27e0961d4b8a9dd35a629cc65375949ffd18f8f",
+      "byteLength": 1204068,
+      "title": "Easy Napa Gomaae (Japanese Sesame Napa Cabbage Salad Recipe) — Okawari by Azusa - easy and simple Japanese home cooking recipes",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "26256f5b3c5a16957b009e57786af2aa25f07e5367e49beca348efdb2e546686",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Visible text lines 43-58, napa gomaae ingredients and preparation",
+        "reviewerSummary": "Uses half a small napa cabbage, one small carrot and three tablespoons sesame; cooks with one-quarter cup water then drains and squeezes.",
+        "supportLimits": "Napa cabbage is distinct from V2 green cabbage; counted mass and water retention remain unverified."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Visible text lines 43-58, napa gomaae ingredients and preparation",
+          "reviewerSummary": "Uses half a small napa cabbage, one small carrot and three tablespoons sesame; cooks with one-quarter cup water then drains and squeezes.",
+          "supportLimits": "Napa cabbage is distinct from V2 green cabbage; counted mass and water retention remain unverified."
+        }
+      ],
+      "humanReview": "PENDING"
+    },
+    {
+      "sourceId": "source-74b4dfe8b9065e84",
+      "url": "https://www.youtube.com/watch?v=dBv1Hqmb4cg",
+      "recipeIds": [
+        "imp-56ec9eae817af509"
+      ],
+      "retrievedAt": "2026-10-26T12:45:10.570124Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.youtube.com/watch?v=dBv1Hqmb4cg",
+      "contentType": "text/html; charset=utf-8",
+      "contentSha256": "531eff9c00f8ff7553fb67f54682aea6a0e2ddad3a851eccff76cd36a219ccd0",
+      "byteLength": 1396788,
+      "title": "How to Make Japanese Cabbage Sesame Salad (Goma-aé) | Easy 4-Ingredient Side Dish - YouTube",
+      "author": null,
+      "publishedAt": null,
+      "mediaType": "HTML",
+      "visibleTextSha256": "a1275ce1a41a8a7b9e32aec711a7446ac71421395679d920b698b89067b9df9c",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "unavailabilityReason": "HTTP_200_BUT_NO_RELIABLE_READABLE_RECIPE_TEXT",
+      "humanReview": "PENDING"
+    },
+    {
+      "url": "https://japanesecooking101.com/miso-soup-recipe/",
+      "retrievedAt": "2026-10-26T19:26:05.903514Z",
+      "httpStatus": 200,
+      "finalUrl": "https://japanesecooking101.com/miso-soup-recipe/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "db18f230a73c0b87ff8914c0b932c1d4cf663b55b8dba7a8af263e47cc641bf2",
+      "byteLength": 491534,
+      "title": "Miso Soup Recipe – Japanese Cooking 101FacebookInstagramYouTubeSearchExpandExpandExpandExpandSearchToggle MenuPreviousContinueContinueContinueContinueContinueContinueContinueFacebookInstagramYouTubeScroll to topScroll to topExpandExpandExpandExpandToggle Menu CloseSearch",
+      "visibleTextSha256": "16658fcf47bc3c9a9885ec8332768260cd9da3d9775714f76e045d7825aec62b",
+      "sourceId": "source-1922c078a7b0414d",
+      "recipeIds": [
+        "imp-324e0ea2e2f068bf"
+      ],
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "/jsonLd/0",
+        "reviewerSummary": "Japanese Cooking 101 lists four servings with four cups dashi, one package tofu, four to five tablespoons miso and two green onions. It lowers heat before dissolving miso, avoids boiling, then adds onion and removes from heat.",
+        "supportLimits": "Supports this bounded miso method, not V2 mushroom/spinach quantities. Package tofu has no measured mass here. Original mushroom-specific sources were not read successfully."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "/jsonLd/0",
+          "reviewerSummary": "Japanese Cooking 101 lists four servings with four cups dashi, one package tofu, four to five tablespoons miso and two green onions. It lowers heat before dissolving miso, avoids boiling, then adds onion and removes from heat.",
+          "supportLimits": "Supports this bounded miso method, not V2 mushroom/spinach quantities. Package tofu has no measured mass here. Original mushroom-specific sources were not read successfully."
+        }
+      ]
+    },
+    {
+      "url": "https://www.justonecookbook.com/miso-soup-with-shiitake-mushrooms/",
+      "retrievedAt": "2026-10-26T19:26:05.819293Z",
+      "httpStatus": 404,
+      "finalUrl": "https://www.justonecookbook.com/miso-soup-with-shiitake-mushrooms/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "c6db150feca1c6b124a4c9fca0cf070212adefdda6666f1b333ca49edd586c55",
+      "byteLength": 268693,
+      "title": "Page not found • Just One CookbookToggle SearchToggle MenuClose MenuToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle dropdownToggle SearchClose SearchSearchSearchFacebookInstagramPinterestYouTubeClose",
+      "visibleTextSha256": "d4efa97bc4debdd48c9d3fde74d900a15f4dca3a47bad3fc1f3b4dffd95a02cc",
+      "completeResponse": true,
+      "error": null,
+      "sourceId": "source-daa052f89724440f",
+      "recipeIds": [
+        "imp-324e0ea2e2f068bf"
+      ],
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "reviewedFacts": [],
+      "relevanceReview": {
+        "status": "UNRESOLVED",
+        "scope": "HTTP retrieval only",
+        "reviewerSummary": "Alternate JOC URL returned 404.",
+        "supportLimits": "No culinary claim inferred from status code, shell, search page, unparsed PDF or excluded background page."
+      }
+    }
+  ],
+  "recipes": [
+    {
+      "recipeId": "imp-03577e7fa7667ab8",
+      "title": "Canh chua cay Trung Hoa",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "5291d802ea6c77da5faa878641d5571b5e68ad53f51b2f236574c86bed3ee747",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-03577e7fa7667ab8.json",
+        "fileSha256": "6ef7535dd433bc5a23a67cfbdaead5b0bf6c9a0f2874da02e7a71fc1827f5933"
+      },
+      "sourceIds": [
+        "source-dd9e97cba163f571",
+        "source-c63f91d78016f9bc"
+      ],
+      "evidenceStatus": "BOUNDED_RESEARCH_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "bounded-source-c63f91d78016f9bc",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-c63f91d78016f9bc"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Lists one-quarter pound pork, eight ounces soft tofu, two eggs, dried shiitake and four cups chicken stock.",
+          "supportLimits": "This soft-tofu/pork/dried-mushroom formulation does not verify V2 firm tofu/king oyster quantities; full conversion and yield remain pending.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-c63f91d78016f9bc",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "source-access-limit",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-dd9e97cba163f571"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Some declared or alternate sources did not supply reliable readable recipe evidence during this session. No culinary facts were inferred from those attempts.",
+          "supportLimits": "Availability only; a reachable alternate or failed request does not verify the unavailable source or the complete V2 formulation.",
+          "sourceFactReferences": []
+        }
+      ],
+      "nextAction": "Resolve bounded findings, review every remaining field and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "imp-62ebe8dd18b15b5e",
+      "title": "Mực xào gừng hành",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "24ce0c92081f62f8ac49d75c2a7d67ca81bcf924a53b65233066d5c262fe3ebc",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-62ebe8dd18b15b5e.json",
+        "fileSha256": "a5e45bca6d64ea7a6fc3f6d715c78d94e1b88074792c2270188c09308d231278"
+      },
+      "sourceIds": [
+        "source-fd0194af49a53ddf",
+        "source-00fab6c8424d19d5"
+      ],
+      "evidenceStatus": "BOUNDED_RESEARCH_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "bounded-source-fd0194af49a53ddf",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-fd0194af49a53ddf"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Lists 12 ounces squid, two tablespoons oyster sauce, blanching ginger and two tablespoons stir-fry oil.",
+          "supportLimits": "V2 500g squid/30g ginger and its exact sauce allocation are not established; blanching and edible aromatics remain distinct.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-fd0194af49a53ddf",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "bounded-source-00fab6c8424d19d5",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-00fab6c8424d19d5"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Lists 340g squid, one-half to one onion, one to two peppers and three garlic cloves.",
+          "supportLimits": "Pepper/onion variant differs from V2 ginger-scallion emphasis; counted aromatics and yield remain unknown.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-00fab6c8424d19d5",
+              "factId": "reviewed-1"
+            }
+          ]
+        }
+      ],
+      "nextAction": "Resolve bounded findings, review every remaining field and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "imp-d283a9225d6ece09",
+      "title": "Cơm cá hồi donburi",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "4181c1d8fdfc081e3229fde8cfd9c5cc331f9ce5ec446468d63ac63a760d822e",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-d283a9225d6ece09.json",
+        "fileSha256": "3519921a36a5a08f7c729abb40fa1c7d5735419d8265be5589118216b2f17f41"
+      },
+      "sourceIds": [
+        "source-5b42391223746db3",
+        "source-2d8cd667b43bb7e9"
+      ],
+      "evidenceStatus": "BOUNDED_RESEARCH_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "bounded-source-2d8cd667b43bb7e9",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-2d8cd667b43bb7e9"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "One-serving bowl uses 100g fish, one serving rice, one teaspoon mirin and two to three teaspoons soy; marination is refrigerated for at least one hour.",
+          "supportLimits": "Fish species are alternatives. This is no raw-fish safety certification; V2 300g salmon/500g rice/two-serving scaling is unverified.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-2d8cd667b43bb7e9",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "source-access-limit",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-5b42391223746db3"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Some declared or alternate sources did not supply reliable readable recipe evidence during this session. No culinary facts were inferred from those attempts.",
+          "supportLimits": "Availability only; a reachable alternate or failed request does not verify the unavailable source or the complete V2 formulation.",
+          "sourceFactReferences": []
+        }
+      ],
+      "nextAction": "Resolve bounded findings, review every remaining field and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "imp-7ed24282981e96f6",
+      "title": "Thịt ba chỉ shogayaki gừng",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "97ac42cfb0703ed8681906475f26d96e4773271358f678e7c356c5cb9affe3a7",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-7ed24282981e96f6.json",
+        "fileSha256": "1c477a09e1b43625b53f46a3bdeb09a770134ace41fe341f28f587bc2c590f66"
+      },
+      "sourceIds": [
+        "source-ec8be595b82287f0",
+        "source-e2795b0adce6e7e5"
+      ],
+      "evidenceStatus": "BOUNDED_RESEARCH_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "bounded-source-ec8be595b82287f0",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-ec8be595b82287f0"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Two-serving card lists eight ounces pork belly, 312g cabbage, one Tokyo negi and two teaspoons grated ginger.",
+          "supportLimits": "V2 three-serving amounts need independent conversion/allocation; no teaspoon-to-gram ginger assumption.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-ec8be595b82287f0",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "source-access-limit",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-e2795b0adce6e7e5"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Some declared or alternate sources did not supply reliable readable recipe evidence during this session. No culinary facts were inferred from those attempts.",
+          "supportLimits": "Availability only; a reachable alternate or failed request does not verify the unavailable source or the complete V2 formulation.",
+          "sourceFactReferences": []
+        }
+      ],
+      "nextAction": "Resolve bounded findings, review every remaining field and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "imp-c6e706b483805e44",
+      "title": "Ba chỉ hầm kakuni",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "c30ab6a32999402b69e7b1dadb3cdd93c71c30ade7e18a67f0cae6efa21c2a14",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-c6e706b483805e44.json",
+        "fileSha256": "84e4c6a5e09e67c60a009f77ecc4cc4c5dbfd0d4d7bd4f2cc53ea887daddf232"
+      },
+      "sourceIds": [
+        "source-b829dbe30e7bbb16",
+        "source-45820bcaf0bcc186"
+      ],
+      "evidenceStatus": "BOUNDED_RESEARCH_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "bounded-source-45820bcaf0bcc186",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-45820bcaf0bcc186"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Seven-serving kakuni lists 3.3 pounds skin-on pork belly, 15g ginger and 90g green onions.",
+          "supportLimits": "V2 skinless pork and 50g ginger/130g negi are separate choices; no raw-to-cooked yield or five-serving scaling is established.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-45820bcaf0bcc186",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "source-access-limit",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-b829dbe30e7bbb16"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Some declared or alternate sources did not supply reliable readable recipe evidence during this session. No culinary facts were inferred from those attempts.",
+          "supportLimits": "Availability only; a reachable alternate or failed request does not verify the unavailable source or the complete V2 formulation.",
+          "sourceFactReferences": []
+        }
+      ],
+      "nextAction": "Resolve bounded findings, review every remaining field and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "imp-324e0ea2e2f068bf",
+      "title": "Canh miso đậu phụ nấm",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "da818f395a1732417dc510a8bc26543a5a58812552705910c5b1ed1a59bc1c7a",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-324e0ea2e2f068bf.json",
+        "fileSha256": "e8d7e15b85a402aa4f336e48838f63e4108f9459b879680f4582b5597069a2c2"
+      },
+      "sourceIds": [
+        "source-54df08de00a5394b",
+        "source-ffed53d447fe70f3",
+        "source-b5e28b8968e73030",
+        "source-1922c078a7b0414d",
+        "source-daa052f89724440f"
+      ],
+      "evidenceStatus": "BOUNDED_RESEARCH_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "source-access-limit",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-54df08de00a5394b",
+            "source-ffed53d447fe70f3",
+            "source-b5e28b8968e73030"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Some declared or alternate sources did not supply reliable readable recipe evidence during this session. No culinary facts were inferred from those attempts.",
+          "supportLimits": "Availability only; a reachable alternate or failed request does not verify the unavailable source or the complete V2 formulation.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "gap02-24-bounded-source-review",
+          "status": "FACT_SUPPORTED",
+          "findingType": "BOUNDED_SOURCE_COMPARISON",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-1922c078a7b0414d"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/ingredients",
+            "/steps"
+          ],
+          "reviewerSummary": "Japanese Cooking 101 lists four servings with four cups dashi, one package tofu, four to five tablespoons miso and two green onions. It lowers heat before dissolving miso, avoids boiling, then adds onion and removes from heat.",
+          "supportLimits": "Supports this bounded miso method, not V2 mushroom/spinach quantities. Package tofu has no measured mass here. Original mushroom-specific sources were not read successfully.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-1922c078a7b0414d",
+              "factId": "reviewed-1"
+            }
+          ]
+        }
+      ],
+      "nextAction": "Resolve the listed source, quantity, variant and safety limitations before independent culinary review or promotion.",
+      "supplementalResearch": {
+        "dataset": "gap-research-02",
+        "reviewedAt": "2026-10-26T19:44:23.973831Z",
+        "humanReview": "PENDING",
+        "fullRecipeVerification": "NOT_COMPLETE",
+        "decision": "UNCHANGED_PENDING_REVIEW"
+      }
+    },
+    {
+      "recipeId": "imp-5507103398040565",
+      "title": "Mì xào yakisoba rau củ",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "13bb9ed330bb315a675ab9cde8916ccac4175b8e7598194fec014dc3c492872f",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-5507103398040565.json",
+        "fileSha256": "41e538533fe5ae45355bc83c858005d7670edb76368d904a958bebd5497ec8be"
+      },
+      "sourceIds": [
+        "source-aad04254e0309391",
+        "source-b106fae9b44176c7"
+      ],
+      "evidenceStatus": "BOUNDED_RESEARCH_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "source-access-limit",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-aad04254e0309391",
+            "source-b106fae9b44176c7"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Some declared or alternate sources did not supply reliable readable recipe evidence during this session. No culinary facts were inferred from those attempts.",
+          "supportLimits": "Availability only; a reachable alternate or failed request does not verify the unavailable source or the complete V2 formulation.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "gap02-25-bounded-source-review",
+          "status": "FACT_SUPPORTED",
+          "findingType": "BOUNDED_SOURCE_COMPARISON",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-b106fae9b44176c7"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/ingredients",
+            "/steps"
+          ],
+          "reviewerSummary": "Japanese Cooking 101 lists two servings with 5 oz pork, two packages Chuka Men, two cups each cabbage and sprouts. Sauce has three tablespoons tonkatsu, two tablespoons Worcester and half tablespoon each soy and mirin. Covered low-heat cooking softens noodles about two minutes.",
+          "supportLimits": "Package noodle mass is unspecified. This differs from V2 chosen JOC formula; no source consensus, package mass inference or replacement recipe. JOC retrieval was blocked.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-b106fae9b44176c7",
+              "factId": "reviewed-1"
+            }
+          ]
+        }
+      ],
+      "nextAction": "Resolve the listed source, quantity, variant and safety limitations before independent culinary review or promotion.",
+      "supplementalResearch": {
+        "dataset": "gap-research-02",
+        "reviewedAt": "2026-10-26T19:44:23.973831Z",
+        "humanReview": "PENDING",
+        "fullRecipeVerification": "NOT_COMPLETE",
+        "decision": "UNCHANGED_PENDING_REVIEW"
+      }
+    },
+    {
+      "recipeId": "imp-710fd476f2dddd56",
+      "title": "Cơm trứng bọc omurice",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "6c3b8800819264298d0caf8e4f281a7b9977600cc9324c8434cb9f11a76050ad",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-710fd476f2dddd56.json",
+        "fileSha256": "cff17e56b24663e5169818f0ab2d357033e3922934e6799de6b0499f59eac1fd"
+      },
+      "sourceIds": [
+        "source-d3897df6d46e9764",
+        "source-52c9dc6bf66536a1"
+      ],
+      "evidenceStatus": "BOUNDED_RESEARCH_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "bounded-source-52c9dc6bf66536a1",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-52c9dc6bf66536a1"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "One-dish recipe lists 70g chicken, 50g onion, 50g mushroom, 150g cooked rice and two eggs.",
+          "supportLimits": "V2 mushroom-free formulation and two-serving ingredient quantities are adaptations; complete butter budget remains unverified.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-52c9dc6bf66536a1",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "source-access-limit",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-d3897df6d46e9764"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Some declared or alternate sources did not supply reliable readable recipe evidence during this session. No culinary facts were inferred from those attempts.",
+          "supportLimits": "Availability only; a reachable alternate or failed request does not verify the unavailable source or the complete V2 formulation.",
+          "sourceFactReferences": []
+        }
+      ],
+      "nextAction": "Resolve bounded findings, review every remaining field and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "imp-14c8ef999fe47b8f",
+      "title": "Trứng cuộn tamagoyaki",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "528465cb1e6f966fe9d72e7ecad26351f3b1d4f914c46dd5eb4f5244a9e9f835",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-14c8ef999fe47b8f.json",
+        "fileSha256": "6538b3c7c9f54057148be93d16a3aa4f6d2a30e5f179532d0b333c3e381eed73"
+      },
+      "sourceIds": [
+        "source-c15e58f23e8b5bce",
+        "source-a45260e6ea14e1c7",
+        "source-2bcd8811f1e4ca9a"
+      ],
+      "evidenceStatus": "BOUNDED_RESEARCH_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "bounded-source-c15e58f23e8b5bce",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-c15e58f23e8b5bce"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Two-serving tamagoyaki uses three large eggs, half a tablespoon sugar and optional one tablespoon water.",
+          "supportLimits": "Milk and scallion in V2 are separate variant choices; no complete formulation or oil-retention verification.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-c15e58f23e8b5bce",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "bounded-source-2bcd8811f1e4ca9a",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-2bcd8811f1e4ca9a"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Four-serving egg roll lists three eggs, one tablespoon milk and dashi powder mixed into three tablespoons water; method uses one tablespoon of that broth.",
+          "supportLimits": "Prepared-broth input differs from consumed allocation. V2 two-serving yield and soy/scallion additions remain unverified.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-2bcd8811f1e4ca9a",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "source-access-limit",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-a45260e6ea14e1c7"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Some declared or alternate sources did not supply reliable readable recipe evidence during this session. No culinary facts were inferred from those attempts.",
+          "supportLimits": "Availability only; a reachable alternate or failed request does not verify the unavailable source or the complete V2 formulation.",
+          "sourceFactReferences": []
+        }
+      ],
+      "nextAction": "Resolve bounded findings, review every remaining field and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "imp-0841a517e823e3b6",
+      "title": "Gà nướng teriyaki bóng",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "46af10d1a99b30796897e2fd28ac5d7999d2e1e604ac64e66e5480c7cc61a01f",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-0841a517e823e3b6.json",
+        "fileSha256": "2845103596af3fb745831797a2e9e8aea88a0ba411b785ae46d2013f9c341c05"
+      },
+      "sourceIds": [
+        "source-ad266496e93ee3cf",
+        "source-f264193c433766bc"
+      ],
+      "evidenceStatus": "BOUNDED_RESEARCH_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "bounded-source-f264193c433766bc",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-f264193c433766bc"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Basic sauce uses two tablespoons each soy sauce, mirin and sake plus one tablespoon sugar; simmers about five minutes to reduce.",
+          "supportLimits": "Sauce-only source does not verify chicken amount, cooking endpoint or total retained sauce in V2.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-f264193c433766bc",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "source-access-limit",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-ad266496e93ee3cf"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Some declared or alternate sources did not supply reliable readable recipe evidence during this session. No culinary facts were inferred from those attempts.",
+          "supportLimits": "Availability only; a reachable alternate or failed request does not verify the unavailable source or the complete V2 formulation.",
+          "sourceFactReferences": []
+        }
+      ],
+      "nextAction": "Resolve bounded findings, review every remaining field and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "imp-6ae7feae7ec0d517",
+      "title": "Gà xiên yakitori hành",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "8733fd80853091b989bb472a7101b7403af09874f1b4352020dcffd2d0f83759",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-6ae7feae7ec0d517.json",
+        "fileSha256": "7ea1502a4332f34d647777f6c3a31cedbc91837e644e103626946b38996e58b3"
+      },
+      "sourceIds": [
+        "source-3ca681c346292b06",
+        "source-96e5aab3590c1f01"
+      ],
+      "evidenceStatus": "BOUNDED_RESEARCH_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "bounded-source-96e5aab3590c1f01",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-96e5aab3590c1f01"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Structured collection contains separately grouped chicken, chicken-onion, onion-ring and bacon-asparagus skewers, with a total 48-skewer yield.",
+          "supportLimits": "Groups cannot be combined into one V2 chicken-onion recipe; 340g chicken and seven scallions need independent review.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-96e5aab3590c1f01",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "source-access-limit",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-3ca681c346292b06"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Some declared or alternate sources did not supply reliable readable recipe evidence during this session. No culinary facts were inferred from those attempts.",
+          "supportLimits": "Availability only; a reachable alternate or failed request does not verify the unavailable source or the complete V2 formulation.",
+          "sourceFactReferences": []
+        }
+      ],
+      "nextAction": "Resolve bounded findings, review every remaining field and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "imp-7facaaeafc40dac2",
+      "title": "Cá hồi nướng muối chanh",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "bab94f8f074aaf197e4c5c96adfbb38f7cc6391dd95e05a3a78afd961112a855",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-7facaaeafc40dac2.json",
+        "fileSha256": "a2b8ae89724ede5f472c575ba75ff00e2ae22dc5a10bb8fda25f82cebf27951e"
+      },
+      "sourceIds": [
+        "source-798807c4f6b2211b",
+        "source-991fdf8a85333fea"
+      ],
+      "evidenceStatus": "BOUNDED_RESEARCH_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "bounded-source-798807c4f6b2211b",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-798807c4f6b2211b"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Uses one and a half pounds salmon divided into four portions and two tablespoons kosher salt; chills one hour then rinses salt away.",
+          "supportLimits": "Input salt is not retained intake. V2 18g salt cannot be treated as consumed or verified without retention review.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-798807c4f6b2211b",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "bounded-source-991fdf8a85333fea",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-991fdf8a85333fea"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Four-fillets variant uses one and a half teaspoons sea salt and chills for two to five hours before grilling.",
+          "supportLimits": "A different salting method cannot be merged with the rinse-away variant; V2 amounts and salt retention remain open.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-991fdf8a85333fea",
+              "factId": "reviewed-1"
+            }
+          ]
+        }
+      ],
+      "nextAction": "Resolve bounded findings, review every remaining field and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "imp-70379b3f30b48438",
+      "title": "Gỏi dưa leo tôm Nhật",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "0fc406b4b6282932dcaae37f3fc27dd94bba0ad7a8ba162264bcea091bf1dcd6",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-70379b3f30b48438.json",
+        "fileSha256": "94c9a1ef627b6711f2ca9183a51996dca248ff1d933ae8792fa7a451b3fa7013"
+      },
+      "sourceIds": [
+        "source-324fc6faec0f8d55",
+        "source-b2596971e5ab46db"
+      ],
+      "evidenceStatus": "BOUNDED_RESEARCH_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "bounded-source-324fc6faec0f8d55",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-324fc6faec0f8d55"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Four-serving salad lists one cucumber and half a pound peeled shrimp; cucumbers are salted and rested about ten minutes.",
+          "supportLimits": "Counted cucumber mass and retained salting/dressing amounts remain unverified; V2 three-serving scaling is incomplete.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-324fc6faec0f8d55",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "source-access-limit",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-b2596971e5ab46db"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Some declared or alternate sources did not supply reliable readable recipe evidence during this session. No culinary facts were inferred from those attempts.",
+          "supportLimits": "Availability only; a reachable alternate or failed request does not verify the unavailable source or the complete V2 formulation.",
+          "sourceFactReferences": []
+        }
+      ],
+      "nextAction": "Resolve bounded findings, review every remaining field and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "imp-49262ac40836045a",
+      "title": "Trứng hấp chawanmushi gà",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "0a9cc96380c0e8f0f6afcce20f03d79cd96a0fbb94af1c81553548d0c5550333",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-49262ac40836045a.json",
+        "fileSha256": "5bb4a59497b9af8b027bd3b268454bfaa168ca3d7a19a571095c6e635b6cd6f7"
+      },
+      "sourceIds": [
+        "source-e93c4ee0ec82def0",
+        "source-021ae1912ccbd38c"
+      ],
+      "evidenceStatus": "BOUNDED_RESEARCH_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "bounded-source-e93c4ee0ec82def0",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-e93c4ee0ec82def0"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Four 200ml cups use three eggs, one and three-quarter cups dashi, chicken tenders, shimeji and fish cake.",
+          "supportLimits": "V2 two eggs/250ml dashi with king oyster mushrooms is a variant; no exact custard ratio or full safety verification.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-e93c4ee0ec82def0",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "source-access-limit",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-021ae1912ccbd38c"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Some declared or alternate sources did not supply reliable readable recipe evidence during this session. No culinary facts were inferred from those attempts.",
+          "supportLimits": "Availability only; a reachable alternate or failed request does not verify the unavailable source or the complete V2 formulation.",
+          "sourceFactReferences": []
+        }
+      ],
+      "nextAction": "Resolve bounded findings, review every remaining field and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "imp-e26d04bf95bcede8",
+      "title": "Mì ramen heo trứng",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "57b6b0adcd534229179b7aa70dc0adffd5eaf0a5d49b9872b43c601109c34ed5",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-e26d04bf95bcede8.json",
+        "fileSha256": "4029f97b221fa950e52521203eab8bd16e75ef1fbf2100cd07da885f8a2fe42c"
+      },
+      "sourceIds": [
+        "source-503afb10711ae994",
+        "source-73ffb849c2123774",
+        "source-bd9bf22604db0ecb"
+      ],
+      "evidenceStatus": "BOUNDED_RESEARCH_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "source-access-limit",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-503afb10711ae994",
+            "source-73ffb849c2123774",
+            "source-bd9bf22604db0ecb"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Some declared or alternate sources did not supply reliable readable recipe evidence during this session. No culinary facts were inferred from those attempts.",
+          "supportLimits": "Availability only; a reachable alternate or failed request does not verify the unavailable source or the complete V2 formulation.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "gap02-26-bounded-source-review",
+          "status": "FACT_SUPPORTED",
+          "findingType": "BOUNDED_SOURCE_COMPARISON",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-73ffb849c2123774",
+            "source-bd9bf22604db0ecb"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/ingredients",
+            "/steps"
+          ],
+          "reviewerSummary": "Japanese Cooking 101 ramen salts pork overnight refrigerated, simmers stock and pork 1.5-2 hours, then cools and refrigerates broth at least several hours or overnight. Its card has no recipe yield. Japanese Cooking 101 ajitama lists three to four eggs, three tablespoons each soy sauce and sake, two tablespoons mirin and one tablespoon sugar. Eggs boil seven to eight minutes; boiled sauce cools before eggs marinate refrigerated for hours or overnight.",
+          "supportLimits": "Alternative simple ramen does not validate V2 six-hour JOC broth or its 55-minute display total. Cooling statements are source attribution only; no independent cooling or food-safety approval. Bounded egg-method attribution only. This does not certify a universally safe egg temperature, storage period, whole-ramen yield or the V2 total time.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-73ffb849c2123774",
+              "factId": "reviewed-1"
+            },
+            {
+              "sourceId": "source-bd9bf22604db0ecb",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "gap02-26-duration",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_CONSISTENCY",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "high",
+          "sourceIds": [],
+          "ingredientPositions": [],
+          "stepNumbers": [
+            5,
+            6,
+            7,
+            8
+          ],
+          "v2Pointers": [
+            "/content/cookTimeMinutes",
+            "/steps/4/instruction",
+            "/steps/5/instruction",
+            "/steps/6/instruction",
+            "/steps/7/instruction"
+          ],
+          "reviewerSummary": "V2 advertises 55 minutes although step 7 explicitly requires six hours total broth cooking; chashu cooling and refrigerated egg marination add further waits, some overlapping.",
+          "supportLimits": "A coherent elapsed-time contract is required. Do not add all overlapping timers mechanically or use the simpler alternative source as a substitute."
+        }
+      ],
+      "nextAction": "Resolve the listed source, quantity, variant and safety limitations before independent culinary review or promotion.",
+      "supplementalResearch": {
+        "dataset": "gap-research-02",
+        "reviewedAt": "2026-10-26T19:44:23.973831Z",
+        "humanReview": "PENDING",
+        "fullRecipeVerification": "NOT_COMPLETE",
+        "decision": "UNCHANGED_PENDING_REVIEW"
+      }
+    },
+    {
+      "recipeId": "imp-b808fb03d1e8ede6",
+      "title": "Cơm cà ri gà Nhật",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "8f15b04cde52217c8a90cbcf542c645878b6d130cc64bdacd24f624cc3729bfa",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-b808fb03d1e8ede6.json",
+        "fileSha256": "e2814039ae0669ad52efa307d6a76eead5bdbb5670e218aebd29392ed0563e9c"
+      },
+      "sourceIds": [
+        "source-7624ec06ef289e4e",
+        "source-d20589a84c45aa03"
+      ],
+      "evidenceStatus": "BOUNDED_RESEARCH_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "bounded-source-7624ec06ef289e4e",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-7624ec06ef289e4e"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Four-serving curry uses one pound chicken and one and a quarter teaspoons salt divided between chicken and onion; uses half a recipe of curry-roux bricks.",
+          "supportLimits": "A prepared roux component needs its own amount/composition review; V2 whole formulation and nutrition remain unverified.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-7624ec06ef289e4e",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "bounded-source-d20589a84c45aa03",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-d20589a84c45aa03"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Eight-serving curry uses one and a half pounds chicken, two onions, three potatoes, half an apple and one package curry roux.",
+          "supportLimits": "Package composition/mass and V2 four-serving scaling remain unresolved; this is a separate formulation from ATK.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-d20589a84c45aa03",
+              "factId": "reviewed-1"
+            }
+          ]
+        }
+      ],
+      "nextAction": "Resolve bounded findings, review every remaining field and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "imp-46c2a1c4cc7a8bb5",
+      "title": "Mì udon bò hành",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "8626ce5d1c3eabe24104f8b81b38a1a968a7d4f13df09501d3bc9bd8633f46e3",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-46c2a1c4cc7a8bb5.json",
+        "fileSha256": "ba027095e1e55e6f7352dcf61d557bfe4e5db9828f0684152d22818166c1586d"
+      },
+      "sourceIds": [
+        "source-4a0e77ad890edbf6",
+        "source-45312fd48f3d896b"
+      ],
+      "evidenceStatus": "BOUNDED_RESEARCH_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "bounded-source-4a0e77ad890edbf6",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-4a0e77ad890edbf6"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Two-serving beef udon has a dashi broth option and a separately labelled mentsuyu option, with six to eight ounces beef.",
+          "supportLimits": "Broth alternatives must remain distinct; counted noodle servings and V2 ginger/onion masses are not established.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-4a0e77ad890edbf6",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "source-access-limit",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-45312fd48f3d896b"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Some declared or alternate sources did not supply reliable readable recipe evidence during this session. No culinary facts were inferred from those attempts.",
+          "supportLimits": "Availability only; a reachable alternate or failed request does not verify the unavailable source or the complete V2 formulation.",
+          "sourceFactReferences": []
+        }
+      ],
+      "nextAction": "Resolve bounded findings, review every remaining field and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "imp-38fb8569664d1f3b",
+      "title": "Cá hồi áp chảo bơ chanh",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "4f4953357026e6003ef91a60d20f8fe23b350c74ba29fbf4da998e8e56d61add",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-38fb8569664d1f3b.json",
+        "fileSha256": "da34e39aa1b07a4b6451f83e255f0b56b96f3f9e3d47623d7a9f45745d5223e2"
+      },
+      "sourceIds": [
+        "source-08b9cfd2df210a35",
+        "source-54c27f101417d721",
+        "source-2e3d107d0a1aacb9"
+      ],
+      "evidenceStatus": "BOUNDED_RESEARCH_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "bounded-source-08b9cfd2df210a35",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-08b9cfd2df210a35"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Card lists 110g salmon and salt at 0.5 percent of salmon; method adds salt again to skin then later wipes surface liquid.",
+          "supportLimits": "The list/method salt basis is unresolved. V2 200g salmon and exact salt intake are not verified.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-08b9cfd2df210a35",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "bounded-source-54c27f101417d721",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-54c27f101417d721"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Two-serving recipe lists two 100g salmon fillets, 50g butter, 20g shallot, wine and capers.",
+          "supportLimits": "This restaurant-style sauce differs from V2 rice-flour/soy preparation and cannot validate all V2 quantities.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-54c27f101417d721",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "bounded-source-2e3d107d0a1aacb9",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-2e3d107d0a1aacb9"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Lists four skinless salmon fillets of approximately six ounces each, two tablespoons olive oil and three tablespoons butter.",
+          "supportLimits": "Skinless garlic-butter variant differs from V2 skin-on salmon; no two-serving scaling or room-temperature safety inference.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-2e3d107d0a1aacb9",
+              "factId": "reviewed-1"
+            }
+          ]
+        }
+      ],
+      "nextAction": "Resolve bounded findings, review every remaining field and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "imp-eae128801c2c7f96",
+      "title": "Rau bina trộn mè Nhật",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "9a9709f967588572e429fdbf249b78a4ec5e65f0b8dae34c1153130c3728fda3",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-eae128801c2c7f96.json",
+        "fileSha256": "ecdbc6a772a0fe966b6333837ad69614c6deb6b27724807d651a08e967472fac"
+      },
+      "sourceIds": [
+        "source-aa590099f5737a9a",
+        "source-fe179b0b51032eb8"
+      ],
+      "evidenceStatus": "BOUNDED_RESEARCH_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "bounded-source-aa590099f5737a9a",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-aa590099f5737a9a"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Four-serving spinach salad uses 227g spinach, three tablespoons sesame and one tablespoon each soy sauce and sugar; salt is for blanching.",
+          "supportLimits": "V2 three-serving scaling is a bounded adaptation; blanching salt retention and complete intake remain unverified.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-aa590099f5737a9a",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "bounded-source-fe179b0b51032eb8",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-fe179b0b51032eb8"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Four-serving variant lists 227g spinach, 35g sesame and 45ml dashi and squeezes blanched greens before dressing.",
+          "supportLimits": "The source's two teaspoons labelled 20ml soy is an unresolved unit inconsistency; V2 does not gain a conversion from it.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-fe179b0b51032eb8",
+              "factId": "reviewed-1"
+            }
+          ]
+        }
+      ],
+      "nextAction": "Resolve bounded findings, review every remaining field and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "imp-56ec9eae817af509",
+      "title": "Bắp cải trộn mè lạnh",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "a23cae10481f7600145ccdd1ec494696531a9ad0f382bb987162ba612fa10ad1",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-56ec9eae817af509.json",
+        "fileSha256": "0b80f38998999b896cbfc4a227174fc0fced6ce32cd6827e1f3a894ac05aa796"
+      },
+      "sourceIds": [
+        "source-f4f91a9616d0c9d2",
+        "source-74b4dfe8b9065e84"
+      ],
+      "evidenceStatus": "BOUNDED_RESEARCH_REVIEW_PENDING",
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "bounded-source-f4f91a9616d0c9d2",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "BOUNDED_SOURCE_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-f4f91a9616d0c9d2"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Uses half a small napa cabbage, one small carrot and three tablespoons sesame; cooks with one-quarter cup water then drains and squeezes.",
+          "supportLimits": "Napa cabbage is distinct from V2 green cabbage; counted mass and water retention remain unverified.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-f4f91a9616d0c9d2",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "source-access-limit",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-74b4dfe8b9065e84"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/research/sources"
+          ],
+          "reviewerSummary": "Some declared or alternate sources did not supply reliable readable recipe evidence during this session. No culinary facts were inferred from those attempts.",
+          "supportLimits": "Availability only; a reachable alternate or failed request does not verify the unavailable source or the complete V2 formulation.",
+          "sourceFactReferences": []
+        }
+      ],
+      "nextAction": "Resolve bounded findings, review every remaining field and obtain independent culinary review before source or runtime promotion."
+    }
+  ]
+}

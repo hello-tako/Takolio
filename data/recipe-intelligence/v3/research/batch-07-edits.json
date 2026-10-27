@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "edits": [
+    {
+      "recipeId": "imp-6e4c264764981b8b",
+      "path": "/ingredients/0/note",
+      "oldValue": "Tên món ghi 'non' (gà non/gà tơ) nhưng hai nguồn đều không phân biệt loại gà: ReviewAZ gợi ý dùng gà ta cho thịt dai thơm; công thức ở đây dùng đùi gà không xương 500 g cho 3 phần (~0,75 × mức 1⁄2 con gà cho 4 phần của cả hai nguồn).",
+      "newValue": "ReviewAZ ghi nửa con gà cho 4 người nhưng không có khối lượng. Chưa đọc được Elib trong lượt này. Không thể suy trực tiếp nửa con gà thành 500 g đùi không xương hoặc xác nhận phép scale cho 3 phần; giữ 500 g ở trạng thái chờ duyệt dạng thịt, tỷ lệ thu hồi và khẩu phần.",
+      "reason": "Do not convert half a chicken to boneless mass.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-07-evidence.json#/recipes/0/claims/2"
+      ]
+    }
+  ]
+}
