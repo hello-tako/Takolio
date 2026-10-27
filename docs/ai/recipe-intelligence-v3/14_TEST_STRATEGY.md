@@ -1,3 +1,34 @@
+# Documentation continuation - 2026-10-28 JST
+
+Changes: RAW_SEAFOOD_DECISIONS.md and status/review links only, relative to
+`90c5b221b3c4e3c1d878c4edb5dab7f5f07465cb`. Candidate SHA256 remains
+`0f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4`.
+The full supplement07 gate below covers unchanged code/data; it was not rerun
+for this documentation continuation. No current browser/staging/release claim.
+
+| Exact executed command | Observed result |
+|---|---|
+| `python3 /private/tmp/takolio-v3-supp08-culinary/check-packet.py` | PASS 2 cases / 5 bounded observations / 14 cache hashes, V2/candidate snapshots and exact description locators; video/captions unread; product unavailable |
+| `PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp node scripts/recipe-intelligence-v3-audit.mjs --check` | PASS 500 recipes / 44 edits / 25 batches; four genuine release blockers retained |
+| `python3 /private/tmp/takolio-v3-seafood-decisions-check.py` | PASS 2 cases / 26 existing JSON pointers / 6 options, source hashes, Markdown links; 14 documentation-only files; candidate unchanged |
+| `python3 /private/tmp/takolio-v3-review-artifacts.py` | PASS changed/untracked text/JSON, protected drift 0, four historical tails preserved |
+| `python3 scripts/admin-public-scan.py` | PASS added text; binary/manual limits retained |
+| `git diff --check b49f3e6c4fc2f1485b77623ed7257d0f8bd31f9a` | PASS |
+
+The temporary culinary packet is research provenance, not human review. Its five
+observations are bounded decision evidence in the document; no canonical claims,
+source statuses, candidate edits or approvals were added. All historical failures
+and open dependency advisories below remain open. The initial temporary documentation
+writer failed with `IndentationError: unexpected indent` before any repository write;
+parenthesizing the multiline string corrected the writer. Documentation checks pass.
+
+Independent agent documentation review found no concrete issues across all 14
+Markdown changes: four historical tails byte-identical, candidate hash unchanged,
+26 JSON pointers, six options and 14 cache hashes checked; no code/data drift.
+Review included bounded PDF/Iwamoto/YouTube-description/suspension text and both
+temporary checkers. Video/captions, human culinary approval and a repeated full
+gate remain outside that review.
+
 # Current supplement07 checks
 
 Environment: macOS, Node24.16.0, Python3; isolated V3 worktree; TMPDIR=/private/tmp. Verified data implementation `a578b5696389cdb6afeca7530e33b1f4e384690e`, candidate SHA256 `0f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4`. Documentation-only changes follow this tested data snapshot.

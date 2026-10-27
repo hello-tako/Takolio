@@ -62,6 +62,10 @@ Candidate content fingerprints for review decisions:
 
 No reviewer identity, timestamp or approval is fabricated. Human decisions must bind these fingerprints, evidence and unresolved-risk disposition as required by19_INDEPENDENT_REVIEW_QUEUE.md.
 
+## 2026-10-28 decision clarification
+
+The [raw seafood decision packet](RAW_SEAFOOD_DECISIONS.md) records exact source locators, V2/candidate hashes, coupled-field contradictions and three unresolved choices per shrimp/crab case. The YouTube preboiled phrase belongs to merchandise; its product link reaches a suspension page. Written description read; video/captions unread. No canonical claim/source count or status changed. Both P0 cases and all human decisions remain pending.
+
 ## Remaining formulation review
 
 `imp-d02c9b83214f81be` has only a related shrimp-cucumber salad source without pork; it does not verify the canonical shrimp/pork salad. Broth volume, yield, mushroom/cut/shell state, coating and oil retention differ across other variants; no averaging or automatic replacement.

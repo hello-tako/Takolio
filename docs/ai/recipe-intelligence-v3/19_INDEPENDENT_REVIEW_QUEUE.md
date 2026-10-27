@@ -16,3 +16,5 @@ AI output, automated validation, and self-review cannot mark a row
 `HUMAN_APPROVED`. Every approved row needs a reviewer identity, evidence
 references, decision timestamp, candidate fingerprint, and unresolved-risk
 disposition.
+
+Two unresolved P0 cases have a concrete decision packet: [raw shrimp and crab](research/RAW_SEAFOOD_DECISIONS.md). It records current fingerprints, source limits, coupled field conflicts and three options per case. All options remain PENDING. Formulation/product selection permits follow-up work; it does not establish safety or HUMAN_APPROVED. The other four critical cases remain in research/GAP_RESEARCH_SUPPLEMENTS.md.
