@@ -1,3 +1,32 @@
+# Production patch review - 2026-10-29 JST
+
+[Draft PR45](https://github.com/hello-tako/Takolio/pull/45) OPEN; branch
+codex/recipe-v3-release-patches, base codex/recipe-v3-safety-07 (Draft44).
+Parent f637134b4a337443b375985021d0d3bfc42a9e87; verified implementation
+7bdd574bc8ad401efd348e466093d13bf62c6ea3. Compatible Hono/Undici patches and dedicated
+read-only V3 CI/Admin branch coverage await independent review. Preserve Draft
+units33-44. No approval, main integration or deployment inferred.
+
+Complete local gate PASS exit0;428files/9570tests;951.14s. Exact implementation hosted:
+
+| Check | Run | Result |
+|---|---|---|
+| validate | [40709482707](https://github.com/hello-tako/Takolio/actions/runs/40709482707) | SUCCESS; implementation7bdd574b |
+| validate-admin | [40709482552](https://github.com/hello-tako/Takolio/actions/runs/40709482552) | SUCCESS; same implementation; Workerd/matrix/browser/ten keyboard repeats/screenshot guard |
+
+Later documentation-only HEAD is resolved from Git/PR45 and needs its own CI;
+these older implementation runs never confer exact-head acceptance on it.
+Retained failures and logs:../14_TEST_STRATEGY.md. Readiness remains NOT_READY;
+../21_PRODUCTION_PREPARATION.md and ../17_PRODUCTION_RELEASE_PACKET.md.
+Fresh main/protection/Environment readbacks preserve strict validate/validate-admin,
+required reviewer/stale/last-push/admin enforcement and protected production
+reviewer/self-review/branch gates. No settings changed.
+
+The following stack record is historical for PR33-44. Exact current head/status
+must always be refreshed before review or merge.
+
+---
+
 # Draft PR stack
 
 Repository hello-tako/Takolio, ID1422954151. Freshly fetched main remains b49f3e6c4fc2f1485b77623ed7257d0f8bd31f9a. Every numbered PR below is Draft and open at this checkpoint. Merge order follows the base column; this record grants no merge authority. Current local checks and retained failures: ../14_TEST_STRATEGY.md.

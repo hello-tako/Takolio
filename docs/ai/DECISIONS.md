@@ -3710,3 +3710,42 @@ URL-specific claim evidence, preserved hard restrictions, explicit plan/cooking
 version pinning with old-snapshot readers, deterministic final projection,
 independent review, same-source staging and operator release approval. Rollback of
 this tooling is branch/code rollback; no user data is written or restored.
+
+## ADR-073 - V3 validation branches and bounded dependency patches (2026-10-28 JST)
+
+Status: accepted for validation-only CI and compatible dependency patches;
+production release remains blocked by ADR-072 and the release packet.
+
+The V3 stack has twelve independent Draft PRs. Only its first PR targets main,
+so the existing CI filters leave later implementation heads without hosted
+validation. Add a dedicated Recipe V3 CI workflow for `codex/recipe-v3-**`
+pushes, reusing the original CI steps and read-only permissions; add the same
+push filter to Admin CI. Preserve original customer ci.yml byte-for-byte because
+Admin preflight pins it. An initial direct edit correctly failed that guard;
+restoring the file and adding a dedicated workflow resolves the conflict without
+changing preflight, its baseline or history fences. Keep independent review units,
+existing main/PR triggers, pinned actions, complete checks and Environment
+protections. Branch CI cannot substitute for protected exact-main release CI,
+independent review or staging. Deployment/migration workflows remain unchanged.
+
+The current dependency audit reports five high and five moderate advisories.
+Advance Hono within major4 from4.13.7 to locked4.13.13 (manifest floor4.13.11),
+and override only miniflare's Undici edge from7.29.1 to7.30.1. Retain Wrangler,
+Miniflare, workerd and every unrelated dependency byte. The override is limited
+to the installed development-tool dependency until its upstream manifest uses
+a patched compatible Undici; remove it after that graph is verified. No new
+runtime package, auth/payment source change, catalog data or migration is added.
+
+The observed remaining audit finding is Zod3.25.76, GHSA-mrhx-c7xc-m3w5.
+A bounded reproduction confirms max(2) still parses all1,000 input elements.
+Upstream's first patched version is4.6.6. Switching imports to zod/v3 under a
+new package version would retain the affected parser and is not remediation.
+A major upgrade affects protected PayOS's one-argument z.record call and
+validation error contracts. It also invalidates the established release
+continuity proof, which binds Zod version/integrity. This checkpoint neither
+changes those protected consumers nor waives the advisory/continuity gate.
+A reviewed migration preserving those contracts and fresh catalog certification
+is required before release. No audit suppression or protection bypass is added.
+
+Rollback of these patches is a normal reviewed code/lockfile rollback; it does
+not alter database or user state and restores the prior dependency advisories.
