@@ -1,3 +1,19 @@
+# Production preparation update - 2026-10-28 JST
+
+RECIPE_V3_BLOCKED; production NOT_READY. Hono/Undici patches reduce fresh
+audit5high/5moderate to1high/0moderate; Zod unresolved. Dedicated read-only
+V3 CI plus Admin branch coverage preserve original customer CI/preflight.
+Final focused262tests/lint PASS; full gate RUNNING; hosted PENDING. Earlier
+full failures/interrupted runs retained in14_TEST_STRATEGY.md. No data/runtime
+promotion or deployment. Current evidence:21_PRODUCTION_PREPARATION.md,
+17_PRODUCTION_RELEASE_PACKET.md and handoff/CURRENT_CHECKPOINT.md.
+
+The following supplement07 status is historical: unchanged-dependency,
+working-branch and full-gate statements refer to that earlier snapshot.
+Candidate/evidence/review counts remain unchanged by the production patch.
+
+---
+
 # Recipe Intelligence V3 status
 
 RECIPE_V3_RESEARCH_IN_PROGRESS; RECIPE_V3_INDEPENDENT_REVIEW_REQUIRED; RECIPE_V3_BLOCKED. Full program acceptance remains open.

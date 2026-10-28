@@ -1,30 +1,79 @@
-## Recipe Intelligence V3 seafood decision checkpoint - 2026-10-28 JST
+## Recipe Intelligence V3 production preparation - 2026-10-28 JST
 
-Task `TAKOLIO_RECIPE_INTELLIGENCE_V3`: RECIPE_V3_RESEARCH_IN_PROGRESS; review RECIPE_V3_INDEPENDENT_REVIEW_REQUIRED; release RECIPE_V3_BLOCKED. Full program acceptance remains open. Historical entries below retain observation-time scope.
+Task `TAKOLIO_RECIPE_INTELLIGENCE_V3`: RECIPE_V3_RESEARCH_IN_PROGRESS;
+review RECIPE_V3_INDEPENDENT_REVIEW_REQUIRED; release RECIPE_V3_BLOCKED.
+User requested completion for production deployment. Preparation proceeds;
+failed data/security gates, independent review and normal Environment approval
+still prevent production release. Historical entries below retain their scope.
 
-Repository hello-tako/Takolio (1422954151); base/origin-main b49f3e6c4fc2f1485b77623ed7257d0f8bd31f9a; branch codex/recipe-intelligence-v3; worktree /Users/tunbee27/Documents/New project/Takolio-recipe-v3. Verified implementation `a578b5696389cdb6afeca7530e33b1f4e384690e`; resolve the subsequent documentation HEAD from Git. Draft stack33-44 remains open. Supplement07 Draft #44 uses codex/recipe-v3-safety-07, based on #43 (d7ed5cf8900212915246d151d8095602a40a225e); its Draft PR status and remote-head lookup are recorded in docs/ai/recipe-intelligence-v3/handoff/PULL_REQUESTS.md. PR33 historical hosted validate40385562918 and validate-admin40385562692 SUCCESS apply only to its audit/spec head. Later bases are not main; absent hosted checks grant no acceptance. No merge or deployment.
+Repository hello-tako/Takolio (1422954151); fetched origin/main
+b49f3e6c4fc2f1485b77623ed7257d0f8bd31f9a; worktree
+/Users/tunbee27/Documents/New project/Takolio-recipe-v3; branch
+codex/recipe-v3-release-patches. Parent checkpoint
+f637134b4a337443b375985021d0d3bfc42a9e87 remains Draft PR44 on
+codex/recipe-v3-safety-07. The twelve existing Draft review units stay separate.
+Current patch commit and hosted results must be resolved from Git/PR after
+publication; this document cannot contain its own commit hash.
 
-Actual dataset: 1,188 source rows / 1,150 distinct URLs / 1,326 claims; 500/500 recipes with bounded external-content claims; 44 reversible edits across 29 recipes. Source partition: 676 bounded reads; 199 reachable-only/unread; 309 unavailable-only; 4 reachable-and-unavailable. Claim states: {"FACT_SUPPORTED": 405, "SOURCE_CONFLICT": 8, "SOURCE_CONTENT_READ": 592, "SOURCE_UNAVAILABLE": 321}. All500 schemas checked; full culinary verification0/500 and human approval0/500; P0=6/P1=494; scores UNASSESSED. Preserved6,766 ingredient lines/4,938 steps, immutable V2, stable IDs/slugs. No source or runtime promotion.
+Concrete patch: Hono4.13.7 ->4.13.13 (compatible major4), only miniflare's
+Undici7.29.1 ->7.30.1. New Recipe V3 CI validates codex/recipe-v3-** pushes;
+Admin CI adds that branch filter. Original customer ci.yml and Admin preflight
+remain byte-identical. Four regression tests preserve main/PR validation,
+complete checks, pinned actions and read-only permissions. ADR-073 defines scope.
+Wrangler/Miniflare/workerd, Zod version/integrity, runtime/payment/auth code,
+migrations and deployment workflows remain unchanged. Scoped review checks four
+exact dependency/CI transformations; unapproved protected drift0.
 
-Supplement07 adds7 bounded official FDA/CDC claims/eight source rows/five URLs: paired salmon63C checks, steaming-hot sprouts without raw garnish, shrimp63C/flesh checks, poultry165F (approximately74C). Eight new edit paths/one revised chicken tip; all1,319 prior claims/1,180 source objects/36 prior edits preserved with history. Raw shrimp acid/freezing and crab product identity remain FAIL_UNRESOLVED; all six critical cases still pending. Exact sources, candidate fingerprints and review decisions: docs/ai/recipe-intelligence-v3/research/GAP_RESEARCH_SUPPLEMENTS.md.
+Fresh audit: before5high/5moderate; patched1high/0moderate, exit1. Remaining
+Zod3.25.76 GHSA-mrhx-c7xc-m3w5 requires>=4.6.6. Bounded reproduction:
+max(2) still visits all1,000 invalid elements and produces1,001 issues. This is
+an unresolved finding, not an exception or suppression. A reviewed compatibility
+migration must preserve protected PayOS/error contracts and recertify catalog
+continuity. V2 release-check freshly exits1 with the same four data blockers.
 
-2026-10-28 decision clarification: research/RAW_SEAFOOD_DECISIONS.md binds the two unresolved shrimp/crab cases to current V2/candidate fingerprints, exact source locators, contradictory fields, three options per case and acceptance requirements. The shrimp PDF has no heat step; the preboiled-crab phrase is YouTube merchandise, not demonstrated-product evidence; its product link redirects to a suspended shop. Video/captions unread. This documentation adds no canonical claims, edits, promotions or approvals; dataset counts and all six critical review states remain unchanged.
+Current patch verification: final workflow/release tests2files/262tests PASS;
+original focused run3files/294tests PASS; focused ESLint, public scan and scoped
+artifact/history review PASS131artifacts. Full current pnpm check RUNNING.
+Retained earlier full failure:425files/9564tests PASS,2failed (stale branch-list
+assertion and Wrangler5s timeout). An intermediate rerun was stopped when the
+workflow design changed. Original customer CI/test bytes restored; Admin
+preflight now PASS in validate mode with dirty checkout disclosed. No assertion,
+timeout, preflight or release guard weakened. Exact commands/results:
+docs/ai/recipe-intelligence-v3/14_TEST_STRATEGY.md and21_PRODUCTION_PREPARATION.md.
+Hosted patch CI PENDING.
 
-User directions: shrimp PROVIDE_RAW_PRODUCT_PROTOCOL; crab SELECT_RAW_PATH, recorded at 2026-10-27T21:06:10Z. Follow-up "tự tìm kiếm đi" authorizes autonomous research. Six public pages now provide Alpex/Astra shrimp leads, Marine Foods/Nissui frozen raw-crab comparators and historical MHLW context; package/process validation and independent safety review remain pending. Marine Foods half-thaw directions conflict with archival full-thaw wording. No candidate/claim/source-status changes or approvals; all6critical cases remain pending. See research/RAW_SEAFOOD_DECISIONS.md for hashes, locators and limits.
+Dataset unchanged:500 IDs/slugs;6,766ingredient lines;4,938steps;44reversible
+edits/29recipes;1,188source rows/1,150URLs/1,326claims. Candidate SHA256
+0f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4;
+data implementation a578b5696389cdb6afeca7530e33b1f4e384690e.
+Full culinary verification0/500; human approval0/500;6P0/494P1. There are
+1,395provisional IDs/4,233lines;2,996runtime-excluded lines/2,860reviewed
+transformations needed; nutrition1inherited publishable/288blocked/211null.
+No candidate/source/runtime promotion or human approval is inferred from tests.
 
-Ingredient exact audit remains1,395 provisional IDs/4,233 lines, exact matches0; reconciliation1,642 provisional-new rows/362 duplicate aliases. Runtime2,996 excluded lines/2,860 requiring reviewed transformations. Nutrition1 inherited publishable/288blocked/211null; V3 certifications0.
+User chose raw-shrimp product/protocol and raw-crab-to-cook research. Six public
+product/context pages are recorded in research/RAW_SEAFOOD_DECISIONS.md; exact
+package/process validation, supported crab grill endpoint and coordinated
+half-thaw/full-thaw review remain missing. Both cases stay FAIL_UNRESOLVED;
+all six safety reviews remain pending. No request for user URLs is outstanding.
 
-Current supplement07 full local gate: PASS, exit0 observed; Test Files  427 passed (427); Tests  9566 passed (9566); Duration  924.13s (transform 6.86s, setup 2.35s, import 48.82s, tests 800.62s, environment 15.33s); typecheck/lint, Main/Admin local migration smoke, Client/Admin/Worker builds PASS. Command `CI=1 PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp pnpm check`; log `/private/tmp/takolio-v3-full-check-supp07.log`. Audit rebuild/--check PASS500/44/25. Supplement07 canonical checker PASS500V1/500V2,1,319 prior claims,1,180 prior sources,36 prior edits/history,7 incoming claims,208 metadata fields,1,190 reciprocal links,5 official caches/13 locators. Independent technical review PASS on candidate SHA256 `0f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4`: 500 candidates recompiled with complete metadata; 503 V2 files/51 evidence inputs; 1,500 provenance pointers/3,937 claim pointers/755 fact references; 44 exact reversals across29 recipes; 559 frozen inputs unchanged. No concrete findings; human culinary approval0/500. Exact commands, historical checks and failures: docs/ai/recipe-intelligence-v3/14_TEST_STRATEGY.md.
+Database/release: local migration smoke only; remote D1 mutations, production
+credential use, flag changes and deployments0. V1rel-bd00a4f53fcaeee4/fingerprint
+f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37 remains
+authoritative. Household/inventory authority and Week compatibility unchanged.
+Production protections observed: strict validate/validate-admin, approving
+reviewer, stale/last-push review enforcement; production Environment requires
+vn-taphoanhatung with self-review prevented and protected branches. No policy
+changed. Branch CI cannot substitute for exact-main CI or staging certification.
 
-Product research checks PASS: six public pages/12 snapshot hashes/17 locator ranges; candidate/canonical unchanged; 125-artifact review, protected drift0, four historical tails, public scan and diff PASS. Exact commands/failures in docs/ai/recipe-intelligence-v3/14_TEST_STRATEGY.md. Full supplement07 gate applies to unchanged code/data.
-
-Continuation checks: culinary packet PASS2cases/5bounded observations/14cache hashes and locators; audit --check PASS500/44/25; public scan and full changed/untracked artifact review PASS, protected drift0, four historical tails preserved. Exact commands and unchanged full-gate scope: docs/ai/recipe-intelligence-v3/14_TEST_STRATEGY.md.
-
-Historical V2 release-check exits1 on RUNTIME_PROJECTION_LOSS, INGREDIENT_RECONCILIATION_INCOMPLETE, SOURCE_CONTENT_VERIFICATION_INCOMPLETE and NUTRITION_EVIDENCE_INCOMPLETE. Historical dependency audit exits1:2high/3moderate, including Zod GHSA-mrhx-c7xc-m3w5 and undici GHSA-xjj6-f33q-929c. Dependencies unchanged; these failures remain open. GitHub push additionally reported48 default-branch advisories (8high/37moderate/3low); this hosted warning is separate from the historical local audit and was not independently re-audited. Initial supplement07 checker searched chicken history in the wrong packet; corrected to owning evidence recipe, PASS without canonical change. Earlier incomplete gates and integration-checker failures remain documented. No V3 runtime/browser/staging acceptance.
-
-Remote database mutations, migration changes and production actions0; protected-path drift0. Local migration smoke uses temporary databases only. V1 release rel-bd00a4f53fcaeee4/fingerprint f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37 remains authoritative. Protected payment/auth/infrastructure, household/inventory authority and Week compatibility remain unchanged.
-
-Next action: Use the six located product/context pages in research/RAW_SEAFOOD_DECISIONS.md for the next bounded proposal. Shrimp still needs exact raw-use package and validated hazard-control evidence; Alpex/Astra marketing is insufficient. For raw-to-cook crab, resolve the Marine Foods package/manual, scientific species and supported grill endpoint; reconcile its half-thaw instructions with the archival fully-thawed-center wording. Nissui is a separate comparator, not an interchangeable protocol. Independent fingerprint-bound safety review remains required; both cases remain FAIL_UNRESOLVED. No request for user-supplied URLs remains outstanding. Continue the other four critical reviews and ingredient/quantity/nutrition/runtime prerequisites; staging/production require separate authority. Durable continuation: docs/ai/recipe-intelligence-v3/handoff/CURRENT_CHECKPOINT.md.
+Next: publish the focused Draft patch PR based on codex/recipe-v3-safety-07
+with the local gate explicitly RUNNING; finish local and exact-head hosted
+validate/validate-admin before accepting the patch.
+Then complete reviewed Zod migration/catalog proof, ingredient/source/nutrition
+and six safety decisions; implement approved content-version pinning and saved
+plan/shopping/cooking/offline/rollback compatibility. Human approvals, normal
+main merge/exact-main CI and same-source staging/recovery precede protected
+production approval. Release packet NOT_READY; no production dispatch.
 
 ---
 

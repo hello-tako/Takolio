@@ -1,3 +1,71 @@
+# Production preparation checks - 2026-10-28 JST
+
+Scope relative to f637134b4a337443b375985021d0d3bfc42a9e87:
+Hono4.13.13/miniflare-only Undici7.30.1, dedicated read-only V3 CI/Admin
+branch coverage, four regression tests, ADR-073 and release/handoff updates.
+Original customer ci.yml, preflight, release-check test, candidate, catalog,
+Zod dependency/integrity, migrations and runtime code remain byte-identical.
+
+Commands below used Node24.16.0/pnpm10.33.2. Shell PATH was
+`/opt/homebrew/opt/node@24/bin:/opt/homebrew/bin:/usr/bin:/bin`; local gates used
+`TMPDIR=/private/tmp`, full/focused Vitest used `CI=1` unless stated otherwise.
+
+| Exact executed command | Observed result |
+|---|---|
+| `pnpm install --lockfile-only --ignore-scripts --offline` | PASS; scoped lockfile transformations reviewed |
+| `pnpm install --frozen-lockfile` | PASS; existing ignored esbuild/workerd script warnings retained |
+| `pnpm audit --json` before patch | FAIL exit1;5high/5moderate/438dependencies; /private/tmp/takolio-v3-production-audit.json |
+| `pnpm audit --json` after patch | FAIL exit1;1high/0moderate/438dependencies; Zod3.25.76 GHSA-mrhx-c7xc-m3w5; /private/tmp/takolio-v3-production-audit-patched.json |
+| `pnpm exec vitest run tests/unit/recipe-v3-ci.test.mjs` | PASS1file/4tests; /private/tmp/takolio-v3-ci-trigger-test.log; initial workflow design |
+| `pnpm exec eslint tests/unit/recipe-v3-ci.test.mjs` | PASS, including final dedicated-workflow test |
+| `pnpm check` first attempt | Interrupted during Vitest; typecheck/lintPASS; /private/tmp/takolio-v3-release-patches-check.log |
+| `pnpm check` replacement | FAIL exit1;425files/9564testsPASS;2files/2testsFAIL;956.14s; /private/tmp/takolio-v3-release-patches-check-rerun.log |
+| `pnpm exec vitest run tests/unit/staging-d1-catchup-check.test.mjs -t 'is readable by Wrangler locally'` | PASS1/31skipped,4.52s; /private/tmp/takolio-v3-release-patches-wrangler-focused.log |
+| `pnpm exec vitest run tests/unit/staging-d1-catchup-check.test.mjs` | PASS32/32,6.25s; /private/tmp/takolio-v3-release-patches-wrangler-file.log |
+| `pnpm exec vitest run tests/unit/release-check.test.mjs tests/unit/recipe-v3-ci.test.mjs tests/unit/staging-d1-catchup-check.test.mjs` | PASS3files/294tests,8.37s; /private/tmp/takolio-v3-release-patches-focused.log; intermediate branch expectation update subsequently restored |
+| `pnpm exec eslint tests/unit/release-check.test.mjs tests/unit/recipe-v3-ci.test.mjs` | PASS; intermediate test change subsequently restored |
+| `pnpm check` intermediate rerun | Terminated exit143 after workflow design changed; no complete result; /private/tmp/takolio-v3-release-patches-check-final.log |
+| `node scripts/admin-release-preflight.mjs` initial direct customer-CI edit | FAIL exit1, Customer release surface changed: .github/workflows/ci.yml; /private/tmp/takolio-v3-release-patches-admin-preflight.log |
+| `node scripts/admin-release-preflight.mjs` after restoring customer CI | PASS validate mode; cleanCheckout=false; readyForDeployment=false; remoteExecuted=false; no preflight/baseline changes |
+| `pnpm exec vitest run tests/unit/recipe-v3-ci.test.mjs tests/unit/release-check.test.mjs` final workflow | PASS2files/262tests,2.30s; /private/tmp/takolio-v3-release-patches-workflow-focused.log |
+| `pnpm check` final dedicated-workflow tree | RUNNING; /private/tmp/takolio-v3-release-patches-check-v3-workflow.log; no final acceptance claimed |
+| `pnpm check:migrations` separate run | PASS Main/Admin local replay; /private/tmp/takolio-v3-release-patches-migrations.log |
+| `pnpm build` separate run | PASS Client/Admin/Worker; existing Admin font-resolution warnings, emitted fonts present; /private/tmp/takolio-v3-release-patches-build.log |
+| `node scripts/recipe-intelligence-v3-audit.mjs --check` | PASS500recipes/44edits/25packets; four release blockers retained |
+| `pnpm recipe:refresh:release-check` | FAIL exit1,RECIPE_REFRESH_RELEASE_BLOCKED; four actual data blockers; canonical500PASS |
+| `python3 /private/tmp/takolio-v3-release-patches-review.py` | PASS131artifacts; four exact dependency/CI transformations; candidate/customerCI unchanged; protected drift0; historical tails4preserved |
+| `python3 scripts/admin-public-scan.py` | PASS added text; binary/manual limits retained |
+| `git diff --check` | PASS |
+| `git fetch origin main --no-tags`; repository/PR44/protection/Environment readback | repo1422954151/mainb49f3e6c; Draft44OPEN/f637134b/no checks; strict validate/validate-admin,1reviewer/stale/last-push/admin enforcement; production reviewer/self-review/protected-branch gates unchanged |
+
+The two failed tests were a stale exact branch-list assertion in release-check
+and Wrangler local startup exceeding its default5s timeout (5.229s observed).
+Standalone Wrangler32/32 passed; timing cause beyond startup/load remains
+unproven. No timeout/retry/assertion change was made. Dedicated V3 CI restores
+the original release-check/customer-CI bytes; Admin preflight now accepts them.
+The earlier direct edit was abandoned after the real guard failure; no guard
+was removed, baseline advanced, or file excluded from preflight.
+
+Scoped reviewer preserves the original125-artifact checker. It constrains the
+entire package/lockfile, Admin filter-only change and new workflow (original CI
+steps/permissions, V3-only header). Only those four exact files are exempted
+from the older zero-diff rule. The focused test is the fifth permitted code
+path. All other workflows, runtime/payment/auth/catalog/migrations and four
+historical tails retain byte assertions. Initial temporary reviewer extension
+failed NameError:git_file before review; corrected to existing prior(), rerunPASS.
+
+Bounded Zod reproduction: array max2 visits1,000invalid entries/issues1,001;
+no exhaustion benchmark. Patched>=4.6.6; zod/v3 retains affected parser.
+Protected PayOS one-argument z.record/error contracts and catalog Zod continuity
+need reviewed migration/recertification. No advisory muted.
+
+Hosted patch CI PENDING. Branch success never substitutes for exact-main CI,
+V3 browser/staging/recovery, independent human approval or production approval.
+Production/remoteD1mutations0. Current packet:21_PRODUCTION_PREPARATION.md.
+Historical product/supplement records follow unchanged.
+
+---
+
 # Autonomous product research checks - 2026-10-28 JST
 
 Documentation only, relative to `56d077e172e14aa3505afd4d9f4aec1272f14c05`:

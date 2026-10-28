@@ -1,3 +1,22 @@
+# Production patch review - 2026-10-28 JST
+
+Working branch codex/recipe-v3-release-patches starts at parent
+f637134b4a337443b375985021d0d3bfc42a9e87. Focused Draft PR publication PENDING;
+base codex/recipe-v3-safety-07 (Draft44). Compatible Hono/Undici patches and
+dedicated read-only V3 CI/Admin branch coverage require separate review; preserve Draft units33-44.
+Current local patch gate/retained failures:../21_PRODUCTION_PREPARATION.md.
+Patch hosted validate/validate-admin PENDING; do not reuse PR33 historical CI.
+
+Fresh readback: repository1422954151/default main, fetched mainb49f3e6c;
+PR44 OPEN/Draft/headf637134b4a337443b375985021d0d3bfc42a9e87,
+base codex/recipe-v3-checkpoint, no hosted checks. No merge/deployment occurred.
+Branch CI trigger changes preserve main/PR validation and normal release gates.
+
+The following existing stack record is historical for PR33-44. Exact current
+head/status must always be refreshed before review or merge.
+
+---
+
 # Draft PR stack
 
 Repository hello-tako/Takolio, ID1422954151. Freshly fetched main remains b49f3e6c4fc2f1485b77623ed7257d0f8bd31f9a. Every numbered PR below is Draft and open at this checkpoint. Merge order follows the base column; this record grants no merge authority. Current local checks and retained failures: ../14_TEST_STRATEGY.md.

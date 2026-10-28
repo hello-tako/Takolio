@@ -1,10 +1,32 @@
-Continue TAKOLIO_RECIPE_INTELLIGENCE_V3 in /Users/tunbee27/Documents/New project/Takolio-recipe-v3, branch codex/recipe-intelligence-v3; base b49f3e6c4fc2f1485b77623ed7257d0f8bd31f9a. Verified implementation `a578b5696389cdb6afeca7530e33b1f4e384690e`; inspect fresh Git status/HEAD/remote/PRs. Preserve original/release worktrees. Read AGENTS.md, mandatory authority docs, CURRENT_CHECKPOINT, PULL_REQUESTS,14_TEST_STRATEGY and research/GAP_RESEARCH_SUPPLEMENTS.md plus research/RAW_SEAFOOD_DECISIONS.md before editing.
+Continue TAKOLIO_RECIPE_INTELLIGENCE_V3 production preparation in
+/Users/tunbee27/Documents/New project/Takolio-recipe-v3,
+branch codex/recipe-v3-release-patches; parent f637134b4a337443b375985021d0d3bfc42a9e87,
+base/main b49f3e6c4fc2f1485b77623ed7257d0f8bd31f9a. Read mandatory authority
+documents, CURRENT_CHECKPOINT, NEXT_ACTION, PULL_REQUESTS,14_TEST_STRATEGY,
+21_PRODUCTION_PREPARATION and RAW_SEAFOOD_DECISIONS; verify actual Git/CI state.
 
-Current:1,188 source rows / 1,150 distinct URLs / 1,326 claims; 500/500 recipes with bounded external-content claims; 44 reversible edits across 29 recipes; 676 bounded reads; 199 reachable-only/unread; 309 unavailable-only; 4 reachable-and-unavailable. Candidate SHA256 0f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4. Full culinary verification/human approval0/500; source/runtime promotions0. Supplement07 corrects salmon/sprouts/grilled shrimp/chicken candidate text; raw-shrimp acid/freezing and crab raw/pre-cooked identity FAIL_UNRESOLVED; all6critical cases pending. Previous claims/sources/edits/history retained. Human decisions must bind candidate fingerprints in the safety queue.
+Patch: Hono4.13.13, only miniflare's Undici7.30.1, dedicated read-only V3 CI/Admin branch coverage,
+four regression tests; original customer CI/preflight bytes unchanged. Final focused262tests/lint/preflightPASS; full local gateRUNNING; hostedPENDING. Earlier2test failures/interrupted attempts remain in14_TEST_STRATEGY.
+Audit exits1 with1high/0moderate; remaining Zod3.25.76 advisory
+GHSA-mrhx-c7xc-m3w5 requires reviewed compatibility migration preserving
+protected PayOS/error contracts and fresh catalog certification. No audit or
+release check may be bypassed. zod/v3 under a new package version is not a fix.
 
-Current supplement07 full local gate: PASS, exit0 observed; Test Files  427 passed (427); Tests  9566 passed (9566); Duration  924.13s (transform 6.86s, setup 2.35s, import 48.82s, tests 800.62s, environment 15.33s); typecheck/lint, Main/Admin local migration smoke, Client/Admin/Worker builds PASS. Command `CI=1 PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp pnpm check`; log `/private/tmp/takolio-v3-full-check-supp07.log`. Independent technical review PASS on candidate SHA256 `0f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4`: 500 candidates recompiled with complete metadata; 503 V2 files/51 evidence inputs; 1,500 provenance pointers/3,937 claim pointers/755 fact references; 44 exact reversals across29 recipes; 559 frozen inputs unchanged. No concrete findings; human culinary approval0/500. Public/protected/history/diff checksPASS; raw caches private. Research reports use shared audit --check; old snippets/history retain earlier scope. Historical V2 release-check exits1 on RUNTIME_PROJECTION_LOSS, INGREDIENT_RECONCILIATION_INCOMPLETE, SOURCE_CONTENT_VERIFICATION_INCOMPLETE and NUTRITION_EVIDENCE_INCOMPLETE. Historical dependency audit exits1:2high/3moderate, including Zod GHSA-mrhx-c7xc-m3w5 and undici GHSA-xjj6-f33q-929c. Dependencies unchanged; these failures remain open. GitHub push additionally reported48 default-branch advisories (8high/37moderate/3low); this hosted warning is separate from the historical local audit and was not independently re-audited.
+Candidate SHA2560f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4
+unchanged; data implementation a578b5696389cdb6afeca7530e33b1f4e384690e.
+500IDs/6,766ingredient lines/4,938steps preserved;44reversible edits/29recipes;
+1,188source rows/1,150URLs/1,326claims. Full culinary verification/human
+approval0/500;1,395provisional IDs/4,233lines unresolved;2,996runtime-excluded
+lines/2,860reviewed transformations needed; nutrition1inherited/288blocked/211null.
+Six safety cases pending; raw-shrimp protocol and raw-crab formulation remain
+FAIL_UNRESOLVED. Existing six product/context pages are bounded research,
+not validated protocols or human approval. No request for user URLs remains.
 
-Registry45/204keys;1,395provisional IDs/4,233lines;exact0. Four release blockers remain. Preserve V1fingerprint, immutable V2, quantities, nutrition and every source position. Draft stack33-44 remains open. Supplement07 Draft #44 uses codex/recipe-v3-safety-07, based on #43 (d7ed5cf8900212915246d151d8095602a40a225e); its Draft PR status and remote-head lookup are recorded in docs/ai/recipe-intelligence-v3/handoff/PULL_REQUESTS.md. PR33 historical hosted validate40385562918 and validate-admin40385562692 SUCCESS apply only to its audit/spec head. Later bases are not main; absent hosted checks grant no acceptance. No merge or deployment. Obtain independent human decisions on the six fingerprint-bound safety cases in research/GAP_RESEARCH_SUPPLEMENTS.md, especially raw-shrimp formulation and raw/pre-cooked crab identity. Review remaining formulation, ingredient, quantity and nutrition evidence. Runtime version pinning/saved-plan/shopping/cooking/offline/rollback integration follows evidence closure; staging and production require separate authority. Update mandatory status/V3handoff documents; bind verified implementation SHA before a later documentation checkpoint. No human approval fabrication, source promotion, protected bypass or production authority.
-
-2026-10-28 decision clarification: research/RAW_SEAFOOD_DECISIONS.md binds the two unresolved shrimp/crab cases to current V2/candidate fingerprints, exact source locators, contradictory fields, three options per case and acceptance requirements. The shrimp PDF has no heat step; the preboiled-crab phrase is YouTube merchandise, not demonstrated-product evidence; its product link redirects to a suspended shop. Video/captions unread. This documentation adds no canonical claims, edits, promotions or approvals; dataset counts and all six critical review states remain unchanged.
-Next action: Use the six located product/context pages in research/RAW_SEAFOOD_DECISIONS.md for the next bounded proposal. Shrimp still needs exact raw-use package and validated hazard-control evidence; Alpex/Astra marketing is insufficient. For raw-to-cook crab, resolve the Marine Foods package/manual, scientific species and supported grill endpoint; reconcile its half-thaw instructions with the archival fully-thawed-center wording. Nissui is a separate comparator, not an interchangeable protocol. Independent fingerprint-bound safety review remains required; both cases remain FAIL_UNRESOLVED. No request for user-supplied URLs remains outstanding. Continue the other four critical reviews and ingredient/quantity/nutrition/runtime prerequisites; staging/production require separate authority.
+Finish current patch gate/publication/exact-head hosted CI, preserving separate
+Draft33-44 review units. Then resolve actual source/ingredient/nutrition/safety
+and runtime version/old-consumer compatibility prerequisites. Require independent
+human approvals, protected main merge/exact-main CI, same-source staging/recovery
+and production Environment approval. Current release NOT_READY; no production
+dispatch, remote D1 mutation, flag/credential change, payment/auth edit or bypass.
+Update required status/handoff docs with actual results, exact failures and next
+action; never replace evidence with readiness labels.
