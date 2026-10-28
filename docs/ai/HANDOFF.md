@@ -1,4 +1,4 @@
-## Recipe Intelligence V3 production preparation - 2026-10-28 JST
+## Recipe Intelligence V3 production preparation - 2026-10-29 JST
 
 Task `TAKOLIO_RECIPE_INTELLIGENCE_V3`: RECIPE_V3_RESEARCH_IN_PROGRESS;
 review RECIPE_V3_INDEPENDENT_REVIEW_REQUIRED; release RECIPE_V3_BLOCKED.
@@ -12,8 +12,11 @@ b49f3e6c4fc2f1485b77623ed7257d0f8bd31f9a; worktree
 codex/recipe-v3-release-patches. Parent checkpoint
 f637134b4a337443b375985021d0d3bfc42a9e87 remains Draft PR44 on
 codex/recipe-v3-safety-07. The twelve existing Draft review units stay separate.
-Current patch commit and hosted results must be resolved from Git/PR after
-publication; this document cannot contain its own commit hash.
+Verified patch implementation 7bdd574bc8ad401efd348e466093d13bf62c6ea3;
+[Draft PR45](https://github.com/hello-tako/Takolio/pull/45) OPEN on base
+codex/recipe-v3-safety-07. Subsequent documentation-only HEAD is resolved from
+Git/PR; this handoff cannot contain its own commit hash. Hosted results below
+bind the implementation SHA, not a later documentation checkpoint.
 
 Concrete patch: Hono4.13.7 ->4.13.13 (compatible major4), only miniflare's
 Undici7.29.1 ->7.30.1. New Recipe V3 CI validates codex/recipe-v3-** pushes;
@@ -31,16 +34,18 @@ an unresolved finding, not an exception or suppression. A reviewed compatibility
 migration must preserve protected PayOS/error contracts and recertify catalog
 continuity. V2 release-check freshly exits1 with the same four data blockers.
 
-Current patch verification: final workflow/release tests2files/262tests PASS;
-original focused run3files/294tests PASS; focused ESLint, public scan and scoped
-artifact/history review PASS131artifacts. Full current pnpm check RUNNING.
-Retained earlier full failure:425files/9564tests PASS,2failed (stale branch-list
-assertion and Wrangler5s timeout). An intermediate rerun was stopped when the
-workflow design changed. Original customer CI/test bytes restored; Admin
-preflight now PASS in validate mode with dirty checkout disclosed. No assertion,
-timeout, preflight or release guard weakened. Exact commands/results:
-docs/ai/recipe-intelligence-v3/14_TEST_STRATEGY.md and21_PRODUCTION_PREPARATION.md.
-Hosted patch CI PENDING.
+Current patch verification: complete local pnpm check PASS exit0;428files/9570tests;951.14s;
+typecheck/lint, Main/Admin local migration replay and Client/Admin/Worker builds
+PASS. Hosted validate40709482707/validate-admin40709482552 SUCCESS on implementation7bdd574b;
+Admin includes real Workerd boundary, migration matrix, browser suite and ten
+keyboard repeats. Clean committed Admin validate preflight PASS at7bdd574b:
+sourceManifestSha2566d042015488ced02508ace18add2ea80b1294d3602b01361b165f5b6989f68c4;
+readyForDeployment=false,remoteExecuted=false. Focused262tests/ESLint and scoped
+review131artifacts/public/historyPASS. Earlier2test failures and interrupted
+attempts remain recorded; no assertion, timeout, preflight or gate weakened.
+Exact commands/logs/run links:docs/ai/recipe-intelligence-v3/14_TEST_STRATEGY.md
+and21_PRODUCTION_PREPARATION.md. Branch validation grants no main/staging or
+production acceptance; subsequent documentation HEAD requires its own CI.
 
 Dataset unchanged:500 IDs/slugs;6,766ingredient lines;4,938steps;44reversible
 edits/29recipes;1,188source rows/1,150URLs/1,326claims. Candidate SHA256
@@ -66,10 +71,9 @@ reviewer, stale/last-push review enforcement; production Environment requires
 vn-taphoanhatung with self-review prevented and protected branches. No policy
 changed. Branch CI cannot substitute for exact-main CI or staging certification.
 
-Next: publish the focused Draft patch PR based on codex/recipe-v3-safety-07
-with the local gate explicitly RUNNING; finish local and exact-head hosted
-validate/validate-admin before accepting the patch.
-Then complete reviewed Zod migration/catalog proof, ingredient/source/nutrition
+Next: independent review of focused Draft PR45 and existing review stack;
+resolve its subsequent documentation HEAD/checks from Git/PR. Complete reviewed
+Zod migration/catalog proof, ingredient/source/nutrition
 and six safety decisions; implement approved content-version pinning and saved
 plan/shopping/cooking/offline/rollback compatibility. Human approvals, normal
 main merge/exact-main CI and same-source staging/recovery precede protected

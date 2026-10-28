@@ -1,4 +1,4 @@
-# Production preparation checks - 2026-10-28 JST
+# Production preparation checks - 2026-10-29 JST
 
 Scope relative to f637134b4a337443b375985021d0d3bfc42a9e87:
 Hono4.13.13/miniflare-only Undici7.30.1, dedicated read-only V3 CI/Admin
@@ -27,8 +27,9 @@ Commands below used Node24.16.0/pnpm10.33.2. Shell PATH was
 | `pnpm check` intermediate rerun | Terminated exit143 after workflow design changed; no complete result; /private/tmp/takolio-v3-release-patches-check-final.log |
 | `node scripts/admin-release-preflight.mjs` initial direct customer-CI edit | FAIL exit1, Customer release surface changed: .github/workflows/ci.yml; /private/tmp/takolio-v3-release-patches-admin-preflight.log |
 | `node scripts/admin-release-preflight.mjs` after restoring customer CI | PASS validate mode; cleanCheckout=false; readyForDeployment=false; remoteExecuted=false; no preflight/baseline changes |
+| `node scripts/admin-release-preflight.mjs` committed implementation7bdd574b | PASS cleanCheckout=true; sourceSha7bdd574bc8ad401efd348e466093d13bf62c6ea3; manifestSHA2566d042015488ced02508ace18add2ea80b1294d3602b01361b165f5b6989f68c4; readyForDeployment=false;remoteExecuted=false |
 | `pnpm exec vitest run tests/unit/recipe-v3-ci.test.mjs tests/unit/release-check.test.mjs` final workflow | PASS2files/262tests,2.30s; /private/tmp/takolio-v3-release-patches-workflow-focused.log |
-| `pnpm check` final dedicated-workflow tree | RUNNING; /private/tmp/takolio-v3-release-patches-check-v3-workflow.log; no final acceptance claimed |
+| `pnpm check` final dedicated-workflow tree | PASS exit0;428files/9570tests;951.14s; typecheck/lint/migrations/buildPASS; /private/tmp/takolio-v3-release-patches-check-v3-workflow.log; .exit=0 |
 | `pnpm check:migrations` separate run | PASS Main/Admin local replay; /private/tmp/takolio-v3-release-patches-migrations.log |
 | `pnpm build` separate run | PASS Client/Admin/Worker; existing Admin font-resolution warnings, emitted fonts present; /private/tmp/takolio-v3-release-patches-build.log |
 | `node scripts/recipe-intelligence-v3-audit.mjs --check` | PASS500recipes/44edits/25packets; four release blockers retained |
@@ -59,8 +60,29 @@ no exhaustion benchmark. Patched>=4.6.6; zod/v3 retains affected parser.
 Protected PayOS one-argument z.record/error contracts and catalog Zod continuity
 need reviewed migration/recertification. No advisory muted.
 
-Hosted patch CI PENDING. Branch success never substitutes for exact-main CI,
-V3 browser/staging/recovery, independent human approval or production approval.
+Hosted implementation 7bdd574bc8ad401efd348e466093d13bf62c6ea3:
+
+| Exact readback command | Complete result |
+|---|---|
+| `gh run view 40709482707 --repo hello-tako/Takolio --json status,conclusion,headSha,jobs` | [Recipe V3 CI](https://github.com/hello-tako/Takolio/actions/runs/40709482707) SUCCESS; validate lint/typecheck/full tests/migrations/build |
+| `gh run view 40709482552 --repo hello-tako/Takolio --json status,conclusion,headSha,jobs` | [Admin CI](https://github.com/hello-tako/Takolio/actions/runs/40709482552) SUCCESS; full tests/migrations/build/preflight, real Workerd boundary, migration matrix, browser regression, ten keyboard repeats and screenshot guard |
+| `gh pr view 45 --repo hello-tako/Takolio --json state,isDraft,headRefName,baseRefName,reviewDecision,statusCheckRollup` | OPEN/Draft;codex/recipe-v3-release-patches ->codex/recipe-v3-safety-07; no approval inferred |
+
+Final evidence reconciliation:
+`python3 /private/tmp/takolio-v3-release-patches-certify-ci.py` PASS; exact SHA,
+local exit0/log counts and every required hosted job/step checked against fresh
+GitHub responses. Receipt:/private/tmp/takolio-v3-release-patches-final-evidence.json.
+Final documentation checks: `python3 /private/tmp/takolio-v3-release-patches-review.py`
+PASS (131artifacts;500recipes;25packets;1,188sources;1,150URLs;1,326claims;
+protected drift0;four historical tails preserved); `python3 scripts/admin-public-scan.py`
+PASS (added text only; binary/manual caveat); `git diff --check` PASS.
+No full suite repeated for the documentation checkpoint; its hosted checks are
+separate and must be read from the current PR HEAD.
+
+These runs bind implementation7bdd574b; later documentation-only commits need
+their own exact-head CI and are never labeled covered by older runs. Branch
+success never substitutes for exact-main CI, V3 browser/staging/recovery,
+independent human approval or production approval.
 Production/remoteD1mutations0. Current packet:21_PRODUCTION_PREPARATION.md.
 Historical product/supplement records follow unchanged.
 

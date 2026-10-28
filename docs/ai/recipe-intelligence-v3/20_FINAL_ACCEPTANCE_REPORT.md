@@ -15,7 +15,7 @@ RECIPE_V3_RESEARCH_IN_PROGRESS; RECIPE_V3_INDEPENDENT_REVIEW_REQUIRED; RECIPE_V3
 |Historical supplement07 full local gate|PASS, exit0 observed; Test Files  427 passed (427); Tests  9566 passed (9566); Duration  924.13s (transform 6.86s, setup 2.35s, import 48.82s, tests 800.62s, environment 15.33s); typecheck/lint, Main/Admin local migration smoke, Client/Admin/Worker builds PASS|Local evidence only|
 |Independent technical review|500recompiled/44reversals;candidate SHA256 0f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4|No concrete findings; human approval0|
 |Dependencies|Fresh patched audit1high/0moderate;Zod3.25.76 unresolved|Blocked|
-|Production patch validation|Hono/Undici patch;dedicated V3 CI;final focused262tests/lint/preflightPASS;full gate RUNNING;earlier2test failures retained;hostedPENDING|Not accepted|
+|Production patch validation|Hono/Undici patch;complete local PASS exit0;428files/9570tests;951.14s;implementation7bdd574b hosted validate/validate-adminSUCCESS;Draft45reviewpending;later docsHEADneeds own CI|Implementation checks passed; release blocked|
 |V3runtime/browser/staging|Not certified|Open|
 |Production|0mutations;release packet NOT_READY;normal Environment approval required|Blocked|
 

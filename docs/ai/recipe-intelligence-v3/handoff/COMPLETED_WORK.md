@@ -1,7 +1,7 @@
-# Production preparation progress - 2026-10-28 JST
+# Production preparation progress - 2026-10-29 JST
 
 - Compatible Hono4.13.13/miniflare-only Undici7.30.1 patches reduce fresh audit5high/5moderate to1high/0moderate; Zod finding still blocks release.
-- Dedicated read-only V3 CI/Admin branch coverage validates stacked heads; final focused262tests/lint/preflight PASS. Original customer CI/preflight bytes unchanged. Full patch gate RUNNING; hosted PENDING; earlier failures retained.
+- Dedicated read-only V3 CI/Admin branch coverage validates stacked heads; final focused262tests/lint/preflight PASS. Original customer CI/preflight bytes unchanged. Full local PASS exit0;428files/9570tests;951.14s; implementation7bdd574b hosted validate/validate-admin SUCCESS; Draft45 awaits review; later docsHEADneeds own CI; earlier failures retained.
 - Exact lock/workflow transformation review PASS; catalog/Zod integrity/runtime/payment/auth/migration/deployment bytes preserved. ADR-073 records scope/rollback.
 - Bounded Zod reproduction visits1,000 elements despite max2; reviewed migration/catalog recertification required. No suppression or production action.
 - See ../21_PRODUCTION_PREPARATION.md for exact patch checks/failures. Historical supplement07 achievements follow; their old dependency/branch/full-gate wording does not describe the later patch.

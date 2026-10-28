@@ -1,19 +1,29 @@
-# Production patch review - 2026-10-28 JST
+# Production patch review - 2026-10-29 JST
 
-Working branch codex/recipe-v3-release-patches starts at parent
-f637134b4a337443b375985021d0d3bfc42a9e87. Focused Draft PR publication PENDING;
-base codex/recipe-v3-safety-07 (Draft44). Compatible Hono/Undici patches and
-dedicated read-only V3 CI/Admin branch coverage require separate review; preserve Draft units33-44.
-Current local patch gate/retained failures:../21_PRODUCTION_PREPARATION.md.
-Patch hosted validate/validate-admin PENDING; do not reuse PR33 historical CI.
+[Draft PR45](https://github.com/hello-tako/Takolio/pull/45) OPEN; branch
+codex/recipe-v3-release-patches, base codex/recipe-v3-safety-07 (Draft44).
+Parent f637134b4a337443b375985021d0d3bfc42a9e87; verified implementation
+7bdd574bc8ad401efd348e466093d13bf62c6ea3. Compatible Hono/Undici patches and dedicated
+read-only V3 CI/Admin branch coverage await independent review. Preserve Draft
+units33-44. No approval, main integration or deployment inferred.
 
-Fresh readback: repository1422954151/default main, fetched mainb49f3e6c;
-PR44 OPEN/Draft/headf637134b4a337443b375985021d0d3bfc42a9e87,
-base codex/recipe-v3-checkpoint, no hosted checks. No merge/deployment occurred.
-Branch CI trigger changes preserve main/PR validation and normal release gates.
+Complete local gate PASS exit0;428files/9570tests;951.14s. Exact implementation hosted:
 
-The following existing stack record is historical for PR33-44. Exact current
-head/status must always be refreshed before review or merge.
+| Check | Run | Result |
+|---|---|---|
+| validate | [40709482707](https://github.com/hello-tako/Takolio/actions/runs/40709482707) | SUCCESS; implementation7bdd574b |
+| validate-admin | [40709482552](https://github.com/hello-tako/Takolio/actions/runs/40709482552) | SUCCESS; same implementation; Workerd/matrix/browser/ten keyboard repeats/screenshot guard |
+
+Later documentation-only HEAD is resolved from Git/PR45 and needs its own CI;
+these older implementation runs never confer exact-head acceptance on it.
+Retained failures and logs:../14_TEST_STRATEGY.md. Readiness remains NOT_READY;
+../21_PRODUCTION_PREPARATION.md and ../17_PRODUCTION_RELEASE_PACKET.md.
+Fresh main/protection/Environment readbacks preserve strict validate/validate-admin,
+required reviewer/stale/last-push/admin enforcement and protected production
+reviewer/self-review/branch gates. No settings changed.
+
+The following stack record is historical for PR33-44. Exact current head/status
+must always be refreshed before review or merge.
 
 ---
 
