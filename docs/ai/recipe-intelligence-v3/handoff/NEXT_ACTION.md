@@ -1,10 +1,10 @@
 # Current next action - 2026-10-29 JST
 
-1. Review [Draft PR46](https://github.com/hello-tako/Takolio/pull/46) on codex/recipe-v3-release-patches; implementation 7c4d8700c0e1d4bd78a51007f7fdb0d46ae82091, clean committed Admin validate preflight PASS, readyForDeployment=false. Preserve Draft33-45.
-2. Resolve final documentation HEAD from PR46/Git; read its own Recipe V3 CI/Admin CI and obtain independent review. Implementation runs40860038264/40860038241 started; no success inferred here. Preserve the unchanged production continuity fence; do not infer certification from local catalog parity.
-3. Close ingredient/quantity/source/nutrition evidence and six fingerprint-bound safety decisions. Continue autonomous product research using RAW_SEAFOOD_DECISIONS.md; no user-URL request is pending. Human approval remains separate.
-4. Implement accepted content-version/old-consumer compatibility after evidence closure; then protected main review/merge, exact-main CI, same-source staging/browser/recovery and normal Environment approval. Release NOT_READY; no production dispatch.
-
+1. Review [Draft PR46](https://github.com/hello-tako/Takolio/pull/46), HEAD9049f346372dbc9ed515e572f3d66fbc75c2fc18. Recipe40860409614/Admin40860409658 SUCCESS; independent approval pending. Preserve Draft33-45 and the stable PR46 HEAD.
+2. Finish documentation continuation on codex/recipe-v3-readiness-evidence, base9049f346372dbc9ed515e572f3d66fbc75c2fc18; exact eventual PR/HEAD/CI resolve from Git/PULL_REQUESTS. Parent success is not its hosted acceptance. No repeated full local suite for docs only.
+3. Close four data blockers and six fingerprint-bound safety decisions. CAA category PDFs/index and Nissui FAQ supplement prior product research but validate neither raw-shrimp product/process nor crab grill endpoint. Both FAIL_UNRESOLVED; human approval0/500. Continue ingredient/quantity/source/nutrition decisions; no user-URL request pending.
+4. Implement accepted content-version and old plan/shopping/cooking/offline/rollback integration after evidence closure. Preserve the production continuity fence; changed Zod/foundation requires fresh reviewed same-SHA shadow/canary1/canary5/canary25/d1 certification.
+5. Require independent approval, protected main integration/exact-main CI, same-source staging/browser/recovery and normal Environment approval. Release NOT_READY; no production dispatch while prerequisites fail.
 
 Earlier checkpoint follows unchanged. Its pending exception, vulnerability,
 branch, test and next-action statements describe its historical snapshot.

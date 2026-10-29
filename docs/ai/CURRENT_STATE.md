@@ -1,3 +1,34 @@
+## Hosted Zod validation and research - 2026-10-29 JST
+
+TAKOLIO_RECIPE_INTELLIGENCE_V3: RECIPE_V3_RESEARCH_IN_PROGRESS;
+RECIPE_V3_INDEPENDENT_REVIEW_REQUIRED; release RECIPE_V3_BLOCKED / NOT_READY.
+Workspace /Users/tunbee27/Documents/New project/Takolio-recipe-v3;
+documentation branch codex/recipe-v3-readiness-evidence, base9049f346372dbc9ed515e572f3d66fbc75c2fc18.
+PR46 HEAD9049f346 stays stable: Recipe40860409614/Admin40860409658 SUCCESS;
+429files/9597tests each; Workerd/migration matrix/13browser tests/10keyboard
+repeats/screenshot guard PASS. Independent approval pending. Earlier implementation
+Admin40860038241 CANCELLED, never PASS. Local full gate429/9597 PASS; audit438/0.
+Hosted preflight cleanCheckout=false after build; separate clean committed local
+preflight PASS cleanCheckout=true; both readyForDeployment=false/remoteExecuted=false.
+
+Changes: documentation only;4CAA/Nissui retrievals,8hashes,5PDFpages,2HTMLlocatorranges.
+No validated shrimp product/process or crab grill endpoint; both FAIL_UNRESOLVED.
+Executed provenance/scope/public/diff checks PASS; full local suite not repeated.
+Exact commands/logs: docs/ai/recipe-intelligence-v3/14_TEST_STRATEGY.md.
+Four data release blockers,1395provisional ingredient IDs,288blocked/211null
+nutrition,0/500human approvals,6critical safety decisions and versioned consumer
+integration remain open. V1authority/candidate bytes unchanged; database unchanged.
+Production continuity fence and main/Environment protections unchanged.
+No remote D1 mutation, flag change, merge or deployment.
+
+Next: independent PR46/stack review; documentation continuation's own HEAD/CI;
+close evidence/safety/human/consumer gates, protected main/exact-main CI and
+same-source staging/recovery before normal production approval. Resolve eventual
+PR/HEAD from Git and V3 handoff/PULL_REQUESTS.md; parent checks certify only parent.
+Earlier observations follow unchanged.
+
+---
+
 ## Authorized Zod security migration - 2026-10-29 JST
 
 Task TAKOLIO_RECIPE_INTELLIGENCE_V3: RECIPE_V3_RESEARCH_IN_PROGRESS;

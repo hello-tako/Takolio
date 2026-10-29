@@ -1,21 +1,32 @@
-# Current Zod migration review - 2026-10-29 JST
+# Current review and hosted evidence - 2026-10-29 JST
 
-Branch codex/recipe-v3-zod-security; base codex/recipe-v3-release-patches at
-904eb0872103524711e63d9fb74a1beeea6b9646. Verified implementation
-7c4d8700c0e1d4bd78a51007f7fdb0d46ae82091; [Draft PR46](https://github.com/hello-tako/Takolio/pull/46)
-OPEN on codex/recipe-v3-release-patches. Preserve Draft33-45 review units.
-Clean committed Admin validate preflight PASS: cleanCheckout=true,
-sourceManifestSha256=6d042015488ced02508ace18add2ea80b1294d3602b01361b165f5b6989f68c4,
-readyForDeployment=false, remoteExecuted=false. Implementation runs
-[Recipe V3 CI40860038264](https://github.com/hello-tako/Takolio/actions/runs/40860038264)
-and [Admin CI40860038241](https://github.com/hello-tako/Takolio/actions/runs/40860038241)
-started; outcome not yet observed at this checkpoint. Resolve final documentation
-head and its own checks from PR46; check headSha before using any result.
-Fresh PR45 readback: OPEN/Draft; exact904eb087 Recipe V3 CI40715776912 and
-Admin CI40715776938 SUCCESS. Those checks do not cover this migration.
-Implementation and later documentation HEAD must be recorded separately;
-a handoff cannot name its own final commit. No main merge or deployment.
+[Draft PR46](https://github.com/hello-tako/Takolio/pull/46) OPEN;
+base codex/recipe-v3-release-patches at904eb0872103524711e63d9fb74a1beeea6b9646;
+implementation7c4d8700c0e1d4bd78a51007f7fdb0d46ae82091; review HEAD9049f346372dbc9ed515e572f3d66fbc75c2fc18.
+PR body now records exact-head checks and cancelled implementation Admin honestly.
+No reviewer approval; preserve Draft33-45 and normal protections.
 
+Review HEAD `9049f346372dbc9ed515e572f3d66fbc75c2fc18` of [Draft PR46](https://github.com/hello-tako/Takolio/pull/46)
+passed both [Recipe V3 CI40860409614](https://github.com/hello-tako/Takolio/actions/runs/40860409614)
+and [Admin CI40860409658](https://github.com/hello-tako/Takolio/actions/runs/40860409658).
+Each ran429files/9597tests plus lint/typecheck/migrations/build. Admin also passed
+real Workerd, migration matrix,13browser tests,10keyboard repeats and screenshot
+guard. Hosted validate preflight reported cleanCheckout=false after build,
+readyForDeployment=false, remoteExecuted=false. Separate clean local preflight
+on that committed HEAD passed cleanCheckout=true with the same source manifest
+6d042015488ced02508ace18add2ea80b1294d3602b01361b165f5b6989f68c4.
+Implementation Recipe40860038264 succeeded; Admin40860038241 was CANCELLED by
+the documentation push, never PASS. Independent review remains pending.
+
+Documentation continuation: branch codex/recipe-v3-readiness-evidence, base9049f346372dbc9ed515e572f3d66fbc75c2fc18.
+It records CAA/Nissui bindings, observed hosted results and actual remaining
+prerequisites; no code/data change. Resolve its eventual Draft PR and final HEAD
+from Git/GitHub. Run its own hosted checks; publish final results in that PR body
+to keep the tested HEAD stable. No new PR number or success assumed here.
+
+PR45 exact904eb087 Recipe40715776912/Admin40715776938 SUCCESS is parent evidence
+only. Current local commands/failures:../14_TEST_STRATEGY.md. Release NOT_READY;
+no main merge, V3 staging certification, production action or human approval.
 
 Earlier checkpoint follows unchanged. Its pending exception, vulnerability,
 branch, test and next-action statements describe its historical snapshot.

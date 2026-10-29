@@ -1,42 +1,44 @@
-# Current Zod migration preparation - 2026-10-29 JST
+# Current production preparation - 2026-10-29 JST
 
-Verified implementation 7c4d8700c0e1d4bd78a51007f7fdb0d46ae82091;
-[Draft PR46](https://github.com/hello-tako/Takolio/pull/46) OPEN on codex/recipe-v3-release-patches.
-Clean committed Admin validate preflight PASS, cleanCheckout=true;
-sourceManifestSha256=6d042015488ced02508ace18add2ea80b1294d3602b01361b165f5b6989f68c4;
-readyForDeployment=false, remoteExecuted=false. Implementation hosted runs
-40860038264/40860038241 started; outcome not yet observed at this checkpoint.
-Final documentation HEAD/checks must be resolved separately from PR46/Git.
+Branch codex/recipe-v3-readiness-evidence; base9049f346372dbc9ed515e572f3d66fbc75c2fc18; documentation only.
+Security implementation 7c4d8700c0e1d4bd78a51007f7fdb0d46ae82091; audit0vulnerabilities;
+local full gate429files/9597tests PASS. Candidate SHA2560f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4 unchanged.
+Exact commands/failures and documentation checks:14_TEST_STRATEGY.md.
 
-Branch codex/recipe-v3-zod-security; base904eb0872103524711e63d9fb74a1beeea6b9646.
-This checkpoint supersedes the old pending-exception and vulnerable-Zod claims.
-Explicit record keys, issues readers, prefault defaults, Zod4 native OpenAPI and
-shared legacy timestamp grammar retain the existing contracts. Protected PayOS
-and billing each change one record signature; web billing changes a type only.
-Persisted inventory replay, invalid auth/payment requests, early array rejection
-and OpenAPI fail-closed behavior have persistent regression coverage.
+Review HEAD `9049f346372dbc9ed515e572f3d66fbc75c2fc18` of [Draft PR46](https://github.com/hello-tako/Takolio/pull/46)
+passed both [Recipe V3 CI40860409614](https://github.com/hello-tako/Takolio/actions/runs/40860409614)
+and [Admin CI40860409658](https://github.com/hello-tako/Takolio/actions/runs/40860409658).
+Each ran429files/9597tests plus lint/typecheck/migrations/build. Admin also passed
+real Workerd, migration matrix,13browser tests,10keyboard repeats and screenshot
+guard. Hosted validate preflight reported cleanCheckout=false after build,
+readyForDeployment=false, remoteExecuted=false. Separate clean local preflight
+on that committed HEAD passed cleanCheckout=true with the same source manifest
+6d042015488ced02508ace18add2ea80b1294d3602b01361b165f5b6989f68c4.
+Implementation Recipe40860038264 succeeded; Admin40860038241 was CANCELLED by
+the documentation push, never PASS. Independent review remains pending.
 
-Zod4.6.7 migration is authorized by the owner (ADR-074), including the narrow
-PayOS/billing schema/type exception and tests. Local pnpm check PASS exit0:
-429files/9597tests/938.60s; typecheck/lint/Main+Admin migrations/builds PASS.
-Dependency audit PASS438dependencies/0vulnerabilities, no muted advisories.
-Candidate --check500/44/25, seed parity and import500/2batches PASS.
-Retained failures, exact commands and warning limits: 14_TEST_STRATEGY.md.
+Four additional public retrievals: CAA category index, two category PDFs
+(all5pages extracted/rendered/read) and expanded Nissui90147 grilling FAQ.
+These establish bounded category context and a manufacturer grilling use,
+but no validated shrimp SKU/lot/process or crab grill endpoint. Both cases stay
+FAIL_UNRESOLVED; no candidate/source/nutrition promotion or approval. Raw caches
+stay private; retrieval bindings and limits: research/RAW_SEAFOOD_DECISIONS.md.
 
-V1release rel-bd00a4f53fcaeee4/fingerprint
-f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37 unchanged;
-candidate SHA2560f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4
-unchanged. Production D1 continuity still rejects the changed Zod/foundation
-blobs. Fresh reviewed shadow/canary1/canary5/canary25/d1 progression must retain
-the same SHA and normal approvals; local parity alone is insufficient.
-
-Fresh V2 release-check FAIL exit1: RUNTIME_PROJECTION_LOSS,
+Release NOT_READY: RUNTIME_PROJECTION_LOSS,
 INGREDIENT_RECONCILIATION_INCOMPLETE, SOURCE_CONTENT_VERIFICATION_INCOMPLETE,
-NUTRITION_EVIDENCE_INCOMPLETE. Human approval/full culinary verification0/500;
-six critical cases pending, raw-shrimp/crab FAIL_UNRESOLVED. Ingredient/source/
-nutrition decisions, versioned publication, old saved-plan/shopping/cooking/
-offline/rollback compatibility and V3 staging/recovery remain incomplete.
-No remote D1 mutation, flag change, merge or deployment. Release NOT_READY.
+NUTRITION_EVIDENCE_INCOMPLETE.1,395provisional IDs/4,233lines;
+2,996excluded lines/2,860transformations need review; nutrition1inherited/
+288blocked/211null. Full culinary verification/human approvals0/500;
+six critical safety cases pending. Versioned publication and old saved-plan/
+shopping/cooking/offline/rollback integration remain unimplemented (ADR-072).
+Unchanged production continuity fence requires fresh reviewed same-SHA
+shadow/canary1/canary5/canary25/d1 certification after the parser/foundation change.
+No remote D1 mutation, feature flag change, merge or deployment.
+
+Next: independent PR46/stack review and the documentation continuation's own CI;
+then evidence/human/consumer compatibility, protected main and fresh same-source
+staging/recovery. This checkpoint resolves the old pending Zod exception and
+local advisory; it grants no food-content or production acceptance.
 
 Earlier checkpoint follows unchanged. Its pending exception, vulnerability,
 branch, test and next-action statements describe its historical snapshot.

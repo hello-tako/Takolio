@@ -225,3 +225,41 @@ bounded decision record. Current audit and documentation checks are recorded in
 
 Product research provenance check: `python3 /private/tmp/takolio-v3-product-research-check.py`.
 Exact executed results and retrieval limitations are recorded in `../14_TEST_STRATEGY.md`.
+
+## Government category evidence and Nissui grilling FAQ - 2026-10-29 JST
+
+Four additional retrievals below supplement the six earlier product/context
+pages. CAA is the Japanese Consumer Affairs Agency. Its index presents the
+food-specific standards for convenience, says it updates them as appropriate,
+and directs readers to the MHLW law database and new legislation for the latest
+text (normalized index lines 120-124). This is a bounded reading of the linked
+category documents, not a complete current-law or product-compliance assessment.
+
+| Source / read locator | Bounded finding | Limit for these recipes |
+|---|---|---|
+| [CAA raw fresh seafood](https://www.caa.go.jp/policies/policy/standards_evaluation/other/category/assets/0000126765.pdf), both pages read; p1 section1, p2 sections2-3 | Covers sliced/peeled raw-use seafood, excluding oysters and frozen products. It specifies Vibrio parahaemolyticus MPN at most100/g, hygienic processing and storage at or below10C. | Category requirements do not prove any shrimp species/SKU/lot compliant or validate the lemon/freezer process. The category storage maximum is not a proposed household handling instruction. |
+| [CAA frozen food](https://www.caa.go.jp/policies/policy/standards_evaluation/other/category/assets/0000126767.pdf), all three pages read; p2 section1(4), p2-3 section2, p3 section3 | Separately defines raw-use frozen sliced/peeled seafood: viable bacteria at most100,000/g, coliform negative and Vibrio MPN at most100/g; hygienic processing, prompt freezing and frozen storage at or below minus15C. | Do not apply the nonfrozen category to a frozen SKU, treat microbiological criteria as a complete hazard-control protocol, or replace stricter product-label instructions. No shrimp lot/testing or validated thaw/hold/service evidence obtained. |
+| [CAA category index](https://www.caa.go.jp/policies/policy/standards_evaluation/other/category), normalized lines120-124 | Establishes the publisher context and latest-law caveat for these two PDFs. | No claim that every subsequent amendment has been checked. The older MHLW2001 report remains historical. |
+| [Nissui90147 grilling FAQ](https://www.nissui-kenko.com/shop/g/g90147/), question/answer at normalized lines274-277, also expanded in the browser | Half-cut shell crab can be used for grilled crab; the shell contributes aroma. | No grill temperature, duration or internal endpoint supplied. The enclosed manual still has not been retrieved; scientific species/package protocol remain unestablished. User-review cooking anecdotes are not manufacturer directions. |
+
+Both PDFs were extracted in full, rendered and visually inspected across all
+five pages. HTML locators refer to immutable normalized text including image
+alt text, not browser line numbers. Full PDFs, images and HTML remain private;
+only bounded findings and retrieval bindings are published.
+
+All four requests returned HTTP200; final URLs equal the linked URLs.
+
+| Snapshot / retrieved UTC | Raw SHA256 | Extracted or normalized text SHA256 |
+|---|---|---|
+| `raw-seafood` / `2026-10-29T10:53:42.194042+00:00` | `628bbf12d1c7ddd4698735788d33db555c3e5204bb4fc8dbb929fb11b7d4b9ea` | `1768035943ada987c525b0df80b505bcb6bf228dce8f2356e0339155b53d76df` |
+| `frozen-food` / `2026-10-29T10:53:44.434576+00:00` | `9dcf9c65db5182a8ebf27884a2466d4c74ad1c97f5658d959c7c4ad0f0a78415` | `44ca3031c884496ff06728b8c72d7eb2880685e76f69ec6141bd7db181abde1c` |
+| `caa-index` / `2026-10-29T10:58:49.371567+00:00` | `a8d0e9a1a2ef37723591c6f16ce392fdfecd6170bd3c69c63c22482ed3d90360` | `f16c1207375b4d037eb07d8c53d2137ae57689d79eb98be0630818b586c49144` |
+| `nissui-grill-faq` / `2026-10-29T10:58:51.479029+00:00` | `55ec383a36eca32c9ad841ea5d59f1c4b2c3d0f2b616ad10613a0b99f3cf7295` | `5011e7a6986ebf1c46f0aa98b4c07065b2aafabf9c082ff29ee767c7a9255091` |
+
+Disposition: `PROVIDE_RAW_PRODUCT_PROTOCOL` and `SELECT_RAW_PATH` remain the
+selected research directions; both cases stay `FAIL_UNRESOLVED`. No product
+selection, candidate edit, canonical source promotion, nutrition claim or human
+approval results from this supplement. The existing six critical reviews stay
+pending. Next evidence remains exact raw-shrimp package/validated process and
+raw-crab package/species/coordinated thaw-and-grill directions, followed by an
+independent safety decision bound to each candidate fingerprint.

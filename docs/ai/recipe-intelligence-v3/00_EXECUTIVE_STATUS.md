@@ -1,17 +1,23 @@
 # Production preparation update - 2026-10-29 JST
 
-RECIPE_V3_BLOCKED; production NOT_READY. Hono/Undici patches reduce fresh
-audit5high/5moderate to1high/0moderate; Zod unresolved. Dedicated read-only
-V3 CI plus Admin branch coverage preserve original customer CI/preflight.
-Complete local gate PASS exit0;428files/9570tests;951.14s; implementation7bdd574b hosted
-validate40709482707/validate-admin40709482552 SUCCESS. Draft PR45 awaits review;
-later documentation HEAD needs own CI. Earlier failures retained in14_TEST_STRATEGY.md. No data/runtime
-promotion or deployment. Current evidence:21_PRODUCTION_PREPARATION.md,
-17_PRODUCTION_RELEASE_PACKET.md and handoff/CURRENT_CHECKPOINT.md.
+RECIPE_V3_BLOCKED; production NOT_READY. Authorized Zod4.6.7 migration fixes
+GHSA-mrhx-c7xc-m3w5; fresh dependency audit PASS438dependencies/0vulnerabilities.
+Complete local gate PASS429files/9597tests; lint/typecheck/migrations/builds PASS.
+Verified security implementation7c4d8700; Draft PR46 on codex/recipe-v3-release-patches.
+PR46 HEAD9049f346 passed Recipe40860409614/Admin40860409658, including browser
+and Workerd. Exact hosted observations and release limits:14_TEST_STRATEGY.md
+and handoff/PULL_REQUESTS.md; parent checks never certify a
+later HEAD. Independent review, fresh catalog certification and all four inherited
+data gates still block release. Human approvals/full culinary verification0/500.
 
-The following supplement07 status is historical: unchanged-dependency,
-working-branch and full-gate statements refer to that earlier snapshot.
-Candidate/evidence/review counts remain unchanged by the production patch.
+CAA category standards and the Nissui grilling FAQ add bounded research context,
+not product/process validation. Raw shrimp/crab stay FAIL_UNRESOLVED; six safety
+reviews remain pending. See research/RAW_SEAFOOD_DECISIONS.md. Candidate SHA256
+0f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4 unchanged.
+
+The following supplement07 status is historical. Its dependency/branch/test
+statements describe that earlier snapshot; the Zod/Undici findings are superseded
+by ADR-073/074 and the current audit. Data/evidence/review counts remain unchanged.
 
 ---
 
