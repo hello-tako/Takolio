@@ -22,18 +22,58 @@ No production mutation, deployed-version claim or human culinary approval.
 | `python3 scripts/admin-public-scan.py` (no Node prefix) | PASS added text; binary/manual limits retained |
 | `git diff --check` | PASS |
 
-Publication verification: implementation 7c4d8700c0e1d4bd78a51007f7fdb0d46ae82091;
-[Draft PR46](https://github.com/hello-tako/Takolio/pull/46) OPEN on codex/recipe-v3-release-patches.
-`PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp node scripts/admin-release-preflight.mjs`
-PASS on the clean committed implementation; sourceSha=7c4d8700c0e1d4bd78a51007f7fdb0d46ae82091,
-sourceManifestSha256=6d042015488ced02508ace18add2ea80b1294d3602b01361b165f5b6989f68c4;
-configurationValidation=PASS, readyForDeployment=false, remoteExecuted=false.
-Log /private/tmp/takolio-v3-zod-committed-preflight.log. Scope/public/diff checks
-repeated PASS before commit. Implementation runs40860038264/40860038241 started;
-outcome not yet observed at this checkpoint. Final documentation HEAD and its
-own hosted checks resolve separately from PR46/Git. GitHub's push warning of
-48 default-branch advisories (8high/37moderate/3low) is separate from this branch's
-fresh pnpm audit0; default main is not security-certified by this migration.
+Publication verification: implementation `7c4d8700c0e1d4bd78a51007f7fdb0d46ae82091`;
+PR46 review HEAD `9049f346372dbc9ed515e572f3d66fbc75c2fc18` on codex/recipe-v3-release-patches.
+Review HEAD `9049f346372dbc9ed515e572f3d66fbc75c2fc18` of [Draft PR46](https://github.com/hello-tako/Takolio/pull/46)
+passed both [Recipe V3 CI40860409614](https://github.com/hello-tako/Takolio/actions/runs/40860409614)
+and [Admin CI40860409658](https://github.com/hello-tako/Takolio/actions/runs/40860409658).
+Each ran429files/9597tests plus lint/typecheck/migrations/build. Admin also passed
+real Workerd, migration matrix,13browser tests,10keyboard repeats and screenshot
+guard. Hosted validate preflight reported cleanCheckout=false after build,
+readyForDeployment=false, remoteExecuted=false. Separate clean local preflight
+on that committed HEAD passed cleanCheckout=true with the same source manifest
+6d042015488ced02508ace18add2ea80b1294d3602b01361b165f5b6989f68c4.
+Implementation Recipe40860038264 succeeded; Admin40860038241 was CANCELLED by
+the documentation push, never PASS. Independent review remains pending.
+
+Exact readbacks: `gh run view 40860409614 --json headSha,status,conclusion,url`,
+`gh run view 40860409658 --json status,conclusion,headSha,jobs,url`,
+`gh run view 40860038264 --json headSha,conclusion,status` and
+`gh run view 40860038241 --json headSha,conclusion,status`.
+Complete hosted logs downloaded with `gh run view <run-id> --log` to
+/private/tmp/takolio-v3-zod-head-recipe-ci-complete.log and
+/private/tmp/takolio-v3-zod-head-admin-ci-complete.log.
+Clean committed local preflight command:
+`PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp node scripts/admin-release-preflight.mjs`;
+log /private/tmp/takolio-v3-zod-head-preflight.log. GitHub's warning of48
+default-branch advisories is separate from branch audit0; no main certification.
+
+## Documentation and research continuation
+
+Branch `codex/recipe-v3-readiness-evidence` starts at `9049f346372dbc9ed515e572f3d66fbc75c2fc18`;
+documentation only, PR46 head unchanged. Four additional public retrievals: CAA category index, two category PDFs
+(all5pages extracted/rendered/read) and expanded Nissui90147 grilling FAQ.
+These establish bounded category context and a manufacturer grilling use,
+but no validated shrimp SKU/lot/process or crab grill endpoint. Both cases stay
+FAIL_UNRESOLVED; no candidate/source/nutrition promotion or approval. Raw caches
+stay private; retrieval bindings and limits: research/RAW_SEAFOOD_DECISIONS.md.
+
+
+| Exact executed check | Actual result |
+|---|---|
+| `python3 /private/tmp/takolio-v3-caa-provenance-check.py` | PASS4retrievals/8hashes/5PDFpages/2HTMLlocatorranges; candidate unchanged/code-data drift0 |
+| `python3 /private/tmp/takolio-v3-zod-scope-review.py` | PASS50code paths/exact protected changes; production fence/candidate unchanged; five historical state tails preserved |
+| `python3 scripts/admin-public-scan.py` | PASS added text; binary/manual limits retained |
+| `git diff --check` | PASS |
+
+Protection readbacks /private/tmp/takolio-v3-final-main-protection.json and
+/private/tmp/takolio-v3-final-production-protection.json preserve strict checks,
+independent review and production Environment gates. No protection mutation.
+The old product-research checker has a fixed14Markdown-file historical scope;
+it is not the current migration scope check. No claim of rerunning that old
+checker against the expanded authorized migration. No local full-suite rerun
+for these documentation edits. New documentation HEAD needs its own hosted CI;
+its final SHA/results belong in the PR body without another recursive docs push.
 
 The focused six-file run preceded the final one-line assertion that decodes the
 result with InventoryLotSchema and the SLO relative-import correction. The

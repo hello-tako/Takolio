@@ -1,32 +1,127 @@
+## Recipe V3 beef identity and release recheck - 2026-10-29 JST
+
+Status: RECIPE_V3_RESEARCH_IN_PROGRESS; release RECIPE_V3_BLOCKED. Owner
+production deployment authorization remains in effect. No production mutation.
+`research/BEEF_IDENTITY_REVIEW.md` records 12 V2 lines/12 recipes using
+BEEF_SIRLOIN for several different or unspecified cuts; the V1 source also
+contains broader labels. Runtime production impact has not been established.
+No mapping, candidate, runtime, schema, or database was changed. Human review
+and compatibility analysis are required before changing the shared identity.
+
+Worktree /Users/tunbee27/Documents/New project/Takolio-recipe-v3; starting HEAD
+393eb0ea. Node24.16.0, pnpm10.33.2, prefix
+`PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp`:
+`pnpm recipe:seed:check` PASS (59 Vietnamese, 12 global, 71 runtime/71 media;
+Vite reported port 24678 already in use); `pnpm recipe:import:check` PASS
+(500 recipes/2 batches); `node scripts/recipe-intelligence-v3-audit.mjs --check`
+PASS (500/44/25; same Vite port warning); `pnpm audit --audit-level high` PASS
+(no known vulnerabilities); `pnpm recipe:refresh:release-check` FAIL exit 1
+with RUNTIME_PROJECTION_LOSS, INGREDIENT_RECONCILIATION_INCOMPLETE,
+SOURCE_CONTENT_VERIFICATION_INCOMPLETE, NUTRITION_EVIDENCE_INCOMPLETE.
+`python3 scripts/recipe-intelligence-v3-ingredient-exact.py` PASS (1395 IDs,
+4233 lines, zero exact matches). The report's embedded Python check PASS:
+503 manifest hashes and 12 lines in 12 recipes. This is not a culinary approval.
+
+Next: review cut and substitution meaning and legacy consumers; continue the
+1,395 unresolved identities, 6 critical safety cases, source/nutrition evidence,
+versioned consumer implementation and same-source staging/rollback. Do not
+bypass release gates or infer approval from automated checks. Full suite was not
+rerun for documentation-only changes.
+
+---
+
+## Production deployment authorization - 2026-10-29 JST
+
+The owner explicitly confirmed an exception authorizing deployment. This resolves
+the request for owner permission; it does not itself establish a release artifact,
+review, food-safety evidence, staging, rollback, or a passing technical gate.
+Recipe V3 remains RECIPE_V3_BLOCKED / NOT_READY: the V2 release check fails on
+projection, ingredient reconciliation, source verification, and nutrition;
+V3 publication and version-pinned saved consumers are not implemented. Six
+critical safety cases and human culinary review remain pending. Exact-source V3
+staging and recovery rehearsal have not been performed. No deploy was dispatched.
+
+Read-only checks: `git status --short --branch` showed local HEAD 6decfe25 ahead
+of origin by one; `gh pr view 47 --json state,isDraft,headRefOid,baseRefName,reviews,mergeStateStatus,statusCheckRollup,url`
+showed Draft PR47, no reviews, remote HEAD e6f681275034e1aa1210202bc888e88144f84c56,
+and both hosted checks successful on that remote HEAD. Local documentation
+commit 6decfe25 has no hosted check. `git log --oneline -1 origin/main` showed
+b49f3e6c (local remote-tracking reference; not a fresh fetch). A search for
+`docs/DEPLOYMENT.md` failed because that path does not exist; `DEPLOYMENT.md`
+contains the actual workflow and continuity requirements.
+
+Next: finish and verify the actual V3 artifact and consumer compatibility,
+independent safety review, exact-source staging and rollback, and normal protected
+main/Environment gates. Owner deployment authorization is retained for that
+release; do not reinterpret it as evidence or bypass the continuity fence.
+
+---
+
+## Recipe V3 water review checkpoint - 2026-10-29 JST
+
+Status: RECIPE_V3_RESEARCH_IN_PROGRESS; release RECIPE_V3_BLOCKED.
+Worktree: /Users/tunbee27/Documents/New project/Takolio-recipe-v3; branch
+codex/recipe-v3-readiness-evidence; starting HEAD e6f681275034e1aa1210202bc888e88144f84c56.
+Read-only ingredient review: research/WATER_INGREDIENT_REVIEW.md records one
+provisional water ID across 204 lines/198 recipes; five source lines explicitly
+contain stock alternatives or a mixture. Preserve semantics and require review;
+no identity mapping, candidate, runtime or database change. Literal filter is
+not exhaustive. No human or safety approval is inferred.
+
+Checks: report's embedded Python checksum/reproduction command PASS (204/198/5);
+`pnpm recipe:ingredient-v2:audit` PASS (6766 canonical, 2996 excluded, 2860
+review); `pnpm recipe:refresh:release-check` FAIL exit 1 with the four existing
+projection, ingredient, source and nutrition blockers (Node v25.9.0; Vite also
+reported port 24678 already in use). A prior exploratory candidate-schema query
+failed with KeyError 'ingredients'; the successful check reads pinned V2 files.
+`gh pr view 47 --json reviews,mergeStateStatus,headRefOid,baseRefName,url`:
+no reviews; PR47 HEAD e6f681275034e1aa1210202bc888e88144f84c56. `gh run view`
+40864196054 and 40864196031: Recipe V3 CI and Admin CI SUCCESS on that HEAD.
+These hosted results do not certify subsequent local edits. No full suite rerun
+for this documentation-only checkpoint. Production mutation: 0.
+
+Next: review the five lines and remaining group against authoritative source;
+continue unresolved safety, ingredient, nutrition and versioned consumer work;
+obtain independent review and same-source staging/recovery evidence before release.
+
+---
+
 # Current release blockers - 2026-10-29 JST
 
-The local Zod dependency advisory is resolved. The authorized compatibility
-migration is committed at 7c4d8700c0e1d4bd78a51007f7fdb0d46ae82091, Draft PR46 OPEN;
-exact-head hosted validation, independent review and fresh catalog rollout
-certification remain required. Final review HEAD/checks resolve from PR46/Git. No audit suppression or continuity bypass.
-The four data blockers and all safety/human/runtime/staging gates remain real.
+Review HEAD `9049f346372dbc9ed515e572f3d66fbc75c2fc18` of [Draft PR46](https://github.com/hello-tako/Takolio/pull/46)
+passed both [Recipe V3 CI40860409614](https://github.com/hello-tako/Takolio/actions/runs/40860409614)
+and [Admin CI40860409658](https://github.com/hello-tako/Takolio/actions/runs/40860409658).
+Each ran429files/9597tests plus lint/typecheck/migrations/build. Admin also passed
+real Workerd, migration matrix,13browser tests,10keyboard repeats and screenshot
+guard. Hosted validate preflight reported cleanCheckout=false after build,
+readyForDeployment=false, remoteExecuted=false. Separate clean local preflight
+on that committed HEAD passed cleanCheckout=true with the same source manifest
+6d042015488ced02508ace18add2ea80b1294d3602b01361b165f5b6989f68c4.
+Implementation Recipe40860038264 succeeded; Admin40860038241 was CANCELLED by
+the documentation push, never PASS. Independent review remains pending.
 
-Zod4.6.7 migration is authorized by the owner (ADR-074), including the narrow
-PayOS/billing schema/type exception and tests. Local pnpm check PASS exit0:
-429files/9597tests/938.60s; typecheck/lint/Main+Admin migrations/builds PASS.
-Dependency audit PASS438dependencies/0vulnerabilities, no muted advisories.
-Candidate --check500/44/25, seed parity and import500/2batches PASS.
-Retained failures, exact commands and warning limits: 14_TEST_STRATEGY.md.
-
-V1release rel-bd00a4f53fcaeee4/fingerprint
-f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37 unchanged;
-candidate SHA2560f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4
-unchanged. Production D1 continuity still rejects the changed Zod/foundation
-blobs. Fresh reviewed shadow/canary1/canary5/canary25/d1 progression must retain
-the same SHA and normal approvals; local parity alone is insufficient.
-
-Fresh V2 release-check FAIL exit1: RUNTIME_PROJECTION_LOSS,
+Release NOT_READY: RUNTIME_PROJECTION_LOSS,
 INGREDIENT_RECONCILIATION_INCOMPLETE, SOURCE_CONTENT_VERIFICATION_INCOMPLETE,
-NUTRITION_EVIDENCE_INCOMPLETE. Human approval/full culinary verification0/500;
-six critical cases pending, raw-shrimp/crab FAIL_UNRESOLVED. Ingredient/source/
-nutrition decisions, versioned publication, old saved-plan/shopping/cooking/
-offline/rollback compatibility and V3 staging/recovery remain incomplete.
-No remote D1 mutation, flag change, merge or deployment. Release NOT_READY.
+NUTRITION_EVIDENCE_INCOMPLETE.1,395provisional IDs/4,233lines;
+2,996excluded lines/2,860transformations need review; nutrition1inherited/
+288blocked/211null. Full culinary verification/human approvals0/500;
+six critical safety cases pending. Versioned publication and old saved-plan/
+shopping/cooking/offline/rollback integration remain unimplemented (ADR-072).
+Unchanged production continuity fence requires fresh reviewed same-SHA
+shadow/canary1/canary5/canary25/d1 certification after the parser/foundation change.
+No remote D1 mutation, feature flag change, merge or deployment.
+
+Four additional public retrievals: CAA category index, two category PDFs
+(all5pages extracted/rendered/read) and expanded Nissui90147 grilling FAQ.
+These establish bounded category context and a manufacturer grilling use,
+but no validated shrimp SKU/lot/process or crab grill endpoint. Both cases stay
+FAIL_UNRESOLVED; no candidate/source/nutrition promotion or approval. Raw caches
+stay private; retrieval bindings and limits: research/RAW_SEAFOOD_DECISIONS.md.
+
+Local dependency advisory resolved: patched Zod4.6.7, audit0vulnerabilities.
+Hosted technical checks passed on PR46 HEAD; independent approval absent.
+Documentation continuation has its own HEAD/CI requirement. No technical check
+confers HUMAN_APPROVED or validates raw seafood; no blocker waived.
 
 Earlier checkpoint follows unchanged. Its pending exception, vulnerability,
 branch, test and next-action statements describe its historical snapshot.
