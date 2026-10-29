@@ -33,7 +33,7 @@ const reviewedSchemaGate = {
   'scripts/d1-schema-gate.sh': 'e48596c6001f7fc20bb0d03213553f0bfe7575585bc02144d432f0a11cccb625',
   'scripts/d1-schema-gate.mjs': 'e443766807873c458581c82049cef1b0967dff2493b61804e1ae7f6bb6e7128a',
   // Reviewed 0044/0045: category guards and immutable swap receipts; SELECT-only checks.
-  'scripts/d1-schema-gate.sql': '74f54b23393d158bfa9310a90ec44540d6364335a413c18dc7acdf34c30738e2',
+  'scripts/d1-schema-gate.sql': '6a871a66f4d1f5888004081590d8f632a19735c7180d7eaf2d3d9e2c7fe42547',
 };
 const step = (name) => workflow().jobs.certify.steps.find((s) => s.name === name);
 const inline = (script) => script.split("<<'JS'\n")[1].split('\nJS')[0];

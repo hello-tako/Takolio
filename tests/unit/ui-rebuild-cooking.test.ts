@@ -199,12 +199,12 @@ it('sends the selected serving count in the online completion command', async ()
 
 it('keeps serving count in the offline replay and rejects changing it for the same key', async () => {
   const deductions = [{ ingredientId: 'PORK_BELLY', name: 'Pork', quantityDeducted: 500, unit: 'g' as const }];
-  const first = await recipesApi.completeCooking(recipe.id, deductions, 'four-person-offline', inventory, 4);
+  const first = await recipesApi.completeCooking(recipe.id, deductions, 'four-person-offline', inventory, 4, 'a'.repeat(64));
   const queued = getPendingOps();
   expect(queued).toHaveLength(1);
-  expect(JSON.parse(queued[0].body!)).toEqual({ deductions, commandId: 'four-person-offline', servings: 4 });
+  expect(JSON.parse(queued[0].body!)).toEqual({ deductions, commandId: 'four-person-offline', servings: 4, contentFingerprint: 'a'.repeat(64) });
   stock.read.mockResolvedValue(first.inventory);
-  expect((await recipesApi.completeCooking(recipe.id, deductions, 'four-person-offline', inventory, 4)).inventory).toEqual(first.inventory);
+  expect((await recipesApi.completeCooking(recipe.id, deductions, 'four-person-offline', inventory, 4, 'a'.repeat(64))).inventory).toEqual(first.inventory);
   await expect(recipesApi.completeCooking(recipe.id, deductions, 'four-person-offline', inventory, 2))
     .rejects.toMatchObject({ code: 'IDEMPOTENCY_CONFLICT' });
   expect(getPendingOps()).toHaveLength(1);

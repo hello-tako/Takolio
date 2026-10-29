@@ -7,7 +7,7 @@ const require = createRequire(import.meta.url);
 const { load } = createRequire(require.resolve('eslint/package.json'))('js-yaml');
 const policy = load(workflow);
 const familyTips = ['0042_family_meals_preferences_saved_shopping.sql', '0043_shopping_demand_review.sql',
-  '0044_inventory_display_category.sql', '0045_week_swap_receipts.sql'];
+  '0044_inventory_display_category.sql', '0045_week_swap_receipts.sql', '0046_recipe_content_versions.sql'];
 
 describe('production D1 migration runtime proof', () => {
   it('keeps production approval and actual 0041 constraint certification', () => {
@@ -37,6 +37,20 @@ describe('production D1 migration runtime proof', () => {
     }
     expect(apply.run).toContain('pnpm wrangler d1 migrations apply frigo-db --remote');
     expect(apply.run).toContain('node scripts/d1-migration-check.mjs applied migration-manifest.json');
+  });
+  it('certifies the exact 0046 archive, household grants and immutable cooking references before saving the receipt', () => {
+    const steps = policy.jobs.migrate.steps;
+    const certification = steps.find(step => step.name === 'Certify exact recipe content archive and cooking receipt schema after 0046');
+    const schemaGate = steps.find(step => step.name === 'Production schema gate (read-only)');
+    const receipt = steps.find(step => step.name === 'Save sanitized migration receipt (even on failure)');
+    expect(certification.if).toBe("inputs.migration == '0046_recipe_content_versions.sql'");
+    expect(certification.env.CLOUDFLARE_API_TOKEN).toBe('${{ secrets.CLOUDFLARE_API_TOKEN }}');
+    expect(certification.run).toContain('process.stdout.write(schemaQuery(CONTENT_TIP))');
+    expect(certification.run).toContain('pnpm wrangler d1 execute frigo-db --remote --yes --config wrangler.jsonc --json --command "$query" > content-schema.json');
+    expect(certification.run).toContain('manifest.migration !== CONTENT_TIP || manifest.postLedger?.tip !== CONTENT_TIP || manifest.schema?.version !== CONTENT_TIP');
+    expect(certification.run).toContain('manifest.contentSchema = verifySchema(JSON.parse(readFileSync("content-schema.json", "utf8")), CONTENT_TIP)');
+    expect(steps.indexOf(certification)).toBeGreaterThan(steps.indexOf(schemaGate));
+    expect(steps.indexOf(certification)).toBeLessThan(steps.indexOf(receipt));
   });
   it('uses the guarded read-only SELECT runner after migration apply', () => {
     expect(workflow).toContain('node scripts/d1-migration-check.mjs runtime-catalog-query > runtime-catalog.sql');
