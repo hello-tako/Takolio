@@ -1,3 +1,32 @@
+## Recipe V3 water review checkpoint - 2026-10-29 JST
+
+Status: RECIPE_V3_RESEARCH_IN_PROGRESS; release RECIPE_V3_BLOCKED.
+Worktree: /Users/tunbee27/Documents/New project/Takolio-recipe-v3; branch
+codex/recipe-v3-readiness-evidence; starting HEAD e6f681275034e1aa1210202bc888e88144f84c56.
+Read-only ingredient review: research/WATER_INGREDIENT_REVIEW.md records one
+provisional water ID across 204 lines/198 recipes; five source lines explicitly
+contain stock alternatives or a mixture. Preserve semantics and require review;
+no identity mapping, candidate, runtime or database change. Literal filter is
+not exhaustive. No human or safety approval is inferred.
+
+Checks: report's embedded Python checksum/reproduction command PASS (204/198/5);
+`pnpm recipe:ingredient-v2:audit` PASS (6766 canonical, 2996 excluded, 2860
+review); `pnpm recipe:refresh:release-check` FAIL exit 1 with the four existing
+projection, ingredient, source and nutrition blockers (Node v25.9.0; Vite also
+reported port 24678 already in use). A prior exploratory candidate-schema query
+failed with KeyError 'ingredients'; the successful check reads pinned V2 files.
+`gh pr view 47 --json reviews,mergeStateStatus,headRefOid,baseRefName,url`:
+no reviews; PR47 HEAD e6f681275034e1aa1210202bc888e88144f84c56. `gh run view`
+40864196054 and 40864196031: Recipe V3 CI and Admin CI SUCCESS on that HEAD.
+These hosted results do not certify subsequent local edits. No full suite rerun
+for this documentation-only checkpoint. Production mutation: 0.
+
+Next: review the five lines and remaining group against authoritative source;
+continue unresolved safety, ingredient, nutrition and versioned consumer work;
+obtain independent review and same-source staging/recovery evidence before release.
+
+---
+
 ## Hosted Zod validation and research - 2026-10-29 JST
 
 TAKOLIO_RECIPE_INTELLIGENCE_V3: RECIPE_V3_RESEARCH_IN_PROGRESS;
