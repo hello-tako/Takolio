@@ -1,6 +1,11 @@
 import { z } from 'zod';
 import type { StandardUnit } from './index';
 
+// Preserve Zod3 timestamp grammar and stored bytes; callers retain their stricter instant checks.
+const dateTimeSource = `${z.regexes.date.source.slice(0, -1)}T${z.regexes.time({}).source.slice(1, -1)}`;
+export const UtcDateTimeSchema = z.string().regex(new RegExp(`${dateTimeSource}Z$`), 'Invalid datetime');
+export const OffsetDateTimeSchema = z.string().regex(new RegExp(`${dateTimeSource}(?:Z|[+-]\\d{2}:?\\d{2})$`), 'Invalid datetime');
+
 export const StandardUnitSchema = z.enum(['g', 'kg', 'ml', 'l', 'piece', 'pack', 'bunch', 'slice']);
 export const PositiveQuantitySchema = z.number().finite().positive().lt(1e308);
 const NonnegativeQuantitySchema = z.number().finite().nonnegative().lt(1e308);
@@ -147,7 +152,7 @@ export type StorageGuideline = z.infer<typeof StorageGuidelineSchema>;
 export const InventoryConditionSchema = z
   .object({
     expiryDate: z.string().date().nullable().optional(),
-    openedAt: z.string().datetime({ offset: true }).optional(),
+    openedAt: OffsetDateTimeSchema.optional(),
     expiryKind: z.enum(['unknown', 'best_before', 'use_by', 'estimated']).default('unknown'),
     expirySource: z.enum(['unknown', 'user', 'ocr', 'imported', 'estimated']).default('unknown'),
   })

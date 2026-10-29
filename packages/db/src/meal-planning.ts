@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { CatalogIdSchema } from '../../domain/src/foundation';
+import { OffsetDateTimeSchema, CatalogIdSchema } from '../../domain/src/foundation';
 import { canonicalJson } from '../../recipes/src/planner-context';
 import { RecipeIdentitySchema } from '../../recipes/src/personalization';
 import type { D1DatabaseBinding, D1Response } from './index';
@@ -17,9 +17,9 @@ const SlotIdSchema = z.string().trim().min(1).max(200)
   .refine((value) => !/[\u0000-\u001f\u007f]/u.test(value), 'Invalid slot ID');
 const VersionedPayloadSchema = z.object({
   version: z.literal(1),
-  data: z.record(z.unknown()),
+  data: z.record(z.string(), z.unknown()),
 }).strict();
-const TimestampSchema = z.string().datetime({ offset: true });
+const TimestampSchema = OffsetDateTimeSchema;
 const PlanFeedbackWriteSchema = z.object({
   id: CatalogIdSchema,
   planId: CatalogIdSchema,

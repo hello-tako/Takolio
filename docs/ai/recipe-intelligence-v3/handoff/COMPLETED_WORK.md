@@ -1,3 +1,38 @@
+# Current completed migration work - 2026-10-29 JST
+
+Implemented the authorized security migration with exact protected schema/type
+deltas. Local full gate, audit, catalog parity and scoped review passed. Shared
+timestamp compatibility repairs preserve legacy stored inventory bytes; all
+calendar/finite/offset checks remain. No source-content promotion or human
+approval resulted from this technical work.
+
+Zod4.6.7 migration is authorized by the owner (ADR-074), including the narrow
+PayOS/billing schema/type exception and tests. Local pnpm check PASS exit0:
+429files/9597tests/938.60s; typecheck/lint/Main+Admin migrations/builds PASS.
+Dependency audit PASS438dependencies/0vulnerabilities, no muted advisories.
+Candidate --check500/44/25, seed parity and import500/2batches PASS.
+Retained failures, exact commands and warning limits: 14_TEST_STRATEGY.md.
+
+V1release rel-bd00a4f53fcaeee4/fingerprint
+f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37 unchanged;
+candidate SHA2560f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4
+unchanged. Production D1 continuity still rejects the changed Zod/foundation
+blobs. Fresh reviewed shadow/canary1/canary5/canary25/d1 progression must retain
+the same SHA and normal approvals; local parity alone is insufficient.
+
+Fresh V2 release-check FAIL exit1: RUNTIME_PROJECTION_LOSS,
+INGREDIENT_RECONCILIATION_INCOMPLETE, SOURCE_CONTENT_VERIFICATION_INCOMPLETE,
+NUTRITION_EVIDENCE_INCOMPLETE. Human approval/full culinary verification0/500;
+six critical cases pending, raw-shrimp/crab FAIL_UNRESOLVED. Ingredient/source/
+nutrition decisions, versioned publication, old saved-plan/shopping/cooking/
+offline/rollback compatibility and V3 staging/recovery remain incomplete.
+No remote D1 mutation, flag change, merge or deployment. Release NOT_READY.
+
+Earlier checkpoint follows unchanged. Its pending exception, vulnerability,
+branch, test and next-action statements describe its historical snapshot.
+
+---
+
 # Production preparation progress - 2026-10-29 JST
 
 - Compatible Hono4.13.13/miniflare-only Undici7.30.1 patches reduce fresh audit5high/5moderate to1high/0moderate; Zod finding still blocks release.

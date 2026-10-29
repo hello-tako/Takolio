@@ -457,9 +457,10 @@ describe('T09B strict live calendars without retroactive historical timestamp re
     expectCode(() => planSingleLotCommand(correct({ rawName: 'Eggs' }), lot(), { ...context, now: openedAt }), 'INVALID_CONTEXT');
   });
 
-  it.each(['2000-02-29T23:59:59Z', '2024-02-29T00:00:00.123+07:00', '2026-09-10T10:00:00-04:30'])('accepts valid calendar instants and offsets %s', (openedAt) => {
+  it.each(['2000-02-29T23:59:59Z', '2024-02-29T00:00:00.123+07:00', '2026-09-10T10:00:00-04:30', '2026-09-10T10:00:00+0900'])('accepts valid calendar instants and offsets %s', (openedAt) => {
     const result = planSingleLotCommand(create({ openedAt, purchasedAt: openedAt.slice(0, 10) }), null, { ...context, now: openedAt });
     expect(result.after).toMatchObject({ openedAt, createdAt: openedAt, updatedAt: openedAt, purchasedAt: openedAt.slice(0, 10) });
+    expect(InventoryLotSchema.parse(result.after).openedAt).toBe(openedAt);
   });
 
   it('preserves historical SQLite timestamps and raw legacy evidence on mutation', () => {

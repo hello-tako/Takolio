@@ -52,7 +52,7 @@ export const RefreshSourceManifestSchema = z.object({
   canonicalArtifactSha256: z.string().regex(/^[0-9a-f]{64}$/),
   provisionalRuntimeProjectionFingerprint: z.string().regex(/^[0-9a-f]{64}$/),
   releaseEligibility: RefreshReleaseEligibilitySchema,
-  auditSummary: z.record(z.unknown()),
+  auditSummary: z.record(z.string(), z.unknown()),
 }).strict();
 
 export const RefreshIngredientReconciliationRowSchema = z.object({

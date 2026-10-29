@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { buildPlannerOpenApi, describeZodContract } from '../../scripts/planner-openapi';
 import { MealPlanningIntentSchema } from '../../packages/domain/src/meal-planning-api';
 
-describe('bounded Zod3 OpenAPI candidate', () => {
+describe('bounded Zod4 OpenAPI candidate', () => {
   it('keeps create/current/get/regenerate shapes and actual header/revision semantics', () => {
     const doc = buildPlannerOpenApi([]);
     expect(Object.keys(doc.paths)).toHaveLength(4);
@@ -30,8 +30,22 @@ describe('bounded Zod3 OpenAPI candidate', () => {
     expect(describeZodContract(schema)).toEqual({ type: 'string', 'x-runtime-validation': true });
     expect(schema.safeParse('other').success).toBe(false);
   });
+  it('keeps array bounds, strict fields and runtime transformation markers', () => {
+    const schema = describeZodContract(z.object({ names: z.array(z.string().trim()).min(1).max(2) }).strict());
+    expect(schema).toMatchObject({ additionalProperties: false, required: ['names'], properties: {
+      names: { type: 'array', minItems: 1, maxItems: 2, items: { type: 'string', 'x-runtime-transform': 'overwrite' } },
+    } });
+  });
+  it('rejects unsupported checks nested inside otherwise supported objects', () => {
+    expect(() => describeZodContract(z.object({ count: z.number().multipleOf(3) })))
+      .toThrow('CONTRACT_UNSUPPORTED_NUMBER_CHECK');
+    expect(() => describeZodContract(z.object({ site: z.string().url() })))
+      .toThrow('CONTRACT_UNSUPPORTED_STRING_CHECK');
+    expect(() => describeZodContract(z.object({ values: z.record(z.string(), z.string()) })))
+      .toThrow('CONTRACT_UNSUPPORTED_ZOD_NODE');
+  });
   it('fails closed for unsupported nodes instead of emitting a permissive schema', () => {
-    expect(() => describeZodContract(z.record(z.string()))).toThrow('CONTRACT_UNSUPPORTED_ZOD_NODE');
+    expect(() => describeZodContract(z.record(z.string(), z.string()))).toThrow('CONTRACT_UNSUPPORTED_ZOD_NODE');
     expect(() => describeZodContract(z.string().url())).toThrow('CONTRACT_UNSUPPORTED_STRING_CHECK');
   });
 });

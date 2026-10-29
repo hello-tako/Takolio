@@ -174,7 +174,7 @@ export function validateBody<T>(schema: z.ZodSchema<T>) {
       const rawBody = await c.req.json().catch(() => ({}));
       const result = schema.safeParse(rawBody);
       if (!result.success) {
-        const errorMessages = result.error.errors.map(e => `${e.path.join('.')}: ${e.message}`).join(', ');
+        const errorMessages = result.error.issues.map(e => `${e.path.join('.')}: ${e.message}`).join(', ');
         return c.json({
           error: `Dữ liệu không hợp lệ: ${errorMessages}`,
           code: 'VALIDATION_ERROR',

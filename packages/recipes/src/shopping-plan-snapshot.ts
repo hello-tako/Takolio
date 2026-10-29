@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { CanonicalIngredientIdSchema, StandardUnitSchema } from '../../domain/src/foundation';
+import { OffsetDateTimeSchema, CanonicalIngredientIdSchema, StandardUnitSchema } from '../../domain/src/foundation';
 import type { WeeklyMealPlan } from './planner-types';
 
 const IdentitySchema = z
@@ -7,7 +7,7 @@ const IdentitySchema = z
   .min(1)
   .max(200)
   .refine((value) => value === value.trim() && !value.includes('\0'));
-const InstantSchema = z.string().datetime({ offset: true });
+const InstantSchema = OffsetDateTimeSchema;
 const QuantitySchema = z.number().finite().nonnegative();
 const PlannerStatusSchema = z.enum(['feasible', 'partial', 'infeasible', 'search_limited', 'incomplete']);
 const PlannerConclusionSchema = z.enum([

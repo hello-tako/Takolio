@@ -278,7 +278,7 @@ inventoryTruthRoutes.post('/inventory/observations/:observationId/decision', asy
   const rawBody = await c.req.json().catch(() => ({}));
   const parsed = DecisionBody.safeParse(rawBody);
   if (!parsed.success) {
-    return c.json({ error: parsed.error.errors[0]?.message || 'Dữ liệu quyết định không hợp lệ', code: 'VALIDATION_ERROR' }, 400);
+    return c.json({ error: parsed.error.issues[0]?.message || 'Dữ liệu quyết định không hợp lệ', code: 'VALIDATION_ERROR' }, 400);
   }
   // The path identifies the observation; a body that disagrees is a
   // client bug or an attempt to decide a different resource.

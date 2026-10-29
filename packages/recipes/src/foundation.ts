@@ -61,7 +61,7 @@ export const RecipeDefinitionSchema = z
     cookTimeMinutes: z.number().int().nonnegative(),
     difficulty: z.enum(['easy', 'medium', 'hard']),
     familyId: CatalogIdSchema.optional(),
-    provenance: RecipeProvenanceSchema.default({}),
+    provenance: RecipeProvenanceSchema.prefault({}),
     ingredients: z.array(StructuredRecipeIngredientSchema).min(1).max(100),
   })
   .strict();
@@ -108,7 +108,7 @@ export const RecipeFamilySchema = z
         .default('curated'),
     })
       .superRefine(requireSourceReference)
-      .default({}),
+      .prefault({}),
     slots: z.array(FamilySlotSchema).min(1).max(30),
   })
   .strict()

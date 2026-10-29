@@ -368,7 +368,7 @@ recipeRoutes.post('/recipes/:id/cook/complete', tenancyGuard, async (c) => {
   if (!parseResult.success) {
     return c.json(
       {
-        error: parseResult.error.errors[0]?.message || 'Dữ liệu hoàn tất nấu không hợp lệ',
+        error: parseResult.error.issues[0]?.message || 'Dữ liệu hoàn tất nấu không hợp lệ',
         code: 'VALIDATION_ERROR',
       },
       400

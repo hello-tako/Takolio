@@ -722,7 +722,7 @@ weekRoutes.post('/week/plans', async (c) => {
   const parsedBody = WeekPlanCreateSchema.safeParse(rawBody);
   if (!parsedBody.success) {
     return c.json(
-      { error: parsedBody.error.errors[0]?.message || 'Dữ liệu thực đơn không hợp lệ', code: 'VALIDATION_ERROR' },
+      { error: parsedBody.error.issues[0]?.message || 'Dữ liệu thực đơn không hợp lệ', code: 'VALIDATION_ERROR' },
       400
     );
   }
@@ -853,7 +853,7 @@ weekRoutes.post('/week/plans/:id/meals/:mealId/swap', async (c) => {
   const parsedBody = WeekSwapSchema.safeParse(rawBody);
   if (!parsedBody.success) {
     return c.json(
-      { error: parsedBody.error.errors[0]?.message || 'Dữ liệu đổi món không hợp lệ', code: 'VALIDATION_ERROR' },
+      { error: parsedBody.error.issues[0]?.message || 'Dữ liệu đổi món không hợp lệ', code: 'VALIDATION_ERROR' },
       400
     );
   }
@@ -977,7 +977,7 @@ weekRoutes.patch('/week/plans/:id/meals/:mealId', async (c) => {
   const parsedBody = WeekMealPatchSchema.safeParse(rawBody);
   if (!parsedBody.success) {
     return c.json(
-      { error: parsedBody.error.errors[0]?.message || 'Dữ liệu cập nhật bữa ăn không hợp lệ', code: 'VALIDATION_ERROR' },
+      { error: parsedBody.error.issues[0]?.message || 'Dữ liệu cập nhật bữa ăn không hợp lệ', code: 'VALIDATION_ERROR' },
       400
     );
   }
@@ -1039,7 +1039,7 @@ weekRoutes.patch('/week/plans/:id/shopping/items/:itemId', async (c) => {
   const parsedBody = WeekShoppingPatchSchema.safeParse(rawBody);
   if (!parsedBody.success) {
     return c.json(
-      { error: parsedBody.error.errors[0]?.message || 'Dữ liệu mặt hàng không hợp lệ', code: 'VALIDATION_ERROR' },
+      { error: parsedBody.error.issues[0]?.message || 'Dữ liệu mặt hàng không hợp lệ', code: 'VALIDATION_ERROR' },
       400
     );
   }
@@ -1079,7 +1079,7 @@ weekRoutes.post('/week/plans/:id/shopping/complete', async (c) => {
   const parsedBody = WeekShoppingCompleteSchema.safeParse(rawBody);
   if (!parsedBody.success) {
     return c.json(
-      { error: parsedBody.error.errors[0]?.message || 'Dữ liệu nhập hàng không hợp lệ', code: 'VALIDATION_ERROR' },
+      { error: parsedBody.error.issues[0]?.message || 'Dữ liệu nhập hàng không hợp lệ', code: 'VALIDATION_ERROR' },
       400
     );
   }
@@ -1541,7 +1541,7 @@ weekRoutes.patch('/week/preferences', async (c) => {
   const parsedBody = WeekPreferencesSchema.safeParse(rawBody);
   if (!parsedBody.success) {
     return c.json(
-      { error: parsedBody.error.errors[0]?.message || 'Dữ liệu tùy chọn không hợp lệ', code: 'VALIDATION_ERROR' },
+      { error: parsedBody.error.issues[0]?.message || 'Dữ liệu tùy chọn không hợp lệ', code: 'VALIDATION_ERROR' },
       400
     );
   }

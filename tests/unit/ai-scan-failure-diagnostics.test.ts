@@ -24,7 +24,7 @@ describe('Scan failure diagnostics', () => {
     await runtime.generate({ task: 'receipt_ocr', input: { imageBase64OrUrl: 'AQI=' } });
     expect(logs[0]).toMatchObject({ failureCode: 'SCHEMA_VALIDATION', validationIssues: [
       { path: 'items[].estimated_quantity', code: 'too_small' },
-      { path: 'items[].unit', code: 'invalid_enum_value' },
+      { path: 'items[].unit', code: 'invalid_value' },
     ] });
     const repair = String(fetchMock.mock.calls[1]?.[1]?.body);
     expect(repair).toContain('items[].estimated_quantity');
@@ -59,10 +59,10 @@ describe('Scan failure diagnostics', () => {
     const diagnostics = { failureStage: 'PRIVATE_STAGE', validationIssues: [
       { path: 'PRIVATE_PATH', code: 'custom', message: 'PRIVATE_MESSAGE' },
       { path: 'items[].unit', code: 'PRIVATE_CODE' },
-      { path: 'items[].unit', code: 'invalid_enum_value', received: 'PRIVATE_VALUE' },
+      { path: 'items[].unit', code: 'invalid_value', received: 'PRIVATE_VALUE' },
     ] };
     expect(sanitizeFailureDiagnostics(diagnostics)).toEqual({
-      validationIssues: [{ path: 'items[].unit', code: 'invalid_enum_value' }],
+      validationIssues: [{ path: 'items[].unit', code: 'invalid_value' }],
     });
     const consoleMock = vi.spyOn(console, 'log').mockImplementation(() => {});
     logAIUsage({ ...diagnostics } as unknown as AIUsageLog);

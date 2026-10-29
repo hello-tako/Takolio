@@ -1,3 +1,19 @@
+# Current Zod migration review - 2026-10-29 JST
+
+Branch codex/recipe-v3-zod-security; base codex/recipe-v3-release-patches at
+904eb0872103524711e63d9fb74a1beeea6b9646. Migration not yet committed/pushed;
+separate Draft PR pending. Preserve existing Draft33-45 review units.
+Fresh PR45 readback: OPEN/Draft; exact904eb087 Recipe V3 CI40715776912 and
+Admin CI40715776938 SUCCESS. Those checks do not cover this migration.
+Implementation and later documentation HEAD must be recorded separately;
+a handoff cannot name its own final commit. No main merge or deployment.
+
+
+Earlier checkpoint follows unchanged. Its pending exception, vulnerability,
+branch, test and next-action statements describe its historical snapshot.
+
+---
+
 # Production patch review - 2026-10-29 JST
 
 [Draft PR45](https://github.com/hello-tako/Takolio/pull/45) OPEN; branch

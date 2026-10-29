@@ -1,3 +1,69 @@
+# Zod security migration validation - 2026-10-29 JST
+
+ADR-074: owner approved the necessary Zod migration exception, including
+PayOS/billing schema/type compatibility and tests. Branch
+codex/recipe-v3-zod-security; base904eb0872103524711e63d9fb74a1beeea6b9646.
+All commands run locally in /Users/tunbee27/Documents/New project/Takolio-recipe-v3.
+Node24.16.0/pnpm10.33.2; prefix for Node commands:
+`CI=1 PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp`.
+No production mutation, deployed-version claim or human culinary approval.
+
+| Exact command after prefix | Actual result / local log |
+|---|---|
+| `pnpm test tests/unit/zod-security-compatibility.test.ts tests/unit/inventory-lot-commands.test.ts tests/integration/inventory-lot-commands.test.ts tests/integration/payment-authority.test.ts tests/unit/backend-planner-openapi.test.ts tests/unit/recipe-intelligence-v3-artifacts.test.mjs` | PASS6files/516tests/35.65s; /private/tmp/takolio-v3-zod-final-focused.log |
+| `pnpm test tests/integration/t13b-review-roundtrip.test.tsx tests/unit/ingredient-review-manifest.test.ts tests/unit/ingredient-review-source-buffer.test.ts tests/unit/product-vnext.test.ts tests/unit/slo-report.test.ts` | PASS5files/73tests/4.43s; /private/tmp/takolio-v3-zod-datetime-callers.log |
+| `pnpm audit --json` | PASS exit0;438dependencies/0vulnerabilities; /private/tmp/takolio-v3-zod-audit-final.json |
+| `node scripts/recipe-intelligence-v3-audit.mjs --check` | PASS500recipes/44edits/25packets; /private/tmp/takolio-v3-zod-candidate-check-final.log |
+| `pnpm recipe:seed:check` | PASS59Vietnamese/12global+71runtime/71media byte parity; /private/tmp/takolio-v3-zod-catalog-seed-final.log |
+| `pnpm recipe:import:check` | PASS500recipes/2batches/rel-bd00a4f53fcaeee4; /private/tmp/takolio-v3-zod-catalog-import-final.log |
+| `pnpm check` | PASS exit0;429files/9597tests/938.60s; typecheck/lint, Main/Admin local migration replay and Client/Admin/Worker builds PASS; /private/tmp/takolio-v3-zod-final-check.log and .exit=0 |
+| `pnpm recipe:refresh:release-check` | FAIL exit1; four retained data blockers; /private/tmp/takolio-v3-zod-v2-release-check.log |
+| `python3 /private/tmp/takolio-v3-zod-scope-review.py` (no Node prefix) | PASS exact dependency/payment/auth/type deltas, unchanged production fence/candidate and five historical status tails; /private/tmp/takolio-v3-zod-scope-review-result.json |
+| `python3 scripts/admin-public-scan.py` (no Node prefix) | PASS added text; binary/manual limits retained |
+| `git diff --check` | PASS |
+
+The focused six-file run preceded the final one-line assertion that decodes the
+result with InventoryLotSchema and the SLO relative-import correction. The
+full gate covers those final edits; the five-file run covers affected decoders.
+The complete build retained upstream Zod Rollup annotation warnings and existing
+Admin font-resolution warnings; builds completed and font assets were emitted.
+The error-boundary test intentionally logged its synthetic "secret stack detail".
+Concurrent Vite helper checks emitted Port24678-in-use warnings but returned
+exit0 with the expected artifact/seed results. No network release was involved.
+
+Retained failures: earlier full run exit1,8failed/421passed files,
+13failed/9510passed tests,966.08s; /private/tmp/takolio-v3-zod-full-check.log.
+It loaded source while datetime fixes were in progress, causing undefined
+helper exports and a wrong SLO import; it also observed pre-regeneration
+baseline drift and colonless-offset rejection. This is failed evidence, not
+certification. Corrected import is ../../../packages/domain/src/foundation.
+Earlier typecheck failure TS2307 is retained in
+/private/tmp/takolio-v3-zod-typecheck-datetime.log. Initial scoped candidate
+check failed generated baseline drift; regeneration then passed, and the
+final --check passed without further candidate changes. Earlier focused
+payment tests had four fixture failures (seeded subscription and it.each array
+flattening); compare unchanged before/after tables and preserve actual [] in
+object cases. Earlier8files/321tests passed; these do not replace final gates.
+No test timeout, assertion, release guard, migration or CI policy was weakened.
+
+Independent read-only technical review found timestamp grammar drift, fixed
+with shared compatibility schemas. Reviewer probed1,170 datetime combinations
+and record edge cases against Zod3, found no remaining concrete issue and ran
+git diff --check. It did not run the full suite and supplies no human approval.
+Persistent regressions exercise early oversized-array rejection, defaults,
+HTTP400/custom/flattened validation errors, five auth invalid requests, four
+nonrecord payment requests with unchanged tables, OpenAPI rejection/markers,
+legacy timestamp bytes and persisted inventory command replay.
+
+Catalog evidence remains local: V1fingerprint
+f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37;
+candidate SHA2560f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4.
+The unchanged production continuity fence rejects the changed Zod dependency
+and foundation blobs. Fresh reviewed continuity strategy, exact-main CI,
+same-source staging/recovery and normal Environment approval remain required.
+
+---
+
 # Production preparation checks - 2026-10-29 JST
 
 Scope relative to f637134b4a337443b375985021d0d3bfc42a9e87:

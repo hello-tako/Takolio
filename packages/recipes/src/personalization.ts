@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { CanonicalIngredientIdSchema, CatalogIdSchema } from '../../domain/src/foundation';
+import { OffsetDateTimeSchema, CanonicalIngredientIdSchema, CatalogIdSchema } from '../../domain/src/foundation';
 
 export const NutrientSchema = z.enum(['energyKcal', 'proteinG', 'carbohydrateG', 'fatG', 'fiberG', 'sugarG', 'sodiumMg']);
 export type RankingNutrient = z.infer<typeof NutrientSchema>;
@@ -47,7 +47,7 @@ export const RecipeFeedbackSchema = z.object({
   userId: CatalogIdSchema,
   type: z.enum(['liked', 'disliked', 'cooked', 'skipped', 'swapped']),
   target: RecipeIdentitySchema,
-  occurredAt: z.string().datetime({ offset: true }),
+  occurredAt: OffsetDateTimeSchema,
   replacement: RecipeIdentitySchema.optional(),
   familyId: CatalogIdSchema.optional(),
   cuisine: CatalogIdSchema.optional(),

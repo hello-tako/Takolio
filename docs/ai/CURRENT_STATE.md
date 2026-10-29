@@ -1,3 +1,62 @@
+## Authorized Zod security migration - 2026-10-29 JST
+
+Task TAKOLIO_RECIPE_INTELLIGENCE_V3: RECIPE_V3_RESEARCH_IN_PROGRESS;
+review RECIPE_V3_INDEPENDENT_REVIEW_REQUIRED; release RECIPE_V3_BLOCKED.
+Owner explicitly approved the Zod migration exception, including protected
+PayOS/billing schema/type compatibility, tests and local catalog recertification.
+ADR-074 supersedes the pending-exception/security statements below.
+
+Workspace /Users/tunbee27/Documents/New project/Takolio-recipe-v3; branch
+codex/recipe-v3-zod-security; base904eb0872103524711e63d9fb74a1beeea6b9646.
+Zod3.25.76 ->4.6.7 fixes GHSA-mrhx-c7xc-m3w5. Explicit record keys, issues
+readers, types, prefault provenance and bounded native OpenAPI conversion retain
+existing contracts. Shared timestamp schemas preserve minute/colonless-offset
+legacy bytes; persisted inventory CREATE/read/CORRECT/replay covered. PayOS and
+billing each have only the exact record signature substitution; web billing
+only changes a generic type. No payment business or unrelated auth change.
+
+Executed locally with Node24.16.0/pnpm10.33.2:
+`CI=1 PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp pnpm check`
+PASS exit0;429files/9597tests/938.60s; typecheck/lint, Main/Admin migration
+replay and Client/Admin/Worker builds PASS. Focused6files/516tests and datetime
+callers5files/73tests PASS. `pnpm audit --json` PASS438dependencies/0vulnerabilities,
+no suppression. V3 audit --check PASS500recipes/44edits/25packets; seed byte
+parity and import500/2batches PASS. Scoped review/public scan/diff PASS; exact
+commands, logs, upstream build warnings and earlier failed13tests remain in
+recipe-intelligence-v3/14_TEST_STRATEGY.md. Technical review found no remaining
+concrete issue; it is not human culinary approval.
+
+V1release rel-bd00a4f53fcaeee4 remains authoritative; fingerprint
+f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37.
+Candidate SHA2560f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4
+unchanged. Candidate audit permits only the exact refresh/release.ts record
+signature change and reports matchesBaseCommit=false/ADR-074. The production
+D1 continuity fence stays unchanged and rejects changed Zod/foundation blobs.
+Local parity does not confer hosted catalog certification. Require reviewed
+shadow/canary1/canary5/canary25/d1 progression using the same SHA and normal gates.
+
+Fresh V2 release-check FAIL exit1: RUNTIME_PROJECTION_LOSS,
+INGREDIENT_RECONCILIATION_INCOMPLETE, SOURCE_CONTENT_VERIFICATION_INCOMPLETE,
+NUTRITION_EVIDENCE_INCOMPLETE. 1,395provisional IDs/4,233lines;
+2,996excluded lines/2,860transformations need review; nutrition1inherited/
+288blocked/211null. Full culinary verification/human approval0/500;
+six critical safety reviews pending; raw-shrimp/crab FAIL_UNRESOLVED.
+Versioned publication and saved-plan/shopping/cooking/offline/rollback
+compatibility remain unimplemented. No production dispatch is eligible.
+
+Next: publish this migration as a separate Draft PR against
+codex/recipe-v3-release-patches, then verify exact-head CI/Admin CI and independent
+review. Resolve current commit/PR/checks through handoff/PULL_REQUESTS.md and Git;
+prior PR45 final-head904eb087 CI40715776912/Admin40715776938 SUCCESS does not
+certify this migration. Close data/runtime/human gates, protected main review,
+exact-main CI and fresh same-source staging/recovery before production approval.
+No remote D1 mutation, feature flag change, merge or deployment occurred.
+
+Earlier checkpoints follow unchanged; their pending Zod exception, vulnerability,
+branch and test statements are historical observations.
+
+---
+
 ## Recipe Intelligence V3 production preparation - 2026-10-29 JST
 
 Task `TAKOLIO_RECIPE_INTELLIGENCE_V3`: RECIPE_V3_RESEARCH_IN_PROGRESS;

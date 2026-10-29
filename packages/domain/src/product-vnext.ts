@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { UtcDateTimeSchema } from './foundation';
 const Id = z.string().min(1).max(128).regex(/^[A-Za-z0-9_-]+$/);
 const membership = z.object({ householdId: Id, actorId: Id,
   role: z.enum(['owner', 'editor', 'viewer']), revoked: z.boolean() }).strict();
@@ -44,8 +45,8 @@ export function authorizeEnrichmentReview(raw: unknown, expectedRelease: string,
   const parsed = schema.safeParse(raw);
   return parsed.success && parsed.data.releaseId === expectedRelease && parsed.data.expectedRevision === currentRevision;
 }
-const entitlement = z.object({ paidUntil: z.string().datetime().nullable(), trial: z.object({
-  id: Id, startsAt: z.string().datetime(), endsAt: z.string().datetime(), policyVersion: Id,
+const entitlement = z.object({ paidUntil: UtcDateTimeSchema.nullable(), trial: z.object({
+  id: Id, startsAt: UtcDateTimeSchema, endsAt: UtcDateTimeSchema, policyVersion: Id,
   eligibilityVerified: z.literal(true),
 }).strict().nullable() }).strict();
 export function projectEntitlement(raw: unknown, now: Date) {
