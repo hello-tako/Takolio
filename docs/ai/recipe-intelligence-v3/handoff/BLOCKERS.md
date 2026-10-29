@@ -1,3 +1,35 @@
+## Recipe V3 beef identity and release recheck - 2026-10-29 JST
+
+Status: RECIPE_V3_RESEARCH_IN_PROGRESS; release RECIPE_V3_BLOCKED. Owner
+production deployment authorization remains in effect. No production mutation.
+`research/BEEF_IDENTITY_REVIEW.md` records 12 V2 lines/12 recipes using
+BEEF_SIRLOIN for several different or unspecified cuts; the V1 source also
+contains broader labels. Runtime production impact has not been established.
+No mapping, candidate, runtime, schema, or database was changed. Human review
+and compatibility analysis are required before changing the shared identity.
+
+Worktree /Users/tunbee27/Documents/New project/Takolio-recipe-v3; starting HEAD
+393eb0ea. Node24.16.0, pnpm10.33.2, prefix
+`PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp`:
+`pnpm recipe:seed:check` PASS (59 Vietnamese, 12 global, 71 runtime/71 media;
+Vite reported port 24678 already in use); `pnpm recipe:import:check` PASS
+(500 recipes/2 batches); `node scripts/recipe-intelligence-v3-audit.mjs --check`
+PASS (500/44/25; same Vite port warning); `pnpm audit --audit-level high` PASS
+(no known vulnerabilities); `pnpm recipe:refresh:release-check` FAIL exit 1
+with RUNTIME_PROJECTION_LOSS, INGREDIENT_RECONCILIATION_INCOMPLETE,
+SOURCE_CONTENT_VERIFICATION_INCOMPLETE, NUTRITION_EVIDENCE_INCOMPLETE.
+`python3 scripts/recipe-intelligence-v3-ingredient-exact.py` PASS (1395 IDs,
+4233 lines, zero exact matches). The report's embedded Python check PASS:
+503 manifest hashes and 12 lines in 12 recipes. This is not a culinary approval.
+
+Next: review cut and substitution meaning and legacy consumers; continue the
+1,395 unresolved identities, 6 critical safety cases, source/nutrition evidence,
+versioned consumer implementation and same-source staging/rollback. Do not
+bypass release gates or infer approval from automated checks. Full suite was not
+rerun for documentation-only changes.
+
+---
+
 ## Production deployment authorization - 2026-10-29 JST
 
 The owner explicitly confirmed an exception authorizing deployment. This resolves
