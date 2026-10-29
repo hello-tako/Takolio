@@ -44,11 +44,16 @@ six critical safety reviews pending; raw-shrimp/crab FAIL_UNRESOLVED.
 Versioned publication and saved-plan/shopping/cooking/offline/rollback
 compatibility remain unimplemented. No production dispatch is eligible.
 
-Next: publish this migration as a separate Draft PR against
-codex/recipe-v3-release-patches, then verify exact-head CI/Admin CI and independent
-review. Resolve current commit/PR/checks through handoff/PULL_REQUESTS.md and Git;
-prior PR45 final-head904eb087 CI40715776912/Admin40715776938 SUCCESS does not
-certify this migration. Close data/runtime/human gates, protected main review,
+Verified implementation 7c4d8700c0e1d4bd78a51007f7fdb0d46ae82091;
+[Draft PR46](https://github.com/hello-tako/Takolio/pull/46) OPEN on
+codex/recipe-v3-release-patches. Clean committed Admin validate preflight PASS:
+sourceSha=7c4d8700c0e1d4bd78a51007f7fdb0d46ae82091, cleanCheckout=true;
+sourceManifestSha256=6d042015488ced02508ace18add2ea80b1294d3602b01361b165f5b6989f68c4;
+readyForDeployment=false, remoteExecuted=false. Exact-head implementation runs
+Recipe V3 CI40860038264/Admin40860038241 started; outcome not yet observed at this
+checkpoint. Resolve later documentation HEAD and its own checks from PR46/Git;
+implementation/parent checks do not certify a later SHA. Next: exact-head hosted
+validation and independent review. Close data/runtime/human gates, protected main review,
 exact-main CI and fresh same-source staging/recovery before production approval.
 No remote D1 mutation, feature flag change, merge or deployment occurred.
 

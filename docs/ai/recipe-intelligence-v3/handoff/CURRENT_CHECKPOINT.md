@@ -6,8 +6,11 @@ REVIEW_STATUS: RECIPE_V3_INDEPENDENT_REVIEW_REQUIRED
 RELEASE_STATUS: RECIPE_V3_BLOCKED
 WORKING_BRANCH: codex/recipe-v3-zod-security
 PARENT_CHECKPOINT: 904eb0872103524711e63d9fb74a1beeea6b9646
-IMPLEMENTATION: resolve actual committed implementation in PULL_REQUESTS.md
-HOSTED_MIGRATION_CHECKS: not yet run; parent checks do not apply
+IMPLEMENTATION: 7c4d8700c0e1d4bd78a51007f7fdb0d46ae82091
+DRAFT_PR: https://github.com/hello-tako/Takolio/pull/46; OPEN; base codex/recipe-v3-release-patches
+HOSTED_MIGRATION_CHECKS: implementation runs40860038264/40860038241 started; outcome not yet observed here; resolve final review HEAD/checks from PR46
+CLEAN_ADMIN_PREFLIGHT: PASS; sourceSha=7c4d8700c0e1d4bd78a51007f7fdb0d46ae82091; cleanCheckout=true; readyForDeployment=false; remoteExecuted=false
+ADMIN_SOURCE_MANIFEST_SHA256: 6d042015488ced02508ace18add2ea80b1294d3602b01361b165f5b6989f68c4
 PRODUCTION_MUTATIONS: 0
 
 Zod4.6.7 migration is authorized by the owner (ADR-074), including the narrow

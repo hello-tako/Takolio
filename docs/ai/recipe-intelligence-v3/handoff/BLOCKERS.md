@@ -1,8 +1,9 @@
 # Current release blockers - 2026-10-29 JST
 
 The local Zod dependency advisory is resolved. The authorized compatibility
-migration still needs exact-head hosted validation, independent review and fresh
-catalog rollout certification. No audit suppression or continuity bypass.
+migration is committed at 7c4d8700c0e1d4bd78a51007f7fdb0d46ae82091, Draft PR46 OPEN;
+exact-head hosted validation, independent review and fresh catalog rollout
+certification remain required. Final review HEAD/checks resolve from PR46/Git. No audit suppression or continuity bypass.
 The four data blockers and all safety/human/runtime/staging gates remain real.
 
 Zod4.6.7 migration is authorized by the owner (ADR-074), including the narrow

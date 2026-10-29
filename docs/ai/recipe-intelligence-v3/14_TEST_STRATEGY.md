@@ -22,6 +22,19 @@ No production mutation, deployed-version claim or human culinary approval.
 | `python3 scripts/admin-public-scan.py` (no Node prefix) | PASS added text; binary/manual limits retained |
 | `git diff --check` | PASS |
 
+Publication verification: implementation 7c4d8700c0e1d4bd78a51007f7fdb0d46ae82091;
+[Draft PR46](https://github.com/hello-tako/Takolio/pull/46) OPEN on codex/recipe-v3-release-patches.
+`PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp node scripts/admin-release-preflight.mjs`
+PASS on the clean committed implementation; sourceSha=7c4d8700c0e1d4bd78a51007f7fdb0d46ae82091,
+sourceManifestSha256=6d042015488ced02508ace18add2ea80b1294d3602b01361b165f5b6989f68c4;
+configurationValidation=PASS, readyForDeployment=false, remoteExecuted=false.
+Log /private/tmp/takolio-v3-zod-committed-preflight.log. Scope/public/diff checks
+repeated PASS before commit. Implementation runs40860038264/40860038241 started;
+outcome not yet observed at this checkpoint. Final documentation HEAD and its
+own hosted checks resolve separately from PR46/Git. GitHub's push warning of
+48 default-branch advisories (8high/37moderate/3low) is separate from this branch's
+fresh pnpm audit0; default main is not security-certified by this migration.
+
 The focused six-file run preceded the final one-line assertion that decodes the
 result with InventoryLotSchema and the SLO relative-import correction. The
 full gate covers those final edits; the five-file run covers affected decoders.
