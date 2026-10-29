@@ -1,3 +1,16 @@
+# Current next action - 2026-10-29 JST
+
+1. Review [Draft PR46](https://github.com/hello-tako/Takolio/pull/46) on codex/recipe-v3-release-patches; implementation 7c4d8700c0e1d4bd78a51007f7fdb0d46ae82091, clean committed Admin validate preflight PASS, readyForDeployment=false. Preserve Draft33-45.
+2. Resolve final documentation HEAD from PR46/Git; read its own Recipe V3 CI/Admin CI and obtain independent review. Implementation runs40860038264/40860038241 started; no success inferred here. Preserve the unchanged production continuity fence; do not infer certification from local catalog parity.
+3. Close ingredient/quantity/source/nutrition evidence and six fingerprint-bound safety decisions. Continue autonomous product research using RAW_SEAFOOD_DECISIONS.md; no user-URL request is pending. Human approval remains separate.
+4. Implement accepted content-version/old-consumer compatibility after evidence closure; then protected main review/merge, exact-main CI, same-source staging/browser/recovery and normal Environment approval. Release NOT_READY; no production dispatch.
+
+
+Earlier checkpoint follows unchanged. Its pending exception, vulnerability,
+branch, test and next-action statements describe its historical snapshot.
+
+---
+
 # Next action
 
 1. Continue in codex/recipe-v3-release-patches, isolated V3 worktree. Verified implementation 7bdd574bc8ad401efd348e466093d13bf62c6ea3: complete local PASS exit0;428files/9570tests;951.14s; hosted validate40709482707/validate-admin40709482552 SUCCESS. Resolve subsequent documentation HEAD and its own exact-head CI from Git/PR45. Historical failures remain in14_TEST_STRATEGY.md.

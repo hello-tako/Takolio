@@ -106,7 +106,7 @@ export function buildInventoryAvailability(
   };
   const householdIds = new Set<string>();
   rows.forEach((raw, rowIndex) => {
-    const parsed = z.record(z.unknown()).safeParse(raw);
+    const parsed = z.record(z.string(), z.unknown()).safeParse(raw);
     if (!parsed.success) { report(rowIndex, {}, 'invalid_inventory'); return; }
     const row = parsed.data;
     if (options.householdId !== undefined && row.householdId !== options.householdId) {

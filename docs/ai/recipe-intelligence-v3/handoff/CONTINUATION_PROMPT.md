@@ -1,3 +1,51 @@
+# Current continuation instructions - 2026-10-29 JST
+
+Verified implementation 7c4d8700c0e1d4bd78a51007f7fdb0d46ae82091;
+[Draft PR46](https://github.com/hello-tako/Takolio/pull/46) OPEN on codex/recipe-v3-release-patches.
+Clean committed Admin validate preflight PASS, cleanCheckout=true;
+sourceManifestSha256=6d042015488ced02508ace18add2ea80b1294d3602b01361b165f5b6989f68c4;
+readyForDeployment=false, remoteExecuted=false. Implementation hosted runs
+40860038264/40860038241 started; outcome not yet observed at this checkpoint.
+Final documentation HEAD/checks must be resolved separately from PR46/Git.
+
+Continue in /Users/tunbee27/Documents/New project/Takolio-recipe-v3,
+branch codex/recipe-v3-zod-security; parent904eb0872103524711e63d9fb74a1beeea6b9646.
+Read mandatory authority documents and the current sections of 14_TEST_STRATEGY,
+17_PRODUCTION_RELEASE_PACKET,21_PRODUCTION_PREPARATION and this handoff.
+Verify Git/PR/run state; do not rerun a completed full local gate without a new
+runtime change or concern. Finish the migration commit/Draft PR/clean preflight
+and hosted exact-head checks, then remaining real data/runtime/review prerequisites.
+The owner granted a narrow Zod security compatibility exception; no payment
+business or unrelated auth/infrastructure changes. Never bypass data, human,
+continuity or Environment gates. Update required status docs with actual results.
+
+Zod4.6.7 migration is authorized by the owner (ADR-074), including the narrow
+PayOS/billing schema/type exception and tests. Local pnpm check PASS exit0:
+429files/9597tests/938.60s; typecheck/lint/Main+Admin migrations/builds PASS.
+Dependency audit PASS438dependencies/0vulnerabilities, no muted advisories.
+Candidate --check500/44/25, seed parity and import500/2batches PASS.
+Retained failures, exact commands and warning limits: 14_TEST_STRATEGY.md.
+
+V1release rel-bd00a4f53fcaeee4/fingerprint
+f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37 unchanged;
+candidate SHA2560f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4
+unchanged. Production D1 continuity still rejects the changed Zod/foundation
+blobs. Fresh reviewed shadow/canary1/canary5/canary25/d1 progression must retain
+the same SHA and normal approvals; local parity alone is insufficient.
+
+Fresh V2 release-check FAIL exit1: RUNTIME_PROJECTION_LOSS,
+INGREDIENT_RECONCILIATION_INCOMPLETE, SOURCE_CONTENT_VERIFICATION_INCOMPLETE,
+NUTRITION_EVIDENCE_INCOMPLETE. Human approval/full culinary verification0/500;
+six critical cases pending, raw-shrimp/crab FAIL_UNRESOLVED. Ingredient/source/
+nutrition decisions, versioned publication, old saved-plan/shopping/cooking/
+offline/rollback compatibility and V3 staging/recovery remain incomplete.
+No remote D1 mutation, flag change, merge or deployment. Release NOT_READY.
+
+Earlier checkpoint follows unchanged. Its pending exception, vulnerability,
+branch, test and next-action statements describe its historical snapshot.
+
+---
+
 Continue TAKOLIO_RECIPE_INTELLIGENCE_V3 production preparation in
 /Users/tunbee27/Documents/New project/Takolio-recipe-v3,
 branch codex/recipe-v3-release-patches; parent f637134b4a337443b375985021d0d3bfc42a9e87,

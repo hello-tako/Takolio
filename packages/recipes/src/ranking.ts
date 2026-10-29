@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { OffsetDateTimeSchema } from '../../domain/src/foundation';
 import { compareIds } from '../../domain/src/availability';
 import { getCandidateSnapshotContext, type CandidateGenerationResult, type RecipeCandidate } from './candidates';
 import { RankingContextSchema, resolveRankingPreferences } from './personalization';
@@ -46,7 +47,7 @@ export interface RankedRecipeCandidate {
 
 export function rankRecipeCandidates(input: RecipeRankingInput) {
   const context = RankingContextSchema.parse(input.context);
-  const referenceTime = z.string().datetime({ offset: true }).parse(input.referenceTime);
+  const referenceTime = OffsetDateTimeSchema.parse(input.referenceTime);
   const referenceDate = z.string().date().parse(input.referenceDate);
   const snapshot = getCandidateSnapshotContext(input.generation);
   if (snapshot.householdId === null || snapshot.householdId !== context.householdId || snapshot.asOfDate !== referenceDate) {

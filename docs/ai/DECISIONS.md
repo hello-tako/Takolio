@@ -3749,3 +3749,46 @@ is required before release. No audit suppression or protection bypass is added.
 
 Rollback of these patches is a normal reviewed code/lockfile rollback; it does
 not alter database or user state and restores the prior dependency advisories.
+
+## ADR-074 - Authorized Zod 4 security compatibility migration (2026-10-29 JST)
+
+Status: accepted implementation scope; local full gate PASS (429files/9597tests); audit PASS (0 vulnerabilities); independent technical review found no remaining concrete issues. Hosted, human and operator approval are separate.
+The owner explicitly approved the Zod migration exception, including the two
+PayOS/billing records, contract tests and fresh local catalog certification.
+This supersedes the pending-exception statements at the prior checkpoint.
+
+Problem: Zod3.25.76 is affected by GHSA-mrhx-c7xc-m3w5; an array maximum still
+traverses every invalid element. The patched parser requires >=4.6.6; importing
+zod/v3 under an upgraded package would retain the vulnerable implementation.
+
+Decision: migrate root Zod to the patched 4.6.7 parser. Limit protected changes
+to necessary schema/type/error compatibility. Preserve HTTP status/envelopes,
+custom validation messages, signed payment verification, prices, grants, tenant
+and session authority. Update the bounded OpenAPI exporter with explicit
+unsupported-node/check rejection and runtime refinement/transform markers.
+No payment business behavior, production infrastructure or remote data changes.
+
+Compatibility findings: Zod4 defaults skip nested parsing and its datetime grammar
+rejects previously valid colonless offsets/minute precision. Use prefault for
+recipe/family provenance; shared UTC/offset schemas retain the old timestamp
+grammar and bytes, with all caller calendar/finite/offset checks intact. Existing
+stored inventory lots remain readable and command replay retains exact bytes.
+Technical reviewer probed 1,170 datetime combinations against Zod3 and found
+parity; regression coverage includes actual persisted CREATE/CORRECT/read/replay.
+
+The candidate audit previously required every pinned file to match b49f3e6c
+byte-for-byte. Permit only the single exact string-key record substitution in
+refresh/release.ts; every other byte/path remains pinned. Negative self-checks
+reject extra drift, other paths and duplicate baseline markers. The generated
+baseline truthfully records matchesBaseCommit=false, ADR-074 and both hashes.
+This candidate-audit compatibility exception does not change the production
+D1 continuity fence, release eligibility or food-content approval requirements.
+
+Verification: compiler and full repository gates; focused invalid-request,
+payment/auth, OpenAPI and oversized-array regressions; fresh dependency audit;
+recompile current catalog, byte-compare seeds and verify candidate artifacts.
+Keep the existing production catalog continuity dependency fence unchanged:
+local recertification alone cannot authorize unchanged-D1 continuity across the
+parser upgrade. Normal review, fresh staging/certification and Environment
+approval remain required. Rollback is a reviewed dependency/code revert; no
+schema or content migration is introduced by this change.

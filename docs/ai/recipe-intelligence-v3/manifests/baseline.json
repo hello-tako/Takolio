@@ -569,8 +569,10 @@
     },
     {
       "path": "packages/recipes/src/refresh/release.ts",
-      "sha256": "a43c3d288b283e62bf9ac918ccf1e1237f7123ccc68affe07aa2464ec8d7a7ac",
-      "matchesBaseCommit": true
+      "sha256": "270868784c62a8bc692bc2ce81e1c75b52d94487573a1a0e27e45a0e34324fe9",
+      "matchesBaseCommit": false,
+      "compatibilityException": "ADR-074",
+      "baseSha256": "a43c3d288b283e62bf9ac918ccf1e1237f7123ccc68affe07aa2464ec8d7a7ac"
     },
     {
       "path": "data/recipe-import/t14f/pilot-30.jsonl",

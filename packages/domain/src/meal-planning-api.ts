@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { CatalogIdSchema } from './foundation';
+import { OffsetDateTimeSchema, CatalogIdSchema } from './foundation';
 import { ExactQuantityDtoSchema, MoneyDtoSchema, ShoppingResultDtoSchema } from './meal-shopping-api';
 
 export const PlanIdSchema = z.string().uuid();
@@ -9,7 +9,7 @@ const MealType = z.enum(['breakfast', 'lunch', 'dinner']);
 const Servings = z.number().int().min(1).max(20);
 const SlotId = z.string().max(64).regex(/^\d{4}-\d{2}-\d{2}:(breakfast|lunch|dinner):\d{1,2}$/);
 const Code = z.string().min(1).max(200);
-const Instant = z.string().datetime({ offset: true });
+const Instant = OffsetDateTimeSchema;
 
 export const MealPlanningIntentSchema = z.object({
   startDate: z.string().date(),

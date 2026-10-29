@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { compareIds, type LotAllocation } from '../../domain/src/availability';
-import { CanonicalIngredientIdSchema, PositiveQuantitySchema, StandardUnitSchema } from '../../domain/src/foundation';
+import { OffsetDateTimeSchema, CanonicalIngredientIdSchema, PositiveQuantitySchema, StandardUnitSchema } from '../../domain/src/foundation';
 import { Quantity, QuantityRangeError } from '../../domain/src/quantity';
 import type { RecipeCandidate } from './candidates';
 
@@ -8,7 +8,6 @@ const QuantitySchema = z.union([PositiveQuantitySchema, z.literal(0)]);
 const LotIdSchema = z.string().min(1).max(200).refine((value) => value === value.trim() && !value.includes('\0'));
 const HouseholdIdSchema = z.string().min(1).max(200).refine((value) => value === value.trim() && !value.includes('\0'));
 const ExpiryKindSchema = z.enum(['unknown', 'best_before', 'use_by', 'estimated']);
-const OffsetDateTimeSchema = z.string().datetime({ offset: true });
 const LegacyDateTimeSchema = z.string().regex(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/)
   .refine((value) => {
     const instant = new Date(`${value.replace(' ', 'T')}Z`);

@@ -1,3 +1,27 @@
+# Current Zod migration review - 2026-10-29 JST
+
+Branch codex/recipe-v3-zod-security; base codex/recipe-v3-release-patches at
+904eb0872103524711e63d9fb74a1beeea6b9646. Verified implementation
+7c4d8700c0e1d4bd78a51007f7fdb0d46ae82091; [Draft PR46](https://github.com/hello-tako/Takolio/pull/46)
+OPEN on codex/recipe-v3-release-patches. Preserve Draft33-45 review units.
+Clean committed Admin validate preflight PASS: cleanCheckout=true,
+sourceManifestSha256=6d042015488ced02508ace18add2ea80b1294d3602b01361b165f5b6989f68c4,
+readyForDeployment=false, remoteExecuted=false. Implementation runs
+[Recipe V3 CI40860038264](https://github.com/hello-tako/Takolio/actions/runs/40860038264)
+and [Admin CI40860038241](https://github.com/hello-tako/Takolio/actions/runs/40860038241)
+started; outcome not yet observed at this checkpoint. Resolve final documentation
+head and its own checks from PR46; check headSha before using any result.
+Fresh PR45 readback: OPEN/Draft; exact904eb087 Recipe V3 CI40715776912 and
+Admin CI40715776938 SUCCESS. Those checks do not cover this migration.
+Implementation and later documentation HEAD must be recorded separately;
+a handoff cannot name its own final commit. No main merge or deployment.
+
+
+Earlier checkpoint follows unchanged. Its pending exception, vulnerability,
+branch, test and next-action statements describe its historical snapshot.
+
+---
+
 # Production patch review - 2026-10-29 JST
 
 [Draft PR45](https://github.com/hello-tako/Takolio/pull/45) OPEN; branch

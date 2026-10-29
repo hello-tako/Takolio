@@ -4,54 +4,33 @@ import { MealPlanningIntentSchema, MealPlanDtoSchema, PlanIdSchema, PlanningRequ
 import { CurrentMealPlanDtoSchema } from '../packages/domain/src/meal-planning-presentation';
 
 type JsonSchema = Record<string, unknown>;
-/** Only locked Zod3 nodes used by this selected contract are supported. */
-export function describeZodContract(schema: z.ZodTypeAny): JsonSchema {
-  if (schema instanceof z.ZodOptional) return describeZodContract(schema.unwrap());
-  if (schema instanceof z.ZodNullable) return { anyOf: [describeZodContract(schema.unwrap()), { type: 'null' }] };
-  if (schema instanceof z.ZodDefault) return { ...describeZodContract(schema.removeDefault()), default: schema._def.defaultValue() };
-  if (schema instanceof z.ZodEffects) return { ...describeZodContract(schema.innerType()), 'x-runtime-validation': true };
-  if (schema instanceof z.ZodString) {
-    const result: JsonSchema = { type: 'string' };
-    for (const check of schema._def.checks) {
-      if (check.kind === 'min') result.minLength = check.value;
-      else if (check.kind === 'max') result.maxLength = check.value;
-      else if (check.kind === 'regex') result.pattern = check.regex.source;
-      else if (check.kind === 'uuid') result.format = 'uuid';
-      else if (check.kind === 'date') result.format = 'date';
-      else if (check.kind === 'datetime') { result.format = 'date-time'; result['x-runtime-validation'] = true; }
-      else if (check.kind === 'trim') result['x-runtime-transform'] = 'trim';
-      else throw new Error('CONTRACT_UNSUPPORTED_STRING_CHECK');
-    }
-    return result;
-  }
-  if (schema instanceof z.ZodNumber) {
-    const result: JsonSchema = { type: 'number' };
-    for (const check of schema._def.checks) {
-      if (check.kind === 'int') result.type = 'integer';
-      else if (check.kind === 'min') result[check.inclusive ? 'minimum' : 'exclusiveMinimum'] = check.value;
-      else if (check.kind === 'max') result[check.inclusive ? 'maximum' : 'exclusiveMaximum'] = check.value;
-      else if (check.kind === 'finite') result['x-runtime-validation'] = true;
-      else throw new Error('CONTRACT_UNSUPPORTED_NUMBER_CHECK');
-    }
-    return result;
-  }
-  if (schema instanceof z.ZodBoolean) return { type: 'boolean' };
-  if (schema instanceof z.ZodNull) return { type: 'null' };
-  if (schema instanceof z.ZodLiteral) return { const: schema.value };
-  if (schema instanceof z.ZodEnum) return { type: 'string', enum: schema.options };
-  if (schema instanceof z.ZodArray) return { type: 'array', items: describeZodContract(schema.element),
-    ...(schema._def.minLength ? { minItems: schema._def.minLength.value } : {}),
-    ...(schema._def.maxLength ? { maxItems: schema._def.maxLength.value } : {}) };
-  if (schema instanceof z.ZodObject) {
-    const properties: Record<string, JsonSchema> = {};
-    const required: string[] = [];
-    for (const [key, child] of Object.entries(schema.shape) as [string, z.ZodTypeAny][]) {
-      properties[key] = describeZodContract(child);
-      if (!child.isOptional()) required.push(key);
-    }
-    return { type: 'object', properties, required, additionalProperties: schema._def.unknownKeys === 'passthrough' };
-  }
-  throw new Error('CONTRACT_UNSUPPORTED_ZOD_NODE');
+/** Native Zod4 conversion, bounded to the selected contract's nodes and checks. */
+export function describeZodContract(schema: z.ZodType): JsonSchema {
+  const result = z.toJSONSchema(schema, {
+    io: 'input', cycles: 'throw', reused: 'inline',
+    override: ({ zodSchema, jsonSchema }) => {
+      const def = zodSchema._zod.def;
+      if (!['optional', 'nullable', 'default', 'string', 'number', 'boolean', 'null', 'literal', 'enum', 'array', 'object'].includes(def.type))
+        throw new Error('CONTRACT_UNSUPPORTED_ZOD_NODE');
+      const checks: Array<z.core.$ZodCheckDef & { format?: string }> = (def.checks ?? []).map(check => check._zod.def);
+      if ('check' in def && typeof def.check === 'string') checks.push(def);
+      for (const rule of checks) {
+        if (rule.check === 'custom') jsonSchema['x-runtime-validation'] = true;
+        else if (rule.check === 'overwrite') jsonSchema['x-runtime-transform'] = 'overwrite';
+        else if (def.type === 'string') {
+          if (rule.check === 'string_format' && ['regex', 'uuid', 'date', 'datetime'].includes(rule.format ?? '')) {
+            if (rule.format === 'datetime') jsonSchema['x-runtime-validation'] = true;
+          } else if (!['min_length', 'max_length'].includes(rule.check)) throw new Error('CONTRACT_UNSUPPORTED_STRING_CHECK');
+        } else if (def.type === 'number') {
+          if (!['number_format', 'greater_than', 'less_than'].includes(rule.check)) throw new Error('CONTRACT_UNSUPPORTED_NUMBER_CHECK');
+        } else if (def.type === 'array') {
+          if (!['min_length', 'max_length'].includes(rule.check)) throw new Error('CONTRACT_UNSUPPORTED_ARRAY_CHECK');
+        } else throw new Error('CONTRACT_UNSUPPORTED_ZOD_CHECK');
+      }
+    },
+  });
+  delete result.$schema;
+  return result;
 }
 
 export function buildPlannerOpenApi(sourceHashes: readonly { path: string; sha256: string }[]) {

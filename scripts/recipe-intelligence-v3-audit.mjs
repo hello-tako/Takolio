@@ -49,7 +49,30 @@ const registry = json('data/recipe-import/approved-batches.json');
 const beforeFiles = ['packages/recipes/src/data.ts', releasePath, 'data/recipe-import/approved-batches.json', `${V2}/manifest.json`,
   'packages/recipes/src/runtime-recipe.ts', 'packages/recipes/src/catalog-fingerprint.ts', 'packages/recipes/src/runtime-ingredient-audit.ts',
   'packages/recipes/src/refresh/schema.ts', 'packages/recipes/src/refresh/compiler.ts', 'packages/recipes/src/refresh/release.ts', ...registry.batches.map((entry) => entry.source)];
-for (const file of beforeFiles) assert.equal(sha(read(file)), sha(execFileSync('git', ['show', `${BASE_SHA}:${file}`], { cwd: ROOT, maxBuffer: 32 * 1024 * 1024 })), `PINNED_BASELINE_DRIFT: ${file}`);
+const recordCompatibilityPath = 'packages/recipes/src/refresh/release.ts';
+const recordBefore = 'auditSummary: z.record(z.unknown()),';
+const recordAfter = 'auditSummary: z.record(z.string(), z.unknown()),';
+function assertPinnedBaseline(file, current, baseline) {
+  // ADR-074 permits only this exact Zod signature change; all other bytes stay pinned.
+  if (file === recordCompatibilityPath) {
+    const source = baseline.toString('utf8');
+    assert.equal(source.split(recordBefore).length, 2, 'ZOD_RECORD_BASELINE_MISMATCH');
+    baseline = Buffer.from(source.replace(recordBefore, recordAfter));
+  }
+  assert.equal(sha(current), sha(baseline), `PINNED_BASELINE_DRIFT: ${file}`);
+}
+assertPinnedBaseline(recordCompatibilityPath, recordAfter, recordBefore);
+assert.throws(() => assertPinnedBaseline(recordCompatibilityPath, `${recordAfter} drift`, recordBefore), /PINNED_BASELINE_DRIFT/u);
+assert.throws(() => assertPinnedBaseline('other.ts', recordAfter, recordBefore), /PINNED_BASELINE_DRIFT/u);
+assert.throws(() => assertPinnedBaseline(recordCompatibilityPath, recordAfter, recordBefore.repeat(2)), /ZOD_RECORD_BASELINE_MISMATCH/u);
+const baselineFiles = beforeFiles.map((file) => {
+  const current = read(file);
+  const baseline = execFileSync('git', ['show', `${BASE_SHA}:${file}`], { cwd: ROOT, maxBuffer: 32 * 1024 * 1024 });
+  assertPinnedBaseline(file, current, baseline);
+  const matchesBaseCommit = sha(current) === sha(baseline);
+  return { path: file, sha256: sha(current), matchesBaseCommit,
+    ...(!matchesBaseCommit ? { compatibilityException: 'ADR-074', baseSha256: sha(baseline) } : {}) };
+});
 execFileSync(process.execPath, ['scripts/recipe-intelligence-v3-source-scan.mjs', 'check'], { cwd: ROOT, stdio: 'pipe' });
 const vite = await createServer({ server: { middlewareMode: true, hmr: false }, appType: 'custom', logLevel: 'error', optimizeDeps: { noDiscovery: true, include: [] } });
 try {
@@ -260,7 +283,7 @@ try {
       expectedRuntimeFingerprint: release.expectedRuntimeFingerprint, actualRuntimeFingerprint: await fingerprintRecipes(runtime), manifestSha256: sha(read(releasePath)) },
     v2: { canonicalArtifactSha256: manifest.canonicalArtifactSha256, provisionalRuntimeProjectionFingerprint: projection.provisionalRuntimeProjectionFingerprint,
       recipeCount: recipes.length, ingredientCount: recipes.reduce((n, recipe) => n + recipe.ingredients.length, 0), stepCount: recipes.reduce((n, recipe) => n + recipe.steps.length, 0), fileHashesVerified: manifest.fileHashes.length },
-    baselineFiles: beforeFiles.map((file) => ({ path: file, sha256: sha(read(file)), matchesBaseCommit: true })), productionMutations: 0,
+    baselineFiles, productionMutations: 0,
   });
   emit(`${OUT}/manifests/coverage.json`, {
     schemaVersion: 1, recipeCount: rows.length, ids: { runtime: runtime.length, v2: recipes.length, exactSetMatch: true },

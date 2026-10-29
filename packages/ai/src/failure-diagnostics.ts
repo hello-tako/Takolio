@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 const stages = ['invalid_envelope', 'empty_content', 'unparseable_content', 'empty_items'] as const;
 export type AIFailureStage = typeof stages[number];
-export interface AIValidationIssue { path: string; code: z.ZodIssueCode }
+export interface AIValidationIssue { path: string; code: z.ZodIssue['code'] }
 export interface AIFailureDiagnostics {
   failureStage?: AIFailureStage;
   validationIssues?: AIValidationIssue[];
@@ -11,12 +11,12 @@ const rootFields = new Set(['items', 'merchant_name', 'invoice_number', 'purchas
 const itemFields = new Set(['raw_name', 'estimated_quantity', 'unit', 'confidence', 'storage', 'category', 'canonical_id', 'unit_price_vnd', 'total_price_vnd']);
 const issueCodes = new Set<string>(Object.values(z.ZodIssueCode));
 
-function issuePath(path: Array<string | number>): string {
+function issuePath(path: PropertyKey[]): string {
   if (path.length === 0) return '$';
   if (path.length === 1 && rootFields.has(String(path[0]))) return String(path[0]);
   if (path[0] === 'items' && Number.isSafeInteger(path[1]) && Number(path[1]) >= 0) {
     if (path.length === 2) return 'items[]';
-    if (path.length === 3 && itemFields.has(String(path[2]))) return `items[].${path[2]}`;
+    if (path.length === 3 && itemFields.has(String(path[2]))) return `items[].${String(path[2])}`;
   }
   return '$other';
 }
@@ -38,7 +38,7 @@ export function sanitizeFailureDiagnostics(value: unknown): AIFailureDiagnostics
         || (path.startsWith('items[].') && itemFields.has(path.slice('items[].'.length)));
       if (!validPath || seen.has(`${path}:${code}`)) continue;
       seen.add(`${path}:${code}`);
-      issues.push({ path, code: code as z.ZodIssueCode });
+      issues.push({ path, code: code as z.ZodIssue['code'] });
       if (issues.length === 8) break;
     }
     if (issues.length) result.validationIssues = issues;

@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { CatalogIdSchema } from '../../domain/src/foundation';
+import { OffsetDateTimeSchema, CatalogIdSchema } from '../../domain/src/foundation';
 import {
   ComponentIdSchema,
   ComponentProvenanceSchema,
@@ -31,7 +31,7 @@ import {
 const ScopeSchema = z.object({ householdId: CatalogIdSchema, userId: CatalogIdSchema }).strict();
 const RevisionSchema = z.number().int().safe().min(1).max(Number.MAX_SAFE_INTEGER - 1);
 const SlotIdSchema = z.string().min(1).max(64);
-const TimestampSchema = z.string().datetime({ offset: true });
+const TimestampSchema = OffsetDateTimeSchema;
 
 const CompositionRowSchema = z.object({
   plan_id: CatalogIdSchema,
