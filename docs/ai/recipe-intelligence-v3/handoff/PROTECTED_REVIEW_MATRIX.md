@@ -33,3 +33,19 @@ Protected integration must validate each actual integration source after the
 required independent review. CI workflows, branch protection and Environment
 approval stay intact. Exact-main checks and fresh hosted staging/catalog/recovery
 certification remain required. Code review is separate from culinary approval.
+
+## PR52 and protection scope - 2026-10-31 JST
+
+| PR | Exact HEAD | Independent approval | Exact-head checks |
+|---|---|---|---|
+| [PR52](https://github.com/hello-tako/Takolio/pull/52) | `f55172363970e88b38a7bb9c77f5b544e9c0778c` | Absent; vn-taphoanhatung requested | Recipe41087966158/Admin41087965933 SUCCESS |
+
+Review requests remain on PR33-50 and PR52; reviewer has write access. All PRs
+remain Draft/open. Resolve later documentation HEADs/checks from GitHub, not this
+snapshot. PR51's approved HEAD is unchanged.
+
+Main protection requires approval on the actual main-targeting PR, strict
+validate/validate-admin, stale/last-push review, admin enforcement and resolved
+conversations. It does not impose an independent ancestor-approval rule. Review
+coverage for each small slice remains a program requirement; do not consolidate
+the whole stack into a giant PR or infer ancestor/content approval from PR51.

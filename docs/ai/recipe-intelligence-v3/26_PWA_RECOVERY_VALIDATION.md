@@ -124,3 +124,59 @@ flags-OFF recovery; apply ordered0046/0047 using the0047 dispatch; certify chang
 foundation in shadow/canary1/5/25/d1, then normal Environment-approved deployment
 and verify its real receipt/SHA/traffic/health. Owner deployment authorization
 already exists. No merge, remote migration, flag change or deployment occurred.
+
+## Published review checkpoint - 2026-10-31 JST
+
+[PR52](https://github.com/hello-tako/Takolio/pull/52) is OPEN/Draft against
+codex/recipe-v3-shopping-content. Implementation HEAD:
+f55172363970e88b38a7bb9c77f5b544e9c0778c. Reviewer vn-taphoanhatung has write
+access; requested on PR33-50 and PR52. PR51 approval remains bound to ae68f7e5.
+Recipe41087966158 and Admin41087965933 SUCCESS. Each ran435files/9717tests;
+Recipe test duration945.51s. Lint/typecheck/migrations/builds PASS. Admin also
+passed preflight, real Workerd boundary, migration compatibility matrix, browser
+regression,10consecutive keyboard runs and the screenshot guard. These runs cover f5517236 only;
+any later documentation commit requires its own exact-head result.
+
+Fresh read-only GitHub verification: main and merge base remain b49f3e6c;
+main protection and production Environment protections are unchanged. Main
+requires one independent approval on its actual PR, strict validate/validate-admin,
+stale dismissal, last-push review, admin enforcement and conversation resolution.
+There is no GitHub rule requiring separate approvals on every ancestor PR.
+Program review coverage still applies to each independent slice; keep the small
+stack required by the original request. Code review cannot approve food content.
+
+Executed from this repository, with
+`PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp CI=1`:
+
+- `node scripts/recipe-intelligence-v3-audit.mjs --check`: PASS exit0,
+  500recipes/44edits/25packets; all four release blockers remain. Log/exit:
+  `/private/tmp/takolio-v3-reviewer-followup-audit.log` and `.exit`.
+- `pnpm recipe:refresh:release-check`: FAIL exit1,
+  RECIPE_REFRESH_RELEASE_BLOCKED with RUNTIME_PROJECTION_LOSS,
+  INGREDIENT_RECONCILIATION_INCOMPLETE,SOURCE_CONTENT_VERIFICATION_INCOMPLETE,
+  NUTRITION_EVIDENCE_INCOMPLETE. Canonical500 PASS; canonical artifact
+  da87da20475fa8d7ec92c716e899ee572339573258ae6d9cc7f3f8f554f2d695;
+  provisional runtime projection
+  6d0e3eb85696bb7c31bc54ac62783bc94432aaf008028eca79b17041f3eaed87.
+  Log/exit: `/private/tmp/takolio-v3-reviewer-followup-release.log` and `.exit`.
+  Existing nonfatal port24678 warning retained.
+
+This follow-up updates review/release documentation only. No repeated full local
+suite, approval, publication, hosted certification, merge or deployment is implied.
+
+Admin test duration1299.71s; browser13tests/1.7m, keyboard10tests/24.5s PASS.
+Hosted preflight was validation-only: cleanCheckout=false after build,
+readyForDeployment=false,remoteExecuted=false; source manifest
+5c26ea3737aedc803d5da0e31fffad5463e54211eeb1e03d0496acaa6d2dd449.
+Neither a green validation workflow nor this manifest is a deployment receipt.
+CI logs retained locally:
+`/private/tmp/takolio-v3-pr52-implementation-recipe-ci.log` and
+`/private/tmp/takolio-v3-pr52-implementation-admin-ci.log`.
+
+Documentation checks: `git diff --check` and
+`python3 scripts/admin-public-scan.py` PASS exit0 (added text only).
+`python3 /private/tmp/takolio-v3-reviewer-docs-check.py` PASS exit0: six historical
+tails unchanged, eight Markdown files only. The accidentally dropped historical
+PR heading was restored. Full eight-file diff reviewed; no local full-suite repeat
+for documentation. Later documentation HEAD/CI resolve from the same PR52;
+no extra PR, reviewer request or mutation of PR51's approved source is needed.

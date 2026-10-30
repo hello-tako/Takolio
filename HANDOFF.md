@@ -1,29 +1,34 @@
 ## Recipe V3 PWA and recovery checkpoint - 2026-10-31 JST
 
 Status: RECIPE_V3_IMPLEMENTATION_IN_PROGRESS; production NOT_READY.
-Branch codex/recipe-v3-browser-certification; parent/approved PR51 HEAD
-ae68f7e5a4bc987155aaeed577f07f95b893359b. Checks/documentation only; no runtime,
-schema, protected payment/auth, release config, candidate or approval changes.
-Local Worker/SQLite flags-OFF/ON recovery PASS1file/5tests; real-service-worker
-PWA offline/reload/reconnect PASS5checks. Cold offline reload retains queued work
-behind existing session verification. No hosted/device/older-version certification.
-Full pnpm check PASS exit0:435files/9717tests,973.91s;types,lint,migrations,builds PASS.
-Commands/results:docs/ai/recipe-intelligence-v3/26_PWA_RECOVERY_VALIDATION.md.
+Branch codex/recipe-v3-browser-certification; PR52 is OPEN/Draft against
+codex/recipe-v3-shopping-content. Validated implementation f55172363970e88b38a7bb9c77f5b544e9c0778c;
+parent/approved PR51 HEAD ae68f7e5a4bc987155aaeed577f07f95b893359b.
+Local recovery PASS1file/5tests; real-service-worker PWA PASS5checks, twice.
+Full pnpm check PASS435files/9717tests,973.91s,exit0. Cold offline reload retains
+queued work behind session verification; no hosted recovery certification.
 
-PR51 independently approved by vn-taphoanhatung on exact ae68f7e5; Recipe
-41059010571/Admin41059010747 SUCCESS. PR33-50 still require independent review;
-review requests already sent to that reviewer. New slice needs its own PR/CI/review.
-Four actual catalog release gates still FAIL;1395provisional IDs/4233lines,
-six critical safety cases,0/500human culinary approvals and approved publication
-remain open. Code approval does not approve food content.
+Reviewer vn-taphoanhatung has write access. Requests already exist on PR33-50
+and PR52; PR51 is APPROVED with Recipe/Admin CI SUCCESS. Recipe41087966158 and Admin41087965933 SUCCESS on f5517236. Both ran
+435files/9717tests; Admin also passed Workerd, migration matrix, browser and
+10keyboard repeats. Resolve later documentation HEAD/CI from GitHub.
+Main requires approval on the actual main-targeting PR, strict validate/validate-admin,
+stale/last-push review and admin enforcement; it has no separate ancestor-approval
+rule. Each independent slice still needs review coverage under the program's review
+requirements. Preserve the small PR stack; PR51 approval covers its own slice.
 
-Next: finish/publish this bounded validation slice against
-codex/recipe-v3-shopping-content; obtain genuine stack review/protected main and
-exact-main CI; close content/publication gates; certify same-source hosted staging,
-recovery and catalog; use ordered0046/0047 via0047 dispatch before Worker; normal
-Environment-approved deploy and real receipt/SHA/traffic/health verification.
-Owner production authorization already exists. No merge,remote mutation,flag change
-or deployment. Exact commands/results/failures/limits:docs/ai/recipe-intelligence-v3/26_PWA_RECOVERY_VALIDATION.md.
+Fresh V3 audit PASS500recipes/44edits/25packets. Actual refresh release check
+FAIL exit1 with all four data blockers.1395provisional IDs/4233lines,six critical
+safety cases,0/500human culinary approvals and approved publication remain open.
+Exact commands, receipts, failed gates and limits:
+docs/ai/recipe-intelligence-v3/26_PWA_RECOVERY_VALIDATION.md.
+
+Next: finish exact-head CI and genuine slice/data review; implement approved
+publication after evidence closure; protected main/exact-main CI; same-source hosted
+staging/catalog/recovery; ordered0046/0047 via0047 dispatch before Worker; normal
+Environment-approved deploy with real receipt/SHA/traffic/health verification.
+Owner deployment authorization persists. No merge,remote migration,flag change or
+deployment. This follow-up changes documentation only; full suite not repeated.
 
 Earlier records are historical checkpoints.
 
