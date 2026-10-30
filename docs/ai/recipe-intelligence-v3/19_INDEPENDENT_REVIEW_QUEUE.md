@@ -1,5 +1,22 @@
 # Independent review queue
 
+## Current candidate binding - 2026-10-31 JST
+
+Crab candidate changed after the owner's reported review. Artifact SHA256:
+`61729db2569a553a3551051161a6aa3cb0dc996d381050327b89108f56a473e2`. Crab `imp-f04b28987d7cd34a` fingerprint:
+`fc267f18206245a9036bf9156ee38a8aa7a0f306bb11618cef469cc03eba6e98`. Seven coordinated raw-to-cook edits replace the previous two;
+all499 other candidate records remain unchanged. An earlier artifact-bound
+review file must be reconciled with this artifact; the changed crab requires a
+new actual decision. No existing decision is inferred or generated.
+
+The MHLW household endpoint75C for at least1minute and Marine Foods half-thaw
+comparator support bounded corrections, not exact-product safety validation.
+Both seafood cases remain FAIL_UNRESOLVED; six critical cases remain pending.
+The owner statement below remains recorded against its original artifact.
+Actual structured decisions0/500; reviewer/evidence/risk dispositions still
+absent. Deployment permission persists. Full checks and remaining gates:
+[14_TEST_STRATEGY.md](14_TEST_STRATEGY.md).
+
 ## Owner statement received - 2026-10-31 JST
 
 The human task owner replied "đã duyệt" to the question about professional
@@ -41,7 +58,7 @@ AI output, automated validation, and self-review cannot mark a row
 references, decision timestamp, candidate fingerprint, and unresolved-risk
 disposition.
 
-Two unresolved P0 cases have a concrete decision packet: [raw shrimp and crab](research/RAW_SEAFOOD_DECISIONS.md). It records current fingerprints, source limits, coupled field conflicts and three options per case. The user selected PROVIDE_RAW_PRODUCT_PROTOCOL for shrimp and SELECT_RAW_PATH for crab; six public product/context pages are now read; exact package/process validation and independent safety review remain PENDING. Marine Foods half-thaw directions conflict with archival full-thaw wording; no universal thaw/grill protocol inferred. User choices recorded at 2026-10-27T21:06:10Z; subsequent retrieval times are bound in the packet. No reviewer identity or safety approval supplied. Formulation/product selection permits follow-up work; it does not establish safety or HUMAN_APPROVED. The other four critical cases remain in research/GAP_RESEARCH_SUPPLEMENTS.md.
+Two unresolved P0 cases have a concrete decision packet: [raw shrimp and crab](research/RAW_SEAFOOD_DECISIONS.md). It records current fingerprints, source limits, coupled field conflicts and three options per case. The user selected PROVIDE_RAW_PRODUCT_PROTOCOL for shrimp and SELECT_RAW_PATH for crab; six public product/context pages are now read; exact package/process validation and independent safety review remain PENDING. Supplement08 removes blanket full-thaw and preboiled-warming wording, coordinates seven raw-to-cook edits and retains package-specific handling. No universal thaw/grill duration or validated SKU inferred. User choices recorded at 2026-10-27T21:06:10Z; subsequent retrieval times are bound in the packet. No reviewer identity or safety approval supplied. Formulation/product selection permits follow-up work; it does not establish safety or HUMAN_APPROVED. The other four critical cases remain in research/GAP_RESEARCH_SUPPLEMENTS.md.
 
 ## Offline review-record format (ADR-079)
 
@@ -58,7 +75,7 @@ An empty starting record (no approvals) for the current exact candidate file:
 ```json
 {
   "schemaVersion": 1,
-  "candidateArtifactSha256": "0f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4",
+  "candidateArtifactSha256": "61729db2569a553a3551051161a6aa3cb0dc996d381050327b89108f56a473e2",
   "reviews": []
 }
 ```

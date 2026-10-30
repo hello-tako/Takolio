@@ -1,3 +1,26 @@
+## Raw-crab candidate checkpoint - 2026-10-31 JST
+
+Status: RECIPE_V3_BLOCKED / production NOT_READY. Branch
+codex/recipe-v3-crab-cooking; base50ecf0188c1c98ce065c58bd8aa56a44ce679bea.
+Seven coordinated crab edits replace two prior edits; general MHLW center75C
+for at least1minute, package-specific thawing and clean utensils. Existing5/4
+minute timers are inspection reminders. All499 other candidates, quantities,
+nutrition, immutable V2 and runtime authority remain unchanged.
+Candidate SHA25661729db2569a553a3551051161a6aa3cb0dc996d381050327b89108f56a473e2.
+
+Focused62tests, audit500/49/25, complete recompilation/preservation and source
+cache provenance PASS. Full local gate PASS exit0;436files/9750tests/1016.95s; typecheck,lint,Main/Admin migration replay and Web/Admin/Worker builds PASS.
+Exact commands/results/limits: docs/ai/recipe-intelligence-v3/14_TEST_STRATEGY.md.
+Both seafood cases FAIL_UNRESOLVED; six safety reviews pending. Owner reports
+review complete; actual structured decisions0/500. Deployment permission persists.
+Four data gates, approved publication, independent stack review, protected-main
+CI and same-source hosted certification remain open. No production mutation.
+Next: publish the verified crab slice against
+codex/recipe-v3-review-records, then genuine review/data/publication/hosted gates.
+PR51 approved HEAD unchanged. Earlier checkpoints follow unchanged.
+
+---
+
 ## Recipe V3 review-record validation - 2026-10-31 JST
 
 Status: RECIPE_V3_BLOCKED / production NOT_READY. Owner deployment permission

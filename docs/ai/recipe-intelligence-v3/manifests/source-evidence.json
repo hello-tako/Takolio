@@ -770,23 +770,23 @@
       "editsPath": "data/recipe-intelligence/v3/research/batch-23-edits.json",
       "summary": {
         "recipeCount": 20,
-        "sourceAttemptCount": 50,
+        "sourceAttemptCount": 52,
         "sourceStatusCounts": {
-          "SOURCE_CONTENT_READ": 23,
-          "SOURCE_RELEVANCE_VERIFIED": 23,
+          "SOURCE_CONTENT_READ": 25,
+          "SOURCE_RELEVANCE_VERIFIED": 25,
           "SOURCE_UNAVAILABLE": 13,
-          "URL_DISCOVERED": 50,
-          "URL_REACHABLE": 37
+          "URL_DISCOVERED": 52,
+          "URL_REACHABLE": 39
         },
-        "claimCount": 61,
+        "claimCount": 63,
         "claimStatusCounts": {
           "FACT_SUPPORTED": 25,
-          "SOURCE_CONTENT_READ": 22,
+          "SOURCE_CONTENT_READ": 24,
           "SOURCE_UNAVAILABLE": 14
         },
         "findingTypeCounts": {
           "BOUNDED_SOURCE_READ": 4,
-          "FOOD_SAFETY_REVIEW": 2,
+          "FOOD_SAFETY_REVIEW": 4,
           "FOOD_SAFETY_REVIEW_REQUIRED": 1,
           "INTERNAL_V2_OBSERVATION": 3,
           "INTERNAL_V2_UNIT_BASIS_UNRESOLVED": 20,

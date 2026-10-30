@@ -1,3 +1,22 @@
+## Raw-crab integrity check - 2026-10-31 JST
+
+Technical integrity PASS; no independent human approval implied. Candidate
+SHA25661729db2569a553a3551051161a6aa3cb0dc996d381050327b89108f56a473e2.
+All500 candidates recompiled/metadata matched;503V2files/51evidence inputs;
+1500provenance pointers/3944claim pointers/766fact references;49exact reversals
+across29recipes;6766ingredient lines/4938steps;559frozen inputs unchanged.
+Protected paths compared against current parent50ecf018, avoiding stale baseline
+assumptions after authorized runtime/Zod work. Runtime fingerprint unchanged.
+Preservation PASS:499other candidate records; historical sources/claims/two
+replaced edits/supplement metadata retained. Cache provenance PASS9sources/
+18hashes/15quote locators/officialPDFlink. Checks prove integrity, not semantic
+sufficiency or product safety. General MHLW cooking endpoint and Marine Foods
+half-thaw comparator retain their bounded scope. Six critical reviews pending;
+raw shrimp/crab FAIL_UNRESOLVED. Exact checks:../14_TEST_STRATEGY.md.
+Earlier technical reviews below bind their historical artifacts only.
+
+---
+
 # Current supplement07 technical review
 
 No concrete findings in independent agent review. Human culinary approval remains0/500; release blocked. Verified data implementation `a578b5696389cdb6afeca7530e33b1f4e384690e` follows documentation checkpoint d7ed5cf8900212915246d151d8095602a40a225e. Candidate SHA256 `0f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4`.

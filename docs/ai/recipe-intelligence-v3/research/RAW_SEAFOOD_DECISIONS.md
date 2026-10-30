@@ -1,5 +1,42 @@
 # Raw seafood formulation decisions
 
+## Current raw-crab candidate - 2026-10-31 JST
+
+Worktree Takolio-recipe-v3; branch codex/recipe-v3-crab-cooking;
+parent50ecf0188c1c98ce065c58bd8aa56a44ce679bea. ADR-072 editorial scope only.
+Current candidate artifact SHA256: `61729db2569a553a3551051161a6aa3cb0dc996d381050327b89108f56a473e2`.
+Current crab content fingerprint: `fc267f18206245a9036bf9156ee38a8aa7a0f306bb11618cef469cc03eba6e98`.
+Immutable V2 SHA256 remains
+`00a37d510676eb95f279699e8e9c5315bc82cb21205f26cead47876f4b72f533`.
+
+Seven coordinated crab edits now use the owner's raw-to-cook direction:
+raw heating-only ingredient note; refrigerator/drip/package handling;
+thermometer and clean-utensil advice; both existing timers explicitly inspection
+reminders; measured center at least75C held at least1minute. The numeric endpoint
+is attributed to MHLW general household guidance, not a validated manufacturer
+crab protocol. Marine Foods supplies a product-specific half-thaw counterexample;
+no SKU, thaw duration or mixed-brand instructions are adopted. The former blanket
+fully-thawed-center assertion and preboiled superficial-warming branch are removed.
+
+Canonical evidence: batch-23-evidence.json recipes[14].claims[7-8]; two new
+source rows, two claims. Both previous edits and prior supplement metadata remain
+in that recipe's history. Quantity800g,servings4,total40minutes,ingredient
+identities/roles/nutrition and V2 bytes are preserved, not independently validated.
+Other499 candidate records and raw-shrimp recipe remain unchanged.
+
+Both seafood cases remain FAIL_UNRESOLVED; six critical safety decisions remain
+pending. humanReview=PENDING; no source/runtime promotion or safety approval.
+The changed crab fingerprint needs a genuine new decision; any supplied review
+file must bind the new artifact hash. The owner's reported completed review is
+retained in19_INDEPENDENT_REVIEW_QUEUE.md; no reviewer identity is inferred.
+Checks and release limits: [14_TEST_STRATEGY.md](../14_TEST_STRATEGY.md).
+
+The following dated records retain their historical hashes, counts and proposals.
+The previous two-edit crab plan and unchanged-candidate statements are superseded
+by this bounded correction; their source observations remain evidence.
+
+---
+
 Prepared 2026-10-28 JST against documentation HEAD
 `90c5b221b3c4e3c1d878c4edb5dab7f5f07465cb`; data implementation
 `a578b5696389cdb6afeca7530e33b1f4e384690e`.

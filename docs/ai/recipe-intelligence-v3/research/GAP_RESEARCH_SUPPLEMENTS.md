@@ -1,8 +1,8 @@
 # Gap research supplements
 
-Current aggregate: 500 recipes/25 packets; 1,188 source rows/1,150 distinct URLs/1,326 claims. All 500 have bounded external-content claims. There are 44 reversible edits across 29 recipes. Full culinary verification and human approval remain 0/500; all humanReview=PENDING, fullRecipeVerification=NOT_COMPLETE, sourcePromotionAllowed=false, runtimePromotionAllowed=false.
+Current aggregate: 500 recipes/25 packets; 1,190 source rows/1,152 distinct URLs/1,328 claims. All 500 have bounded external-content claims. There are 49 reversible edits across 29 recipes. Full culinary verification and human approval remain 0/500; all humanReview=PENDING, fullRecipeVerification=NOT_COMPLETE, sourcePromotionAllowed=false, runtimePromotionAllowed=false.
 
-Source partition: 676 bounded reads, 199 reachable-only/unread, 309 unavailable-only, four reachable-and-unavailable. Claims: FACT_SUPPORTED405, SOURCE_CONTENT_READ592, SOURCE_UNAVAILABLE321, SOURCE_CONFLICT8. One supported field does not verify a complete recipe.
+Source partition: 678 bounded reads, 199 reachable-only/unread, 309 unavailable-only, four reachable-and-unavailable. Claims: FACT_SUPPORTED405, SOURCE_CONTENT_READ594, SOURCE_UNAVAILABLE321, SOURCE_CONFLICT8. One supported field does not verify a complete recipe.
 
 | Supplement | Recipes reviewed | Recipes with bounded external facts | Claims added | Editorial edits |
 |---|---:|---:|---:|---:|
@@ -13,6 +13,7 @@ Source partition: 676 bounded reads, 199 reachable-only/unread, 309 unavailable-
 |05|4|4|17|0|
 |06|6 critical cases|5; sprouts unresolved at that checkpoint|6|4|
 |07|6 critical cases|6; bounded official safety facts|7|8 new paths, 1 prior edit revised|
+|08|1 raw-crab case|1; general MHLW and product comparator facts|2|5 new paths, 2 prior edits revised|
 
 Initial research left 97 recipes without external-content claims. Supplements01-03 covered85;04-05 covered the remaining12 with bounded source or related-variant claims. These records overlap existing sources; canonical totals count merged records.
 
@@ -22,7 +23,24 @@ Initial research left 97 recipes without external-content claims. Supplements01-
 
 07 independently retrieved five official FDA/CDC URLs, adding eight packet source rows and seven claims in batches05/19/21/23. All 1,319 prior claims, 1,180 prior source objects and36 previous edits remain preserved, including the replaced chicken tip at its owning recipe's previousCandidateEdits. previousSupplementalResearch retains the preceding checkpoint. Raw source caches and unused oyster guidance are excluded from publication. General US and UK household guidance retains its jurisdiction and scope.
 
-No ingredient quantity, identity, role, serving or nutrition field changed. Salmon's existing sake top-up instruction remains. Raw shrimp and crab receive evidence only; no unsupported structural substitution is proposed.
+No ingredient quantity, identity, role, serving or nutrition field changed. Salmon's existing sake top-up instruction remains. At supplement07, raw shrimp and crab received evidence only. Supplement08 now coordinates the raw-crab editorial path; no structural substitution is proposed.
+
+## Coordinated raw-crab supplement08 - 2026-10-31 JST
+
+Batch23 adds two source rows/two claims; seven crab edits replace two prior
+thawing edits. General MHLW household guidance supports measured center75C for
+at least1minute and raw/cooked separation. Marine Foods is a half-thaw comparator
+only; package directions govern, no product or thaw duration selected. Timers5/4
+remain inspection reminders. Prior edits/claims/sources/supplement metadata are
+retained; all499 other candidate records are unchanged. Quantity/servings/time,
+ingredient identities/roles,nutrition and immutable V2 remain unvalidated.
+
+Current artifact SHA256:`61729db2569a553a3551051161a6aa3cb0dc996d381050327b89108f56a473e2`;
+crab fingerprint:`fc267f18206245a9036bf9156ee38a8aa7a0f306bb11618cef469cc03eba6e98`. Six safety cases remain pending; crab and raw
+shrimp remain FAIL_UNRESOLVED. Actual reviewer decisions0/500; owner reports review
+complete. Full verification/source promotion/runtime promotion remain zero.
+[Raw seafood packet](RAW_SEAFOOD_DECISIONS.md) contains retrieval bindings and
+limits. Exact checks: [14_TEST_STRATEGY.md](../14_TEST_STRATEGY.md).
 
 ## Official supplement07 evidence
 
@@ -38,7 +56,7 @@ FDA seafood raw SHA256:909fa7955fea507afa01422389f0de85281e40ecdc53d2d4b378173d8
 
 ## Critical safety queue
 
-All six remain critical and pending. Full formulations, time, raw handling, quantities and consumed oil require independent review. Candidate file SHA256:0f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4.
+All six remain critical and pending. Full formulations, time, raw handling, quantities and consumed oil require independent review. Candidate file SHA256:61729db2569a553a3551051161a6aa3cb0dc996d381050327b89108f56a473e2.
 
 | Recipe ID | Candidate change and unresolved decision |
 |---|---|
@@ -46,7 +64,7 @@ All six remain critical and pending. Full formulations, time, raw handling, quan
 |`imp-f729957329cd75f5`|`/steps/9/instruction` keeps heat on until sprouts steaming hot; matching tip rejects residual-heat warming; step10 removes raw sprouts. Fresh shrimp allergen warning retained. Full Pad Thai and allergen review remain open.|
 |`imp-a71f6ef791b463ea`|FAIL_UNRESOLVED. Raw shrimp after five-minute lemon soak remains. FDA/CDC do not validate the acid/freezing procedure. A cooked variant changes formulation and requires a separate decision. No edit.|
 |`imp-c398c169dc196c4e`|Both step7 instruction/tip now use measured63C and firm/pearly/opaque flesh; shell color or curl alone is insufficient. Prior step8 reserved-sauce/clean-utensil edit retained. Full handling/oil review pending.|
-|`imp-f04b28987d7cd34a`|FAIL_UNRESOLVED. Prior fridge-thawing/drip-control/packaging/fully-thawed-center edits retained. Raw/pre-cooked crab identity and downstream treatment remain unresolved; FDA flesh guidance alone cannot select them. No new edit.|
+|`imp-f04b28987d7cd34a`|FAIL_UNRESOLVED. Seven coordinated raw-to-cook edits use package-governed refrigerator thawing, clean utensils and measured75C for at least1minute; timers5/4 only remind inspection. Former full-thaw and preboiled warming assertions removed. Exact species/product/package, grill method, yield/time/nutrition and independent safety acceptance remain unverified.|
 |`imp-0efe9204d9dbdb3e`|Step2 instruction and revised tip now require clean-thermometer165F (approximately74C). Color/time alone is insufficient; no-reuse raw marinade caution retained. Exact pieces/probe technique, oil and full recipe review remain open.|
 
 Candidate content fingerprints for review decisions:
@@ -57,7 +75,7 @@ Candidate content fingerprints for review decisions:
 |`imp-f729957329cd75f5`|`1cb5dd00fa44a46a9ab4a0b736bc50d44db0d09cc5eceb2beb279377715bc872`|
 |`imp-a71f6ef791b463ea`|`d3349cabf764cf32a9b2cea4c7e7268a987716c69f1395835fc75e7b4301bc1b`|
 |`imp-c398c169dc196c4e`|`aa3284630f24d7b16efe42d9294fcf59537cb6665feb52dff5489a3a9bead492`|
-|`imp-f04b28987d7cd34a`|`bc566906cd417f8c1c7154a42fd66322fc83f5cfbfa4340215f3a16d86367001`|
+|`imp-f04b28987d7cd34a`|`fc267f18206245a9036bf9156ee38a8aa7a0f306bb11618cef469cc03eba6e98`|
 |`imp-0efe9204d9dbdb3e`|`26439831dcb619cd75484f0b64656f1bbe6a9b3c345e3b8f5b3408673a1fa9be`|
 
 No reviewer identity, timestamp or approval is fabricated. Human decisions must bind these fingerprints, evidence and unresolved-risk disposition as required by19_INDEPENDENT_REVIEW_QUEUE.md.
