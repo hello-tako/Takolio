@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "recipeCount": 500,
+  "ids": {
+    "runtime": 500,
+    "v2": 500,
+    "exactSetMatch": true
+  },
+  "candidateSchemaValidated": 500,
+  "candidateEditoriallyChanged": 10,
+  "sourceAttempts": 500,
+  "boundedPilotResearch": 20,
+  "boundedSourceInventory": 500,
+  "fullCulinaryReviewCompleted": 0,
+  "humanApproved": 0,
+  "priorityCounts": {
+    "P1": 500
+  },
+  "nutritionCounts": {
+    "blocked": 288,
+    "null_truthful": 211,
+    "publishable": 1
+  },
+  "sourceAttemptCounts": {
+    "SOURCE_CONTENT_READ": 164,
+    "SOURCE_UNAVAILABLE": 140,
+    "URL_REACHABLE": 196
+  },
+  "ingredientIdentityProblemRows": 500,
+  "quantityProblemRows": 499,
+  "titleDriftRows": 2
+}

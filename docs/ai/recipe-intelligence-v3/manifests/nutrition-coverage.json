@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "states": {
+    "blocked": 288,
+    "null_truthful": 211,
+    "publishable": 1
+  },
+  "profilesChanged": 0,
+  "certifiedPromotionAllowed": false,
+  "reason": "Source profiles retained; no V3 nutrition certification."
+}
