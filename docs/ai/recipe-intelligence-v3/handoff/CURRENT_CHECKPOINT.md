@@ -2,7 +2,8 @@ PROGRAM: TAKOLIO_RECIPE_INTELLIGENCE_V3
 REPOSITORY: hello-tako/Takolio
 BASE_SHA: 50ecf0188c1c98ce065c58bd8aa56a44ce679bea
 WORKING_BRANCH: codex/recipe-v3-crab-cooking
-CURRENT_HEAD: resolve final checkpoint from Git
+VERIFIED_IMPLEMENTATION: b6ff4ebdbfc62b28d3ee6b4d72ae126e99d4a1a6
+CURRENT_HEAD: resolve documentation checkpoint from Git
 PHASE: coordinated raw-to-cook crab candidate correction
 STATUS: RECIPE_V3_BLOCKED; production NOT_READY
 CANDIDATE_SHA256: 61729db2569a553a3551051161a6aa3cb0dc996d381050327b89108f56a473e2
@@ -18,8 +19,11 @@ TEST_RESULTS: focused62tests/audit500/49/25/integrity/preservation/provenance PA
 CURRENT_BLOCKERS: four data gates; six safety reviews; actual review records;
   approved publication; independent GitHub review; exact-main hosted certification
 PRODUCTION_MUTATIONS: 0
-NEXT_ACTION: publish the verified crab slice; observe exact-head CI/review;
-  then data/publication and same-source hosted release prerequisites
+PR: https://github.com/hello-tako/Takolio/pull/54; Draft/open; reviewer requested
+HOSTED_CI: Recipe41110848058/Admin41110848034 IN_PROGRESS on implementation
+MANUAL_FOLLOWUP: three Nissui images read; no full manual/validated protocol
+NEXT_ACTION: observe exact-head CI; reconcile actual review decisions;
+  close data/publication and same-source hosted release prerequisites
 
 Owner deployment authorization persists. PR51 approved HEAD remains stable.
 Raw shrimp formulation unchanged; exact raw-use product/process proof absent.

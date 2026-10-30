@@ -343,3 +343,33 @@ All requests returned HTTP200 with final URL equal to the linked URL.
 | `itamaedamashii-raw-crab-8201` / `2026-10-29T21:47:17.555982+00:00` | `88587c548b2a36e4a07a749754e0c061d5b41597dc27397213988047b1bfb305` | `4174199a851879d5f8f5599dd9c28d1feccbdb7f413924048e1952cd2d85e879` |
 
 Executed `python3 /private/tmp/takolio-v3-seafood-research-20261030/check_provenance.py`: PASS exit0;9sources,18SHA256 checks,15quote locators and official PDF link. This verifies recorded provenance, not food safety or regulatory compliance.
+
+## Nissui image/manual follow-up - 2026-10-31 JST
+
+Three public image assets were retrieved on 2026-10-30 UTC and visually read.
+They supplement the earlier product-page/FAQ observations. The full enclosed
+manual was not obtained; the manual-cover advertisement is not its contents.
+No candidate, canonical evidence packet, source status, safety decision or runtime
+changed. Both seafood cases remain FAIL_UNRESOLVED. No copyrighted images are
+committed; private retrieval receipts retain byte counts and hashes.
+
+| Public asset / visual locator | Bounded finding | Limit |
+|---|---|---|
+| [Manual advertisement](https://www.nissui-kenko.com/img/usr/detail/60007/img14.jpg), left text and pictured cover | Advertises an enclosed crab manual covering thawing, eating, recipes and questions. | Cover only; no interior instructions or complete grill protocol. |
+| [Processing-flow example](https://www.nissui-kenko.com/img/usr/detail/60007/img08a.jpg), upper and lower diagrams | Illustrates primary/secondary processing, including washing, freezing, glaze, weight/metal checks and product inspection. | An example flow, without measured critical limits, lot results or validated pathogen controls. |
+| [Thawing infographic](https://www.nissui-kenko.com/img/usr/detail/60007/txt06.png), numbered panels 01-03 | This product's directions remove the portion needed, briefly rinse off glaze, then refrigerate to thaw the center; discourage prolonged holding/refreezing for quality. | Product-specific thawing only; no grilling endpoint or validated yield. Do not transfer its durations to Marine Foods or the candidate. |
+
+All three requests returned HTTP200 with final URL equal to the linked URL.
+Locators are visual panels, not OCR or normalized-text lines.
+
+| Asset / retrieved UTC | Bytes | Raw SHA256 |
+|---|---|---|
+| `img14.jpg` / `2026-10-30T19:04:44.375726Z` | 348503 | `daf3e800a713d94822cbdad1618915698714e92e743c3f032beb7de059295137` |
+| `img08a.jpg` / `2026-10-30T19:04:44.584923Z` | 270299 | `2f902784c2a67b7296cd59ed76d81aeacef6d0b6555a0184a4218f957646bca9` |
+| `txt06.png` / `2026-10-30T19:04:44.884610Z` | 1123963 | `8332249b966da2302fd9cc17a7af515fd2774340c7230594acf9f15a2a010a75` |
+
+The search connector again reported unavailable in this continuation; Google
+and DuckDuckGo fallback searches previously returned challenge pages. No search
+snippet or challenge response is recipe evidence. These bounded findings do not
+establish that no suitable manual/protocol exists elsewhere. Next remains an
+actual product/validated process and fingerprint-bound independent safety decision.

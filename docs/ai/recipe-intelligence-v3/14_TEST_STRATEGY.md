@@ -1,3 +1,35 @@
+## PR54 publication/manual follow-up - 2026-10-31 JST
+
+Documentation-only continuation of implementation b6ff4ebdbfc62b28d3ee6b4d72ae126e99d4a1a6.
+Existing complete local check exit0/integrity exit0/release-check exit1 receipts
+were reread; full local tests were not rerun without a code/data change.
+Three Nissui images retrieved at19:04:44Z were visually read; bounded findings,
+URLs/byte counts/hashes are recorded in research/RAW_SEAFOOD_DECISIONS.md.
+No full enclosed manual, validated raw-shrimp process or safety decision obtained.
+Search-service retry returned unavailable; no search snippets used as evidence.
+
+Executed read-only checks: git status/diff/log/remote/rev-parse and git fetch
+origin; gh pr list/view, gh run view and gh api for main protection/production
+Environment. Main remains b49f3e6c; only PR51 approved. PR54 exact b6ff4ebd
+Recipe41110848058/Admin41110848034 remain IN_PROGRESS; step metadata is
+inconsistent, so no complete step sequence or final check result is claimed.
+Earlier watch sessions11842/17616 retain logs under /private/tmp.
+Pending-run --log-failed attempts returned exit1 because logs were not yet
+available; this is not a failed CI conclusion. Hosted results will be recorded
+in the PR body to avoid repeated documentation pushes invalidating checks.
+
+Documentation verification executed, all PASS exit0:
+- `python3 /private/tmp/takolio-v3-pr54-doc-check.py`: 12 Markdown files;
+  historical text preserved; 3 source-image hashes; candidate/canonical/runtime/
+  protected bytes unchanged; no untracked files. Receipt:
+  /private/tmp/takolio-v3-pr54-doc-check.log and .exit=0.
+- `git diff --check`: PASS exit0.
+- `python3 scripts/admin-public-scan.py`: PASS exit0; added-text scan only.
+These checks do not certify food safety, human review or hosted readiness.
+No remote migration, flag change or deployment.
+
+---
+
 ## Coordinated raw-crab candidate checks - 2026-10-31 JST
 
 Worktree /Users/tunbee27/Documents/New project/Takolio-recipe-v3; branch
