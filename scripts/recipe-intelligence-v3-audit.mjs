@@ -236,7 +236,7 @@ try {
       runtimeIngredientCount: v1.ingredients.length, v2IngredientCount: source.ingredients.length,
       runtimeStepCount: v1.steps.length, v2StepCount: source.steps.length,
       missingFields: ['category', 'region'].filter((key) => source.content[key] === undefined),
-      unitProblems, ingredientIdentityProblems: source.ingredients.filter((line) => !line.canonicalIngredientId || !['existing_canonical_id', 'reviewed_new_canonical_id'].includes(line.reconciliation)).length,
+      unitProblems, ingredientIdentityProblems: candidate.ingredients.filter((line) => !line.canonicalIngredientId || !['existing_canonical_id', 'reviewed_new_canonical_id'].includes(line.reconciliation)).length,
       nutritionState: source.nutrition.certification, sourceVerificationState: 'NOT_CONTENT_VERIFIED',
       sourceAttemptStatus: scanEntry.status, researchState: researchEntry ? 'BOUNDED_SOURCE_INVENTORY_REVIEW_PENDING' : 'NOT_RESEARCHED',
       potentialDuplication: titles[normalize(source.identity.title)] > 1 ? ['same_normalized_title'] : [],
@@ -251,14 +251,23 @@ try {
       comparison: {
         v1ToV2: ['title', 'description', 'cuisine', 'category', 'region', 'cookTimeMinutes', 'servings', 'difficulty', 'ingredients', 'steps', 'nutrition', 'tags']
           .filter((key) => JSON.stringify(v1[key] ?? null) !== JSON.stringify(key === 'title' ? source.identity.title : projection.recipes[index][key] ?? null)),
-        v2ToCandidate: meta.edits.map((edit) => ({ ...edit, impactedConsumers: ['recipe editorial content on future promotion'], reviewStatus: 'NEEDS_REVIEW' })),
+        v2ToCandidate: meta.edits.map((edit) => ({ ...edit, impactedConsumers: [edit.path.endsWith('/note') || edit.path.startsWith('/steps/') || edit.path.startsWith('/content/')
+          ? 'recipe editorial content on future promotion' : 'ingredient authority and projection on future promotion'], reviewStatus: 'NEEDS_REVIEW' })),
       },
       validation: { schema: 'PASS', identity: 'PASS', sourceConservation: 'PASS', runtimeCompatibility: 'BLOCKED', humanReview: 'PENDING' },
       qualityReport: `${OUT}/audit/RECIPE_V3_DATA_QUALITY.json#/recipes/${index}`,
       requiredReviewActions: issues,
     });
     assert.equal(await v3Fingerprint(source.nutrition), await v3Fingerprint(candidate.nutrition));
-    assert.deepEqual(source.ingredients.map(({ note: _note, ...line }) => line), candidate.ingredients.map(({ note: _note, ...line }) => line));
+    const restored = structuredClone(candidate);
+    for (const edit of meta.edits) {
+      const keys = edit.path.slice(1).split('/');
+      let target = restored;
+      for (const key of keys.slice(0, -1)) target = target[key];
+      assert.deepEqual(target[keys.at(-1)], edit.newValue, 'candidate edit witness drift');
+      target[keys.at(-1)] = edit.oldValue;
+    }
+    assert.deepEqual(restored, source, 'candidate source reversal drift');
     const select = (predicate) => candidate.ingredients.filter(predicate).map((line) => line.position);
     conservation.push({
       recipeId: id, sourceLineCount: source.ingredients.length, candidateLineCount: candidate.ingredients.length,
@@ -310,7 +319,7 @@ try {
     promotionAllowed: false, runtimeProjectionAllowed: false, concepts: conceptRows,
   });
   emit(`${OUT}/manifests/ingredient-conservation.json`, { schemaVersion: 1, recipeCount: 500, sourceLineCount: conservation.reduce((n, row) => n + row.sourceLineCount, 0),
-    candidateLineCount: conservation.reduce((n, row) => n + row.candidateLineCount, 0), semantics: 'Source role flags preserved, not certified as correct. Every source position remains reconstructible from the hashed V2 file and exact note edits.', recipes: conservation });
+    candidateLineCount: conservation.reduce((n, row) => n + row.candidateLineCount, 0), semantics: 'Source role flags preserved, not certified as correct. Every source position remains reconstructible from the hashed V2 file and exact candidate edits.', recipes: conservation });
   emit(`${OUT}/manifests/nutrition-coverage.json`, { schemaVersion: 1, states: counts(rows.map((row) => row.nutritionState)),
     profilesChanged: 0, certifiedPromotionAllowed: false, reason: 'Source profiles retained; no V3 nutrition certification.' });
   emit(`${OUT}/manifests/source-evidence.json`, { schemaVersion: 1, declaredContentVerifiedRows: candidates.reduce((n, entry) => n + entry.sourceContentVerified, 0), sourceAttempts: scan.summary,

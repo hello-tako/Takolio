@@ -25,13 +25,14 @@
       "URL_DISCOVERED": 47,
       "URL_REACHABLE": 38
     },
-    "claimCount": 48,
+    "claimCount": 49,
     "claimStatusCounts": {
-      "FACT_SUPPORTED": 20,
+      "FACT_SUPPORTED": 21,
       "SOURCE_CONTENT_READ": 20,
       "SOURCE_UNAVAILABLE": 8
     },
     "findingTypeCounts": {
+      "INTERNAL_CANONICAL_IDENTITY_CONFLICT": 1,
       "INTERNAL_V2_MISSING_INGREDIENT": 1,
       "INTERNAL_V2_MISSING_LIQUID_AND_COMPONENT_BASIS": 1,
       "INTERNAL_V2_OIL_RETENTION_AND_MISSING_WATER": 1,
@@ -2863,6 +2864,27 @@
               "factId": "reviewed-1"
             }
           ]
+        },
+        {
+          "id": "internal-beef-identity-ambiguity",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_CANONICAL_IDENTITY_CONFLICT",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "high",
+          "sourceIds": [],
+          "ingredientPositions": [
+            1
+          ],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/ingredients/1/sourceName",
+            "/ingredients/1/canonicalIngredientId",
+            "/ingredients/1/reconciliation",
+            "/ingredients/1/reconciliationReason"
+          ],
+          "reviewerSummary": "The source name is 'Bắp bò', assigned BEEF_SIRLOIN. The shared registry names that ID Thịt bò in Vietnamese and Beef sirloin in English, with bắp bò among its aliases. These describe different or unspecified cuts. Existing-canonical status cannot establish this line identity.",
+          "supportLimits": "Internal V2 and repository registry comparison only; see packages/domain/src/index.ts and docs/ai/recipe-intelligence-v3/research/BEEF_IDENTITY_REVIEW.md. No replacement identity, cut equivalence, migration, culinary approval, nutrition certification or runtime promotion is established.",
+          "sourceFactReferences": []
         }
       ],
       "nextAction": "Resolve listed gaps; review every remaining field and obtain independent culinary review before source or runtime promotion."

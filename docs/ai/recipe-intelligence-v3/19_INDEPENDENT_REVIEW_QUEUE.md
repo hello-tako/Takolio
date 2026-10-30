@@ -1,6 +1,23 @@
 # Independent review queue
 
-## Current candidate binding - 2026-10-31 JST
+## Current candidate binding - beef quarantine, 2026-10-31 JST
+
+Candidate SHA256:
+`7c0b8b3840c4f72dd724737d2066946f04e07c8fe8631d5bc937d87c172466df`.
+ADR-080/compiler2 demotes twelve contradictory inherited beef identities to
+NULL/ambiguous;488other content records remain unchanged. All500compiler
+metadata records regenerate. Crab fingerprint remains
+`fc267f18206245a9036bf9156ee38a8aa7a0f306bb11618cef469cc03eba6e98`.
+Reconcile any real review file to this new whole-artifact binding; changed beef
+rows require actual decisions. No decisions are inferred or generated.
+
+The owner subsequently authorized Codex technical reviews through the browser
+account vn-taphoanhatung. GitHub reviews disclose AI authorship; this does not
+create HUMAN_APPROVED culinary records. Structured human decisions remain0/500;
+six safety cases and the four data gates remain unresolved. Owner deployment
+permission persists. Historical candidate/owner records follow unchanged.
+
+## Historical crab candidate binding - 2026-10-31 JST
 
 Crab candidate changed after the owner's reported review. Artifact SHA256:
 `61729db2569a553a3551051161a6aa3cb0dc996d381050327b89108f56a473e2`. Crab `imp-f04b28987d7cd34a` fingerprint:
@@ -75,7 +92,7 @@ An empty starting record (no approvals) for the current exact candidate file:
 ```json
 {
   "schemaVersion": 1,
-  "candidateArtifactSha256": "61729db2569a553a3551051161a6aa3cb0dc996d381050327b89108f56a473e2",
+  "candidateArtifactSha256": "7c0b8b3840c4f72dd724737d2066946f04e07c8fe8631d5bc937d87c172466df",
   "reviews": []
 }
 ```

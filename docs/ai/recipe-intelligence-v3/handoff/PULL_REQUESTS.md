@@ -1,3 +1,56 @@
+## Beef identity quarantine and protected integration - 2026-10-31 JST
+
+Status: RECIPE_V3_BLOCKED / production NOT_READY. Owner deployment and browser
+review authorization persist. Branch codex/recipe-v3-beef-identity; base
+0b12afe9732a37eadca5386becee870d7d6627ed. Final checkpoint HEAD resolves from Git.
+ADR-080/compiler2 permits only coordinated demotion of an inherited existing
+identity to NULL/ambiguous with an evidence-bound reason. Twelve contradictory
+BEEF_SIRLOIN lines lose candidate projection authority; no replacement identity
+is invented. Labels, quantities, roles, nutrition, steps and immutable V2 remain.
+All500 metadata records recompile;12content records change/488remain identical.
+Candidate SHA2567c0b8b3840c4f72dd724737d2066946f04e07c8fe8631d5bc937d87c172466df.
+
+Executed in Takolio-recipe-v3 with PATH=/opt/homebrew/opt/node@24/bin:$PATH
+TMPDIR=/private/tmp CI=1:
+- pnpm check PASS exit0;436files/9754tests/1117.52s; typecheck,lint,Main/Admin
+  migration replay and Web/Admin/Worker builds PASS. Receipt:
+  /private/tmp/takolio-v3-beef-full-check.log and .exit=0. Remote schema/Week
+  gates skipped by default; existing Rollup annotations/Admin font warnings and
+  intentional error-boundary stderr retained.
+- node /private/tmp/takolio-v3-beef-integrity.mjs PASS exit0;500recompilations,
+  503source files/51evidence inputs/559frozen inputs verified;85exact reversals
+  across41recipes;6766ingredient lines/4938steps;0protected drift/0human approvals.
+  Receipts: /private/tmp/takolio-v3-beef-integrity.json,.log,.exit=0.
+- pnpm recipe:refresh:release-check FAIL exit1: RUNTIME_PROJECTION_LOSS,
+  INGREDIENT_RECONCILIATION_INCOMPLETE,SOURCE_CONTENT_VERIFICATION_INCOMPLETE,
+  NUTRITION_EVIDENCE_INCOMPLETE. Receipt:
+  /private/tmp/takolio-v3-beef-release-check.log and .exit=1.
+An exploratory log search referenced a nonexistent focused-check log (rg exit2);
+no focused result is inferred. Complete suite evidence above is available.
+
+GitHub: PR33 merged normally to main a13dc22f2e63a680fd907d54b9a8d6351e009e16.
+PR34 exact e320a7476dce4dfac88ece58f404249f0b4db77c has a submitted APPROVED
+review by vn-taphoanhatung at2026-10-30T21:54:52Z; text explicitly discloses AI
+technical review. validate41132668628/validate-admin41132668632 IN_PROGRESS at
+this observation. Browser submission is verified by API and visible review5719094779;
+/private/tmp/takolio-pr34-approved.jpg. No human culinary approval inferred.
+Strict main/Environment protections retained. This checkpoint is candidate-only;
+no new remote migration,flag change or production deployment.
+
+Next: publish this bounded slice against codex/recipe-v3-crab-cooking; finish
+protected small-PR integration on passing exact HEADs. Resolve four data gates,
+six safety cases and actual review evidence; implement approved publication;
+then exact-main CI,same-source staging/catalog/recovery and Environment release.
+V2 retains1395provisional IDs/4233lines,2996exclusions/2860transformations,
+nutrition1inherited/288blocked/211NULL. Candidate quarantine adds12unresolved
+canonical lines. Runtime fingerprint remains
+f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37.
+Apply0046then0047before Worker; after saved pins retain certified version-aware
+same-source Worker/client with paired flags OFF for recovery. Earlier records
+below describe their historical artifacts and observations.
+
+---
+
 ## PR54 publication - 2026-10-31 JST
 
 [Draft PR54](https://github.com/hello-tako/Takolio/pull/54), base

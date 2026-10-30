@@ -1,3 +1,22 @@
+# Beef identity candidate quarantine - 2026-10-31 JST
+
+Status: candidate correction implemented under ADR-080; NEEDS_REVIEW.
+Compiler2 demotes the12contradictory inherited BEEF_SIRLOIN lines together:
+canonicalIngredientId=NULL,reconciliation=ambiguous,new explicit reason.
+No replacement mapping or human approval is asserted. Original labels,amounts,
+roles,nutrition and steps remain intact; immutable V2 retains the original ID.
+The runtime registry,V1 authority,public consumers and database are unchanged.
+
+Current candidate SHA256:
+7c0b8b3840c4f72dd724737d2066946f04e07c8fe8631d5bc937d87c172466df.
+500recompilations/85exact edit reversals/488unchanged content records PASS;
+full local check436files/9754tests PASS exit0. Exact commands and limitations:
+[14_TEST_STRATEGY.md](../14_TEST_STRATEGY.md). Four release gates remain blocked.
+The following read-only investigation is preserved as the historical baseline;
+its no-candidate-change statement describes the earlier checkpoint only.
+
+---
+
 # Beef identity review
 
 Status: `NEEDS_HUMAN_REVIEW`; no mapping, candidate, runtime or database change.
