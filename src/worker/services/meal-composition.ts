@@ -79,12 +79,13 @@ import { legacyFamilyRestrictions, recipeRestrictions, simpleFoodRestrictions } 
 import { familyInternationalCapExceeded, familyMealRolesForComponents, isManualOneDishMeal, planFamilyMeals } from '../../../packages/recipes/src/composition/family-planner';
 import { scoreComposition, composeMeal, type ComposedOption, type ComposerFixed } from '../../../packages/recipes/src/composition/composer';
 import { evaluationFromCandidate, prepareComposerCandidates } from '../../../packages/recipes/src/composition/candidates';
-import { canonicalJson, readPlanningContext } from '../../../packages/recipes/src/planner-context';
+import { canonicalJson, derivePlanningContext, readPlanningContext } from '../../../packages/recipes/src/planner-context';
 import { resolveRankingPreferences } from '../../../packages/recipes/src/personalization';
 import { contextForSlot } from '../../../packages/recipes/src/weekly-planner';
-import type { RecipeAuthoritySnapshot } from '../../../packages/recipes/src/recipe-authority';
+import { fingerprintRecipes, type RecipeAuthoritySnapshot } from '../../../packages/recipes/src/recipe-authority';
 import type { Recipe } from '../../../packages/recipes/src/types';
 import { MealPlanningError } from './meal-planning-error';
+import { captureRecipeContentVersion, grantRecipeContentAccess, readHouseholdRecipeContentVersion } from './recipe-content-versions';
 import { sha256Hex } from '../utils/session';
 import type { MealPlanningApplicationService } from './meal-planning';
 
@@ -159,6 +160,17 @@ export class MealCompositionService {
     const { snapshot, authority } = fenced ?? await this.planner.snapshotWithAuthority(scope, now);
     const roles = roleIndexFor(authority, await persistedRoles(this.db, authority));
     const compositions = await readPlanCompositions(this.db, scope, planId);
+    const archived = new Map<string, Recipe>();
+    const currentPins = new Map<string, string>();
+    for (const component of [...compositions.values()].flatMap((entry) => entry.components)) {
+      if (!component.contentFingerprint) continue;
+      if (!archived.has(component.contentFingerprint)) {
+        const recipe = await readHouseholdRecipeContentVersion(this.db, scope.householdId, component.contentFingerprint);
+        if (recipe && recipe.id === component.recipeId) archived.set(component.contentFingerprint, recipe);
+      }
+      const current = authority.findById(component.recipeId!);
+      if (current && !currentPins.has(current.id)) currentPins.set(current.id, await fingerprintRecipes([current]));
+    }
     const slots = this.slots(stored);
     const referenceInstant = this.planner.reference(now, stored.intent.utcOffsetMinutes);
     // One trusted T04 context per request: Auto candidates, Manual restrictions and the shopping
@@ -166,8 +178,49 @@ export class MealCompositionService {
     const context = this.planner.planningContext(snapshot, referenceInstant);
     const planningProfile = fenced?.profile ?? (familyMetadata ? await this.planner.familyProfile(scope) : null);
     return { row, stored, now, snapshot, authority, roles, familyMetadata, planningFence: fenced?.fence ?? null,
-      transactionFences: fenced?.transactionFences ?? [], planningProfile, compositions, slots, referenceInstant,
+      transactionFences: fenced?.transactionFences ?? [], planningProfile, compositions, archived, currentPins, slots, referenceInstant,
       referenceDate: referenceInstant.slice(0, 10), context, evaluation: evaluationScope(context) };
+  }
+
+  async pinComponents(scope: Scope, authority: RecipeAuthoritySnapshot, components: readonly MealComponent[],
+    previous: readonly MealComponent[] = []): Promise<MealComponent[]> {
+    return Promise.all(components.map(async (component) => {
+      if (component.kind !== 'recipe') return { ...component, contentFingerprint: null };
+      const prior = previous.find((entry) => entry.id === component.id && targetKey(entry) === targetKey(component));
+      if (prior) return { ...component, contentFingerprint: prior.contentFingerprint ?? null };
+      const recipe = authority.findById(component.recipeId!);
+      if (!recipe) throw new MealPlanningError('COMPOSITION_REVALIDATION_REQUIRED', 409, 'Selected recipe is unavailable');
+      const contentFingerprint = await captureRecipeContentVersion(this.db, recipe);
+      await grantRecipeContentAccess(this.db, scope.householdId, contentFingerprint);
+      return { ...component, contentFingerprint };
+    }));
+  }
+
+  async assertCurrentComponents(scope: Scope, authority: RecipeAuthoritySnapshot, components: readonly MealComponent[], legacyCurrent: boolean) {
+    for (const component of components) {
+      if (component.kind !== 'recipe') continue;
+      const recipe = authority.findById(component.recipeId!);
+      if (!recipe || (component.contentFingerprint
+        ? await fingerprintRecipes([recipe]) !== component.contentFingerprint
+          || (await readHouseholdRecipeContentVersion(this.db, scope.householdId, component.contentFingerprint))?.id !== component.recipeId
+        : !legacyCurrent)) {
+        throw new MealPlanningError('COMPOSITION_REVALIDATION_REQUIRED', 409, 'Saved recipe requires revalidation');
+      }
+    }
+  }
+
+  private compatible(loaded: Loaded, component: MealComponent): boolean {
+    if (component.kind !== 'recipe') return true;
+    if (component.contentFingerprint) return loaded.archived.get(component.contentFingerprint)?.id === component.recipeId
+      && loaded.currentPins.get(component.recipeId!) === component.contentFingerprint;
+    return Boolean(loaded.stored.fingerprints.authority) && !this.planner.authorityChanged(loaded.stored, loaded.snapshot)
+      && loaded.authority.findById(component.recipeId!) !== null;
+  }
+
+  private assertCompatible(loaded: Loaded, compositions: ReadonlyMap<string, MealComposition> = this.allCompositions(loaded)) {
+    if ([...compositions.values()].some((composition) => composition.components.some((component) => !this.compatible(loaded, component)))) {
+      throw new MealPlanningError('COMPOSITION_REVALIDATION_REQUIRED', 409, 'Saved recipe requires revalidation');
+    }
   }
 
   private slots(stored: ReturnType<Planner['decode']>): SlotInfo[] {
@@ -190,8 +243,7 @@ export class MealCompositionService {
 
   private scopedContext(loaded: Loaded, slot: SlotInfo) {
     if (slot.hardMaxTimeMinutes === undefined && slot.preferredTimeMinutes === undefined) return loaded.context;
-    return this.planner.planningContext(loaded.snapshot, loaded.referenceInstant,
-      contextForSlot(loaded.snapshot.rankingContext, slot));
+    return derivePlanningContext(loaded.context, { rankingContext: contextForSlot(loaded.snapshot.rankingContext, slot) });
   }
 
   private compositionFor(loaded: Pick<Loaded, 'stored' | 'compositions' | 'row'>, slotId: string): MealComposition {
@@ -232,6 +284,7 @@ export class MealCompositionService {
 
   private projection(loaded: Loaded, compositions: ReadonlyMap<string, MealComposition>, untilSlotId?: string,
     inventoryCheckpointComponentIds?: ReadonlySet<string>): CompositionProjection {
+    this.assertCompatible(loaded, compositions);
     return projectCompositions({ scope: loaded.evaluation, referenceDate: loaded.referenceDate, inventory: loaded.snapshot.inventory,
       slots: this.projectionSlots(loaded, compositions), untilSlotId,
       inventoryCheckpointComponentIds: inventoryCheckpointComponentIds ?? new Set(
@@ -244,17 +297,20 @@ export class MealCompositionService {
     return map;
   }
 
-  private title(loaded: Pick<Loaded, 'authority'>, component: MealComponent): string {
+  private title(loaded: Loaded, component: MealComponent): string {
     if (component.kind === 'simple_food') return getSimpleFood(component.simpleFoodId!)?.title.vi ?? component.simpleFoodId!;
-    return loaded.authority.findById(component.recipeId!)?.title ?? component.recipeId!;
+    return (component.contentFingerprint ? loaded.archived.get(component.contentFingerprint)
+      : this.compatible(loaded, component) ? loaded.authority.findById(component.recipeId!) : null)?.title ?? component.recipeId!;
   }
 
-  private dto(loaded: Loaded, slot: SlotInfo, composition: MealComposition, projection: CompositionProjection | null, includeAssessment = false): MealCompositionDto {
-    const items = composition.components.map((component) => componentItem(component, loaded.roles));
-    const required = loaded.familyMetadata ? familyMealRolesForComponents(slot.mealType, loaded.familyMetadata.policy.mealStyle,
+  private dto(loaded: Loaded, slot: SlotInfo, composition: MealComposition, all: ReadonlyMap<string, MealComposition>, projection: CompositionProjection | null, includeAssessment = false): MealCompositionDto {
+    const compatible = composition.components.every((component) => this.compatible(loaded, component));
+    const items = composition.components.map((component) => compatible ? componentItem(component, loaded.roles)
+      : { key: targetKey(component), kind: component.kind, id: (component.recipeId ?? component.simpleFoodId)!, role: component.role, traits: [], dominantIngredientId: null });
+    const required = !compatible ? [] : loaded.familyMetadata ? familyMealRolesForComponents(slot.mealType, loaded.familyMetadata.policy.mealStyle,
       composition.components, loaded.roles).filter((role) => !items.some((item) => item.role === role)) : missingRoles(slot.mealType, items, 'required');
-    const warnings = new Set<string>(compatibilityIssues(items));
-    if (loaded.familyMetadata && isManualOneDishMeal(composition.components, loaded.roles)) warnings.add('MANUAL_ONE_DISH_MEAL');
+    const warnings = new Set<string>(compatible ? compatibilityIssues(items) : []);
+    if (compatible && loaded.familyMetadata && isManualOneDishMeal(composition.components, loaded.roles)) warnings.add('MANUAL_ONE_DISH_MEAL');
     const meal = loaded.stored.result.meals.find((entry) => entry.slotId === slot.slotId);
     if (composition.source === 'v1_projection' && meal?.source.kind === 'family') warnings.add('LEGACY_FAMILY_MEAL');
     if (loaded.familyMetadata && projection) {
@@ -266,7 +322,8 @@ export class MealCompositionService {
         }
       }
     }
-    if (loaded.familyMetadata) {
+    if (!compatible) warnings.add('SAVED_CONTENT_REQUIRES_REVALIDATION');
+    if (loaded.familyMetadata && compatible) {
       const hardLimits = resolveRankingPreferences(readPlanningContext(this.scopedContext(loaded, slot)).rankingContext).hard
         .flatMap((policy) => policy.hardMaxTimeMinutes === undefined ? [] : [policy.hardMaxTimeMinutes]);
       const minutes = composition.components.map((component) => {
@@ -280,24 +337,29 @@ export class MealCompositionService {
       if (unknownTime) warnings.add('MEAL_TIME_UNKNOWN');
       else if (preferredTime !== undefined && totalTime > preferredTime) warnings.add('MEAL_TIME_ABOVE_PREFERENCE');
       if (hardLimits.length && (unknownTime || totalTime > Math.min(...hardLimits))) warnings.add('MEAL_TIME_REQUIRES_REVALIDATION');
-      const isInternationalMain = (component: MealComponent) => component.role === 'main' && component.recipeId !== null
-        && loaded.authority.findById(component.recipeId) !== null && loaded.authority.findById(component.recipeId)?.cuisine !== 'vietnamese';
-      const internationalDates = loaded.slots.flatMap(entry => (entry.slotId === slot.slotId
-        ? composition.components : this.compositionFor(loaded, entry.slotId).components).filter(isInternationalMain).map(() => entry.date));
-      if (composition.components.some(isInternationalMain) && familyInternationalCapExceeded(internationalDates, slot.date,
-        loaded.planningProfile!.preferences.internationalMealsPerWeek)) warnings.add('PRESERVED_INTERNATIONAL_CAP_EXCEEDED');
+      if ([...all.values()].every((entry) => entry.components.every((component) => this.compatible(loaded, component)))) {
+        const isInternationalMain = (component: MealComponent) => component.role === 'main' && component.recipeId !== null
+          && loaded.authority.findById(component.recipeId) !== null && loaded.authority.findById(component.recipeId)?.cuisine !== 'vietnamese';
+        const internationalDates = loaded.slots.flatMap((entry) => (all.get(entry.slotId)?.components ?? [])
+          .filter(isInternationalMain).map(() => entry.date));
+        if (composition.components.some(isInternationalMain) && familyInternationalCapExceeded(internationalDates, slot.date,
+          loaded.planningProfile!.preferences.internationalMealsPerWeek)) warnings.add('PRESERVED_INTERNATIONAL_CAP_EXCEEDED');
+      }
     }
     const components = composition.components.map((component) => {
       const resolvable = component.kind === 'simple_food' ? getSimpleFood(component.simpleFoodId!) !== undefined
-        : this.visible(loaded, component.recipeId);
+        : component.contentFingerprint ? loaded.archived.has(component.contentFingerprint)
+          : this.compatible(loaded, component) && this.visible(loaded, component.recipeId);
       if (!resolvable) warnings.add('COMPONENT_UNAVAILABLE');
       const evaluation = projection?.components.get(component.id);
-      const recipe: Recipe | null = component.recipeId ? loaded.authority.findById(component.recipeId) : null;
+      const recipe: Recipe | null = component.contentFingerprint ? loaded.archived.get(component.contentFingerprint) ?? null
+        : component.recipeId && this.compatible(loaded, component) ? loaded.authority.findById(component.recipeId) : null;
       return {
         id: component.id, kind: component.kind, role: component.role, ordinal: component.ordinal, locked: component.locked,
         provenance: component.provenance, recipeId: component.recipeId, simpleFoodId: component.simpleFoodId,
+        contentFingerprint: component.contentFingerprint ?? null,
         title: this.title(loaded, component),
-        permittedRoles: (component.kind === 'recipe' ? loaded.roles.get(component.recipeId!)?.roles
+        permittedRoles: (component.kind === 'recipe' ? (this.compatible(loaded, component) ? loaded.roles.get(component.recipeId!)?.roles : [])
           : getSimpleFood(component.simpleFoodId!)?.roles) ?? [],
         cookable: component.kind === 'recipe' && resolvable, resolvable,
         cookTimeMinutes: component.kind === 'recipe' ? recipe?.cookTimeMinutes ?? null : getSimpleFood(component.simpleFoodId!)?.prepMinutes ?? null,
@@ -314,7 +376,7 @@ export class MealCompositionService {
     return {
       slotId: slot.slotId, date: slot.date, mealType: slot.mealType, servings: slot.servings, source: composition.source,
       mode: composition.mode, components, missingRoles: required,
-      recommendedRoles: loaded.familyMetadata ? [] : missingRoles(slot.mealType, items, 'recommended').filter((role) => !required.includes(role)),
+      recommendedRoles: !compatible || loaded.familyMetadata ? [] : missingRoles(slot.mealType, items, 'recommended').filter((role) => !required.includes(role)),
       warnings: [...warnings].sort(),
     };
   }
@@ -342,8 +404,8 @@ export class MealCompositionService {
     return slot;
   }
 
-  private assertEditable(loaded: Loaded, slot: SlotInfo) {
-    if (this.planner.authorityChanged(loaded.stored, loaded.snapshot)) {
+  private assertEditable(loaded: Loaded, slot: SlotInfo, repairing = false) {
+    if (!repairing && this.planner.authorityChanged(loaded.stored, loaded.snapshot)) {
       throw new MealPlanningError('CATALOG_AUTHORITY_CHANGED', 409,
         'Recipe catalog authority changed since this plan was generated; regenerate the plan');
     }
@@ -361,10 +423,12 @@ export class MealCompositionService {
   }
 
   compositionsFromLoaded(loaded: Loaded, includeAssessment = false) {
-    const all = this.allCompositions(loaded); const projection = this.projection(loaded, all, undefined, includeAssessment
-      ? new Set([...all.values()].flatMap((composition) => composition.components.map((component) => component.id))) : undefined);
+    const all = this.allCompositions(loaded);
+    const compatible = [...all.values()].every((composition) => composition.components.every((component) => this.compatible(loaded, component)));
+    const projection = compatible ? this.projection(loaded, all, undefined, includeAssessment
+      ? new Set([...all.values()].flatMap((composition) => composition.components.map((component) => component.id))) : undefined) : null;
     return PlanCompositionsDtoSchema.parse({ schemaVersion: 1, planId: loaded.row.id, planRevision: loaded.row.revision,
-      compositions: loaded.slots.map((slot) => this.dto(loaded, slot, all.get(slot.slotId)!, projection, includeAssessment)) });
+      compositions: loaded.slots.map((slot) => this.dto(loaded, slot, all.get(slot.slotId)!, all, projection, includeAssessment)) });
   }
 
   async composition(scope: Scope, planId: string, slotId: string, includeAssessment = false) {
@@ -377,10 +441,11 @@ export class MealCompositionService {
   }
 
   private slotDto(loaded: Loaded, slot: SlotInfo, all: Map<string, MealComposition>, revision: number, includeAssessment = false) {
-    const projection = this.projection(loaded, all, undefined, includeAssessment
-      ? new Set([...all.values()].flatMap((composition) => composition.components.map((component) => component.id))) : undefined);
+    const compatible = [...all.values()].every((composition) => composition.components.every((component) => this.compatible(loaded, component)));
+    const projection = compatible ? this.projection(loaded, all, undefined, includeAssessment
+      ? new Set([...all.values()].flatMap((composition) => composition.components.map((component) => component.id))) : undefined) : null;
     return SlotCompositionDtoSchema.parse({ schemaVersion: 1, planId: loaded.row.id, planRevision: revision,
-      composition: this.dto(loaded, slot, all.get(slot.slotId)!, projection, includeAssessment) });
+      composition: this.dto(loaded, slot, all.get(slot.slotId)!, all, projection, includeAssessment) });
   }
 
   // ------------------------------------------------------------------------ manual mutations
@@ -508,11 +573,11 @@ export class MealCompositionService {
 
   private async mutate(scope: Scope, planId: string, slotId: string, revision: number, mode: CompositionMode,
     event: string, operation: (composition: MealComposition, context: CompositionContext, loaded: Loaded) => MealComponent[],
-    validationPolicy: 'entering' | 'reorder' | 'remove' = 'entering') {
+    validationPolicy: 'entering' | 'reorder' | 'remove' = 'entering', repinId?: string) {
     const started = Date.now();
     const loaded = await this.load(scope, planId, 'all');
     const slot = await this.checkedSlot(loaded, scope, planId, slotId, revision);
-    this.assertEditable(loaded, slot);
+    if (validationPolicy !== 'remove') this.assertEditable(loaded, slot);
     const current = this.compositionFor(loaded, slotId);
     this.assertComposable(loaded, slotId, current);
     const context: CompositionContext = {
@@ -525,10 +590,32 @@ export class MealCompositionService {
     };
     let components: MealComponent[];
     try { components = operation(current, context, loaded); } catch (error) { domainError(error); }
+    components = await this.pinComponents(scope, loaded.authority, components, current.components.filter((component) => component.id !== repinId));
+    for (const component of components) {
+      if (!component.contentFingerprint || loaded.archived.has(component.contentFingerprint)) continue;
+      const recipe = await readHouseholdRecipeContentVersion(this.db, scope.householdId, component.contentFingerprint);
+      if (recipe?.id === component.recipeId) {
+        loaded.archived.set(component.contentFingerprint, recipe);
+        const currentRecipe = loaded.authority.findById(recipe.id);
+        if (currentRecipe) loaded.currentPins.set(recipe.id, await fingerprintRecipes([currentRecipe]));
+      }
+    }
     const proposed = { ...current, mode, components };
-    if (canonicalJson(current.components.map((component) => ({ id: component.id, target: targetKey(component), role: component.role })))
-      !== canonicalJson(components.map((component) => ({ id: component.id, target: targetKey(component), role: component.role })))) {
-      const validation = this.validateComposition(loaded, slot, current, proposed, validationPolicy);
+    const repairing = current.components.some((component) => !this.compatible(loaded, component)
+      && !components.some((entry) => entry.id === component.id && targetKey(entry) === targetKey(component)
+        && (entry.contentFingerprint ?? null) === (component.contentFingerprint ?? null)));
+    const repairRemoval = validationPolicy === 'remove' && repairing
+      && components.length === current.components.length - 1
+      && components.every((entry) => current.components.some((prior) => prior.id === entry.id
+        && targetKey(prior) === targetKey(entry) && prior.role === entry.role && prior.locked === entry.locked
+        && (prior.contentFingerprint ?? null) === (entry.contentFingerprint ?? null)));
+    if (validationPolicy === 'remove') this.assertEditable(loaded, slot, repairRemoval);
+    if (!repairRemoval) this.assertCompatible(loaded, this.allCompositions(loaded, proposed));
+    const baseline = repairing ? { ...current, components: current.components.filter((component) => this.compatible(loaded, component)) } : current;
+    const previous = repairing && !repairRemoval ? this.projection(loaded, this.allCompositions(loaded, baseline)) : undefined;
+    if (!repairRemoval && canonicalJson(current.components.map((component) => ({ id: component.id, target: targetKey(component), role: component.role, pin: component.contentFingerprint ?? null })))
+      !== canonicalJson(components.map((component) => ({ id: component.id, target: targetKey(component), role: component.role, pin: component.contentFingerprint ?? null })))) {
+      const validation = this.validateComposition(loaded, slot, baseline, proposed, validationPolicy, previous);
       if (validation.reasons.length) {
         const quantityOnly = validation.reasons.every((reason) => reason.startsWith('INVENTORY_'));
         logEvent('composition_hard_restriction_rejected', { mode, reasons: validation.reasons.join(',') });
@@ -553,7 +640,7 @@ export class MealCompositionService {
 
   swap(scope: Scope, planId: string, slotId: string, componentId: string, input: z.infer<typeof SwapComponentSchema>) {
     return this.mutate(scope, planId, slotId, input.revision, 'manual', 'composition_manual_update',
-      (composition, context) => swapComponent(composition, componentId, input, context));
+      (composition, context) => swapComponent(composition, componentId, input, context), 'entering', componentId);
   }
 
   update(scope: Scope, planId: string, slotId: string, componentId: string, input: z.infer<typeof UpdateComponentSchema>) {
@@ -941,6 +1028,7 @@ export class MealCompositionService {
   /** V1 shopping for a plan with canonical V2 slots: one projection over all components, then unchanged T05. */
   async shoppingPlanFor(scope: Scope, row: GeneratedMealPlanRecord) {
     const loaded = await this.load(scope, row.id);
+    this.assertCompatible(loaded);
     const all = this.allCompositions(loaded);
     for (const composition of all.values()) {
       for (const component of composition.components) {
@@ -976,6 +1064,7 @@ export class MealCompositionService {
     if (freshness.status !== 'fresh' && !canReproject) {
       throw new MealPlanningError('PLAN_REVALIDATION_REQUIRED', 409, 'Regenerate the plan before updating shopping');
     }
+    this.assertCompatible(loaded);
     const compositions = this.allCompositions(loaded); const projection = this.projection(loaded, compositions);
     const rows: Array<{ ingredientId: string; name: string; quantity: number | null; unit: string; slotId: string; date: string;
       mealType: MealType; componentId: string; recipeId: string | null; title: string; optional: boolean }> = [];
@@ -1020,8 +1109,11 @@ export class MealCompositionService {
    */
   async regenerateComposed(scope: Scope, input: { row: GeneratedMealPlanRecord; intent: MealPlanningIntent;
     locks: Array<{ slotId: string; lock: { kind: 'recipe' | 'family'; id: string; version: number; variantId?: string } }>;
-    snapshot: Awaited<ReturnType<Planner['snapshotWithAuthority']>>['snapshot']; now: string }) {
+    snapshot: Awaited<ReturnType<Planner['snapshotWithAuthority']>>['snapshot']; authority: RecipeAuthoritySnapshot; now: string }) {
     const compositions = await readPlanCompositions(this.db, scope, input.row.id);
+    await this.assertCurrentComponents(scope, input.authority,
+      [...compositions.values()].flatMap((composition) => composition.components.filter((component) => component.locked)),
+      Boolean(this.planner.decode(input.row).fingerprints.authority) && !this.planner.authorityChanged(this.planner.decode(input.row), input.snapshot));
     const versions = new Map(input.snapshot.catalog.recipes.map((recipe) => [recipe.id, recipe.provenance.version]));
     const slotIds = new Set(input.intent.slots.map((slot) => `${slot.date}:${slot.mealType}:${slot.sequence}`));
     const locks = input.locks.filter((entry) => !compositions.has(entry.slotId));
@@ -1043,7 +1135,7 @@ export class MealCompositionService {
         ? [{ id: `v1.${slotId}.r${next}`, kind: 'recipe', role: 'main', ordinal: 0, locked: false, provenance: 'legacy_v1',
           recipeId: meal.source.id, simpleFoodId: null, createdRevision: next, updatedRevision: next }] : [];
       writes.push({ slotId, mode: composition.mode, createdRevision: composition.createdRevision, createdAt: composition.createdAt,
-        components: normalizeComponents([...anchor, ...kept]) });
+        components: await this.pinComponents(scope, input.authority, normalizeComponents([...anchor, ...kept]), kept) });
     }
     return { result, locks, writes, deleted };
   }

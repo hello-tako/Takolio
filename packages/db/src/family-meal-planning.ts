@@ -68,10 +68,10 @@ export async function createFamilyMealPlan(db: D1DatabaseBinding, scope: Generat
       SELECT id, ?, ?, ?, ?, 1, 1 FROM (${owned}) WHERE 1 ON CONFLICT(plan_id, slot_id) DO NOTHING`)
       .bind(scope.householdId, scope.userId, slot.slotId, CompositionModeSchema.parse(slot.mode), ...bindings));
     for (const component of slot.components) statements.push(db.prepare(`INSERT INTO generated_meal_plan_components
-      (plan_id, id, slot_id, ordinal, kind, role, recipe_id, simple_food_id, locked, provenance, created_revision, updated_revision)
-      SELECT id, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, 1 FROM (${owned}) WHERE 1 ON CONFLICT(plan_id, id) DO NOTHING`)
+      (plan_id, id, slot_id, ordinal, kind, role, recipe_id, recipe_content_fingerprint, simple_food_id, locked, provenance, created_revision, updated_revision)
+      SELECT id, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, 1 FROM (${owned}) WHERE 1 ON CONFLICT(plan_id, id) DO NOTHING`)
       .bind(ComponentIdSchema.parse(component.id), slot.slotId, component.ordinal, component.kind, MealRoleSchema.parse(component.role),
-        component.recipeId, component.simpleFoodId, component.locked ? 1 : 0, ComponentProvenanceSchema.parse(component.provenance), ...bindings));
+        component.recipeId, component.contentFingerprint ?? null, component.simpleFoodId, component.locked ? 1 : 0, ComponentProvenanceSchema.parse(component.provenance), ...bindings));
   }
   let results;
   try { results = await db.batch(statements); }

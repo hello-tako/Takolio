@@ -38,19 +38,21 @@ export const CookingModePage: React.FC = () => {
   const rawServings = params.get('servings') ?? '';
   const servings = /^[1-9][0-9]?$/.test(rawServings) && Number(rawServings) <= 20
     ? Number(rawServings) : undefined;
-  return <CookingLoader key={`${recipeKey}:${servings ?? 'base'}`} recipeKey={recipeKey} servings={servings} />;
+  const contentFingerprint = params.get('contentFingerprint') ?? undefined;
+  return <CookingLoader key={`${recipeKey}:${servings ?? 'base'}:${contentFingerprint ?? 'current'}`} recipeKey={recipeKey} servings={servings} contentFingerprint={contentFingerprint} />;
 };
 
-function CookingLoader({ recipeKey, servings }: { recipeKey: string; servings?: number }) {
-  const { activeRecipe, runId, startCooking, attempt } = useCookingStore();
+function CookingLoader({ recipeKey, servings, contentFingerprint }: { recipeKey: string; servings?: number; contentFingerprint?: string }) {
+  const { activeRecipe, runId, startCooking, attempt, contentFingerprint: activeFingerprint } = useCookingStore();
   const matches = Boolean(
     activeRecipe && (activeRecipe.slug === recipeKey || activeRecipe.id === recipeKey)
-      && (servings === undefined || activeRecipe.servings === servings),
+      && (servings === undefined || activeRecipe.servings === servings)
+      && (contentFingerprint === undefined || activeFingerprint === contentFingerprint),
   );
   const blockedRun = Boolean(attempt && !['saved', 'queued'].includes(attempt.status));
   const recipeQuery = useQuery({
-    queryKey: queryKeys.recipe(recipeKey),
-    queryFn: () => api.getRecipeById(recipeKey),
+    queryKey: queryKeys.recipe(recipeKey, contentFingerprint),
+    queryFn: () => api.getRecipeById(recipeKey, contentFingerprint),
     enabled: Boolean(recipeKey) && !matches && !blockedRun,
   });
   const inventoryQuery = useQuery({
@@ -263,7 +265,9 @@ function CookingSteps() {
     navigate('/cooking/complete');
   };
   if (!recipe) return null;
-  const recipeHref = `/recipes/${recipe.slug}${recipe.servings ? `?servings=${recipe.servings}` : ''}`;
+  const recipeParams = new URLSearchParams({ servings: String(recipe.servings) });
+  if (state.contentFingerprint) recipeParams.set('contentFingerprint', state.contentFingerprint);
+  const recipeHref = `/recipes/${recipe.slug}?${recipeParams}`;
   if (!currentStep)
     return (
       <div className="cooking-empty">

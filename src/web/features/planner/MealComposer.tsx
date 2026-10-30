@@ -29,6 +29,7 @@ import { CompositionLoadState } from './CompositionLoadState';
 import { MealTimeNotice } from './MealTimeNotice';
 import { MealStyleNotice } from './MealStyleNotice';
 import { compositionState, compositionStateCopy } from './composition-state';
+import { reasonLabel } from './presentation';
 import { FamilyPlanNotice } from './FamilyPlanNotice';
 import { isPlannerSlotElapsed, plannerSlotInstant } from './schedule';
 import { ComponentPicker, type PickerMealContext } from './ComponentPicker';
@@ -279,6 +280,11 @@ export function MealComposer({
       </ol>
       <MealStyleNotice warnings={composition.warnings} locale={locale} />
       <MealTimeNotice warnings={composition.warnings} locale={locale} />
+      {composition.warnings.includes('SAVED_CONTENT_REQUIRES_REVALIDATION') && (
+        <p className="planning-note" role="status">
+          {reasonLabel('SAVED_CONTENT_REQUIRES_REVALIDATION', locale)}
+        </p>
+      )}
       {[...new Set([...composition.missingRoles, ...composition.recommendedRoles])].map((role) => (
         <div
           key={role}
@@ -572,13 +578,13 @@ function ComponentRow({
           <span className="flex gap-3">
             <Link
               className="underline min-h-11 inline-flex items-center"
-              to={`/recipes/id/${encodeURIComponent(component.recipeId)}?servings=${servings}`}
+              to={`/recipes/id/${encodeURIComponent(component.recipeId)}?servings=${servings}${component.contentFingerprint ? `&contentFingerprint=${component.contentFingerprint}` : ''}`}
             >
               {c.detail}
             </Link>
             <Link
               className="underline min-h-11 inline-flex items-center"
-              to={`/cooking/${encodeURIComponent(component.recipeId)}?servings=${servings}`}
+              to={`/cooking/${encodeURIComponent(component.recipeId)}?servings=${servings}${component.contentFingerprint ? `&contentFingerprint=${component.contentFingerprint}` : ''}`}
             >
               {c.cook}
             </Link>

@@ -654,16 +654,17 @@ describe('T20 Meal composer UI', () => {
     });
   });
 
-  it('recipe and cooking links preserve the selected meal servings and omit simple-food links', async () => {
+  it.each([undefined, 'a'.repeat(64)])('recipe and cooking links preserve servings and selected content (%s)', async (contentFingerprint) => {
     const current = plan();
     const dto = compositions();
     dto.compositions[0].servings = 6;
+    dto.compositions[0].components[0].contentFingerprint = contentFingerprint;
     api.plan.mockResolvedValue(dto);
     await render(
       <MealComposer plan={current} slotId={slotId} model={model(current) as never} locale="en" />,
     );
-    expect(container.querySelectorAll('a[href="/recipes/id/pho-bo?servings=6"]')).toHaveLength(1);
-    expect(container.querySelectorAll('a[href="/cooking/pho-bo?servings=6"]')).toHaveLength(1);
+    expect(container.querySelectorAll(`a[href="/recipes/id/pho-bo?servings=6${contentFingerprint ? `&contentFingerprint=${contentFingerprint}` : ''}"]`)).toHaveLength(1);
+    expect(container.querySelectorAll(`a[href="/cooking/pho-bo?servings=6${contentFingerprint ? `&contentFingerprint=${contentFingerprint}` : ''}"]`)).toHaveLength(1);
     expect(container.querySelectorAll('a[href^="/recipes/id/"]')).toHaveLength(1);
     expect(container.querySelectorAll('a[href^="/cooking/"]')).toHaveLength(1);
   });
@@ -1061,6 +1062,7 @@ describe('family board reports current dishes instead of stale anchor status', (
   it.each([
     'MEAL_TIME_REQUIRES_REVALIDATION',
     'LOCKED_COMPONENT_REQUIRES_REVALIDATION',
+    'SAVED_CONTENT_REQUIRES_REVALIDATION',
     'COMPONENT_UNAVAILABLE',
   ] as const)('requires review for %s even with every required group present', async (warning) => {
     const current = plan();
@@ -1079,6 +1081,29 @@ describe('family board reports current dishes instead of stale anchor status', (
       'Cần kiểm tra lại',
     );
     expect(container.querySelector('.planning-composer-state')?.textContent).not.toContain('Đã đủ');
+  });
+
+  it.each(['vi', 'en'] as const)('explains historical content without claiming current coverage (%s)', async (locale) => {
+    const current = plan();
+    const dto = compositions();
+    dto.compositions[0].warnings = ['SAVED_CONTENT_REQUIRES_REVALIDATION'];
+    dto.compositions[0].components[0].contentFingerprint = 'a'.repeat(64);
+    dto.compositions[0].components[0].projection = null;
+    api.plan.mockResolvedValue(dto);
+    await render(
+      <>
+        <PlannerWeek plan={current} model={model(current) as never} locale={locale} />
+        <MealComposer plan={current} slotId={slotId} model={model(current) as never} locale={locale} />
+      </>,
+    );
+    const notices = [...container.querySelectorAll('.planning-note[role="status"]')];
+    expect(notices).toHaveLength(2);
+    for (const notice of notices) {
+      expect(notice.textContent).toContain(locale === 'vi' ? 'công thức đã chọn trước đây' : 'content selected earlier');
+      expect(notice.textContent).toContain(locale === 'vi' ? 'lên kế hoạch lại' : 'regenerate the plan');
+    }
+    expect(api.update).not.toHaveBeenCalled();
+    expect(api.swap).not.toHaveBeenCalled();
   });
 
   it('keeps missing whole-meal time distinct from dish-group completeness', async () => {

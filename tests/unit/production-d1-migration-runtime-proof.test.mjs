@@ -7,7 +7,7 @@ const require = createRequire(import.meta.url);
 const { load } = createRequire(require.resolve('eslint/package.json'))('js-yaml');
 const policy = load(workflow);
 const familyTips = ['0042_family_meals_preferences_saved_shopping.sql', '0043_shopping_demand_review.sql',
-  '0044_inventory_display_category.sql', '0045_week_swap_receipts.sql', '0046_recipe_content_versions.sql'];
+  '0044_inventory_display_category.sql', '0045_week_swap_receipts.sql', '0046_recipe_content_versions.sql', '0047_saved_recipe_content.sql'];
 
 describe('production D1 migration runtime proof', () => {
   it('keeps production approval and actual 0041 constraint certification', () => {
@@ -58,4 +58,15 @@ describe('production D1 migration runtime proof', () => {
     expect(workflow).toContain('node scripts/d1-migration-check.mjs runtime-catalog migration-manifest.json runtime-catalog.json');
     expect(workflow).not.toContain('--file runtime-catalog.sql');
   });
+});
+
+it('certifies the exact 0047 composition, archive and cooking schema before saving the production receipt', () => {
+  const steps = policy.jobs.migrate.steps;
+  const certification = steps.find(step => step.name === 'Certify exact saved recipe content schema after 0047');
+  expect(certification.if).toBe("inputs.migration == '0047_saved_recipe_content.sql'");
+  expect(certification.run).toContain('process.stdout.write(schemaQuery(SAVED_CONTENT_TIP))');
+  expect(certification.run).toContain('manifest.migration !== SAVED_CONTENT_TIP || manifest.postLedger?.tip !== SAVED_CONTENT_TIP || manifest.schema?.version !== SAVED_CONTENT_TIP');
+  expect(certification.run).toContain('manifest.savedContentSchema = verifySchema(JSON.parse(readFileSync("saved-content-schema.json", "utf8")), SAVED_CONTENT_TIP)');
+  expect(steps.indexOf(certification)).toBeGreaterThan(steps.indexOf(steps.find(step => step.name === 'Production schema gate (read-only)')));
+  expect(steps.indexOf(certification)).toBeLessThan(steps.indexOf(steps.find(step => step.name === 'Save sanitized migration receipt (even on failure)')));
 });

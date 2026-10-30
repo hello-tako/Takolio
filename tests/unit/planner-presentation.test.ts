@@ -252,6 +252,7 @@ describe('safe actionable planner errors', () => {
 describe('T20 actionable composition errors', () => {
   it.each([
     ['PROPOSAL_STALE', 'gợi ý mới', 'new suggestion'],
+    ['COMPOSITION_REVALIDATION_REQUIRED', 'lên kế hoạch lại', 'regenerate the plan'],
     ['HARD_CONSTRAINT_CONFLICT', 'giới hạn thời gian', 'time limit'],
     ['DUPLICATE_COMPONENT', 'đã có', 'already in'],
     ['ROLE_NOT_PERMITTED', 'vai trò khác', 'another role'],

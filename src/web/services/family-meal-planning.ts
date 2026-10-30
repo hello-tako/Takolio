@@ -20,7 +20,7 @@ export const familyMealPlanningApi = {
         {
           method: 'POST',
           body: JSON.stringify(MealPlanningIntentSchema.parse(intent)),
-          headers: { 'Idempotency-Key': PlanningRequestKeySchema.parse(key) },
+          headers: { Accept: 'application/json; recipe-content=1', 'Idempotency-Key': PlanningRequestKeySchema.parse(key) },
         },
         'v2',
       ),
@@ -30,27 +30,27 @@ export const familyMealPlanningApi = {
     return FamilyMealPlanDtoSchema.parse(
       await fetchPlannerJson('/meal-planning/drafts', {
         method: 'POST', body: JSON.stringify(MealPlanningIntentSchema.parse(intent)),
-        headers: { 'Idempotency-Key': PlanningRequestKeySchema.parse(key) },
+        headers: { Accept: 'application/json; recipe-content=1', 'Idempotency-Key': PlanningRequestKeySchema.parse(key) },
       }, 'v2'),
     );
   },
   async get(id: string) {
     const result = FamilyMealPlanDtoSchema.parse(
-      await fetchPlannerJson(planPath(id), { cache: 'no-store' }, 'v2'),
+      await fetchPlannerJson(planPath(id), { cache: 'no-store', headers: { Accept: 'application/json; recipe-content=1' } }, 'v2'),
     );
     if (result.plan.id !== id) throw new Error('Plan identity mismatch');
     return result;
   },
   async current() {
     return CurrentFamilyMealPlanDtoSchema.parse(
-      await fetchPlannerJson(`${plans}/current`, { cache: 'no-store' }, 'v2'),
+      await fetchPlannerJson(`${plans}/current`, { cache: 'no-store', headers: { Accept: 'application/json; recipe-content=1' } }, 'v2'),
     );
   },
   async regenerate(id: string, revision: number) {
     const result = FamilyMealPlanDtoSchema.parse(
       await fetchPlannerJson(
         `${planPath(id)}/regenerate`,
-        { method: 'POST', body: JSON.stringify(RegenerateMealPlanSchema.parse({ revision })) },
+        { method: 'POST', body: JSON.stringify(RegenerateMealPlanSchema.parse({ revision })), headers: { Accept: 'application/json; recipe-content=1' } },
         'v2',
       ),
     );

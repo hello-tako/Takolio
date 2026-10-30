@@ -66,23 +66,31 @@ export const recipesApi = {
     }
   },
 
-  getRecipeById: async (id: string) => {
+  getRecipeById: async (id: string, contentFingerprint?: string) => {
+    if (contentFingerprint !== undefined && !/^[a-f0-9]{64}$/.test(contentFingerprint))
+      throw new Error('Phiên bản công thức không hợp lệ.');
     const assertCurrent = guardPrivateSession();
     try {
       const result = await fetchJson<{ recipe: Recipe; match: RecipeMatchResult; contentFingerprint?: string }>(
-        `/recipes/${encodeURIComponent(id)}`,
+        `/recipes/${encodeURIComponent(id)}${contentFingerprint === undefined ? '' : `?contentFingerprint=${contentFingerprint}`}`,
       );
       assertCurrent();
+      if (contentFingerprint !== undefined && result.contentFingerprint !== contentFingerprint)
+        throw new Error('Không thể xác nhận phiên bản công thức đã chọn.');
       return result;
     } catch (err) {
       assertCurrent();
       if (!isOffline(err)) throw err;
       const recipe = ALL_RECIPES.find((r) => r.id === id || r.slug === id);
       if (!recipe) throw err;
+      const fingerprint = await fingerprintRecipes([recipe]);
+      assertCurrent();
+      if (contentFingerprint !== undefined && fingerprint !== contentFingerprint)
+        throw new Error('Cần kết nối để tải đúng phiên bản công thức đã chọn.');
       const inventory = await inventoryApi.getInventory();
       assertCurrent();
       const match = evaluateRecipeMatch(recipe, { inventory });
-      return { recipe, match, contentFingerprint: await fingerprintRecipes([recipe]) };
+      return { recipe, match, contentFingerprint: fingerprint };
     }
   },
 

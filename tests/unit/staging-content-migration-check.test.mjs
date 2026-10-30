@@ -5,10 +5,10 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 import { afterEach, describe, expect, it } from 'vitest';
-import { listMigrations, renderSchemaGateSql } from '../../scripts/d1-schema-gate.mjs';
+import { listMigrations, renderSchemaGateSql, REQUIRED_MIGRATIONS_MARKER } from '../../scripts/d1-schema-gate.mjs';
 import { STAGING_D1 } from '../../scripts/staging-family-migration-check.mjs';
 import {
-  baselineQuery, CONTENT_TIP, run, schemaQuery, TIP, verifyBaseline,
+  baselineQuery, CONTENT_TIP, SAVED_CONTENT_TIP, run, schemaQuery, TIP, verifyBaseline,
   verifyBaselinePreserved, verifyCandidateChain, verifySchema,
 } from '../../scripts/staging-v2-migration-check.mjs';
 
@@ -36,6 +36,13 @@ function fixture() {
   const receipt = write('receipt.json', { sha: 'a'.repeat(40), schema: { version: CONTENT_TIP,
     migrations: names.map(name => ({ name })) }, chain: [CONTENT_TIP], database: STAGING_D1 });
   return { receipt, write, read: () => JSON.parse(readFileSync(receipt, 'utf8')) };
+}
+
+function historicalContentSchemaGateSql() {
+  // Exercise 0046's contract; the current 0047 gate is checked separately below.
+  return readFileSync('scripts/d1-schema-gate.sql', 'utf8').split('\n')
+    .filter(line => !/trg_meal_components_content_|generated_meal_plan_components.*recipe_content_fingerprint/.test(line))
+    .join('\n').replace(REQUIRED_MIGRATIONS_MARKER, names.map(name => `    ('${name}')`).join(',\n'));
 }
 
 describe('bounded canonical staging 0045->0046 content archive certification', () => {
@@ -145,7 +152,7 @@ describe('bounded canonical staging 0045->0046 content archive certification', (
       for (const name of names) db.prepare('INSERT INTO d1_migrations(name) VALUES (?)').run(name);
       const post = [write('post-ledger.json', result(names.map(name => ({ name })))), fk, quick,
         write('after.json', baseline(db)), write('schema.json', result(db.prepare(schemaQuery(CONTENT_TIP)).all())),
-        write('schema-gate.json', result(db.prepare(renderSchemaGateSql()).all()))];
+        write('schema-gate.json', result(db.prepare(historicalContentSchemaGateSql()).all()))];
       const drift = baseline(db);
       drift[0].results[0].week_swap_receipts += 1;
       await expect(run('post', receipt, [...post.slice(0, 3), write('drift.json', drift), ...post.slice(4)])).rejects.toThrow(/aggregate drift/);
@@ -160,7 +167,7 @@ describe('bounded canonical staging 0045->0046 content archive certification', (
   it('selects dispatch contract explicitly then binds every query and recheck to the receipt', () => {
     const workflow = load(readFileSync('.github/workflows/staging-v2-migrate.yml', 'utf8'));
     const input = workflow.on.workflow_dispatch.inputs.migration;
-    expect(input).toMatchObject({ type: 'choice', required: true, default: CONTENT_TIP, options: [TIP, CONTENT_TIP] });
+    expect(input).toMatchObject({ type: 'choice', required: true, default: SAVED_CONTENT_TIP, options: [TIP, CONTENT_TIP, SAVED_CONTENT_TIP] });
     const steps = workflow.jobs.certify.steps;
     const gates = steps.filter(step => step.env?.MIGRATION_TIP);
     expect(gates).toHaveLength(1);
@@ -175,5 +182,58 @@ describe('bounded canonical staging 0045->0046 content archive certification', (
     expect(source).toContain('await hostedCi(candidate.sha, REPOSITORY)');
     expect(source).toContain('await requireCurrentHostedMain({ sha: candidate.sha, repository: REPOSITORY })');
     expect(source).toContain('gate: ref => gate(ref, tip)');
+  });
+});
+
+describe('0047 saved content certification', () => {
+  it('preserves legacy aggregates and certifies pins together with the immutable archive', async () => {
+    const db = databaseAt(CONTENT_TIP);
+    const directory = mkdtempSync(path.join(tmpdir(), 'saved-content-migration-'));
+    directories.push(directory);
+    const write = (name, data) => {
+      const file = path.join(directory, name);
+      writeFileSync(file, typeof data === 'string' ? data : JSON.stringify(data));
+      return file;
+    };
+    const tip = SAVED_CONTENT_TIP;
+    const migrations = listMigrations().filter(name => name <= tip);
+    const candidate = { sha: 'a'.repeat(40), mainSha: 'a'.repeat(40), schema: { version: tip,
+      migrations: migrations.map(name => ({ name })) }, chain: [tip], database: STAGING_D1 };
+    const receipt = write('receipt.json', candidate);
+    const capture = () => baselineQuery(tip).split(';').map(query => ({ success: true, results: [db.prepare(query).get()] }));
+    try {
+      expect(verifyCandidateChain(candidate, tip)).toBe(candidate);
+      expect(() => verifyCandidateChain({ ...candidate, chain: [CONTENT_TIP, tip] }, tip)).toThrow(/Only current-main/);
+      await run('identity', receipt, [write('list.json', [{ name: STAGING_D1.name, uuid: STAGING_D1.id }]),
+        write('info.json', { name: STAGING_D1.name, uuid: STAGING_D1.id })]);
+      await run('pre-ledger', receipt, [write('pre-ledger.json', result(names.map(name => ({ name }))))]);
+      await run('bookmark', receipt, [write('bookmark.json', { bookmark: 'local-saved-content-rehearsal' })]);
+      const fk = write('fk.json', result([]));
+      const quick = write('quick.json', result([{ quick_check: 'ok' }]));
+      const before = capture();
+      await run('pre-health', receipt, [fk, quick, write('before.json', before)]);
+      await run('plan', receipt, [write('plan.txt', tip)]);
+      db.exec(readFileSync(`migrations/${tip}`, 'utf8'));
+      expect(verifyBaselinePreserved(result([verifyBaseline(before, tip)]), capture(), tip)).toEqual({ drift: 'none' });
+      const rows = db.prepare(schemaQuery(tip)).all();
+      expect(verifySchema(result(rows), tip).constraints).toBe('PASS');
+      for (const row of rows) expect(() => verifySchema(result(rows.filter(other => other !== row)), tip), row.name).toThrow(/differs/);
+      for (const [from, to] of [
+        ['recipe_content_fingerprint TEXT', 'recipe_content_fingerprint INTEGER'],
+        ['recipe_id = NEW.recipe_id', '1 = 1'],
+        ["NEW.kind <> 'recipe'", '0'],
+        ['SELECT RAISE(ABORT', 'SELECT RAISE(IGNORE'],
+      ]) {
+        expect(rows.some(row => row.sql?.includes(from)), from).toBe(true);
+        expect(() => verifySchema(result(rows.map(row => ({ ...row, sql: row.sql?.replaceAll(from, to) ?? null }))), tip)).toThrow(/differs/);
+      }
+      db.exec('CREATE TABLE d1_migrations (id INTEGER PRIMARY KEY, name TEXT NOT NULL, applied_at TEXT)');
+      for (const name of migrations) db.prepare('INSERT INTO d1_migrations(name) VALUES (?)').run(name);
+      const post = [write('post-ledger.json', result(migrations.map(name => ({ name })))), fk, quick,
+        write('after.json', capture()), write('schema.json', result(rows)),
+        write('gate.json', result(db.prepare(renderSchemaGateSql()).all()))];
+      expect(await run('post', receipt, post)).toMatchObject({ status: 'STAGING_0047_SAVED_CONTENT_CERTIFIED',
+        aggregateDrift: 'none', schemaGate: 'PASS', postLedger: { count: 47, tip }, schemaCheck: { constraints: 'PASS' } });
+    } finally { db.close(); }
   });
 });

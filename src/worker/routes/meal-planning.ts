@@ -13,6 +13,7 @@ import { GeneratedMealPlanPersistenceError } from '../../../packages/db/src/meal
 import { MealPlanningSnapshotAuthorizationError } from '../../../packages/db/src/meal-planning-snapshot';
 import { MealPlanningApplicationService, type MealPlanningServiceOptions } from '../services/meal-planning';
 import { MealPlanningError } from '../services/meal-planning-error';
+import { legacyPlanCompositions, legacySlotComposition, supportsRecipeContent } from '../services/meal-composition-response';
 import { PlanAlternativesQuerySchema, PlanExplanationRequestSchema } from '../../../packages/domain/src/meal-planning-presentation';
 import { createExplanationTransport } from '../services/meal-planning-explanation';
 import { backgroundExecutorOf, resolveRecipeAuthority } from '../services/recipe-authority';
@@ -141,33 +142,41 @@ export function createMealPlanningRoutes(options: Partial<MealPlanningServiceOpt
     return parsed.data.includeAssessment === 'true';
   };
   const slotPath = '/meal-planning/plans/:id/slots/:slotId';
+  const planResponse = async (c: Ctx, operation: ReturnType<ReturnType<typeof compositions>['compositions']>) => {
+    const dto = await operation;
+    return supportsRecipeContent(c.req.header('Accept')) ? dto : legacyPlanCompositions(dto);
+  };
+  const slotResponse = async (c: Ctx, operation: ReturnType<ReturnType<typeof compositions>['composition']>) => {
+    const dto = await operation;
+    return supportsRecipeContent(c.req.header('Accept')) ? dto : legacySlotComposition(dto);
+  };
   routes.get('/meal-planning/plans/:id/compositions', reads, (c) => respond(c, () =>
-    compositions(c).compositions(scope(c), planId(c), includeAssessment(c))));
+    planResponse(c, compositions(c).compositions(scope(c), planId(c), includeAssessment(c)))));
   routes.get(`${slotPath}/composition`, reads, (c) => respond(c, () =>
-    compositions(c).composition(scope(c), planId(c), slotId(c), includeAssessment(c))));
+    slotResponse(c, compositions(c).composition(scope(c), planId(c), slotId(c), includeAssessment(c)))));
   routes.put(`${slotPath}/composition`, compositionWrites, (c) => respond(c, async () =>
-    compositions(c).replace(scope(c), planId(c), slotId(c), await body(c, ReplaceCompositionSchema))));
+    slotResponse(c, compositions(c).replace(scope(c), planId(c), slotId(c), await body(c, ReplaceCompositionSchema)))));
   routes.post(`${slotPath}/components`, compositionWrites, (c) => respond(c, async () =>
-    compositions(c).add(scope(c), planId(c), slotId(c), await body(c, AddComponentSchema))));
+    slotResponse(c, compositions(c).add(scope(c), planId(c), slotId(c), await body(c, AddComponentSchema)))));
   routes.post(`${slotPath}/components/:componentId/swap`, compositionWrites, (c) => respond(c, async () =>
-    compositions(c).swap(scope(c), planId(c), slotId(c), componentId(c), await body(c, SwapComponentSchema))));
+    slotResponse(c, compositions(c).swap(scope(c), planId(c), slotId(c), componentId(c), await body(c, SwapComponentSchema)))));
   routes.patch(`${slotPath}/components/:componentId`, compositionWrites, (c) => respond(c, async () =>
-    compositions(c).update(scope(c), planId(c), slotId(c), componentId(c), await body(c, UpdateComponentSchema))));
+    slotResponse(c, compositions(c).update(scope(c), planId(c), slotId(c), componentId(c), await body(c, UpdateComponentSchema)))));
   routes.delete(`${slotPath}/components/:componentId`, compositionWrites, (c) => respond(c, () => {
     const parsed = RemoveComponentQuerySchema.safeParse(c.req.query());
     if (!parsed.success || Object.values(c.req.queries()).some((values) => values.length !== 1)) {
       throw new MealPlanningError('INVALID_REQUEST', 422, 'A single positive plan revision is required');
     }
-    return compositions(c).remove(scope(c), planId(c), slotId(c), componentId(c), Number(parsed.data.revision));
+    return slotResponse(c, compositions(c).remove(scope(c), planId(c), slotId(c), componentId(c), Number(parsed.data.revision)));
   }));
   routes.post(`${slotPath}/assist`, compute, expensive, (c) => respond(c, async () =>
     compositions(c).assist(scope(c), planId(c), slotId(c), await body(c, AssistRequestSchema))));
   routes.post(`${slotPath}/assist/apply`, compute, expensive, (c) => respond(c, async () =>
-    compositions(c).assistApply(scope(c), planId(c), slotId(c), await body(c, AssistApplySchema))));
+    slotResponse(c, compositions(c).assistApply(scope(c), planId(c), slotId(c), await body(c, AssistApplySchema)))));
   routes.post(`${slotPath}/auto`, compute, expensive, (c) => respond(c, async () =>
     compositions(c).auto(scope(c), planId(c), slotId(c), await body(c, AutoRequestSchema))));
   routes.post(`${slotPath}/auto/apply`, compute, expensive, (c) => respond(c, async () =>
-    compositions(c).autoApply(scope(c), planId(c), slotId(c), await body(c, AutoApplySchema))));
+    slotResponse(c, compositions(c).autoApply(scope(c), planId(c), slotId(c), await body(c, AutoApplySchema)))));
   routes.get('/meal-planning/compositions/picker', reads, (c) => respond(c, () => {
     const parsed = PickerQuerySchema.safeParse(c.req.query());
     if (!parsed.success || Object.values(c.req.queries()).some((values) => values.length !== 1)) {
