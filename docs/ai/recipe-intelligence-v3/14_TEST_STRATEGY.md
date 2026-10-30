@@ -11,8 +11,7 @@ Search-service retry returned unavailable; no search snippets used as evidence.
 Executed read-only checks: git status/diff/log/remote/rev-parse and git fetch
 origin; gh pr list/view, gh run view and gh api for main protection/production
 Environment. Main remains b49f3e6c; only PR51 approved. PR54 exact b6ff4ebd
-Recipe41110848058/Admin41110848034 remain IN_PROGRESS; step metadata is
-inconsistent, so no complete step sequence or final check result is claimed.
+Recipe41110848058/Admin41110848034 completed SUCCESS; exact results follow.
 Earlier watch sessions11842/17616 retain logs under /private/tmp.
 Pending-run --log-failed attempts returned exit1 because logs were not yet
 available; this is not a failed CI conclusion. Hosted results will be recorded
@@ -29,6 +28,8 @@ These checks do not certify food safety, human review or hosted readiness.
 No remote migration, flag change or deployment.
 
 ---
+
+Hosted implementation CI completed SUCCESS on b6ff4ebdbfc62b28d3ee6b4d72ae126e99d4a1a6: Recipe41110848058,436files/9750tests/1025.09s; Admin41110848034,436files/9750tests/1294.70s. Admin Workerd10/10,migration matrix39/39,browser13tests,keyboard10repeats and screenshot guards PASS. Preflight readyForDeployment=false,remoteExecuted=false. Receipts: /private/tmp/takolio-v3-pr54-recipe-completed.json and /private/tmp/takolio-v3-pr54-admin-completed.json. Later documentation HEAD requires its own CI. No review or production mutation claimed.
 
 ## Coordinated raw-crab candidate checks - 2026-10-31 JST
 
