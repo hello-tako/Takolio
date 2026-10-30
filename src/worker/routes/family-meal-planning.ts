@@ -6,7 +6,7 @@ import { tenancyGuard } from '../middleware/tenancy';
 import { rateLimiter } from '../middleware/rate-limit';
 import { MealPlanningIntentSchema, PlanIdSchema, PlanningRequestKeySchema, RegenerateMealPlanSchema } from '../../../packages/domain/src/meal-planning-api';
 import type { FamilyMealPlanDto } from '../../../packages/domain/src/family-meal-planning-api';
-import { legacyPlanCompositions, supportsRecipeContent } from '../services/meal-composition-response';
+import { legacyMealPlan, legacyPlanCompositions, supportsRecipeContent } from '../services/meal-composition-response';
 import { FamilyPlanningInputChanged } from '../../../packages/db/src/family-planning-fence';
 import { GeneratedMealPlanPersistenceError } from '../../../packages/db/src/meal-planning';
 import { MealPlanningSnapshotAuthorizationError } from '../../../packages/db/src/meal-planning-snapshot';
@@ -28,7 +28,7 @@ async function respond(c: Ctx, operation: () => Promise<FamilyMealPlanDto | { pl
   try {
     const result = await operation();
     if (supportsRecipeContent(c.req.header('Accept'))) return c.json(result);
-    const legacy = (plan: FamilyMealPlanDto) => ({ ...plan, compositions: legacyPlanCompositions(plan.compositions) });
+    const legacy = (plan: FamilyMealPlanDto) => ({ ...plan, plan: legacyMealPlan(plan.plan), compositions: legacyPlanCompositions(plan.compositions) });
     return c.json('schemaVersion' in result ? legacy(result) : { plan: result.plan ? legacy(result.plan) : null });
   } catch (error) {
     if (error instanceof FamilyPlanningInputChanged) return c.json({ code: 'PLAN_REVALIDATION_REQUIRED', error: 'Planning inputs changed; retry with current data' }, 409);

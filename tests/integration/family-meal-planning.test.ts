@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { FamilyMealPlanDtoSchema } from '../../packages/domain/src/family-meal-planning-api';
 import { MealComponentDtoSchema, MealCompositionDtoSchema, PlanCompositionsDtoSchema } from '../../packages/domain/src/meal-composition-api';
-import { MealPlanDtoSchema } from '../../packages/domain/src/meal-planning-api';
+import { MealPlanDtoSchema, PlannedMealDtoSchema, PlanResultDtoSchema } from '../../packages/domain/src/meal-planning-api';
 import { FamilyPreferencesSchema } from '../../packages/domain/src/family-preferences-api';
 import { saveFamilyPreferences } from '../../packages/db/src/family-preferences';
 import { resolveRecipeAuthority } from '../../src/worker/services/recipe-authority';
@@ -33,7 +33,7 @@ describe('family meal V2 persistence and HTTP boundary', () => {
   it('negotiates pinned content while preserving strict legacy family responses', async () => {
     const legacyComponent = MealComponentDtoSchema.omit({ contentFingerprint: true }).strict();
     const legacyComposition = MealCompositionDtoSchema.extend({ components: legacyComponent.array() });
-    const legacyFamily = FamilyMealPlanDtoSchema.safeExtend({ compositions: PlanCompositionsDtoSchema.extend({ compositions: legacyComposition.array() }) });
+    const legacyFamily = FamilyMealPlanDtoSchema.safeExtend({ plan: MealPlanDtoSchema.extend({ result: PlanResultDtoSchema.extend({ meals: PlannedMealDtoSchema.omit({ contentFingerprint: true }).strict().array() }) }), compositions: PlanCompositionsDtoSchema.extend({ compositions: legacyComposition.array() }) });
     expect((await call(HOUSE, 'GET', '/plans/current', undefined, undefined, {}, false)).json).toEqual({ plan: null });
     const created = await call(HOUSE, 'POST', '/plans', intent, undefined, {}, false);
     expect(created.status, JSON.stringify(created.json)).toBe(200);
@@ -61,6 +61,8 @@ describe('family meal V2 persistence and HTTP boundary', () => {
     expect(created.status, JSON.stringify(created.json)).toBe(200);
     const dto = FamilyMealPlanDtoSchema.parse(created.json);
     expect(dto.plan.revision).toBe(1);
+    for (const meal of dto.plan.result.meals) expect(meal.contentFingerprint).toBe(
+      dto.compositions.compositions.find(slot => slot.slotId === meal.slotId)?.components.find(component => component.recipeId === meal.source.id)?.contentFingerprint ?? null);
     expect(dto.compositions.compositions).toHaveLength(2);
     for (const composition of dto.compositions.compositions) {
       expect(composition.components.map((component) => component.role)).toEqual(['main', 'vegetable', 'soup', 'staple']);
@@ -87,6 +89,7 @@ describe('family meal V2 persistence and HTTP boundary', () => {
     expect(result.status, JSON.stringify(result.json)).toBe(200);
     const dto = FamilyMealPlanDtoSchema.parse(result.json);
     const current = dto.compositions.compositions[0].components.find((component) => component.id === main.id)!;
+    expect(dto.plan.result.meals.find(meal => meal.slotId === composition.slotId)?.contentFingerprint).toBe(current.contentFingerprint);
     expect(current).toMatchObject({ id: main.id, recipeId: main.recipeId, role: 'main', locked: true, createdRevision: 1, updatedRevision: 2, contentFingerprint: main.contentFingerprint });
     expect(dto.compositions.compositions.every((entry) => entry.components.length === 4)).toBe(true);
     const stale = await call(HOUSE, 'POST', `/plans/${created.plan.id}/regenerate`, { revision: 1 });

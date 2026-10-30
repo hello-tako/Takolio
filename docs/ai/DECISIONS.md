@@ -3896,3 +3896,35 @@ promotion. Recovery uses a certified version-aware Worker with paired flags OFF,
 retains0046/0047 and separately proves actual hosted OFF/recovery behavior.
 Normal independent review,exact-main CI,same-source hosted certification and
 Environment approval remain mandatory. No external approval is fabricated.
+
+## ADR-077 - Content identity for standalone V1 meal selections (2026-10-30 JST)
+
+Status: accepted implementation scope; publication and release gates remain.
+
+V1 already stores title, instructions, requirements and shopping snapshots, but
+its read-time composition projection resolves the mutable recipe ID. Add an
+optional nullable contentFingerprint to the strict planned-meal contract and
+stored result JSON. No migration or inferred legacy backfill. New standalone
+recipe selections capture trusted unscaled authority content and household access
+through0046. Family variants retain NULL: they are not RuntimeRecipe objects.
+Family/composed anchors inherit the matching persisted component pin, including
+legacy NULL. Standalone pins attest the exact existing authority snapshot, including its
+existing cache semantics; no claim of a new atomic catalog-current check. Existing
+authority, tenancy, revision and composition/family transaction fences remain;
+a pin identifies the selected snapshot, not live catalog or culinary approval.
+
+V1 generate/replay/read/current/regenerate/swap and underlying family plan DTOs
+negotiate the same recipe-content=1 Accept capability. Old strict clients receive
+no new field. Projection into an unedited V1 composition propagates the known pin;
+archive lookup includes these projections, so historical display never substitutes
+current content and current-fact assessment/shopping stay fenced. Standalone V1
+regeneration explicitly reselects current content; stale pinned locks are dropped
+rather than silently retaining a different recipe under the old selection. Swap
+preserves unknown or known pins for unchanged selections. Existing V1 UI already
+renders stored instructions; no new cooking/detail navigation is introduced.
+
+Once pinned JSON is persisted, a pre-077 strict Worker cannot decode those rows.
+Recovery therefore requires this same-source version-aware flags-OFF Worker,
+retaining0046/0047 and all opaque plan data. Older binary rollback is unsupported.
+Hosted OFF/recovery, independent review and normal protected deployment remain
+required. This slice neither publishes V3 candidates nor waives evidence gates.

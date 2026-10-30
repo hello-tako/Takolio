@@ -7,13 +7,13 @@ import { tenancyGuard } from '../middleware/tenancy';
 import { rateLimiter } from '../middleware/rate-limit';
 import {
   MealPlanningIntentSchema, PlanIdSchema, PlanningRequestKeySchema, RegenerateMealPlanSchema,
-  SwapMealSchema, OptimizePlanShoppingSchema, PlanFeedbackSchema,
+  SwapMealSchema, OptimizePlanShoppingSchema, PlanFeedbackSchema, type MealPlanDto,
 } from '../../../packages/domain/src/meal-planning-api';
 import { GeneratedMealPlanPersistenceError } from '../../../packages/db/src/meal-planning';
 import { MealPlanningSnapshotAuthorizationError } from '../../../packages/db/src/meal-planning-snapshot';
 import { MealPlanningApplicationService, type MealPlanningServiceOptions } from '../services/meal-planning';
 import { MealPlanningError } from '../services/meal-planning-error';
-import { legacyPlanCompositions, legacySlotComposition, supportsRecipeContent } from '../services/meal-composition-response';
+import { legacyMealPlan, legacyPlanCompositions, legacySlotComposition, supportsRecipeContent } from '../services/meal-composition-response';
 import { PlanAlternativesQuerySchema, PlanExplanationRequestSchema } from '../../../packages/domain/src/meal-planning-presentation';
 import { createExplanationTransport } from '../services/meal-planning-explanation';
 import { backgroundExecutorOf, resolveRecipeAuthority } from '../services/recipe-authority';
@@ -93,10 +93,18 @@ export function createMealPlanningRoutes(options: Partial<MealPlanningServiceOpt
     return parsed.data;
   };
 
+  const mealPlanResponse = async (c: Ctx, operation: Promise<MealPlanDto>) => {
+    const dto = await operation;
+    return supportsRecipeContent(c.req.header('Accept')) ? dto : legacyMealPlan(dto);
+  };
+
   routes.post('/meal-planning/plans', compute, expensive, (c) => respond(c, async () =>
-    service(c).generate(scope(c), await body(c, MealPlanningIntentSchema), key(c))));
-  routes.get('/meal-planning/plans/current', reads, (c) => respond(c, () => service(c).current(scope(c))));
-  routes.get('/meal-planning/plans/:id', reads, (c) => respond(c, () => service(c).get(scope(c), planId(c))));
+    mealPlanResponse(c, service(c).generate(scope(c), await body(c, MealPlanningIntentSchema), key(c)))));
+  routes.get('/meal-planning/plans/current', reads, (c) => respond(c, async () => {
+    const { plan } = await service(c).current(scope(c));
+    return { plan: plan ? await mealPlanResponse(c, Promise.resolve(plan)) : null };
+  }));
+  routes.get('/meal-planning/plans/:id', reads, (c) => respond(c, () => mealPlanResponse(c, service(c).get(scope(c), planId(c)))));
   routes.get('/meal-planning/plans/:id/alternatives', reads, (c) => respond(c, () => {
     const parsed = PlanAlternativesQuerySchema.safeParse(c.req.query());
     if (!parsed.success || Object.values(c.req.queries()).some((values) => values.length !== 1)) {
@@ -107,9 +115,9 @@ export function createMealPlanningRoutes(options: Partial<MealPlanningServiceOpt
   routes.post('/meal-planning/plans/:id/explanation', compute, expensive, (c) => respond(c, async () =>
     service(c).explanation(scope(c), planId(c), await body(c, PlanExplanationRequestSchema), c.env.MEAL_PLANNER_AI_ENABLED === 'true')));
   routes.post('/meal-planning/plans/:id/regenerate', compute, expensive, (c) => respond(c, async () =>
-    service(c).regenerate(scope(c), planId(c), await body(c, RegenerateMealPlanSchema))));
+    mealPlanResponse(c, service(c).regenerate(scope(c), planId(c), await body(c, RegenerateMealPlanSchema)))));
   routes.post('/meal-planning/plans/:id/swap', compute, expensive, (c) => respond(c, async () =>
-    service(c).swap(scope(c), planId(c), await body(c, SwapMealSchema))));
+    mealPlanResponse(c, service(c).swap(scope(c), planId(c), await body(c, SwapMealSchema)))));
   routes.post('/meal-planning/plans/:id/shopping', compute, expensive, (c) => respond(c, async () =>
     service(c).shopping(scope(c), planId(c), await body(c, OptimizePlanShoppingSchema))));
   // ---------------------------------------------------------------- T20 Meal Composition V2 (ADR-031)

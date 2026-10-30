@@ -9,6 +9,8 @@ import {
   recordCookedGeneratedMealPlanAnnotation,
   type GeneratedMealPlanRecord,
 } from '../../../packages/db/src/meal-planning';
+import { captureRecipeContentVersion, grantRecipeContentAccess } from './recipe-content-versions';
+import { fingerprintRecipes } from '../../../packages/recipes/src/catalog-fingerprint';
 import { recipeAuthoritySnapshotIsCurrent } from './recipe-authority';
 import { loadMealPlanningSnapshot } from '../../../packages/db/src/meal-planning-snapshot';
 import type { RecipeAuthoritySnapshot } from '../../../packages/recipes/src/recipe-authority';
@@ -21,6 +23,7 @@ import {
   PlanShoppingDtoSchema,
   type MealPlanningIntent,
   type MealPlanDto,
+  type PlannedMealDto,
   type RegenerateMealPlanSchema,
   type SwapMealSchema,
   type OptimizePlanShoppingSchema,
@@ -64,6 +67,7 @@ import {
   readPlanCompositions,
   readRoleAssignments,
   writePlanCompositions,
+  type CompositionSlotWrite,
 } from '../../../packages/db/src/meal-composition';
 import { MealCompositionService, roleIndexFor } from './meal-composition';
 import { familyMealRoles, familyMealRolesForComponents, planFamilyMeals, type FamilyPlanningResult } from '../../../packages/recipes/src/composition/family-planner';
@@ -352,6 +356,29 @@ export class MealPlanningApplicationService {
     };
   }
 
+  /** @internal Pins identify the unscaled authority snapshot used by this planning operation. */
+  async pinResult(scope: Scope, authority: RecipeAuthoritySnapshot, result: z.infer<typeof StoredResultSchema>,
+    previous: readonly PlannedMealDto[] = [], slots: readonly CompositionSlotWrite[] = []) {
+    const captures = new Map<string, Promise<string>>();
+    const meals = await Promise.all(result.result.meals.map(async (meal) => {
+      const slot = slots.find((entry) => entry.slotId === meal.slotId);
+      if (slot) return { ...meal, contentFingerprint: slot.components.find((component) =>
+        component.kind === 'recipe' && meal.source.kind === 'recipe' && component.recipeId === meal.source.id)?.contentFingerprint ?? null };
+      const prior = previous.find((entry) => entry.slotId === meal.slotId && canonicalJson(entry.source) === canonicalJson(meal.source));
+      if (prior) return { ...meal, contentFingerprint: prior.contentFingerprint ?? null };
+      if (meal.source.kind !== 'recipe') return { ...meal, contentFingerprint: null };
+      const recipe = authority.findById(meal.source.id);
+      if (!recipe) throw new MealPlanningError('PLAN_REVALIDATION_REQUIRED', 409, 'Selected recipe is unavailable');
+      if (!captures.has(recipe.id)) captures.set(recipe.id, (async () => {
+        const pin = await captureRecipeContentVersion(this.db, recipe);
+        await grantRecipeContentAccess(this.db, scope.householdId, pin);
+        return pin;
+      })());
+      return { ...meal, contentFingerprint: await captures.get(recipe.id)! };
+    }));
+    return { ...result, result: { ...result.result, meals } };
+  }
+
   private async familySnapshot(scope: Scope, now: string, profile: { revision: number; preferences: FamilyPreferences }) {
     const authority = await this.options.recipeAuthority(scope);
     const before = authority.source === 'd1' ? await readFamilyCatalogReceipts(this.db) : [];
@@ -502,7 +529,7 @@ export class MealPlanningApplicationService {
     const metadata = { profileRevision: profile.revision, profileFingerprint: await sha256Hex(canonicalJson(profile.preferences)),
       policy: this.familyPolicy(planning, profile), diagnostics: this.familyDiagnostics(planning) };
     const row = await createFamilyMealPlan(this.db, scope, { id, requestKey: key, requestFingerprint,
-      intentJson: serialize({ intent, locks: [] }), resultJson: serialize(base), sourceJson: serialize(this.sourceIdentity(snapshot)) }, slots, metadata, familyPlanningFenceStatements(this.db, scope, fence));
+      intentJson: serialize({ intent, locks: [] }), resultJson: serialize(await this.pinResult(scope, authority, base, [], slots)), sourceJson: serialize(this.sourceIdentity(snapshot)) }, slots, metadata, familyPlanningFenceStatements(this.db, scope, fence));
     return this.familyDto(scope, row);
   }
 
@@ -583,7 +610,7 @@ export class MealPlanningApplicationService {
       createdRevision: compositions.get(meal.slot.id)?.createdRevision ?? row.revision + 1, createdAt: compositions.get(meal.slot.id)?.createdAt ?? null,
       components: await this.compositions().pinComponents(scope, authority, meal.components, locked.get(meal.slot.id) ?? []) })));
     const current = await writePlanCompositions(this.db, scope, { planId: id, expectedRevision: row.revision,
-      planUpdate: { intentJson: serialize({ intent, locks: [] }), resultJson: serialize(result), sourceJson: serialize(this.sourceIdentity(snapshot)) },
+      planUpdate: { intentJson: serialize({ intent, locks: [] }), resultJson: serialize(await this.pinResult(scope, authority, result, [], slots)), sourceJson: serialize(this.sourceIdentity(snapshot)) },
       slots, deleteSlotIds: [...compositions.keys()].filter((slotId) => !slots.some((slot) => slot.slotId === slotId)),
       additionalStatements: [...familyPlanningFenceStatements(this.db, scope, fence), familyMetadataUpdateStatement(this.db, scope, id, metadata)] });
     return this.familyDto(scope, current);
@@ -602,9 +629,9 @@ export class MealPlanningApplicationService {
       return this.dto(prior);
     }
     const now = this.now();
-    const snapshot = await this.snapshot(scope, now);
+    const { snapshot, authority } = await this.snapshotWithAuthority(scope, now);
     const id = crypto.randomUUID();
-    const result = this.run(scope, id, intent, [], snapshot, now);
+    const result = await this.pinResult(scope, authority, this.run(scope, id, intent, [], snapshot, now));
     const { plan: row } = await createGeneratedMealPlan(this.db, scope, {
       id,
       requestKey: key,
@@ -689,7 +716,7 @@ export class MealPlanningApplicationService {
     const now = this.now();
     const hasCompositions = this.options.compositionV2Enabled && await planHasCompositions(this.db, scope, id);
     const fenced = hasCompositions ? await this.snapshotWithPlanningFences(scope, now) : null;
-    const snapshot = fenced?.snapshot ?? await this.snapshot(scope, now);
+    const { snapshot, authority } = fenced ?? await this.snapshotWithAuthority(scope, now);
     const currentVersions = new Map<string, number | undefined>([
       ...snapshot.catalog.recipes.map(
         (recipe) => [`recipe:${recipe.id}`, recipe.provenance.version] as const,
@@ -698,6 +725,11 @@ export class MealPlanningApplicationService {
         (family) => [`family:${family.id}`, family.provenance.version] as const,
       ),
     ]);
+    const changedPins = new Set((await Promise.all(stored.result.meals.map(async (meal) => {
+      if (!meal.contentFingerprint) return null;
+      const recipe = meal.source.kind === 'recipe' ? authority.findById(meal.source.id) : null;
+      return !recipe || await fingerprintRecipes([recipe]) !== meal.contentFingerprint ? meal.slotId : null;
+    }))).filter((slotId) => slotId !== null));
     // Regenerate is the revalidation path: stale locks are dropped, never silently redirected.
     const locks = stored.locks
       .filter((entry) =>
@@ -707,7 +739,7 @@ export class MealPlanningApplicationService {
       )
       .filter(
         (entry) =>
-          currentVersions.get(`${entry.lock.kind}:${entry.lock.id}`) === entry.lock.version,
+          !changedPins.has(entry.slotId) && currentVersions.get(`${entry.lock.kind}:${entry.lock.id}`) === entry.lock.version,
       );
     if (fenced) {
       const composed = await this.compositions().regenerateComposed(scope, { row, intent, locks, snapshot, authority: fenced.authority, now });
@@ -727,7 +759,7 @@ export class MealPlanningApplicationService {
         snapshot,
       );
     }
-    const result = this.run(scope, id, intent, locks, snapshot, now);
+    const result = await this.pinResult(scope, authority, this.run(scope, id, intent, locks, snapshot, now));
     return this.dto(
       await updateGeneratedMealPlan(this.db, scope, {
         id,
@@ -759,7 +791,7 @@ export class MealPlanningApplicationService {
       );
     }
     const now = this.now();
-    const snapshot = await this.snapshot(scope, now);
+    const { snapshot, authority } = await this.snapshotWithAuthority(scope, now);
     if (this.authorityChanged(stored, snapshot)) {
       throw new MealPlanningError(
         'CATALOG_AUTHORITY_CHANGED',
@@ -802,10 +834,10 @@ export class MealPlanningApplicationService {
         'Replacement cannot produce a complete plan under current constraints',
       );
     }
-    const result = {
+    const result = await this.pinResult(scope, authority, {
       ...generated,
       lastSwap: { slotId: input.slotId, previous: original.source, replacement: selected.source },
-    };
+    }, stored.result.meals.filter((meal) => meal.slotId !== input.slotId));
     return this.dto(
       await updateGeneratedMealPlan(this.db, scope, {
         id,

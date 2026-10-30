@@ -90,6 +90,7 @@ export const PlannedMealDtoSchema = z.object({
   servings: Servings,
   candidateId: z.string().min(1).max(24_000),
   source: PlanSourceIdentitySchema,
+  contentFingerprint: z.string().regex(/^[0-9a-f]{64}$/).nullable().optional(),
   title: z.string(),
   cuisine: z.string().nullable(),
   prepTimeMinutes: z.number().nonnegative().nullable(),

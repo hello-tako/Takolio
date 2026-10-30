@@ -1,3 +1,37 @@
+## Recipe V3 standalone saved content - 2026-10-30 JST
+
+Status: RECIPE_V3_IMPLEMENTATION_IN_PROGRESS; production NOT_READY.
+Owner production authorization remains valid. Branch codex/recipe-v3-v1-content;
+parent744b4e25b2d710e573dac7d82610c363acd6194b. ADR-077 pins new standalone V1
+selections to unscaled household-authorized content, retains unchanged legacy
+unknowns, and projects saved archives. Family/composed anchors inherit their
+component pin. Explicit regeneration revalidates stale same-version locks.
+Existing recipe-content=1 capability preserves strict legacy response shapes.
+No new migration;0046/0047 and same-source version-aware flags-OFF recovery remain
+required. No publication or data approval is implied.
+
+Executed full gate: PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp
+CI=1 pnpm check PASS exit0;434files/9710tests,1168.84s;typecheck,lint,migration
+replay,Main/Admin builds PASS. Log /private/tmp/takolio-v3-v1-complete-check.log;
+exit receipt /private/tmp/takolio-v3-v1-complete-check.exit. Final browser suites
+28+6tests PASS exit0,182axe reports/0violations,24+60layout observations.
+Focused62tests,cooking10tests,disabled-schema4tests PASS. Audit0;seed71/import500/
+V3 audit500 PASS. Earlier fixture failures and browser limitations remain recorded
+in docs/ai/recipe-intelligence-v3/24_V1_SAVED_CONTENT_VALIDATION.md.
+
+Four catalog release gates still FAIL: RUNTIME_PROJECTION_LOSS,
+INGREDIENT_RECONCILIATION_INCOMPLETE,SOURCE_CONTENT_VERIFICATION_INCOMPLETE,
+NUTRITION_EVIDENCE_INCOMPLETE.1395provisional IDs/4233lines,six critical safety
+cases,0/500human approvals remain. No new remote migration or deployment.
+Next: publish this checkpoint as a stacked PR against codex/recipe-v3-saved-content;
+observe exact-head Recipe/Admin CI; finish shopping version binding and approved
+publication/evidence. Independent review,protected main/exact-main CI,same-source
+hosted staging/recovery/catalog certification and Environment approval remain.
+
+Earlier records are historical checkpoints.
+
+---
+
 ## Recipe V3 immutable release baseline - 2026-10-30 JST
 
 Status: RECIPE_V3_IMPLEMENTATION_IN_PROGRESS; production NOT_READY.
