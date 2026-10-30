@@ -1,34 +1,39 @@
-## Recipe V3 PWA and recovery checkpoint - 2026-10-31 JST
+## Recipe V3 owner review follow-up - 2026-10-31 JST
 
-Status: RECIPE_V3_IMPLEMENTATION_IN_PROGRESS; production NOT_READY.
-Branch codex/recipe-v3-browser-certification; PR52 is OPEN/Draft against
-codex/recipe-v3-shopping-content. Validated implementation f55172363970e88b38a7bb9c77f5b544e9c0778c;
-parent/approved PR51 HEAD ae68f7e5a4bc987155aaeed577f07f95b893359b.
-Local recovery PASS1file/5tests; real-service-worker PWA PASS5checks, twice.
-Full pnpm check PASS435files/9717tests,973.91s,exit0. Cold offline reload retains
-queued work behind session verification; no hosted recovery certification.
+Production NOT_READY; owner deployment authorization remains valid. The user
+reported "đã duyệt" for professional review of 500 recipes / six safety cases.
+`docs/ai/recipe-intelligence-v3/19_INDEPENDENT_REVIEW_QUEUE.md` records the reply,
+unchanged candidate SHA256 and missing reviewer/decision/evidence details.
+Existing structured approval records remain 0/500 pending the actual review record.
 
-Reviewer vn-taphoanhatung has write access. Requests already exist on PR33-50
-and PR52; PR51 is APPROVED with Recipe/Admin CI SUCCESS. Recipe41087966158 and Admin41087965933 SUCCESS on f5517236. Both ran
-435files/9717tests; Admin also passed Workerd, migration matrix, browser and
-10keyboard repeats. Resolve later documentation HEAD/CI from GitHub.
-Main requires approval on the actual main-targeting PR, strict validate/validate-admin,
-stale/last-push review and admin enforcement; it has no separate ancestor-approval
-rule. Each independent slice still needs review coverage under the program's review
-requirements. Preserve the small PR stack; PR51 approval covers its own slice.
+Executed with PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp CI=1:
+- `node scripts/recipe-intelligence-v3-audit.mjs --check`: PASS exit 0,
+  500 recipes / 44 edits / 25 packets; existing port 24678 warning retained.
+- `pnpm recipe:refresh:release-check`: FAIL exit 1, RUNTIME_PROJECTION_LOSS,
+  INGREDIENT_RECONCILIATION_INCOMPLETE,SOURCE_CONTENT_VERIFICATION_INCOMPLETE,
+  NUTRITION_EVIDENCE_INCOMPLETE. Exact logs/exit receipts:
+  /private/tmp/takolio-v3-owner-approval-audit.log and .exit;
+  /private/tmp/takolio-v3-owner-approval-release.log and .exit.
 
-Fresh V3 audit PASS500recipes/44edits/25packets. Actual refresh release check
-FAIL exit1 with all four data blockers.1395provisional IDs/4233lines,six critical
-safety cases,0/500human culinary approvals and approved publication remain open.
-Exact commands, receipts, failed gates and limits:
-docs/ai/recipe-intelligence-v3/26_PWA_RECOVERY_VALIDATION.md.
+GitHub refreshed 2026-10-30T17:37:16Z: PR52 exact 435c7f7e Recipe41093473613/
+Admin41093473560 SUCCESS; body updated. Only PR51 has a submitted approval,
+on ae68f7e5. PR33-50/52 remain open/Draft with reviewer requested. Fetched main
+remains b49f3e6c; strict CI,last-push/stale/independent review,admin enforcement
+and conversation resolution verified. No duplicate reviewer request.
 
-Next: finish exact-head CI and genuine slice/data review; implement approved
-publication after evidence closure; protected main/exact-main CI; same-source hosted
-staging/catalog/recovery; ordered0046/0047 via0047 dispatch before Worker; normal
-Environment-approved deploy with real receipt/SHA/traffic/health verification.
-Owner deployment authorization persists. No merge,remote migration,flag change or
-deployment. This follow-up changes documentation only; full suite not repeated.
+Next: reconcile the reported professional review with its evidence; finish
+ingredient,projection,source,nutrition and approved publication. 1395 provisional
+IDs / 4233 lines, 2996 exclusions / 2860 transformations, 288 blocked nutrition profiles
+remain. Protected main/exact-main CI,same-source hosted staging/catalog/recovery,
+ordered 0046/0047 and Environment-approved deployment are still required.
+Previous full local gate 435 files / 9717 tests and PWA/recovery checks are recorded
+in 26_PWA_RECOVERY_VALIDATION.md; not repeated for this docs-only follow-up.
+Implementation remains f5517236. No merge, remote migration, flag change or deploy.
+Documentation checks: `git diff --check` and
+`python3 scripts/admin-public-scan.py` PASS; preservation check
+`python3 /private/tmp/takolio-v3-owner-checkpoint-check.py` PASS (five historical
+tails, original review requirements and candidate unchanged; six Markdown files).
+Do not ask again for owner deployment authorization.
 
 Earlier records are historical checkpoints.
 
