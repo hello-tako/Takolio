@@ -42,3 +42,49 @@ references, decision timestamp, candidate fingerprint, and unresolved-risk
 disposition.
 
 Two unresolved P0 cases have a concrete decision packet: [raw shrimp and crab](research/RAW_SEAFOOD_DECISIONS.md). It records current fingerprints, source limits, coupled field conflicts and three options per case. The user selected PROVIDE_RAW_PRODUCT_PROTOCOL for shrimp and SELECT_RAW_PATH for crab; six public product/context pages are now read; exact package/process validation and independent safety review remain PENDING. Marine Foods half-thaw directions conflict with archival full-thaw wording; no universal thaw/grill protocol inferred. User choices recorded at 2026-10-27T21:06:10Z; subsequent retrieval times are bound in the packet. No reviewer identity or safety approval supplied. Formulation/product selection permits follow-up work; it does not establish safety or HUMAN_APPROVED. The other four critical cases remain in research/GAP_RESEARCH_SUPPLEMENTS.md.
+
+## Offline review-record format (ADR-079)
+
+`node scripts/recipe-intelligence-v3-review.mjs <review.json>` validates supplied
+records without changing candidates or release eligibility. Run from any cwd
+with Node >=22.13 and the repository dependencies installed. Exit 1 means invalid
+records or incomplete approval coverage; JSON output distinguishes these cases.
+Exit 0 means complete, structurally valid recorded decisions only. A separate
+independent review must authenticate the reviewer and assess the actual evidence;
+this tool cannot certify expertise, independence, claim accuracy or food safety.
+
+An empty starting record (no approvals) for the current exact candidate file:
+
+```json
+{
+  "schemaVersion": 1,
+  "candidateArtifactSha256": "0f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4",
+  "reviews": []
+}
+```
+
+Each supplied `reviews` entry requires these exact fields:
+
+| Field | Requirement |
+|---|---|
+| `recipeId` | Existing candidate ID, once per file |
+| `candidateContentFingerprint` | Exact fingerprint of that candidate |
+| `reviewerIdentity` | Actual named reviewer; never inferred from the owner statement |
+| `decidedAt` | Actual UTC ISO date/time ending in Z, not in the future |
+| `decision` | APPROVE, REQUEST_CHANGES or REJECT |
+| `decisionEvidence` | Local evidence reference to the actual reviewer decision |
+| `riskDispositions` | One entry per exact `requiredReviewActions` value |
+
+Each risk entry has `action`, `disposition` (RESOLVED or OPEN), a nonempty
+`rationale`, and nonempty `evidenceReferences`. APPROVE requires every action
+RESOLVED. Each evidence reference contains repo-relative `path` under `data/` or
+`docs/`, exact file `sha256`, and optional RFC6901 `pointer` into JSON. Changed or
+missing evidence, nonexistent pointers and escaping paths/symlinks are rejected.
+For external evidence, retain a local retrieval/decision record with its source
+URL; compilation never fetches a URL or invents its contents.
+
+Candidate regeneration invalidates the whole-file binding; changed recipe content
+also invalidates its row fingerprint. Reconcile real decisions against regenerated
+content before resubmission. This format does not waive the four existing data
+gates, six safety dispositions, GitHub review or hosted deployment certification.
+No actual review records have been supplied or generated in this checkpoint.
