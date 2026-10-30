@@ -41,6 +41,7 @@ if (outPath) {
 }
 
 const vite = await createServer({
+  cacheDir: 'node_modules/.vite/recipe-seed',
   server: { middlewareMode: true }, appType: 'custom', logLevel: 'error',
   optimizeDeps: { noDiscovery: true, include: [] },
 });

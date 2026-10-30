@@ -1,3 +1,26 @@
+## Recipe V3 saved shopping content - 2026-10-30 JST
+
+Status: RECIPE_V3_IMPLEMENTATION_IN_PROGRESS; production NOT_READY.
+Branch codex/recipe-v3-shopping-content; parent5cf2d197. ADR-078 retains saved
+recipe pins in shopping attribution and private cache, negotiates legacy DTOs,
+reopens review on changed content and preserves purchases/replay. No new SQL.
+Four catalog CLIs and browser preview now isolate Vite caches after reproduced
+ENOENT/504 failures. Final local full gate PASS435files/9716tests,1156.63s;
+focused47/regression43/CLI30/browser4tests PASS; audit0. Browser88axe reports:
+0violations,39incomplete contrast findings. Exact commands, failures and limits:
+docs/ai/recipe-intelligence-v3/25_SAVED_SHOPPING_VALIDATION.md.
+
+Next: publish the validated slice against codex/recipe-v3-v1-content; observe
+exact-head Recipe/Admin CI. Four catalog gates remain red,1395provisional IDs,
+six critical safety cases,0/500human approvals; approved publication still blocked.
+Independent review,protected main/exact-main CI,same-source hosted staging/recovery/
+catalog certification and normal Environment approval remain. Production permission
+already granted; no repeat permission request. No remote mutation/deployment.
+
+Earlier records are historical checkpoints.
+
+---
+
 ## Recipe V3 immutable release baseline - 2026-10-30 JST
 
 Status: RECIPE_V3_IMPLEMENTATION_IN_PROGRESS; production NOT_READY.

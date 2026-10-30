@@ -3928,3 +3928,36 @@ Recovery therefore requires this same-source version-aware flags-OFF Worker,
 retaining0046/0047 and all opaque plan data. Older binary rollback is unsupported.
 Hosted OFF/recovery, independent review and normal protected deployment remain
 required. This slice neither publishes V3 candidates nor waives evidence gates.
+
+## ADR-078: retain recipe content identity in shared shopping demand
+
+Date: 2026-10-30. Status: accepted implementation decision; no publication or
+human culinary approval.
+
+Problem: saved V1/composed selections retain immutable content, but materialized
+shopping contribution JSON drops that identity. An unchanged recipe ID/title or
+quantity therefore cannot identify which content produced shared demand.
+
+Decision: extend the existing strict ShoppingContributionSchema with an optional
+nullable contentFingerprint. New trusted projected recipe contributions copy the
+component pin; simple foods, family variants and unknown legacy selections keep
+NULL. Existing contribution JSON is sufficient; no schema migration or backfill.
+No content capture from untrusted shopping input. No recalculation on reads.
+
+The existing raw contribution witness already binds demand review fingerprints
+and atomic guards. A changed pin requires review again while chosen purchase
+amounts/history survive. Existing receipt-first share/review replay remains first;
+current historical-content mismatches still reject a new shopping calculation.
+
+Compatibility: shopping GET uses existing recipe-content=1 Accept negotiation.
+Capable clients receive pins in both generated items and unresolved demand; old
+strict clients receive the previous contribution shape. The new web client opts
+in and preserves pins in private offline caches. Legacy missing pins stay unknown.
+A pre-078 strict Worker/client cannot parse pinned JSON/cache. Recovery must use
+the same-source version-aware Worker/client with paired flags OFF, retaining
+0046/0047 and shopping data. Never erase history to enable an older binary.
+
+Validation: real Worker share/persistence/legacy negotiation, historical mismatch
+and replay preservation, changed-pin review with stale command rejection, private
+client server/offline cache, existing shopping race/tenancy/quantity regressions.
+Hosted same-source recovery and approved V3 publication remain separate gates.
