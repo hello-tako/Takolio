@@ -58,8 +58,51 @@ Node24.16.0, pnpm10.33.2. Commands use
   `pnpm audit --audit-level high`: PASS; no known vulnerabilities. Public scan
   checks added text, with its documented binary/manual limits.
 
-Final baseline/preflight/real migration-matrix results must be recorded after the
-immutable0047checkpoint is pinned; no placeholder may be published.
+## Immutable baseline and migration matrix
+
+Freeze candidate bytes at `a1e706c7c870881d2e472ef7a1b211ac61bdd38c`;
+`V3_RELEASE_BASELINE` does not follow HEAD and confers no independent approval.
+Historical41/43/45 scenarios remain alongside exact47 checks. Changes after the
+checkpoint and protected parallel-main drift still fail closed.
+
+Executed with the Node24 prefix above:
+
+- `pnpm exec vitest run tests/unit/admin-customer-baseline.test.mjs`: PASS exit0,
+  1file/25tests,15.54s. `/private/tmp/takolio-v3-baseline-pinned-test-final.log`
+  and `.exit`.
+- `pnpm lint`: PASS exit0. `/private/tmp/takolio-v3-baseline-lint.log` and `.exit`.
+- `node scripts/admin-release-preflight.mjs`: PASS exit0; configurationValidation
+  PASS, customerBaseline/sourceSha a1e706c7, cleanCheckout=false (four intended
+  edits), readyForDeployment=false, remoteExecuted=false. This is offline Admin
+  planning, not customer production eligibility. Final sourceManifestSha256:
+  `5c26ea3737aedc803d5da0e31fffad5463e54211eeb1e03d0496acaa6d2dd449`.
+  `/private/tmp/takolio-v3-baseline-preflight-final.log` and `.exit`.
+- First `node scripts/admin-migration-matrix.mjs --out .artifacts/admin-r2/migration-matrix.json`:
+  FAIL exit1,27/28. New `PRAGMA integrity_check` failed with
+  `not authorized: SQLITE_AUTH` after successful fresh47. Direct local D1
+  reproduction failed identically; `PRAGMA quick_check` returned `ok`.
+  Replace only the two new integrity calls with supported quick_check; retain
+  foreign_key_check and include SQL in query failure labels. Original evidence:
+  `/private/tmp/takolio-v3-baseline-matrix.log` and `.exit`.
+- Same matrix command after the fix: PASS exit0,39/39; report generated
+  2026-10-30T11:11:40.796Z,sourceHEAD a1e706c7 with explicit dirty script hashes.
+  Fresh/reapply47, populated45→46→47, legacy NULL/data/0046archive/grants/receipts,
+  invalid pin/archive/receipt mutations, missing46/47, unexpected48 and strict45
+  binary rollback refusal all pass. Admin failure-transaction scenarios also pass.
+  `/private/tmp/takolio-v3-baseline-matrix-fixed.log` and `.exit`;
+  `.artifacts/admin-r2/migration-matrix.json` (private generated artifact).
+  Matrix script SHA256 `38fb946bbeb027b88f4aca1f2651647283a84528180cca6db7edd2ba979e5e98`;
+  baseline guard SHA256 `3008696dff178cbbac0cd97296d2d53a6a60a77514d781d620dd9283902579d2`.
+  SQL-only local D1; no hosted Worker or flags-OFF recovery assertion.
+- `git diff --check` and `python3 scripts/admin-public-scan.py`: PASS; public
+  scan covers added text only, with its documented binary/manual limits.
+
+Read-only existing-production observation:
+`APP_SMOKE_URL=https://takolio.app bash scripts/post-deploy-smoke.sh https://takolio.app b49f3e6c4fc2f1485b77623ed7257d0f8bd31f9a`
+PASS exit0; liveness/landing200,3consecutive ordinary/revalidated SW identities,
+D1global500recipes,release rel-bd00a4f53fcaeee4,DBok,readiness degraded.
+Log/exit: `/private/tmp/takolio-v3-production-smoke-20261030.log` and `.exit`.
+This observes the old release, not this candidate's deployment.
 
 ## Release sequence and limits
 

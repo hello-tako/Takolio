@@ -1,3 +1,33 @@
+## Recipe V3 immutable release baseline - 2026-10-30 JST
+
+Status: RECIPE_V3_IMPLEMENTATION_IN_PROGRESS; production NOT_READY.
+Owner deployment authorization remains valid. Candidate implementation is frozen
+at a1e706c7c870881d2e472ef7a1b211ac61bdd38c on codex/recipe-v3-saved-content;
+parent680502cc7aa64a4d11abca1ae0625ee9f5166d66. Admin preflight now recognizes
+these exact customer bytes; protected-history/post-checkpoint guards remain.
+
+Actual checks:25baseline tests/lint/preflight PASS exit0. Real local D1 migration
+matrix PASS exit0,39/39,including populated45→46→47 and immutable archive/receipt
+checks. Initial27/28 failure was D1 SQLITE_AUTH for integrity_check; reproduced,
+replaced with supported quick_check while retaining FK checks. Full commands,
+hashes,logs,failure and earlier runtime/browser limits are in
+`docs/ai/recipe-intelligence-v3/23_SAVED_CONTENT_VALIDATION.md`.
+Read-only existing-production smoke PASS exit0 on mainb49f3e6c; this candidate
+has not been deployed. No remote mutation or approval is claimed.
+
+Next: commit/push the baseline and evidence; publish a stacked PR against
+codex/recipe-v3-cooking-content; observe Recipe/Admin CI on its exact final HEAD.
+Continue V1 saved selection pins/publication and ingredient/source/nutrition/
+safety evidence. Four catalog gates remain red,1395provisional IDs,six critical
+safety cases,0/500human approvals. Independent review,protected main/exact-main
+CI,same-source staging/continuity/recovery and Environment reviewer are required.
+Migration dispatch must target0047 from a0047tip,applying ordered46/47 before
+Worker. Recovery after saved pins requires version-aware same-source flags OFF.
+
+Earlier records are historical checkpoints.
+
+---
+
 ## Recipe V3 saved content checkpoint - 2026-10-30 JST
 
 Status: RECIPE_V3_IMPLEMENTATION_IN_PROGRESS; production NOT_READY.
