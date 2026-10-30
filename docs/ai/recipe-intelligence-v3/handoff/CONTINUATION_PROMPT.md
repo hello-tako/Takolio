@@ -1,3 +1,21 @@
+## Current continuation - 2026-10-31 JST
+
+Use codex/recipe-v3-browser-certification, based on approved PR51 ae68f7e5;
+keep the approved parent stable. Local full gate PASS435files/9717tests,973.91s,
+exit0; local flags-OFF/ON and real-service-worker PWA recovery PASS. Publish the
+bounded validation slice against codex/recipe-v3-shopping-content and observe
+its exact-head CI/review. See [validation](../26_PWA_RECOVERY_VALIDATION.md) and
+[protected review matrix](PROTECTED_REVIEW_MATRIX.md).
+
+Four catalog gates, six safety decisions,1395provisional IDs,0/500human culinary
+approvals and approved publication remain open. PR33-50 need genuine independent
+review; requests already sent to vn-taphoanhatung. Protected main/exact-main CI,
+same-source hosted staging/recovery/catalog and normal Environment approval must
+precede production. Owner production authorization persists. No deployment or
+remote mutation claimed. Earlier records below are historical.
+
+---
+
 ## Recipe V3 immutable release baseline - 2026-10-30 JST
 
 Status: RECIPE_V3_IMPLEMENTATION_IN_PROGRESS; production NOT_READY.

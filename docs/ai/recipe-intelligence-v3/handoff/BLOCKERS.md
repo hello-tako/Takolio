@@ -1,3 +1,14 @@
+## Current checkpoint - 2026-10-31 JST
+
+Production NOT_READY. Local PWA and flags recovery PASS; hosted certification,
+approved publication and four data gates remain open. PR51 exact ae68f7e5 is
+approved with both CI checks SUCCESS; PR33-50 still need independent review.
+Current scope/checks/next action:
+[26_PWA_RECOVERY_VALIDATION.md](../26_PWA_RECOVERY_VALIDATION.md).
+Earlier records are historical checkpoints.
+
+---
+
 ## Recipe V3 immutable release baseline - 2026-10-30 JST
 
 Status: RECIPE_V3_IMPLEMENTATION_IN_PROGRESS; production NOT_READY.
