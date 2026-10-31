@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "program": "TAKOLIO_RECIPE_INTELLIGENCE_V3",
   "dataset": "recipe-refresh-v2-bounded-batch-23",
-  "generatedAt": "2026-10-26T20:06:17.778010Z",
+  "generatedAt": "2026-10-27T13:50:08.291712+00:00",
   "status": "RECIPE_V3_RESEARCH_IN_PROGRESS",
   "pilotStatus": "BOUNDED_SOURCE_INVENTORY_REVIEW_PENDING",
   "scope": {
@@ -17,24 +17,25 @@
   "interpretation": "FACT_SUPPORTED labels reproducible internal V2 observations only. EXTERNAL_SOURCE_FACT supports only a linked source ingredient fact, not a V2 comparison. No whole-recipe verification, human approval, source/runtime promotion, nutrition certification or image reuse rights.",
   "summary": {
     "recipeCount": 20,
-    "sourceAttemptCount": 49,
+    "sourceAttemptCount": 52,
     "sourceStatusCounts": {
-      "SOURCE_CONTENT_READ": 22,
-      "SOURCE_RELEVANCE_VERIFIED": 22,
+      "SOURCE_CONTENT_READ": 25,
+      "SOURCE_RELEVANCE_VERIFIED": 25,
       "SOURCE_UNAVAILABLE": 13,
-      "URL_DISCOVERED": 49,
-      "URL_REACHABLE": 36
+      "URL_DISCOVERED": 52,
+      "URL_REACHABLE": 39
     },
-    "claimCount": 60,
+    "claimCount": 64,
     "claimStatusCounts": {
-      "FACT_SUPPORTED": 24,
-      "SOURCE_CONTENT_READ": 22,
+      "FACT_SUPPORTED": 26,
+      "SOURCE_CONTENT_READ": 24,
       "SOURCE_UNAVAILABLE": 14
     },
     "findingTypeCounts": {
       "BOUNDED_SOURCE_READ": 4,
-      "FOOD_SAFETY_REVIEW": 1,
+      "FOOD_SAFETY_REVIEW": 4,
       "FOOD_SAFETY_REVIEW_REQUIRED": 1,
+      "INTERNAL_CANONICAL_IDENTITY_CONFLICT": 1,
       "INTERNAL_V2_OBSERVATION": 3,
       "INTERNAL_V2_UNIT_BASIS_UNRESOLVED": 20,
       "SOURCE_ACCESS_LIMIT": 14,
@@ -1760,6 +1761,217 @@
         "reviewerSummary": "Official general household food-safety guidance; not a recipe source.",
         "supportLimits": "Bounded UK FSA household guidance; jurisdiction and scope retained. No recipe-specific endpoint validation, complete safety assessment, numerical transfer to a recipe, human approval, or promotion."
       }
+    },
+    {
+      "url": "https://www.fda.gov/food/buy-store-serve-safe-food/selecting-and-serving-fresh-and-frozen-seafood-safely",
+      "retrievedAt": "2026-10-27T13:45:05.697309Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.fda.gov/food/buy-store-serve-safe-food/selecting-and-serving-fresh-and-frozen-seafood-safely",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "909fa7955fea507afa01422389f0de85281e40ecdc53d2d4b378173d8c85bace",
+      "byteLength": 46209,
+      "title": "Selecting and Serving Fresh and Frozen Seafood Safely | FDA",
+      "visibleTextSha256": "8613c505a4607e1c4f524d9298c968df096a2a6ea49398f5db184858ac715176",
+      "completeResponse": true,
+      "retrievalMethod": "curl default User-Agent; full response, no body transform",
+      "sourceId": "source-c50a20b03f414ee2",
+      "recipeIds": [
+        "imp-f04b28987d7cd34a"
+      ],
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "author": null,
+      "publishedAt": null,
+      "publisher": "U.S. Food and Drug Administration",
+      "metadataBasis": "Official publisher domain, page title and full HTTP response; no publication date inferred.",
+      "reviewedFacts": [
+        {
+          "factId": "supp07-seafood-temperature",
+          "locator": "visibleText lines 111-112",
+          "visibleTextLineStart": 111,
+          "visibleTextLineEnd": 112,
+          "anchors": [
+            "145°F"
+          ],
+          "reviewerSummary": "FDA advises cooking most seafood to an internal temperature of 145 F and identifies a food thermometer as a means of checking doneness.",
+          "supportLimits": "US FDA general household seafood guidance, not species/product/formulation certification. 145 F converts to 62.777... C; candidate rounds upward to 63 C. No time, freezing protocol, quantity, nutrition, human approval or runtime promotion inferred."
+        },
+        {
+          "factId": "supp07-shellfish-doneness",
+          "locator": "visibleText lines 114-114",
+          "visibleTextLineStart": 114,
+          "visibleTextLineEnd": 114,
+          "anchors": [
+            "Shrimp, Scallops, Crab, and Lobster"
+          ],
+          "reviewerSummary": "FDA lists firm, pearly and opaque flesh as doneness signs for shrimp, scallops, crab and lobster; shell color and curled shape are not its stated test.",
+          "supportLimits": "US FDA general household seafood guidance, not species/product/formulation certification. 145 F converts to 62.777... C; candidate rounds upward to 63 C. No time, freezing protocol, quantity, nutrition, human approval or runtime promotion inferred."
+        },
+        {
+          "factId": "supp07-raw-seafood-limit",
+          "locator": "visibleText lines 126-129",
+          "visibleTextLineStart": 126,
+          "visibleTextLineEnd": 129,
+          "anchors": [
+            "freezing doesn't kill all harmful germs"
+          ],
+          "reviewerSummary": "FDA advises thorough cooking to minimize seafood foodborne illness; freezing does not eliminate all harmful germs. No shrimp-specific freezing or acid treatment protocol is provided.",
+          "supportLimits": "US FDA general household seafood guidance, not species/product/formulation certification. 145 F converts to 62.777... C; candidate rounds upward to 63 C. No time, freezing protocol, quantity, nutrition, human approval or runtime promotion inferred."
+        },
+        {
+          "factId": "supp07-separate-utensils",
+          "locator": "visibleText lines 98-102",
+          "visibleTextLineStart": 98,
+          "visibleTextLineEnd": 102,
+          "anchors": [
+            "Wash cutting boards, dishes, utensils"
+          ],
+          "reviewerSummary": "FDA calls for separation of raw seafood from ready-to-eat food and washing hands, boards, dishes and utensils between raw and cooked-food preparation.",
+          "supportLimits": "US FDA general household seafood guidance, not species/product/formulation certification. 145 F converts to 62.777... C; candidate rounds upward to 63 C. No time, freezing protocol, quantity, nutrition, human approval or runtime promotion inferred."
+        }
+      ],
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "visibleText lines 111-112; visibleText lines 114-114; visibleText lines 126-129; visibleText lines 98-102",
+        "reviewerSummary": "General FDA consumer seafood safety guidance; selected endpoint and handling facts only.",
+        "supportLimits": "US FDA general household seafood guidance, not species/product/formulation certification. 145 F converts to 62.777... C; candidate rounds upward to 63 C. No time, freezing protocol, quantity, nutrition, human approval or runtime promotion inferred."
+      },
+      "retrievalNotes": "An earlier urllib request returned an abuse-detection 404. A later default-curl request returned this complete HTTP200 response; the failed request is not publisher-outage evidence."
+    },
+    {
+      "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/shokuhin/syokuchu/01_00006.html",
+      "retrievedAt": "2026-10-29T21:47:17.087392+00:00",
+      "httpStatus": 200,
+      "finalUrl": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/shokuhin/syokuchu/01_00006.html",
+      "contentType": "text/html",
+      "contentSha256": "44d8ddb7a2d23059a313b6fa3dbb3d61d6964f5bab47a832c856082120ece6b4",
+      "byteLength": 63708,
+      "title": "家庭でできる食中毒予防の６つのポイント ｜厚生労働省",
+      "visibleTextSha256": "eba9e740495cc0bef2d66f937219efd42d3ca705c26eefd0fb8a3bf735a2b536",
+      "completeResponse": true,
+      "sourceId": "source-4f1e2b834b7ad47e",
+      "recipeIds": [
+        "imp-f04b28987d7cd34a"
+      ],
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "author": null,
+      "publishedAt": null,
+      "publisher": "Ministry of Health, Labour and Welfare, Japan",
+      "metadataBasis": "Official publisher page and complete cached HTTP response; no publication date inferred.",
+      "retrievalMethod": "HTMLParser; excludes script/style/noscript; whitespace normalized; image alt marked",
+      "reviewedFacts": [
+        {
+          "factId": "supp08-household-heat",
+          "locator": "visibleText lines 254-254",
+          "visibleTextLineStart": 254,
+          "visibleTextLineEnd": 254,
+          "anchors": [
+            "中心部の温度が75℃で１分間以上"
+          ],
+          "reviewerSummary": "MHLW household point 4 gives a general cooked-food target of center 75 C for at least one minute; it supplies no crab grill time.",
+          "supportLimits": "Bounded source-specific observation only. General Japanese household guidance is not validation of a selected crab species, SKU, lot, grill duration, 800 g / four servings / 40 minutes, edible yield or nutrition. Human safety review and runtime promotion remain pending."
+        },
+        {
+          "factId": "supp08-household-thaw",
+          "locator": "visibleText lines 249-250",
+          "visibleTextLineStart": 249,
+          "visibleTextLineEnd": 250,
+          "anchors": [
+            "解凍は冷蔵庫の中や電子レンジ"
+          ],
+          "reviewerSummary": "MHLW advises refrigerator or microwave thawing rather than leaving frozen food on a counter, and prompt cooking after thawing.",
+          "supportLimits": "Bounded source-specific observation only. General Japanese household guidance is not validation of a selected crab species, SKU, lot, grill duration, 800 g / four servings / 40 minutes, edible yield or nutrition. Human safety review and runtime promotion remain pending."
+        },
+        {
+          "factId": "supp08-household-separation",
+          "locator": "visibleText lines 246-247",
+          "visibleTextLineStart": 246,
+          "visibleTextLineEnd": 247,
+          "anchors": [
+            "調理の済んだ食品にかからない"
+          ],
+          "reviewerSummary": "Keep raw meat/fish juices off ready-to-eat and cooked food; wash utensils between raw and cooked preparation.",
+          "supportLimits": "Bounded source-specific observation only. General Japanese household guidance is not validation of a selected crab species, SKU, lot, grill duration, 800 g / four servings / 40 minutes, edible yield or nutrition. Human safety review and runtime promotion remain pending."
+        }
+      ],
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "visibleText lines 254-254; visibleText lines 249-250; visibleText lines 246-247",
+        "reviewerSummary": "Selected thawing, handling and cooking facts only; not full recipe verification.",
+        "supportLimits": "Bounded source-specific observation only. General Japanese household guidance is not validation of a selected crab species, SKU, lot, grill duration, 800 g / four servings / 40 minutes, edible yield or nutrition. Human safety review and runtime promotion remain pending."
+      }
+    },
+    {
+      "url": "https://www.marinefoods.co.jp/products/consumer/1916/",
+      "retrievedAt": "2026-10-29T21:47:17.655990+00:00",
+      "httpStatus": 200,
+      "finalUrl": "https://www.marinefoods.co.jp/products/consumer/1916/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "f64b805c8ef3a8b611bff4e7e3f67b84d5747cf4510c6fa65826e69fb98dc034",
+      "byteLength": 124592,
+      "title": "生ずわいがにハーフポーション | マリンフーズ",
+      "visibleTextSha256": "45d7db67a73acbf346a87d429b89f9b1432ff2b90e40c26bd8f6e25e1b69e75e",
+      "completeResponse": true,
+      "sourceId": "source-fd44a4c0d60c2ee3",
+      "recipeIds": [
+        "imp-f04b28987d7cd34a"
+      ],
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "author": null,
+      "publishedAt": null,
+      "publisher": "Marine Foods Corporation",
+      "metadataBasis": "Official publisher page and complete cached HTTP response; no publication date inferred.",
+      "retrievalMethod": "HTMLParser; excludes script/style/noscript; whitespace normalized; image alt marked",
+      "reviewedFacts": [
+        {
+          "factId": "supp08-package-state",
+          "locator": "visibleText lines 83-84",
+          "visibleTextLineStart": 83,
+          "visibleTextLineEnd": 84,
+          "anchors": [
+            "加熱用の生ずわいがに"
+          ],
+          "reviewerSummary": "This specific raw snow-crab half-portion product is for heating, including grilling; consumers must check their own package when website and label differ.",
+          "supportLimits": "Bounded source-specific observation only. General Japanese household guidance is not validation of a selected crab species, SKU, lot, grill duration, 800 g / four servings / 40 minutes, edible yield or nutrition. Human safety review and runtime promotion remain pending."
+        },
+        {
+          "factId": "supp08-package-thaw",
+          "locator": "visibleText lines 89-89",
+          "visibleTextLineStart": 89,
+          "visibleTextLineEnd": 89,
+          "anchors": [
+            "冷蔵庫で半解凍"
+          ],
+          "reviewerSummary": "This product directs a quick glaze rinse then refrigerator half-thaw for about 30-60 minutes and mandatory heating. Comparator only: its time, thaw state and SKU are not selected for the generic recipe.",
+          "supportLimits": "Bounded source-specific observation only. General Japanese household guidance is not validation of a selected crab species, SKU, lot, grill duration, 800 g / four servings / 40 minutes, edible yield or nutrition. Human safety review and runtime promotion remain pending."
+        }
+      ],
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "visibleText lines 83-84; visibleText lines 89-89",
+        "reviewerSummary": "Selected thawing, handling and cooking facts only; not full recipe verification.",
+        "supportLimits": "Bounded source-specific observation only. General Japanese household guidance is not validation of a selected crab species, SKU, lot, grill duration, 800 g / four servings / 40 minutes, edible yield or nutrition. Human safety review and runtime promotion remain pending."
+      }
     }
   ],
   "recipes": [
@@ -2457,6 +2669,27 @@
           ],
           "reviewerSummary": "Declared source retrieval did not provide readable recipe content during this session; no culinary fact was inferred from the failed attempt.",
           "supportLimits": "Availability only. Retrieval failure does not establish correctness, irrelevance or verification of any V2 field.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "internal-beef-identity-ambiguity",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_CANONICAL_IDENTITY_CONFLICT",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "high",
+          "sourceIds": [],
+          "ingredientPositions": [
+            0
+          ],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/ingredients/0/sourceName",
+            "/ingredients/0/canonicalIngredientId",
+            "/ingredients/0/reconciliation",
+            "/ingredients/0/reconciliationReason"
+          ],
+          "reviewerSummary": "The source name is 'Thịt bò thái lát', assigned BEEF_SIRLOIN. The shared registry names that ID Thịt bò in Vietnamese and Beef sirloin in English, with bắp bò among its aliases. These describe different or unspecified cuts. Existing-canonical status cannot establish this line identity.",
+          "supportLimits": "Internal V2 and repository registry comparison only; see packages/domain/src/index.ts and docs/ai/recipe-intelligence-v3/research/BEEF_IDENTITY_REVIEW.md. No replacement identity, cut equivalence, migration, culinary approval, nutrition certification or runtime promotion is established.",
           "sourceFactReferences": []
         }
       ],
@@ -3271,7 +3504,10 @@
       "sourceIds": [
         "source-caefb25eb11bbc40",
         "source-0a59f7cc79f0a104",
-        "source-f09a8006a958bbdb"
+        "source-f09a8006a958bbdb",
+        "source-c50a20b03f414ee2",
+        "source-4f1e2b834b7ad47e",
+        "source-fd44a4c0d60c2ee3"
       ],
       "evidenceStatus": "BOUNDED_SOURCE_INVENTORY_REVIEW_PENDING",
       "humanReview": "PENDING",
@@ -3412,16 +3648,196 @@
           ],
           "reviewerSummary": "The room-temperature thaw instruction conflicts with the official general recommendation to defrost in the fridge and follow packaging; raw/pre-cooked crab state is still unresolved.",
           "supportLimits": "Independent safety review remains required. General official guidance is not recipe safety certification. No quantity, servings, endpoint or structural variant selected."
+        },
+        {
+          "id": "supp07-safety-review",
+          "status": "FACT_SUPPORTED",
+          "findingType": "FOOD_SAFETY_REVIEW",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "critical",
+          "sourceIds": [
+            "source-c50a20b03f414ee2"
+          ],
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-c50a20b03f414ee2",
+              "factId": "supp07-seafood-temperature"
+            },
+            {
+              "sourceId": "source-c50a20b03f414ee2",
+              "factId": "supp07-shellfish-doneness"
+            }
+          ],
+          "ingredientPositions": [
+            0
+          ],
+          "stepNumbers": [
+            7
+          ],
+          "v2Pointers": [
+            "/ingredients/0/note",
+            "/steps/6/instruction",
+            "/steps/6/tip"
+          ],
+          "reviewerSummary": "FDA seafood endpoint/flesh guidance is available, but this recipe permits raw or pre-cooked crab without selecting product identity. Raw cooking and reheating are not interchangeable.",
+          "supportLimits": "US FDA general household seafood guidance, not species/product/formulation certification. 145 F converts to 62.777... C; candidate rounds upward to 63 C. No time, freezing protocol, quantity, nutrition, human approval or runtime promotion inferred."
+        },
+        {
+          "id": "supp08-raw-crab-cooking-proposal",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "FOOD_SAFETY_REVIEW",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "critical",
+          "sourceIds": [
+            "source-4f1e2b834b7ad47e",
+            "source-fd44a4c0d60c2ee3",
+            "source-c50a20b03f414ee2"
+          ],
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-4f1e2b834b7ad47e",
+              "factId": "supp08-household-heat"
+            },
+            {
+              "sourceId": "source-4f1e2b834b7ad47e",
+              "factId": "supp08-household-separation"
+            },
+            {
+              "sourceId": "source-fd44a4c0d60c2ee3",
+              "factId": "supp08-package-state"
+            },
+            {
+              "sourceId": "source-c50a20b03f414ee2",
+              "factId": "supp07-seafood-temperature"
+            },
+            {
+              "sourceId": "source-c50a20b03f414ee2",
+              "factId": "supp07-shellfish-doneness"
+            },
+            {
+              "sourceId": "source-c50a20b03f414ee2",
+              "factId": "supp07-separate-utensils"
+            }
+          ],
+          "ingredientPositions": [
+            0
+          ],
+          "stepNumbers": [
+            5,
+            6,
+            7
+          ],
+          "v2Pointers": [
+            "/ingredients/0/note",
+            "/steps/4/tip",
+            "/steps/5/instruction",
+            "/steps/6/instruction",
+            "/steps/6/tip"
+          ],
+          "reviewerSummary": "Owner selected raw crab to cook. Propose a coordinated raw-to-cook note and measured center 75 C for at least one minute, replacing preboiled surface-warming advice and treating both existing timers as inspection reminders. This uses general MHLW household guidance, not a manufacturer-validated crab protocol.",
+          "supportLimits": "Bounded source-specific observation only. General Japanese household guidance is not validation of a selected crab species, SKU, lot, grill duration, 800 g / four servings / 40 minutes, edible yield or nutrition. Human safety review and runtime promotion remain pending."
+        },
+        {
+          "id": "supp08-package-governed-thaw-proposal",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "FOOD_SAFETY_REVIEW",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "critical",
+          "sourceIds": [
+            "source-4f1e2b834b7ad47e",
+            "source-fd44a4c0d60c2ee3",
+            "source-f09a8006a958bbdb"
+          ],
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-4f1e2b834b7ad47e",
+              "factId": "supp08-household-thaw"
+            },
+            {
+              "sourceId": "source-fd44a4c0d60c2ee3",
+              "factId": "supp08-package-state"
+            },
+            {
+              "sourceId": "source-fd44a4c0d60c2ee3",
+              "factId": "supp08-package-thaw"
+            },
+            {
+              "sourceId": "source-f09a8006a958bbdb",
+              "factId": "supp06-defrost"
+            },
+            {
+              "sourceId": "source-4f1e2b834b7ad47e",
+              "factId": "supp08-household-separation"
+            }
+          ],
+          "ingredientPositions": [
+            0
+          ],
+          "stepNumbers": [
+            1
+          ],
+          "v2Pointers": [
+            "/steps/0/instruction",
+            "/steps/0/tip"
+          ],
+          "reviewerSummary": "Retain refrigerator thawing, drip control and package instructions. Replace the blanket full-thaw requirement: Marine Foods provides a concrete half-thaw counterexample. No Marine Foods or Nissui product, duration or combined manufacturer protocol is adopted.",
+          "supportLimits": "Bounded source-specific observation only. General Japanese household guidance is not validation of a selected crab species, SKU, lot, grill duration, 800 g / four servings / 40 minutes, edible yield or nutrition. Human safety review and runtime promotion remain pending."
         }
       ],
-      "nextAction": "Review both replacement proposals together. Raw/pre-cooked crab identity and downstream cooking endpoint remain unresolved; critical blocker stays.",
+      "nextAction": "FAIL_UNRESOLVED: review the coordinated raw-to-cook candidate against the exact species/product/package and grilling method; validate thaw state, thermometer access/endpoint, quantities, yield, total time and nutrition. General MHLW guidance and inspection reminders do not certify the product or close the critical safety review.",
       "supplementalResearch": {
-        "dataset": "gap-research-06",
-        "reviewedAt": "2026-10-26T20:06:17.778010Z",
+        "dataset": "gap-research-08",
+        "reviewedAt": "2026-10-30T18:30:38Z",
         "humanReview": "PENDING",
         "fullRecipeVerification": "NOT_COMPLETE",
-        "decision": "CRITICAL_SAFETY_REVIEW_REQUIRED"
-      }
+        "decision": "RAW_TO_COOK_PROPOSAL_SAFETY_REVIEW_REQUIRED"
+      },
+      "previousSupplementalResearch": [
+        {
+          "dataset": "gap-research-06",
+          "reviewedAt": "2026-10-26T20:06:17.778010Z",
+          "humanReview": "PENDING",
+          "fullRecipeVerification": "NOT_COMPLETE",
+          "decision": "CRITICAL_SAFETY_REVIEW_REQUIRED"
+        },
+        {
+          "dataset": "gap-research-07",
+          "reviewedAt": "2026-10-27T13:50:08.291712+00:00",
+          "humanReview": "PENDING",
+          "fullRecipeVerification": "NOT_COMPLETE",
+          "decision": "CRITICAL_SAFETY_REVIEW_REQUIRED"
+        }
+      ],
+      "previousCandidateEdits": [
+        {
+          "dataset": "gap-research-06",
+          "reviewedAt": "2026-10-26T20:06:17.778010Z",
+          "edit": {
+            "recipeId": "imp-f04b28987d7cd34a",
+            "path": "/steps/0/instruction",
+            "oldValue": "Rã đông cua: xả lớp băng phủ bên ngoài dưới vòi nước chảy 3–5 phút, sau đó bọc cua trong túi nilon và để ở nhiệt độ phòng 1–2 giờ cho rã đông hoàn toàn.",
+            "newValue": "Rã đông cua trong ngăn mát tủ lạnh, đặt trong khay hứng nước và theo hướng dẫn trên bao bì. Chỉ chuyển sang bước tiếp theo khi phần giữa đã rã đông hoàn toàn.",
+            "reason": "Replace the conflicting room-temperature thaw instructions with bounded FSA fridge/packaging/drip guidance. No duration invented; raw/pre-cooked identity remains unresolved.",
+            "evidenceReferences": [
+              "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14/claims/5"
+            ]
+          }
+        },
+        {
+          "dataset": "gap-research-06",
+          "reviewedAt": "2026-10-26T20:06:17.778010Z",
+          "edit": {
+            "recipeId": "imp-f04b28987d7cd34a",
+            "path": "/steps/0/tip",
+            "oldValue": "Theo kênh ウオス (shop cua gửi trực tiếp): lớp băng grace bọc ngoài để chống khô đông — phải xả sạch dưới vòi nước trước khi rã đông; bọc túi nilon để cua không bị khô trong lúc rã đông.",
+            "newValue": "FSA khuyến nghị rã đông trong ngăn mát và ngăn nước rã đông chảy sang thực phẩm khác. Thời gian rã đông tùy sản phẩm; cần xác định cua sống hay đã luộc theo bao bì trước khi chọn cách nướng. Lớp băng bên ngoài tan không chứng minh phần giữa đã rã đông hoàn toàn.",
+            "reason": "Replace the conflicting room-temperature thaw instructions with bounded FSA fridge/packaging/drip guidance. No duration invented; raw/pre-cooked identity remains unresolved.",
+            "evidenceReferences": [
+              "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14/claims/5"
+            ]
+          }
+        }
+      ]
     },
     {
       "recipeId": "imp-bf6c9c4d92b2e04c",

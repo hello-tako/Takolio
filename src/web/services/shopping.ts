@@ -143,7 +143,7 @@ export const shoppingApi = {
     let items: ShoppingItem[];
     let unresolvedItems:z.infer<typeof unresolvedItemsSchema> = [];
     try {
-      const res = await fetchJson<unknown>('/shopping-list');
+      const res = await fetchJson<unknown>('/shopping-list', { headers: { Accept: 'application/json; recipe-content=1' } });
       assertCurrent();
       const parsed=z.object({items:itemsSchema,unresolvedItems:unresolvedItemsSchema.default([])}).parse(res);
       items=parsed.items;unresolvedItems=parsed.unresolvedItems;

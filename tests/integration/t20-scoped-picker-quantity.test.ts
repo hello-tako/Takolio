@@ -465,3 +465,16 @@ describe('remaining-week projection after scheduled meals elapse', { timeout: CA
     expect(result.json.proposal).not.toBeNull(); expect(result.json.slotId).toBe(fixture.future);
   }, 30000);
 });
+
+it('reuses the trusted catalog across slot policies while retaining picker time restrictions', async () => {
+  const plan = await generate({ slots: [{ ...T20_INTENT.slots[0], preferredTimeMinutes: 20, hardMaxTimeMinutes: 60 }] });
+  const slotId = plan.intent.slots.map(slot => `${slot.date}:${slot.mealType}:${slot.sequence}`)[0];
+  const current = await replace(plan.id, slotId, plan.revision, []);
+  const contexts = vi.spyOn(MealPlanningApplicationService.prototype, 'planningContext');
+  const started = performance.now();
+  const page = parsedPage(await picker(plan.id, slotId, current.planRevision, { role: 'main' }));
+  process.stdout.write(JSON.stringify({ pickerMs: Math.round(performance.now() - started), catalogPreparations: contexts.mock.calls.length }) + '\n');
+  expect(page.total).toBeGreaterThan(20);
+  expect(contexts).toHaveBeenCalledTimes(2);
+  expect(page.items.every(item => item.assessment?.blockingReasons.includes('COOKING_TIME_UNKNOWN'))).toBe(true);
+}, CASE_TIMEOUT);

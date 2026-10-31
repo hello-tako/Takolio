@@ -34,10 +34,22 @@ const authority = {
 const mutation = { versionId: 'family-version', deploymentId: 'new-deployment' };
 
 describe('family-meal recovery uses compatible code and paired flags-off assets', () => {
-  it('requires named recovery at the production 0043 schema tip', () => {
-    expect(needsRecovery(manifest)).toBe(true);
-    expect(needsRecovery({ ...manifest, environment: 'staging' })).toBe(false);
-    expect(needsRecovery({ ...manifest, schema: { version: '0041_checkout_admission.sql' } })).toBe(false);
+  it.each([
+    '0043_shopping_demand_review.sql', '0044_inventory_display_category.sql',
+    '0045_week_swap_receipts.sql', '0046_recipe_content_versions.sql', '0047_saved_recipe_content.sql',
+  ])('requires and certifies compatible recovery at production %s', (tip) => {
+    const candidate = { ...manifest, schema: { version: tip } };
+    expect(needsRecovery(candidate)).toBe(true);
+    expect(needsRecovery({ ...candidate, environment: 'staging' })).toBe(false);
+    expect(verifyRecoveryVersion(candidate, version(), build)).toMatchObject({
+      versionId: 'family-version', commit: manifest.sha, kind: 'FAMILY_MEAL_FLAGS_OFF',
+    });
+  });
+  it.each([undefined, '', '0041_checkout_admission.sql', '0042_family_meals_preferences_saved_shopping.sql',
+    '0048_unreviewed.sql', '0047_other.sql'])('rejects an unsupported recovery schema %s', (tip) => {
+    const candidate = { ...manifest, schema: { version: tip } };
+    expect(needsRecovery(candidate)).toBe(false);
+    expect(() => verifyRecoveryVersion(candidate, version(), build)).toThrow('supported production family-meal candidate');
   });
   it('certifies exact candidate, D1 and disabled UI and server flags', () => {
     expect(verifyRecoveryVersion(manifest, version(), build)).toMatchObject({ versionId: 'family-version', kind: 'FAMILY_MEAL_FLAGS_OFF' });
@@ -49,8 +61,8 @@ describe('family-meal recovery uses compatible code and paired flags-off assets'
     expect(() => verifyRecoveryVersion(manifest, wrong, build)).toThrow();
   });
   it('rejects incomplete candidate identity and a different certified D1', () => {
-    expect(() => verifyRecoveryVersion({ ...manifest, sha: 'short' }, version(), build)).toThrow('production 0043 candidate');
-    expect(() => verifyRecoveryVersion({ ...manifest, environment: 'staging' }, version(), build)).toThrow('production 0043 candidate');
+    expect(() => verifyRecoveryVersion({ ...manifest, sha: 'short' }, version(), build)).toThrow('supported production family-meal candidate');
+    expect(() => verifyRecoveryVersion({ ...manifest, environment: 'staging' }, version(), build)).toThrow('supported production family-meal candidate');
     expect(() => verifyRecoveryVersion({ ...manifest, cloudflare: { databaseId: 'other' } }, version(), build)).toThrow('exact candidate and certified D1');
     const wrong = version();
     wrong.resources.bindings[0].id = 'other';

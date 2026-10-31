@@ -20,6 +20,7 @@ export async function submitCookingCompletion(): Promise<void> {
       attempt.commandId,
       state.stockSnapshot,
       attempt.servings,
+      attempt.contentFingerprint,
     );
     if (!stillOwns()) return;
     state.finishCompletion(runId, attempt.commandId, result.pendingSync ? 'queued' : 'saved');
@@ -29,7 +30,7 @@ export async function submitCookingCompletion(): Promise<void> {
     const failure = cookingFailure(error);
     const restricted = error instanceof ApiError && error.code === 'HARD_CONSTRAINT_CONFLICT';
     const blocked =
-      error instanceof ApiError && (error.kind === 'auth' || error.code === 'IDEMPOTENCY_CONFLICT');
+      error instanceof ApiError && (error.kind === 'auth' || ['IDEMPOTENCY_CONFLICT', 'RECIPE_VERSION_UNAVAILABLE', 'RECIPE_VERSION_REQUIRED'].includes(error.code ?? ''));
     state.finishCompletion(
       runId,
       attempt.commandId,

@@ -44,6 +44,7 @@ const finite = (value) => typeof value === 'number' && Number.isFinite(value);
 const round2 = (value) => Math.round((value + Number.EPSILON) * 100) / 100;
 
 const vite = await createServer({
+  cacheDir: 'node_modules/.vite/recipe-refresh-v2',
   server: { middlewareMode: true },
   appType: 'custom',
   logLevel: 'error',

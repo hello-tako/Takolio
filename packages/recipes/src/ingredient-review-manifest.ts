@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { CanonicalIngredientIdSchema, PositiveQuantitySchema, StandardUnitSchema, UNIT_DEFINITIONS } from '../../domain/src/foundation';
+import { UtcDateTimeSchema, CanonicalIngredientIdSchema, PositiveQuantitySchema, StandardUnitSchema, UNIT_DEFINITIONS } from '../../domain/src/foundation';
 import { compileReviewedIngredientAuthority, IngredientReviewDecisionSchema } from './ingredient-authority-v2';
 import { CatalogReleaseManifestSchema, deriveReleaseId } from './import/release-manifest';
 import { canonicalJson, sha256Hex } from './import/identity';
@@ -15,7 +15,7 @@ const Position = z.number().int().nonnegative();
 const Classification = z.enum(['TEST_ONLY', 'CANONICAL_CANDIDATE']);
 const Quantity = z.object({ amount: PositiveQuantitySchema, unit: StandardUnitSchema }).strict();
 export const IngredientReviewEvidenceBindingSchema = z.object({
-  evidenceId: Text, reviewerId: Text, reviewedAt: z.string().datetime(),
+  evidenceId: Text, reviewerId: Text, reviewedAt: UtcDateTimeSchema,
   canonicalSourceSha256: Hash, authorityScope: z.literal('OFFLINE_REVIEW'),
 }).strict();
 const Binding = IngredientReviewEvidenceBindingSchema;
@@ -46,7 +46,7 @@ const Transformation = z.object({
 const SourceReview = z.object({
   recipeId: Text, url: z.string().url(), role: z.enum(['declared', 'supporting', 'exception']),
   decision: z.enum(['CONTENT_VERIFIED', 'UNRESOLVED']),
-  sourceContentSha256: Hash.nullable(), observedAt: z.string().datetime().nullable(),
+  sourceContentSha256: Hash.nullable(), observedAt: UtcDateTimeSchema.nullable(),
   claims: z.array(z.object({ sourcePosition: Position.nullable(),
     claim: z.enum(['identity', 'quantity', 'cooking', 'nutrition', 'allergen']) }).strict()),
   evidence: Binding.nullable(),

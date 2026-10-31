@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import { Hono } from 'hono';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import type { InventoryItem } from '../../packages/domain/src';
@@ -16,7 +17,7 @@ import { recipeRoutes } from '../../src/worker/routes/recipes';
 import { resetRecipeCatalogShadowThrottle, runRecipeCatalogShadow, toRecipeCatalogShadowLogRecord } from '../../src/worker/services/recipe-catalog-shadow';
 import type { AuthContext, Env } from '../../src/worker/types';
 import { signJwt } from '../../src/worker/utils/jwt';
-import { LEGACY_CATALOG_MIGRATION_TIP, SqliteD1 } from '../helpers/sqlite-d1';
+import { LEGACY_CATALOG_MIGRATION_TIP, MIGRATION_LEDGER, SqliteD1 } from '../helpers/sqlite-d1';
 
 /**
  * T14B-B parity harnesses. Every scorer/planner/cooking primitive is called twice — once with
@@ -59,7 +60,8 @@ describe('T14B-B — static vs D1 runtime catalog behavioural parity (actual cat
   let staticRecipes: Recipe[];
   let d1Recipes: Recipe[];
   beforeEach(async () => {
-    db = new SqliteD1({ through: LEGACY_CATALOG_MIGRATION_TIP }); // 71-recipe legacy baseline ledger
+    db = new SqliteD1({ through: LEGACY_CATALOG_MIGRATION_TIP });
+    for (const migration of MIGRATION_LEDGER.postCatalog) db.seed(readFileSync(`migrations/${migration}`, 'utf8')); // 71-recipe legacy baseline ledger
     const staticCatalog = new StaticRuntimeRecipeCatalog();
     const d1Catalog = new D1RuntimeRecipeCatalog(() => readRecipeContent(db));
     expect((await d1Catalog.hydrate()).failures).toEqual([]);
@@ -313,6 +315,7 @@ describe('T14B-B — cooking boundary with hydrated recipes (legacy inventory au
 
   beforeEach(async () => {
     db = new SqliteD1({ through: LEGACY_CATALOG_MIGRATION_TIP });
+    for (const migration of MIGRATION_LEDGER.postCatalog) db.seed(readFileSync(`migrations/${migration}`, 'utf8'));
     db.seed(`INSERT INTO users(id) VALUES ('${USER}');
       INSERT INTO households(id, name, created_by) VALUES ('${HOUSEHOLD}', 'Parity', '${USER}');
       INSERT INTO household_members(id, household_id, user_id, role) VALUES ('pm', '${HOUSEHOLD}', '${USER}', 'owner');

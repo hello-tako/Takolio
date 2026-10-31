@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import {
+import { OffsetDateTimeSchema,
   CanonicalIngredientIdSchema,
   PositiveQuantitySchema,
   StandardUnitSchema,
@@ -22,9 +22,7 @@ export const ShoppingCurrencySchema = z.enum(['VND', 'JPY', 'USD', 'EUR']);
 export type ShoppingCurrency = z.infer<typeof ShoppingCurrencySchema>;
 export const CURRENCY_MINOR_DIGITS = Object.freeze({ VND: 0, JPY: 0, USD: 2, EUR: 2 });
 const MinorUnits = z.number().int().safe().nonnegative();
-const Instant = z
-  .string()
-  .datetime({ offset: true })
+const Instant = OffsetDateTimeSchema
   .refine((v) => Number.isFinite(Date.parse(v)), 'Invalid price instant');
 
 export const PurchaseOptionSchema = z

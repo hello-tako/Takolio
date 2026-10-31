@@ -148,6 +148,7 @@ export const MealComponentDtoSchema = z.object({
   provenance: ComponentProvenanceSchema,
   recipeId: CatalogIdSchema.nullable(),
   simpleFoodId: SimpleFoodIdSchema.nullable(),
+  contentFingerprint: z.string().regex(/^[0-9a-f]{64}$/).nullable().optional(),
   title: z.string(),
   permittedRoles: z.array(MealRoleSchema),
   /** Recipe-backed and resolvable under the current recipe authority: detail and cooking work. */

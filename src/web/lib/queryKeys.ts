@@ -24,7 +24,9 @@ export const queryKeys = {
     params: import('../../../packages/recipes/src/discovery-contract').DiscoveryParams,
   ) => ['recommendations', ...scope(), 'discovery', params] as const,
   recipes: () => ['recipe', ...scope()] as const,
-  recipe: (idOrSlug: string) => ['recipe', ...scope(), idOrSlug] as const,
+  recipe: (idOrSlug: string, contentFingerprint?: string) => contentFingerprint === undefined
+    ? ['recipe', ...scope(), idOrSlug] as const
+    : ['recipe', ...scope(), idOrSlug, contentFingerprint] as const,
   weekPlans: () => ['weekPlan', ...scope()] as const,
   currentWeekPlan: () => ['weekPlan', ...scope(), 'current'] as const,
   weekPlan: (planId: string) => ['weekPlan', ...scope(), planId] as const,

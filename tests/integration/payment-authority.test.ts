@@ -626,6 +626,15 @@ describe('verified webhook reconciliation and entitlement grants', () => {
     expect(db.query('SELECT * FROM subscriptions')).toEqual(beforeSubscriptions);
   });
 
+  it.each([{ data: null }, { data: [] }, { data: 'invalid' }, { data: 42 }])('rejects non-record webhook data $data before reconciliation', async ({ data }) => {
+    const before = db.query('SELECT * FROM payment_intents');
+    const beforeSubscriptions = db.query('SELECT * FROM subscriptions');
+    const result = await postWebhook({ data, signature: '00'.repeat(32) });
+    expect(result.status).toBe(400);
+    expect(result.json).toEqual({ error: 'Invalid webhook' });
+    expect(db.query('SELECT * FROM payment_intents')).toEqual(before);
+    expect(db.query('SELECT * FROM subscriptions')).toEqual(beforeSubscriptions);
+  });
   it('rejects unsigned or malformed provider verification before acknowledging it', async () => {
     const data = { ...officialWebhookData(), orderCode: 123, amount: 3000, description: 'VQRIO123' };
     const beforeSubscriptions = db.query('SELECT * FROM subscriptions');

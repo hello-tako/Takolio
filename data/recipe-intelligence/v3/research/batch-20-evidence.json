@@ -25,14 +25,15 @@
       "URL_DISCOVERED": 42,
       "URL_REACHABLE": 36
     },
-    "claimCount": 51,
+    "claimCount": 52,
     "claimStatusCounts": {
-      "FACT_SUPPORTED": 22,
+      "FACT_SUPPORTED": 23,
       "SOURCE_CONTENT_READ": 22,
       "SOURCE_UNAVAILABLE": 7
     },
     "findingTypeCounts": {
       "BOUNDED_SOURCE_READ": 3,
+      "INTERNAL_CANONICAL_IDENTITY_CONFLICT": 1,
       "INTERNAL_V2_OBSERVATION": 2,
       "INTERNAL_V2_UNIT_BASIS_UNRESOLVED": 20,
       "SOURCE_ACCESS_LIMIT": 7,
@@ -2551,6 +2552,27 @@
               "factId": "reviewed-1"
             }
           ]
+        },
+        {
+          "id": "internal-beef-identity-ambiguity",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_CANONICAL_IDENTITY_CONFLICT",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "high",
+          "sourceIds": [],
+          "ingredientPositions": [
+            0
+          ],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/ingredients/0/sourceName",
+            "/ingredients/0/canonicalIngredientId",
+            "/ingredients/0/reconciliation",
+            "/ingredients/0/reconciliationReason"
+          ],
+          "reviewerSummary": "The source name is 'Thịt bò (nạc vai/chuck hoặc thăn, thái lát mỏng)', assigned BEEF_SIRLOIN. The shared registry names that ID Thịt bò in Vietnamese and Beef sirloin in English, with bắp bò among its aliases. These describe different or unspecified cuts. Existing-canonical status cannot establish this line identity.",
+          "supportLimits": "Internal V2 and repository registry comparison only; see packages/domain/src/index.ts and docs/ai/recipe-intelligence-v3/research/BEEF_IDENTITY_REVIEW.md. No replacement identity, cut equivalence, migration, culinary approval, nutrition certification or runtime promotion is established.",
+          "sourceFactReferences": []
         }
       ],
       "nextAction": "Compare each source ingredient/method with V1 and V2; resolve identity, quantity, retention and source-authority gaps; obtain independent culinary review before any promotion."

@@ -1,10 +1,11 @@
 import { z } from 'zod';
+import { OffsetDateTimeSchema } from './foundation';
 
 const CurrencySchema = z.enum(['VND', 'JPY', 'USD', 'EUR']);
 const CurrencyMinorDigits = { VND: 0, JPY: 0, USD: 2, EUR: 2 } as const;
 const UnitSchema = z.enum(['g', 'kg', 'ml', 'l', 'piece', 'pack', 'bunch', 'slice']);
 const CodeSchema = z.string().min(1).max(200);
-const InstantSchema = z.string().datetime({ offset: true });
+const InstantSchema = OffsetDateTimeSchema;
 const DecimalStringSchema = z
   .string()
   .min(1)

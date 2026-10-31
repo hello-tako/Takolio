@@ -50,7 +50,7 @@ const publicCodes = {
   T05: ['shopping-optimizer.ts', 'shopping-packages.ts'].flatMap((file) =>
     strings(source(`recipes/src/${file}`)).filter((value) => /^[A-Z][A-Z0-9_]+$/.test(value))),
 };
-const shoppingResultShape = ShoppingResultDtoSchema.innerType().shape;
+const shoppingResultShape = ShoppingResultDtoSchema.shape;
 
 describe('complete public T02–T05 reason presentation', () => {
   it.each(Object.entries(publicCodes))('%s codes have intentional Vietnamese and English explanations', (_layer, codes) => {

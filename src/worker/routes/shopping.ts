@@ -3,8 +3,9 @@ import { bodyLimit } from 'hono/body-limit';
 import { z } from 'zod';
 import type { Env, AuthContext } from '../types';
 import type { D1DatabaseBinding } from '@frigo/db';
-import { SharePlanShoppingSchema, ShoppingContributionSchema, ReviewShoppingDemandSchema } from '../../../packages/domain/src/shopping-plan-api';
+import { SharePlanShoppingSchema, ShoppingContributionSchema, ReviewShoppingDemandSchema, type ShoppingContribution } from '../../../packages/domain/src/shopping-plan-api';
 import { sharePlanShopping } from '../services/shopping-plan';
+import { supportsRecipeContent } from '../services/meal-composition-response';
 import { projectUnknownShoppingDemand, reviewShoppingDemand, unknownShoppingDemandStatement, type ShoppingDemandReviewRow } from '../services/shopping-demand-review';
 import { MealPlanningApplicationService } from '../services/meal-planning';
 import { MealPlanningError } from '../services/meal-planning-error';
@@ -61,15 +62,18 @@ shoppingRoutes.get('/shopping-list',async(c)=>{
       unknownShoppingDemandStatement(c.env.DB,listId),
     ]);
     if(!res.success || !demands.success || !unknown.success) throw new Error('Shopping read failed');
-    const sources=new Map<string,unknown[]>();
+    const versioned = supportsRecipeContent(c.req.header('Accept'));
+    const contributionDto = (entries: ShoppingContribution[]) => versioned ? entries
+      : entries.map(({ contentFingerprint: _pin, ...entry }) => entry);
+    const sources=new Map<string,ShoppingContribution[]>();
     for(const demand of demands.results as Array<{demand_key:string;contributions_json:string}>){
       const contributions=z.array(ShoppingContributionSchema).parse(JSON.parse(demand.contributions_json));
       sources.set(demand.demand_key,[...(sources.get(demand.demand_key) ?? []),...contributions]);
     }
     const unresolvedItems=await Promise.all((unknown.results as ShoppingDemandReviewRow[]).map(projectUnknownShoppingDemand));
     const reviewedItems=new Map(unresolvedItems.filter(row=>row.purchaseItemId!==null).map(row=>[row.purchaseItemId,row.reviewState]));
-    return c.json({items:(res.results as ItemRow[]).map(row=>({...dto(row,row.demand_key ? sources.get(row.demand_key) ?? [] : []),
-      ...(reviewedItems.has(row.id)?{reviewState:reviewedItems.get(row.id)}:{})})),unresolvedItems});
+    return c.json({items:(res.results as ItemRow[]).map(row=>({...dto(row,contributionDto(row.demand_key ? sources.get(row.demand_key) ?? [] : [])),
+      ...(reviewedItems.has(row.id)?{reviewState:reviewedItems.get(row.id)}:{})})),unresolvedItems:unresolvedItems.map(row=>({...row,contributions:contributionDto(row.contributions)}))});
   }catch{console.error('D1 GET shopping list failed:');return c.json({code:'DATABASE_UNAVAILABLE',error:'Database service unavailable'},503);}
 });
 

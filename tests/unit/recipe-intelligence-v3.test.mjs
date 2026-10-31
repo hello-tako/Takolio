@@ -121,3 +121,45 @@ describe('V3 inherited release diagnostics', () => {
     expect(result.metadata.issues).toContain('RUNTIME_PROJECTION_LOSS');
   });
 });
+
+describe('V3 coordinated identity demotion', () => {
+  const demotion = () => {
+    const line = source().ingredients[0];
+    return Object.entries({ canonicalIngredientId: null, reconciliation: 'ambiguous',
+      reconciliationReason: 'Conflicting cut labels require explicit identity review.' })
+      .map(([field, value]) => edit({ path: `/ingredients/0/${field}`, oldValue: line[field], newValue: value }));
+  };
+
+  it('removes projection authority while preserving every source fact and review gate', async () => {
+    const input = source();
+    const result = await compileV3Candidate(runtime(), input, demotion());
+    const restored = structuredClone(result.content);
+    expect(restored.ingredients[0]).toMatchObject({ canonicalIngredientId: null, reconciliation: 'ambiguous', review: null });
+    for (const change of demotion()) restored.ingredients[0][change.path.split('/').at(-1)] = change.oldValue;
+    expect(restored).toEqual(input);
+    expect(result.metadata.runtimeExclusions).toContainEqual({ position: 0, reason: 'other', requiresReviewedTransformation: true });
+    expect(result.metadata.issues).toContain('INGREDIENT_ID_UNRESOLVED');
+    expect(result.metadata).toMatchObject({ compilerVersion: 2, state: 'NEEDS_REVIEW', humanApproved: false, runtimePromotionAllowed: false });
+  });
+
+  it('rejects partial demotion, replacement IDs, promotion and rewriting an existing review', async () => {
+    const changes = demotion();
+    for (const subset of [changes.slice(0, 1), changes.slice(1), changes.filter((_, index) => index !== 1)]) {
+      await expect(compileV3Candidate(runtime(), source(), subset)).rejects.toThrow('IDENTITY_DEMOTION_INVALID');
+    }
+    for (const [field, newValue] of [['canonicalIngredientId', 'OTHER_BEEF'], ['reconciliation', 'existing_canonical_id'], ['reconciliation', 'invalid']]) {
+      await expect(compileV3Candidate(runtime(), source(), changes.map((change) => change.path.endsWith(`/${field}`)
+        ? { ...change, newValue } : change))).rejects.toThrow();
+    }
+    const reviewed = source();
+    reviewed.ingredients[0].canonicalIngredientId = 'ING_ENR_TEST';
+    reviewed.ingredients[0].reconciliation = 'reviewed_new_canonical_id';
+    reviewed.ingredients[0].review = { basis: 'Prior review', evidenceReference: 'evidence.json' };
+    await expect(compileV3Candidate(runtime(), reviewed, changes.map((change) => ({ ...change,
+      oldValue: reviewed.ingredients[0][change.path.split('/').at(-1)] })))).rejects.toThrow();
+    const provisional = source();
+    provisional.ingredients[0].reconciliation = 'provisional_new_canonical_id';
+    await expect(compileV3Candidate(runtime(), provisional, changes.map((change) => ({ ...change,
+      oldValue: provisional.ingredients[0][change.path.split('/').at(-1)] })))).rejects.toThrow();
+  });
+});

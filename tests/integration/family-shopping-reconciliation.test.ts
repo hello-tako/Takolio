@@ -149,7 +149,7 @@ describe('whole-plan shopping materialization',()=>{
   it('shares a real V2 composed plan through Worker HTTP without changing stock', async () => {
     await setup();
     const response = await fetchWorker(new Request(`${T20_ORIGIN}/api/v2/meal-planning/plans`, { method:'POST',
-      headers:{Cookie:h.cookies['family-shop'],Origin:T20_ORIGIN,'Content-Type':'application/json','Idempotency-Key':crypto.randomUUID()},
+      headers:{Cookie:h.cookies['family-shop'],Origin:T20_ORIGIN,'Content-Type':'application/json','Idempotency-Key':crypto.randomUUID(),Accept:'application/json; recipe-content=1'},
       body:JSON.stringify(T20_INTENT) }), h.env());
     expect(response.status).toBe(200);
     const family = FamilyMealPlanDtoSchema.parse(await response.json());
@@ -161,8 +161,14 @@ describe('whole-plan shopping materialization',()=>{
     expect(list.status).toBe(200);
     expect(h.db.query('SELECT * FROM shopping_plan_demands').length).toBeGreaterThan(0);
     const contributions = h.db.query<{contributions_json:string}>('SELECT contributions_json FROM shopping_plan_demands')
-      .flatMap(row=>JSON.parse(row.contributions_json) as Array<{componentId:string}>);
+      .flatMap(row=>JSON.parse(row.contributions_json) as Array<{componentId:string;recipeId:string|null;contentFingerprint:string|null}>);
     expect(new Set(contributions.map(row=>row.componentId)).size).toBeGreaterThan(1);
+    const components = family.compositions.compositions.flatMap(row => row.components);
+    for (const contribution of contributions) {
+      const component = components.find(row => row.id === contribution.componentId)!;
+      expect(contribution.contentFingerprint).toBe(component.contentFingerprint ?? null);
+      if (contribution.recipeId) expect(contribution.contentFingerprint).toMatch(/^[a-f0-9]{64}$/);
+    }
     expect(h.db.query('SELECT id,quantity,version FROM inventory_items ORDER BY id')).toEqual(stockBefore);
     const foreign = await h.seedHousehold('family-stranger');
     expect(foreign).toBeTruthy();

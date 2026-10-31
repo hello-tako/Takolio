@@ -8,7 +8,7 @@ import {
   type RankingPreferences,
   type RecipeFeedback,
 } from '../../recipes/src/personalization';
-import { CatalogIdSchema } from '../../domain/src/foundation';
+import { OffsetDateTimeSchema, CatalogIdSchema } from '../../domain/src/foundation';
 import type { D1DatabaseBinding, D1PreparedStatement, D1Result } from './index';
 
 const TrustedRankingScopeSchema = z.object({
@@ -16,7 +16,7 @@ const TrustedRankingScopeSchema = z.object({
   userId: CatalogIdSchema,
 }).strict();
 
-const UtcDateTimeSchema = z.string().datetime({ offset: true }).transform((value, ctx) => {
+const UtcDateTimeSchema = OffsetDateTimeSchema.transform((value, ctx) => {
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) {
     ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Invalid timestamp' });

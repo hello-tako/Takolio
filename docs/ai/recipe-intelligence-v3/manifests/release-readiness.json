@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "state": "RECIPE_V3_RESEARCH_IN_PROGRESS",
+  "releaseEligibility": {
+    "canonicalSourceReady": true,
+    "runtimeProjectionReady": false,
+    "productionReleaseReady": false,
+    "nutritionCanonicalized": true,
+    "nutritionReleaseCoverageIncomplete": true,
+    "blockers": [
+      "RUNTIME_PROJECTION_LOSS",
+      "INGREDIENT_RECONCILIATION_INCOMPLETE",
+      "SOURCE_CONTENT_VERIFICATION_INCOMPLETE",
+      "NUTRITION_EVIDENCE_INCOMPLETE"
+    ],
+    "finalRuntimeFingerprint": null
+  },
+  "blockers": [
+    "RUNTIME_PROJECTION_LOSS",
+    "INGREDIENT_RECONCILIATION_INCOMPLETE",
+    "SOURCE_CONTENT_VERIFICATION_INCOMPLETE",
+    "NUTRITION_EVIDENCE_INCOMPLETE"
+  ],
+  "additionalPrerequisites": [
+    "CULINARY_REVIEW_500",
+    "USER_CONTENT_VERSION_PINNING",
+    "INDEPENDENT_HUMAN_REVIEW",
+    "SAME_SOURCE_STAGING",
+    "OPERATOR_RELEASE_APPROVAL"
+  ],
+  "productionReady": false,
+  "productionMutationCount": 0
+}

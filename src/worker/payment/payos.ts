@@ -96,7 +96,7 @@ export async function createPayosInstructions(env: Env, intent: PaymentRow): Pro
   });
   if (!response.ok) throw new Error('Payment provider unavailable');
   const result = await readBoundedPayosJson(response);
-  const envelope = z.object({ code: z.literal('00'), data: z.record(z.unknown()), signature: z.string() }).parse(result);
+  const envelope = z.object({ code: z.literal('00'), data: z.record(z.string(), z.unknown()), signature: z.string() }).parse(result);
   if (!await verifyPayosData(envelope.data, envelope.signature, env.PAYOS_CHECKSUM_KEY!)) throw new Error('Invalid provider signature');
   const data = linkSchema.parse(envelope.data);
   if (data.amount !== intent.amount_vnd || String(data.orderCode) !== intent.order_code ||
