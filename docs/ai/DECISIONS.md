@@ -4031,3 +4031,24 @@ This is SQL-only certification; runtime recovery requires separate evidence.
 No schema/runtime/workflow change. Local full check431files/9665tests and real
 D1 matrix38/38 PASS exit0; exact commands/limits in22_COOKING_FOUNDATION_VALIDATION.md.
 PR49 must retain this coverage alongside its immutable47 checkpoint.
+
+
+## ADR-081 - Retain compatible family recovery at reviewed schema tips
+
+Date: 2026-10-31 JST. Status: accepted release defect correction under the
+owner's existing recipe production authorization; normal review and CI required.
+
+The Deploy workflow selects family recovery only at0043. At0046/0047 it can
+therefore fall back to a historical Worker that cannot preserve cooking receipts,
+saved pins or shopping JSON. Domain Release already prepares compatible recovery
+unconditionally; the retained Deploy workflow must enforce the same safety rule.
+
+Extend only the supported-tip predicate to the reviewed0043-0047 migrations.
+Keep exact-source/D1/flags/asset/authority checks and existing OTP precedence.
+Unknown tips remain unsupported until reviewed. No workflow/config/schema,
+authentication, payment, runtime catalog or user-data change. Recovery still
+requires real same-source hosted proof; local tests do not certify deployment.
+
+Validate every supported tip, older/malformed/unknown tips, exact0047 recovery
+certification and existing drift/asset/deployment regressions. Rollback is a
+normal reviewed code revert before release; never erase pins or receipts.

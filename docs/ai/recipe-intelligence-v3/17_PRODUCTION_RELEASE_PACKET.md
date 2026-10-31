@@ -1,3 +1,13 @@
+## Release correction checkpoint - 2026-10-31 JST
+
+ADR-081 extends retained Deploy recovery selection to reviewed0043-0047tips.
+Existing Domain Release already prepares compatible recovery. Local100tests,
+targeted lint/diff checks PASS; hosted exact-source proof remains required.
+Production NOT_READY. Full integration/data/publication/hosted gates remain;
+see docs/ai/CURRENT_STATE.md for exact source and commands. No remote mutation.
+
+---
+
 ## Raw-crab candidate update - 2026-10-31 JST
 
 Production NOT_READY. Current candidate SHA256
