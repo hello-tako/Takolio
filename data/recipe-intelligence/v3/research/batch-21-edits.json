@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "edits": [
+    {
+      "recipeId": "imp-c398c169dc196c4e",
+      "path": "/steps/8/instruction",
+      "oldValue": "Gắp tôm ra đĩa, rưới phần marinade sạch còn lại lên trên như sốt.",
+      "newValue": "Gắp tôm ra đĩa, rưới phần marinade sạch còn lại lên trên như sốt. Chỉ dùng phần sốt đã tách riêng trước khi cho tôm sống vào; không rưới nước ướp hoặc dùng dụng cụ đã tiếp xúc tôm sống lên tôm chín.",
+      "reason": "Clarify existing clean-sauce boundary using official marinade/cross-contamination advice; no reused-marinade treatment invented.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-21-evidence.json#/recipes/13/claims/6"
+      ]
+    }
+  ]
+}

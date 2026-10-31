@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "edits": [
+    {
+      "recipeId": "imp-f04b28987d7cd34a",
+      "path": "/steps/0/instruction",
+      "oldValue": "Rã đông cua: xả lớp băng phủ bên ngoài dưới vòi nước chảy 3–5 phút, sau đó bọc cua trong túi nilon và để ở nhiệt độ phòng 1–2 giờ cho rã đông hoàn toàn.",
+      "newValue": "Rã đông cua trong ngăn mát tủ lạnh, đặt trong khay hứng nước và theo hướng dẫn trên bao bì. Chỉ chuyển sang bước tiếp theo khi phần giữa đã rã đông hoàn toàn.",
+      "reason": "Replace the conflicting room-temperature thaw instructions with bounded FSA fridge/packaging/drip guidance. No duration invented; raw/pre-cooked identity remains unresolved.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14/claims/5"
+      ]
+    },
+    {
+      "recipeId": "imp-f04b28987d7cd34a",
+      "path": "/steps/0/tip",
+      "oldValue": "Theo kênh ウオス (shop cua gửi trực tiếp): lớp băng grace bọc ngoài để chống khô đông — phải xả sạch dưới vòi nước trước khi rã đông; bọc túi nilon để cua không bị khô trong lúc rã đông.",
+      "newValue": "FSA khuyến nghị rã đông trong ngăn mát và ngăn nước rã đông chảy sang thực phẩm khác. Thời gian rã đông tùy sản phẩm; cần xác định cua sống hay đã luộc theo bao bì trước khi chọn cách nướng. Lớp băng bên ngoài tan không chứng minh phần giữa đã rã đông hoàn toàn.",
+      "reason": "Replace the conflicting room-temperature thaw instructions with bounded FSA fridge/packaging/drip guidance. No duration invented; raw/pre-cooked identity remains unresolved.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14/claims/5"
+      ]
+    }
+  ]
+}
