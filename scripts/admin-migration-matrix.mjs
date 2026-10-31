@@ -423,7 +423,7 @@ try {
   const beforeCooking = query(v3Upgrade, 'SELECT * FROM cooked_meals ORDER BY id');
   const v3Additions = candidateFiles.slice(v2Files.length);
   writeFiles(v3Upgrade.migrationDirectory, v3Additions.filter(file => file.name === '0046_recipe_content_versions.sql'));
-  const apply46 = apply(v3Upgrade);
+  const apply46 = apply(v3Upgrade), reapply46 = apply(v3Upgrade);
   const contentPin = 'a'.repeat(64);
   const archiveSeed = sql(v3Upgrade, `
     INSERT INTO recipe_content_versions(fingerprint,recipe_id,slug,content_json)
@@ -450,10 +450,10 @@ try {
   row('V3 populated0045 -> 0046 -> 0047 upgrade + re-apply',
     'only46/47 apply once; legacy data stays exact with unknown pins, existing0046 archive/grants/receipts and objects survive',
     { baselineApply: v3BaseApply.status, seed: populatedContentSeed.status, additions: v3Additions.map(file => file.name),
-      apply46: apply46.status, archiveSeed: archiveSeed.status, apply47: apply47.status, reapply: reapply47.status,
+      apply46: apply46.status, reapply46: reapply46.status, archiveSeed: archiveSeed.status, apply47: apply47.status, reapply: reapply47.status,
       legacyPreserved, componentsPreserved, cookingPreserved, historiesPreserved46, objects46Preserved,
       ledger: releaseGate(customerBaseline, upgrade47Ledger), schema: upgrade47Gate, integrity: v3Integrity, foreignKeys: v3ForeignKeys },
-    v3BaseApply.status === 0 && populatedContentSeed.status === 0 && apply46.status === 0 && archiveSeed.status === 0 &&
+    v3BaseApply.status === 0 && populatedContentSeed.status === 0 && apply46.status === 0 && reapply46.status === 0 && archiveSeed.status === 0 &&
       apply47.status === 0 && reapply47.status === 0 && JSON.stringify(v3Additions.map(file => file.name)) ===
       JSON.stringify(['0046_recipe_content_versions.sql', '0047_saved_recipe_content.sql']) &&
       legacyPreserved && componentsPreserved && cookingPreserved && historiesPreserved46 && objects46Preserved.pass &&
@@ -467,6 +467,13 @@ try {
   const mismatchedRecipe = sql(v3Upgrade, "UPDATE generated_meal_plan_components SET recipe_id = 'gl-04' WHERE id = 'matrix-recipe'");
   const missingPin = sql(v3Upgrade, `UPDATE generated_meal_plan_components SET recipe_content_fingerprint = '${'b'.repeat(64)}' WHERE id = 'matrix-recipe'`);
   const simpleFoodPin = sql(v3Upgrade, `UPDATE generated_meal_plan_components SET recipe_content_fingerprint = '${contentPin}' WHERE id = 'matrix-food'`);
+  const mismatchedCookingPin = sql(v3Upgrade, `INSERT INTO cooked_meals
+      (id,household_id,user_id,recipe_id,servings_cooked,deductions_applied,recipe_content_fingerprint)
+    VALUES ('matrix-wrong-recipe','matrix-content-house','matrix-content-user','gl-04',2,'[]','${contentPin}')`);
+  const missingCookingPin = sql(v3Upgrade, `INSERT INTO cooked_meals
+      (id,household_id,user_id,recipe_id,servings_cooked,deductions_applied,recipe_content_fingerprint)
+    VALUES ('matrix-missing-pin','matrix-content-house','matrix-content-user','gl-03',2,'[]','${'b'.repeat(64)}')`);
+  const legacyCookingPin = sql(v3Upgrade, `UPDATE cooked_meals SET recipe_content_fingerprint = '${contentPin}' WHERE id = 'matrix-legacy-cook'`);
   const archiveUpdate = sql(v3Upgrade, "UPDATE recipe_content_versions SET slug = 'changed'");
   const archiveDelete = sql(v3Upgrade, 'DELETE FROM recipe_content_versions');
   const archiveReplace = sql(v3Upgrade, `INSERT OR REPLACE INTO recipe_content_versions(fingerprint,recipe_id,slug,content_json)
@@ -476,13 +483,15 @@ try {
   const finalContentIntegrity = query(v3Upgrade, 'PRAGMA quick_check');
   const finalContentForeignKeys = query(v3Upgrade, 'PRAGMA foreign_key_check');
   row('V3 content identity and retained0046 guards',
-    'matching saved pins pass; missing/mismatched/simple-food pins, archive replacement/deletion and receipt identity mutations fail',
+    'matching saved/cooking pins pass; missing/mismatched/simple-food pins, legacy receipt pinning, archive and receipt mutations fail',
     { matchingPin: matchingPin.status, mismatchedInsert: matchingInsert.status, mismatchedRecipe: mismatchedRecipe.status,
-      missingPin: missingPin.status, simpleFoodPin: simpleFoodPin.status, archiveUpdate: archiveUpdate.status,
+      missingPin: missingPin.status, simpleFoodPin: simpleFoodPin.status,
+      mismatchedCookingPin: mismatchedCookingPin.status, missingCookingPin: missingCookingPin.status,
+      legacyCookingPin: legacyCookingPin.status, archiveUpdate: archiveUpdate.status,
       archiveDelete: archiveDelete.status, archiveReplace: archiveReplace.status, receiptPin: receiptPin.status,
       receiptRequest: receiptRequest.status, integrity: finalContentIntegrity, foreignKeys: finalContentForeignKeys },
     matchingPin.status === 0 && [matchingInsert, mismatchedRecipe, missingPin, simpleFoodPin, archiveUpdate, archiveDelete,
-      archiveReplace, receiptPin, receiptRequest].every(result => result.status !== 0) &&
+      archiveReplace, receiptPin, receiptRequest, mismatchedCookingPin, missingCookingPin, legacyCookingPin].every(result => result.status !== 0) &&
       JSON.stringify(histories46()) === JSON.stringify(before46) && Object.values(finalContentIntegrity[0] ?? {})[0] === 'ok' &&
       finalContentForeignKeys.length === 0);
 
