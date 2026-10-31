@@ -165,3 +165,12 @@ Actual commands, Node24; prefix
 The inherited runtime/full-suite receipts above are not reruns of this tooling
 merge. Hosted CI must validate the final commit. No culinary approval, catalog
 promotion, remote D1 operation or production deployment follows from local PASS.
+
+Clean committed preflight: `CI=1 PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp node scripts/admin-release-preflight.mjs --operation validate`
+PASS exit0 for7b7b7b2cfd162de9b9e6874755272607ee9f8ac9; cleanCheckout=true,
+configurationValidation=PASS, baselinea1e706c7, sourceManifestSha256
+1cb8549919217fce42b12129ef505bb4662544ba46d08a59f71bd69329dcd607;
+readyForDeployment=false,remoteExecuted=false. Log/exit
+`/private/tmp/takolio-pr49-integrated-preflight.{log,exit}`. Public added-text
+scan and diff check also PASS. This records the immutable implementation commit;
+the following documentation checkpoint is separately validated by hosted CI.
