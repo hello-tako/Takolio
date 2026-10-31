@@ -185,9 +185,10 @@ describe('bounded canonical staging 0045->0046 content archive certification', (
   });
 });
 
-describe('0047 saved content certification', () => {
-  it('preserves legacy aggregates and certifies pins together with the immutable archive', async () => {
-    const db = databaseAt(CONTENT_TIP);
+describe('0045->0046->0047 saved content certification', () => {
+  it.each(['apply', 'certify'])('preserves legacy aggregates and certifies the complete chain in %s mode', async mode => {
+    const db = databaseAt(mode === 'apply' ? TIP : CONTENT_TIP);
+    if (mode === 'certify') db.exec(readFileSync(`migrations/${SAVED_CONTENT_TIP}`, 'utf8'));
     const directory = mkdtempSync(path.join(tmpdir(), 'saved-content-migration-'));
     directories.push(directory);
     const write = (name, data) => {
@@ -198,22 +199,31 @@ describe('0047 saved content certification', () => {
     const tip = SAVED_CONTENT_TIP;
     const migrations = listMigrations().filter(name => name <= tip);
     const candidate = { sha: 'a'.repeat(40), mainSha: 'a'.repeat(40), schema: { version: tip,
-      migrations: migrations.map(name => ({ name })) }, chain: [tip], database: STAGING_D1 };
+      migrations: migrations.map(name => ({ name })) }, chain: [CONTENT_TIP, tip], database: STAGING_D1 };
     const receipt = write('receipt.json', candidate);
     const capture = () => baselineQuery(tip).split(';').map(query => ({ success: true, results: [db.prepare(query).get()] }));
     try {
       expect(verifyCandidateChain(candidate, tip)).toBe(candidate);
-      expect(() => verifyCandidateChain({ ...candidate, chain: [CONTENT_TIP, tip] }, tip)).toThrow(/Only current-main/);
+      for (const chain of [[], [tip], [CONTENT_TIP], [tip, CONTENT_TIP], [TIP, CONTENT_TIP, tip], [CONTENT_TIP, tip, '0048_future.sql']]) {
+        expect(() => verifyCandidateChain({ ...candidate, chain }, tip)).toThrow(/Only current-main/);
+      }
       await run('identity', receipt, [write('list.json', [{ name: STAGING_D1.name, uuid: STAGING_D1.id }]),
         write('info.json', { name: STAGING_D1.name, uuid: STAGING_D1.id })]);
-      await run('pre-ledger', receipt, [write('pre-ledger.json', result(names.map(name => ({ name }))))]);
+      await expect(run('pre-ledger', receipt, [write('partial-ledger.json', result(names.map(name => ({ name }))))])).rejects.toThrow(/ledger/);
+      const preNames = mode === 'apply' ? migrations.filter(name => name <= TIP) : migrations;
+      await run('pre-ledger', receipt, [write('pre-ledger.json', result(preNames.map(name => ({ name }))))]);
       await run('bookmark', receipt, [write('bookmark.json', { bookmark: 'local-saved-content-rehearsal' })]);
       const fk = write('fk.json', result([]));
       const quick = write('quick.json', result([{ quick_check: 'ok' }]));
       const before = capture();
       await run('pre-health', receipt, [fk, quick, write('before.json', before)]);
-      await run('plan', receipt, [write('plan.txt', tip)]);
-      db.exec(readFileSync(`migrations/${tip}`, 'utf8'));
+      for (const chain of [[tip], [tip, CONTENT_TIP], [TIP, CONTENT_TIP, tip]]) {
+        await expect(run('plan', receipt, [write('wrong-plan.txt', chain.join('\n'))])).rejects.toThrow();
+      }
+      await run('plan', receipt, [write('plan.txt', mode === 'apply' ? candidate.chain.join('\n') : 'No migrations to apply')]);
+      if (mode === 'apply') {
+        for (const name of candidate.chain) db.exec(readFileSync(`migrations/${name}`, 'utf8'));
+      }
       expect(verifyBaselinePreserved(result([verifyBaseline(before, tip)]), capture(), tip)).toEqual({ drift: 'none' });
       const rows = db.prepare(schemaQuery(tip)).all();
       expect(verifySchema(result(rows), tip).constraints).toBe('PASS');

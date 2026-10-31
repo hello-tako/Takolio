@@ -4080,3 +4080,23 @@ create culinary approval or mark the 500-recipe program complete. Migrations0046
 then0047 and same-source recovery remain required. No auth/payment/business,
 DNS, queue, database identity or recipe content change belongs to this adapter.
 Rollback retains user data/schema and uses the recorded same-source recovery.
+
+
+## ADR-083 - Bind staging saved-content migration to the current repository tip
+
+Status: accepted narrow release defect correction under existing operator
+authorization; protected review and hosted release proof remain required.
+
+Current main contains0047. The generic migration gate correctly rejects0046
+as a candidate because it is not the repository tip. Requiring an existing0046
+ledger for the0047 dispatch therefore strands staging at0045. Set only the0047
+contract to preTip0045 and ordered chain[0046,0047], matching production's existing
+chain. Keep generic candidate validation and all hashes, exact-main/CI, identity,
+bookmark, aggregate, plan and schema gates. Complete0047 may certify; partial0046
+must stop for reconciliation. Historical0046 contract remains available only at
+a repository whose immutable tip is0046. Applied SQL remains unchanged.
+
+Regression rehearses apply from0045 and certification at0047, with missing,
+reordered, extra and partial-ledger rejection. Rollback retains additive schema,
+archives, saved pins and receipts, using the same-source flags-OFF recovery; never
+restore old user data automatically. This does not authorize V3 publication.
