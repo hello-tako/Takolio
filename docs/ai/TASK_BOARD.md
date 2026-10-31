@@ -1,3 +1,34 @@
+## Staging content chain correction - 2026-11-01 JST
+
+Status: FOUNDATION_RELEASE_PREPARATION; V3 publication NOT_READY.
+Branch codex/staging-content-chain; base main3921ca05c0f1772624e79234ccafbf5a8be4c0a5.
+The0046 dispatch reproducibly failed the immutable candidate gate because current
+main ends at0047. ADR-083 makes the0047 contract apply exactly0046+0047 from0045,
+or certify complete0047. Partial0046, missing/reordered/extra plans still reject.
+Generic candidate, exact-main/CI, hashes, identity, bookmark, schema and aggregate
+fences remain unchanged. No migration SQL or application runtime changed.
+
+Executed with PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp CI=1:
+- New apply/certify regression before fix:6passed/2failed; exact chain rejection.
+- pnpm exec vitest run tests/unit/staging-content-migration-check.test.mjs tests/unit/staging-v2-migration-check.test.mjs tests/unit/d1-migration-check.test.mjs: PASS3files/176tests,14.57s.
+- pnpm exec eslint scripts/staging-v2-migration-check.mjs tests/unit/staging-content-migration-check.test.mjs: PASS. git diff --check: PASS before documentation.
+- Actual validateMigrationCandidate plus verifyCandidateChain on current main3921ca05: PASS,47migrations, exact[0046,0047]. No hosted CI claim for this new source yet.
+- Prior source06215d6c full pnpm check PASS exit0:436files/9766tests; lint/types/Main+Admin migrations/Web+Admin+Worker builds. Log /private/tmp/takolio-v3-domain-rollout-full-check.log, .exit=0.
+
+Owner explicitly confirmed temporary account-wide D1 Write for staging token
+924b1c62fc29d8f270429c8190c82ed4 and production token
+af0b464452d8a0362c235cb179b96064. Both saved and UI-verified; other permissions
+and expiry retained. They remain temporary pending migrations; restore D1 Read
+immediately after each respective migration. No token secret recorded.
+No remote migration, app traffic change or production deployment yet in this
+checkpoint. PR33-58 merged normally; four V3 data gates and six safety cases
+remain open; AI technical approval confers no human culinary approval.
+Next: protected review/merge and exact-main CI, staging0045->0047 migration,
+same-source deployment/actual acceptance/recovery, protected production migration,
+permission reduction, fresh certification and ordered ADR-082 rollout retaining V1.
+
+---
+
 ## Audited catalog rollout adapter - 2026-10-31 JST
 
 Status: FOUNDATION_RELEASE_PREPARATION; V3 publication NOT_READY.

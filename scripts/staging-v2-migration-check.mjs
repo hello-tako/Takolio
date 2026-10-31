@@ -20,7 +20,7 @@ function migration(tip = TIP) {
   if (tip === CONTENT_TIP) return { preTip: TIP, chain: [CONTENT_TIP],
     tables: ['recipe_content_versions', 'recipe_content_access', 'cooked_meals'],
     status: 'STAGING_0046_CONTENT_CERTIFIED' };
-  if (tip === SAVED_CONTENT_TIP) return { preTip: CONTENT_TIP, chain: [SAVED_CONTENT_TIP],
+  if (tip === SAVED_CONTENT_TIP) return { preTip: TIP, chain: [CONTENT_TIP, SAVED_CONTENT_TIP],
     tables: ['recipe_content_versions', 'recipe_content_access', 'cooked_meals', 'generated_meal_plan_components'],
     status: 'STAGING_0047_SAVED_CONTENT_CERTIFIED' };
   throw new Error('Only reviewed staging migration 0045, 0046 or 0047 is authorized');

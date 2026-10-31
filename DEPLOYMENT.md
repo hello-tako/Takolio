@@ -483,3 +483,9 @@ Recovery uses the same source and selected catalog stage with both planner flags
 OFF; it retains0046/0047, archives, plans, purchases and receipts. This foundation
 path retains V1 content and does not publish blocked V3 candidates or complete the
 500-recipe program. The legacy Deploy config is not a substitute for this audit.
+
+At a current-main tip of0047, dispatch Staging V2 Migration with0047. Its exact
+reviewed chain is0045 ->0046 ->0047; the generic candidate gate requires the
+repository tip, so separate0046 then0047 dispatches cannot run at that SHA.
+Only a complete0045 ledger may apply, or a complete0047 ledger may certify.
+An intermediate0046 ledger requires operator reconciliation, not a blind retry.
