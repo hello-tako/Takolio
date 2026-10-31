@@ -1,7 +1,9 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it, vi } from 'vitest';
 import { ACCEPTANCE_CHECKS, OBSERVATION_MS, verifyEvidenceRun, verifyStagingAcceptance,
-  verifyProductionCertification, isProductionMutation, validateProductionRecovery, observeProduction } from '../../scripts/domain/production-release.mjs';
+  verifyProductionCertification, isProductionMutation, validateProductionRecovery, observeProduction, prepareRecipeCatalogStage } from '../../scripts/domain/production-release.mjs';
+import { configHash } from '../../scripts/domain/release-config.mjs';
+import { compatibleRecoveryPlan } from '../../scripts/domain/compatible-recovery.mjs';
 import { productionProvider, releaseProduction } from '../../scripts/domain/production-provider.mjs';
 
 const sha = 'a'.repeat(40);
@@ -259,4 +261,73 @@ it('allows only an explicitly confirmed, evidenced PayOS owner waiver and preser
   expect(workflow).toContain('CONFIRM_PAYOS_OWNER_WAIVER: ${{ inputs.confirm_payos_owner_waiver }}');
   const provider = readFileSync('scripts/domain/production-provider.mjs', 'utf8');
   expect(provider).toContain("allowPayosWaiver: env.CONFIRM_PAYOS_OWNER_WAIVER === 'true'");
+});
+
+describe('audited production catalog stages', () => {
+  const priorSha = 'b'.repeat(40);
+  const databaseId = 'f975ec39-b2c8-4a2a-80e1-0366054599d3';
+  const release = { releaseId: 'rel-fixture', expectedRecipeCount: 500,
+    expectedRuntimeFingerprint: 'c'.repeat(64), legacyBaselineCount: 71, legacyBaselineFingerprint: 'd'.repeat(64) };
+  const evidence = (mode = 'd1', percent = 0, commit = priorSha) => ({
+    schemaVersion: 1, environment: 'production', commit, configuredMode: mode, canaryPercent: percent,
+    cutoverEnabled: mode === 'canary' || mode === 'd1', globalSource: mode === 'd1' ? 'd1' : mode === 'canary' ? 'mixed' : 'static',
+    releaseId: release.releaseId, expectedRecipeCount: 500, selectedSource: 'd1', actualSource: 'd1',
+    servedRecipeCount: 500, servedFingerprint: release.expectedRuntimeFingerprint,
+    expectedRuntimeFingerprint: release.expectedRuntimeFingerprint, fingerprintMatchesRelease: true,
+    d1Readiness: 'ready', d1ReadinessCode: null, fallbackReason: null,
+  });
+  const fixture = () => {
+    const manifest = { repository: 'hello-tako/Takolio', sha, environment: 'production', mealCompositionV2Enabled: true,
+      recipeCatalogMode: 'd1', recipeCatalogCanaryPercent: 0, recipeCatalogCutoverEnabled: true,
+      cloudflare: { databaseId, databaseName: 'frigo-db' }, previousDeployment: { versionId: 'prior-version' } };
+    const vars = { GIT_COMMIT: sha, ENVIRONMENT: 'production', APP_URL: 'https://takolio.app', PUBLIC_DOMAIN_ROUTING: 'true',
+      MEAL_PLANNER_ENABLED: 'true', MEAL_COMPOSITION_V2_ENABLED: 'true', RECIPE_CATALOG_MODE: 'd1',
+      RECIPE_CATALOG_D1_CANARY_PERCENT: '0', RECIPE_CATALOG_CUTOVER_ENABLED: 'true' };
+    const config = { name: 'frigo', vars, routes: [], assets: { run_worker_first: true }, workers_dev: false, preview_urls: false,
+      queues: { consumers: [{ queue: 'audited-queue', max_batch_size: 5 }] }, triggers: { crons: ['0 3 * * *'] },
+      observability: { logs: { enabled: true } }, d1_databases: [{ binding: 'DB', database_id: databaseId }] };
+    const bytes = `${JSON.stringify(config, null, 2)}\n`;
+    const previousVersion = { id: 'prior-version', resources: { bindings: [{ type: 'd1', name: 'DB', id: databaseId },
+      ...Object.entries({ ...vars, GIT_COMMIT: priorSha }).map(([name, text]) => ({ type: 'plain_text', name, text }))] } };
+    return { manifest, plan: { config, bytes, sha256: configHash(bytes), previous: { versionId: 'prior-version' },
+      buildEnvironment: { GIT_COMMIT: sha, VITE_MEAL_PLANNER_ENABLED: 'true', VITE_MEAL_COMPOSITION_V2_ENABLED: 'true' } },
+    previous: evidence(), release, previousVersion };
+  };
+  const options = { isAncestor: () => true, readRelease: () => release, readBlob: () => 'e'.repeat(40),
+    readDependency: (commit) => ({ dependency: 'zod', version: commit === sha ? '4.6.7' : '3.25.76', integrity: 'fixture' }) };
+
+  it('keeps the Zod continuity rejection for default preserve and requires explicit shadow rollback', () => {
+    expect(() => prepareRecipeCatalogStage(fixture(), options)).toThrow('dependency changed');
+    expect(() => prepareRecipeCatalogStage({ ...fixture(), stage: 'shadow' }, options)).toThrow('explicit confirmation');
+    const args = { ...fixture(), stage: 'shadow', rollbackConfirmed: true };
+    const before = structuredClone(args);
+    const result = prepareRecipeCatalogStage(args, options);
+    expect(args).toEqual(before);
+    expect(result.manifest.authorityTransition).toEqual({ from: 'd1', to: 'shadow', kind: 'rollback' });
+    const expected = structuredClone(args.plan.config);
+    Object.assign(expected.vars, { RECIPE_CATALOG_MODE: 'shadow', RECIPE_CATALOG_CUTOVER_ENABLED: 'false' });
+    expect(result.plan.config).toEqual(expected);
+    expect(result.plan.buildEnvironment).toEqual(args.plan.buildEnvironment);
+    expect(result.plan.previous).toEqual(args.plan.previous);
+    expect(JSON.parse(result.plan.bytes)).toEqual(expected);
+    expect(result.plan.sha256).toBe(configHash(result.plan.bytes));
+    const recovery = compatibleRecoveryPlan({ ...result, audit: { worker: { name: 'frigo' } } });
+    expect(recovery.config.vars).toMatchObject({ RECIPE_CATALOG_MODE: 'shadow', RECIPE_CATALOG_CUTOVER_ENABLED: 'false',
+      MEAL_PLANNER_ENABLED: 'false', MEAL_COMPOSITION_V2_ENABLED: 'false' });
+  });
+
+  it('enforces the same-SHA ordered canary chain and rejects changed-SHA or unhealthy promotions', () => {
+    for (const [mode, percent, stage] of [['shadow', 0, 'canary-1'], ['canary', 1, 'canary-5'],
+      ['canary', 5, 'canary-25'], ['canary', 25, 'd1']]) {
+      const args = { ...fixture(), stage, previous: evidence(mode, percent, sha) };
+      expect(prepareRecipeCatalogStage(args, options).manifest.authorityTransition.kind).toBe('promotion');
+      expect(() => prepareRecipeCatalogStage({ ...args, previous: evidence(mode, percent) }, options)).toThrow('restart');
+      expect(() => prepareRecipeCatalogStage({ ...args, previous: { ...args.previous, servedRecipeCount: 499 } }, options)).toThrow();
+    }
+    expect(() => prepareRecipeCatalogStage({ ...fixture(), stage: 'canary-25', previous: evidence('shadow', 0, sha) }, options)).toThrow('next reviewed');
+    expect(prepareRecipeCatalogStage({ ...fixture(), previous: evidence('d1', 0, sha) }, options).manifest.authorityTransition.kind).toBe('idempotent');
+    for (const stage of ['', 'static', 'canary-2', 'canary-100', null])
+      expect(() => prepareRecipeCatalogStage({ ...fixture(), stage }, options)).toThrow('Explicit reviewed');
+    expect(() => prepareRecipeCatalogStage({ ...fixture(), stage: 'shadow', rollbackConfirmed: 'true' }, options)).toThrow('Explicit reviewed');
+  });
 });

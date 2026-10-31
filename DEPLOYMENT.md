@@ -463,3 +463,23 @@ D1 continuity check remains binding; this release restarts explicitly in shadow,
 then promotes the same SHA through canary 1, 5 and 25 percent to d1, with protected
 authority proof and normal production approvals at each step. Never silently
 set a catalog or planner flag outside the reviewed deploy workflow.
+
+## Audited domain catalog rollout (ADR-082)
+
+Use Domain Production Release for the current Takolio domains and audited live
+runtime configuration. Its default `recipe_catalog_stage=preserve` still rejects
+changed source/Zod when complete D1 continuity cannot be proved. For a new
+foundation SHA, explicitly select `shadow` and `confirm_catalog_rollback=true`
+when current authority is canary/D1. After that run succeeds, promote the same
+SHA through `canary-1`, `canary-5`, `canary-25`, then `d1`. Each dispatch retains
+the existing exact-main CI, fresh same-source staging acceptance/certification,
+normal production Environment review, authority checks and observation window.
+Never skip a stage or reuse a different SHA's rollout evidence.
+
+The adapter changes only the three catalog variables after the shared transition
+gate accepts the live evidence. Bindings, secrets, current planner flags, domains,
+queue/cron/exposure and audited runtime settings retain their existing guards.
+Recovery uses the same source and selected catalog stage with both planner flags
+OFF; it retains0046/0047, archives, plans, purchases and receipts. This foundation
+path retains V1 content and does not publish blocked V3 candidates or complete the
+500-recipe program. The legacy Deploy config is not a substitute for this audit.

@@ -1,3 +1,29 @@
+## Audited catalog rollout adapter - 2026-10-31 JST
+
+Status: FOUNDATION_RELEASE_PREPARATION; V3 publication NOT_READY.
+Branch codex/recipe-v3-domain-rollout; parent f8a5f8604ae0e767a31c3a7c625f8db1e2482d49.
+ADR-082 adds explicit preserve/shadow/canary-1/canary-5/canary-25/d1 inputs to
+Domain Production Release. The existing transition gate controls three catalog
+vars after audited config preparation; default continuity, ordered same-SHA
+promotions, current-main CI, acceptance, certification, Environment approval and
+same-source paired-OFF recovery remain mandatory. This can release the security/
+saved-content foundation with V1; it does not publish blocked V3 data.
+
+Executed with PATH=/opt/homebrew/opt/node@24/bin:$PATH, TMPDIR=/private/tmp, CI=1:
+- pnpm exec vitest run tests/unit/domain-production-release.test.mjs tests/unit/domain-release-config.test.mjs tests/unit/domain-compatible-recovery.test.mjs tests/unit/production-catalog-continuity.test.mjs tests/unit/release-check.test.mjs: PASS 5 files / 349 tests, 4.63s.
+- pnpm exec vitest run tests/unit/domain-production-build.test.mjs tests/unit/production-certify-workflow.test.mjs: PASS 2 files / 59 tests, 6.71s.
+- pnpm exec eslint scripts/domain/production-release.mjs scripts/domain/production-provider.mjs tests/unit/domain-production-release.test.mjs: PASS. git diff --check: PASS.
+- pnpm check remains RUNNING; types/lint passed, full tests/later gates pending.
+  Log /private/tmp/takolio-v3-domain-rollout-full-check.log; no full PASS claimed.
+PR57 exact f8a5f860 has disclosed AI technical approval 5722130857 by
+vn-taphoanhatung. Recipe CI 41187702542 SUCCESS; Admin 41187702537 running.
+Next: normal protected integration and exact-main CI, ordered0046/0047, actual
+same-source staging/recovery acceptance, fresh certification and production
+rollout. Four V3 data gates and six safety cases remain; no human culinary
+approval inferred. No remote migration, traffic change or production deploy yet.
+
+---
+
 ## Aggregate integration checkpoint - 2026-10-31 JST
 
 Branch codex/recipe-v3-frame-check; verified implementation3326d7bd27acc714ded6bf7392b1c1ef2af08eea.
@@ -8766,3 +8792,4 @@ bundle/font warnings. Hosted full-suite checks and human review remain required.
   so ST01-ST20 and production use the complete final immutable source.
 - PENDING_EXTERNAL_EVIDENCE: live HMAC provider behavior and authenticated facade
   smoke; no local fixture is counted as live acceptance.
+

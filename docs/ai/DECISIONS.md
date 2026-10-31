@@ -4052,3 +4052,31 @@ requires real same-source hosted proof; local tests do not certify deployment.
 Validate every supported tip, older/malformed/unknown tips, exact0047 recovery
 certification and existing drift/asset/deployment regressions. Rollback is a
 normal reviewed code revert before release; never erase pins or receipts.
+
+## ADR-082 - Audited domain release uses the existing catalog rollout gates
+
+Status: accepted implementation scope; hosted release evidence remains required.
+
+The domain release preserves live Takolio routing, runtime bindings, queues and
+operational settings, but can only retain the current catalog mode. Retaining
+production D1 across the Zod upgrade correctly fails the dependency continuity
+fence. The older Deploy workflow supports shadow/canary but uses the legacy
+committed domain configuration. Neither path currently supports a safe fresh
+rollout with the audited live configuration.
+
+Add explicit production domain inputs for preserve/shadow/canary-1/canary-5/
+canary-25/d1 and rollback confirmation. Default preserve retains the continuity
+fence. Prepare the unchanged audited config first, then change only the three
+catalog vars after the existing validateRecipeCatalogTransition accepts the
+live authority and exact target SHA. Preserve current-source/ancestor checks,
+ordered promotions, full fingerprint/readiness checks, fresh staging acceptance,
+production certification, normal Environment review and observation. Compatible
+recovery keeps the selected catalog stage and disables both planner flags.
+
+This supersedes the blanket production hold in ADR-073 only for a separately
+certified release of the security/saved-content foundation retaining V1 catalog
+content. It does not authorize V3 publication, waive any of the four data gates,
+create culinary approval or mark the 500-recipe program complete. Migrations0046
+then0047 and same-source recovery remain required. No auth/payment/business,
+DNS, queue, database identity or recipe content change belongs to this adapter.
+Rollback retains user data/schema and uses the recorded same-source recovery.
