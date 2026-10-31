@@ -1,3 +1,20 @@
+## Raw-crab candidate update - 2026-10-31 JST
+
+Production NOT_READY. Current candidate SHA256
+61729db2569a553a3551051161a6aa3cb0dc996d381050327b89108f56a473e2;
+seven coordinated raw-to-cook crab edits; all499 other records unchanged.
+General MHLW endpoint75C for at least1minute does not validate exact product,
+yield,time or nutrition. Raw shrimp unchanged; both seafood cases FAIL_UNRESOLVED.
+Six safety reviews and actual structured decisions0/500 remain. Owner deployment
+permission persists. Four data gates, approved publication, independent stack
+review, exact-main CI and same-source hosted staging/catalog/recovery remain.
+Apply ordered0046/0047 before Worker; recovery retains data and a certified
+same-source version-aware Worker/client with paired flags OFF.
+Exact checks/limits:14_TEST_STRATEGY.md; current branch/next action:
+handoff/CURRENT_CHECKPOINT.md. No production mutation. Earlier records follow.
+
+---
+
 ## Current checkpoint - 2026-10-31 JST
 
 Production NOT_READY. Cooking/saved V1/composition/shopping pins are implemented;

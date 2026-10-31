@@ -1,3 +1,100 @@
+## PR54 publication/manual follow-up - 2026-10-31 JST
+
+Documentation-only continuation of implementation b6ff4ebdbfc62b28d3ee6b4d72ae126e99d4a1a6.
+Existing complete local check exit0/integrity exit0/release-check exit1 receipts
+were reread; full local tests were not rerun without a code/data change.
+Three Nissui images retrieved at19:04:44Z were visually read; bounded findings,
+URLs/byte counts/hashes are recorded in research/RAW_SEAFOOD_DECISIONS.md.
+No full enclosed manual, validated raw-shrimp process or safety decision obtained.
+Search-service retry returned unavailable; no search snippets used as evidence.
+
+Executed read-only checks: git status/diff/log/remote/rev-parse and git fetch
+origin; gh pr list/view, gh run view and gh api for main protection/production
+Environment. Main remains b49f3e6c; only PR51 approved. PR54 exact b6ff4ebd
+Recipe41110848058/Admin41110848034 completed SUCCESS; exact results follow.
+Earlier watch sessions11842/17616 retain logs under /private/tmp.
+Pending-run --log-failed attempts returned exit1 because logs were not yet
+available; this is not a failed CI conclusion. Hosted results will be recorded
+in the PR body to avoid repeated documentation pushes invalidating checks.
+
+Documentation verification executed, all PASS exit0:
+- `python3 /private/tmp/takolio-v3-pr54-doc-check.py`: 12 Markdown files;
+  historical text preserved; 3 source-image hashes; candidate/canonical/runtime/
+  protected bytes unchanged; no untracked files. Receipt:
+  /private/tmp/takolio-v3-pr54-doc-check.log and .exit=0.
+- `git diff --check`: PASS exit0.
+- `python3 scripts/admin-public-scan.py`: PASS exit0; added-text scan only.
+These checks do not certify food safety, human review or hosted readiness.
+No remote migration, flag change or deployment.
+
+---
+
+Hosted implementation CI completed SUCCESS on b6ff4ebdbfc62b28d3ee6b4d72ae126e99d4a1a6: Recipe41110848058,436files/9750tests/1025.09s; Admin41110848034,436files/9750tests/1294.70s. Admin Workerd10/10,migration matrix39/39,browser13tests,keyboard10repeats and screenshot guards PASS. Preflight readyForDeployment=false,remoteExecuted=false. Receipts: /private/tmp/takolio-v3-pr54-recipe-completed.json and /private/tmp/takolio-v3-pr54-admin-completed.json. Later documentation HEAD requires its own CI. No review or production mutation claimed.
+
+## Coordinated raw-crab candidate checks - 2026-10-31 JST
+
+Worktree /Users/tunbee27/Documents/New project/Takolio-recipe-v3; branch
+codex/recipe-v3-crab-cooking; parent50ecf0188c1c98ce065c58bd8aa56a44ce679bea.
+Candidate SHA25661729db2569a553a3551051161a6aa3cb0dc996d381050327b89108f56a473e2;
+crab fingerprint fc267f18206245a9036bf9156ee38a8aa7a0f306bb11618cef469cc03eba6e98.
+All499 other candidate records unchanged. Seven crab edits replace two previous
+edits; two source rows/two claims added; prior evidence/edits retained.
+Current totals500recipes/25packets/1190source rows/1152URLs/1328claims/49edits
+across29recipes;678bounded reads. Human decisions0/500; six critical reviews
+pending. General MHLW guidance and Marine Foods comparator do not certify exact
+product/handling/time/yield/nutrition. No source/runtime promotion.
+
+Node command prefix: PATH=/opt/homebrew/opt/node@24/bin:$PATH
+TMPDIR=/private/tmp CI=1. Python/git commands have no Node prefix.
+
+| Executed command | Observed result / local receipt |
+|---|---|
+| `pnpm test tests/unit/recipe-intelligence-v3-artifacts.test.mjs tests/unit/recipe-intelligence-v3.test.mjs tests/unit/recipe-intelligence-v3-review.test.mjs` | PASS3files/62tests/4.95s; /private/tmp/takolio-v3-crab-focused.log and .exit=0 |
+| `node scripts/recipe-intelligence-v3-audit.mjs` | PASS500recipes/49edits/25packets; /private/tmp/takolio-v3-crab-audit-build.log and .exit=0 |
+| `node scripts/recipe-intelligence-v3-audit.mjs --check` | PASS500/49/25; /private/tmp/takolio-v3-crab-audit-check.log and .exit=0; existing port24678 warning retained |
+| `pnpm exec eslint tests/unit/recipe-intelligence-v3-artifacts.test.mjs` | PASS exit0 |
+| `node /private/tmp/takolio-v3-crab-integrity.mjs` | PASS exit0; complete500recompilations,503V2files/51evidence inputs,1500provenance/3944claim pointers/766fact refs,49reversals/29recipes,6766ingredients/4938steps,559frozen inputs,no protected drift; .json/.log/.exit=0 |
+| `python3 /private/tmp/takolio-v3-crab-preservation.py` | PASS;499unchanged records,500ordered IDs,historical source/claim/edit/supplement preservation,V2/protected paths unchanged |
+| `python3 /private/tmp/takolio-v3-seafood-research-20261030/check_provenance.py` | PASS9sources/18hashes/15quote locators/officialPDFlink |
+| `pnpm recipe:refresh:release-check` | FAIL exit1 RECIPE_REFRESH_RELEASE_BLOCKED; RUNTIME_PROJECTION_LOSS,INGREDIENT_RECONCILIATION_INCOMPLETE,SOURCE_CONTENT_VERIFICATION_INCOMPLETE,NUTRITION_EVIDENCE_INCOMPLETE; /private/tmp/takolio-v3-crab-release-check.log and .exit=1 |
+| `pnpm check` | PASS exit0;436files/9750tests/1016.95s; typecheck,lint,Main/Admin migration replay and Web/Admin/Worker builds PASS; /private/tmp/takolio-v3-crab-full-check.log and .exit=0 |
+| `python3 scripts/admin-public-scan.py` | PASS after final checkpoint additions; added-text scan only; binary/manual review remains required |
+| `git diff --check` | PASS after final checkpoint additions |
+
+The release check's canonical refresh integrity succeeds500recipes with artifact
+da87da20475fa8d7ec92c716e899ee572339573258ae6d9cc7f3f8f554f2d695
+and provisional projection6d0e3eb85696bb7c31bc54ac62783bc94432aaf008028eca79b17041f3eaed87;
+those fingerprints do not certify the V3 candidate. Runtime fingerprint remains
+f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37.
+The integrity checker was adapted to current HEAD50ecf018 for protected-path
+comparison; this is an automated technical check, not an independent human review.
+An exploratory aggregate command initially used a nonexistent batch01 filename;
+pilot-evidence.json enumeration corrected the checker without canonical changes.
+Private caches/checker scripts may expire; persistent regression and canonical
+hash-bound packets remain in the repository.
+
+GitHub readback2026-10-30: protected main remainsb49f3e6c; only PR51
+APPROVED exactae68f7e5 by vn-taphoanhatung. PR33-53 remain OPEN/Draft; PR53
+exact50ecf018 Recipe41105209850/Admin41105209827 workflow conclusions SUCCESS; Admin step metadata remained inconsistent.
+PR52 exact55ff5264 Recipe41100766616/Admin41100766642 SUCCESS. Preserve PR51 HEAD.
+No new exact-head CI or professional review is inferred from parent evidence.
+
+Release NOT_READY.1395provisional IDs/4233lines;2996excluded lines/2860unreviewed
+transformations;nutrition1inherited/288blocked/211NULL; actual review records,
+approved publication,independent GitHub review,protected exact-main CI and
+same-source hosted staging/catalog/recovery remain open. Owner deployment
+permission persists. Ordered0046/0047 precede Worker; after saved pins recovery
+requires certified same-source version-aware Worker/client with paired flags OFF,
+retaining migrations and data. No merge,remote migration,flag change or deployment.
+
+Full local gate skips remote schema/Week checks by default. Existing Admin font
+build warnings and intentional error-boundary test stderr remain in the log.
+These local results do not certify hosted staging or production.
+
+Earlier checks bind their historical artifacts and branches only.
+
+---
+
 ## Recipe V3 cooking foundation - 2026-10-30 JST
 
 Status: RECIPE_V3_IMPLEMENTATION_IN_PROGRESS; release RECIPE_V3_BLOCKED.

@@ -69,6 +69,35 @@ describe('V3 complete candidate artifacts', () => {
     }
   });
 
+  it('coordinates raw-crab handling and measured doneness without certifying the product', async () => {
+    const id = 'imp-f04b28987d7cd34a';
+    const source = readJson(`data/recipe-refresh/v2/recipes/${id}.json`);
+    const edits = packetEdits().filter((patch) => patch.recipeId === id);
+    const { content, metadata } = await compileV3Candidate(runtimeById.get(id), source, edits);
+    expect(edits.map((patch) => patch.path).sort()).toEqual([
+      '/ingredients/0/note', '/steps/0/instruction', '/steps/0/tip', '/steps/4/tip',
+      '/steps/5/instruction', '/steps/6/instruction', '/steps/6/tip',
+    ]);
+    expect(content.steps[6].instruction).toMatch(/75\u00b0C.*1 ph\u00fat/u);
+    for (const index of [5, 6]) {
+      const minutes = source.steps[index].timerMinutes;
+      expect(content.steps[index].timerMinutes).toBe(minutes);
+      expect(content.steps[index].instruction).toContain(`${minutes} ph\u00fat ch\u1ec9 nh\u1eafc ki\u1ec3m tra`);
+    }
+    expect(content.steps[0].instruction).not.toContain('r\u00e3 \u0111\u00f4ng ho\u00e0n to\u00e0n');
+    expect(content.ingredients[0].note).not.toContain('an to\u00e0n');
+    expect(content.steps[6].tip).not.toContain('ch\u1ec9 c\u1ea7n n\u01b0\u1edbng s\u01a1');
+    expect(content.ingredients.map(({ note: _note, ...line }) => line)).toEqual(source.ingredients.map(({ note: _note, ...line }) => line));
+    expect(content.content).toEqual(source.content);
+    expect(content.nutrition).toEqual(source.nutrition);
+    expect(metadata).toMatchObject({ state: 'NEEDS_REVIEW', humanApproved: false, runtimePromotionAllowed: false });
+    expect(metadata.issues).toContain('INDEPENDENT_REVIEW_REQUIRED');
+    const evidence = readJson(`${researchDir}/batch-23-evidence.json`).recipes[14];
+    expect(evidence.previousCandidateEdits).toHaveLength(2);
+    expect(evidence.humanReview).toBe('PENDING');
+    expect(evidence.nextAction).toMatch(/^FAIL_UNRESOLVED:/u);
+  });
+
   it('resolves every edit evidence reference to its own recipe and real claim', () => {
     const edits = packetEdits();
     expect(edits.length).toBeGreaterThan(0);

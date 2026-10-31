@@ -1,5 +1,42 @@
 # Raw seafood formulation decisions
 
+## Current raw-crab candidate - 2026-10-31 JST
+
+Worktree Takolio-recipe-v3; branch codex/recipe-v3-crab-cooking;
+parent50ecf0188c1c98ce065c58bd8aa56a44ce679bea. ADR-072 editorial scope only.
+Current candidate artifact SHA256: `61729db2569a553a3551051161a6aa3cb0dc996d381050327b89108f56a473e2`.
+Current crab content fingerprint: `fc267f18206245a9036bf9156ee38a8aa7a0f306bb11618cef469cc03eba6e98`.
+Immutable V2 SHA256 remains
+`00a37d510676eb95f279699e8e9c5315bc82cb21205f26cead47876f4b72f533`.
+
+Seven coordinated crab edits now use the owner's raw-to-cook direction:
+raw heating-only ingredient note; refrigerator/drip/package handling;
+thermometer and clean-utensil advice; both existing timers explicitly inspection
+reminders; measured center at least75C held at least1minute. The numeric endpoint
+is attributed to MHLW general household guidance, not a validated manufacturer
+crab protocol. Marine Foods supplies a product-specific half-thaw counterexample;
+no SKU, thaw duration or mixed-brand instructions are adopted. The former blanket
+fully-thawed-center assertion and preboiled superficial-warming branch are removed.
+
+Canonical evidence: batch-23-evidence.json recipes[14].claims[7-8]; two new
+source rows, two claims. Both previous edits and prior supplement metadata remain
+in that recipe's history. Quantity800g,servings4,total40minutes,ingredient
+identities/roles/nutrition and V2 bytes are preserved, not independently validated.
+Other499 candidate records and raw-shrimp recipe remain unchanged.
+
+Both seafood cases remain FAIL_UNRESOLVED; six critical safety decisions remain
+pending. humanReview=PENDING; no source/runtime promotion or safety approval.
+The changed crab fingerprint needs a genuine new decision; any supplied review
+file must bind the new artifact hash. The owner's reported completed review is
+retained in19_INDEPENDENT_REVIEW_QUEUE.md; no reviewer identity is inferred.
+Checks and release limits: [14_TEST_STRATEGY.md](../14_TEST_STRATEGY.md).
+
+The following dated records retain their historical hashes, counts and proposals.
+The previous two-edit crab plan and unchanged-candidate statements are superseded
+by this bounded correction; their source observations remain evidence.
+
+---
+
 Prepared 2026-10-28 JST against documentation HEAD
 `90c5b221b3c4e3c1d878c4edb5dab7f5f07465cb`; data implementation
 `a578b5696389cdb6afeca7530e33b1f4e384690e`.
@@ -306,3 +343,33 @@ All requests returned HTTP200 with final URL equal to the linked URL.
 | `itamaedamashii-raw-crab-8201` / `2026-10-29T21:47:17.555982+00:00` | `88587c548b2a36e4a07a749754e0c061d5b41597dc27397213988047b1bfb305` | `4174199a851879d5f8f5599dd9c28d1feccbdb7f413924048e1952cd2d85e879` |
 
 Executed `python3 /private/tmp/takolio-v3-seafood-research-20261030/check_provenance.py`: PASS exit0;9sources,18SHA256 checks,15quote locators and official PDF link. This verifies recorded provenance, not food safety or regulatory compliance.
+
+## Nissui image/manual follow-up - 2026-10-31 JST
+
+Three public image assets were retrieved on 2026-10-30 UTC and visually read.
+They supplement the earlier product-page/FAQ observations. The full enclosed
+manual was not obtained; the manual-cover advertisement is not its contents.
+No candidate, canonical evidence packet, source status, safety decision or runtime
+changed. Both seafood cases remain FAIL_UNRESOLVED. No copyrighted images are
+committed; private retrieval receipts retain byte counts and hashes.
+
+| Public asset / visual locator | Bounded finding | Limit |
+|---|---|---|
+| [Manual advertisement](https://www.nissui-kenko.com/img/usr/detail/60007/img14.jpg), left text and pictured cover | Advertises an enclosed crab manual covering thawing, eating, recipes and questions. | Cover only; no interior instructions or complete grill protocol. |
+| [Processing-flow example](https://www.nissui-kenko.com/img/usr/detail/60007/img08a.jpg), upper and lower diagrams | Illustrates primary/secondary processing, including washing, freezing, glaze, weight/metal checks and product inspection. | An example flow, without measured critical limits, lot results or validated pathogen controls. |
+| [Thawing infographic](https://www.nissui-kenko.com/img/usr/detail/60007/txt06.png), numbered panels 01-03 | This product's directions remove the portion needed, briefly rinse off glaze, then refrigerate to thaw the center; discourage prolonged holding/refreezing for quality. | Product-specific thawing only; no grilling endpoint or validated yield. Do not transfer its durations to Marine Foods or the candidate. |
+
+All three requests returned HTTP200 with final URL equal to the linked URL.
+Locators are visual panels, not OCR or normalized-text lines.
+
+| Asset / retrieved UTC | Bytes | Raw SHA256 |
+|---|---|---|
+| `img14.jpg` / `2026-10-30T19:04:44.375726Z` | 348503 | `daf3e800a713d94822cbdad1618915698714e92e743c3f032beb7de059295137` |
+| `img08a.jpg` / `2026-10-30T19:04:44.584923Z` | 270299 | `2f902784c2a67b7296cd59ed76d81aeacef6d0b6555a0184a4218f957646bca9` |
+| `txt06.png` / `2026-10-30T19:04:44.884610Z` | 1123963 | `8332249b966da2302fd9cc17a7af515fd2774340c7230594acf9f15a2a010a75` |
+
+The search connector again reported unavailable in this continuation; Google
+and DuckDuckGo fallback searches previously returned challenge pages. No search
+snippet or challenge response is recipe evidence. These bounded findings do not
+establish that no suitable manual/protocol exists elsewhere. Next remains an
+actual product/validated process and fingerprint-bound independent safety decision.

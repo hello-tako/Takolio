@@ -1,5 +1,41 @@
 PROGRAM: TAKOLIO_RECIPE_INTELLIGENCE_V3
 REPOSITORY: hello-tako/Takolio
+BASE_SHA: 50ecf0188c1c98ce065c58bd8aa56a44ce679bea
+WORKING_BRANCH: codex/recipe-v3-crab-cooking
+VERIFIED_IMPLEMENTATION: b6ff4ebdbfc62b28d3ee6b4d72ae126e99d4a1a6
+CURRENT_HEAD: resolve documentation checkpoint from Git
+PHASE: coordinated raw-to-cook crab candidate correction
+STATUS: RECIPE_V3_BLOCKED; production NOT_READY
+CANDIDATE_SHA256: 61729db2569a553a3551051161a6aa3cb0dc996d381050327b89108f56a473e2
+CRAB_FINGERPRINT: fc267f18206245a9036bf9156ee38a8aa7a0f306bb11618cef469cc03eba6e98
+RECIPES_TOTAL: 500; all499 other candidate records unchanged
+EDITORIAL_EDITS: 49 across29recipes; raw-crab7 replace2
+RESEARCH: 1190source rows/1152URLs/1328claims;678bounded reads
+RECIPES_HUMAN_APPROVED: owner reports completed review; actual decisions0
+INGREDIENT_IDENTITIES_PENDING: 1395provisional IDs/4233lines
+NUTRITION_EVIDENCE_COMPLETE: 1inherited/288blocked/211NULL
+TEST_RESULTS: focused62tests/audit500/49/25/integrity/preservation/provenance PASS;
+  full local gate PASS exit0;436files/9750tests/1016.95s; typecheck,lint,Main/Admin migration replay and Web/Admin/Worker builds PASS; exact commands14_TEST_STRATEGY.md
+CURRENT_BLOCKERS: four data gates; six safety reviews; actual review records;
+  approved publication; independent GitHub review; exact-main hosted certification
+PRODUCTION_MUTATIONS: 0
+PR: https://github.com/hello-tako/Takolio/pull/54; Draft/open; reviewer requested
+HOSTED_CI: Recipe41110848058/Admin41110848034 SUCCESS on implementation b6ff4ebd
+MANUAL_FOLLOWUP: three Nissui images read; no full manual/validated protocol
+NEXT_ACTION: observe exact-head CI; reconcile actual review decisions;
+  close data/publication and same-source hosted release prerequisites
+
+Owner deployment authorization persists. PR51 approved HEAD remains stable.
+Raw shrimp formulation unchanged; exact raw-use product/process proof absent.
+Crab general measured endpoint is not product-specific safety acceptance.
+Earlier checkpoints follow unchanged.
+
+Hosted implementation CI completed SUCCESS on b6ff4ebdbfc62b28d3ee6b4d72ae126e99d4a1a6: Recipe41110848058,436files/9750tests/1025.09s; Admin41110848034,436files/9750tests/1294.70s. Admin Workerd10/10,migration matrix39/39,browser13tests,keyboard10repeats and screenshot guards PASS. Preflight readyForDeployment=false,remoteExecuted=false. Receipts: /private/tmp/takolio-v3-pr54-recipe-completed.json and /private/tmp/takolio-v3-pr54-admin-completed.json. Later documentation HEAD requires its own CI. No review or production mutation claimed.
+
+---
+
+PROGRAM: TAKOLIO_RECIPE_INTELLIGENCE_V3
+REPOSITORY: hello-tako/Takolio
 BASE_SHA: 55ff5264e094ecdb4863fc1532df0d06a470e1dd
 WORKING_BRANCH: codex/recipe-v3-review-records
 CURRENT_HEAD: resolve final checkpoint from Git

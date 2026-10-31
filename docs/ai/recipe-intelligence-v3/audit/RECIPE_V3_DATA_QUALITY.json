@@ -19702,6 +19702,8 @@
         "RESEARCH:supp03-source-access-limit",
         "RESEARCH:supp06-safety-review",
         "RESEARCH:supp07-safety-review",
+        "RESEARCH:supp08-package-governed-thaw-proposal",
+        "RESEARCH:supp08-raw-crab-cooking-proposal",
         "RUNTIME_PROJECTION_LOSS",
         "SOURCE_CONTENT_UNVERIFIED",
         "UNSUPPORTED_OR_QUALITATIVE_RUNTIME_QUANTITY",

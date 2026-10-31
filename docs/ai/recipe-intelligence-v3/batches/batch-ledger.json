@@ -15956,7 +15956,7 @@
             "v1": "dc95ce76d4f83abb79f3161f2b9013dfddb89b3b748df67e1b5ba23813921117",
             "v2": "d13440bef98ef25008e5379c2ba92baf435ef7210afbe73e8105542522a1ad58"
           },
-          "candidateFingerprint": "bc566906cd417f8c1c7154a42fd66322fc83f5cfbfa4340215f3a16d86367001",
+          "candidateFingerprint": "fc267f18206245a9036bf9156ee38a8aa7a0f306bb11618cef469cc03eba6e98",
           "sourceEvidence": {
             "urlAttempt": "data/recipe-intelligence/v3/research/source-scan.json#/recipes/454",
             "researchEvidence": "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14"
@@ -15974,6 +15974,8 @@
             "RESEARCH:supp03-source-access-limit",
             "RESEARCH:supp06-safety-review",
             "RESEARCH:supp07-safety-review",
+            "RESEARCH:supp08-package-governed-thaw-proposal",
+            "RESEARCH:supp08-raw-crab-cooking-proposal",
             "RUNTIME_PROJECTION_LOSS",
             "SOURCE_CONTENT_UNVERIFIED",
             "UNSUPPORTED_OR_QUALITATIVE_RUNTIME_QUANTITY",

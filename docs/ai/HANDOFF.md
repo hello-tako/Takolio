@@ -1,3 +1,38 @@
+## Raw-crab candidate checkpoint - 2026-10-31 JST
+
+Status: RECIPE_V3_BLOCKED / production NOT_READY. Branch
+codex/recipe-v3-crab-cooking; base50ecf0188c1c98ce065c58bd8aa56a44ce679bea.
+Seven coordinated crab edits replace two prior edits; general MHLW center75C
+for at least1minute, package-specific thawing and clean utensils. Existing5/4
+minute timers are inspection reminders. All499 other candidates, quantities,
+nutrition, immutable V2 and runtime authority remain unchanged.
+Candidate SHA25661729db2569a553a3551051161a6aa3cb0dc996d381050327b89108f56a473e2.
+
+Focused62tests, audit500/49/25, complete recompilation/preservation and source
+cache provenance PASS. Full local gate PASS exit0;436files/9750tests/1016.95s; typecheck,lint,Main/Admin migration replay and Web/Admin/Worker builds PASS.
+Exact commands/results/limits: docs/ai/recipe-intelligence-v3/14_TEST_STRATEGY.md.
+Both seafood cases FAIL_UNRESOLVED; six safety reviews pending. Owner reports
+review complete; actual structured decisions0/500. Deployment permission persists.
+Four data gates, approved publication, independent stack review, protected-main
+CI and same-source hosted certification remain open. No production mutation.
+Published [Draft PR54](https://github.com/hello-tako/Takolio/pull/54) against
+codex/recipe-v3-review-records, implementation b6ff4ebdbfc62b28d3ee6b4d72ae126e99d4a1a6.
+Recipe41110848058/Admin41110848034 completed SUCCESS on implementation b6ff4ebd. Reviewer
+vn-taphoanhatung requested; only PR51 has a submitted GitHub approval.
+Nissui image/manual follow-up records three bounded visual observations;
+no full manual or validated product protocol obtained. No code/data change.
+Documentation verification PASS exit0: python3 /private/tmp/takolio-v3-pr54-doc-check.py
+(12 Markdown files, historical preservation, 3 image hashes, unchanged candidate/
+canonical/runtime/protected bytes, no untracked files); git diff --check and
+python3 scripts/admin-public-scan.py PASS exit0 (added-text scan only).
+Next: observe exact-head CI, reconcile actual review records and close
+data/publication, protected-main and hosted certification gates.
+PR51 approved HEAD unchanged. Earlier checkpoints follow unchanged.
+
+Hosted implementation CI completed SUCCESS on b6ff4ebdbfc62b28d3ee6b4d72ae126e99d4a1a6: Recipe41110848058,436files/9750tests/1025.09s; Admin41110848034,436files/9750tests/1294.70s. Admin Workerd10/10,migration matrix39/39,browser13tests,keyboard10repeats and screenshot guards PASS. Preflight readyForDeployment=false,remoteExecuted=false. Receipts: /private/tmp/takolio-v3-pr54-recipe-completed.json and /private/tmp/takolio-v3-pr54-admin-completed.json. Later documentation HEAD requires its own CI. No review or production mutation claimed.
+
+---
+
 ## Recipe V3 review-record validation - 2026-10-31 JST
 
 Status: RECIPE_V3_BLOCKED / production NOT_READY; owner deployment permission

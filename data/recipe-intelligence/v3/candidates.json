@@ -187,11 +187,11 @@
     },
     {
       "path": "data/recipe-intelligence/v3/research/batch-23-evidence.json",
-      "sha256": "b1ceeb7d4c3620db773671d2e669150796687bed185c9553b283621d17568d6c"
+      "sha256": "57794ff30557f92522b8d14b82f58148e05f97d66c04436b5a2b13fef435dc56"
     },
     {
       "path": "data/recipe-intelligence/v3/research/batch-23-edits.json",
-      "sha256": "9cd4c0a953d35d7f9a18805a36d2f95bcdaf934a486f8d1839eff1f61e623e5d"
+      "sha256": "b073be37ab2d67d657689495f2eb7512fdbe96b172386967fa841aaf1678ed8c"
     },
     {
       "path": "data/recipe-intelligence/v3/research/batch-24-evidence.json",
@@ -48983,9 +48983,9 @@
       "slug": "cua-nuong-muoi-nhat",
       "sourceV1Fingerprint": "dc95ce76d4f83abb79f3161f2b9013dfddb89b3b748df67e1b5ba23813921117",
       "sourceV2Fingerprint": "d13440bef98ef25008e5379c2ba92baf435ef7210afbe73e8105542522a1ad58",
-      "candidateVersion": "v3-candidate-bc566906cd417f8c1c7154a42fd66322fc83f5cfbfa4340215f3a16d86367001",
+      "candidateVersion": "v3-candidate-fc267f18206245a9036bf9156ee38a8aa7a0f306bb11618cef469cc03eba6e98",
       "previousVersion": "v2-source-d13440bef98ef25008e5379c2ba92baf435ef7210afbe73e8105542522a1ad58",
-      "candidateContentFingerprint": "bc566906cd417f8c1c7154a42fd66322fc83f5cfbfa4340215f3a16d86367001",
+      "candidateContentFingerprint": "fc267f18206245a9036bf9156ee38a8aa7a0f306bb11618cef469cc03eba6e98",
       "sourceReference": "data/recipe-refresh/v2/recipes/imp-f04b28987d7cd34a.json",
       "sourcePreserved": true,
       "state": "NEEDS_REVIEW",
@@ -49017,22 +49017,72 @@
       "edits": [
         {
           "recipeId": "imp-f04b28987d7cd34a",
+          "path": "/ingredients/0/note",
+          "oldValue": "Iwamoto (shop hải sản Karatsu) khuyên: nướng BBQ nên chọn cua hoàng đế (taraba) vì thịt to, dễ ăn; ai thích vị cua đậm đà hơn thì chọn cua tuyết (zuwai). Dùng loại sống (生) để nướng là thơm nhất; nếu có trẻ nhỏ, có thể dùng loại đã luộc sẵn (ボイル) cho nhanh và an toàn — khi đó chỉ nướng sơ làm nóng mặt ngoài, không nướng lâu.",
+          "newValue": "Chọn chân cua sống đông lạnh có nhãn yêu cầu nấu chín; kiểm tra trạng thái sản phẩm và hướng dẫn trên bao bì trước khi sơ chế. Công thức này dùng cua sống để nấu chín, không dùng nhánh chỉ hâm nóng cua đã luộc sẵn.",
+          "reason": "Coordinate raw-to-cook handling and general MHLW measured endpoint; preserve timer values as inspection reminders. Product, quantity, yield, time, nutrition and independent safety acceptance remain unresolved.",
+          "evidenceReferences": [
+            "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14/claims/7"
+          ]
+        },
+        {
+          "recipeId": "imp-f04b28987d7cd34a",
           "path": "/steps/0/instruction",
           "oldValue": "Rã đông cua: xả lớp băng phủ bên ngoài dưới vòi nước chảy 3–5 phút, sau đó bọc cua trong túi nilon và để ở nhiệt độ phòng 1–2 giờ cho rã đông hoàn toàn.",
-          "newValue": "Rã đông cua trong ngăn mát tủ lạnh, đặt trong khay hứng nước và theo hướng dẫn trên bao bì. Chỉ chuyển sang bước tiếp theo khi phần giữa đã rã đông hoàn toàn.",
-          "reason": "Replace the conflicting room-temperature thaw instructions with bounded FSA fridge/packaging/drip guidance. No duration invented; raw/pre-cooked identity remains unresolved.",
+          "newValue": "Rã đông cua trong ngăn mát tủ lạnh, đặt trong khay hứng nước và tuân theo mức rã đông cùng hướng dẫn nấu trên bao bì sản phẩm. Không để cua rã đông ở nhiệt độ phòng; sau khi rã đông theo hướng dẫn, chế biến ngay.",
+          "reason": "Retain fridge/drip/package controls; remove a universal full-thaw assertion contradicted by the product-specific half-thaw comparator. No selected SKU or thaw duration inferred.",
           "evidenceReferences": [
-            "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14/claims/5"
+            "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14/claims/8"
           ]
         },
         {
           "recipeId": "imp-f04b28987d7cd34a",
           "path": "/steps/0/tip",
           "oldValue": "Theo kênh ウオス (shop cua gửi trực tiếp): lớp băng grace bọc ngoài để chống khô đông — phải xả sạch dưới vòi nước trước khi rã đông; bọc túi nilon để cua không bị khô trong lúc rã đông.",
-          "newValue": "FSA khuyến nghị rã đông trong ngăn mát và ngăn nước rã đông chảy sang thực phẩm khác. Thời gian rã đông tùy sản phẩm; cần xác định cua sống hay đã luộc theo bao bì trước khi chọn cách nướng. Lớp băng bên ngoài tan không chứng minh phần giữa đã rã đông hoàn toàn.",
-          "reason": "Replace the conflicting room-temperature thaw instructions with bounded FSA fridge/packaging/drip guidance. No duration invented; raw/pre-cooked identity remains unresolved.",
+          "newValue": "Ngăn nước rã đông tiếp xúc với thực phẩm ăn ngay. Mức rã đông tùy sản phẩm; không mặc định mọi loại chân cua đều phải rã đông hoàn toàn hoặc dùng chung một thời gian rã đông.",
+          "reason": "Retain fridge/drip/package controls; remove a universal full-thaw assertion contradicted by the product-specific half-thaw comparator. No selected SKU or thaw duration inferred.",
           "evidenceReferences": [
-            "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14/claims/5"
+            "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14/claims/8"
+          ]
+        },
+        {
+          "recipeId": "imp-f04b28987d7cd34a",
+          "path": "/steps/4/tip",
+          "oldValue": "Iwamoto: cua sống hợp nướng chậm trên than (じっくりと焼く) để thịt chín từ từ, ngọt thịt.",
+          "newValue": "Chuẩn bị nhiệt kế thực phẩm để đo phần thịt dày nhất khi nướng; không lấy màu vỏ hoặc thời gian nướng làm bằng chứng thịt đã chín. Dùng dụng cụ sạch cho cua chín, không dùng lại dụng cụ vừa tiếp xúc cua sống khi chưa rửa sạch.",
+          "reason": "Coordinate raw-to-cook handling and general MHLW measured endpoint; preserve timer values as inspection reminders. Product, quantity, yield, time, nutrition and independent safety acceptance remain unresolved.",
+          "evidenceReferences": [
+            "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14/claims/7"
+          ]
+        },
+        {
+          "recipeId": "imp-f04b28987d7cd34a",
+          "path": "/steps/5/instruction",
+          "oldValue": "Xếp cua lên vỉ, nướng mặt vỏ trước khoảng 5 phút đến khi vỏ chuyển màu đỏ cam và hơi xém cạnh.",
+          "newValue": "Xếp cua lên vỉ, nướng mặt vỏ trước theo hướng dẫn nấu trên bao bì. Mốc 5 phút chỉ nhắc kiểm tra và trở mặt, không xác nhận cua đã chín; màu đỏ cam của vỏ không thay thế việc đo nhiệt độ tâm thịt.",
+          "reason": "Coordinate raw-to-cook handling and general MHLW measured endpoint; preserve timer values as inspection reminders. Product, quantity, yield, time, nutrition and independent safety acceptance remain unresolved.",
+          "evidenceReferences": [
+            "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14/claims/7"
+          ]
+        },
+        {
+          "recipeId": "imp-f04b28987d7cd34a",
+          "path": "/steps/6/instruction",
+          "oldValue": "Lật mặt, nướng thêm 3–4 phút đến khi thịt cua đục, săn lại và dậy mùi thơm. Tuyệt đối không nướng quá lâu.",
+          "newValue": "Lật cua và tiếp tục nướng theo hướng dẫn sản phẩm. Dùng nhiệt kế thực phẩm sạch kiểm tra tâm phần thịt dày nhất của từng miếng, tránh chạm vỏ; bảo đảm đạt ít nhất 75°C và duy trì mức này ít nhất 1 phút trước khi dọn. Mốc 4 phút chỉ nhắc kiểm tra, không phải tổng thời gian bảo đảm chín.",
+          "reason": "Coordinate raw-to-cook handling and general MHLW measured endpoint; preserve timer values as inspection reminders. Product, quantity, yield, time, nutrition and independent safety acceptance remain unresolved.",
+          "evidenceReferences": [
+            "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14/claims/7"
+          ]
+        },
+        {
+          "recipeId": "imp-f04b28987d7cd34a",
+          "path": "/steps/6/tip",
+          "oldValue": "Iwamoto cảnh báo: nướng quá lâu thịt cua sẽ bị khô và dai. Với cua đã luộc sẵn (ボイル), chỉ cần nướng sơ làm nóng mặt ngoài là được.",
+          "newValue": "Mốc tâm 75°C ít nhất 1 phút dựa trên hướng dẫn nấu ăn gia đình của MHLW. Thịt đục và săn là dấu hiệu quan sát thêm; vẫn phải kiểm tra nhiệt độ tâm. Nếu chưa đạt, tiếp tục nướng và đo lại; không chỉ hâm mặt ngoài.",
+          "reason": "Coordinate raw-to-cook handling and general MHLW measured endpoint; preserve timer values as inspection reminders. Product, quantity, yield, time, nutrition and independent safety acceptance remain unresolved.",
+          "evidenceReferences": [
+            "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14/claims/7"
           ]
         }
       ],
@@ -49042,22 +49092,72 @@
         "edits": [
           {
             "recipeId": "imp-f04b28987d7cd34a",
+            "path": "/ingredients/0/note",
+            "oldValue": "Iwamoto (shop hải sản Karatsu) khuyên: nướng BBQ nên chọn cua hoàng đế (taraba) vì thịt to, dễ ăn; ai thích vị cua đậm đà hơn thì chọn cua tuyết (zuwai). Dùng loại sống (生) để nướng là thơm nhất; nếu có trẻ nhỏ, có thể dùng loại đã luộc sẵn (ボイル) cho nhanh và an toàn — khi đó chỉ nướng sơ làm nóng mặt ngoài, không nướng lâu.",
+            "newValue": "Chọn chân cua sống đông lạnh có nhãn yêu cầu nấu chín; kiểm tra trạng thái sản phẩm và hướng dẫn trên bao bì trước khi sơ chế. Công thức này dùng cua sống để nấu chín, không dùng nhánh chỉ hâm nóng cua đã luộc sẵn.",
+            "reason": "Coordinate raw-to-cook handling and general MHLW measured endpoint; preserve timer values as inspection reminders. Product, quantity, yield, time, nutrition and independent safety acceptance remain unresolved.",
+            "evidenceReferences": [
+              "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14/claims/7"
+            ]
+          },
+          {
+            "recipeId": "imp-f04b28987d7cd34a",
             "path": "/steps/0/instruction",
             "oldValue": "Rã đông cua: xả lớp băng phủ bên ngoài dưới vòi nước chảy 3–5 phút, sau đó bọc cua trong túi nilon và để ở nhiệt độ phòng 1–2 giờ cho rã đông hoàn toàn.",
-            "newValue": "Rã đông cua trong ngăn mát tủ lạnh, đặt trong khay hứng nước và theo hướng dẫn trên bao bì. Chỉ chuyển sang bước tiếp theo khi phần giữa đã rã đông hoàn toàn.",
-            "reason": "Replace the conflicting room-temperature thaw instructions with bounded FSA fridge/packaging/drip guidance. No duration invented; raw/pre-cooked identity remains unresolved.",
+            "newValue": "Rã đông cua trong ngăn mát tủ lạnh, đặt trong khay hứng nước và tuân theo mức rã đông cùng hướng dẫn nấu trên bao bì sản phẩm. Không để cua rã đông ở nhiệt độ phòng; sau khi rã đông theo hướng dẫn, chế biến ngay.",
+            "reason": "Retain fridge/drip/package controls; remove a universal full-thaw assertion contradicted by the product-specific half-thaw comparator. No selected SKU or thaw duration inferred.",
             "evidenceReferences": [
-              "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14/claims/5"
+              "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14/claims/8"
             ]
           },
           {
             "recipeId": "imp-f04b28987d7cd34a",
             "path": "/steps/0/tip",
             "oldValue": "Theo kênh ウオス (shop cua gửi trực tiếp): lớp băng grace bọc ngoài để chống khô đông — phải xả sạch dưới vòi nước trước khi rã đông; bọc túi nilon để cua không bị khô trong lúc rã đông.",
-            "newValue": "FSA khuyến nghị rã đông trong ngăn mát và ngăn nước rã đông chảy sang thực phẩm khác. Thời gian rã đông tùy sản phẩm; cần xác định cua sống hay đã luộc theo bao bì trước khi chọn cách nướng. Lớp băng bên ngoài tan không chứng minh phần giữa đã rã đông hoàn toàn.",
-            "reason": "Replace the conflicting room-temperature thaw instructions with bounded FSA fridge/packaging/drip guidance. No duration invented; raw/pre-cooked identity remains unresolved.",
+            "newValue": "Ngăn nước rã đông tiếp xúc với thực phẩm ăn ngay. Mức rã đông tùy sản phẩm; không mặc định mọi loại chân cua đều phải rã đông hoàn toàn hoặc dùng chung một thời gian rã đông.",
+            "reason": "Retain fridge/drip/package controls; remove a universal full-thaw assertion contradicted by the product-specific half-thaw comparator. No selected SKU or thaw duration inferred.",
             "evidenceReferences": [
-              "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14/claims/5"
+              "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14/claims/8"
+            ]
+          },
+          {
+            "recipeId": "imp-f04b28987d7cd34a",
+            "path": "/steps/4/tip",
+            "oldValue": "Iwamoto: cua sống hợp nướng chậm trên than (じっくりと焼く) để thịt chín từ từ, ngọt thịt.",
+            "newValue": "Chuẩn bị nhiệt kế thực phẩm để đo phần thịt dày nhất khi nướng; không lấy màu vỏ hoặc thời gian nướng làm bằng chứng thịt đã chín. Dùng dụng cụ sạch cho cua chín, không dùng lại dụng cụ vừa tiếp xúc cua sống khi chưa rửa sạch.",
+            "reason": "Coordinate raw-to-cook handling and general MHLW measured endpoint; preserve timer values as inspection reminders. Product, quantity, yield, time, nutrition and independent safety acceptance remain unresolved.",
+            "evidenceReferences": [
+              "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14/claims/7"
+            ]
+          },
+          {
+            "recipeId": "imp-f04b28987d7cd34a",
+            "path": "/steps/5/instruction",
+            "oldValue": "Xếp cua lên vỉ, nướng mặt vỏ trước khoảng 5 phút đến khi vỏ chuyển màu đỏ cam và hơi xém cạnh.",
+            "newValue": "Xếp cua lên vỉ, nướng mặt vỏ trước theo hướng dẫn nấu trên bao bì. Mốc 5 phút chỉ nhắc kiểm tra và trở mặt, không xác nhận cua đã chín; màu đỏ cam của vỏ không thay thế việc đo nhiệt độ tâm thịt.",
+            "reason": "Coordinate raw-to-cook handling and general MHLW measured endpoint; preserve timer values as inspection reminders. Product, quantity, yield, time, nutrition and independent safety acceptance remain unresolved.",
+            "evidenceReferences": [
+              "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14/claims/7"
+            ]
+          },
+          {
+            "recipeId": "imp-f04b28987d7cd34a",
+            "path": "/steps/6/instruction",
+            "oldValue": "Lật mặt, nướng thêm 3–4 phút đến khi thịt cua đục, săn lại và dậy mùi thơm. Tuyệt đối không nướng quá lâu.",
+            "newValue": "Lật cua và tiếp tục nướng theo hướng dẫn sản phẩm. Dùng nhiệt kế thực phẩm sạch kiểm tra tâm phần thịt dày nhất của từng miếng, tránh chạm vỏ; bảo đảm đạt ít nhất 75°C và duy trì mức này ít nhất 1 phút trước khi dọn. Mốc 4 phút chỉ nhắc kiểm tra, không phải tổng thời gian bảo đảm chín.",
+            "reason": "Coordinate raw-to-cook handling and general MHLW measured endpoint; preserve timer values as inspection reminders. Product, quantity, yield, time, nutrition and independent safety acceptance remain unresolved.",
+            "evidenceReferences": [
+              "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14/claims/7"
+            ]
+          },
+          {
+            "recipeId": "imp-f04b28987d7cd34a",
+            "path": "/steps/6/tip",
+            "oldValue": "Iwamoto cảnh báo: nướng quá lâu thịt cua sẽ bị khô và dai. Với cua đã luộc sẵn (ボイル), chỉ cần nướng sơ làm nóng mặt ngoài là được.",
+            "newValue": "Mốc tâm 75°C ít nhất 1 phút dựa trên hướng dẫn nấu ăn gia đình của MHLW. Thịt đục và săn là dấu hiệu quan sát thêm; vẫn phải kiểm tra nhiệt độ tâm. Nếu chưa đạt, tiếp tục nướng và đo lại; không chỉ hâm mặt ngoài.",
+            "reason": "Coordinate raw-to-cook handling and general MHLW measured endpoint; preserve timer values as inspection reminders. Product, quantity, yield, time, nutrition and independent safety acceptance remain unresolved.",
+            "evidenceReferences": [
+              "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14/claims/7"
             ]
           }
         ],
@@ -49075,12 +49175,26 @@
         "v2ToCandidate": [
           {
             "recipeId": "imp-f04b28987d7cd34a",
+            "path": "/ingredients/0/note",
+            "oldValue": "Iwamoto (shop hải sản Karatsu) khuyên: nướng BBQ nên chọn cua hoàng đế (taraba) vì thịt to, dễ ăn; ai thích vị cua đậm đà hơn thì chọn cua tuyết (zuwai). Dùng loại sống (生) để nướng là thơm nhất; nếu có trẻ nhỏ, có thể dùng loại đã luộc sẵn (ボイル) cho nhanh và an toàn — khi đó chỉ nướng sơ làm nóng mặt ngoài, không nướng lâu.",
+            "newValue": "Chọn chân cua sống đông lạnh có nhãn yêu cầu nấu chín; kiểm tra trạng thái sản phẩm và hướng dẫn trên bao bì trước khi sơ chế. Công thức này dùng cua sống để nấu chín, không dùng nhánh chỉ hâm nóng cua đã luộc sẵn.",
+            "reason": "Coordinate raw-to-cook handling and general MHLW measured endpoint; preserve timer values as inspection reminders. Product, quantity, yield, time, nutrition and independent safety acceptance remain unresolved.",
+            "evidenceReferences": [
+              "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14/claims/7"
+            ],
+            "impactedConsumers": [
+              "recipe editorial content on future promotion"
+            ],
+            "reviewStatus": "NEEDS_REVIEW"
+          },
+          {
+            "recipeId": "imp-f04b28987d7cd34a",
             "path": "/steps/0/instruction",
             "oldValue": "Rã đông cua: xả lớp băng phủ bên ngoài dưới vòi nước chảy 3–5 phút, sau đó bọc cua trong túi nilon và để ở nhiệt độ phòng 1–2 giờ cho rã đông hoàn toàn.",
-            "newValue": "Rã đông cua trong ngăn mát tủ lạnh, đặt trong khay hứng nước và theo hướng dẫn trên bao bì. Chỉ chuyển sang bước tiếp theo khi phần giữa đã rã đông hoàn toàn.",
-            "reason": "Replace the conflicting room-temperature thaw instructions with bounded FSA fridge/packaging/drip guidance. No duration invented; raw/pre-cooked identity remains unresolved.",
+            "newValue": "Rã đông cua trong ngăn mát tủ lạnh, đặt trong khay hứng nước và tuân theo mức rã đông cùng hướng dẫn nấu trên bao bì sản phẩm. Không để cua rã đông ở nhiệt độ phòng; sau khi rã đông theo hướng dẫn, chế biến ngay.",
+            "reason": "Retain fridge/drip/package controls; remove a universal full-thaw assertion contradicted by the product-specific half-thaw comparator. No selected SKU or thaw duration inferred.",
             "evidenceReferences": [
-              "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14/claims/5"
+              "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14/claims/8"
             ],
             "impactedConsumers": [
               "recipe editorial content on future promotion"
@@ -49091,10 +49205,66 @@
             "recipeId": "imp-f04b28987d7cd34a",
             "path": "/steps/0/tip",
             "oldValue": "Theo kênh ウオス (shop cua gửi trực tiếp): lớp băng grace bọc ngoài để chống khô đông — phải xả sạch dưới vòi nước trước khi rã đông; bọc túi nilon để cua không bị khô trong lúc rã đông.",
-            "newValue": "FSA khuyến nghị rã đông trong ngăn mát và ngăn nước rã đông chảy sang thực phẩm khác. Thời gian rã đông tùy sản phẩm; cần xác định cua sống hay đã luộc theo bao bì trước khi chọn cách nướng. Lớp băng bên ngoài tan không chứng minh phần giữa đã rã đông hoàn toàn.",
-            "reason": "Replace the conflicting room-temperature thaw instructions with bounded FSA fridge/packaging/drip guidance. No duration invented; raw/pre-cooked identity remains unresolved.",
+            "newValue": "Ngăn nước rã đông tiếp xúc với thực phẩm ăn ngay. Mức rã đông tùy sản phẩm; không mặc định mọi loại chân cua đều phải rã đông hoàn toàn hoặc dùng chung một thời gian rã đông.",
+            "reason": "Retain fridge/drip/package controls; remove a universal full-thaw assertion contradicted by the product-specific half-thaw comparator. No selected SKU or thaw duration inferred.",
             "evidenceReferences": [
-              "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14/claims/5"
+              "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14/claims/8"
+            ],
+            "impactedConsumers": [
+              "recipe editorial content on future promotion"
+            ],
+            "reviewStatus": "NEEDS_REVIEW"
+          },
+          {
+            "recipeId": "imp-f04b28987d7cd34a",
+            "path": "/steps/4/tip",
+            "oldValue": "Iwamoto: cua sống hợp nướng chậm trên than (じっくりと焼く) để thịt chín từ từ, ngọt thịt.",
+            "newValue": "Chuẩn bị nhiệt kế thực phẩm để đo phần thịt dày nhất khi nướng; không lấy màu vỏ hoặc thời gian nướng làm bằng chứng thịt đã chín. Dùng dụng cụ sạch cho cua chín, không dùng lại dụng cụ vừa tiếp xúc cua sống khi chưa rửa sạch.",
+            "reason": "Coordinate raw-to-cook handling and general MHLW measured endpoint; preserve timer values as inspection reminders. Product, quantity, yield, time, nutrition and independent safety acceptance remain unresolved.",
+            "evidenceReferences": [
+              "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14/claims/7"
+            ],
+            "impactedConsumers": [
+              "recipe editorial content on future promotion"
+            ],
+            "reviewStatus": "NEEDS_REVIEW"
+          },
+          {
+            "recipeId": "imp-f04b28987d7cd34a",
+            "path": "/steps/5/instruction",
+            "oldValue": "Xếp cua lên vỉ, nướng mặt vỏ trước khoảng 5 phút đến khi vỏ chuyển màu đỏ cam và hơi xém cạnh.",
+            "newValue": "Xếp cua lên vỉ, nướng mặt vỏ trước theo hướng dẫn nấu trên bao bì. Mốc 5 phút chỉ nhắc kiểm tra và trở mặt, không xác nhận cua đã chín; màu đỏ cam của vỏ không thay thế việc đo nhiệt độ tâm thịt.",
+            "reason": "Coordinate raw-to-cook handling and general MHLW measured endpoint; preserve timer values as inspection reminders. Product, quantity, yield, time, nutrition and independent safety acceptance remain unresolved.",
+            "evidenceReferences": [
+              "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14/claims/7"
+            ],
+            "impactedConsumers": [
+              "recipe editorial content on future promotion"
+            ],
+            "reviewStatus": "NEEDS_REVIEW"
+          },
+          {
+            "recipeId": "imp-f04b28987d7cd34a",
+            "path": "/steps/6/instruction",
+            "oldValue": "Lật mặt, nướng thêm 3–4 phút đến khi thịt cua đục, săn lại và dậy mùi thơm. Tuyệt đối không nướng quá lâu.",
+            "newValue": "Lật cua và tiếp tục nướng theo hướng dẫn sản phẩm. Dùng nhiệt kế thực phẩm sạch kiểm tra tâm phần thịt dày nhất của từng miếng, tránh chạm vỏ; bảo đảm đạt ít nhất 75°C và duy trì mức này ít nhất 1 phút trước khi dọn. Mốc 4 phút chỉ nhắc kiểm tra, không phải tổng thời gian bảo đảm chín.",
+            "reason": "Coordinate raw-to-cook handling and general MHLW measured endpoint; preserve timer values as inspection reminders. Product, quantity, yield, time, nutrition and independent safety acceptance remain unresolved.",
+            "evidenceReferences": [
+              "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14/claims/7"
+            ],
+            "impactedConsumers": [
+              "recipe editorial content on future promotion"
+            ],
+            "reviewStatus": "NEEDS_REVIEW"
+          },
+          {
+            "recipeId": "imp-f04b28987d7cd34a",
+            "path": "/steps/6/tip",
+            "oldValue": "Iwamoto cảnh báo: nướng quá lâu thịt cua sẽ bị khô và dai. Với cua đã luộc sẵn (ボイル), chỉ cần nướng sơ làm nóng mặt ngoài là được.",
+            "newValue": "Mốc tâm 75°C ít nhất 1 phút dựa trên hướng dẫn nấu ăn gia đình của MHLW. Thịt đục và săn là dấu hiệu quan sát thêm; vẫn phải kiểm tra nhiệt độ tâm. Nếu chưa đạt, tiếp tục nướng và đo lại; không chỉ hâm mặt ngoài.",
+            "reason": "Coordinate raw-to-cook handling and general MHLW measured endpoint; preserve timer values as inspection reminders. Product, quantity, yield, time, nutrition and independent safety acceptance remain unresolved.",
+            "evidenceReferences": [
+              "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/14/claims/7"
             ],
             "impactedConsumers": [
               "recipe editorial content on future promotion"
@@ -49123,6 +49293,8 @@
         "RESEARCH:supp03-source-access-limit",
         "RESEARCH:supp06-safety-review",
         "RESEARCH:supp07-safety-review",
+        "RESEARCH:supp08-package-governed-thaw-proposal",
+        "RESEARCH:supp08-raw-crab-cooking-proposal",
         "RUNTIME_PROJECTION_LOSS",
         "SOURCE_CONTENT_UNVERIFIED",
         "UNSUPPORTED_OR_QUALITATIVE_RUNTIME_QUANTITY",
