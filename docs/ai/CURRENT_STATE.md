@@ -1,3 +1,22 @@
+## Frame synchronization and protected integration - 2026-10-31 JST
+
+Branch codex/recipe-v3-frame-check; parent9c7322eb030284f419f7d79cbd94bcbe51485534.
+Production NOT_READY; existing release/browser authorization persists.
+PR33-39 merged; main14e1a678d8ed8671c6567b13b60381980a170ab2. PR40 exact
+9123af08358bb295f675ab17cf1828a1e50319e8 approved; required CI still running.
+Parent full pnpm check FAIL exit1:435/436files,9763/9764tests; shell action
+removal expected0px/received84px. Typecheck/lint passed; later gates not reached.
+Log /private/tmp/takolio-v3-recovery-full-check.log; .exit=1. Isolated3/3passed.
+The 40ms wall-clock wait did not guarantee the MutationObserver-scheduled frame.
+Test now flushes that microtask then advances a mocked animation frame; assertions
+and runtime unchanged. Node24/TMPDIR=/private/tmp/CI=1 focused Vitest3/3PASS,1.09s.
+Full new-source validation pending. No test retry/skip/assertion removal.
+Next: validate this narrow test correction; continue exact-HEAD protected PR
+integration, four data gates, actual safety/review evidence, approved publication
+and same-source hosted certification. No deployment or remote migration occurred.
+
+---
+
 ## Protected integration and compatible recovery - 2026-10-31 JST
 
 Branch codex/recipe-v3-recovery-tips; parent00f9bc49022d081015b03d6ea365d3c8df99d4c4.
