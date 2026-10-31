@@ -1,3 +1,20 @@
+## Recipe V3 review-record validation - 2026-10-31 JST
+
+Status: RECIPE_V3_BLOCKED / production NOT_READY. Owner deployment permission
+persists; reported professional approval awaits the actual reviewer/decision
+record. ADR-079 adds offline, version-bound review-record validation; no approval
+or safety disposition is generated. Full gate PASS436files/9749tests,exit0;
+focused32tests PASS;types,lint,migration replay and all builds PASS.
+Exact commands, results and limits: docs/ai/HANDOFF.md, latest checkpoint.
+
+Next: reconcile genuine decisions, then close ingredient/projection/source/
+nutrition and approved-publication gates. Independent GitHub review, exact-main
+CI and same-source hosted staging/catalog/recovery remain required. Existing
+production remains b49f3e6c, D1/500recipes, readiness degraded (email unverified).
+No merge, remote migration, flag change or deployment. Earlier records follow.
+
+---
+
 ## Recipe V3 owner review follow-up - 2026-10-31 JST
 
 Production NOT_READY; owner deployment authorization remains valid. The user

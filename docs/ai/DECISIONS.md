@@ -3962,6 +3962,29 @@ and replay preservation, changed-pin review with stale command rejection, privat
 client server/offline cache, existing shopping race/tenancy/quantity regressions.
 Hosted same-source recovery and approved V3 publication remain separate gates.
 
+## ADR-079 - Offline validation of version-bound review records
+
+Date: 2026-10-31 JST. Status: accepted local tooling; publication remains blocked.
+
+Problem: the owner reports professional review complete, but the queue has no
+machine-checkable decision record. Historical research packets remain immutable
+and cannot be rewritten as human approvals.
+
+Decision: accept a separate review JSON file bound to the exact candidate-file
+SHA256 and per-recipe content fingerprint. Require reviewer identity, UTC decision
+time, a hashed local decision record, and evidence/rationale for every required
+review action. Reject duplicate/unknown recipes, stale identities, missing actions,
+future timestamps, changed/missing evidence and evidence paths escaping the repo.
+An APPROVE decision cannot leave an action OPEN. Partial records remain useful;
+the CLI exits nonzero until all 500 approval decisions are recorded.
+
+This validates record integrity and completeness, not reviewer identity,
+independence, expertise, claim correctness or evidence sufficiency. Those require
+independent review of the actual records. No human approval is generated; no
+candidate, historical packet, release gate, runtime authority or database changes.
+The four existing data gates and protected deployment procedure remain required.
+Rollback is removal of this offline tool; no migrations or user-data effects.
+
 ---
 
 ---

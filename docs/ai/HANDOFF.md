@@ -1,3 +1,68 @@
+## Recipe V3 review-record validation - 2026-10-31 JST
+
+Status: RECIPE_V3_BLOCKED / production NOT_READY; owner deployment permission
+persists. Workspace Takolio-recipe-v3; branch codex/recipe-v3-review-records;
+base55ff5264e094ecdb4863fc1532df0d06a470e1dd. Resolve final HEAD from Git.
+ADR-079 adds scripts/recipe-intelligence-v3-review.mjs and one focused test file.
+The CLI checks supplied review records against the candidate artifact, per-recipe
+content, risk-action coverage and hashed local evidence; no candidate/runtime/
+release authority or actual human decisions change. Integrity checks cannot
+certify identity, expertise, independence, food safety or publication. The owner
+reported review complete; reviewer identity and actual decisions remain missing.
+
+Executed from this workspace, PATH=/opt/homebrew/opt/node@24/bin:$PATH
+TMPDIR=/private/tmp CI=1:
+- `pnpm test tests/unit/recipe-intelligence-v3-review.test.mjs`: PASS32/32,1.02s;
+  /private/tmp/takolio-v3-review-focused-check.log and .exit=0.
+- `pnpm check`: PASS exit0,436files/9749tests,1007.36s Vitest duration;
+  typecheck,lint,Main/Admin migration replay and Web/Admin/Worker builds PASS;
+  /private/tmp/takolio-v3-review-full-check.log and .exit=0. Remote schema/Week
+  gates explicitly skipped. Existing Admin font-resolution warnings retained;
+  emitted font files present. Intentional error-boundary test stderr retained.
+- `node scripts/recipe-intelligence-v3-audit.mjs --check`: PASS500/44/25;
+  /private/tmp/takolio-v3-review-candidate-audit.log and .exit=0.
+- `pnpm recipe:refresh:release-check`: FAIL exit1,RUNTIME_PROJECTION_LOSS,
+  INGREDIENT_RECONCILIATION_INCOMPLETE,SOURCE_CONTENT_VERIFICATION_INCOMPLETE,
+  NUTRITION_EVIDENCE_INCOMPLETE; /private/tmp/takolio-v3-review-release-check.log.
+- `pnpm audit --audit-level high --json`: PASS438dependencies/0vulnerabilities;
+  /private/tmp/takolio-v3-review-dependency-audit.json and .exit=0.
+- `node scripts/recipe-intelligence-v3-review.mjs /private/tmp/takolio-v3-review-empty.json`:
+  expected exit1,formatValid=true,0decisions/500,runtimePromotionAllowed=false;
+  /private/tmp/takolio-v3-review-empty-check.json.
+- `node scripts/admin-release-preflight.mjs`: PASS configuration validation;
+  source manifest5c26ea3737aedc803d5da0e31fffad5463e54211eeb1e03d0496acaa6d2dd449;
+  baselinea1e706c7,dirty checkout,readyForDeployment=false,remoteExecuted=false.
+- `EXPECTED_RECIPE_CATALOG_MODE=d1 bash scripts/post-deploy-smoke.sh https://takolio.app b49f3e6c4fc2f1485b77623ed7257d0f8bd31f9a`:
+  PASS exit0; /private/tmp/takolio-v3-review-production-smoke.log and .exit=0.
+  Existing production only: exact service-worker release observed three times;
+  D1/500recipes/rel-bd00a4f53fcaeee4,no fallback,DB/queue ok. Readiness degraded:
+  email delivery unverified. No V3 deployment or remote DB verification inferred.
+- `git diff --check`, `python3 scripts/admin-public-scan.py`,
+  `python3 /private/tmp/takolio-v3-review-scope-check.py`: PASS; public scan checks
+  added text only; candidate SHA256 and historical document bytes unchanged.
+
+GitHub: main remains b49f3e6c; PR51 exactae68f7e5 approved by vn-taphoanhatung,
+unchanged. PR33-50/52 lack submitted independent approval at this observation.
+PR52 exact55ff5264 Recipe41100766616 SUCCESS; Admin41100766642 IN_PROGRESS.
+Final review-tool branch needs its own exact-head hosted checks/review.
+Main strict validate/validate-admin,independent last-push/stale review/admin
+protection and production Environment reviewer/prevent_self_review stay intact.
+
+Blockers:1395provisional IDs/4233lines,2996exclusions/2860transformations,
+288blocked nutrition profiles,source verification,six safety decisions; actual
+review records0/500 despite the owner's reported completion. Approved publication
+and same-source hosted staging/catalog/recovery remain open. Cooking/saved V1/
+composition/shopping pins and local PWA/recovery checks already exist (ADR075-078).
+Apply0046/0047 before Worker; after saved pins retain a certified same-source
+version-aware Worker/client with paired flags OFF for recovery.
+
+Next: record real reviewer decisions/evidence using the documented format;
+resolve data/publication,independent stack review and exact-main hosted release
+prerequisites. No merge,remote migration,flag change or deployment. No repeat
+request for owner deployment permission. Earlier records follow unchanged.
+
+---
+
 ## Recipe V3 owner review follow-up - 2026-10-31 JST
 
 Production NOT_READY; owner deployment authorization remains valid. The user

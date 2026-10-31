@@ -1,5 +1,31 @@
 PROGRAM: TAKOLIO_RECIPE_INTELLIGENCE_V3
 REPOSITORY: hello-tako/Takolio
+BASE_SHA: 55ff5264e094ecdb4863fc1532df0d06a470e1dd
+WORKING_BRANCH: codex/recipe-v3-review-records
+CURRENT_HEAD: resolve final checkpoint from Git
+PHASE: version-bound offline review-record validation (ADR-079)
+STATUS: RECIPE_V3_BLOCKED; production NOT_READY
+RECIPES_TOTAL: 500
+RECIPES_AUDITED: 500; candidate unchanged
+RECIPES_HUMAN_APPROVED: owner reports completed review; actual decision records0
+INGREDIENT_IDENTITIES_PENDING: 1395provisional IDs/4233lines
+SOURCE_CONTENT_VERIFIED: bounded claims only; whole-recipe approval incomplete
+NUTRITION_EVIDENCE_COMPLETE: 1inherited/288blocked/211NULL
+TEST_RESULTS: full gate436files/9749tests PASS,exit0;focused32/32 PASS;
+  types,lint,migration replay/builds PASS;exact commands docs/ai/HANDOFF.md
+CURRENT_BLOCKERS: four data gates; six safety decisions; actual review records;
+  approved publication; independent GitHub review; exact-main hosted certification
+PRODUCTION_MUTATIONS: 0
+NEXT_ACTION: reconcile actual decisions; close data/publication and hosted gates
+
+Existing production smoke PASS b49f3e6c,d1/500recipes; email delivery unverified.
+No new deployment. Owner authorization persists; PR51 approved HEAD unchanged.
+Earlier checkpoints follow unchanged.
+
+---
+
+PROGRAM: TAKOLIO_RECIPE_INTELLIGENCE_V3
+REPOSITORY: hello-tako/Takolio
 BASE_SHA: ae68f7e5a4bc987155aaeed577f07f95b893359b
 WORKING_BRANCH: codex/recipe-v3-browser-certification
 CURRENT_HEAD: resolve final validation/docs commit from Git; approved parent above
