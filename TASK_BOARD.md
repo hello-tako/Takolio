@@ -1,3 +1,45 @@
+## Protected integration and compatible recovery - 2026-10-31 JST
+
+Branch codex/recipe-v3-recovery-tips; parent00f9bc49022d081015b03d6ea365d3c8df99d4c4.
+Production NOT_READY. Existing owner release/browser authorization persists.
+PR33-38 merged normally; PR39 exact0a5bf4b9298a86d6617dd7e4fb5af7a00ba529ea
+has disclosed Codex AI technical approval5720843264 via vn-taphoanhatung.
+CI41163720781/Admin41163720792 still IN_PROGRESS at03:30UTC; no merge yet.
+Main readback72e7a709066cefe2cf69f130834e95d3f491ec8b. PR40-55 remain stacked.
+
+Release-tool correction propagated normally through PR53/54/55 to1486d73b,
+8e647758,00f9bc49. Only executable propagated delta is the independently verified
+0046 D1 matrix coverage; immutable0047 baseline and saved-pin checks retained.
+Aggregate clean preflight PASS exit0 on00f9bc49, source manifestSHA256
+1cb8549919217fce42b12129ef505bb4662544ba46d08a59f71bd69329dcd607,
+baselinea1e706c7c870881d2e472ef7a1b211ac61bdd38c; readyForDeployment=false,
+remoteExecuted=false. Node24/TMPDIR=/private/tmp/CI=1 baseline suite25tests PASS,
+12.06s; public scan and diff check PASS. Logs: /private/tmp/takolio-pr55-integrated-
+preflight.log/.exit and baseline.log/.exit. Prior full9754test result remains
+historical; no new full result inferred from this tooling-only propagation.
+
+ADR-081 fixes a confirmed retained Deploy path: family recovery was selected only
+at0043, omitting the same-source flags-OFF version at0044-0047. Extend the exact
+reviewed-tip allowlist; unknown tips still reject. Domain Release already prepares
+compatible recovery unconditionally. No workflow/config/SQL/auth/payment/catalog
+change. Existing exact-SHA/D1/flags/asset checks and OTP precedence remain.
+Executed Node24/TMPDIR=/private/tmp/CI=1: pnpm exec vitest run
+ tests/unit/family-meal-release.test.mjs tests/unit/domain-compatible-recovery.test.mjs
+ tests/unit/strict-otp-release.test.mjs tests/unit/recipe-intelligence-v3-review.test.mjs
+PASS4files/100tests/3.12s; pnpm exec eslint scripts/family-meal-release.mjs
+ tests/unit/family-meal-release.test.mjs PASS; git diff --check PASS.
+Full check and new exact-head hosted validation remain pending at this record.
+
+Next: finish normal protected small-PR integration on exact approved passing
+HEADs; validate this release correction. Preserve four real data gates, six safety
+cases and0/500structured human approvals. Approved publication, same-source hosted
+staging/catalog/recovery and Environment release remain required. Candidate hash
+7c0b8b3840c4f72dd724737d2066946f04e07c8fe8631d5bc937d87c172466df unchanged.
+Apply0046then0047 before Worker; preserve pins/receipts/archive on recovery.
+No production deployment or remote migration occurred. Earlier records follow.
+
+---
+
 ## Beef identity quarantine and protected integration - 2026-10-31 JST
 
 Status: RECIPE_V3_BLOCKED / production NOT_READY. Owner deployment and browser
