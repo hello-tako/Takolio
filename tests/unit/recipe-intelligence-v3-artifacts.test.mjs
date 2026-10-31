@@ -6,6 +6,7 @@ import { beforeAll, describe, expect, it } from 'vitest';
 import { ALL_RECIPES } from '../../packages/recipes/src/data';
 import { compileImportBatch, importFormatForPath } from '../../packages/recipes/src/import';
 import { compileV3Candidate, V3EditsSchema } from '../../packages/recipes/src/intelligence-v3';
+import { runtimeIngredientFromSource } from '../../packages/recipes/src/refresh/compiler';
 
 const root = process.cwd();
 const readJson = (file) => JSON.parse(readFileSync(path.join(root, file), 'utf8'));
@@ -96,6 +97,34 @@ describe('V3 complete candidate artifacts', () => {
     expect(evidence.previousCandidateEdits).toHaveLength(2);
     expect(evidence.humanReview).toBe('PENDING');
     expect(evidence.nextAction).toMatch(/^FAIL_UNRESOLVED:/u);
+  });
+
+  it('quarantines all twelve contradictory beef identities without changing source facts', async () => {
+    const candidates = readJson('data/recipe-intelligence/v3/candidates.json');
+    const affected = candidates.recipes.filter((row) => row.edits.some((patch) => patch.path.endsWith('/canonicalIngredientId')));
+    const expected = new Map([
+      ['vn-xao-02', 0], ['vn-bun-04', 1], ['vn-lau-01', 2], ['imp-363ca9ee2c5f7738', 0],
+      ['imp-095cff5e61d32fd9', 0], ['imp-2862e7aa0ae0d8fe', 0], ['imp-30c2038c8737538c', 0],
+      ['imp-88fc351665d5e9fc', 0], ['imp-b7f8a716b25a7072', 0], ['imp-70e5e19dd4073b76', 0],
+      ['imp-3446b3924b05eb7b', 0], ['imp-4693d6520fbd9d49', 0],
+    ]);
+    expect(new Set(affected.map((row) => row.recipeId))).toEqual(new Set(expected.keys()));
+    for (const row of affected) {
+      const source = readJson(row.sourceReference);
+      const { content, metadata } = await compileV3Candidate(runtimeById.get(row.recipeId), source, row.edits);
+      const position = expected.get(row.recipeId);
+      const original = source.ingredients[position];
+      const line = content.ingredients[position];
+      expect(original).toMatchObject({ canonicalIngredientId: 'BEEF_SIRLOIN', reconciliation: 'existing_canonical_id', review: null });
+      expect(runtimeIngredientFromSource(original)).not.toBeNull();
+      expect(line).toMatchObject({ canonicalIngredientId: null, reconciliation: 'ambiguous', review: null });
+      expect(runtimeIngredientFromSource(line)).toBeNull();
+      expect({ ...line, canonicalIngredientId: original.canonicalIngredientId, reconciliation: original.reconciliation,
+        reconciliationReason: original.reconciliationReason, note: original.note }).toEqual(original);
+      expect(content.nutrition).toEqual(source.nutrition);
+      expect(metadata).toMatchObject({ compilerVersion: 2, state: 'NEEDS_REVIEW', humanApproved: false, runtimePromotionAllowed: false });
+      expect(metadata.runtimeExclusions.some((entry) => entry.position === position)).toBe(true);
+    }
   });
 
   it('resolves every edit evidence reference to its own recipe and real claim', () => {

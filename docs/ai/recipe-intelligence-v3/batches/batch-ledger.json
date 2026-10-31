@@ -1081,7 +1081,7 @@
             "v1": "1a85dfa42e8984d3147b8372c9f82c36ef68a4d59c7e3587d4d02e188c381610",
             "v2": "1f64a8ed2bd8c9a535ee8c3009d4d016de5044899d3cb9b05a6aa3144e5a2983"
           },
-          "candidateFingerprint": "1f64a8ed2bd8c9a535ee8c3009d4d016de5044899d3cb9b05a6aa3144e5a2983",
+          "candidateFingerprint": "b5cbaa70a401ff3b855949afb8db3256e884c76534ceb191b0e7e85061046d17",
           "sourceEvidence": {
             "urlAttempt": "data/recipe-intelligence/v3/research/source-scan.json#/recipes/13",
             "researchEvidence": "data/recipe-intelligence/v3/research/batch-02-evidence.json#/recipes/10"
@@ -1095,6 +1095,7 @@
             "NUTRITION_EVIDENCE_INSUFFICIENT",
             "QUANTITY_CONVERSION_UNVERIFIED",
             "RESEARCH:bounded-source-comparison",
+            "RESEARCH:internal-beef-identity-ambiguity",
             "RESEARCH:msg-source-total",
             "RUNTIME_PROJECTION_LOSS",
             "SOURCE_CONTENT_UNVERIFIED",
@@ -1813,7 +1814,7 @@
             "v1": "735d3ab9d2adfa134c835556f2bb44d1d1da84bc335dc41a697861e42a46e187",
             "v2": "27839fff79850d37d510bd32196de108ca08b7de715454e65d4dd4e97e333cde"
           },
-          "candidateFingerprint": "27839fff79850d37d510bd32196de108ca08b7de715454e65d4dd4e97e333cde",
+          "candidateFingerprint": "da06e96e05d69773bf74d89d89a9ad99722251d82f8f488615b3c0f4e491adcb",
           "sourceEvidence": {
             "urlAttempt": "data/recipe-intelligence/v3/research/source-scan.json#/recipes/39",
             "researchEvidence": "data/recipe-intelligence/v3/research/batch-03-evidence.json#/recipes/11"
@@ -1826,6 +1827,7 @@
             "INGREDIENT_STEP_REVIEW_REQUIRED",
             "QUANTITY_CONVERSION_UNVERIFIED",
             "RESEARCH:bounded-source-comparison",
+            "RESEARCH:internal-beef-identity-ambiguity",
             "RESEARCH:internal-v2-observation",
             "RUNTIME_PROJECTION_LOSS",
             "SOURCE_CONTENT_UNVERIFIED",
@@ -2265,7 +2267,7 @@
             "v1": "5887a011c5fff559f306b03020186e8f743c3e298bc5c3b0583eedfb5714c3ba",
             "v2": "7b4e7c4b835033a86147793d67ffecd7bfe8e8f963951348dcdd301833bd1fde"
           },
-          "candidateFingerprint": "7b4e7c4b835033a86147793d67ffecd7bfe8e8f963951348dcdd301833bd1fde",
+          "candidateFingerprint": "b8faceb82f2aae49f386598ff1348c364f9d65aa8a3a403ad2fc48666d0475b3",
           "sourceEvidence": {
             "urlAttempt": "data/recipe-intelligence/v3/research/source-scan.json#/recipes/54",
             "researchEvidence": "data/recipe-intelligence/v3/research/batch-04-evidence.json#/recipes/4"
@@ -2277,6 +2279,7 @@
             "INGREDIENT_ID_UNRESOLVED",
             "INGREDIENT_STEP_REVIEW_REQUIRED",
             "QUANTITY_CONVERSION_UNVERIFIED",
+            "RESEARCH:internal-beef-identity-ambiguity",
             "RUNTIME_PROJECTION_LOSS",
             "SOURCE_CONTENT_UNVERIFIED",
             "UNSUPPORTED_OR_QUALITATIVE_RUNTIME_QUANTITY",
@@ -4047,7 +4050,7 @@
             "v1": "811a8bc01032f7e9dc99cd268c7d13c210b27826cdc530f17cc46b70887108ad",
             "v2": "0f9db03ce965dc4486f34d6330d8128bffe5c009d5bb1dc1e10fa911c069ce70"
           },
-          "candidateFingerprint": "0f9db03ce965dc4486f34d6330d8128bffe5c009d5bb1dc1e10fa911c069ce70",
+          "candidateFingerprint": "d4a21f9e764b5f58363740677b65830efd28cca2932844043e3f33147c73c968",
           "sourceEvidence": {
             "urlAttempt": "data/recipe-intelligence/v3/research/source-scan.json#/recipes/112",
             "researchEvidence": "data/recipe-intelligence/v3/research/batch-06-evidence.json#/recipes/15"
@@ -4061,6 +4064,7 @@
             "QUANTITY_CONVERSION_UNVERIFIED",
             "RESEARCH:bounded-source-049b3a710b63e34b",
             "RESEARCH:bounded-source-8308d635af085adf",
+            "RESEARCH:internal-beef-identity-ambiguity",
             "RUNTIME_PROJECTION_LOSS",
             "SOURCE_CONTENT_UNVERIFIED",
             "UNSUPPORTED_OR_QUALITATIVE_RUNTIME_QUANTITY",
@@ -6559,7 +6563,7 @@
             "v1": "5418d5fba3d40c622e4d49122692e5cf3011d728b4834b210e2aa4519a426dd7",
             "v2": "8296f056c9a684eee72c1a1ede408519da7a175f46b173cbb69d44ec9c94bfe4"
           },
-          "candidateFingerprint": "8296f056c9a684eee72c1a1ede408519da7a175f46b173cbb69d44ec9c94bfe4",
+          "candidateFingerprint": "7338b6a2d7da49f91bccf30c22ace1f07410ded951d8bef19a3068b8b41816e2",
           "sourceEvidence": {
             "urlAttempt": "data/recipe-intelligence/v3/research/source-scan.json#/recipes/185",
             "researchEvidence": "data/recipe-intelligence/v3/research/batch-10-evidence.json#/recipes/7"
@@ -6573,6 +6577,7 @@
             "NUTRITION_EVIDENCE_INSUFFICIENT",
             "QUANTITY_CONVERSION_UNVERIFIED",
             "RESEARCH:bounded-source-270c0d052b4a5f8a",
+            "RESEARCH:internal-beef-identity-ambiguity",
             "RESEARCH:source-access-limit",
             "RUNTIME_PROJECTION_LOSS",
             "SOURCE_CONTENT_UNVERIFIED",
@@ -6803,7 +6808,7 @@
             "v1": "4b29a1524f7cebd8c0a66189f522dbe912863d87f727ed0ce71e3953dc2409ad",
             "v2": "633198010e9bb1111ae9f8957418f148870bb551bce6bb3955e8178d5deb6f35"
           },
-          "candidateFingerprint": "633198010e9bb1111ae9f8957418f148870bb551bce6bb3955e8178d5deb6f35",
+          "candidateFingerprint": "763296f2ceeec1253e13d44882df7d2df0b0a560437c1aef70cfa3712f4dcf2f",
           "sourceEvidence": {
             "urlAttempt": "data/recipe-intelligence/v3/research/source-scan.json#/recipes/192",
             "researchEvidence": "data/recipe-intelligence/v3/research/batch-10-evidence.json#/recipes/14"
@@ -6817,6 +6822,7 @@
             "NUTRITION_EVIDENCE_INSUFFICIENT",
             "QUANTITY_CONVERSION_UNVERIFIED",
             "RESEARCH:bounded-source-1b331dfd0f65064b",
+            "RESEARCH:internal-beef-identity-ambiguity",
             "RESEARCH:source-access-limit",
             "RUNTIME_PROJECTION_LOSS",
             "SOURCE_CONTENT_UNVERIFIED",
@@ -9494,7 +9500,7 @@
             "v1": "4fdc427f34464db0be098861e530e7a08442bccaf35ba137b46476a790b667f5",
             "v2": "c68839b6c7ef3e6ebe098176548419064940c6efef45a40eb5add36c87832dea"
           },
-          "candidateFingerprint": "c68839b6c7ef3e6ebe098176548419064940c6efef45a40eb5add36c87832dea",
+          "candidateFingerprint": "0cdb33e5ff90e5a5f6f03fc81ab9f70ff5b3b361b7ea5b05f36d6dc639151cff",
           "sourceEvidence": {
             "urlAttempt": "data/recipe-intelligence/v3/research/source-scan.json#/recipes/269",
             "researchEvidence": "data/recipe-intelligence/v3/research/batch-14-evidence.json#/recipes/11"
@@ -9507,6 +9513,7 @@
             "INGREDIENT_STEP_REVIEW_REQUIRED",
             "NUTRITION_EVIDENCE_INSUFFICIENT",
             "QUANTITY_CONVERSION_UNVERIFIED",
+            "RESEARCH:internal-beef-identity-ambiguity",
             "RESEARCH:source-access-limit",
             "RESEARCH:supp03-source-access-limit",
             "RESEARCH:supp04-source-access-limit",
@@ -11440,7 +11447,7 @@
             "v1": "0681740ed677c4c52d48b53b3a74bcc243c6f2cf387958c6a10a544098c5325a",
             "v2": "a524d3fd6ad6836ea927b2c3e692e48d97b24e98a543f5547b68ddd2a541a38b"
           },
-          "candidateFingerprint": "a524d3fd6ad6836ea927b2c3e692e48d97b24e98a543f5547b68ddd2a541a38b",
+          "candidateFingerprint": "79fe68abd06eebbf1e71935afb9558d7cac8dd56fc7b8582ae53d6ce6714053c",
           "sourceEvidence": {
             "urlAttempt": "data/recipe-intelligence/v3/research/source-scan.json#/recipes/324",
             "researchEvidence": "data/recipe-intelligence/v3/research/batch-17-evidence.json#/recipes/6"
@@ -11454,6 +11461,7 @@
             "NUTRITION_EVIDENCE_INSUFFICIENT",
             "QUANTITY_CONVERSION_UNVERIFIED",
             "RESEARCH:bounded-source-ingredient-fact",
+            "RESEARCH:internal-beef-identity-ambiguity",
             "RESEARCH:internal-v2-observation",
             "RUNTIME_PROJECTION_LOSS",
             "SOURCE_CONTENT_UNVERIFIED",
@@ -13662,7 +13670,7 @@
             "v1": "a207f5ce8da258b35500e50cc35a96de258c9ff7a444dc15461f574d8aea5584",
             "v2": "a6ec4ce348fb45b93c6165132e51b9c9d95b9c41ca7c12f9774b2076b68c2ef2"
           },
-          "candidateFingerprint": "a6ec4ce348fb45b93c6165132e51b9c9d95b9c41ca7c12f9774b2076b68c2ef2",
+          "candidateFingerprint": "43c72c410b0c3ab4b2c6abc708f01eedc6f3c9c6a23d969d0c13564037211016",
           "sourceEvidence": {
             "urlAttempt": "data/recipe-intelligence/v3/research/source-scan.json#/recipes/387",
             "researchEvidence": "data/recipe-intelligence/v3/research/batch-20-evidence.json#/recipes/9"
@@ -13676,6 +13684,7 @@
             "NUTRITION_EVIDENCE_INSUFFICIENT",
             "QUANTITY_CONVERSION_UNVERIFIED",
             "RESEARCH:bounded-source-ingredient-fact",
+            "RESEARCH:internal-beef-identity-ambiguity",
             "RESEARCH:internal-v2-observation",
             "RUNTIME_PROJECTION_LOSS",
             "SOURCE_CONTENT_UNVERIFIED",
@@ -14759,7 +14768,7 @@
             "v1": "f0c8e44319054a22ff7b938436fe8c2c823d84c5de1f0c8a8e13dd17ca84b3fa",
             "v2": "c61a7ad7a94cff8de9140bd80110b1e0735e363781913786db03820fb0ec221b"
           },
-          "candidateFingerprint": "c61a7ad7a94cff8de9140bd80110b1e0735e363781913786db03820fb0ec221b",
+          "candidateFingerprint": "6a35b973d43d7b7b6fc65e4eedf2797857fad4698535ea1d9d3be9e6e0002580",
           "sourceEvidence": {
             "urlAttempt": "data/recipe-intelligence/v3/research/source-scan.json#/recipes/419",
             "researchEvidence": "data/recipe-intelligence/v3/research/batch-22-evidence.json#/recipes/0"
@@ -14773,6 +14782,7 @@
             "NUTRITION_EVIDENCE_INSUFFICIENT",
             "QUANTITY_CONVERSION_UNVERIFIED",
             "RESEARCH:bounded-source-ingredient-fact",
+            "RESEARCH:internal-beef-identity-ambiguity",
             "RESEARCH:internal-v2-observation",
             "RESEARCH:source-access-limit",
             "RUNTIME_PROJECTION_LOSS",
@@ -14866,7 +14876,7 @@
             "v1": "2b1e7396c579f834f1a98131aedcb6f2f0ba74279811c4985de42fbcf00971cb",
             "v2": "06b4723ac00e3b2c9f9bb3a6d40a5c1b1dfd208fef7ded896217e5c78c99719a"
           },
-          "candidateFingerprint": "06b4723ac00e3b2c9f9bb3a6d40a5c1b1dfd208fef7ded896217e5c78c99719a",
+          "candidateFingerprint": "9295c628972c236b50c7331aef50d288933a17e3570eb81080461270a9d63ebd",
           "sourceEvidence": {
             "urlAttempt": "data/recipe-intelligence/v3/research/source-scan.json#/recipes/422",
             "researchEvidence": "data/recipe-intelligence/v3/research/batch-22-evidence.json#/recipes/3"
@@ -14879,6 +14889,7 @@
             "INGREDIENT_STEP_REVIEW_REQUIRED",
             "NUTRITION_EVIDENCE_INSUFFICIENT",
             "QUANTITY_CONVERSION_UNVERIFIED",
+            "RESEARCH:internal-beef-identity-ambiguity",
             "RESEARCH:internal-v2-observation",
             "RESEARCH:source-access-limit",
             "RESEARCH:supp03-source-access-limit",
@@ -15673,7 +15684,7 @@
             "v1": "d3246314df455b2fe3881b84a3a5d018606c4af4dc98a1130c2659daa6ceda20",
             "v2": "dcd9e8920301dd222c8bd14ab790f81b59c65615fe26e914c604fa1ecea36cc1"
           },
-          "candidateFingerprint": "dcd9e8920301dd222c8bd14ab790f81b59c65615fe26e914c604fa1ecea36cc1",
+          "candidateFingerprint": "06fc9805db55dd7791c0937d363aa4693f3e89fee9c7e01d8550ea22490b9c63",
           "sourceEvidence": {
             "urlAttempt": "data/recipe-intelligence/v3/research/source-scan.json#/recipes/446",
             "researchEvidence": "data/recipe-intelligence/v3/research/batch-23-evidence.json#/recipes/6"
@@ -15687,6 +15698,7 @@
             "NUTRITION_EVIDENCE_INSUFFICIENT",
             "QUANTITY_CONVERSION_UNVERIFIED",
             "RESEARCH:bounded-source-ingredient-fact",
+            "RESEARCH:internal-beef-identity-ambiguity",
             "RESEARCH:internal-v2-observation",
             "RESEARCH:source-access-limit",
             "RUNTIME_PROJECTION_LOSS",

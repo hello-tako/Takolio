@@ -36,7 +36,7 @@ const ReviewRecord = z.object({
 }).strict();
 const CandidateArtifact = z.object({
   schemaVersion: z.literal(3),
-  compilerVersion: z.literal(1),
+  compilerVersion: z.union([z.literal(1), z.literal(2)]),
   program: z.literal('TAKOLIO_RECIPE_INTELLIGENCE_V3'),
   runtimePromotionAllowed: z.literal(false),
   recipes: z.array(z.object({

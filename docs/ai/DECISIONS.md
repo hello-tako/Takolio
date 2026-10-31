@@ -3985,6 +3985,36 @@ candidate, historical packet, release gate, runtime authority or database change
 The four existing data gates and protected deployment procedure remain required.
 Rollback is removal of this offline tool; no migrations or user-data effects.
 
+## ADR-080 - Quarantine contradictory ingredient identities in V3 candidates
+
+Date: 2026-10-31 JST. Status: accepted candidate-only implementation scope;
+independent technical review and all publication gates remain required.
+
+The shared BEEF_SIRLOIN entry combines generic Vietnamese beef, an English
+sirloin label and a shank alias. Twelve V2 lines use this ID for differing or
+unspecified cuts. Existing-canonical status therefore overstates identity
+certainty. The source names and registry bytes are sufficient evidence of that
+contradiction, not evidence for twelve replacement identities.
+
+Extend compiler version2 only to coordinated identity demotion: clear an existing
+non-null canonicalIngredientId, mark reconciliation ambiguous, and replace its
+reason. Require all three exact old/new edits together, a source with no review
+claim, and the existing recipe-specific evidence references. Reject assignment of
+any replacement ID, promotion, incomplete demotion or unrelated structural edits.
+Keep source names, quantities, roles, nutrition, positions and steps intact.
+The immutable V2 file retains the original ID and exact reconstruction witness.
+
+Candidates remain NEEDS_REVIEW with no runtime authority. A demoted line cannot
+project through runtimeIngredientFromSource; catalog assertions and release gates
+continue to block unresolved identities. No source registry, V1/V2, public API,
+consumer, SQL or production change. Compiler version metadata advances for all
+500 candidates; only the twelve identified content records change.
+
+Validation requires rejection tests for partial demotion, ID substitution and
+promotion; exact reversal to V2; all500 recompilations; unchanged quantities,
+roles/nutrition and488 unaffected payloads; preserved runtime fingerprint.
+Rollback is reverting the candidate/tooling slice, with no user-data effect.
+
 ---
 
 ---

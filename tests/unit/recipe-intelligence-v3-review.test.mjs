@@ -27,6 +27,19 @@ const check = (value) => checkV3ReviewRecord(value, root, Date.parse('2026-10-30
 afterAll(() => rmSync(root, { recursive: true }));
 
 describe('offline V3 review records', () => {
+  it('accepts compiler versions 1 and 2 with exact artifact binding, rejecting unknown versions', () => {
+    const file = path.join(root, candidatePath);
+    const before = readFileSync(file);
+    try {
+      for (const compilerVersion of [1, 2]) {
+        writeFileSync(file, JSON.stringify({ ...candidates, compilerVersion }));
+        expect(check(record())).toMatchObject({ formatValid: true, completeReviewRecorded: false, runtimePromotionAllowed: false });
+      }
+      writeFileSync(file, JSON.stringify({ ...candidates, compilerVersion: 3 }));
+      expect(() => check(record())).toThrow();
+    } finally { writeFileSync(file, before); }
+  });
+
   it('binds partial decisions without promoting or claiming complete approval', () => {
     const before = readFileSync(path.join(root, candidatePath));
     expect(check(record())).toEqual({ formatValid: true, recipesTotal: 500, decisionsRecorded: 1, approvedDecisionsRecorded: 1,

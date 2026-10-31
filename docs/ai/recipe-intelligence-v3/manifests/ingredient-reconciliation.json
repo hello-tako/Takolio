@@ -7,7 +7,7 @@
     "existing_canonical_id": 505,
     "provisional_new_canonical_id": 1642
   },
-  "ingredientConceptCount": 1438,
+  "ingredientConceptCount": 1443,
   "distinctProvisionalIngredientIds": 1395,
   "provisionalReconciliationRows": 1642,
   "promotionAllowed": false,
@@ -57,39 +57,6 @@
         "existing_canonical_id"
       ],
       "lineCount": 32,
-      "decision": "MATCH_EXISTING_CANONICAL",
-      "decisionBasis": "Existing source state only; no new semantic reconciliation or authority promotion.",
-      "humanReview": "PENDING",
-      "promotionAllowed": false
-    },
-    {
-      "concept": "BEEF_SIRLOIN",
-      "sourceNames": [
-        "Bắp bò",
-        "Thịt bò",
-        "Thịt bò (nạc vai/chuck hoặc thăn, thái lát mỏng)",
-        "Thịt bò (nạc vai/cổ bò, thái khối)",
-        "Thịt bò thái lát",
-        "Thịt thăn bò"
-      ],
-      "recipeIds": [
-        "imp-095cff5e61d32fd9",
-        "imp-2862e7aa0ae0d8fe",
-        "imp-30c2038c8737538c",
-        "imp-3446b3924b05eb7b",
-        "imp-363ca9ee2c5f7738",
-        "imp-4693d6520fbd9d49",
-        "imp-70e5e19dd4073b76",
-        "imp-88fc351665d5e9fc",
-        "imp-b7f8a716b25a7072",
-        "vn-bun-04",
-        "vn-lau-01",
-        "vn-xao-02"
-      ],
-      "resolutions": [
-        "existing_canonical_id"
-      ],
-      "lineCount": 12,
       "decision": "MATCH_EXISTING_CANONICAL",
       "decisionBasis": "Existing source state only; no new semantic reconciliation or authority promotion.",
       "humanReview": "PENDING",
@@ -30405,6 +30372,114 @@
       ],
       "lineCount": 3,
       "decision": "MATCH_EXISTING_CANONICAL",
+      "decisionBasis": "Existing source state only; no new semantic reconciliation or authority promotion.",
+      "humanReview": "PENDING",
+      "promotionAllowed": false
+    },
+    {
+      "concept": "unresolved:bắp bò",
+      "sourceNames": [
+        "Bắp bò"
+      ],
+      "recipeIds": [
+        "vn-bun-04",
+        "vn-lau-01"
+      ],
+      "resolutions": [
+        "ambiguous"
+      ],
+      "lineCount": 2,
+      "decision": "AMBIGUOUS_NEEDS_REVIEW",
+      "decisionBasis": "Existing source state only; no new semantic reconciliation or authority promotion.",
+      "humanReview": "PENDING",
+      "promotionAllowed": false
+    },
+    {
+      "concept": "unresolved:thịt bò",
+      "sourceNames": [
+        "Thịt bò"
+      ],
+      "recipeIds": [
+        "imp-3446b3924b05eb7b"
+      ],
+      "resolutions": [
+        "ambiguous"
+      ],
+      "lineCount": 1,
+      "decision": "AMBIGUOUS_NEEDS_REVIEW",
+      "decisionBasis": "Existing source state only; no new semantic reconciliation or authority promotion.",
+      "humanReview": "PENDING",
+      "promotionAllowed": false
+    },
+    {
+      "concept": "unresolved:thịt bò (nạc vai/chuck hoặc thăn, thái lát mỏng)",
+      "sourceNames": [
+        "Thịt bò (nạc vai/chuck hoặc thăn, thái lát mỏng)"
+      ],
+      "recipeIds": [
+        "imp-b7f8a716b25a7072"
+      ],
+      "resolutions": [
+        "ambiguous"
+      ],
+      "lineCount": 1,
+      "decision": "AMBIGUOUS_NEEDS_REVIEW",
+      "decisionBasis": "Existing source state only; no new semantic reconciliation or authority promotion.",
+      "humanReview": "PENDING",
+      "promotionAllowed": false
+    },
+    {
+      "concept": "unresolved:thịt bò (nạc vai/cổ bò, thái khối)",
+      "sourceNames": [
+        "Thịt bò (nạc vai/cổ bò, thái khối)"
+      ],
+      "recipeIds": [
+        "imp-70e5e19dd4073b76"
+      ],
+      "resolutions": [
+        "ambiguous"
+      ],
+      "lineCount": 1,
+      "decision": "AMBIGUOUS_NEEDS_REVIEW",
+      "decisionBasis": "Existing source state only; no new semantic reconciliation or authority promotion.",
+      "humanReview": "PENDING",
+      "promotionAllowed": false
+    },
+    {
+      "concept": "unresolved:thịt bò thái lát",
+      "sourceNames": [
+        "Thịt bò thái lát"
+      ],
+      "recipeIds": [
+        "imp-095cff5e61d32fd9",
+        "imp-4693d6520fbd9d49",
+        "imp-88fc351665d5e9fc"
+      ],
+      "resolutions": [
+        "ambiguous"
+      ],
+      "lineCount": 3,
+      "decision": "AMBIGUOUS_NEEDS_REVIEW",
+      "decisionBasis": "Existing source state only; no new semantic reconciliation or authority promotion.",
+      "humanReview": "PENDING",
+      "promotionAllowed": false
+    },
+    {
+      "concept": "unresolved:thịt thăn bò",
+      "sourceNames": [
+        "Thịt thăn bò"
+      ],
+      "recipeIds": [
+        "imp-2862e7aa0ae0d8fe",
+        "imp-30c2038c8737538c",
+        "imp-363ca9ee2c5f7738",
+        "vn-xao-02"
+      ],
+      "resolutions": [
+        "ambiguous"
+      ],
+      "lineCount": 4,
+      "decision": "AMBIGUOUS_NEEDS_REVIEW",
       "decisionBasis": "Existing source state only; no new semantic reconciliation or authority promotion.",
       "humanReview": "PENDING",
       "promotionAllowed": false
