@@ -3,6 +3,7 @@ import type { MealCompositionDto } from '../../../../packages/domain/src/meal-co
 const hardWarnings = new Set([
   'COMPONENT_UNAVAILABLE',
   'HARD_CONSTRAINT_CONFLICT',
+  'SAVED_CONTENT_REQUIRES_REVALIDATION',
   'MEAL_TIME_REQUIRES_REVALIDATION',
   'LOCKED_MEAL_TIME_REQUIRES_REVALIDATION',
   'DUPLICATE_ITEM',

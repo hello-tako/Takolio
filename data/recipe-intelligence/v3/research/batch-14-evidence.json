@@ -25,15 +25,16 @@
       "URL_DISCOVERED": 48,
       "URL_REACHABLE": 38
     },
-    "claimCount": 59,
+    "claimCount": 60,
     "claimStatusCounts": {
-      "FACT_SUPPORTED": 8,
+      "FACT_SUPPORTED": 9,
       "SOURCE_CONTENT_READ": 36,
       "SOURCE_UNAVAILABLE": 15
     },
     "findingTypeCounts": {
       "BOUNDED_SOURCE_FACT": 18,
       "BOUNDED_SOURCE_READ": 16,
+      "INTERNAL_CANONICAL_IDENTITY_CONFLICT": 1,
       "INTERNAL_V2_OBSERVATION": 8,
       "SOURCE_ACCESS_LIMIT": 15,
       "VARIANT_DIFFERENCE": 2
@@ -3517,6 +3518,27 @@
           ],
           "reviewerSummary": "King oyster mushroom and cubed filet in one source versus baby bella or cremini and other beef cuts in other sources. These distinct formulations cannot establish one canonical mushroom weight or be silently combined.",
           "supportLimits": "Variants remain separate. Independent culinary/identity/quantity review required before any edit or promotion."
+        },
+        {
+          "id": "internal-beef-identity-ambiguity",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_CANONICAL_IDENTITY_CONFLICT",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "high",
+          "sourceIds": [],
+          "ingredientPositions": [
+            0
+          ],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/ingredients/0/sourceName",
+            "/ingredients/0/canonicalIngredientId",
+            "/ingredients/0/reconciliation",
+            "/ingredients/0/reconciliationReason"
+          ],
+          "reviewerSummary": "The source name is 'Thịt thăn bò', assigned BEEF_SIRLOIN. The shared registry names that ID Thịt bò in Vietnamese and Beef sirloin in English, with bắp bò among its aliases. These describe different or unspecified cuts. Existing-canonical status cannot establish this line identity.",
+          "supportLimits": "Internal V2 and repository registry comparison only; see packages/domain/src/index.ts and docs/ai/recipe-intelligence-v3/research/BEEF_IDENTITY_REVIEW.md. No replacement identity, cut equivalence, migration, culinary approval, nutrition certification or runtime promotion is established.",
+          "sourceFactReferences": []
         }
       ],
       "nextAction": "Complete independent culinary identity, quantity, ingredient authority, allergen, nutrition and safety review before any candidate edit or promotion.",

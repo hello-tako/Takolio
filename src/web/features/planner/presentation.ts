@@ -273,6 +273,8 @@ const viCopy = {
     NEVER_RECOMMEND: 'Món đã được loại khỏi gợi ý',
     COOKING_TIME_UNKNOWN: 'Chưa đủ dữ liệu để kiểm tra giới hạn thời gian',
     MANUAL_ONE_DISH_MEAL: 'Bữa gọn với món chính bạn đã chọn. Có thể thêm món ăn kèm nếu muốn.',
+    SAVED_CONTENT_REQUIRES_REVALIDATION:
+      'Bữa này giữ công thức đã chọn trước đây. Xóa món cần cập nhật rồi lên kế hoạch lại trước khi tính nguyên liệu.',
     MEAL_TIME_UNKNOWN: 'Chưa đủ dữ liệu để ước tính thời gian chuẩn bị và nấu cả bữa.',
     PRESERVED_INTERNATIONAL_CAP_EXCEEDED:
       'Các món quốc tế bạn đã chọn hoặc khoá vượt mức đổi vị trong 7 ngày. Takolio giữ lựa chọn này; giảm món quốc tế hoặc tăng mức đổi vị nếu bạn muốn.',
@@ -323,6 +325,8 @@ const viCopy = {
     REGISTERED_ACCOUNT_REQUIRED: 'Đăng nhập bằng tài khoản đã đăng ký để dùng kế hoạch bữa ăn.',
     PLAN_REVISION_CONFLICT: 'Kế hoạch đã thay đổi. Tải bản mới nhất trước khi thử lại.',
     PLAN_REVALIDATION_REQUIRED: 'Dữ liệu nguồn đã thay đổi. Hãy lên kế hoạch lại.',
+    COMPOSITION_REVALIDATION_REQUIRED:
+      'Công thức đã lưu khác danh mục hiện tại. Xóa món cần cập nhật rồi lên kế hoạch lại trước khi tiếp tục.',
     CATALOG_AUTHORITY_CHANGED:
       'Nguồn danh mục món ăn đã thay đổi. Hãy lên kế hoạch lại trước khi tiếp tục.',
     IDEMPOTENCY_CONFLICT:
@@ -608,6 +612,8 @@ const enCopy: PlannerCopy = {
     NEVER_RECOMMEND: 'Recipe excluded from recommendations',
     COOKING_TIME_UNKNOWN: 'Insufficient data to check the time limit',
     MANUAL_ONE_DISH_MEAL: 'A one-dish meal with your chosen main. Add accompaniments if you want.',
+    SAVED_CONTENT_REQUIRES_REVALIDATION:
+      'This meal keeps the recipe content selected earlier. Remove dishes needing updates, then regenerate the plan before calculating ingredients.',
     MEAL_TIME_UNKNOWN:
       'There is not enough data to estimate prep and cooking time for the whole meal.',
     PRESERVED_INTERNATIONAL_CAP_EXCEEDED:
@@ -659,6 +665,8 @@ const enCopy: PlannerCopy = {
     REGISTERED_ACCOUNT_REQUIRED: 'Sign in with a registered account to use meal planning.',
     PLAN_REVISION_CONFLICT: 'The plan changed. Load the latest version before retrying.',
     PLAN_REVALIDATION_REQUIRED: 'Source data changed. Regenerate the plan first.',
+    COMPOSITION_REVALIDATION_REQUIRED:
+      'Saved recipe content differs from the current catalog. Remove dishes needing updates, then regenerate the plan before continuing.',
     CATALOG_AUTHORITY_CHANGED:
       'The recipe catalog source changed. Regenerate the plan before continuing.',
     IDEMPOTENCY_CONFLICT:

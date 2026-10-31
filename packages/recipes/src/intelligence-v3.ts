@@ -4,8 +4,8 @@ import { runtimeExclusionFromSource } from './refresh/compiler';
 import { deriveRefreshReleaseEligibility } from './refresh/release';
 import { RuntimeRecipeSchema, stableRuntimeJson } from './runtime-recipe';
 
-export const V3_COMPILER_VERSION = 1;
-export const V3_EDITABLE_PATH = /^\/(?:steps\/(?:0|[1-9]\d*)\/(?:instruction|tip|timerMinutes)|ingredients\/(?:0|[1-9]\d*)\/note|content\/(?:description|cookTimeMinutes|difficulty|category|region))$/u;
+export const V3_COMPILER_VERSION = 2;
+export const V3_EDITABLE_PATH = /^\/(?:steps\/(?:0|[1-9]\d*)\/(?:instruction|tip|timerMinutes)|ingredients\/(?:0|[1-9]\d*)\/(?:note|canonicalIngredientId|reconciliation|reconciliationReason)|content\/(?:description|cookTimeMinutes|difficulty|category|region))$/u;
 
 const EditValueSchema = z.union([z.string(), z.number().finite(), z.boolean(), z.null()]);
 export const V3EditsSchema = z.object({
@@ -81,6 +81,22 @@ export async function compileV3Candidate(runtimeInput: unknown, sourceInput: unk
   const candidate = RefreshRecipeSchema.parse(content);
   if (stableRuntimeJson(candidate) !== stableRuntimeJson(content)) throw new V3ValidationError('EDIT_VALUE_NOT_CANONICAL', source.identity.id);
   assertSequence(candidate);
+  const identityFields = new Map<number, Set<string>>();
+  for (const edit of edits) {
+    const match = /^\/ingredients\/(0|[1-9]\d*)\/(canonicalIngredientId|reconciliation|reconciliationReason)$/u.exec(edit.path);
+    if (!match) continue;
+    const position = Number(match[1]);
+    if (!identityFields.has(position)) identityFields.set(position, new Set());
+    identityFields.get(position)!.add(match[2]);
+  }
+  for (const [position, fields] of identityFields) {
+    const before = source.ingredients[position];
+    const after = candidate.ingredients[position];
+    if (fields.size !== 3 || before.canonicalIngredientId === null || before.reconciliation !== 'existing_canonical_id' || before.review !== null
+      || after.canonicalIngredientId !== null || after.reconciliation !== 'ambiguous') {
+      throw new V3ValidationError('IDENTITY_DEMOTION_INVALID', source.identity.id);
+    }
+  }
   const candidateContentFingerprint = await v3Fingerprint(candidate);
   const eligibility = deriveRefreshReleaseEligibility([candidate]);
   const sourceVerified = candidate.research.sources.filter((entry) => entry.role === 'declared' && entry.verification === 'content_verified').length;
@@ -121,7 +137,7 @@ export async function compileV3Candidate(runtimeInput: unknown, sourceInput: unk
       issues,
       edits,
     },
-    // ponytail: existing editorial fields only; add structural/absent-field edits after evidence and compatibility review.
+    // ponytail: editorial edits and identity demotion only; new mappings/quantities require evidence and compatibility review.
     content: candidate,
   };
 }

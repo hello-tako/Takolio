@@ -1,11 +1,12 @@
 import { z } from 'zod';
+import { OffsetDateTimeSchema } from '../../domain/src/foundation';
 import type { D1DatabaseBinding } from './index';
 
 const Identity = z.string().min(1).max(200).refine((value) => value === value.trim() && !value.includes('\0'));
 const Sha = z.string().regex(/^[a-f0-9]{64}$/);
 const BoundedInteger = z.number().int().safe().min(0).max(1_000_000_000_000);
 const PositiveInteger = BoundedInteger.refine((value) => value > 0);
-const Instant = z.string().datetime({ offset: true });
+const Instant = OffsetDateTimeSchema;
 const Scope = z.object({ jobId: Identity, scanId: Identity, householdId: Identity, userId: Identity }).strict();
 const Lane = z.enum(['main', 'shadow']);
 

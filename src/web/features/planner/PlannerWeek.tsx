@@ -114,6 +114,11 @@ function DishCard({
       </ul>
       <MealStyleNotice warnings={composition.warnings} locale={locale} />
       <MealTimeNotice warnings={composition.warnings} locale={locale} />
+      {composition.warnings.includes('SAVED_CONTENT_REQUIRES_REVALIDATION') && (
+        <p className="planning-note" role="status">
+          {reasonLabel('SAVED_CONTENT_REQUIRES_REVALIDATION', locale)}
+        </p>
+      )}
       {composition.source === 'v2' && missing.size > 0 && (
         <div className="planning-missing-roles">
           <p>

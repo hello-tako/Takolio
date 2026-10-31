@@ -212,7 +212,7 @@ billingRoutes.post('/billing/payos/webhook', bodyLimit({
 }), async (c) => {
   const receivedAt = new Date().toISOString();
   if (!c.env.DB || !c.env.PAYOS_CHECKSUM_KEY) return c.json({ error: 'Webhook chưa cấu hình' }, 503);
-  const envelope = z.object({ data: z.record(z.unknown()), signature: z.string().optional() })
+  const envelope = z.object({ data: z.record(z.string(), z.unknown()), signature: z.string().optional() })
     .safeParse(await c.req.json().catch(() => null));
   if (!envelope.success) return c.json({ error: 'Invalid webhook' }, 400);
   const { data } = envelope.data;

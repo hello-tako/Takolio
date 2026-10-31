@@ -896,7 +896,7 @@ describe('operational recipe media at reviewed complete catalog tips', () => {
   const release = JSON.parse(readFileSync(CATALOG_RELEASE_MANIFEST, 'utf8'));
   const registry = JSON.parse(readFileSync(APPROVED_BATCHES_REGISTRY, 'utf8'));
   const familyTips = ['0042_family_meals_preferences_saved_shopping.sql', '0043_shopping_demand_review.sql',
-    '0044_inventory_display_category.sql', '0045_week_swap_receipts.sql'];
+    '0044_inventory_display_category.sql', '0045_week_swap_receipts.sql', '0046_recipe_content_versions.sql', '0047_saved_recipe_content.sql'];
   const tips = ['0038_auth_onboarding_completion.sql', '0039_meal_composition_v2.sql', '0040_strict_otp_foundation.sql', '0041_checkout_admission.sql', ...familyTips];
   const firstId = release.orderedRecipeIds[0];
   let db, cliDirectory;

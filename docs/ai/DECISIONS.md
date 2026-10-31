@@ -3710,3 +3710,373 @@ URL-specific claim evidence, preserved hard restrictions, explicit plan/cooking
 version pinning with old-snapshot readers, deterministic final projection,
 independent review, same-source staging and operator release approval. Rollback of
 this tooling is branch/code rollback; no user data is written or restored.
+
+## ADR-073 - V3 validation branches and bounded dependency patches (2026-10-28 JST)
+
+Status: accepted for validation-only CI and compatible dependency patches;
+production release remains blocked by ADR-072 and the release packet.
+
+The V3 stack has twelve independent Draft PRs. Only its first PR targets main,
+so the existing CI filters leave later implementation heads without hosted
+validation. Add a dedicated Recipe V3 CI workflow for `codex/recipe-v3-**`
+pushes, reusing the original CI steps and read-only permissions; add the same
+push filter to Admin CI. Preserve original customer ci.yml byte-for-byte because
+Admin preflight pins it. An initial direct edit correctly failed that guard;
+restoring the file and adding a dedicated workflow resolves the conflict without
+changing preflight, its baseline or history fences. Keep independent review units,
+existing main/PR triggers, pinned actions, complete checks and Environment
+protections. Branch CI cannot substitute for protected exact-main release CI,
+independent review or staging. Deployment/migration workflows remain unchanged.
+
+The current dependency audit reports five high and five moderate advisories.
+Advance Hono within major4 from4.13.7 to locked4.13.13 (manifest floor4.13.11),
+and override only miniflare's Undici edge from7.29.1 to7.30.1. Retain Wrangler,
+Miniflare, workerd and every unrelated dependency byte. The override is limited
+to the installed development-tool dependency until its upstream manifest uses
+a patched compatible Undici; remove it after that graph is verified. No new
+runtime package, auth/payment source change, catalog data or migration is added.
+
+The observed remaining audit finding is Zod3.25.76, GHSA-mrhx-c7xc-m3w5.
+A bounded reproduction confirms max(2) still parses all1,000 input elements.
+Upstream's first patched version is4.6.6. Switching imports to zod/v3 under a
+new package version would retain the affected parser and is not remediation.
+A major upgrade affects protected PayOS's one-argument z.record call and
+validation error contracts. It also invalidates the established release
+continuity proof, which binds Zod version/integrity. This checkpoint neither
+changes those protected consumers nor waives the advisory/continuity gate.
+A reviewed migration preserving those contracts and fresh catalog certification
+is required before release. No audit suppression or protection bypass is added.
+
+Rollback of these patches is a normal reviewed code/lockfile rollback; it does
+not alter database or user state and restores the prior dependency advisories.
+
+## ADR-074 - Authorized Zod 4 security compatibility migration (2026-10-29 JST)
+
+Status: accepted implementation scope; local full gate PASS (429files/9597tests); audit PASS (0 vulnerabilities); independent technical review found no remaining concrete issues. Hosted, human and operator approval are separate.
+The owner explicitly approved the Zod migration exception, including the two
+PayOS/billing records, contract tests and fresh local catalog certification.
+This supersedes the pending-exception statements at the prior checkpoint.
+
+Problem: Zod3.25.76 is affected by GHSA-mrhx-c7xc-m3w5; an array maximum still
+traverses every invalid element. The patched parser requires >=4.6.6; importing
+zod/v3 under an upgraded package would retain the vulnerable implementation.
+
+Decision: migrate root Zod to the patched 4.6.7 parser. Limit protected changes
+to necessary schema/type/error compatibility. Preserve HTTP status/envelopes,
+custom validation messages, signed payment verification, prices, grants, tenant
+and session authority. Update the bounded OpenAPI exporter with explicit
+unsupported-node/check rejection and runtime refinement/transform markers.
+No payment business behavior, production infrastructure or remote data changes.
+
+Compatibility findings: Zod4 defaults skip nested parsing and its datetime grammar
+rejects previously valid colonless offsets/minute precision. Use prefault for
+recipe/family provenance; shared UTC/offset schemas retain the old timestamp
+grammar and bytes, with all caller calendar/finite/offset checks intact. Existing
+stored inventory lots remain readable and command replay retains exact bytes.
+Technical reviewer probed 1,170 datetime combinations against Zod3 and found
+parity; regression coverage includes actual persisted CREATE/CORRECT/read/replay.
+
+The candidate audit previously required every pinned file to match b49f3e6c
+byte-for-byte. Permit only the single exact string-key record substitution in
+refresh/release.ts; every other byte/path remains pinned. Negative self-checks
+reject extra drift, other paths and duplicate baseline markers. The generated
+baseline truthfully records matchesBaseCommit=false, ADR-074 and both hashes.
+This candidate-audit compatibility exception does not change the production
+D1 continuity fence, release eligibility or food-content approval requirements.
+
+Verification: compiler and full repository gates; focused invalid-request,
+payment/auth, OpenAPI and oversized-array regressions; fresh dependency audit;
+recompile current catalog, byte-compare seeds and verify candidate artifacts.
+Keep the existing production catalog continuity dependency fence unchanged:
+local recertification alone cannot authorize unchanged-D1 continuity across the
+parser upgrade. Normal review, fresh staging/certification and Environment
+approval remain required. Rollback is a reviewed dependency/code revert; no
+schema or content migration is introduced by this change.
+
+## ADR-075 - Immutable cooking content and durable replay (2026-10-29 JST)
+
+Status: accepted implementation scope; publication and deployment gates remain.
+Supersedes ADR-072's no-runtime-change scope for cooking compatibility only.
+
+Cooking completion currently loads the latest recipe before replaying its receipt.
+A catalog update can change inferred units, ingredients or steps after a person
+starts cooking; a removed catalog entry can also prevent a committed retry.
+
+Add migration0046: immutable server-owned RuntimeRecipe content keyed by the
+existing single-recipe SHA256, independent of mutable recipe rows. Detail/start
+capture the trusted, unscaled, pre-media content. Detail metadata carries its
+fingerprint separately from Recipe; serving scaling cannot change that identity.
+The cooking store freezes it with the command and offline queue body. Completion
+loads that exact archive or captures an exact current match, never client content.
+Cooked receipts add a nullable version reference; legacy NULL means unknown, not
+an inferred V3 version. Replay precedes catalog resolution and compares the version,
+servings and deductions using the durable receipt's units. Inventory transactions,
+tenancy, FEFO and Week behavior remain unchanged.
+
+Unversioned new commands remain compatible only with the fixed V1 static/full500
+fingerprints. A future catalog must reject them with RECIPE_VERSION_REQUIRED;
+old queued bodies are never rewritten. Legacy receipts replay by stable recipe ID;
+a historical slug is accepted only when independently recoverable from the static
+baseline or immutable archive. Unknown legacy aliases fail closed.
+
+Archived content is evaluated against current household policies using only its
+own ingredient/time facts (the existing static restriction path). Current mutable
+D1 classifications/nutrition are not evidence for historical content. This may
+reject time/nutrition/safety-constrained cooking when archived evidence is unknown;
+never fill those facts from a different version. Versioned restriction evidence is
+a separate prerequisite for relaxing that conservative behavior.
+
+Migration is additive; old Workers ignore the nullable receipt field and archive.
+Rollback keeps archive and receipts; no down-migration or user-data restoration.
+Deploy only after0046, exact schema/ledger verification and normal independent
+review/staging/production gates. This does not publish candidates or certify the
+500 recipes, planner/composition compatibility, nutrition or food safety.
+
+0046 review clarification: archive existence never grants a household access.
+Persist `(household_id, fingerprint)` only after that household resolves the exact
+version through its allowed authority snapshot. Historical detail/completion may
+reuse this grant, including during catalog failure; other households must resolve
+an exact current match. The server derives household identity from the session.
+Store a nullable raw command fingerprint on new receipts so missing-unit retries
+remain exact even with repeated ingredient IDs and mixed explicit units. Existing
+receipts with no raw fingerprint use archived/static baseline units, or explicit
+units; ambiguous legacy omissions fail closed instead of guessing from deduction
+order. Receipt command/version references are immutable.
+
+The foundation retains V1 catalog bytes. A V1 Worker rollback is compatible only
+before any changed content is served. Future content promotion requires a verified
+version-aware recovery Worker and a constrained rollback target: old Workers strip
+the new request field and cannot safely interpret changed-catalog offline commands.
+Keeping the archive alone does not establish backward compatibility after promotion.
+
+## ADR-076 - Retain selected recipe content in saved compositions (2026-10-30 JST)
+
+Status: accepted implementation scope; publication and release gates remain.
+Builds on ADR-075; no candidate promotion or evidence waiver.
+
+Stored composition components retain only recipe_id. DTO reads resolve current
+content, so an unchanged saved component can display/cook a different recipe
+following a catalog change. Add migration0047 with a nullable recipe content
+fingerprint referencing the immutable0046 archive. Non-NULL must name the same
+recipe and is forbidden for simple_food. Legacy NULL remains explicitly unknown;
+never backfill it from today's catalog. Pins are server-issued from the allowed
+unscaled authority snapshot, with household grants; clients still submit intent
+identities only. Every persistence writer, including direct family generation,
+retains pins; edits to role/order/lock and locked regeneration preserve existing
+pin/NULL. Explicit dish replacement can select current content only while the
+plan authority remains valid. After authority changes, remove incompatible locked
+components explicitly, then regenerate; picker/swap retain their authority guard.
+A pin does not certify versioned nutrition/classification/role evidence.
+
+Archive/pin issuance must retain existing authority-current and transaction CAS
+witnesses. Orphan public content/grants after a failed CAS do not change a saved
+plan. Reads may use household-authorized archived display content. New shopping,
+assessment,composition and regeneration mutations keep current catalog/evidence
+freshness fences; mismatched historical pins cannot borrow current facts. Locked
+legacy/historical components require explicit compatible revalidation rather than
+silent repinning. V1 result snapshots retain their existing authority fence; this
+slice alone does not complete V1 version pins or catalog publication.
+
+New clients opt into pinned composition DTO metadata with the safelisted
+`Accept: application/json; recipe-content=1` header on V1 composition and V2 family
+requests. Without that capability, every response explicitly omits the added
+contentFingerprint field so old strict schemas still parse; pinned recipes are
+not cookable through an unversioned old-client link. Mutations still complete
+with a compatible response. New clients pass known pins in detail/cook links and
+cache keys. A requested pinned version must match the active cooking
+run. Offline static fallback is valid only when its computed hash matches; never
+substitute current content for a requested archive. Missing legacy metadata stays
+unknown. All500 identities,tenancy,inventory commands and Week compatibility remain.
+
+Apply0047 before this Worker. Migration validation must preserve populated legacy
+rows,FK/integrity and existing0046 receipt/archive objects; no down-migration.
+A Worker predating saved pins can delete/reinsert rows without them. Once any
+non-NULL pins exist, such a Worker must not serve mutations, even before catalog
+promotion. Recovery uses a certified version-aware Worker with paired flags OFF,
+retains0046/0047 and separately proves actual hosted OFF/recovery behavior.
+Normal independent review,exact-main CI,same-source hosted certification and
+Environment approval remain mandatory. No external approval is fabricated.
+
+## ADR-077 - Content identity for standalone V1 meal selections (2026-10-30 JST)
+
+Status: accepted implementation scope; publication and release gates remain.
+
+V1 already stores title, instructions, requirements and shopping snapshots, but
+its read-time composition projection resolves the mutable recipe ID. Add an
+optional nullable contentFingerprint to the strict planned-meal contract and
+stored result JSON. No migration or inferred legacy backfill. New standalone
+recipe selections capture trusted unscaled authority content and household access
+through0046. Family variants retain NULL: they are not RuntimeRecipe objects.
+Family/composed anchors inherit the matching persisted component pin, including
+legacy NULL. Standalone pins attest the exact existing authority snapshot, including its
+existing cache semantics; no claim of a new atomic catalog-current check. Existing
+authority, tenancy, revision and composition/family transaction fences remain;
+a pin identifies the selected snapshot, not live catalog or culinary approval.
+
+V1 generate/replay/read/current/regenerate/swap and underlying family plan DTOs
+negotiate the same recipe-content=1 Accept capability. Old strict clients receive
+no new field. Projection into an unedited V1 composition propagates the known pin;
+archive lookup includes these projections, so historical display never substitutes
+current content and current-fact assessment/shopping stay fenced. Standalone V1
+regeneration explicitly reselects current content; stale pinned locks are dropped
+rather than silently retaining a different recipe under the old selection. Swap
+preserves unknown or known pins for unchanged selections. Existing V1 UI already
+renders stored instructions; no new cooking/detail navigation is introduced.
+
+Once pinned JSON is persisted, a pre-077 strict Worker cannot decode those rows.
+Recovery therefore requires this same-source version-aware flags-OFF Worker,
+retaining0046/0047 and all opaque plan data. Older binary rollback is unsupported.
+Hosted OFF/recovery, independent review and normal protected deployment remain
+required. This slice neither publishes V3 candidates nor waives evidence gates.
+
+## ADR-078: retain recipe content identity in shared shopping demand
+
+Date: 2026-10-30. Status: accepted implementation decision; no publication or
+human culinary approval.
+
+Problem: saved V1/composed selections retain immutable content, but materialized
+shopping contribution JSON drops that identity. An unchanged recipe ID/title or
+quantity therefore cannot identify which content produced shared demand.
+
+Decision: extend the existing strict ShoppingContributionSchema with an optional
+nullable contentFingerprint. New trusted projected recipe contributions copy the
+component pin; simple foods, family variants and unknown legacy selections keep
+NULL. Existing contribution JSON is sufficient; no schema migration or backfill.
+No content capture from untrusted shopping input. No recalculation on reads.
+
+The existing raw contribution witness already binds demand review fingerprints
+and atomic guards. A changed pin requires review again while chosen purchase
+amounts/history survive. Existing receipt-first share/review replay remains first;
+current historical-content mismatches still reject a new shopping calculation.
+
+Compatibility: shopping GET uses existing recipe-content=1 Accept negotiation.
+Capable clients receive pins in both generated items and unresolved demand; old
+strict clients receive the previous contribution shape. The new web client opts
+in and preserves pins in private offline caches. Legacy missing pins stay unknown.
+A pre-078 strict Worker/client cannot parse pinned JSON/cache. Recovery must use
+the same-source version-aware Worker/client with paired flags OFF, retaining
+0046/0047 and shopping data. Never erase history to enable an older binary.
+
+Validation: real Worker share/persistence/legacy negotiation, historical mismatch
+and replay preservation, changed-pin review with stale command rejection, private
+client server/offline cache, existing shopping race/tenancy/quantity regressions.
+Hosted same-source recovery and approved V3 publication remain separate gates.
+
+## ADR-079 - Offline validation of version-bound review records
+
+Date: 2026-10-31 JST. Status: accepted local tooling; publication remains blocked.
+
+Problem: the owner reports professional review complete, but the queue has no
+machine-checkable decision record. Historical research packets remain immutable
+and cannot be rewritten as human approvals.
+
+Decision: accept a separate review JSON file bound to the exact candidate-file
+SHA256 and per-recipe content fingerprint. Require reviewer identity, UTC decision
+time, a hashed local decision record, and evidence/rationale for every required
+review action. Reject duplicate/unknown recipes, stale identities, missing actions,
+future timestamps, changed/missing evidence and evidence paths escaping the repo.
+An APPROVE decision cannot leave an action OPEN. Partial records remain useful;
+the CLI exits nonzero until all 500 approval decisions are recorded.
+
+This validates record integrity and completeness, not reviewer identity,
+independence, expertise, claim correctness or evidence sufficiency. Those require
+independent review of the actual records. No human approval is generated; no
+candidate, historical packet, release gate, runtime authority or database changes.
+The four existing data gates and protected deployment procedure remain required.
+Rollback is removal of this offline tool; no migrations or user-data effects.
+
+## ADR-080 - Quarantine contradictory ingredient identities in V3 candidates
+
+Date: 2026-10-31 JST. Status: accepted candidate-only implementation scope;
+independent technical review and all publication gates remain required.
+
+The shared BEEF_SIRLOIN entry combines generic Vietnamese beef, an English
+sirloin label and a shank alias. Twelve V2 lines use this ID for differing or
+unspecified cuts. Existing-canonical status therefore overstates identity
+certainty. The source names and registry bytes are sufficient evidence of that
+contradiction, not evidence for twelve replacement identities.
+
+Extend compiler version2 only to coordinated identity demotion: clear an existing
+non-null canonicalIngredientId, mark reconciliation ambiguous, and replace its
+reason. Require all three exact old/new edits together, a source with no review
+claim, and the existing recipe-specific evidence references. Reject assignment of
+any replacement ID, promotion, incomplete demotion or unrelated structural edits.
+Keep source names, quantities, roles, nutrition, positions and steps intact.
+The immutable V2 file retains the original ID and exact reconstruction witness.
+
+Candidates remain NEEDS_REVIEW with no runtime authority. A demoted line cannot
+project through runtimeIngredientFromSource; catalog assertions and release gates
+continue to block unresolved identities. No source registry, V1/V2, public API,
+consumer, SQL or production change. Compiler version metadata advances for all
+500 candidates; only the twelve identified content records change.
+
+Validation requires rejection tests for partial demotion, ID substitution and
+promotion; exact reversal to V2; all500 recompilations; unchanged quantities,
+roles/nutrition and488 unaffected payloads; preserved runtime fingerprint.
+Rollback is reverting the candidate/tooling slice, with no user-data effect.
+
+---
+
+---
+
+---
+
+### ADR-075 addendum -0046 release-tool checkpoint (2026-10-31 JST)
+
+The Admin guard/matrix still selected45 after cooking added0046. Bind the frozen
+680502cc7aa64a4d11abca1ae0625ee9f5166d66 candidate; retain all original/V2
+ancestry, parallel-main and later-change fences. Exercise45 independently, then46
+fresh/populated upgrades, immutable content/receipts and strict45 rollback refusal.
+This is SQL-only certification; runtime recovery requires separate evidence.
+No schema/runtime/workflow change. Local full check431files/9665tests and real
+D1 matrix38/38 PASS exit0; exact commands/limits in22_COOKING_FOUNDATION_VALIDATION.md.
+PR49 must retain this coverage alongside its immutable47 checkpoint.
+
+
+## ADR-081 - Retain compatible family recovery at reviewed schema tips
+
+Date: 2026-10-31 JST. Status: accepted release defect correction under the
+owner's existing recipe production authorization; normal review and CI required.
+
+The Deploy workflow selects family recovery only at0043. At0046/0047 it can
+therefore fall back to a historical Worker that cannot preserve cooking receipts,
+saved pins or shopping JSON. Domain Release already prepares compatible recovery
+unconditionally; the retained Deploy workflow must enforce the same safety rule.
+
+Extend only the supported-tip predicate to the reviewed0043-0047 migrations.
+Keep exact-source/D1/flags/asset/authority checks and existing OTP precedence.
+Unknown tips remain unsupported until reviewed. No workflow/config/schema,
+authentication, payment, runtime catalog or user-data change. Recovery still
+requires real same-source hosted proof; local tests do not certify deployment.
+
+Validate every supported tip, older/malformed/unknown tips, exact0047 recovery
+certification and existing drift/asset/deployment regressions. Rollback is a
+normal reviewed code revert before release; never erase pins or receipts.
+
+## ADR-082 - Audited domain release uses the existing catalog rollout gates
+
+Status: accepted implementation scope; hosted release evidence remains required.
+
+The domain release preserves live Takolio routing, runtime bindings, queues and
+operational settings, but can only retain the current catalog mode. Retaining
+production D1 across the Zod upgrade correctly fails the dependency continuity
+fence. The older Deploy workflow supports shadow/canary but uses the legacy
+committed domain configuration. Neither path currently supports a safe fresh
+rollout with the audited live configuration.
+
+Add explicit production domain inputs for preserve/shadow/canary-1/canary-5/
+canary-25/d1 and rollback confirmation. Default preserve retains the continuity
+fence. Prepare the unchanged audited config first, then change only the three
+catalog vars after the existing validateRecipeCatalogTransition accepts the
+live authority and exact target SHA. Preserve current-source/ancestor checks,
+ordered promotions, full fingerprint/readiness checks, fresh staging acceptance,
+production certification, normal Environment review and observation. Compatible
+recovery keeps the selected catalog stage and disables both planner flags.
+
+This supersedes the blanket production hold in ADR-073 only for a separately
+certified release of the security/saved-content foundation retaining V1 catalog
+content. It does not authorize V3 publication, waive any of the four data gates,
+create culinary approval or mark the 500-recipe program complete. Migrations0046
+then0047 and same-source recovery remain required. No auth/payment/business,
+DNS, queue, database identity or recipe content change belongs to this adapter.
+Rollback retains user data/schema and uses the recorded same-source recovery.

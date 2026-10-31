@@ -67,7 +67,7 @@ preferencesRoutes.patch('/preferences', async (c) => {
 
   const parsed = PreferencesPatchSchema.safeParse(body);
   if (!parsed.success) {
-    return c.json({ error: parsed.error.errors[0]?.message || 'Tùy chọn không hợp lệ', code: 'VALIDATION_ERROR' }, 400);
+    return c.json({ error: parsed.error.issues[0]?.message || 'Tùy chọn không hợp lệ', code: 'VALIDATION_ERROR' }, 400);
   }
 
   try {

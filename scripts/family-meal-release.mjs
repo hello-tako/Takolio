@@ -13,7 +13,10 @@ const MAX_MODULE_BYTES = 8 * 1024 * 1024;
 const MAX_MODULES = 8;
 
 export function needsRecovery(manifest) {
-  return manifest?.environment === 'production' && manifest?.schema?.version === '0043_shopping_demand_review.sql';
+  return manifest?.environment === 'production' && [
+    '0043_shopping_demand_review.sql', '0044_inventory_display_category.sql',
+    '0045_week_swap_receipts.sql', '0046_recipe_content_versions.sql', '0047_saved_recipe_content.sql',
+  ].includes(manifest?.schema?.version);
 }
 
 export function verifyRecoveryBuild(record) {
@@ -112,7 +115,7 @@ export async function verifyServedRecoveryAssets(record, { url, fetch: fetchImpl
 
 export function verifyRecoveryVersion(manifest, version, record) {
   if (!needsRecovery(manifest) || !/^[a-f0-9]{40}$/.test(manifest.sha ?? '')) {
-    throw new Error('Family recovery requires the production 0043 candidate');
+    throw new Error('Family recovery requires a supported production family-meal candidate');
   }
   const build = verifyRecoveryBuild(record);
   const binding = verifyWorkerD1Binding(version);

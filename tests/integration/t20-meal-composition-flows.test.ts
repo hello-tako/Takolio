@@ -307,7 +307,8 @@ describe('T20 × T19 recipe authority', () => {
     const plan = await generate();
     const slotId = plan.result.meals.find((meal) => meal.source.id !== D1_ONLY)!.slotId;
     const add = await h.call(HOUSE, 'POST', `${slotPath(plan.id, slotId)}/components`,
-      { revision: plan.revision, target: { kind: 'recipe', recipeId: D1_ONLY }, role: 'main' });
+      { revision: plan.revision, target: { kind: 'recipe', recipeId: D1_ONLY }, role: 'main' }, {},
+      { Accept: 'application/json; recipe-content=1' });
     expect(add.status, JSON.stringify(add.json)).toBe(200);
     const component = SlotCompositionDtoSchema.parse(add.json).composition.components.find((item) => item.recipeId === D1_ONLY)!;
     expect(component.cookable).toBe(true);

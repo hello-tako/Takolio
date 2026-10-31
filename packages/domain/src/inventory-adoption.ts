@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { CanonicalIngredientIdSchema } from './foundation';
+import { OffsetDateTimeSchema, CanonicalIngredientIdSchema } from './foundation';
 import { LotCommandError } from './inventory-lot-commands';
 import {
   DisplayCategorySchema, InventoryLotSchema, StorageLocationSchema, checkLegacyLotParity, defaultStorageLocations,
@@ -9,9 +9,9 @@ import {
 export const MAX_INVENTORY_ADOPTION_EFFECTS = 32;
 export const MAX_INVENTORY_ADOPTION_SNAPSHOT_ROWS = 1000;
 
-const Identity = InventoryLotSchema.innerType().shape.id;
+const Identity = InventoryLotSchema.shape.id;
 const Version = z.number().int().safe().positive();
-const Timestamp = z.string().datetime({ offset: true }).refine((value) =>
+const Timestamp = OffsetDateTimeSchema.refine((value) =>
   z.string().date().safeParse(value.slice(0, 10)).success && Number.isFinite(Date.parse(value)));
 const TerminalEvidenceSchema = z.object({
   legacyItemId: Identity,
@@ -86,7 +86,7 @@ export function planInventoryAdoption(
 ): InventoryAdoptionPlan {
   const parsedSnapshot = InventoryAdoptionSnapshotSchema.safeParse(inputSnapshot);
   if (!parsedSnapshot.success) {
-    if (parsedSnapshot.error.issues.some((issue) => issue.code === 'too_big' && issue.type === 'array')) {
+    if (parsedSnapshot.error.issues.some((issue) => issue.code === 'too_big' && issue.origin === 'array')) {
       fail('ADOPTION_LIMIT_EXCEEDED');
     }
     fail('INVALID_ADOPTION_SNAPSHOT');

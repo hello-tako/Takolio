@@ -26,10 +26,12 @@ const planPath = (id: string) => `${plansPath}/${encodeURIComponent(PlanIdSchema
 
 async function request<T>(
   path: string,
-  schema: z.ZodType<T, z.ZodTypeDef, unknown>,
+  schema: z.ZodType<T, unknown>,
   options?: RequestInit,
 ): Promise<T> {
-  return schema.parse(await fetchPlannerJson<unknown>(path, { ...options, cache: 'no-store' }));
+  const headers = new Headers(options?.headers);
+  headers.set('Accept', 'application/json; recipe-content=1');
+  return schema.parse(await fetchPlannerJson<unknown>(path, { ...options, headers, cache: 'no-store' }));
 }
 
 function post(body: unknown, key?: string): RequestInit {

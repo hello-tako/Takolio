@@ -5,11 +5,20 @@ on:
   workflow_dispatch:
     inputs:
       ref:
-        description: Full current main SHA with successful exact-main CI and reviewed 0044/0045
+        description: Full current main SHA with successful exact-main CI and reviewed migration
         required: true
         type: string
+      migration:
+        description: Exact reviewed staging migration tip
+        required: true
+        type: choice
+        default: 0047_saved_recipe_content.sql
+        options:
+          - 0045_week_swap_receipts.sql
+          - 0046_recipe_content_versions.sql
+          - 0047_saved_recipe_content.sql
       confirm_staging_migration:
-        description: Confirm the staging D1 identity and authorize applying 0043->0044->0045 or certifying 0045
+        description: Confirm staging D1 identity and authorize the exact selected migration chain or certification
         default: false
         type: boolean
 
@@ -59,6 +68,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           MIGRATION_REF: ${{ inputs.ref }}
+          MIGRATION_TIP: ${{ inputs.migration }}
         run: node scripts/staging-v2-migration-check.mjs gate staging-migration-receipt.json
 
       - name: Require staging Cloudflare credentials
@@ -99,7 +109,7 @@ jobs:
           d1() { pnpm wrangler d1 execute frigo-db-staging-v3 --remote --yes --config wrangler.staging.jsonc --command "$1" --json; }
           d1 "PRAGMA foreign_key_check" > staging-pre-fk.json
           d1 "PRAGMA quick_check" > staging-pre-quick.json
-          d1 "$(node scripts/staging-v2-migration-check.mjs query baseline)" > staging-pre-counts.json
+          d1 "$(node scripts/staging-v2-migration-check.mjs query baseline staging-migration-receipt.json)" > staging-pre-counts.json
           node scripts/staging-v2-migration-check.mjs pre-health staging-migration-receipt.json staging-pre-fk.json staging-pre-quick.json staging-pre-counts.json
 
       - name: Verify exact Wrangler migration plan
@@ -131,7 +141,7 @@ jobs:
           pnpm wrangler d1 time-travel info frigo-db-staging-v3 --json --config wrangler.staging.jsonc > staging-bookmark.json
           node scripts/staging-v2-migration-check.mjs bookmark staging-migration-receipt.json staging-bookmark.json
 
-      - name: Apply only the certified 0044/0045 chain via Wrangler's staging ledger
+      - name: Apply only the certified selected chain via Wrangler's staging ledger
         if: success()
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -141,12 +151,12 @@ jobs:
           if [ "$mode" = apply ]; then
             pnpm wrangler d1 migrations apply frigo-db-staging-v3 --remote --config wrangler.staging.jsonc
           elif [ "$mode" = certify ]; then
-            echo "Migrations 0044/0045 already present; certification only."
+            echo "Selected migration already present; certification only."
           else
             exit 1
           fi
 
-      - name: Certify ledger, health, V2 inventory and swap receipt schema, unchanged data and repository schema gate
+      - name: Certify ledger, health, exact reviewed schema, unchanged data and repository schema gate
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -155,8 +165,8 @@ jobs:
           d1 "SELECT name FROM d1_migrations ORDER BY name" > staging-post-ledger.json
           d1 "PRAGMA foreign_key_check" > staging-post-fk.json
           d1 "PRAGMA quick_check" > staging-post-quick.json
-          d1 "$(node scripts/staging-v2-migration-check.mjs query baseline)" > staging-post-counts.json
-          d1 "$(node scripts/staging-v2-migration-check.mjs query schema)" > staging-v2-schema.json
+          d1 "$(node scripts/staging-v2-migration-check.mjs query baseline staging-migration-receipt.json)" > staging-post-counts.json
+          d1 "$(node scripts/staging-v2-migration-check.mjs query schema staging-migration-receipt.json)" > staging-v2-schema.json
           d1 "$(node scripts/d1-schema-gate.mjs render)" > staging-schema-gate.json
           node scripts/staging-v2-migration-check.mjs post staging-migration-receipt.json staging-post-ledger.json staging-post-fk.json staging-post-quick.json staging-post-counts.json staging-v2-schema.json staging-schema-gate.json
 
@@ -164,7 +174,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: staging-d1-v2-0045-${{ github.run_id }}-${{ github.run_attempt }}
+          name: staging-d1-v2-${{ inputs.migration }}-${{ github.run_id }}-${{ github.run_attempt }}
           path: staging-migration-receipt.json
           if-no-files-found: ignore
           retention-days: 90

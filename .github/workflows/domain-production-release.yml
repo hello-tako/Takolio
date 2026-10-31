@@ -31,6 +31,21 @@ on:
         description: Owner explicitly accepts existing production PayOS without repeating settlement; inspect the waiver evidence before approval
         type: boolean
         default: false
+      recipe_catalog_stage:
+        description: Catalog rollout stage; preserve still requires unchanged D1 continuity
+        type: choice
+        default: preserve
+        options:
+          - preserve
+          - shadow
+          - canary-1
+          - canary-5
+          - canary-25
+          - d1
+      confirm_catalog_rollback:
+        description: Explicitly restart catalog authority in shadow from a live canary or D1 stage
+        type: boolean
+        default: false
       confirm_production:
         description: Intentionally activate production and its three Takolio hostnames after independent Environment review
         type: boolean
@@ -80,6 +95,8 @@ jobs:
           CERTIFICATION_RUN_ID: ${{ inputs.certification_run_id }}
           STAGING_ACCEPTANCE_JSON: ${{ inputs.staging_acceptance_json }}
           CONFIRM_PAYOS_OWNER_WAIVER: ${{ inputs.confirm_payos_owner_waiver }}
+          RECIPE_CATALOG_STAGE: ${{ inputs.recipe_catalog_stage }}
+          CONFIRM_CATALOG_ROLLBACK: ${{ inputs.confirm_catalog_rollback }}
           CONFIRM_PRODUCTION: ${{ inputs.confirm_production }}
           CONFIRM_STAGING_ACCEPTANCE: ${{ inputs.confirm_staging_acceptance }}
           GH_TOKEN: ${{ github.token }}

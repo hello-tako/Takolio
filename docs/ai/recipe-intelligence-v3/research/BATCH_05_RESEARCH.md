@@ -1,6 +1,6 @@
 # Current integrated research checkpoint
 
-Current canonical packets: batch-05. 20 recipes; 46 source rows; 25 bounded content reads; 47 claims; 20 recipes with external-content claims; 4 candidate edits across 3 recipes. Human approval and full culinary verification remain zero. Source/runtime promotion remains false.
+Current canonical packets: batch-05. 20 recipes; 49 source rows; 28 bounded content reads; 49 claims; 20 recipes with external-content claims; 9 candidate edits across 3 recipes. Human approval and full culinary verification remain zero. Source/runtime promotion remains false.
 
 Current validation from the repository root:
 
@@ -14,7 +14,7 @@ Current packet hashes:
 
 | Packet | Evidence SHA-256 | Edits SHA-256 |
 |---|---|---|
-| batch-05 | `8bf201e7cb1a42a1a7638dbec076a842d2fd02d88216fc8b7be70842f1bcf3df` | `5b2d9e8d0efb25892b375cb415ee0f7d44236cde58af646824edef93c06f0afd` |
+| batch-05 | `e19fab7228be6671b1d3ae27551b7b43f42a4242ac1308a305eaae9ab2fa5fec` | `72e826ce87b4b385dcc75d9ba3deddfde43df7b28bb71b98e7616416657be858` |
 
 ---
 
