@@ -161,6 +161,31 @@ Earlier records are historical checkpoints.
 
 ---
 
+## Recipe V3 PR49 integration verification - 2026-10-31 JST
+
+Status: protected integration in progress; production release NOT_READY.
+Integrated cooking-content 6fb484cf into saved-content744b4e25 by normal merge,
+preserving immutable47 baseline a1e706c7. Retained 0046 re-apply and cooking
+receipt rejection/legacy-NULL coverage in the actual D1 matrix. No runtime,
+migration, workflow or payment byte change in this merge.
+
+Executed Node24: baseline25tests, lint, typecheck and actual local D1 matrix39/39
+PASS exit0; audit --audit-level high PASS exit0 with2moderate vulnerabilities.
+Exact commands/logs/hashes: recipe-intelligence-v3/23_SAVED_CONTENT_VALIDATION.md.
+This local SQL/tooling evidence is not hosted recovery or deployment evidence.
+
+GitHub PR33-38 merged normally; PR39 exactHEAD0a5bf4b9 has authorized Codex AI
+technical approval through vn-taphoanhatung; required CI remains in progress.
+AI approval does not constitute human culinary or food-safety certification.
+Next: clean committed preflight, push49; propagate normally into50-55; finish
+protected reviews/CI/merges, exact-main staging/recovery and production gates.
+Four catalog data gates and0/500human culinary approvals remain unresolved.
+Owner deployment authorization retained. No production mutation claimed.
+
+Earlier checkpoints remain historical.
+
+---
+
 ## Recipe V3 immutable release baseline - 2026-10-30 JST
 
 Status: RECIPE_V3_IMPLEMENTATION_IN_PROGRESS; production NOT_READY.
@@ -219,6 +244,35 @@ release failures,1395provisional IDs,six safety cases and0/500human culinary
 approvals remain unresolved. No production deployment claimed.
 
 Earlier records follow as historical checkpoints.
+
+---
+
+## PR48 release-tool correction - 2026-10-31 JST
+
+ADR-075 addendum: Admin preflight/matrix now bind the immutable0046 checkpoint
+680502cc7aa64a4d11abca1ae0625ee9f5166d66, retaining original/V2 ancestry and
+parallel-main/post-checkpoint drift guards. Historical43/45 matrix cases remain;
+new46 cases cover fresh/populated upgrades, reapply, legacy NULL, immutable archive
+and receipt identity, missing/future ledger entries and strict45 rollback refusal.
+No runtime, migration, workflow or payment bytes changed by this correction.
+
+Executed in Takolio-recipe-v3-cooking-fix with Node24/pnpm10:
+`CI=1 PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp pnpm check`
+PASS exit0;431files/9665tests/1018.97s, lint/typecheck/migrations/builds PASS.
+Log/exit: /private/tmp/takolio-pr48-full-check.log and .exit.
+`pnpm exec vitest run tests/unit/admin-customer-baseline.test.mjs` PASS25tests;
+/private/tmp/takolio-pr48-baseline-tests.log. Real local D1 matrix
+`node scripts/admin-migration-matrix.mjs --out /private/tmp/takolio-pr48-migration-matrix.json`
+PASS38/38,exit0; matching .log/.exit. SQL-only; not Worker recovery proof.
+Preflight validate reported configuration PASS, baseline680502cc, dirty checkout,
+readyForDeployment=false, remoteExecuted=false; no production readiness inferred.
+
+Next: commit/push correction on PR48; reconcile its46 coverage with PR49's47
+baseline a1e706c7c870881d2e472ef7a1b211ac61bdd38c. PR38 exactb40a03dd has
+AI technical approval via vn-taphoanhatung; CI41161395140 SUCCESS, Admin41161395154
+pending at this observation. Continue normal protected merges. Deployment permission
+persists; four catalog data gates, source/food-safety evidence, approved publication
+and same-source hosted certification remain. No production mutation or deployment.
 
 ---
 
