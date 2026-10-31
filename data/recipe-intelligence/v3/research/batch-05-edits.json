@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "edits": [
+    {
+      "recipeId": "imp-ac255bcc36d1324e",
+      "path": "/ingredients/7/note",
+      "oldValue": "Sốt teriyaki truyền thống của JOC chỉ gồm 4 nguyên liệu: sake, mirin, nước tương, đường. Cooking101 dùng tỷ lệ tương đương (2 Tbsp mỗi loại cho 2 phần) nhưng thêm 1⁄4 cup nước và bột ngô.",
+      "newValue": "Với 2 phần, sốt JOC dùng 1 muỗng canh sake, 1 muỗng canh mirin, 2 muỗng canh nước tương và 1 muỗng canh đường. Cooking101 dùng 2 muỗng canh mỗi loại sake, mirin và nước tương, 1 muỗng canh đường, thêm 1/4 cup nước và 1 muỗng cà phê bột ngô. Hai tỷ lệ sốt khác nhau; bản này giữ biến thể JOC, không gộp định lượng.",
+      "reason": "Correct measurable source ratios without changing the chosen formula.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-05-evidence.json#/recipes/10/claims/1"
+      ]
+    },
+    {
+      "recipeId": "imp-b6dae711698259d6",
+      "path": "/steps/2/instruction",
+      "oldValue": "Đun sôi rồi hạ lửa liu riu 5 phút, sau đó vớt bỏ hết vỏ tôm. Đong lấy 4 chén nước dùng; nếu thiếu thì chêm thêm nước lọc.",
+      "newValue": "Đun sôi rồi hạ lửa liu riu 5 phút, sau đó vớt bỏ hết vỏ tôm. Đong lấy 960 ml nước dùng (4 cup theo định nghĩa của nguồn HTK); nếu thiếu thì chêm thêm nước lọc.",
+      "reason": "Use the explicit source volume instead of an ambiguous local cup.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-05-evidence.json#/recipes/18/claims/1"
+      ]
+    },
+    {
+      "recipeId": "imp-f729957329cd75f5",
+      "path": "/ingredients/15/note",
+      "oldValue": "HTK: 3 muỗng canh/mẻ (~90ml cho 4 phần); SheSimmers: 1/3 chén/mẻ (~160ml cho 4 phần); lấy ~160ml. Không tiết kiệm dầu kẻo mì dính cục",
+      "newValue": "HTK dùng 45 ml dầu cho 2 phần, tương ứng 90 ml khi nhân đôi cho 4 phần. Chưa đọc được SheSimmers trong lượt này nên chưa xác nhận nhận định 160 ml cho 4 phần. Giữ 160 ml ở trạng thái chờ chọn biến thể và duyệt lượng dầu; không coi hai nguồn đã thống nhất.",
+      "reason": "Bound oil scaling to the readable source and preserve unresolved quantity.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-05-evidence.json#/recipes/19/claims/1"
+      ]
+    },
+    {
+      "recipeId": "imp-f729957329cd75f5",
+      "path": "/ingredients/6/note",
+      "oldValue": "HTK: 2 muỗng canh/mẻ; SheSimmers: 8g/mẻ; quy ra ~16g cho 4 phần. Rửa qua nước, băm thô; dị ứng tôm khô có thể bỏ qua",
+      "newValue": "HTK: 2 muỗng canh/mẻ; SheSimmers: 8g/mẻ; quy ra ~16g cho 4 phần. Rửa qua nước, băm thô; bỏ tôm khô vẫn còn 400 g tôm tươi trong món; người dị ứng tôm không dùng công thức này khi chưa có phương án thay thế được duyệt",
+      "reason": "Retained fresh shrimp makes the original dried-shrimp omission advice misleading for shrimp allergy; no allergen-safe substitution is approved.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-05-evidence.json#/recipes/19/claims/2"
+      ]
+    }
+  ]
+}

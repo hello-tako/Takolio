@@ -1,0 +1,3810 @@
+{
+  "schemaVersion": 1,
+  "program": "TAKOLIO_RECIPE_INTELLIGENCE_V3",
+  "dataset": "recipe-refresh-v2-bounded-pilot",
+  "generatedAt": "2026-10-26T11:53:28.405850Z",
+  "status": "RECIPE_V3_RESEARCH_IN_PROGRESS",
+  "pilotStatus": "BOUNDED_RESEARCH_REVIEW_PENDING",
+  "scope": {
+    "pilotRecipeCount": 20,
+    "catalogRecipeCount": 500,
+    "fullRecipeVerificationCompleted": 0,
+    "description": "Selected high-risk pilot findings only. Unmentioned ingredients, quantities, steps, metadata, nutrition and allergens remain unverified."
+  },
+  "humanReview": "PENDING",
+  "sourcePromotionAllowed": false,
+  "runtimePromotionAllowed": false,
+  "interpretation": "Agent-reviewed, source-specific bounded claims. FACT_SUPPORTED may describe an explicitly labelled internal V2 observation, never complete recipe verification. SOURCE_CONFLICT is reserved for contradictions within inspected source content. Variant differences are labelled separately. No human approval, nutrition certification, image reuse permission or source content_verified promotion.",
+  "summary": {
+    "recipeCount": 20,
+    "sourceAttemptCount": 46,
+    "sourceStatusCounts": {
+      "SOURCE_CONTENT_READ": 30,
+      "SOURCE_RELEVANCE_VERIFIED": 30,
+      "SOURCE_UNAVAILABLE": 16,
+      "URL_DISCOVERED": 46,
+      "URL_REACHABLE": 32
+    },
+    "claimCount": 55,
+    "claimStatusCounts": {
+      "FACT_SUPPORTED": 21,
+      "SOURCE_CONFLICT": 4,
+      "SOURCE_CONTENT_READ": 18,
+      "SOURCE_UNAVAILABLE": 12
+    },
+    "findingTypeCounts": {
+      "BOUNDED_IDENTITY_SUPPORT": 1,
+      "BOUNDED_METHOD_SUPPORT": 6,
+      "BOUNDED_PROCESS_ROLE_SUPPORT": 1,
+      "DIRECT_SOURCE_FACT": 3,
+      "INTERNAL_V2_DERIVED_COMPONENT_RISK": 1,
+      "INTERNAL_V2_IDENTITY_INCONSISTENCY": 1,
+      "INTERNAL_V2_INCONSISTENCY": 3,
+      "INTERNAL_V2_MISSING_INGREDIENT": 3,
+      "INTERNAL_V2_ROLE_INCONSISTENCY": 2,
+      "SOURCE_ACCESS_LIMIT": 12,
+      "SOURCE_INTERNAL_QUANTITY_CONFLICT": 2,
+      "SOURCE_INTERNAL_UNIT_CONFLICT": 2,
+      "UNSUPPORTED_DERIVATION": 6,
+      "VARIANT_DIFFERENCE": 12
+    },
+    "humanApprovedCount": 0,
+    "fullRecipeVerificationCompleted": 0,
+    "productionMutations": 0
+  },
+  "sources": [
+    {
+      "sourceId": "source-0436c887a17838d4",
+      "url": "https://www.youtube.com/watch?v=vO81lQvYodI",
+      "recipeIds": [
+        "vn-canh-01"
+      ],
+      "retrievedAt": "2026-10-26T11:16:37.963194Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.youtube.com/watch?v=vO81lQvYodI",
+      "contentType": "text/html; charset=utf-8",
+      "contentSha256": "8f64d72e167fb8b5d5eadc851ae8ad641322e7f7cfd4820dc812cb27e0f57e6a",
+      "byteLength": 1559695,
+      "title": "Canh Chua Cá - Vietnamese Sweet & Sour Fish Soup | Helen's Recipes - YouTube",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "unavailabilityReason": "HTTP_200_VIDEO_SHELL_WITHOUT_READABLE_RECIPE_OR_TRANSCRIPT"
+    },
+    {
+      "sourceId": "source-db19ad410f39dd5e",
+      "url": "https://netspace.edu.vn/cach-nau-canh-chua-ca-loc-don-gian/",
+      "recipeIds": [
+        "vn-canh-01"
+      ],
+      "retrievedAt": "2026-10-26T11:16:37.964168Z",
+      "httpStatus": 200,
+      "finalUrl": "https://netspace.edu.vn/cach-nau-canh-chua-ca-loc-don-gian/",
+      "contentType": "text/html; charset=utf-8",
+      "contentSha256": "0607839f82a915a7d76b43a0f4a7e78fc17cc3303ac4e636d1c228acb53ec757",
+      "byteLength": 74880,
+      "title": "CÁCH NẤU CANH CHUA CÁ LÓC ĐƠN GIẢN | Dạy nghề Netspace",
+      "author": "netspace.edu.vn",
+      "publishedAt": "15/04/2022 06:08 PM",
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Recipe yield; preparation and cooking paragraphs; snapshot lines 104, 132, 137, 140-142",
+        "reviewerSummary": "The page explicitly serves 4 people, uses 120g extracted tamarind liquid and 1.5L water, and cooks fish about 5 minutes before removing it.",
+        "supportLimits": "Tamarind liquid is not a measured mass of raw pulp; fish and vegetable quantities are not established by this fact."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Recipe yield; preparation and cooking paragraphs; snapshot lines 104, 132, 137, 140-142",
+          "reviewerSummary": "The page explicitly serves 4 people, uses 120g extracted tamarind liquid and 1.5L water, and cooks fish about 5 minutes before removing it.",
+          "supportLimits": "Tamarind liquid is not a measured mass of raw pulp; fish and vegetable quantities are not established by this fact."
+        }
+      ],
+      "visibleTextSha256": "c4ee82c54cc807163dfb9b0d93f9c2b7b46065612779ee94f59292b5490067ee"
+    },
+    {
+      "sourceId": "source-9e9019bd4dea7f0b",
+      "url": "https://bepnhatoi.net/pho-bo-tai-lan/",
+      "recipeIds": [
+        "vn-bun-01"
+      ],
+      "retrievedAt": "2026-10-26T11:16:37.964371Z",
+      "httpStatus": 200,
+      "finalUrl": "https://bepnhatoi.net/pho-bo-tai-lan/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "871e7f24b001e1a8e7be76043c87c13d6d9a9ca2fe707fe3e8af9b480920f7b6",
+      "byteLength": 195912,
+      "title": "Bí quyết làm Phở Bò Tái Lăn ngon chuẩn vị Hà Nội tại Bếp Nhà Tôi",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Ingredients and broth simmering sections",
+        "reviewerSummary": "The recipe describes 4-5 bowls, 1-1.5kg beef bones, 4-5L water, and 3-4 hours simmering, ideally 6-8 hours.",
+        "supportLimits": "These ranges do not certify every V2 scale factor, final broth yield or seasoning conversion."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Ingredients and broth simmering sections",
+          "reviewerSummary": "The recipe describes 4-5 bowls, 1-1.5kg beef bones, 4-5L water, and 3-4 hours simmering, ideally 6-8 hours.",
+          "supportLimits": "These ranges do not certify every V2 scale factor, final broth yield or seasoning conversion."
+        }
+      ],
+      "visibleTextSha256": "0c584a9acc4a825f9258fd543d4edcbd12acb435a6e581d6187354af5eeb95b9"
+    },
+    {
+      "sourceId": "source-b18af86d23f06887",
+      "url": "http://phothin1955.vn/vi/cung-hoc-cach-lam-mon-pho-bo-tai-lan",
+      "recipeIds": [
+        "vn-bun-01"
+      ],
+      "retrievedAt": "2026-10-26T11:16:37.964547Z",
+      "httpStatus": 200,
+      "finalUrl": "http://phothin1955.vn/vi/cung-hoc-cach-lam-mon-pho-bo-tai-lan",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "cd78fa4b8be0330582ddb6ab5ed473804919f7794780f19203f9757d2a7ddafc",
+      "byteLength": 108049,
+      "title": "Cùng Phở Thìn 1955 học cách làm món phở bò tái lăn cực đơn giản | Tinh hoa Phở Hà Nội",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Broth seasoning and simmering paragraphs; snapshot lines 57-58",
+        "reviewerSummary": "Seasoning is specified per 2L broth; the page describes 10-12 hours simmering or about 1.5 hours under pressure.",
+        "supportLimits": "The retrieved page also contains unrelated casino spam; authority is reduced. Timing differs from another recipe variant."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Broth seasoning and simmering paragraphs; snapshot lines 57-58",
+          "reviewerSummary": "Seasoning is specified per 2L broth; the page describes 10-12 hours simmering or about 1.5 hours under pressure.",
+          "supportLimits": "The retrieved page also contains unrelated casino spam; authority is reduced. Timing differs from another recipe variant."
+        }
+      ],
+      "visibleTextSha256": "0aded1db02d922ad37201927925a093510d03c203d81e4c240c4de0ea10d2815"
+    },
+    {
+      "sourceId": "source-b5359c0bd29dd496",
+      "url": "https://phunutoday.vn/cong-thuc-lam-thit-kho-tau-nuoc-dua-ngon-bat-bai-d440940.html",
+      "recipeIds": [
+        "vn-kho-01"
+      ],
+      "retrievedAt": "2026-10-26T11:16:37.964714Z",
+      "httpStatus": 200,
+      "finalUrl": "https://phunutoday.vn/cong-thuc-lam-thit-kho-tau-nuoc-dua-ngon-bat-bai-d440940.html",
+      "contentType": "text/html; charset=utf-8",
+      "contentSha256": "561116a9246751d24bdb2ddfd724c243c4fd656ef6f17bf41947c1d2e50b88e0",
+      "byteLength": 117185,
+      "title": "Công thức làm thịt kho tàu nước dừa ngon bất bại",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Ingredients, marinade, caramel and braising sections; snapshot lines 69-82",
+        "reviewerSummary": "The recipe uses 500g pork, 5-7 eggs, one spoon sugar in marinade and two spoons for caramel, then braises 1-1.5 hours.",
+        "supportLimits": "The separate sugar uses do not prove that the V2 total of two tablespoons covers its instructions."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Ingredients, marinade, caramel and braising sections; snapshot lines 69-82",
+          "reviewerSummary": "The recipe uses 500g pork, 5-7 eggs, one spoon sugar in marinade and two spoons for caramel, then braises 1-1.5 hours.",
+          "supportLimits": "The separate sugar uses do not prove that the V2 total of two tablespoons covers its instructions."
+        }
+      ],
+      "visibleTextSha256": "703a9797f0196761819f84ec707c2b1def044f73d53abed0f3c9af48a5c9fe91"
+    },
+    {
+      "sourceId": "source-0b2200880d4b0476",
+      "url": "https://memart.vn/tin-tuc/how-blog/huong-dan-cach-lam-thit-kho-tau-trung-ga-ngon-va-dam-da-dung-vi-truyen-thong-vi-cb.html",
+      "recipeIds": [
+        "vn-kho-01"
+      ],
+      "retrievedAt": "2026-10-26T11:16:37.964877Z",
+      "httpStatus": 200,
+      "finalUrl": "https://memart.vn/tin-tuc/how-blog/huong-dan-cach-lam-thit-kho-tau-trung-ga-ngon-va-dam-da-dung-vi-truyen-thong-vi-cb.html",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "9a18bd56b426162babf385b61a13705cb525c27117376cdd9dd17657d6613a8b",
+      "byteLength": 225725,
+      "title": "Cách Làm Thịt Kho Tàu Trứng Gà: Bí Quyết Ngon Chuẩn Vị",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Cach 1: traditional recipe; snapshot lines 34-55",
+        "reviewerSummary": "This variant uses 500g pork, 5-6 eggs and coconut water; it simmers pork about 30 minutes, then eggs another 10-15 minutes.",
+        "supportLimits": "This aggregate also contains other variants. Do not combine their quantities as one recipe."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Cach 1: traditional recipe; snapshot lines 34-55",
+          "reviewerSummary": "This variant uses 500g pork, 5-6 eggs and coconut water; it simmers pork about 30 minutes, then eggs another 10-15 minutes.",
+          "supportLimits": "This aggregate also contains other variants. Do not combine their quantities as one recipe."
+        }
+      ],
+      "visibleTextSha256": "949a200c52c9bca26a1f6b7f571ea0d2337da4d938d2e013c329b9e95e574fcf"
+    },
+    {
+      "sourceId": "source-50b64f4f461c6483",
+      "url": "https://giadinh.suckhoedoisong.vn/chi-voi-vai-buoc-don-gian-khong-ton-thoi-gian-ban-da-co-ngay-mon-ga-hap-la-chanh-khong-can-nuoc-rat-thom-ngon-dung-vi-172250306162225007.htm",
+      "recipeIds": [
+        "vn-hap-01"
+      ],
+      "retrievedAt": "2026-10-26T11:16:37.965047Z",
+      "httpStatus": 200,
+      "finalUrl": "https://giadinh.suckhoedoisong.vn/chi-voi-vai-buoc-don-gian-khong-ton-thoi-gian-ban-da-co-ngay-mon-ga-hap-la-chanh-khong-can-nuoc-rat-thom-ngon-dung-vi-172250306162225007.htm",
+      "contentType": "text/html; charset=utf-8",
+      "contentSha256": "fabcff1df3a7812930dccdb4bc8c60fd08a38b6f9e018970cd258cda77f39ef4",
+      "byteLength": 176531,
+      "title": "Bí quyết để gà hấp lá chanh không cần nước thơm ngon hơn",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Ingredients and salt-bed cooking; snapshot lines 86, 94-100",
+        "reviewerSummary": "The recipe specifies a whole 1.5-2kg chicken, 500g coarse salt below aromatics, no direct chicken-salt contact, and about 30-45 minutes cooking.",
+        "supportLimits": "It does not validate V2 timing for an 800g half chicken or certify a food-safety endpoint."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Ingredients and salt-bed cooking; snapshot lines 86, 94-100",
+          "reviewerSummary": "The recipe specifies a whole 1.5-2kg chicken, 500g coarse salt below aromatics, no direct chicken-salt contact, and about 30-45 minutes cooking.",
+          "supportLimits": "It does not validate V2 timing for an 800g half chicken or certify a food-safety endpoint."
+        }
+      ],
+      "visibleTextSha256": "711e4d63823e7d0e3762b3706b8847cbe7f6481435a56ca3f53e14d1f3f4adc5"
+    },
+    {
+      "sourceId": "source-c2a359014c1c1acd",
+      "url": "https://phunutoday.vn/luoc-ga-bang-nuoc-lanh-hay-nuoc-soi-deu-la-dai-cach-luoc-ga-khong-can-nuoc-ngot-thit-an-roi-nho-mai-d506683.html",
+      "recipeIds": [
+        "vn-hap-01"
+      ],
+      "retrievedAt": "2026-10-26T11:16:37.965211Z",
+      "httpStatus": 200,
+      "finalUrl": "https://phunutoday.vn/luoc-ga-bang-nuoc-lanh-hay-nuoc-soi-deu-la-dai-cach-luoc-ga-khong-can-nuoc-ngot-thit-an-roi-nho-mai-d506683.html",
+      "contentType": "text/html; charset=utf-8",
+      "contentSha256": "c5aab958f3d345766b04f6f2d215b14703808ffa30e9f645337bcddab717081f",
+      "byteLength": 117759,
+      "title": "Luộc gà bằng nước lạnh hay nước sôi đều là dại: Cách luộc gà không cần nước ngọt thịt, ăn rồi nhớ mãi",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Ingredients and salt-bed steaming method; final handling at snapshot lines 85-88",
+        "reviewerSummary": "A whole chicken of about 1.5kg cooks over a coarse-salt and leaf bed for about 45-60 minutes; a thick leaf barrier separates chicken from salt.",
+        "supportLimits": "This is a distinct whole-bird variant with mugwort; no direct scaling to V2 half-bird time is established."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Ingredients and salt-bed steaming method; final handling at snapshot lines 85-88",
+          "reviewerSummary": "A whole chicken of about 1.5kg cooks over a coarse-salt and leaf bed for about 45-60 minutes; a thick leaf barrier separates chicken from salt.",
+          "supportLimits": "This is a distinct whole-bird variant with mugwort; no direct scaling to V2 half-bird time is established."
+        }
+      ],
+      "visibleTextSha256": "b7527f4c611a179440c610aecc200f7e7cee2f52d847aff683ae3ad6da8d9272"
+    },
+    {
+      "sourceId": "source-514a7ca4c03688ec",
+      "url": "https://getrecipecart.com/recipe/salt-and-pepper-squid-/63c1bcb9c3164fe55690ffe9",
+      "recipeIds": [
+        "imp-6eaf6ed6d417c52c"
+      ],
+      "retrievedAt": "2026-10-26T11:16:41.090851Z",
+      "httpStatus": 200,
+      "finalUrl": "https://getrecipecart.com/recipe/salt-and-pepper-squid-/63c1bcb9c3164fe55690ffe9",
+      "contentType": "text/html; charset=utf-8",
+      "contentSha256": "15517c569a06f068e79785195ab763b68384475c98737aca17b8f3ad5aa4e2fa",
+      "byteLength": 45797,
+      "title": "Salt and Pepper Squid (椒盐鱿鱼) | Recipe Cart | Recipe Cart",
+      "author": null,
+      "publishedAt": "2022-02-03T22:08:16+00:00",
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Recipe card ingredients and steps 1-6; snapshot lines 25-47",
+        "reviewerSummary": "The 2-serving card uses 250g squid, 7 tablespoons flour split 4 wet/3 dry, 3 tablespoons starch, 3 tablespoons water, 1/4 teaspoon seasoning in batter and 1/8 teaspoon finishing seasoning; fry at 180C in 2-3 batches.",
+        "supportLimits": "Recipe Cart is an aggregator. The card gives a total seasoning of 3/8 teaspoon; it does not establish absorbed frying oil."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Recipe card ingredients and steps 1-6; snapshot lines 25-47",
+          "reviewerSummary": "The 2-serving card uses 250g squid, 7 tablespoons flour split 4 wet/3 dry, 3 tablespoons starch, 3 tablespoons water, 1/4 teaspoon seasoning in batter and 1/8 teaspoon finishing seasoning; fry at 180C in 2-3 batches.",
+          "supportLimits": "Recipe Cart is an aggregator. The card gives a total seasoning of 3/8 teaspoon; it does not establish absorbed frying oil."
+        }
+      ],
+      "visibleTextSha256": "4cfc66d26b1c09c0731186fad2d7dcb19f33ed6698ca96bbd011e74311e90ce3"
+    },
+    {
+      "sourceId": "source-5772c61dcd20c537",
+      "url": "https://pyskitchen.com/pyskitchen-recipe/salt-and-pepper-squid",
+      "recipeIds": [
+        "imp-6eaf6ed6d417c52c"
+      ],
+      "retrievedAt": "2026-10-26T11:16:41.799154Z",
+      "httpStatus": 200,
+      "finalUrl": "https://pyskitchen.com/pyskitchen-recipe/salt-and-pepper-squid",
+      "contentType": "text/html;charset=utf-8",
+      "contentSha256": "eafb60c227da69520635a504afc5d1233416cb70cea3b3b7e82c33287c9d8011",
+      "byteLength": 614295,
+      "title": "How To Make The Best Salt And Pepper Squid - 椒盐鱿鱼 — PY's Kitchen | Homemade Recipes",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Recipe card and coating instructions; snapshot lines 52-85",
+        "reviewerSummary": "The variant uses 250-300g squid, an egg, Shaoxing wine and starch coating before deep-frying and a garlic-pepper finish.",
+        "supportLimits": "This egg-and-starch coating differs from the Recipe Cart flour batter; mixing the two needs an explicit variant decision."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Recipe card and coating instructions; snapshot lines 52-85",
+          "reviewerSummary": "The variant uses 250-300g squid, an egg, Shaoxing wine and starch coating before deep-frying and a garlic-pepper finish.",
+          "supportLimits": "This egg-and-starch coating differs from the Recipe Cart flour batter; mixing the two needs an explicit variant decision."
+        }
+      ],
+      "visibleTextSha256": "f32d5007f157ded98d6f51e881ca38f58e0fac4ea9eeafb46f233aa3438d2dbf"
+    },
+    {
+      "sourceId": "source-e1a167c396192c8d",
+      "url": "https://m.10000recipe.com/en/6970120/The_recipe_for_stir-fried_squid_soy_sauce_is_sweet_and_salty__It",
+      "recipeIds": [
+        "imp-7d38862afc164a8d"
+      ],
+      "retrievedAt": "2026-10-26T11:16:41.932299Z",
+      "httpStatus": 200,
+      "finalUrl": "https://m.10000recipe.com/en/6970120/The_recipe_for_stir-fried_squid_soy_sauce_is_sweet_and_salty__It",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "c97892fb0f8cb3e1b6eb2e7f4192247fc55404dbb9e537602a4b26d9ba7ac432",
+      "byteLength": 24781,
+      "title": "The recipe for stir-fried squid soy sauce is sweet and salty. It",
+      "author": "10000recipe",
+      "publishedAt": "2021-12-03T09:08:15+09:00",
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Ingredient units and method steps 3-5; snapshot lines 19-26, 46, 50-54",
+        "reviewerSummary": "Ingredient entries label garlic, oyster sauce and sesame oil as 1Ts each, whereas instructions use 1ts for each.",
+        "supportLimits": "The source contradicts itself on tablespoon/teaspoon case; neither interpretation is certified by retrieval."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Ingredient units and method steps 3-5; snapshot lines 19-26, 46, 50-54",
+          "reviewerSummary": "Ingredient entries label garlic, oyster sauce and sesame oil as 1Ts each, whereas instructions use 1ts for each.",
+          "supportLimits": "The source contradicts itself on tablespoon/teaspoon case; neither interpretation is certified by retrieval."
+        }
+      ],
+      "visibleTextSha256": "b7ef30bc993864c0c66ef85d2974c915de120503469049ab4f1365e8a68a64e4"
+    },
+    {
+      "sourceId": "source-da7ec3a8830ba3a0",
+      "url": "https://m.10000recipe.com/en/6693335/Stir-fried_squid_with_soy_sauce",
+      "recipeIds": [
+        "imp-7d38862afc164a8d"
+      ],
+      "retrievedAt": "2026-10-26T11:16:41.936144Z",
+      "httpStatus": 200,
+      "finalUrl": "https://m.10000recipe.com/en/6693335/Stir-fried_squid_with_soy_sauce",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "1f3f74f1585b80c7353b47d29dea144da6ba719153568dccfd49c2ac1e0ee135",
+      "byteLength": 28153,
+      "title": "Stir-fried squid with soy sauce",
+      "author": "10000recipe",
+      "publishedAt": "2015-04-09T13:34:36+09:00",
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Cooking steps 1-5; snapshot lines 24-32",
+        "reviewerSummary": "The alternative stir-fries cleaned squid with vegetables and soy sauce, with mayonnaise and optional starch thickening.",
+        "supportLimits": "It supports only a related stir-fry pattern; its sauce is not a replacement specification for the declared source."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Cooking steps 1-5; snapshot lines 24-32",
+          "reviewerSummary": "The alternative stir-fries cleaned squid with vegetables and soy sauce, with mayonnaise and optional starch thickening.",
+          "supportLimits": "It supports only a related stir-fry pattern; its sauce is not a replacement specification for the declared source."
+        }
+      ],
+      "visibleTextSha256": "1b541299b20af63bcd331b4ef72b457a2f42394c92b7d907b8303171477c4ce1"
+    },
+    {
+      "sourceId": "source-ea141e84d6c1fd8d",
+      "url": "https://xaydungso.vn/blog/cach-chon-lua-hom-nay-an-rau-gi-de-dam-bao-du-dinh-duong-vi-cb.html",
+      "recipeIds": [
+        "imp-0d6c454ae1073ef6"
+      ],
+      "retrievedAt": "2026-10-26T11:16:42.094428Z",
+      "httpStatus": 200,
+      "finalUrl": "https://xaydungso.vn/blog/cach-chon-lua-hom-nay-an-rau-gi-de-dam-bao-du-dinh-duong-vi-cb.html",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "1ebbe747543ca801f53b97750ae38e5c2b2a50d021dba0ae0089d71d02a375e1",
+      "byteLength": 77704,
+      "title": "Hôm Nay Ăn Rau Gì? - Lựa Chọn Rau Tươi Ngon Cho Bữa Ăn Khỏe Mạnh",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Su su hap mam toi subsection only; snapshot lines 151-157",
+        "reviewerSummary": "The subsection names chayote, garlic, oil, salt and fish sauce, then steams chayote and dresses it with garlic-fish sauce.",
+        "supportLimits": "The broad vegetable aggregate provides no quantities, serving count, scallion or optional soy sauce in this subsection."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Su su hap mam toi subsection only; snapshot lines 151-157",
+          "reviewerSummary": "The subsection names chayote, garlic, oil, salt and fish sauce, then steams chayote and dresses it with garlic-fish sauce.",
+          "supportLimits": "The broad vegetable aggregate provides no quantities, serving count, scallion or optional soy sauce in this subsection."
+        }
+      ],
+      "visibleTextSha256": "946d0de8e39a344343fb0d49d1cfe9b5b113b99d4b52b96dbe921ef4cbed9d99"
+    },
+    {
+      "sourceId": "source-ef032589361fa67a",
+      "url": "https://www.dienmayxanh.com/vao-bep/2-cach-lam-su-su-luoc-va-ngon-su-su-luoc-ngon-ngot-xanh-don-08697",
+      "recipeIds": [
+        "imp-0d6c454ae1073ef6"
+      ],
+      "retrievedAt": "2026-10-26T11:16:42.243021Z",
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "contentSha256": null,
+      "byteLength": null,
+      "title": null,
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "retrievalError": "URLError: <urlopen error timed out>",
+      "unavailabilityReason": "RETRIEVAL_FAILED_NO_CONTENT_READ"
+    },
+    {
+      "sourceId": "source-8aae0d57aa7d2f1d",
+      "url": "https://phunutoday.vn/rau-muong-xao-toi-xanh-gion-dau-bep-mach-1-meo-lam-don-gian-d463579.html",
+      "recipeIds": [
+        "vn-xao-01"
+      ],
+      "retrievedAt": "2026-10-26T11:16:42.517119Z",
+      "httpStatus": 200,
+      "finalUrl": "https://phunutoday.vn/rau-muong-xao-toi-xanh-gion-dau-bep-mach-1-meo-lam-don-gian-d463579.html",
+      "contentType": "text/html; charset=utf-8",
+      "contentSha256": "c2a05f66e3d6be9f5d0819784201842a505fb9007b1ef5f57bc0d9b84ddfc666",
+      "byteLength": 118089,
+      "title": "Rau muống xào tỏi xanh giòn: Đầu bếp mách 1 mẹo làm đơn giản",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Blanching and stir-frying method",
+        "reviewerSummary": "The recipe blanches water spinach with 1/2 teaspoon salt for 30 seconds to 1 minute, then stir-fries quickly.",
+        "supportLimits": "A blanching amount is process water seasoning; this does not establish a further consumed half teaspoon in V2."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Blanching and stir-frying method",
+          "reviewerSummary": "The recipe blanches water spinach with 1/2 teaspoon salt for 30 seconds to 1 minute, then stir-fries quickly.",
+          "supportLimits": "A blanching amount is process water seasoning; this does not establish a further consumed half teaspoon in V2."
+        }
+      ],
+      "visibleTextSha256": "8c9a71324cf332089c81f32ae981d93f0d2fd42890f1b74e6e5b868738b08259"
+    },
+    {
+      "sourceId": "source-22399e047b600b57",
+      "url": "https://memart.vn/tin-tuc/how-blog/huong-dan-cach-lam-rau-muong-xao-toi-xanh-gion-ngon-va-dam-da-vi-cb.html",
+      "recipeIds": [
+        "vn-xao-01"
+      ],
+      "retrievedAt": "2026-10-26T11:16:42.697228Z",
+      "httpStatus": 200,
+      "finalUrl": "https://memart.vn/tin-tuc/how-blog/huong-dan-cach-lam-rau-muong-xao-toi-xanh-gion-ngon-va-dam-da-vi-cb.html",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "520b869d3962529c27767f05162e3f9ab2826a06d56aa9b6d67d0946469550a3",
+      "byteLength": 222946,
+      "title": "Cách Làm Rau Muống Xào Tỏi Xanh Giòn - Bí Quyết Đơn Giản Ngay Tại Nhà",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Ingredient list and stir-fry instructions; ingredients at snapshot lines 38-47",
+        "reviewerSummary": "The ingredient list states one teaspoon fish sauce, whereas the stir-fry instructions use one tablespoon.",
+        "supportLimits": "This is a source-internal unit conflict; the source cannot independently resolve V2 fish-sauce selection."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Ingredient list and stir-fry instructions; ingredients at snapshot lines 38-47",
+          "reviewerSummary": "The ingredient list states one teaspoon fish sauce, whereas the stir-fry instructions use one tablespoon.",
+          "supportLimits": "This is a source-internal unit conflict; the source cannot independently resolve V2 fish-sauce selection."
+        }
+      ],
+      "visibleTextSha256": "49c1d172b7c95c72180835fce5bdb79944640809e8af8f1875167e68b3e20036"
+    },
+    {
+      "sourceId": "source-5057352a318a5e16",
+      "url": "https://vnexpress.net/rau-luoc-cham-kho-quet-ngon-tuyet-cho-ngay-mat-3575389.html",
+      "recipeIds": [
+        "vn-hap-04"
+      ],
+      "retrievedAt": "2026-10-26T11:16:42.725153Z",
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "contentSha256": null,
+      "byteLength": null,
+      "title": null,
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "retrievalError": "IncompleteRead: IncompleteRead(129073 bytes read)",
+      "unavailabilityReason": "RETRIEVAL_FAILED_NO_CONTENT_READ"
+    },
+    {
+      "sourceId": "source-f7247932fc7ba07a",
+      "url": "https://cookpad.com/vn/cong-thuc/10610434",
+      "recipeIds": [
+        "vn-hap-04"
+      ],
+      "retrievedAt": "2026-10-26T11:16:43.040335Z",
+      "httpStatus": 200,
+      "finalUrl": "https://cookpad.com/vn/cong-thuc/10610434",
+      "contentType": "text/html; charset=utf-8",
+      "contentSha256": "90ed1977f45038f129a93f71b536778cbe7a33a17b8115149c2e0c02bfcf86db",
+      "byteLength": 257233,
+      "title": "Cách Làm Món Tóp Mỡ Kho Quẹt + Rau Củ Luộc của  BẾP CỦA TUI - CookpadThêm CooksnapChia sẻInInSao chép thành văn bảnThêm CooksnapChia sẻThêm CooksnapChia sẻInInSao chép thành văn bảnThêm Cooksnap",
+      "author": " BẾP CỦA TUI",
+      "publishedAt": "2019-09-14",
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Ingredients and cooking steps; snapshot lines 112-118, 132, 138-142",
+        "reviewerSummary": "The recipe begins with five tablespoons already-rendered crackling, four tablespoons fish sauce and three tablespoons sugar; it reheats the ready crackling and returns it to reduced sauce.",
+        "supportLimits": "It gives no raw-pork-to-80g-crackling conversion and does not validate adding raw pork plus derived crackling plus retained fat as separate intake."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Ingredients and cooking steps; snapshot lines 112-118, 132, 138-142",
+          "reviewerSummary": "The recipe begins with five tablespoons already-rendered crackling, four tablespoons fish sauce and three tablespoons sugar; it reheats the ready crackling and returns it to reduced sauce.",
+          "supportLimits": "It gives no raw-pork-to-80g-crackling conversion and does not validate adding raw pork plus derived crackling plus retained fat as separate intake."
+        }
+      ],
+      "visibleTextSha256": "2a497ec93e192bf4582b0c3aad7ee5dd68191dcdbff7d3f440ffe2102648e4c0"
+    },
+    {
+      "sourceId": "source-92b50dc6c2d91fff",
+      "url": "https://vnexpress.net/doi-song-cooking-nem-ran-4419689.html",
+      "recipeIds": [
+        "vn-chien-05"
+      ],
+      "retrievedAt": "2026-10-26T11:16:43.178882Z",
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "contentSha256": null,
+      "byteLength": null,
+      "title": null,
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "retrievalError": "IncompleteRead: IncompleteRead(128978 bytes read)",
+      "unavailabilityReason": "RETRIEVAL_FAILED_NO_CONTENT_READ"
+    },
+    {
+      "sourceId": "source-2e18c83503562bb3",
+      "url": "http://vovankienthuc.com/blog/cach-lam-nem-ran-truyen-thong-ha-noi.737",
+      "recipeIds": [
+        "vn-chien-05"
+      ],
+      "retrievedAt": "2026-10-26T11:16:43.402516Z",
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "contentSha256": null,
+      "byteLength": null,
+      "title": null,
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "retrievalError": "ConnectionResetError: [Errno 54] Connection reset by peer",
+      "unavailabilityReason": "RETRIEVAL_FAILED_NO_CONTENT_READ"
+    },
+    {
+      "sourceId": "source-390454e00fe38e77",
+      "url": "https://vtimes.com.au/cach-lam-nem-ran-thom-ngon-gion-rum-chuan-vi-ha-noi-3836663.html",
+      "recipeIds": [
+        "vn-chien-05"
+      ],
+      "retrievedAt": "2026-10-26T11:16:46.390051Z",
+      "httpStatus": 200,
+      "finalUrl": "https://vtimes.com.au/cach-lam-nem-ran-thom-ngon-gion-rum-chuan-vi-ha-noi-3836663.html",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "2c2deeac75f8f6ce9acb59f0b810f5194b4c318cb2521ff22a568ce9bfb00d36",
+      "byteLength": 146159,
+      "title": "Cách làm nem rán thơm ngon, giòn rụm chuẩn vị Hà Nội | Ẩm Thực",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Nem ran ingredient list and filling paragraph; snapshot lines 239-261",
+        "reviewerSummary": "The list specifies 200g pork, 100g noodles and three egg yolks, while the filling paragraph calls for two yolks.",
+        "supportLimits": "The source has a three-versus-two yolk conflict; it does not validate V2 whole-egg identity or shrimp scaling."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Nem ran ingredient list and filling paragraph; snapshot lines 239-261",
+          "reviewerSummary": "The list specifies 200g pork, 100g noodles and three egg yolks, while the filling paragraph calls for two yolks.",
+          "supportLimits": "The source has a three-versus-two yolk conflict; it does not validate V2 whole-egg identity or shrimp scaling."
+        }
+      ],
+      "visibleTextSha256": "13592821d6415b821adf09d904bffaf10a8813837a9095b8b387aa51a5f8940d"
+    },
+    {
+      "sourceId": "source-47c227c8cb5b128f",
+      "url": "https://www.dienmayxanh.com/vao-bep/4-cach-lam-dau-hu-non-sot-nam-thom-nuc-mui-de-lam-tai-nha-07554",
+      "recipeIds": [
+        "vn-chay-05"
+      ],
+      "retrievedAt": "2026-10-26T11:16:47.816409Z",
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "contentSha256": null,
+      "byteLength": null,
+      "title": null,
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "retrievalError": "URLError: <urlopen error timed out>",
+      "unavailabilityReason": "RETRIEVAL_FAILED_NO_CONTENT_READ"
+    },
+    {
+      "sourceId": "source-7c3a787d08608df5",
+      "url": "https://saigonesebaguette.vn/cach-nau-nam-rom-voi-dau-hu-thanh-dam-dam-da-huong-vi/",
+      "recipeIds": [
+        "vn-chay-05"
+      ],
+      "retrievedAt": "2026-10-26T11:16:48.158621Z",
+      "httpStatus": 200,
+      "finalUrl": "https://saigonesebaguette.vn/cach-nau-nam-rom-voi-dau-hu-thanh-dam-dam-da-huong-vi/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "e1e27883ed44b0f48a3e08c282a34a60d4903f6a8ac39e2d4f8fe31da1eb6a66",
+      "byteLength": 167572,
+      "title": "Cách Nấu Nấm Rơm Với Đậu Hũ Thanh Đạm, Đậm Đà Hương Vị - Saigonese Baguette - Xưởng Sản Xuất Bánh Mì Việt, Âu Chất Lượng Cao",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Ingredients and preparation/braising steps; snapshot lines 72-88",
+        "reviewerSummary": "The page uses 2-3 tablespoons soy sauce, optional one tablespoon vegetarian oyster sauce, 1-2 teaspoons sugar and two tablespoons oil; it fries tofu, then braises it with mushrooms 10-15 minutes.",
+        "supportLimits": "This is a fried/braised variant, not evidence for V2 steamed silken tofu or an averaged 1.5 tablespoons soy sauce."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Ingredients and preparation/braising steps; snapshot lines 72-88",
+          "reviewerSummary": "The page uses 2-3 tablespoons soy sauce, optional one tablespoon vegetarian oyster sauce, 1-2 teaspoons sugar and two tablespoons oil; it fries tofu, then braises it with mushrooms 10-15 minutes.",
+          "supportLimits": "This is a fried/braised variant, not evidence for V2 steamed silken tofu or an averaged 1.5 tablespoons soy sauce."
+        }
+      ],
+      "visibleTextSha256": "338390d02fa130d4224c7c95419b5b23aa1a8063f536234321fc75285c3545cb"
+    },
+    {
+      "sourceId": "source-e9d81137623c11e3",
+      "url": "https://thewaterman.vn/blogs/mon-ngon/4-cong-thuc-lam-goi-cuon-ngon-chuan-vi",
+      "recipeIds": [
+        "vn-cuon-01"
+      ],
+      "retrievedAt": "2026-10-26T11:16:49.170801Z",
+      "httpStatus": 200,
+      "finalUrl": "https://thewaterman.vn/blogs/mon-ngon/4-cong-thuc-lam-goi-cuon-ngon-chuan-vi",
+      "contentType": "text/html; charset=utf-8",
+      "contentSha256": "442ed536d9e309d5a5b2837a3b86e7627e3350392c5fa82d22638e25cf79294a",
+      "byteLength": 107813,
+      "title": "4 cách làm gỏi cuốn ngon chuẩn vị - The Water MAN",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Goi cuon tom thit subsection; snapshot lines 157-178",
+        "reviewerSummary": "The shrimp-pork subsection uses 300g shrimp and 250g pork; pickles use three tablespoons sugar and the hoisin-peanut dip uses another tablespoon.",
+        "supportLimits": "The page contains four distinct variants. Four tablespoons total sugar could explain 48g under V2 12g/spoon assumption, but that mass conversion remains unverified."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Goi cuon tom thit subsection; snapshot lines 157-178",
+          "reviewerSummary": "The shrimp-pork subsection uses 300g shrimp and 250g pork; pickles use three tablespoons sugar and the hoisin-peanut dip uses another tablespoon.",
+          "supportLimits": "The page contains four distinct variants. Four tablespoons total sugar could explain 48g under V2 12g/spoon assumption, but that mass conversion remains unverified."
+        }
+      ],
+      "visibleTextSha256": "2765cf4d3e26061aaff14b334eb0e37c889868cbbf20d0a9cb0029e888e44acf"
+    },
+    {
+      "sourceId": "source-1d788169c2d46d36",
+      "url": "http://naungon.com/index.php?id=-goi-cuon-tom-thit-kieu-moi-cham-nuoc-tuong-ngon-me-man--goi-cuon-tom-thit-trung-mon-nam-thien-truc-&pageindex=2897",
+      "recipeIds": [
+        "vn-cuon-01"
+      ],
+      "retrievedAt": "2026-10-26T11:16:49.400995Z",
+      "httpStatus": 403,
+      "finalUrl": null,
+      "contentType": null,
+      "contentSha256": null,
+      "byteLength": null,
+      "title": null,
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "retrievalError": "HTTPError: HTTP Error 403: Forbidden",
+      "unavailabilityReason": "RETRIEVAL_FAILED_NO_CONTENT_READ"
+    },
+    {
+      "sourceId": "source-848aa3e638becf80",
+      "url": "https://www.dienmayxanh.com/vao-bep/cach-lam-trung-cuon-rau-cu-thom-ngon-bo-duong-cho-gia-dinh-08718",
+      "recipeIds": [
+        "vn-sang-05"
+      ],
+      "retrievedAt": "2026-10-26T11:16:49.480355Z",
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "contentSha256": null,
+      "byteLength": null,
+      "title": null,
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "retrievalError": "URLError: <urlopen error timed out>",
+      "unavailabilityReason": "RETRIEVAL_FAILED_NO_CONTENT_READ"
+    },
+    {
+      "sourceId": "source-ea1f2b05855cdd35",
+      "url": "https://afamily.vn/them-mot-cach-lam-trung-cuon-ngon-oi-la-ngon-20160523040320254.chn",
+      "recipeIds": [
+        "vn-sang-05"
+      ],
+      "retrievedAt": "2026-10-26T11:16:49.730769Z",
+      "httpStatus": 200,
+      "finalUrl": "https://afamily.vn/them-mot-cach-lam-trung-cuon-ngon-oi-la-ngon-20160523040320254.chn",
+      "contentType": "text/html; charset=utf-8",
+      "contentSha256": "ec54504520b89ad5ca87a2b655df4ee4e4377fc36992f8ba91efbcd35c2df914",
+      "byteLength": 151524,
+      "title": "CÁCH LÀM TRỨNG CUỘN kiểu mới, Hướng dẫn làm trứng cuộn ngon",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Carrot egg-roll ingredients and method; snapshot lines 242-251",
+        "reviewerSummary": "The recipe uses four eggs, carrot, one tablespoon olive oil and salt; the thin egg sheet is rolled while just set.",
+        "supportLimits": "This supports the egg count and thin-roll technique only; it does not support V2 milk or all vegetable quantities."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Carrot egg-roll ingredients and method; snapshot lines 242-251",
+          "reviewerSummary": "The recipe uses four eggs, carrot, one tablespoon olive oil and salt; the thin egg sheet is rolled while just set.",
+          "supportLimits": "This supports the egg count and thin-roll technique only; it does not support V2 milk or all vegetable quantities."
+        }
+      ],
+      "visibleTextSha256": "3fbeec22fe15304c8fdb036a1d49d27fa6220ffb094f9a1844eac396832123ea"
+    },
+    {
+      "sourceId": "source-2f113645665a3506",
+      "url": "https://www.recipesfromitaly.com/spaghetti-al-pomodoro/",
+      "recipeIds": [
+        "gl-01"
+      ],
+      "retrievedAt": "2026-10-26T11:16:49.878982Z",
+      "httpStatus": 403,
+      "finalUrl": null,
+      "contentType": null,
+      "contentSha256": null,
+      "byteLength": null,
+      "title": null,
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "retrievalError": "HTTPError: HTTP Error 403: Forbidden",
+      "unavailabilityReason": "RETRIEVAL_FAILED_NO_CONTENT_READ"
+    },
+    {
+      "sourceId": "source-61f56b37f2b29b6c",
+      "url": "https://www.vincenzosplate.com/spaghetti-al-pomodoro/",
+      "recipeIds": [
+        "gl-01"
+      ],
+      "retrievedAt": "2026-10-26T11:16:50.246826Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.vincenzosplate.com/spaghetti-al-pomodoro/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "6ccc9a9aedb156a8f4cb6aca48ccccf85eb45cc9f8ce1697295c73fcde6ff195",
+      "byteLength": 589852,
+      "title": "Spaghetti al Pomodoro Recipe - The Authentic Italian Method",
+      "author": "Vincenzo's Plate",
+      "publishedAt": "2021-11-21T06:30:51+00:00",
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Recipe card; snapshot lines 101-120",
+        "reviewerSummary": "The 4-serving recipe uses 300g pasta and 400g tomato; sauce cooks about 10 minutes and the example pasta about 13 minutes or according to its package.",
+        "supportLimits": "V2 uses a different pasta scale and longer sauce cook; those can be variants and are not automatically errors."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Recipe card; snapshot lines 101-120",
+          "reviewerSummary": "The 4-serving recipe uses 300g pasta and 400g tomato; sauce cooks about 10 minutes and the example pasta about 13 minutes or according to its package.",
+          "supportLimits": "V2 uses a different pasta scale and longer sauce cook; those can be variants and are not automatically errors."
+        }
+      ],
+      "visibleTextSha256": "b3f12854c40df4abe3467238d77e12ebe753909109df5919f7a73d7e4d7cf159"
+    },
+    {
+      "sourceId": "source-f69c66b4a7cfbc39",
+      "url": "https://www.youtube.com/shorts/7X5bAKGGJXo",
+      "recipeIds": [
+        "gl-01"
+      ],
+      "retrievedAt": "2026-10-26T11:16:53.592403Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.youtube.com/shorts/7X5bAKGGJXo",
+      "contentType": "text/html; charset=utf-8",
+      "contentSha256": "68f862be87d12f1da404b23655f928868faf78b215d945e6f611c279cc966c10",
+      "byteLength": 1733404,
+      "title": "SPAGHETTI AL POMODORO #chefrufini - YouTube",
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "unavailabilityReason": "HTTP_200_VIDEO_SHELL_WITHOUT_READABLE_RECIPE_OR_TRANSCRIPT"
+    },
+    {
+      "sourceId": "source-08c6e25c01b18e99",
+      "url": "https://thewoksoflife.com/ma-po-tofu-real-deal/",
+      "recipeIds": [
+        "gl-02"
+      ],
+      "retrievedAt": "2026-10-26T11:16:54.492560Z",
+      "httpStatus": 403,
+      "finalUrl": null,
+      "contentType": null,
+      "contentSha256": null,
+      "byteLength": null,
+      "title": null,
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "retrievalError": "HTTPError: HTTP Error 403: Forbidden",
+      "unavailabilityReason": "RETRIEVAL_FAILED_NO_CONTENT_READ"
+    },
+    {
+      "sourceId": "source-64204ef097631f48",
+      "url": "https://www.chinasichuanfood.com/mapo-tofu-recipe/",
+      "recipeIds": [
+        "gl-02"
+      ],
+      "retrievedAt": "2026-10-26T11:16:54.718335Z",
+      "httpStatus": 403,
+      "finalUrl": null,
+      "contentType": null,
+      "contentSha256": null,
+      "byteLength": null,
+      "title": null,
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "retrievalError": "HTTPError: HTTP Error 403: Forbidden",
+      "unavailabilityReason": "RETRIEVAL_FAILED_NO_CONTENT_READ"
+    },
+    {
+      "sourceId": "source-5ae94971ad29e034",
+      "url": "https://thewoksoflife.com/wprm_print/chinese-tomato-egg-stir-fry/",
+      "recipeIds": [
+        "gl-03"
+      ],
+      "retrievedAt": "2026-10-26T11:16:55.046601Z",
+      "httpStatus": 403,
+      "finalUrl": null,
+      "contentType": null,
+      "contentSha256": null,
+      "byteLength": null,
+      "title": null,
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "retrievalError": "HTTPError: HTTP Error 403: Forbidden",
+      "unavailabilityReason": "RETRIEVAL_FAILED_NO_CONTENT_READ"
+    },
+    {
+      "sourceId": "source-e9e5b6e4e988e32e",
+      "url": "https://tasteasianfood.com/tomato-eggs/",
+      "recipeIds": [
+        "gl-03"
+      ],
+      "retrievedAt": "2026-10-26T11:16:55.113035Z",
+      "httpStatus": 200,
+      "finalUrl": "https://tasteasianfood.com/tomato-eggs/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "fec7d28bdf028126da275bca4589526dc0ff834ce2f9017755e2edc2e92d5c3c",
+      "byteLength": 370148,
+      "title": "Tomato eggs (蕃茄炒蛋)- How to cook in 15 minutes (Easy Chinese recipe)",
+      "author": "KP Kwan",
+      "publishedAt": "2020-08-25",
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Narrative egg section and recipe card; snapshot lines 87, 112-136",
+        "reviewerSummary": "The card uses 250g tomato and four eggs, cooking tomatoes and eggs separately before recombining; it includes ketchup and starch slurry. The narrative separately says five eggs.",
+        "supportLimits": "The narrative/card egg count conflicts. V2 amounts and omission of ketchup/slurry are a separate variant choice, not a proven defect."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Narrative egg section and recipe card; snapshot lines 87, 112-136",
+          "reviewerSummary": "The card uses 250g tomato and four eggs, cooking tomatoes and eggs separately before recombining; it includes ketchup and starch slurry. The narrative separately says five eggs.",
+          "supportLimits": "The narrative/card egg count conflicts. V2 amounts and omission of ketchup/slurry are a separate variant choice, not a proven defect."
+        }
+      ],
+      "visibleTextSha256": "ff7cab0f1932ad92f91e91bad5eb5b0864c6746ee7d556669576b48e48a37d17"
+    },
+    {
+      "sourceId": "source-69835b12f9afc9fb",
+      "url": "https://www.justonecookbook.com/oyakodon/comment-page-1/",
+      "recipeIds": [
+        "gl-04"
+      ],
+      "retrievedAt": "2026-10-26T11:16:55.214520Z",
+      "httpStatus": 403,
+      "finalUrl": null,
+      "contentType": null,
+      "contentSha256": null,
+      "byteLength": null,
+      "title": null,
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "retrievalError": "HTTPError: HTTP Error 403: Forbidden",
+      "unavailabilityReason": "RETRIEVAL_FAILED_NO_CONTENT_READ"
+    },
+    {
+      "sourceId": "source-01817cb29f36ecb5",
+      "url": "https://www.chopstickchronicles.com/oyako-donburi/",
+      "recipeIds": [
+        "gl-04"
+      ],
+      "retrievedAt": "2026-10-26T11:16:55.448350Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.chopstickchronicles.com/oyako-donburi/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "943ddc6670de60c58fb27d01b76c46610125e89504e6ef008d642ef7221ee370",
+      "byteLength": 521090,
+      "title": "Oyako Don (Chicken & Egg Rice Bowl) - Chopstick Chronicles",
+      "author": null,
+      "publishedAt": "2020-11-06T10:55:44+00:00",
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Recipe card and notes; snapshot lines 154-182",
+        "reviewerSummary": "The 2-serving card uses 250g chicken, three eggs, 3/4 cup dashi, two tablespoons mirin and one tablespoon each sugar and usukuchi soy. Half the eggs belongs to a one-serving pan allocation.",
+        "supportLimits": "The half-egg instruction is not V2 staged two-thirds/one-third addition. This page does not verify sake marinade or all V2 quantities."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Recipe card and notes; snapshot lines 154-182",
+          "reviewerSummary": "The 2-serving card uses 250g chicken, three eggs, 3/4 cup dashi, two tablespoons mirin and one tablespoon each sugar and usukuchi soy. Half the eggs belongs to a one-serving pan allocation.",
+          "supportLimits": "The half-egg instruction is not V2 staged two-thirds/one-third addition. This page does not verify sake marinade or all V2 quantities."
+        }
+      ],
+      "visibleTextSha256": "38a151fb70c101c1c9f28c8373fa4a400a9b529dda4e3af0fbc2af0bbd468bf1"
+    },
+    {
+      "sourceId": "source-c90470157df9bd1f",
+      "url": "https://www.koreanbapsang.com/kimchi-fried-rice-kimchi-bokkeum-bap/",
+      "recipeIds": [
+        "gl-05"
+      ],
+      "retrievedAt": "2026-10-26T11:16:55.688388Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.koreanbapsang.com/kimchi-fried-rice-kimchi-bokkeum-bap/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "1f2ccc9e40788177031373a9db77413c788970047d51906fd699e11b2b9f5421",
+      "byteLength": 292790,
+      "title": "Easy Kimchi Fried Rice Recipe (Kimchi Bokkeumbap)| Korean BapsangFacebookInstagramPinterestTwitterYouTubemenu iconsearch iconFacebookInstagramPinterestTwitterYouTubeFacebookInstagramPinterestTwitterYouTube",
+      "author": "Hyosun",
+      "publishedAt": "2019-12-01T23:42:00+00:00",
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Recipe card; snapshot lines 83-107; meat-omission headnote",
+        "reviewerSummary": "The 2-serving card specifies 1/4 small onion and 1/2 tablespoon sesame oil; kimchi juice/soy/gochujang cook before rice. Meat can be omitted; egg, sesame and gim are optional.",
+        "supportLimits": "A meatless choice is permitted. The page does not support attributing 1/2 medium onion to this source or V2 sauce-after-rice sequence."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Recipe card; snapshot lines 83-107; meat-omission headnote",
+          "reviewerSummary": "The 2-serving card specifies 1/4 small onion and 1/2 tablespoon sesame oil; kimchi juice/soy/gochujang cook before rice. Meat can be omitted; egg, sesame and gim are optional.",
+          "supportLimits": "A meatless choice is permitted. The page does not support attributing 1/2 medium onion to this source or V2 sauce-after-rice sequence."
+        }
+      ],
+      "visibleTextSha256": "226fdec87f1f08c50764e35dabe9e9051644c71b5f778603a3c993c25c9efbee"
+    },
+    {
+      "sourceId": "source-09b318cda0c35793",
+      "url": "https://www.maangchi.com/recipe/kimchi-bokkeumbap",
+      "recipeIds": [
+        "gl-05"
+      ],
+      "retrievedAt": "2026-10-26T11:16:58.835728Z",
+      "httpStatus": 403,
+      "finalUrl": null,
+      "contentType": null,
+      "contentSha256": null,
+      "byteLength": null,
+      "title": null,
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "retrievalError": "HTTPError: HTTP Error 403: Forbidden",
+      "unavailabilityReason": "RETRIEVAL_FAILED_NO_CONTENT_READ"
+    },
+    {
+      "sourceId": "source-3fabf5965917303c",
+      "url": "https://www.kaveyeats.com/thai-recipe-pad-krapow-moo-pork-stir-fried-with-holy-basil",
+      "recipeIds": [
+        "gl-06"
+      ],
+      "retrievedAt": "2026-10-26T11:16:59.385596Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.kaveyeats.com/thai-recipe-pad-krapow-moo-pork-stir-fried-with-holy-basil",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "08c7c65bf3548099b6d62c7458c71e67ff8ed9149971c6be818d93c0c282c1c8",
+      "byteLength": 102834,
+      "title": "Kavey Eats » Thai Recipe | Pad Krapow Moo (Pork Stir-fried with Holy Basil)",
+      "author": "Kay Plunkett-Hogge",
+      "publishedAt": "2019-04-18T08:45:31+00:00",
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Recipe ingredients, notes and method; snapshot lines 45-67",
+        "reviewerSummary": "The 2-serving pork variant uses 300g pork, 100g beans, two tablespoons each dark/light soy and a very large handful of holy basil; most basil wilts before heat is stopped.",
+        "supportLimits": "Thai sweet basil is described as a different substitute. No gram conversion for the handful is established."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Recipe ingredients, notes and method; snapshot lines 45-67",
+          "reviewerSummary": "The 2-serving pork variant uses 300g pork, 100g beans, two tablespoons each dark/light soy and a very large handful of holy basil; most basil wilts before heat is stopped.",
+          "supportLimits": "Thai sweet basil is described as a different substitute. No gram conversion for the handful is established."
+        }
+      ],
+      "visibleTextSha256": "d7b17c5af3ac57d9fe3deb6546188a20544c0a41856bd6be65d16f9a6ec23684"
+    },
+    {
+      "sourceId": "source-d8978644f515bc0e",
+      "url": "http://hot-thai-kitchen.com/holy-basil-stir-fry/",
+      "recipeIds": [
+        "gl-06"
+      ],
+      "retrievedAt": "2026-10-26T11:17:00.396920Z",
+      "httpStatus": 200,
+      "finalUrl": "https://hot-thai-kitchen.com/holy-basil-stir-fry/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "ee2097eb457bf42ee81194315607fbe641cd1764e9e60d94bb6c199ef09d7364",
+      "byteLength": 512439,
+      "title": "Pad Kra Pao (Pad Gaprao) - Holy Basil Chicken Stir-Fry - Hot Thai Kitchenmenu iconsearch iconFacebookInstagramYouTubeclockcutleryflagfolderinstagrampinterestfacebookprintsquaresheartheart solid",
+      "author": "Pailin Chongchitnant",
+      "publishedAt": "2016-01-01",
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Recipe card; snapshot lines 61-93",
+        "reviewerSummary": "The chicken variant uses 300g chicken and holy basil; its method removes the pan from heat before stirring in basil.",
+        "supportLimits": "This is a different protein/sauce variant. Basil timing does not by itself establish a conflict in the pork recipe."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Recipe card; snapshot lines 61-93",
+          "reviewerSummary": "The chicken variant uses 300g chicken and holy basil; its method removes the pan from heat before stirring in basil.",
+          "supportLimits": "This is a different protein/sauce variant. Basil timing does not by itself establish a conflict in the pork recipe."
+        }
+      ],
+      "visibleTextSha256": "966fa1b23e610eb8fdf43fdc01b03e350109b9326930deaae15105e01a1f7b32"
+    },
+    {
+      "sourceId": "source-25ff90c4256b0656",
+      "url": "https://rachelcooksthai.com/pad-kaprow-moo/",
+      "recipeIds": [
+        "gl-06"
+      ],
+      "retrievedAt": "2026-10-26T11:17:00.555009Z",
+      "httpStatus": 200,
+      "finalUrl": "https://rachelcooksthai.com/pad-kaprow-moo/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "fe95819fe6aafec7124279d0b6fe0a27237899a7691690c9769ad8adf2252d12",
+      "byteLength": 477313,
+      "title": "Holy Basil Stir Fry with Pork | Pad Krapow Moo | ผัดกะเพรา - Rachel Cooks ThaiFacebookInstagramPinterestYouTubemenu iconsubscribesearch icon",
+      "author": null,
+      "publishedAt": "2022-10-10T00:10:00+00:00",
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Recipe card; snapshot lines 87-100",
+        "reviewerSummary": "The pork variant uses one tightly packed cup of holy basil; it tosses the herb until just wilted then removes the pan from heat.",
+        "supportLimits": "A packed cup cannot be converted to the V2 25g handful from this page alone."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Recipe card; snapshot lines 87-100",
+          "reviewerSummary": "The pork variant uses one tightly packed cup of holy basil; it tosses the herb until just wilted then removes the pan from heat.",
+          "supportLimits": "A packed cup cannot be converted to the V2 25g handful from this page alone."
+        }
+      ],
+      "visibleTextSha256": "fc960108022e47f8db324e9ffcdb80a7225cb047df47d6cea58c69fef187d4cb"
+    },
+    {
+      "sourceId": "source-bfb34c9a947c3105",
+      "url": "https://norecipes.com/thai-basil-chicken-pad-krapow-gai-recipe/",
+      "recipeIds": [
+        "gl-06"
+      ],
+      "retrievedAt": "2026-10-26T11:17:01.237902Z",
+      "httpStatus": 200,
+      "finalUrl": "https://norecipes.com/thai-basil-chicken-pad-krapow-gai-recipe/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "c7e43f298c654ade4add1ed7ca9aa1ec0f00b74ee1d28a68e4270e9d60f845a4",
+      "byteLength": 553360,
+      "title": "Best Thai Basil Chicken Recipe (ผัดกระเพราไก่ - Pad Kraprow Gai)menu iconsubscribesearch icon",
+      "author": null,
+      "publishedAt": "2018-11-24T18:00:40+00:00",
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "The Basil subsection; snapshot lines 43-45",
+        "reviewerSummary": "The author distinguishes holy basil (Ocimum tenuiflorum) from Thai basil (Ocimum basilicum var. Thyrsiflora), noting different aroma and naming.",
+        "supportLimits": "This supports distinguishing the herbs, not silently changing the V2 canonical ingredient identity."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "The Basil subsection; snapshot lines 43-45",
+          "reviewerSummary": "The author distinguishes holy basil (Ocimum tenuiflorum) from Thai basil (Ocimum basilicum var. Thyrsiflora), noting different aroma and naming.",
+          "supportLimits": "This supports distinguishing the herbs, not silently changing the V2 canonical ingredient identity."
+        }
+      ],
+      "visibleTextSha256": "d4e03311f5476b727623690be3c5c5cd6202aec2775264d8f2dc44132da5efaf"
+    },
+    {
+      "sourceId": "source-5569ce97af152406",
+      "url": "https://hot-thai-kitchen.com/green-curry-new-2/print/6636/",
+      "recipeIds": [
+        "gl-10"
+      ],
+      "retrievedAt": "2026-10-26T11:17:01.652879Z",
+      "httpStatus": 200,
+      "finalUrl": "https://hot-thai-kitchen.com/green-curry-new-2/print/6636/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "1121e6c50ce2d5b3ff66442ca08cc568ea67419e4bade4307ddd7cceb2b25cf3",
+      "byteLength": 595268,
+      "title": "Green Thai Curry Recipe - Hot Thai Kitchenmenu iconsearch iconFacebookInstagramYouTube",
+      "author": "Pailin Chongchitnant",
+      "publishedAt": "2022-04-23T17:00:00+00:00",
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Green curry method; snapshot lines 131-147, especially 137-138",
+        "reviewerSummary": "The method adds stock, remaining coconut milk, sugar, fish sauce and makrut leaves before a 10-15 minute simmer. Large leaf pieces are infusion-only, not eaten. Peppers and basil enter after heat stops.",
+        "supportLimits": "Leaves may traditionally remain in the bowl if diners are warned. This fact does not certify V2 gram conversions, consumption role or food-safety endpoint."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Green curry method; snapshot lines 131-147, especially 137-138",
+          "reviewerSummary": "The method adds stock, remaining coconut milk, sugar, fish sauce and makrut leaves before a 10-15 minute simmer. Large leaf pieces are infusion-only, not eaten. Peppers and basil enter after heat stops.",
+          "supportLimits": "Leaves may traditionally remain in the bowl if diners are warned. This fact does not certify V2 gram conversions, consumption role or food-safety endpoint."
+        }
+      ],
+      "visibleTextSha256": "37366c0196612c334fbf008524245ab9aa49cdb6c7eee7acfb6a63677e68d272"
+    },
+    {
+      "sourceId": "source-d093083d80cdaa5b",
+      "url": "https://norecipes.com/green-curry-chicken-recipe/",
+      "recipeIds": [
+        "gl-10"
+      ],
+      "retrievedAt": "2026-10-26T11:17:04.058751Z",
+      "httpStatus": 200,
+      "finalUrl": "https://norecipes.com/green-curry-chicken-recipe/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "cc2d0ae327167b449dd143d5ce231322e8b245281c2d3a1e5aae70cc8d045117",
+      "byteLength": 525959,
+      "title": "Best Green Curry Chicken (แกงเขียวหวานไก่ - gaeng kiew wan gai)menu iconsubscribesearch icon",
+      "author": null,
+      "publishedAt": "2019-04-21T14:00:41+00:00",
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Recipe card ingredients and method; snapshot lines 70-95",
+        "reviewerSummary": "The variant uses 550g chicken with eggplant, bamboo and baby corn; it adds coconut milk with vegetables later, cooks them about ten minutes, and finishes with basil.",
+        "supportLimits": "Vegetables and milk sequence differ from Hot Thai Kitchen; this is a variant, not proof that either source is wrong."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Recipe card ingredients and method; snapshot lines 70-95",
+          "reviewerSummary": "The variant uses 550g chicken with eggplant, bamboo and baby corn; it adds coconut milk with vegetables later, cooks them about ten minutes, and finishes with basil.",
+          "supportLimits": "Vegetables and milk sequence differ from Hot Thai Kitchen; this is a variant, not proof that either source is wrong."
+        }
+      ],
+      "visibleTextSha256": "c9e8fa7180872345e395f670ae2d1e09396ca825cfdad64a8f36e0fefb8bde3f"
+    },
+    {
+      "sourceId": "source-2550f1573baa3c3c",
+      "url": "https://redhousespice.com/mapo-tofu/",
+      "recipeIds": [
+        "gl-02"
+      ],
+      "retrievedAt": "2026-10-26T11:20:14.161312Z",
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "contentSha256": null,
+      "byteLength": null,
+      "title": null,
+      "author": null,
+      "publishedAt": null,
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "retrievalError": "timeout: The read operation timed out",
+      "unavailabilityReason": "RETRIEVAL_FAILED_NO_CONTENT_READ"
+    },
+    {
+      "sourceId": "source-0ff4a130d37e63b3",
+      "url": "https://www.recipetineats.com/mapo-tofu-mince-tofu-spicy-sauce/",
+      "recipeIds": [
+        "gl-02"
+      ],
+      "retrievedAt": "2026-10-26T11:20:47.496933Z",
+      "httpStatus": 200,
+      "finalUrl": "https://www.recipetineats.com/mapo-tofu/",
+      "contentType": "text/html; charset=UTF-8",
+      "contentSha256": "e0940f404447727e88c8e35c27a77bf47759248c277b7d923b94104547f36eaf",
+      "byteLength": 544731,
+      "title": "Mapo Tofu - RecipeTin Eats",
+      "author": null,
+      "publishedAt": "2026-07-03T16:00:00+00:00",
+      "metadataBasis": "Recipe JSON-LD author/datePublished when present; unknown values remain null.",
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "humanReview": "PENDING",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "Mapo Tofu recipe card; snapshot lines 258, 264, 294, 297, 300-301",
+        "reviewerSummary": "The card uses 600g silken tofu and 100g pork; it blanches tofu three minutes, browns pork, braises tofu in sauce and thickens with a starch slurry.",
+        "supportLimits": "This newly discovered alternate differs from V2 450g tofu/150g meat and does not replace the two unavailable declared sources."
+      },
+      "reviewedFacts": [
+        {
+          "factId": "reviewed-1",
+          "locator": "Mapo Tofu recipe card; snapshot lines 258, 264, 294, 297, 300-301",
+          "reviewerSummary": "The card uses 600g silken tofu and 100g pork; it blanches tofu three minutes, browns pork, braises tofu in sauce and thickens with a starch slurry.",
+          "supportLimits": "This newly discovered alternate differs from V2 450g tofu/150g meat and does not replace the two unavailable declared sources."
+        }
+      ],
+      "visibleTextSha256": "8c4ee738ddfc070d26042876f80bdf05b208409282a572d670d47b45440080c9"
+    }
+  ],
+  "recipes": [
+    {
+      "recipeId": "vn-canh-01",
+      "title": "Canh chua cá lóc Nam Bộ",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "7903629009aaa7f6d8da3c2629fb8ff0978296a206c05a1a75d1779fd5ce259a",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/vn-canh-01.json",
+        "fileSha256": "c9e27ff168ca194acc847981e540d9900d783f2bb253fd7c863ddc6d411de725"
+      },
+      "sourceIds": [
+        "source-0436c887a17838d4",
+        "source-db19ad410f39dd5e"
+      ],
+      "evidenceStatus": [
+        "FACT_SUPPORTED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "canh-yield-tamarind",
+          "status": "FACT_SUPPORTED",
+          "findingType": "DIRECT_SOURCE_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-db19ad410f39dd5e"
+          ],
+          "ingredientPositions": [
+            2
+          ],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/content/servings",
+            "/ingredients/2/note",
+            "/ingredients/2/quantity"
+          ],
+          "reviewerSummary": "Netspace explicitly serves 4 and uses 120g extracted tamarind liquid; the V2 note incorrectly says its yield is absent.",
+          "supportLimits": "Helen video content was unavailable. This does not validate 50g raw pulp, an extraction yield or equivalence with 120g liquid.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-db19ad410f39dd5e",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "canh-bounded-method",
+          "status": "FACT_SUPPORTED",
+          "findingType": "BOUNDED_METHOD_SUPPORT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "info",
+          "sourceIds": [
+            "source-db19ad410f39dd5e"
+          ],
+          "ingredientPositions": [
+            1
+          ],
+          "stepNumbers": [
+            7,
+            8
+          ],
+          "v2Pointers": [
+            "/ingredients/1/quantity",
+            "/steps/6/instruction",
+            "/steps/7/instruction"
+          ],
+          "reviewerSummary": "The 1.5L broth and fish removal after about five minutes match the inspected Netspace method.",
+          "supportLimits": "Only water amount and this cooking sequence are supported; no complete ingredient or safety certification.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-db19ad410f39dd5e",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "source-availability",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-0436c887a17838d4"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [],
+          "reviewerSummary": "Some declared or alternate sources could not be read in this retrieval session.",
+          "supportLimits": "Failure or a video shell is not evidence of recipe correctness, irrelevance or content verification."
+        }
+      ],
+      "nextAction": "Resolve listed evidence gaps and structural findings; review all fields and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "vn-bun-01",
+      "title": "Phở bò tái lăn Hà Nội",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "4e60c9544004e204e3725bb39ba6eb4695bc2eab151ea4b93b81013732fa737c",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/vn-bun-01.json",
+        "fileSha256": "aae7c45468b9619c4a6101573f7dbe14029ab2ecedeb9d1e09818e421525901b"
+      },
+      "sourceIds": [
+        "source-9e9019bd4dea7f0b",
+        "source-b18af86d23f06887"
+      ],
+      "evidenceStatus": [
+        "FACT_SUPPORTED",
+        "SOURCE_CONTENT_READ"
+      ],
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "pho-time",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_INCONSISTENCY",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "high",
+          "sourceIds": [
+            "source-9e9019bd4dea7f0b",
+            "source-b18af86d23f06887"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [
+            5
+          ],
+          "v2Pointers": [
+            "/content/cookTimeMinutes",
+            "/steps/4/instruction"
+          ],
+          "reviewerSummary": "V2 cookTimeMinutes is 35, but its broth step requires hours of simmering.",
+          "supportLimits": "Internal metadata mismatch is observed; final timing must identify fresh stock versus prepared-stock assumptions.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-9e9019bd4dea7f0b",
+              "factId": "reviewed-1"
+            },
+            {
+              "sourceId": "source-b18af86d23f06887",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "pho-removed-aromatics",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_ROLE_INCONSISTENCY",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "high",
+          "sourceIds": [],
+          "ingredientPositions": [
+            5,
+            6,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "stepNumbers": [
+            6
+          ],
+          "v2Pointers": [
+            "/ingredients/5/usageRole",
+            "/ingredients/6/usageRole",
+            "/ingredients/8/usageRole",
+            "/ingredients/9/usageRole",
+            "/ingredients/10/usageRole",
+            "/ingredients/11/usageRole",
+            "/ingredients/12/usageRole",
+            "/steps/5/instruction"
+          ],
+          "reviewerSummary": "V2 step 6 removes broth aromatics, yet several spice/aromatic lines are marked consumed.",
+          "supportLimits": "This does not determine absorbed nutrient fractions. Bones and cardamom already have process-only roles; do not report them as newly discovered consumed defects.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "pho-source-variants",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "VARIANT_DIFFERENCE",
+          "evidenceBasis": "EXTERNAL_VARIANT_COMPARISON",
+          "severity": "medium",
+          "sourceIds": [
+            "source-9e9019bd4dea7f0b",
+            "source-b18af86d23f06887"
+          ],
+          "ingredientPositions": [
+            21,
+            22,
+            23
+          ],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/ingredients/21/note",
+            "/ingredients/22/note",
+            "/ingredients/23/note"
+          ],
+          "reviewerSummary": "Sources describe different broth timings; Pho Thin seasoning is per 2L and V2 applies another batch basis.",
+          "supportLimits": "Different simmer durations are not source errors. Pho Thin includes casino spam; seasoning rescaling and final yield remain unverified.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-9e9019bd4dea7f0b",
+              "factId": "reviewed-1"
+            },
+            {
+              "sourceId": "source-b18af86d23f06887",
+              "factId": "reviewed-1"
+            }
+          ]
+        }
+      ],
+      "nextAction": "Resolve listed evidence gaps and structural findings; review all fields and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "vn-kho-01",
+      "title": "Thịt kho tàu nước dừa trứng béo ngậy",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "cee050527de8784c67d6aff97c5bd46b0d448e75ca690dfda4bd73611fdd5569",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/vn-kho-01.json",
+        "fileSha256": "5b0c2b906316a39470d9ac647dfa6324a3f842bac19c336ee3174711029d2ccc"
+      },
+      "sourceIds": [
+        "source-b5359c0bd29dd496",
+        "source-0b2200880d4b0476"
+      ],
+      "evidenceStatus": [
+        "FACT_SUPPORTED",
+        "SOURCE_CONTENT_READ"
+      ],
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "kho-sugar-budget",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_INCONSISTENCY",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "high",
+          "sourceIds": [
+            "source-b5359c0bd29dd496"
+          ],
+          "ingredientPositions": [
+            4
+          ],
+          "stepNumbers": [
+            3,
+            4,
+            9
+          ],
+          "v2Pointers": [
+            "/ingredients/4/quantity",
+            "/steps/2/instruction",
+            "/steps/3/instruction",
+            "/steps/8/instruction"
+          ],
+          "reviewerSummary": "V2 lists two tablespoons total sugar but calls for one spoon in marinade, another one-to-two in caramel and optional extra at seasoning.",
+          "supportLimits": "The maximum explicit use exceeds the list. No corrected amount is inferred from variant sources.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-b5359c0bd29dd496",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "kho-missing-scallion",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_MISSING_INGREDIENT",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "high",
+          "sourceIds": [],
+          "ingredientPositions": [],
+          "stepNumbers": [
+            9
+          ],
+          "v2Pointers": [
+            "/ingredients",
+            "/steps/8/instruction"
+          ],
+          "reviewerSummary": "V2 step 9 adds scallion, absent from its ingredient list.",
+          "supportLimits": "No scallion amount is invented. Optional serving sides are not treated as ingredients in this finding.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "kho-timing-variants",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "VARIANT_DIFFERENCE",
+          "evidenceBasis": "EXTERNAL_VARIANT_COMPARISON",
+          "severity": "medium",
+          "sourceIds": [
+            "source-b5359c0bd29dd496",
+            "source-0b2200880d4b0476"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [
+            7,
+            8
+          ],
+          "v2Pointers": [
+            "/steps/6/instruction",
+            "/steps/7/instruction"
+          ],
+          "reviewerSummary": "The inspected pork-and-egg variants use different simmer schedules.",
+          "supportLimits": "Choose a coherent source/batch before changing timing; a 30-minute version does not disprove a longer braise.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-b5359c0bd29dd496",
+              "factId": "reviewed-1"
+            },
+            {
+              "sourceId": "source-0b2200880d4b0476",
+              "factId": "reviewed-1"
+            }
+          ]
+        }
+      ],
+      "nextAction": "Resolve listed evidence gaps and structural findings; review all fields and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "vn-hap-01",
+      "title": "Gà ta hấp lá chanh da giòn thịt ngọt",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "8b59f5860234622d006aaf36dc60be946f5382f71a933ab0b66c6c3c38b433d6",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/vn-hap-01.json",
+        "fileSha256": "ffea52549a962b3529bdeabbbd4be000d974a3f79f1d13350f268e9ad4cee92b"
+      },
+      "sourceIds": [
+        "source-50b64f4f461c6483",
+        "source-c2a359014c1c1acd"
+      ],
+      "evidenceStatus": [
+        "FACT_SUPPORTED",
+        "SOURCE_CONTENT_READ"
+      ],
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "chicken-time-derivation",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "UNSUPPORTED_DERIVATION",
+          "evidenceBasis": "EXTERNAL_VARIANT_COMPARISON",
+          "severity": "high",
+          "sourceIds": [
+            "source-50b64f4f461c6483",
+            "source-c2a359014c1c1acd"
+          ],
+          "ingredientPositions": [
+            0
+          ],
+          "stepNumbers": [
+            6,
+            7
+          ],
+          "v2Pointers": [
+            "/ingredients/0/quantity",
+            "/steps/5/instruction",
+            "/steps/6/instruction"
+          ],
+          "reviewerSummary": "Sources cook whole 1.5-2kg birds; V2 states 25-30 minutes for an 800g half bird.",
+          "supportLimits": "The half-bird time is not directly source-supported. V2 visual-juice doneness guidance is not a certified food-safety check; obtain authoritative safety evidence before promotion.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-50b64f4f461c6483",
+              "factId": "reviewed-1"
+            },
+            {
+              "sourceId": "source-c2a359014c1c1acd",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "chicken-pepper-budget",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_INCONSISTENCY",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "high",
+          "sourceIds": [],
+          "ingredientPositions": [
+            1,
+            8
+          ],
+          "stepNumbers": [
+            3,
+            8
+          ],
+          "v2Pointers": [
+            "/ingredients/1/usageRole",
+            "/ingredients/8/quantity",
+            "/steps/2/instruction",
+            "/steps/7/instruction"
+          ],
+          "reviewerSummary": "V2 lists half a teaspoon pepper but uses half in marinade and another half in dipping salt.",
+          "supportLimits": "No replacement total is approved. The 500g coarse-salt bed is already process_only and is not a consumed-salt defect.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "chicken-salt-bed",
+          "status": "FACT_SUPPORTED",
+          "findingType": "BOUNDED_METHOD_SUPPORT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "info",
+          "sourceIds": [
+            "source-50b64f4f461c6483"
+          ],
+          "ingredientPositions": [
+            1
+          ],
+          "stepNumbers": [
+            5,
+            6
+          ],
+          "v2Pointers": [
+            "/ingredients/1/usageRole",
+            "/steps/4/instruction",
+            "/steps/5/instruction"
+          ],
+          "reviewerSummary": "The inspected whole-bird method separates chicken from the 500g salt bed using aromatics.",
+          "supportLimits": "This supports only the process separation, not absorption, half-bird timing or all V2 seasoning quantities.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-50b64f4f461c6483",
+              "factId": "reviewed-1"
+            }
+          ]
+        }
+      ],
+      "nextAction": "Resolve listed evidence gaps and structural findings; review all fields and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "imp-6eaf6ed6d417c52c",
+      "title": "Mực chiên muối ớt",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "2e1ffb95b21cf7c327c9a141ecb8ebf5342167afdcc909bdfed12fd835f6612c",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-6eaf6ed6d417c52c.json",
+        "fileSha256": "77cba96b653b12470e4f775a9223c0787c4b8c6b1974689393091a2fa50c8daf"
+      },
+      "sourceIds": [
+        "source-514a7ca4c03688ec",
+        "source-5772c61dcd20c537"
+      ],
+      "evidenceStatus": [
+        "SOURCE_CONTENT_READ"
+      ],
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "squid-batter-scale",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "UNSUPPORTED_DERIVATION",
+          "evidenceBasis": "EXTERNAL_VARIANT_COMPARISON",
+          "severity": "high",
+          "sourceIds": [
+            "source-514a7ca4c03688ec"
+          ],
+          "ingredientPositions": [
+            0,
+            1,
+            2,
+            4,
+            5
+          ],
+          "stepNumbers": [
+            4,
+            5,
+            10
+          ],
+          "v2Pointers": [
+            "/ingredients/5/quantity",
+            "/steps/3/instruction",
+            "/steps/9/instruction"
+          ],
+          "reviewerSummary": "The Recipe Cart 250g card uses 1/4 teaspoon batter seasoning plus 1/8 teaspoon finish. At V2 375g (1.5x), proportional total would be 9/16 teaspoon, whereas V2 uses 3/4 teaspoon.",
+          "supportLimits": "Arithmetic compares one card only; it does not approve a replacement seasoning level. Frying oil is already process_only.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-514a7ca4c03688ec",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "squid-coating-variant",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "VARIANT_DIFFERENCE",
+          "evidenceBasis": "EXTERNAL_VARIANT_COMPARISON",
+          "severity": "medium",
+          "sourceIds": [
+            "source-514a7ca4c03688ec",
+            "source-5772c61dcd20c537"
+          ],
+          "ingredientPositions": [
+            12
+          ],
+          "stepNumbers": [
+            3,
+            4,
+            5
+          ],
+          "v2Pointers": [
+            "/ingredients/12/note",
+            "/steps/2/instruction",
+            "/steps/3/instruction",
+            "/steps/4/instruction"
+          ],
+          "reviewerSummary": "PY Kitchen uses egg and starch; Recipe Cart uses a wet/dry flour batter. V2 borrows Shaoxing wine but does not use the egg coating.",
+          "supportLimits": "A combined variant needs an explicit review decision; absence of an egg is not itself a missing-ingredient defect in V2 flour batter.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-514a7ca4c03688ec",
+              "factId": "reviewed-1"
+            },
+            {
+              "sourceId": "source-5772c61dcd20c537",
+              "factId": "reviewed-1"
+            }
+          ]
+        }
+      ],
+      "nextAction": "Resolve listed evidence gaps and structural findings; review all fields and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "imp-7d38862afc164a8d",
+      "title": "Mực xào xì dầu kiểu Hàn",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "efcbbcd05b272721c000de61541b61b1ba05bed2d51ee663ea7fcd70672fe392",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-7d38862afc164a8d.json",
+        "fileSha256": "e15a457bb5d30de285cb541a5f5505b3ff37efaeefffa06dbf08f3886cb3aacb"
+      },
+      "sourceIds": [
+        "source-e1a167c396192c8d",
+        "source-da7ec3a8830ba3a0"
+      ],
+      "evidenceStatus": [
+        "SOURCE_CONFLICT"
+      ],
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "squid-source-unit-conflict",
+          "status": "SOURCE_CONFLICT",
+          "findingType": "SOURCE_INTERNAL_UNIT_CONFLICT",
+          "evidenceBasis": "EXTERNAL_SOURCE_INTERNAL_CONFLICT",
+          "severity": "high",
+          "sourceIds": [
+            "source-e1a167c396192c8d",
+            "source-da7ec3a8830ba3a0"
+          ],
+          "ingredientPositions": [
+            2,
+            7,
+            8
+          ],
+          "stepNumbers": [
+            3,
+            5,
+            8
+          ],
+          "v2Pointers": [
+            "/ingredients/2/quantity",
+            "/ingredients/7/quantity",
+            "/ingredients/8/quantity"
+          ],
+          "reviewerSummary": "The declared source ingredient list uses 1Ts garlic/oyster sauce/sesame oil; its method uses 1ts. V2 scales the larger list quantities to 1.5 tablespoons each.",
+          "supportLimits": "Source-internal case-sensitive unit contradiction remains unresolved; the alternate soy/mayonnaise dish cannot decide it.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-e1a167c396192c8d",
+              "factId": "reviewed-1"
+            },
+            {
+              "sourceId": "source-da7ec3a8830ba3a0",
+              "factId": "reviewed-1"
+            }
+          ]
+        }
+      ],
+      "nextAction": "Resolve listed evidence gaps and structural findings; review all fields and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "imp-0d6c454ae1073ef6",
+      "title": "Su su hấp tỏi",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "66a5691ec49b2873e4c929f6a5e0e87fab859eea9908ee4e5b15ca1f21adf257",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/imp-0d6c454ae1073ef6.json",
+        "fileSha256": "bb7a09fd308a1f564a4b0465526d64003b8ebd192a3ac008dd287655fdde13c2"
+      },
+      "sourceIds": [
+        "source-ea141e84d6c1fd8d",
+        "source-ef032589361fa67a"
+      ],
+      "evidenceStatus": [
+        "FACT_SUPPORTED",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "susu-method",
+          "status": "FACT_SUPPORTED",
+          "findingType": "BOUNDED_METHOD_SUPPORT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "info",
+          "sourceIds": [
+            "source-ea141e84d6c1fd8d"
+          ],
+          "ingredientPositions": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/ingredients/0/sourceName",
+            "/ingredients/1/sourceName",
+            "/ingredients/3/sourceName",
+            "/ingredients/4/sourceName"
+          ],
+          "reviewerSummary": "Only the chayote subsection supports steaming and the garlic/fish-sauce/oil dressing.",
+          "supportLimits": "The broad vegetable aggregate is not a quantitative recipe card; unrelated health assertions on the page are not endorsed.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-ea141e84d6c1fd8d",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "susu-quantities",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "UNSUPPORTED_DERIVATION",
+          "evidenceBasis": "EXTERNAL_VARIANT_COMPARISON",
+          "severity": "high",
+          "sourceIds": [
+            "source-ea141e84d6c1fd8d"
+          ],
+          "ingredientPositions": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/content/servings",
+            "/ingredients"
+          ],
+          "reviewerSummary": "The relevant subsection supplies no ingredient amounts, yield, scallion or soy sauce, whereas V2 specifies these.",
+          "supportLimits": "Lack of support is not proof a home-cooking variant is wrong. Full source/batch review is required.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-ea141e84d6c1fd8d",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "source-availability",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-ef032589361fa67a"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [],
+          "reviewerSummary": "Some declared or alternate sources could not be read in this retrieval session.",
+          "supportLimits": "Failure or a video shell is not evidence of recipe correctness, irrelevance or content verification."
+        }
+      ],
+      "nextAction": "Resolve listed evidence gaps and structural findings; review all fields and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "vn-xao-01",
+      "title": "Rau muống xào tỏi xanh giòn",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "0e4ca1a39f9bd328eb820b2c4c9a76392db253a0219af9aa4c2b2033c53948d9",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/vn-xao-01.json",
+        "fileSha256": "e4fa01e17a4e3a0c553743e572b0709d55fca5f2b45993bbec40afd2e8b9ac58"
+      },
+      "sourceIds": [
+        "source-8aae0d57aa7d2f1d",
+        "source-22399e047b600b57"
+      ],
+      "evidenceStatus": [
+        "FACT_SUPPORTED",
+        "SOURCE_CONFLICT"
+      ],
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "raumuong-salt-budget",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_ROLE_INCONSISTENCY",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "high",
+          "sourceIds": [],
+          "ingredientPositions": [
+            3
+          ],
+          "stepNumbers": [
+            3,
+            7
+          ],
+          "v2Pointers": [
+            "/ingredients/3/quantity",
+            "/ingredients/3/usageRole",
+            "/steps/2/instruction",
+            "/steps/6/instruction"
+          ],
+          "reviewerSummary": "V2 lists half a teaspoon salt as process_only, then uses half for blanching and another half in the stir-fry.",
+          "supportLimits": "The duplicated allocation affects consumed salt and shopping/nutrition interpretation; no amount or role is changed here.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "raumuong-source-conflict",
+          "status": "SOURCE_CONFLICT",
+          "findingType": "SOURCE_INTERNAL_UNIT_CONFLICT",
+          "evidenceBasis": "EXTERNAL_SOURCE_INTERNAL_CONFLICT",
+          "severity": "high",
+          "sourceIds": [
+            "source-22399e047b600b57"
+          ],
+          "ingredientPositions": [
+            6
+          ],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/ingredients/6/quantity"
+          ],
+          "reviewerSummary": "The alternate source lists one teaspoon fish sauce but instructs one tablespoon.",
+          "supportLimits": "This genuine source contradiction is separate from V2 salt allocation; fish sauce remains unresolved.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-22399e047b600b57",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "raumuong-blanch",
+          "status": "FACT_SUPPORTED",
+          "findingType": "BOUNDED_METHOD_SUPPORT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "info",
+          "sourceIds": [
+            "source-8aae0d57aa7d2f1d"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [
+            3,
+            4
+          ],
+          "v2Pointers": [
+            "/steps/2/instruction",
+            "/steps/3/instruction"
+          ],
+          "reviewerSummary": "The primary article supports a brief 30-second to one-minute blanch before quick stir-frying.",
+          "supportLimits": "Only this sequence is supported; blanching salt must not automatically become consumed salt.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-8aae0d57aa7d2f1d",
+              "factId": "reviewed-1"
+            }
+          ]
+        }
+      ],
+      "nextAction": "Resolve listed evidence gaps and structural findings; review all fields and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "vn-hap-04",
+      "title": "Rau củ luộc thập cẩm kho quẹt tóp mỡ",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "7c149c9b0fec25708eceefe8e70c3476f0d2a1b08321ff53ded772508493135b",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/vn-hap-04.json",
+        "fileSha256": "03ccdf1e6fa7cc16b3f8f4d44f1b665c586f04397b5e04e0891b4dae03ead8ac"
+      },
+      "sourceIds": [
+        "source-5057352a318a5e16",
+        "source-f7247932fc7ba07a"
+      ],
+      "evidenceStatus": [
+        "FACT_SUPPORTED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "khoquet-derived-lineage",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_DERIVED_COMPONENT_RISK",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "high",
+          "sourceIds": [
+            "source-f7247932fc7ba07a"
+          ],
+          "ingredientPositions": [
+            3,
+            4,
+            16
+          ],
+          "stepNumbers": [
+            2,
+            6,
+            9
+          ],
+          "v2Pointers": [
+            "/ingredients/3/note",
+            "/ingredients/3/usageRole",
+            "/ingredients/3/includeInShopping",
+            "/ingredients/3/includeInNutrition",
+            "/ingredients/4/note",
+            "/ingredients/4/usageRole",
+            "/ingredients/4/includeInShopping",
+            "/ingredients/4/includeInNutrition",
+            "/ingredients/16/note",
+            "/ingredients/16/usageRole",
+            "/ingredients/16/includeInShopping",
+            "/ingredients/16/includeInNutrition",
+            "/steps/1/instruction"
+          ],
+          "reviewerSummary": "V2 lists raw pork, its derived crackling and retained rendered fat as consumed, shopping and nutrition lines, while step 2 derives the latter two from the pork.",
+          "supportLimits": "Flags are preserved and unapproved. The source does not provide an 80g crackling yield. Resolve parent/component accounting before any shopping or nutrient projection.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-f7247932fc7ba07a",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "khoquet-source-start",
+          "status": "FACT_SUPPORTED",
+          "findingType": "DIRECT_SOURCE_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-f7247932fc7ba07a"
+          ],
+          "ingredientPositions": [
+            3,
+            4,
+            6,
+            16
+          ],
+          "stepNumbers": [
+            2
+          ],
+          "v2Pointers": [
+            "/ingredients/4/note",
+            "/ingredients/6/quantity",
+            "/ingredients/16/note",
+            "/steps/1/instruction"
+          ],
+          "reviewerSummary": "Cookpad starts from five tablespoons already-rendered crackling and uses four tablespoons fish sauce. It reheats crackling rather than rendering 200g raw pork.",
+          "supportLimits": "The five-tablespoon quantity belongs to crackling, not fish sauce. Raw-pork conversion is unsupported and not corrected by this note-only candidate.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-f7247932fc7ba07a",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "source-availability",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-5057352a318a5e16"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [],
+          "reviewerSummary": "Some declared or alternate sources could not be read in this retrieval session.",
+          "supportLimits": "Failure or a video shell is not evidence of recipe correctness, irrelevance or content verification."
+        }
+      ],
+      "nextAction": "Resolve listed evidence gaps and structural findings; review all fields and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "vn-chien-05",
+      "title": "Nem rán truyền thống Hà Nội giòn rụm",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "1deeb8214444c2e1acdaa971439fc728587eeded1abc2aea7847a8f85ff497ac",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/vn-chien-05.json",
+        "fileSha256": "45b82a5e1ec3659b620dc477a5d6185d5f36cae5f2294973967c827ff1135dbd"
+      },
+      "sourceIds": [
+        "source-92b50dc6c2d91fff",
+        "source-2e18c83503562bb3",
+        "source-390454e00fe38e77"
+      ],
+      "evidenceStatus": [
+        "FACT_SUPPORTED",
+        "SOURCE_CONFLICT",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "nem-v2-egg-mismatch",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_IDENTITY_INCONSISTENCY",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "high",
+          "sourceIds": [],
+          "ingredientPositions": [
+            11
+          ],
+          "stepNumbers": [
+            6
+          ],
+          "v2Pointers": [
+            "/ingredients/11/sourceName",
+            "/ingredients/11/quantity",
+            "/steps/5/instruction"
+          ],
+          "reviewerSummary": "V2 lists two whole eggs but step 6 uses only two yolks.",
+          "supportLimits": "No automatic whole-egg/yolk mapping or nutrient correction is safe; resolve before shopping/nutrition promotion.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "nem-source-yolk-conflict",
+          "status": "SOURCE_CONFLICT",
+          "findingType": "SOURCE_INTERNAL_QUANTITY_CONFLICT",
+          "evidenceBasis": "EXTERNAL_SOURCE_INTERNAL_CONFLICT",
+          "severity": "high",
+          "sourceIds": [
+            "source-390454e00fe38e77"
+          ],
+          "ingredientPositions": [
+            11
+          ],
+          "stepNumbers": [
+            6
+          ],
+          "v2Pointers": [
+            "/ingredients/11/quantity",
+            "/steps/5/instruction"
+          ],
+          "reviewerSummary": "The readable alternate lists three yolks but its filling instructions use two.",
+          "supportLimits": "This source contradiction does not validate either V2 whole-egg identity or a corrected yolk count.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-390454e00fe38e77",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "nem-scaling-unverified",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "UNSUPPORTED_DERIVATION",
+          "evidenceBasis": "EXTERNAL_VARIANT_COMPARISON",
+          "severity": "high",
+          "sourceIds": [
+            "source-390454e00fe38e77"
+          ],
+          "ingredientPositions": [
+            0,
+            1,
+            4,
+            20
+          ],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/ingredients/0/quantity",
+            "/ingredients/1/quantity",
+            "/ingredients/4/quantity",
+            "/ingredients/20/usageRole"
+          ],
+          "reviewerSummary": "The readable source uses 200g pork/100g noodles; V2 uses 480g pork/50g noodles plus shrimp.",
+          "supportLimits": "The sources may represent different variants. These quantities cannot be certified as a single proportional rescale. Frying oil already has process_only role.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-390454e00fe38e77",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "source-availability",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-92b50dc6c2d91fff",
+            "source-2e18c83503562bb3"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [],
+          "reviewerSummary": "Some declared or alternate sources could not be read in this retrieval session.",
+          "supportLimits": "Failure or a video shell is not evidence of recipe correctness, irrelevance or content verification."
+        }
+      ],
+      "nextAction": "Resolve listed evidence gaps and structural findings; review all fields and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "vn-chay-05",
+      "title": "Đậu hũ non sốt nấm rơm dầu hào",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "64662bdb5a4ed94974d0773cb9ba21679b8b33f4e45d508f5f8f59e9bbc7c735",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/vn-chay-05.json",
+        "fileSha256": "9ee2c7caf10b8271048311cdf5606397a5ed09850d03ca29bd5341d7b91c6594"
+      },
+      "sourceIds": [
+        "source-47c227c8cb5b128f",
+        "source-7c3a787d08608df5"
+      ],
+      "evidenceStatus": [
+        "SOURCE_CONTENT_READ",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "tofu-soy-interpolation",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "UNSUPPORTED_DERIVATION",
+          "evidenceBasis": "EXTERNAL_VARIANT_COMPARISON",
+          "severity": "high",
+          "sourceIds": [
+            "source-7c3a787d08608df5"
+          ],
+          "ingredientPositions": [
+            5
+          ],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/ingredients/5/note",
+            "/ingredients/5/quantity"
+          ],
+          "reviewerSummary": "The inspected alternate uses 2-3 tablespoons soy sauce. V2 note selects 1.5 tablespoons as a midpoint between incompatible source variants; the other page was not readable.",
+          "supportLimits": "An arithmetic middle between recipes is not evidence of a coherent batch. Retain current amount as unreviewed; do not certify source-derived quantity.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-7c3a787d08608df5",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "tofu-method-variant",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "VARIANT_DIFFERENCE",
+          "evidenceBasis": "EXTERNAL_VARIANT_COMPARISON",
+          "severity": "high",
+          "sourceIds": [
+            "source-7c3a787d08608df5"
+          ],
+          "ingredientPositions": [
+            0,
+            5
+          ],
+          "stepNumbers": [
+            3,
+            8,
+            9
+          ],
+          "v2Pointers": [
+            "/ingredients/5/note",
+            "/steps/2/instruction",
+            "/steps/7/instruction",
+            "/steps/8/instruction"
+          ],
+          "reviewerSummary": "The readable page fries tofu then braises it with mushrooms, whereas V2 steams silken tofu and pours mushroom sauce over it.",
+          "supportLimits": "The alternate does not support steaming; select and validate one method before correcting the recipe.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-7c3a787d08608df5",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "source-availability",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-47c227c8cb5b128f"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [],
+          "reviewerSummary": "Some declared or alternate sources could not be read in this retrieval session.",
+          "supportLimits": "Failure or a video shell is not evidence of recipe correctness, irrelevance or content verification."
+        }
+      ],
+      "nextAction": "Resolve listed evidence gaps and structural findings; review all fields and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "vn-cuon-01",
+      "title": "Gỏi cuốn tôm thịt chấm tương phộng",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "be59e1280d9dcd61e1471c7447b21c1e3ee821747e905c2d4a37fde559a34386",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/vn-cuon-01.json",
+        "fileSha256": "f8e2f68c90a7a9807b9ed2f8f55fb2d7137593f87fa1858baf14b9d2bbdaa4a5"
+      },
+      "sourceIds": [
+        "source-e9d81137623c11e3",
+        "source-1d788169c2d46d36"
+      ],
+      "evidenceStatus": [
+        "SOURCE_CONTENT_READ",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "goicuon-quantity-variant",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "VARIANT_DIFFERENCE",
+          "evidenceBasis": "EXTERNAL_VARIANT_COMPARISON",
+          "severity": "medium",
+          "sourceIds": [
+            "source-e9d81137623c11e3"
+          ],
+          "ingredientPositions": [
+            0,
+            1
+          ],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/ingredients/0/quantity",
+            "/ingredients/1/quantity"
+          ],
+          "reviewerSummary": "The relevant WaterMAN shrimp-pork section gives 300g shrimp and 250g pork; V2 uses 300g each.",
+          "supportLimits": "Other variants on the page must not be merged; neither pork amount is automatically invalid.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-e9d81137623c11e3",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "goicuon-sugar-budget",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "UNSUPPORTED_DERIVATION",
+          "evidenceBasis": "EXTERNAL_VARIANT_COMPARISON",
+          "severity": "medium",
+          "sourceIds": [
+            "source-e9d81137623c11e3"
+          ],
+          "ingredientPositions": [
+            11
+          ],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/ingredients/11/quantity",
+            "/ingredients/11/note"
+          ],
+          "reviewerSummary": "The relevant source uses three tablespoons sugar for pickles plus one tablespoon in dipping sauce. V2 records 48g total.",
+          "supportLimits": "48g could equal four spoons under a 12g/spoon assumption; this is not a proven sugar-total defect. The spoon-to-gram conversion and allocation still require review.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-e9d81137623c11e3",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "source-availability",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-1d788169c2d46d36"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [],
+          "reviewerSummary": "Some declared or alternate sources could not be read in this retrieval session.",
+          "supportLimits": "Failure or a video shell is not evidence of recipe correctness, irrelevance or content verification."
+        }
+      ],
+      "nextAction": "Resolve listed evidence gaps and structural findings; review all fields and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "vn-sang-05",
+      "title": "Trứng cuộn rau củ mềm mịn",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "f79e4d66584a9b1622b36a991987f1d27d7970334f7b84c1e968a374e5ff1d8c",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/vn-sang-05.json",
+        "fileSha256": "5a4cfbfe4cf87a4bfbe852f66959131412933dae5f09e0867e4e6ab76db91a84"
+      },
+      "sourceIds": [
+        "source-848aa3e638becf80",
+        "source-ea1f2b05855cdd35"
+      ],
+      "evidenceStatus": [
+        "FACT_SUPPORTED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "eggroll-missing-milk",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_MISSING_INGREDIENT",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "high",
+          "sourceIds": [],
+          "ingredientPositions": [],
+          "stepNumbers": [
+            2
+          ],
+          "v2Pointers": [
+            "/ingredients",
+            "/steps/1/instruction"
+          ],
+          "reviewerSummary": "V2 step 2 adds two tablespoons milk but the ingredient list has no milk line.",
+          "supportLimits": "No milk quantity is added to shopping/nutrition; remove or add it only after variant and allergen review.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "eggroll-bounded-support",
+          "status": "FACT_SUPPORTED",
+          "findingType": "BOUNDED_METHOD_SUPPORT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "info",
+          "sourceIds": [
+            "source-ea1f2b05855cdd35"
+          ],
+          "ingredientPositions": [
+            0
+          ],
+          "stepNumbers": [
+            6,
+            7
+          ],
+          "v2Pointers": [
+            "/ingredients/0/quantity",
+            "/steps/5/instruction",
+            "/steps/6/instruction"
+          ],
+          "reviewerSummary": "The readable alternate supports four eggs and a thin sheet rolled while just set.",
+          "supportLimits": "It does not verify V2 onion, milk, carrot scale or every seasoning.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-ea1f2b05855cdd35",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "source-availability",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-848aa3e638becf80"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [],
+          "reviewerSummary": "Some declared or alternate sources could not be read in this retrieval session.",
+          "supportLimits": "Failure or a video shell is not evidence of recipe correctness, irrelevance or content verification."
+        }
+      ],
+      "nextAction": "Resolve listed evidence gaps and structural findings; review all fields and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "gl-01",
+      "title": "Mì Ý sốt cà chua Pomodoro",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "14b16eca598771c81b6ee9899c3136be762fa36d8c817a6fb692b8a3e415def9",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/gl-01.json",
+        "fileSha256": "fc1a46b441522ada0f516fa151c0d4d833948df8c227c09f6b9b019954be4cbb"
+      },
+      "sourceIds": [
+        "source-2f113645665a3506",
+        "source-61f56b37f2b29b6c",
+        "source-f69c66b4a7cfbc39"
+      ],
+      "evidenceStatus": [
+        "SOURCE_CONTENT_READ",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "pomodoro-variant",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "VARIANT_DIFFERENCE",
+          "evidenceBasis": "EXTERNAL_VARIANT_COMPARISON",
+          "severity": "medium",
+          "sourceIds": [
+            "source-61f56b37f2b29b6c"
+          ],
+          "ingredientPositions": [
+            0,
+            3
+          ],
+          "stepNumbers": [
+            4,
+            5,
+            6
+          ],
+          "v2Pointers": [
+            "/content/servings",
+            "/ingredients/0/quantity",
+            "/ingredients/3/quantity",
+            "/steps/3/instruction",
+            "/steps/4/instruction",
+            "/steps/5/instruction"
+          ],
+          "reviewerSummary": "The readable 4-serving alternate uses 300g pasta, 400g tomato and roughly ten minutes sauce cooking; V2 uses 200g pasta and a longer sauce simmer.",
+          "supportLimits": "Yield and sauce-concentration choices can differ. The unavailable declared source cannot verify the V2 version.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-61f56b37f2b29b6c",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "source-availability",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-2f113645665a3506",
+            "source-f69c66b4a7cfbc39"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [],
+          "reviewerSummary": "Some declared or alternate sources could not be read in this retrieval session.",
+          "supportLimits": "Failure or a video shell is not evidence of recipe correctness, irrelevance or content verification."
+        }
+      ],
+      "nextAction": "Resolve listed evidence gaps and structural findings; review all fields and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "gl-02",
+      "title": "Đậu phụ sốt Mapo Tofu Tứ Xuyên",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "c253c13a4853f194e98a81c464fb043e2618c4280c83223bccd82020ddf9b270",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/gl-02.json",
+        "fileSha256": "dbd0608a0c31c2952692a42faaf9a2cd11a74351d9b92701edf107b423395585"
+      },
+      "sourceIds": [
+        "source-08c6e25c01b18e99",
+        "source-64204ef097631f48",
+        "source-2550f1573baa3c3c",
+        "source-0ff4a130d37e63b3"
+      ],
+      "evidenceStatus": [
+        "FACT_SUPPORTED",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "mapo-bounded-support",
+          "status": "FACT_SUPPORTED",
+          "findingType": "BOUNDED_METHOD_SUPPORT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "info",
+          "sourceIds": [
+            "source-0ff4a130d37e63b3"
+          ],
+          "ingredientPositions": [
+            0,
+            1,
+            16
+          ],
+          "stepNumbers": [
+            4,
+            6,
+            10,
+            11
+          ],
+          "v2Pointers": [
+            "/steps/3/instruction",
+            "/steps/5/instruction",
+            "/steps/9/instruction",
+            "/steps/10/instruction"
+          ],
+          "reviewerSummary": "The newly discovered RecipeTin Eats page supports blanching silken tofu, browning mince, braising in sauce and a starch slurry finish.",
+          "supportLimits": "Its 600g tofu/100g pork and timings differ from V2; this supports method patterns only. Both V2-declared pages were unavailable.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-0ff4a130d37e63b3",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "mapo-missing-white-pepper",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_V2_MISSING_INGREDIENT",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "high",
+          "sourceIds": [],
+          "ingredientPositions": [],
+          "stepNumbers": [
+            2
+          ],
+          "v2Pointers": [
+            "/ingredients",
+            "/steps/1/instruction"
+          ],
+          "reviewerSummary": "V2 step 2 uses white pepper, but its list contains Sichuan pepper only, a different ingredient.",
+          "supportLimits": "No white-pepper amount or allergy claim is inferred. Do not merge white pepper with Sichuan pepper identity.",
+          "sourceFactReferences": []
+        },
+        {
+          "id": "source-availability",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-08c6e25c01b18e99",
+            "source-64204ef097631f48",
+            "source-2550f1573baa3c3c"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [],
+          "reviewerSummary": "Some declared or alternate sources could not be read in this retrieval session.",
+          "supportLimits": "Failure or a video shell is not evidence of recipe correctness, irrelevance or content verification."
+        }
+      ],
+      "nextAction": "Resolve listed evidence gaps and structural findings; review all fields and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "gl-03",
+      "title": "Cà chua xào trứng Trung Hoa",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "ee0afebca9230b709a8f15190b889ddd9a89f86d39117c8daa8403ec7961fb67",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/gl-03.json",
+        "fileSha256": "90009ddd3488d3e5aabf2acdb087499fd949491c0abad7f40d2224cdd082d932"
+      },
+      "sourceIds": [
+        "source-5ae94971ad29e034",
+        "source-e9e5b6e4e988e32e"
+      ],
+      "evidenceStatus": [
+        "SOURCE_CONFLICT",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "tomatoegg-source-egg-conflict",
+          "status": "SOURCE_CONFLICT",
+          "findingType": "SOURCE_INTERNAL_QUANTITY_CONFLICT",
+          "evidenceBasis": "EXTERNAL_SOURCE_INTERNAL_CONFLICT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-e9e5b6e4e988e32e"
+          ],
+          "ingredientPositions": [
+            1
+          ],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/ingredients/1/quantity"
+          ],
+          "reviewerSummary": "Taste Asian Food narrative calls for five eggs, while its recipe card lists four; V2 uses four.",
+          "supportLimits": "Card evidence supports four only as the card variant; source-wide egg quantity remains inconsistent.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-e9e5b6e4e988e32e",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "tomatoegg-variant",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "VARIANT_DIFFERENCE",
+          "evidenceBasis": "EXTERNAL_VARIANT_COMPARISON",
+          "severity": "medium",
+          "sourceIds": [
+            "source-e9e5b6e4e988e32e"
+          ],
+          "ingredientPositions": [
+            0,
+            1,
+            3
+          ],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/ingredients/0/quantity",
+            "/ingredients/1/quantity",
+            "/ingredients/3/quantity"
+          ],
+          "reviewerSummary": "The readable alternate card uses 250g tomato with four eggs plus ketchup/slurry; V2 uses 500g tomato with four eggs and omits ketchup/slurry.",
+          "supportLimits": "A different tomato ratio or omitted sauce ingredient can be a variant. V2 exact quantities are not verified against its unavailable declared source.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-e9e5b6e4e988e32e",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "source-availability",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-5ae94971ad29e034"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [],
+          "reviewerSummary": "Some declared or alternate sources could not be read in this retrieval session.",
+          "supportLimits": "Failure or a video shell is not evidence of recipe correctness, irrelevance or content verification."
+        }
+      ],
+      "nextAction": "Resolve listed evidence gaps and structural findings; review all fields and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "gl-04",
+      "title": "Cơm gà trứng Oyakodon Nhật Bản",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "000a5d7ecb7c4e2b75615b4901794ac02ed85c499ccfa54b2ebf3f2e9114c1f3",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/gl-04.json",
+        "fileSha256": "82378c9b6531fdd69f26b28ce3a562a18de77317838e12ad12ef69071b92e139"
+      },
+      "sourceIds": [
+        "source-69835b12f9afc9fb",
+        "source-01817cb29f36ecb5"
+      ],
+      "evidenceStatus": [
+        "SOURCE_CONTENT_READ",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "oyakodon-egg-allocation",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "VARIANT_DIFFERENCE",
+          "evidenceBasis": "EXTERNAL_VARIANT_COMPARISON",
+          "severity": "high",
+          "sourceIds": [
+            "source-01817cb29f36ecb5"
+          ],
+          "ingredientPositions": [
+            2,
+            3
+          ],
+          "stepNumbers": [
+            4,
+            8,
+            9
+          ],
+          "v2Pointers": [
+            "/steps/3/instruction",
+            "/steps/7/instruction",
+            "/steps/8/instruction"
+          ],
+          "reviewerSummary": "Chopstick Chronicles uses half the total egg when cooking one of two servings in a pan; V2 instead adds two-thirds then one-third to the same pan.",
+          "supportLimits": "The source does not support V2 staged-egg attribution or sake marinade. It is not evidence that staged addition is intrinsically wrong.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-01817cb29f36ecb5",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "oyakodon-quantity-variant",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "VARIANT_DIFFERENCE",
+          "evidenceBasis": "EXTERNAL_VARIANT_COMPARISON",
+          "severity": "medium",
+          "sourceIds": [
+            "source-01817cb29f36ecb5"
+          ],
+          "ingredientPositions": [
+            0,
+            2,
+            4
+          ],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/ingredients/0/quantity",
+            "/ingredients/2/quantity",
+            "/ingredients/4/quantity"
+          ],
+          "reviewerSummary": "The alternate uses 250g chicken, three eggs and 3/4 cup dashi for two servings; V2 uses 283g chicken, four eggs and 1/2 cup dashi.",
+          "supportLimits": "This is a comparison of different recipes. The unavailable JOC page must be read before certifying V2 quantities.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-01817cb29f36ecb5",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "source-availability",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-69835b12f9afc9fb"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [],
+          "reviewerSummary": "Some declared or alternate sources could not be read in this retrieval session.",
+          "supportLimits": "Failure or a video shell is not evidence of recipe correctness, irrelevance or content verification."
+        }
+      ],
+      "nextAction": "Resolve listed evidence gaps and structural findings; review all fields and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "gl-05",
+      "title": "Cơm chiên kim chi Hàn Quốc",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "82fd505aeef95f5b8f3960137e6d891f01d3a1c58966730ca61172fe86a5495b",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/gl-05.json",
+        "fileSha256": "892cd104c8842994b37e0c4c607ce72bec5078f45beec3fa4128c7b93edc4c11"
+      },
+      "sourceIds": [
+        "source-c90470157df9bd1f",
+        "source-09b318cda0c35793"
+      ],
+      "evidenceStatus": [
+        "FACT_SUPPORTED",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_UNAVAILABLE"
+      ],
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "kimchi-onion-attribution",
+          "status": "FACT_SUPPORTED",
+          "findingType": "DIRECT_SOURCE_FACT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-c90470157df9bd1f"
+          ],
+          "ingredientPositions": [
+            5
+          ],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/ingredients/5/note",
+            "/ingredients/5/quantity"
+          ],
+          "reviewerSummary": "Korean Bapsang lists 1/4 small onion, not the 1/2 onion attributed to it in V2.",
+          "supportLimits": "This corrects provenance only; V2 1/2 medium onion remains unchanged and unverified. Maangchi was inaccessible.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-c90470157df9bd1f",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "kimchi-method-variant",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "VARIANT_DIFFERENCE",
+          "evidenceBasis": "EXTERNAL_VARIANT_COMPARISON",
+          "severity": "medium",
+          "sourceIds": [
+            "source-c90470157df9bd1f"
+          ],
+          "ingredientPositions": [
+            8,
+            10,
+            11,
+            12
+          ],
+          "stepNumbers": [
+            4,
+            5,
+            6
+          ],
+          "v2Pointers": [
+            "/ingredients/10/quantity",
+            "/steps/3/instruction",
+            "/steps/4/instruction",
+            "/steps/5/instruction"
+          ],
+          "reviewerSummary": "Korean Bapsang cooks kimchi juice/soy/gochujang before rice; V2 adds mixed sauce after rice. Its sesame oil quantity also differs.",
+          "supportLimits": "Meat omission is explicitly allowed, so the meatless V2 is not a defect. Eggs, sesame and gim are optional in the source; V2 serving choices need review.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-c90470157df9bd1f",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "source-availability",
+          "status": "SOURCE_UNAVAILABLE",
+          "findingType": "SOURCE_ACCESS_LIMIT",
+          "evidenceBasis": "RETRIEVAL_ATTEMPT",
+          "severity": "medium",
+          "sourceIds": [
+            "source-09b318cda0c35793"
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [],
+          "v2Pointers": [],
+          "reviewerSummary": "Some declared or alternate sources could not be read in this retrieval session.",
+          "supportLimits": "Failure or a video shell is not evidence of recipe correctness, irrelevance or content verification."
+        }
+      ],
+      "nextAction": "Resolve listed evidence gaps and structural findings; review all fields and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "gl-06",
+      "title": "Thịt băm xào lá quế kiểu Thái (Pad Krapow)",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "fc3349092a8c5b416544e5583f2cf448bbfbca9a28d2d73a3a75e98a9bc721c9",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/gl-06.json",
+        "fileSha256": "028df0d24c7c63e643d13bb5ce435c77e2c59fef920a04654cca3b26f0814f84"
+      },
+      "sourceIds": [
+        "source-3fabf5965917303c",
+        "source-d8978644f515bc0e",
+        "source-25ff90c4256b0656",
+        "source-bfb34c9a947c3105"
+      ],
+      "evidenceStatus": [
+        "FACT_SUPPORTED",
+        "SOURCE_CONTENT_READ"
+      ],
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "padkrapow-basil-identity",
+          "status": "FACT_SUPPORTED",
+          "findingType": "BOUNDED_IDENTITY_SUPPORT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "high",
+          "sourceIds": [
+            "source-3fabf5965917303c",
+            "source-bfb34c9a947c3105"
+          ],
+          "ingredientPositions": [
+            11
+          ],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/ingredients/11/sourceName",
+            "/ingredients/11/note",
+            "/ingredients/11/quantity"
+          ],
+          "reviewerSummary": "Kavey and No Recipes distinguish holy basil from Thai sweet basil; the V2 sourceName parenthetical conflates the herbs.",
+          "supportLimits": "The note can clarify the herbs, but canonical identity and 25g-per-handful conversion remain unapproved.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-3fabf5965917303c",
+              "factId": "reviewed-1"
+            },
+            {
+              "sourceId": "source-bfb34c9a947c3105",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "padkrapow-basil-timing",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "VARIANT_DIFFERENCE",
+          "evidenceBasis": "EXTERNAL_VARIANT_COMPARISON",
+          "severity": "medium",
+          "sourceIds": [
+            "source-3fabf5965917303c",
+            "source-25ff90c4256b0656",
+            "source-d8978644f515bc0e"
+          ],
+          "ingredientPositions": [
+            11
+          ],
+          "stepNumbers": [
+            8
+          ],
+          "v2Pointers": [
+            "/ingredients/11/note",
+            "/steps/7/instruction",
+            "/steps/7/tip"
+          ],
+          "reviewerSummary": "Kavey and Rachel wilt basil before removing heat; Hot Thai Kitchen stirs basil in after removing heat.",
+          "supportLimits": "These are variants, not mutually exclusive safety or correctness claims. Do not label them a source conflict solely for timing.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-3fabf5965917303c",
+              "factId": "reviewed-1"
+            },
+            {
+              "sourceId": "source-25ff90c4256b0656",
+              "factId": "reviewed-1"
+            },
+            {
+              "sourceId": "source-d8978644f515bc0e",
+              "factId": "reviewed-1"
+            }
+          ]
+        }
+      ],
+      "nextAction": "Resolve listed evidence gaps and structural findings; review all fields and obtain independent culinary review before source or runtime promotion."
+    },
+    {
+      "recipeId": "gl-10",
+      "title": "Cà ri gà kiểu Thái (Green Curry)",
+      "v1": {
+        "sourceKind": "COMPILED_RUNTIME_RECORD",
+        "loader": "scripts/recipe-intelligence-v3-audit.mjs (Vite SSR ALL_RECIPES plus compileImportBatch for approved-batches.json)",
+        "sourcePaths": [
+          "packages/recipes/src/data.ts",
+          "data/recipe-import/approved-batches.json",
+          "data/recipe-import/t14f/pilot-30.jsonl",
+          "data/recipe-import/t14f/scale-399.jsonl"
+        ],
+        "identityManifest": "packages/recipes/src/import/catalog-release.current.json",
+        "recordSha256": "b23420870f43eb6424bfb3c11a668e1e46a78dcaccdc3e787d92d427e0bfe52c",
+        "recordSha256Algorithm": "SHA-256 of Python json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(comma,colon)) UTF-8; research snapshot hash, not stableRuntimeJson or runtime catalog fingerprint."
+      },
+      "v2": {
+        "sourcePath": "data/recipe-refresh/v2/recipes/gl-10.json",
+        "fileSha256": "5ba88aab04ed1c87188debb87454d34094772613cebefbcdbb0e8650b2377899"
+      },
+      "sourceIds": [
+        "source-5569ce97af152406",
+        "source-d093083d80cdaa5b"
+      ],
+      "evidenceStatus": [
+        "FACT_SUPPORTED",
+        "SOURCE_CONTENT_READ"
+      ],
+      "humanReview": "PENDING",
+      "fullRecipeVerification": "NOT_COMPLETE",
+      "sourcePromotionAllowed": false,
+      "claims": [
+        {
+          "id": "greencurry-leaf-consumption",
+          "status": "FACT_SUPPORTED",
+          "findingType": "BOUNDED_PROCESS_ROLE_SUPPORT",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "high",
+          "sourceIds": [
+            "source-5569ce97af152406"
+          ],
+          "ingredientPositions": [
+            8
+          ],
+          "stepNumbers": [
+            5
+          ],
+          "v2Pointers": [
+            "/ingredients/8/note",
+            "/ingredients/8/usageRole",
+            "/ingredients/8/includeInNutrition",
+            "/steps/4/instruction"
+          ],
+          "reviewerSummary": "Hot Thai Kitchen explicitly says large makrut leaf pieces infuse the curry and are not eaten; traditional service may leave them in with a warning. V2 marks them consumed.",
+          "supportLimits": "Clarify removal or warning in the note. Ingredient role/nutrient accounting still requires review; no automatic mapping or consumption fraction is approved.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-5569ce97af152406",
+              "factId": "reviewed-1"
+            }
+          ]
+        },
+        {
+          "id": "greencurry-method-variants",
+          "status": "SOURCE_CONTENT_READ",
+          "findingType": "VARIANT_DIFFERENCE",
+          "evidenceBasis": "EXTERNAL_VARIANT_COMPARISON",
+          "severity": "high",
+          "sourceIds": [
+            "source-5569ce97af152406",
+            "source-d093083d80cdaa5b"
+          ],
+          "ingredientPositions": [
+            0,
+            6,
+            7,
+            11
+          ],
+          "stepNumbers": [
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "v2Pointers": [
+            "/steps/4/instruction",
+            "/steps/5/instruction",
+            "/steps/6/instruction",
+            "/steps/7/instruction",
+            "/steps/8/instruction"
+          ],
+          "reviewerSummary": "Hot Thai Kitchen adds remaining coconut milk and seasonings before chicken simmer, then peppers/basil off heat; V2 delays milk and seasonings and cooks peppers earlier. No Recipes uses another milk/vegetable sequence.",
+          "supportLimits": "These differences need a coherent recipe decision. They are not proof that either source is wrong; V2 scaled quantities and curry-paste allergen safety remain unverified.",
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-5569ce97af152406",
+              "factId": "reviewed-1"
+            },
+            {
+              "sourceId": "source-d093083d80cdaa5b",
+              "factId": "reviewed-1"
+            }
+          ]
+        }
+      ],
+      "nextAction": "Resolve listed evidence gaps and structural findings; review all fields and obtain independent culinary review before source or runtime promotion."
+    }
+  ]
+}
