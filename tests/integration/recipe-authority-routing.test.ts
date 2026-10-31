@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import { Hono } from 'hono';
 import { afterAll, afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { ALL_RECIPES } from '../../packages/recipes/src/data';
@@ -14,7 +15,7 @@ import type { AuthContext, Env } from '../../src/worker/types';
 import { signJwt } from '../../src/worker/utils/jwt';
 import { FakeR2, WEBP_FIXTURE_BYTES, WEBP_FIXTURE_SHA256 } from '../helpers/recipe-media-r2';
 import { LEGACY_BASELINE_FINGERPRINT } from '../helpers/recipe-catalog-growth';
-import { LEGACY_CATALOG_MIGRATION_TIP, SqliteD1, type SqliteStatementEvent } from '../helpers/sqlite-d1';
+import { LEGACY_CATALOG_MIGRATION_TIP, MIGRATION_LEDGER, SqliteD1, type SqliteStatementEvent } from '../helpers/sqlite-d1';
 
 // Pair this historical 0035 fixture with its release; growth suites use the real shipped manifest.
 vi.mock('../../packages/recipes/src/import/catalog-release.current.json', async () => {
@@ -75,7 +76,8 @@ describe('T14D — HTTP parity of every runtime recipe consumer across static / 
   const originalWarn = console.warn;
 
   beforeEach(async () => {
-    db = new SqliteD1({ through: LEGACY_CATALOG_MIGRATION_TIP }); // 71 == 71 parity; T14F growth parity lives in recipe-catalog-growth-authority
+    db = new SqliteD1({ through: LEGACY_CATALOG_MIGRATION_TIP });
+    for (const migration of MIGRATION_LEDGER.postCatalog) db.seed(readFileSync(`migrations/${migration}`, 'utf8')); // 71 == 71 parity; T14F growth parity lives in recipe-catalog-growth-authority
     expect(currentCatalogRelease()).toMatchObject({
       legacyBaselineCount: 71, expectedRecipeCount: 71, approvedImportBatches: [],
       orderedRecipeIds: ALL_RECIPES.map((recipe) => recipe.id),

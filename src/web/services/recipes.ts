@@ -6,6 +6,7 @@ import {
   type RecipeMatchResult,
   type RecipeScoringContext,
 } from '@frigo/recipes';
+import { fingerprintRecipes } from '../../../packages/recipes/src/catalog-fingerprint';
 import { getPendingOps } from '../lib/sync';
 import type { CookingDeduction } from '../lib/cooking-review';
 import type { StandardUnit } from '@frigo/domain';
@@ -68,7 +69,7 @@ export const recipesApi = {
   getRecipeById: async (id: string) => {
     const assertCurrent = guardPrivateSession();
     try {
-      const result = await fetchJson<{ recipe: Recipe; match: RecipeMatchResult }>(
+      const result = await fetchJson<{ recipe: Recipe; match: RecipeMatchResult; contentFingerprint?: string }>(
         `/recipes/${encodeURIComponent(id)}`,
       );
       assertCurrent();
@@ -81,7 +82,7 @@ export const recipesApi = {
       const inventory = await inventoryApi.getInventory();
       assertCurrent();
       const match = evaluateRecipeMatch(recipe, { inventory });
-      return { recipe, match };
+      return { recipe, match, contentFingerprint: await fingerprintRecipes([recipe]) };
     }
   },
 
@@ -91,6 +92,7 @@ export const recipesApi = {
     commandId = createClientItemId('cook'),
     stockBeforeAttempt?: RecipeScoringContext['inventory'],
     servings?: number,
+    contentFingerprint?: string,
   ) => {
     if (servings !== undefined && (!Number.isSafeInteger(servings) || servings < 1 || servings > 100)) {
       throw new RangeError('Cooking servings must be between 1 and 100');
@@ -102,7 +104,7 @@ export const recipesApi = {
     const path = `/recipes/${encodeURIComponent(recipeId)}/cook/complete`;
     const init = {
       method: 'POST',
-      body: JSON.stringify({ deductions, commandId, ...(servings === undefined ? {} : { servings }) }),
+      body: JSON.stringify({ deductions, commandId, ...(servings === undefined ? {} : { servings }), ...(contentFingerprint === undefined ? {} : { contentFingerprint }) }),
       headers: { 'Idempotency-Key': commandId },
     };
     const queued = () =>

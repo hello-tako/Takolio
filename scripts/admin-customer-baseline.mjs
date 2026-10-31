@@ -2,14 +2,15 @@ export const CUSTOMER_BASELINE = '526596a8cd857984ad2b69901a8c7b0e9d6bccc2';
 export const REVIEWED_DOMAIN_BASELINE = '352a4211afe7f70bf75115e0688ff9f4e1e232ee';
 // Candidate bytes are frozen here; independent PR review remains required.
 export const V2_RELEASE_BASELINE = '9b031f05c34a3f27f7a5d9958c65eb8a4405d227';
+export const V3_RELEASE_BASELINE = '680502cc7aa64a4d11abca1ae0625ee9f5166d66';
 
-export function selectGuardedCustomerBaseline({ git, originalBaseline, reviewedBaseline, releaseBaseline, guardedPaths }) {
+export function selectGuardedCustomerBaseline({ git, originalBaseline, reviewedBaseline, releaseBaseline, v3ReleaseBaseline, guardedPaths }) {
   const head = git('rev-parse', 'HEAD');
   const mainBase = git('merge-base', head, 'origin/main');
   git('merge-base', '--is-ancestor', originalBaseline, head);
   git('merge-base', '--is-ancestor', originalBaseline, mainBase);
   let baseline = originalBaseline;
-  for (const pinned of [reviewedBaseline, releaseBaseline].filter(Boolean)) {
+  for (const pinned of [reviewedBaseline, releaseBaseline, v3ReleaseBaseline].filter(Boolean)) {
     try {
       git('merge-base', '--is-ancestor', pinned, head);
       baseline = pinned;

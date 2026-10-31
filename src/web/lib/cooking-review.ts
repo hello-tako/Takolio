@@ -113,6 +113,11 @@ export function cookingFailure(error: unknown): { message: string; recoverable: 
           'Mã yêu cầu đã có dữ liệu khác. Hãy kiểm tra Tủ lạnh trước khi tiếp tục; không gửi một lần trừ mới.',
         recoverable: false,
       };
+    if (error.code === 'RECIPE_VERSION_UNAVAILABLE' || error.code === 'RECIPE_VERSION_REQUIRED')
+      return {
+        message: 'Chưa xác nhận được phiên bản công thức đã nấu. Giữ nguyên yêu cầu và kiểm tra lại trước khi tiếp tục.',
+        recoverable: false,
+      };
     if (error.kind === 'http' && [400, 409, 422].includes(error.status ?? 0))
       return {
         message: presentDomainError(

@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 import { afterEach, describe, expect, it } from 'vitest';
-import { listMigrations, renderSchemaGateSql } from '../../scripts/d1-schema-gate.mjs';
+import { listMigrations, REQUIRED_MIGRATIONS_MARKER } from '../../scripts/d1-schema-gate.mjs';
 import { STAGING_D1, familyStagingConfig } from '../../scripts/staging-family-migration-check.mjs';
 import { REPOSITORY, REPOSITORY_ID } from '../../scripts/domain/audit-cloud.mjs';
 import {
@@ -27,6 +27,12 @@ function databaseAt(tip) {
 }
 function baseline(db) {
   return baselineQuery().split(';').map(query => ({ success: true, results: [db.prepare(query).get()] }));
+}
+function historicalSchemaGateSql() {
+  // This lifecycle predates 0046; the current-tip lifecycle is exercised separately.
+  return readFileSync('scripts/d1-schema-gate.sql', 'utf8').split('\n')
+    .filter(line => !/recipe_content_versions|recipe_content_access|recipe_content_fingerprint|request_fingerprint|trg_cooked_meals_content_|trg_cooked_meals_request_/.test(line))
+    .join('\n').replace(REQUIRED_MIGRATIONS_MARKER, names.map(name => `    ('${name}')`).join(',\n'));
 }
 function fixture() {
   const directory = mkdtempSync(path.join(tmpdir(), 'v2-migration-'));
@@ -199,7 +205,7 @@ describe('bounded canonical staging 0043->0044->0045 certification', () => {
       for (const name of names) db.prepare('INSERT INTO d1_migrations(name) VALUES (?)').run(name);
       const post = [write('post-ledger.json', result(names.map(name => ({ name })))), fk, quick,
         write('after.json', baseline(db)), write('schema.json', result(db.prepare(schemaQuery()).all())),
-        write('schema-gate.json', result(db.prepare(renderSchemaGateSql()).all()))];
+        write('schema-gate.json', result(db.prepare(historicalSchemaGateSql()).all()))];
       const drift = baseline(db);
       drift[0].results[0].users += 1;
       await expect(run('post', receipt, [...post.slice(0, 3), write('drift.json', drift), ...post.slice(4)])).rejects.toThrow(/aggregate drift/);

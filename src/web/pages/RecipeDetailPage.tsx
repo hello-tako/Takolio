@@ -208,7 +208,7 @@ export const RecipeDetailPage: React.FC = () => {
       navigate('/cooking/complete');
       return;
     }
-    startCooking(recipe, inventory);
+    startCooking(recipe, inventory, recipeQuery.data?.contentFingerprint);
     navigate(`/cook/${recipe.slug}?servings=${recipe.servings}`);
   };
 

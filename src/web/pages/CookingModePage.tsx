@@ -60,7 +60,7 @@ function CookingLoader({ recipeKey, servings }: { recipeKey: string; servings?: 
   });
   useEffect(() => {
     if (!matches && !blockedRun && recipeQuery.data?.recipe && inventoryQuery.data)
-      startCooking(servings === undefined ? recipeQuery.data.recipe : scaleRecipeServings(recipeQuery.data.recipe, servings), inventoryQuery.data);
+      startCooking(servings === undefined ? recipeQuery.data.recipe : scaleRecipeServings(recipeQuery.data.recipe, servings), inventoryQuery.data, recipeQuery.data.contentFingerprint);
   }, [matches, blockedRun, recipeQuery.data, inventoryQuery.data, startCooking, servings]);
   if (blockedRun && !matches)
     return (

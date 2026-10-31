@@ -1,3 +1,92 @@
+## PR48 release-tool correction - 2026-10-31 JST
+
+ADR-075 addendum: Admin preflight/matrix now bind the immutable0046 checkpoint
+680502cc7aa64a4d11abca1ae0625ee9f5166d66, retaining original/V2 ancestry and
+parallel-main/post-checkpoint drift guards. Historical43/45 matrix cases remain;
+new46 cases cover fresh/populated upgrades, reapply, legacy NULL, immutable archive
+and receipt identity, missing/future ledger entries and strict45 rollback refusal.
+No runtime, migration, workflow or payment bytes changed by this correction.
+
+Executed in Takolio-recipe-v3-cooking-fix with Node24/pnpm10:
+`CI=1 PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp pnpm check`
+PASS exit0;431files/9665tests/1018.97s, lint/typecheck/migrations/builds PASS.
+Log/exit: /private/tmp/takolio-pr48-full-check.log and .exit.
+`pnpm exec vitest run tests/unit/admin-customer-baseline.test.mjs` PASS25tests;
+/private/tmp/takolio-pr48-baseline-tests.log. Real local D1 matrix
+`node scripts/admin-migration-matrix.mjs --out /private/tmp/takolio-pr48-migration-matrix.json`
+PASS38/38,exit0; matching .log/.exit. SQL-only; not Worker recovery proof.
+Preflight validate reported configuration PASS, baseline680502cc, dirty checkout,
+readyForDeployment=false, remoteExecuted=false; no production readiness inferred.
+
+Next: commit/push correction on PR48; reconcile its46 coverage with PR49's47
+baseline a1e706c7c870881d2e472ef7a1b211ac61bdd38c. PR38 exactb40a03dd has
+AI technical approval via vn-taphoanhatung; CI41161395140 SUCCESS, Admin41161395154
+pending at this observation. Continue normal protected merges. Deployment permission
+persists; four catalog data gates, source/food-safety evidence, approved publication
+and same-source hosted certification remain. No production mutation or deployment.
+
+---
+
+## Recipe V3 cooking foundation - 2026-10-30 JST
+
+Status: RECIPE_V3_IMPLEMENTATION_IN_PROGRESS; release RECIPE_V3_BLOCKED.
+Owner deployment authorization remains in force. Worktree
+/Users/tunbee27/Documents/New project/Takolio-recipe-v3; branch
+codex/recipe-v3-cooking-content; base555ce63d87dc354664ede8fb998fbb9567e5c71a.
+Resolve this checkpoint's final HEAD and PR from Git; it cannot name itself.
+
+ADR-075/migration0046 add immutable validated recipe content, household access
+grants and nullable immutable cooking content/request references. Detail/start
+capture unscaled content; retries/offline freeze version, servings, deductions
+and command ID. Receipt-first replay survives catalog changes/failure without
+another debit. Legacy NULL remains unknown; omitted-unit ambiguity fails closed.
+Archived content uses current household restrictions without borrowing mutable
+D1 evidence. Existing inventory/Week authority retained. Migration workflows
+certify exact0046 through existing identity/main/CI/Environment gates; apply0046
+before Worker. Old Worker rollback is valid only before changed content is served.
+Vite6.4.5 fixes GHSA-8g5g-mxqh-grgj; other package versions unchanged.
+
+Actual checks: Node24.16.0/pnpm10.33.2;
+`CI=1 PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp pnpm check`
+PASS completion marker;431files/9656tests/964.56s; lint/typecheck, Main/Admin
+migration replay and builds PASS. Original process exit receipt unavailable;
+set-e deploy-check log reaches ALL CHECKS PASSED SUCCESSFULLY.
+Final browser PASS exit0:12tests/59.0s,64layout captures/64axe reports,
+0overflow/broken images/clipped/split words/axe violations. Synthetic preview API,
+service workers blocked; not hosted/device proof. Frozen install/audit PASS
+438dependencies/0vulnerabilities; seed59+12/71 parity, import500/2batches,
+candidate500/44edits/25packets PASS. Fresh local D1 migrations0001-0046 and exact
+schema gate PASS. `git diff --check` and `python3 scripts/admin-public-scan.py`
+PASS; public scan checks added text only. Commands/logs/failures/limits:
+recipe-intelligence-v3/22_COOKING_FOUNDATION_VALIDATION.md.
+
+`pnpm recipe:refresh:release-check` FAIL exit1: RUNTIME_PROJECTION_LOSS,
+INGREDIENT_RECONCILIATION_INCOMPLETE,SOURCE_CONTENT_VERIFICATION_INCOMPLETE,
+NUTRITION_EVIDENCE_INCOMPLETE.1395provisional IDs/4233lines;2996exclusions/
+2860transformations pending review;nutrition1inherited/288blocked/211null;
+human culinary approvals0/500;six critical safety reviews. Publication and
+saved planner/composition/shopping pinning incomplete. Source review found no
+concrete cooking-foundation finding; it is not GitHub/human culinary approval.
+
+Fresh GitHub main b49f3e6c4fc2f1485b77623ed7257d0f8bd31f9a. PR47 HEAD555ce63d:
+Recipe40955325772/Admin40955325748 SUCCESS. No independent approvals in stack33-47.
+Strict validate/validate-admin,required independent approval,last-push/stale/admin
+protection and production reviewer vn-taphoanhatung/prevent_self_review remain.
+Existing production read-only smoke PASS; ready reports mainb49f3e6c,d1,
+500recipes,no fallback,database ok,status degraded,email delivery unverified.
+This is existing production, not a new deployment.
+
+Next: publish the coherent foundation PR against codex/recipe-v3-readiness-evidence;
+validate exact HEAD. Complete saved-consumer/publication and real evidence work;
+require independent review,protected main/exact-main CI,same-source hosted
+staging/browser/recovery and normal Environment approval. Changed Zod/foundation
+requires reviewed same-SHA shadow/canary1/canary5/canary25/d1 certification;
+continuity fence intact. No merge,remote D1 mutation,flag change or new deploy.
+
+Earlier records follow unchanged as historical checkpoints.
+
+---
+
 ## Hosted Zod validation and research - 2026-10-29 JST
 
 TAKOLIO_RECIPE_INTELLIGENCE_V3: RECIPE_V3_RESEARCH_IN_PROGRESS;

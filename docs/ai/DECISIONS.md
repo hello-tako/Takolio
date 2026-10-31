@@ -3792,3 +3792,70 @@ local recertification alone cannot authorize unchanged-D1 continuity across the
 parser upgrade. Normal review, fresh staging/certification and Environment
 approval remain required. Rollback is a reviewed dependency/code revert; no
 schema or content migration is introduced by this change.
+
+## ADR-075 - Immutable cooking content and durable replay (2026-10-29 JST)
+
+Status: accepted implementation scope; publication and deployment gates remain.
+Supersedes ADR-072's no-runtime-change scope for cooking compatibility only.
+
+Cooking completion currently loads the latest recipe before replaying its receipt.
+A catalog update can change inferred units, ingredients or steps after a person
+starts cooking; a removed catalog entry can also prevent a committed retry.
+
+Add migration0046: immutable server-owned RuntimeRecipe content keyed by the
+existing single-recipe SHA256, independent of mutable recipe rows. Detail/start
+capture the trusted, unscaled, pre-media content. Detail metadata carries its
+fingerprint separately from Recipe; serving scaling cannot change that identity.
+The cooking store freezes it with the command and offline queue body. Completion
+loads that exact archive or captures an exact current match, never client content.
+Cooked receipts add a nullable version reference; legacy NULL means unknown, not
+an inferred V3 version. Replay precedes catalog resolution and compares the version,
+servings and deductions using the durable receipt's units. Inventory transactions,
+tenancy, FEFO and Week behavior remain unchanged.
+
+Unversioned new commands remain compatible only with the fixed V1 static/full500
+fingerprints. A future catalog must reject them with RECIPE_VERSION_REQUIRED;
+old queued bodies are never rewritten. Legacy receipts replay by stable recipe ID;
+a historical slug is accepted only when independently recoverable from the static
+baseline or immutable archive. Unknown legacy aliases fail closed.
+
+Archived content is evaluated against current household policies using only its
+own ingredient/time facts (the existing static restriction path). Current mutable
+D1 classifications/nutrition are not evidence for historical content. This may
+reject time/nutrition/safety-constrained cooking when archived evidence is unknown;
+never fill those facts from a different version. Versioned restriction evidence is
+a separate prerequisite for relaxing that conservative behavior.
+
+Migration is additive; old Workers ignore the nullable receipt field and archive.
+Rollback keeps archive and receipts; no down-migration or user-data restoration.
+Deploy only after0046, exact schema/ledger verification and normal independent
+review/staging/production gates. This does not publish candidates or certify the
+500 recipes, planner/composition compatibility, nutrition or food safety.
+
+0046 review clarification: archive existence never grants a household access.
+Persist `(household_id, fingerprint)` only after that household resolves the exact
+version through its allowed authority snapshot. Historical detail/completion may
+reuse this grant, including during catalog failure; other households must resolve
+an exact current match. The server derives household identity from the session.
+Store a nullable raw command fingerprint on new receipts so missing-unit retries
+remain exact even with repeated ingredient IDs and mixed explicit units. Existing
+receipts with no raw fingerprint use archived/static baseline units, or explicit
+units; ambiguous legacy omissions fail closed instead of guessing from deduction
+order. Receipt command/version references are immutable.
+
+The foundation retains V1 catalog bytes. A V1 Worker rollback is compatible only
+before any changed content is served. Future content promotion requires a verified
+version-aware recovery Worker and a constrained rollback target: old Workers strip
+the new request field and cannot safely interpret changed-catalog offline commands.
+Keeping the archive alone does not establish backward compatibility after promotion.
+
+### ADR-075 addendum -0046 release-tool checkpoint (2026-10-31 JST)
+
+The Admin guard/matrix still selected45 after cooking added0046. Bind the frozen
+680502cc7aa64a4d11abca1ae0625ee9f5166d66 candidate; retain all original/V2
+ancestry, parallel-main and later-change fences. Exercise45 independently, then46
+fresh/populated upgrades, immutable content/receipts and strict45 rollback refusal.
+This is SQL-only certification; runtime recovery requires separate evidence.
+No schema/runtime/workflow change. Local full check431files/9665tests and real
+D1 matrix38/38 PASS exit0; exact commands/limits in22_COOKING_FOUNDATION_VALIDATION.md.
+PR49 must retain this coverage alongside its immutable47 checkpoint.

@@ -11,6 +11,7 @@ import { createClientItemId } from '../services/http';
 export type { DeductionDraft } from '../lib/cooking-review';
 export interface CookingAttempt {
   commandId: string;
+  contentFingerprint?: string;
   servings: number;
   deductions: CookingDeduction[];
   status: 'sending' | 'uncertain' | 'rejected' | 'restricted' | 'blocked' | 'saved' | 'queued';
@@ -19,6 +20,7 @@ export interface CookingAttempt {
 interface CookingState {
   runId: string | null;
   activeRecipe: Recipe | null;
+  contentFingerprint: string | undefined;
   currentStepIndex: number;
   timerSecondsRemaining: number | null;
   timerDeadline: number | null;
@@ -29,7 +31,7 @@ interface CookingState {
   deductionErrors: Array<string | null>;
   stockSnapshot: RecipeScoringContext['inventory'];
   attempt: CookingAttempt | null;
-  startCooking: (recipe: Recipe, inventory: RecipeScoringContext['inventory']) => void;
+  startCooking: (recipe: Recipe, inventory: RecipeScoringContext['inventory'], contentFingerprint?: string) => void;
   nextStep: () => void;
   prevStep: () => void;
   setTimer: (seconds: number) => void;
@@ -51,6 +53,7 @@ interface CookingState {
 const empty = {
   runId: null,
   activeRecipe: null,
+  contentFingerprint: undefined,
   currentStepIndex: 0,
   timerSecondsRemaining: null,
   timerDeadline: null,
@@ -66,7 +69,7 @@ const stoppedTimer = { timerSecondsRemaining: null, timerDeadline: null, isTimer
 
 export const useCookingStore = create<CookingState>((set, get) => ({
   ...empty,
-  startCooking: (recipe, inventory) => {
+  startCooking: (recipe, inventory, contentFingerprint) => {
     const attempt = get().attempt;
     if (attempt && !['saved', 'queued'].includes(attempt.status)) return;
     const availability = evaluateRecipeAvailability(recipe, inventory);
@@ -78,6 +81,7 @@ export const useCookingStore = create<CookingState>((set, get) => ({
       ...empty,
       runId: createClientItemId('cooking_run'),
       activeRecipe: recipe,
+      contentFingerprint,
       stockSnapshot: inventory,
       deductionInputs: inputs,
       deductions: review.deductions,
@@ -150,6 +154,7 @@ export const useCookingStore = create<CookingState>((set, get) => ({
       ? { ...state.attempt, status: 'sending', error: null }
       : {
           commandId: createClientItemId('cook'),
+          contentFingerprint: state.contentFingerprint,
           servings: state.activeRecipe.servings,
           status: 'sending',
           error: null,

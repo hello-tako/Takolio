@@ -291,6 +291,9 @@ test('actual-use guards precede explicit confirm; lost response retries the same
   expect(requests).toHaveLength(2);
   expect(requests[0].serverStatus).toBe(200);
   expect(requests[0].body.servings).toBe(4);
+  const detail = await getJson<{ contentFingerprint: string }>(page, `/api/v1/recipes/${slug}`);
+  expect(detail.contentFingerprint).toMatch(/^[0-9a-f]{64}$/);
+  expect(requests[0].body.contentFingerprint).toBe(detail.contentFingerprint);
   expect(requests[1].body).toEqual(requests[0].body);
   expect(requests[1].key).toBe(requests[0].key);
   expect(requests[0].key).toBe(requests[0].body.commandId);
@@ -318,4 +321,66 @@ test('direct completion without a run offers recovery without writes', async ({ 
   await page.getByRole('link', { name: 'Xem công thức', exact: true }).click();
   await expect(page).toHaveURL(/\/recipes$/);
   expect(writes).toEqual([]);
+});
+
+test('offline cooking retains the content version across reload and replays a lost committed response', async ({ page }, info) => {
+  await page.addInitScript(() => Object.defineProperty(navigator, 'onLine', {
+    configurable: true, get: () => sessionStorage.getItem('__offline_test') !== 'true',
+  }));
+  await reset(page);
+  await page.goto(`/recipes/${slug}?servings=4`);
+  const detail = await getJson<{ contentFingerprint: string }>(page, `/api/v1/recipes/${slug}`);
+  await page.getByRole('button', { name: /^Bắt đầu nấu \(/ }).click();
+  await expect(page.locator('.cooking-header-sub')).toContainText('4 người');
+  await finishSteps(page);
+  for (const input of await page.locator('.cooking-use-controls input').all()) await input.fill('0');
+  const inventory = await getJson(page, '/api/v1/inventory');
+  const queue = () => page.evaluate(() => JSON.parse(localStorage.getItem('frigo_sync_outbox_v1') ?? '[]') as Array<{
+    body: string; operationId: string; userId: string; householdId: string;
+  }>);
+  let mode: 'offline' | 'lose-response' | 'success' = 'offline';
+  const requests: Array<{ body: unknown; key?: string; status: number; replay: boolean }> = [];
+  await page.route('**/api/v1/recipes/*/cook/complete', async route => {
+    if (mode === 'offline') return route.abort('internetdisconnected');
+    const response = await route.fetch();
+    const result = await response.json();
+    requests.push({ body: route.request().postDataJSON(), key: route.request().headers()['idempotency-key'],
+      status: response.status(), replay: result.idempotentReplay === true });
+    if (mode === 'lose-response') return route.fulfill({ status: 503, contentType: 'application/json',
+      body: JSON.stringify({ error: 'Synthetic response loss after offline replay committed' }) });
+    return route.fulfill({ response });
+  });
+  await page.evaluate(() => { sessionStorage.setItem('__offline_test', 'true'); dispatchEvent(new Event('offline')); });
+  await confirm(page).click();
+  await expect(page.getByRole('heading', { name: 'Đã lưu trên thiết bị', exact: true })).toBeVisible();
+  const original = await queue();
+  expect(original).toHaveLength(1);
+  const body = JSON.parse(original[0].body);
+  expect(body).toMatchObject({ contentFingerprint: detail.contentFingerprint, servings: 4 });
+  expect(body.contentFingerprint).toMatch(/^[0-9a-f]{64}$/);
+  expect(original[0]).toMatchObject({ userId: 'planner-preview-user', householdId: 'planner-preview-household' });
+  expect(body.commandId).toBeTruthy();
+  await page.screenshot({ path: info.outputPath('versioned-cooking-offline.png'), fullPage: true });
+  await page.reload();
+  expect(await queue()).toEqual(original);
+  await page.goto('/recipes');
+  await expect(page.getByRole('status').filter({ hasText: 'Đang ở chế độ Ngoại tuyến.' })).toBeVisible();
+  mode = 'lose-response';
+  await page.evaluate(() => { sessionStorage.setItem('__offline_test', 'false'); dispatchEvent(new Event('online')); });
+  const retry = page.getByRole('button', { name: 'Đồng bộ ngay', exact: true });
+  await expect.poll(() => requests.length).toBe(1);
+  await expect(retry).toBeEnabled();
+  expect(requests[0]).toMatchObject({ body, key: body.commandId, status: 200, replay: false });
+  expect(await queue()).toEqual(original);
+  mode = 'success';
+  await retry.click();
+  await expect.poll(queue).toEqual([]);
+  expect(requests).toHaveLength(2);
+  expect(requests[1]).toMatchObject({ body, key: body.commandId, status: 200, replay: true });
+  expect(await getJson(page, '/api/v1/inventory')).toEqual(inventory);
+  await writeFile(info.outputPath('versioned-offline-summary.json'), JSON.stringify({
+    localSyntheticApi: true, shapedNavigatorAndEvents: true, actualApiAbort: true, reloadRetainsQueue: true,
+    contentVersionRetained: true, servings: body.servings, sameBodyAndCommand: true, successfulReplay: true,
+    zeroDeductionsInventoryUnchanged: true,
+  }, null, 2));
 });

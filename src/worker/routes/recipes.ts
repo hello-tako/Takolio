@@ -14,6 +14,8 @@ import { tenancyGuard } from '../middleware/tenancy';
 import { CookingCompleteSchema } from '../validation/schemas';
 import { backgroundExecutorOf, resolveRecipeAuthority } from '../services/recipe-authority';
 import { evaluateCookingHardRestrictions } from '../services/cooking-hard-restrictions';
+import { fingerprintRecipes } from '../../../packages/recipes/src/catalog-fingerprint';
+import { captureRecipeContentVersion, readRecipeContentVersion, grantRecipeContentAccess, readHouseholdRecipeContentVersion, findLegacyCookingRecipe, CONTENT_FINGERPRINT, UNVERSIONED_COOKING_CATALOGS } from '../services/recipe-content-versions';
 import { enrichRecipesWithMedia } from '../services/recipe-media';
 import { DiscoveryQuerySchema } from '../../../packages/recipes/src/discovery-contract';
 import { DiscoveryCursorError } from '../../../packages/recipes/src/discovery';
@@ -112,8 +114,9 @@ function cookingRequestFingerprint(
     ingredientId: string;
     name?: string;
     quantityDeducted: number;
-    unit: StandardUnit;
-  }>
+    unit?: StandardUnit;
+  }>,
+  contentFingerprint?: string,
 ): string {
   // Deduction order is not semantically meaningful, but every quantity/unit
   // is. Sorting makes retries compare equivalent requests deterministically.
@@ -129,7 +132,7 @@ function cookingRequestFingerprint(
         `${b.ingredientId}:${b.name}:${b.unit}:${b.quantityDeducted}`
       )
     );
-  return JSON.stringify({ recipeId, servings, deductions: normalized });
+  return JSON.stringify({ recipeId, servings, deductions: normalized, ...(contentFingerprint ? { contentFingerprint } : {}) });
 }
 
 function resolveCookingDeductionUnits(
@@ -146,7 +149,7 @@ function resolveCookingDeductionUnits(
     const recipeIngredient = recipe.ingredients.find(
       (ingredient) =>
         ingredient.ingredientId === deduction.ingredientId ||
-        ingredient.name.trim().toLocaleLowerCase() === (deduction.name || '').trim().toLocaleLowerCase()
+        (Boolean(deduction.name?.trim()) && ingredient.name.trim().toLocaleLowerCase() === deduction.name!.trim().toLocaleLowerCase())
     );
     if (!recipeIngredient) {
       throw new Error(`Missing unit for cooking deduction ${deduction.ingredientId}`);
@@ -159,6 +162,7 @@ function storedCookingFingerprint(row: {
   recipe_id?: string;
   servings_cooked?: number;
   deductions_applied?: string | null;
+  recipe_content_fingerprint?: string | null;
 }): string | null {
   try {
     const deductions = JSON.parse(row.deductions_applied || '[]');
@@ -171,7 +175,8 @@ function storedCookingFingerprint(row: {
         name?: string;
         quantityDeducted: number;
         unit: StandardUnit;
-      }>
+      }>,
+      row.recipe_content_fingerprint ?? undefined,
     );
   } catch {
     return null;
@@ -254,10 +259,17 @@ recipeRoutes.get('/recipes/:id', tenancyGuard, async (c) => {
   const idOrSlug = c.req.param('id');
   if (!idOrSlug) return c.json({ error: 'Recipe not found' }, 404);
   const auth = c.get('auth');
-  const { snapshot } = await recipeAuthority(c);
-  const recipe = snapshot.findByIdOrSlug(idOrSlug);
-
+  const requestedVersion = c.req.query('contentFingerprint');
+  if (requestedVersion !== undefined && !CONTENT_FINGERPRINT.test(requestedVersion))
+    return c.json({ error: 'Invalid recipe content fingerprint', code: 'VALIDATION_ERROR' }, 400);
+  let recipe = requestedVersion && c.env.DB
+    ? await readHouseholdRecipeContentVersion(c.env.DB, auth.householdId, requestedVersion) : null;
   if (!recipe) {
+    const current = (await recipeAuthority(c)).snapshot.findByIdOrSlug(idOrSlug);
+    if (current && (!requestedVersion || await fingerprintRecipes([current]) === requestedVersion)) recipe = current;
+  }
+
+  if (!recipe || (recipe.id !== idOrSlug && recipe.slug !== idOrSlug)) {
     return c.json({ error: 'Recipe not found' }, 404);
   }
 
@@ -267,7 +279,13 @@ recipeRoutes.get('/recipes/:id', tenancyGuard, async (c) => {
   const evaluation = evaluateRecipeMatch(recipe, { inventory });
   const [recipeWithMedia] = await enrichRecipesWithMedia(c.env, [recipe]);
 
+  const contentFingerprint = c.env.DB
+    ? await captureRecipeContentVersion(c.env.DB, recipe)
+    : await fingerprintRecipes([recipe]);
+  if (c.env.DB && auth.userId !== 'guest_anonymous')
+    await grantRecipeContentAccess(c.env.DB, auth.householdId, contentFingerprint);
   return c.json({
+    contentFingerprint,
     recipe: recipeWithMedia,
     match: evaluation,
   });
@@ -348,8 +366,11 @@ recipeRoutes.post('/recipes/:id/cook/start', tenancyGuard, async (c) => {
     );
   }
 
+  const contentFingerprint = await captureRecipeContentVersion(db, recipe);
+  await grantRecipeContentAccess(db, auth.householdId, contentFingerprint);
   return c.json({
     success: true,
+    contentFingerprint,
     cookingSessionId: `cook_${Date.now()}`,
     recipeId: recipe.id,
     stepsCount: recipe.steps.length,
@@ -375,32 +396,9 @@ recipeRoutes.post('/recipes/:id/cook/complete', tenancyGuard, async (c) => {
     );
   }
 
-  const { deductions: rawDeductions, servings, commandId: bodyCommandId } = parseResult.data;
-  // One snapshot resolves ingredients/units for the deduction plan; inventory mutation below is untouched (T09/T11).
-  const { snapshot } = await recipeAuthority(c);
-  const recipe = recipeId ? snapshot.findByIdOrSlug(recipeId) : null;
-  if (!recipe) {
-    return c.json({ error: 'Recipe not found', code: 'NOT_FOUND' }, 404);
-  }
+  const { deductions: rawDeductions, servings, commandId: bodyCommandId, contentFingerprint } = parseResult.data;
   if (!db) {
-    // Cooking is a durable mutation; never claim success when there is no
-    // authoritative persistence layer available.
     return c.json({ error: 'Database service unavailable', code: 'DATABASE_UNAVAILABLE' }, 503);
-  }
-
-  let deductions: Array<{
-    ingredientId: string;
-    name?: string;
-    quantityDeducted: number;
-    unit: StandardUnit;
-  }>;
-  try {
-    deductions = resolveCookingDeductionUnits(recipe, rawDeductions);
-  } catch (err) {
-    return c.json(
-      { error: err instanceof Error ? err.message : 'Thiếu đơn vị nguyên liệu', code: 'UNIT_MISMATCH' },
-      422
-    );
   }
 
   const headerIdempotencyKey = c.req.header('Idempotency-Key')?.trim();
@@ -421,10 +419,87 @@ recipeRoutes.post('/recipes/:id/cook/complete', tenancyGuard, async (c) => {
   const cookId = idempotencyKey
     ? await stableCookingCommandId(auth.householdId, idempotencyKey)
     : `cook_${Date.now()}_${Math.random().toString(36).substring(2, 8)}`;
-  const requestFingerprint = cookingRequestFingerprint(recipe.id, servings, deductions);
-
   const currentInventory = async () =>
     fetchHouseholdInventoryFromDb(db, auth.householdId, kv, { strict: true, actorId: auth.userId });
+
+  // A committed command owns its units/version even if the catalog has moved or disappeared.
+  if (idempotencyKey) {
+    const prior = await db.prepare(
+      'SELECT id, recipe_id, servings_cooked, deductions_applied, recipe_content_fingerprint, request_fingerprint FROM cooked_meals WHERE id = ? AND household_id = ? LIMIT 1',
+    ).bind(cookId, auth.householdId).first<{
+      id: string; recipe_id: string; servings_cooked: number; deductions_applied: string | null;
+      recipe_content_fingerprint: string | null; request_fingerprint: string | null;
+    }>();
+    if (prior) {
+      let replayMatches = false;
+      let title = findLegacyCookingRecipe(prior.recipe_id)?.title;
+      try {
+        const baseline = findLegacyCookingRecipe(prior.recipe_id);
+        const staticId = recipeId ? findLegacyCookingRecipe(recipeId)?.id : undefined;
+        const archived = prior.recipe_content_fingerprint
+          ? await readRecipeContentVersion(db, prior.recipe_content_fingerprint) : null;
+        title = archived?.title ?? title;
+        const sameRecipe = recipeId === prior.recipe_id || staticId === prior.recipe_id ||
+          (archived?.id === prior.recipe_id && archived.slug === recipeId);
+        replayMatches = sameRecipe && prior.request_fingerprint != null && prior.request_fingerprint ===
+          cookingRequestFingerprint(prior.recipe_id, servings, rawDeductions, contentFingerprint);
+        if (sameRecipe && !replayMatches) {
+          const stored = JSON.parse(prior.deductions_applied || '[]') as Array<{
+            ingredientId: string; name?: string; quantityDeducted: number; unit: StandardUnit;
+          }>;
+          // Legacy omission is safe only when the receipt has one unit for that ingredient.
+          const unambiguous = stored.filter(line => stored.every(other =>
+            other.ingredientId !== line.ingredientId || other.unit === line.unit));
+          const normalized = resolveCookingDeductionUnits(archived ?? baseline ?? {
+            ingredients: unambiguous.map(line => ({ ...line, name: line.name ?? '' })),
+          }, rawDeductions);
+          replayMatches = storedCookingFingerprint(prior) ===
+            cookingRequestFingerprint(prior.recipe_id, servings, normalized, contentFingerprint);
+        }
+      } catch {
+        // Corrupt or ambiguous receipts cannot authorize another debit.
+      }
+      if (!replayMatches) return c.json({ error: 'Idempotency-Key đã được dùng cho một lệnh nấu khác', code: 'IDEMPOTENCY_CONFLICT' }, 409);
+      const inventory = await currentInventory();
+      return c.json({ success: true, idempotentReplay: true, cookId, recipeId: prior.recipe_id,
+        message: title ? `Đã hoàn tất nấu món ${title} và tự động cập nhật lại tủ lạnh!` : 'Đã hoàn tất nấu và cập nhật lại tủ lạnh!',
+        deductionsApplied: JSON.parse(prior.deductions_applied || '[]'),
+        remainingInventoryCount: inventory.length, inventory });
+    }
+  }
+
+  let recipe: Recipe | null;
+  let authoritySource: RecipeAuthoritySource = 'static';
+  if (contentFingerprint) {
+    recipe = await readHouseholdRecipeContentVersion(db, auth.householdId, contentFingerprint);
+    if (!recipe) {
+      const { snapshot } = await recipeAuthority(c);
+      const current = recipeId ? snapshot.findByIdOrSlug(recipeId) : null;
+      if (current && await fingerprintRecipes([current]) === contentFingerprint) {
+        await captureRecipeContentVersion(db, current);
+        await grantRecipeContentAccess(db, auth.householdId, contentFingerprint);
+        recipe = current;
+      }
+    }
+    if (!recipe || (recipe.id !== recipeId && recipe.slug !== recipeId))
+      return c.json({ error: 'Phiên bản công thức chưa được lưu; hãy mở lại công thức', code: 'RECIPE_VERSION_UNAVAILABLE' }, 409);
+  } else {
+    const { snapshot } = await recipeAuthority(c);
+    authoritySource = snapshot.source;
+    if (!UNVERSIONED_COOKING_CATALOGS.has(snapshot.fingerprint))
+      return c.json({ error: 'Cần phiên bản công thức đã mở trước khi hoàn tất nấu', code: 'RECIPE_VERSION_REQUIRED' }, 409);
+    recipe = recipeId ? snapshot.findByIdOrSlug(recipeId) : null;
+  }
+  if (!recipe) return c.json({ error: 'Recipe not found', code: 'NOT_FOUND' }, 404);
+
+  let deductions: Array<{ ingredientId: string; name?: string; quantityDeducted: number; unit: StandardUnit }>;
+  try {
+    deductions = resolveCookingDeductionUnits(recipe, rawDeductions);
+  } catch (err) {
+    return c.json({ error: err instanceof Error ? err.message : 'Thiếu đơn vị nguyên liệu', code: 'UNIT_MISMATCH' }, 422);
+  }
+  const requestFingerprint = cookingRequestFingerprint(recipe.id, servings, deductions, contentFingerprint);
+  const rawRequestFingerprint = cookingRequestFingerprint(recipe.id, servings, rawDeductions, contentFingerprint);
   const allocations = new Map<string, StockAllocation>();
 
   // Adopted households cook through the lot authority: FEFO-ordered canonical
@@ -432,7 +507,7 @@ recipeRoutes.post('/recipes/:id/cook/complete', tenancyGuard, async (c) => {
   if (await readInventoryAuthorityMode(db, auth.householdId) === 'native') {
     return completeAdoptedCooking(c, db, kv, auth, {
       cookId, recipe, servings, deductions, requestFingerprint,
-      authoritySource: snapshot.source,
+      authoritySource, contentFingerprint, rawRequestFingerprint,
     });
   }
 
@@ -441,7 +516,7 @@ recipeRoutes.post('/recipes/:id/cook/complete', tenancyGuard, async (c) => {
     // without applying inventory events a second time.
     const prior = await db
       .prepare(
-        'SELECT id, recipe_id, servings_cooked, deductions_applied FROM cooked_meals WHERE id = ? AND household_id = ? LIMIT 1'
+        'SELECT id, recipe_id, servings_cooked, deductions_applied, recipe_content_fingerprint, request_fingerprint FROM cooked_meals WHERE id = ? AND household_id = ? LIMIT 1'
       )
       .bind(cookId, auth.householdId)
       .first<{
@@ -449,6 +524,7 @@ recipeRoutes.post('/recipes/:id/cook/complete', tenancyGuard, async (c) => {
         recipe_id: string;
         servings_cooked: number;
         deductions_applied: string | null;
+        recipe_content_fingerprint: string | null;
       }>();
     if (prior) {
       if (storedCookingFingerprint(prior) !== requestFingerprint) {
@@ -475,7 +551,7 @@ recipeRoutes.post('/recipes/:id/cook/complete', tenancyGuard, async (c) => {
 
     // T19: enforce the canonical hard restrictions before any inventory
     // mutation. The idempotent replay above stays untouched.
-    const restriction = await evaluateCookingHardRestrictions(db, auth, snapshot.source, recipe);
+    const restriction = await evaluateCookingHardRestrictions(db, auth, authoritySource, recipe);
     if (restriction.blocked) {
       console.warn('[cooking] cook/complete blocked by hard restriction', { recipeId: recipe.id, reasons: restriction.reasons });
       return c.json(
@@ -569,10 +645,10 @@ recipeRoutes.post('/recipes/:id/cook/complete', tenancyGuard, async (c) => {
         .bind(recipe.id, recipe.slug, recipe.title, recipe.cuisine, recipe.cookTimeMinutes, recipe.servings, recipe.difficulty),
       db
         .prepare(
-          `INSERT INTO cooked_meals (id, household_id, user_id, recipe_id, servings_cooked, deductions_applied)
-           VALUES (?, ?, ?, ?, ?, ?)`
+          `INSERT INTO cooked_meals (id, household_id, user_id, recipe_id, servings_cooked, deductions_applied, recipe_content_fingerprint, request_fingerprint)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
         )
-        .bind(cookId, auth.householdId, auth.userId, recipe.id, servings, JSON.stringify(deductions)),
+        .bind(cookId, auth.householdId, auth.userId, recipe.id, servings, JSON.stringify(deductions), contentFingerprint ?? null, rawRequestFingerprint),
     ];
 
     for (const allocation of allocations.values()) {
@@ -643,7 +719,7 @@ recipeRoutes.post('/recipes/:id/cook/complete', tenancyGuard, async (c) => {
       try {
         const prior = await db
           .prepare(
-            'SELECT id, recipe_id, servings_cooked, deductions_applied FROM cooked_meals WHERE id = ? AND household_id = ? LIMIT 1'
+            'SELECT id, recipe_id, servings_cooked, deductions_applied, recipe_content_fingerprint, request_fingerprint FROM cooked_meals WHERE id = ? AND household_id = ? LIMIT 1'
           )
           .bind(cookId, auth.householdId)
           .first<{
@@ -651,6 +727,7 @@ recipeRoutes.post('/recipes/:id/cook/complete', tenancyGuard, async (c) => {
             recipe_id: string;
             servings_cooked: number;
             deductions_applied: string | null;
+            recipe_content_fingerprint: string | null;
           }>();
         if (prior) {
           if (storedCookingFingerprint(prior) !== requestFingerprint) {
@@ -720,6 +797,8 @@ async function completeAdoptedCooking(c: any, db: any, kv: any, auth: AuthContex
   deductions: Array<{ ingredientId: string; name?: string; quantityDeducted: number; unit: StandardUnit }>;
   requestFingerprint: string;
   authoritySource: RecipeAuthoritySource;
+  contentFingerprint?: string;
+  rawRequestFingerprint: string;
 }) {
   const scope = { householdId: auth.householdId, actorId: auth.userId };
   try {
@@ -728,7 +807,7 @@ async function completeAdoptedCooking(c: any, db: any, kv: any, auth: AuthContex
     // consumed poststate, so re-planning the same deductions would wrongly
     // report INSUFFICIENT_INVENTORY instead of the idempotent replay.
     const prior = await db
-      .prepare('SELECT id, recipe_id, servings_cooked, deductions_applied FROM cooked_meals WHERE id = ? AND household_id = ? LIMIT 1')
+      .prepare('SELECT id, recipe_id, servings_cooked, deductions_applied, recipe_content_fingerprint, request_fingerprint FROM cooked_meals WHERE id = ? AND household_id = ? LIMIT 1')
       .bind(plan.cookId, auth.householdId)
       .first();
     if (prior) {
@@ -825,9 +904,9 @@ async function completeAdoptedCooking(c: any, db: any, kv: any, auth: AuthContex
         VALUES (?, ?, ?, ?, ?, ?, ?)`)
         .bind(plan.recipe.id, plan.recipe.slug, plan.recipe.title, plan.recipe.cuisine,
           plan.recipe.cookTimeMinutes, plan.recipe.servings, plan.recipe.difficulty),
-      db.prepare(`INSERT INTO cooked_meals (id, household_id, user_id, recipe_id, servings_cooked, deductions_applied)
-        VALUES (?, ?, ?, ?, ?, ?)`)
-        .bind(plan.cookId, auth.householdId, auth.userId, plan.recipe.id, plan.servings, JSON.stringify(plan.deductions)),
+      db.prepare(`INSERT INTO cooked_meals (id, household_id, user_id, recipe_id, servings_cooked, deductions_applied, recipe_content_fingerprint, request_fingerprint)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)`)
+        .bind(plan.cookId, auth.householdId, auth.userId, plan.recipe.id, plan.servings, JSON.stringify(plan.deductions), plan.contentFingerprint ?? null, plan.rawRequestFingerprint),
     ];
     await db.batch([...composed.statements, ...batchStatements]);
     if (kv) await kv.delete(`inv_${auth.householdId}`).catch(() => {});
@@ -845,7 +924,7 @@ async function completeAdoptedCooking(c: any, db: any, kv: any, auth: AuthContex
     // A concurrent request may have committed the same idempotent command
     // first; the durable cooked_meals row is the replay evidence.
     const prior = await db
-      .prepare('SELECT id, recipe_id, servings_cooked, deductions_applied FROM cooked_meals WHERE id = ? AND household_id = ? LIMIT 1')
+      .prepare('SELECT id, recipe_id, servings_cooked, deductions_applied, recipe_content_fingerprint, request_fingerprint FROM cooked_meals WHERE id = ? AND household_id = ? LIMIT 1')
       .bind(plan.cookId, auth.householdId)
       .first();
     if (prior) {
