@@ -162,7 +162,9 @@ export class MealCompositionService {
     const compositions = await readPlanCompositions(this.db, scope, planId);
     const archived = new Map<string, Recipe>();
     const currentPins = new Map<string, string>();
-    for (const component of [...compositions.values()].flatMap((entry) => entry.components)) {
+    const projected = stored.result.meals.filter((meal) => !compositions.has(meal.slotId)).flatMap((meal) =>
+      projectV1Composition({ slotId: meal.slotId, meal, locked: false, revision: row.revision }).components);
+    for (const component of [...compositions.values()].flatMap((entry) => entry.components).concat(projected)) {
       if (!component.contentFingerprint) continue;
       if (!archived.has(component.contentFingerprint)) {
         const recipe = await readHouseholdRecipeContentVersion(this.db, scope.householdId, component.contentFingerprint);
@@ -1137,6 +1139,6 @@ export class MealCompositionService {
       writes.push({ slotId, mode: composition.mode, createdRevision: composition.createdRevision, createdAt: composition.createdAt,
         components: await this.pinComponents(scope, input.authority, normalizeComponents([...anchor, ...kept]), kept) });
     }
-    return { result, locks, writes, deleted };
+    return { result: await this.planner.pinResult(scope, input.authority, result, [], writes), locks, writes, deleted };
   }
 }

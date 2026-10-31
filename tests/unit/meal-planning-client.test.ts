@@ -97,7 +97,8 @@ describe('meal planning cookie client', () => {
         cache: 'no-store',
         headers: {
           'Content-Type': 'application/json',
-          'Idempotency-Key': key,
+          'idempotency-key': key,
+          accept: 'application/json; recipe-content=1',
           'X-Frigo-Expected-User-Id': 'user-a',
           'X-Frigo-Expected-Household-Id': 'house-a',
         },
@@ -107,7 +108,7 @@ describe('meal planning cookie client', () => {
     expect(localStorage.length).toBe(2);
     fetchMock.mockResolvedValue(response(plan));
     await mealPlanningApi.generate(intent, key);
-    expect((fetchMock.mock.calls[1][1]?.headers as Record<string, string>)['Idempotency-Key']).toBe(
+    expect((fetchMock.mock.calls[1][1]?.headers as Record<string, string>)['idempotency-key']).toBe(
       key,
     );
   });
@@ -254,7 +255,7 @@ describe('meal planning cookie client', () => {
         receipt,
       );
       expect(
-        (fetchMock.mock.calls[0][1]?.headers as Record<string, string>)['Idempotency-Key'],
+        (fetchMock.mock.calls[0][1]?.headers as Record<string, string>)['idempotency-key'],
       ).toBe(key);
       expect(localStorage.length).toBe(2);
     },
