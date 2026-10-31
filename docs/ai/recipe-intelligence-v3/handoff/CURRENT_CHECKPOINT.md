@@ -1,3 +1,39 @@
+PROGRAM: TAKOLIO_RECIPE_INTELLIGENCE_V3
+REPOSITORY: hello-tako/Takolio
+BASE_SHA: ae68f7e5a4bc987155aaeed577f07f95b893359b
+WORKING_BRANCH: codex/recipe-v3-browser-certification
+CURRENT_HEAD: resolve final validation/docs commit from Git; approved parent above
+PHASE: local PWA/recovery validation
+STATUS: RECIPE_V3_IMPLEMENTATION_IN_PROGRESS; production NOT_READY
+RECIPES_TOTAL: 500
+RECIPES_AUDITED: 500
+RECIPES_RESEARCHED: 500 bounded outcomes; full culinary verification0
+RECIPES_AUTOMATED_VALIDATED: 500; no runtime promotion
+RECIPES_HUMAN_APPROVED: 0
+RECIPES_BLOCKED: 500 review-required
+INGREDIENT_IDENTITIES_RESOLVED: 0 approved provisional mappings
+INGREDIENT_IDENTITIES_PENDING: 1395 provisional IDs/4233lines
+SOURCE_CONTENT_VERIFIED: 0 whole recipes; bounded claims only
+NUTRITION_EVIDENCE_COMPLETE: V3 certifications0;1inherited/288blocked/211NULL
+TEST_RESULTS: local OFF/ON1file/5tests PASS; real-SW PWA5checks PASS;
+  full pnpm check PASS435files/9717tests,973.91s,exit0;types,lint,migrations,builds
+  PASS; exact commands/failures/limits in26_PWA_RECOVERY_VALIDATION.md
+CURRENT_BLOCKERS: four data gates; six safety cases; approved publication;
+  PR33-50 independent approvals; protected integration/exact-main CI;
+  same-source hosted staging/recovery/catalog and Environment review
+PRODUCTION_MUTATIONS: 0
+NEXT_ACTION: publish bounded slice against codex/recipe-v3-shopping-content;
+  genuine stack review and data/publication evidence before hosted release
+
+PR51 exact ae68f7e5 is independently approved by vn-taphoanhatung;
+Recipe41059010571/Admin41059010747 SUCCESS. Do not move its approved HEAD.
+Review requests already sent to vn-taphoanhatung for PR33-50. New slice needs its
+own CI/review. Owner production authorization persists. Full evidence/limitations:
+[26_PWA_RECOVERY_VALIDATION.md](../26_PWA_RECOVERY_VALIDATION.md).
+Earlier records are historical checkpoints.
+
+---
+
 ## Recipe V3 saved shopping content - 2026-10-30 JST
 
 Status: RECIPE_V3_IMPLEMENTATION_IN_PROGRESS; production NOT_READY.

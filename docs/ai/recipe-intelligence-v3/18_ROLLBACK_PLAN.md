@@ -1,6 +1,6 @@
 # Rollback plan
 
-ADR-075/076 retain V1 catalog authority. Apply0046 then0047 before this Worker.
+ADR-075/076/077/078 retain V1 catalog authority. Apply0046 then0047 before this Worker.
 Keep the immutable content archive, household grants, cooking receipt references
 and saved composition pins. Never down-migrate, delete receipts, rewrite queued
 commands or restore historical user data over current writes.
@@ -16,7 +16,9 @@ path without separate reviewed certification.
 ## After the first saved pin
 
 A Worker predating0047 can delete/reinsert composition rows without their pins.
-It is an invalid mutation-serving rollback even when catalog content is unchanged.
+Pre-077 strict V1 Workers cannot parse pinned result JSON; pre-078 strict shopping
+Workers/clients cannot parse pinned attribution/cache. These are invalid recovery
+versions even when catalog content is unchanged.
 Use a certified version-aware recovery Worker from the same reviewed source with
 both composition flags OFF. Preserve0046/0047, the archive, grants, pins and
 receipt-first replay. Prove hosted OFF/recovery behavior, including legacy route
@@ -38,7 +40,9 @@ does not make that safe.
 6. Verify exact SHA/catalog, paired flags, schema, household isolation, saved pins,
    queue recovery and inventory state. Record the actual deployment/recovery receipt.
 
-Local migration and consumer checks are recorded in23_SAVED_CONTENT_VALIDATION.md.
-They do not certify hosted recovery. Approved content publication, V1 selection
-pins, saved shopping compatibility and exact-source staging/recovery remain open.
+Local migration and consumer checks are recorded in23-26 validation reports.
+Same-source paired flags OFF/ON preserves saved rows and exactly-once cooking;
+real-service-worker offline queue/reconnect checks pass. These local checks do
+not certify hosted recovery or old versions. V1 selection and shopping pins are
+implemented; approved publication and exact-source hosted staging/recovery remain open.
 No promotion or rollback has been executed in production.

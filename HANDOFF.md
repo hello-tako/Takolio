@@ -1,3 +1,44 @@
+## Recipe V3 owner review follow-up - 2026-10-31 JST
+
+Production NOT_READY; owner deployment authorization remains valid. The user
+reported "đã duyệt" for professional review of 500 recipes / six safety cases.
+`docs/ai/recipe-intelligence-v3/19_INDEPENDENT_REVIEW_QUEUE.md` records the reply,
+unchanged candidate SHA256 and missing reviewer/decision/evidence details.
+Existing structured approval records remain 0/500 pending the actual review record.
+
+Executed with PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp CI=1:
+- `node scripts/recipe-intelligence-v3-audit.mjs --check`: PASS exit 0,
+  500 recipes / 44 edits / 25 packets; existing port 24678 warning retained.
+- `pnpm recipe:refresh:release-check`: FAIL exit 1, RUNTIME_PROJECTION_LOSS,
+  INGREDIENT_RECONCILIATION_INCOMPLETE,SOURCE_CONTENT_VERIFICATION_INCOMPLETE,
+  NUTRITION_EVIDENCE_INCOMPLETE. Exact logs/exit receipts:
+  /private/tmp/takolio-v3-owner-approval-audit.log and .exit;
+  /private/tmp/takolio-v3-owner-approval-release.log and .exit.
+
+GitHub refreshed 2026-10-30T17:37:16Z: PR52 exact 435c7f7e Recipe41093473613/
+Admin41093473560 SUCCESS; body updated. Only PR51 has a submitted approval,
+on ae68f7e5. PR33-50/52 remain open/Draft with reviewer requested. Fetched main
+remains b49f3e6c; strict CI,last-push/stale/independent review,admin enforcement
+and conversation resolution verified. No duplicate reviewer request.
+
+Next: reconcile the reported professional review with its evidence; finish
+ingredient,projection,source,nutrition and approved publication. 1395 provisional
+IDs / 4233 lines, 2996 exclusions / 2860 transformations, 288 blocked nutrition profiles
+remain. Protected main/exact-main CI,same-source hosted staging/catalog/recovery,
+ordered 0046/0047 and Environment-approved deployment are still required.
+Previous full local gate 435 files / 9717 tests and PWA/recovery checks are recorded
+in 26_PWA_RECOVERY_VALIDATION.md; not repeated for this docs-only follow-up.
+Implementation remains f5517236. No merge, remote migration, flag change or deploy.
+Documentation checks: `git diff --check` and
+`python3 scripts/admin-public-scan.py` PASS; preservation check
+`python3 /private/tmp/takolio-v3-owner-checkpoint-check.py` PASS (five historical
+tails, original review requirements and candidate unchanged; six Markdown files).
+Do not ask again for owner deployment authorization.
+
+Earlier records are historical checkpoints.
+
+---
+
 ## Recipe V3 saved shopping content - 2026-10-30 JST
 
 Status: RECIPE_V3_IMPLEMENTATION_IN_PROGRESS; production NOT_READY.

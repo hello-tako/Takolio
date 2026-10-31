@@ -1,3 +1,15 @@
+## Current checkpoint - 2026-10-31 JST
+
+Production NOT_READY. Cooking/saved V1/composition/shopping pins are implemented;
+local flags-OFF/ON and real-service-worker recovery checks PASS. Approved V3
+publication and hosted certification remain open. PR51 exact ae68f7e5 is approved
+with both CI checks SUCCESS; PR33-50 still need independent review.
+Current scope, exact checks, four data blockers and next action:
+[26_PWA_RECOVERY_VALIDATION.md](26_PWA_RECOVERY_VALIDATION.md).
+Earlier records are historical checkpoints.
+
+---
+
 # V3 checkpoint acceptance report
 
 RECIPE_V3_RESEARCH_IN_PROGRESS; RECIPE_V3_INDEPENDENT_REVIEW_REQUIRED; RECIPE_V3_BLOCKED; productionReady=false. Full500-recipe overhaul acceptance remains open.

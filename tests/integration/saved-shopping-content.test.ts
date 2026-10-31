@@ -96,3 +96,64 @@ it('retains unknown legacy contribution identity without inferring current histo
   expect(legacy.status).toBe(200);
   expect(contributions(legacy.json).every(row => row.contentFingerprint === undefined)).toBe(true);
 }, 30_000);
+
+it('preserves saved content and shopping through paired flags OFF/ON while cooking replays once', async () => {
+  h.db.execute(`INSERT INTO inventory_items
+    (id, household_id, ingredient_id, name, quantity, unit, category, storage, freshness, data_source, version)
+    VALUES (?, ?, 'CHICKEN_EGG', 'Recovery egg', 30, 'piece', 'egg', 'fridge', 'fresh', 'manual', 1)`,
+  ['recovery-egg', house]);
+  await h.seedHousehold('recovery-other', []);
+  const plan = await generate();
+  const path = `/meal-planning/plans/${plan.id}/slots/${encodeURIComponent(plan.result.meals[0].slotId)}/composition`;
+  const composed = await h.call(house, 'PUT', path, { revision: plan.revision,
+    components: [{ target: { kind: 'recipe', recipeId: 'imp-26a36c69306143bc' }, role: 'main', locked: false }] }, {}, capability);
+  expect(composed.status, JSON.stringify(composed.json)).toBe(200);
+  const input = trip({ id: plan.id, revision: composed.json.planRevision });
+  expect((await share(input, 'recovery-share')).status).toBe(200);
+  const list = await h.call(house, 'GET', '/shopping-list', undefined, {}, capability);
+  const purchase = list.json.items[0];
+  expect(purchase).toBeDefined();
+  expect((await h.call(house, 'PATCH', `/shopping-list/items/${purchase.id}`, { isChecked: true, quantity: 2 })).status).toBe(200);
+  const shopping = await h.call(house, 'GET', '/shopping-list', undefined, {}, capability);
+  const detail = await h.call(house, 'GET', '/recipes/gl-03');
+  expect(detail.status).toBe(200);
+  const original = await readHouseholdRecipeContentVersion(h.db, house, detail.json.contentFingerprint);
+  expect(original).not.toBeNull();
+  const pin = await captureRecipeContentVersion(h.db, { ...original!, title: 'Synthetic archived recovery content' });
+  await grantRecipeContentAccess(h.db, house, pin);
+  const command = { contentFingerprint: pin, servings: 4, commandId: 'recovery-cook',
+    deductions: [{ ingredientId: 'CHICKEN_EGG', quantityDeducted: 1, unit: 'piece' }] };
+  const headers = { 'Idempotency-Key': command.commandId };
+  const saved = () => ['generated_meal_plans', 'generated_meal_plan_compositions', 'generated_meal_plan_components',
+    'shopping_plan_sources', 'shopping_plan_demands', 'shopping_items', 'shopping_generated_item_state',
+    'shopping_plan_commands', 'recipe_content_versions', 'recipe_content_access']
+    .map(table => h.db.query(`SELECT * FROM ${table} ORDER BY rowid`));
+  const before = saved();
+  const events = h.db.query('SELECT id FROM inventory_events').length;
+  h.extraEnv = { MEAL_PLANNER_ENABLED: 'false', MEAL_COMPOSITION_V2_ENABLED: 'false' };
+  expect(await h.call(house, 'GET', `/meal-planning/plans/${plan.id}`))
+    .toMatchObject({ status: 404, json: { code: 'MEAL_PLANNER_DISABLED' } });
+  expect(await share(input, 'recovery-share'))
+    .toMatchObject({ status: 404, json: { code: 'MEAL_COMPOSITION_DISABLED' } });
+  expect(await h.call(house, 'GET', '/shopping-list', undefined, {}, capability)).toEqual(shopping);
+  expect(await h.call('recovery-other', 'GET', `/recipes/gl-03?contentFingerprint=${pin}`))
+    .toMatchObject({ status: 404 });
+  expect(await h.call(house, 'GET', `/recipes/gl-03?contentFingerprint=${pin}`))
+    .toMatchObject({ status: 200, json: { contentFingerprint: pin } });
+  const cooked = await h.call(house, 'POST', '/recipes/gl-03/cook/complete', command, {}, headers);
+  expect(cooked.status, JSON.stringify(cooked.json)).toBe(200);
+  expect(await h.call(house, 'POST', '/recipes/gl-03/cook/complete', command, {}, headers))
+    .toMatchObject({ status: 200, json: { idempotentReplay: true } });
+  h.extraEnv = {};
+  expect((await h.call(house, 'GET', path, undefined, {}, capability)).json.composition.components)
+    .toEqual(composed.json.composition.components);
+  expect((await h.call(house, 'GET', `/meal-planning/plans/${plan.id}`, undefined, {}, capability)).status).toBe(200);
+  expect(await h.call(house, 'GET', '/shopping-list', undefined, {}, capability)).toEqual(shopping);
+  expect(await h.call(house, 'POST', '/recipes/gl-03/cook/complete', command, {}, headers))
+    .toMatchObject({ status: 200, json: { idempotentReplay: true } });
+  expect(h.db.query('SELECT quantity FROM inventory_items WHERE id=?', 'recovery-egg')).toEqual([{ quantity: 29 }]);
+  expect(h.db.query('SELECT id FROM inventory_events')).toHaveLength(events + 1);
+  expect(h.db.query('SELECT recipe_content_fingerprint, servings_cooked FROM cooked_meals'))
+    .toEqual([{ recipe_content_fingerprint: pin, servings_cooked: 4 }]);
+  expect(saved()).toEqual(before);
+}, 30_000);

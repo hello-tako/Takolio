@@ -1,3 +1,17 @@
+## Current review checkpoint - 2026-10-31 JST
+
+[Draft PR52](https://github.com/hello-tako/Takolio/pull/52) is OPEN against
+codex/recipe-v3-shopping-content. Implementation f55172363970e88b38a7bb9c77f5b544e9c0778c;
+Recipe41087966158/Admin41087965933 SUCCESS on this exact implementation HEAD.
+Reviewer vn-taphoanhatung requested; requests also remain on PR33-50.
+PR51 exact ae68f7e5 APPROVED; both checks SUCCESS. Keep its approved HEAD stable.
+Later documentation HEAD/checks resolve from GitHub. No merge or deployment.
+Review scopes/protection: [PROTECTED_REVIEW_MATRIX.md](PROTECTED_REVIEW_MATRIX.md).
+Exact local checks/failures: [26_PWA_RECOVERY_VALIDATION.md](../26_PWA_RECOVERY_VALIDATION.md).
+Earlier records are historical checkpoints.
+
+---
+
 ## Recipe V3 immutable release baseline - 2026-10-30 JST
 
 Status: RECIPE_V3_IMPLEMENTATION_IN_PROGRESS; production NOT_READY.

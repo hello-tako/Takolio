@@ -1,7 +1,7 @@
 # Runtime compatibility
 
-V1 remains the runtime catalog authority. ADR-075/076 add cooking and saved
-composition content identity without promoting the V3 candidate. Apply0046 then
+V1 remains the runtime catalog authority. ADR-075/076/077/078 add cooking, saved
+V1/composition and shared-shopping content identity without promoting the V3 candidate. Apply0046 then
 0047 before this Worker. Existing NULL references remain unknown.
 
 New composition selections capture unscaled immutable content and household
@@ -26,12 +26,15 @@ Compatibility requirements retained:
 - Preserve household access and current hard restrictions for new commands.
 - Keep candidate quantities, media and nutrition outside live inventory deduction.
 
+ADR-077 pins standalone V1 selections; ADR-078 retains pins in shared shopping
+attribution and private caches, using the same capability for legacy DTOs.
 The release compiler still blocks projection loss, provisional ingredient IDs,
-unverified source content and incomplete nutrition. V1 planner result selection
-pins, versioned approved publication and saved-shopping compatibility remain open.
+unverified source content and incomplete nutrition. Versioned approved publication
+remains open.
 After the first saved pin, Workers predating0047 cannot safely serve mutations.
 Certify a version-aware recovery Worker with paired flags OFF; retain0046/0047.
-See18_ROLLBACK_PLAN.md and23_SAVED_CONTENT_VALIDATION.md.
+See18_ROLLBACK_PLAN.md and23-26 validation reports. Local paired flags OFF/ON
+and real-service-worker queue checks pass; hosted recovery remains uncertified.
 
 Local checks are not hosted staging, device or production certification. Existing
 production continuity, independent review and Environment gates remain intact.
