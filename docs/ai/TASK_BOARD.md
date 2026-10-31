@@ -1,3 +1,39 @@
+## Aggregate integration checkpoint - 2026-10-31 JST
+
+Branch codex/recipe-v3-frame-check; verified implementation3326d7bd27acc714ded6bf7392b1c1ef2af08eea.
+Merged origin/codex/recipe-v3-artifacts normally; git diff3b3f30d..3326d7bd is empty.
+PR33-41 merged; main observed4f69b27d276e9258b4c2cf4c427c306543dbc474.
+PR42 exact85eb3e1bc9e0b62b80346ef8d70995b2d2a9d6a9 has disclosed Codex AI
+technical approval5722100055 by vn-taphoanhatung; hosted checks still running.
+Remaining stack will integrate through PR57 targeting main, with normal exact-head
+review, required CI and branch protection. Superseded PRs close only after merge.
+
+Executed in Takolio-recipe-v3, PATH=/opt/homebrew/opt/node@24/bin:$PATH:
+- pnpm install --frozen-lockfile PASS exit0.
+- TMPDIR=/private/tmp CI=1 pnpm check on3b3f30d PASS exit0:436files/9764tests;
+  types,lint,Main/Admin migration replay,Web/Admin/Worker builds PASS. Source tree
+  unchanged by3326d7bd. Receipt:/private/tmp/takolio-v3-frame-full-check.log/.exit=0.
+- TMPDIR=/private/tmp CI=1 pnpm exec vitest run tests/unit/recipe-intelligence-v3.test.mjs
+  tests/unit/recipe-intelligence-v3-artifacts.test.mjs tests/unit/recipe-intelligence-v3-review.test.mjs
+  tests/unit/zod-security-compatibility.test.ts tests/unit/recipe-v3-ci.test.mjs
+  on3326d7bd PASS5files/84tests/5.61s. Receipt:/private/tmp/takolio-v3-integration-focused.log/.exit=0.
+- PR57 hosted checks41166242292/41166242354 SUCCESS on3b3f30d, including Admin
+  Workerd,migrations,browser,keyboard and screenshot checks; new HEAD needs new CI.
+
+Production NOT_READY. Deployment/browser authorization persists. Four actual
+catalog gates remain: RUNTIME_PROJECTION_LOSS, INGREDIENT_RECONCILIATION_INCOMPLETE,
+SOURCE_CONTENT_VERIFICATION_INCOMPLETE,NUTRITION_EVIDENCE_INCOMPLETE. Candidate
+SHA2567c0b8b3840c4f72dd724737d2066946f04e07c8fe8631d5bc937d87c172466df;
+runtime fingerprintf8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37.
+No human culinary approval inferred from owner-authorized AI technical reviews.
+Six safety cases and approved V3 publication remain open. Next: finish aggregate
+review/integration, resolve real evidence/data gaps, then exact-main CI and
+same-source staging/catalog/recovery certification. Apply0046then0047 before Worker;
+retain version-aware same-source recovery with paired flags OFF. No remote
+migration,flag change or production deployment occurred in this checkpoint.
+
+---
+
 ## Frame synchronization and protected integration - 2026-10-31 JST
 
 Branch codex/recipe-v3-frame-check; parent9c7322eb030284f419f7d79cbd94bcbe51485534.
