@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "edits": [
+    {
+      "recipeId": "imp-04d0b94d17ce080c",
+      "path": "/ingredients/1/note",
+      "oldValue": "Thai Caliente dùng 1 mẩu gừng dài khoảng 4 inch thái sợi chỉ; Simply Suwanee dùng đến 4 oz (113 g) gừng — cả hai nguồn đều dùng lượng gừng lớn, đúng đặc trưng của món gai pad khing (gà xào gừng).",
+      "newValue": "Thai Caliente ghi một củ gừng dài khoảng 4 inch, không có khối lượng; Simply Suwanee ghi 4 oz gừng trong biến thể khác. Không có phép quy đổi đã xác minh từ chiều dài 4 inch sang 113 g. 85 g cho 3 phần hiện là định lượng cần duyệt, chưa được hai nguồn cùng xác nhận.",
+      "reason": "Do not infer mass from root length or transfer it across variants.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-06-evidence.json#/recipes/0/claims/1"
+      ]
+    },
+    {
+      "recipeId": "imp-04d0b94d17ce080c",
+      "path": "/steps/4/tip",
+      "oldValue": "MÂU THUẪN: Simply Suwanee xào nhóm thơm này chỉ 1 phút; Thai Caliente xào 3 phút. Giữ 3 phút để hành tây mềm thơm mà tỏi không cháy.",
+      "newValue": "Thai Caliente xào gà trước rồi thêm nhóm thơm và xào 3 phút; Simply Suwanee xào nhóm thơm 1 phút trước khi thêm gà. Hai thời gian thuộc trình tự khác nhau. Bản này giữ 3 phút như lựa chọn biên soạn; cách gắp gà ra rồi cho lại cần được duyệt riêng.",
+      "reason": "Describe differing cooking order without manufacturing a timing contradiction.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-06-evidence.json#/recipes/0/claims/2"
+      ]
+    },
+    {
+      "recipeId": "imp-d463228be1e6e7c0",
+      "path": "/ingredients/0/note",
+      "oldValue": "GZ: 320 g gạo Carnaroli cho công thức gốc — không ghi rõ khẩu phần, ước 4 phần theo chuẩn 80 g gạo khô/người; scale 3/4 → 240 g cho 3 phần. ITRK (400 g arborio, cũng khoảng 4 phần) nhấn mạnh: chỉ dùng Arborio hoặc Carnaroli mới cho độ sánh kem, không thay bằng gạo thường.",
+      "newValue": "ITRK ghi rõ 400 g gạo arborio cho 6 người, không phải khoảng 4 phần. URL GZ hiện chỉ đọc được vỏ trang YouTube, chưa xác minh định lượng hoặc khẩu phần trong video. Chưa có căn cứ để gọi 240 g cho 3 phần là phép scale đã được hai nguồn xác nhận; giữ định lượng ở trạng thái chờ duyệt biến thể.",
+      "reason": "Correct explicit source yield; preserve quantity.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-06-evidence.json#/recipes/2/claims/2"
+      ]
+    },
+    {
+      "recipeId": "imp-d463228be1e6e7c0",
+      "path": "/ingredients/7/note",
+      "oldValue": "GZ: 30 g bơ LẠNH cắt nhỏ cho bước mantecatura cho công thức gốc; scale 3/4 → 22 g. Bơ phải lạnh và chỉ cho vào khi đã TẮT BẾP, đánh mạnh để nhũ hóa — đây là bí quyết độ 'béo ngậy' (cả hai nguồn).",
+      "newValue": "ITRK hoàn thiện risotto bằng mascarpone và parmesan; danh sách nguyên liệu không có bơ. Chưa đọc được nội dung video GZ để xác minh 30 g bơ lạnh. 22 g bơ lạnh hiện là lựa chọn của bản biên soạn cần duyệt, chưa được cả hai nguồn cùng xác nhận.",
+      "reason": "Remove unsupported two-source butter agreement.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-06-evidence.json#/recipes/2/claims/2"
+      ]
+    }
+  ]
+}

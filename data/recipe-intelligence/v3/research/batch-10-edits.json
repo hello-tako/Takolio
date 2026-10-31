@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "edits": [
+    {
+      "recipeId": "imp-d1f8ab89051a6336",
+      "path": "/ingredients/1/note",
+      "oldValue": "Hai nguồn mâu thuẫn: Knorr dùng 6-8 con tôm lột cho 3 người (~120-150 g thịt sau lột); DMX dùng 300 g tôm (nguyên con, lột vỏ khi sơ chế) cho 2 người → quy đổi 450 g/3 người. Lấy 250 g làm mức giữa, ưu tiên Knorr vì đúng 3 phần.",
+      "newValue": "Knorr ghi 6-8 con tôm lột cho 3 người nhưng không có khối lượng. Dienmayxanh không đọc được trong lượt này. Chưa có cỡ tôm hoặc tỷ lệ thu hồi đã đo để suy thành 120-150 g thịt hay chọn mức giữa 250 g; giữ 250 g ở trạng thái chờ duyệt dạng tôm và căn cứ định lượng.",
+      "reason": "Remove count-to-mass estimate and unsupported midpoint.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-10-evidence.json#/recipes/12/claims/2"
+      ]
+    },
+    {
+      "recipeId": "imp-403a1693ea9b3cf8",
+      "path": "/ingredients/0/note",
+      "oldValue": "SGN dùng 1 kg bún (không ghi số khẩu phần, ước ~6 người), lib.vn dùng 500 g (không ghi số khẩu phần). Lấy chuẩn 200 g bún tươi/khẩu phần → 800 g cho 4 người.",
+      "newValue": "Saigonese Baguette ghi 1 kg bún tươi nhưng không nêu số phần trong công thức đã đọc. Không xác minh được ước lượng khoảng 6 người; PDF lib.vn chưa đọc được. 800 g bún cho 4 người hiện là lựa chọn biên soạn 200 g/người, cần duyệt riêng, chưa phải phép scale theo khẩu phần nguồn.",
+      "reason": "Separate editorial serving assumption from explicit source yield.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-10-evidence.json#/recipes/19/claims/3"
+      ]
+    }
+  ]
+}

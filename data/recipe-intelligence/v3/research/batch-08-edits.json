@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "edits": [
+    {
+      "recipeId": "imp-ece7da4660b63e9d",
+      "path": "/ingredients/0/note",
+      "oldValue": "WOL: 1 lb (450 g) thăn bò cho 4 phần (≈115 g/phần); AS: 600 g thăn bò cho ~4 phần (≈150 g/phần) — MÂU THUẪN. Lấy 400 g cho 3 phần (≈135 g/phần), nằm giữa hai nguồn.",
+      "newValue": "Ang Sarap ghi rõ 600 g rump steak cho 6 phần, không phải khoảng 4 phần. Chưa đọc được Woks of Life trong lượt này. 400 g cho 3 phần là lựa chọn biên soạn cần duyệt, không được biện minh bằng mức giữa hai định lượng đã xác minh.",
+      "reason": "Correct six-serving source attribution without changing selected meat amount.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-08-evidence.json#/recipes/16/claims/2"
+      ]
+    }
+  ]
+}
